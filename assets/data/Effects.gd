@@ -3070,6 +3070,70 @@ var effect_table = {
 		sub_effects = [],
 	},
 	
+	#add proper tags to enemies or change target_tag to target_race
+	enchant_reaper_1 = rebuild_skillvalue_template({target_tag = 'humanoid', tag = 'damage',  value = 1.2}),
+	enchant_beasthunter_1 = rebuild_skillvalue_template({target_tag = 'beast', tag = 'damage',  value = 1.2}),
+	enchant_undeadbane_1 = rebuild_skillvalue_template({target_tag = 'undead', tag = 'damage',  value = 1.2}),
+	enchant_giantslayer_1 = rebuild_skillvalue_template({target_tag = 'giant', tag = 'damage',  value = 1.2}),
+	enchant_dragonslayer_1 = rebuild_skillvalue_template({target_tag = 'dragon', tag = 'damage',  value = 1.2}),
+	enchant_reaper_2 = rebuild_skillvalue_template({target_tag = 'humanoid', tag = 'damage',  value = 1.3}),
+	enchant_beasthunter_2 = rebuild_skillvalue_template({target_tag = 'beast', tag = 'damage',  value = 1.3}),
+	enchant_undeadbane_2 = rebuild_skillvalue_template({target_tag = 'undead', tag = 'damage',  value = 1.3}),
+	enchant_giantslayer_2 = rebuild_skillvalue_template({target_tag = 'giant', tag = 'damage',  value = 1.3}),
+	enchant_dragonslayer_2 = rebuild_skillvalue_template({target_tag = 'dragon', tag = 'damage',  value = 1.3}),
+	enchant_reaper_3 = rebuild_skillvalue_template({target_tag = 'humanoid', tag = 'damage',  value = 1.4}),
+	enchant_beasthunter_3 = rebuild_skillvalue_template({target_tag = 'beast', tag = 'damage',  value = 1.4}),
+	enchant_undeadbane_3 = rebuild_skillvalue_template({target_tag = 'undead', tag = 'damage',  value = 1.4}),
+	enchant_giantslayer_3 = rebuild_skillvalue_template({target_tag = 'giant', tag = 'damage',  value = 1.4}),
+	enchant_dragonslayer_3 = rebuild_skillvalue_template({target_tag = 'dragon', tag = 'damage',  value = 1.4}),
+	
+	enchant_manasiphon_1 = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'skill']}],
+		req_skill = true,
+		args = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'owner',
+			args = [{obj = 'template', param = 'amount'}],
+			amount = 1,
+			atomic = ['a_manasiphon']
+		}],
+		buffs = []
+	},
+	
+	enchant_manasiphon_2 = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'skill']}],
+		req_skill = true,
+		args = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'owner',
+			args = [{obj = 'template', param = 'amount'}],
+			amount = 2,
+			atomic = ['a_manasiphon']
+		}],
+		buffs = []
+	},
+	
+	enchant_manasiphon_3 = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'skill']}],
+		req_skill = true,
+		args = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'owner',
+			args = [{obj = 'template', param = 'amount'}],
+			amount = 3,
+			atomic = ['a_manasiphon']
+		}],
+		buffs = []
+	},
 	
 	#statuses 
 	e_s_burn_new = {
@@ -4550,6 +4614,8 @@ var atomic = {
 	a_burn_new = {type = 'damage', source = 'fire', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
 	a_poison_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
 	a_bleed_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
+	
+	a_manasiphon = {type = 'mana', value = ['parent_args', 0]},
 };
 #needs filling
 var buffs = {
@@ -4901,6 +4967,11 @@ func rebuild_skillvalue_template(args):
 	if args.has('target_race'):
 		var tmp = targetcondition.duplicate(true)
 		tmp.value.push_back({code = 'stat', stat = 'racegroup', operant = 'eq', value = args.target_race})
+		trigger.conditions.push_back(tmp)
+	
+	if args.has('target_tag'):
+		var tmp = targetcondition.duplicate(true)
+		tmp.value.push_back({code = 'tags', operant = 'has', value = args.target_tag})
 		trigger.conditions.push_back(tmp)
 	
 	return trigger

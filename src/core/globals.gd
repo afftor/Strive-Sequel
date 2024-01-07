@@ -206,7 +206,7 @@ func CreateGearItemLoot(item, parts, newname = null):
 			diffdata.boost = 4
 		'hard':
 			diffdata.boost = 6
-	diffdata.boost += 2 + 0.4 * char_roll_data.lvl
+	diffdata.boost += 2 + 0.4 * char_roll_data.lvl + char_roll_data.mf
 	if ResourceScripts.game_globals.difficulty == 'easy':
 		diffdata.boost *= 1.5
 	diffdata.boost = int(diffdata.boost)
@@ -1439,6 +1439,7 @@ func reset_roll_data():
 	char_roll_data.no_roll = false
 	char_roll_data.max_amount = 4
 	char_roll_data.lvl = 0
+	char_roll_data.mf = 0
 	char_roll_data.rare = false
 	char_roll_data.mboss = false
 	char_roll_data.uniq = false

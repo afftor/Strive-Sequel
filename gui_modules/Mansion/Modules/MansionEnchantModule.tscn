@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_36.tres" type="DynamicFont" id=2]
@@ -35,6 +35,8 @@
 [ext_resource path="res://assets/Textures_v2/craft/panel_enchant.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE/icon_question_small.png" type="Texture" id=34]
 [ext_resource path="res://assets/images/iconsenchants/curse_mono_100.png" type="Texture" id=35]
+[ext_resource path="res://assets/Textures_v2/craft/enchant_bg.png" type="Texture" id=36]
+[ext_resource path="res://assets/Textures_v2/craft/enchant_item_bg.png" type="Texture" id=37]
 
 [node name="Panel" type="TextureRect"]
 anchor_right = 1.0
@@ -234,6 +236,15 @@ margin_right = 705.0
 margin_bottom = 634.0
 texture = ExtResource( 26 )
 
+[node name="TextureRect" type="TextureRect" parent="EnchantPanel/Weapon1"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 333.0
+margin_bottom = 304.0
+texture = ExtResource( 37 )
+expand = true
+stretch_mode = 1
+
 [node name="icon" type="TextureRect" parent="EnchantPanel/Weapon1"]
 margin_left = 9.0
 margin_top = 11.0
@@ -296,6 +307,15 @@ margin_top = 28.0
 margin_right = 1160.58
 margin_bottom = 634.0
 texture = ExtResource( 33 )
+
+[node name="TextureRect" type="TextureRect" parent="EnchantPanel/Weapon2"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 333.0
+margin_bottom = 304.0
+texture = ExtResource( 36 )
+expand = true
+stretch_mode = 1
 
 [node name="icon" type="TextureRect" parent="EnchantPanel/Weapon2"]
 margin_left = 9.0

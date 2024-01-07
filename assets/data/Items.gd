@@ -4604,6 +4604,282 @@ var enchantments = {
 			},
 		}
 	},
+	
+	treasurehunt = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsenchants/sharpness_mono_100.png"), #fix
+		reqs = [
+			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
+			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
+			{orflag = true, code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
+		],
+		levels = {
+			1:{
+				statmods = {magic_find_add = 1},
+#				effects = [],
+				weight = 100,
+				cap_cost = 200,
+				gold_cost = 1000
+			},
+			2:{
+				statmods = {magic_find_add = 1},
+#				effects = [],
+				weight = 100,
+				cap_cost = 300,
+				gold_cost = 2000
+			},
+			3:{
+				statmods = {magic_find_add = 1},
+#				effects = [],
+				weight = 100,
+				cap_cost = 400,
+				gold_cost = 3000
+			},
+		}
+	},
+	
+	reaper = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsenchants/spellmaster_mono_100.png"), #fix
+		reqs = [
+			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
+		],
+		levels = {
+			1:{
+				effects = ['enchant_reaper_1'],
+				weight = 100,
+				cap_cost = 100,
+				gold_cost = 1000
+			},
+			2:{
+				effects = ['enchant_reaper_2'],
+				weight = 100,
+				cap_cost = 150,
+				gold_cost = 2000
+			},
+			3:{
+				effects = ['enchant_reaper_3'],
+				weight = 100,
+				cap_cost = 200,
+				gold_cost = 3000
+			},
+		}
+	},
+	
+	beasthunter = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsenchants/spellmaster_mono_100.png"), #fix
+		reqs = [
+			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
+		],
+		levels = {
+			1:{
+				effects = ['enchant_beasthunter_1'],
+				weight = 100,
+				cap_cost = 100,
+				gold_cost = 1000
+			},
+			2:{
+				effects = ['enchant_beasthunter_2'],
+				weight = 100,
+				cap_cost = 150,
+				gold_cost = 2000
+			},
+			3:{
+				effects = ['enchant_beasthunter_3'],
+				weight = 100,
+				cap_cost = 200,
+				gold_cost = 3000
+			},
+		}
+	},
+	
+	undeadbane = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsenchants/spellmaster_mono_100.png"), #fix
+		reqs = [
+			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
+		],
+		levels = {
+			1:{
+				effects = ['enchant_undeadbane_1'],
+				weight = 100,
+				cap_cost = 100,
+				gold_cost = 1000
+			},
+			2:{
+				effects = ['enchant_undeadbane_2'],
+				weight = 100,
+				cap_cost = 150,
+				gold_cost = 2000
+			},
+			3:{
+				effects = ['enchant_undeadbane_3'],
+				weight = 100,
+				cap_cost = 200,
+				gold_cost = 3000
+			},
+		}
+	},
+	
+	giantslayer = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsenchants/spellmaster_mono_100.png"), #fix
+		reqs = [
+			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
+		],
+		levels = {
+			1:{
+				effects = ['enchant_giantslayer_1'],
+				weight = 100,
+				cap_cost = 150,
+				gold_cost = 1000
+			},
+			2:{
+				effects = ['enchant_giantslayer_2'],
+				weight = 100,
+				cap_cost = 200,
+				gold_cost = 2000
+			},
+			3:{
+				effects = ['enchant_giantslayer_3'],
+				weight = 100,
+				cap_cost = 250,
+				gold_cost = 3000
+			},
+		}
+	},
+	
+	dragonslayer = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsenchants/spellmaster_mono_100.png"), #fix
+		reqs = [
+			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
+		],
+		levels = {
+			1:{
+				effects = ['enchant_dragonslayer_1'],
+				weight = 100,
+				cap_cost = 150,
+				gold_cost = 1000
+			},
+			2:{
+				effects = ['enchant_dragonslayer_2'],
+				weight = 100,
+				cap_cost = 200,
+				gold_cost = 2000
+			},
+			3:{
+				effects = ['enchant_dragonslayer_3'],
+				weight = 100,
+				cap_cost = 250,
+				gold_cost = 3000
+			},
+		}
+	},
+	
+	manasiphon = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsenchants/spellmaster_mono_100.png"), #fix
+		reqs = [
+			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
+		],
+		levels = {
+			1:{
+				effects = ['enchant_manasiphon_1'],
+				weight = 100,
+				cap_cost = 100,
+				gold_cost = 1000
+			},
+			2:{
+				effects = ['enchant_manasiphon_2'],
+				weight = 100,
+				cap_cost = 200,
+				gold_cost = 2000
+			},
+			3:{
+				effects = ['enchant_manasiphon_3'],
+				weight = 100,
+				cap_cost = 300,
+				gold_cost = 3000
+			},
+		}
+	},
+	
+	nimble = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsenchants/sharpness_mono_100.png"), #fix
+		reqs = [
+#			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
+			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
+			{orflag = true, code = 'stat', stat = 'slots', operant = 'has', value = 'legs', check = true},
+		],
+		levels = {
+			1:{
+				statmods = {evasion = 5},
+#				effects = [],
+				weight = 100,
+				cap_cost = 150,
+				gold_cost = 1000
+			},
+			2:{
+				statmods = {evasion = 10},
+#				effects = [],
+				weight = 100,
+				cap_cost = 200,
+				gold_cost = 2000
+			},
+			3:{
+				statmods = {evasion = 15},
+#				effects = [],
+				weight = 100,
+				cap_cost = 250,
+				gold_cost = 3000
+			},
+		}
+	},
+	
+	knowledge = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsenchants/sharpness_mono_100.png"), #fix
+		reqs = [
+#			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
+			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
+			{orflag = true, code = 'stat', stat = 'slots', operant = 'has', value = 'legs', check = true},
+		],
+		levels = {
+			1:{
+				statmods = {exp_gain_mod = 0.1},
+#				effects = [],
+				weight = 100,
+				cap_cost = 200,
+				gold_cost = 1000
+			},
+			2:{
+				statmods = {exp_gain_mod = 0.15},
+#				effects = [],
+				weight = 100,
+				cap_cost = 300,
+				gold_cost = 2000
+			},
+			3:{
+				statmods = {exp_gain_mod = 0.2},
+#				effects = [],
+				weight = 100,
+				cap_cost = 400,
+				gold_cost = 3000
+			},
+		}
+	},
 }
 
 var curses = {

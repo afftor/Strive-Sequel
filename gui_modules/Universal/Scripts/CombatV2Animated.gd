@@ -436,6 +436,9 @@ func victory():
 								if itemfound == false:
 									var newitem = globals.CreateUsableItem(item[0])
 									rewardsdict.items.append(newitem)
+							if itemtemp.type == 'gear': #not used currently
+								var newitem = globals.CreateGearItemLoot(item[0], item[3]) #item[3] for parts, mb add randomization here
+								rewardsdict.items.append(newitem)
 						counter -= 1
 
 #		if Enemydata.loottables[tchar.loottable].has('materials'):
