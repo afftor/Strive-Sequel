@@ -109,7 +109,8 @@ func CreateUsable(ItemName = '', number = 1):
 func amount_set(value):
 	amount = value
 	if amount <= 0:
-		ResourceScripts.game_res.items.erase(id)
+#		ResourceScripts.game_res.items.erase(id)
+		ResourceScripts.game_res.call_deferred('remove_item_id', id)
 
 func UseItem(user = null, target = null):
 	var finaltarget

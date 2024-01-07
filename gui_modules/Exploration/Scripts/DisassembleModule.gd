@@ -69,6 +69,7 @@ func disassamble():
 	}
 	data.materials[material] = final_amount
 	loot_window.open(data, message)
+#	ResourceScripts.game_res.items.erase(item_to_disassamble.id)
 	ResourceScripts.game_res.items[item_to_disassamble.id].amount -= $NumberSelection/HSlider.value
 	build_list()
 

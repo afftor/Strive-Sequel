@@ -115,6 +115,11 @@ func remove_item(itemcode, number):
 			item.amount -= 1
 		number -= 1
 #
+
+func remove_item_id(id):
+	items.erase(id)
+
+
 func set_material(material, operant, value):
 	match operant:
 		'+':

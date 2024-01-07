@@ -300,6 +300,11 @@ func selectcraftitem(item):
 	# $SelectCharacters.disabled = true
 	selected_item = item
 	itemtemplate = item.resultitem
+	if item.resultamount > 1:
+		$MaterialSetupPanel/EndItemFrame/Label.text = str(item.resultamount)
+		$MaterialSetupPanel/EndItemFrame/Label.visible = true
+	else:
+		$MaterialSetupPanel/EndItemFrame/Label.visible = false
 	$NumberSelect.show()
 	$MaterialSetupPanel.show()
 	get_node("MaterialSetupPanel/ModularSetup/").visible = item.crafttype != 'basic'
@@ -503,7 +508,7 @@ func checkcreatingitem(item):
 	var temppartdict = {}
 	for i in itemparts:
 		temppartdict[i] = itemparts[i].material
-	enditem = globals.CreateGearItem(item, temppartdict) #etem emulation, no enchants
+	enditem = globals.CreateGearItemQuality(item, temppartdict, '') #item emulation, no enchants, no quality
 	partdict = temppartdict
 	#enditem.CreateGear(item, partdict)
 	text = multipart_item_text(enditem)
