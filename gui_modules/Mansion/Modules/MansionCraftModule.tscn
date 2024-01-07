@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_26.tres" type="DynamicFont" id=2]
@@ -73,6 +73,7 @@
 [ext_resource path="res://assets/Textures_v2/craft/buttons/button_item_hover.png" type="Texture" id=71]
 [ext_resource path="res://assets/images/iconsitems/Cloth.png" type="Texture" id=72]
 [ext_resource path="res://assets/Textures_v2/craft/buttons/button_back_hover.png" type="Texture" id=73]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_30.tres" type="DynamicFont" id=74]
 
 [sub_resource type="StyleBoxTexture" id=1]
 region_rect = Rect2( 0, 0, 12, 48 )
@@ -758,9 +759,6 @@ margin_right = 174.227
 margin_bottom = 169.989
 texture = ExtResource( 15 )
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="EndItem" type="TextureRect" parent="MaterialSetupPanel/EndItemFrame"]
 margin_left = 13.0
@@ -772,6 +770,16 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="MaterialSetupPanel/EndItemFrame"]
+margin_left = 104.989
+margin_top = 130.466
+margin_right = 172.989
+margin_bottom = 174.466
+custom_fonts/font = ExtResource( 74 )
+text = "100"
+align = 2
+valign = 1
 
 [node name="Label" type="Label" parent="MaterialSetupPanel"]
 margin_left = 180.0
