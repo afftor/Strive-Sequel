@@ -474,7 +474,14 @@ var statdata = {
 		default_bonus = 'add_part',
 		hidden = false
 	},
-
+	magic_find = {
+		code = 'magic_find',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		type = 'misc',
+	},
+	
 	physics_bonus = {
 		code = 'physics_bonus',
 		name = '',
