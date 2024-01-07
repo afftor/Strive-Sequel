@@ -4608,7 +4608,7 @@ var enchantments = {
 	treasurehunt = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/sharpness_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/Treasure Hunter_150.png"), #fix
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
 			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
@@ -4642,7 +4642,7 @@ var enchantments = {
 	reaper = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/spellmaster_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/reaper_150.png"), #fix
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
 		],
@@ -4671,7 +4671,7 @@ var enchantments = {
 	beasthunter = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/spellmaster_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/Beast Hunter_150.png"), #fix
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
 		],
@@ -4700,7 +4700,7 @@ var enchantments = {
 	undeadbane = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/spellmaster_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/Undead Bane_150.png"), #fix
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
 		],
@@ -4729,7 +4729,7 @@ var enchantments = {
 	giantslayer = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/spellmaster_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/Giant Slayer_150.png"), #fix
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
 		],
@@ -4758,7 +4758,7 @@ var enchantments = {
 	dragonslayer = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/spellmaster_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/Dragon Slayer_150.png"), #fix
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
 		],
@@ -4787,7 +4787,7 @@ var enchantments = {
 	manasiphon = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/spellmaster_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/Mana siphon_150.png"), #fix
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
 		],
@@ -4816,7 +4816,7 @@ var enchantments = {
 	nimble = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/sharpness_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/Nimbleness_150.png"), #fix
 		reqs = [
 #			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
 			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
@@ -4850,7 +4850,7 @@ var enchantments = {
 	knowledge = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/sharpness_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/Knowledge_150.png"), #fix
 		reqs = [
 #			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
 			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
