@@ -59,7 +59,8 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	parentnode = node
 	currentdata = data
 	currenttype = type
-
+	$TopPanel/IconFrame/quality_color.hide()
+	
 	var screen = get_viewport().get_visible_rect()
 	if shutoff == true && prevnode == parentnode:
 		return
@@ -174,7 +175,9 @@ func gear_tooltip(data, item = null):
 	var text1 = item.tooltiptext_1()
 	var text2 = item.tooltiptext_2()
 	build_price(data.price)
-
+	if item.quality != '':
+		$TopPanel/IconFrame/quality_color.show()
+		$TopPanel/IconFrame/quality_color.texture = variables.quality_colors[item.quality]
 	$LowPanel/HBoxContainer/HoldShift.visible = item.get('partcolororder') != null
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)

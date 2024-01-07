@@ -25,7 +25,7 @@ var TranslationDict = {
 	GALLERYERO = "Ero",
 	GALLERYSCENES = "Scenes",
 	GALLERYRETURN = "Return",
-	GALLERYTOOLTIPTOP = "What you need to do to open the scene:",
+	GALLERYTOOLTIPTOP = "Scene Condition:",
 	#ModPanel
 	MODLOAD = "Loaded mods",
 	MODLOAD1 = "these mods will be applied to game and avaliable in editor at next game start.",

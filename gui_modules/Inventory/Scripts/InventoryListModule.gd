@@ -79,6 +79,9 @@ func buildinventory():
 		newnode.connect("pressed",self,'useitem', [i, i.type])
 		itemarray.append(newnode)
 		newnode.visible = list_mode != "tattoo"
+		if i.quality != "":
+			newnode.get_node("quality_color").show()
+			newnode.get_node("quality_color").texture = variables.quality_colors[i.quality]
 	rebuildinventory()
 
 
