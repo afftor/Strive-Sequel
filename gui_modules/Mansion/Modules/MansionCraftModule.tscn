@@ -751,6 +751,7 @@ margin_left = 357.784
 margin_top = 276.545
 margin_right = 901.784
 margin_bottom = 828.545
+mouse_filter = 2
 
 [node name="EndItemFrame" type="TextureRect" parent="MaterialSetupPanel"]
 margin_left = -5.77304
