@@ -3220,6 +3220,56 @@ var effect_table = {
 			}
 		]
 	},
+	e_s_shred = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions
+		type = 'temp_global',
+		tags = ['duration_turns', 'affliction'],
+		target = 'target',
+		name = 'shred',
+		stack = 2,
+		timers = [
+			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 1}, #1 turn duration
+			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
+			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
+		],
+		args = [],
+		sub_effects = [],
+		atomic = [{type = 'stat_add_p', stat = 'armor', value = -0.5}],
+		buffs = ['b_shred'],
+	},
+	e_s_shatter = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions
+		type = 'temp_global',
+		tags = ['duration_turns', 'affliction'],
+		target = 'target',
+		name = 'shatter',
+		stack = 2,
+		timers = [
+			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 1}, #1 turn duration
+			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
+			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
+		],
+		args = [],
+		sub_effects = [],
+		atomic = [{type = 'stat_add_p', stat = 'mdef', value = -0.5}],
+		buffs = ['b_shatter'],
+	},
+	e_s_sleep = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions
+		type = 'temp_global',
+		tags = ['duration_turns', 'affliction', 'disable', 'sleep'],
+		target = 'target',
+		name = 'sleep',
+		disable = true,
+		stack = 1,
+		timers = [
+			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 1}, #1 turn duration
+			{events = [variables.TR_DMG], objects = 'owner', timer = 1}, #damage removes
+			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
+			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
+		],
+		args = [],
+		sub_effects = [],
+		atomic = [],
+		buffs = ['b_sleep'],
+	},
 	e_s_blind = {
 		type = 'temp_s',
 		target = 'target',
@@ -3702,7 +3752,8 @@ var effect_table = {
 			}
 		]
 	},
-	e_s_shred = {
+	
+	e_s_shred_old = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'shred',
@@ -4762,6 +4813,18 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/Sedate.png",
 		description = "BUFFDESCRIPTSHRED",
 		t_name = 'shred',
+		combat_only = true
+	},
+	b_shatter = {
+		icon = "res://assets/images/iconsskills/Sedate.png",
+		description = "BUFFDESCRIPTSHATTER",
+		t_name = 'shatter',
+		combat_only = true
+	},
+	b_sleep = {
+		icon = "res://assets/images/iconsskills/Sedate.png",
+		description = "BUFFDESCRIPTSLEEP",
+		t_name = 'sleep',
 		combat_only = true
 	},
 	b_blind = {
