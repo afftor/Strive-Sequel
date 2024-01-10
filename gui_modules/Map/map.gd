@@ -108,6 +108,7 @@ func hide():
 		gui_controller.clock.visible = true
 #		gui_controller.clock.restoreoldspeed()
 	get_parent().mansion_state = 'default'
+	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 	.hide()
 #	if get_parent().mansion_state == 'travels':
 #		get_parent().mansion_state = 'default'
@@ -136,6 +137,7 @@ func open():
 	match_state()
 	build_info(null)
 	show()
+	ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
 	set_focus_area()
 
 
