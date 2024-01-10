@@ -273,9 +273,10 @@ func build_info(loc = to_loc):
 	#build res
 	var dungeon = false
 	var hidden = false
-	var info_res_node = $InfoPanel/ResScroll/Resources
+	var info_res_node = $InfoPanel/VBoxContainer/ResScroll/Resources
 	input_handler.ClearContainer(info_res_node)
 	info_res_node.show()
+	$InfoPanel/VBoxContainer/Label3.show()
 	for r_task in ['recruit_easy', 'recruit_hard']:
 		if location.has('tags') and location.tags.has(r_task):
 			var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
@@ -291,6 +292,7 @@ func build_info(loc = to_loc):
 	var gatherable_resources
 	if (location.type in ["capital", "quest_location"]) or (location.has('locked') and location.locked):
 		info_res_node.hide()
+		$InfoPanel/VBoxContainer/Label3.hide()
 	elif location.type == "dungeon":
 		dungeon = true
 		if !location.completed:
@@ -325,14 +327,19 @@ func build_info(loc = to_loc):
 				newbutton.set_meta("current_workers", current_workers_count)
 				globals.connectmaterialtooltip(newbutton, item)
 	#build chars
-	input_handler.ClearContainer($InfoPanel/CharScroll/Characters)
+	input_handler.ClearContainer($InfoPanel/VBoxContainer/CharScroll/Characters)
+	var f = false
 	for ch_id in ResourceScripts.game_party.character_order:
 		var ch = characters_pool.get_char_by_id(ch_id)
 		if ch.get_location() != loc:
 			continue
-		var panel = input_handler.DuplicateContainerTemplate($InfoPanel/CharScroll/Characters)
+		f = true
+		var panel = input_handler.DuplicateContainerTemplate($InfoPanel/VBoxContainer/CharScroll/Characters)
 		panel.get_node('Icon').texture = ch.get_icon_small()
 		globals.connectslavetooltip(panel, ch)
+	$InfoPanel/VBoxContainer/CharScroll.visible = f
+	$InfoPanel/VBoxContainer/Label2.visible = f
+	
 	$InfoPanel.visible = true
 	$InfoPanel/Sendbutton.visible = (to_loc == null)
 
@@ -481,7 +488,18 @@ func update_travel_duration():
 
 
 func update_confirm():
-	$CharPanel/Send.visible = !selected_chars.empty()
+	var amount = selected_chars.size()
+	if amount == 0:
+		$CharPanel/Send.visible = false
+		$CharPanel/selected.visible = false
+	elif amount == 1:
+		$CharPanel/Send.visible = true
+		$CharPanel/selected.visible = true
+		$CharPanel/selected.text = "1 character"
+	else:
+		$CharPanel/Send.visible = true
+		$CharPanel/selected.visible = true
+		$CharPanel/selected.text = "%d characters" % amount
 
 
 func area_press(area, mode):
@@ -531,6 +549,8 @@ func build_charpanel():
 #	$CharPanel.visible = true
 	$CharPanel/mode1.pressed = false
 	$CharPanel/mode2.pressed = true
+	$CharPanel/mode1/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(from_loc).name)
+	$CharPanel/mode2/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(to_loc).name)
 	update_travel_duration()
 	input_handler.ClearContainer($CharPanel/ScrollContainer/CharList)
 	for ch_id in ResourceScripts.game_party.character_order:
