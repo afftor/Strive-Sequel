@@ -91,11 +91,31 @@ var locs_order = ['capital', 'settlement', 'quest_location', 'dungeon', 'encount
 var locs_count = {}
 
 
+func _input(event):
+	if (event.is_action_pressed("ESC") || event.is_action_released("RMB")):
+		if from_loc != null:
+			reset_from()
+		elif to_loc != null:
+			reset_to()
+		elif selected_loc != null:
+			selected_loc = null
+			selected_chars.clear()
+			update_selected_to_location()
+			build_charpanel()
+			build_info(selected_loc)
+		elif selected_area != null:
+			unselect_area()
+		else:
+			hide()
+		get_tree().set_input_as_handled()
+
+
+
 func _ready():#2add button connections
 	$Back.connect('pressed', self, 'hide')
 	$InfoPanel/Sendbutton.connect('pressed', self, 'to_loc_set')
 	$CharPanel/Send.connect('pressed', self, 'confirm_travel')
-	$CharPanel/mode1.connect('pressed', self, 'reset_to')
+	$CharPanel/mode2.connect('pressed', self, 'reset_to')
 	$CharPanel/mode1.connect('pressed', self, 'reset_from')
 #	match_state()
 
@@ -557,6 +577,7 @@ func to_loc_set():
 	if selected_loc == null: 
 		return
 	to_loc = selected_loc
+	build_from_locations()
 	match_state()
 
 
@@ -565,6 +586,7 @@ func reset_to():
 	to_loc = null
 	unselect_area()
 	match_state()
+	build_to_locations()
 	build_info(null)
 
 
@@ -572,6 +594,7 @@ func reset_from():
 	from_loc = null
 	unselect_area()
 	match_state()
+	build_from_locations()
 	build_info(to_loc)
 
 
