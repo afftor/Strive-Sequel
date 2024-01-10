@@ -92,6 +92,8 @@ var locs_count = {}
 
 
 func _input(event):
+	if !visible:
+		return
 	if (event.is_action_pressed("ESC") || event.is_action_released("RMB")):
 		if from_loc != null:
 			reset_from()
