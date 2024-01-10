@@ -32,6 +32,13 @@ func _unhandled_input(event):
 	#2add part with selecting areas with click on map
 
 
+func animate_map_moves(zoom, pos, time = 0.5):
+	var tween = input_handler.GetTweenNode(self)
+	tween.interpolate_property($map, 'scale', $map.scale, Vector2(zoom, zoom), time)
+	tween.interpolate_property($map, 'global_position', $map.global_position, pos, time)
+	tween.start()
+
+
 func set_map_zoom(value):
 	value = clamp(value, map_zoom_min, map_zoom_max)
 	var current_zoom = $map.scale.x
@@ -45,9 +52,10 @@ func set_map_zoom(value):
 	
 	var new_point_offset = point_offset * k
 	var new_map_pos = new_point_offset + point
-	$map.scale.x = value
-	$map.scale.y = value
-	$map.global_position = new_map_pos
+	animate_map_moves(value, new_map_pos)
+#	$map.scale.x = value
+#	$map.scale.y = value
+#	$map.global_position = new_map_pos
 
 
 func set_map_position():
@@ -57,9 +65,10 @@ func set_map_position():
 
 func set_focus_area():
 	var data = area_zoom_data[selected_area]
-	$map.scale.x = data.zoom
-	$map.scale.y = data.zoom
-	$map.global_position = data.position
+	animate_map_moves(data.zoom, data.position)
+#	$map.scale.x = data.zoom
+#	$map.scale.y = data.zoom
+#	$map.global_position = data.position
 	
 	for area in $map.get_children():
 		if area.name == selected_area:
