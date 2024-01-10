@@ -32,6 +32,13 @@ func _unhandled_input(event):
 	#2add part with selecting areas with click on map
 
 
+func animate_map_moves(zoom, pos, time = 0.5):
+	var tween = input_handler.GetTweenNode(self)
+	tween.interpolate_property($map, 'scale', $map.scale, Vector2(zoom, zoom), time)
+	tween.interpolate_property($map, 'global_position', $map.global_position, pos, time)
+	tween.start()
+
+
 func set_map_zoom(value):
 	value = clamp(value, map_zoom_min, map_zoom_max)
 	var current_zoom = $map.scale.x
@@ -45,9 +52,10 @@ func set_map_zoom(value):
 	
 	var new_point_offset = point_offset * k
 	var new_map_pos = new_point_offset + point
-	$map.scale.x = value
-	$map.scale.y = value
-	$map.global_position = new_map_pos
+	animate_map_moves(value, new_map_pos)
+#	$map.scale.x = value
+#	$map.scale.y = value
+#	$map.global_position = new_map_pos
 
 
 func set_map_position():
@@ -57,9 +65,10 @@ func set_map_position():
 
 func set_focus_area():
 	var data = area_zoom_data[selected_area]
-	$map.scale.x = data.zoom
-	$map.scale.y = data.zoom
-	$map.global_position = data.position
+	animate_map_moves(data.zoom, data.position)
+#	$map.scale.x = data.zoom
+#	$map.scale.y = data.zoom
+#	$map.global_position = data.position
 	
 	for area in $map.get_children():
 		if area.name == selected_area:
@@ -82,11 +91,33 @@ var locs_order = ['capital', 'settlement', 'quest_location', 'dungeon', 'encount
 var locs_count = {}
 
 
+func _input(event):
+	if !visible:
+		return
+	if (event.is_action_pressed("ESC") || event.is_action_released("RMB")):
+		if from_loc != null:
+			reset_from()
+		elif to_loc != null:
+			reset_to()
+		elif selected_loc != null:
+			selected_loc = null
+			selected_chars.clear()
+			update_selected_to_location()
+			build_charpanel()
+			build_info(selected_loc)
+		elif selected_area != null:
+			unselect_area()
+		else:
+			hide()
+		get_tree().set_input_as_handled()
+
+
+
 func _ready():#2add button connections
 	$Back.connect('pressed', self, 'hide')
 	$InfoPanel/Sendbutton.connect('pressed', self, 'to_loc_set')
 	$CharPanel/Send.connect('pressed', self, 'confirm_travel')
-	$CharPanel/mode1.connect('pressed', self, 'reset_to')
+	$CharPanel/mode2.connect('pressed', self, 'reset_to')
 	$CharPanel/mode1.connect('pressed', self, 'reset_from')
 #	match_state()
 
@@ -99,6 +130,7 @@ func hide():
 		gui_controller.clock.visible = true
 #		gui_controller.clock.restoreoldspeed()
 	get_parent().mansion_state = 'default'
+	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 	.hide()
 #	if get_parent().mansion_state == 'travels':
 #		get_parent().mansion_state = 'default'
@@ -127,6 +159,7 @@ func open():
 	match_state()
 	build_info(null)
 	show()
+	ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
 	set_focus_area()
 
 
@@ -242,9 +275,10 @@ func build_info(loc = to_loc):
 	#build res
 	var dungeon = false
 	var hidden = false
-	var info_res_node = $InfoPanel/ResScroll/Resources
+	var info_res_node = $InfoPanel/VBoxContainer/ResScroll/Resources
 	input_handler.ClearContainer(info_res_node)
 	info_res_node.show()
+	$InfoPanel/VBoxContainer/Label3.show()
 	for r_task in ['recruit_easy', 'recruit_hard']:
 		if location.has('tags') and location.tags.has(r_task):
 			var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
@@ -260,6 +294,7 @@ func build_info(loc = to_loc):
 	var gatherable_resources
 	if (location.type in ["capital", "quest_location"]) or (location.has('locked') and location.locked):
 		info_res_node.hide()
+		$InfoPanel/VBoxContainer/Label3.hide()
 	elif location.type == "dungeon":
 		dungeon = true
 		if !location.completed:
@@ -294,14 +329,19 @@ func build_info(loc = to_loc):
 				newbutton.set_meta("current_workers", current_workers_count)
 				globals.connectmaterialtooltip(newbutton, item)
 	#build chars
-	input_handler.ClearContainer($InfoPanel/CharScroll/Characters)
+	input_handler.ClearContainer($InfoPanel/VBoxContainer/CharScroll/Characters)
+	var f = false
 	for ch_id in ResourceScripts.game_party.character_order:
 		var ch = characters_pool.get_char_by_id(ch_id)
 		if ch.get_location() != loc:
 			continue
-		var panel = input_handler.DuplicateContainerTemplate($InfoPanel/CharScroll/Characters)
+		f = true
+		var panel = input_handler.DuplicateContainerTemplate($InfoPanel/VBoxContainer/CharScroll/Characters)
 		panel.get_node('Icon').texture = ch.get_icon_small()
 		globals.connectslavetooltip(panel, ch)
+	$InfoPanel/VBoxContainer/CharScroll.visible = f
+	$InfoPanel/VBoxContainer/Label2.visible = f
+	
 	$InfoPanel.visible = true
 	$InfoPanel/Sendbutton.visible = (to_loc == null)
 
@@ -450,7 +490,18 @@ func update_travel_duration():
 
 
 func update_confirm():
-	$CharPanel/Send.visible = !selected_chars.empty()
+	var amount = selected_chars.size()
+	if amount == 0:
+		$CharPanel/Send.visible = false
+		$CharPanel/selected.visible = false
+	elif amount == 1:
+		$CharPanel/Send.visible = true
+		$CharPanel/selected.visible = true
+		$CharPanel/selected.text = "1 character"
+	else:
+		$CharPanel/Send.visible = true
+		$CharPanel/selected.visible = true
+		$CharPanel/selected.text = "%d characters" % amount
 
 
 func area_press(area, mode):
@@ -500,6 +551,8 @@ func build_charpanel():
 #	$CharPanel.visible = true
 	$CharPanel/mode1.pressed = false
 	$CharPanel/mode2.pressed = true
+	$CharPanel/mode1/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(from_loc).name)
+	$CharPanel/mode2/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(to_loc).name)
 	update_travel_duration()
 	input_handler.ClearContainer($CharPanel/ScrollContainer/CharList)
 	for ch_id in ResourceScripts.game_party.character_order:
@@ -546,6 +599,7 @@ func to_loc_set():
 	if selected_loc == null: 
 		return
 	to_loc = selected_loc
+	build_from_locations()
 	match_state()
 
 
@@ -554,6 +608,7 @@ func reset_to():
 	to_loc = null
 	unselect_area()
 	match_state()
+	build_to_locations()
 	build_info(null)
 
 
@@ -561,6 +616,7 @@ func reset_from():
 	from_loc = null
 	unselect_area()
 	match_state()
+	build_from_locations()
 	build_info(to_loc)
 
 

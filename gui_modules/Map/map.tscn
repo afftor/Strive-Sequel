@@ -104,7 +104,6 @@ range_item_cull_mask = 512
 shadow_item_cull_mask = 0
 
 [node name="InfoPanel" type="TextureRect" parent="."]
-visible = false
 margin_left = 1320.02
 margin_top = 52.3251
 margin_right = 1880.02
@@ -123,24 +122,6 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 8 )
 text = "Information"
 align = 1
-valign = 1
-
-[node name="Label2" type="Label" parent="InfoPanel"]
-margin_left = 18.0
-margin_top = 408.286
-margin_right = 558.0
-margin_bottom = 443.286
-custom_fonts/font = ExtResource( 7 )
-text = "Characters:"
-valign = 1
-
-[node name="Label3" type="Label" parent="InfoPanel"]
-margin_left = 18.0
-margin_top = 537.889
-margin_right = 558.0
-margin_bottom = 572.889
-custom_fonts/font = ExtResource( 7 )
-text = "Resources:"
 valign = 1
 
 [node name="Sendbutton" type="TextureButton" parent="InfoPanel"]
@@ -191,49 +172,62 @@ text = "Location Name"
 align = 1
 valign = 1
 
-[node name="CharScroll" type="ScrollContainer" parent="InfoPanel"]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = 18.0
-margin_top = 80.5
-margin_right = -18.0
-margin_bottom = 162.5
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoPanel"]
+margin_left = 21.0
+margin_top = 407.0
+margin_right = 545.0
+margin_bottom = 670.0
+
+[node name="Label2" type="Label" parent="InfoPanel/VBoxContainer"]
+margin_right = 524.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 7 )
+text = "Characters:"
+valign = 1
+
+[node name="CharScroll" type="ScrollContainer" parent="InfoPanel/VBoxContainer"]
+margin_top = 39.0
+margin_right = 524.0
+margin_bottom = 39.0
 scroll_vertical_enabled = false
 
-[node name="Characters" type="HBoxContainer" parent="InfoPanel/CharScroll"]
+[node name="Characters" type="HBoxContainer" parent="InfoPanel/VBoxContainer/CharScroll"]
 
-[node name="Button" type="TextureRect" parent="InfoPanel/CharScroll/Characters"]
+[node name="Button" type="TextureRect" parent="InfoPanel/VBoxContainer/CharScroll/Characters"]
 visible = false
 margin_right = 70.0
 margin_bottom = 70.0
 texture = ExtResource( 18 )
 
-[node name="Icon" type="TextureRect" parent="InfoPanel/CharScroll/Characters/Button"]
+[node name="Icon" type="TextureRect" parent="InfoPanel/VBoxContainer/CharScroll/Characters/Button"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 expand = true
 
-[node name="ResScroll" type="ScrollContainer" parent="InfoPanel"]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = 16.8108
-margin_top = 212.745
-margin_right = -19.1892
-margin_bottom = 294.745
+[node name="Label3" type="Label" parent="InfoPanel/VBoxContainer"]
+margin_top = 43.0
+margin_right = 524.0
+margin_bottom = 78.0
+custom_fonts/font = ExtResource( 7 )
+text = "Resources:"
+valign = 1
+
+[node name="ResScroll" type="ScrollContainer" parent="InfoPanel/VBoxContainer"]
+margin_top = 82.0
+margin_right = 524.0
+margin_bottom = 82.0
 scroll_vertical_enabled = false
 
-[node name="Resources" type="HBoxContainer" parent="InfoPanel/ResScroll"]
+[node name="Resources" type="HBoxContainer" parent="InfoPanel/VBoxContainer/ResScroll"]
 
-[node name="Button" type="TextureRect" parent="InfoPanel/ResScroll/Resources"]
+[node name="Button" type="TextureRect" parent="InfoPanel/VBoxContainer/ResScroll/Resources"]
 visible = false
 margin_right = 70.0
 margin_bottom = 70.0
 texture = ExtResource( 19 )
 
-[node name="Icon" type="TextureRect" parent="InfoPanel/ResScroll/Resources/Button"]
+[node name="Icon" type="TextureRect" parent="InfoPanel/VBoxContainer/ResScroll/Resources/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -242,7 +236,7 @@ margin_right = -10.0
 margin_bottom = -10.0
 expand = true
 
-[node name="amount" type="Label" parent="InfoPanel/ResScroll/Resources/Button"]
+[node name="amount" type="Label" parent="InfoPanel/VBoxContainer/ResScroll/Resources/Button"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -269,7 +263,7 @@ margin_right = 410.0
 margin_bottom = 83.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 8 )
-text = "Location List"
+text = "Select Sending Location"
 align = 1
 valign = 1
 
@@ -398,6 +392,7 @@ margin_bottom = 54.0
 margin_right = 360.0
 margin_bottom = 50.0
 rect_pivot_offset = Vector2( -318.656, 186.314 )
+toggle_mode = true
 texture_normal = ExtResource( 26 )
 texture_pressed = ExtResource( 25 )
 texture_hover = ExtResource( 27 )
@@ -427,6 +422,7 @@ visible = false
 margin_right = 325.0
 margin_bottom = 50.0
 grow_horizontal = 0
+toggle_mode = true
 texture_normal = ExtResource( 21 )
 texture_pressed = ExtResource( 20 )
 texture_hover = ExtResource( 2 )
@@ -450,6 +446,7 @@ text = "Location name"
 valign = 1
 
 [node name="CharPanel" type="TextureRect" parent="."]
+visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 42.7864
@@ -537,15 +534,27 @@ text = "Travel time:"
 align = 1
 valign = 1
 
+[node name="selected" type="Label" parent="CharPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 309.0
+margin_right = -213.0
+margin_bottom = -24.0006
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 7 )
+text = "10 characters"
+valign = 1
+
 [node name="Send" type="TextureButton" parent="CharPanel"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -92.0
-margin_top = -64.0
-margin_right = 92.0
-margin_bottom = -18.0
+margin_left = -7.28641
+margin_top = -67.0636
+margin_right = 176.714
+margin_bottom = -21.0636
 texture_normal = ExtResource( 33 )
 texture_pressed = ExtResource( 35 )
 texture_hover = ExtResource( 29 )
