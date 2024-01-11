@@ -353,6 +353,7 @@ func _ready():
 	
 	connect("UpgradeUnlocked", self, "upgrade_unlocked")
 
+#func _unhandled_input(event):
 func _input(event):
 	if event.is_echo() == true && !event.is_action_type():
 		return
@@ -1722,3 +1723,11 @@ func get_real_global_rect(nd):
 	res.position = transform.get_origin()
 	res.size = transform.basis_xform(rect.size)
 	return res
+
+
+func node_children_visible(node, exception, value):
+	for nd in node.get_children():
+		if nd == exception:
+			continue
+		if nd is CanvasItem:
+			nd.visible = value

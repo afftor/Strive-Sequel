@@ -214,7 +214,7 @@ func match_state():
 	for node in get_children():
 		if node.get_class() == "Tween":
 			continue
-		if node.name.findn(mansion_state) == -1 && ! node.name in always_show:
+		if node.name.findn(mansion_state) == -1 and ! node.name in always_show:
 			node.hide()
 	var menu_buttons = MenuModule.get_node("VBoxContainer")
 	for button in menu_buttons.get_children():

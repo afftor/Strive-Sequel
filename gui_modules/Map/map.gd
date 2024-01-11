@@ -7,6 +7,9 @@ var map_zoom_step = 0.1
 
 var drag_mode = false
 var drag_offset = Vector2(0.0, 0.0)
+var click_position
+
+var hovered_area = null
 
 var area_zoom_data = {
 	null:{position = Vector2(920, 1190), zoom = 1.0},
@@ -23,10 +26,13 @@ func _unhandled_input(event):
 		set_map_zoom($map.scale.x - map_zoom_step)
 	
 	if event.is_action_pressed("LMB") and !drag_mode:
-		drag_offset = $map.global_position - get_global_mouse_position()
+		click_position = get_global_mouse_position()
+		drag_offset = $map.global_position - click_position
 		drag_mode = true
 	if event.is_action_released("LMB") and drag_mode:
 		drag_mode = false
+		if (get_global_mouse_position() - click_position).length() < 5:
+			map_area_press(hovered_area)
 	if drag_mode:
 		set_map_position()
 	#2add part with selecting areas with click on map
@@ -52,7 +58,7 @@ func set_map_zoom(value):
 	
 	var new_point_offset = point_offset * k
 	var new_map_pos = new_point_offset + point
-	animate_map_moves(value, new_map_pos)
+	animate_map_moves(value, new_map_pos, 0.1)
 #	$map.scale.x = value
 #	$map.scale.y = value
 #	$map.global_position = new_map_pos
@@ -107,21 +113,22 @@ func _input(event):
 			build_info(selected_loc)
 		elif selected_area != null:
 			unselect_area()
+			update_selected_area()
 		else:
-			hide()
+			close()
 		get_tree().set_input_as_handled()
 
 
 
 func _ready():#2add button connections
-	$Back.connect('pressed', self, 'hide')
+	$Back.connect('pressed', self, 'close')
 	$InfoPanel/Sendbutton.connect('pressed', self, 'to_loc_set')
 	$CharPanel/Send.connect('pressed', self, 'confirm_travel')
 	$CharPanel/mode2.connect('pressed', self, 'reset_to')
 	$CharPanel/mode1.connect('pressed', self, 'reset_from')
 #	match_state()
 
-func hide():
+func close():
 #	get_parent().set_process_input(true)
 #	set_process_input(true)
 	if !visible: return
@@ -129,9 +136,11 @@ func hide():
 	if gui_controller.clock != null:
 		gui_controller.clock.visible = true
 #		gui_controller.clock.restoreoldspeed()
+	input_handler.node_children_visible(get_parent(), null, true)
 	get_parent().mansion_state = 'default'
+	get_parent().match_state()
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
-	.hide()
+	hide()
 #	if get_parent().mansion_state == 'travels':
 #		get_parent().mansion_state = 'default'
 #
@@ -139,6 +148,7 @@ func hide():
 #		.hide()
 
 func open():
+	hovered_area = null
 #	get_parent().set_process_input(false)
 #	set_process_input(true)
 	gui_controller.current_screen = self
@@ -159,6 +169,7 @@ func open():
 	match_state()
 	build_info(null)
 	show()
+	input_handler.node_children_visible(get_parent(), self, false)
 	ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
 	set_focus_area()
 
@@ -502,6 +513,21 @@ func update_confirm():
 		$CharPanel/Send.visible = true
 		$CharPanel/selected.visible = true
 		$CharPanel/selected.text = "%d characters" % amount
+
+
+func map_area_press(area):
+	if selected_area == area:
+		return
+	else:
+		selected_area = area
+	if selected_area == null:
+		unselect_area()
+	
+	selected_loc = null
+	update_selected_area()
+	set_focus_area()
+	match_state()
+	build_info()
 
 
 func area_press(area, mode):
