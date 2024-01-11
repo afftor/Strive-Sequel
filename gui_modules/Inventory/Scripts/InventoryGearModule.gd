@@ -127,8 +127,8 @@ func build_gear_panel():
 			$ragdoll.rebuild(selectedhero)
 			$ragdoll.rebuild_cloth(true)
 		else:
-			$Body.texture = selectedhero.get_body_image()
-			$Body.visible = true
+			$BodyImage.texture = selectedhero.get_body_image()
+			$BodyImage.visible = true
 			$ragdoll.visible = false
 #		$BodyImage.texture = selectedhero.get_body_image()
 		for i in selectedhero.equipment.gear:
