@@ -634,7 +634,10 @@ func make_chest_loot(chest):
 							dict.items.append(globals.CreateUsableItem(tempitem, amount))
 						'gear':
 							if i.has('parts'):
-								dict.items.append(globals.CreateGearItemLoot(tempitem, i.parts))
+								if i.has('quality'):
+									dict.items.append(globals.CreateGearItemQuality(tempitem, i.parts, i.quality))
+								else:
+									dict.items.append(globals.CreateGearItemQuality(tempitem, i.parts, 'poor'))
 							else:
 								dict.items.append(globals.CreateGearItem(tempitem, {}))
 			'material':
