@@ -16,12 +16,15 @@ func _ready():
 func Light():
 	if controller.selected_area != null:
 		return
+	controller.hovered_area = name
 	highlight(HighlightColor)
 
 
 func UnLight():
 	if controller.selected_area != null:
 		return
+	if controller.hovered_area == name:
+		controller.hovered_area = null
 	highlight(Color(0,0,0,0))
 
 

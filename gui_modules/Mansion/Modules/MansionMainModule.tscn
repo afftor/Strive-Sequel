@@ -53,6 +53,7 @@ font_data = ExtResource( 19 )
 [node name="MansionMainModule" type="Panel"]
 margin_right = 1920.0
 margin_bottom = 1080.0
+mouse_filter = 2
 theme = ExtResource( 1 )
 script = ExtResource( 4 )
 __meta__ = {
