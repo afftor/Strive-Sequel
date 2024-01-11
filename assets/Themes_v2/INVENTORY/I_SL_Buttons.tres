@@ -22,16 +22,15 @@ margin_top = 8.0
 margin_bottom = 8.0
 
 [sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 12, 48 )
-margin_left = 5.0
-margin_right = 5.0
-margin_top = 5.0
-margin_bottom = 5.0
+region_rect = Rect2( 0, 0, 500, 52 )
+margin_left = 55.0
+margin_right = 55.0
+margin_top = 8.0
+margin_bottom = 8.0
 
 [sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 12, 256 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 12, 48 )
 margin_left = 5.0
 margin_right = 5.0
 margin_top = 5.0

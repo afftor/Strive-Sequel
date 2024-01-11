@@ -107,6 +107,7 @@ enum {
 	NODE_ITEMTOOLTIP,
 #	NODE_ITEMTOOLTIP_V2,
 	NODE_TEXTTOOLTIP,
+	NODE_GALLERYTOOLTIP,
 	NODE_CHARCREATE,
 	NODE_CHAREDIT,
 	NODE_COMBATPOSITIONS,
@@ -1731,3 +1732,11 @@ func node_children_visible(node, exception, value):
 			continue
 		if nd is CanvasItem:
 			nd.visible = value
+
+
+func roman_number_converter(number): #only supports numbers up to 10 currently. INT > STRING
+	if variables.roman_numbers.has(number) == false:
+		print("number does not exist in dictionary")
+		return 
+	else:
+		return variables.roman_numbers[number]

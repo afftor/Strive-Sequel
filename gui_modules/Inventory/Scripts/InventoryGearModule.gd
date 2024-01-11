@@ -139,9 +139,20 @@ func build_gear_panel():
 				var item = ResourceScripts.game_res.items[selectedhero.equipment.gear[i]]
 				item.set_icon($InventorySlots.get_node(i + "/icon"))
 
-
+var tempslot
 
 func unequip(slot):
+	var selectedhero = input_handler.interacted_character
+	tempslot = slot
+	if selectedhero.equipment.gear[slot] != null:
+		var item = ResourceScripts.game_res.items[selectedhero.equipment.gear[slot]]
+		if item.curse != null:
+			input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'unequip_confirm', tr("CURSEUNEQUIPCONFIRM")])
+		else:
+			unequip_confirm()
+
+func unequip_confirm():
+	var slot = tempslot
 	var selectedhero = input_handler.interacted_character
 	if selectedhero.equipment.gear[slot] != null:
 		var item = ResourceScripts.game_res.items[selectedhero.equipment.gear[slot]]

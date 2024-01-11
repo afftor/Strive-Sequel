@@ -44,7 +44,7 @@ var enchants = {}
 var curse = null
 var curse_known = false
 
-var quality = 'poor'
+var quality = ''
 
 
 func clone():
@@ -109,7 +109,8 @@ func CreateUsable(ItemName = '', number = 1):
 func amount_set(value):
 	amount = value
 	if amount <= 0:
-		ResourceScripts.game_res.items.erase(id)
+#		ResourceScripts.game_res.items.erase(id)
+		ResourceScripts.game_res.call_deferred('remove_item_id', id)
 
 func UseItem(user = null, target = null):
 	var finaltarget
@@ -272,7 +273,7 @@ func CreateGear(ItemName = '', dictparts = {}, diffdata = {boost = 0, prof = fal
 			name = itemtemplate.name
 		#name = itemtemplate.partmaterialname
 	
-	if tags.has('enchantable'):
+	if tags.has('enchantable') and (!diffdata.has('no_enchant') or !diffdata.no_enchant):
 		roll_enchants()
 
 
@@ -350,6 +351,11 @@ func fix_gear():
 	
 	for id in enchants:
 		enchants[id] = int(enchants[id])
+	if !bonusstats.has('enchant_capacity') and template.basestats.has('enchant_capacity'):
+		bonusstats['enchant_capacity'] = template.basestats['enchant_capacity']
+	if !tags.has('enchantable') and template.tags.has('enchantable'):
+		tags.push_back('enchantable')
+	
 
 
 func substractitemcost():
@@ -451,6 +457,9 @@ func tooltiptext():
 
 func tooltiptext_1():
 	var text = ''
+	
+	if quality != "": text += tr("STATQUALITY") + ": {color=" + "quality_"+quality +"|" + str(tr("QUALITY"+quality.to_upper())) + "}\n"
+	
 	if geartype != null:
 		text += tr('TYPE_LABEL') + ': ' + geartype + "\n"
 	else:
@@ -470,7 +479,10 @@ func tooltiptext_1():
 	if !reqs.empty():
 		var tempslave = ResourceScripts.scriptdict.class_slave.new("temp_tooltip_item_1")
 		text += tempslave.decipher_reqs(reqs)
-
+	
+	if get_e_capacity_max() > 0:
+		text +=  "\n" + tr("STATENCHCAP")+": " + str(get_e_capacity()) + "/" + str(get_e_capacity_max())
+	
 	text = globals.TextEncoder(text)
 	return text
 
@@ -524,12 +536,12 @@ func tooltiptext_light():
 func tooltipeffects():
 	var text = ''
 	for id in enchants:
-		text += "%s lv %d\n" % [tr(Items.enchantments[id].name), enchants[id]]
+		text += "{color=yellow|%s %s}\n" % [tr(Items.enchantments[id].name), input_handler.roman_number_converter(enchants[id])]
 	if curse != null:
 		if !curse_known:
-			text += "Unknown curse"
+			text += "{color=red|Unknown curse}"
 		else:
-			text += tr(Items.curses[curse].name)
+			text += "{color=red|%s}" % [tr(Items.curses[curse].name)]
 	for i in effects:
 		if !Effectdata.effect_table[i].has('descript'):
 			pass

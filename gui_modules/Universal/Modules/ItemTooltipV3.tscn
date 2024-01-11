@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_tooltip_1.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_tooltip_2.png" type="Texture" id=8]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_tooltip_3.png" type="Texture" id=9]
 [ext_resource path="res://gui_modules/Universal/Scripts/ItemTooltipV3.gd" type="Script" id=10]
+[ext_resource path="res://assets/images/iconsitems/quality_bg/gray.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 36
@@ -26,9 +27,6 @@ margin_bottom = 589.0
 mouse_filter = 2
 custom_constants/separation = 0
 script = ExtResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TopPanel" type="TextureRect" parent="."]
 margin_right = 550.0
@@ -45,6 +43,15 @@ texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="quality_color" type="TextureRect" parent="TopPanel/IconFrame"]
+margin_left = 3.0
+margin_top = 2.0
+margin_right = 197.0
+margin_bottom = 197.0
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
 
 [node name="Icon" type="TextureRect" parent="TopPanel/IconFrame"]
 margin_left = 8.0
@@ -166,3 +173,9 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="."]
+margin_top = 589.0
+margin_right = 550.0
+margin_bottom = 603.0
+text = "text"

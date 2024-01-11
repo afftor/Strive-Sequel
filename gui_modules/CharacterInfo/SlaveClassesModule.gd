@@ -30,16 +30,16 @@ func _ready():
 	$SkillTooltip/unlock_button.connect("pressed", self, "buy_skill")
 	$SkillTooltip.connect("hide", self, "build_skills")
 	$ClassPanel/Unlock.connect('pressed', self, 'unlock_class')
+	for ch in $SkillPanel/Categories.get_children():
+		globals.connecttexttooltip(ch, tr("SKILLS_CAT_" + str(ch.name).to_upper() + "_DESC"))
+	for ch in $categories.get_children():
+		globals.connecttexttooltip(ch, tr("CAT_" + str(ch.name).to_upper() + "_DESC"))
 #	$UpgradeButton.connect("pressed", $stats_upgrade, 'show')
 	if !get_parent().name == "CheatsModule":
 		$CheckBox.connect("pressed", self, "checkbox_locked")
 	input_handler.AddPanelOpenCloseAnimation($ClassPanel)
 	globals.connecttexttooltip($SkillTooltip/icon_cooldown, tr("TOOLTIP_COOLDOWN"))
 	globals.connecttexttooltip($SkillTooltip/icon_usage, tr("TOOLTIP_MANACOST"))
-	for ch in $SkillPanel/Categories.get_children():
-		globals.connecttexttooltip(ch, tr("SKILLS_CAT_" + str(ch.name).to_upper()) + "_DESC")
-	for ch in $categories.get_children():
-		globals.connecttexttooltip(ch, tr("CAT_" + str(ch.name).to_upper()) + "_DESC")
 	globals.connecttexttooltip($SkillPanel/skillpoints_label, tr('TOOLTIPSKILLPOINTS'))
 	$SkillPanel/SkillBookButton.connect("pressed", self, "SkillBookButtonPress")
 

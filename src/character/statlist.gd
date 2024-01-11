@@ -21,6 +21,7 @@ var template = {
 	sex = '',
 	slave_class = 'slave',
 	personality = '',
+	personaltiy_values = [0,0],
 	obedience = variables.basic_max_obed,
 	obedience_max = variables.basic_max_obed,
 	obedience_drain = variables.basic_obed_drain,
@@ -44,6 +45,8 @@ var template = {
 	mp_reg_add = 0.0,
 	exp_gain_mod = 1.0,
 	manacost_mod = 1.0,
+	
+	magic_find = 0,
 	#enemy combat/reward data
 	xpreward = 10,
 	loottable = "",

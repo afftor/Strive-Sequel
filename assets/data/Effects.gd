@@ -3070,6 +3070,70 @@ var effect_table = {
 		sub_effects = [],
 	},
 	
+	#add proper tags to enemies or change target_tag to target_race
+	enchant_reaper_1 = rebuild_skillvalue_template({target_tag = 'humanoid', tag = 'damage',  value = 1.2}),
+	enchant_beasthunter_1 = rebuild_skillvalue_template({target_tag = 'beast', tag = 'damage',  value = 1.2}),
+	enchant_undeadbane_1 = rebuild_skillvalue_template({target_tag = 'undead', tag = 'damage',  value = 1.2}),
+	enchant_giantslayer_1 = rebuild_skillvalue_template({target_tag = 'giant', tag = 'damage',  value = 1.2}),
+	enchant_dragonslayer_1 = rebuild_skillvalue_template({target_tag = 'dragon', tag = 'damage',  value = 1.2}),
+	enchant_reaper_2 = rebuild_skillvalue_template({target_tag = 'humanoid', tag = 'damage',  value = 1.3}),
+	enchant_beasthunter_2 = rebuild_skillvalue_template({target_tag = 'beast', tag = 'damage',  value = 1.3}),
+	enchant_undeadbane_2 = rebuild_skillvalue_template({target_tag = 'undead', tag = 'damage',  value = 1.3}),
+	enchant_giantslayer_2 = rebuild_skillvalue_template({target_tag = 'giant', tag = 'damage',  value = 1.3}),
+	enchant_dragonslayer_2 = rebuild_skillvalue_template({target_tag = 'dragon', tag = 'damage',  value = 1.3}),
+	enchant_reaper_3 = rebuild_skillvalue_template({target_tag = 'humanoid', tag = 'damage',  value = 1.4}),
+	enchant_beasthunter_3 = rebuild_skillvalue_template({target_tag = 'beast', tag = 'damage',  value = 1.4}),
+	enchant_undeadbane_3 = rebuild_skillvalue_template({target_tag = 'undead', tag = 'damage',  value = 1.4}),
+	enchant_giantslayer_3 = rebuild_skillvalue_template({target_tag = 'giant', tag = 'damage',  value = 1.4}),
+	enchant_dragonslayer_3 = rebuild_skillvalue_template({target_tag = 'dragon', tag = 'damage',  value = 1.4}),
+	
+	enchant_manasiphon_1 = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'skill']}],
+		req_skill = true,
+		args = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'owner',
+			args = [{obj = 'template', param = 'amount'}],
+			amount = 1,
+			atomic = ['a_manasiphon']
+		}],
+		buffs = []
+	},
+	
+	enchant_manasiphon_2 = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'skill']}],
+		req_skill = true,
+		args = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'owner',
+			args = [{obj = 'template', param = 'amount'}],
+			amount = 2,
+			atomic = ['a_manasiphon']
+		}],
+		buffs = []
+	},
+	
+	enchant_manasiphon_3 = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'skill']}],
+		req_skill = true,
+		args = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'owner',
+			args = [{obj = 'template', param = 'amount'}],
+			amount = 3,
+			atomic = ['a_manasiphon']
+		}],
+		buffs = []
+	},
 	
 	#statuses 
 	e_s_burn_new = {
@@ -3155,6 +3219,56 @@ var effect_table = {
 				atomic = ['a_bleed_new'],
 			}
 		]
+	},
+	e_s_shred = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions
+		type = 'temp_global',
+		tags = ['duration_turns', 'affliction'],
+		target = 'target',
+		name = 'shred',
+		stack = 2,
+		timers = [
+			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 1}, #1 turn duration
+			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
+			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
+		],
+		args = [],
+		sub_effects = [],
+		atomic = [{type = 'stat_add_p', stat = 'armor', value = -0.5}],
+		buffs = ['b_shred'],
+	},
+	e_s_shatter = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions
+		type = 'temp_global',
+		tags = ['duration_turns', 'affliction'],
+		target = 'target',
+		name = 'shatter',
+		stack = 2,
+		timers = [
+			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 1}, #1 turn duration
+			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
+			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
+		],
+		args = [],
+		sub_effects = [],
+		atomic = [{type = 'stat_add_p', stat = 'mdef', value = -0.5}],
+		buffs = ['b_shatter'],
+	},
+	e_s_sleep = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions
+		type = 'temp_global',
+		tags = ['duration_turns', 'affliction', 'disable', 'sleep'],
+		target = 'target',
+		name = 'sleep',
+		disable = true,
+		stack = 1,
+		timers = [
+			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 1}, #1 turn duration
+			{events = [variables.TR_DMG], objects = 'owner', timer = 1}, #damage removes
+			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
+			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
+		],
+		args = [],
+		sub_effects = [],
+		atomic = [],
+		buffs = ['b_sleep'],
 	},
 	e_s_blind = {
 		type = 'temp_s',
@@ -3638,7 +3752,8 @@ var effect_table = {
 			}
 		]
 	},
-	e_s_shred = {
+	
+	e_s_shred_old = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'shred',
@@ -4550,6 +4665,8 @@ var atomic = {
 	a_burn_new = {type = 'damage', source = 'fire', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
 	a_poison_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
 	a_bleed_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
+	
+	a_manasiphon = {type = 'mana', value = ['parent_args', 0]},
 };
 #needs filling
 var buffs = {
@@ -4698,6 +4815,18 @@ var buffs = {
 		t_name = 'shred',
 		combat_only = true
 	},
+	b_shatter = {
+		icon = "res://assets/images/iconsskills/Sedate.png",
+		description = "BUFFDESCRIPTSHATTER",
+		t_name = 'shatter',
+		combat_only = true
+	},
+	b_sleep = {
+		icon = "res://assets/images/iconsskills/Sedate.png",
+		description = "BUFFDESCRIPTSLEEP",
+		t_name = 'sleep',
+		combat_only = true
+	},
 	b_blind = {
 		icon = "res://assets/images/iconsskills/Sedate.png", #fix
 		description = "BUFFDESCRIPTSHRED",
@@ -4774,7 +4903,7 @@ var buffs = {
 		show_in_traits = true
 	},
 	b_curse = {#stub for default curse icon
-		icon = "res://assets/images/iconsskills/Sedate.png",
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",
 		description = "BUFFDESCRIPTCURSE",
 		t_name = 'curse',
 	},
@@ -4901,6 +5030,11 @@ func rebuild_skillvalue_template(args):
 	if args.has('target_race'):
 		var tmp = targetcondition.duplicate(true)
 		tmp.value.push_back({code = 'stat', stat = 'racegroup', operant = 'eq', value = args.target_race})
+		trigger.conditions.push_back(tmp)
+	
+	if args.has('target_tag'):
+		var tmp = targetcondition.duplicate(true)
+		tmp.value.push_back({code = 'tags', operant = 'has', value = args.target_tag})
 		trigger.conditions.push_back(tmp)
 	
 	return trigger

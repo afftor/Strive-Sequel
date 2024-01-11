@@ -65,7 +65,7 @@ func build_gallery(page):
 		page = page_max - 1
 	for i in range(page_max):
 		var node = input_handler.DuplicateContainerTemplate($Pagination)
-		node.text = str(i+1)
+		node.get_node("Label").text = str(i+1)
 		node.pressed = (i == page)
 		node.connect("pressed", self, "build_gallery", [i])
 	
@@ -77,6 +77,9 @@ func build_gallery(page):
 		if !src_unlock.has(src[i]):
 			node.disabled = true
 			node.get_node("Image").texture = load("res://assets/Textures_v2/Travel/placer_travel_question.png")
+			node.get_node("QuestionMark").visible = state == "ero"
+			globals.connectgallerytooltip(node.get_node("QuestionMark"), src[i])
+#			node.get_node("SceneName").text = "Scene Name"
 		else:
 			if state == "scenes":
 				node.get_node("Image").texture = images.backgrounds[Gallery.get_image_for_seq(src[i])]

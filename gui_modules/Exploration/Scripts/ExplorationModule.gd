@@ -652,6 +652,10 @@ func area_advance(mode): #advance request
 		input_handler.SystemMessage("Select at least 1 character before advancing. ")
 		return
 #	current_stage = active_location.progress.stage
+	globals.char_roll_data.lvl = input_handler.active_location.progress.level
+	for ch_id in input_handler.active_location.group.values():
+		globals.char_roll_data.mf += characters_pool.get_char_by_id(ch_id).get_stat('magic_find')
+	
 	if check_events(mode) == true:
 		yield(input_handler, 'EventFinished')
 	input_handler.combat_explore = true
@@ -672,7 +676,6 @@ func area_advance(mode): #advance request
 #			advance()
 	if rand_event == false:
 		input_handler.combat_advance = false
-		globals.char_roll_data.lvl = input_handler.active_location.progress.level
 		StartCombat()
 
 	action_type = mode

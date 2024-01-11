@@ -1,6 +1,7 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_detail.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/iconsitems/quality_bg/blue.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar.png" type="Texture" id=3]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=4]
 [ext_resource path="res://assets/images/gui/inventory/icon_armor1.png" type="Texture" id=5]
@@ -127,10 +128,10 @@ __meta__ = {
 [node name="GridContainer" type="VBoxContainer" parent="Scroller/ScrollContainer"]
 light_mask = 0
 margin_right = 500.0
+margin_bottom = 52.0
 size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="Scroller/ScrollContainer/GridContainer"]
-visible = false
 light_mask = 0
 margin_right = 500.0
 margin_bottom = 52.0
@@ -139,6 +140,17 @@ toggle_mode = true
 texture_normal = ExtResource( 21 )
 texture_pressed = ExtResource( 18 )
 texture_hover = ExtResource( 34 )
+
+[node name="quality_color" type="TextureRect" parent="Scroller/ScrollContainer/GridContainer/Button"]
+visible = false
+show_behind_parent = true
+margin_left = 453.0
+margin_top = 5.0
+margin_right = 495.0
+margin_bottom = 47.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
 
 [node name="Image" type="TextureRect" parent="Scroller/ScrollContainer/GridContainer/Button"]
 show_behind_parent = true
@@ -152,9 +164,6 @@ mouse_filter = 2
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Name" type="Label" parent="Scroller/ScrollContainer/GridContainer/Button"]
 light_mask = 0
@@ -219,9 +228,6 @@ margin_top = 172.0
 margin_right = 550.0
 margin_bottom = 226.0
 custom_constants/separation = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="all" type="TextureButton" parent="HBoxContainer"]
 light_mask = 0

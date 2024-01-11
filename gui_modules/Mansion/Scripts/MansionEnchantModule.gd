@@ -9,6 +9,7 @@ func _ready():
 	$EnchantPanel/Curse1.connect("pressed", self, 'add_curse_minor')
 	$EnchantPanel/Curse2.connect("pressed", self, 'add_curse_major')
 	$EnchantPanel/Apply.connect('pressed', self, 'apply_selection')
+	globals.connecttexttooltip($Tooltip, tr("TOOLTIPENCHANTSCREEN"))
 
 
 func open():
@@ -97,10 +98,12 @@ func build_ench_panel(panel):
 	var enchdata = Items.enchantments[id] 
 	var item = ResourceScripts.game_res.items[selected_item]
 	panel.get_node('Label').text = enchdata.name
+	panel.get_node('icon').texture = enchdata.icon
 #	if item.enchants.has(id):
 	if selected_enchants.has(id):
 		var value = selected_enchants[id]
 		panel.get_node('Lvl').text = str(value)
+		globals.connecttexttooltip(panel, enchdata.descript)
 		if enchdata.levels.has(value + 1):
 			panel.get_node('Rarr').visible = true
 			var cost = enchdata.levels[value + 1].cap_cost - enchdata.levels[value].cap_cost
@@ -173,25 +176,28 @@ func build_item_panel(panel, item):
 	item.set_icon(panel.get_node('icon'))
 	input_handler.ClearContainer(panel.get_node('stats'), ['line', 'line2'])
 	var enc_cap = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line')
-	enc_cap.get_node('name').text = 'Enchant Capacity remains:'
+	enc_cap.get_node('name').text = 'Enchant Capacity:'
 	enc_cap.get_node('value').text = '%d/%d' % [item.get_e_capacity(), item.get_e_capacity_max()] #shows free cap, not used
 	var quality = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line')
 	quality.get_node('name').text = 'Quality:'
-	quality.get_node('value').text = item.quality
+	quality.get_node('value').text = tr("QUALITY"+item.quality.to_upper())
 	var stats_text = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line2')
 	stats_text.bbcode_text = globals.TextEncoder(globals.build_desc_for_bonusstats(item.bonusstats))
 	
 	var curse_text = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line2')
-	var text = "Curse: "
+	var text = ""
 	if item.curse == null:
-		text += 'no'
-	elif item.curse_known:
-		var cursedata = Items.curses[item.curse]
-		text += cursedata.name
-	elif item.curse.ends_with('minor'):
-		text += 'unknown minor'
-	elif item.curse.ends_with('major'):
-		text += 'unknown major'
+		pass
+		#text += 'no'
+	else:
+		text = "Curse: "
+		if item.curse_known:
+			var cursedata = Items.curses[item.curse]
+			text += cursedata.name
+		elif item.curse.ends_with('minor'):
+			text += 'unknown minor'
+		elif item.curse.ends_with('major'):
+			text += 'unknown major'
 	curse_text.bbcode_text = text
 	for id in item.enchants:
 		var ench_text = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line2')

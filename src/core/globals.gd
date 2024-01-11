@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.7.2b'
+const gameversion = '0.8.0 experimental 3'
 
 #time
 signal hour_tick
@@ -145,15 +145,15 @@ func get_duplicate_id_if_exist(item):
 
 func CreateGearItem(item, parts, newname = null): #obsolete for modular
 	var newitem = Item.new()
-	newitem.CreateGear(item, parts)
+	newitem.CreateGear(item, parts, {no_enchant = true})
 	if newname != null:
 		newitem.name = newname
 	return newitem
 
 
-func CreateGearItemQuality(item, parts, quality, newname = null): 
+func CreateGearItemQuality(item, parts, quality, no_enchant = true, newname = null): 
 	var newitem = Item.new()
-	newitem.CreateGear(item, parts)
+	newitem.CreateGear(item, parts, {no_enchant = no_enchant})
 	newitem.quality = quality
 	if newname != null:
 		newitem.name = newname
@@ -206,7 +206,7 @@ func CreateGearItemLoot(item, parts, newname = null):
 			diffdata.boost = 4
 		'hard':
 			diffdata.boost = 6
-	diffdata.boost += 2 + 0.4 * char_roll_data.lvl
+	diffdata.boost += 2 + 0.4 * char_roll_data.lvl + char_roll_data.mf
 	if ResourceScripts.game_globals.difficulty == 'easy':
 		diffdata.boost *= 1.5
 	diffdata.boost = int(diffdata.boost)
@@ -328,6 +328,20 @@ func closeskilltooltip():
 	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP) #input_handler.GetSkillTooltip()
 	skilltooltip.set_process(false)
 	skilltooltip.hide()
+
+func connectgallerytooltip(node, scene_name):
+	if node.is_connected("mouse_entered",self,'showgallerytooltip'):
+		node.disconnect("mouse_entered",self,'showgallerytooltip')
+	node.connect("mouse_entered",self,'showgallerytooltip', [scene_name, node])
+
+func showgallerytooltip(scene_name, node):
+	var gallerytooltip = input_handler.get_spec_node(input_handler.NODE_GALLERYTOOLTIP) #input_handler.GetSkillTooltip()
+	gallerytooltip.showup(node, scene_name)
+
+func closegallerytooltip():
+	var gallerytooltip = input_handler.get_spec_node(input_handler.NODE_GALLERYTOOLTIP) #input_handler.GetSkillTooltip()
+	gallerytooltip.set_process(false)
+	gallerytooltip.hide()
 
 #func disconnectitemtooltip(node, item):
 #	if node.is_connected("mouse_entered",item,'tooltip'):
@@ -1425,6 +1439,7 @@ func reset_roll_data():
 	char_roll_data.no_roll = false
 	char_roll_data.max_amount = 4
 	char_roll_data.lvl = 0
+	char_roll_data.mf = 0
 	char_roll_data.rare = false
 	char_roll_data.mboss = false
 	char_roll_data.uniq = false
@@ -1986,7 +2001,7 @@ func common_effects(effects):
 				elif item.type == 'gear':
 					while counter > 0:
 						counter -= 1
-						AddItemToInventory(CreateGearItem(item.code, {}))
+						AddItemToInventory(CreateGearItem(item.code, {})) #no parts, so no enchants
 			'remove_item':
 				ResourceScripts.game_res.remove_item(i.name, i.number)
 			'unlock_asset':
@@ -2319,7 +2334,7 @@ func apply_starting_preset():
 
 
 func equip_char(ch, type, args, quality = 'poor'):
-	var newgear = CreateGearItemQuality(type, args, quality)
+	var newgear = CreateGearItemQuality(type, args, quality) #should add no enchantments/curses
 	AddItemToInventory(newgear)
 	ch.equip(newgear)
 
