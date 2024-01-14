@@ -61,8 +61,12 @@ func get_gear_type(slot):
 	return item.itembase
 
 
-func equip(item, item_prev_id = null):
-#	var duplicate = globals.get_duplicate_id_if_exist(item.itembase, item.parts)
+func equip(item, item_prev_id = null): 
+	if item.amount != 1:
+		print('warning - equip non-isolated item')
+	if item.id == null:
+		print('error - equip non-inventory item')
+#	var duplicate = globals.get_duplicate_id_if_exist(item)
 	#if duplicate != null:
 	if parent.get_ref().checkreqs(item.reqs) == false:
 		input_handler.SystemMessage(tr("INVALIDREQS"))
