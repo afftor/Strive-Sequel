@@ -1556,7 +1556,7 @@ func play_animation(animation, args = {}):
 			anim_scene = get_spec_node(ANIM_GROWTHF)
 			anim_scene.get_node("AnimationPlayer").play("Animation_growth_factor")
 			anim_scene.get_node("TextureRect5").texture = args["character"].get_icon()
-			anim_scene.get_node('Label').text = args.character.get_stat('name')
+			anim_scene.get_node('Label').text = args.character.get_short_name()
 			var value = int(args.character.get_stat(args.stat))
 			anim_scene.get_node('Label2').text = "%s: %s" % [tr(statdata.statdata[args.stat].name), ResourceScripts.descriptions.factor_descripts[value]]
 			for i in range(1, 6):

@@ -17,7 +17,7 @@ func _ready():
 #			globals.connecttexttooltip(i, statdata.statdata[i.name.replace("label_", "")].descript)
 
 func fill(fighter):
-	$name.text = fighter.get_stat('name')
+	$name.text = fighter.get_short_name()
 	$Hp/HBoxContainer6/hp.text = str(floor(fighter.hp)) + "/" + str(floor(fighter.get_stat('hpmax')))
 	$Mp/mp.text = str(floor(fighter.mp)) + "/" + str(floor(fighter.get_stat('mpmax')))
 #	$stats/HBoxContainer/atk.text = str(floor(fighter.get_stat('atk')))

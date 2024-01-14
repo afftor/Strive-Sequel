@@ -99,11 +99,11 @@ func build_ench_panel(panel):
 	var item = ResourceScripts.game_res.items[selected_item]
 	panel.get_node('Label').text = enchdata.name
 	panel.get_node('icon').texture = enchdata.icon
+	globals.connecttexttooltip(panel, enchdata.descript)
 #	if item.enchants.has(id):
 	if selected_enchants.has(id):
 		var value = selected_enchants[id]
 		panel.get_node('Lvl').text = str(value)
-		globals.connecttexttooltip(panel, enchdata.descript)
 		if enchdata.levels.has(value + 1):
 			panel.get_node('Rarr').visible = true
 			var cost = enchdata.levels[value + 1].cap_cost - enchdata.levels[value].cap_cost
