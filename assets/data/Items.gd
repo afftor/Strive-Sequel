@@ -2073,7 +2073,7 @@ var itemlist = {
 		partcolororder = {WeaponHandle = 1, Blade = 2, WeaponEnc = 3},
 		partmaterialname = "Blade",
 		tags = ['recipe', 'bladed','enchantable'],
-		slots = ['rhand'],
+		slots = ['rhand','lhand'],
 		hitsound = 'blade',
 		effects = [],
 	},
@@ -2095,8 +2095,8 @@ var itemlist = {
 		parts = {Blade = 10, WeaponHandle = 5, WeaponEnc = 2},
 		partcolororder = {WeaponHandle = 1, Blade = 2, WeaponEnc = 3},
 		partmaterialname = "Blade",
-		tags = ['recipe'],
-		slots = ['rhand','lhand','enchantable'],
+		tags = ['recipe','enchantable'],
+		slots = ['rhand','lhand'],
 		hitsound = 'blade',
 		effects = [],
 	},
@@ -4620,21 +4620,21 @@ var enchantments = {
 #				effects = [],
 				weight = 100,
 				cap_cost = 200,
-				gold_cost = 1000
+				gold_cost = 3000
 			},
 			2:{
 				statmods = {magic_find_add = 1},
 #				effects = [],
 				weight = 100,
 				cap_cost = 300,
-				gold_cost = 2000
+				gold_cost = 6000
 			},
 			3:{
 				statmods = {magic_find_add = 1},
 #				effects = [],
 				weight = 100,
 				cap_cost = 400,
-				gold_cost = 3000
+				gold_cost = 10000
 			},
 		}
 	},
@@ -4796,19 +4796,19 @@ var enchantments = {
 				effects = ['enchant_manasiphon_1'],
 				weight = 100,
 				cap_cost = 100,
-				gold_cost = 1000
+				gold_cost = 1500
 			},
 			2:{
 				effects = ['enchant_manasiphon_2'],
 				weight = 100,
 				cap_cost = 200,
-				gold_cost = 2000
+				gold_cost = 3000
 			},
 			3:{
 				effects = ['enchant_manasiphon_3'],
 				weight = 100,
 				cap_cost = 300,
-				gold_cost = 3000
+				gold_cost = 5000
 			},
 		}
 	},
@@ -4862,21 +4862,21 @@ var enchantments = {
 #				effects = [],
 				weight = 100,
 				cap_cost = 200,
-				gold_cost = 1000
+				gold_cost = 3000
 			},
 			2:{
 				statmods = {exp_gain_mod = 0.15},
 #				effects = [],
 				weight = 100,
 				cap_cost = 300,
-				gold_cost = 2000
+				gold_cost = 5000
 			},
 			3:{
 				statmods = {exp_gain_mod = 0.2},
 #				effects = [],
 				weight = 100,
 				cap_cost = 400,
-				gold_cost = 3000
+				gold_cost = 10000
 			},
 		}
 	},

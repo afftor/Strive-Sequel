@@ -1709,7 +1709,7 @@ func get_price_for_trait(tr_id):
 
 func baby_transform():
 	var mother = characters_pool.get_char_by_id(statlist.relatives.mother) #ResourceScripts.game_party.characters[statlist.relatives.mother]
-	statlist.name = 'Child of ' + mother.get_stat('name')
+	statlist.name = 'Child of ' + mother.get_short_name()
 	statlist.surname = mother.get_stat('surname')
 	if statlist.surname != '':
 		statlist.name += " " + statlist.surname

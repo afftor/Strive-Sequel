@@ -128,10 +128,10 @@ __meta__ = {
 [node name="GridContainer" type="VBoxContainer" parent="Scroller/ScrollContainer"]
 light_mask = 0
 margin_right = 500.0
-margin_bottom = 52.0
 size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="Scroller/ScrollContainer/GridContainer"]
+visible = false
 light_mask = 0
 margin_right = 500.0
 margin_bottom = 52.0

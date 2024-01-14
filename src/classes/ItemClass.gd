@@ -586,6 +586,12 @@ func calculateprice():
 		for i in materialsdict:
 			price += Items.materiallist[i].price*materialsdict[i]
 		price += round(Items.recipes[itembase].workunits * 5)
+		if quality != "":
+			price = price*(variables.itemquality_multiplier[quality]*0.66)
+		if enchants.size() > 0:
+			price = price * (1 + enchants.size() * 0.15)
+		if curse != null:
+			price = price * 0.60
 	return price
 
 func use_explore(character, caller = null):
