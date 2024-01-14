@@ -137,6 +137,8 @@ func get_duplicate_id_if_exist(item):
 	var itemtemplate = Items.itemlist[item.itembase]
 	if itemtemplate.has('tags') and itemtemplate.tags.has('no_stack'):
 		return null
+	if item.curse != null or !item.enchants.empty():
+		return null
 	for i in ResourceScripts.game_res.items.values():
 		if str(i.itembase) == str(item.itembase) and str(i.parts) == str(item.parts) and i.quality == item.quality and i.owner == null: #mb more
 			return i.id

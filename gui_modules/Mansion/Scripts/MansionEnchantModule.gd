@@ -250,8 +250,14 @@ func change_enchant(id, value):
 
 func apply_selection():
 	var item = ResourceScripts.game_res.items[selected_item]
+	if item.amount > 1:
+		item.amount -= 1
+		item = item.clone()
+		globals.AddItemToInventory(item, false)
+		selected_item = item.id
 	if selected_curse != 'no':
 		item.apply_random_curse(selected_curse)
 	for ench in selected_enchants:
 		item.add_enchant(ench, selected_enchants[ench])
+	build_item_list()
 	build_item()
