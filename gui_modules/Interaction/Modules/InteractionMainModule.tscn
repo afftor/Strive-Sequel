@@ -67,7 +67,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=65]
 [ext_resource path="res://ragdoll.tscn" type="PackedScene" id=66]
 [ext_resource path="res://Character_generator/ragdoll_builder.gd" type="Script" id=67]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/mask2.png" type="Texture" id=68]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/body_mask_crop.png" type="Texture" id=68]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -669,16 +669,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ragdoll" type="Node2D" parent="Panel" instance=ExtResource( 66 )]
-light_mask = 4
+[node name="ragdoll" parent="Panel" instance=ExtResource( 66 )]
 position = Vector2( 688.483, 402.746 )
 scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 67 )
 clothes = false
 
 [node name="bodymask" type="Light2D" parent="Panel"]
-position = Vector2( 703.413, 528.502 )
-scale = Vector2( 1.32883, 1.32883 )
+position = Vector2( 960, 540 )
 texture = ExtResource( 68 )
 mode = 3
 range_item_cull_mask = 4
@@ -1086,9 +1084,6 @@ custom_fonts/font = SubResource( 5 )
 text = "List Of Characters"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ItemSelectSex" type="Panel" parent="."]
 visible = false
