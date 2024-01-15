@@ -664,7 +664,14 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "0.8.0
+bbcode_text = "0.8.0a
+Ogres and trolls now categorized as giants instead of humanoids and fixed antirace enchantments not working fully
+Items of different qualities now stack
+Fixed enchants/curses/quality not affecting item price
+Fixed advanced sword only requiring 1 hand slot by default
+Fixed advanced spear having incorrect slots/tags
+Fixed some typos
+0.8.0
 Standartized and fixed most of the ingame texts and events (thanks to Lipach)
 Rebalanced and standartized most combat buffs and debuffs
 Added item quality and enchantments to modular gear
@@ -1516,7 +1523,14 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.8.0
+text = "0.8.0a
+Ogres and trolls now categorized as giants instead of humanoids and fixed antirace enchantments not working fully
+Items of different qualities now stack
+Fixed enchants/curses/quality not affecting item price
+Fixed advanced sword only requiring 1 hand slot by default
+Fixed advanced spear having incorrect slots/tags
+Fixed some typos
+0.8.0
 Standartized and fixed most of the ingame texts and events (thanks to Lipach)
 Rebalanced and standartized most combat buffs and debuffs
 Added item quality and enchantments to modular gear

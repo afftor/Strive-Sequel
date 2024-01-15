@@ -103,7 +103,7 @@ func _ready():
 		while i > 0:
 			i -= 1
 			createtestdummy()
-		turns = 20
+		turns = 50
 		# createtestdummy('resist')
 		changecategory('caress')
 		clearstate()
@@ -181,6 +181,9 @@ func OrgasmDenialDeny():
 	$Panel/sceneeffects.bbcode_text +="\n" + decoder(OrgasmDenyText.deny, [OrgasmDenyPlayer], [OrgasmDenyVictim])
 	rebuildparticipantslist()
 
+func SelectCum(player, victim):
+	pass
+
 #for not working at all and not used
 #func add_portrait_to_text(member):
 #	var newimage = Image.new()
@@ -210,22 +213,23 @@ func _input(event):
 
 func createtestdummy(type = 'normal'):
 	var person = ResourceScripts.scriptdict.class_slave.new("local_recruit")
-	person.create('random', 'random', 'random')
+	
+	if participants.size() == 0:
+		person.create('random', 'male', 'random')
+	else:
+		person.create('random', 'female', 'random')
 	var newmember = member.new()
 	newmember.sceneref = self
 	#bad solution. need replacing
 	person.statlist.statlist.vaginal_virgin = true
 	person.is_players_character = true
-	person.statlist.statlist.mods['hollownipples'] = 'hollownipples'
+	#person.statlist.statlist.mods['hollownipples'] = 'hollownipples'
 	#person.statlist.sex_traits = ['pushover']#'dislike_petting','bottle_fairy','hypersensitive','life_power',
 	person.statlist.statlist.consent = 500
 	for i in person.statlist.statlist.sex_skills:
 		person.statlist.statlist.sex_skills[i] += 100
-	person.statlist.statlist.sex = 'male'
 	if type == 'resist':
 		person.statlist.consent = false
-	if participants.size() > 0:
-		person.statlist.statlist.sex = 'female'
 		#globals.connectrelatives(participants[0].person, person, 'father')
 
 	newmember.setup_person(person, true)
@@ -320,10 +324,10 @@ func rebuildparticipantslist():
 		newnode.get_node("sex").set_texture(images.icons[i.sex])
 		newnode.get_node("sex").set_tooltip(i.sex)
 		newnode.get_node('HBoxContainer/arousal').value = i.sens
-		newnode.get_node("portrait").texture = i.person.get_icon_small()
+		#newnode.get_node("portrait").texture = i.person.get_icon_small()
 		# newnode.get_node("container/portrait").connect("mouse_entered",self,'showbody',[i])
 		# newnode.get_node("container/portrait").connect("mouse_exited",self,'hidebody')
-		newnode.connect("pressed", self, 'showbody', [i])
+		newnode.connect("mouse_entered", self, 'showbody', [i])
 		newnode.get_node("items").connect("pressed", self, "open_item_list", [i])
 
 		if i.request != null:
@@ -388,7 +392,7 @@ func rebuildparticipantslist():
 			actionreplacetext = i.person.translate("[name] is busy holding down ") + i.subduing.person.translate("[name] \nand can only act on $him. ")
 
 	var array = []
-	var bottomrow =  ['rope', 'subdue', 'deny_orgasm']
+	var bottomrow =  ['rope', 'subdue', 'deny_orgasm', 'cum_select']
 
 	if showactions == true:
 		for i in actionarray:
@@ -1178,6 +1182,8 @@ func startscene(scenescript, cont = false, pretext = ''):
 				stopongoingaction(k)
 	if scenescript.code == 'deny_orgasm':
 		OrgasmDenyInitiate(givers[0], takers[0])
+	if scenescript.code == 'cum_select':
+		SelectCum(givers[0], takers[0])
 
 	var sceneexists = false
 	var temptext = ''

@@ -1,4 +1,5 @@
 Ogres and trolls now categorized as giants instead of humanoids and fixed antirace enchantments not working fully
+Items of different qualities now stack
 Fixed enchants/curses/quality not affecting item price
 Fixed advanced sword only requiring 1 hand slot by default
 Fixed advanced spear having incorrect slots/tags

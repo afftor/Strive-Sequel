@@ -66,7 +66,7 @@
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=64]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=65]
 [ext_resource path="res://ragdoll.tscn" type="PackedScene" id=66]
-[ext_resource path="res://Character_generator/ragdoll_builder.gd" type="Script" id=67]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=67]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/mask2.png" type="Texture" id=68]
 
 [sub_resource type="DynamicFont" id=1]
@@ -97,6 +97,7 @@ font_data = ExtResource( 8 )
 [node name="InteractionMainModule" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 65 )
 script = ExtResource( 38 )
 
 [node name="Background" type="Panel" parent="."]
@@ -346,9 +347,6 @@ margin_bottom = 702.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/CharList/ScrollContainer"]
 margin_right = 409.0
@@ -363,7 +361,6 @@ margin_bottom = 52.0
 rect_min_size = Vector2( 340, 52 )
 size_flags_horizontal = 3
 size_flags_vertical = 2
-toggle_mode = true
 texture_normal = ExtResource( 21 )
 texture_pressed = ExtResource( 22 )
 texture_hover = ExtResource( 23 )
@@ -669,11 +666,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ragdoll" type="Node2D" parent="Panel" instance=ExtResource( 66 )]
-light_mask = 4
+[node name="ragdoll" parent="Panel" instance=ExtResource( 66 )]
 position = Vector2( 688.483, 402.746 )
 scale = Vector2( 0.5, 0.5 )
-script = ExtResource( 67 )
 clothes = false
 
 [node name="bodymask" type="Light2D" parent="Panel"]
@@ -1024,7 +1019,7 @@ margin_left = 571.84
 margin_top = 153.601
 margin_right = 1312.84
 margin_bottom = 724.601
-custom_styles/panel = ExtResource( 1 )
+theme = ExtResource( 67 )
 
 [node name="Control" type="Control" parent="OrgasmDenial"]
 margin_left = -574.0
@@ -1033,20 +1028,17 @@ margin_right = 1350.0
 margin_bottom = 919.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="OrgasmDenial"]
-margin_left = 85.3445
-margin_top = 40.5518
-margin_right = 672.344
-margin_bottom = 408.552
+margin_left = 82.0
+margin_top = 36.0
+margin_right = 669.0
+margin_bottom = 335.0
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="OrgasmDenial"]
 margin_left = 133.0
-margin_top = 418.0
+margin_top = 358.0
 margin_right = 604.0
 margin_bottom = 553.0
 theme = ExtResource( 3 )
@@ -1057,22 +1049,22 @@ margin_bottom = 173.0
 size_flags_horizontal = 3
 
 [node name="Cum" type="Button" parent="OrgasmDenial/ScrollContainer/VBoxContainer"]
-margin_right = 459.0
-margin_bottom = 52.0
+margin_right = 471.0
+margin_bottom = 55.0
 theme = ExtResource( 5 )
 text = "Make [him] cum"
 
 [node name="Beg" type="Button" parent="OrgasmDenial/ScrollContainer/VBoxContainer"]
-margin_top = 56.0
-margin_right = 459.0
-margin_bottom = 108.0
+margin_top = 59.0
+margin_right = 471.0
+margin_bottom = 114.0
 theme = ExtResource( 5 )
 text = "Make [him] cum"
 
 [node name="Deny" type="Button" parent="OrgasmDenial/ScrollContainer/VBoxContainer"]
-margin_top = 112.0
-margin_right = 459.0
-margin_bottom = 164.0
+margin_top = 118.0
+margin_right = 471.0
+margin_bottom = 173.0
 theme = ExtResource( 5 )
 text = "Make [him] cum"
 

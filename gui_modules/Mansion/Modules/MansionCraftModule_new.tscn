@@ -80,9 +80,6 @@ margin_right = 1396.0
 margin_bottom = 980.0
 theme = ExtResource( 11 )
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CraftBG" type="Panel" parent="."]
 show_behind_parent = true
