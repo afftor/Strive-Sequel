@@ -774,6 +774,8 @@ func get_icon_small():
 	var res = get_icon()
 	if res == null:
 		res = races.racelist[get_stat('race')].icon
+		if res is String:
+			res = load(res)
 	return res
 
 func get_body_image():
