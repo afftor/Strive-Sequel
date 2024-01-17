@@ -109,7 +109,8 @@ func CreateUsable(ItemName = '', number = 1):
 func amount_set(value):
 	amount = value
 	if amount <= 0:
-		ResourceScripts.game_res.items.erase(id)
+#		ResourceScripts.game_res.items.erase(id)
+		ResourceScripts.game_res.call_deferred('remove_item_id', id)
 
 func UseItem(user = null, target = null):
 	var finaltarget
@@ -272,7 +273,7 @@ func CreateGear(ItemName = '', dictparts = {}, diffdata = {boost = 0, prof = fal
 			name = itemtemplate.name
 		#name = itemtemplate.partmaterialname
 	
-	if tags.has('enchantable'):
+	if tags.has('enchantable') and (!diffdata.has('no_enchant') or !diffdata.no_enchant):
 		roll_enchants()
 
 
@@ -350,6 +351,11 @@ func fix_gear():
 	
 	for id in enchants:
 		enchants[id] = int(enchants[id])
+	if !bonusstats.has('enchant_capacity') and template.basestats.has('enchant_capacity'):
+		bonusstats['enchant_capacity'] = template.basestats['enchant_capacity']
+	if !tags.has('enchantable') and template.tags.has('enchantable'):
+		tags.push_back('enchantable')
+	
 
 
 func substractitemcost():
@@ -580,6 +586,12 @@ func calculateprice():
 		for i in materialsdict:
 			price += Items.materiallist[i].price*materialsdict[i]
 		price += round(Items.recipes[itembase].workunits * 5)
+		if quality != "":
+			price = price*(variables.itemquality_multiplier[quality]*0.66)
+		if enchants.size() > 0:
+			price = price * (1 + enchants.size() * 0.15)
+		if curse != null:
+			price = price * 0.60
 	return price
 
 func use_explore(character, caller = null):

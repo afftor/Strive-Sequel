@@ -107,6 +107,7 @@ enum {
 	NODE_ITEMTOOLTIP,
 #	NODE_ITEMTOOLTIP_V2,
 	NODE_TEXTTOOLTIP,
+	NODE_GALLERYTOOLTIP,
 	NODE_CHARCREATE,
 	NODE_CHAREDIT,
 	NODE_COMBATPOSITIONS,
@@ -353,6 +354,7 @@ func _ready():
 	
 	connect("UpgradeUnlocked", self, "upgrade_unlocked")
 
+#func _unhandled_input(event):
 func _input(event):
 	if event.is_echo() == true && !event.is_action_type():
 		return
@@ -1554,7 +1556,7 @@ func play_animation(animation, args = {}):
 			anim_scene = get_spec_node(ANIM_GROWTHF)
 			anim_scene.get_node("AnimationPlayer").play("Animation_growth_factor")
 			anim_scene.get_node("TextureRect5").texture = args["character"].get_icon()
-			anim_scene.get_node('Label').text = args.character.get_stat('name')
+			anim_scene.get_node('Label').text = args.character.get_short_name()
 			var value = int(args.character.get_stat(args.stat))
 			anim_scene.get_node('Label2').text = "%s: %s" % [tr(statdata.statdata[args.stat].name), ResourceScripts.descriptions.factor_descripts[value]]
 			for i in range(1, 6):
@@ -1722,6 +1724,15 @@ func get_real_global_rect(nd):
 	res.position = transform.get_origin()
 	res.size = transform.basis_xform(rect.size)
 	return res
+
+
+func node_children_visible(node, exception, value):
+	for nd in node.get_children():
+		if nd == exception:
+			continue
+		if nd is CanvasItem:
+			nd.visible = value
+
 
 func roman_number_converter(number): #only supports numbers up to 10 currently. INT > STRING
 	if variables.roman_numbers.has(number) == false:

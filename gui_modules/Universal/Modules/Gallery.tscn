@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=2]
@@ -12,7 +12,17 @@
 [ext_resource path="res://assets/images/fullscreen scenes/XariCG001.png" type="Texture" id=10]
 [ext_resource path="res://gui_modules/Universal/Scripts/Gallery.gd" type="Script" id=11]
 [ext_resource path="res://src/scenes/ClosingPanel.gd" type="Script" id=12]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=13]
+[ext_resource path="res://assets/Textures_v2/Gallery/button_return.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/Gallery/button_return_pressed.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/Gallery/frame_gallery.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/Gallery/button_return_hover.png" type="Texture" id=17]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/icon_question_small.png" type="Texture" id=18]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/NOTO_SANS_Regular_24px.tres" type="DynamicFont" id=19]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=20]
+[ext_resource path="res://assets/Textures_v2/Gallery/icon_page_default.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/Gallery/icon_page_hover.png" type="Texture" id=22]
+[ext_resource path="res://assets/Textures_v2/Gallery/icon_page_pressed.png" type="Texture" id=23]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -52,9 +62,6 @@ custom_fonts/font = SubResource( 1 )
 text = "GALLERYNAME"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="StoryButton" type="TextureButton" parent="."]
 margin_left = 757.751
@@ -126,20 +133,33 @@ align = 1
 valign = 1
 
 [node name="Pagination" type="HBoxContainer" parent="."]
-margin_left = 276.0
+margin_left = 130.0
 margin_top = 153.0
-margin_right = 1644.0
-margin_bottom = 205.0
-custom_constants/separation = 18
+margin_right = 1617.0
+margin_bottom = 207.0
+custom_constants/separation = 10
 
-[node name="Button" type="Button" parent="Pagination"]
+[node name="Button" type="TextureButton" parent="Pagination"]
 visible = false
-margin_right = 52.0
-margin_bottom = 55.0
+margin_right = 54.0
+margin_bottom = 54.0
 rect_min_size = Vector2( 52, 52 )
 theme = ExtResource( 2 )
 toggle_mode = true
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 22 )
+
+[node name="Label" type="Label" parent="Pagination/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "1"
+align = 1
 
 [node name="ImageContainer" type="GridContainer" parent="."]
 margin_left = 74.0
@@ -180,16 +200,50 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="CloseButton" type="Button" parent="."]
-margin_left = 875.082
-margin_top = 1004.0
-margin_right = 1046.08
-margin_bottom = 1056.0
+[node name="QuestionMark" type="TextureRect" parent="ImageContainer/Button"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -78.0
+margin_top = -73.0
+margin_right = -32.0
+margin_bottom = -27.0
+texture = ExtResource( 18 )
+
+[node name="SceneName" type="Label" parent="ImageContainer/Button"]
+visible = false
+anchor_right = 1.0
+margin_top = 10.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 19 )
+text = "Name of Scene"
+align = 1
+valign = 1
+
+[node name="CloseButton" type="TextureButton" parent="."]
+margin_left = 850.0
+margin_top = 1002.0
+margin_right = 1070.0
+margin_bottom = 1060.0
 theme = ExtResource( 2 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 17 )
+
+[node name="Label" type="Label" parent="CloseButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -2.0
+margin_right = 4.0
+margin_bottom = -2.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 13 )
 text = "GALLERYRETURN"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+align = 1
+valign = 1
 
 [node name="FullScreenImage" type="TextureRect" parent="."]
 visible = false

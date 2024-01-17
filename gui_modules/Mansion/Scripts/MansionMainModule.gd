@@ -72,6 +72,7 @@ var always_show = [
 	"MansionLogModule",
 	"NavigationModule",
 	"MenuButton",
+	"map_test"
 ]
 
 
@@ -213,7 +214,7 @@ func match_state():
 	for node in get_children():
 		if node.get_class() == "Tween":
 			continue
-		if node.name.findn(mansion_state) == -1 && ! node.name in always_show:
+		if node.name.findn(mansion_state) == -1 and ! node.name in always_show:
 			node.hide()
 	var menu_buttons = MenuModule.get_node("VBoxContainer")
 	for button in menu_buttons.get_children():
@@ -527,7 +528,13 @@ func _on_TestButton_pressed():
 #	get_node("DisassembleModule").show()
 
 
+func show_map():
+	$map.open()
+
+
 func test_mode():
+	$map_test.visible = true
+	$map_test.connect('pressed', self, 'show_map')
 	input_handler.CurrentScene = self
 	gui_controller.mansion = self
 	ResourceScripts.game_progress.allow_skip_fights = true
@@ -589,11 +596,11 @@ func test_mode():
 		character.add_stat('resist_normal', 50)
 		character.add_stat('resist_all', 50)
 		#variables.dungeon_encounter_chance = 1
-		var bow = globals.CreateGearItemQuality("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}, 'poor')
+		var bow = globals.CreateGearItemQuality("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}, 'poor', false)
 		globals.AddItemToInventory(bow)
-		bow = globals.CreateGearItemQuality("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}, 'average')
+		bow = globals.CreateGearItemQuality("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}, 'average', false)
 		globals.AddItemToInventory(bow)
-		bow = globals.CreateGearItemQuality("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}, 'legendary')
+		bow = globals.CreateGearItemQuality("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}, 'legendary', false)
 		globals.AddItemToInventory(bow)
 		character.equip(bow)
 		character.set_slave_category('master')

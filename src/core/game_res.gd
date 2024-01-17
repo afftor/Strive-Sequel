@@ -26,6 +26,9 @@ func fix_serialization():
 		if items[i].itembase == 'sensetivity_pot':
 			clear_array.append(i)
 			continue
+		if items[i].amount <= 0:
+			clear_array.append(i)
+			continue
 		items[i] = dict2inst(items[i])
 		if items[i].type == 'gear':
 			items[i].fix_gear()
@@ -112,6 +115,11 @@ func remove_item(itemcode, number):
 			item.amount -= 1
 		number -= 1
 #
+
+func remove_item_id(id):
+	items.erase(id)
+
+
 func set_material(material, operant, value):
 	match operant:
 		'+':

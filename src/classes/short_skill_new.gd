@@ -161,7 +161,7 @@ func hit_roll():#not implemented various chance stat rolls due to not having for
 		hit_res = variables.RES_CRIT
 
 func apply_atomic(tmp):
-	if tmp.stat in ['value', 'is_drain', 'cap']:
+	if tmp.has('stat') and tmp.stat in ['value', 'is_drain', 'cap']:
 		for i in range(value.size()):
 			value[i].apply_atomic(tmp)
 		return

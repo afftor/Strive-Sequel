@@ -53,11 +53,11 @@ var texture_sets = {
 	],
 	beastkin_male = [
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR/HandR_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/HandR1_beastkin_m.png"},
-		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/HandR2_beastkin_m.png"},
+		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2/HandR_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/Beastkin_HandR2_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/ArmR1_beastkin_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ShoulderR_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/ShoulderR_beastkin_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL/HandL_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/HandL1_beastkin_m.png"},
-		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/HandL2_beastkin_m.png"},
+		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL2/HandL_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/Beastkin_HandL2_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/ArmL1_beastkin_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ShoulderL_tex', texture = "res://Character_generator/images/15_beastkin_body_nude_male/ShoulderL_beastkin_m.png"},
 		{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_tex2', texture = "res://Character_generator/images/15_beastkin_body_nude_male/torso_bestkin_m.png"},

@@ -17,7 +17,7 @@ var scenes = {
 	amelia_titjob = ["amelia_silk_1","amelia_silk_2","amelia_silk_3","amelia_silk_4","amelia_silk_5","amelia_silk_6","amelia_silk_7","amelia_silk_8","amelia_silk_9","amelia_silk_10"],
 	amelia_bondage = ["amelia_bondage_1","amelia_bondage_2","amelia_bondage_3","amelia_bondage_4","amelia_bondage_5","amelia_bondage_6","amelia_bondage_7","amelia_bondage_8","amelia_bondage_9"],
 	anastasia_aire = ["aire_anastasia1","aire_anastasia2","aire_anastasia3"],
-	aire_anal = ["ana_gryphon_sex_1","ana_gryphon_sex_2","ana_gryphon_sex_3","ana_gryphon_sex_4","ana_gryphon_sex_5","ana_gryphon_sex_6","ana_gryphon_sex_7","ana_gryphon_sex_8","ana_gryphon_sex_9","ana_gryphon_sex_10"],
+	aire_gryphon = ["ana_gryphon_sex_1","ana_gryphon_sex_2","ana_gryphon_sex_3","ana_gryphon_sex_4","ana_gryphon_sex_5","ana_gryphon_sex_6","ana_gryphon_sex_7","ana_gryphon_sex_8","ana_gryphon_sex_9","ana_gryphon_sex_10"],
 	force_cali = ["force_cali_1","force_cali_2","force_cali_3","force_cali_4","force_cali_5","force_cali_6"],
 	heleviel = ["after_temple_priestess_3","after_temple_priestess_4",{scene = "after_temple_priestess_5_1",variant = 1},"after_temple_priestess_5_1_2","after_temple_priestess_5_1_3","after_temple_priestess_5_1_4","after_temple_priestess_5_1_5","after_temple_priestess_5_1_6","after_temple_priestess_5_1and2"],
 	lilia_sex = ["lilia_sex_scene_1","lilia_sex_scene_1_1","lilia_sex_scene_2","lilia_sex_scene_3","lilia_starting_2"],
@@ -42,7 +42,7 @@ var scenes = {
 var scenes_order = [
 	"anastasia_sex","anastasia_rape","anastasia_execution","lich_aire_talk","lich_aire_talkk","halloween_start",
 	"daisy_public","daisy_consensual","daisy_training","amelia_titjob","aire_amelia1","amelia_bondage",
-	"anastasia_aire","aire_anal","force_cali","cali_touching","xari_encounter","daisy_admirer",
+	"anastasia_aire","aire_gryphon","force_cali","cali_touching","xari_encounter","daisy_admirer",
 	"daisy_dress_acquired_normal","cali_bj_happy","cali_riding","heleviel","lilia_sex","christmas",
 	"heleviel_mansion","lira_mansion", "cali_zephyra","cali_act5_pet","cali_act6_naked","pre_ritual_blow",
 	"zephyra_lilia", 'amelia_sex', 'zephyra_disappearance_sex', 'zephyra_disappearance_guards'
@@ -62,7 +62,7 @@ var ero_scenes = [
  'aire_amelia1',
  'amelia_titjob1',
  'amelia_bondage1',
- 'anastasia_aire1',
+# 'anastasia_aire1', uncomment it when it's possible to unlock this scene in-game
  'aire_ana1',
  'aire_ana4',
  'force_cali1',

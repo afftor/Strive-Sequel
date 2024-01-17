@@ -483,3 +483,13 @@ var roman_numbers = {
 	10: "X",
 	
 }
+
+
+var quality_colors = {
+	poor = load("res://assets/images/iconsitems/quality_bg/gray.png"),
+	average = load("res://assets/images/iconsitems/quality_bg/green.png"),
+	good = load("res://assets/images/iconsitems/quality_bg/blue.png"),
+	epic = load("res://assets/images/iconsitems/quality_bg/purple.png"),
+	legendary = load("res://assets/images/iconsitems/quality_bg/orange.png"),
+	
+}

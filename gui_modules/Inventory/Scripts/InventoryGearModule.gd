@@ -127,8 +127,8 @@ func build_gear_panel():
 			$ragdoll.rebuild(selectedhero)
 			$ragdoll.rebuild_cloth(true)
 		else:
-			$Body.texture = selectedhero.get_body_image()
-			$Body.visible = true
+			$BodyImage.texture = selectedhero.get_body_image()
+			$BodyImage.visible = true
 			$ragdoll.visible = false
 #		$BodyImage.texture = selectedhero.get_body_image()
 		for i in selectedhero.equipment.gear:
@@ -161,6 +161,7 @@ func unequip_confirm():
 		if itemtooltip != null && itemtooltip.is_visible():
 			itemtooltip.hide()
 	get_parent().set_active_hero(selectedhero)
+
 
 
 func show_equip_tooltip(slot):

@@ -1809,7 +1809,7 @@ var Skilllist = {
 	devour = {
 		code = 'devour',
 		descript = '',
-		icon = load("res://assets/images/iconsskills/icon_earth.png"),
+		icon = load("res://assets/images/iconsclasses/soul eater.png"),
 		type = 'combat', 
 		ability_type = 'spell',
 		tags = ['debuf','ads'],
@@ -2864,7 +2864,7 @@ var Skilllist = {
 		tags = ['damage','ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_shred', duration = 3})],
+		effects = [Effectdata.rebuild_template({effect = 'e_s_shred_old', duration = 3})], #if change to new version - Effectdata.rebuild_template_globals({effect = 'e_s_shred'})
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
