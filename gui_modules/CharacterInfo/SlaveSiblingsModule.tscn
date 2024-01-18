@@ -1,11 +1,11 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.gd" type="Script" id=2]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=3]
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Medium.otf" type="DynamicFontData" id=4]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/panel_charinfo_part.png" type="Texture" id=5]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Background.tres" type="StyleBox" id=6]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/panel.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/rhombus.png" type="Texture" id=6]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveDietModule.gd" type="Script" id=7]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_SEX_Skills.tres" type="Theme" id=8]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/tick.png" type="Texture" id=9]
@@ -32,15 +32,33 @@
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods_hover.png" type="Texture" id=30]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_30.tres" type="DynamicFont" id=31]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/frame_skilltree.png" type="Texture" id=32]
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 5 )
-region_rect = Rect2( 0, 0, 1670, 920 )
-
-[sub_resource type="StyleBoxTexture" id=2]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/food_filter/bg_food_filter.png" type="Texture" id=33]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/food_filter/button_close_default.png" type="Texture" id=34]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/food_filter/panel_food_filter.png" type="Texture" id=35]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/food_filter/button_food_filter_default-1.png" type="Texture" id=36]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/food_filter/button_close_pressed.png" type="Texture" id=37]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/food_filter/button_food_filter_hover.png" type="Texture" id=38]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/food_filter/button_foodfilter_pressed.png" type="Texture" id=39]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/food_filter/button_close_hover.png" type="Texture" id=40]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/bd_rhombus.png" type="Texture" id=41]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_kind.png" type="Texture" id=42]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_serious.png" type="Texture" id=43]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_shy_chary.png" type="Texture" id=44]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_bold.png" type="Texture" id=45]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/cirlcle.png" type="Texture" id=46]
 
 [sub_resource type="DynamicFont" id=3]
 size = 36
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 24
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 24
 use_filter = true
 font_data = ExtResource( 1 )
 
@@ -65,59 +83,43 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxTexture" id=9]
 
-[sub_resource type="DynamicFont" id=10]
-size = 24
-use_filter = true
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=11]
-size = 24
-use_filter = true
-font_data = ExtResource( 1 )
-
-[node name="SlaveSiblingsModule" type="Panel"]
+[node name="SlaveSiblingsModule" type="TextureRect"]
 light_mask = 0
 margin_right = 1670.0
 margin_bottom = 920.0
 theme = ExtResource( 12 )
-custom_styles/panel = SubResource( 1 )
+texture = ExtResource( 5 )
 script = ExtResource( 2 )
 
-[node name="SlaveDietModule" type="Panel" parent="."]
+[node name="SlaveDietModule" type="TextureRect" parent="."]
+visible = false
 show_behind_parent = true
-margin_left = 307.0
-margin_top = 346.0
-margin_right = 817.0
-margin_bottom = 916.0
-custom_styles/panel = SubResource( 2 )
+margin_left = 1124.0
+margin_top = 126.0
+margin_right = 1530.0
+margin_bottom = 714.0
+texture = ExtResource( 33 )
 script = ExtResource( 7 )
 
-[node name="Background" type="Panel" parent="SlaveDietModule"]
-show_behind_parent = true
-margin_right = 510.0
-margin_bottom = 570.0
-custom_styles/panel = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Frame" type="TextureRect" parent="SlaveDietModule"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 35 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SlaveDietModule"]
 margin_left = 36.0
 margin_top = 80.0
-margin_right = 472.0
-margin_bottom = 482.0
+margin_right = 372.0
+margin_bottom = 405.0
 theme = ExtResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SlaveDietModule/ScrollContainer"]
-margin_right = 436.0
+margin_right = 336.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="SlaveDietModule/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 436.0
+margin_right = 336.0
 margin_bottom = 45.0
 theme = ExtResource( 3 )
 
@@ -159,6 +161,108 @@ align = 1
 valign = 1
 clip_text = true
 
+[node name="close" type="TextureButton" parent="SlaveDietModule"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -178.0
+margin_top = -85.0
+margin_right = 182.0
+margin_bottom = -27.0
+texture_normal = ExtResource( 34 )
+texture_pressed = ExtResource( 37 )
+texture_hover = ExtResource( 40 )
+
+[node name="Label" type="Label" parent="SlaveDietModule/close"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Close"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="food_consumption" type="Label" parent="SlaveDietModule"]
+margin_left = 29.0
+margin_top = 454.0
+margin_right = 296.0
+margin_bottom = 489.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "SIBLINGMODULEFOODCONSUMPTION"
+clip_text = true
+
+[node name="Label" type="Label" parent="SlaveDietModule/food_consumption"]
+margin_left = 231.0
+margin_right = 271.0
+margin_bottom = 35.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "25"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food_love" type="TextureRect" parent="SlaveDietModule"]
+light_mask = 0
+margin_left = 32.0
+margin_top = 413.0
+margin_right = 67.0
+margin_bottom = 448.0
+rect_min_size = Vector2( 35, 35 )
+size_flags_horizontal = 0
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="Button" type="TextureRect" parent="SlaveDietModule/food_love"]
+visible = false
+light_mask = 0
+margin_left = 48.0
+margin_right = 79.0
+margin_bottom = 30.0
+
+[node name="food_hate" type="TextureRect" parent="SlaveDietModule"]
+light_mask = 0
+margin_left = 168.0
+margin_top = 414.0
+margin_right = 203.0
+margin_bottom = 449.0
+rect_min_size = Vector2( 35, 35 )
+size_flags_horizontal = 0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="HBoxContainer" parent="SlaveDietModule/food_hate"]
+light_mask = 0
+margin_left = 48.0
+margin_right = 157.0
+margin_bottom = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureRect" parent="SlaveDietModule/food_hate/Container"]
+visible = false
+light_mask = 0
+margin_bottom = 30.0
+
+[node name="FoodFilterTooltip" type="TextureRect" parent="SlaveDietModule"]
+margin_left = 337.0
+margin_top = 17.0
+margin_right = 387.0
+margin_bottom = 64.0
+texture = ExtResource( 21 )
+expand = true
+stretch_mode = 6
+
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 light_mask = 0
 margin_left = 10.4949
@@ -167,9 +271,6 @@ margin_right = 298.495
 margin_bottom = 313.498
 theme = ExtResource( 8 )
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 light_mask = 0
@@ -392,64 +493,12 @@ custom_icons/unchecked_disabled = ExtResource( 9 )
 custom_icons/unchecked = ExtResource( 9 )
 text = "WORKRULENUDITY"
 
-[node name="food_love" type="TextureRect" parent="."]
-light_mask = 0
-margin_left = 319.386
-margin_top = 862.997
-margin_right = 354.386
-margin_bottom = 897.997
-rect_min_size = Vector2( 35, 35 )
-size_flags_horizontal = 0
-texture = ExtResource( 11 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="TextureRect" parent="food_love"]
-visible = false
-light_mask = 0
-margin_left = 48.0
-margin_right = 79.0
-margin_bottom = 30.0
-
-[node name="food_hate" type="TextureRect" parent="."]
-light_mask = 0
-margin_left = 414.876
-margin_top = 863.746
-margin_right = 449.876
-margin_bottom = 898.746
-rect_min_size = Vector2( 35, 35 )
-size_flags_horizontal = 0
-texture = ExtResource( 10 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Container" type="HBoxContainer" parent="food_hate"]
-light_mask = 0
-margin_left = 48.0
-margin_right = 157.0
-margin_bottom = 30.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="TextureRect" parent="food_hate/Container"]
-visible = false
-light_mask = 0
-margin_right = 31.0
-margin_bottom = 30.0
-
 [node name="SexTraitsPanel" type="Panel" parent="."]
 light_mask = 0
 margin_left = 30.0
 margin_top = 363.0
 margin_right = 280.0
-margin_bottom = 894.0
+margin_bottom = 818.0
 custom_styles/panel = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -472,7 +521,7 @@ light_mask = 0
 margin_left = 12.0
 margin_top = 52.0
 margin_right = 242.0
-margin_bottom = 453.0
+margin_bottom = 406.0
 theme = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -507,10 +556,10 @@ stretch_mode = 6
 
 [node name="TraitCapacity" type="Label" parent="SexTraitsPanel"]
 light_mask = 0
-margin_left = -4.0
-margin_top = 461.0
-margin_right = 255.0
-margin_bottom = 496.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -35.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
 text = "SIBLINGMODULETRAITCAPACITY"
@@ -691,6 +740,7 @@ __meta__ = {
 }
 
 [node name="UpgradesPanel" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -738,24 +788,85 @@ scroll_horizontal_enabled = false
 
 [node name="UpgradesList" parent="UpgradesPanel/ScrollContainer" instance=ExtResource( 27 )]
 
-[node name="food_consumption" type="Label" parent="."]
-margin_left = 542.0
-margin_top = 860.0
-margin_right = 809.0
-margin_bottom = 892.0
+[node name="personality" type="TextureRect" parent="."]
+margin_left = 398.0
+margin_top = 449.0
+margin_right = 716.0
+margin_bottom = 768.0
+texture = ExtResource( 41 )
+
+[node name="frame" type="TextureRect" parent="personality"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -7.0
+margin_top = -7.0
+margin_right = 7.0
+margin_bottom = 6.0
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="personality"]
+light_mask = 0
+margin_left = -89.0
+margin_top = -87.0
+margin_right = 414.0
+margin_bottom = -34.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 10 )
-text = "SIBLINGMODULEFOODCONSUMPTION"
+custom_fonts/font = SubResource( 3 )
+text = "SIBLINGMODULEPERSONALITY"
+align = 1
+valign = 1
 clip_text = true
 
-[node name="Label" type="Label" parent="food_consumption"]
-margin_left = 231.0
-margin_right = 271.0
-margin_bottom = 35.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 11 )
-text = "25"
-align = 1
+[node name="desc" type="RichTextLabel" parent="personality"]
+margin_left = -74.0
+margin_top = 348.0
+margin_right = 409.0
+margin_bottom = 449.0
+bbcode_enabled = true
+
+[node name="bold" type="TextureRect" parent="personality"]
+margin_left = 144.0
+margin_top = -15.0
+margin_right = 174.0
+margin_bottom = 15.0
+texture = ExtResource( 45 )
+
+[node name="kind" type="TextureRect" parent="personality"]
+margin_left = -15.0
+margin_top = 145.0
+margin_right = 15.0
+margin_bottom = 175.0
+texture = ExtResource( 42 )
+
+[node name="serious" type="TextureRect" parent="personality"]
+margin_left = 302.0
+margin_top = 144.0
+margin_right = 332.0
+margin_bottom = 174.0
+texture = ExtResource( 43 )
+
+[node name="shy" type="TextureRect" parent="personality"]
+margin_left = 143.0
+margin_top = 303.0
+margin_right = 173.0
+margin_bottom = 333.0
+texture = ExtResource( 44 )
+
+[node name="current" type="TextureRect" parent="personality"]
+margin_left = -19.0
+margin_top = -22.5
+margin_right = 22.0
+margin_bottom = 18.5
+texture = ExtResource( 46 )
+
+[node name="PersonalityTooltip" type="TextureRect" parent="personality"]
+margin_left = 360.0
+margin_top = -87.0
+margin_right = 410.0
+margin_bottom = -40.0
+texture = ExtResource( 21 )
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -777,18 +888,6 @@ margin_left = 736.642
 margin_top = 26.2358
 margin_right = 786.642
 margin_bottom = 73.2358
-texture = ExtResource( 21 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FoodFilterTooltip" type="TextureRect" parent="."]
-margin_left = 757.831
-margin_top = 362.086
-margin_right = 807.831
-margin_bottom = 409.086
 texture = ExtResource( 21 )
 expand = true
 stretch_mode = 6
@@ -863,6 +962,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "SIBLINGMODULESEX"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="FF" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -789.0
+margin_top = -87.0
+margin_right = -571.0
+margin_bottom = -32.0
+texture_normal = ExtResource( 36 )
+texture_pressed = ExtResource( 39 )
+texture_hover = ExtResource( 38 )
+
+[node name="Label" type="Label" parent="FF"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Food Filter"
 align = 1
 valign = 1
 clip_text = true

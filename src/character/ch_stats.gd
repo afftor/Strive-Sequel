@@ -797,6 +797,8 @@ func get_stat(statname, ref = false):
 		else:
 			print("no stat - %s" % statname)
 			return null
+	if statname == 'personality':
+		return get_personality()
 	if !statlist.has(statname): 
 		print("no stat - %s" % statname)
 		return null
@@ -1201,7 +1203,7 @@ func fill_masternoun():
 func process_chardata(chardata, unique = false):
 	if unique: statlist.unique = chardata.code
 	for i in chardata:
-		if !(i in ['code','class_category', 'slave_class', 'tags','sex_traits', 'sex_skills']):
+		if !(i in ['code','class_category', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality']):
 			if typeof(chardata[i]) == TYPE_ARRAY or typeof(chardata[i]) == TYPE_DICTIONARY:
 				statlist[i] = chardata[i].duplicate(true)
 			else:
@@ -1218,6 +1220,20 @@ func process_chardata(chardata, unique = false):
 			statlist.sex_skills[skill] = chardata.sex_skills[skill]
 	if chardata.has('icon_image'):
 		statlist.dynamic_portrait = false
+	if chardata.has('personality'):
+		match chardata.personality:
+			'bold':
+				statlist.personality_bold = globals.rng.randi_range(30, 60)
+				statlist.personality_kind = globals.rng.randi_range(-10, 10)
+			'shy':
+				statlist.personality_bold = -globals.rng.randi_range(30, 60)
+				statlist.personality_kind = globals.rng.randi_range(-10, 10)
+			'kind':
+				statlist.personality_bold = globals.rng.randi_range(-10, 10)
+				statlist.personality_kind = globals.rng.randi_range(30, 60)
+			'serious':
+				statlist.personality_bold = globals.rng.randi_range(-10, 10)
+				statlist.personality_kind = -globals.rng.randi_range(30, 60)
 	set_virginity_data()
 
 
@@ -1931,46 +1947,53 @@ func recheck_upgrades():
 			if !parent.get_ref().checkreqs(upgrade_data.reqs):
 				remove_upgrade(upg) #hope that there would be no removal chaining
 
-var factor_personality_changes = { #chance of change of primary and seondary axies based on tame/timid factors
-	1 : [50, 100],
-	2 : [60, 50],
-	3 : [70, 33],
-	4 : [80, 25],
-	5 : [90, 10],
-	6 : [100, 0]
-	
-}
 
 func change_personality_stats(stat, init_value):
 	var prim_stat
 	var primaxis = ''
+	var altaxis = ''
 	var value = init_value
+	
 	if stat == 'bold':
-		primaxis = 'bold'
+		primaxis = 'personality_bold'
+		altaxis = 'personality_kind'
 		prim_stat = get_stat("timid_factor")
 	else:
-		primaxis = 'kind'
+		primaxis = 'personality_kind'
+		altaxis = 'personality_bold'
 		prim_stat = get_stat("tame_factor")
 	
 	var rebel = false
 	
-	value = value*1+rand_range(0.2,-0.2)
-	if factor_personality_changes[prim_stat][0] <= randf()*100: #if character's factor chance is lower than check, then character goes opposite direction on personality grid
+#	value = value*1+rand_range(0.2,-0.2)
+	value *= 1 + rand_range(0.2,-0.2)
+	
+	if variables.factor_personality_changes[prim_stat][0] <= randf() * 100: #if character's factor chance is lower than check, then character goes opposite direction on personality grid
 		value = -value
 		rebel = true
 	
 	var secondary_axis_change = 0
-	if factor_personality_changes[prim_stat][1] >= randf()*100: #if character's factor chance is lower than check, thne character's secondary axist fluctate
-		secondary_axis_change = value/2
-		if randf()*2 >= 1:
+	if variables.factor_personality_changes[prim_stat][1] >= randf() * 100: #if character's factor chance is lower than check, thne character's secondary axist fluctate
+		secondary_axis_change = value / 2.0
+		if randf() >= 0.5:
 			 secondary_axis_change = -secondary_axis_change
 	
 	var newvalue = [value, secondary_axis_change]
 	
-	
-	
-	#bold/shy axis
-	
-	
-	statlist.personality_values[0] += newvalue[0]
-	statlist.personality_values[1] += newvalue[1]
+	statlist[primaxis] += newvalue[0]
+	statlist[altaxis] += newvalue[1]
+	parent.get_ref().recheck_effect_tag('recheck_stats')
+
+
+func get_personality():
+	if abs(statlist.personality_bold) > abs(statlist.personality_kind):
+		if statlist.personality_bold > 0:
+			return 'bold'
+		else:
+			return 'shy'
+	else:
+		if statlist.personality_kind > 0:
+			return 'kind'
+		else:
+			return 'serious'
+
