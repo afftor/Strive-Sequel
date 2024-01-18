@@ -127,6 +127,50 @@ var effect_table = {
 		},],
 		sub_effects = [],
 	},
+	#personality
+	e_person_bold = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'stat', stat = 'personality', operant = 'eq', value = 'bold'}],
+		tags = ['recheck_stats'],
+		atomic = [
+			{type = 'stat_add_p', stat = 'matk', value = -0.25}
+		],
+		buffs = ['b_bold'],
+		sub_effects = [rebuild_skillvalue_template({skilltype = 'skill', value = 1.25})],
+	},
+	e_person_shy = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'stat', stat = 'personality', operant = 'eq', value = 'shy'}],
+		tags = ['recheck_stats'],
+		atomic = [
+			{type = 'stat_add_p', stat = 'matk', value = 0.25},
+			{type = 'stat_add_p', stat = 'atk', value = -0.2}
+		],
+		buffs = ['b_shy'],
+		sub_effects = [],
+	},
+	e_person_kind = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'stat', stat = 'personality', operant = 'eq', value = 'kind'}],
+		tags = ['recheck_stats'],
+		atomic = [],
+		buffs = ['b_kind'],
+		sub_effects = [rebuild_skillvalue_template({tag = 'heal', value = 1.5}),],
+	},
+	e_person_serious = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'stat', stat = 'personality', operant = 'eq', value = 'serious'}],
+		tags = ['recheck_stats'],
+		atomic = [
+			{type = 'stat_add', stat = 'resist_all', value = 20},
+		],
+		buffs = ['b_serious'],
+		sub_effects = [],
+	},
 	#traits
 	e_tr_resist = {
 		type = 'trigger',
@@ -4910,6 +4954,26 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/Authority.png",
 		description = "BUFFDESCRIPTENCHANT",
 		t_name = 'enchant',
+	},
+	b_bold = {
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		description = "BUFFDESCRIPTBOLD",
+		t_name = 'personality',
+	},
+	b_kind = {
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		description = "BUFFDESCRIPTKIND",
+		t_name = 'personality',
+	},
+	b_shy = {
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		description = "BUFFDESCRIPTSHY",
+		t_name = 'personality',
+	},
+	b_serious = {
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		description = "BUFFDESCRIPTSERIOUS",
+		t_name = 'personality',
 	},
 };
 

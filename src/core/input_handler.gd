@@ -1740,3 +1740,17 @@ func roman_number_converter(number): #only supports numbers up to 10 currently. 
 		return 
 	else:
 		return variables.roman_numbers[number]
+
+
+func rect2rombus(vec : Vector2):
+	if vec.length() == 0.0:
+		return vec
+	var res
+	if vec.x * vec.y > 0:
+		res = vec.project(Vector2(1.0, 1.0))
+	else:
+		res = vec.project(Vector2(1.0, -1.0))
+	var k = res.length()
+	k *= sqrt(2.0)
+	
+	return vec / k

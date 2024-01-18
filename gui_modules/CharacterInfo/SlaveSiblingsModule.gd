@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 onready var DietModule = $SlaveDietModule
 
@@ -18,13 +18,22 @@ func _ready():
 	
 	globals.connecttexttooltip($SexSkillsTooltip, tr("INFOSEX_SKILLS"))
 	globals.connecttexttooltip($ConditionsTooltip, tr("INFORULES_CONDS"))
-	globals.connecttexttooltip($FoodFilterTooltip, tr("INFOFOODFILTER"))
+	globals.connecttexttooltip($SlaveDietModule/FoodFilterTooltip, tr("INFOFOODFILTER"))
 	globals.connecttexttooltip($SexTraitsTooltip, tr("INFOSEX_TRAITS"))
+	globals.connecttexttooltip($personality/PersonalityTooltip, tr("INFOPERSONALITY"))
+	
+	globals.connecttexttooltip($personality/bold, tr("INFOPERSONALITYBOLD"))
+	globals.connecttexttooltip($personality/shy, tr("INFOPERSONALITYSHY"))
+	globals.connecttexttooltip($personality/kind, tr("INFOPERSONALITYKIND"))
+	globals.connecttexttooltip($personality/serious, tr("INFOPERSONALITYSERIOUS"))
+	
 	$work_rules/ration.connect("button_down", self, "update")
 	$work_rules/ration.connect("button_up", self, "update")
 	$change_button.connect("pressed", self, 'swap_mode')
 	$change_button2.connect("pressed", self, 'swap_tab', [1])
 	$change_button3.connect("pressed", self, 'swap_tab', [2])
+	$FF.connect("pressed", self, 'show_food_filter')
+	$SlaveDietModule/close.connect("pressed", self, 'hide_food_filter')
 	loyalty_panel.root = get_parent()
 	
 
@@ -55,6 +64,7 @@ func set_color(value):
 
 func update():
 	person = input_handler.interacted_character
+	hide_food_filter()
 	#relatives
 	$RelativesPanel.build_relatives()
 	setup_tab()
@@ -105,21 +115,23 @@ func update():
 		
 		$ConsentLabel.text = tr("SIBLINGMODULECONSENT") + ": " + str(person.get_stat('consent'))
 		
-		globals.connecttexttooltip($food_love,"[center]" + statdata.statdata.food_love.name + "[/center]\n"+  statdata.statdata.food_love.descript)
-		globals.connecttexttooltip($food_hate,"[center]" + statdata.statdata.food_hate.name + "[/center]\n"+ statdata.statdata.food_hate.descript)
-		$food_consumption/Label.text = str(floor(person.get_stat("food_consumption")))
+		globals.connecttexttooltip($SlaveDietModule/food_love,"[center]" + statdata.statdata.food_love.name + "[/center]\n"+  statdata.statdata.food_love.descript)
+		globals.connecttexttooltip($SlaveDietModule/food_hate,"[center]" + statdata.statdata.food_hate.name + "[/center]\n"+ statdata.statdata.food_hate.descript)
+		$SlaveDietModule/food_consumption/Label.text = str(floor(person.get_stat("food_consumption")))
 		if person.food.food_love != null:
-			$food_love/Button.texture = images.icons[person.food.food_love]
-			$food_love/Button.hint_tooltip = tr("FOODTYPE" +person.food.food_love.to_upper())
-		$food_love/Button.visible = person.food.food_love != null
-		input_handler.ClearContainer($food_hate/Container)
+			$SlaveDietModule/food_love/Button.texture = images.icons[person.food.food_love]
+			$SlaveDietModule/food_love/Button.hint_tooltip = tr("FOODTYPE" +person.food.food_love.to_upper())
+		$SlaveDietModule/food_love/Button.visible = person.food.food_love != null
+		input_handler.ClearContainer($SlaveDietModule/food_hate/Container)
 		if person.food.food_hate != null:
 			for i in person.food.food_hate:
-				var newnode = input_handler.DuplicateContainerTemplate($food_hate/Container)
+				var newnode = input_handler.DuplicateContainerTemplate($SlaveDietModule/food_hate/Container)
 				newnode.texture = images.icons[i]
 				newnode.hint_tooltip =  tr("FOODTYPE" +i.to_upper())
-		$food_hate/Container.visible = person.food.food_hate != null
+		$SlaveDietModule/food_hate/Container.visible = person.food.food_hate != null
 		sex_traits_open()
+		
+		build_personality()
 
 
 func text_url_hover(meta):
@@ -238,6 +250,24 @@ func toggle_trait(trait_status, trait):
 	update_trait_capacity()
 	#get_parent().SlaveInfo.rebuild_traits()
 
+
+func show_food_filter():
+	$UpgradesPanel.visible = false
+	$RelativesPanel.visible = false
+	$SlaveDietModule.visible = true
+	
+	$change_button.visible = false
+	$change_button2.visible = false
+	$change_button3.visible = false
+
+
+func hide_food_filter():
+	$SlaveDietModule.visible = false
+	$change_button.visible = true
+	loyalty_mode = !loyalty_mode
+	swap_mode()
+
+
 func swap_mode():
 	if loyalty_mode:
 		loyalty_mode = false
@@ -272,3 +302,19 @@ func setup_tab(rebuild = true):
 		$change_button3.pressed = false
 	if rebuild:
 		loyalty_panel.update_upgrades_tree(person, loyalty_tab)
+
+
+func build_personality():
+	var limit = 100
+	limit = max(limit, abs(person.get_stat('personality_bold')))
+	limit = max(limit, abs(person.get_stat('personality_kind')))
+	
+	var tmp = Vector2(-person.get_stat('personality_kind') , -person.get_stat('personality_bold'))
+	tmp /= limit
+	tmp = input_handler.rect2rombus(tmp)
+	tmp /= 2.0
+	
+	$personality/current.rect_position = Vector2($personality.rect_size.x * (0.5 + tmp.x),  $personality.rect_size.y * (0.5 + tmp.y)) - $personality/current.rect_size * 0.5
+	
+	#2add
+	$personality/desc.bbcode_text = ""
