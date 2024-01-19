@@ -136,7 +136,7 @@ var effect_table = {
 		atomic = [
 			{type = 'stat_add_p', stat = 'matk', value = -0.25}
 		],
-		buffs = ['b_bold'],
+		buffs = [],
 		sub_effects = [rebuild_skillvalue_template({skilltype = 'skill', value = 1.25})],
 	},
 	e_person_shy = {
@@ -148,7 +148,7 @@ var effect_table = {
 			{type = 'stat_add_p', stat = 'matk', value = 0.25},
 			{type = 'stat_add_p', stat = 'atk', value = -0.2}
 		],
-		buffs = ['b_shy'],
+		buffs = [],
 		sub_effects = [],
 	},
 	e_person_kind = {
@@ -157,7 +157,7 @@ var effect_table = {
 		conditions = [{code = 'stat', stat = 'personality', operant = 'eq', value = 'kind'}],
 		tags = ['recheck_stats'],
 		atomic = [],
-		buffs = ['b_kind'],
+		buffs = [],
 		sub_effects = [rebuild_skillvalue_template({tag = 'heal', value = 1.5}),],
 	},
 	e_person_serious = {
@@ -168,7 +168,7 @@ var effect_table = {
 		atomic = [
 			{type = 'stat_add', stat = 'resist_all', value = 20},
 		],
-		buffs = ['b_serious'],
+		buffs = [],
 		sub_effects = [],
 	},
 	#traits
