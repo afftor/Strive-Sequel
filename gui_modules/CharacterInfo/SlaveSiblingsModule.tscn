@@ -134,15 +134,12 @@ margin_bottom = 13.1653
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 20 )
 text = "Food Name"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="filter" type="Label" parent="SlaveDietModule/ScrollContainer/VBoxContainer/Button"]
-margin_left = 320.848
-margin_top = 2.66974
-margin_right = 412.848
-margin_bottom = 37.6697
+margin_left = 235.0
+margin_top = 5.0
+margin_right = 327.0
+margin_bottom = 40.0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 20 )
 text = "High"
