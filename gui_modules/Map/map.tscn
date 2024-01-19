@@ -448,9 +448,9 @@ visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 42.7864
-margin_top = -410.937
+margin_top = 677.0
 margin_right = 455.786
-margin_bottom = -42.9364
+margin_bottom = 1045.0
 texture = ExtResource( 28 )
 
 [node name="frame" type="TextureRect" parent="CharPanel"]
@@ -575,9 +575,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = 700.821
-margin_top = -89.6665
+margin_top = 980.0
 margin_right = 920.821
-margin_bottom = -31.6665
+margin_bottom = 1038.0
 texture_normal = ExtResource( 39 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 16 )
