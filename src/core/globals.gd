@@ -188,7 +188,7 @@ func CreateGearItemQuest(item, parts, quest, newname = null):
 
 
 func CreateGearItemCraft(item, parts, person, newname = null):
-	var diffdata = {boost = 0, prof = false}
+	var diffdata = {boost = 0, prof = false, no_enchant = true}
 	if Items.recipes.has(item):
 		match Items.recipes[item].worktype:
 			'smith', 'tailor':

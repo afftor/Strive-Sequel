@@ -57,7 +57,7 @@ var racelist = {
 			lips = ['style1', 'style2', 'style3', 'style4', 'style5'],
 			tits_size = ['flat', 'small', 'average', 'big', 'huge', 'masculine'], #add variants
 			ass_size = ['flat', 'small', 'average', 'big', 'huge', 'masculine'],
-			hair_base_color_1 = ['yellow_1','red_1', 'red_2', 'red_3','brown_1','brown_2', 'brown_3', 'black_1', 'black_2', 'black_3'],
+			hair_base_color_1 = ['yellow_1','red_1', 'red_2', 'red_3','brown_1','brown_2', 'brown_3', 'dark_1', 'dark_2', 'dark_3'],
 			body_color_wings = [], 
 			body_color_tail = [], 
 			body_color_horns = [], 
@@ -135,7 +135,7 @@ var racelist = {
 			skin = ['dark','brown','olive'],
 			hair_color = ['blond','red','auburn','brown','black','white'],
 			body_color_skin = ['human3', 'human4', 'human5'],
-			hair_base_color_1 = ['yellow_1','red_1', 'red_2', 'red_3','brown_1','brown_2', 'brown_3', 'black_1', 'black_2', 'black_3', 'white_1', 'white_2', 'white_3'],
+			hair_base_color_1 = ['yellow_1','red_1', 'red_2', 'red_3','brown_1','brown_2', 'brown_3', 'dark_1', 'dark_2', 'dark_3', 'white_1', 'white_2', 'white_3'],
 			beard = ['no'],
 			},
 		global_weight = 30,

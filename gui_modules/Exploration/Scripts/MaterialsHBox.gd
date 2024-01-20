@@ -19,7 +19,7 @@ func update():
 	for r_task in ['recruit_easy', 'recruit_hard']:
 		if selected_location.has('tags') and selected_location.tags.has(r_task):
 			var newbutton = input_handler.DuplicateContainerTemplate(self)
-			var jobdata = races.tasklist[r_task]
+			var jobdata = tasks.tasklist[r_task]
 			newbutton.get_node("TextureRect").texture = jobdata.production_icon
 			var max_workers_count = jobdata.base_workers
 			var current_workers_count = 0
