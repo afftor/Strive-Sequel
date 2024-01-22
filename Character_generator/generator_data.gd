@@ -4036,7 +4036,7 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Chin_tex', texture = "res://Character_generator/images/01_heads/head_chin_kobold2.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Chin_tex', texture = "res://Character_generator/images/01_heads/head_chin_kobold2.png"},
 		],
-		loli = [
+		small = [
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Chin_tex', texture = "res://Character_generator/images/01_heads/head_chin_small.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Chin_tex', texture = "res://Character_generator/images/01_heads/head_chin_small.png"},
 		],
