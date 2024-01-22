@@ -27,7 +27,7 @@ var Skilllist = {
 		dialogue_image = 'praise',
 		value = [['5'], ['100'], ['25']],
 		damagestat = ['+loyalty', '+obedience', '+personality_kind'],
-		receiver = ['target','target','caster']
+#		receiver = ['target','target','caster']
 	},
 	warn = {#not sure about being negative now and though adding loyalty to slaves
 		code = 'warn',
@@ -48,7 +48,7 @@ var Skilllist = {
 		dialogue_image = 'warn',
 		value = [['5'], ['100'], ['25']],
 		damagestat = ['+loyalty', '+obedience', '-personality_kind'],
-		receiver = ['target','target','caster']
+#		receiver = ['target','target','caster']
 	},
 	rewardsex = {
 		code = 'rewardsex',
@@ -71,7 +71,7 @@ var Skilllist = {
 #		damagestat = ['+loyalty', '+obedience'],
 		value = [['caster.sexuals_factor', '+5'], ['100'], ['25']],
 		damagestat = ['+loyalty', '+obedience', '+personality_bold'],
-		receiver = ['target','target','caster']
+#		receiver = ['target','target','caster']
 #		value = [['caster.sexuals', '*2', '/100', '+1', '*36'], ['25'], ['1'], ['10'],['20']],
 #		damagestat = [ '+loyaltyObedience', '-lust', '+consent','base_exp','base_exp'],
 #		receiver = ['target','target','target','target','caster'],
@@ -95,7 +95,7 @@ var Skilllist = {
 		dialogue_image = 'punish',
 		value = [['10'], ['100'], ['25']],
 		damagestat = ['+loyalty', '+obedience', '-personality_bold'],
-		receiver = ['target','target','caster'] #caster? or this time target
+#		receiver = ['target','target','caster'] 
 #		value = [['15'],['caster.physics', '*0.3', '+40']],
 #		damagestat = ['+obedience','+fear'],
 	},

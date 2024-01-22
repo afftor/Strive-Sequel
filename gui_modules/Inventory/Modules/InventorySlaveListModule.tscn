@@ -214,7 +214,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="growth_factor" type="Label" parent="InventoryFactorsModule/factors2" groups=["hide_master"]]
+[node name="growth_factor" type="Label" parent="InventoryFactorsModule/factors2"]
 margin_right = 59.0
 margin_bottom = 42.0
 rect_min_size = Vector2( 50, 35 )
