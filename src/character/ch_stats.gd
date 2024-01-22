@@ -1978,11 +1978,12 @@ func change_personality_stats(stat, init_value):
 		if randf() >= 0.5:
 			 secondary_axis_change = -secondary_axis_change
 	
-	var newvalue = [value, secondary_axis_change]
+	var newvalue = [int(value), int(secondary_axis_change)]
 	
 	statlist[primaxis] += newvalue[0]
 	statlist[altaxis] += newvalue[1]
 	parent.get_ref().recheck_effect_tag('recheck_stats')
+	return (newvalue)
 
 
 func get_personality():
