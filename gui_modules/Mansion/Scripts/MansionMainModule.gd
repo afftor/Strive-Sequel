@@ -595,6 +595,8 @@ func test_mode():
 		character.travel.area = 'plains'
 		character.add_stat('resist_normal', 50)
 		character.add_stat('resist_all', 50)
+		character.set_stat('personality_kind', 100)
+		character.set_stat('personality_bold', 50)
 		#variables.dungeon_encounter_chance = 1
 		var bow = globals.CreateGearItemQuality("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}, 'poor', false)
 		globals.AddItemToInventory(bow)

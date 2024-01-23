@@ -4824,21 +4824,21 @@ var enchantments = {
 		],
 		levels = {
 			1:{
-				statmods = {evasion = 5},
+				statmods = {evasion_add = 5},
 #				effects = [],
 				weight = 100,
 				cap_cost = 150,
 				gold_cost = 1000
 			},
 			2:{
-				statmods = {evasion = 10},
+				statmods = {evasion_add = 10},
 #				effects = [],
 				weight = 100,
 				cap_cost = 200,
 				gold_cost = 2000
 			},
 			3:{
-				statmods = {evasion = 15},
+				statmods = {evasion_add = 15},
 #				effects = [],
 				weight = 100,
 				cap_cost = 250,
@@ -4858,21 +4858,21 @@ var enchantments = {
 		],
 		levels = {
 			1:{
-				statmods = {exp_gain_mod = 0.1},
+				statmods = {exp_gain_mod_add = 0.1},
 #				effects = [],
 				weight = 100,
 				cap_cost = 200,
 				gold_cost = 3000
 			},
 			2:{
-				statmods = {exp_gain_mod = 0.15},
+				statmods = {exp_gain_mod_add = 0.15},
 #				effects = [],
 				weight = 100,
 				cap_cost = 300,
 				gold_cost = 5000
 			},
 			3:{
-				statmods = {exp_gain_mod = 0.2},
+				statmods = {exp_gain_mod_add = 0.2},
 #				effects = [],
 				weight = 100,
 				cap_cost = 400,

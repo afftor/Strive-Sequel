@@ -22,6 +22,10 @@ func show_factors():
 		$VBoxContainer2/TextureRect3/BaseExp.text = str(floor(person.get_stat("base_exp")))
 		$VBoxContainer2/TextureRect4/NextClassExp.text = str(person.get_next_class_exp())
 		for i in $factors1.get_children():
+			if i.is_in_group('hide_master') and person.is_master():
+				i.visible = false
+			else:
+				i.visible = true
 			if input_handler.globalsettings.factors_as_words:
 				i.get_node("Label").text = ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat(i.name)))]
 				i.get_node("Label").set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat(i.name))))])
@@ -30,6 +34,10 @@ func show_factors():
 				i.get_node("Label").set("custom_colors/font_color", Color(1,1,1))
 
 		for i in $factors2.get_children():
+			if i.is_in_group('hide_master') and person.is_master():
+				i.visible = false
+			else:
+				i.visible = true
 			if input_handler.globalsettings.factors_as_words:
 				i.get_node("Label").text = ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat(i.name)))]
 				i.get_node("Label").set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat(i.name))))])
