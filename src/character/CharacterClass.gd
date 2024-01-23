@@ -81,7 +81,10 @@ func get_stat(statname, ref = false):
 	if statname == 'base_exp':
 		return xp_module.base_exp
 	if statname == 'pose':
-		match get_stat('personality'):
+		var st = get_stat('personality')
+		if st == 'neutral':
+			st = get_stat('old_personality')
+		match st:
 			'shy':
 				match get_stat('sex'):
 					'male':
@@ -316,6 +319,7 @@ func generate_ea_character(gendata, desired_class):
 func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0, trait_blacklist = []):
 	statlist.generate_random_character_from_data(races, desired_class, adjust_difficulty, trait_blacklist)
 	xp_module.set_service_boost()
+	recheck_effect_tag('recheck_stats')
 
 func get_class_list(category, person):
 	return xp_module.get_class_list(category, person)
@@ -333,7 +337,8 @@ func generate_simple_fighter(tempname):
 	ai.app_obj = self
 	if data.has('tags') and data.tags.has('boss'):
 		globals.char_roll_data.uniq = true
-		
+	recheck_effect_tag('recheck_stats')
+
 
 func generate_predescribed_character(data):
 	create(data.race, data.sex, data.age)
@@ -346,6 +351,7 @@ func generate_predescribed_character(data):
 		xp_module.set_service_boost(data.service_boosters)
 	else:
 		xp_module.set_service_boost()
+	recheck_effect_tag('recheck_stats')
 
 func create(temp_race, temp_gender, temp_age):
 	id = characters_pool.add_char(self)
@@ -353,6 +359,7 @@ func create(temp_race, temp_gender, temp_age):
 	statlist.create(temp_race, temp_gender, temp_age)
 	food.create()
 	add_trait('core_trait')
+	recheck_effect_tag('recheck_stats')
 
 func fill_boosters():
 	xp_module.set_service_boost()

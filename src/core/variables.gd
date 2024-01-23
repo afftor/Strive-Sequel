@@ -415,7 +415,7 @@ var autosave_frequency_min = 1
 var autosave_frequency_max = 30
 
 
-var personality_array = ['kind','bold','shy','serious']
+var personality_array = ['neutral','kind','bold','shy','serious']
 var dynamic_text_vars = ['name', 'He','he', 'his', 'him', "His", 'raceadj', 'race','age', 'male', 'eye_color','hair_color', 'boy']
 
 #editor data
