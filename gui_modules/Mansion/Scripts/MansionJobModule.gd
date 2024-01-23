@@ -77,6 +77,15 @@ func build_farm():
 	$BrothelRules.visible = false
 	$NavigationModule.visible = false
 	
+	$DescriptionLabel.bbcode_text = ""
+	$ToolLabel.text = ""
+	$WorkunitLabel.text = ""
+	$Modlabel.text = ""
+	$Workmod.hide()
+	$Workstat.hide()
+	$Worktool.hide()
+	$Workunit.hide()
+	
 	update_characters()
 	build_accessible_locations()
 	build_farm_slots()
@@ -258,6 +267,7 @@ func close_job_pannel():
 	selected_resource = null
 	selected_job = null
 	get_parent().SlaveListModule.update()
+	get_parent().TaskModule.update_progresses()
 #	ResourceScripts.core_animations.UnfadeAnimation(get_parent(), 0.3)
 	if gui_controller.clock != null:
 		ResourceScripts.core_animations.UnfadeAnimation(gui_controller.clock, 0.3)

@@ -166,7 +166,7 @@ func show_tutorial_list(tut):
 		b.pressed = b.get_meta("tut") == tut
 	var img = {}
 	var size = 0
-	match tut:
+	match tr(tut):
 		"introduction":
 			img = introduction_images
 			size = introduction_images.size() - 1

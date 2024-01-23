@@ -49,12 +49,12 @@ var data = {
 	},
 	
 	gryphon_aire_4 = {
-		image = null, tags = ['dialogue_scene'],
+		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "aire",
 		text = [{text = "GRYPHON_AIRE_4_1", reqs = [], previous_dialogue_option = 1},
 		{text = "GRYPHON_AIRE_4_2", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
-			code = 'gryphon_aire_5', text = "GRYPHON_AIRE_4_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'gryphon_aire_5', text = "GRYPHON_AIRE_4_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', master_translate = true
 		}, {
 			code = 'gryphon_aire_5', text = "GRYPHON_AIRE_4_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
 		}, {

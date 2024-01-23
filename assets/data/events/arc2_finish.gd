@@ -529,7 +529,9 @@ var data = {
 				reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'neq', value = 'female'}]}], character = "elf_priestess",
 				text = [{text = 'AFTER_TEMPLE_PRIESTESS_5_1_1_BAD', reqs = [],}], 
 				options = [ {
-					code = 'after_temple_priestess_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+					code = 'after_temple_priestess_5_1and2', text = "AFTER_TEMPLE_PRIESTESS_4_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+				}, {
+					code = 'after_temple_priestess_5_1and2', text = "AFTER_TEMPLE_PRIESTESS_4_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
 				}, ]
 			}, {
 				image = null, tags = ['dialogue_scene', 'master_translate',],

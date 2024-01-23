@@ -584,6 +584,7 @@ var racelist = {
 			ears = ['feathered'],
 			arms = ['wings'],
 			beard = ['no'],
+			wings = ["harpy"],
 			},
 		global_weight = 25,
 		traits = ['racial_oviposition']

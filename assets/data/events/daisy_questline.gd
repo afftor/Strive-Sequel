@@ -221,7 +221,7 @@ var data = {
 	daisy_dress_acquired_normal_3 = { # NON-LEWD DRESS / WILLING
 		variations = [ {
 			reqs = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 3}],
-			tags = ['dialogue_scene'], image = null, character = 'daisy_maid',
+			tags = ['dialogue_scene', 'master_translate'], image = null, character = 'daisy_maid',
 			text = [{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_0", reqs = []}],
 			options = [ {
 				code = 'daisy_dress_acquired_normal_4_1', text = "DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2_1", reqs = [], dialogue_argument = 1, change_dialogue_type = 2
@@ -247,7 +247,7 @@ var data = {
 		custom_background = "daisy_bj1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		tags = ['dialogue_scene'],
+		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_1", reqs = []}],
 		options = [
 #			{
@@ -328,7 +328,7 @@ var data = {
 		custom_background = "daisy_bj3",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		tags = ['dialogue_scene'],
+		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_5", reqs = []}],
 		options = [
 			{
