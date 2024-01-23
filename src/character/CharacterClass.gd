@@ -1611,6 +1611,8 @@ func pay_cost(cost):
 			 ResourceScripts.game_party.money -= cost.money
 		elif st == 'mp':
 			mp -= int(cost.mp * get_stat('manacost_mod'))
+			if displaynode != null:
+				displaynode.update_mana()
 		else: 
 			add_stat(st, -cost[st])
 

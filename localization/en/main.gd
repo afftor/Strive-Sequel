@@ -143,6 +143,8 @@ var TranslationDict = {
 	PRONOUNSEXH = "futa",
 	PRONOUNMAN = "man",
 	PRONOUNMANF = "woman",
+	PRONOUNGUY = "guy",
+	PRONOUNGUYF = "gal",
 	PRONOUNHUSBAND = "husband",
 	PRONOUNHUSBANDF = "wife",
 	PRONOUNGROOM = "groom",
@@ -739,7 +741,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMWITCH_HAT = "Witch Hat",
 	ITEMWITCH_HATDESCRIPT = "A canonical hat with magic powers.",
 	ITEMZEPHYRA_BRUSH = "Foxtail Brush",
-	ITEMZEPHYRA_BRUSHDESCRIPT = "A mystic paintbrush with its hair having some resemblance with the tail of a fox... Fox tails are rumored to possess mystic power which allows them to invoke wonders with a mere flick of it.\n\nWhen casting a spell has 25% chance to cast it an additional time.",
+	ITEMZEPHYRA_BRUSHDESCRIPT = "A mystic paintbrush with its hair having some resemblance with the tail of a fox... Fox tails are rumored to possess mystic power which allows them to invoke wonders with a mere flick of it.\n\nWhen casting a spell has 25% chance to cast it an additional time.", # Foxtail brush doesn't mention in description that only Zephyra can use it
 	
 	
 	#Items
@@ -2175,7 +2177,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	BUFFDESCRIPTATKPAS = "Damage increased",
 	BUFFDESCRIPTATTACKPASSSRC = "Increases ATK and MATK of allies by 10 every other turn. Clears when defeated.",
 	BUFFDESCRIPTRESTO = "Resting: physical resist increased by 20%%",
-	
+	BUFFDESCRIPTCURSE = "",
+	BUFFDESCRIPTENCHANT = "",
 	
 	
 	
@@ -3136,6 +3139,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ENEMYCAVE_GOBLIN_MELEE = "Cave Goblin",
 	ENEMYCAVE_GOBLIN_ARCHER = "Cave Goblin Archer",
 	ENEMYCAVE_GOBLIN_SHAMAN = "Cave Goblin Shaman",
+	ENEMYCAVE_GOBLIN_MAGE = "Cave Goblin Mage",
 	ENEMYCAVE_GOBLIN_BOSS = "Cave Goblin Boss",
 	ENEMYQUEST_GOBLIN_BOSS = "Goblin Thug",
 	ENEMYQUEST_GOBLIN_SHAMAN = "Goblin Mage",
@@ -8237,10 +8241,12 @@ Aire searches the surroundings for some time until she finally spots a lone crys
 	AFTER_TEMPLE_PRIESTESS_3_OPTION_1 = "What about our agreement?",
 	AFTER_TEMPLE_PRIESTESS_3_OPTION_2 = "I believe you owe me something.",
 	AFTER_TEMPLE_PRIESTESS_4 = """ — Yes, indeed, I have not forgotten, but the ceremony is currently of a higher priority for us. Once it's done, I swear on Freya's honor to help out with your task. Until then, you should see yourself as my honored guest.""",
-	AFTER_TEMPLE_PRIESTESS_4_OPTION_1 = "Maybe you could thank me in some other way until then.",
+	AFTER_TEMPLE_PRIESTESS_4_OPTION_1 = "[Sex Check] Maybe you could thank me in some other way until then.",
 	AFTER_TEMPLE_PRIESTESS_4_OPTION_2 = "I guess I have no other choice.",
 	AFTER_TEMPLE_PRIESTESS_4_OPTION_3 = "I'll wait until then.",
-	AFTER_TEMPLE_PRIESTESS_5_1_1 = """Heleviel gives you a more intimate look as she appraises your appearance, after which her face brightens with a rare faint smile.
+	AFTER_TEMPLE_PRIESTESS_5_1_1 = """{color=green|Success}
+
+Heleviel gives you a more intimate look as she appraises your appearance, after which her face brightens with a rare faint smile.
 
  — You know, maybe I could. You know, Freya's high priestess is not allowed to be tainted by man's touch, so if you were a male, I'd have to refuse. But with no men here...
 
@@ -8272,7 +8278,9 @@ Understanding you'd resume licking her there, her hips rolling in your grip as s
  — The guards will... escort you out. 
 
 	The guards do indeed escort you out, though the entire time the silent men have a look in their eyes hovering between admiration and fear. Disciplined yes, but you can't help but notice it looked like the younger of the two was moments from throwing himself at your feet.""", 
-	AFTER_TEMPLE_PRIESTESS_5_1_1_BAD = """— I'm afraid this is not possible. Freya's High Priestess shall not be tainted by man's touch.""",
+	AFTER_TEMPLE_PRIESTESS_5_1_1_BAD = """{color=red|Failure}
+
+— I'm afraid this is not possible. Freya's High Priestess shall not be tainted by man's touch.""",
 	AFTER_TEMPLE_PRIESTESS_5_1AND2 = """As you make your way out of the priestess' chambers, you are called out to by some hooded soldier. After confirming your identity, he informs you that Erlen wants to see you in the woods on the outskirts. After relaying his location to you, the soldier leaves quietly.""",
 	ERLERN_ENCOUNTER_START = """After scouting through the location, you can't find any signs of activity and start to wonder if you've come to the wrong place. Suddenly a couple of elven soldiers appear before you, taking you by surprise. As they inspect you, they tell you to follow them to meet Erlen.""",
 	ERLERN_ENCOUNTER_1 = """Erlen meets you at the makeshift camp among the trees. You'd probably not recognize it as a camp if you didn't know it was there. Erlen's face remains impassive until you pass him the letter from Leon. After reading it, his expression grows more pessimistic.
@@ -10065,7 +10073,7 @@ Perhaps, it was too much for her...""",
 The girl kneels down on all fours and hovers above the bowl. Her ass is raised slightly in the air as she tastes the food. Soon, she gives in to her base instincts, eating vigorously.""",
 	CALI_ACT5_PET_8 = """Her panties are visibly wet as she eats. A moan barks out from her as your hand finds her slick underwear, sliding them over her backside while you sit beside your feeding pet. Cali stops her eating, looking backwards as a dark blush creeps over her face.
 
-Cali: — [Name], what are you doing?
+Cali: — [name], what are you doing?
 
 A light touch to her chin is all the girl receives in answer, a silent reminder to finish her meal. Cali tries visibly to keep her composure, but between the stroking of her crotch and the already established arousal she's unable to focus on her meal for much longer.
 
@@ -11408,13 +11416,13 @@ Zephyra smiles with unparalleled adoration as her tail wags playfully.
 	AMELIA_MAIN_GUILD_1_OPTION_2 = """What's keeping you so busy?""",
 	AMELIA_MAIN_GUILD_1_OPTION_3 = """I received the summons for some questioning.""",
 	AMELIA_MAIN_GUILD_2_1 = """— Regrettably, she is... um... currently unavailable. I'm overseeing the Guild's matters for now. My name is Norlan. Should you require assistance regarding the guild, I'm here to facilitate it. However, if your matter pertains to Amelia... Well, I'm afraid it must be postponed for the time being.""",
-	AMELIA_MAIN_GUILD_2_2 = """— There have been some unforeseen developments involving the guild and its members. However, you do not need to worry, Mayor [Name]. I can assure you that our business interactions will remain unaffected by these events. Nevertheless, a brief adjustment period is required to properly acclimate to this new situation before moving forward.""",
+	AMELIA_MAIN_GUILD_2_2 = """— There have been some unforeseen developments involving the guild and its members. However, you do not need to worry, Mayor [name]. I can assure you that our business interactions will remain unaffected by these events. Nevertheless, a brief adjustment period is required to properly acclimate to this new situation before moving forward.""",
 	AMELIA_MAIN_GUILD_2_3 = """Norlan: — Hmm... Quite intriguing. I distinctly communicated to our secretary that we have no intention of inconveniencing you with such trivial matters.""",
 	AMELIA_MAIN_GUILD_2 = """The office door swings open abruptly, as another man rushes into the office. He possesses a plump physique and a relatively short stature. His attire unmistakably exudes an air of opulence and high social standing.
 
-Guildsman: — Norlan, has there been any news about the missing slaves yet? My clients demand an explanation. I can't keep them in the dark! Oh... I see you have a guest. [Mister] Mayor, to what do we owe the pleasure?
+Guildsman: — Norlan, has there been any news about the missing slaves yet? My clients demand an explanation. I can't keep them in the dark! Oh... I see you have a guest. [mister] Mayor, to what do we owe the pleasure?
 
-Norlan: — It appears that our secretary found it necessary to squander Mayor [Name]'s valuable time with unwarranted inquiries regarding Amelia's actions. I was in the midst of clarifying to [him] that his testimony won't be—
+Norlan: — It appears that our secretary found it necessary to squander Mayor [name]'s valuable time with unwarranted inquiries regarding Amelia's actions. I was in the midst of clarifying to [him] that his testimony won't be—
 """,
 	AMELIA_MAIN_GUILD_3_1 = """Guildsman: — Perfect! We need all the information we can get. That sly woman is too good at covering her tracks. 
 
@@ -13793,6 +13801,7 @@ Hotkey: 3""",
 	SOCIAL_SKILLS = "Social Skills",
 	COMBAT_SKILLS = "Combat Skills",
 	PERSONAL_STAT = "Personal Statistics",
+	BODY_UPGRADE_TOOLTIP = "", # Help on "Upgrade Body" menu
 	
 	# SlaveClassesModule
 	CAT_ALL = "All",
@@ -14210,7 +14219,7 @@ Hotkey: 3""",
 	ENCHUNDEADBANEDESCRIPT = "Increases damage versus undead enemies by 10%+10%*level",
 	ENCHGIANTSLAYER = "Giant Slayer",
 	ENCHGIANTSLAYERDESCRIPT = "Increases damage versus giant type enemies by 10%+10%*level.",
-	ENCHDRAGONSALYER = "Dragon Slayer",
+	ENCHDRAGONSLAYER = "Dragon Slayer",
 	ENCHDRAGONSLAYERDESCRIPT = "Increases damage versus dragon type enemies by 10%+10%*level.",
 	ENCHMANASIPHON = "Mana Siphon",
 	ENCHMANASIPHONDESCRIPT = "Skill attacks restore 1*level mana per use",
@@ -14224,10 +14233,10 @@ Hotkey: 3""",
 	CURSESTUB_MINORDESCRIPT = "",
 	CURSESTUB_MAJOR = "",
 	CURSESTUB_MAJORDESCRIPT = "",
-	CURSECURSEWEAKNESS_MINOR = "Curse of Weakness (minor)",
-	CURSECURSEWEAKNESS_MINORDESCRIPT = "Physics -30",
-	CURSECURSEWEAKNESS_MAJOR = "Curse of Weakness (major)",
-	CURSECURSEWEAKNESS_MAJORDESCRIPT = "Physics -60",
+	CURSEWEAKNESS_MINOR = "Curse of Weakness (minor)",
+	CURSEWEAKNESS_MINORDESCRIPT = "Physics -30",
+	CURSEWEAKNESS_MAJOR = "Curse of Weakness (major)",
+	CURSEWEAKNESS_MAJORDESCRIPT = "Physics -60",
 	CURSESLOWWIT_MINOR = "Curse of Slow wit (minor)",
 	CURSESLOWWIT_MINORDESCRIPT = "Wits -30",
 	CURSESLOWWIT_MAJOR = "Curse of Slow wit (major)",

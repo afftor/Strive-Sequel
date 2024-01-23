@@ -251,7 +251,7 @@ var data = {
 	
 	zephyra_quest_11 = {
 		variations = [ {
-				image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'],
+				image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'],
 				reqs = [{type = "has_upgrade", name = 'resting', value = 1}], character = "zephyra", character2 = "ginny",
 				custom_background = "church_event",
 				text = [{text = "ZEPHYRA_QUEST_11", reqs = []}],

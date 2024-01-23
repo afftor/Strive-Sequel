@@ -1792,6 +1792,7 @@ func translate(text):
 	text = text.replace("[him]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHIML'), tr("PRONOUNHIMLF")))
 	text = text.replace("[His]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHIS'), tr("PRONOUNHISF")))
 	text = text.replace("[Sir]", globals.fastif(statlist.sex == 'male', tr('PRONOUNSIR'), tr("PRONOUNSIRF")))
+	text = text.replace("[sir]", globals.fastif(statlist.sex == 'male', tr('PRONOUNSIR'), tr("PRONOUNSIRF")))
 	text = text.replace("[mister]", globals.fastif(statlist.sex == 'male', tr('PRONOUNMISTER'), tr("PRONOUNMISTERF")))
 	text = text.replace("[son]", globals.fastif(statlist.sex == 'male', tr('PRONOUNSON'), tr("PRONOUNSONF")))
 	text = text.replace("[father]", globals.fastif(statlist.sex == 'male', tr('PRONOUNFATHER'), tr("PRONOUNFATHERF")))
@@ -1807,6 +1808,7 @@ func translate(text):
 	text = text.replace("[eye_color]", statlist.eye_color)
 	text = text.replace("[hair_color]", statlist.hair_color)
 	text = text.replace("[man]", globals.fastif(statlist.sex == 'male', tr('PRONOUNMAN'), tr("PRONOUNMANF")))
+	text = text.replace("[guy]", globals.fastif(statlist.sex == 'male', tr('PRONOUNGUY'), tr("PRONOUNGUYF")))
 	text = text.replace("[husband]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHUSBAND'), tr("PRONOUNHUSBANDF")))
 	text = text.replace("[groom]", globals.fastif(statlist.sex == 'male', tr('PRONOUNGROOM'), tr("PRONOUNGROOMF")))
 

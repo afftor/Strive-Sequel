@@ -266,7 +266,7 @@ func geartemplete_tooltip(data):
 	if item.has('geartype'):
 		text += tr('TYPE_LABEL') + ': ' + item.geartype + "\n"
 		if item.slots.size() > 0:
-			text += tr('SLOTS_LABEL' + ': ')
+			text += tr('SLOTS_LABEL') + ': '
 			for i in item.slots:
 				text += tr("ITEMSLOT"+i.to_upper()) + ", "
 			text = text.substr(0, text.length() -2) + ". \n"
