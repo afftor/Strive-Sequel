@@ -23,6 +23,7 @@ var template = {
 	personality = '',
 	personality_bold = 0,
 	personality_kind = 0,
+	old_personality = 'kind',
 #	personaltiy_values = [0,0],
 	obedience = variables.basic_max_obed,
 	obedience_max = variables.basic_max_obed,

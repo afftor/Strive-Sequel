@@ -75,6 +75,9 @@ func custom_stats_set(st, value):
 #	if value.has(''):
 #		statlist[''] =
 #	for st in value:
+	if st == 'personality':
+		set_personality(value)
+		return
 	if st in ['hair_base_color_1', 'hair_base_color_2' ]:
 		statlist[st] = value
 		statlist[st.replace('base', 'fringe')] = value
@@ -1221,19 +1224,7 @@ func process_chardata(chardata, unique = false):
 	if chardata.has('icon_image'):
 		statlist.dynamic_portrait = false
 	if chardata.has('personality'):
-		match chardata.personality:
-			'bold':
-				statlist.personality_bold = globals.rng.randi_range(30, 60)
-				statlist.personality_kind = globals.rng.randi_range(-10, 10)
-			'shy':
-				statlist.personality_bold = -globals.rng.randi_range(30, 60)
-				statlist.personality_kind = globals.rng.randi_range(-10, 10)
-			'kind':
-				statlist.personality_bold = globals.rng.randi_range(-10, 10)
-				statlist.personality_kind = globals.rng.randi_range(30, 60)
-			'serious':
-				statlist.personality_bold = globals.rng.randi_range(-10, 10)
-				statlist.personality_kind = -globals.rng.randi_range(30, 60)
+		set_personality(chardata.personality)
 	set_virginity_data()
 
 
@@ -1983,10 +1974,13 @@ func change_personality_stats(stat, init_value):
 	statlist[primaxis] += newvalue[0]
 	statlist[altaxis] += newvalue[1]
 	parent.get_ref().recheck_effect_tag('recheck_stats')
+	check_old_personality()
 	return (newvalue)
 
 
 func get_personality():
+	if abs(statlist.personality_bold) <= 30 and abs(statlist.personality_kind) <= 30:
+		return 'neutral'
 	if abs(statlist.personality_bold) > abs(statlist.personality_kind):
 		if statlist.personality_bold > 0:
 			return 'bold'
@@ -1998,3 +1992,27 @@ func get_personality():
 		else:
 			return 'serious'
 
+
+func set_personality(value):
+	match value:
+		'neutral':
+			statlist.personality_bold = globals.rng.randi_range(-10, 10)
+			statlist.personality_kind = globals.rng.randi_range(-10, 10)
+		'bold':
+			statlist.personality_bold = globals.rng.randi_range(65, 85)
+			statlist.personality_kind = globals.rng.randi_range(-10, 10)
+		'shy':
+			statlist.personality_bold = -globals.rng.randi_range(65, 85)
+			statlist.personality_kind = globals.rng.randi_range(-10, 10)
+		'kind':
+			statlist.personality_bold = globals.rng.randi_range(-10, 10)
+			statlist.personality_kind = globals.rng.randi_range(65, 85)
+		'serious':
+			statlist.personality_bold = globals.rng.randi_range(-10, 10)
+			statlist.personality_kind = -globals.rng.randi_range(65, 85)
+	check_old_personality()
+
+
+func check_old_personality():
+	if get_personality() != 'neutral':
+		statlist.old_personality = get_personality()
