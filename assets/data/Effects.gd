@@ -2218,7 +2218,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'evasion', value = 20}],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Fear.png",
+				icon = "res://assets/images/iconsskills/icon_camouflage.png",
 				description = "TRAITEFFECTCAMO",
 				limit = 1,
 				t_name = 'camo'
@@ -3937,7 +3937,7 @@ var effect_table = {
 		args = [],
 		atomic = [{type = 'remove_all_effects', value = 'atkpass'}],
 	},
-		e_s_takeposition = {
+	e_s_takeposition = {
 		type = 'temp_s',
 		duration = 2,
 		stack = 1,

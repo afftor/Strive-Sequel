@@ -346,7 +346,7 @@ func selectcraftitem(item):
 			var newbutton = input_handler.DuplicateContainerTemplate(basic_setup_container)
 			newbutton.get_node("Icon").texture = Items.materiallist[m].icon
 			newbutton.get_node("Reqs").text =  str(ResourceScripts.game_res.materials[m]) + "/" + str(item.materials[m])
-			newbutton.get_node("Name").text = m.capitalize()
+			newbutton.get_node("Name").text = tr("MATERIAL" + m.to_upper())
 			newbutton.disabled = item.materials[m] > ResourceScripts.game_res.materials[m]
 			globals.connectmaterialtooltip(newbutton, Items.materiallist[m])
 		for i in item.items:

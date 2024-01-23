@@ -10,7 +10,7 @@ func _ready():
 	for i in $base_stats.get_children():
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
 	for i in $factors.get_children():
-		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
+		globals.connecttexttooltip(i, ResourceScripts.game_party.get_master().translate(statdata.statdata[i.name].descript))
 	globals.connecttexttooltip(get_node("VBoxContainer2/TextureRect2/Exp"), statdata.statdata["base_exp"].descript)
 	$VBoxContainer2/TextureRect4/NextClassExp.hint_tooltip = tr("NEXTCLASSEXP")# + str(person.get_next_class_exp())
 	globals.connecttexttooltip($GridContainer/SkillsButton, tr("BUTTONCLASS"))#"Class and Skills")

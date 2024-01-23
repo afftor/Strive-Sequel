@@ -80,6 +80,10 @@ func show_slave_info():
 			temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
 			globals.connecttexttooltip(newnode, temptext)
 		globals.build_attrs_for_char(self, person)
+		if person.is_master() or person.is_unique():
+			$RichTextLabel.set("custom_colors/default_color", variables.hexcolordict.unique)
+		else:
+			$RichTextLabel.set("custom_colors/default_color", variables.hexcolordict.white)
 		$RichTextLabel.bbcode_text = text
 
 		for i in ['hp','mp','lust']:

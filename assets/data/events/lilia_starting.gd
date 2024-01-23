@@ -264,7 +264,7 @@ var data = {
 		options = [ {
 			code = 'sick_lilia_5', text = "SICK_LILIA_4_2_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
-			code = 'sick_lilia_5', text = "SICK_LILIA_4_2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
+			code = 'sick_lilia_5', text = "SICK_LILIA_4_2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', master_translate = true
 		}, ]
 	},
 	

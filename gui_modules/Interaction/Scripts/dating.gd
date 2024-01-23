@@ -658,7 +658,7 @@ func flirt(person, counter):
 
 
 func intimate(person, counter):
-	var text = tr("DATING_INTIM_BED")
+	var text = tr("DATING_INTIM_BED_1")
 
 	if mood >= 80 - master.get_stat('charm_factor') * 7:
 		var has_unknown_traits = false
