@@ -1466,6 +1466,20 @@ func create(temp_race, temp_gender, temp_age):
 	random_icon()
 	
 	statlist.personality = input_handler.random_from_array(variables.personality_array)
+	match statlist.personality:
+		'bold':
+			statlist.personality_bold = rand_range(35,95)
+			statlist.personality_kind = rand_range(30,-30)
+		'shy':
+			statlist.personality_bold = rand_range(-35,-95)
+			statlist.personality_kind = rand_range(30,-30)
+		'kind':
+			statlist.personality_bold = rand_range(30,-30)
+			statlist.personality_kind = rand_range(35,95)
+		'serious':
+			statlist.personality_bold = rand_range(-35,-95)
+			statlist.personality_kind = rand_range(30,-30)
+	
 	
 	for i in ResourceScripts.descriptions.bodypartsdata:
 		if ResourceScripts.descriptions.bodypartsdata[i].has(statlist[i]):
@@ -1985,7 +1999,7 @@ func change_personality_stats(stat, init_value):
 	statlist[primaxis] += newvalue[0]
 	statlist[altaxis] += newvalue[1]
 	parent.get_ref().recheck_effect_tag('recheck_stats')
-	return (newvalue)
+	return [newvalue, rebel]
 
 
 func get_personality():

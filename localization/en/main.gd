@@ -181,6 +181,7 @@ var TranslationDict = {
 	SIBLINGMODULESIBLINGS = "Siblings",
 	SIBLINGMODULECHILDDREN = "Children",
 	SIBLINGMODULECURRENTCAPACITY = "Current Capacity",
+	SIBLINGMODULEPERSONALITY = "Personality",
 	SYSMESSAGEATLEAST1CHAR = "Select at least 1 character to fight.",
 	
 	OPERANTATLEAST = "At least",
@@ -1610,15 +1611,32 @@ However, while it might seem that Landowners have nothing but contempt for those
 	INFOSEX_SKILLS = "Sex Skills refer to character's performance during sex. The higher they are, the quicker they can make thier partner to orgasm with related actions. Character's Sexual Proficiency is based on average of 3 highest skills.\nConsent represents character's general acceptance of various sexual actions, but it is also heavily affected by partners and situtation.",
 	INFOSEX_TRAITS = "Sex Traits provide additional effects during sexual interaction. They can be learned, activated and deactivated. Maximum number of activatale traits is based on Sex Factor.",
 	INFORULES_CONDS = "Conditions and rules can be toggled on character, affecting some of their stats and behavior.",
+	INFOPERSONALITY = "Character's personality will affect thier banter and provide access to certain traits and bonuses. Personality will be affected by social skills used on character.",
+	INFOPERSONALITYBOLD = "[center]Bold[/center]\n+25% Skill Damage; -25% MATK",
+	INFOPERSONALITYKIND = "[center]Kind[/center]\n+50% Healing Spell Efficiency",
+	INFOPERSONALITYSERIOUS = "[center]Serious[/center]\n+20% Damage Reduction",
+	INFOPERSONALITYSHY = "[center]Shy[/center]\n+25% MATK, -20% ATK",
+	PERSONALITYNAMEBOLD = "Bold",
+	PERSONALITYNAMEKIND = "Kind",
+	PERSONALITYNAMESERIOUS = "Serious",
+	PERSONALITYNAMESHY = "Shy",
+	PERSONALITYCHANGE = "'s personality changed to: ",
+	PERSONALITYSHIFTPERSONALITY_KIND = "[name]'s behavior has shifted to more {color=green|Kind} side.",
+	PERSONALITYSHIFTPERSONALITY_SHY = "[name]'s behavior has shifted to more {color=green|Shy} side.",
+	PERSONALITYSHIFTPERSONALITY_SERIOUS = "[name]'s behavior has shifted to more {color=green|Serious} side.",
+	PERSONALITYSHIFTPERSONALITY_BOLD = "[name]'s behavior has shifted to more {color=green|Bold} side.",
 	
+	PERSONALITYCURRENT = "Current Personality: ",
+	
+	PERSONALITYREBEL = "\n{color=red|Due to [his] rebellous character, [name] have not accepted this treatment to heart and [his] personality shifted into the opposite direction.} ",
 	
 	INFOHOLDSHIFT = "Hold shift for details",
 	
 	STATGROWTH_FACTORDESCRIPT = "Growth is character's affinity to getting stronger. As character acquire more classes all their stats increase. Every point of growth increases the number of classes which will increase its stats. It also greatly affects character's Value. \n\n{color=green|Affected stats are: Productivity, Physics, Wits, Charm, Max Health, Max Mana, Speed, Hitrate, Evasion, ATK, MATK, DEF, MDEF.} ",
 	STATPHYSICS_FACTORDESCRIPT = "Physics factor represents physical potential of the character. It increases [color=aqua]Physical[/color] growth and influences melee combat.\n\n{color=green|Maxed Physics Factor increases natural Health Regeneration.}",
 	STATMAGIC_FACTORDESCRIPT = "Magic factor represents character's magic affinity. The higher it is, the more mana you have and the stronger magic classes you can unlock. Also affects mana regeneration.\n{color=green|Maxed Magic Factor provides MATK bonus.}",
-	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy it is to befriend the character. The higher it is, the more Loyalty character will gain passively and from Gracious and Lewd social skills.\n\n{color=green|Maxed Tame Factor increases Loyalty Gain.}",
-	STATTIMID_FACTORDESCRIPT = "Timid factor represents how easily the character can be influenced by punishments and abuse. The higher it is, the more effective Mean Social Skills are for building loyalty and lower Obedience Drain.\n\n{color=green|Maxed Timid Factor reduces Damage Taken.}",
+	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy it is to befriend the character. The higher it is, the more Loyalty character will gain passively and from Gracious and Lewd social skills. It will also make personality changes more stable on Kind axis.\n\n{color=green|Maxed Tame Factor increases Loyalty Gain.}",
+	STATTIMID_FACTORDESCRIPT = "Timid factor represents how easily the character can be influenced by punishments and abuse. The higher it is, the more effective Mean Social Skills are for building loyalty and lower Obedience Drain. It will also make personality changes more stable on Bold axis.\n\n{color=green|Maxed Timid Factor reduces Damage Taken.}",
 	STATWITS_FACTORDESCRIPT = "Wits factor represents the character's mind potential. It increases [color=aqua]Wits[/color] growth.\n\n{color=green|Maxed Wits Factor increases experience gain.}",
 	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. [Master]'s charm also increases gold and reputation rewards from repeatable quests and number of dates per week.\n\n{color=green|Maxed Charm Factor furtherly increases social skill efficiency.}",
 	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It speeds sexual skills acquirement and occasionally boosts sexual options in events. [Master]'s Sex factor also increases number of sex interactions per week.\n\n{color=green|Maxed Sex Factor provides Speed bonus}.",
@@ -1753,11 +1771,11 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	
 	SKILLPRAISE = "Praise",
-	SKILLPRAISEDESCRIPT = "Category: {color=green|Gracious}\nA basic tool for inspiring your workers. Improved by Charm Factor. \nBasic Effects: \nLoyalty +5, Maxes Obedience.",
+	SKILLPRAISEDESCRIPT = "Category: {color=green|Gracious}\nA basic tool for inspiring your workers. Improved by Charm Factor. \nBasic Effects: \nLoyalty +5, Maxes Obedience, Increases affinity to Kind Personality",
 	SKILLWARN = "Warn",
-	SKILLWARNDESCRIPT = "Category: {color=red|Mean}\nA basic tool to instigate fear.\nBasic Effects: \nLoyalty +5, Maxes Obedience.",
+	SKILLWARNDESCRIPT = "Category: {color=red|Mean}\nA basic tool to instigate fear.\nBasic Effects: \nLoyalty +5, Maxes Obedience, Increases affinity to Serious Personality.",
 	SKILLPUNISH = "Punish",
-	SKILLPUNISHDESCRIPT = "Category: {color=red|Mean}\nPhysically punishes target.\nBasic Effects: \nLoyalty +10, Maxes Obedience.",
+	SKILLPUNISHDESCRIPT = "Category: {color=red|Mean}\nPhysically punishes target.\nBasic Effects: \nLoyalty +10, Maxes Obedience. Increases affinity to Shy Personality",
 	SKILLREWARD = "Reward", #obsolete?
 	SKILLREWARDDESCRIPT = "Category: {color=green|Gracious}\nBuying their respect might seem like an easy solution... as long as you have enough coin. Increases obedience greatly.",
 	SKILLREWARDSEX = "Reward with sex",
@@ -1773,7 +1791,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLCONSUME_SOUL = "Consume Soul",
 	SKILLCONSUME_SOULDESCRIPT = "Kills target and receives their experience.",
 	SKILLSERVE = "Serve",
-	SKILLSERVEDESCRIPT = "Category: {color=green|Gracious}\nProvide a care service for another person. Improves Obedience and increases Loyalty gain. Requires 20 lust. \nBasic Effects: \nLoyalty Gain: +1 for 5 days, Maxes Obedience.",
+	SKILLSERVEDESCRIPT = "Category: {color=green|Gracious}\nProvide a care service for another person. Improves Obedience and increases Loyalty gain. Requires 20 lust. \nBasic Effects: \nLoyalty Gain: +1 for 5 days, Maxes Obedience, Increases affinity to Bold Personality",
 	SKILLDISCIPLINE = "Discipline",
 	SKILLDISCIPLINEDESCRIPT = "Boosts target's manual labor performance. \nBasic Effects: \nLabor and craft efficiencies are increased by 50% for 5 days.",
 	SKILLSEDATE = "Sedate",
@@ -3300,6 +3318,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	WORKRULENUDITY = "Nudity",
 	WORKRULENUDITYDESCRIPT = "Forces [name] to stay naked while at mansion (if has corresponding sprite). This effect is cosmetic.",
+	
+	WORKRULEPERSONALITY_LOCK = "Lock Personality",
+	WORKRULEPERSONALITY_LOCKDESCRIPT = "[name] will no longer have [his] personality affected by social actions.",
 	
 	SERVICEENSLAVE = "Enslave",
 	SERVICEENSLAVEDESCRIPT = "Makes chosen character into a Slave.\n\n[color=aqua]Slaves suffer 10% damage reduction but gain various collection bonuses and but their Loyalty can be increased by punishing skills.[/color]",

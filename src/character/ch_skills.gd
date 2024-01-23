@@ -302,10 +302,12 @@ func use_social_skill(s_code, target):
 			var bonusspeech = []
 			var tmp
 			if stat.begins_with('personality'):
+				if h.check_work_rule("personality_lock"):
+					continue
 				var cur_personality = h.get_stat('personality')
 				var tres = {personality_bold = 0, personality_shy = 0, personality_kind = 0,personality_serious = 0} #2 per stat
-				
-				var change = h.change_personality_stats(stat, cached_value)
+				var update_data = h.change_personality_stats(stat, cached_value)
+				var change = update_data[0]
 				var stats_bind = ['personality_bold', 'personality_bold']
 				if stat == 'personality_bold':
 					if change[0] > 0:
@@ -333,13 +335,16 @@ func use_social_skill(s_code, target):
 				for ii in [0, 1]:
 					tres[stats_bind[ii]] = change[ii]
 				
+				if update_data[1] == true:
+					effect_text += globals.TextEncoder(h.translate(tr("PERSONALITYREBEL")))
 				for st in tres:
 					if tres[st] == 0: 
 						continue
-					effect_text += "\n" + h.get_short_name() + ", " + statdata.statdata[st].name + ": +" + str(tres[st])
+					
+					effect_text += "\n" + h.translate(tr("PERSONALITYSHIFT"+st.to_upper()))# + h.get_short_name() + ", " + statdata.statdata[st].name + ": +" + str(tres[st])
 				var next_personality = h.get_stat('personality')
 				if next_personality != cur_personality:
-					effect_text += "\n" + h.get_short_name() + " changed personality to " + next_personality
+					effect_text += "\n" + h.get_short_name() + tr("PERSONALITYCHANGE") + tr("PERSONALITYNAME" + next_personality.to_upper())
 			else:
 				match mod:
 					0:
