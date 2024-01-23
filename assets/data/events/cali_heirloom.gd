@@ -384,7 +384,7 @@ var data = {
 	},
 	cali_william_3 = {
 		image = 'cali_meeting',
-		tags = ['dialogue_scene'], 
+		tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
 		text = [ 
 			{text = "CALI_WILLIAM_3_1", reqs = [{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage6'}]}, #return
@@ -779,7 +779,7 @@ var data = {
 		} ],
 	},
 	cali_sword_return_6 = {
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], 
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], 
 		reqs = [],
 		character = "cali",
 		text = [ {text = "CALI_SWORD_RETURN_6", reqs = []} ], 

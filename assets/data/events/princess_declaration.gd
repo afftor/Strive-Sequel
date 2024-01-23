@@ -804,7 +804,7 @@ var data = {
 	},
 	princess_sex_bad_1 = {
 		image = null,
-		tags = ['dialogue_scene'],
+		tags = ['dialogue_scene', 'master_translate'],
 		character = "anastasia",
 		text = [
 			{text = "AFTER_ELECTION_PRINCESS_15", reqs = []},
@@ -822,7 +822,7 @@ var data = {
 
 	princess_sex_bad_2 = {
 		image = null,
-		tags = ['dialogue_scene'],
+		tags = ['dialogue_scene', 'master_translate'],
 		character = "anastasia",
 		text = [
 			{text = "AFTER_ELECTION_PRINCESS_16", reqs = []},

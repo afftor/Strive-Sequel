@@ -94,7 +94,7 @@ func deserialize_effect(tmp, id, caller = null):
 #		'area': eff = area_effect.new(caller)
 		'c_static': eff = condition_effect.new(caller)
 		'dynamic': eff = dynamic_effect.new(caller)
-		'temp_global': tmp = temp_e_global.new(caller)
+		'temp_global': eff = temp_e_global.new(caller)
 	eff.id = id
 	eff.deserialize(tmp)
 	return eff

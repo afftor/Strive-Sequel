@@ -75,6 +75,9 @@ func custom_stats_set(st, value):
 #	if value.has(''):
 #		statlist[''] =
 #	for st in value:
+	if st == 'personality':
+		set_personality(value)
+		return
 	if st in ['hair_base_color_1', 'hair_base_color_2' ]:
 		statlist[st] = value
 		statlist[st.replace('base', 'fringe')] = value
@@ -1221,19 +1224,7 @@ func process_chardata(chardata, unique = false):
 	if chardata.has('icon_image'):
 		statlist.dynamic_portrait = false
 	if chardata.has('personality'):
-		match chardata.personality:
-			'bold':
-				statlist.personality_bold = globals.rng.randi_range(30, 60)
-				statlist.personality_kind = globals.rng.randi_range(-10, 10)
-			'shy':
-				statlist.personality_bold = -globals.rng.randi_range(30, 60)
-				statlist.personality_kind = globals.rng.randi_range(-10, 10)
-			'kind':
-				statlist.personality_bold = globals.rng.randi_range(-10, 10)
-				statlist.personality_kind = globals.rng.randi_range(30, 60)
-			'serious':
-				statlist.personality_bold = globals.rng.randi_range(-10, 10)
-				statlist.personality_kind = -globals.rng.randi_range(30, 60)
+		set_personality(chardata.personality)
 	set_virginity_data()
 
 
@@ -1466,6 +1457,20 @@ func create(temp_race, temp_gender, temp_age):
 	random_icon()
 	
 	statlist.personality = input_handler.random_from_array(variables.personality_array)
+	match statlist.personality:
+		'bold':
+			statlist.personality_bold = rand_range(35,95)
+			statlist.personality_kind = rand_range(30,-30)
+		'shy':
+			statlist.personality_bold = rand_range(-35,-95)
+			statlist.personality_kind = rand_range(30,-30)
+		'kind':
+			statlist.personality_bold = rand_range(30,-30)
+			statlist.personality_kind = rand_range(35,95)
+		'serious':
+			statlist.personality_bold = rand_range(-35,-95)
+			statlist.personality_kind = rand_range(30,-30)
+	
 	
 	for i in ResourceScripts.descriptions.bodypartsdata:
 		if ResourceScripts.descriptions.bodypartsdata[i].has(statlist[i]):
@@ -1792,6 +1797,7 @@ func translate(text):
 	text = text.replace("[him]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHIML'), tr("PRONOUNHIMLF")))
 	text = text.replace("[His]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHIS'), tr("PRONOUNHISF")))
 	text = text.replace("[Sir]", globals.fastif(statlist.sex == 'male', tr('PRONOUNSIR'), tr("PRONOUNSIRF")))
+	text = text.replace("[sir]", globals.fastif(statlist.sex == 'male', tr('PRONOUNSIR'), tr("PRONOUNSIRF")))
 	text = text.replace("[mister]", globals.fastif(statlist.sex == 'male', tr('PRONOUNMISTER'), tr("PRONOUNMISTERF")))
 	text = text.replace("[son]", globals.fastif(statlist.sex == 'male', tr('PRONOUNSON'), tr("PRONOUNSONF")))
 	text = text.replace("[father]", globals.fastif(statlist.sex == 'male', tr('PRONOUNFATHER'), tr("PRONOUNFATHERF")))
@@ -1807,6 +1813,7 @@ func translate(text):
 	text = text.replace("[eye_color]", statlist.eye_color)
 	text = text.replace("[hair_color]", statlist.hair_color)
 	text = text.replace("[man]", globals.fastif(statlist.sex == 'male', tr('PRONOUNMAN'), tr("PRONOUNMANF")))
+	text = text.replace("[guy]", globals.fastif(statlist.sex == 'male', tr('PRONOUNGUY'), tr("PRONOUNGUYF")))
 	text = text.replace("[husband]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHUSBAND'), tr("PRONOUNHUSBANDF")))
 	text = text.replace("[groom]", globals.fastif(statlist.sex == 'male', tr('PRONOUNGROOM'), tr("PRONOUNGROOMF")))
 
@@ -1978,14 +1985,18 @@ func change_personality_stats(stat, init_value):
 		if randf() >= 0.5:
 			 secondary_axis_change = -secondary_axis_change
 	
-	var newvalue = [value, secondary_axis_change]
+	var newvalue = [int(value), int(secondary_axis_change)]
 	
 	statlist[primaxis] += newvalue[0]
 	statlist[altaxis] += newvalue[1]
 	parent.get_ref().recheck_effect_tag('recheck_stats')
+	check_old_personality()
+	return [newvalue, rebel]
 
 
 func get_personality():
+	if abs(statlist.personality_bold) <= 30 and abs(statlist.personality_kind) <= 30:
+		return 'neutral'
 	if abs(statlist.personality_bold) > abs(statlist.personality_kind):
 		if statlist.personality_bold > 0:
 			return 'bold'
@@ -1997,3 +2008,27 @@ func get_personality():
 		else:
 			return 'serious'
 
+
+func set_personality(value):
+	match value:
+		'neutral':
+			statlist.personality_bold = globals.rng.randi_range(-10, 10)
+			statlist.personality_kind = globals.rng.randi_range(-10, 10)
+		'bold':
+			statlist.personality_bold = globals.rng.randi_range(65, 85)
+			statlist.personality_kind = globals.rng.randi_range(-10, 10)
+		'shy':
+			statlist.personality_bold = -globals.rng.randi_range(-65, -85)
+			statlist.personality_kind = globals.rng.randi_range(-10, 10)
+		'kind':
+			statlist.personality_bold = globals.rng.randi_range(-10, 10)
+			statlist.personality_kind = globals.rng.randi_range(65, 85)
+		'serious':
+			statlist.personality_bold = globals.rng.randi_range(-10, 10)
+			statlist.personality_kind = -globals.rng.randi_range(-65, -85)
+	check_old_personality()
+
+
+func check_old_personality():
+	if get_personality() != 'neutral':
+		statlist.old_personality = get_personality()

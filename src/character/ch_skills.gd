@@ -301,56 +301,103 @@ func use_social_skill(s_code, target):
 				
 			var bonusspeech = []
 			var tmp
-			match mod:
-				0:
-					tmp = h.stat_update(stat, cached_value)
-					if stat == 'obedience':
-						if h.get_stat('obedience') >= h.get_stat('obedience_max'):
-							detail_tags.append('obed_cap') 
-					if stat == 'loyalty' and tmp > 0:
-						h.tags.push_back("no_loyalty_gain_temp")
-						h.stat_update('loyalty_total', tmp)
-					if stat  == 'lust':
-						if h.get_stat('lust') >= h.get_stat('lustmax'):
-							detail_tags.append('lust_cap')
-					if i.is_drain > 0.0: 
-						parent.get_ref().stat_update(stat, -tmp * i.is_drain)
-				1:
-					tmp = h.stat_update(stat, -cached_value)
-					if i.is_drain > 0.0: 
-						parent.get_ref().stat_update(stat, -tmp * i.is_drain)
-				2:
-					tmp = h.stat_update(stat, cached_value, true)
-					if i.is_drain > 0.0: 
-						parent.get_ref().stat_update(stat, -tmp * i.is_drain)
-
-			effect_text += "\n" + h.get_short_name() + ", " + statdata.statdata[stat].name
-			var maxstat = 100
-			if stat in ['obedience']:
-				maxstat = h.get_stat(stat + '_max')
-			elif i.damagestat.find("factor")>=0 or stat in ['loyalty']:
-				maxstat = 0
-			elif h.get_stat(stat+'max') != null:
-				maxstat = h.get_stat(stat + "max")
-			if detail_tags.has("obed_cap") && stat == 'obedience':
-				effect_text += ": Maxed" 
+			if stat.begins_with('personality'):
+				if h.check_work_rule("personality_lock"):
+					continue
+				var cur_personality = h.get_stat('personality')
+				var tres = {personality_bold = 0, personality_shy = 0, personality_kind = 0,personality_serious = 0} #2 per stat
+				var update_data = h.change_personality_stats(stat, cached_value)
+				var change = update_data[0]
+				var stats_bind = ['personality_bold', 'personality_bold']
+				if stat == 'personality_bold':
+					if change[0] > 0:
+						stats_bind[0] = 'personality_bold'
+					else:
+						stats_bind[0] = 'personality_shy'
+						change[0] = - change[0]
+					if change[1] > 0:
+						stats_bind[1] = 'personality_kind'
+					else:
+						stats_bind[1] = 'personality_serious'
+						change[1] = - change[1]
+				elif stat == 'personality_kind':
+					if change[1] > 0:
+						stats_bind[1] = 'personality_bold'
+					else:
+						stats_bind[1] = 'personality_shy'
+						change[1] = - change[1]
+					if change[0] > 0:
+						stats_bind[0] = 'personality_kind'
+					else:
+						stats_bind[0] = 'personality_serious'
+						change[0] = - change[0]
+				
+				for ii in [0, 1]:
+					tres[stats_bind[ii]] = change[ii]
+				
+				if update_data[1] == true:
+					effect_text += globals.TextEncoder(h.translate(tr("PERSONALITYREBEL")))
+				for st in tres:
+					if tres[st] == 0: 
+						continue
+					
+					effect_text += "\n" + h.translate(tr("PERSONALITYSHIFT"+st.to_upper()))# + h.get_short_name() + ", " + statdata.statdata[st].name + ": +" + str(tres[st])
+				var next_personality = h.get_stat('personality')
+				if next_personality != cur_personality:
+					effect_text += "\n" + h.get_short_name() + tr("PERSONALITYCHANGE") + tr("PERSONALITYNAME" + next_personality.to_upper())
 			else:
-				var change = '+'
-				if tmp < 0:
-					change = ''
-				effect_text += ": "
-				if maxstat != 0 && !(stat in ['obedience','consent', 'lust', 'loyalty']):
-					effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ("(%d)" % cached_value) +  ")"
+				match mod:
+					0:
+						tmp = h.stat_update(stat, cached_value)
+						if stat == 'obedience':
+							if h.get_stat('obedience') >= h.get_stat('obedience_max'):
+								detail_tags.append('obed_cap') 
+						if stat == 'loyalty' and tmp > 0:
+							h.tags.push_back("no_loyalty_gain_temp")
+							h.stat_update('loyalty_total', tmp)
+						if stat  == 'lust':
+							if h.get_stat('lust') >= h.get_stat('lustmax'):
+								detail_tags.append('lust_cap')
+						if i.is_drain > 0.0: 
+							parent.get_ref().stat_update(stat, -tmp * i.is_drain)
+					1:
+						tmp = h.stat_update(stat, -cached_value)
+						if i.is_drain > 0.0: 
+							parent.get_ref().stat_update(stat, -tmp * i.is_drain)
+					2:
+						tmp = h.stat_update(stat, cached_value, true)
+						if i.is_drain > 0.0: 
+							parent.get_ref().stat_update(stat, -tmp * i.is_drain)
+
+				effect_text += "\n" + h.get_short_name() + ", " + statdata.statdata[stat].name
+			
+				var maxstat = 100
+				if stat in ['obedience']:
+					maxstat = h.get_stat(stat + '_max')
+				elif i.damagestat.find("factor")>=0 or stat in ['loyalty']:
+					maxstat = 0
+				elif h.get_stat(stat+'max') != null:
+					maxstat = h.get_stat(stat + "max")
+				
+				if detail_tags.has("obed_cap") && stat == 'obedience':
+					effect_text += ": Maxed" 
 				else:
-					effect_text += change + str(floor(tmp)) 
-	#			if detail_tags.has("loyaltymaxed") && stat == 'loyalty':
-	#				effect_text += " - Maxed"
-				if detail_tags.has("lust_cap") && stat == 'lust':
-					effect_text += " - Maxed"
-				if detail_tags.has("blocked") && stat == 'obedience':
-					effect_text += ' - Is in resist mode'
-				if detail_tags.has("blocked") && stat == 'loyalty':
-					effect_text += " - Has already gained Loyalty today"
+					var change = '+'
+					if tmp < 0:
+						change = ''
+					effect_text += ": "
+					if maxstat != 0 && !(stat in ['obedience','consent', 'lust', 'loyalty']):
+						effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ("(%d)" % cached_value) +  ")"
+					else:
+						effect_text += change + str(floor(tmp)) 
+		#			if detail_tags.has("loyaltymaxed") && stat == 'loyalty':
+		#				effect_text += " - Maxed"
+					if detail_tags.has("lust_cap") && stat == 'lust':
+						effect_text += " - Maxed"
+					if detail_tags.has("blocked") && stat == 'obedience':
+						effect_text += ' - Is in resist mode'
+					if detail_tags.has("blocked") && stat == 'loyalty':
+						effect_text += " - Has already gained Loyalty today"
 			for j in bonusspeech:
 				effect_text += "\n\n{color=aqua|"+ h.get_short_name() + "} - {random_chat=0|"+ j +"}\n"
 	if target != null and target.skills.skills_received_today.has(s_code) == false: target.skills.skills_received_today.append(s_code)

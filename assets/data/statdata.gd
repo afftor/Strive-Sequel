@@ -230,6 +230,34 @@ var statdata = {
 		type = '',
 		direct = true
 	},
+	personality_bold = {
+		code = 'personality_bold',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = '',
+	},
+	personality_kind = {
+		code = 'personality_kind',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = '',
+	},
+	personality_shy = {
+		code = 'personality_shy',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = '',
+	},
+	personality_serious = {
+		code = 'personality_serious',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = '',
+	},
 	exp_gain_mod = {
 		code = 'exp_gain_mod',
 		percent = true,

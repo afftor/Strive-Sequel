@@ -1745,7 +1745,7 @@ func roman_number_converter(number): #only supports numbers up to 10 currently. 
 func rect2rombus(vec : Vector2):
 	if vec.length() == 0.0:
 		return vec
-	var k1 = max(vec.x, vec.y)
+	var k1 = max(abs(vec.x), abs(vec.y))
 	var vec1 = vec / k1
 	var res
 	if vec.x * vec.y > 0:

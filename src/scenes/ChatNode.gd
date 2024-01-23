@@ -754,6 +754,7 @@ func return_chat_line(character, event):
 		if character.get_stat('race') in ['BeastkinCat','HalfkinCat'] && input_handler.globalsettings.meowing == true:
 			line = process_meowing(line)
 		return line
+	return "" #stub, 2add neutral personality lines
 
 func show_chat_line(character, event):
 	var line = return_chat_line(character, event)

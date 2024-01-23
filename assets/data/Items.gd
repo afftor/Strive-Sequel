@@ -1673,7 +1673,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
 		tags = ['no_random', 'bladed'],
-		basestats = {atk = 35, critchance = 20, hitrate = 20, armorpenetration = 15},
+		basestats = {atk = 35, critchance = 20, hitrate = 20, armorpenetration = 15, enchant_capacity = 400},
 	},
 	
 	holy_sword = {
@@ -1692,7 +1692,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = ['no_random', 'bladed'],
-		basestats = {atk = 50, hitrate = 50, critmod = 0.33, damage_mod_light = 0.5},
+		basestats = {atk = 50, hitrate = 50, critmod = 0.33, damage_mod_light = 0.5, enchant_capacity = 500},
 	},
 	holy_spear = {
 		code = 'holy_spear',
@@ -1710,7 +1710,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = ['no_random'],
-		basestats = {atk = 45, hitrate = 25, damage_mod_air = 0.20, armor = 20},
+		basestats = {atk = 45, hitrate = 25, damage_mod_air = 0.20, armor = 20, enchant_capacity = 500},
 	},
 	
 	aire_bow = {
@@ -1720,7 +1720,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/airesbow.png"),
 		tier = 'hard',
 		price = 1000,
-		basestats = {atk = 25, critchance = 10, hitrate = 20, mod_hunt = 0.2},
+		basestats = {atk = 25, critchance = 10, hitrate = 20, mod_hunt = 0.2, enchant_capacity = 300},
 		crafttype = 'basic',
 		type = 'gear',
 		itemtype = 'weapon',
@@ -1741,7 +1741,7 @@ var itemlist = {
 		itemtype = 'armor',
 		geartype = 'costume',
 		crafttype = 'basic',
-		slots = ['neck'],
+		slots = ['lhand'],
 		price = 1500,
 		icon = load("res://assets/images/iconsitems/magic brush.png"),
 		tier = 'medium',
