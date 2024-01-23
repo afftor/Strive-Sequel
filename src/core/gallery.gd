@@ -62,7 +62,7 @@ var ero_scenes = [
  'aire_amelia1',
  'amelia_titjob1',
  'amelia_bondage1',
- 'anastasia_aire1',
+# 'anastasia_aire1', uncomment it when it's possible to unlock this scene in-game
  'aire_ana1',
  'aire_ana4',
  'force_cali1',

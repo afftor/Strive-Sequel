@@ -467,6 +467,8 @@ func victory():
 		newbutton.show()
 		newbutton.get_node("Icon").texture = tchar.get_icon()
 		newbutton.get_node("name").text = tchar.get_short_name()
+		if gained_exp > 0:
+			gained_exp *= tchar.get_stat('exp_gain_mod')
 		newbutton.get_node("amount").text = str(gained_exp)
 #		if tchar.hp <= 0:
 #			tchar.hp = 1

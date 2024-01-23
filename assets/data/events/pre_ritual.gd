@@ -267,17 +267,27 @@ var data = {
 	},
 	
 	chieftain_meeting_3 = {
-		image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
-		reqs = [], character = 'leon',
-		text = [{text = "CHIEFTAIN_MEETING_3_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "beastkin"}]}]},
-		{text = "CHIEFTAIN_MEETING_3_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "halfkin"}]}]},
-		{text = "CHIEFTAIN_MEETING_3_2", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'neq', value = "beastkin"}]},
-		{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'neq', value = "halfkin"}]}]},],
-		options = [ {
-			code = 'chieftain_meeting_4', text = "CHIEFTAIN_MEETING_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		variations = [ {
+			image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+#			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = ["HalfkinWolf", "HalfkinFox", "HalfkinBunny", "HalfkinTanuki", "HalfkinCat", "Ratkin", "BeastkinWolf", "BeastkinFox", "BeastkinBunny", "BeastkinTanuki", "BeastkinCat"]}]}], 
+			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "HalfkinWolf"}]}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "HalfkinFox"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "HalfkinBunny"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "HalfkinTanuki"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "HalfkinCat"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "Ratkin"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "BeastkinWolf"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "BeastkinFox"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "BeastkinBunny"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "BeastkinTanuki"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "BeastkinCat"}], orflag = true}],
+			character = 'leon',
+			text = [{text = "CHIEFTAIN_MEETING_3_1", reqs = []}],
+			options = [ {
+				code = 'chieftain_meeting_4', text = "CHIEFTAIN_MEETING_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			}, {
+				code = 'chieftain_meeting_4', text = "CHIEFTAIN_MEETING_3_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+			} ]
 		}, {
-			code = 'chieftain_meeting_4', text = "CHIEFTAIN_MEETING_3_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
-		} ]
+			image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+			reqs = [], character = 'leon',
+			text = [{text = "CHIEFTAIN_MEETING_3_2", reqs = []}],
+			options = [ {
+				code = 'chieftain_meeting_4', text = "CHIEFTAIN_MEETING_3_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			}, {
+				code = 'chieftain_meeting_4', text = "CHIEFTAIN_MEETING_3_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+			} ]
+		}]
 	},
 	
 	chieftain_meeting_4 = {

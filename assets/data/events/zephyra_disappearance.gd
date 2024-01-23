@@ -668,8 +668,7 @@ var data = {
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_KETCH_8", reqs = []},
 		],
 		options = [ {
-			code = 'zephyra_disappearance_sex_1', text = "ZEPHYRA_DISAPPEARANCE_KETCH_8_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			#change_dialogue_type = 2,
+			code = 'zephyra_disappearance_sex_1', text = "ZEPHYRA_DISAPPEARANCE_KETCH_8_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2,
 		}, {
 			code = 'zephyra_disappearance_ketch_9_2', text = "ZEPHYRA_DISAPPEARANCE_KETCH_8_OPTION_2", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		} ]
