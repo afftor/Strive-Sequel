@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/anastasia_redgat_prt_serious.png-ace8404b6fe3683762b04f79b3a967d5.stex"
+path="res://.import/anastasia_redgat_prt_serious.png-60b96a7c3c888c8154590cc34f250471.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/anastasia_portraits/anastasia_redgat_prt_serious.png"
-dest_files=[ "res://.import/anastasia_redgat_prt_serious.png-ace8404b6fe3683762b04f79b3a967d5.stex" ]
+source_file="res://assets/images/portraits/anastasia_prt/anastasia_redgat_prt_serious.png"
+dest_files=[ "res://.import/anastasia_redgat_prt_serious.png-60b96a7c3c888c8154590cc34f250471.stex" ]
 
 [params]
 

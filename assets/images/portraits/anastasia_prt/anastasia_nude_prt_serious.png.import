@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/anastasia_nude_prt_serious.png-d65bab13a6f74a96b2c650e945bcb18d.stex"
+path="res://.import/anastasia_nude_prt_serious.png-b7095fad45b99dbf8f71166e4d6d16d0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/anastasia_portraits/anastasia_nude_prt_serious.png"
-dest_files=[ "res://.import/anastasia_nude_prt_serious.png-d65bab13a6f74a96b2c650e945bcb18d.stex" ]
+source_file="res://assets/images/portraits/anastasia_prt/anastasia_nude_prt_serious.png"
+dest_files=[ "res://.import/anastasia_nude_prt_serious.png-b7095fad45b99dbf8f71166e4d6d16d0.stex" ]
 
 [params]
 

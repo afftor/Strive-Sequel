@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://Character_generator/recolor shader mask.shader" type="Shader" id=1]
 [ext_resource path="res://Character_generator/images/03_noses/nose_kobold.png" type="Texture" id=2]
@@ -62,8 +62,8 @@
 [ext_resource path="res://Character_generator/images/10_eyes/eyes3.png" type="Texture" id=60]
 [ext_resource path="res://src/tools/deform_poly.gd" type="Script" id=61]
 [ext_resource path="res://src/tools/deform_drag_point.gd" type="Script" id=62]
-[ext_resource path="res://Character_generator/images/05_beards_moustaches/bread_moustacle2.png" type="Texture" id=63]
-
+[ext_resource path="res://Character_generator/images/201_weapon_back/weapon_back_spear.png" type="Texture" id=63]
+[ext_resource path="res://Character_generator/images/200_weapon_belt/weapon_belt_sword.png" type="Texture" id=64]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -657,6 +657,12 @@ rotation = 1.5708
 rest = Transform2D( 0.005, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
+[node name="Weapon_back" type="Sprite" parent="HumanF1/Spine"]
+position = Vector2( 175, -22.0006 )
+rotation = -1.5708
+scale = Vector2( 1, 1 )
+texture = ExtResource( 63 )
+
 [node name="Hairs_back_mesh" type="Polygon2D" parent="HumanF1/Spine"]
 visible = false
 material = SubResource( 3 )
@@ -806,7 +812,6 @@ rotation = -1.5708
 texture = ExtResource( 39 )
 
 [node name="ShoulderR_armor" type="Sprite" parent="HumanF1/Spine/ShoulderR"]
-visible = false
 position = Vector2( 312.381, 144.761 )
 rotation = -1.5708
 texture = ExtResource( 16 )
@@ -863,7 +868,6 @@ rotation = -1.5708
 texture = ExtResource( 12 )
 
 [node name="ShoulderL_armor" type="Sprite" parent="HumanF1/Spine/ShoulderL"]
-visible = false
 position = Vector2( 311.428, -129.525 )
 rotation = -1.5708
 texture = ExtResource( 18 )
@@ -888,7 +892,6 @@ rotation = -1.5708
 texture = ExtResource( 15 )
 
 [node name="Torso_armor_tex" type="Sprite" parent="HumanF1/Spine"]
-visible = false
 position = Vector2( 218.927, -0.34021 )
 rotation = -1.5708
 texture = ExtResource( 14 )
@@ -1222,7 +1225,6 @@ texture = ExtResource( 5 )
 material = SubResource( 13 )
 position = Vector2( 499.474, -5.8439 )
 rotation = -1.5708
-texture = ExtResource( 63 )
 
 [node name="Hair" type="Bone2D" parent="HumanF1/Head"]
 position = Vector2( 31, 1.00001 )
@@ -1435,3 +1437,8 @@ position = Vector2( 567, -10.002 )
 rotation = -1.5708
 scale = Vector2( 0.95, 0.95 )
 texture = ExtResource( 8 )
+
+[node name="Weapon_belt" type="Sprite" parent="HumanF1"]
+position = Vector2( 19.261, -802.568 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 64 )
