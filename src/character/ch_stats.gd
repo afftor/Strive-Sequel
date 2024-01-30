@@ -52,18 +52,27 @@ func fix_import():
 
 func fix_serialize():
 	for tr in traits.duplicate():
-		if Traitdata.traits.has(tr): continue
+		if Traitdata.traits.has(tr): 
+			continue
 		traits.erase(tr)
 		var arr = parent.get_ref().find_eff_by_trait(tr)
 		for e in arr:
 			var eff = effects_pool.get_effect_by_id(e)
 			eff.remove()
 	for tr in sex_traits.duplicate():
-		if Traitdata.sex_traits.has(tr): continue
+		if Traitdata.sex_traits.has(tr): 
+			continue
 		sex_traits.erase(tr)
 	for tr in unlocked_sex_traits.duplicate():
-		if Traitdata.sex_traits.has(tr): continue
+		if Traitdata.sex_traits.has(tr): 
+			continue
 		unlocked_sex_traits.erase(tr)
+	for metr in Statlist_init.template.metrics:
+		if statlist.metrics.has(metr):
+			continue
+		statlist.metrics[metr] = Statlist_init.template.metrics[metr]
+	for st in ['personality_bold', 'personality_kind', 'slave_spec_level', 'slave_spec_progress']:
+		statlist[st] = int(statlist[st])
 
 
 func default_stats_get():
@@ -835,6 +844,9 @@ func add_stat_bonuses(ls:Dictionary):
 			if (rec as String).ends_with('mod') && !(rec in ['critmod', 'exp_gain_mod']) :
 				add_bonus(rec.replace('mod','_mul'), ls[rec])
 				continue
+			if (rec as String).ends_with('_add') and !statdata.statdata.has(rec):
+				add_bonus(rec, ls[rec])
+				continue
 			if !statdata.statdata.has(rec):
 				print('debug warning - lost stat %s' % rec)
 				continue
@@ -943,6 +955,9 @@ func add_stat(statname, value, revert = false):
 		value *= get_stat_gain_rate(statname)
 	if statname.ends_with('_direct'):
 		statname = statname.trim_suffix('_direct')
+	if statname == 'loyalty' and statlist.loyalty_locked:
+		add_slave_prof_progress(value)
+		return
 	if !statdata.statdata.has(statname): 
 		print("no stat - %s" % statname)
 		return
@@ -1127,6 +1142,10 @@ func has_status(status):
 	for tr in negative_sex_traits:
 		var traitdata = Traitdata.sex_traits[tr]
 		if traitdata.has('tags') and traitdata.tags.has(status):
+			return true
+	if statlist.slave_spec !=null:
+		var data = Traitdata.slave_profs[statlist.slave_spec]
+		if data.has('tags') and data.tags.has(status):
 			return true
 	return false
 
@@ -2032,3 +2051,63 @@ func set_personality(value):
 func check_old_personality():
 	if get_personality() != 'neutral':
 		statlist.old_personality = get_personality()
+
+
+func remove_slave_prof():
+	if statlist.slave_spec == null:
+		return
+	var data = Traitdata.slave_profs[statlist.slave_spec]
+	for i in range (statlist.slave_spec_level):
+		parent.get_ref().remove_stat_bonuses(data.bonusstats)
+	
+	var arr = parent.get_ref().find_eff_by_trait(statlist.slave_spec)
+	for e in arr:
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.remove()
+	
+	statlist.slave_spec = null
+	statlist.slave_spec_level = 0
+	statlist.slave_spec_progress = 0
+	statlist.loyalty_locked = false
+
+
+func set_slave_prof(prof):
+	if prof != statlist.slave_spec and statlist.slave_spec != null:
+		print('warning - slave prof removed')
+		remove_slave_prof()
+	
+	var data = Traitdata.slave_profs[prof]
+	parent.get_ref().add_stat_bonuses(data.bonusstats)
+	for e in data.effects:
+		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
+		parent.get_ref().apply_effect(effects_pool.add_effect(eff))
+		eff.set_args('trait', prof)
+	
+	statlist.slave_spec = prof
+	statlist.slave_spec_level = 0
+	add_stat('loyalty', -get_next_slave_prof_lv_loyalty())
+	lvup_slave_prof()
+	statlist.slave_spec_progress = 0
+
+
+func get_next_slave_prof_lv_loyalty():
+#	return 500 * (1 + statlist.slave_spec_level)
+	return 50 * (1 + statlist.slave_spec_level)
+
+
+func lvup_slave_prof(): #no cost check! no effects setup
+	var data = Traitdata.slave_profs[statlist.slave_spec]
+	parent.get_ref().add_stat_bonuses(data.bonusstats)
+	statlist.slave_spec_level += 1
+	
+	parent.get_ref().recheck_effect_tag('recheck_trait')
+	parent.get_ref().recheck_effect_tag('recheck_stats')
+
+
+func add_slave_prof_progress(value):
+	print(statlist.slave_spec_progress)
+	statlist.slave_spec_progress += value
+	print(statlist.slave_spec_progress)
+	while statlist.slave_spec_progress >= get_next_slave_prof_lv_loyalty():
+		statlist.slave_spec_progress -= get_next_slave_prof_lv_loyalty()
+		lvup_slave_prof()

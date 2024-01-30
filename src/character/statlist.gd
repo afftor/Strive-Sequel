@@ -32,6 +32,12 @@ var template = {
 	loyalty_gain = 0.0,
 	loyalty_total = 0.0,
 	loyalty_traits_unlocked = 0,
+	
+	slave_spec = null,
+	slave_spec_level = 0,
+	slave_spec_progress = 0,
+	loyalty_locked = false,
+	
 	submission = 0.0, #obsolete or not?
 	submission_gain_mod = 1.0,
 	submission_degrade_mod = 1.0,
@@ -221,7 +227,7 @@ var template = {
 	
 	consent = 0,
 	relations = {},
-	metrics = {ownership = 0, sex = 0, dates = 0, partners = [], randompartners = 0, win = 0, kills = 0, goldearn = 0, foodearn = 0, materialearn = 0, foodeaten = 0, birth = 0, pregnancy = 0, impregnation = 0},
+	metrics = {ownership = 0, sex = 0, dates = 0, partners = [], randompartners = 0, win = 0, kills = 0, goldearn = 0, foodearn = 0, materialearn = 0, serviceperformed = 0, socskillused = 0, spellused = 0, healused = 0, foodeaten = 0, birth = 0, pregnancy = 0, impregnation = 0},
 	lastsexday = 0,
 
 	asser = 0,

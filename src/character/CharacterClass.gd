@@ -117,6 +117,8 @@ func get_stat(statname, ref = false):
 		return 'default' #temporal stub
 	if statname == 'counters':
 		return effects.counters
+	if statname == 'price':
+		return calculate_price()
 	if statname.begins_with('food_') and !(statname in ['food_consumption']):
 		return food.get(statname)
 	if statname == 'pregnancy_status':
@@ -431,6 +433,18 @@ func get_random_traits():
 
 func get_price_for_trait(tr_id):
 	return statlist.get_price_for_trait(tr_id)
+
+func get_next_slave_prof_lv_loyalty():
+	return statlist.get_next_slave_prof_lv_loyalty()
+
+func add_slave_prof_progress(value):
+	statlist.add_slave_prof_progress(value)
+
+func set_slave_prof(prof):
+	statlist.set_slave_prof(prof)
+
+func remove_slave_prof():
+	statlist.remove_slave_prof()
 
 
 func can_learn_skill(skill_id):

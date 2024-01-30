@@ -1517,6 +1517,23 @@ func play_animation(animation, args = {}):
 			yield(get_tree().create_timer(0.5), 'timeout')
 			anim_scene.queue_free()
 			SetMusic("mansion1")
+		"slave_spec_aquired":
+			PlaySound("class_aquired")
+			var tdata = Traitdata.slave_profs[args.current_trait]
+			anim_scene = get_spec_node(ANIM_CLASS_ACHIEVED)
+			anim_scene.get_node("AnimationPlayer").play("class_achieved")
+			if tdata.icon is String:
+				anim_scene.get_node("TextureRect").texture = load(tdata.icon)
+			else:
+				anim_scene.get_node("TextureRect").texture = tdata.icon
+			anim_scene.get_node("Label").text = "Training"
+			anim_scene.get_node("Label2").text = tdata.name
+			anim_scene.get_node("Label3").text = args.person.get_full_name()
+			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+			ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+			yield(get_tree().create_timer(0.5), 'timeout')
+			anim_scene.queue_free()
+			SetMusic("mansion1")
 		"quest_completed":
 			PlaySound("quest_completed")
 			anim_scene = get_spec_node(ANIM_TASK_COMPLETED)
