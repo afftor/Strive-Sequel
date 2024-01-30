@@ -163,6 +163,7 @@ func use_social_skill(s_code, target):
 			#input_handler.SystemMessage(check.descript)
 			globals.text_log_add('skill',check.descript)
 			return
+	parent.get_ref().add_stat('metrics_socskillused', 1)
 	social_cooldowns[s_code] = template.cooldown
 	if template.has('social_skill_stats'):
 		for i in template.social_skill_stats:

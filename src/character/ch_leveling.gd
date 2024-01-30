@@ -617,6 +617,7 @@ func select_brothel_activity():
 			if parent.get_ref().checkreqs([{code = 'trait', trait = tasks.gold_tasks_data[i].req_training, check = false}]):
 					no_training = true
 	
+	parent.get_ref().add_stat('metrics_serviceperformed', 1)
 	if sex_rules.size() > 0:
 		#pick chance
 		if 50 + max(parent.get_ref().get_stat('sexuals')/2,parent.get_ref().get_stat('charm')/2) > randf()*100:

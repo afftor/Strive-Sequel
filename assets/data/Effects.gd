@@ -3177,6 +3177,31 @@ var effect_table = {
 		}],
 		buffs = []
 	},
+	#healer slave
+	e_tr_healerslave = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [variables.TR_HIT],
+		reset = [variables.TR_CAST],
+		conditions = [
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['tags', 'has', 'heal']}
+			],
+		buffs = [],
+		args = [{obj = 'app_obj', param = 'slave_spec_level'}],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				args = [{obj = 'parent_args', param = 0}],
+				atomic = [
+					{type = 'stat_mul', stat = 'value', value = [[['parent_args', 0], '*', 0.02], '+', 1.0]}
+				],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
 	
 	#statuses 
 	e_s_burn_new = {
