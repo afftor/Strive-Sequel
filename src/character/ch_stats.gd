@@ -2037,14 +2037,14 @@ func set_personality(value):
 			statlist.personality_bold = globals.rng.randi_range(65, 85)
 			statlist.personality_kind = globals.rng.randi_range(-10, 10)
 		'shy':
-			statlist.personality_bold = -globals.rng.randi_range(-65, -85)
+			statlist.personality_bold = -globals.rng.randi_range(65, 85)
 			statlist.personality_kind = globals.rng.randi_range(-10, 10)
 		'kind':
 			statlist.personality_bold = globals.rng.randi_range(-10, 10)
 			statlist.personality_kind = globals.rng.randi_range(65, 85)
 		'serious':
 			statlist.personality_bold = globals.rng.randi_range(-10, 10)
-			statlist.personality_kind = -globals.rng.randi_range(-65, -85)
+			statlist.personality_kind = -globals.rng.randi_range(65, 85)
 	check_old_personality()
 
 
