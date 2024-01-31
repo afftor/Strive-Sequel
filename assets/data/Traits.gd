@@ -2240,7 +2240,7 @@ var slave_profs = {
 		icon = "res://assets/images/iconstraits/l_maidu.png",
 		tree_position = {tab = 1, x = 2, y = 9},
 		effects = [],
-		bonusstats = {productivity = 1, evasion = 2, speed = 1},
+		bonusstats = {productivity = 0.01, evasion = 2, speed = 1},
 		tags = ['swear_loyalty'],
 		reqs = [
 			{code = 'stat_in_set', stat = 'personality', value = ['bold', 'kind']},
@@ -2253,7 +2253,7 @@ var slave_profs = {
 		icon = "res://assets/images/iconstraits/l_maidu.png",
 		tree_position = {tab = 1, x = 3, y = 9},
 		effects = [],
-		bonusstats = {critchance = 1, critmod = 0.3, price_add = 10},
+		bonusstats = {critchance = 0.33, critmod = 0.01, price_add = 10}, #not sure about critmod
 		tags = ['swear_loyalty'],
 		reqs = [
 			{code = 'stat_in_set', stat = 'personality', value = ['serious', 'kind']},
