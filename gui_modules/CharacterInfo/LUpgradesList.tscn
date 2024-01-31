@@ -138,7 +138,6 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "Luxury rooms"
 align = 1
-valign = 2
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
