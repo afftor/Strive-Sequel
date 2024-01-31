@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/anastasia_default_prt_shy.png-36726a8d968e5477c5a42cccd32a255a.stex"
+path="res://.import/anastasia_default_prt_shy.png-ecc23d83bdb74efc1fe246f5cfedb21b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/anastasia_portraits/anastasia_default_prt_shy.png"
-dest_files=[ "res://.import/anastasia_default_prt_shy.png-36726a8d968e5477c5a42cccd32a255a.stex" ]
+source_file="res://assets/images/portraits/anastasia_prt/anastasia_default_prt_shy.png"
+dest_files=[ "res://.import/anastasia_default_prt_shy.png-ecc23d83bdb74efc1fe246f5cfedb21b.stex" ]
 
 [params]
 
