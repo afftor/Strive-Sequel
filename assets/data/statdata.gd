@@ -502,6 +502,13 @@ var statdata = {
 		default_bonus = 'add_part',
 		hidden = false
 	},
+	price_add = { #not a real stat, stub for generating descriptions
+		code = 'price_add',
+		name = 'STATPRICE',
+		descript = '',
+		baseicon = 'food_love',
+		hidden = false
+	},
 	magic_find = {
 		code = 'magic_find',
 		name = '',

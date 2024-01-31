@@ -1155,6 +1155,9 @@ func use_skill(skill_code, caster, target):
 				caster.add_stat('physics', rand_range(0.1,0.3))
 			elif skill.ability_type == 'spell' && skill.name != "":
 				caster.add_stat('wits', rand_range(0.1,0.3))
+				caster.add_stat('metrics_spellused', 1)
+			if skill.tags.has('heal'):
+				caster.add_stat('metrics_healused', 1)
 	if skill_callback_args != null and skill_callback_args.value == COPY_EXECUTED:
 		combatlogadd("\n" + caster.get_short_name() + ' copied ' + skill.name + ". ")
 	#caster part of setup
