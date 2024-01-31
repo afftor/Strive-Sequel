@@ -24,17 +24,14 @@ self_modulate = Color( 0, 0, 0, 0.823529 )
 show_behind_parent = true
 margin_right = 598.0
 margin_bottom = 324.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 15.0
 margin_top = 24.0
 margin_right = 580.0
 margin_bottom = 317.0
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0.972549, 0.972549, 0.972549, 1 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false

@@ -32,6 +32,7 @@ func showup(node, text, move_right = false):
 	$RichTextLabel.rect_position.x = 15
 	$RichTextLabel.rect_position.y = 12
 	$RichTextLabel.bbcode_text = globals.TextEncoder(text)
+	print($RichTextLabel.bbcode_text)
 	pos_fix = 26
 	
 	if $RichTextLabel.bbcode_text.length() < 12:
@@ -81,6 +82,7 @@ func showup(node, text, move_right = false):
 			else:
 				rect_global_position.y = 0
 				rect_global_position.x -= get_rect().end.x - get_rect().size.x - 350
+	print($RichTextLabel.bbcode_text)
 	prevnode = parentnode
 
 func turnoff():
