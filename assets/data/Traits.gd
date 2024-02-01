@@ -2265,7 +2265,7 @@ var slave_profs = {
 		desc = '',
 		icon = "res://assets/images/iconstraits/l_maidu.png",
 		tree_position = {tab = 1, x = 4, y = 9},
-		effects = ['e_tr_master'],
+		effects = ['e_tr_manager'],
 		bonusstats = {hpmax = 1, armor = 1},
 		tags = ['swear_loyalty'],
 		reqs = [

@@ -230,7 +230,7 @@ var effect_table = {
 				buffs = [],
 				sub_effects = []
 			}
-		]
+		],
 	},
 	e_tr_spouse = {
 		type = 'trigger',
@@ -3200,9 +3200,28 @@ var effect_table = {
 				buffs = [],
 				sub_effects = []
 			}
-		]
+		],
+		descript = "HEALERSLAVEDESCRIPT",
 	},
-	
+	e_tr_manager = {
+		type = 'trigger',
+		trigger = [variables.TR_S_CAST],
+		req_skill = true,
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		args = [{obj = 'app_obj', param = 'slave_spec_level'}],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				atomic = [{type = 'stat_mul', stat = 'value', value = [[['parent_args', 0], '*', 0.03], '+', 1.0]}],
+				buffs = [],
+				sub_effects = []
+			}
+		],
+		descript = "MANAGERSLAVEDESCRIPT", #for manager slave class, not for master. if there is need to display effect description on master - duplicate effect
+	},
 	#statuses 
 	e_s_burn_new = {
 		type = 'temp_s',
