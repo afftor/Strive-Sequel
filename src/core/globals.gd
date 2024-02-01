@@ -1111,7 +1111,7 @@ func make_local_recruit(args):
 			newchar.add_stat_bonuses(args.bonuses)
 		if args.has("type"):
 			newchar.set_slave_category(args.type)
-	if newchar.get_stat('slave_class') == '': newchar.set_slave_category('servant')
+	if newchar.get_stat('slave_class') == '': newchar.set_slave_category('slave1')
 	if args.has("is_hirable"): newchar.is_hirable = args.is_hirable
 	return newchar
 

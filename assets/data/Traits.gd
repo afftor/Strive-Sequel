@@ -61,7 +61,7 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_master']#,'test_recast'],
 	},
-	'slave' : {#slave class trait
+	'slave' : {#slave class trait, obsolete
 		code = 'slave',
 		name = '',
 		descript = '',
@@ -79,7 +79,7 @@ var traits = {
 		effects = ['e_tr_heir'],
 		bonusstats = {mod_collect = -0.2, mod_farm = -0.2, mod_fish = -0.2}
 	},
-	servant = {#servant class trait
+	servant = {#servant class trait, obsolete
 		code = 'servant',
 		name = '',
 		descript = '',
@@ -88,6 +88,15 @@ var traits = {
 		effects = [],
 		traits = ['loyalty_basic_servitude'],
 		bonusstats = {obedience_drain = -2}
+	},
+	slave1 = {#slave class trait
+		code = 'slave1',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		bonusstats = {}
 	},
 	worker = {
 		code = 'worker',

@@ -871,13 +871,14 @@ func build_location_group():
 		else:
 			var character = ResourceScripts.game_party.characters[input_handler.active_location.group[('pos' + str(i))]]
 			get_node(positiondict[i] + "/Image").texture = character.get_icon()
-			if get_node(positiondict[i] + "/Image").texture == null:
-				if character.has_profession('master'):
-					get_node(positiondict[i] + "/Image").texture = images.icons.class_master
-				elif character.get_stat('slave_class') == 'servant':
-					get_node(positiondict[i] + "/Image").texture = images.icons.class_servant
-				else:
-					get_node(positiondict[i] + "/Image").texture = images.icons.class_slave
+#			if get_node(positiondict[i] + "/Image").texture == null:
+#				if character.has_profession('master'):
+#					get_node(positiondict[i] + "/Image").texture = images.icons.class_master
+#				elif character.get_stat('slave_class') == 'servant':
+#					get_node(positiondict[i] + "/Image").texture = images.icons.class_servant
+#				else:
+#					get_node(positiondict[i] + "/Image").texture = images.icons.class_slave
+			get_node(positiondict[i] + "/Image").texture = character.get_class_icon()
 			get_node(positiondict[i] + "/Image").show()
 			get_node(positiondict[i] + "/Image/TextureRect").hint_tooltip = (
 				"HP: "
