@@ -1672,7 +1672,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
-		tags = ['no_random', 'bladed'],
+		tags = ['no_random', 'bladed','enchantable'],
 		basestats = {atk = 35, critchance = 20, hitrate = 20, armorpenetration = 15, enchant_capacity = 400},
 	},
 	
@@ -1691,7 +1691,7 @@ var itemlist = {
 		tier = 'hard',
 		reqs = [],
 		effects = [],
-		tags = ['no_random', 'bladed'],
+		tags = ['no_random', 'bladed','enchantable'],
 		basestats = {atk = 50, hitrate = 50, critmod = 0.33, damage_mod_light = 0.5, enchant_capacity = 500},
 	},
 	holy_spear = {
@@ -1709,7 +1709,7 @@ var itemlist = {
 		tier = 'hard',
 		reqs = [],
 		effects = [],
-		tags = ['no_random'],
+		tags = ['no_random','enchantable'],
 		basestats = {atk = 45, hitrate = 25, damage_mod_air = 0.20, armor = 20, enchant_capacity = 500},
 	},
 	
@@ -1727,7 +1727,7 @@ var itemlist = {
 		geartype = 'bow',
 		weaponrange = 'any',
 		reqs = [{code = 'unique', value = 'aire'}],
-		tags = ['no_random'],
+		tags = ['no_random','enchantable'],
 		slots = ['rhand','lhand'],
 		hitsound = 'arrow',
 		effects = [],

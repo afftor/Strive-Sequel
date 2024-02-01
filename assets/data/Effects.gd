@@ -3201,7 +3201,7 @@ var effect_table = {
 				sub_effects = []
 			}
 		],
-		descript = "HEALERSLAVEDESCRIPT",
+		descript = "HEALERSLAVETRAITDESCRIPT",
 	},
 	e_tr_manager = {
 		type = 'trigger',
@@ -3220,7 +3220,7 @@ var effect_table = {
 				sub_effects = []
 			}
 		],
-		descript = "MANAGERSLAVEDESCRIPT", #for manager slave class, not for master. if there is need to display effect description on master - duplicate effect
+		descript = "MANAGERSLAVETRAITDESCRIPT",
 	},
 	#statuses 
 	e_s_burn_new = {

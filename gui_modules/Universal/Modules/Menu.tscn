@@ -664,7 +664,13 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "0.8.0a
+bbcode_text = "Added personality bonuses and personality changing mechanic to characters
+New personality system: Personalities now apply varying penalties and/or bonuses. Obedience actions will change target's personality depending on the action. However on lower Tame/Timid factors actions can backfire and change personality into a different direction. The actions for change are: Praise (Kind), Punish (Shy), Warn (Serious), Serve (Bold)
+New personality added: Neutral (no bonuses or penalties)
+Fixed large quantity of event bugs and typos
+Fixed multiple issues with enchantments
+Fixed gear creation applying enchantments at random
+0.8.0a
 Ogres and trolls now categorized as giants instead of humanoids and fixed antirace enchantments not working fully
 Items of different qualities now stack
 Fixed enchants/curses/quality not affecting item price
@@ -1523,7 +1529,13 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.8.0a
+text = "Added personality bonuses and personality changing mechanic to characters
+New personality system: Personalities now apply varying penalties and/or bonuses. Obedience actions will change target's personality depending on the action. However on lower Tame/Timid factors actions can backfire and change personality into a different direction. The actions for change are: Praise (Kind), Punish (Shy), Warn (Serious), Serve (Bold)
+New personality added: Neutral (no bonuses or penalties)
+Fixed large quantity of event bugs and typos
+Fixed multiple issues with enchantments
+Fixed gear creation applying enchantments at random
+0.8.0a
 Ogres and trolls now categorized as giants instead of humanoids and fixed antirace enchantments not working fully
 Items of different qualities now stack
 Fixed enchants/curses/quality not affecting item price

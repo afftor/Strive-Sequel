@@ -1208,16 +1208,30 @@ func decipher_single(ch):
 	var text2 = ''
 	match i.code:
 		'stat':
+			var skip_highlow = false
 			if typeof(i.value) == TYPE_ARRAY: i.value = calculate_number_from_string_array(i.value)
 			if i.stat.find("factor") > 0:
 				text2 += statdata.statdata[i.stat].name + ': ' + tr(ResourceScripts.descriptions.factor_descripts[i.value]) + " "
+			elif i.stat.find("metrics") >= 0:
+				text2 += tr(i.stat.to_upper() + "_NAME") % [get_stat(i.stat),i.value]
+				skip_highlow = true
 			else:
 				text2 += statdata.statdata[i.stat].name + ': ' + str(i.value) + " "
+			if skip_highlow == true:
+				continue
 			match i.operant:
 				'gte':
 					text2 += tr("REQORHIGHER")
 				'lte':
 					text2 += tr("REQORLOWER")
+		
+		'stat_in_set':
+			if i.stat == 'personality':
+				text2 += tr("SLAVEPARTPERSONALITY") + ": "
+				for k in i.value:
+					text2 += tr("PERSONALITYNAME" + k.to_upper()) + ", "
+				text2 = text2.substr(0, text2.length()-2)
+		
 		'has_profession':
 			if i.check == true:
 				text2 += tr("REQHASCLASS")+': ' + classesdata.professions[i.profession].name

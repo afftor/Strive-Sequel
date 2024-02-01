@@ -742,7 +742,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMWITCH_HAT = "Witch Hat",
 	ITEMWITCH_HATDESCRIPT = "A canonical hat with magic powers.",
 	ITEMZEPHYRA_BRUSH = "Foxtail Brush",
-	ITEMZEPHYRA_BRUSHDESCRIPT = "A mystic paintbrush with its hair having some resemblance with the tail of a fox... Fox tails are rumored to possess mystic power which allows them to invoke wonders with a mere flick of it.\n\nWhen casting a spell has 25% chance to cast it an additional time.", # Foxtail brush doesn't mention in description that only Zephyra can use it
+	ITEMZEPHYRA_BRUSHDESCRIPT = "A mystic paintbrush with its hair having some resemblance with the tail of a fox... Fox tails are rumored to possess mystic power which allows them to invoke wonders with a mere flick of it.\n\nWhen casting a spell has 25% chance to cast it an additional time.\n\n{color=yellow|Only equippable by Zephyra}",
 	
 	
 	#Items
@@ -1390,7 +1390,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SLAVEPARTSEXTRAIT = "Sexual Trait",
 	SLAVEPARTPERSONALITY = "Personality",
 
-	SLAVEPARTPERSONALITYDESCRIPT = "Personality defines character's speech patterns and has no gameplay effects.",
+	SLAVEPARTPERSONALITYDESCRIPT = "Personality defines character's speech patterns and provides a minor benefit. Personality can be adjusted later with training.",
 
 	SLAVEDIET = "Food Preferences",
 	SLAVESTARTINGCLASS = "Starting Class",
@@ -1612,14 +1612,15 @@ However, while it might seem that Landowners have nothing but contempt for those
 	INFOSEX_TRAITS = "Sex Traits provide additional effects during sexual interaction. They can be learned, activated and deactivated. Maximum number of activatale traits is based on Sex Factor.",
 	INFORULES_CONDS = "Conditions and rules can be toggled on character, affecting some of their stats and behavior.",
 	INFOPERSONALITY = "Character's personality will affect thier banter and provide access to certain traits and bonuses. Personality will be affected by social skills used on character.",
-	INFOPERSONALITYBOLD = "[center]Bold[/center]\n+25% Skill Damage; -25% MATK",
-	INFOPERSONALITYKIND = "[center]Kind[/center]\n+50% Healing Spell Efficiency",
-	INFOPERSONALITYSERIOUS = "[center]Serious[/center]\n+20% Damage Reduction",
-	INFOPERSONALITYSHY = "[center]Shy[/center]\n+25% MATK, -20% ATK",
+	INFOPERSONALITYBOLD = "Bold\n+25% Skill Damage; -25% MATK",
+	INFOPERSONALITYKIND = "Kind\n+50% Healing Spell Efficiency",
+	INFOPERSONALITYSERIOUS = "Serious\n+20% Damage Reduction",
+	INFOPERSONALITYSHY = "Shy\n+25% MATK, -20% ATK",
 	PERSONALITYNAMEBOLD = "Bold",
 	PERSONALITYNAMEKIND = "Kind",
 	PERSONALITYNAMESERIOUS = "Serious",
 	PERSONALITYNAMESHY = "Shy",
+	PERSONALITYNAMENEUTRAL = "Neutral",
 	PERSONALITYCHANGE = "'s personality changed to: ",
 	PERSONALITYSHIFTPERSONALITY_KIND = "[name]'s behavior has shifted to more {color=green|Kind} side.",
 	PERSONALITYSHIFTPERSONALITY_SHY = "[name]'s behavior has shifted to more {color=green|Shy} side.",
@@ -1629,6 +1630,24 @@ However, while it might seem that Landowners have nothing but contempt for those
 	PERSONALITYCURRENT = "Current Personality: ",
 	
 	PERSONALITYREBEL = "\n{color=red|Due to [his] rebellous character, [name] have not accepted this treatment to heart and [his] personality shifted into the opposite direction.} ",
+	
+	LOYALTYSPECTOOLTIP = "Can only unlock 1 specialization per character. Stats will increases with every loyalty level. Loyalty required will grow exponentially.",
+	
+	SLAVEPROFNAME_COMBAT = "Spc: Combat",
+	SLAVEPROFNAME_SERVICE = "Spc: Serviec",
+	SLAVEPROFNAME_PRESTIGE = "Spc: Prestige",
+	SLAVEPROFNAME_MANAGEMENT = "Spc: Defense",
+	SLAVEPROFNAME_MAGE = "Spc: Mage",
+	SLAVEPROFNAME_HEALER = "Spc: Healer",
+	SLAVEPROFDESCRIPT_COMBAT = "Specialization: Combat",
+	SLAVEPROFDESCRIPT_SERVICE = "Specialization: Service",
+	SLAVEPROFDESCRIPT_PRESTIGE = "Specialization: Prestige",
+	SLAVEPROFDESCRIPT_MANAGEMENT = "Specialization: Defense",
+	SLAVEPROFDESCRIPT_MAGE = "Specialization: Mage",
+	SLAVEPROFDESCRIPT_HEALER = "Specialization: Healer",
+	
+	HEALERSLAVETRAITDESCRIPT = "Healing Efficiency: +2%",
+	MANAGERSLAVETRAITDESCRIPT = "Loyalty from skills: +3%",
 	
 	INFOHOLDSHIFT = "Hold shift for details",
 	
@@ -12485,11 +12504,15 @@ Not waiting for your reply she disappears from sight as nonchalantly as she appe
 	METRICS_ANAL_VIRGINITY_OTHER = "[His] first experience with anal penetration was with {color=yellow|%s}. ",
 	METRICS_EARNED = "[He] earned {color=yellow|%d} gold, gathered {color=yellow|%d} food and {color=yellow|%d} materials while working on you. ",
 	METRICS_COMBAT = "[He] engaged in {color=yellow|%d} battles and defeated {color=yellow|%d} enemies. ",
-	
-	
 	METRICS_SOURCE_BROTHEL_CUSTOMER = "a customer of a brothel",
 	METRICS_SOURCE_GUILD_TRAINER = "a guild trainer, during sex toy training",
 	METRICS_SOURCE_WILLIAM = "William, Aliron's famous collector",
+	#metrics for classes
+	METRICS_WIN_NAME = "%d/%d Battles Won",
+	METRICS_SERVICEPERFORMED_NAME = "Performed service task for %d/%d turns",
+	METRICS_SOCSKILLUSED_NAME = "Social skills used %d/%d ",
+	METRICS_SPELLUSED_NAME = "Spells Used %d/%d",
+	METRICS_HEALUSED_NAME =  "Healing Skills Used %d/%d",
 	
 	
 	

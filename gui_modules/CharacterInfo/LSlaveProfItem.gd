@@ -76,9 +76,15 @@ func setup_prof(prof_id):
 			set_normal()
 			$bg.modulate = color_dict.avail
 			connect("pressed", get_parent(), "select_prof", [prof_id])
+	
+	text += tr("LOYALTYSPECTOOLTIP") + "\n"
+	
 	for i in upgrade_data.effects:
 		text += tr(Effectdata.effect_table[i].descript) + "\n"
-	text += tr(upgrade_data.descript)
+	
+	
+	text += "\n"+ tr("REQUIREMENTS_TOOLTIP") + ":" +"\n"+ tr(person.decipher_reqs(upgrade_data.reqs, true))
+	
 	globals.connecttexttooltip(self, text)
 
 

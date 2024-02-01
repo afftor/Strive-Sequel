@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LegR.png-dad8e61f9732f1af93d64a68fe5e3f27.stex"
+path="res://.import/kuro_book_3.png-58954848b165ba08d4383a745d0b82b3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/00_body_nude/LegR.png"
-dest_files=[ "res://.import/LegR.png-dad8e61f9732f1af93d64a68fe5e3f27.stex" ]
+source_file="res://assets/images/fullscreen scenes/kuro_book_3.png"
+dest_files=[ "res://.import/kuro_book_3.png-58954848b165ba08d4383a745d0b82b3.stex" ]
 
 [params]
 
