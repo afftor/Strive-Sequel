@@ -165,7 +165,7 @@ texture_progress = ExtResource( 8 )
 [node name="level" type="Label" parent="Button2"]
 margin_right = 100.0
 margin_bottom = 100.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "I"
 align = 1

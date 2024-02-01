@@ -289,6 +289,12 @@ func check_infinite_obedience():
 func get_class_icon():
 	if has_profession("master"):
 		return images.icons.class_master
+	elif get_stat('slave_spec') != null:
+		var upgrade_data = Traitdata.slave_profs[get_stat('slave_spec')]
+		if upgrade_data.icon is String:
+			return load(upgrade_data.icon)
+		else:
+			return upgrade_data.icon
 	elif get_stat('slave_class') == 'servant':
 		return images.icons.class_servant
 	else:
