@@ -176,7 +176,7 @@ func gear_detailed_tooltip(data, item = null):
 func geartemplete_tooltip(data):
 	var item = data.item
 	var text = '[center]' + item.name + '[/center]\n'
-
+	
 	if item.has('geartype'):
 		text += tr('TYPE_LABEL') + ': ' + item.geartype + "\n"
 		if item.slots.size() > 0:
@@ -186,9 +186,9 @@ func geartemplete_tooltip(data):
 			text = text.substr(0, text.length() -2) + ". \n"
 	else:
 		text += tr("TYPE_USABLE_LABEL") + "\n"
-
+	
 	text += item.descript
-
+	
 	if item.itemtype in ['armor','weapon','tool']:
 		text += "\n\n"
 		for i in item.basestats:
@@ -207,11 +207,10 @@ func geartemplete_tooltip(data):
 				if statdata.statdata[i].percent:
 					value = value + '%'
 				text += value + '}\n'
-
-
+	
 	for i in item.effects:
 		text += tr(Effectdata.effect_table[i].descript) + "\n"
-
+	
 	iconnode.texture = item.icon
 	$Cost/Label.text = str(data.price)
 

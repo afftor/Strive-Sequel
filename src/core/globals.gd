@@ -499,13 +499,13 @@ func build_attrs_for_char(node, person):
 	globals.connecttexttooltip(node.get_node('race'), "[center]{color=green|"+ races.racelist[person.get_stat('race')].name +"}[/center]\n\n"+ person.show_race_description())
 
 
-func build_desc_for_bonusstats(bonusstats):
+func build_desc_for_bonusstats(bonusstats, mul = 1):
 	var text = ""
 	for i in bonusstats:
 		if i  in ['enchant_capacity', 'enchant_capacity_mod', ]: 
 			continue
 		if bonusstats[i] != 0:
-			var value = bonusstats[i]
+			var value = bonusstats[i] * mul
 			var data = statdata.statdata[i]
 			if data.hidden: continue
 			var change = ''
@@ -1111,7 +1111,7 @@ func make_local_recruit(args):
 			newchar.add_stat_bonuses(args.bonuses)
 		if args.has("type"):
 			newchar.set_slave_category(args.type)
-	if newchar.get_stat('slave_class') == '': newchar.set_slave_category('servant')
+	if newchar.get_stat('slave_class') == '': newchar.set_slave_category('slave1')
 	if args.has("is_hirable"): newchar.is_hirable = args.is_hirable
 	return newchar
 

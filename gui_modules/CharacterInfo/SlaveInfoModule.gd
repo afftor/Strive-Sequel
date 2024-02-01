@@ -93,7 +93,7 @@ func update():
 		# if person.travel.location != 'mansion':
 		# 	$RichTextLabel.bbcode_text += "\n\n" + person.translate(make_location_description())
 		
-		if person != ResourceScripts.game_party.get_master():
+		if !person.is_master():
 			$Panel/character_class.text = tr(statdata.slave_class_names[person.get_stat('slave_class')].to_upper())
 			globals.connecttexttooltip($Panel/character_class, tr(person.get_stat('slave_class').to_upper()+"CLASSDESCRIPT"))
 		else:

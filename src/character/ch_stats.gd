@@ -48,6 +48,8 @@ func fix_import():
 		ResourceScripts.game_world.easter_egg_characters_acquired.append(statlist.unique)
 	statlist.loyalty = 0
 	statlist.obedience = 100
+	if statlist.slave_class in ['slave', 'servant']:
+		set_slave_category('slave1')
 
 
 func fix_serialize():
@@ -811,6 +813,11 @@ func get_stat(statname, ref = false):
 			return null
 	if statname == 'personality':
 		return get_personality()
+	if statname == 'slave_class':
+		var tmp = statlist.slave_class
+		if tmp == 'slave1':
+			tmp = 'slave'
+		return tmp
 	if !statlist.has(statname): 
 		print("no stat - %s" % statname)
 		return null
@@ -1760,6 +1767,8 @@ func baby_transform():
 
 
 func set_slave_category(new_class):
+	if new_class in ['slave', 'servant']:
+		new_class = 'slave1'
 	if statlist.slave_class != '':
 		remove_trait(statlist.slave_class.to_lower())
 	add_trait(new_class)
