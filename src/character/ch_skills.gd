@@ -307,6 +307,8 @@ func use_social_skill(s_code, target):
 					continue
 				var cur_personality = h.get_stat('personality')
 				var tres = {personality_bold = 0, personality_shy = 0, personality_kind = 0,personality_serious = 0} #2 per stat
+				if mod == 1:
+					cached_value = -cached_value
 				var update_data = h.change_personality_stats(stat, cached_value)
 				var change = update_data[0]
 				var stats_bind = ['personality_bold', 'personality_bold']
