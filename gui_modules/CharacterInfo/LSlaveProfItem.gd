@@ -43,13 +43,13 @@ func setup_prof(prof_id):
 			hint_tooltip += "\n"+tr("ANOTHERPROFSELECTED")
 			$cost.text = ""
 			$level.text = ""
-			$progress.value = 0
-			$progress.max_value = 0
+			$progress.visible = false
 			text += globals.build_desc_for_bonusstats(upgrade_data.bonusstats)
 		else:
 			set_selected()
 			$bg.modulate = color_dict.selected
 			$cost.text = "%d/%d" % [person.get_stat('slave_spec_progress'), person.get_next_slave_prof_lv_loyalty()]
+			$progress.visible = true
 			$progress.value = person.get_stat('slave_spec_progress')
 			$progress.max_value = person.get_next_slave_prof_lv_loyalty()
 			$level.text = input_handler.roman_number_converter(person.get_stat('slave_spec_level'))
@@ -57,8 +57,7 @@ func setup_prof(prof_id):
 				connect("pressed", get_parent(), "assign_loyalty")
 			text += globals.build_desc_for_bonusstats(upgrade_data.bonusstats, person.get_stat('slave_spec_level'))
 	else:
-		$progress.value = 0
-		$progress.max_value = 0
+		$progress.visible = false
 		$cost.text = "%d" % [person.get_next_slave_prof_lv_loyalty()]
 		$level.text = ""
 		text += globals.build_desc_for_bonusstats(upgrade_data.bonusstats)
