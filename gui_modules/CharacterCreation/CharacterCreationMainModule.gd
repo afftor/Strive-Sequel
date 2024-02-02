@@ -158,6 +158,8 @@ var params_to_save = [ #memo mostly
 	'hair_facial_color'
 ]
 
+var tooltips_stat = ['personality']
+
 onready var RaceSelection = $RaceSelectionModule
 onready var ClassSelection = $ClassSelectionModule
 onready var TraitSelection = $TraitSelection
@@ -1040,7 +1042,9 @@ func RebuildStatsContainer(): #onready scheme build, not values
 				text = tr(statdata.statdata[stat].name)
 			else:
 				text = stat.replace('_', ' ')
-			newnode.get_node('Label').text = text
+			newnode.get_node('header/Label').text = text
+			newnode.get_node('header/Tooltip').visible = tooltips_stat.has(stat)
+			globals.connecttexttooltip(newnode.get_node('header/Tooltip'), tr("INFO" + stat.to_upper()))
 		else:
 			var newnode = input_handler.DuplicateContainerTemplate($VisualsModule/ScrollContainer/VBoxContainer/StatsContainer)
 			newnode.name = stat
@@ -1049,7 +1053,9 @@ func RebuildStatsContainer(): #onready scheme build, not values
 				text = tr(statdata.statdata[stat].name)
 			else:
 				text = stat.replace('_', ' ')
-			newnode.get_node('Label').text = text
+			newnode.get_node('header/Label').text = text
+			newnode.get_node('header/Tooltip').visible = tooltips_stat.has(stat)
+			globals.connecttexttooltip(newnode.get_node('header/Tooltip'), tr("INFO" + stat.to_upper()))
 
 
 func FillStats():
