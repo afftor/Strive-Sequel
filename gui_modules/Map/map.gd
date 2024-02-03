@@ -58,7 +58,7 @@ func set_map_zoom(value):
 	
 	var new_point_offset = point_offset * k
 	var new_map_pos = new_point_offset + point
-	animate_map_moves(value, new_map_pos, 0.1)
+	animate_map_moves(value, trim_map_pos(new_map_pos, value), 0.1)
 #	$map.scale.x = value
 #	$map.scale.y = value
 #	$map.global_position = new_map_pos
@@ -66,7 +66,28 @@ func set_map_zoom(value):
 
 func set_map_position():
 	var new_map_pos = get_global_mouse_position() + drag_offset
-	$map.global_position = new_map_pos
+	$map.global_position = trim_map_pos(new_map_pos)
+
+
+func trim_map_pos(pos, scale = null):
+	if scale == null:
+		scale = $map.scale.x
+	var screen = get_viewport().get_visible_rect().size
+	var msize = $map.get_rect().size * scale
+	var max_x = msize.x * 0.5
+	var max_y = msize.y * 0.5
+	var min_x =  screen.x - msize.x * 0.5
+	var min_y =  screen.y - msize.y * 0.5
+	var res = pos
+	if screen.x < msize.x:
+		res.x = clamp(res.x, min_x, max_x)
+	else:
+		res.x = screen.x * 0.5
+	if screen.y < msize.y:
+		res.y = clamp(res.y, min_y, max_y)
+	else:
+		res.y = screen.y * 0.5
+	return res
 
 
 func set_focus_area():
