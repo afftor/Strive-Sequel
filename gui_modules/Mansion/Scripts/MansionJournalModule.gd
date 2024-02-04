@@ -420,6 +420,8 @@ func Reward():
 	if ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1_5':
 		var counter = false
 		for i in ResourceScripts.game_progress.stored_events.timed_events:
+			if i.has('action'):
+				continue
 			if i.code == 'guilds_elections_switch':
 				counter = true
 		if counter == false:

@@ -48,22 +48,33 @@ func fix_import():
 		ResourceScripts.game_world.easter_egg_characters_acquired.append(statlist.unique)
 	statlist.loyalty = 0
 	statlist.obedience = 100
+	if statlist.slave_class in ['slave', 'servant']:
+		set_slave_category('slave1')
 
 
 func fix_serialize():
 	for tr in traits.duplicate():
-		if Traitdata.traits.has(tr): continue
+		if Traitdata.traits.has(tr): 
+			continue
 		traits.erase(tr)
 		var arr = parent.get_ref().find_eff_by_trait(tr)
 		for e in arr:
 			var eff = effects_pool.get_effect_by_id(e)
 			eff.remove()
 	for tr in sex_traits.duplicate():
-		if Traitdata.sex_traits.has(tr): continue
+		if Traitdata.sex_traits.has(tr): 
+			continue
 		sex_traits.erase(tr)
 	for tr in unlocked_sex_traits.duplicate():
-		if Traitdata.sex_traits.has(tr): continue
+		if Traitdata.sex_traits.has(tr): 
+			continue
 		unlocked_sex_traits.erase(tr)
+	for metr in Statlist_init.template.metrics:
+		if statlist.metrics.has(metr):
+			continue
+		statlist.metrics[metr] = Statlist_init.template.metrics[metr]
+	for st in ['personality_bold', 'personality_kind', 'slave_spec_level', 'slave_spec_progress']:
+		statlist[st] = int(statlist[st])
 
 
 func default_stats_get():
@@ -75,6 +86,9 @@ func custom_stats_set(st, value):
 #	if value.has(''):
 #		statlist[''] =
 #	for st in value:
+	if st == 'personality':
+		set_personality(value)
+		return
 	if st in ['hair_base_color_1', 'hair_base_color_2' ]:
 		statlist[st] = value
 		statlist[st.replace('base', 'fringe')] = value
@@ -799,6 +813,11 @@ func get_stat(statname, ref = false):
 			return null
 	if statname == 'personality':
 		return get_personality()
+	if statname == 'slave_class':
+		var tmp = statlist.slave_class
+		if tmp == 'slave1':
+			tmp = 'slave'
+		return tmp
 	if !statlist.has(statname): 
 		print("no stat - %s" % statname)
 		return null
@@ -831,6 +850,9 @@ func add_stat_bonuses(ls:Dictionary):
 		for rec in ls:
 			if (rec as String).ends_with('mod') && !(rec in ['critmod', 'exp_gain_mod']) :
 				add_bonus(rec.replace('mod','_mul'), ls[rec])
+				continue
+			if (rec as String).ends_with('_add') and !statdata.statdata.has(rec):
+				add_bonus(rec, ls[rec])
 				continue
 			if !statdata.statdata.has(rec):
 				print('debug warning - lost stat %s' % rec)
@@ -940,6 +962,9 @@ func add_stat(statname, value, revert = false):
 		value *= get_stat_gain_rate(statname)
 	if statname.ends_with('_direct'):
 		statname = statname.trim_suffix('_direct')
+	if statname == 'loyalty' and statlist.loyalty_locked:
+		add_slave_prof_progress(value)
+		return
 	if !statdata.statdata.has(statname): 
 		print("no stat - %s" % statname)
 		return
@@ -1125,6 +1150,10 @@ func has_status(status):
 		var traitdata = Traitdata.sex_traits[tr]
 		if traitdata.has('tags') and traitdata.tags.has(status):
 			return true
+	if statlist.slave_spec !=null:
+		var data = Traitdata.slave_profs[statlist.slave_spec]
+		if data.has('tags') and data.tags.has(status):
+			return true
 	return false
 
 
@@ -1221,19 +1250,7 @@ func process_chardata(chardata, unique = false):
 	if chardata.has('icon_image'):
 		statlist.dynamic_portrait = false
 	if chardata.has('personality'):
-		match chardata.personality:
-			'bold':
-				statlist.personality_bold = globals.rng.randi_range(30, 60)
-				statlist.personality_kind = globals.rng.randi_range(-10, 10)
-			'shy':
-				statlist.personality_bold = -globals.rng.randi_range(30, 60)
-				statlist.personality_kind = globals.rng.randi_range(-10, 10)
-			'kind':
-				statlist.personality_bold = globals.rng.randi_range(-10, 10)
-				statlist.personality_kind = globals.rng.randi_range(30, 60)
-			'serious':
-				statlist.personality_bold = globals.rng.randi_range(-10, 10)
-				statlist.personality_kind = -globals.rng.randi_range(30, 60)
+		set_personality(chardata.personality)
 	set_virginity_data()
 
 
@@ -1466,6 +1483,20 @@ func create(temp_race, temp_gender, temp_age):
 	random_icon()
 	
 	statlist.personality = input_handler.random_from_array(variables.personality_array)
+	match statlist.personality:
+		'bold':
+			statlist.personality_bold = rand_range(35,95)
+			statlist.personality_kind = rand_range(30,-30)
+		'shy':
+			statlist.personality_bold = rand_range(-35,-95)
+			statlist.personality_kind = rand_range(30,-30)
+		'kind':
+			statlist.personality_bold = rand_range(30,-30)
+			statlist.personality_kind = rand_range(35,95)
+		'serious':
+			statlist.personality_bold = rand_range(-35,-95)
+			statlist.personality_kind = rand_range(30,-30)
+	
 	
 	for i in ResourceScripts.descriptions.bodypartsdata:
 		if ResourceScripts.descriptions.bodypartsdata[i].has(statlist[i]):
@@ -1736,6 +1767,8 @@ func baby_transform():
 
 
 func set_slave_category(new_class):
+	if new_class in ['slave', 'servant']:
+		new_class = 'slave1'
 	if statlist.slave_class != '':
 		remove_trait(statlist.slave_class.to_lower())
 	add_trait(new_class)
@@ -1985,10 +2018,13 @@ func change_personality_stats(stat, init_value):
 	statlist[primaxis] += newvalue[0]
 	statlist[altaxis] += newvalue[1]
 	parent.get_ref().recheck_effect_tag('recheck_stats')
-	return (newvalue)
+	check_old_personality()
+	return [newvalue, rebel]
 
 
 func get_personality():
+	if abs(statlist.personality_bold) <= 30 and abs(statlist.personality_kind) <= 30:
+		return 'neutral'
 	if abs(statlist.personality_bold) > abs(statlist.personality_kind):
 		if statlist.personality_bold > 0:
 			return 'bold'
@@ -2000,3 +2036,87 @@ func get_personality():
 		else:
 			return 'serious'
 
+
+func set_personality(value):
+	match value:
+		'neutral':
+			statlist.personality_bold = globals.rng.randi_range(-10, 10)
+			statlist.personality_kind = globals.rng.randi_range(-10, 10)
+		'bold':
+			statlist.personality_bold = globals.rng.randi_range(65, 85)
+			statlist.personality_kind = globals.rng.randi_range(-10, 10)
+		'shy':
+			statlist.personality_bold = -globals.rng.randi_range(65, 85)
+			statlist.personality_kind = globals.rng.randi_range(-10, 10)
+		'kind':
+			statlist.personality_bold = globals.rng.randi_range(-10, 10)
+			statlist.personality_kind = globals.rng.randi_range(65, 85)
+		'serious':
+			statlist.personality_bold = globals.rng.randi_range(-10, 10)
+			statlist.personality_kind = -globals.rng.randi_range(65, 85)
+	check_old_personality()
+
+
+func check_old_personality():
+	if get_personality() != 'neutral':
+		statlist.old_personality = get_personality()
+
+
+func remove_slave_prof():
+	if statlist.slave_spec == null:
+		return
+	var data = Traitdata.slave_profs[statlist.slave_spec]
+	for i in range (statlist.slave_spec_level):
+		parent.get_ref().remove_stat_bonuses(data.bonusstats)
+	
+	var arr = parent.get_ref().find_eff_by_trait(statlist.slave_spec)
+	for e in arr:
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.remove()
+	
+	statlist.slave_spec = null
+	statlist.slave_spec_level = 0
+	statlist.slave_spec_progress = 0
+	statlist.loyalty_locked = false
+
+
+func set_slave_prof(prof):
+	if prof != statlist.slave_spec and statlist.slave_spec != null:
+		print('warning - slave prof removed')
+		remove_slave_prof()
+	
+	var data = Traitdata.slave_profs[prof]
+	parent.get_ref().add_stat_bonuses(data.bonusstats)
+	for e in data.effects:
+		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
+		parent.get_ref().apply_effect(effects_pool.add_effect(eff))
+		eff.set_args('trait', prof)
+	
+	statlist.slave_spec = prof
+	statlist.slave_spec_level = 0
+	add_stat('loyalty', -get_next_slave_prof_lv_loyalty())
+	lvup_slave_prof()
+	statlist.slave_spec_progress = 0
+
+
+func get_next_slave_prof_lv_loyalty():
+#	return 500 * (1 + statlist.slave_spec_level)
+	return 50 * (1 + statlist.slave_spec_level)
+
+
+func lvup_slave_prof(): #no cost check! no effects setup
+	var data = Traitdata.slave_profs[statlist.slave_spec]
+	parent.get_ref().add_stat_bonuses(data.bonusstats)
+	statlist.slave_spec_level += 1
+	
+	parent.get_ref().recheck_effect_tag('recheck_trait')
+	parent.get_ref().recheck_effect_tag('recheck_stats')
+
+
+func add_slave_prof_progress(value):
+	print(statlist.slave_spec_progress)
+	statlist.slave_spec_progress += value
+	print(statlist.slave_spec_progress)
+	while statlist.slave_spec_progress >= get_next_slave_prof_lv_loyalty():
+		statlist.slave_spec_progress -= get_next_slave_prof_lv_loyalty()
+		lvup_slave_prof()

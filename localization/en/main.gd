@@ -181,6 +181,7 @@ var TranslationDict = {
 	SIBLINGMODULESIBLINGS = "Siblings",
 	SIBLINGMODULECHILDDREN = "Children",
 	SIBLINGMODULECURRENTCAPACITY = "Current Capacity",
+	SIBLINGMODULEPERSONALITY = "Personality",
 	SYSMESSAGEATLEAST1CHAR = "Select at least 1 character to fight.",
 	
 	OPERANTATLEAST = "At least",
@@ -741,7 +742,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMWITCH_HAT = "Witch Hat",
 	ITEMWITCH_HATDESCRIPT = "A canonical hat with magic powers.",
 	ITEMZEPHYRA_BRUSH = "Foxtail Brush",
-	ITEMZEPHYRA_BRUSHDESCRIPT = "A mystic paintbrush with its hair having some resemblance with the tail of a fox... Fox tails are rumored to possess mystic power which allows them to invoke wonders with a mere flick of it.\n\nWhen casting a spell has 25% chance to cast it an additional time.", # Foxtail brush doesn't mention in description that only Zephyra can use it
+	ITEMZEPHYRA_BRUSHDESCRIPT = "A mystic paintbrush with its hair having some resemblance with the tail of a fox... Fox tails are rumored to possess mystic power which allows them to invoke wonders with a mere flick of it.\n\nWhen casting a spell has 25% chance to cast it an additional time.\n\n{color=yellow|Only equippable by Zephyra}",
 	
 	
 	#Items
@@ -1389,7 +1390,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SLAVEPARTSEXTRAIT = "Sexual Trait",
 	SLAVEPARTPERSONALITY = "Personality",
 
-	SLAVEPARTPERSONALITYDESCRIPT = "Personality defines character's speech patterns and has no gameplay effects.",
+	SLAVEPARTPERSONALITYDESCRIPT = "Personality defines character's speech patterns and provides a minor benefit. Personality can be adjusted later with training.",
 
 	SLAVEDIET = "Food Preferences",
 	SLAVESTARTINGCLASS = "Starting Class",
@@ -1415,7 +1416,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SLAVEAGEADULT = "Young Adult",
 	SLAVEAGEMATURE = "Mature",
 
-	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but they gain Loyalty faster by 30%. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. Slaves can be forced into sexual service for gold without training but at reduced efficiency.[/color]",
+	SLAVECLASSDESCRIPT = "FIX THIS! Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but they gain Loyalty faster by 30%. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. Slaves can be forced into sexual service for gold without training but at reduced efficiency.[/color]", #change!!!
 	SERVANTCLASSDESCRIPT = "Peons generally have the same rights of others, but are purchased to serve a master. Many folks end up as peons as a way to pay their, or their family's debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
 	HEIRCLASSDESCRIPT = "Mansion's heir are children born of [Master] and their spouse.\n\n[color=aqua]Heir's Obedience drain 50% slower and Loyalty is 50% faster. Heir has 20% penalty to Collection, Farming and Fishing.[/color] ",
 
@@ -1610,15 +1611,51 @@ However, while it might seem that Landowners have nothing but contempt for those
 	INFOSEX_SKILLS = "Sex Skills refer to character's performance during sex. The higher they are, the quicker they can make thier partner to orgasm with related actions. Character's Sexual Proficiency is based on average of 3 highest skills.\nConsent represents character's general acceptance of various sexual actions, but it is also heavily affected by partners and situtation.",
 	INFOSEX_TRAITS = "Sex Traits provide additional effects during sexual interaction. They can be learned, activated and deactivated. Maximum number of activatale traits is based on Sex Factor.",
 	INFORULES_CONDS = "Conditions and rules can be toggled on character, affecting some of their stats and behavior.",
+	INFOPERSONALITY = "Character's personality will affect thier banter and provide access to certain traits and bonuses. Personality will be affected by social skills used on character.",
+	INFOPERSONALITYBOLD = "Bold\n+25% Skill Damage; -25% MATK",
+	INFOPERSONALITYKIND = "Kind\n+50% Healing Spell Efficiency",
+	INFOPERSONALITYSERIOUS = "Serious\n+20% Damage Reduction",
+	INFOPERSONALITYSHY = "Shy\n+25% MATK, -20% ATK",
+	PERSONALITYNAMEBOLD = "Bold",
+	PERSONALITYNAMEKIND = "Kind",
+	PERSONALITYNAMESERIOUS = "Serious",
+	PERSONALITYNAMESHY = "Shy",
+	PERSONALITYNAMENEUTRAL = "Neutral",
+	PERSONALITYCHANGE = "'s personality changed to: ",
+	PERSONALITYSHIFTPERSONALITY_KIND = "[name]'s behavior has shifted to more {color=green|Kind} side.",
+	PERSONALITYSHIFTPERSONALITY_SHY = "[name]'s behavior has shifted to more {color=green|Shy} side.",
+	PERSONALITYSHIFTPERSONALITY_SERIOUS = "[name]'s behavior has shifted to more {color=green|Serious} side.",
+	PERSONALITYSHIFTPERSONALITY_BOLD = "[name]'s behavior has shifted to more {color=green|Bold} side.",
 	
+	PERSONALITYCURRENT = "Current Personality: ",
+	
+	PERSONALITYREBEL = "\n{color=red|Due to [his] rebellous character, [name] have not accepted this treatment to heart and [his] personality shifted into the opposite direction.} ",
+	
+	LOYALTYSPECTOOLTIP = "Can only unlock 1 specialization per character. Stats will increases with every loyalty level. Loyalty required will grow exponentially.",
+	
+	SLAVEPROFNAME_COMBAT = "Spc: Combat",
+	SLAVEPROFNAME_SERVICE = "Spc: Serviec",
+	SLAVEPROFNAME_PRESTIGE = "Spc: Prestige",
+	SLAVEPROFNAME_MANAGEMENT = "Spc: Defense",
+	SLAVEPROFNAME_MAGE = "Spc: Mage",
+	SLAVEPROFNAME_HEALER = "Spc: Healer",
+	SLAVEPROFDESCRIPT_COMBAT = "Specialization: Combat",
+	SLAVEPROFDESCRIPT_SERVICE = "Specialization: Service",
+	SLAVEPROFDESCRIPT_PRESTIGE = "Specialization: Prestige",
+	SLAVEPROFDESCRIPT_MANAGEMENT = "Specialization: Defense",
+	SLAVEPROFDESCRIPT_MAGE = "Specialization: Mage",
+	SLAVEPROFDESCRIPT_HEALER = "Specialization: Healer",
+	
+	HEALERSLAVETRAITDESCRIPT = "Healing Efficiency: +2%",
+	MANAGERSLAVETRAITDESCRIPT = "Loyalty from skills: +3%",
 	
 	INFOHOLDSHIFT = "Hold shift for details",
 	
 	STATGROWTH_FACTORDESCRIPT = "Growth is character's affinity to getting stronger. As character acquire more classes all their stats increase. Every point of growth increases the number of classes which will increase its stats. It also greatly affects character's Value. \n\n{color=green|Affected stats are: Productivity, Physics, Wits, Charm, Max Health, Max Mana, Speed, Hitrate, Evasion, ATK, MATK, DEF, MDEF.} ",
 	STATPHYSICS_FACTORDESCRIPT = "Physics factor represents physical potential of the character. It increases [color=aqua]Physical[/color] growth and influences melee combat.\n\n{color=green|Maxed Physics Factor increases natural Health Regeneration.}",
 	STATMAGIC_FACTORDESCRIPT = "Magic factor represents character's magic affinity. The higher it is, the more mana you have and the stronger magic classes you can unlock. Also affects mana regeneration.\n{color=green|Maxed Magic Factor provides MATK bonus.}",
-	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy it is to befriend the character. The higher it is, the more Loyalty character will gain passively and from Gracious and Lewd social skills.\n\n{color=green|Maxed Tame Factor increases Loyalty Gain.}",
-	STATTIMID_FACTORDESCRIPT = "Timid factor represents how easily the character can be influenced by punishments and abuse. The higher it is, the more effective Mean Social Skills are for building loyalty and lower Obedience Drain.\n\n{color=green|Maxed Timid Factor reduces Damage Taken.}",
+	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy it is to befriend the character. The higher it is, the more Loyalty character will gain passively and from Gracious and Lewd social skills. It will also make personality changes more stable on Kind axis.\n\n{color=green|Maxed Tame Factor increases Loyalty Gain.}",
+	STATTIMID_FACTORDESCRIPT = "Timid factor represents how easily the character can be influenced by punishments and abuse. The higher it is, the more effective Mean Social Skills are for building loyalty and lower Obedience Drain. It will also make personality changes more stable on Bold axis.\n\n{color=green|Maxed Timid Factor reduces Damage Taken.}",
 	STATWITS_FACTORDESCRIPT = "Wits factor represents the character's mind potential. It increases [color=aqua]Wits[/color] growth.\n\n{color=green|Maxed Wits Factor increases experience gain.}",
 	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. [Master]'s charm also increases gold and reputation rewards from repeatable quests and number of dates per week.\n\n{color=green|Maxed Charm Factor furtherly increases social skill efficiency.}",
 	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It speeds sexual skills acquirement and occasionally boosts sexual options in events. [Master]'s Sex factor also increases number of sex interactions per week.\n\n{color=green|Maxed Sex Factor provides Speed bonus}.",
@@ -1753,11 +1790,11 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	
 	SKILLPRAISE = "Praise",
-	SKILLPRAISEDESCRIPT = "Category: {color=green|Gracious}\nA basic tool for inspiring your workers. Improved by Charm Factor. \nBasic Effects: \nLoyalty +5, Maxes Obedience.",
+	SKILLPRAISEDESCRIPT = "Category: {color=green|Gracious}\nA basic tool for inspiring your workers. Improved by Charm Factor. \nBasic Effects: \nLoyalty +5, Maxes Obedience, Increases affinity to Kind Personality",
 	SKILLWARN = "Warn",
-	SKILLWARNDESCRIPT = "Category: {color=red|Mean}\nA basic tool to instigate fear.\nBasic Effects: \nLoyalty +5, Maxes Obedience.",
+	SKILLWARNDESCRIPT = "Category: {color=red|Mean}\nA basic tool to instigate fear.\nBasic Effects: \nLoyalty +5, Maxes Obedience, Increases affinity to Serious Personality.",
 	SKILLPUNISH = "Punish",
-	SKILLPUNISHDESCRIPT = "Category: {color=red|Mean}\nPhysically punishes target.\nBasic Effects: \nLoyalty +10, Maxes Obedience.",
+	SKILLPUNISHDESCRIPT = "Category: {color=red|Mean}\nPhysically punishes target.\nBasic Effects: \nLoyalty +10, Maxes Obedience. Increases affinity to Shy Personality",
 	SKILLREWARD = "Reward", #obsolete?
 	SKILLREWARDDESCRIPT = "Category: {color=green|Gracious}\nBuying their respect might seem like an easy solution... as long as you have enough coin. Increases obedience greatly.",
 	SKILLREWARDSEX = "Reward with sex",
@@ -1773,7 +1810,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLCONSUME_SOUL = "Consume Soul",
 	SKILLCONSUME_SOULDESCRIPT = "Kills target and receives their experience.",
 	SKILLSERVE = "Serve",
-	SKILLSERVEDESCRIPT = "Category: {color=green|Gracious}\nProvide a care service for another person. Improves Obedience and increases Loyalty gain. Requires 20 lust. \nBasic Effects: \nLoyalty Gain: +1 for 5 days, Maxes Obedience.",
+	SKILLSERVEDESCRIPT = "Category: {color=green|Gracious}\nProvide a care service for another person. Improves Obedience and increases Loyalty gain. Requires 20 lust. \nBasic Effects: \nLoyalty Gain: +1 for 5 days, Maxes Obedience, Increases affinity to Bold Personality",
 	SKILLDISCIPLINE = "Discipline",
 	SKILLDISCIPLINEDESCRIPT = "Boosts target's manual labor performance. \nBasic Effects: \nLabor and craft efficiencies are increased by 50% for 5 days.",
 	SKILLSEDATE = "Sedate",
@@ -3300,6 +3337,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	WORKRULENUDITY = "Nudity",
 	WORKRULENUDITYDESCRIPT = "Forces [name] to stay naked while at mansion (if has corresponding sprite). This effect is cosmetic.",
+	
+	WORKRULEPERSONALITY_LOCK = "Lock Personality",
+	WORKRULEPERSONALITY_LOCKDESCRIPT = "[name] will no longer have [his] personality affected by social actions.",
 	
 	SERVICEENSLAVE = "Enslave",
 	SERVICEENSLAVEDESCRIPT = "Makes chosen character into a Slave.\n\n[color=aqua]Slaves suffer 10% damage reduction but gain various collection bonuses and but their Loyalty can be increased by punishing skills.[/color]",
@@ -12478,11 +12518,15 @@ Not waiting for your reply she disappears from sight as nonchalantly as she appe
 	METRICS_ANAL_VIRGINITY_OTHER = "[His] first experience with anal penetration was with {color=yellow|%s}. ",
 	METRICS_EARNED = "[He] earned {color=yellow|%d} gold, gathered {color=yellow|%d} food and {color=yellow|%d} materials while working on you. ",
 	METRICS_COMBAT = "[He] engaged in {color=yellow|%d} battles and defeated {color=yellow|%d} enemies. ",
-	
-	
 	METRICS_SOURCE_BROTHEL_CUSTOMER = "a customer of a brothel",
 	METRICS_SOURCE_GUILD_TRAINER = "a guild trainer, during sex toy training",
 	METRICS_SOURCE_WILLIAM = "William, Aliron's famous collector",
+	#metrics for classes
+	METRICS_WIN_NAME = "%d/%d Battles Won",
+	METRICS_SERVICEPERFORMED_NAME = "Performed service task for %d/%d turns",
+	METRICS_SOCSKILLUSED_NAME = "Social skills used %d/%d ",
+	METRICS_SPELLUSED_NAME = "Spells Used %d/%d",
+	METRICS_HEALUSED_NAME =  "Healing Skills Used %d/%d",
 	
 	
 	

@@ -367,7 +367,7 @@ var scenedict = {
 		args = {
 			races = [['local', 5],['random', 1]],
 			difficulty = [0,2],
-			type = 'servant'
+			type = 'slave'
 			}
 		},
 		],
@@ -428,7 +428,7 @@ var scenedict = {
 		args = {
 			races = [['Goblin', 5]],
 			difficulty = [0,1],
-			type = 'servant'
+			type = 'slave'
 			}
 		},
 		],
@@ -536,7 +536,7 @@ var scenedict = {
 		args = {
 			races = [['Fairy', 5]],
 			difficulty = [0,1],
-			type = 'servant'
+			type = 'slave'
 			}
 		},
 		],
@@ -697,7 +697,7 @@ var scenedict = {
 		default_event_type = 'scene_character_event',
 		image = 'slave_decision',
 		common_effects = [
-			{code = 'change_type_scene_characters', type = 'all', value = 'servant'},
+			{code = 'change_type_scene_characters', type = 'all', value = 'slave'},
 			{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},
 			],
 		options = [
@@ -744,7 +744,7 @@ var scenedict = {
 	set_enemy = 'rebels_small',
 	winscene = 'event_person_acquired',
 	common_effects = [
-	{code = 'make_scene_character', value = [{type = 'function', function = 'make_local_recruit', args = {races = [['beast', 1]], difficulty = [0,1], type = 'servant',bonuses = {submission = 5}}}],},
+	{code = 'make_scene_character', value = [{type = 'function', function = 'make_local_recruit', args = {races = [['beast', 1]], difficulty = [0,1], type = 'slave',bonuses = {submission = 5}}}],},
 	{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 24}],
 	options = [
 	{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},
@@ -1338,7 +1338,7 @@ var scenedict = {
 	common_effects = [],
 	options = [
 	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSLAVE"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'}, {code = 'real_affect_scene_characters', type = 'slavetype', value = 'slave'}]},
-	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSERVANT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'},]},
+	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSERVANT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},{code = 'real_affect_scene_characters', type = 'slavetype', value = 'slave'},]},
 	]
 	},
 	recruit_captured_fail = {text = tr("DIALOGUERECRUITBAD"),
@@ -1354,7 +1354,7 @@ var scenedict = {
 	image = '',
 	common_effects = [],
 	options = [
-	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUEMEETGOODDEFAULT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'}]},
+	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUEMEETGOODDEFAULT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'slave'}]},
 	#{code = 'recruit_from_scene', reqs = [{type = 'disabled'}], not_hide = true, text = tr("DIALOGUEMEETGOODHIRELING"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'hireling'},]},
 	]
 	},

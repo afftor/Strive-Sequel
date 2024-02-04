@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -81,6 +81,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist.png" type="Texture" id=79]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=80]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/icon_money.png" type="Texture" id=81]
+[ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=82]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 64 )
@@ -228,25 +229,43 @@ placeholder_alpha = 0.5
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 261.0
 margin_right = 433.0
-margin_bottom = 352.0
+margin_bottom = 350.0
 custom_constants/separation = 30
 
 [node name="sex" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_right = 200.0
-margin_bottom = 91.0
+margin_bottom = 89.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/sex"]
+[node name="header" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/sex"]
 margin_right = 200.0
 margin_bottom = 35.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/sex/header"]
+margin_right = 200.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "SLAVEPARTSEX"
 align = 1
 
+[node name="Tooltip" type="TextureRect" parent="VBoxContainer/HBoxContainer/sex/header"]
+visible = false
+margin_left = 175.0
+margin_right = 210.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 35, 35 )
+texture = ExtResource( 82 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="button" type="TextureButton" parent="VBoxContainer/HBoxContainer/sex"]
 margin_top = 39.0
 margin_right = 200.0
-margin_bottom = 91.0
+margin_bottom = 89.0
 rect_min_size = Vector2( 200, 50 )
 theme = ExtResource( 28 )
 texture_normal = ExtResource( 55 )
@@ -254,6 +273,7 @@ texture_pressed = ExtResource( 55 )
 texture_hover = ExtResource( 55 )
 texture_disabled = ExtResource( 55 )
 texture_focused = ExtResource( 55 )
+expand = true
 
 [node name="LArr" type="TextureButton" parent="VBoxContainer/HBoxContainer/sex/button"]
 anchor_top = 0.5
@@ -296,20 +316,38 @@ texture_hover = ExtResource( 67 )
 [node name="age" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 230.0
 margin_right = 430.0
-margin_bottom = 91.0
+margin_bottom = 89.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/age"]
+[node name="header" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/age"]
 margin_right = 200.0
 margin_bottom = 35.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/age/header"]
+margin_right = 200.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "SLAVEPARTAGE"
 align = 1
 
+[node name="Tooltip" type="TextureRect" parent="VBoxContainer/HBoxContainer/age/header"]
+visible = false
+margin_left = 175.0
+margin_right = 210.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 35, 35 )
+texture = ExtResource( 82 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="button" type="TextureButton" parent="VBoxContainer/HBoxContainer/age"]
 margin_top = 39.0
 margin_right = 200.0
-margin_bottom = 91.0
+margin_bottom = 89.0
 rect_min_size = Vector2( 200, 50 )
 theme = ExtResource( 28 )
 texture_normal = ExtResource( 55 )
@@ -317,6 +355,7 @@ texture_pressed = ExtResource( 55 )
 texture_hover = ExtResource( 55 )
 texture_disabled = ExtResource( 55 )
 texture_focused = ExtResource( 55 )
+expand = true
 
 [node name="LArr" type="TextureButton" parent="VBoxContainer/HBoxContainer/age/button"]
 anchor_top = 0.5
@@ -357,9 +396,9 @@ texture_pressed = ExtResource( 65 )
 texture_hover = ExtResource( 67 )
 
 [node name="race" type="TextureButton" parent="VBoxContainer"]
-margin_top = 358.0
+margin_top = 356.0
 margin_right = 433.0
-margin_bottom = 424.0
+margin_bottom = 422.0
 rect_min_size = Vector2( 0, 50 )
 texture_normal = ExtResource( 49 )
 texture_pressed = ExtResource( 48 )
@@ -390,9 +429,9 @@ __meta__ = {
 }
 
 [node name="trait" type="TextureButton" parent="VBoxContainer"]
-margin_top = 430.0
+margin_top = 428.0
 margin_right = 433.0
-margin_bottom = 496.0
+margin_bottom = 494.0
 rect_min_size = Vector2( 0, 50 )
 texture_normal = ExtResource( 49 )
 texture_pressed = ExtResource( 48 )
@@ -433,9 +472,9 @@ __meta__ = {
 }
 
 [node name="class" type="TextureButton" parent="VBoxContainer"]
-margin_top = 502.0
+margin_top = 500.0
 margin_right = 433.0
-margin_bottom = 568.0
+margin_bottom = 566.0
 rect_min_size = Vector2( 0, 50 )
 texture_normal = ExtResource( 49 )
 texture_pressed = ExtResource( 48 )
@@ -466,9 +505,9 @@ __meta__ = {
 }
 
 [node name="sextrait" type="TextureButton" parent="VBoxContainer"]
-margin_top = 574.0
+margin_top = 572.0
 margin_right = 433.0
-margin_bottom = 640.0
+margin_bottom = 638.0
 rect_min_size = Vector2( 0, 50 )
 texture_normal = ExtResource( 49 )
 texture_pressed = ExtResource( 48 )
@@ -583,6 +622,7 @@ __meta__ = {
 }
 
 [node name="StatsModule" type="TextureRect" parent="."]
+visible = false
 margin_left = 675.348
 margin_top = 140.0
 margin_right = 1198.35
@@ -658,7 +698,6 @@ texture = ExtResource( 59 )
 expand = true
 
 [node name="VisualsModule" type="TextureRect" parent="."]
-visible = false
 margin_left = 675.348
 margin_top = 140.0
 margin_right = 1198.35
@@ -685,13 +724,30 @@ visible = false
 margin_right = 236.0
 margin_bottom = 79.0
 
-[node name="Label" type="Label" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button"]
+[node name="header" type="HBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button"]
 margin_right = 236.0
 margin_bottom = 35.0
+
+[node name="Label" type="Label" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button/header"]
+margin_right = 197.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "SLAVEPARTSEX"
 align = 1
+
+[node name="Tooltip" type="TextureRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button/header"]
+margin_left = 201.0
+margin_right = 236.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 35, 35 )
+texture = ExtResource( 82 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="button" type="TextureButton" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button"]
 margin_top = 39.0
@@ -750,21 +806,37 @@ columns = 2
 
 [node name="Button" type="VBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2"]
 visible = false
-margin_right = 236.0
+margin_right = 210.0
 margin_bottom = 39.0
 
-[node name="Label" type="Label" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button"]
-margin_right = 236.0
+[node name="header" type="HBoxContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button"]
+margin_right = 210.0
 margin_bottom = 35.0
-rect_min_size = Vector2( 236, 0 )
+
+[node name="Label" type="Label" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button/header"]
+margin_right = 171.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "SLAVEPARTSEX"
 align = 1
 
+[node name="Tooltip" type="TextureRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button/header"]
+margin_left = 175.0
+margin_right = 210.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 35, 35 )
+texture = ExtResource( 82 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="GridContainer" type="GridContainer" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button"]
 margin_top = 39.0
-margin_right = 236.0
+margin_right = 210.0
 margin_bottom = 39.0
 custom_constants/vseparation = 5
 custom_constants/hseparation = 9
@@ -826,6 +898,7 @@ bbcode_text = "test text"
 text = "test text"
 
 [node name="DietPanel" type="TextureRect" parent="."]
+visible = false
 margin_left = 674.045
 margin_top = 541.363
 margin_right = 1197.05

@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://Character_generator/recolor shader mask.shader" type="Shader" id=1]
 [ext_resource path="res://Character_generator/images/09_wings/Wings_seraph.png" type="Texture" id=2]
@@ -70,6 +70,8 @@
 [ext_resource path="res://Character_generator/images/15_beastkin_body_nude/beastkin_torso_many_nipples6.png" type="Texture" id=68]
 [ext_resource path="res://Character_generator/images/15_beastkin_body_nude/beastkin_pregnancy_nipple_big.png" type="Texture" id=69]
 [ext_resource path="res://Character_generator/images/15_beastkin_body_nude/beastkin_pregnancy_tits_big.png" type="Texture" id=70]
+[ext_resource path="res://Character_generator/images/201_weapon_back/weapon_back_spear.png" type="Texture" id=71]
+[ext_resource path="res://Character_generator/images/200_weapon_belt/weapon_belt_sword.png" type="Texture" id=72]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -1408,6 +1410,11 @@ rotation = 1.5708
 rest = Transform2D( 0.005, 0, 0, 0, 0, 0 )
 default_length = 100.0
 
+[node name="Weapon_back" type="Sprite" parent="HumanF1/Spine"]
+position = Vector2( 175, -22.0006 )
+rotation = -1.5708
+texture = ExtResource( 71 )
+
 [node name="Hairs_back_long_mesh" type="Polygon2D" parent="HumanF1/Spine"]
 material = SubResource( 3 )
 position = Vector2( -530.237, 433.288 )
@@ -2279,3 +2286,8 @@ position = Vector2( 567, -10.002 )
 rotation = -1.5708
 scale = Vector2( 0.95, 0.95 )
 texture = ExtResource( 40 )
+
+[node name="Weapon_belt" type="Sprite" parent="HumanF1/Spine"]
+position = Vector2( 175, -22.0006 )
+rotation = -1.5708
+texture = ExtResource( 72 )

@@ -599,12 +599,13 @@ func show_faces():
 				b.connect('pressed', self, 'set_rest', [null, p])
 				b.get_node("TextureRect").texture = p.get_icon_small()
 				if b.get_node('TextureRect').texture == null:
-					if p.has_profession('master'):
-						b.get_node('TextureRect').texture = images.icons.class_master
-					elif p.get_stat('slave_class') == 'servant':
-						b.get_node('TextureRect').texture = images.icons.class_servant
-					else:
-						b.get_node('TextureRect').texture = images.icons.class_slave
+					b.get_node('TextureRect').texture = p.get_class_icon()
+#					if p.has_profession('master'):
+#						b.get_node('TextureRect').texture = images.icons.class_master
+#					elif p.get_stat('slave_class') == 'servant':
+#						b.get_node('TextureRect').texture = images.icons.class_servant
+#					else:
+#						b.get_node('TextureRect').texture = images.icons.class_slave
 #				b.get_node("Label").text = p.get_stat("name")
 				b.get_node("Label").text = p.get_short_name()
 				max_workers_count -= 1

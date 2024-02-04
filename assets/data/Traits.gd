@@ -61,7 +61,7 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_master']#,'test_recast'],
 	},
-	'slave' : {#slave class trait
+	'slave' : {#slave class trait, obsolete
 		code = 'slave',
 		name = '',
 		descript = '',
@@ -79,7 +79,7 @@ var traits = {
 		effects = ['e_tr_heir'],
 		bonusstats = {mod_collect = -0.2, mod_farm = -0.2, mod_fish = -0.2}
 	},
-	servant = {#servant class trait
+	servant = {#servant class trait, obsolete
 		code = 'servant',
 		name = '',
 		descript = '',
@@ -88,6 +88,15 @@ var traits = {
 		effects = [],
 		traits = ['loyalty_basic_servitude'],
 		bonusstats = {obedience_drain = -2}
+	},
+	slave1 = {#slave class trait
+		code = 'slave1',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		bonusstats = {}
 	},
 	worker = {
 		code = 'worker',
@@ -983,17 +992,17 @@ var traits = {
 		tree_position = {tab = 1, x = 5, y = 5},
 		tags = ['loyalty', 'callmaster']
 	},
-	loyalty_swear = {
-		name = '',
-		descript = '',
-		icon = "res://assets/images/iconstraits/l_crown2.png",
-		effects = [],
-		bonusstats = {obedience_drain = -5, loyalty_gain = 1, pricemod = -0.3},
-		reqs = [{code = 'trait', trait = 'loyalty_adv_servitude', check = true}, {code = 'trait', trait = 'loyalty_callmaster', check = true}],
-		l_cost = 65,
-		tree_position = {tab = 1, x = 4, y = 7.5},
-		tags = ['loyalty', 'swear_loyalty']
-	},
+#	loyalty_swear = {
+#		name = '',
+#		descript = '',
+#		icon = "res://assets/images/iconstraits/l_crown2.png",
+#		effects = [],
+#		bonusstats = {obedience_drain = -5, loyalty_gain = 1, pricemod = -0.3},
+#		reqs = [{code = 'trait', trait = 'loyalty_adv_servitude', check = true}, {code = 'trait', trait = 'loyalty_callmaster', check = true}],
+#		l_cost = 65,
+#		tree_position = {tab = 1, x = 4, y = 7.5},
+#		tags = ['loyalty', 'swear_loyalty']
+#	},
 	loyalty_soulbind = {
 		name = '',
 		descript = '',
@@ -1122,7 +1131,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_pregnancy.png",
 		effects = [],
-		bonusstats = {def = 10}, 
+		bonusstats = {armor = 10}, 
 		reqs = [],  
 		visible = true,
 		tags = ['body_upgrade']
@@ -2110,6 +2119,10 @@ func _ready():
 	for upg in body_upgrades:
 		body_upgrades[upg].name = 'BODYUPGRADENAME_' + upg.to_upper()
 		body_upgrades[upg].descript = 'BODYUPGRADEDESCRIPT_' + upg.to_upper()
+	for prof in slave_profs:
+		slave_profs[prof].code = prof
+		slave_profs[prof].name = 'SLAVEPROFNAME_' + prof.trim_prefix('slave_').to_upper()
+		slave_profs[prof].descript = 'SLAVEPROFDESCRIPT_' + prof.trim_prefix('slave_').to_upper()
 
 
 var tattoodata = {
@@ -2216,7 +2229,86 @@ var tattoodata = {
 	},
 }
 
-
+var slave_profs = {
+	slave_combat = {
+		name = '',
+		desc = '',
+		icon = "res://assets/images/iconstraits/l_warrior.png",
+		tree_position = {tab = 1, x = 0.5, y = 7.5},
+		effects = [],
+		bonusstats = {atk = 1, hitrate = 2},
+		tags = ['swear_loyalty'],
+		reqs = [
+			{code = 'stat_in_set', stat = 'personality', value = ['bold', 'serious']},
+			{code = 'stat', stat = 'metrics_win', operant = 'gte', value = 3}
+		]
+	},
+	slave_service = {
+		name = '',
+		desc = '',
+		icon = "res://assets/images/iconstraits/l_maidu.png",
+		tree_position = {tab = 1, x = 2.5, y = 7.5},
+		effects = [],
+		bonusstats = {productivity = 0.01, evasion = 2, speed = 1},
+		tags = ['swear_loyalty'],
+		reqs = [
+			{code = 'stat_in_set', stat = 'personality', value = ['bold', 'kind']},
+			{code = 'stat', stat = 'metrics_serviceperformed', operant = 'gte', value = 12}
+		]
+	},
+	slave_prestige = {
+		name = '',
+		desc = '',
+		icon = "res://assets/images/iconstraits/l_maidu.png",
+		tree_position = {tab = 1, x = 4.5, y = 7.5},
+		effects = [],
+		bonusstats = {critchance = 0.33, critmod = 0.01, price_add = 10}, #not sure about critmod
+		tags = ['swear_loyalty'],
+		reqs = [
+			{code = 'stat_in_set', stat = 'personality', value = ['serious', 'kind']},
+			{code = 'stat', stat = 'price', operant = 'gte', value = 1000}
+		]
+	},
+	slave_management = {
+		name = '',
+		desc = '',
+		icon = "res://assets/images/iconstraits/l_protection.png",
+		tree_position = {tab = 1, x = 6.5, y = 7.5},
+		effects = ['e_tr_manager'],
+		bonusstats = {hpmax = 1, armor = 1},
+		tags = ['swear_loyalty'],
+		reqs = [
+			{code = 'stat_in_set', stat = 'personality', value = ['bold', 'serious']},
+			{code = 'stat', stat = 'metrics_socskillused', operant = 'gte', value = 4}
+		]
+	},
+	slave_mage = {
+		name = '',
+		desc = '',
+		icon = "res://assets/images/iconstraits/l_mage.png",
+		tree_position = {tab = 1, x = 2, y = 10},
+		effects = [],
+		bonusstats = {mpmax = 1, matk = 1},
+		tags = ['swear_loyalty'],
+		reqs = [
+			{code = 'stat_in_set', stat = 'personality', value = ['shy', 'serious']},
+			{code = 'stat', stat = 'metrics_spellused', operant = 'gte', value = 4}
+		]
+	},
+	slave_healer = {
+		name = '',
+		desc = '',
+		icon = "res://assets/images/iconstraits/l_healer.png",
+		tree_position = {tab = 1, x = 5, y = 10},
+		effects = ['e_tr_healerslave'],
+		bonusstats = {mdef = 1},
+		tags = ['swear_loyalty'],
+		reqs = [
+			{code = 'stat_in_set', stat = 'personality', value = ['shy', 'kind']},
+			{code = 'stat', stat = 'metrics_healused', operant = 'gte', value = 4}
+		]
+	},
+}
 
 func get_tat_list_for_slot(slot):
 	var res = []

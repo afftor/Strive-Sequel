@@ -403,6 +403,7 @@ margin_bottom = 45.3593
 rect_min_size = Vector2( 50, 0 )
 mouse_filter = 2
 texture = ExtResource( 23 )
+expand = true
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false

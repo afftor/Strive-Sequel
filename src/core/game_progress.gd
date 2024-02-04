@@ -216,6 +216,8 @@ func check_timed_events():
 
 func timed_event_exists(event):
 	for i in stored_events.timed_events:
+		if i.has('action'):
+			continue
 		if i.has("code") and i.code == event:
 			return true
 	return false
