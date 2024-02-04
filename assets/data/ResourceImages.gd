@@ -184,12 +184,12 @@ var backgrounds = {
 	amelia_cali_2 = load("res://assets/images/fullscreen scenes/AmeliaCaliCG002.png"),
 	amelia_cali_3 = load("res://assets/images/fullscreen scenes/AmeliaCaliCG003.png"),
 	
-	lilia_sex_1 = load("res://assets/images/fullscreen scenes/LiliaCG001.png"),
+	lilia_sex_1_1 = load("res://assets/images/fullscreen scenes/LiliaCG001.png"),
 	lilia_sex_1_2 = load("res://assets/images/fullscreen scenes/LiliaCG002.png"),
-	lilia_sex_1_3 = load("res://assets/images/fullscreen scenes/LiliaCG002.png"),
-	lilia_sex_1_4 = load("res://assets/images/fullscreen scenes/LiliaCG002.png"),
-	lilia_sex_2_1 = load("res://assets/images/fullscreen scenes/LiliaCG003.png"),
-	lilia_sex_2_2 = load("res://assets/images/fullscreen scenes/LiliaCG004.png"),
+	lilia_sex_1_3 = load("res://assets/images/fullscreen scenes/LiliaCG003.png"),
+	lilia_sex_1_4 = load("res://assets/images/fullscreen scenes/LiliaCG004.png"),
+	lilia_sex_2_1 = load("res://assets/images/fullscreen scenes/LiliaCG005.png"),
+	lilia_sex_2_2 = load("res://assets/images/fullscreen scenes/LiliaCG006.png"),
 	
 	heleviel_bj_1 = load("res://assets/images/fullscreen scenes/HelevielCG005.png"),
 	heleviel_bj_2 = load("res://assets/images/fullscreen scenes/HelevielCG006.png"),

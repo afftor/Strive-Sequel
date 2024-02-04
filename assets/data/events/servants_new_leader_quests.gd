@@ -240,6 +240,64 @@ var data = {
 		},],
 	},
 	
+	daisy_clothes_amelia_new_leader_1 = {
+		image = null, tags = ['dialogue_scene'],
+		reqs = [], 
+		text = [{text = "DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1", reqs = [], previous_dialogue_option = 1}],
+		options = [ {
+			code = 'daisy_clothes_amelia_new_leader_2_1', text = "DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_1", reqs = [], dialogue_argument = 1,
+		}, {
+			code = 'daisy_clothes_amelia_new_leader_2_2', text = "DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_2", reqs = [], dialogue_argument = 2,
+		}, {
+			code = 'close', text = "DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_3", reqs = [], dialogue_argument = 3,
+		}],
+	},
+
+	daisy_clothes_amelia_new_leader_2_1 = {
+		image = null, tags = ['dialogue_scene'],
+		reqs = [], 
+		text = [{text = "DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_2_1", reqs = []}],
+		options = [ {
+			code = 'daisy_clothes_amelia_new_leader_3_1', text = "DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_1_1", reqs = [{type = "has_money", value = 150}], dialogue_argument = 1, type = 'next_dialogue',
+		}, {
+			code = 'daisy_clothes_amelia_new_leader_1', text = "DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_REFUSE", reqs = [], dialogue_argument = 3,
+		}],
+	},
+
+	daisy_clothes_amelia_new_leader_2_2 = {
+		image = null, tags = ['dialogue_scene'],
+		reqs = [], 
+		text = [{text = "DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_2_2", reqs = []}],
+		options = [ {
+			code = 'daisy_clothes_amelia_new_leader_3_2', text = "DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_2_1", reqs = [{type = "has_money", value = 250}], dialogue_argument = 2, type = 'next_dialogue',
+		}, {
+			code = 'daisy_clothes_amelia_new_leader_1', text = "DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_REFUSE", reqs = [], dialogue_argument = 3,
+		}],
+	},
+
+	daisy_clothes_amelia_new_leader_3_1 = {
+		reqs = [],
+		tags = ['dialogue_scene'], image = null, 
+		text = [{text = "DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_3_150", reqs = []}],
+		common_effects = [{code = 'money_change', operant = '-', value = 150},
+		{code = 'decision', value = 'DaisyDressNormal'}], # dress decision normal
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_dress_acquired_normal_1",
+			args = [{type = 'add_to_date', date = [2,2], hour = 2}]}, {code = 'progress_quest', value = 'daisy_clothes', stage = 'stage3'}]
+		}],
+	},
+	daisy_clothes_amelia_new_leader_3_2 = {
+		reqs = [],
+		tags = ['dialogue_scene'], image = null, 
+		text = [{text = "DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_3_250", reqs = []}],
+		common_effects = [{code = 'money_change', operant = '-', value = 250},
+		{code = 'decision', value = 'DaisyDressLewd'}], # dress decision lewd
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'add_timed_event', value = "daisy_dress_acquired_lewd_1",
+			args = [{type = 'add_to_date', date = [2,2], hour = 2}]}, {code = 'progress_quest', value = 'daisy_clothes', stage = 'stage3'}]
+		}],
+	},
+	
 	servants_new_leader_close = {
 		image = null,
 		tags = ['dialogue_scene'],

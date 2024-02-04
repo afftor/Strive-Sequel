@@ -162,6 +162,7 @@ var data = {
 			{type = 'active_quest_stage', value = 'cali_servants_quest', stage = 'stage1'},
 			{type = 'has_money', value = 500}
 			], type = 'next_dialogue', dialogue_argument = 0},
+		{code = 'daisy_clothes_amelia_new_leader_1', text = "DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'daisy_clothes', stage = 'stage2'}], dialogue_argument = 1, type = 'next_dialogue'},
 		
 		{code = 'servants_new_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		], 

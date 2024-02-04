@@ -6538,6 +6538,21 @@ Daisy bows to you with all the respect she's able to demonstrate. You make a not
 	DAISY_CLOTHES_AMELIA_REPLY_3_150 = "You pass 150 gold to Amelia and arrange Daisy's meeting with the tailor, after which you make your way out.",
 	DAISY_CLOTHES_AMELIA_REPLY_3_250 = "You pass 250 gold to Amelia and arrange Daisy's meeting with the tailor, after which you make your way out.",
 
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_1 = "I'm looking for a custom-made dress.",
+	DAISY_CLOTHES_AMELIA_REPLY_NEW_LEADER_1 = """You explain to Amelia that one of your slaves needs a change of clothes.
+	
+— Why, yes, proper servants' attire is one of our specialties. You know, the right clothes make a big difference even for less ideal bodies, naturally we have tailors who can adjust for any required body type. But what are you looking for, anyway?""",
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_1 = "I want a normal servant dress.",
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_2 = "I want something lewder.",
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_3 = "I've changed my mind.",
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_2_1 = """— Fair enough, we can tailor something fitting for a well-to-do landowner's servant. It will be durable and resilient to wash. We'll also provide a spare in case of any accidents. This will cost you 150 gold.""",
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_1_1 = "Deal. (150 gold)",
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_REFUSE = "Refuse.",
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_2_2 = """— Then you've come to the right place. We can make a servant dress which will appear normal, but will allow easy access to the servant's more private areas. Moreover, the fabric will subtly stimulating the servant's erogenous zones, so they will become and remain aroused while at work. This would be more to your liking? I'll only ask you 250 gold for it.""",
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_2_1 = "Deal. (250 gold)",
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_3_150 = "You pass 150 gold to Amelia and arrange Daisy's meeting with the tailor, after which you make your way out.",
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_3_250 = "You pass 250 gold to Amelia and arrange Daisy's meeting with the tailor, after which you make your way out.",
+
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_0 = """Daisy stands before you in her new dress, shining with happiness. Her clothes can't be compared to her old rags and she has begun to feel even more dedicated to you.
 
 — You've really done it, [Master]. I never imagined this dress would be so nice.\n\n{color=green|Daisy: Growth Factor +1\nDaisy: Coward Trait Lost}""",
@@ -9575,9 +9590,8 @@ The fairy darts around now, a literal bundle of energy moving this and that, eve
 
 	LILIA_SEX_SCENE_1_1 = """Lilia finishes that phrase as one of the branches she so carefully moved to hide just a bit of the sun readjusted with a pop, landing with a thud at her side now. After a few seconds she sighs and acknowledges it before moving over to put it back only to be caught by her hand now, pulled back until her back is against you.
 
-— Oh! I mean if you insist we can leave it there...
-
-The girl seems to shiver a bit by either fear or excitement as your hand slides up her side, undoing the broach on her dress to expose her chest now, two small but soft mounds. A soft sigh from the female answers your question before as she grinds her hips back against you, likely without even realizing it.
+— Oh! I mean if you insist we can leave it there...""",
+	LILIA_SEX_SCENE_1_2 = """The girl seems to shiver a bit by either fear or excitement as your hand slides up her side, undoing the broach on her dress to expose her chest now, two small but soft mounds. A soft sigh from the female answers your question before as she grinds her hips back against you, likely without even realizing it.
 
 You two stay like this for a few moments, her panting and softly moaning as you move aside the delicate cloth, her breast soft in your hand as finally your hand slides over the heat of her sex, only to find her soaked, the tiny hole easily stretching to allow your fingers. 
 
