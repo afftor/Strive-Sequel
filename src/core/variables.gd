@@ -484,7 +484,6 @@ var roman_numbers = {
 	
 }
 
-
 var quality_colors = {
 	poor = load("res://assets/images/iconsitems/quality_bg/gray.png"),
 	average = load("res://assets/images/iconsitems/quality_bg/green.png"),
@@ -492,4 +491,13 @@ var quality_colors = {
 	epic = load("res://assets/images/iconsitems/quality_bg/purple.png"),
 	legendary = load("res://assets/images/iconsitems/quality_bg/orange.png"),
 	
+}
+
+var factor_personality_changes = { #chance of change of primary and seondary axies based on tame/timid factors
+	1 : [50, 100],
+	2 : [60, 50],
+	3 : [70, 33],
+	4 : [80, 25],
+	5 : [90, 10],
+	6 : [100, 0]
 }

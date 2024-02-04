@@ -8,7 +8,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_phy6', 'e_wit6', 'e_charm6', 'e_sex6', 'e_timid6', 'e_tame6', 'e_mag6', 'e_virgin'],#'e_atkpass'],
+		effects = ['e_phy6', 'e_wit6', 'e_charm6', 'e_sex6', 'e_timid6', 'e_tame6', 'e_mag6', 'e_virgin', 'e_person_bold', 'e_person_shy', 'e_person_kind', 'e_person_serious'],#'e_atkpass'],
 	},
 	absorb_atk_trait = {
 		code = 'absorb_atk_trait',

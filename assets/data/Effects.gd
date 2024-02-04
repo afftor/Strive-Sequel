@@ -127,6 +127,50 @@ var effect_table = {
 		},],
 		sub_effects = [],
 	},
+	#personality
+	e_person_bold = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'stat', stat = 'personality', operant = 'eq', value = 'bold'}],
+		tags = ['recheck_stats'],
+		atomic = [
+			{type = 'stat_add_p', stat = 'matk', value = -0.25}
+		],
+		buffs = [],
+		sub_effects = [rebuild_skillvalue_template({skilltype = 'skill', value = 1.25})],
+	},
+	e_person_shy = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'stat', stat = 'personality', operant = 'eq', value = 'shy'}],
+		tags = ['recheck_stats'],
+		atomic = [
+			{type = 'stat_add_p', stat = 'matk', value = 0.25},
+			{type = 'stat_add_p', stat = 'atk', value = -0.2}
+		],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_person_kind = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'stat', stat = 'personality', operant = 'eq', value = 'kind'}],
+		tags = ['recheck_stats'],
+		atomic = [],
+		buffs = [],
+		sub_effects = [rebuild_skillvalue_template({tag = 'heal', value = 1.5}),],
+	},
+	e_person_serious = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'stat', stat = 'personality', operant = 'eq', value = 'serious'}],
+		tags = ['recheck_stats'],
+		atomic = [
+			{type = 'stat_add', stat = 'resist_all', value = 20},
+		],
+		buffs = [],
+		sub_effects = [],
+	},
 	#traits
 	e_tr_resist = {
 		type = 'trigger',
@@ -2570,12 +2614,12 @@ var effect_table = {
 #	curse_slowwit_2 = rebuild_stat_bonus('wits_bonus', -60, 'b_curse'),
 #	curse_hideous_1 = rebuild_stat_bonus('charm_bonus', -30, 'b_curse'),
 #	curse_hideous_2 = rebuild_stat_bonus('charm_bonus', -60, 'b_curse'),
-	curse_decline_1 = rebuild_stat_bonus('exp_gain_mod', -0.25, 'b_curse'),
-	curse_decline_2 = rebuild_stat_bonus('exp_gain_mod', -0.5, 'b_curse'),
-	curse_fragility_1 = rebuild_stat_bonus('hpmax', -0.2, 'b_curse', 'stat_add_p'),
-	curse_fragility_2 = rebuild_stat_bonus('hpmax', -0.4, 'b_curse', 'stat_add_p'),
-	curse_distrust_1 = rebuild_stat_bonus('obedience_drain', 0.25, 'b_curse', 'stat_add_p'),
-	curse_distrust_2 = rebuild_stat_bonus('obedience_drain', 0.5, 'b_curse', 'stat_add_p'),
+	curse_decline_1 = rebuild_stat_bonus('exp_gain_mod', -0.25),
+	curse_decline_2 = rebuild_stat_bonus('exp_gain_mod', -0.5),
+	curse_fragility_1 = rebuild_stat_bonus('hpmax', -0.2, null, 'stat_add_p'),
+	curse_fragility_2 = rebuild_stat_bonus('hpmax', -0.4, null, 'stat_add_p'),
+	curse_distrust_1 = rebuild_stat_bonus('obedience_drain', 0.25, null, 'stat_add_p'),
+	curse_distrust_2 = rebuild_stat_bonus('obedience_drain', 0.5, null, 'stat_add_p'),
 	
 #	enchant_sharp_1 = {
 #		type = 'static',
@@ -2621,7 +2665,7 @@ var effect_table = {
 	enchant_spellmas_1 = {
 		type = 'static',
 		atomic = [],
-		buffs = ['b_enchant'],
+		buffs = [],
 		sub_effects = [
 			rebuild_skillvalue_template({skilltype = 'spell', tag = 'damage', value = 1.1}),
 			rebuild_skillvalue_template({skilltype = 'spell', tag = 'heal', value = 1.1}),
@@ -2631,7 +2675,7 @@ var effect_table = {
 	enchant_spellmas_2 = {
 		type = 'static',
 		atomic = [],
-		buffs = ['b_enchant'],
+		buffs = [],
 		sub_effects = [
 			rebuild_skillvalue_template({skilltype = 'spell', tag = 'damage', value = 1.15}),
 			rebuild_skillvalue_template({skilltype = 'spell', tag = 'heal', value = 1.15}),
@@ -2641,7 +2685,7 @@ var effect_table = {
 	enchant_spellmas_3 = {
 		type = 'static',
 		atomic = [],
-		buffs = ['b_enchant'],
+		buffs = [],
 		sub_effects = [
 			rebuild_skillvalue_template({skilltype = 'spell', tag = 'damage', value = 1.2}),
 			rebuild_skillvalue_template({skilltype = 'spell', tag = 'heal', value = 1.2}),
@@ -2651,7 +2695,7 @@ var effect_table = {
 	enchant_spellmas_4 = {
 		type = 'static',
 		atomic = [],
-		buffs = ['b_enchant'],
+		buffs = [],
 		sub_effects = [
 			rebuild_skillvalue_template({skilltype = 'spell', tag = 'damage', value = 1.25}),
 			rebuild_skillvalue_template({skilltype = 'spell', tag = 'heal', value = 1.25}),
@@ -2659,12 +2703,12 @@ var effect_table = {
 		args = []
 	},
 	
-	enchant_nostun = rebuild_stat_bonus('resist_stun', 200, 'b_enchant'),
+	enchant_nostun = rebuild_stat_bonus('resist_stun', 200),
 	
 	enchant_thorns_1 = {
 		type = 'static',
 		atomic = [],
-		buffs = ['b_enchant'],
+		buffs = [],
 		args = [],
 		sub_effects = [
 			{
@@ -2692,7 +2736,7 @@ var effect_table = {
 	enchant_thorns_2 = {
 		type = 'static',
 		atomic = [],
-		buffs = ['b_enchant'],
+		buffs = [],
 		args = [],
 		sub_effects = [
 			{
@@ -2720,7 +2764,7 @@ var effect_table = {
 	enchant_thorns_3 = {
 		type = 'static',
 		atomic = [],
-		buffs = ['b_enchant'],
+		buffs = [],
 		args = [],
 		sub_effects = [
 			{
@@ -2748,7 +2792,7 @@ var effect_table = {
 	enchant_thorns_4 = {
 		type = 'static',
 		atomic = [],
-		buffs = ['b_enchant'],
+		buffs = [],
 		args = [],
 		sub_effects = [
 			{
@@ -2837,7 +2881,7 @@ var effect_table = {
 	enchant_vampirism_1 = {
 		type = 'static',
 		atomic = [],
-		buffs = ['b_enchant'],
+		buffs = [],
 		args = [],
 		sub_effects = [
 			{
@@ -2862,7 +2906,7 @@ var effect_table = {
 	enchant_vampirism_2 = {
 		type = 'static',
 		atomic = [],
-		buffs = ['b_enchant'],
+		buffs = [],
 		args = [],
 		sub_effects = [
 			{
@@ -2887,7 +2931,7 @@ var effect_table = {
 	enchant_vampirism_3 = {
 		type = 'static',
 		atomic = [],
-		buffs = ['b_enchant'],
+		buffs = [],
 		args = [],
 		sub_effects = [
 			{
@@ -2912,7 +2956,7 @@ var effect_table = {
 	enchant_vampirism_4 = {
 		type = 'static',
 		atomic = [],
-		buffs = ['b_enchant'],
+		buffs = [],
 		args = [],
 		sub_effects = [
 			{
@@ -2937,7 +2981,7 @@ var effect_table = {
 	enchant_vampirism_5 = {
 		type = 'static',
 		atomic = [],
-		buffs = ['b_enchant'],
+		buffs = [],
 		args = [],
 		sub_effects = [
 			{
@@ -3021,7 +3065,7 @@ var effect_table = {
 		atomic = [
 			{type = 'stat_add', stat = 'manacost_mod', value = -0.1}
 		],
-		buffs = ['b_enchant'],
+		buffs = [],
 		sub_effects = [],
 	},
 	enchant_warlock_2 = {
@@ -3036,7 +3080,7 @@ var effect_table = {
 		atomic = [
 			{type = 'stat_add', stat = 'manacost_mod', value = -0.15}
 		],
-		buffs = ['b_enchant'],
+		buffs = [],
 		sub_effects = [],
 	},
 	enchant_warlock_3 = {
@@ -3051,7 +3095,7 @@ var effect_table = {
 		atomic = [
 			{type = 'stat_add', stat = 'manacost_mod', value = -0.2}
 		],
-		buffs = ['b_enchant'],
+		buffs = [],
 		sub_effects = [],
 	},
 	enchant_warlock_4 = {
@@ -3066,7 +3110,7 @@ var effect_table = {
 		atomic = [
 			{type = 'stat_add', stat = 'manacost_mod', value = -0.25}
 		],
-		buffs = ['b_enchant'],
+		buffs = [],
 		sub_effects = [],
 	},
 	
@@ -4910,6 +4954,26 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/Authority.png",
 		description = "BUFFDESCRIPTENCHANT",
 		t_name = 'enchant',
+	},
+	b_bold = {
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		description = "BUFFDESCRIPTBOLD",
+		t_name = 'personality',
+	},
+	b_kind = {
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		description = "BUFFDESCRIPTKIND",
+		t_name = 'personality',
+	},
+	b_shy = {
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		description = "BUFFDESCRIPTSHY",
+		t_name = 'personality',
+	},
+	b_serious = {
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		description = "BUFFDESCRIPTSERIOUS",
+		t_name = 'personality',
 	},
 };
 

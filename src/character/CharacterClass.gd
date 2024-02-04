@@ -225,6 +225,9 @@ func add_part_stat(statname, value, revert = false):
 	statlist.add_part_stat(statname, value, revert)
 	recheck_effect_tag('recheck_stats')
 
+func change_personality_stats(stat, init_value):
+	return statlist.change_personality_stats(stat, init_value)
+
 func get_weapon_range():
 	return equipment.get_weapon_range()
 
