@@ -10,6 +10,9 @@ var drag_offset = Vector2(0.0, 0.0)
 var click_position
 
 var hovered_area = null
+var _hovered_area = null
+var hovered_location = null
+var loc_locked = false
 
 var area_zoom_data = {
 	null:{position = Vector2(920, 1190), zoom = 1.0},
@@ -32,7 +35,10 @@ func _unhandled_input(event):
 	if event.is_action_released("LMB") and drag_mode:
 		drag_mode = false
 		if (get_global_mouse_position() - click_position).length() < 5:
-			map_area_press(hovered_area)
+			if selected_area != null and hovered_location != null:
+				map_location_press(hovered_location)
+			else:
+				map_area_press(hovered_area)
 	if drag_mode:
 		set_map_position()
 	#2add part with selecting areas with click on map
@@ -42,6 +48,7 @@ func animate_map_moves(zoom, pos, time = 0.5):
 	var tween = input_handler.GetTweenNode(self)
 	tween.interpolate_property($map, 'scale', $map.scale, Vector2(zoom, zoom), time)
 	tween.interpolate_property($map, 'global_position', $map.global_position, pos, time)
+	tween.interpolate_property($zoom, 'value', $zoom.value, zoom, time)
 	tween.start()
 
 
@@ -58,7 +65,7 @@ func set_map_zoom(value):
 	
 	var new_point_offset = point_offset * k
 	var new_map_pos = new_point_offset + point
-	animate_map_moves(value, new_map_pos, 0.1)
+	animate_map_moves(value, trim_map_pos(new_map_pos, value), 0.1)
 #	$map.scale.x = value
 #	$map.scale.y = value
 #	$map.global_position = new_map_pos
@@ -66,7 +73,28 @@ func set_map_zoom(value):
 
 func set_map_position():
 	var new_map_pos = get_global_mouse_position() + drag_offset
-	$map.global_position = new_map_pos
+	$map.global_position = trim_map_pos(new_map_pos)
+
+
+func trim_map_pos(pos, scale = null):
+	if scale == null:
+		scale = $map.scale.x
+	var screen = get_viewport().get_visible_rect().size
+	var msize = $map.get_rect().size * scale
+	var max_x = msize.x * 0.5
+	var max_y = msize.y * 0.5
+	var min_x =  screen.x - msize.x * 0.5
+	var min_y =  screen.y - msize.y * 0.5
+	var res = pos
+	if screen.x < msize.x:
+		res.x = clamp(res.x, min_x, max_x)
+	else:
+		res.x = screen.x * 0.5
+	if screen.y < msize.y:
+		res.y = clamp(res.y, min_y, max_y)
+	else:
+		res.y = screen.y * 0.5
+	return res
 
 
 func set_focus_area():
@@ -81,6 +109,33 @@ func set_focus_area():
 			area.highlight(area.HighlightColor)
 		else:
 			area.highlight(Color(0,0,0,0))
+
+
+func set_focus_location(loc):
+	loc_locked = true
+	for area in $map.get_children():
+		if area.name == loc or area.name == selected_area:
+			area.highlight(area.HighlightColor)
+		else:
+			area.highlight(Color(0,0,0,0))
+
+
+func unselect_location():
+	loc_locked = false
+	if selected_area == null:
+		unselect_area()
+		return
+	for area in $map.get_children():
+		if area.name == selected_area:
+			area.highlight(area.HighlightColor)
+		else:
+			area.highlight(Color(0,0,0,0))
+
+
+func area_locked():
+	if hovered_area != null and hovered_area != _hovered_area:
+		return true
+	return false
 
 
 #map gui
@@ -119,13 +174,14 @@ func _input(event):
 		get_tree().set_input_as_handled()
 
 
-
 func _ready():#2add button connections
 	$Back.connect('pressed', self, 'close')
 	$InfoPanel/Sendbutton.connect('pressed', self, 'to_loc_set')
 	$CharPanel/Send.connect('pressed', self, 'confirm_travel')
 	$CharPanel/mode2.connect('pressed', self, 'reset_to')
 	$CharPanel/mode1.connect('pressed', self, 'reset_from')
+	$zoom.min_value = map_zoom_min
+	$zoom.max_value = map_zoom_max
 #	match_state()
 
 func close():
@@ -262,6 +318,13 @@ func sort_locations(first, second):
 				return lands_order.find(first.area) < lands_order.find(second.area)
 		return false
 	return true
+
+
+func if_location_in_list(loc):
+	for loc_d in sorted_locations:
+		if loc_d.id == loc:
+			return true
+	return false
 
 
 func build_info(loc = to_loc):
@@ -516,6 +579,8 @@ func update_confirm():
 
 
 func map_area_press(area):
+	if !ResourceScripts.game_world.is_area_unlocked(area):
+		return
 	if selected_area == area:
 		return
 	else:
@@ -528,6 +593,19 @@ func map_area_press(area):
 	set_focus_area()
 	match_state()
 	build_info()
+
+
+func map_location_press(loc):
+	if !if_location_in_list(loc):
+		return
+	if selected_area == null:
+		return
+	
+	var mode = 'to'
+	if to_loc != null:
+		mode = 'from'
+	
+	location_press(loc, mode)
 
 
 func area_press(area, mode):
@@ -545,7 +623,7 @@ func area_press(area, mode):
 
 func unselect_area():
 	selected_area = null
-	
+	hovered_area = _hovered_area
 	set_focus_area()
 
 
@@ -554,16 +632,20 @@ func location_press(location, mode):
 		'from':
 			if from_loc == location:
 				from_loc = null
+				unselect_location()
 			else:
 				from_loc = location
+				set_focus_location(location)
 			update_selected_from_location()
 			build_charpanel()
 			match_state()
 		'to':
 			if selected_loc == location:
 				selected_loc = null
+				unselect_location()
 			else:
 				selected_loc = location
+				set_focus_location(location)
 			selected_chars.clear()
 			update_selected_to_location()
 			build_charpanel()
@@ -625,6 +707,7 @@ func to_loc_set():
 	if selected_loc == null: 
 		return
 	to_loc = selected_loc
+	loc_locked = false
 	build_from_locations()
 	match_state()
 
@@ -633,6 +716,7 @@ func reset_to():
 	from_loc = null
 	to_loc = null
 	unselect_area()
+	unselect_location()
 	match_state()
 	build_to_locations()
 	build_info(null)
@@ -641,6 +725,7 @@ func reset_to():
 func reset_from():
 	from_loc = null
 	unselect_area()
+	unselect_location()
 	match_state()
 	build_from_locations()
 	build_info(to_loc)

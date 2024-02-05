@@ -14,24 +14,25 @@ func _ready():
 
 #those two can be adjusted to add more visuals to highlighting
 func Light():
-	controller._hovered_area = name
-	if !ResourceScripts.game_world.is_area_unlocked(name):
+	if !controller.if_location_in_list(name):
 		return
-	if controller.selected_area != null:
+	if controller.loc_locked:
 		return
-	controller.hovered_area = name
+	if controller.area_locked():
+		return
+	controller.hovered_location = name
 	highlight(HighlightColor)
 
 
 func UnLight():
-	if controller._hovered_area == name:
-		controller._hovered_area = null
-	if !ResourceScripts.game_world.is_area_unlocked(name):
+	if !controller.if_location_in_list(name):
 		return
-	if controller.selected_area != null:
+	if controller.loc_locked:
 		return
-	if controller.hovered_area == name:
-		controller.hovered_area = null
+	if controller.area_locked():
+		return
+	if controller.hovered_location == name:
+		controller.hovered_location = null
 	highlight(Color(0,0,0,0))
 
 
