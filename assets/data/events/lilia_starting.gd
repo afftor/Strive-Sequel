@@ -108,24 +108,27 @@ var data = {
 	lilia_sex_scene_1_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
-		custom_background = "lilia_sex_1_3",
+		custom_background = "lilia_sex_1_1",
 		save_scene_to_gallery = true,
 		scene_type = "ero_scene",
 		text = [{text = "LILIA_SEX_SCENE_1_1", reqs = []}],
 		common_effects = [],
 		options = [ {
+			code = 'lilia_sex_scene_1_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		} ]
+	},
+	lilia_sex_scene_1_2 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [],
+		custom_background = "lilia_sex_1_2",
+		save_scene_to_gallery = true,
+		scene_type = "ero_scene",
+		text = [{text = "LILIA_SEX_SCENE_1_2", reqs = []}],
+		common_effects = [],
+		options = [ {
 			code = 'lilia_sex_scene_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		} ]
 	},
-#	lilia_sex_scene_1_2 = {
-#		image = null, tags = ['dialogue_scene', 'master_translate'],
-#		reqs = [], character = "lilia", 
-#		text = [{text = "LILIA_SEX_SCENE_1_2", reqs = []}],
-#		common_effects = [],
-#		options = [ {
-#			code = 'lilia_sex_scene_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-#		} ]
-#	},
 	lilia_sex_scene_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
