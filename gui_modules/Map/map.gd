@@ -48,6 +48,7 @@ func animate_map_moves(zoom, pos, time = 0.5):
 	var tween = input_handler.GetTweenNode(self)
 	tween.interpolate_property($map, 'scale', $map.scale, Vector2(zoom, zoom), time)
 	tween.interpolate_property($map, 'global_position', $map.global_position, pos, time)
+	tween.interpolate_property($zoom, 'value', $zoom.value, zoom, time)
 	tween.start()
 
 
@@ -179,6 +180,8 @@ func _ready():#2add button connections
 	$CharPanel/Send.connect('pressed', self, 'confirm_travel')
 	$CharPanel/mode2.connect('pressed', self, 'reset_to')
 	$CharPanel/mode1.connect('pressed', self, 'reset_from')
+	$zoom.min_value = map_zoom_min
+	$zoom.max_value = map_zoom_max
 #	match_state()
 
 func close():
