@@ -459,6 +459,8 @@ func build_from_locations():
 	for loc_data in sorted_locations:
 		if loc_data.heroes <= 0:
 			continue
+		if loc_data.id == to_loc:
+			continue
 		if areas.has(loc_data.area):
 			areas[loc_data.area].push_back(loc_data)
 		else:
