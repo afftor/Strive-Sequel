@@ -10,6 +10,9 @@ var drag_offset = Vector2(0.0, 0.0)
 var click_position
 
 var hovered_area = null
+var _hovered_area = null
+var hovered_location = null
+var loc_locked = false
 
 var area_zoom_data = {
 	null:{position = Vector2(920, 1190), zoom = 1.0},
@@ -32,7 +35,10 @@ func _unhandled_input(event):
 	if event.is_action_released("LMB") and drag_mode:
 		drag_mode = false
 		if (get_global_mouse_position() - click_position).length() < 5:
-			map_area_press(hovered_area)
+			if selected_area != null and hovered_location != null:
+				map_location_press(hovered_location)
+			else:
+				map_area_press(hovered_area)
 	if drag_mode:
 		set_map_position()
 	#2add part with selecting areas with click on map
@@ -104,6 +110,33 @@ func set_focus_area():
 			area.highlight(Color(0,0,0,0))
 
 
+func set_focus_location(loc):
+	loc_locked = true
+	for area in $map.get_children():
+		if area.name == loc or area.name == selected_area:
+			area.highlight(area.HighlightColor)
+		else:
+			area.highlight(Color(0,0,0,0))
+
+
+func unselect_location():
+	loc_locked = false
+	if selected_area == null:
+		unselect_area()
+		return
+	for area in $map.get_children():
+		if area.name == selected_area:
+			area.highlight(area.HighlightColor)
+		else:
+			area.highlight(Color(0,0,0,0))
+
+
+func area_locked():
+	if hovered_area != null and hovered_area != _hovered_area:
+		return true
+	return false
+
+
 #map gui
 var selected_loc
 var from_loc
@@ -138,7 +171,6 @@ func _input(event):
 		else:
 			close()
 		get_tree().set_input_as_handled()
-
 
 
 func _ready():#2add button connections
@@ -283,6 +315,13 @@ func sort_locations(first, second):
 				return lands_order.find(first.area) < lands_order.find(second.area)
 		return false
 	return true
+
+
+func if_location_in_list(loc):
+	for loc_d in sorted_locations:
+		if loc_d.id == loc:
+			return true
+	return false
 
 
 func build_info(loc = to_loc):
@@ -537,6 +576,8 @@ func update_confirm():
 
 
 func map_area_press(area):
+	if !ResourceScripts.game_world.is_area_unlocked(area):
+		return
 	if selected_area == area:
 		return
 	else:
@@ -549,6 +590,19 @@ func map_area_press(area):
 	set_focus_area()
 	match_state()
 	build_info()
+
+
+func map_location_press(loc):
+	if !if_location_in_list(loc):
+		return
+	if selected_area == null:
+		return
+	
+	var mode = 'to'
+	if to_loc != null:
+		mode = 'from'
+	
+	location_press(loc, mode)
 
 
 func area_press(area, mode):
@@ -566,7 +620,7 @@ func area_press(area, mode):
 
 func unselect_area():
 	selected_area = null
-	
+	hovered_area = _hovered_area
 	set_focus_area()
 
 
@@ -575,16 +629,20 @@ func location_press(location, mode):
 		'from':
 			if from_loc == location:
 				from_loc = null
+				unselect_location()
 			else:
 				from_loc = location
+				set_focus_location(location)
 			update_selected_from_location()
 			build_charpanel()
 			match_state()
 		'to':
 			if selected_loc == location:
 				selected_loc = null
+				unselect_location()
 			else:
 				selected_loc = location
+				set_focus_location(location)
 			selected_chars.clear()
 			update_selected_to_location()
 			build_charpanel()
@@ -646,6 +704,7 @@ func to_loc_set():
 	if selected_loc == null: 
 		return
 	to_loc = selected_loc
+	loc_locked = false
 	build_from_locations()
 	match_state()
 
@@ -654,6 +713,7 @@ func reset_to():
 	from_loc = null
 	to_loc = null
 	unselect_area()
+	unselect_location()
 	match_state()
 	build_to_locations()
 	build_info(null)
@@ -662,6 +722,7 @@ func reset_to():
 func reset_from():
 	from_loc = null
 	unselect_area()
+	unselect_location()
 	match_state()
 	build_from_locations()
 	build_info(to_loc)

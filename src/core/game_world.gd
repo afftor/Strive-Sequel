@@ -285,3 +285,10 @@ func get_quest_by_id(id):
 #	if scenedata.quests.has(id):
 #		return scenedata.quests[id]
 	return null
+
+
+func is_area_unlocked(area):
+	if !areas.has(area):
+		return false
+	var data = areas[area]
+	return data.unlocked
