@@ -163,6 +163,7 @@ func _input(event):
 		elif selected_loc != null:
 			selected_loc = null
 			selected_chars.clear()
+			unselect_location()
 			update_selected_to_location()
 			build_charpanel()
 			build_info(selected_loc)
