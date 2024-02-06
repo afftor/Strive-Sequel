@@ -52,14 +52,26 @@ func animate_map_moves(zoom, pos, time = 0.5):
 	tween.start()
 
 
-func set_map_zoom(value):
+func zoom_change(flag, delta = 0):
+	if flag:
+		var value = $zoom.value
+		if delta != 0:
+			value += delta * map_zoom_step
+		set_map_zoom(value, true)
+
+
+func set_map_zoom(value, centered = false):
 	value = clamp(value, map_zoom_min, map_zoom_max)
 	var current_zoom = $map.scale.x
 	var k = value / current_zoom
 	if k == 1.0:
 		return
 	
-	var point = get_global_mouse_position()
+	var point
+	if !centered:
+		point = get_global_mouse_position()
+	else:
+		point = get_viewport().get_visible_rect().size * 0.5
 	var map_pos = $map.global_position
 	var point_offset = map_pos - point
 	
@@ -163,6 +175,7 @@ func _input(event):
 		elif selected_loc != null:
 			selected_loc = null
 			selected_chars.clear()
+			unselect_location()
 			update_selected_to_location()
 			build_charpanel()
 			build_info(selected_loc)
@@ -182,6 +195,9 @@ func _ready():#2add button connections
 	$CharPanel/mode1.connect('pressed', self, 'reset_from')
 	$zoom.min_value = map_zoom_min
 	$zoom.max_value = map_zoom_max
+	$zoom.connect("drag_ended", self, 'zoom_change')
+	$zoom/minus.connect("pressed", self, 'zoom_change', [true, -1])
+	$zoom/plus.connect("pressed", self, 'zoom_change', [true, 1])
 #	match_state()
 
 func close():
