@@ -4299,6 +4299,7 @@ var armor_colors = {
 		adv_leather = ['default'],
 		base_metal = ['default'],
 		adv_metal = ['default'],
+		weapon = ['default'],
 #		chest_base_cloth = ['default'],
 #		chest_adv_cloth = ['default'],
 #		chest_base_leather = ['default'],

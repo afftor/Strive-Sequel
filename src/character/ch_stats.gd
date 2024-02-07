@@ -641,6 +641,8 @@ func get_stat(statname, ref = false):
 		var part = parent.get_ref().get_stat('armor_' + partname)
 		if part != null:
 			part = part.trim_prefix('legs_').trim_prefix('chest_')
+		if partname == 'weapon':
+			part = partname #you can add separate data for all weapon types into Items.armor_colors, but i didn't do it 
 		if statlist[statname] is Dictionary and statlist[statname].has(part):
 			return statlist[statname][part]
 		if statlist[statname] is String and statlist[statname] != "":
