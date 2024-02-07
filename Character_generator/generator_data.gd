@@ -5038,27 +5038,27 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', attr = 'visible', value = false},
 		],
 		leather_collar = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_leather.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/126_armory_acces_collars_male/collar_leather_big.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_leather.png"},
 		],
 		elegant_choker  = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_heart.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/126_armory_acces_collars_male/collar_heart_big.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_heart.png"},
 		],
 		steel_collar  = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_steel.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/126_armory_acces_collars_male/collar_steel_big.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_steel.png"},
 		],
 		pet_suit  = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_leather.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/126_armory_acces_collars_male/collar_leather_big.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_leather.png"},
 		],
 		enslaving_collar  = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_steel.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/126_armory_acces_collars_male/collar_steel_big.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_steel.png"},
 		],
 		bell_collar  = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_bell.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/126_armory_acces_collars_male/collar_bell_big.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_bell.png"},
 		],
 	},
