@@ -1,8 +1,8 @@
 extends CanvasItem
 
 #map inputs
-var map_zoom_max = 4.0
-var map_zoom_min = 0.25
+var map_zoom_max = 1.5
+var map_zoom_min = 0.9
 var map_zoom_step = 0.1
 
 var drag_mode = false

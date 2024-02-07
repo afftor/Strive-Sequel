@@ -3275,7 +3275,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAINTUTORIAL2 = "Some traits make the management easier while other unlock new abilities. Every purchased trait will increase amount of Loyatly required for next purchase so consider your path.",
 	
 	COMBATSKILLSTUTORIAL = "Some combat skills can be learned automatically after purchasing certain classes. Besides that, they can be unlocked with Skill Points. Skill Points are obtained from combat. Many skills will require certain specilizations, which are obtained from classes.",
-	MARRYTUTORIAL = "After resolving the civil war, you are able to marry one of your subordinates. Firstly, you'll have to get their agreement during the date. Then, proceed with wedding preparations from church. ",
+	MARRYTUTORIAL = "After resolving the civil war, you are able to marry one of your subordinates. Firstly, you'll have to get their agreement during the date. Then, proceed with wedding preparations from church. You can only marry 1 person and you can't divorce at current state of the game.",
 	MARRY2TUTORIAL = "Your spouse will receive a new class. Their growth will be set to maximum and their obedience will no longer drain. Also your mutual children will be of status [color=aqua]Heir[/color], which will have them slower Obedience Drain and higher Loyalty Gain, however they receive penalty on Collection, Farming and Fishing. ",
 	
 	

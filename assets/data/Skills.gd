@@ -3920,7 +3920,7 @@ var Skilllist = {
 		tags = ['noreduce', 'use_as_combat'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_i_physbuf'})], 
+		effects = [Effectdata.rebuild_template({effect = 'e_i_witsbuf'})], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
