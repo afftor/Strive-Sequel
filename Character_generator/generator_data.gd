@@ -5038,28 +5038,128 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', attr = 'visible', value = false},
 		],
 		leather_collar = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_leather.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/126_armory_acces_collars_male/collar_leather_big.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_leather.png"},
 		],
 		elegant_choker  = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_heart.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/126_armory_acces_collars_male/collar_heart_big.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_heart.png"},
 		],
 		steel_collar  = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_steel.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/126_armory_acces_collars_male/collar_steel_big.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_steel.png"},
 		],
 		pet_suit  = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_leather.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/126_armory_acces_collars_male/collar_leather_big.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_leather.png"},
 		],
 		enslaving_collar  = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_steel.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/126_armory_acces_collars_male/collar_steel_big.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_steel.png"},
 		],
 		bell_collar  = [
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_bell.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/126_armory_acces_collars_male/collar_bell_big.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Torso_collar_tex', texture = "res://Character_generator/images/150_armory_acces_collars/collar_bell.png"},
+		],
+	},
+	
+	armor_weapon = { #textures added in orded, you can change variants
+		null: [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+		],
+		cali_heirloom = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_sword2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_sword2.png"},
+		],
+		cali_heirloom_active = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_sword2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_sword2.png"},
+		],
+		holy_sword = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_sword2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_sword2.png"},
+		],
+		sword = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_sword.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_sword.png"},
+		],
+		swordadv = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_sword2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_sword2.png"},
+		],
+		dagger = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_dagger.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_dagger.png"},
+		],
+		club = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_bat.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_bat.png"},
+		],
+		
+		holy_spear = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_spear.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_spear.png"},
+		],
+		spearadv = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_spear.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_spear.png"},
+		],
+		spear = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_spear2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_spear2.png"},
+		],
+		aire_bow = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_bow2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_bow2.png"},
+		],
+		bowadv = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_bow2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_bow2.png"},
+		],
+		bow = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_bow.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_bow.png"},
+		],
+		staff = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_stick.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_stick.png"},
+		],
+		staffadv = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_stick2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_stick2.png"},
 		],
 	},
 	
@@ -5140,6 +5240,26 @@ var transforms = {
 		default_underwear = [
 			{type = 'item_recolor_group', group = 'collar', part = 'part1color', color = Color('654a3e')},
 			{type = 'item_recolor_group', group = 'collar', part = 'part2color', color = Color('98B8C6')},
+		],
+	},
+	
+	armor_color_weapon = { #copied from above
+		default = [ #cloth
+			{type = 'item_recolor_group', group = 'weapon', part = 'part1color', color = Color('989898')},
+			{type = 'item_recolor_group', group = 'weapon', part = 'part2color', color = Color('795293')},
+		],
+		default_leather = [ #leather
+			{type = 'item_recolor_group', group = 'weapon', part = 'part1color', color = Color('b89836')},
+			{type = 'item_recolor_group', group = 'weapon', part = 'part2color', color = Color('98B8C6')},
+		],
+		
+		default_metal = [ #metal
+			{type = 'item_recolor_group', group = 'weapon', part = 'part1color', color = Color('506079')},
+			{type = 'item_recolor_group', group = 'weapon', part = 'part2color', color = Color('6e2424')},
+		],
+		default_underwear = [
+			{type = 'item_recolor_group', group = 'weapon', part = 'part1color', color = Color('654a3e')},
+			{type = 'item_recolor_group', group = 'weapon', part = 'part2color', color = Color('98B8C6')},
 		],
 	},
 	

@@ -158,6 +158,11 @@ func get_stat(statname, ref = false):
 				if !GeneratorData.transforms[statname].has(res):
 					res = null
 				return res
+			'armor_weapon':
+				var res = equipment.get_gear_type('rhand')
+				if !GeneratorData.transforms[statname].has(res):
+					res = null
+				return res
 	return statlist.get_stat(statname, ref)
 
 
