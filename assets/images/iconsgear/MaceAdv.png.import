@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/weapon_mace2.png-863695ecc4be6003a3fe45225e075a52.stex"
+path="res://.import/MaceAdv.png-7be454d025005e89df98cc92ea6c8dd6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconsgear/weapon_mace2.png"
-dest_files=[ "res://.import/weapon_mace2.png-863695ecc4be6003a3fe45225e075a52.stex" ]
+source_file="res://assets/images/iconsgear/MaceAdv.png"
+dest_files=[ "res://.import/MaceAdv.png-7be454d025005e89df98cc92ea6c8dd6.stex" ]
 
 [params]
 
