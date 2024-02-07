@@ -473,7 +473,7 @@ var questdata = {
 		[1, {code = 'gold', range = [600,900]}],
 		[1, {code = 'gear', material_grade = [['medium',3],['hard',2]], name = ['sword','spear','club','bow']}, {code = 'gold', range = [150,250]}],
 		[1, {code = 'gear', material_grade = [['medium',3],['hard',2]], name = ['chest_base_metal','legs_base_metal']}],
-		[0.3, {code = 'gear', material_grade = [['medium',3],['hard',2]], name = ['chest_adv_metal','legs_adv_metal','swordadv','spearadv','bowadv']}],
+		[0.3, {code = 'gear', material_grade = [['medium',3],['hard',2]], name = ['chest_adv_metal','legs_adv_metal','swordadv','spearadv','bowadv','maceadv']}],
 		],
 		time_limit = [16,20],
 	},
@@ -545,7 +545,7 @@ var questdata = {
 			
 			
 			{code = 'random_item', function = 'range', type = ['chest_adv_metal','legs_adv_metal','chest_adv_leather','legs_adv_leather'], range = [1,1], parts = {ArmorTrim = ['mithril','obsidian','boneancient','clothethereal','woodmagic']}},
-			{code = 'random_item', function = 'range', type = ['swordadv','spearadv'], range = [1,1], parts = {Blade = ['mithril','obsidian','boneancient','adamantine']}},
+			{code = 'random_item', function = 'range', type = ['swordadv','spearadv','maceadv'], range = [1,1], parts = {Blade = ['mithril','obsidian','boneancient','adamantine']}},
 			],
 		unlockreqs = [],
 		reputation = [400,600],

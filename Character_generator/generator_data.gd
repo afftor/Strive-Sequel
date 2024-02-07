@@ -5226,7 +5226,7 @@ var transforms = {
 	armor_color_collar = {
 		default = [ #cloth
 			{type = 'item_recolor_group', group = 'collar', part = 'part1color', color = Color('989898')},
-			{type = 'item_recolor_group', group = 'collar', part = 'part2color', color = Color('795293')},
+			{type = 'item_recolor_group', group = 'collar', part = 'part2color', color = Color('b07007')},
 		],
 		default_leather = [ #leather
 			{type = 'item_recolor_group', group = 'collar', part = 'part1color', color = Color('b89836')},
@@ -5246,7 +5246,7 @@ var transforms = {
 	armor_color_weapon = { #copied from above
 		default = [ #cloth
 			{type = 'item_recolor_group', group = 'weapon', part = 'part1color', color = Color('989898')},
-			{type = 'item_recolor_group', group = 'weapon', part = 'part2color', color = Color('795293')},
+			{type = 'item_recolor_group', group = 'weapon', part = 'part2color', color = Color('7a6748')},
 		],
 		default_leather = [ #leather
 			{type = 'item_recolor_group', group = 'weapon', part = 'part1color', color = Color('b89836')},
