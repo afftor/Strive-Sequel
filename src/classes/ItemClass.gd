@@ -632,7 +632,8 @@ func get_bonusstats():
 	var res = bonusstats.duplicate()
 	var mul = variables.itemquality_multiplier[quality]
 	for st in res:
-		res[st] *= mul
+		if res[st] > 0: #or more complex behavior in case there are stats negative by default
+			res[st] *= mul
 	if curse != null:
 		var cursetemplate = Items.curses[curse]
 		if cursetemplate.has('statmods'):

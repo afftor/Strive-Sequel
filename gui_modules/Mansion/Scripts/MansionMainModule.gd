@@ -244,18 +244,19 @@ func match_state():
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 				$MansionJobModule2.close_job_pannel()
 		"travels":
-			$TravelsModule.show()
+			$map.open()
+#			$TravelsModule.show()
 #			$MansionTravelsModule.show()
 #			$MansionSlaveListModule.set_size(Vector2(1100, 580))
 #			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
 #			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 360))
 #			travels_manager(travels_defaults)
 #			menu_buttons.get_node("TravelsButton").pressed = true
-			if mansion_state != mansion_prev_state:
-				ResourceScripts.core_animations.UnfadeAnimation($TravelsModule, 0.3)
-#				ResourceScripts.core_animations.UnfadeAnimation($SlaveListModule, 0.3)
-			else:
-				$TravelsModule.update_lists()
+#			if mansion_state != mansion_prev_state:
+#				ResourceScripts.core_animations.UnfadeAnimation($TravelsModule, 0.3)
+##				ResourceScripts.core_animations.UnfadeAnimation($SlaveListModule, 0.3)
+#			else:
+#				$TravelsModule.update_lists()
 		"upgrades":
 			UpgradesModule_.show()
 			if mansion_state != mansion_prev_state:
@@ -533,8 +534,6 @@ func show_map():
 
 
 func test_mode():
-	$map_test.visible = true
-	$map_test.connect('pressed', self, 'show_map')
 	input_handler.CurrentScene = self
 	gui_controller.mansion = self
 	ResourceScripts.game_progress.allow_skip_fights = true

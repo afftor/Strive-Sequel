@@ -2500,7 +2500,7 @@ shader_param/target2color = Color( 0.498039, 1, 0, 1 )
 shader_param/target3color = Color( 0, 1, 0.6, 1 )
 shader_param/part1color = Color( 1, 0, 0, 1 )
 shader_param/part2color = Color( 1, 0, 0, 1 )
-shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 0.690196, 0.439216, 0.027451, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
 shader_param/midpoint = 0.5
@@ -5124,9 +5124,9 @@ shader_param/power = 1.0
 shader_param/target1color = Color( 0.980392, 0, 1, 1 )
 shader_param/target2color = Color( 0.498039, 1, 0, 1 )
 shader_param/target3color = Color( 0, 1, 0.6, 1 )
-shader_param/part1color = Color( 1, 0, 0, 1 )
-shader_param/part2color = Color( 1, 0, 0, 1 )
-shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 0.690196, 0.439216, 0.027451, 1 )
+shader_param/part2color = Color( 0, 0.415686, 1, 1 )
+shader_param/part3color = Color( 0.690196, 0.439216, 0.027451, 1 )
 shader_param/range = 0.1
 shader_param/lmod = 0.6
 shader_param/midpoint = 0.5
@@ -5171,7 +5171,6 @@ default_length = 100.0
 material = SubResource( 197 )
 position = Vector2( 175, -22.0006 )
 rotation = -1.5708
-scale = Vector2( 1, 1 )
 texture = ExtResource( 115 )
 
 [node name="Hairs_back_mesh" type="Polygon2D" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["hairs_back"]]
@@ -5872,7 +5871,6 @@ expand = true
 material = SubResource( 198 )
 position = Vector2( 172, -19.262 )
 rotation = -1.5708
-scale = Vector2( 1, 1 )
 z_index = 5
 texture = ExtResource( 114 )
 

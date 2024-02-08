@@ -5112,6 +5112,12 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_bat.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_bat.png"},
 		],
+		mace = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_mace.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_mace.png"},
+		],
 		
 		holy_spear = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
@@ -5161,6 +5167,36 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_stick2.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_stick2.png"},
 		],
+		battleaxe = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_axe1.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_axe1.png"},
+		],
+		battleaxeadv  = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_axe2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_axe2.png"},
+		],
+		maceadv = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_mace2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_mace2.png"},
+		],
+		crossbow = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_crossbow1.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_crossbow1.png"},
+		],
+		crossbowadv = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_crossbow2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_crossbow2.png"},
+		],
 	},
 	
 	armor_color = {
@@ -5183,23 +5219,28 @@ var transforms = {
 		],
 	},
 	
+	#2change part3color in ALL templates!!
 	armor_color_base = {
 		default = [ #cloth
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('989898')},
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('795293')},
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part3color', color = Color('795293')},
 		],
 		default_leather = [ #leather
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('b89836')},
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('98B8C6')},
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part3color', color = Color('98B8C6')},
 		],
 		
 		default_metal = [ #metal
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('506079')},
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('6e2424')},
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part3color', color = Color('6e2424')},
 		],
 		default_underwear = [
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('654a3e')},
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('98B8C6')},
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part3color', color = Color('98B8C6')},
 		],
 	},
 	
@@ -5207,19 +5248,23 @@ var transforms = {
 		default = [ #cloth
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('989898')},
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('795293')},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part3color', color = Color('795293')},
 		],
 		default_leather = [ #leather
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('b89836')},
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('98B8C6')},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part3color', color = Color('98B8C6')},
 		],
 		
 		default_metal = [ #metal
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('506079')},
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('6e2424')},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part3color', color = Color('6e2424')},
 		],
 		default_underwear = [
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('654a3e')},
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('98B8C6')},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part3color', color = Color('98B8C6')},
 		],
 	},
 	
@@ -5227,19 +5272,23 @@ var transforms = {
 		default = [ #cloth
 			{type = 'item_recolor_group', group = 'collar', part = 'part1color', color = Color('989898')},
 			{type = 'item_recolor_group', group = 'collar', part = 'part2color', color = Color('b07007')},
+			{type = 'item_recolor_group', group = 'collar', part = 'part3color', color = Color('b07007')},
 		],
 		default_leather = [ #leather
 			{type = 'item_recolor_group', group = 'collar', part = 'part1color', color = Color('b89836')},
 			{type = 'item_recolor_group', group = 'collar', part = 'part2color', color = Color('98B8C6')},
+			{type = 'item_recolor_group', group = 'collar', part = 'part3color', color = Color('98B8C6')},
 		],
 		
 		default_metal = [ #metal
 			{type = 'item_recolor_group', group = 'collar', part = 'part1color', color = Color('506079')},
 			{type = 'item_recolor_group', group = 'collar', part = 'part2color', color = Color('6e2424')},
+			{type = 'item_recolor_group', group = 'collar', part = 'part3color', color = Color('6e2424')},
 		],
 		default_underwear = [
 			{type = 'item_recolor_group', group = 'collar', part = 'part1color', color = Color('654a3e')},
 			{type = 'item_recolor_group', group = 'collar', part = 'part2color', color = Color('98B8C6')},
+			{type = 'item_recolor_group', group = 'collar', part = 'part3color', color = Color('98B8C6')},
 		],
 	},
 	
@@ -5247,19 +5296,23 @@ var transforms = {
 		default = [ #cloth
 			{type = 'item_recolor_group', group = 'weapon', part = 'part1color', color = Color('989898')},
 			{type = 'item_recolor_group', group = 'weapon', part = 'part2color', color = Color('7a6748')},
+			{type = 'item_recolor_group', group = 'weapon', part = 'part3color', color = Color('7a6748')},
 		],
 		default_leather = [ #leather
 			{type = 'item_recolor_group', group = 'weapon', part = 'part1color', color = Color('b89836')},
 			{type = 'item_recolor_group', group = 'weapon', part = 'part2color', color = Color('98B8C6')},
+			{type = 'item_recolor_group', group = 'weapon', part = 'part3color', color = Color('98B8C6')},
 		],
 		
 		default_metal = [ #metal
 			{type = 'item_recolor_group', group = 'weapon', part = 'part1color', color = Color('506079')},
 			{type = 'item_recolor_group', group = 'weapon', part = 'part2color', color = Color('6e2424')},
+			{type = 'item_recolor_group', group = 'weapon', part = 'part3color', color = Color('6e2424')},
 		],
 		default_underwear = [
 			{type = 'item_recolor_group', group = 'weapon', part = 'part1color', color = Color('654a3e')},
 			{type = 'item_recolor_group', group = 'weapon', part = 'part2color', color = Color('98B8C6')},
+			{type = 'item_recolor_group', group = 'weapon', part = 'part3color', color = Color('98B8C6')},
 		],
 	},
 	

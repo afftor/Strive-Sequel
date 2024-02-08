@@ -52,12 +52,17 @@ func animate_map_moves(zoom, pos, time = 0.5):
 	tween.start()
 
 
-func zoom_change(flag, delta = 0):
-	if flag:
-		var value = $zoom.value
-		if delta != 0:
-			value += delta * map_zoom_step
-		set_map_zoom(value, true)
+func zoom_change(value):
+	var tween = input_handler.GetTweenNode(self)
+	if tween.is_active():
+		return
+	set_map_zoom(value, true)
+
+
+func zoom_change_step(delta = 0):
+	var value = $zoom.value
+	value += delta * map_zoom_step
+	set_map_zoom(value, true)
 
 
 func set_map_zoom(value, centered = false):
@@ -134,6 +139,7 @@ func set_focus_location(loc):
 
 func unselect_location():
 	loc_locked = false
+	hovered_location = null
 	if selected_area == null:
 		unselect_area()
 		return
@@ -195,9 +201,9 @@ func _ready():#2add button connections
 	$CharPanel/mode1.connect('pressed', self, 'reset_from')
 	$zoom.min_value = map_zoom_min
 	$zoom.max_value = map_zoom_max
-	$zoom.connect("drag_ended", self, 'zoom_change')
-	$zoom/minus.connect("pressed", self, 'zoom_change', [true, -1])
-	$zoom/plus.connect("pressed", self, 'zoom_change', [true, 1])
+	$zoom.connect("value_changed", self, 'zoom_change')
+	$zoom/minus.connect("pressed", self, 'zoom_change_step', [ -1])
+	$zoom/plus.connect("pressed", self, 'zoom_change_step', [ 1])
 #	match_state()
 
 func close():
@@ -444,7 +450,8 @@ func make_panel_for_location(panel, loc):
 #		if ResourceScripts.game_world.areas[loc.area].questlocations.has(loc.id):
 		if loc.quest:
 			text = "Q:" + text
-		panel.get_node("Label").text = text
+		set_loc_text(panel, text)
+#		panel.get_node("Label").text = text
 		if loc.has('captured'):
 			if loc.captured:
 				panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.red)
@@ -568,7 +575,12 @@ func update_location_chars():
 		if !nd.has_meta('character'):
 			continue
 		var ch_id = nd.get_meta('character')
-		nd.pressed = selected_chars.has(ch_id)
+		if selected_chars.has(ch_id):
+			nd.pressed = true
+			nd.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
+		else:
+			nd.pressed = false
+			nd.get_node('icon').material = null
 
 
 func update_travel_duration():
@@ -677,8 +689,10 @@ func build_charpanel():
 #	$CharPanel.visible = true
 	$CharPanel/mode1.pressed = false
 	$CharPanel/mode2.pressed = true
-	$CharPanel/mode1/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(from_loc).name)
-	$CharPanel/mode2/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(to_loc).name)
+	set_loc_text($CharPanel/mode1, tr(ResourceScripts.world_gen.get_location_from_code(from_loc).name))
+	set_loc_text($CharPanel/mode2, tr(ResourceScripts.world_gen.get_location_from_code(to_loc).name))
+#	$CharPanel/mode1/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(from_loc).name)
+#	$CharPanel/mode2/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(to_loc).name)
 	update_travel_duration()
 	input_handler.ClearContainer($CharPanel/ScrollContainer/CharList)
 	for ch_id in ResourceScripts.game_party.character_order:
@@ -780,3 +794,9 @@ func confirm_travel():
 	build_locations_list()
 	match_state()
 	build_info(selected_loc)
+
+
+func set_loc_text (btn, text):
+	btn.get_node("Label").text = text
+	var font = input_handler.font_size_calculator(btn.get_node("Label"))
+	btn.get_node("Label").set("custom_fonts/font", font)
