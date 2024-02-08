@@ -5112,6 +5112,12 @@ var transforms = {
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_bat.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_bat.png"},
 		],
+		mace = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_back', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_mace.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_belt', texture = "res://Character_generator/images/200_weapon_belt/weapon_belt_mace.png"},
+		],
 		
 		holy_spear = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
@@ -5160,6 +5166,36 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_stick2.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_stick2.png"},
+		],
+		battleaxe = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_axe1.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_axe1.png"},
+		],
+		battleaxeadv  = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_axe2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_axe2.png"},
+		],
+		maceadv = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_mace2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_mace2.png"},
+		],
+		crossbow = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_crossbow1.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_crossbow1.png"},
+		],
+		crossbowadv = [
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_crossbow2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_crossbow2.png"},
 		],
 	},
 	
