@@ -450,7 +450,8 @@ func make_panel_for_location(panel, loc):
 #		if ResourceScripts.game_world.areas[loc.area].questlocations.has(loc.id):
 		if loc.quest:
 			text = "Q:" + text
-		panel.get_node("Label").text = text
+		set_loc_text(panel, text)
+#		panel.get_node("Label").text = text
 		if loc.has('captured'):
 			if loc.captured:
 				panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.red)
@@ -683,8 +684,10 @@ func build_charpanel():
 #	$CharPanel.visible = true
 	$CharPanel/mode1.pressed = false
 	$CharPanel/mode2.pressed = true
-	$CharPanel/mode1/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(from_loc).name)
-	$CharPanel/mode2/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(to_loc).name)
+	set_loc_text($CharPanel/mode1, tr(ResourceScripts.world_gen.get_location_from_code(from_loc).name))
+	set_loc_text($CharPanel/mode2, tr(ResourceScripts.world_gen.get_location_from_code(to_loc).name))
+#	$CharPanel/mode1/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(from_loc).name)
+#	$CharPanel/mode2/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(to_loc).name)
 	update_travel_duration()
 	input_handler.ClearContainer($CharPanel/ScrollContainer/CharList)
 	for ch_id in ResourceScripts.game_party.character_order:
@@ -786,3 +789,9 @@ func confirm_travel():
 	build_locations_list()
 	match_state()
 	build_info(selected_loc)
+
+
+func set_loc_text (btn, text):
+	btn.get_node("Label").text = text
+	var font = input_handler.font_size_calculator(btn.get_node("Label"))
+	btn.get_node("Label").set("custom_fonts/font", font)
