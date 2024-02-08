@@ -5183,23 +5183,28 @@ var transforms = {
 		],
 	},
 	
+	#2change part3color in ALL templates!!
 	armor_color_base = {
 		default = [ #cloth
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('989898')},
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('795293')},
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part3color', color = Color('795293')},
 		],
 		default_leather = [ #leather
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('b89836')},
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('98B8C6')},
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part3color', color = Color('98B8C6')},
 		],
 		
 		default_metal = [ #metal
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('506079')},
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('6e2424')},
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part3color', color = Color('6e2424')},
 		],
 		default_underwear = [
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'part1color', color = Color('654a3e')},
 			{type = 'item_recolor_group', group = 'cloth_top', part = 'part2color', color = Color('98B8C6')},
+			{type = 'item_recolor_group', group = 'cloth_top', part = 'part3color', color = Color('98B8C6')},
 		],
 	},
 	
@@ -5207,19 +5212,23 @@ var transforms = {
 		default = [ #cloth
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('989898')},
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('795293')},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part3color', color = Color('795293')},
 		],
 		default_leather = [ #leather
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('b89836')},
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('98B8C6')},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part3color', color = Color('98B8C6')},
 		],
 		
 		default_metal = [ #metal
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('506079')},
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('6e2424')},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part3color', color = Color('6e2424')},
 		],
 		default_underwear = [
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part1color', color = Color('654a3e')},
 			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part2color', color = Color('98B8C6')},
+			{type = 'item_recolor_group', group = 'cloth_bottom', part = 'part3color', color = Color('98B8C6')},
 		],
 	},
 	
@@ -5227,19 +5236,23 @@ var transforms = {
 		default = [ #cloth
 			{type = 'item_recolor_group', group = 'collar', part = 'part1color', color = Color('989898')},
 			{type = 'item_recolor_group', group = 'collar', part = 'part2color', color = Color('b07007')},
+			{type = 'item_recolor_group', group = 'collar', part = 'part3color', color = Color('b07007')},
 		],
 		default_leather = [ #leather
 			{type = 'item_recolor_group', group = 'collar', part = 'part1color', color = Color('b89836')},
 			{type = 'item_recolor_group', group = 'collar', part = 'part2color', color = Color('98B8C6')},
+			{type = 'item_recolor_group', group = 'collar', part = 'part3color', color = Color('98B8C6')},
 		],
 		
 		default_metal = [ #metal
 			{type = 'item_recolor_group', group = 'collar', part = 'part1color', color = Color('506079')},
 			{type = 'item_recolor_group', group = 'collar', part = 'part2color', color = Color('6e2424')},
+			{type = 'item_recolor_group', group = 'collar', part = 'part3color', color = Color('6e2424')},
 		],
 		default_underwear = [
 			{type = 'item_recolor_group', group = 'collar', part = 'part1color', color = Color('654a3e')},
 			{type = 'item_recolor_group', group = 'collar', part = 'part2color', color = Color('98B8C6')},
+			{type = 'item_recolor_group', group = 'collar', part = 'part3color', color = Color('98B8C6')},
 		],
 	},
 	
@@ -5247,19 +5260,23 @@ var transforms = {
 		default = [ #cloth
 			{type = 'item_recolor_group', group = 'weapon', part = 'part1color', color = Color('989898')},
 			{type = 'item_recolor_group', group = 'weapon', part = 'part2color', color = Color('7a6748')},
+			{type = 'item_recolor_group', group = 'weapon', part = 'part3color', color = Color('7a6748')},
 		],
 		default_leather = [ #leather
 			{type = 'item_recolor_group', group = 'weapon', part = 'part1color', color = Color('b89836')},
 			{type = 'item_recolor_group', group = 'weapon', part = 'part2color', color = Color('98B8C6')},
+			{type = 'item_recolor_group', group = 'weapon', part = 'part3color', color = Color('98B8C6')},
 		],
 		
 		default_metal = [ #metal
 			{type = 'item_recolor_group', group = 'weapon', part = 'part1color', color = Color('506079')},
 			{type = 'item_recolor_group', group = 'weapon', part = 'part2color', color = Color('6e2424')},
+			{type = 'item_recolor_group', group = 'weapon', part = 'part3color', color = Color('6e2424')},
 		],
 		default_underwear = [
 			{type = 'item_recolor_group', group = 'weapon', part = 'part1color', color = Color('654a3e')},
 			{type = 'item_recolor_group', group = 'weapon', part = 'part2color', color = Color('98B8C6')},
+			{type = 'item_recolor_group', group = 'weapon', part = 'part3color', color = Color('98B8C6')},
 		],
 	},
 	
