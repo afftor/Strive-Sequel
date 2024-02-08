@@ -52,12 +52,17 @@ func animate_map_moves(zoom, pos, time = 0.5):
 	tween.start()
 
 
-func zoom_change(flag, delta = 0):
-	if flag:
-		var value = $zoom.value
-		if delta != 0:
-			value += delta * map_zoom_step
-		set_map_zoom(value, true)
+func zoom_change(value):
+	var tween = input_handler.GetTweenNode(self)
+	if tween.is_active():
+		return
+	set_map_zoom(value, true)
+
+
+func zoom_change_step(delta = 0):
+	var value = $zoom.value
+	value += delta * map_zoom_step
+	set_map_zoom(value, true)
 
 
 func set_map_zoom(value, centered = false):
@@ -195,9 +200,9 @@ func _ready():#2add button connections
 	$CharPanel/mode1.connect('pressed', self, 'reset_from')
 	$zoom.min_value = map_zoom_min
 	$zoom.max_value = map_zoom_max
-	$zoom.connect("drag_ended", self, 'zoom_change')
-	$zoom/minus.connect("pressed", self, 'zoom_change', [true, -1])
-	$zoom/plus.connect("pressed", self, 'zoom_change', [true, 1])
+	$zoom.connect("value_changed", self, 'zoom_change')
+	$zoom/minus.connect("pressed", self, 'zoom_change_step', [ -1])
+	$zoom/plus.connect("pressed", self, 'zoom_change_step', [ 1])
 #	match_state()
 
 func close():
