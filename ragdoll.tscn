@@ -5135,7 +5135,6 @@ shader_param/steepness = 2.0
 [node name="ragdoll" type="Node2D"]
 light_mask = 4
 script = ExtResource( 89 )
-test_mode = true
 
 [node name="VPC" type="ViewportContainer" parent="."]
 light_mask = 4
