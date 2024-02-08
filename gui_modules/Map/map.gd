@@ -139,6 +139,7 @@ func set_focus_location(loc):
 
 func unselect_location():
 	loc_locked = false
+	hovered_location = null
 	if selected_area == null:
 		unselect_area()
 		return
