@@ -575,7 +575,12 @@ func update_location_chars():
 		if !nd.has_meta('character'):
 			continue
 		var ch_id = nd.get_meta('character')
-		nd.pressed = selected_chars.has(ch_id)
+		if selected_chars.has(ch_id):
+			nd.pressed = true
+			nd.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
+		else:
+			nd.pressed = false
+			nd.get_node('icon').material = null
 
 
 func update_travel_duration():
