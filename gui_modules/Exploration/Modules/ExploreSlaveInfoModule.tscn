@@ -42,17 +42,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="obedlabel" type="Label" parent="Panel" groups=[
-"hide_master",
-"hide_stranger",
-]]
+[node name="obedlabel" type="Label" parent="Panel" groups=["hide_master", "hide_stranger"]]
 margin_left = 207.251
 margin_top = 48.5153
 margin_right = 286.251
 margin_bottom = 88.5153
 rect_scale = Vector2( 0.627771, 0.627771 )
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "25"
 align = 1
 __meta__ = {
@@ -77,64 +74,54 @@ custom_colors/font_color = Color( 1, 0.976471, 0.00392157, 1 )
 text = "Obedience"
 align = 1
 
-[node name="authoritylabel" type="Label" parent="Panel" groups=[
-"hide_master",
-"hide_stranger",
-]]
+[node name="authoritylabel" type="Label" parent="Panel" groups=["hide_master", "hide_stranger"]]
 visible = false
 margin_left = 32.0
 margin_top = 185.12
 margin_right = 270.0
 margin_bottom = 217.12
 mouse_filter = 0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.937255, 1, 0.364706, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Authority: "
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="authoritylabel2" type="Label" parent="Panel" groups=[
-"hide_master",
-"hide_stranger",
-]]
+[node name="authoritylabel2" type="Label" parent="Panel" groups=["hide_master", "hide_stranger"]]
+visible = false
 margin_left = 63.0
 margin_top = 87.0
 margin_right = 242.0
 margin_bottom = 119.0
 mouse_filter = 0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Loyalty"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="authoritylabel3" type="Label" parent="Panel" groups=[
-"hide_master",
-"hide_stranger",
-]]
+[node name="authoritylabel3" type="Label" parent="Panel" groups=["hide_master", "hide_stranger"]]
 visible = false
 margin_left = 62.513
 margin_top = 137.0
 margin_right = 241.513
 margin_bottom = 169.0
 mouse_filter = 0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Submission"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="loyaltylabel" type="TextureProgress" parent="Panel" groups=[
-"hide_master",
-"hide_stranger",
-]]
+[node name="loyaltylabel" type="TextureProgress" parent="Panel" groups=["hide_master", "hide_stranger"]]
+visible = false
 margin_left = 62.0
 margin_top = 117.12
 margin_right = 241.0
@@ -143,10 +130,7 @@ value = 100.0
 texture_over = ExtResource( 6 )
 texture_progress = ExtResource( 4 )
 
-[node name="submissionlabel" type="TextureProgress" parent="Panel" groups=[
-"hide_master",
-"hide_stranger",
-]]
+[node name="submissionlabel" type="TextureProgress" parent="Panel" groups=["hide_master", "hide_stranger"]]
 visible = false
 margin_left = 62.0
 margin_top = 164.12
@@ -159,9 +143,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="character_class" type="Label" parent="Panel" groups=[
-"hide_master",
-]]
+[node name="character_class" type="Label" parent="Panel" groups=["hide_master"]]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 151.0
@@ -171,6 +153,17 @@ custom_colors/font_color = Color( 0.027451, 0.976471, 1, 1 )
 text = "Slave"
 align = 1
 valign = 1
+
+[node name="personality" type="Label" parent="Panel"]
+margin_left = 63.0
+margin_top = 87.0
+margin_right = 242.0
+margin_bottom = 122.0
+mouse_filter = 0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Personality:"
+align = 1
 
 [node name="BaseStatsPanel" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -198,8 +191,8 @@ margin_right = 96.0
 margin_bottom = 35.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "ATK:"
 align = 2
 
@@ -208,8 +201,8 @@ margin_left = 110.0
 margin_right = 136.0
 margin_bottom = 35.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "25"
 
 [node name="label_matk" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -218,8 +211,8 @@ margin_right = 291.0
 margin_bottom = 35.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "MATK:"
 align = 2
 
@@ -228,8 +221,8 @@ margin_left = 305.0
 margin_right = 331.0
 margin_bottom = 35.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "20"
 
 [node name="label_armor" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -238,8 +231,8 @@ margin_right = 96.0
 margin_bottom = 71.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "DEF:"
 align = 2
 
@@ -249,8 +242,8 @@ margin_top = 36.0
 margin_right = 136.0
 margin_bottom = 71.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "15"
 
 [node name="label_mdef" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -260,8 +253,8 @@ margin_right = 291.0
 margin_bottom = 71.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "MDEF:"
 align = 2
 
@@ -271,8 +264,8 @@ margin_top = 36.0
 margin_right = 331.0
 margin_bottom = 71.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "20"
 
 [node name="label_hitrate" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -281,8 +274,8 @@ margin_right = 96.0
 margin_bottom = 107.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Hit Rate:"
 align = 2
 
@@ -292,8 +285,8 @@ margin_top = 72.0
 margin_right = 136.0
 margin_bottom = 107.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "15"
 
 [node name="label_evasion" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -303,8 +296,8 @@ margin_right = 291.0
 margin_bottom = 107.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Evasion:"
 align = 2
 
@@ -314,8 +307,8 @@ margin_top = 72.0
 margin_right = 331.0
 margin_bottom = 107.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "20"
 
 [node name="label_speed" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -324,8 +317,8 @@ margin_right = 96.0
 margin_bottom = 143.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Speed:"
 align = 2
 
@@ -335,8 +328,8 @@ margin_top = 108.0
 margin_right = 136.0
 margin_bottom = 143.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "15"
 
 [node name="label_armorpenetration" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -346,8 +339,8 @@ margin_right = 291.0
 margin_bottom = 143.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Armor Pen.:"
 align = 2
 
@@ -357,8 +350,8 @@ margin_top = 108.0
 margin_right = 331.0
 margin_bottom = 143.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "20"
 
 [node name="label_critchance" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -367,8 +360,8 @@ margin_right = 96.0
 margin_bottom = 179.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Critical:"
 align = 2
 
@@ -378,8 +371,8 @@ margin_top = 144.0
 margin_right = 136.0
 margin_bottom = 179.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "15"
 
 [node name="label_critmod" type="Label" parent="BaseStatsPanel/base_stats"]
@@ -389,8 +382,8 @@ margin_right = 291.0
 margin_bottom = 179.0
 mouse_filter = 1
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Critical Mod:"
 align = 2
 
@@ -400,8 +393,8 @@ margin_top = 144.0
 margin_right = 331.0
 margin_bottom = 179.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "20"
 
 [node name="resists" type="GridContainer" parent="BaseStatsPanel"]
@@ -421,8 +414,8 @@ visible = false
 margin_right = 81.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Attack:"
 align = 2
 
@@ -430,8 +423,8 @@ align = 2
 visible = false
 margin_right = 28.0
 margin_bottom = 24.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "25"
 
 [node name="ResistsLabel" type="Label" parent="BaseStatsPanel"]
@@ -559,8 +552,8 @@ margin_left = 304.0
 margin_top = 688.0
 margin_right = 664.0
 margin_bottom = 728.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Sex Skills"
 align = 1
 valign = 1
@@ -573,8 +566,8 @@ margin_left = 672.0
 margin_top = 691.0
 margin_right = 960.0
 margin_bottom = 723.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Sex Traits"
 align = 1
 
@@ -603,8 +596,8 @@ margin_right = 264.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 267, 0 )
 mouse_filter = 0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "1.100"
 align = 1
 
@@ -613,8 +606,8 @@ margin_left = 669.0
 margin_top = 736.0
 margin_right = 957.0
 margin_bottom = 768.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Consent"
 align = 1
 __meta__ = {
@@ -630,16 +623,16 @@ rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Consumption"
 
 [node name="Label" type="Label" parent="food_consumption"]
 margin_left = 162.941
 margin_right = 188.941
 margin_bottom = 35.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "25"
 
 [node name="FoodLabel" type="Label" parent="."]
@@ -647,8 +640,8 @@ margin_left = 8.0
 margin_top = 688.0
 margin_right = 300.0
 margin_bottom = 728.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Food"
 align = 1
 valign = 1
