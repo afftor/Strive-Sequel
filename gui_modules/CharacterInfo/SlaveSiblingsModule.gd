@@ -263,7 +263,7 @@ func show_food_filter():
 
 func hide_food_filter():
 	$SlaveDietModule.visible = false
-	$change_button.visible = true
+	$change_button.visible = !person.is_master()
 	loyalty_mode = !loyalty_mode
 	swap_mode()
 

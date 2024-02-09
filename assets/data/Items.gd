@@ -2107,7 +2107,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/item_sword_adv.png"),
 		tier = 'medium',
 		price = 0,
-		basestats = {atk = 15, critrate = 5, enchant_capacity = 300},
+		basestats = {atk = 15, critchance = 5, enchant_capacity = 300},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',

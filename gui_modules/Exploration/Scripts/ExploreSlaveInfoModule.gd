@@ -53,6 +53,9 @@ func update(person = null, from_dialogue = false):
 		$Panel/loyaltylabel.value = person.get_stat('loyalty')
 		$Panel/submissionlabel.value = person.get_stat('submission')
 		
+		$Panel/personality.text = tr("PERSONALITYCURRENT") + "\n" + tr("PERSONALITYNAME" + person.get_stat('personality').to_upper())
+		globals.connecttexttooltip($Panel/personality, tr("INFOPERSONALITY" + person.get_stat('personality').to_upper()))
+		
 		if from_dialogue:
 			$Panel/authoritylabel.visible = person.is_known_to_player
 			$Panel/loyaltylabel.visible = person.is_known_to_player

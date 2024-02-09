@@ -996,15 +996,21 @@ func impregnate(father, mother):
 	baby.setup_baby(mother, father)
 
 func calculate_travel_time(location1, location2): #2remade to new mechanic
-	var travel_value1 = 0 #time to travel to location from mansion
-	var travel_value2 = 0 #time to return to mansion from location
+	var time = 0
+	var adata1 = ResourceScripts.world_gen.get_area_from_location_code(location1)
+	var ldata1 = ResourceScripts.world_gen.get_location_from_code(location1)
+	var adata2 = ResourceScripts.world_gen.get_area_from_location_code(location2)
+	var ldata2 = ResourceScripts.world_gen.get_location_from_code(location2)
+	
 	if location1 != ResourceScripts.game_world.mansion_location:
-		travel_value1 = ResourceScripts.world_gen.get_area_from_location_code(location1).travel_time + ResourceScripts.world_gen.get_location_from_code(location1).travel_time
+		time += ldata1.travel_time
 	if location2 != ResourceScripts.game_world.mansion_location:
-		travel_value2 = ResourceScripts.world_gen.get_area_from_location_code(location2).travel_time + ResourceScripts.world_gen.get_location_from_code(location2).travel_time
-	var time = travel_value1 + travel_value2
+		time += ldata2.travel_time
+	if adata1.code != adata2.code:
+		time += adata1.travel_time + adata2.travel_time
+	
 	time = max(1, time - variables.stable_boost_per_level * ResourceScripts.game_res.upgrades.stables)
-	return {time = time, obed_cost = travel_value1*1.5}
+	return {time = time, obed_cost = time * 1.5} #or obed_cost is wrong
 
 func check_recipe_resources(temprecipe):
 	var recipe = Items.recipes[temprecipe.code]
