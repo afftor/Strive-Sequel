@@ -592,7 +592,7 @@ func calculateprice():
 			price = price * (1 + enchants.size() * 0.15)
 		if curse != null:
 			price = price * 0.60
-	return price
+	return int(price)
 
 func use_explore(character, caller = null):
 	var itemskill = Items.itemlist[itembase].explor_effect
