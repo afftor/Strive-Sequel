@@ -5483,8 +5483,7 @@ position = Vector2( 218.927, -0.34021 )
 rotation = -1.5708
 texture = ExtResource( 71 )
 
-[node name="Torso_collar_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["cloth", "collar"]]
-visible = false
+[node name="Torso_collar_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["collar"]]
 light_mask = 4
 material = SubResource( 191 )
 position = Vector2( 218.927, -0.34021 )
@@ -6422,7 +6421,7 @@ rotation = -1.5708
 z_index = 5
 texture = ExtResource( 30 )
 
-[node name="Torso_collar_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["cloth", "collar"]]
+[node name="Torso_collar_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["collar"]]
 light_mask = 4
 material = SubResource( 192 )
 position = Vector2( 226, 1.99918 )
