@@ -495,11 +495,21 @@ expand = true
 [node name="Label" type="Label" parent="ToLocList/LocScroll/LocCatList/LocCat/offset/LocList/Button"]
 margin_left = 51.0
 margin_top = 7.0
-margin_right = 279.0
+margin_right = 264.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
 text = "Location name"
+valign = 1
+
+[node name="amount" type="Label" parent="ToLocList/LocScroll/LocCatList/LocCat/offset/LocList/Button"]
+margin_left = 275.0
+margin_top = 7.0
+margin_right = 316.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "10"
 valign = 1
 
 [node name="CharPanel" type="TextureRect" parent="."]

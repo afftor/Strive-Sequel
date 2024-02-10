@@ -536,6 +536,10 @@ func build_to_locations():
 			loc_button.set_meta('location', loc_data.id)
 			loc_button.connect('pressed', self, 'location_press', [loc_data.id, 'to'])
 			make_panel_for_location(loc_button, loc_data)
+			if loc_data.heroes > 0:
+				loc_button.get_node('amount').text = str(loc_data.heroes)
+			else:
+				loc_button.get_node('amount').text = ""
 	
 	update_selected_area()
 	update_selected_to_location()
