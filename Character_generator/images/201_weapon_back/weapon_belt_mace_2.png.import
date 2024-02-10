@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/weapon_belt_mace_2.png-015c6f19d2ef873a8dfd2e51f1d5fc5d.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/images/iconstraits/escort.png"
+source_file="res://Character_generator/images/201_weapon_back/weapon_belt_mace_2.png"
+dest_files=[ "res://.import/weapon_belt_mace_2.png-015c6f19d2ef873a8dfd2e51f1d5fc5d.stex" ]
+
 [params]
 
 compress/mode=0

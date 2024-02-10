@@ -430,7 +430,7 @@ var questdata = {
 		reputation = [150,250],
 		rewards = [
 		[1, {code = 'gold', range = [200,300]}],
-		[1, {code = 'gear', material_grade = [['easy',1], ['medium',4], ['hard',1]], name = ['sword','spear','club','bow']}],
+		[1, {code = 'gear', material_grade = [['easy',1], ['medium',4], ['hard',1]], name = ['sword','spear','club','bow','battleaxe','mace','crossbow']}],
 		],
 		time_limit = [8,12],
 	},
@@ -443,7 +443,7 @@ var questdata = {
 		reputation = [150,250],
 		rewards = [
 		[1, {code = 'gold', range = [200,300]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',3]], name = ['sword','spear','club','bow']}, {code = 'gold', range = [25,50]}],
+		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',3]], name = ['sword','spear','club','bow','battleaxe','mace','crossbow']}, {code = 'gold', range = [25,50]}],
 		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['chest_base_metal','legs_base_metal']}],
 		],
 		time_limit = [12,16],
@@ -457,7 +457,7 @@ var questdata = {
 		reputation = [200,350],
 		rewards = [
 		[1, {code = 'gold', range = [350,500]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',3]], name = ['sword','spear','club','bow']}, {code = 'gold', range = [75,100]}],
+		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',3]], name = ['sword','spear','club','bow','battleaxe','mace','crossbow']}, {code = 'gold', range = [75,100]}],
 		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['chest_base_metal','legs_base_metal']}],
 		],
 		time_limit = [16,20],
@@ -471,7 +471,7 @@ var questdata = {
 		reputation = [300,500],
 		rewards = [
 		[1, {code = 'gold', range = [600,900]}],
-		[1, {code = 'gear', material_grade = [['medium',3],['hard',2]], name = ['sword','spear','club','bow']}, {code = 'gold', range = [150,250]}],
+		[1, {code = 'gear', material_grade = [['medium',3],['hard',2]], name = ['sword','spear','club','bow','battleaxe','mace','crossbow']}, {code = 'gold', range = [150,250]}],
 		[1, {code = 'gear', material_grade = [['medium',3],['hard',2]], name = ['chest_base_metal','legs_base_metal']}],
 		[0.3, {code = 'gear', material_grade = [['medium',3],['hard',2]], name = ['chest_adv_metal','legs_adv_metal','swordadv','spearadv','bowadv','maceadv']}],
 		],
@@ -486,7 +486,7 @@ var questdata = {
 		reputation = [100,150],
 		rewards = [
 		[1, {code = 'gold', range = [125,150]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',1]], name = ['sword','spear','club','bow']}, {code = 'gold', range = [10,30]}],
+		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',1]], name = ['sword','spear','club','bow','battleaxe','mace','crossbow']}, {code = 'gold', range = [10,30]}],
 		],
 		time_limit = [8,12],
 	},
@@ -499,7 +499,7 @@ var questdata = {
 		reputation = [200,250],
 		rewards = [
 		[1, {code = 'gold', range = [200,300]}],
-		[1, {code = 'gear', material_grade = [['easy', 1], ['medium',4], ['hard',1]], name = ['sword','spear','club','bow']}, {code = 'gold', range = [50,100]}],
+		[1, {code = 'gear', material_grade = [['easy', 1], ['medium',4], ['hard',1]], name = ['sword','spear','club','bow','battleaxe','mace','crossbow']}, {code = 'gold', range = [50,100]}],
 		],
 		time_limit = [8,16],
 	},
@@ -512,7 +512,7 @@ var questdata = {
 		reputation = [400,500],
 		rewards = [
 		[1, {code = 'gold', range = [350,600]}],
-		[1, {code = 'gear', material_grade = [['easy', 1], ['medium',4], ['hard',3]], name = ['sword','spear','club','bow']}, {code = 'gold', range = [150,250]}],
+		[1, {code = 'gear', material_grade = [['easy', 1], ['medium',4], ['hard',3]], name = ['sword','spear','club','bow','battleaxe','mace','crossbow']}, {code = 'gold', range = [150,250]}],
 		],
 		time_limit = [8,16],
 	},
@@ -522,8 +522,8 @@ var questdata = {
 		name = tr("FIGHTERS_CRAFT_GEAR_NAME"),
 		descript = tr("FIGHTERS_CRAFT_GEAR_NAME"),
 		randomconditions = [
-			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow'], range = [1,1], parts = {WeaponHandle = ['steel','boneancient','woodiron']}},
-			{code = 'random_item', function = 'range', type = ['dagger','sword','spear'], range = [1,1], parts = {Blade = ['steel','obsidian','boneancient']}},
+			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow','battleaxe','mace','crossbow'], range = [1,1], parts = {WeaponHandle = ['steel','boneancient','woodiron']}},
+			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','mace'], range = [1,1], parts = {Blade = ['steel','obsidian','boneancient']}},
 			{code = 'random_item', function = 'range', type = ['chest_base_leather','legs_base_leather','chest_base_metal','legs_base_metal'], range = [1,1], parts = {ArmorTrim = ['steel','obsidian','clothmagic','woodmagic']}},
 			{code = 'random_item', function = 'range', type = ['chest_base_leather','legs_base_leather'], range = [1,1], parts = {ArmorBaseMed = ['leatherthick','leathermythic','insect_chitin','lizard_skin','boneancient']}},
 			],
@@ -539,8 +539,8 @@ var questdata = {
 		name = tr("FIGHTERS_CRAFT_GEAR_NAME"),
 		descript = tr("FIGHTERS_CRAFT_GEAR_NAME"),
 		randomconditions = [
-			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow'], range = [2,3], parts = {WeaponHandle = ['mithril','boneancient','woodiron','obsidian']}},
-			{code = 'random_item', function = 'range', type = ['dagger','sword','spear'], range = [2,3], parts = {Blade = ['mithril','obsidian','boneancient']}},
+			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow','battleaxe','mace','crossbow'], range = [2,3], parts = {WeaponHandle = ['mithril','boneancient','woodiron','obsidian']}},
+			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','mace'], range = [2,3], parts = {Blade = ['mithril','obsidian','boneancient']}},
 			
 			
 			

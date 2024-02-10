@@ -116,9 +116,9 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = false,
 		dialogue_image = 'abuse',
-		value = [['5'], ['100'], ['5'], ['50']], 
-		damagestat = ['+loyalty', '+obedience', '+loyalty', '+obedience'],
-		receiver = ['target','target','caster','caster']
+		value = [['5'], ['100'], ['5'], ['50'],['20']], 
+		damagestat = ['+loyalty', '+obedience', '+loyalty', '+obedience','+personality_bold'],
+		receiver = ['target','target','caster','caster','caster']
 	},
 	publichumiliation = {
 		code = 'publichumiliation',

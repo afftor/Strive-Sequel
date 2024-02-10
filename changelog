@@ -1,6 +1,8 @@
+Added 3 new weapon types (Battleaxe, mace, crossbow)
 Added world map in exchange for travel screen
 Added visual display to paper doll for most weapons
 Fixed wits boost potion buffing physics instead
+Virginity only affects buy/sell price now
 0.8.2
 Removed Peon slave type
 Added new loyalty classes to replace Swear Loyalty trait
