@@ -204,7 +204,34 @@ func _ready():#2add button connections
 	$zoom.connect("value_changed", self, 'zoom_change')
 	$zoom/minus.connect("pressed", self, 'zoom_change_step', [ -1])
 	$zoom/plus.connect("pressed", self, 'zoom_change_step', [ 1])
+	$InfoPanel/Forget.connect("pressed", self, "forget_location")
 #	match_state()
+
+
+func forget_location():
+	input_handler.get_spec_node(
+		input_handler.NODE_YESNOPANEL,
+		[
+			self,
+			'clear_dungeon_confirm',
+			tr("FORGETLOCATIONQUESTION")
+		]
+	)
+
+
+func clear_dungeon_confirm():
+	globals.remove_location(selected_loc)
+	input_handler.SystemMessage(tr("LOC_BEEN_REMOVED_LABEL"))
+	selected_loc = null
+	selected_chars.clear()
+	build_locations_list()
+	unselect_location()
+	build_from_locations()
+	build_to_locations()
+	match_state()
+	build_charpanel()
+	build_info(selected_loc)
+
 
 func close():
 #	get_parent().set_process_input(true)
@@ -349,6 +376,13 @@ func if_location_in_list(loc):
 	return false
 
 
+func get_location_data(loc):
+	for loc_d in sorted_locations:
+		if loc_d.id == loc:
+			return loc_d
+	return false
+
+
 func build_info(loc = to_loc):
 	if loc == null:
 		$InfoPanel.visible = false
@@ -357,6 +391,12 @@ func build_info(loc = to_loc):
 	var location = ResourceScripts.world_gen.get_location_from_code(loc)
 	var tdata = ResourceScripts.game_world.location_links[loc]
 	var adata = ResourceScripts.game_world.areas[tdata.area]
+	
+	var location_selected = get_location_data(loc)
+	$InfoPanel/Forget.visible = (!location_selected.quest and location_selected.type in ['dungeon', 'encounter'])
+	if to_loc != null:
+		$InfoPanel/Forget.visible = false
+	
 	#build info
 	$InfoPanel/Label.text = tr(location.name)
 	var icon = null
@@ -375,6 +415,7 @@ func build_info(loc = to_loc):
 	input_handler.ClearContainer(info_res_node)
 	info_res_node.show()
 	$InfoPanel/VBoxContainer/Label3.show()
+	$InfoPanel/InfoFrame/enemies.visible = false
 	for r_task in ['recruit_easy', 'recruit_hard']:
 		if location.has('tags') and location.tags.has(r_task):
 			var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
@@ -392,6 +433,8 @@ func build_info(loc = to_loc):
 		info_res_node.hide()
 		$InfoPanel/VBoxContainer/Label3.hide()
 	elif location.type == "dungeon":
+		$InfoPanel/InfoFrame/enemies.visible = true
+		$InfoPanel/InfoFrame/enemies.text = tr(location.classname)
 		dungeon = true
 		if !location.completed:
 			hidden = true
@@ -745,6 +788,7 @@ func to_loc_set():
 	to_loc = selected_loc
 	loc_locked = false
 	build_from_locations()
+	build_info()
 	match_state()
 
 
