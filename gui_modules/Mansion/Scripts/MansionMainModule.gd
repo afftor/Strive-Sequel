@@ -204,7 +204,15 @@ func reset_vars():
 	Journal.hide()
 
 # Handles Resizing and visibility
+func handle_test():
+	for nd in get_tree().get_nodes_in_group('test'):
+		nd.visible = test_mode
+	for nd in get_tree().get_nodes_in_group('test_obsolete'):
+		nd.visible = false
+
+
 func match_state():
+	handle_test()
 	if gui_controller.clock != null and visible and mansion_state != 'craft':
 		gui_controller.clock.show()
 		gui_controller.clock.raise()
