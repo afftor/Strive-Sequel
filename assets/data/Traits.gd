@@ -1009,7 +1009,7 @@ var traits = {
 		icon = "res://assets/images/iconstraits/l_collar.png",
 		effects = [], #hardcoded
 		reqs = [],
-		bonusstats = {pricemod = -0.9},
+		bonusstats = {pricemod = -0.9}, #hardcoded, due to be only one non-market pricemod bonus
 		#hide_reqs = [{code = 'has_profession', profession = 'dominator', check = false, master_check = true}],
 		l_cost = 50,
 		tree_position = {tab = 1, x = 7,y = 5},

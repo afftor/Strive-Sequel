@@ -1395,7 +1395,7 @@ func remove_location(locationid):
 	if location.has('captured_characters'):
 		for id in location.captured_characters:
 			var tchar = characters_pool.get_char_by_id(id)
-			var val = tchar.calculate_price() / 2
+			var val = tchar.calculate_price(true) / 2
 			ResourceScripts.game_res.money += int(val)
 			tchar.is_active = false
 	area.locations.erase(location.id)
@@ -1686,7 +1686,7 @@ func common_effects(effects):
 			'start_event':
 				input_handler.interactive_message(i.data, 'start_event', i.args)
 			'spend_money_for_scene_character':
-				ResourceScripts.game_res.update_money('-', input_handler.scene_characters[i.value].calculate_price())
+				ResourceScripts.game_res.update_money('-', input_handler.scene_characters[i.value].calculate_price(true))
 #				money -= input_handler.scene_characters[i.value].calculate_price()
 #				text_log_add('money',"Gold used: " + str(input_handler.scene_characters[i.value].calculate_price()))
 			'mod_scene_characters':
@@ -2216,7 +2216,7 @@ func valuecheck(dict):
 			if character == null:return false
 			return character.checkreqs([{code = 'is_free', check = dict.check}])
 		'has_money_for_scene_slave':
-			return ResourceScripts.game_res.money >= input_handler.scene_characters[dict.value].calculate_price()
+			return ResourceScripts.game_res.money >= input_handler.scene_characters[dict.value].calculate_price(true)
 		'random':
 			return globals.rng.randf()*100 <= dict.value
 		'dialogue_seen':
