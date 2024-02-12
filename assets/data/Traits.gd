@@ -898,7 +898,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_hand2.png",
 		effects = [],
-		bonusstats = {obedience_drain = -4},
+		bonusstats = {obedience_drain = -5},
 		reqs = [],
 		l_cost = 10,
 		tree_position = {tab = 1, x = 4, y = 0.5},
@@ -910,7 +910,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_date.png",
 		effects = [],
-		bonusstats = {loyalty_gain = 0.5},
+		bonusstats = {obedience_drain = -1, loyalty_gain = 0.5},
 		reqs = [],
 		l_cost = 15,
 		tree_position = {tab = 1, x = 1, y = 0.5},
@@ -921,7 +921,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_sword.png",
 		effects = [],
-		bonusstats = {obedience_drain = -1, price = 20},
+		bonusstats = {obedience_drain = -2, price = 20},
 		reqs = [],
 		l_cost = 20,
 		tree_position = {tab = 1, x = 7, y = 0.5},
@@ -975,7 +975,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_hand.png",
 		effects = [],
-		bonusstats = {obedience_drain = -3, price = 15},
+		bonusstats = {obedience_drain = -4, price = 15},
 		reqs = [{code = 'trait', trait = 'loyalty_basic_servitude', check = true}],
 		l_cost = 30,
 		tree_position = {tab = 1, x = 3, y = 5},
@@ -986,7 +986,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_crown.png",
 		effects = [],
-		bonusstats = {obedience_drain = -2, price = 25},
+		bonusstats = {obedience_drain = -3, price = 25},
 		reqs = [{code = 'trait', trait = 'loyalty_basic_servitude', check = true}],
 		l_cost = 50,
 		tree_position = {tab = 1, x = 5, y = 5},
@@ -1010,9 +1010,9 @@ var traits = {
 		effects = [], #hardcoded
 		reqs = [],
 		bonusstats = {pricemod = -0.9}, #hardcoded, due to be only one non-market pricemod bonus
-		hide_reqs = [{code = 'has_profession', profession = 'dominator', check = false, master_check = true}],
+		#hide_reqs = [{code = 'has_profession', profession = 'dominator', check = false, master_check = true}],
 		l_cost = 50,
-		tree_position = {tab = 1, x = 7,y = 7},
+		tree_position = {tab = 1, x = 7,y = 5},
 		tags = ['loyalty', 'soulbind']
 	},
 	loyalty_sex_basic = {
@@ -2259,7 +2259,7 @@ var slave_profs = {
 	slave_prestige = {
 		name = '',
 		desc = '',
-		icon = "res://assets/images/iconstraits/l_maidu.png",
+		icon = "res://assets/images/iconstraits/l_prestige.png",
 		tree_position = {tab = 1, x = 4.5, y = 7.5},
 		effects = [],
 		bonusstats = {critchance = 0.33, critmod = 0.01, price_add = 10}, #not sure about critmod

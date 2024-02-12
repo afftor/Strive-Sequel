@@ -971,7 +971,7 @@ func ask_to_marry(person, counter):
 				
 				break
 	else:
-		if person.has_status('swear_loyalty'):
+		if person.check_trait('loyalty_adv_servitude') && person.check_trait('loyalty_callmaster'):
 			gave_consent = true
 	
 	

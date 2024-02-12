@@ -2292,7 +2292,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/crossbowbasic.png"),
 		tier = 'easy',
 		price = 0,
-		basestats = {atk = 8, armorpenetration = 5, enchant_capacity = 170},
+		basestats = {atk = 7, armorpenetration = 5, enchant_capacity = 170},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -3922,6 +3922,18 @@ var recipes = {
 		workunits = 4,
 		worktype = 'smith'
 	},
+	battleaxe = {
+		code = 'battleaxe',
+		materials = {},
+		items = {},
+		unlockreqs = [],
+		crafttype = 'modular',
+		resultamount = 1,
+		resultitemtype = 'item',
+		resultitem = 'battleaxe',
+		workunits = 5,
+		worktype = 'smith'
+	},
 	club = {
 		code = 'club',
 		materials = {},
@@ -3956,6 +3968,18 @@ var recipes = {
 		resultitemtype = 'item',
 		resultitem = 'bow',
 		workunits = 3,
+		worktype = 'tailor'
+	},
+	crossbow = {
+		code = 'crossbow',
+		materials = {},
+		items = {},
+		unlockreqs = [],
+		crafttype = 'modular',
+		resultamount = 1,
+		resultitemtype = 'item',
+		resultitem = 'crossbow',
+		workunits = 5,
 		worktype = 'tailor'
 	},
 	staff = {
@@ -3994,6 +4018,18 @@ var recipes = {
 		workunits = 25,
 		worktype = 'smith'
 	},
+	battleaxeadv = {
+		code = 'battleaxeadv',
+		materials = {},
+		items = {},
+		unlockreqs = [{type = "has_upgrade", name = 'forge', value = 3}],
+		crafttype = 'modular',
+		resultamount = 1,
+		resultitemtype = 'item',
+		resultitem = 'battleaxeadv',
+		workunits = 25,
+		worktype = 'smith'
+	},
 	bowadv = {
 		code = 'bowadv',
 		materials = {},
@@ -4003,6 +4039,18 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'bowadv',
+		workunits = 25,
+		worktype = 'smith'
+	},
+	crossbowadv = {
+		code = 'crossbowadv',
+		materials = {},
+		items = {},
+		unlockreqs = [{type = "has_upgrade", name = 'forge', value = 3}],
+		crafttype = 'modular',
+		resultamount = 1,
+		resultitemtype = 'item',
+		resultitem = 'crossbowadv',
 		workunits = 25,
 		worktype = 'smith'
 	},
