@@ -33,7 +33,7 @@ func update_purchase_btn():
 	if gui_controller.exploration.hiremode == "sell":
 		$PurchaseButton.disabled = false
 	else:
-		$PurchaseButton.disabled = ((gui_controller.exploration.person_to_hire.calculate_price()) > ResourceScripts.game_res.money)
+		$PurchaseButton.disabled = ((gui_controller.exploration.person_to_hire.calculate_price(true)) > ResourceScripts.game_res.money)
 
 
 func hire_sell():
@@ -50,10 +50,10 @@ func show_summary(person = selected_char, from_dialogue = false):
 		$Price.visible = true
 		$TextureRect.visible = true
 		if gui_controller.exploration.hiremode == "sell":
-			$Price.text = str(round(person.calculate_price() / 2))
+			$Price.text = str(round(person.calculate_price(true) / 2))
 			$ExploreSlaveInfoModule/Panel/obedlabel.visible = true
 		else:
-			$Price.text = str(round(person.calculate_price()))
+			$Price.text = str(round(person.calculate_price(true)))
 			$ExploreSlaveInfoModule/Panel/obedlabel.visible = false
 		update_purchase_btn()
 	else:
@@ -143,10 +143,10 @@ func hire_character():
 		else:
 			input_handler.SystemMessage("Population limit reached")
 		return
-	if ResourceScripts.game_res.money < person.calculate_price():
+	if ResourceScripts.game_res.money < person.calculate_price(true):
 		input_handler.SystemMessage("Not enough money")
 		return
-	ResourceScripts.game_res.money -= person.calculate_price()
+	ResourceScripts.game_res.money -= person.calculate_price(true)
 	input_handler.PlaySound("money_spend")
 	person.set_stat('is_hirable', false)
 	person.recruit() #ResourceScripts.game_party.add_slave(person)
@@ -180,7 +180,7 @@ func sell_slave():
 
 func sell_slave_confirm():
 	var selectedperson = gui_controller.exploration.person_to_hire
-	ResourceScripts.game_res.money += int(round(selectedperson.calculate_price()/2))
+	ResourceScripts.game_res.money += int(round(selectedperson.calculate_price(true)/2))
 	ResourceScripts.game_party.add_fate(selectedperson.id, tr("SOLD"))
 	ResourceScripts.game_party.remove_slave(selectedperson)
 	gui_controller.exploration.active_faction.slaves.append(selectedperson.id)

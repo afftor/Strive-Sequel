@@ -32,8 +32,8 @@ func update():
 		newbutton.connect('pressed', self, 'show_full_info', [tchar])
 		globals.connectslavetooltip(newbutton.get_node('Icon'), tchar)
 		if tchar.src == 'random_combat':
-			newbutton.get_node("SellButton/Label").text = str(int(tchar.calculate_price() / 2))
-			globals.connecttexttooltip(newbutton.get_node('SellButton'), tr("CAPTURESELLTOOLTIP") % int(tchar.calculate_price() / 2))
+			newbutton.get_node("SellButton/Label").text = str(int(tchar.calculate_price(true) / 2))
+			globals.connecttexttooltip(newbutton.get_node('SellButton'), tr("CAPTURESELLTOOLTIP") % int(tchar.calculate_price(true) / 2))
 		else:
 			newbutton.get_node("SellButton/Label").visible = false
 			globals.connecttexttooltip(newbutton.get_node('SellButton'), tr("CAPTUREDISMISSTOOLTIP")) #2change
@@ -46,7 +46,7 @@ func sell_all():
 	for id in input_handler.active_location.captured_characters:
 		var tchar = characters_pool.get_char_by_id(id)
 		if tchar.src == 'random_combat':
-			var val = tchar.calculate_price() / 2
+			var val = tchar.calculate_price(true) / 2
 			ResourceScripts.game_res.money += int(val)
 			input_handler.PlaySound("money_spend")
 		tchar.is_active = false
@@ -58,7 +58,7 @@ func sell_char(ch_id):
 	if input_handler.active_location.captured_characters.has(ch_id):
 		var tchar = characters_pool.get_char_by_id(ch_id)
 		if tchar.src == 'random_combat':
-			var val = tchar.calculate_price() / 2
+			var val = tchar.calculate_price(true) / 2
 			ResourceScripts.game_res.money += int(val)
 			input_handler.PlaySound("money_spend")
 		tchar.is_active = false
