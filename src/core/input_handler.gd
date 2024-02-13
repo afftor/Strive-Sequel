@@ -1754,7 +1754,7 @@ func node_children_visible(node, exception, value):
 func roman_number_converter(number): #only supports numbers up to 10 currently. INT > STRING
 	if variables.roman_numbers.has(number) == false:
 		print("number does not exist in dictionary")
-		return 
+		return str(number)
 	else:
 		return variables.roman_numbers[number]
 
