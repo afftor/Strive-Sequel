@@ -51,6 +51,7 @@ func cleanup(on_exit = false):
 			ResourceScripts.game_party.babies.erase(id)
 			remove_id(id)
 	if !on_exit and input_handler.slave_list_node != null: 
+		input_handler.slave_list_node.update_dislocations() #temporal, needs remake
 		input_handler.slave_list_node.rebuild() #temporal, needs remake
 
 func remove_id(id):
