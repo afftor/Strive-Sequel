@@ -913,7 +913,7 @@ func fill_task_mods(task):
 	var item
 	if parent.get_ref().equipment.gear.tool != null:
 		item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
-	if item != null && task.has('worktool') && (task.worktool in item.toolcategory or ResourceScripts.game_res.upgrades.has('tool_swapper')):
+	if item != null && task.has('worktool') && (task.worktool in item.toolcategory or ResourceScripts.game_res.upgrades.has('tool_swapper') and ResourceScripts.game_res.upgrades.tool_swapper > 0):
 		if item.bonusstats.has("task_efficiency_tool"):
 			task_mods.eff = item.bonusstats.task_efficiency_tool
 			task_mods.diff += 0.1 * item.bonusstats.task_efficiency_tool
@@ -935,7 +935,7 @@ func fill_task_mods_res(task):
 	var item
 	if parent.get_ref().equipment.gear.tool != null:
 		item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
-	if item != null && task.has('tool_type') && (task.tool_type in item.toolcategory or ResourceScripts.game_res.upgrades.has('tool_swapper')):
+	if item != null && task.has('tool_type') && (task.tool_type in item.toolcategory or ResourceScripts.game_res.upgrades.has('tool_swapper') and ResourceScripts.game_res.upgrades.tool_swapper > 0):
 		if item.bonusstats.has("task_efficiency_tool"):
 			task_mods.eff = item.bonusstats.task_efficiency_tool
 		if item.bonusstats.has("task_crit_chance"):
