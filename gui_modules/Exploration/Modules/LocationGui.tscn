@@ -38,7 +38,7 @@
 [ext_resource path="res://gui_modules/Universal/Scripts/NavigationModule.gd" type="Script" id=36]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=37]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/divider_navi_player.png" type="Texture" id=38]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24_outline.tres" type="DynamicFont" id=39]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=39]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainExtraSmallBold.tres" type="DynamicFont" id=40]
 [ext_resource path="res://assets/images/portraits/daisy_prt.png" type="Texture" id=41]
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=42]
@@ -110,9 +110,6 @@ margin_top = 787.459
 margin_right = 1275.0
 margin_bottom = 1058.46
 custom_styles/panel = ExtResource( 18 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DungeonInfo"]
 margin_left = 17.0
