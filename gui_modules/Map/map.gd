@@ -624,10 +624,10 @@ func update_location_chars():
 		var ch_id = nd.get_meta('character')
 		if selected_chars.has(ch_id):
 			nd.pressed = true
-			nd.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
+			nd.get_node('icon').material = null
 		else:
 			nd.pressed = false
-			nd.get_node('icon').material = null
+			nd.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
 
 
 func update_travel_duration():
