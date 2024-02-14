@@ -878,7 +878,7 @@ func build_location_group():
 #					get_node(positiondict[i] + "/Image").texture = images.icons.class_servant
 #				else:
 #					get_node(positiondict[i] + "/Image").texture = images.icons.class_slave
-			get_node(positiondict[i] + "/Image").texture = character.get_class_icon()
+#			get_node(positiondict[i] + "/Image").texture = character.get_class_icon()
 			get_node(positiondict[i] + "/Image").show()
 			get_node(positiondict[i] + "/Image/TextureRect").hint_tooltip = (
 				"HP: "
