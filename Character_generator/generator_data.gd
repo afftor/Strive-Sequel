@@ -5161,14 +5161,14 @@ var transforms = {
 		staff = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_stick.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_stick.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_stick2.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_stick2.png"},
 		],
 		staffadv = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_stick2.png"},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_stick2.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_stick.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Weapon_back', texture = "res://Character_generator/images/201_weapon_back/weapon_back_stick.png"},
 		],
 		battleaxe = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_belt', attr = 'visible', value = false},
