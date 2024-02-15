@@ -225,7 +225,7 @@ func CreateGearItemLoot(item, parts, newname = null):
 
 
 func CreateGearItemShop(item, parts, newname = null):
-	var diffdata = {boost = 0, shop = true}
+	var diffdata = {boost = 0, shop = true, no_enchant = true}
 	var newitem = Item.new()
 	newitem.CreateGear(item, parts, diffdata)
 	if newname != null:
