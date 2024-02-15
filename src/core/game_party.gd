@@ -79,7 +79,7 @@ func add_slave(person, child = false):
 	else: characters_pool.move_to_state(person.id)
 	person.is_players_character = true
 	person.is_active = true
-	person.statlist.bonuses.erase('price_mul')
+#	person.statlist.bonuses.erase('price_mul')
 #	character_order.push_back(person.id)
 	if person.is_unique():
 		ResourceScripts.game_world.easter_egg_characters_acquired.append(person.get_stat('unique'))

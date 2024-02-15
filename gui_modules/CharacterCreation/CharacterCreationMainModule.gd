@@ -290,6 +290,7 @@ func build_possible_val_for_stat(stat):
 		return
 	if stat == 'personality':
 		possible_vals.personality = variables.personality_array.duplicate()
+		possible_vals.personality.erase('neutral')
 		return
 	if mode == 'freemode' and !critical_stats.has(stat) or free_stats.has(stat):
 		if GeneratorData.transforms.has(stat):

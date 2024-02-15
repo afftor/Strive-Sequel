@@ -5087,7 +5087,7 @@ func rebuild_skillvalue_template(args):
 		type = 'trigger',
 		req_skill = true,
 		trigger = [variables.TR_HIT],
-		reset = [variables.TR_CAST],
+#		reset = [variables.TR_CAST],
 		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
 		buffs = [],
 		sub_effects = []

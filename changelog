@@ -1,3 +1,16 @@
+Added 3 new weapon types (Battleaxe, mace, crossbow)
+Added world map in exchange for travel screen
+Added visual display to paper doll for most weapons
+Fixed wits boost potion buffing physics instead
+Virginity only affects buy/sell price now
+0.8.2
+Removed Peon slave type
+Added new loyalty classes to replace Swear Loyalty trait
+Added warning to marry tutorial that it can only be done once
+Added new weapons: Crossbow, Mace, Axe
+Added chinese translation (somewhat outdated)
+Multiple fixes to enchants, quests, saves
+0.8.1
 Added personality bonuses and personality changing mechanic to characters
 New personality system: Personalities now apply varying penalties and/or bonuses. Obedience actions will change target's personality depending on the action. However on lower Tame/Timid factors actions can backfire and change personality into a different direction. The actions for change are: Praise (Kind), Punish (Shy), Warn (Serious), Serve (Bold)
 New personality added: Neutral (no bonuses or penalties)

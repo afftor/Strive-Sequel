@@ -878,7 +878,7 @@ func build_location_group():
 #					get_node(positiondict[i] + "/Image").texture = images.icons.class_servant
 #				else:
 #					get_node(positiondict[i] + "/Image").texture = images.icons.class_slave
-			get_node(positiondict[i] + "/Image").texture = character.get_class_icon()
+#			get_node(positiondict[i] + "/Image").texture = character.get_class_icon()
 			get_node(positiondict[i] + "/Image").show()
 			get_node(positiondict[i] + "/Image/TextureRect").hint_tooltip = (
 				"HP: "
@@ -1587,7 +1587,7 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 		)
 		newbutton.get_node("name").text = tchar.get_short_name() + " - " + tchar.get_short_race()
 		#newbutton.get_node('name').set("custom_colors/font_color",variables.hexcolordict['factor'+str(int(floor(tchar.get_stat('growth_factor'))))])
-		newbutton.get_node("Price").text = str(tchar.calculate_price())
+		newbutton.get_node("Price").text = str(tchar.calculate_price(true))
 		newbutton.get_node('icon').texture = tchar.get_icon_small()
 		#newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [tchar])
 		newbutton.connect("pressed", self, 'show_slave_info', [tchar])  #, self, "select_slave_in_guild", [tchar])
@@ -1677,7 +1677,7 @@ func sell_slave():
 		char_list.append(tchar)
 		var newbutton = input_handler.DuplicateContainerTemplate($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
 		newbutton.get_node("name").text = tchar.get_short_name() + " - " + tchar.get_short_race()
-		newbutton.get_node("Price").text = str(round(tchar.calculate_price() / 2))
+		newbutton.get_node("Price").text = str(round(tchar.calculate_price(true) / 2))
 		newbutton.connect("pressed", self, 'show_slave_info', [tchar])
 		newbutton.connect('gui_input', self, 'double_clicked')
 		newbutton.set_meta("person", tchar)
@@ -1792,7 +1792,7 @@ func faction_sellslaves():#obsolete
 			counter += 1
 		var newbutton = input_handler.DuplicateContainerTemplate($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
 		newbutton.get_node("name").text = tchar.get_short_name()
-		newbutton.get_node("Price").text = str(round(tchar.calculate_price()/2))
+		newbutton.get_node("Price").text = str(round(tchar.calculate_price(true)/2))
 		newbutton.connect("pressed", self, "show_slave_info", [tchar])
 		newbutton.set_meta("person", tchar)
 		globals.connectslavetooltip(newbutton, tchar)

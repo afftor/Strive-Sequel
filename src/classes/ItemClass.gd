@@ -592,7 +592,7 @@ func calculateprice():
 			price = price * (1 + enchants.size() * 0.15)
 		if curse != null:
 			price = price * 0.60
-	return price
+	return int(price)
 
 func use_explore(character, caller = null):
 	var itemskill = Items.itemlist[itembase].explor_effect
@@ -632,7 +632,8 @@ func get_bonusstats():
 	var res = bonusstats.duplicate()
 	var mul = variables.itemquality_multiplier[quality]
 	for st in res:
-		res[st] *= mul
+		if res[st] > 0: #or more complex behavior in case there are stats negative by default
+			res[st] *= mul
 	if curse != null:
 		var cursetemplate = Items.curses[curse]
 		if cursetemplate.has('statmods'):

@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.8.1'
+const gameversion = '0.8.2 experimental 2'
 
 #time
 signal hour_tick
@@ -996,15 +996,21 @@ func impregnate(father, mother):
 	baby.setup_baby(mother, father)
 
 func calculate_travel_time(location1, location2): #2remade to new mechanic
-	var travel_value1 = 0 #time to travel to location from mansion
-	var travel_value2 = 0 #time to return to mansion from location
+	var time = 0
+	var adata1 = ResourceScripts.world_gen.get_area_from_location_code(location1)
+	var ldata1 = ResourceScripts.world_gen.get_location_from_code(location1)
+	var adata2 = ResourceScripts.world_gen.get_area_from_location_code(location2)
+	var ldata2 = ResourceScripts.world_gen.get_location_from_code(location2)
+	
 	if location1 != ResourceScripts.game_world.mansion_location:
-		travel_value1 = ResourceScripts.world_gen.get_area_from_location_code(location1).travel_time + ResourceScripts.world_gen.get_location_from_code(location1).travel_time
+		time += ldata1.travel_time
 	if location2 != ResourceScripts.game_world.mansion_location:
-		travel_value2 = ResourceScripts.world_gen.get_area_from_location_code(location2).travel_time + ResourceScripts.world_gen.get_location_from_code(location2).travel_time
-	var time = travel_value1 + travel_value2
+		time += ldata2.travel_time
+	if adata1.code != adata2.code:
+		time += adata1.travel_time + adata2.travel_time
+	
 	time = max(1, time - variables.stable_boost_per_level * ResourceScripts.game_res.upgrades.stables)
-	return {time = time, obed_cost = travel_value1*1.5}
+	return {time = time, obed_cost = time * 1.5} #or obed_cost is wrong
 
 func check_recipe_resources(temprecipe):
 	var recipe = Items.recipes[temprecipe.code]
@@ -1389,7 +1395,7 @@ func remove_location(locationid):
 	if location.has('captured_characters'):
 		for id in location.captured_characters:
 			var tchar = characters_pool.get_char_by_id(id)
-			var val = tchar.calculate_price() / 2
+			var val = tchar.calculate_price(true) / 2
 			ResourceScripts.game_res.money += int(val)
 			tchar.is_active = false
 	area.locations.erase(location.id)
@@ -1680,7 +1686,7 @@ func common_effects(effects):
 			'start_event':
 				input_handler.interactive_message(i.data, 'start_event', i.args)
 			'spend_money_for_scene_character':
-				ResourceScripts.game_res.update_money('-', input_handler.scene_characters[i.value].calculate_price())
+				ResourceScripts.game_res.update_money('-', input_handler.scene_characters[i.value].calculate_price(true))
 #				money -= input_handler.scene_characters[i.value].calculate_price()
 #				text_log_add('money',"Gold used: " + str(input_handler.scene_characters[i.value].calculate_price()))
 			'mod_scene_characters':
@@ -2210,7 +2216,7 @@ func valuecheck(dict):
 			if character == null:return false
 			return character.checkreqs([{code = 'is_free', check = dict.check}])
 		'has_money_for_scene_slave':
-			return ResourceScripts.game_res.money >= input_handler.scene_characters[dict.value].calculate_price()
+			return ResourceScripts.game_res.money >= input_handler.scene_characters[dict.value].calculate_price(true)
 		'random':
 			return globals.rng.randf()*100 <= dict.value
 		'dialogue_seen':

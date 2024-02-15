@@ -1,8 +1,8 @@
 extends CanvasItem
 
 #map inputs
-var map_zoom_max = 4.0
-var map_zoom_min = 0.25
+var map_zoom_max = 1.5
+var map_zoom_min = 0.9
 var map_zoom_step = 0.1
 
 var drag_mode = false
@@ -10,6 +10,9 @@ var drag_offset = Vector2(0.0, 0.0)
 var click_position
 
 var hovered_area = null
+var _hovered_area = null
+var hovered_location = null
+var loc_locked = false
 
 var area_zoom_data = {
 	null:{position = Vector2(920, 1190), zoom = 1.0},
@@ -32,7 +35,10 @@ func _unhandled_input(event):
 	if event.is_action_released("LMB") and drag_mode:
 		drag_mode = false
 		if (get_global_mouse_position() - click_position).length() < 5:
-			map_area_press(hovered_area)
+			if selected_area != null and hovered_location != null:
+				map_location_press(hovered_location)
+			else:
+				map_area_press(hovered_area)
 	if drag_mode:
 		set_map_position()
 	#2add part with selecting areas with click on map
@@ -42,23 +48,41 @@ func animate_map_moves(zoom, pos, time = 0.5):
 	var tween = input_handler.GetTweenNode(self)
 	tween.interpolate_property($map, 'scale', $map.scale, Vector2(zoom, zoom), time)
 	tween.interpolate_property($map, 'global_position', $map.global_position, pos, time)
+	tween.interpolate_property($zoom, 'value', $zoom.value, zoom, time)
 	tween.start()
 
 
-func set_map_zoom(value):
+func zoom_change(value):
+	var tween = input_handler.GetTweenNode(self)
+	if tween.is_active():
+		return
+	set_map_zoom(value, true)
+
+
+func zoom_change_step(delta = 0):
+	var value = $zoom.value
+	value += delta * map_zoom_step
+	set_map_zoom(value, true)
+
+
+func set_map_zoom(value, centered = false):
 	value = clamp(value, map_zoom_min, map_zoom_max)
 	var current_zoom = $map.scale.x
 	var k = value / current_zoom
 	if k == 1.0:
 		return
 	
-	var point = get_global_mouse_position()
+	var point
+	if !centered:
+		point = get_global_mouse_position()
+	else:
+		point = get_viewport().get_visible_rect().size * 0.5
 	var map_pos = $map.global_position
 	var point_offset = map_pos - point
 	
 	var new_point_offset = point_offset * k
 	var new_map_pos = new_point_offset + point
-	animate_map_moves(value, new_map_pos, 0.1)
+	animate_map_moves(value, trim_map_pos(new_map_pos, value), 0.1)
 #	$map.scale.x = value
 #	$map.scale.y = value
 #	$map.global_position = new_map_pos
@@ -66,7 +90,28 @@ func set_map_zoom(value):
 
 func set_map_position():
 	var new_map_pos = get_global_mouse_position() + drag_offset
-	$map.global_position = new_map_pos
+	$map.global_position = trim_map_pos(new_map_pos)
+
+
+func trim_map_pos(pos, scale = null):
+	if scale == null:
+		scale = $map.scale.x
+	var screen = get_viewport().get_visible_rect().size
+	var msize = $map.get_rect().size * scale
+	var max_x = msize.x * 0.5
+	var max_y = msize.y * 0.5
+	var min_x =  screen.x - msize.x * 0.5
+	var min_y =  screen.y - msize.y * 0.5
+	var res = pos
+	if screen.x < msize.x:
+		res.x = clamp(res.x, min_x, max_x)
+	else:
+		res.x = screen.x * 0.5
+	if screen.y < msize.y:
+		res.y = clamp(res.y, min_y, max_y)
+	else:
+		res.y = screen.y * 0.5
+	return res
 
 
 func set_focus_area():
@@ -81,6 +126,34 @@ func set_focus_area():
 			area.highlight(area.HighlightColor)
 		else:
 			area.highlight(Color(0,0,0,0))
+
+
+func set_focus_location(loc):
+	loc_locked = true
+	for area in $map.get_children():
+		if area.name == loc or area.name == selected_area:
+			area.highlight(area.HighlightColor)
+		else:
+			area.highlight(Color(0,0,0,0))
+
+
+func unselect_location():
+	loc_locked = false
+	hovered_location = null
+	if selected_area == null:
+		unselect_area()
+		return
+	for area in $map.get_children():
+		if area.name == selected_area:
+			area.highlight(area.HighlightColor)
+		else:
+			area.highlight(Color(0,0,0,0))
+
+
+func area_locked():
+	if hovered_area != null and hovered_area != _hovered_area:
+		return true
+	return false
 
 
 #map gui
@@ -108,6 +181,7 @@ func _input(event):
 		elif selected_loc != null:
 			selected_loc = null
 			selected_chars.clear()
+			unselect_location()
 			update_selected_to_location()
 			build_charpanel()
 			build_info(selected_loc)
@@ -119,14 +193,45 @@ func _input(event):
 		get_tree().set_input_as_handled()
 
 
-
 func _ready():#2add button connections
 	$Back.connect('pressed', self, 'close')
 	$InfoPanel/Sendbutton.connect('pressed', self, 'to_loc_set')
 	$CharPanel/Send.connect('pressed', self, 'confirm_travel')
 	$CharPanel/mode2.connect('pressed', self, 'reset_to')
 	$CharPanel/mode1.connect('pressed', self, 'reset_from')
+	$zoom.min_value = map_zoom_min
+	$zoom.max_value = map_zoom_max
+	$zoom.connect("value_changed", self, 'zoom_change')
+	$zoom/minus.connect("pressed", self, 'zoom_change_step', [ -1])
+	$zoom/plus.connect("pressed", self, 'zoom_change_step', [ 1])
+	$InfoPanel/Forget.connect("pressed", self, "forget_location")
 #	match_state()
+
+
+func forget_location():
+	input_handler.get_spec_node(
+		input_handler.NODE_YESNOPANEL,
+		[
+			self,
+			'clear_dungeon_confirm',
+			tr("FORGETLOCATIONQUESTION")
+		]
+	)
+
+
+func clear_dungeon_confirm():
+	globals.remove_location(selected_loc)
+	input_handler.SystemMessage(tr("LOC_BEEN_REMOVED_LABEL"))
+	selected_loc = null
+	selected_chars.clear()
+	build_locations_list()
+	unselect_location()
+	build_from_locations()
+	build_to_locations()
+	match_state()
+	build_charpanel()
+	build_info(selected_loc)
+
 
 func close():
 #	get_parent().set_process_input(true)
@@ -264,6 +369,20 @@ func sort_locations(first, second):
 	return true
 
 
+func if_location_in_list(loc):
+	for loc_d in sorted_locations:
+		if loc_d.id == loc:
+			return true
+	return false
+
+
+func get_location_data(loc):
+	for loc_d in sorted_locations:
+		if loc_d.id == loc:
+			return loc_d
+	return false
+
+
 func build_info(loc = to_loc):
 	if loc == null:
 		$InfoPanel.visible = false
@@ -272,6 +391,12 @@ func build_info(loc = to_loc):
 	var location = ResourceScripts.world_gen.get_location_from_code(loc)
 	var tdata = ResourceScripts.game_world.location_links[loc]
 	var adata = ResourceScripts.game_world.areas[tdata.area]
+	
+	var location_selected = get_location_data(loc)
+	$InfoPanel/Forget.visible = (!location_selected.quest and location_selected.type in ['dungeon', 'encounter'])
+	if to_loc != null:
+		$InfoPanel/Forget.visible = false
+	
 	#build info
 	$InfoPanel/Label.text = tr(location.name)
 	var icon = null
@@ -290,6 +415,7 @@ func build_info(loc = to_loc):
 	input_handler.ClearContainer(info_res_node)
 	info_res_node.show()
 	$InfoPanel/VBoxContainer/Label3.show()
+	$InfoPanel/InfoFrame/enemies.visible = false
 	for r_task in ['recruit_easy', 'recruit_hard']:
 		if location.has('tags') and location.tags.has(r_task):
 			var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
@@ -307,6 +433,8 @@ func build_info(loc = to_loc):
 		info_res_node.hide()
 		$InfoPanel/VBoxContainer/Label3.hide()
 	elif location.type == "dungeon":
+		$InfoPanel/InfoFrame/enemies.visible = true
+		$InfoPanel/InfoFrame/enemies.text = tr(location.classname)
 		dungeon = true
 		if !location.completed:
 			hidden = true
@@ -365,7 +493,8 @@ func make_panel_for_location(panel, loc):
 #		if ResourceScripts.game_world.areas[loc.area].questlocations.has(loc.id):
 		if loc.quest:
 			text = "Q:" + text
-		panel.get_node("Label").text = text
+		set_loc_text(panel, text)
+#		panel.get_node("Label").text = text
 		if loc.has('captured'):
 			if loc.captured:
 				panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.red)
@@ -395,6 +524,8 @@ func build_from_locations():
 	var areas = {}
 	for loc_data in sorted_locations:
 		if loc_data.heroes <= 0:
+			continue
+		if loc_data.id == to_loc:
 			continue
 		if areas.has(loc_data.area):
 			areas[loc_data.area].push_back(loc_data)
@@ -448,6 +579,10 @@ func build_to_locations():
 			loc_button.set_meta('location', loc_data.id)
 			loc_button.connect('pressed', self, 'location_press', [loc_data.id, 'to'])
 			make_panel_for_location(loc_button, loc_data)
+			if loc_data.heroes > 0:
+				loc_button.get_node('amount').text = str(loc_data.heroes)
+			else:
+				loc_button.get_node('amount').text = ""
 	
 	update_selected_area()
 	update_selected_to_location()
@@ -487,7 +622,12 @@ func update_location_chars():
 		if !nd.has_meta('character'):
 			continue
 		var ch_id = nd.get_meta('character')
-		nd.pressed = selected_chars.has(ch_id)
+		if selected_chars.has(ch_id):
+			nd.pressed = true
+			nd.get_node('icon').material = null
+		else:
+			nd.pressed = false
+			nd.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
 
 
 func update_travel_duration():
@@ -516,6 +656,8 @@ func update_confirm():
 
 
 func map_area_press(area):
+	if !ResourceScripts.game_world.is_area_unlocked(area):
+		return
 	if selected_area == area:
 		return
 	else:
@@ -528,6 +670,19 @@ func map_area_press(area):
 	set_focus_area()
 	match_state()
 	build_info()
+
+
+func map_location_press(loc):
+	if !if_location_in_list(loc):
+		return
+	if selected_area == null:
+		return
+	
+	var mode = 'to'
+	if to_loc != null:
+		mode = 'from'
+	
+	location_press(loc, mode)
 
 
 func area_press(area, mode):
@@ -545,7 +700,7 @@ func area_press(area, mode):
 
 func unselect_area():
 	selected_area = null
-	
+	hovered_area = _hovered_area
 	set_focus_area()
 
 
@@ -554,16 +709,20 @@ func location_press(location, mode):
 		'from':
 			if from_loc == location:
 				from_loc = null
+				unselect_location()
 			else:
 				from_loc = location
+				set_focus_location(location)
 			update_selected_from_location()
 			build_charpanel()
 			match_state()
 		'to':
 			if selected_loc == location:
 				selected_loc = null
+				unselect_location()
 			else:
 				selected_loc = location
+				set_focus_location(location)
 			selected_chars.clear()
 			update_selected_to_location()
 			build_charpanel()
@@ -577,8 +736,10 @@ func build_charpanel():
 #	$CharPanel.visible = true
 	$CharPanel/mode1.pressed = false
 	$CharPanel/mode2.pressed = true
-	$CharPanel/mode1/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(from_loc).name)
-	$CharPanel/mode2/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(to_loc).name)
+	set_loc_text($CharPanel/mode1, tr(ResourceScripts.world_gen.get_location_from_code(from_loc).name))
+	set_loc_text($CharPanel/mode2, tr(ResourceScripts.world_gen.get_location_from_code(to_loc).name))
+#	$CharPanel/mode1/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(from_loc).name)
+#	$CharPanel/mode2/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(to_loc).name)
 	update_travel_duration()
 	input_handler.ClearContainer($CharPanel/ScrollContainer/CharList)
 	for ch_id in ResourceScripts.game_party.character_order:
@@ -625,7 +786,9 @@ func to_loc_set():
 	if selected_loc == null: 
 		return
 	to_loc = selected_loc
+	loc_locked = false
 	build_from_locations()
+	build_info()
 	match_state()
 
 
@@ -633,6 +796,7 @@ func reset_to():
 	from_loc = null
 	to_loc = null
 	unselect_area()
+	unselect_location()
 	match_state()
 	build_to_locations()
 	build_info(null)
@@ -641,6 +805,7 @@ func reset_to():
 func reset_from():
 	from_loc = null
 	unselect_area()
+	unselect_location()
 	match_state()
 	build_from_locations()
 	build_info(to_loc)
@@ -677,3 +842,9 @@ func confirm_travel():
 	build_locations_list()
 	match_state()
 	build_info(selected_loc)
+
+
+func set_loc_text (btn, text):
+	btn.get_node("Label").text = text
+	var font = input_handler.font_size_calculator(btn.get_node("Label"))
+	btn.get_node("Label").set("custom_fonts/font", font)

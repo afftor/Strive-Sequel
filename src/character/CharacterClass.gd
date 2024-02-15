@@ -158,6 +158,11 @@ func get_stat(statname, ref = false):
 				if !GeneratorData.transforms[statname].has(res):
 					res = null
 				return res
+			'armor_weapon':
+				var res = equipment.get_gear_type('rhand')
+				if !GeneratorData.transforms[statname].has(res):
+					res = null
+				return res
 	return statlist.get_stat(statname, ref)
 
 
@@ -1417,7 +1422,7 @@ func rest_tick():
 
 func translate(text):
 	text = statlist.translate(text)
-	text = text.replace("[price]", str(calculate_price()))
+	text = text.replace("[price]", str(calculate_price(true))) #need another placeholder for a non-shop value. for now it is not used, but may be handy 
 	if text.find('[spouse') != -1:
 		if !has_profession('master'):
 			print ("active char is not master")
@@ -1434,20 +1439,27 @@ func translate(text):
 	return text
 
 
-func calculate_price():
+func calculate_price(shopflag = false):
 	var value = 0
 	#value += (get_stat('physics') + get_stat('wits') + get_stat('charm') + get_stat('sexuals'))*2
 	#value += (get_stat('physics_factor') + get_stat('wits_factor') + get_stat('charm_factor') + get_stat('sexuals_factor') + get_stat('tame_factor') + get_stat('timid_factor'))*10 + get_stat('growth_factor') * 75 + get_stat('magic_factor') * 15
 	var tr_mul1 = 0
 	var tr_mul2 = 0
 	var mod_mul = 1.0
+	var mod_mul2 = 0.0
 	tr_mul1 = get_traits_by_tag('positive').size() 
 	tr_mul2 = get_traits_by_tag('negative').size()
 	mod_mul += min (tr_mul1 * 0.2, 0.6)
 	mod_mul -= tr_mul2 * 0.2 
-	if statlist.bonuses.has("price_mul"): mod_mul += statlist.bonuses.price_mul - 1.0
+	if statlist.bonuses.has("price_mul"): mod_mul2 += statlist.bonuses.price_mul - 1.0
 	if statlist.bonuses.has("price_add"): value += statlist.bonuses.price_add
-	value *= mod_mul
+#	value *= mod_mul
+	if shopflag:
+		value *= mod_mul + mod_mul2
+	else:
+		if has_status('soulbind'):
+			mod_mul -= 0.9
+		value *= mod_mul
 	value = value * variables.growth_factor_cost_mod[get_stat('growth_factor')]
 	return max(50,round(value))
 

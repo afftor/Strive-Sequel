@@ -751,8 +751,11 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMSWORD = 'Sword',
 	ITEMDAGGER = 'Dagger',
 	ITEMCLUB = "Club",
+	ITEMMACE = "Mace",
+	ITEMBATTLEAXE = "Battle Axe",
 	ITEMSPEAR = "Spear",
 	ITEMBOW = "Bow",
+	ITEMCROSSBOW = "Crossbow",
 	ITEMSTAFF = "Staff",
 	ITEMSICKLE = "Sickle",
 	ITEMFISHINGTOOLS = "Fishing Tools",
@@ -765,9 +768,12 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMSWORDDESCRIPT = "Good damage vs unarmored enemies.",
 	ITEMDAGGERDESCRIPT = "Easily hidden, cheap weapon which can be used by anyone.",
 	ITEMCLUBDESCRIPT = "A weapon of your ancestors. Not outstanding, but easy to make and can be held by anyone.",
+	ITEMMACEDESCRIPT = "The club's older brother. A better alternative when have to deal with armored target.",
+	ITEMBATTLEAXEDESCRIPT = "The best weapon to carry if you wanna look intimidating. However its somewhat unwieldy.",
 	ITEMSPEARDESCRIPT = "One of the earliest weapons known to man. Not as flexible as a sword, but it has its strengths... Mostly in cost.",
 	ITEMPICKAXEDESCRIPT = "An irreplaceable tool for miners.",
 	ITEMBOWDESCRIPT = "Simple weapon for ranged fighters.",
+	ITEMCROSSBOWDESCRIPT = "An unrefined mechanical weapon offering better penetration properties than a bow.",
 	ITEMSTAFFDESCRIPT = "A simple tool for magic users.",
 	ITEMSICKLEDESCRIPT = "A tool, used for crop harvest.",
 	ITEMFISHINGTOOLSDESCRIPT = "A set of tools used by fishermen.",
@@ -1416,7 +1422,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SLAVEAGEADULT = "Young Adult",
 	SLAVEAGEMATURE = "Mature",
 
-	SLAVECLASSDESCRIPT = "FIX THIS! Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but they gain Loyalty faster by 30%. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. Slaves can be forced into sexual service for gold without training but at reduced efficiency.[/color]", #change!!!
+	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master.",
 	SERVANTCLASSDESCRIPT = "Peons generally have the same rights of others, but are purchased to serve a master. Many folks end up as peons as a way to pay their, or their family's debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
 	HEIRCLASSDESCRIPT = "Mansion's heir are children born of [Master] and their spouse.\n\n[color=aqua]Heir's Obedience drain 50% slower and Loyalty is 50% faster. Heir has 20% penalty to Collection, Farming and Fishing.[/color] ",
 
@@ -1634,7 +1640,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	LOYALTYSPECTOOLTIP = "Can only unlock 1 specialization per character. Stats will increases with every loyalty level. Loyalty required will grow exponentially.",
 	
 	SLAVEPROFNAME_COMBAT = "Spc: Combat",
-	SLAVEPROFNAME_SERVICE = "Spc: Serviec",
+	SLAVEPROFNAME_SERVICE = "Spc: Service",
 	SLAVEPROFNAME_PRESTIGE = "Spc: Prestige",
 	SLAVEPROFNAME_MANAGEMENT = "Spc: Defense",
 	SLAVEPROFNAME_MAGE = "Spc: Mage",
@@ -1646,7 +1652,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SLAVEPROFDESCRIPT_MAGE = "Specialization: Mage",
 	SLAVEPROFDESCRIPT_HEALER = "Specialization: Healer",
 	
-	HEALERSLAVETRAITDESCRIPT = "Healing Efficiency: +2%",
+	HEALERSLAVETRAITDESCRIPT = "Healing Efficiency: {color=green|+2%}",
 	MANAGERSLAVETRAITDESCRIPT = "Loyalty from skills: +3%",
 	
 	INFOHOLDSHIFT = "Hold shift for details",
@@ -1828,7 +1834,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLSTOPMINDCONTROL = "Remove Mind Control",
 	SKILLSTOPMINDCONTROLDESCRIPT = "Removes Mind Control from the target, giving them back their free will.",
 	SKILLABUSE = "Abuse",
-	SKILLABUSEDESCRIPT = "Category: {color=red|Mean}\nTake your anger out on someone else. Improves Caster's and Target's obedience. \nBasic Effects: \nObedience: +50 (self), Maxes target's Obedience, Loyalty: +5 (both).",
+	SKILLABUSEDESCRIPT = "Category: {color=red|Mean}\nTake your anger out on someone else. Improves Caster's and Target's obedience. \nBasic Effects: \nObedience: +50 (self), Maxes target's Obedience, Loyalty: +5 (both), User increases affinity to Bold Personality.",
 	SKILLMASTER_LUST_SKILL = "Lust Relief",
 	SKILLMASTER_LUST_SKILLDESCRIPT = "Uses up target's Lust to provide them with specific benefits. Target must have at least 50 Lust.",
 	SKILLHARDWORK = "Hard Work",
@@ -2100,7 +2106,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	
 	
-	TRAITEFFECTVIRGIN = "[center]{color=yellow|Virginity}[/center]\nAs [name] has a observable virginity, this makes [him] more desirable for certain tasks and individuals. \n{color=yellow|Value is increased by 25%%}",
+	TRAITEFFECTVIRGIN = "[center]{color=yellow|Virginity}[/center]\nAs [name] has a observable virginity, this makes [him] more desirable for certain individuals. \n{color=yellow|Sell price is increased by 25%%}",
 	TRAITEFFECTRARESTURDY = "Rare: Sturdy\nIncreased Health and Armor Penetration",
 	TRAITEFFECTRARENIMBLE = "Rare: Nimble\nIncreased Evasion and Speed",
 	TRAITEFFECTRARESTRONG = "Rare: Strong\nIncreased Damage and Maximum Health",
@@ -3275,7 +3281,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAINTUTORIAL2 = "Some traits make the management easier while other unlock new abilities. Every purchased trait will increase amount of Loyatly required for next purchase so consider your path.",
 	
 	COMBATSKILLSTUTORIAL = "Some combat skills can be learned automatically after purchasing certain classes. Besides that, they can be unlocked with Skill Points. Skill Points are obtained from combat. Many skills will require certain specilizations, which are obtained from classes.",
-	MARRYTUTORIAL = "After resolving the civil war, you are able to marry one of your subordinates. Firstly, you'll have to get their agreement during the date. Then, proceed with wedding preparations from church. ",
+	MARRYTUTORIAL = "After resolving the civil war, you are able to marry one of your subordinates. Firstly, you'll have to get their agreement during the date. Then, proceed with wedding preparations from church. You can only marry 1 person and you can't divorce at current state of the game.",
 	MARRY2TUTORIAL = "Your spouse will receive a new class. Their growth will be set to maximum and their obedience will no longer drain. Also your mutual children will be of status [color=aqua]Heir[/color], which will have them slower Obedience Drain and higher Loyalty Gain, however they receive penalty on Collection, Farming and Fishing. ",
 	
 	
@@ -4344,10 +4350,16 @@ The princess notices Aire tensing up in response to the question.
 	ITEMSWORDADV = "Heavy Sword",
 	ITEMSTAFFADV = "Master Staff",
 	ITEMSPEARADV = "Great Spear",
+	ITEMMACEADV = "Warpick",
 	ITEMBOWADV = "Longbow",
+	ITEMCROSSBOWADV = "Heavy Crossbow",
+	ITEMBATTLEAXEADV = "Cleaver",
 	ITEMSWORDADVDESCRIPT = "A masterful weapon forged with inclusion of additional materials.",
 	ITEMSTAFFADVDESCRIPT = "A masterful weapon forged with inclusion of additional materials.",
 	ITEMSPEARADVDESCRIPT = "A masterful weapon forged with inclusion of additional materials.",
+	ITEMMACEADVDESCRIPT = "A masterful weapon forged with inclusion of additional materials.",
+	ITEMCROSSBOWADVDESCRIPT = "A masterful weapon forged with inclusion of additional materials.",
+	ITEMBATTLEAXEADVDESCRIPT = "A masterful weapon forged with inclusion of additional materials.",
 	ITEMBOWADVDESCRIPT = "A masterful weapon forged with inclusion of additional materials.",
 
 	ARMORENC = "Encrustment",

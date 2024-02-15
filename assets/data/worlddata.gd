@@ -46,7 +46,7 @@ var lands = {
 			bandage = {min = 2, max = 6, chance = 1},
 			itempool0 = {items = ['dagger','club'], min = 1, max = 2, chance = 1},
 			#itempool00 = {items = ['worker_outfit'], min = 3, max = 3, chance = 1},
-			itempool1 = {items = ['sword','axe','spear','pickaxe','hammer','fishingtools','sickle','bow','staff','hunt_knife','shield'], min = 3, max = 6, chance = 0.8},
+			itempool1 = {items = ['sword','axe','spear','mace','battleaxe','pickaxe','hammer','fishingtools','sickle','bow','crossbow','staff','hunt_knife','shield'], min = 3, max = 6, chance = 0.8},
 			itempool2 = {items = ['chest_base_cloth','chest_base_leather','chest_base_metal','legs_base_cloth','legs_base_leather','legs_base_metal'], min = 1, max = 3, chance = 0.8},
 			itempool3 = {items = ['leather_collar','animal_ears','animal_gloves','maid_dress','worker_outfit','lacy_underwear','handcuffs','strapon','anal_beads'], min = 3, max = 6, chance = 0.8},
 			itempool4 = {items = ['beer','alcohol','aphrodisiac','hairdye'], min = 4, max = 8, chance = 0.8},
@@ -86,7 +86,7 @@ var lands = {
 			lifeshard = {min = 4, max = 8, chance = 1},
 			energyshard = {min = 3, max = 5, chance = 1},
 			obsidian = {min = 3, max = 5, chance = 0.7},
-			itempool1 = {items = ['sword','bow','dagger','spear','staff','shield'], min = 2, max = 4, chance = 0.8},
+			itempool1 = {items = ['sword','bow','battleaxe','dagger','spear','staff','shield'], min = 2, max = 4, chance = 0.8},
 			itempool2 = {items = ['chest_base_cloth','chest_base_leather','legs_base_cloth','legs_base_leather'], min = 1, max = 2, chance = 0.8},
 			soul_stone = {min = 1, max = 1, chance = 0.1}
 			},
