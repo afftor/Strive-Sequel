@@ -11344,7 +11344,7 @@ Zephyra stands up and fixes her clothes. She smirks at you, and takes you by the
 - Well, if you can recall its appearance we can try to run a search spell for you. Make a drawing of it as close as possible. That will be 1.000 gold, magic parchment isn't cheap you know.""",
 	ZEPHYRA_BRUSH_1_OPTION_1 = "[Wits] Agree. (1.000 gold)",
 	ZEPHYRA_BRUSH_1_OPTION_2 = "I'll come later.",
-	ZEPHYRA_BRUSH_2_1 = """{color=red|Failure}
+	ZEPHYRA_BRUSH_2_1 = """{color=green|Success}
 
 You've managed draw a rather accurate replica of what you've seen in your dream. After passing it to Myr and having performed a search ritual, the spell points at a magic map location and to some ancient ruins which seem to have what you seek. After copying down the directions to them, you leave Myr's office.""",
 	ZEPHYRA_BRUSH_2_2 = """{color=red|Failure}
