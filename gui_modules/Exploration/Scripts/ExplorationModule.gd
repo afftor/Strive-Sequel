@@ -1977,7 +1977,14 @@ func update_buy_list():
 				|| buy_category == "all"
 			)
 			if item.has('parts'):
-				var newitem = globals.CreateGearItemShop(i, active_shop[i])
+				var newitem
+				if active_shop[i].has('quality'):
+					var parts = active_shop[i].duplicate()
+					parts.erase('quality')
+					newitem = globals.CreateGearItemQuality(i, parts, active_shop[i].quality)
+				else:
+					newitem = globals.CreateGearItemShop(i, active_shop[i])
+					active_shop[i].quality = newitem.quality
 				newitem.set_icon(newbutton.get_node('icon'))
 				newbutton.get_node("name").text = newitem.name
 				tempitems.append(newitem)
