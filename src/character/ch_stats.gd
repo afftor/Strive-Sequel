@@ -716,7 +716,7 @@ func get_stat(statname, ref = false):
 						return 'pink1'
 			'body_color_ears':
 				match statlist.ears: 
-					'cat', 'fox', 'tanuki', 'wolf', 'mouse', 'bunny', 'bunny_standing', 'bunny_dropping':
+					'cat', 'fox', 'tanuki', 'wolf', 'mouse', 'bunny', 'bunny_standing', 'bunny_dropping', 'cow':
 						var res = get_hairs_data().hair_base_color_1
 						if statlist.hair_base_color_1 != "":
 							res = statlist.hair_base_color_1
@@ -738,7 +738,7 @@ func get_stat(statname, ref = false):
 								'fur_black':
 									return 'dark3'
 						return res
-					'nereid': 
+					'fish': 
 						return 'blue1'
 					_: 
 						return 'yellow2'
