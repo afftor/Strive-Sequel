@@ -99,6 +99,7 @@ var data = {
 		{text = "SERVANTSINTRODUCTION1_2", reqs = [], previous_dialogue_option = 2},
 		{text = "SERVANTSINTRODUCTION1_3", reqs = [], previous_dialogue_option = 3},
 		{text = "SERVANTSINTRODUCTION1_4", reqs = [], previous_dialogue_option = 4},
+		{text = "AMELIA_GREETING_AFTER_RETURN", reqs = [], previous_dialogue_option = 5},
 		],
 		options = [
 		{code = 'servants_questions', text = "SERVANTSASKQUESTIONS", reqs = [], dialogue_argument = 1},
