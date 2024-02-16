@@ -1084,6 +1084,9 @@ var data = {
 			{
 			code = 'amelia_interlude3_2', text = "AMELIA_INTERLUDE3_1_OPTION_3", reqs = [], dialogue_argument = 2,
 			},
+			{
+			code = 'amelia_return_1', text = "AMELIA_INTERLUDE3_1_OPTION_4", reqs = [], dialogue_argument = 2,
+			},
 		],
 	},
 	amelia_interlude3_2 = { 
@@ -1118,10 +1121,37 @@ var data = {
 		],
 	},
 	
+	amelia_return_1 = {
+		tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [
+			{text = "AMELIA_RETURN_1", reqs = []},
+			],
+		options = [ 
+			{
+			code = 'amelia_return_2_1', text = "AMELIA_RETURN_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}, {
+			code = 'amelia_interlude3_1', text = "AMELIA_RETURN_1_OPTION_2", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
+		}
+		],
+	},
+	
+	amelia_return_2_1 = {
+		tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [
+			{text = "AMELIA_RETURN_2_1", reqs = []},
+			],
+		common_effects = [{code = 'decision', value = 'ReturnAmelia'}],
+		options = [ 
+			{
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'complete_quest', value = 'amelia_main_quest'}, {code = "update_guild"}]
+		}, 
+		],
+	},
+	
 	amelia_final_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'amelia',
 		text = [{text = "AMELIA_FINAL_1", reqs = []}],
-		bonus_effects = [{code = 'complete_quest', value = 'amelia_main_quest'},],
+		common_effects = [{code = 'complete_quest', value = 'amelia_main_quest'}],
 		options = [ 
 			{
 			code = 'amelia_final_2', text = "AMELIA_FINAL_1_OPTION_1", reqs = [], dialogue_argument = 1,

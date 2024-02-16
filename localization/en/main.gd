@@ -12014,11 +12014,16 @@ Norlan leaves without saying anything more.""",
 	AMELIA_INTERLUDE3_1_1a = """You enter the Guild Hall. Sildur's face greets you, and his serious expression widens into a smile as soon as he spots you.
 
 — Ah, Mayor [name]! We've been expecting you. All the paperwork is finished and we're ready to entrust Amelia to your care. It is just a simple matter of payment. The guild has concluded that 1.500 gold will be sufficient.""",
-	AMELIA_INTERLUDE3_1_2 = """— I knew a person as keen in these matters as you are wouldn't miss the chance to negotiate. I expected this, so I already convinced the council to provide room for bargaining. It is arranged. Amelia will be delivered straight to your manor. Is there anything else I can help you with for the time being?""",
-	AMELIA_INTERLUDE3_1_3 = """— We are grateful for all your help, truly. But the guild has to survive. And we survive on trade and profits. We can't just give slaves like Amelia away for a couple of dimes. I am sure you understand, Mayor [name].""",
+	AMELIA_INTERLUDE3_1_2 = """{color=green|Success}
+
+— I knew a person as keen in these matters as you are wouldn't miss the chance to negotiate. I expected this, so I already convinced the council to provide room for bargaining. It is arranged. Amelia will be delivered straight to your manor. Is there anything else I can help you with for the time being?""",
+	AMELIA_INTERLUDE3_1_3 = """{color=red|Failure}
+
+— We are grateful for all your help, truly. But the guild has to survive. And we survive on trade and profits. We can't just give slaves like Amelia away for a couple of dimes. I am sure you understand, Mayor [name].""",
 	AMELIA_INTERLUDE3_1_OPTION_1 = """[Charm] A bit demanding of someone who helped the guild as much as I have, no?""",
 	AMELIA_INTERLUDE3_1_OPTION_2 = """Seems fair.""",
 	AMELIA_INTERLUDE3_1_OPTION_3 = """I don't have the money right now.""",
+	AMELIA_INTERLUDE3_1_OPTION_4 = """Actually, I'd rather have Amelia return to being a leader""",
 	AMELIA_INTERLUDE3_2_1 = """— A pleasure doing business with you, Mayor [name]. Amelia will be delivered straight to your manor. I am sure there can be no better [Master] for her. And I expect that after this, we will continue to be in your good graces. Is there anything else I can help you with for the time being?""",
 	AMELIA_INTERLUDE3_2_2 = """— Well, it's not a small sum, now is it? Don't worry. We'll see to that Amelia is comfortably accommodated until you can pay the expenses. Is there anything else I can help you with for the time being?""",
 	AMELIA_INTERLUDE3_2_3 = """We handed him over to the city guard. He did make an attempt on somebody's life. This is no longer simply about breaking the Guild rules. It is a crime, after all.""",
@@ -12028,6 +12033,13 @@ Norlan leaves without saying anything more.""",
 	AMELIA_INTERLUDE3_2_OPTION_3 = """No, that's all.""",
 	AMELIA_INTERLUDE3_3 = """Well then, it was good meeting you, Mayor [name]. You have a nice day.""",
 	AMELIA_INTERLUDE4 = """Guild is closed.""",
+	AMELIA_RETURN_1 = """Sildur looks at you with a deeply puzzled expression.
+
+— I-I suppose this is possible if that's your wish... After all, we haven't selected a proper new leader yet so she can be restored to her position, if that's what you want.""",
+	AMELIA_RETURN_1_OPTION_1 = "Yes, I want it.",
+	AMELIA_RETURN_1_OPTION_2 = "Maybe not after all",
+	AMELIA_RETURN_2_1 = """— Very well, we'll restore her to her position as a guild leader. She might actually become more famous after all of this.""",
+	AMELIA_GREETING_AFTER_RETURN = """— [name]... That was a surprise you've given up on me just like that. But I'm not angry, after all I'm used to disappointments. Anyway, what can I help you with?""",
 	AMELIA_FINAL_1 = """— At last, the savior of the day makes [his] appearance. How does it feel to so dashingly come to the rescue of the maiden in need, Mayor [name]?""",
 	AMELIA_FINAL_1_OPTION_1 = """It's not the first time, remember? You better not get used to it, though.""",
 	AMELIA_FINAL_1_OPTION_2 = """Good. I like being a hero.""",

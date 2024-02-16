@@ -102,4 +102,5 @@ func show_full_info(person = null):
 		gui_controller.windows_opened.append(FullSlaveInfo)
 	gui_controller.explore_slaveinfo = FullSlaveInfo
 	FullSlaveInfo.show()
-	FullSlaveInfo.show_summary(person, true)
+	FullSlaveInfo.from_dialogue = true
+	FullSlaveInfo.show_summary(person)

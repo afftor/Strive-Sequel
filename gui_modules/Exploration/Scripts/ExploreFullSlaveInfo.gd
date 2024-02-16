@@ -7,6 +7,7 @@ onready var BodyModule = $SlaveBodyModule
 onready var traitlist = $ScrollContainer/HBoxContainer
 onready var traitlist2 = $ScrollContainer2/HBoxContainer
 var submodules = []
+var from_dialogue = false
 
 var selected_char
 
@@ -43,7 +44,7 @@ func hire_sell():
 		sell_slave()
 
 
-func show_summary(person = selected_char, from_dialogue = false):
+func show_summary(person = selected_char):
 	selected_char = person
 	if !from_dialogue:
 		$PurchaseButton.visible = true

@@ -769,10 +769,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Panel3"]
-margin_left = 132.0
+margin_left = 149.0
 margin_top = -1.0
-margin_right = 497.0
-margin_bottom = 101.0
+margin_right = 442.0
+margin_bottom = 91.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 6 )
 text = "Char Name"
@@ -783,11 +783,12 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="Panel3"]
-margin_left = 87.7027
-margin_top = 18.7027
-margin_right = 151.703
-margin_bottom = 82.7027
+margin_left = 89.7027
+margin_top = 20.7027
+margin_right = 145.703
+margin_bottom = 76.7027
 expand = true
+stretch_mode = 6
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -1003,9 +1004,6 @@ margin_bottom = 1064.33
 mouse_filter = 2
 texture = ExtResource( 15 )
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Menu" type="TextureRect" parent="."]
 margin_left = 31.0
@@ -1053,12 +1051,14 @@ expand = true
 stretch_mode = 5
 
 [node name="StatsPanelLeft" parent="." instance=ExtResource( 68 )]
+visible = false
 margin_left = 100.0
 margin_top = 845.0
 margin_right = 409.0
 margin_bottom = 1039.0
 
 [node name="StatsPanelRight" parent="." instance=ExtResource( 68 )]
+visible = false
 margin_left = 1514.0
 margin_top = 845.0
 margin_right = 1823.0

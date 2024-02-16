@@ -141,7 +141,8 @@ func show_full_info(person):
 	gui_controller.previous_screen = gui_controller.current_screen
 	gui_controller.current_screen = gui_controller.explore_slaveinfo
 	FullSlaveInfo.show()
-	FullSlaveInfo.show_summary(person, "from_dialogue")
+	FullSlaveInfo.from_dialogue = true
+	FullSlaveInfo.show_summary(person)
 	FullSlaveInfo.get_node("PurchaseButton").hide()
 	FullSlaveInfo.get_node("Price").hide()
 	FullSlaveInfo.get_node("TextureRect").hide()
