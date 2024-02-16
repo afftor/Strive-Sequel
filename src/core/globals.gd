@@ -2358,3 +2358,28 @@ func get_loan_sum(n):
 			res *= 0.25
 	
 	return res
+
+
+func compare_dicts(d1, d2):
+	if !d1.has_all(d2.keys()):
+		return false 
+	if !d2.has_all(d1.keys()):
+		return false 
+	for key in d1:
+		if d1[key] != d2[key]:
+			return false
+	return true
+
+func check_shop_record(item, code, dict):
+	if !(dict is Dictionary):
+		return false
+	var t_parts = dict.duplicate()
+	t_parts.erase('quality')
+#	purchase_item.itembase == i && str(purchase_item.parts) == str(active_shop[i]):
+	if item.itembase != code:
+		return false
+	if !compare_dicts(t_parts, item.parts):
+		return false
+	if dict.has('quality') and dict.quality != item.quality:
+		return false
+	return true
