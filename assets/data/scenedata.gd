@@ -867,7 +867,7 @@ var scenedict = {
 	
 	
 	lactation_potion_success = {
-		text = tr("DIALOGUELACTATION_SUCCESS"),
+		text = [{text = "DIALOGUELACTATION_SUCCESS", reqs = []}],
 		image = null,
 		tags = ['active_character_translate'],
 		options = [

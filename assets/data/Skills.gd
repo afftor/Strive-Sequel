@@ -3754,6 +3754,22 @@ var Skilllist = {
 		tags = [],
 		special = 'oblivionpot',
 	},
+	lactation_pot = {
+		new_syntax = true,
+		code = 'lactation_pot',
+		descript = '',
+		type = 'social',
+		ability_type = 'skill',
+		reqs = [],
+		targetreqs = [],
+		effects = [],
+		cost = {},
+		charges = 0,
+		cooldown = 0,
+		icon = null,
+		tags = [],
+		special = 'lactation_pot',
+	},
 	
 	i_lifeshard = {
 		code = 'i_lifeshard',

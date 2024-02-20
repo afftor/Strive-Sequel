@@ -84,7 +84,7 @@ var ero_scenes = [
 'zephyra_bath_1',
 'stag_sex_1',
 'zephyra_lilia_1',
-'amelia_sex_1',
+'amelia_sex1',
 'zephyra_disappearance_sex_1',
 'zephyra_disappearance_guards_1'] 
 

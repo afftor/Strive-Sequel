@@ -14375,7 +14375,7 @@ Hotkey: 3""",
 	ZEPHYRA_BATH_1_SS = "Help Zephyra in church",
 	STAG_SEX_1_SS = "Unlock during a quest from beastkin settlement",
 	ZEPHYRA_LILIA_1_SS = "Have both Zephyra and Lilia and progress their quests",
-	AMELIA_SEX_1_SS = "Complete Amelia's sidequest and recruit her",
+	AMELIA_SEX_1_SS = "Complete Amelia's sidequest, recruit her and talk to her in mansion",
 	ZEPHYRA_DISAPPEARANCE_SEX_1_SS = "Complete Zephyra's second sidequest",
 	ZEPHYRA_DISAPPEARANCE_GUARDS_1_SS = "Peek on Zephyra's fake story during her second sidequest",
 	
