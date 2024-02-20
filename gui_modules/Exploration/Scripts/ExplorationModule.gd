@@ -2039,7 +2039,7 @@ func item_puchase_confirm(value):
 		ResourceScripts.game_res.money -= purchase_item.calculateprice()
 		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 		for i in active_shop:
-			if purchase_item.itembase == i && str(purchase_item.parts) == str(active_shop[i]):
+			if globals.check_shop_record(purchase_item, i, active_shop[i]):
 				active_shop.erase(i)
 				break
 		update_sell_list()
