@@ -484,6 +484,24 @@ var effect_table = {
 			}
 		]
 	},
+	e_tr_berserk = {
+		type = 'trigger',
+		trigger = [variables.TR_KILL],
+		reset = [variables.TR_COMBAT_F],
+		req_skill = true,
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				atomic = [{type = 'add_tag', value = 'instant'}],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
 	e_tr_copy_test = { 
 		type = 'trigger',
 		trigger = [variables.TR_CAST],
@@ -546,7 +564,26 @@ var effect_table = {
 	e_tr_bers2 = rebuild_skillvalue_template({source = 'earth', skilltype = 'skill', tag = 'damage', value = 1.2}),
 	e_tr_druid = rebuild_skillvalue_template({source = 'earth', skilltype = 'spell', tag = 'damage', value = 1.2}),
 	e_tr_bishop = rebuild_skillvalue_template({source = 'light', skilltype = 'spell', tag = 'damage', value = 1.4}),
+	e_tr_bishop2 = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		reset = [],
+		req_skill = true,
+		conditions = [
+			{type = 'skill', value = ['ability_type', 'neq', 'item']}, 
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['tags', 'hasno', 'aoe']},
+			{type = 'skill', value = ['damage_type', 'eq', 'light']},
+			],
+		atomic = [],
+		buffs = [],#'b_power_pot'],
+		sub_effects = ['e_s_bishop']
+	},
 	e_tr_sniper = rebuild_skillvalue_template({num_targets = 'single', skilltype = 'skill', tag = 'damage', value = 1.25}),
+	e_tr_paladin_1 = rebuild_skillvalue_template({target_race = 'undead', tag = 'damage',  value = 1.25}),
+	e_tr_paladin_2 = rebuild_skillvalue_template({target_race = 'demon', tag = 'damage',  value = 1.25}),
+	e_tr_paladin_3 = rebuild_defvalue_template({target_race = 'undead', tag = 'damage',  value = 0.85}),
+	e_tr_paladin_4 = rebuild_defvalue_template({target_race = 'demon', tag = 'damage',  value = 0.85}),
 #	e_tr_witcrit = {
 #		type = 'trigger',
 #		trigger = [variables.TR_CAST],
@@ -566,6 +603,63 @@ var effect_table = {
 #			}
 #		]
 #	},
+	e_tr_bloodmage = {
+		type = 'trigger',
+		conditions = [
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'target', value = [{code = 'has_status', status = 'bleed', check = true}]}
+		],
+		trigger = [variables.TR_POSTDAMAGE],
+		req_skill = true,
+		args = [{obj = 'app_obj', param = 'hpmax'}, {obj = 'app_obj', param = 'mpmax'}],
+		sub_effects = [
+			{type = 'heal', value = [['parent_args', 0], '*', 0.03]},
+			{type = 'mana', value = [['parent_args', 1], '*', 0.03]},
+			'e_s_bloodmage'
+		],
+		buffs = []
+	},
+	e_s_bloodmage = {
+		type = 'temp_s',
+		target = 'caster',
+		name = 'bloodmage_bonus',
+		stack = 0,
+		tick_event = [],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		tags = ['positive', 'buff', 'bloodrage'],
+		args = [],
+		sub_effects = [],
+		atomic = [{type = 'stat_add_p', stat = 'matk', value = 0.05}],
+		buffs = ['b_bloodatk'],
+	},
+	e_tr_alios = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'lone_wolf', check = true}],
+		tags = ['recheck_death'],
+		atomic = [
+			{type = 'stat_add', stat = 'evasion', value = 50},
+			{type = 'stat_add', stat = 'speed', value = 20},
+			],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tr_sadist = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [variables.TR_POSTDAMAGE],
+		duration = 2,
+		conditions = [
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['ability_type', 'eq', 'skill']},
+			{type = 'skill', value = ['target_range', 'eq', 'melee']},
+			{type = 'random', value = 0.25}
+			],
+		buffs = [],
+		sub_effects = ['e_s_bleed_new'],
+		args = []
+	},
+	
 	e_tr_witcrit = {
 		type = 'dynamic',
 		tags = ['recheck_stats'],
@@ -3231,7 +3325,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'parent',
-		tags = ['affliction', 'tick_after_trigger'],
+		tags = ['affliction', 'tick_after_trigger', 'burn'],
 		args = [{obj = 'parent_arg_get', index = 1, param = 'burn_mod'}],
 		sub_effects = ['e_burn_new'],
 		atomic = [],
@@ -3259,7 +3353,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'parent',
-		tags = ['affliction', 'tick_after_trigger'],
+		tags = ['affliction', 'tick_after_trigger', 'poison'],
 		args = [{obj = 'parent_arg_get', index = 1, param = 'poison_mod'}],
 		sub_effects = ['e_poison_new'],
 		atomic = [],
@@ -3287,7 +3381,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'parent',
-		tags = ['affliction', 'tick_after_trigger'],
+		tags = ['affliction', 'tick_after_trigger', 'bleed'],
 		args = [{obj = 'parent_arg_get', index = 1, param = 'bleed_mod'}],
 		sub_effects = ['e_bleed_new'],
 		atomic = [],
@@ -3339,6 +3433,25 @@ var effect_table = {
 		atomic = [{type = 'stat_add_p', stat = 'mdef', value = -0.5}],
 		buffs = ['b_shatter'],
 	},
+	e_s_bishop = {
+		type = 'temp_global',
+		tags = ['duration_turns', 'affliction'],
+		target = 'target',
+		name = 'shatter',
+		stack = 1,
+		timers = [
+			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 3}, #3 turn duration
+			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
+			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
+		],
+		args = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'resist_light', value = -50},
+			{type = 'stat_add_p', stat = 'resist_dark', value = -50},
+			],
+		buffs = ['b_bishop'],
+	},
 	e_s_sleep = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions
 		type = 'temp_global',
 		tags = ['duration_turns', 'affliction', 'disable', 'sleep'],
@@ -3380,6 +3493,24 @@ var effect_table = {
 		args = [],
 		timers = [
 			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 1}, 
+			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
+			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
+		],
+		atomic = [
+			{type = 'stat_add', stat = 'evasion', value = -75}
+		],
+		buffs = ['b_ensnare'],
+		sub_effects = [],
+	},
+	e_s_ensnare5 = { #5turn duration, can't pass duration onto global temps, so clone it for different duartions
+		type = 'temp_global',
+		tags = ['duration_turns', 'affliction'],
+		target = 'target',
+		name = 'ensnare',
+		stack = 1,
+		args = [],
+		timers = [
+			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 5}, 
 			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
 			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
 		],
@@ -4908,6 +5039,12 @@ var buffs = {
 		t_name = 'shatter',
 		combat_only = true
 	},
+	b_bishop = {
+		icon = "res://assets/images/iconsskills/Sedate.png",
+		description = "BUFFDESCRIPTBISHOP",
+		t_name = 'bishop_debudd',
+		combat_only = true
+	},
 	b_sleep = {
 		icon = "res://assets/images/iconsskills/Sedate.png",
 		description = "BUFFDESCRIPTSLEEP",
@@ -5018,6 +5155,12 @@ var buffs = {
 		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
 		description = "BUFFDESCRIPTSERIOUS",
 		t_name = 'personality',
+	},
+	b_bloodatk = {
+		icon = "res://assets/images/iconsskills/hitrate.png",
+		description = "BUFFDESCRIPTBLOODATTACK",
+		t_name = 'bloodatk',
+		combat_only = true
 	},
 };
 
@@ -5142,6 +5285,71 @@ func rebuild_skillvalue_template(args):
 	if args.has('target_tag'):
 		var tmp = targetcondition.duplicate(true)
 		tmp.value.push_back({code = 'tags', operant = 'has', value = args.target_tag})
+		trigger.conditions.push_back(tmp)
+	
+	return trigger
+
+
+func rebuild_defvalue_template(args):
+	var trigger = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [variables.TR_DEF],
+#		reset = [variables.TR_CAST],
+		conditions = [],
+		buffs = [],
+		sub_effects = []
+	}
+	var sub = {
+		type = 'oneshot',
+		target = 'skill',
+		atomic = [],
+		buffs = [],
+		sub_effects = []
+	}
+	var atomic = {type = 'stat_mul', stat = 'value', value = 1}
+	var condition = {type = 'skill', value = []}
+	var castercondition = {type = 'caster', value = []}
+	if args.has('value'): #should be always true - for without it this makes no sence
+		atomic.value = args.value
+	
+	sub.atomic.push_back(atomic)
+	trigger.sub_effects.push_back(sub)
+	
+	if args.has('tag'):
+		var tmp = condition.duplicate(true)
+		tmp.value = ['tags', 'has', args.tag]
+		trigger.conditions.push_back(tmp)
+	
+	if args.has('tags'):
+		for tag in args.tags:
+			var tmp = condition.duplicate(true)
+			tmp.value = ['tags', 'has', tag]
+			trigger.conditions.push_back(tmp)
+	
+	if args.has('skilltype'):
+		var tmp = condition.duplicate(true)
+		tmp.value = ['ability_type', 'eq', args.skilltype]
+		trigger.conditions.push_back(tmp)
+	
+	if args.has('num_targets'):
+		var tmp = condition.duplicate(true)
+		tmp.value = ['target_number', 'eq', args.num_targets]
+		trigger.conditions.push_back(tmp)
+	
+	if args.has('source'):
+		var tmp = condition.duplicate(true)
+		tmp.value = ['damage_type', 'eq', args.source]
+		trigger.conditions.push_back(tmp)
+	
+	if args.has('caster_race'):
+		var tmp = castercondition.duplicate(true)
+		tmp.value.push_back({code = 'stat', stat = 'racegroup', operant = 'eq', value = args.caster_race})
+		trigger.conditions.push_back(tmp)
+	
+	if args.has('caster_tag'):
+		var tmp = castercondition.duplicate(true)
+		tmp.value.push_back({code = 'tags', operant = 'has', value = args.caster_tag})
 		trigger.conditions.push_back(tmp)
 	
 	return trigger

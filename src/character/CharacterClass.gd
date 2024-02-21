@@ -712,7 +712,7 @@ func can_use_skill(skill):
 	return true
 
 func has_status(status):
-	var res = effects.has_status(status) or statlist.has_status(status) or tags.has(status)
+	var res = effects.has_status(status) or statlist.has_status(status) or xp_module.has_status(status) or tags.has(status)
 	return res
 
 func has_work_rule(rule):
@@ -1185,6 +1185,10 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'has_coverage':
 			var coverage = get_stat('skin_coverage')
 			return (coverage.find(i.coverage) != -1) == i.check
+		'lone_wolf':
+			if input_handler.combat_node == null:
+				return !i.check
+			return (input_handler.combat_node.playergroupcounter == 1) == i.check
 
 	return check
 
@@ -1503,10 +1507,11 @@ func apply_atomic(template):
 		'event':
 			process_event(template.value)
 		'resurrect':
-			if !defeated: return
-			self.hp = template.value
-			defeated = false
-			process_event(variables.TR_RES)
+			resurrect(template.value)
+#			if !defeated: return
+#			self.hp = template.value
+#			defeated = false
+#			process_event(variables.TR_RES)
 		'kill':
 			killed()
 		'use_combat_skill':
@@ -1657,6 +1662,9 @@ func resurrect(hp_per):
 	if !defeated: return
 	defeated = false
 	hp = int(get_stat('hpmax') * hp_per /100)
+	if displaynode != null:
+		displaynode.update_hp()
+	process_event(variables.TR_RES)
 
 func pay_cost(cost):
 	for st in cost:

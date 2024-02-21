@@ -144,7 +144,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		show_in_parent_stats = true,
-		effects = ['e_tr_bers1', 'e_tr_bers2'],
+		effects = ['e_tr_bers1', 'e_tr_bers2', 'e_tr_berserk'],
 		bonusstats = {}
 	},
 	druid = {
@@ -174,7 +174,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		show_in_parent_stats = true,
-		effects = ['e_tr_bishop'],
+		effects = ['e_tr_bishop', 'e_tr_bishop2'],
 		bonusstats = {}
 	},
 	smith = {
@@ -214,6 +214,30 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = ['e_tr_attendant'],
+	},
+	paladin = {
+		code = 'paladin',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_paladin_1', 'e_tr_paladin_2','e_tr_paladin_3','e_tr_paladin_4'],
+	},
+	bloodmage = {
+		code = 'bloodmage',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_bloodmage'],
+	},
+	sadist = {
+		code = 'sadist',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_sadist'],
 	},
 	alchemist = {#+100% alchemy production, potions restore 25% more
 		code = 'alchemist',
