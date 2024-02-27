@@ -636,12 +636,12 @@ var effect_table = {
 		type = 'c_static',
 		descript = '',
 		conditions = [{code = 'lone_wolf', check = true}],
-		tags = ['recheck_death'],
+		tags = ['recheck_combat', 'recheck_death'],
 		atomic = [
 			{type = 'stat_add', stat = 'evasion', value = 50},
 			{type = 'stat_add', stat = 'speed', value = 20},
 			],
-		buffs = [],
+		buffs = ['b_alios'],
 		sub_effects = [],
 	},
 	e_tr_sadist = {
@@ -658,6 +658,32 @@ var effect_table = {
 		buffs = [],
 		sub_effects = ['e_s_bleed_new'],
 		args = []
+	},
+	e_s_dominate = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'soul_bind',
+		stack = 1,
+		tick_event = [],
+		rem_event = [variables.TR_DAY, variables.TR_DEATH],
+		tags = ['sex_basic', 'combatant', 'basic_servitude', 'adv_servitude', 'dating', 'dress_work', 'callmaster' ],
+		args = [],
+		sub_effects = [],
+		atomic = [],
+		buffs = ['b_soulbind'],
+	},
+	e_s_bond = {
+		type = 'temp_s',
+		target = 'caster',
+		name = 'soul_bind',
+		stack = 1,
+		tick_event = [],
+		rem_event = [variables.TR_DAY, variables.TR_DEATH],
+		tags = [],
+		args = [],
+		sub_effects = [],
+		atomic = [{type = 'disable'}],
+		buffs = ['b_soulbindcaster'],
 	},
 	
 	e_tr_witcrit = {
@@ -1914,7 +1940,7 @@ var effect_table = {
 	e_s_revenge = {
 		type = 'trigger',
 		conditions = [],
-		trigger = [variables.TR_CAST],
+		trigger = [variables.TR_HIT],
 		req_skill = true,
 		args = [{obj = 'parent', param = 'caster'}],
 		sub_effects = [
@@ -5161,6 +5187,22 @@ var buffs = {
 		description = "BUFFDESCRIPTBLOODATTACK",
 		t_name = 'bloodatk',
 		combat_only = true
+	},
+	b_alios = {
+		icon = "res://assets/images/iconsskills/hitrate.png",
+		description = "BUFFDESCRIPTALIOSACTIVE",
+		t_name = 'alios',
+		combat_only = true
+	},
+	b_soulbind = {
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		description = "",
+		t_name = 'soulbind',
+	},
+	b_soulbindcaster = {
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		description = "",
+		t_name = 'soulbindcaster',
 	},
 };
 

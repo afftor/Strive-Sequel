@@ -187,6 +187,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	autoskill = null
 	turns = 0
 	$Combatlog/RichTextLabel.clear()
+	summons.clear()
 	enemygroup.clear()
 	playergroup.clear()
 	turnorder.clear()
@@ -239,6 +240,7 @@ func FinishCombat(victory = true):
 			else:
 				ch.killed()
 		ch.process_event(variables.TR_COMBAT_F)
+		ch.recheck_effect_tag('recheck_combat')
 	effects_pool.process_event(variables.TR_COMBAT_F)
 		#add permadeath check here
 	
@@ -295,6 +297,7 @@ func newturn():
 	for i in playergroup.values() + enemygroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.process_event(variables.TR_TURN_S)
+		tchar.recheck_effect_tag('recheck_combat')
 		tchar.displaynode.rebuildbuffs()
 		#not sure about keeping all beyond - dis part, mb needs reworking
 		var cooldowncleararray = []
@@ -323,18 +326,22 @@ func checkdeaths():
 					break
 			#turnorder.erase(battlefield[i])
 			if summons.has(i):
-				tchar.displaynode.queue_free()
+#				tchar.displaynode.queue_free()
 				tchar.displaynode = null
+				tchar.is_active = false
 				battlefield[i] = null
-				enemygroup.erase(i)
-				summons.erase(i);
+				if tchar.combatgroup == 'enemy':
+					enemygroup.erase(i)
+				else:
+					playergroup.erase(i)
+				summons.erase(i)
 
 
-
+var playergroupcounter = 0
 func checkwinlose():
 	if fightover == true:
 		return true
-	var playergroupcounter = 0
+	playergroupcounter = 0
 	var enemygroupcounter = 0
 	for i in range(battlefield.size()):
 		if battlefield[i] == null:
@@ -351,6 +358,14 @@ func checkwinlose():
 	elif enemygroupcounter <= 0:
 		victory()
 		return true
+	for i in range(battlefield.size()):
+		if battlefield[i] == null:
+			continue
+		if characters_pool.get_char_by_id(battlefield[i]).defeated:
+			continue
+		if i in range(1,7):
+			characters_pool.get_char_by_id(battlefield[i]).recheck_effect_tag('recheck_death')
+	return false
 
 var rewardsdict
 
@@ -371,9 +386,18 @@ func victory():
 	$Rewards/CloseButton.disabled = true
 	input_handler.StopMusic()
 	#on combat ends triggers
-	for p in playergroup.values():
-		var t_p = characters_pool.get_char_by_id(p)
-		t_p.process_event(variables.TR_COMBAT_F)
+	for p in range(1, 7):
+		if battlefield[p] == null:
+			continue
+#	for p in playergroup.values():
+#		var t_p = characters_pool.get_char_by_id(p)
+		var t_p = characters_pool.get_char_by_id(battlefield[p])
+		if summons.has(p):
+			t_p.is_active = false
+			playergroup.erase(p)
+			summons.erase(p)
+		else:
+			t_p.process_event(variables.TR_COMBAT_F)
 	effects_pool.process_event(variables.TR_COMBAT_F)
 		#add permadeath check here
 
@@ -544,8 +568,6 @@ func victory():
 			newnode.get_node("amount").visible = false
 		else:
 			newnode.get_node("amount").text = str(i.amount)
-	
-	
 	
 	#yield(get_tree().create_timer(1.7), 'timeout')
 
@@ -897,8 +919,6 @@ func speedsort(first, second):
 
 
 func make_fighter_panel(fighter, spot):
-	#need to implement clearing panel if fighter is null for the sake of removing summons
-	#or simply implement func clear_fighter_panel(pos)
 	spot = int(spot)
 	var container = battlefieldpositions[int(spot)]
 	var panel = $Panel/PlayerGroup/Back/left/Template.duplicate()
@@ -911,6 +931,7 @@ func make_fighter_panel(fighter, spot):
 	panel.set_script(ResourceScripts.scriptdict.fighternode)
 	panel.position = int(spot)
 	panel.animation_node = CombatAnimations
+	CombatAnimations.connect('alleffectsfinished', panel, 'check_active')
 	fighter.position = int(spot)
 	panel.fighter = fighter
 	panel.hp = fighter.hp
@@ -945,6 +966,7 @@ func make_fighter_panel(fighter, spot):
 		g_color = Color(1.0, 0.0, 0.0, 0.0);
 	panel.material.set_shader_param('modulate', g_color);
 	panel.noq_rebuildbuffs(fighter.get_combat_buffs())
+
 
 var fighterhighlighted = false
 
@@ -1088,30 +1110,112 @@ func buildplayergroup(group):
 		if int(i) > 6: break
 		if group[i] == null:
 			continue
+		playergroupcounter += 1
 		var fighter = ResourceScripts.game_party.characters[group[i]]
 		fighter.combatgroup = 'ally'
 		battlefield[int(i)] = fighter.id
 		make_fighter_panel(fighter, i)
 		newgroup[int(i)] = fighter.id #only change
+	
 	playergroup = newgroup
+	fill_summons()
 
 
-func summon(montype, limit):
+func fill_summons(): #for necros only. needs rework in case of different summoners
+	for i in [4, 5, 6, 1, 2, 3]:
+		if battlefield[i] == null: 
+			continue
+		var tchar = characters_pool.get_char_by_id(playergroup[i])
+		if tchar.has_profession('necromancer'):
+			for ii in range(ceil(tchar.get_stat('magic_factor') / 2)):
+				summon(['skeleton_melee', 'skeleton_archer'], 6, 'ally')
+
+#	var num = 0
+##	num = 1 #test
+#	for i in playergroup:
+#		if int(i) > 6: break
+#		if playergroup[i] == null:
+#			continue
+#		var tchar = characters_pool.get_char_by_id(playergroup[i])
+#		if tchar.has_status('summoner'):
+#			num += ceil(tchar.get_stat('magic_factor') / 2)
+#
+#	for i in range(num):
+##		summon('rat', 6, 'ally')
+#		summon(['skeleton_melee', 'skeleton_archer'], 6, 'ally')
+##		summon(['skeleton_melee', null], 6, 'ally')
+
+
+func summon(montype, limit, combatgroup): #reworked
 	if summons.size() >= limit: return
-	#find empty slot in enemy group
-	var group = [7,8,9,10,11,12];
+	#find empty slot in group
+	if montype is String:
+		montype = [montype, montype]
+	var group
+	var group2 = null
+	var slot = 2
+	match combatgroup:
+		'enemy':
+			if montype[0] == null:
+				group = [10, 11, 12]
+				group2 = [7, 8, 9]
+				slot = 1
+			elif montype[1] == null:
+				group = [7, 8, 9]
+				group2 = [10, 11, 12]
+				slot = 0
+			else:
+				group = [7, 8, 9, 10, 11, 12]
+		'ally':
+			if montype[0] == null:
+				group = [4, 5, 6]
+				group2 = [1, 2, 3]
+				slot = 1
+			elif montype[1] == null:
+				group = [1, 2, 3]
+				group2 = [4, 5, 6]
+				slot = 0
+			else:
+				group = [1, 2, 3, 4, 5, 6]
 	var pos = [];
 	for p in group:
-		if battlefield[p] == null: pos.push_back(p);
-	if pos.size() == 0: return;
-	var sum_pos = pos[randi() % pos.size()];
-	summons.push_back(sum_pos);
+		if battlefield[p] == null: 
+			pos.push_back(p)
+	if pos.size() == 0: 
+		if group2 == null:
+			return
+		for p in group2:
+			if battlefield[p] == null: 
+				pos.push_back(p)
+		if pos.size() == 0: 
+			return
+	var sum_pos = input_handler.random_from_array(pos)
+	summons.push_back(sum_pos)
+	if slot == 2:
+		if sum_pos in [1, 2, 3, 7, 8, 9]:
+			slot = 0
+		else:
+			slot = 1
 	var tchar = ResourceScripts.scriptdict.class_slave.new("combat_summon");
-	tchar.createfromenemy(montype);
-	tchar.combatgroup = 'enemy'
-	enemygroup[sum_pos] = characters_pool.add_char(tchar)
-	battlefield[sum_pos] = enemygroup[sum_pos];
-	make_fighter_panel(battlefield[sum_pos], sum_pos);
+#	tchar.createfromenemy(montype);
+	match combatgroup:
+		'enemy':
+			tchar.generate_simple_fighter(montype[slot])
+			tchar.combatgroup = 'enemy'
+			enemygroup[sum_pos] = characters_pool.add_char(tchar)
+			battlefield[sum_pos] = enemygroup[sum_pos]
+		'ally':
+			tchar.generate_simple_fighter(montype[slot], false)
+			tchar.combatgroup = 'ally'
+			playergroup[sum_pos] = characters_pool.add_char(tchar)
+			battlefield[sum_pos] = playergroup[sum_pos]
+	tchar.position = sum_pos
+	tchar.hp = tchar.get_stat("hpmax")
+	tchar.mp = tchar.get_stat("mpmax")
+	tchar.add_trait('core_trait')
+	
+	make_fighter_panel(tchar, sum_pos);
+
 
 
 func use_skill(skill_code, caster, target):
@@ -1190,7 +1294,7 @@ func use_skill(skill_code, caster, target):
 		sfxtarget.process_sfx(i.code)
 	#skill's repeat cycle of predamage-damage-postdamage
 	var targets
-	var endturn = !s_skill1.tags.has('instant');
+#	var endturn = !s_skill1.tags.has('instant');
 	for n in range(s_skill1.repeat):
 		#get all affected targets
 		if skill.tags.has('random_target') or (target != null and !(s_skill1.target_number in ['nontarget', 'nontarget_group', 'single_nontarget']) and target.hp <= 0) :
@@ -1221,7 +1325,7 @@ func use_skill(skill_code, caster, target):
 					sfxtarget.process_sfx(j.code)
 			#special results
 			if skill.has('damage_type') and skill.damage_type == 'summon':
-				summon(skill.value[0], skill.value[1]);
+				summon(skill.value[0], skill.value[1], caster.combatgroup);
 			elif skill.has('damage_type') and skill.damage_type == 'resurrect':
 				i.resurrect(input_handler.calculate_number_from_string_array(skill.value[0], caster, target)) #not sure
 			if skill.has('damage_type') and skill.damage_type == 'setup_global':
@@ -1281,9 +1385,11 @@ func use_skill(skill_code, caster, target):
 				s_skill2.caster.process_event(variables.TR_POSTDAMAGE, s_skill2)
 				effects_pool.process_event(variables.TR_POSTDAMAGE, s_skill2.caster)
 			if s_skill2.target.hp <= 0:
-				s_skill2.process_event(variables.TR_KILL)
+#				s_skill2.process_event(variables.TR_KILL)
+				s_skill1.process_event(variables.TR_KILL)
 				if typeof(caster) != TYPE_DICTIONARY: 
-					caster.process_event(variables.TR_KILL, s_skill2)
+#					caster.process_event(variables.TR_KILL, s_skill2)
+					caster.process_event(variables.TR_KILL, s_skill1)
 					effects_pool.process_event(variables.TR_KILL, caster)
 				if typeof(caster) != TYPE_DICTIONARY: caster.add_stat('metrics_kills', 1)
 			else:
@@ -1301,6 +1407,7 @@ func use_skill(skill_code, caster, target):
 		caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
 		effects_pool.process_event(variables.TR_SKILL_FINISH, caster)
 	s_skill1.remove_effects()
+	var endturn = !s_skill1.tags.has('instant')
 	#follow-up
 	if skill.has('follow_up') and fa:
 		use_skill(skill.follow_up, caster, target)

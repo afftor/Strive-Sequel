@@ -16,6 +16,8 @@ var hp
 var mp
 var buffs = []
 
+var is_active = true
+
 #data format: node, time, type, slot, params
 
 #func _process(delta):
@@ -134,6 +136,7 @@ func process_sound(sound):
 
 func rebuildbuffs():
 	if fighter == null: return
+	if !fighter.is_active: return
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'buffs', slot = 'buffs', params = fighter.get_combat_buffs()}
 	animation_node.add_new_data(data)
 
@@ -228,9 +231,18 @@ func update_mp_label(newmp, newmpp):
 
 func noq_defeat():
 	if !visible: return
-	$Icon.material = load("res://assets/sfx/bw_shader.tres")
+	if fighter.is_active:
+		$Icon.material = load("res://assets/sfx/bw_shader.tres")
+	else:
+		fighter = null
+		is_active = false
 #	set_process_input(false)
 
 func resurrect():
 	if !visible: return
 	$Icon.material = null
+
+
+func check_active():
+	if !is_active:
+		queue_free()
