@@ -582,6 +582,29 @@ var Skilllist = {
 		value = [['0']],
 		damagestat = 'no_stat'
 	},
+	soul_bind = { #fix prams
+		code = 'soul_bind',
+		descript = '',
+		type = 'social',
+		ability_type = 'spell',
+		social_skill_stats = ['wits'],
+		reqs = [],
+		targetreqs = [{code = 'is_master', check = false}],
+		effects = [
+			Effectdata.rebuild_template({effect = 'e_s_dominate'}),
+			Effectdata.rebuild_template({effect = 'e_s_bond'}),
+		],
+		cost = {mp = 50},
+		dialogue_report = '',
+		dialogue_show_repeat = false,
+		dialogue_image = 'mindcontrol',
+		charges = 1,
+		cooldown = 3,
+		icon = load("res://assets/images/iconsskills/TurnUndead.png"),
+		tags = [],
+		value = [['0']],
+		damagestat = 'no_stat'
+	},
 	
 	
 	#Combat Skills
