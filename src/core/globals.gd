@@ -1253,7 +1253,7 @@ func StartCombat(encounter = null):
 	var enemy_stats_mod = 1
 	match data.unittype:
 		'randomgroup':
-			enemies = make_enemies(data.unitcode)
+			enemies = make_enemies(data.unitcode, true)
 #	var combat = get_combat_node()
 #	combat.encountercode = data.unitcode
 	
@@ -1297,13 +1297,13 @@ func StartAreaCombat():
 	input_handler.combat_node.set_norun_mode(false)
 	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, 'background', music, enemy_stats_mod)
 
-func make_enemies(enemydata):
+func make_enemies(enemydata, quest = false):
 	var enemies
 	if typeof(enemydata) == TYPE_ARRAY:
 		enemies = input_handler.weightedrandom(enemydata)
-		enemies = makerandomgroup(Enemydata.enemygroups[enemies])
+		enemies = makerandomgroup(Enemydata.enemygroups[enemies], quest)
 	elif Enemydata.enemygroups.has(enemydata):
-		enemies = makerandomgroup(Enemydata.enemygroups[enemydata])
+		enemies = makerandomgroup(Enemydata.enemygroups[enemydata], quest)
 	else:
 		enemies = makespecificgroup(enemydata)
 	return enemies
@@ -1316,7 +1316,7 @@ func makespecificgroup(group):
 
 	return combatparty
 
-func makerandomgroup(enemygroup):
+func makerandomgroup(enemygroup, quest = false):
 	var array = []
 	for i in enemygroup.units:
 		var size = round(rand_range(enemygroup.units[i][0],enemygroup.units[i][1]))
@@ -1326,7 +1326,7 @@ func makerandomgroup(enemygroup):
 	for i in array:
 		countunits += i.number
 	if countunits > 6:
-		array[randi()%array.size()].number -= (countunits-6)
+		array[randi() % array.size()].number -= (countunits - 6)
 
 	#Assign units to rows
 	var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
@@ -1363,16 +1363,17 @@ func makerandomgroup(enemygroup):
 			i.number -= 1
 	
 	#handle rares
-	var champarr = []
-	for pos in combatparty:
-		if combatparty[pos] == null: continue
-		if rng.randf() < variables.enemy_rarechance:
-			champarr.push_back(pos)
-			char_roll_data.rare = true
-	while champarr.size() > 3:
-		champarr.remove(rng.randi_range(0, champarr.size()-1))
-	for pos in champarr:
-		combatparty[pos] += "_rare"
+	if !quest:
+		var champarr = []
+		for pos in combatparty:
+			if combatparty[pos] == null: continue
+			if rng.randf() < variables.enemy_rarechance:
+				champarr.push_back(pos)
+				char_roll_data.rare = true
+		while champarr.size() > 3:
+			champarr.remove(rng.randi_range(0, champarr.size()-1))
+		for pos in champarr:
+			combatparty[pos] += "_rare"
 	return combatparty
 
 func complete_location(locationid):
