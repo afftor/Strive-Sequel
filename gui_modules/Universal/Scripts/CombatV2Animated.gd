@@ -399,14 +399,14 @@ func victory():
 		else:
 			t_p.process_event(variables.TR_COMBAT_F)
 	effects_pool.process_event(variables.TR_COMBAT_F)
-		#add permadeath check here
-
+	#add permadeath check here
+	
 #	var tween = input_handler.GetTweenNode($Rewards/victorylabel)
 #	tween.interpolate_property($Rewards/victorylabel,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 #	tween.start()
-
+	
 	input_handler.PlaySound("battle_victory")
-
+	
 	rewardsdict = {gold = 0, materials = {}, items = [], xp = 0}
 	for i in enemygroup.values():
 		if i == null: #not sure why was this check added
@@ -478,7 +478,7 @@ func victory():
 
 	input_handler.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
 	input_handler.ClearContainer($Rewards/ScrollContainer2/HBoxContainer)
-	var exp_per_character = ceil(rewardsdict.xp/playergroup.size())
+	var exp_per_character = rewardsdict.xp/playergroup.size()
 	for i in playergroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
 		var gained_exp = exp_per_character# * tchar.get_stat('exp_gain_mod')
@@ -493,6 +493,7 @@ func victory():
 		newbutton.get_node("name").text = tchar.get_short_name()
 		if gained_exp > 0:
 			gained_exp *= tchar.get_stat('exp_gain_mod')
+		gained_exp = int(gained_exp)
 		newbutton.get_node("amount").text = str(gained_exp)
 #		if tchar.hp <= 0:
 #			tchar.hp = 1
