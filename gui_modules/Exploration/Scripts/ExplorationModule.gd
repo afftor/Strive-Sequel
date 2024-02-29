@@ -202,12 +202,14 @@ func build_area_menu(area_actions):
 		newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 		newbutton.get_node("Label").text = tr(city_options[option])
 		newbutton.connect("toggled", self, option, [newbutton])
+		newbutton.connect("toggled", self, 'reset_active_location')
 		var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
 		newbutton.get_node("Label").set("custom_fonts/font", font)
 	for action in area_actions:
 		if action.code == "slavemarket":
 			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 			newbutton.connect("toggled", self, "faction_hire", [newbutton, action, "city_slaves"])
+			newbutton.connect("toggled", self, 'reset_active_location')
 			var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
 			newbutton.get_node("Label").set("custom_fonts/font", font)
 		elif (
@@ -220,6 +222,7 @@ func build_area_menu(area_actions):
 			has_exotic_slaver = true
 			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 			newbutton.connect("toggled", self, "faction_hire", [newbutton, action])
+			newbutton.connect("toggled", self, 'reset_active_location')
 			newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
 			newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png")
 			newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet_pressed.png")
@@ -229,6 +232,7 @@ func build_area_menu(area_actions):
 			has_exotic_slaver = true
 			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 			newbutton.connect("toggled", self, "faction_hire", [newbutton, action])
+			newbutton.connect("toggled", self, 'reset_active_location')
 		# elif action.code == 'aliron_church':
 		# 	newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 		# 	newbutton.connect("pressed", self, "enter_church", [newbutton, action])
@@ -239,6 +243,7 @@ func build_area_menu(area_actions):
 	newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 	newbutton.get_node("Label").text = tr("EXPLORESHOP")
 	newbutton.connect("toggled", self, "open_shop", [newbutton, "area"])
+	newbutton.connect("toggled", self, 'reset_active_location')
 	if has_exotic_slaver:
 		newbutton.get_parent().move_child(newbutton, newbutton.get_position_in_parent()-1)
 	if worlddata.fixed_location_options.has(selected_location):
@@ -250,6 +255,7 @@ func build_area_menu(area_actions):
 			var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
 			newbutton.get_node("Label").set("custom_fonts/font", font)
 			newbutton.connect("pressed", globals, 'common_effects', [i.args])
+			newbutton.connect("pressed", self, 'reset_active_location')
 			newbutton.connect("pressed", self, "open_city", [selected_location])
 			# newbutton.modulate = Color(0.5, 0.8, 0.5)
 			newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
@@ -265,9 +271,11 @@ func build_area_menu(area_actions):
 			var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
 			newbutton.get_node("Label").set("custom_fonts/font", font)
 			if i.args.keys().has("oneshot") && !i.args.oneshot:
+				newbutton.connect("pressed", self, 'reset_active_location')
 				newbutton.connect("pressed", input_handler, "interactive_message", [i.code, '', i.args])
 			else:
 				newbutton.connect("pressed", input_handler, "interactive_message", [i.code, 'area_oneshot_event', i.args])
+				newbutton.connect("pressed", self, 'reset_active_location')
 				newbutton.connect("pressed", self, "open_city", [selected_location])
 			# newbutton.modulate = Color(0.5, 0.8, 0.5)
 			newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
@@ -2233,3 +2241,6 @@ func select_workers():
 	MANSION.get_node("MansionJobModule2").selected_location = selected_location
 	MANSION.SlaveListModule.OpenJobModule()
 
+func reset_active_location():
+	if input_handler.active_location.id != selected_location:
+		input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(selected_location)
