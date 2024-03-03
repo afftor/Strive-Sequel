@@ -12228,6 +12228,114 @@ You notice how Cali now looks at Amelia with respect. In the end, encouraged wit
 Not waiting for your reply she disappears from sight as nonchalantly as she appeared. \n\n{color=green|Cali: Charm Factor +1\nCali: Charm +10}""",
 	SERVANTS_NEW_LEADER_CLOSE = """""",
 	
+	ZEPHYRA_COSTUME_1_OPTION_1 = "Check elven houses",
+	ZEPHYRA_COSTUME_1_1 = """As you walk through the settlement, you come across an agitated elf woman.
+
+- I can't believe my idiot husband. I knew marrying someone following a different deity is going to be tough, but I guess Alios followers are a special kind. Lately he has been really annoying about rumors of some champion or something.
+
+Unable to find any words for this situation you decide to leave her alone.""",
+	ZEPHYRA_COSTUME_1_2 = """You walk by the familiar house. You aren't sure what you can do here right now.""",
+	ZEPHYRA_COSTUME_2 = """As you and Zephyra go through the village's side street, you are suddenly approached by an overly expressive elven civilian of ambiguous age. 
+
+Elf: - No way, are you... Zephyra, The Champion of Alios?! 
+
+Zephyra: - I wish I could lie about it, but my agreement requires me to confirm my identity to the believers...""",
+	ZEPHYRA_COSTUME_2_OPTION_1 = "Aren't you happy that someone finally acknowledges you?",
+	ZEPHYRA_COSTUME_2_OPTION_2 = "You should be more faithful to your duty",
+	ZEPHYRA_COSTUME_2_OPTION_3 = "(To the man) Sorry, we aren't giving interviews to strangers",
+	ZEPHYRA_COSTUME_3_1 = """Elf: - I knew it! My name is Wirenth, I've been a devoted Alios follower since the times he was in our lands.
+
+Zephyra: - Uh, huh, a long time ago then...
+
+Wirenth: - I know you are a fairly recently became his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
+
+Zephyra: - You've done well flattering me, might I ask what can I do for your dutious worship?""",
+	ZEPHYRA_COSTUME_3_2 = """Elf: - I knew it! My name is Wirenth, I've been a devoted Alios follower since the times he was in our lands.
+
+Zephyra: - Uh, huh, a long time ago then...
+
+Wirenth: - I know you are a fairly recently became his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
+
+Zephyra: - ...A former High Priestess.
+
+Wirenth: - Gah, this is less important than meeting a herald of Alios herself.
+
+Zephyra: - You've done well flattering me, might I ask what can I do for your dutious worship?""",
+	ZEPHYRA_COSTUME_3_3 = """Zephyra: - Well, this is a shame, but I'm afraid because of my selfish [master] I won't be able to help you out. 
+
+Wirenth: - Oh... Uh, alright... I wish you the best on your journey... 
+
+You leave the disappointed elven man and for some reason decide not to go over his place any time soon.""",
+	ZEPHYRA_COSTUME_4 = """Wirenth: - Truth be told... Can I ask for your private audience? 
+
+Zephyra: - ...Huh?
+
+Wirenth: - My wife is not currently at home and I don't have too much time till she returns. I know how it may look, but I'm doing it with the best faith in Alios.
+
+Zephyra: - Uh, I'm somewhat busy right now, but if [master] has no objections...""",
+	ZEPHYRA_COSTUME_4_OPTION_1 = "Are you sure about that? It doesn't look safe",
+	ZEPHYRA_COSTUME_4_OPTION_2 = "This seems important, so just get on with it",
+	ZEPHYRA_COSTUME_4_OPTION_3 = "Sorry, I can't let you go like that",
+	ZEPHYRA_COSTUME_5_1 = """Zephyra: - I don't sense any danger from him, so I'm sure it's gonna be fine. Besides, I still have a duty to fulfill as a champion.""",
+	ZEPHYRA_COSTUME_5_2 = """As Zephyra and the man move into the house, you put your ear next to the door listening to their conversation...
+
+Wirenth: - ...I'm sorry, this is kinda embarrassing for me, but...
+
+......
+
+Zephyra: - ...Look, you aren't serious about this, right? It's even more embarrassing for me... Well, since you've been a faithful follower... *Sigh*...
+
+........
+
+Wirenth: - ...Ooh, this is great!... I knew it, it is just the right size for your body...
+
+Zephyra: - ...Don't say that, this sounds terrible...""",
+	ZEPHYRA_COSTUME_5_OPTION_1 = "*Rush in*",
+	ZEPHYRA_COSTUME_5_OPTION_2 = "*Keep waiting*",
+	ZEPHYRA_COSTUME_6_1 = """As you barge inside, you find Zephyra wearing strange white and red clothes looking nothing like what she was wearing before. She does seem to be embarrassed wearing this.
+
+Zephyra: - [Master]! Why are you rushing in like this?! Gosh, why did this happen to me...
+
+Wirenth: - Oh no... Please, close the door before our neighbors see it.""",
+	ZEPHYRA_COSTUME_6_2 = """After a few minutes Zephyra leaves the house brushing her clothes with the sad looking man following after her. You can read embarrassment and annoyance on her face. 
+
+Zephyra: - We shall not speak about what has been happening just now and lets be on our way.
+
+Wirenth: - I-I'm sorry... But thank you for paying me a visit, perhaps, if you change your mind...
+
+Before he could finish the foxgirl already went for a considerable distance making you follow her.""",
+	ZEPHYRA_COSTUME_7 = """After you've closed the door, Wirenth finally explains himself.
+
+Wirenth: - W-well... You see, a few years ago there was a traveling merchant passing through our village, and I had this unbearable urge to purchase this outfit once I saw it... Even though its not even fit for my wife...
+
+Zephyra: - I can't believe I agreed to wear this.
+
+Wirenth: - But now I know this is exactly why I got it! It was meant for you, Champion Zephyra. It must have been Alios' guidance all this time.
+
+Zephyra does not comment on it, trying to either facepalm herself or hide her blush with it. It seems she believes in what the man said.""",
+	ZEPHYRA_COSTUME_7_OPTION_1 = "I actually like it",
+	ZEPHYRA_COSTUME_7_OPTION_2 = "Is this some faraway land outfit?",
+	ZEPHYRA_COSTUME_8_1 = """Zephyra: - [Master], please, not you as well... What's wrong with men? I guess, there's no other choice for me but to keep this gift now.
+
+Wirenth: - Yes! It suits you so well. It's not like I had any use for it so it was destined to end up being yours.
+
+Zephyra: - Fine, fine... T-thank you for this... As long as [master] finds this appealing.""",
+	ZEPHYRA_COSTUME_8_2 = """Wirenth: - Yes! It suits you so well. It's not like I had any use for it so it was destined to end up being yours.
+
+Zephyra: - Fine, fine... T-thank you for this... As long as [master] finds this appealing.""",
+	ZEPHYRA_COSTUME_9 = """After shaking the Wirenth's hand you both make out of his home. 
+
+Zephyra: - [Master], are you planning to keep me wearing this? I can't shake the feeling this has some underlying meaning I can't quite comprehend yet, like being of fox ancestry has something obscure to do with this.""",
+	ZEPHYRA_COSTUME_9_OPTION_1 = "I think it suits you really well",
+	ZEPHYRA_COSTUME_9_OPTION_2 = "You can take it off if you want",
+	ZEPHYRA_COSTUME_9_OPTION_3 = "Perhaps, you should dye your hair orange and learn cooking",
+	ZEPHYRA_COSTUME_10_1 = """Zephyra: - Of course [master] does, I'm never going to question your deviant tastes. 
+
+Zephyra makes a playful chuckle seemingly accepting this recent attire. """,
+	ZEPHYRA_COSTUME_10_2 = """Zephyra: - Hmm... I'll consider it.
+
+Despite your expectation for Zephyra to get rid of this costume as soon as possible, she smiles wryly at her own thoughts. """,
+	ZEPHYRA_COSTUME_10_3 = """Zephyra: - Absolutely not, never, in no reality or fantasy this is going to happen. I value my life too much to make my older sister mad at me for trying to impersonate her. As for cooking, only if you promise to eat anything I make.""",
 	
 	
 	

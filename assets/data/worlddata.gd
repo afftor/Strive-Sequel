@@ -1975,6 +1975,12 @@ var fixed_location_options = { #override serialized data
 			reqs = [{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage5', state = true}], 
 			args = [{code = 'start_event', data = 'erlen_leon_1', args = []}]
 		},
+		{
+			text =  tr("ZEPHYRA_COSTUME_1_OPTION_1"), 
+			reqs = [{type = "quest_completed", name = "sword_artifact_quest", check = true},
+			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'ZEPHYRA_COSTUME_2'}], 
+			args = [{code = 'start_event', data = 'zephyra_costume_1', args = []}]
+		},
 	],
 	beastkin_capital = [
 		{
