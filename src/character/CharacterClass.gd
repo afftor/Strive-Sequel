@@ -337,17 +337,20 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 func get_class_list(category, person):
 	return xp_module.get_class_list(category, person)
 
-func generate_simple_fighter(tempname):
+func generate_simple_fighter(tempname, setup_ai = true):
 	var data = Enemydata.enemies[tempname]
 	statlist.generate_simple_fighter(data)
 	skills.setup_skills(data)
-	ai = ResourceScripts.scriptdict.class_ai_base.new()
-	if data.has('full_ai'):
-		ai.set_simple_ai(data.ai)
+	if setup_ai:
+		ai = ResourceScripts.scriptdict.class_ai_base.new()
+		if data.has('full_ai'):
+			ai.set_simple_ai(data.ai)
+		else:
+			#need check for hard difficulty
+			fill_ai(data.ai)
+		ai.app_obj = self
 	else:
-		#need check for hard difficulty
-		fill_ai(data.ai)
-	ai.app_obj = self
+		skills.fill_combatskills()
 	if data.has('tags') and data.tags.has('boss'):
 		globals.char_roll_data.uniq = true
 	recheck_effect_tag('recheck_stats')
@@ -1537,6 +1540,9 @@ func apply_atomic(template):
 			learn_c_skill(template.skill)
 		'sfx':
 			play_sfx(template.value)
+		'disable':
+			xp_module.make_unavaliable()
+			
 
 
 func remove_atomic(template):
@@ -1560,6 +1566,8 @@ func remove_atomic(template):
 			remove_trait(template.trait)
 		'add_sex_trait', 'unlock_sex_trait':
 			remove_sex_trait(template.trait)
+		'disable':
+			xp_module.make_avaliable()
 
 func is_koed():
 	return (hp <= 0) or defeated or !is_active
