@@ -912,6 +912,13 @@ var unique_sprites = {
 			face_path = "zephyra_wed",
 			unlock_reqs = []
 			},
+		costume_7 = {
+			name = "Costume_7",
+			descript = "",
+			path = "zephyra_costume_7_body", 
+			face_path = "zephyra_costume_7",
+			unlock_reqs = []
+			},
 	},
 	mae = {
 		default = {

@@ -66,7 +66,7 @@ var data = {
 	
 	zephyra_costume_5_2 = { 
 		image = null, tags = ['dialogue_scene','master_translate', 'blackscreen_transition_common'],
-		reqs = [], character = 'zephyra',
+		reqs = [], 
 		text = [ {text = "ZEPHYRA_COSTUME_5_2", reqs = []} ],
 		options = [ {
 			code = 'zephyra_costume_6_1', reqs = [], text = tr("ZEPHYRA_COSTUME_5_OPTION_1"), type = 'next_dialogue', dialogue_argument = 1
@@ -77,7 +77,7 @@ var data = {
 	
 	zephyra_costume_6_1 = { 
 		image = null, tags = ['dialogue_scene','master_translate'],
-		reqs = [], character = 'zephyra',
+		reqs = [], character = 'zephyra_costume_7',
 		text = [ {text = "ZEPHYRA_COSTUME_6_1", reqs = []}],
 		options = [ {
 			code = 'zephyra_costume_7', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 1
@@ -86,7 +86,7 @@ var data = {
 	
 	zephyra_costume_6_2 = { 
 		image = null, tags = ['dialogue_scene','master_translate'],
-		reqs = [], character = 'zephyra',
+		reqs = [], character = 'zephyra_costume_7',
 		text = [ {text = "ZEPHYRA_COSTUME_6_2", reqs = []}],
 		options = [ {
 			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', dialogue_argument = 1, bonus_effects = [{code = 'update_city'}]
@@ -95,7 +95,7 @@ var data = {
 	
 	zephyra_costume_7 = { 
 		image = null, tags = ['dialogue_scene','master_translate'],
-		reqs = [], character = 'zephyra',
+		reqs = [], character = 'zephyra_costume_7',
 		text = [ {text = "ZEPHYRA_COSTUME_7", reqs = []}],
 		options = [ {
 			code = 'zephyra_costume_8', reqs = [], text = tr("ZEPHYRA_COSTUME_7_OPTION_1"), type = 'next_dialogue', dialogue_argument = 1
@@ -106,7 +106,7 @@ var data = {
 	
 	zephyra_costume_8 = { 
 		image = null, tags = ['dialogue_scene','master_translate'],
-		reqs = [], character = 'zephyra',
+		reqs = [], character = 'zephyra_costume_7',
 		text = [ {text = "ZEPHYRA_COSTUME_8_1", reqs = [], previous_dialogue_option = 1}, 
 		 {text = "ZEPHYRA_COSTUME_8_2", reqs = [], previous_dialogue_option = 2}, ],
 		options = [ {
@@ -116,10 +116,13 @@ var data = {
 	
 	zephyra_costume_9 = { 
 		image = null, tags = ['dialogue_scene','master_translate'],
-		reqs = [], character = 'zephyra',
+		reqs = [], character = 'zephyra_costume_7',
 		text = [ {text = "ZEPHYRA_COSTUME_9", reqs = []}],
 		options = [ {
-			code = 'zephyra_costume_10', reqs = [], text = tr("ZEPHYRA_COSTUME_7_OPTION_1"), type = 'next_dialogue', dialogue_argument = 1
+			code = 'zephyra_costume_10', reqs = [], text = tr("ZEPHYRA_COSTUME_9_OPTION_1"), type = 'next_dialogue', dialogue_argument = 1, bonus_effects = [
+			{code = 'unique_character_changes', value = 'zephyra', args = [
+			{code = 'body_image', operant = '=', value = "zephyra_costume_7_body"},
+			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/zephyra_7_prt.png"}]}],
 		}, {
 			code = 'zephyra_costume_10', reqs = [], text = tr("ZEPHYRA_COSTUME_9_OPTION_2"), type = 'next_dialogue', dialogue_argument = 2
 		}, {
@@ -129,7 +132,7 @@ var data = {
 	
 	zephyra_costume_10 = { 
 		image = null, tags = ['dialogue_scene','master_translate'],
-		reqs = [], character = 'zephyra',
+		reqs = [], character = 'zephyra_costume_7',
 		text = [ {text = "ZEPHYRA_COSTUME_10_1", reqs = [], previous_dialogue_option = 1}, 
 		 {text = "ZEPHYRA_COSTUME_10_2", reqs = [], previous_dialogue_option = 2}, 
 		 {text = "ZEPHYRA_COSTUME_10_3", reqs = [], previous_dialogue_option = 3}, ],
