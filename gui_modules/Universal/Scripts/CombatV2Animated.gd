@@ -1136,7 +1136,10 @@ func fill_summons(): #for necros only. needs rework in case of different summone
 				var data = Enemydata.summons[summon]
 				var amount = 0.0
 				for rec in data.amount:
-					amount += tchar.get_stat(rec.stat) * rec.mod
+					if rec is Dictionary:
+						amount += tchar.get_stat(rec.stat) * rec.mod
+					else:
+						amount += rec
 				amount = int(ceil(amount))
 				for ii in range(amount):
 					summon(data.summon, 6, 'ally')
