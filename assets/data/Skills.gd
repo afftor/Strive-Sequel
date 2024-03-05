@@ -4016,11 +4016,14 @@ var Skilllist = {
 }
 
 func get_charges(skill, caster):#template, object
-	if !skill.has('charges'): return 0
-	if typeof(skill.charges) == TYPE_ARRAY:
-		return round(caster.calculate_number_from_string_array(skill.charges))
-	elif typeof(skill.charges) == TYPE_INT:
-		return skill.charges
-	else:
-		print('error in skill template %s' % [skill.code])
-
+	var res = 0
+	if skill.has('charges'): 
+		if typeof(skill.charges) == TYPE_ARRAY:
+			res = round(caster.calculate_number_from_string_array(skill.charges))
+		elif typeof(skill.charges) == TYPE_INT:
+			res = skill.charges
+		else:
+			print('error in skill template %s' % [skill.code])
+		if caster.has_status('communicative'):
+			res += 1
+	return res

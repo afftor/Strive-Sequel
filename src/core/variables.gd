@@ -501,3 +501,5 @@ var factor_personality_changes = { #chance of change of primary and seondary axi
 	5 : [90, 10],
 	6 : [100, 0]
 }
+
+var mentorship_list = ['loyalty_basic_servitude', 'loyalty_combatant']

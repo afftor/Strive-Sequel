@@ -220,7 +220,10 @@ func add_stat(statname, value, revert = false):
 			xp_module.base_exp += value
 	elif statname == 'abil_exp':
 		if value > 0:
-			xp_module.abil_exp += value * get_stat('exp_gain_mod')
+			var mod = get_stat('exp_gain_mod')
+			if has_status('intelligence'):
+				mod += 0.4
+			xp_module.abil_exp += value * mod
 		else:
 			xp_module.abil_exp += value
 			
@@ -235,8 +238,8 @@ func add_part_stat(statname, value, revert = false):
 	statlist.add_part_stat(statname, value, revert)
 	recheck_effect_tag('recheck_stats')
 
-func change_personality_stats(stat, init_value):
-	return statlist.change_personality_stats(stat, init_value)
+func change_personality_stats(stat, init_value, flag = false):
+	return statlist.change_personality_stats(stat, init_value, flag)
 
 func get_weapon_range():
 	return equipment.get_weapon_range()
@@ -989,11 +992,17 @@ func death():
 	if displaynode != null:
 		displaynode.defeat()
 	if input_handler.combat_node != null:
-		affect_char({type = 'effect', value = 'e_g_injury_delay'})
+		if has_status('fastheal'):
+			affect_char({type = 'effect', value = 'e_g_injury_delay_alt'})
+		else:
+			affect_char({type = 'effect', value = 'e_g_injury_delay'})
 		#in this case check for permadeath is not here but in various finish combat methods
 	else:
 		if ResourceScripts.game_globals.difficulty != 'hard':
-			affect_char({type = 'effect', value = 'e_grave_injury'})
+			if has_status('fastheal'):
+				affect_char({type = 'effect', value = 'e_grave_injury_alt'})
+			else:
+				affect_char({type = 'effect', value = 'e_grave_injury'})
 		else:
 			killed(false)
 		#add permadeath check here

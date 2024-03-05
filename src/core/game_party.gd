@@ -74,6 +74,14 @@ func fix_import():
 		characters[p].fix_import()
 
 #slaves operations
+func unlock_mentor():
+	for p in characters:
+		if characters[p].is_master(): 
+			continue
+		for tr in variables.mentorship_list:
+			characters[p].add_trait(tr)
+
+
 func add_slave(person, child = false):
 	if child: characters_pool.move_baby_to_state(person.id)
 	else: characters_pool.move_to_state(person.id)
@@ -85,6 +93,9 @@ func add_slave(person, child = false):
 		ResourceScripts.game_world.easter_egg_characters_acquired.append(person.get_stat('unique'))
 	person.fill_masternoun()
 	person.set_stat('metrics_ownership', ResourceScripts.game_globals.get_date()[0])
+	if get_master().check_trait('master_mentor'): 
+		for tr in variables.mentorship_list:
+			person.add_trait(tr)
 	globals.text_log_add("slaves","New character acquired: " + person.get_short_name() + ". ")
 	globals.emit_signal("slave_added")
 

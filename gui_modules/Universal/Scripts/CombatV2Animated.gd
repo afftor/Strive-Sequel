@@ -235,7 +235,11 @@ func FinishCombat(victory = true):
 				ch.is_active = true
 				ch.defeated = false
 				ch.combat_position = 0
-				var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
+				var eff
+				if ch.has_status('fastheal'):
+					eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury_alt)
+				else:
+					eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
 				ch.apply_effect(effects_pool.add_effect(eff))
 			else:
 				ch.killed()
@@ -1127,9 +1131,15 @@ func fill_summons(): #for necros only. needs rework in case of different summone
 		if battlefield[i] == null: 
 			continue
 		var tchar = characters_pool.get_char_by_id(playergroup[i])
-		if tchar.has_profession('necromancer'):
-			for ii in range(ceil(tchar.get_stat('magic_factor') / 2)):
-				summon(['skeleton_melee', 'skeleton_archer'], 6, 'ally')
+		for summon in Enemydata.summons:
+			if tchar.has_status(summon):
+				var data = Enemydata.summons[summon]
+				var amount = 0.0
+				for rec in data.amount:
+					amount += tchar.get_stat(rec.stat) * rec.mod
+				amount = int(ceil(amount))
+				for ii in range(amount):
+					summon(data.summon, 6, 'ally')
 
 #	var num = 0
 ##	num = 1 #test

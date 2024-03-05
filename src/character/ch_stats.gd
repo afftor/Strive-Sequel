@@ -1059,6 +1059,8 @@ func add_trait(tr_code):
 			parent.get_ref().remove_static_effect_by_code('work_rule_contraceptive')
 		parent.get_ref().set_work_rule("ration", false)
 		parent.get_ref().set_work_rule("contraceptive", false)
+	if tr_code == 'master_mentor':
+		ResourceScripts.game_party.unlock_mentor()
 	parent.get_ref().recheck_effect_tag('recheck_trait')
 
 
@@ -1985,7 +1987,7 @@ func recheck_upgrades():
 				remove_upgrade(upg) #hope that there would be no removal chaining
 
 
-func change_personality_stats(stat, init_value):
+func change_personality_stats(stat, init_value, communicative = false):
 	var prim_stat
 	var primaxis = ''
 	var altaxis = ''
@@ -2005,7 +2007,10 @@ func change_personality_stats(stat, init_value):
 #	value = value*1+rand_range(0.2,-0.2)
 	value *= 1 + rand_range(0.2,-0.2)
 	
-	if variables.factor_personality_changes[prim_stat][0] <= randf() * 100: #if character's factor chance is lower than check, then character goes opposite direction on personality grid
+	var backfire_chance = variables.factor_personality_changes[prim_stat][0]
+	if communicative:
+		backfire_chance *= 0.5
+	if backfire_chance <= randf() * 100: #if character's factor chance is lower than check, then character goes opposite direction on personality grid
 		value = -value
 		rebel = true
 	
@@ -2015,6 +2020,8 @@ func change_personality_stats(stat, init_value):
 		if randf() >= 0.5:
 			 secondary_axis_change = -secondary_axis_change
 	
+	if communicative:
+		value *= 2
 	var newvalue = [int(value), int(secondary_axis_change)]
 	
 	statlist[primaxis] += newvalue[0]

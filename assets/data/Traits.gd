@@ -304,6 +304,24 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_hide'],
 	},
+	assassin = {
+		code = 'assassin',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		tags = ['assassin_hide']
+	},
+	necromancer = {
+		code = 'necromancer',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		tags = ['summon_skeletons']
+	},
 	farmer = {#+50% farm production
 		code = 'farmer',
 		name = '',
@@ -505,15 +523,6 @@ var traits = {
 		tags = ['neutral', 'permanent']
 	},
 	
-	
-	stealth = {
-		code = 'stealth',
-		name = '',
-		descript = '',
-		icon = null,
-		visible = false,
-		effects = ['e_tr_hide'],
-	},
 	#new ones
 	#positive
 	prodigy = {
@@ -925,6 +934,112 @@ var traits = {
 		weight = 100,
 		conflicts = ['bawdy'],
 		tags = ['negative', 'no_sex_traits']
+	},
+	#master
+	master_mentor = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_mentorship.png",
+		effects = [],
+		bonusstats = {},
+		reqs = [],
+		l_cost = 10,#fix
+		tree_position = {tab = 3, x = 1, y = 0.5}, #fix
+		tags = ['loyalty_master', 'mentor'],
+	},
+	master_harlotry = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_harlotry.png",
+		effects = [],
+		bonusstats = {mod_pros = 1.2},
+		reqs = [],
+		l_cost = 10,#fix
+		tree_position = {tab = 3, x = 4, y = 0.5}, #fix
+		tags = ['loyalty_master', 'harlotry'],
+	},
+	master_progenecy = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_progenecy.png",
+		effects = [],
+		bonusstats = {},
+		reqs = [],
+		l_cost = 10,#fix
+		tree_position = {tab = 3, x = 7, y = 0.5}, #fix
+		tags = ['loyalty_master', 'breeder'],
+	},
+	master_communicative = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_communicative.png",
+		effects = [],
+		bonusstats = {},
+		reqs = [],
+		l_cost = 10,#fix
+		tree_position = {tab = 3, x = 1, y = 3}, #fix
+		tags = ['loyalty_master', 'communicative'],
+	},
+	master_resilence = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_resilence.png",
+		effects = [],
+		bonusstats = {resist_fire = 20,
+			resist_earth = 20,
+			resist_water = 20,
+			resist_air = 20,
+			resist_light = 20,
+			resist_dark = 20,
+			resist_mind = 20},
+		reqs = [],
+		l_cost = 10,#fix
+		tree_position = {tab = 3, x = 4, y = 3}, #fix
+		tags = ['loyalty_master'],
+	},
+	master_fortune = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_fortune.png",
+		effects = [],
+		bonusstats = {critchance = 0.25, magic_find = 1},
+		reqs = [],
+		l_cost = 10,#fix
+		tree_position = {tab = 3, x = 7, y = 3}, #fix
+		tags = ['loyalty_master'],
+	},
+	master_int = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_intelligence.png",
+		effects = [],
+		bonusstats = {exp_gain_mod = 0.1},
+		reqs = [],
+		l_cost = 10,#fix
+		tree_position = {tab = 3, x = 1, y = 6}, #fix
+		tags = ['loyalty_master', 'intelligence'],
+	},
+	master_fortitude = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_fortitude.png",
+		effects = [],
+		bonusstats = {hp_reg_mod = 3},
+		reqs = [],
+		l_cost = 10,#fix
+		tree_position = {tab = 3, x = 4, y = 6}, #fix
+		tags = ['loyalty_master', 'fastheal'],
+	},
+	master_sorcery = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_sorcery.png",
+		effects = ['e_tr_sorcerer'],
+		bonusstats = {mp_reg_add = 1.5},
+		reqs = [],
+		l_cost = 10,#fix
+		tree_position = {tab = 3, x = 7, y = 6}, #fix
+		tags = ['loyalty_master'],
 	},
 	#loyalty
 	loyalty_basic_servitude = {

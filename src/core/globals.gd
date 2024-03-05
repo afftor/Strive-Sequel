@@ -2103,6 +2103,8 @@ func common_effects(effects):
 				var newreq = [{type = 'date', operant = 'eq', value = variables.base_loan_dates[i.stage - 1]}, {type = 'hour', operant = 'eq', value = 1}]
 				newevent.reqs += newreq
 				ResourceScripts.game_progress.stored_events.timed_events.append(newevent)
+			'add_master_points':
+				ResourceScripts.game_progress.master_points += i.value
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})
