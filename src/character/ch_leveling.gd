@@ -625,8 +625,10 @@ func select_brothel_activity():
 			if parent.get_ref().checkreqs([{code = 'trait', trait = tasks.gold_tasks_data[i].req_training, check = false}]):
 					no_training = true
 	
-	parent.get_ref().add_stat('metrics_serviceperformed', 1)
 	if sex_rules.size() > 0:
+		parent.get_ref().add_stat('metrics_serviceperformed', 1)
+		if parent.get_ref().has_status('harlotry'):
+			parent.get_ref().rest_tick()
 		#pick chance
 		if 50 + max(parent.get_ref().get_stat('sexuals')/2,parent.get_ref().get_stat('charm')/2) > randf()*100:
 			var remove_from_sex = []
@@ -680,6 +682,10 @@ func select_brothel_activity():
 			
 			return
 	elif non_sex_rules.size() > 0:
+		parent.get_ref().add_stat('metrics_serviceperformed', 1)
+		if parent.get_ref().has_status('harlotry'):
+			parent.get_ref().rest_tick()
+		
 		var highest_value = get_highest_value(non_sex_rules)
 		
 		var data = tasks.gold_tasks_data[highest_value.code]

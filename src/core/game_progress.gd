@@ -56,6 +56,8 @@ var dialogue_local_counters = {}
 var planned_mansion_events = []
 
 
+var master_points = 0
+
 func _init():
 	globals.connect("hour_tick", self, 'check_timed_events')
 
@@ -69,6 +71,7 @@ func fix_serialization():
 		if input_handler.if_translation_key(line):
 			tmp.push_back(line)
 	seen_dialogues = tmp
+	master_points = int(master_points)
 	
 	#divine_symbol_quest fix
 	var t = get_active_quest('divine_symbol_quest')

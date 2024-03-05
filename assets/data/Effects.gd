@@ -192,7 +192,11 @@ var effect_table = {
 	e_tr_hide = {
 		type = 'trigger',
 		trigger = [variables.TR_COMBAT_S],
-		conditions = [{type = 'owner', value = [{code = 'gear_equiped', param = 'geartype', value = 'heavy', check = false}, {code = 'gear_equiped', param = 'geartype', value = 'medium', check = false}]}],
+		conditions = [{type = 'owner', value = [
+			{code = 'gear_equiped', param = 'geartype', value = 'medium', check = false},
+			{orflag = true, code = 'has_status', status = 'assasin_hide', check = true},
+			{code = 'gear_equiped', param = 'geartype', value = 'heavy', check = false},
+		]}],
 		atomic = [],
 		buffs = [],
 		req_skill = false,
@@ -1113,6 +1117,43 @@ var effect_table = {
 		tick_event = variables.TR_TICK,
 		target = 'owner',
 		duration = 12,
+		stack = 1,
+		sub_effects = [],
+		tags = ['addition_rest_tick', 'no_combat', 'on_dead', 'injury'],# need to implement person.has_status('no_combat') check in exploration interface
+		atomic = [
+			{type = 'stat_add', stat = 'sexuals_bonus', value = -50},
+			{type = 'stat_add_p', stat = 'productivity', value = -0.25},#or simply stat_add as productivity is measured in persents and '-25% productivity' can have both meanings
+		],
+		buffs = [
+			{#to fix
+				icon = "res://assets/images/iconsskills/icon_blood_explosion.png",
+				description = "TRAITEFFECTGRAVEINJ", 
+				limit = 1,
+				t_name = 'grave_injury',
+#				mansion_only = true,
+			}
+		],
+	},
+	e_g_injury_delay_alt = {
+		type = 'trigger',
+		trigger = [variables.TR_COMBAT_F],
+		req_skill = false,
+		tags = ['on_dead'],
+		conditions = [],
+		sub_effects = ['e_grave_injury_alt',
+			{
+				type = 'oneshot',
+				target = 'self',
+				execute = 'remove'
+			}
+		]
+	},
+	e_grave_injury_alt = {
+		type = 'temp_s',
+		name = 'grave_injury',
+		tick_event = variables.TR_TICK,
+		target = 'owner',
+		duration = 8,
 		stack = 1,
 		sub_effects = [],
 		tags = ['addition_rest_tick', 'no_combat', 'on_dead', 'injury'],# need to implement person.has_status('no_combat') check in exploration interface
@@ -3342,6 +3383,7 @@ var effect_table = {
 		],
 		descript = "MANAGERSLAVETRAITDESCRIPT",
 	},
+	e_tr_sorcerer = rebuild_stat_bonus('matk', 0.35, null, 'stat_add_p'),
 	#statuses 
 	e_s_burn_new = {
 		type = 'temp_s',

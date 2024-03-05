@@ -7,6 +7,7 @@ var person
 var universal_skills = ['oral','anal','petting']
 
 onready var loyalty_panel = $UpgradesPanel/ScrollContainer/UpgradesList
+onready var loyalty_panel_master = $UpgradesPanel/ScrollContainer2/UpgradesList2
 var loyalty_mode = true
 var loyalty_tab = 1
 
@@ -35,6 +36,7 @@ func _ready():
 	$FF.connect("pressed", self, 'show_food_filter')
 	$SlaveDietModule/close.connect("pressed", self, 'hide_food_filter')
 	loyalty_panel.root = get_parent()
+	loyalty_panel_master.root = get_parent()
 	
 
 func set_work_rule(rule):
@@ -67,18 +69,34 @@ func update():
 	hide_food_filter()
 	#relatives
 	$RelativesPanel.build_relatives()
-	setup_tab()
 	if person.is_master():
-		$change_button.visible = false
-		if loyalty_mode:
-			swap_mode()
+		loyalty_tab = 3
+		loyalty_panel.get_parent().visible = false
+		loyalty_panel_master.get_parent().visible = true
 	else:
-		$change_button.visible = true
-		if !loyalty_mode:
-			swap_mode()
-		input_handler.ActivateTutorial("training")
-
-	$UpgradesPanel/Label.text = tr("SLAVE_LOYALTY") + ": " + str(floor(person.get_stat("loyalty")))
+		if loyalty_tab == 3:
+			loyalty_tab = 1
+		loyalty_panel.get_parent().visible = true
+		loyalty_panel_master.get_parent().visible = false
+	setup_tab()
+#	if person.is_master():
+#		$change_button.visible = false
+#		if loyalty_mode:
+#			swap_mode()
+#	else:
+#		$change_button.visible = true
+#		if !loyalty_mode:
+#			swap_mode()
+#		input_handler.ActivateTutorial("training")
+	$change_button.visible = true
+	if !loyalty_mode:
+		swap_mode()
+	input_handler.ActivateTutorial("training")
+	
+	if person.is_master():
+		$UpgradesPanel/Label.text = tr("MASTER_POINTS") + ": " + str(ResourceScripts.game_progress.master_points)
+	else:
+		$UpgradesPanel/Label.text = tr("SLAVE_LOYALTY") + ": " + str(floor(person.get_stat("loyalty")))
 	#globals.connecttexttooltip($UpgradesPanel/Label, "")
 	#work_rules part
 	var luxury_rooms_taken = 0
@@ -294,14 +312,22 @@ func swap_tab(tab):
 
 
 func setup_tab(rebuild = true):
-	if loyalty_tab == 2:
-		$change_button2.pressed = false
-		$change_button3.pressed = true
+	if loyalty_tab == 3:
+		$change_button2.visible = false
+		$change_button3.visible = false
+		if rebuild:
+			loyalty_panel_master.update_upgrades_tree()
 	else:
-		$change_button2.pressed = true
-		$change_button3.pressed = false
-	if rebuild:
-		loyalty_panel.update_upgrades_tree(person, loyalty_tab)
+		$change_button2.visible = true
+		$change_button3.visible = true
+		if loyalty_tab == 2:
+			$change_button2.pressed = false
+			$change_button3.pressed = true
+		else:
+			$change_button2.pressed = true
+			$change_button3.pressed = false
+		if rebuild:
+			loyalty_panel.update_upgrades_tree(person, loyalty_tab)
 
 
 func build_personality():

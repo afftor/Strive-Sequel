@@ -1859,6 +1859,15 @@ var enemies = {
 	},
 }
 
+var summons = {
+	summon_skeletons = {
+		summon = ['skeleton_melee', 'skeleton_archer'],
+		amount = [{stat = 'magic_factor', mod = 0.5}]
+	}
+}
+
+
+
 var loot_variants_data = {
 	easy_chest_usable = [
 	{code = 'material', min = 2, max = 5, grade = ['easy', 'medium']},

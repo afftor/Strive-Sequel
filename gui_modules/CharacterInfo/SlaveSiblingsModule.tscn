@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.gd" type="Script" id=2]
@@ -46,6 +46,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_shy_chary.png" type="Texture" id=44]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_bold.png" type="Texture" id=45]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/cirlcle.png" type="Texture" id=46]
+[ext_resource path="res://gui_modules/CharacterInfo/MUpgradesList.tscn" type="PackedScene" id=47]
 
 [sub_resource type="DynamicFont" id=3]
 size = 36
@@ -800,6 +801,16 @@ theme = ExtResource( 15 )
 scroll_horizontal_enabled = false
 
 [node name="UpgradesList" parent="UpgradesPanel/ScrollContainer" instance=ExtResource( 27 )]
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="UpgradesPanel"]
+margin_left = 890.0
+margin_top = 102.0
+margin_right = 1639.0
+margin_bottom = 826.0
+theme = ExtResource( 15 )
+scroll_horizontal_enabled = false
+
+[node name="UpgradesList2" parent="UpgradesPanel/ScrollContainer2" instance=ExtResource( 47 )]
 
 [node name="personality" type="TextureRect" parent="."]
 margin_left = 398.0
