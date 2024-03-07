@@ -472,6 +472,7 @@ var portraits = {
 	zephyra = 'res://assets/images/portraits/zephyra_prt.png',
 	zephyra_nude = 'res://assets/images/portraits/zephyra_nude_prt.png',
 	zephyra_wed = 'res://assets/images/portraits/zephyra_wed_prt.png',
+	zephyra_costume_7 = 'res://assets/images/portraits/zephyra_7_prt.png',
 	mae = "res://assets/images/portraits/mae_prt.png",
 	mae_nude = "res://assets/images/portraits/mae_nude_prt.png",
 	lilia = "res://assets/images/portraits/lilia_prt.png",
