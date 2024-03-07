@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/wing_class.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/images/iconsclasses/Barbarian.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/glow_class.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/panel_outer_class.png" type="Texture" id=8]
+[ext_resource path="res://gui_modules/Animations/animation.gd" type="Script" id=9]
 
 [sub_resource type="Animation" id=1]
 length = 6.0
@@ -307,10 +308,13 @@ font_data = ExtResource( 1 )
 [node name="Control" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 9 )
 __meta__ = {
-"_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 1055.36 ]
 }
+fade_delay = 0.5
+set_music = "mansion1"
+sound = "class_aquired"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/class_achieved = SubResource( 1 )
@@ -323,9 +327,6 @@ margin_bottom = 215.614
 texture = ExtResource( 4 )
 flip_h = true
 flip_v = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect5" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -341,7 +342,7 @@ __meta__ = {
 [node name="TextureRect4" type="TextureRect" parent="."]
 margin_left = -1558.21
 margin_top = 296.242
-margin_right = -9.19946
+margin_right = -9.19934
 margin_bottom = 532.242
 texture = ExtResource( 4 )
 __meta__ = {
@@ -361,10 +362,12 @@ __meta__ = {
 }
 
 [node name="TextureRect8" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 545.556
 margin_top = 107.276
 margin_right = 665.556
 margin_bottom = 357.276
+rect_rotation = 90.0
 rect_pivot_offset = Vector2( 121.676, 242.8 )
 texture = ExtResource( 2 )
 flip_h = true
@@ -373,15 +376,14 @@ __meta__ = {
 }
 
 [node name="TextureRect9" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 1257.7
 margin_top = 107.759
 margin_right = 1377.7
 margin_bottom = 357.759
+rect_rotation = -90.0
 rect_pivot_offset = Vector2( 3.08203, 239.505 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect7" type="TextureRect" parent="."]
 margin_left = 663.406
@@ -397,6 +399,7 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 680.148
 margin_top = 161.004
 margin_right = 980.148
@@ -420,12 +423,13 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 861.0
 margin_top = 161.0
 margin_right = 1251.0
 margin_bottom = 228.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.54902, 0.658824, 0.529412, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Class aquired"
 align = 1
 __meta__ = {
@@ -433,12 +437,13 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 895.25
 margin_top = 227.478
 margin_right = 1216.25
 margin_bottom = 294.478
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.87451, 1, 0.85098, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Barbarian"
 align = 1
 __meta__ = {
@@ -446,12 +451,13 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 894.786
 margin_top = 284.405
 margin_right = 1215.79
 margin_bottom = 351.405
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.596078, 0.466667, 0.345098, 1 )
+custom_fonts/font = SubResource( 4 )
 text = "Hettie Darkmane"
 align = 1
 __meta__ = {
