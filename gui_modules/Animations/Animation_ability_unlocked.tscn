@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/AbilityUnlocked/glow_panel_abilityunlock.png" type="Texture" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_36.tres" type="DynamicFont" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_42.tres" type="DynamicFont" id=7]
 [ext_resource path="res://assets/images/iconsskills/arrowshower.png" type="Texture" id=8]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/AbilityUnlocked/mask_panel_abilityunlock.png" type="Texture" id=9]
+[ext_resource path="res://gui_modules/Animations/animation.gd" type="Script" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Ability_unlocked"
@@ -222,19 +223,24 @@ tracks/16/keys = {
 [node name="Control" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 10 )
 __meta__ = {
-"_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 959.544 ]
 }
+fade_delay = 0.5
+lock_input = true
+sound = "quest_completed"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Ability_unlocked = SubResource( 1 )
 
 [node name="TextureRect5" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 523.371
 margin_top = 746.814
 margin_right = 649.371
 margin_bottom = 1028.81
+rect_rotation = 90.0
 rect_pivot_offset = Vector2( 126.001, 281.979 )
 texture = ExtResource( 3 )
 flip_h = true
@@ -243,10 +249,12 @@ __meta__ = {
 }
 
 [node name="TextureRect6" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 1268.0
 margin_top = 746.0
 margin_right = 1394.0
 margin_bottom = 1028.0
+rect_rotation = -90.0
 rect_pivot_offset = Vector2( 0.0090332, 283.232 )
 texture = ExtResource( 3 )
 __meta__ = {
@@ -258,6 +266,7 @@ margin_left = 630.0
 margin_top = 827.009
 margin_right = 1290.0
 margin_bottom = 1027.01
+rect_scale = Vector2( 1e-05, 1 )
 rect_pivot_offset = Vector2( 329.477, 100.777 )
 texture = ExtResource( 4 )
 __meta__ = {
@@ -265,6 +274,7 @@ __meta__ = {
 }
 
 [node name="TextureRect7" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 631.168
 margin_top = 827.043
 margin_right = 706.168
@@ -278,6 +288,7 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 628.315
 margin_top = 825.042
 margin_right = 1292.32
@@ -294,6 +305,7 @@ margin_left = 630.0
 margin_top = 827.0
 margin_right = 1291.0
 margin_bottom = 1027.0
+rect_scale = Vector2( 1e-05, 1 )
 rect_pivot_offset = Vector2( 329.525, 99.7072 )
 texture = ExtResource( 6 )
 stretch_mode = 6
@@ -302,6 +314,7 @@ __meta__ = {
 }
 
 [node name="Mask panel" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 630.0
 margin_top = 827.0
 margin_right = 1291.0
@@ -312,26 +325,28 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 856.251
 margin_top = 840.907
 margin_right = 1257.25
 margin_bottom = 907.907
 rect_pivot_offset = Vector2( 206.653, 34.6144 )
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.00784314, 0.788235, 0.984314, 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "Ability unlocked"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label2" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 856.183
 margin_top = 896.991
 margin_right = 1257.18
 margin_bottom = 955.991
 rect_pivot_offset = Vector2( 206.653, 34.6144 )
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.0154724, 0.539278, 0.660156, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "Arrow shower"
 align = 1
 valign = 1
@@ -340,13 +355,14 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 853.786
 margin_top = 948.164
 margin_right = 1254.79
 margin_bottom = 1007.16
 rect_pivot_offset = Vector2( 206.653, 34.6144 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.596078, 0.466667, 0.345098, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Hettie Darkmane"
 align = 1
 valign = 1

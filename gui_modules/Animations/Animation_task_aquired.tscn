@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/dynamicfont_ledger.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskAquired/flag_top.png" type="Texture" id=3]
+[ext_resource path="res://gui_modules/Animations/animation.gd" type="Script" id=4]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskAquired/flag_bottom.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskAquired/goldstripes.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskAquired/mask_goldstripes.png" type="Texture" id=7]
@@ -188,9 +189,7 @@ tracks/10/keys = {
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource( 4 )
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 visible = false
@@ -255,8 +254,8 @@ margin_left = 684.0
 margin_top = 119.0
 margin_right = 1245.0
 margin_bottom = 186.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Task aсquired"
 align = 1
 __meta__ = {
@@ -270,8 +269,8 @@ margin_top = 192.0
 margin_right = 1243.0
 margin_bottom = 259.0
 rect_pivot_offset = Vector2( 188.832, 67.9652 )
-custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 5 )
 text = "Monster hunt"
 align = 1
 __meta__ = {

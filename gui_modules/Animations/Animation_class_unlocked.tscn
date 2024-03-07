@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassUnlocked/mask_classunlock_glow.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassUnlocked/panel_classunlock.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassUnlocked/stripe_classunlock_bottom.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassUnlocked/stripe_classunlock_top.png" type="Texture" id=5]
+[ext_resource path="res://gui_modules/Animations/animation.gd" type="Script" id=6]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassUnlocked/glow_panel_classulock.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/iconsclasses/True_Succubus.png" type="Texture" id=10]
 
@@ -170,11 +171,14 @@ font_data = ExtResource( 1 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 250.535 ],
-"_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 960.255 ]
 }
+fade_delay = 0.5
+lock_input = true
+sound = "class_aquired"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/class_unlocked = SubResource( 1 )
@@ -235,8 +239,8 @@ margin_top = 176.874
 margin_right = 1225.39
 margin_bottom = 243.874
 rect_pivot_offset = Vector2( 179.788, 29.811 )
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.713726, 0.0980392, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Class unlocked"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -248,8 +252,8 @@ margin_top = 248.707
 margin_right = 1225.55
 margin_bottom = 315.707
 rect_pivot_offset = Vector2( 179.788, 29.811 )
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.792157, 0.576471, 0.117647, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "True succubus"
 align = 1
 

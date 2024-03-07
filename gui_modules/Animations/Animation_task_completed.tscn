@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/filler_splashes_acquired.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/panel_complete.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/glow.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/mask_splashes_acquired.png" type="Texture" id=6]
+[ext_resource path="res://gui_modules/Animations/animation.gd" type="Script" id=7]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/mask_wings.png" type="Texture" id=8]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/wing.png" type="Texture" id=9]
 
@@ -183,11 +184,13 @@ font_data = ExtResource( 1 )
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 288.253 ],
-"_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 959.868 ]
 }
+fade_delay = 0.5
+sound = "quest_completed"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/task_completed = SubResource( 1 )
@@ -292,8 +295,8 @@ margin_left = 669.0
 margin_top = 108.0
 margin_right = 1247.0
 margin_bottom = 175.0
-custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 5 )
 text = "Task completed "
 align = 1
 valign = 1
@@ -307,8 +310,8 @@ margin_left = 676.0
 margin_top = 190.0
 margin_right = 1246.0
 margin_bottom = 257.0
-custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "Monster hunt"
 align = 1
 valign = 1

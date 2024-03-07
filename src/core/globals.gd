@@ -1924,7 +1924,8 @@ func common_effects(effects):
 			'unlock_class':
 				if !ResourceScripts.game_progress.unlocked_classes.has(i.name):
 					ResourceScripts.game_progress.unlocked_classes.append(i.name)
-					input_handler.play_unlock_class_anim(i.name)
+#					input_handler.play_unlock_class_anim(i.name)
+					input_handler.play_animation('class_unlocked', {new_class = i.name})
 			'reset_day_count':
 				ResourceScripts.game_progress.reset_day_count(i.quest)
 			#to_loc and from_loc are location-defining data dicts

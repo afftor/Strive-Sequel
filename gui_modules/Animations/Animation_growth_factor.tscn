@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Growth factor/panel_growthfactor.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Growth factor/fx1_growthfactor.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Growth factor/panel_outerglow_growthfactor.png" type="Texture" id=7]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=8]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_42.tres" type="DynamicFont" id=9]
+[ext_resource path="res://gui_modules/Animations/animation.gd" type="Script" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Animation_growth_factor"
@@ -250,9 +251,9 @@ margin_left = 1.89075
 margin_top = -2.05054
 margin_right = 1.89075
 margin_bottom = -2.05054
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource( 10 )
+fade_delay = 0.5
+lock_input = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Animation_growth_factor = SubResource( 1 )
@@ -287,8 +288,8 @@ margin_top = 235.11
 margin_right = 1202.66
 margin_bottom = 294.11
 grow_horizontal = 2
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.882353, 0.705882, 0.227451, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Jason Grinwal"
 align = 1
 __meta__ = {
@@ -302,8 +303,8 @@ margin_top = 295.005
 margin_right = 1229.18
 margin_bottom = 337.005
 grow_horizontal = 2
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 1, 0.964706, 0.776471, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Physics Factor: Excellent"
 align = 1
 __meta__ = {
@@ -311,6 +312,7 @@ __meta__ = {
 }
 
 [node name="TextureRect3" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 908.646
 margin_top = 169.474
 margin_right = 1248.65
@@ -341,11 +343,11 @@ margin_bottom = 232.126
 texture = ExtResource( 3 )
 
 [node name="TextureRect4" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 909.309
 margin_top = 170.93
 margin_right = 967.309
 margin_bottom = 228.93
-rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 28.7624, 29.1359 )
 texture = ExtResource( 6 )
 __meta__ = {
@@ -359,7 +361,6 @@ margin_top = 119.96
 margin_right = 1018.02
 margin_bottom = 279.96
 rect_rotation = -340.0
-rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 79.9783, 79.9831 )
 texture = ExtResource( 2 )
 __meta__ = {
@@ -367,6 +368,7 @@ __meta__ = {
 }
 
 [node name="fill1" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 909.309
 margin_top = 170.93
 margin_right = 967.309
@@ -378,6 +380,7 @@ __meta__ = {
 }
 
 [node name="fill2" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 965.309
 margin_top = 170.93
 margin_right = 1023.31
@@ -389,6 +392,7 @@ __meta__ = {
 }
 
 [node name="fill3" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 1022.31
 margin_top = 170.93
 margin_right = 1080.31
@@ -400,6 +404,7 @@ __meta__ = {
 }
 
 [node name="fill4" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 1080.31
 margin_top = 170.93
 margin_right = 1138.31
@@ -411,6 +416,7 @@ __meta__ = {
 }
 
 [node name="fill5" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 1135.31
 margin_top = 170.93
 margin_right = 1193.31
