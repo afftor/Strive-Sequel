@@ -322,6 +322,15 @@ var traits = {
 		effects = [],
 		tags = ['summon_skeletons']
 	},
+	ranger = {
+		code = 'ranger',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		tags = ['summon_dog']
+	},
 	farmer = {#+50% farm production
 		code = 'farmer',
 		name = '',

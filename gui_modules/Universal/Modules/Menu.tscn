@@ -664,7 +664,32 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "Added personality bonuses and personality changing mechanic to characters
+bbcode_text = "Added forgetting location to the map options
+Added an option to Amelia's quest to keep her as servant leader
+Added some missing scenes to the gallery
+Removed an option to send unavailable characters to other locations
+Fixed punish not switching personality to shy correctly
+Fixed staves on paper doll having wrong models
+Fixed taurus ears being purple
+Fixed shop items randomizing quality/enchants on shop reopen
+Fixed bow skills not working with crossbows
+Fixed some map issues
+Fixed an issue with loyalty spec receiving too many levels
+Fixed Bold damage bonus not applying to all aoe hits (probably other similar buffs as well)
+Fixed some value modifiers not working correctly
+0.8.2
+Added 3 new weapon types (Battleaxe, mace, crossbow)
+Added world map in exchange for travel screen
+Added visual display to paper doll for most weapons
+Added new loyalty classes to replace Swear Loyalty trait
+Added warning to marry tutorial that it can only be done once
+Added chinese translation (somewhat outdated)
+Virginity only affects buy/sell price now
+Removed Peon slave type
+Fixed wits boost potion buffing physics instead
+Multiple fixes to enchants, quests, saves
+0.8.1
+Added personality bonuses and personality changing mechanic to characters
 New personality system: Personalities now apply varying penalties and/or bonuses. Obedience actions will change target's personality depending on the action. However on lower Tame/Timid factors actions can backfire and change personality into a different direction. The actions for change are: Praise (Kind), Punish (Shy), Warn (Serious), Serve (Bold)
 New personality added: Neutral (no bonuses or penalties)
 Fixed large quantity of event bugs and typos
@@ -1529,7 +1554,32 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Added personality bonuses and personality changing mechanic to characters
+text = "Added forgetting location to the map options
+Added an option to Amelia's quest to keep her as servant leader
+Added some missing scenes to the gallery
+Removed an option to send unavailable characters to other locations
+Fixed punish not switching personality to shy correctly
+Fixed staves on paper doll having wrong models
+Fixed taurus ears being purple
+Fixed shop items randomizing quality/enchants on shop reopen
+Fixed bow skills not working with crossbows
+Fixed some map issues
+Fixed an issue with loyalty spec receiving too many levels
+Fixed Bold damage bonus not applying to all aoe hits (probably other similar buffs as well)
+Fixed some value modifiers not working correctly
+0.8.2
+Added 3 new weapon types (Battleaxe, mace, crossbow)
+Added world map in exchange for travel screen
+Added visual display to paper doll for most weapons
+Added new loyalty classes to replace Swear Loyalty trait
+Added warning to marry tutorial that it can only be done once
+Added chinese translation (somewhat outdated)
+Virginity only affects buy/sell price now
+Removed Peon slave type
+Fixed wits boost potion buffing physics instead
+Multiple fixes to enchants, quests, saves
+0.8.1
+Added personality bonuses and personality changing mechanic to characters
 New personality system: Personalities now apply varying penalties and/or bonuses. Obedience actions will change target's personality depending on the action. However on lower Tame/Timid factors actions can backfire and change personality into a different direction. The actions for change are: Praise (Kind), Punish (Shy), Warn (Serious), Serve (Bold)
 New personality added: Neutral (no bonuses or penalties)
 Fixed large quantity of event bugs and typos

@@ -1212,6 +1212,10 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLEARTHQUAKE_GLOB = "Earthquake",
 	SKILLL_ORB = "Lightning Orb",
 	SKILLL_ORBDESCRIPT = "Deals 250% of MATK as Air damage to a target. If target survives, deals half of the damage to random enemy.",
+	SKILLSNIPER_SHOT = "Ensnaring Shot",
+	SKILLSNIPER_SHOTDESCRIPT = "Deals 110% of ATK as Earth damage to a target. Apply Ensnared to target for 5 turns. ",
+	SKILLSOUL_BIND = "Soul Bind",
+	SKILLSOUL_BINDDESCRIPT = "Bends person's mind to submit to your will. After a day of rest they will follow most of your orders. ",
 	
 	SKILLFLY_EVASION = "Flight",
 	SKILLFLY_EVASIONDESCRIPT = "Increases Evasion by 65 for 3 turns.",
@@ -1460,7 +1464,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DESCRIPTCLASSHEIR = "[name] is your heir.",
 	
 	CLASSDETAILSKILLS = "Skills",
-	CLASSDETAILCOMBATSKILLS = "Combat SKills",
+	CLASSDETAILCOMBATSKILLS = "Combat Skills",
 	CLASSRIGHTCLICKDETAILS = "Right click for details",
 	
 	
@@ -1475,6 +1479,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATHPMAX = "Max. Health",
 	STATHPFACTOR = "Health Factor",
 	STATHPFACTORDESCRIPT = "Determines health bonuses acquired in most ways. A high health factor can greatly increase survivability. ",
+	STATHP_REG_MOD = "Healing Factor",
+	STATMP_REG_ADD = "Mana Regeneration",
 
 	STATHPMAXMOD = "Max. Health",
 
@@ -1543,7 +1549,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATWITS_BONUS = "Wits",
 	STATCHARM_BONUS = "Charm",
 	STATSEXUALS_BONUS = "Sexuals",
-
+	
+	
 	STATOBEDIENCE = "Obedience",
 	STATOBEDIENCEDESCRIPT = "Obedience is a character's willingness to obey your orders. Obedience is gained by using social skills. When depleted character can escape and will be lost in case that happens. ",
 	STATLOYALTY = "Loyalty",
@@ -1599,7 +1606,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	STATFOOD_CONSUMPTION = "Food Consumption",
 	STATFOOD_CONSUMPTIONDESCRIPT = "Amount of food items a person requires every day. Lack of food leads to starvation, exhaustion and eventual death.",
-
+	
+	MASTER_POINTS = "Mastery",
+	
 	TOOLTIPENERGY = "Energy is restored during sleep and is required for tasks. When a character is forced to work with no energy left, their Exhaustion increases. ",
 	TOOLTIPFATIGUE = "Fatigue increases with time and dissipates with entertainment. When unmanaged it may cause a performance penalty.",
 	TOOLTIPEXHAUSTION = "Exhaustion grows when a character is forced to work with no energy left. Exhaustion causes penalties to maximum health and production, and can lead to death if not taken care of for a long time.",
@@ -1683,7 +1692,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 	STATTASK_EFFICIENCY_TOOL = "Task Efficiency Bonus",
 	STATTASK_CRIT_CHANCE = "Task Crit Chance",
-
+	STATMAGIC_FIND = "Magic Find",
 
 
 
@@ -1963,10 +1972,17 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITADVANCED_SPELLSDESCRIPT = "Allows to learn advanced combat spells and staves",
 	
 	TRAITHUNTER_DAMAGEDESCRIPT = "Damage vs Beasts: +15%",
-	TRAITBISHOPDESCRIPT = "Light Magic damage: +40%",
+	TRAITBISHOPDESCRIPT = "Light Magic damage: +25%\n{color=brown|Luminance}: Single target Light abilities make target receive more Light and Dark damage.",
 	TRAITDRUIDDESCRIPT = "Earth Spell damage: +20%",
-	TRAITBERSERKERDESCRIPT = "Fire and Earth Physical damage: +20%",
+	TRAITBERSERKERDESCRIPT = "Fire and Earth Physical damage: +20%\n{color=brown|Frenzy}: After killing an enemy, gain an extra turn (once per combat).",
 	TRAITSNIPERDESCRIPT = "Single Target Physical damage: +25%",
+	TRAITPALADINDESCRIPT = "{color=brown|Smite}: Deal 25% more damage and take 15% less damage from Undead and Demon type enemies.",
+	TRAITASSASSINDESCRIPT = "{color=brown|Stealth Mastery}: Hiding can be activated in Medium Armor.",
+	TRAITBLOODMAGEDESCRIPT = "{color=brown|Blood Mastery}: Dealing damage to bleeding targets recovers HP and MP and increases MATK until end of fight.",
+	TRAITNECROMANCERDESCRIPT = "{color=brown|Mastery of the Dead}: Passive Summon: Skeletons. Number skeletons is defined by Magic Factor.",
+	TRAITRANGERDESCRIPT = "{color=brown|Animal Companion}: Passive Summon: Trained Dog",
+	TRAITALIOSDESCRIPT = "{color=brown|Unbound}: When only character is alive in party: gain +50 evasion, +20 speed until end of battle.",
+	TRAITSADISTDESCRIPT = "{color=brown|Open Vein}: Melee physical attacks have 25% chance to cause Bleeding for 2 turns.",
 	
 	TRAITHEALER1 = "Healer:Novice",
 	TRAITHEALER1DESCRIPT = "Healing spells are 25% more effective.",
@@ -2103,8 +2119,24 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITLOYALTY_PREGNANCYDESCRIPT = "{color=green|Unlocks an option to keep character's Baby on birth.}\n\nRequires: Sex:Basics",
 	TRAITLOYALTY_INTERBREED = "Pregnancy:Interbreed",
 	TRAITLOYALTY_INTERBREEDDESCRIPT = "{color=green|Allows character to impregnate or be impregnated by usually incompatible race partner}\n\nRequires: Sex:Advanced",
-	
-	
+	TRAITMASTER_MENTOR = "Mentor",
+	TRAITMASTER_MENTORDESCRIPT = "All present and future characters automatically receive Basic Obedience and Combat loyalty traits.",
+	TRAITMASTER_HARLOTRY = "Harlotry",
+	TRAITMASTER_HARLOTRYDESCRIPT = "While in service you still receive Rest benefits.",
+	TRAITMASTER_PROGENECY = "Progenecy",
+	TRAITMASTER_PROGENECYDESCRIPT = "Removes race impregnation restrictions.",
+	TRAITMASTER_COMMUNICATIVE = "Communicative",
+	TRAITMASTER_COMMUNICATIVEDESCRIPT = "Social skills gain 1 additional charge. Personality influences are twice as strong.",
+	TRAITMASTER_RESILENCE = "Resilence",
+	TRAITMASTER_RESILENCEDESCRIPT = "",
+	TRAITMASTER_FORTUNE = "Fortune",
+	TRAITMASTER_FORTUNEDESCRIPT = "Critical chance is increased by 25%. Slightly increases Magic Find.",
+	TRAITMASTER_INT = "Intelligence",
+	TRAITMASTER_INTDESCRIPT = "Increases Skill Points gain by 50%.",
+	TRAITMASTER_FORTITUDE = "Fortitude",
+	TRAITMASTER_FORTITUDEDESCRIPT = "Grave Injury from being defeated only last 2 turns.",
+	TRAITMASTER_SORCERY = "Sorcery",
+	TRAITMASTER_SORCERYDESCRIPT = "MATK +35%, faster mana recovery speed.",
 	
 	TRAITEFFECTVIRGIN = "[center]{color=yellow|Virginity}[/center]\nAs [name] has a observable virginity, this makes [him] more desirable for certain individuals. \n{color=yellow|Sell price is increased by 25%%}",
 	TRAITEFFECTRARESTURDY = "Rare: Sturdy\nIncreased Health and Armor Penetration",
@@ -2952,11 +2984,11 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEINSPECTBABY = "Inspect future baby",
 	DIALOGUEREMOVEBABY = "Leave it at an orphanage",
 
-	DIALOGUERECRUIT = "You stand before [name], who was captured and now awaits for [his] destiny. You can try to persuade [him] to join you willingly or simply turn [him] into slave.",
+	DIALOGUERECRUIT = "You stand before [name], who was captured and now awaits for [his] destiny. You can try to persuade [him] to join you willingly or simply enslave [him].",
 	DIALOGUERECRUITCHOOSEPERSON = "Choose Negotiator",
 	DIALOGUERECRUITENSLAVE = "You decide to not endorse into any negotiations and simply make [him] your slave against [his] will.",
 	DIALOGUERECRUITGOOD = "Your entrusted servant successfully managed to persuade [name] into serving you.",
-	DIALOGUERECRUITGOODSLAVE = "Make Slave",
+	DIALOGUERECRUITGOODSLAVE = "Make Servant",
 	DIALOGUERECRUITGOODSERVANT = "Make Peon",
 	DIALOGUERECRUITFORCEATTEMPT = "Enslave",
 	DIALOGUERECRUITATTEMPT = "Attempt to Recruit",
@@ -3206,6 +3238,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ENEMYBALLISTA = "Ballista",
 	ENEMYTROLL = "Troll",
 	ENEMYBANDIT_ASSASSIN = "Bandit Assassin",
+	ENEMYSUMMON_DOG = "Trained Dog",
+	ENEMYSUMMON_SKELETON_MELEE = "Skeleton Warrior",
+	ENEMYSUMMON_SKELETON_ARCHER = "Skeleton Archer",
 
 	ENEMYDEMONESS = "Demoness",
 	ENEMYGREG = "Greg",
