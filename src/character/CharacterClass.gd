@@ -337,17 +337,20 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 func get_class_list(category, person):
 	return xp_module.get_class_list(category, person)
 
-func generate_simple_fighter(tempname):
+func generate_simple_fighter(tempname, setup_ai = true):
 	var data = Enemydata.enemies[tempname]
 	statlist.generate_simple_fighter(data)
 	skills.setup_skills(data)
-	ai = ResourceScripts.scriptdict.class_ai_base.new()
-	if data.has('full_ai'):
-		ai.set_simple_ai(data.ai)
+	if setup_ai:
+		ai = ResourceScripts.scriptdict.class_ai_base.new()
+		if data.has('full_ai'):
+			ai.set_simple_ai(data.ai)
+		else:
+			#need check for hard difficulty
+			fill_ai(data.ai)
+		ai.app_obj = self
 	else:
-		#need check for hard difficulty
-		fill_ai(data.ai)
-	ai.app_obj = self
+		skills.fill_combatskills()
 	if data.has('tags') and data.tags.has('boss'):
 		globals.char_roll_data.uniq = true
 	recheck_effect_tag('recheck_stats')
@@ -712,7 +715,7 @@ func can_use_skill(skill):
 	return true
 
 func has_status(status):
-	var res = effects.has_status(status) or statlist.has_status(status) or tags.has(status)
+	var res = effects.has_status(status) or statlist.has_status(status) or xp_module.has_status(status) or tags.has(status)
 	return res
 
 func has_work_rule(rule):
@@ -1185,6 +1188,10 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'has_coverage':
 			var coverage = get_stat('skin_coverage')
 			return (coverage.find(i.coverage) != -1) == i.check
+		'lone_wolf':
+			if input_handler.combat_node == null:
+				return !i.check
+			return (input_handler.combat_node.playergroupcounter == 1) == i.check
 
 	return check
 
@@ -1503,10 +1510,11 @@ func apply_atomic(template):
 		'event':
 			process_event(template.value)
 		'resurrect':
-			if !defeated: return
-			self.hp = template.value
-			defeated = false
-			process_event(variables.TR_RES)
+			resurrect(template.value)
+#			if !defeated: return
+#			self.hp = template.value
+#			defeated = false
+#			process_event(variables.TR_RES)
 		'kill':
 			killed()
 		'use_combat_skill':
@@ -1532,6 +1540,9 @@ func apply_atomic(template):
 			learn_c_skill(template.skill)
 		'sfx':
 			play_sfx(template.value)
+		'disable':
+			xp_module.make_unavaliable()
+			
 
 
 func remove_atomic(template):
@@ -1555,6 +1566,8 @@ func remove_atomic(template):
 			remove_trait(template.trait)
 		'add_sex_trait', 'unlock_sex_trait':
 			remove_sex_trait(template.trait)
+		'disable':
+			xp_module.make_avaliable()
 
 func is_koed():
 	return (hp <= 0) or defeated or !is_active
@@ -1657,6 +1670,9 @@ func resurrect(hp_per):
 	if !defeated: return
 	defeated = false
 	hp = int(get_stat('hpmax') * hp_per /100)
+	if displaynode != null:
+		displaynode.update_hp()
+	process_event(variables.TR_RES)
 
 func pay_cost(cost):
 	for st in cost:

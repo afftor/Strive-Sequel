@@ -582,6 +582,29 @@ var Skilllist = {
 		value = [['0']],
 		damagestat = 'no_stat'
 	},
+	soul_bind = { #fix prams
+		code = 'soul_bind',
+		descript = '',
+		type = 'social',
+		ability_type = 'spell',
+		social_skill_stats = ['wits'],
+		reqs = [],
+		targetreqs = [{code = 'is_master', check = false}],
+		effects = [
+			Effectdata.rebuild_template({effect = 'e_s_dominate'}),
+			Effectdata.rebuild_template({effect = 'e_s_bond'}),
+		],
+		cost = {mp = 50},
+		dialogue_report = '',
+		dialogue_show_repeat = false,
+		dialogue_image = 'mindcontrol',
+		charges = 1,
+		cooldown = 3,
+		icon = load("res://assets/images/iconsskills/TurnUndead.png"),
+		tags = [],
+		value = [['0']],
+		damagestat = 'no_stat'
+	},
 	
 	
 	#Combat Skills
@@ -1656,6 +1679,32 @@ var Skilllist = {
 		value = [['caster.atk','*0.9'],0.9],
 		damagestat = ['no_stat','+damage_hp'],
 	},
+	sniper_shot = {
+		code = 'sniper_shot',
+		
+		descript = '',
+		icon = load("res://assets/images/iconsskills/heavyshot.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['damage','ads'],
+#		new_syntax = true,
+		learn_reqs = [{code = 'trait', trait = 'basic_combat', check = true}],
+		reqs = [{code = 'gear_equiped', param = 'geartype', value = 'bow', check = true}],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_s_ensnare5', push_characters = true})],
+		cost = {},
+		charges = 0,
+		combatcooldown = 3,#?
+		cooldown = 0,
+		catalysts = {},
+		target = 'enemy',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'earth',
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
+		value = 1.1,
+	},
 
 #	barrier = {
 #		code = 'barrier',
@@ -1999,8 +2048,11 @@ var Skilllist = {
 		type = 'combat', 
 		ability_type = 'spell',
 		tags = ['buff','support'],
-		reqs = [{code = 'gear_equiped', param = 'geartype', value = 'heavy', check = false},
-			{code = 'gear_equiped', param = 'geartype', value = 'medium', check = false}],
+		reqs = [
+			{code = 'gear_equiped', param = 'geartype', value = 'medium', check = false},
+			{orflag = true, code = 'has_status', status = 'assasin_hide', check = true},
+			{code = 'gear_equiped', param = 'geartype', value = 'heavy', check = false},
+			],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_hide2'})], 
 		cost = {},

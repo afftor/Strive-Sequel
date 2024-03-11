@@ -55,6 +55,11 @@ func get_value_damage_mod(skill_val:Dictionary):
 func get_combat_skills():
 	return combat_skills
 
+func fill_combatskills():
+	for i in range(combat_skills.size()):
+		combat_skill_panel[i + 1] = combat_skills[i]
+
+
 func learn_skill(skill, free = false):
 	var skilldata = Skilldata.Skilllist[skill]
 	if !social_skills.has(skill):

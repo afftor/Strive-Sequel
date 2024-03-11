@@ -172,6 +172,14 @@ func fix_import():
 	previous_work = ''
 
 #professions
+func has_status(status):
+	for tr in professions:
+		var profdata = classesdata.professions[tr]
+		if profdata.has('tags') and profdata.tags.has(status):
+			return true
+	return false
+
+
 func process_chardata(data):
 	if data.has('classes'):
 		for prof in data.classes:
