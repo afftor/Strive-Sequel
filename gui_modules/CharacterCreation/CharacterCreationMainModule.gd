@@ -29,7 +29,7 @@ var critical_stats = ["body_lower", "body_shape",
 "tits_size", # should be filtered by sex, visuals not affected, but descryptions will, lyckily races with tits filterinsg are rare
  "multiple_tits", "multiple_tits_developed", "skin_coverage"] #those stats will be always filtered by race and sex filters
 var free_stats = [
-	'personality',
+#	'personality',
 #	'body_color_skin', 
 #	'body_color_wings', #don't forget to add proper data in corresponding races data - i only add empty lines for humans!!! 
 #	'body_color_tail', 
@@ -61,7 +61,7 @@ var freemode_fixed_stats = [
 	"sex",
 	"age",
 	"body_lower",
-#	"personality", or not,
+	"personality", 
 	"physics_factor",
 	"magic_factor",
 	"tame_factor",
@@ -154,7 +154,6 @@ var params_to_save = [ #memo mostly
 	'hair_base_color_1',
 	'hair_base_color_2',
 	'beard',
-	'moustache',
 	'hair_facial_color'
 ]
 
