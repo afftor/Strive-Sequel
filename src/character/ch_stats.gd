@@ -48,7 +48,7 @@ func fix_import():
 		ResourceScripts.game_world.easter_egg_characters_acquired.append(statlist.unique)
 	statlist.loyalty = 0
 	statlist.obedience = 100
-	if statlist.slave_class in ['slave', 'servant']:
+	if statlist.slave_class in ['slave']:
 		set_slave_category('slave1')
 
 
@@ -1771,7 +1771,7 @@ func baby_transform():
 
 
 func set_slave_category(new_class):
-	if new_class in ['slave', 'servant']:
+	if new_class in ['slave']:
 		new_class = 'slave1'
 	if statlist.slave_class != '':
 		remove_trait(statlist.slave_class.to_lower())

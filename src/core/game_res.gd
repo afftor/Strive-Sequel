@@ -77,6 +77,7 @@ func fix_tax():
 
 
 func subtract_taxes():
+	ResourceScripts.game_party.subtract_taxes()
 	money -= tax
 	if money < 0:
 		input_handler.interactive_message('money_lose_scene', '', {})
