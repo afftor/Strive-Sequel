@@ -715,7 +715,6 @@ var scenedict = {
 				{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3},
 				{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 78},
 				{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},
-				{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_combatant'},
 				{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 20}],
 			tags = ['active_character_translate','scene_character_translate'],
 			image = 'slave_decision',
@@ -1338,10 +1337,8 @@ var scenedict = {
 	image = '',
 	common_effects = [],
 	options = [
-	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSLAVE"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'}, 
-	{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_combatant'}]},
-	#{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSERVANT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},
-	#{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_combatant'},]},
+	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSLAVE"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'}, {code = 'real_affect_scene_characters', type = 'slavetype', value = 'slave'}]},
+	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSERVANT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},{code = 'real_affect_scene_characters', type = 'slavetype', value = 'slave'},]},
 	]
 	},
 	recruit_captured_fail = {text = tr("DIALOGUERECRUITBAD"),
