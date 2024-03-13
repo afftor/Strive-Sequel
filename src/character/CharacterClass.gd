@@ -1063,6 +1063,10 @@ func affect_char(i):
 			assign_to_quest_and_make_unavalible({id = i.id, name = i.name}, i.duration)
 		'slavetype':
 			set_slave_category(i.value)
+		'remove':
+			ResourceScripts.game_party.add_fate(id, tr("REMOVED"))
+			ResourceScripts.game_party.remove_slave(self)
+			input_handler.slave_list_node.rebuild()
 
 func teleport(data):
 	var locdata = ResourceScripts.game_world.find_location_by_data(data)

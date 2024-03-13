@@ -387,6 +387,11 @@ func remove_non_master(code):
 	stored_scene = code
 	input_handler.ShowSlaveSelectPanel(self, 'remove_selected', reqs)
 
+func remove_servant(code):
+	var reqs = [{code = 'stat', stat = 'slave_class', value = 'servant', check = true}]
+	stored_scene = code
+	input_handler.ShowSlaveSelectPanel(self, 'remove_selected', reqs)
+
 func remove_selected(person):
 	input_handler.active_character = person
 	ResourceScripts.game_party.add_fate(person.id, tr("LOST"))
