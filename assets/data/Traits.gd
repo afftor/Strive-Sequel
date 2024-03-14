@@ -79,7 +79,7 @@ var traits = {
 		effects = ['e_tr_heir'],
 		bonusstats = {mod_collect = -0.2, mod_farm = -0.2, mod_fish = -0.2}
 	},
-	servant = {#servant class trait, obsolete
+	servant = {#servant class trait, taxing is hardcoded
 		code = 'servant',
 		name = '',
 		descript = '',
@@ -87,7 +87,17 @@ var traits = {
 		icon = null,
 		effects = [],
 		traits = ['loyalty_basic_servitude'],
-		bonusstats = {obedience_drain = -2}
+		bonusstats = {obedience_drain = -5, loyalty_gain = 0.25}
+	},
+	servant_notax = {#new class trait
+		code = 'servant',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		traits = ['loyalty_basic_servitude'],
+		bonusstats = {obedience_drain = -5, loyalty_gain = 0.25}
 	},
 	slave1 = {#slave class trait
 		code = 'slave1',
@@ -321,6 +331,15 @@ var traits = {
 		icon = null,
 		effects = [],
 		tags = ['summon_skeletons']
+	},
+	ranger = {
+		code = 'ranger',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		tags = ['summon_dog']
 	},
 	farmer = {#+50% farm production
 		code = 'farmer',

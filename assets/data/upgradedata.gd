@@ -471,21 +471,21 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADETAILORBONUS1"),
 				taskprogress = 25,
 				cost = {wood = 30, stone = 25},
-				tax = 5,
+				tax = 10,
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADETAILORBONUS2"),
 				taskprogress = 50,
 				cost = {woodiron = 50, stone = 50, clothsilk = 25},
-				tax = 15,
+				tax = 20,
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADETAILORBONUS3"),
 				taskprogress = 75,
 				cost = {woodiron = 50, mithril = 25, clothmagic = 25},
-				tax = 25
+				tax = 30
 			}
 		}
 	},
@@ -503,21 +503,21 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADEFORGEBONUS1"),
 				taskprogress = 25,
 				cost = {wood = 10, stone = 25, iron = 10},
-				tax = 5,
+				tax = 10,
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEFORGEBONUS2"),
 				taskprogress = 50,
 				cost = {iron = 50, stone = 100, wood = 100},
-				tax = 15,
+				tax = 20,
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEFORGEBONUS3"),
 				taskprogress = 75,
 				cost = {mithril = 50, stone = 200, obsidian = 10, woodiron = 100},
-				tax = 25,
+				tax = 30,
 			},
 		}
 	},
@@ -535,21 +535,21 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADEALCHEMYBONUS1"),
 				taskprogress = 25,
 				cost = {wood = 25, stone = 50, iron = 30},
-				tax = 5
+				tax = 10
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEALCHEMYBONUS2"),
 				taskprogress = 50,
 				cost = {obsidian = 20, woodmagic = 30, clothmagic = 30},
-				tax = 15
+				tax = 20
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEALCHEMYBONUS3"),
 				taskprogress = 75,
 				cost = {leathermythic = 20, woodancient = 10, boneancient = 30},
-				tax = 25
+				tax = 30
 			}
 		}
 	},
@@ -567,14 +567,14 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADEFORGEWORKBONUS1"),
 				taskprogress = 30,
 				cost = {woodiron = 100, leatherthick = 100, steel = 50},
-				tax = 20
+				tax = 25
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEFORGEWORKBONUS2"),
 				taskprogress = 60,
 				cost = {mithril = 50, leathermythic = 50, clothmagic = 25},
-				tax = 20
+				tax = 50
 			},
 		}
 	},
@@ -599,14 +599,14 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADEBUILDERTOOLSBONUS2"),
 				taskprogress = 30,
 				cost = {woodiron = 50, leatherthick = 50, steel = 25},
-				tax = 15
+				tax = 20
 			},
 			3:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEBUILDERTOOLSBONUS3"),
 				taskprogress = 50,
 				cost = {mithril = 25, leathermythic = 25, clothmagic = 15},
-				tax = 20
+				tax = 30
 			},
 		}
 	},
@@ -700,21 +700,21 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS5"),
 				taskprogress = 55,
 				cost = {woodiron = 100, clothsilk = 50, leatherthick = 50},
-				tax = 25
+				tax = 30
 			},
 			6:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS6"),
 				taskprogress = 65,
 				cost = {woodiron = 100, clothsilk = 50, leatherthick = 50},
-				tax = 25
+				tax = 35
 			},
 			7:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADELUXURYROOMSBONUS7"),
 				taskprogress = 75,
 				cost = {woodiron = 100, clothsilk = 50, leatherthick = 50},
-				tax = 25
+				tax = 40
 			},
 		}
 	},
@@ -766,14 +766,14 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADESTABLESBONUS1"),
 				taskprogress = 15,
 				cost = {wood = 50, leather = 25, woodiron = 50, leatherthick = 50},
-				tax = 15
+				tax = 25
 			},
 			2:{
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADESTABLESBONUS2"),
 				taskprogress = 50,
 				cost = {woodiron = 100, wood = 200, leather = 100, leathermythic = 50},
-				tax = 15
+				tax = 50
 			},
 		}
 	},
@@ -808,7 +808,7 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADETATTOOBONUS"),
 				taskprogress = 25,
 				cost = {woodiron = 25, woodmagic = 25, leatherthick = 20},
-				tax = 50
+				tax = 75
 			},
 		}
 	},
@@ -862,7 +862,7 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADESEX_TIMEBONUS2"),
 				taskprogress = 50,
 				cost = {woodiron = 100, leathermythic = 100, mithril = 100},
-				tax = 25
+				tax = 50
 			},
 		}
 	},
@@ -880,7 +880,7 @@ var upgradelist = {
 				bonusdescript = tr(""),
 				taskprogress = 15,
 				cost = {wood = 50, leather = 20, cloth = 20},
-				tax = 10
+				tax = 25
 			},
 		}
 	},
@@ -897,7 +897,7 @@ var upgradelist = {
 				bonusdescript = tr(""),
 				taskprogress = 50,
 				cost = {stone = 500, woodiron = 150, leatherthick = 50, obsidian = 25},
-				tax = 100
+				tax = 250
 			},
 		}
 	},

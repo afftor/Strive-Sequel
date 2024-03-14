@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.8.2 experimental 2'
+const gameversion = '0.8.2b experimental 3'
 
 #time
 signal hour_tick
@@ -453,7 +453,7 @@ func build_loyalty_traitlist(person, node):
 		var text = '[center]'+tr(upgrade_data.name)+'[/center]\n'
 		text += build_desc_for_bonusstats(upgrade_data.bonusstats)
 		text += tr(upgrade_data.descript)
-		globals.connecttexttooltip(button, text)
+		connecttexttooltip(button, text)
 #		button.self_modulate = Color(variables.hexcolordict.green)
 		if upgrade_data.icon is String:
 			button.get_node('icon').texture = load(upgrade_data.icon)
@@ -486,7 +486,7 @@ func build_buffs_for_char(person, node, mode):
 #				newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
 #			'attacks':
 #				newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
-		globals.connecttexttooltip(newnode, person.translate(i.description))
+		connecttexttooltip(newnode, person.translate(i.description))
 
 
 func build_attrs_for_char(node, person):
@@ -494,9 +494,9 @@ func build_attrs_for_char(node, person):
 	node.get_node('sex').texture = images.icons[person.get_stat('sex')]
 	node.get_node('race').texture = races.racelist[person.get_stat('race')].icon
 	node.get_node('age').texture = images.ages[person.get_stat('age')]
-	globals.connecttexttooltip(node.get_node('sex'), tr("MSLMSex")+": " + tr("SLAVESEX" + person.get_stat('sex').to_upper()))
-	globals.connecttexttooltip(node.get_node('age'), tr("SLAVEPARTAGE")+": " + tr("SLAVEAGE" + person.get_stat("age").to_upper()))
-	globals.connecttexttooltip(node.get_node('race'), "[center]{color=green|"+ races.racelist[person.get_stat('race')].name +"}[/center]\n\n"+ person.show_race_description())
+	connecttexttooltip(node.get_node('sex'), tr("MSLMSex")+": " + tr("SLAVESEX" + person.get_stat('sex').to_upper()))
+	connecttexttooltip(node.get_node('age'), tr("SLAVEPARTAGE")+": " + tr("SLAVEAGE" + person.get_stat("age").to_upper()))
+	connecttexttooltip(node.get_node('race'), "[center]{color=green|"+ races.racelist[person.get_stat('race')].name +"}[/center]\n\n"+ person.show_race_description())
 
 
 func build_desc_for_bonusstats(bonusstats, mul = 1):
@@ -821,7 +821,7 @@ func ImportGame(filename):
 		gui_controller.clock.update_labels()
 		gui_controller.clock.set_sky_pos()
 	input_handler.SystemMessage("Game Imported")
-	globals.common_effects([
+	common_effects([
 			{code = 'add_timed_event', value = "loan_event1",
 				args = [
 					{type = 'fixed_date',
@@ -1117,7 +1117,7 @@ func make_local_recruit(args):
 			newchar.add_stat_bonuses(args.bonuses)
 		if args.has("type"):
 			newchar.set_slave_category(args.type)
-	if newchar.get_stat('slave_class') == '': newchar.set_slave_category('slave1')
+	if newchar.get_stat('slave_class') == '': newchar.set_slave_category('servant')
 	if args.has("is_hirable"): newchar.is_hirable = args.is_hirable
 	return newchar
 
@@ -1155,7 +1155,7 @@ func start_unique_event():
 			continue
 		if event.has('stages') and !event.stages.has(int(location.progress.stage)): 
 			continue
-		if event.has('reqs') and !globals.checkreqs(event.reqs): 
+		if event.has('reqs') and !checkreqs(event.reqs): 
 			continue
 		active_array.append(event.event)
 	if active_array.size() > 0:
@@ -1178,7 +1178,7 @@ func start_random_event():
 	for i in eventarray:
 		var event = scenedata.scenedict[i[0]]
 		if event.has('reqs'):
-			if globals.checkreqs(event.reqs):
+			if checkreqs(event.reqs):
 				active_array.append(i)
 		else:
 			active_array.append(i)
@@ -1890,7 +1890,7 @@ func common_effects(effects):
 				current_enemy_group = i.value
 				input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
 			'start_quest_combat':
-				globals.StartQuestCombat(i.value)
+				StartQuestCombat(i.value)
 			'make_quest_location':
 				ResourceScripts.world_gen.make_quest_location(i.value)
 			'remove_quest_location':
@@ -2222,7 +2222,7 @@ func valuecheck(dict):
 		'has_money_for_scene_slave':
 			return ResourceScripts.game_res.money >= input_handler.scene_characters[dict.value].calculate_price(true)
 		'random':
-			return globals.rng.randf()*100 <= dict.value
+			return rng.randf()*100 <= dict.value
 		'dialogue_seen':
 			return ResourceScripts.game_progress.seen_dialogues.has(dict.value) == dict.check
 		'dialogue_selected':
@@ -2297,7 +2297,7 @@ func valuecheck(dict):
 			if master_char == null:
 				return false
 			else:
-				var r = globals.rng.randi_range(dict.from, dict.to)
+				var r = rng.randi_range(dict.from, dict.to)
 				if !master_char.statlist.statlist.has(dict.factor):
 					return false #wrong factor
 				var stat = dict.value * master_char.statlist.statlist.get(dict.factor)
@@ -2335,7 +2335,7 @@ func apply_starting_preset():
 	
 	if preset.has("total_reputation"):
 		for i in ['fighters','workers','servants','mages']:
-			globals.common_effects([{code = 'reputation', name = i, operant = '+', value = preset.total_reputation}])
+			common_effects([{code = 'reputation', name = i, operant = '+', value = preset.total_reputation}])
 	
 	if preset.start in ['default','default_solo']:
 		input_handler.interactive_message('intro', '', {})

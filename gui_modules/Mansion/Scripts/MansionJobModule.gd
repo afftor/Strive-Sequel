@@ -761,18 +761,17 @@ func show_brothel_options():
 		newbutton.pressed = person.check_brothel_rule(i)
 		newbutton.connect('pressed', self, 'switch_brothel_option',[newbutton, i])
 		newbutton.add_to_group('sex_option')
-		if person.get_work() == '':
-			newbutton.disabled = true
+		#if person.get_work() == '':
+		#	newbutton.disabled = true
 		if person.is_master() == false:
 			if person.checkreqs([{code = 'trait', trait = tasks.gold_tasks_data[i].req_training, check = false}]):
 				if person.get_stat('slave_class') != 'slave':
 					newbutton.disabled = true
-					globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT") + "\n{color=red|[name] lacks training to be assigned to this task}"))
+					globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT") + tr("LACKSEXTRAINING")))
 				else:
 					newbutton.set("custom_colors/font_color", variables.hexcolordict['red'])
 					newbutton.set("custom_colors/font_color_pressed", variables.hexcolordict['red'])
-					globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT") + "\n{color=red|[name] lacks a proper training and will only earn 2/3 of the potential gold from it.}"))
-	
+					globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT") + tr("LACKSEXTRAININGSLAVE")))
 	
 	for i in brothel_rules.sexes:
 		globals.connecttexttooltip(get_node("BrothelRules/sexes_container/"+i), person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))

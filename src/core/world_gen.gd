@@ -491,7 +491,8 @@ func make_quest(questcode):
 			if tempdata.has('work_time'):
 				tempdata.work_time = round(rand_range(tempdata.work_time[0], tempdata.work_time[1]))
 			tempdata.statreqs.append({code = 'is_master', check = false})
-			tempdata.statreqs.append({code = 'is_free', check = true})
+			tempdata.statreqs.append({code = 'slave_type', value = 'servant', operant = 'neq'})
+			#tempdata.statreqs.append({code = 'is_free', check = true})
 		elif tempdata.code == 'special_task':
 			var task_reward = [{code = 'finish_worktask', value = data.id}]
 			var task_dict = {code = 'add_special_task_for_location', location = tempdata.location, args = task_reward}

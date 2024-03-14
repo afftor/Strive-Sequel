@@ -102,7 +102,7 @@ var data = {
 
 			{code = 'add_timed_event', value = "zephyra_sword_1",
 			args = [{type = 'add_to_date', date = [2,2], hour = 1}]},
-			
+			{code = 'add_master_points', value = 1},
 			{code = "decision", value = "mayor_election_finished"}
 		],
 		text = [
@@ -158,7 +158,7 @@ var data = {
 				reqs = [{type = 'decision', value = 'anastasia_added', check = false}],
 				type = 'next_dialogue',
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'update_city'}, {code = 'rewrite_save'}],
+				bonus_effects = [{code = 'update_city'}, {code = 'rewrite_save'}, {code = 'complete_quest', value = 'princess_persuasion'}, {code = 'update_city'}],
 			},
 		],
 	},

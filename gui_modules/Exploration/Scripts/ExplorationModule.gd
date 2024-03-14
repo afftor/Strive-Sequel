@@ -1681,7 +1681,7 @@ func sell_slave():
 	var char_list = []
 	for i in ResourceScripts.game_party.characters:
 		var tchar = characters_pool.get_char_by_id(i)
-		if (tchar.has_profession('master')): # || tchar.valuecheck({code = 'is_free', check = true}) == false):
+		if (tchar.has_profession('master') || tchar.get_stat('slave_class') == 'servant'): # || tchar.valuecheck({code = 'is_free', check = true}) == false):
 			continue
 		char_list.append(tchar)
 		var newbutton = input_handler.DuplicateContainerTemplate($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
@@ -2242,6 +2242,6 @@ func select_workers():
 	MANSION.get_node("MansionJobModule2").selected_location = selected_location
 	MANSION.SlaveListModule.OpenJobModule()
 
-func reset_active_location():
+func reset_active_location(arg = null):
 	if input_handler.active_location.id != selected_location:
 		input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(selected_location)

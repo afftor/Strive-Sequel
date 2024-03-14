@@ -798,7 +798,12 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 	},
-	
+	slave_class = {
+		code = 'slave_class',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+	},
 }
 
 var slave_class_names = {

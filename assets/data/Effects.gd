@@ -567,7 +567,7 @@ var effect_table = {
 	e_tr_bers1 = rebuild_skillvalue_template({source = 'fire', skilltype = 'skill', tag = 'damage', value = 1.2}),
 	e_tr_bers2 = rebuild_skillvalue_template({source = 'earth', skilltype = 'skill', tag = 'damage', value = 1.2}),
 	e_tr_druid = rebuild_skillvalue_template({source = 'earth', skilltype = 'spell', tag = 'damage', value = 1.2}),
-	e_tr_bishop = rebuild_skillvalue_template({source = 'light', skilltype = 'spell', tag = 'damage', value = 1.4}),
+	e_tr_bishop = rebuild_skillvalue_template({source = 'light', skilltype = 'spell', tag = 'damage', value = 1.25}),
 	e_tr_bishop2 = {
 		type = 'trigger',
 		trigger = [variables.TR_HIT],

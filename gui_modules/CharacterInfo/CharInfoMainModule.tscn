@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveInfoModule.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveBodyModule.tscn" type="PackedScene" id=2]
@@ -7,12 +7,15 @@
 [ext_resource path="res://assets/Themes_v2/MANSION/CharInfoMainPanel.tres" type="StyleBox" id=5]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveClassesModule.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveDetailsModule.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/button_unhire_hover.png" type="Texture" id=8]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=9]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=10]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/button_speechbubble_pressed.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/button_speechbubble.png" type="Texture" id=12]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/button_speechbubble_hover.png" type="Texture" id=13]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/button_unhire_pressed.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/button_unhire.png" type="Texture" id=16]
 
 [node name="CharInfoMainModule" type="Panel" groups=["pauseprocess"]]
 light_mask = 0
@@ -36,17 +39,26 @@ margin_right = 1905.0
 margin_bottom = 1065.0
 
 [node name="TalkButton" type="TextureButton" parent="."]
-margin_left = 1221.36
-margin_top = 161.744
-margin_right = 1272.36
-margin_bottom = 212.744
+margin_left = 1840.06
+margin_top = 261.204
+margin_right = 1891.06
+margin_bottom = 312.204
+hint_tooltip = "TALK_BUTTON"
 theme = ExtResource( 10 )
 texture_normal = ExtResource( 12 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="RemoveButton" type="TextureButton" parent="."]
+margin_left = 1840.06
+margin_top = 209.394
+margin_right = 1891.06
+margin_bottom = 260.394
+hint_tooltip = "REMOVE_BUTTON"
+theme = ExtResource( 10 )
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 8 )
 
 [node name="SlaveInfoModule" parent="." instance=ExtResource( 1 )]
 margin_left = 235.0

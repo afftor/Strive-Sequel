@@ -75,6 +75,8 @@ func rebuild():
 		newbutton.connect('gui_input', self, 'double_clicked', [newbutton])
 		newbutton.connect('mouse_entered', get_parent(), 'set_hovered_person', [newbutton, person])
 		newbutton.connect('mouse_exited_custom', get_parent(), 'remove_hovered_person')
+		globals.connecttexttooltip(newbutton.get_node("obed"), tr("STATOBEDIENCEDESCRIPT"))
+		
 		
 		newbutton.get_node("job").connect("pressed", self, 'OpenJobModule', [person])
 		newbutton.get_node("job").set_disabled(false)

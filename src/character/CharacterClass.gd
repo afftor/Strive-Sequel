@@ -1063,6 +1063,10 @@ func affect_char(i):
 			assign_to_quest_and_make_unavalible({id = i.id, name = i.name}, i.duration)
 		'slavetype':
 			set_slave_category(i.value)
+		'remove':
+			ResourceScripts.game_party.add_fate(id, tr("REMOVED"))
+			ResourceScripts.game_party.remove_slave(self)
+			input_handler.slave_list_node.rebuild()
 
 func teleport(data):
 	var locdata = ResourceScripts.game_world.find_location_by_data(data)
@@ -1104,6 +1108,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'false':
 			return false
 		'stat':
+			if i.stat in ['tame_factor','timid_factor'] && is_master():
+				return true
 			if typeof(i.value) == TYPE_ARRAY: i.value = calculate_number_from_string_array(i.value)
 			if ignore_npc_stats_gear:
 				check = input_handler.operate(i.operant, get_stat_nobonus(i.stat), i.value)

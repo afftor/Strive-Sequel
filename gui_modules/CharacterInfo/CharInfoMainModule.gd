@@ -18,6 +18,7 @@ func _ready():
 #		module.update()
 #	update()
 	$TalkButton.connect("pressed", self, 'talk', [])
+	$RemoveButton.connect('pressed',self,'remove',[])
 	$SlaveBodyModule/StatsButton.connect('pressed', self, 'displaymetrics',[])
 	input_handler.connect('PortraitUpdate', self, 'update')
 
@@ -112,6 +113,12 @@ func talk():
 		if scene != null:
 			input_handler.interactive_message(scene)
 
+
+func remove():
+	gui_controller.close_scene(self)
+	input_handler.active_character = active_person
+	input_handler.interactive_message('slave_remove')
+
 func update():
 	# active_person = gui_controller.mansion.active_person if SummaryModule.selected_person == null else SummaryModule.selected_person
 	active_person = input_handler.interacted_character
@@ -137,6 +144,7 @@ func update():
 	SlaveSiblingsModule.update()
 	$SlaveBodyModule/StatsPanel.hide()
 	$TalkButton.visible = unique_dict.has(active_person.get_stat('unique'))
+	$RemoveButton.visible = !active_person.is_master()
 	if char_module_state == "siblings" or char_module_state == "skills":
 		$TalkButton.hide()
 

@@ -99,6 +99,7 @@ func add_slave(person, child = false):
 	globals.text_log_add("slaves","New character acquired: " + person.get_short_name() + ". ")
 	globals.emit_signal("slave_added")
 
+
 func remove_slave(tempslave, permanent = false):
 	tempslave.remove_from_task()
 	tempslave.unequip_all()
@@ -109,7 +110,18 @@ func remove_slave(tempslave, permanent = false):
 	character_order.erase(tempslave.id)
 #	input_handler.update_slave_list()
 	input_handler.rebuild_slave_list()
+	gui_controller.mansion.set_active_person(ResourceScripts.game_party.get_master())
 
+
+func subtract_taxes():
+	var tax = 0
+	for ch in characters.values():
+		if !ch.is_active:
+			continue
+		if !ch.get_stat('slave_class') == 'servant':
+			continue
+		tax += ch.calculate_price()
+	ResourceScripts.game_res.money -= int (tax / 100)
 
 #arguable here
 func update_global_cooldowns():

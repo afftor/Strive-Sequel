@@ -232,7 +232,7 @@ func match_state():
 			reset_vars()
 			SlaveListModule.show()
 			$MansionSlaveListModule.set_size(Vector2(1100, 845))
-			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 620))
+			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 700))
 			# SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
 			$MansionSkillsModule.show()
 			if mansion_state != mansion_prev_state && mansion_prev_state != "skill":
@@ -245,7 +245,7 @@ func match_state():
 			$MansionSlaveListModule.show()
 			$MansionSlaveListModule.set_size(Vector2(1100, 845))
 			# SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
-			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 620))
+			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 700))
 			$MansionSlaveListModule.rebuild()
 			if mansion_state != mansion_prev_state:
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSkillsModule, 0.3)
@@ -551,7 +551,7 @@ func test_mode():
 		ResourceScripts.game_progress.seen_dialogues.append("PRIESTESS_SWORD_TALK_1_1")
 		ResourceScripts.game_progress.seen_dialogues.append("ALIRONCHURCHFIRSTCOME")
 		var character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
-		character.create('Dryad', 'male', 'random')
+		character.create('Orc', 'male', 'random')
 		character.fill_boosters()
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
@@ -788,8 +788,6 @@ func test_mode():
 						{code = 'add_trait', trait = 'loyalty_sex_basic'},
 						{code = 'add_trait', trait = 'loyalty_sex_oral'},
 						{code = 'add_trait', trait = 'loyalty_sex_anal'},
-						{code = 'add_trait', trait = 'loyalty_sex_adv'},
-						{code = 'add_trait', trait = 'loyalty_sex_group'},
 						{code = 'add_profession', profession = 'sextoy'},
 						{code = "add_trait", trait = 'loyalty_sex_basic'}
 					]
@@ -840,7 +838,7 @@ func test_mode():
 			globals.CreateGearItemShop("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 		)
 		globals.AddItemToInventory(
-			globals.CreateGearItemShop("swordadv", {Blade = 'mithril', WeaponHandle = 'wood', WeaponEnc = 'fire_ruby'})
+			globals.CreateGearItemShop("staffadv", {Rod = 'mithril', WeaponHandle = 'wood', WeaponEnc = 'fire_ruby'})
 		)
 		globals.AddItemToInventory(
 			globals.CreateGearItemShop("club", {WeaponMace = 'wood'})

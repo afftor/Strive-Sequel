@@ -20,7 +20,7 @@ var guild = 'none'
 #var bodypartsarray = ['skin', 'hair_length', 'hair_color', 'eye_color', 'eye_shape', 'ears', 'horns', 'tail', 'wings', 'height']
 #var sexbodypartsarray = ['slave_class','penis_size', 'penis_type', 'balls_size','tits_size', 'ass_size']
 
-#var slave_classes = ['slave','servant']
+var slave_classes = ['slave','servant']
 
 var critical_stats = ["body_lower", "body_shape",
  "penis_size", # should be filtered by sex
@@ -29,7 +29,7 @@ var critical_stats = ["body_lower", "body_shape",
 "tits_size", # should be filtered by sex, visuals not affected, but descryptions will, lyckily races with tits filterinsg are rare
  "multiple_tits", "multiple_tits_developed", "skin_coverage"] #those stats will be always filtered by race and sex filters
 var free_stats = [
-	'personality',
+#	'personality',
 #	'body_color_skin', 
 #	'body_color_wings', #don't forget to add proper data in corresponding races data - i only add empty lines for humans!!! 
 #	'body_color_tail', 
@@ -54,14 +54,14 @@ var free_stats = [
 
 
 var freemode_fixed_stats = [
-#	"slave_class",
+	"slave_class",
 #	"name", or not
 #	"surname",
 #	"nickname",
 	"sex",
 	"age",
 	"body_lower",
-#	"personality", or not,
+	"personality", 
 	"physics_factor",
 	"magic_factor",
 	"tame_factor",
@@ -84,7 +84,7 @@ var savefilename
 var saveloadstate
 
 var params_to_save = [ #memo mostly
-#	"slave_class",
+	"slave_class",
 	"name",
 	"surname",
 	"nickname",
@@ -154,7 +154,6 @@ var params_to_save = [ #memo mostly
 	'hair_base_color_1',
 	'hair_base_color_2',
 	'beard',
-	'moustache',
 	'hair_facial_color'
 ]
 
@@ -251,6 +250,8 @@ func apply_preserved_settings(): #on regenerating char
 #			build_node_for_stat('food')
 		if i in ['food_filter', 'sex', 'race', 'professions', 'sex_traits', 'traits']:
 			continue
+		if i == 'slave_class':
+			continue
 		elif if_can_assign(i, preservedsettings[i]):
 			person.set_stat(i, preservedsettings[i])
 			build_node_for_stat(i)
@@ -273,6 +274,11 @@ func build_possible_val_for_stat(stat):
 	if stat.ends_with('factor'):
 		possible_vals[stat] = [1, 2, 3, 4, 5, 6]
 		if stat in ['timid_factor','tame_factor'] and mode == 'master':
+			possible_vals[stat] = []
+		return
+	if stat == 'slave_class':
+		possible_vals[stat] = slave_classes
+		if mode == 'master':
 			possible_vals[stat] = []
 		return
 	if possible_vals.has(stat):
@@ -526,8 +532,8 @@ func change_value_node(stat, value): #for scrollable nodes
 	if id >= possible_vals[stat].size():
 		id = 0
 	var newval = possible_vals[stat][id]
-#	if stat != 'slave_class':
-	person.set_stat(stat, newval)
+	if stat != 'slave_class':
+		person.set_stat(stat, newval)
 	preservedsettings[stat] = newval
 	if stat.ends_with('factor'):
 		$ClassSelectionModule.update_class_buttons()
@@ -825,7 +831,9 @@ func finish_character():
 		person.set_stat('growth_factor', 5)
 		if mode != 'master':
 			#apply delayed slave class
-			person.set_slave_category('slave1')
+			if !preservedsettings.has('slave_class'):
+				preservedsettings.slave_class = 'slave1'
+			person.set_slave_category(preservedsettings.slave_class.to_lower())
 			#basic slave setup
 			person.set_stat('obedience', 48)
 			if guild == 'fighters':
@@ -933,7 +941,7 @@ func SaveCharacter():
 #	apply_preserved_settings()
 	var character_to_save = {}
 	for i in params_to_save:
-		if i in ["traits", "sex_traits", "professions", 'food_filter']:
+		if i in ["traits", "sex_traits", "professions", 'food_filter', 'slave_class']:
 			if preservedsettings.has(i):
 				character_to_save[i] = preservedsettings[i]
 		else:
