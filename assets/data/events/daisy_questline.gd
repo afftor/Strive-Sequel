@@ -248,6 +248,8 @@ var data = {
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate'],
+		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
+			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
 		text = [{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_1", reqs = []}],
 		options = [
 #			{
@@ -405,6 +407,8 @@ var data = {
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene'],
 		text = [{text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_1", reqs = []}],
+		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
+			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
 #		common_effects = [{
 #					code = 'unique_character_changes',
 #					value = 'daisy',
@@ -838,6 +842,8 @@ var data = {
 		custom_background = "daisy_public1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
+			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
 		options = [ {
 			code = 'training_complete_fucktoy_3_1_1', text = "TRAINING_COMPLETE_FUCKTOY_OPTION_1_1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
@@ -1410,6 +1416,7 @@ var data = {
 				value = 'daisy',
 				args = [
 					{code = 'take_virginity', type = 'vaginal', partner = "master"},
+					{code = 'tag', operant = 'remove', value = 'no_sex'}
 				]
 			}],
 		text = [{text = "DAISY_CONSENSUAL_3", reqs = []}],

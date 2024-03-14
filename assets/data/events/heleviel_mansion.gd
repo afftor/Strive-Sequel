@@ -57,6 +57,8 @@ var data = {
 		custom_background = "heleviel_bj_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		common_effects = [{code = 'unique_character_changes', value = 'heleviel', args = [
+			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
 		text = [
 			{text = "HELEVIEL_MANSION_4", reqs = []},
 		],

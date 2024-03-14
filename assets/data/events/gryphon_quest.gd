@@ -303,6 +303,8 @@ var data = {
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "GRYPHON_ANA_SEX_3", reqs = []}],
+		common_effects = [{code = 'unique_character_changes', value = 'aire', args = [
+			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
 		options = [
 			{code = 'ana_gryphon_sex_4', text = 'DIALOGUECONTINUE',reqs = [], dialogue_argument = 1, type = 'next_dialogue'}, 
 		],

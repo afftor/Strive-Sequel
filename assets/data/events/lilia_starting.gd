@@ -112,7 +112,8 @@ var data = {
 		save_scene_to_gallery = true,
 		scene_type = "ero_scene",
 		text = [{text = "LILIA_SEX_SCENE_1_1", reqs = []}],
-		common_effects = [],
+		common_effects = [{code = 'unique_character_changes', value = 'lilia', args = [
+			{code = 'tag', operant = 'remove', value = 'no_sex'}]},],
 		options = [ {
 			code = 'lilia_sex_scene_1_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		} ]
@@ -178,6 +179,8 @@ var data = {
 		text = [{text = "LILIA_RECRUITED", reqs = [], previous_dialogue_option = 1},
 		{text = "LILIA_RECRUITED_GREEN", reqs = [], previous_dialogue_option = 11},],
 		common_effects = [{code = 'make_story_character', value = 'Lilia', recruit_from_location = true},
+		{code = 'unique_character_changes', value = 'lilia', args = [
+			{code = 'tag', operant = 'add', value = 'no_sex'}]},
 		{code = 'decision', value = 'recruited_lilia'}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -479,6 +482,8 @@ var data = {
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		custom_background = "lilia_sex_2_1",
+		common_effects = [{code = 'unique_character_changes', value = 'lilia', args = [
+			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
 		options = [ {
 			code = 'lilia_mansion_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ]

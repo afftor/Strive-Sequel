@@ -924,7 +924,8 @@ var scenedict = {
 		text = tr("SCENEDAISY_CLAIM_KINSHIPTEXT"),
 		tags = ['dialogue_scene'],
 		image = 'daisystart',
-		common_effects = [{code = 'make_story_character', value = 'Daisy'}],
+		common_effects = [{code = 'make_story_character', value = 'Daisy'}, {code = 'unique_character_changes', value = 'daisy', args = [
+			{code = 'tag', operant = 'add', value = 'no_sex'}]}],
 		options = [
 		{code = 'daisy_recruitment_1', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [], dialogue_argument = 1},
 		],
@@ -982,7 +983,9 @@ var scenedict = {
 		tags = ['dialogue_scene'],
 		image = 'daisystart',
 		common_effects = [{code = 'money_change', operant = '-', value = 200},
-		{code = 'make_story_character', value = 'Daisy'}],
+		{code = 'make_story_character', value = 'Daisy'}, 
+		{code = 'unique_character_changes', value = 'daisy', args = [
+			{code = 'tag', operant = 'add', value = 'no_sex'}]}],
 		options = [
 		{code = 'daisy_recruitment_1', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [], dialogue_argument = 1}],
 	},
@@ -990,7 +993,8 @@ var scenedict = {
 		text = tr("SCENEDAISY_PURCHASE_CONFIRM_TEXT"),
 		tags = ['dialogue_scene'],
 		image = 'daisystart',
-		common_effects = [{code = 'money_change', operant = '-', value = 100}, {code = 'make_story_character', value = 'Daisy'}],
+		common_effects = [{code = 'money_change', operant = '-', value = 100}, {code = 'make_story_character', value = 'Daisy'}, {code = 'unique_character_changes', value = 'daisy', args = [
+			{code = 'tag', operant = 'add', value = 'no_sex'}]}],
 		options = [
 		{code = 'daisy_recruitment_1', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [], dialogue_argument = 1}],
 	},
