@@ -1466,8 +1466,8 @@ func play_animation(animation, args = {}):
 			anim_scene.play("task_aquared")
 		"class_unlocked": #(new_class)
 			anim_scene = get_spec_node(ANIM_CLASS_UNLOCKED)
-			anim_scene.get_node("TextureRect11").texture = classesdata.professions[args.new_calss].icon
-			anim_scene.get_node("Label2").text = args.new_calss.capitalize()
+			anim_scene.get_node("TextureRect11").texture = classesdata.professions[args.new_class].icon
+			anim_scene.get_node("Label2").text = args.new_class.capitalize()
 			anim_scene.play("class_unlocked")
 		"class_aquired":
 			anim_scene = get_spec_node(ANIM_CLASS_ACHIEVED)

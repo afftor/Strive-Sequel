@@ -338,6 +338,7 @@ var scenes = {
 	amelia_court = load("res://assets/images/scenes/amelia_court.png"),
 	amelia_hostage = load("res://assets/images/scenes/amelia_hostage.png"),
 	
+	hire = load("res://assets/images/scenes/hire.png"),
 	
 	
 }

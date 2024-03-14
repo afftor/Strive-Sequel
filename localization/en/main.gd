@@ -1427,7 +1427,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SLAVEAGEMATURE = "Mature",
 
 	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master.",
-	SERVANTCLASSDESCRIPT = "Subordinates are free people who choose to server under you. Compared to slaves they have faster Loyalty Growth, lower Obedience Drain but can't be sold or given away for quests. They also receive a payment as fraction of their value each week.",#Peons generally have the same rights of others, but are purchased to serve a master. Many folks end up as peons as a way to pay their, or their family's debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
+	SERVANTCLASSDESCRIPT = "Subordinates are free people who choose to serve under you. Compared to slaves they have faster Loyalty Growth, lower Obedience Drain but can't be sold or given away for quests. They also receive a payment as fraction of their value each week.",#Peons generally have the same rights of others, but are purchased to serve a master. Many folks end up as peons as a way to pay their, or their family's debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
 	HEIRCLASSDESCRIPT = "Mansion's heir are children born of [Master] and their spouse.\n\n[color=aqua]Heir's Obedience drain 50% slower and Loyalty is 50% faster. Heir has 20% penalty to Collection, Farming and Fishing.[/color] ",
 
 	SLAVETYPE = "Type",
@@ -3020,7 +3020,10 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEMIMICOPENANYWAY = "Open Anyway",
 
 	DIALOGUEMISSIONCOMPLETE = 'Your group have completed the task and returns to mansion. ',
-
+	
+	DIALOGUESLAVEREMOVETEXT = "You can dismiss and set free [name] from your possession. \n\n{color=red|This action is final and can't be reverted.}",
+	DIALOGUESLAVEREMOVECONFIRMED = "You've decided to set [name] free.\n\n{color=aqua|[name]} — {random_chat_active|leave}\n\n[He] leaves you forever.",
+	
 	
 	SPECIAL_ACTION_CLASS = "Special Action (requires unknown class)",
 	DIALOGUECHARINSPECT = "Inspect",
@@ -13397,6 +13400,9 @@ Despite your expectation for Zephyra to get rid of this costume as soon as possi
 	TREAT_FOOD_HATE1 = "Sorry, I can't stomach this.",
 	TREAT_FOOD_NEUTRAL1 = "Thank you, [Master], I'll accept this.",
 	
+	
+	LEAVE_CHAT1 = "This is a farewell, I suppose...",
+	
 	#worlddata land
 	
 	AREAPLAINS = "Plains",
@@ -14031,6 +14037,8 @@ Hotkey: 3""",
 	SOCIAL_SKILLS = "Social Skills",
 	COMBAT_SKILLS = "Combat Skills",
 	PERSONAL_STAT = "Personal Statistics",
+	REMOVE_BUTTON = "Set Free",
+	TALK_BUTTON = "Talk To",
 	BODY_UPGRADE_TOOLTIP = "", # Help on "Upgrade Body" menu
 	
 	# SlaveClassesModule

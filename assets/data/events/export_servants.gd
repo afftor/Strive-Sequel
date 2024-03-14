@@ -146,7 +146,9 @@ var data = {
 		],
 		common_effects = [
 			{code = 'complete_quest', value = 'election_global_quest'},
-			{code = 'election_finish'}, #for conditional payments removal
+			{code = 'election_finish'},
+			{code = 'add_master_points', value = 1},
+			 #for conditional payments removal
 #			{code = 'complete_quest', value = 'main_quest_loan'},
 #			{code = 'remove_timed_events', value = ['loan_event1','loan_event2','loan_event3','loan_event4']}
 		],

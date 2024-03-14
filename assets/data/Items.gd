@@ -2370,7 +2370,7 @@ var itemlist = {
 		weaponrange = 'melee',
 		reqs = [{code = 'trait', trait = 'advanced_spells', check = true}],
 		parts = {Rod = 10, WeaponHandle = 5, WeaponEnc = 3},
-		partcolororder = {WeaponHandle = 2, Rod = 1, WeaponEnc = 3},
+		partcolororder = {WeaponHandle = 1, Rod = 2, WeaponEnc = 3},
 		partmaterialname = "Rod",
 		tags = ['recipe','enchantable'],
 		slots = ['rhand','lhand'],

@@ -838,7 +838,7 @@ func test_mode():
 			globals.CreateGearItemShop("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 		)
 		globals.AddItemToInventory(
-			globals.CreateGearItemShop("swordadv", {Blade = 'mithril', WeaponHandle = 'wood', WeaponEnc = 'fire_ruby'})
+			globals.CreateGearItemShop("staffadv", {Rod = 'mithril', WeaponHandle = 'wood', WeaponEnc = 'fire_ruby'})
 		)
 		globals.AddItemToInventory(
 			globals.CreateGearItemShop("club", {WeaponMace = 'wood'})

@@ -664,7 +664,36 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "Added forgetting location to the map options
+bbcode_text = "Revamped previous Peon slave type into Subordinate
+Subordinates receieve 25% more loyalty and have 5 less obedience drain. They also cost 1% of their value in gold at the end of the week. They can't be sold or removed by giving quests.
+Successfully recruiting a stranger only allows to make them into subordinate
+Added an option to set free characters from inside character info
+Moved talk button for unique characters on right side of portraits
+Master trait points are now rewarded after progressing through main story
+Fixed Master Staff having incorrect material colors
+Fixed neutral personality characters having empty speech texts
+
+Slightly revamped gold formula for service jobs
+Slightly increased all upgrade taxes
+Nerfed writ of exemption and oblivion potion prices
+
+Class changes;
+Berserker: New passive - Frenzy: after killing an enemy, get a free extra turn once per combat.
+Bishop: New passive - Luminance: Single target Light abilities make target receive more Light and Dark damage. Passive light magic damage: 40% -> 25%
+Paladin: New passive - Smite: deal 25% more damage and take 15% less damage vs undead and demon enemy types
+Assassin: New passive - Stealth Mastery: Hiding can be activated in Medium Armor. Rogue passive also procs this. Critical bonus from Wits has been removed.
+Blood Mage: New passive - Blood Mastery: Recover 3% of hp and mp when dealing damage to target affected by Bleeding; gain +5% matk every time it occurs until end of fight 
+Necromancer: New passive - Mastery of the Dead: If at start of combat you have empty spots in your party, summon skeletons on them. Number skeletons is defined by Magic Factor. Type of skeletons is decided based on its spawn slot
+Sniper: No longer has free explosive arrow, instead has new skill: Ensnaring shot - 110% ATK earth damage, Ensnared status for 5 turns
+Sadist: New passive - Open Vein: Melee physical attacks have 25% chance to cause Bleeding for 2 turns.
+Alios Champion: New passive - Unbound: When only character is alive in party: gain +50 evasion, +20 speed until end of battle.
+Dominator: New skill - Soul Bind: Disables Character for 1 day. Unlocks Basic Servitude, Dating, Combatant, Work Clothes, Advanced Servitude, Master Acknowledgement, Sex Basics. 
+Ranger: New skill - Animal Companion. Summons Trained Dog at the start of combat
+
+Added minor Zephyra event at elven capital with a costume reward
+Changed the behavior for talking down captured characters - now instead of making them peon, successful negotiations will grant them basic servitude and combatant
+
+Added forgetting location to the map options
 Added an option to Amelia's quest to keep her as servant leader
 Added some missing scenes to the gallery
 Removed an option to send unavailable characters to other locations
@@ -1554,7 +1583,36 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Added forgetting location to the map options
+text = "Revamped previous Peon slave type into Subordinate
+Subordinates receieve 25% more loyalty and have 5 less obedience drain. They also cost 1% of their value in gold at the end of the week. They can't be sold or removed by giving quests.
+Successfully recruiting a stranger only allows to make them into subordinate
+Added an option to set free characters from inside character info
+Moved talk button for unique characters on right side of portraits
+Master trait points are now rewarded after progressing through main story
+Fixed Master Staff having incorrect material colors
+Fixed neutral personality characters having empty speech texts
+
+Slightly revamped gold formula for service jobs
+Slightly increased all upgrade taxes
+Nerfed writ of exemption and oblivion potion prices
+
+Class changes;
+Berserker: New passive - Frenzy: after killing an enemy, get a free extra turn once per combat.
+Bishop: New passive - Luminance: Single target Light abilities make target receive more Light and Dark damage. Passive light magic damage: 40% -> 25%
+Paladin: New passive - Smite: deal 25% more damage and take 15% less damage vs undead and demon enemy types
+Assassin: New passive - Stealth Mastery: Hiding can be activated in Medium Armor. Rogue passive also procs this. Critical bonus from Wits has been removed.
+Blood Mage: New passive - Blood Mastery: Recover 3% of hp and mp when dealing damage to target affected by Bleeding; gain +5% matk every time it occurs until end of fight 
+Necromancer: New passive - Mastery of the Dead: If at start of combat you have empty spots in your party, summon skeletons on them. Number skeletons is defined by Magic Factor. Type of skeletons is decided based on its spawn slot
+Sniper: No longer has free explosive arrow, instead has new skill: Ensnaring shot - 110% ATK earth damage, Ensnared status for 5 turns
+Sadist: New passive - Open Vein: Melee physical attacks have 25% chance to cause Bleeding for 2 turns.
+Alios Champion: New passive - Unbound: When only character is alive in party: gain +50 evasion, +20 speed until end of battle.
+Dominator: New skill - Soul Bind: Disables Character for 1 day. Unlocks Basic Servitude, Dating, Combatant, Work Clothes, Advanced Servitude, Master Acknowledgement, Sex Basics. 
+Ranger: New skill - Animal Companion. Summons Trained Dog at the start of combat
+
+Added minor Zephyra event at elven capital with a costume reward
+Changed the behavior for talking down captured characters - now instead of making them peon, successful negotiations will grant them basic servitude and combatant
+
+Added forgetting location to the map options
 Added an option to Amelia's quest to keep her as servant leader
 Added some missing scenes to the gallery
 Removed an option to send unavailable characters to other locations

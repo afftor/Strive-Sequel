@@ -800,7 +800,7 @@ var professions = {
 		categories = ['combat','magic'],
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},{code = 'has_profession', profession = 'engineer', check = true}],
-		statchanges = {mpmax = 10, resist_air = 10, wits_bonus = 10},
+		statchanges = {mpmax = 10, damage_mod_air = 0.25, wits_bonus = 10},
 		traits = ['basic_spells'],
 		skills = [],
 		combatskills = ['mirror_image','energy_field'],

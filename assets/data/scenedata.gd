@@ -38,7 +38,28 @@ var scenedict = {
 			{code = 'complete_skirmish', text = 'Leave', reqs = [], bonus_effects = [{code = 'complete_active_location_quests'}]},
 		]
 		},
-
+	
+	
+	
+	slave_remove = {
+		text = [{text = "DIALOGUESLAVEREMOVETEXT", reqs = []}],
+		image = 'warn',
+		default_event_type = 'scene_character_event',
+		tags = ['dialogue_scene','active_character_translate'],
+		options = [
+			{code = 'slave_remove_confirm', reqs = [], text = tr("DIALOGUECONFIRM"), dialogue_argument = 0},
+			{code = 'close', text = tr('DIALOGUECANCEL'), reqs = [], bonus_effects = []},
+		]
+		},
+	slave_remove_confirm = {
+		text = [{text = "DIALOGUESLAVEREMOVECONFIRMED", reqs = []}],
+		image = 'hire',
+		default_event_type = 'scene_character_event',
+		tags = ['active_character_translate'],
+		options = [
+			{code = 'close', text = tr('DIALOGUECANCEL'), reqs = [], bonus_effects = [{code = 'affect_active_character', type = 'remove'}]},
+		]
+		},
 
 	character_boss_defeat = {text = tr("DIALOGUERANDOMBOSSDEFEAT"),
 	image = 'bosscapturefemale',
@@ -824,7 +845,7 @@ var scenedict = {
 	writ_of_exemption = {
 		text = tr("DIALOGUEWRIT_CONFIRM"),
 		image = null,
-		tags = ['custom_effect','active_character_translate'],
+		tags = ['scene','active_character_translate'],
 		options = [
 		{code = 'writ_of_exemption_use', reqs = [], text = tr("DIALOGUECONFIRM")},
 		{code = 'close', reqs = [], text = tr("DIALOGUECANCEL")},
@@ -1337,8 +1358,8 @@ var scenedict = {
 	image = '',
 	common_effects = [],
 	options = [
-	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSLAVE"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'}, {code = 'real_affect_scene_characters', type = 'slavetype', value = 'slave'}]},
-	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSERVANT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},{code = 'real_affect_scene_characters', type = 'slavetype', value = 'slave'},]},
+	#{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSLAVE"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'}, {code = 'real_affect_scene_characters', type = 'slavetype', value = 'slave'}]},
+	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSERVANT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'},]},
 	]
 	},
 	recruit_captured_fail = {text = tr("DIALOGUERECRUITBAD"),

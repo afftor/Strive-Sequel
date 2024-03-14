@@ -1293,6 +1293,8 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 #	set_stat('growth_factor', input_handler.weightedrandom_dict(variables.growth_factor))
 	roll_growth(adjust_difficulty)
 	
+	
+	
 #	if randf() <= 0.003:
 #		desired_class = parent.get_ref().generate_ea_character(gendata, desired_class)
 	var slaveclass = desired_class
@@ -1307,15 +1309,18 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 
 	#Add extra stats for harder characters
 	var bonus_counter = 0
-	while difficulty > 1 && bonus_counter < 10:
+	while difficulty > 0 && bonus_counter < 10:
 		var array = []
-		array = ['physics_factor', 'magic_factor', 'wits_factor', 'timid_factor', 'tame_factor', 'sexuals_factor', 'charm_factor']
+		array = ['physics_factor', 'magic_factor', 'wits_factor','sexuals_factor', 'charm_factor']
 		array = array[randi()%array.size()]
-		if randf() >= 0.3:
-			add_stat(array, 1)
+		if randf() >= 0.2:
+			add_stat(array, round(rand_range(0,2)))
+		if randf() >= 0.5:
+			add_stat(['tame_factor','timid_factor'][randi()%2], round(rand_range(-1,1)))
 		difficulty -= 1
 		bonus_counter += 1
-	difficulty = adjust_difficulty/3
+		
+	difficulty = adjust_difficulty/2
 	while difficulty > -1:
 		var array = []
 		array = ['physics', 'wits','sexuals', 'charm']

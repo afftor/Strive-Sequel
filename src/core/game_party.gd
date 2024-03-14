@@ -110,6 +110,7 @@ func remove_slave(tempslave, permanent = false):
 	character_order.erase(tempslave.id)
 #	input_handler.update_slave_list()
 	input_handler.rebuild_slave_list()
+	gui_controller.mansion.set_active_person(ResourceScripts.game_party.get_master())
 
 
 func subtract_taxes():

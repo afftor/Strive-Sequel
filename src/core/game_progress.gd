@@ -56,7 +56,7 @@ var dialogue_local_counters = {}
 var planned_mansion_events = []
 
 
-var master_points = 3
+var master_points = 1
 
 func _init():
 	globals.connect("hour_tick", self, 'check_timed_events')

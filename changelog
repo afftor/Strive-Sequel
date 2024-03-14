@@ -1,3 +1,15 @@
+All tame/timid factor checks for master are automatically passed (i.e. classes requiring this factor)
+Rebalanced the way stat bonuses are applied on stronger character generation: high stat characters are more likely than stats destributed across the board. 
+
+Revamped previous Peon slave type into Subordinate
+Subordinates receieve 25% more loyalty and have 5 less obedience drain. They also cost 1% of their value in gold at the end of the week. They can't be sold or removed by giving quests.
+Successfully recruiting a stranger only allows to make them into subordinate
+Added an option to set free characters from inside character info
+Moved talk button for unique characters on right side of portraits
+Master trait points are now rewarded after progressing through main story
+Fixed Master Staff having incorrect material colors
+Fixed neutral personality characters having empty speech texts
+
 Slightly revamped gold formula for service jobs
 Slightly increased all upgrade taxes
 Nerfed writ of exemption and oblivion potion prices
@@ -14,8 +26,9 @@ Sadist: New passive - Open Vein: Melee physical attacks have 25% chance to cause
 Alios Champion: New passive - Unbound: When only character is alive in party: gain +50 evasion, +20 speed until end of battle.
 Dominator: New skill - Soul Bind: Disables Character for 1 day. Unlocks Basic Servitude, Dating, Combatant, Work Clothes, Advanced Servitude, Master Acknowledgement, Sex Basics. 
 Ranger: New skill - Animal Companion. Summons Trained Dog at the start of combat
+Technomancer: Passive bonus changed: +10 air resist -> +25% air damage
 
-Added small Zephyra event at elven capital with a costume reward
+Added minor Zephyra event at elven capital with a costume reward
 Changed the behavior for talking down captured characters - now instead of making them peon, successful negotiations will grant them basic servitude and combatant
 
 0.8.2a

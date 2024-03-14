@@ -102,7 +102,7 @@ var data = {
 
 			{code = 'add_timed_event', value = "zephyra_sword_1",
 			args = [{type = 'add_to_date', date = [2,2], hour = 1}]},
-			
+			{code = 'add_master_points', value = 1},
 			{code = "decision", value = "mayor_election_finished"}
 		],
 		text = [
