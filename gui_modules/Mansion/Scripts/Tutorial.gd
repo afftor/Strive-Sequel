@@ -44,16 +44,27 @@ var training_text = {
 }
 
 var traveling_images = {
-	0: load("res://assets/Textures_v2/MANSION/Tutorial/travelNew_1.png"),
-	1: load("res://assets/Textures_v2/MANSION/Tutorial/travelNew_2.png"),
-	2: load("res://assets/Textures_v2/MANSION/Tutorial/travelNew_3.png"),
+	
+	0: load("res://assets/Textures_v2/MANSION/Tutorial/map_1.png"),
+	1: load("res://assets/Textures_v2/MANSION/Tutorial/map_2.png"),
 }
 
 var traveling_text = {
+	
 	0: tr("TRAVELINGTUTORIAL1"),
 	1: tr("TRAVELINGTUTORIAL2"),
-	2: tr("TRAVELINGTUTORIAL3"),
 }
+#var traveling_images = {
+#	0: load("res://assets/Textures_v2/MANSION/Tutorial/travelNew_1.png"),
+#	1: load("res://assets/Textures_v2/MANSION/Tutorial/travelNew_2.png"),
+#	2: load("res://assets/Textures_v2/MANSION/Tutorial/travelNew_3.png"),
+#}
+#
+#var traveling_text = {
+#	0: tr("TRAVELINGTUTORIAL1"),
+#	1: tr("TRAVELINGTUTORIAL2"),
+#	2: tr("TRAVELINGTUTORIAL3"),
+#}
 
 var skills_images = {
 	0: load("res://assets/Textures_v2/MANSION/Tutorial/skills_1.png"),
@@ -70,26 +81,40 @@ var skills_text = {
 }
 
 var craft_images = {
-	0: load("res://assets/Textures_v2/MANSION/Tutorial/craft_1.png"),
-	1: load("res://assets/Textures_v2/MANSION/Tutorial/craft_2.png"),
-	2: load("res://assets/Textures_v2/MANSION/Tutorial/craft_3.png"),
-	3: load("res://assets/Textures_v2/MANSION/Tutorial/craft_4.png"),
-	4: load("res://assets/Textures_v2/MANSION/Tutorial/craft_5.png"),
-	5: load("res://assets/Textures_v2/MANSION/Tutorial/craft_6.png"),
-	6: load("res://assets/Textures_v2/MANSION/Tutorial/craft_7.png"),
-	7: load("res://assets/Textures_v2/MANSION/Tutorial/craft_8.png")
+	
+	0: load("res://assets/Textures_v2/MANSION/Tutorial/craft1.png"),
+	1: load("res://assets/Textures_v2/MANSION/Tutorial/craft2.png"),
+	
+	
 }
 
 var craft_text = {
 	0: tr("CRAFTTUTORIAL1"),
 	1: tr("CRAFTTUTORIAL2"),
-	2: tr("CRAFTTUTORIAL3"),
-	3: tr("CRAFTTUTORIAL4"),
-	4: tr("CRAFTTUTORIAL5"),
-	5: tr("CRAFTTUTORIAL6"),
-	6: tr("CRAFTTUTORIAL7"),
-	7: tr("CRAFTTUTORIAL8"),
+	
 }
+
+#var craft_images = {
+#	0: load("res://assets/Textures_v2/MANSION/Tutorial/craft_1.png"),
+#	1: load("res://assets/Textures_v2/MANSION/Tutorial/craft_2.png"),
+#	2: load("res://assets/Textures_v2/MANSION/Tutorial/craft_3.png"),
+#	3: load("res://assets/Textures_v2/MANSION/Tutorial/craft_4.png"),
+#	4: load("res://assets/Textures_v2/MANSION/Tutorial/craft_5.png"),
+#	5: load("res://assets/Textures_v2/MANSION/Tutorial/craft_6.png"),
+#	6: load("res://assets/Textures_v2/MANSION/Tutorial/craft_7.png"),
+#	7: load("res://assets/Textures_v2/MANSION/Tutorial/craft_8.png")
+#}
+#
+#var craft_text = {
+#	0: tr("CRAFTTUTORIAL1"),
+#	1: tr("CRAFTTUTORIAL2"),
+#	2: tr("CRAFTTUTORIAL3"),
+#	3: tr("CRAFTTUTORIAL4"),
+#	4: tr("CRAFTTUTORIAL5"),
+#	5: tr("CRAFTTUTORIAL6"),
+#	6: tr("CRAFTTUTORIAL7"),
+#	7: tr("CRAFTTUTORIAL8"),
+#}
 
 var job_images = {
 	0: load("res://assets/Textures_v2/MANSION/Tutorial/jobnew_1.png"),

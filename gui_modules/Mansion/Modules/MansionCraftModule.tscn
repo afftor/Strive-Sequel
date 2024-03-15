@@ -151,7 +151,7 @@ margin_top = 2.0
 margin_bottom = 53.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 48 )
-text = "Turn craft"
+text = "Craft Order"
 align = 1
 
 [node name="categories" type="HBoxContainer" parent="."]
@@ -162,6 +162,7 @@ margin_bottom = 245.172
 custom_constants/separation = 20
 
 [node name="smith" type="TextureButton" parent="categories"]
+visible = false
 margin_right = 200.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
@@ -185,8 +186,7 @@ __meta__ = {
 }
 
 [node name="cooking" type="TextureButton" parent="categories"]
-margin_left = 220.0
-margin_right = 420.0
+margin_right = 200.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
 toggle_mode = true
@@ -209,8 +209,8 @@ __meta__ = {
 }
 
 [node name="tailor" type="TextureButton" parent="categories"]
-margin_left = 440.0
-margin_right = 640.0
+margin_left = 220.0
+margin_right = 420.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
 toggle_mode = true
@@ -233,8 +233,8 @@ __meta__ = {
 }
 
 [node name="alchemy" type="TextureButton" parent="categories"]
-margin_left = 660.0
-margin_right = 860.0
+margin_left = 440.0
+margin_right = 640.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
 toggle_mode = true
@@ -257,8 +257,8 @@ __meta__ = {
 }
 
 [node name="enchant" type="TextureButton" parent="categories"]
-margin_left = 880.0
-margin_right = 1080.0
+margin_left = 660.0
+margin_right = 860.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
 toggle_mode = true
@@ -622,7 +622,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CraftSelect/ScrollContainer"]
-margin_right = 284.0
+margin_right = 272.0
 size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="CraftSelect/ScrollContainer/VBoxContainer"]
