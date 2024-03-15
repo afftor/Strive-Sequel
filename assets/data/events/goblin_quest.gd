@@ -234,9 +234,7 @@ var data = {
 	goblin_quest_hara_2 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "hara", 
-		text = [{text = "GOBLIN_QUEST_HARA_2_1", reqs = [], bonus_effects = [{code = 'make_story_character', value = 'Hara', recruit_from_location = true},
-		{code = 'unique_character_changes', value = 'hara', args = [
-			{code = 'tag', operant = 'add', value = 'no_sex'}]}], previous_dialogue_option = 1}, 
+		text = [{text = "GOBLIN_QUEST_HARA_2_1", reqs = [], bonus_effects = [{code = 'make_story_character', value = 'Hara', recruit_from_location = true}], previous_dialogue_option = 1}, 
 			{text = "GOBLIN_QUEST_HARA_2_2", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',

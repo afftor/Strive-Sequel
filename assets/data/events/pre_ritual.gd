@@ -85,8 +85,8 @@ var data = {
 		reqs = [], character = "zephyra",
 		text = [{text = "ZEPHYRA_RECRUITMENT_6_GOOD", reqs = []}],
 		common_effects = [{code = 'make_story_character', value = 'Zephyra', recruit_from_location = true},
-		{code = 'unique_character_changes', value = 'zephyra', args = [
-			{code = 'tag', operant = 'add', value = 'no_sex'}]},
+#		{code = 'unique_character_changes', value = 'zephyra', args = [
+#			{code = 'tag', operant = 'add', value = 'no_sex'}]},
 		{code = 'decision', value = 'ZephyraRecruited'}],
 		options = [ {
 			code = "act2_scene", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 2

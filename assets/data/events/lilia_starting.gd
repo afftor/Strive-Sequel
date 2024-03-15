@@ -179,8 +179,8 @@ var data = {
 		text = [{text = "LILIA_RECRUITED", reqs = [], previous_dialogue_option = 1},
 		{text = "LILIA_RECRUITED_GREEN", reqs = [], previous_dialogue_option = 11},],
 		common_effects = [{code = 'make_story_character', value = 'Lilia', recruit_from_location = true},
-		{code = 'unique_character_changes', value = 'lilia', args = [
-			{code = 'tag', operant = 'add', value = 'no_sex'}]},
+#		{code = 'unique_character_changes', value = 'lilia', args = [
+#			{code = 'tag', operant = 'add', value = 'no_sex'}]},
 		{code = 'decision', value = 'recruited_lilia'}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
