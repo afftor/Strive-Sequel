@@ -679,7 +679,7 @@ func select_brothel_activity():
 			
 			
 			#TODO add decriptions and impregnation
-			
+			update_brothel_log(parent.get_ref().get_stat('name'), goldearned)
 			return
 	elif non_sex_rules.size() > 0:
 		parent.get_ref().add_stat('metrics_serviceperformed', 1)
@@ -699,10 +699,26 @@ func select_brothel_activity():
 		parent.get_ref().add_stat('metrics_goldearn', goldearned)
 		
 		ResourceScripts.game_res.money += goldearned
+		update_brothel_log(parent.get_ref().get_stat('name'), goldearned)
 	else:
 		remove_from_task()
 		parent.get_ref().rest_tick()
+	
 
+func update_brothel_log(ch_name, gold):
+	var date = ResourceScripts.game_globals.date
+	var hour = ResourceScripts.game_globals.hour
+	if globals.log_node != null && weakref(globals.log_node).get_ref():
+		var newfield = globals.log_node.get_node("ServiceLog/VBoxContainer/field").duplicate()
+		newfield.show()
+		newfield.get_node("char").bbcode_text = tr(ch_name)
+		newfield.get_node("gold").bbcode_text = tr('LOGSERVICEGOLD') % gold
+		newfield.get_node("date").bbcode_text = "[right]W %d D %d - %s[/right]" % [(date -1) / 7 + 1, (date -1) % 7 + 1, tr(variables.timeword[hour])]
+		globals.log_node.get_node("ServiceLog/VBoxContainer").add_child(newfield)
+		yield(globals.get_tree(), 'idle_frame')
+		var textfield = newfield.get_node('date')
+		textfield.rect_size.y = textfield.get_v_scroll().get_max()
+		newfield.rect_min_size.y = textfield.rect_size.y
 
 func apply_boosters(value):
 	var mul = 1.0

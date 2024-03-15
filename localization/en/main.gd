@@ -1319,6 +1319,12 @@ However, while it might seem that Landowners have nothing but contempt for those
 	JOBTAILORCRAFTDESCRIPT = "Craft item in tailor workshop.",
 	JOBALCHEMYCRAFTDESCRIPT = "Craft item in alchemy workshop.",
 	
+	LOGLEFTLABEL = "Main",
+	LOGLEFTTTOOLTIP = "Shows main events",
+	LOGRIGHTLABEL = "Service",
+	LOGRIGHTTOOLTIP = "Shows service income",
+	LOGSERVICEGOLD = "Made %d gold",
+	
 	BROTHELTOOLTIP = "You can select which tasks the character will be allowed to perform while working at brothel. By toggling specific tasks only those will be allowed. Client sexes only affect sexual tasks.\nHigher character Value increases earnings, higher Charm increases likelyhood of being requested for sex.\nDifferent tasks improve and scale from different stats.\nService is a global modifier for this assignment.",
 	
 	CAPTURETOOLTIP = "These characters have been found by your team and can be recruited into your mansion or sold for quick cash as if you were selling them manually. If location has been forgotten, all characters are sold automatically.",
