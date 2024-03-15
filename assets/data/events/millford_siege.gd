@@ -494,6 +494,8 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_37", reqs = []}],
 		common_effects = [{code = 'make_story_character', value = 'Zephyra', recruit_from_location = true, slave_category = 'slave'},
+		{code = 'unique_character_changes', value = 'zephyra', args = [
+			{code = 'tag', operant = 'add', value = 'no_sex'}]},
 		{code = 'decision', value = 'ZephyraRecruited'}, {code = 'decision', value = 'ZephyraEnslaved'}],
 		options = [ {
 			code = 'divine_symbol_30', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
@@ -505,6 +507,8 @@ var data = {
 		image = null, tags = ['dialogue_scene'], character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_38", reqs = []}],
 		common_effects = [{code = 'make_story_character', value = 'Zephyra', recruit_from_location = true},
+		{code = 'unique_character_changes', value = 'zephyra', args = [
+			{code = 'tag', operant = 'add', value = 'no_sex'}]},
 		{code = 'decision', value = 'ZephyraRecruited'}],
 		options = [ {
 			code = 'divine_symbol_30', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
@@ -516,6 +520,8 @@ var data = {
 		image = null, tags = ['dialogue_scene'], character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_39", reqs = []}],
 		common_effects = [{code = 'make_story_character', value = 'Zephyra', recruit_from_location = true},
+		{code = 'unique_character_changes', value = 'zephyra', args = [
+			{code = 'tag', operant = 'add', value = 'no_sex'}]},
 		{code = 'decision', value = 'ZephyraRecruited'}],
 		options = [ {
 			code = 'divine_symbol_30', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'

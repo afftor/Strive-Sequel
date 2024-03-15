@@ -108,7 +108,9 @@ var data = {
 		text = [
 			{text = "FINAL_WORDS_1", reqs = []},
 			{text = "", reqs = [{type = 'decision', value = 'anastasia_added', check = true}, {type = 'decision', value = 'mindbreak_completed', check = false}], bonus_effects = [
-				{code = 'make_story_character', value = 'Anastasia'}]
+				{code = 'make_story_character', value = 'Anastasia'},
+				{code = 'unique_character_changes', value = 'anastasia', args = [
+			{code = 'tag', operant = 'add', value = 'no_sex'}]}]
 			}, 
 			{text = "", reqs = [{type = 'decision', value = 'anastasia_added', check = true}, {type = 'decision', value = 'mindbreak_completed', check = true}], bonus_effects = [
 				{code = 'make_story_character', value = 'AnastasiaBroken'}]
@@ -130,7 +132,8 @@ var data = {
 					{type = 'decision', value = 'AireAnastasiaPersuasion', check = true},
 					{type = 'decision', value = 'persuade_2_completed', check = true},
 				], bonus_effects = [
-				{code = 'make_story_character', value = 'Aire'}]
+				{code = 'make_story_character', value = 'Aire'}, {code = 'unique_character_changes', value = 'aire', args = [
+			{code = 'tag', operant = 'add', value = 'no_sex'}]}]
 			},
 			{text = '', reqs = [{type = 'decision', value = 'mindbreak_completed', check = true}], bonus_effects = [
 				{code = 'unique_character_changes', value = 'anastasia', args = [ # broken part
@@ -158,7 +161,7 @@ var data = {
 				reqs = [{type = 'decision', value = 'anastasia_added', check = false}],
 				type = 'next_dialogue',
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'update_city'}, {code = 'rewrite_save'}],
+				bonus_effects = [{code = 'update_city'}, {code = 'rewrite_save'}, {code = 'complete_quest', value = 'princess_persuasion'}, {code = 'update_city'}],
 			},
 		],
 	},

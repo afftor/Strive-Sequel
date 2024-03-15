@@ -574,6 +574,8 @@ var data = {
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		unlocked_gallery_seq = "zephyra_disappearance_sex",
+		common_effects = [{code = 'unique_character_changes', value = 'zephyra', args = [
+			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_SEX_1", reqs = []}
 		], 
 		options = [ { 
@@ -713,6 +715,8 @@ var data = {
 		unlocked_gallery_seq = "zephyra_disappearance_guards",
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_GUARDS_1", reqs = []},
 		],
+		common_effects = [{code = 'unique_character_changes', value = 'zephyra', args = [
+			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
 		options = [ {
 			code = 'zephyra_disappearance_guards_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		} ]

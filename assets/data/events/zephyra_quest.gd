@@ -278,6 +278,9 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [{type = "has_upgrade", name = 'resting', value = 1, negative = 'repeat_next_day'}, {type = 'unique_character_checks', name = 'zephyra', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}], character = "zephyra",
 		text = [{text = "ZEPHYRA_BATH_1", reqs = []}],
+		
+		common_effects = [{code = 'unique_character_changes', value = 'zephyra', args = [
+			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
 		options = [ {
 			code = 'zephyra_bath_2', text = "ZEPHYRA_BATH_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, {
@@ -359,6 +362,8 @@ var data = {
 		reqs = [{type = 'unique_character_checks', name = 'lilia', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}, {type = 'unique_character_checks', name = 'zephyra', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}],
 		character = "zephyra", character2 = "lilia",
 		text = [{text = "ZEPHYRA_LILIA_1", reqs = []}],
+		common_effects = [{code = 'unique_character_changes', value = 'zephyra', args = [
+			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
 		options = [ {
 			code = 'zephyra_lilia_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ]

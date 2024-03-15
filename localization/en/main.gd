@@ -1294,6 +1294,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TASKPRODUCE = "Produce",
 	TASKPRODUCEDESCRIPT = "Assigned to produce materials",
 	
+	TASKSPECIALDESCRIPT = "",
+	
 	BEDROOMTOOLTIP = "Available number of characters for sexual interactions. Increases with Bedroom Upgrade",
 	DATETOOLTIP = "Dates left this week. Increases with Master's Charm Factor and resets at the start of a week.",
 	SEXTOOLTIP = "Sexual Interactions left this week. Increases with Master's Sexual Factor and resets at the start of a week.",
@@ -1316,6 +1318,12 @@ However, while it might seem that Landowners have nothing but contempt for those
 	JOBSMITHCRAFTDESCRIPT = "Craft item at the forge.",
 	JOBTAILORCRAFTDESCRIPT = "Craft item in tailor workshop.",
 	JOBALCHEMYCRAFTDESCRIPT = "Craft item in alchemy workshop.",
+	
+	LOGLEFTLABEL = "Main",
+	LOGLEFTTTOOLTIP = "Shows main events",
+	LOGRIGHTLABEL = "Service",
+	LOGRIGHTTOOLTIP = "Shows service income",
+	LOGSERVICEGOLD = "Made %d gold",
 	
 	BROTHELTOOLTIP = "You can select which tasks the character will be allowed to perform while working at brothel. By toggling specific tasks only those will be allowed. Client sexes only affect sexual tasks.\nHigher character Value increases earnings, higher Charm increases likelyhood of being requested for sex.\nDifferent tasks improve and scale from different stats.\nService is a global modifier for this assignment.",
 	

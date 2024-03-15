@@ -214,6 +214,8 @@ var data = {
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		custom_background = "cali_touching_1",
+		common_effects = [{code = 'unique_character_changes', value = 'cali', args = [
+			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
 		options = [ {
 			code = 'cali_sex_1_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ],

@@ -277,7 +277,8 @@ var data = {
 		custom_background = "cali_bj_happy_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		common_effects = [{code = 'decision', value = 'cali_sex'}],
+		common_effects = [{code = 'decision', value = 'cali_sex'}, {code = 'unique_character_changes', value = 'cali', args = [
+			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
 		tags = ['dialogue_scene', 'blackscreen_transition_common'],
 		text = [{text = "CALI_SEX_9", reqs = []}],
 		options = [

@@ -390,6 +390,8 @@ var data = {
 		custom_background = "daisy_bent1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
+			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
 		text = [
 			{text = "DAISY_CONSENSUAL_3_SERVE", reqs = []},
 		], 

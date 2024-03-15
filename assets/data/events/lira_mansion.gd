@@ -69,6 +69,8 @@ var data = {
 		custom_background = "lira_sex_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		common_effects = [{code = 'unique_character_changes', value = 'lira', args = [
+			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
 		text = [
 			{text = "LIRA_MANSION_4_1", reqs = [], previous_dialogue_option = 1},
 			{text = "LIRA_MANSION_4_2", reqs = [], previous_dialogue_option = 2},

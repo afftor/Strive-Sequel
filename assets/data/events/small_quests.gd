@@ -63,7 +63,9 @@ var data = {
 		{text = "AIRE_RECRUITMENT_REPLY_BAD_3", reqs = [], previous_dialogue_option = 3},],
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1,
-			bonus_effects = [{code = 'make_story_character', value = 'Aire'}]
+			bonus_effects = [{code = 'make_story_character', value = 'Aire'},
+			{code = 'unique_character_changes', value = 'aire', args = [
+			{code = 'tag', operant = 'add', value = 'no_sex'}]}]
 		}, ],
 	},
 	
@@ -74,7 +76,9 @@ var data = {
 		{text = "AIRE_RECRUITMENT_REPLY_GOOD_3", reqs = [], previous_dialogue_option = 3},],
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1,
-			bonus_effects = [{code = 'make_story_character', value = 'Aire'}]
+			bonus_effects = [{code = 'make_story_character', value = 'Aire'},
+			{code = 'unique_character_changes', value = 'aire', args = [
+			{code = 'tag', operant = 'add', value = 'no_sex'}]}]
 		}, ],
 	},
 	
@@ -125,7 +129,8 @@ var data = {
 	
 	jean_intro_4 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'jean',
-		common_effects = [{code = 'make_story_character', value = 'Jean', recruit_from_location = true}],
+		common_effects = [{code = 'make_story_character', value = 'Jean', recruit_from_location = true}, {code = 'unique_character_changes', value = 'jean', args = [
+			{code = 'tag', operant = 'add', value = 'no_sex'}]}],
 		text = [ {text = "JEAN_INTRO_4", reqs = []} ],
 		options = [ {
 			code = 'jean_intro_5', text = "JEAN_INTRO_4_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -138,7 +143,8 @@ var data = {
 	
 	jean_intro_5 = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'jean',
-		common_effects = [{code = 'make_story_character', value = 'Jean', recruit_from_location = true}],
+		common_effects = [{code = 'make_story_character', value = 'Jean', recruit_from_location = true}, {code = 'unique_character_changes', value = 'jean', args = [
+			{code = 'tag', operant = 'add', value = 'no_sex'}]}],
 		text = [ {text = "JEAN_INTRO_5_1", reqs = [], previous_dialogue_option = 1},
 		{text = "JEAN_INTRO_5_2", reqs = [], previous_dialogue_option = 2},
 		{text = "JEAN_INTRO_5_3", reqs = [], previous_dialogue_option = 3, bonus_effects = [{
@@ -295,8 +301,10 @@ var data = {
 			args = [
 				{code = 'take_virginity', type = 'vaginal', partner = 'master'},
 				{code = 'obedience', operant = '-', value = 90},
+				{code = 'tag', operant = 'add', value = 'no_sex'},
 			]
 		},
+		
 		],
 		options = [ {
 			code = 'force_cali_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
@@ -310,6 +318,8 @@ var data = {
 		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene'], reqs = [], 
 		text = [{text = "FORCE_CALI_1", reqs = [], }],
+		common_effects = [{code = 'unique_character_changes', value = 'cali', args = [
+			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
 		options = [ {
 			code = 'force_cali_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, ],
@@ -394,6 +404,8 @@ var data = {
 			{code = 'unique_character_changes', value = 'cali',args = [{code = 'add_trait', trait = 'loyalty_basic_servitude'}]},
 			{code = 'add_timed_event', value = "cali_sidequest_1", args = [{type = 'add_to_date', date = [1,1], hour = 2}]}, ]}, 
 		{text = "GOT_CALI_3_3", reqs = [], previous_dialogue_option = 3}, ], 
+		common_effects = [{code = 'unique_character_changes', value = 'cali', args = [
+			{code = 'tag', operant = 'add', value = 'no_sex'}]}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = "remove_active_location"}]
