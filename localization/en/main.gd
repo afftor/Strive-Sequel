@@ -3316,9 +3316,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TUTORIAL_LOCATIONS_RESOURCES = "Other locations allow to gather resources presented on them. Settlement type locations allow to gather resources infinitely, but have a limit on how many characters can gather it at once. Combat locations allow to gather a limited amount of resources after they've been cleared. ",
 	TUTORIAL_TATTOO_1 = "Once you've unlocked Beauty Parlor, you can apply tattoos to your characters. Tattoos provide permanent bonuses and require ink crafted at Alchemy tab. To access Tattoo menu use the corresponding button at inventory screen.",
 	TUTORIAL_TATTOO_2 = "Each tattoo type has certain bonuses, require special ink and apply to only selected bodyparts. Some might also have additional requirements. Tattoos can be removed or replaced but the ink is not refunded.",
-	TRAVELINGTUTORIAL1 = "To travel to different locations select the location on the central list. You can limit the area of the locations at the dropdown menu. Different locations have different options for them.",
-	TRAVELINGTUTORIAL2 = "On the right side you can see location details: villages allow trade and gather resources while dungeons can be explored for fights. After the dungeon is complete it also usually has resources to gather.",
-	TRAVELINGTUTORIAL3 = "On the left side you can select the location which has your characters and serves as a starting point. Hit 'Confirm' after selecting the characters you've sent. ",
+	TRAVELINGTUTORIAL1 = """This is the world map. At the left side you can select locations to travel to. On the right side selected location info will be shown. Click "Send" to send your characters to another location. """,
+	TRAVELINGTUTORIAL2 = "After selecting send, select location with characters who will travel. In bottom row you can select who exactly will travel. Travelling will take some time for characters to reach new location. ",
 	JOBTUTORIAL1 = "At Occupations you can assign characters to various tasks which can be seen near the location image. At the top you can select other locations you have characters at.",
 	JOBTUTORIAL2 = "At the bottom you can see occupation description and details. Hover over them to see more information.",
 	JOBTUTORIAL3 = "On the right you can see the list of characters available at the present location. By clicking on them they will be assigned to the selected task.",
@@ -3939,8 +3938,8 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 
 
 
-	CRAFTTUTORIAL1 = "While in the Craft Menu, select the crafting category from the top of the screen.",
-	CRAFTTUTORIAL2 = "You need specific materials to craft an item displayed next to it. Modular items are crafted differently from standard items. Instead of specific materials they take material types for each different part of the item.",
+	CRAFTTUTORIAL1 = "On crafting screen select an item you want to craft on the left side. Different items are crafted in different facilities. Some items are modular and allow you to select materials for their parts which will affect the end item.",
+	CRAFTTUTORIAL2 = "After setting up crafting tasks, you need to assing at least one crafter to constantly work until item is produced. At the bottom you can drag and drop items to change the order they will be produced.",
 	CRAFTTUTORIAL3 = "To select a material for the part of the modular item click on the empty slot.",
 	CRAFTTUTORIAL4 = "At the top you can see how many of a material is needed. Different materials will provide different effects to the end item.",
 	CRAFTTUTORIAL5 = "Once finished you can select how many times the item should be crafted and confirm the order.",

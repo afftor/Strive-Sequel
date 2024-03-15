@@ -22,9 +22,7 @@ size = 46
 use_filter = true
 font_data = ExtResource( 3 )
 
-[node name="TutorialV2" type="Control" groups=[
-"pauseprocess",
-]]
+[node name="TutorialV2" type="Control" groups=["pauseprocess"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 259.0
@@ -56,8 +54,8 @@ __meta__ = {
 [node name="Title" type="Label" parent="."]
 margin_right = 302.0
 margin_bottom = 93.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "TUTORIALNAME"
 align = 1
 valign = 1
@@ -70,9 +68,8 @@ margin_left = 403.4
 margin_top = 20.0
 margin_right = 1303.4
 margin_bottom = 756.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+expand = true
+stretch_mode = 6
 
 [node name="TutorialText" type="RichTextLabel" parent="."]
 margin_left = 322.0
@@ -80,8 +77,8 @@ margin_top = 771.0
 margin_right = 1379.0
 margin_bottom = 896.0
 theme = ExtResource( 1 )
-custom_fonts/normal_font = ExtResource( 4 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
 
 [node name="TutList" type="ScrollContainer" parent="."]
@@ -108,8 +105,8 @@ texture_hover = ExtResource( 13 )
 [node name="Label" type="Label" parent="TutList/VBoxContainer/Button"]
 margin_right = 242.0
 margin_bottom = 54.0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Tut"
 align = 1
 valign = 1
@@ -134,8 +131,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="Back"]
 margin_right = 160.0
 margin_bottom = 58.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "TUTORIALPREV"
 align = 1
 valign = 1
@@ -160,8 +157,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="Forward"]
 margin_right = 160.0
 margin_bottom = 58.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "TUTORIALNEXT"
 align = 1
 valign = 1

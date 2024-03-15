@@ -713,7 +713,7 @@ func update_brothel_log(ch_name, gold):
 		newfield.show()
 		newfield.get_node("char").bbcode_text = tr(ch_name)
 		newfield.get_node("gold").bbcode_text = tr('LOGSERVICEGOLD') % gold
-		newfield.get_node("date").bbcode_text = "[right]W %d D %d - %s[/right]" % [(date -1) / 7 + 1, (date -1) % 7 + 1, tr(variables.timeword[hour])]
+		#newfield.get_node("date").bbcode_text = "[right]W %d D %d - %s[/right]" % [(date -1) / 7 + 1, (date -1) % 7 + 1, tr(variables.timeword[hour])]
 		globals.log_node.get_node("ServiceLog/VBoxContainer").add_child(newfield)
 		yield(globals.get_tree(), 'idle_frame')
 		var textfield = newfield.get_node('date')

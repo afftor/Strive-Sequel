@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/body_mask.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/map/location/button_place_hover.png" type="Texture" id=2]
@@ -46,6 +46,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/arrowstat_r.png" type="Texture" id=44]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=45]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24_outline.tres" type="DynamicFont" id=46]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HScrollBar.tres" type="Theme" id=47]
 
 [sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 42 )
@@ -283,6 +284,7 @@ valign = 1
 margin_top = 39.0
 margin_right = 524.0
 margin_bottom = 39.0
+theme = ExtResource( 47 )
 scroll_vertical_enabled = false
 
 [node name="Characters" type="HBoxContainer" parent="InfoPanel/VBoxContainer/CharScroll"]
@@ -375,11 +377,9 @@ scroll_horizontal_enabled = false
 [node name="LocCatList" type="VBoxContainer" parent="FromLocList/LocScroll"]
 
 [node name="LocCat" type="VBoxContainer" parent="FromLocList/LocScroll/LocCatList"]
-visible = false
-margin_right = 360.0
-margin_bottom = 54.0
 
 [node name="Button" type="TextureButton" parent="FromLocList/LocScroll/LocCatList/LocCat"]
+visible = false
 margin_right = 360.0
 margin_bottom = 50.0
 rect_pivot_offset = Vector2( -318.656, 186.314 )
@@ -398,14 +398,9 @@ align = 1
 valign = 1
 
 [node name="offset" type="HBoxContainer" parent="FromLocList/LocScroll/LocCatList/LocCat"]
-margin_top = 54.0
-margin_right = 360.0
-margin_bottom = 54.0
 alignment = 2
 
 [node name="LocList" type="VBoxContainer" parent="FromLocList/LocScroll/LocCatList/LocCat/offset"]
-margin_left = 360.0
-margin_right = 360.0
 grow_horizontal = 0
 
 [node name="Button" type="TextureButton" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocList"]
@@ -414,9 +409,9 @@ margin_right = 325.0
 margin_bottom = 50.0
 grow_horizontal = 0
 toggle_mode = true
-texture_normal = ExtResource( 21 )
-texture_pressed = ExtResource( 20 )
-texture_hover = ExtResource( 2 )
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 21 )
 
 [node name="icon" type="TextureRect" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocList/Button"]
 margin_left = 7.0
@@ -478,11 +473,12 @@ margin_bottom = -20.0
 scroll_horizontal_enabled = false
 
 [node name="LocCatList" type="VBoxContainer" parent="ToLocList/LocScroll"]
-
-[node name="LocCat" type="VBoxContainer" parent="ToLocList/LocScroll/LocCatList"]
-visible = false
 margin_right = 360.0
 margin_bottom = 54.0
+
+[node name="LocCat" type="VBoxContainer" parent="ToLocList/LocScroll/LocCatList"]
+margin_right = 360.0
+margin_bottom = 104.0
 
 [node name="Button" type="TextureButton" parent="ToLocList/LocScroll/LocCatList/LocCat"]
 margin_right = 360.0
@@ -505,12 +501,13 @@ valign = 1
 [node name="offset" type="HBoxContainer" parent="ToLocList/LocScroll/LocCatList/LocCat"]
 margin_top = 54.0
 margin_right = 360.0
-margin_bottom = 54.0
+margin_bottom = 104.0
 alignment = 2
 
 [node name="LocList" type="VBoxContainer" parent="ToLocList/LocScroll/LocCatList/LocCat/offset"]
-margin_left = 360.0
+margin_left = 35.0
 margin_right = 360.0
+margin_bottom = 50.0
 grow_horizontal = 0
 
 [node name="Button" type="TextureButton" parent="ToLocList/LocScroll/LocCatList/LocCat/offset/LocList"]
@@ -519,9 +516,9 @@ margin_right = 325.0
 margin_bottom = 50.0
 grow_horizontal = 0
 toggle_mode = true
-texture_normal = ExtResource( 21 )
-texture_pressed = ExtResource( 20 )
-texture_hover = ExtResource( 2 )
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 21 )
 
 [node name="icon" type="TextureRect" parent="ToLocList/LocScroll/LocCatList/LocCat/offset/LocList/Button"]
 margin_left = 7.0
