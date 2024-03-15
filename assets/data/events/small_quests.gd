@@ -64,8 +64,9 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [{code = 'make_story_character', value = 'Aire'},
-			{code = 'unique_character_changes', value = 'aire', args = [
-			{code = 'tag', operant = 'add', value = 'no_sex'}]}]
+			#{code = 'unique_character_changes', value = 'aire', args = [
+			#{code = 'tag', operant = 'add', value = 'no_sex'}]}
+			]
 		}, ],
 	},
 	
@@ -77,8 +78,9 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [{code = 'make_story_character', value = 'Aire'},
-			{code = 'unique_character_changes', value = 'aire', args = [
-			{code = 'tag', operant = 'add', value = 'no_sex'}]}]
+			#{code = 'unique_character_changes', value = 'aire', args = [
+			#{code = 'tag', operant = 'add', value = 'no_sex'}]}
+			]
 		}, ],
 	},
 	
@@ -318,8 +320,8 @@ var data = {
 		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene'], reqs = [], 
 		text = [{text = "FORCE_CALI_1", reqs = [], }],
-		common_effects = [{code = 'unique_character_changes', value = 'cali', args = [
-			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
+#		common_effects = [{code = 'unique_character_changes', value = 'cali', args = [
+#			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
 		options = [ {
 			code = 'force_cali_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, ],
@@ -404,8 +406,8 @@ var data = {
 			{code = 'unique_character_changes', value = 'cali',args = [{code = 'add_trait', trait = 'loyalty_basic_servitude'}]},
 			{code = 'add_timed_event', value = "cali_sidequest_1", args = [{type = 'add_to_date', date = [1,1], hour = 2}]}, ]}, 
 		{text = "GOT_CALI_3_3", reqs = [], previous_dialogue_option = 3}, ], 
-		common_effects = [{code = 'unique_character_changes', value = 'cali', args = [
-			{code = 'tag', operant = 'add', value = 'no_sex'}]}],
+#		common_effects = [{code = 'unique_character_changes', value = 'cali', args = [
+#			{code = 'tag', operant = 'add', value = 'no_sex'}]}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = "remove_active_location"}]
