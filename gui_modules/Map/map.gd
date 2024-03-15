@@ -277,6 +277,7 @@ func open():
 	input_handler.node_children_visible(get_parent(), self, false)
 	ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
 	set_focus_area()
+	input_handler.ActivateTutorial("traveling")
 
 
 func build_locations_list():
