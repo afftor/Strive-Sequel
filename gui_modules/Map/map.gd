@@ -243,7 +243,7 @@ func close():
 #		gui_controller.clock.restoreoldspeed()
 	input_handler.node_children_visible(get_parent(), null, true)
 	get_parent().mansion_state = 'default'
-	get_parent().match_state()
+#	get_parent().match_state()
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 	hide()
 #	if get_parent().mansion_state == 'travels':
