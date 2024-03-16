@@ -5156,7 +5156,6 @@ gui_disable_input = true
 
 [node name="male_pose" type="Node2D" parent="VPC/VP" groups=["sex"]]
 light_mask = 4
-position = Vector2( 500, 500 )
 
 [node name="HumanF1" type="Skeleton2D" parent="VPC/VP/male_pose"]
 scale = Vector2( 1.05, 1.05 )
@@ -5878,7 +5877,6 @@ z_index = 5
 texture = ExtResource( 114 )
 
 [node name="Female_pose" type="Node2D" parent="VPC/VP" groups=["sex"]]
-visible = false
 
 [node name="HumanF1" type="Skeleton2D" parent="VPC/VP/Female_pose"]
 
