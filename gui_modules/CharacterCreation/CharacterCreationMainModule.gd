@@ -157,7 +157,7 @@ var params_to_save = [ #memo mostly
 	'hair_facial_color'
 ]
 
-var tooltips_stat = ['personality']
+var tooltips_stat = ['personality','slave_class']
 
 onready var RaceSelection = $RaceSelectionModule
 onready var ClassSelection = $ClassSelectionModule

@@ -664,7 +664,18 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "Revamped previous Peon slave type into Subordinate
+bbcode_text = "0.8.3a
+Fixed some issues with the map including not being able to send characters to other regions
+Fixed collars not displaying on characters
+Minor gui fixes
+Subordinates no longer can be chosen for stat donorship
+0.8.3
+All tame/timid factor checks for master are automatically passed (i.e. classes requiring this factor)
+Rebalanced the way stat bonuses are applied on stronger character generation: high stat characters are more likely than stats destributed across the board. 
+Corrected some of the older tutorials
+Added simple service gold log
+
+Revamped previous Peon slave type into Subordinate
 Subordinates receieve 25% more loyalty and have 5 less obedience drain. They also cost 1% of their value in gold at the end of the week. They can't be sold or removed by giving quests.
 Successfully recruiting a stranger only allows to make them into subordinate
 Added an option to set free characters from inside character info
@@ -689,10 +700,11 @@ Sadist: New passive - Open Vein: Melee physical attacks have 25% chance to cause
 Alios Champion: New passive - Unbound: When only character is alive in party: gain +50 evasion, +20 speed until end of battle.
 Dominator: New skill - Soul Bind: Disables Character for 1 day. Unlocks Basic Servitude, Dating, Combatant, Work Clothes, Advanced Servitude, Master Acknowledgement, Sex Basics. 
 Ranger: New skill - Animal Companion. Summons Trained Dog at the start of combat
+Technomancer: Passive bonus changed: +10 air resist -> +25% air damage
 
 Added minor Zephyra event at elven capital with a costume reward
 Changed the behavior for talking down captured characters - now instead of making them peon, successful negotiations will grant them basic servitude and combatant
-
+0.8.2a
 Added forgetting location to the map options
 Added an option to Amelia's quest to keep her as servant leader
 Added some missing scenes to the gallery
@@ -1583,7 +1595,18 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Revamped previous Peon slave type into Subordinate
+text = "0.8.3a
+Fixed some issues with the map including not being able to send characters to other regions
+Fixed collars not displaying on characters
+Minor gui fixes
+Subordinates no longer can be chosen for stat donorship
+0.8.3
+All tame/timid factor checks for master are automatically passed (i.e. classes requiring this factor)
+Rebalanced the way stat bonuses are applied on stronger character generation: high stat characters are more likely than stats destributed across the board. 
+Corrected some of the older tutorials
+Added simple service gold log
+
+Revamped previous Peon slave type into Subordinate
 Subordinates receieve 25% more loyalty and have 5 less obedience drain. They also cost 1% of their value in gold at the end of the week. They can't be sold or removed by giving quests.
 Successfully recruiting a stranger only allows to make them into subordinate
 Added an option to set free characters from inside character info
@@ -1608,10 +1631,11 @@ Sadist: New passive - Open Vein: Melee physical attacks have 25% chance to cause
 Alios Champion: New passive - Unbound: When only character is alive in party: gain +50 evasion, +20 speed until end of battle.
 Dominator: New skill - Soul Bind: Disables Character for 1 day. Unlocks Basic Servitude, Dating, Combatant, Work Clothes, Advanced Servitude, Master Acknowledgement, Sex Basics. 
 Ranger: New skill - Animal Companion. Summons Trained Dog at the start of combat
+Technomancer: Passive bonus changed: +10 air resist -> +25% air damage
 
 Added minor Zephyra event at elven capital with a costume reward
 Changed the behavior for talking down captured characters - now instead of making them peon, successful negotiations will grant them basic servitude and combatant
-
+0.8.2a
 Added forgetting location to the map options
 Added an option to Amelia's quest to keep her as servant leader
 Added some missing scenes to the gallery

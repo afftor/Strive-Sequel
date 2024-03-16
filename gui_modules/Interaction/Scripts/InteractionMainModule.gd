@@ -225,7 +225,7 @@ func createtestdummy(type = 'normal'):
 	person.is_players_character = true
 	#person.statlist.statlist.mods['hollownipples'] = 'hollownipples'
 	#person.statlist.sex_traits = ['pushover']#'dislike_petting','bottle_fairy','hypersensitive','life_power',
-	person.statlist.statlist.consent = 500
+	person.statlist.statlist.consent = rand_range(15,40)
 	for i in person.statlist.statlist.sex_skills:
 		person.statlist.statlist.sex_skills[i] += 100
 	if type == 'resist':
@@ -233,7 +233,7 @@ func createtestdummy(type = 'normal'):
 		#globals.connectrelatives(participants[0].person, person, 'father')
 
 	newmember.setup_person(person, true)
-	newmember.consent = 500
+	newmember.consent = rand_range(15,40)
 	#dummycounter += 1
 
 #	if person.consent == false && person.professions.has("master"):
@@ -389,7 +389,7 @@ func rebuildparticipantslist():
 			actionreplacetext = i.person.translate("[name] resists and won't follow any orders.")
 		elif i.subduing != null && ((takers.size() > 0 && takers[0] != i.subduing) || takers.size() > 1 ) :
 			showactions = false
-			actionreplacetext = i.person.translate("[name] is busy holding down ") + i.subduing.person.translate("[name] \nand can only act on $him. ")
+			actionreplacetext = i.person.translate("[name] is busy holding down ") + i.subduing.person.translate("[name] \nand can only act on [him]. ")
 
 	var array = []
 	var bottomrow =  ['rope', 'subdue', 'deny_orgasm', 'cum_select']
@@ -443,7 +443,7 @@ func rebuildparticipantslist():
 				newnode.modulate = Color(1,0.5,0.5)
 
 			var tooltiptext
-			if input_handler.globalsettings.show_full_consent:
+			if input_handler.globalsettings.show_full_consent || true:
 				tooltiptext = i.getname() + " (Minimum Consent: [color=aqua]"+ str(i.consent_level) + "[/color])\nActor Consent: [color=aqua]"+ str(giver_consent) +"[/color] (" + giver_name + ") "  +"\n" + giver_text + "\nReceiver Consent: [color=aqua]" + str(taker_consent) + "[/color] ("+ taker_name + ') '  + "\n" + taker_text
 			else:
 				tooltiptext = i.getname()

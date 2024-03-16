@@ -1,3 +1,8 @@
+Fixed some issues with the map including not being able to send characters to other regions
+Fixed collars not displaying on characters
+Minor gui fixes
+Subordinates no longer can be chosen for stat donorship
+0.8.3
 All tame/timid factor checks for master are automatically passed (i.e. classes requiring this factor)
 Rebalanced the way stat bonuses are applied on stronger character generation: high stat characters are more likely than stats destributed across the board. 
 Corrected some of the older tutorials

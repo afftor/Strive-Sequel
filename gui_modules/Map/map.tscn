@@ -377,9 +377,9 @@ scroll_horizontal_enabled = false
 [node name="LocCatList" type="VBoxContainer" parent="FromLocList/LocScroll"]
 
 [node name="LocCat" type="VBoxContainer" parent="FromLocList/LocScroll/LocCatList"]
+visible = false
 
 [node name="Button" type="TextureButton" parent="FromLocList/LocScroll/LocCatList/LocCat"]
-visible = false
 margin_right = 360.0
 margin_bottom = 50.0
 rect_pivot_offset = Vector2( -318.656, 186.314 )
@@ -473,12 +473,11 @@ margin_bottom = -20.0
 scroll_horizontal_enabled = false
 
 [node name="LocCatList" type="VBoxContainer" parent="ToLocList/LocScroll"]
-margin_right = 360.0
-margin_bottom = 54.0
 
 [node name="LocCat" type="VBoxContainer" parent="ToLocList/LocScroll/LocCatList"]
+visible = false
 margin_right = 360.0
-margin_bottom = 104.0
+margin_bottom = 54.0
 
 [node name="Button" type="TextureButton" parent="ToLocList/LocScroll/LocCatList/LocCat"]
 margin_right = 360.0
@@ -501,13 +500,12 @@ valign = 1
 [node name="offset" type="HBoxContainer" parent="ToLocList/LocScroll/LocCatList/LocCat"]
 margin_top = 54.0
 margin_right = 360.0
-margin_bottom = 104.0
+margin_bottom = 54.0
 alignment = 2
 
 [node name="LocList" type="VBoxContainer" parent="ToLocList/LocScroll/LocCatList/LocCat/offset"]
-margin_left = 35.0
+margin_left = 360.0
 margin_right = 360.0
-margin_bottom = 50.0
 grow_horizontal = 0
 
 [node name="Button" type="TextureButton" parent="ToLocList/LocScroll/LocCatList/LocCat/offset/LocList"]

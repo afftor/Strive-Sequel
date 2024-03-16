@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=2]
+[gd_scene load_steps=141 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=2]
@@ -90,6 +90,7 @@
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/panel_class.png" type="Texture" id=88]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=89]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_big.png" type="Texture" id=90]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=91]
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_upgrades_task.png" type="Texture" id=93]
 [ext_resource path="res://gui_modules/Exploration/Modules/StatsTrading.tscn" type="PackedScene" id=94]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=95]
@@ -134,6 +135,11 @@ font_data = ExtResource( 26 )
 [sub_resource type="DynamicFont" id=3]
 size = 20
 font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 20
+use_filter = true
+font_data = ExtResource( 91 )
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 75 )
@@ -428,9 +434,6 @@ margin_top = 137.0
 margin_right = 1519.0
 margin_bottom = 937.0
 custom_styles/panel = ExtResource( 37 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HireBG1" type="Panel" parent="SlaveMarket"]
 self_modulate = Color( 0, 0, 0, 0.705882 )
@@ -1142,7 +1145,7 @@ margin_top = -2.0
 margin_right = 194.0
 margin_bottom = 56.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 120 )
+custom_fonts/font = SubResource( 17 )
 text = "DIALOGUERECRUITFORCEATTEMPT"
 align = 1
 valign = 1
@@ -1161,13 +1164,10 @@ margin_top = -2.0
 margin_right = 194.0
 margin_bottom = 56.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 120 )
+custom_fonts/font = SubResource( 17 )
 text = "UPGRADE_LABEL"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="UpgradeButton2" type="TextureButton" parent="SlaveMarket/HBoxContainer"]
 margin_left = 418.0
@@ -1183,8 +1183,8 @@ margin_top = -2.0
 margin_right = 194.0
 margin_bottom = 56.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 120 )
-text = "Upgrade body"
+custom_fonts/font = SubResource( 17 )
+text = "BODY_ALTER_LABEL"
 align = 1
 valign = 1
 

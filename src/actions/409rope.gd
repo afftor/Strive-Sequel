@@ -25,8 +25,8 @@ func getongoingdescription(givers, takers):
 	
 func requirements():
 	var valid = true
-	if ResourceScripts.game_res.materials.rope < takers.size():
-		valid = false
+#	if ResourceScripts.game_res.materials.rope < takers.size():
+#		valid = false
 	if takers.size() < 1 || givers.size() < 1:
 		valid = false
 	elif givers.size() > 2:
@@ -34,9 +34,9 @@ func requirements():
 	for i in givers + takers:
 		if i.limbs == false:
 			valid = false
-	for i in givers:
-		if !i.person.has_status('sex_adv'):
-			valid = false
+#	for i in givers:
+#		if !i.person.has_status('sex_adv'):
+#			valid = false
 	return valid
 
 func givereffect(member):
