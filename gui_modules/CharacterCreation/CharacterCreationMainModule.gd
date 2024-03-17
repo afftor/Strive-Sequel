@@ -487,6 +487,7 @@ func build_node_for_stat(stat):
 	else:
 #		print ("warning - no description record for %s" % str(stat))
 		text = str(val)
+#		text = tr(stat.to_upper() + val.to_upper())
 	node.get_node('button/Label').text = text
 	#set nodes
 	if !node.has_meta('signals_built'):

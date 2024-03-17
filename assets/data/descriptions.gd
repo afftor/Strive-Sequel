@@ -4,9 +4,12 @@ var person
 
 func _init():
 	for i in bodypartsdata:
+		if i == 'slave_class':
+			print('+')
 		for k in bodypartsdata[i].values():
 			if k.code != null:
-				k.name = tr("BODYPART" + i.to_upper() + k.code.to_upper())
+				if !k.has('name') or k.name == "":
+					k.name = tr("BODYPART" + i.to_upper() + k.code.to_upper())
 #				text += k.name + ' = "' + k.code + '",\n'
 				k.chardescript = tr("BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT")
 #	var file = File.new()
@@ -602,6 +605,13 @@ var bodypartsdata = {
 	penis_virgin = {
 		true : {code = 'true', name = '', chardescript = '', bodychanges = []},
 		false : {code = 'false', name = '', chardescript = '', bodychanges = []},
+	},
+	slave_class = {
+		'master': {code = 'master', name = 'SLAVECLASSMASTER', chardescript = '', bodychanges = []},
+		'slave': {code = 'slave', name = 'SLAVECLASSSLAVE', chardescript = '', bodychanges = []},
+		'servant': {code = 'servant', name = 'SLAVECLASSSERVANT', chardescript = '', bodychanges = []},
+		'servant_notax': {code = 'servant_notax', name = 'SLAVECLASSSERVANTALT', chardescript = '', bodychanges = []},
+		'heir': {code = 'heir', name = 'SLAVECLASSHEIR', chardescript = '', bodychanges = []},
 	}
 }
 

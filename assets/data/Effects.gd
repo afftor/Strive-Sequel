@@ -3505,7 +3505,7 @@ var effect_table = {
 		type = 'temp_global',
 		tags = ['duration_turns', 'affliction'],
 		target = 'target',
-		name = 'shatter',
+		name = 'bishop_debuf',
 		stack = 1,
 		timers = [
 			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 3}, #3 turn duration
@@ -3515,8 +3515,8 @@ var effect_table = {
 		args = [],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add_p', stat = 'resist_light', value = -50},
-			{type = 'stat_add_p', stat = 'resist_dark', value = -50},
+			{type = 'stat_add', stat = 'resist_light', value = -50},
+			{type = 'stat_add', stat = 'resist_dark', value = -50},
 			],
 		buffs = ['b_bishop'],
 	},

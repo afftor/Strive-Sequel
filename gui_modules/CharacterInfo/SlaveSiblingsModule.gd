@@ -298,8 +298,8 @@ func swap_mode():
 		loyalty_mode = true
 		$UpgradesPanel.visible = true
 		$RelativesPanel.visible = false
-		$change_button2.visible = true
-		$change_button3.visible = true
+		$change_button2.visible = (loyalty_tab != 3)
+		$change_button3.visible = (loyalty_tab != 3)
 		$change_button/Label.text = tr("SIBLINGMODULERELATIVES")
 
 
