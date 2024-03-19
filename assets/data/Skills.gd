@@ -602,8 +602,8 @@ var Skilllist = {
 		cooldown = 3,
 		icon = load("res://assets/images/iconsskills/TurnUndead.png"),
 		tags = [],
-		value = [['0']],
-		damagestat = 'no_stat'
+		value = [['5']],
+		damagestat = '=consent'
 	},
 	
 	

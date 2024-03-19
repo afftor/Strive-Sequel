@@ -1717,7 +1717,7 @@ func check_skill_availability(s_code, target):
 	if !check_cost(template.cost):
 		descript = get_short_name() + ": " + tr("CANT_PAY_COSTS_LABEL") + "'"
 		check = false
-	if skills.social_skills_charges.has(s_code) && skills.social_skills_charges[s_code] >= template.charges:
+	if skills.social_skills_charges.has(s_code) && skills.social_skills_charges[s_code] >= Skilldata.get_charges(template, self):
 		descript = get_short_name() + ": " + template.name + " - " + tr("NO_CHARGES_LEFT_LABEL") + "."
 		check = false
 	if template.has('globallimit') && ResourceScripts.game_party.global_skills_used.has(s_code) && ResourceScripts.game_party.global_skills_used[s_code] >= template.globallimit:
