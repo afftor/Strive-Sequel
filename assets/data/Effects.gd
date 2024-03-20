@@ -675,7 +675,7 @@ var effect_table = {
 			{type = 'add_trait', trait = 'loyalty_dress_work'},
 			{type = 'add_trait', trait = 'loyalty_adv_servitude'},
 			{type = 'add_trait', trait = 'loyalty_callmaster'},
-			{type = 'add_trait', trait = 'loyalty_sex_basic'},
+#			{type = 'add_trait', trait = 'loyalty_sex_basic'},
 		],
 	},
 #	e_s_dominate = {
