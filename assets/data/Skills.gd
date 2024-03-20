@@ -602,8 +602,8 @@ var Skilllist = {
 		cooldown = 4,
 		icon = load("res://assets/images/iconsclasses/Dominator.png"),
 		tags = [],
-		value = [['0']],
-		damagestat = 'no_stat'
+		value = [['5']],
+		damagestat = '=consent'
 	},
 	
 	
