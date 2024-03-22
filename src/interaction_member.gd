@@ -18,6 +18,11 @@ var request
 var requestsdone = 0
 var consent = 0
 var consentgain = 1
+var stamina = 100 setget stamina_set
+
+var actions_resisted = {}
+var low_actions_resisted = 0
+
 
 var number = 0
 var sceneref
@@ -70,7 +75,6 @@ var tail
 var strapon = false
 var nipples
 var posh1
-var mode = 'normal'
 var limbs = true
 var npc = false
 
@@ -162,6 +166,15 @@ func lewd_set(value):
 func horny_set(value):
 	var change = value - horny
 	horny += change*hornymod
+
+func stamina_set(value):
+	var endvalue = stamina - value
+	if person.get_stat('slave_class') == 'slave':
+		endvalue = endvalue*0.66
+	stamina -= endvalue
+	if stamina <= 0:
+		person.add_stat('obedience', -(value - stamina))
+		stamina = 0
 
 var impregnation_texts = {
 
@@ -256,13 +269,18 @@ func orgasm(custom_text = null):
 				person_sexexp.orgasmpartners[k.id] += 1
 			else:
 				person_sexexp.orgasmpartners[k.id] = 1
-
+	
+	
 	var scene
 	var temptext = ''
 	var penistext = ''
 	var vaginatext = ''
 	var anustext = ''
 	orgasms += 1
+	
+	if stamina > 0:
+		stamina += max(20 + 5*person.get_stat('sexuals_factor') - orgasms*10, 0)
+	
 	if sceneref.participants.size() == 2 && person.has_profession("master"):
 		if person.check_trait("Monogamous") && (sceneref.participants[0].person.has_profession("master") || sceneref.participants[1].person.has_profession("master")):
 			person.add_stat('loyalty', rand_range(1.4,5.6))
@@ -440,7 +458,7 @@ func actioneffect(values, scenedict):
 	var horny_mod = 1.0
 	if scenedict.scene.code != 'deny_orgasm':
 		lastaction = scenedict
-#	person.sexuals += 0.05 for having no actual effect since sexuals has no real value
+		
 	if values.has('sens'):
 		sensinput = values.sens
 	if values.has('horny'):
@@ -528,7 +546,7 @@ func actioneffect(values, scenedict):
 
 	if values.has('tags'):
 		if values.tags.has('punish'):
-			if (person.predict_obed_time() < 90 || mode == 'forced') && (!person.check_trait('Masochist') && !person.check_trait('Likes it rough') && !person.check_trait('Sex-crazed')):
+			if (person.predict_obed_time() < 90) && (!person.check_trait('Masochist') && !person.check_trait('Likes it rough') && !person.check_trait('Sex-crazed')):
 				for i in scenedict.givers:
 					globals.addrelations(person, i.person, -rand_range(5,10))
 				person.add_stat('obedience', values.obed)

@@ -265,9 +265,9 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], unique_character = 'daisy',
 		text = [
 			{text = "DAISY_EXTRA_REPLY_1_1_NO", reqs = [{type = 'active_character_checks', value = [
-				{code = 'stat', stat = 'consent', operant = 'lt', value = 40},
+				{code = 'stat', stat = 'consent', operant = 'lt', value = 3},
 				{code = 'has_profession', profession = 'sextoy', check = false},
-				]}]}, # if consent < 40 && has no profession: sextoy 
+				]}]}, 
 			{text = "DAISY_EXTRA_REPLY_1_1_YES", reqs = []},
 		], 
 		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
@@ -281,9 +281,9 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], unique_character = 'daisy',
 		text = [
 			{text = "DAISY_EXTRA_REPLY_1_2_NO", reqs = [{type = 'active_character_checks', value = [
-				{code = 'stat', stat = 'consent', operant = 'lt', value = 40},
+				{code = 'stat', stat = 'consent', operant = 'lt', value = 3},
 				{code = 'has_profession', profession = 'sextoy', check = false},
-				]}]}, # if consent < 40 && has no profession: sextoy 
+				]}]}, 
 			{text = "DAISY_EXTRA_REPLY_1_2_YES", reqs = []},
 		], 
 		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [

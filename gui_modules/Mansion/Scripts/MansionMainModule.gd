@@ -627,7 +627,7 @@ func test_mode():
 		character.get_random_traits()
 		#character.armor = 135
 		#character.set_stat('wits', 20)
-		character.set_stat('consent', 100)
+		character.set_stat('consent', 5)
 		character.set_stat('charm_factor', 2)
 		character.set_stat('physics_factor', 6)
 		character.set_stat('sexuals_factor', 6)
@@ -704,7 +704,7 @@ func test_mode():
 		character.set_stat('sexuals_factor', 5)
 		character.set_stat('charm', 100)
 		character.set_stat('physics', 100)
-		character.set_stat('consent', 100)
+		character.set_stat('consent', 5)
 		#globals.impregnate(ResourceScripts.game_party.get_master(), character)
 		#character.get_stat('pregnancy', true).duration = 2
 		var text = ''
@@ -777,7 +777,7 @@ func test_mode():
 					value = 'daisy',
 					args = [
 						{code = 'loyalty', value = 150, operant = "+"},
-						{code = 'consent', value = 150, operant = "+"},
+						{code = 'consent', value = 5, operant = "+"},
 						{code = 'price', value = 3000, operant = "+"},
 						{code = 'sexuals_factor', value = 2, operant = "+"},
 						{code = 'growth_factor', value = 2, operant = "+"},

@@ -28,6 +28,8 @@ func _ready():
 	globals.connecttexttooltip($personality/kind, tr("INFOPERSONALITYKIND"))
 	globals.connecttexttooltip($personality/serious, tr("INFOPERSONALITYSERIOUS"))
 	
+	globals.connecttexttooltip($ConsentLabel, tr("INFOCONSENT"))
+	
 	$work_rules/ration.connect("button_down", self, "update")
 	$work_rules/ration.connect("button_up", self, "update")
 	$change_button.connect("pressed", self, 'swap_mode')
@@ -131,7 +133,7 @@ func update():
 			newbutton.get_node("ProgressBar/Label").text = str(floor(s_skills[i])) + '/100'
 			globals.connecttexttooltip(newbutton,  person.translate(tr("SEXSKILL"+i.to_upper()+"DESCRIPT")) + "\n" + tr("CUR_LEVEL_LABEL") + ":" + str(floor(s_skills[i])))
 		
-		$ConsentLabel.text = tr("SIBLINGMODULECONSENT") + ": " + str(person.get_stat('consent'))
+		$ConsentLabel.text = tr("SIBLINGMODULECONSENT") + str(variables.consent_dict[person.get_stat('consent')])
 		
 		globals.connecttexttooltip($SlaveDietModule/food_love,"[center]" + statdata.statdata.food_love.name + "[/center]\n"+  statdata.statdata.food_love.descript)
 		globals.connecttexttooltip($SlaveDietModule/food_hate,"[center]" + statdata.statdata.food_hate.name + "[/center]\n"+ statdata.statdata.food_hate.descript)

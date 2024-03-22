@@ -15,6 +15,10 @@ const giver_skill = ['tail']
 const taker_skill = []
 const consent_level = 25
 
+
+const consent_giver = 3
+const consent_taker = 3
+
 func getname(state = null):
 	return "Tailjob"
 
@@ -38,8 +42,6 @@ func requirements():
 			if !variables.longtails.has(i.person.get_stat('tail')):
 				valid = false
 			if i.limbs == false:
-				valid = false
-			if !i.person.has_status('sex_perv'):
 				valid = false
 		for i in takers:
 			if i.person.get_stat('penis_size') == '':

@@ -843,7 +843,7 @@ func finish_character():
 				person.add_trait('loyalty_dress_work')
 		else:
 			person.set_slave_category('master')
-			person.set_stat('consent', 1000)
+			person.set_stat('consent', 100)
 			globals.equip_char(person, 'chest_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
 			globals.equip_char(person, 'legs_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
 		ResourceScripts.game_party.add_slave(person)

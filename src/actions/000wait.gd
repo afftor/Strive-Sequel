@@ -15,6 +15,10 @@ const giver_skill = []
 const taker_skill = []
 const consent_level = 0
 
+
+const consent_giver = 0
+const consent_taker = 0
+
 func getname(state = null):
 	return "Wait"
 

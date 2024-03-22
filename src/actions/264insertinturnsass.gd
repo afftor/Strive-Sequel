@@ -15,6 +15,8 @@ const giver_skill = ['penetration']
 const taker_skill = ['anal']
 const consent_level = 40
 
+const consent_giver = 4
+const consent_taker = 5
 func requirements():
 	var valid = true
 	if takers.size() < 1 || givers.size() < 1:
@@ -24,8 +26,6 @@ func requirements():
 	for i in givers:
 		if i.person.get_stat('penis_size') == '' && !i.strapon:
 			valid = false
-		if !i.person.has_status('sex_adv'):
-				valid = false
 	return valid
 
 func getname(state = null):

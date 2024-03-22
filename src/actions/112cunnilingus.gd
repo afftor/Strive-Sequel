@@ -15,6 +15,10 @@ const giver_skill = ['oral']
 const taker_skill = ['pussy']
 const consent_level = 15
 
+
+const consent_giver = 2
+const consent_taker = 3
+
 func getname(state = null):
 	return "Cunnilingus"
 
@@ -41,9 +45,6 @@ func requirements():
 #				valid = false
 			elif i.person.get_stat('sex') == 'male':
 				valid = false
-	for i in givers:
-		if !i.person.has_status('sex_oral'):
-			valid = false
 	return valid
 
 func givereffect(member):

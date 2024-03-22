@@ -18,6 +18,8 @@ const taker_skill = []
 const consent_level = 25
 const consent_level_max = 50
 
+const consent_giver = 4
+const consent_taker = 5
 func getname(state = null):
 	return "Nipple fuck"
 

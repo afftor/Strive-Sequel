@@ -14,6 +14,8 @@ const takertags = ['pet', 'vagina', 'toys']
 const giver_skill = []
 const taker_skill = ['pussy']
 const consent_level = 15
+const consent_giver = 0
+const consent_taker = 4
 
 func getname(state = null):
 	return "Vibrator"

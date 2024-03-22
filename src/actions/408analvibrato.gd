@@ -14,6 +14,8 @@ const takertags = ['pet','anal','toys']
 const giver_skill = []
 const taker_skill = ['anal']
 const consent_level = 25
+const consent_giver = 0
+const consent_taker = 5
 
 func getname(state = null):
 	return "Anal vibrator"
@@ -33,9 +35,6 @@ func requirements():
 		valid = false
 	elif givers.size() > 2:
 		valid = false
-	for i in takers:
-		if !i.person.has_status('sex_anal'):
-			valid = false
 	return valid
 
 func givereffect(member):

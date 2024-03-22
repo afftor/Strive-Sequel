@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/weapon_back_mace_2.png-a49b120c6b3bbf3a73e8ccf533720445.stex"
+path="res://.import/lilith_wed0.png-0a2f32350c010d54b1e6772e45c08899.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/201_weapon_back/weapon_back_mace_2.png"
-dest_files=[ "res://.import/weapon_back_mace_2.png-a49b120c6b3bbf3a73e8ccf533720445.stex" ]
+source_file="res://assets/images/fullscreen scenes/lilith_wed0.png"
+dest_files=[ "res://.import/lilith_wed0.png-0a2f32350c010d54b1e6772e45c08899.stex" ]
 
 [params]
 

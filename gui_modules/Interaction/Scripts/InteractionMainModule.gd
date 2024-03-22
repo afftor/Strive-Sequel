@@ -103,7 +103,7 @@ func _ready():
 		while i > 0:
 			i -= 1
 			createtestdummy()
-		turns = 50
+		turns = 10
 		# createtestdummy('resist')
 		changecategory('caress')
 		clearstate()
@@ -164,7 +164,7 @@ func OrgasmDenialCum():
 
 func OrgasmDenialBeg():
 	var text
-	if OrgasmDenyVictim.consent < 25 && randf() >= 0.5:
+	if OrgasmDenyVictim.consent < 2 && randf() >= 0.5:
 		text = OrgasmDenyText.beg_failure
 		OrgasmDenyStage = 1
 	else:
@@ -225,7 +225,7 @@ func createtestdummy(type = 'normal'):
 	person.is_players_character = true
 	#person.statlist.statlist.mods['hollownipples'] = 'hollownipples'
 	#person.statlist.sex_traits = ['pushover']#'dislike_petting','bottle_fairy','hypersensitive','life_power',
-	person.statlist.statlist.consent = rand_range(15,40)
+	person.statlist.statlist.consent = round(rand_range(2,5))
 	for i in person.statlist.statlist.sex_skills:
 		person.statlist.statlist.sex_skills[i] += 100
 	if type == 'resist':
@@ -233,7 +233,7 @@ func createtestdummy(type = 'normal'):
 		#globals.connectrelatives(participants[0].person, person, 'father')
 
 	newmember.setup_person(person, true)
-	newmember.consent = rand_range(15,40)
+	newmember.consent = round(rand_range(2,5))
 	#dummycounter += 1
 
 #	if person.consent == false && person.professions.has("master"):
@@ -324,6 +324,8 @@ func rebuildparticipantslist():
 		newnode.get_node("sex").set_texture(images.icons[i.sex])
 		newnode.get_node("sex").set_tooltip(i.sex)
 		newnode.get_node('HBoxContainer/arousal').value = i.sens
+		newnode.get_node("Stamina").value = i.stamina
+		globals.connecttexttooltip(newnode.get_node('Stamina'), tr("TOOLTIPSTAMINA"))
 		#newnode.get_node("portrait").texture = i.person.get_icon_small()
 		# newnode.get_node("container/portrait").connect("mouse_entered",self,'showbody',[i])
 		# newnode.get_node("container/portrait").connect("mouse_exited",self,'hidebody')
@@ -439,17 +441,41 @@ func rebuildparticipantslist():
 			get_node("Panel/GridContainer/GridContainer").add_child(newnode)
 			newnode.visible = true
 			newnode.get_node("ActionName").set_text(i.getname())
-			if i.consent_level > giver_consent || i.consent_level > taker_consent:
-				newnode.modulate = Color(1,0.5,0.5)
+			if i.consent_giver > giver_consent || i.consent_taker > taker_consent:
+				
+				
+				newnode.modulate = Color(1,0.7,0.7)
 
 			var tooltiptext
 			if input_handler.globalsettings.show_full_consent || true:
-				tooltiptext = i.getname() + " (Minimum Consent: [color=aqua]"+ str(i.consent_level) + "[/color])\nActor Consent: [color=aqua]"+ str(giver_consent) +"[/color] (" + giver_name + ") "  +"\n" + giver_text + "\nReceiver Consent: [color=aqua]" + str(taker_consent) + "[/color] ("+ taker_name + ') '  + "\n" + taker_text
+				
+				tooltiptext = i.getname() + "\n"+giver_name + ": "
+				
+				if i.consent_giver <= giver_consent:
+					tooltiptext += "{color=aqua|Willing}"
+				else:
+					tooltiptext += "{color=yellow|Refusing}" 
+				
+				tooltiptext +=  "\n" + giver_text + "\n" + taker_name + ": "
+				
+				if i.consent_taker <= taker_consent:
+					tooltiptext += "{color=aqua|Willing}"
+				else:
+					tooltiptext += "{color=yellow|Refusing}" 
+				
+				tooltiptext +=  "\n" + taker_text
+				
+				#tooltiptext = giver_name + "\n" + giver_text + taker_name + "\n" + taker_text
+				
+#				tooltiptext = ("[color=aqua]Giver - " + str(i.consent_giver) + 
+#				", Receiver - " + str(i.consent_taker) + 
+#				"[/color]\nActor Consent: [color=aqua]"+ str(giver_consent) +"[/color] (" + giver_name + ") "  +"\n" + giver_text + 
+#				"\nReceiver Consent: [color=aqua]" + str(taker_consent) + "[/color] ("+ taker_name + ') '  + "\n" + taker_text)
 			else:
 				tooltiptext = i.getname()
-				if giver_consent < i.consent_level:
+				if giver_consent < i.consent_giver:
 					tooltiptext += "\n{color=red|" + giver_name + " does not wish to engage into this action}"
-				if taker_consent < i.consent_level:
+				if taker_consent < i.consent_taker:
 					tooltiptext += "\n{color=red|" + taker_name + " does not wish to engage into this action}"
 			globals.connecttexttooltip(newnode, tooltiptext)
 			if result[0] == 'disabled':
@@ -541,18 +567,23 @@ func count_action_consent(action, giver, taker):
 					if k.effect == 'consent':
 						if k.operant == '*':
 							giver_consent -= value * k.value
-							giver_text += trait.name + ": -"+ str(value)+"\n"
+							giver_text += "{color=red|" + trait.name + "}"+"\n"
+							
+							#giver_text += trait.name + ": -"+ str(value)+"\n"
 						elif k.operant == "+":
 							giver_consent += k.value
-							giver_text += trait.name + ": +"+ str(k.value)+"\n"
+							giver_text += "{color=green|" + trait.name + "}"+"\n"
+							#giver_text += trait.name + ": +"+ str(k.value)+"\n"
 				'consent_check_partner':
 					if k.effect == 'consent':
 						if k.operant == '*':
 							taker_consent -= value * k.value
-							taker_text += trait.name + ": -"+ str(value)+"\n"
+							giver_text += "{color=red|" + trait.name + "}"+"\n"
+						#	taker_text += trait.name + ": -"+ str(value)+"\n"
 						elif k.operant == '+':
 							taker_consent += k.value
-							taker_text += trait.name + ": +"+ str(k.value)+"\n"
+							giver_text += "{color=green|" + trait.name + "}"+"\n"
+							#taker_text += trait.name + ": +"+ str(k.value)+"\n"
 
 	for i in taker.sex_traits:
 		var trait = Traitdata.sex_traits[i]
@@ -564,173 +595,178 @@ func count_action_consent(action, giver, taker):
 					if k.effect == 'consent':
 						if k.operant == '*':
 							taker_consent -= value * k.value
-							taker_text += trait.name + ": -"+ str(value)+"\n"
+							taker_text += "{color=red|" + trait.name + "}"+"\n"
+							#taker_text += trait.name + ": -"+ str(value)+"\n"
 						elif k.operant == "+":
 							taker_consent += k.value
-							taker_text += trait.name + ": +"+ str(k.value)+"\n"
+							taker_text += "{color=green|" + trait.name + "}"+"\n"
+							#taker_text += trait.name + ": +"+ str(k.value)+"\n"
 				'consent_check_partner':
 					if k.effect == 'consent':
 						if k.operant == '*':
 							giver_consent -= value * k.value
-							giver_text += trait.name + ": -"+ str(value)+"\n"
+							giver_text += "{color=red|" + trait.name + "}"+"\n"
+							#giver_text += trait.name + ": -"+ str(value)+"\n"
 						elif k.operant == '+':
 							giver_consent += k.value
-							giver_text += trait.name + ": +"+ str(k.value)+"\n"
+							giver_text += "{color=green|" + trait.name + "}"+"\n"
+							#giver_text += trait.name + ": +"+ str(k.value)+"\n"
 
 	if participants.size() > 2 && action.givers.size() + action.takers.size() < participants.size() && !action.code in ['subdue','rope','orgasm_denial']:
 		if giver.sex_traits.has("shameless"):
 			pass
 		elif giver.sex_traits.has("exhibitionist"):
-			giver_consent += 5
-			giver_text += "Is being observed: +5 (Exhibitionist)\n"
+			giver_consent += 1
+			giver_text += "{color=green|Is being observed (Exhibitionist)}\n"
 		else:
-			giver_consent -= 5
-			giver_text += "Is being observed: -5\n"
+			giver_consent -= 1
+			giver_text += "{color=red|Is being observed}\n"
 
 		if taker.sex_traits.has("shameless"):
 			pass
 		elif taker.sex_traits.has("exhibitionist"):
-			taker_consent += 5
-			taker_text += "Is being observed: +5 (Exhibitionist)\n"
+			taker_consent += 1
+			taker_text += "{color=green|Is being observed (Exhibitionist)}\n"
 		else:
-			taker_consent -= 5
-			taker_text += "Is being observed: -5\n"
+			taker_consent -= 1
+			taker_text += "{color=red|Is being observed}\n"
+			#taker_text += "Is being observed: -\n"
 
 	if (action.givers.size() > 1 || action.takers.size() > 1) && !action.code in ['subdue','rope','orgasm_denial']:
 		if giver.sex_traits.has("group"):
-			giver_consent += 5
-			giver_text += "Multiple partners: +5(Likes Groups)\n"
+			giver_consent += 1
+			giver_text += "{color=green|Multiple partners (Likes Groups)}\n"
 		else:
-			giver_consent -= 5
-			giver_text += "Multiple partners: -5\n"
+			giver_consent -= 1
+			giver_text += "{color=red|Multiple partners}\n"
 
 		if taker.sex_traits.has("group"):
-			taker_consent += 5
-			taker_text += "Multiple partners: +5(Likes Groups)\n"
+			taker_consent += 1
+			taker_text += "{color=green|Multiple partners  (Likes Groups)}\n"
 		else:
-			taker_consent -= 5
-			taker_text += "Multiple partners: -5\n"
+			taker_consent -= 1
+			taker_text += "{color=red|Multiple partners}\n"
 
 	if giver.sex == taker.sex && !action.code in ['subdue','rope','orgasm_denial'] :
 		if giver.sex_traits.has("bisexual") == false:
-			giver_consent -= 10
-			giver_text += "Same sex partner: -10\n"
+			giver_consent -= 1
+			giver_text += "{color=red|Same sex partner}\n"
 		if taker.sex_traits.has("bisexual") == false:
-			taker_consent -= 10
-			taker_text += "Same sex partner: -10\n"
+			taker_consent -= 1
+			taker_text += "{color=red|Same sex partner}\n"
 
 	if action.givertags.has("anal"):
 		if giver.sex_traits.has("anal"):
 			pass
 		elif giver.sex_traits.has('anal_like'):
-			giver_consent += 5
-			giver_text += "Anal: +5(Likes Anal)\n"
+			giver_consent += 1
+			giver_text += "{color=green|Anal (Likes Anal)}\n"
 		else:
-			giver_consent -= 5
-			giver_text += "Anal: -5\n"
+			giver_consent -= 1
+			giver_text += "{color=red|Anal}\n"
 
 	if action.takertags.has("anal"):
 		if taker.sex_traits.has("anal"):
 			pass
 		elif taker.sex_traits.has('anal_like'):
-			taker_consent += 5
-			taker_text += "Anal: +5(Likes Anal)\n"
+			taker_consent += 1
+			taker_text += "{color=green|Anal (Likes Anal)}\n"
 		else:
-			taker_consent -= 5
-			taker_text += "Anal: -5\n"
+			taker_consent -= 1
+			taker_text += "{color=red|Anal}\n"
 
 	if giver.person.check_trait('undead') || giver.person.get_stat('unique') in ['dog','horse'] :
 		if !taker.sex_traits.has('deviant'):
-			taker_consent -= 15
-			taker_text += "Repulsive partner: -15\n"
+			taker_consent -= 2
+			taker_text += "{color=red|Repulsive partner}\n"
 	if taker.person.check_trait('undead') || taker.person.get_stat('unique') in ['dog','horse'] :
 		if !giver.sex_traits.has('deviant'):
-			giver_consent -= 15
-			giver_text += "Repulsive partner: -15\n"
+			giver_consent -= 2
+			giver_text += "{color=red|Repulsive partner}\n"
 
 	if giver.effects.has('tipsy'):
-		giver_consent += 5
-		giver_text += "Tipsy: +5\n"
+		giver_consent += 1
+		giver_text += "{color=green|Tipsy}\n"
 	if giver.effects.has('drunk') :
-		giver_consent += 10
-		giver_text += "Drunk: +10\n"
+		giver_consent += 2
+		giver_text += "{color=green|Drunk}\n"
 	if taker.effects.has('tipsy'):
-		taker_consent += 5
-		taker_text += "Tipsy: +5\n"
+		taker_consent += 1
+		taker_text += "{color=green|Tipsy}\n"
 	if taker.effects.has('drunk'):
-		taker_consent += 10
-		taker_text += "Drunk: +10\n"
+		taker_consent += 2
+		taker_text += "{color=green|Drunk}\n"
 
 
-	if giver.horny >= 100:
-		giver_consent += 5
-		giver_text += "Horny: +5\n"
-	if taker.horny >= 100:
-		taker_consent += 5
-		taker_text += "Horny: +5\n"
+#	if giver.horny >= 100:
+#		giver_consent += 1
+#		giver_text += "{color=green|Horny}\n"
+#	if taker.horny >= 100:
+#		taker_consent += 1
+#		taker_text += "{color=green|Horny}\n"
 
 	if giver.person_relations.has(taker.id):
 		var rel_value = giver.person_relations[taker.id]
 		if rel_value >= 350:
-			giver_consent += 5
-			giver_text += "Likes partner: +5\n"
+			giver_consent += 1
+			giver_text += "{color=green|Likes partner}\n"
 		elif rel_value >= 800:
-			giver_consent += 10
-			giver_text += "Loves partner: +10\n"
+			giver_consent += 2
+			giver_text += "{color=green|Loves partner}\n"
 		elif rel_value <= -800:
-			giver_consent -= 10
-			giver_text += "Dislikes partner: -5\n"
+			giver_consent -= 2
+			giver_text += "{color=red|Dislikes partner}\n"
 		elif rel_value <= -350:
-			giver_consent -= 5
-			giver_text += "Hates partner: -10\n"
+			giver_consent -= 1
+			giver_text += "{color=red|Hates partner}\n"
 
 	if taker.person_relations.has(giver.id):
 		var rel_value = taker.person_relations[giver.id]
 		if rel_value >= 350:
-			taker_consent += 5
-			taker_text += "Likes partner: +5\n"
+			taker_consent += 1
+			taker_text += "{color=green|Likes partner}\n"
 		elif rel_value >= 800:
-			taker_consent += 10
-			taker_text += "Loves partner: +10\n"
+			taker_consent += 2
+			taker_text += "{color=green|Loves partner}\n"
 		elif rel_value <= -800:
-			taker_consent -= 10
-			taker_text += "Dislikes partner: -5\n"
+			taker_consent -= 2
+			taker_text += "{color=red|Dislikes partner}\n"
 		elif rel_value <= -350:
-			taker_consent -= 5
-			taker_text += "Hates partner: -10\n"
+			taker_consent -= 1
+			taker_text += "{color=red|Hates partner}\n"
 
 	if giver.person.get_stat('body_shape') != taker.person.get_stat('body_shape') && !action.code in ['subdue','rope','orgasm_denial']:
 		if !giver.sex_traits.has("open_minded"):
-			giver_consent -= 10
-			giver_text += 'Partner is of different species: -10\n'
+			giver_consent -= 1
+			giver_text += '{color=red|Partner is of different species}\n'
 		if !taker.sex_traits.has("open_minded"):
-			taker_consent -= 10
-			taker_text += "Partner is of different species: -10\n"
+			taker_consent -= 1
+			taker_text += "{color=red|Partner is of different species}\n"
 
 	if action.givertags.has('vagina') && action.givertags.has('penetration') && giver.person.get_stat('vaginal_virgin'):
-		giver_consent -= 10
-		giver_text += "Is virgin: -10\n"
+		giver_consent -= 1
+		giver_text += "{color=red|Is virgin}\n"
 	if action.takertags.has('vagina') && action.takertags.has('penetration') && taker.person.get_stat('vaginal_virgin'):
-		taker_consent -= 10
-		taker_text += "Is virgin: -10\n"
+		taker_consent -= 1
+		taker_text += "{color=red|Is virgin}\n"
 
 
 	if giver.person.has_profession('master'):
 		giver_consent = 100
 		giver_text = "Maximum"
-		taker_consent += 5
-		taker_text += "Partner is " + taker.person.translate("[master]") + ": +5\n"
+#		taker_consent += 1
+#		taker_text += "Partner is " + taker.person.translate("[master]") + ": +\n"
 	if taker.person.has_profession('master'):
 		taker_consent = 100
 		taker_text = "Maximum"
-		giver_consent += 5
-		giver_text += "Partner is " + giver.person.translate("[master]") + ": +5\n"
-	if giver.person.get_stat('slave_class') == 'slave':
-		giver_consent += 10
-		giver_text += "Is a Slave: +10\n"
-	if taker.person.get_stat('slave_class') == 'slave':
-		taker_consent += 10
-		taker_text += "Is a Slave: +10\n"
+#		giver_consent += 1
+#		giver_text += "Partner is " + giver.person.translate("[master]") + ": +\n"
+#	if giver.person.get_stat('slave_class') == 'slave':
+#		giver_consent += 1
+#		giver_text += "Is a Slave: +1\n"
+#	if taker.person.get_stat('slave_class') == 'slave':
+#		taker_consent += 1
+#		taker_text += "Is a Slave: +1\n"
 	if action.code == 'subdue':
 		taker_consent = 25
 		taker_text = "Subdue: Receiver's consent ignored. "
@@ -1003,31 +1039,58 @@ func startscene(scenescript, cont = false, pretext = ''):
 	var dict = {scene = scenescript, takers = [] + takers, givers = [] + givers, consents = {}}
 
 	for i in givers:
-		var lowest_consent = 100
+		var lowest_consent = 10
 		for j in takers:
 			var consent = count_action_consent(scenescript, i, j)
 			if consent.giver_consent < lowest_consent:
 				lowest_consent = consent.giver_consent
-		dict.consents[i.id] = lowest_consent# - scenescript.consent_level
+		if lowest_consent < scenescript.consent_giver:
+			var resist = scenescript.consent_giver - lowest_consent
+			if resist == 1:
+				i.low_actions_resisted += 1
+			if i.actions_resisted.has(scenescript.code): 
+				resist = resist/3
+				i.actions_resisted[scenescript.code] += 1
+			else:
+				i.actions_resisted[scenescript.code] = 1
+			if !i.sex_traits.has("doormat") || randf() >= 0.5:
+				i.stamina -= resist*15
+		
+		
+		#dict.consents[i.id] = lowest_consent# - scenescript.consent_level
 
 	for j in takers:
-		var lowest_consent = 100
+		var lowest_consent = 10
 		for i in givers:
 			var consent = count_action_consent(scenescript, i, j)
 			if consent.taker_consent < lowest_consent:
 				lowest_consent = consent.taker_consent
-		dict.consents[j.id] = lowest_consent# - scenescript.consent_level
+		dict.consents[j.id] = lowest_consent
+		if lowest_consent < scenescript.consent_taker:
+			var resist = scenescript.consent_taker - lowest_consent
+			print(scenescript.consent_taker, lowest_consent, resist)
+			if resist == 1:
+				j.low_actions_resisted += 1
+			if j.actions_resisted.has(scenescript.code): 
+				resist = resist/3
+				j.actions_resisted[scenescript.code] += 1
+			else:
+				j.actions_resisted[scenescript.code] = 1
+			if !j.sex_traits.has("doormat") || randf() >= 0.5:
+				j.stamina -= resist*15
+	
+	
 
-
-	for i in givers + takers:
-		if dict.consents[i.id] < scenescript.consent_level:
-			var result = resistattempt(i)
-			textdict.mainevent += result.text
-			if result.consent == false:
-				get_node("Panel/sceneeffects").bbcode_text += (textdict.mainevent + "\n" + textdict.repeats)
-				rebuildparticipantslist()
-
-				return
+	
+#	for i in givers + takers:
+#		if dict.consents[i.id] < scenescript.consent_level:
+#			var result = resistattempt(i)
+#			textdict.mainevent += result.text
+#			if result.consent == false:
+#				get_node("Panel/sceneeffects").bbcode_text += (textdict.mainevent + "\n" + textdict.repeats)
+#				rebuildparticipantslist()
+#
+#				return
 
 	for i in givers + takers:
 		if isencountersamesex(givers,takers,i) == true:
@@ -1045,8 +1108,8 @@ func startscene(scenescript, cont = false, pretext = ''):
 					i.person_sexexp.partners[k.id] += 1
 				else:
 					i.person_sexexp.partners[k.id] = 1
-					if dict.consents[k.id] - scenescript.consent_level > 0:
-						k.new_consented_partners += 1
+					#if dict.consents[k.id] - scenescript.consent_level > 0:
+					k.new_consented_partners += 1
 
 
 	for i in participants:
@@ -1532,14 +1595,14 @@ func output(scenescript, valid_lines, givers, takers):
 			checks.virgin = false
 	#assign consent
 
-	for j in takers:
-		var lowest_consent = 100
-		for i in givers:
-			var consent = count_action_consent(scenescript, i, j)
-			if consent.taker_consent < lowest_consent:
-				lowest_consent = consent.taker_consent
-		if lowest_consent < scenescript.consent_level:
-			checks.consent = false
+#	for j in takers:
+#		var lowest_consent = 100
+#		for i in givers:
+#			var consent = count_action_consent(scenescript, i, j)
+#			if consent.taker_consent < lowest_consent:
+#				lowest_consent = consent.taker_consent
+#		if lowest_consent < scenescript.consent_level:
+#			checks.consent = false
 
 #	for i in takers:
 #		if i.mode == 'forced' || i.effects.has('resist'):
@@ -1659,34 +1722,47 @@ func endencounter():
 	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 
 	for i in participants:
-		consenttext[i.id] = '\nParticipation: +1'
-
+		
 		i.person.set_stat('lastsexday', ResourceScripts.game_globals.date)
-
-		i.person.add_stat('lust', 20 + i.orgasms * 5 * i.person.get_stat('sexuals_factor'))
-		i.consentgain += i.orgasms*2
-		if i.orgasms > 0:
-			consenttext[i.id] += '\nOrgasms: +' + str(i.orgasms*2)
-
-		if i.new_action_performed == true:
-			i.consentgain += 1
-			consenttext[i.id] += '\nTried new action: +1'
-		if i.begged_for_orgasm == true:
-			i.consentgain += 3
-			consenttext[i.id] += "\nBegged for orgasm: +3"
-		if i.new_consented_partners > 0:
-			i.consentgain += i.new_consented_partners*2
-			consenttext[i.id] += '\nConsented to new partners: +' + str(i.new_consented_partners*2)
-
-		if floor(i.consented_actions.keys().size()/3) > 0:
-			i.consentgain += floor(i.consented_actions.keys().size())/3
-			consenttext[i.id] += "\nAccepted Variety: +" + str(floor(i.consented_actions.keys().size())/3)
-
-		if i.effects.has("pheromones"):
-			consenttext[i.id] += "\nWas drugged with pheromones: -" + str(floor(i.consentgain/2))
-			i.consentgain = floor(i.consentgain/2)
+		
+#		consenttext[i.id] = '\nParticipation: +1'
+#
+#
+#		if i.orgasms > 0:
+#			consenttext[i.id] += '\nOrgasms: ' + str(i.orgasms)
+		
+		if i.stamina > 0 && i.low_actions_resisted > 7 - i.person.get_stat('sexuals_factor')/1.5 && i.person.get_stat('consent') < 6:
+			i.person.add_stat('consent', 1)
+			text += i.person.translate('[name] has opened [him]self to the new experience: Consent - {color=aqua|' + variables.consent_dict[int(i.person.get_stat('consent'))] + "}\n")
+		elif i.stamina == 0:
+			text += i.person.translate("[name] has been devastated by this encounter and have not been able to increase [his] open mindedness. ")
+		
+		
+			
+			
+			
+			
+#		i.person.add_stat('lust', 20 + i.orgasms * 5 * i.person.get_stat('sexuals_factor'))
+#		i.consentgain += i.orgasms*2
+#		if i.new_action_performed == true:
+#			i.consentgain += 1
+#			consenttext[i.id] += '\nTried new action: +1'
+#		if i.begged_for_orgasm == true:
+#			i.consentgain += 3
+#			consenttext[i.id] += "\nBegged for orgasm: +3"
+#		if i.new_consented_partners > 0:
+#			i.consentgain += i.new_consented_partners*2
+#			consenttext[i.id] += '\nConsented to new partners: +' + str(i.new_consented_partners*2)
+#
+#		if floor(i.consented_actions.keys().size()/3) > 0:
+#			i.consentgain += floor(i.consented_actions.keys().size())/3
+#			consenttext[i.id] += "\nAccepted Variety: +" + str(floor(i.consented_actions.keys().size())/3)
+#
+#		if i.effects.has("pheromones"):
+#			consenttext[i.id] += "\nWas drugged with pheromones: -" + str(floor(i.consentgain/2))
+#			i.consentgain = floor(i.consentgain/2)
+#		text += "; Lust gained: " +  str(20 + i.orgasms * 5 * i.person.get_stat('sexuals_factor'))
 		text += i.person.translate("[name]: Orgasms - ") + str(i.orgasms)
-		text += "; Lust gained: " +  str(20 + i.orgasms * 5 * i.person.get_stat('sexuals_factor'))
 #		i.person.sexuals += i.orgasms not relevant
 		var expgain = round(i.orgasms * 8 + i.sens/200)
 		var bonus = 1
@@ -1699,8 +1775,8 @@ func endencounter():
 				if j.trigger == 'encounter_end':
 					if j.effect == 'exp_bonus':
 						bonus = input_handler.math(j.operant, bonus, j.value)
-					elif j.effect == 'consent_gain':
-						i.consentgain = input_handler.math(j.operant, i.consentgain, j.value)
+#					elif j.effect == 'consent_gain':
+#						i.consentgain = input_handler.math(j.operant, i.consentgain, j.value)
 					else: call(j.effect, i)
 
 		expgain = expgain * bonus
@@ -1713,15 +1789,15 @@ func endencounter():
 				effect = 'satisfaction_2'
 			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[effect])
 			i.person.apply_effect(effects_pool.add_effect(eff))
-		var temptext = consenttext[i.id]
-		consenttext[i.id] = "Total: "
+#		var temptext = consenttext[i.id]
+#		consenttext[i.id] = "Total: "
 
-		if i.consentgain > 0:
-			consenttext[i.id] += '+'
-		else:
-			consenttext[i.id] += '-'
-		consenttext[i.id] += str(i.consentgain) + temptext
-		i.person.add_stat('consent', i.consentgain)
+#		if i.consentgain > 0:
+#			consenttext[i.id] += '+'
+#		else:
+#			consenttext[i.id] += '-'
+		#consenttext[i.id] += str(i.consentgain) + temptext
+		#i.person.add_stat('consent', i.consentgain)
 		text += "\n"
 
 	ongoingactions.clear()
@@ -1766,7 +1842,7 @@ func endencounter():
 						text += p.name + " lost trait: " + Traitdata.sex_traits[i].name + "\n"
 
 	get_node("Control").show()
-	get_node("Control/Panel/RichTextLabel").set_bbcode(text)
+	get_node("Control/Panel/RichTextLabel").set_bbcode(globals.TextEncoder(text))
 
 func mformula(gain, mana):
 	return mana + gain * max(0, mana/(mana-300)+1)
@@ -2029,47 +2105,75 @@ func _on_debug_pressed():
 func _on_aiallow_pressed():
 	aiobserve = $Panel/aiallow.pressed
 
-func resistattempt(member):
+
+
+func resistattempt(member, strength):
 	var result = {text = '', consent = true}
-	var resiststrength = member.person.get_stat('physics_factor')
 	var subdue = 0
 	var resist_chance = 0
 
-	if member.sex_traits.has('doormat') == false:
-		member.person.add_stat('obedience', -1)
 
-	match member.person.get_stat('personality'):
-		'kind':
-			resist_chance = 0.2
-		'bold':
-			resist_chance = 0.9
-		'shy':
-			resist_chance = 0.05
-		'serious':
-			resist_chance = 0.5
-	if member.sex_traits.has("doormat"):
-		resist_chance = 0
 
-	if member.effects.has('tied'):
-		resiststrength = 0
+	if !member.sex_traits.has("doormat") || randf() >= 0.5:
+		member.stamina -= strength*15
+	
+	
+	result.text = "[name1] isn't happy doing this..."
 
-		result.text += '[name1] is powerless to resist, as [his1] limbs are restricted by rope.\n'
-
-	for i in member.subduedby:
-		subdue += i.person.get_stat('physics_factor')
-
-	if resiststrength > subdue && resiststrength != 0:
-		result.consent = false
-		result.text += '[name1] resists the attempt with brute force.\n'
-	else:
-		if member.subduedby.size() == 0:
-			result.text += '[name1] tries to struggle, but [his1] strength is not enough to fight back...\n'
-		else:
-			result.text += "[name1]'s attempts to resist are stopped by being held by [name2]. \n"
+#	if resiststrength > subdue && resiststrength != 0:
+#		result.consent = true
+#		result.text += '[name1] resists the attempt with brute force.\n'
+#	else:
+#		if member.subduedby.size() == 0:
+#			result.text += '[name1] tries to struggle, but [his1] strength is not enough to fight back...\n'
+#		else:
+#			result.text += "[name1]'s attempts to resist are stopped by being held by [name2]. \n"
 
 
 	result.text = decoder(result.text, [member], member.subduedby)
 	return result
+
+#func resistattempt(member):
+#	var result = {text = '', consent = true}
+#	var resiststrength = member.person.get_stat('physics_factor')
+#	var subdue = 0
+#	var resist_chance = 0
+#
+#	if member.sex_traits.has('doormat') == false:
+#		member.person.add_stat('obedience', -1)
+#
+#	match member.person.get_stat('personality'):
+#		'kind':
+#			resist_chance = 0.2
+#		'bold':
+#			resist_chance = 0.9
+#		'shy':
+#			resist_chance = 0.05
+#		'serious':
+#			resist_chance = 0.5
+#	if member.sex_traits.has("doormat"):
+#		resist_chance = 0
+#
+#	if member.effects.has('tied'):
+#		resiststrength = 0
+#
+#		result.text += '[name1] is powerless to resist, as [his1] limbs are restricted by rope.\n'
+#
+#	for i in member.subduedby:
+#		subdue += i.person.get_stat('physics_factor')
+#
+#	if resiststrength > subdue && resiststrength != 0:
+#		result.consent = false
+#		result.text += '[name1] resists the attempt with brute force.\n'
+#	else:
+#		if member.subduedby.size() == 0:
+#			result.text += '[name1] tries to struggle, but [his1] strength is not enough to fight back...\n'
+#		else:
+#			result.text += "[name1]'s attempts to resist are stopped by being held by [name2]. \n"
+#
+#
+#	result.text = decoder(result.text, [member], member.subduedby)
+#	return result
 
 
 func alcohol(member):
@@ -2126,7 +2230,7 @@ func pheromones(member):
 		if member.person.get_stat('race') in races.race_groups.halfbeast + races.race_groups.beast:
 			member.effects.append("pheromones")
 			member.lewdmod += 1
-			member.consent = 100
+			member.consent = 4
 			input_handler.scene_characters = [member.person]
 			text = "\nPheromones were used on " + member.name + globals.TextEncoder("... [His] mind became engulfed in unquenchable thirst.\n{color=aqua|[name]} - {random_chat=0|aphrodisiac}")
 		else:

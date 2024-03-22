@@ -497,7 +497,7 @@ var professions = {
 		icon = load("res://assets/images/iconsclasses/Caster.png"),
 		tags = [],
 		categories = ['combat','magic'],
-		showupreqs = [{code = "class_unlocked", class = 'caster', operant = 'eq', check = true}],
+		showupreqs = [{code = 'has_any_profession', value = ['apprentice', 'scholar']},{code = "class_unlocked", class = 'caster', operant = 'eq', check = true}],
 		reqs = [{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 4},{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 2}],
 		statchanges = {mpmax = 15},
 		traits = ['advanced_spells'],

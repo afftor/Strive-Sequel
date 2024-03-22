@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -68,6 +68,8 @@
 [ext_resource path="res://ragdoll.tscn" type="PackedScene" id=66]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=67]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/body_mask_crop.png" type="Texture" id=68]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_sexskills.png" type="Texture" id=69]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_sexskills_progress.png" type="Texture" id=70]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -333,9 +335,6 @@ margin_top = 15.0
 margin_right = 457.0
 margin_bottom = 745.0
 custom_styles/panel = ExtResource( 42 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/CharList"]
 anchor_left = 1.0
@@ -352,7 +351,7 @@ scroll_horizontal_enabled = false
 margin_right = 409.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
-custom_constants/separation = -1
+custom_constants/separation = 16
 
 [node name="Panel" type="TextureButton" parent="Panel/CharList/ScrollContainer/VBoxContainer"]
 visible = false
@@ -365,6 +364,15 @@ texture_normal = ExtResource( 21 )
 texture_pressed = ExtResource( 22 )
 texture_hover = ExtResource( 23 )
 
+[node name="Stamina" type="TextureProgress" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
+margin_left = 48.0
+margin_top = 50.0
+margin_right = 304.0
+margin_bottom = 70.0
+value = 50.0
+texture_under = ExtResource( 69 )
+texture_progress = ExtResource( 70 )
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
 margin_left = 174.0
 margin_top = 6.0
@@ -373,9 +381,6 @@ margin_bottom = 49.0
 grow_horizontal = 0
 grow_vertical = 0
 alignment = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="desire" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel/HBoxContainer"]
 visible = false
@@ -499,9 +504,6 @@ custom_styles/normal = SubResource( 3 )
 text = "Name"
 valign = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="items" type="TextureButton" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
 margin_left = 356.0
@@ -531,9 +533,6 @@ margin_bottom = 88.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_constants/separation = 33
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="caress" type="TextureButton" parent="Panel/HBoxContainer"]
 margin_right = 54.0
@@ -672,7 +671,7 @@ scale = Vector2( 0.5, 0.5 )
 clothes = false
 
 [node name="bodymask" type="Light2D" parent="Panel"]
-position = Vector2( 960, 540 )
+position = Vector2( 960.082, 539.954 )
 texture = ExtResource( 68 )
 mode = 3
 range_item_cull_mask = 4

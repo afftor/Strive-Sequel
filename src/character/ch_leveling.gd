@@ -615,15 +615,13 @@ func select_brothel_activity():
 	var non_sex_rules = []
 	var sex_rules = []
 	
-	var no_training = false
+	var no_consent = false
 	for i in brothel_rules:
 		if !brothel_rules[i] || i in ['males','futa','females']: continue
 		if variables.brothel_non_sex_options.has(i):
 			non_sex_rules.append(i)
 		else:
 			sex_rules.append(i)
-			if parent.get_ref().checkreqs([{code = 'trait', trait = tasks.gold_tasks_data[i].req_training, check = false}]):
-					no_training = true
 	
 	if sex_rules.size() > 0:
 		parent.get_ref().add_stat('metrics_serviceperformed', 1)
@@ -666,7 +664,7 @@ func select_brothel_activity():
 			parent.get_ref().add_stat('metrics_randompartners', globals.fastif(sex_rules.has('group'), 2, 1))
 			
 			var goldearned = highest_value.value * (1 + (0.1 * sex_rules.size())) * min(5, (1 + 0.01 * parent.get_ref().calculate_price())) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 500%
-			if no_training == true:
+			if parent.get_ref().get_stat('consent') < data.min_consent == true:
 				goldearned = goldearned - goldearned/3
 			
 			goldearned = apply_boosters(goldearned)
@@ -692,6 +690,7 @@ func select_brothel_activity():
 		work_tick_values(data.workstats[randi()%data.workstats.size()])
 		
 		var goldearned = highest_value.value * min(4, (1 + 0.001 * parent.get_ref().calculate_price()))
+		
 		
 		goldearned = apply_boosters(goldearned)
 		goldearned = round(goldearned)

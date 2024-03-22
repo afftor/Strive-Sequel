@@ -15,6 +15,9 @@ const giver_skill = ['oral']
 const taker_skill = ['oral']
 const consent_level = 15
 
+const consent_giver = 1
+const consent_taker = 1
+
 func getname(state = null):
 	if givers.size() == 0 || takers.size() == 0:
 		return 'Kiss'

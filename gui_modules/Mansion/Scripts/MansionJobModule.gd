@@ -756,22 +756,26 @@ func show_brothel_options():
 		if (i == 'pussy' && person.get_stat('has_womb') == false) || i == 'penetration' && person.get_stat('penis_size') == '':
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
+		var text = ''
+		text += "Minimum consent: {color=aqua|" + variables.consent_dict[tasks.gold_tasks_data[i].min_consent] + "}, [name]'s consent: {color=aqua|" +  variables.consent_dict[person.get_stat('consent')] + "}\n"
 		newbutton.text = tr("BROTHEL"+i.to_upper())
-		globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))
+		text += person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")) 
 		newbutton.pressed = person.check_brothel_rule(i)
 		newbutton.connect('pressed', self, 'switch_brothel_option',[newbutton, i])
 		newbutton.add_to_group('sex_option')
 		#if person.get_work() == '':
 		#	newbutton.disabled = true
 		if person.is_master() == false:
-			if person.checkreqs([{code = 'trait', trait = tasks.gold_tasks_data[i].req_training, check = false}]):
+			if person.checkreqs([{code = 'trait', trait = tasks.gold_tasks_data[i].req_training, check = false}]) && (tasks.gold_tasks_data[i].has('min_consent') && person.get_stat('consent') < tasks.gold_tasks_data[i].min_consent):
 				if person.get_stat('slave_class') != 'slave':
 					newbutton.disabled = true
-					globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT") + tr("LACKSEXTRAINING")))
+					text += tr("LACKSEXTRAINING")
 				else:
 					newbutton.set("custom_colors/font_color", variables.hexcolordict['red'])
 					newbutton.set("custom_colors/font_color_pressed", variables.hexcolordict['red'])
-					globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT") + tr("LACKSEXTRAININGSLAVE")))
+					text += tr("LACKSEXTRAININGSLAVE")
+				globals.connecttexttooltip(newbutton, person.translate(text))
+		text = ''
 	
 	for i in brothel_rules.sexes:
 		globals.connecttexttooltip(get_node("BrothelRules/sexes_container/"+i), person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))

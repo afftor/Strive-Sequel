@@ -14,6 +14,8 @@ const takertags = ['pet', 'vagina']
 const giver_skill = ['petting']
 const taker_skill = ['pussy']
 const consent_level = 10
+const consent_giver = 2
+const consent_taker = 5
 
 func getname(state = null):
 	return "Fisting"
@@ -30,8 +32,6 @@ func requirements():
 		valid = false
 	for i in givers:
 		if i.limbs == false:
-			valid = false
-		if !i.person.has_status('sex_adv'):
 			valid = false
 	for i in takers:
 #		if i.vagina != null || i.person.has_pussy == false:

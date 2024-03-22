@@ -14,6 +14,8 @@ const takertags = ['mouth','penetration','pain','sub']
 const giver_skill = ['penetration']
 const taker_skill = ['oral']
 const consent_level = 30
+const consent_giver = 3
+const consent_taker = 4
 
 func getname(state = null):
 	return "Deepthroat"
@@ -36,15 +38,11 @@ func requirements():
 		for i in givers:
 			if i.person.get_stat('penis_size') == '' && !i.strapon:
 				valid = false
-			if !i.person.has_status('sex_adv'):
-				valid = false
 #			elif i.penis != null && givers.size() > 1:
 #				valid = false
 		for i in takers:
 #			if i.mouth != null && givers.size() > 1:
 #				valid = false
-			if !i.person.has_status('sex_oral'):
-				valid = false
 			if i.acc1 == null:
 				valid = false
 	return valid

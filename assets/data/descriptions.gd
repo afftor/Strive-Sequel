@@ -4,8 +4,6 @@ var person
 
 func _init():
 	for i in bodypartsdata:
-		if i == 'slave_class':
-			print('+')
 		for k in bodypartsdata[i].values():
 			if k.code != null:
 				if !k.has('name') or k.name == "":

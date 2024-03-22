@@ -14,6 +14,8 @@ const takertags = ['pet', 'punish', 'pain','sub']
 const giver_skill = []
 const taker_skill = []
 const consent_level = 25
+const consent_giver = 0
+const consent_taker = 2
 
 func getname(state = null):
 	return "Spanking"
@@ -29,9 +31,6 @@ func requirements():
 	var valid = true
 	if takers.size() < 1 || givers.size() < 1:
 		valid = false
-	for i in givers:
-		if !i.person.has_status('sex_adv'):
-			valid = false
 	return valid
 
 func givereffect(member):

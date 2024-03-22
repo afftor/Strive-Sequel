@@ -15,6 +15,10 @@ const giver_skill = ['oral']
 const taker_skill = []
 const consent_level = 25
 
+
+const consent_giver = 3
+const consent_taker = 4
+
 func getname(state = null):
 	return "Rimjob"
 
@@ -35,9 +39,6 @@ func requirements():
 #		for i in takers:
 #			if i.anus != null:
 #				valid = false
-	for i in givers:
-		if !i.person.has_status('sex_oral'):
-			valid = false
 	return valid
 
 func givereffect(member):

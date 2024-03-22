@@ -2050,7 +2050,7 @@ var Skilllist = {
 		tags = ['buff','support'],
 		reqs = [
 			{code = 'gear_equiped', param = 'geartype', value = 'medium', check = false},
-			{orflag = true, code = 'has_status', status = 'assasin_hide', check = true},
+			{orflag = true, code = 'has_status', status = 'assassin_hide', check = true},
 			{code = 'gear_equiped', param = 'geartype', value = 'heavy', check = false},
 			],
 		targetreqs = [],

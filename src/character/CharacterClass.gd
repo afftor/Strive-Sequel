@@ -299,10 +299,10 @@ func get_class_icon():
 		return images.icons.class_master
 	elif get_stat('slave_spec') != null:
 		var upgrade_data = Traitdata.slave_profs[get_stat('slave_spec')]
-		if upgrade_data.icon is String:
-			return load(upgrade_data.icon)
+		if upgrade_data.icon_small is String:
+			return load(upgrade_data.icon_small)
 		else:
-			return upgrade_data.icon
+			return upgrade_data.icon_small
 	elif get_stat('slave_class') == 'servant':
 		return images.icons.class_servant
 	else:

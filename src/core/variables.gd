@@ -502,4 +502,14 @@ var factor_personality_changes = { #chance of change of primary and seondary axi
 	6 : [100, 0]
 }
 
+var consent_dict = {
+	0: "Innocent", #no consent, needs dating
+	1: "Curious", #kiss
+	2: "Developing", #handjob
+	3: "Willing", #blowjob
+	4: "Lusty", #penetration
+	5: "Kinky", #anal/group
+	6: "Deviant", #anal with group
+}
+
 var mentorship_list = ['loyalty_basic_servitude', 'loyalty_combatant']

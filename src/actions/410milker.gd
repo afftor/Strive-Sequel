@@ -14,6 +14,8 @@ const takertags = ['tits']
 const giver_skill = []
 const taker_skill = []
 const consent_level = 30
+const consent_giver = 0
+const consent_taker = 3
 
 func getname(state = null):
 	return "Milker"
@@ -33,9 +35,6 @@ func requirements():
 		valid = false
 	elif givers.size() > 2:
 		valid = false
-	for i in givers:
-		if !i.person.has_status('sex_adv'):
-			valid = false
 	return valid
 
 func givereffect(member):

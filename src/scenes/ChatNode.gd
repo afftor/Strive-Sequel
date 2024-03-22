@@ -32,6 +32,7 @@ var personalities = {
 	bold = {},
 	kind = {},
 	serious = {},
+	neutral = {},
 }
 
 var lines = {

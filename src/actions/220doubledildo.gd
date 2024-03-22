@@ -14,6 +14,8 @@ const takertags = ['vagina', 'penetration']
 const giver_skill = ['penetration','pussy']
 const taker_skill = ['penetration','pussy']
 const consent_level = 30
+const consent_giver = 4
+const consent_taker = 4
 
 func getname(state = null):
 	return "Double Dildo"

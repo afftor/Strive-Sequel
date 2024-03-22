@@ -852,6 +852,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TOOLTIPEVASION = "Reduces enemy hit chance by this value",
 	TOOLTIPSPEED = "Improves your odds to act before other characters",
 	TOOLTIPRESISTS = "Reduces elemental damage by relative resist",
+	TOOLTIPSTAMINA = "Stamina is depleted when performing action the character does not agree on. When fully depleted such actions will drain Obediene. Also when fully depleted the character won't be able to improve their Consent. Stamina is replenished with Orgasms but this is affected by diminishing returns.",
 
 	TOOLTIPFOODCONSUMPTION = "Daily Food Consumption",
 	TOOLTIPPOPULATION = "Population",
@@ -963,7 +964,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEREPEATACTION = "Repeat",
 	CHAR_UNAVALIABLE = "Unavailable",
 	NO_FREE_SLOTS = "This task has no available slots left",
-
+	ANOTHERPROFSELECTED = "Can only select one specialization.",
+	
 	LOGREPORTPREGNANCY = "[name] tells you, that [he] seems to be pregnant.",
 	LOGREPORTPREGNANCYMASTER = "It seems, that you([name]) are pregnant.",
 
@@ -1640,7 +1642,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	INFOPERSONALITYKIND = "Kind\n+50% Healing Spell Efficiency",
 	INFOPERSONALITYSERIOUS = "Serious\n+20% Damage Reduction",
 	INFOPERSONALITYSHY = "Shy\n+25% MATK, -20% ATK",
-	INFOSLAVE_CLASS = "Character type will define its options and behavior. Slaves can be forced into sexual services without training. Subordinates become loyal faster but can't be sold or given away.",
+	INFOSLAVE_CLASS = "Character type will define its options and behavior. Slaves can be forced into sexual services without consent and have higher tolerance for lack of consent in sex. Subordinates become loyal faster but can't be sold or given away.",
+	INFOCONSENT = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. Consent will affect prostitution related jobs.",
 	PERSONALITYNAMEBOLD = "Bold",
 	PERSONALITYNAMEKIND = "Kind",
 	PERSONALITYNAMESERIOUS = "Serious",
@@ -1683,7 +1686,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATTIMID_FACTORDESCRIPT = "Timid factor represents how easily the character can be influenced by punishments and abuse. The higher it is, the more effective Mean Social Skills are for building loyalty and lower Obedience Drain. It will also make personality changes more stable on Bold axis.\n\n{color=green|Maxed Timid Factor reduces Damage Taken.}",
 	STATWITS_FACTORDESCRIPT = "Wits factor represents the character's mind potential. It increases [color=aqua]Wits[/color] growth.\n\n{color=green|Maxed Wits Factor increases experience gain.}",
 	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. [Master]'s charm also increases gold and reputation rewards from repeatable quests and number of dates per week.\n\n{color=green|Maxed Charm Factor furtherly increases social skill efficiency.}",
-	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It speeds sexual skills acquirement and occasionally boosts sexual options in events. [Master]'s Sex factor also increases number of sex interactions per week.\n\n{color=green|Maxed Sex Factor provides Speed bonus}.",
+	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It speeds sexual skills acquirement, makes Consent easier to progress and occasionally boosts sexual options in events. [Master]'s Sex factor also increases number of sex interactions per week.\n\n{color=green|Maxed Sex Factor provides Speed bonus}.",
 	
 	
 	PHYSICS_FACTORBONUSDESCRIPT = "Physics Factor: Health Regeneration: x2",
@@ -2954,7 +2957,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SEXTRAITMASOCHISTDESCRIPT = "[name] experience unusual pleasure from being punished. Arousal from receiving punishments is increased by 50%. ",
 	SEXTRAITSADISTDESCRIPT = "[name] experience unusual pleasure from punishing others. Arousal from giving punishments is increased by 50%. ",
 	SEXTRAITSUBMISSIVEDESCRIPT = "[name] finds pleasure and comfort in being forced into things by others. Submissive positions arousal is increased by 20% ",
-	SEXTRAITDOORMATDESCRIPT = "[name] is very poor when dealing with sexual advances. Lack of consent does not reduce Obedience and won't make [name] fight back.",
+	SEXTRAITDOORMATDESCRIPT = "[name] is very poor when dealing with sexual advances. Actions without [his] consent have only 50% chance to cost stamina.",
 	SEXTRAITDOMINANTDESCRIPT = "[name] enjoys being in a leading role. Dominating positions arousal is increased by 20%.",
 	SEXTRAITNYMPHOMANIADESCRIPT = "[name] is perpetually horny, always ready for sex, even if it is not in [his] interest... Starts in Horny state.",
 	SEXTRAITHYPERSENSITIVEDESCRIPT = "[name]'s body is unreasonably sensitive. Can orgasm from any physical action. ",
@@ -4380,8 +4383,8 @@ The princess notices Aire tensing up in response to the question.
 	SIGMUND_EXTRA1 = """— Ya know, I wasn't around at da time of the king's death. Yah, non-humans weren't allowed to take any major posts. I dun really like the whole war business, but obviously ya won't see me siding with fans of those times.""",
 	
 	
-	LACKSEXTRAINING = "\n{color=red|[name] lacks training to be assigned to this task}",
-	LACKSEXTRAININGSLAVE = "\n{color=red|[name] lacks a proper training and will only earn 2/3 of the potential gold from it.}",
+	LACKSEXTRAINING = "\n{color=red|[name] lacks Prostitution Training to be assigned to this service}",
+	LACKSEXTRAININGSLAVE = "\n{color=red|[name] lacks Prostitution Training and will only earn 2/3 of the potential gold from it.}",
 	
 
 	STATOBDRAINREDUCTION = "Obedience Drain Decrease",
@@ -5055,7 +5058,7 @@ She passes you a roll of paper she took from the pile on a small table. As you u
 	DIVINE_SYMBOL_OPTION_29 = """I do not cooperate, only dominate.""",
 	DIVINE_SYMBOL_36 = """Zephyra takes a long pause contemplating you and your words. Just as you think she's not going to say anything, she kneels down before you.
 
-— Fine, I'll become your subordinate, if you wish so.""",
+— Fine, I'll become your captive, if you wish so.""",
 	DIVINE_SYMBOL_OPTION_30 = """I'll take care of you.""",
 	DIVINE_SYMBOL_OPTION_31 = """That was a joke, you can join me.""",
 	DIVINE_SYMBOL_OPTION_32 = """No, after all I can't trust you.""",
@@ -14298,6 +14301,7 @@ Hotkey: 3""",
 	DATING_INTIM_BED_3 = "\nYou have learned that [name2] possess a sex trait: ",
 	DATING_INTIM_BED_4 = "\n\n{color=green|[name2] opens up to you but you don't learn anything new about [him2]. ",
 	DATING_INTIM_BED_5 = "{color=red|You've failed to get [name2] into a mood to talk about [his2] sexual preferences}",
+	DATING_INTIM_BED_6 = "{color=aqua|[name]'s consent level has increased to: ",
 	DATING_HOLDHANDS_1 = "You take [name2]'s hand into yours as you stroll around. ",
 	DATING_HOLDHANDS_2 = "You take [name2]'s hand into yours and move closer. ",
 	DATING_HOLDHANDS_3 = "[he2] holds your hand firmly. ",

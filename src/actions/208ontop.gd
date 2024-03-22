@@ -14,6 +14,8 @@ const takertags = ['vagina', 'penetration','dom']
 const giver_skill = ['penetration']
 const taker_skill = ['pussy']
 const consent_level = 30
+const consent_giver = 3
+const consent_taker = 4
 
 func requirements():
 	var valid = true

@@ -288,8 +288,8 @@ var data = {
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "MARRIAGE_NIGHT_GROUP_1_1", reqs = []},
-			{text = "MARRIAGE_NIGHT_GROUP_1_2", reqs = [{type = 'spouse_check', value = {code = 'stat', stat = 'consent', operant = 'gte', value = 80}}, {type = 'spouse_check', value = {code = 'trait', trait = 'group', check = true}}]},
-			{text = "MARRIAGE_NIGHT_GROUP_1_3", reqs = [{type = 'spouse_check', value = {code = 'stat', stat = 'consent', operant = 'lt', value = 80}}, {type = 'spouse_check', value = {code = 'trait', trait = 'group', check = true}}]},
+			{text = "MARRIAGE_NIGHT_GROUP_1_2", reqs = [{type = 'spouse_check', value = {code = 'stat', stat = 'consent', operant = 'gte', value = 5}}, {type = 'spouse_check', value = {code = 'trait', trait = 'group', check = true}}]},
+			{text = "MARRIAGE_NIGHT_GROUP_1_3", reqs = [{type = 'spouse_check', value = {code = 'stat', stat = 'consent', operant = 'lt', value = 5}}, {type = 'spouse_check', value = {code = 'trait', trait = 'group', check = true}}]},
 			{text = "MARRIAGE_NIGHT_GROUP_1_3", reqs = [{type = 'spouse_check', value = {code = 'trait', trait = 'group', check = false}}]},
 			{text = "MARRIAGE_NIGHT_GROUP_1_4", reqs = []},
 			],

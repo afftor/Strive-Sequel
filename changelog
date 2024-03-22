@@ -1,3 +1,11 @@
+New consent system:
+Consent now only has stages, next stage is acquired by performing harder actions during interaction while keeping character from losing all their stamina
+Stamina (interaction system) is depleted when performing actions with higher consent than character currently has and is restored on orgasms. If all stamina is depleted the character will start losing obedience
+
+Fixed master traits prices
+Fixed some of master traits being bugged
+Fixed soulbind not working correctly
+0.8.3a
 Fixed some issues with the map including not being able to send characters to other regions
 Fixed collars not displaying on characters
 Minor gui fixes

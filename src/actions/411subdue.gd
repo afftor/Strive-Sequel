@@ -13,6 +13,8 @@ const takertags = ['punish']
 const giver_skill = []
 const taker_skill = []
 const consent_level = 25
+const consent_giver = 0
+const consent_taker = 0
 
 func getname(state = null):
 	return "Subdue"
@@ -29,8 +31,6 @@ func requirements():
 		valid = false
 	for i in givers:
 		if i.subduing != null:
-			valid = false
-		if !i.person.has_status('sex_adv'):
 			valid = false
 	return valid
 

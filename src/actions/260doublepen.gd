@@ -15,6 +15,8 @@ const takertags = ['vagina', 'anal', 'penetration', 'group','sub']
 const giver_skill = ['penetration']
 const taker_skill = ['pussy','anal']
 const consent_level = 40
+const consent_giver = 3
+const consent_taker = 5
 
 func requirements():
 	var valid = true
@@ -23,8 +25,6 @@ func requirements():
 	for i in givers:
 		if i.person.get_stat('penis_size') == '' && i.strapon == false:
 			valid = false
-		if !i.person.has_status('sex_adv'):
-				valid = false
 	for i in takers:
 		if i.person.get_stat('has_pussy') == false:
 			valid = false
