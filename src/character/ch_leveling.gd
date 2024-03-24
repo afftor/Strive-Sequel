@@ -623,7 +623,9 @@ func select_brothel_activity():
 		else:
 			sex_rules.append(i)
 	
-	if sex_rules.size() > 0:
+	
+	
+	if sex_rules.size() > 0 && (brothel_rules.males || brothel_rules.futa || brothel_rules.females):
 		parent.get_ref().add_stat('metrics_serviceperformed', 1)
 		if parent.get_ref().has_status('harlotry'):
 			parent.get_ref().rest_tick()
@@ -644,18 +646,29 @@ func select_brothel_activity():
 			var data = tasks.gold_tasks_data[highest_value.code]
 			var bonus_gold = 0
 			
+			var possible_customer_genders = []
+			if brothel_rules.males:
+				possible_customer_genders.append('male')
+			if brothel_rules.females:
+				possible_customer_genders.append('female')
+			if brothel_rules.futa:
+				possible_customer_genders.append('futa')
+			var brothel_customer_gender = possible_customer_genders[randi() % possible_customer_genders.size()]
+				
 			
-			if parent.get_ref().get_stat('vaginal_virgin') && sex_rules.has('pussy') && (brothel_rules.has('males') || brothel_rules.has('futa')):
+			var penis_check = ((brothel_rules.males || brothel_rules.futa) && brothel_customer_gender in ["male", "futa"])
+			
+			if parent.get_ref().get_stat('vaginal_virgin') && sex_rules.has('pussy') && penis_check:
 				parent.get_ref().set_stat('vaginal_virgin', false)
 				parent.get_ref().set_stat('vaginal_virgin_lost', {source = 'brothel_customer'})
 				bonus_gold += parent.get_ref().calculate_price() * 0.01
-			if sex_rules.has('pussy') && (brothel_rules.has('males') || brothel_rules.has('futa')):
+			if sex_rules.has('pussy') && penis_check:
 				var tmpchar = ResourceScripts.scriptdict.class_slave.new("test_main")
 				tmpchar.create('random', 'male', 'random')
 				if randf() < variables.brothel_pregnancy_chance:
 					globals.impregnate(tmpchar, parent.get_ref())
 				tmpchar.is_active = false
-			if parent.get_ref().get_stat('anal_virgin') && sex_rules.has('anal') && (brothel_rules.has('males') || brothel_rules.has('futa')):
+			if parent.get_ref().get_stat('anal_virgin') && sex_rules.has('anal') && penis_check:
 				parent.get_ref().set_stat('anal_virgin', false)
 				parent.get_ref().set_stat('anal_virgin_lost', {source = 'brothel_customer'})
 			
@@ -677,7 +690,7 @@ func select_brothel_activity():
 			
 			
 			#TODO add decriptions and impregnation
-			update_brothel_log(parent.get_ref().get_stat('name'), goldearned)
+			update_brothel_log(parent.get_ref().get_stat('name'), goldearned, data, brothel_customer_gender)
 			return
 	elif non_sex_rules.size() > 0:
 		parent.get_ref().add_stat('metrics_serviceperformed', 1)
@@ -698,26 +711,33 @@ func select_brothel_activity():
 		parent.get_ref().add_stat('metrics_goldearn', goldearned)
 		
 		ResourceScripts.game_res.money += goldearned
-		update_brothel_log(parent.get_ref().get_stat('name'), goldearned)
+		update_brothel_log(parent.get_ref().get_stat('name'), goldearned, data)
 	else:
 		remove_from_task()
 		parent.get_ref().rest_tick()
 	
 
-func update_brothel_log(ch_name, gold):
-	var date = ResourceScripts.game_globals.date
-	var hour = ResourceScripts.game_globals.hour
+func update_brothel_log(ch_name, gold, data, customer_gender = ""):
 	if globals.log_node != null && weakref(globals.log_node).get_ref():
-		var newfield = globals.log_node.get_node("ServiceLog/VBoxContainer/field").duplicate()
+		if ResourceScripts.game_globals.hour == 4:
+			globals.log_node.clean_service_log()
+		var text = ""
+		if customer_gender != "":
+			text = tr("BROTHELLOGSEX")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper()), customer_gender.capitalize()]
+			#text = tr(ch_name) + " earned " + str(gold) + " gold doing " + tr("BROTHEL" + data.code.to_upper()) + " with a " + customer_gender
+		else:
+			text = tr("BROTHELLOGNO_SEX")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper())]
+			#text = tr(ch_name) + " earned " + str(gold) + " gold working as " + tr("BROTHEL" + data.code.to_upper())
+		var ServiceLog = globals.log_node.get_node("ServiceLog")
+		var newfield = ServiceLog.get_node("VBoxContainer/field").duplicate()
 		newfield.show()
-		newfield.get_node("char").bbcode_text = tr(ch_name)
-		newfield.get_node("gold").bbcode_text = tr('LOGSERVICEGOLD') % gold
-		#newfield.get_node("date").bbcode_text = "[right]W %d D %d - %s[/right]" % [(date -1) / 7 + 1, (date -1) % 7 + 1, tr(variables.timeword[hour])]
-		globals.log_node.get_node("ServiceLog/VBoxContainer").add_child(newfield)
-		yield(globals.get_tree(), 'idle_frame')
-		var textfield = newfield.get_node('date')
-		textfield.rect_size.y = textfield.get_v_scroll().get_max()
+		newfield.get_node("text").bbcode_text = text
+		ServiceLog.get_node("VBoxContainer").add_child(newfield)
+		var textfield = newfield.get_node('text')
+		textfield.rect_size.y = textfield.get_content_height()
 		newfield.rect_min_size.y = textfield.rect_size.y
+		yield(globals.get_tree(), 'idle_frame')
+		ServiceLog.scroll_vertical = ServiceLog.get_v_scrollbar().max_value
 
 func apply_boosters(value):
 	var mul = 1.0

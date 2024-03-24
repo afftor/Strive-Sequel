@@ -769,9 +769,6 @@ margin_left = 78.0
 margin_top = 274.0
 margin_right = 860.0
 margin_bottom = 714.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="BrothelRules"]
 margin_left = 32.2704

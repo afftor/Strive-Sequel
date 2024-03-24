@@ -93,7 +93,7 @@ var ero_scenes_collection = {
 	"lich_aire_talk":["lich_aire_talk4","lich_aire_talk7"],
 	"xari_encounter":["xari_encounter8"],
 	"daisy_discipline":["daisy_discipline"],
-	"daisy_bj":["daisy_bj1","daisy_bj3","daisy_bj4","daisy_bj5","daisy_bj6"],
+	"daisy_bj":["daisy_bj1","daisy_bj3","daisy_bj4","daisy_bj6"],
 	"daisy_training":["daisy_training1","daisy_training2","daisy_training3","daisy_training4","daisy_training5"],
 	"daisy_public":["daisy_public1","daisy_public2","daisy_public3","daisy_public4","daisy_public5"],
 	"daisy_bent":['daisy_bent1', 'daisy_bent2', 'daisy_bent3'],

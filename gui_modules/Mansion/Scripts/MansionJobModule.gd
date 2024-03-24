@@ -820,6 +820,15 @@ func update_brothel_text():
 	else:
 		text = "{color=green|"+tr("SERVICENOSEX") + "}"
 	
+	if can_do_sex:
+		var has_clients = false
+		for i in $BrothelRules/sexes_container.get_children():
+			if i.pressed:
+				has_clients = true
+				break
+		if !has_clients:
+			text += "\n\n{color=red|" + tr("BROTHELWARNING") + "}"
+	
 	$BrothelRules/brothel_descript.bbcode_text = globals.TextEncoder(person.translate(text))
 
 func switch_brothel_option(button, option):
