@@ -405,7 +405,7 @@ var data = {
 		custom_background = "daisy_bj4",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		tags = ['dialogue_scene'],
+		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_1", reqs = []}],
 		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
 			{code = 'tag', operant = 'remove', value = 'no_sex'}]}],
@@ -454,7 +454,7 @@ var data = {
 		custom_background = "daisy_bj4",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		tags = ['dialogue_scene'],
+		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_3", reqs = []}],
 		options = [
 			{
@@ -505,7 +505,7 @@ var data = {
 		custom_background = "daisy_bj6",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		tags = ['dialogue_scene'],
+		tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_6", reqs = []}],
 		common_effects = [{
 					code = 'unique_character_changes',

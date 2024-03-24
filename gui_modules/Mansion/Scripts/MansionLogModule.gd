@@ -12,3 +12,8 @@ func change_type(newtype):
 	$ServiceLog.visible = newtype == "right"
 	$left.pressed = newtype == "left"
 	$right.pressed = newtype == "right"
+
+func clean_service_log():
+	for ch in $ServiceLog/VBoxContainer.get_children():
+		if ch.visible:
+			$ServiceLog/VBoxContainer.remove_child(ch)

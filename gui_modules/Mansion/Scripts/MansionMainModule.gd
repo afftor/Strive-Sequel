@@ -933,7 +933,7 @@ func test_mode():
 
 		#ResourceScripts.game_progress.completed_quests.append("daisy_lost")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-		#input_handler.interactive_message('xari_encounter1', '', {})
+#		input_handler.interactive_message('daisy_dress_acquired_lewd_3', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		
