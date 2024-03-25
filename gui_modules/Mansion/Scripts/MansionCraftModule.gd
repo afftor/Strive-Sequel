@@ -18,6 +18,7 @@ func _ready():
 #	$SelectCharacters.connect("pressed", self, "select_characters")
 	$CraftSelect/BackButton.connect("pressed", get_parent(), "mansion_state_set", ["default"])
 	$NumberSelect/BackButton2.connect("pressed", self, "cancel_choise")
+	globals.connecttexttooltip($NumberSelect/TextureRect, tr("TOOLTIPPROGRESSREQUIRED"))
 	# input_handler.AddPanelOpenCloseAnimation($MaterialSelect)
 
 #	for i in $MaterialSetupPanel/ModularSetup/HBoxContainer.get_children(): #[get_node(part_container)+"Part1, $MaterialSetupPanel/ModularSetup/Part2, $MaterialSetupPanel/ModularSetup/Part3]:
@@ -320,7 +321,7 @@ func selectcraftitem(item):
 					$NumberSelect.hide()
 	else:
 		$NumberSelect/HSlider.show()
-	
+	$NumberSelect/workunits.text = str(selected_item.workunits)
 	if item.crafttype == 'basic':
 		var baseitem
 		if Items.materiallist.has(item.resultitem):

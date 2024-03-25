@@ -2,6 +2,11 @@ New consent system:
 Consent now only has stages, next stage is acquired by performing harder actions during interaction while keeping character from losing all their stamina
 Stamina (interaction system) is depleted when performing actions with higher consent than character currently has and is restored on orgasms. If all stamina is depleted the character will start losing obedience
 
+Lust changes:
+Characters no longer gain lust from sexual interactions, instead initiating sex requires lust
+After sexual interactions characters obtain Exp and Loyalty instead (based on their performance during it)
+
+
 Fixed master traits prices
 Fixed some of master traits being bugged
 Fixed soulbind not working correctly

@@ -450,7 +450,8 @@ var personality_conversion_rates = {
 	bold = 0.65,
 	shy = 0.1,
 	kind = 0.2,
-	serious = 0.5
+	serious = 0.5,
+	neutral = 0.3
 }
 
 var reputation_tresholds = [0, 300, 500, 1000, 1500]

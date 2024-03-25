@@ -155,7 +155,7 @@ func OrgasmDenialCum():
 		text += '_petting'
 	#$Panel/sceneeffects.bbcode_text +="\n" +
 	OrgasmDenyVictim.person.add_stat('obedience', 4 + OrgasmDenyVictim.person.get_stat('sexuals_factor') * 2)
-	OrgasmDenyVictim.person.add_stat('loyalty', 5)
+	OrgasmDenyVictim.person.add_stat('loyalty', 3)
 	$OrgasmDenial/ScrollContainer/VBoxContainer/Beg.show()
 	OrgasmDenyVictim.sens = 0
 	OrgasmDenyVictim.orgasm(decoder(OrgasmDenyText[text], [OrgasmDenyPlayer], [OrgasmDenyVictim]))
@@ -551,7 +551,8 @@ func rebuildparticipantslist():
 var itemusemember
 
 func count_action_consent(action, giver, taker):
-	var value = action.consent_level
+	var giver_value = action.consent_giver
+	var taker_value = action.consent_taker
 	var giver_consent = giver.consent
 	var taker_consent = taker.consent
 	var giver_text = ''
@@ -566,7 +567,7 @@ func count_action_consent(action, giver, taker):
 				'consent_check':
 					if k.effect == 'consent':
 						if k.operant == '*':
-							giver_consent -= value * k.value
+							giver_consent -= giver_value * k.value
 							giver_text += "{color=red|" + trait.name + "}"+"\n"
 							
 							#giver_text += trait.name + ": -"+ str(value)+"\n"
@@ -577,7 +578,7 @@ func count_action_consent(action, giver, taker):
 				'consent_check_partner':
 					if k.effect == 'consent':
 						if k.operant == '*':
-							taker_consent -= value * k.value
+							taker_consent -= taker_value * k.value
 							giver_text += "{color=red|" + trait.name + "}"+"\n"
 						#	taker_text += trait.name + ": -"+ str(value)+"\n"
 						elif k.operant == '+':
@@ -594,7 +595,7 @@ func count_action_consent(action, giver, taker):
 				'consent_check':
 					if k.effect == 'consent':
 						if k.operant == '*':
-							taker_consent -= value * k.value
+							taker_consent -= taker_value * k.value
 							taker_text += "{color=red|" + trait.name + "}"+"\n"
 							#taker_text += trait.name + ": -"+ str(value)+"\n"
 						elif k.operant == "+":
@@ -604,7 +605,7 @@ func count_action_consent(action, giver, taker):
 				'consent_check_partner':
 					if k.effect == 'consent':
 						if k.operant == '*':
-							giver_consent -= value * k.value
+							giver_consent -= giver_value * k.value
 							giver_text += "{color=red|" + trait.name + "}"+"\n"
 							#giver_text += trait.name + ": -"+ str(value)+"\n"
 						elif k.operant == '+':
@@ -771,9 +772,16 @@ func count_action_consent(action, giver, taker):
 		taker_consent = 25
 		taker_text = "Subdue: Receiver's consent ignored. "
 
+	
+	if giver_value == 0:
+		giver_consent = 0
+		giver_text = "{color=green|Action does not require consent}"
+	if taker_value == 0:
+		taker_consent = 0
+		taker_text = "{color=green|Action does not require consent}"
+	
 
-
-	return {value = value, giver_consent = giver_consent, taker_consent = taker_consent, giver_text = giver_text, taker_text = taker_text}
+	return {giver_consent = giver_consent, taker_consent = taker_consent, giver_text = giver_text, taker_text = taker_text}
 #	var dict = {value = action.consent, giver_consent = giver.consent, taker_consent = taker.consent}
 #	return dict
 
@@ -1039,6 +1047,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 	var dict = {scene = scenescript, takers = [] + takers, givers = [] + givers, consents = {}}
 
 	for i in givers:
+		dict.consents[i.id] = 0
 		var lowest_consent = 10
 		for j in takers:
 			var consent = count_action_consent(scenescript, i, j)
@@ -1046,6 +1055,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 				lowest_consent = consent.giver_consent
 		if lowest_consent < scenescript.consent_giver:
 			var resist = scenescript.consent_giver - lowest_consent
+			dict.consents[i.id] = resist
 			if resist == 1:
 				i.low_actions_resisted += 1
 			if i.actions_resisted.has(scenescript.code): 
@@ -1053,22 +1063,24 @@ func startscene(scenescript, cont = false, pretext = ''):
 				i.actions_resisted[scenescript.code] += 1
 			else:
 				i.actions_resisted[scenescript.code] = 1
-			if !i.sex_traits.has("doormat") || randf() >= 0.5:
-				i.stamina -= resist*15
-		
+			var staminacost = resist*15
+			if i.sex_traits.has("pushover"):
+				resist = resist/2
+			i.stamina -= resist*15
 		
 		#dict.consents[i.id] = lowest_consent# - scenescript.consent_level
 
 	for j in takers:
+		dict.consents[j.id] = 0
 		var lowest_consent = 10
 		for i in givers:
 			var consent = count_action_consent(scenescript, i, j)
 			if consent.taker_consent < lowest_consent:
 				lowest_consent = consent.taker_consent
-		dict.consents[j.id] = lowest_consent
+		#dict.consents[j.id] = lowest_consent
 		if lowest_consent < scenescript.consent_taker:
 			var resist = scenescript.consent_taker - lowest_consent
-			print(scenescript.consent_taker, lowest_consent, resist)
+			dict.consents[j.id] = resist
 			if resist == 1:
 				j.low_actions_resisted += 1
 			if j.actions_resisted.has(scenescript.code): 
@@ -1076,8 +1088,10 @@ func startscene(scenescript, cont = false, pretext = ''):
 				j.actions_resisted[scenescript.code] += 1
 			else:
 				j.actions_resisted[scenescript.code] = 1
-			if !j.sex_traits.has("doormat") || randf() >= 0.5:
-				j.stamina -= resist*15
+			var staminacost = resist*15
+			if j.sex_traits.has("pushover"):
+				resist = resist/2
+			j.stamina -= resist*15
 	
 	
 
@@ -1742,27 +1756,27 @@ func endencounter():
 			
 			
 			
-#		i.person.add_stat('lust', 20 + i.orgasms * 5 * i.person.get_stat('sexuals_factor'))
-#		i.consentgain += i.orgasms*2
+		i.person.add_stat('loyalty', i.person.get_stat('sexuals_factor') + i.orgasms * 5)
+		i.consentgain += i.orgasms*2
 #		if i.new_action_performed == true:
 #			i.consentgain += 1
 #			consenttext[i.id] += '\nTried new action: +1'
-#		if i.begged_for_orgasm == true:
-#			i.consentgain += 3
-#			consenttext[i.id] += "\nBegged for orgasm: +3"
+		if i.begged_for_orgasm == true:
+			i.consentgain += 3
+			consenttext[i.id] += "\nBegged for orgasm: +3"
 #		if i.new_consented_partners > 0:
 #			i.consentgain += i.new_consented_partners*2
 #			consenttext[i.id] += '\nConsented to new partners: +' + str(i.new_consented_partners*2)
-#
+
 #		if floor(i.consented_actions.keys().size()/3) > 0:
 #			i.consentgain += floor(i.consented_actions.keys().size())/3
 #			consenttext[i.id] += "\nAccepted Variety: +" + str(floor(i.consented_actions.keys().size())/3)
-#
+
 #		if i.effects.has("pheromones"):
 #			consenttext[i.id] += "\nWas drugged with pheromones: -" + str(floor(i.consentgain/2))
 #			i.consentgain = floor(i.consentgain/2)
-#		text += "; Lust gained: " +  str(20 + i.orgasms * 5 * i.person.get_stat('sexuals_factor'))
-		text += i.person.translate("[name]: Orgasms - ") + str(i.orgasms)
+		text += i.person.translate("[name]: Orgasms - ") + str(i.orgasms) 
+		text += "; Loyalty gained: " +  str(i.person.get_stat('sexuals_factor') + i.orgasms * 5) 
 #		i.person.sexuals += i.orgasms not relevant
 		var expgain = round(i.orgasms * 8 + i.sens/200)
 		var bonus = 1
@@ -2279,7 +2293,7 @@ func record_actions(scenescript, consents):
 					t.diff_partners_orgasms.append(p)
 				if t.orgasm && !t in p.satisfied_partners:
 					p.satisfied_partners.append(t)
-				if consents[t.id] < scenescript.consent_level:
+				if consents[t.id] > 0:
 					if t.orgasm:
 						t.unconsented_orgasm += 1
 				else:
@@ -2298,6 +2312,10 @@ func record_actions(scenescript, consents):
 						g.deviant_orgasms += 1
 					if g.person.get_stat('body_shape') != p.person.get_stat('body_shape'):
 						g.diff_body_orgasm += 1
+					
+					if consents[g.id] > 0:
+						if g.orgasm:
+							g.unconsented_orgasm += 1
 					for tag in scenescript.givertags:
 						if !tag in g.orgasm_tags:
 							g.orgasm_tags.append(tag)

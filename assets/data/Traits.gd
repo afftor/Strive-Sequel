@@ -1848,6 +1848,7 @@ var sex_traits = { #only for interaction tab
 		reqs = [],
 		effects = [{effect = 'consent_gain', operant = '*', value = 1.5, trigger = 'encounter_end'}],
 	},
+	
 	teacher = {
 		code = "teacher",
 		name = "",
@@ -1855,7 +1856,7 @@ var sex_traits = { #only for interaction tab
 		starting = true,
 		random_generation = true,
 		negative = false,
-		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "single_partner_consents", operant = "gte", value = 6}]}],
+		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "single_partner_consents", operant = "gte", value = 5}]}],
 		reqs = [],
 		effects = [{effect = 'skill_exp', operant = '+', value = 0.5, trigger = 'skill_exp_gain_partner'}],
 	},

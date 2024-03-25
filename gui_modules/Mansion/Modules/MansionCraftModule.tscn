@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_26.tres" type="DynamicFont" id=2]
@@ -74,6 +74,8 @@
 [ext_resource path="res://assets/images/iconsitems/Cloth.png" type="Texture" id=72]
 [ext_resource path="res://assets/Textures_v2/craft/buttons/button_back_hover.png" type="Texture" id=73]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_30.tres" type="DynamicFont" id=74]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=75]
+[ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Icons/icon_craft_small.png" type="Texture" id=76]
 
 [sub_resource type="StyleBoxTexture" id=1]
 region_rect = Rect2( 0, 0, 12, 48 )
@@ -587,10 +589,10 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NumberSelect"]
-margin_left = 6.0
-margin_top = 15.0
-margin_right = 489.0
-margin_bottom = 65.0
+margin_left = 100.498
+margin_top = 11.5051
+margin_right = 490.498
+margin_bottom = 61.5051
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = ExtResource( 30 )
@@ -601,6 +603,21 @@ scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureRect" type="TextureRect" parent="NumberSelect"]
+margin_left = 8.72845
+margin_top = 7.34161
+margin_right = 52.7285
+margin_bottom = 51.3416
+texture = ExtResource( 76 )
+
+[node name="workunits" type="Label" parent="NumberSelect"]
+margin_left = 57.0
+margin_top = 17.0
+margin_right = 89.0
+margin_bottom = 49.0
+custom_fonts/font = ExtResource( 75 )
+text = "50"
 
 [node name="CraftSelect" type="Control" parent="."]
 margin_left = 16.0
@@ -622,7 +639,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CraftSelect/ScrollContainer"]
-margin_right = 272.0
+margin_right = 284.0
 size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="CraftSelect/ScrollContainer/VBoxContainer"]

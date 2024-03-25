@@ -752,7 +752,6 @@ func test_mode():
 
 #		character.set_stat('loyalty', 100)
 #		character.set_stat('authority', 100)
-		character.set_stat('submission', 95)
 		character.add_stat('loyalty', 95)
 		yield(get_tree(),'idle_frame')
 		character.xp_module.base_exp = 1000
@@ -781,7 +780,6 @@ func test_mode():
 						{code = 'price', value = 3000, operant = "+"},
 						{code = 'sexuals_factor', value = 2, operant = "+"},
 						{code = 'growth_factor', value = 2, operant = "+"},
-						{code = 'submission', operant = '+', value = 50},
 						{code = 'sex_skills_oral', operant = "+", value = 100},
 						{code = 'sex_skills_petting', operant = "+", value = 100},
 						{code = 'sex_skills_pussy', operant = "+", value = 100},

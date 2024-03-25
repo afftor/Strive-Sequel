@@ -13,9 +13,6 @@ var loyalty_tab = 1
 
 func _ready():
 	update()
-	for i in $work_rules.get_children():
-		i.connect('pressed', self, 'set_work_rule', [i.name])
-		globals.connecttexttooltip(i,person.translate(tr("WORKRULE" + i.name.to_upper() + "DESCRIPT")))
 	
 	globals.connecttexttooltip($SexSkillsTooltip, tr("INFOSEX_SKILLS"))
 	globals.connecttexttooltip($ConditionsTooltip, tr("INFORULES_CONDS"))
@@ -30,6 +27,8 @@ func _ready():
 	
 	globals.connecttexttooltip($ConsentLabel, tr("INFOCONSENT"))
 	
+	for i in $work_rules.get_children():
+		i.connect('pressed', self, 'set_work_rule', [i.name])
 	$work_rules/ration.connect("button_down", self, "update")
 	$work_rules/ration.connect("button_up", self, "update")
 	$change_button.connect("pressed", self, 'swap_mode')
@@ -94,6 +93,10 @@ func update():
 	if !loyalty_mode:
 		swap_mode()
 	input_handler.ActivateTutorial("training")
+	
+	for i in $work_rules.get_children():
+		globals.disconnect_text_tooltip(i)
+		globals.connecttexttooltip(i,person.translate(tr("WORKRULE" + i.name.to_upper() + "DESCRIPT")))
 	
 	if person.is_master():
 		$UpgradesPanel/Label.text = tr("MASTER_POINTS") + ": " + str(ResourceScripts.game_progress.master_points)
