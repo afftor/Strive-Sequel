@@ -1091,6 +1091,8 @@ func update_slave_list():
 
 func rebuild_slave_list():
 	slave_list_node.rebuild()
+#	if gui_controller.inventory.visible:
+#		gui_controller.inventory.SlaveList.update()
 
 func rebuild_skill_list():
 	skill_list_node.build_skill_panel()

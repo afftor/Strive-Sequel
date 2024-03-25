@@ -99,6 +99,10 @@ func writ_of_exemption_use(): #possibly rework
 	var acceptance_chance = 0
 	ResourceScripts.game_res.remove_item("writ_of_exemption", 1)
 	input_handler.scene_characters = [person]
+	if gui_controller.inventory.visible:
+		gui_controller.close_scene(gui_controller.inventory)
+	if gui_controller.slavepanel.visible:
+		gui_controller.close_scene(gui_controller.slavepanel)
 	if character.get_stat('loyalty') == 100:
 		acceptance_chance = 100
 	else:
