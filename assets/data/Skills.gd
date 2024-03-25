@@ -1691,7 +1691,7 @@ var Skilllist = {
 		learn_reqs = [{code = 'trait', trait = 'basic_combat', check = true}],
 		reqs = [{code = 'gear_equiped', param = 'geartype', value = 'bow', check = true}],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_ensnare5', push_characters = true})],
+		effects = [Effectdata.rebuild_template_globals({effect = 'e_s_ensnare5'})],
 		cost = {},
 		charges = 0,
 		combatcooldown = 3,#?
