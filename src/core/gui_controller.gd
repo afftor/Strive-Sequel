@@ -5,6 +5,8 @@ var mansion
 var nav_panel
 var clock
 var exploration
+var exploration_city
+var exploration_dungeon
 var explore_slaveinfo
 var slavepanel
 var inventory
