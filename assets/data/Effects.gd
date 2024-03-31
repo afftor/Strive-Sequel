@@ -402,6 +402,20 @@ var effect_table = {
 		sub_effects = [],
 	},
 	# i think we need to display those statuses as buffs
+	e_mastermentor = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'master_mentor',
+		stack = 1,
+		duration = 4,
+		tick_event = [variables.TR_TICK],
+		rem_event = [variables.TR_DEATH],
+		tags = ['positive', 'buff'],
+		args = [],
+		sub_effects = [],
+		atomic = [{type = 'stat_add', stat = 'exp_gain_mod', value = 1}],
+		buffs = ['b_mastermentor'],
+	},
 	work_rule_bindings = {
 		code = 'work_rule_bindings',
 		type = 'static',
@@ -5262,6 +5276,11 @@ var buffs = {
 		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
 		description = "",
 		t_name = 'soulbindcaster',
+	},
+	b_mastermentor = {
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		description = "",
+		t_name = 'master_mentor',
 	},
 };
 

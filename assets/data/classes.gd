@@ -14,7 +14,7 @@ var professions = {
 		reqs = [{code = 'global_profession_limit', profession = 'master', value = 1},{code = 'cant_spawn_naturally'}],
 		statchanges = {},
 		traits = ['master'],
-		skills = ['praise','punish','master_lust_skill'],
+		skills = ['praise','punish','master_lust_skill', 'master_mentor'],
 		combatskills = [],
 		conflict_classes = ['watchdog','headgirl'], #remove according checks from reqs in future
 	},
