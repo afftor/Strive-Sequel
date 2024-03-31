@@ -68,4 +68,12 @@ func initiate():
 		temparray += ["[name1] coil[s/1] [his1] tongue[/s1] inside [names2] mouth[/s2] and [he2] {^eagerly:enthusiastically} return[s/2] the gesture."]
 	temparray += ["[name1] grab[s/1] [name2] and {^deeply :}kiss[es/1] [him2], {^driving [his1] tongue[/s1] into [his2] mouth[/s2]:eagerly tasting [his2] lips}."]
 	return temparray[randi()%temparray.size()]
-	
+
+
+func taker_resist():
+	var temparray = []
+	if takers[0].stamina > 20:
+		temparray += ["[name2] shies away from the kiss seemingly nervous..."]
+	else:
+		temparray += ["[name2] tries to push back against the undesired action..."]
+	return temparray[randi()%temparray.size()]

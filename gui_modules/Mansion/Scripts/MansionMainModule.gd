@@ -483,6 +483,7 @@ func slave_list_manager():
 	SlaveModule.show_slave_info()
 
 func update_sex_date_buttons():
+	SexSelect.get_node("SexButton").hint_tooltip = ""
 	if ResourceScripts.game_progress.unlimited_date_sex:
 		if sex_participants.has(ResourceScripts.game_party.get_master()):
 			SexSelect.get_node("DateButton").disabled = true
@@ -495,10 +496,9 @@ func update_sex_date_buttons():
 		SexSelect.get_node("SexButton").disabled = true
 	
 	for i in sex_participants:
-		if i.has_status("no_sex") or !i.has_status("sex_basic"):
+		if i.has_status("no_sex"):
 			SexSelect.get_node("SexButton").disabled = true
-		if !i.has_status("sex_group") and sex_participants.size() > 2:
-			SexSelect.get_node("SexButton").disabled = true
+			SexSelect.get_node("SexButton").hint_tooltip = "One of unique characters has not proceeded their questline yet"
 	
 	if sex_participants.size() > 2 or sex_participants.size() == 0: 
 		SexSelect.get_node("DateButton").disabled = true

@@ -27,7 +27,7 @@ func getongoingdescription(givers, takers):
 
 func requirements():
 	var valid = true
-	if givers.size() != 1 || takers.size() != 1 || takers[0].sens < 900:
+	if givers.size() != 1 || takers.size() != 1 || takers[0].sens < 800:
 		valid = false
 	for i in givers:
 		if i.subduing != null:

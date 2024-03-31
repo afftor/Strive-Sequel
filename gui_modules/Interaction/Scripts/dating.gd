@@ -131,7 +131,7 @@ func initiate(tempperson):
 	self.mood = 0
 	self.drunkness = 0
 	self.turn = 10
-	self.consStart = tempperson.get_stat('consent')
+	self.consStart = tr(variables.consent_dict[int(tempperson.get_stat('consent'))])
 	self.finish_encounter = false
 	date = false
 	public = false
@@ -320,7 +320,7 @@ func updatelist():
 				newnode.disabled = true
 
 	$panel/ScrollContainer/GridContainer.move_child($panel/ScrollContainer/GridContainer/Button, $panel/ScrollContainer/GridContainer.get_children().size())
-	var text = tr("SIBLINGMODULECONSENT") + str(floor(person.get_stat("consent"))) 
+	var text = tr("SIBLINGMODULECONSENT") + tr(variables.consent_dict[int(person.get_stat("consent"))])
 	$authconslabel.text = text
 	#$mana/Label.text = str(globals.resources.mana)
 	$gold/Label.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
@@ -659,7 +659,6 @@ func flirt(person, counter):
 
 func intimate(person, counter):
 	var text = tr("DATING_INTIM_BED_1")
-	
 	if mood >= 80 - master.get_stat('charm_factor') * 7:
 		var has_unknown_traits = false
 		var trait_array = person.get_all_sex_traits()
@@ -680,7 +679,7 @@ func intimate(person, counter):
 		
 		if person.get_stat('consent') < ceil(person.get_stat("sexuals_factor")/2):
 			person.add_stat('consent', 1)
-			text += tr("DATING_INTIM_BED_6") + variables.consent_dict[person.get_stat('consent')]  + "}"
+			text += "\n" + person.translate(tr("DATING_INTIM_BED_6")) + tr(variables.consent_dict[int(person.get_stat('consent'))])  + "}"
 	else:
 		text += tr("DATING_INTIM_BED_5")
 		self.mood -= 8
