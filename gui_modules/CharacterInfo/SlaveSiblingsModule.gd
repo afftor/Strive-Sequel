@@ -25,7 +25,6 @@ func _ready():
 	globals.connecttexttooltip($personality/kind, tr("INFOPERSONALITYKIND"))
 	globals.connecttexttooltip($personality/serious, tr("INFOPERSONALITYSERIOUS"))
 	
-	globals.connecttexttooltip($ConsentLabel, tr("INFOCONSENT"))
 	
 	for i in $work_rules.get_children():
 		i.connect('pressed', self, 'set_work_rule', [i.name])
@@ -135,8 +134,14 @@ func update():
 			newbutton.get_node("ProgressBar").value = s_skills[i]
 			newbutton.get_node("ProgressBar/Label").text = str(floor(s_skills[i])) + '/100'
 			globals.connecttexttooltip(newbutton,  person.translate(tr("SEXSKILL"+i.to_upper()+"DESCRIPT")) + "\n" + tr("CUR_LEVEL_LABEL") + ":" + str(floor(s_skills[i])))
-		
-		$ConsentLabel.text = tr("SIBLINGMODULECONSENT") + str(variables.consent_dict[person.get_stat('consent')])
+		var text = ''
+		if person.is_master():
+			text = tr("SIBLINGMODULECONSENT") + tr("MASTER")
+			globals.connecttexttooltip($ConsentLabel, person.translate(tr("INFOCONSENTMASTER")))
+		else:
+			text = tr("SIBLINGMODULECONSENT") + str(tr(variables.consent_dict[int(person.get_stat('consent'))]))
+			globals.connecttexttooltip($ConsentLabel, tr("INFOCONSENT"))
+		$ConsentLabel.text = text
 		
 		globals.connecttexttooltip($SlaveDietModule/food_love,"[center]" + statdata.statdata.food_love.name + "[/center]\n"+  statdata.statdata.food_love.descript)
 		globals.connecttexttooltip($SlaveDietModule/food_hate,"[center]" + statdata.statdata.food_hate.name + "[/center]\n"+ statdata.statdata.food_hate.descript)

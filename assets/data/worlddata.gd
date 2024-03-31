@@ -257,7 +257,7 @@ var factiondata = {
 		background = "fighters_guild",
 		reputation_shop = {
 			classes = {knight = 500, paladin = 500, sniper = 750, assassin = 1000},
-			items = {bandage = [1,3], bonedragon = [1,500]},
+			items = {bandage = [1,10], bonedragon = [1,500]},
 		},
 		hireable_characters = [
 			{code = 'type1',

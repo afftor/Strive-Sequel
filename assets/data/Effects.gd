@@ -5278,8 +5278,8 @@ var buffs = {
 		t_name = 'soulbindcaster',
 	},
 	b_mastermentor = {
-		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
-		description = "",
+		icon = "res://assets/images/iconsskills/Mindread.png",#fix
+		description = "BUFFDESCRIPTMENTOR",
 		t_name = 'master_mentor',
 	},
 };

@@ -743,6 +743,8 @@ func operate(operation, value1, value2):
 			result = !value1.has(value2)
 		'mask':
 			result = (int(value1) & int(value2)) != 0
+		'in':
+			result = value1 in value2
 	return result
 
 
@@ -1336,7 +1338,7 @@ func dir_contents(target):
 		array.sort()
 		return array
 	else:
-		print("An error occurred when trying to access the path.")
+		print("An error occurred when trying to access the path:"+target)
 		return array
 
 

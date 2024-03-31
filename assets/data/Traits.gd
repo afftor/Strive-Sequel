@@ -1846,7 +1846,7 @@ var sex_traits = { #only for interaction tab
 		negative = false,
 		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "unconsented_orgasm", operant = "gte", value = 2}]}],
 		reqs = [],
-		effects = [{effect = 'consent_gain', operant = '*', value = 1.5, trigger = 'encounter_end'}],
+		effects = [],#{effect = 'consent_gain', operant = '*', value = 1.5, trigger = 'encounter_end'}],
 	},
 	
 	teacher = {
