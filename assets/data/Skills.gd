@@ -8,6 +8,26 @@ extends Node
 #sample rec req 
 #		value_receiver_reqs = {1:[{code = 'is_master', check = false}]}
 var Skilllist = {
+	master_mentor = {  #fix
+		code = 'master_mentor',
+		descript = '',
+		type = 'social',
+		ability_type = 'skill',
+		social_skill_stats = [],
+		reqs = [],
+		targetreqs = [{code = 'is_master', check = false}],
+		effects = [Effectdata.rebuild_template({effect = 'e_mastermentor'})],
+		cost = {},
+		charges = 1,
+		cooldown = 1,
+		icon = load("res://assets/images/iconsskills/Praise.png"),
+		tags = ['positive'],
+		dialogue_report = '',
+		dialogue_show_repeat = false,
+		dialogue_image = 'praise',
+		value = [['0']],
+		damagestat = 'no_stat',
+	},
 	praise = { 
 		code = 'praise',
 		descript = '',
