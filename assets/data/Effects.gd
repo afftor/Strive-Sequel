@@ -722,10 +722,31 @@ var effect_table = {
 			{
 				type = 'oneshot',
 				target = 'skill',
-				args = [{obj = 'parent_args', param = 0}],
+				args = [],
 				atomic = [
 					{type = 'stat_add', stat = 'critchance', value = 25},
 					{type = 'stat_add', stat = 'critmod', value = 0.75},
+					],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
+	e_tr_deathknight = {
+		type = 'trigger',
+		trigger = [variables.TR_KILL],
+		req_skill = false,
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		args = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = [],
+				atomic = [
+					{type = 'stat_add', stat = 'loyalty', value = ['random', 2, 4]},
 					],
 				buffs = [],
 				sub_effects = []
