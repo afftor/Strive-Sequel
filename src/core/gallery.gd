@@ -86,7 +86,11 @@ var ero_scenes = [
 'zephyra_lilia_1',
 'amelia_sex1',
 'zephyra_disappearance_sex_1',
-'zephyra_disappearance_guards_1'] 
+'zephyra_disappearance_guards_1',
+'daisy_wedding1',
+'cali_wedding1',
+'amelia_wedding1'
+] 
 
 var ero_scenes_collection = {
 	"anastasia_execution":["anastasia_execution1","anastasia_execution2","anastasia_execution3"],
@@ -121,10 +125,13 @@ var ero_scenes_collection = {
 	"cali_bowl_naked_":["cali_bowl_naked_1","cali_bowl_naked_2","cali_bowl_naked_3","cali_bowl_naked_4"],
 	"zephyra_bath_":["zephyra_bath_1","zephyra_bath_2","zephyra_bath_4"],
 	"stag_sex_":["stag_sex_1","stag_sex_2","stag_sex_3"],
-	'zephyra_lilia_' : ['zephyra_lilia_1', 'zephyra_lilia_2','zephyra_lilia_3'],
-	'amelia_sex': ['amelia_sex1', 'amelia_sex2', 'amelia_sex3'],
-	'zephyra_back_' :['zephyra_back_1', 'zephyra_back_2', 'zephyra_back_3', 'zephyra_back_4'],
-	'zephyra_facefuck_' :['zephyra_facefuck_1', 'zephyra_facefuck_2', 'zephyra_facefuck_3', 'zephyra_facefuck_4'],
+	'zephyra_lilia_' :['zephyra_lilia_1', 'zephyra_lilia_2','zephyra_lilia_3'],
+	'amelia_sex':['amelia_sex1', 'amelia_sex2', 'amelia_sex3'],
+	'zephyra_back_':['zephyra_back_1', 'zephyra_back_2', 'zephyra_back_3', 'zephyra_back_4'],
+	'zephyra_facefuck_':['zephyra_facefuck_1', 'zephyra_facefuck_2', 'zephyra_facefuck_3', 'zephyra_facefuck_4'],
+	'daisy_wedding': ['daisy_wedding1', 'daisy_wedding2', 'daisy_wedding3', 'daisy_wedding4'],
+	'cali_wedding': ['cali_wedding1', 'cali_wedding2', 'cali_wedding3', 'cali_wedding4'],
+	'amelia_wedding': ['amelia_wedding1', 'amelia_wedding2', 'amelia_wedding3', 'amelia_wedding4'],
 }
 #so these arrays are needed for storing order 
 
