@@ -97,6 +97,14 @@ var backgrounds = {
 	daisy_bent1 = load("res://assets/images/fullscreen scenes/DaisyCG018.png"),
 	daisy_bent2 = load("res://assets/images/fullscreen scenes/DaisyCG019.png"),
 	daisy_bent3 = load("res://assets/images/fullscreen scenes/DaisyCG020.png"),
+	
+	daisy_wedding1 = load("res://assets/images/fullscreen scenes/DaisyCG022.png"),
+	daisy_wedding2 = load("res://assets/images/fullscreen scenes/DaisyCG023.png"),
+	daisy_wedding3 = load("res://assets/images/fullscreen scenes/DaisyCG024.png"),
+	daisy_wedding4 = load("res://assets/images/fullscreen scenes/DaisyCG025.png"),
+	daisy_wedding_anal1 = load("res://assets/images/fullscreen scenes/DaisyCG026.png"),
+	daisy_wedding_anal2 = load("res://assets/images/fullscreen scenes/DaisyCG027.png"),
+	daisy_wedding_anal3 = load("res://assets/images/fullscreen scenes/DaisyCG028.png"),
 
 	anastasia_sex_1 = load("res://assets/images/fullscreen scenes/AnastasiaCG001.png"),
 	anastasia_sex_2 = load("res://assets/images/fullscreen scenes/AnastasiaCG002.png"),
@@ -117,6 +125,14 @@ var backgrounds = {
 	amelia_sex1 = load("res://assets/images/fullscreen scenes/AmeliaCG007.png"),
 	amelia_sex2 = load("res://assets/images/fullscreen scenes/AmeliaCG008.png"),
 	amelia_sex3 = load("res://assets/images/fullscreen scenes/AmeliaCG009.png"),
+	
+	amelia_wedding1 = load("res://assets/images/fullscreen scenes/AmeliaCG010.png"),
+	amelia_wedding2 = load("res://assets/images/fullscreen scenes/AmeliaCG011.png"),
+	amelia_wedding3 = load("res://assets/images/fullscreen scenes/AmeliaCG012.png"),
+	amelia_wedding4 = load("res://assets/images/fullscreen scenes/AmeliaCG013.png"),
+	amelia_wedding_anal1 = load("res://assets/images/fullscreen scenes/AmeliaCG014.png"),
+	amelia_wedding_anal2 = load("res://assets/images/fullscreen scenes/AmeliaCG015.png"),
+	amelia_wedding_anal3 = load("res://assets/images/fullscreen scenes/AmeliaCG016.png"),
 
 	anastasia_aire1 = load("res://assets/images/fullscreen scenes/AnastasiaAireCG001.png"),
 	anastasia_aire2 = load("res://assets/images/fullscreen scenes/AnastasiaAireCG002.png"),
@@ -179,6 +195,14 @@ var backgrounds = {
 	cali_riding_1 = load("res://assets/images/fullscreen scenes/CaliCG019.png"),
 	cali_riding_2 = load("res://assets/images/fullscreen scenes/CaliCG020.png"),
 	cali_riding_3 = load("res://assets/images/fullscreen scenes/CaliCG021.png"),
+	
+	cali_wedding1 = load("res://assets/images/fullscreen scenes/CaliCG028.png"),
+	cali_wedding2 = load("res://assets/images/fullscreen scenes/CaliCG029.png"),
+	cali_wedding3 = load("res://assets/images/fullscreen scenes/CaliCG030.png"),
+	cali_wedding4 = load("res://assets/images/fullscreen scenes/CaliCG031.png"),
+	cali_wedding_anal1 = load("res://assets/images/fullscreen scenes/CaliCG032.png"),
+	cali_wedding_anal2 = load("res://assets/images/fullscreen scenes/CaliCG033.png"),
+	cali_wedding_anal3 = load("res://assets/images/fullscreen scenes/CaliCG034.png"),
 	
 	amelia_cali_1 = load("res://assets/images/fullscreen scenes/AmeliaCaliCG001.png"),
 	amelia_cali_2 = load("res://assets/images/fullscreen scenes/AmeliaCaliCG002.png"),

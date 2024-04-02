@@ -254,13 +254,28 @@ var data = {
 		}],
 	},
 	marriage_final_6 = {
-		image = null,
-		tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
-		text = [{text = "MARRIAGE_FINAL_6", reqs = []}],
-		options = [ 
-			{code = 'marriage_final_7', text = "DIALOGUECONTINUE", reqs = [{type = 'decision', value = 'marry_invitations_made', check = true}], dialogue_argument = 1, type = 'next_dialogue'},
-			{code = 'marriage_night_1', text = "DIALOGUECONTINUE", reqs = [{type = 'decision', value = 'marry_invitations_made', check = false}], dialogue_argument = 1, type = 'next_dialogue'},
-			],
+		variations = [ { # Unique after wedding scene
+			# we check if our spouse has unique event from wedding_events
+			reqs = [{type = 'spouse_check', value = {code = 'stat', stat = 'unique', operant = 'eq', value = 'daisy'}}, 
+			{type = 'spouse_check', value = {code = 'stat', stat = 'unique', operant = 'eq', value = 'amelia'}, orflag = true}, 
+			{type = 'spouse_check', value = {code = 'stat', stat = 'unique', operant = 'eq', value = 'cali'}, orflag = true}], 
+			image = null,
+			tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+			text = [{text = "MARRIAGE_FINAL_6", reqs = []}],
+			options = [ 
+				{code = 'marriage_final_7', text = "DIALOGUECONTINUE", reqs = [{type = 'decision', value = 'marry_invitations_made', check = true}], dialogue_argument = 1, type = 'next_dialogue'},
+				{code = 'close', text = "DIALOGUECONTINUE", reqs = [{type = 'decision', value = 'marry_invitations_made', check = false}], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'after_wedding_event'}]}
+				],
+		}, { # default
+			reqs = [], image = null,
+			tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+			text = [{text = "MARRIAGE_FINAL_6", reqs = []}],
+			options = [ 
+				{code = 'marriage_final_7', text = "DIALOGUECONTINUE", reqs = [{type = 'decision', value = 'marry_invitations_made', check = true}], dialogue_argument = 1, type = 'next_dialogue'},
+				{code = 'marriage_night_1', text = "DIALOGUECONTINUE", reqs = [{type = 'decision', value = 'marry_invitations_made', check = false}], dialogue_argument = 1, type = 'next_dialogue'},
+				],
+		}
+		]
 	},
 	marriage_final_7 = {
 		image = null,
@@ -273,15 +288,29 @@ var data = {
 			],
 	},
 	marriage_final_8 = {
-		image = null,
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [
-			{text = "MARRIAGE_FINAL_8_1", reqs = [], previous_dialogue_option = 1},
-			{text = "MARRIAGE_FINAL_8_2", reqs = [], previous_dialogue_option = 2},
-		],
-		options = [ 
-			{code = 'marriage_night_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		variations = [ { # Unique after wedding scene
+			# we check if our spouse has unique event from wedding_events
+			reqs = [{type = 'spouse_check', value = {code = 'stat', stat = 'unique', operant = 'eq', value = 'daisy'}}, 
+			{type = 'spouse_check', value = {code = 'stat', stat = 'unique', operant = 'eq', value = 'amelia'}, orflag = true}, 
+			{type = 'spouse_check', value = {code = 'stat', stat = 'unique', operant = 'eq', value = 'cali'}, orflag = true}], 
+			image = null,
+			tags = ['dialogue_scene', 'master_translate'],
+			text = [{text = "MARRIAGE_FINAL_8_1", reqs = [], previous_dialogue_option = 1},
+				{text = "MARRIAGE_FINAL_8_2", reqs = [], previous_dialogue_option = 2},],
+			options = [ 
+				{code = 'close', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'after_wedding_event'}]}
+				],
+		}, { # default
+			reqs = [], image = null,
+			tags = ['dialogue_scene', 'master_translate'],
+			text = [
+				{text = "MARRIAGE_FINAL_8_1", reqs = [], previous_dialogue_option = 1},
+				{text = "MARRIAGE_FINAL_8_2", reqs = [], previous_dialogue_option = 2},
 			],
+			options = [ 
+				{code = 'marriage_night_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+				],
+		} ]
 	},
 	marriage_night_group_1 = {
 		image = null,
@@ -310,7 +339,7 @@ var data = {
 			],
 	},
 	marriage_night_1 = {
-		image = null,
+		reqs = [], image = null,
 		character = "spouse",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
