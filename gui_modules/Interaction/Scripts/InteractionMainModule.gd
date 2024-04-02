@@ -157,7 +157,6 @@ func OrgasmDenialCum():
 	OrgasmDenyVictim.person.add_stat('obedience', 4 + OrgasmDenyVictim.person.get_stat('sexuals_factor') * 2)
 	OrgasmDenyVictim.person.add_stat('loyalty', 3)
 	$OrgasmDenial/ScrollContainer/VBoxContainer/Beg.show()
-	OrgasmDenyVictim.sens = 0
 	OrgasmDenyVictim.orgasm(decoder(OrgasmDenyText[text], [OrgasmDenyPlayer], [OrgasmDenyVictim]))
 	$OrgasmDenial.hide()
 	rebuildparticipantslist()
@@ -181,19 +180,45 @@ func OrgasmDenialDeny():
 	$Panel/sceneeffects.bbcode_text +="\n" + decoder(OrgasmDenyText.deny, [OrgasmDenyPlayer], [OrgasmDenyVictim])
 	rebuildparticipantslist()
 
-func SelectCum(player, victim):
-	pass
+var cumdict = {
+face = {reqs = [], name = "Face", text = "[name1] brings his {^penis:cock:dick} to [name2]'s face and release [his1] {^seed:semen:cum}. The white fluid stains [name2]'s face dripping down to [his2] chin.", specreqs = [], spectext = ''},
+mouth = {reqs = [], name = "Mouth", text = "[name1] puts his {^penis:cock:dick} into [name2]'s mouth for the final release. The stream of {^seed:semen:cum} hits [name2]'s throat having [him2] gulp it down.", specreqs = [], spectext = ''},
+hair = {reqs = [{code = 'stat', stat = 'hairlength', operant = 'neq', value = 'bald'}], name = "Hair", text = "[name1] puts his {^penis:cock:dick} to [name2]'s head and cums over [his2] hair. The {^seed:semen:cum} soils [name2]'s hair sticking between the strands.", specreqs = [], spectext = ''},
+chest = {reqs = [], name = "Chest", text = "[name1] takes his {^penis:cock:dick} into [his1] hand and points at [name2]'s chest, cumming all over it. The hot {^seed:semen:cum} drips down [name2]'s body.", specreqs = [], spectext = ''},
+belly = {reqs = [], name = "Belly", text = "[name1] puts his {^penis:cock:dick} into [his1] hand and points at [name2]'s belly. The hot {^seed:semen:cum} drips down [name2]'s navel and stomach.", specreqs = [], spectext = ''},
+pubis = {reqs = [], name = "Pubis", text = "[name1] takes out {^penis:cock:dick} and places at [name2]'s pubis. The hot {^seed:semen:cum} covers [name2]'s crotch.", specreqs = [], spectext = ''},
+pussy = {reqs = [{code = 'stat', stat = 'has_pussy', operant = 'neq', value = false}], name = "Pussy", text = "[name1] {^sticks:puts} his {^penis:cock:dick} into [name2]'s {^pussy:vagina:cunt}. The hot {^seed:semen:cum} {^splashes into [his2] womb:fills [his2] pussy}.", specreqs = [], spectext = ''},
+ass = {reqs = [], name = "Ass", text = "[name1] {^sticks:puts} his {^penis:cock:dick} into [name2]'s {^ass:anus:rear}. The hot {^seed:semen:cum} {^splashes into [his2] intestines:fills [his2] butt}.", specreqs = [], spectext = ''},
+back = {reqs = [], name = "Back", text = "[name1] puts his {^penis:cock:dick} into [his1] hand and points at [name2]'s back, cumming all over it. [name2] gasps as [he2] feels the hot fluid over [his2] back.", specreqs = [], spectext = ''},
+feet = {reqs = [{code = 'stat', stat = 'body_shape', operant = 'in', value = ['humanoid','shortstack']}], name = "Feet", text = "[name1] unable to hold back anymore starts cumming over [name2]'s feet, covering them in [his1] semen.", specreqs = [], spectext = ''},
+tail = {reqs = [{code = 'stat', stat = 'tail', operant = 'neq', value = ''}], name = "Tail", text = "[name1] grabs [name2]'s tail, pushing [his1] {^dick:cock:penis} onto it. With a groan, [name1] starts cumming over [name2]'s tail. ", specreqs = [], spectext = ''},
+hands = {reqs = [{code = 'stat', stat = 'arms', operant = 'neq', value = 'wings'}], name = "Hands", text = "[name1] unable to hold back anymore starts cumming over [name2]'s hands, covering them in [his1] semen.", specreqs = [], spectext = ''},
+}
 
-#for not working at all and not used
-#func add_portrait_to_text(member):
-#	var newimage = Image.new()
-#	if !File.new().file_exists(member.person.imageportait):
-#		return
-#	newimage.load(member.person.imageportait)
-#	var subimage = ImageTexture.new()
-#	subimage.create_from_image(newimage)
-#	subimage.set_size_override(Vector2(24,24))
-#	$Panel/sceneeffects.add_image(subimage)
+func SelectCum(player, victim):
+	OrgasmDenyPlayer = player
+	OrgasmDenyVictim = victim
+	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
+	$CumSelect.show()
+	var text = "As [name1] approaches orgasm [he1] choose to cum onto [name2]'s..."
+	$CumSelect/RichTextLabel.bbcode_text = decoder(text, [OrgasmDenyPlayer], [OrgasmDenyVictim])
+	
+	input_handler.ClearContainer($CumSelect/ScrollContainer/VBoxContainer)
+	for part in cumdict.values():
+		if victim.checkreqs(part.reqs, 'taker', {scene = victim.lastaction, givers = [player], takers = [victim]}) == false:
+			continue
+		var newbutton = input_handler.DuplicateContainerTemplate($CumSelect/ScrollContainer/VBoxContainer)
+		newbutton.text = part.name
+		newbutton.connect('pressed',self,'SelectCumTarget',[part])
+		
+		
+
+func SelectCumTarget(part):
+	OrgasmDenyPlayer.orgasm(decoder(part.text, [OrgasmDenyPlayer], [OrgasmDenyVictim]))
+	#$Panel/sceneeffects.bbcode_text += "\n" + decoder(part.text, [OrgasmDenyPlayer], [OrgasmDenyVictim])
+	$CumSelect.hide()
+	rebuildparticipantslist()
+
 
 func _input(event):
 	if !event is InputEventKey || is_visible_in_tree() == false:
@@ -233,7 +258,7 @@ func createtestdummy(type = 'normal'):
 		#globals.connectrelatives(participants[0].person, person, 'father')
 
 	newmember.setup_person(person, true)
-	newmember.consent = round(rand_range(2,5))
+	newmember.consent = round(rand_range(0,3))
 	#dummycounter += 1
 
 #	if person.consent == false && person.professions.has("master"):
@@ -1043,14 +1068,18 @@ func startscene(scenescript, cont = false, pretext = ''):
 	scenescript.givers = givers
 	scenescript.takers = takers
 	turns -= 1
-
+	
 	var dict = {scene = scenescript, takers = [] + takers, givers = [] + givers, consents = {}}
-
+	var resists = []
+	
+	
 	for i in givers:
 		dict.consents[i.id] = 0
 		var lowest_consent = 10
 		for j in takers:
 			var consent = count_action_consent(scenescript, i, j)
+			if scenescript.consent_giver > consent.giver_consent && resists.find(i.id) < 0:
+				resists.append(i.id)
 			if consent.giver_consent < lowest_consent:
 				lowest_consent = consent.giver_consent
 		if lowest_consent < scenescript.consent_giver:
@@ -1067,14 +1096,17 @@ func startscene(scenescript, cont = false, pretext = ''):
 			if i.sex_traits.has("pushover"):
 				resist = resist/2
 			i.stamina -= resist*15
+			if i.stamina <= 0:
+				pass#set penalty
 		
-		#dict.consents[i.id] = lowest_consent# - scenescript.consent_level
 
 	for j in takers:
 		dict.consents[j.id] = 0
 		var lowest_consent = 10
 		for i in givers:
 			var consent = count_action_consent(scenescript, i, j)
+			if scenescript.consent_taker > consent.taker_consent && resists.find(j.id) < 0:
+				resists.append(j.id)
 			if consent.taker_consent < lowest_consent:
 				lowest_consent = consent.taker_consent
 		#dict.consents[j.id] = lowest_consent
@@ -1092,9 +1124,10 @@ func startscene(scenescript, cont = false, pretext = ''):
 			if j.sex_traits.has("pushover"):
 				resist = resist/2
 			j.stamina -= resist*15
+			if j.stamina <= 0:
+				pass#set penalty
 	
 	
-
 	
 #	for i in givers + takers:
 #		if dict.consents[i.id] < scenescript.consent_level:
@@ -1122,8 +1155,8 @@ func startscene(scenescript, cont = false, pretext = ''):
 					i.person_sexexp.partners[k.id] += 1
 				else:
 					i.person_sexexp.partners[k.id] = 1
-					#if dict.consents[k.id] - scenescript.consent_level > 0:
-					k.new_consented_partners += 1
+					if resists.find(i.id) < 0:
+						k.new_consented_partners += 1
 
 
 	for i in participants:
@@ -1150,7 +1183,21 @@ func startscene(scenescript, cont = false, pretext = ''):
 	elif scenescript.reaction != null:
 			for i in takers:
 				textdict.mainevent += '\n' + output(scenescript, scenescript.reaction, givers, [i])
+	
+	
+	#this part likely will need full optional description of resist for each action
+	for i in givers:
+		if (resists.has(i.id) || i.sex_traits.has("pushover")) && randf() >= variables.resist_text_chancce:
+			textdict.mainevent += "\n" + decoder(resist_text('giver',i.stamina, i), [i], takers)
+			#textdict.mainevent += '\n' + decoder(scenescript.giver_resist(), i, [takers])
 
+	for i in takers:
+		if (resists.has(i.id) || i.sex_traits.has("pushover")) && randf() >= variables.resist_text_chancce:
+			textdict.mainevent += "\n" + decoder(resist_text('taker',i.stamina, i), givers, [i])
+			#textdict.mainevent += '\n' + decoder(scenescript.taker_resist(), givers, [i])
+	
+	
+	
 	var virgin = {type = null, character = null}
 
 	#remove virginity if relevant
@@ -1371,6 +1418,38 @@ func startscene(scenescript, cont = false, pretext = ''):
 
 	record_actions(scenescript, dict.consents)
 	rebuildparticipantslist()
+
+func resist_text(side, stamina, character):
+	var temparray = []
+	
+	if character.sex_traits.has("pushover"):
+		temparray += ["[name] feels {^involuntarily:helplessly} {^aroused:horny} from {^the rough treatment:being taken against [his] will}..."]
+		temparray += ["[name] {^moans:cries} {^involuntarily:helplessly} as [he] falls into submission..."]
+		temparray += ["[name] {^blushes:turns red} from [his] own perverted arousal..."]
+	else:
+		if stamina > 30:
+			temparray += ["[name] winces from the distress, but can't help with [his] growing {^desire:arousal}..."]
+			temparray += ["[name] shies away from the unwanted {^desire:arousal}..."]
+			temparray += ["[name] feels conflicted about [his] growing {^desire:arousal}..."]
+		elif stamina > 0:
+			temparray += ["[name] meekly tries to push [his] partner away..."]
+			temparray += ["[name] closes his eyes in shame..."]
+			temparray += ["[name] weeps as [his] body betrays [him]..."]
+		else:
+			temparray += ["[name] is a broken mess barely reacting to any violation..."]
+			temparray += ["[name] stays quiet as [his] body is ravaged..."]
+	
+	
+	var counter = 0
+	var replace = globals.fastif(side == 'giver', '1]', '2]')
+	for i in temparray:
+		temparray[counter] = temparray[counter].replace(']', replace) 
+		counter += 1
+	
+	if character.sex_traits.has("pushover"):
+		return globals.TextEncoder("{color=yellow|"+temparray[randi()%temparray.size()] + "}")
+	else:
+		return globals.TextEncoder("{color=red|"+temparray[randi()%temparray.size()] + "}")
 
 func lewdness_aura(caster):
 	for i in participants:
@@ -1739,15 +1818,10 @@ func endencounter():
 		
 		i.person.set_stat('lastsexday', ResourceScripts.game_globals.date)
 		
-#		consenttext[i.id] = '\nParticipation: +1'
-#
-#
-#		if i.orgasms > 0:
-#			consenttext[i.id] += '\nOrgasms: ' + str(i.orgasms)
 		
 		if i.stamina > 0 && i.low_actions_resisted > 7 - i.person.get_stat('sexuals_factor')/1.5 && i.person.get_stat('consent') < 6:
 			i.person.add_stat('consent', 1)
-			text += i.person.translate('[name] has opened [him]self to the new experience: Consent - {color=aqua|' + variables.consent_dict[int(i.person.get_stat('consent'))] + "}\n")
+			text += i.person.translate('[name] has opened [him]self to the new experience: Consent - {color=aqua|' + tr(variables.consent_dict[int(i.person.get_stat('consent'))]) + "}\n")
 		elif i.stamina == 0:
 			text += i.person.translate("[name] has been devastated by this encounter and have not been able to increase [his] open mindedness. ")
 		
@@ -1757,13 +1831,9 @@ func endencounter():
 			
 			
 		i.person.add_stat('loyalty', i.person.get_stat('sexuals_factor') + i.orgasms * 5)
-		i.consentgain += i.orgasms*2
 #		if i.new_action_performed == true:
 #			i.consentgain += 1
 #			consenttext[i.id] += '\nTried new action: +1'
-		if i.begged_for_orgasm == true:
-			i.consentgain += 3
-			consenttext[i.id] += "\nBegged for orgasm: +3"
 #		if i.new_consented_partners > 0:
 #			i.consentgain += i.new_consented_partners*2
 #			consenttext[i.id] += '\nConsented to new partners: +' + str(i.new_consented_partners*2)
@@ -2196,6 +2266,7 @@ func alcohol(member):
 		member.sensmod += 0.2
 		member.hornymod += 0.5
 		member.horny += 25
+		member.stamina += 40
 		member.effects.append('drunk')
 		text += "It made [him] slightly more horny and sensitive. "
 	else:
@@ -2210,6 +2281,7 @@ func beer(member):
 		member.sensmod += 0.1
 		member.hornymod += 0.3
 		member.horny += 10
+		member.stamina += 20
 		member.effects.append('tipsy')
 		text += "It made [him] slightly more horny and sensitive. "
 	else:
@@ -2219,6 +2291,7 @@ func beer(member):
 
 func aphrodisiac(member):
 	member.horny += 100
+	member.stamina += 50
 	var text = "\n" + member.name + " has used an aphrodisiac. [His] breath grew slower and heavier.\n{color=aqua|[name]} - {random_chat=0|aphrodisiac}"
 	member.effects.append("aphrodisiac")
 	input_handler.scene_characters = [member.person]
@@ -2244,7 +2317,7 @@ func pheromones(member):
 		if member.person.get_stat('race') in races.race_groups.halfbeast + races.race_groups.beast:
 			member.effects.append("pheromones")
 			member.lewdmod += 1
-			member.consent = 4
+			member.consent = max(member.consent, 4)
 			input_handler.scene_characters = [member.person]
 			text = "\nPheromones were used on " + member.name + globals.TextEncoder("... [His] mind became engulfed in unquenchable thirst.\n{color=aqua|[name]} - {random_chat=0|aphrodisiac}")
 		else:

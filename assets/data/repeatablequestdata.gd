@@ -523,7 +523,7 @@ var questdata = {
 		descript = tr("FIGHTERS_CRAFT_GEAR_NAME"),
 		randomconditions = [
 			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow','battleaxe','mace','crossbow'], range = [1,1], parts = {WeaponHandle = ['steel','boneancient','woodiron']}},
-			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','mace'], range = [1,1], parts = {Blade = ['steel','obsidian','boneancient']}},
+			{code = 'random_item', function = 'range', type = ['dagger','sword','spear'], range = [1,1], parts = {Blade = ['steel','obsidian','boneancient']}},
 			{code = 'random_item', function = 'range', type = ['chest_base_leather','legs_base_leather','chest_base_metal','legs_base_metal'], range = [1,1], parts = {ArmorTrim = ['steel','obsidian','clothmagic','woodmagic']}},
 			{code = 'random_item', function = 'range', type = ['chest_base_leather','legs_base_leather'], range = [1,1], parts = {ArmorBaseMed = ['leatherthick','leathermythic','insect_chitin','lizard_skin','boneancient']}},
 			],
@@ -540,12 +540,12 @@ var questdata = {
 		descript = tr("FIGHTERS_CRAFT_GEAR_NAME"),
 		randomconditions = [
 			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow','battleaxe','mace','crossbow'], range = [2,3], parts = {WeaponHandle = ['mithril','boneancient','woodiron','obsidian']}},
-			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','mace'], range = [2,3], parts = {Blade = ['mithril','obsidian','boneancient']}},
+			{code = 'random_item', function = 'range', type = ['dagger','sword','spear'], range = [2,3], parts = {Blade = ['mithril','obsidian','boneancient']}},
 			
 			
 			
 			{code = 'random_item', function = 'range', type = ['chest_adv_metal','legs_adv_metal','chest_adv_leather','legs_adv_leather'], range = [1,1], parts = {ArmorTrim = ['mithril','obsidian','boneancient','clothethereal','woodmagic']}},
-			{code = 'random_item', function = 'range', type = ['swordadv','spearadv','maceadv'], range = [1,1], parts = {Blade = ['mithril','obsidian','boneancient','adamantine']}},
+			{code = 'random_item', function = 'range', type = ['swordadv','spearadv'], range = [1,1], parts = {Blade = ['mithril','obsidian','boneancient','adamantine']}},
 			],
 		unlockreqs = [],
 		reputation = [400,600],
