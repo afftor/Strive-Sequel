@@ -2027,6 +2027,8 @@ func common_effects(effects):
 				ResourceScripts.game_progress.marriage_completed = true
 				ResourceScripts.game_party.get_spouse().unlock_class('spouse')
 				ResourceScripts.game_party.get_spouse().set_stat('surname', ResourceScripts.game_party.get_master().get_stat('surname'))
+			'after_wedding_event':
+				after_wedding_event(ResourceScripts.game_party.get_spouse().get_stat('unique'))
 			'hide_dialogue':
 				gui_controller.dialogue.hide_dialogue()
 			'plan_mansion_event':
@@ -2106,6 +2108,13 @@ func common_effects(effects):
 				ResourceScripts.game_progress.stored_events.timed_events.append(newevent)
 			'add_master_points':
 				ResourceScripts.game_progress.master_points += i.value
+
+func after_wedding_event(character):
+	if character == null:
+		print_debug("unique wedding event failed")
+		return
+	var event_name = character+"_wedding_1"
+	input_handler.interactive_message(event_name, '', {})
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})
