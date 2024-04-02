@@ -402,6 +402,20 @@ var effect_table = {
 		sub_effects = [],
 	},
 	# i think we need to display those statuses as buffs
+	e_mastermentor = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'master_mentor',
+		stack = 1,
+		duration = 4,
+		tick_event = [variables.TR_TICK],
+		rem_event = [variables.TR_DEATH],
+		tags = ['positive', 'buff'],
+		args = [],
+		sub_effects = [],
+		atomic = [{type = 'stat_add', stat = 'exp_gain_mod', value = 1}],
+		buffs = ['b_mastermentor'],
+	},
 	work_rule_bindings = {
 		code = 'work_rule_bindings',
 		type = 'static',
@@ -581,6 +595,7 @@ var effect_table = {
 			],
 		atomic = [],
 		buffs = [],#'b_power_pot'],
+		args = [{obj = 'parent', param = 'caster'}, {obj = 'parent', param = 'target'}],
 		sub_effects = ['e_s_bishop']
 	},
 	e_tr_sniper = rebuild_skillvalue_template({num_targets = 'single', skilltype = 'skill', tag = 'damage', value = 1.25}),
@@ -5262,6 +5277,11 @@ var buffs = {
 		description = "",
 		t_name = 'soulbindcaster',
 	},
+	b_mastermentor = {
+		icon = "res://assets/images/iconsskills/Mindread.png",#fix
+		description = "BUFFDESCRIPTMENTOR",
+		t_name = 'master_mentor',
+	},
 };
 
 func rebuild_template(args):
@@ -5469,3 +5489,4 @@ func rebuild_stat_bonus(stat, value, buff = null, mode = 'stat_add'):
 		template.buffs.push_back(buff)
 	template.atomic.push_back('a_' + mode)
 	return template
+

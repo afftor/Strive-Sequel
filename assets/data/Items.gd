@@ -3474,7 +3474,7 @@ var recipes = {
 		resultamount = 2,
 		resultitemtype = 'material',
 		resultitem = 'bandage',
-		workunits = 0.5,
+		workunits = 2,
 		worktype = 'tailor'
 	},
 	lifegem = {

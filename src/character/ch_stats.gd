@@ -75,7 +75,14 @@ func fix_serialize():
 		statlist.metrics[metr] = Statlist_init.template.metrics[metr]
 	for st in ['personality_bold', 'personality_kind', 'slave_spec_level', 'slave_spec_progress']:
 		statlist[st] = int(statlist[st])
-
+	
+	statlist.consent = min(get_stat('consent'), 6)
+	bonuses.erase('consent_add')
+	bonuses.erase('consent_mul')
+	if parent.get_ref().is_master():
+		statlist.consent = 100
+	
+	
 
 func default_stats_get():
 	return statlist.duplicate()

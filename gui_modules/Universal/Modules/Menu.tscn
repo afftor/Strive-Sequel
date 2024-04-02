@@ -664,7 +664,35 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "0.8.3a
+bbcode_text = "0.8.4a
+Removed Mace from list of items which can be requested with crafted Blade part
+Serve skill no longer needs lust to be used
+Shared toy skill now only needs 15 lust instead of 75
+Added new skill for Master - Mentor: Boosts experience gain for selected character for 1 day.
+Fixed bodyparts for orgasm selection not checking character's bodyparts
+Fixed consent going over the cap in some cases after reload
+0.8.4
+New consent system:
+Consent now only has stages, next stage is acquired by performing harder actions during interaction while keeping character from losing all their stamina or from intimate talk during dates on early levels. Sexual factor affects easiness of progress.
+Stamina (interaction system) is depleted when performing actions with higher consent than character currently has and is restored on orgasms and with some items. If all stamina is depleted the character will start losing obedience, no longer gain consent and receive debuff
+Sex training is no longer required for any sexual interactions 
+
+Lust changes:
+Characters no longer gain lust from sexual interactions, instead initiating sex requires lust
+After sexual interactions characters obtain Exp and Loyalty instead (based on their performance during it)
+
+Mana&heal related changes
+Reduced mana cost for most healing spells
+Increased basic mana regen from 1.2 to 1.5 per turn
+Increased bonus mana regen per magic factor from 0.1 to 0.5 per turn
+Bandage reputation cost increased from 3 to 10
+Bandage work units increased from 0.5 to 2
+
+Fixed master traits prices
+Fixed some of master traits being bugged
+Fixed soulbind not working correctly
+Fixed some class effects not working properly
+0.8.3a
 Fixed some issues with the map including not being able to send characters to other regions
 Fixed collars not displaying on characters
 Minor gui fixes
@@ -1595,7 +1623,35 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.8.3a
+text = "0.8.4a
+Removed Mace from list of items which can be requested with crafted Blade part
+Serve skill no longer needs lust to be used
+Shared toy skill now only needs 15 lust instead of 75
+Added new skill for Master - Mentor: Boosts experience gain for selected character for 1 day.
+Fixed bodyparts for orgasm selection not checking character's bodyparts
+Fixed consent going over the cap in some cases after reload
+0.8.4
+New consent system:
+Consent now only has stages, next stage is acquired by performing harder actions during interaction while keeping character from losing all their stamina or from intimate talk during dates on early levels. Sexual factor affects easiness of progress.
+Stamina (interaction system) is depleted when performing actions with higher consent than character currently has and is restored on orgasms and with some items. If all stamina is depleted the character will start losing obedience, no longer gain consent and receive debuff
+Sex training is no longer required for any sexual interactions 
+
+Lust changes:
+Characters no longer gain lust from sexual interactions, instead initiating sex requires lust
+After sexual interactions characters obtain Exp and Loyalty instead (based on their performance during it)
+
+Mana&heal related changes
+Reduced mana cost for most healing spells
+Increased basic mana regen from 1.2 to 1.5 per turn
+Increased bonus mana regen per magic factor from 0.1 to 0.5 per turn
+Bandage reputation cost increased from 3 to 10
+Bandage work units increased from 0.5 to 2
+
+Fixed master traits prices
+Fixed some of master traits being bugged
+Fixed soulbind not working correctly
+Fixed some class effects not working properly
+0.8.3a
 Fixed some issues with the map including not being able to send characters to other regions
 Fixed collars not displaying on characters
 Minor gui fixes

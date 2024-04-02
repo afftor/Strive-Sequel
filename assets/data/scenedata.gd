@@ -845,7 +845,7 @@ var scenedict = {
 	writ_of_exemption = {
 		text = tr("DIALOGUEWRIT_CONFIRM"),
 		image = null,
-		tags = ['scene','active_character_translate'],
+		tags = ['custom_effect','active_character_translate'],
 		options = [
 		{code = 'writ_of_exemption_use', reqs = [], text = tr("DIALOGUECONFIRM")},
 		{code = 'close', reqs = [], text = tr("DIALOGUECANCEL")},
