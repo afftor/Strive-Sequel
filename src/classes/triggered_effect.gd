@@ -95,7 +95,12 @@ func e_apply():
 		var tmp = effects_pool.e_createfromtemplate(e, id)
 		#tmp.calculate_args()
 		sub_effects.push_back(effects_pool.add_effect(tmp))
-		pass
+	
+	if template.has('modal_sub_effects'):
+		var temp = input_handler.random_from_array(template.modal_sub_effects)
+		var tmp = effects_pool.e_createfromtemplate(temp, id)
+		#tmp.calculate_args()
+		sub_effects.push_back(effects_pool.add_effect(tmp))
 	
 	setup_siblings()
 	for e in sub_effects:
