@@ -630,10 +630,19 @@ var effect_table = {
 		],
 		trigger = [variables.TR_POSTDAMAGE],
 		req_skill = true,
-		args = [{obj = 'app_obj', param = 'hpmax'}, {obj = 'app_obj', param = 'mpmax'}],
+		args = [],
 		sub_effects = [
-			{type = 'heal', value = [['parent_args', 0], '*', 0.03]},
-			{type = 'mana', value = [['parent_args', 1], '*', 0.03]},
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = [{obj = 'app_obj', param = 'hpmax'}, {obj = 'app_obj', param = 'mpmax'}],
+				atomic = [
+					{type = 'heal', value = [['parent_args', 0], '*', 0.03]},
+					{type = 'mana', value = [['parent_args', 1], '*', 0.03]},
+					],
+				buffs = [],
+				sub_effects = []
+			},
 			'e_s_bloodmage'
 		],
 		buffs = []
@@ -752,6 +761,36 @@ var effect_table = {
 				sub_effects = []
 			}
 		]
+	},
+	e_tr_witch1 = {
+		type = 'trigger',
+		conditions = [
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_CRIT]},
+			{type = 'skill', value = ['ability_type', 'eq', 'spell']},
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+		],
+		trigger = [variables.TR_POSTDAMAGE],
+		req_skill = true,
+		duration = 1,
+		args = [{obj = 'parent', param = 'target'}, {obj = 'parent', param = 'caster'}],
+		sub_effects = [],
+		modal_sub_effects = ['e_s_burn_new', 'e_s_poison_new', 'e_s_bleed_new', 'e_s_blind', 'e_s_stun1', 'e_s_confuse', 'e_s_sleep_compartibility'],
+		buffs = []
+	},
+	e_tr_witch2 = {
+		type = 'trigger',
+		conditions = [
+			{type = 'random', value = 0.5},
+			{type = 'skill', value = ['ability_type', 'eq', 'spell']},
+			{type = 'skill', value = ['tags', 'has', 'heal']},
+		],
+		trigger = [variables.TR_POSTDAMAGE],
+		req_skill = true,
+		duration = 2,
+		args = [{obj = 'parent', param = 'target'}, {obj = 'parent', param = 'caster'}],
+		sub_effects = [],
+		modal_sub_effects = ['e_s_rejuvenation', 'e_s_mward2'],
+		buffs = []
 	},
 	e_s_bond = {
 		type = 'temp_s',
@@ -3616,6 +3655,25 @@ var effect_table = {
 		atomic = [],
 		buffs = ['b_sleep'],
 	},
+	e_s_sleep_compartibility = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions
+		#THIS EFFECT IS STUB, DO NOT COPY, DO NOT EDIT - it uses reversed order of parent trigger args, so it is conterintuitive
+		type = 'temp_global',
+		tags = ['duration_turns', 'affliction', 'disable', 'sleep'],
+		target = 'target',
+		name = 'sleep',
+		disable = true,
+		stack = 1,
+		timers = [
+			{events = [variables.TR_TURN_GET], objects = 'target', timer = 1}, #1 turn duration of CASTER
+			{events = [variables.TR_DMG], objects = 'owner', timer = 1}, #damage removes
+			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
+			{events = variables.TR_DEATH, objects = 'target', timer = 1}, #CASTER
+		],
+		args = [],
+		sub_effects = [],
+		atomic = [],
+		buffs = ['b_sleep'],
+	},
 	e_s_blind = {
 		type = 'temp_s',
 		target = 'target',
@@ -4035,6 +4093,39 @@ var effect_table = {
 			}
 		]
 	},
+	e_s_rejuvenation = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'rejuvenation',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'parent',
+		tags = ['positive'],
+		args = [],
+		sub_effects = ['e_t_rejuvenation'],
+		atomic = [],
+		buffs = ['b_regen'],
+	},
+	e_t_rejuvenation = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_GET],
+		req_skill = false,
+		conditions = [],
+		args = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = [{obj = 'app_obj', param = 'hpmax'}],
+				atomic = [
+					{type = 'heal', value = [['parent_args', 0], '*', 0.15]},
+					],
+				buffs = [],
+				sub_effects = []
+			},
+		]
+	},
 	e_s_resto = {
 		type = 'temp_s',
 		target = 'target',
@@ -4183,6 +4274,23 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 4,
+		tags = ['positive', 'buff'],
+		args = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'atk', value = 0.25},
+			{type = 'stat_add', stat = 'mdef', value = 40},
+			],
+		buffs = ['b_magicward'],
+	},
+	e_s_mward2 = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'magicward',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 2,
 		tags = ['positive', 'buff'],
 		args = [],
 		sub_effects = [],
