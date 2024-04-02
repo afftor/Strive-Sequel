@@ -706,6 +706,53 @@ var effect_table = {
 #		atomic = [],
 #		buffs = ['b_soulbind'],
 #	},
+	e_tr_warlock = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		req_skill = true,
+		conditions = [
+			{type = 'skill', value = ['ability_type', 'eq', 'spell']},
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['tags', 'hasno', 'aoe']},
+		],
+		atomic = [],
+		buffs = [],
+		args = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				args = [],
+				atomic = [
+					{type = 'stat_add', stat = 'critchance', value = 25},
+					{type = 'stat_add', stat = 'critmod', value = 0.75},
+					],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
+	e_tr_deathknight = {
+		type = 'trigger',
+		trigger = [variables.TR_KILL],
+		req_skill = false,
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		args = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = [],
+				atomic = [
+					{type = 'stat_add', stat = 'loyalty', value = ['random', 2, 4]},
+					],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
 	e_s_bond = {
 		type = 'temp_s',
 		target = 'target',

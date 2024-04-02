@@ -756,6 +756,21 @@ func add_enchant(e_id, lvl, is_free = false):
 #		characters_pool.get_char_by_id(tmp).equip(self)
 
 
+func clear_enchants():
+	if owner != null:
+		print('e_remove_failed')
+		return
+	for e_id in enchants:
+		_remove_enchant(e_id)
+	enchants.clear()
+	if curse != null:
+		var enchdata = Items.curses[curse]
+		if enchdata.has('effects'):
+			for eff in enchdata.effects:
+				effects.erase(eff)
+		curse = null
+
+
 func identify():
 	curse_known = true
 

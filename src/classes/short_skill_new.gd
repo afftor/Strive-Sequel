@@ -28,6 +28,7 @@ var pval_i
 var process_value
 var random_factor
 var random_factor_p
+var critmod = 1.0
 var tempdur
 
 var sskill_value = ResourceScripts.scriptdict.class_sskill_value 
@@ -109,6 +110,7 @@ func setup_caster(c):
 	if type == 'combat' and c!= null:
 		chance = caster.get_stat('hitrate')
 		critchance = caster.get_stat('critchance')
+		critmod = caster.get_stat('critmod')
 		armor_p = caster.get_stat('armorpenetration')
 		if target_range == 'weapon':
 			target_range = caster.get_weapon_range()
@@ -152,7 +154,7 @@ func hit_roll():#not implemented various chance stat rolls due to not having for
 	var prop = chance - evade
 	if (!target.can_evade()): prop = 100 #target can not evade
 	if (caster != null) and (caster.combatgroup == target.combatgroup): prop = 100 #targeting ally
-	if prop < 20: prop = 20
+	if prop < 5: prop = 5
 	if prop < randf()*100:
 		hit_res = variables.RES_MISS
 	elif critchance < randf()*100:
