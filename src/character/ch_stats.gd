@@ -215,6 +215,8 @@ func custom_stats_get(stat):
 	if stat in ['speed', 'hitrate', 'evasion']:
 		var tres = statlist[stat]
 		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 4
+		if stat == 'evasion' and has_status('ninja'): #internal versions, mb wrong
+			tres += get_stat('mdef')
 		return tres
 	if stat in ['productivity']:
 		var tres = statlist[stat]

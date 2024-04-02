@@ -323,6 +323,15 @@ var traits = {
 		effects = [],
 		tags = ['assassin_hide']
 	},
+	ninja = {
+		code = 'ninja',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		tags = ['ninja']
+	},
 	necromancer = {
 		code = 'necromancer',
 		name = '',
