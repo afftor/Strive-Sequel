@@ -28,6 +28,7 @@ var pval_i
 var process_value
 var random_factor
 var random_factor_p
+var critmod = 1.0
 var tempdur
 
 var sskill_value = ResourceScripts.scriptdict.class_sskill_value 
@@ -109,6 +110,7 @@ func setup_caster(c):
 	if type == 'combat' and c!= null:
 		chance = caster.get_stat('hitrate')
 		critchance = caster.get_stat('critchance')
+		critmod = caster.get_stat('critmod')
 		armor_p = caster.get_stat('armorpenetration')
 		if target_range == 'weapon':
 			target_range = caster.get_weapon_range()
