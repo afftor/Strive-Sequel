@@ -4834,6 +4834,27 @@ var effect_table = {
 			}
 		],
 	},
+	succubus_passive = {
+		type = 'trigger',
+		trigger = [variables.TR_POST_TARG],
+		req_skill = false,
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		args = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = [],
+				atomic = [
+					{type = 'stat_add', stat = 'lust', value = ['random', 1, 3]},
+					],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
 	test_recast = {
 		type = 'trigger',
 		trigger = [variables.TR_TICK],
