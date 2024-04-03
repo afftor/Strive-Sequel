@@ -758,8 +758,7 @@ func add_enchant(e_id, lvl, is_free = false):
 
 func clear_enchants():
 	if owner != null:
-		print('e_remove_failed')
-		return
+		characters_pool.get_char_by_id(owner).unequip(self, false)
 	for e_id in enchants:
 		_remove_enchant(e_id)
 	enchants.clear()

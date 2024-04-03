@@ -412,13 +412,13 @@ func equip(item, item_prev_id = null):
 	set_stat('portrait_update', true)
 	equipment.equip(item, item_prev_id)
 
-func unequip(item):
+func unequip(item, hard = true):
 	set_stat('portrait_update', true)
-	equipment.unequip(item)
+	equipment.unequip(item, hard)
 
-func unequip_all():
+func unequip_all(hard = true):
 	set_stat('portrait_update', true)
-	equipment.clear_equip()
+	equipment.clear_equip(hard)
 
 
 func unlock_class(prof, satisfy_progress_reqs = false):
