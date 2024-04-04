@@ -318,7 +318,7 @@ var professions = {
 		showupreqs = [{code = 'race', check = true, race = 'Demon'}],
 		reqs = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 4},{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 3},{code = 'has_profession', profession = 'harlot', check = true},{code = 'race', check = true, race = 'Demon'}],
 		statchanges = {sexuals_bonus = 15, charm_bonus = 10, mpmax = 10},
-		traits = ['succubus'],
+		traits = ['succubus', 'true_succubus'],
 		skills = ['seduce','greatseduce','succubus_lust_skill'],
 		combatskills = ['attract'],
 		conflict_classes = ['succubus'],
