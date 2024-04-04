@@ -3466,7 +3466,7 @@ var effect_table = {
 			{type = 'skill', value = ['tags', 'has', 'heal']}
 			],
 		buffs = [],
-		args = [{obj = 'app_obj', param = 'slave_spec_level'}],
+		args = [{obj = 'app_obj', param = 'slave_spec_level', dynamic = true}],
 		sub_effects = [
 			{
 				type = 'oneshot',
@@ -3488,12 +3488,13 @@ var effect_table = {
 		conditions = [],
 		atomic = [],
 		buffs = [],
-		args = [{obj = 'app_obj', param = 'slave_spec_level'}],
+		args = [{obj = 'app_obj', param = 'slave_spec_level', dynamic = true}],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'skill',
-				atomic = [{type = 'stat_mul', stat = 'value', value = [[['parent_args', 0], '*', 0.03], '+', 1.0]}],
+				args = [{obj = 'parent_args', param = 0}],
+				atomic = [{type = 'stat_mul', stat = 'value', stats = [ 'loyalty', 'obedience'], value = [[['parent_args', 0], '*', 0.03], '+', 1.0]}],
 				buffs = [],
 				sub_effects = []
 			}
