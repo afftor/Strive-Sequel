@@ -397,6 +397,14 @@ var traits = {
 		icon = null,
 		effects = [],
 	}, #hardcoded
+	true_succubus = {
+		code = 'true_succubus',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['succubus_passive'],
+	}, 
 	pet = {#+25% gold from prostitution
 		code = 'pet',
 		name = '',
