@@ -303,7 +303,7 @@ var professions = {
 		statchanges = {sexuals_bonus = 15, charm_bonus = 5},
 		traits = ['succubus'],
 		skills = ['seduce','succubus_lust_skill'],
-		combatskills = ['attract'],
+		combatskills = ['attract', 'euphoria_apply', 'euphoria_remove'],
 		conflict_classes = ['true_succubus'],
 	},
 	true_succubus = {
@@ -320,7 +320,7 @@ var professions = {
 		statchanges = {sexuals_bonus = 15, charm_bonus = 10, mpmax = 10},
 		traits = ['succubus', 'true_succubus'],
 		skills = ['seduce','greatseduce','succubus_lust_skill'],
-		combatskills = ['attract'],
+		combatskills = ['attract', 'euphoria_apply', 'euphoria_remove'],
 		conflict_classes = ['succubus'],
 	},
 	pet = {

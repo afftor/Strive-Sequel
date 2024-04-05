@@ -4856,6 +4856,79 @@ var effect_table = {
 			}
 		]
 	},
+	succubus_combat_2 = {
+		type = 'temp_s',
+		name = 'euphoria',
+		stack = 1,
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		target = 'caster',
+		tags = ['euphoria'],
+		sub_effects = ['e_euphoria_bonus', 'euphoria_passive'],
+		atomic = [],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsclasses/Fighter.png",
+				description = "EUPHORIABUFF", #fix
+				bonuseffect = 'lust',
+				limit = 1,
+				t_name = "Euphoria",
+				combat_only = true,
+			}
+		],
+	},
+	e_euphoria_bonus = {
+		type = 'dynamic',
+		tags = ['recheck_stats'],
+		atomic = [
+			{type = 'stat_add_p', stat = 'atk', value = [['parent_args', 0],'*',0.005]},
+			{type = 'stat_add_p', stat = 'matk', value = [['parent_args', 0],'*',0.005]}
+			],
+		buffs = [],
+		args = [{obj = 'app_obj', param = 'lust'}],
+		sub_effects = []
+	},
+	euphoria_passive = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_F],
+		req_skill = false,
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		args = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = [],
+				atomic = [
+					{type = 'stat_add', stat = 'lust', value = ['random', -6, -4]},
+					],
+				buffs = [],
+				sub_effects = []
+			},
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = [],
+				condition = [{code = 'stat', stat = 'lust', operant = 'lte', value = 0}],
+				atomic = [
+					{type = 'remove_effect', value = 'euphoria'},
+					],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
+	euphoria_cast_remove = {
+		type = 'oneshot',
+		target = 'caster',
+		args = [],
+		atomic = [
+			{type = 'remove_effect', value = 'euphoria'},
+			],
+		buffs = [],
+		sub_effects = []
+	},
 	test_recast = {
 		type = 'trigger',
 		trigger = [variables.TR_TICK],
