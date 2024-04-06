@@ -735,8 +735,9 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	build_stats()
 
 
-func open_freemode(char_to_open):
+func open_freemode(char_to_open, flag = false):
 	person = char_to_open
+	upgrades_removal = flag
 	preservedsettings.clear()
 	show()
 	$introduction.bbcode_text = introduction_text['freemode']
@@ -853,6 +854,10 @@ func finish_character():
 	else:
 		ResourceScripts.game_res.money -= upgradecostgold
 #		person.statlist.body_upgrades = cur_upgrades.duplicate()
+		if upgrades_removal :
+			for upg in person.statlist.body_upgrades.duplicate():
+				if !cur_upgrades.has(upg):
+					person.remove_upgrade(upg)
 		for upg in cur_upgrades:
 			person.add_upgrade(upg)
 		person.recheck_upgrades()
@@ -1228,6 +1233,7 @@ func hide_all_dialogues():
 var upgradecost = 0
 var upgradecostgold = 0
 var cur_upgrades = []
+var upgrades_removal = false
 
 func init_upgrades():
 	upgradecost = 0
@@ -1247,15 +1253,20 @@ func build_upgrades(): #check confirmation at the same time
 		var text = person.translate(tr(upgdata.descript)) + "\nPrice: " + str(upgdata.goldcost) + "\nUpgrade Points: " + str(upgdata.cost) 
 		globals.connecttexttooltip(newnode, text)
 		newnode.get_node('UpgradeName').text = tr(upgdata.name)
-		newnode.connect('pressed', self, 'toggle_upgrade', [upg])
 		if upgdata.icon is String:
 			newnode.get_node('icon').texture = load(upgdata.icon)
 		else:
 			newnode.get_node('icon').texture = upgdata.icon
 		if cur_upgrades.has(upg):
-			if !person.statlist.body_upgrades.has(upg):
+			if person.statlist.body_upgrades.has(upg):
+				if upgrades_removal:
+					newnode.connect('pressed', self, 'toggle_upgrade', [upg])
+				else:
+					newnode.connect('pressed', self, 'build_upgrades')
+			else:
 				upgradecost += upgdata.cost
 				upgradecostgold += upgdata.goldcost
+				newnode.connect('pressed', self, 'toggle_upgrade', [upg])
 			newnode.pressed = true
 			if person.checkreqs(upgdata.reqs):
 				newnode.get_node('UpgradeName').set("custom_colors/font_color", Color(variables.hexcolordict.k_yellow))
@@ -1265,6 +1276,7 @@ func build_upgrades(): #check confirmation at the same time
 				res = false
 		else:
 			newnode.pressed = false
+			newnode.connect('pressed', self, 'toggle_upgrade', [upg])
 			if !person.checkreqs(upgdata.reqs):
 				newnode.disabled = true
 	$UpgradesPanel/HBoxContainer/Label2.text = "%d/%d" % [upgradecost, person.get_upgrade_points()]
