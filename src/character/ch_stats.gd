@@ -25,6 +25,7 @@ func _init():
 func deserialize(savedict):
 	if savedict.has('bonuses'): bonuses = savedict.bonuses.duplicate()
 	if savedict.has('traits'): traits = savedict.traits.duplicate()
+	if savedict.has('body_upgrades'): body_upgrades = savedict.body_upgrades.duplicate()
 	if savedict.has('sex_traits'): sex_traits = savedict.sex_traits.duplicate()
 	if savedict.has('negative_sex_traits'): negative_sex_traits = savedict.negative_sex_traits.duplicate()
 	if savedict.has('unlocked_sex_traits'): unlocked_sex_traits = savedict.unlocked_sex_traits.duplicate()
