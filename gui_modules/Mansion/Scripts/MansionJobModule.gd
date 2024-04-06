@@ -868,13 +868,13 @@ func character_hovered(button, person):
 	if person.equipment.gear.tool != null:
 		var worktool
 		var item = ResourceScripts.game_res.items[person.equipment.gear.tool]
-		var item_base = item.itembase
+		var item_base = item.toolcategory
 		var req_tool
 		if selected_job.has("worktool"):
 			req_tool = selected_job.worktool
 		if selected_job.has("tool_type"):
 			req_tool = selected_job.tool_type
-		if req_tool == item_base:
+		if req_tool in item_base or ResourceScripts.game_res.upgrades.has('tool_swapper') and ResourceScripts.game_res.upgrades.tool_swapper > 0:
 			$ToolLabel.set("custom_colors/font_color", variables.hexcolordict['green'])
 
 

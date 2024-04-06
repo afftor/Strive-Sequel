@@ -959,6 +959,7 @@ func _get_base_crafting_diff(): #2add
 func fill_task_mods(task):
 	task_mods.crit = parent.get_ref().get_stat('base_task_crit_chance')
 	task_mods.diff = _get_base_crafting_diff()
+	task_mods.eff = 0
 	var item
 	if parent.get_ref().equipment.gear.tool != null:
 		item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
@@ -981,6 +982,7 @@ func fill_task_mods(task):
 func fill_task_mods_res(task):
 	task_mods.crit = parent.get_ref().get_stat('base_task_crit_chance')
 	task_mods.diff = 0
+	task_mods.eff = 0
 	var item
 	if parent.get_ref().equipment.gear.tool != null:
 		item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
@@ -1014,6 +1016,8 @@ func get_progress_task(temptask, tempsubtask, count_crit = false):
 		value = value * 2
 	if location.has('gather_mod'):
 		value *= location.gather_mod
+#	print(task_mods)
+#	print(value)
 	return value
 
 
@@ -1032,6 +1036,8 @@ func get_progress_resource(tempresource, count_crit = false):
 		value = value * 2
 	if location.has('gather_mod'):
 		value *= location.gather_mod
+#	print(task_mods)
+#	print(value)
 	return value
 
 
