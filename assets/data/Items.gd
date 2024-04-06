@@ -1412,6 +1412,23 @@ var itemlist = {
 		tags = [],
 		basestats = {sexuals_bonus = 15},
 	},
+	service_suit = {#FIX
+		code = 'service_suit',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'armor',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['underwear','chest','legs'],
+		price = 200,
+		icon = load("res://assets/images/iconsitems/clothbdsm.png"),
+		tier = 'medium',
+		reqs = [{code = 'trait', trait = 'loyalty_dress_lewd', check = true}],
+		effects = [],
+		tags = [],
+		basestats = {sexuals_bonus = 15},
+	},
 	shackles = {#prevents escape if body_factor < 4; physics -25
 		#maybe still needs reworking
 		code = 'shackles',
