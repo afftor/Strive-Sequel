@@ -4495,8 +4495,8 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_small/Tits_armor_mesh2', texture = "res://Character_generator/images/112_armory_set_playboy_female/tits_playboy_small.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Tits_zero/Tits_armor_mesh2', texture = "res://Character_generator/images/112_armory_set_playboy_female/tits_playboy_small.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Head_armor_tex', texture = null},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex', texture = null},
-			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy2/pregnancy_armor_tex2', texture = null},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy/pregnancy_armor_tex', texture = "res://Character_generator/images/112_armory_set_playboy_female/pregnancy_playboy_mid.png"},
+			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Pregnancy2/pregnancy_armor_tex2', texture = "res://Character_generator/images/112_armory_set_playboy_female/pregnancy_playboy_big.png"},
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR/ArmR_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL/ArmL_armor', attr = 'z_index', value = 1},
