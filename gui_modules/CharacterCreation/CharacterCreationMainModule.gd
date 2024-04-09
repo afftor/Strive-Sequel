@@ -502,6 +502,8 @@ func build_node_for_stat(stat):
 
 func rebuild_ragdoll(stat = null):
 	var stored_image = person.get_stored_body_image()
+	if input_handler.globalsettings.disable_paperdoll and stored_image == null:
+		stored_image = person.get_body_image()
 	if stored_image != null:
 		$RagdollPanel/TextureRect.texture = stored_image
 		$RagdollPanel/TextureRect.visible = true
