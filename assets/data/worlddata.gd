@@ -256,7 +256,7 @@ var factiondata = {
 		icon = load("res://assets/Textures_v2/CITY/Icons/icon_fighters.png"),
 		background = "fighters_guild",
 		reputation_shop = {
-			classes = {knight = 500, paladin = 500, sniper = 750, assassin = 1000},
+			classes = {knight = 500, paladin = 500, sniper = 750, assassin = 1000, ninja = 750},
 			items = {bandage = [1,10], bonedragon = [1,500]},
 		},
 		hireable_characters = [
@@ -292,7 +292,7 @@ var factiondata = {
 		icon = load("res://assets/Textures_v2/CITY/Icons/icon_mages.png"),
 		background = "mages_guild",
 		reputation_shop = {
-			classes = {caster = 500, archmage = 1000, dominator = 1500},
+			classes = {caster = 500, archmage = 1000, dominator = 1500, witch = 750, warlock = 750},
 			items = {oblivion_potion = [1,300],unstable_concoction = [10,100], energygem = [1, 75]},
 		},
 		hireable_characters = [
@@ -340,7 +340,7 @@ var factiondata = {
 		icon = load("res://assets/Textures_v2/CITY/Icons/icon_workers.png"),
 		background = "workers_guild",
 		reputation_shop = {
-			classes = {smith = 500, foreman = 500, engineer = 750},
+			classes = {smith = 500, foreman = 500, engineer = 750, alchemist = 750},
 			items = {leatherdragon = [1,500], obsidian = [1,60]},
 		},
 		hireable_characters = [

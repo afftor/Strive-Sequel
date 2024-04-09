@@ -778,3 +778,9 @@ func destroy():
 	if owner != null:
 		characters_pool.get_char_by_id(owner).unequip(self)
 	globals.remove_item(self)
+
+func get_owner():
+	if owner == null:
+		return null
+	else:
+		return characters_pool.get_char_by_id(owner)

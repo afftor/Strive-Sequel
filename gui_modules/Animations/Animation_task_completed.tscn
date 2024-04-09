@@ -162,12 +162,12 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
-shader_param/pos = Vector2( 0, 130.001 )
+shader_param/pos = Vector2( 0, -200 )
 shader_param/mask = ExtResource( 2 )
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 2 )
-shader_param/pos = Vector2( 0, 127.501 )
+shader_param/pos = Vector2( 0, -210 )
 shader_param/mask = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=5]
@@ -238,7 +238,7 @@ margin_left = 1257.36
 margin_top = 38.2929
 margin_right = 1373.36
 margin_bottom = 288.293
-rect_rotation = -90.0002
+rect_rotation = -90.0
 rect_pivot_offset = Vector2( 0.0506592, 236.723 )
 mouse_filter = 2
 texture = ExtResource( 9 )
@@ -252,7 +252,7 @@ margin_left = 546.775
 margin_top = 38.0694
 margin_right = 662.775
 margin_bottom = 288.07
-rect_rotation = 90.0002
+rect_rotation = 90.0
 rect_pivot_offset = Vector2( 115.886, 239.125 )
 mouse_filter = 2
 texture = ExtResource( 9 )

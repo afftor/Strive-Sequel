@@ -268,7 +268,7 @@ var traits = {
 		show_in_parent_stats = true,
 		effects = [#'e_tr_alchemist',
 			'e_tr_potion'],
-		bonusstats = {mod_alchemy = 1.0}
+		bonusstats = {}
 	},
 	healer1 = {#+25% heal spells efficiency
 		code = 'healer1',
@@ -331,6 +331,33 @@ var traits = {
 		icon = null,
 		effects = [],
 		tags = ['ninja']
+	},
+	deathknight = {
+		code = 'deathknight',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_deathknight'],
+		tags = []
+	},
+	witch = {
+		code = 'witch',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_witch1','e_tr_witch2'],
+		tags = []
+	},
+	warlock = {
+		code = 'warlock',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_warlock'],
+		tags = []
 	},
 	necromancer = {
 		code = 'necromancer',
@@ -1308,7 +1335,7 @@ var traits = {
 		effects = [],
 		bonusstats = {mdef = 10}, 
 		reqs = [],  
-		visible = true,
+		visible = false,
 		tags = ['body_upgrade']
 	},
 	upgrade_thick_coverage = {
@@ -1318,7 +1345,7 @@ var traits = {
 		effects = [],
 		bonusstats = {armor = 10}, 
 		reqs = [],  
-		visible = true,
+		visible = false,
 		tags = ['body_upgrade']
 	},
 	upgrade_nipples = {
@@ -1328,7 +1355,7 @@ var traits = {
 		effects = [],
 		bonusstats = {mod_pros = 0.1}, 
 		reqs = [],  
-		visible = true,
+		visible = false,
 		tags = ['body_upgrade']
 	},
 	upgrade_tongue = {
@@ -1338,7 +1365,7 @@ var traits = {
 		effects = [],
 		bonusstats = {mod_pros = 0.1}, 
 		reqs = [],  
-		visible = true,
+		visible = false,
 		tags = ['body_upgrade']
 	},
 	upgrade_eggs = {
@@ -1347,7 +1374,7 @@ var traits = {
 		icon = "res://assets/images/iconstraits/l_pregnancy.png",
 		effects = [],
 		reqs = [], 
-		visible = true, 
+		visible = false, 
 		tags = ['body_upgrade', 'oviposition']
 	},
 	upgrade_silk = {
@@ -1356,16 +1383,16 @@ var traits = {
 		icon = "res://assets/images/iconstraits/l_pregnancy.png",
 		effects = [],
 		reqs = [],  
-		visible = true,
+		visible = false,
 		tags = ['body_upgrade', 'silksecretion']
 	},
 	upgrade_strongarm = {
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		icon = "res://assets/images/iconstraits/hand.png",
 		effects = [],
 		reqs = [],  
-		visible = true,
+		visible = false,
 		tags = ['body_upgrade', 'strongarm']
 	},
 	upgrade_resist = {
@@ -1374,7 +1401,7 @@ var traits = {
 		icon = "res://assets/images/iconstraits/l_pregnancy.png",
 		effects = ['e_tr_resist'], #25% miss spells with damage, but all enemy spells have damage
 		reqs = [],  
-		visible = true,
+		visible = false,
 		tags = ['body_upgrade']
 	},
 	upgrade_thickblood = {
@@ -1384,7 +1411,7 @@ var traits = {
 		effects = [], 
 		bonusstats = {resist_bleed = 200, resist_poison = 200}, 
 		reqs = [],  
-		visible = true,
+		visible = false,
 		tags = ['body_upgrade']
 	},
 	#racial

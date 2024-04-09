@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clothbdsm.png-a171f2123966ce4487ec46453c7e7fd4.stex"
+path="res://.import/warlock.png-97a9bb736bd7c315e49e1b5efd8d52bf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconsitems/clothbdsm.png"
-dest_files=[ "res://.import/clothbdsm.png-a171f2123966ce4487ec46453c7e7fd4.stex" ]
+source_file="res://assets/images/iconsclasses/warlock.png"
+dest_files=[ "res://.import/warlock.png-97a9bb736bd7c315e49e1b5efd8d52bf.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

@@ -1221,6 +1221,10 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	SKILLFLY_EVASION = "Flight",
 	SKILLFLY_EVASIONDESCRIPT = "Increases Evasion by 65 for 3 turns.",
+	SKILLEUPHORIA_APPLY = "Euphoria",
+	SKILLEUPHORIA_APPLYDESCRIPT = "When activated increases all damage by your lust. Drains your lust every turn.",
+	SKILLEUPHORIA_REMOVE = "Euphoria",
+	SKILLEUPHORIA_REMOVEDESCRIPT = "Disable Euphoria",
 	
 	
 	SKILLMIMIC_ATTACK = "Sticky Grab",
@@ -1978,11 +1982,11 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITENGINEERDESCRIPT = "Upgrading is 100% faster.",
 	TRAITCHEFDESCRIPT = "Cooking is 100% faster.",
 	TRAITATTENDANTDESCRIPT = "Once per combat turn [name] can use an item without using a turn.",
-	TRAITALCHEMISTDESCRIPT = "Crafts alchemical products 100% faster.\nHealing items are 25% more effective in combat.",
+	TRAITALCHEMISTDESCRIPT = "Healing items are 25% more effective in combat.",
 	TRAITFARMERDESCRIPT = "Farming is 50% more efficient. ",
 	TRAITBREEDERDESCRIPT = "Allows breeding with any race.\nPregnancy Debuffs are weaker\nOffspring will inherit only this parent's stats.",
 	TRAITHARLOTDESCRIPT = "Prostitution is 50% more efficient.",
-	TRAITSUCCUBUSDESCRIPT = "Sex activities provide 50% more experience.",
+	TRAITSUCCUBUSDESCRIPT = "Sex activities provide 50% more experience.\nCan infallibly recruit random characters by using Lust. ",
 	TRAITPETDESCRIPT = "Prostitution is 25% more efficient.",
 	TRAITSEXTOYDESCRIPT = "Prostitution is 50% more efficient.",
 	TRAITWITCRITDESCRIPT = "Increases critical strike chance by 3% per Wits Factor.",
@@ -1990,6 +1994,11 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITVALKYRIE_SPEARDESCRIPT = "+10 Speed while equipped with Spear.",
 	TRAITAUTOHIDE = "Conceal.",
 	TRAITAUTOHIDEDESCRIPT = "Starts combat in Hide if no Heavy or Medium Armor is equipped.",
+	TRAITDEATHKNIGHTDESCRIPT = "Dealing a killing blow increases Loyalty.",
+	TRAITNINJADESCRIPT = "Gain evasion based on your MDEF. Minimal chance for evading hit is reduced to 5%.",
+	TRAITWITCHDESCRIPT = "Your critical hits with spells apply random debuff. Healing spells have chance to apply healing over time.",
+	TRAITWARLOCKDESCRIPT = "Single target spells gain 25% increased critical chance and deal 75% bonus critical damage.",
+	TRAITTRUE_SUCCUBUSDESCRIPT = "When taking hit in combat generate some Lust.",
 	
 	TRAITBASIC_COMBAT = "Basic Combat",
 	TRAITADVANCED_COMBAT = "Advanced Combat",
@@ -2411,6 +2420,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	PROFBROKEN_ROYALTYDESCRIPT = "Once a famous royalty, now a mind broken individual capable of very little... At least her body is still in high demand.",
 	
 	
+	
 	PROFACOLYTE = "Acolyte",
 	PROFACOLYTEDESCRIPT = "Individuals have devoted their life to mending to others. ",
 	PROFPRIEST = "Priest",
@@ -2425,6 +2435,16 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	PROFFREYAS_PRIESTESS = "Former Freya's Priestess",
 	PROFFREYAS_PRIESTESSDESCRIPT = "Once a high priestess of elves, now this title hold more bluster than power.",
+	
+	
+	PROFDEATHKNIGHT = "Death Knight",
+	PROFDEATHKNIGHTDESCRIPT = "Sworn to their nature or master, undead warriors are able to grow stronger the more they slaughter.",
+	PROFWARLOCK = "Warlock",
+	PROFWARLOCKDESCRIPT = "The most fearsome sorcerors specializing in combat magic are able to incinerate their foes on sight.",
+	PROFWITCH = "Witch",
+	PROFWITCHDESCRIPT = "Female sorceresses specialize in hex magic and alchemy.",
+	PROFNINJA = "Ninja",
+	PROFNINJADESCRIPT = "Especially agile individuals are trained to evade many attacks as well as also resist magic.",
 	
 	TRAITRENOWN = "Renown",
 	TRAITRENOWNDESCRIPT = "Gracious skills provide 50% more Loyalty. ",
@@ -3020,10 +3040,13 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUERECRUITCHOOSEPERSON = "Choose Negotiator",
 	DIALOGUERECRUITENSLAVE = "You decide to not endorse into any negotiations and simply make [him] your slave against [his] will.",
 	DIALOGUERECRUITGOOD = "Your entrusted servant successfully managed to persuade [name] into serving you.",
+	DIALOGUERECRUITGOODSEDUCE = "Your entrusted servant successfully seduced [name], who agreed to serve you.",
 	DIALOGUERECRUITGOODSLAVE = "Make Slave",
 	DIALOGUERECRUITGOODSERVANT = "Make Subordinate",
 	DIALOGUERECRUITFORCEATTEMPT = "Enslave",
 	DIALOGUERECRUITATTEMPT = "Attempt to Recruit",
+	DIALOGUERECRUITSUCCUBUS = "Seduce (Succubus), 30 Mana",
+	DIALOGUERECRUITSUCCUBUSNOMANA = "Seduce (Succubus), 30 Mana (Not enough mana)",
 	
 	DIALOGUERECRUITBAD = "Your entrusted servant failed to persuade [name] into serving you... With no other option you enslave [him] resisting.",
 	
@@ -3031,6 +3054,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEMEET = "Your servants have found a potential recruitee, [name], who seems to be interested in joining your household. ",
 	DIALOGUEMEETBAD = "You've failed to persuade [name] and [he] bids you a farewell.",
 	DIALOGUEMEETGOOD = "After a discussion [name] agrees to become your follower. ",
+	DIALOGUEMEETGOODSEDUCE = "Being charmed by a lustful intentions, [name] agrees to become your follower. ",
 	DIALOGUEMEETGOODDEFAULT = "Add to roster as Subordinate",
 	DIALOGUEMEETGOODHIRELING = "",
 	
@@ -3069,6 +3093,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEAPPROACHSHRINE = "Approach Shrine",
 	DIALOGUESHRINECHOOSEPERSON = "Select another character",
 	DIALOGUESHRINEITEM = "Make an offering",
+	DIALOGUESHRINEEQUIP = "Offer a piece of equipment",
 	DIALOGUESHRINECHARACTER = "Send [name] to altar",
 	DIALOGUESHRINEDESTROY = "Demolish Shrine",
 	DIALOGUECHESTLOCKPICK = "Attempt to Lockpick",
@@ -4440,6 +4465,9 @@ The princess notices Aire tensing up in response to the question.
 
 	ITEMLATEX_SUIT = "Latex Suit",
 	ITEMLATEX_SUITDESCRIPT = "A tight clothing accentuating curves of the body.",
+	ITEMSERVICE_SUIT = "Bunny Costume",
+	ITEMSERVICE_SUITDESCRIPT = "This costume somehow works wonders on attracting male attention in public places.",
+	
 
 	MATERIALTROLL_BLOOD = "Troll Blood",
 	MATERIALTROLL_BLOODDESCRIPT = "A vial of red fluid obtained from defeating trolls.",
@@ -14575,14 +14603,16 @@ Hotkey: 3""",
 	
 	ALTAR_ITEM_1 = "[name] puts an offer on the altar. ",
 	ALTAR_ITEM_GOOD = "\n\n{color=green|The offering disappears in a thin air and after a moment a new item materialize in place. It seems your offer was correct and you are rewarded.}",
-	ALTAR_ITEM_BAD = "\n\nThe offering disappears from sight but there's no other changes around. It seems your offer wasn't liked.",
+	ALTAR_ITEM_BAD = "\n\nThe offering lays on the altar with no apparent reaction from it. It seems your offer wasn't liked.",
 	ALTAR_CHAR_1 = "[name] puts [his] hand on the altar. ",
 	ALTAR_CHAR_GOOD = "\n\n{color=green|A small glow emits from the altar and enshrouds [name]. It seems [he] has been blessed...}",
 	ALTAR_CHAR_BAD = "\n\nAfter a few minutes nothing still happened and [name] decides to move on.",
 	ALTAR_DESTROY_1 = "[name] demolishes the shrine and gathers the resources. ",
 	ALTAR_DESTROY_2 = "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed...}",
-	FREYA_ITEM_CLOTH = "\n\n{color=green|The offering disappears in a thin air and a bright light surrounds [name]. It seems the offer was correct and [he] received a blessing.}",
-	FREYA_ITEM_WOOD = "\n\n{color=red|The offering disappears from sight but an eerie glow erupts from the altar. It seems [name] as been cursed...}",
+	FREYA_ITEM_CLOTH = "\n\n{color=green|The offering disappears in a thin air and a bright light surrounds [name]. It seems the offer was correct and [he] restored [his] magic energy.}",
+	FREYA_ITEM_CLOTHMAGICC = "\n\n{color=green|The offering disappears in a thin air and a bright light surrounds [name]. It seems the offer was correct and [he] received a blessing.}",
+	FREYA_ITEM_CLOTHETHERIAL = "\n\n{color=green|The offering disappears in a thin air and a bright light surrounds [name]. }",
+	FREYA_ITEM_WOOD = "\n\n{color=red|The offering disappears from sight but an eerie glow erupts from the altar. It seems [name] as been cursed due to [his] offering...}",
 	FREYA_ITEM_OTHER = "\n\nThe offering disappears from sight but there's no other changes around. It seems your offer wasn't liked.",
 	FREYA_CHAR_BOW = "\n\n{color=green|A small glow emits from the altar and enshrouds [name]. Before Aire can realize it, a bow materializes in her hands...}",
 	FREYA_CHAR_WOODEN = "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed. Perhaps, something what they wear might have aggrieved the entity...}",

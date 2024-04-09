@@ -757,7 +757,9 @@ func show_brothel_options():
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
 		var text = ''
-		text += "Minimum consent: {color=aqua|" + tr(variables.consent_dict[tasks.gold_tasks_data[i].min_consent]) + "}, [name]'s consent: {color=aqua|" + tr(variables.consent_dict[person.get_stat('consent')]) + "}\n"
+		text += "Minimum consent: {color=aqua|" + tr(variables.consent_dict[tasks.gold_tasks_data[i].min_consent]) + "},"
+		if person.is_master() == false:
+			text +=  "[name]'s consent: {color=aqua|" + tr(variables.consent_dict[int(person.get_stat('consent'))]) + "}\n"
 		newbutton.text = tr("BROTHEL"+i.to_upper())
 		text += person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")) 
 		newbutton.pressed = person.check_brothel_rule(i)

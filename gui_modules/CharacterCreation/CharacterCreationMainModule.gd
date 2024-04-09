@@ -1296,7 +1296,7 @@ func toggle_upgrade(upg):
 
 func check_upgrades():
 	if upgradecost > person.get_upgrade_points():
-		input_handler.SystemMessage("Too much upgrades for this character")
+		input_handler.SystemMessage("Too many upgrades for this character")
 		return false
 	if upgradecostgold > ResourceScripts.game_res.money:
 		input_handler.SystemMessage("Not enough money")
