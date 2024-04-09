@@ -1409,7 +1409,7 @@ func use_skill(skill_code, caster, target):
 			else:
 				s_skill2.target.process_event(variables.TR_POST_TARG, s_skill2)
 				effects_pool.process_event(variables.TR_POST_TARG, s_skill2.target)
-			s_skill2.target.displaynode.rebuildbuffs()
+#			s_skill2.target.displaynode.rebuildbuffs()
 			checkdeaths()
 			if s_skill2.target.displaynode != null:
 				s_skill2.target.displaynode.rebuildbuffs()
