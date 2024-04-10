@@ -433,6 +433,9 @@ func remove_from_farm(res):
 
 
 func remove_from_task():
+	if work == 'disabled':
+		print("There is a critical error - attempting to enable character a wrong way. Please try to remember and report chain of actions that can be its cause. All saves after this may (or may not) be broken.")
+		return
 	if work == 'produce':
 		for res in farming_rules:
 			if !farming_rules[res]: continue
