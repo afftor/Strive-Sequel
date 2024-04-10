@@ -550,6 +550,9 @@ func recruit_and_return():
 
 
 func set_work(task):
+	if xp_module.work == 'disabled' and task != 'disabled':
+		print("There is a critical error - attempting to enable character a wrong way. Please try to remember and report chain of actions that can be its cause. All saves after this may (or may not) be broken.")
+		return
 	xp_module.remove_from_task()
 	xp_module.work = task
 	if task == 'produce':
