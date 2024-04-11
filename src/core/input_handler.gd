@@ -45,6 +45,11 @@ signal PortraitUpdate
 signal update_ragdoll
 signal update_itemlist
 
+#animations queue
+signal animation_finished
+signal animations_compleated
+var animations_queue = []
+
 var last_action_data = {}
 var text_characters = []
 
@@ -353,6 +358,7 @@ func _ready():
 			TranslationData[i.replace(variables.LocalizationFolder, '')] = ifile
 	
 	connect("UpgradeUnlocked", self, "upgrade_unlocked")
+	connect("animation_finished", self, "animation_queue_start_force")
 
 #func _unhandled_input(event):
 func _input(event):
@@ -1455,6 +1461,34 @@ func get_location_characters():
 
 
 func play_animation(animation, args = {}):
+	animations_queue.push_back({animation = animation, args = args})
+	animation_queue_start_attempt()
+
+
+func animation_queue_start_attempt(): #animation added, onto empty or not empty queue
+	if animations_queue.empty():
+		print("error - try to start empty animation queue")
+		return
+	if animations_queue.size() != 1: #added animation is not first - so animation is playing
+		return
+	var anim_to_play = animations_queue.front()
+	play_animation_noq(anim_to_play.animation, anim_to_play.args)
+
+
+func animation_queue_start_force(): #animtion just ended
+	if animations_queue.empty():
+		print("error - try to start empty animation queue")
+		return
+	yield(get_tree(), 'idle_frame')
+	animations_queue.pop_front()
+	if animations_queue.empty():
+		emit_signal("animations_compleated")
+		return
+	var anim_to_play = animations_queue.front()
+	play_animation_noq(anim_to_play.animation, anim_to_play.args)
+
+
+func play_animation_noq(animation, args = {}):
 	var anim_scene
 	match animation:
 		"fight":
