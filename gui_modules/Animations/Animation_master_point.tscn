@@ -1,0 +1,317 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/filler_splashes_acquired.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/light_mask.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/panel_complete.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/glow.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/mask_splashes_acquired.png" type="Texture" id=6]
+[ext_resource path="res://gui_modules/Animations/animation.gd" type="Script" id=7]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/mask_wings.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/wing.png" type="Texture" id=9]
+
+[sub_resource type="Animation" id=1]
+resource_name = "master_point"
+length = 5.0
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect2:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.166667, 4.785, 4.95 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TopLabel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.533333, 4.653, 4.818 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BottomLabel:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.566667, 0.766667, 4.554, 4.686 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("TextureRect4:rect_rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.6, 0.766667, 0.866667, 4.554, 4.719 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 90.0, 36.0, 0.0, 0.0, 90.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("TextureRect4:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.6, 0.7, 4.587, 4.719 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("TextureRect3:rect_rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.6, 0.766667, 0.866667, 4.554, 4.719 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -90.0, -36.0, 0.0, 0.0, -90.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("TextureRect3:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.6, 0.7, 4.587, 4.719 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("TextureRect6:material:shader_param/pos")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1, 1.66667 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 240 ), Vector2( 0, -210 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("TextureRect7:material:shader_param/pos")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 1, 1.66667 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 240 ), Vector2( 0, -200 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("TextureRect6:self_modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.933333, 0.966667, 1.7, 1.73333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("TextureRect5:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.866666, 1.46667, 1.76667, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+uniform vec2 pos;
+uniform sampler2D mask;
+
+void fragment(){
+    vec2 mask_pos = UV - pos * TEXTURE_PIXEL_SIZE;
+    float m = texture(mask, mask_pos).a;
+    vec4 color = texture(TEXTURE, UV);
+    color.a = color.a * m;
+    COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/pos = Vector2( 0, -200 )
+shader_param/mask = ExtResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 2 )
+shader_param/pos = Vector2( 0, -210 )
+shader_param/mask = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 48
+outline_color = Color( 0.976471, 0.964706, 0.45098, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 36
+outline_color = Color( 0.976471, 0.964706, 0.45098, 1 )
+font_data = ExtResource( 1 )
+
+[node name="Control" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 288.253 ],
+"_edit_vertical_guides_": [ 959.868 ]
+}
+fade_delay = 0.5
+sound = "quest_completed"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/master_point = SubResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ 959.849 ]
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect7" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.705882 )
+material = SubResource( 3 )
+margin_left = 19.533
+margin_right = 1900.54
+margin_bottom = 326.0
+mouse_filter = 2
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 537.0
+margin_top = 27.7148
+margin_right = 1383.0
+margin_bottom = 297.715
+mouse_filter = 2
+texture = ExtResource( 5 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 1257.36
+margin_top = 38.2929
+margin_right = 1373.36
+margin_bottom = 288.293
+rect_rotation = -90.0
+rect_pivot_offset = Vector2( 0.0506592, 236.723 )
+mouse_filter = 2
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 546.775
+margin_top = 38.0694
+margin_right = 662.775
+margin_bottom = 288.07
+rect_rotation = 90.0
+rect_pivot_offset = Vector2( 115.886, 239.125 )
+mouse_filter = 2
+texture = ExtResource( 9 )
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 660.301
+margin_top = 84.9359
+margin_right = 1260.3
+margin_bottom = 284.936
+rect_min_size = Vector2( 1, 0 )
+rect_scale = Vector2( 1e-05, 1 )
+rect_pivot_offset = Vector2( 300.81, 98.9762 )
+mouse_filter = 2
+texture = ExtResource( 4 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 4 )
+margin_left = 553.0
+margin_top = 40.0
+margin_right = 1367.0
+margin_bottom = 285.0
+mouse_filter = 2
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopLabel" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 669.0
+margin_top = 108.0
+margin_right = 1247.0
+margin_bottom = 175.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "New Master Point"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BottomLabel" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 676.0
+margin_top = 190.0
+margin_right = 1246.0
+margin_bottom = 257.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "1 point"
+align = 1
+valign = 1

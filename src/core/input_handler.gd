@@ -135,6 +135,7 @@ enum {
 	ANIM_LOOT,
 	ANIM_SKILL_UNLOCKED,
 	ANIM_GROWTHF,
+	ANIM_MASTER_POINT,
 } #, NODE_TWEEN, NODE_REPEATTWEEN}
 
 
@@ -1533,6 +1534,19 @@ func play_animation(animation, args = {}):
 #			anim_scene.get_node("Label2").text = tr("SKILL" + args["skill"].code.to_upper())
 #			anim_scene.get_node("Label3").text = args.person.get_full_name()
 			anim_scene.play("Animation_growth_factor")
+		"master_points":
+			anim_scene = get_spec_node(ANIM_MASTER_POINT)
+			if args.has("sound"):
+				anim_scene.sound = args.sound
+			var master_points = args.master_points
+			if master_points > 1:
+				anim_scene.get_node("TopLabel").text = tr("MASTERPOINTSTOP")
+				anim_scene.get_node("BottomLabel").text = tr("MASTERPOINTSBOTTOM") % master_points
+			else:
+				anim_scene.get_node("TopLabel").text = tr("MASTERPOINTTOP")
+				anim_scene.get_node("BottomLabel").text = tr("MASTERPOINTBOTTOM") % master_points
+			anim_scene.play("master_point")
+			
 
 
 
