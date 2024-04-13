@@ -102,7 +102,7 @@ func unequip(item, hard = true):
 	#probably fixed
 	var duplicate = globals.get_duplicate_id_if_exist(item)
 	
-	if duplicate != null:
+	if duplicate != null and hard:
 		var duplicate_item = ResourceScripts.game_res.items[duplicate]
 		if duplicate_item.owner == null:
 			if duplicate != item.id:

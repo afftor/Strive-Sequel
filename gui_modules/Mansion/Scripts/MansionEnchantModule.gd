@@ -36,6 +36,8 @@ func build_item_list():
 		var item = ResourceScripts.game_res.items[id]
 		if !item.tags.has('enchantable'):
 			continue
+		if item.curse != null or !item.enchants.empty():
+			continue
 		var panel = input_handler.DuplicateContainerTemplate($ItemList/ItemScroll/Items, 'Button')
 		panel.connect('pressed', self, 'select_item', [id])
 		item.set_icon(panel.get_node('Icon'))
