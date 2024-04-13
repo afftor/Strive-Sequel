@@ -1,3 +1,23 @@
+Added 4 new classes:
+Warlock - Increases crit rate and crit damage of single target spells
+Witch - Spell crits apply random debuff on enemy. Healing spells can apply healing over time on allies
+Ninja - increase evasion based on mdef, minimal evasion chance is 5%
+Death knight - gain loyalty on killing blows
+Alchemist no longer require any classes to unlock but needs to be purchased from workers guild
+Alchemist passive crafting bonus moved to main class data
+Character recruitment formula has been changed: now checks recrutee wits factor instead of charm factor, has higher chance on low recruiter's charm and lower maximum recruit chance. Recruit chance is capped at 50%
+Succubus and True Succubus now have a new persuation option to instantly recruit a character for lust
+True Succubus new passive: Generate lust when being hit
+Added unique postwedding scenes for Daisy, Cali, Amelia
+Added some gui improvement to enchantemt gui
+Added new rewards and options to shrine altars 
+Added new craftable costume and updated icon for latex suit
+Increased number of sex times per week by 1
+Offered altar items no longer are removed if they are incorrect
+Removed Lust Relief from master
+Removed body modification display from traits
+Fixed a bug with tool bonuses not applying to tasks in some cases
+0.8.4a
 Removed Mace from list of items which can be requested with crafted Blade part
 Serve skill no longer needs lust to be used
 Shared toy skill now only needs 15 lust instead of 75

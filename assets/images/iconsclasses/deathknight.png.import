@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clothbdsm.png-a171f2123966ce4487ec46453c7e7fd4.stex"
+path="res://.import/deathknight.png-a3591dab050890bc53caf429e92e5cb9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconsitems/clothbdsm.png"
-dest_files=[ "res://.import/clothbdsm.png-a171f2123966ce4487ec46453c7e7fd4.stex" ]
+source_file="res://assets/images/iconsclasses/deathknight.png"
+dest_files=[ "res://.import/deathknight.png-a3591dab050890bc53caf429e92e5cb9.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

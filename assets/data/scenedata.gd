@@ -1365,7 +1365,14 @@ var scenedict = {
 	image = '',
 	common_effects = [],
 	options = [
-	#{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSLAVE"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'}, {code = 'real_affect_scene_characters', type = 'slavetype', value = 'slave'}]},
+	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSERVANT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'},]},
+	]
+	},
+	recruit_captured_success_seduce = {text = tr("DIALOGUERECRUITGOODSEDUCE"),
+	tags = ['scene_character_translate'],
+	image = '',
+	common_effects = [],
+	options = [
 	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSERVANT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'},]},
 	]
 	},
@@ -1383,7 +1390,14 @@ var scenedict = {
 	common_effects = [],
 	options = [
 	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUEMEETGOODDEFAULT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'slave'}]},
-	#{code = 'recruit_from_scene', reqs = [{type = 'disabled'}], not_hide = true, text = tr("DIALOGUEMEETGOODHIRELING"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'hireling'},]},
+	]
+	},
+	recruit_meet_success_seduce = {text = tr("DIALOGUEMEETGOODSEDUCE"),
+	tags = ['scene_character_translate'],
+	image = '',
+	common_effects = [],
+	options = [
+	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUEMEETGOODDEFAULT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'slave'}]},
 	]
 	},
 	recruit_meet_fail = {text = tr("DIALOGUEMEETBAD"),

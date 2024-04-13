@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.8.4a'
+const gameversion = '0.8.5'
 
 #time
 signal hour_tick
@@ -140,6 +140,8 @@ func get_duplicate_id_if_exist(item):
 	if item.curse != null or !item.enchants.empty():
 		return null
 	for i in ResourceScripts.game_res.items.values():
+		if i.curse != null or !i.enchants.empty():
+			continue
 		if str(i.itembase) == str(item.itembase) and str(i.parts) == str(item.parts) and i.quality == item.quality and i.owner == null: #mb more
 			return i.id
 	return null

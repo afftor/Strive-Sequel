@@ -164,7 +164,6 @@ anchor_bottom = 1.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 220.831, 339.983, 466.015 ],
-"_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 763.996, 1146.99, 891.695 ]
 }
 
@@ -209,8 +208,8 @@ margin_top = 185.332
 margin_right = 1095.4
 margin_bottom = 256.332
 rect_pivot_offset = Vector2( 136.049, 35.4892 )
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "REWARD"
 __meta__ = {
 "_edit_use_anchors_": false

@@ -502,6 +502,8 @@ func build_node_for_stat(stat):
 
 func rebuild_ragdoll(stat = null):
 	var stored_image = person.get_stored_body_image()
+	if input_handler.globalsettings.disable_paperdoll and stored_image == null:
+		stored_image = person.get_body_image()
 	if stored_image != null:
 		$RagdollPanel/TextureRect.texture = stored_image
 		$RagdollPanel/TextureRect.visible = true
@@ -1294,7 +1296,7 @@ func toggle_upgrade(upg):
 
 func check_upgrades():
 	if upgradecost > person.get_upgrade_points():
-		input_handler.SystemMessage("Too much upgrades for this character")
+		input_handler.SystemMessage("Too many upgrades for this character")
 		return false
 	if upgradecostgold > ResourceScripts.game_res.money:
 		input_handler.SystemMessage("Not enough money")

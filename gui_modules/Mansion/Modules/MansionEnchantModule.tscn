@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_36.tres" type="DynamicFont" id=2]
@@ -37,6 +37,8 @@
 [ext_resource path="res://assets/images/iconsenchants/curse_mono_100.png" type="Texture" id=35]
 [ext_resource path="res://assets/Textures_v2/craft/enchant_bg.png" type="Texture" id=36]
 [ext_resource path="res://assets/Textures_v2/craft/enchant_item_bg.png" type="Texture" id=37]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/Loot/frame_loot_square.png" type="Texture" id=38]
+[ext_resource path="res://assets/images/gui/inventory/icon_armor1.png" type="Texture" id=39]
 
 [node name="Panel" type="TextureRect"]
 anchor_right = 1.0
@@ -116,6 +118,15 @@ margin_top = 3.0
 margin_right = -3.0
 margin_bottom = -3.0
 texture = ExtResource( 15 )
+expand = true
+stretch_mode = 6
+
+[node name="WornIcon" type="TextureRect" parent="ItemList/ItemScroll/Items/Button"]
+visible = false
+margin_left = 2.37842
+margin_right = 38.3784
+margin_bottom = 39.0
+texture = ExtResource( 39 )
 expand = true
 stretch_mode = 6
 
@@ -296,10 +307,29 @@ visible = false
 margin_right = 308.0
 margin_bottom = 269.0
 size_flags_vertical = 3
+theme = ExtResource( 8 )
 custom_fonts/normal_font = ExtResource( 17 )
 bbcode_enabled = true
 bbcode_text = "[color = 'green']text[/color] "
 text = "[color = 'green']text[/color] "
+
+[node name="Frame" type="TextureRect" parent="EnchantPanel/Weapon1"]
+margin_left = 2.0
+margin_top = 1.0
+margin_right = 102.0
+margin_bottom = 101.0
+texture = ExtResource( 38 )
+expand = true
+stretch_mode = 6
+
+[node name="wearericon" type="TextureRect" parent="EnchantPanel/Weapon1/Frame"]
+show_behind_parent = true
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 97.0
+margin_bottom = 97.0
+expand = true
+stretch_mode = 6
 
 [node name="Weapon2" type="TextureRect" parent="EnchantPanel"]
 margin_left = 820.577
@@ -364,15 +394,11 @@ text = "10/10"
 align = 2
 
 [node name="line2" type="RichTextLabel" parent="EnchantPanel/Weapon2/stats"]
-visible = false
-margin_top = 37.0
 margin_right = 308.0
 margin_bottom = 269.0
 size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 17 )
+theme = ExtResource( 8 )
 bbcode_enabled = true
-bbcode_text = "stats desc"
-text = "stats desc"
 
 [node name="TextureRect" type="TextureRect" parent="EnchantPanel"]
 margin_left = 718.126

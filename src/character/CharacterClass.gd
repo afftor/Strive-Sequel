@@ -550,6 +550,9 @@ func recruit_and_return():
 
 
 func set_work(task):
+	if xp_module.work == 'disabled' and task != 'disabled':
+		print("There is a critical error - attempting to enable character a wrong way. Please try to remember and report chain of actions that can be its cause. All saves after this may (or may not) be broken.")
+		return
 	xp_module.remove_from_task()
 	xp_module.work = task
 	if task == 'produce':
@@ -1039,8 +1042,12 @@ func affect_char(i):
 		'stat_set':
 			set_stat(i.stat, i.value)
 		'effect':
-			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[i.value])
-			apply_effect(effects_pool.add_effect(eff))
+			var eff = Effectdata.effect_table[i.value].duplicate()
+			if i.has('override'):
+				for k in i.override:
+					eff[k] = i.override[k]
+			var neweff = effects_pool.e_createfromtemplate(eff)
+			apply_effect(effects_pool.add_effect(neweff))
 		'teleport':
 			teleport(i.value)
 		'set_availability':

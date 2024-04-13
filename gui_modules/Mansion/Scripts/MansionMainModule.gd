@@ -918,7 +918,7 @@ func test_mode():
 		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
-		#input_handler.interactive_message('zephyra_brush_8', '', {})
+		input_handler.interactive_message('celena_shrine_find', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)
