@@ -1105,7 +1105,7 @@ var data = {
 		text = [{text = 'CEREMONY_LIRA_4_2', reqs = []},
 		{text = '', reqs = [{type = "quest_completed", name = "zephyra_bath_quest", check = true}], bonus_effects = [{code = 'add_timed_event', value = "zephyra_painting_1", args = [{type = 'add_to_date', date = [2,5], hour = 1}]}]}],
 		options = [ {
-			code = 'close', text = "CEREMONY_LIRA_4_1_1_OPTION", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
 			bonus_effects = [{code = 'complete_quest', value = 'getting_lira_quest'},
 			{code = 'add_master_points', value = 1},
 			{code = 'update_city'}]

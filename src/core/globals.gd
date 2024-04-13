@@ -2110,6 +2110,7 @@ func common_effects(effects):
 				ResourceScripts.game_progress.stored_events.timed_events.append(newevent)
 			'add_master_points':
 				ResourceScripts.game_progress.master_points += i.value
+				input_handler.play_animation("master_points", {master_points = i.value})
 
 func after_wedding_event(character):
 	if character == null:
