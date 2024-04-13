@@ -740,7 +740,7 @@ func add_enchant(e_id, lvl, is_free = false):
 #	var tmp = null
 	if owner != null:
 #		tmp = owner
-		characters_pool.get_char_by_id(owner).unequip(self)
+		characters_pool.get_char_by_id(owner).unequip(self, false)
 	
 	_remove_enchant(e_id)
 	enchants[e_id] = lvl
