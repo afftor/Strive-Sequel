@@ -21,7 +21,7 @@ var npc_reference = null
 var last_escape_day_check
 var tags = []
 #base combat stats
-var hp = 100 setget hp_set
+var hp = 100 setget hp_set, hp_get
 var mp = 50 setget mp_set
 var shield = 0 setget set_shield
 var defeated = false
@@ -956,6 +956,12 @@ func need_heal():
 	return statlist.need_heal()
 
 #core functions
+func hp_get():
+	if hp > get_stat('hpmax'):
+		hp = get_stat('hpmax')
+	return hp
+
+
 func hp_set(value):
 	if npc_reference == 'combat_global': return
 	if hp <= 0:
