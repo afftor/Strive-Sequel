@@ -664,7 +664,13 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "0.8.5
+bbcode_text = "0.8.5a
+Added tooltips for new gallery scenes
+Added icon for new suit
+Fixed daisy not being recruited when claimed to be your kinsman
+Fixed some console errors related to shrines
+Fixed some paperdoll issues and possible travel errors
+0.8.5
 Added 4 new classes:
 Warlock - Increases crit rate and crit damage of single target spells
 Witch - Spell crits apply random debuff on enemy. Healing spells can apply healing over time on allies
@@ -1643,7 +1649,13 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.8.5
+text = "0.8.5a
+Added tooltips for new gallery scenes
+Added icon for new suit
+Fixed daisy not being recruited when claimed to be your kinsman
+Fixed some console errors related to shrines
+Fixed some paperdoll issues and possible travel errors
+0.8.5
 Added 4 new classes:
 Warlock - Increases crit rate and crit damage of single target spells
 Witch - Spell crits apply random debuff on enemy. Healing spells can apply healing over time on allies

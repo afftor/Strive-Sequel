@@ -1,3 +1,10 @@
+0.8.5a
+Added tooltips for new gallery scenes
+Added icon for new suit
+Fixed daisy not being recruited when claimed to be your kinsman
+Fixed some console errors related to shrines
+Fixed some paperdoll issues and possible travel errors
+0.8.5
 Added 4 new classes:
 Warlock - Increases crit rate and crit damage of single target spells
 Witch - Spell crits apply random debuff on enemy. Healing spells can apply healing over time on allies

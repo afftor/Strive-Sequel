@@ -1422,7 +1422,7 @@ var itemlist = {
 		crafttype = 'basic',
 		slots = ['underwear','chest','legs','head'],
 		price = 200,
-		icon = load("res://assets/images/iconsitems/clothbdsm.png"),
+		icon = load("res://assets/images/iconsgear/bunnysuit.png"),
 		tier = 'medium',
 		reqs = [{code = 'trait', trait = 'loyalty_dress_lewd', check = true}],
 		effects = [],

@@ -228,10 +228,10 @@ func add_recruit_option(scene):
 	var char2 = input_handler.active_character
 	if char2 != null:
 		scene.options.insert(1,{code = 'recruit_option', reqs = [], text = "DIALOGUERECRUITATTEMPT"})
-	if char2.has_profession("succubus") || char2.has_profession("true_succubus"):
-		scene.option.insert(1, {code = 'recruit_succubus', reqs = [{type = 'active_character_checks', value = [{code = 'has_any_profession', value = ['succubus','true_succubus']}, {code = 'stat', stat = 'mp', operant = 'gte', value = 30}]}], text = "DIALOGUERECRUITSUCCUBUS"})
-	elif char2.has_profession("succubus") || char2.has_profession("true_succubus") && char2.get_stat('mp') < 30:
-		scene.option.insert(1, {code = 'recruit_succubus', disabled = true, reqs = [], text = "DIALOGUERECRUITSUCCUBUS"})
+		if char2.has_profession("succubus") || char2.has_profession("true_succubus"):
+			scene.options.insert(1, {code = 'recruit_succubus', reqs = [{type = 'active_character_checks', value = [{code = 'has_any_profession', value = ['succubus','true_succubus']}, {code = 'stat', stat = 'mp', operant = 'gte', value = 30}]}], text = "DIALOGUERECRUITSUCCUBUS"})
+		elif char2.has_profession("succubus") || char2.has_profession("true_succubus") && char2.get_stat('mp') < 30:
+			scene.options.insert(1, {code = 'recruit_succubus', disabled = true, reqs = [], text = "DIALOGUERECRUITSUCCUBUS"})
 
 func recruit_option_safe():
 	var char_to_recruit = input_handler.scene_characters[0]

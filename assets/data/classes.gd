@@ -986,7 +986,7 @@ var professions = {
 		icon = load("res://assets/images/iconsclasses/witch.png"),
 		tags = [],
 		categories = ['magic'],
-		showupreqs = [{code = 'sex', operant = 'neq', value = 'male'},{code = "class_unlocked", class = 'archmage', operant = 'eq', check = true}],
+		showupreqs = [{code = 'sex', operant = 'neq', value = 'male'},{code = "class_unlocked", class = 'witch', operant = 'eq', check = true}],
 		reqs = [{code = 'has_any_profession', value = ['alchemist', 'apprentice']},{code = 'stat', stat = 'wits', operant = 'gte', value = 75},{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 4},{code = 'sex', operant = 'neq', value = 'male'}],
 		statchanges = {wits_bonus = 10, mod_alchemy = 0.25},
 		traits = ['basic_spells','witch'],

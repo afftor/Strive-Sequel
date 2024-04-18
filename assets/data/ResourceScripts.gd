@@ -47,7 +47,7 @@ var scriptdict = {
 	gallery = "res://src/core/gallery.gd",
 	rnd_portrait = "res://src/randomportraits/portrait.gd",
 	rnd_main = "res://src/randomportraits/randomportraits.gd",
-	sex_scenes = "res://assets/data/SexScenes.gd"
+	#sex_scenes = "res://assets/data/SexScenes.gd"
 	}
 
 onready var node_data = {

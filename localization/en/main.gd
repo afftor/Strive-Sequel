@@ -14759,6 +14759,9 @@ Hotkey: 3""",
 	AMELIA_SEX_1_SS = "Complete Amelia's sidequest, recruit her and talk to her in mansion",
 	ZEPHYRA_DISAPPEARANCE_SEX_1_SS = "Complete Zephyra's second sidequest",
 	ZEPHYRA_DISAPPEARANCE_GUARDS_1_SS = "Peek on Zephyra's fake story during her second sidequest",
+	DAISY_WEDDING_SS = "Take Daisy as your (slave) wife",
+	CALI_WEDDING_SS = "Make Cali your lifelong partner",
+	AMELIA_WEDDING_SS = "Promote Amelia to the vice presidency of your Mansion",
 	
 }
 

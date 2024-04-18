@@ -676,8 +676,7 @@ func intimate(person, counter):
 		else:
 			text += tr("DATING_INTIM_BED_4")
 			text += "}"
-		
-		if person.get_stat('consent') < ceil(person.get_stat("sexuals_factor")/2):
+		if person.get_stat('consent') < ceil(person.get_stat("sexuals_factor")/2.0):
 			person.add_stat('consent', 1)
 			text += "\n" + person.translate(tr("DATING_INTIM_BED_6")) + tr(variables.consent_dict[int(person.get_stat('consent'))])  + "}"
 	else:

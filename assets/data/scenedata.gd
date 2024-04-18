@@ -924,7 +924,7 @@ var scenedict = {
 		text = tr("SCENEDAISY_CLAIM_KINSHIPTEXT"),
 		tags = ['dialogue_scene'],
 		image = 'daisystart',
-#		common_effects = [{code = 'make_story_character', value = 'Daisy'}, {code = 'unique_character_changes', value = 'daisy', args = [
+		common_effects = [{code = 'make_story_character', value = 'Daisy'}],#, {code = 'unique_character_changes', value = 'daisy', args = [
 #			{code = 'tag', operant = 'add', value = 'no_sex'}]}],
 		options = [
 		{code = 'daisy_recruitment_1', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = [], dialogue_argument = 1},
@@ -1370,7 +1370,7 @@ var scenedict = {
 	},
 	recruit_captured_success_seduce = {text = tr("DIALOGUERECRUITGOODSEDUCE"),
 	tags = ['scene_character_translate'],
-	image = '',
+	image = 'mindcontrol',
 	common_effects = [],
 	options = [
 	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSERVANT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'},]},
@@ -1394,7 +1394,7 @@ var scenedict = {
 	},
 	recruit_meet_success_seduce = {text = tr("DIALOGUEMEETGOODSEDUCE"),
 	tags = ['scene_character_translate'],
-	image = '',
+	image = 'mindcontrol',
 	common_effects = [],
 	options = [
 	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUEMEETGOODDEFAULT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'slave'}]},
