@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=2]
+[gd_scene load_steps=138 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=2]
@@ -95,7 +95,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=95]
 [ext_resource path="res://assets/dynamic_backgrounds/dynamic_background.tscn" type="PackedScene" id=96]
 [ext_resource path="res://gui_modules/Universal/Scripts/NavigationModule.gd" type="Script" id=97]
-[ext_resource path="res://gui_modules/Exploration/Modules/LocationGui.tscn" type="PackedScene" id=98]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=99]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionJournalModule.tscn" type="PackedScene" id=100]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/icon_journalcity.png" type="Texture" id=101]
@@ -1642,9 +1641,6 @@ margin_left = 415.774
 margin_top = 136.071
 margin_right = 1651.77
 margin_bottom = 937.071
-
-[node name="LocationGui" parent="." instance=ExtResource( 98 )]
-visible = false
 
 [node name="AreaShop" type="Panel" parent="." groups=["pauseprocess"]]
 visible = false

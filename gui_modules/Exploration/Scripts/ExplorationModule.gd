@@ -7,10 +7,6 @@ var nav
 
 var selected_location
 
-var market_mode
-var hiremode
-var person_to_hire
-var selectedquest
 
 var positiondict = {
 	1: "LocationGui/Positions/HBoxContainer/frontrow/1",
@@ -732,28 +728,6 @@ func check_events(action):
 	return globals.check_events(action)
 
 
-var hide_elems_arr = ["HSlider", "ItemAmount"]#, "TextureRect2","ItemPrice"]
-
-
-func double_clicked(event):
-	if event is InputEventMouseButton and event.doubleclick:
-		show_full_info(person_to_hire)
-
-
-func show_full_info(person = null):
-	var FullSlaveInfo = input_handler.get_spec_node(input_handler.NODE_EXPLORE_SLAVEINFO)
-	if ! gui_controller.windows_opened.has(FullSlaveInfo):
-		gui_controller.windows_opened.append(FullSlaveInfo)
-	gui_controller.explore_slaveinfo = FullSlaveInfo
-	FullSlaveInfo.show()
-	FullSlaveInfo.from_dialogue = false
-	if person == null:
-		FullSlaveInfo.show_summary(person_to_hire)
-	else:
-		FullSlaveInfo.show_summary(person)
-	# FullSlaveInfo.update_purchase_btn()
-
-
 var sell_category = 'all'
 var buy_category = 'all'
 var active_shop
@@ -1092,7 +1066,7 @@ func select_workers():
 	var MANSION = gui_controller.mansion
 	MANSION.SlaveListModule.selected_location = selected_location
 	MANSION.SlaveListModule.show_location_characters()
-	$NavigationModule.return_to_mansion()
+	nav.return_to_mansion()
 	yield(get_tree().create_timer(0.6), 'timeout')
 	MANSION.get_node("MansionJobModule2").selected_location = selected_location
 	MANSION.SlaveListModule.OpenJobModule()
