@@ -685,7 +685,7 @@ var effect_table = {
 			],
 		buffs = [],
 		sub_effects = ['e_s_bleed_new'],
-		args = []
+		args = [{obj = 'app_obj'}, {obj = 'app_obj'}]
 	},
 	e_s_dominate = {
 		type = 'oneshot',
