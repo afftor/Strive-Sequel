@@ -1567,7 +1567,7 @@ func get_racial_features():
 			array.append([i, race_template.personality[i]])
 		statlist.personality = input_handler.weightedrandom(array)
 	
-	if race_template.has('tarits'):
+	if race_template.has('traits'):
 		for trait in race_template.traits:
 			add_trait(trait)
 
