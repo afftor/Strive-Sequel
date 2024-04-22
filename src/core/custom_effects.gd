@@ -110,7 +110,7 @@ func writ_of_exemption_use(): #possibly rework
 		acceptance_chance = acceptance_chance - acceptance_chance * variables.personality_conversion_rates[character.get_stat('personality')]
 	if acceptance_chance >= randf()*acceptance_req:
 		input_handler.interactive_message_follow("writ_of_exemption_success",'char_translate',character)
-		character.set_slave_category('slave')
+		character.set_slave_category('servant')
 		character.add_stat('loyalty', 25)
 	else:
 		input_handler.interactive_message_follow("writ_of_exemption_failure",'char_translate',character)
