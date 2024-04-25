@@ -2106,6 +2106,12 @@ func common_effects(effects):
 				ResourceScripts.game_progress.stored_events.timed_events.append(newevent)
 			'add_master_points':
 				ResourceScripts.game_progress.master_points += i.value
+			'pay_stamina':
+				if gui_controller.exploration_dungeon != null:
+					if i.has('modified'):
+						gui_controller.exploration_dungeon.pay_stamina(i.value, i.modified) 
+					else:
+						gui_controller.exploration_dungeon.pay_stamina(i.value)
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})
@@ -2312,6 +2318,21 @@ func valuecheck(dict):
 				return false
 			var master_sex = master_char.statlist.statlist.sex
 			return master_sex == dict.scene_sex
+		'has_stamina':
+			if gui_controller.exploration_dungeon == null:
+				return false
+			if dict.has('modified'):
+				return gui_controller.exploration_dungeon.get_current_stamina(dict.modified) >= dict.value
+			else:
+				return gui_controller.exploration_dungeon.get_current_stamina() >= dict.value
+		'location_party_check':
+			if gui_controller.exploration_dungeon == null:
+				return false
+			return gui_controller.exploration_dungeon.party_check(dict.value)
+		'location_chars_check':
+			if gui_controller.exploration_dungeon == null:
+				return false
+			return gui_controller.exploration_dungeon.location_chars_check(dict.value)
 
 
 func apply_starting_preset():

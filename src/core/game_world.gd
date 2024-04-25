@@ -25,6 +25,10 @@ func serialize():
 
 func fix_serialization():
 	update_guilds_data()
+	for i in areas.values():
+		for j in i.locations.values():
+			if j.type == 'dungeon' and !j.has('stamina'):
+				j.stamina = 100
 #	for area in areas.values():
 #		for guild in area.factions.values():
 #			if guild.questsetting.total > globals.get_nquest_for_rep(guild.totalreputation):
@@ -126,10 +130,12 @@ func quest_kill_receiver(enemycode):
 							input_handler.PlaySound("book")
 
 func update_locations():
-	for i in ResourceScripts.game_world.areas.values():
+	for i in areas.values():
 		for j in i.locations.values():
 			for k in j.events:
 				j.events[k] -= 1
+			if j.type == 'dungeon':
+				j.stamina = 100
 
 func update_guilds_old(area):
 	#rebuild quests and slaves in guild
@@ -274,7 +280,7 @@ func complete_quest(quest, state = 'failed'):
 			globals.unquest_location(i.location)
 
 func get_quest_by_id(id):
-	for i in ResourceScripts.game_world.areas.values():
+	for i in areas.values():
 		for guild in i.quests.factions:
 			for quest in i.quests.factions[guild].values():
 				if quest.id == id:

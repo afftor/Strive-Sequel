@@ -19,6 +19,55 @@ var positiondict = {
 }
 
 
+func get_stamina_mod(): #temporal, 2add later
+	return 1.0
+
+
+func get_current_stamina(modified = true):
+	var res = active_location.stamina
+	if modified:
+		res /= get_stamina_mod()
+	return res
+
+
+func pay_stamina(value, modified = true):
+	if modified:
+		value *= get_stamina_mod()
+	active_location.stamina -= value
+
+
+func party_check(dict):
+	if active_location == null: 
+		return false
+	input_handler.active_location = active_location
+	build_location_group()
+	var party = input_handler.get_active_party()
+	match dict.code:
+		'party_size':
+			return input_handler.operate(dict.operant, party.size(), dict.value)
+		_: #characters check
+			var res = false
+			for ch in party:
+				res = res or ch.valuecheck(dict)
+			return res
+
+
+func location_chars_check(dict):
+	if active_location == null: 
+		return false
+	input_handler.active_location = active_location
+	build_location_group()
+	var party = input_handler.get_location_characters()
+	match dict.code:
+		'amount':
+			return input_handler.operate(dict.operant, party.size(), dict.value)
+		_: #characters check
+			var res = false
+			for ch in party:
+				res = res or ch.valuecheck(dict)
+			return res
+
+
 func _ready():
 	for i in positiondict:
 		get_node(positiondict[i]).metadata = i
@@ -36,8 +85,6 @@ func _ready():
 	$LocationGui/Resources/Forget.connect("pressed", self, "forget_location")
 	$LocationGui/PresentedSlavesPanel/ReturnAll.connect("pressed", self, "return_all_to_mansion")
 	$BuyLocation/LocationInfo/PurchaseLocation.connect("pressed", self, "purchase_location")
-	$TestButton.connect("pressed", self, "test")
-	$TestButton.visible = gui_controller.mansion.test_mode
 	$JournalButton.connect("pressed", self, "open_journal")
 	gui_controller.win_btn_connections_handler(true, $MansionJournalModule, $JournalButton)
 	gui_controller.windows_opened.clear()
@@ -47,11 +94,6 @@ func _ready():
 	var closebutton = gui_controller.add_close_button($AreaShop)
 	input_handler.connect("LocationSlavesUpdate", self, 'build_location_group')
 	input_handler.connect("update_itemlist", self, 'update_sell_list')
-
-
-func test():
-	for win in gui_controller.windows_opened:
-		print(win.name)
 
 
 func open_journal():
@@ -81,7 +123,7 @@ func open(location):
 #var current_stage
 
 
-func open_location(data):
+func open_location(data): #2fix
 	input_handler.ActivateTutorial("exploration")
 	input_handler.StopBackgroundSound()
 	gui_controller.nav_panel = $LocationGui/NavigationModule
@@ -154,6 +196,11 @@ func build_location_description():
 		text += tr("STAGE") + " - " + str(progress.stage)
 	else:
 		text += "\n{color=aqua|" + tr("LOC_COMPLETE") + "}"
+	$LocationGui/DungeonInfo/RichTextLabel.bbcode_text = (
+		'[center]'
+		+ globals.TextEncoder(text)
+		+ "[/center]"
+	)
 
 
 func slave_position_selected(pos, character):
