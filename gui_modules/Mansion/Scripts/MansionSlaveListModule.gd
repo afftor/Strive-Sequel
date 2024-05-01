@@ -294,7 +294,7 @@ func show_location_characters(button = null):
 	if button != null:
 		prev_selected_location = selected_location
 		selected_location = button.get_meta("location")
-	update_location_buttons()
+#	update_location_buttons()
 	visible_persons.clear()
 	for person in SlaveContainer.get_children():
 		if person == SlaveContainer.get_child(SlaveContainer.get_children().size()-1):

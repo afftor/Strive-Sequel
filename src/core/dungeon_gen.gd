@@ -293,9 +293,18 @@ func fourth_pass():
 #tuning
 var tuning
 var diameter = []
+var final_edges
 
 func init_tuning():
 	tuning = pass4.duplicate()
+	final_edges = edges_arr_final.duplicate()
+
+
+func isolate_vertex(packed_vertex):
+	var tarr = get_edges(unpack_vertex(packed_vertex))
+	for edge in tarr:
+		final_edges.erase(pack_edge(edge))
+	tuning[packed_vertex] = 99
 
 
 func find_subtree(vertex): #packed vertex
@@ -381,16 +390,16 @@ func trim_outer(outer_limits, limit = 2): #temp solution - greedy distant based 
 		limit = 1
 	for i in range(tuning.size()):
 		if tuning[i] > limit:
-			tuning[i] = 99
+			isolate_vertex(i)
 	
-	temp = gather_amounts()
+	temp = gather_amounts(limit)
 	if temp.outer < outer_limits:
 		print("error in calling outer trimming")
 	else:
 		while temp.outer > outer_limits:
 			var t = input_handler.random_from_array(temp.outer_arr)
 			temp.outer_arr.erase(t)
-			tuning[t] = 99
+			isolate_vertex(t)
 			temp.outer -= 1
 	
 	if debug:
@@ -405,14 +414,18 @@ func generate(data):
 	
 	if data.has('debug'):
 		debug = data.debug
-	if data.has('lines'):
-		lines = data.lines
+	if data.has('rows'):
+		if data.rows is Array:
+			data.rows = globals.rng.randi_range(data.rows[0],data.rows[1])
+		lines = data.rows
 	if data.has('cols'):
+		if data.cols is Array:
+			data.cols = globals.rng.randi_range(data.cols[0],data.cols[1])
 		cols = data.cols
 	
 	for arg in ['main_route_length', 'bonus_rooms']:
 		if data[arg] is Array:
-			data[arg] = globals.rng.randi_range(data[0], data[1])
+			data[arg] = globals.rng.randi_range(data[arg][0], data[arg][1])
 	
 	var main_route_length = data.main_route_length
 	var bonus_rooms = data.bonus_rooms

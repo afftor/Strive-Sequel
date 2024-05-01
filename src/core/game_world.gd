@@ -10,6 +10,8 @@ var mansion_location
 var location_links = {}
 var factions = {}
 
+var dungeons = {}
+var rooms = {}
 
 var locationcounter = 0
 

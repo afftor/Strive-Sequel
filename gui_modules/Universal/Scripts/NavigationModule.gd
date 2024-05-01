@@ -149,7 +149,8 @@ func return_to_mansion(with_state = "default"):
 		gui_controller.exploration.get_node("LocationGui").hide()
 	gui_controller.previous_screen = null
 	gui_controller.current_screen = gui_controller.mansion
-	gui_controller.exploration.previous_guild = ''
+	if gui_controller.exploration_city != null:
+		gui_controller.exploration_city.previous_guild = ''
 	input_handler.PlaySound("door_open")
 	input_handler.StopBackgroundSound()
 	input_handler.SetMusicRandom("mansion")
@@ -167,8 +168,8 @@ func return_to_mansion(with_state = "default"):
 	gui_controller.mansion.raise()
 	gui_controller.clock.show()
 	gui_controller.clock.raise()
-	gui_controller.exploration.get_node("GuildBG").hide()
-	gui_controller.exploration.active_faction = null
+	gui_controller.exploration_city.get_node("GuildBG").hide()
+	gui_controller.exploration_city.active_faction = null
 	gui_controller.mansion.mansion_state_set(with_state)
 	build_accessible_locations()
 	update_buttons()
