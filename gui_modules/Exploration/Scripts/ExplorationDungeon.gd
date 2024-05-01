@@ -811,7 +811,7 @@ func build_spell_panel():
 				if person.has_status('no_obed_gain'):
 					disabled = true
 				if skill.charges > 0:
-					var leftcharges = skill.charges
+					var leftcharges = Skilldata.get_charges(skill, person)
 					if person.skills.combat_skill_charges.has(skill.code):
 						leftcharges -= person.skills.combat_skill_charges[skill.code]
 #						newbutton.get_node("charge").visible = true
@@ -1045,3 +1045,7 @@ func clear_subroom():
 	data.subrooms[active_subroom].type = 'empty'
 	update_map()
 	active_subroom = null
+
+func reset_active_location(arg = null):
+	if input_handler.active_location.id != active_location.id:
+		input_handler.active_location = active_location

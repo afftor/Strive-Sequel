@@ -74,7 +74,6 @@ func enslave_select():
 	globals.common_effects(changes)
 	globals.text_log_add('char',character.translate("[name] has been demoted to Slave."))
 	globals.character_stat_change(character, {code = 'loyalty', operant = '-', value = 50})
-	globals.character_stat_change(character, {code = 'submission', operant = '-', value = 25})
 	input_handler.scene_characters.append(character)
 	input_handler.interactive_message('enslave', '', {})
 	input_handler.update_slave_list()
