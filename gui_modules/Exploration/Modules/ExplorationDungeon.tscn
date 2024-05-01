@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://gui_modules/Exploration/Modules/LocationGuiDungeon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui_modules/Exploration/Scripts/ExplorationDungeon.gd" type="Script" id=7]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionJournalModule.tscn" type="PackedScene" id=100]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/icon_journalcity.png" type="Texture" id=101]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/icon_journalcity_pressed.png" type="Texture" id=102]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/icon_journalcity_hover.png" type="Texture" id=103]
+
+[node name="ExplorationDungeon" type="Control"]
+self_modulate = Color( 1, 1, 1, 0.74902 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+theme = ExtResource( 1 )
+script = ExtResource( 7 )
+
+[node name="LocationGui" parent="." instance=ExtResource( 2 )]
+
+[node name="JournalButton" type="TextureButton" parent="."]
+margin_left = 1848.73
+margin_top = 16.8675
+margin_right = 1902.73
+margin_bottom = 67.8674
+texture_normal = ExtResource( 101 )
+texture_pressed = ExtResource( 102 )
+texture_hover = ExtResource( 103 )
+
+[node name="MansionJournalModule" parent="." instance=ExtResource( 100 )]
+visible = false
+margin_left = 530.0
+margin_top = 177.0
+margin_right = 1390.0
+margin_bottom = 977.0

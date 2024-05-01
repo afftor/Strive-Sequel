@@ -88,6 +88,10 @@ func select_location(location):
 	input_handler.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area] #only for postloading location change, cause this forces exploration node to be built before open_X call
 	if gui_controller.exploration == null:
 		gui_controller.exploration = input_handler.get_spec_node(input_handler.NODE_EXPLORATION, null, false, false)
+	if gui_controller.exploration_city == null:
+		gui_controller.exploration_city = input_handler.get_spec_node(input_handler.NODE_EXPLORATION_CITY, null, false, false)
+	if gui_controller.exploration_dungeon == null:
+		gui_controller.exploration_dungeon = input_handler.get_spec_node(input_handler.NODE_EXPLORATION_DUNGEON, null, false, false)
 
 	if gui_controller.current_screen == gui_controller.mansion:
 		input_handler.PlaySound("door_open")
@@ -101,7 +105,10 @@ func select_location(location):
 		yield(get_tree().create_timer(0.5), 'timeout')
 
 	if location in ResourceScripts.game_world.capitals:
-		gui_controller.exploration.open_city(location)#
+		gui_controller.exploration_city.open_city(location)#
+		gui_controller.exploration_dungeon.hide()
+		gui_controller.exploration.hide()
+		gui_controller.exploration_city.show()
 		gui_controller.clock.raise()
 		gui_controller.clock.show()
 	else:
@@ -115,9 +122,18 @@ func select_location(location):
 			select_location('Aliron')
 			return
 		else:
-			gui_controller.exploration.open_location(data)
+			if data.type == 'dungeon':
+				gui_controller.exploration_dungeon.open_location(data)
+				gui_controller.exploration_dungeon.show()
+				gui_controller.exploration_city.hide()
+				gui_controller.exploration.hide()
+			else:
+				gui_controller.exploration.open_location(data)
+				gui_controller.exploration.show()
+				gui_controller.exploration_city.hide()
+				gui_controller.exploration_dungeon.hide()
 
-	gui_controller.exploration.show()
+#	gui_controller.exploration.show()
 	build_accessible_locations()
 	gui_controller.close_all_closeable_windows()
 
@@ -133,7 +149,8 @@ func return_to_mansion(with_state = "default"):
 		gui_controller.exploration.get_node("LocationGui").hide()
 	gui_controller.previous_screen = null
 	gui_controller.current_screen = gui_controller.mansion
-	gui_controller.exploration.previous_guild = ''
+	if gui_controller.exploration_city != null:
+		gui_controller.exploration_city.previous_guild = ''
 	input_handler.PlaySound("door_open")
 	input_handler.StopBackgroundSound()
 	input_handler.SetMusicRandom("mansion")
@@ -151,8 +168,8 @@ func return_to_mansion(with_state = "default"):
 	gui_controller.mansion.raise()
 	gui_controller.clock.show()
 	gui_controller.clock.raise()
-	gui_controller.exploration.get_node("GuildBG").hide()
-	gui_controller.exploration.active_faction = null
+	gui_controller.exploration_city.get_node("GuildBG").hide()
+	gui_controller.exploration_city.active_faction = null
 	gui_controller.mansion.mansion_state_set(with_state)
 	build_accessible_locations()
 	update_buttons()

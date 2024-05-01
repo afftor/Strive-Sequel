@@ -1,12 +1,15 @@
 extends Control
 
+# GUI Blocks
+onready var nav = $LocationGui/NavigationModule
+onready var res_panel = $LocationGui/Resources
+onready var res_container = $LocationGui/Resources/Materials
+onready var captured_panel = $LocationGui/AvailableSlaves
+onready var map_panel = $LocationGui/MapPanel
+onready var map_container = $LocationGui/MapPanel/CanvasLayer
+
 #var active_area
-#var active_location
-var nav
-
-
-var selected_location
-
+var active_location
 
 var positiondict = {
 	1: "LocationGui/Positions/HBoxContainer/frontrow/1",
@@ -18,13 +21,61 @@ var positiondict = {
 }
 
 
-func _ready():
-	# ResourceScripts.game_world.make_world()
-	for i in $AreaShop/SellFilter.get_children():
-		i.connect('pressed', self, 'selectcategory', [i, "sell"])
-	for i in $AreaShop/BuyFilter.get_children():
-		i.connect('pressed', self, 'selectcategory', [i, "buy"])
+func get_stamina_mod(): #temporal, 2add later
+	return 1.0
 
+
+func get_current_stamina(modified = true):
+	var res = active_location.stamina
+	if modified:
+		res /= get_stamina_mod()
+	return res
+
+
+func pay_stamina(value, modified = true):
+	if modified:
+		value *= get_stamina_mod()
+	active_location.stamina -= value
+	update_stamina()
+
+
+func update_stamina():
+	map_panel.get_node("Stamina/Label").text = "Stamina: %d/%d" % [active_location.stamina, 100]
+
+
+func party_check(dict):
+	if active_location == null: 
+		return false
+	input_handler.active_location = active_location
+	build_location_group()
+	var party = input_handler.get_active_party()
+	match dict.code:
+		'party_size':
+			return input_handler.operate(dict.operant, party.size(), dict.value)
+		_: #characters check
+			var res = false
+			for ch in party:
+				res = res or ch.valuecheck(dict)
+			return res
+
+
+func location_chars_check(dict):
+	if active_location == null: 
+		return false
+	input_handler.active_location = active_location
+	build_location_group()
+	var party = input_handler.get_location_characters()
+	match dict.code:
+		'amount':
+			return input_handler.operate(dict.operant, party.size(), dict.value)
+		_: #characters check
+			var res = false
+			for ch in party:
+				res = res or ch.valuecheck(dict)
+			return res
+
+
+func _ready():
 	for i in positiondict:
 		get_node(positiondict[i]).metadata = i
 		get_node(positiondict[i]).target_node = self
@@ -40,26 +91,22 @@ func _ready():
 	$LocationGui/Resources/SelectWorkers.connect("pressed", self, "select_workers")
 	$LocationGui/Resources/Forget.connect("pressed", self, "forget_location")
 	$LocationGui/PresentedSlavesPanel/ReturnAll.connect("pressed", self, "return_all_to_mansion")
-	$TestButton.connect("pressed", self, "test")
-	$TestButton.visible = gui_controller.mansion.test_mode
 	$JournalButton.connect("pressed", self, "open_journal")
+	map_panel.get_node("res").connect("toggled", self, 'toggle_res')
+	map_panel.get_node("slaves").connect("toggled", self, 'toggle_slaves')
+	globals.connecttexttooltip(map_panel.get_node("res"), "Show/hide local resources")
+	globals.connecttexttooltip(map_panel.get_node("slaves"), "Show/hide captured characters")
 	gui_controller.win_btn_connections_handler(true, $MansionJournalModule, $JournalButton)
 	gui_controller.windows_opened.clear()
 	globals.connect("hour_tick", self, "build_location_group")
 	input_handler.connect("EventFinished", self, 'build_location_group')
 	input_handler.connect("LootGathered", self, 'build_location_group')
-	var closebutton = gui_controller.add_close_button($AreaShop)
 	input_handler.connect("LocationSlavesUpdate", self, 'build_location_group')
 	input_handler.connect("update_itemlist", self, 'update_sell_list')
-	# gui_controller.win_btn_connections_handler(true, $AreaShop, closebutton)
-#	$LocationGui/ce.connect("pressed", input_handler, "interactive_message", ['celena_shrine_find', '', {}])
-
-func test():
-	for win in gui_controller.windows_opened:
-		print(win.name)
 
 
 func open_journal():
+#	globals.common_effects( [{code = 'update_city'}])
 	if !$MansionJournalModule.visible:
 		ResourceScripts.core_animations.UnfadeAnimation($MansionJournalModule, 0.5)
 		$MansionJournalModule.visible = true
@@ -73,97 +120,88 @@ func open_journal():
 
 
 func open(location):
-	selected_location = location
+	active_location = location
+	# $NavigationModule.build_accessible_locations()
+	# $NavigationModule.update_buttons()
 	input_handler.exploration_node = self
+	# var loca = ResourceScripts.world_gen.get_location_from_code(selected_location)
+	# if loca.type == "capital":
+	# 	open_city(selected_location)
+
+#var current_level
+#var current_stage
 
 
-
-func open_location(data):
+func open_location(data): #2fix
 	input_handler.ActivateTutorial("exploration")
 	input_handler.StopBackgroundSound()
 	gui_controller.nav_panel = $LocationGui/NavigationModule
-	nav = $LocationGui/NavigationModule
-	selected_location = data.id
-	var gatherable_resources
-	$LocationGui/Resources/Forget.visible = false
+#	active_location = data.id #wrong
+#	var gatherable_resources
+#	$LocationGui/Resources/Forget.visible = true
+#	res_panel.get_node("SelectWorkers").visible = !active_location.gather_limit_resources.empty()
 	gui_controller.clock.hide()
-	if data.has('gather_resources'):
-		gatherable_resources = data.gather_resources
-		$LocationGui/Resources/SelectWorkers.visible = true
-	if gatherable_resources == null:
-		$LocationGui/Resources/SelectWorkers.visible = false
-#			if gatherable_resources != null:
-#				var stop_loop = false
-#				for i in gatherable_resources:
-#					if stop_loop:
-#						break
-#					var item = Items.materiallist[i]
-#					var current_workers_count = 0
-#					var active_tasks = ResourceScripts.game_party.active_tasks
-#					if active_tasks.empty():
-#						$LocationGui/Resources/SelectWorkers.visible = true
-#						break
-#					for task in active_tasks:
-#						if (task.code == i) && (task.task_location == selected_location):
-#							current_workers_count = task.workers.size()
-#							if current_workers_count < gatherable_resources[i]:
-#								$LocationGui/Resources/SelectWorkers.visible = true
-#								stop_loop = true
-#								break
-#							else:
-#								$LocationGui/Resources/SelectWorkers.visible = false
-	$LocationGui.show()
-	$LocationGui/Resources/Materials.update()
-#	active_location = data
+#	$LocationGui.show()
+	res_container.update()
+	active_location = data
 	input_handler.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[data.id].area]
-#	input_handler.active_area = active_area
-	input_handler.active_location = data
+##	input_handler.active_area = active_area
+#	input_handler.active_location = data
 	input_handler.emit_signal("LocationSlavesUpdate")
-#	if input_handler.active_location.has('progress'):
-#		current_level = active_location.progress.level
-#		current_stage = active_location.progress.stage
-	if input_handler.active_location.has('background'):
-		$LocationGui/Image/TextureRect.texture = images.backgrounds[input_handler.active_location.background]
-	if input_handler.active_location.has('bgm'):
+	current_level = 0
+	build_level()
+	update_stamina()
+	var dungeon = active_location.dungeon[current_level]
+	var tdata = ResourceScripts.game_world.dungeons[dungeon]
+	scout_room(tdata.first_room, true)
+##	if input_handler.active_location.has('progress'):
+##		current_level = active_location.progress.level
+##		current_stage = active_location.progress.stage
+#	if input_handler.active_location.has('background'):
+#		$LocationGui/Image/TextureRect.texture = images.backgrounds[input_handler.active_location.background]
+	if active_location.has('bgm'):
 		input_handler.SetMusic(input_handler.active_location.bgm)
-
+#
 	#check if anyone is present
 	build_location_group()
 	var presented_characters = []
 	for id in ResourceScripts.game_party.character_order:
 		var i = ResourceScripts.game_party.characters[id]
-		if i.check_location(input_handler.active_location.id, true):
+		if i.check_location(active_location.id, true):
 			presented_characters.append(i)
-	if presented_characters.size() > 0 || variables.allow_remote_intereaction == true:
-		open_location_actions()
 	build_location_description()
-#	if data.type in ["quest_location", "encounter"]:
-	if input_handler.active_area.questlocations.has(selected_location):#or active_area.encounters.has(selected_location):
-		$LocationGui/Resources/Forget.visible = false
-#		$LocationGui/Resources/SelectWorkers.visible = false
-#		$LocationGui/Resources/Label.visible = false
-	else:
-		$LocationGui/Resources/Label.visible = true
-	if data.has("locked"):
-		if data.locked:
-			$LocationGui/Resources/Forget.visible = false
-			$LocationGui/Resources/SelectWorkers.visible = false
-			$LocationGui/Resources/Label.visible = true
+##	if data.type in ["quest_location", "encounter"]:
+#	if input_handler.active_area.questlocations.has(active_location):#or active_area.encounters.has(selected_location):
+#		$LocationGui/Resources/Forget.visible = false
+##		$LocationGui/Resources/SelectWorkers.visible = false
+##		$LocationGui/Resources/Label.visible = false
+#	else:
+#		$LocationGui/Resources/Label.visible = true
+#	if data.has("locked"):
+#		if data.locked:
+#			$LocationGui/Resources/Forget.visible = false
+#			$LocationGui/Resources/SelectWorkers.visible = false
+#			$LocationGui/Resources/Label.visible = true
 	gui_controller.nav_panel.build_accessible_locations()
 	#input_handler.interactive_message("spring", '',{})
 
 
 func build_location_description():
-	var active_location = input_handler.active_location
 	var text = ''
-	match input_handler.active_location.type:
-		'settlement':
-			text = tr(active_location.classname) + ": " + active_location.name
-		'skirmish':
-			pass
-		'quest_location':
-			text = active_location.name #+ "\n" + active_location.descript
-	$LocationGui/DungeonInfo/RichTextLabel.bbcode_text = (
+	text = (
+		active_location.name
+		+ " ("
+		+ tr(active_location.classname)
+#		+ ")\n"
+		+ " - "
+#				+ tr("DUNGEONDIFFICULTY")
+#				+ ": "
+#				+ tr("DUNGEONDIFFICULTY" + active_location.difficulty.to_upper())
+	)
+	text += tr("LEVELS") + " " + str(current_level + 1)
+	if active_location.completed:
+		text += "{color=aqua|" + tr("LOC_COMPLETE") + "}"
+	map_panel.get_node('RichTextLabel').bbcode_text = (
 		'[center]'
 		+ globals.TextEncoder(text)
 		+ "[/center]"
@@ -192,7 +230,7 @@ func slave_position_selected(pos, character):
 		)
 	):
 		positiontaken = true
-
+	
 	for i in input_handler.active_location.group:
 		if input_handler.active_location.group[i] == character:
 			oldheroposition = i
@@ -407,20 +445,126 @@ func execute_skill(s_skill2):  #to update to exploration version
 			else:
 				print('error in damagestat %s' % i.damagestat)  #obsolete in new format
 
-
-func StartCombat():
+#obsolete
+#func area_advance(mode): #advance request
+#	globals.reset_roll_data()
+#	globals.char_roll_data.diff = input_handler.active_location.difficulty
+#	if globals.check_location_group() == false:
+#		input_handler.SystemMessage("Select at least 1 character before advancing. ")
+#		return
+##	current_stage = active_location.progress.stage
+#	globals.char_roll_data.lvl = input_handler.active_location.progress.level
+#	for ch_id in input_handler.active_location.group.values():
+#		globals.char_roll_data.mf += characters_pool.get_char_by_id(ch_id).get_stat('magic_find')
+#
+#	if check_events(mode) == true:
+#		yield(input_handler, 'EventFinished')
+#	input_handler.combat_explore = true
+#	var rand_event = false
+#	if (randf() <= variables.dungeon_unique_encounter_chance and !check_staged_enemies()):
+#		rand_event = globals.start_unique_event()
+#		if rand_event != false:
+#			input_handler.combat_advance = true
+##			advance()
+#	if ( !rand_event and
+#		input_handler.active_location.has('randomevents') and
+#		randf() <= variables.dungeon_encounter_chance and
+#		!check_staged_enemies() 
+#	):
+#		rand_event = globals.start_random_event()
+#		if rand_event != false:
+#			input_handler.combat_advance = true
+##			advance()
+#	if rand_event == false:
+#		input_handler.combat_advance = false
+#		StartCombat()
+#
+#	action_type = mode
+#
+#
+#func check_staged_enemies():
+#	var result = false
+#	var progress = input_handler.active_location.progress
+#	for i in input_handler.active_location.stagedenemies:
+#		if i.stage == progress.stage && i.level == progress.level:
+#			result = true
+#			break
+#	return result
+#
+#
+#func advance():
+#	input_handler.combat_explore = false
+#	build_location_group()
+#	if check_dungeon_end() == false:
+#		input_handler.active_location.progress.stage += 1
+##		current_stage = active_location.progress.stage
+#		if input_handler.active_location.progress.stage > input_handler.active_location.levels["L" + str(input_handler.active_location.progress.level)].stages:
+#			input_handler.active_location.progress.stage = 0
+#			input_handler.active_location.progress.level += 1
+##			current_stage = active_location.progress.stage
+##			current_level = active_location.progress.level
+##		globals.current_level = current_level
+#		if check_dungeon_end():
+#			if input_handler.active_location.completed == false:
+#				input_handler.active_location.completed = true
+#				globals.common_effects([{code = "complete_active_location_quests"}])
+#				check_events("dungeon_complete")
+#			# $LocationGui/Resources/Forget.visible = true
+#			$LocationGui/Resources/SelectWorkers.visible = true
+#			$LocationGui/Resources/Forget.visible = true
+#			$LocationGui/Resources/Materials.update()
+#		enter_dungeon()
+#	elif action_type == 'location_finish':
+#		Navigation.build_accessible_locations()
+#		Navigation.select_location("aliron")
+#	else:
+#		enter_dungeon()
+#
+#
+func StartCombat(): #2change it to pregen groups anf StartFixedAreaCombat
 	input_handler.play_animation("fight")
 	yield(get_tree().create_timer(1), "timeout")
 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), "timeout")
 #	globals.current_level = current_level
 #	globals.current_stage = current_stage
-	globals.StartCombat()
+	globals.StartAreaCombat()
+
+
+# func play_animation(animation):
+# 	var anim_scene
+# 	match animation:
+# 		"fight":
+# 			input_handler.PlaySound("battle_start")
+# 			anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_START)
+# 			anim_scene.raise()
+# 			anim_scene.get_node("AnimationPlayer").play("battle_start")
+# 			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+# 			ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+# 			yield(get_tree().create_timer(0.5), 'timeout')
+# 			anim_scene.queue_free()
+# 		"quest":
+# 			input_handler.PlaySound("quest_aquired")
+# 			anim_scene = input_handler.get_spec_node(input_handler.ANIM_TASK_AQUARED)
+# 			anim_scene.get_node("SelectedQuest").text = selectedquest.name
+# 			anim_scene.get_node("AnimationPlayer").play("task_aquared")
+# 			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+# 			anim_scene.queue_free()
 
 
 var action_type
 var active_skill
 
+
+func clear_dungeon():
+	input_handler.get_spec_node(
+		input_handler.NODE_YESNOPANEL,
+		[
+			self,
+			'clear_dungeon_confirm',
+			tr("FORGETLOCATIONQUESTION")
+		]
+	)
 
 func forget_location():
 	input_handler.get_spec_node(
@@ -434,7 +578,7 @@ func forget_location():
 
 
 func clear_dungeon_confirm():
-	globals.remove_location(input_handler.active_location.id)
+	globals.remove_location(active_location.id)
 	action_type = 'location_finish'
 
 
@@ -542,13 +686,13 @@ func build_location_group():
 
 
 func add_rolled_chars(tarr):
-	if input_handler.active_location != null:
-		if !input_handler.active_location.has('captured_characters'):
-			input_handler.active_location.captured_characters = []
+	if active_location != null:
+		if !active_location.has('captured_characters'):
+			active_location.captured_characters = []
 	else:
 		return
 	for id in tarr:
-		input_handler.active_location.captured_characters.push_back(id)
+		active_location.captured_characters.push_back(id)
 	input_handler.emit_signal("LocationSlavesUpdate")
 
 
@@ -577,7 +721,6 @@ func return_all_to_mansion_confirm():
 		person.remove_from_task()
 		person.return_to_mansion()
 	nav.return_to_mansion("default")
-
 
 
 func build_item_panel():
@@ -680,59 +823,6 @@ func build_spell_panel():
 					newnode.script = null
 
 
-func open_location_actions():
-	input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-	var newbutton
-	var option_list = []
-	if input_handler.active_location.has("locked"):
-		if input_handler.active_location.locked:
-			# do options
-			if worlddata.fixed_location_options.has(input_handler.active_location.code):
-				option_list = worlddata.fixed_location_options[input_handler.active_location.code]
-			elif input_handler.active_location.has("options"):
-				option_list = input_handler.active_location.options
-			for i in option_list:
-				if globals.checkreqs(i.reqs) == true:
-					newbutton = input_handler.DuplicateContainerTemplate(
-						$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
-					)
-					newbutton.toggle_mode = false
-					newbutton.text = tr(i.text)
-					newbutton.connect("pressed", globals, 'common_effects', [i.args])
-			return
-	match input_handler.active_location.type:
-		'settlement':
-			for i in input_handler.active_location.actions:
-				newbutton = input_handler.DuplicateContainerTemplate(
-					$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
-				)
-				newbutton.toggle_mode = true
-				newbutton.text = tr(i.to_upper())
-				newbutton.connect("toggled", self, i, [newbutton])
-	
-	if worlddata.fixed_location_options.has(input_handler.active_location.code):
-		option_list = worlddata.fixed_location_options[input_handler.active_location.code]
-	elif input_handler.active_location.has("options"):
-		option_list = input_handler.active_location.options
-	for i in option_list:
-		if globals.checkreqs(i.reqs) == true:
-			newbutton = input_handler.DuplicateContainerTemplate(
-				$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
-			)
-			newbutton.toggle_mode = false
-			newbutton.text = tr(i.text)
-			newbutton.connect("pressed", globals, 'common_effects', [i.args])
-
-
-func check_events(action):
-	return globals.check_events(action)
-
-
-var sell_category = 'all'
-var buy_category = 'all'
-var active_shop
-
-
 func unfade(window, time = 0.5):
 	window.set("modulate", Color(1, 1, 1, 0))
 	window.show()
@@ -748,329 +838,214 @@ func fade(window, time = 0.5):
 	# window.set("modulate", Color(1, 1, 1, 0))
 
 
-func open_shop(pressed, pressed_button, shop):
-	$AreaShop/NumberSelection.hide()
-	gui_controller.win_btn_connections_handler(pressed, $AreaShop, pressed_button)
-	self.current_pressed_area_btn = pressed_button
-	# $AreaShop.visible = pressed
-	match shop:
-		'area':
-			active_shop = input_handler.active_area.shop
-		'location':
-			if pressed:
-				active_shop = input_handler.active_location.shop
-	sell_category = 'all'
-	buy_category = 'all'
-	$AreaShop/SellFilter.get_child(0).pressed = true
-	$AreaShop/BuyFilter.get_child(0).pressed = true
-	update_sell_list()
-	update_buy_list()
-	if pressed:
-		unfade($AreaShop)
-	else:
-		fade($AreaShop)
-
-
-func local_shop(pressed, button):
-	open_shop(pressed, button, 'location')
-
-
-func selectcategory(button, list):
-	var type = button.name
-	if list == "sell":
-		for i in $AreaShop/SellFilter.get_children():
-			i.pressed = i == button
-		sell_category = type
-		update_sell_list()
-	else:
-		for i in $AreaShop/BuyFilter.get_children():
-			i.pressed = i == button
-		buy_category = type
-		update_buy_list()
-
-
-var tempitems = []
-
-
-func get_item_category(item):
-	var type
-	if Items.materiallist.has(item.code):
-		if item.type == 'food':
-			type = 'food'
-		else:
-			type = 'material'
-	else:
-		if item.itemtype == 'tool':
-			type = 'tool'
-		elif item.itemtype == 'weapon':
-			type = 'weapon'
-		elif item.itemtype == 'armor':
-			if item.geartype == 'costume':
-				type = 'costume'
-			else:
-				type = 'armor'
-		else:
-			type = 'usable'
-	return type
-
-
-func update_sell_list():
-	input_handler.ClearContainer($AreaShop/SellBlock/ScrollContainer/VBoxContainer)
-	tempitems.clear()
-	for i in ResourceScripts.game_res.materials:
-		if ResourceScripts.game_res.materials[i] <= 0 || Items.materiallist[i].type == 'quest':
-			continue
-		var item = Items.materiallist[i]
-		var type = get_item_category(item)
-		var newbutton = input_handler.DuplicateContainerTemplate(
-			$AreaShop/SellBlock/ScrollContainer/VBoxContainer
-		)
-		newbutton.get_node("name").text = item.name
-		newbutton.get_node("icon").texture = item.icon
-		newbutton.get_node("price").text = str(ceil(item.price * variables.material_sell_multiplier))
-		newbutton.get_node("amount").visible = true
-		newbutton.get_node("amount").text = str(ResourceScripts.game_res.materials[i])
-		newbutton.set_meta('type', type)
-		newbutton.set_meta('item', item.name)
-		newbutton.set_meta('exploration', true)
-		newbutton.connect("pressed", self, "item_sell", [item])
-		newbutton.visible = (newbutton.get_meta("type") == sell_category) || sell_category == "all"
-		globals.connectmaterialtooltip(newbutton, item)
-	for item in ResourceScripts.game_res.items.values():
-		if item.amount <= 0 || item.tags.has('unsellable'):
-			continue
-		var type = get_item_category(item)
-		if item.owner != null:
-			continue
-		var newbutton = input_handler.DuplicateContainerTemplate(
-			$AreaShop/SellBlock/ScrollContainer/VBoxContainer
-		)
-		newbutton.get_node("name").text = item.name
-		item.set_icon(newbutton.get_node("icon"))  #.texture = item.get_icon()
-		newbutton.get_node("price").text = str(ceil(item.calculateprice() * variables.item_sell_multiplier))
-		newbutton.get_node("amount").visible = true
-		newbutton.get_node("amount").text = str(item.amount)
-		newbutton.set_meta('type', type)
-		newbutton.set_meta('item', item.name)
-		newbutton.set_meta('exploration', true) #while not reqired as it is now
-		newbutton.connect("pressed", self, "item_sell", [item])
-		newbutton.visible = (newbutton.get_meta("type") == sell_category) || sell_category == "all"
-		globals.connectitemtooltip_v2(newbutton, item)
-
-
-func update_buy_list():
-	input_handler.ClearContainer($AreaShop/BuyBlock/ScrollContainer/VBoxContainer)
-	tempitems.clear()
-	for i in active_shop:
-		if Items.materiallist.has(i):
-			var item = Items.materiallist[i]
-			var amount = -1
-			if typeof(active_shop) == TYPE_DICTIONARY:
-				amount = active_shop[i]
-			if amount == 0:
-				continue
-			var type = get_item_category(item)
-			var newbutton = input_handler.DuplicateContainerTemplate(
-				$AreaShop/BuyBlock/ScrollContainer/VBoxContainer
-			)
-			newbutton.get_node("name").text = item.name
-			newbutton.get_node("icon").texture = item.icon
-			newbutton.get_node("price").text = str(item.price)
-			newbutton.set_meta('type', type)
-			newbutton.set_meta('item', item.name)
-			newbutton.set_meta('exploration', true)
-			newbutton.connect("pressed", self, "item_purchase", [item, amount])
-			newbutton.visible = (
-				(newbutton.get_meta("type") == buy_category)
-				|| buy_category == "all"
-			)
-			globals.connectmaterialtooltip(newbutton, item, "", 'material')
-			if amount > 0:
-				newbutton.get_node("amount").text = str(amount)
-				newbutton.get_node("amount").show()
-		elif Items.itemlist.has(i):
-			var item = Items.itemlist[i]
-			var amount = -1
-			if item.has('parts'):
-				amount = 1
-			else:
-				amount = active_shop[i]
-				if amount == 0:
-					continue
-			var type = get_item_category(item)
-			var newbutton = input_handler.DuplicateContainerTemplate(
-				$AreaShop/BuyBlock/ScrollContainer/VBoxContainer
-			)
-			newbutton.get_node("name").text = item.name
-			newbutton.get_node("icon").texture = item.icon
-			newbutton.get_node("price").text = str(item.price)
-			newbutton.set_meta('type', type)
-			newbutton.set_meta('item', item.name)
-			newbutton.set_meta('exploration', true) #while not reqired as it is now
-			newbutton.visible = (
-				(newbutton.get_meta("type") == buy_category)
-				|| buy_category == "all"
-			)
-			if item.has('parts'):
-				var newitem
-				if active_shop[i].has('quality'):
-					var parts = active_shop[i].duplicate()
-					parts.erase('quality')
-					newitem = globals.CreateGearItemQuality(i, parts, active_shop[i].quality)
-				else:
-					newitem = globals.CreateGearItemShop(i, active_shop[i])
-					active_shop[i].quality = newitem.quality
-				newitem.set_icon(newbutton.get_node('icon'))
-				newbutton.get_node("name").text = newitem.name
-				tempitems.append(newitem)
-				globals.connectitemtooltip_v2(newbutton, newitem)
-				newbutton.get_node("price").text = str(newitem.calculateprice())
-				newbutton.connect('pressed', self, "item_purchase", [newitem, amount])
-			else:
-				globals.connecttempitemtooltip(newbutton, item, 'geartemplate')
-				newbutton.connect('pressed', self, "item_purchase", [item, amount])
-			if amount > 0:
-				newbutton.get_node("amount").text = str(amount)
-				newbutton.get_node("amount").show()
-
-
-var purchase_item
-
-
-func item_purchase(item, amount):
-	for btn in $AreaShop/SellBlock/ScrollContainer/VBoxContainer.get_children():
-		btn.pressed = false
-	for btn in $AreaShop/BuyBlock/ScrollContainer/VBoxContainer.get_children():
-		if !btn.has_meta("item"):
-			continue
-		btn.pressed = btn.get_meta("item") == item.name
-	purchase_item = item
-	if amount < 0:
-		amount = 100
-	var price = 0
-	var icon = null
-	if typeof(item) == TYPE_OBJECT:
-		price = item.calculateprice()
-	else:
-		price = item.price
-	$AreaShop/NumberSelection.open(
-		self,
-		'item_puchase_confirm',
-		tr("BUY") + " " + str(item.name),
-		price,
-		1,
-		amount,
-		true,
-		item.icon,
-		item
-	)
-
-
-func item_puchase_confirm(value):
-	input_handler.PlaySound("money_spend")
-	if typeof(purchase_item) == TYPE_OBJECT:
-		globals.AddItemToInventory(purchase_item)
-		ResourceScripts.game_res.money -= purchase_item.calculateprice()
-		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
-		for i in active_shop:
-			if globals.check_shop_record(purchase_item, i, active_shop[i]):
-				active_shop.erase(i)
-				break
-		update_sell_list()
-		update_buy_list()
-	else:
-		if Items.materiallist.has(purchase_item.code):
-			ResourceScripts.game_res.set_material(purchase_item.code, '+', value)
-			ResourceScripts.game_res.money -= purchase_item.price * value
-			if typeof(active_shop) == TYPE_DICTIONARY:
-				active_shop[purchase_item.code] -= value
-		elif Items.itemlist.has(purchase_item.code):
-			ResourceScripts.game_res.money -= purchase_item.price * value
-			if typeof(active_shop) == TYPE_DICTIONARY:
-				active_shop[purchase_item.code] -= value
-			while value > 0:
-				match purchase_item.type:
-					'usable':
-						globals.AddItemToInventory(globals.CreateUsableItem(purchase_item.code))
-					'gear':
-						globals.AddItemToInventory(globals.CreateGearItemShop(purchase_item.code, {}))
-				value -= 1
-		update_sell_list()
-		update_buy_list()
-
-
-
-func item_sell(item):
-	for btn in $AreaShop/BuyBlock/ScrollContainer/VBoxContainer.get_children():
-		btn.pressed = false
-	for btn in $AreaShop/SellBlock/ScrollContainer/VBoxContainer.get_children():
-		if !btn.has_meta("item"):
-			continue
-		btn.pressed = btn.get_meta("item") == item.name
-	purchase_item = item
-	var price
-	if item.price:
-		price = ceil(item.price * variables.material_sell_multiplier)
-	else:
-		price = ceil(item.calculateprice() * variables.item_sell_multiplier)
-	var sellingamount
-	if ! Items.materiallist.has(item.code):
-		price = ceil(item.calculateprice() * variables.item_sell_multiplier)
-		sellingamount = item.amount
-	else:
-		sellingamount = ResourceScripts.game_res.materials[item.code]
-	$AreaShop/NumberSelection.open(
-		self,
-		'item_sell_confirm',
-		tr("SELL") + " " + str(item.name),
-		price,
-		1,
-		sellingamount,
-		false,
-		item.icon,
-		item
-	)
-
-
-func item_sell_confirm(value):
-	input_handler.PlaySound("money_spend")
-	var price
-	if purchase_item.price:
-		price = ceil(purchase_item.price * variables.material_sell_multiplier) 
-	else:
-		price = ceil(purchase_item.calculateprice() * variables.item_sell_multiplier)
-	
-	if Items.materiallist.has(purchase_item.code):
-		ResourceScripts.game_res.set_material(purchase_item.code, '-', value)
-	else:
-		price = ceil(purchase_item.calculateprice() * variables.item_sell_multiplier)
-		purchase_item.amount -= value
-	ResourceScripts.game_res.money += price * value
-	update_sell_list()
-	update_buy_list()
-
-
-var current_pressed_area_btn setget set_area_btn_pressed
-
-
-func set_area_btn_pressed(value):
-	if !is_instance_valid(current_pressed_area_btn):
-		current_pressed_area_btn = value
-		return
-	if value != current_pressed_area_btn:
-		current_pressed_area_btn.pressed = false
-		current_pressed_area_btn = value
-
-
 func select_workers():
 	var MANSION = gui_controller.mansion
-	MANSION.SlaveListModule.selected_location = selected_location
+	MANSION.SlaveListModule.selected_location = active_location
 	MANSION.SlaveListModule.show_location_characters()
-	nav.return_to_mansion()
+	$NavigationModule.return_to_mansion()
 	yield(get_tree().create_timer(0.6), 'timeout')
-	MANSION.get_node("MansionJobModule2").selected_location = selected_location
+	MANSION.get_node("MansionJobModule2").selected_location = active_location
 	MANSION.SlaveListModule.OpenJobModule()
 
+
+func toggle_res(value):
+	res_panel.visible = value
+
+
+func toggle_slaves(value):
+	captured_panel.visible = value
+
+#map movement
+var current_level = 0
+var selected_room = null #combat cash
+var active_subroom = null #event cash
+const default_map_pos = Vector2(630, 500)
+const default_room_size = Vector2(270, 270)
+
+func build_level():
+	var dungeon = active_location.dungeon[current_level]
+	var data = ResourceScripts.game_world.dungeons[dungeon]
+	input_handler.ClearContainer(map_container, ['room'])
+	
+	for room in data.rooms:
+		var newroom = input_handler.DuplicateContainerTemplate(map_container, 'room')
+		newroom.setup(room)
+	
+	scout_room(data.first_room, true)
+	update_map()
+	build_location_description()
+
+
+func update_map():
+	for room in map_container.get_children():
+		room.update()
+
+
+func room_pressed(room_id):
+	if globals.check_location_group() == false:
+		input_handler.SystemMessage("Select at least 1 character before advancing. ")
+		return
+	globals.reset_roll_data()
+	globals.char_roll_data.diff = active_location.difficulty
+	globals.char_roll_data.lvl = current_level
+	for ch_id in active_location.group.values():
+		globals.char_roll_data.mf += characters_pool.get_char_by_id(ch_id).get_stat('magic_find')
+	var data = ResourceScripts.game_world.rooms[room_id]
+	if data.type == 'empty':
+		return
+	if !(data.type in ['ladder_up']):
+		if get_current_stamina() < active_location.stamina_cost:
+			input_handler.SystemMessage("No stamina")
+			return
+		pay_stamina(active_location.stamina_cost)
+		update_stamina()
+	scout_room(room_id)
+
+
+func scout_room(room_id, stay = false):
+	var data = ResourceScripts.game_world.rooms[room_id]
+	if data.status =='obscured':
+		data.status = 'scouted'
+		for room in data.neighbours.values():
+			if room != null:
+				obscure_room(room)
+	
+	selected_room = null
+	update_map()
+	if stay:
+		move_to_room(room_id)
+		return
+	
+	match data.type:
+#		'empty':
+#			move_to_room(room_id)
+		'combat':
+			selected_room = room_id
+#			input_handler.combat_advance = false
+			globals.StartAreaCombat() #temporal, 2fix
+		'combat_boss':
+			selected_room = room_id
+#			input_handler.combat_advance = false
+			globals.StartAreaCombat() #temporal, 2fix, important!
+		'event':
+			#2add
+#			input_handler.combat_advance = true
+			var _event = globals.start_fixed_event(data.event)
+			if !_event:
+				_event = globals.start_random_event()
+			move_to_room(room_id)
+			pass
+		'ladder_down':
+			current_level += 1
+			build_level()
+			var dungeon = active_location.dungeon[current_level]
+			var tdata = ResourceScripts.game_world.dungeons[dungeon]
+			scout_room(tdata.first_room, true)
+		'ladder_up':
+			current_level -= 1
+			build_level()
+
+
+func obscure_room(room_id):
+	var data = ResourceScripts.game_world.rooms[room_id]
+	if data.status =='hidden':
+		data.status = 'obscured'
+
+
+func move_to_room(room_id = null):
+	if room_id == null:
+		room_id = selected_room
+	selected_room = null
+	if room_id == null:
+		return
+	
+	build_location_group()
+	build_location_description()
+	var data = ResourceScripts.game_world.rooms[room_id]
+	data.status = 'cleared'
+	if data.type in ['ladder_down', 'ladder_up']:
+		data.status = 'scouted'
+	if data.type == 'combat_boss':
+		active_location.completed = true
+		globals.common_effects([{code = "complete_active_location_quests"}])
+		build_location_description()
+	if data.type in ['event', 'combat', 'combat_boss']:
+		data.type = 'empty'
+	update_map()
+	#add path counting and events
+
+
+func subroom_pressed(room_id, subroom_id):
+	if globals.check_location_group() == false:
+		input_handler.SystemMessage("Select at least 1 character before advancing. ")
+		return
+	globals.reset_roll_data()
+	globals.char_roll_data.diff = active_location.difficulty
+	globals.char_roll_data.lvl = current_level
+	for ch_id in active_location.group.values():
+		globals.char_roll_data.mf += characters_pool.get_char_by_id(ch_id).get_stat('magic_find')
+	var data = ResourceScripts.game_world.rooms[room_id]
+	var subroom_data = data.subrooms[subroom_id]
+	if get_current_stamina() < subroom_data.stamina_cost:
+		input_handler.SystemMessage("No stamina")
+		return
+	active_subroom = null
+	selected_room = null
+	
+	match subroom_data.type:
+		'empty': #should never be called
+			print('empty subroom activated')
+			return
+		'onetime_event':
+			selected_room = room_id
+			active_subroom = subroom_id
+			pay_stamina(subroom_data.stamina_cost)
+			#2test
+#			input_handler.combat_advance = true
+			var _event = globals.start_fixed_event(subroom_data.event)
+			if !_event:
+				_event = globals.start_random_event()
+			clear_subroom()
+		'event':
+			selected_room = room_id
+			active_subroom = subroom_id
+			pay_stamina(subroom_data.stamina_cost)
+			#2test
+#			input_handler.combat_advance = true
+			var _event = globals.start_fixed_event(subroom_data.event)
+			if !_event:
+				_event = globals.start_random_event()
+		'unique_event':
+			selected_room = room_id
+			active_subroom = subroom_id
+			pay_stamina(subroom_data.stamina_cost)
+			#2test
+#			input_handler.combat_advance = true
+			var _event = globals.start_unique_event()
+			if !_event:
+				_event = globals.start_random_event()
+		'resource':
+			selected_room = room_id
+			active_subroom = subroom_id
+			pay_stamina(subroom_data.stamina_cost)
+			input_handler.AddOrIncrementDict(active_location.gather_limit_resources, {subroom_data.resource : subroom_data.amount})
+			res_panel.get_node("SelectWorkers").visible = true
+			res_container.update()
+			clear_subroom()
+
+
+func clear_subroom():
+	if active_subroom == null:
+		print('error clearing subroom setup')
+		return
+	if selected_room == null:
+		print('error clearing subroom setup')
+		return
+	var data = ResourceScripts.game_world.rooms[selected_room]
+	data.subrooms[active_subroom].type = 'empty'
+	update_map()
+	active_subroom = null
+
 func reset_active_location(arg = null):
-	if input_handler.active_location.id != selected_location:
-		input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(selected_location)
+	if input_handler.active_location.id != active_location.id:
+		input_handler.active_location = active_location

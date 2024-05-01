@@ -364,6 +364,10 @@ var dungeon_encounter_chance = 0.2
 var dungeon_unique_encounter_chance = 0.1
 var exp_scroll_quest_reward = false
 
+var subroom_chance = 0.7
+#var additional_subroom_chance = 0.9 #0.2
+var additional_subroom_chance = 0.2
+
 #debug_only
 var allow_remote_intereaction = false
 var no_event_wait_time = false

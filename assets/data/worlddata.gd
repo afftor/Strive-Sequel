@@ -1711,7 +1711,6 @@ var random_dungeon_events = {
 #		reqs = [],#checks before event could spawn
 #		dungeons = ['dungeon_bandit_den'],#dungeons, which might have this event added on generation
 #		levels = [1,2,3], #optional
-#		stages = [1,2,3], #optional
 #		}
 }
 

@@ -30,15 +30,15 @@ func _ready():
 
 
 func update_purchase_btn():
-	$PurchaseButton/Label.text = gui_controller.exploration.hiremode.capitalize()
-	if gui_controller.exploration.hiremode == "sell":
+	$PurchaseButton/Label.text = gui_controller.exploration_city.hiremode.capitalize()
+	if gui_controller.exploration_city.hiremode == "sell":
 		$PurchaseButton.disabled = false
 	else:
-		$PurchaseButton.disabled = ((gui_controller.exploration.person_to_hire.calculate_price(true)) > ResourceScripts.game_res.money)
+		$PurchaseButton.disabled = ((gui_controller.exploration_city.person_to_hire.calculate_price(true)) > ResourceScripts.game_res.money)
 
 
 func hire_sell():
-	if gui_controller.exploration.hiremode == "hire":
+	if gui_controller.exploration_city.hiremode == "hire":
 		hire_character()
 	else:
 		sell_slave()
@@ -50,7 +50,7 @@ func show_summary(person = selected_char):
 		$PurchaseButton.visible = true
 		$Price.visible = true
 		$TextureRect.visible = true
-		if gui_controller.exploration.hiremode == "sell":
+		if gui_controller.exploration_city.hiremode == "sell":
 			$Price.text = str(round(person.calculate_price(true) / 2))
 			$ExploreSlaveInfoModule/Panel/obedlabel.visible = true
 		else:
@@ -136,8 +136,8 @@ func _on_Button_pressed():
 
 
 func hire_character():
-	input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(gui_controller.exploration.selected_location)
-	var person = gui_controller.exploration.person_to_hire
+	input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(gui_controller.exploration_city.selected_location)
+	var person = gui_controller.exploration_city.person_to_hire
 	if ResourceScripts.game_party.characters.size() >= ResourceScripts.game_res.get_pop_cap():
 		if ResourceScripts.game_res.get_pop_cap() < variables.max_population_cap:
 			input_handler.SystemMessage("You don't have enough rooms")
@@ -151,7 +151,7 @@ func hire_character():
 	input_handler.PlaySound("money_spend")
 	person.set_stat('is_hirable', false)
 	person.recruit() #ResourceScripts.game_party.add_slave(person)
-	person.travel.location = gui_controller.exploration.selected_location
+	person.travel.location = gui_controller.exploration_city.selected_location
 	person.remove_from_task()
 	hide()
 
@@ -161,8 +161,8 @@ func hire_character():
 
 	if input_handler.active_faction.has('slaves'):
 		input_handler.active_faction.slaves.erase(person.id)
-	if gui_controller.exploration.active_faction.slaves.has(person.id):
-		gui_controller.exploration.active_faction.slaves.erase(person.id)
+	if gui_controller.exploration_city.active_faction.slaves.has(person.id):
+		gui_controller.exploration_city.active_faction.slaves.erase(person.id)
 
 
 	# if input_handler.exploration_node.get_node("ExploreHireModule").is_visible_in_tree() == true:
@@ -172,22 +172,22 @@ func hire_character():
 		input_handler.active_character = person
 		input_handler.scene_characters.append(person)
 		input_handler.interactive_message(person.get_stat('hire_scene'), '', {})
-	gui_controller.exploration.faction_hire(true, gui_controller.exploration.current_pressed_area_btn, gui_controller.exploration.active_faction, gui_controller.exploration.market_mode)
+	gui_controller.exploration_city.faction_hire(true, gui_controller.exploration_city.current_pressed_area_btn, gui_controller.exploration_city.active_faction, gui_controller.exploration_city.market_mode)
 
 func sell_slave():
-	var selectedperson = gui_controller.exploration.person_to_hire
+	var selectedperson = gui_controller.exploration_city.person_to_hire
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'sell_slave_confirm', selectedperson.translate(tr("SELL") + " [name]?")])
 
 
 func sell_slave_confirm():
-	var selectedperson = gui_controller.exploration.person_to_hire
+	var selectedperson = gui_controller.exploration_city.person_to_hire
 	ResourceScripts.game_res.money += int(round(selectedperson.calculate_price(true)/2))
 	ResourceScripts.game_party.add_fate(selectedperson.id, tr("SOLD"))
 	ResourceScripts.game_party.remove_slave(selectedperson)
-	gui_controller.exploration.active_faction.slaves.append(selectedperson.id)
+	gui_controller.exploration_city.active_faction.slaves.append(selectedperson.id)
 #	selectedperson.is_players_character = false
 	input_handler.PlaySound("money_spend")
 #	input_handler.slave_list_node.rebuild()
-	gui_controller.exploration.sell_slave() #2test 
+	gui_controller.exploration_city.sell_slave() #2test 
 	self.hide()
 
