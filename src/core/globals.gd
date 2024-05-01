@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.8.5a'
+const gameversion = '0.8.5b'
 
 #time
 signal hour_tick
@@ -71,6 +71,8 @@ func _ready():
 		dir.make_dir(variables.userfolder + 'saves')
 	if !dir.dir_exists(variables.userfolder + 'savedcharacters'):
 		dir.make_dir(variables.userfolder + 'savedcharacters')
+	if !dir.dir_exists(variables.userfolder + 'portraits'):
+		dir.make_dir(variables.userfolder + 'portraits')
 	#init scenedata
 	for i in input_handler.dir_contents("res://assets/data/events"):
 		if i.find('.gd') < 0:

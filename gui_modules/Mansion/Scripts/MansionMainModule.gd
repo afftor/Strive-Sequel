@@ -579,7 +579,8 @@ func test_mode():
 		globals.AddItemToInventory(item)
 		character.equip(item)
 	#	character.get_stat('pregnancy', true).duration = 2
-		character.add_stat('charm', 100)
+		character.set_stat('charm', 100)
+		character.set_stat('wits', 100)
 	#	character.add_stat('wits', 100)
 		character.add_stat('hpmax', 100)
 		character.set_stat('eye_color','green')
@@ -704,6 +705,7 @@ func test_mode():
 		character.set_stat('sexuals_factor', 5)
 		character.set_stat('charm', 100)
 		character.set_stat('physics', 100)
+		character.set_stat('wits', 100)
 		character.set_stat('consent', 5)
 		#globals.impregnate(ResourceScripts.game_party.get_master(), character)
 		#character.get_stat('pregnancy', true).duration = 2
@@ -809,7 +811,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("maid_dress", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("service_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("cali_heirloom", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("craftsman_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("leather_collar", {}))
@@ -918,7 +920,7 @@ func test_mode():
 		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
-		input_handler.interactive_message('celena_shrine_find', '', {})
+		input_handler.interactive_message('zephyra_sword_2', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)
