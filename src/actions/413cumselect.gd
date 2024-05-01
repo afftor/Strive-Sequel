@@ -13,6 +13,8 @@ const takertags = ['nooragsm']
 const giver_skill = []
 const taker_skill = []
 const consent_level = 10
+const consent_giver = 0
+const consent_taker = 0
 
 func getname(state = null):
 	return "Selectively Cum"
@@ -25,7 +27,7 @@ func getongoingdescription(givers, takers):
 
 func requirements():
 	var valid = true
-	if givers.size() != 1 || takers.size() != 1 || givers[0].sens < 900:
+	if givers.size() != 1 || takers.size() != 1 || givers[0].sens < 800:
 		valid = false
 	for i in givers:
 		if i.subduing != null || i.person.get_stat('penis_size') == '' || i.strapon == true:

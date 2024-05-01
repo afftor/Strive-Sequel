@@ -483,6 +483,7 @@ func slave_list_manager():
 	SlaveModule.show_slave_info()
 
 func update_sex_date_buttons():
+	SexSelect.get_node("SexButton").hint_tooltip = ""
 	if ResourceScripts.game_progress.unlimited_date_sex:
 		if sex_participants.has(ResourceScripts.game_party.get_master()):
 			SexSelect.get_node("DateButton").disabled = true
@@ -495,10 +496,9 @@ func update_sex_date_buttons():
 		SexSelect.get_node("SexButton").disabled = true
 	
 	for i in sex_participants:
-		if i.has_status("no_sex") or !i.has_status("sex_basic"):
+		if i.has_status("no_sex"):
 			SexSelect.get_node("SexButton").disabled = true
-		if !i.has_status("sex_group") and sex_participants.size() > 2:
-			SexSelect.get_node("SexButton").disabled = true
+			SexSelect.get_node("SexButton").hint_tooltip = "One of unique characters has not proceeded their questline yet"
 	
 	if sex_participants.size() > 2 or sex_participants.size() == 0: 
 		SexSelect.get_node("DateButton").disabled = true
@@ -579,7 +579,8 @@ func test_mode():
 		globals.AddItemToInventory(item)
 		character.equip(item)
 	#	character.get_stat('pregnancy', true).duration = 2
-		character.add_stat('charm', 100)
+		character.set_stat('charm', 100)
+		character.set_stat('wits', 100)
 	#	character.add_stat('wits', 100)
 		character.add_stat('hpmax', 100)
 		character.set_stat('eye_color','green')
@@ -627,7 +628,7 @@ func test_mode():
 		character.get_random_traits()
 		#character.armor = 135
 		#character.set_stat('wits', 20)
-		character.set_stat('consent', 100)
+		character.set_stat('consent', 5)
 		character.set_stat('charm_factor', 2)
 		character.set_stat('physics_factor', 6)
 		character.set_stat('sexuals_factor', 6)
@@ -667,6 +668,7 @@ func test_mode():
 		character.create('Goblin', 'female', 'random')
 		character.fill_boosters()
 		character.set_stat('height', 'average')
+		character.set_slave_category('servant')
 		characters_pool.move_to_state(character.id)
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
 		character.create('Goblin', 'female', 'random')
@@ -703,7 +705,8 @@ func test_mode():
 		character.set_stat('sexuals_factor', 5)
 		character.set_stat('charm', 100)
 		character.set_stat('physics', 100)
-		character.set_stat('consent', 100)
+		character.set_stat('wits', 100)
+		character.set_stat('consent', 5)
 		#globals.impregnate(ResourceScripts.game_party.get_master(), character)
 		#character.get_stat('pregnancy', true).duration = 2
 		var text = ''
@@ -751,7 +754,6 @@ func test_mode():
 
 #		character.set_stat('loyalty', 100)
 #		character.set_stat('authority', 100)
-		character.set_stat('submission', 95)
 		character.add_stat('loyalty', 95)
 		yield(get_tree(),'idle_frame')
 		character.xp_module.base_exp = 1000
@@ -776,11 +778,10 @@ func test_mode():
 					value = 'daisy',
 					args = [
 						{code = 'loyalty', value = 150, operant = "+"},
-						{code = 'consent', value = 150, operant = "+"},
+						{code = 'consent', value = 5, operant = "+"},
 						{code = 'price', value = 3000, operant = "+"},
 						{code = 'sexuals_factor', value = 2, operant = "+"},
 						{code = 'growth_factor', value = 2, operant = "+"},
-						{code = 'submission', operant = '+', value = 50},
 						{code = 'sex_skills_oral', operant = "+", value = 100},
 						{code = 'sex_skills_petting', operant = "+", value = 100},
 						{code = 'sex_skills_pussy', operant = "+", value = 100},
@@ -810,10 +811,10 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("maid_dress", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("service_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("cali_heirloom", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("craftsman_suit", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("leather_collar", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("seethrough_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("sacred_bowl", {}))
@@ -919,7 +920,7 @@ func test_mode():
 		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
-		#input_handler.interactive_message('zephyra_brush_8', '', {})
+		input_handler.interactive_message('zephyra_sword_2', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)
@@ -932,7 +933,7 @@ func test_mode():
 
 		#ResourceScripts.game_progress.completed_quests.append("daisy_lost")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-		#input_handler.interactive_message('xari_encounter1', '', {})
+#		input_handler.interactive_message('daisy_dress_acquired_lewd_3', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		

@@ -14,6 +14,8 @@ const takertags = ['vagina', 'pet']
 const giver_skill = ['pussy']
 const taker_skill = ['pussy']
 const consent_level = 25
+const consent_giver = 3
+const consent_taker = 3
 
 func getname(state = null):
 	return "Tribadism"

@@ -692,7 +692,7 @@ var statdata = {
 		code = 'consent',
 		name = '',
 		descript = '',
-		percent = true,
+		direct = true,
 		baseicon = 'food_love',
 	},
 	xpreward = {

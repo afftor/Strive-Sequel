@@ -36,10 +36,15 @@ func build_item_list():
 		var item = ResourceScripts.game_res.items[id]
 		if !item.tags.has('enchantable'):
 			continue
+		if item.curse != null or !item.enchants.empty():
+			continue
 		var panel = input_handler.DuplicateContainerTemplate($ItemList/ItemScroll/Items, 'Button')
 		panel.connect('pressed', self, 'select_item', [id])
 		item.set_icon(panel.get_node('Icon'))
 		panel.pressed = selected_item == id
+		if item.owner != null:
+			panel.get_node("WornIcon").show()
+			globals.connecttexttooltip(panel.get_node("WornIcon"),'Is equipped by ' + item.get_owner().get_short_name())
 
 
 func select_item(id):
@@ -184,12 +189,21 @@ func build_item_panel(panel, item):
 	var stats_text = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line2')
 	stats_text.bbcode_text = globals.TextEncoder(globals.build_desc_for_bonusstats(item.bonusstats))
 	
-	var curse_text = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line2')
-	var text = ""
+	if panel.name == 'Weapon1' && item.get_owner() != null:
+		var person = item.get_owner()
+		panel.get_node('Frame/wearericon').set_texture(person.get_icon())
+		panel.get_node('Frame').show()
+		
+	elif panel.name == 'Weapon1':
+		panel.get_node('Frame').hide()
+		
+		
 	if item.curse == null:
 		pass
 		#text += 'no'
 	else:
+		var text = ""
+		var curse_text = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line2')
 		text = "Curse: "
 		if item.curse_known:
 			var cursedata = Items.curses[item.curse]
@@ -198,7 +212,7 @@ func build_item_panel(panel, item):
 			text += 'unknown minor'
 		elif item.curse.ends_with('major'):
 			text += 'unknown major'
-	curse_text.bbcode_text = text
+		curse_text.bbcode_text = text
 	for id in item.enchants:
 		var ench_text = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line2')
 		ench_text.bbcode_text = "%s lv %d" % [tr(Items.enchantments[id].name), item.enchants[id]]

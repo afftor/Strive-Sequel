@@ -143,7 +143,7 @@ var data = {
 					{code = 'wits_factor', operant = '=', value = 1},
 					{code = 'wits', operant = '=', value = 3},
 					{code = 'charm', operant = '=', value = 8},
-					{code = 'consent', operant = '=', value = 200},
+					{code = 'consent', operant = '=', value = 6},
 					]
 				},
 				]

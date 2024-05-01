@@ -433,6 +433,9 @@ func remove_from_farm(res):
 
 
 func remove_from_task():
+	if work == 'disabled':
+		print("There is a critical error - attempting to enable character a wrong way. Please try to remember and report chain of actions that can be its cause. All saves after this may (or may not) be broken.")
+		return
 	if work == 'produce':
 		for res in farming_rules:
 			if !farming_rules[res]: continue
@@ -615,17 +618,17 @@ func select_brothel_activity():
 	var non_sex_rules = []
 	var sex_rules = []
 	
-	var no_training = false
+	var no_consent = false
 	for i in brothel_rules:
 		if !brothel_rules[i] || i in ['males','futa','females']: continue
 		if variables.brothel_non_sex_options.has(i):
 			non_sex_rules.append(i)
 		else:
 			sex_rules.append(i)
-			if parent.get_ref().checkreqs([{code = 'trait', trait = tasks.gold_tasks_data[i].req_training, check = false}]):
-					no_training = true
 	
-	if sex_rules.size() > 0:
+	
+	
+	if sex_rules.size() > 0 && (brothel_rules.males || brothel_rules.futa || brothel_rules.females):
 		parent.get_ref().add_stat('metrics_serviceperformed', 1)
 		if parent.get_ref().has_status('harlotry'):
 			parent.get_ref().rest_tick()
@@ -646,18 +649,29 @@ func select_brothel_activity():
 			var data = tasks.gold_tasks_data[highest_value.code]
 			var bonus_gold = 0
 			
+			var possible_customer_genders = []
+			if brothel_rules.males:
+				possible_customer_genders.append('male')
+			if brothel_rules.females:
+				possible_customer_genders.append('female')
+			if brothel_rules.futa:
+				possible_customer_genders.append('futa')
+			var brothel_customer_gender = possible_customer_genders[randi() % possible_customer_genders.size()]
+				
 			
-			if parent.get_ref().get_stat('vaginal_virgin') && sex_rules.has('pussy') && (brothel_rules.has('males') || brothel_rules.has('futa')):
+			var penis_check = ((brothel_rules.males || brothel_rules.futa) && brothel_customer_gender in ["male", "futa"])
+			
+			if parent.get_ref().get_stat('vaginal_virgin') && sex_rules.has('pussy') && penis_check:
 				parent.get_ref().set_stat('vaginal_virgin', false)
 				parent.get_ref().set_stat('vaginal_virgin_lost', {source = 'brothel_customer'})
 				bonus_gold += parent.get_ref().calculate_price() * 0.01
-			if sex_rules.has('pussy') && (brothel_rules.has('males') || brothel_rules.has('futa')):
+			if sex_rules.has('pussy') && penis_check:
 				var tmpchar = ResourceScripts.scriptdict.class_slave.new("test_main")
 				tmpchar.create('random', 'male', 'random')
 				if randf() < variables.brothel_pregnancy_chance:
 					globals.impregnate(tmpchar, parent.get_ref())
 				tmpchar.is_active = false
-			if parent.get_ref().get_stat('anal_virgin') && sex_rules.has('anal') && (brothel_rules.has('males') || brothel_rules.has('futa')):
+			if parent.get_ref().get_stat('anal_virgin') && sex_rules.has('anal') && penis_check:
 				parent.get_ref().set_stat('anal_virgin', false)
 				parent.get_ref().set_stat('anal_virgin_lost', {source = 'brothel_customer'})
 			
@@ -666,7 +680,7 @@ func select_brothel_activity():
 			parent.get_ref().add_stat('metrics_randompartners', globals.fastif(sex_rules.has('group'), 2, 1))
 			
 			var goldearned = highest_value.value * (1 + (0.1 * sex_rules.size())) * min(5, (1 + 0.01 * parent.get_ref().calculate_price())) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 500%
-			if no_training == true:
+			if parent.get_ref().get_stat('consent') < data.min_consent == true:
 				goldearned = goldearned - goldearned/3
 			
 			goldearned = apply_boosters(goldearned)
@@ -679,7 +693,7 @@ func select_brothel_activity():
 			
 			
 			#TODO add decriptions and impregnation
-			update_brothel_log(parent.get_ref().get_stat('name'), goldearned)
+			update_brothel_log(parent.get_ref().get_stat('name'), goldearned, data, brothel_customer_gender)
 			return
 	elif non_sex_rules.size() > 0:
 		parent.get_ref().add_stat('metrics_serviceperformed', 1)
@@ -693,32 +707,40 @@ func select_brothel_activity():
 		
 		var goldearned = highest_value.value * min(4, (1 + 0.001 * parent.get_ref().calculate_price()))
 		
+		
 		goldearned = apply_boosters(goldearned)
 		goldearned = round(goldearned)
 		
 		parent.get_ref().add_stat('metrics_goldearn', goldearned)
 		
 		ResourceScripts.game_res.money += goldearned
-		update_brothel_log(parent.get_ref().get_stat('name'), goldearned)
+		update_brothel_log(parent.get_ref().get_stat('name'), goldearned, data)
 	else:
 		remove_from_task()
 		parent.get_ref().rest_tick()
 	
 
-func update_brothel_log(ch_name, gold):
-	var date = ResourceScripts.game_globals.date
-	var hour = ResourceScripts.game_globals.hour
+func update_brothel_log(ch_name, gold, data, customer_gender = ""):
 	if globals.log_node != null && weakref(globals.log_node).get_ref():
-		var newfield = globals.log_node.get_node("ServiceLog/VBoxContainer/field").duplicate()
+		if ResourceScripts.game_globals.hour == 4:
+			globals.log_node.clean_service_log()
+		var text = ""
+		if customer_gender != "":
+			text = tr("BROTHELLOGSEX")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper()), customer_gender.capitalize()]
+			#text = tr(ch_name) + " earned " + str(gold) + " gold doing " + tr("BROTHEL" + data.code.to_upper()) + " with a " + customer_gender
+		else:
+			text = tr("BROTHELLOGNO_SEX")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper())]
+			#text = tr(ch_name) + " earned " + str(gold) + " gold working as " + tr("BROTHEL" + data.code.to_upper())
+		var ServiceLog = globals.log_node.get_node("ServiceLog")
+		var newfield = ServiceLog.get_node("VBoxContainer/field").duplicate()
 		newfield.show()
-		newfield.get_node("char").bbcode_text = tr(ch_name)
-		newfield.get_node("gold").bbcode_text = tr('LOGSERVICEGOLD') % gold
-		#newfield.get_node("date").bbcode_text = "[right]W %d D %d - %s[/right]" % [(date -1) / 7 + 1, (date -1) % 7 + 1, tr(variables.timeword[hour])]
-		globals.log_node.get_node("ServiceLog/VBoxContainer").add_child(newfield)
-		yield(globals.get_tree(), 'idle_frame')
-		var textfield = newfield.get_node('date')
-		textfield.rect_size.y = textfield.get_v_scroll().get_max()
+		newfield.get_node("text").bbcode_text = text
+		ServiceLog.get_node("VBoxContainer").add_child(newfield)
+		var textfield = newfield.get_node('text')
+		textfield.rect_size.y = textfield.get_content_height()
 		newfield.rect_min_size.y = textfield.rect_size.y
+		yield(globals.get_tree(), 'idle_frame')
+		ServiceLog.scroll_vertical = ServiceLog.get_v_scrollbar().max_value
 
 func apply_boosters(value):
 	var mul = 1.0
@@ -940,6 +962,7 @@ func _get_base_crafting_diff(): #2add
 func fill_task_mods(task):
 	task_mods.crit = parent.get_ref().get_stat('base_task_crit_chance')
 	task_mods.diff = _get_base_crafting_diff()
+	task_mods.eff = 0
 	var item
 	if parent.get_ref().equipment.gear.tool != null:
 		item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
@@ -962,6 +985,7 @@ func fill_task_mods(task):
 func fill_task_mods_res(task):
 	task_mods.crit = parent.get_ref().get_stat('base_task_crit_chance')
 	task_mods.diff = 0
+	task_mods.eff = 0
 	var item
 	if parent.get_ref().equipment.gear.tool != null:
 		item = ResourceScripts.game_res.items[parent.get_ref().equipment.gear.tool]
@@ -995,6 +1019,8 @@ func get_progress_task(temptask, tempsubtask, count_crit = false):
 		value = value * 2
 	if location.has('gather_mod'):
 		value *= location.gather_mod
+#	print(task_mods)
+#	print(value)
 	return value
 
 
@@ -1013,6 +1039,8 @@ func get_progress_resource(tempresource, count_crit = false):
 		value = value * 2
 	if location.has('gather_mod'):
 		value *= location.gather_mod
+#	print(task_mods)
+#	print(value)
 	return value
 
 

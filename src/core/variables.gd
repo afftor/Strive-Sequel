@@ -311,13 +311,13 @@ var stat_description = {
 var basic_max_hp = 100
 var basic_max_mp = 30
 var basic_hp_regen = 6
-var basic_mp_regen = 1.2
-var mp_regen_per_magic = 0.1
+var basic_mp_regen = 1.5
+var mp_regen_per_magic = 0.5
 var max_mp_per_magic_factor = 10
 var basic_obed_drain = 20
 var basic_max_obed = 100
 
-var basic_lust_per_tick = 0.57 * 6
+var basic_lust_per_tick = 3.5
 
 var authority_lines = { #possibly obsolete
 	low = "Defiance",
@@ -454,7 +454,8 @@ var personality_conversion_rates = {
 	bold = 0.65,
 	shy = 0.1,
 	kind = 0.2,
-	serious = 0.5
+	serious = 0.5,
+	neutral = 0.3
 }
 
 var reputation_tresholds = [0, 300, 500, 1000, 1500]
@@ -505,5 +506,18 @@ var factor_personality_changes = { #chance of change of primary and seondary axi
 	5 : [90, 10],
 	6 : [100, 0]
 }
+
+var consent_dict = {
+	0: tr("CONSENT0"), #no consent, needs dating
+	1: tr("CONSENT1"), #kiss
+	2: tr("CONSENT2"), #handjob
+	3: tr("CONSENT3"), #blowjob
+	4: tr("CONSENT4"), #penetration
+	5: tr("CONSENT5"), #anal/group
+	6: tr("CONSENT6"), #anal with group
+}
+
+
+var resist_text_chancce = 0.25 #chance to display text of resisting actions during sex minigame
 
 var mentorship_list = ['loyalty_basic_servitude', 'loyalty_combatant']

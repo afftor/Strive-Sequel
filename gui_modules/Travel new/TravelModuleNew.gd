@@ -617,7 +617,7 @@ func hide():
 		.hide()
 
 
-func confirm_travel():
+func confirm_travel(): #hope this script is obsolete
 	if location_selected.id == from_location_selected.id: return
 	var travel_cost = globals.calculate_travel_time(from_location_selected.id, location_selected.id)
 	for chid in characters:

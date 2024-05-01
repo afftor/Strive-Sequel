@@ -15,6 +15,10 @@ const giver_skill = ['oral']
 const taker_skill = []
 const consent_level = 15
 
+
+const consent_giver = 3
+const consent_taker = 3
+
 func getname(state = null):
 	if givers.size() == 0 || takers.size() == 0 || givers.size() + takers.size() == 2:
 		return "Blowjob"
@@ -43,9 +47,6 @@ func requirements():
 #				valid = false
 			if i.person.get_stat('penis_size') == '':
 				valid = false
-	for i in givers:
-		if !i.person.has_status('sex_oral'):
-			valid = false
 	return valid
 
 func givereffect(member):

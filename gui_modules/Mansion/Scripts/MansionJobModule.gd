@@ -756,22 +756,28 @@ func show_brothel_options():
 		if (i == 'pussy' && person.get_stat('has_womb') == false) || i == 'penetration' && person.get_stat('penis_size') == '':
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
+		var text = ''
+		text += "Minimum consent: {color=aqua|" + tr(variables.consent_dict[tasks.gold_tasks_data[i].min_consent]) + "},"
+		if person.is_master() == false:
+			text +=  "[name]'s consent: {color=aqua|" + tr(variables.consent_dict[int(person.get_stat('consent'))]) + "}\n"
 		newbutton.text = tr("BROTHEL"+i.to_upper())
-		globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))
+		text += person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")) 
 		newbutton.pressed = person.check_brothel_rule(i)
 		newbutton.connect('pressed', self, 'switch_brothel_option',[newbutton, i])
 		newbutton.add_to_group('sex_option')
 		#if person.get_work() == '':
 		#	newbutton.disabled = true
 		if person.is_master() == false:
-			if person.checkreqs([{code = 'trait', trait = tasks.gold_tasks_data[i].req_training, check = false}]):
+			if person.checkreqs([{code = 'trait', trait = tasks.gold_tasks_data[i].req_training, check = false}]) && (tasks.gold_tasks_data[i].has('min_consent') && person.get_stat('consent') < tasks.gold_tasks_data[i].min_consent):
 				if person.get_stat('slave_class') != 'slave':
 					newbutton.disabled = true
-					globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT") + tr("LACKSEXTRAINING")))
+					text += tr("LACKSEXTRAINING")
 				else:
 					newbutton.set("custom_colors/font_color", variables.hexcolordict['red'])
 					newbutton.set("custom_colors/font_color_pressed", variables.hexcolordict['red'])
-					globals.connecttexttooltip(newbutton, person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT") + tr("LACKSEXTRAININGSLAVE")))
+					text += tr("LACKSEXTRAININGSLAVE")
+				globals.connecttexttooltip(newbutton, person.translate(text))
+		text = ''
 	
 	for i in brothel_rules.sexes:
 		globals.connecttexttooltip(get_node("BrothelRules/sexes_container/"+i), person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")))
@@ -816,6 +822,15 @@ func update_brothel_text():
 	else:
 		text = "{color=green|"+tr("SERVICENOSEX") + "}"
 	
+	if can_do_sex:
+		var has_clients = false
+		for i in $BrothelRules/sexes_container.get_children():
+			if i.pressed:
+				has_clients = true
+				break
+		if !has_clients:
+			text += "\n\n{color=red|" + tr("BROTHELWARNING") + "}"
+	
 	$BrothelRules/brothel_descript.bbcode_text = globals.TextEncoder(person.translate(text))
 
 func switch_brothel_option(button, option):
@@ -855,13 +870,13 @@ func character_hovered(button, person):
 	if person.equipment.gear.tool != null:
 		var worktool
 		var item = ResourceScripts.game_res.items[person.equipment.gear.tool]
-		var item_base = item.itembase
+		var item_base = item.toolcategory
 		var req_tool
 		if selected_job.has("worktool"):
 			req_tool = selected_job.worktool
 		if selected_job.has("tool_type"):
 			req_tool = selected_job.tool_type
-		if req_tool == item_base:
+		if req_tool in item_base or ResourceScripts.game_res.upgrades.has('tool_swapper') and ResourceScripts.game_res.upgrades.tool_swapper > 0:
 			$ToolLabel.set("custom_colors/font_color", variables.hexcolordict['green'])
 
 

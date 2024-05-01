@@ -14,6 +14,8 @@ const takertags = ['noorgasm']
 const giver_skill = []
 const taker_skill = []
 const consent_level = 30
+const consent_giver = 0
+const consent_taker = 3
 
 func getname(state = null):
 	return "Blindfold"

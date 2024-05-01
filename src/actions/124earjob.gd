@@ -15,6 +15,10 @@ const giver_skill = []
 const taker_skill = ['petting']
 const consent_level = 30
 
+
+const consent_giver = 0
+const consent_taker = 3
+
 func getname(state = null):
 	return "Earjob"
 
@@ -38,8 +42,6 @@ func requirements():
 				valid = false
 		for i in takers:
 			if i.person.get_stat('ears') in ['normal','orcish']:
-				valid = false
-			if !i.person.has_status('sex_perv'):
 				valid = false
 	return valid
 

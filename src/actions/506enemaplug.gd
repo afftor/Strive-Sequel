@@ -13,6 +13,8 @@ const takertags = ['shame', 'punish', 'anal']
 const giver_skill = []
 const taker_skill = []
 const consent_level = 30
+const consent_giver = 0
+const consent_taker = 5
 
 func getname(state = null):
 	return "Enema + Plug"
@@ -32,9 +34,6 @@ func requirements():
 		valid = false
 	elif givers.size() > 2:
 		valid = false
-	for i in givers:
-		if !i.person.has_status('sex_adv'):
-			valid = false
 	return valid
 
 #Disabling until something is decided about tools

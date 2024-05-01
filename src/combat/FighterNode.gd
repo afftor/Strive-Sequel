@@ -172,6 +172,9 @@ func add_buff(i):
 			'barrier':
 				newbuff.get_node("Label").show()
 				newbuff.get_node("Label").text = str(fighter.shield)
+			'lust':
+				newbuff.get_node("Label").show()
+				newbuff.get_node("Label").text = str(fighter.get_stat('lust'))
 	newbuff.hint_tooltip = text
 	var tmp = i.get_duration()
 	if tmp != null:

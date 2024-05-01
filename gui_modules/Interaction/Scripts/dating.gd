@@ -131,7 +131,7 @@ func initiate(tempperson):
 	self.mood = 0
 	self.drunkness = 0
 	self.turn = 10
-	self.consStart = tempperson.get_stat('consent')
+	self.consStart = tr(variables.consent_dict[int(tempperson.get_stat('consent'))])
 	self.finish_encounter = false
 	date = false
 	public = false
@@ -320,7 +320,7 @@ func updatelist():
 				newnode.disabled = true
 
 	$panel/ScrollContainer/GridContainer.move_child($panel/ScrollContainer/GridContainer/Button, $panel/ScrollContainer/GridContainer.get_children().size())
-	var text = tr("SIBLINGMODULECONSENT") + str(floor(person.get_stat("consent"))) 
+	var text = tr("SIBLINGMODULECONSENT") + tr(variables.consent_dict[int(person.get_stat("consent"))])
 	$authconslabel.text = text
 	#$mana/Label.text = str(globals.resources.mana)
 	$gold/Label.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
@@ -659,7 +659,6 @@ func flirt(person, counter):
 
 func intimate(person, counter):
 	var text = tr("DATING_INTIM_BED_1")
-
 	if mood >= 80 - master.get_stat('charm_factor') * 7:
 		var has_unknown_traits = false
 		var trait_array = person.get_all_sex_traits()
@@ -677,11 +676,13 @@ func intimate(person, counter):
 		else:
 			text += tr("DATING_INTIM_BED_4")
 			text += "}"
+		if person.get_stat('consent') < ceil(person.get_stat("sexuals_factor")/2.0):
+			person.add_stat('consent', 1)
+			text += "\n" + person.translate(tr("DATING_INTIM_BED_6")) + tr(variables.consent_dict[int(person.get_stat('consent'))])  + "}"
 	else:
 		text += tr("DATING_INTIM_BED_5")
 		self.mood -= 8
 	return text
-
 
 func touch(person, counter):
 
@@ -832,7 +833,7 @@ func propose(person, counter):
 		text += "}"
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_proposal_was_forced')) + "\n"
 
-	if person.get_stat('consent') >= 25:
+	if person.get_stat('consent') >= 4:
 		gave_consent = true
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.propose_already_reached_consent)
@@ -861,7 +862,6 @@ func propose(person, counter):
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_proposal_agree'))
 
 		if gave_consent == true:
-			person.set_stat('consent', max(25, person.get_stat('consent')))
 			person.set_stat('was_proposed',true)
 
 		return text
@@ -1514,23 +1514,16 @@ func calculateresults():
 	+ "\nMood: " + str(endmood)
 	+ "\nFear: " + str(endfear)
 	)
-#	+ "\nLoyalty Gained: +" + str(loyal_bonus)
-
-#	+ "\nConsent Gained: " + str(floor(person.get_stat('consent')-self.consStart))
-	#+ "\nAuthority Gained: " + str(floor(person.get_stat("authority") - self.authStart))
 	if endmood >= endfear:
 #		loyalty = ceil(endmood/4) + max(0,(master.get_stat('charm_factor')) - 3) * 5
 		loyalty = 6 + master.get_stat('charm_factor') * 2 +  person.get_stat('tame_factor') * 2
-		consent = master.get_stat("sexuals_factor")*4
 		text += (tr("DATING_POSITIVE_MODE_1")
 		+ tr("DATING_LOYALTY_1") + str(loyalty) + tr("DATING_CHARMF_BONUS_1") + str( max(0,(master.get_stat('charm_factor')) - 3) * 5) + ")"
-		+ tr("DATING_CONSENT_1") + str(consent) + tr("DATING_SEXF_BONUS_1") + str(master.get_stat("sexuals_factor"))+")"
 		+ tr("DATING_AUTHORITY_BONUS_1") + str(authority)
 		+ tr("DATING_AUTHORITY_BONUS_2")
 		)
 
 		person.add_stat("loyalty", loyalty)
-		person.add_stat("consent", consent)
 
 	else:
 		loyalty = 6 + master.get_stat('charm_factor') + person.get_stat('timid_factor') 
@@ -1543,7 +1536,7 @@ func calculateresults():
 	
 	person.add_stat("obedience", obedience)
 
-	if person.get_stat('consent') >= 30 or (person.has_status('sex_basic') and  person.get_stat('consent')*2 > 110 - 75):
+	if person.get_stat('consent') >= 2:
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_sex_offer')) + tr("DATING_SEX_OFFER_1")
 		sex_offer = true
 
@@ -1723,7 +1716,7 @@ var actionsdict = {
 		group = 'Affection',
 		name = tr("DATING_PROPOSE_1"),
 		descript = tr("DATING_PROPOSE_DESC_1"),
-		reqs = [{code = 'stat', stat = 'consent', operant = 'lt', value = 25}, {code = 'stat', stat = 'was_proposed', operant = 'eq', value = false}],
+		reqs = [{code = 'stat', stat = 'consent', operant = 'lt', value = 3}, {code = 'stat', stat = 'was_proposed', operant = 'eq', value = false}],
 		location = ['bedroom'],
 		effect = 'propose',
 	},

@@ -97,12 +97,12 @@ func equip(item, item_prev_id = null):
 	parent.get_ref().recheck_effect_tag('recheck_item')
 
 
-func unequip(item):
+func unequip(item, hard = true):
 	#shuold be reworked due to new mechanics
 	#probably fixed
 	var duplicate = globals.get_duplicate_id_if_exist(item)
 	
-	if duplicate != null:
+	if duplicate != null and hard:
 		var duplicate_item = ResourceScripts.game_res.items[duplicate]
 		if duplicate_item.owner == null:
 			if duplicate != item.id:
@@ -124,15 +124,15 @@ func unequip(item):
 	for e in arr:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
-	if item.curse!= null:
+	if item.curse!= null and hard:
 		item.destroy()
 	parent.get_ref().recheck_effect_tag('recheck_item')
 
 
-func clear_equip():
+func clear_equip(hard = true):
 	for i in gear:
 		if gear[i] != null:
-			unequip(ResourceScripts.game_res.items[gear[i]])
+			unequip(ResourceScripts.game_res.items[gear[i]], hard)
 
 
 func get_weapon_element():

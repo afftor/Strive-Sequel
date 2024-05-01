@@ -15,6 +15,10 @@ const giver_skill = ['petting']
 const taker_skill = ['anal']
 const consent_level = 25
 
+
+const consent_giver = 0
+const consent_taker = 3
+
 func getname(state = null):
 	return "Ass Fingering"
 
@@ -31,12 +35,6 @@ func requirements():
 			valid = false
 	if takers.size() < 1 || givers.size() < 1 || givers.size() + takers.size() > 3:
 		valid = false
-	for i in takers:
-		if !i.person.has_status('sex_anal'):
-			valid = false
-#	for i in takers:
-#		if i.anus != null:
-#			valid = false
 	return valid
 
 func givereffect(member):

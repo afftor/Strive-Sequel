@@ -143,8 +143,8 @@ margin_bottom = 51.0
 rect_min_size = Vector2( 0, 51 )
 toggle_mode = true
 texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 10 )
-texture_hover = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 10 )
 texture_disabled = ExtResource( 20 )
 expand = true
 
@@ -267,9 +267,6 @@ margin_top = 152.0
 margin_right = 400.0
 margin_bottom = 766.0
 theme = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CharList"]
 margin_left = 25.0

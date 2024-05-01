@@ -21,7 +21,7 @@ var npc_reference = null
 var last_escape_day_check
 var tags = []
 #base combat stats
-var hp = 100 setget hp_set
+var hp = 100 setget hp_set, hp_get
 var mp = 50 setget mp_set
 var shield = 0 setget set_shield
 var defeated = false
@@ -299,10 +299,10 @@ func get_class_icon():
 		return images.icons.class_master
 	elif get_stat('slave_spec') != null:
 		var upgrade_data = Traitdata.slave_profs[get_stat('slave_spec')]
-		if upgrade_data.icon is String:
-			return load(upgrade_data.icon)
+		if upgrade_data.icon_small is String:
+			return load(upgrade_data.icon_small)
 		else:
-			return upgrade_data.icon
+			return upgrade_data.icon_small
 	elif get_stat('slave_class') == 'servant':
 		return images.icons.class_servant
 	else:
@@ -412,13 +412,13 @@ func equip(item, item_prev_id = null):
 	set_stat('portrait_update', true)
 	equipment.equip(item, item_prev_id)
 
-func unequip(item):
+func unequip(item, hard = true):
 	set_stat('portrait_update', true)
-	equipment.unequip(item)
+	equipment.unequip(item, hard)
 
-func unequip_all():
+func unequip_all(hard = true):
 	set_stat('portrait_update', true)
-	equipment.clear_equip()
+	equipment.clear_equip(hard)
 
 
 func unlock_class(prof, satisfy_progress_reqs = false):
@@ -550,6 +550,9 @@ func recruit_and_return():
 
 
 func set_work(task):
+	if xp_module.work == 'disabled' and task != 'disabled':
+		print("There is a critical error - attempting to enable character a wrong way. Please try to remember and report chain of actions that can be its cause. All saves after this may (or may not) be broken.")
+		return
 	xp_module.remove_from_task()
 	xp_module.work = task
 	if task == 'produce':
@@ -953,6 +956,12 @@ func need_heal():
 	return statlist.need_heal()
 
 #core functions
+func hp_get():
+	if hp > get_stat('hpmax'):
+		hp = get_stat('hpmax')
+	return hp
+
+
 func hp_set(value):
 	if npc_reference == 'combat_global': return
 	if hp <= 0:
@@ -1039,8 +1048,12 @@ func affect_char(i):
 		'stat_set':
 			set_stat(i.stat, i.value)
 		'effect':
-			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[i.value])
-			apply_effect(effects_pool.add_effect(eff))
+			var eff = Effectdata.effect_table[i.value].duplicate()
+			if i.has('override'):
+				for k in i.override:
+					eff[k] = i.override[k]
+			var neweff = effects_pool.e_createfromtemplate(eff)
+			apply_effect(effects_pool.add_effect(neweff))
 		'teleport':
 			teleport(i.value)
 		'set_availability':
@@ -1719,7 +1732,7 @@ func check_skill_availability(s_code, target):
 	if !check_cost(template.cost):
 		descript = get_short_name() + ": " + tr("CANT_PAY_COSTS_LABEL") + "'"
 		check = false
-	if skills.social_skills_charges.has(s_code) && skills.social_skills_charges[s_code] >= template.charges:
+	if skills.social_skills_charges.has(s_code) && skills.social_skills_charges[s_code] >= Skilldata.get_charges(template, self):
 		descript = get_short_name() + ": " + template.name + " - " + tr("NO_CHARGES_LEFT_LABEL") + "."
 		check = false
 	if template.has('globallimit') && ResourceScripts.game_party.global_skills_used.has(s_code) && ResourceScripts.game_party.global_skills_used[s_code] >= template.globallimit:

@@ -13,7 +13,7 @@ func _process(delta):
 func _init():
 	set_process(false)
 
-func showup(node, scene_name):
+func showup(node, text):
 	if node == null:
 		return
 	parentnode = node
@@ -28,8 +28,8 @@ func showup(node, scene_name):
 	if get_rect().end.y+125 > screen.size.y:
 		rect_global_position.y -= get_rect().end.y+125 - screen.size.y
 	
-	var sex_scenes = ResourceScripts.scriptdict.sex_scenes.new().sex_scenes
-	$VBoxContainer/BottomText.text = sex_scenes[scene_name]
+	#var sex_scenes = ResourceScripts.scriptdict.sex_scenes.new().sex_scenes
+	$VBoxContainer/BottomText.text = text#sex_scenes[scene_name]
 	
 	
 	show()

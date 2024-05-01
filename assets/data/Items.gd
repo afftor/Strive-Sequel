@@ -332,7 +332,7 @@ var materiallist = {
 		icon = load("res://assets/images/iconsitems/item_bread.png"),
 		price = 2,
 		type = 'food',
-		tags = ['grain'],
+		tags = ['grain','cooked'],
 	},
 	meatsoup = {
 		code = 'meatsoup',
@@ -341,7 +341,7 @@ var materiallist = {
 		icon = load("res://assets/images/iconsitems/item_soup.png"),
 		price = 3, #6->9 gold profit per craft
 		type = 'food',
-		tags = ['vege', 'meat'],
+		tags = ['vege', 'meat','cooked'],
 	},
 	
 	curry = {
@@ -351,7 +351,7 @@ var materiallist = {
 		icon = load("res://assets/images/iconsitems/item_curry.png"),
 		price = 3,
 		type = 'food',
-		tags = ['grain', 'meat'],
+		tags = ['grain', 'meat','cooked'],
 	},
 	friedfish = {
 		code = 'friedfish',
@@ -360,7 +360,7 @@ var materiallist = {
 		icon = load("res://assets/images/iconsitems/item_friedfish.png"),
 		price = 3,
 		type = 'food',
-		tags = ['vege', 'fish'],
+		tags = ['vege', 'fish','cooked'],
 	},
 
 	divine_symbol = {
@@ -405,7 +405,19 @@ var materiallist = {
 		tier = '',
 		tags = ['no_random'],
 	},
-
+	
+	
+	zephyra_underwear = {
+		code = 'zephyra_underwear',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/zephyra_underwear.png"),
+		price = 1,
+		type = 'quest',
+		tier = '',
+		tags = ['no_random'],
+	},
+	
 	herbs = {
 		code = 'herbs',
 		name = 'Rare Herbs',
@@ -1411,6 +1423,23 @@ var itemlist = {
 		effects = [],
 		tags = [],
 		basestats = {sexuals_bonus = 15},
+	},
+	service_suit = {
+		code = 'service_suit',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'armor',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['underwear','chest','legs','head'],
+		price = 200,
+		icon = load("res://assets/images/iconsgear/bunnysuit.png"),
+		tier = 'medium',
+		reqs = [{code = 'trait', trait = 'loyalty_dress_lewd', check = true}],
+		effects = [],
+		tags = [],
+		basestats = {sexuals_bonus = 15, charm_bonus = 15, mod_pros = 0.15},
 	},
 	shackles = {#prevents escape if body_factor < 4; physics -25
 		#maybe still needs reworking
@@ -3474,7 +3503,7 @@ var recipes = {
 		resultamount = 2,
 		resultitemtype = 'material',
 		resultitem = 'bandage',
-		workunits = 0.5,
+		workunits = 2,
 		worktype = 'tailor'
 	},
 	lifegem = {
@@ -3601,7 +3630,7 @@ var recipes = {
 	wits_pot = {
 		code = 'wits_pot',
 		materials = {},
-		items = {soul_stone = 1, energygem = 2},
+			items = {soul_stone = 1, energygem = 2},
 		unlockreqs = [{type = "has_upgrade", name = 'alchemy', value = 3}],
 		crafttype = 'basic',
 		resultamount = 1,
@@ -4307,7 +4336,19 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item',
 		resultitem = 'latex_suit',
-		workunits = 12,
+		workunits = 20,
+		worktype = 'tailor'
+	},
+	service_suit = {
+		code = 'service_suit',
+		materials = {clothsilk = 5, leatherthick = 10, clothethereal = 2},
+		items = {},
+		unlockreqs = [{type = "has_upgrade", name = 'tailor', value = 3}],
+		crafttype = 'basic',
+		resultamount = 1,
+		resultitemtype = 'item',
+		resultitem = 'service_suit',
+		workunits = 25,
 		worktype = 'tailor'
 	},
 	gauntlets = {

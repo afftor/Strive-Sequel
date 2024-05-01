@@ -747,7 +747,7 @@ func build_charpanel():
 		var ch = characters_pool.get_char_by_id(ch_id)
 		if ch.get_location() != from_loc:
 			continue
-		if ch.get_work() == 'learning': 
+		if ch.is_on_quest(): 
 			continue
 		var panel = input_handler.DuplicateContainerTemplate($CharPanel/ScrollContainer/CharList)
 		panel.set_meta('character', ch_id)
@@ -825,13 +825,13 @@ func confirm_travel():
 #			person.add_stat('obedience', -ceil((travel_cost.obed_cost/person.travel_per_tick())))
 		if ResourceScripts.game_progress.instant_travel == false:
 			person.previous_location = person.travel.location
-			person.xp_module.work = 'travel'
+			person.set_work('travel')
 			person.travel.location = 'travel'
 			person.travel.travel_target = {area = locdata.area, location = to_loc}
 			person.travel.travel_time = travel_cost.time
 			person.travel.initial_travel_time = travel_cost.time
 		else:
-			person.xp_module.work = 'travel'
+#			person.set_work('') #not needed after remove from task
 			person.travel.location = to_loc
 			person.travel.area  = locdata.area
 	input_handler.PlaySound("ding")

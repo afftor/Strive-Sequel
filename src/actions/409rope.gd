@@ -14,6 +14,9 @@ const giver_skill = []
 const taker_skill = []
 const consent_level = 25
 
+const consent_giver = 0
+const consent_taker = 0
+
 func getname(state = null):
 	return "Rope"
 
@@ -25,8 +28,8 @@ func getongoingdescription(givers, takers):
 	
 func requirements():
 	var valid = true
-	if ResourceScripts.game_res.materials.rope < takers.size():
-		valid = false
+#	if ResourceScripts.game_res.materials.rope < takers.size():
+#		valid = false
 	if takers.size() < 1 || givers.size() < 1:
 		valid = false
 	elif givers.size() > 2:
@@ -34,9 +37,9 @@ func requirements():
 	for i in givers + takers:
 		if i.limbs == false:
 			valid = false
-	for i in givers:
-		if !i.person.has_status('sex_adv'):
-			valid = false
+#	for i in givers:
+#		if !i.person.has_status('sex_adv'):
+#			valid = false
 	return valid
 
 func givereffect(member):

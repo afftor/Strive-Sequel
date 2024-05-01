@@ -14,6 +14,8 @@ const takertags = ['vagina', 'penetration']
 const giver_skill = ['tail']
 const taker_skill = ['pussy']
 const consent_level = 35
+const consent_giver = 4
+const consent_taker = 5
 
 func getname(state = null):
 	return "Insert Tail Pussy"
@@ -38,8 +40,6 @@ func requirements():
 				valid = false
 		for i in takers:
 			if i.person.get_stat('has_pussy') == false:
-				valid = false
-			if !i.person.has_status('sex_perv'):
 				valid = false
 	return valid
 

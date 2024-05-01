@@ -194,7 +194,7 @@ var effect_table = {
 		trigger = [variables.TR_COMBAT_S],
 		conditions = [{type = 'owner', value = [
 			{code = 'gear_equiped', param = 'geartype', value = 'medium', check = false},
-			{orflag = true, code = 'has_status', status = 'assasin_hide', check = true},
+			{orflag = true, code = 'has_status', status = 'assassin_hide', check = true},
 			{code = 'gear_equiped', param = 'geartype', value = 'heavy', check = false},
 		]}],
 		atomic = [],
@@ -402,6 +402,20 @@ var effect_table = {
 		sub_effects = [],
 	},
 	# i think we need to display those statuses as buffs
+	e_mastermentor = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'master_mentor',
+		stack = 1,
+		duration = 4,
+		tick_event = [variables.TR_TICK],
+		rem_event = [variables.TR_DEATH],
+		tags = ['positive', 'buff'],
+		args = [],
+		sub_effects = [],
+		atomic = [{type = 'stat_add', stat = 'exp_gain_mod', value = 1}],
+		buffs = ['b_mastermentor'],
+	},
 	work_rule_bindings = {
 		code = 'work_rule_bindings',
 		type = 'static',
@@ -581,6 +595,7 @@ var effect_table = {
 			],
 		atomic = [],
 		buffs = [],#'b_power_pot'],
+		args = [{obj = 'parent', param = 'caster'}, {obj = 'parent', param = 'target'}],
 		sub_effects = ['e_s_bishop']
 	},
 	e_tr_sniper = rebuild_skillvalue_template({num_targets = 'single', skilltype = 'skill', tag = 'damage', value = 1.25}),
@@ -615,10 +630,19 @@ var effect_table = {
 		],
 		trigger = [variables.TR_POSTDAMAGE],
 		req_skill = true,
-		args = [{obj = 'app_obj', param = 'hpmax'}, {obj = 'app_obj', param = 'mpmax'}],
+		args = [],
 		sub_effects = [
-			{type = 'heal', value = [['parent_args', 0], '*', 0.03]},
-			{type = 'mana', value = [['parent_args', 1], '*', 0.03]},
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = [{obj = 'app_obj', param = 'hpmax'}, {obj = 'app_obj', param = 'mpmax'}],
+				atomic = [
+					{type = 'heal', value = [['parent_args', 0], '*', 0.03]},
+					{type = 'mana', value = [['parent_args', 1], '*', 0.03]},
+					],
+				buffs = [],
+				sub_effects = []
+			},
 			'e_s_bloodmage'
 		],
 		buffs = []
@@ -661,33 +685,126 @@ var effect_table = {
 			],
 		buffs = [],
 		sub_effects = ['e_s_bleed_new'],
-		args = []
+		args = [{obj = 'app_obj'}, {obj = 'app_obj'}]
 	},
 	e_s_dominate = {
+		type = 'oneshot',
+		target = 'target',
+		tags = [],
+		args = [],
+		atomic = [
+			{type = 'add_trait', trait = 'loyalty_basic_servitude'},
+			{type = 'add_trait', trait = 'loyalty_dating'},
+			{type = 'add_trait', trait = 'loyalty_combatant'},
+			{type = 'add_trait', trait = 'loyalty_dress_work'},
+			{type = 'add_trait', trait = 'loyalty_adv_servitude'},
+			{type = 'add_trait', trait = 'loyalty_callmaster'},
+#			{type = 'add_trait', trait = 'loyalty_sex_basic'},
+		],
+	},
+#	e_s_dominate = {
+#		type = 'temp_s',
+#		target = 'target',
+#		name = 'soul_bind',
+#		stack = 1,
+#		tick_event = [],
+#		rem_event = [variables.TR_DAY, variables.TR_DEATH],
+#		tags = ['sex_basic', 'combatant', 'basic_servitude', 'adv_servitude', 'dating', 'dress_work', 'callmaster' ],
+#		args = [],
+#		sub_effects = [],
+#		atomic = [],
+#		buffs = ['b_soulbind'],
+#	},
+	e_tr_warlock = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		req_skill = true,
+		conditions = [
+			{type = 'skill', value = ['ability_type', 'eq', 'spell']},
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['tags', 'hasno', 'aoe']},
+		],
+		atomic = [],
+		buffs = [],
+		args = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				args = [],
+				atomic = [
+					{type = 'stat_add', stat = 'critchance', value = 25},
+					{type = 'stat_add', stat = 'critmod', value = 0.75},
+					],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
+	e_tr_deathknight = {
+		type = 'trigger',
+		trigger = [variables.TR_KILL],
+		req_skill = false,
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		args = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = [],
+				atomic = [
+					{type = 'stat_add', stat = 'loyalty', value = ['random', 2, 4]},
+					],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
+	e_tr_witch1 = {
+		type = 'trigger',
+		conditions = [
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_CRIT]},
+			{type = 'skill', value = ['ability_type', 'eq', 'spell']},
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+		],
+		trigger = [variables.TR_POSTDAMAGE],
+		req_skill = true,
+		duration = 1,
+		args = [{obj = 'parent', param = 'target'}, {obj = 'parent', param = 'caster'}],
+		sub_effects = [],
+		modal_sub_effects = ['e_s_burn_new', 'e_s_poison_new', 'e_s_bleed_new', 'e_s_blind', 'e_s_stun1', 'e_s_confuse', 'e_s_sleep_compartibility'],
+		buffs = []
+	},
+	e_tr_witch2 = {
+		type = 'trigger',
+		conditions = [
+			{type = 'random', value = 0.5},
+			{type = 'skill', value = ['ability_type', 'eq', 'spell']},
+			{type = 'skill', value = ['tags', 'has', 'heal']},
+		],
+		trigger = [variables.TR_POSTDAMAGE],
+		req_skill = true,
+		duration = 2,
+		args = [{obj = 'parent', param = 'target'}, {obj = 'parent', param = 'caster'}],
+		sub_effects = [],
+		modal_sub_effects = ['e_s_rejuvenation', 'e_s_mward2'],
+		buffs = []
+	},
+	e_s_bond = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'soul_bind',
 		stack = 1,
-		tick_event = [],
-		rem_event = [variables.TR_DAY, variables.TR_DEATH],
-		tags = ['sex_basic', 'combatant', 'basic_servitude', 'adv_servitude', 'dating', 'dress_work', 'callmaster' ],
-		args = [],
-		sub_effects = [],
-		atomic = [],
-		buffs = ['b_soulbind'],
-	},
-	e_s_bond = {
-		type = 'temp_s',
-		target = 'caster',
-		name = 'soul_bind',
-		stack = 1,
-		tick_event = [],
-		rem_event = [variables.TR_DAY, variables.TR_DEATH],
+		duration = 4,
+		tick_event = [variables.TR_TICK],
+		rem_event = [variables.TR_DEATH],
 		tags = [],
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'disable'}],
-		buffs = ['b_soulbindcaster'],
+		buffs = ['b_soulbind'],
 	},
 	
 	e_tr_witcrit = {
@@ -3349,7 +3466,7 @@ var effect_table = {
 			{type = 'skill', value = ['tags', 'has', 'heal']}
 			],
 		buffs = [],
-		args = [{obj = 'app_obj', param = 'slave_spec_level'}],
+		args = [{obj = 'app_obj', param = 'slave_spec_level', dynamic = true}],
 		sub_effects = [
 			{
 				type = 'oneshot',
@@ -3371,12 +3488,13 @@ var effect_table = {
 		conditions = [],
 		atomic = [],
 		buffs = [],
-		args = [{obj = 'app_obj', param = 'slave_spec_level'}],
+		args = [{obj = 'app_obj', param = 'slave_spec_level', dynamic = true}],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'skill',
-				atomic = [{type = 'stat_mul', stat = 'value', value = [[['parent_args', 0], '*', 0.03], '+', 1.0]}],
+				args = [{obj = 'parent_args', param = 0}],
+				atomic = [{type = 'stat_mul', stat = 'value', stats = [ 'loyalty', 'obedience'], value = [[['parent_args', 0], '*', 0.03], '+', 1.0]}],
 				buffs = [],
 				sub_effects = []
 			}
@@ -3505,7 +3623,7 @@ var effect_table = {
 		type = 'temp_global',
 		tags = ['duration_turns', 'affliction'],
 		target = 'target',
-		name = 'shatter',
+		name = 'bishop_debuf',
 		stack = 1,
 		timers = [
 			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 3}, #3 turn duration
@@ -3515,8 +3633,8 @@ var effect_table = {
 		args = [],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add_p', stat = 'resist_light', value = -50},
-			{type = 'stat_add_p', stat = 'resist_dark', value = -50},
+			{type = 'stat_add', stat = 'resist_light', value = -50},
+			{type = 'stat_add', stat = 'resist_dark', value = -50},
 			],
 		buffs = ['b_bishop'],
 	},
@@ -3532,6 +3650,25 @@ var effect_table = {
 			{events = [variables.TR_DMG], objects = 'owner', timer = 1}, #damage removes
 			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
 			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
+		],
+		args = [],
+		sub_effects = [],
+		atomic = [],
+		buffs = ['b_sleep'],
+	},
+	e_s_sleep_compartibility = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions
+		#THIS EFFECT IS STUB, DO NOT COPY, DO NOT EDIT - it uses reversed order of parent trigger args, so it is conterintuitive
+		type = 'temp_global',
+		tags = ['duration_turns', 'affliction', 'disable', 'sleep'],
+		target = 'target',
+		name = 'sleep',
+		disable = true,
+		stack = 1,
+		timers = [
+			{events = [variables.TR_TURN_GET], objects = 'target', timer = 1}, #1 turn duration of CASTER
+			{events = [variables.TR_DMG], objects = 'owner', timer = 1}, #damage removes
+			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
+			{events = variables.TR_DEATH, objects = 'target', timer = 1}, #CASTER
 		],
 		args = [],
 		sub_effects = [],
@@ -3957,6 +4094,39 @@ var effect_table = {
 			}
 		]
 	},
+	e_s_rejuvenation = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'rejuvenation',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'parent',
+		tags = ['positive'],
+		args = [],
+		sub_effects = ['e_t_rejuvenation'],
+		atomic = [],
+		buffs = ['b_regen'],
+	},
+	e_t_rejuvenation = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_GET],
+		req_skill = false,
+		conditions = [],
+		args = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = [{obj = 'app_obj', param = 'hpmax'}],
+				atomic = [
+					{type = 'heal', value = [['parent_args', 0], '*', 0.15]},
+					],
+				buffs = [],
+				sub_effects = []
+			},
+		]
+	},
 	e_s_resto = {
 		type = 'temp_s',
 		target = 'target',
@@ -4105,6 +4275,23 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 4,
+		tags = ['positive', 'buff'],
+		args = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'atk', value = 0.25},
+			{type = 'stat_add', stat = 'mdef', value = 40},
+			],
+		buffs = ['b_magicward'],
+	},
+	e_s_mward2 = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'magicward',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 2,
 		tags = ['positive', 'buff'],
 		args = [],
 		sub_effects = [],
@@ -4647,6 +4834,100 @@ var effect_table = {
 				t_name = "Lust Drain",
 			}
 		],
+	},
+	succubus_passive = {
+		type = 'trigger',
+		trigger = [variables.TR_POST_TARG],
+		req_skill = false,
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		args = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = [],
+				atomic = [
+					{type = 'stat_add', stat = 'lust', value = ['random', 1, 3]},
+					],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
+	succubus_combat_2 = {
+		type = 'temp_s',
+		name = 'euphoria',
+		stack = 1,
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		target = 'caster',
+		tags = ['euphoria'],
+		sub_effects = ['e_euphoria_bonus', 'euphoria_passive'],
+		atomic = [],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsclasses/Fighter.png",
+				description = "EUPHORIABUFF", #fix
+				bonuseffect = 'lust',
+				limit = 1,
+				t_name = "Euphoria",
+				combat_only = true,
+			}
+		],
+	},
+	e_euphoria_bonus = {
+		type = 'dynamic',
+		tags = ['recheck_stats'],
+		atomic = [
+			{type = 'stat_add_p', stat = 'atk', value = [['parent_args', 0],'*',0.005]},
+			{type = 'stat_add_p', stat = 'matk', value = [['parent_args', 0],'*',0.005]}
+			],
+		buffs = [],
+		args = [{obj = 'app_obj', param = 'lust'}],
+		sub_effects = []
+	},
+	euphoria_passive = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_F],
+		req_skill = false,
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		args = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = [],
+				atomic = [
+					{type = 'stat_add', stat = 'lust', value = ['random', -6, -4]},
+					],
+				buffs = [],
+				sub_effects = []
+			},
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = [],
+				condition = [{code = 'stat', stat = 'lust', operant = 'lte', value = 0}],
+				atomic = [
+					{type = 'remove_effect', value = 'euphoria'},
+					],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
+	euphoria_cast_remove = {
+		type = 'oneshot',
+		target = 'caster',
+		args = [],
+		atomic = [
+			{type = 'remove_effect', value = 'euphoria'},
+			],
+		buffs = [],
+		sub_effects = []
 	},
 	test_recast = {
 		type = 'trigger',
@@ -5246,6 +5527,11 @@ var buffs = {
 		description = "",
 		t_name = 'soulbindcaster',
 	},
+	b_mastermentor = {
+		icon = "res://assets/images/iconsskills/Mindread.png",#fix
+		description = "BUFFDESCRIPTMENTOR",
+		t_name = 'master_mentor',
+	},
 };
 
 func rebuild_template(args):
@@ -5453,3 +5739,4 @@ func rebuild_stat_bonus(stat, value, buff = null, mode = 'stat_add'):
 		template.buffs.push_back(buff)
 	template.atomic.push_back('a_' + mode)
 	return template
+

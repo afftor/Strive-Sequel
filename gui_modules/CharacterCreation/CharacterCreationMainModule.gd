@@ -157,7 +157,7 @@ var params_to_save = [ #memo mostly
 	'hair_facial_color'
 ]
 
-var tooltips_stat = ['personality']
+var tooltips_stat = ['personality','slave_class']
 
 onready var RaceSelection = $RaceSelectionModule
 onready var ClassSelection = $ClassSelectionModule
@@ -487,6 +487,7 @@ func build_node_for_stat(stat):
 	else:
 #		print ("warning - no description record for %s" % str(stat))
 		text = str(val)
+#		text = tr(stat.to_upper() + val.to_upper())
 	node.get_node('button/Label').text = text
 	#set nodes
 	if !node.has_meta('signals_built'):
@@ -501,6 +502,8 @@ func build_node_for_stat(stat):
 
 func rebuild_ragdoll(stat = null):
 	var stored_image = person.get_stored_body_image()
+	if input_handler.globalsettings.disable_paperdoll and stored_image == null:
+		stored_image = person.get_body_image()
 	if stored_image != null:
 		$RagdollPanel/TextureRect.texture = stored_image
 		$RagdollPanel/TextureRect.visible = true
@@ -734,8 +737,9 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	build_stats()
 
 
-func open_freemode(char_to_open):
+func open_freemode(char_to_open, flag = false):
 	person = char_to_open
+	upgrades_removal = flag
 	preservedsettings.clear()
 	show()
 	$introduction.bbcode_text = introduction_text['freemode']
@@ -842,7 +846,7 @@ func finish_character():
 				person.add_trait('loyalty_dress_work')
 		else:
 			person.set_slave_category('master')
-			person.set_stat('consent', 1000)
+			person.set_stat('consent', 100)
 			globals.equip_char(person, 'chest_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
 			globals.equip_char(person, 'legs_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
 		ResourceScripts.game_party.add_slave(person)
@@ -852,6 +856,10 @@ func finish_character():
 	else:
 		ResourceScripts.game_res.money -= upgradecostgold
 #		person.statlist.body_upgrades = cur_upgrades.duplicate()
+		if upgrades_removal :
+			for upg in person.statlist.body_upgrades.duplicate():
+				if !cur_upgrades.has(upg):
+					person.remove_upgrade(upg)
 		for upg in cur_upgrades:
 			person.add_upgrade(upg)
 		person.recheck_upgrades()
@@ -1227,6 +1235,7 @@ func hide_all_dialogues():
 var upgradecost = 0
 var upgradecostgold = 0
 var cur_upgrades = []
+var upgrades_removal = false
 
 func init_upgrades():
 	upgradecost = 0
@@ -1246,15 +1255,20 @@ func build_upgrades(): #check confirmation at the same time
 		var text = person.translate(tr(upgdata.descript)) + "\nPrice: " + str(upgdata.goldcost) + "\nUpgrade Points: " + str(upgdata.cost) 
 		globals.connecttexttooltip(newnode, text)
 		newnode.get_node('UpgradeName').text = tr(upgdata.name)
-		newnode.connect('pressed', self, 'toggle_upgrade', [upg])
 		if upgdata.icon is String:
 			newnode.get_node('icon').texture = load(upgdata.icon)
 		else:
 			newnode.get_node('icon').texture = upgdata.icon
 		if cur_upgrades.has(upg):
-			if !person.statlist.body_upgrades.has(upg):
+			if person.statlist.body_upgrades.has(upg):
+				if upgrades_removal:
+					newnode.connect('pressed', self, 'toggle_upgrade', [upg])
+				else:
+					newnode.connect('pressed', self, 'build_upgrades')
+			else:
 				upgradecost += upgdata.cost
 				upgradecostgold += upgdata.goldcost
+				newnode.connect('pressed', self, 'toggle_upgrade', [upg])
 			newnode.pressed = true
 			if person.checkreqs(upgdata.reqs):
 				newnode.get_node('UpgradeName').set("custom_colors/font_color", Color(variables.hexcolordict.k_yellow))
@@ -1264,6 +1278,7 @@ func build_upgrades(): #check confirmation at the same time
 				res = false
 		else:
 			newnode.pressed = false
+			newnode.connect('pressed', self, 'toggle_upgrade', [upg])
 			if !person.checkreqs(upgdata.reqs):
 				newnode.disabled = true
 	$UpgradesPanel/HBoxContainer/Label2.text = "%d/%d" % [upgradecost, person.get_upgrade_points()]
@@ -1281,7 +1296,7 @@ func toggle_upgrade(upg):
 
 func check_upgrades():
 	if upgradecost > person.get_upgrade_points():
-		input_handler.SystemMessage("Too much upgrades for this character")
+		input_handler.SystemMessage("Too many upgrades for this character")
 		return false
 	if upgradecostgold > ResourceScripts.game_res.money:
 		input_handler.SystemMessage("Not enough money")

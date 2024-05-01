@@ -2083,7 +2083,16 @@ var loot_variants_data = {
 		{code = 'defined', name = 'lifeshard', min = 3, max = 5},
 	],
 	celena_reward2 = [
-		{code = 'defined', name = 'lifegem', min = 2, max = 3},
+		{code = 'defined', name = 'lifegem', min = 2, max = 4},
+	],
+	celena_reward3 = [
+		{code = 'defined', name = 'blessed_divine_symbol', min = 1, max = 1},
+	],
+	celena_reward4 = [
+		{code = 'defined', name = 'oblivion_potion', min = 1, max = 1},
+	],
+	celena_reward5 = [
+		{code = 'defined', name = 'soul_stone', min = 1, max = 1},
 	],
 	celena_destroy_shrine1 = [
 		{code = 'defined', name = 'iron', min = 5, max = 10},
@@ -2097,7 +2106,16 @@ var loot_variants_data = {
 		{code = 'defined', name = 'energyshard', min = 3, max = 5},
 	],
 	erebus_reward2 = [
-		{code = 'defined', name = 'energygem', min = 2, max = 3},
+		{code = 'defined', name = 'energygem', min = 2, max = 4},
+	],
+	erebus_reward3 = [
+		{code = 'defined', name = 'ice_crystal', min = 2, max = 3},
+	],
+	erebus_reward4 = [
+		{code = 'defined', name = 'crystalized_ether', min = 2, max = 3},
+	],
+	freya_reward1 = [
+		{code = 'defined', name = 'woodancient', min = 3, max = 5},
 	],
 	erebus_destroy_shrine = [
 		{code = 'defined', name = 'stone', min = 10, max = 20},
@@ -2111,6 +2129,15 @@ var loot_variants_data = {
 	rebels_ore_reward = [
 		{code = 'defined', name = 'steel', min = 25, max = 25},
 		{code = 'defined', name = 'mithril', min = 10, max = 10},
+	],
+	
+	
+	
+	zephyra_bribe_1 = [
+		{code = 'gold', min = 500, max = 500},
+	],
+	zephyra_bribe_2 = [
+		{code = 'defined', name = 'zephyra_underwear', min = 1, max = 1},
 	],
 }
 
@@ -2188,7 +2215,8 @@ var shrines = {
 		options = {
 			"material" : {input = 'material', output = 'erebus_item'},
 			#"character" : {input = 'character', output = 'erebus_character'},
-			"destroy" : {input = 'destroy', output = 'erebus_destroy'}
+			"destroy" : {input = 'destroy', output = 'erebus_destroy'},
+			"item" : {input = "item", output = 'erebus_disenchant'},
 		},
 		bless = '',
 		curse = '',
@@ -2205,19 +2233,49 @@ var shrines = {
 	},
 }
 
+var celena_item_dict = {
+	
+}
+
+
+var erebus_item_dict = {
+	stone = "erebus_reward",
+	obsidian = "erebus_reward2",
+	fire_ruby = "erebus_reward3",
+	earth_shard = "erebus_reward4"
+}
 
 func celena_item(code):
-	var dict = {text = '[name] puts an offer on the altar. ', image = '', options = [], tags = ['active_character_translate']}
+	var dict = {text = tr('ALTAR_ITEM_1'), image = '', options = [], tags = ['active_character_translate']}
 	var item = Items.materiallist[code]
-	globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
-
-	if item.type in ['wood','plant','food']:
-		dict.text += "\n\n{color=green|The offering disappars in a thin air and after a moment a new item materialize in place. It seems your offer was correct and you are rewarded.}"
-
-		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward',2], ['celena_reward2',1]]}]
+	
+	if item.type == 'food':
+		globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
+		if item.tags.has("cooked"):
+			dict.text += tr('ALTAR_ITEM_GOOD')
+			dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward2',1]]}]
+			dict.tags.append("free_loot")
+		else:
+			dict.text += tr('ALTAR_ITEM_GOOD')
+			dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward',2]]}]
+			dict.tags.append("free_loot")
+	elif item.code == 'divine_symbol':
+		dict.text += tr('ALTAR_ITEM_GOOD')
+		globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
+		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward3',2]]}]
+		dict.tags.append("free_loot")
+	elif item.code == 'alcohol':#this part is not working because you can't select alcohol in material selection yet
+		dict.text += tr('ALTAR_ITEM_GOOD')
+		globals.common_effects([{code = 'remove_item', operant = '-', name = 'alcohol', number = 1}])
+		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward4',2]]}]
+		dict.tags.append("free_loot")
+	elif item.code == 'woodancient':
+		dict.text += tr('ALTAR_ITEM_GOOD')
+		globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
+		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward5',2]]}]
 		dict.tags.append("free_loot")
 	else:
-		dict.text += "\n\nThe offering disappers from sight but there's no other changes around. It seems your offer wasn't liked."
+		dict.text += tr('ALTAR_ITEM_BAD')
 		dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 
 
@@ -2225,14 +2283,14 @@ func celena_item(code):
 
 func celena_character(person):
 
-	var dict = {text = '[name] puts [his] hand on the altar. ', image = '', options = [], tags = ['active_character_translate'], common_effects = []}
+	var dict = {text = tr('ALTAR_CHAR_1'), image = '', options = [], tags = ['active_character_translate'], common_effects = []}
 
 	if randf() <= 0.5:
-		dict.text += "\n\n{color=green|A small glow emits from the altar and enshrouds [name]. It seems [he] has been blessed...}"
+		dict.text += tr('ALTAR_CHAR_GOOD')
 
 		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'celena_bless'})
 	else:
-		dict.text += "\n\nAfter a few minutes nothing still happened and [name] decides to move on."
+		dict.text += tr('ALTAR_CHAR_BAD')
 
 	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 
@@ -2241,10 +2299,10 @@ func celena_character(person):
 
 func celena_destroy(person):
 
-	var dict = {text = '[name] demolishes the shrine and gathers the resources. ', image = '', options = [], tags = ['active_character_translate'], common_effects = []}
+	var dict = {text = tr('ALTAR_DESTROY_1'), image = '', options = [], tags = ['active_character_translate'], common_effects = []}
 
 	if randf() <= 0.33:
-		dict.text += "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed...}"
+		dict.text += tr('ALTAR_DESTROY_2')
 
 		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'celena_curse'})
 
@@ -2255,19 +2313,32 @@ func celena_destroy(person):
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
 func freya_item(code):
-	var dict = {text = '[name] puts an offer on the altar. ', image = '', options = [], tags = ['active_character_translate']}
+	var dict = {text = tr('ALTAR_ITEM_1'), image = '', options = [], tags = ['active_character_translate']}
 	var item = Items.materiallist[code]
-	globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
 	
-	
-	if item.type in ['cloth']:
-		dict.text += "\n\n{color=green|The offering disappars in a thin air and a bright light surrounds [name]. It seems the offer was correct and [he] received a blessing.}"
-		dict.common_effects = [{code = 'affect_active_character', type = 'effect', value = 'freya_bless'}]
-	elif item.type in ['wood']:
-		dict.text += "\n\n{color=red|The offering disappers from sight but an eerie glow erupts from the altar. It seems [name] as been cursed...}"
+	if item.type in ['wood']:
+		globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
+		
+		dict.text += tr('FREYA_ITEM_WOOD')
 		dict.common_effects = [{code = 'affect_active_character', type = 'effect', value = 'freya_curse'}]
 	else:
-		dict.text += "\n\nThe offering disappers from sight but there's no other changes around. It seems your offer wasn't liked."
+		globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
+		match item.code:
+			'cloth':
+				dict.text += tr('FREYA_ITEM_CLOTH')
+				dict.common_effects = [{code = 'affect_active_character', type = 'effect', value = 'freya_bless', override = {duration = 4}}]
+			'clothsilk':
+				dict.text += tr('FREYA_ITEM_CLOTH')
+				dict.common_effects = [{code = 'affect_active_character', type = 'effect', value = 'freya_bless', override = {duration = 8}}]
+			'clothmagic':
+				dict.text += tr('FREYA_ITEM_CLOTHMAGICC')
+				dict.common_effects = [{code = 'affect_active_character', type = 'stat_set', stat = 'mp', value = 999}]
+			'clothethereal':
+				dict.text += tr('FREYA_ITEM_CLOTHETHERIAL')
+				dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['freya_reward1',1]]}]
+				dict.tags.append("free_loot")
+			_:
+				dict.text += tr('ALTAR_ITEM_BAD')
 
 	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 
@@ -2275,10 +2346,10 @@ func freya_item(code):
 
 func freya_character(person):
 
-	var dict = {text = '[name] puts [his] hand on the altar. ', image = '', options = [], tags = ['active_character_translate'], common_effects = []}
+	var dict = {text = tr('ALTAR_CHAR_1'), image = '', options = [], tags = ['active_character_translate'], common_effects = []}
 
 	if person.get_stat('unique') == 'aire' && globals.checkreqs([{type = 'decision', value = 'aire_got_bow', check = false}]):
-		dict.text += "\n\n{color=green|A small glow emits from the altar and enshrouds [name]. Before Aire can realize it, a bow materializes in her hands...}"
+		dict.text += tr('FREYA_CHAR_BOW')
 		dict.common_effects.append({code = 'unique_character_changes',
 					value = 'aire',
 					args = [
@@ -2288,15 +2359,15 @@ func freya_character(person):
 		ResourceScripts.game_progress.decisions.append('aire_got_bow')
 	else:
 		if person.checkreqs([{code = 'has_wooden_gear'}]):
-			dict.text += "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed. Perhaps, something what they wear might have aggrieved the entity...}"
+			dict.text += tr('FREYA_CHAR_WOODEN')
 			dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_curse'})
 		else:
 			if randf() >= 0.5 || person.get_stat('race') in ['Elf','DarkElf','TribalElf','Fairy','Dryad']:
-				dict.text += "\n\n{color=green|A small glow emits from the altar and enshrouds [name]. It seems [he] has been blessed...}"
+				dict.text += tr('FREYA_CHAR_RACE_GOOD')
 
 				dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_bless'})
 			else:
-				dict.text += "\n\nAfter a few minutes nothing still happened and [name] decides to move on."
+				dict.text += tr('FREYA_CHAR_RACE_BAD')
 
 	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 
@@ -2305,10 +2376,10 @@ func freya_character(person):
 
 func freya_destroy(person):
 
-	var dict = {text = '[name] demolishes the shrine and gathers the resources. ', image = '', options = [], tags = ['active_character_translate'], common_effects = []}
+	var dict = {text = tr('ALTAR_DESTROY_1'), image = '', options = [], tags = ['active_character_translate'], common_effects = []}
 
 	if randf() <= 0.75:
-		dict.text += "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed...}"
+		dict.text += tr('ALTAR_DESTROY_2')
 
 		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_curse'})
 
@@ -2318,18 +2389,17 @@ func freya_destroy(person):
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
 
+
 func erebus_item(code):
-	var dict = {text = '[name] puts an offer on the altar. ', image = '', options = [], tags = ['active_character_translate']}
+	var dict = {text = tr('ALTAR_ITEM_1'), image = '', options = [], tags = ['active_character_translate']}
 	var item = Items.materiallist[code]
-	globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
-
-	if item.type in ['stone']:
-		dict.text += "\n\n{color=green|The offering disappars in a thin air and after a moment a new item materialize in place. It seems your offer was correct and you are rewarded.}"
-
-		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['erebus_reward',3],['erebus_reward2',1]]}]
+	if erebus_item_dict.has(item.code):
+		globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
+		dict.text += tr('ALTAR_ITEM_GOOD')
+		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [[erebus_item_dict[item.code],3]]}]
 		dict.tags.append("free_loot")
 	else:
-		dict.text += "\n\nThe offering disappers from sight but there's no other changes around. It seems your offer wasn't liked."
+		dict.text += tr('ALTAR_ITEM_BAD')
 		dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 
 
@@ -2337,14 +2407,14 @@ func erebus_item(code):
 
 func erebus_character(person):
 
-	var dict = {text = '[name] puts [his] hand on the altar. ', image = '', options = [], tags = ['active_character_translate'], common_effects = []}
+	var dict = {text = tr('ALTAR_CHAR_1'), image = '', options = [], tags = ['active_character_translate'], common_effects = []}
 
 	if randf() <= 0.5:
-		dict.text += "\n\n{color=green|A small glow emits from the altar and enshrouds [name]. It seems [he] has been blessed...}"
+		dict.text += tr('ALTAR_CHAR_GOOD')
 
 		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'celena_bless'})
 	else:
-		dict.text += "\n\nAfter a few minutes nothing still happened and [name] decides to move on."
+		dict.text += tr('ALTAR_CHAR_BAD')
 
 	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 
@@ -2353,11 +2423,19 @@ func erebus_character(person):
 
 func erebus_destroy(person):
 
-	var dict = {text = '[name] demolishes the shrine and gathers the resources. ', image = '', options = [], tags = ['active_character_translate'], common_effects = []}
+	var dict = {text = tr('ALTAR_DESTROY_1'), image = '', options = [], tags = ['active_character_translate'], common_effects = []}
 
 
 	dict.common_effects.append({code = 'make_loot', type = 'tableloot', pool = [['erebus_destroy_shrine',3]]})
 	dict.tags.append("free_loot")
 
 
+	input_handler.interactive_message_follow(dict, 'direct', [])
+
+func erebus_disenchant(item):
+	var dict = {text = '[name] puts an offer on the altar. ', image = '', options = [], tags = ['active_character_translate']}
+	
+	item.clear_enchants()
+	dict.text += item.name + " slowly starts to glow on the altar. After a few moments the light dissipates and all magic leaves the item."
+	
 	input_handler.interactive_message_follow(dict, 'direct', [])

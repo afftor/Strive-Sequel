@@ -15,6 +15,10 @@ const giver_skill = ['petting']
 const taker_skill = []
 const consent_level = 15
 
+
+const consent_giver = 0
+const consent_taker = 1
+
 func getname(state = null):
 	return "Fondle Chest"
 

@@ -47,7 +47,7 @@ var scriptdict = {
 	gallery = "res://src/core/gallery.gd",
 	rnd_portrait = "res://src/randomportraits/portrait.gd",
 	rnd_main = "res://src/randomportraits/randomportraits.gd",
-	sex_scenes = "res://assets/data/SexScenes.gd"
+	#sex_scenes = "res://assets/data/SexScenes.gd"
 	}
 
 onready var node_data = {
@@ -104,6 +104,7 @@ onready var node_data = {
 	input_handler.ANIM_LOOT : {name = 'ANIMLoot', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_loot.tscn") },
 	input_handler.ANIM_SKILL_UNLOCKED : {name = 'ANIMSkillUnlocked', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_ability_unlocked.tscn") },
 	input_handler.ANIM_GROWTHF : {name = 'ANIMGrowthFactor', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_growth_factor.tscn") },
+	input_handler.ANIM_MASTER_POINT: {name = 'ANIMMasterPoint', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_master_point.tscn") },
 }
 
 

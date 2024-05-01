@@ -25,6 +25,7 @@ func _init():
 func deserialize(savedict):
 	if savedict.has('bonuses'): bonuses = savedict.bonuses.duplicate()
 	if savedict.has('traits'): traits = savedict.traits.duplicate()
+	if savedict.has('body_upgrades'): body_upgrades = savedict.body_upgrades.duplicate()
 	if savedict.has('sex_traits'): sex_traits = savedict.sex_traits.duplicate()
 	if savedict.has('negative_sex_traits'): negative_sex_traits = savedict.negative_sex_traits.duplicate()
 	if savedict.has('unlocked_sex_traits'): unlocked_sex_traits = savedict.unlocked_sex_traits.duplicate()
@@ -75,7 +76,14 @@ func fix_serialize():
 		statlist.metrics[metr] = Statlist_init.template.metrics[metr]
 	for st in ['personality_bold', 'personality_kind', 'slave_spec_level', 'slave_spec_progress']:
 		statlist[st] = int(statlist[st])
-
+	
+	statlist.consent = min(get_stat('consent'), 6)
+	bonuses.erase('consent_add')
+	bonuses.erase('consent_mul')
+	if parent.get_ref().is_master():
+		statlist.consent = 100
+	
+	
 
 func default_stats_get():
 	return statlist.duplicate()
@@ -208,6 +216,8 @@ func custom_stats_get(stat):
 	if stat in ['speed', 'hitrate', 'evasion']:
 		var tres = statlist[stat]
 		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 4
+		if stat == 'evasion' and has_status('ninja'): #internal versions, mb wrong
+			tres += get_stat('mdef')
 		return tres
 	if stat in ['productivity']:
 		var tres = statlist[stat]
@@ -1557,7 +1567,7 @@ func get_racial_features():
 			array.append([i, race_template.personality[i]])
 		statlist.personality = input_handler.weightedrandom(array)
 	
-	if race_template.has('tarits'):
+	if race_template.has('traits'):
 		for trait in race_template.traits:
 			add_trait(trait)
 

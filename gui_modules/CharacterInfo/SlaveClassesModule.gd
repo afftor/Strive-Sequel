@@ -240,7 +240,7 @@ func build_skills():
 			newbutton.material = load("res://assets/sfx/bw_shader.tres")
 		globals.connecttexttooltip(newbutton, text)
 	sort_skills()
-	$SkillPanel/skillpoints_label.text = tr("SKILL_POINTS_LABEL") + ": " + str(person.get_ability_experience())
+	$SkillPanel/skillpoints_label.text = tr("SKILL_POINTS_LABEL") + ": " + str(floor(person.get_ability_experience()))
 	
 
 func is_skill_locked(skill):

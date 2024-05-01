@@ -59,7 +59,7 @@ func confirm_number_selection():
 func disassamble():
 	_close("info")
 	var ratio = rng.randf_range(0.75, 1.0)
-	var final_amount = round(selected_result_item.parts[selected_part] * ratio * $NumberSelection/HSlider.value)
+	var final_amount = round(selected_result_item.parts[selected_part] * ratio) * $NumberSelection/HSlider.value
 	var material = item_to_disassamble.parts[selected_part]
 	var loot_window = input_handler.get_spec_node(input_handler.NODE_LOOTTABLE)
 	var message = str("You've got ", final_amount, " of ", Items.materiallist[item_to_disassamble.parts[selected_part]].name, " after disassamble.")

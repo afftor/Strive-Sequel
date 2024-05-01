@@ -228,7 +228,10 @@ func add_recruit_option(scene):
 	var char2 = input_handler.active_character
 	if char2 != null:
 		scene.options.insert(1,{code = 'recruit_option', reqs = [], text = "DIALOGUERECRUITATTEMPT"})
-
+		if char2.has_profession("succubus") || char2.has_profession("true_succubus"):
+			scene.options.insert(1, {code = 'recruit_succubus', reqs = [{type = 'active_character_checks', value = [{code = 'has_any_profession', value = ['succubus','true_succubus']}, {code = 'stat', stat = 'mp', operant = 'gte', value = 30}]}], text = "DIALOGUERECRUITSUCCUBUS"})
+		elif char2.has_profession("succubus") || char2.has_profession("true_succubus") && char2.get_stat('mp') < 30:
+			scene.options.insert(1, {code = 'recruit_succubus', disabled = true, reqs = [], text = "DIALOGUERECRUITSUCCUBUS"})
 
 func recruit_option_safe():
 	var char_to_recruit = input_handler.scene_characters[0]
@@ -240,6 +243,21 @@ func recruit_option_safe():
 	input_handler.active_location.captured_characters.erase(char_to_recruit.id)
 	input_handler.emit_signal("LocationSlavesUpdate")
 
+func recruit_succubus():
+	var char_to_recruit = input_handler.scene_characters[0]
+	if char_to_recruit == null:
+		print("error - no char")
+		return
+	var state = char_to_recruit.src
+	var char2 = input_handler.active_character
+	if state == 'random_combat':
+		input_handler.interactive_message_follow("recruit_captured_success_seduce", "story_event", {})
+	else:
+		input_handler.interactive_message_follow("recruit_meet_success_seduce", "story_event", {})
+	
+	char2.add_stat('lust', -30)
+	input_handler.active_location.captured_characters.erase(char_to_recruit.id)
+	input_handler.emit_signal("LocationSlavesUpdate")
 
 func recruit_option():
 	var char_to_recruit = input_handler.scene_characters[0]
@@ -248,15 +266,15 @@ func recruit_option():
 		return
 	var state = char_to_recruit.src
 	var char2 = input_handler.active_character
-	var val1 = char_to_recruit.get_stat('charm_factor')
-	var val2= char2.get_stat('charm')
+	var val1 = char_to_recruit.get_stat('wits_factor')
+	var val2 = char2.get_stat('charm') * 0.30
 	if state == 'random_combat':
-		if val2 >= val1 * globals.rng.randf_range(10.0, 20.0):
+		if 30 + val2 > randf()*110 + (val1 * 5):
 			input_handler.interactive_message_follow("recruit_captured_success", "story_event", {})
 		else:
 			input_handler.interactive_message_follow("recruit_captured_fail", "story_event", {})
 	else:
-		if val2 >= val1 * globals.rng.randf_range(5.0, 15.0):
+		if 40 + val2 > randf()*100 + (val1 * 5):
 			input_handler.interactive_message_follow("recruit_meet_success", "story_event", {})
 		else:
 			input_handler.interactive_message_follow("recruit_meet_fail", "story_event", {})
@@ -278,23 +296,34 @@ func add_shrine_options(scene):
 				scene.options.insert(0,{code = 'shrine_option', args = ['character'], active_char_translate = true, reqs = [], text = "DIALOGUESHRINECHARACTER"})
 			'destroy':
 				scene.options.insert(0,{code = 'shrine_option', args = ['destroy'], reqs = [], text = "DIALOGUESHRINEDESTROY"})
+			'item':
+				scene.options.insert(0,{code = 'shrine_option', args = 'select_item', reqs = [], text = "DIALOGUESHRINEEQUIP"})
 
 func shrine_option(option):
 	match option:
 		'select_material':
 			globals.ItemSelect(self, 'material', 'shrine_mat_select')
+		'select_item':
+			globals.ItemSelect(self, 'gear', 'shrine_item_select')
 		"character":
 			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['character'].output, input_handler.active_character) 
 		'destroy':
 			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['destroy'].output, input_handler.active_character)
 		'material_selected':
 			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['material'].output, selected_item)
+		'item_selected':
+			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['item'].output, selected_item)
 
 var selected_item
 
 func shrine_mat_select(item):
 	selected_item = item
 	shrine_option('material_selected')
+
+func shrine_item_select(item):
+	selected_item = item
+	shrine_option('item_selected')
+
 
 func add_loot_options(scene):
 	scene.options.insert(0,{code = 'open_chest', reqs = [], text = "DIALOGUETAKELOOT", bonus_effects = [{code = 'advance_location'}]})

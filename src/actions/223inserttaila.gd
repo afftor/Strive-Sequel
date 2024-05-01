@@ -14,6 +14,8 @@ const takertags = ['anal', 'penetration']
 const giver_skill = ['tail']
 const taker_skill = ['anal']
 const consent_level = 40
+const consent_giver = 4
+const consent_taker = 5
 
 func getname(state = null):
 	return "Insert Tail Ass"
@@ -35,11 +37,6 @@ func requirements():
 			if i.limbs == false:
 				valid = false
 			if !variables.longtails.has(i.person.get_stat('tail')):
-				valid = false
-			if !i.person.has_status('sex_adv'):
-				valid = false
-		for i in takers:
-			if !i.person.has_status('sex_perv'):
 				valid = false
 	return valid
 

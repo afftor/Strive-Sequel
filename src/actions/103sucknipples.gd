@@ -15,6 +15,10 @@ const giver_skill = ['oral']
 const taker_skill = []
 const consent_level = 20
 
+
+const consent_giver = 0
+const consent_taker = 2
+
 func getname(state = null):
 	return "Nipple Sucking"
 

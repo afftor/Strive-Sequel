@@ -15,6 +15,10 @@ const giver_skill = ['petting']
 const taker_skill = []
 const consent_level = 20
 
+
+const consent_giver = 2
+const consent_taker = 3
+
 func getname(state = null):
 	if givers.size() + takers.size() == 2:
 		return "Titjob"

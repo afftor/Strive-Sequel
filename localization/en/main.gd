@@ -852,6 +852,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TOOLTIPEVASION = "Reduces enemy hit chance by this value",
 	TOOLTIPSPEED = "Improves your odds to act before other characters",
 	TOOLTIPRESISTS = "Reduces elemental damage by relative resist",
+	TOOLTIPSTAMINA = "Stamina is depleted when performing action the character does not agree on. When fully depleted such actions will drain Obedience. Also when fully depleted the character won't be able to improve their Consent. Stamina is replenished with Orgasms but this is affected by diminishing returns.",
 
 	TOOLTIPFOODCONSUMPTION = "Daily Food Consumption",
 	TOOLTIPPOPULATION = "Population",
@@ -963,7 +964,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEREPEATACTION = "Repeat",
 	CHAR_UNAVALIABLE = "Unavailable",
 	NO_FREE_SLOTS = "This task has no available slots left",
-
+	ANOTHERPROFSELECTED = "Can only select one specialization.",
+	
 	LOGREPORTPREGNANCY = "[name] tells you, that [he] seems to be pregnant.",
 	LOGREPORTPREGNANCYMASTER = "It seems, that you([name]) are pregnant.",
 
@@ -1219,6 +1221,10 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	SKILLFLY_EVASION = "Flight",
 	SKILLFLY_EVASIONDESCRIPT = "Increases Evasion by 65 for 3 turns.",
+	SKILLEUPHORIA_APPLY = "Euphoria",
+	SKILLEUPHORIA_APPLYDESCRIPT = "When activated increases all damage by your lust. Drains your lust every turn.",
+	SKILLEUPHORIA_REMOVE = "Euphoria",
+	SKILLEUPHORIA_REMOVEDESCRIPT = "Disable Euphoria",
 	
 	
 	SKILLMIMIC_ATTACK = "Sticky Grab",
@@ -1319,13 +1325,17 @@ However, while it might seem that Landowners have nothing but contempt for those
 	JOBTAILORCRAFTDESCRIPT = "Craft item in tailor workshop.",
 	JOBALCHEMYCRAFTDESCRIPT = "Craft item in alchemy workshop.",
 	
+	EXPLOREUPGRADETIP = "Upgrades effects and quest settings update after some time passed.",
+	
 	LOGLEFTLABEL = "Main",
 	LOGLEFTTTOOLTIP = "Shows main events",
 	LOGRIGHTLABEL = "Service",
 	LOGRIGHTTOOLTIP = "Shows service income",
-	LOGSERVICEGOLD = "Made %d gold",
+	BROTHELLOGSEX = "%s earned %s gold doing %s with a %s",
+	BROTHELLOGNO_SEX = "%s earned %s gold working as a %s",
 	
 	BROTHELTOOLTIP = "You can select which tasks the character will be allowed to perform while working at brothel. By toggling specific tasks only those will be allowed. Client sexes only affect sexual tasks.\nHigher character Value increases earnings, higher Charm increases likelyhood of being requested for sex.\nDifferent tasks improve and scale from different stats.\nService is a global modifier for this assignment.",
+	BROTHELWARNING = "Sex services won't work if you dont select at least 1 allowed customer",
 	
 	CAPTURETOOLTIP = "These characters have been found by your team and can be recruited into your mansion or sold for quick cash as if you were selling them manually. If location has been forgotten, all characters are sold automatically.",
 	CAPTURESELLTOOLTIP = "Quicksell this character for %d gold. This is equal to selling character to market but won't let you buyback them. ",
@@ -1552,6 +1562,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATSEXUALS_FACTOR = "Sex Factor",
 	STATTAME_FACTOR = "Tame Factor",
 	STATTIMID_FACTOR = "Timid Factor",
+	STATSLAVE_CLASS = "Type",
 
 	STATPHYSICS_BONUS = "Physics",
 	STATWITS_BONUS = "Wits",
@@ -1626,7 +1637,10 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TOOLTIPFOOD = "Owned Food items / food consumed per day. Food is used by every character and can be obtained from some tasks and increased with cooking. Lack of food will lead to exhaustion and eventual death. ",
 	TOOLTIPENCHANTSCREEN = "You can apply enchants and curses to an item. Applying curse will increase item's enchantment capacity but the curse will be random and only revealed on equpping the item. ",
 	
-	
+	MASTERPOINTTOP = "New Master Point",
+	MASTERPOINTSTOP = "New Master Points",
+	MASTERPOINTBOTTOM = "%d point",
+	MASTERPOINTSBOTTOM = "%d points",
 	
 	INFOFOODFILTER = "Food filter allows to restrict or prioritize food which character will consume. Higher priority food consumed first. Keep in mind that some food may be hated by a character.",
 	INFOSEX_SKILLS = "Sex Skills refer to character's performance during sex. The higher they are, the quicker they can make thier partner to orgasm with related actions. Character's Sexual Proficiency is based on average of 3 highest skills.\nConsent represents character's general acceptance of various sexual actions, but it is also heavily affected by partners and situtation.",
@@ -1637,6 +1651,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	INFOPERSONALITYKIND = "Kind\n+50% Healing Spell Efficiency",
 	INFOPERSONALITYSERIOUS = "Serious\n+20% Damage Reduction",
 	INFOPERSONALITYSHY = "Shy\n+25% MATK, -20% ATK",
+	INFOSLAVE_CLASS = "Character type will define its options and behavior. Slaves can be forced into sexual services without consent and have higher tolerance for lack of consent in sex. Subordinates become loyal faster but can't be sold or given away.",
+	INFOCONSENT = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. Consent will affect prostitution related jobs.",
+	INFOCONSENTMASTER = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. {color=green|[Master] has no Consent requirements for any actions.}",
 	PERSONALITYNAMEBOLD = "Bold",
 	PERSONALITYNAMEKIND = "Kind",
 	PERSONALITYNAMESERIOUS = "Serious",
@@ -1679,7 +1696,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATTIMID_FACTORDESCRIPT = "Timid factor represents how easily the character can be influenced by punishments and abuse. The higher it is, the more effective Mean Social Skills are for building loyalty and lower Obedience Drain. It will also make personality changes more stable on Bold axis.\n\n{color=green|Maxed Timid Factor reduces Damage Taken.}",
 	STATWITS_FACTORDESCRIPT = "Wits factor represents the character's mind potential. It increases [color=aqua]Wits[/color] growth.\n\n{color=green|Maxed Wits Factor increases experience gain.}",
 	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. [Master]'s charm also increases gold and reputation rewards from repeatable quests and number of dates per week.\n\n{color=green|Maxed Charm Factor furtherly increases social skill efficiency.}",
-	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It speeds sexual skills acquirement and occasionally boosts sexual options in events. [Master]'s Sex factor also increases number of sex interactions per week.\n\n{color=green|Maxed Sex Factor provides Speed bonus}.",
+	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It speeds sexual skills acquirement, makes Consent easier to progress and occasionally boosts sexual options in events. [Master]'s Sex factor also increases number of sex interactions per week.\n\n{color=green|Maxed Sex Factor provides Speed bonus}.",
 	
 	
 	PHYSICS_FACTORBONUSDESCRIPT = "Physics Factor: Health Regeneration: x2",
@@ -1821,6 +1838,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLREWARDDESCRIPT = "Category: {color=green|Gracious}\nBuying their respect might seem like an easy solution... as long as you have enough coin. Increases obedience greatly.",
 	SKILLREWARDSEX = "Reward with sex",
 	SKILLREWARDSEXDESCRIPT = "Category: {color=pink|Lewd}\nRelieves a character's lust to improve their behavior. Target must have at least 25 Lust. Improved by Charm and Sex Factors.\nBasic Effects: \nLoyalty +5, Maxes Obedience.",
+	SKILLMENTOR = "Mentor",
+	SKILLMENTORDESCRIPT = "Category: {color=green|Gracious}\nMakes selected character recieve more experience for 1 day under your guidance. ",
 	SKILLSEDUCE = "Seduce",
 	SKILLSEDUCEDESCRIPT = "Category: {color=pink|Lewd}\nImproves Obedience and reduces Obedience drain. Improved by Charm Factor. \nBasic Effects: \nObedience Drain -7 for 5 days, Loyalty: +10, Maxes Obedience.",
 	SKILLGREATSEDUCE = "Great Seduce",
@@ -1912,6 +1931,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEPRAISEREPORT = "[name] has praised [targetname] for [targethis] efforts.\n\n{color=aqua|[targetname]} — {random_chat=0|master_praise}",
 	DIALOGUEWARNREPORT = "[name] has given a serious warning to [targetname] making [targethim] more aware of [targethis] behavior.",
 	DIALOGUESERVEREPORT = "[name] has approached [targetname] and provided [targethim] with [his] sincerest affection.",
+	DIALOGUEMENTORREPORT = "[name] has began mentoring [targetname] helping [targethim] to learn faster...",
 	DIALOGUESEDUCEREPORT = "[name] has approached [targetname] and after a couple moments left [targethim] wondering. Despite visual calmness, [targetname] has clearly become enamoured by [him].",
 	DIALOGUEGREATSEDUCEREPORT = "[name] has approached [targetname] and after a couple moments left [targethim] wondering. [targetHis] mind has been overtaken by strong desire, making [him] quite docile.",
 	DIALOGUEALLUREREPORT = "[name] has given [targetname] a small private encouragement.",
@@ -1947,8 +1967,17 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLMAKE_UNDEADDESCRIPT = "Makes selected charcter into Undead. Undead's charm is reduced by 100, food consumption is set to 0. Undead can't impregnate or get pregnant. Undead have increased Dark resist and reduced Light resist. \n\nCan't be used on Unique Characters.",
 	
 	DIALOGUEPET_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what [name]'s accumulated Lust is going to be used for.\n\n1. Restore full Obedience and gain some Loyalty\n2. Convert it into Experience\n3. Restore Health and Mana",
+	
+	
+	CONSENT0 = "Innocent",
+	CONSENT1 = "Curious",
+	CONSENT2 = "Developing",
+	CONSENT3 = "Willing",
+	CONSENT4 = "Lusty",
+	CONSENT5 = "Kinky",
+	CONSENT6 = "Deviant",
 
-	TRAITMASTERDESCRIPT = "Social skills build targets Loyalty 30% faster. \nIsn't affected by Obedience or Loyalty. Will not resist work or attempt escapes.",
+	TRAITMASTERDESCRIPT = "Social skills build targets Loyalty 30% faster. \nIsn't affected by Obedience or Loyalty. Will not resist any assignments, actions or attempt escapes.",
 	TRAITWORKERDESCRIPT = "Woodcutting and Mining are 50% more efficient.",
 	TRAITFOREMANDESCRIPT = "Woodcutting and Mining are 33% more efficient",
 	TRAITHUNTERDESCRIPT = "Fishing and Hunting are 50% more efficient.",
@@ -1956,11 +1985,11 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITENGINEERDESCRIPT = "Upgrading is 100% faster.",
 	TRAITCHEFDESCRIPT = "Cooking is 100% faster.",
 	TRAITATTENDANTDESCRIPT = "Once per combat turn [name] can use an item without using a turn.",
-	TRAITALCHEMISTDESCRIPT = "Crafts alchemical products 100% faster.\nHealing items are 25% more effective in combat.",
+	TRAITALCHEMISTDESCRIPT = "Healing items are 25% more effective in combat.",
 	TRAITFARMERDESCRIPT = "Farming is 50% more efficient. ",
 	TRAITBREEDERDESCRIPT = "Allows breeding with any race.\nPregnancy Debuffs are weaker\nOffspring will inherit only this parent's stats.",
 	TRAITHARLOTDESCRIPT = "Prostitution is 50% more efficient.",
-	TRAITSUCCUBUSDESCRIPT = "Sex activities provide 50% more experience.",
+	TRAITSUCCUBUSDESCRIPT = "Sex activities provide 50% more experience.\nCan infallibly recruit random characters by using Lust. ",
 	TRAITPETDESCRIPT = "Prostitution is 25% more efficient.",
 	TRAITSEXTOYDESCRIPT = "Prostitution is 50% more efficient.",
 	TRAITWITCRITDESCRIPT = "Increases critical strike chance by 3% per Wits Factor.",
@@ -1968,6 +1997,11 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITVALKYRIE_SPEARDESCRIPT = "+10 Speed while equipped with Spear.",
 	TRAITAUTOHIDE = "Conceal.",
 	TRAITAUTOHIDEDESCRIPT = "Starts combat in Hide if no Heavy or Medium Armor is equipped.",
+	TRAITDEATHKNIGHTDESCRIPT = "Dealing a killing blow increases Loyalty.",
+	TRAITNINJADESCRIPT = "Gain evasion based on your MDEF. Minimal chance for evading hit is reduced to 5%.",
+	TRAITWITCHDESCRIPT = "Your critical hits with spells apply random debuff. Healing spells have chance to apply healing over time.",
+	TRAITWARLOCKDESCRIPT = "Single target spells gain 25% increased critical chance and deal 75% bonus critical damage.",
+	TRAITTRUE_SUCCUBUSDESCRIPT = "When taking hit in combat generate some Lust.",
 	
 	TRAITBASIC_COMBAT = "Basic Combat",
 	TRAITADVANCED_COMBAT = "Advanced Combat",
@@ -2111,17 +2145,17 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITLOYALTY_PROSTITUTION = "Prostitution",
 	TRAITLOYALTY_PROSTITUTIONDESCRIPT = "{color=green|Unlocks Prostitution Occupation}\n\nCarnal pleasures for coin. Pleasure or not matters little when the alternative is an empty stomach.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_SEX_BASIC = "Sex:Basics",
-	TRAITLOYALTY_SEX_BASICDESCRIPT = "{color=green|Unlocks sex interactions and basic sex actions}\n\nIt didn't take long for the first slave owners to realize there was much more enjoyable uses for a slave other than labor.\n\nRequires: Basic Servitude",
+	TRAITLOYALTY_SEX_BASICDESCRIPT = "It didn't take long for the first slave owners to realize there was much more enjoyable uses for a slave other than labor.\n\nRequires: Basic Servitude",
 	TRAITLOYALTY_SEX_ORAL = "Sex:Oral",
-	TRAITLOYALTY_SEX_ORALDESCRIPT = "{color=green|Unlocks oral sex actions during sex interactions}\n\nA long day after managing a manor can be made all the better with a few minutes of one sided pleasure. After all a happy master tends to be a kind master.\n\nRequires: Sex:Basics",
+	TRAITLOYALTY_SEX_ORALDESCRIPT = "A long day after managing a manor can be made all the better with a few minutes of one sided pleasure. After all a happy master tends to be a kind master.\n\nRequires: Sex:Basics",
 	TRAITLOYALTY_SEX_ANAL = "Sex:Anal",
-	TRAITLOYALTY_SEX_ANALDESCRIPT = "{color=green|Unlocks anal sex actions during sex interactions}\n\nRequires: Sex:Basics",
+	TRAITLOYALTY_SEX_ANALDESCRIPT = "Requires: Sex:Basics",
 	TRAITLOYALTY_SEX_ADV = "Sex:Advanced",
-	TRAITLOYALTY_SEX_ADVDESCRIPT = "{color=green|Unlocks advanced sex actions during sex interactions}\n\nAfter serving their master repeatedly in the bedroom this slave has learned, and their owner can only benefit.\n\nRequires: Sex:Basics",
+	TRAITLOYALTY_SEX_ADVDESCRIPT = "After serving their master repeatedly in the bedroom this slave has learned, and their owner can only benefit.\n\nRequires: Sex:Basics",
 	TRAITLOYALTY_SEX_PERV = "Sex:Perverse",
-	TRAITLOYALTY_SEX_PERVDESCRIPT = "{color=green|Unlocks perverted sex actions during sex interactions}\n\nWhen ones duties revolve around use of their bodies, standard use can seem...vanilla. Often times slaves are more than willing to spice things up a bit.\n\nRequires: Sex:Advanced",
+	TRAITLOYALTY_SEX_PERVDESCRIPT = "When ones duties revolve around use of their bodies, standard use can seem...vanilla. Often times slaves are more than willing to spice things up a bit.\n\nRequires: Sex:Advanced",
 	TRAITLOYALTY_SEX_GROUP = "Sex:Group",
-	TRAITLOYALTY_SEX_GROUPDESCRIPT = "{color=green|Unlocks group sex actions and multiple partners during sex interactions}\n\nIf one source of pleasure can drive this slave to pleasure, what might two? For that matter what might three or more?\n\nRequires: Sex:Basics",
+	TRAITLOYALTY_SEX_GROUPDESCRIPT = "\n\nIf one source of pleasure can drive this slave to pleasure, what might two? For that matter what might three or more?\n\nRequires: Sex:Basics",
 	TRAITLOYALTY_PREGNANCY = "Pregnancy",
 	TRAITLOYALTY_PREGNANCYDESCRIPT = "{color=green|Unlocks an option to keep character's Baby on birth.}\n\nRequires: Sex:Basics",
 	TRAITLOYALTY_INTERBREED = "Pregnancy:Interbreed",
@@ -2135,7 +2169,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITMASTER_COMMUNICATIVE = "Communicative",
 	TRAITMASTER_COMMUNICATIVEDESCRIPT = "Social skills gain 1 additional charge. Personality influences are twice as strong.",
 	TRAITMASTER_RESILENCE = "Resilence",
-	TRAITMASTER_RESILENCEDESCRIPT = "",
+	TRAITMASTER_RESILENCEDESCRIPT = " ",
 	TRAITMASTER_FORTUNE = "Fortune",
 	TRAITMASTER_FORTUNEDESCRIPT = "Critical chance is increased by 25%. Slightly increases Magic Find.",
 	TRAITMASTER_INT = "Intelligence",
@@ -2263,6 +2297,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	BUFFDESCRIPTRESTO = "Resting: physical resist increased by 20%%",
 	BUFFDESCRIPTCURSE = "",
 	BUFFDESCRIPTENCHANT = "",
+	BUFFDESCRIPTMENTOR = "Experience Gain increased",
 	
 	
 	
@@ -2388,6 +2423,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	PROFBROKEN_ROYALTYDESCRIPT = "Once a famous royalty, now a mind broken individual capable of very little... At least her body is still in high demand.",
 	
 	
+	
 	PROFACOLYTE = "Acolyte",
 	PROFACOLYTEDESCRIPT = "Individuals have devoted their life to mending to others. ",
 	PROFPRIEST = "Priest",
@@ -2402,6 +2438,16 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	PROFFREYAS_PRIESTESS = "Former Freya's Priestess",
 	PROFFREYAS_PRIESTESSDESCRIPT = "Once a high priestess of elves, now this title hold more bluster than power.",
+	
+	
+	PROFDEATHKNIGHT = "Death Knight",
+	PROFDEATHKNIGHTDESCRIPT = "Sworn to their nature or master, undead warriors are able to grow stronger the more they slaughter.",
+	PROFWARLOCK = "Warlock",
+	PROFWARLOCKDESCRIPT = "The most fearsome sorcerors specializing in combat magic are able to incinerate their foes on sight.",
+	PROFWITCH = "Witch",
+	PROFWITCHDESCRIPT = "Female sorceresses specialize in hex magic and alchemy.",
+	PROFNINJA = "Ninja",
+	PROFNINJADESCRIPT = "Especially agile individuals are trained to evade many attacks as well as also resist magic.",
 	
 	TRAITRENOWN = "Renown",
 	TRAITRENOWNDESCRIPT = "Gracious skills provide 50% more Loyalty. ",
@@ -2894,7 +2940,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SEXTRAITBOTTLE_FAIRY = "Bottle Fairy",
 	SEXTRAITIRRESISTIBLE = "Irresistible",
 	SEXTRAITBEDROOM_PRODIDGY = "Bedroom Prodigy",
-	SEXTRAITPUSHOVER = "Pushover",
+	SEXTRAITPUSHOVER = "Likes it rough",
 	SEXTRAITTEACHER = "Teacher",
 	SEXTRAITDESIRED = "Desired",
 	SEXTRAITCURIOUS = "Curious",
@@ -2950,7 +2996,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SEXTRAITMASOCHISTDESCRIPT = "[name] experience unusual pleasure from being punished. Arousal from receiving punishments is increased by 50%. ",
 	SEXTRAITSADISTDESCRIPT = "[name] experience unusual pleasure from punishing others. Arousal from giving punishments is increased by 50%. ",
 	SEXTRAITSUBMISSIVEDESCRIPT = "[name] finds pleasure and comfort in being forced into things by others. Submissive positions arousal is increased by 20% ",
-	SEXTRAITDOORMATDESCRIPT = "[name] is very poor when dealing with sexual advances. Lack of consent does not reduce Obedience and won't make [name] fight back.",
+	SEXTRAITDOORMATDESCRIPT = "[name] is very poor when dealing with sexual advances. Actions without [his] consent have only 50% chance to cost stamina.",
 	SEXTRAITDOMINANTDESCRIPT = "[name] enjoys being in a leading role. Dominating positions arousal is increased by 20%.",
 	SEXTRAITNYMPHOMANIADESCRIPT = "[name] is perpetually horny, always ready for sex, even if it is not in [his] interest... Starts in Horny state.",
 	SEXTRAITHYPERSENSITIVEDESCRIPT = "[name]'s body is unreasonably sensitive. Can orgasm from any physical action. ",
@@ -2958,7 +3004,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SEXTRAITBOTTLE_FAIRYDESCRIPT = "[name] has a taste for alcoholic beverages. While Drunk or Tipsy all Arousal is increased by 30%.",
 	SEXTRAITIRRESISTIBLEDESCRIPT = "[name] is adored by anyone around [him]. Increases Consent for all [his] partners.",
 	SEXTRAITBEDROOM_PRODIDGYDESCRIPT = "[name] is an excellent learner when it comes to sex practices. Sex Skill gain is increased by 50%. ",
-	SEXTRAITPUSHOVERDESCRIPT = "[name] is a coward in nature and easily learns to do what [he] is told. Consent gain after sex is increased by 50%. ",
+	SEXTRAITPUSHOVERDESCRIPT = "[name] has unusual desire to be taken against [his] will. All actions against [him] will be treated as forced in terms of descriptions. Stamina reduction from non-consent actions is lower.  ",
 	SEXTRAITTEACHERDESCRIPT = "[name] has a talent to make [his] partners develop their sex skills faster. Partners' Sex Skill gain is increased by 50% (does not stack)",
 	SEXTRAITDESIREDDESCRIPT = "[name] is extremely attractive, making [his] partners more excited. Partners' Arousal is increased by 25%.",
 	SEXTRAITCURIOUSDESCRIPT = "While [name] is interested in sex, [he]'s actually learning more than just it. Sex Encounters give 25% more experience.",
@@ -2997,10 +3043,13 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUERECRUITCHOOSEPERSON = "Choose Negotiator",
 	DIALOGUERECRUITENSLAVE = "You decide to not endorse into any negotiations and simply make [him] your slave against [his] will.",
 	DIALOGUERECRUITGOOD = "Your entrusted servant successfully managed to persuade [name] into serving you.",
+	DIALOGUERECRUITGOODSEDUCE = "Your entrusted servant successfully seduced [name], who agreed to serve you.",
 	DIALOGUERECRUITGOODSLAVE = "Make Slave",
 	DIALOGUERECRUITGOODSERVANT = "Make Subordinate",
 	DIALOGUERECRUITFORCEATTEMPT = "Enslave",
 	DIALOGUERECRUITATTEMPT = "Attempt to Recruit",
+	DIALOGUERECRUITSUCCUBUS = "Seduce (Succubus), 30 Mana",
+	DIALOGUERECRUITSUCCUBUSNOMANA = "Seduce (Succubus), 30 Mana (Not enough mana)",
 	
 	DIALOGUERECRUITBAD = "Your entrusted servant failed to persuade [name] into serving you... With no other option you enslave [him] resisting.",
 	
@@ -3008,6 +3057,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEMEET = "Your servants have found a potential recruitee, [name], who seems to be interested in joining your household. ",
 	DIALOGUEMEETBAD = "You've failed to persuade [name] and [he] bids you a farewell.",
 	DIALOGUEMEETGOOD = "After a discussion [name] agrees to become your follower. ",
+	DIALOGUEMEETGOODSEDUCE = "Being charmed by a lustful intentions, [name] agrees to become your follower. ",
 	DIALOGUEMEETGOODDEFAULT = "Add to roster as Subordinate",
 	DIALOGUEMEETGOODHIRELING = "",
 	
@@ -3046,6 +3096,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEAPPROACHSHRINE = "Approach Shrine",
 	DIALOGUESHRINECHOOSEPERSON = "Select another character",
 	DIALOGUESHRINEITEM = "Make an offering",
+	DIALOGUESHRINEEQUIP = "Offer a piece of equipment",
 	DIALOGUESHRINECHARACTER = "Send [name] to altar",
 	DIALOGUESHRINEDESTROY = "Demolish Shrine",
 	DIALOGUECHESTLOCKPICK = "Attempt to Lockpick",
@@ -4376,8 +4427,8 @@ The princess notices Aire tensing up in response to the question.
 	SIGMUND_EXTRA1 = """— Ya know, I wasn't around at da time of the king's death. Yah, non-humans weren't allowed to take any major posts. I dun really like the whole war business, but obviously ya won't see me siding with fans of those times.""",
 	
 	
-	LACKSEXTRAINING = "\n{color=red|[name] lacks training to be assigned to this task}",
-	LACKSEXTRAININGSLAVE = "\n{color=red|[name] lacks a proper training and will only earn 2/3 of the potential gold from it.}",
+	LACKSEXTRAINING = "\n{color=red|[name] lacks Prostitution Training to be assigned to this service}",
+	LACKSEXTRAININGSLAVE = "\n{color=red|[name] lacks Prostitution Training and will only earn 2/3 of the potential gold from it.}",
 	
 
 	STATOBDRAINREDUCTION = "Obedience Drain Decrease",
@@ -4417,6 +4468,9 @@ The princess notices Aire tensing up in response to the question.
 
 	ITEMLATEX_SUIT = "Latex Suit",
 	ITEMLATEX_SUITDESCRIPT = "A tight clothing accentuating curves of the body.",
+	ITEMSERVICE_SUIT = "Bunny Costume",
+	ITEMSERVICE_SUITDESCRIPT = "This costume somehow works wonders on attracting male attention in public places.",
+	
 
 	MATERIALTROLL_BLOOD = "Troll Blood",
 	MATERIALTROLL_BLOODDESCRIPT = "A vial of red fluid obtained from defeating trolls.",
@@ -5051,7 +5105,7 @@ She passes you a roll of paper she took from the pile on a small table. As you u
 	DIVINE_SYMBOL_OPTION_29 = """I do not cooperate, only dominate.""",
 	DIVINE_SYMBOL_36 = """Zephyra takes a long pause contemplating you and your words. Just as you think she's not going to say anything, she kneels down before you.
 
-— Fine, I'll become your subordinate, if you wish so.""",
+— Fine, I'll become your captive, if you wish so.""",
 	DIVINE_SYMBOL_OPTION_30 = """I'll take care of you.""",
 	DIVINE_SYMBOL_OPTION_31 = """That was a joke, you can join me.""",
 	DIVINE_SYMBOL_OPTION_32 = """No, after all I can't trust you.""",
@@ -5100,7 +5154,7 @@ As you come out you notice how Duncan's stoic face shows a hint of respect.
 Duncan: — [name], you can return to Aliron now. We shall plan out our next moves.}""",
 
 
-	FINAL_OPERATON_START = "- Hello, [name]. I need to ask for your help in a matter that should stay between us.",
+	FINAL_OPERATON_START = "— Hello, [name]. I need to ask for your help in a matter that should stay between us.",
 	FINAL_OPERATON_START_OPTION_1 = "I would be glad to help.",
 	FINAL_OPERATON_START_OPTION_2 = "Depends on what it is.",
 
@@ -5473,7 +5527,7 @@ You hand makes a hard slap on Aire's cheek which turns red, yet her expression d
 — Fine, I'll trust you. If there's anyone from here who can act in her interest, it would be you. She's escaped to the elven lands. I've managed to secure a spot for her thanks to my heritage. You'd be able to find out more from the high priestess, assuming she'll let you meet her, but at this point I suspect it shouldn't be much of a problem for you.""",
 	SEARCH_DUNGEON_16 = """You see Amelia still waiting near the entrance to the cells as you exit the dungeons, she beckons you over to her.
 
-- How'd it go?""",
+— How'd it go?""",
 	SEARCH_DUNGEON_OPTION_43 = """I got the princess' location.""",
 	SEARCH_DUNGEON_17 = """— Wow, really? I knew you had a silver tongue in you. Great work, Duncan will want to know as soon as you're ready to deliver the information to him. Don't worry, I won't steal your spotlight if you want to wait a bit.""",
 	SEARCH_DUNGEON_OPTION_44_1 = """I wasn't able to get any information on the princess.""",
@@ -5503,7 +5557,7 @@ You hand makes a hard slap on Aire's cheek which turns red, yet her expression d
 	LOOKING_FOR_PRINCESS_OPTION_1 = """Let's get right into it, I'm eager to get to her myself.""",
 	LOOKING_FOR_PRINCESS_OPTION_2 = """I currently have other issues to deal with.""",
 	LOOKING_FOR_PRINCESS_OPTION_3 = """How goes the search?""",
-	LOOKING_FOR_PRINCESS_5 = """- We've had no further leads on her location so far. So far no one has come forward with any new information.""",
+	LOOKING_FOR_PRINCESS_5 = """— We've had no further leads on her location so far. So far no one has come forward with any new information.""",
 	LOOKING_FOR_PRINCESS_OPTION_4 = """I'll track her down.""",
 	LOOKING_FOR_PRINCESS_OPTION_5 = """I'll come back later.""",
 	LOOKING_FOR_PRINCESS_6 = """As you search through the now empty halls and traces of recent battle you struggle to find anything useful. It seems the guilds' mercenaries and scavengers didn't waste any time. However, after another half hour you notice a smaller scavenger.
@@ -6482,6 +6536,8 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	MATERIALDIVINE_SYMBOLDESCRIPT = "A small coin shaped piece of metal, which can act as a medium for certain arts. Despite its simple look, it shows a considerable craftsmanship.",
 	MATERIALBLESSED_DIVINE_SYMBOL = "Blessed Divine Symbol",
 	MATERIALBLESSED_DIVINE_SYMBOLDESCRIPT = "A small coin shaped piece of metal giving off a faint light.",
+	MATERIALZEPHYRA_UNDERWEAR= "Pristine Water Ripple",
+	MATERIALZEPHYRA_UNDERWEARDESCRIPT = "Excessively rare item, a one of a kind, or at least a one you've obtained.",
 
 	UNIQUECLASS = "Can't be acquired normally",
 
@@ -7748,7 +7804,42 @@ Zephyra leaves the church without giving you a second glance.""",
 	ZEPHYRA_SWORD_2_OPTION_1 = "I doubt that they will simply give it to us.",
 	ZEPHYRA_SWORD_2_OPTION_2 = "What's gonna happen after we gather all the Artifacts?",
 	ZEPHYRA_SWORD_3_1 = """— Me too. Well, you are the Mayor, I believe you'll get an opportunity one way or the other eventually. Until then I'll be staying by your side, if you don't mind.""",
-	ZEPHYRA_SWORD_3_2 = """— No idea. I'm sorry, but I can only vaguely interpret the general idea of what we are expected to do. I hope that doesn't disappoint you too much? Until we make more progress I hope to stay by your side.""",
+
+	ZEPHYRA_SWORD_3_2 = "— No idea. I'm sorry, but I can only vaguely interpret the general idea of what we are expected to do. I hope that doesn't disappoint you too much? Until we make more progress I hope to stay by your side.",
+	ZEPHYRA_SWORD_3_2_1 = "[Charm] Are you hiding something from me?",
+	ZEPHYRA_SWORD_3_2_2 = "[Wits] If you want my help, I want to know more about what we are doing.",
+	ZEPHYRA_SWORD_3_2_3 = "Very well, I'll help you.",
+	ZEPHYRA_SWORD_3_2_4 = "I'll get to it when I have time.",
+	ZEPHYRA_SWORD_3_2_FINISH = "Zephyra nods with her usual smile on her face before leaving you to yourself.",
+	ZEPHYRA_SWORD_3_3_1 = """{color=green|Success}
+
+— I wish I could tell you more, but I barely get anything other than my personal hunch about what's going on. All I'm certain of is that there's an ominous plot being staged beyond our sight, the one threatening everyone. I know it's a weak premise, but I can't do nothing on it. 
+
+— And if you want to know why I think my own actions are so important, let's say I'm not just some random girl of unusual descendancy who got granted a god's power and guidance. Well, after all, nothing in this world is truly accidental, don't you think?""",
+	ZEPHYRA_SWORD_3_3_1_OPTION_1 = "Many things in our lives are purely random.",
+	ZEPHYRA_SWORD_3_3_1_OPTION_2 = "I can't deny the certainty of some seemingly arbitrary actions.",
+	ZEPHYRA_SWORD_3_3_1_1 = "— Don't be harebrained, [name]. Not a single action taken can be replayed after it is unveiled, there's only single chance for everything what happened was certain to happen. The fate is the truth we live by. And this fate is guided by something far greater than your or mine life.",
+	ZEPHYRA_SWORD_3_3_1_1_OPTION1 = "And if this happens to lead you to your death?",
+	ZEPHYRA_SWORD_3_3_1_1_OPTION2 = "Enough of this talk.",
+	ZEPHYRA_SWORD_3_3_1_1_1 = "— In this case I'll be very sad. Because of my death. But also because it would indicate a severe disaster for the rest of the world. ",
+	ZEPHYRA_SWORD_3_3_1_2 = "— So we are like-minded. That's a relief to know. ",
+	ZEPHYRA_SWORD_3_3_2 = """{color=red|Failure}
+
+	Zephyra looks around with a troubled expression of someone having to answer a childish questions rather than someone being interrogated.
+
+	— *Sigh* Look, if that's still not enough for to convince you, how about I dirty bribe you then? Tell what can I get you.""",
+	ZEPHYRA_SWORD_3_3_2_OPTION_1 = "You could give something valuable as a way of insurance.",
+	ZEPHYRA_SWORD_3_3_2_OPTION_2 = "Something intimate could prove your sincerity.",
+	ZEPHYRA_SWORD_3_3_2_OPTION_3 = "Forget about it, I'll trust you.",
+	ZEPHYRA_SWORD_3_3_2_1 = """Hearing your mundane request, Zephyra reaches her pocket and produces a sizable pouch of gold coins. She puts it before you before stepping back.
+
+— This is about five hundred and this is all I have as my safety measure. So now I'm financially completely in your care. You wonder why? That's the extension of my trust... or stupidity. """,
+	ZEPHYRA_SWORD_3_3_2_2 = """Zephyra blushes for a bit, after which she leaves a room. After a few moments of rustling behind the door, she enters again and puts into your hand a still warm piece cloth, which appear to be her undergarment. 
+
+— Happy now, dear Mayor? This way both you get what you want and I could make some scandalous claims if you do something bad. Now, please excuse me, I don't want to keep around here... or anywhere, being that unprotected. 
+
+Zephyra leaves to her room before you get a chance to react. It seems she will take you reaction as an agreement.""",
+	ZEPHYRA_SWORD_3_4 = "- Now, have I satisfied your curiosity? What is your answer?",
 	PRIESTESS_SWORD_TALK_1_1 = """After making an appointment, you are able to find an audience with the High Priestess. 
 
 — Just so you know, I'm only receiving you because of your high status. What do you need?""",
@@ -11327,7 +11418,7 @@ Guard A: — Have some patience. You'll get your turn soon. After I nut in 'er a
 Zephyra's stares blankly into the space in front of her. Her mind realizes a terrible truth: they won't let her go. This is going to continue for much longer than she will be able to withstand. And nobody is coming to help...""",
 	ZEPHYRA_DISAPPEARANCE_SEX_1 = """Feeling you getting into mood, Zephyra drags you away from the road getting to the closest tree. 
 
-- Pardon my disgrace, but it seems we both aren't quite in the mood to keep walking... Besides, you'd love to have a proper reward for your deed?
+— Pardon my disgrace, but it seems we both aren't quite in the mood to keep walking... Besides, you'd love to have a proper reward for your deed?
 
 Without adding much, she swallows and leans over the tree, brushing aside the cover from her rear and lifting her tail invitingly almost like an animal in heat. As she looks back at you with dreamy eyes, you quickly spot her privates completely moist from arousal.""",
 	ZEPHYRA_DISAPPEARANCE_SEX_2 = """The sight is too alluring to hold back. You eagerly accept her invitation. As you draw closer, your shaft exposed, you start rubbing it on her wet skin. Zephyra makes a cute whine as your skin touches hers.
@@ -11389,9 +11480,9 @@ Zephyra stands up and fixes her clothes. She smirks at you, and takes you by the
 	ZEPHYRA_BRUSH_OPTION_0 = "There's one magic item I want to know about...",
 	ZEPHYRA_BRUSH_1 = """You ask Myr about the mystic brush you remember from the illusion you were trapped in.
 
-- Think I've read about it a couple times. This reminds me of a Foxtail Brush. An illusive artifact of ancient origin. Some say there's multiple copies of it, but they are notoriously hard to obtain and contain, partly because they tend to change their form between owners or as ages pass. The reasoning behind the changes is not clear.
+— Think I've read about it a couple times. This reminds me of a Foxtail Brush. An illusive artifact of ancient origin. Some say there's multiple copies of it, but they are notoriously hard to obtain and contain, partly because they tend to change their form between owners or as ages pass. The reasoning behind the changes is not clear.
 
-- Well, if you can recall its appearance we can try to run a search spell for you. Make a drawing of it as close as possible. That will be 1.000 gold, magic parchment isn't cheap you know.""",
+— Well, if you can recall its appearance we can try to run a search spell for you. Make a drawing of it as close as possible. That will be 1.000 gold, magic parchment isn't cheap you know.""",
 	ZEPHYRA_BRUSH_1_OPTION_1 = "[Wits] Agree. (1.000 gold)",
 	ZEPHYRA_BRUSH_1_OPTION_2 = "I'll come later.",
 	ZEPHYRA_BRUSH_2_1 = """{color=green|Success}
@@ -11406,7 +11497,7 @@ Despite your best efforts, your drawing is too amateurish and the brush's detail
 	ZEPHYRA_BRUSH_4_1 = """As you call it over, you make out its details, apparently it's a girl with a large black fox tail, dressed in dark clothes fitting the environment. She pays no attention to your words until she casually picks up the brush and turns to you. She leisurely twirls the brush in her hands, looking at you with an incomprehensible expression.
 
 
-- This does not belong to you, stranger. Are you a thief, perhaps? Who do you need this for?""", 
+— This does not belong to you, stranger. Are you a thief, perhaps? Who do you need this for?""", 
 	ZEPHYRA_BRUSH_4_2_GOOD = """{color=green|Success}
 
 You manage to outrun the silhouette, but as your hand moves in to grab the brush it grasps for air as the brush gets yanked out by the shadow behind it. As you turn to your rival, you realize it's a girl with a large black fox tail, dressed in dark clothes fitting the environment. She leisurely twirls the brush in her hands, looking at you with an incomprehensible expression.
@@ -11433,8 +11524,8 @@ The girl places the brush back on the pedestal and walks towards the exit.""",
 The question was conveyed as nonchalantly as humanly possible, yet it felt like she's genuinely interested in your answer.""",
 	ZEPHYRA_BRUSH_5_3_OPTION_1 = "Yes.",
 	ZEPHYRA_BRUSH_5_3_OPTION_2 = "No.",
-	ZEPHYRA_BRUSH_6_1 = """- And you believe something like that will help you out? What nonsense. Fine, take your prize.""",
-	ZEPHYRA_BRUSH_6_2 = """- Are you stupid? Why would you go this far for it then... Whatever. 
+	ZEPHYRA_BRUSH_6_1 = """— And you believe something like that will help you out? What nonsense. Fine, take your prize.""",
+	ZEPHYRA_BRUSH_6_2 = """— Are you stupid? Why would you go this far for it then... Whatever. 
 
 The girl places the brush back on the pedestal and walks towards the exit.""",
 	ZEPHYRA_BRUSH_6_OPTION_1 = "Wait, what's your name?",
@@ -12281,114 +12372,256 @@ Not waiting for your reply she disappears from sight as nonchalantly as she appe
 	ZEPHYRA_COSTUME_1_OPTION_1 = "Check elven houses",
 	ZEPHYRA_COSTUME_1_1 = """As you walk through the settlement, you come across an agitated elf woman.
 
-- I can't believe my idiot husband. I knew marrying someone following a different deity is going to be tough, but I guess Alios followers are a special kind. Lately he has been really annoying about rumors of some champion or something.
+— I can't believe my idiot husband. I knew marrying someone following a different deity is going to be tough, but I guess Alios followers are a special kind. Lately he has been really annoying about rumors of some champion or something.
 
 Unable to find any words for this situation you decide to leave her alone.""",
 	ZEPHYRA_COSTUME_1_2 = """You walk by the familiar house. You aren't sure what you can do here right now.""",
 	ZEPHYRA_COSTUME_2 = """As you and Zephyra go through the village's side street, you are suddenly approached by an overly expressive elven civilian of ambiguous age. 
 
-Elf: - No way, are you... Zephyra, The Champion of Alios?! 
+Elf: — No way, are you... Zephyra, The Champion of Alios?! 
 
-Zephyra: - I wish I could lie about it, but my agreement requires me to confirm my identity to the believers...""",
+Zephyra: — I wish I could lie about it, but my agreement requires me to confirm my identity to the believers...""",
 	ZEPHYRA_COSTUME_2_OPTION_1 = "Aren't you happy that someone finally acknowledges you?",
 	ZEPHYRA_COSTUME_2_OPTION_2 = "You should be more faithful to your duty.",
 	ZEPHYRA_COSTUME_2_OPTION_3 = "(To the man) Sorry, we aren't giving interviews to strangers.",
-	ZEPHYRA_COSTUME_3_1 = """Elf: - I knew it! My name is Wirenth, I've been a devoted Alios follower since the times he was in our lands.
+	ZEPHYRA_COSTUME_3_1 = """Elf: — I knew it! My name is Wirenth, I've been a devoted Alios follower since the times he was in our lands.
 
-Zephyra: - Uh, huh, a long time ago then...
+Zephyra: — Uh, huh, a long time ago then...
 
-Wirenth: - I know you are a fairly recently became his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
+Wirenth: — I know you are a fairly recently became his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
 
-Zephyra: - You've done well flattering me, might I ask what can I do for your dutious worship?""",
-	ZEPHYRA_COSTUME_3_2 = """Elf: - I knew it! My name is Wirenth, I've been a devoted Alios follower since the times he was in our lands.
+Zephyra: — You've done well flattering me, might I ask what can I do for your dutious worship?""",
+	ZEPHYRA_COSTUME_3_2 = """Elf: — I knew it! My name is Wirenth, I've been a devoted Alios follower since the times he was in our lands.
 
-Zephyra: - Uh, huh, a long time ago then...
+Zephyra: — Uh, huh, a long time ago then...
 
-Wirenth: - I know you are a fairly recently became his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
+Wirenth: — I know you are a fairly recently became his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
 
-Zephyra: - ...Former High Priestess.
+Zephyra: — ...Former High Priestess.
 
-Wirenth: - Gah, this is less important than meeting a herald of Alios herself.
+Wirenth: — Gah, this is less important than meeting a herald of Alios herself.
 
-Zephyra: - You've done well flattering me, might I ask what can I do for your dutious worship?""",
-	ZEPHYRA_COSTUME_3_3 = """Zephyra: - Well, this is a shame, but I'm afraid because of my selfish [Master] I won't be able to help you out. 
+Zephyra: — You've done well flattering me, might I ask what can I do for your dutious worship?""",
+	ZEPHYRA_COSTUME_3_3 = """Zephyra: — Well, this is a shame, but I'm afraid because of my selfish [Master] I won't be able to help you out. 
 
-Wirenth: - Oh... Uh, alright... I wish you the best on your journey... 
+Wirenth: — Oh... Uh, alright... I wish you the best on your journey... 
 
 You leave the disappointed elven man and for some reason decide not to go over his place any time soon.""",
-	ZEPHYRA_COSTUME_4 = """Wirenth: - Truth be told... Can I ask for your private audience? 
+	ZEPHYRA_COSTUME_4 = """Wirenth: — Truth be told... Can I ask for your private audience? 
 
-Zephyra: - ...Huh?
+Zephyra: — ...Huh?
 
-Wirenth: - My wife is not currently at home and I don't have too much time till she returns. I know how it may look, but I'm doing it with the best faith in Alios.
+Wirenth: — My wife is not currently at home and I don't have too much time till she returns. I know how it may look, but I'm doing it with the best faith in Alios.
 
-Zephyra: - Uh, I'm somewhat busy right now, but if [Master] has no objections...""",
+Zephyra: — Uh, I'm somewhat busy right now, but if [Master] has no objections...""",
 	ZEPHYRA_COSTUME_4_OPTION_1 = "Are you sure about that? It doesn't look safe",
 	ZEPHYRA_COSTUME_4_OPTION_2 = "This seems important, so just get on with it",
 	ZEPHYRA_COSTUME_4_OPTION_3 = "Sorry, I can't let you go like that",
-	ZEPHYRA_COSTUME_5_1 = """Zephyra: - I don't sense any danger from him, so I'm sure it's gonna be fine. Besides, I still have a duty to fulfill as a champion.""",
+	ZEPHYRA_COSTUME_5_1 = """Zephyra: — I don't sense any danger from him, so I'm sure it's gonna be fine. Besides, I still have a duty to fulfill as a champion.""",
 	ZEPHYRA_COSTUME_5_2 = """As Zephyra and the man move into the house, you put your ear next to the door listening to their conversation...
 
-Wirenth: - ...I'm sorry, this is kinda embarrassing for me, but...
+Wirenth: — ...I'm sorry, this is kinda embarrassing for me, but...
 
 ......
 
-Zephyra: - ...Look, you aren't serious about this, right? It's even more embarrassing for me... Well, since you've been a faithful follower... *Sigh*...
+Zephyra: — ...Look, you aren't serious about this, right? It's even more embarrassing for me... Well, since you've been a faithful follower... *Sigh*...
 
 ........
 
-Wirenth: - ...Ooh, this is great!... I knew it, it is just the right size for your body...
+Wirenth: — ...Ooh, this is great!... I knew it, it is just the right size for your body...
 
-Zephyra: - ...Don't say that, this sounds terrible...""",
+Zephyra: — ...Don't say that, this sounds terrible...""",
 	ZEPHYRA_COSTUME_5_OPTION_1 = "*Rush in*",
 	ZEPHYRA_COSTUME_5_OPTION_2 = "*Keep waiting*",
 	ZEPHYRA_COSTUME_6_1 = """As you barge inside, you find Zephyra wearing strange white and red clothes looking nothing like what she was wearing before. She does seem to be embarrassed wearing this.
 
-Zephyra: - [Master]! Why are you rushing in like this?! Gosh, why did this happen to me...
+Zephyra: — [Master]! Why are you rushing in like this?! Gosh, why did this happen to me...
 
-Wirenth: - Oh no... Please, close the door before our neighbors see it.""",
+Wirenth: — Oh no... Please, close the door before our neighbors see it.""",
 	ZEPHYRA_COSTUME_6_2 = """After a few minutes Zephyra leaves the house brushing her clothes with the sad looking man following after her. You can read embarrassment and annoyance on her face. 
 
-Zephyra: - We shall not speak about what has been happening just now and lets be on our way.
+Zephyra: — We shall not speak about what has been happening just now and lets be on our way.
 
-Wirenth: - I-I'm sorry... But thank you for paying me a visit, perhaps, if you change your mind...
+Wirenth: — I-I'm sorry... But thank you for paying me a visit, perhaps, if you change your mind...
 
 Before he could finish the foxgirl already went for a considerable distance making you follow her.""",
 	ZEPHYRA_COSTUME_7 = """After you've closed the door, Wirenth finally explains himself.
 
-Wirenth: - W-well... You see, a few years ago there was a traveling merchant passing through our village, and I had this unbearable urge to purchase this outfit once I saw it... Even though its not even fit for my wife...
+Wirenth: — W-well... You see, a few years ago there was a traveling merchant passing through our village, and I had this unbearable urge to purchase this outfit once I saw it... Even though its not even fit for my wife...
 
-Zephyra: - I can't believe I agreed to wear this.
+Zephyra: — I can't believe I agreed to wear this.
 
-Wirenth: - But now I know this is exactly why I got it! It was meant for you, Champion Zephyra. It must have been Alios' guidance all this time.
+Wirenth: — But now I know this is exactly why I got it! It was meant for you, Champion Zephyra. It must have been Alios' guidance all this time.
 
 Zephyra does not comment on it, trying to either facepalm herself or hide her blush with it. It seems she believes in what the man said.""",
 	ZEPHYRA_COSTUME_7_OPTION_1 = "I actually like it",
 	ZEPHYRA_COSTUME_7_OPTION_2 = "Is this some faraway land outfit?",
-	ZEPHYRA_COSTUME_8_1 = """Zephyra: - [Master], please, not you as well... What's wrong with men? I guess, there's no other choice for me but to keep this gift now.
+	ZEPHYRA_COSTUME_8_1 = """Zephyra: — [Master], please, not you as well... What's wrong with men? I guess, there's no other choice for me but to keep this gift now.
 
-Wirenth: - Yes! It suits you so well. It's not like I had any use for it so it was destined to end up being yours.
+Wirenth: — Yes! It suits you so well. It's not like I had any use for it so it was destined to end up being yours.
 
-Zephyra: - Fine, fine... T-thank you for this... As long as [Master] finds this appealing.""",
-	ZEPHYRA_COSTUME_8_2 = """Wirenth: - Yes! It suits you so well. It's not like I had any use for it so it was destined to end up being yours.
+Zephyra: — Fine, fine... T-thank you for this... As long as [Master] finds this appealing.""",
+	ZEPHYRA_COSTUME_8_2 = """Wirenth: — Yes! It suits you so well. It's not like I had any use for it so it was destined to end up being yours.
 
-Zephyra: - Fine, fine... T-thank you for this... As long as [Master] finds this appealing.""",
+Zephyra: — Fine, fine... T-thank you for this... As long as [Master] finds this appealing.""",
 	ZEPHYRA_COSTUME_9 = """After shaking the Wirenth's hand you both make out of his home. 
 
-Zephyra: - [Master], are you planning to keep me wearing this? I can't shake the feeling this has some underlying meaning I can't quite comprehend yet, like being of fox ancestry has something obscure to do with this.""",
+Zephyra: — [Master], are you planning to keep me wearing this? I can't shake the feeling this has some underlying meaning I can't quite comprehend yet, like being of fox ancestry has something obscure to do with this.""",
 	ZEPHYRA_COSTUME_9_OPTION_1 = "I think it suits you really well",
 	ZEPHYRA_COSTUME_9_OPTION_2 = "You can take it off if you want",
 	ZEPHYRA_COSTUME_9_OPTION_3 = "Perhaps, you should dye your hair orange and learn cooking",
-	ZEPHYRA_COSTUME_10_1 = """Zephyra: - Of course [Master] does, I'm never going to question your deviant tastes. 
+	ZEPHYRA_COSTUME_10_1 = """Zephyra: — Of course [Master] does, I'm never going to question your deviant tastes. 
 
 Zephyra makes a playful chuckle seemingly accepting this recent attire. """,
-	ZEPHYRA_COSTUME_10_2 = """Zephyra: - Hmm... I'll consider it.
+	ZEPHYRA_COSTUME_10_2 = """Zephyra: — Hmm... I'll consider it.
 
 Despite your expectation for Zephyra to get rid of this costume as soon as possible, she smiles wryly at her own thoughts. """,
-	ZEPHYRA_COSTUME_10_3 = """Zephyra: - Absolutely not, never, in no reality or fantasy this is going to happen. I value my life too much to make my older sister mad at me for trying to impersonate her. As for cooking, only if you promise to eat anything I make.""",
+	ZEPHYRA_COSTUME_10_3 = """Zephyra: — Absolutely not, never, in no reality or fantasy this is going to happen. I value my life too much to make my older sister mad at me for trying to impersonate her. As for cooking, only if you promise to eat anything I make.""",
 	
+	DAISY_WEDDING_1 = """— …Master, I’m— I’m the happiest I’ve ever been! You’ve taken such good care of me despite… my mistakes…
+
+You reassure her that whatever mistakes she makes can’t possibly outweigh your love for her.
+
+— M–Master!
+
+Daisy kisses you, her shaky hands grasping at your clothes as if you’ll disappear.
+
+— Ah! I did that without orders…! I— Um… Do you… want me tonight, Master?""",
+	DAISY_WEDDING_1_OPTION_1 = "Of course.",
+	DAISY_WEDDING_1_OPTION_2 = "I’m a bit tired after the ceremony.",
+	DAISY_WEDDING_2_1 = """Daisy blushes. Her mouth opens and closes over and over again, but nothing comes out.
+
+She lets you lead her to your bedroom, a silly smile on her face.""",
+	DAISY_WEDDING_2_2 = """— O–Oh… Maybe we can… um, cuddle instead?
+
+You tell her you might later, but you’re going to get some sleep.
+
+Daisy sits down on your bed, looking around at everything in the room but you.
+
+— So, um… h–how do you want me, Master?""",
+	DAISY_WEDDING_3 = """You push Daisy back onto the bed and lift her dress excitedly, exposing her wet pussy
+
+— Ah…!
+
+Daisy looks up at you with eyes glowing in the moonlight.
+
+— Are you sure I’m worthy of your… love, Master?""",
+	DAISY_WEDDING_4 = """You pull out your cock in response, watching as her eyes become glued to it. She gulps as you slide it over her pussy teasingly before inserting yourself all at once.
+
+You start moving, plunging as deeply into her as you can. Pulling back until just your tip remains on the inside of her pussy, you thrust back in.""",
+	DAISY_WEDDING_5 = """Her pussy clings tightly to your dick as you pleasure her with fast and hard motions. The wet sounds from your intercourse messily stain the bed. Daisy seems to have relaxed since your insertion, watching as you fuck her.
+
+— Ngh…! I’m…!!""",
+	DAISY_WEDDING_6 = """Daisy’s pussy tightens around your dick as a wave of her cum flows out. She shivers as she submissively gives in to your will. Her exasperation leads to heavy breaths as she takes you inside her dutifully.
+
+Despite her words, Daisy’s eyes are locked to yours as you fill her pussy with your cum. Your dick wildly ejaculates inside her pussy, filling her up quickly. Her ears twitch and her whole body shivers from the heat warming her up inside.
+
+— Master… Thank you for loving me… I still feel like I don’t deserve this…
+
+You lean over and kiss Daisy as your cum continues to messily spill out of her pussy. Despite just unleashing a load inside her, Daisy seems riled up and ready for more.
+
+— K–Keep going… Master!
+
+How can you deny a cute face like that? You grant her what she so desires for the rest of the night, making love to her until morning.""",
 	
-	
+	AMELIA_WEDDING_1 = """As you pull yourself from the festivities, you feel a soft tail curl around your leg and tickle your skin. Amelia slinks closer to you, clinging to your arm and holding it between her breasts as she gives you a knowing stare.
+
+— Master [name], getting away from the crowd? I thought you would be the life of the party, entertaining your guests with stories of your great accomplishments? Of course, once you were done with that, I would come “relieve” you of your duties. Looks like we’ll get to have some fun early.""",
+	AMELIA_WEDDING_1_OPTION_1 = "Trying to pull your Master away for yourself? Sounds like this kitty could use some discipline…",
+	AMELIA_WEDDING_1_OPTION_2 = "Getting rest is part of a Master’s duties as well. You’ll get your fun when I have time.",
+	AMELIA_WEDDING_2_1 = """You turn to her and pull her into your embrace, pointing her chin up to you. The mischief in her eyes is plain to see as she enjoys teasing you.
+
+— Mmm… I’m here to please, Master [name]. Do what you must to make sure I understand exactly how naughty I’ve been…
+
+Sharing a kiss with her, you grab one of her breasts and squeeze it tight, making her moan in your mouth. Amelia cups your bulge, rubbing it back and forth as it grows and fills out her palm. Her tail coils around your leg, gently pulling you towards her as she grinds her body against yours.
+
+— Come on, show me how rough you can be with your property, Master [name]…
+
+You pull her along with you to the bedroom, groping her plush ass the entire way. Even as you open the door, her body seems to pull at you for your attention.""",
+	AMELIA_WEDDING_2_2 = """— I didn’t know you would be such a tease, even on our wedding day. I’ll have a long list of transgressions to discipline me for if you put my correction off, you know. I’m sure you’ll be very rough when the time comes for my punishment…""",
+	AMELIA_WEDDING_3 = """As soon as you close the door, Amelia takes a seat on the bed, pulling up her dress to reveal her pussy, ready and waiting for you. Her breasts fall out of the loose fabric of her dress, baring all of herself to you as she gives a devious smile.
+
+— As a discerning Master, I’m sure you can spot my best assets. They’re all yours to do as you please.
+
+Matching her nude state, you lay your dick over her pussy as you decide how to treat your taunting slave.""",
+	AMELIA_WEDDING_3_OPTION_1 = "Fast and hard.",
+	AMELIA_WEDDING_3_OPTION_2 = "Slow and gentle.",
+	AMELIA_WEDDING_4_1 = """You slip into her and press all the way in at once, feeling her pussy wrap around the entire length of your cock.
+
+— Oh…! You are quite enthusiastic for our first night as an official spouses.
+
+Pulling back just as fast, you start thrusting into her with all your weight. Each collision rocks her body, her tits bouncing back from your powerful thrusts. You grab her thigh with one hand and a breast in the other, squeezing both tight enough to leave marks as your fingers sink into her skin. Your pistoning dick makes loud and sloppy sounds with her pussy, your precum and her juices serving as the source.
+
+— Ahh!! …Harder.. You know I can take it…""",
+	AMELIA_WEDDING_4_2 = """Sliding your cock inside, you push past all her folds and let her pussy slowly engulf your shaft.
+
+— Mm… Are you trying to tease me like this?
+
+Stroking her thigh, you reach forward and hold her face in your hand. You hear her purr as your cock slides all the way inside her, the subtle vibrations making you throb more. On the way back, her pussy does its best to keep you inside, feeling tighter the more you pull away until you push back in again and again. Her body begs for your attention, the heat and wetness of her pussy pulling you back in no matter how many times you rear back.
+
+— You have a funny definition of punishment, Master… It’s almost agonizing being treated so sensually…""",
+	AMELIA_WEDDING_5 = """The warmth of her hole seems to transfer to your body, a familiar impulse building up inside you. Grabbing her hips, you start thrusting at a consistent pace, using her body to bring yourself closer to relief. Strings of precum help slicken the pathway, letting you slip in and out of her with ease.
+
+Even as you start to rush things, you tease her every so often by pulling out to rub your tip over her clit, watching her moan at your touch. She plays with her breast, groping it as she bites her lip and watches you plow through her.""",
+	AMELIA_WEDDING_6 = """— Let’s come together… Darling…
+
+You can hold on no longer as you stare into her eyes begging for your cum. Her pussy milks you of your seed as she clings to you, welcoming your cum as it pours out. A wave of her own fluids wash over your cock too as her folds spasm and Amelia shudders.
+
+The mix of your cum spills out onto the bed, leaving a stain as proof of your love. Amelia looks to you for another round, not nearly satisfied with just one “reprimand.” You spend the night disciplining her and making sure she understands just how demanding being your servant can be.""",
+#	AMELIA_WEDDING_1 = """""",
+#	AMELIA_WEDDING_1 = """""",
+	CALI_WEDDING_GOOD_1 = """— Hey… So do you want to…? You know…
+
+Cali tries to look as enticing as possible, using the lighting of the room and a cute pose to accentuate her assets. Her confidence in herself shows with how forward she is, now that she’s truly free. You wait for her to finish her sentence, smiling as you see her try to get past her own embarrassment.
+
+— Come on… You know what I mean! I’ve never had… I never even thought I’d have a husband! I want to do it with you… I–If you want to, I mean!""",
+	CALI_WEDDING_GOOD_1_OPTION_1 = "Let’s do it.",
+	CALI_WEDDING_GOOD_1_OPTION_2 = "Maybe tomorrow.",
+	CALI_WEDDING_GOOD_2_1 = """— Really? Then… let’s go already! 
+
+Cali’s tail wags back and forth at the prospect of sharing your time together in bed. She skips ahead and opens the door for you to the bedroom.""",
+	CALI_WEDDING_GOOD_2_2 = """— Aw… Okay… But we better do something soon!
+
+You play around with Cali some more before you head to bed for the day.""",
+	CALI_WEDDING_BAD_1 = """— …M–Master?
+
+Cali hesitates to look you directly in the eye, but you can still glean her intentions from how her tail wags behind her. A far cry from how loud-mouthed and indolent she used to be. It seems she wants to receive a reward from her Master.""",
+	CALI_WEDDING_BAD_1_OPTION_1 = "I suppose you deserve a little something.",
+	CALI_WEDDING_BAD_1_OPTION_2 = "You’ll have to entertain yourself today.",
+	CALI_WEDDING_BAD_2_1 = """— Thank you, Master!
+
+Cali seems hopeful and excited, but she stays behind you and lets you lead the way to the bedroom.""",
+	CALI_WEDDING_BAD_2_2 = """— Of course, Master…
+
+Cali walks away with her tail between her legs, slinking away from the festivities.""",
+	CALI_WEDDING_3 = """As soon as you get into the room, Cali leans against the dresser and holds a leg up, exposing her pussy to you like a wolf in heat.
+
+— Hurry up, I can’t wait anymore…!
+
+— (Please, Master…!)
+
+You smirk at Cali’s readiness, admiring how her arousal drips down onto the floor as she waits for you. You don’t keep her waiting for long, freeing your dick and stepping closer to caress her thigh. Pressing into her, you watch as her expression melts into pleasure as her pussy closes around you.
+
+— Ah…! It feels even better today for some reason…!
+
+— (This pose… feels so right…)""",
+	CALI_WEDDING_4 = """You respond by pressing further into her and beginning to thrust. Cali’s tight pussy clamps down on you every time you push in, trying to keep you inside each time you pull back. She watches your cock plowing into her in awe, silent as she enjoys the pleasure of your dick warming her from the inside.
+
+Her juices spill out around your shaft as her arousal builds, making each successive thrust smoother and easier from all the natural lubricant. The sticky sounds coming from Cali’s pussy would surely give anyone a clear picture of what’s going on between bride and groom, if Cali’s squeaky moans weren’t enough of a hint. Her tail flails around behind her as she takes heavy breaths, brushing against your leg every so often.""",
+	CALI_WEDDING_5 = """— I-I can feel you so deep inside…
+
+— (Ahh…! M–Master! I’m sorry, please… Don’t s-stop…)
+
+Cali’s pussy clings to your shaft as a wave of her cum flows past, spilling out as her body shivers from the pleasure. You hold her steady as her leg becomes wobbly from the sensations wracking her body.
+
+Feeling the heat inside you welling up too, you pick up the pace. Her cum gives you ample leverage to slip in and out of her hole as she milks you for the seed you can barely hold back from her. Within a few moments, you burst inside her, your cum filling every nook in her pussy as you hold her close.""",
+	CALI_WEDDING_6 = """It doesn’t take long for your cum to spill out with her own, both fluids running down her leg as you mark her as yours. Cali is speechless as she watches the warmth inside her flow out of her pussy, only barely held in by your cock. Once you pull away from her, the rest follows suit and slides down her leg, making a mess of lust.
+
+— T–That was a lot…
+
+— (...T–Thank you so much, Master… for making me feel this…)
+
+You hold Cali close and kiss her, spending the rest of the night close together in bed as you enjoy her petite body.""",
 	
 	
 	#   QUESTS   #
@@ -14111,7 +14344,8 @@ Hotkey: 3""",
 	SLAVERS_LIST = "List of Slaves",
 	EXP_LABEL = "exp",
 	SHOW_INFO_LABEL = "Show Info",
-	UPGRADE_LABEL = "Upgrade",
+	UPGRADE_LABEL = "Factor Upgrade",
+	BODY_ALTER_LABEL = "Body Modifications",
 	UPGRADES_LABEL = "Upgrades",
 	REQUESTER_LABEL = "Requester: ",
 	NO_QUESTS_LABEL = "There are no quests available",
@@ -14293,6 +14527,7 @@ Hotkey: 3""",
 	DATING_INTIM_BED_3 = "\nYou have learned that [name2] possess a sex trait: ",
 	DATING_INTIM_BED_4 = "\n\n{color=green|[name2] opens up to you but you don't learn anything new about [him2]. ",
 	DATING_INTIM_BED_5 = "{color=red|You've failed to get [name2] into a mood to talk about [his2] sexual preferences}",
+	DATING_INTIM_BED_6 = "{color=aqua|[name]'s consent level has increased to: ",
 	DATING_HOLDHANDS_1 = "You take [name2]'s hand into yours as you stroll around. ",
 	DATING_HOLDHANDS_2 = "You take [name2]'s hand into yours and move closer. ",
 	DATING_HOLDHANDS_3 = "[he2] holds your hand firmly. ",
@@ -14405,6 +14640,26 @@ Hotkey: 3""",
 	DATING_FOOD = "Treat With Food",
 	DATING_STOP_DESC_1 = "Stop interaction and let [name] return to work.",
 	DATING_STOP = "Stop",
+	
+	ALTAR_ITEM_1 = "[name] puts an offer on the altar. ",
+	ALTAR_ITEM_GOOD = "\n\n{color=green|The offering disappears in a thin air and after a moment a new item materialize in place. It seems your offer was correct and you are rewarded.}",
+	ALTAR_ITEM_BAD = "\n\nThe offering lays on the altar with no apparent reaction from it. It seems your offer wasn't liked.",
+	ALTAR_CHAR_1 = "[name] puts [his] hand on the altar. ",
+	ALTAR_CHAR_GOOD = "\n\n{color=green|A small glow emits from the altar and enshrouds [name]. It seems [he] has been blessed...}",
+	ALTAR_CHAR_BAD = "\n\nAfter a few minutes nothing still happened and [name] decides to move on.",
+	ALTAR_DESTROY_1 = "[name] demolishes the shrine and gathers the resources. ",
+	ALTAR_DESTROY_2 = "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed...}",
+	FREYA_ITEM_CLOTH = "\n\n{color=green|The offering disappears in a thin air and a bright light surrounds [name]. It seems the offer was correct and [he] restored [his] magic energy.}",
+	FREYA_ITEM_CLOTHMAGICC = "\n\n{color=green|The offering disappears in a thin air and a bright light surrounds [name]. It seems the offer was correct and [he] received a blessing.}",
+	FREYA_ITEM_CLOTHETHERIAL = "\n\n{color=green|The offering disappears in a thin air and a bright light surrounds [name]. }",
+	FREYA_ITEM_WOOD = "\n\n{color=red|The offering disappears from sight but an eerie glow erupts from the altar. It seems [name] as been cursed due to [his] offering...}",
+	FREYA_ITEM_OTHER = "\n\nThe offering disappears from sight but there's no other changes around. It seems your offer wasn't liked.",
+	FREYA_CHAR_BOW = "\n\n{color=green|A small glow emits from the altar and enshrouds [name]. Before Aire can realize it, a bow materializes in her hands...}",
+	FREYA_CHAR_WOODEN = "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed. Perhaps, something what they wear might have aggrieved the entity...}",
+	FREYA_CHAR_RACE_GOOD = "\n\n{color=green|A small glow emits from the altar and enshrouds [name]. It seems [he] has been blessed...}",
+	FREYA_CHAR_RACE_BAD = "\n\nAfter a few minutes nothing still happened and [name] decides to move on.",
+	
+	
 	
 	STOP_LABEL = "Stop",
 	TIME_LEFT_LABEL = "Time Left",
@@ -14541,6 +14796,9 @@ Hotkey: 3""",
 	AMELIA_SEX_1_SS = "Complete Amelia's sidequest, recruit her and talk to her in mansion",
 	ZEPHYRA_DISAPPEARANCE_SEX_1_SS = "Complete Zephyra's second sidequest",
 	ZEPHYRA_DISAPPEARANCE_GUARDS_1_SS = "Peek on Zephyra's fake story during her second sidequest",
+	DAISY_WEDDING_SS = "Take Daisy as your (slave) wife",
+	CALI_WEDDING_SS = "Make Cali your lifelong partner",
+	AMELIA_WEDDING_SS = "Promote Amelia to the vice presidency of your Mansion",
 	
 }
 

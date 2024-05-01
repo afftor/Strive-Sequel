@@ -86,14 +86,18 @@ var ero_scenes = [
 'zephyra_lilia_1',
 'amelia_sex1',
 'zephyra_disappearance_sex_1',
-'zephyra_disappearance_guards_1'] 
+'zephyra_disappearance_guards_1',
+'daisy_wedding1',
+'cali_wedding1',
+'amelia_wedding1'
+] 
 
 var ero_scenes_collection = {
 	"anastasia_execution":["anastasia_execution1","anastasia_execution2","anastasia_execution3"],
 	"lich_aire_talk":["lich_aire_talk4","lich_aire_talk7"],
 	"xari_encounter":["xari_encounter8"],
 	"daisy_discipline":["daisy_discipline"],
-	"daisy_bj":["daisy_bj1","daisy_bj3","daisy_bj4","daisy_bj5","daisy_bj6"],
+	"daisy_bj":["daisy_bj1","daisy_bj3","daisy_bj4","daisy_bj6"],
 	"daisy_training":["daisy_training1","daisy_training2","daisy_training3","daisy_training4","daisy_training5"],
 	"daisy_public":["daisy_public1","daisy_public2","daisy_public3","daisy_public4","daisy_public5"],
 	"daisy_bent":['daisy_bent1', 'daisy_bent2', 'daisy_bent3'],
@@ -121,12 +125,60 @@ var ero_scenes_collection = {
 	"cali_bowl_naked_":["cali_bowl_naked_1","cali_bowl_naked_2","cali_bowl_naked_3","cali_bowl_naked_4"],
 	"zephyra_bath_":["zephyra_bath_1","zephyra_bath_2","zephyra_bath_4"],
 	"stag_sex_":["stag_sex_1","stag_sex_2","stag_sex_3"],
-	'zephyra_lilia_' : ['zephyra_lilia_1', 'zephyra_lilia_2','zephyra_lilia_3'],
-	'amelia_sex': ['amelia_sex1', 'amelia_sex2', 'amelia_sex3'],
-	'zephyra_back_' :['zephyra_back_1', 'zephyra_back_2', 'zephyra_back_3', 'zephyra_back_4'],
-	'zephyra_facefuck_' :['zephyra_facefuck_1', 'zephyra_facefuck_2', 'zephyra_facefuck_3', 'zephyra_facefuck_4'],
+	'zephyra_lilia_' :['zephyra_lilia_1', 'zephyra_lilia_2','zephyra_lilia_3'],
+	'amelia_sex':['amelia_sex1', 'amelia_sex2', 'amelia_sex3'],
+	'zephyra_back_':['zephyra_back_1', 'zephyra_back_2', 'zephyra_back_3', 'zephyra_back_4'],
+	'zephyra_facefuck_':['zephyra_facefuck_1', 'zephyra_facefuck_2', 'zephyra_facefuck_3', 'zephyra_facefuck_4'],
+	'daisy_wedding': ['daisy_wedding1', 'daisy_wedding2', 'daisy_wedding3', 'daisy_wedding4'],
+	'cali_wedding': ['cali_wedding1', 'cali_wedding2', 'cali_wedding3', 'cali_wedding4'],
+	'amelia_wedding': ['amelia_wedding1', 'amelia_wedding2', 'amelia_wedding3', 'amelia_wedding4'],
 }
 #so these arrays are needed for storing order 
+
+var scene_tooltips = {
+	anastasia_execution1 = "ANASTASIA_EXECUTION1_SS",
+	lich_aire_talk4 = "LICH_AIRE_TALK4_SS",
+	xari_encounter8 = "XARI_ENCOUNTER8_SS",
+	daisy_discipline = "DAISY_DISCIPLINE_SS", 
+	daisy_bj1 = "DAISY_BJ1_SS",
+	daisy_training1 = "DAISY_TRAINING1_SS",
+	daisy_public1 = "DAISY_PUBLIC1_SS",
+	daisy_bent1 = "DAISY_BENT1_SS",
+	anastasia_sex_1 = "ANASTASIA_SEX_1_SS",
+	anastasia_rape_1 = "ANASTASIA_RAPE_1_SS",
+	aire_amelia1 = "AIRE_AMELIA1_SS",
+	amelia_titjob1 = "AMELIA_TITJOB1_SS",
+	amelia_bondage1 = "AMELIA_BONDAGE1_SS",
+	anastasia_aire1 = "ANASTASIA_AIRE1_SS",
+	aire_ana1 = "AIRE_ANA1_SS",
+	aire_ana4 = "AIRE_ANA4_SS",
+	force_cali1 = "FORCE_CALI1_SS",
+	mae_scene1 = "MAE_SCENE1_SS",
+	mae_scene3 = "MAE_SCENE3_SS",
+	heleviel1 = "HELEVIEL1_SS",
+	lilia_sex_1_3 = "LILIA_SEX_1_3_SS",
+	cali_touching_1 = "CALI_TOUCHING_1_SS",
+	cali_bj_happy_1 = "CALI_BJ_HAPPY_1_SS",
+	cali_riding_1 = "CALI_RIDING_1_SS",
+	halloween_scene = "HALLOWEEN_SCENE_SS",
+	christmas_scene = "CHRISTMAS_SCENE_SS",
+	heleviel_bj_1 = "HELEVIEL_MANSION_SS",
+	lira_sex_1 = "LIRA_SEX_1_SS",
+	cali_zephyra_1 = "CALI_ZEPHYRA_1_SS",
+	cali_bowl_1 = "CALI_BOWL_1_SS",
+	cali_bowl_naked_1 = "CALI_BOWL_NAKED_1_SS",
+	zephyra_bath_1 = "ZEPHYRA_BATH_1_SS",
+	stag_sex_1 = "STAG_SEX_1_SS",
+	zephyra_lilia_1 = "ZEPHYRA_LILIA_1_SS",
+	amelia_sex1 = "AMELIA_SEX_1_SS",
+	zephyra_disappearance_sex_1 = "ZEPHYRA_DISAPPEARANCE_SEX_1_SS",
+	zephyra_disappearance_guards_1 = "ZEPHYRA_DISAPPEARANCE_GUARDS_1_SS",
+	daisy_wedding1 = "DAISY_WEDDING_SS",
+	cali_wedding1 = "CALI_WEDDING_SS",
+	amelia_wedding1 = "AMELIA_WEDDING_SS"
+	
+}
+
 
 var close_template = {
 	code = 'close',

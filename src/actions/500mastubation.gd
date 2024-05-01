@@ -13,6 +13,8 @@ const takertags = ['vagina','shame']
 const giver_skill = []
 const taker_skill = ['petting']
 const consent_level = 10
+const consent_giver = 0
+const consent_taker = 2
 
 func getname(state = null):
 	return "Order Masturbation"
@@ -34,9 +36,6 @@ func requirements():
 		valid = false
 	for i in givers + takers:
 		if i.limbs == false:
-			valid = false
-	for i in givers:
-		if !i.person.has_status('sex_adv'):
 			valid = false
 	return valid
 

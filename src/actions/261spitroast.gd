@@ -15,6 +15,8 @@ const takertags = ['vagina', 'mouth', 'penetration', 'group','sub']
 const giver_skill = ['penetration']
 const taker_skill = ['pussy','oral']
 const consent_level = 40
+const consent_giver = 3
+const consent_taker = 4
 
 func requirements():
 	var valid = true
@@ -25,8 +27,6 @@ func requirements():
 			valid = false
 	for i in takers:
 		if i.person.get_stat('has_pussy') == false:
-			valid = false
-		if !i.person.has_status('sex_oral'):
 			valid = false
 	
 	return valid

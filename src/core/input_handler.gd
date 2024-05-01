@@ -45,6 +45,11 @@ signal PortraitUpdate
 signal update_ragdoll
 signal update_itemlist
 
+#animations queue
+signal animation_finished
+signal animations_compleated
+var animations_queue = []
+
 var last_action_data = {}
 var text_characters = []
 
@@ -137,6 +142,7 @@ enum {
 	ANIM_LOOT,
 	ANIM_SKILL_UNLOCKED,
 	ANIM_GROWTHF,
+	ANIM_MASTER_POINT,
 } #, NODE_TWEEN, NODE_REPEATTWEEN}
 
 
@@ -355,6 +361,7 @@ func _ready():
 			TranslationData[i.replace(variables.LocalizationFolder, '')] = ifile
 	
 	connect("UpgradeUnlocked", self, "upgrade_unlocked")
+	connect("animation_finished", self, "animation_queue_start_force")
 
 #func _unhandled_input(event):
 func _input(event):
@@ -745,6 +752,8 @@ func operate(operation, value1, value2):
 			result = !value1.has(value2)
 		'mask':
 			result = (int(value1) & int(value2)) != 0
+		'in':
+			result = value1 in value2
 	return result
 
 
@@ -1035,10 +1044,10 @@ func ActivateTutorial(code):
 		ResourceScripts.game_progress.active_tutorials.append(code)
 	if gui_controller.mansion_tutorial_panel == null:
 		gui_controller.mansion_tutorial_panel = get_spec_node(self.NODE_TUTORIAL_PANEL, null, false, false)
-	if ResourceScripts.game_progress.show_tutorial && !gui_controller.windows_opened.has(gui_controller.mansion_tutorial_panel):
-		gui_controller.windows_opened.append(gui_controller.mansion_tutorial_panel)
 	if ResourceScripts.game_progress.show_tutorial && !ResourceScripts.game_progress.seen_tutorials.has(code):
 		gui_controller.mansion_tutorial_panel.open(code)
+		if !gui_controller.windows_opened.has(gui_controller.mansion_tutorial_panel):
+			gui_controller.windows_opened.append(gui_controller.mansion_tutorial_panel)
 
 
 func get_combat_node():
@@ -1093,6 +1102,8 @@ func update_slave_list():
 
 func rebuild_slave_list():
 	slave_list_node.rebuild()
+#	if gui_controller.inventory.visible:
+#		gui_controller.inventory.SlaveList.update()
 
 func rebuild_skill_list():
 	skill_list_node.build_skill_panel()
@@ -1339,7 +1350,7 @@ func dir_contents(target):
 		array.sort()
 		return array
 	else:
-		print("An error occurred when trying to access the path.")
+		print("An error occurred when trying to access the path:"+target)
 		return array
 
 
@@ -1456,6 +1467,34 @@ func get_location_characters():
 
 
 func play_animation(animation, args = {}):
+	animations_queue.push_back({animation = animation, args = args})
+	animation_queue_start_attempt()
+
+
+func animation_queue_start_attempt(): #animation added, onto empty or not empty queue
+	if animations_queue.empty():
+		print("error - try to start empty animation queue")
+		return
+	if animations_queue.size() != 1: #added animation is not first - so animation is playing
+		return
+	var anim_to_play = animations_queue.front()
+	play_animation_noq(anim_to_play.animation, anim_to_play.args)
+
+
+func animation_queue_start_force(): #animtion just ended
+	if animations_queue.empty():
+		print("error - try to start empty animation queue")
+		return
+	yield(get_tree(), 'idle_frame')
+	animations_queue.pop_front()
+	if animations_queue.empty():
+		emit_signal("animations_compleated")
+		return
+	var anim_to_play = animations_queue.front()
+	play_animation_noq(anim_to_play.animation, anim_to_play.args)
+
+
+func play_animation_noq(animation, args = {}):
 	var anim_scene
 	match animation:
 		"fight":
@@ -1534,6 +1573,19 @@ func play_animation(animation, args = {}):
 #			anim_scene.get_node("Label2").text = tr("SKILL" + args["skill"].code.to_upper())
 #			anim_scene.get_node("Label3").text = args.person.get_full_name()
 			anim_scene.play("Animation_growth_factor")
+		"master_points":
+			anim_scene = get_spec_node(ANIM_MASTER_POINT)
+			if args.has("sound"):
+				anim_scene.sound = args.sound
+			var master_points = args.master_points
+			if master_points > 1:
+				anim_scene.get_node("TopLabel").text = tr("MASTERPOINTSTOP")
+				anim_scene.get_node("BottomLabel").text = tr("MASTERPOINTSBOTTOM") % master_points
+			else:
+				anim_scene.get_node("TopLabel").text = tr("MASTERPOINTTOP")
+				anim_scene.get_node("BottomLabel").text = tr("MASTERPOINTBOTTOM") % master_points
+			anim_scene.play("master_point")
+			
 
 
 
@@ -1700,7 +1752,7 @@ func node_children_visible(node, exception, value):
 
 func roman_number_converter(number): #only supports numbers up to 10 currently. INT > STRING
 	if variables.roman_numbers.has(number) == false:
-		print("number does not exist in dictionary")
+		#print("number does not exist in dictionary")
 		return str(number)
 	else:
 		return variables.roman_numbers[number]

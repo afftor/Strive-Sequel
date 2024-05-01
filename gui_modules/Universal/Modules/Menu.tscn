@@ -664,7 +664,72 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "Revamped previous Peon slave type into Subordinate
+bbcode_text = "0.8.5a
+Added tooltips for new gallery scenes
+Added icon for new suit
+Fixed daisy not being recruited when claimed to be your kinsman
+Fixed some console errors related to shrines
+Fixed some paperdoll issues and possible travel errors
+0.8.5
+Added 4 new classes:
+Warlock - Increases crit rate and crit damage of single target spells
+Witch - Spell crits apply random debuff on enemy. Healing spells can apply healing over time on allies
+Ninja - increase evasion based on mdef, minimal evasion chance is 5%
+Death knight - gain loyalty on killing blows
+Alchemist no longer require any classes to unlock but needs to be purchased from workers guild
+Alchemist passive crafting bonus moved to main class data
+Character recruitment formula has been changed: now checks recrutee wits factor instead of charm factor, has higher chance on low recruiter's charm and lower maximum recruit chance. Recruit chance is capped at 50%
+Succubus and True Succubus now have a new persuation option to instantly recruit a character for lust
+True Succubus new passive: Generate lust when being hit
+Added unique postwedding scenes for Daisy, Cali, Amelia
+Added some gui improvement to enchantemt gui
+Added new rewards and options to shrine altars 
+Added new craftable costume and updated icon for latex suit
+Increased number of sex times per week by 1
+Offered altar items no longer are removed if they are incorrect
+Removed Lust Relief from master
+Removed body modification display from traits
+Fixed a bug with tool bonuses not applying to tasks in some cases
+0.8.4a
+Removed Mace from list of items which can be requested with crafted Blade part
+Serve skill no longer needs lust to be used
+Shared toy skill now only needs 15 lust instead of 75
+Added new skill for Master - Mentor: Boosts experience gain for selected character for 1 day.
+Fixed bodyparts for orgasm selection not checking character's bodyparts
+Fixed consent going over the cap in some cases after reload
+0.8.4
+New consent system:
+Consent now only has stages, next stage is acquired by performing harder actions during interaction while keeping character from losing all their stamina or from intimate talk during dates on early levels. Sexual factor affects easiness of progress.
+Stamina (interaction system) is depleted when performing actions with higher consent than character currently has and is restored on orgasms and with some items. If all stamina is depleted the character will start losing obedience, no longer gain consent and receive debuff
+Sex training is no longer required for any sexual interactions 
+
+Lust changes:
+Characters no longer gain lust from sexual interactions, instead initiating sex requires lust
+After sexual interactions characters obtain Exp and Loyalty instead (based on their performance during it)
+
+Mana&heal related changes
+Reduced mana cost for most healing spells
+Increased basic mana regen from 1.2 to 1.5 per turn
+Increased bonus mana regen per magic factor from 0.1 to 0.5 per turn
+Bandage reputation cost increased from 3 to 10
+Bandage work units increased from 0.5 to 2
+
+Fixed master traits prices
+Fixed some of master traits being bugged
+Fixed soulbind not working correctly
+Fixed some class effects not working properly
+0.8.3a
+Fixed some issues with the map including not being able to send characters to other regions
+Fixed collars not displaying on characters
+Minor gui fixes
+Subordinates no longer can be chosen for stat donorship
+0.8.3
+All tame/timid factor checks for master are automatically passed (i.e. classes requiring this factor)
+Rebalanced the way stat bonuses are applied on stronger character generation: high stat characters are more likely than stats destributed across the board. 
+Corrected some of the older tutorials
+Added simple service gold log
+
+Revamped previous Peon slave type into Subordinate
 Subordinates receieve 25% more loyalty and have 5 less obedience drain. They also cost 1% of their value in gold at the end of the week. They can't be sold or removed by giving quests.
 Successfully recruiting a stranger only allows to make them into subordinate
 Added an option to set free characters from inside character info
@@ -689,10 +754,11 @@ Sadist: New passive - Open Vein: Melee physical attacks have 25% chance to cause
 Alios Champion: New passive - Unbound: When only character is alive in party: gain +50 evasion, +20 speed until end of battle.
 Dominator: New skill - Soul Bind: Disables Character for 1 day. Unlocks Basic Servitude, Dating, Combatant, Work Clothes, Advanced Servitude, Master Acknowledgement, Sex Basics. 
 Ranger: New skill - Animal Companion. Summons Trained Dog at the start of combat
+Technomancer: Passive bonus changed: +10 air resist -> +25% air damage
 
 Added minor Zephyra event at elven capital with a costume reward
 Changed the behavior for talking down captured characters - now instead of making them peon, successful negotiations will grant them basic servitude and combatant
-
+0.8.2a
 Added forgetting location to the map options
 Added an option to Amelia's quest to keep her as servant leader
 Added some missing scenes to the gallery
@@ -1583,7 +1649,72 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Revamped previous Peon slave type into Subordinate
+text = "0.8.5a
+Added tooltips for new gallery scenes
+Added icon for new suit
+Fixed daisy not being recruited when claimed to be your kinsman
+Fixed some console errors related to shrines
+Fixed some paperdoll issues and possible travel errors
+0.8.5
+Added 4 new classes:
+Warlock - Increases crit rate and crit damage of single target spells
+Witch - Spell crits apply random debuff on enemy. Healing spells can apply healing over time on allies
+Ninja - increase evasion based on mdef, minimal evasion chance is 5%
+Death knight - gain loyalty on killing blows
+Alchemist no longer require any classes to unlock but needs to be purchased from workers guild
+Alchemist passive crafting bonus moved to main class data
+Character recruitment formula has been changed: now checks recrutee wits factor instead of charm factor, has higher chance on low recruiter's charm and lower maximum recruit chance. Recruit chance is capped at 50%
+Succubus and True Succubus now have a new persuation option to instantly recruit a character for lust
+True Succubus new passive: Generate lust when being hit
+Added unique postwedding scenes for Daisy, Cali, Amelia
+Added some gui improvement to enchantemt gui
+Added new rewards and options to shrine altars 
+Added new craftable costume and updated icon for latex suit
+Increased number of sex times per week by 1
+Offered altar items no longer are removed if they are incorrect
+Removed Lust Relief from master
+Removed body modification display from traits
+Fixed a bug with tool bonuses not applying to tasks in some cases
+0.8.4a
+Removed Mace from list of items which can be requested with crafted Blade part
+Serve skill no longer needs lust to be used
+Shared toy skill now only needs 15 lust instead of 75
+Added new skill for Master - Mentor: Boosts experience gain for selected character for 1 day.
+Fixed bodyparts for orgasm selection not checking character's bodyparts
+Fixed consent going over the cap in some cases after reload
+0.8.4
+New consent system:
+Consent now only has stages, next stage is acquired by performing harder actions during interaction while keeping character from losing all their stamina or from intimate talk during dates on early levels. Sexual factor affects easiness of progress.
+Stamina (interaction system) is depleted when performing actions with higher consent than character currently has and is restored on orgasms and with some items. If all stamina is depleted the character will start losing obedience, no longer gain consent and receive debuff
+Sex training is no longer required for any sexual interactions 
+
+Lust changes:
+Characters no longer gain lust from sexual interactions, instead initiating sex requires lust
+After sexual interactions characters obtain Exp and Loyalty instead (based on their performance during it)
+
+Mana&heal related changes
+Reduced mana cost for most healing spells
+Increased basic mana regen from 1.2 to 1.5 per turn
+Increased bonus mana regen per magic factor from 0.1 to 0.5 per turn
+Bandage reputation cost increased from 3 to 10
+Bandage work units increased from 0.5 to 2
+
+Fixed master traits prices
+Fixed some of master traits being bugged
+Fixed soulbind not working correctly
+Fixed some class effects not working properly
+0.8.3a
+Fixed some issues with the map including not being able to send characters to other regions
+Fixed collars not displaying on characters
+Minor gui fixes
+Subordinates no longer can be chosen for stat donorship
+0.8.3
+All tame/timid factor checks for master are automatically passed (i.e. classes requiring this factor)
+Rebalanced the way stat bonuses are applied on stronger character generation: high stat characters are more likely than stats destributed across the board. 
+Corrected some of the older tutorials
+Added simple service gold log
+
+Revamped previous Peon slave type into Subordinate
 Subordinates receieve 25% more loyalty and have 5 less obedience drain. They also cost 1% of their value in gold at the end of the week. They can't be sold or removed by giving quests.
 Successfully recruiting a stranger only allows to make them into subordinate
 Added an option to set free characters from inside character info
@@ -1608,10 +1739,11 @@ Sadist: New passive - Open Vein: Melee physical attacks have 25% chance to cause
 Alios Champion: New passive - Unbound: When only character is alive in party: gain +50 evasion, +20 speed until end of battle.
 Dominator: New skill - Soul Bind: Disables Character for 1 day. Unlocks Basic Servitude, Dating, Combatant, Work Clothes, Advanced Servitude, Master Acknowledgement, Sex Basics. 
 Ranger: New skill - Animal Companion. Summons Trained Dog at the start of combat
+Technomancer: Passive bonus changed: +10 air resist -> +25% air damage
 
 Added minor Zephyra event at elven capital with a costume reward
 Changed the behavior for talking down captured characters - now instead of making them peon, successful negotiations will grant them basic servitude and combatant
-
+0.8.2a
 Added forgetting location to the map options
 Added an option to Amelia's quest to keep her as servant leader
 Added some missing scenes to the gallery

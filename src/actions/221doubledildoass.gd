@@ -14,6 +14,8 @@ const takertags = ['anal', 'penetration']
 const giver_skill = ['penetration','anal']
 const taker_skill = ['penetration','anal']
 const consent_level = 35
+const consent_giver = 5
+const consent_taker = 5
 
 func getname(state = null):
 	return "Double Anal Dildo"
@@ -28,9 +30,6 @@ func requirements():
 	var valid = true
 	if takers.size() != 1 || givers.size() != 1:
 		valid = false
-	for i in givers + takers:
-		if !i.person.has_status('sex_anal'):
-			valid = false
 	return valid
 
 func givereffect(member):

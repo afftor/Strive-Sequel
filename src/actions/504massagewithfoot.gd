@@ -13,6 +13,8 @@ const takertags = ['pet','shame', 'punish','sub']
 const giver_skill = ['petting']
 const taker_skill = []
 const consent_level = 25
+const consent_giver = 1
+const consent_taker = 2
 
 func getname(state = null):
 	return "Massage with foot"
@@ -34,9 +36,6 @@ func requirements():
 		valid = false
 	for i in givers +takers:
 		if i.limbs == false:
-			valid = false
-	for i in givers:
-		if !i.person.has_status('sex_adv'):
 			valid = false
 	return valid
 

@@ -147,6 +147,7 @@ func update():
 	$RemoveButton.visible = !active_person.is_master()
 	if char_module_state == "siblings" or char_module_state == "skills":
 		$TalkButton.hide()
+		$RemoveButton.hide()
 
 
 

@@ -50,6 +50,7 @@ func show_characters_panel():
 		var character = ResourceScripts.game_party.characters[i]
 		if character.is_master() : continue
 		if character.is_unique() : continue
+		if character.get_stat('slave_class') == 'servant': continue
 		var name = character.get_full_name()
 		var newbutton = input_handler.DuplicateContainerTemplate(CharList2)
 		newbutton.get_node("CharacterName").text = name

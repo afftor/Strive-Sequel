@@ -105,7 +105,7 @@ func calculate_dmg():
 	apply_random()
 	#crit modification
 	if parent.hit_res == variables.RES_CRIT and !template.nocrit and !template.nomod:
-		value *= parent.caster.get_stat('critmod')
+		value *= parent.critmod
 	
 #	if parent.ability_type == 'skill':
 	#current formulae add ap to spell damage cap

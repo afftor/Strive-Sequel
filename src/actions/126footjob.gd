@@ -15,6 +15,10 @@ const giver_skill = ['petting']
 const taker_skill = []
 const consent_level = 25
 
+
+const consent_giver = 0
+const consent_taker = 3
+
 func getname(state = null):
 	return "Footjob"
 

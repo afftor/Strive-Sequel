@@ -1409,7 +1409,7 @@ func use_skill(skill_code, caster, target):
 			else:
 				s_skill2.target.process_event(variables.TR_POST_TARG, s_skill2)
 				effects_pool.process_event(variables.TR_POST_TARG, s_skill2.target)
-			s_skill2.target.displaynode.rebuildbuffs()
+#			s_skill2.target.displaynode.rebuildbuffs()
 			checkdeaths()
 			if s_skill2.target.displaynode != null:
 				s_skill2.target.displaynode.rebuildbuffs()
@@ -1867,11 +1867,11 @@ func RebuildSkillPanel():
 				newbutton.get_node("cooldown").text = str(activecharacter.skills.combat_cooldowns[skill.code])
 				newbutton.get_node("cooldown").set("custom_colors/font_color", variables.hexcolordict.yellow)
 			if skill.charges > 0:
-				var leftcharges = skill.charges
+				var leftcharges = Skilldata.get_charges(skill, activecharacter)
 				if activecharacter.skills.combat_skill_charges.has(skill.code):
 					leftcharges -= activecharacter.skills.combat_skill_charges[skill.code]
 				newbutton.get_node("charge").visible = true
-				newbutton.get_node("charge").text = str(leftcharges)+"/"+str(skill.charges)
+				newbutton.get_node("charge").text = str(leftcharges)+"/"+str(Skilldata.get_charges(skill, activecharacter))
 				if leftcharges <= 0:
 					newbutton.disabled = true
 					newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")

@@ -42,3 +42,4 @@ func play(track):
 	if lock_input:
 		get_tree().get_root().set_disable_input(false)
 	queue_free()
+	input_handler.emit_signal("animation_finished")

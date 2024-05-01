@@ -13,9 +13,6 @@ var loyalty_tab = 1
 
 func _ready():
 	update()
-	for i in $work_rules.get_children():
-		i.connect('pressed', self, 'set_work_rule', [i.name])
-		globals.connecttexttooltip(i,person.translate(tr("WORKRULE" + i.name.to_upper() + "DESCRIPT")))
 	
 	globals.connecttexttooltip($SexSkillsTooltip, tr("INFOSEX_SKILLS"))
 	globals.connecttexttooltip($ConditionsTooltip, tr("INFORULES_CONDS"))
@@ -28,6 +25,9 @@ func _ready():
 	globals.connecttexttooltip($personality/kind, tr("INFOPERSONALITYKIND"))
 	globals.connecttexttooltip($personality/serious, tr("INFOPERSONALITYSERIOUS"))
 	
+	
+	for i in $work_rules.get_children():
+		i.connect('pressed', self, 'set_work_rule', [i.name])
 	$work_rules/ration.connect("button_down", self, "update")
 	$work_rules/ration.connect("button_up", self, "update")
 	$change_button.connect("pressed", self, 'swap_mode')
@@ -93,6 +93,10 @@ func update():
 		swap_mode()
 	input_handler.ActivateTutorial("training")
 	
+	for i in $work_rules.get_children():
+		globals.disconnect_text_tooltip(i)
+		globals.connecttexttooltip(i,person.translate(tr("WORKRULE" + i.name.to_upper() + "DESCRIPT")))
+	
 	if person.is_master():
 		$UpgradesPanel/Label.text = tr("MASTER_POINTS") + ": " + str(ResourceScripts.game_progress.master_points)
 	else:
@@ -130,8 +134,14 @@ func update():
 			newbutton.get_node("ProgressBar").value = s_skills[i]
 			newbutton.get_node("ProgressBar/Label").text = str(floor(s_skills[i])) + '/100'
 			globals.connecttexttooltip(newbutton,  person.translate(tr("SEXSKILL"+i.to_upper()+"DESCRIPT")) + "\n" + tr("CUR_LEVEL_LABEL") + ":" + str(floor(s_skills[i])))
-		
-		$ConsentLabel.text = tr("SIBLINGMODULECONSENT") + ": " + str(person.get_stat('consent'))
+		var text = ''
+		if person.is_master():
+			text = tr("SIBLINGMODULECONSENT") + tr("MASTER")
+			globals.connecttexttooltip($ConsentLabel, person.translate(tr("INFOCONSENTMASTER")))
+		else:
+			text = tr("SIBLINGMODULECONSENT") + str(tr(variables.consent_dict[int(person.get_stat('consent'))]))
+			globals.connecttexttooltip($ConsentLabel, tr("INFOCONSENT"))
+		$ConsentLabel.text = text
 		
 		globals.connecttexttooltip($SlaveDietModule/food_love,"[center]" + statdata.statdata.food_love.name + "[/center]\n"+  statdata.statdata.food_love.descript)
 		globals.connecttexttooltip($SlaveDietModule/food_hate,"[center]" + statdata.statdata.food_hate.name + "[/center]\n"+ statdata.statdata.food_hate.descript)
@@ -298,8 +308,8 @@ func swap_mode():
 		loyalty_mode = true
 		$UpgradesPanel.visible = true
 		$RelativesPanel.visible = false
-		$change_button2.visible = true
-		$change_button3.visible = true
+		$change_button2.visible = (loyalty_tab != 3)
+		$change_button3.visible = (loyalty_tab != 3)
 		$change_button/Label.text = tr("SIBLINGMODULERELATIVES")
 
 

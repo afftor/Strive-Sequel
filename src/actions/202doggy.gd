@@ -15,6 +15,9 @@ const giver_skill = ['penetration']
 const taker_skill = ['pussy']
 const consent_level = 25
 
+const consent_giver = 3
+const consent_taker = 4
+
 func requirements():
 	var valid = true
 	if takers.size() != 1 || givers.size() != 1:

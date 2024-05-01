@@ -740,7 +740,7 @@ func add_enchant(e_id, lvl, is_free = false):
 #	var tmp = null
 	if owner != null:
 #		tmp = owner
-		characters_pool.get_char_by_id(owner).unequip(self)
+		characters_pool.get_char_by_id(owner).unequip(self, false)
 	
 	_remove_enchant(e_id)
 	enchants[e_id] = lvl
@@ -756,6 +756,20 @@ func add_enchant(e_id, lvl, is_free = false):
 #		characters_pool.get_char_by_id(tmp).equip(self)
 
 
+func clear_enchants():
+	if owner != null:
+		characters_pool.get_char_by_id(owner).unequip(self, false)
+	for e_id in enchants:
+		_remove_enchant(e_id)
+	enchants.clear()
+	if curse != null:
+		var enchdata = Items.curses[curse]
+		if enchdata.has('effects'):
+			for eff in enchdata.effects:
+				effects.erase(eff)
+		curse = null
+
+
 func identify():
 	curse_known = true
 
@@ -764,3 +778,9 @@ func destroy():
 	if owner != null:
 		characters_pool.get_char_by_id(owner).unequip(self)
 	globals.remove_item(self)
+
+func get_owner():
+	if owner == null:
+		return null
+	else:
+		return characters_pool.get_char_by_id(owner)

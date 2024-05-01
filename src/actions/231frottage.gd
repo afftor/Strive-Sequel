@@ -14,6 +14,8 @@ const takertags = ['penis', 'pet']
 const giver_skill = ['petting']
 const taker_skill = ['petting']
 const consent_level = 20
+const consent_giver = 3
+const consent_taker = 3
 
 func getname(state = null):
 	return "Frottage"
