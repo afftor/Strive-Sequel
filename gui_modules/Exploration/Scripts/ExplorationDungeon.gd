@@ -148,12 +148,12 @@ func open_location(data): #2fix
 ##	input_handler.active_area = active_area
 #	input_handler.active_location = data
 	input_handler.emit_signal("LocationSlavesUpdate")
-	current_level = 0
+#	current_level = 0
 	build_level()
 	update_stamina()
-	var dungeon = active_location.dungeon[current_level]
+	var dungeon = active_location.dungeon[active_location.current_level]
 	var tdata = ResourceScripts.game_world.dungeons[dungeon]
-	scout_room(tdata.first_room, true)
+	scout_room(tdata.first_room, get_scouting_range(), true)
 ##	if input_handler.active_location.has('progress'):
 ##		current_level = active_location.progress.level
 ##		current_stage = active_location.progress.stage
@@ -198,7 +198,7 @@ func build_location_description():
 #				+ ": "
 #				+ tr("DUNGEONDIFFICULTY" + active_location.difficulty.to_upper())
 	)
-	text += tr("LEVELS") + " " + str(current_level + 1)
+	text += tr("LEVELS") + " " + str(active_location.current_level + 1)
 	if active_location.completed:
 		text += "{color=aqua|" + tr("LOC_COMPLETE") + "}"
 	map_panel.get_node('RichTextLabel').bbcode_text = (
@@ -856,14 +856,14 @@ func toggle_slaves(value):
 	captured_panel.visible = value
 
 #map movement
-var current_level = 0
+#var current_level = 0
 var selected_room = null #combat cash
 var active_subroom = null #event cash
 const default_map_pos = Vector2(630, 500)
 const default_room_size = Vector2(270, 270)
 
 func build_level():
-	var dungeon = active_location.dungeon[current_level]
+	var dungeon = active_location.dungeon[active_location.current_level]
 	var data = ResourceScripts.game_world.dungeons[dungeon]
 	input_handler.ClearContainer(map_container, ['room'])
 	
@@ -871,7 +871,7 @@ func build_level():
 		var newroom = input_handler.DuplicateContainerTemplate(map_container, 'room')
 		newroom.setup(room)
 	
-	scout_room(data.first_room, true)
+	scout_room(data.first_room, get_scouting_range(), true)
 	update_map()
 	build_location_description()
 
@@ -881,39 +881,47 @@ func update_map():
 		room.update()
 
 
+func get_scouting_range():
+	return 1
+
+
 func room_pressed(room_id):
 	if globals.check_location_group() == false:
 		input_handler.SystemMessage("Select at least 1 character before advancing. ")
 		return
 	globals.reset_roll_data()
 	globals.char_roll_data.diff = active_location.difficulty
-	globals.char_roll_data.lvl = current_level
+	globals.char_roll_data.lvl = active_location.current_level
 	for ch_id in active_location.group.values():
 		globals.char_roll_data.mf += characters_pool.get_char_by_id(ch_id).get_stat('magic_find')
 	var data = ResourceScripts.game_world.rooms[room_id]
 	if data.type == 'empty':
 		return
-	if !(data.type in ['ladder_up']):
+	if !(data.type in ['ladder_up', 'ladder_down']):
 		if get_current_stamina() < active_location.stamina_cost:
 			input_handler.SystemMessage("No stamina")
 			return
 		pay_stamina(active_location.stamina_cost)
 		update_stamina()
-	scout_room(room_id)
+	scout_room(room_id, get_scouting_range())
 
 
-func scout_room(room_id, stay = false):
+func scout_room(room_id, s_range, stay = false):
+	if s_range < 0:
+		obscure_room(room_id)
+		return
 	var data = ResourceScripts.game_world.rooms[room_id]
-	if data.status =='obscured':
+	if data.status in ['obscured', 'hidden']:
 		data.status = 'scouted'
-		for room in data.neighbours.values():
-			if room != null:
-				obscure_room(room)
+	for room in data.neighbours.values():
+		if room != null:
+			scout_room(room, s_range - 1, true)
 	
 	selected_room = null
 	update_map()
 	if stay:
-		move_to_room(room_id)
+		if s_range == get_scouting_range():
+			move_to_room(room_id)
 		return
 	
 	match data.type:
@@ -936,13 +944,13 @@ func scout_room(room_id, stay = false):
 			move_to_room(room_id)
 			pass
 		'ladder_down':
-			current_level += 1
+			active_location.current_level += 1
 			build_level()
-			var dungeon = active_location.dungeon[current_level]
+			var dungeon = active_location.dungeon[active_location.current_level]
 			var tdata = ResourceScripts.game_world.dungeons[dungeon]
-			scout_room(tdata.first_room, true)
+			scout_room(tdata.first_room, get_scouting_range(), true)
 		'ladder_up':
-			current_level -= 1
+			active_location.current_level -= 1
 			build_level()
 
 
@@ -981,7 +989,7 @@ func subroom_pressed(room_id, subroom_id):
 		return
 	globals.reset_roll_data()
 	globals.char_roll_data.diff = active_location.difficulty
-	globals.char_roll_data.lvl = current_level
+	globals.char_roll_data.lvl = active_location.current_level
 	for ch_id in active_location.group.values():
 		globals.char_roll_data.mf += characters_pool.get_char_by_id(ch_id).get_stat('magic_find')
 	var data = ResourceScripts.game_world.rooms[room_id]

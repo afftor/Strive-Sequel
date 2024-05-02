@@ -1170,7 +1170,7 @@ func start_unique_event():
 			continue
 		if !event.dungeons.has(str(location.code)): 
 			continue
-		if event.has('levels') and !event.levels.has(gui_controller.exploration_dungeon.current_level + 1): 
+		if event.has('levels') and !event.levels.has(gui_controller.exploration_dungeon.active_location.current_level + 1): 
 			continue
 		if event.has('reqs') and !checkreqs(event.reqs): 
 			continue
@@ -1291,7 +1291,7 @@ func StartAreaCombat(): #rnd all and always
 
 	enemies = make_enemies(enemydata)
 
-	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * gui_controller.exploration_dungeon.current_level
+	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * gui_controller.exploration_dungeon.active_location.current_level
 	
 	if input_handler.combat_node == null:
 		input_handler.combat_node = input_handler.get_combat_node()
@@ -1319,7 +1319,7 @@ func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
 				enemies[pos] = enemies[pos].trim_suffix("_rare")
 			enemies[pos] += "_miniboss"
 
-	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * gui_controller.exploration_dungeon.current_level
+	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * gui_controller.exploration_dungeon.active_location.current_level
 	
 	if input_handler.combat_node == null:
 		input_handler.combat_node = input_handler.get_combat_node()
@@ -2141,7 +2141,7 @@ func common_effects(effects):
 				ResourceScripts.game_progress.stored_events.timed_events.append(newevent)
 			'add_master_points':
 				ResourceScripts.game_progress.master_points += i.value
-        input_handler.play_animation("master_points", {master_points = i.value})
+				input_handler.play_animation("master_points", {master_points = i.value})
 			'pay_stamina':
 				if gui_controller.exploration_dungeon != null:
 					if i.has('modified'):

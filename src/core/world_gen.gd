@@ -369,6 +369,7 @@ func make_location(code, area):
 	location.dungeon = []
 	for i in range(levelnumber):
 		build_floor(location, i)
+	location.current_level = 0
 	return location
 
 func fill_faction_quests(faction, area):
