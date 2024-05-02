@@ -456,7 +456,7 @@ func _input(event):
 
 			if gui_controller.current_screen == gui_controller.mansion:
 				gui_controller.clock.raise()
-			if gui_controller.current_screen == gui_controller.exploration:
+			if gui_controller.current_screen == gui_controller.exploration or gui_controller.current_screen == gui_controller.exploration_city or gui_controller.current_screen == gui_controller.exploration_dungeon:
 #				var location = active_location
 				var capital = false
 				capital = active_location.type == "capital"
