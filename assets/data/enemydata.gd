@@ -2437,5 +2437,6 @@ func erebus_disenchant(item):
 	
 	item.clear_enchants()
 	dict.text += item.name + " slowly starts to glow on the altar. After a few moments the light dissipates and all magic leaves the item."
+	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 	
 	input_handler.interactive_message_follow(dict, 'direct', [])

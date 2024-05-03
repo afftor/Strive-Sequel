@@ -610,7 +610,7 @@ func BBCodeTooltip(meta, node):
 	#showtooltip(text, node)
 
 
-func ItemSelect(targetscript, type, function, requirements = true):
+func ItemSelect(targetscript, type, function, requirements = null):
 	var node
 	if get_tree().get_root().has_node("ItemSelect"):
 		node = get_tree().get_root().get_node("ItemSelect")
@@ -628,8 +628,14 @@ func ItemSelect(targetscript, type, function, requirements = true):
 	var array = []
 	if type == 'gear':
 		for i in ResourceScripts.game_res.items.values():
-			if i.geartype == requirements && i.task == null && i.owner == null && i.durability > 0:
+			if i.type != 'gear': 
+				continue
+			if i.owner != null:
+				continue
+			if requirements == null:
 				array.append(i)
+			else:
+				pass #add here any proper check, items have valuecheck() method after all
 	elif type == 'sex_use':
 		for i in ResourceScripts.game_res.items.values():
 			if i.interaction_use == true:
@@ -650,15 +656,15 @@ func ItemSelect(targetscript, type, function, requirements = true):
 		match type:
 			'gear':
 				i.set_icon(newnode.get_node("icon"))
-				newnode.get_node("Percent").show()
-				newnode.get_node("Percent").text = str(input_handler.calculatepercent(i.durability, i.maxdurability)) + '%'
-				connectitemtooltip(newnode, i)
+#				newnode.get_node("Percent").show()
+#				newnode.get_node("Percent").text = str(input_handler.calculatepercent(i.durability, i.maxdurability)) + '%'
+				connectitemtooltip_v2(newnode, i)
 			'sex_use', 'date_use':
 				i.set_icon(newnode.get_node("icon"))
 				newnode.get_node("Percent").show()
 				newnode.get_node('name').text = i.name
 				newnode.get_node("Percent").text = str(i.amount)
-				connectitemtooltip(newnode, i)
+				connectitemtooltip_v2(newnode, i)
 			'material':
 				newnode.get_node("icon").texture = Items.materiallist[i].icon
 				newnode.get_node("Percent").show()
