@@ -297,7 +297,7 @@ func add_shrine_options(scene):
 			'destroy':
 				scene.options.insert(0,{code = 'shrine_option', args = ['destroy'], reqs = [], text = "DIALOGUESHRINEDESTROY"})
 			'item':
-				scene.options.insert(0,{code = 'shrine_option', args = 'select_item', reqs = [], text = "DIALOGUESHRINEEQUIP"})
+				scene.options.insert(0,{code = 'shrine_option', args = ['select_item'], reqs = [], text = "DIALOGUESHRINEEQUIP"})
 
 func shrine_option(option):
 	match option:
