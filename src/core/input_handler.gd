@@ -1727,14 +1727,15 @@ func _reset_mouse_events(): #stub, not, STUB - for set_disable_input is bugged
 	get_tree().get_root().notification(MainLoop.NOTIFICATION_WM_FOCUS_IN)
 
 
-func get_real_global_rect(nd):
+func get_real_global_rect(nd, ignore_vp = false):
 	var rect = nd.get_global_rect()
 	var transform = nd.get_global_transform()
 	var transform2 = nd.get_viewport_transform()
 	
-	transform.origin = transform2.basis_xform(transform.origin)
-	transform.x = transform2.basis_xform(transform.x)
-	transform.y = transform2.basis_xform(transform.y)
+	if !ignore_vp:
+		transform.origin = transform2.basis_xform(transform.origin)
+		transform.x = transform2.basis_xform(transform.x)
+		transform.y = transform2.basis_xform(transform.y)
 	
 	var res: Rect2
 	res.position = transform.get_origin()
