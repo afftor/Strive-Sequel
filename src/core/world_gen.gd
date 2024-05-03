@@ -798,6 +798,7 @@ var room_template = {
 	col = 0,
 	row = 0,
 	type = 'empty',
+	stamina_cost = 10,
 	mainline = true,
 	neighbours = {up = null, down = null, left = null, right = null},
 	subrooms = [null, null, null, null]
@@ -860,6 +861,7 @@ func build_floor(locdata, level):
 			continue
 		var r_nm = nm + ("%4d" % room)
 		var tmp = build_room(room, generate_data)
+		tmp.stamina_cost = locdata.stamina_cost #2adjust here or in build_room
 		if room == DungeonGen.pack_vertex(DungeonGen.diameter.front()):
 			res.first_room = r_nm
 			if level == 0:
