@@ -853,6 +853,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TOOLTIPSPEED = "Improves your odds to act before other characters",
 	TOOLTIPRESISTS = "Reduces elemental damage by relative resist",
 	TOOLTIPSTAMINA = "Stamina is depleted when performing action the character does not agree on. When fully depleted such actions will drain Obedience. Also when fully depleted the character won't be able to improve their Consent. Stamina is replenished with Orgasms but this is affected by diminishing returns.",
+	TOOLTIPSTAMINADUNGEON = "Exploration Stamina is depleted every time you take an exploration action. It will be fully replenished at the start of new day.",
 
 	TOOLTIPFOODCONSUMPTION = "Daily Food Consumption",
 	TOOLTIPPOPULATION = "Population",
@@ -6536,9 +6537,9 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	MATERIALDIVINE_SYMBOLDESCRIPT = "A small coin shaped piece of metal, which can act as a medium for certain arts. Despite its simple look, it shows a considerable craftsmanship.",
 	MATERIALBLESSED_DIVINE_SYMBOL = "Blessed Divine Symbol",
 	MATERIALBLESSED_DIVINE_SYMBOLDESCRIPT = "A small coin shaped piece of metal giving off a faint light.",
-	MATERIALZEPHYRA_UNDERWEAR= "Pristine Water Ripple",
-	MATERIALZEPHYRA_UNDERWEARDESCRIPT = "Excessively rare item, a one of a kind, or at least a one you've obtained.",
-
+	ITEMZEPHYRA_UNDERWEAR= "Ripples of Pristine Waters",
+	ITEMZEPHYRA_UNDERWEARDESCRIPT = "Excessively rare item, a one of a kind, or at least a one you've obtained.",
+	
 	UNIQUECLASS = "Can't be acquired normally",
 
 	ITEMANASTASIA_BRACELET = "Anastasia's Bracelet",
@@ -12914,6 +12915,14 @@ You hold Cali close and kiss her, spending the rest of the night close together 
 	DIALOGUELILIAINITIATEH = "The small fairy impatiently jumps at you as you summon her. \n\n— It's been so lonely without you, [Master]! Are you gonna cheer me up?",
 	DIALOGUELILIAINITIATEM = "Your extravagant wife, Lilia, passionately greets you barely hiding her excitement.\n\n— [Master], you've been missing Lilia? Let's go to bed already!",
 	DIALOGUEJEANINITIATEM = "",
+	
+	DIALOGUEZEPHYRA_UNDERWEAR = "In your hands you hold a piece of clothing which was surrendered to you by Zephyra. Pondering on what actual benefit it can have, one mind is stuck in your mind... What if you wear it on your head? Surely, this is a terrible idea...",
+	DIALOGUEZEPHYRA_UNDERWEAROPTION = "Do it",
+	DIALOGUEZEPHYRA_UNDERWEAR2 = """Despite your best judgement, you put a girl's underwear onto your head. You feel nothing like you would expect but the sudden revelation is abrupted by the owner entering your room just at this moment. 
+	
+— [Master], can I have a mo...
+
+Zephyra freezes as she sees your deed. Her face spells your doom. The time stops and you can no longer process the world around you, as the last breath leaves your body...""",
 	
 	
 	

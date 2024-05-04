@@ -407,16 +407,6 @@ var materiallist = {
 	},
 	
 	
-	zephyra_underwear = {
-		code = 'zephyra_underwear',
-		name = '',
-		descript = '',
-		icon = load("res://assets/images/iconsitems/zephyra_underwear.png"),
-		price = 1,
-		type = 'quest',
-		tier = '',
-		tags = ['no_random'],
-	},
 	
 	herbs = {
 		code = 'herbs',
@@ -3106,6 +3096,22 @@ var itemlist = {
 		effects = [],
 		tags = [],
 		mansion_effect = 'exp_scroll',
+	},
+	zephyra_underwear = {
+		code = 'zephyra_underwear',
+		name = "",
+		descript = "",
+		type = 'usable',
+		itemtype = 'potion',
+		crafttype = 'basic',
+		slots = [],
+		price = 1,
+		icon = load("res://assets/images/iconsitems/zephyra_underwear.png"),
+		tier = 'hard',
+		reqs = [],
+		effects = [],
+		tags = ['no_random','unsellable','save_on_use'],
+		mansion_effect = 'zephyra_underwear',
 	},
 
 

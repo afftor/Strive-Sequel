@@ -904,6 +904,25 @@ var scenedict = {
 		],
 	},
 	
+	zephyra_underwear = {
+		text = tr("DIALOGUEZEPHYRA_UNDERWEAR"),
+		image = null,
+		tags = ['custom_effect','active_character_translate'],
+		options = [
+		{code = 'zephyra_underwear_use', reqs = [], text = tr("DIALOGUEZEPHYRA_UNDERWEAROPTION")},
+		{code = 'close', reqs = [], text = tr("DIALOGUECANCEL")},
+		],
+	},
+	zephyra_underwear_use = {
+		text = tr("DIALOGUEZEPHYRA_UNDERWEAR2"),
+		character = 'zephyra_mad',
+		image = null,
+		tags = ['active_character_translate'],
+		options = [
+		{code = 'close', args = {screen_duration = 5, hold_scene = true}, reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = 'lose_game'}]},
+		],
+	},
+	
 	#Action events
 	enslave = {text = tr("DIALOGUEENSLAVETEXT"), image = 'warn', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
 	hire = {text = tr("DIALOGUEHIRETEXT"), image = 'praise', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},

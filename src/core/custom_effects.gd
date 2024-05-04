@@ -93,6 +93,8 @@ func writ_of_exemption(character):
 	input_handler.active_character = person
 	input_handler.interactive_message_follow("writ_of_exemption",'custom_effect', {})
 
+
+
 func writ_of_exemption_use(): #possibly rework
 	var character = person
 	var acceptance_req = 100
@@ -122,6 +124,16 @@ func oblivionpot(character):
 	character.remove_all_classes()
 	input_handler.active_character = character
 	input_handler.interactive_message("oblivion_potion_use",'custom_effect', character)
+
+
+func zephyra_underwear(character):
+	if gui_controller.inventory.visible:
+		gui_controller.close_scene(gui_controller.inventory)
+	input_handler.active_character = ResourceScripts.game_party.get_unique_slave('zephyra')
+	input_handler.interactive_message_follow("zephyra_underwear",'custom_effect', {})
+
+func zephyra_underwear_use():
+	input_handler.interactive_message_follow("zephyra_underwear_use",'custom_effect', {})
 
 
 func trait_removal(character):

@@ -163,7 +163,6 @@ starting_presets="*res://assets/data/starting_presets.gd"
 races="*res://assets/data/races.gd"
 input_handler="*res://src/core/input_handler.gd"
 globals="*res://src/core/globals.gd"
-DungeonGen="*res://src/core/dungeon_gen.gd"
 Statlist_init="*res://src/character/statlist.gd"
 AI_data="*res://assets/data/ai_data.gd"
 characters_pool="*res://src/core/characters_pool.gd"
@@ -174,6 +173,7 @@ Gallery="*res://src/core/gallery.gd"
 rnd_settings="*res://src/randomportraits/settings.gd"
 GeneratorData="*res://Character_generator/generator_data.gd"
 tasks="*res://assets/data/tasks.gd"
+DungeonGen="*res://src/core/dungeon_gen.gd"
 
 [debug]
 

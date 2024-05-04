@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.8.5b'
+const gameversion = '0.8.6 experimental'
 
 #time
 signal hour_tick
@@ -1942,6 +1942,9 @@ func common_effects(effects):
 				input_handler.PlaySound(i.value)
 			'lose_game':
 				input_handler.PlaySound('transition_sound')
+				
+				ResourceScripts.core_animations.GameOverScreen()
+				yield(get_tree().create_timer(7.5), "timeout")
 				return_to_main_menu()
 			'complete_active_location_quests':
 				if input_handler.active_location.has('questid'):
