@@ -147,6 +147,14 @@ func return_to_mansion(with_state = "default"):
 	yield(get_tree().create_timer(0.5), 'timeout')
 	if gui_controller.exploration != null:
 		gui_controller.exploration.get_node("LocationGui").hide()
+		gui_controller.exploration.set_process_input(false)
+		gui_controller.exploration.visible = false
+	if gui_controller.exploration_dungeon != null:
+		gui_controller.exploration_dungeon.get_node("LocationGui").hide()
+		gui_controller.exploration_dungeon.set_process_input(false)
+		gui_controller.exploration_dungeon.visible = false
+	if gui_controller.exploration_city != null:
+		gui_controller.exploration_city.visible = false
 	gui_controller.previous_screen = null
 	gui_controller.current_screen = gui_controller.mansion
 	if gui_controller.exploration_city != null:

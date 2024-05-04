@@ -20,6 +20,38 @@ var positiondict = {
 	6: "LocationGui/Positions/HBoxContainer/backrow/6",
 }
 
+var map_zoom_max = 1.2
+var map_zoom_min = 0.3
+var map_zoom_step = 0.1
+
+
+func _input(event):
+	if event.is_action_pressed('MouseUp'):
+		set_map_zoom(map_container.rect_scale.x + map_zoom_step)
+	if event.is_action_pressed('MouseDown'):
+		set_map_zoom(map_container.rect_scale.x - map_zoom_step)
+
+
+func set_map_zoom(value):
+	value = clamp(value, map_zoom_min, map_zoom_max)
+	var current_zoom = map_container.rect_scale.x
+	var k = value / current_zoom
+	if k == 1.0:
+		return
+	
+	var point = map_container.get_local_mouse_position()
+	var map_pos = map_container.rect_position
+
+	var new_map_pos = map_pos + point * (current_zoom - value)
+	animate_map_moves(value, new_map_pos, 0.1)
+
+
+func animate_map_moves(zoom, pos, time = 0.5):
+	var tween = input_handler.GetTweenNode(self)
+	tween.interpolate_property(map_container, 'rect_scale', map_container.rect_scale, Vector2(zoom, zoom), time)
+	tween.interpolate_property(map_container, 'rect_position', map_container.rect_position, pos, time)
+	tween.start()
+
 
 func get_stamina_mod(): #temporal, 2add later
 	return 1.0
@@ -76,6 +108,7 @@ func location_chars_check(dict):
 
 
 func _ready():
+	set_process_input(false)
 	for i in positiondict:
 		get_node(positiondict[i]).metadata = i
 		get_node(positiondict[i]).target_node = self
@@ -135,6 +168,8 @@ func open(location):
 func open_location(data): #2fix
 	input_handler.ActivateTutorial("exploration")
 	input_handler.StopBackgroundSound()
+	$LocationGui.show()
+	set_process_input(true)
 	gui_controller.nav_panel = $LocationGui/NavigationModule
 #	active_location = data.id #wrong
 #	var gatherable_resources
@@ -193,12 +228,12 @@ func build_location_description():
 		+ " ("
 		+ tr(active_location.classname)
 #		+ ")\n"
-		+ " - "
+		+ ") - "
 #				+ tr("DUNGEONDIFFICULTY")
 #				+ ": "
 #				+ tr("DUNGEONDIFFICULTY" + active_location.difficulty.to_upper())
 	)
-	text += tr("LEVELS") + " " + str(active_location.current_level + 1)
+	text += tr("LEVEL") + " " + str(active_location.current_level + 1)
 	if active_location.completed:
 		text += "{color=aqua|" + tr("LOC_COMPLETE") + "}"
 	map_panel.get_node('RichTextLabel').bbcode_text = (
@@ -885,9 +920,28 @@ func get_scouting_range():
 	return 1
 
 
+func can_enter_room(room_id):
+	var data = ResourceScripts.game_world.rooms[room_id]
+	if data.status == 'cleared' :
+		 return true
+	if data.type in ['ladder_up']:
+		return true
+	for i in data.neighbours.values():
+		if i == null:
+			continue
+		var t_data = ResourceScripts.game_world.rooms[i]
+		if t_data.status == 'cleared' :
+		 return true
+		if t_data.type in ['ladder_up']:
+			return true
+	return false
+
+
 func room_pressed(room_id):
 	if globals.check_location_group() == false:
 		input_handler.SystemMessage("Select at least 1 character before advancing. ")
+		return
+	if !can_enter_room(room_id):
 		return
 	globals.reset_roll_data()
 	globals.char_roll_data.diff = active_location.difficulty

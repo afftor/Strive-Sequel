@@ -16,6 +16,7 @@ theme = ExtResource( 1 )
 script = ExtResource( 7 )
 
 [node name="LocationGui" parent="." instance=ExtResource( 2 )]
+visible = false
 
 [node name="JournalButton" type="TextureButton" parent="."]
 margin_left = 1848.73
