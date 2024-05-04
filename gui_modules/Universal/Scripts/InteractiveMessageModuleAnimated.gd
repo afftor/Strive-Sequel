@@ -474,10 +474,12 @@ func close(args = {}):
 			yield(get_tree().create_timer(transition_duration + screen_duration * 0.25), "timeout")
 		$RichTextLabel.bbcode_text = ''
 	else:
-		ResourceScripts.core_animations.FadeAnimation(self, 0.2)
-		yield(get_tree().create_timer(0.2), "timeout")
+		if !args.has("hold_scene"):
+			ResourceScripts.core_animations.FadeAnimation(self, 0.2)
+			yield(get_tree().create_timer(0.2), "timeout")
 	hold_selection = false
-	hide()
+	if !args.has("hold_scene"):
+		hide()
 	if args.transition == false:
 		input_handler.scene_characters.clear()
 	input_handler.CurrentScreen = previousscene
@@ -1079,7 +1081,6 @@ func select_option(number):
 	var button = $ScrollContainer/VBoxContainer.get_child(number)
 	if button.disabled or !button.visible: 
 		return
-	
 	button.toggle_mode = true
 	button.pressed = true
 #	hold_selection = true
@@ -1127,6 +1128,7 @@ func select_option(number):
 	elif current_scene.tags.has("custom_effect"):
 		ResourceScripts.custom_effects.call(code) #controvertial moment cause most of those methods have a different signature
 	elif current_scene.tags.has("dialogue_scene") && !(code in ['close','quest_fight']):
+		
 		hold_selection = true
 		if option.has('change_dialogue_type'):
 			dialogue_next(code, option.dialogue_argument, {changed_window_type = true})

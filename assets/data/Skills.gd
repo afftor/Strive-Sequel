@@ -3895,7 +3895,22 @@ var Skilllist = {
 		tags = [],
 		special = 'lactation_pot',
 	},
-	
+	zephyra_underwear = {
+		new_syntax = true,
+		code = 'zephyra_underwear',
+		descript = '',
+		type = 'social',
+		ability_type = 'skill',
+		reqs = [],
+		targetreqs = [],
+		effects = [],
+		cost = {},
+		charges = 0,
+		cooldown = 0,
+		icon = null,
+		tags = [],
+		special = 'zephyra_underwear',
+	},
 	i_lifeshard = {
 		code = 'i_lifeshard',
 		descript = '',

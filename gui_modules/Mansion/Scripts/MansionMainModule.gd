@@ -580,7 +580,7 @@ func test_mode():
 		character.equip(item)
 	#	character.get_stat('pregnancy', true).duration = 2
 		character.set_stat('charm', 100)
-		character.set_stat('wits', 100)
+		character.set_stat('wits', 10)
 	#	character.add_stat('wits', 100)
 		character.add_stat('hpmax', 100)
 		character.set_stat('eye_color','green')
@@ -818,7 +818,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("seethrough_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("sacred_bowl", {}))
-		globals.AddItemToInventory(globals.CreateUsableItem("physics_pot"))
+		globals.AddItemToInventory(globals.CreateUsableItem("zephyra_underwear"))
 		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 4))
 		globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("soul_stone", 3))
@@ -920,7 +920,7 @@ func test_mode():
 		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
-		input_handler.interactive_message('zephyra_sword_2', '', {})
+		#input_handler.interactive_message('zephyra_underwear', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)

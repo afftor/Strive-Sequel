@@ -294,6 +294,16 @@ func BlackScreenTransition(duration = 0.5):
 	yield(get_tree().create_timer(duration*2+0.1), 'timeout')
 	blackscreen.queue_free()
 
+func GameOverScreen():
+	var duration = 4
+	var blackscreen = load(ResourceScripts.scenedict.black).instance()
+	blackscreen.get_node("Label").show()
+	get_tree().get_root().add_child(blackscreen)
+	UnfadeAnimation(blackscreen, duration)
+	#FadeAnimation(blackscreen, duration, duration)
+	yield(get_tree().create_timer(duration*2+0.1), 'timeout')
+	blackscreen.queue_free()
+
 func WhiteScreenTransition(duration = 0.5):
 	var whitescreen = load(ResourceScripts.scenedict.white).instance()
 	get_tree().get_root().add_child(whitescreen)

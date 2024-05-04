@@ -387,6 +387,7 @@ var sprites = {
 	elf_priestess = load("res://assets/images/sprites/heleviel.png"),
 	zephyra = load("res://assets/images/sprites/zephyra.png"),
 	zephyra_body = load("res://assets/images/sprites/zephyra_body.png"),
+	zephyra_mad = load("res://assets/images/sprites/zephyra_neko.png"),
 	kuro = load("res://assets/images/sprites/Kuro.png"),
 	kuro_body = load("res://assets/images/sprites/Kuro_body.png"),
 	daisy_default = load("res://assets/images/sprites/daisy_default.png"),

@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -74,6 +74,7 @@
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/hallway_vertical.png" type="Texture" id=72]
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/hallway.png" type="Texture" id=73]
 [ext_resource path="res://gui_modules/Exploration/Scripts/room.gd" type="Script" id=74]
+[ext_resource path="res://assets/images/backgrounds/cave1.png" type="Texture" id=75]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -104,9 +105,6 @@ margin_right = 315.0
 margin_bottom = 1060.0
 texture = ExtResource( 24 )
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label3" type="Label" parent="Positions"]
 margin_left = 7.0
@@ -1111,6 +1109,19 @@ margin_bottom = -5.0
 mouse_filter = 2
 texture = ExtResource( 66 )
 expand = true
+
+[node name="BgImage" type="TextureRect" parent="MapPanel"]
+margin_left = 65.0
+margin_top = 93.0
+margin_right = 1177.0
+margin_bottom = 729.0
+texture = ExtResource( 75 )
+stretch_mode = 6
+
+[node name="Panel" type="Panel" parent="MapPanel/BgImage"]
+modulate = Color( 1, 1, 1, 0.686275 )
+margin_right = 1112.0
+margin_bottom = 631.0
 
 [node name="CanvasLayer" type="Control" parent="MapPanel"]
 light_mask = 32

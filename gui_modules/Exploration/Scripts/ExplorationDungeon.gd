@@ -136,7 +136,7 @@ func _ready():
 	input_handler.connect("LootGathered", self, 'build_location_group')
 	input_handler.connect("LocationSlavesUpdate", self, 'build_location_group')
 	input_handler.connect("update_itemlist", self, 'update_sell_list')
-
+	globals.connecttexttooltip($LocationGui/MapPanel/Stamina, tr("TOOLTIPSTAMINADUNGEON"))
 
 func open_journal():
 #	globals.common_effects( [{code = 'update_city'}])
@@ -171,6 +171,7 @@ func open_location(data): #2fix
 	$LocationGui.show()
 	set_process_input(true)
 	gui_controller.nav_panel = $LocationGui/NavigationModule
+	$LocationGui/MapPanel/BgImage.texture = images.backgrounds[data.background]
 #	active_location = data.id #wrong
 #	var gatherable_resources
 #	$LocationGui/Resources/Forget.visible = true
