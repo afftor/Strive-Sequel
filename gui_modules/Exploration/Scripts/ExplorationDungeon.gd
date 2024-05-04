@@ -20,6 +20,38 @@ var positiondict = {
 	6: "LocationGui/Positions/HBoxContainer/backrow/6",
 }
 
+var map_zoom_max = 1.2
+var map_zoom_min = 0.3
+var map_zoom_step = 0.1
+
+
+func _input(event):
+	if event.is_action_pressed('MouseUp'):
+		set_map_zoom(map_container.rect_scale.x + map_zoom_step)
+	if event.is_action_pressed('MouseDown'):
+		set_map_zoom(map_container.rect_scale.x - map_zoom_step)
+
+
+func set_map_zoom(value):
+	value = clamp(value, map_zoom_min, map_zoom_max)
+	var current_zoom = map_container.rect_scale.x
+	var k = value / current_zoom
+	if k == 1.0:
+		return
+	
+	var point = map_container.get_local_mouse_position()
+	var map_pos = map_container.rect_position
+
+	var new_map_pos = map_pos + point * (current_zoom - value)
+	animate_map_moves(value, new_map_pos, 0.1)
+
+
+func animate_map_moves(zoom, pos, time = 0.5):
+	var tween = input_handler.GetTweenNode(self)
+	tween.interpolate_property(map_container, 'rect_scale', map_container.rect_scale, Vector2(zoom, zoom), time)
+	tween.interpolate_property(map_container, 'rect_position', map_container.rect_position, pos, time)
+	tween.start()
+
 
 func get_stamina_mod(): #temporal, 2add later
 	return 1.0
@@ -76,6 +108,7 @@ func location_chars_check(dict):
 
 
 func _ready():
+	set_process_input(false)
 	for i in positiondict:
 		get_node(positiondict[i]).metadata = i
 		get_node(positiondict[i]).target_node = self
@@ -135,6 +168,8 @@ func open(location):
 func open_location(data): #2fix
 	input_handler.ActivateTutorial("exploration")
 	input_handler.StopBackgroundSound()
+	$LocationGui.show()
+	set_process_input(true)
 	gui_controller.nav_panel = $LocationGui/NavigationModule
 #	active_location = data.id #wrong
 #	var gatherable_resources
