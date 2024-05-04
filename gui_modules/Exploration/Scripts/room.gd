@@ -31,6 +31,13 @@ func update():
 				get_node(i).visible = false
 			else:
 				get_node(i).visible = true
+				if data.status == 'cleared' or data.type == 'ladder_up':
+					get_node(i).modulate = Color(variables.hexcolordict.green)
+					continue
+				if tdata.status == 'cleared' or tdata.type == 'ladder_up':
+					get_node(i).modulate = Color(variables.hexcolordict.green)
+					continue
+				get_node(i).modulate = Color(variables.hexcolordict.red)
 	for i in range(data.subrooms.size()):
 		if data.subrooms[i] == null:
 			continue

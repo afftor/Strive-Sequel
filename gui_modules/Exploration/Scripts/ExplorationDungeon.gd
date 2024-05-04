@@ -228,12 +228,12 @@ func build_location_description():
 		+ " ("
 		+ tr(active_location.classname)
 #		+ ")\n"
-		+ " - "
+		+ ") - "
 #				+ tr("DUNGEONDIFFICULTY")
 #				+ ": "
 #				+ tr("DUNGEONDIFFICULTY" + active_location.difficulty.to_upper())
 	)
-	text += tr("LEVELS") + " " + str(active_location.current_level + 1)
+	text += tr("LEVEL") + " " + str(active_location.current_level + 1)
 	if active_location.completed:
 		text += "{color=aqua|" + tr("LOC_COMPLETE") + "}"
 	map_panel.get_node('RichTextLabel').bbcode_text = (
@@ -920,9 +920,28 @@ func get_scouting_range():
 	return 1
 
 
+func can_enter_room(room_id):
+	var data = ResourceScripts.game_world.rooms[room_id]
+	if data.status == 'cleared' :
+		 return true
+	if data.type in ['ladder_up']:
+		return true
+	for i in data.neighbours.values():
+		if i == null:
+			continue
+		var t_data = ResourceScripts.game_world.rooms[i]
+		if t_data.status == 'cleared' :
+		 return true
+		if t_data.type in ['ladder_up']:
+			return true
+	return false
+
+
 func room_pressed(room_id):
 	if globals.check_location_group() == false:
 		input_handler.SystemMessage("Select at least 1 character before advancing. ")
+		return
+	if !can_enter_room(room_id):
 		return
 	globals.reset_roll_data()
 	globals.char_roll_data.diff = active_location.difficulty
