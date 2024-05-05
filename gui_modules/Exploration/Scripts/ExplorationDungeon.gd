@@ -292,7 +292,7 @@ func use_item_on_character(character, item):
 	item.use_explore(character, self)  #item.use_explore(state.characters[active_location.group['pos'+str(position)]])
 	item.amount -= 1
 	#show_heal_items(position)
-	build_location_group()
+	call_deferred('build_location_group')
 
 
 func use_e_combat_skill(caster, target, skill):
