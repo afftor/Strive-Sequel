@@ -292,7 +292,7 @@ func use_item_on_character(character, item):
 	item.use_explore(character, self)  #item.use_explore(state.characters[active_location.group['pos'+str(position)]])
 	item.amount -= 1
 	#show_heal_items(position)
-	build_location_group()
+	call_deferred('build_location_group')
 
 
 func use_e_combat_skill(caster, target, skill):
@@ -985,11 +985,11 @@ func scout_room(room_id, s_range, stay = false):
 		'combat':
 			selected_room = room_id
 #			input_handler.combat_advance = false
-			globals.StartAreaCombat() #temporal, 2fix
+			StartCombat() #temporal, 2fix
 		'combat_boss':
 			selected_room = room_id
 #			input_handler.combat_advance = false
-			globals.StartAreaCombat() #temporal, 2fix, important!
+			StartCombat() #temporal, 2fix, important!
 		'event':
 			#2add
 #			input_handler.combat_advance = true
