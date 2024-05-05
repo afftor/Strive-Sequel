@@ -12479,148 +12479,148 @@ Zephyra makes a playful chuckle seemingly accepting this recent attire. """,
 Despite your expectation for Zephyra to get rid of this costume as soon as possible, she smiles wryly at her own thoughts. """,
 	ZEPHYRA_COSTUME_10_3 = """Zephyra: — Absolutely not, never, in no reality or fantasy this is going to happen. I value my life too much to make my older sister mad at me for trying to impersonate her. As for cooking, only if you promise to eat anything I make.""",
 	
-	DAISY_WEDDING_1 = """— …Master, I’m— I’m the happiest I’ve ever been! You’ve taken such good care of me despite… my mistakes…
+	DAISY_WEDDING_1 = """— ...Master, I'm— I'm the happiest I've ever been! You've taken such good care of me despite... my mistakes...
 
-You reassure her that whatever mistakes she makes can’t possibly outweigh your love for her.
+You reassure her that whatever mistakes she makes can't possibly outweigh your love for her.
 
 — M–Master!
 
-Daisy kisses you, her shaky hands grasping at your clothes as if you’ll disappear.
+Daisy kisses you, her shaky hands grasping at your clothes as if you'll disappear.
 
-— Ah! I did that without orders…! I— Um… Do you… want me tonight, Master?""",
+— Ah! I did that without orders...! I— Um... Do you... want me tonight, Master?""",
 	DAISY_WEDDING_1_OPTION_1 = "Of course.",
-	DAISY_WEDDING_1_OPTION_2 = "I’m a bit tired after the ceremony.",
+	DAISY_WEDDING_1_OPTION_2 = "I'm a bit tired after the ceremony.",
 	DAISY_WEDDING_2_1 = """Daisy blushes. Her mouth opens and closes over and over again, but nothing comes out.
 
 She lets you lead her to your bedroom, a silly smile on her face.""",
-	DAISY_WEDDING_2_2 = """— O–Oh… Maybe we can… um, cuddle instead?
+	DAISY_WEDDING_2_2 = """— O–Oh... Maybe we can... um, cuddle instead?
 
-You tell her you might later, but you’re going to get some sleep.
+You tell her you might later, but you're going to get some sleep.
 
 Daisy sits down on your bed, looking around at everything in the room but you.
 
-— So, um… h–how do you want me, Master?""",
+— So, um... h–how do you want me, Master?""",
 	DAISY_WEDDING_3 = """You push Daisy back onto the bed and lift her dress excitedly, exposing her wet pussy
 
-— Ah…!
+— Ah...!
 
 Daisy looks up at you with eyes glowing in the moonlight.
 
-— Are you sure I’m worthy of your… love, Master?""",
+— Are you sure I'm worthy of your... love, Master?""",
 	DAISY_WEDDING_4 = """You pull out your cock in response, watching as her eyes become glued to it. She gulps as you slide it over her pussy teasingly before inserting yourself all at once.
 
 You start moving, plunging as deeply into her as you can. Pulling back until just your tip remains on the inside of her pussy, you thrust back in.""",
 	DAISY_WEDDING_5 = """Her pussy clings tightly to your dick as you pleasure her with fast and hard motions. The wet sounds from your intercourse messily stain the bed. Daisy seems to have relaxed since your insertion, watching as you fuck her.
 
-— Ngh…! I’m…!!""",
-	DAISY_WEDDING_6 = """Daisy’s pussy tightens around your dick as a wave of her cum flows out. She shivers as she submissively gives in to your will. Her exasperation leads to heavy breaths as she takes you inside her dutifully.
+— Ngh...! I'm...!!""",
+	DAISY_WEDDING_6 = """Daisy's pussy tightens around your dick as a wave of her cum flows out. She shivers as she submissively gives in to your will. Her exasperation leads to heavy breaths as she takes you inside her dutifully.
 
-Despite her words, Daisy’s eyes are locked to yours as you fill her pussy with your cum. Your dick wildly ejaculates inside her pussy, filling her up quickly. Her ears twitch and her whole body shivers from the heat warming her up inside.
+Despite her words, Daisy's eyes are locked to yours as you fill her pussy with your cum. Your dick wildly ejaculates inside her pussy, filling her up quickly. Her ears twitch and her whole body shivers from the heat warming her up inside.
 
-— Master… Thank you for loving me… I still feel like I don’t deserve this…
+— Master... Thank you for loving me... I still feel like I don't deserve this...
 
 You lean over and kiss Daisy as your cum continues to messily spill out of her pussy. Despite just unleashing a load inside her, Daisy seems riled up and ready for more.
 
-— K–Keep going… Master!
+— K–Keep going... Master!
 
 How can you deny a cute face like that? You grant her what she so desires for the rest of the night, making love to her until morning.""",
 	
 	AMELIA_WEDDING_1 = """As you pull yourself from the festivities, you feel a soft tail curl around your leg and tickle your skin. Amelia slinks closer to you, clinging to your arm and holding it between her breasts as she gives you a knowing stare.
 
-— Master [name], getting away from the crowd? I thought you would be the life of the party, entertaining your guests with stories of your great accomplishments? Of course, once you were done with that, I would come “relieve” you of your duties. Looks like we’ll get to have some fun early.""",
-	AMELIA_WEDDING_1_OPTION_1 = "Trying to pull your Master away for yourself? Sounds like this kitty could use some discipline…",
-	AMELIA_WEDDING_1_OPTION_2 = "Getting rest is part of a Master’s duties as well. You’ll get your fun when I have time.",
+— Master [name], getting away from the crowd? I thought you would be the life of the party, entertaining your guests with stories of your great accomplishments? Of course, once you were done with that, I would come “relieve” you of your duties. Looks like we'll get to have some fun early.""",
+	AMELIA_WEDDING_1_OPTION_1 = "Trying to pull your Master away for yourself? Sounds like this kitty could use some discipline...",
+	AMELIA_WEDDING_1_OPTION_2 = "Getting rest is part of a Master's duties as well. You'll get your fun when I have time.",
 	AMELIA_WEDDING_2_1 = """You turn to her and pull her into your embrace, pointing her chin up to you. The mischief in her eyes is plain to see as she enjoys teasing you.
 
-— Mmm… I’m here to please, Master [name]. Do what you must to make sure I understand exactly how naughty I’ve been…
+— Mmm... I'm here to please, Master [name]. Do what you must to make sure I understand exactly how naughty I've been...
 
 Sharing a kiss with her, you grab one of her breasts and squeeze it tight, making her moan in your mouth. Amelia cups your bulge, rubbing it back and forth as it grows and fills out her palm. Her tail coils around your leg, gently pulling you towards her as she grinds her body against yours.
 
-— Come on, show me how rough you can be with your property, Master [name]…
+— Come on, show me how rough you can be with your property, Master [name]...
 
 You pull her along with you to the bedroom, groping her plush ass the entire way. Even as you open the door, her body seems to pull at you for your attention.""",
-	AMELIA_WEDDING_2_2 = """— I didn’t know you would be such a tease, even on our wedding day. I’ll have a long list of transgressions to discipline me for if you put my correction off, you know. I’m sure you’ll be very rough when the time comes for my punishment…""",
+	AMELIA_WEDDING_2_2 = """— I didn't know you would be such a tease, even on our wedding day. I'll have a long list of transgressions to discipline me for if you put my correction off, you know. I'm sure you'll be very rough when the time comes for my punishment...""",
 	AMELIA_WEDDING_3 = """As soon as you close the door, Amelia takes a seat on the bed, pulling up her dress to reveal her pussy, ready and waiting for you. Her breasts fall out of the loose fabric of her dress, baring all of herself to you as she gives a devious smile.
 
-— As a discerning Master, I’m sure you can spot my best assets. They’re all yours to do as you please.
+— As a discerning Master, I'm sure you can spot my best assets. They're all yours to do as you please.
 
 Matching her nude state, you lay your dick over her pussy as you decide how to treat your taunting slave.""",
 	AMELIA_WEDDING_3_OPTION_1 = "Fast and hard.",
 	AMELIA_WEDDING_3_OPTION_2 = "Slow and gentle.",
 	AMELIA_WEDDING_4_1 = """You slip into her and press all the way in at once, feeling her pussy wrap around the entire length of your cock.
 
-— Oh…! You are quite enthusiastic for our first night as an official spouses.
+— Oh...! You are quite enthusiastic for our first night as an official spouses.
 
 Pulling back just as fast, you start thrusting into her with all your weight. Each collision rocks her body, her tits bouncing back from your powerful thrusts. You grab her thigh with one hand and a breast in the other, squeezing both tight enough to leave marks as your fingers sink into her skin. Your pistoning dick makes loud and sloppy sounds with her pussy, your precum and her juices serving as the source.
 
-— Ahh!! …Harder.. You know I can take it…""",
+— Ahh!! ...Harder.. You know I can take it...""",
 	AMELIA_WEDDING_4_2 = """Sliding your cock inside, you push past all her folds and let her pussy slowly engulf your shaft.
 
-— Mm… Are you trying to tease me like this?
+— Mm... Are you trying to tease me like this?
 
 Stroking her thigh, you reach forward and hold her face in your hand. You hear her purr as your cock slides all the way inside her, the subtle vibrations making you throb more. On the way back, her pussy does its best to keep you inside, feeling tighter the more you pull away until you push back in again and again. Her body begs for your attention, the heat and wetness of her pussy pulling you back in no matter how many times you rear back.
 
-— You have a funny definition of punishment, Master… It’s almost agonizing being treated so sensually…""",
+— You have a funny definition of punishment, Master... It's almost agonizing being treated so sensually...""",
 	AMELIA_WEDDING_5 = """The warmth of her hole seems to transfer to your body, a familiar impulse building up inside you. Grabbing her hips, you start thrusting at a consistent pace, using her body to bring yourself closer to relief. Strings of precum help slicken the pathway, letting you slip in and out of her with ease.
 
 Even as you start to rush things, you tease her every so often by pulling out to rub your tip over her clit, watching her moan at your touch. She plays with her breast, groping it as she bites her lip and watches you plow through her.""",
-	AMELIA_WEDDING_6 = """— Let’s come together… Darling…
+	AMELIA_WEDDING_6 = """— Let's come together... Darling...
 
 You can hold on no longer as you stare into her eyes begging for your cum. Her pussy milks you of your seed as she clings to you, welcoming your cum as it pours out. A wave of her own fluids wash over your cock too as her folds spasm and Amelia shudders.
 
 The mix of your cum spills out onto the bed, leaving a stain as proof of your love. Amelia looks to you for another round, not nearly satisfied with just one “reprimand.” You spend the night disciplining her and making sure she understands just how demanding being your servant can be.""",
 #	AMELIA_WEDDING_1 = """""",
 #	AMELIA_WEDDING_1 = """""",
-	CALI_WEDDING_GOOD_1 = """— Hey… So do you want to…? You know…
+	CALI_WEDDING_GOOD_1 = """— Hey... So do you want to...? You know...
 
-Cali tries to look as enticing as possible, using the lighting of the room and a cute pose to accentuate her assets. Her confidence in herself shows with how forward she is, now that she’s truly free. You wait for her to finish her sentence, smiling as you see her try to get past her own embarrassment.
+Cali tries to look as enticing as possible, using the lighting of the room and a cute pose to accentuate her assets. Her confidence in herself shows with how forward she is, now that she's truly free. You wait for her to finish her sentence, smiling as you see her try to get past her own embarrassment.
 
-— Come on… You know what I mean! I’ve never had… I never even thought I’d have a husband! I want to do it with you… I–If you want to, I mean!""",
-	CALI_WEDDING_GOOD_1_OPTION_1 = "Let’s do it.",
+— Come on... You know what I mean! I've never had... I never even thought I'd have a husband! I want to do it with you... I–If you want to, I mean!""",
+	CALI_WEDDING_GOOD_1_OPTION_1 = "Let's do it.",
 	CALI_WEDDING_GOOD_1_OPTION_2 = "Maybe tomorrow.",
-	CALI_WEDDING_GOOD_2_1 = """— Really? Then… let’s go already! 
+	CALI_WEDDING_GOOD_2_1 = """— Really? Then... let's go already! 
 
-Cali’s tail wags back and forth at the prospect of sharing your time together in bed. She skips ahead and opens the door for you to the bedroom.""",
-	CALI_WEDDING_GOOD_2_2 = """— Aw… Okay… But we better do something soon!
+Cali's tail wags back and forth at the prospect of sharing your time together in bed. She skips ahead and opens the door for you to the bedroom.""",
+	CALI_WEDDING_GOOD_2_2 = """— Aw... Okay... But we better do something soon!
 
 You play around with Cali some more before you head to bed for the day.""",
-	CALI_WEDDING_BAD_1 = """— …M–Master?
+	CALI_WEDDING_BAD_1 = """— ...M–Master?
 
 Cali hesitates to look you directly in the eye, but you can still glean her intentions from how her tail wags behind her. A far cry from how loud-mouthed and indolent she used to be. It seems she wants to receive a reward from her Master.""",
 	CALI_WEDDING_BAD_1_OPTION_1 = "I suppose you deserve a little something.",
-	CALI_WEDDING_BAD_1_OPTION_2 = "You’ll have to entertain yourself today.",
+	CALI_WEDDING_BAD_1_OPTION_2 = "You'll have to entertain yourself today.",
 	CALI_WEDDING_BAD_2_1 = """— Thank you, Master!
 
 Cali seems hopeful and excited, but she stays behind you and lets you lead the way to the bedroom.""",
-	CALI_WEDDING_BAD_2_2 = """— Of course, Master…
+	CALI_WEDDING_BAD_2_2 = """— Of course, Master...
 
 Cali walks away with her tail between her legs, slinking away from the festivities.""",
 	CALI_WEDDING_3 = """As soon as you get into the room, Cali leans against the dresser and holds a leg up, exposing her pussy to you like a wolf in heat.
 
-— Hurry up, I can’t wait anymore…!
+— Hurry up, I can't wait anymore...!
 
-— (Please, Master…!)
+— (Please, Master...!)
 
-You smirk at Cali’s readiness, admiring how her arousal drips down onto the floor as she waits for you. You don’t keep her waiting for long, freeing your dick and stepping closer to caress her thigh. Pressing into her, you watch as her expression melts into pleasure as her pussy closes around you.
+You smirk at Cali's readiness, admiring how her arousal drips down onto the floor as she waits for you. You don't keep her waiting for long, freeing your dick and stepping closer to caress her thigh. Pressing into her, you watch as her expression melts into pleasure as her pussy closes around you.
 
-— Ah…! It feels even better today for some reason…!
+— Ah...! It feels even better today for some reason...!
 
-— (This pose… feels so right…)""",
-	CALI_WEDDING_4 = """You respond by pressing further into her and beginning to thrust. Cali’s tight pussy clamps down on you every time you push in, trying to keep you inside each time you pull back. She watches your cock plowing into her in awe, silent as she enjoys the pleasure of your dick warming her from the inside.
+— (This pose... feels so right...)""",
+	CALI_WEDDING_4 = """You respond by pressing further into her and beginning to thrust. Cali's tight pussy clamps down on you every time you push in, trying to keep you inside each time you pull back. She watches your cock plowing into her in awe, silent as she enjoys the pleasure of your dick warming her from the inside.
 
-Her juices spill out around your shaft as her arousal builds, making each successive thrust smoother and easier from all the natural lubricant. The sticky sounds coming from Cali’s pussy would surely give anyone a clear picture of what’s going on between bride and groom, if Cali’s squeaky moans weren’t enough of a hint. Her tail flails around behind her as she takes heavy breaths, brushing against your leg every so often.""",
-	CALI_WEDDING_5 = """— I-I can feel you so deep inside…
+Her juices spill out around your shaft as her arousal builds, making each successive thrust smoother and easier from all the natural lubricant. The sticky sounds coming from Cali's pussy would surely give anyone a clear picture of what's going on between bride and groom, if Cali's squeaky moans weren't enough of a hint. Her tail flails around behind her as she takes heavy breaths, brushing against your leg every so often.""",
+	CALI_WEDDING_5 = """— I-I can feel you so deep inside...
 
-— (Ahh…! M–Master! I’m sorry, please… Don’t s-stop…)
+— (Ahh...! M–Master! I'm sorry, please... Don't s-stop...)
 
-Cali’s pussy clings to your shaft as a wave of her cum flows past, spilling out as her body shivers from the pleasure. You hold her steady as her leg becomes wobbly from the sensations wracking her body.
+Cali's pussy clings to your shaft as a wave of her cum flows past, spilling out as her body shivers from the pleasure. You hold her steady as her leg becomes wobbly from the sensations wracking her body.
 
 Feeling the heat inside you welling up too, you pick up the pace. Her cum gives you ample leverage to slip in and out of her hole as she milks you for the seed you can barely hold back from her. Within a few moments, you burst inside her, your cum filling every nook in her pussy as you hold her close.""",
-	CALI_WEDDING_6 = """It doesn’t take long for your cum to spill out with her own, both fluids running down her leg as you mark her as yours. Cali is speechless as she watches the warmth inside her flow out of her pussy, only barely held in by your cock. Once you pull away from her, the rest follows suit and slides down her leg, making a mess of lust.
+	CALI_WEDDING_6 = """It doesn't take long for your cum to spill out with her own, both fluids running down her leg as you mark her as yours. Cali is speechless as she watches the warmth inside her flow out of her pussy, only barely held in by your cock. Once you pull away from her, the rest follows suit and slides down her leg, making a mess of lust.
 
-— T–That was a lot…
+— T–That was a lot...
 
-— (...T–Thank you so much, Master… for making me feel this…)
+— (...T–Thank you so much, Master... for making me feel this...)
 
 You hold Cali close and kiss her, spending the rest of the night close together in bed as you enjoy her petite body.""",
 	
