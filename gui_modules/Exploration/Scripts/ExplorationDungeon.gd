@@ -985,11 +985,11 @@ func scout_room(room_id, s_range, stay = false):
 		'combat':
 			selected_room = room_id
 #			input_handler.combat_advance = false
-			globals.StartAreaCombat() #temporal, 2fix
+			StartCombat() #temporal, 2fix
 		'combat_boss':
 			selected_room = room_id
 #			input_handler.combat_advance = false
-			globals.StartAreaCombat() #temporal, 2fix, important!
+			StartCombat() #temporal, 2fix, important!
 		'event':
 			#2add
 #			input_handler.combat_advance = true
