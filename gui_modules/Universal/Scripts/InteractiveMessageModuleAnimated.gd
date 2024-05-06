@@ -284,6 +284,16 @@ func recruit_option():
 	input_handler.emit_signal("LocationSlavesUpdate")
 
 
+func add_harvest_options(scene):
+	if gui_controller.exploration_dungeon == null:
+		scene.options.insert(0,{code = 'close', reqs = [], text = "DIALOGUECLOSE"})
+	else:
+		var data = gui_controller.exploration_dungeon.get_subroom_data()
+		scene.options.insert(0,{code = 'close', reqs = [], text = "Add to gathering pool", bonus_effects = [{code = "add_subroom_res"}]})
+		scene.options.insert(0,{code = 'close', reqs = [{type = 'has_stamina', value = data.stamina_cost}], text = "Gather %d %s" % [int(data.amount) / 2, tr(Items.materiallist[data.resource].name)] , bonus_effects = [{code = "material_change", operant = '+', value = int(data.amount) / 2, material = data.resource}, {code = 'pay_stamina', value = data.stamina_cost}, {code = 'clear_subroom'}]})
+
+
+
 func add_shrine_options(scene):
 	var shrineoptions = Enemydata.shrines[scene.shrine].options
 	var array = shrineoptions.keys()
@@ -298,6 +308,7 @@ func add_shrine_options(scene):
 				scene.options.insert(0,{code = 'shrine_option', args = ['destroy'], reqs = [], text = "DIALOGUESHRINEDESTROY"})
 			'item':
 				scene.options.insert(0,{code = 'shrine_option', args = ['select_item'], reqs = [], text = "DIALOGUESHRINEEQUIP"})
+
 
 func shrine_option(option):
 	match option:
@@ -328,13 +339,24 @@ func shrine_item_select(item):
 func add_loot_options(scene):
 	scene.options.insert(0,{code = 'open_chest', reqs = [], text = "DIALOGUETAKELOOT", bonus_effects = [{code = 'advance_location'}]})
 
+
+#func add_location_resource_info(): #not used, reworked
+#	var text = '\nAfter defeating last enemies your party investigated the location and found a resources you can harvest:'
+#	var location = input_handler.active_location
+#	for i in location.gather_limit_resources:
+#		text += "\n" + Items.materiallist[i].name + ": " + str(location.gather_limit_resources[i])
+#	text += '\n\nHarvest speed modifier: ' + str(round(location.gather_mod*100)) + "%"
+#	return text
+
+
 func add_location_resource_info():
-	var text = '\nAfter defeating last enemies your party investigated the location and found a resources you can harvest:'
-	var location = input_handler.active_location
-	for i in location.gather_limit_resources:
-		text += "\n" + Items.materiallist[i].name + ": " + str(location.gather_limit_resources[i])
-	text += '\n\nHarvest speed modifier: ' + str(round(location.gather_mod*100)) + "%"
+	if gui_controller.exploration_dungeon == null:
+		return "" 
+	var data = gui_controller.exploration_dungeon.get_subroom_data()
+	data.resource = tr(Items.materiallist[data.resource].name)
+	var text = "\nThere are resources in this room. You can harvest {amount} items of {resource} later or spend {stamina_cost} stamina to get half that amount now.".format(data)
 	return text
+
 
 func lockpick_attempt(person):
 	var lock = input_handler.scene_loot.lock.difficulty
@@ -944,6 +966,8 @@ func handle_loots(scene):
 		add_recruit_option(scene)
 	if scene.tags.has("free_loot"):
 		add_loot_options(scene)
+	if scene.tags.has("location_resource_info"):
+		add_harvest_options(scene)
 
 
 func generate_scene_text(scene):

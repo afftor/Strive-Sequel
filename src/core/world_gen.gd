@@ -823,19 +823,19 @@ var dungeon_template = { #sample dungeon data
 		resources = ['cloth','leather','iron','wood','clothsilk'],
 		gatherable_resources = {
 			wood = {
-				value = [25,40],
+				amount = [25,40],
 				weight = 10,
 				gather_mod = [2,2.5],
 				stamina = [5,10],
 				}, 
 			stone = {
-				value = [25,40],
+				amount = [25,40],
 				weight = 6,
 				gather_mod = [2,2.5],
 				stamina = [5,10],
 				},  
 			iron = {
-				value = [15,25],
+				amount = [15,25],
 				weight = 2,
 				gather_mod = [2,2.5],
 				stamina = [5,10],
@@ -889,16 +889,21 @@ func build_room(packed_vertex, locdata = dungeon_template):
 				tmp.stamina_cost = 15 #stub - should be set up differently for subroom types
 				
 				#2add all variants
-				if globals.rng.randf() < variables.dungeon_encounter_chance:
+				if false: #globals.rng.randf() < variables.dungeon_encounter_chance:
 					#onetime events are temporal solution and should be replaced with events and unique events when those events would be properly updated
 					tmp.type = 'onetime_event'
 					tmp.event = input_handler.weightedrandom(locdata.eventarray)
 				else:
 					tmp.type = 'resource'
+					#test version, not final
 					tmp.resource = input_handler.random_from_array(locdata.gatherable_resources.keys())
-					tmp.amount = locdata.gatherable_resources[tmp.resource]
+					var data = locdata.gatherable_resources[tmp.resource]
+					tmp.amount = data.amount
 					if tmp.amount is Array:
 						tmp.amount = globals.rng.randi_range(tmp.amount[0], tmp.amount[1])
+					tmp.stamina_cost = data.stamina
+					if tmp.stamina_cost is Array:
+						tmp.stamina_cost = globals.rng.randi_range(tmp.stamina_cost[0], tmp.stamina_cost[1])
 				res.subrooms[i] = tmp
 				if globals.rng.randf() >= variables.additional_subroom_chance:
 					break

@@ -1428,6 +1428,13 @@ var scenedict = {
 	]
 	},
 	
+	resource_gather = {
+		text = tr(""),
+		tags = ['location_resource_info'],
+		image = 'celena_shrine', #fix
+		options = []
+	},
+	
 	
 	celena_shrine_find = {
 		text = tr("DIALOGUESHRINECELENA"),
