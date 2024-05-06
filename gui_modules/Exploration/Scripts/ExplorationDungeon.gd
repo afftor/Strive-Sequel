@@ -71,6 +71,12 @@ func pay_stamina(value, modified = true):
 	update_stamina()
 
 
+func add_stamina(value):
+	active_location.stamina += value
+	active_location.stamina = int( min(active_location.stamina, 100))
+	update_stamina()
+
+
 func update_stamina():
 	map_panel.get_node("Stamina/Label").text = "Stamina: %d/%d" % [active_location.stamina, 100]
 
@@ -1087,14 +1093,27 @@ func subroom_pressed(room_id, subroom_id):
 			var _event = globals.start_unique_event()
 			if !_event:
 				_event = globals.start_random_event()
-		'resource':
+		'resource': 
 			selected_room = room_id
 			active_subroom = subroom_id
-			pay_stamina(subroom_data.stamina_cost)
-			input_handler.AddOrIncrementDict(active_location.gather_limit_resources, {subroom_data.resource : subroom_data.amount})
-			res_panel.get_node("SelectWorkers").visible = true
-			res_container.update()
-			clear_subroom()
+			globals.start_fixed_event("resource_gather")
+#			add_subroom_res()
+
+
+func get_subroom_data():
+	var data = ResourceScripts.game_world.rooms[selected_room]
+	var subroom_data = data.subrooms[active_subroom]
+	return subroom_data.duplicate(true)
+
+
+func add_subroom_res():
+	var data = ResourceScripts.game_world.rooms[selected_room]
+	var subroom_data = data.subrooms[active_subroom]
+#	pay_stamina(subroom_data.stamina_cost)
+	input_handler.AddOrIncrementDict(active_location.gather_limit_resources, {subroom_data.resource : subroom_data.amount})
+	res_panel.get_node("SelectWorkers").visible = true
+	res_container.update()
+	clear_subroom()
 
 
 func clear_subroom():
@@ -1108,6 +1127,7 @@ func clear_subroom():
 	data.subrooms[active_subroom].type = 'empty'
 	update_map()
 	active_subroom = null
+	selected_room = null
 
 func reset_active_location(arg = null):
 	if input_handler.active_location.id != active_location.id:

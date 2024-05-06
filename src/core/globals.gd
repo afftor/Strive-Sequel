@@ -2157,6 +2157,16 @@ func common_effects(effects):
 						gui_controller.exploration_dungeon.pay_stamina(i.value, i.modified) 
 					else:
 						gui_controller.exploration_dungeon.pay_stamina(i.value)
+			'add_stamina':
+				if gui_controller.exploration_dungeon != null:
+					gui_controller.exploration_dungeon.add_stamina(i.value)
+			'clear_subroom':
+				if gui_controller.exploration_dungeon == null:
+					return
+				gui_controller.exploration_dungeon.clear_subroom()
+			'add_subroom_res':
+				if gui_controller.exploration_dungeon != null:
+					gui_controller.exploration_dungeon.add_subroom_res()
 
 func after_wedding_event(character):
 	if character == null:
@@ -2386,10 +2396,6 @@ func valuecheck(dict):
 			if gui_controller.exploration_dungeon == null:
 				return false
 			return gui_controller.exploration_dungeon.location_chars_check(dict.value)
-		'clear_subroom':
-			if gui_controller.exploration_dungeon == null:
-				return false
-			return gui_controller.exploration_dungeon.clear_subroom()
 
 
 func apply_starting_preset():
