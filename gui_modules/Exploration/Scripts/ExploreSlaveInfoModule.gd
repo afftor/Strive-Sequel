@@ -25,7 +25,7 @@ func _ready():
 func update(person = null, from_dialogue = false):
 	# get_parent().get_parent().submodules.append(self)
 	if person == null:
-		person = gui_controller.exploration.person_to_hire
+		person = gui_controller.exploration_city.person_to_hire
 		current_person = person
 		from_dialogue = false
 	else:
@@ -63,7 +63,7 @@ func update(person = null, from_dialogue = false):
 			$Panel/authoritylabel2.visible = person.is_known_to_player
 			$Panel/authoritylabel3.visible = person.is_known_to_player
 		else:
-			var expnode = gui_controller.exploration
+			var expnode = gui_controller.exploration_city
 			$Panel/authoritylabel.visible = expnode.hiremode != "hire"
 			$Panel/loyaltylabel.visible = expnode.hiremode != "hire"
 			$Panel/submissionlabel.visible = expnode.hiremode != "hire"
@@ -181,7 +181,7 @@ func rebuild_traits():
 func text_url_hover(meta):
 	var person
 	if current_person == null:
-		person = gui_controller.exploration.person_to_hire
+		person = gui_controller.exploration_city.person_to_hire
 	else: 
 		person = current_person
 	match meta:

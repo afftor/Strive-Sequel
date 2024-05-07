@@ -173,6 +173,7 @@ Gallery="*res://src/core/gallery.gd"
 rnd_settings="*res://src/randomportraits/settings.gd"
 GeneratorData="*res://Character_generator/generator_data.gd"
 tasks="*res://assets/data/tasks.gd"
+DungeonGen="*res://src/core/dungeon_gen.gd"
 
 [debug]
 

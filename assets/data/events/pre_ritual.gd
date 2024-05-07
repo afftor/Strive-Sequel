@@ -134,12 +134,191 @@ var data = {
 		reqs = [], character = "zephyra",
 		text = [{text = "ZEPHYRA_SWORD_3_1", reqs = [], previous_dialogue_option = 1},
 		{text = "ZEPHYRA_SWORD_3_2", reqs = [], previous_dialogue_option = 2}],
-		options = [ {
-#			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-#			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}]
-			code = "act2_scene", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 2
-		} ]
+		options = [ 
+			{
+				code = 'zephyra_sword_4', text = "ZEPHYRA_SWORD_3_2_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			},
+			{
+				code = 'zephyra_sword_4_1', text = "ZEPHYRA_SWORD_3_2_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+			},
+			{
+				code = 'zephyra_sword_finish', text = "ZEPHYRA_SWORD_3_2_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+			},
+			{
+				code = 'zephyra_sword_finish', text = "ZEPHYRA_SWORD_3_2_4", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
+			},
+		],
 	},
+	zephyra_sword_4 = {
+		variations = [
+			{
+			image = null, tags = ["dialogue_scene", "master_translate"],
+			reqs = [
+				{type = 'master_check',
+				value = [
+					{code = 'stat', 
+					stat = 'charm', 
+					operant = 'gte', 
+					value = 100
+					}
+					]
+				}
+			], 
+			character = "zephyra",
+			text = [{text = "ZEPHYRA_SWORD_3_3_1", reqs = []}],
+			options = [ 
+				{
+					code = 'zephyra_sword_6', text = "ZEPHYRA_SWORD_3_3_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+				},
+				{
+					code = 'zephyra_sword_6', text = "ZEPHYRA_SWORD_3_3_1_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+				},
+				]
+			},
+			{
+			image = null, tags = ["dialogue_scene", "master_translate"],
+			reqs = [],
+			character = "zephyra",
+			text = [{text = "ZEPHYRA_SWORD_3_3_2", reqs = []}],
+			options = [ 
+				{
+					code = 'zephyra_sword_5', text = "ZEPHYRA_SWORD_3_3_2_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+				},
+				{
+					code = 'zephyra_sword_5_1', text = "ZEPHYRA_SWORD_3_3_2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+				},
+				{
+					code = 'zephyra_sword_finish', text = "ZEPHYRA_SWORD_3_3_2_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+				},
+				]
+			}
+		]
+	},
+	
+	zephyra_sword_4_1 = {
+		variations = [
+			{
+			image = null, tags = ["dialogue_scene", "master_translate"],
+			reqs = [
+				{type = 'master_check',
+				value = [
+					{code = 'stat', 
+					stat = 'wits', 
+					operant = 'gte', 
+					value = 100
+					}
+					]
+				}
+			], 
+			character = "zephyra",
+			text = [{text = "ZEPHYRA_SWORD_3_3_1", reqs = []}],
+			options = [ 
+				{
+					code = 'zephyra_sword_6', text = "ZEPHYRA_SWORD_3_3_1_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+				},
+				{
+					code = 'zephyra_sword_6', text = "ZEPHYRA_SWORD_3_3_1_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+				},
+				]
+			},
+			{
+			image = null, tags = ["dialogue_scene", "master_translate"],
+			reqs = [],
+			character = "zephyra",
+			text = [{text = "ZEPHYRA_SWORD_3_3_2", reqs = []}],
+			options = [ 
+				{
+					code = 'zephyra_sword_5', text = "ZEPHYRA_SWORD_3_3_2_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+				},
+				{
+					code = 'zephyra_sword_5_1', text = "ZEPHYRA_SWORD_3_3_2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+				},
+				{
+					code = 'zephyra_sword_finish', text = "ZEPHYRA_SWORD_3_3_2_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+				},
+				]
+			}
+		]
+	},
+	
+	
+	zephyra_sword_5 = {
+		image = null, tags = ["dialogue_scene", "master_translate"],
+		reqs = [], character = "zephyra",
+		text = [{text = "ZEPHYRA_SWORD_3_3_2_1", reqs = []}],
+		options = [ 
+			{
+				code = 'zephyra_sword_finish', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
+				{code = 'make_loot', pool = [['zephyra_bribe_1',1]]}, 
+		{		code = 'open_loot'}]
+			},
+		],
+		
+	},
+	zephyra_sword_5_1 = {
+		image = null, tags = ["dialogue_scene", "master_translate"],
+		reqs = [], character = "zephyra",
+		text = [{text = "ZEPHYRA_SWORD_3_3_2_2", reqs = []}],
+		options = [ 
+			{code = "zephyra_sword_finish", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", bonus_effects = [
+		{code = 'make_loot', pool = [['zephyra_bribe_2',1]]}, 
+		{code = 'open_loot'}]},
+		],
+		
+	},
+	zephyra_sword_6 = {
+		image = null, tags = ["dialogue_scene", "master_translate"],
+		reqs = [], character = "zephyra",
+		text = [{text = "ZEPHYRA_SWORD_3_3_1_1", reqs = []}],
+		options = [ 
+			{
+				code = 'zephyra_sword_7', text = "ZEPHYRA_SWORD_3_3_1_1_OPTION1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			},
+			{
+				code = 'zephyra_sword_prefinish', text = "ZEPHYRA_SWORD_3_3_1_1_OPTION2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+			},
+		],
+	},
+	zephyra_sword_7 = {
+		image = null, tags = ["dialogue_scene", "master_translate"],
+		reqs = [], character = "zephyra",
+		text = [{text = "ZEPHYRA_SWORD_3_3_1_1_1", reqs = []}],
+		options = [ 
+			{
+				code = 'zephyra_sword_finish', text = "ZEPHYRA_SWORD_3_2_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+			},
+			{
+				code = 'zephyra_sword_finish', text = "ZEPHYRA_SWORD_3_2_4", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
+			},
+		],
+	},
+	
+	
+	
+	zephyra_sword_prefinish = {
+		image = null, tags = ["dialogue_scene", "master_translate"],
+		reqs = [], character = "zephyra",
+		text = [{text = "ZEPHYRA_SWORD_3_4", reqs = []}],
+		options = [ 
+			{
+				code = 'zephyra_sword_finish', text = "ZEPHYRA_SWORD_3_2_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+			},
+			{
+				code = 'zephyra_sword_finish', text = "ZEPHYRA_SWORD_3_2_4", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
+			},
+		],
+	},
+	
+	zephyra_sword_finish = {
+		image = null, tags = ["dialogue_scene", "master_translate"],
+		reqs = [], character = "zephyra",
+		text = [{text = "ZEPHYRA_SWORD_3_2_FINISH", reqs = []}],
+		options = [ 
+			{code = "act2_scene", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue", change_dialogue_type = 2},
+			]
+	},
+			#code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			#bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage2'}]
 	
 	priestess_sword_talk_1  = {
 		image = null, tags = ["dialogue_scene", "master_translate", 'blackscreen_transition_common'],
@@ -272,7 +451,7 @@ var data = {
 		variations = [ {
 			image = null, tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
 #			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = ["HalfkinWolf", "HalfkinFox", "HalfkinBunny", "HalfkinTanuki", "HalfkinCat", "Ratkin", "BeastkinWolf", "BeastkinFox", "BeastkinBunny", "BeastkinTanuki", "BeastkinCat"]}]}], 
-			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "HalfkinWolf"}]}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "HalfkinFox"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "HalfkinBunny"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "HalfkinTanuki"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "HalfkinCat"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "Ratkin"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "BeastkinWolf"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "BeastkinFox"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "BeastkinBunny"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "BeastkinTanuki"}], orflag = true}, {type = 'master_check', value = [{code = 'stat', stat = 'race', operant = 'eq', value = "BeastkinCat"}], orflag = true}],
+			reqs = [{type = 'master_check', value = [{code = 'race_is_beast', check = true}]}],
 			character = 'leon',
 			text = [{text = "CHIEFTAIN_MEETING_3_1", reqs = []}],
 			options = [ {

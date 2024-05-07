@@ -314,8 +314,11 @@ func make_settlement(code, area):
 	area.locations[settlement.id] = settlement
 	ResourceScripts.game_world.location_links[settlement.id] = {area = area.code, category = 'locations'}
 
+
 func make_location(code, area):
 	var location = worlddata.dungeons[code].duplicate(true)
+	location.stamina = 100
+	location.stamina_cost = 10 #2adjust
 	var text = tr(location.name)
 	if worlddata.locationnames.has(location.name+'_adjs'):
 		text = tr("LOCATIONTHE") + tr(worlddata.locationnames[location.name+"_adjs"][randi() % worlddata.locationnames[location.name + "_adjs"].size()]) + " " + tr(worlddata.locationnames[location.name+"_nouns"][randi() % worlddata.locationnames[location.name + "_nouns"].size()])
@@ -326,46 +329,36 @@ func make_location(code, area):
 	location.travel_time = max(1,globals.rng.randi_range(0,0))
 	location.code = code
 	var levelnumber = round(rand_range(location.levels[0], location.levels[1]))
-	location.levels = {}
-	while levelnumber > 0:
-		location.levels["L"+str(levelnumber)] = {stages = round(rand_range(location.stages_per_level[0], location.stages_per_level[1]))}
-		levelnumber -= 1
+	location.levels = levelnumber
+#	location.levels = {}
+#	while levelnumber > 0:
+#		location.levels["L"+str(levelnumber)] = {stages = round(rand_range(location.stages_per_level[0], location.stages_per_level[1]))}
+#		levelnumber -= 1
 	location.group = {}
 	location.resources = location.resources
 	location.randomevents = location.eventarray
 	location.scriptedevents = []
-	location.progress = {level = 1, stage = 0}
+	location.progress = {main = 1, full = 1} #in rooms, currently not used
 	location.completed = false
-	location.stagedenemies = []
+	location.stagedenemies = [] #obsolete
 	location.enemies = location.enemyarray.duplicate(true)
 	location.tasks = []
 	if location.has('gatherable_resources'):
 		location.gather_limit_resources = {}
-		var number = round(rand_range(location.gatherable_resources.number[0],location.gatherable_resources.number[1]))
-		var array = []
-		for i in location.gatherable_resources.pool:
-			array.append({i : location.gatherable_resources.pool[i]})
-		while number > 0 && array.size() > 0:
-			number -= 1
-			var data = array[randi()%array.size()]
-			var resource_number = data.values()[0]
-			data[data.keys()[0]] = round(rand_range(resource_number[0],resource_number[1]))
-			location.gather_limit_resources[data.keys()[0]] = data.values()[0]
-			array.erase(data)
 		location.tasks.append("gather")
 		location.gather_mod = rand_range(location.gather_mod[0],location.gather_mod[1])
-	location.erase('gatherable_resources')
+#	location.erase('gatherable_resources')
 	if location.has('background_pool'):
 		location.background = location.background_pool[randi()%location.background_pool.size()]
 		location.erase("background_pool")
 	if location.has("final_enemy"):
 		var bossenemy = input_handler.weightedrandom(location.final_enemy)
-		location.stagedenemies.append({enemy = bossenemy, type = 'normal', level = location.levels.size(), stage = location.levels["L"+str(location.levels.size())].stages-1})
-		if location.final_enemy_type == 'character':
-			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
-		location.scriptedevents.append({trigger = 'dungeon_complete', event = 'custom_event', args = 'event_dungeon_complete_loot_' + location.difficulty, reqs = []})
-	if location.has('gather_limit_resources'):
-		location.scriptedevents.append({trigger = 'dungeon_complete', event = 'custom_event', args = 'event_dungeon_unlock_resources', reqs = []})
+#		if location.final_enemy_type == 'character':
+#			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
+		#temp out
+#		location.scriptedevents.append({trigger = 'dungeon_complete', event = 'custom_event', args = 'event_dungeon_complete_loot_' + location.difficulty, reqs = []}) 
+#	if location.has('gather_limit_resources'):
+#		location.scriptedevents.append({trigger = 'dungeon_complete', event = 'custom_event', args = 'event_dungeon_unlock_resources', reqs = []})
 	if location.has('scripteventdata'):
 		for script in location.scripteventdata:
 			location.scriptedevents.append(script)
@@ -373,6 +366,10 @@ func make_location(code, area):
 	#location.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {}})
 	ResourceScripts.game_world.locationcounter += 1
 	location.erase('difficulties')
+	location.dungeon = []
+	for i in range(levelnumber):
+		build_floor(location, i)
+	location.current_level = 0
 	return location
 
 func fill_faction_quests(faction, area):
@@ -755,3 +752,206 @@ func generate_random_gear(dict):#
 	return {code = itemtemplate.code, itemparts = itemparts}
 
 
+#dungeons
+var dungeon_template = { #sample dungeon data
+		code = 'dungeon_bandit_den',
+		type = 'dungeon',
+		name = 'bandit_den',
+		classname = '',
+		descript = tr("DUNGEON_BANDIT_DEN_DESC"),
+		character_data = {
+			chance_mod = 1.5,#increases base chance to get slave after combat by this if its not guaranteed
+			races = [['local', 3], ['common',1]]
+		},
+		difficulty = 'easy',
+		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
+		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
+		final_enemy = [['bandits_easy_boss',1], ['bandits_easy_boss2',1],['bandits_easy_boss',3]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+		
+		event_data = {
+			dungeon_find_chest_easy = {
+				limit = 0,
+				weight = 10,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['dungeon_find_chest_easy'],
+				possible_challenges = [], #list of future challenges to get to this room
+			},
+#			event_trap_easy = { #pointless with all other rooms being bonuses
+#				limit = 0,
+#				weight = 1,
+#				floor_range = [0,0],
+#				icon = 'chest',
+#				events = ['event_trap_easy'],
+#			},
+			dungeon_find_armory_easy = {
+				limit = 1,
+				weight = 2,
+				floor_range = [2,0],
+				icon = 'chest',
+				events = ['dungeon_find_armory_easy'],
+				possible_challenges = [],
+			},
+			event_dungeon_prisoner = {
+				limit = 1,
+				weight = 5,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['event_dungeon_prisoner'],
+				possible_challenges = [],
+			},
+			celena_shrine_find = {
+				limit = 1,
+				weight = 8,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				possible_challenges = [],
+			}
+		},
+		
+		event_room_number = [3,4],
+		material_room_number = [5,6],
+		
+		main_route_length = [6,7], #remember that first and last rooms in route are effectively empty 
+		bonus_rooms = [2,3],
+		levels = [3,3], 
+		base_room_stamina_cost = [7,10], #random roll for every main/bonus rooms rounded
+		
+		
+		#do not remove next ones - for they a used in generation
+		resources = ['cloth','leather','iron','wood','clothsilk'],
+		gatherable_resources = {
+			wood = {
+				amount = [25,40],
+				weight = 10,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			stone = {
+				amount = [25,40],
+				weight = 6,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},  
+			iron = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			},
+		bgm = "dungeon",
+		purchase_price = 100,
+		affiliation = 'local', #defines character races and events
+		events = [],
+	}
+
+var level_template = {
+	rooms = [],
+	first_room = "",
+	last_room = "",
+}
+
+var room_template = {
+	status = 'hidden',
+	col = 0,
+	row = 0,
+	type = 'empty',
+	stamina_cost = 10,
+	mainline = true,
+	neighbours = {up = null, down = null, left = null, right = null},
+	subrooms = [null, null, null, null]
+}
+var subroom_template = {
+	stamina_cost = 0,
+	type = 'empty',
+}
+
+func build_room(packed_vertex, locdata = dungeon_template):
+	var res = room_template.duplicate(true)
+	var vertex = DungeonGen.unpack_vertex(packed_vertex)
+	res.col = vertex[1]
+	res.row = vertex[0]
+	res.type = 'combat' #2add roll for enemy after making fixed enemy combats call 
+	if DungeonGen.tuning[packed_vertex] > 0:
+		res.mainline = false
+	if packed_vertex == DungeonGen.pack_vertex(DungeonGen.diameter.front()):
+		res.type = 'ladder_up'
+		res.status = 'obscured'
+	elif packed_vertex == DungeonGen.pack_vertex(DungeonGen.diameter.back()):
+		res.type = 'ladder_down'
+	else:
+	#subrooms:
+		if globals.rng.randf() < variables.subroom_chance:
+			for i in range(4):
+				var tmp = subroom_template.duplicate()
+				tmp.stamina_cost = 15 #stub - should be set up differently for subroom types
+				
+				#2add all variants
+				if false: #globals.rng.randf() < variables.dungeon_encounter_chance:
+					#onetime events are temporal solution and should be replaced with events and unique events when those events would be properly updated
+					tmp.type = 'onetime_event'
+					tmp.event = input_handler.weightedrandom(locdata.eventarray)
+				else:
+					tmp.type = 'resource'
+					#test version, not final
+					tmp.resource = input_handler.random_from_array(locdata.gatherable_resources.keys())
+					var data = locdata.gatherable_resources[tmp.resource]
+					tmp.amount = data.amount
+					if tmp.amount is Array:
+						tmp.amount = globals.rng.randi_range(tmp.amount[0], tmp.amount[1])
+					tmp.stamina_cost = data.stamina
+					if tmp.stamina_cost is Array:
+						tmp.stamina_cost = globals.rng.randi_range(tmp.stamina_cost[0], tmp.stamina_cost[1])
+				res.subrooms[i] = tmp
+				if globals.rng.randf() >= variables.additional_subroom_chance:
+					break
+				i += 1
+			res.subrooms.shuffle ()
+	return res
+
+
+func build_floor(locdata, level):
+#	var generate_data = locdata.duplicate()
+	var generate_data = dungeon_template #temporal
+	var res = level_template.duplicate(true)
+	var nm = locdata.id + "L" + str(level)
+	if !DungeonGen.generate(generate_data.duplicate(true)):
+		print ('generation error')
+		return
+	
+	for room in range(DungeonGen.tuning.size()):
+		if DungeonGen.tuning[room] > 50:
+			continue
+		var r_nm = nm + ("%4d" % room)
+		var tmp = build_room(room, generate_data)
+		tmp.stamina_cost = locdata.stamina_cost #2adjust here or in build_room
+		if room == DungeonGen.pack_vertex(DungeonGen.diameter.front()):
+			res.first_room = r_nm
+			if level == 0:
+				tmp.type = 'empty'
+		if room == DungeonGen.pack_vertex(DungeonGen.diameter.back()):
+			res.last_room = r_nm
+			if level == (locdata.levels - 1):
+				tmp.type = 'combat_boss'
+		ResourceScripts.game_world.rooms[r_nm] = tmp
+		res.rooms.push_back(r_nm)
+	
+	for edge in DungeonGen.final_edges:
+		var un_edge = DungeonGen.unpack_edge(edge)
+		var tmp = DungeonGen.get_vertex(un_edge)
+		var v1 = nm + ("%4d" % DungeonGen.pack_vertex(tmp[0]) )
+		var v1_ = ResourceScripts.game_world.rooms[v1]
+		var v2 = nm + ("%4d" % DungeonGen.pack_vertex(tmp[1]) )
+		var v2_ = ResourceScripts.game_world.rooms[v2]
+		match un_edge[0]:
+			'h':
+				v1_.neighbours.right = v2
+				v2_.neighbours.left = v1
+			'v':
+				v1_.neighbours.down = v2
+				v2_.neighbours.up = v1
+	
+	ResourceScripts.game_world.dungeons[nm] = res
+	locdata.dungeon.push_back(nm)

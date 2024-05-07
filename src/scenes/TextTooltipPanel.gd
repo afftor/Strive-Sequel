@@ -10,8 +10,9 @@ var Panel_x = 598
 var Text_x = 565
 var pos_fix = 26
 
+
 func _process(delta):
-	if parentnode != null && ( parentnode.is_visible_in_tree() == false || !parentnode.get_global_rect().has_point(get_global_mouse_position())):
+	if parentnode != null && ( parentnode.is_visible_in_tree() == false || !input_handler.get_real_global_rect(parentnode, true).has_point(get_global_mouse_position())):
 		set_process(false)
 		hide()
 
@@ -61,7 +62,7 @@ func showup(node, text, move_right = false):
 	$Panel.rect_size.y = $RichTextLabel.get_v_scroll().get_max() + pos_fix
 	$RichTextLabel.rect_size.y = rect_size.y
 
-	var pos = node.get_global_rect()
+	var pos = input_handler.get_real_global_rect(node, true)
 
 	var screen = get_viewport().get_visible_rect()
 	if move_right:

@@ -16,8 +16,8 @@ func update():
 	if input_handler.active_location.captured_characters.empty():
 		input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 		hide()
-	else:
-		show()
+#	else:
+#		show()
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	for id in input_handler.active_location.captured_characters:
 		var tchar = characters_pool.get_char_by_id(id)

@@ -437,8 +437,8 @@ func build_info(loc = to_loc):
 		$InfoPanel/InfoFrame/enemies.visible = true
 		$InfoPanel/InfoFrame/enemies.text = tr(location.classname)
 		dungeon = true
-		if !location.completed:
-			hidden = true
+#		if !location.completed:
+#			hidden = true
 		gatherable_resources = location.gather_limit_resources
 	else:
 		if location.has('gather_resources'):

@@ -405,7 +405,9 @@ var materiallist = {
 		tier = '',
 		tags = ['no_random'],
 	},
-
+	
+	
+	
 	herbs = {
 		code = 'herbs',
 		name = 'Rare Herbs',
@@ -1427,7 +1429,7 @@ var itemlist = {
 		reqs = [{code = 'trait', trait = 'loyalty_dress_lewd', check = true}],
 		effects = [],
 		tags = [],
-		basestats = {sexuals_bonus = 15, charm_bonus = 15, mod_service = 0.15},
+		basestats = {sexuals_bonus = 15, charm_bonus = 15, mod_pros = 0.15},
 	},
 	shackles = {#prevents escape if body_factor < 4; physics -25
 		#maybe still needs reworking
@@ -3094,6 +3096,22 @@ var itemlist = {
 		effects = [],
 		tags = [],
 		mansion_effect = 'exp_scroll',
+	},
+	zephyra_underwear = {
+		code = 'zephyra_underwear',
+		name = "",
+		descript = "",
+		type = 'usable',
+		itemtype = 'potion',
+		crafttype = 'basic',
+		slots = [],
+		price = 1,
+		icon = load("res://assets/images/iconsitems/zephyra_underwear.png"),
+		tier = 'hard',
+		reqs = [],
+		effects = [],
+		tags = ['no_random','unsellable','save_on_use'],
+		mansion_effect = 'zephyra_underwear',
 	},
 
 

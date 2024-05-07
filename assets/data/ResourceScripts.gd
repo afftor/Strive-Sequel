@@ -85,6 +85,8 @@ onready var node_data = {
 	input_handler.NODE_MANSION_NEW : {name = 'mansion', mode = 'scene', scene = preload("res://gui_modules/Mansion/Modules/MansionMainModule.tscn") },
 	input_handler.NODE_CLOCK : {name = 'clock', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/ClockModule.tscn") },
 	input_handler.NODE_EXPLORATION : {name = 'exploration', mode = 'scene', scene = preload("res://gui_modules/Exploration/Modules/ExplorationModule.tscn") },
+	input_handler.NODE_EXPLORATION_CITY : {name = 'exploration_city', mode = 'scene', scene = preload("res://gui_modules/Exploration/Modules/ExplorationCityModule.tscn") },
+	input_handler.NODE_EXPLORATION_DUNGEON : {name = 'exploration_dungeon', mode = 'scene', scene = preload("res://gui_modules/Exploration/Modules/ExplorationDungeon.tscn") },
 	input_handler.NODE_EXPLORE_SLAVEINFO : {name = 'explore_slaveinfo', mode = 'scene', scene = preload("res://gui_modules/Exploration/Modules/ExploreFullSlaveInfo.tscn") },
 	input_handler.NODE_GAMEMENU : {name = 'gamemenu', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/GameMenuPanel.tscn") },
 	input_handler.NODE_SEX : {name = 'sex_panel', mode = 'scene', scene = preload("res://gui_modules/Interaction/Modules/InteractionMainModule.tscn") },

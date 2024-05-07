@@ -1,3 +1,14 @@
+Added a bit more flavor text scenes to the transition of act 2
+Fixed service suit having wrong mod affixes
+Fixed writ of redemption to working properly
+Fixed some racial traits not applying correctly (arachna spider silk)
+Fixed some cases when character hp wasn't properly updated
+Fixed Caster not showing its requirements properly
+0.8.5b
+Fixed some console and gallery errors on a new game/empty appdata. Also fixed some gallery tooltip issues
+Fixed some item/enchantment stacking errors
+Fixed disassemblement being rounded with number of items in mind resulting sometimes with lower resources when disassembling multiple items
+Added announcement when player acquires new mastery point
 0.8.5a
 Added tooltips for new gallery scenes
 Added icon for new suit

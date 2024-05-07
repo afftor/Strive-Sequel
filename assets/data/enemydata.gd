@@ -2130,6 +2130,15 @@ var loot_variants_data = {
 		{code = 'defined', name = 'steel', min = 25, max = 25},
 		{code = 'defined', name = 'mithril', min = 10, max = 10},
 	],
+	
+	
+	
+	zephyra_bribe_1 = [
+		{code = 'gold', min = 500, max = 500},
+	],
+	zephyra_bribe_2 = [
+		{code = 'defined', name = 'zephyra_underwear', min = 1, max = 1},
+	],
 }
 
 
@@ -2428,5 +2437,6 @@ func erebus_disenchant(item):
 	
 	item.clear_enchants()
 	dict.text += item.name + " slowly starts to glow on the altar. After a few moments the light dissipates and all magic leaves the item."
+	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 	
 	input_handler.interactive_message_follow(dict, 'direct', [])

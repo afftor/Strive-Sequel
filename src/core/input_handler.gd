@@ -123,6 +123,8 @@ enum {
 	NODE_CLOCK,
 	NODE_NAVIGATION,
 	NODE_EXPLORATION,
+	NODE_EXPLORATION_CITY,
+	NODE_EXPLORATION_DUNGEON,
 	NODE_EXPLORE_SLAVEINFO,
 	NODE_GAMEMENU,
 	NODE_SEX,
@@ -204,8 +206,8 @@ var progress_data = {
 	characters = ['amelia','duncan','sigmund','myr'],
 } setget save_progress_data
 
-var combat_advance = false #if any result in combat cause advance
-var combat_explore = false #if we can advance at all
+#var combat_advance = false #if any result in combat cause advance
+#var combat_explore = false #if we can advance at all
 
 func set_previous_scene(scene):
 	PreviousScene = scene
@@ -454,7 +456,7 @@ func _input(event):
 
 			if gui_controller.current_screen == gui_controller.mansion:
 				gui_controller.clock.raise()
-			if gui_controller.current_screen == gui_controller.exploration:
+			if gui_controller.current_screen == gui_controller.exploration or gui_controller.current_screen == gui_controller.exploration_city or gui_controller.current_screen == gui_controller.exploration_dungeon:
 #				var location = active_location
 				var capital = false
 				capital = active_location.type == "capital"
@@ -1177,6 +1179,7 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 			window.set(param, args[param])
 	return window
 
+
 func finish_combat():
 	emit_signal("CombatEnded", combat_node.encountercode)
 	SetMusic("exploration")
@@ -1188,11 +1191,10 @@ func finish_combat():
 	if active_location.has('scriptedevents') && globals.check_events("finish_combat") == true:
 		yield(input_handler, 'EventFinished') #actually not correct, but fail case never fires
 	
-	if combat_explore:
-		exploration_node.advance()
-	else:
-		exploration_node.build_location_group()
-	combat_advance = false
+	if gui_controller.exploration_dungeon != null:
+		gui_controller.exploration_dungeon.move_to_room()
+#	combat_explore = false
+
 
 func finish_quest_dungeon(args):
 	interactive_message('finish_quest_dungeon', 'quest_finish_event', {locationname = active_location.name})
@@ -1218,9 +1220,12 @@ func combat_defeat():
 		globals.common_effects(encounter_lose_script)
 		encounter_lose_script = null
 		return
-	if combat_explore and combat_advance:
-		exploration_node.advance()
-	combat_advance = false
+	if gui_controller.exploration_dungeon != null:
+		gui_controller.exploration_dungeon.build_location_group()
+		gui_controller.exploration_dungeon.update_map()
+#	if combat_explore and combat_advance:
+#		exploration_node.advance()
+#	combat_explore = false
 	if exploration_node != null && active_location.has('progress'):
 		exploration_node.open_location_actions()
 
@@ -1722,14 +1727,15 @@ func _reset_mouse_events(): #stub, not, STUB - for set_disable_input is bugged
 	get_tree().get_root().notification(MainLoop.NOTIFICATION_WM_FOCUS_IN)
 
 
-func get_real_global_rect(nd):
+func get_real_global_rect(nd, ignore_vp = false):
 	var rect = nd.get_global_rect()
 	var transform = nd.get_global_transform()
 	var transform2 = nd.get_viewport_transform()
 	
-	transform.origin = transform2.basis_xform(transform.origin)
-	transform.x = transform2.basis_xform(transform.x)
-	transform.y = transform2.basis_xform(transform.y)
+	if !ignore_vp:
+		transform.origin = transform2.basis_xform(transform.origin)
+		transform.x = transform2.basis_xform(transform.x)
+		transform.y = transform2.basis_xform(transform.y)
 	
 	var res: Rect2
 	res.position = transform.get_origin()
