@@ -26,6 +26,8 @@ var TranslationDict = {
 	GALLERYSCENES = "Scenes",
 	GALLERYRETURN = "Return",
 	GALLERYTOOLTIPTOP = "Scene Condition:",
+	GALLERYRESETBUTTON = "Reset",
+	GALLERYRESETTEXT = "Are you sure you want to reset ALL gallery progress?",
 	#ModPanel
 	MODLOAD = "Loaded mods",
 	MODLOAD1 = "these mods will be applied to game and avaliable in editor at next game start.",
@@ -8423,24 +8425,24 @@ Heleviel gives you a more intimate look as she appraises your appearance, after 
 
 Heleviel seductively moves to the fine bed while she keeps her eyes on you. Slowly, she removes her elegant dress.""",
 	AFTER_TEMPLE_PRIESTESS_5_1_2 = """— Does it make you happy that you'll get what many men can only dream of? Come, take your reward.
-	
-	Not one to pass up such an opportunity you do indeed take your reward. Realizing as you slide up onto the bed how soft it is, impressed, only to be impressed more as you make contact with her. Her skin is soft, a soft silken touch only possible by those far from the rigorous labors you endure. 
-	
-	You take your time moving up her, hands sliding up her hips as you give into temptation, your face sliding over her hip, a soft nuzzle of the skin before lightly biting at the skin. Heleviel's response to your nibbling is less than enthused, a glare being shot your way before she spoke.""",
+
+Not one to pass up such an opportunity you do indeed take your reward. Realizing as you slide up onto the bed how soft it is, impressed, only to be impressed more as you make contact with her. Her skin is soft, a soft silken touch only possible by those far from the rigorous labors you endure. 
+
+You take your time moving up her, hands sliding up her hips as you give into temptation, your face sliding over her hip, a soft nuzzle of the skin before lightly biting at the skin. Heleviel's response to your nibbling is less than enthused, a glare being shot your way before she spoke.""",
 	AFTER_TEMPLE_PRIESTESS_5_1_3 = """— Do not mark me.
 
-	Her rebuke showed no anger, only a single determined remark showing an expectation that it'd be obeyed. With that 'order' in mind you still bite at her, though only light enough to cause her to jolt and again attempt a rebuke, only for it to be lost amidst a soft groan once you found her throat. Her skin was delicious, a soft texture with a honeyed scent. After a time with her neck you would slide up further onto the bed knee resting between her thighs as you pull her closer.
+Her rebuke showed no anger, only a single determined remark showing an expectation that it'd be obeyed. With that 'order' in mind you still bite at her, though only light enough to cause her to jolt and again attempt a rebuke, only for it to be lost amidst a soft groan once you found her throat. Her skin was delicious, a soft texture with a honeyed scent. After a time with her neck you would slide up further onto the bed knee resting between her thighs as you pull her closer.
 
-	Now entwined the two of you press, thighs rubbing as you continue to sample the skin of her neck and shoulders, rewarded by her nails marking your back and shoulders, and occasional deep mark due to a particularly well positioned grind causing her to seize up. For her credit you also end up failing at her 'order' of not marking her a few times due to her doing the same to you.
+Now entwined the two of you press, thighs rubbing as you continue to sample the skin of her neck and shoulders, rewarded by her nails marking your back and shoulders, and occasional deep mark due to a particularly well positioned grind causing her to seize up. For her credit you also end up failing at her 'order' of not marking her a few times due to her doing the same to you.
 
 — I-I said!-""", 
 	AFTER_TEMPLE_PRIESTESS_5_1_4 = """You cut off her protests by taking her lips with your own, the elf shaking now as your hands slide up from her hips to her breast, a soft rubbing followed by a single finger sliding over her nipple soon causing that attention to occupy her mind, not anything else.
 
-	Minutes later the kiss is broken to you both panting, your mouth traveling down her as you explore, tasting along her until she's lifted higher upon the bed, her knees lifted to your shoulders as you look up at her now, A few moments of anticipation are awarded with a soft pleasure as you start to slowly glide your tongue over the elven woman's entrance, not spreading her petals yet, your tongue only tracing the edges of her smooth womanhood.
+Minutes later the kiss is broken to you both panting, your mouth traveling down her as you explore, tasting along her until she's lifted higher upon the bed, her knees lifted to your shoulders as you look up at her now, A few moments of anticipation are awarded with a soft pleasure as you start to slowly glide your tongue over the elven woman's entrance, not spreading her petals yet, your tongue only tracing the edges of her smooth womanhood.
 
-	Heleviel for her part in this regained her composure quickly, her face still flushed as she looked down at you in thought; what thoughts you'd never know but the moment your tongue slipped between her lips and found her sensitive clit the sounds and looks she made were of pure pleasure. A few moments of tasting her soon turned into nuzzling her inner leg again, a soft nip following before you resumed your gathering of your reward.
+Heleviel for her part in this regained her composure quickly, her face still flushed as she looked down at you in thought; what thoughts you'd never know but the moment your tongue slipped between her lips and found her sensitive clit the sounds and looks she made were of pure pleasure. A few moments of tasting her soon turned into nuzzling her inner leg again, a soft nip following before you resumed your gathering of your reward.
 """, 
-	AFTER_TEMPLE_PRIESTESS_5_1_5 = """Heleviel's composure to her credit was kept for some time, her hips shaking as she would look down at you with as much dignity as was normally plastered on her face, though a shadow of pleasure hung over her eyes. The secrets to driving her on weren't difficult to find, but her reactions were subtle until you glided your tongue directly over her clit one last time, her hand shooting down to grab at your hair, a hungry groan escaping her throat.	
+	AFTER_TEMPLE_PRIESTESS_5_1_5 = """Heleviel's composure to her credit was kept for some time, her hips shaking as she would look down at you with as much dignity as was normally plastered on her face, though a shadow of pleasure hung over her eyes. The secrets to driving her on weren't difficult to find, but her reactions were subtle until you glided your tongue directly over her clit one last time, her hand shooting down to grab at your hair, a hungry groan escaping her throat.
 
 Understanding you'd resume licking her there, her hips rolling in your grip as she panted and moaned now, soon the sounds no longer subtle as you felt her tense now, her hips shaking as she started to cum. 
 """, 
@@ -8448,7 +8450,7 @@ Understanding you'd resume licking her there, her hips rolling in your grip as s
 
  — The guards will... escort you out. 
 
-	The guards do indeed escort you out, though the entire time the silent men have a look in their eyes hovering between admiration and fear. Disciplined yes, but you can't help but notice it looked like the younger of the two was moments from throwing himself at your feet.""", 
+The guards do indeed escort you out, though the entire time the silent men have a look in their eyes hovering between admiration and fear. Disciplined yes, but you can't help but notice it looked like the younger of the two was moments from throwing himself at your feet.""", 
 	AFTER_TEMPLE_PRIESTESS_5_1_1_BAD = """{color=red|Failure}
 
 — I'm afraid this is not possible. Freya's High Priestess shall not be tainted by man's touch.""",
@@ -8817,7 +8819,7 @@ Chuckling softly, you run your finger over her panties, along the soft cleft bet
 You pull the crotch of her panties to one side, revealing Cali's tight pink pussy.""",
 	FORCE_CALI_3 = """With the halfkin wolf girl's pussy exposed, her tone changes and she starts trying to bargain desperately with you.
 
- — Please, [sir], I can offer you something! What do you want? I don't mind being a servant, I just... please... stop... Ooohhh!
+ — Please, [Sir], I can offer you something! What do you want? I don't mind being a servant, I just... please... stop... Ooohhh!
 
 You begin to tease Cali's clit with your finger, letting your thumb slip gradually between the pussylips until it's pressing against her hymen. It doesn't take long before her pussy starts to grow warm to the touch, her labia turning slick with her involuntary arousal. Cali strains against the ropes binding her, jerking her upper body as her thighs helplessly twist against your probing fingers. Her small firm ass quivers with the tension of keeping her slim legs clamped together. Using your free hand, you force her legs to bend at the hip.and then unbuckle your belt. 
 
@@ -10243,7 +10245,7 @@ Perhaps, it was too much for her...""",
 The girl kneels down on all fours and hovers above the bowl. Her ass is raised slightly in the air as she tastes the food. Soon, she gives in to her base instincts, eating vigorously.""",
 	CALI_ACT5_PET_8 = """Her panties are visibly wet as she eats. A moan barks out from her as your hand finds her slick underwear, sliding them over her backside while you sit beside your feeding pet. Cali stops her eating, looking backwards as a dark blush creeps over her face.
 
-Cali: — [Name], what are you doing?
+Cali: — [name], what are you doing?
 
 A light touch to her chin is all the girl receives in answer, a silent reminder to finish her meal. Cali tries visibly to keep her composure, but between the stroking of her crotch and the already established arousal she's unable to focus on her meal for much longer.
 
@@ -11586,13 +11588,13 @@ Zephyra smiles with unparalleled adoration as her tail wags playfully.
 	AMELIA_MAIN_GUILD_1_OPTION_2 = """What's keeping you so busy?""",
 	AMELIA_MAIN_GUILD_1_OPTION_3 = """I received the summons for some questioning.""",
 	AMELIA_MAIN_GUILD_2_1 = """— Regrettably, she is... um... currently unavailable. I'm overseeing the guild's matters for now. My name is Norlan. Should you require assistance regarding the guild, I'm here to facilitate it. However, if your matter pertains to Amelia... Well, I'm afraid it must be postponed for the time being. """,
-	AMELIA_MAIN_GUILD_2_2 = """— There have been some unforeseen developments involving the guild and its members. However, you do not need to worry, Mayor [Name]. I can assure you that our business interactions will remain unaffected by these events. Nevertheless, a brief adjustment period is required to properly acclimate to this new situation before moving forward.""",
+	AMELIA_MAIN_GUILD_2_2 = """— There have been some unforeseen developments involving the guild and its members. However, you do not need to worry, Mayor [name]. I can assure you that our business interactions will remain unaffected by these events. Nevertheless, a brief adjustment period is required to properly acclimate to this new situation before moving forward.""",
 	AMELIA_MAIN_GUILD_2_3 = """Norlan: — Hmm... Quite intriguing. I distinctly communicated to our secretary that we have no intention of inconveniencing you with such trivial matters.""",
 	AMELIA_MAIN_GUILD_2 = """The office door swings open abruptly, as another man rushes into the office. He possesses a plump physique and a relatively short stature. His attire unmistakably exudes an air of opulence and high social standing.
 
-Guildsman: — Norlan, has there been any news about the missing slaves yet? My clients demand an explanation. I can't keep them in the dark! Oh... I see you have a guest. [Mister] Mayor, to what do we owe the pleasure?
+Guildsman: — Norlan, has there been any news about the missing slaves yet? My clients demand an explanation. I can't keep them in the dark! Oh... I see you have a guest. [mister] Mayor, to what do we owe the pleasure?
 
-Norlan: — It appears that our secretary found it necessary to squander Mayor [Name]'s valuable time with unwarranted inquiries regarding Amelia's actions. I was in the midst of clarifying to [him] that his testimony won't be—
+Norlan: — It appears that our secretary found it necessary to squander Mayor [name]'s valuable time with unwarranted inquiries regarding Amelia's actions. I was in the midst of clarifying to [him] that his testimony won't be—
 """,
 	AMELIA_MAIN_GUILD_3_1 = """Guildsman: — Perfect! We need all the information we can get. That sly woman is too good at covering her tracks. 
 
@@ -12143,7 +12145,7 @@ Norlan leaves without saying anything more.""",
 	AMELIA_RETURN_1_OPTION_1 = "Yes, I want it.",
 	AMELIA_RETURN_1_OPTION_2 = "Maybe not, after all.",
 	AMELIA_RETURN_2_1 = """— Very well, we'll restore her to her position as a guild leader. She might actually become more famous after all of this.""",
-	AMELIA_GREETING_AFTER_RETURN = """— [Name]... That was a surprise you've given up on me just like that. But I'm not angry. After all, I'm used to disappointments. Anyway, what can I help you with?""",
+	AMELIA_GREETING_AFTER_RETURN = """— [name]... That was a surprise you've given up on me just like that. But I'm not angry. After all, I'm used to disappointments. Anyway, what can I help you with?""",
 	AMELIA_FINAL_1 = """— At last, the savior of the day makes [his] appearance. How does it feel to so dashingly come to the rescue of the maiden in need, Mayor [name]?""",
 	AMELIA_FINAL_1_OPTION_1 = """It's not the first time, remember? You better not get used to it, though.""",
 	AMELIA_FINAL_1_OPTION_2 = """Good. I like being a hero.""",
@@ -12561,19 +12563,26 @@ Cali walks away with her tail between her legs, slinking away from the festiviti
 
 — Hurry up, I can’t wait anymore…!
 
-— (Please, Master…!)
+You smirk at Cali’s readiness, admiring how her arousal drips down onto the floor as she waits for you. You don’t keep her waiting for long, freeing your dick and stepping closer to caress her thigh. Pressing into her, you watch as her expression melts into pleasure as her pussy closes around you.
+
+— Ah…! It feels even better today for some reason…!""",
+
+	CALI_WEDDING_3_BAD = """As soon as you get into the room, Cali leans against the dresser and holds a leg up, exposing her pussy to you like a wolf in heat.
+
+— Please, Master…!
 
 You smirk at Cali’s readiness, admiring how her arousal drips down onto the floor as she waits for you. You don’t keep her waiting for long, freeing your dick and stepping closer to caress her thigh. Pressing into her, you watch as her expression melts into pleasure as her pussy closes around you.
 
-— Ah…! It feels even better today for some reason…!
-
-— (This pose… feels so right…)""",
+— This pose... feels so right...""",
 	CALI_WEDDING_4 = """You respond by pressing further into her and beginning to thrust. Cali’s tight pussy clamps down on you every time you push in, trying to keep you inside each time you pull back. She watches your cock plowing into her in awe, silent as she enjoys the pleasure of your dick warming her from the inside.
 
 Her juices spill out around your shaft as her arousal builds, making each successive thrust smoother and easier from all the natural lubricant. The sticky sounds coming from Cali’s pussy would surely give anyone a clear picture of what’s going on between bride and groom, if Cali’s squeaky moans weren’t enough of a hint. Her tail flails around behind her as she takes heavy breaths, brushing against your leg every so often.""",
 	CALI_WEDDING_5 = """— I-I can feel you so deep inside…
 
-— (Ahh…! M–Master! I’m sorry, please… Don’t s-stop…)
+Cali’s pussy clings to your shaft as a wave of her cum flows past, spilling out as her body shivers from the pleasure. You hold her steady as her leg becomes wobbly from the sensations wracking her body.
+
+Feeling the heat inside you welling up too, you pick up the pace. Her cum gives you ample leverage to slip in and out of her hole as she milks you for the seed you can barely hold back from her. Within a few moments, you burst inside her, your cum filling every nook in her pussy as you hold her close.""",
+	CALI_WEDDING_5_BAD = """— Ahh…! M–Master! I’m sorry, please… Don’t s-stop…
 
 Cali’s pussy clings to your shaft as a wave of her cum flows past, spilling out as her body shivers from the pleasure. You hold her steady as her leg becomes wobbly from the sensations wracking her body.
 
@@ -12582,7 +12591,10 @@ Feeling the heat inside you welling up too, you pick up the pace. Her cum gives 
 
 — T–That was a lot…
 
-— (...T–Thank you so much, Master… for making me feel this…)
+You hold Cali close and kiss her, spending the rest of the night close together in bed as you enjoy her petite body.""",
+	CALI_WEDDING_6_BAD = """It doesn’t take long for your cum to spill out with her own, both fluids running down her leg as you mark her as yours. Cali is speechless as she watches the warmth inside her flow out of her pussy, only barely held in by your cock. Once you pull away from her, the rest follows suit and slides down her leg, making a mess of lust.
+
+— ...T–Thank you so much, Master… for making me feel this…
 
 You hold Cali close and kiss her, spending the rest of the night close together in bed as you enjoy her petite body.""",
 	
@@ -14762,7 +14774,10 @@ Hotkey: 3""",
 	DAISY_WEDDING_SS = "Take Daisy as your (slave) wife",
 	CALI_WEDDING_SS = "Make Cali your lifelong partner",
 	AMELIA_WEDDING_SS = "Promote Amelia to the vice presidency of your Mansion",
-	
+	ANASTASIA_EVENT_ALIVE_SS = "Keep Anastasia alive in the end of act 1",
+	ELVEN_TEMPLE_SCENE_SS = "Event from elven temple",
+	ACT1_ART_SS = "Start first act",
+	ACT2_ART_SS = "Start second act",
 }
 
 

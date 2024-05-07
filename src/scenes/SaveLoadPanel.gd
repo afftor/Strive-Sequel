@@ -306,3 +306,7 @@ func Sort(a,b):
 	if x > y :
 		return true
 	return false
+
+#warning-ignore:return_value_discarded
+func _on_openfolder_pressed():
+	OS.shell_open(ProjectSettings.globalize_path(variables.userfolder + 'saves/'))

@@ -225,9 +225,9 @@ valign = 1
 
 [node name="CloseButton" type="TextureButton" parent="."]
 margin_left = 850.0
-margin_top = 1002.0
+margin_top = 1000.0
 margin_right = 1070.0
-margin_bottom = 1060.0
+margin_bottom = 1058.0
 theme = ExtResource( 2 )
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
@@ -256,3 +256,24 @@ script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ResetProgress" type="TextureButton" parent="."]
+margin_left = 1630.0
+margin_top = 1000.0
+margin_right = 1826.0
+margin_bottom = 1050.0
+toggle_mode = true
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="ResetProgress"]
+margin_right = 195.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "GALLERYRESETBUTTON"
+align = 1
+clip_text = true
+
+[connection signal="pressed" from="ResetProgress" to="." method="_on_ResetProgress_pressed"]

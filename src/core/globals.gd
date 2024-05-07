@@ -89,6 +89,10 @@ func _ready():
 	ResourceScripts.recreate_singletons()
 	ResourceScripts.revert_gamestate()
 	modding_core.load_mods()
+	
+	
+	update_localization_file("ru")
+	update_localization_file("cn")
 
 
 #not used
@@ -2399,3 +2403,72 @@ func check_shop_record(item, code, dict):
 	if dict.has('quality') and dict.quality != item.quality:
 		return false
 	return true
+
+func update_localization_file(update_loc: String, primary_loc = "en"):
+	# find all main.gd files
+	var TranslationData = {}
+	for i in input_handler.scanfolder(variables.LocalizationFolder):
+		TranslationData[i.replace(variables.LocalizationFolder, '')] = {data = (i + "/main.gd"), info = i + "/info.gd"}
+	
+	# load english translation from file
+	var primary_dict = load(TranslationData[primary_loc].data).new().TranslationDict
+	var update_dict = load(TranslationData[update_loc].data).new().TranslationDict
+	
+	# if size of dicts isn't equal then compare
+	if primary_dict.size() != update_dict.size():
+		var missing_keys = {} # a pair of previous key and arrays of missing keys after it. Needed to save order
+		var previous_pos = 1
+		var consecutive_key = false
+		for i in primary_dict.keys().size():
+			if not (primary_dict.keys()[i] in update_dict) and i > 0:
+				if consecutive_key:
+					previous_pos += 1
+					missing_keys[primary_dict.keys()[i-previous_pos]].append({"key": primary_dict.keys()[i], "text": primary_dict[primary_dict.keys()[i]]})
+				else:
+					missing_keys[primary_dict.keys()[i-previous_pos]] = [{"key": primary_dict.keys()[i], "text": primary_dict[primary_dict.keys()[i]]}]
+				consecutive_key = true
+			else:
+				previous_pos = 1
+				consecutive_key = false
+		if missing_keys.size() == 0:
+			return
+
+		# open localization file to add keys into it
+		var loc_file = File.new()
+		loc_file.open(TranslationData[update_loc].data, File.READ)
+		
+		# look for keys in text lines (full word that's followed by = symbol)
+		var regex = RegEx.new()
+		regex.compile("([A-Z_0-9]+(?=\\s|\\=))")
+		
+		# create new temporary file named main2.gd
+		var tmp_file = File.new()
+		tmp_file.open(TranslationData[update_loc].data.replace("main.gd", "main2.gd"), File.WRITE)
+		
+		# iterate through main.gd file
+		var key = ""
+		while loc_file.get_position() < loc_file.get_len():
+			var line = loc_file.get_line()
+			var cleared_line = line.replace(" ", "").replace("	", "")
+			var regex_result = regex.search(line)
+			tmp_file.store_line(line)
+			
+			# if found a key in a line and it's not commented out
+			if regex_result and cleared_line[0] != "#": 
+				key = regex_result.get_string()
+			
+			# if it's a missing key, insert keys
+			if key in missing_keys.keys():
+				if key == "CALI_HEIRLOOM_4_2": # delete this part after ru/main.gd is fixed
+					continue
+				if cleared_line.length() > 0 and cleared_line[cleared_line.length() - 1] == ',': 
+					for i in missing_keys[key].size():
+						var insert_line = "	%s = \"\"\"%s\"\"\", # MISSING TRANSLATION"
+						tmp_file.store_line(insert_line % [missing_keys[key][i].key, missing_keys[key][i].text])
+		tmp_file.close()
+		loc_file.close()
+		
+		# remove old localization and rename our temporary main2.gd into main.gd
+		var dir = Directory.new()
+		dir.remove(TranslationData[update_loc].data)
+		dir.rename(TranslationData[update_loc].data.replace("main.gd", "main2.gd"), TranslationData[update_loc].data)

@@ -342,7 +342,7 @@ var data = {
 		custom_background = "force_cali3", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		image = null, tags = ['dialogue_scene'], reqs = [], 
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
 		text = [{text = "FORCE_CALI_3", reqs = [], }],
 		options = [ {
 			code = 'force_cali_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
