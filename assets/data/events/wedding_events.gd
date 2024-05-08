@@ -161,7 +161,7 @@ var data = {
 	},
 	
 	
-	cali_wedding_1 = { 
+	cali_wedding_1 = {
 		variations = [ { # GOOD ROUTE
 			reqs = [{type = 'decision', value = 'cali_raped', check = false}], 
 			image = null, tags = ['dialogue_scene'],
@@ -210,7 +210,7 @@ var data = {
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene'], reqs = [], 
-		text = [{text = "CALI_WEDDING_3", reqs = [], }],
+		text = [{text = "CALI_WEDDING_3", reqs = [{type = 'decision', value = 'cali_raped', check = false}]}, {text = "CALI_WEDDING_3_BAD", reqs = [{type = 'decision', value = 'cali_raped', check = true}]}],
 		options = [ {
 			code = 'cali_wedding_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ]
@@ -232,7 +232,7 @@ var data = {
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene'], reqs = [], 
-		text = [{text = "CALI_WEDDING_5", reqs = [], }],
+		text = [{text = "CALI_WEDDING_5", reqs = [{type = 'decision', value = 'cali_raped', check = false}]}, {text = "CALI_WEDDING_5_BAD", reqs = [{type = 'decision', value = 'cali_raped', check = true}]}],
 		options = [ {
 			code = 'cali_wedding_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ]
@@ -243,7 +243,7 @@ var data = {
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		image = null, tags = ['dialogue_scene'], reqs = [], 
-		text = [{text = "CALI_WEDDING_6", reqs = [], }],
+		text = [{text = "CALI_WEDDING_6", reqs = [{type = 'decision', value = 'cali_raped', check = false}]}, {text = "CALI_WEDDING_6_BAD", reqs = [{type = 'decision', value = 'cali_raped', check = true}]}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'complete_quest', value = 'marriage_quest_main'}, {code = 'complete_wedding'} ]
 		}, ]

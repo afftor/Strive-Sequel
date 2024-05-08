@@ -175,8 +175,11 @@ var scene_tooltips = {
 	zephyra_disappearance_guards_1 = "ZEPHYRA_DISAPPEARANCE_GUARDS_1_SS",
 	daisy_wedding1 = "DAISY_WEDDING_SS",
 	cali_wedding1 = "CALI_WEDDING_SS",
-	amelia_wedding1 = "AMELIA_WEDDING_SS"
-	
+	amelia_wedding1 = "AMELIA_WEDDING_SS",
+	anastasia_event_alive = "ANASTASIA_EVENT_ALIVE_SS",
+	elven_temple_scene = "ELVEN_TEMPLE_SCENE_SS",
+	act1_art = "ACT1_ART_SS",
+	act2_art = "ACT2_ART_SS",
 }
 
 
