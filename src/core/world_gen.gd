@@ -316,9 +316,8 @@ func make_settlement(code, area):
 
 
 func make_location(code, area):
-	var location = worlddata.dungeons[code].duplicate(true)
+	var location = DungeonData.dungeons[code].duplicate(true)
 	location.stamina = 100
-	location.stamina_cost = 10 #2adjust
 	var text = tr(location.name)
 	if worlddata.locationnames.has(location.name+'_adjs'):
 		text = tr("LOCATIONTHE") + tr(worlddata.locationnames[location.name+"_adjs"][randi() % worlddata.locationnames[location.name + "_adjs"].size()]) + " " + tr(worlddata.locationnames[location.name+"_nouns"][randi() % worlddata.locationnames[location.name + "_nouns"].size()])
@@ -336,7 +335,7 @@ func make_location(code, area):
 #		levelnumber -= 1
 	location.group = {}
 	location.resources = location.resources
-	location.randomevents = location.eventarray
+#	location.randomevents = location.eventarray
 	location.scriptedevents = []
 	location.progress = {main = 1, full = 1} #in rooms, currently not used
 	location.completed = false
@@ -346,7 +345,10 @@ func make_location(code, area):
 	if location.has('gatherable_resources'):
 		location.gather_limit_resources = {}
 		location.tasks.append("gather")
-		location.gather_mod = rand_range(location.gather_mod[0],location.gather_mod[1])
+		for res in location.gatherable_resources:
+			if location.gatherable_resources[res].gather_mod is Array:
+				location.gatherable_resources[res].gather_mod = globals.rng.randf_range(location.gatherable_resources[res].gather_mod[0], location.gatherable_resources[res].gather_mod[1])
+#		location.gather_mod = rand_range(location.gather_mod[0],location.gather_mod[1])
 #	location.erase('gatherable_resources')
 	if location.has('background_pool'):
 		location.background = location.background_pool[randi()%location.background_pool.size()]
@@ -366,10 +368,14 @@ func make_location(code, area):
 	#location.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {}})
 	ResourceScripts.game_world.locationcounter += 1
 	location.erase('difficulties')
-	location.dungeon = []
-	for i in range(levelnumber):
-		build_floor(location, i)
-	location.current_level = 0
+	if location.type == 'dungeon':
+		location.dungeon = []
+		for i in range(levelnumber):
+			build_floor_first_pass(location, i)
+		location.current_level = 0
+		var ev_pool = build_subrooms_pool(location)
+		for i in range(levelnumber):
+			finalize_subrooms(location, ev_pool, i)
 	return location
 
 func fill_faction_quests(faction, area):
@@ -858,7 +864,7 @@ var room_template = {
 	col = 0,
 	row = 0,
 	type = 'empty',
-	stamina_cost = 10,
+	stamina_cost = 0,
 	mainline = true,
 	neighbours = {up = null, down = null, left = null, right = null},
 	subrooms = [null, null, null, null]
@@ -882,37 +888,40 @@ func build_room(packed_vertex, locdata = dungeon_template):
 	elif packed_vertex == DungeonGen.pack_vertex(DungeonGen.diameter.back()):
 		res.type = 'ladder_down'
 	else:
-	#subrooms:
-		if globals.rng.randf() < variables.subroom_chance:
-			for i in range(4):
-				var tmp = subroom_template.duplicate()
-				tmp.stamina_cost = 15 #stub - should be set up differently for subroom types
-				
-				#2add all variants
-				if false: #globals.rng.randf() < variables.dungeon_encounter_chance:
-					#onetime events are temporal solution and should be replaced with events and unique events when those events would be properly updated
-					tmp.type = 'onetime_event'
-					tmp.event = input_handler.weightedrandom(locdata.eventarray)
-				else:
-					tmp.type = 'resource'
-					#test version, not final
-					tmp.resource = input_handler.random_from_array(locdata.gatherable_resources.keys())
-					var data = locdata.gatherable_resources[tmp.resource]
-					tmp.amount = data.amount
-					if tmp.amount is Array:
-						tmp.amount = globals.rng.randi_range(tmp.amount[0], tmp.amount[1])
-					tmp.stamina_cost = data.stamina
-					if tmp.stamina_cost is Array:
-						tmp.stamina_cost = globals.rng.randi_range(tmp.stamina_cost[0], tmp.stamina_cost[1])
-				res.subrooms[i] = tmp
-				if globals.rng.randf() >= variables.additional_subroom_chance:
-					break
-				i += 1
-			res.subrooms.shuffle ()
+		res.stamina_cost = locdata.base_room_stamina_cost
+		if res.stamina_cost is Array:
+			res.stamina_cost = globals.rng.randi_range(res.stamina_cost[0], res.stamina_cost[1])
+#	#subrooms:
+#		if globals.rng.randf() < variables.subroom_chance:
+#			for i in range(4):
+#				var tmp = subroom_template.duplicate()
+#				tmp.stamina_cost = 15 #stub - should be set up differently for subroom types
+#
+#				#2add all variants
+#				if false: #globals.rng.randf() < variables.dungeon_encounter_chance:
+#					#onetime events are temporal solution and should be replaced with events and unique events when those events would be properly updated
+#					tmp.type = 'onetime_event'
+#					tmp.event = input_handler.weightedrandom(locdata.eventarray)
+#				else:
+#					tmp.type = 'resource'
+#					#test version, not final
+#					tmp.resource = input_handler.random_from_array(locdata.gatherable_resources.keys())
+#					var data = locdata.gatherable_resources[tmp.resource]
+#					tmp.amount = data.amount
+#					if tmp.amount is Array:
+#						tmp.amount = globals.rng.randi_range(tmp.amount[0], tmp.amount[1])
+#					tmp.stamina_cost = data.stamina
+#					if tmp.stamina_cost is Array:
+#						tmp.stamina_cost = globals.rng.randi_range(tmp.stamina_cost[0], tmp.stamina_cost[1])
+#				res.subrooms[i] = tmp
+#				if globals.rng.randf() >= variables.additional_subroom_chance:
+#					break
+#				i += 1
+#			res.subrooms.shuffle ()
 	return res
 
 
-func build_floor(locdata, level):
+func build_floor_first_pass(locdata, level):
 #	var generate_data = locdata.duplicate()
 	var generate_data = dungeon_template #temporal
 	var res = level_template.duplicate(true)
@@ -926,7 +935,6 @@ func build_floor(locdata, level):
 			continue
 		var r_nm = nm + ("%4d" % room)
 		var tmp = build_room(room, generate_data)
-		tmp.stamina_cost = locdata.stamina_cost #2adjust here or in build_room
 		if room == DungeonGen.pack_vertex(DungeonGen.diameter.front()):
 			res.first_room = r_nm
 			if level == 0:
@@ -955,3 +963,100 @@ func build_floor(locdata, level):
 	
 	ResourceScripts.game_world.dungeons[nm] = res
 	locdata.dungeon.push_back(nm)
+
+
+func build_subrooms_pool(locdata):
+	var pool = []
+	var res = []
+	for i in range(locdata.levels):
+		res.push_back([])
+	if locdata.event_room_number is Array:
+		locdata.event_room_number = globals.rng.randi_range(locdata.event_room_number[0], locdata.event_room_number[1])
+	for i in range(locdata.event_room_number):
+		pool.push_back('event')
+	if locdata.material_room_number is Array:
+		locdata.material_room_number = globals.rng.randi_range(locdata.material_room_number[0], locdata.material_room_number[1])
+	for i in range(locdata.material_room_number):
+		pool.push_back('material')
+	
+	pool.shuffle()
+	while pool.size() > locdata.levels:
+		for i in range(locdata.levels):
+			res[i].push_back(pool.back())
+			pool.pop_back()
+	while pool.size() <= locdata.levels:
+		pool.push_back("")
+	pool.shuffle()
+	for i in range(locdata.levels):
+		if pool.back() != "":
+			res[i].push_back(pool.back())
+		pool.pop_back()
+	
+	return res
+
+
+func finalize_subrooms(locdata, subrooms, level):
+	var d_data = ResourceScripts.game_world.dungeons[locdata.dungeon[level]]
+	var s_data = subrooms[level]
+	#assign_values
+	while !s_data.empty():
+		var tmp = input_handler.random_from_array(d_data.rooms)
+		if tmp in [d_data.first_room, d_data.last_room]:
+			continue
+		var r_data = ResourceScripts.game_world.rooms[tmp]
+		if r_data.subrooms.back() != null:
+			continue
+		for i in range(4):
+			if r_data.subrooms[i] == null:
+				r_data.subrooms[i] = s_data.back()
+				s_data.pop_back()
+				break
+	
+	#setup parameters
+	for id in d_data.rooms:
+		if id in [d_data.first_room, d_data.last_room]:
+			continue
+		var r_data = ResourceScripts.game_world.rooms[id]
+		for i in range(4):
+			if r_data.subrooms[i] == null:
+				break
+			var tmp = subroom_template.duplicate(true)
+			match r_data.subrooms[i]:
+				'event':
+					tmp.type = 'event'
+					var pool = []
+					for event in locdata.event_data:
+						var e_data = locdata.event_data[event]
+						if e_data.floor_range[1] == 0:
+							e_data.floor_range[1] = locdata.levels - 1
+						if level < e_data.floor_range[0]:
+							continue
+						if level > e_data.floor_range[1]:
+							continue
+						pool.push_back([event, locdata.event_data[event].weight])
+					var roll = input_handler.weightedrandom(pool)
+					var e_data = locdata.event_data[roll]
+					if e_data.events[0] is Array:
+						tmp.event = input_handler.weightedrandom(e_data.events)
+					else:
+						tmp.event = input_handler.random_from_array(e_data.events)
+					tmp.possible_challenges = e_data.possible_challenges.duplicate() #or roll 
+					tmp.icon = e_data.icon
+					e_data.limit -= 1
+					if e_data.limit == 0:
+						locdata.event_data.erase(roll)
+				'material':
+					tmp.type = 'resource'
+					var pool = []
+					for res in locdata.gatherable_resources:
+						pool.push_back([res, locdata.gatherable_resources[res].weight])
+					var roll = input_handler.weightedrandom(pool)
+					var resdata = locdata.gatherable_resources[roll]
+					tmp.resource = roll
+					for arg in ['amount', 'stamina']:
+						tmp[arg] = resdata[arg]
+						if tmp[arg] is Array:
+							tmp[arg] = globals.rng.randi_range(tmp[arg][0], tmp[arg][1])
+					tmp.stamina_cost = tmp.stamina
+			r_data.subrooms[i] = tmp
+		r_data.subrooms.shuffle()

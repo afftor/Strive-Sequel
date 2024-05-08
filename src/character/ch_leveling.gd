@@ -1017,7 +1017,7 @@ func get_progress_task(temptask, tempsubtask, count_crit = false):
 	
 	if count_crit == true && randf() <= get_task_crit_chance():
 		value = value * 2
-	if location.has('gather_mod'):
+	if location.has('gather_mod'): #2fix
 		value *= location.gather_mod
 #	print(task_mods)
 #	print(value)
@@ -1037,7 +1037,7 @@ func get_progress_resource(tempresource, count_crit = false):
 	
 	if count_crit == true && randf() <= get_task_crit_chance():
 		value = value * 2
-	if location.has('gather_mod'):
+	if location.has('gather_mod'): #2fix
 		value *= location.gather_mod
 #	print(task_mods)
 #	print(value)

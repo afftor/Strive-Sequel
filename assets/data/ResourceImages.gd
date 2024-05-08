@@ -620,6 +620,12 @@ var icons = {
 	guilds_servants = load("res://assets/images/iconstraits/guilds_servants.png"),
 	guilds_servants_colored = load("res://assets/images/iconstraits/guilds_servants_color.png"),
 	
+	#dungeon
+	chest = load("res://assets/Textures_v2/DUNGEON/Icons/chest.png"),
+	man = load("res://assets/Textures_v2/DUNGEON/Icons/bust.png"),
+	shrine = load("res://assets/Textures_v2/DUNGEON/Icons/altar.png"),
+	exclaim = load("res://assets/Textures_v2/DUNGEON/Icons/exclaim.png"),
+	
 #	TO COMPLETE AND USE IN DATA TABLES
 #	NEED TO GET RID OF ALL LOAD FUNCTIONS
 #	skill_abuse = "res://assets/images/iconsskills/abuse.png",
