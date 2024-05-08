@@ -959,10 +959,10 @@ func room_pressed(room_id):
 	if data.type == 'empty':
 		return
 	if !(data.type in ['ladder_up', 'ladder_down']):
-		if get_current_stamina() < active_location.stamina_cost:
+		if get_current_stamina() < data.stamina_cost:
 			input_handler.SystemMessage("No stamina")
 			return
-		pay_stamina(active_location.stamina_cost)
+		pay_stamina(data.stamina_cost)
 		update_stamina()
 	scout_room(room_id, get_scouting_range())
 

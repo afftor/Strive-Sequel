@@ -49,7 +49,8 @@ func update():
 					get_node("subroom%d/icon"%(i + 1)).texture = null
 					sb_text += "Subroom - empty"
 				'event', 'unique_event', 'onetime_event':
-					get_node("subroom%d/icon"%(i + 1)).texture = load("res://assets/Textures_v2/Universal/Icons/icon_all_pressed.png")
+					var icon = data.subrooms[i].icon
+					get_node("subroom%d/icon"%(i + 1)).texture = images.icons[icon]
 					sb_text += "Subroom - event, stamina cost - %d" % data.subrooms[i].stamina_cost
 				'resource':
 					get_node("subroom%d/icon"%(i + 1)).texture = load("res://assets/Textures_v2/Universal/Icons/icon_resources_pressed.png")
@@ -72,25 +73,25 @@ func update():
 				'empty':
 					$main/icon.texture = null
 				'combat':
-					$main/icon.texture = load("res://assets/Textures_v2/Universal/Icons/icon_weapon.png")
+					$main/icon.texture = load("res://assets/Textures_v2/DUNGEON/Icons/swords_fight.png")
 				'combat_boss':
 					$main/icon.texture = load("res://assets/Textures_v2/Universal/Icons/icon_weapon_pressed.png")
 				'event':
-					$main/icon.texture = load("res://assets/Textures_v2/Universal/Icons/icon_all_pressed.png")
+					$main/icon.texture = load("res://assets/Textures_v2/DUNGEON/Icons/exclaim.png")
 				'ladder_down':
-					$main/icon.texture = load("res://assets/Textures_v2/Universal/Icons/icon_travel_dungeon.png")
+					$main/icon.texture = load("res://assets/Textures_v2/DUNGEON/Icons/steps.png")
 				'ladder_up':
-					$main/icon.texture = load("res://assets/Textures_v2/Universal/Icons/icon_travel_dungeon.png")
+					$main/icon.texture = load("res://assets/Textures_v2/DUNGEON/Icons/steps.png")
 			text += "Room, enter cost - %d" % data.stamina_cost
 		'obscured':
 			visible = true
-			$main/icon.texture = load("res://assets/Textures_v2/icon_question_small.png")
+			$main/icon.texture = load("res://assets/Textures_v2/DUNGEON/Icons/question.png")
 			for i in range(data.subrooms.size()):
 				if data.subrooms[i] == null:
 					continue
 				else:
 					get_node("subroom%d"%(i + 1)).disabled = true
-					get_node("subroom%d/icon"%(i + 1)).texture = load("res://assets/Textures_v2/icon_question_small.png")
+					get_node("subroom%d/icon"%(i + 1)).texture = load("res://assets/Textures_v2/DUNGEON/Icons/question.png")
 					globals.connecttexttooltip(get_node("subroom%d"%(i + 1)), "unknown subroom")
 			text += "Unknown room, enter cost - %d" % data.stamina_cost
 		'hidden':

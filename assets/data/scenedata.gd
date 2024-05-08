@@ -1432,7 +1432,7 @@ var scenedict = {
 		text = tr(""),
 		tags = ['location_resource_info'],
 		image = 'celena_shrine', #fix
-		options = []
+		options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = []},]
 	},
 	
 	
