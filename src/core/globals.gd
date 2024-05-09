@@ -1167,8 +1167,10 @@ func start_fixed_event(ev):
 
 
 func start_unique_event():
+	if gui_controller.exploration_dungeon == null:
+		return false
 	var eventtriggered = false
-	var location = input_handler.active_location
+	var location = gui_controller.exploration_dungeon.active_location
 	var active_array = []
 	for i in worlddata.random_dungeon_events:
 		var event = worlddata.random_dungeon_events[i]
@@ -1176,8 +1178,8 @@ func start_unique_event():
 			continue
 		if !event.dungeons.has(str(location.code)): 
 			continue
-		if event.has('levels') and !event.levels.has(gui_controller.exploration_dungeon.active_location.current_level + 1): 
-			continue
+#		if event.has('levels') and !event.levels.has(gui_controller.exploration_dungeon.active_location.current_level + 1): 
+#			continue
 		if event.has('reqs') and !checkreqs(event.reqs): 
 			continue
 		active_array.append(event.event)
