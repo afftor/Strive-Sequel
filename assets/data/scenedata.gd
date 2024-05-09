@@ -342,38 +342,6 @@ var scenedict = {
 	]
 	},
 
-	event_trap_easy = {text = tr("DIALOGUEEVENTTRAP"),
-	tags = ['linked_event'],
-	default_event_type = "trap",
-	image = 'trap',
-	options = [
-	{code = 'activate_trap_easy', select_person = true, reqs = [], text = tr("DIALOGUEACTIVATETRAP")},
-	]
-	},
-	activate_trap_easy = {
-		variations = [
-			{reqs = [{type = 'active_character_checks', value = [{code = 'trait', trait = 'trap_detection', check = true}]},
-			],
-			text = tr("DIALOGUEEVENTTRAPSUCCESS"),
-			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'wits', value = 3}],
-			tags = ['active_character_translate'],
-			image = '',
-			options = [
-				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
-				]
-			},
-			{reqs = [],
-			text = tr("DIALOGUEEVENTTRAPFAILURE"),
-			image = '',
-			common_effects = [{code = "affect_active_character", type = 'damage_percent', value = 20}, {code = 'update_party'}],
-			tags = ['active_character_translate'],
-			options = [
-				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
-				],
-
-			}
-		],
-	},
 
 	event_dungeon_prisoner = {text = tr("DIALOGUEEVENTDUNGEONPRISONER"),
 	tags = ['linked_event','active_character_translate'],
@@ -1431,7 +1399,7 @@ var scenedict = {
 	resource_gather = {
 		text = tr(""),
 		tags = ['location_resource_info'],
-		image = 'celena_shrine', #fix
+		image = 'chest', 
 		options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = []},]
 	},
 	
@@ -1442,7 +1410,7 @@ var scenedict = {
 		image = 'celena_shrine',
 		options = [
 		{code = 'celena_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUEAPPROACHSHRINE")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'advance_location'}]},]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},
 	celena_shrine_approach = {
 		text = tr("DIALOGUESHRINECELENA"),
@@ -1451,7 +1419,7 @@ var scenedict = {
 		image = 'celena_shrine',
 		options = [
 		{code = 'celena_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'advance_location'}]},]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},
 	erebus_shrine_find = {
 		text = tr("DIALOGUESHRINEEREBUS"),
@@ -1459,7 +1427,7 @@ var scenedict = {
 		image = 'erebus_shrine',
 		options = [
 		{code = 'erebus_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUEAPPROACHSHRINE")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'advance_location'}]},]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},
 	erebus_shrine_approach = {
 		text = tr("DIALOGUESHRINEEREBUS"),
@@ -1468,7 +1436,7 @@ var scenedict = {
 		image = 'erebus_shrine',
 		options = [
 		{code = 'erebus_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'advance_location'}]},]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},
 	freya_shrine_find = {
 		text = tr("DIALOGUESHRINEFREYA"),
@@ -1476,7 +1444,7 @@ var scenedict = {
 		image = 'freya_shrine',
 		options = [
 		{code = 'freya_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUEAPPROACHSHRINE")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"),bonus_effects = [{code = 'advance_location'}]},]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},
 	freya_shrine_approach = {
 		text = tr("DIALOGUESHRINEFREYA"),
@@ -1485,7 +1453,7 @@ var scenedict = {
 		image = 'freya_shrine',
 		options = [
 		{code = 'freya_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'advance_location'}]},]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},
 	spring = {
 		text = tr("SPRINGTEXT"),
@@ -1558,7 +1526,48 @@ var scenedict = {
 	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUEKEEPSLAVEPERSON")},
 	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},
 	]
-},
+	},
+	
+	
+	
+	event_trap_easy = {text = tr("DIALOGUEEVENTTRAP"),
+	tags = ['linked_event'],
+	default_event_type = "trap",
+	image = 'trap',
+	options = [
+	{code = 'pass_trap_discount', select_person = true, reqs = [], text = tr("DIALOGUEACTIVATETRAP")},
+	{code = 'close', reqs = [], bonus_effects = [{code = 'pay_stamina', value = 10}], text = tr("DIALOGUEPASSTRAP")},
+	{code = 'close', reqs = [], text = tr("DIALOGUECANCEL")},
+	]
+	},
+	
+	
+	
+#	activate_trap_easy = {
+#		variations = [
+#			{reqs = [{type = 'active_character_checks', value = [{code = 'trait', trait = 'trap_detection', check = true}]},
+#			],
+#			text = tr("DIALOGUEEVENTTRAPSUCCESS"),
+#			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'wits', value = 3}],
+#			tags = ['active_character_translate'],
+#			image = '',
+#			options = [
+#				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
+#				]
+#			},
+#			{reqs = [],
+#			text = tr("DIALOGUEEVENTTRAPFAILURE"),
+#			image = '',
+#			common_effects = [{code = "affect_active_character", type = 'damage_percent', value = 20}, {code = 'update_party'}],
+#			tags = ['active_character_translate'],
+#			options = [
+#				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
+#				],
+#
+#			}
+#		],
+#	},
+	
 }
 
 var dialogue_inits = {

@@ -274,7 +274,7 @@ var dungeons = {
 		enemyarray =  [["rats_easy", 0.5],['spiders', 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
 		final_enemy = [['goblins_easy_boss1',1],['goblins_easy_boss2',1]], final_enemy_type = 'monster',
 		
-		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_goblin_friendly',0.3],['celena_shrine_find',0.5],['erebus_shrine_find',1],['freya_shrine_find',0.2]],
+		eventarray = [['dungeon_find_chest_easy', 1],['event_goblin_friendly',0.3],['celena_shrine_find',0.5],['erebus_shrine_find',1],['freya_shrine_find',0.2]],
 		
 		event_data = {
 			dungeon_find_chest_easy = {
@@ -1152,7 +1152,9 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_medium'],
-				possible_challenges = [], 
+				possible_challenges = [
+					{code = 'event_lock_easy', weight = 1, stamina = [6,10]}
+				], 
 			},
 			event_tribal_elves = {
 				limit = 1,
