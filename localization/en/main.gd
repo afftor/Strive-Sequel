@@ -3166,7 +3166,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 	DIALOGUEEVENTDUNGEONPRISONERFREE1 = "You release and unbind [name], much to [his] relief. As [he] thanks you, [he] shows you a small cache of resources near [his] cell as thanks for [his] rescue. After explaining to [him] how to get out, you are ready to continue on your way.",
 	DIALOGUEEVENTDUNGEONPRISONERFREE2 = "You release and unbind [name], much to [his] relief. As [he] thanks you, [he] shows you a secret item [he] has hidden in [his] cell as thanks for [his] rescue. After explaining to [him] how to get out, you are ready to continue on your way.",
-
+	
+	DIALOGUEEVENTDUNGEONRESOURCE = "There are resources in this room. You can harvest {amount} items of {resource} later or spend {stamina_cost} stamina to get half of that amount now.",
+	
 	DIALOGUEEVENTGOBLINFRIENDLY = "As you make your way through the caves you find an isolated room. As you barge in, a lone goblin [boy] jumps in fear. \n\n— Wait, wait, please don't kill me! I'm not wanna fight, I'm only here accidently. I won't tell anyone I've seen you, I promise.\n\nSurprised by the fact [he] knows common speech and is civilized unlike others you consider what to do with [him].",
 	DIALOGUEEVENTGOBLINRECRUIT = "Attempt to recruit",
 	DIALOGUEEVENTGOBLINBRINGTOLEADER = "Request getting you to the leader",

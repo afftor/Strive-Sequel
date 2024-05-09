@@ -289,7 +289,7 @@ func add_harvest_options(scene):
 		scene.options.insert(0,{code = 'close', reqs = [], text = "DIALOGUECLOSE"})
 	else:
 		var data = gui_controller.exploration_dungeon.get_subroom_data()
-		scene.options.insert(0,{code = 'close', reqs = [], text = "Add to gathering pool", bonus_effects = [{code = "add_subroom_res"}]})
+		scene.options.insert(0,{code = 'close', reqs = [], text = "Leave for later", bonus_effects = [{code = "add_subroom_res"}]})
 		scene.options.insert(0,{code = 'close', reqs = [{type = 'has_stamina', value = data.stamina_cost}], text = "Gather %d %s" % [int(data.amount) / 2, tr(Items.materiallist[data.resource].name)] , bonus_effects = [{code = "material_change", operant = '+', value = int(data.amount) / 2, material = data.resource}, {code = 'pay_stamina', value = data.stamina_cost}, {code = 'clear_subroom'}]})
 
 
@@ -354,7 +354,7 @@ func add_location_resource_info():
 		return "" 
 	var data = gui_controller.exploration_dungeon.get_subroom_data()
 	data.resource = tr(Items.materiallist[data.resource].name)
-	var text = "\nThere are resources in this room. You can harvest {amount} items of {resource} later or spend {stamina_cost} stamina to get half that amount now.".format(data)
+	var text = tr("DIALOGUEEVENTDUNGEONRESOURCE").format(data)
 	return text
 
 
@@ -391,7 +391,7 @@ func lockpick_attempt(person):
 				input_handler.interactive_message_follow("lockpick_chest_gas_failure", "story_event", {})
 		input_handler.add_random_chat_message(person, 'lockpick_failure')
 
-func select_person_for_next_event(code):
+func select_person_for_next_event(code): #needs a rework
 	var reqs
 	if code.find('marriage')!= -1:
 		reqs = [
@@ -420,6 +420,42 @@ func select_person_for_next_event(code):
 			{code = 'stat', stat = 'unique', operant = 'neq', value = "cali"},
 			{code = 'is_master', check = false}
 		]
+	elif code == 'pass_locked_door':
+		reqs = [
+			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
+			{code = 'in_combat_party', value = true},
+			{code = 'trait', trait = 'lockpicking', check = true} #will also need charges later
+			]
+	elif code == 'pass_blocked_path':
+		reqs = [
+			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
+			{code = 'in_combat_party', value = true},
+			{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5}
+			]
+	elif code == 'pass_magic_barrier':
+		reqs = [
+			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
+			{code = 'in_combat_party', value = true},
+			{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 5}
+			]
+	elif code == 'pass_high_cliff':
+		reqs = [
+			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
+			{code = 'in_combat_party', value = true},
+			{code = 'stat', stat = 'wings', operant = 'neq', value = ''}
+			]
+	elif code == 'pass_small_crack':
+		reqs = [
+			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
+			{code = 'in_combat_party', value = true},
+			{code = 'is_shortstack', check = true}
+			]
+	elif code == 'pass_ancient_lock':
+		reqs = [
+			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
+			{code = 'in_combat_party', value = true},
+			{code = 'has_profession', profession = 'engineer', check = true}
+			]
 	else:
 		reqs = [
 			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
