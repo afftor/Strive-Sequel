@@ -300,3 +300,27 @@ func is_area_unlocked(area):
 		return false
 	var data = areas[area]
 	return data.unlocked
+
+
+func remove_dungeon(d_id):
+	if !dungeons.has(d_id):
+		return
+	var data = dungeons[d_id]
+	for r_id in data.rooms:
+		rooms.erase(r_id)
+	dungeons.erase(d_id)
+
+
+func remove_location(loc_id):
+	if !location_links.has(loc_id): 
+		return
+	if location_links[loc_id].category == 'capital':
+		return
+	var area_id = location_links[loc_id].area
+	var area = areas[area_id]
+	var location = area[location_links[loc_id].category][loc_id]
+	if location.has('dungeon'):
+		for d_id in location.dungeon:
+			remove_dungeon(d_id)
+	area[location_links[loc_id].category].erase(loc_id)
+	location_links.erase(loc_id)

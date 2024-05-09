@@ -1440,9 +1440,11 @@ func remove_location(locationid):
 			var val = tchar.calculate_price(true) / 2
 			ResourceScripts.game_res.money += int(val)
 			tchar.is_active = false
-	area.locations.erase(location.id)
-	area.questlocations.erase(location.id)
-	ResourceScripts.game_world.location_links.erase(location.id)
+#	area.locations.erase(location.id)
+#	area.questlocations.erase(location.id)
+#	ResourceScripts.game_world.location_links.erase(location.id)
+	ResourceScripts.game_world.remove_location(locationid)
+	
 	
 	input_handler.update_slave_list()
 	gui_controller.nav_panel.build_accessible_locations()

@@ -369,8 +369,8 @@ func update_resources():
 	if person_location != 'aliron':
 		location_type = location.type
 		if location_type == "dungeon":
-			if location.completed == true:
-				gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources
+#			if location.completed == true:
+			gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources
 		else:
 			if ResourceScripts.world_gen.get_location_from_code(person_location).has("gather_resources"):
 				gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_resources
@@ -442,10 +442,11 @@ func update_resources():
 		newbutton.set_meta("resource", resource)
 		
 		var t_job = item_dict
-		for i in tasks.tasklist.values():
-			if i.has("production_item"):
-				if i.production_item == t_job.code:
-					t_job = i.duplicate(true)
+		if location_type != "dungeon":
+			for i in tasks.tasklist.values():
+				if i.has("production_item"):
+					if i.production_item == t_job.code:
+						t_job = i.duplicate(true)
 		var t_res
 		if t_job.has("production_item"):
 			t_res = t_job.production_item
