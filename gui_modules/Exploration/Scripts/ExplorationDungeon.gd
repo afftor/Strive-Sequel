@@ -882,11 +882,11 @@ func fade(window, time = 0.5):
 
 func select_workers():
 	var MANSION = gui_controller.mansion
-	MANSION.SlaveListModule.selected_location = active_location
+	MANSION.SlaveListModule.selected_location = active_location.id
 	MANSION.SlaveListModule.show_location_characters()
-	$NavigationModule.return_to_mansion()
+	nav.return_to_mansion()
 	yield(get_tree().create_timer(0.6), 'timeout')
-	MANSION.get_node("MansionJobModule2").selected_location = active_location
+	MANSION.get_node("MansionJobModule2").selected_location = active_location.id
 	MANSION.SlaveListModule.OpenJobModule()
 
 
