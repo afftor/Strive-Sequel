@@ -882,11 +882,11 @@ func fade(window, time = 0.5):
 
 func select_workers():
 	var MANSION = gui_controller.mansion
-	MANSION.SlaveListModule.selected_location = active_location
+	MANSION.SlaveListModule.selected_location = active_location.id
 	MANSION.SlaveListModule.show_location_characters()
-	$NavigationModule.return_to_mansion()
+	nav.return_to_mansion()
 	yield(get_tree().create_timer(0.6), 'timeout')
-	MANSION.get_node("MansionJobModule2").selected_location = active_location
+	MANSION.get_node("MansionJobModule2").selected_location = active_location.id
 	MANSION.SlaveListModule.OpenJobModule()
 
 
@@ -974,15 +974,19 @@ func scout_room(room_id, s_range, stay = false):
 	var data = ResourceScripts.game_world.rooms[room_id]
 	if data.status in ['obscured', 'hidden']:
 		data.status = 'scouted'
-	for room in data.neighbours.values():
-		if room != null:
-			scout_room(room, s_range - 1, true)
+#	for room in data.neighbours.values():
+#		if room != null:
+#			scout_room(room, s_range - 1, true)
 	
 	selected_room = null
 	update_map()
 	if stay:
 		if s_range == get_scouting_range():
 			move_to_room(room_id)
+		else:
+			for room in data.neighbours.values():
+				if room != null:
+					scout_room(room, s_range - 1, true)
 		return
 	
 	match data.type:
@@ -1028,9 +1032,14 @@ func move_to_room(room_id = null):
 	if room_id == null:
 		return
 	
+	var data = ResourceScripts.game_world.rooms[room_id]
+	for room in data.neighbours.values():
+		if room != null:
+			scout_room(room, get_scouting_range() - 1, true)
+	
 	build_location_group()
 	build_location_description()
-	var data = ResourceScripts.game_world.rooms[room_id]
+	
 	data.status = 'cleared'
 	if data.type in ['ladder_down', 'ladder_up']:
 		data.status = 'scouted'
