@@ -1320,7 +1320,8 @@ func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
 	if data.has('miniboss') and data.miniboss:
 		char_roll_data.mboss = true
 		for pos in enemies:
-			if enemies[pos] == null: continue
+			if enemies[pos] == null: 
+				continue
 			if enemies[pos].ends_with('_rare'):
 				enemies[pos] = enemies[pos].trim_suffix("_rare")
 			enemies[pos] += "_miniboss"
