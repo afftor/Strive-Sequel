@@ -564,14 +564,14 @@ func execute_skill(s_skill2):  #to update to exploration version
 #		enter_dungeon()
 #
 #
-func StartCombat(): #2change it to pregen groups anf StartFixedAreaCombat
+func StartCombat(data): #2change it to pregen groups anf StartFixedAreaCombat
 	input_handler.play_animation("fight")
 	yield(get_tree().create_timer(1), "timeout")
 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), "timeout")
 #	globals.current_level = current_level
 #	globals.current_stage = current_stage
-	globals.StartAreaCombat()
+	globals.StartFixedAreaCombat(data)
 
 
 # func play_animation(animation):
@@ -996,11 +996,11 @@ func scout_room(room_id, s_range, stay = false):
 		'combat':
 			selected_room = room_id
 #			input_handler.combat_advance = false
-			StartCombat() #temporal, 2fix
+			StartCombat(data)
 		'combat_boss':
 			selected_room = room_id
 #			input_handler.combat_advance = false
-			StartCombat() #temporal, 2fix, important!
+			StartCombat(data) 
 		'event':
 			#2add
 #			input_handler.combat_advance = true

@@ -1316,9 +1316,12 @@ func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
 	var enemies = []
 	var music = 'combattheme'
 	
-	enemydata = data.enemy
+	enemydata = data.enemy_code
+	enemies = data.enemies.duplicate(true)
+	
+	char_roll_data.rare = data.rare
 
-	enemies = make_enemies(enemydata)
+#	enemies = make_enemies(enemydata)
 	if data.has('miniboss') and data.miniboss:
 		char_roll_data.mboss = true
 		for pos in enemies:
@@ -1334,7 +1337,7 @@ func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
 		input_handler.combat_node = input_handler.get_combat_node()
 	input_handler.combat_node.encountercode = enemydata
 	input_handler.combat_node.set_norun_mode(false)
-	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, 'background', music, enemy_stats_mod)
+	input_handler.combat_node.start_combat(gui_controller.exploration_dungeon.active_location.group, enemies, 'background', music, enemy_stats_mod)
 
 
 func make_enemies(enemydata, quest = false):

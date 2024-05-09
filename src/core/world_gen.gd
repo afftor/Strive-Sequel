@@ -921,6 +921,11 @@ func build_room(packed_vertex, locdata = dungeon_template):
 		res.stamina_cost = locdata.base_room_stamina_cost
 		if res.stamina_cost is Array:
 			res.stamina_cost = globals.rng.randi_range(res.stamina_cost[0], res.stamina_cost[1])
+		globals.reset_roll_data()
+		var enemygroup = input_handler.weightedrandom(locdata.enemies)
+		res.enemy_code = enemygroup
+		res.enemies = globals.makerandomgroup(Enemydata.enemygroups[enemygroup])
+		res.rare = globals.char_roll_data.rare
 #	#subrooms:
 #		if globals.rng.randf() < variables.subroom_chance:
 #			for i in range(4):
@@ -975,6 +980,18 @@ func build_floor_first_pass(locdata, level):
 			res.last_room = r_nm
 			if level == (locdata.levels - 1):
 				tmp.type = 'combat_boss'
+				globals.reset_roll_data()
+				var enemygroup = input_handler.weightedrandom(locdata.final_enemy)
+				tmp.enemy_code = enemygroup
+				tmp.enemies = globals.makerandomgroup(Enemydata.enemygroups[enemygroup])
+				tmp.rare = globals.char_roll_data.rare
+		if room == DungeonGen.pack_vertex(DungeonGen.diameter[-2]):
+			res.last_room = r_nm
+			if level == (locdata.levels - 1):
+				pass
+			else:
+				tmp.rare = false
+				tmp.miniboss = true
 		ResourceScripts.game_world.rooms[r_nm] = tmp
 		res.rooms.push_back(r_nm)
 	
