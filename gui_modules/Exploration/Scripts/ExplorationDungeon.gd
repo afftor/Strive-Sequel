@@ -1067,12 +1067,12 @@ func move_to_room(room_id = null):
 			if active_location.stagedevents.main.has(active_location.progress.main):
 				var ev_data = active_location.stagedevents.main[active_location.progress.main]
 				if !ev_data.has('reqs') or globals.checkreqs(ev_data.reqs):
-					globals.start_fixed_event(active_location.stagedevents.main[active_location.progress.main])
+					globals.start_fixed_event(active_location.stagedevents.main[active_location.progress.main].event)
 					ev_run = true
 			if active_location.stagedevents.full.has(active_location.progress.full):
 				var ev_data = active_location.stagedevents.full[active_location.progress.full]
 				if !ev_data.has('reqs') or globals.checkreqs(ev_data.reqs):
-					globals.start_fixed_event(active_location.stagedevents.full[active_location.progress.full])
+					globals.start_fixed_event(active_location.stagedevents.full[active_location.progress.full].event)
 					ev_run = true
 		if !ev_run and globals.rng.randf() < variables.dungeon_unique_encounter_chance:
 			globals.start_unique_event()
