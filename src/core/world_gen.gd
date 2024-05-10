@@ -910,17 +910,19 @@ func build_room(packed_vertex, locdata = dungeon_template):
 	res.col = vertex[1]
 	res.row = vertex[0]
 	res.type = 'combat' #2add roll for enemy after making fixed enemy combats call 
+	res.stamina_cost = locdata.base_room_stamina_cost
+	if res.stamina_cost is Array:
+		res.stamina_cost = globals.rng.randi_range(res.stamina_cost[0], res.stamina_cost[1])
 	if DungeonGen.tuning[packed_vertex] > 0:
 		res.mainline = false
 	if packed_vertex == DungeonGen.pack_vertex(DungeonGen.diameter.front()):
 		res.type = 'ladder_up'
 		res.status = 'obscured'
+		res.stamina_cost = 0
 	elif packed_vertex == DungeonGen.pack_vertex(DungeonGen.diameter.back()):
 		res.type = 'ladder_down'
+		res.stamina_cost = 0
 	else:
-		res.stamina_cost = locdata.base_room_stamina_cost
-		if res.stamina_cost is Array:
-			res.stamina_cost = globals.rng.randi_range(res.stamina_cost[0], res.stamina_cost[1])
 		globals.reset_roll_data()
 		var enemygroup = input_handler.weightedrandom(locdata.enemies)
 		res.enemy_code = enemygroup
