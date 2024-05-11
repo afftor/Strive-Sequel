@@ -1171,8 +1171,10 @@ func start_fixed_event(ev):
 
 
 func start_unique_event():
+	if gui_controller.exploration_dungeon == null:
+		return false
 	var eventtriggered = false
-	var location = input_handler.active_location
+	var location = gui_controller.exploration_dungeon.active_location
 	var active_array = []
 	for i in worlddata.random_dungeon_events:
 		var event = worlddata.random_dungeon_events[i]
@@ -1180,8 +1182,8 @@ func start_unique_event():
 			continue
 		if !event.dungeons.has(str(location.code)): 
 			continue
-		if event.has('levels') and !event.levels.has(gui_controller.exploration_dungeon.active_location.current_level + 1): 
-			continue
+#		if event.has('levels') and !event.levels.has(gui_controller.exploration_dungeon.active_location.current_level + 1): 
+#			continue
 		if event.has('reqs') and !checkreqs(event.reqs): 
 			continue
 		active_array.append(event.event)
@@ -1318,13 +1320,17 @@ func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
 	var enemies = []
 	var music = 'combattheme'
 	
-	enemydata = data.enemy
+	enemydata = data.enemy_code
+	enemies = data.enemies.duplicate(true)
+	
+	char_roll_data.rare = data.rare
 
-	enemies = make_enemies(enemydata)
+#	enemies = make_enemies(enemydata)
 	if data.has('miniboss') and data.miniboss:
 		char_roll_data.mboss = true
 		for pos in enemies:
-			if enemies[pos] == null: continue
+			if enemies[pos] == null: 
+				continue
 			if enemies[pos].ends_with('_rare'):
 				enemies[pos] = enemies[pos].trim_suffix("_rare")
 			enemies[pos] += "_miniboss"
@@ -1335,7 +1341,7 @@ func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
 		input_handler.combat_node = input_handler.get_combat_node()
 	input_handler.combat_node.encountercode = enemydata
 	input_handler.combat_node.set_norun_mode(false)
-	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, 'background', music, enemy_stats_mod)
+	input_handler.combat_node.start_combat(gui_controller.exploration_dungeon.active_location.group, enemies, 'background', music, enemy_stats_mod)
 
 
 func make_enemies(enemydata, quest = false):

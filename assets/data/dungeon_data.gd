@@ -683,8 +683,9 @@ var dungeons = {
 		events = [],
 		area = 'plains',
 		travel_time = [1,1],
-		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'cali_bandits_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'CALI_BANDITS_1'}]},
-		{trigger = 'dungeon_complete', event = 'custom_event', args = 'cali_bandits_3', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'CALI_BANDITS_3'}]}]
+		scripteventdata = [
+			{trigger = 'enter', args = 'cali_bandits_1'},
+			{trigger = 'dungeon_complete', args = 'cali_bandits_3'}]
 	},
 	
 	quest_mines_dungeon = {
@@ -753,9 +754,11 @@ var dungeons = {
 		area = 'plains',
 		travel_time = [1,1],
 
-		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'mines_arrival_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'MINES_ARRIVAL_START'}]},
-		{trigger = 'finish_combat', event = 'custom_event', args = 'half_dungeon_explored_start',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'HALF_DUNGEON_EXPLORED_START'}, {code = 'stage', value = 10 / 2 - 1, operant = 'gte'}]},
-		{trigger = 'finish_combat', event = 'custom_event', args = 'pre_final_boss_start',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRE_FINAL_BOSS_START'}, {code = 'stage', value = 9 - 2, operant = 'gte'}]}]
+		scripteventdata = [
+			{trigger = 'enter', args = 'mines_arrival_start'},
+			{trigger = 'stage', event = 'custom_event', args = 'half_dungeon_explored_start', stage = 'half'},
+			{trigger = 'stage', event = 'custom_event', args = 'pre_final_boss_start', stage = '-1'}
+		]
 	},
 	
 	quest_final_operation_location = {
@@ -823,10 +826,10 @@ var dungeons = {
 
 		area = 'plains',
 		travel_time = [1,1],
-		scripteventdata = [
-			{trigger = 'enter', event = 'custom_event', args = 'initiate_hideout_attack', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_6'}]},
+		scripteventdata = [ #2fix all, possibly add functional
+			{trigger = 'enter', args = 'initiate_hideout_attack'},
 			# hard no mages help
-			{trigger = 'finish_combat', event = 'custom_event', args = 'guild_attack_on_hideout_1',reqs = [
+			{trigger = 'finish_combat', args = 'guild_attack_on_hideout_1', reqs = [
 				{code = 'value_check', type = 'decision', value = 'MagesHelpDuncan', check = false}, 
 				{code = 'value_check', type = 'event_seen', check = false, value = 'guild_attack_on_hideout_1'}, 
 				{code = 'stage', value = 3, operant = 'gte'}]},
@@ -909,8 +912,10 @@ var dungeons = {
 		area = 'plains',
 		travel_time = [1,1], 
 		options = [],
-		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'gryphon_forest_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_FOREST_START'}]},
-		{trigger = 'dungeon_complete', event = 'custom_event', args = 'gryphon_forest_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_FOREST_1'}]}]
+		scripteventdata = [
+			{trigger = 'enter', args = 'gryphon_forest_start'},
+			{trigger = 'dungeon_complete', args = 'gryphon_forest_1'}
+		]
 	},
 	
 	quest_ritual_location = {
@@ -977,7 +982,7 @@ var dungeons = {
 		quest = true,
 		area = 'forests',
 		travel_time = [2,2],
-		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'pre_ritual_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRE_RITUAL_1'}]}],
+		scripteventdata = [{trigger = 'enter', args = 'pre_ritual_1'}],
 	},
 	
 	quest_amelia_bandits_location = {
@@ -1040,7 +1045,7 @@ var dungeons = {
 		area = 'plains',
 		travel_time = [1,1],
 		scripteventdata = [
-		{trigger = 'dungeon_complete', event = 'custom_event', args = 'amelia_prison_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'AMELIA_PRISON_1'}]}]
+		{trigger = 'dungeon_complete', args = 'amelia_prison_1'}]
 	},
 	
 	quest_dungeon_grove = {
@@ -1229,7 +1234,7 @@ var dungeons = {
 		area = 'forests',
 		travel_time = [1,1],
 		scripteventdata = [
-			{trigger = 'dungeon_complete', event = 'custom_event', args = 'zephyra_brush_3', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'ZEPHYRA_BRUSH_3'}]}
+			{trigger = 'dungeon_complete', args = 'zephyra_brush_3'}
 		]
 	},
 	

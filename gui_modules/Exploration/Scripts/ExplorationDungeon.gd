@@ -195,7 +195,8 @@ func open_location(data): #2fix
 	update_stamina()
 	var dungeon = active_location.dungeon[active_location.current_level]
 	var tdata = ResourceScripts.game_world.dungeons[dungeon]
-	scout_room(tdata.first_room, get_scouting_range(), true)
+	move_to_room(tdata.first_room)
+#	scout_room(tdata.first_room, get_scouting_range(), true)
 ##	if input_handler.active_location.has('progress'):
 ##		current_level = active_location.progress.level
 ##		current_stage = active_location.progress.stage
@@ -563,14 +564,14 @@ func execute_skill(s_skill2):  #to update to exploration version
 #		enter_dungeon()
 #
 #
-func StartCombat(): #2change it to pregen groups anf StartFixedAreaCombat
+func StartCombat(data): #2change it to pregen groups anf StartFixedAreaCombat
 	input_handler.play_animation("fight")
 	yield(get_tree().create_timer(1), "timeout")
 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), "timeout")
 #	globals.current_level = current_level
 #	globals.current_stage = current_stage
-	globals.StartAreaCombat()
+	globals.StartFixedAreaCombat(data)
 
 
 # func play_animation(animation):
@@ -995,11 +996,11 @@ func scout_room(room_id, s_range, stay = false):
 		'combat':
 			selected_room = room_id
 #			input_handler.combat_advance = false
-			StartCombat() #temporal, 2fix
+			StartCombat(data)
 		'combat_boss':
 			selected_room = room_id
 #			input_handler.combat_advance = false
-			StartCombat() #temporal, 2fix, important!
+			StartCombat(data) 
 		'event':
 			#2add
 #			input_handler.combat_advance = true
@@ -1051,6 +1052,31 @@ func move_to_room(room_id = null):
 		data.type = 'empty'
 	update_map()
 	#add path counting and events
+	if data.first_time:
+		data.first_time = false
+		active_location.progress.full += 1
+		if data.mainline:
+			active_location.progress.main += 1
+		var ev_run = false
+		if active_location.has('stagedevents'):
+			if active_location.stagedevents.room.has(room_id):
+				var ev_data = active_location.stagedevents.room[room_id]
+				if !ev_data.has('reqs') or globals.checkreqs(ev_data.reqs):
+					globals.start_fixed_event(ev_data.event)
+					ev_run = true
+			if active_location.stagedevents.main.has(active_location.progress.main):
+				var ev_data = active_location.stagedevents.main[active_location.progress.main]
+				if !ev_data.has('reqs') or globals.checkreqs(ev_data.reqs):
+					globals.start_fixed_event(active_location.stagedevents.main[active_location.progress.main].event)
+					ev_run = true
+			if active_location.stagedevents.full.has(active_location.progress.full):
+				var ev_data = active_location.stagedevents.full[active_location.progress.full]
+				if !ev_data.has('reqs') or globals.checkreqs(ev_data.reqs):
+					globals.start_fixed_event(active_location.stagedevents.full[active_location.progress.full].event)
+					ev_run = true
+		if !ev_run and globals.rng.randf() < variables.dungeon_unique_encounter_chance:
+			globals.start_unique_event()
+
 
 
 func subroom_pressed(room_id, subroom_id):

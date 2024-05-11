@@ -72,17 +72,22 @@ func update():
 			match data.type:
 				'empty':
 					$main/icon.texture = null
+					text += "Empty room" 
 				'combat':
 					$main/icon.texture = load("res://assets/Textures_v2/DUNGEON/Icons/swords_fight.png")
+					text += "Guarded room, enter cost - %d" % data.stamina_cost
 				'combat_boss':
 					$main/icon.texture = load("res://assets/Textures_v2/Universal/Icons/icon_weapon_pressed.png")
+					text += "Dungeon boss, enter cost - %d" % data.stamina_cost
 				'event':
 					$main/icon.texture = load("res://assets/Textures_v2/DUNGEON/Icons/exclaim.png")
+					text += "Room, enter cost - %d" % data.stamina_cost
 				'ladder_down':
 					$main/icon.texture = load("res://assets/Textures_v2/DUNGEON/Icons/steps.png")
+					text += "Ladder down"
 				'ladder_up':
 					$main/icon.texture = load("res://assets/Textures_v2/DUNGEON/Icons/steps.png")
-			text += "Room, enter cost - %d" % data.stamina_cost
+					text += "Ladder up"
 		'obscured':
 			visible = true
 			$main/icon.texture = load("res://assets/Textures_v2/DUNGEON/Icons/question.png")
@@ -93,7 +98,7 @@ func update():
 					get_node("subroom%d"%(i + 1)).disabled = true
 					get_node("subroom%d/icon"%(i + 1)).texture = load("res://assets/Textures_v2/DUNGEON/Icons/question.png")
 					globals.connecttexttooltip(get_node("subroom%d"%(i + 1)), "unknown subroom")
-			text += "Unknown room, enter cost - %d" % data.stamina_cost
+			text += "Unknown room"
 		'hidden':
 			visible = false
 		
