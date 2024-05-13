@@ -2172,6 +2172,10 @@ func common_effects(effects):
 				if gui_controller.exploration_dungeon == null:
 					return
 				gui_controller.exploration_dungeon.clear_subroom()
+			'unlock_subroom':
+				if gui_controller.exploration_dungeon == null:
+					return
+				gui_controller.exploration_dungeon.unlock_subroom()
 			'add_subroom_res':
 				if gui_controller.exploration_dungeon != null:
 					gui_controller.exploration_dungeon.add_subroom_res()
