@@ -189,3 +189,14 @@ func FindNextImagesInPlayer():
 	#
 	$FullScreenImage.texture = images.backgrounds[newimagename]
 	Collection = newimagename
+
+
+func _on_ResetProgress_pressed():
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'reset_gallery_progress', tr("GALLERYRESETTEXT")])
+
+func reset_gallery_progress():
+	input_handler.progress_data.story_scenes = []
+	input_handler.progress_data.ero_scenes = []
+	input_handler.progress_data.gallery_seq = []
+	input_handler.save_progress_data(input_handler.progress_data)
+	set_state("story")

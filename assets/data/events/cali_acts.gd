@@ -136,7 +136,7 @@ var data = {
 	},
 	
 	cali_act2_workers_3 = {
-		image = null, tags = ['dialogue_scene'],
+		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
 		text = [{text = "CALI_ACT2_WORKERS_3", reqs = []}],
 		options = [ {
@@ -638,7 +638,7 @@ var data = {
 	},
 	
 	cali_act4_merchant_1 = {
-		image = null, tags = ['dialogue_scene'],
+		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], 
 		text = [{text = "CALI_ACT4_MERCHANT_1", reqs = []}],
 		options = [ {

@@ -535,7 +535,7 @@ var data = {
 				}, ]
 			}, {
 				image = null, tags = ['dialogue_scene', 'master_translate',],
-				reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'female'}]}], character = "elf_priestess",
+				reqs = [], character = "elf_priestess",
 				text = [{text = 'AFTER_TEMPLE_PRIESTESS_5_1_1', reqs = [],}], 
 				options = [ {
 					code = 'after_temple_priestess_5_1_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
