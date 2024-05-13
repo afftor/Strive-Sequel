@@ -934,6 +934,8 @@ func can_enter_room(room_id):
 		 return true
 	if data.type in ['ladder_up']:
 		return true
+	if data.status == 'scouted' and data.type == 'ladder_down':
+			return true
 	for i in data.neighbours.values():
 		if i == null:
 			continue
@@ -941,6 +943,8 @@ func can_enter_room(room_id):
 		if t_data.status == 'cleared' :
 		 return true
 		if t_data.type in ['ladder_up']:
+			return true
+		if t_data.status == 'scouted' and t_data.type == 'ladder_down':
 			return true
 	return false
 
@@ -1095,44 +1099,48 @@ func subroom_pressed(room_id, subroom_id):
 		return
 	active_subroom = null
 	selected_room = null
-	
-	match subroom_data.type:
-		'empty': #should never be called
-			print('empty subroom activated')
-			return
-		'onetime_event':
-			selected_room = room_id
-			active_subroom = subroom_id
-			pay_stamina(subroom_data.stamina_cost)
-			#2test
-#			input_handler.combat_advance = true
-			var _event = globals.start_fixed_event(subroom_data.event)
-			if !_event:
-				_event = globals.start_random_event()
-			clear_subroom()
-		'event':
-			selected_room = room_id
-			active_subroom = subroom_id
-			pay_stamina(subroom_data.stamina_cost)
-			#2test
-#			input_handler.combat_advance = true
-			var _event = globals.start_fixed_event(subroom_data.event)
-			if !_event:
-				_event = globals.start_random_event()
-		'unique_event':
-			selected_room = room_id
-			active_subroom = subroom_id
-			pay_stamina(subroom_data.stamina_cost)
-			#2test
-#			input_handler.combat_advance = true
-			var _event = globals.start_unique_event()
-			if !_event:
-				_event = globals.start_random_event()
-		'resource': 
-			selected_room = room_id
-			active_subroom = subroom_id
-			globals.start_fixed_event("resource_gather")
-#			add_subroom_res()
+	if subroom_data.challenge == null:
+		match subroom_data.type:
+			'empty': #should never be called
+				print('empty subroom activated')
+				return
+			'onetime_event':
+				selected_room = room_id
+				active_subroom = subroom_id
+				pay_stamina(subroom_data.stamina_cost)
+				#2test
+	#			input_handler.combat_advance = true
+				var _event = globals.start_fixed_event(subroom_data.event)
+				if !_event:
+					_event = globals.start_random_event()
+				clear_subroom()
+			'event':
+				selected_room = room_id
+				active_subroom = subroom_id
+				pay_stamina(subroom_data.stamina_cost)
+				#2test
+	#			input_handler.combat_advance = true
+				var _event = globals.start_fixed_event(subroom_data.event)
+				if !_event:
+					_event = globals.start_random_event()
+			'unique_event':
+				selected_room = room_id
+				active_subroom = subroom_id
+				pay_stamina(subroom_data.stamina_cost)
+				#2test
+	#			input_handler.combat_advance = true
+				var _event = globals.start_unique_event()
+				if !_event:
+					_event = globals.start_random_event()
+			'resource': 
+				selected_room = room_id
+				active_subroom = subroom_id
+				globals.start_fixed_event("resource_gather")
+	#			add_subroom_res()
+	else:
+		selected_room = room_id
+		active_subroom = subroom_id
+		globals.start_fixed_event(subroom_data.challenge)
 
 
 func get_subroom_data():
@@ -1163,6 +1171,21 @@ func clear_subroom():
 	update_map()
 	active_subroom = null
 	selected_room = null
+
+
+func unlock_subroom():
+	if active_subroom == null:
+		print('error clearing subroom setup')
+		return
+	if selected_room == null:
+		print('error clearing subroom setup')
+		return
+	var data = ResourceScripts.game_world.rooms[selected_room]
+	data.subrooms[active_subroom].challenge = null
+	update_map()
+	active_subroom = null
+	selected_room = null
+
 
 func reset_active_location(arg = null):
 	if input_handler.active_location.id != active_location.id:

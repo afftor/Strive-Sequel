@@ -899,6 +899,7 @@ var room_template = {
 var subroom_template = {
 	stamina_cost = 0,
 	type = 'empty',
+	challenge = null
 }
 var dungeon_mainline = 0
 var dungeon_full = 0
@@ -1098,6 +1099,13 @@ func finalize_subrooms(locdata, subrooms, level):
 					e_data.limit -= 1
 					if e_data.limit == 0:
 						locdata.event_data.erase(roll)
+#					e_data.possible_challenges = [{code = 'event_locked_door', weight = 1}]
+					if !e_data.possible_challenges.empty():
+						pool.clear()
+						for ch in e_data.possible_challenges:
+							pool.push_back([ch.code, ch.weight])
+						tmp.challenge = input_handler.weightedrandom(pool)
+						
 				'material':
 					tmp.type = 'resource'
 					var pool = []

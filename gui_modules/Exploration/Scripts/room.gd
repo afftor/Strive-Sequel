@@ -31,10 +31,10 @@ func update():
 				get_node(i).visible = false
 			else:
 				get_node(i).visible = true
-				if data.status == 'cleared' or data.type == 'ladder_up':
+				if data.status == 'cleared' or data.type == 'ladder_up' or (data.status == 'scouted' and data.type == 'ladder_down'):
 					get_node(i).modulate = Color(variables.hexcolordict.green)
 					continue
-				if tdata.status == 'cleared' or tdata.type == 'ladder_up':
+				if tdata.status == 'cleared' or tdata.type == 'ladder_up' or (tdata.status == 'scouted' and tdata.type == 'ladder_down'):
 					get_node(i).modulate = Color(variables.hexcolordict.green)
 					continue
 				get_node(i).modulate = Color(variables.hexcolordict.red)
@@ -56,6 +56,10 @@ func update():
 					get_node("subroom%d/icon"%(i + 1)).texture = load("res://assets/Textures_v2/Universal/Icons/icon_resources_pressed.png")
 					sb_text += "Subroom - resource, stamina cost - %d" % data.subrooms[i].stamina_cost
 			globals.connecttexttooltip(get_node("subroom%d"%(i + 1)), sb_text)
+			if data.subrooms[i].challenge != null:
+				get_node("subroom%d/icon"%(i + 1)).modulate = Color(variables.hexcolordict.red)
+			else:
+				get_node("subroom%d/icon"%(i + 1)).modulate = Color(variables.hexcolordict.green)
 	var text = ""
 	match data.status:
 		'cleared':

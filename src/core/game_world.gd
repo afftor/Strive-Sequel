@@ -27,10 +27,30 @@ func serialize():
 
 func fix_serialization():
 	update_guilds_data()
+	
+	for dn in dungeons.values():
+		dn.mainline = int(dn.mainline)
+	
+	for room in rooms.values():
+		room.col = int(room.col)
+		room.row = int(room.row)
+		room.stamina_cost = int(room.stamina_cost)
+		if room.has('enemies'):
+			var tmp = {}
+			for en in room.enemies:
+				tmp[int(en)] = room.enemies[en]
+			room.enemies = tmp
+	
 	for i in areas.values():
 		for j in i.locations.values():
 			if j.type == 'dungeon' and !j.has('stamina'):
 				j.stamina = 100
+			if j.has('stagedevents'):
+				for cat in j.stagedevents:
+					var tmp = {}
+					for ev in j.stagedevents[cat]:
+						tmp[int(ev)] = j.stagedevents[cat][ev]
+					j.stagedevents[cat] = tmp
 #	for area in areas.values():
 #		for guild in area.factions.values():
 #			if guild.questsetting.total > globals.get_nquest_for_rep(guild.totalreputation):
