@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -75,6 +75,7 @@
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/hallway.png" type="Texture" id=73]
 [ext_resource path="res://gui_modules/Exploration/Scripts/room.gd" type="Script" id=74]
 [ext_resource path="res://assets/images/backgrounds/cave1.png" type="Texture" id=75]
+[ext_resource path="res://gui_modules/Universal/Modules/UpdatingButton.gd" type="Script" id=76]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -1077,6 +1078,7 @@ toggle_mode = true
 texture_normal = ExtResource( 62 )
 texture_pressed = ExtResource( 63 )
 texture_hover = ExtResource( 64 )
+script = ExtResource( 76 )
 
 [node name="TextureRect" type="TextureRect" parent="MapPanel/slaves"]
 anchor_right = 1.0

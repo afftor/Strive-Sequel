@@ -498,6 +498,20 @@ var quality_colors = {
 	
 }
 
+
+var dungeon_character_chances = {
+	initial_char_chance = 0.25,
+	initial_second_char_chance = 0.1,
+	rare_char_chance = 0.5,
+	rare_second_char_chance = 0.15,
+	mboss_chance = 0.5,
+	mboss_second_chance = 0.0,
+	boss_chance = 1.0,
+	event_diff_bonus = 2,
+	mboss_diff_bonus = 2
+	
+}
+
 var factor_personality_changes = { #chance of change of primary and seondary axies based on tame/timid factors
 	1 : [50, 100],
 	2 : [60, 50],

@@ -25,6 +25,9 @@ var TranslationDict = {
 	GALLERYERO = "Ero",
 	GALLERYSCENES = "Scenes",
 	GALLERYRETURN = "返回",
+	GALLERYTOOLTIPTOP = """Scene Condition:""", # MISSING TRANSLATION
+	GALLERYRESETBUTTON = """Reset""", # MISSING TRANSLATION
+	GALLERYRESETTEXT = """Are you sure you want to reset ALL gallery progress?""", # MISSING TRANSLATION
 	#ModPanel
 	MODLOAD = "加载模组",
 	MODLOAD1 = "这些模组将应用于游戏，并在下一次游戏开始时在编辑器中可用。",
@@ -142,6 +145,8 @@ var TranslationDict = {
 	PRONOUNSEXH = "扶她",
 	PRONOUNMAN = "男人",
 	PRONOUNMANF = "女人",
+	PRONOUNGUY = """guy""", # MISSING TRANSLATION
+	PRONOUNGUYF = """gal""", # MISSING TRANSLATION
 	PRONOUNHUSBAND = "丈夫",
 	PRONOUNHUSBANDF = "妻子",
 	PRONOUNGROOM = "新郎",
@@ -178,6 +183,7 @@ var TranslationDict = {
 	SIBLINGMODULESIBLINGS = "兄弟姐妹",
 	SIBLINGMODULECHILDDREN = "孩子",
 	SIBLINGMODULECURRENTCAPACITY = "当前容量",
+	SIBLINGMODULEPERSONALITY = """Personality""", # MISSING TRANSLATION
 	SYSMESSAGEATLEAST1CHAR = "至少选择一个角色进行战斗。",
 	
 	OPERANTATLEAST = "至少",
@@ -307,6 +313,7 @@ var TranslationDict = {
 	SLAVE = "奴隶",
 	MASTER = "主人",
 	PEON = "雇工",
+	HEIR = """Heir""", # MISSING TRANSLATION
 	SLAVEINFOMODULEOBEDIENCE = "服从",
 	SIMRESIST = "抵抗",
 	SIMLOYALTYGAIN = "Loyalty Gain",
@@ -491,6 +498,12 @@ However, while it might seem that Landowners have nothing but contempt for those
 	MATERIALMEATSOUPDESCRIPT = "水和肉的混合物。烹饪产生的。\n食物类型：肉，蔬菜。",
 	MATERIALFISHCAKES = "鱼饼",
 	MATERIALFISHCAKESDESCRIPT = "一种用鱼糊做成的烤面团。尤其受到猫族的喜爱。烹饪产生的。\n食物类型：鱼肉、谷物。",
+	MATERIALCURRY = """Curry""", # MISSING TRANSLATION
+	MATERIALCURRYDESCRIPT = """A bowl of grains and meat rich with a distinct flavor.
+Food type: Meat, Grains.""", # MISSING TRANSLATION
+	MATERIALFRIEDFISH = """Fried Fish""", # MISSING TRANSLATION
+	MATERIALFRIEDFISHDESCRIPT = """A dish of fried fish with vegatables invented to nutrient picky beastgirl eaters.
+Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	MATERIALSTONE = "原石",
 	MATERIALSTONEADJ = "石材",
 	MATERIALSTONEDESCRIPT = "石头有多种形式和形状。它可以作为一种好的建筑材料，甚至可以作为低质量的工具。从采矿业获得。 ",
@@ -679,6 +692,12 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMSTRONG_PHEROMONESDESCRIPT = "一种常用于兽人种族的药物。吸气会导致一个人的欣快感和欲望激增，使他们接受任何他们通常会害羞而不敢考虑的对待。对非兽人物种无效，在受影响的群落中经常被禁止。 ",
 	ITEMSOUL_STONE = "灵魂石",
 	ITEMSOUL_STONEDESCRIPT = "允许删除一个固有的性格特征。",
+	ITEMLACTATION_POT = """Nursing Potion""", # MISSING TRANSLATION
+	ITEMLACTATION_POTDESCRIPT = """Make the drinker lactate, or reverse lactation if it existed.""", # MISSING TRANSLATION
+	ITEMPHYSICS_POT = """Elixir of Ogre's Strength""", # MISSING TRANSLATION
+	ITEMPHYSICS_POTDESCRIPT = """Boosts Physics by 80 for 1 time period.""", # MISSING TRANSLATION
+	ITEMWITS_POT = """Elixir of Expanded Mind""", # MISSING TRANSLATION
+	ITEMWITS_POTDESCRIPT = """Boosts Wits by 80 for 1 time period.""", # MISSING TRANSLATION
 	
 	ITEMSENSITIVITY_POT = "敏感性药物",
 	ITEMSENSITIVITY_POTDESCRIPT = "在性交中提高敏感度。",
@@ -735,8 +754,11 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMSWORD = '剑',
 	ITEMDAGGER = '匕首',
 	ITEMCLUB = "棍棒",
+	ITEMMACE = """Mace""", # MISSING TRANSLATION
+	ITEMBATTLEAXE = """Battle Axe""", # MISSING TRANSLATION
 	ITEMSPEAR = "矛",
 	ITEMBOW = "弓",
+	ITEMCROSSBOW = """Crossbow""", # MISSING TRANSLATION
 	ITEMSTAFF = "杖",
 	ITEMSICKLE = "镰刀",
 	ITEMFISHINGTOOLS = "渔具",
@@ -749,9 +771,12 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMSWORDDESCRIPT = "适合对付无装甲的敌人。",
 	ITEMDAGGERDESCRIPT = "易于隐藏的廉价武器，任何人都可以使用。",
 	ITEMCLUBDESCRIPT = "你祖先的武器。不出众，但制作简单，任何人都可以持有。",
+	ITEMMACEDESCRIPT = """The club's older brother. A better alternative when have to deal with armored target.""", # MISSING TRANSLATION
+	ITEMBATTLEAXEDESCRIPT = """The best weapon to carry if you wanna look intimidating. However its somewhat unwieldy.""", # MISSING TRANSLATION
 	ITEMSPEARDESCRIPT = "人类已知的最早的武器之一。没有剑那么灵活，但它有它的优点... 主要是成本。",
 	ITEMPICKAXEDESCRIPT = "矿工们不可替代的工具。",
 	ITEMBOWDESCRIPT = "适合远距离战斗的简单武器。",
+	ITEMCROSSBOWDESCRIPT = """An unrefined mechanical weapon offering better penetration properties than a bow.""", # MISSING TRANSLATION
 	ITEMSTAFFDESCRIPT = "一个简单的法术工具。",
 	ITEMSICKLEDESCRIPT = "一种用于收割庄稼的工具。",
 	ITEMFISHINGTOOLSDESCRIPT = "渔民使用的一套工具。",
@@ -830,6 +855,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TOOLTIPEVASION = "将敌人的命中几率降低此值",
 	TOOLTIPSPEED = "提高你在其他角色之前行动的几率",
 	TOOLTIPRESISTS = "通过抵抗减少对应元素伤害",
+	TOOLTIPSTAMINA = """Stamina is depleted when performing action the character does not agree on. When fully depleted such actions will drain Obedience. Also when fully depleted the character won't be able to improve their Consent. Stamina is replenished with Orgasms but this is affected by diminishing returns.""", # MISSING TRANSLATION
+	TOOLTIPSTAMINADUNGEON = """Exploration Stamina is depleted every time you take an exploration action. It will be fully replenished at the start of new day.""", # MISSING TRANSLATION
 
 	TOOLTIPFOODCONSUMPTION = "Daily Food Consumption",
 	TOOLTIPPOPULATION = "Population",
@@ -941,6 +968,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEREPEATACTION = "重复",
 	CHAR_UNAVALIABLE = "不可用",
 	NO_FREE_SLOTS = "此任务已无可用插槽",
+	ANOTHERPROFSELECTED = """Can only select one specialization.""", # MISSING TRANSLATION
 
 	LOGREPORTPREGNANCY = "[name] 告诉你，[he]似乎怀孕了。",
 	LOGREPORTPREGNANCYMASTER = "看来你([name])怀孕了。",
@@ -991,6 +1019,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	OVERWRITETEMPLATECONFIRM = "是否覆盖此模板？",
 	DELETETEMPLATECONFIRM = "是否删除此模板？",
 	LOADTEMPLATECONFIRM = "加载此模板？当前设置将丢失。",
+	CURSEUNEQUIPCONFIRM = """Cursed equipment is destroyed when removed.""", # MISSING TRANSLATION
 
 	#Inbuilt Tooltips
 	PAUSEBUTTONTOOLTIP = '暂停\n热键：1',
@@ -1189,9 +1218,17 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLEARTHQUAKE_GLOB = "Earthquake 地震",
 	SKILLL_ORB = "Lightning Orb 球状闪电",
 	SKILLL_ORBDESCRIPT = "Deals 250% of MATK as Air damage to a target. If target survives, deals half of the damage to random enemy.\n对目标造成 250% 的魔法攻击的风伤害。如果目标幸存，对随机敌人造成一半的伤害。",
+	SKILLSNIPER_SHOT = """Ensnaring Shot""", # MISSING TRANSLATION
+	SKILLSNIPER_SHOTDESCRIPT = """Deals 110% of ATK as Earth damage to a target. Apply Ensnared to target for 5 turns. """, # MISSING TRANSLATION
+	SKILLSOUL_BIND = """Soul Bind""", # MISSING TRANSLATION
+	SKILLSOUL_BINDDESCRIPT = """Bends person's mind to submit to your will. After a day of rest they will follow most of your orders. """, # MISSING TRANSLATION
 	
 	SKILLFLY_EVASION = "Flight 飞行",
 	SKILLFLY_EVASIONDESCRIPT = "Increases Evasion by 65 for 3 turns.\n增加 65 的闪避，持续 3 回合。",
+	SKILLEUPHORIA_APPLY = """Euphoria""", # MISSING TRANSLATION
+	SKILLEUPHORIA_APPLYDESCRIPT = """When activated increases all damage by your lust. Drains your lust every turn.""", # MISSING TRANSLATION
+	SKILLEUPHORIA_REMOVE = """Euphoria""", # MISSING TRANSLATION
+	SKILLEUPHORIA_REMOVEDESCRIPT = """Disable Euphoria""", # MISSING TRANSLATION
 	
 	
 	SKILLMIMIC_ATTACK = "粘性抓取",
@@ -1266,6 +1303,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	TASKPRODUCE = "生产",
 	TASKPRODUCEDESCRIPT = "分配生产材料",
+	TASKSPECIALDESCRIPT = """""", # MISSING TRANSLATION
 	
 	BEDROOMTOOLTIP = "Available number of characters for sexual interactions. Increases with Bedroom Upgrade",
 	DATETOOLTIP = "Dates left this week. Increases with Master's Charm Factor and resets at the start of a week.",
@@ -1289,8 +1327,16 @@ However, while it might seem that Landowners have nothing but contempt for those
 	JOBSMITHCRAFTDESCRIPT = "在锻造厂加工物品",
 	JOBTAILORCRAFTDESCRIPT = "在裁缝车间手工制作物品",
 	JOBALCHEMYCRAFTDESCRIPT = "在炼金车间制作物品",
+	EXPLOREUPGRADETIP = """Upgrades effects and quest settings update after some time passed.""", # MISSING TRANSLATION
+	LOGLEFTLABEL = """Main""", # MISSING TRANSLATION
+	LOGLEFTTTOOLTIP = """Shows main events""", # MISSING TRANSLATION
+	LOGRIGHTLABEL = """Service""", # MISSING TRANSLATION
+	LOGRIGHTTOOLTIP = """Shows service income""", # MISSING TRANSLATION
+	BROTHELLOGSEX = """%s earned %s gold doing %s with a %s""", # MISSING TRANSLATION
+	BROTHELLOGNO_SEX = """%s earned %s gold working as a %s""", # MISSING TRANSLATION
 	
 	BROTHELTOOLTIP = "You can select which tasks the character will be allowed to perform while working at brothel. By toggling specific tasks only those will be allowed. Client sexes only affect sexual tasks.\nHigher character Value increases earnings, higher Charm increases likelyhood of being requested for sex.\nDifferent tasks improve and scale from different stats.\nService is a global modifier for this assignment.",
+	BROTHELWARNING = """Sex services won't work if you dont select at least 1 allowed customer""", # MISSING TRANSLATION
 	
 	CAPTURETOOLTIP = "这些角色已经被你的团队发现，可以被招募到你的豪宅中，也可以像手动出售一样快速变现。如果忘记了位置，所有角色都会自动出售。",
 	CAPTURESELLTOOLTIP = "以 %d 金币快速出售此角色。这相当于向市场出售角色，但不允许您回购。 ",
@@ -1452,6 +1498,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATHPMAX = "Max. Health 最大健康",
 	STATHPFACTOR = "健康因素",
 	STATHPFACTORDESCRIPT = "确定以大多数方式获得的健康值加成。高健康值可以大大提高生存能力。 ",
+	STATHP_REG_MOD = """Healing Factor""", # MISSING TRANSLATION
+	STATMP_REG_ADD = """Mana Regeneration""", # MISSING TRANSLATION
 
 	STATHPMAXMOD = "最大健康",
 
@@ -1515,6 +1563,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATSEXUALS_FACTOR = "性因素",
 	STATTAME_FACTOR = "驯服因素",
 	STATTIMID_FACTOR = "胆怯因素",
+	STATSLAVE_CLASS = """Type""", # MISSING TRANSLATION
 
 	STATPHYSICS_BONUS = "Physics 物理",
 	STATWITS_BONUS = "Wits 智慧",
@@ -1567,11 +1616,16 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATRESIST_LIGHT = "Light Resist",
 	STATRESIST_DARK = "Dark Resist",
 	STATRESIST_MIND = "Mind Resist",
+	STATENCHANT_CAPACITY_MOD = """Enchant Capacity""", # MISSING TRANSLATION
+	STATENCHANT_CAPACITY = """Enchant Capacity""", # MISSING TRANSLATION
+	STATENCHCAP = """Enchant Capacity""", # MISSING TRANSLATION
+	STATQUALITY = """Quality""", # MISSING TRANSLATION
 	
 	STATPRICE = "Value",
 	
 	STATFOOD_CONSUMPTION = "Food Consumption",
 	STATFOOD_CONSUMPTIONDESCRIPT = "Amount of food items a person requires every day. Lack of food leads to starvation, exhaustion and eventual death.",
+	MASTER_POINTS = """Mastery""", # MISSING TRANSLATION
 
 	TOOLTIPENERGY = "Energy is restored during sleep and is required for tasks. When a character is forced to work with no energy left, their Exhaustion increases. ",
 	TOOLTIPFATIGUE = "Fatigue increases with time and dissipates with entertainment. When unmanaged it may cause a performance penalty.",
@@ -1582,6 +1636,11 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 	TOOLTIPGOLD = "Owned gold. Gold is used for buying slaves and items and can be obtained from selling items, completing quests and some tasks.",
 	TOOLTIPFOOD = "Owned Food items / food consumed per day. Food is used by every character and can be obtained from some tasks and increased with cooking. Lack of food will lead to exhaustion and eventual death. ",
+	TOOLTIPENCHANTSCREEN = """You can apply enchants and curses to an item. Applying curse will increase item's enchantment capacity but the curse will be random and only revealed on equpping the item. """, # MISSING TRANSLATION
+	MASTERPOINTTOP = """New Master Point""", # MISSING TRANSLATION
+	MASTERPOINTSTOP = """New Master Points""", # MISSING TRANSLATION
+	MASTERPOINTBOTTOM = """%d point""", # MISSING TRANSLATION
+	MASTERPOINTSBOTTOM = """%d points""", # MISSING TRANSLATION
 	
 	
 	
@@ -1589,6 +1648,46 @@ However, while it might seem that Landowners have nothing but contempt for those
 	INFOSEX_SKILLS = "Sex Skills refer to character's performance during sex. The higher they are, the quicker they can make thier partner to orgasm with related actions. Character's Sexual Proficiency is based on average of 3 highest skills.\nConsent represents character's general acceptance of various sexual actions, but it is also heavily affected by partners and situtation.",
 	INFOSEX_TRAITS = "Sex Traits provide additional effects during sexual interaction. They can be learned, activated and deactivated. Maximum number of activatale traits is based on Sex Factor.",
 	INFORULES_CONDS = "Conditions and rules can be toggled on character, affecting some of their stats and behavior.",
+	INFOPERSONALITY = """Character's personality will affect thier banter and provide access to certain traits and bonuses. Personality will be affected by social skills used on character.""", # MISSING TRANSLATION
+	INFOPERSONALITYBOLD = """Bold
++25% Skill Damage; -25% MATK""", # MISSING TRANSLATION
+	INFOPERSONALITYKIND = """Kind
++50% Healing Spell Efficiency""", # MISSING TRANSLATION
+	INFOPERSONALITYSERIOUS = """Serious
++20% Damage Reduction""", # MISSING TRANSLATION
+	INFOPERSONALITYSHY = """Shy
++25% MATK, -20% ATK""", # MISSING TRANSLATION
+	INFOSLAVE_CLASS = """Character type will define its options and behavior. Slaves can be forced into sexual services without consent and have higher tolerance for lack of consent in sex. Subordinates become loyal faster but can't be sold or given away.""", # MISSING TRANSLATION
+	INFOCONSENT = """Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. Consent will affect prostitution related jobs.""", # MISSING TRANSLATION
+	INFOCONSENTMASTER = """Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. {color=green|[Master] has no Consent requirements for any actions.}""", # MISSING TRANSLATION
+	PERSONALITYNAMEBOLD = """Bold""", # MISSING TRANSLATION
+	PERSONALITYNAMEKIND = """Kind""", # MISSING TRANSLATION
+	PERSONALITYNAMESERIOUS = """Serious""", # MISSING TRANSLATION
+	PERSONALITYNAMESHY = """Shy""", # MISSING TRANSLATION
+	PERSONALITYNAMENEUTRAL = """Neutral""", # MISSING TRANSLATION
+	PERSONALITYCHANGE = """'s personality changed to: """, # MISSING TRANSLATION
+	PERSONALITYSHIFTPERSONALITY_KIND = """[name]'s behavior has shifted to more {color=green|Kind} side.""", # MISSING TRANSLATION
+	PERSONALITYSHIFTPERSONALITY_SHY = """[name]'s behavior has shifted to more {color=green|Shy} side.""", # MISSING TRANSLATION
+	PERSONALITYSHIFTPERSONALITY_SERIOUS = """[name]'s behavior has shifted to more {color=green|Serious} side.""", # MISSING TRANSLATION
+	PERSONALITYSHIFTPERSONALITY_BOLD = """[name]'s behavior has shifted to more {color=green|Bold} side.""", # MISSING TRANSLATION
+	PERSONALITYCURRENT = """Current Personality: """, # MISSING TRANSLATION
+	PERSONALITYREBEL = """
+{color=red|Due to [his] rebellous character, [name] have not accepted this treatment to heart and [his] personality shifted into the opposite direction.} """, # MISSING TRANSLATION
+	LOYALTYSPECTOOLTIP = """Can only unlock 1 specialization per character. Stats will increases with every loyalty level. Loyalty required will grow exponentially.""", # MISSING TRANSLATION
+	SLAVEPROFNAME_COMBAT = """Spc: Combat""", # MISSING TRANSLATION
+	SLAVEPROFNAME_SERVICE = """Spc: Service""", # MISSING TRANSLATION
+	SLAVEPROFNAME_PRESTIGE = """Spc: Prestige""", # MISSING TRANSLATION
+	SLAVEPROFNAME_MANAGEMENT = """Spc: Defense""", # MISSING TRANSLATION
+	SLAVEPROFNAME_MAGE = """Spc: Mage""", # MISSING TRANSLATION
+	SLAVEPROFNAME_HEALER = """Spc: Healer""", # MISSING TRANSLATION
+	SLAVEPROFDESCRIPT_COMBAT = """Specialization: Combat""", # MISSING TRANSLATION
+	SLAVEPROFDESCRIPT_SERVICE = """Specialization: Service""", # MISSING TRANSLATION
+	SLAVEPROFDESCRIPT_PRESTIGE = """Specialization: Prestige""", # MISSING TRANSLATION
+	SLAVEPROFDESCRIPT_MANAGEMENT = """Specialization: Defense""", # MISSING TRANSLATION
+	SLAVEPROFDESCRIPT_MAGE = """Specialization: Mage""", # MISSING TRANSLATION
+	SLAVEPROFDESCRIPT_HEALER = """Specialization: Healer""", # MISSING TRANSLATION
+	HEALERSLAVETRAITDESCRIPT = """Healing Efficiency: {color=green|+2%}""", # MISSING TRANSLATION
+	MANAGERSLAVETRAITDESCRIPT = """Loyalty from skills: +3%""", # MISSING TRANSLATION
 	
 	
 	INFOHOLDSHIFT = "Hold shift for details",
@@ -1619,6 +1718,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 	STATTASK_EFFICIENCY_TOOL = "Task Efficiency Bonus",
 	STATTASK_CRIT_CHANCE = "Task Crit Chance",
+	STATMAGIC_FIND = """Magic Find""", # MISSING TRANSLATION
 
 
 
@@ -1728,6 +1828,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	RACEHALFKINFOXDESCRIPT = "Fox folk are a rare and relatively mysterious breed of Beastkin. They display high intelligence, a tendency towards lifelong monogamy, and congregate in small, close-knit communities.\n\n狐人是一种罕见且相对神秘的兽化裔品种。它们表现出高智商，倾向于终身一夫一妻制，并聚集在小而紧密的社区中。",
 	RACEHALFKINBUNNYDESCRIPT = "Bunnies are one of the least self-sufficient, but nonetheless common beast races. They are not aggressive and can be quite timid. They are quite well liked due to their comforting appearance and their natural lewdness which make them a popular choice for slave pets.\n\n兔子是最不自给自足的动物种族之一，但仍然很常见。它们不具攻击性，也很胆小。它们很受欢迎，因为它们令人舒适的外表和天生的色情，这使它们成为奴隶宠物的热门选择。",
 	RACEHALFKINTANUKIDESCRIPT = "The Tanuki are a rare beast race possessing raccoon features. It's hard to pinpoint any specific mental differences between them and the majority of the humanoid races. Some say that their behavior and attitudes are much like that of the average human.\n\n狸人是一个罕见的具有浣熊特征的野兽种族。很难确定他们与大多数人形种族之间的任何具体心理差异。有人说他们的行为和态度很像普通人。",
+	RACERATKINDESCRIPT = """Ratkin is a race partly related to beastkin and halfkin, being of smaller size with rodentlike features. Their physics allow them to inhabit underground areas, caves and mountains, often contesting other races familiar to such places.""", # MISSING TRANSLATION
 	RACERATKINESCRIPT = "Ratkin is a race partly related to beastkin and halfkin, being of smaller size with rodentlike features. Their physics allow them to inhabit underground areas, caves and mountains, often contesting other races familiar to such places.\n\n鼠人是一个与兽化裔和混血裔有部分亲缘关系的种族，体型较小，具有啮齿动物般的特征。它们的物理特性使它们能够栖息在地下区域、洞穴和山脉中，经常与这些地方熟悉的其他种族竞争。 ",
 	
 	
@@ -1741,6 +1842,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLREWARDDESCRIPT = "类别: {color=green|亲切}\n赢得他们的尊重似乎是一个简单的问题……只要你有足够的硬币。大大提高服从性。",
 	SKILLREWARDSEX = "性奖励",
 	SKILLREWARDSEXDESCRIPT = "类别: {color=pink|色情}\n释放角色欲望以改善行为。目标必须至少有25欲望。由魅力和性因素提高。\n基本效果: \n忠诚 +5, 最大服从。",
+	SKILLMENTOR = """Mentor""", # MISSING TRANSLATION
+	SKILLMENTORDESCRIPT = """Category: {color=green|Gracious}
+Makes selected character recieve more experience for 1 day under your guidance. """, # MISSING TRANSLATION
 	SKILLSEDUCE = "勾引",
 	SKILLSEDUCEDESCRIPT = "类别: {color=pink|色情}\n提高服从并减少服从损耗。由魅力因素提高效果。\n基本效果: \n服从损耗-7持续5天，忠诚: +10, 最大服从。",
 	SKILLGREATSEDUCE = "高级勾引",
@@ -1832,6 +1936,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEPRAISEREPORT = "[name] 赞扬了 [targetname] 的 [targethis] 努力。\n\n{color=aqua|[targetname]} — {random_chat=0|master_praise}",
 	DIALOGUEWARNREPORT = "[name] 已向 [targetname] 发出严重警告，使[targethim]更加了解[targethis]的行为。",
 	DIALOGUESERVEREPORT = "[name] 已接近 [targetname] ，并向 [targethim] 致以 [his] 最诚挚的爱。",
+	DIALOGUEMENTORREPORT = """[name] has began mentoring [targetname] helping [targethim] to learn faster...""", # MISSING TRANSLATION
 	DIALOGUESEDUCEREPORT = "[name] 已经接近 [targetname] ，过了几分钟 [targethim] 就想知道了。尽管视觉上很平静， [targetname] 显然已经被 [him]迷住了。",
 	DIALOGUEGREATSEDUCEREPORT = "[name] 已经接近 [targetname] ，过了几分钟， [targethim] 感到异常. [targetHis] 思想被强烈的欲望所淹没，让[him]变得相当温顺。",
 	DIALOGUEALLUREREPORT = "[name]给了[targetname]一个小小的私人鼓励。",
@@ -1867,6 +1972,13 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLMAKE_UNDEADDESCRIPT = "Makes selected charcter into Undead. Undead's charm is reduced by 100, food consumption is set to 0. Undead can't impregnate or get pregnant. Undead have increased Dark resist and reduced Light resist. \n\nCan't be used on Unique Characters.",
 	
 	DIALOGUEPET_LUST_SKILLTEXT = "在接近[targetname]之前，您应该决定[name]累积的欲望将用于什么。\n\n1。完全恢复服从并获得一些忠诚度\n2。将其转化为经验\n3。恢复健康值和魔力",
+	CONSENT0 = """Innocent""", # MISSING TRANSLATION
+	CONSENT1 = """Curious""", # MISSING TRANSLATION
+	CONSENT2 = """Developing""", # MISSING TRANSLATION
+	CONSENT3 = """Willing""", # MISSING TRANSLATION
+	CONSENT4 = """Lusty""", # MISSING TRANSLATION
+	CONSENT5 = """Kinky""", # MISSING TRANSLATION
+	CONSENT6 = """Deviant""", # MISSING TRANSLATION
 
 	TRAITMASTERDESCRIPT = "Social skills build targets Loyalty 30% faster. \nIsn't affected by Obedience or Loyalty. Will not resist work or attempt escapes.\n社交技能的建立目标忠诚度提高30%。\n不受顺从或忠诚度的影响。不会抗拒工作或试图逃跑",
 	TRAITWORKERDESCRIPT = "Woodcutting and Mining are 50% more efficient.\n伐木和采矿效率提高50%",
@@ -1888,6 +2000,11 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITVALKYRIE_SPEARDESCRIPT = "+10 Speed while equipped with Spear.\n装备长矛时速度+10",
 	TRAITAUTOHIDE = "Conceal.\n概念",
 	TRAITAUTOHIDEDESCRIPT = "Starts combat in Hide if no Heavy or Medium Armor is equipped.\n如果没有装备重型或中型装甲，则在隐藏状态下开始战斗",
+	TRAITDEATHKNIGHTDESCRIPT = """Dealing a killing blow increases Loyalty.""", # MISSING TRANSLATION
+	TRAITNINJADESCRIPT = """Gain evasion based on your MDEF. Minimal chance for evading hit is reduced to 5%.""", # MISSING TRANSLATION
+	TRAITWITCHDESCRIPT = """Your critical hits with spells apply random debuff. Healing spells have chance to apply healing over time.""", # MISSING TRANSLATION
+	TRAITWARLOCKDESCRIPT = """Single target spells gain 25% increased critical chance and deal 75% bonus critical damage.""", # MISSING TRANSLATION
+	TRAITTRUE_SUCCUBUSDESCRIPT = """When taking hit in combat generate some Lust.""", # MISSING TRANSLATION
 	
 	TRAITBASIC_COMBAT = "Basic Combat 基本战斗",
 	TRAITADVANCED_COMBAT = "Advanced Combat 高级战斗",
@@ -1903,6 +2020,13 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITDRUIDDESCRIPT = "Earth Spell damage: +20%\n地法术伤害：+20%",
 	TRAITBERSERKERDESCRIPT = "Fire and Earth Physical damage: +20%\n火和地物理伤害：+20%",
 	TRAITSNIPERDESCRIPT = "Single Target Physical damage: +25%\n单目标物理伤害：+25%",
+	TRAITPALADINDESCRIPT = """{color=brown|Smite}: Deal 25% more damage and take 15% less damage from Undead and Demon type enemies.""", # MISSING TRANSLATION
+	TRAITASSASSINDESCRIPT = """{color=brown|Stealth Mastery}: Hiding can be activated in Medium Armor.""", # MISSING TRANSLATION
+	TRAITBLOODMAGEDESCRIPT = """{color=brown|Blood Mastery}: Dealing damage to bleeding targets recovers HP and MP and increases MATK until end of fight.""", # MISSING TRANSLATION
+	TRAITNECROMANCERDESCRIPT = """{color=brown|Mastery of the Dead}: Passive Summon: Skeletons. Number skeletons is defined by Magic Factor.""", # MISSING TRANSLATION
+	TRAITRANGERDESCRIPT = """{color=brown|Animal Companion}: Passive Summon: Trained Dog""", # MISSING TRANSLATION
+	TRAITALIOSDESCRIPT = """{color=brown|Unbound}: When only character is alive in party: gain +50 evasion, +20 speed until end of battle.""", # MISSING TRANSLATION
+	TRAITSADISTDESCRIPT = """{color=brown|Open Vein}: Melee physical attacks have 25% chance to cause Bleeding for 2 turns.""", # MISSING TRANSLATION
 	
 	TRAITHEALER1 = "Healer:Novice 治疗者：新手",
 	TRAITHEALER1DESCRIPT = "Healing spells are 25% more effective.\n治疗法术的效果提高25%。",
@@ -2039,6 +2163,24 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITLOYALTY_PREGNANCYDESCRIPT = "{color=green|Unlocks an option to keep character's Baby on birth.}\n\nRequires: Sex:Basics",
 	TRAITLOYALTY_INTERBREED = "Pregnancy:Interbreed",
 	TRAITLOYALTY_INTERBREEDDESCRIPT = "{color=green|Allows character to impregnate or be impregnated by usually incompatible race partner}\n\nRequires: Sex:Advanced",
+	TRAITMASTER_MENTOR = """Mentor""", # MISSING TRANSLATION
+	TRAITMASTER_MENTORDESCRIPT = """All present and future characters automatically receive Basic Obedience and Combat loyalty traits.""", # MISSING TRANSLATION
+	TRAITMASTER_HARLOTRY = """Harlotry""", # MISSING TRANSLATION
+	TRAITMASTER_HARLOTRYDESCRIPT = """While in service you still receive Rest benefits.""", # MISSING TRANSLATION
+	TRAITMASTER_PROGENECY = """Progenecy""", # MISSING TRANSLATION
+	TRAITMASTER_PROGENECYDESCRIPT = """Removes race impregnation restrictions.""", # MISSING TRANSLATION
+	TRAITMASTER_COMMUNICATIVE = """Communicative""", # MISSING TRANSLATION
+	TRAITMASTER_COMMUNICATIVEDESCRIPT = """Social skills gain 1 additional charge. Personality influences are twice as strong.""", # MISSING TRANSLATION
+	TRAITMASTER_RESILENCE = """Resilence""", # MISSING TRANSLATION
+	TRAITMASTER_RESILENCEDESCRIPT = """ """, # MISSING TRANSLATION
+	TRAITMASTER_FORTUNE = """Fortune""", # MISSING TRANSLATION
+	TRAITMASTER_FORTUNEDESCRIPT = """Critical chance is increased by 25%. Slightly increases Magic Find.""", # MISSING TRANSLATION
+	TRAITMASTER_INT = """Intelligence""", # MISSING TRANSLATION
+	TRAITMASTER_INTDESCRIPT = """Increases Skill Points gain by 50%.""", # MISSING TRANSLATION
+	TRAITMASTER_FORTITUDE = """Fortitude""", # MISSING TRANSLATION
+	TRAITMASTER_FORTITUDEDESCRIPT = """Grave Injury from being defeated only last 2 turns.""", # MISSING TRANSLATION
+	TRAITMASTER_SORCERY = """Sorcery""", # MISSING TRANSLATION
+	TRAITMASTER_SORCERYDESCRIPT = """MATK +35%, faster mana recovery speed.""", # MISSING TRANSLATION
 	
 	
 	
@@ -2050,6 +2192,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITEFFECTRAREPRECISE = "Rare: Precise\nIncreased Evasion, Hitrate and MDEF",
 	TRAITEFFECTRARETOUGH = "Rare: Tough\nIncreased Health, DEF and MDEF",
 	TRAITEFFECTHARDWORK = "Hard Work: +50%% Productivity",
+	TRAITEFFECTPHYSBUF = """Elixir of Ogre's Strength: +80 Physics""", # MISSING TRANSLATION
+	TRAITEFFECTWITSBUF = """Elixir of Expanded Mind: +80 Wits""", # MISSING TRANSLATION
 	TRAITEFFECTFAVFOOD = "Favorite Food: -1 Obedience Drain, +0.5 Loyalty Gain.", 
 	TRAITEFFECTHATEDFOOD = "Hated Food: -10%% Productivity.",
 	TRAITEFFECTSTARVE = "Starvation: -50%% Productivity, -50%% Damage.",
@@ -2154,6 +2298,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	BUFFDESCRIPTATKPAS = "Damage increased",
 	BUFFDESCRIPTATTACKPASSSRC = "Increases ATK and MATK of allies by 10 every other turn. Clears when defeated.",
 	BUFFDESCRIPTRESTO = "Resting: physical resist increased by 20%%",
+	BUFFDESCRIPTCURSE = """""", # MISSING TRANSLATION
+	BUFFDESCRIPTENCHANT = """""", # MISSING TRANSLATION
+	BUFFDESCRIPTMENTOR = """Experience Gain increased""", # MISSING TRANSLATION
 	
 	
 	
@@ -2294,6 +2441,14 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	PROFFREYAS_PRIESTESS = "Former Freya's Priestess 前弗雷娅的女祭司",
 	PROFFREYAS_PRIESTESSDESCRIPT = "Once a high priestess of elves, now this title hold more bluster than power.\n曾经是精灵的高级女祭司，现在这个头衔更多的是虚张声势而非权力。",
+	PROFDEATHKNIGHT = """Death Knight""", # MISSING TRANSLATION
+	PROFDEATHKNIGHTDESCRIPT = """Sworn to their nature or master, undead warriors are able to grow stronger the more they slaughter.""", # MISSING TRANSLATION
+	PROFWARLOCK = """Warlock""", # MISSING TRANSLATION
+	PROFWARLOCKDESCRIPT = """The most fearsome sorcerors specializing in combat magic are able to incinerate their foes on sight.""", # MISSING TRANSLATION
+	PROFWITCH = """Witch""", # MISSING TRANSLATION
+	PROFWITCHDESCRIPT = """Female sorceresses specialize in hex magic and alchemy.""", # MISSING TRANSLATION
+	PROFNINJA = """Ninja""", # MISSING TRANSLATION
+	PROFNINJADESCRIPT = """Especially agile individuals are trained to evade many attacks as well as also resist magic.""", # MISSING TRANSLATION
 	
 	TRAITRENOWN = "Renown 名声",
 	TRAITRENOWNDESCRIPT = "Gracious skills provide 50% more Loyalty.\n 仁慈的技能可提供50%额外忠诚度",
@@ -2889,10 +3044,13 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUERECRUITCHOOSEPERSON = "选择谈判者",
 	DIALOGUERECRUITENSLAVE = "你决定不支持任何谈判，只是违背[his]意愿让[him]成为你的奴隶.",
 	DIALOGUERECRUITGOOD = "您委托的仆人成功说服 [name] 为您服务.",
+	DIALOGUERECRUITGOODSEDUCE = """Your entrusted servant successfully seduced [name], who agreed to serve you.""", # MISSING TRANSLATION
 	DIALOGUERECRUITGOODSLAVE = "成为奴隶",
 	DIALOGUERECRUITGOODSERVANT = "成为雇工",
 	DIALOGUERECRUITFORCEATTEMPT = "奴役",
 	DIALOGUERECRUITATTEMPT = "尝试招募",
+	DIALOGUERECRUITSUCCUBUS = """Seduce (Succubus), 30 Mana""", # MISSING TRANSLATION
+	DIALOGUERECRUITSUCCUBUSNOMANA = """Seduce (Succubus), 30 Mana (Not enough mana)""", # MISSING TRANSLATION
 	
 	DIALOGUERECRUITBAD = "你委托的仆人没能说服[name]为你服务……别无选择，你奴役[him].",
 	
@@ -2900,6 +3058,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEMEET = "你的仆人找到了一位潜在的可招聘人员, [name], 他似乎有兴趣加入你的家庭. ",
 	DIALOGUEMEETBAD = "你没能说服 [name] ， [he] 向你道别.",
 	DIALOGUEMEETGOOD = "经过讨论[name]同意成为你的追随者. ",
+	DIALOGUEMEETGOODSEDUCE = """Being charmed by a lustful intentions, [name] agrees to become your follower. """, # MISSING TRANSLATION
 	DIALOGUEMEETGOODDEFAULT = "作为雇工添加到花名册",
 	DIALOGUEMEETGOODHIRELING = "",
 	
@@ -2920,6 +3079,14 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEMIMICOPENANYWAY = "想方设法打开",
 
 	DIALOGUEMISSIONCOMPLETE = '您的团队已完成任务并返回豪宅. ',
+	DIALOGUESLAVEREMOVETEXT = """You can dismiss and set free [name] from your possession. 
+
+{color=red|This action is final and can't be reverted.}""", # MISSING TRANSLATION
+	DIALOGUESLAVEREMOVECONFIRMED = """You've decided to set [name] free.
+
+{color=aqua|[name]} — {random_chat_active|leave}
+
+[He] leaves you forever.""", # MISSING TRANSLATION
 
 	
 	SPECIAL_ACTION_CLASS = "特殊操作（需要未知课程）",
@@ -2935,6 +3102,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEAPPROACHSHRINE = "接近神龛",
 	DIALOGUESHRINECHOOSEPERSON = "选择另一个角色",
 	DIALOGUESHRINEITEM = "上供",
+	DIALOGUESHRINEEQUIP = """Offer a piece of equipment""", # MISSING TRANSLATION
 	DIALOGUESHRINECHARACTER = "派遣 [name] 到祭坛",
 	DIALOGUESHRINEDESTROY = "拆除神龛",
 	DIALOGUECHESTLOCKPICK = "尝试开锁",
@@ -2992,6 +3160,18 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEDUNGEONCHEST = "你发现一个锁着的箱子. ",
 	DIALOGUEDUNGEONARMORY = "你发现一个锁着的军械库，里面可能有有用的东西.",
 	DIALOGUEEVENTDUNGEONLOOT = "进入最后一个房间后，你会发现主储藏室里存放着最珍贵的物品. ",
+	DIALOUELOCKEDDOOR = """The pass forward ends in a sturdy locked door. It seems to get through it you might need an additional force... or someone who can lockpick.""", # MISSING TRANSLATION
+	DIALOUELOCKEDDOORSELECT = """Select character (3 Stamina)""", # MISSING TRANSLATION
+	DIALOUELOCKEDDOORBREAK = """Break Through (10 Stamina)""", # MISSING TRANSLATION
+	DIALOUELOCKEDDOORPASS = """[name] skillfully unlocks door blocking the pass allowing to proceed. """, # MISSING TRANSLATION
+	DIALOGUEBLOCKEDPATH = """The pass ahead is blocked by a collapsed tunnel. It seems it still can be fixed by someone with enough physical fitness relatively quickly.""", # MISSING TRANSLATION
+	DIALOGUEBLOCKEDPATHSELECT = """Select character (3 Stamina)""", # MISSING TRANSLATION
+	DIALOGUEBLOCKEDPATHBREAK = """Spend time clearing the passage (10 Stamina)""", # MISSING TRANSLATION
+	DIALOGUEBLOCKEDPATHPASS = """[name] lifts one of the crushed wooden bars and manages to push it away, clearing the path ahead.""", # MISSING TRANSLATION
+	DIALOGUEMAGICBARRIER = """""", # MISSING TRANSLATION
+	DIALOGUEMAGICBARRIERSELECT = """""", # MISSING TRANSLATION
+	DIALOGUEMAGICBARRIERBREAK = """""", # MISSING TRANSLATION
+	DIALOGUEMAGICBARRIERPASS = """""", # MISSING TRANSLATION
 
 	DIALOGUEGROVEWOOD = "你发现一堆准备好的木头，可能被一些伐木工遗弃了. ",
 	DIALOGUEGROVELEATHER = "你发现了一堆隐藏的皮革，可能是偷猎者留下的. ",
@@ -3003,6 +3183,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 	DIALOGUEEVENTDUNGEONPRISONERFREE1 = "你释放并解除了[name]的束缚，这让[he]松了一口气。[he]感谢你，[He]向你展示了[he]牢房附近的一小部分资源，以感谢对[he]的救援。在向[he]解释了如何离开后，你准备继续前行.",
 	DIALOGUEEVENTDUNGEONPRISONERFREE2 = "你释放并解除了[name]的束缚，这让[he]松了一口气。[he]感谢你，[He]向你展示了[he]牢房附近的一件秘密物品，以感谢对[he]的救援。在向[he]解释了如何离开后，你准备继续前行.",
+	DIALOGUEEVENTDUNGEONRESOURCE = """There are resources in this room. You can harvest {amount} items of {resource} later or spend {stamina_cost} stamina to get half of that amount now.""", # MISSING TRANSLATION
 
 	DIALOGUEEVENTGOBLINFRIENDLY = "当你穿过洞穴时，你发现了一个与世隔绝的房间。当你闯入时，一个孤独的小哥布林[boy]吓得跳了起来。\n\n-等等，等等，请不要杀了我！我不想打架，我只是偶然来到这里。我保证，我不会告诉任何人我见过你。\n\n[He]懂普通语言，与其他人完全不同，你会考虑如何处置[he].",
 	DIALOGUEEVENTGOBLINRECRUIT = "尝试招募",
@@ -3115,6 +3296,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ENEMYCAVE_GOBLIN_MELEE = "洞穴哥布林",
 	ENEMYCAVE_GOBLIN_ARCHER = "洞穴哥布林射手",
 	ENEMYCAVE_GOBLIN_SHAMAN = "洞穴哥布林萨满",
+	ENEMYCAVE_GOBLIN_MAGE = """Cave Goblin Mage""", # MISSING TRANSLATION
 	ENEMYCAVE_GOBLIN_BOSS = "洞穴哥布林首领",
 	ENEMYQUEST_GOBLIN_BOSS = "哥布林暴徒",
 	ENEMYQUEST_GOBLIN_SHAMAN = "哥布林法师",
@@ -3138,6 +3320,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ENEMYBALLISTA = "巴利斯塔",
 	ENEMYTROLL = "巨魔",
 	ENEMYBANDIT_ASSASSIN = "土匪刺客",
+	ENEMYSUMMON_DOG = """Trained Dog""", # MISSING TRANSLATION
+	ENEMYSUMMON_SKELETON_MELEE = """Skeleton Warrior""", # MISSING TRANSLATION
+	ENEMYSUMMON_SKELETON_ARCHER = """Skeleton Archer""", # MISSING TRANSLATION
 
 	ENEMYDEMONESS = "女恶魔",
 	ENEMYGREG = "格雷格",
@@ -3252,6 +3437,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEWRIT_CONFIRM = "使用此令状将[name]从奴隶制中解放出来，使[him]成为雇工。然而，如果[him]愿意，这将允许[he]离开你.",
 	DIALOGUEWRIT_SUCCESS = "[name] 不敢相信 [his] 眼睛，因为 [he] 从你那里得到了 [his] 自由的证明. 过了一会, [he] 宣布 [his] 愿意继续在你的统治下服务. \n\n{color=aqua|[name]} — {random_chat=0|writ_success}",
 	DIALOGUEWRIT_FAILURE = "[name] 不敢相信 [his] 眼睛，因为 [he] 从你那里得到了 [his] 自由的证明. 然而，在长时间的停顿之后 [he]抓住了这个机会，决定离开你. \n\n{color=aqua|[name]} — {random_chat=0|writ_failure}",
+	DIALOGUELACTATION_SUCCESS = """As [name] drinks the potion, [his] chest begins ripening and feeling heavier. [His] nipples start seeping with milk much to [his] shame.""", # MISSING TRANSLATION
+	DIALOGUELACTATION_REVERSE = """As [name] drinks the potion, [his] chest seemingly returns to normal, no longer producing any milk. """, # MISSING TRANSLATION
 
 	DIALOGUETITSSELECT = "乳房",
 	DIALOGUEASSSELECT = "屁股",
@@ -3272,6 +3459,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	WORKRULENUDITY = "裸体",
 	WORKRULENUDITYDESCRIPT = "Forces [name] to stay naked while at mansion (if has corresponding sprite). This effect is cosmetic.",
+	WORKRULEPERSONALITY_LOCK = """Lock Personality""", # MISSING TRANSLATION
+	WORKRULEPERSONALITY_LOCKDESCRIPT = """[name] will no longer have [his] personality affected by social actions.""", # MISSING TRANSLATION
 	
 	SERVICEENSLAVE = "奴役",
 	SERVICEENSLAVEDESCRIPT = "Makes chosen character into a Slave.\n\n[color=aqua]Slaves suffer 10% damage reduction but gain various collection bonuses and but their Loyalty can be increased by punishing skills.[/color]",
@@ -4256,6 +4445,10 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SIGMUND_ANSWER4 = "— 啊，该死，很好，只要你能处理它.",
 
 	SIGMUND_EXTRA1 = """— 你知道，国王去世时我不在身边。是的，非人类不被允许担任任何重要职务。我真的不喜欢整个战争事务，但显然你不会看到我站在那些时代的粉丝一边.""",
+	LACKSEXTRAINING = """
+{color=red|[name] lacks Prostitution Training to be assigned to this service}""", # MISSING TRANSLATION
+	LACKSEXTRAININGSLAVE = """
+{color=red|[name] lacks Prostitution Training and will only earn 2/3 of the potential gold from it.}""", # MISSING TRANSLATION
 
 
 	STATOBDRAINREDUCTION = "服从下降减少",
@@ -4278,10 +4471,16 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMSWORDADV = "重剑",
 	ITEMSTAFFADV = "大师之杖",
 	ITEMSPEARADV = "金精长矛",
+	ITEMMACEADV = """Warpick""", # MISSING TRANSLATION
 	ITEMBOWADV = "大弓",
+	ITEMCROSSBOWADV = """Heavy Crossbow""", # MISSING TRANSLATION
+	ITEMBATTLEAXEADV = """Cleaver""", # MISSING TRANSLATION
 	ITEMSWORDADVDESCRIPT = "一种包含额外材料的强大武器.",
 	ITEMSTAFFADVDESCRIPT = "一种包含额外材料的强大武器.",
 	ITEMSPEARADVDESCRIPT = "一种包含额外材料的强大武器.",
+	ITEMMACEADVDESCRIPT = """A masterful weapon forged with inclusion of additional materials.""", # MISSING TRANSLATION
+	ITEMCROSSBOWADVDESCRIPT = """A masterful weapon forged with inclusion of additional materials.""", # MISSING TRANSLATION
+	ITEMBATTLEAXEADVDESCRIPT = """A masterful weapon forged with inclusion of additional materials.""", # MISSING TRANSLATION
 	ITEMBOWADVDESCRIPT = "一种包含额外材料的强大武器.",
 
 	ARMORENC = "外壳",
@@ -4289,6 +4488,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 	ITEMLATEX_SUIT = "乳胶套装",
 	ITEMLATEX_SUITDESCRIPT = "紧身衣凸显身体曲线.",
+	ITEMSERVICE_SUIT = """Bunny Costume""", # MISSING TRANSLATION
+	ITEMSERVICE_SUITDESCRIPT = """This costume somehow works wonders on attracting male attention in public places.""", # MISSING TRANSLATION
 
 	MATERIALTROLL_BLOOD = "食人魔血",
 	MATERIALTROLL_BLOODDESCRIPT = "一小瓶从击败的食人魔中获得的红色液体.",
@@ -6351,6 +6552,8 @@ ANASTASIA_DECLARATION_4MC = """当阿纳斯塔西娅大声朗读演讲的其余�
 	MATERIALDIVINE_SYMBOLDESCRIPT = "一块硬币形状的小金属，可以作为某些艺术的媒介。尽管它看起来很简单，但它展示了相当的工艺。",
 	MATERIALBLESSED_DIVINE_SYMBOL = "神圣的祝福符号",
 	MATERIALBLESSED_DIVINE_SYMBOLDESCRIPT = "一块发出微弱光线的硬币状金属。",
+	ITEMZEPHYRA_UNDERWEAR = """Ripples of Pristine Waters""", # MISSING TRANSLATION
+	ITEMZEPHYRA_UNDERWEARDESCRIPT = """Excessively rare item, a one of a kind, or at least a one you've obtained.""", # MISSING TRANSLATION
 
 	UNIQUECLASS = "无法正常获取",
 
@@ -6508,6 +6711,20 @@ ANASTASIA_DECLARATION_4MC = """当阿纳斯塔西娅大声朗读演讲的其余�
 	DAISY_CLOTHES_AMELIA_OPTION_2_2_1 = "成交 (250 金币)",
 	DAISY_CLOTHES_AMELIA_REPLY_3_150 = "您将150金币交给阿米莉亚，并安排黛西与裁缝会面，然后离开。",
 	DAISY_CLOTHES_AMELIA_REPLY_3_250 = "您将250金币交给阿米莉亚，并安排黛西与裁缝会面，然后离开。",
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_1 = """I'm looking for a custom-made dress.""", # MISSING TRANSLATION
+	DAISY_CLOTHES_AMELIA_REPLY_NEW_LEADER_1 = """You explain to Amelia that one of your slaves needs a change of clothes.
+	
+— Why, yes, proper servants' attire is one of our specialties. You know, the right clothes make a big difference even for less ideal bodies, naturally we have tailors who can adjust for any required body type. But what are you looking for, anyway?""", # MISSING TRANSLATION
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_1 = """I want a normal servant dress.""", # MISSING TRANSLATION
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_2 = """I want something lewder.""", # MISSING TRANSLATION
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_3 = """I've changed my mind.""", # MISSING TRANSLATION
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_2_1 = """— Fair enough, we can tailor something fitting for a well-to-do landowner's servant. It will be durable and resilient to wash. We'll also provide a spare in case of any accidents. This will cost you 150 gold.""", # MISSING TRANSLATION
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_1_1 = """Deal. (150 gold)""", # MISSING TRANSLATION
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_REFUSE = """Refuse.""", # MISSING TRANSLATION
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_2_2 = """— Then you've come to the right place. We can make a servant dress which will appear normal, but will allow easy access to the servant's more private areas. Moreover, the fabric will subtly stimulating the servant's erogenous zones, so they will become and remain aroused while at work. This would be more to your liking? I'll only ask you 250 gold for it.""", # MISSING TRANSLATION
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_2_1 = """Deal. (250 gold)""", # MISSING TRANSLATION
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_3_150 = """You pass 150 gold to Amelia and arrange Daisy's meeting with the tailor, after which you make your way out.""", # MISSING TRANSLATION
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_3_250 = """You pass 250 gold to Amelia and arrange Daisy's meeting with the tailor, after which you make your way out.""", # MISSING TRANSLATION
 
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_0 = """黛西穿着她的新裙子站在你面前，幸福得闪闪发光。她的新衣服远胜旧衣服，她开始对你更加忠诚了。
 
@@ -7603,6 +7820,40 @@ GRYPHON_ANA_SEX_4 = """精灵女孩和公主轻轻地上下摆动，你的阴茎
 	ZEPHYRA_SWORD_2_OPTION_2 = "收集完所有神器后会发生什么？",
 	ZEPHYRA_SWORD_3_1 = """— 我也是。好吧，你是市长，我相信你最终会有机会的。在那之前，如果你不介意的话，我会一直陪在你身边。""",
 	ZEPHYRA_SWORD_3_2 = """— 不知道。很抱歉，我只能含糊地解释我们应该做什么的大致想法。我希望这不会让你太失望？在我们取得更多进展之前，我希望留在你身边。""",
+	ZEPHYRA_SWORD_3_2_1 = """[Charm] Are you hiding something from me?""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_2_2 = """[Wits] If you want my help, I want to know more about what we are doing.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_2_3 = """Very well, I'll help you.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_2_4 = """I'll get to it when I have time.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_2_FINISH = """Zephyra nods with her usual smile on her face before leaving you to yourself.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_1 = """{color=green|Success}
+
+— I wish I could tell you more, but I barely get anything other than my personal hunch about what's going on. All I'm certain of is that there's an ominous plot being staged beyond our sight, the one threatening everyone. I know it's a weak premise, but I can't do nothing on it. 
+
+— And if you want to know why I think my own actions are so important, let's say I'm not just some random girl of unusual descendancy who got granted a god's power and guidance. Well, after all, nothing in this world is truly accidental, don't you think?""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_1_OPTION_1 = """Many things in our lives are purely random.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_1_OPTION_2 = """I can't deny the certainty of some seemingly arbitrary actions.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_1_1 = """— Don't be harebrained, [name]. Not a single action taken can be replayed after it is unveiled, there's only single chance for everything what happened was certain to happen. The fate is the truth we live by. And this fate is guided by something far greater than your or mine life.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_1_1_OPTION1 = """And if this happens to lead you to your death?""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_1_1_OPTION2 = """Enough of this talk.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_1_1_1 = """— In this case I'll be very sad. Because of my death. But also because it would indicate a severe disaster for the rest of the world. """, # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_1_2 = """— So we are like-minded. That's a relief to know. """, # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_2 = """{color=red|Failure}
+
+	Zephyra looks around with a troubled expression of someone having to answer a childish questions rather than someone being interrogated.
+
+	— *Sigh* Look, if that's still not enough for to convince you, how about I dirty bribe you then? Tell what can I get you.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_2_OPTION_1 = """You could give something valuable as a way of insurance.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_2_OPTION_2 = """Something intimate could prove your sincerity.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_2_OPTION_3 = """Forget about it, I'll trust you.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_2_1 = """Hearing your mundane request, Zephyra reaches her pocket and produces a sizable pouch of gold coins. She puts it before you before stepping back.
+
+— This is about five hundred and this is all I have as my safety measure. So now I'm financially completely in your care. You wonder why? That's the extension of my trust... or stupidity. """, # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_2_2 = """Zephyra blushes for a bit, after which she leaves a room. After a few moments of rustling behind the door, she enters again and puts into your hand a still warm piece cloth, which appear to be her undergarment. 
+
+— Happy now, dear Mayor? This way both you get what you want and I could make some scandalous claims if you do something bad. Now, please excuse me, I don't want to keep around here... or anywhere, being that unprotected. 
+
+Zephyra leaves to her room before you get a chance to react. It seems she will take you reaction as an agreement.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_4 = """- Now, have I satisfied your curiosity? What is your answer?""", # MISSING TRANSLATION
 	PRIESTESS_SWORD_TALK_1_1 = """预约后，你得到了一个和女祭司会面的机会。
 
 — 你最好知道，我接待你只是因为你的地位很高。你需要什么？""",
@@ -9549,6 +9800,11 @@ CALI_AMELIA_4_1 = """当阿米莉亚把女孩拉得更近时，卡莉在闲聊�
 你们两个就这样呆了一会儿，当你把精致的布移到一边时，她气喘吁吁，轻轻地呻吟着，当你的手终于在她皮肤的热量上滑动时，她的乳房在你手里变得柔软，浑身湿透，下面的小孔很容易勾引到你的手指。
 
 — 这比我的手指好多了... 带我 [name]. 请...""",
+	LILIA_SEX_SCENE_1_2 = """The girl seems to shiver a bit by either fear or excitement as your hand slides up her side, undoing the broach on her dress to expose her chest now, two small but soft mounds. A soft sigh from the female answers your question before as she grinds her hips back against you, likely without even realizing it.
+
+You two stay like this for a few moments, her panting and softly moaning as you move aside the delicate cloth, her breast soft in your hand as finally your hand slides over the heat of her sex, only to find her soaked, the tiny hole easily stretching to allow your fingers. 
+
+— T-that's so much better than my fingers... Take me, [name]. Please...""", # MISSING TRANSLATION
 	LILIA_SEX_SCENE_2 = """过了一会儿，你的裤子就打开了，当你开始磨那个可爱的小洞时，小阴蒂很容易就在你面前立起了。莉莉娅在这个过程中发出了一声轻柔的呻吟，然后当你开始压到她身上时，她发出了更大的尖锐呻吟，拉伸并迫使你撕碎了她的处女膜。
 
 你慢慢来，在意识到让她靠在你的轴上反弹更容易之前，臀部向她倾斜，几乎比预期的更容易触底。就莉莉亚而言，她持续不断的猥亵声音只会驱使你走得更远，现在更难了。
@@ -11921,6 +12177,7 @@ CALI_ACT5_PET_9_2 = """— 为什么... 感觉还好...?
 	AMELIA_INTERLUDE3_1_OPTION_1 = """对像我一样帮助过公会的人要求有点高，不是吗？（魅力检定）""",
 	AMELIA_INTERLUDE3_1_OPTION_2 = """这个价钱很公道。""",
 	AMELIA_INTERLUDE3_1_OPTION_3 = """我现在没有钱。""",
+	AMELIA_INTERLUDE3_1_OPTION_4 = """Actually, I'd rather have Amelia return to being a leader""", # MISSING TRANSLATION
 	AMELIA_INTERLUDE3_2_1 = """— 很高兴与您做生意，[name] 市长。阿米莉亚将被直接送到您的庄园。我相信没有比你更好的[master]了。我希望在这之后，我们将继续受到您的青睐。我暂时还有什么可以帮您的吗？ """,
 	AMELIA_INTERLUDE3_2_2 = """—好吧，这不是一笔小数目，是吗？别担心。在你付得起费用之前，我们会确保阿米莉亚住得舒适。我暂时还能帮你什么吗？""",
 	AMELIA_INTERLUDE3_2_3 = """我们把他交给了城市卫兵。他确实试图自杀。这不再是简单的违反行会规则。这是犯罪。""",
@@ -11930,6 +12187,13 @@ CALI_ACT5_PET_9_2 = """— 为什么... 感觉还好...?
 	AMELIA_INTERLUDE3_2_OPTION_3 = """不，仅此而已。""",
 	AMELIA_INTERLUDE3_3 = """那么，很高兴见到你，[name] 市长。祝你今天愉快。""",
 	AMELIA_INTERLUDE4 = """行会关闭""",
+	AMELIA_RETURN_1 = """Sildur looks at you with a deeply puzzled expression.
+
+— I-I suppose this is possible if that's your wish... After all, we haven't selected a proper new leader yet, so she can be restored to her position, if that's what you want.""", # MISSING TRANSLATION
+	AMELIA_RETURN_1_OPTION_1 = """Yes, I want it.""", # MISSING TRANSLATION
+	AMELIA_RETURN_1_OPTION_2 = """Maybe not, after all.""", # MISSING TRANSLATION
+	AMELIA_RETURN_2_1 = """— Very well, we'll restore her to her position as a guild leader. She might actually become more famous after all of this.""", # MISSING TRANSLATION
+	AMELIA_GREETING_AFTER_RETURN = """— [name]... That was a surprise you've given up on me just like that. But I'm not angry. After all, I'm used to disappointments. Anyway, what can I help you with?""", # MISSING TRANSLATION
 	AMELIA_FINAL_1 = """—　终于，救世主出现了。[name] 市长，如此勇敢地来拯救这位需要帮助的少女，感觉如何？""",
 	AMELIA_FINAL_1_OPTION_1 = """这不是第一次了，还记得吗？不过你最好不要习惯。""",
 	AMELIA_FINAL_1_OPTION_2 = """很好。我喜欢成为英雄。""",
@@ -12018,6 +12282,360 @@ CALI_ACT5_PET_9_2 = """— 为什么... 感觉还好...?
 	AMELIATASKNAME = "搜索阿米莉亚",
 	AMELIATASKDESCRIPT = "派遣搜索小组寻找有关阿米莉亚下落的任何线索。",
 	SERVANTSNOAMELIA = "由于阿米莉亚不再是仆人行会的领袖，这个地方目前是空的。",
+	SERVANTS_INTRODUCTION_NEW_LEADER_1 = """""", # MISSING TRANSLATION
+	DAISY_TRAINING_NEW_LEADER_REPLY_1 = """You explain how you think Daisy could benefit from training to become more professional.
+
+— Of course we have training which would improve her performance, depending on what you'd like.""", # MISSING TRANSLATION
+	DAISY_TRAINING_NEW_LEADER_OPTION_2_1 = """I want her to be trained normally. (200 gold)""", # MISSING TRANSLATION
+	DAISY_TRAINING_NEW_LEADER_OPTION_2_2 = """What other options are there?""", # MISSING TRANSLATION
+	DAISY_TRAINING_NEW_LEADER_OPTION_2_3 = """There's something else?""", # MISSING TRANSLATION
+	DAISY_TRAINING_NEW_LEADER_OPTION_2_4 = """I want her to be trained normally and sexually. (300 gold)""", # MISSING TRANSLATION
+	DAISY_TRAINING_NEW_LEADER_OPTION_2_5 = """I want to turn her into a fucktoy. (400 gold)""", # MISSING TRANSLATION
+	DAISY_TRAINING_NEW_LEADER_OPTION_2_6 = """I'll return later.""", # MISSING TRANSLATION
+	DAISY_TRAINING_NEW_LEADER_REPLY_2_2 = """— Well, I'd expect you'd want her to be trained to clean, serve, know proper etiquette and so on. We can do that, or additionally teach her to serve with her body. Nothing too exotic, a bit of assertiveness, oral skills, being a bit more honest in her needs, you know. In case you are wondering, she would keep her chastity for the most part, as this training will not include any real intercourse.""", # MISSING TRANSLATION
+	DAISY_TRAINING_NEW_LEADER_REPLY_2_3 = """— If you think she'd be better suited for something completely... different, we can train her especially to be a plaything. She'd be able to serve many men at once, perform degrading actions and enjoy herself while at it. That's a bit more difficult, but I'm sure she's more than predisposed to it. She would be constantly used by other people during the training, I'm sure you understand.""", # MISSING TRANSLATION
+	DAISY_TRAINING_NEW_LEADER_REPLY_2_1 = """— A splendid choice. Glad to do business with you, [name]. I vow you'll be happy with the results.
+
+You arrange a time for Daisy's training and leave.""", # MISSING TRANSLATION
+	DAISY_TRAINING_NEW_LEADER_REPLY_2_4 = """— A splendid choice. Glad to do business with you, [name]. I vow you'll be happy with the results.
+
+You fill out a small form denoting which actions should be excluded from her training and set up a time for Daisy to attend.""", # MISSING TRANSLATION
+	DAISY_TRAINING_NEW_LEADER_REPLY_2_5 = """— A splendid choice. Glad to do business with you, [name]. I vow you'll be happy with the results.
+
+You fill out a small form denoting which actions should be excluded from her training and set up a time for Daisy to attend.""", # MISSING TRANSLATION
+	DAISY_LOST_NEW_LEADER_OPTION_0 = """I've lost someone...""", # MISSING TRANSLATION
+	DAISY_LOST_NEW_LEADER_REPLY_0 = """— That's a grim situation, we certainly condemn kidnapping, even when it happens to a slave. I remember the girl, you did send her for our training, right? There was a landowner who seemed rather interested in her and asked after her owner. His name was Ramont... not quite one of ours.""", # MISSING TRANSLATION
+	DAISY_LOST_NEW_LEADER_OPTION_1_1 = """I might have received a letter from him.""", # MISSING TRANSLATION
+	DAISY_LOST_NEW_LEADER_OPTION_1_2 = """How could you give him my information like that?""", # MISSING TRANSLATION
+	DAISY_LOST_NEW_LEADER_REPLY_1_1 = """— He offered to purchase her from you? It seems he'd be our prime suspect then. He lives aways from the city. You better be prepared before going to meet him.""", # MISSING TRANSLATION
+	DAISY_LOST_NEW_LEADER_REPLY_1_2 = """— Relax, a slave's owner is a matter of general record. I know how you feel right now, but trust me I'm on your side here. Anyway, it seems he'd be our prime suspect then. He lives aways from the city. You better be prepared before going to meet him.""", # MISSING TRANSLATION
+	MARRIAGE_SERVANTS_NEW_LEADER_1_1 = """— Finally going to seal the deal with our little princess? That's great news.""", # MISSING TRANSLATION
+	MARRIAGE_SERVANTS_NEW_LEADER_1_2 = """— Ooh? Well, that's amazing news, I'm very happy for you, Mayor.""", # MISSING TRANSLATION
+	MARRIAGE_SERVANTS_NEW_LEADER_1_3 = """So you want us to prepare everything for your wedding? A person of your caliber can't have a simple wedding, after all. We will likely need at least a couple hundred of each foodstuff to start with. As for the drinks, we can get away with 10 bottles of whiskey and, let's say, 25 pints of beer. The rest we'll be able to sell to the guests from a couple of local suppliers I know.""", # MISSING TRANSLATION
+	MARRIAGE_SERVANTS_NEW_LEADER_2 = """— Lastly, I'm gonna need 3.000 gold from you for the performers and couriers. I'm sure you understand. Also, I'd like you to provide a list of guests you wish to see, and I won't get upset if you add me to it, hehe. Once you have everything, let me know and we'll start the preparations right away.""", # MISSING TRANSLATION
+	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_OPTION = """I've prepared everything for the wedding.""", # MISSING TRANSLATION
+	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_1 = """— Splendid, I hope you've prepared the other stuff as well. Before you go, there's one more thing I want to ask.""", # MISSING TRANSLATION
+	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_2 = """— There's one more thing I want ask you about the guests if you'll pardon me. There's a certain category of... indecent people, who will surely seek to appear at the Mayor's wedding. While it might seem to you like a completely abhorrent thing, they are also quite rich and are known to be very generous if certain services are rendered by the bride.""", # MISSING TRANSLATION
+	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_3 = """— In no way am I suggesting you should compromise your wedding. So let me know if you want them to be invited at all.""", # MISSING TRANSLATION
+	MARRIAGE_SERVANTS_NEW_LEADER_OPTION_1 = """*Invite them*""", # MISSING TRANSLATION
+	MARRIAGE_SERVANTS_NEW_LEADER_OPTION_2 = """*Refuse*""", # MISSING TRANSLATION
+	MARRIAGE_SERVANTS_NEW_LEADER_COMPLETE_4 = """— Understood. With that set, I hope to see you soon and wish you a very happy wedding, [name].""", # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_START_OPTION = """*Ask on Cali's beneficence*""", # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_1 = """You approach ask around the guild helpers and they direct you to a general training for female servants. Basic skills of sewing, cooking and etiquette which will be a good spot for any girl to start with.
+
+With a hint of doubt, Cali agrees to try these activities. 
+
+— Huh, I'm not sure I'm good with this stuff...""", # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_1_OPTION_1 = """Don't worry, you can do it.""", # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_1_OPTION_2 = """There's first time for everything, you won't know until you try.""", # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_1_OPTION_3 = """You shouldn't get discouraged right as we started.""", # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_2 = """— Okay, okay, I'm gonna try it. 
+
+After discussing it with the helpers, you are explained about general training for future servant girls which starts with figuring out the most talented aspects, dressing up, signing and formal language. Cali agrees to try this out.""", # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_3 = """As Cali is trying on a new long dress, she does not seem particularly comfortable in it, nor does it seem to suit her sharp features. Despite that she still undergoes etiquette lessons which visually tires her. """, # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_4 = """As she goes on a break, Cali spots a small cat moving through the backyard. Forgetting everything about the conduct, she tries to sprint to it but trips and falls due to her attire.
+
+— O... Ouch... Crap!
+
+Also forgetting to watch her tongue, she realized that her dress was torn because of the fall. Sadly, you'll have to pay for it. You decide to call it a day and make the wolf girl change back.""", # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_5 = """Cali seems to be in a sorry state as she comes back to you.
+
+— Sorry, for some reason it's really hard for me to act like normal girls. And having to dress like this is so frustrating... Maybe I should forget about this.""", # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_5_OPTION_1 = """You shouldn't give up just yet.""", # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_5_OPTION_2 = """Maybe it isn't for you after all.""", # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_6 = """{color=yellow|Amelia: — I saw your training, Cali is it? Nice to meet you.}
+
+{color=aqua|Cali: — Hello... Who are you?}
+
+{color=yellow|Amelia: — Consider me a humble person who would like to give advice. I'm sorry these ears seem to eavesdrop on your conversation, but in truth I think you've taken a slightly wrong approach.}
+
+{color=aqua|Cali: — What do you mean?}""", # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_7 = """{color=yellow|Amelia: — You are a girl and you want to look more like one, am I correct? However, as you've noticed, you aren't quite like other girls.}
+
+Cali gets visually discouraged hearing this, but Amelia does not stop there.
+
+{color=yellow|Amelia: — This does not mean you should give up, though. If some things don't work for you, others might.}
+
+{color=aqua|Cali: — I still don't really understand.}
+
+{color=yellow|Amelia: — Do you mind me taking some of your time? It won't cost you anything. I would not feel right if you left us unsatisfied.}""", # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_8 = """After a moment Cali agrees and Amelia takes her away from you. As you wait for about half an hour, Cali reappears before you and seems to be in a quite better mood than when she left. You can't quite make out what changed about her, but somehow she grabs your subconscious attention as she moves towards you. 
+
+{color=aqua|Cali: — [Master]! Sorry for taking time...}
+
+As she observes your reaction she starts smiling even more.""", # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_8_OPTION_1 = """You look pretty.""", # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_8_OPTION_2 = """What was it?""", # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_8_OPTION_3 = """You seem somewhat different.""", # MISSING TRANSLATION
+	CALI_SERVANTS_NEW_LEADER_9 = """{color=yellow|Amelia: — He-he, so you notice it now? You don't need a complete attire change or a full makeup to emphasize your beauty. Some pose and expression training look a lot more natural for you. Well, that and a couple small woman secrets.}
+
+You notice how Cali now looks at Amelia with respect. In the end, encouraged with the results, Cali agrees to occasionally visit and learn from Amelia. As she walks outside, Amelia speaks to you.
+
+{color=yellow|Amelia: — She's a good girl, you better not betray her trust in you.}
+
+Not waiting for your reply she disappears from sight as nonchalantly as she appeared. 
+
+{color=green|Cali: Charm Factor +1
+Cali: Charm +10}""", # MISSING TRANSLATION
+	SERVANTS_NEW_LEADER_CLOSE = """""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_1_OPTION_1 = """Check elven houses""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_1_1 = """As you walk through the settlement, you come across an agitated elf woman.
+
+— I can't believe my idiot husband. I knew marrying someone following a different deity is going to be tough, but I guess Alios followers are a special kind. Lately he has been really annoying about rumors of some champion or something.
+
+Unable to find any words for this situation you decide to leave her alone.""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_1_2 = """You walk by the familiar house. You aren't sure what you can do here right now.""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_2 = """As you and Zephyra go through the village's side street, you are suddenly approached by an overly expressive elven civilian of ambiguous age. 
+
+Elf: — No way, are you... Zephyra, The Champion of Alios?! 
+
+Zephyra: — I wish I could lie about it, but my agreement requires me to confirm my identity to the believers...""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_2_OPTION_1 = """Aren't you happy that someone finally acknowledges you?""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_2_OPTION_2 = """You should be more faithful to your duty.""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_2_OPTION_3 = """(To the man) Sorry, we aren't giving interviews to strangers.""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_3_1 = """Elf: — I knew it! My name is Wirenth, I've been a devoted Alios follower since the times he was in our lands.
+
+Zephyra: — Uh, huh, a long time ago then...
+
+Wirenth: — I know you are a fairly recently became his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
+
+Zephyra: — You've done well flattering me, might I ask what can I do for your dutious worship?""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_3_2 = """Elf: — I knew it! My name is Wirenth, I've been a devoted Alios follower since the times he was in our lands.
+
+Zephyra: — Uh, huh, a long time ago then...
+
+Wirenth: — I know you are a fairly recently became his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
+
+Zephyra: — ...Former High Priestess.
+
+Wirenth: — Gah, this is less important than meeting a herald of Alios herself.
+
+Zephyra: — You've done well flattering me, might I ask what can I do for your dutious worship?""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_3_3 = """Zephyra: — Well, this is a shame, but I'm afraid because of my selfish [Master] I won't be able to help you out. 
+
+Wirenth: — Oh... Uh, alright... I wish you the best on your journey... 
+
+You leave the disappointed elven man and for some reason decide not to go over his place any time soon.""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_4 = """Wirenth: — Truth be told... Can I ask for your private audience? 
+
+Zephyra: — ...Huh?
+
+Wirenth: — My wife is not currently at home and I don't have too much time till she returns. I know how it may look, but I'm doing it with the best faith in Alios.
+
+Zephyra: — Uh, I'm somewhat busy right now, but if [Master] has no objections...""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_4_OPTION_1 = """Are you sure about that? It doesn't look safe""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_4_OPTION_2 = """This seems important, so just get on with it""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_4_OPTION_3 = """Sorry, I can't let you go like that""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_5_1 = """Zephyra: — I don't sense any danger from him, so I'm sure it's gonna be fine. Besides, I still have a duty to fulfill as a champion.""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_5_2 = """As Zephyra and the man move into the house, you put your ear next to the door listening to their conversation...
+
+Wirenth: — ...I'm sorry, this is kinda embarrassing for me, but...
+
+......
+
+Zephyra: — ...Look, you aren't serious about this, right? It's even more embarrassing for me... Well, since you've been a faithful follower... *Sigh*...
+
+........
+
+Wirenth: — ...Ooh, this is great!... I knew it, it is just the right size for your body...
+
+Zephyra: — ...Don't say that, this sounds terrible...""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_5_OPTION_1 = """*Rush in*""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_5_OPTION_2 = """*Keep waiting*""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_6_1 = """As you barge inside, you find Zephyra wearing strange white and red clothes looking nothing like what she was wearing before. She does seem to be embarrassed wearing this.
+
+Zephyra: — [Master]! Why are you rushing in like this?! Gosh, why did this happen to me...
+
+Wirenth: — Oh no... Please, close the door before our neighbors see it.""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_6_2 = """After a few minutes Zephyra leaves the house brushing her clothes with the sad looking man following after her. You can read embarrassment and annoyance on her face. 
+
+Zephyra: — We shall not speak about what has been happening just now and lets be on our way.
+
+Wirenth: — I-I'm sorry... But thank you for paying me a visit, perhaps, if you change your mind...
+
+Before he could finish the foxgirl already went for a considerable distance making you follow her.""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_7 = """After you've closed the door, Wirenth finally explains himself.
+
+Wirenth: — W-well... You see, a few years ago there was a traveling merchant passing through our village, and I had this unbearable urge to purchase this outfit once I saw it... Even though its not even fit for my wife...
+
+Zephyra: — I can't believe I agreed to wear this.
+
+Wirenth: — But now I know this is exactly why I got it! It was meant for you, Champion Zephyra. It must have been Alios' guidance all this time.
+
+Zephyra does not comment on it, trying to either facepalm herself or hide her blush with it. It seems she believes in what the man said.""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_7_OPTION_1 = """I actually like it""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_7_OPTION_2 = """Is this some faraway land outfit?""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_8_1 = """Zephyra: — [Master], please, not you as well... What's wrong with men? I guess, there's no other choice for me but to keep this gift now.
+
+Wirenth: — Yes! It suits you so well. It's not like I had any use for it so it was destined to end up being yours.
+
+Zephyra: — Fine, fine... T-thank you for this... As long as [Master] finds this appealing.""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_8_2 = """Wirenth: — Yes! It suits you so well. It's not like I had any use for it so it was destined to end up being yours.
+
+Zephyra: — Fine, fine... T-thank you for this... As long as [Master] finds this appealing.""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_9 = """After shaking the Wirenth's hand you both make out of his home. 
+
+Zephyra: — [Master], are you planning to keep me wearing this? I can't shake the feeling this has some underlying meaning I can't quite comprehend yet, like being of fox ancestry has something obscure to do with this.""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_9_OPTION_1 = """I think it suits you really well""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_9_OPTION_2 = """You can take it off if you want""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_9_OPTION_3 = """Perhaps, you should dye your hair orange and learn cooking""", # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_10_1 = """Zephyra: — Of course [Master] does, I'm never going to question your deviant tastes. 
+
+Zephyra makes a playful chuckle seemingly accepting this recent attire. """, # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_10_2 = """Zephyra: — Hmm... I'll consider it.
+
+Despite your expectation for Zephyra to get rid of this costume as soon as possible, she smiles wryly at her own thoughts. """, # MISSING TRANSLATION
+	ZEPHYRA_COSTUME_10_3 = """Zephyra: — Absolutely not, never, in no reality or fantasy this is going to happen. I value my life too much to make my older sister mad at me for trying to impersonate her. As for cooking, only if you promise to eat anything I make.""", # MISSING TRANSLATION
+	DAISY_WEDDING_1 = """— ...Master, I'm— I'm the happiest I've ever been! You've taken such good care of me despite... my mistakes...
+
+You reassure her that whatever mistakes she makes can't possibly outweigh your love for her.
+
+— M–Master!
+
+Daisy kisses you, her shaky hands grasping at your clothes as if you'll disappear.
+
+— Ah! I did that without orders...! I— Um... Do you... want me tonight, Master?""", # MISSING TRANSLATION
+	DAISY_WEDDING_1_OPTION_1 = """Of course.""", # MISSING TRANSLATION
+	DAISY_WEDDING_1_OPTION_2 = """I'm a bit tired after the ceremony.""", # MISSING TRANSLATION
+	DAISY_WEDDING_2_1 = """Daisy blushes. Her mouth opens and closes over and over again, but nothing comes out.
+
+She lets you lead her to your bedroom, a silly smile on her face.""", # MISSING TRANSLATION
+	DAISY_WEDDING_2_2 = """— O–Oh... Maybe we can... um, cuddle instead?
+
+You tell her you might later, but you're going to get some sleep.
+
+Daisy sits down on your bed, looking around at everything in the room but you.
+
+— So, um... h–how do you want me, Master?""", # MISSING TRANSLATION
+	DAISY_WEDDING_3 = """You push Daisy back onto the bed and lift her dress excitedly, exposing her wet pussy
+
+— Ah...!
+
+Daisy looks up at you with eyes glowing in the moonlight.
+
+— Are you sure I'm worthy of your... love, Master?""", # MISSING TRANSLATION
+	DAISY_WEDDING_4 = """You pull out your cock in response, watching as her eyes become glued to it. She gulps as you slide it over her pussy teasingly before inserting yourself all at once.
+
+You start moving, plunging as deeply into her as you can. Pulling back until just your tip remains on the inside of her pussy, you thrust back in.""", # MISSING TRANSLATION
+	DAISY_WEDDING_5 = """Her pussy clings tightly to your dick as you pleasure her with fast and hard motions. The wet sounds from your intercourse messily stain the bed. Daisy seems to have relaxed since your insertion, watching as you fuck her.
+
+— Ngh...! I'm...!!""", # MISSING TRANSLATION
+	DAISY_WEDDING_6 = """Daisy's pussy tightens around your dick as a wave of her cum flows out. She shivers as she submissively gives in to your will. Her exasperation leads to heavy breaths as she takes you inside her dutifully.
+
+Despite her words, Daisy's eyes are locked to yours as you fill her pussy with your cum. Your dick wildly ejaculates inside her pussy, filling her up quickly. Her ears twitch and her whole body shivers from the heat warming her up inside.
+
+— Master... Thank you for loving me... I still feel like I don't deserve this...
+
+You lean over and kiss Daisy as your cum continues to messily spill out of her pussy. Despite just unleashing a load inside her, Daisy seems riled up and ready for more.
+
+— K–Keep going... Master!
+
+How can you deny a cute face like that? You grant her what she so desires for the rest of the night, making love to her until morning.""", # MISSING TRANSLATION
+	AMELIA_WEDDING_1 = """As you pull yourself from the festivities, you feel a soft tail curl around your leg and tickle your skin. Amelia slinks closer to you, clinging to your arm and holding it between her breasts as she gives you a knowing stare.
+
+— Master [name], getting away from the crowd? I thought you would be the life of the party, entertaining your guests with stories of your great accomplishments? Of course, once you were done with that, I would come “relieve” you of your duties. Looks like we'll get to have some fun early.""", # MISSING TRANSLATION
+	AMELIA_WEDDING_1_OPTION_1 = """Trying to pull your Master away for yourself? Sounds like this kitty could use some discipline...""", # MISSING TRANSLATION
+	AMELIA_WEDDING_1_OPTION_2 = """Getting rest is part of a Master's duties as well. You'll get your fun when I have time.""", # MISSING TRANSLATION
+	AMELIA_WEDDING_2_1 = """You turn to her and pull her into your embrace, pointing her chin up to you. The mischief in her eyes is plain to see as she enjoys teasing you.
+
+— Mmm... I'm here to please, Master [name]. Do what you must to make sure I understand exactly how naughty I've been...
+
+Sharing a kiss with her, you grab one of her breasts and squeeze it tight, making her moan in your mouth. Amelia cups your bulge, rubbing it back and forth as it grows and fills out her palm. Her tail coils around your leg, gently pulling you towards her as she grinds her body against yours.
+
+— Come on, show me how rough you can be with your property, Master [name]...
+
+You pull her along with you to the bedroom, groping her plush ass the entire way. Even as you open the door, her body seems to pull at you for your attention.""", # MISSING TRANSLATION
+	AMELIA_WEDDING_2_2 = """— I didn't know you would be such a tease, even on our wedding day. I'll have a long list of transgressions to discipline me for if you put my correction off, you know. I'm sure you'll be very rough when the time comes for my punishment...""", # MISSING TRANSLATION
+	AMELIA_WEDDING_3 = """As soon as you close the door, Amelia takes a seat on the bed, pulling up her dress to reveal her pussy, ready and waiting for you. Her breasts fall out of the loose fabric of her dress, baring all of herself to you as she gives a devious smile.
+
+— As a discerning Master, I'm sure you can spot my best assets. They're all yours to do as you please.
+
+Matching her nude state, you lay your dick over her pussy as you decide how to treat your taunting slave.""", # MISSING TRANSLATION
+	AMELIA_WEDDING_3_OPTION_1 = """Fast and hard.""", # MISSING TRANSLATION
+	AMELIA_WEDDING_3_OPTION_2 = """Slow and gentle.""", # MISSING TRANSLATION
+	AMELIA_WEDDING_4_1 = """You slip into her and press all the way in at once, feeling her pussy wrap around the entire length of your cock.
+
+— Oh...! You are quite enthusiastic for our first night as an official spouses.
+
+Pulling back just as fast, you start thrusting into her with all your weight. Each collision rocks her body, her tits bouncing back from your powerful thrusts. You grab her thigh with one hand and a breast in the other, squeezing both tight enough to leave marks as your fingers sink into her skin. Your pistoning dick makes loud and sloppy sounds with her pussy, your precum and her juices serving as the source.
+
+— Ahh!! ...Harder.. You know I can take it...""", # MISSING TRANSLATION
+	AMELIA_WEDDING_4_2 = """Sliding your cock inside, you push past all her folds and let her pussy slowly engulf your shaft.
+
+— Mm... Are you trying to tease me like this?
+
+Stroking her thigh, you reach forward and hold her face in your hand. You hear her purr as your cock slides all the way inside her, the subtle vibrations making you throb more. On the way back, her pussy does its best to keep you inside, feeling tighter the more you pull away until you push back in again and again. Her body begs for your attention, the heat and wetness of her pussy pulling you back in no matter how many times you rear back.
+
+— You have a funny definition of punishment, Master... It's almost agonizing being treated so sensually...""", # MISSING TRANSLATION
+	AMELIA_WEDDING_5 = """The warmth of her hole seems to transfer to your body, a familiar impulse building up inside you. Grabbing her hips, you start thrusting at a consistent pace, using her body to bring yourself closer to relief. Strings of precum help slicken the pathway, letting you slip in and out of her with ease.
+
+Even as you start to rush things, you tease her every so often by pulling out to rub your tip over her clit, watching her moan at your touch. She plays with her breast, groping it as she bites her lip and watches you plow through her.""", # MISSING TRANSLATION
+	AMELIA_WEDDING_6 = """— Let's come together... Darling...
+
+You can hold on no longer as you stare into her eyes begging for your cum. Her pussy milks you of your seed as she clings to you, welcoming your cum as it pours out. A wave of her own fluids wash over your cock too as her folds spasm and Amelia shudders.
+
+The mix of your cum spills out onto the bed, leaving a stain as proof of your love. Amelia looks to you for another round, not nearly satisfied with just one “reprimand.” You spend the night disciplining her and making sure she understands just how demanding being your servant can be.""", # MISSING TRANSLATION
+	CALI_WEDDING_GOOD_1 = """— Hey... So do you want to...? You know...
+
+Cali tries to look as enticing as possible, using the lighting of the room and a cute pose to accentuate her assets. Her confidence in herself shows with how forward she is, now that she's truly free. You wait for her to finish her sentence, smiling as you see her try to get past her own embarrassment.
+
+— Come on... You know what I mean! I've never had... I never even thought I'd have a husband! I want to do it with you... I–If you want to, I mean!""", # MISSING TRANSLATION
+	CALI_WEDDING_GOOD_1_OPTION_1 = """Let's do it.""", # MISSING TRANSLATION
+	CALI_WEDDING_GOOD_1_OPTION_2 = """Maybe tomorrow.""", # MISSING TRANSLATION
+	CALI_WEDDING_GOOD_2_1 = """— Really? Then... let's go already! 
+
+Cali's tail wags back and forth at the prospect of sharing your time together in bed. She skips ahead and opens the door for you to the bedroom.""", # MISSING TRANSLATION
+	CALI_WEDDING_GOOD_2_2 = """— Aw... Okay... But we better do something soon!
+
+You play around with Cali some more before you head to bed for the day.""", # MISSING TRANSLATION
+	CALI_WEDDING_BAD_1 = """— ...M–Master?
+
+Cali hesitates to look you directly in the eye, but you can still glean her intentions from how her tail wags behind her. A far cry from how loud-mouthed and indolent she used to be. It seems she wants to receive a reward from her Master.""", # MISSING TRANSLATION
+	CALI_WEDDING_BAD_1_OPTION_1 = """I suppose you deserve a little something.""", # MISSING TRANSLATION
+	CALI_WEDDING_BAD_1_OPTION_2 = """You'll have to entertain yourself today.""", # MISSING TRANSLATION
+	CALI_WEDDING_BAD_2_1 = """— Thank you, Master!
+
+Cali seems hopeful and excited, but she stays behind you and lets you lead the way to the bedroom.""", # MISSING TRANSLATION
+	CALI_WEDDING_BAD_2_2 = """— Of course, Master...
+
+Cali walks away with her tail between her legs, slinking away from the festivities.""", # MISSING TRANSLATION
+	CALI_WEDDING_3 = """As soon as you get into the room, Cali leans against the dresser and holds a leg up, exposing her pussy to you like a wolf in heat.
+
+— Hurry up, I can't wait anymore...!
+
+You smirk at Cali’s readiness, admiring how her arousal drips down onto the floor as she waits for you. You don’t keep her waiting for long, freeing your dick and stepping closer to caress her thigh. Pressing into her, you watch as her expression melts into pleasure as her pussy closes around you.
+
+— Ah…! It feels even better today for some reason…!""", # MISSING TRANSLATION
+	CALI_WEDDING_3_BAD = """As soon as you get into the room, Cali leans against the dresser and holds a leg up, exposing her pussy to you like a wolf in heat.
+
+— Please, Master…!
+
+You smirk at Cali's readiness, admiring how her arousal drips down onto the floor as she waits for you. You don't keep her waiting for long, freeing your dick and stepping closer to caress her thigh. Pressing into her, you watch as her expression melts into pleasure as her pussy closes around you.
+
+— This pose... feels so right...""", # MISSING TRANSLATION
+	CALI_WEDDING_4 = """You respond by pressing further into her and beginning to thrust. Cali’s tight pussy clamps down on you every time you push in, trying to keep you inside each time you pull back. She watches your cock plowing into her in awe, silent as she enjoys the pleasure of your dick warming her from the inside.
+
+Her juices spill out around your shaft as her arousal builds, making each successive thrust smoother and easier from all the natural lubricant. The sticky sounds coming from Cali's pussy would surely give anyone a clear picture of what's going on between bride and groom, if Cali's squeaky moans weren't enough of a hint. Her tail flails around behind her as she takes heavy breaths, brushing against your leg every so often.""", # MISSING TRANSLATION
+	CALI_WEDDING_5 = """— I-I can feel you so deep inside...
+
+Cali’s pussy clings to your shaft as a wave of her cum flows past, spilling out as her body shivers from the pleasure. You hold her steady as her leg becomes wobbly from the sensations wracking her body.
+
+Feeling the heat inside you welling up too, you pick up the pace. Her cum gives you ample leverage to slip in and out of her hole as she milks you for the seed you can barely hold back from her. Within a few moments, you burst inside her, your cum filling every nook in her pussy as you hold her close.""", # MISSING TRANSLATION
+	CALI_WEDDING_5_BAD = """— Ahh…! M–Master! I’m sorry, please… Don’t s-stop…
+
+Cali's pussy clings to your shaft as a wave of her cum flows past, spilling out as her body shivers from the pleasure. You hold her steady as her leg becomes wobbly from the sensations wracking her body.
+
+Feeling the heat inside you welling up too, you pick up the pace. Her cum gives you ample leverage to slip in and out of her hole as she milks you for the seed you can barely hold back from her. Within a few moments, you burst inside her, your cum filling every nook in her pussy as you hold her close.""", # MISSING TRANSLATION
+	CALI_WEDDING_6 = """It doesn't take long for your cum to spill out with her own, both fluids running down her leg as you mark her as yours. Cali is speechless as she watches the warmth inside her flow out of her pussy, only barely held in by your cock. Once you pull away from her, the rest follows suit and slides down her leg, making a mess of lust.
+
+— T–That was a lot...
+
+You hold Cali close and kiss her, spending the rest of the night close together in bed as you enjoy her petite body.""", # MISSING TRANSLATION
+	CALI_WEDDING_6_BAD = """It doesn’t take long for your cum to spill out with her own, both fluids running down her leg as you mark her as yours. Cali is speechless as she watches the warmth inside her flow out of her pussy, only barely held in by your cock. Once you pull away from her, the rest follows suit and slides down her leg, making a mess of lust.
+
+— ...T–Thank you so much, Master… for making me feel this…
+
+You hold Cali close and kiss her, spending the rest of the night close together in bed as you enjoy her petite body.""", # MISSING TRANSLATION
 	
 	#   QUESTS   #
 	MAIN_QUEST_LOAN_NAME = "贷款",
@@ -12309,6 +12927,13 @@ CALI_ACT5_PET_9_2 = """— 为什么... 感觉还好...?
 	DIALOGUELILIAINITIATEH = "小仙精在你召唤她的时候不耐烦地扑向你。 \n\n— 没有你，我太孤独了, [Master]! 你能让我高兴起来吗？",
 	DIALOGUELILIAINITIATEM = "你生活奢侈的妻子莉莉娅热情地问候你，几乎没有掩饰她的兴奋。\n\n— [Master], 你一直在想念莉莉娅？我们上床睡觉吧！",
 	DIALOGUEJEANINITIATEM = "",
+	DIALOGUEZEPHYRA_UNDERWEAR = """In your hands you hold a piece of clothing which was surrendered to you by Zephyra. Pondering on what actual benefit it can have, one mind is stuck in your mind... What if you wear it on your head? Surely, this is a terrible idea...""", # MISSING TRANSLATION
+	DIALOGUEZEPHYRA_UNDERWEAROPTION = """Do it""", # MISSING TRANSLATION
+	DIALOGUEZEPHYRA_UNDERWEAR2 = """Despite your best judgement, you put a girl's underwear onto your head. You feel nothing like you would expect but the sudden revelation is abrupted by the owner entering your room just at this moment. 
+	
+— [Master], can I have a mo...
+
+Zephyra freezes as she sees your deed. Her face spells your doom. The time stops and you can no longer process the world around you, as the last breath leaves your body...""", # MISSING TRANSLATION
 	
 	
 	
@@ -12333,6 +12958,11 @@ CALI_ACT5_PET_9_2 = """— 为什么... 感觉还好...?
 	METRICS_SOURCE_BROTHEL_CUSTOMER = "妓院的顾客",
 	METRICS_SOURCE_GUILD_TRAINER = "行会训练师，在性玩具训练中",
 	METRICS_SOURCE_WILLIAM = "威廉，阿利隆的著名收藏家",
+	METRICS_WIN_NAME = """%d/%d Battles Won""", # MISSING TRANSLATION
+	METRICS_SERVICEPERFORMED_NAME = """Performed service task for %d/%d turns""", # MISSING TRANSLATION
+	METRICS_SOCSKILLUSED_NAME = """Social skills used %d/%d """, # MISSING TRANSLATION
+	METRICS_SPELLUSED_NAME = """Spells Used %d/%d""", # MISSING TRANSLATION
+	METRICS_HEALUSED_NAME = """Healing Skills Used %d/%d""", # MISSING TRANSLATION
 	
 	
 	
@@ -13030,6 +13660,7 @@ CALI_ACT5_PET_9_2 = """— 为什么... 感觉还好...?
 	TREAT_FOOD_LIKE1 = "哇，你怎么知道这是我的最爱？",
 	TREAT_FOOD_HATE1 = "对不起，我受不了这个。",
 	TREAT_FOOD_NEUTRAL1 = "谢谢你, [master], 我收下了。",
+	LEAVE_CHAT1 = """This is a farewell, I suppose...""", # MISSING TRANSLATION
 	
 	#worlddata land
 	
@@ -13185,6 +13816,8 @@ CALI_ACT5_PET_9_2 = """— 为什么... 感觉还好...?
 	
 	SERVANTS_SLAVE_NAME = "仆人需求",
 	SERVANTS_SLAVE_DESC = "仆人行会需要经过专门训练的人。",
+	FIGHTERS_SLAVE_DESC = """The Fighters Guild is in need of fresh slave recruits.""", # MISSING TRANSLATION
+	WORKERS_SLAVE_DESC = """The Workers Guild is in need of fresh worker recruits.""", # MISSING TRANSLATION
 	
 	SERVANTS_SLAVE_WORK_NAME = "分派的任务",
 	SERVANTS_SLAVE_WORK_DESC = "仆人行会需要有人为其执行任务。",
@@ -13663,6 +14296,9 @@ Hotkey: 3""",
 	SOCIAL_SKILLS = "社交技能",
 	COMBAT_SKILLS = "战斗技能",
 	PERSONAL_STAT = "Personal Statistics",
+	REMOVE_BUTTON = """Set Free""", # MISSING TRANSLATION
+	TALK_BUTTON = """Talk To""", # MISSING TRANSLATION
+	BODY_UPGRADE_TOOLTIP = """""", # MISSING TRANSLATION
 	
 	# SlaveClassesModule
 	CAT_ALL = "All",
@@ -13728,6 +14364,7 @@ Hotkey: 3""",
 	EXP_LABEL = "exp",
 	SHOW_INFO_LABEL = "显示信息",
 	UPGRADE_LABEL = "升级",
+	BODY_ALTER_LABEL = """Body Modifications""", # MISSING TRANSLATION
 	UPGRADES_LABEL = "Upgrades",
 	REQUESTER_LABEL = "Requester: ",
 	NO_QUESTS_LABEL = "There are no quests available",
@@ -13792,6 +14429,7 @@ Hotkey: 3""",
 	SPEND_REP_QUESTION_LABEL = "Are you sure you want to spend",
 	REP_POINTS_LABEL = "reputation points for",
 	DISLIKED_ACTIONS_LABEL = "Disliked actions",
+	NOSERVITUDE = """-Servitude""", # MISSING TRANSLATION
 	COMBAT_ABILS_LABEL = "Combat Abilitites",
 	DATING_LIVING_ROOM = "Living Room",
 	DATING_BEDROOM = "Bedroom",
@@ -13908,6 +14546,7 @@ Hotkey: 3""",
 	DATING_INTIM_BED_3 = "\n您已经了解到 [name2] 的性特征: ",
 	DATING_INTIM_BED_4 = "\n\n{color=green|[name2] 向您敞开心扉，但您没有了解到任何关于 [him2]的新特性。 ",
 	DATING_INTIM_BED_5 = "{color=red|你没能让 [name2] 有心情谈论 [his2] 性偏好。}",
+	DATING_INTIM_BED_6 = """{color=aqua|[name]'s consent level has increased to: """, # MISSING TRANSLATION
 	DATING_HOLDHANDS_1 = " 当你四处闲逛时，你把[name2]的手拉起。 ",
 	DATING_HOLDHANDS_2 = "你把 [name2]的手放进你的手，然后靠近。 ",
 	DATING_HOLDHANDS_3 = "[he2] 紧握你的手。 ",
@@ -14020,6 +14659,51 @@ Hotkey: 3""",
 	DATING_FOOD = "用食物治疗",
 	DATING_STOP_DESC_1 = "Stop interaction and let [name] return to work.",
 	DATING_STOP = "停止",
+	ALTAR_ITEM_1 = """[name] puts an offer on the altar. """, # MISSING TRANSLATION
+	ALTAR_ITEM_GOOD = """
+
+{color=green|The offering disappears in a thin air and after a moment a new item materialize in place. It seems your offer was correct and you are rewarded.}""", # MISSING TRANSLATION
+	ALTAR_ITEM_BAD = """
+
+The offering lays on the altar with no apparent reaction from it. It seems your offer wasn't liked.""", # MISSING TRANSLATION
+	ALTAR_CHAR_1 = """[name] puts [his] hand on the altar. """, # MISSING TRANSLATION
+	ALTAR_CHAR_GOOD = """
+
+{color=green|A small glow emits from the altar and enshrouds [name]. It seems [he] has been blessed...}""", # MISSING TRANSLATION
+	ALTAR_CHAR_BAD = """
+
+After a few minutes nothing still happened and [name] decides to move on.""", # MISSING TRANSLATION
+	ALTAR_DESTROY_1 = """[name] demolishes the shrine and gathers the resources. """, # MISSING TRANSLATION
+	ALTAR_DESTROY_2 = """
+
+{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed...}""", # MISSING TRANSLATION
+	FREYA_ITEM_CLOTH = """
+
+{color=green|The offering disappears in a thin air and a bright light surrounds [name]. It seems the offer was correct and [he] restored [his] magic energy.}""", # MISSING TRANSLATION
+	FREYA_ITEM_CLOTHMAGICC = """
+
+{color=green|The offering disappears in a thin air and a bright light surrounds [name]. It seems the offer was correct and [he] received a blessing.}""", # MISSING TRANSLATION
+	FREYA_ITEM_CLOTHETHERIAL = """
+
+{color=green|The offering disappears in a thin air and a bright light surrounds [name]. }""", # MISSING TRANSLATION
+	FREYA_ITEM_WOOD = """
+
+{color=red|The offering disappears from sight but an eerie glow erupts from the altar. It seems [name] as been cursed due to [his] offering...}""", # MISSING TRANSLATION
+	FREYA_ITEM_OTHER = """
+
+The offering disappears from sight but there's no other changes around. It seems your offer wasn't liked.""", # MISSING TRANSLATION
+	FREYA_CHAR_BOW = """
+
+{color=green|A small glow emits from the altar and enshrouds [name]. Before Aire can realize it, a bow materializes in her hands...}""", # MISSING TRANSLATION
+	FREYA_CHAR_WOODEN = """
+
+{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed. Perhaps, something what they wear might have aggrieved the entity...}""", # MISSING TRANSLATION
+	FREYA_CHAR_RACE_GOOD = """
+
+{color=green|A small glow emits from the altar and enshrouds [name]. It seems [he] has been blessed...}""", # MISSING TRANSLATION
+	FREYA_CHAR_RACE_BAD = """
+
+After a few minutes nothing still happened and [name] decides to move on.""", # MISSING TRANSLATION
 	
 	STOP_LABEL = "Stop",
 	TIME_LEFT_LABEL = "Time Left",
@@ -14046,6 +14730,117 @@ Hotkey: 3""",
 	BODYUPGRADEDESCRIPT_UPGRADE_RESIST = "[name]'s magic resistance will allow to negate enemy spells with 25% chance.",
 	BODYUPGRADENAME_UPGRADE_THICKBLOOD = "Thick Blood",
 	BODYUPGRADEDESCRIPT_UPGRADE_THICKBLOOD = "[name] will gain immunity to bleed and poison.",
+	QUALITYPOOR = """Poor""", # MISSING TRANSLATION
+	QUALITYAVERAGE = """Average""", # MISSING TRANSLATION
+	QUALITYGOOD = """Good""", # MISSING TRANSLATION
+	QUALITYEPIC = """Epic""", # MISSING TRANSLATION
+	QUALITYLEGENDARY = """Legendary""", # MISSING TRANSLATION
+	ENCHSHARPNESS = """Sharpness""", # MISSING TRANSLATION
+	ENCHSHARPNESSDESCRIPT = """Increases Attack by 10%*level and Hit Rate by 5+5*level of bladed weapons.""", # MISSING TRANSLATION
+	ENCHSPELL_MASTERY = """Spell Mastery""", # MISSING TRANSLATION
+	ENCHSPELL_MASTERYDESCRIPT = """Increases Spell Damage and Healing effects by 5%+5%*level. Does not stack.""", # MISSING TRANSLATION
+	ENCHSTUN_IMMUNE = """Stun Immunity""", # MISSING TRANSLATION
+	ENCHSTUN_IMMUNEDESCRIPT = """Wearer can't be stunned.""", # MISSING TRANSLATION
+	ENCHTHORNS = """Thorns""", # MISSING TRANSLATION
+	ENCHTHORNSDESCRIPT = """Returns 5%+5%*level of physical damage to the attacker.""", # MISSING TRANSLATION
+	ENCHCARAPACE = """Carapace""", # MISSING TRANSLATION
+	ENCHCARAPACEDESCRIPT = """Increases item's DEF value by 7%*level and boosts all elemental resists by 2*level.""", # MISSING TRANSLATION
+	ENCHVAMPIRISM = """Vampirism""", # MISSING TRANSLATION
+	ENCHVAMPIRISMDESCRIPT = """2%*level of physical damage dealt will be absorbed as health.""", # MISSING TRANSLATION
+	ENCHCOMMANDER = """Commander""", # MISSING TRANSLATION
+	ENCHCOMMANDERDESCRIPT = """Increases damage dealt and reduce damage received of all other party members by 3%/5%. Does not stack.""", # MISSING TRANSLATION
+	ENCHWARLOCK = """Warlock""", # MISSING TRANSLATION
+	ENCHWARLOCKDESCRIPT = """Reduces mana cost of skills by 5%+5%*level.""", # MISSING TRANSLATION
+	ENCHTREASUREHUNT = """Treasure Hunter""", # MISSING TRANSLATION
+	ENCHTREASUREHUNTDESCRIPT = """Increases chance to find higher quality gear""", # MISSING TRANSLATION
+	ENCHREAPER = """Reaper""", # MISSING TRANSLATION
+	ENCHREAPERDESCRIPT = """Increases damage versus humanoid enemies by 10%+10%*level""", # MISSING TRANSLATION
+	ENCHBEASTHUNTER = """Beast Hunter""", # MISSING TRANSLATION
+	ENCHBEASTHUNTERDESCRIPT = """Increases damage versus beast enemies by 10%+10%*level""", # MISSING TRANSLATION
+	ENCHUNDEADBANE = """Undead Bane""", # MISSING TRANSLATION
+	ENCHUNDEADBANEDESCRIPT = """Increases damage versus undead enemies by 10%+10%*level""", # MISSING TRANSLATION
+	ENCHGIANTSLAYER = """Giant Slayer""", # MISSING TRANSLATION
+	ENCHGIANTSLAYERDESCRIPT = """Increases damage versus giant type enemies by 10%+10%*level.""", # MISSING TRANSLATION
+	ENCHDRAGONSLAYER = """Dragon Slayer""", # MISSING TRANSLATION
+	ENCHDRAGONSLAYERDESCRIPT = """Increases damage versus dragon type enemies by 10%+10%*level.""", # MISSING TRANSLATION
+	ENCHMANASIPHON = """Mana Siphon""", # MISSING TRANSLATION
+	ENCHMANASIPHONDESCRIPT = """Skill attacks restore 1*level mana per use""", # MISSING TRANSLATION
+	ENCHNIMBLE = """Nimbleness""", # MISSING TRANSLATION
+	ENCHNIMBLEDESCRIPT = """Increases evasion by 5*level.""", # MISSING TRANSLATION
+	ENCHKNOWLEDGE = """Knowledge""", # MISSING TRANSLATION
+	ENCHKNOWLEDGEDESCRIPT = """Increases experience gained by 5%+5%*level """, # MISSING TRANSLATION
+	CURSESTUB_MINOR = """""", # MISSING TRANSLATION
+	CURSESTUB_MINORDESCRIPT = """""", # MISSING TRANSLATION
+	CURSESTUB_MAJOR = """""", # MISSING TRANSLATION
+	CURSESTUB_MAJORDESCRIPT = """""", # MISSING TRANSLATION
+	CURSEWEAKNESS_MINOR = """Curse of Weakness (minor)""", # MISSING TRANSLATION
+	CURSEWEAKNESS_MINORDESCRIPT = """Physics -30""", # MISSING TRANSLATION
+	CURSEWEAKNESS_MAJOR = """Curse of Weakness (major)""", # MISSING TRANSLATION
+	CURSEWEAKNESS_MAJORDESCRIPT = """Physics -60""", # MISSING TRANSLATION
+	CURSESLOWWIT_MINOR = """Curse of Slow wit (minor)""", # MISSING TRANSLATION
+	CURSESLOWWIT_MINORDESCRIPT = """Wits -30""", # MISSING TRANSLATION
+	CURSESLOWWIT_MAJOR = """Curse of Slow wit (major)""", # MISSING TRANSLATION
+	CURSESLOWWIT_MAJORDESCRIPT = """Wits -60""", # MISSING TRANSLATION
+	CURSEFRAGILITY_MINOR = """Curse of Fragility (minor)""", # MISSING TRANSLATION
+	CURSEFRAGILITY_MINORDESCRIPT = """Maximum HP -25%""", # MISSING TRANSLATION
+	CURSEFRAGILITY_MAJOR = """Curse of Fragility (major)""", # MISSING TRANSLATION
+	CURSEFRAGILITY_MAJORDESCRIPT = """Maximum HP -40%""", # MISSING TRANSLATION
+	CURSEDECLINE_MINOR = """Curse of Decline (minor)""", # MISSING TRANSLATION
+	CURSEDECLINE_MINORDESCRIPT = """Earned XP -25%""", # MISSING TRANSLATION
+	CURSEDECLINE_MAJOR = """Curse of Decline (major)""", # MISSING TRANSLATION
+	CURSEDECLINE_MAJORDESCRIPT = """Earned XP -50%""", # MISSING TRANSLATION
+	CURSEDISTRUST_MINOR = """Curse of Distrust (minor)""", # MISSING TRANSLATION
+	CURSEDISTRUST_MINORDESCRIPT = """+25% Obedience Drain""", # MISSING TRANSLATION
+	CURSEDISTRUST_MAJOR = """Curse of Distrust (major)""", # MISSING TRANSLATION
+	CURSEDISTRUST_MAJORDESCRIPT = """+50% Obedience Drain""", # MISSING TRANSLATION
+	CURSEHIDEOUS_MAJOR = """Curse of Hideous (minor)""", # MISSING TRANSLATION
+	CURSEHIDEOUS_MAJORDESCRIPT = """Charm -30""", # MISSING TRANSLATION
+	CURSEHIDEOUS_MINOR = """Curse of Hideous (major)""", # MISSING TRANSLATION
+	CURSEHIDEOUS_MINORDESCRIPT = """Charm -60""", # MISSING TRANSLATION
+	ANASTASIA_EXECUTION1_SS = """Fail to recruite Anastasia at the end of Arc 1.""", # MISSING TRANSLATION
+	LICH_AIRE_TALK4_SS = """Unlocks during Rite of Passage quest""", # MISSING TRANSLATION
+	XARI_ENCOUNTER8_SS = """Successfully persuade Xari during your first encounter""", # MISSING TRANSLATION
+	DAISY_DISCIPLINE_SS = """Unlocks in a week after finishing Daisy training""", # MISSING TRANSLATION
+	DAISY_BJ1_SS = """Unlock during Daisy's training""", # MISSING TRANSLATION
+	DAISY_TRAINING1_SS = """Subject Daisy to a harsh training""", # MISSING TRANSLATION
+	DAISY_PUBLIC1_SS = """Further experiment with Daisy after harsh training""", # MISSING TRANSLATION
+	DAISY_BENT1_SS = """Rescue Daisy and have her thank you""", # MISSING TRANSLATION
+	ANASTASIA_SEX_1_SS = """Anastasia's good end of arc scene""", # MISSING TRANSLATION
+	ANASTASIA_RAPE_1_SS = """Anastasia's bad end of arc scene""", # MISSING TRANSLATION
+	AIRE_AMELIA1_SS = """Let Amelia 'interrogate' Aire for princess' location""", # MISSING TRANSLATION
+	AMELIA_TITJOB1_SS = """Let Amelia reward you after her first sidequest""", # MISSING TRANSLATION
+	AMELIA_BONDAGE1_SS = """Let Amelia reward you after her second sidequest""", # MISSING TRANSLATION
+	ANASTASIA_AIRE1_SS = """Reward for completing Aire's sidequest after recruiting Anastasia""", # MISSING TRANSLATION
+	AIRE_ANA1_SS = """Unlock after completing "Aire: Proof of Strength" quest in the Aire dialogue""", # MISSING TRANSLATION
+	AIRE_ANA4_SS = """Unlock after completing "Aire: Proof of Strength" quest in the Aire dialogue""", # MISSING TRANSLATION
+	FORCE_CALI1_SS = """Choose the worst option when encountering Cali for the first time""", # MISSING TRANSLATION
+	MAE_SCENE1_SS = """Have Mae thank you during second story act""", # MISSING TRANSLATION
+	MAE_SCENE3_SS = """Mae scene during ritual""", # MISSING TRANSLATION
+	HELEVIEL1_SS = """Reward by Heleviel for female main characters""", # MISSING TRANSLATION
+	LILIA_SEX_1_3_SS = """Complete first Lilia's quest""", # MISSING TRANSLATION
+	CALI_TOUCHING_1_SS = """First scene with Cali during her sidequest""", # MISSING TRANSLATION
+	CALI_BJ_HAPPY_1_SS = """Second scene with Cali during her sidequest""", # MISSING TRANSLATION
+	CALI_RIDING_1_SS = """Complete Cali's sidequest""", # MISSING TRANSLATION
+	HALLOWEEN_SCENE_SS = """Halloween event with Cali and Anastasia""", # MISSING TRANSLATION
+	CHRISTMAS_SCENE_SS = """Christmas event with Daisy""", # MISSING TRANSLATION
+	HELEVIEL_MANSION_SS = """Recruit Heleviel""", # MISSING TRANSLATION
+	LIRA_SEX_1_SS = """Complete first Lilia sidequest""", # MISSING TRANSLATION
+	CALI_ZEPHYRA_1_SS = """Both Cali and Zephyra in master's possession on good routes""", # MISSING TRANSLATION
+	CALI_BOWL_1_SS = """Unlocks sometimes after you have sex with Cali""", # MISSING TRANSLATION
+	CALI_BOWL_NAKED_1_SS = """Unlocks on Cali's bad route""", # MISSING TRANSLATION
+	ZEPHYRA_BATH_1_SS = """Help Zephyra in church""", # MISSING TRANSLATION
+	STAG_SEX_1_SS = """Unlock during a quest from beastkin settlement""", # MISSING TRANSLATION
+	ZEPHYRA_LILIA_1_SS = """Have both Zephyra and Lilia and progress their quests""", # MISSING TRANSLATION
+	AMELIA_SEX_1_SS = """Complete Amelia's sidequest, recruit her and talk to her in mansion""", # MISSING TRANSLATION
+	ZEPHYRA_DISAPPEARANCE_SEX_1_SS = """Complete Zephyra's second sidequest""", # MISSING TRANSLATION
+	ZEPHYRA_DISAPPEARANCE_GUARDS_1_SS = """Peek on Zephyra's fake story during her second sidequest""", # MISSING TRANSLATION
+	DAISY_WEDDING_SS = """Take Daisy as your (slave) wife""", # MISSING TRANSLATION
+	CALI_WEDDING_SS = """Make Cali your lifelong partner""", # MISSING TRANSLATION
+	AMELIA_WEDDING_SS = """Promote Amelia to the vice presidency of your Mansion""", # MISSING TRANSLATION
+	ANASTASIA_EVENT_ALIVE_SS = """Keep Anastasia alive in the end of act 1""", # MISSING TRANSLATION
+	ELVEN_TEMPLE_SCENE_SS = """Event from elven temple""", # MISSING TRANSLATION
+	ACT1_ART_SS = """Start first act""", # MISSING TRANSLATION
+	ACT2_ART_SS = """Start second act""", # MISSING TRANSLATION
 }
 
 

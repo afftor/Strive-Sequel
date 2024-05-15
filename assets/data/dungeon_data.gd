@@ -304,7 +304,7 @@ var dungeons = {
 		},
 		
 		event_room_number = [3,4],
-		material_room_number = [3,5],
+		material_room_number = [4,5],
 		
 		main_route_length = [6,7],
 		bonus_rooms = [2,3],
