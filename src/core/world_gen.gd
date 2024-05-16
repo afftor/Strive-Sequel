@@ -989,7 +989,7 @@ func build_floor_first_pass(locdata, level):
 				tmp.enemies = globals.makerandomgroup(Enemydata.enemygroups[enemygroup])
 				tmp.rare = globals.char_roll_data.rare
 		if room == DungeonGen.pack_vertex(DungeonGen.diameter[-2]):
-			res.last_room = r_nm
+#			res.last_room = r_nm
 			if level == (locdata.levels - 1):
 				pass
 			else:

@@ -1906,7 +1906,7 @@ func common_effects(effects):
 				complete_location(input_handler.active_location.id)
 			'set_completed_active_location':
 				#input_handler.active_location.progress.level = input_handler.active_location.levels.size()
-				input_handler.active_location.progress.stage = input_handler.active_location.levels["L" + str(input_handler.active_location.levels.size())].stages
+#				input_handler.active_location.progress.stage = input_handler.active_location.levels["L" + str(input_handler.active_location.levels.size())].stages
 				input_handler.active_location.completed = true
 			'remove_active_location':
 				remove_location(input_handler.active_location.id)

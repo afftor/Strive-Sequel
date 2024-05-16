@@ -25,11 +25,11 @@ var map_zoom_min = 0.3
 var map_zoom_step = 0.1
 
 
-func _input(event):
-	if event.is_action_pressed('MouseUp'):
-		set_map_zoom(map_container.rect_scale.x + map_zoom_step)
-	if event.is_action_pressed('MouseDown'):
-		set_map_zoom(map_container.rect_scale.x - map_zoom_step)
+#func _input(event):
+#	if event.is_action_pressed('MouseUp'):
+#		set_map_zoom(map_container.rect_scale.x + map_zoom_step)
+#	if event.is_action_pressed('MouseDown'):
+#		set_map_zoom(map_container.rect_scale.x - map_zoom_step)
 
 
 func set_map_zoom(value):
@@ -79,6 +79,7 @@ func add_stamina(value):
 
 func update_stamina():
 	map_panel.get_node("Stamina/Label").text = "Stamina: %d/%d" % [active_location.stamina, 100]
+	#2add progress bar
 
 
 func party_check(dict):
@@ -991,6 +992,8 @@ func scout_room(room_id, s_range, stay = false):
 		if s_range == get_scouting_range():
 			move_to_room(room_id)
 		else:
+			if data.type == 'ladder_down':
+				s_range += 1
 			for room in data.neighbours.values():
 				if room != null:
 					scout_room(room, s_range - 1, true)
@@ -1054,6 +1057,7 @@ func move_to_room(room_id = null):
 		active_location.completed = true
 		globals.common_effects([{code = "complete_active_location_quests"}])
 		build_location_description()
+		globals.start_fixed_event('event_dungeon_complete_loot_' + active_location.difficulty)
 	if data.type in ['event', 'combat', 'combat_boss']:
 		data.type = 'empty'
 	update_map()
