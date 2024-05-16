@@ -1239,24 +1239,78 @@ var dungeons = {
 	},
 	
 	################### Old quest data with no dungeons
-	
 	quest_fighters_lich = {
 		code = 'quest_fighters_lich',
-		type = 'quest_location',
+		type = 'dungeon',
 		name = tr("QUEST_FIGHTERS_LICH_TEXT"),
-		area = 'plains',
 		classname = '',
 		descript = tr("QUEST_FIGHTERS_LICH_DESC"),
-		difficulty = 'easy',
-		background = 'cave_1',
-		enemyarray =  [],
-		eventarray = [],
-		levels = [1,1],
-		resources = [],
-		stages_per_level = [1,1],
+		character_data = {
+			chance_mod = 1.5,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
+		difficulty = 'medium',
+		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
+		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
+		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'monster',
+		event_data = {
+			dungeon_find_chest_easy = {
+				limit = 0,
+				weight = 10,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['dungeon_find_chest_easy'],
+				possible_challenges = [], 
+			},
+		},
+		
+		event_room_number = [1,1],
+		material_room_number = [1,1],
+		
+		main_route_length = [3,3],
+		bonus_rooms = [0,0],
+		levels = [1,1], 
+		base_room_stamina_cost = [5,5],
+		
+		resources = ['cloth','leather','iron','wood','clothsilk'],
+		gatherable_resources = {
+			stone = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			}, 
+		gather_mod = [2,2.5],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local',
 		events = [],
-		travel_time = [1,1],#[2,2],
+		quest = true,
+		options = [],
+		area = 'plains',
+		travel_time = [1,1],
+		scripteventdata = [
+		{trigger = '', args = ''}]
 	},
+	
+#	quest_fighters_lich = {
+#		code = 'quest_fighters_lich',
+#		type = 'quest_location',
+#		name = tr("QUEST_FIGHTERS_LICH_TEXT"),
+#		area = 'plains',
+#		classname = '',
+#		descript = tr("QUEST_FIGHTERS_LICH_DESC"),
+#		difficulty = 'easy',
+#		background = 'cave_1',
+#		enemyarray =  [],
+#		eventarray = [],
+#		levels = [1,1],
+#		resources = [],
+#		stages_per_level = [1,1],
+#		events = [],
+#		travel_time = [1,1],#[2,2],
+#	},
 	quest_mages_xari = {
 		code = 'quest_mages_xari',
 		type = 'encounter',
