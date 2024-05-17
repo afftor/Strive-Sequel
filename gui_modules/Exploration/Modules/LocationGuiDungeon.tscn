@@ -1093,6 +1093,7 @@ texture = ExtResource( 65 )
 expand = true
 
 [node name="Label" type="Label" parent="MapPanel/slaves"]
+visible = false
 margin_left = 31.0
 margin_top = 20.0
 margin_right = 50.0

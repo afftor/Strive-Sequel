@@ -63,18 +63,18 @@ var data = {
 	]
 	},
 	
-	event_high_cliff = {text = tr("DIALOGUEHIGHCLIFF"),
+	event_fallen_bridge = {text = tr("DIALOGUEFALLENBRIDGE"),
 	tags = ['linked_event'],
 	default_event_type = "trap",
 	image = 'trap',
 	options = [
-	{code = 'pass_high_cliff', select_person = true, reqs = [{type = 'has_stamina', value = 3}], text = tr("DIALOGUEHIGHCLIFFSELECT")},
-	{code = 'close', reqs = [{type = 'has_stamina', value = 10}, {code = 'unlock_subroom'}], bonus_effects = [{code = 'pay_stamina', value = 10}], text = tr("DIALOGUEHIGHCLIFFBREAK")},
+	{code = 'pass_fallen_bridge', select_person = true, reqs = [{type = 'has_stamina', value = 3}], text = tr("DIALOGUEFALLENBRIDGESELECT")},
+	{code = 'close', reqs = [{type = 'has_stamina', value = 10}, {code = 'unlock_subroom'}], bonus_effects = [{code = 'pay_stamina', value = 10}], text = tr("DIALOGUEFALLENBRIDGEBREAK")},
 	{code = 'close', reqs = [], text = tr("DIALOGUECANCEL")},
 	]
 	},
 	
-	pass_high_cliff = {text = tr("DIALOGUEHIGHCLIFFPASS"),
+	pass_fallen_bridge = {text = tr("DIALOGUEFALLENBRIDGEPASS"),
 	tags = ['linked_event'],
 	default_event_type = "trap",
 	image = 'trap',

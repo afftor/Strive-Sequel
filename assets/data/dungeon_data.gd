@@ -24,7 +24,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], #list of future challenges to get to this room
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 			dungeon_find_armory_easy = {
 				limit = 1,
@@ -32,7 +37,12 @@ var dungeons = {
 				floor_range = [2,0],
 				icon = 'chest',
 				events = ['dungeon_find_armory_easy'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 			event_dungeon_prisoner = {
 				limit = 1,
@@ -40,7 +50,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'man',
 				events = ['event_dungeon_prisoner'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -48,7 +63,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			}
 		},
 		
@@ -111,7 +131,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_medium'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.1],
+					['event_small_crack',1]
+				],
 			},
 			dungeon_find_armory_easy = {
 				limit = 1,
@@ -119,7 +144,12 @@ var dungeons = {
 				floor_range = [2,0],
 				icon = 'chest',
 				events = ['dungeon_find_armory_easy'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.2],
+					['event_small_crack',1],
+				],
 			},
 			event_dungeon_prisoner = {
 				limit = 2,
@@ -127,7 +157,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'man',
 				events = ['event_dungeon_prisoner'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.2],
+					['event_small_crack',1],
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -135,7 +170,11 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1]
+				],
 			}
 		},
 		
@@ -204,7 +243,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 			crypt_find_bones = {
 				limit = 0,
@@ -212,7 +257,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['crypt_find_bones'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1]
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -220,7 +271,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1]
+				],
 			}
 		},
 		
@@ -283,7 +340,11 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1],
+				],
 			},
 			event_goblin_friendly = {
 				limit = 1,
@@ -291,7 +352,11 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['event_goblin_friendly'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1],
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -299,7 +364,11 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = [['celena_shrine_find',0.5],['erebus_shrine_find',1],['freya_shrine_find',0.2]],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1],
+				],
 			}
 		},
 		
@@ -363,7 +432,10 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+				],
 			},
 			grove_find_leather = {
 				limit = 0,
@@ -371,7 +443,10 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['grove_find_leather'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+				],
 			},
 			event_fairy_friendly = {
 				limit = 1,
@@ -379,7 +454,10 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'person',
 				events = ['event_fairy_friendly'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -387,7 +465,10 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = [['celena_shrine_find',0.1],['erebus_shrine_find',0.2],['freya_shrine_find',1]],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+				],
 			}
 		},
 		
@@ -457,7 +538,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_medium'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			event_tribal_elves = {
 				limit = 1,
@@ -465,7 +552,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'person',
 				events = ['event_tribal_elves'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			spring = {
 				limit = 1,
@@ -473,7 +566,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['spring'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -481,7 +580,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = [['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5]],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			}
 		},
 		
@@ -554,7 +659,14 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_medium'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			erebus_shrine_find = {
 				limit = 1,
@@ -562,7 +674,14 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['erebus_shrine_find'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			}
 		},
 		
@@ -625,7 +744,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 			event_dungeon_prisoner = {
 				limit = 1,
@@ -633,7 +757,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'man',
 				events = ['event_dungeon_prisoner'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -641,7 +770,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			}
 		},
 		
@@ -709,7 +843,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 			event_dungeon_prisoner = {
 				limit = 1,
@@ -717,7 +856,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'man',
 				events = ['event_dungeon_prisoner'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 		},
 		
@@ -782,7 +926,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 			event_dungeon_prisoner = {
 				limit = 1,
@@ -790,7 +940,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'man',
 				events = ['event_dungeon_prisoner'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 		},
 		
@@ -868,7 +1024,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -876,7 +1037,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			}
 		},
 		
@@ -939,7 +1105,14 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_medium'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			freya_shrine_find = {
 				limit = 1,
@@ -947,7 +1120,14 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = [],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			}
 		},
 		
@@ -1006,7 +1186,11 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1],
+				],
 			},
 			event_dungeon_prisoner = {
 				limit = 1,
@@ -1014,7 +1198,11 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'man',
 				events = ['event_dungeon_prisoner'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1],
+				],
 			},
 		},
 		
@@ -1066,7 +1254,11 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+				],
 			},
 			event_fairy_friendly = {
 				limit = 1,
@@ -1074,7 +1266,11 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'man',
 				events = ['event_fairy_friendly'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -1082,7 +1278,11 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+				],
 			}
 		},
 		
@@ -1158,8 +1358,12 @@ var dungeons = {
 				icon = 'chest',
 				events = ['dungeon_find_chest_medium'],
 				possible_challenges = [
-					{code = 'event_lock_easy', weight = 1, stamina = [6,10]}
-				], 
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			event_tribal_elves = {
 				limit = 1,
@@ -1167,7 +1371,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'person',
 				events = ['event_tribal_elves'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			spring = {
 				limit = 1,
@@ -1175,7 +1385,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['spring'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -1183,7 +1399,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = [['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5]],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			}
 		},
 		
@@ -1260,7 +1482,9 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+				],
 			},
 		},
 		
