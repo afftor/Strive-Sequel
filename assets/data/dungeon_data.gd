@@ -835,7 +835,7 @@ var dungeons = {
 		difficulty = 'easy',
 		background_pool = ['cave_1'],
 		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
-		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
+		final_enemy = [['pre_final_boss_start',1]], final_enemy_type = 'event',
 		event_data = {
 			dungeon_find_chest_easy = {
 				limit = 0,
@@ -901,7 +901,7 @@ var dungeons = {
 		scripteventdata = [
 			{trigger = 'enter', args = 'mines_arrival_start'},
 			{trigger = 'stage', event = 'custom_event', args = 'half_dungeon_explored_start', stage = 'half'},
-			{trigger = 'stage', event = 'custom_event', args = 'pre_final_boss_start', stage = '-1'}
+#			{trigger = 'stage', event = 'custom_event', args = 'pre_final_boss_start', stage = '-1'}
 		]
 	},
 	

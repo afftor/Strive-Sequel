@@ -2,7 +2,7 @@ extends Control
 
 #var active_area
 #var active_location
-var nav
+onready var nav = $LocationGui/NavigationModule
 
 
 var selected_location
@@ -82,7 +82,7 @@ func open_location(data):
 	input_handler.ActivateTutorial("exploration")
 	input_handler.StopBackgroundSound()
 	gui_controller.nav_panel = $LocationGui/NavigationModule
-	nav = $LocationGui/NavigationModule
+#	nav = $LocationGui/NavigationModule
 	selected_location = data.id
 	var gatherable_resources
 	$LocationGui/Resources/Forget.visible = false
