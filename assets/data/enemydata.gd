@@ -12,7 +12,7 @@ var encounters = {
 	ogre_skirmish = {unittype = 'randomgroup', unitcode = 'ogre_skirmish', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
 	troll_skirmish = {unittype = 'randomgroup', unitcode = 'troll_skirmish', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
 	tribal_elves = {unittype = 'randomgroup', unitcode = 'tribal_elves', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'tribal_elves_win', args = []}], lose_effects = []},
-
+	
 
 	lich_fight_easy = {unittype = 'randomgroup', unitcode = 'quest_lich_easy', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	lich_fight_normal = {unittype = 'randomgroup', unitcode = 'quest_lich_normal', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
@@ -60,6 +60,9 @@ var encounters = {
 }
 
 var enemygroups = {
+	
+	tutorial_lich_fight = {reqs = [], units = {skeleton_melee = [1,1]}},
+	
 	rats_easy = {reqs = [], units = {rat = [2,6]}},
 	rats_goblins_easy = {reqs = [], units = {rat = [1,4], cave_goblin_melee = [1,3]}},
 	bandits_easy = {reqs = [], units = {bandit_melee = [1,3], trained_dog = [0,2]}},
@@ -2143,10 +2146,10 @@ var loot_variants_data = {
 
 
 var locks_data = { #makes locks to lockpick for related chests
-	easy_chest_usable = {locks = [['normal', 1],['none', 0.5],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
-	easy_chest_gear = {locks = [['normal', 1],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [10,25]},
-	easy_chest_cosmetics = {locks = [['normal', 1],['none', 0.2],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
-	easy_boss_chest = {locks = [['normal', 1],['none',2]], difficulty = [10,25]},
+	easy_chest_usable = {locks = [['normal', 1],['none', 3],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
+	easy_chest_gear = {locks = [['normal', 1], ['none', 2],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [10,25]},
+	easy_chest_cosmetics = {locks = [['normal', 1],['none', 2.5],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
+	easy_boss_chest = {locks = [['normal', 1],['none',3]], difficulty = [10,25]},
 
 	easy_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [15,25]},
 	easy_armory_armor = {locks = [['normal', 1], ['alarm', 1]], difficulty = [15,25]},
@@ -2154,12 +2157,12 @@ var locks_data = { #makes locks to lockpick for related chests
 	medium_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
 	medium_armory_armor = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
 
-	medium_chest_usable = {locks = [['normal', 1],['none', 0.5],['bomb',1],['gas',1],['mimic',0.3],['mimic_erotic',0.3]], difficulty = [15,40]},
-	medium_chest_gear = {locks = [['normal', 1],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [25,55]},
-	medium_chest_cosmetics = {locks = [['normal', 1],['none', 0.2],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [20,50]},
+	medium_chest_usable = {locks = [['normal', 1],['none', 1],['bomb',1],['gas',1],['mimic',0.3],['mimic_erotic',0.3]], difficulty = [15,40]},
+	medium_chest_gear = {locks = [['normal', 1],['mimic',1],['mimic_erotic',0.2]], difficulty = [25,55]},
+	medium_chest_cosmetics = {locks = [['normal', 1],['none', 1],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [20,50]},
 	medium_boss_chest = {locks = [['normal', 1],['none',1]], difficulty = [20,55]},
 
-	hard_boss_chest = {locks = [['normal', 2],['none',1]], difficulty = [45,80]},
+	hard_boss_chest = {locks = [['normal', 1],['none',1]], difficulty = [45,80]},
 	test_chest_mimic = {locks = [['mimic_erotic', 1]], difficulty = [1,1]},
 	}
 

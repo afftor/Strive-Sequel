@@ -1474,8 +1474,8 @@ var dungeons = {
 		},
 		difficulty = 'medium',
 		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
-		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
-		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'monster',
+		enemyarray = [['tutorial_lich_fight', 1]],
+		final_enemy = [['lich_enc_initiate',1]], final_enemy_type = 'event',
 		event_data = {
 			dungeon_find_chest_easy = {
 				limit = 0,
