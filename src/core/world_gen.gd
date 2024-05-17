@@ -317,7 +317,9 @@ func make_settlement(code, area):
 
 func make_location(code, area):
 	var location = DungeonData.dungeons[code].duplicate(true)
+#	var location = DungeonData.dungeons['quest_final_operation_location'].duplicate(true)
 	location.stamina = 100
+	location.active = true
 	var text = tr(location.name)
 	if worlddata.locationnames.has(location.name+'_adjs'):
 		text = tr("LOCATIONTHE") + tr(worlddata.locationnames[location.name+"_adjs"][randi() % worlddata.locationnames[location.name + "_adjs"].size()]) + " " + tr(worlddata.locationnames[location.name+"_nouns"][randi() % worlddata.locationnames[location.name + "_nouns"].size()])
@@ -377,7 +379,7 @@ func make_location(code, area):
 			room = {}
 		}
 		if location.has("final_enemy"):
-			var bossenemy = input_handler.weightedrandom(location.final_enemy)
+#			var bossenemy = input_handler.weightedrandom(location.final_enemy)
 			if location.final_enemy_type == 'character':
 				location.stagedevents.main[dungeon_mainline] = {event = 'character_boss_defeat'}
 		if location.has('scripteventdata'):
@@ -982,12 +984,28 @@ func build_floor_first_pass(locdata, level):
 		if room == DungeonGen.pack_vertex(DungeonGen.diameter.back()):
 			res.last_room = r_nm
 			if level == (locdata.levels - 1):
-				tmp.type = 'combat_boss'
-				globals.reset_roll_data()
-				var enemygroup = input_handler.weightedrandom(locdata.final_enemy)
-				tmp.enemy_code = enemygroup
-				tmp.enemies = globals.makerandomgroup(Enemydata.enemygroups[enemygroup])
-				tmp.rare = globals.char_roll_data.rare
+				tmp.stamina_cost = locdata.base_room_stamina_cost
+				if tmp.stamina_cost is Array:
+					tmp.stamina_cost = globals.rng.randi_range(tmp.stamina_cost[0], tmp.stamina_cost[1])
+				if locdata.has("final_enemy"):
+					var bossenemy = input_handler.weightedrandom(locdata.final_enemy)
+					if locdata.final_enemy_type == 'event':
+						tmp.type = 'event'
+						tmp.event = bossenemy
+					else:
+						tmp.type = 'combat_boss'
+						globals.reset_roll_data()
+						tmp.enemy_code = bossenemy
+						tmp.enemies = globals.makerandomgroup(Enemydata.enemygroups[bossenemy])
+						tmp.rare = globals.char_roll_data.rare
+				else:
+					tmp.type = 'combat'
+					globals.reset_roll_data()
+					var enemygroup = input_handler.weightedrandom(locdata.enemies)
+					tmp.enemy_code = enemygroup
+					tmp.enemies = globals.makerandomgroup(Enemydata.enemygroups[enemygroup])
+					tmp.rare = globals.char_roll_data.rare
+				
 		if room == DungeonGen.pack_vertex(DungeonGen.diameter[-2]):
 #			res.last_room = r_nm
 			if level == (locdata.levels - 1):
@@ -1090,10 +1108,13 @@ func finalize_subrooms(locdata, subrooms, level):
 						pool.push_back([event, locdata.event_data[event].weight])
 					var roll = input_handler.weightedrandom(pool)
 					var e_data = locdata.event_data[roll]
-					if e_data.events[0] is Array:
-						tmp.event = input_handler.weightedrandom(e_data.events)
+					if e_data.events is Array:
+						if e_data.events[0] is Array:
+							tmp.event = input_handler.weightedrandom(e_data.events)
+						else:
+							tmp.event = input_handler.random_from_array(e_data.events)
 					else:
-						tmp.event = input_handler.random_from_array(e_data.events)
+						tmp.event = e_data.events
 					tmp.possible_challenges = e_data.possible_challenges.duplicate() #or roll 
 					tmp.icon = e_data.icon
 					e_data.limit -= 1
@@ -1101,10 +1122,10 @@ func finalize_subrooms(locdata, subrooms, level):
 						locdata.event_data.erase(roll)
 #					e_data.possible_challenges = [{code = 'event_locked_door', weight = 1}]
 					if !e_data.possible_challenges.empty():
-						pool.clear()
-						for ch in e_data.possible_challenges:
-							pool.push_back([ch.code, ch.weight])
-						tmp.challenge = input_handler.weightedrandom(pool)
+#						pool.clear()
+#						for ch in e_data.possible_challenges:
+#							pool.push_back([ch.code, ch.weight])
+						tmp.challenge = input_handler.weightedrandom(e_data.possible_challenges)
 						
 				'material':
 					tmp.type = 'resource'

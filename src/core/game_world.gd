@@ -123,6 +123,18 @@ func get_default_area_name():
 func advance_day():
 	for i in areas.values():
 		update_guilds(i)
+		var tmp = []
+		for k in i.locations.values():
+			if !k.active:
+				var f = true
+				for ch in ResourceScripts.game_party.characters.values():
+					if ch.check_location(k.id):
+						f = false
+						break
+				if f:
+					tmp.push_back(k.id)
+		for id in tmp:
+			remove_location(id)
 		if int(ResourceScripts.game_globals.date) % variables.shop_restock_days == 1 or variables.shop_restock_days == 1:
 			ResourceScripts.world_gen.update_area_shop(i)
 			for k in i.locations.values():
