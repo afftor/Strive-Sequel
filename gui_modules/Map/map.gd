@@ -495,7 +495,7 @@ func make_panel_for_location(panel, loc):
 #		if ResourceScripts.game_world.areas[loc.area].questlocations.has(loc.id):
 		if loc.quest:
 			text = "Q:" + text
-		if !data.active:
+		if  data.has('active') and data.active == false:
 			text += "(!)"
 		set_loc_text(panel, text)
 #		panel.get_node("Label").text = text
