@@ -1108,10 +1108,13 @@ func finalize_subrooms(locdata, subrooms, level):
 						pool.push_back([event, locdata.event_data[event].weight])
 					var roll = input_handler.weightedrandom(pool)
 					var e_data = locdata.event_data[roll]
-					if e_data.events[0] is Array:
-						tmp.event = input_handler.weightedrandom(e_data.events)
+					if e_data.events is Array:
+						if e_data.events[0] is Array:
+							tmp.event = input_handler.weightedrandom(e_data.events)
+						else:
+							tmp.event = input_handler.random_from_array(e_data.events)
 					else:
-						tmp.event = input_handler.random_from_array(e_data.events)
+						tmp.event = e_data.events
 					tmp.possible_challenges = e_data.possible_challenges.duplicate() #or roll 
 					tmp.icon = e_data.icon
 					e_data.limit -= 1
