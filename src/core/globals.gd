@@ -1904,6 +1904,10 @@ func common_effects(effects):
 				ResourceScripts.game_progress.completed_quests.append(i.value)
 			'complete_active_location':
 				complete_location(input_handler.active_location.id)
+			'set_completed_quest_location':
+				var data = ResourceScripts.world_gen.get_faction_from_code(i.id)
+				data.completed = true
+				data.active = false
 			'set_completed_active_location':
 				#input_handler.active_location.progress.level = input_handler.active_location.levels.size()
 #				input_handler.active_location.progress.stage = input_handler.active_location.levels["L" + str(input_handler.active_location.levels.size())].stages
