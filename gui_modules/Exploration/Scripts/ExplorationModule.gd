@@ -1,7 +1,7 @@
 extends Control
 
 #var active_area
-#var active_location
+var active_location
 onready var nav = $LocationGui/NavigationModule
 
 
@@ -114,7 +114,7 @@ func open_location(data):
 #								$LocationGui/Resources/SelectWorkers.visible = false
 	$LocationGui.show()
 	$LocationGui/Resources/Materials.update()
-#	active_location = data
+	active_location = data
 	input_handler.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[data.id].area]
 #	input_handler.active_area = active_area
 	input_handler.active_location = data

@@ -1907,9 +1907,12 @@ func common_effects(effects):
 			'set_completed_active_location':
 				#input_handler.active_location.progress.level = input_handler.active_location.levels.size()
 #				input_handler.active_location.progress.stage = input_handler.active_location.levels["L" + str(input_handler.active_location.levels.size())].stages
-				if gui_controller.exploration_dungeon != null:
+				if gui_controller.exploration_dungeon != null and gui_controller.exploration_dungeon.visible:
 					gui_controller.exploration_dungeon.active_location.completed = true
 					gui_controller.exploration_dungeon.active_location.active = false
+				if gui_controller.exploration != null and gui_controller.exploration.visible:
+					gui_controller.exploration.active_location.completed = true
+					gui_controller.exploration.active_location.active = false
 			'remove_active_location':
 				remove_location(input_handler.active_location.id)
 			'reputation':
