@@ -490,10 +490,13 @@ func make_panel_for_location(panel, loc):
 	if loc.id == 'travel': #not used
 		panel.text = "Characters on the road"
 	else:
-		var text = ResourceScripts.world_gen.get_location_from_code(loc.id).name
+		var data = ResourceScripts.world_gen.get_location_from_code(loc.id)
+		var text = data.name
 #		if ResourceScripts.game_world.areas[loc.area].questlocations.has(loc.id):
 		if loc.quest:
 			text = "Q:" + text
+		if !data.active:
+			text += "(!)"
 		set_loc_text(panel, text)
 #		panel.get_node("Label").text = text
 		if loc.has('captured'):
