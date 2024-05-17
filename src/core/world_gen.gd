@@ -1119,10 +1119,10 @@ func finalize_subrooms(locdata, subrooms, level):
 						locdata.event_data.erase(roll)
 #					e_data.possible_challenges = [{code = 'event_locked_door', weight = 1}]
 					if !e_data.possible_challenges.empty():
-						pool.clear()
-						for ch in e_data.possible_challenges:
-							pool.push_back([ch.code, ch.weight])
-						tmp.challenge = input_handler.weightedrandom(pool)
+#						pool.clear()
+#						for ch in e_data.possible_challenges:
+#							pool.push_back([ch.code, ch.weight])
+						tmp.challenge = input_handler.weightedrandom(e_data.possible_challenges)
 						
 				'material':
 					tmp.type = 'resource'
