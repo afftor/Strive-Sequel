@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -75,6 +75,8 @@
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/hallway.png" type="Texture" id=73]
 [ext_resource path="res://gui_modules/Exploration/Scripts/room.gd" type="Script" id=74]
 [ext_resource path="res://assets/images/backgrounds/cave1.png" type="Texture" id=75]
+[ext_resource path="res://gui_modules/Universal/Modules/CapturedSlavesButton.gd" type="Script" id=76]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24.tres" type="DynamicFont" id=77]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -1077,6 +1079,7 @@ toggle_mode = true
 texture_normal = ExtResource( 62 )
 texture_pressed = ExtResource( 63 )
 texture_hover = ExtResource( 64 )
+script = ExtResource( 76 )
 
 [node name="TextureRect" type="TextureRect" parent="MapPanel/slaves"]
 anchor_right = 1.0
@@ -1088,6 +1091,17 @@ margin_bottom = -5.0
 mouse_filter = 2
 texture = ExtResource( 65 )
 expand = true
+
+[node name="Label" type="Label" parent="MapPanel/slaves"]
+visible = false
+margin_left = 31.0
+margin_top = 20.0
+margin_right = 50.0
+margin_bottom = 52.0
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 77 )
+text = "5"
 
 [node name="res" type="TextureButton" parent="MapPanel"]
 margin_left = 1171.0
@@ -1284,6 +1298,9 @@ scale = Vector2( 1.78533, 1.064 )
 texture = ExtResource( 68 )
 mode = 3
 range_item_cull_mask = 32
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NavigationModule" type="Panel" parent="."]
 anchor_right = 1.0

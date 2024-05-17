@@ -51,10 +51,10 @@ func update():
 				'event', 'unique_event', 'onetime_event':
 					var icon = data.subrooms[i].icon
 					get_node("subroom%d/icon"%(i + 1)).texture = images.icons[icon]
-					sb_text += "Subroom - event, stamina cost - %d" % data.subrooms[i].stamina_cost
+					sb_text += "Subroom - event\nCost- %d" % data.subrooms[i].stamina_cost
 				'resource':
 					get_node("subroom%d/icon"%(i + 1)).texture = load("res://assets/Textures_v2/Universal/Icons/icon_resources_pressed.png")
-					sb_text += "Subroom - resource, stamina cost - %d" % data.subrooms[i].stamina_cost
+					sb_text += "Subroom - resource\nCost - %d" % data.subrooms[i].stamina_cost
 			globals.connecttexttooltip(get_node("subroom%d"%(i + 1)), sb_text)
 			if data.subrooms[i].challenge != null:
 				get_node("subroom%d/icon"%(i + 1)).modulate = Color(variables.hexcolordict.red)
@@ -79,13 +79,13 @@ func update():
 					text += "Empty room" 
 				'combat':
 					$main/icon.texture = load("res://assets/Textures_v2/DUNGEON/Icons/swords_fight.png")
-					text += "Guarded room, enter cost - %d" % data.stamina_cost
+					text += "Guarded room\nCost - %d" % data.stamina_cost
 				'combat_boss':
 					$main/icon.texture = load("res://assets/Textures_v2/Universal/Icons/icon_weapon_pressed.png")
-					text += "Dungeon boss, enter cost - %d" % data.stamina_cost
+					text += "Dungeon boss\nCost - %d" % data.stamina_cost
 				'event':
 					$main/icon.texture = load("res://assets/Textures_v2/DUNGEON/Icons/exclaim.png")
-					text += "Room, enter cost - %d" % data.stamina_cost
+					text += "Room\nCost - %d" % data.stamina_cost
 				'ladder_down':
 					$main/icon.texture = load("res://assets/Textures_v2/DUNGEON/Icons/steps.png")
 					text += "Ladder down"

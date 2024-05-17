@@ -144,6 +144,8 @@ func _ready():
 	input_handler.connect("LocationSlavesUpdate", self, 'build_location_group')
 	input_handler.connect("update_itemlist", self, 'update_sell_list')
 	globals.connecttexttooltip($LocationGui/MapPanel/Stamina, tr("TOOLTIPSTAMINADUNGEON"))
+	
+
 
 func open_journal():
 #	globals.common_effects( [{code = 'update_city'}])

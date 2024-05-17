@@ -26,6 +26,8 @@ var TranslationDict = {
 	GALLERYSCENES = "Сцены",
 	GALLERYRETURN = "Назад",
 	GALLERYTOOLTIPTOP = "Условия сцены:",
+	GALLERYRESETBUTTON = """Reset""", # MISSING TRANSLATION
+	GALLERYRESETTEXT = """Are you sure you want to reset ALL gallery progress?""", # MISSING TRANSLATION
 	#ModPanel
 	MODLOAD = "Загруженные моды",
 	MODLOAD1 = "Эти моды будут применены к игре и доступны в редакторе при следующем запуске игры.",
@@ -852,6 +854,7 @@ var TranslationDict = {
 	TOOLTIPSPEED = "Повышает ваши шансы действовать раньше других персонажей",
 	TOOLTIPRESISTS = "Уменьшает урон от стихий на относительное сопротивление",
 	TOOLTIPSTAMINA = "Выносливость истощается при выполнении действий, на которые персонаж не согласен. При полном исчерпании выносливости такие действия истощают Повиновение. Также при полном истощении персонаж не сможет улучшить свое Согласие. Выносливость пополняется за счет оргазмов, однако это связано с уменьшением эффективности.",
+	TOOLTIPSTAMINADUNGEON = """Exploration Stamina is depleted every time you take an exploration action. It will be fully replenished at the start of new day.""", # MISSING TRANSLATION
 
 	TOOLTIPFOODCONSUMPTION = "Ежедневное потребление пищи",
 	TOOLTIPPOPULATION = "Население",
@@ -1216,6 +1219,7 @@ var TranslationDict = {
 	SKILLSNIPER_SHOT = "Стрела ловчего",
 	SKILLSNIPER_SHOTDESCRIPT = "Наносит цели 110% от ATK в виде земляного урона. Накладывает на цель эффект Западня на 5 ходов. ",
 	SKILLSOUL_BIND = "Связывание души",
+	SKILLSOUL_BINDDESCRIPT = """Bends person's mind to submit to your will. After a day of rest they will follow most of your orders. """, # MISSING TRANSLATION
 	SKILLSOUL_BINDESCRIPT = "Склоняет разум человека, чтобы он подчинился вашей воле. После дня отдыха они будут выполнять большинство ваших приказов. ",	
 
 	SKILLFLY_EVASION = "Полет",
@@ -2188,6 +2192,8 @@ var TranslationDict = {
 	TRAITEFFECTRAREPRECISE = "Особый: Точный\nУвеличение уклонения, точности и MЗАЩ",
 	TRAITEFFECTRARETOUGH = "Особый: Жесткий\nУвеличение здоровья, ЗАЩ и МЗАЩ",
 	TRAITEFFECTHARDWORK = "Усердие: +50%% производительности",
+	TRAITEFFECTPHYSBUF = """Elixir of Ogre's Strength: +80 Physics""", # MISSING TRANSLATION
+	TRAITEFFECTWITSBUF = """Elixir of Expanded Mind: +80 Wits""", # MISSING TRANSLATION
 	TRAITEFFECTFAVFOOD = "Любимая еда: -1 утечка повиновения, +0.5 прироста верности", 
 	TRAITEFFECTHATEDFOOD = "Ненавистная еда: -10%% производительности",
 	TRAITEFFECTSTARVE = "Голодание: -50%% производительности, -50%% урона.",
@@ -2211,6 +2217,7 @@ var TranslationDict = {
 	TRAITEFFECTBARRIER = "Поглощающий урон щит, блокирует 100 ед. урона (осталось %d)",
 	TRAITEFFECTBLIZZARD = "Вьюга: -20 скорости",
 	TRAITEFFECTBLESSED = "Благословенный: +25%% ATK.",
+	TRAITEFFECTMENTALBLESS = """Mentally Blessed: +25%% MATK.""", # MISSING TRANSLATION
 	TRAITEFFECTMENTALBLESSED = "Ментально благословенный: +25%% MATK.",
 	TRAITEFFECTFLY = "Полет: +65 уворота.",
 	TRAITEFFECTSHATTERED = "Раскол: -25 уворота",
@@ -2235,6 +2242,9 @@ var TranslationDict = {
 	TRAITEFFECTHOLY = "Божественное сияние: -20 MЗАЩ",
 	TRAITEFFECTPOSITIONTAKEN = "Занятая позиция: +50 бронепробиваемость; +20%% урона",
 	TRAITEFFECTWINDWALL = "Стена ветра: -50% дистанционного урона.",
+	TRAITEFFECTPETSUIT = """When wearer has Pet class:
+Charm: +10
+Social skills effect: +10%.""", # MISSING TRANSLATION
 	TRAITEFEFCTPETSUIT = "Если у владельца есть класс питомец:\nОбаяние: +10\nЭффект социальных навыков: +10%.",
 	TRAITEFFECTWORKEROUTFIT = "Задания по охоте, рыбалке и собирательству: +25%",
 	TRAITEFFECTCRAFTSMANSUIT = "Кулинария, кузнечное дело, алхимия, портной и улучшения: +25%",
@@ -3146,6 +3156,18 @@ var TranslationDict = {
 	DIALOGUEDUNGEONCHEST = "Вы нашли запертый сундук.",
 	DIALOGUEDUNGEONARMORY = "Вы нашли запертый арсенал, в котором может быть что-то полезное",
 	DIALOGUEEVENTDUNGEONLOOT = "Пройдя в последнюю комнату, вы находите главное хранилище с самыми ценными вещами.",
+	DIALOUELOCKEDDOOR = """The pass forward ends in a sturdy locked door. It seems to get through it you might need an additional force... or someone who can lockpick.""", # MISSING TRANSLATION
+	DIALOUELOCKEDDOORSELECT = """Select character (3 Stamina)""", # MISSING TRANSLATION
+	DIALOUELOCKEDDOORBREAK = """Break Through (10 Stamina)""", # MISSING TRANSLATION
+	DIALOUELOCKEDDOORPASS = """[name] skillfully unlocks door blocking the pass allowing to proceed. """, # MISSING TRANSLATION
+	DIALOGUEBLOCKEDPATH = """The pass ahead is blocked by a collapsed tunnel. It seems it still can be fixed by someone with enough physical fitness relatively quickly.""", # MISSING TRANSLATION
+	DIALOGUEBLOCKEDPATHSELECT = """Select character (3 Stamina)""", # MISSING TRANSLATION
+	DIALOGUEBLOCKEDPATHBREAK = """Spend time clearing the passage (10 Stamina)""", # MISSING TRANSLATION
+	DIALOGUEBLOCKEDPATHPASS = """[name] lifts one of the crushed wooden bars and manages to push it away, clearing the path ahead.""", # MISSING TRANSLATION
+	DIALOGUEMAGICBARRIER = """""", # MISSING TRANSLATION
+	DIALOGUEMAGICBARRIERSELECT = """""", # MISSING TRANSLATION
+	DIALOGUEMAGICBARRIERBREAK = """""", # MISSING TRANSLATION
+	DIALOGUEMAGICBARRIERPASS = """""", # MISSING TRANSLATION
 
 	DIALOGUEGROVEWOOD = "Вы находите тайник с заготовленной древесиной, вероятно, оставленный какими-то дровосеками.",
 	DIALOGUEGROVELEATHER = "Вы находите тайник со спрятанной кожей, вероятно, оставленный браконьерами.",
@@ -3157,6 +3179,7 @@ var TranslationDict = {
 
 	DIALOGUEEVENTDUNGEONPRISONERFREE1 = "Вы освобождаете и развязываете [name], к большому [his] облегчению . Поблагодарив вас, [he] показывает вам небольшой тайник с ресурсами рядом со своей камерой в благодарность за спасение. Объяснив [him], как выбраться, вы готовы продолжить свой путь",
 	DIALOGUEEVENTDUNGEONPRISONERFREE2 = "Вы освобождаете и развязываете [name], к большому [his] облегчению . Когда [he] благодарит вас, [he] показывает вам секретный предмет, который [he] спрятал в [his] камере в благодарность за [his] спасение. Объяснив [him], как выбраться, вы готовы продолжить свой путь",
+	DIALOGUEEVENTDUNGEONRESOURCE = """There are resources in this room. You can harvest {amount} items of {resource} later or spend {stamina_cost} stamina to get half of that amount now.""", # MISSING TRANSLATION
 
 	DIALOGUEEVENTGOBLINFRIENDLY = "Пробираясь через пещеры, вы найдете изолированную комнату. Когда вы врываетесь туда, одинокий гоблин [boy] в страхе вскакивает. \n\n- Подождите, подождите, пожалуйста, не убивайте меня! Я не хочу драться, я здесь случайно. Я никому не скажу, что видел тебя, обещаю.\n\n\nУдивленный тем, что [he] знает обычную речь и цивилизован в отличие от других, ты думаешь, что с ним делать.",
 	DIALOGUEEVENTGOBLINRECRUIT = "*Попытка вербовки*",
@@ -3409,6 +3432,8 @@ var TranslationDict = {
 	DIALOGUEWRIT_CONFIRM = "Использование этого письма освободит [name] от рабства, сделав [him] {color=aqua|Подчиненным}. Однако это позволит [him] покинуть ваше владение, если [he] того пожелает.",
 	DIALOGUEWRIT_SUCCESS = "[name] не может поверить [his] глазам, когда [name] получает от вас доказательство [his] свободы. После паузы, [name] заявляет о своей готовности продолжать служить под вашим правлением. \n\n{color=aqua|[name]} - {random_chat=0|writ_success}",
 	DIALOGUEWRIT_FAILURE = "[name] не может поверить [his] глазам, когда [name] получает от вас доказательство [his] свободы. Однако после долгой паузы [name] использует этот шанс и решает покинуть вашу свиту. \n\n{color=aqua|[name]} - {random_chat=0|writ_failure}",
+	DIALOGUELACTATION_SUCCESS = """As [name] drinks the potion, [his] chest begins ripening and feeling heavier. [His] nipples start seeping with milk much to [his] shame.""", # MISSING TRANSLATION
+	DIALOGUELACTATION_REVERSE = """As [name] drinks the potion, [his] chest seemingly returns to normal, no longer producing any milk. """, # MISSING TRANSLATION
 
 	DIALOGUETITSSELECT = "Грудь",
 	DIALOGUEASSSELECT = "Зад",
@@ -6525,6 +6550,8 @@ AFTER_ELECTION_PRINCESS_MINDBREAK_7 = """Вы чувствуете, как де�
 	MATERIALDIVINE_SYMBOLDESCRIPT = "Небольшой кусок металла в форме монеты, который может служить средством для некоторых искусств. Несмотря на свой простой вид, он демонстрирует значительное мастерство",
 	MATERIALBLESSED_DIVINE_SYMBOL = "Благословенный божественный символ",
 	MATERIALBLESSED_DIVINE_SYMBOLDESCRIPT = "Небольшой кусок металла в форме монеты, излучающий слабый свет",
+	ITEMZEPHYRA_UNDERWEAR = """Ripples of Pristine Waters""", # MISSING TRANSLATION
+	ITEMZEPHYRA_UNDERWEARDESCRIPT = """Excessively rare item, a one of a kind, or at least a one you've obtained.""", # MISSING TRANSLATION
 
 	UNIQUECLASS = "Не может быть получен обычным путем",
 
@@ -7791,6 +7818,40 @@ GRYPHON_ANA_SEX_9 = """После нескольких толчков вы вы�
 	ZEPHYRA_SWORD_2_OPTION_2 = "Что будет после того, как мы соберем все артефакты?",
 	ZEPHYRA_SWORD_3_1 = """- Я тоже. Ну, вы же мэр, я верю, что у вас будет возможность, так или иначе, в конце концов. А пока я останусь рядом с вами, если вы не против.""",
 	ZEPHYRA_SWORD_3_2 = """- Без понятия. Простите, но я могу лишь смутно истолковать общую идею того, что от нас ожидается. Надеюсь, это не слишком разочарует вас? Пока мы не достигнем большего прогресса, я надеюсь оставаться рядом с вами""",
+	ZEPHYRA_SWORD_3_2_1 = """[Charm] Are you hiding something from me?""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_2_2 = """[Wits] If you want my help, I want to know more about what we are doing.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_2_3 = """Very well, I'll help you.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_2_4 = """I'll get to it when I have time.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_2_FINISH = """Zephyra nods with her usual smile on her face before leaving you to yourself.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_1 = """{color=green|Success}
+
+— I wish I could tell you more, but I barely get anything other than my personal hunch about what's going on. All I'm certain of is that there's an ominous plot being staged beyond our sight, the one threatening everyone. I know it's a weak premise, but I can't do nothing on it. 
+
+— And if you want to know why I think my own actions are so important, let's say I'm not just some random girl of unusual descendancy who got granted a god's power and guidance. Well, after all, nothing in this world is truly accidental, don't you think?""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_1_OPTION_1 = """Many things in our lives are purely random.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_1_OPTION_2 = """I can't deny the certainty of some seemingly arbitrary actions.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_1_1 = """— Don't be harebrained, [name]. Not a single action taken can be replayed after it is unveiled, there's only single chance for everything what happened was certain to happen. The fate is the truth we live by. And this fate is guided by something far greater than your or mine life.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_1_1_OPTION1 = """And if this happens to lead you to your death?""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_1_1_OPTION2 = """Enough of this talk.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_1_1_1 = """— In this case I'll be very sad. Because of my death. But also because it would indicate a severe disaster for the rest of the world. """, # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_1_2 = """— So we are like-minded. That's a relief to know. """, # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_2 = """{color=red|Failure}
+
+	Zephyra looks around with a troubled expression of someone having to answer a childish questions rather than someone being interrogated.
+
+	— *Sigh* Look, if that's still not enough for to convince you, how about I dirty bribe you then? Tell what can I get you.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_2_OPTION_1 = """You could give something valuable as a way of insurance.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_2_OPTION_2 = """Something intimate could prove your sincerity.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_2_OPTION_3 = """Forget about it, I'll trust you.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_2_1 = """Hearing your mundane request, Zephyra reaches her pocket and produces a sizable pouch of gold coins. She puts it before you before stepping back.
+
+— This is about five hundred and this is all I have as my safety measure. So now I'm financially completely in your care. You wonder why? That's the extension of my trust... or stupidity. """, # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_3_2_2 = """Zephyra blushes for a bit, after which she leaves a room. After a few moments of rustling behind the door, she enters again and puts into your hand a still warm piece cloth, which appear to be her undergarment. 
+
+— Happy now, dear Mayor? This way both you get what you want and I could make some scandalous claims if you do something bad. Now, please excuse me, I don't want to keep around here... or anywhere, being that unprotected. 
+
+Zephyra leaves to her room before you get a chance to react. It seems she will take you reaction as an agreement.""", # MISSING TRANSLATION
+	ZEPHYRA_SWORD_3_4 = """- Now, have I satisfied your curiosity? What is your answer?""", # MISSING TRANSLATION
 	PRIESTESS_SWORD_TALK_1_1 = """Записавшись на прием, вы сможете найти аудиенцию у Верховной жрицы. 
 
 - Чтобы вы знали, я принимаю вас только из-за вашего высокого статуса. Что вам нужно?""",
@@ -9975,6 +10036,18 @@ CALI_GRAT_SEX_3 = """Волчица наполовину умоляет об э�
 	CALI_ACT2_SIMPLE_COLLAR_2_2 = """Кали вздрагивает, когда свежие слезы падают на пол. Поза девушки, кажется, расслабляется, ее глаза смотрят вперед, пока она слегка вздрагивает. Девушка не сопротивляется, но по языку ее тела видно, что если бы она думала, что если бы смогла убежать от вас, она бы мгновенно бросилась бежать.
 
 Как только ошейник оказывается на ее шее, Кали смотрит на вас, ее лицо спокойно, но тело дрожит. В конце концов вы отстраняете девушку, чтобы продолжить свою работу.""",
+	CALI_ACT2_EXQUISITE_COLLAR_1_1 = """You call Cali to you the next morning. The girl is quiet, but stares at you with more than a little distaste.
+
+— What do you want? I've been behaving, [name].
+
+When you pull out the collar Cali's eyes light up for the faintest moment. The girl's eyes lock onto the item as she looks it over. 
+
+— It's pretty...""", # MISSING TRANSLATION
+	CALI_ACT2_EXQUISITE_COLLAR_1_2 = """You use her mesmerization with the collar as a distraction to quickly slip it around her neck. She panics for a few moments, bringing her hands around it in a half-hearted attempt to rip it off, before deflating and rubbing it begrudgingly.
+
+— ...Well, at least it's comfortable. But don't think this changes anything! Especially after what you've done...
+
+The girl's hands instinctively drift to the jewel as she goes quiet. She seems to relax as she admires it with wide eyes. You use the moment to rest your own hand atop her head. Her body goes rigid at your touch, but she doesn't move away.""", # MISSING TRANSLATION
 	CALI_ACT2_EXQUISITE_COLLAR_1 = """Вы зовете Кали к себе на следующее утро. Девушка молчит, но смотрит на вас с более чем легким отвращением.
 
 - Чего ты хочешь? Я вела себя хорошо, [name].
@@ -10235,6 +10308,18 @@ CALI_GRAT_SEX_3 = """Волчица наполовину умоляет об э�
 Легкое прикосновение к подбородку - это все, что девушка получает в ответ, молчаливое напоминание закончить трапезу.  Кали старается сохранить самообладание, но из-за поглаживания промежности и уже возникшего возбуждения она не может долго сосредоточиться на еде.
 
 Кали:- Подождите не т-""",
+	CALI_ACT5_PET_9_1 = """The girl's words are cut off with a low moan as your hand slides into her panties, easily finding her soaked clit as your fingers continue to explore her further, to stimulate her. Face darker with each passing moment it wasn't long before she'd lose her focus entirely, her hips practically buzzing as she was fast approaching her release. 
+
+Cali: — Nhhh...
+
+The girl withdraws her protests as she gives into your caress, finally buckling as her legs close hard around your hand and she soaks her panties. A shrill cry comes from her throat as she nearly collapses onto her bowl, her unfocused eyes looking into the distance.""", # MISSING TRANSLATION
+	CALI_ACT5_PET_9_2 = """— Why... doesn't this feel wrong..?
+
+Cali seems conflicted before sighing, her body relaxing on the floor as your hand slips through her hair. It seems she has completely forgotten her initial grudge.
+
+The girl doesn't fight you as you slide your hands over her back and shoulders. Her head hangs down in contemplation as you barely hear what she whispers.
+
+— I liked it...""", # MISSING TRANSLATION
 	CALI_ACT5_PET_9 = """Слова девушки обрываются низким стоном, когда ваша рука проскальзывает в ее трусики, легко находя ее намокший клитор, а ваши пальцы продолжают исследовать ее дальше, стимулировать ее.  Лицо темнеет с каждым мгновением, и вскоре она полностью теряет концентрацию, ее бедра практически гудят, так как она быстро приближается к своему освобождению. 
 
 Кали:- Нххх...
@@ -11383,6 +11468,43 @@ ZEPHYRA_VISITOR_3_2 = """Посетитель: - Нееееет! Это дейс
 - Что ты делаешь?! Не хватай его так внезапно...
 
 Вы игнорируете ее вопрос и вводите свой член в Зефиру. Этого достаточно, чтобы она мгновенно забыла о дискомфорте, вызванном тем, что ее схватили за хвост.""",
+	ZEPHYRA_DISAPPEARANCE_SEX_3_OPTION_1 = """*Take her gently*""", # MISSING TRANSLATION
+	ZEPHYRA_DISAPPEARANCE_SEX_3_OPTION_2 = """*Be rough*""", # MISSING TRANSLATION
+	ZEPHYRA_DISAPPEARANCE_SEX_3_OPTION_3 = """*Grab her tail*""", # MISSING TRANSLATION
+	ZEPHYRA_DISAPPEARANCE_SEX_4_1 = """You slowly align yourself to make her more at ease. She mellows to your touch, visibly relaxing.
+	The wiggling of her tail gets rarer, slower. 
+
+Your hand glides along her hair and follows to her back. You caress her skin. It's soft and warm to the touch.
+
+— You're surprisingly gentle... after all the trouble I caused. 
+
+She twists her body, turning her head towards you. One of her hands continues to use the tree as support, while other moves towards your face. She touches your head, direction it towards her lips. The two of you are joined in a passionate kiss.
+
+The rhythm of your movements intensifies. You notice Zephyra's knees are starting to shake, weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
+
+Her words carry a tint of irritation, but her body tells another story. She's completely immersed in the pleasure. And so are you.""", # MISSING TRANSLATION
+	ZEPHYRA_DISAPPEARANCE_SEX_4_2 = """You grab Zephyra and push your penis inside with a force, making her exhale in response. However, her wetness still makes it easy and she does not protest.
+
+— Ah... [Master] [name]... I'm sorry... For giving you troubles...
+
+You spank her on the ass. Another sigh follows the sound of slapping.
+
+— P-please... Ahh... Have mercy...
+
+You ignore her plea and slap her again. Despite her words she shamefully enjoys it.
+
+The rhythm of your movements intensifies. You notice Zephyra's knees are starting to shake, weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
+
+Her words carry a tint of irritation, but her body tells another story. She's completely immersed in the pleasure. And so are you.""", # MISSING TRANSLATION
+	ZEPHYRA_DISAPPEARANCE_SEX_4_3 = """As you push your penis into her, you grab her tail with your hand, making her squeak in surprise.
+
+— W-what are you doing?! Don't grab it so suddenly... It's very sensitive!
+
+You feel it getting tense in your hand but her pussy also squeezes you more desperately. After a few moments it looks like Zephyra stops resisting your possessive touch on her delicate part, allowing you to selfishly pet it.
+
+The rhythm of your movements intensifies. You notice Zephyra's knees are starting to shake, weaken. Her sighs are replaced with moaning. Quiet, at first, but growing louder with every push. Soon they resound across the entire field.
+
+Her words carry a tint of irritation, but her body tells another story. She's completely immersed in the pleasure. And so are you. """, # MISSING TRANSLATION
 	ZEPHYRA_DISAPPEARANCE_SEX_4 = """Ритм ваших движений усиливается. Вы замечаете, что колени Зефиры начинают дрожать и слабеть. Ее вздохи сменяются стонами. Сначала тихие, но с каждым толчком все более громкие. Вскоре они раздаются по всему полю.
 
 - Глупый... [Master]... какой же ты грубый... такой сильный... даже за хвост девушку хватаешь...!
@@ -12523,6 +12645,13 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 - Ах...! Почему-то сегодня это кажется еще лучше...!
 
 - (Эта поза... кажется такой правильной...)""",
+	CALI_WEDDING_3_BAD = """As soon as you get into the room, Cali leans against the dresser and holds a leg up, exposing her pussy to you like a wolf in heat.
+
+— Please, Master…!
+
+You smirk at Cali's readiness, admiring how her arousal drips down onto the floor as she waits for you. You don't keep her waiting for long, freeing your dick and stepping closer to caress her thigh. Pressing into her, you watch as her expression melts into pleasure as her pussy closes around you.
+
+— This pose... feels so right...""", # MISSING TRANSLATION
 	CALI_WEDDING_4 = """В ответ вы еще сильнее вжимаетесь в нее и начинаете двигаться. Тугая киска Кали сжимается при каждом толчке и пытается удержать вас внутри, когда вы отступаете. Она с трепетом наблюдает за тем, как ваш член входит в нее, и молчит, наслаждаясь тем, как ваш член согревает ее изнутри.
 
 Ее соки растекаются по вашему стволу по мере нарастания ее возбуждения, делая каждый последующий толчок более плавным и легким благодаря естественной смазке. Липкие звуки, доносящиеся из киски Кали, несомненно, дадут любому четкое представление о том, что происходит между женихом и невестой, если только визгливые стоны Кали не были достаточным намеком. Ее хвост развевается за спиной, когда она тяжело дышит, то и дело задевая вашу ногу.""",
@@ -12533,6 +12662,11 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 Киска Кали прижимается к вашему стволу, когда волна ее спермы проносится мимо, выплескиваясь наружу, а ее тело содрогается от удовольствия. Вы держите ее, пока ее ноги шатаются от ощущений, сотрясающих ее тело.
 
 Чувствуя, как внутри вас нарастает жар, вы увеличиваете темп. Ее сперма дает вам достаточно возможностей, чтобы проскальзывать в ее дырочку и выходить из нее, пока она высасывает из вас семя, которое вы с трудом сдерживаете. Через несколько мгновений ты врываешься в нее, твоя сперма заполняет каждый уголок ее киски, а ты прижимаешь ее к себе.""",
+	CALI_WEDDING_5_BAD = """— Ahh…! M–Master! I’m sorry, please… Don’t s-stop…
+
+Cali's pussy clings to your shaft as a wave of her cum flows past, spilling out as her body shivers from the pleasure. You hold her steady as her leg becomes wobbly from the sensations wracking her body.
+
+Feeling the heat inside you welling up too, you pick up the pace. Her cum gives you ample leverage to slip in and out of her hole as she milks you for the seed you can barely hold back from her. Within a few moments, you burst inside her, your cum filling every nook in her pussy as you hold her close.""", # MISSING TRANSLATION
 	CALI_WEDDING_6 = """Проходит совсем немного времени, и твоя сперма выливается вместе с ее собственной, обе жидкости стекают по ее ноге, пока ты отмечаешь ее как свою. Кали теряет дар речи, наблюдая, как тепло внутри нее вытекает из ее киски, едва удерживаемое вашим членом. Как только вы отстраняетесь от нее, остатки следуют вашему примеру и стекают по ее ноге, превращаясь в беспорядок похоти.
 
 - Это было очень много...
@@ -12540,6 +12674,11 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 - (...Огромное спасибо, Мастер... за то, что заставили меня почувствовать это...)
 
 Вы прижимаете Кали к себе и целуете ее, проводя остаток ночи рядом друг с другом в постели, наслаждаясь ее маленьким телом.""",
+	CALI_WEDDING_6_BAD = """It doesn’t take long for your cum to spill out with her own, both fluids running down her leg as you mark her as yours. Cali is speechless as she watches the warmth inside her flow out of her pussy, only barely held in by your cock. Once you pull away from her, the rest follows suit and slides down her leg, making a mess of lust.
+
+— ...T–Thank you so much, Master… for making me feel this…
+
+You hold Cali close and kiss her, spending the rest of the night close together in bed as you enjoy her petite body.""", # MISSING TRANSLATION
 
 
 	#   QUESTS   #
@@ -12833,6 +12972,13 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 	DIALOGUELILIAINITIATEH = "Маленькая фея нетерпеливо подпрыгивает, когда вы ее вызываете. \n\n- Мне так одиноко без тебя, [Master]! Ты меня развеселишь?",
 	DIALOGUELILIAINITIATEM = "Ваша экстравагантная жена, Лилия, страстно приветствует вас, едва скрывая свое волнение.\n\n- [Master], ты скучал по Лилии? Давай уже ляжем в постель!",
 	DIALOGUEJEANINITIATEM = "",
+	DIALOGUEZEPHYRA_UNDERWEAR = """In your hands you hold a piece of clothing which was surrendered to you by Zephyra. Pondering on what actual benefit it can have, one mind is stuck in your mind... What if you wear it on your head? Surely, this is a terrible idea...""", # MISSING TRANSLATION
+	DIALOGUEZEPHYRA_UNDERWEAROPTION = """Do it""", # MISSING TRANSLATION
+	DIALOGUEZEPHYRA_UNDERWEAR2 = """Despite your best judgement, you put a girl's underwear onto your head. You feel nothing like you would expect but the sudden revelation is abrupted by the owner entering your room just at this moment. 
+	
+— [Master], can I have a mo...
+
+Zephyra freezes as she sees your deed. Her face spells your doom. The time stops and you can no longer process the world around you, as the last breath leaves your body...""", # MISSING TRANSLATION
 	
 	
 	
@@ -12857,6 +13003,11 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 	METRICS_SOURCE_BROTHEL_CUSTOMER = "клиент борделя",
 	METRICS_SOURCE_GUILD_TRAINER = "тренер гильдии, во время тренировок с секс-игрушками",
 	METRICS_SOURCE_WILLIAM = "Уильям, известный коллекционер Алирона",
+	METRICS_WIN_NAME = """%d/%d Battles Won""", # MISSING TRANSLATION
+	METRICS_SERVICEPERFORMED_NAME = """Performed service task for %d/%d turns""", # MISSING TRANSLATION
+	METRICS_SOCSKILLUSED_NAME = """Social skills used %d/%d """, # MISSING TRANSLATION
+	METRICS_SPELLUSED_NAME = """Spells Used %d/%d""", # MISSING TRANSLATION
+	METRICS_HEALUSED_NAME = """Healing Skills Used %d/%d""", # MISSING TRANSLATION
 	
 	
 	
@@ -14311,9 +14462,12 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 	CANT_USE_TODAY_LABEL = "Сегодня нельзя использовать этот навык",
 	REQS_NOT_MET_LABEL = "Требования не выполнены",
 	TARGET_REQS_NOT_MET_LABEL = "Требования цели не выполнены",
+	SPECTASKCOMPLETED = """Completed Special Task""", # MISSING TRANSLATION
 	FARM_LABEL = "Ферма",
 	SELECT_RES_FIRST_LABEL = "Выберите сначала ресурс",
 	SELECT_SLOT_FIRST_LABEL = "Выберите сначала слот",
+	FARMAVAILABLEPRDODUCTS = """Avaliable Products""", # MISSING TRANSLATION
+	FARMAVAILABLEPRDODUCTSNO = """No Products Available for this character""", # MISSING TRANSLATION
 	LACKS_BASIC_SERV_LABEL = "Не хватает обучения: Базовое служение",
 	REFUSE_TO_WHORE_LABEL = "отказывается выполнять сексуальные задания",
 	REFUSE_THIS_TASK_LABEL = "отказывается выполнять это задание",
@@ -14432,6 +14586,7 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 	DATING_FOOD_RESIST_1 = "{^[name2]:[race2] [boy2]:[he2]} отклоняет ваше предложение, демонстрируя [his2] сопротивление",
 	DATING_FOOD_LIKED_1 = "{^[name2]:[race2] [boy2]:[he2]} принимает предложение с энтузиазмом и благодарит вас",
 	DATING_FOOD_HATED_1 = "{^[name2]:[race2] [boy2]:[he2]} смотрит на вас с презрением",
+	DATING_FOOD_NEUTRAL_1 = """{^[name2]:[race2] [boy2]:[he2]} accepts it respectfully, but does not show much of a joy.""", # MISSING TRANSLATION
 	DATING_FOOD_NETURAL_1 = "{^[name2]:[race2] [boy2]:[he2]} принимает его с уважением, но не выказывает особой радости.",
 	DATING_INTIM_BED_1 = "'Ты {^осторожно:внимательно} спрашиваешь [name2] о [his2] предпочтениях в постели'",
 	DATING_INTIM_BED_2 = "\n\n{color=green|[name2] открывается вам, и вы немного узнаете о предпочтениях [name2].",
@@ -14630,6 +14785,7 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 	ENCHUNDEADBANEDESCRIPT = "Увеличивает урон против врагов-нежити на 10%+10%*уровень",
 	ENCHGIANTSLAYER = "Истребитель гигантов",
 	ENCHGIANTSLAYERDESCRIPT = "Увеличивает урон против врагов гигантского типа на 10%+10%*уровень",
+	ENCHDRAGONSLAYER = """Dragon Slayer""", # MISSING TRANSLATION
 	ENCHDRAGONSALYER = "Истребитель драконов",
 	ENCHDRAGONSLAYERDESCRIPT = "Увеличивает урон против врагов типа дракон на 10 %+10 %*уровень.",
 	ENCHMANASIPHON = "Сифон маны",
@@ -14644,6 +14800,10 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 	CURSESTUB_MINORDESCRIPT = "",
 	CURSESTUB_MAJOR = "",
 	CURSESTUB_MAJORDESCRIPT = "",
+	CURSEWEAKNESS_MINOR = """Curse of Weakness (minor)""", # MISSING TRANSLATION
+	CURSEWEAKNESS_MINORDESCRIPT = """Physics -30""", # MISSING TRANSLATION
+	CURSEWEAKNESS_MAJOR = """Curse of Weakness (major)""", # MISSING TRANSLATION
+	CURSEWEAKNESS_MAJORDESCRIPT = """Physics -60""", # MISSING TRANSLATION
 	CURSECURSEWEAKNESS_MINOR = "Проклятие слабости (слабое)",
 	CURSECURSEWEAKNESS_MINORDESCRIPT = "Физ. возможности -30",
 	CURSECURSEWEAKNESS_MAJOR = "Проклятие слабости (сильное)",
@@ -14710,6 +14870,10 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 	DAISY_WEDDING_SS = "Возьмите Дейзи в жены (рабыни)",
 	CALI_WEDDING_SS = "Сделать Кали своим пожизненным партнером",
 	AMELIA_WEDDING_SS = "Продвинуть Амелию на пост вице-президента вашего особняка",
+	ANASTASIA_EVENT_ALIVE_SS = """Keep Anastasia alive in the end of act 1""", # MISSING TRANSLATION
+	ELVEN_TEMPLE_SCENE_SS = """Event from elven temple""", # MISSING TRANSLATION
+	ACT1_ART_SS = """Start first act""", # MISSING TRANSLATION
+	ACT2_ART_SS = """Start second act""", # MISSING TRANSLATION
 
 }
 

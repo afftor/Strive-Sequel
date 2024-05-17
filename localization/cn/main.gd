@@ -3160,6 +3160,18 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	DIALOGUEDUNGEONCHEST = "你发现一个锁着的箱子. ",
 	DIALOGUEDUNGEONARMORY = "你发现一个锁着的军械库，里面可能有有用的东西.",
 	DIALOGUEEVENTDUNGEONLOOT = "进入最后一个房间后，你会发现主储藏室里存放着最珍贵的物品. ",
+	DIALOUELOCKEDDOOR = """The pass forward ends in a sturdy locked door. It seems to get through it you might need an additional force... or someone who can lockpick.""", # MISSING TRANSLATION
+	DIALOUELOCKEDDOORSELECT = """Select character (3 Stamina)""", # MISSING TRANSLATION
+	DIALOUELOCKEDDOORBREAK = """Break Through (10 Stamina)""", # MISSING TRANSLATION
+	DIALOUELOCKEDDOORPASS = """[name] skillfully unlocks door blocking the pass allowing to proceed. """, # MISSING TRANSLATION
+	DIALOGUEBLOCKEDPATH = """The pass ahead is blocked by a collapsed tunnel. It seems it still can be fixed by someone with enough physical fitness relatively quickly.""", # MISSING TRANSLATION
+	DIALOGUEBLOCKEDPATHSELECT = """Select character (3 Stamina)""", # MISSING TRANSLATION
+	DIALOGUEBLOCKEDPATHBREAK = """Spend time clearing the passage (10 Stamina)""", # MISSING TRANSLATION
+	DIALOGUEBLOCKEDPATHPASS = """[name] lifts one of the crushed wooden bars and manages to push it away, clearing the path ahead.""", # MISSING TRANSLATION
+	DIALOGUEMAGICBARRIER = """""", # MISSING TRANSLATION
+	DIALOGUEMAGICBARRIERSELECT = """""", # MISSING TRANSLATION
+	DIALOGUEMAGICBARRIERBREAK = """""", # MISSING TRANSLATION
+	DIALOGUEMAGICBARRIERPASS = """""", # MISSING TRANSLATION
 
 	DIALOGUEGROVEWOOD = "你发现一堆准备好的木头，可能被一些伐木工遗弃了. ",
 	DIALOGUEGROVELEATHER = "你发现了一堆隐藏的皮革，可能是偷猎者留下的. ",

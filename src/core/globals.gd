@@ -1535,29 +1535,30 @@ func get_rolled_diff(): #excluding event bonus
 	return t_diff
 
 
+
 func roll_characters():
 	var res = []
 	if char_roll_data.no_roll:
 		reset_roll_data()
 		return res
-	var chance1 = 0.25
-	var chance2 = 0.1
+	var chance1 = variables.dungeon_character_chances.initial_char_chance
+	var chance2 = variables.dungeon_character_chances.initial_second_char_chance
 	
 	if char_roll_data.rare: 
-		chance1 = 0.5
-		chance2 = 0.15
+		chance1 = variables.dungeon_character_chances.rare_char_chance
+		chance2 = variables.dungeon_character_chances.rare_second_char_chance
 	if char_roll_data.uniq: 
-		chance1 = 1.0
+		chance1 = variables.dungeon_character_chances.boss_chance
 	if char_roll_data.mboss: 
-		chance1 = 0.5
-		chance2 = 0.0
+		chance1 = variables.dungeon_character_chances.mboss_chance
+		chance2 = variables.dungeon_character_chances.mboss_second_chance
 #	if char_roll_data.trait_bonus: not implemented
 #		chance1 = 0.5
 #		chance2 = 0.15
 	
 	var t_diff = get_rolled_diff()
-	if char_roll_data.event: t_diff += 2
-	if char_roll_data.mboss: t_diff += 2
+	if char_roll_data.event: t_diff += variables.dungeon_character_chances.event_diff_bonus
+	if char_roll_data.mboss: t_diff += variables.dungeon_character_chances.mboss_diff_bonus
 	
 	var t_race = 'random'
 	var areadata = input_handler.active_area
