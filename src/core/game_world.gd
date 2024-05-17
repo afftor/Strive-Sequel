@@ -125,7 +125,7 @@ func advance_day():
 		update_guilds(i)
 		var tmp = []
 		for k in i.locations.values():
-			if !k.active:
+			if k.has('active') and k.active == false:
 				var f = true
 				for ch in ResourceScripts.game_party.characters.values():
 					if ch.check_location(k.id):
