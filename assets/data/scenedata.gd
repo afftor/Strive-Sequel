@@ -292,7 +292,7 @@ var scenedict = {
 
 	event_good_loot_small = {text = tr("DIALOGUEEVENTGOODLOOT"),
 	tags = ['good','locked_chest'],
-	default_event_type = "loot",
+	default_event_type = "custom_event",
 	image = 'chest',
 	common_effects = [{code = 'make_loot',type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5]]}],
 	options = [
@@ -303,7 +303,7 @@ var scenedict = {
 
 	event_dungeon_unlock_resources = {text = tr("DIALOGUEEVENTDUNGEONRESOURCE"),
 	tags = ['location_resource_info'],
-	default_event_type = "loot",
+	default_event_type = "custom_event",
 	image = 'chest',
 	common_effects = [],
 	options = [
@@ -313,7 +313,7 @@ var scenedict = {
 
 	event_dungeon_complete_loot_easy = {text = tr("DIALOGUEEVENTDUNGEONLOOT"),
 	tags = ['good','locked_chest'],
-	default_event_type = "loot",
+	default_event_type = "custom_event",
 	image = 'chest',
 	common_effects = [{code = 'make_loot',type = 'tableloot', pool = [['easy_boss_chest',1]]}],
 	options = [
@@ -323,7 +323,7 @@ var scenedict = {
 	},
 	event_dungeon_complete_loot_medium = {text = tr("DIALOGUEEVENTDUNGEONLOOT"),
 	tags = ['good','locked_chest'],
-	default_event_type = "loot",
+	default_event_type = "custom_event",
 	image = 'chest',
 	common_effects = [{code = 'make_loot',type = 'tableloot', pool = [['medium_boss_chest',1]]}],
 	options = [
@@ -333,7 +333,7 @@ var scenedict = {
 	},
 	event_dungeon_complete_loot_hard = {text = tr("DIALOGUEEVENTDUNGEONLOOT"),
 	tags = ['good','locked_chest'],
-	default_event_type = "loot",
+	default_event_type = "custom_event",
 	image = 'chest',
 	common_effects = [{code = 'make_loot',type = 'tableloot', pool = [['hard_boss_chest',1]]}],
 	options = [
@@ -382,7 +382,7 @@ var scenedict = {
 			{reqs = [{type = 'random', value = 70}],
 			text = tr("DIALOGUEEVENTDUNGEONPRISONERFREE1"),
 			image = 'chest',
-			default_event_type = "loot",
+			default_event_type = "custom_event",
 			common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_prisoner_reward_resource',1]] }],
 			tags = ['active_character_translate'],
 			options = [
@@ -392,7 +392,7 @@ var scenedict = {
 			{reqs = [],
 			text = tr("DIALOGUEEVENTDUNGEONPRISONERFREE2"),
 			image = 'chest',
-			default_event_type = "loot",
+			default_event_type = "custom_event",
 			common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_prisoner_reward_item',1]] }],
 			tags = ['active_character_translate'],
 			options = [
@@ -1478,7 +1478,7 @@ var scenedict = {
 			{reqs = [{type = 'random', value = 66}],
 			text = tr("DIALOGUE_SPRING_LOOT"),
 			image = 'spring',
-			default_event_type = "loot",
+			default_event_type = "custom_event",
 			common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_prisoner_reward_resource',1]] }],
 			tags = [''],
 			options = [
@@ -1488,7 +1488,7 @@ var scenedict = {
 			{reqs = [],
 			text = tr("DIALOGUE_SPRING_NO_LOOT"),
 			image = 'spring',
-			default_event_type = "loot",
+			default_event_type = "custom_event",
 			common_effects = [],
 			tags = [''],
 			options = [
