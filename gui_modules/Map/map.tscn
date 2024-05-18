@@ -378,6 +378,8 @@ scroll_horizontal_enabled = false
 
 [node name="LocCat" type="VBoxContainer" parent="FromLocList/LocScroll/LocCatList"]
 visible = false
+margin_right = 360.0
+margin_bottom = 54.0
 
 [node name="Button" type="TextureButton" parent="FromLocList/LocScroll/LocCatList/LocCat"]
 margin_right = 360.0
@@ -398,9 +400,14 @@ align = 1
 valign = 1
 
 [node name="offset" type="HBoxContainer" parent="FromLocList/LocScroll/LocCatList/LocCat"]
+margin_top = 54.0
+margin_right = 360.0
+margin_bottom = 54.0
 alignment = 2
 
 [node name="LocList" type="VBoxContainer" parent="FromLocList/LocScroll/LocCatList/LocCat/offset"]
+margin_left = 360.0
+margin_right = 360.0
 grow_horizontal = 0
 
 [node name="Button" type="TextureButton" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocList"]

@@ -407,7 +407,7 @@ var data = {
 		options = [ {
 			code = 'demon_priestess_1', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage11'},
-			{code = 'remove_active_location'},]
+			{code = 'set_completed_active_location'},]
 		}, ]
 	},
 	

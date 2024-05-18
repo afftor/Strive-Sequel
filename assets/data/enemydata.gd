@@ -61,7 +61,7 @@ var encounters = {
 
 var enemygroups = {
 	
-	tutorial_lich_fight = {reqs = [], units = {skeleton_melee = [1,1]}},
+	tutorial_lich_fight = {reqs = [], units = {rat = [2,2]}},
 	
 	rats_easy = {reqs = [], units = {rat = [2,6]}},
 	rats_goblins_easy = {reqs = [], units = {rat = [1,4], cave_goblin_melee = [1,3]}},

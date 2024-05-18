@@ -838,6 +838,7 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	CRITMOD = "暴击伤害",
 	LEVELUP = "升级",
 	MAXLEVEL = "最大等级",
+	DUNGEONLEVEL = """Level""", # MISSING TRANSLATION
 	LEVELUPTEXT = " 刚刚获得一个等级。选择一个新特性解锁",
 	TASKCRITCHANCE = "工作临界机会",
 	TASKEFFICIENCYTOOL = "工作效率奖金",
@@ -1046,6 +1047,7 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	NOTENOUGHLOYALTY = "不够忠诚",
 	QUESTCOMPLETEMESSAGE = "任务完成",
 	QUESTDAYSLEFT = "还剩几天",
+	QUESTLOCATION = """Quest Location""", # MISSING TRANSLATION
 	
 	#Skills
 	SKILLATTACK = "Attack 攻击",

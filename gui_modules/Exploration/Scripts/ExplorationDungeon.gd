@@ -234,19 +234,15 @@ func open_location(data): #2fix
 
 func build_location_description():
 	var text = ''
-	text = (
-		active_location.name
-		+ " ("
-		+ tr(active_location.classname)
-#		+ ")\n"
-		+ ") - "
-#				+ tr("DUNGEONDIFFICULTY")
-#				+ ": "
-#				+ tr("DUNGEONDIFFICULTY" + active_location.difficulty.to_upper())
-	)
-	text += tr("LEVEL") + " " + str(active_location.current_level + 1)
+	text = active_location.name
+	if active_location.tags.has("quest") != true:
+		text += " (" + tr(active_location.classname) + ")"
+	#		+ ")\n"
+	text += " - "
+	
+	text += tr("DUNGEONLEVEL") + ": " + str(active_location.current_level + 1)
 	if active_location.completed:
-		text += "{color=aqua|" + tr("LOC_COMPLETE") + "}"
+		text += " - {color=aqua|" + tr("LOC_COMPLETE") + "}"
 	map_panel.get_node('RichTextLabel').bbcode_text = (
 		'[center]'
 		+ globals.TextEncoder(text)

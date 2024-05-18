@@ -517,7 +517,10 @@ func build_location_info():
 		text += tr("TARGET_LOC_LABEL") + ": %s\n" % location.name
 		text += tr('TYPE_LABEL') + ': ' + "%s" % tr(selector_meta_bindings[location_selected.type].trim_suffix("S"))
 		if location.type == 'dungeon':
-			text += " (" + tr(location.classname) + ")"
+			if location.tags.has('quest') == false:
+				text += " (" + tr(location.classname) + ")"
+			else:
+				text += " (" + tr("QUESTLOCATION") + ")"
 		text += "\n"
 		#if location_selected.has('class_name'):
 

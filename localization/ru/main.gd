@@ -836,6 +836,7 @@ var TranslationDict = {
 	CRITMOD = "Сила крита",
 	LEVELUP = "Уровень +",
 	MAXLEVEL = "Макс. уровень",
+	DUNGEONLEVEL = """Level""", # MISSING TRANSLATION
 	LEVELUPTEXT = " только что получил уровень. Выберите новую черту характера, чтобы разблокировать её",
 	TASKCRITCHANCE = "Шанс крита на работе",
 	TASKEFFICIENCYTOOL = "Эффективность работы",
@@ -1044,6 +1045,7 @@ var TranslationDict = {
 	NOTENOUGHLOYALTY = "Недостаточно верности",
 	QUESTCOMPLETEMESSAGE = "Квест завершен",
 	QUESTDAYSLEFT = "дней осталось",
+	QUESTLOCATION = """Quest Location""", # MISSING TRANSLATION
 	
 	#Skills
 	SKILLATTACK = "Атака",
@@ -3460,6 +3462,8 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 
 	WORKRULEPERSONALITY_LOCK = "Заблокировать личность",
 	WORKRULEPERSONALITY_LOCKDESCRIPT = "[name] больше не будет изменять [his] личность благодаря социальным действиям.",
+	WORKRULEMASTURBATION = """Forbid Masturbation""", # MISSING TRANSLATION
+	WORKRULEMASTURBATIONDESCRIPT = """[name] will not be allowed to relieve [him]self, leading to increased stress but higher libido. Obedience Drain +2, Lust Growth +15%.""", # MISSING TRANSLATION
 
 	NEWGAMESETTINGINFO = "Эти настройки могут быть изменены в Опциях в любой момент в будущем",
 

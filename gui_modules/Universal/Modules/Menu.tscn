@@ -664,7 +664,21 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "0.8.5a
+bbcode_text = "Added exploration mechanic to dungeons
+	Dungeons now use stamina system which is restored every day
+	Dungeon deletion now only occurs after everyone has been removed from there
+	First Fighters quest is now designed as a dungeon instead of being an encounter
+	Dungeon events are now protected by challenges
+	Dungeon chests are more often have no locks on them now
+Added a bit more flavor text scenes to the transition of act 2 and some optional flavor content tied to it
+Added new character rule: Forbid Masturbation
+Changed Cali and Zephyra height from petite to short
+Fixed service suit having wrong mod affixes
+Fixed writ of redemption to working properly
+Fixed some racial traits not applying correctly (arachna spider silk)
+Fixed some cases when character hp wasn't properly updated
+Fixed Caster not showing its requirements properly
+0.8.5a
 Added tooltips for new gallery scenes
 Added icon for new suit
 Fixed daisy not being recruited when claimed to be your kinsman
@@ -1649,7 +1663,21 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.8.5a
+text = "Added exploration mechanic to dungeons
+	Dungeons now use stamina system which is restored every day
+	Dungeon deletion now only occurs after everyone has been removed from there
+	First Fighters quest is now designed as a dungeon instead of being an encounter
+	Dungeon events are now protected by challenges
+	Dungeon chests are more often have no locks on them now
+Added a bit more flavor text scenes to the transition of act 2 and some optional flavor content tied to it
+Added new character rule: Forbid Masturbation
+Changed Cali and Zephyra height from petite to short
+Fixed service suit having wrong mod affixes
+Fixed writ of redemption to working properly
+Fixed some racial traits not applying correctly (arachna spider silk)
+Fixed some cases when character hp wasn't properly updated
+Fixed Caster not showing its requirements properly
+0.8.5a
 Added tooltips for new gallery scenes
 Added icon for new suit
 Fixed daisy not being recruited when claimed to be your kinsman

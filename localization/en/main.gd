@@ -837,6 +837,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	CRITMOD = "Crit. Mod",
 	LEVELUP = "Level up",
 	MAXLEVEL = "Maximum Level",
+	DUNGEONLEVEL = "Level",
 	LEVELUPTEXT = " has just acquired a level. Select a new trait to unlock",
 	TASKCRITCHANCE = "Work Crit Chance",
 	TASKEFFICIENCYTOOL = "Work Efficiency Bonus",
@@ -1045,6 +1046,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	NOTENOUGHLOYALTY = "Not enough Loyalty",
 	QUESTCOMPLETEMESSAGE = "Quest Complete",
 	QUESTDAYSLEFT = "days left",
+	QUESTLOCATION = "Quest Location",
 	
 	#Skills
 	SKILLATTACK = "Attack",
@@ -3474,6 +3476,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	WORKRULEPERSONALITY_LOCK = "Lock Personality",
 	WORKRULEPERSONALITY_LOCKDESCRIPT = "[name] will no longer have [his] personality affected by social actions.",
 	
+	WORKRULEMASTURBATION = "Forbid Masturbation",
+	WORKRULEMASTURBATIONDESCRIPT = "[name] will not be allowed to relieve [him]self, leading to increased stress but higher libido. Obedience Drain +2, Lust Growth +15%.",
+	
 	SERVICEENSLAVE = "Enslave",
 	SERVICEENSLAVEDESCRIPT = "Makes chosen character into a Slave.\n\n[color=aqua]Slaves suffer 10% damage reduction but gain various collection bonuses and but their Loyalty can be increased by punishing skills.[/color]",
 
@@ -3726,7 +3731,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	LICHAIRETALK3 = "— But I don't have anything on me..! Unless you mean... But this would be indecent. \n\nAire blushes heavily and looks down.",
 	LICHAIRETALK3REPLY1 = "[Sex Factor] Your company would please me greatly.",
 	LICHAIRETALK3REPLY2 = "Nevermind, you can go.",
-	LICHAIRETALK4 = """The elf girl twists a lock of orange hair around her finger nervously. 
+	LICHAIRETALK4 = """{color=green|Success}\n\nThe elf girl twists a lock of orange hair around her finger nervously. 
 
 {color=yellow|Aire: — Can we at least find somewhere a little more comfortable than this... dusty tomb?}
 
