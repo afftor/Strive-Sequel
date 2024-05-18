@@ -1021,12 +1021,14 @@ func scout_room(room_id, s_range, stay = false):
 			move_to_room(room_id)
 			pass
 		'ladder_down':
+			input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 			active_location.current_level += 1
 			build_level()
 			var dungeon = active_location.dungeon[active_location.current_level]
 			var tdata = ResourceScripts.game_world.dungeons[dungeon]
 			scout_room(tdata.first_room, get_scouting_range(), true)
 		'ladder_up':
+			input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 			active_location.current_level -= 1
 			build_level()
 
