@@ -22,6 +22,7 @@ var lands = {
 		gatherable_resources = [],
 		guilds = ['workers','servants','fighters','mages','slavemarket','exotic_slave_trader'],
 		events = [],
+		tags = [],
 		capital_options = ['quest_board','location_purchase'],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
 		area_shop_items = {
@@ -73,6 +74,7 @@ var lands = {
 		starting_locations = ['dungeon_grove'],
 		guilds = ['elvish_slave_trader'],
 		events = [],
+		tags = [],
 		capital_options = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
 		area_shop_items = {
@@ -112,6 +114,7 @@ var lands = {
 		locations = {},
 		locationpool = ['dungeon_undead_crypt'],
 		guilds = [],
+		tags = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
 		area_shop_items = {},
 	},

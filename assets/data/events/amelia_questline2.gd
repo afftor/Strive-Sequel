@@ -499,7 +499,7 @@ var data = {
 			{
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [
-				{code = 'remove_active_location'},
+				{code = 'set_completed_active_location'},
 				{code = 'progress_quest', value = 'amelia_main_quest', stage = 'stage8'},
 #				{code = "update_city"}
 			]

@@ -330,7 +330,7 @@ var data = {
 		text = [{text = "CALI_BANDITS_8", reqs = [],}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'remove_active_location'}, {code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage4'}]
+			bonus_effects = [{code = 'set_completed_active_location'}, {code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage4'}]
 		} ],
 	},
 	
@@ -950,7 +950,7 @@ var data = {
 		common_effects = [{code = 'plan_mansion_event', value = 'ZCEvent_1'}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'cali_heirloom_quest'}, {code = 'remove_active_location'}, {code = 'unique_character_changes',
+			bonus_effects = [{code = 'complete_quest', value = 'cali_heirloom_quest'}, {code = 'set_completed_active_location'}, {code = 'unique_character_changes',
 					value = 'cali',
 					args = [
 						{code = 'create_and_equip', item = "cali_heirloom_active", parts = {}}

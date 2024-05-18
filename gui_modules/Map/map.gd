@@ -394,7 +394,7 @@ func build_info(loc = to_loc):
 	var adata = ResourceScripts.game_world.areas[tdata.area]
 	
 	var location_selected = get_location_data(loc)
-	$InfoPanel/Forget.visible = (!location_selected.quest and location_selected.type in ['dungeon', 'encounter'])
+	$InfoPanel/Forget.visible = (!location.tags.has('quest') and location_selected.type in ['dungeon', 'encounter'])
 	if to_loc != null:
 		$InfoPanel/Forget.visible = false
 	
@@ -435,7 +435,11 @@ func build_info(loc = to_loc):
 		$InfoPanel/VBoxContainer/Label3.hide()
 	elif location.type == "dungeon":
 		$InfoPanel/InfoFrame/enemies.visible = true
-		$InfoPanel/InfoFrame/enemies.text = tr(location.classname)
+		if location.tags.has('quest') == true:
+			$InfoPanel/InfoFrame/enemies.text = tr("QUESTLOCATION")
+			
+		else:
+			$InfoPanel/InfoFrame/enemies.text = tr(location.classname)
 		dungeon = true
 #		if !location.completed:
 #			hidden = true

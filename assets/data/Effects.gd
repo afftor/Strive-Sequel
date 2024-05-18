@@ -466,6 +466,16 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
+	work_rule_masturbation = {
+		code = 'work_rule_masturbation',
+		type = 'static',
+		atomic = [
+			{type = 'stat_add', stat = 'obedience_drain', value = 2},
+			{type = 'stat_add_p', stat = 'lusttick', value = 0.15},
+		],
+		buffs = [],
+		sub_effects = [],
+	},
 	e_tr_potion = {
 		type = 'trigger',
 		trigger = [variables.TR_HIT],

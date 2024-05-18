@@ -148,7 +148,7 @@ var data = {
 		common_effects = [],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage4'}, {code = 'remove_active_location'}, {code = 'make_quest_location', value = 'quest_gryphon_cave_location'}]
+			bonus_effects = [{code = 'progress_quest', value = 'gryphon_quest', stage = 'stage4'}, {code = 'set_completed_active_location'}, {code = 'make_quest_location', value = 'quest_gryphon_cave_location'}]
 		}, ]
 	},
 	
@@ -210,10 +210,10 @@ var data = {
 		text = [{text = "GRYPHON_CAVE_5", reqs = []}],
 		options = [ {
 			code = 'close', text = "GRYPHON_CAVE_5_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'remove_active_location'}, {code = 'complete_quest', value = 'gryphon_quest'}]
+			bonus_effects = [{code = 'set_completed_active_location'}, {code = 'complete_quest', value = 'gryphon_quest'}]
 		}, {
 			code = 'close', text = "GRYPHON_CAVE_5_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
-			bonus_effects = [{code = 'remove_active_location'}, {code = 'complete_quest', value = 'gryphon_quest'}]
+			bonus_effects = [{code = 'set_completed_active_location'}, {code = 'complete_quest', value = 'gryphon_quest'}]
 		} ]
 	},
 	
@@ -224,7 +224,7 @@ var data = {
 		common_effects = [{code = 'unique_character_changes', value = 'aire', args = [{code = 'remove_character'}]}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'remove_active_location'}, {code = 'complete_quest', value = 'gryphon_quest'}]
+			bonus_effects = [{code = 'set_completed_active_location'}, {code = 'complete_quest', value = 'gryphon_quest'}]
 		}, ]
 	},
 	

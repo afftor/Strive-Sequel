@@ -380,7 +380,7 @@ var data = {
 		common_effects = [{code = 'plan_mansion_event', value = 'cali_act1_1'}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'decision', value = 'cali_sex'},{code = "remove_active_location"},]
+			bonus_effects = [{code = 'decision', value = 'cali_sex'},{code = "set_completed_active_location"},]
 		}, ],
 	},
 	
@@ -410,7 +410,7 @@ var data = {
 #			{code = 'tag', operant = 'add', value = 'no_sex'}]}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = "remove_active_location"}]
+			bonus_effects = [{code = "set_completed_active_location"}]
 		}, ],
 	},
 	
