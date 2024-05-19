@@ -115,6 +115,7 @@ func open_location(data):
 	$LocationGui.show()
 	$LocationGui/Resources/Materials.update()
 	active_location = data
+	input_handler.exploration_node = self
 	input_handler.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[data.id].area]
 #	input_handler.active_area = active_area
 	input_handler.active_location = data

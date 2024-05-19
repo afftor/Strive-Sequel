@@ -191,7 +191,7 @@ func open_location(data): #2fix
 	active_location = data
 	input_handler.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[data.id].area]
 ##	input_handler.active_area = active_area
-#	input_handler.active_location = data
+	input_handler.active_location = data
 	input_handler.emit_signal("LocationSlavesUpdate")
 #	current_level = 0
 	build_level()
@@ -206,7 +206,7 @@ func open_location(data): #2fix
 #	if input_handler.active_location.has('background'):
 #		$LocationGui/Image/TextureRect.texture = images.backgrounds[input_handler.active_location.background]
 	if active_location.has('bgm'):
-		input_handler.SetMusic(input_handler.active_location.bgm)
+		input_handler.SetMusic(active_location.bgm)
 #
 	#check if anyone is present
 	build_location_group()
@@ -229,6 +229,7 @@ func open_location(data): #2fix
 #			$LocationGui/Resources/SelectWorkers.visible = false
 #			$LocationGui/Resources/Label.visible = true
 	gui_controller.nav_panel.build_accessible_locations()
+	input_handler.exploration_node = self
 	#input_handler.interactive_message("spring", '',{})
 
 
@@ -253,7 +254,7 @@ func build_location_description():
 func slave_position_selected(pos, character):
 	pos = 'pos' + str(pos)
 	if character == null:
-		input_handler.active_location.group.erase(pos)
+		active_location.group.erase(pos)
 		build_location_group()
 		return
 	if character.has_status('no_combat'):
@@ -266,30 +267,30 @@ func slave_position_selected(pos, character):
 	var positiontaken = false
 	var oldheroposition = null
 	if (
-		input_handler.active_location.group.has(pos)
-		&& ResourceScripts.game_party.characters[input_handler.active_location.group[pos]].check_location(
-			input_handler.active_location.id, true
+		active_location.group.has(pos)
+		&& ResourceScripts.game_party.characters[active_location.group[pos]].check_location(
+			active_location.id, true
 		)
 	):
 		positiontaken = true
 	
-	for i in input_handler.active_location.group:
-		if input_handler.active_location.group[i] == character:
+	for i in active_location.group:
+		if active_location.group[i] == character:
 			oldheroposition = i
-			input_handler.active_location.group.erase(i)
+			active_location.group.erase(i)
 	var INTEGER_VALUE_FROM_POS_INDEX = 3
 	if oldheroposition != null && positiontaken == true && oldheroposition != pos:
-		input_handler.active_location.group[oldheroposition] = input_handler.active_location.group[pos]
-		var CHARACTER_UID = input_handler.active_location.group[oldheroposition]
+		active_location.group[oldheroposition] = active_location.group[pos]
+		var CHARACTER_UID = active_location.group[oldheroposition]
 		ResourceScripts.game_party.characters[CHARACTER_UID].combat_position = int(oldheroposition[INTEGER_VALUE_FROM_POS_INDEX])
-	input_handler.active_location.group[pos] = character
+	active_location.group[pos] = character
 	build_location_group()
 
 
 func slave_position_deselect(character):
-	for i in input_handler.active_location.group:
-		if input_handler.active_location.group[i] == character.id:
-			input_handler.active_location.group.erase(i)
+	for i in active_location.group:
+		if active_location.group[i] == character.id:
+			active_location.group.erase(i)
 			break
 	build_location_group()
 
@@ -332,8 +333,8 @@ func use_e_combat_skill(caster, target, skill):
 				for line in variables.lines.values():
 					if !line.has(tpos): continue
 					for pos in line:
-						if input_handler.active_location.group.has('pos' + str(pos)):
-							targets.push_back(ResourceScripts.game_party.characters[input_handler.active_location.group[('pos' + str(pos))]])
+						if active_location.group.has('pos' + str(pos)):
+							targets.push_back(ResourceScripts.game_party.characters[active_location.group[('pos' + str(pos))]])
 					break
 			'row':
 				targets = []
@@ -341,8 +342,8 @@ func use_e_combat_skill(caster, target, skill):
 				for line in variables.rows.values():
 					if !line.has(tpos): continue
 					for pos in line:
-						if input_handler.active_location.group.has('pos' + str(pos)):
-							targets.push_back(ResourceScripts.game_party.characters[input_handler.active_location.group[('pos' + str(pos))]])
+						if active_location.group.has('pos' + str(pos)):
+							targets.push_back(ResourceScripts.game_party.characters[active_location.group[('pos' + str(pos))]])
 					break
 		var s_skill2_list = []
 		for i in targets:
@@ -626,19 +627,19 @@ func clear_dungeon_confirm():
 
 func build_location_group():
 	#clear_groups()
-	if input_handler.active_location == null || !input_handler.active_location.has("group"):
+	if active_location == null || !active_location.has("group"):
 		return
-	input_handler.active_location.group.clear()
+	active_location.group.clear()
 	for ch in ResourceScripts.game_party.characters.values():
 		if !ch.has_profession('master') && ch.get_stat('obedience') == 0:
 			continue
-		if ch.check_location(input_handler.active_location.id, true) and ch.combat_position != 0 and !ch.has_status('no_combat') and ch.has_status('combatant'):
-			if !input_handler.active_location.group.has(['pos' + str(ch.combat_position)]):
-				input_handler.active_location.group['pos' + str(ch.combat_position)] = ch.id
+		if ch.check_location(active_location.id, true) and ch.combat_position != 0 and !ch.has_status('no_combat') and ch.has_status('combatant'):
+			if !active_location.group.has(['pos' + str(ch.combat_position)]):
+				active_location.group['pos' + str(ch.combat_position)] = ch.id
 	for i in positiondict:
 #		if (active_location.group.has('pos' + str(i)) && ((ResourceScripts.game_party.characters.has(active_location.group['pos' + str(i)]) == false) || ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]].has_status('no_combat'))):
 #			active_location.group.erase('pos' + str(i))
-		if !input_handler.active_location.group.has('pos' + str(i)):
+		if !active_location.group.has('pos' + str(i)):
 			get_node(positiondict[i] + "/Image").dragdata = null
 			get_node(positiondict[i] + "/Image").texture = null
 			get_node(positiondict[i] + "/Image").hide()
@@ -647,7 +648,7 @@ func build_location_group():
 			continue
 #		if (active_location.group.has('pos' + str(i)) && ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]] != null && ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]].check_location(active_location.id, true)):
 		else:
-			var character = ResourceScripts.game_party.characters[input_handler.active_location.group[('pos' + str(i))]]
+			var character = ResourceScripts.game_party.characters[active_location.group[('pos' + str(i))]]
 			get_node(positiondict[i] + "/Image").texture = character.get_icon()
 #			if get_node(positiondict[i] + "/Image").texture == null:
 #				if character.has_profession('master'):
@@ -717,7 +718,7 @@ func build_location_group():
 				newbutton.get_node('icon').texture = images.icons.class_slave
 		newbutton.get_node("Label").text = i.get_short_name()
 		newbutton.connect("pressed", self, "return_character", [i])
-		if input_handler.active_location.group.values().has(i.id):
+		if active_location.group.values().has(i.id):
 			newbutton.get_node("icon").modulate = Color(0.3, 0.3, 0.3)
 		globals.connectslavetooltip(newbutton, i)
 	if counter == 0 && gui_controller.exploration.get_node("LocationGui").is_visible():
@@ -757,7 +758,7 @@ func return_all_to_mansion_confirm():
 	var presented_characters = []
 	for id in ResourceScripts.game_party.character_order:
 		var i = ResourceScripts.game_party.characters[id]
-		if i.check_location(input_handler.active_location.id, true):
+		if i.check_location(active_location.id, true):
 			presented_characters.append(i)
 	for person in presented_characters:
 		person.remove_from_task()
@@ -809,7 +810,7 @@ func build_spell_panel():
 	input_handler.ClearContainer($LocationGui/ItemUsePanel/SpellContainer/VBoxContainer)
 	for id in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[id]
-		if person.check_location(input_handler.active_location.id, true):
+		if person.check_location(active_location.id, true):
 			for i in person.skills.combat_skills:
 				var skill = Skilldata.Skilllist[i]
 				if skill.tags.has('exploration') == false:
