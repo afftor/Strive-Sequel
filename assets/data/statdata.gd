@@ -804,6 +804,55 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 	},
+	
+	chg_strength = {
+		code = 'chg_strength',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+	},
+	chg_strength_max = {
+		code = 'chg_strength_max',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+	},
+	chg_dexterity = {
+		code = 'chg_dexterity',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+	},
+	chg_dexterity_max = {
+		code = 'chg_dexterity_max',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+	},
+	chg_wisdom = {
+		code = 'chg_wisdom',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+	},
+	chg_wisdom_max = {
+		code = 'chg_wisdom_max',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+	},
+	chg_charm = {
+		code = 'chg_charm',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+	},
+	chg_charm_max = {
+		code = 'chg_charm_max',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+	},
 }
 
 var slave_class_names = {

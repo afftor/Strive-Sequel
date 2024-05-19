@@ -2305,6 +2305,10 @@ However, while it might seem that Landowners have nothing but contempt for those
 	BUFFDESCRIPTMENTOR = "Experience Gain increased",
 	
 	
+	CHALLENGESTRENGTH = "Strength Challenge",
+	CHALLENGEDEXTERITY = "Dexterity Challenge",
+	CHALLENGECHARM = "Charm Challenge",
+	CHALLENGEWISDOM = "Wisdom Challenge",
 	
 	
 	
@@ -3161,7 +3165,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEEVENTDUNGEONLOOT = "After making into the last room, you find the main storage with the most prized possessions. ",
 	
 	DIALOUELOCKEDDOOR = "The pass forward ends in a sturdy locked door. It seems to get through it you might need an additional force... or someone who can lockpick.",
+	DIALOUELOCKEDDOOR2 = "The pass forward ends in a sturdy looking wooden door. It seems to get through it you might need an additional force... or try alternative methods.",
 	DIALOUELOCKEDDOORSELECT = "Select character (3 Stamina)",
+	DIALOUELOCKEDDOORSELECT2 = "Use Unstable Concoction (3 Stamina)",
 	DIALOUELOCKEDDOORBREAK = "Break through (10 Stamina)",
 	DIALOUELOCKEDDOORPASS = "[name] skillfully unlocks door blocking the pass allowing to proceed. ",
 	DIALOGUEBLOCKEDPATH = "The pass ahead is blocked by a collapsed tunnel. It seems it still can be fixed by someone with enough physical fitness relatively quickly.",

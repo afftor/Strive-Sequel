@@ -267,7 +267,7 @@ __meta__ = {
 }
 
 [node name="Frame" type="TextureRect" parent="ScrollContainer/GridContainer/Button"]
-self_modulate = Color( 1, 1, 1, 0.249997 )
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 10.0
 margin_top = 9.0
 margin_right = 112.0
@@ -279,7 +279,6 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/GridContainer/Button"]
-self_modulate = Color( 1, 1, 1, 0.987203 )
 margin_left = 15.0
 margin_top = 13.0
 margin_right = 109.0
@@ -291,13 +290,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="ScrollContainer/GridContainer/Button"]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 15.0
 margin_top = 72.0
 margin_right = 109.0
 margin_bottom = 104.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 8 )
-align = 1
+align = 2
 valign = 1
 
 [node name="Confirm" type="TextureButton" parent="."]

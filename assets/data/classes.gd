@@ -649,7 +649,7 @@ var professions = {
 		categories = ['social'],
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 2}],
-		statchanges = {evasion = 10, wits_bonus = 5},
+		statchanges = {evasion = 10, wits_bonus = 5, chg_dexterity_max = 1},
 		traits = ['lockpicking', 'trap_detection'], #allows lockpicking chests and trap detect actions in events
 		skills = [],
 		combatskills = [],

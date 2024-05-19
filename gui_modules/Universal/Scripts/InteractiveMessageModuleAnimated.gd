@@ -393,6 +393,7 @@ func lockpick_attempt(person):
 
 func select_person_for_next_event(code): #needs a rework
 	var reqs
+	
 	if code.find('marriage')!= -1:
 		reqs = [
 			{code = 'stat', stat = 'agreed_to_marry', operant = 'eq', value = true}
@@ -462,7 +463,11 @@ func select_person_for_next_event(code): #needs a rework
 #			{code = 'in_combat_party', value = true}
 			]
 	stored_scene = code
-	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', reqs)
+	var challenge
+	if current_scene.options[code].has('challenge'):
+		challenge = current_scene.options[code].challenge
+	
+	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', reqs, true, challenge)
 
 func remove_person(code):
 	var reqs = [{code = 'is_at_location', value = input_handler.active_location.id, check = true}]
