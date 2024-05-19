@@ -1794,18 +1794,14 @@ func common_effects(effects):
 
 						number -= 1
 			'update_guild':
-				if input_handler.exploration_node == null:
-					input_handler.exploration_node = gui_controller.exploration
-				input_handler.exploration_node.enter_guild(input_handler.active_faction)
+				gui_controller.exploration_city.enter_guild(gui_controller.exploration_city.active_faction)
 			'update_city':
-				#input_handler.exploration_node.enter_guild(input_handler.active_faction)
-				if input_handler.exploration_node == null:
-					input_handler.exploration_node = gui_controller.exploration
-				if input_handler.exploration_node != null:
-					input_handler.exploration_node.open_city(input_handler.active_location.id)
+				gui_controller.exploration_city.open_city(input_handler.active_location.id)
 			'update_party':
 				if gui_controller.exploration != null:
 					gui_controller.exploration.build_location_group()
+				if gui_controller.exploration_dungeon != null:
+					gui_controller.exploration_dungeon.build_location_group()
 			'rewrite_save': #obsolete
 				pass
 #				if (int(ResourceScripts.game_globals.date) % input_handler.globalsettings.autosave_frequency == 0) and int(ResourceScripts.game_globals.hour) == 1:
