@@ -102,6 +102,8 @@ func open_city(city = null):
 		self.raise()
 	if gui_controller.clock != null:
 		gui_controller.clock.raise()
+	
+	input_handler.exploration_node = self
 	gui_controller.nav_panel = $NavigationModule
 	gui_controller.nav_panel.build_accessible_locations()
 	gui_controller.nav_panel.update_buttons()
