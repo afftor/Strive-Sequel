@@ -98,13 +98,14 @@ func select_location(location):
 		gui_controller.previous_screen = gui_controller.current_screen
 		ResourceScripts.core_animations.BlackScreenTransition(0.5)
 		yield(get_tree().create_timer(0.5), 'timeout')
-		gui_controller.open_exploration(location)
+#		gui_controller.open_exploration(location)
 		gui_controller.mansion.hide()
 	else:
 		ResourceScripts.core_animations.BlackScreenTransition(0.5)
 		yield(get_tree().create_timer(0.5), 'timeout')
 
 	if location in ResourceScripts.game_world.capitals:
+		gui_controller.current_screen = gui_controller.exploration_city
 		gui_controller.exploration_city.open_city(location)#
 		gui_controller.exploration_dungeon.hide()
 		gui_controller.exploration.hide()
@@ -123,11 +124,13 @@ func select_location(location):
 			return
 		else:
 			if data.type == 'dungeon':
+				gui_controller.current_screen = gui_controller.exploration_dungeon
 				gui_controller.exploration_dungeon.open_location(data)
 				gui_controller.exploration_dungeon.show()
 				gui_controller.exploration_city.hide()
 				gui_controller.exploration.hide()
 			else:
+				gui_controller.current_screen = gui_controller.exploration
 				gui_controller.exploration.open_location(data)
 				gui_controller.exploration.show()
 				gui_controller.exploration_city.hide()
