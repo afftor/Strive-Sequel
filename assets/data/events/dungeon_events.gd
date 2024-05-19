@@ -69,7 +69,7 @@ var data = {
 	image = 'trap',
 	options = [
 	{code = 'pass_fallen_bridge', select_person = true, reqs = [{type = 'has_stamina', value = 3}], text = tr("DIALOGUEFALLENBRIDGESELECT")},
-	{code = 'close', reqs = [{type = 'has_stamina', value = 10}, {code = 'unlock_subroom'}], bonus_effects = [{code = 'pay_stamina', value = 10}], text = tr("DIALOGUEFALLENBRIDGEBREAK")},
+	{code = 'close', reqs = [{type = 'has_stamina', value = 10}], bonus_effects = [{code = 'pay_stamina', value = 10},{code = 'unlock_subroom'}], text = tr("DIALOGUEFALLENBRIDGEBREAK")},
 	{code = 'close', reqs = [], text = tr("DIALOGUECANCEL")},
 	]
 	},
@@ -89,7 +89,7 @@ var data = {
 	image = 'trap',
 	options = [
 	{code = 'pass_small_crack', select_person = true, reqs = [{type = 'has_stamina', value = 3}], text = tr("DIALOGUESMALLCRACKSELECT")},
-	{code = 'close', reqs = [{type = 'has_stamina', value = 10}, {code = 'unlock_subroom'}], bonus_effects = [{code = 'pay_stamina', value = 10}], text = tr("DIALOGUESMALLCRACKBREAK")},
+	{code = 'close', reqs = [{type = 'has_stamina', value = 10}], bonus_effects = [{code = 'pay_stamina', value = 10}, {code = 'unlock_subroom'}], text = tr("DIALOGUESMALLCRACKBREAK")},
 	{code = 'close', reqs = [], text = tr("DIALOGUECANCEL")},
 	]
 	},
@@ -109,7 +109,7 @@ var data = {
 	image = 'trap',
 	options = [
 	{code = 'pass_ancient_lock', select_person = true, reqs = [{type = 'has_stamina', value = 3}], text = tr("DIALOGUEANCIENTLOCKSELECT")},
-	{code = 'close', reqs = [{type = 'has_stamina', value = 10}, {code = 'unlock_subroom'}], bonus_effects = [{code = 'pay_stamina', value = 10}], text = tr("DIALOGUEANCIENTLOCKBREAK")},
+	{code = 'close', reqs = [{type = 'has_stamina', value = 10}], bonus_effects = [{code = 'pay_stamina', value = 10}, {code = 'unlock_subroom'}], text = tr("DIALOGUEANCIENTLOCKBREAK")},
 	{code = 'close', reqs = [], text = tr("DIALOGUECANCEL")},
 	]
 	},
