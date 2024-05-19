@@ -165,7 +165,7 @@ func quest_kill_receiver(enemycode):
 
 func update_locations():
 	for i in areas.values():
-		for j in i.locations.values():
+		for j in i.locations.values() + i.questlocations.values():
 			for k in j.events:
 				j.events[k] -= 1
 			if j.type == 'dungeon':
