@@ -781,6 +781,7 @@ var dungeons = {
 		eventarray = [],
 		levels = [1,1],
 		resources = [],
+		tags = [],
 		stages_per_level = [1,1],
 		events = [],
 	},

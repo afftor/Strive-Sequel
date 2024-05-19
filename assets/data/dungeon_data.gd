@@ -1559,6 +1559,7 @@ var dungeons = {
 		stages_per_level = [1,1],
 		travel_time = [1,1], #[3,3],
 		events = [],
+		tags = ['quest'],
 	},
 	quest_mages_fred = {
 		code = 'quest_mages_fred',
@@ -1576,6 +1577,7 @@ var dungeons = {
 		stages_per_level = [1,1],
 		travel_time = [1,1],#[2,2],
 		events = [],
+		tags = ['quest'],
 	},
 
 	basic_threat_wolves = {
@@ -1592,6 +1594,7 @@ var dungeons = {
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
+		tags = [],
 	},
 	basic_threat_rebels = {
 		code = 'basic_threat_rebels',
@@ -1607,6 +1610,7 @@ var dungeons = {
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
+		tags = [],
 	},
 	basic_threat_goblins = {
 		code = 'basic_threat_goblins',
@@ -1621,7 +1625,8 @@ var dungeons = {
 		levels = [1,1],
 		resources = [],
 		stages_per_level = [1,1],
-		events = []
+		events = [],
+		tags = [],
 	},
 	basic_threat_ogre = {
 		code = 'basic_threat_ogre',
@@ -1637,6 +1642,7 @@ var dungeons = {
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
+		tags = [],
 	},
 	basic_threat_troll = {
 		code = 'basic_threat_troll',
@@ -1652,6 +1658,7 @@ var dungeons = {
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
+		tags = [],
 	},
 	quest_cali_village = {
 		code = 'quest_cali_village',
@@ -1667,6 +1674,7 @@ var dungeons = {
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
+		tags = [],
 		area = 'plains',
 		travel_time = [1,1],
 	},

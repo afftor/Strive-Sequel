@@ -2307,6 +2307,10 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	BUFFDESCRIPTCURSE = "",
 	BUFFDESCRIPTENCHANT = "",
 	BUFFDESCRIPTMENTOR = "Прирост опыта увеличен",	
+	CHALLENGESTRENGTH = """Strength Challenge""", # MISSING TRANSLATION
+	CHALLENGEDEXTERITY = """Dexterity Challenge""", # MISSING TRANSLATION
+	CHALLENGECHARM = """Charm Challenge""", # MISSING TRANSLATION
+	CHALLENGEWISDOM = """Wisdom Challenge""", # MISSING TRANSLATION
 	
 	
 	

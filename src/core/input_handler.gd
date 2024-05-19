@@ -697,10 +697,10 @@ func ShowSkillSelectPanel(person, type, TargetNode, TargetFunction): #very stran
 	var node = get_spec_node(self.NODE_SKILLSELECT) #GetSkillSelectNode()
 	node.open(person, type, TargetNode, TargetFunction)
 
-func ShowSlaveSelectPanel(TargetNode, TargetFunction, reqs = [], allowcancel = false): #just a strange container method
+func ShowSlaveSelectPanel(TargetNode, TargetFunction, reqs = [], allowcancel = false, challenge = null): #just a strange container method
 	var node = get_spec_node(self.NODE_SLAVESELECT) #GetSlaveSelectNode()
 	append_not_duplicate(gui_controller.windows_opened, node)
-	node.open(TargetNode, TargetFunction, reqs, allowcancel)
+	node.open(TargetNode, TargetFunction, reqs, allowcancel, challenge)
 
 
 

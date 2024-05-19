@@ -3,7 +3,7 @@ extends "res://src/scenes/ClosingPanel.gd"
 var target_func
 var target_node
 
-func open(targetnode, targetfunc, reqs = [], allow_remove = false):
+func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = null):
 	target_func = targetfunc
 	target_node = targetnode
 	show()
@@ -21,7 +21,19 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false):
 			continue
 		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newnode.get_node("icon").texture = i.get_icon_small()
-		newnode.get_node('text').text = i.get_short_name()
+		var text = i.get_short_name()
+		if challenge != null:
+			text += (
+				" - " 
+				+ tr("CHALLENGE" + challenge.to_upper)
+				+ i.get_stat("chg_" + challenge)
+				+ "/"
+				+ i.get_stat("chg_" + challenge + "_max")
+				)
+			if i.get_stat('chg_' + challenge) < 1:
+				newnode.disable = true
+			newnode.connect("pressed", self, 'take_challenge_point', [i, challenge])
+		newnode.get_node('text').text = text
 		newnode.connect('pressed', self, 'select', [i])
 		globals.connectslavetooltip(newnode, i)
 	$Label.visible = $ScrollContainer/VBoxContainer.get_child_count() <= 1
@@ -29,3 +41,7 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false):
 func select(character):
 	target_node.call(target_func, character)
 	hide()
+
+func take_challenge_point(character, challenge):
+	character.add_stat("chg_"+challenge, -1)
+	print(character.get_stat("chg_"+challenge))

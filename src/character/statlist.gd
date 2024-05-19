@@ -232,5 +232,18 @@ var template = {
 
 	asser = 0,
 
-	masternoun = 'Master',
+	masternoun = tr('PROFMASTER'),
+	
+	#challenge charages
+	chg_strength = 0,
+	chg_strength_max = 0,
+	chg_dexterity = 0,
+	chg_dexterity_max = 0,
+	chg_wisdom = 0,
+	chg_wisdom_max = 0,
+	chg_charm = 0,
+	chg_charm_max = 0,
+	
+	
+	
 }
