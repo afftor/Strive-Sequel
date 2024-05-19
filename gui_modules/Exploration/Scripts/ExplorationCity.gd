@@ -40,6 +40,9 @@ func _ready():
 	gui_controller.add_close_button($GuildShop)
 	gui_controller.add_close_button($QuestBoard)
 	
+	selected_location = 'aliron'
+	selected_area = ResourceScripts.game_world.areas.plains
+	
 	$SlaveMarket/PurchaseButton.connect("pressed", self, "show_full_info")
 	$SlaveMarket/HireMode.connect("pressed", self, "change_mode", ["hire"])
 	$SlaveMarket/SellMode.connect("pressed", self, "change_mode", ["sell"])
@@ -97,7 +100,8 @@ func open_journal():
 func open_city(city = null):
 	if gui_controller.dialogue == null or !gui_controller.dialogue.is_visible() and !gui_controller.dialogue.doing_transition:
 		self.raise()
-	gui_controller.clock.raise()
+	if gui_controller.clock != null:
+		gui_controller.clock.raise()
 	gui_controller.nav_panel = $NavigationModule
 	gui_controller.nav_panel.build_accessible_locations()
 	gui_controller.nav_panel.update_buttons()

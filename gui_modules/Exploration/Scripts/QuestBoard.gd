@@ -9,7 +9,7 @@ func _ready():
 	for i in $guildsortVScroll.get_children():
 		i.connect('pressed',self,'selectcategory', [i])
 		
-	quest_board()
+#	quest_board()
 
 
 

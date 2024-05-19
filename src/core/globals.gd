@@ -1794,9 +1794,13 @@ func common_effects(effects):
 
 						number -= 1
 			'update_guild':
+				if gui_controller.exploration_city == null:
+					gui_controller.exploration_city = input_handler.get_spec_node(input_handler.NODE_EXPLORATION_CITY, null, false, false)
 				gui_controller.exploration_city.enter_guild(gui_controller.exploration_city.active_faction)
 			'update_city':
-				gui_controller.exploration_city.open_city(input_handler.active_location.id)
+				if gui_controller.exploration_city == null:
+					gui_controller.exploration_city = input_handler.get_spec_node(input_handler.NODE_EXPLORATION_CITY, null, false, false)
+				gui_controller.exploration_city.open_city()
 			'update_party':
 				if gui_controller.exploration != null:
 					gui_controller.exploration.build_location_group()
