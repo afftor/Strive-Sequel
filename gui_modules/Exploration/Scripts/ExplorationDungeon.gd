@@ -908,15 +908,21 @@ const default_room_size = Vector2(270, 270)
 func build_level():
 	var dungeon = active_location.dungeon[active_location.current_level]
 	var data = ResourceScripts.game_world.dungeons[dungeon]
+	
 	input_handler.ClearContainer(map_container, ['room'])
 	
 	for room in data.rooms:
 		var newroom = input_handler.DuplicateContainerTemplate(map_container, 'room')
 		newroom.setup(room)
 	
-	scout_room(data.first_room, get_scouting_range(), true)
+	yield(get_tree(), 'idle_frame')
+#	scout_room(data.first_room, get_scouting_range(), true)
 	update_map()
 	build_location_description()
+	var tooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP)
+	globals.disconnect_text_tooltip(tooltip.parentnode)
+	tooltip.turnoff()
+	tooltip.hide()
 
 
 func update_map():
@@ -1018,16 +1024,18 @@ func scout_room(room_id, s_range, stay = false):
 			move_to_room(room_id)
 			pass
 		'ladder_down':
-			input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 			active_location.current_level += 1
 			build_level()
 			var dungeon = active_location.dungeon[active_location.current_level]
 			var tdata = ResourceScripts.game_world.dungeons[dungeon]
 			scout_room(tdata.first_room, get_scouting_range(), true)
+#			input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).turnoff()
+#			input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 		'ladder_up':
-			input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 			active_location.current_level -= 1
 			build_level()
+#			input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).turnoff()
+#			input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 
 
 func obscure_room(room_id):
@@ -1190,8 +1198,11 @@ func unlock_subroom():
 	var data = ResourceScripts.game_world.rooms[selected_room]
 	data.subrooms[active_subroom].challenge = null
 	update_map()
+	var t1 = selected_room
+	var t2 = active_subroom
 	active_subroom = null
 	selected_room = null
+	subroom_pressed(t1, t2)
 
 
 func reset_active_location(arg = null):

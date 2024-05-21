@@ -391,9 +391,9 @@ func lockpick_attempt(person):
 				input_handler.interactive_message_follow("lockpick_chest_gas_failure", "story_event", {})
 		input_handler.add_random_chat_message(person, 'lockpick_failure')
 
-func select_person_for_next_event(code): #needs a rework
+func select_person_for_next_event(option): #needs a rework
 	var reqs
-	
+	var code = option.code
 	if code.find('marriage')!= -1:
 		reqs = [
 			{code = 'stat', stat = 'agreed_to_marry', operant = 'eq', value = true}
@@ -423,37 +423,37 @@ func select_person_for_next_event(code): #needs a rework
 		]
 	elif code == 'pass_locked_door':
 		reqs = [
-			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
+			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
 			{code = 'in_combat_party', value = true},
 			{code = 'trait', trait = 'lockpicking', check = true} #will also need charges later
 			]
 	elif code == 'pass_blocked_path':
 		reqs = [
-			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
+			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
 			{code = 'in_combat_party', value = true},
 			{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5}
 			]
 	elif code == 'pass_magic_barrier':
 		reqs = [
-			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
+			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
 			{code = 'in_combat_party', value = true},
 			{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 5}
 			]
 	elif code == 'pass_high_cliff':
 		reqs = [
-			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
+			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
 			{code = 'in_combat_party', value = true},
 			{code = 'stat', stat = 'wings', operant = 'neq', value = ''}
 			]
 	elif code == 'pass_small_crack':
 		reqs = [
-			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
+			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
 			{code = 'in_combat_party', value = true},
 			{code = 'is_shortstack', check = true}
 			]
 	elif code == 'pass_ancient_lock':
 		reqs = [
-			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
+			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
 			{code = 'in_combat_party', value = true},
 			{code = 'has_profession', profession = 'engineer', check = true}
 			]
@@ -463,9 +463,9 @@ func select_person_for_next_event(code): #needs a rework
 #			{code = 'in_combat_party', value = true}
 			]
 	stored_scene = code
-	var challenge
-	if current_scene.options[code].has('challenge'):
-		challenge = current_scene.options[code].challenge
+	var challenge = null
+	if option.has('challenge'):
+		challenge = option.challenge
 	
 	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', reqs, true, challenge)
 
@@ -1170,7 +1170,7 @@ func select_option(number):
 		globals.common_effects(option.bonus_effects)
 	
 	if option.has('select_person'):
-		select_person_for_next_event(code)
+		select_person_for_next_event(option)
 	elif option.has('remove_person'):
 		remove_person(code)
 	elif option.has('remove_non_master'):
