@@ -20,19 +20,22 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 		if i.is_on_quest():
 			continue
 		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-		newnode.get_node("icon").texture = i.get_icon_small()
 		var text = i.get_short_name()
 		if challenge != null:
+			if i.get_stat('chg_' + challenge + "_max") < 1:
+				newnode.hide()
+				continue
+			elif i.get_stat("chg_" + challenge + "_max") - i.get_stat("chg_" + challenge) <= 0:
+				newnode.disabled = true
 			text += (
 				" - " 
-				+ tr("CHALLENGE" + challenge.to_upper)
-				+ i.get_stat("chg_" + challenge)
+				+ tr("CHALLENGE" + challenge.to_upper()) + ": "
+				+ str(i.get_stat("chg_" + challenge + "_max") - i.get_stat("chg_" + challenge))
 				+ "/"
-				+ i.get_stat("chg_" + challenge + "_max")
+				+ str(i.get_stat("chg_" + challenge + "_max"))
 				)
-			if i.get_stat('chg_' + challenge) < 1:
-				newnode.disable = true
-			newnode.connect("pressed", self, 'take_challenge_point', [i, challenge])
+			newnode.connect("pressed", self, 'add_challenge_point', [i, challenge])
+		newnode.get_node("icon").texture = i.get_icon_small()
 		newnode.get_node('text').text = text
 		newnode.connect('pressed', self, 'select', [i])
 		globals.connectslavetooltip(newnode, i)
@@ -42,6 +45,5 @@ func select(character):
 	target_node.call(target_func, character)
 	hide()
 
-func take_challenge_point(character, challenge):
-	character.add_stat("chg_"+challenge, -1)
-	print(character.get_stat("chg_"+challenge))
+func add_challenge_point(character, challenge):
+	character.add_stat("chg_"+challenge, 1)
