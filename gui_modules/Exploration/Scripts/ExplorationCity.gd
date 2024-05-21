@@ -1288,3 +1288,7 @@ func update_guild_buttons(guild_name):
 func reset_active_location(arg = null):
 	if input_handler.active_location.id != selected_location:
 		input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(selected_location)
+
+
+func add_rolled_chars(tarr):
+	return

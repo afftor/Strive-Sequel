@@ -282,6 +282,8 @@ func get_item_id_by_code(itembase):
 
 
 func disconnect_text_tooltip(node):
+	if node == null or !is_instance_valid(node):
+		return
 	if node.is_connected("mouse_entered",self,'showtexttooltip'):
 		node.disconnect("mouse_entered",self,'showtexttooltip')
 
@@ -291,6 +293,8 @@ func connecttexttooltip(node, text, move_right = false):
 	node.connect("mouse_entered",self,'showtexttooltip', [node, text, move_right])
 
 func showtexttooltip(node, text, move_right):
+	if node == null or !is_instance_valid(node) or !node.is_visible_in_tree():
+		return
 	var texttooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP) #input_handler.GetTextTooltip()
 	texttooltip.showup(node, text, move_right)
 
