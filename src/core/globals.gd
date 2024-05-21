@@ -1834,7 +1834,7 @@ func common_effects(effects):
 #				if input_handler.combat_explore:
 #					input_handler.exploration_node.advance()
 			'open_location': # {code = 'open_location', location = "SETTLEMENT_PLAINS1", area = "plains"}
-				gui_controller.exploration.show()
+#				gui_controller.exploration.show()
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
 				var location
@@ -1855,14 +1855,14 @@ func common_effects(effects):
 							area = area.code
 #					location = {id = location, area = area}
 					location = ResourceScripts.world_gen.get_location_from_code(location)
-					input_handler.active_location = location
+#					input_handler.active_location = location
 #					input_handler.exploration_node.open_city(location.id)
 					gui_controller.nav_panel.select_location(location.id)
-					continue
-				
-				location = ResourceScripts.world_gen.get_location_from_code(location.id) #dont understand why it is reqired
-				input_handler.active_location = location
-				input_handler.exploration_node.open_location(location)
+				else:
+					location = ResourceScripts.world_gen.get_location_from_code(location.id) #dont understand why it is reqired
+#					input_handler.active_location = location
+#					input_handler.exploration_node.open_location(location)
+					gui_controller.nav_panel.select_location(location.id)
 			'open_city': 
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
