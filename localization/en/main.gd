@@ -1627,6 +1627,16 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATQUALITY = "Quality",
 	STATPRICE = "Value",
 	
+	STATCHG_STRENGTH = "Strength Charges",
+	STATCHG_STRENGTH_MAX = "Strength Max. Charges",
+	STATCHG_CHARM = "Charm Charges",
+	STATCHG_CHARM_MAX = "Charm Max. Charges",
+	STATCHG_WISDOM = "Wisdom Charges",
+	STATCHG_WISDOM_MAX = "Wisdom Max. Charges",
+	STATCHG_DEXTERITY = "Dexterity Charges",
+	STATCHG_DEXTERITY_MAX = "Dexterity Max. Charges",
+	
+	
 	STATFOOD_CONSUMPTION = "Food Consumption",
 	STATFOOD_CONSUMPTIONDESCRIPT = "Amount of food items a person requires every day. Lack of food leads to starvation, exhaustion and eventual death.",
 	MASTER_POINTS = "Mastery",
@@ -3166,28 +3176,28 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	DIALOUELOCKEDDOOR = "The pass forward ends in a sturdy locked door. It seems to get through it you might need an additional force... or someone who can lockpick.",
 	DIALOUELOCKEDDOOR2 = "The pass forward ends in a sturdy looking wooden door. It seems to get through it you might need an additional force... or try alternative methods.",
-	DIALOUELOCKEDDOORSELECT = "Select character (3 Stamina)",
+	DIALOUELOCKEDDOORSELECT = "[Dexterity Challenge] Select character (3 Stamina)",
 	DIALOUELOCKEDDOORSELECT2 = "Use Unstable Concoction (3 Stamina)",
 	DIALOUELOCKEDDOORBREAK = "Break through (10 Stamina)",
 	DIALOUELOCKEDDOORPASS = "[name] skillfully unlocks door blocking the pass allowing to proceed. ",
 	DIALOGUEBLOCKEDPATH = "The pass ahead is blocked by a collapsed tunnel. It seems it still can be fixed by someone with enough physical fitness relatively quickly.",
-	DIALOGUEBLOCKEDPATHSELECT = "Select character (3 Stamina)",
+	DIALOGUEBLOCKEDPATHSELECT = "[Strength Challenge] Select character (3 Stamina)",
 	DIALOGUEBLOCKEDPATHBREAK = "Spend time clearing the passage (10 Stamina)",
 	DIALOGUEBLOCKEDPATHPASS = "[name] lifts one of the crushed wooden bars and manages to push it away, clearing the path ahead.",
 	DIALOGUEMAGICBARRIER = "The group comes across a way bloked by a magic barrier. However, a clever individual might be able to find an easy way to breach it. ",
-	DIALOGUEMAGICBARRIERSELECT = "Select character (3 Stamina)",
+	DIALOGUEMAGICBARRIERSELECT = "[Wisdom Challenge] Select character (3 Stamina)",
 	DIALOGUEMAGICBARRIERBREAK = "Wear down the barrier (10 Stamina)",
 	DIALOGUEMAGICBARRIERPASS = "[name] uses [his] keen mind to find the place with the weakest magical structure and breaches the barrier.",
 	DIALOGUEFALLENBRIDGE = "The path ahead suddenly leads to a broken bridge across the chasm. Searching for an alternative route will take a considerable time, however there's a piece of rope which could be carried over for easier repair by someone who can fly.",
-	DIALOGUEFALLENBRIDGESELECT = "Select character (3 Stamina)",
+	DIALOGUEFALLENBRIDGESELECT = "[Strength Challenge] Select character (3 Stamina)",
 	DIALOGUEFALLENBRIDGEBREAK = "Search for a different path (10 Stamina)",
 	DIALOGUEFALLENBRIDGEPASS = "[name] flies over the chasm, safely landing with the required tools to fix help fix the path ahead.",
 	DIALOGUESMALLCRACK = "The way ahead is blocked by a heavy mechanism controlled from the other side. Getting it by hand will take a while, however there's a small crack in a solid wall next to it, which can be passed by someone of a smaller size. ",
-	DIALOGUESMALLCRACKSELECT = "Select character (3 Stamina)",
+	DIALOGUESMALLCRACKSELECT = "[Dexterity Challenge] Select character (3 Stamina)",
 	DIALOGUESMALLCRACKBREAK = "Break through it (10 Stamina)",
 	DIALOGUESMALLCRACKPASS = "[name] safely gets on the other side of the door and pulls the leaver opening the pass.",
 	DIALOGUEANCIENTLOCK = "The path ahead is blocked by a sturdy ancient looking door with a complex mechanical gears. Breaking through it will prove to be no easy task, unless someone might be able to figure how it works.",
-	DIALOGUEANCIENTLOCKSELECT = "Select character (3 Stamina)",
+	DIALOGUEANCIENTLOCKSELECT = "[Wisdom Challenge] Select character (3 Stamina)",
 	DIALOGUEANCIENTLOCKBREAK = "Break through (10 Stamina)",
 	DIALOGUEANCIENTLOCKPASS = "After carefully studying the lock, [name] manages to figure out a simple way to jam and break it, making the door open by itself.",
 		
@@ -3725,7 +3735,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	LICHENCWINAIRE = "As you defeat the Lich and take his skull, the elf girl observes you cautiously.",
 	LICHENCWINELSE = "You take the Lich's skull but can't find anything else worthwhile.",
 	LICHAIRETALK1 = "You strike down the Lich and take its skull. The elf girl observes you with a mix of relief and caution. \n\n— I... Thank you for the help. My name is Aire. My Master has sent me here to deal with the undead who disturbed nearby peasants, but it didn't go well.",
-	LICHAIRETALK1_DEAL_WITH_LICH = "The elf girl observes you with a mix of relief and caution.\n\n	— I... Thank you for the help. My name is Aire. My Master has sent me here to deal with the undead who disturbed nearby peasants, but it didn't go well.",
+	LICHAIRETALK1_DEAL_WITH_LICH = "The elf girl observes you with a mix of relief and caution.\n\n— I... Thank you for the help. My name is Aire. My Master has sent me here to deal with the undead who disturbed nearby peasants, but it didn't go well.",
 	LICHAIRETALK1REPLY1 = "What kind of Master would send an elven archer on their own around here?",
 	LICHAIRETALK1REPLY2 = "I'm glad you are safe, take care.",
 	LICHAIRETALK1REPLY3 = "Don't you think you should reward me for your rescue?",
@@ -4113,14 +4123,14 @@ The crowd of landowners bursts into a hubbub.
 	As such we barely have any influence while Aliron is under martial law.
 	I guess all we can do is stick around 'till it's over and hope there will be something left for us afterwards.
 		
-	— You know, it's going to take Duncan weeks to find out what's really going on, and until then the air around here will be tense.
+— You know, it's going to take Duncan weeks to find out what's really going on, and until then the air around here will be tense.
 	You could obviously jump straight into the fight with the rebels, but I feel like we would do better to uncover the perpetrators and clear suspicion within the guilds first. What do you think?""",
 
 
 	ALIRONELECTIONSFINISH_ANSWER2 = """— Sure, that's what we always do. The stakes are higher this time though, with one of our own betraying us to the rebellion.
 	The Mages are in charge of any large scale teleportations, so this shouldn't have been possible short of infiltration and sabotage.
 		
-	— You know, it's going to take Duncan weeks to find out what's really going on, and until then the air around here will be tense.
+— You know, it's going to take Duncan weeks to find out what's really going on, and until then the air around here will be tense.
 	You could obviously jump straight into the fight with the rebels, but I feel like we would do better to uncover the perpetrators and clear suspicion within the guilds first. What do you think?""",
 
 	ALIRONELECTIONSFINISH_QUESTION3 = "Actually, I was about to offer my assistance to Duncan personally.",
@@ -4129,17 +4139,17 @@ The crowd of landowners bursts into a hubbub.
 
 	ALIRONELECTIONSFINISH_ANSWER3 = """— Quite enthusiastic, aren't you? This is all the better, but don't act prematurely.
 	
-	— Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
+— Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
 	I suggest starting with the Mages guild. If they haven't figured it out already, they should be able to determine how our princess got in.""",
 
 	ALIRONELECTIONSFINISH_ANSWER4 = """— Hah, that's the spirit. Trust no one. This is why I've chosen you. Well, since you've realized that and if that was the case, we won't be able to fool you, right?
 	
-	—Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
+—Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
 	I suggest starting with the Mages guild. If they haven't figured it out already, they should be able to determine how our princess got in.""",
 
 	ALIRONELECTIONSFINISH_ANSWER5 = """— Come on now. Someone aiming for a position of mayor should display more confidence. Don't worry, if something happens I'll cover for you.
 	
-	— Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
+— Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
 	I suggest starting with the Mages guild. If they haven't figured it out already, they should be able to determine how our princess got in.""",
 
 	#==============Mages guild line================= (triggers when meeting mage leader)
@@ -4153,7 +4163,7 @@ The crowd of landowners bursts into a hubbub.
 
 	MAGESAFTERELLECTION1_ANSWER1 = """— Yeah, right, like hell you did. Did the Fighters send you? Or, more likely, it's Amelia's idea, right?
 	
-	— Fucking hell. They can't finish off one brat, don't even realize it until it's too late, and now it's all our fault. Like I care. So you wanna find out what actually happened?""",
+— Fucking hell. They can't finish off one brat, don't even realize it until it's too late, and now it's all our fault. Like I care. So you wanna find out what actually happened?""",
 
 	MAGESAFTERELLECTION1_ANSWER2 = """— Fucking hell. They can't finish off one brat, don't even realize it until it's too late, and now it's all our fault. Like I care. So you wanna find out what actually happened?""",
 
@@ -4163,10 +4173,10 @@ The crowd of landowners bursts into a hubbub.
 
 	MAGESAFTERELLECTION1_ANSWER3 = """— The city is protected from unauthorized teleportation by a crystal sphere designed to dampen magic crossing a projected threshold. The device can have very different applications, but what's important is that for this purpose it requires a power source. This power source was stolen right before... the event.
 	
-	— Cutting to the chase, there are only a few guild members allowed access, and one of those has just happened to have gone missing on the day of the incident.
+— Cutting to the chase, there are only a few guild members allowed access, and one of those has just happened to have gone missing on the day of the incident.
 	Name's Fred. You can find him and confirm if he disabled the device on his own accord. If he indeed sided with the rebels or the Empire, it's best if you take him down immediately.
 	
-	— I'll give you his home address, you might find some clues about his whereabouts there.""",
+— I'll give you his home address, you might find some clues about his whereabouts there.""",
 
 	MAGESAFTERELLECTION1_QUESTION6 = "What's that power source which was stolen?",
 	MAGESAFTERELLECTION1_QUESTION7 = "You suspect he's dead?",
@@ -4851,7 +4861,7 @@ Sigmund passes you the pouch with some gold in it.
 	AFTER_MINES_DUNCAN_4 = """— But I've also heard you let that demon go without a fight, and she took some workers with her. Explain yourself.""",
 	AFTER_MINES_DUNCAN_3_4 = """— So, it might have been the demon you've mentioned earlier. From the way you say it, she was up to something, but it shouldn't hinder us. It's a shame to lose the artifact to them, but demons are too few and scarce to present any real threat.
 	
-	— But I've also heard you let that demon go without a fight, and she took some workers with her. Explain yourself.""",
+— But I've also heard you let that demon go without a fight, and she took some workers with her. Explain yourself.""",
 	AFTER_MINES_DUNCAN_OPTION_4 = """I was outnumbered and had no choice.""",
 	AFTER_MINES_DUNCAN_OPTION_5 = """The miners couldn't have been saved in that moment.""",
 	AFTER_MINES_DUNCAN_OPTION_6 = """What's it to you? We still got the mine back up and running.""",
@@ -4870,15 +4880,15 @@ Sigmund passes you the pouch with some gold in it.
 	AFTER_MINES_DUNCAN_OPTION_13 = """I've received the message.""",
 	AFTER_MINES_DUNCAN_10 = """— It's time. We've been preparing to siege Millford which has been captured by rebels at the first days of rebellion. Now we finally have enough forces for a full fledged siege.
 	
-	— I'll be leading it and I have a mission for you. There's a convoy carrying additional food supplies necessary for the operation. You'll have to escort it there. After that your forces will join the siege.""",
+— I'll be leading it and I have a mission for you. There's a convoy carrying additional food supplies necessary for the operation. You'll have to escort it there. After that your forces will join the siege.""",
 	AFTER_MINES_DUNCAN_OPTION_14 = """This shouldn't be hard.""",
 	AFTER_MINES_DUNCAN_OPTION_15 = """Can't believe I have to play delivery [boy] now of all times.""",
 	AFTER_MINES_DUNCAN_11 = """— Don't take for granted this will be easy, there might still be rebel or bandit ambushes along the way.
 	
-	— Now, we shall meet on the battlefield and put an end to this war.""",
+— Now, we shall meet on the battlefield and put an end to this war.""",
 	AFTER_MINES_DUNCAN_12 = """— We all have to make our contributions for the cause. The guilds will not forget your participation once this is over and the mayor election will resume.
 	
-	— Now, we shall meet on the battlefield and put an end to this war.""",
+— Now, we shall meet on the battlefield and put an end to this war.""",
 	AFTER_MINES_CONVOY_1 = """You find the supplies you are supposed to deliver at the depot already prepared and packed on a few mules, so all you've left to do is to set out with your team.""",
 	AFTER_MINES_CONVOY_OPTION_1 = """*Move*""",
 	AFTER_MINES_CONVOY_2 = """You order to finish preparations and move out with the convoy.""",
@@ -5215,7 +5225,7 @@ Duncan: — [name], you can return to Aliron now. We shall plan out our next mov
 	FINAL_OPERATON_3 = """— Hmm, for one the location is an abandoned mineshaft, it'll be an enclosed space, but should still have plenty of open room for fighting the enemy. The rebels will likely be well fortified. They'll have numbers, but we'll have skill.""",
 	FINAL_OPERATON_4 = """— The longer it takes you, the more time the enemy has to prepare, so try not to keep us waiting too long. I'll mark the location on your map.
 	
-	— Don't mention this to the other guilds. We still aren't sure if Fred was the only traitor in our midst, and we can't risk the princess getting away because a spy gave her forewarning. That being said, if you can recruit help from them without revealing the raid, do so.""",
+— Don't mention this to the other guilds. We still aren't sure if Fred was the only traitor in our midst, and we can't risk the princess getting away because a spy gave her forewarning. That being said, if you can recruit help from them without revealing the raid, do so.""",
 	FINAL_OPERATON_WORKERS_OPTION_1 = "*Ask for Help*",
 	FINAL_OPERATON_WORKERS_1 = """— Ach, have ya no mind to what pressure we're under? Entire guild is tied up supporting the fighters spat with the rebels. Got none free ta take on some outside job at the moment.""",
 	FINAL_OPERATON_SERVANTS_1 = """— Came to us for Duncan's little raid? Please, [name], I thought you knew that we don't deal in any violence. Sorry... But to cheer you up, here's a little tip from me: ask Myr. Mages are certainly more capable in what you're looking for.""",
@@ -7868,7 +7878,7 @@ Zephyra leaves the church without giving you a second glance.""",
 
 	Zephyra looks around with a troubled expression of someone having to answer a childish questions rather than someone being interrogated.
 
-	— *Sigh* Look, if that's still not enough for to convince you, how about I dirty bribe you then? Tell what can I get you.""",
+— *Sigh* Look, if that's still not enough for to convince you, how about I dirty bribe you then? Tell what can I get you.""",
 	ZEPHYRA_SWORD_3_3_2_OPTION_1 = "You could give something valuable as a way of insurance.",
 	ZEPHYRA_SWORD_3_3_2_OPTION_2 = "Something intimate could prove your sincerity.",
 	ZEPHYRA_SWORD_3_3_2_OPTION_3 = "Forget about it, I'll trust you.",
@@ -8311,7 +8321,7 @@ Savra passes you a small parchment with the ingredients.
 	LEON_ENCOUNTER_4_1 = """— We'll set up a hunting party with the most experienced hunters and warriors to track and defeat the Stag. It's not my first time hunting it, though it did slow us down. It's painful to admit I was taken by its curse.""",
 	LEON_ENCOUNTER_4_2 = """— It'll be an honor to have your help. You must understand that this is not a normal skirmish or hunt. The White Stag is a beast unlike any other. Not only is it able to induce madness by its mere presence, it possesses other fearsome powers. You can ask Savra about them, she could explain it better than me.
 	
-	— Meet us in the wilds, where we begin the hunt.""",
+— Meet us in the wilds, where we begin the hunt.""",
 	SAVRA_STAG_QUESTION = """*Ask about the White Stag*""",
 	SAVRA_STAG_ANSWER = """ — White Stag is a being of mysterious nature. Even though we consider it evil I'm more inclined to believe for it to be a challenge. Rundas must be testing our strength hence why it was never really defeated. As a spiritual leader I can't ignore my duty and ask you to show it at least some respect.""",
 	WHITE_STAG_ENCOUNTER_1 = """You come to the previously established location and find a fairly large group of beastkin, ready for the hunt. Standing off to the side you spot Leon and call out to him.
@@ -8341,10 +8351,10 @@ Before you realize that Leon is yelling at you to be careful, you see the beast 
 	WHITE_STAG_ENCOUNTER_5_OPTION_3 = "That's none of your business, demon.",
 	WHITE_STAG_ENCOUNTER_6_1 = """— Preposterous. How has Freya not smitten your foul body yet?
 	
-	— Your mere presence defiles these grounds and all traces of it must be annihilated. Then we can return to our confrontation once again.""",
+— Your mere presence defiles these grounds and all traces of it must be annihilated. Then we can return to our confrontation once again.""",
 	WHITE_STAG_ENCOUNTER_6_2 = """— Help? There's nothing to help here.
 	
-	— Your mere presence defiles these grounds and all traces of it must be annihilated. Then we can return to our confrontation once again.""",
+— Your mere presence defiles these grounds and all traces of it must be annihilated. Then we can return to our confrontation once again.""",
 	WHITE_STAG_ENCOUNTER_6_3 = "— You dare to call me a demon? Clearly you are out of your mind. Futile. I'll not only take your life, but your very soul will be trampled. We will see what is left of it when I am done.",
 	WHITE_STAG_ENCOUNTER_6_OPTION_1 = "I won't let you kill me.",
 	WHITE_STAG_ENCOUNTER_6_OPTION_2 = "It's you who will die here.",
@@ -8975,7 +8985,7 @@ Cali looks surprisingly disappointed but decides not to tempt her fate and leave
 	CALI_SIDEQUEST_2_OPTION_4 = "The Servants might be a good fit for a girl.",
 	CALI_SIDEQUEST_3_1 = """— Hmm.. Yeah, I like that! Being an adventurer, fighting bad guys and monsters
 	
-	— So, you think I can go there and become a fighter? I can also be more useful to you if I get stronger, right? Let's go there!""",
+— So, you think I can go there and become a fighter? I can also be more useful to you if I get stronger, right? Let's go there!""",
 	CALI_SIDEQUEST_2_2 = """— No, I hate studying and I heard you need to do that a lot to become a mage. It does not really suit me, don't you think?""",
 	CALI_SIDEQUEST_2_3 = """— Ugh, boring. I'd rather do something more active.""",
 	CALI_SIDEQUEST_2_4 = """— Oh, come on, you are talking just like my mom! I may be a girl, but I'm not really good with that girly stuff. There must be something better.""",

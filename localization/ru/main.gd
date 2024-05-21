@@ -1625,6 +1625,14 @@ var TranslationDict = {
 	STATENCHCAP = "Вместимость зачарований", 
 	STATQUALITY = "Качество",
 	STATPRICE = "Цена",
+	STATCHG_STRENGTH = """Strength Charges""", # MISSING TRANSLATION
+	STATCHG_STRENGTH_MAX = """Maximum Strength Charges""", # MISSING TRANSLATION
+	STATCHG_CHARM = """Charm Charges""", # MISSING TRANSLATION
+	STATCHG_CHARM_MAX = """Maximum Charm Charges""", # MISSING TRANSLATION
+	STATCHG_WISDOM = """Wisdom Charges""", # MISSING TRANSLATION
+	STATCHG_WISDOM_MAX = """Maximum Wisdom Charges""", # MISSING TRANSLATION
+	STATCHG_DEXTERITY = """Dexterity Charges""", # MISSING TRANSLATION
+	STATCHG_DEXTERITY_MAX = """Maximum Dexterity Charges""", # MISSING TRANSLATION
 	
 	STATFOOD_CONSUMPTION = "Потребление еды",
 	STATFOOD_CONSUMPTIONDESCRIPT = "Количество продуктов питания, необходимое человеку каждый день. Недостаток пищи приводит к голоду, истощению и в конечном итоге к смерти.",

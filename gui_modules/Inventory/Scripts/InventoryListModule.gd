@@ -25,9 +25,14 @@ func buildinventory():
 	get_parent().get_node("InventoryGearModule/InventorySlots").visible = list_mode == "inventory"
 	get_parent().get_node("InventoryGearModule/TattooSlots").visible = !get_parent().get_node("InventoryGearModule/InventorySlots").is_visible()
 	get_parent().get_node("InventoryGearModule/buffscontainer").visible = list_mode == "inventory"
+	
+	var array = []
 	for i in ResourceScripts.game_res.materials:
 		if ResourceScripts.game_res.materials[i] <= 0:
 			continue
+		array.append(i)
+	array.sort_custom(self, 'sort_mats')
+	for i in array:
 		var newbutton = input_handler.DuplicateContainerTemplate(itemcontainer)
 		var material = Items.materiallist[i]
 		var type = get_item_category(material)
@@ -84,6 +89,13 @@ func buildinventory():
 			newnode.get_node("quality_color").texture = variables.quality_colors[i.quality]
 	rebuildinventory()
 
+func sort_mats(first,second):
+	var material1 = Items.materiallist[first]
+	var material2 = Items.materiallist[second]
+	if material1.name >= material2.name:
+		return false
+	else:
+		return true
 
 var selected_tattoo: String
 

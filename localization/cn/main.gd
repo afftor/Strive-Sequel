@@ -1624,6 +1624,14 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	STATQUALITY = """Quality""", # MISSING TRANSLATION
 	
 	STATPRICE = "Value",
+	STATCHG_STRENGTH = """Strength Charges""", # MISSING TRANSLATION
+	STATCHG_STRENGTH_MAX = """Maximum Strength Charges""", # MISSING TRANSLATION
+	STATCHG_CHARM = """Charm Charges""", # MISSING TRANSLATION
+	STATCHG_CHARM_MAX = """Maximum Charm Charges""", # MISSING TRANSLATION
+	STATCHG_WISDOM = """Wisdom Charges""", # MISSING TRANSLATION
+	STATCHG_WISDOM_MAX = """Maximum Wisdom Charges""", # MISSING TRANSLATION
+	STATCHG_DEXTERITY = """Dexterity Charges""", # MISSING TRANSLATION
+	STATCHG_DEXTERITY_MAX = """Maximum Dexterity Charges""", # MISSING TRANSLATION
 	
 	STATFOOD_CONSUMPTION = "Food Consumption",
 	STATFOOD_CONSUMPTIONDESCRIPT = "Amount of food items a person requires every day. Lack of food leads to starvation, exhaustion and eventual death.",
