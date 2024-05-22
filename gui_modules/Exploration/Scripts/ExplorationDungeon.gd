@@ -956,7 +956,7 @@ func can_enter_room(room_id):
 
 
 func room_pressed(room_id):
-	if selected_room != null:
+	if selected_room != null and active_subroom == null:
 		return
 	if globals.check_location_group() == false:
 		input_handler.SystemMessage("Select at least 1 character before advancing. ")
