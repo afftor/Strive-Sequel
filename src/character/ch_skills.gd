@@ -112,7 +112,7 @@ func cooldown_tick():
 	items_used_today.clear()
 	skills_received_today.clear()
 	
-	for i in ['chg_strength','chg_dexterity','chg_charm','chg_wisdom']:
+	for i in ['chg_strength','chg_dexterity','chg_persuasion','chg_wisdom']:
 		parent.get_ref().set_stat(i, 0)
 	
 	var cleararray = []
