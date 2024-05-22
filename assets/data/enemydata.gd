@@ -63,8 +63,8 @@ var enemygroups = {
 	
 	tutorial_lich_fight = {reqs = [], units = {rat = [2,2]}},
 	
-	rats_easy = {reqs = [], units = {rat = [2,6]}},
-	rats_goblins_easy = {reqs = [], units = {rat = [1,4], cave_goblin_melee = [1,3]}},
+	rats_easy = {reqs = [], units = {rat = [2,6]}, challenges = [['event_enemy_strength_scare', 1]], challenge_chance = 0.3},
+	rats_goblins_easy = {reqs = [], units = {rat = [1,4], cave_goblin_melee = [1,3]}, challenges = [['event_enemy_strength_scare', 1],['event_enemy_distract',0.5]], challenge_chance = 0.3},
 	bandits_easy = {reqs = [], units = {bandit_melee = [1,3], trained_dog = [0,2]}},
 	bandits_easy2 = {reqs = [], units = {bandit_melee = [1,3], bandit_archer = [1,2]}},
 	bandits_easy3 = {reqs = [], units = {trained_dog = [1,2], bandit_archer = [0,3]}},

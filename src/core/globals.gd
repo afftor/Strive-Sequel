@@ -2197,6 +2197,15 @@ func common_effects(effects):
 			'add_subroom_res':
 				if gui_controller.exploration_dungeon != null:
 					gui_controller.exploration_dungeon.add_subroom_res()
+			'alter_combat':
+				if i.victory == true:
+					pass#add instant win for next combat
+				if i.has("reduce_hp"):
+					pass#add reduce hp by i.value percent
+				if i.has('xp_mod'):
+					pass#alter xp reward for combat by this value
+			'captured_number':
+				return input_handler.operate(i.operant,input_handler.active_location.captured_characters.size(), i.value)  
 
 func after_wedding_event(character):
 	if character == null:
