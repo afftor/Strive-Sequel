@@ -231,6 +231,7 @@ func open_location(data): #2fix
 	gui_controller.nav_panel.build_accessible_locations()
 	input_handler.exploration_node = self
 	#input_handler.interactive_message("spring", '',{})
+#	globals.common_effects([{code = "reveal_active_dungeon"}])
 
 
 func build_location_description():

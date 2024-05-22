@@ -118,6 +118,12 @@ func calculate_args():
 					else:
 						args.push_back(null)
 					pass
+				'skill':
+					if self_args.has('skill'):
+						var par = self_args.skill
+						args.push_back(par.get(arg.param))
+					else:
+						args.push_back(null)
 				'parent':
 					var par
 					if typeof(parent) == TYPE_STRING:
@@ -170,6 +176,12 @@ func get_arg(index):
 				else:
 					args[index] = null
 				pass
+			'skill':
+				if self_args.has('skill'):
+					var par = self_args.skill
+					args[index] = par.get(arg.param)
+				else:
+					args[index] = null
 			'parent':
 				var par
 				if typeof(parent) == TYPE_STRING:

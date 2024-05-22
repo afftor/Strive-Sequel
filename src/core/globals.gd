@@ -2197,6 +2197,16 @@ func common_effects(effects):
 			'add_subroom_res':
 				if gui_controller.exploration_dungeon != null:
 					gui_controller.exploration_dungeon.add_subroom_res()
+			'reveal_active_dungeon':
+				if gui_controller.exploration_dungeon != null:
+					var loc = gui_controller.exploration_dungeon.active_location
+					for dng in loc.dungeon:
+						var ddata = ResourceScripts.game_world.dungeons[dng]
+						for room in ddata.rooms:
+							var rdata = ResourceScripts.game_world.rooms[room]
+							if rdata.status != 'cleared':
+								rdata.status = 'scouted'
+					gui_controller.exploration_dungeon.update_map()
 			'alter_combat':
 				if i.victory == true:
 					pass#add instant win for next combat
