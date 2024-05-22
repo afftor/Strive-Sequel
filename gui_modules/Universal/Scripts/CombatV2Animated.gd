@@ -30,6 +30,8 @@ var playergroup = {} #pos:hid
 var enemygroup = {}
 var currentactor
 
+var endturn
+
 var summons = [] #pos
 
 var activeaction
@@ -675,12 +677,14 @@ func player_turn(pos):
 		activeaction = selected_character.get_skill_by_tag('default')
 		UpdateSkillTargets(selected_character, true)
 		var targ = get_random_target()
+		endturn = true
 		use_skill(selected_character.get_skill_by_tag('default'), selected_character, targ)
 		return
 	if selected_character.has_status('taunt_hard'):
 		var tchar = characters_pool.get_char_by_id(selected_character.taunt)
 #		selected_character.taunt = null
 		if can_be_taunted(selected_character, tchar):
+			endturn = true
 			use_skill(selected_character.get_skill_by_tag('default'), selected_character, tchar)
 			return
 		else:
@@ -855,6 +859,7 @@ func enemy_turn(pos):
 	skill_callback_args.caster = fighter
 	skill_callback_args.target = target
 	skill_callback_args.value = COPY_ENABLED
+	endturn = true
 	use_skill(castskill, fighter, target)
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -868,6 +873,7 @@ func enemy_turn(pos):
 		skill_callback_args.caster = fighter
 		skill_callback_args.target = target
 		skill_callback_args.value = COPY_ENABLED
+		endturn = true
 		use_skill(castskill, fighter, target)
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -892,6 +898,7 @@ func env_turn():
 		turns += 1
 		activecharacter = autoskill_dummy
 		autoskill_times -= 1
+		endturn = true
 		use_skill(autoskill, autoskill_dummy, get_proper_target_for_autoskill())
 		if autoskill_times == 0: autoskill = null
 		CombatAnimations.check_start()
@@ -1042,6 +1049,7 @@ func FighterPress(pos):
 	skill_callback_args.caster = activecharacter
 	skill_callback_args.target = characters_pool.get_char_by_id(battlefield[pos])
 	skill_callback_args.value = COPY_ENABLED
+	endturn = true
 	use_skill(activeaction, activecharacter, characters_pool.get_char_by_id(battlefield[pos]))
 
 func buildenemygroup(enemygroup, enemy_stats_mod):
@@ -1421,11 +1429,14 @@ func use_skill(skill_code, caster, target):
 		caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
 		effects_pool.process_event(variables.TR_SKILL_FINISH, caster)
 	s_skill1.remove_effects()
-	var endturn = !s_skill1.tags.has('instant')
+	endturn = endturn and !s_skill1.tags.has('instant')
 	#follow-up
 	if skill.has('follow_up') and fa:
-		use_skill(skill.follow_up, caster, target)
-	if skill.tags.has('not_final'): return
+		var tstate = use_skill(skill.follow_up, caster, target)
+		if typeof(tstate) == TYPE_OBJECT:
+			yield (tstate, 'compleated')
+	if skill.tags.has('not_final'): 
+		return
 
 	#final
 	turns += 1
@@ -1951,6 +1962,7 @@ func SelectSkill(skill):
 		skill_callback_args.caster = activecharacter
 		skill_callback_args.target = activecharacter
 		skill_callback_args.value = COPY_ENABLED
+		endturn = true
 		call_deferred('use_skill', activeaction, activecharacter, activecharacter)
 
 func RebuildItemPanel():
