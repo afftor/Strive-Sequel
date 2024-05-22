@@ -605,7 +605,7 @@ var effect_table = {
 			],
 		atomic = [],
 		buffs = [],#'b_power_pot'],
-		args = [{obj = 'parent', param = 'caster'}, {obj = 'parent', param = 'target'}],
+		args = [{obj = 'skill', param = 'caster'}, {obj = 'skill', param = 'target'}],
 		sub_effects = ['e_s_bishop']
 	},
 	e_tr_sniper = rebuild_skillvalue_template({num_targets = 'single', skilltype = 'skill', tag = 'damage', value = 1.25}),
