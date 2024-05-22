@@ -3633,7 +3633,7 @@ var effect_table = {
 		type = 'temp_global',
 		tags = ['duration_turns', 'affliction'],
 		target = 'target',
-		name = 'bishop_debuf',
+		name = 'Luminance',
 		stack = 1,
 		timers = [
 			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 3}, #3 turn duration
@@ -5401,7 +5401,7 @@ var buffs = {
 	b_bishop = {
 		icon = "res://assets/images/iconsskills/Sedate.png",
 		description = "BUFFDESCRIPTBISHOP",
-		t_name = 'bishop_debudd',
+		t_name = 'bishop_debuff',
 		combat_only = true
 	},
 	b_sleep = {
@@ -5471,7 +5471,7 @@ var buffs = {
 		limit = 1,
 		combat_only = true
 	},
-	b_resto= {
+	b_resto = {
 		icon = "res://assets/images/traits/hitrate.png",
 		description = "BUFFDESCRIPTRESTO",
 		limit = 1,

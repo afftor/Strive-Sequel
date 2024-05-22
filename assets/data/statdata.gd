@@ -841,14 +841,14 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 	},
-	chg_charm = {
-		code = 'chg_charm',
+	chg_persuasion = {
+		code = 'chg_persuasion',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
 	},
-	chg_charm_max = {
-		code = 'chg_charm_max',
+	chg_persuasion_max = {
+		code = 'chg_persuasion_max',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',

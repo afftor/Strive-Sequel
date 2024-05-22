@@ -71,9 +71,6 @@ rect_min_size = Vector2( 470, 461 )
 theme = ExtResource( 1 )
 custom_styles/panel = ExtResource( 2 )
 script = ExtResource( 26 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Background" type="Panel" parent="."]
 self_modulate = Color( 0, 0, 0, 0.823529 )
@@ -105,9 +102,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureRect" parent="TextureRect/professions" groups=[
-"ignore_rightclicks",
-]]
+[node name="Button" type="TextureRect" parent="TextureRect/professions" groups=["ignore_rightclicks"]]
 visible = false
 margin_right = 89.0
 margin_bottom = 89.0
@@ -195,8 +190,8 @@ margin_left = 200.0
 margin_top = 7.0
 margin_right = 456.0
 margin_bottom = 35.0
-custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 text = "Name"
 scroll_active = false
@@ -204,9 +199,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="base_stats" type="VBoxContainer" parent="." groups=[
-"hide_stranger",
-]]
+[node name="base_stats" type="VBoxContainer" parent="." groups=["hide_stranger"]]
 margin_left = 192.0
 margin_top = 111.0
 margin_right = 456.0
@@ -234,8 +227,8 @@ stretch_margin_bottom = 5
 margin_top = -2.75696
 margin_right = 262.0
 margin_bottom = 29.243
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "1.100"
 align = 1
 __meta__ = {
@@ -256,8 +249,8 @@ nine_patch_stretch = true
 margin_top = -3.75696
 margin_right = 262.0
 margin_bottom = 28.243
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "1.100"
 align = 1
 __meta__ = {
@@ -278,8 +271,8 @@ nine_patch_stretch = true
 margin_top = -3.75696
 margin_right = 263.0
 margin_bottom = 28.243
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "1.100"
 align = 1
 __meta__ = {
@@ -302,9 +295,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="growth_factor" type="TextureRect" parent="factors" groups=[
-"hide_master",
-]]
+[node name="growth_factor" type="TextureRect" parent="factors" groups=["hide_master"]]
 light_mask = 0
 margin_right = 50.0
 margin_bottom = 35.0
@@ -322,8 +313,8 @@ margin_left = 69.2385
 margin_top = -2.0
 margin_right = 129.238
 margin_bottom = 33.0
-custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 29 )
 text = "Excellent"
 clip_text = true
 __meta__ = {
@@ -435,9 +426,7 @@ custom_fonts/font = ExtResource( 29 )
 text = "25"
 clip_text = true
 
-[node name="tame_factor" type="TextureRect" parent="factors" groups=[
-"hide_master",
-]]
+[node name="tame_factor" type="TextureRect" parent="factors" groups=["hide_master"]]
 light_mask = 0
 margin_left = 136.0
 margin_top = 78.0
@@ -487,9 +476,7 @@ custom_fonts/font = ExtResource( 29 )
 text = "25"
 clip_text = true
 
-[node name="timid_factor" type="TextureRect" parent="factors" groups=[
-"hide_master",
-]]
+[node name="timid_factor" type="TextureRect" parent="factors" groups=["hide_master"]]
 light_mask = 0
 margin_left = 136.0
 margin_top = 117.0
@@ -524,8 +511,8 @@ margin_left = 73.0
 margin_top = 210.0
 margin_right = 179.0
 margin_bottom = 242.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Physics"
 align = 1
 clip_text = true
@@ -538,8 +525,8 @@ margin_left = 72.833
 margin_top = 250.0
 margin_right = 122.833
 margin_bottom = 282.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Physics"
 align = 1
 clip_text = true
@@ -552,8 +539,8 @@ margin_left = 130.449
 margin_top = 250.0
 margin_right = 180.449
 margin_bottom = 282.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Physics"
 align = 1
 clip_text = true
@@ -566,8 +553,8 @@ margin_left = 71.641
 margin_top = 285.0
 margin_right = 121.641
 margin_bottom = 317.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Wits"
 align = 1
 clip_text = true
@@ -580,8 +567,8 @@ margin_left = 130.052
 margin_top = 285.0
 margin_right = 180.052
 margin_bottom = 317.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Wits"
 align = 1
 clip_text = true
@@ -594,8 +581,8 @@ margin_left = 71.244
 margin_top = 325.0
 margin_right = 121.244
 margin_bottom = 357.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Charm"
 align = 1
 clip_text = true
@@ -608,8 +595,8 @@ margin_left = 130.449
 margin_top = 325.0
 margin_right = 180.449
 margin_bottom = 357.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Charm"
 align = 1
 clip_text = true
@@ -692,8 +679,8 @@ margin_left = 63.0
 margin_top = 173.0
 margin_right = 181.0
 margin_bottom = 205.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 1
 __meta__ = {
@@ -711,17 +698,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="obedlabel" type="Label" parent="Panel" groups=[
-"hide_master",
-"hide_stranger",
-]]
+[node name="obedlabel" type="Label" parent="Panel" groups=["hide_master", "hide_stranger"]]
 margin_left = 119.711
 margin_top = -1.52588e-05
 margin_right = 198.711
 margin_bottom = 40.0
 rect_scale = Vector2( 0.627771, 0.627771 )
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = SubResource( 4 )
 text = "25"
 align = 1
 __meta__ = {
@@ -740,59 +724,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="authoritylabel" type="Label" parent="Panel" groups=[
-"hide_master",
-"hide_stranger",
-]]
-margin_left = 3.8147e-06
+[node name="authoritylabel" type="Label" parent="Panel" groups=["hide_master", "hide_stranger"]]
 margin_top = 69.682
 margin_right = 238.0
 margin_bottom = 101.682
 mouse_filter = 0
-custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 5 )
 text = "Authority: "
 align = 1
 
-[node name="authoritylabel2" type="Label" parent="Panel" groups=[
-"hide_master",
-"hide_stranger",
-]]
+[node name="authoritylabel2" type="Label" parent="Panel" groups=["hide_master", "hide_stranger"]]
 margin_left = 14.7019
 margin_top = 21.41
 margin_right = 26.7019
 margin_bottom = 53.41
 mouse_filter = 0
-custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "L"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="authoritylabel3" type="Label" parent="Panel" groups=[
-"hide_master",
-"hide_stranger",
-]]
+[node name="authoritylabel3" type="Label" parent="Panel" groups=["hide_master", "hide_stranger"]]
 visible = false
 margin_left = 14.7019
 margin_top = 54.665
 margin_right = 27.7019
 margin_bottom = 86.665
 mouse_filter = 0
-custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "S"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="loyaltylabel" type="TextureProgress" parent="Panel" groups=[
-"hide_master",
-"hide_stranger",
-]]
+[node name="loyaltylabel" type="TextureProgress" parent="Panel" groups=["hide_master", "hide_stranger"]]
 margin_left = 32.0
 margin_top = 25.752
 margin_right = 214.0
@@ -801,10 +772,7 @@ value = 100.0
 texture_over = ExtResource( 10 )
 texture_progress = ExtResource( 7 )
 
-[node name="submissionlabel" type="TextureProgress" parent="Panel" groups=[
-"hide_master",
-"hide_stranger",
-]]
+[node name="submissionlabel" type="TextureProgress" parent="Panel" groups=["hide_master", "hide_stranger"]]
 visible = false
 margin_left = 32.0
 margin_top = 58.546
@@ -842,3 +810,14 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 1.0
+margin_top = 460.0
+margin_right = 313.0
+margin_bottom = 535.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel2"]
+margin_right = 316.0
+margin_bottom = 64.0
+text = "Challenges:"
