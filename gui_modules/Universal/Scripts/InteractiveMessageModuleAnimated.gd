@@ -421,17 +421,7 @@ func select_person_for_next_event(option): #needs a rework
 			{code = 'stat', stat = 'unique', operant = 'neq', value = "cali"},
 			{code = 'is_master', check = false}
 		]
-	elif code == 'pass_lock_discount':
-		reqs = [
-			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
-			{code = 'in_combat_party', value = true},
-			]
-	elif code == 'pass_blocked_path':
-		reqs = [
-			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
-			{code = 'in_combat_party', value = true},
-			]
-	elif code == 'pass_magic_barrier':
+	elif code in ['pass_lock_discount','pass_blocked_path','pass_magic_barrier','pass_ancient_lock','pass_enemy_strength_scare','pass_enemy_dexterity_sneak','pass_enemy_charm_damage','pass_enemy_charm_avoid']:
 		reqs = [
 			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
 			{code = 'in_combat_party', value = true},
@@ -447,12 +437,6 @@ func select_person_for_next_event(option): #needs a rework
 			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
 			{code = 'in_combat_party', value = true},
 			{code = 'is_shortstack', check = true}
-			]
-	elif code == 'pass_ancient_lock':
-		reqs = [
-			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
-			{code = 'in_combat_party', value = true},
-			#{code = 'has_profession', profession = 'engineer', check = true}
 			]
 	else:
 		reqs = [
