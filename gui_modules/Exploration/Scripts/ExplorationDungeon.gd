@@ -565,7 +565,7 @@ func execute_skill(s_skill2):  #to update to exploration version
 #		enter_dungeon()
 #
 #
-func StartCombat(data): #2change it to pregen groups anf StartFixedAreaCombat
+func StartCombat(data): 
 	input_handler.play_animation("fight")
 	yield(get_tree().create_timer(1), "timeout")
 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
@@ -1010,12 +1010,18 @@ func scout_room(room_id, s_range, stay = false):
 #			move_to_room(room_id)
 		'combat':
 			selected_room = room_id
+			if data.challenge != null:
+				globals.start_fixed_event(data.challenge)
 #			input_handler.combat_advance = false
-			StartCombat(data)
+			else:
+				StartCombat(data)
 		'combat_boss':
 			selected_room = room_id
+			if data.challenge != null:
+				globals.start_fixed_event(data.challenge)
 #			input_handler.combat_advance = false
-			StartCombat(data) 
+			else:
+				StartCombat(data) 
 		'event':
 			#2add
 #			input_handler.combat_advance = true
@@ -1204,6 +1210,26 @@ func unlock_subroom():
 	active_subroom = null
 	selected_room = null
 	subroom_pressed(t1, t2)
+
+
+func unlock_combat():
+	if selected_room == null:
+		print('error combat setup')
+		return
+	var data = ResourceScripts.game_world.rooms[selected_room]
+	data.challenge = null
+	update_map()
+	var t1 = selected_room
+	selected_room = null
+	scout_room(t1, 0)
+
+
+func deny_combat():
+	if selected_room == null:
+		print('error deny combat setup')
+		return
+	update_map()
+	selected_room = null
 
 
 func reset_active_location(arg = null):
