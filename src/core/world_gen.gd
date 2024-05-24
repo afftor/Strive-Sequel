@@ -317,7 +317,7 @@ func make_settlement(code, area):
 
 func make_location(code, area):
 	var location = DungeonData.dungeons[code].duplicate(true)
-#	var location = DungeonData.dungeons['quest_final_operation_location'].duplicate(true)
+#	var location = DungeonData.dungeons['quest_fighters_lich'].duplicate(true)
 	location.stamina = 100
 	location.active = true
 	var text = tr(location.name)
@@ -1077,11 +1077,11 @@ func build_subrooms_pool(locdata):
 		pool.push_back('material')
 	
 	pool.shuffle()
-	while pool.size() > locdata.levels:
+	while pool.size() >= locdata.levels:
 		for i in range(locdata.levels):
 			res[i].push_back(pool.back())
 			pool.pop_back()
-	while pool.size() <= locdata.levels:
+	while pool.size() < locdata.levels:
 		pool.push_back("")
 	pool.shuffle()
 	for i in range(locdata.levels):
