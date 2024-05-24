@@ -142,6 +142,16 @@ func advance_day():
 					ResourceScripts.world_gen.update_area_shop(k)
 	update_locations()
 
+
+func advance_hour():
+	for i in areas.values():
+		for j in i.locations.values() + i.questlocations.values():
+			if j.type == 'dungeon':
+				j.stamina += 25
+				if j.stamina > 100:
+					j.stamina = 100
+
+
 func quest_kill_receiver(enemycode):
 	var enemydata = Enemydata.enemies[enemycode]
 	for i in areas.values():
@@ -168,8 +178,7 @@ func update_locations():
 		for j in i.locations.values() + i.questlocations.values():
 			for k in j.events:
 				j.events[k] -= 1
-			if j.type == 'dungeon':
-				j.stamina = 100
+
 
 func update_guilds_old(area):
 	#rebuild quests and slaves in guild
