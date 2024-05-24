@@ -19,7 +19,7 @@ var CombatAnimations = ResourceScripts.scriptdict.combat_animation.new()
 
 var debug = false
 
-
+var combat_data = {}
 var allowaction = false
 var highlightargets = false
 var allowedtargets = {}
@@ -169,8 +169,14 @@ func play_animation(anim):
 	anim_scene.queue_free()
 
 
+func reset_combat_data():
+	combat_data.instawin = false
+	combat_data.hpmod = 1.0
+	combat_data.xp_mod = 1.0
+	combat_data.enemy_stats_mod = 1.0
 
-func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', enemy_stats_mod = 1):
+
+func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', t_combat_data = {}):
 	#$Background.texture = images.backgrounds[background]
 	if music == "default":
 		music = 'battle1'
@@ -201,22 +207,30 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	$Rewards.visible = false
 	allowaction = false
 	$Button.disabled = true
+	reset_combat_data()
+	for arg in combat_data:
+		if t_combat_data.has(arg):
+			combat_data[arg] = t_combat_data[arg]
 	enemygroup = newenemygroup
 	playergroup = newplayergroup
 	for i in range(1,13):
 		battlefield[i] = null
-	buildenemygroup(enemygroup, enemy_stats_mod)
+	buildenemygroup(enemygroup)
 	buildplayergroup(playergroup)
 	autoskill_dummy.is_active = true
 	#victory()
 	#start combat triggers
 	CombatAnimations.force_end()
-	for i in playergroup.values() + enemygroup.values():
-		var tchar = characters_pool.get_char_by_id(i)
-		tchar.process_event(variables.TR_COMBAT_S)
-		tchar.displaynode.rebuildbuffs()
-	set_process_input(true)
-	select_actor()
+	if combat_data.instawin:
+		victory()
+	else:
+		for i in playergroup.values() + enemygroup.values():
+			var tchar = characters_pool.get_char_by_id(i)
+			tchar.process_event(variables.TR_COMBAT_S)
+			tchar.displaynode.rebuildbuffs()
+		set_process_input(true)
+		select_actor()
+
 
 func FinishCombat(victory = true):
 	victory_seq_run = false
@@ -418,6 +432,7 @@ func victory():
 		if i == null: #not sure why was this check added
 			continue
 		var tchar = characters_pool.get_char_by_id(i)
+		tchar.is_active = false
 		var count = 1
 		if tchar.tags.has('rare'):
 			count = 2
@@ -484,6 +499,7 @@ func victory():
 
 	input_handler.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
 	input_handler.ClearContainer($Rewards/ScrollContainer2/HBoxContainer)
+	rewardsdict.xp *= combat_data.xp_mod
 	var exp_per_character = rewardsdict.xp/playergroup.size()
 	for i in playergroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
@@ -1052,7 +1068,7 @@ func FighterPress(pos):
 	endturn = true
 	use_skill(activeaction, activecharacter, characters_pool.get_char_by_id(battlefield[pos]))
 
-func buildenemygroup(enemygroup, enemy_stats_mod):
+func buildenemygroup(enemygroup):
 	for i in range(1,7):
 		if enemygroup[i] != null:
 			enemygroup[i+6] = enemygroup[i]
@@ -1084,8 +1100,8 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 			tchar.add_trait('miniboss')
 		
 		for stat in ['hpmax', 'atk', 'matk', 'hitrate', 'armor', 'xpreward']:
-			tchar.mul_stat(stat, enemy_stats_mod)
-		tchar.hp = tchar.get_stat("hpmax")
+			tchar.mul_stat(stat, combat_data.enemy_stats_mod)
+		tchar.hp = tchar.get_stat("hpmax") * combat_data.hpmod
 		tchar.mp = tchar.get_stat("mpmax")
 		tchar.add_trait('core_trait')
 		battlefield[int(i)] = enemygroup[i]

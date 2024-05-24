@@ -895,6 +895,7 @@ var room_template = {
 	stamina_cost = 0,
 	mainline = true,
 	first_time = true,
+	challenge = null,
 	neighbours = {up = null, down = null, left = null, right = null},
 	subrooms = [null, null, null, null]
 }
@@ -912,7 +913,7 @@ func build_room(packed_vertex, locdata = dungeon_template):
 	var vertex = DungeonGen.unpack_vertex(packed_vertex)
 	res.col = vertex[1]
 	res.row = vertex[0]
-	res.type = 'combat' #2add roll for enemy after making fixed enemy combats call 
+	res.type = 'combat' 
 	res.stamina_cost = locdata.base_room_stamina_cost
 	if res.stamina_cost is Array:
 		res.stamina_cost = globals.rng.randi_range(res.stamina_cost[0], res.stamina_cost[1])
@@ -929,7 +930,15 @@ func build_room(packed_vertex, locdata = dungeon_template):
 		globals.reset_roll_data()
 		var enemygroup = input_handler.weightedrandom(locdata.enemies)
 		res.enemy_code = enemygroup
-		res.enemies = globals.makerandomgroup(Enemydata.enemygroups[enemygroup])
+		var edata = Enemydata.enemygroups[enemygroup]
+		res.enemies = globals.makerandomgroup(edata)
+		if edata.has('challenges'):
+			var ch_roll = input_handler.weightedrandom(edata.challenges)
+			if edata.has('challenge_chance'):
+				if globals.rng.randf() < edata.challenge_chance:
+					res.challenge = ch_roll
+			else:
+				res.challenge = ch_roll
 		res.rare = globals.char_roll_data.rare
 #	#subrooms:
 #		if globals.rng.randf() < variables.subroom_chance:
@@ -996,14 +1005,30 @@ func build_floor_first_pass(locdata, level):
 						tmp.type = 'combat_boss'
 						globals.reset_roll_data()
 						tmp.enemy_code = bossenemy
-						tmp.enemies = globals.makerandomgroup(Enemydata.enemygroups[bossenemy])
+						var edata = Enemydata.enemygroups[bossenemy]
+						tmp.enemies = globals.makerandomgroup(edata)
+						if edata.has('challenges'):
+							var ch_roll = input_handler.weightedrandom(edata.challenges)
+							if edata.has('challenge_chance'):
+								if globals.rng.randf() < edata.challenge_chance:
+									tmp.challenge = ch_roll
+							else:
+								tmp.challenge = ch_roll
 						tmp.rare = globals.char_roll_data.rare
 				else:
 					tmp.type = 'combat'
 					globals.reset_roll_data()
 					var enemygroup = input_handler.weightedrandom(locdata.enemies)
 					tmp.enemy_code = enemygroup
-					tmp.enemies = globals.makerandomgroup(Enemydata.enemygroups[enemygroup])
+					var edata = Enemydata.enemygroups[enemygroup]
+					tmp.enemies = globals.makerandomgroup(edata)
+					if edata.has('challenges'):
+						var ch_roll = input_handler.weightedrandom(edata.challenges)
+						if edata.has('challenge_chance'):
+							if globals.rng.randf() < edata.challenge_chance:
+								tmp.challenge = ch_roll
+						else:
+							tmp.typchallengee = ch_roll
 					tmp.rare = globals.char_roll_data.rare
 				
 		if room == DungeonGen.pack_vertex(DungeonGen.diameter[-2]):

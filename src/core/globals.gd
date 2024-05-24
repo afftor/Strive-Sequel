@@ -1280,7 +1280,6 @@ func StartCombat(encounter = null):
 		return
 	
 	var enemies
-	var enemy_stats_mod = 1
 	match data.unittype:
 		'randomgroup':
 			enemies = make_enemies(data.unitcode, true)
@@ -1289,7 +1288,7 @@ func StartCombat(encounter = null):
 	
 	input_handler.combat_node.encountercode = data.unitcode
 	input_handler.combat_node.set_norun_mode(true)
-	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, data.bg, data.bgm, enemy_stats_mod)
+	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, data.bg, data.bgm)
 
 func StartQuestCombat(encounter):
 	pass
@@ -1308,12 +1307,12 @@ func StartAreaCombat(): #rnd all and always
 	enemies = make_enemies(enemydata)
 
 	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * gui_controller.exploration_dungeon.active_location.current_level
-	
+	var data = {enemy_stats_mod = enemy_stats_mod}
 	if input_handler.combat_node == null:
 		input_handler.combat_node = input_handler.get_combat_node()
 	input_handler.combat_node.encountercode = enemydata
 	input_handler.combat_node.set_norun_mode(false)
-	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, 'background', music, enemy_stats_mod)
+	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, 'background', music, data)
 
 
 func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
@@ -1340,12 +1339,15 @@ func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
 			enemies[pos] += "_miniboss"
 
 	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * gui_controller.exploration_dungeon.active_location.current_level
-	
+	var combat_data = {enemy_stats_mod = enemy_stats_mod}
+	for arg in ['instawin', 'hpmod', 'xp_mod']:
+		if data.has(arg):
+			combat_data[arg] = data[arg]
 	if input_handler.combat_node == null:
 		input_handler.combat_node = input_handler.get_combat_node()
 	input_handler.combat_node.encountercode = enemydata
 	input_handler.combat_node.set_norun_mode(false)
-	input_handler.combat_node.start_combat(gui_controller.exploration_dungeon.active_location.group, enemies, 'background', music, enemy_stats_mod)
+	input_handler.combat_node.start_combat(gui_controller.exploration_dungeon.active_location.group, enemies, 'background', music, combat_data)
 
 
 func make_enemies(enemydata, quest = false):
@@ -2187,13 +2189,17 @@ func common_effects(effects):
 				if gui_controller.exploration_dungeon != null:
 					gui_controller.exploration_dungeon.add_stamina(i.value)
 			'clear_subroom':
-				if gui_controller.exploration_dungeon == null:
-					return
-				gui_controller.exploration_dungeon.clear_subroom()
+				if gui_controller.exploration_dungeon != null:
+					gui_controller.exploration_dungeon.clear_subroom()
 			'unlock_subroom':
-				if gui_controller.exploration_dungeon == null:
-					return
-				gui_controller.exploration_dungeon.unlock_subroom()
+				if gui_controller.exploration_dungeon != null:
+					gui_controller.exploration_dungeon.unlock_subroom()
+			'unlock_combat':
+				if gui_controller.exploration_dungeon != null:
+					gui_controller.exploration_dungeon.unlock_combat()
+			'deny_combat':
+				if gui_controller.exploration_dungeon != null:
+					gui_controller.exploration_dungeon.deny_combat()
 			'add_subroom_res':
 				if gui_controller.exploration_dungeon != null:
 					gui_controller.exploration_dungeon.add_subroom_res()
@@ -2208,12 +2214,15 @@ func common_effects(effects):
 								rdata.status = 'scouted'
 					gui_controller.exploration_dungeon.update_map()
 			'alter_combat':
-				if i.victory == true:
-					pass#add instant win for next combat
-				if i.has("reduce_hp"):
-					pass#add reduce hp by i.value percent
-				if i.has('xp_mod'):
-					pass#alter xp reward for combat by this value
+				if gui_controller.exploration_dungeon != null:
+					var room = gui_controller.exploration_dungeon.selected_room
+					var rdata = ResourceScripts.game_world.rooms[room]
+					if i.victory == true:
+						rdata.instawin = true
+					if i.has("reduce_hp"):
+						rdata.hpmod = 1.0 - i.reduce_hp
+					if i.has('xp_mod'):
+						rdata.xp_mod = i.xp_mod
 			'captured_number':
 				return input_handler.operate(i.operant,input_handler.active_location.captured_characters.size(), i.value)  
 
