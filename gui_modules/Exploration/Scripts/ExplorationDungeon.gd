@@ -54,7 +54,11 @@ func animate_map_moves(zoom, pos, time = 0.5):
 
 
 func get_stamina_mod(): #temporal, 2add later
-	return 1.0
+	if selected_room == null or active_subroom != null:
+		return 1.0
+	else:
+		var data = ResourceScripts.game_world.rooms[selected_room]
+		return data.stamina_cost
 
 
 func get_current_stamina(modified = true):
@@ -67,6 +71,7 @@ func get_current_stamina(modified = true):
 func pay_stamina(value, modified = true):
 	if modified:
 		value *= get_stamina_mod()
+	value = int(value)
 	active_location.stamina -= value
 	update_stamina()
 
@@ -976,8 +981,9 @@ func room_pressed(room_id):
 		if get_current_stamina() < data.stamina_cost:
 			input_handler.SystemMessage("No stamina")
 			return
-		pay_stamina(data.stamina_cost)
-		update_stamina()
+		if !data.has('challenge') or data.challenge == null:
+			pay_stamina(data.stamina_cost)
+			update_stamina()
 	scout_room(room_id, get_scouting_range())
 
 
@@ -1220,6 +1226,7 @@ func unlock_combat():
 		return
 	var data = ResourceScripts.game_world.rooms[selected_room]
 	data.challenge = null
+	data.stamina_cost = 0
 	update_map()
 	var t1 = selected_room
 	selected_room = null

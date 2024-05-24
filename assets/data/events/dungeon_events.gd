@@ -171,8 +171,8 @@ var data = {
 		default_event_type = "trap",
 		image = 'trap',
 		options = [
-			{code = 'pass_enemy_charm_avoid', select_person = true, challenge = 'persuation', not_hide = true, reqs = [{type = 'has_stamina', value = 3}], text = tr("DIALOGUEENMEMYCHARMAVOIDSELECT")},
-			{code = 'close', reqs = [{type = 'has_stamina', value = 10}], not_hide = true, bonus_effects = [{code = 'pay_stamina', value = 10}, {code = 'unlock_combat'}], text = tr("DIALOGUEATTACK")},
+			{code = 'pass_enemy_charm_avoid', select_person = true, challenge = 'persuation', not_hide = true, reqs = [{type = 'has_stamina', value = 0.3}], text = tr("DIALOGUEENMEMYCHARMAVOIDSELECT")},
+			{code = 'close', reqs = [{type = 'has_stamina', value = 1.0}], not_hide = true, bonus_effects = [{code = 'pay_stamina', value = 1.0}, {code = 'unlock_combat'}], text = tr("DIALOGUEATTACK")},
 			{code = 'close', reqs = [], text = tr("DIALOGUECANCEL"), bonus_effects = [{code = 'deny_combat'}]},
 		]
 	},
@@ -182,7 +182,7 @@ var data = {
 	default_event_type = "trap",
 	image = 'trap',
 	options = [
-	{code = 'close', reqs = [], bonus_effects = [{code = 'pay_stamina', value = 3},{code = 'alter_combat', victory = true, xp_mod = 0.5}, {code = 'unlock_combat'}], text = tr("DIALOGUECLOSE")},
+	{code = 'close', reqs = [], bonus_effects = [{code = 'pay_stamina', value = 0.3},{code = 'alter_combat', victory = true, xp_mod = 0.5}, {code = 'unlock_combat'}], text = tr("DIALOGUECLOSE")},
 	]
 	},
 	
@@ -193,8 +193,8 @@ var data = {
 		default_event_type = "trap",
 		image = 'trap',
 		options = [
-			{code = 'pass_enemy_charm_damage', select_person = true, challenge = 'persuation', not_hide = true, reqs = [{type = 'has_stamina', value = 3}], text = tr("DIALOGUEENMEMYCHARMDAMAGESELECT")},
-			{code = 'close', reqs = [{type = 'has_stamina', value = 10}], not_hide = true, bonus_effects = [{code = 'pay_stamina', value = 10}, {code = 'unlock_combat'}], text = tr("DIALOGUEATTACK")},
+			{code = 'pass_enemy_charm_damage', select_person = true, challenge = 'persuation', not_hide = true, reqs = [{type = 'has_stamina', value = 0.3}], text = tr("DIALOGUEENMEMYCHARMDAMAGESELECT")},
+			{code = 'close', reqs = [{type = 'has_stamina', value = 1.0}], not_hide = true, bonus_effects = [{code = 'pay_stamina', value = 1.0}, {code = 'unlock_combat'}], text = tr("DIALOGUEATTACK")},
 			{code = 'close', reqs = [], text = tr("DIALOGUECANCEL"), bonus_effects = [{code = 'deny_combat'}]},
 		]
 	},
@@ -204,7 +204,7 @@ var data = {
 	default_event_type = "trap",
 	image = 'trap',
 	options = [
-	{code = 'close', reqs = [], bonus_effects = [{code = 'pay_stamina', value = 3},{code = 'alter_combat', victory = false, reduce_hp = 0.33}, {code = 'unlock_combat'}], text = tr("DIALOGUECLOSE")},
+	{code = 'close', reqs = [], bonus_effects = [{code = 'pay_stamina', value = 0.3},{code = 'alter_combat', victory = false, reduce_hp = 0.33}, {code = 'unlock_combat'}], text = tr("DIALOGUECLOSE")},
 	]
 	},
 	
@@ -214,8 +214,8 @@ var data = {
 		default_event_type = "trap",
 		image = 'trap',
 		options = [
-			{code = 'pass_enemy_dexterity_sneak', select_person = true, challenge = 'dexterity', not_hide = true, reqs = [{type = 'has_stamina', value = 3}], text = tr("DIALOGUEENMEMYDEXSNEAKSELECT")},
-			{code = 'close', reqs = [{type = 'has_stamina', value = 10}], not_hide = true, bonus_effects = [{code = 'pay_stamina', value = 10}, {code = 'unlock_combat'}], text = tr("DIALOGUEATTACK")},
+			{code = 'pass_enemy_dexterity_sneak', select_person = true, challenge = 'dexterity', not_hide = true, reqs = [{type = 'has_stamina', value = 0.3}], text = tr("DIALOGUEENMEMYDEXSNEAKSELECT")},
+			{code = 'close', reqs = [{type = 'has_stamina', value = 1.0}], not_hide = true, bonus_effects = [{code = 'pay_stamina', value = 1.0}, {code = 'unlock_combat'}], text = tr("DIALOGUEATTACK")},
 			{code = 'close', reqs = [], text = tr("DIALOGUECANCEL"), bonus_effects = [{code = 'deny_combat'}]},
 		]
 	},
@@ -226,7 +226,7 @@ var data = {
 	default_event_type = "trap",
 	image = 'trap',
 	options = [
-	{code = 'close', reqs = [], bonus_effects = [{code = 'pay_stamina', value = 3},{code = 'alter_combat', victory = true, xp_mod = 0.5}, {code = 'unlock_combat'}], text = tr("DIALOGUECLOSE")},
+	{code = 'close', reqs = [], bonus_effects = [{code = 'pay_stamina', value = 0.3},{code = 'alter_combat', victory = true, xp_mod = 0.5}, {code = 'unlock_combat'}], text = tr("DIALOGUECLOSE")},
 	]
 	},
 	
@@ -236,8 +236,8 @@ var data = {
 		default_event_type = "trap",
 		image = 'trap',
 		options = [
-			{code = 'pass_enemy_strength_scare', select_person = true, challenge = 'strength', not_hide = true, reqs = [{type = 'has_stamina', value = 3}], text = tr("DIALOGUEENMEMYSTRSCARESELECT")},
-			{code = 'close', reqs = [{type = 'has_stamina', value = 10}], not_hide = true, bonus_effects = [{code = 'pay_stamina', value = 10}, {code = 'unlock_combat'}], text = tr("DIALOGUEATTACK")},
+			{code = 'pass_enemy_strength_scare', select_person = true, challenge = 'strength', not_hide = true, reqs = [{type = 'has_stamina', value = 0.3}], text = tr("DIALOGUEENMEMYSTRSCARESELECT")},
+			{code = 'close', reqs = [{type = 'has_stamina', value = 1.0}], not_hide = true, bonus_effects = [{code = 'pay_stamina', value = 1.0}, {code = 'unlock_combat'}], text = tr("DIALOGUEATTACK")},
 			{code = 'close', reqs = [], text = tr("DIALOGUECANCEL"), bonus_effects = [{code = 'deny_combat'}]},
 		]
 	},
@@ -247,7 +247,7 @@ var data = {
 	default_event_type = "trap",
 	image = 'trap',
 	options = [
-	{code = 'close', reqs = [], bonus_effects = [{code = 'pay_stamina', value = 3},{code = 'alter_combat', victory = true, xp_mod = 0.5}, {code = 'unlock_combat'}], text = tr("DIALOGUECLOSE")},
+	{code = 'close', reqs = [], bonus_effects = [{code = 'pay_stamina', value = 0.3},{code = 'alter_combat', victory = true, xp_mod = 0.5}, {code = 'unlock_combat'}], text = tr("DIALOGUECLOSE")},
 	]
 	},
 	
@@ -257,8 +257,8 @@ var data = {
 		default_event_type = "trap",
 		image = 'trap',
 		options = [
-			{code = 'pass_enemy_distract', select_person = true, challenge = 'captured', not_hide = true, reqs = [{type = 'captured_number', operant = 'gte', value = 1}], text = tr("DIALOGUEEVENTENEMYDISTRACTSELECT")},
-			{code = 'close', reqs = [{type = 'has_stamina', value = 10}], not_hide = true, bonus_effects = [{code = 'pay_stamina', value = 10}, {code = 'unlock_combat'}], text = tr("DIALOGUEATTACK")},
+			{code = 'pass_enemy_distract', select_person = true, challenge = 'captured', not_hide = true, reqs = [{type = 'has_stamina', value = 0.3},{type = 'captured_number', operant = 'gte', value = 1}], text = tr("DIALOGUEEVENTENEMYDISTRACTSELECT")},
+			{code = 'close', reqs = [{type = 'has_stamina', value = 1.0}], not_hide = true, bonus_effects = [{code = 'pay_stamina', value = 1.0}, {code = 'unlock_combat'}], text = tr("DIALOGUEATTACK")},
 			{code = 'close', reqs = [], text = tr("DIALOGUECANCEL"), bonus_effects = [{code = 'deny_combat'}]},
 		]
 	},
