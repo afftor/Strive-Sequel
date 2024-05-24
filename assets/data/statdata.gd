@@ -810,6 +810,7 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		direct = true,
 	},
 	chg_strength_max = {
 		code = 'chg_strength_max',
@@ -822,6 +823,7 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		direct = true,
 	},
 	chg_dexterity_max = {
 		code = 'chg_dexterity_max',
@@ -834,6 +836,7 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		direct = true,
 	},
 	chg_wisdom_max = {
 		code = 'chg_wisdom_max',
@@ -846,6 +849,7 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		direct = true,
 	},
 	chg_persuasion_max = {
 		code = 'chg_persuasion_max',
