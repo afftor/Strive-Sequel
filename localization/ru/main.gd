@@ -3089,6 +3089,7 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 
 	DIALOGUELOCATIONEVENTGOOD = "Законно",
 	DIALOGUELOCATIONEVENTEVIL = "Злонамеренно",
+	DIALOGUEATTACK = """Attack""", # MISSING TRANSLATION
 
 	DIALOGUEATTACKMIMIC = "*Атака мимика*",
 	DIALOGUEMIMICOPENANYWAY = "*Открыть в любом случае*",

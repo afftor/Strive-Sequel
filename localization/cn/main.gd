@@ -3084,6 +3084,7 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 
 	DIALOGUELOCATIONEVENTGOOD = "合法",
 	DIALOGUELOCATIONEVENTEVIL = "行为不端",
+	DIALOGUEATTACK = """Attack""", # MISSING TRANSLATION
 
 	DIALOGUEATTACKMIMIC = "模拟攻击",
 	DIALOGUEMIMICOPENANYWAY = "想方设法打开",

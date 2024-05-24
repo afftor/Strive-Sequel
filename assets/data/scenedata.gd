@@ -424,8 +424,8 @@ var scenedict = {
 	}
 	],
 	options = [
-	{code = 'event_goblin_recruit', reqs = [], challenge = 'charm', select_person = true, text = ("DIALOGUEEVENTGOBLINRECRUIT")},
-	{code = 'event_goblin_skip_dungeon', reqs = [], challenge = 'charm', select_person = true, text = tr("DIALOGUEEVENTGOBLINBRINGTOLEADER")},
+	{code = 'event_goblin_recruit', reqs = [], challenge = 'persuasion', select_person = true, text = ("DIALOGUEEVENTGOBLINRECRUIT")},
+	{code = 'event_goblin_skip_dungeon', reqs = [], challenge = 'persuasion', select_person = true, text = tr("DIALOGUEEVENTGOBLINBRINGTOLEADER")},
 	{code = 'event_goblin_capture', reqs = [], challenge = 'strength', select_person = true, text = tr("DIALOGUEEVENTGOBLINCAPTURE")},
 	#{code = 'event_goblin_kill', reqs = [], text = tr("DIALOGUEEVENTGOBLINKILL")},
 	{code = 'event_goblin_leave', reqs = [], text = tr("DIALOGUEEVENTGOBLINLEAVE")}
@@ -529,7 +529,7 @@ var scenedict = {
 	}
 	],
 	options = [
-	{code = 'event_fairy_recruit', reqs = [], challenge = 'charm', select_person = true, text = ("DIALOGUEEVENTFAIRYRECRUIT")},
+	{code = 'event_fairy_recruit', reqs = [], challenge = 'persuasion', select_person = true, text = ("DIALOGUEEVENTFAIRYRECRUIT")},
 	{code = 'event_fairy_heal', reqs = [], text = tr("DIALOGUEEVENTFAIRYASKHEAL")},
 	{code = 'event_fairy_capture', reqs = [], challenge = 'dexterity', select_person = true, text = tr("DIALOGUEEVENTFAIRYCAPTURE")},
 	{code = 'event_fairy_leave', reqs = [], text = tr("DIALOGUEEVENTFAIRYLEAVE")}
@@ -685,7 +685,7 @@ var scenedict = {
 			{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_combatant'},
 			],
 		options = [
-		{code = 'event_person_recruit_attempt', challenge = 'charm', select_person = true, reqs = [], text = tr("DIALOGUEPERSONASKTOJOIN")},
+		{code = 'event_person_recruit_attempt', challenge = 'persuasion', select_person = true, reqs = [], text = tr("DIALOGUEPERSONASKTOJOIN")},
 		{code = 'close', reqs = [], text = tr("DIALOGUELEAVE")}
 		],
 	},
