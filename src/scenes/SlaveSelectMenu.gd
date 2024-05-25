@@ -30,10 +30,10 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 			charlist.append(i)
 	
 	for i in charlist:
-		if i.checkreqs(reqs) == false:
-			continue
-		if i.is_on_quest():
-			continue
+#		if i.checkreqs(reqs) == false:
+#			continue
+#		if i.is_on_quest():
+#			continue
 		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		var text = i.get_short_name()
 		if challenge != null && challenge != 'captured':
