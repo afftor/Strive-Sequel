@@ -2223,8 +2223,7 @@ func common_effects(effects):
 						rdata.hpmod = 1.0 - i.reduce_hp
 					if i.has('xp_mod'):
 						rdata.xp_mod = i.xp_mod
-			'captured_number':
-				return input_handler.operate(i.operant,input_handler.active_location.captured_characters.size(), i.value)  
+			
 
 func after_wedding_event(character):
 	if character == null:
@@ -2454,6 +2453,8 @@ func valuecheck(dict):
 			if gui_controller.exploration_dungeon == null:
 				return false
 			return gui_controller.exploration_dungeon.location_chars_check(dict.value)
+		'captured_number':
+				return input_handler.operate(dict.operant,input_handler.active_location.captured_characters.size(), dict.value)  
 
 
 func apply_starting_preset():

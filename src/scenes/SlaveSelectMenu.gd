@@ -75,5 +75,5 @@ func add_challenge_point(character, challenge):
 		character.affect_char({type = 'stat', stat = challenge_stat_dict[challenge], value = 4})
 
 func remove_captured_character(i):
-	i.active = false
+	i.is_active = false
 	input_handler.active_location.captured_characters.erase(i.id)

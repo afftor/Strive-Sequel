@@ -54,7 +54,11 @@ func animate_map_moves(zoom, pos, time = 0.5):
 
 
 func get_stamina_mod(): #temporal, 2add later
-	return 1.0
+	if selected_room == null or active_subroom != null:
+		return 1.0
+	else:
+		var data = ResourceScripts.game_world.rooms[selected_room]
+		return data.stamina_cost
 
 
 func get_current_stamina(modified = true):
@@ -67,6 +71,7 @@ func get_current_stamina(modified = true):
 func pay_stamina(value, modified = true):
 	if modified:
 		value *= get_stamina_mod()
+	value = int(value)
 	active_location.stamina -= value
 	update_stamina()
 
@@ -976,8 +981,9 @@ func room_pressed(room_id):
 		if get_current_stamina() < data.stamina_cost:
 			input_handler.SystemMessage("No stamina")
 			return
-		pay_stamina(data.stamina_cost)
-		update_stamina()
+		if !data.has('challenge') or data.challenge == null:
+			pay_stamina(data.stamina_cost)
+			update_stamina()
 	scout_room(room_id, get_scouting_range())
 
 
@@ -1080,9 +1086,6 @@ func move_to_room(room_id = null):
 	#add path counting and events
 	if data.first_time:
 		data.first_time = false
-		active_location.progress.full += 1
-		if data.mainline:
-			active_location.progress.main += 1
 		var ev_run = false
 		if active_location.has('stagedevents'):
 			if active_location.stagedevents.room.has(room_id):
@@ -1090,11 +1093,16 @@ func move_to_room(room_id = null):
 				if !ev_data.has('reqs') or globals.checkreqs(ev_data.reqs):
 					globals.start_fixed_event(ev_data.event)
 					ev_run = true
-			if active_location.stagedevents.main.has(active_location.progress.main):
-				var ev_data = active_location.stagedevents.main[active_location.progress.main]
-				if !ev_data.has('reqs') or globals.checkreqs(ev_data.reqs):
-					globals.start_fixed_event(active_location.stagedevents.main[active_location.progress.main].event)
-					ev_run = true
+		if data.mainline:
+			active_location.progress.main += 1
+			if active_location.has('stagedevents'):
+				if active_location.stagedevents.main.has(active_location.progress.main):
+					var ev_data = active_location.stagedevents.main[active_location.progress.main]
+					if !ev_data.has('reqs') or globals.checkreqs(ev_data.reqs):
+						globals.start_fixed_event(active_location.stagedevents.main[active_location.progress.main].event)
+						ev_run = true
+		active_location.progress.full += 1
+		if active_location.has('stagedevents'):
 			if active_location.stagedevents.full.has(active_location.progress.full):
 				var ev_data = active_location.stagedevents.full[active_location.progress.full]
 				if !ev_data.has('reqs') or globals.checkreqs(ev_data.reqs):
@@ -1218,6 +1226,7 @@ func unlock_combat():
 		return
 	var data = ResourceScripts.game_world.rooms[selected_room]
 	data.challenge = null
+	data.stamina_cost = 0
 	update_map()
 	var t1 = selected_room
 	selected_room = null
