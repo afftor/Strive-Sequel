@@ -1444,15 +1444,27 @@ var scenedict = {
 		{code = 'freya_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},
-	spring = {
+	spring = {variations = [{
+		reqs = [{type = 'random', value = 5}],
+		text = tr("SPRINGTEXT"),
+		tags = ['dialogue_scene'],
+		image = 'spring',
+		options = [
+			{code = 'spring_stamina', reqs = [], text = tr("SPRING_STAMINA_OPTION"), dialogue_argument = 1},
+			{code = 'spring_loot', reqs = [], text = tr("SPRING_LOOT_OPTION"), dialogue_argument = 2},
+			{code = 'close', reqs = [], text = "DIALOGUECANCEL"}
+		]
+		},{
+		reqs = [],
 		text = tr("SPRINGTEXT"),
 		tags = ['dialogue_scene'],
 		image = 'spring',
 		options = [
 			{code = 'spring_heal', reqs = [], text = tr("SPRING_HEAL_OPTION"), dialogue_argument = 1},
-			{code = 'spring_loot', reqs = [], text = tr("SPRING_LOOT_OPTION"), dialogue_argument = 2},
+			{code = 'spring_stamina', reqs = [], text = tr("SPRING_STAMINA_OPTION"), dialogue_argument = 1},
+			{code = 'close', reqs = [], text = "DIALOGUECANCEL"}
 		]
-		},
+		}]},
 	spring_heal = {
 		text = tr("SPRING_HEAL"),
 		tags = [],
@@ -1462,9 +1474,18 @@ var scenedict = {
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
 		],
 	},
+	spring_stamina = {
+		text = tr("SPRING_STAMINA"),
+		tags = [],
+		image = 'spring',
+		bonus_effects = [{code = 'add_stamina', value = 50}],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		],
+	},
 	spring_loot = {
 		variations = [
-			{reqs = [{type = 'random', value = 66}],
+			{reqs = [{type = 'random', value = 100}],
 			text = tr("DIALOGUE_SPRING_LOOT"),
 			image = 'spring',
 			default_event_type = "custom_event",
@@ -1517,7 +1538,36 @@ var scenedict = {
 	]
 	},
 	
+	fountain = {
+		text = tr("FOUNTAINTEXT"),
+		tags = ['dialogue_scene'],
+		image = 'spring',
+		options = [
+			{code = 'fountain_stamina', reqs = [], text = tr("FOUNTAIN_STAMINA_OPTION"), dialogue_argument = 1},
+			{code = 'fountain_mana', reqs = [], text = tr("FOUNTAIN_MANA_OPTION"), dialogue_argument = 2},
+			{code = 'close', reqs = [], text = "DIALOGUECANCEL"}
+		]
+	},
 	
+	
+	fountain_stamina = {
+		text = tr("FOUNTAIN_STAMINA"),
+		tags = [],
+		image = 'spring',
+		bonus_effects = [{code = 'add_stamina', value = 50}],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		],
+	},
+	fountain_mana = {
+		text = tr("FOUNTAIN_MANA"),
+		tags = [],
+		image = 'spring',
+		bonus_effects = [{code = 'affect_active_party', type = 'damage_mana_percent', value = -40}],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		],
+	},
 	
 	event_trap_easy = {text = tr("DIALOGUEEVENTTRAP"),
 	tags = ['linked_event'],

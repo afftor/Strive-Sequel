@@ -75,7 +75,7 @@ var dungeons = {
 		event_room_number = [3,4],
 		material_room_number = [5,6],
 		
-		main_route_length = [6,7], #remember that first and last rooms in route are effectively empty 
+		main_route_length = [5,6], #remember that first and last rooms in route are effectively empty 
 		bonus_rooms = [2,3],
 		levels = [2,2], 
 		base_room_stamina_cost = [7,10], #random roll for every main/bonus rooms rounded
@@ -176,7 +176,19 @@ var dungeons = {
 					['event_blocked_path',1],
 					['event_small_crack',1]
 				],
-			}
+			},
+			fountain = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['fountain'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.8]
+				],
+			},
 		},
 		
 		event_room_number = [3,4],
@@ -184,7 +196,7 @@ var dungeons = {
 		
 		main_route_length = [6,7],
 		bonus_rooms = [2,3],
-		levels = [3,3], 
+		levels = [2,3], 
 		base_room_stamina_cost = [7,10], 
 		
 		
@@ -280,7 +292,19 @@ var dungeons = {
 					['event_fallen_bridge',1],
 					['event_small_crack',1]
 				],
-			}
+			},
+			fountain = {
+				limit = 1,
+				weight = 2,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['fountain'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.8]
+				],
+			},
 		},
 		
 		event_room_number = [3,4],
@@ -378,9 +402,9 @@ var dungeons = {
 		event_room_number = [3,4],
 		material_room_number = [4,5],
 		
-		main_route_length = [6,7],
+		main_route_length = [5,6],
 		bonus_rooms = [2,3],
-		levels = [2,3], 
+		levels = [2,2], 
 		base_room_stamina_cost = [6,9], 
 		
 		resources = ['bone','leather','stone','wood'],
@@ -479,9 +503,9 @@ var dungeons = {
 		event_room_number = [3,4],
 		material_room_number = [4,5],
 		
-		main_route_length = [6,7],
+		main_route_length = [5,6],
 		bonus_rooms = [2,3],
-		levels = [2,3], 
+		levels = [2,2], 
 		base_room_stamina_cost = [5,11], 
 		
 		resources = ['cloth','leather','woodmagic','wood','woodiron'],
@@ -598,7 +622,7 @@ var dungeons = {
 		event_room_number = [3,4],
 		material_room_number = [4,5],
 		
-		main_route_length = [7,8],
+		main_route_length = [6,7],
 		bonus_rooms = [2,4],
 		levels = [3,4], 
 		base_room_stamina_cost = [7,11], 
@@ -687,6 +711,18 @@ var dungeons = {
 					['event_fallen_bridge',1],
 					['event_small_crack',1],
 					['event_ancient_lock',1]
+				],
+			},
+			fountain = { #probably replace later
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['fountain'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.8]
 				],
 			}
 		},

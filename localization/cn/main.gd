@@ -3230,8 +3230,15 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	
 	SPRINGTEXT = "你发现一个干净的小空地。这可能是休息的好时机.",
 	SPRING_HEAL = "您的团队休息并恢复一些健康.",
+	SPRING_STAMINA = """Your group rests and recover their energy.""", # MISSING TRANSLATION
 	SPRING_HEAL_OPTION = "休息",
+	SPRING_STAMINA_OPTION = """Take a rest""", # MISSING TRANSLATION
 	SPRING_LOOT_OPTION = "搜索",
+	FOUNTAINTEXT = """You find a small fountain still brimming with clear water. You could use it to ease group's exhaustion, but it seems there's also some raw mana available for extraction...""", # MISSING TRANSLATION
+	FOUNTAINSTAMINAOPTION = """Take a rest""", # MISSING TRANSLATION
+	FOUNTAINMANAOPTION = """Harness magic""", # MISSING TRANSLATION
+	FOUNTAIN_MANA = """The group manages to extract mana from the fountain and restore their powers.""", # MISSING TRANSLATION
+	FOUNTAIN_STAMINA = """The group takes a rest in the room and recover their energy.""", # MISSING TRANSLATION
 	DIALOGUE_SPRING_LOOT = "在四处搜寻后，你发现了一个小藏匿处。你决定自己拿走里面的东西.",
 	DIALOGUE_SPRING_NO_LOOT = "您四处搜索，但找不到任何有用的东西.",
 	TRIBALELVES = "你发现自己被一群当地部落精灵包围。他们似乎认为你是他们领土上的入侵者，正在准备攻击...",

@@ -2146,10 +2146,10 @@ var loot_variants_data = {
 
 
 var locks_data = { #makes locks to lockpick for related chests
-	easy_chest_usable = {locks = [['normal', 1],['none', 3],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
-	easy_chest_gear = {locks = [['normal', 1], ['none', 2],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [10,25]},
-	easy_chest_cosmetics = {locks = [['normal', 1],['none', 2.5],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
-	easy_boss_chest = {locks = [['normal', 1],['none',3]], difficulty = [10,25]},
+	easy_chest_usable = {locks = [['normal', 1],['none', 5],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
+	easy_chest_gear = {locks = [['normal', 1], ['none', 4],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [10,25]},
+	easy_chest_cosmetics = {locks = [['normal', 1],['none', 4],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
+	easy_boss_chest = {locks = [['normal', 1],['none',4]], difficulty = [10,25]},
 
 	easy_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [15,25]},
 	easy_armory_armor = {locks = [['normal', 1], ['alarm', 1]], difficulty = [15,25]},
@@ -2157,12 +2157,12 @@ var locks_data = { #makes locks to lockpick for related chests
 	medium_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
 	medium_armory_armor = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
 
-	medium_chest_usable = {locks = [['normal', 1],['none', 1],['bomb',1],['gas',1],['mimic',0.3],['mimic_erotic',0.3]], difficulty = [15,40]},
+	medium_chest_usable = {locks = [['normal', 1],['none', 3],['bomb',1],['gas',1],['mimic',0.3],['mimic_erotic',0.3]], difficulty = [15,40]},
 	medium_chest_gear = {locks = [['normal', 1],['mimic',1],['mimic_erotic',0.2]], difficulty = [25,55]},
 	medium_chest_cosmetics = {locks = [['normal', 1],['none', 1],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [20,50]},
-	medium_boss_chest = {locks = [['normal', 1],['none',1]], difficulty = [20,55]},
+	medium_boss_chest = {locks = [['normal', 1],['none',2]], difficulty = [20,55]},
 
-	hard_boss_chest = {locks = [['normal', 1],['none',1]], difficulty = [45,80]},
+	hard_boss_chest = {locks = [['normal', 1],['none',2]], difficulty = [45,80]},
 	test_chest_mimic = {locks = [['mimic_erotic', 1]], difficulty = [1,1]},
 	}
 

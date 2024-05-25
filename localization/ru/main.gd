@@ -3230,8 +3230,15 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	
 	SPRINGTEXT = "Вы нашли небольшую поляну с родником. Самое время сделать перерыв и отдохнуть",
 	SPRING_HEAL = "Ваша группа отдыхает и восстанавливает немного здоровья.",
+	SPRING_STAMINA = """Your group rests and recover their energy.""", # MISSING TRANSLATION
 	SPRING_HEAL_OPTION = "*Отдых*",
+	SPRING_STAMINA_OPTION = """Take a rest""", # MISSING TRANSLATION
 	SPRING_LOOT_OPTION = "*Осмотреться*",
+	FOUNTAINTEXT = """You find a small fountain still brimming with clear water. You could use it to ease group's exhaustion, but it seems there's also some raw mana available for extraction...""", # MISSING TRANSLATION
+	FOUNTAINSTAMINAOPTION = """Take a rest""", # MISSING TRANSLATION
+	FOUNTAINMANAOPTION = """Harness magic""", # MISSING TRANSLATION
+	FOUNTAIN_MANA = """The group manages to extract mana from the fountain and restore their powers.""", # MISSING TRANSLATION
+	FOUNTAIN_STAMINA = """The group takes a rest in the room and recover their energy.""", # MISSING TRANSLATION
 	DIALOGUE_SPRING_LOOT = "Осмотревшись, вы находите небольшой зарытый тайник. Вы решили забрать его содержимое себе",
 	DIALOGUE_SPRING_NO_LOOT = "Вы обыскали все вокруг, но не смогли найти ничего полезного",
 	TRIBALELVES = "Вы обнаружили, что окружены группой местных племенных эльфов. Похоже, они считают вас нарушителем на своей территории и готовятся к нападению...",
