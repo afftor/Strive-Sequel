@@ -1257,10 +1257,10 @@ func summon(montype, limit, combatgroup): #reworked
 
 
 func use_skill(skill_code, caster, target):
-
 	$ItemPanel.hide()
 	$Menu/Items.pressed = false
-	if activeaction != skill_code: activeaction = skill_code
+	if activeaction != skill_code:
+		activeaction = skill_code
 	#to add code for different costs
 	#and various limits and cooldowns
 	allowaction = false
@@ -1492,7 +1492,7 @@ func use_skill(skill_code, caster, target):
 		#instant skills cannot be copied in current realisation, but for now this is not a problem - for only item skills can be instants 
 		RebuildSkillPanel()
 		RebuildItemPanel()
-		SelectSkill(activeaction)
+		SelectSkill(skill_code)
 		eot = true
 	#emit_signal("skill_use_finshed")
 
