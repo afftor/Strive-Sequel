@@ -266,13 +266,14 @@ func make_item_sequence(currenttask, craftingitem, character):
 		return 0
 
 
-func add_craft_value(currenttask, value, character, tres = false):
-	if craftinglists[currenttask.product].empty():
-		if currenttask.messages.has('notask') == false and !tres:
-			globals.text_log_add('crafting', character.get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
-			currenttask.messages.append('notask')
-		return tres
-	else:
+func add_craft_value(currenttask, value, character, _tres = false): #bad rework, but it should work for now
+	var tres = false
+	while true: #2rewrite with proper condition
+		if craftinglists[currenttask.product].empty():
+			if currenttask.messages.has('notask') == false and !tres:
+				globals.text_log_add('crafting', character.get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
+				currenttask.messages.append('notask')
+			break #empty queue
 		var craftingitem = craftinglists[currenttask.product].front()
 		currenttask.messages.erase("notask")
 		if craftingitem.resources_taken == false:
@@ -280,13 +281,17 @@ func add_craft_value(currenttask, value, character, tres = false):
 				if currenttask.messages.has('noresources') == false:
 					globals.text_log_add('crafting', character.get_short_name() + ": Not Enough Resources for craft. ")
 					currenttask.messages.append("noresources")
-				return tres
+				break #no res
 			else:
 				globals.spend_resources(craftingitem)
 				currenttask.messages.erase("noresources")
-		craftingitem.workunits += value
-		var newval = make_item_sequence(currenttask, craftingitem, character)
-		var repeat = newval > 0
+		
+		tres = true
+		craftingitem.workunits += value #bad and counterintuitive way, 2rework
+		
+		value = make_item_sequence(currenttask, craftingitem, character)
+		if value <= 0:
+			break #task incomplete, all value spent
 		if craftingitem.repeats == 0:
 			var recipe = Items.recipes[craftingitem.code]
 			var item
@@ -297,11 +302,34 @@ func add_craft_value(currenttask, value, character, tres = false):
 			globals.text_log_add("crafting", "Task completed: " + item.name)
 			craftinglists[currenttask.product].pop_front()
 		else:
-			newval = 0
-		if repeat:
-			return add_craft_value(currenttask, newval, character, true)
-		else: 
-			return true
+			value = 0
+	
+	return tres
+	
+#	if craftinglists[currenttask.product].empty():
+#		if currenttask.messages.has('notask') == false and !tres:
+#			globals.text_log_add('crafting', character.get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
+#			currenttask.messages.append('notask')
+#		return tres
+#	else:
+#		
+#		var newval = make_item_sequence(currenttask, craftingitem, character)
+#		var repeat = newval > 0
+#		if craftingitem.repeats == 0:
+#			var recipe = Items.recipes[craftingitem.code]
+#			var item
+#			if Items.recipes[craftingitem.code].resultitemtype != 'material':
+#				item = Items.itemlist[recipe.resultitem]
+#			else:
+#				item = Items.materiallist[recipe.resultitem]
+#			globals.text_log_add("crafting", "Task completed: " + item.name)
+#			craftinglists[currenttask.product].pop_front()
+#		else:
+#			newval = 0
+#		if repeat:
+#			return add_craft_value(currenttask, newval, character, true)
+#		else: 
+#			return true
 
 func unlock_upgrade():
 	pass
