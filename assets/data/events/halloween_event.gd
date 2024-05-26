@@ -125,11 +125,14 @@ var data = {
 		character2 = 'cali_halloween',
 		common_effects = [
 			{code = 'unique_character_changes', value = 'cali', args = [
+			{code = 'unique_variation', operant = '=', value = "halloween"},
 			{code = 'body_image', operant = '=', value = "cali_halloween_body"},
 			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/cali_halloween_prt.png"}]},
 			{code = 'unique_character_changes', value = 'anastasia', args = [
+			{code = 'unique_variation', operant = '=', value = "halloween"},
 			{code = 'body_image', operant = '=', value = "anastasia_halloween_body"}, 
 			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/anastasia_halloween_prt.png"}]},
+			{code = 'update_prts'},
 			
 			
 			],

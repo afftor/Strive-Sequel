@@ -816,6 +816,13 @@ func loadimages():
 	for i in GFX:
 		GFX[i] = input_handler.loadimage(GFX[i])
 
+func add_portrait_paths():
+	var regex = RegEx.new()
+	regex.compile("[ \\w-]+?(?=\\.)")
+	for i in input_handler.dir_contents("res://assets/images/portraits"):
+		var result = regex.search(i)
+		if result and not "import" in i: 
+			images.portraits[result.get_string()] = i
 
 var upgrade_icons = {
 	alchemy = load("res://assets/images/gui/upgrades/alchemy.png"),

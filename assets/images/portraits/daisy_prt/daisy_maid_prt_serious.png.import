@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/daisy_maidu_prt_shy.png-6d94ac215754bb5b6f507cfc6966ddd8.stex"
+path="res://.import/daisy_maid_prt_serious.png-d030876fbd332532c3bf36705b7ebf49.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/daisy_prt/daisy_maidu_prt_shy.png"
-dest_files=[ "res://.import/daisy_maidu_prt_shy.png-6d94ac215754bb5b6f507cfc6966ddd8.stex" ]
+source_file="res://assets/images/portraits/daisy_prt/daisy_maid_prt_serious.png"
+dest_files=[ "res://.import/daisy_maid_prt_serious.png-d030876fbd332532c3bf36705b7ebf49.stex" ]
 
 [params]
 

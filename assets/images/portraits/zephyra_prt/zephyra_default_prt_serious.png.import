@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/daisy_maidu_prt_serious.png-9f3ad0e7afd8d26b1e343794599fc8e8.stex"
+path="res://.import/zephyra_default_prt_serious.png-3de68f15cb8ab5748ff2a0abb03b8152.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/daisy_prt/daisy_maidu_prt_serious.png"
-dest_files=[ "res://.import/daisy_maidu_prt_serious.png-9f3ad0e7afd8d26b1e343794599fc8e8.stex" ]
+source_file="res://assets/images/portraits/zephyra_prt/zephyra_default_prt_serious.png"
+dest_files=[ "res://.import/zephyra_default_prt_serious.png-3de68f15cb8ab5748ff2a0abb03b8152.stex" ]
 
 [params]
 

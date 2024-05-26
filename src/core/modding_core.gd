@@ -460,6 +460,9 @@ func process_gd_data_file(filepath: String, alias : String):
 	script.new().load_tables()
 
 func fix_main_data():
+	#add all portrait paths to images.portraits
+	images.add_portrait_paths()
+	
 	#load images
 	images.loadimages()
 	

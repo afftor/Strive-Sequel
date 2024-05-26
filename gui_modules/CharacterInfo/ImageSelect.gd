@@ -62,8 +62,11 @@ func build_unique_sprites():
 		newbutton.connect('pressed',self,'select_unique_sprite', [i])
 
 func select_unique_sprite(data):
-	person.set_stat('icon_image', data.face_path)
+	if IconBlock.get_node("assignboth").pressed:
+		person.set_stat('icon_image', data.face_path)
+		person.set_stat('player_selected_icon', true)
 	person.set_stat('body_image', data.path)
+	person.set_stat('player_selected_body', true)
 	updatepage()
 	
 
@@ -144,12 +147,15 @@ func setslaveimage(path):
 	person = input_handler.interacted_character
 	if mode == 'portrait':
 		person.set_stat('icon_image', path)
+		person.set_stat('player_selected_icon', true)
 		if IconBlock.get_node("assignboth").pressed && input_handler.loadimage(path.replace("portraits", 'bodies')) != null:
 			person.set_stat('body_image', path.replace("portraits",'bodies'))
 	elif mode == 'body':
 		person.set_stat('body_image', path)
+		person.set_stat('player_selected_body', true)
 		if IconBlock.get_node("assignboth").pressed && input_handler.loadimage(path.replace("bodies","portraits")) != null:
 			person.set_stat('icon_image', path.replace('bodies',"portraits"))
+			person.set_stat('player_selected_icon', true)
 	self.visible = false
 	updatepage()
 	# input_handler.update_slave_list()
@@ -173,9 +179,12 @@ func _on_search_text_changed( text ):
 
 func _on_removeportrait_pressed():
 	if mode == 'portrait':
+		person.set_stat('player_selected_icon', false)
 		person.set_stat('icon_image','default') #not sure cause icon_image default value is empty, not 'default'
 	elif mode == 'body':
 		person.set_stat('body_image', 'default')
+		person.set_stat('player_selected_body', false)
+	person.update_prt()
 	self.visible = false
 	updatepage()
 
@@ -188,6 +197,8 @@ func _on_reverseportrait_pressed():
 		updatepage()
 	else:
 		person.set_stat('body_image', 'default')
+		person.set_stat('player_selected_icon', false)
+		person.set_stat('player_selected_body', false)
 		person.set_stat('icon_image','default') #not sure cause icon_image default value is empty, not 'default'
 		updatepage()
 
