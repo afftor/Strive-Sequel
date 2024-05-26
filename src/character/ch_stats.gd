@@ -2045,6 +2045,9 @@ func change_personality_stats(stat, init_value, communicative = false):
 	statlist[altaxis] += newvalue[1]
 	parent.get_ref().recheck_effect_tag('recheck_stats')
 	check_old_personality()
+	
+	parent.get_ref().update_prt()
+	
 	return [newvalue, rebel]
 
 
@@ -2081,6 +2084,7 @@ func set_personality(value):
 			statlist.personality_bold = globals.rng.randi_range(-10, 10)
 			statlist.personality_kind = -globals.rng.randi_range(65, 85)
 	check_old_personality()
+	parent.get_ref().update_prt()
 
 
 func check_old_personality():

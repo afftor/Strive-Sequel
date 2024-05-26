@@ -763,6 +763,7 @@ func LoadGame(filename):
 	characters_pool.cleanup()
 	effects_pool.cleanup()
 	ResourceScripts.game_party.fix_serialization_postload()
+	ResourceScripts.game_party.force_update_portraits()
 
 	if !compare_version(ResourceScripts.game_globals.original_version, '0.5.5b'):
 		ResourceScripts.game_globals.hour = ResourceScripts.game_globals.hour / 6
@@ -2453,8 +2454,14 @@ func valuecheck(dict):
 			if gui_controller.exploration_dungeon == null:
 				return false
 			return gui_controller.exploration_dungeon.location_chars_check(dict.value)
+<<<<<<< HEAD
+		'update_prts':
+			for ch in ResourceScripts.game_party.characters:
+				ch.update_prt()
+=======
 		'captured_number':
 				return input_handler.operate(dict.operant,input_handler.active_location.captured_characters.size(), dict.value)  
+>>>>>>> ea7fdc71df733df73a2ff9609061cbe8cb4b3d15
 
 
 func apply_starting_preset():

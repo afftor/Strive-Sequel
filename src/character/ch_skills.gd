@@ -356,6 +356,7 @@ func use_social_skill(s_code, target):
 				var next_personality = h.get_stat('personality')
 				if next_personality != cur_personality:
 					effect_text += "\n" + h.get_short_name() + tr("PERSONALITYCHANGE") + tr("PERSONALITYNAME" + next_personality.to_upper())
+				parent.get_ref().update_prt()
 			else:
 				match mod:
 					0:
