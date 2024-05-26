@@ -18,10 +18,11 @@ var lands = {
 		start_locations_number = 2, #will generate this number of smaller locations like dungeons
 		locations = {}, #array to fill up with settlements and dungeons
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'], #array of allowed locations to generate
-		starting_locations = ['dungeon_bandit_den','dungeon_goblin_cave'],
+		starting_locations = ['dungeon_bandit_den','dungeon_goblin_cave'],#['dungeon_bandit_fort'],
 		gatherable_resources = [],
 		guilds = ['workers','servants','fighters','mages','slavemarket','exotic_slave_trader'],
 		events = [],
+		tags = [],
 		capital_options = ['quest_board','location_purchase'],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
 		area_shop_items = {
@@ -73,6 +74,7 @@ var lands = {
 		starting_locations = ['dungeon_grove'],
 		guilds = ['elvish_slave_trader'],
 		events = [],
+		tags = [],
 		capital_options = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
 		area_shop_items = {
@@ -112,6 +114,7 @@ var lands = {
 		locations = {},
 		locationpool = ['dungeon_undead_crypt'],
 		guilds = [],
+		tags = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
 		area_shop_items = {},
 	},
@@ -778,6 +781,7 @@ var dungeons = {
 		eventarray = [],
 		levels = [1,1],
 		resources = [],
+		tags = [],
 		stages_per_level = [1,1],
 		events = [],
 	},

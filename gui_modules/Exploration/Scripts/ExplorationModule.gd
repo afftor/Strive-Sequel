@@ -1,8 +1,8 @@
 extends Control
 
 #var active_area
-#var active_location
-var nav
+var active_location
+onready var nav = $LocationGui/NavigationModule
 
 
 var selected_location
@@ -82,7 +82,7 @@ func open_location(data):
 	input_handler.ActivateTutorial("exploration")
 	input_handler.StopBackgroundSound()
 	gui_controller.nav_panel = $LocationGui/NavigationModule
-	nav = $LocationGui/NavigationModule
+#	nav = $LocationGui/NavigationModule
 	selected_location = data.id
 	var gatherable_resources
 	$LocationGui/Resources/Forget.visible = false
@@ -114,7 +114,8 @@ func open_location(data):
 #								$LocationGui/Resources/SelectWorkers.visible = false
 	$LocationGui.show()
 	$LocationGui/Resources/Materials.update()
-#	active_location = data
+	active_location = data
+	input_handler.exploration_node = self
 	input_handler.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[data.id].area]
 #	input_handler.active_area = active_area
 	input_handler.active_location = data

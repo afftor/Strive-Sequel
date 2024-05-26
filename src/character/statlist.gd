@@ -18,7 +18,7 @@ var template = {
 	race = 'Human',
 	racegroup = 'humanoid',
 	age = '',
-	sex = '',
+	sex = 'male',
 	slave_class = 'slave1',
 	personality = '',
 	personality_bold = 0,
@@ -232,5 +232,18 @@ var template = {
 
 	asser = 0,
 
-	masternoun = 'Master',
+	masternoun = tr('PROFMASTER'),
+	
+	#challenge charages
+	chg_strength = 0,
+	chg_strength_max = 0,
+	chg_dexterity = 0,
+	chg_dexterity_max = 0,
+	chg_wisdom = 0,
+	chg_wisdom_max = 0,
+	chg_persuasion = 0,
+	chg_persuasion_max = 0,
+	
+	
+	
 }

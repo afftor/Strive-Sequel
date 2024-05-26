@@ -176,7 +176,12 @@ func hire_character():
 
 func sell_slave():
 	var selectedperson = gui_controller.exploration_city.person_to_hire
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'sell_slave_confirm', selectedperson.translate(tr("SELL") + " [name]?")])
+	var text = ''
+	print(selectedperson.get_stat('unique'))
+	if selectedperson.get_stat('unique') != null:
+		text += "This is a unique character. "
+	text += tr("SELL") + " [name]?"
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'sell_slave_confirm', selectedperson.translate(text)])
 
 
 func sell_slave_confirm():

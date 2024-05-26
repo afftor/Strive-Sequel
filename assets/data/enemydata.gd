@@ -12,7 +12,7 @@ var encounters = {
 	ogre_skirmish = {unittype = 'randomgroup', unitcode = 'ogre_skirmish', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
 	troll_skirmish = {unittype = 'randomgroup', unitcode = 'troll_skirmish', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
 	tribal_elves = {unittype = 'randomgroup', unitcode = 'tribal_elves', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'tribal_elves_win', args = []}], lose_effects = []},
-
+	
 
 	lich_fight_easy = {unittype = 'randomgroup', unitcode = 'quest_lich_easy', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	lich_fight_normal = {unittype = 'randomgroup', unitcode = 'quest_lich_normal', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
@@ -60,36 +60,39 @@ var encounters = {
 }
 
 var enemygroups = {
-	rats_easy = {reqs = [], units = {rat = [2,6]}},
-	rats_goblins_easy = {reqs = [], units = {rat = [1,4], cave_goblin_melee = [1,3]}},
-	bandits_easy = {reqs = [], units = {bandit_melee = [1,3], trained_dog = [0,2]}},
-	bandits_easy2 = {reqs = [], units = {bandit_melee = [1,3], bandit_archer = [1,2]}},
-	bandits_easy3 = {reqs = [], units = {trained_dog = [1,2], bandit_archer = [0,3]}},
+	
+	tutorial_lich_fight = {reqs = [], units = {rat = [2,2]}},
+	
+	rats_easy = {reqs = [], units = {rat = [2,6]}, challenges = [['event_enemy_strength_scare', 1]], challenge_chance = 0.3},
+	rats_goblins_easy = {reqs = [], units = {rat = [1,4], cave_goblin_melee = [1,3]}, challenges = [['event_enemy_strength_scare', 1],['event_enemy_distract',0.5]], challenge_chance = 0.3},
+	bandits_easy = {reqs = [], units = {bandit_melee = [1,3], trained_dog = [0,2]}, challenges = [['event_enemy_charm_avoid', 1],['event_enemy_charm_damage',0.8]], challenge_chance = 0.4},
+	bandits_easy2 = {reqs = [], units = {bandit_melee = [1,3], bandit_archer = [1,2]}, challenges = [['event_enemy_charm_avoid', 1],['event_enemy_dexterity_sneak',0.5]], challenge_chance = 0.4},
+	bandits_easy3 = {reqs = [], units = {trained_dog = [1,2], bandit_archer = [0,3]}, challenges = [['event_enemy_charm_avoid', 1],['event_enemy_charm_damage',0.8]], challenge_chance = 0.4},
 
 	bandits_easy_boss = {maxunits = 3, reqs = [], units = {bandit_boss_melee = [1,1], bandit_melee = [0,2], bandit_archer = [0,2]}},
 	bandits_easy_boss2 = {maxunits = 3, reqs = [], units = {bandit_boss_archer = [1,1], bandit_melee = [1,2], bandit_archer = [0,1]}},
 	bandits_easy_boss3 = {maxunits = 3, reqs = [], units = {bandit_boss_mage = [1,1], bandit_melee = [1,2], bandit_archer = [0,1]}},
 	bandits_medium_boss = {maxunits = 6, reqs = [], units = {bandit_boss_melee = [1,1], bandit_melee = [1,2], bandit_archer = [1,2], bandit_mage = [1,1]}},
 
-	bandits_assassin = {reqs = [], units = {bandit_melee = [1,2], bandit_assassin = [1,2]}},
-	bandits_assassin2 = {reqs = [], units = {bandit_melee = [0,3], bandit_assassin = [0,2], bandit_archer = [0,2]}},
-	bandits_medium = {reqs = [], units = {bandit_melee = [2,3], bandit_archer = [2,3]}},
-	bandits_medium2 = {reqs = [], units = {bandit_melee = [2,3], bandit_archer = [1,2], bandit_mage = [1,2]}},
-	bandits_medium_bear = {reqs = [], units = {trained_bear = [1,2], bandit_archer = [1,2]}},
-	bandits_golem = {reqs = [], units = {bandit_melee = [0,2], bandit_archer = [0,2], guardian_golem = [1,1]}},
+	bandits_assassin = {reqs = [], units = {bandit_melee = [1,2], bandit_assassin = [1,2]}, challenges = [['event_enemy_charm_avoid', 1],['event_enemy_charm_damage',0.8]], challenge_chance = 0.4},
+	bandits_assassin2 = {reqs = [], units = {bandit_melee = [0,3], bandit_assassin = [0,2], bandit_archer = [0,2]}, challenges = [['event_enemy_charm_avoid', 1],['event_enemy_charm_damage',0.8]], challenge_chance = 0.4},
+	bandits_medium = {reqs = [], units = {bandit_melee = [2,3], bandit_archer = [2,3]}, challenges = [['event_enemy_charm_avoid', 1],['event_enemy_charm_damage',0.8]], challenge_chance = 0.4},
+	bandits_medium2 = {reqs = [], units = {bandit_melee = [2,3], bandit_archer = [1,2], bandit_mage = [1,2]}, challenges = [['event_enemy_charm_avoid', 1],['event_enemy_charm_damage',0.8]], challenge_chance = 0.4},
+	bandits_medium_bear = {reqs = [], units = {trained_bear = [1,2], bandit_archer = [1,2]}, challenges = [['event_enemy_charm_avoid', 1],['event_enemy_charm_damage',0.8]], challenge_chance = 0.4},
+	bandits_golem = {reqs = [], units = {bandit_melee = [0,2], bandit_archer = [0,2], guardian_golem = [1,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_distract',0.8]], challenge_chance = 0.4},
 
-	bandits_raptors = {reqs = [], units = {bandit_melee = [1,2], trained_raptor = [1,2]}},
-	bandits_ballista = {reqs = [], units = {bandit_melee = [1,2], ballista = [1,2]}},
+	bandits_raptors = {reqs = [], units = {bandit_melee = [1,2], trained_raptor = [1,2]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_distract',0.8]], challenge_chance = 0.4},
+	bandits_ballista = {reqs = [], units = {bandit_melee = [1,2], ballista = [1,2]}, challenges = [['event_enemy_charm_avoid', 1],['event_enemy_charm_damage',0.8]], challenge_chance = 0.4},
 
-	goblins_skirmish = {reqs = [], units = {cave_goblin_melee = [2,3], cave_goblin_archer = [2,3], cave_goblin_mage = [0,1]}},
+	goblins_skirmish = {reqs = [], units = {cave_goblin_melee = [2,3], cave_goblin_archer = [2,3], cave_goblin_mage = [0,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_distract',0.8]], challenge_chance = 0.4},
 	ogre_skirmish = {reqs = [], units = {cave_goblin_melee = [2,2], ogre_melee = [1,1]}},
 	troll_skirmish = {reqs = [], units = {cave_goblin_melee = [1,1], troll = [1,1], cave_goblin_archer = [1,1]}},
 
 	tribal_elves = {reqs = [], units = {bandit_melee = [2,3], bandit_archer = [2,3]}},
 
-	goblins_easy = {reqs = [], units = {cave_goblin_melee = [2,3]}},
-	goblins_easy2 = {reqs = [], units = {cave_goblin_melee = [1,3], cave_goblin_archer = [1,2]}},
-	goblins_easy3 = {reqs = [], units = {cave_goblin_melee = [1,2], cave_goblin_archer = [1,3]}},
+	goblins_easy = {reqs = [], units = {cave_goblin_melee = [2,3]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
+	goblins_easy2 = {reqs = [], units = {cave_goblin_melee = [1,3], cave_goblin_archer = [1,2]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_damage',0.8]], challenge_chance = 0.4},
+	goblins_easy3 = {reqs = [], units = {cave_goblin_melee = [1,2], cave_goblin_archer = [1,3]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_distract',0.8]], challenge_chance = 0.4},
 	goblins_easy_boss1 = {maxunits = 3, reqs = [], units = {cave_goblin_boss = [1,1], cave_goblin_melee = [0,2], cave_goblin_archer = [0,2]}},
 	goblins_easy_boss2 = {maxunits = 4, reqs = [], units = {cave_goblin_shaman = [1,1], cave_goblin_melee = [1,3], cave_goblin_archer = [0,1]}},
 	grove_easy_boss = {maxunits = 5, reqs = [], units = {troll = [1,1], wolf = [2,4]}},
@@ -97,29 +100,29 @@ var enemygroups = {
 	#ogre_med2 = {reqs = [], units = {ogre_melee = [0,1], ogre_mage = [1,1]}},
 	#troll_boss = {maxunits = 4, reqs = [], units = {cave_goblin_boss = [1,1], cave_goblin_melee = [0,2]}},
 
-	wolves_easy1 = {reqs = [], units = {wolf = [4,6]}},
-	wolves_easy2 = {reqs = [], units = {wolf = [3,5]}},
+	wolves_easy1 = {reqs = [], units = {wolf = [4,6]}, challenges = [['event_enemy_strength_scare', 1],['event_enemy_dexterity_sneak',0.8]], challenge_chance = 0.4},
+	wolves_easy2 = {reqs = [], units = {wolf = [3,5]}, challenges = [['event_enemy_strength_scare', 1],['event_enemy_dexterity_sneak',0.8]], challenge_chance = 0.4},
 
-	slavers_small = {reqs = [], units = {bandit_melee = [2,3]}},
-	rebels_small = {reqs = [], units = {rebel_recruit = [2,3]}},
-	spiders = {reqs = [], units = {spider = [2,3]}},
-	spiders_many = {reqs = [], units = {spider = [4,6]}},
+	slavers_small = {reqs = [], units = {bandit_melee = [2,3]}, challenges = [['event_enemy_charm_avoid', 1],['event_enemy_distract',0.8]], challenge_chance = 0.4},
+	rebels_small = {reqs = [], units = {rebel_recruit = [2,3]}, challenges = [['event_enemy_charm_avoid', 1],['event_enemy_distract',0.8]], challenge_chance = 0.4},
+	spiders = {reqs = [], units = {spider = [2,3]}, challenges = [['event_enemy_strength_scare', 1],['event_enemy_dexterity_sneak',0.8]], challenge_chance = 0.4},
+	spiders_many = {reqs = [], units = {spider = [4,6]}, challenges = [['event_enemy_strength_scare', 1],['event_enemy_dexterity_sneak',0.8]], challenge_chance = 0.4},
 
-	rats = {reqs = [], units = {rat = [3,5]}},
+	rats = {reqs = [], units = {rat = [3,5]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
 
-	skeletons_easy = {reqs = [], units = {skeleton_melee = [2,3]}},
-	skeletons_easy2 = {reqs = [], units = {skeleton_melee = [1,2], skeleton_archer = [1,2]}},
-	skeletons_zombies = {reqs = [], units = {skeleton_melee = [1,2], zombie = [1,2]}},
-	skeletons_zombies2 = {reqs = [], units = {skeleton_archer = [1,2], zombie = [2,3]}},
-	skeletons_lich = {reqs = [], units = {skeleton_melee = [2,3], skeleton_archer = [1,2], undead_lich = [1,1]}},
+	skeletons_easy = {reqs = [], units = {skeleton_melee = [2,3]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
+	skeletons_easy2 = {reqs = [], units = {skeleton_melee = [1,2], skeleton_archer = [1,2]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
+	skeletons_zombies = {reqs = [], units = {skeleton_melee = [1,2], zombie = [1,2]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
+	skeletons_zombies2 = {reqs = [], units = {skeleton_archer = [1,2], zombie = [2,3]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
+	skeletons_lich = {reqs = [], units = {skeleton_melee = [2,3], skeleton_archer = [1,2], undead_lich = [1,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
 	skeletons_lich_boss = {maxunits = 6, reqs = [], units = {undead_lich = [1,1], skeleton_archer = [2,2], zombie = [3,3]}},
 
-	rebel_group_mines = {reqs = [], units = {rebel_recruit = [3,3], rebel_mage = [1,1]}},
+	rebel_group_mines = {reqs = [], units = {rebel_recruit = [3,3], rebel_mage = [1,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
 	demon_kurdan = {reqs = [], units = {demoness = [1,1],kurdan = [1,1], rebel_recruit = [2,2]}},
 	demon = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}},
-	rebel_convoy = {reqs = [], units = {rebel_recruit = [2,2], rebel_knight = [1,1], rebel_healer = [1,1], rebel_mage = [1,1]}},
-	betrayal_confirmed_rebels_1 = {reqs = [], units = {rebel_recruit = [3,3], rebel_healer = [2,2], rebel_mage = [1,1]}},
-	betrayal_confirmed_rebels_2 = {reqs = [], units = {rebel_knight = [2,2], rebel_healer = [1,1], rebel_mage = [2,2]}},
+	rebel_convoy = {reqs = [], units = {rebel_recruit = [2,2], rebel_knight = [1,1], rebel_healer = [1,1], rebel_mage = [1,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
+	betrayal_confirmed_rebels_1 = {reqs = [], units = {rebel_recruit = [3,3], rebel_healer = [2,2], rebel_mage = [1,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
+	betrayal_confirmed_rebels_2 = {reqs = [], units = {rebel_knight = [2,2], rebel_healer = [1,1], rebel_mage = [2,2]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
 	patrol = {reqs = [], units = {rebel_recruit = [3,3], rebel_mage = [1,1]}},
 	wrong_building_rebels = {reqs = [], units = {rebel_recruit = [2,2]}},
 	two_guards = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
@@ -141,8 +144,8 @@ var enemygroups = {
 
 	mercenary_fred_quest = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}},
 
-	rebel_group_hideout1 = {reqs = [], units = {rebel_recruit = [1,3], rebel_healer = [1,2], rebel_mage = [0,1]}},
-	rebel_group_hideout2 = {reqs = [], units = {rebel_knight = [0,1], rebel_healer = [1,2], rebel_recruit = [1,2]}},
+	rebel_group_hideout1 = {reqs = [], units = {rebel_recruit = [1,3], rebel_healer = [1,2], rebel_mage = [0,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
+	rebel_group_hideout2 = {reqs = [], units = {rebel_knight = [0,1], rebel_healer = [1,2], rebel_recruit = [1,2]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
 	rebel_group_hideout3 = {reqs = [], units = {rebel_knight = [1,2], rebel_healer = [0,1], rebel_mage = [1,2]}},
 	greg_boss_fight = {reqs = [], units = {greg = [1,1], rebel_knight = [2,2], rebel_healer = [1,1], rebel_mage = [2,2]}},
 	aire_boss_fight = {reqs = [], units = {rebel_knight = [3,3], aire = [1,1], rebel_healer = [2,2]}},
@@ -157,20 +160,20 @@ var enemygroups = {
 	
 	cali_slavers = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [1,1], bandit_mage = [1,1]}}, 
 	
-	jungle_easy1 = {reqs = [], units = {giant_ant = [2,3], wild_raptor = [0,1], maneater_plant = [0,1]}},
-	jungle_easy2 = {reqs = [], units = {giant_ant = [1,2], centipede = [0,1], maneater_plant = [0,1]}},
-	jungle_medium1 = {reqs = [], units = {wild_raptor = [2,3], maneater_plant = [1,2]}},
-	jungle_medium2 = {reqs = [], units = {centipede = [1,2], giant_ant = [2,3]}},
+	jungle_easy1 = {reqs = [], units = {giant_ant = [2,3], wild_raptor = [0,1], maneater_plant = [0,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
+	jungle_easy2 = {reqs = [], units = {giant_ant = [1,2], centipede = [0,1], maneater_plant = [0,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
+	jungle_medium1 = {reqs = [], units = {wild_raptor = [2,3], maneater_plant = [1,2]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
+	jungle_medium2 = {reqs = [], units = {centipede = [1,2], giant_ant = [2,3]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
 	jungle_boss1 = {reqs = [], units = {wild_raptor = [1,2], great_viper = [1,1]}},
 	jungle_boss2 = {reqs = [], units = {ogre_melee = [1,1], ogre_alpha = [1,1], ogre_mage = [1,1]}},
 	jungle_boss3 = {reqs = [], units = {maneater_plant = [0,2], gryphon = [1,1]}},
 
-	firedepths_easy1 = {reqs = [], units = {salamander = [1,2], rock_thrower = [1,2]}},
-	firedepths_easy2 = {reqs = [], units = {anthropoid = [1,2], ifrit = [0,1]}},
-	firedepths_medium1 = {reqs = [], units = {salamander = [1,3], rock_thrower = [1,2], ifrit = [0,1]}},
-	firedepths_medium2 = {reqs = [], units = {ifrit = [2,4]}},
-	firedepths_boss1 = {reqs = [], units = {magma_beast = [1,1], salamander = [1,1]}},
-	firedepths_boss2 = {reqs = [], units = {erebus_stone = [2,2]}},
+	firedepths_easy1 = {reqs = [], units = {salamander = [1,2], rock_thrower = [1,2]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
+	firedepths_easy2 = {reqs = [], units = {anthropoid = [1,2], ifrit = [0,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
+	firedepths_medium1 = {reqs = [], units = {salamander = [1,3], rock_thrower = [1,2], ifrit = [0,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
+	firedepths_medium2 = {reqs = [], units = {ifrit = [2,4]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
+	firedepths_boss1 = {reqs = [], units = {magma_beast = [1,1], salamander = [1,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
+	firedepths_boss2 = {reqs = [], units = {erebus_stone = [2,2]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
 
 	hector_boss_fight = {reqs = [], units = {bandit_melee = [2,2], hector_boss = [1,1], bandit_archer = [2,2], bandit_mage = [1,1]}}, #cali boss fight !!! copied from above, needs fixing
 }
@@ -2143,10 +2146,10 @@ var loot_variants_data = {
 
 
 var locks_data = { #makes locks to lockpick for related chests
-	easy_chest_usable = {locks = [['normal', 1],['none', 0.5],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
-	easy_chest_gear = {locks = [['normal', 1],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [10,25]},
-	easy_chest_cosmetics = {locks = [['normal', 1],['none', 0.2],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
-	easy_boss_chest = {locks = [['normal', 1],['none',2]], difficulty = [10,25]},
+	easy_chest_usable = {locks = [['normal', 1],['none', 5],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
+	easy_chest_gear = {locks = [['normal', 1], ['none', 4],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [10,25]},
+	easy_chest_cosmetics = {locks = [['normal', 1],['none', 4],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
+	easy_boss_chest = {locks = [['normal', 1],['none',4]], difficulty = [10,25]},
 
 	easy_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [15,25]},
 	easy_armory_armor = {locks = [['normal', 1], ['alarm', 1]], difficulty = [15,25]},
@@ -2154,12 +2157,12 @@ var locks_data = { #makes locks to lockpick for related chests
 	medium_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
 	medium_armory_armor = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
 
-	medium_chest_usable = {locks = [['normal', 1],['none', 0.5],['bomb',1],['gas',1],['mimic',0.3],['mimic_erotic',0.3]], difficulty = [15,40]},
-	medium_chest_gear = {locks = [['normal', 1],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [25,55]},
-	medium_chest_cosmetics = {locks = [['normal', 1],['none', 0.2],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [20,50]},
-	medium_boss_chest = {locks = [['normal', 1],['none',1]], difficulty = [20,55]},
+	medium_chest_usable = {locks = [['normal', 1],['none', 3],['bomb',1],['gas',1],['mimic',0.3],['mimic_erotic',0.3]], difficulty = [15,40]},
+	medium_chest_gear = {locks = [['normal', 1],['mimic',1],['mimic_erotic',0.2]], difficulty = [25,55]},
+	medium_chest_cosmetics = {locks = [['normal', 1],['none', 1],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [20,50]},
+	medium_boss_chest = {locks = [['normal', 1],['none',2]], difficulty = [20,55]},
 
-	hard_boss_chest = {locks = [['normal', 2],['none',1]], difficulty = [45,80]},
+	hard_boss_chest = {locks = [['normal', 1],['none',2]], difficulty = [45,80]},
 	test_chest_mimic = {locks = [['mimic_erotic', 1]], difficulty = [1,1]},
 	}
 

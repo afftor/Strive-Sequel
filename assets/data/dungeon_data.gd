@@ -24,7 +24,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], #list of future challenges to get to this room
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 			dungeon_find_armory_easy = {
 				limit = 1,
@@ -32,7 +37,12 @@ var dungeons = {
 				floor_range = [2,0],
 				icon = 'chest',
 				events = ['dungeon_find_armory_easy'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 			event_dungeon_prisoner = {
 				limit = 1,
@@ -40,7 +50,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'man',
 				events = ['event_dungeon_prisoner'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -48,14 +63,19 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			}
 		},
 		
 		event_room_number = [3,4],
 		material_room_number = [5,6],
 		
-		main_route_length = [6,7], #remember that first and last rooms in route are effectively empty 
+		main_route_length = [5,6], #remember that first and last rooms in route are effectively empty 
 		bonus_rooms = [2,3],
 		levels = [2,2], 
 		base_room_stamina_cost = [7,10], #random roll for every main/bonus rooms rounded
@@ -87,6 +107,7 @@ var dungeons = {
 		purchase_price = 100,
 		affiliation = 'local', #defines character races and events
 		events = [],
+		tags = [],
 	},
 	
 	dungeon_bandit_fort = {
@@ -111,7 +132,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_medium'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.1],
+					['event_small_crack',1]
+				],
 			},
 			dungeon_find_armory_easy = {
 				limit = 1,
@@ -119,7 +145,12 @@ var dungeons = {
 				floor_range = [2,0],
 				icon = 'chest',
 				events = ['dungeon_find_armory_easy'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.2],
+					['event_small_crack',1],
+				],
 			},
 			event_dungeon_prisoner = {
 				limit = 2,
@@ -127,7 +158,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'man',
 				events = ['event_dungeon_prisoner'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.2],
+					['event_small_crack',1],
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -135,8 +171,24 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
-				possible_challenges = [],
-			}
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1]
+				],
+			},
+			fountain = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['fountain'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.8]
+				],
+			},
 		},
 		
 		event_room_number = [3,4],
@@ -144,7 +196,7 @@ var dungeons = {
 		
 		main_route_length = [6,7],
 		bonus_rooms = [2,3],
-		levels = [3,3], 
+		levels = [2,3], 
 		base_room_stamina_cost = [7,10], 
 		
 		
@@ -181,6 +233,7 @@ var dungeons = {
 		purchase_price = 200,
 		affiliation = 'local', #defines character races and events
 		events = [],
+		tags = [],
 	},
 	
 	dungeon_undead_crypt = {
@@ -204,7 +257,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 			crypt_find_bones = {
 				limit = 0,
@@ -212,7 +271,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['crypt_find_bones'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1]
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -220,8 +285,26 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
-				possible_challenges = [],
-			}
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1]
+				],
+			},
+			fountain = {
+				limit = 1,
+				weight = 2,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['fountain'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.8]
+				],
+			},
 		},
 		
 		event_room_number = [3,4],
@@ -257,6 +340,7 @@ var dungeons = {
 		purchase_price = 200,
 		affiliation = 'local',
 		events = [],
+		tags = [],
 	},
 	
 	dungeon_goblin_cave = {
@@ -283,7 +367,11 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1],
+				],
 			},
 			event_goblin_friendly = {
 				limit = 1,
@@ -291,7 +379,11 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['event_goblin_friendly'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1],
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -299,16 +391,20 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = [['celena_shrine_find',0.5],['erebus_shrine_find',1],['freya_shrine_find',0.2]],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1],
+				],
 			}
 		},
 		
 		event_room_number = [3,4],
-		material_room_number = [3,5],
+		material_room_number = [4,5],
 		
-		main_route_length = [6,7],
+		main_route_length = [5,6],
 		bonus_rooms = [2,3],
-		levels = [2,3], 
+		levels = [2,2], 
 		base_room_stamina_cost = [6,9], 
 		
 		resources = ['bone','leather','stone','wood'],
@@ -337,6 +433,7 @@ var dungeons = {
 		purchase_price = 100,
 		affiliation = 'local',
 		events = [],
+		tags = [],
 	},
 	
 	dungeon_grove = {
@@ -363,7 +460,10 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+				],
 			},
 			grove_find_leather = {
 				limit = 0,
@@ -371,7 +471,10 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['grove_find_leather'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+				],
 			},
 			event_fairy_friendly = {
 				limit = 1,
@@ -379,7 +482,10 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'person',
 				events = ['event_fairy_friendly'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -387,16 +493,19 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = [['celena_shrine_find',0.1],['erebus_shrine_find',0.2],['freya_shrine_find',1]],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+				],
 			}
 		},
 		
 		event_room_number = [3,4],
 		material_room_number = [4,5],
 		
-		main_route_length = [6,7],
+		main_route_length = [5,6],
 		bonus_rooms = [2,3],
-		levels = [2,3], 
+		levels = [2,2], 
 		base_room_stamina_cost = [5,11], 
 		
 		resources = ['cloth','leather','woodmagic','wood','woodiron'],
@@ -431,6 +540,7 @@ var dungeons = {
 		purchase_price = 100,
 		affiliation = 'local',
 		events = [],
+		tags = [],
 	},
 	
 	dungeon_ancient_jungles = {
@@ -457,7 +567,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_medium'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			event_tribal_elves = {
 				limit = 1,
@@ -465,7 +581,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'person',
 				events = ['event_tribal_elves'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			spring = {
 				limit = 1,
@@ -473,7 +595,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['spring'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -481,14 +609,20 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = [['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5]],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			}
 		},
 		
 		event_room_number = [3,4],
 		material_room_number = [4,5],
 		
-		main_route_length = [7,8],
+		main_route_length = [6,7],
 		bonus_rooms = [2,4],
 		levels = [3,4], 
 		base_room_stamina_cost = [7,11], 
@@ -527,6 +661,7 @@ var dungeons = {
 		purchase_price = 500,
 		affiliation = 'local',
 		events = [],
+		tags = [],
 	},
 	
 	dungeon_fire_depths = {
@@ -554,7 +689,14 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_medium'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			erebus_shrine_find = {
 				limit = 1,
@@ -562,7 +704,26 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['erebus_shrine_find'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
+			},
+			fountain = { #probably replace later
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['fountain'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.8]
+				],
 			}
 		},
 		
@@ -602,6 +763,7 @@ var dungeons = {
 		purchase_price = 500,
 		affiliation = 'local',
 		events = [],
+		tags = [],
 	},
 	
 	quest_cali_bandits_location = {
@@ -625,7 +787,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 			event_dungeon_prisoner = {
 				limit = 1,
@@ -633,7 +800,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'man',
 				events = ['event_dungeon_prisoner'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -641,7 +813,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			}
 		},
 		
@@ -678,13 +855,14 @@ var dungeons = {
 		bgm = "dungeon",
 		purchase_price = 0,
 		affiliation = 'local',
-		quest = true,
+		tags = ['quest'],
 		options = [],
 		events = [],
 		area = 'plains',
 		travel_time = [1,1],
-		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'cali_bandits_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'CALI_BANDITS_1'}]},
-		{trigger = 'dungeon_complete', event = 'custom_event', args = 'cali_bandits_3', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'CALI_BANDITS_3'}]}]
+		scripteventdata = [
+			{trigger = 'enter', args = 'cali_bandits_1'},
+			{trigger = 'dungeon_complete', args = 'cali_bandits_3'}]
 	},
 	
 	quest_mines_dungeon = {
@@ -700,7 +878,7 @@ var dungeons = {
 		difficulty = 'easy',
 		background_pool = ['cave_1'],
 		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
-		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
+		final_enemy = [['pre_final_boss_start',1]], final_enemy_type = 'event',
 		event_data = {
 			dungeon_find_chest_easy = {
 				limit = 0,
@@ -708,7 +886,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 			event_dungeon_prisoner = {
 				limit = 1,
@@ -716,7 +899,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'man',
 				events = ['event_dungeon_prisoner'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 		},
 		
@@ -748,14 +936,16 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local',
 		events = [],
-		quest = true,
+		tags = ['quest'],
 
 		area = 'plains',
 		travel_time = [1,1],
 
-		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'mines_arrival_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'MINES_ARRIVAL_START'}]},
-		{trigger = 'finish_combat', event = 'custom_event', args = 'half_dungeon_explored_start',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'HALF_DUNGEON_EXPLORED_START'}, {code = 'stage', value = 10 / 2 - 1, operant = 'gte'}]},
-		{trigger = 'finish_combat', event = 'custom_event', args = 'pre_final_boss_start',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRE_FINAL_BOSS_START'}, {code = 'stage', value = 9 - 2, operant = 'gte'}]}]
+		scripteventdata = [
+			{trigger = 'enter', args = 'mines_arrival_start'},
+			{trigger = 'stage', event = 'custom_event', args = 'half_dungeon_explored_start', stage = 'half'},
+#			{trigger = 'stage', event = 'custom_event', args = 'pre_final_boss_start', stage = '-1'}
+		]
 	},
 	
 	quest_final_operation_location = {
@@ -771,7 +961,7 @@ var dungeons = {
 		difficulty = 'medium',
 		background_pool = ['cave_1'],
 		enemyarray = [['betrayal_confirmed_rebels_1', 1],['betrayal_confirmed_rebels_2', 1],['rebels_small', 0.5]],
-		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
+		final_enemy = [['final_boss_start',1]], final_enemy_type = 'event',
 		event_data = {
 			dungeon_find_chest_easy = {
 				limit = 0,
@@ -779,7 +969,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 			event_dungeon_prisoner = {
 				limit = 1,
@@ -787,7 +983,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'man',
 				events = ['event_dungeon_prisoner'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
 			},
 		},
 		
@@ -819,28 +1021,29 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local',
 		events = [],
-		quest = true,
+		tags = ['quest'],
 
 		area = 'plains',
 		travel_time = [1,1],
-		scripteventdata = [
-			{trigger = 'enter', event = 'custom_event', args = 'initiate_hideout_attack', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_6'}]},
+		scripteventdata = [ #2fix all, possibly add functional
+			{trigger = 'enter', args = 'initiate_hideout_attack'},
+			{trigger = 'stage', args = 'guild_attack_on_hideout_1', stage = 'half'},
 			# hard no mages help
-			{trigger = 'finish_combat', event = 'custom_event', args = 'guild_attack_on_hideout_1',reqs = [
-				{code = 'value_check', type = 'decision', value = 'MagesHelpDuncan', check = false}, 
-				{code = 'value_check', type = 'event_seen', check = false, value = 'guild_attack_on_hideout_1'}, 
-				{code = 'stage', value = 3, operant = 'gte'}]},
-			{trigger = 'finish_combat', event = 'custom_event', args = 'final_boss_start',reqs = [
-				{code = 'value_check', type = 'decision', value = 'MagesHelpDuncan', check = false},
-				{code = 'stage', value = 7, operant = 'gte'}]},
-			# easy with mages help
-			{trigger = 'finish_combat', event = 'custom_event', args = 'guild_attack_on_hideout_1',reqs = [
-				{code = 'value_check', type = 'decision', value = 'MagesHelpDuncan', check = true}, 
-				{code = 'value_check', type = 'event_seen', check = false, value = 'guild_attack_on_hideout_1'}, 
-				{code = 'stage', value = 2, operant = 'gte'}]},
-			{trigger = 'finish_combat', event = 'custom_event', args = 'final_boss_start',reqs = [
-				{code = 'value_check', type = 'decision', value = 'MagesHelpDuncan', check = true}, 
-				{code = 'stage', value = 5, operant = 'gte'}]}
+#			{trigger = 'finish_combat', args = 'guild_attack_on_hideout_1', reqs = [
+#				{code = 'value_check', type = 'decision', value = 'MagesHelpDuncan', check = false}, 
+#				{code = 'value_check', type = 'event_seen', check = false, value = 'guild_attack_on_hideout_1'}, 
+#				{code = 'stage', value = 3, operant = 'gte'}]},
+#			{trigger = 'finish_combat', event = 'custom_event', args = 'final_boss_start',reqs = [
+#				{code = 'value_check', type = 'decision', value = 'MagesHelpDuncan', check = false},
+#				{code = 'stage', value = 7, operant = 'gte'}]},
+#			# easy with mages help
+#			{trigger = 'finish_combat', event = 'custom_event', args = 'guild_attack_on_hideout_1',reqs = [
+#				{code = 'value_check', type = 'decision', value = 'MagesHelpDuncan', check = true}, 
+#				{code = 'value_check', type = 'event_seen', check = false, value = 'guild_attack_on_hideout_1'}, 
+#				{code = 'stage', value = 2, operant = 'gte'}]},
+#			{trigger = 'finish_combat', event = 'custom_event', args = 'final_boss_start',reqs = [
+#				{code = 'value_check', type = 'decision', value = 'MagesHelpDuncan', check = true}, 
+#				{code = 'stage', value = 5, operant = 'gte'}]}
 		]
 	},
 	
@@ -865,7 +1068,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -873,7 +1081,12 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			}
 		},
 		
@@ -905,12 +1118,14 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local',
 		events = [],
-		quest = true,
+		tags = ['quest'],
 		area = 'plains',
 		travel_time = [1,1], 
 		options = [],
-		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'gryphon_forest_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_FOREST_START'}]},
-		{trigger = 'dungeon_complete', event = 'custom_event', args = 'gryphon_forest_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_FOREST_1'}]}]
+		scripteventdata = [
+			{trigger = 'enter', args = 'gryphon_forest_start'},
+			{trigger = 'dungeon_complete', args = 'gryphon_forest_1'}
+		]
 	},
 	
 	quest_ritual_location = {
@@ -934,7 +1149,14 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_medium'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			freya_shrine_find = {
 				limit = 1,
@@ -942,7 +1164,14 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = [],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			}
 		},
 		
@@ -974,10 +1203,10 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local', 
 		events = [],
-		quest = true,
+		tags = ['quest'],
 		area = 'forests',
 		travel_time = [2,2],
-		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'pre_ritual_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRE_RITUAL_1'}]}],
+		scripteventdata = [{trigger = 'enter', args = 'pre_ritual_1'}],
 	},
 	
 	quest_amelia_bandits_location = {
@@ -1001,7 +1230,11 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1],
+				],
 			},
 			event_dungeon_prisoner = {
 				limit = 1,
@@ -1009,7 +1242,11 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'man',
 				events = ['event_dungeon_prisoner'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1],
+				],
 			},
 		},
 		
@@ -1035,12 +1272,12 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local',
 		events = [],
-		quest = true,
+		tags = ['quest'],
 		options = [],
 		area = 'plains',
 		travel_time = [1,1],
 		scripteventdata = [
-		{trigger = 'dungeon_complete', event = 'custom_event', args = 'amelia_prison_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'AMELIA_PRISON_1'}]}]
+		{trigger = 'dungeon_complete', args = 'amelia_prison_1'}]
 	},
 	
 	quest_dungeon_grove = {
@@ -1061,7 +1298,11 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [], 
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+				],
 			},
 			event_fairy_friendly = {
 				limit = 1,
@@ -1069,7 +1310,11 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'man',
 				events = ['event_fairy_friendly'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -1077,7 +1322,11 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+				],
 			}
 		},
 		
@@ -1123,7 +1372,7 @@ var dungeons = {
 		purchase_price = 100,
 		affiliation = 'local',
 		events = [],
-		quest = true,
+		tags = ['quest'],
 		area = 'forests',
 		travel_time = [1,1],
 		scripteventdata = [
@@ -1153,8 +1402,12 @@ var dungeons = {
 				icon = 'chest',
 				events = ['dungeon_find_chest_medium'],
 				possible_challenges = [
-					{code = 'event_lock_easy', weight = 1, stamina = [6,10]}
-				], 
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			event_tribal_elves = {
 				limit = 1,
@@ -1162,7 +1415,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'person',
 				events = ['event_tribal_elves'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			spring = {
 				limit = 1,
@@ -1170,7 +1429,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['spring'],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			},
 			celena_shrine_find = {
 				limit = 1,
@@ -1178,7 +1443,13 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = [['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5]],
-				possible_challenges = [],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
 			}
 		},
 		
@@ -1224,34 +1495,90 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local',
 		events = [],
-		quest = true,
-
+		tags = ['quest'],
+		
 		area = 'forests',
 		travel_time = [1,1],
 		scripteventdata = [
-			{trigger = 'dungeon_complete', event = 'custom_event', args = 'zephyra_brush_3', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'ZEPHYRA_BRUSH_3'}]}
+			{trigger = 'dungeon_complete', args = 'zephyra_brush_3'}
 		]
 	},
 	
 	################### Old quest data with no dungeons
-	
 	quest_fighters_lich = {
 		code = 'quest_fighters_lich',
-		type = 'quest_location',
+		type = 'dungeon',
 		name = tr("QUEST_FIGHTERS_LICH_TEXT"),
-		area = 'plains',
 		classname = '',
 		descript = tr("QUEST_FIGHTERS_LICH_DESC"),
-		difficulty = 'easy',
-		background = 'cave_1',
-		enemyarray =  [],
-		eventarray = [],
-		levels = [1,1],
-		resources = [],
-		stages_per_level = [1,1],
+		character_data = {
+			chance_mod = 1.5,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
+		difficulty = 'medium',
+		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
+		enemyarray = [['tutorial_lich_fight', 1]],
+		final_enemy = [['lich_enc_initiate',1]], final_enemy_type = 'event',
+		event_data = {
+			dungeon_find_chest_easy = {
+				limit = 0,
+				weight = 10,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['dungeon_find_chest_easy'],
+				possible_challenges = [
+					['event_locked_door',1],
+				],
+			},
+		},
+		
+		event_room_number = [1,1],
+		material_room_number = [1,1],
+		
+		main_route_length = [3,3],
+		bonus_rooms = [0,0],
+		levels = [1,1], 
+		base_room_stamina_cost = [5,5],
+		
+		resources = ['cloth','leather','iron','wood','clothsilk'],
+		gatherable_resources = {
+			stone = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			}, 
+		gather_mod = [2,2.5],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local',
 		events = [],
-		travel_time = [1,1],#[2,2],
+		tags = ['quest'],
+		options = [],
+		area = 'plains',
+		travel_time = [1,1],
+		scripteventdata = [
+		{trigger = '', args = ''}]
 	},
+	
+#	quest_fighters_lich = {
+#		code = 'quest_fighters_lich',
+#		type = 'quest_location',
+#		name = tr("QUEST_FIGHTERS_LICH_TEXT"),
+#		area = 'plains',
+#		classname = '',
+#		descript = tr("QUEST_FIGHTERS_LICH_DESC"),
+#		difficulty = 'easy',
+#		background = 'cave_1',
+#		enemyarray =  [],
+#		eventarray = [],
+#		levels = [1,1],
+#		resources = [],
+#		stages_per_level = [1,1],
+#		events = [],
+#		travel_time = [1,1],#[2,2],
+#	},
 	quest_mages_xari = {
 		code = 'quest_mages_xari',
 		type = 'encounter',
@@ -1268,6 +1595,7 @@ var dungeons = {
 		stages_per_level = [1,1],
 		travel_time = [1,1], #[3,3],
 		events = [],
+		tags = ['quest'],
 	},
 	quest_mages_fred = {
 		code = 'quest_mages_fred',
@@ -1285,6 +1613,7 @@ var dungeons = {
 		stages_per_level = [1,1],
 		travel_time = [1,1],#[2,2],
 		events = [],
+		tags = ['quest'],
 	},
 
 	basic_threat_wolves = {
@@ -1301,6 +1630,7 @@ var dungeons = {
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
+		tags = [],
 	},
 	basic_threat_rebels = {
 		code = 'basic_threat_rebels',
@@ -1316,6 +1646,7 @@ var dungeons = {
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
+		tags = [],
 	},
 	basic_threat_goblins = {
 		code = 'basic_threat_goblins',
@@ -1330,7 +1661,8 @@ var dungeons = {
 		levels = [1,1],
 		resources = [],
 		stages_per_level = [1,1],
-		events = []
+		events = [],
+		tags = [],
 	},
 	basic_threat_ogre = {
 		code = 'basic_threat_ogre',
@@ -1346,6 +1678,7 @@ var dungeons = {
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
+		tags = [],
 	},
 	basic_threat_troll = {
 		code = 'basic_threat_troll',
@@ -1361,6 +1694,7 @@ var dungeons = {
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
+		tags = [],
 	},
 	quest_cali_village = {
 		code = 'quest_cali_village',
@@ -1376,6 +1710,7 @@ var dungeons = {
 		resources = [],
 		stages_per_level = [1,1],
 		events = [],
+		tags = [],
 		area = 'plains',
 		travel_time = [1,1],
 	},
@@ -1401,7 +1736,7 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local',
 		events = [],
-		quest = true,
+		tags = ['quest'],
 		area = 'plains',
 		travel_time = [1,1],
 		scripteventdata = []
@@ -1429,7 +1764,7 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local', #defines character races and events
 		events = [],
-		quest = true,
+		tags = ['quest'],
 		area = 'plains',
 		travel_time = [1,1], #[4,6],
 		scripteventdata = []
@@ -1457,7 +1792,7 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local', #defines character races and events
 		events = [],
-		quest = true,
+		tags = ['quest'],
 		area = 'forests',
 		travel_time = [2,2],
 		scripteventdata = [],
@@ -1481,7 +1816,7 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local', 
 		events = [],
-		quest = true,
+		tags = ['quest'],
 		area = 'plains',
 		travel_time = [1,1],
 		scripteventdata = []
@@ -1505,7 +1840,7 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local', 
 		events = [],
-		quest = true,
+		tags = ['quest'],
 		area = 'forests',
 		travel_time = [1,1],
 		scripteventdata = []
@@ -1529,7 +1864,7 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local', 
 		events = [],
-		quest = true,
+		tags = ['quest'],
 		area = 'forests',
 		travel_time = [1,1],
 		scripteventdata = []
@@ -1553,7 +1888,7 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local', 
 		events = [],
-		quest = true,
+		tags = ['quest'],
 		area = 'forests',
 		travel_time = [1,1],
 		scripteventdata = []
@@ -1577,7 +1912,7 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local', 
 		events = [],
-		quest = true,
+		tags = ['quest'],
 		area = 'forests',
 		travel_time = [1,1],
 		scripteventdata = []
@@ -1601,7 +1936,7 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local', 
 		events = [],
-		quest = true,
+		tags = ['quest'],
 		area = 'plains',
 		travel_time = [1,1],
 		scripteventdata = []
@@ -1625,7 +1960,7 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local', 
 		events = [],
-		quest = true,
+		tags = ['quest'],
 		area = 'mountains',
 		travel_time = [1,1],
 		scripteventdata = []
@@ -1649,7 +1984,7 @@ var dungeons = {
 		purchase_price = 0,
 		affiliation = 'local', 
 		events = [],
-		quest = true,
+		tags = ['quest'],
 		area = 'mountains',
 		travel_time = [1,1],
 		scripteventdata = []

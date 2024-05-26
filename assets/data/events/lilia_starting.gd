@@ -13,7 +13,7 @@ var data = {
 		text = [{text = "LILIA_PRELUDE2", reqs = []}],
 		options = [{
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
-			bonus_effects = [{code = 'progress_quest', value = 'lilia_meet_quest', stage = 'stage1'},{code = 'update_location'}]
+			bonus_effects = [{code = 'progress_quest', value = 'lilia_meet_quest', stage = 'stage1'},{code = 'update_city'}]
 		},]
 	},
 	

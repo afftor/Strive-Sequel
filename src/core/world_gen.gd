@@ -46,7 +46,7 @@ func make_area(code):
 		ResourceScripts.game_world.capitals.append(areadata.capital_code)
 		areadata.capital = {}
 		ResourceScripts.game_world.location_links[areadata.capital_code] = {name = areadata.capital_name, area = areadata.code, type = 'capital', travel_time = 0, category = 'capital', id = areadata.capital_code}
-		areadata.capital[areadata.capital_code] = {name = areadata.capital_name, area = areadata.code, type = 'capital', travel_time = 0, category = 'capital', id = areadata.capital_code, group = {}}
+		areadata.capital[areadata.capital_code] = {name = areadata.capital_name, area = areadata.code, type = 'capital', travel_time = 0, category = 'capital', id = areadata.capital_code, group = {}, tags = []}
 	for i in areadata.guilds:
 		make_guild(i, areadata)
 	areadata.erase('guilds')
@@ -317,7 +317,9 @@ func make_settlement(code, area):
 
 func make_location(code, area):
 	var location = DungeonData.dungeons[code].duplicate(true)
+#	var location = DungeonData.dungeons['quest_fighters_lich'].duplicate(true)
 	location.stamina = 100
+	location.active = true
 	var text = tr(location.name)
 	if worlddata.locationnames.has(location.name+'_adjs'):
 		text = tr("LOCATIONTHE") + tr(worlddata.locationnames[location.name+"_adjs"][randi() % worlddata.locationnames[location.name + "_adjs"].size()]) + " " + tr(worlddata.locationnames[location.name+"_nouns"][randi() % worlddata.locationnames[location.name + "_nouns"].size()])
@@ -337,7 +339,7 @@ func make_location(code, area):
 	location.resources = location.resources
 #	location.randomevents = location.eventarray
 	location.scriptedevents = []
-	location.progress = {main = 1, full = 1} #in rooms, currently not used
+	location.progress = {main = 0, full = 0} #in rooms
 	location.completed = false
 	location.stagedenemies = [] #obsolete
 	location.enemies = location.enemyarray.duplicate(true)
@@ -353,22 +355,17 @@ func make_location(code, area):
 	if location.has('background_pool'):
 		location.background = location.background_pool[randi()%location.background_pool.size()]
 		location.erase("background_pool")
-	if location.has("final_enemy"):
-		var bossenemy = input_handler.weightedrandom(location.final_enemy)
-#		if location.final_enemy_type == 'character':
-#			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
 		#temp out
 #		location.scriptedevents.append({trigger = 'dungeon_complete', event = 'custom_event', args = 'event_dungeon_complete_loot_' + location.difficulty, reqs = []}) 
 #	if location.has('gather_limit_resources'):
 #		location.scriptedevents.append({trigger = 'dungeon_complete', event = 'custom_event', args = 'event_dungeon_unlock_resources', reqs = []})
-	if location.has('scripteventdata'):
-		for script in location.scripteventdata:
-			location.scriptedevents.append(script)
 
 	#location.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {}})
 	ResourceScripts.game_world.locationcounter += 1
 	location.erase('difficulties')
 	if location.type == 'dungeon':
+		dungeon_full = 0
+		dungeon_mainline = 0
 		location.dungeon = []
 		for i in range(levelnumber):
 			build_floor_first_pass(location, i)
@@ -376,6 +373,36 @@ func make_location(code, area):
 		var ev_pool = build_subrooms_pool(location)
 		for i in range(levelnumber):
 			finalize_subrooms(location, ev_pool, i)
+		location.stagedevents = {
+			main = {},
+			full = {},
+			room = {}
+		}
+		if location.has("final_enemy"):
+#			var bossenemy = input_handler.weightedrandom(location.final_enemy)
+			if location.final_enemy_type == 'character':
+				location.stagedevents.main[dungeon_mainline] = {event = 'character_boss_defeat'}
+		if location.has('scripteventdata'):
+			for scr in location.scripteventdata:
+				match scr.trigger:
+					'enter':
+						location.stagedevents.main[1] = {event = scr.args}
+						if scr.has('reqs'):
+							location.stagedevents.main[1].reqs = scr.reqs
+					'dungeon_complete':
+						location.stagedevents.main[dungeon_mainline] = {event = scr.args}
+						if scr.has('reqs'):
+							location.stagedevents.main[dungeon_mainline].reqs = scr.reqs
+					'stage':
+						match scr.stage:
+							'half':
+								location.stagedevents.main[dungeon_mainline / 2] = {event = scr.args}
+								if scr.has('reqs'):
+									location.stagedevents.main[dungeon_mainline / 2].reqs = scr.reqs
+							'-1':
+								location.stagedevents.main[dungeon_mainline - 1] = {event = scr.args}
+								if scr.has('reqs'):
+									location.stagedevents.main[dungeon_mainline - 1].reqs = scr.reqs
 	return location
 
 func fill_faction_quests(faction, area):
@@ -857,6 +884,7 @@ var level_template = {
 	rooms = [],
 	first_room = "",
 	last_room = "",
+	mainline = 0
 }
 
 var room_template = {
@@ -866,31 +894,52 @@ var room_template = {
 	type = 'empty',
 	stamina_cost = 0,
 	mainline = true,
+	first_time = true,
+	challenge = null,
 	neighbours = {up = null, down = null, left = null, right = null},
 	subrooms = [null, null, null, null]
 }
 var subroom_template = {
 	stamina_cost = 0,
 	type = 'empty',
+	challenge = null
 }
+var dungeon_mainline = 0
+var dungeon_full = 0
+
 
 func build_room(packed_vertex, locdata = dungeon_template):
 	var res = room_template.duplicate(true)
 	var vertex = DungeonGen.unpack_vertex(packed_vertex)
 	res.col = vertex[1]
 	res.row = vertex[0]
-	res.type = 'combat' #2add roll for enemy after making fixed enemy combats call 
+	res.type = 'combat' 
+	res.stamina_cost = locdata.base_room_stamina_cost
+	if res.stamina_cost is Array:
+		res.stamina_cost = globals.rng.randi_range(res.stamina_cost[0], res.stamina_cost[1])
 	if DungeonGen.tuning[packed_vertex] > 0:
 		res.mainline = false
 	if packed_vertex == DungeonGen.pack_vertex(DungeonGen.diameter.front()):
 		res.type = 'ladder_up'
 		res.status = 'obscured'
+		res.stamina_cost = 0
 	elif packed_vertex == DungeonGen.pack_vertex(DungeonGen.diameter.back()):
 		res.type = 'ladder_down'
+		res.stamina_cost = 0
 	else:
-		res.stamina_cost = locdata.base_room_stamina_cost
-		if res.stamina_cost is Array:
-			res.stamina_cost = globals.rng.randi_range(res.stamina_cost[0], res.stamina_cost[1])
+		globals.reset_roll_data()
+		var enemygroup = input_handler.weightedrandom(locdata.enemies)
+		res.enemy_code = enemygroup
+		var edata = Enemydata.enemygroups[enemygroup]
+		res.enemies = globals.makerandomgroup(edata)
+		if edata.has('challenges'):
+			var ch_roll = input_handler.weightedrandom(edata.challenges)
+			if edata.has('challenge_chance'):
+				if globals.rng.randf() < edata.challenge_chance:
+					res.challenge = ch_roll
+			else:
+				res.challenge = ch_roll
+		res.rare = globals.char_roll_data.rare
 #	#subrooms:
 #		if globals.rng.randf() < variables.subroom_chance:
 #			for i in range(4):
@@ -922,14 +971,16 @@ func build_room(packed_vertex, locdata = dungeon_template):
 
 
 func build_floor_first_pass(locdata, level):
-#	var generate_data = locdata.duplicate()
-	var generate_data = dungeon_template #temporal
+	var generate_data = locdata.duplicate()
+#	var generate_data = dungeon_template #temporal
 	var res = level_template.duplicate(true)
 	var nm = locdata.id + "L" + str(level)
 	if !DungeonGen.generate(generate_data.duplicate(true)):
 		print ('generation error')
 		return
 	
+	res.mainline = DungeonGen.diameter.size()
+	dungeon_mainline += DungeonGen.diameter.size()
 	for room in range(DungeonGen.tuning.size()):
 		if DungeonGen.tuning[room] > 50:
 			continue
@@ -942,9 +993,55 @@ func build_floor_first_pass(locdata, level):
 		if room == DungeonGen.pack_vertex(DungeonGen.diameter.back()):
 			res.last_room = r_nm
 			if level == (locdata.levels - 1):
-				tmp.type = 'combat_boss'
+				tmp.stamina_cost = locdata.base_room_stamina_cost
+				if tmp.stamina_cost is Array:
+					tmp.stamina_cost = globals.rng.randi_range(tmp.stamina_cost[0], tmp.stamina_cost[1])
+				if locdata.has("final_enemy"):
+					var bossenemy = input_handler.weightedrandom(locdata.final_enemy)
+					if locdata.final_enemy_type == 'event':
+						tmp.type = 'event'
+						tmp.event = bossenemy
+					else:
+						tmp.type = 'combat_boss'
+						globals.reset_roll_data()
+						tmp.enemy_code = bossenemy
+						var edata = Enemydata.enemygroups[bossenemy]
+						tmp.enemies = globals.makerandomgroup(edata)
+						if edata.has('challenges'):
+							var ch_roll = input_handler.weightedrandom(edata.challenges)
+							if edata.has('challenge_chance'):
+								if globals.rng.randf() < edata.challenge_chance:
+									tmp.challenge = ch_roll
+							else:
+								tmp.challenge = ch_roll
+						tmp.rare = globals.char_roll_data.rare
+				else:
+					tmp.type = 'combat'
+					globals.reset_roll_data()
+					var enemygroup = input_handler.weightedrandom(locdata.enemies)
+					tmp.enemy_code = enemygroup
+					var edata = Enemydata.enemygroups[enemygroup]
+					tmp.enemies = globals.makerandomgroup(edata)
+					if edata.has('challenges'):
+						var ch_roll = input_handler.weightedrandom(edata.challenges)
+						if edata.has('challenge_chance'):
+							if globals.rng.randf() < edata.challenge_chance:
+								tmp.challenge = ch_roll
+						else:
+							tmp.typchallengee = ch_roll
+					tmp.rare = globals.char_roll_data.rare
+				
+		if room == DungeonGen.pack_vertex(DungeonGen.diameter[-2]):
+#			res.last_room = r_nm
+			if level == (locdata.levels - 1):
+				pass
+			else:
+				tmp.rare = false
+				tmp.miniboss = true
 		ResourceScripts.game_world.rooms[r_nm] = tmp
 		res.rooms.push_back(r_nm)
+	
+	dungeon_full += res.rooms.size()
 	
 	for edge in DungeonGen.final_edges:
 		var un_edge = DungeonGen.unpack_edge(edge)
@@ -980,11 +1077,11 @@ func build_subrooms_pool(locdata):
 		pool.push_back('material')
 	
 	pool.shuffle()
-	while pool.size() > locdata.levels:
+	while pool.size() >= locdata.levels:
 		for i in range(locdata.levels):
 			res[i].push_back(pool.back())
 			pool.pop_back()
-	while pool.size() <= locdata.levels:
+	while pool.size() < locdata.levels:
 		pool.push_back("")
 	pool.shuffle()
 	for i in range(locdata.levels):
@@ -1036,15 +1133,25 @@ func finalize_subrooms(locdata, subrooms, level):
 						pool.push_back([event, locdata.event_data[event].weight])
 					var roll = input_handler.weightedrandom(pool)
 					var e_data = locdata.event_data[roll]
-					if e_data.events[0] is Array:
-						tmp.event = input_handler.weightedrandom(e_data.events)
+					if e_data.events is Array:
+						if e_data.events[0] is Array:
+							tmp.event = input_handler.weightedrandom(e_data.events)
+						else:
+							tmp.event = input_handler.random_from_array(e_data.events)
 					else:
-						tmp.event = input_handler.random_from_array(e_data.events)
+						tmp.event = e_data.events
 					tmp.possible_challenges = e_data.possible_challenges.duplicate() #or roll 
 					tmp.icon = e_data.icon
 					e_data.limit -= 1
 					if e_data.limit == 0:
 						locdata.event_data.erase(roll)
+#					e_data.possible_challenges = [{code = 'event_locked_door', weight = 1}]
+					if !e_data.possible_challenges.empty():
+#						pool.clear()
+#						for ch in e_data.possible_challenges:
+#							pool.push_back([ch.code, ch.weight])
+						tmp.challenge = input_handler.weightedrandom(e_data.possible_challenges)
+						
 				'material':
 					tmp.type = 'resource'
 					var pool = []

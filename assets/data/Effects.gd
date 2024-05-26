@@ -466,6 +466,16 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
+	work_rule_masturbation = {
+		code = 'work_rule_masturbation',
+		type = 'static',
+		atomic = [
+			{type = 'stat_add', stat = 'obedience_drain', value = 2},
+			{type = 'stat_add_p', stat = 'lusttick', value = 0.15},
+		],
+		buffs = [],
+		sub_effects = [],
+	},
 	e_tr_potion = {
 		type = 'trigger',
 		trigger = [variables.TR_HIT],
@@ -595,7 +605,7 @@ var effect_table = {
 			],
 		atomic = [],
 		buffs = [],#'b_power_pot'],
-		args = [{obj = 'parent', param = 'caster'}, {obj = 'parent', param = 'target'}],
+		args = [{obj = 'skill', param = 'caster'}, {obj = 'skill', param = 'target'}],
 		sub_effects = ['e_s_bishop']
 	},
 	e_tr_sniper = rebuild_skillvalue_template({num_targets = 'single', skilltype = 'skill', tag = 'damage', value = 1.25}),
@@ -3623,7 +3633,7 @@ var effect_table = {
 		type = 'temp_global',
 		tags = ['duration_turns', 'affliction'],
 		target = 'target',
-		name = 'bishop_debuf',
+		name = 'Luminance',
 		stack = 1,
 		timers = [
 			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 3}, #3 turn duration
@@ -5391,7 +5401,7 @@ var buffs = {
 	b_bishop = {
 		icon = "res://assets/images/iconsskills/Sedate.png",
 		description = "BUFFDESCRIPTBISHOP",
-		t_name = 'bishop_debudd',
+		t_name = 'bishop_debuff',
 		combat_only = true
 	},
 	b_sleep = {
@@ -5461,7 +5471,7 @@ var buffs = {
 		limit = 1,
 		combat_only = true
 	},
-	b_resto= {
+	b_resto = {
 		icon = "res://assets/images/traits/hitrate.png",
 		description = "BUFFDESCRIPTRESTO",
 		limit = 1,

@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.8.6 experimental'
+const gameversion = '0.8.6 experimental 5'
 
 #time
 signal hour_tick
@@ -282,6 +282,8 @@ func get_item_id_by_code(itembase):
 
 
 func disconnect_text_tooltip(node):
+	if node == null or !is_instance_valid(node):
+		return
 	if node.is_connected("mouse_entered",self,'showtexttooltip'):
 		node.disconnect("mouse_entered",self,'showtexttooltip')
 
@@ -291,6 +293,8 @@ func connecttexttooltip(node, text, move_right = false):
 	node.connect("mouse_entered",self,'showtexttooltip', [node, text, move_right])
 
 func showtexttooltip(node, text, move_right):
+	if node == null or !is_instance_valid(node) or !node.is_visible_in_tree():
+		return
 	var texttooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP) #input_handler.GetTextTooltip()
 	texttooltip.showup(node, text, move_right)
 
@@ -1172,8 +1176,10 @@ func start_fixed_event(ev):
 
 
 func start_unique_event():
+	if gui_controller.exploration_dungeon == null:
+		return false
 	var eventtriggered = false
-	var location = input_handler.active_location
+	var location = gui_controller.exploration_dungeon.active_location
 	var active_array = []
 	for i in worlddata.random_dungeon_events:
 		var event = worlddata.random_dungeon_events[i]
@@ -1181,8 +1187,8 @@ func start_unique_event():
 			continue
 		if !event.dungeons.has(str(location.code)): 
 			continue
-		if event.has('levels') and !event.levels.has(gui_controller.exploration_dungeon.active_location.current_level + 1): 
-			continue
+#		if event.has('levels') and !event.levels.has(gui_controller.exploration_dungeon.active_location.current_level + 1): 
+#			continue
 		if event.has('reqs') and !checkreqs(event.reqs): 
 			continue
 		active_array.append(event.event)
@@ -1275,7 +1281,6 @@ func StartCombat(encounter = null):
 		return
 	
 	var enemies
-	var enemy_stats_mod = 1
 	match data.unittype:
 		'randomgroup':
 			enemies = make_enemies(data.unitcode, true)
@@ -1284,7 +1289,7 @@ func StartCombat(encounter = null):
 	
 	input_handler.combat_node.encountercode = data.unitcode
 	input_handler.combat_node.set_norun_mode(true)
-	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, data.bg, data.bgm, enemy_stats_mod)
+	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, data.bg, data.bgm)
 
 func StartQuestCombat(encounter):
 	pass
@@ -1303,12 +1308,12 @@ func StartAreaCombat(): #rnd all and always
 	enemies = make_enemies(enemydata)
 
 	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * gui_controller.exploration_dungeon.active_location.current_level
-	
+	var data = {enemy_stats_mod = enemy_stats_mod}
 	if input_handler.combat_node == null:
 		input_handler.combat_node = input_handler.get_combat_node()
 	input_handler.combat_node.encountercode = enemydata
 	input_handler.combat_node.set_norun_mode(false)
-	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, 'background', music, enemy_stats_mod)
+	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, 'background', music, data)
 
 
 func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
@@ -1319,24 +1324,31 @@ func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
 	var enemies = []
 	var music = 'combattheme'
 	
-	enemydata = data.enemy
+	enemydata = data.enemy_code
+	enemies = data.enemies.duplicate(true)
+	
+	char_roll_data.rare = data.rare
 
-	enemies = make_enemies(enemydata)
+#	enemies = make_enemies(enemydata)
 	if data.has('miniboss') and data.miniboss:
 		char_roll_data.mboss = true
 		for pos in enemies:
-			if enemies[pos] == null: continue
+			if enemies[pos] == null: 
+				continue
 			if enemies[pos].ends_with('_rare'):
 				enemies[pos] = enemies[pos].trim_suffix("_rare")
 			enemies[pos] += "_miniboss"
 
 	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * gui_controller.exploration_dungeon.active_location.current_level
-	
+	var combat_data = {enemy_stats_mod = enemy_stats_mod}
+	for arg in ['instawin', 'hpmod', 'xp_mod']:
+		if data.has(arg):
+			combat_data[arg] = data[arg]
 	if input_handler.combat_node == null:
 		input_handler.combat_node = input_handler.get_combat_node()
 	input_handler.combat_node.encountercode = enemydata
 	input_handler.combat_node.set_norun_mode(false)
-	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, 'background', music, enemy_stats_mod)
+	input_handler.combat_node.start_combat(gui_controller.exploration_dungeon.active_location.group, enemies, 'background', music, combat_data)
 
 
 func make_enemies(enemydata, quest = false):
@@ -1530,29 +1542,30 @@ func get_rolled_diff(): #excluding event bonus
 	return t_diff
 
 
+
 func roll_characters():
 	var res = []
 	if char_roll_data.no_roll:
 		reset_roll_data()
 		return res
-	var chance1 = 0.25
-	var chance2 = 0.1
+	var chance1 = variables.dungeon_character_chances.initial_char_chance
+	var chance2 = variables.dungeon_character_chances.initial_second_char_chance
 	
 	if char_roll_data.rare: 
-		chance1 = 0.5
-		chance2 = 0.15
+		chance1 = variables.dungeon_character_chances.rare_char_chance
+		chance2 = variables.dungeon_character_chances.rare_second_char_chance
 	if char_roll_data.uniq: 
-		chance1 = 1.0
+		chance1 = variables.dungeon_character_chances.boss_chance
 	if char_roll_data.mboss: 
-		chance1 = 0.5
-		chance2 = 0.0
+		chance1 = variables.dungeon_character_chances.mboss_chance
+		chance2 = variables.dungeon_character_chances.mboss_second_chance
 #	if char_roll_data.trait_bonus: not implemented
 #		chance1 = 0.5
 #		chance2 = 0.15
 	
 	var t_diff = get_rolled_diff()
-	if char_roll_data.event: t_diff += 2
-	if char_roll_data.mboss: t_diff += 2
+	if char_roll_data.event: t_diff += variables.dungeon_character_chances.event_diff_bonus
+	if char_roll_data.mboss: t_diff += variables.dungeon_character_chances.mboss_diff_bonus
 	
 	var t_race = 'random'
 	var areadata = input_handler.active_area
@@ -1788,18 +1801,18 @@ func common_effects(effects):
 
 						number -= 1
 			'update_guild':
-				if input_handler.exploration_node == null:
-					input_handler.exploration_node = gui_controller.exploration
-				input_handler.exploration_node.enter_guild(input_handler.active_faction)
+				if gui_controller.exploration_city == null:
+					gui_controller.exploration_city = input_handler.get_spec_node(input_handler.NODE_EXPLORATION_CITY, null, false, false)
+				gui_controller.exploration_city.enter_guild(gui_controller.exploration_city.active_faction)
 			'update_city':
-				#input_handler.exploration_node.enter_guild(input_handler.active_faction)
-				if input_handler.exploration_node == null:
-					input_handler.exploration_node = gui_controller.exploration
-				if input_handler.exploration_node != null:
-					input_handler.exploration_node.open_city(input_handler.active_location.id)
+				if gui_controller.exploration_city == null:
+					gui_controller.exploration_city = input_handler.get_spec_node(input_handler.NODE_EXPLORATION_CITY, null, false, false)
+				gui_controller.exploration_city.open_city()
 			'update_party':
 				if gui_controller.exploration != null:
 					gui_controller.exploration.build_location_group()
+				if gui_controller.exploration_dungeon != null:
+					gui_controller.exploration_dungeon.build_location_group()
 			'rewrite_save': #obsolete
 				pass
 #				if (int(ResourceScripts.game_globals.date) % input_handler.globalsettings.autosave_frequency == 0) and int(ResourceScripts.game_globals.hour) == 1:
@@ -1824,7 +1837,7 @@ func common_effects(effects):
 #				if input_handler.combat_explore:
 #					input_handler.exploration_node.advance()
 			'open_location': # {code = 'open_location', location = "SETTLEMENT_PLAINS1", area = "plains"}
-				gui_controller.exploration.show()
+#				gui_controller.exploration.show()
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
 				var location
@@ -1845,14 +1858,14 @@ func common_effects(effects):
 							area = area.code
 #					location = {id = location, area = area}
 					location = ResourceScripts.world_gen.get_location_from_code(location)
-					input_handler.active_location = location
+#					input_handler.active_location = location
 #					input_handler.exploration_node.open_city(location.id)
 					gui_controller.nav_panel.select_location(location.id)
-					continue
-				
-				location = ResourceScripts.world_gen.get_location_from_code(location.id) #dont understand why it is reqired
-				input_handler.active_location = location
-				input_handler.exploration_node.open_location(location)
+				else:
+					location = ResourceScripts.world_gen.get_location_from_code(location.id) #dont understand why it is reqired
+#					input_handler.active_location = location
+#					input_handler.exploration_node.open_location(location)
+					gui_controller.nav_panel.select_location(location.id)
 			'open_city': 
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
@@ -1898,10 +1911,19 @@ func common_effects(effects):
 				ResourceScripts.game_progress.completed_quests.append(i.value)
 			'complete_active_location':
 				complete_location(input_handler.active_location.id)
+			'set_completed_quest_location':
+				var data = ResourceScripts.world_gen.get_faction_from_code(i.id)
+				data.completed = true
+				data.active = false
 			'set_completed_active_location':
 				#input_handler.active_location.progress.level = input_handler.active_location.levels.size()
-				input_handler.active_location.progress.stage = input_handler.active_location.levels["L" + str(input_handler.active_location.levels.size())].stages
-				input_handler.active_location.completed = true
+#				input_handler.active_location.progress.stage = input_handler.active_location.levels["L" + str(input_handler.active_location.levels.size())].stages
+				if gui_controller.exploration_dungeon != null and gui_controller.exploration_dungeon.visible:
+					gui_controller.exploration_dungeon.active_location.completed = true
+					gui_controller.exploration_dungeon.active_location.active = false
+				if gui_controller.exploration != null and gui_controller.exploration.visible:
+					gui_controller.exploration.active_location.completed = true
+					gui_controller.exploration.active_location.active = false
 			'remove_active_location':
 				remove_location(input_handler.active_location.id)
 			'reputation':
@@ -2168,12 +2190,41 @@ func common_effects(effects):
 				if gui_controller.exploration_dungeon != null:
 					gui_controller.exploration_dungeon.add_stamina(i.value)
 			'clear_subroom':
-				if gui_controller.exploration_dungeon == null:
-					return
-				gui_controller.exploration_dungeon.clear_subroom()
+				if gui_controller.exploration_dungeon != null:
+					gui_controller.exploration_dungeon.clear_subroom()
+			'unlock_subroom':
+				if gui_controller.exploration_dungeon != null:
+					gui_controller.exploration_dungeon.unlock_subroom()
+			'unlock_combat':
+				if gui_controller.exploration_dungeon != null:
+					gui_controller.exploration_dungeon.unlock_combat()
+			'deny_combat':
+				if gui_controller.exploration_dungeon != null:
+					gui_controller.exploration_dungeon.deny_combat()
 			'add_subroom_res':
 				if gui_controller.exploration_dungeon != null:
 					gui_controller.exploration_dungeon.add_subroom_res()
+			'reveal_active_dungeon':
+				if gui_controller.exploration_dungeon != null:
+					var loc = gui_controller.exploration_dungeon.active_location
+					for dng in loc.dungeon:
+						var ddata = ResourceScripts.game_world.dungeons[dng]
+						for room in ddata.rooms:
+							var rdata = ResourceScripts.game_world.rooms[room]
+							if rdata.status != 'cleared':
+								rdata.status = 'scouted'
+					gui_controller.exploration_dungeon.update_map()
+			'alter_combat':
+				if gui_controller.exploration_dungeon != null:
+					var room = gui_controller.exploration_dungeon.selected_room
+					var rdata = ResourceScripts.game_world.rooms[room]
+					if i.victory == true:
+						rdata.instawin = true
+					if i.has("reduce_hp"):
+						rdata.hpmod = 1.0 - i.reduce_hp
+					if i.has('xp_mod'):
+						rdata.xp_mod = i.xp_mod
+			
 
 func after_wedding_event(character):
 	if character == null:
@@ -2403,9 +2454,14 @@ func valuecheck(dict):
 			if gui_controller.exploration_dungeon == null:
 				return false
 			return gui_controller.exploration_dungeon.location_chars_check(dict.value)
+<<<<<<< HEAD
 		'update_prts':
 			for ch in ResourceScripts.game_party.characters:
 				ch.update_prt()
+=======
+		'captured_number':
+				return input_handler.operate(dict.operant,input_handler.active_location.captured_characters.size(), dict.value)  
+>>>>>>> ea7fdc71df733df73a2ff9609061cbe8cb4b3d15
 
 
 func apply_starting_preset():

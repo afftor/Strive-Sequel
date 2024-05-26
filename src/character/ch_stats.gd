@@ -80,6 +80,8 @@ func fix_serialize():
 	statlist.consent = min(get_stat('consent'), 6)
 	bonuses.erase('consent_add')
 	bonuses.erase('consent_mul')
+	for st in ['chg_strength','chg_dexterity','chg_persuasion','chg_wisdom']:
+		bonuses.erase(st + '_add')
 	if parent.get_ref().is_master():
 		statlist.consent = 100
 	

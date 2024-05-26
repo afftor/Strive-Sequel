@@ -32,9 +32,13 @@ func update():
 	var gatherable_resources
 	if selected_location.type in ["dungeon",'encounter']:
 		dungeon = true
-		self.visible = !selected_location.gather_limit_resources.empty()
-#		if selected_location.completed:
-		gatherable_resources = selected_location.gather_limit_resources
+		if !selected_location.has('gather_limit_resources') or selected_location.gather_limit_resources.empty():
+			self.visible = false
+			gatherable_resources = null
+#			if selected_location.completed:
+		else:
+			self.visible = true
+			gatherable_resources = selected_location.gather_limit_resources
 	else:
 		if selected_location.has("category"):
 			if selected_location.category != "capital":

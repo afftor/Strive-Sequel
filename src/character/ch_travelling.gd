@@ -56,7 +56,11 @@ func set_travel_time(value):
 
 func check_location(value, completed = false):
 	if completed: return travel_time == 0 && location == value
-	else: return location == value
+	else: 
+		if location == 'travel' and value != 'travel':
+			return travel_target.location == value
+		else:
+			return location == value
 
 
 func same_location_with(ch_travel_mod):

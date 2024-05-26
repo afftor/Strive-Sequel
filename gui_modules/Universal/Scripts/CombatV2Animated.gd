@@ -19,7 +19,7 @@ var CombatAnimations = ResourceScripts.scriptdict.combat_animation.new()
 
 var debug = false
 
-
+var combat_data = {}
 var allowaction = false
 var highlightargets = false
 var allowedtargets = {}
@@ -29,6 +29,8 @@ var fightover = false
 var playergroup = {} #pos:hid
 var enemygroup = {}
 var currentactor
+
+var endturn
 
 var summons = [] #pos
 
@@ -167,8 +169,14 @@ func play_animation(anim):
 	anim_scene.queue_free()
 
 
+func reset_combat_data():
+	combat_data.instawin = false
+	combat_data.hpmod = 1.0
+	combat_data.xp_mod = 1.0
+	combat_data.enemy_stats_mod = 1.0
 
-func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', enemy_stats_mod = 1):
+
+func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', t_combat_data = {}):
 	#$Background.texture = images.backgrounds[background]
 	if music == "default":
 		music = 'battle1'
@@ -199,22 +207,30 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	$Rewards.visible = false
 	allowaction = false
 	$Button.disabled = true
+	reset_combat_data()
+	for arg in combat_data:
+		if t_combat_data.has(arg):
+			combat_data[arg] = t_combat_data[arg]
 	enemygroup = newenemygroup
 	playergroup = newplayergroup
 	for i in range(1,13):
 		battlefield[i] = null
-	buildenemygroup(enemygroup, enemy_stats_mod)
+	buildenemygroup(enemygroup)
 	buildplayergroup(playergroup)
 	autoskill_dummy.is_active = true
 	#victory()
 	#start combat triggers
 	CombatAnimations.force_end()
-	for i in playergroup.values() + enemygroup.values():
-		var tchar = characters_pool.get_char_by_id(i)
-		tchar.process_event(variables.TR_COMBAT_S)
-		tchar.displaynode.rebuildbuffs()
-	set_process_input(true)
-	select_actor()
+	if combat_data.instawin:
+		victory()
+	else:
+		for i in playergroup.values() + enemygroup.values():
+			var tchar = characters_pool.get_char_by_id(i)
+			tchar.process_event(variables.TR_COMBAT_S)
+			tchar.displaynode.rebuildbuffs()
+		set_process_input(true)
+		select_actor()
+
 
 func FinishCombat(victory = true):
 	victory_seq_run = false
@@ -416,6 +432,7 @@ func victory():
 		if i == null: #not sure why was this check added
 			continue
 		var tchar = characters_pool.get_char_by_id(i)
+		tchar.is_active = false
 		var count = 1
 		if tchar.tags.has('rare'):
 			count = 2
@@ -482,6 +499,7 @@ func victory():
 
 	input_handler.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
 	input_handler.ClearContainer($Rewards/ScrollContainer2/HBoxContainer)
+	rewardsdict.xp *= combat_data.xp_mod
 	var exp_per_character = rewardsdict.xp/playergroup.size()
 	for i in playergroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
@@ -675,12 +693,14 @@ func player_turn(pos):
 		activeaction = selected_character.get_skill_by_tag('default')
 		UpdateSkillTargets(selected_character, true)
 		var targ = get_random_target()
+		endturn = true
 		use_skill(selected_character.get_skill_by_tag('default'), selected_character, targ)
 		return
 	if selected_character.has_status('taunt_hard'):
 		var tchar = characters_pool.get_char_by_id(selected_character.taunt)
 #		selected_character.taunt = null
 		if can_be_taunted(selected_character, tchar):
+			endturn = true
 			use_skill(selected_character.get_skill_by_tag('default'), selected_character, tchar)
 			return
 		else:
@@ -855,6 +875,7 @@ func enemy_turn(pos):
 	skill_callback_args.caster = fighter
 	skill_callback_args.target = target
 	skill_callback_args.value = COPY_ENABLED
+	endturn = true
 	use_skill(castskill, fighter, target)
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -868,6 +889,7 @@ func enemy_turn(pos):
 		skill_callback_args.caster = fighter
 		skill_callback_args.target = target
 		skill_callback_args.value = COPY_ENABLED
+		endturn = true
 		use_skill(castskill, fighter, target)
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -892,6 +914,7 @@ func env_turn():
 		turns += 1
 		activecharacter = autoskill_dummy
 		autoskill_times -= 1
+		endturn = true
 		use_skill(autoskill, autoskill_dummy, get_proper_target_for_autoskill())
 		if autoskill_times == 0: autoskill = null
 		CombatAnimations.check_start()
@@ -1042,9 +1065,10 @@ func FighterPress(pos):
 	skill_callback_args.caster = activecharacter
 	skill_callback_args.target = characters_pool.get_char_by_id(battlefield[pos])
 	skill_callback_args.value = COPY_ENABLED
+	endturn = true
 	use_skill(activeaction, activecharacter, characters_pool.get_char_by_id(battlefield[pos]))
 
-func buildenemygroup(enemygroup, enemy_stats_mod):
+func buildenemygroup(enemygroup):
 	for i in range(1,7):
 		if enemygroup[i] != null:
 			enemygroup[i+6] = enemygroup[i]
@@ -1076,8 +1100,8 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 			tchar.add_trait('miniboss')
 		
 		for stat in ['hpmax', 'atk', 'matk', 'hitrate', 'armor', 'xpreward']:
-			tchar.mul_stat(stat, enemy_stats_mod)
-		tchar.hp = tchar.get_stat("hpmax")
+			tchar.mul_stat(stat, combat_data.enemy_stats_mod)
+		tchar.hp = tchar.get_stat("hpmax") * combat_data.hpmod
 		tchar.mp = tchar.get_stat("mpmax")
 		tchar.add_trait('core_trait')
 		battlefield[int(i)] = enemygroup[i]
@@ -1233,10 +1257,10 @@ func summon(montype, limit, combatgroup): #reworked
 
 
 func use_skill(skill_code, caster, target):
-
 	$ItemPanel.hide()
 	$Menu/Items.pressed = false
-	if activeaction != skill_code: activeaction = skill_code
+	if activeaction != skill_code:
+		activeaction = skill_code
 	#to add code for different costs
 	#and various limits and cooldowns
 	allowaction = false
@@ -1421,11 +1445,14 @@ func use_skill(skill_code, caster, target):
 		caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
 		effects_pool.process_event(variables.TR_SKILL_FINISH, caster)
 	s_skill1.remove_effects()
-	var endturn = !s_skill1.tags.has('instant')
+	endturn = endturn and !s_skill1.tags.has('instant')
 	#follow-up
 	if skill.has('follow_up') and fa:
-		use_skill(skill.follow_up, caster, target)
-	if skill.tags.has('not_final'): return
+		var tstate = use_skill(skill.follow_up, caster, target)
+		if typeof(tstate) == TYPE_OBJECT:
+			yield (tstate, 'compleated')
+	if skill.tags.has('not_final'): 
+		return
 
 	#final
 	turns += 1
@@ -1465,7 +1492,7 @@ func use_skill(skill_code, caster, target):
 		#instant skills cannot be copied in current realisation, but for now this is not a problem - for only item skills can be instants 
 		RebuildSkillPanel()
 		RebuildItemPanel()
-		SelectSkill(activeaction)
+		SelectSkill(skill_code)
 		eot = true
 	#emit_signal("skill_use_finshed")
 
@@ -1951,6 +1978,7 @@ func SelectSkill(skill):
 		skill_callback_args.caster = activecharacter
 		skill_callback_args.target = activecharacter
 		skill_callback_args.value = COPY_ENABLED
+		endturn = true
 		call_deferred('use_skill', activeaction, activecharacter, activecharacter)
 
 func RebuildItemPanel():

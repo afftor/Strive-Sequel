@@ -46,7 +46,7 @@ func open(classcode, person):
 	
 	text = tr('CLASSREQS')+":\n"
 	if tempclass.reqs.size() > 0 && tempclass.reqs[0].code != 'disabled':
-		if gui_controller.exploration != null && gui_controller.exploration.get_node("GuildShop").is_visible():
+		if gui_controller.exploration_city != null && gui_controller.exploration_city.get_node("GuildShop").is_visible():
 			text += ResourceScripts.descriptions.get_class_reqs(person, tempclass, false)
 		else:
 			text += ResourceScripts.descriptions.get_class_reqs(person, tempclass)

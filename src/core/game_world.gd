@@ -27,10 +27,30 @@ func serialize():
 
 func fix_serialization():
 	update_guilds_data()
+	
+	for dn in dungeons.values():
+		dn.mainline = int(dn.mainline)
+	
+	for room in rooms.values():
+		room.col = int(room.col)
+		room.row = int(room.row)
+		room.stamina_cost = int(room.stamina_cost)
+		if room.has('enemies'):
+			var tmp = {}
+			for en in room.enemies:
+				tmp[int(en)] = room.enemies[en]
+			room.enemies = tmp
+	
 	for i in areas.values():
 		for j in i.locations.values():
 			if j.type == 'dungeon' and !j.has('stamina'):
 				j.stamina = 100
+			if j.has('stagedevents'):
+				for cat in j.stagedevents:
+					var tmp = {}
+					for ev in j.stagedevents[cat]:
+						tmp[int(ev)] = j.stagedevents[cat][ev]
+					j.stagedevents[cat] = tmp
 #	for area in areas.values():
 #		for guild in area.factions.values():
 #			if guild.questsetting.total > globals.get_nquest_for_rep(guild.totalreputation):
@@ -103,12 +123,34 @@ func get_default_area_name():
 func advance_day():
 	for i in areas.values():
 		update_guilds(i)
+		var tmp = []
+		for k in i.locations.values() + i.questlocations.values():
+			if k.has('active') and k.active == false:
+				var f = true
+				for ch in ResourceScripts.game_party.characters.values():
+					if ch.check_location(k.id):
+						f = false
+						break
+				if f:
+					tmp.push_back(k.id)
+		for id in tmp:
+			remove_location(id)
 		if int(ResourceScripts.game_globals.date) % variables.shop_restock_days == 1 or variables.shop_restock_days == 1:
 			ResourceScripts.world_gen.update_area_shop(i)
 			for k in i.locations.values():
 				if k.has('shop'):
 					ResourceScripts.world_gen.update_area_shop(k)
 	update_locations()
+
+
+func advance_hour():
+	for i in areas.values():
+		for j in i.locations.values() + i.questlocations.values():
+			if j.type == 'dungeon':
+				j.stamina += 25
+				if j.stamina > 100:
+					j.stamina = 100
+
 
 func quest_kill_receiver(enemycode):
 	var enemydata = Enemydata.enemies[enemycode]
@@ -133,11 +175,10 @@ func quest_kill_receiver(enemycode):
 
 func update_locations():
 	for i in areas.values():
-		for j in i.locations.values():
+		for j in i.locations.values() + i.questlocations.values():
 			for k in j.events:
 				j.events[k] -= 1
-			if j.type == 'dungeon':
-				j.stamina = 100
+
 
 func update_guilds_old(area):
 	#rebuild quests and slaves in guild

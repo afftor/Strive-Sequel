@@ -129,7 +129,7 @@ var scenedict = {
 		image = 'chest',
 		bonus_effects = [{code = 'affect_active_party', type = 'damage_percent', value = 35}],
 		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'advance_location'}]}
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = []}
 		],
 	},
 	lockpick_chest_gas_failure = {
@@ -138,7 +138,7 @@ var scenedict = {
 		image = 'chest',
 		bonus_effects = [{code = "affect_active_character", type = 'damage_percent', value = 25},{code = "affect_active_character", type = 'damage_mana_percent', value = 75}],
 		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'advance_location'}]}
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = []}
 		],
 	},
 
@@ -207,7 +207,7 @@ var scenedict = {
 		image = 'armory',
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_armory_weapon', 1],['easy_armory_armor', 1]]}],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
 		]
 	},
 	dungeon_find_armory_medium = {
@@ -248,7 +248,7 @@ var scenedict = {
 		image = 'chest',
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5]]}],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
 		]
 	},
 	dungeon_find_chest_medium = {
@@ -257,7 +257,7 @@ var scenedict = {
 		image = 'chest',
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['medium_chest_usable', 1], ['medium_chest_gear',0.2], ['medium_chest_cosmetics', 0.5]]}],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
 		]
 	},
 	quest_accept = {
@@ -292,7 +292,7 @@ var scenedict = {
 
 	event_good_loot_small = {text = tr("DIALOGUEEVENTGOODLOOT"),
 	tags = ['good','locked_chest'],
-	default_event_type = "loot",
+	default_event_type = "custom_event",
 	image = 'chest',
 	common_effects = [{code = 'make_loot',type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5]]}],
 	options = [
@@ -303,7 +303,7 @@ var scenedict = {
 
 	event_dungeon_unlock_resources = {text = tr("DIALOGUEEVENTDUNGEONRESOURCE"),
 	tags = ['location_resource_info'],
-	default_event_type = "loot",
+	default_event_type = "custom_event",
 	image = 'chest',
 	common_effects = [],
 	options = [
@@ -313,7 +313,7 @@ var scenedict = {
 
 	event_dungeon_complete_loot_easy = {text = tr("DIALOGUEEVENTDUNGEONLOOT"),
 	tags = ['good','locked_chest'],
-	default_event_type = "loot",
+	default_event_type = "custom_event",
 	image = 'chest',
 	common_effects = [{code = 'make_loot',type = 'tableloot', pool = [['easy_boss_chest',1]]}],
 	options = [
@@ -323,7 +323,7 @@ var scenedict = {
 	},
 	event_dungeon_complete_loot_medium = {text = tr("DIALOGUEEVENTDUNGEONLOOT"),
 	tags = ['good','locked_chest'],
-	default_event_type = "loot",
+	default_event_type = "custom_event",
 	image = 'chest',
 	common_effects = [{code = 'make_loot',type = 'tableloot', pool = [['medium_boss_chest',1]]}],
 	options = [
@@ -333,7 +333,7 @@ var scenedict = {
 	},
 	event_dungeon_complete_loot_hard = {text = tr("DIALOGUEEVENTDUNGEONLOOT"),
 	tags = ['good','locked_chest'],
-	default_event_type = "loot",
+	default_event_type = "custom_event",
 	image = 'chest',
 	common_effects = [{code = 'make_loot',type = 'tableloot', pool = [['hard_boss_chest',1]]}],
 	options = [
@@ -363,9 +363,9 @@ var scenedict = {
 	}
 	],
 	options = [
-	{code = 'event_dungeon_prisoner_enslave', reqs = [], text = ("DIALOGUETAKESLAVE")},
+	{code = 'event_dungeon_prisoner_enslave', select_person = true, challenge = 'strength', reqs = [], text = ("DIALOGUETAKESLAVE")},
 	{code = 'event_dungeon_prisoner_free', reqs = [], text = tr("DIALOGUESETFREEPERSON")},
-	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'advance_location'}]}
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = []}
 	]
 	},
 	event_dungeon_prisoner_enslave = {text = tr("DIALOGUEEVENTDUNGEONPRISONERSENSLAVE"),
@@ -374,7 +374,7 @@ var scenedict = {
 	common_effects = [],
 	options = [
 	{code = 'capture_from_scene', reqs = [], text = tr("DIALOGUERECRUITCHARACTEROPTION"), bonus_effects = [{code = 'advance_location'}]},
-	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'advance_location'}]}
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = []}
 	]
 	},
 	event_dungeon_prisoner_free = {
@@ -382,7 +382,7 @@ var scenedict = {
 			{reqs = [{type = 'random', value = 70}],
 			text = tr("DIALOGUEEVENTDUNGEONPRISONERFREE1"),
 			image = 'chest',
-			default_event_type = "loot",
+			default_event_type = "custom_event",
 			common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_prisoner_reward_resource',1]] }],
 			tags = ['active_character_translate'],
 			options = [
@@ -392,7 +392,7 @@ var scenedict = {
 			{reqs = [],
 			text = tr("DIALOGUEEVENTDUNGEONPRISONERFREE2"),
 			image = 'chest',
-			default_event_type = "loot",
+			default_event_type = "custom_event",
 			common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_prisoner_reward_item',1]] }],
 			tags = ['active_character_translate'],
 			options = [
@@ -424,20 +424,18 @@ var scenedict = {
 	}
 	],
 	options = [
-	{code = 'event_goblin_recruit', reqs = [], select_person = true, text = ("DIALOGUEEVENTGOBLINRECRUIT")},
-	{code = 'event_goblin_skip_dungeon', reqs = [],  select_person = true, text = tr("DIALOGUEEVENTGOBLINBRINGTOLEADER")},
-	{code = 'event_goblin_capture', reqs = [], text = tr("DIALOGUEEVENTGOBLINCAPTURE")},
+	{code = 'event_goblin_recruit', reqs = [], challenge = 'persuasion', select_person = true, text = ("DIALOGUEEVENTGOBLINRECRUIT")},
+	{code = 'event_goblin_skip_dungeon', reqs = [], challenge = 'persuasion', select_person = true, text = tr("DIALOGUEEVENTGOBLINBRINGTOLEADER")},
+	{code = 'event_goblin_capture', reqs = [], challenge = 'strength', select_person = true, text = tr("DIALOGUEEVENTGOBLINCAPTURE")},
 	#{code = 'event_goblin_kill', reqs = [], text = tr("DIALOGUEEVENTGOBLINKILL")},
 	{code = 'event_goblin_leave', reqs = [], text = tr("DIALOGUEEVENTGOBLINLEAVE")}
 	]
 	},
 
 	event_goblin_recruit = {#2REMAKE
-		variations = [
-			{reqs = [{type = 'active_character_checks', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = ['random 15', "+25"]}]}],
+			reqs = [],
 			text = 'DIALOGUEEVENTGOBLINRECRUITSUCCESS',
 			common_effects = [
-				{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 5},
 				{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 100},
 				{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},
 				{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 25}
@@ -446,44 +444,43 @@ var scenedict = {
 			image = 'goblin_encounter',
 			options = [
 				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
-				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"), bonus_effects = [{code = 'advance_location'}]}
+				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"), bonus_effects = []}
 				]
-			},
-			{reqs = [],
-			text = "DIALOGUEEVENTGOBLINRECRUITFAILURE",
-			image = 'goblin_encounter',
-			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3}],
-			tags = ['scene_character_translate','active_character_translate'],
-			options = [
-				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
-				],
-
-			}
-		],
+			
+#			{reqs = [],
+#			text = "DIALOGUEEVENTGOBLINRECRUITFAILURE",
+#			image = 'goblin_encounter',
+#			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3}],
+#			tags = ['scene_character_translate','active_character_translate'],
+#			options = [
+#				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
+#				],
+#
+#			}
+#		],
 	},
 
 	event_goblin_skip_dungeon = {
-		variations = [
-			{reqs = [{type = 'active_character_checks', value = [{code = 'stat', stat = 'charm', operant = 'gte', value = ['random 30', "+20"]}]}],
+		reqs = [],
 			text = 'DIALOGUEEVENTGOBLINBRINGTOLEADERSUCCESS',
-			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 5},{code = 'progress_active_location'}],
+			common_effects = [],
 			tags = ['active_character_translate','scene_character_translate'],
 			image = 'goblin_encounter',
 			options = [
 				{code = 'leave', reqs = [], text = tr("DIALOGUECLOSE")}
 				]
-			},
-			{reqs = [],
-			text = "DIALOGUEEVENTGOBLINBRINGTOLEADERFAILURE",
-			image = 'goblin_encounter',
-			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3}],
-			tags = ['active_character_translate','scene_character_translate'],
-			options = [
-				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
-				],
-
-			}
-		],
+			
+#			{reqs = [],
+#			text = "DIALOGUEEVENTGOBLINBRINGTOLEADERFAILURE",
+#			image = 'goblin_encounter',
+#			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3}],
+#			tags = ['active_character_translate','scene_character_translate'],
+#			options = [
+#				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
+#				],
+#
+#			}
+#		],
 	},
 	event_goblin_capture = {
 	text = "DIALOGUEEVENTGOBLINCAPTUREREPLY",
@@ -492,7 +489,7 @@ var scenedict = {
 	tags = ['active_character_translate','scene_character_translate'],
 	options = [
 		{code = 'capture_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"), bonus_effects = [{code = 'advance_location'}]}
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"), bonus_effects = []}
 		]
 	},
 	event_goblin_kill = {
@@ -532,18 +529,16 @@ var scenedict = {
 	}
 	],
 	options = [
-	{code = 'event_fairy_recruit', reqs = [], select_person = true, text = ("DIALOGUEEVENTFAIRYRECRUIT")},
+	{code = 'event_fairy_recruit', reqs = [], challenge = 'persuasion', select_person = true, text = ("DIALOGUEEVENTFAIRYRECRUIT")},
 	{code = 'event_fairy_heal', reqs = [], text = tr("DIALOGUEEVENTFAIRYASKHEAL")},
-	{code = 'event_fairy_capture', reqs = [], text = tr("DIALOGUEEVENTFAIRYCAPTURE")},
+	{code = 'event_fairy_capture', reqs = [], challenge = 'dexterity', select_person = true, text = tr("DIALOGUEEVENTFAIRYCAPTURE")},
 	{code = 'event_fairy_leave', reqs = [], text = tr("DIALOGUEEVENTFAIRYLEAVE")}
 	]
 	},
-	event_fairy_recruit = {#2REMAKE
-		variations = [
-			{reqs = [{type = 'active_character_checks', value = [{code = 'stat', stat = 'charm', operant = 'gte', value = ['random 30', "+25"]}]}],
+	event_fairy_recruit = {
+			reqs = [],
 			text = 'DIALOGUEEVENTFAIRYRECRUITSUCCESS',
 			common_effects = [
-				{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 5},
 				{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 30},
 				{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},
 				{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 25}],
@@ -551,20 +546,20 @@ var scenedict = {
 			image = 'fairy_encounter',
 			options = [
 				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [],bonus_effects = [{code = 'advance_location'}]},
-				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"),bonus_effects = [{code = 'advance_location'}]}
+				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"),bonus_effects = []}
 				]
-			},
-			{reqs = [],
-			text = "DIALOGUEEVENTFAIRYRECRUITFAILURE",
-			image = 'fairy_encounter',
-			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3}],
-			tags = ['active_character_translate','scene_character_translate'],
-			options = [
-				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [],bonus_effects = [{code = 'advance_location'}]},
-				],
-
-			}
-		],
+			
+#			{reqs = [],
+#			text = "DIALOGUEEVENTFAIRYRECRUITFAILURE",
+#			image = 'fairy_encounter',
+#			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3}],
+#			tags = ['active_character_translate','scene_character_translate'],
+#			options = [
+#				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [],bonus_effects = [{code = 'advance_location'}]},
+#				],
+#
+#			}
+#		],
 	},
 	event_fairy_heal = {
 	text = "DIALOGUEEVENTFAIRYASKHEALREPLY",
@@ -581,8 +576,8 @@ var scenedict = {
 	common_effects = [],
 	tags = ['active_character_translate','scene_character_translate'],
 	options = [
-		{code = 'capture_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [],bonus_effects = [{code = 'advance_location'}]},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"),bonus_effects = [{code = 'advance_location'}]}
+		{code = 'capture_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"),bonus_effects = []}
 		]
 	},
 	event_fairy_leave = {
@@ -690,18 +685,15 @@ var scenedict = {
 			{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_combatant'},
 			],
 		options = [
-		{code = 'event_person_recruit_attempt', select_person = true, reqs = [], text = tr("DIALOGUEPERSONASKTOJOIN")},
+		{code = 'event_person_recruit_attempt', challenge = 'persuasion', select_person = true, reqs = [], text = tr("DIALOGUEPERSONASKTOJOIN")},
 		{code = 'close', reqs = [], text = tr("DIALOGUELEAVE")}
 		],
 	},
 
 	event_person_recruit_attempt = {#2REMAKE
-		variations = [
-			{reqs = [{type = 'active_character_checks', value = [{code = 'random', value = [['self.charm_factor','*5'],"+", ['self.charm', '/4']]}]},#type = 'charm_factor', operant = 'gte', value = 3}]}
-			],
+		reqs = [],
 			text = tr("DIALOGUERECRUITSUCCESS"),
 			common_effects = [
-				{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3},
 				{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 78},
 				{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},
 				{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 20}],
@@ -711,18 +703,18 @@ var scenedict = {
 				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = []},
 				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 				]
-			},
-			{reqs = [],
-			text = tr("DIALOGUERECRUITFAILURE"),
-			image = 'slave_decision',
-			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 2}],
-			tags = ['active_character_translate','scene_character_translate'],
-			options = [
-				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = []},
-				],
-
-			}
-		],
+			
+#			{reqs = [],
+#			text = tr("DIALOGUERECRUITFAILURE"),
+#			image = 'slave_decision',
+#			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 2}],
+#			tags = ['active_character_translate','scene_character_translate'],
+#			options = [
+#				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = []},
+#				],
+#
+#			}
+#		],
 	},
 
 	event_good_rebels_beastkin = {text = tr("DIALOGUEEVENTGOODREBELSBEAST"),#2REMAKE
@@ -737,15 +729,13 @@ var scenedict = {
 	{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 24}],
 	options = [
 	{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},
-	{code = 'event_good_rebels_intimidate', select_person = true, reqs = [], text = tr("DIALOGUEINTIMIDATE")},
+	{code = 'event_good_rebels_intimidate', challenge = 'strength', select_person = true, reqs = [], text = tr("DIALOGUEINTIMIDATE")},
 	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},
 	]
 	},
 
 	event_good_rebels_intimidate = {
-		variations = [
-			{reqs = [{type = 'active_character_checks', value = [{code = 'random', value = [['self.physics_factor','*8'],"+", ['self.physics', '/3']]}]},
-			],
+			reqs = [],
 			text = "DIALOGUEEVENTREBELSBEASTINTIMIDATESUCCES",
 			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3}],
 			tags = ['linked_event','active_character_translate'],
@@ -753,19 +743,18 @@ var scenedict = {
 			options = [
 				{code = 'event_person_acquired', text = tr("DIALOGUECONTINUE"), reqs = []},
 				]
-			},
-			{reqs = [],
-			text = "DIALOGUEEVENTREBELSBEASTINTIMIDATEFAILURE",
-			image = 'rebels_furry',
-			winscene = 'event_person_acquired',
-			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 2}],
-			tags = ['linked_event','active_character_translate'],
-			options = [
-				{code = 'fight_skirmish', text = tr("DIALOGUEFIGHTOPTION"), reqs = []},
-				],
-
-			}
-		],
+#			{reqs = [],
+#			text = "DIALOGUEEVENTREBELSBEASTINTIMIDATEFAILURE",
+#			image = 'rebels_furry',
+#			winscene = 'event_person_acquired',
+#			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 2}],
+#			tags = ['linked_event','active_character_translate'],
+#			options = [
+#				{code = 'fight_skirmish', text = tr("DIALOGUEFIGHTOPTION"), reqs = []},
+#				],
+#
+#			}
+#		],
 	},
 
 	event_nothing_found = {text = "DIALOGUEEVENTNOTHING",
@@ -1455,15 +1444,27 @@ var scenedict = {
 		{code = 'freya_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},
-	spring = {
+	spring = {variations = [{
+		reqs = [{type = 'random', value = 5}],
+		text = tr("SPRINGTEXT"),
+		tags = ['dialogue_scene'],
+		image = 'spring',
+		options = [
+			{code = 'spring_stamina', reqs = [], text = tr("SPRING_STAMINA_OPTION"), dialogue_argument = 1},
+			{code = 'spring_loot', reqs = [], text = tr("SPRING_LOOT_OPTION"), dialogue_argument = 2},
+			{code = 'close', reqs = [], text = "DIALOGUECANCEL"}
+		]
+		},{
+		reqs = [],
 		text = tr("SPRINGTEXT"),
 		tags = ['dialogue_scene'],
 		image = 'spring',
 		options = [
 			{code = 'spring_heal', reqs = [], text = tr("SPRING_HEAL_OPTION"), dialogue_argument = 1},
-			{code = 'spring_loot', reqs = [], text = tr("SPRING_LOOT_OPTION"), dialogue_argument = 2},
+			{code = 'spring_stamina', reqs = [], text = tr("SPRING_STAMINA_OPTION"), dialogue_argument = 1},
+			{code = 'close', reqs = [], text = "DIALOGUECANCEL"}
 		]
-		},
+		}]},
 	spring_heal = {
 		text = tr("SPRING_HEAL"),
 		tags = [],
@@ -1473,12 +1474,21 @@ var scenedict = {
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
 		],
 	},
+	spring_stamina = {
+		text = tr("SPRING_STAMINA"),
+		tags = [],
+		image = 'spring',
+		bonus_effects = [{code = 'add_stamina', value = 50}],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		],
+	},
 	spring_loot = {
 		variations = [
-			{reqs = [{type = 'random', value = 66}],
+			{reqs = [{type = 'random', value = 100}],
 			text = tr("DIALOGUE_SPRING_LOOT"),
 			image = 'spring',
-			default_event_type = "loot",
+			default_event_type = "custom_event",
 			common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_prisoner_reward_resource',1]] }],
 			tags = [''],
 			options = [
@@ -1488,11 +1498,11 @@ var scenedict = {
 			{reqs = [],
 			text = tr("DIALOGUE_SPRING_NO_LOOT"),
 			image = 'spring',
-			default_event_type = "loot",
+			default_event_type = "custom_event",
 			common_effects = [],
 			tags = [''],
 			options = [
-				{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
+				{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = [], bonus_effects = []},
 				],
 
 			}
@@ -1528,7 +1538,36 @@ var scenedict = {
 	]
 	},
 	
+	fountain = {
+		text = tr("FOUNTAINTEXT"),
+		tags = ['dialogue_scene'],
+		image = 'spring',
+		options = [
+			{code = 'fountain_stamina', reqs = [], text = tr("FOUNTAIN_STAMINA_OPTION"), dialogue_argument = 1},
+			{code = 'fountain_mana', reqs = [], text = tr("FOUNTAIN_MANA_OPTION"), dialogue_argument = 2},
+			{code = 'close', reqs = [], text = "DIALOGUECANCEL"}
+		]
+	},
 	
+	
+	fountain_stamina = {
+		text = tr("FOUNTAIN_STAMINA"),
+		tags = [],
+		image = 'spring',
+		bonus_effects = [{code = 'add_stamina', value = 50}],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		],
+	},
+	fountain_mana = {
+		text = tr("FOUNTAIN_MANA"),
+		tags = [],
+		image = 'spring',
+		bonus_effects = [{code = 'affect_active_party', type = 'damage_mana_percent', value = -40}],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		],
+	},
 	
 	event_trap_easy = {text = tr("DIALOGUEEVENTTRAP"),
 	tags = ['linked_event'],

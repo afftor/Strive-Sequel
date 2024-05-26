@@ -112,6 +112,9 @@ func cooldown_tick():
 	items_used_today.clear()
 	skills_received_today.clear()
 	
+	for i in ['chg_strength','chg_dexterity','chg_persuasion','chg_wisdom']:
+		parent.get_ref().set_stat(i, 0)
+	
 	var cleararray = []
 	for i in social_cooldowns:
 		social_cooldowns[i] -= 1

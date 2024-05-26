@@ -154,6 +154,14 @@ func showup(node, person):
 		else:
 			i.get_node("Label").text = str(floor(person.get_stat(i.name)))
 			i.get_node("Label").set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat(i.name))))])
+	
+	var text = ''
+	for i in ['chg_strength','chg_dexterity','chg_persuasion','chg_wisdom']:
+		if person.get_stat(i + "_max") == 0: continue
+		text += statdata.statdata[i].name + ": " +  str(person.get_stat(i+"_max") - person.get_stat(i)) + "/" + str(person.get_stat(i+"_max")) + '\n'
+	$Panel2.visible = text != ''
+	$Panel2/RichTextLabel.bbcode_text = text
+	
 
 func cooldown():
 	shutoff = true

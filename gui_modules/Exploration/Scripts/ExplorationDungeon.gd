@@ -25,11 +25,11 @@ var map_zoom_min = 0.3
 var map_zoom_step = 0.1
 
 
-func _input(event):
-	if event.is_action_pressed('MouseUp'):
-		set_map_zoom(map_container.rect_scale.x + map_zoom_step)
-	if event.is_action_pressed('MouseDown'):
-		set_map_zoom(map_container.rect_scale.x - map_zoom_step)
+#func _input(event):
+#	if event.is_action_pressed('MouseUp'):
+#		set_map_zoom(map_container.rect_scale.x + map_zoom_step)
+#	if event.is_action_pressed('MouseDown'):
+#		set_map_zoom(map_container.rect_scale.x - map_zoom_step)
 
 
 func set_map_zoom(value):
@@ -54,7 +54,11 @@ func animate_map_moves(zoom, pos, time = 0.5):
 
 
 func get_stamina_mod(): #temporal, 2add later
-	return 1.0
+	if selected_room == null or active_subroom != null:
+		return 1.0
+	else:
+		var data = ResourceScripts.game_world.rooms[selected_room]
+		return data.stamina_cost
 
 
 func get_current_stamina(modified = true):
@@ -67,6 +71,7 @@ func get_current_stamina(modified = true):
 func pay_stamina(value, modified = true):
 	if modified:
 		value *= get_stamina_mod()
+	value = int(value)
 	active_location.stamina -= value
 	update_stamina()
 
@@ -79,6 +84,7 @@ func add_stamina(value):
 
 func update_stamina():
 	map_panel.get_node("Stamina/Label").text = "Stamina: %d/%d" % [active_location.stamina, 100]
+	#2add progress bar
 
 
 func party_check(dict):
@@ -143,6 +149,8 @@ func _ready():
 	input_handler.connect("LocationSlavesUpdate", self, 'build_location_group')
 	input_handler.connect("update_itemlist", self, 'update_sell_list')
 	globals.connecttexttooltip($LocationGui/MapPanel/Stamina, tr("TOOLTIPSTAMINADUNGEON"))
+	
+
 
 func open_journal():
 #	globals.common_effects( [{code = 'update_city'}])
@@ -188,21 +196,22 @@ func open_location(data): #2fix
 	active_location = data
 	input_handler.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[data.id].area]
 ##	input_handler.active_area = active_area
-#	input_handler.active_location = data
+	input_handler.active_location = data
 	input_handler.emit_signal("LocationSlavesUpdate")
 #	current_level = 0
 	build_level()
 	update_stamina()
 	var dungeon = active_location.dungeon[active_location.current_level]
 	var tdata = ResourceScripts.game_world.dungeons[dungeon]
-	scout_room(tdata.first_room, get_scouting_range(), true)
+	move_to_room(tdata.first_room)
+#	scout_room(tdata.first_room, get_scouting_range(), true)
 ##	if input_handler.active_location.has('progress'):
 ##		current_level = active_location.progress.level
 ##		current_stage = active_location.progress.stage
 #	if input_handler.active_location.has('background'):
 #		$LocationGui/Image/TextureRect.texture = images.backgrounds[input_handler.active_location.background]
 	if active_location.has('bgm'):
-		input_handler.SetMusic(input_handler.active_location.bgm)
+		input_handler.SetMusic(active_location.bgm)
 #
 	#check if anyone is present
 	build_location_group()
@@ -225,24 +234,22 @@ func open_location(data): #2fix
 #			$LocationGui/Resources/SelectWorkers.visible = false
 #			$LocationGui/Resources/Label.visible = true
 	gui_controller.nav_panel.build_accessible_locations()
+	input_handler.exploration_node = self
 	#input_handler.interactive_message("spring", '',{})
+#	globals.common_effects([{code = "reveal_active_dungeon"}])
 
 
 func build_location_description():
 	var text = ''
-	text = (
-		active_location.name
-		+ " ("
-		+ tr(active_location.classname)
-#		+ ")\n"
-		+ ") - "
-#				+ tr("DUNGEONDIFFICULTY")
-#				+ ": "
-#				+ tr("DUNGEONDIFFICULTY" + active_location.difficulty.to_upper())
-	)
-	text += tr("LEVEL") + " " + str(active_location.current_level + 1)
+	text = active_location.name
+	if active_location.tags.has("quest") != true:
+		text += " (" + tr(active_location.classname) + ")"
+	#		+ ")\n"
+	text += " - "
+	
+	text += tr("DUNGEONLEVEL") + ": " + str(active_location.current_level + 1)
 	if active_location.completed:
-		text += "{color=aqua|" + tr("LOC_COMPLETE") + "}"
+		text += " - {color=aqua|" + tr("LOC_COMPLETE") + "}"
 	map_panel.get_node('RichTextLabel').bbcode_text = (
 		'[center]'
 		+ globals.TextEncoder(text)
@@ -253,7 +260,7 @@ func build_location_description():
 func slave_position_selected(pos, character):
 	pos = 'pos' + str(pos)
 	if character == null:
-		input_handler.active_location.group.erase(pos)
+		active_location.group.erase(pos)
 		build_location_group()
 		return
 	if character.has_status('no_combat'):
@@ -266,30 +273,30 @@ func slave_position_selected(pos, character):
 	var positiontaken = false
 	var oldheroposition = null
 	if (
-		input_handler.active_location.group.has(pos)
-		&& ResourceScripts.game_party.characters[input_handler.active_location.group[pos]].check_location(
-			input_handler.active_location.id, true
+		active_location.group.has(pos)
+		&& ResourceScripts.game_party.characters[active_location.group[pos]].check_location(
+			active_location.id, true
 		)
 	):
 		positiontaken = true
 	
-	for i in input_handler.active_location.group:
-		if input_handler.active_location.group[i] == character:
+	for i in active_location.group:
+		if active_location.group[i] == character:
 			oldheroposition = i
-			input_handler.active_location.group.erase(i)
+			active_location.group.erase(i)
 	var INTEGER_VALUE_FROM_POS_INDEX = 3
 	if oldheroposition != null && positiontaken == true && oldheroposition != pos:
-		input_handler.active_location.group[oldheroposition] = input_handler.active_location.group[pos]
-		var CHARACTER_UID = input_handler.active_location.group[oldheroposition]
+		active_location.group[oldheroposition] = active_location.group[pos]
+		var CHARACTER_UID = active_location.group[oldheroposition]
 		ResourceScripts.game_party.characters[CHARACTER_UID].combat_position = int(oldheroposition[INTEGER_VALUE_FROM_POS_INDEX])
-	input_handler.active_location.group[pos] = character
+	active_location.group[pos] = character
 	build_location_group()
 
 
 func slave_position_deselect(character):
-	for i in input_handler.active_location.group:
-		if input_handler.active_location.group[i] == character.id:
-			input_handler.active_location.group.erase(i)
+	for i in active_location.group:
+		if active_location.group[i] == character.id:
+			active_location.group.erase(i)
 			break
 	build_location_group()
 
@@ -332,8 +339,8 @@ func use_e_combat_skill(caster, target, skill):
 				for line in variables.lines.values():
 					if !line.has(tpos): continue
 					for pos in line:
-						if input_handler.active_location.group.has('pos' + str(pos)):
-							targets.push_back(ResourceScripts.game_party.characters[input_handler.active_location.group[('pos' + str(pos))]])
+						if active_location.group.has('pos' + str(pos)):
+							targets.push_back(ResourceScripts.game_party.characters[active_location.group[('pos' + str(pos))]])
 					break
 			'row':
 				targets = []
@@ -341,8 +348,8 @@ func use_e_combat_skill(caster, target, skill):
 				for line in variables.rows.values():
 					if !line.has(tpos): continue
 					for pos in line:
-						if input_handler.active_location.group.has('pos' + str(pos)):
-							targets.push_back(ResourceScripts.game_party.characters[input_handler.active_location.group[('pos' + str(pos))]])
+						if active_location.group.has('pos' + str(pos)):
+							targets.push_back(ResourceScripts.game_party.characters[active_location.group[('pos' + str(pos))]])
 					break
 		var s_skill2_list = []
 		for i in targets:
@@ -563,14 +570,14 @@ func execute_skill(s_skill2):  #to update to exploration version
 #		enter_dungeon()
 #
 #
-func StartCombat(): #2change it to pregen groups anf StartFixedAreaCombat
+func StartCombat(data): 
 	input_handler.play_animation("fight")
 	yield(get_tree().create_timer(1), "timeout")
 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), "timeout")
 #	globals.current_level = current_level
 #	globals.current_stage = current_stage
-	globals.StartAreaCombat()
+	globals.StartFixedAreaCombat(data)
 
 
 # func play_animation(animation):
@@ -626,19 +633,19 @@ func clear_dungeon_confirm():
 
 func build_location_group():
 	#clear_groups()
-	if input_handler.active_location == null || !input_handler.active_location.has("group"):
+	if active_location == null || !active_location.has("group"):
 		return
-	input_handler.active_location.group.clear()
+	active_location.group.clear()
 	for ch in ResourceScripts.game_party.characters.values():
 		if !ch.has_profession('master') && ch.get_stat('obedience') == 0:
 			continue
-		if ch.check_location(input_handler.active_location.id, true) and ch.combat_position != 0 and !ch.has_status('no_combat') and ch.has_status('combatant'):
-			if !input_handler.active_location.group.has(['pos' + str(ch.combat_position)]):
-				input_handler.active_location.group['pos' + str(ch.combat_position)] = ch.id
+		if ch.check_location(active_location.id, true) and ch.combat_position != 0 and !ch.has_status('no_combat') and ch.has_status('combatant'):
+			if !active_location.group.has(['pos' + str(ch.combat_position)]):
+				active_location.group['pos' + str(ch.combat_position)] = ch.id
 	for i in positiondict:
 #		if (active_location.group.has('pos' + str(i)) && ((ResourceScripts.game_party.characters.has(active_location.group['pos' + str(i)]) == false) || ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]].has_status('no_combat'))):
 #			active_location.group.erase('pos' + str(i))
-		if !input_handler.active_location.group.has('pos' + str(i)):
+		if !active_location.group.has('pos' + str(i)):
 			get_node(positiondict[i] + "/Image").dragdata = null
 			get_node(positiondict[i] + "/Image").texture = null
 			get_node(positiondict[i] + "/Image").hide()
@@ -647,7 +654,7 @@ func build_location_group():
 			continue
 #		if (active_location.group.has('pos' + str(i)) && ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]] != null && ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]].check_location(active_location.id, true)):
 		else:
-			var character = ResourceScripts.game_party.characters[input_handler.active_location.group[('pos' + str(i))]]
+			var character = ResourceScripts.game_party.characters[active_location.group[('pos' + str(i))]]
 			get_node(positiondict[i] + "/Image").texture = character.get_icon()
 #			if get_node(positiondict[i] + "/Image").texture == null:
 #				if character.has_profession('master'):
@@ -717,7 +724,7 @@ func build_location_group():
 				newbutton.get_node('icon').texture = images.icons.class_slave
 		newbutton.get_node("Label").text = i.get_short_name()
 		newbutton.connect("pressed", self, "return_character", [i])
-		if input_handler.active_location.group.values().has(i.id):
+		if active_location.group.values().has(i.id):
 			newbutton.get_node("icon").modulate = Color(0.3, 0.3, 0.3)
 		globals.connectslavetooltip(newbutton, i)
 	if counter == 0 && gui_controller.exploration.get_node("LocationGui").is_visible():
@@ -757,7 +764,7 @@ func return_all_to_mansion_confirm():
 	var presented_characters = []
 	for id in ResourceScripts.game_party.character_order:
 		var i = ResourceScripts.game_party.characters[id]
-		if i.check_location(input_handler.active_location.id, true):
+		if i.check_location(active_location.id, true):
 			presented_characters.append(i)
 	for person in presented_characters:
 		person.remove_from_task()
@@ -809,7 +816,7 @@ func build_spell_panel():
 	input_handler.ClearContainer($LocationGui/ItemUsePanel/SpellContainer/VBoxContainer)
 	for id in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[id]
-		if person.check_location(input_handler.active_location.id, true):
+		if person.check_location(active_location.id, true):
 			for i in person.skills.combat_skills:
 				var skill = Skilldata.Skilllist[i]
 				if skill.tags.has('exploration') == false:
@@ -907,15 +914,21 @@ const default_room_size = Vector2(270, 270)
 func build_level():
 	var dungeon = active_location.dungeon[active_location.current_level]
 	var data = ResourceScripts.game_world.dungeons[dungeon]
+	
 	input_handler.ClearContainer(map_container, ['room'])
 	
 	for room in data.rooms:
 		var newroom = input_handler.DuplicateContainerTemplate(map_container, 'room')
 		newroom.setup(room)
 	
-	scout_room(data.first_room, get_scouting_range(), true)
+	yield(get_tree(), 'idle_frame')
+#	scout_room(data.first_room, get_scouting_range(), true)
 	update_map()
 	build_location_description()
+	var tooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP)
+	globals.disconnect_text_tooltip(tooltip.parentnode)
+	tooltip.turnoff()
+	tooltip.hide()
 
 
 func update_map():
@@ -933,6 +946,8 @@ func can_enter_room(room_id):
 		 return true
 	if data.type in ['ladder_up']:
 		return true
+	if data.status == 'scouted' and data.type == 'ladder_down':
+			return true
 	for i in data.neighbours.values():
 		if i == null:
 			continue
@@ -941,10 +956,14 @@ func can_enter_room(room_id):
 		 return true
 		if t_data.type in ['ladder_up']:
 			return true
+		if t_data.status == 'scouted' and t_data.type == 'ladder_down':
+			return true
 	return false
 
 
 func room_pressed(room_id):
+	if selected_room != null and active_subroom == null:
+		return
 	if globals.check_location_group() == false:
 		input_handler.SystemMessage("Select at least 1 character before advancing. ")
 		return
@@ -962,8 +981,9 @@ func room_pressed(room_id):
 		if get_current_stamina() < data.stamina_cost:
 			input_handler.SystemMessage("No stamina")
 			return
-		pay_stamina(data.stamina_cost)
-		update_stamina()
+		if !data.has('challenge') or data.challenge == null:
+			pay_stamina(data.stamina_cost)
+			update_stamina()
 	scout_room(room_id, get_scouting_range())
 
 
@@ -984,6 +1004,8 @@ func scout_room(room_id, s_range, stay = false):
 		if s_range == get_scouting_range():
 			move_to_room(room_id)
 		else:
+			if data.type == 'ladder_down':
+				s_range += 1
 			for room in data.neighbours.values():
 				if room != null:
 					scout_room(room, s_range - 1, true)
@@ -994,12 +1016,18 @@ func scout_room(room_id, s_range, stay = false):
 #			move_to_room(room_id)
 		'combat':
 			selected_room = room_id
+			if data.challenge != null:
+				globals.start_fixed_event(data.challenge)
 #			input_handler.combat_advance = false
-			StartCombat() #temporal, 2fix
+			else:
+				StartCombat(data)
 		'combat_boss':
 			selected_room = room_id
+			if data.challenge != null:
+				globals.start_fixed_event(data.challenge)
 #			input_handler.combat_advance = false
-			StartCombat() #temporal, 2fix, important!
+			else:
+				StartCombat(data) 
 		'event':
 			#2add
 #			input_handler.combat_advance = true
@@ -1014,9 +1042,13 @@ func scout_room(room_id, s_range, stay = false):
 			var dungeon = active_location.dungeon[active_location.current_level]
 			var tdata = ResourceScripts.game_world.dungeons[dungeon]
 			scout_room(tdata.first_room, get_scouting_range(), true)
+#			input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).turnoff()
+#			input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 		'ladder_up':
 			active_location.current_level -= 1
 			build_level()
+#			input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).turnoff()
+#			input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 
 
 func obscure_room(room_id):
@@ -1047,10 +1079,38 @@ func move_to_room(room_id = null):
 		active_location.completed = true
 		globals.common_effects([{code = "complete_active_location_quests"}])
 		build_location_description()
+		globals.start_fixed_event('event_dungeon_complete_loot_' + active_location.difficulty)
 	if data.type in ['event', 'combat', 'combat_boss']:
 		data.type = 'empty'
 	update_map()
 	#add path counting and events
+	if data.first_time:
+		data.first_time = false
+		var ev_run = false
+		if active_location.has('stagedevents'):
+			if active_location.stagedevents.room.has(room_id):
+				var ev_data = active_location.stagedevents.room[room_id]
+				if !ev_data.has('reqs') or globals.checkreqs(ev_data.reqs):
+					globals.start_fixed_event(ev_data.event)
+					ev_run = true
+		if data.mainline:
+			active_location.progress.main += 1
+			if active_location.has('stagedevents'):
+				if active_location.stagedevents.main.has(active_location.progress.main):
+					var ev_data = active_location.stagedevents.main[active_location.progress.main]
+					if !ev_data.has('reqs') or globals.checkreqs(ev_data.reqs):
+						globals.start_fixed_event(active_location.stagedevents.main[active_location.progress.main].event)
+						ev_run = true
+		active_location.progress.full += 1
+		if active_location.has('stagedevents'):
+			if active_location.stagedevents.full.has(active_location.progress.full):
+				var ev_data = active_location.stagedevents.full[active_location.progress.full]
+				if !ev_data.has('reqs') or globals.checkreqs(ev_data.reqs):
+					globals.start_fixed_event(active_location.stagedevents.full[active_location.progress.full].event)
+					ev_run = true
+		if !ev_run and globals.rng.randf() < variables.dungeon_unique_encounter_chance:
+			globals.start_unique_event()
+
 
 
 func subroom_pressed(room_id, subroom_id):
@@ -1069,44 +1129,48 @@ func subroom_pressed(room_id, subroom_id):
 		return
 	active_subroom = null
 	selected_room = null
-	
-	match subroom_data.type:
-		'empty': #should never be called
-			print('empty subroom activated')
-			return
-		'onetime_event':
-			selected_room = room_id
-			active_subroom = subroom_id
-			pay_stamina(subroom_data.stamina_cost)
-			#2test
-#			input_handler.combat_advance = true
-			var _event = globals.start_fixed_event(subroom_data.event)
-			if !_event:
-				_event = globals.start_random_event()
-			clear_subroom()
-		'event':
-			selected_room = room_id
-			active_subroom = subroom_id
-			pay_stamina(subroom_data.stamina_cost)
-			#2test
-#			input_handler.combat_advance = true
-			var _event = globals.start_fixed_event(subroom_data.event)
-			if !_event:
-				_event = globals.start_random_event()
-		'unique_event':
-			selected_room = room_id
-			active_subroom = subroom_id
-			pay_stamina(subroom_data.stamina_cost)
-			#2test
-#			input_handler.combat_advance = true
-			var _event = globals.start_unique_event()
-			if !_event:
-				_event = globals.start_random_event()
-		'resource': 
-			selected_room = room_id
-			active_subroom = subroom_id
-			globals.start_fixed_event("resource_gather")
-#			add_subroom_res()
+	if subroom_data.challenge == null:
+		match subroom_data.type:
+			'empty': #should never be called
+				print('empty subroom activated')
+				return
+			'onetime_event':
+				selected_room = room_id
+				active_subroom = subroom_id
+				pay_stamina(subroom_data.stamina_cost)
+				#2test
+	#			input_handler.combat_advance = true
+				var _event = globals.start_fixed_event(subroom_data.event)
+				if !_event:
+					_event = globals.start_random_event()
+				clear_subroom()
+			'event':
+				selected_room = room_id
+				active_subroom = subroom_id
+				pay_stamina(subroom_data.stamina_cost)
+				#2test
+	#			input_handler.combat_advance = true
+				var _event = globals.start_fixed_event(subroom_data.event)
+				if !_event:
+					_event = globals.start_random_event()
+			'unique_event':
+				selected_room = room_id
+				active_subroom = subroom_id
+				pay_stamina(subroom_data.stamina_cost)
+				#2test
+	#			input_handler.combat_advance = true
+				var _event = globals.start_unique_event()
+				if !_event:
+					_event = globals.start_random_event()
+			'resource': 
+				selected_room = room_id
+				active_subroom = subroom_id
+				globals.start_fixed_event("resource_gather")
+	#			add_subroom_res()
+	else:
+		selected_room = room_id
+		active_subroom = subroom_id
+		globals.start_fixed_event(subroom_data.challenge)
 
 
 func get_subroom_data():
@@ -1137,6 +1201,45 @@ func clear_subroom():
 	update_map()
 	active_subroom = null
 	selected_room = null
+
+
+func unlock_subroom():
+	if active_subroom == null:
+		print('error clearing subroom setup')
+		return
+	if selected_room == null:
+		print('error clearing subroom setup')
+		return
+	var data = ResourceScripts.game_world.rooms[selected_room]
+	data.subrooms[active_subroom].challenge = null
+	update_map()
+	var t1 = selected_room
+	var t2 = active_subroom
+	active_subroom = null
+	selected_room = null
+	subroom_pressed(t1, t2)
+
+
+func unlock_combat():
+	if selected_room == null:
+		print('error combat setup')
+		return
+	var data = ResourceScripts.game_world.rooms[selected_room]
+	data.challenge = null
+	data.stamina_cost = 0
+	update_map()
+	var t1 = selected_room
+	selected_room = null
+	scout_room(t1, 0)
+
+
+func deny_combat():
+	if selected_room == null:
+		print('error deny combat setup')
+		return
+	update_map()
+	selected_room = null
+
 
 func reset_active_location(arg = null):
 	if input_handler.active_location.id != active_location.id:

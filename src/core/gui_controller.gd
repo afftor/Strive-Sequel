@@ -170,7 +170,7 @@ func close_scene(scene):
 	if char_creation != null && char_creation.is_visible():
 		char_creation.hide()
 		scene.hide()
-		if previous_screen != null && (previous_screen in [mansion, slavepanel]) && current_screen != exploration:
+		if previous_screen != null && (previous_screen in [mansion, slavepanel]) && !(current_screen in [exploration, exploration_city, exploration_dungeon]):
 			current_screen = previous_screen
 		if current_screen != null:
 			update_modules()
@@ -196,10 +196,10 @@ func close_scene(scene):
 		mansion.mansion_state_set("default")
 		gui_controller.clock.raise()
 		gui_controller.clock.show()
-	if current_screen == explore_slaveinfo and explore_slaveinfo != null && previous_screen == exploration:
-		current_screen = exploration
+	if current_screen == explore_slaveinfo and explore_slaveinfo != null && previous_screen in [exploration, exploration_city, exploration_dungeon]:
+		current_screen = previous_screen
 		previous_screen = null
-		var location = input_handler.active_location
+		var location = current_screen.active_location
 		var capital = false
 		capital = location.type == "capital"
 		if capital:
@@ -213,18 +213,18 @@ func set_nav_size_postition():
 		mansion:
 			nav_panel.rect_position = Vector2(320, 15)
 
-
-func open_exploration(location):
-	exploration = input_handler.get_spec_node(input_handler.NODE_EXPLORATION)
-	current_screen = exploration
-	# exploration.show()
-	exploration.open(location)
+#
+#func open_exploration(location):
+#	exploration = input_handler.get_spec_node(input_handler.NODE_EXPLORATION)
+#	current_screen = exploration
+#	# exploration.show()
+#	exploration.open(location)
 
 
 func show_class_info(classcode, person = null):
 	if current_screen == game_menu:
 		return
-	if current_screen == exploration && exploration.get_node("GuildShop").is_visible() && classinfo != null && classinfo.is_visible():
+	if current_screen == exploration_city && exploration_city.get_node("GuildShop").is_visible() && classinfo != null && classinfo.is_visible():
 		classinfo.hide()
 		return
 	if person == null:

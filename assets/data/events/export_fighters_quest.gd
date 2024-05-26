@@ -278,7 +278,7 @@ var data = {
 			{code = 'decision', value = 'deal_with_lich'},
 			{code = 'material_change', operant = '+', material = 'lich_skull', value = 1},
 			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'},
-			{code = 'remove_quest_location', value = 'quest_fighters_lich'}]},
+			{code = 'set_completed_active_location'}]},
 		],
 	},
 
@@ -308,7 +308,7 @@ var data = {
 			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'}]},
 		],
 		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'remove_quest_location', value = 'quest_fighters_lich'}]},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'set_completed_active_location'}]},
 		],
 		},
 		],
@@ -449,7 +449,7 @@ var data = {
 		options = [
 			{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), dialogue_argument = 1, bonus_effects = [{code = 'decision', value = 'aire_had_sex'},
 			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'},
-			{code = 'remove_quest_location', value = 'quest_fighters_lich'}]
+			{code = 'set_completed_active_location'}]
 		},
 		],
 	},
@@ -564,7 +564,7 @@ var data = {
 		options = [
 		{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = [], bonus_effects = [{code = 'decision', value = 'aire_is_dead'},
 			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'},
-			{code = 'remove_quest_location', value = 'quest_fighters_lich'}]},
+			{code = 'set_completed_active_location'}]},
 		],
 	},
 
@@ -578,7 +578,7 @@ var data = {
 		options = [
 		{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = [], bonus_effects = [
 			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'},
-			{code = 'remove_quest_location', value = 'quest_fighters_lich'}]},
+			{code = 'set_completed_active_location'}]},
 		],
 		},
 }

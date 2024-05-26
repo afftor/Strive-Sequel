@@ -525,6 +525,8 @@ func fix_main_data():
 		#purchase fix
 		if !i.has('purchase_area'):
 			i.purchase_area = 'plains'
+	for i in DungeonData.dungeons.values():
+		i.classname = tr("LOCATIONNAME" + i.code.to_upper())
 	#guild fix
 	worlddata.update_guilds_data()
 

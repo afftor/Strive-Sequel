@@ -77,6 +77,7 @@ func advance_hour():
 		i.tick()
 	
 	hour += 1
+	ResourceScripts.game_world.advance_hour()
 	if hour > variables.HoursPerDay:
 		advance_day()
 		

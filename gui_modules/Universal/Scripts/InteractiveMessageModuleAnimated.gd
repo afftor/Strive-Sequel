@@ -391,8 +391,9 @@ func lockpick_attempt(person):
 				input_handler.interactive_message_follow("lockpick_chest_gas_failure", "story_event", {})
 		input_handler.add_random_chat_message(person, 'lockpick_failure')
 
-func select_person_for_next_event(code): #needs a rework
+func select_person_for_next_event(option): #needs a rework
 	var reqs
+	var code = option.code
 	if code.find('marriage')!= -1:
 		reqs = [
 			{code = 'stat', stat = 'agreed_to_marry', operant = 'eq', value = true}
@@ -420,41 +421,22 @@ func select_person_for_next_event(code): #needs a rework
 			{code = 'stat', stat = 'unique', operant = 'neq', value = "cali"},
 			{code = 'is_master', check = false}
 		]
-	elif code == 'pass_locked_door':
+	elif code in ['pass_lock_discount','pass_blocked_path','pass_magic_barrier','pass_ancient_lock','pass_enemy_strength_scare','pass_enemy_dexterity_sneak','pass_enemy_charm_damage','pass_enemy_charm_avoid']:
 		reqs = [
-			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
+			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
 			{code = 'in_combat_party', value = true},
-			{code = 'trait', trait = 'lockpicking', check = true} #will also need charges later
 			]
-	elif code == 'pass_blocked_path':
+	elif code == 'pass_fallen_bridge':
 		reqs = [
-			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
-			{code = 'in_combat_party', value = true},
-			{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5}
-			]
-	elif code == 'pass_magic_barrier':
-		reqs = [
-			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
-			{code = 'in_combat_party', value = true},
-			{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 5}
-			]
-	elif code == 'pass_high_cliff':
-		reqs = [
-			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
+			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
 			{code = 'in_combat_party', value = true},
 			{code = 'stat', stat = 'wings', operant = 'neq', value = ''}
 			]
 	elif code == 'pass_small_crack':
 		reqs = [
-			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
+			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
 			{code = 'in_combat_party', value = true},
 			{code = 'is_shortstack', check = true}
-			]
-	elif code == 'pass_ancient_lock':
-		reqs = [
-			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
-			{code = 'in_combat_party', value = true},
-			{code = 'has_profession', profession = 'engineer', check = true}
 			]
 	else:
 		reqs = [
@@ -462,7 +444,11 @@ func select_person_for_next_event(code): #needs a rework
 #			{code = 'in_combat_party', value = true}
 			]
 	stored_scene = code
-	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', reqs)
+	var challenge = null
+	if option.has('challenge'):
+		challenge = option.challenge
+	
+	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', reqs, false, challenge)
 
 func remove_person(code):
 	var reqs = [{code = 'is_at_location', value = input_handler.active_location.id, check = true}]
@@ -1067,63 +1053,63 @@ func set_enemy(scene):
 
 
 func handle_scene_options():
-		var option_number = 1
-		var options = current_scene.options
-		for id in range(options.size()):
-			var i = options[id]
-			if i.has("previous_dialogue_option") && typeof(i.previous_dialogue_option) != TYPE_ARRAY:
-				i.previous_dialogue_option = [i.previous_dialogue_option]
-			if (i.has("previous_dialogue_option") && !(previous_dialogue_option in i.previous_dialogue_option)):
-				continue
-			if i.has('remove_after_first_use') && ResourceScripts.game_progress.selected_dialogues.has(i.text):
-				continue
-			var disable = false
-			if globals.checkreqs(i.reqs) == false:
-				if i.has('not_hide') == true:
-					disable = true
-				else:
-					continue
-			if i.has("repeat_next_day"):
-				var cont = false
-				for d in ResourceScripts.game_progress.daily_dialogues:
-					if d.option == i.code:
-						if d.last_activation >= ResourceScripts.game_globals.date:
-							cont = true
-							break
-				if cont:
-					continue
-			
-			var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-			newbutton.set_meta("id", id)
-			newbutton.set("modulate", Color(1, 1, 1, 0))
-			i.text_key = i.text
-			i.text = tr(i.text)
-			if i.has('active_char_translate'):
-				i.text = input_handler.active_character.translate(tr(i.text))
-			elif i.has('master_translate'):
-				i.text = ResourceScripts.game_party.get_master().translate(i.text)
-			newbutton.get_node("Label").bbcode_text = i.text
-			newbutton.hotkey = option_number
-			yield(get_tree(), 'idle_frame')
-			newbutton.get_node("Label").rect_size.y += 8
-			newbutton.rect_min_size.y = newbutton.get_node("Label").rect_size.y
-			newbutton.connect("pressed",self,'select_option', [option_number - 1])
-			
-			
-			if ResourceScripts.game_progress.selected_dialogues.has(i.text_key):
-				newbutton.status = 'seen'
-			if i.has('type'):
-				match i.type:
-					'next_dialogue':
-						newbutton.status = 'next_dialogue'
-			
-			if i.has('disabled') && i.disabled == true:
-				newbutton.status = 'disabled'
+	var option_number = 1
+	var options = current_scene.options
+	for id in range(options.size()):
+		var i = options[id]
+		if i.has("previous_dialogue_option") && typeof(i.previous_dialogue_option) != TYPE_ARRAY:
+			i.previous_dialogue_option = [i.previous_dialogue_option]
+		if (i.has("previous_dialogue_option") && !(previous_dialogue_option in i.previous_dialogue_option)):
+			continue
+		if i.has('remove_after_first_use') && ResourceScripts.game_progress.selected_dialogues.has(i.text):
+			continue
+		var disable = false
+		if globals.checkreqs(i.reqs) == false:
+			if i.has('not_hide') == true:
 				disable = true
-			if disable:
-				newbutton.disabled = true
-				newbutton.status = 'disabled'
-			option_number += 1
+			else:
+				continue
+		if i.has("repeat_next_day"):
+			var cont = false
+			for d in ResourceScripts.game_progress.daily_dialogues:
+				if d.option == i.code:
+					if d.last_activation >= ResourceScripts.game_globals.date:
+						cont = true
+						break
+			if cont:
+				continue
+		
+		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		newbutton.set_meta("id", id)
+		newbutton.set("modulate", Color(1, 1, 1, 0))
+		i.text_key = i.text
+		i.text = tr(i.text)
+		if i.has('active_char_translate'):
+			i.text = input_handler.active_character.translate(tr(i.text))
+		elif i.has('master_translate'):
+			i.text = ResourceScripts.game_party.get_master().translate(i.text)
+		newbutton.get_node("Label").bbcode_text = i.text
+		newbutton.hotkey = option_number
+		yield(get_tree(), 'idle_frame')
+		newbutton.get_node("Label").rect_size.y += 8
+		newbutton.rect_min_size.y = newbutton.get_node("Label").rect_size.y
+		newbutton.connect("pressed",self,'select_option', [option_number - 1])
+		
+		
+		if ResourceScripts.game_progress.selected_dialogues.has(i.text_key):
+			newbutton.status = 'seen'
+		if i.has('type'):
+			match i.type:
+				'next_dialogue':
+					newbutton.status = 'next_dialogue'
+		
+		if i.has('disabled') && i.disabled == true:
+			newbutton.status = 'disabled'
+			disable = true
+		if disable:
+			newbutton.disabled = true
+			newbutton.status = 'disabled'
+		option_number += 1
 
 
 func select_option(number):
@@ -1165,7 +1151,7 @@ func select_option(number):
 		globals.common_effects(option.bonus_effects)
 	
 	if option.has('select_person'):
-		select_person_for_next_event(code)
+		select_person_for_next_event(option)
 	elif option.has('remove_person'):
 		remove_person(code)
 	elif option.has('remove_non_master'):

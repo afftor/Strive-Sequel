@@ -837,6 +837,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	CRITMOD = "Crit. Mod",
 	LEVELUP = "Level up",
 	MAXLEVEL = "Maximum Level",
+	DUNGEONLEVEL = "Level",
 	LEVELUPTEXT = " has just acquired a level. Select a new trait to unlock",
 	TASKCRITCHANCE = "Work Crit Chance",
 	TASKEFFICIENCYTOOL = "Work Efficiency Bonus",
@@ -854,8 +855,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TOOLTIPEVASION = "Reduces enemy hit chance by this value",
 	TOOLTIPSPEED = "Improves your odds to act before other characters",
 	TOOLTIPRESISTS = "Reduces elemental damage by relative resist",
-	TOOLTIPSTAMINA = "Stamina is depleted when performing action the character does not agree on. When fully depleted such actions will drain Obedience. Also when fully depleted the character won't be able to improve their Consent. Stamina is replenished with Orgasms but this is affected by diminishing returns.",
-	TOOLTIPSTAMINADUNGEON = "Exploration Stamina is depleted every time you take an exploration action. It will be fully replenished at the start of new day.",
+	TOOLTIPSTAMINA = "Tolerance is depleted when performing action the character does not agree on. When fully depleted such actions will drain Obedience. Also when fully depleted the character won't be able to improve their Consent. Tolerance is replenished with Orgasms but this is affected by diminishing returns.",
+	TOOLTIPSTAMINADUNGEON = "Exploration Stamina is depleted every time you take an exploration action. Every turn your group will generate a certain amount of it.",
 
 	TOOLTIPFOODCONSUMPTION = "Daily Food Consumption",
 	TOOLTIPPOPULATION = "Population",
@@ -1045,6 +1046,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	NOTENOUGHLOYALTY = "Not enough Loyalty",
 	QUESTCOMPLETEMESSAGE = "Quest Complete",
 	QUESTDAYSLEFT = "days left",
+	QUESTLOCATION = "Quest Location",
 	
 	#Skills
 	SKILLATTACK = "Attack",
@@ -1624,6 +1626,16 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATENCHCAP = "Enchant Capacity", 
 	STATQUALITY = "Quality",
 	STATPRICE = "Value",
+	
+	STATCHG_STRENGTH = "Strength Charges",
+	STATCHG_STRENGTH_MAX = "Strength Max. Charges",
+	STATCHG_PERSUASION = "Persuasion Charges",
+	STATCHG_PERSUASION_MAX = "Persuasion Max. Charges",
+	STATCHG_WISDOM = "Wisdom Charges",
+	STATCHG_WISDOM_MAX = "Wisdom Max. Charges",
+	STATCHG_DEXTERITY = "Dexterity Charges",
+	STATCHG_DEXTERITY_MAX = "Dexterity Max. Charges",
+	
 	
 	STATFOOD_CONSUMPTION = "Food Consumption",
 	STATFOOD_CONSUMPTIONDESCRIPT = "Amount of food items a person requires every day. Lack of food leads to starvation, exhaustion and eventual death.",
@@ -2303,6 +2315,10 @@ However, while it might seem that Landowners have nothing but contempt for those
 	BUFFDESCRIPTMENTOR = "Experience Gain increased",
 	
 	
+	CHALLENGESTRENGTH = "Strength Challenge",
+	CHALLENGEDEXTERITY = "Dexterity Challenge",
+	CHALLENGECHARM = "Charm Challenge",
+	CHALLENGEWISDOM = "Wisdom Challenge",
 	
 	
 	
@@ -2999,7 +3015,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SEXTRAITMASOCHISTDESCRIPT = "[name] experience unusual pleasure from being punished. Arousal from receiving punishments is increased by 50%. ",
 	SEXTRAITSADISTDESCRIPT = "[name] experience unusual pleasure from punishing others. Arousal from giving punishments is increased by 50%. ",
 	SEXTRAITSUBMISSIVEDESCRIPT = "[name] finds pleasure and comfort in being forced into things by others. Submissive positions arousal is increased by 20% ",
-	SEXTRAITDOORMATDESCRIPT = "[name] is very poor when dealing with sexual advances. Actions without [his] consent have only 50% chance to cost stamina.",
+	SEXTRAITDOORMATDESCRIPT = "[name] is very poor when dealing with sexual advances. Actions without [his] consent have only 50% chance to cost Tolerance.",
 	SEXTRAITDOMINANTDESCRIPT = "[name] enjoys being in a leading role. Dominating positions arousal is increased by 20%.",
 	SEXTRAITNYMPHOMANIADESCRIPT = "[name] is perpetually horny, always ready for sex, even if it is not in [his] interest... Starts in Horny state.",
 	SEXTRAITHYPERSENSITIVEDESCRIPT = "[name]'s body is unreasonably sensitive. Can orgasm from any physical action. ",
@@ -3007,7 +3023,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SEXTRAITBOTTLE_FAIRYDESCRIPT = "[name] has a taste for alcoholic beverages. While Drunk or Tipsy all Arousal is increased by 30%.",
 	SEXTRAITIRRESISTIBLEDESCRIPT = "[name] is adored by anyone around [him]. Increases Consent for all [his] partners.",
 	SEXTRAITBEDROOM_PRODIDGYDESCRIPT = "[name] is an excellent learner when it comes to sex practices. Sex Skill gain is increased by 50%. ",
-	SEXTRAITPUSHOVERDESCRIPT = "[name] has unusual desire to be taken against [his] will. All actions against [him] will be treated as forced in terms of descriptions. Stamina reduction from non-consent actions is lower.  ",
+	SEXTRAITPUSHOVERDESCRIPT = "[name] has unusual desire to be taken against [his] will. All actions against [him] will be treated as forced in terms of descriptions. Tolerance reduction from non-consent actions is lower.  ",
 	SEXTRAITTEACHERDESCRIPT = "[name] has a talent to make [his] partners develop their sex skills faster. Partners' Sex Skill gain is increased by 50% (does not stack)",
 	SEXTRAITDESIREDDESCRIPT = "[name] is extremely attractive, making [his] partners more excited. Partners' Arousal is increased by 25%.",
 	SEXTRAITCURIOUSDESCRIPT = "While [name] is interested in sex, [he]'s actually learning more than just it. Sex Encounters give 25% more experience.",
@@ -3077,6 +3093,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUELOCATIONEVENTGOOD = "Lawful",
 	DIALOGUELOCATIONEVENTEVIL = "Misbehave",
 
+	DIALOGUEATTACK = "Attack",
 	DIALOGUEATTACKMIMIC = "Attack Mimic",
 	DIALOGUEMIMICOPENANYWAY = "Open Anyway",
 
@@ -3157,36 +3174,83 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEDUNGEONCHEST = "You find a locked chest. ",
 	DIALOGUEDUNGEONARMORY = "You find a locked armory, which might have something useful in it.",
 	DIALOGUEEVENTDUNGEONLOOT = "After making into the last room, you find the main storage with the most prized possessions. ",
-
+	
+	DIALOUELOCKEDDOOR = "The pass forward ends in a sturdy locked door. It seems to get through it you might need an additional force... or someone who can lockpick.",
+	DIALOUELOCKEDDOOR2 = "The pass forward ends in a sturdy looking wooden door. It seems to get through it you might need an additional force... or try alternative methods.",
+	DIALOUELOCKEDDOORSELECT = "[Dexterity Challenge] Select character (3 Stamina)",
+	DIALOUELOCKEDDOORSELECT2 = "Use Unstable Concoction (3 Stamina)",
+	DIALOUELOCKEDDOORBREAK = "Break through (10 Stamina)",
+	DIALOUELOCKEDDOORPASS = "[name] skillfully unlocks door blocking the pass allowing to proceed. ",
+	DIALOGUEBLOCKEDPATH = "The pass ahead is blocked by a collapsed tunnel. It seems it still can be fixed by someone with enough physical fitness relatively quickly.",
+	DIALOGUEBLOCKEDPATHSELECT = "[Strength Challenge] Select character (3 Stamina)",
+	DIALOGUEBLOCKEDPATHBREAK = "Spend time clearing the passage (10 Stamina)",
+	DIALOGUEBLOCKEDPATHPASS = "[name] lifts one of the crushed wooden bars and manages to push it away, clearing the path ahead.",
+	DIALOGUEMAGICBARRIER = "The group comes across a way bloked by a magic barrier. However, a clever individual might be able to find an easy way to breach it. ",
+	DIALOGUEMAGICBARRIERSELECT = "[Wisdom Challenge] Select character (3 Stamina)",
+	DIALOGUEMAGICBARRIERBREAK = "Wear down the barrier (10 Stamina)",
+	DIALOGUEMAGICBARRIERPASS = "[name] uses [his] keen mind to find the place with the weakest magical structure and breaches the barrier.",
+	DIALOGUEFALLENBRIDGE = "The path ahead suddenly leads to a broken bridge across the chasm. Searching for an alternative route will take a considerable time, however there's a piece of rope which could be carried over for easier repair by someone who can fly.",
+	DIALOGUEFALLENBRIDGESELECT = "[Strength Challenge] Select character (3 Stamina)",
+	DIALOGUEFALLENBRIDGEBREAK = "Search for a different path (10 Stamina)",
+	DIALOGUEFALLENBRIDGEPASS = "[name] flies over the chasm, safely landing with the required tools to fix help fix the path ahead.",
+	DIALOGUEFALLENBRIDGE2 = "The path ahead suddenly leads to a broken bridge across the chasm. Searching for an alternative route will take a considerable time, however it's possible to stabilize it with some additional materials...",
+	DIALOGUEFALLENBRIDGESELECT2 = "Repair Bridge [10 Wood]",
+	DIALOGUEFALLENBRIDGEPASS2 = "The group repairs the bridge with provided materials and can move forward",
+	DIALOGUESMALLCRACK = "The way ahead is blocked by a heavy mechanism controlled from the other side. Getting it by hand will take a while, however there's a small crack in a solid wall next to it, which can be passed by someone of a smaller size. ",
+	DIALOGUESMALLCRACKSELECT = "[Dexterity Challenge] Select character (3 Stamina)",
+	DIALOGUESMALLCRACKBREAK = "Break through it (10 Stamina)",
+	DIALOGUESMALLCRACKPASS = "[name] safely gets on the other side of the door and pulls the leaver opening the pass.",
+	DIALOGUEANCIENTLOCK = "The path ahead is blocked by a sturdy ancient looking door with a complex mechanical gears. Breaking through it will prove to be no easy task, unless someone might be able to figure how it works.",
+	DIALOGUEANCIENTLOCKSELECT = "[Wisdom Challenge] Select character (3 Stamina)",
+	DIALOGUEANCIENTLOCKBREAK = "Break through (10 Stamina)",
+	DIALOGUEANCIENTLOCKPASS = "After carefully studying the lock, [name] manages to figure out a simple way to jam and break it, making the door open by itself.",
+	
+	DIALOGUEENEMYCHARMAVOID = "The group of humanoid enemies above seems to be fairly unalert. Perhaps you might avoid fighting them with some persuasion... ",
+	DIALOGUEENEMYCHARMAVOIDSELECT = "[Persuasion Challenge] Select Character",
+	DIALOGUEENEMYCHARMAVOIDPASS = "[name] manages to talk the group to leave and let you pass free. ",
+	DIALOGUEENEMYCHARMDAMAGE = "The group of hostiles ahead aren't aware of you presence, you might get an upper hand by using someone to distract them...",
+	DIALOGUEENEMYCHARMDAMAGESELECT = "[Persuasion Challenge] Select Character",
+	DIALOGUEENEMYCHARMDAMAGEPASS = "As the enemies are distracted by [name], the rest of group manages to strike them from behind, delivering a significant damage to their composition. ",
+	DIALOGUEENEMYSTRSCARE = "The group of enemies ahead seems hesitating sensing your approach. You might be able to scare them off and avoid the fight by displaying your power...",
+	DIALOGUEENEMYSTRSCARESELECT = "[Strength Challenge] Select Character",
+	DIALOGUEENEMYSTRSCAREPASS = "[name] scares the hostiles away from the path, letting the rest of the group to pass free.",
+	DIALOGUEENEMYDEXSNEAK = "The group of enemies head are unaware of your pressence. Sneaking past them might be possible ",
+	DIALOGUEENEMYDEXSNEAKSELECT = "[Dexterity Challenge] Select Character",
+	DIALOGUEENEMYDEXSNEAKPASS = "[name] manages to get on the other side of the pass and distracts the group of enemies who leave in other direction.",
+	DIALOGUEEVENTENEMYDISTRACT = "The group of enemies ahead seem rather unfocused and unwilling to fight. Perhaps surrendering one of your capturees to them will persuade them to let you pass.",
+	DIALOGUEEVENTENEMYDISTRACTSELECT = "Select Capturee",
+	DIALOGUEEVENTENEMYDISTRACTPASS = "After taking away one of your capturees the group leaves their post to you.",
+	
+		
 	DIALOGUEGROVEWOOD = "You find a stash of prepared wood likely abandoned by some lumberjacks. ",
 	DIALOGUEGROVELEATHER = "You find a stash of hidden leather probably left by poachers. ",
 	DIALOGUECRYPTBONES = "You find a pile of perfectly preserved bones. ",
 
 	DIALOGUEEVENTDUNGEONPRISONER = "You come across a jail room holding a bound [race] [male], likely held by the bandits for ransom or mockery. At your approach [he] tells you [his] name is [name] and begs you for help.",
-	DIALOGUETAKESLAVE = "Capture and enslave",
+	DIALOGUETAKESLAVE = "[Strength Challenge] Capture and enslave",
 	DIALOGUEEVENTDUNGEONPRISONERSENSLAVE = "You release [name] from [his] cell, only to turn [him] into your slave. As [he]'s escorted back to your mansion, your team continues on. ",
 
 	DIALOGUEEVENTDUNGEONPRISONERFREE1 = "You release and unbind [name], much to [his] relief. As [he] thanks you, [he] shows you a small cache of resources near [his] cell as thanks for [his] rescue. After explaining to [him] how to get out, you are ready to continue on your way.",
 	DIALOGUEEVENTDUNGEONPRISONERFREE2 = "You release and unbind [name], much to [his] relief. As [he] thanks you, [he] shows you a secret item [he] has hidden in [his] cell as thanks for [his] rescue. After explaining to [him] how to get out, you are ready to continue on your way.",
 	
-	DIALOGUEEVENTDUNGEONRESOURCE = "There are resources in this room. You can harvest {amount} items of {resource} later or spend {stamina_cost} stamina to get half of that amount now.",
+	DIALOGUEEVENTDUNGEONRESOURCE = "There are resources in this room. You can add [color=yellow]{amount} pieces of {resource}[/color] for harvesting or spend [color=yellow]{stamina_cost} stamina[/color] to get half of that amount instantly.",
 	
 	DIALOGUEEVENTGOBLINFRIENDLY = "As you make your way through the caves you find an isolated room. As you barge in, a lone goblin [boy] jumps in fear. \n\n— Wait, wait, please don't kill me! I'm not wanna fight, I'm only here accidently. I won't tell anyone I've seen you, I promise.\n\nSurprised by the fact [he] knows common speech and is civilized unlike others you consider what to do with [him].",
-	DIALOGUEEVENTGOBLINRECRUIT = "Attempt to recruit",
-	DIALOGUEEVENTGOBLINBRINGTOLEADER = "Request getting you to the leader",
+	DIALOGUEEVENTGOBLINRECRUIT = "[Persuasion Challenge] Attempt to recruit",
+	DIALOGUEEVENTGOBLINBRINGTOLEADER = "[Persuasion Challenge] Request getting you to the leader",
 	DIALOGUEEVENTGOBLINKILL = "Kill",
-	DIALOGUEEVENTGOBLINCAPTURE = "Capture",
+	DIALOGUEEVENTGOBLINCAPTURE = "[Strength Challenge] Capture",
 	DIALOGUEEVENTGOBLINLEAVE = "Let go",
 	DIALOGUEEVENTGOBLINRECRUITSUCCESS = "[center]{color=green|Success!}[/center]\n— Eh?.. You want me to work for you? Well, I can't refuse someone big and strong like you, can I? I mean, I'll gladly take your offer! This place is a big ass dump after all.\n\nAfter [name] received instructions, [he] quickly disappeared in the way of your mansion.",
 	DIALOGUEEVENTGOBLINRECRUITFAILURE = "[center]{color=red|Failure!}[/center]\n— Eh?.. I... don't think this is a good idea, we don't take betreyals nicely, ya know. Now, if you excuse me...\n\nBefore you can react, the goblin [boy] disappears from sight in one of the tunnels you didn't notice on entrance.",
-	DIALOGUEEVENTGOBLINBRINGTOLEADERSUCCESS = "[center]{color=green|Success!}[/center]\n— You actually serious?! I-I guess someone like you can do that... Okay, fine, I'll show you the way, but after this you won't see me anywhere close to it. You got me? \n\nAfter a few minutes of getting through cave maze, you end up before the entrance of the room which seems to lead to the local goblin leader. Before you can notice, the goblin is already disapparead from sight.",
+	DIALOGUEEVENTGOBLINBRINGTOLEADERSUCCESS = "[center]{color=green|Success!}[/center]\n— You actually serious?! I-I guess someone like you can do that... Okay, fine, I'll show you the way, but after this you won't see me anywhere close to it. You got me? \n\nAccording to your agreement, the goblin retells you the layout of the dungeon which you carefully write down. Before you can notice, the goblin is already disapparead from sight.",
 	DIALOGUEEVENTGOBLINBRINGTOLEADERFAILURE = "[center]{color=red|Failure!}[/center]\n— This... This is unreasonable ya know, I'm not out of my mind yet. If you are so willing to die, don't drag me in. \n\nAs [he] was talking [he] moved to the position and darted from the room before you could react. ",
 	DIALOGUEEVENTGOBLINCAPTUREREPLY = "You figure that civilized goblin can be a useful tool or net some profit on the market. Without giving [him] a second chance, you seize [him].\n\n— Hey, what the {^fuck:hell} are you {^doing:thinking}?! Let me go!.. You bastards!",
 	DIALOGUEEVENTGOBLINKILLREPLY = "You can't risk any suspicious goblin leave, let alone warn others. Before [he] can react, your group strike [him] down. Unfortunately, there's nothing else of interest here.",
 	DIALOGUEEVENTGOBLINLEAVEREPLY = "There's no need to dispose of a friendly goblin even at a place like this. You allow [him] to go free which brings a relief on [his] face.\n\n— That's great! I'll see myself off. Best of luck to you, guys!",
 	DIALOGUEEVENTFAIRYFRIENDLY = "As you make it through the woods, a lone Fairy jumps in front of you. [He] seems to be curious from meeting someone [he] never seen before. \n\n— Hey, what are you doing here? I've never seen you before... \n\n[He] seems to be willing to stick with you out of boredom or curiosity at least for a chat.",
-	DIALOGUEEVENTFAIRYRECRUIT = "Attempt to recruit",
-	DIALOGUEEVENTFAIRYCAPTURE = "Capture",
+	DIALOGUEEVENTFAIRYRECRUIT = "[Persuasion Challenge] Attempt to recruit",
+	DIALOGUEEVENTFAIRYCAPTURE = "[Dexterity Challenge] Capture",
 	DIALOGUEEVENTFAIRYASKHEAL = "Ask for heal",
 	DIALOGUEEVENTFAIRYLEAVE = "Leave",
 	DIALOGUEEVENTFAIRYRECRUITSUCCESS = "[center]{color=green|Success!}[/center]\n— Adventures?... This sounds fun. Okay, I like you, I wanna see the world!\n\n[scncharname] decides to join your team.",
@@ -3204,9 +3268,18 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUETUTHEIR = "Heir Education (5.000 Gold)",
 	
 	SPRINGTEXT = "You find a small clearing with a spring. It might be a good time to take a break and rest.",
-	SPRING_HEAL = "Your group rests and restores some health.",
-	SPRING_HEAL_OPTION = "Rest",
+	SPRING_HEAL = "Your group takes their time to heal some damage from the fights.",
+	SPRING_STAMINA = "Your group rests and recover their energy.",
+	SPRING_HEAL_OPTION = "Tend to wounds",
+	SPRING_STAMINA_OPTION = "Take a rest",
 	SPRING_LOOT_OPTION = "Search around",
+	FOUNTAINTEXT = "You find a small fountain still brimming with clear water. You could use it to ease group's exhaustion, but it seems there's also some raw mana available for extraction...",
+	FOUNTAINSTAMINAOPTION = "Take a rest",
+	FOUNTAINMANAOPTION = "Harness magic",
+	FOUNTAIN_MANA = "The group manages to extract mana from the fountain and restore their powers.",
+	FOUNTAIN_STAMINA = "The group takes a rest in the room and recover their energy.",
+	
+	
 	DIALOGUE_SPRING_LOOT = "After searching around you find a small buried stash. You decide to take its contents for yourself.",
 	DIALOGUE_SPRING_NO_LOOT = "You search around but weren't able to find anything useful.",
 	TRIBALELVES = "You find yourself surrounded by a group of local tribal elves. It seems they consider you an intruder on their territory and preparing for attack...",
@@ -3449,6 +3522,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	WORKRULEPERSONALITY_LOCK = "Lock Personality",
 	WORKRULEPERSONALITY_LOCKDESCRIPT = "[name] will no longer have [his] personality affected by social actions.",
 	
+	WORKRULEMASTURBATION = "Forbid Masturbation",
+	WORKRULEMASTURBATIONDESCRIPT = "[name] will not be allowed to relieve [him]self, leading to increased stress but higher libido. Obedience Drain +2, Lust Growth +15%.",
+	
 	SERVICEENSLAVE = "Enslave",
 	SERVICEENSLAVEDESCRIPT = "Makes chosen character into a Slave.\n\n[color=aqua]Slaves suffer 10% damage reduction but gain various collection bonuses and but their Loyalty can be increased by punishing skills.[/color]",
 
@@ -3689,7 +3765,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	LICHENCWINAIRE = "As you defeat the Lich and take his skull, the elf girl observes you cautiously.",
 	LICHENCWINELSE = "You take the Lich's skull but can't find anything else worthwhile.",
 	LICHAIRETALK1 = "You strike down the Lich and take its skull. The elf girl observes you with a mix of relief and caution. \n\n— I... Thank you for the help. My name is Aire. My Master has sent me here to deal with the undead who disturbed nearby peasants, but it didn't go well.",
-	LICHAIRETALK1_DEAL_WITH_LICH = "The elf girl observes you with a mix of relief and caution.\n\n	— I... Thank you for the help. My name is Aire. My Master has sent me here to deal with the undead who disturbed nearby peasants, but it didn't go well.",
+	LICHAIRETALK1_DEAL_WITH_LICH = "The elf girl observes you with a mix of relief and caution.\n\n— I... Thank you for the help. My name is Aire. My Master has sent me here to deal with the undead who disturbed nearby peasants, but it didn't go well.",
 	LICHAIRETALK1REPLY1 = "What kind of Master would send an elven archer on their own around here?",
 	LICHAIRETALK1REPLY2 = "I'm glad you are safe, take care.",
 	LICHAIRETALK1REPLY3 = "Don't you think you should reward me for your rescue?",
@@ -3701,7 +3777,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	LICHAIRETALK3 = "— But I don't have anything on me..! Unless you mean... But this would be indecent. \n\nAire blushes heavily and looks down.",
 	LICHAIRETALK3REPLY1 = "[Sex Factor] Your company would please me greatly.",
 	LICHAIRETALK3REPLY2 = "Nevermind, you can go.",
-	LICHAIRETALK4 = """The elf girl twists a lock of orange hair around her finger nervously. 
+	LICHAIRETALK4 = """{color=green|Success}\n\nThe elf girl twists a lock of orange hair around her finger nervously. 
 
 {color=yellow|Aire: — Can we at least find somewhere a little more comfortable than this... dusty tomb?}
 
@@ -4077,14 +4153,14 @@ The crowd of landowners bursts into a hubbub.
 	As such we barely have any influence while Aliron is under martial law.
 	I guess all we can do is stick around 'till it's over and hope there will be something left for us afterwards.
 		
-	— You know, it's going to take Duncan weeks to find out what's really going on, and until then the air around here will be tense.
+— You know, it's going to take Duncan weeks to find out what's really going on, and until then the air around here will be tense.
 	You could obviously jump straight into the fight with the rebels, but I feel like we would do better to uncover the perpetrators and clear suspicion within the guilds first. What do you think?""",
 
 
 	ALIRONELECTIONSFINISH_ANSWER2 = """— Sure, that's what we always do. The stakes are higher this time though, with one of our own betraying us to the rebellion.
 	The Mages are in charge of any large scale teleportations, so this shouldn't have been possible short of infiltration and sabotage.
 		
-	— You know, it's going to take Duncan weeks to find out what's really going on, and until then the air around here will be tense.
+— You know, it's going to take Duncan weeks to find out what's really going on, and until then the air around here will be tense.
 	You could obviously jump straight into the fight with the rebels, but I feel like we would do better to uncover the perpetrators and clear suspicion within the guilds first. What do you think?""",
 
 	ALIRONELECTIONSFINISH_QUESTION3 = "Actually, I was about to offer my assistance to Duncan personally.",
@@ -4093,17 +4169,17 @@ The crowd of landowners bursts into a hubbub.
 
 	ALIRONELECTIONSFINISH_ANSWER3 = """— Quite enthusiastic, aren't you? This is all the better, but don't act prematurely.
 	
-	— Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
+— Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
 	I suggest starting with the Mages guild. If they haven't figured it out already, they should be able to determine how our princess got in.""",
 
 	ALIRONELECTIONSFINISH_ANSWER4 = """— Hah, that's the spirit. Trust no one. This is why I've chosen you. Well, since you've realized that and if that was the case, we won't be able to fool you, right?
 	
-	—Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
+—Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
 	I suggest starting with the Mages guild. If they haven't figured it out already, they should be able to determine how our princess got in.""",
 
 	ALIRONELECTIONSFINISH_ANSWER5 = """— Come on now. Someone aiming for a position of mayor should display more confidence. Don't worry, if something happens I'll cover for you.
 	
-	— Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
+— Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
 	I suggest starting with the Mages guild. If they haven't figured it out already, they should be able to determine how our princess got in.""",
 
 	#==============Mages guild line================= (triggers when meeting mage leader)
@@ -4117,7 +4193,7 @@ The crowd of landowners bursts into a hubbub.
 
 	MAGESAFTERELLECTION1_ANSWER1 = """— Yeah, right, like hell you did. Did the Fighters send you? Or, more likely, it's Amelia's idea, right?
 	
-	— Fucking hell. They can't finish off one brat, don't even realize it until it's too late, and now it's all our fault. Like I care. So you wanna find out what actually happened?""",
+— Fucking hell. They can't finish off one brat, don't even realize it until it's too late, and now it's all our fault. Like I care. So you wanna find out what actually happened?""",
 
 	MAGESAFTERELLECTION1_ANSWER2 = """— Fucking hell. They can't finish off one brat, don't even realize it until it's too late, and now it's all our fault. Like I care. So you wanna find out what actually happened?""",
 
@@ -4127,10 +4203,10 @@ The crowd of landowners bursts into a hubbub.
 
 	MAGESAFTERELLECTION1_ANSWER3 = """— The city is protected from unauthorized teleportation by a crystal sphere designed to dampen magic crossing a projected threshold. The device can have very different applications, but what's important is that for this purpose it requires a power source. This power source was stolen right before... the event.
 	
-	— Cutting to the chase, there are only a few guild members allowed access, and one of those has just happened to have gone missing on the day of the incident.
+— Cutting to the chase, there are only a few guild members allowed access, and one of those has just happened to have gone missing on the day of the incident.
 	Name's Fred. You can find him and confirm if he disabled the device on his own accord. If he indeed sided with the rebels or the Empire, it's best if you take him down immediately.
 	
-	— I'll give you his home address, you might find some clues about his whereabouts there.""",
+— I'll give you his home address, you might find some clues about his whereabouts there.""",
 
 	MAGESAFTERELLECTION1_QUESTION6 = "What's that power source which was stolen?",
 	MAGESAFTERELLECTION1_QUESTION7 = "You suspect he's dead?",
@@ -4815,7 +4891,7 @@ Sigmund passes you the pouch with some gold in it.
 	AFTER_MINES_DUNCAN_4 = """— But I've also heard you let that demon go without a fight, and she took some workers with her. Explain yourself.""",
 	AFTER_MINES_DUNCAN_3_4 = """— So, it might have been the demon you've mentioned earlier. From the way you say it, she was up to something, but it shouldn't hinder us. It's a shame to lose the artifact to them, but demons are too few and scarce to present any real threat.
 	
-	— But I've also heard you let that demon go without a fight, and she took some workers with her. Explain yourself.""",
+— But I've also heard you let that demon go without a fight, and she took some workers with her. Explain yourself.""",
 	AFTER_MINES_DUNCAN_OPTION_4 = """I was outnumbered and had no choice.""",
 	AFTER_MINES_DUNCAN_OPTION_5 = """The miners couldn't have been saved in that moment.""",
 	AFTER_MINES_DUNCAN_OPTION_6 = """What's it to you? We still got the mine back up and running.""",
@@ -4834,15 +4910,15 @@ Sigmund passes you the pouch with some gold in it.
 	AFTER_MINES_DUNCAN_OPTION_13 = """I've received the message.""",
 	AFTER_MINES_DUNCAN_10 = """— It's time. We've been preparing to siege Millford which has been captured by rebels at the first days of rebellion. Now we finally have enough forces for a full fledged siege.
 	
-	— I'll be leading it and I have a mission for you. There's a convoy carrying additional food supplies necessary for the operation. You'll have to escort it there. After that your forces will join the siege.""",
+— I'll be leading it and I have a mission for you. There's a convoy carrying additional food supplies necessary for the operation. You'll have to escort it there. After that your forces will join the siege.""",
 	AFTER_MINES_DUNCAN_OPTION_14 = """This shouldn't be hard.""",
 	AFTER_MINES_DUNCAN_OPTION_15 = """Can't believe I have to play delivery [boy] now of all times.""",
 	AFTER_MINES_DUNCAN_11 = """— Don't take for granted this will be easy, there might still be rebel or bandit ambushes along the way.
 	
-	— Now, we shall meet on the battlefield and put an end to this war.""",
+— Now, we shall meet on the battlefield and put an end to this war.""",
 	AFTER_MINES_DUNCAN_12 = """— We all have to make our contributions for the cause. The guilds will not forget your participation once this is over and the mayor election will resume.
 	
-	— Now, we shall meet on the battlefield and put an end to this war.""",
+— Now, we shall meet on the battlefield and put an end to this war.""",
 	AFTER_MINES_CONVOY_1 = """You find the supplies you are supposed to deliver at the depot already prepared and packed on a few mules, so all you've left to do is to set out with your team.""",
 	AFTER_MINES_CONVOY_OPTION_1 = """*Move*""",
 	AFTER_MINES_CONVOY_2 = """You order to finish preparations and move out with the convoy.""",
@@ -5179,7 +5255,7 @@ Duncan: — [name], you can return to Aliron now. We shall plan out our next mov
 	FINAL_OPERATON_3 = """— Hmm, for one the location is an abandoned mineshaft, it'll be an enclosed space, but should still have plenty of open room for fighting the enemy. The rebels will likely be well fortified. They'll have numbers, but we'll have skill.""",
 	FINAL_OPERATON_4 = """— The longer it takes you, the more time the enemy has to prepare, so try not to keep us waiting too long. I'll mark the location on your map.
 	
-	— Don't mention this to the other guilds. We still aren't sure if Fred was the only traitor in our midst, and we can't risk the princess getting away because a spy gave her forewarning. That being said, if you can recruit help from them without revealing the raid, do so.""",
+— Don't mention this to the other guilds. We still aren't sure if Fred was the only traitor in our midst, and we can't risk the princess getting away because a spy gave her forewarning. That being said, if you can recruit help from them without revealing the raid, do so.""",
 	FINAL_OPERATON_WORKERS_OPTION_1 = "*Ask for Help*",
 	FINAL_OPERATON_WORKERS_1 = """— Ach, have ya no mind to what pressure we're under? Entire guild is tied up supporting the fighters spat with the rebels. Got none free ta take on some outside job at the moment.""",
 	FINAL_OPERATON_SERVANTS_1 = """— Came to us for Duncan's little raid? Please, [name], I thought you knew that we don't deal in any violence. Sorry... But to cheer you up, here's a little tip from me: ask Myr. Mages are certainly more capable in what you're looking for.""",
@@ -7832,7 +7908,7 @@ Zephyra leaves the church without giving you a second glance.""",
 
 	Zephyra looks around with a troubled expression of someone having to answer a childish questions rather than someone being interrogated.
 
-	— *Sigh* Look, if that's still not enough for to convince you, how about I dirty bribe you then? Tell what can I get you.""",
+— *Sigh* Look, if that's still not enough for to convince you, how about I dirty bribe you then? Tell what can I get you.""",
 	ZEPHYRA_SWORD_3_3_2_OPTION_1 = "You could give something valuable as a way of insurance.",
 	ZEPHYRA_SWORD_3_3_2_OPTION_2 = "Something intimate could prove your sincerity.",
 	ZEPHYRA_SWORD_3_3_2_OPTION_3 = "Forget about it, I'll trust you.",
@@ -8275,7 +8351,7 @@ Savra passes you a small parchment with the ingredients.
 	LEON_ENCOUNTER_4_1 = """— We'll set up a hunting party with the most experienced hunters and warriors to track and defeat the Stag. It's not my first time hunting it, though it did slow us down. It's painful to admit I was taken by its curse.""",
 	LEON_ENCOUNTER_4_2 = """— It'll be an honor to have your help. You must understand that this is not a normal skirmish or hunt. The White Stag is a beast unlike any other. Not only is it able to induce madness by its mere presence, it possesses other fearsome powers. You can ask Savra about them, she could explain it better than me.
 	
-	— Meet us in the wilds, where we begin the hunt.""",
+— Meet us in the wilds, where we begin the hunt.""",
 	SAVRA_STAG_QUESTION = """*Ask about the White Stag*""",
 	SAVRA_STAG_ANSWER = """ — White Stag is a being of mysterious nature. Even though we consider it evil I'm more inclined to believe for it to be a challenge. Rundas must be testing our strength hence why it was never really defeated. As a spiritual leader I can't ignore my duty and ask you to show it at least some respect.""",
 	WHITE_STAG_ENCOUNTER_1 = """You come to the previously established location and find a fairly large group of beastkin, ready for the hunt. Standing off to the side you spot Leon and call out to him.
@@ -8305,10 +8381,10 @@ Before you realize that Leon is yelling at you to be careful, you see the beast 
 	WHITE_STAG_ENCOUNTER_5_OPTION_3 = "That's none of your business, demon.",
 	WHITE_STAG_ENCOUNTER_6_1 = """— Preposterous. How has Freya not smitten your foul body yet?
 	
-	— Your mere presence defiles these grounds and all traces of it must be annihilated. Then we can return to our confrontation once again.""",
+— Your mere presence defiles these grounds and all traces of it must be annihilated. Then we can return to our confrontation once again.""",
 	WHITE_STAG_ENCOUNTER_6_2 = """— Help? There's nothing to help here.
 	
-	— Your mere presence defiles these grounds and all traces of it must be annihilated. Then we can return to our confrontation once again.""",
+— Your mere presence defiles these grounds and all traces of it must be annihilated. Then we can return to our confrontation once again.""",
 	WHITE_STAG_ENCOUNTER_6_3 = "— You dare to call me a demon? Clearly you are out of your mind. Futile. I'll not only take your life, but your very soul will be trampled. We will see what is left of it when I am done.",
 	WHITE_STAG_ENCOUNTER_6_OPTION_1 = "I won't let you kill me.",
 	WHITE_STAG_ENCOUNTER_6_OPTION_2 = "It's you who will die here.",
@@ -8939,7 +9015,7 @@ Cali looks surprisingly disappointed but decides not to tempt her fate and leave
 	CALI_SIDEQUEST_2_OPTION_4 = "The Servants might be a good fit for a girl.",
 	CALI_SIDEQUEST_3_1 = """— Hmm.. Yeah, I like that! Being an adventurer, fighting bad guys and monsters
 	
-	— So, you think I can go there and become a fighter? I can also be more useful to you if I get stronger, right? Let's go there!""",
+— So, you think I can go there and become a fighter? I can also be more useful to you if I get stronger, right? Let's go there!""",
 	CALI_SIDEQUEST_2_2 = """— No, I hate studying and I heard you need to do that a lot to become a mage. It does not really suit me, don't you think?""",
 	CALI_SIDEQUEST_2_3 = """— Ugh, boring. I'd rather do something more active.""",
 	CALI_SIDEQUEST_2_4 = """— Oh, come on, you are talking just like my mom! I may be a girl, but I'm not really good with that girly stuff. There must be something better.""",

@@ -472,7 +472,7 @@ var data = {
 		text = [{text = 'TEMPLE_8', reqs = []}], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'remove_active_location'},
+			bonus_effects = [{code = 'set_completed_active_location'},
 			{code = 'progress_quest', value = 'temple_quest', stage = 'stage2'}]
 		} ]
 	},
