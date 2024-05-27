@@ -3113,6 +3113,25 @@ var itemlist = {
 		tags = ['no_random','unsellable','save_on_use'],
 		mansion_effect = 'zephyra_underwear',
 	},
+	
+	
+	map_goblin_cave = {
+		code = 'map_goblin_cave',
+		name = "",
+		descript = "",
+		type = 'usable',
+		itemtype = 'potion',
+		crafttype = 'basic',
+		slots = [],
+		price = 100,
+		icon = load("res://assets/images/iconsitems/icon_scroll1.png"),
+		tier = 'easy',
+		reqs = [],
+		effects = [],
+		tags = [],
+		map = 'dungeon_goblin_cave',
+		mansion_effect = 'map',
+	},
 
 
 	worker_gloves = {

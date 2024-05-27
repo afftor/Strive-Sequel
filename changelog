@@ -9,8 +9,10 @@ Added exploration mechanic to dungeons
 Added a bit more flavor text scenes to the transition of act 2 and some optional flavor content tied to it
 Added new character rule: Forbid Masturbation
 Added alphabetical sort to inventory for materials
+Added alternative personalities (meotions) to portraits for unique characters
 Changed Cali and Zephyra height from petite to short
 Stamina in sex minigame has been renamed to Tolerance
+Fixed unique character portraits and sprites resetting when replaced
 Fixed service suit having wrong mod affixes
 Fixed writ of redemption to working properly
 Fixed some racial traits not applying correctly (arachna spider silk)

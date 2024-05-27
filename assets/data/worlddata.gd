@@ -23,7 +23,7 @@ var lands = {
 		guilds = ['workers','servants','fighters','mages','slavemarket','exotic_slave_trader'],
 		events = [],
 		tags = [],
-		capital_options = ['quest_board','location_purchase'],
+		capital_options = ['quest_board'],#,'location_purchase'],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
 		area_shop_items = {
 			meat = {min = 40, max = 80, chance = 1},

@@ -19,7 +19,7 @@ var person_to_hire
 var selectedquest
 
 var city_options = {
-	location_purchase = "EXPLORBUYDUNGEON",
+	#location_purchase = "EXPLORBUYDUNGEON",
 	quest_board = "EXPLORENOTICEBOARD",
 }
 

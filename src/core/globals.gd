@@ -2454,14 +2454,11 @@ func valuecheck(dict):
 			if gui_controller.exploration_dungeon == null:
 				return false
 			return gui_controller.exploration_dungeon.location_chars_check(dict.value)
-<<<<<<< HEAD
 		'update_prts':
 			for ch in ResourceScripts.game_party.characters:
 				ch.update_prt()
-=======
 		'captured_number':
 				return input_handler.operate(dict.operant,input_handler.active_location.captured_characters.size(), dict.value)  
->>>>>>> ea7fdc71df733df73a2ff9609061cbe8cb4b3d15
 
 
 func apply_starting_preset():
