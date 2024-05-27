@@ -1806,13 +1806,15 @@ func update_portrait(ragdoll): # for ragdolls
 	ragdoll.save_portrait(path)
 
 func update_prt():
-	if get_stat("unique") == null or get_stat("player_selected_icon") or get_stat("player_selected_body"):
+	if get_stat("unique") == null or (statlist.statlist.has("player_selected_icon") and get_stat("player_selected_icon")):
+		return
+	if statlist.statlist.has("player_selected_body") and get_stat("player_selected_body"):
 		return
 	var prt_name: String
 	var variation = "default"
 	if has_work_rule('nudity'):
 		variation = "nude"
-	if get_stat("unique_variation"):
+	if statlist.statlist.has("unique_variation") and get_stat("unique_variation"):
 		variation = get_stat("unique_variation")
 	
 	# check for unique nude portrait for example cali_nude_collar_prt
