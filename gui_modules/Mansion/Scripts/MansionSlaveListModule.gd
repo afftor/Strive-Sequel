@@ -129,6 +129,8 @@ func build_for_default(person, newbutton):
 	newbutton.get_node('explabel').visible = true
 	newbutton.get_node('stats').visible = true
 	newbutton.get_node('job').visible = true
+	newbutton.get_node("DateIcon").hide()
+	newbutton.get_node("SexIcon").hide()
 	newbutton.get_node('obed').visible = !person.is_master()
 
 func build_for_travel(person, newbutton):
@@ -255,10 +257,13 @@ func sort_locations():
 func build_sex_selection(person, newbutton):
 	newbutton.get_node('progress').visible = false
 	newbutton.get_node('explabel').visible = true
-	newbutton.get_node('stats').visible = true
-	newbutton.get_node('job').visible = true
+	newbutton.get_node('stats').visible = false
+	newbutton.get_node('job').visible = false
+	newbutton.get_node("DateIcon").visible = true
+	newbutton.get_node("SexIcon").visible = true
 	newbutton.get_node('obed').visible = !person.is_master()
 	calculate_sex_limits()
+	#print(ResourceScripts.game_globals.weekly_sex_left)
 	var sex_participants = get_parent().sex_participants
 	for button in SlaveContainer.get_children():
 		if button == SlaveContainer.get_child(SlaveContainer.get_children().size()-1):
@@ -266,9 +271,22 @@ func build_sex_selection(person, newbutton):
 		var ch = button.get_meta("slave")
 		button.pressed = sex_participants.has(ch)
 		button.disabled = (sex_participants.size() >= limit && !button.is_pressed())
-		if ch.has_status("no_sex") or !ch.has_status("sex_basic") or (sex_participants.size() > 1 and !ch.has_status("sex_group")):
-			button.hint_tooltip = "Sex Requirements aren't met"
-			button.get_node("name").set("custom_colors/font_color", Color(variables.hexcolordict.red))
+		if ch.has_status('no_sex'):
+			button.get_node("SexIcon").self_modulate = Color(variables.hexcolordict.red)
+		elif ResourceScripts.game_globals.weekly_sex_left < 1:
+			button.get_node("SexIcon").self_modulate = Color(variables.hexcolordict.yellow)
+		else:
+			button.get_node("SexIcon").self_modulate = Color(variables.hexcolordict.green)
+		if !person.has_status("dating"):
+			button.get_node("DateIcon").self_modulate = Color(variables.hexcolordict.red)
+		elif person.tags.has("no_date_day") || ResourceScripts.game_globals.weekly_dates_left < 1:
+			button.get_node("DateIcon").self_modulate = Color(variables.hexcolordict.yellow)
+		else:
+			button.get_node("DateIcon").self_modulate = Color(variables.hexcolordict.green)
+		
+#		if ch.has_status("no_sex") or !ch.has_status("sex_basic") or (sex_participants.size() > 1 and !ch.has_status("sex_group")):
+#			button.hint_tooltip = "Sex Requirements aren't met"
+#			button.get_node("name").set("custom_colors/font_color", Color(variables.hexcolordict.red))
 
 	update_description()
 
@@ -313,7 +331,7 @@ func show_location_characters(button = null):
 			if person_reference.get_work() == 'learning':
 				person.visible = false
 				continue
-			build_for_default(person_reference, person)
+			if get_parent().mansion_state != 'sex': build_for_default(person_reference, person)
 			var person_location = person_reference.travel.location
 			if selected_location == "show_all":
 				person.visible = true

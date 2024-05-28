@@ -114,7 +114,7 @@ var data = {
 		tags = ['dialogue_scene','master_translate'],
 		text = [
 		{text = "ELECTIONSTART4", reqs = []},
-		{text = "ELECTIONSTART4_1", reqs = [{type = "faction_reputation", code = 'servants', operant = 'gte', value = 300}], bonus_effects = [{code = 'decision', value = 'servants_election_support'}]},
+		{text = "ELECTIONSTART4_1", reqs = [{type = "faction_reputation", code = 'servants', operant = 'gte', value = 200}], bonus_effects = [{code = 'decision', value = 'servants_election_support'}]},
 		{text = "ELECTIONSTART4_2", reqs = []},
 		],
 		options = [

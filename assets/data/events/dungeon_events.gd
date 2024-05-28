@@ -56,7 +56,7 @@ var data = {
 				},
 				{
 				reqs = [{type = 'no_check'}],
-				text = tr("DIALOGUEBLOCKEDPATH"),
+				text = tr("DIALOGUEBLOCKEDPATH2"),
 				tags = ['linked_event'],
 				default_event_type = "trap",
 				image = 'trap',

@@ -1474,6 +1474,8 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	SLAVEBODYHALFSPIDERDESCRIPT = "[His] 身体的下半部分由一只 [color=yellow]蜘蛛的腿和腹部[/color]组成。",
 	SLAVEBODYHALFHORSEDESCRIPT = "虽然 [his] 上半身是人，但 [his] 下半身在自然界中是 [color=yellow]马[/color] 。",
 	SLAVEBODYHALFSQUIDDESCRIPT = "[His] 身体的下半部分由 [color=yellow]多条触手[/color]组成, 类似于章鱼的触手。",
+	SLAVECLASSSLAVE = """Slave""", # MISSING TRANSLATION
+	SLAVECLASSSERVANT = """Subordinate""", # MISSING TRANSLATION
 
 
 
@@ -3257,6 +3259,20 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 
 	RETURNTOMANSIONBUTTON = "将角色送回豪宅",
 	RETURNCHARACTERCONFIRM = "命令 [name] 返回豪宅?",
+	ITEMMAP_BANDIT_DEN = """Map: Bandit Den""", # MISSING TRANSLATION
+	ITEMMAP_BANDIT_FORT = """Map: Bandit Fort""", # MISSING TRANSLATION
+	ITEMMAP_GROVE = """Map: Grove""", # MISSING TRANSLATION
+	ITEMMAP_GOBLIN_CAVE = """Map: Goblin Cave""", # MISSING TRANSLATION
+	ITEMMAP_UNDEAD_CRYPT = """Map: Crypt""", # MISSING TRANSLATION
+	ITEMMAP_ANCIENT_JUNGLES = """Map: ncient Jungles""", # MISSING TRANSLATION
+	ITEMMAP_FIRE_DEPTHS = """Map: Fire Depths""", # MISSING TRANSLATION
+	ITEMMAP_BANDIT_DENDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_BANDIT_FORTDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_GROVEDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_GOBLIN_CAVEDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_UNDEAD_CRYPTDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_ANCIENT_JUNGLESDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_FIRE_DEPTHSDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
 
 
 	LOCATIONNAMESKIRMISH_BANDIT_CAMP = "Bandit Camp 土匪营地",
@@ -12958,6 +12974,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	
 	METRICS_BASE = "[name] 已经成为您家庭的一部分 {color=yellow|%d} 周 {color=yellow|%d} 天了。",
+	METRICS_BASE_YOU = """[name] is a [master] and has been in this household for {color=yellow|%d} weeks and {color=yellow|%d} days.""", # MISSING TRANSLATION
 	METRICS_DATES_MASTER = "[He] 约会了 {color=yellow|%d} 次，并进行了 {color=yellow|%d} 次性活动。",
 	METRICS_DATES = "[He] 与你约会了 {color=yellow|%d} 次，并进行了 {color=yellow|%d} 次性活动。",
 	METRICS_PARTNERS = "总的来说 [he]在这段时间里与 {color=yellow|%d} 名伴侣发生了性关系。 ",

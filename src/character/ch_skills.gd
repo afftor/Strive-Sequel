@@ -164,7 +164,7 @@ func use_social_skill(s_code, target, item):
 	var template = Skilldata.Skilllist[s_code]
 	if template.has('special'):
 		item = Items.itemlist[item.itembase]
-		if item.has('mansion_effect') && item.mansion_effect == 'map':
+		if s_code == 'map':
 			ResourceScripts.custom_effects.call(template.special, item.map)
 		else:
 			ResourceScripts.custom_effects.call(template.special, parent.get_ref())

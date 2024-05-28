@@ -118,13 +118,13 @@ var params_to_save = [ #memo mostly
 	"mouth_virgin",
 	"food_filter",
 	"physics_factor",
+	"wits_factor",
+#	"growth_factor", idk why
+	"charm_factor",
+	"sexuals_factor",
 	"magic_factor",
 	"tame_factor",
 	"timid_factor",
-#	"growth_factor", idk why
-	"charm_factor",
-	"wits_factor",
-	"sexuals_factor",
 	"professions",
 	#added
 	"skin_coverage",
@@ -470,7 +470,7 @@ func build_node_for_stat(stat):
 		node.get_node('button/LArr').visible = (id > 0)
 		node.get_node('button/RArr').visible = (id < possible_vals[stat].size() - 1)
 	
-	if stat in ["physics_factor", "magic_factor", "tame_factor", "timid_factor", "charm_factor", "wits_factor", "sexuals_factor"]:
+	if stat in ["physics_factor", "wits_factor", "charm_factor", "sexuals_factor", "magic_factor", "tame_factor", "timid_factor",]:
 		var id = possible_vals[stat].find(val)
 		node.get_node('button/LArr').disabled = !(id > 0)
 		node.get_node('button/RArr').disabled = !(id < possible_vals[stat].size() - 1)

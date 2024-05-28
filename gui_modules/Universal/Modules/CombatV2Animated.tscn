@@ -936,6 +936,7 @@ visible = false
 margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
+toggle_mode = true
 texture_normal = ExtResource( 69 )
 texture_pressed = ExtResource( 30 )
 texture_hover = ExtResource( 32 )
@@ -953,9 +954,6 @@ mouse_filter = 2
 texture = ExtResource( 31 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="charge" type="Label" parent="SkillPanel/Button"]
 visible = false

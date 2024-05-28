@@ -116,7 +116,7 @@ var TranslationDict = {
 	LSPUPDATESAVEFILE = "Update Save File",
 	LSPOUTDATED = "{color=red| (Outdated - use import mode)}",
 	LSPOUTDATED2 = "{color=red|Outdated}",
-	LSIMPORTTOOLTIP = "When this mode is on, game will recreate the world and reset all game progress on load, but still will keep all your characters, items and inventory. Use this mode to load outdated saves.",
+	LSIMPORTTOOLTIP = "When this mode is on, game will recreate the world and reset all game progress on load, \nbut still will keep all your characters, items and inventory. Use this mode to load outdated saves.",
 
 	PRONOUNHE = "He",
 	PRONOUNHEF = "She",
@@ -1336,8 +1336,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	LOGLEFTTTOOLTIP = "Shows main events",
 	LOGRIGHTLABEL = "Service",
 	LOGRIGHTTOOLTIP = "Shows service income",
-	BROTHELLOGSEX = "%s earned %s gold doing %s with a %s",
-	BROTHELLOGNO_SEX = "%s earned %s gold working as a %s",
+	BROTHELLOGSEX = "%s earned %s gold performing %s with a %s customer.",
+	BROTHELLOGNO_SEX = "%s earned %s gold working as a %s.",
 	
 	BROTHELTOOLTIP = "You can select which tasks the character will be allowed to perform while working at brothel. By toggling specific tasks only those will be allowed. Client sexes only affect sexual tasks.\nHigher character Value increases earnings, higher Charm increases likelyhood of being requested for sex.\nDifferent tasks improve and scale from different stats.\nService is a global modifier for this assignment.",
 	BROTHELWARNING = "Sex services won't work if you dont select at least 1 allowed customer",
@@ -1480,7 +1480,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 
 	
-	
+	SLAVECLASSSLAVE = 'Slave',
+	SLAVECLASSSERVANT = "Subordinate",
 	DESCRIPTCLASSSLAVE = "[name] is your slave and must obey your orders by law.",
 	DESCRIPTCLASSSERVANT = "[name] is your servant and has to follow your commands.",
 	DESCRIPTCLASSMERC = "[name] was hired by you and costs you gold.",
@@ -1936,7 +1937,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 	DIALOGUEPUBLICEXECUTIONTEXT = "As [targetname] hears about your decision, [he] quickly drops on the floor begging you to spare [targethis] life, promising to do anything and never disappoint you again. ",
 	DIALOGUEPUBLICEXECUTIONREPORT = "You used [targetname] as an example to everyone in your mansion by ending [targethis] life in front of their eyes. This seems to be rather effective, albeit unnecessarily cruel for some.",
-	DIALOGUEPURCHASEDUNGEONLOCATION = "You purchase a location for a new dungeon and mark it on your map.\n\nNew location at [areaname] unlocked: [locationname] — [locationtypename].",
+	DIALOGUEPURCHASEDUNGEONLOCATION = "You study the folded paper for clues of a new explorable location. You manage to pin it down and note it on the map.\n\n{color=yellow|New location at [areaname] unlocked: [locationname] — [locationtypename]}",#"You purchase a location for a new dungeon and mark it on your map.\n\nNew location at [areaname] unlocked: [locationname] — [locationtypename].",
 
 	DIALOGUESHAREDTOYREPORT = "[name] takes on a duty to please your other servants with [his] body...\n\nBy the end of it, it seems even your meeker servants have been left satisfied.",
 	DIALOGUEPERFORMANCEREPORT = "[name] sets a staged dance gathering everyone around to watch and relax. People seem to be quite pleased with [his] performance. ",
@@ -2317,7 +2318,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	CHALLENGESTRENGTH = "Strength Challenge",
 	CHALLENGEDEXTERITY = "Dexterity Challenge",
-	CHALLENGECHARM = "Charm Challenge",
+	CHALLENGEPERSUASION = "Persuasion Challenge",
 	CHALLENGEWISDOM = "Wisdom Challenge",
 	
 	
@@ -3182,6 +3183,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOUELOCKEDDOORBREAK = "Break through (10 Stamina)",
 	DIALOUELOCKEDDOORPASS = "[name] skillfully unlocks door blocking the pass allowing to proceed. ",
 	DIALOGUEBLOCKEDPATH = "The pass ahead is blocked by a collapsed tunnel. It seems it still can be fixed by someone with enough physical fitness relatively quickly.",
+	DIALOGUEBLOCKEDPATH2 = "The pass ahead is blocked by a collapsed tunnel. It seems with some alternative approach you might be able to clear it faster...",
 	DIALOGUEBLOCKEDPATHSELECT = "[Strength Challenge] Select character (3 Stamina)",
 	DIALOGUEBLOCKEDPATHBREAK = "Spend time clearing the passage (10 Stamina)",
 	DIALOGUEBLOCKEDPATHPASS = "[name] lifts one of the crushed wooden bars and manages to push it away, clearing the path ahead.",
@@ -3298,6 +3300,22 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 	RETURNTOMANSIONBUTTON = "Send character back to the Mansion",
 	RETURNCHARACTERCONFIRM = "Order [name] to return to the mansion immediately?",
+
+	
+	ITEMMAP_BANDIT_DEN = "Map: Bandit Den",
+	ITEMMAP_BANDIT_FORT = "Map: Bandit Fort",
+	ITEMMAP_GROVE = "Map: Grove",
+	ITEMMAP_GOBLIN_CAVE = "Map: Goblin Cave",
+	ITEMMAP_UNDEAD_CRYPT = "Map: Crypt",
+	ITEMMAP_ANCIENT_JUNGLE = "Map: Ancient Jungles",
+	ITEMMAP_FIRE_DEPTHS = "Map: Fire Depths",
+	ITEMMAP_BANDIT_DENDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
+	ITEMMAP_BANDIT_FORTDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
+	ITEMMAP_GROVEDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
+	ITEMMAP_GOBLIN_CAVEDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
+	ITEMMAP_UNDEAD_CRYPTDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
+	ITEMMAP_ANCIENT_JUNGLEDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
+	ITEMMAP_FIRE_DEPTHSDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
 
 
 	LOCATIONNAMESKIRMISH_BANDIT_CAMP = "Bandit Camp",
@@ -3683,7 +3701,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 
 
-	DIALOGUEINTRODUCTIONLETTER = "Early in the morning your mansion is visited by a messenger, who passes you an officially sealed letter. After a quick examination you figure out that it is sent by the Servants Guild. \n\n'Dear [name], your recent activity has caught our interest and we would like to invite you for a private meeting.' \n\nDespite a rather short message, the letter itself looks rather fancy and uses high quality paper and ink.",
+	DIALOGUEINTRODUCTIONLETTER = "Early in the morning your mansion is visited by a messenger, who passes you an officially sealed letter. After a quick examination you figure out that it is sent by the Servants Guild. \n\n{color=yellow|'Dear [name], your recent activity has caught our interest and we would like to invite you for a private meeting.}' \n\nDespite a rather short message, the letter itself looks rather fancy and uses high quality paper and ink.",
 
 	ELECTIONSTART1 = "— [Sir] [surname], it's wonderful you came! So you must be curious why we invited you. Not to sound suspicious, but we know about your monetary situation and relationship with the bank.	\n\n— This is a situation I'd never prefer to be in. To tell you the truth, it's almost guaranteed you won't be able to pay them back in time. But, that's not exactly what I summoned you for. Say, do you know about the Mayor's position here?",
 	ELECTIONSTARTREPLY1_1 = "Not really.",
@@ -3904,7 +3922,7 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 	MAGESELECTION2_ANY = "— Fine, I guess, why not. I'm going to have you do something for me first, though. I want you to visit my sister, Xari, and reclaim the books she has stolen. She's living not far from Aliron.",
 	MAGESELECTION2REPLY1 = "So, should I beat her?",
 	MAGESELECTION2REPLY2 = "Why would your sister not live here?",
-	MAGESELECTION3_1 = "— No... Maybe. Do what you want, I guess... Actually, no, don't harm her.",
+	MAGESELECTION3_1 = "— No... Maybe. Do what you want, I guess... Actually, no, don't harm her. ",
 	MAGESELECTION3_2 = "— She hates crowds and is not fond of surface cities, I guess. Can't say I'm much different, just more resilient. Things aren't so bad around the Mages Guild. ",
 	MAGESELECTION3_ANY = "Relatives always make things complicated. I'll give you a letter of invitation with the list of things to get from her.",
 	XARIENCOUNTER1 = "Before you are able to look inside the hut, which looks more like a cave, a young, excited dark elf girl comes to you. \n\n— A guest! I haven't had any bandits visit me for a long time. Do you want to burn in fire or be eaten by trolls?",
@@ -12752,7 +12770,7 @@ You hold Cali close and kiss her, spending the rest of the night close together 
 
 	ELECTION_GLOBAL_NAME = "Mayor Elections",
 	ELECTION_GLOBAL_SUMMARY = "According to City's electon process, any landowner is capable of becoming a mayor, as long as they are supported by the Guilds.",
-	ELECTION_GLOBAL_STAGE_1 = "Earn 500 reputation with at least 3 main Guilds and acquire their support for future election.\n\n{custom_text_function=election_quest_text|}",
+	ELECTION_GLOBAL_STAGE_1 = "Earn 300 reputation with at least 3 main Guilds and acquire their support for future election.\n\n{custom_text_function=election_quest_text|}",
 
 	ALIRON_CHURCH_NAME = "Initiation",
 	ALIRON_CHURCH_SUMMARY = "You've met Ginny at her church in Aliron.",
@@ -13019,6 +13037,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	
 	METRICS_BASE = "[name] has been a part of your household for {color=yellow|%d} weeks and {color=yellow|%d} days.",
+	METRICS_BASE_YOU = "[name] is a [master] and has been in this household for {color=yellow|%d} weeks and {color=yellow|%d} days.",
 	METRICS_DATES_MASTER = "[He] went on dates {color=yellow|%d} time(s) and engaged in sex activities {color=yellow|%d} time(s).",
 	METRICS_DATES = "[He] went on dates with you {color=yellow|%d} time(s) and engaged in sex activities {color=yellow|%d} time(s).",
 	METRICS_PARTNERS = "Overall [he] had sex with {color=yellow|%d} partners during all this time. ",
@@ -13176,9 +13195,9 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	COMBAT_WIN_LINE1 = "Phew, we did it, [Master]...",
 	COMBAT_WIN_LINE2 = "Hah, piece of cake. Who's next?",
 	COMBAT_WIN_LINE3 = "Well fought. Lets move on, [Master]. ",
-	COMBAT_WIN_LINE4 = "I'm glad we won, but let's keep cautious. ",
+	COMBAT_WIN_LINE4 = "I'm glad we won, but let's stay cautious. ",
 	COMBAT_WIN_LINE5 = "Hah, I didn't even break a sweat.",
-	COMBAT_WIN_LINE6 = "That was really scary. I hope there's not more of them...",
+	COMBAT_WIN_LINE6 = "That was really scary. I hope these were the last of them...",
 	COMBAT_WIN_LINE7 = "I... Can't believe we won...",
 	COMBAT_WIN_LINE8 = "A-and don't come back...",
 	COMBAT_WIN_LINE9 = "I hope I helped...",

@@ -756,7 +756,7 @@ func set_slave_category(new_class):
 	statlist.set_slave_category(new_class)
 
 func use_social_skill(s_code, target):
-	skills.use_social_skill(s_code, target)
+	skills.use_social_skill(s_code, target, null)
 
 #func process_skill_cast_event(s_skill, event):
 #	effects.process_skill_cast_event(s_skill, event)

@@ -2065,7 +2065,7 @@ var quests = {
 	},
 
 	daisy_lost = {
-		code = 'daisy_clothes',
+		code = 'daisy_lost',
 		summary = "DAISY_LOST_SUMMARY",
 		stages = {
 			stage1 = {code = 'stage1', name = "DAISY_LOST_NAME", descript = "DAISY_LOST_STAGE_1"}, # you should visit Amelia

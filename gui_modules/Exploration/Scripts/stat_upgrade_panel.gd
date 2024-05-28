@@ -57,7 +57,7 @@ func show_characters_panel():
 		newbutton.get_node("icon").texture = character.get_icon_small()
 		newbutton.connect("pressed", self, "select_char", [character, 2])
 		newbutton.set_meta("slave", character)
-		globals.connectslavetooltip(newbutton, character)
+		globals.connectslavetooltip(newbutton.get_node('icon'), character)
 	$StatsPanel.hide()
 
 

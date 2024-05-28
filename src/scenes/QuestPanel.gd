@@ -252,7 +252,7 @@ func Reward():
 	#remake into data system
 	if selectedquest.area == 'plains':
 		for i in ResourceScripts.game_world.areas[selectedquest.area].factions.values():
-			if i.totalreputation >= 300 && ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1':
+			if i.totalreputation >= 200 && ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1':
 				ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage = 'stage1_5'
 				globals.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
 	if ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1_5':

@@ -24,8 +24,8 @@ var encounters = {
 	demon_kurdan = {unittype = 'randomgroup', unitcode = 'demon_kurdan', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'demon_kurdan_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	demon = {unittype = 'randomgroup', unitcode = 'demon', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'demon_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	rebel_convoy = {unittype = 'randomgroup', unitcode = 'rebel_convoy', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'rebel_convoy_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
-	betrayal_confirmed_rebels_1 = {unittype = 'randomgroup', unitcode = 'betrayal_confirmed_rebels_1', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'betrayal_confirmed_rebels_1_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
-	betrayal_confirmed_rebels_2 = {unittype = 'randomgroup', unitcode = 'betrayal_confirmed_rebels_2', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'betrayal_confirmed_rebels_2_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	event_rebels_1 = {unittype = 'randomgroup', unitcode = 'event_rebels_1', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'betrayal_confirmed_rebels_1_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	event_rebels_2 = {unittype = 'randomgroup', unitcode = 'event_rebels_2', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'betrayal_confirmed_rebels_2_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	patrol = {unittype = 'randomgroup', unitcode = 'patrol', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'patrol_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	wrong_building_rebels = {unittype = 'randomgroup', unitcode = 'wrong_building_rebels', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'wrong_building_rebels_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	two_guards = {unittype = 'randomgroup', unitcode = 'two_guards', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'two_guards_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
@@ -73,7 +73,10 @@ var enemygroups = {
 	bandits_easy_boss2 = {maxunits = 3, reqs = [], units = {bandit_boss_archer = [1,1], bandit_melee = [1,2], bandit_archer = [0,1]}},
 	bandits_easy_boss3 = {maxunits = 3, reqs = [], units = {bandit_boss_mage = [1,1], bandit_melee = [1,2], bandit_archer = [0,1]}},
 	bandits_medium_boss = {maxunits = 6, reqs = [], units = {bandit_boss_melee = [1,1], bandit_melee = [1,2], bandit_archer = [1,2], bandit_mage = [1,1]}},
-
+	
+	rebels_boss = {maxunits = 6, reqs = [], units = {bandit_boss_melee = [1,1], rebel_knight = [1,2], rebel_mage = [1,2], rebel_healer = [1,1]}},
+	
+	
 	bandits_assassin = {reqs = [], units = {bandit_melee = [1,2], bandit_assassin = [1,2]}, challenges = [['event_enemy_charm_avoid', 1],['event_enemy_charm_damage',0.8]], challenge_chance = 0.4},
 	bandits_assassin2 = {reqs = [], units = {bandit_melee = [0,3], bandit_assassin = [0,2], bandit_archer = [0,2]}, challenges = [['event_enemy_charm_avoid', 1],['event_enemy_charm_damage',0.8]], challenge_chance = 0.4},
 	bandits_medium = {reqs = [], units = {bandit_melee = [2,3], bandit_archer = [2,3]}, challenges = [['event_enemy_charm_avoid', 1],['event_enemy_charm_damage',0.8]], challenge_chance = 0.4},
@@ -121,8 +124,8 @@ var enemygroups = {
 	demon_kurdan = {reqs = [], units = {demoness = [1,1],kurdan = [1,1], rebel_recruit = [2,2]}},
 	demon = {reqs = [], units = {demoness = [1,1], rebel_recruit = [2,2], rebel_mage = [1,1]}},
 	rebel_convoy = {reqs = [], units = {rebel_recruit = [2,2], rebel_knight = [1,1], rebel_healer = [1,1], rebel_mage = [1,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
-	betrayal_confirmed_rebels_1 = {reqs = [], units = {rebel_recruit = [3,3], rebel_healer = [2,2], rebel_mage = [1,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
-	betrayal_confirmed_rebels_2 = {reqs = [], units = {rebel_knight = [2,2], rebel_healer = [1,1], rebel_mage = [2,2]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
+	event_rebels_1 = {reqs = [], units = {rebel_recruit = [3,3], rebel_healer = [2,2], rebel_mage = [1,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
+	event_rebels_2 = {reqs = [], units = {rebel_knight = [2,2], rebel_healer = [1,1], rebel_mage = [2,2]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
 	patrol = {reqs = [], units = {rebel_recruit = [3,3], rebel_mage = [1,1]}},
 	wrong_building_rebels = {reqs = [], units = {rebel_recruit = [2,2]}},
 	two_guards = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
@@ -1976,6 +1979,10 @@ var loot_variants_data = {
 	{code = 'material', min = 2, max = 4, grade = ['location']},
 	{code = 'static_gear', min = 1, max = 1, grade = ['easy']}
 	],
+	easy_chest_map = [
+	{code = 'material', min = 2, max = 4, grade = ['location']},
+	{code = 'map', min = 1, max = 1, maps = ['map_bandit_den','map_goblin_cave','map_bandit_fort','map_grove','map_ancient_jungle','map_undead_crypt']}
+	],
 
 
 	medium_chest_usable = [
@@ -1991,6 +1998,10 @@ var loot_variants_data = {
 	medium_chest_cosmetics = [
 	{code = 'material', min = 2, max = 4, grade = ['location']},
 	{code = 'static_gear', min = 1, max = 1, grade = ['easy','medium']}
+	],
+	medium_chest_map = [
+	{code = 'material', min = 2, max = 4, grade = ['location']},
+	{code = 'map', min = 1, max = 1, maps = ['map_bandit_fort','map_ancient_jungle','map_undead_crypt','map_fire_depths']}
 	],
 
 	easy_armory_weapon = [
@@ -2031,7 +2042,8 @@ var loot_variants_data = {
 	{code = 'gear', min = 1, max = 2, grade = ['medium','hard'], material_grade = [['medium', 5],['hard',5]]},
 	{code = 'defined', name = 'exp_scroll', min = 2, max = 4},
 	{code = 'defined', name = 'soul_stone', min = 0, max = 1},
-	{code = 'gold', min = 400, max = 600}
+	{code = 'gold', min = 400, max = 600},
+	{code = 'map', min = 1, max = 1, maps = ['map_bandit_fort','map_ancient_jungle','map_undead_crypt','map_fire_depths']}
 	],
 
 	grove_wood_reward = [
@@ -2149,6 +2161,7 @@ var locks_data = { #makes locks to lockpick for related chests
 	easy_chest_usable = {locks = [['normal', 1],['none', 5],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
 	easy_chest_gear = {locks = [['normal', 1], ['none', 4],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [10,25]},
 	easy_chest_cosmetics = {locks = [['normal', 1],['none', 4],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
+	easy_chest_map = {locks = [['normal', 1],['none', 4],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
 	easy_boss_chest = {locks = [['normal', 1],['none',4]], difficulty = [10,25]},
 
 	easy_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [15,25]},
@@ -2160,6 +2173,7 @@ var locks_data = { #makes locks to lockpick for related chests
 	medium_chest_usable = {locks = [['normal', 1],['none', 3],['bomb',1],['gas',1],['mimic',0.3],['mimic_erotic',0.3]], difficulty = [15,40]},
 	medium_chest_gear = {locks = [['normal', 1],['mimic',1],['mimic_erotic',0.2]], difficulty = [25,55]},
 	medium_chest_cosmetics = {locks = [['normal', 1],['none', 1],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [20,50]},
+	medium_chest_map = {locks = [['normal', 1],['none', 3],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [20,50]},
 	medium_boss_chest = {locks = [['normal', 1],['none',2]], difficulty = [20,55]},
 
 	hard_boss_chest = {locks = [['normal', 1],['none',2]], difficulty = [45,80]},

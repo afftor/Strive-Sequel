@@ -19,7 +19,7 @@ var data = {
 
 		{code = 'fighters_election1', text = "FIGHTERSREQUESTELECTIONSUPPORT", reqs = [
 			{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'},
-			{type = 'faction_reputation', code = 'fighters', operant = 'gte', value = 500},
+			{type = 'faction_reputation', code = 'fighters', operant = 'gte', value = 300},
 			{type = 'decision', value = 'fighters_election_support', check = false},
 			{type = 'dialogue_seen', check = false, value = 'FIGHTERSELECTIONSTART1'}], type = 'next_dialogue', dialogue_argument = 1},
 		{code = 'fighters_election5', text = "FIGHTERSINTRODUCTION2REPLY5", reqs = [{type = 'decision', value = 'fighters_election_support', check = false},
@@ -64,7 +64,7 @@ var data = {
 		{code = 'workers_election_initiate1', text = "WORKERSREQUESTELECTIONSUPPORT",
 			reqs = [
 			{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'},
-			{type = 'faction_reputation', code = 'workers', operant = 'gte', value = 500},
+			{type = 'faction_reputation', code = 'workers', operant = 'gte', value = 300},
 			{type = 'dialogue_seen', check = false, value = 'WORKERSELECTIONINITIATE1'},
 			{type = 'decision', value = 'workers_election_support', check = false}],
 			type = 'next_dialogue', dialogue_argument = 1},
@@ -106,7 +106,7 @@ var data = {
 		{code = 'servants_join', text = "SERVANTSINTRODUCTION1REPLY3", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], type = 'next_dialogue', dialogue_argument = 3},
 		{code = 'servants_election', text = "SERVANTSREQUESTELECTIONSUPPORT", reqs = [
 			{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'},
-			{type = 'faction_reputation', code = 'servants', operant = 'gte', value = 500},
+			{type = 'faction_reputation', code = 'servants', operant = 'gte', value = 300},
 			{type = 'decision', value = 'servants_election_support', check = false}], type = 'next_dialogue', dialogue_argument = 1},
 		{code = 'servants_election_finish1', text = "SERVANTSINTRODUCTION1REPLY5", reqs = [{type = "has_multiple_decisions", decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support'], operant = 'gte', value = 3}, {type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 1},
 		{code = 'amelia_ask_location', text = "AIREAMELIAMEETOPTION", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},{type = 'decision', value = 'amelia_interrogation_success', check = true}, {type = 'dialogue_seen', check = false, value = 'AIREAMELIAMEET2'}], type = 'next_dialogue', dialogue_argument = 1},
@@ -186,7 +186,7 @@ var data = {
 		{code = 'mages_election1', text = "MAGESINTRODUCTION2REPLY2", reqs = [
 			{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'},
 			{type = 'dialogue_seen', check = false, value = 'MAGESELECTION1'},
-			{type = 'faction_reputation', code = 'mages', operant = 'gte', value = 500},
+			{type = 'faction_reputation', code = 'mages', operant = 'gte', value = 300},
 			{type = 'decision', value = 'mages_election_support', check = false}], dialogue_argument = 2, type = 'next_dialogue'},
 		{code = 'mages_election4', text = "MAGESINTRODUCTION2REPLY3", reqs = [{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'stage2'}], dialogue_argument = 3, type = 'next_dialogue'},
 		{code = 'fred_return_to_myr_1', text = "FREDQUESTREPORT", reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage4'}], type = 'next_dialogue', dialogue_argument = 3},
