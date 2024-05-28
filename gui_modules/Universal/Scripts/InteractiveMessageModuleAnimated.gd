@@ -797,7 +797,15 @@ func handle_characters_sprites(scene):
 					input_handler.progress_data.characters.append(scene_char)
 					input_handler.save_progress_data(input_handler.progress_data)
 			if scene_char != null and ch1 != scene_char:
-				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, 0.5)
+				# test if it's a different char and not just a variation
+				var unique_name_char: String = "unique_char"
+				var unique_name_ch1: String = "ch1"
+				if ch1 and ch1.find('_') != -1 and scene_char.find('_') != -1:
+					unique_name_ch1 = ch1.left(ch1.find('_'))
+					unique_name_char = scene_char.left(scene_char.find('_'))
+				if not unique_name_char == unique_name_ch1:
+					ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, 0.5)
+				
 				$CharacterImage.texture = images.sprites[scene_char]
 				if char_shade:
 					$CharacterImage.material.set_shader_param('opacity', 1.0)
