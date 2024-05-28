@@ -364,6 +364,16 @@ var scenes = {
 	
 	hire = load("res://assets/images/scenes/hire.png"),
 	
+	dungeon_door = load("res://assets/images/scenes/dungeon_door.png"),
+	dungeon_broken_bridge = load("res://assets/images/scenes/dungeon_broken_bridge.png"),
+	dungeon_cavein = load("res://assets/images/scenes/dungeon_cavein.png"),
+	dungeon_forest_bridge = load("res://assets/images/scenes/dungeon_forest_bridge.png"),
+	dungeon_enemies = load("res://assets/images/scenes/dungeon_enemies.png"),
+	dungeon_gate = load("res://assets/images/scenes/dungeon_gate.png"),
+	dungeon_fountain = load("res://assets/images/scenes/dungeon_fountain.png"),
+	dungeon_magic_barrier = load("res://assets/images/scenes/dungeon_magic_barrier.png"),
+	
+	
 	
 }
 

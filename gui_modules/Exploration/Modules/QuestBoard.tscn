@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=2]
@@ -29,6 +29,8 @@
 [ext_resource path="res://assets/images/gui/explore/QuestBoard/icon_bg_unactive.png" type="Texture" id=27]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/NOTO_SANS_Bold_30px.tres" type="DynamicFont" id=28]
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=29]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_36.tres" type="DynamicFont" id=30]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/panel_outer_class.png" type="Texture" id=31]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 15 )
@@ -198,8 +200,8 @@ margin_left = 7.0
 margin_top = 15.0
 margin_right = 85.0
 margin_bottom = 82.0
-custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color = Color( 1, 0.894118, 0.337255, 1 )
+custom_fonts/font = ExtResource( 26 )
 text = "QBALL"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -237,8 +239,8 @@ margin_left = 24.0
 margin_top = 10.0
 margin_right = 205.0
 margin_bottom = 83.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Quest Title111 111111"
 autowrap = true
 __meta__ = {
@@ -250,8 +252,8 @@ margin_left = 96.0
 margin_top = 52.0
 margin_right = 205.0
 margin_bottom = 82.0
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Requester"
 align = 2
 valign = 1
@@ -275,7 +277,52 @@ margin_right = 1542.96
 margin_bottom = 798.656
 custom_styles/panel = SubResource( 4 )
 
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestDetails"]
+margin_left = 35.8672
+margin_top = 104.051
+margin_right = 466.867
+margin_bottom = 304.051
+
+[node name="Button" type="TextureRect" parent="QuestDetails/VBoxContainer"]
+visible = false
+margin_right = 431.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="QuestDetails/VBoxContainer/Button"]
+margin_left = 12.7393
+margin_top = 3.16211
+margin_right = 87.7393
+margin_bottom = 78.1621
+texture = ExtResource( 21 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="QuestDetails/VBoxContainer/Button"]
+margin_left = 109.457
+margin_top = 18.6877
+margin_right = 169.457
+margin_bottom = 65.6877
+custom_colors/font_color = Color( 0.94902, 0.921569, 0.682353, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 30 )
+text = "Servants - 500"
+
+[node name="Label" type="Label" parent="QuestDetails"]
+margin_left = 170.0
+margin_top = 24.0
+margin_right = 338.0
+margin_bottom = 71.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 30 )
+text = "Reputation"
+
 [node name="Panel" type="Panel" parent="QuestDetails"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 15.0
@@ -289,8 +336,8 @@ margin_left = 41.0
 margin_top = 91.0
 margin_right = 425.0
 margin_bottom = 289.0
-custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="QuestDetails/Panel"]
@@ -298,12 +345,12 @@ margin_left = 39.0
 margin_top = 42.0
 margin_right = 425.0
 margin_bottom = 91.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/mono_font = ExtResource( 28 )
 custom_fonts/bold_italics_font = ExtResource( 28 )
 custom_fonts/italics_font = ExtResource( 28 )
 custom_fonts/bold_font = ExtResource( 28 )
 custom_fonts/normal_font = ExtResource( 28 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": true
@@ -323,8 +370,8 @@ __meta__ = {
 margin_right = 384.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 0, 75 )
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "QBREQ"
 
 [node name="questreqs" type="GridContainer" parent="QuestDetails/Panel/VBoxContainer/req"]
@@ -366,8 +413,8 @@ margin_left = 3.0
 margin_top = 46.0
 margin_right = 70.0
 margin_bottom = 75.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "100"
 align = 2
 
@@ -376,8 +423,8 @@ margin_top = 85.0
 margin_right = 384.0
 margin_bottom = 160.0
 rect_min_size = Vector2( 0, 75 )
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "QBREW"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -421,8 +468,8 @@ margin_left = 3.0
 margin_top = 46.0
 margin_right = 72.0
 margin_bottom = 75.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "100"
 align = 2
 
@@ -436,8 +483,8 @@ margin_left = 76.304
 margin_top = 577.918
 margin_right = 184.304
 margin_bottom = 612.918
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "QBLIM"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -448,8 +495,8 @@ margin_left = 125.0
 margin_top = -11.0
 margin_right = 319.0
 margin_bottom = 35.0
-custom_fonts/font = ExtResource( 28 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 28 )
 
 [node name="TextureRect" type="TextureRect" parent="QuestDetails/Panel/time"]
 margin_left = -35.304
@@ -464,10 +511,10 @@ margin_top = 740.842
 margin_right = 377.0
 margin_bottom = 808.842
 theme = ExtResource( 6 )
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "QBACCEPT"
 
 [node name="NoQuests" type="Label" parent="."]

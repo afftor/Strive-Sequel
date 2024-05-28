@@ -813,14 +813,12 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ItemPanel"]
-margin_left = 22.0
+margin_left = 10.0
 margin_top = 24.0
-margin_right = 418.0
+margin_right = 432.0
 margin_bottom = 227.0
 rect_clip_content = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme = ExtResource( 48 )
 
 [node name="GridContainer" type="GridContainer" parent="ItemPanel/ScrollContainer"]
 custom_constants/vseparation = 13
@@ -856,6 +854,7 @@ margin_top = 52.6796
 margin_right = 77.0
 margin_bottom = 84.6796
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 23 )
 text = "10"
 align = 1

@@ -33,6 +33,7 @@ func _show():
 
 func quest_board():
 	input_handler.ActivateTutorial("quest")
+	build_reputation()
 	$QuestDetails/Panel.hide()
 	$QuestDetails/AcceptQuest.hide()
 #	gui_controller.win_btn_connections_handler(pressed, $QuestBoard, pressed_button)
@@ -53,8 +54,16 @@ func quest_board():
 				newbutton.set_meta("quest", k)
 				newbutton.get_node("ButtonOverlay").connect('pressed',self,'selectquest', [newbutton])
 	$NoQuests.visible = counter == 0
-	
 
+func build_reputation():
+	input_handler.ClearContainer($QuestDetails/VBoxContainer)
+	for i in ResourceScripts.game_world.areas.plains.factions:
+		if !i in ['servants','fighters','mages','workers']:
+			continue
+		var newbutton = input_handler.DuplicateContainerTemplate($QuestDetails/VBoxContainer)
+		var text = i.capitalize() + ": "+  str(ResourceScripts.game_world.areas.plains.factions[i].reputation)
+		newbutton.get_node('Label').text = text
+		newbutton.get_node("TextureRect").texture = images.icons["guilds_" + i]
 
 func see_quest_info(quest):
 	var req_counter : int = 0

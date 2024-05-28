@@ -3130,6 +3130,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUECHESTEROTICMIMICTRAPPED = "As [name] leans on the chest, [he] quickly realizes that it's not a chest, but a Mimic, which is about to devour [him]. However, the Mimic does not seem to be harming [him], rather seizing its prey and getting under [his] clothes. With no outside help Mimic will surely have its way with [name]...\n\n{color=aqua|[name]} — {random_chat_active|mimic_rape}\n\nLeaving [him] in this state won't likely kill [him], but...",
 	DIALOGUECHESTMIMICTRAPPEDLEAVE = "You decide it's too dangerous to challenge the Mimic and leaving [name] to him is an acceptable price...\n\n{color=aqua|[name]} — {random_chat_active|mimic_leave}",
 	DIALOGUECHESTMIMICEROTICTRAPPEDLEAVE = "You decide it's too dangerous to challenge the Mimic and leaving [name] to him is an acceptable price...\n\n{color=aqua|[name]} — {random_chat_active|mimic_erotic_leave}\n\nAfter about an hour of erotic moans and pleads [name] manages to free [him]self and escape.",
+	DIALOGUECHESTLOCKPICKFREE = "As [name] attempts to pick a lock of the chest, [he] realize it was not locked in first place. ",
 	DIALOGUECHESTLOCKPICKSUCCESS = "[name] has skillfully picked the chest's lock and its contents belong to you now. ",
 
 	DIALOGUECHESTMIMICFIGHT = "Fight Mimic",
@@ -3172,7 +3173,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEEVENTTRAPFAILURE = "[center]{color=red|Failure!}[/center]\n[name] has disarmed the trap in a rough manner, suffering damage in the process.",
 	DIALOGUEACTIVATETRAP = "Deactivate Trap",
 
-	DIALOGUEDUNGEONCHEST = "You find a locked chest. ",
+	DIALOGUEDUNGEONCHEST = "You find a closed treasure chest. ",
 	DIALOGUEDUNGEONARMORY = "You find a locked armory, which might have something useful in it.",
 	DIALOGUEEVENTDUNGEONLOOT = "After making into the last room, you find the main storage with the most prized possessions. ",
 	
@@ -3198,7 +3199,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEFALLENBRIDGE2 = "The path ahead suddenly leads to a broken bridge across the chasm. Searching for an alternative route will take a considerable time, however it's possible to stabilize it with some additional materials...",
 	DIALOGUEFALLENBRIDGESELECT2 = "Repair Bridge [10 Wood]",
 	DIALOGUEFALLENBRIDGEPASS2 = "The group repairs the bridge with provided materials and can move forward",
-	DIALOGUESMALLCRACK = "The way ahead is blocked by a heavy mechanism controlled from the other side. Getting it by hand will take a while, however there's a small crack in a solid wall next to it, which can be passed by someone of a smaller size. ",
+	DIALOGUESMALLCRACK = "The way ahead is blocked by a heavy mechanism controlled from the other side. Getting it by hand will take a while, however there's a small crack in a solid wall next to it, which can be passed by someone of a {color=yellow|smaller} size. ",
 	DIALOGUESMALLCRACKSELECT = "[Dexterity Challenge] Select character (3 Stamina)",
 	DIALOGUESMALLCRACKBREAK = "Break through it (10 Stamina)",
 	DIALOGUESMALLCRACKPASS = "[name] safely gets on the other side of the door and pulls the leaver opening the pass.",

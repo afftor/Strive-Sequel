@@ -361,9 +361,11 @@ func add_location_resource_info():
 func lockpick_attempt(person):
 	var lock = input_handler.scene_loot.lock.difficulty
 	var type = input_handler.scene_loot.lock.type
+	var nonlocked = false
 	var lockpickskill = person.lockpick_chance()
 	if type == 'none':
 		lock = 0
+		nonlocked = true
 	elif type in ['mimic','mimic_erotic']:
 		lock = lock * randf()*2
 	var open = lockpickskill >= lock
@@ -378,6 +380,8 @@ func lockpick_attempt(person):
 		input_handler.interactive_message_follow("chest_is_erotic_mimic_trapped", "story_event", {})
 	elif type in ['alarm']:
 		input_handler.interactive_message_follow("lockpick_alarm_failure", "story_event", {})
+	elif type == 'none':
+		input_handler.interactive_message_follow("lockpick_chest_free", "story_event", {})
 	elif open == true:
 		input_handler.interactive_message_follow("lockpick_chest_success", "story_event", {})
 		input_handler.add_random_chat_message(person, 'lockpick_success')

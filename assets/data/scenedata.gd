@@ -98,6 +98,14 @@ var scenedict = {
 	]
 	},
 
+	lockpick_chest_free = {
+		text = 'DIALOGUECHESTLOCKPICKFREE',
+		tags = ['active_character_translate'],
+		image = 'chest',
+		options = [
+		{code = 'open_chest', reqs = [], text = tr("DIALOGUECHESTOPEN"), bonus_effects = [{code = 'advance_location'}]}
+		],
+	},
 	lockpick_chest_success = {
 		text = 'DIALOGUECHESTLOCKPICKSUCCESS',
 		tags = ['active_character_translate'],
