@@ -506,7 +506,7 @@ func update_sex_date_buttons():
 		SexSelect.get_node("DateButton").disabled = true
 	elif ResourceScripts.game_party.get_master().travel.location != ResourceScripts.game_world.mansion_location: 
 		SexSelect.get_node("DateButton").disabled = true
-	elif sex_participants.size() == 2 and !sex_participants.has(ResourceScripts.game_party.get_master()):
+	elif sex_participants.size() > 1 and !sex_participants.has(ResourceScripts.game_party.get_master()):
 		SexSelect.get_node("DateButton").disabled = true
 	elif sex_participants.size() == 1 and sex_participants.has(ResourceScripts.game_party.get_master()):
 		SexSelect.get_node("DateButton").disabled = true

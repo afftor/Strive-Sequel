@@ -4,7 +4,7 @@ var data = {
 		common_effects = [{code = 'background_noise', value = 'start', sound = 'battle_noise'}],
 		text = [{text = "BETRAYAL_CONFIRMED_ADVANCE", reqs = []}],
 		options = [ {
-			code = 'quest_fight', args = 'betrayal_confirmed_rebels_1',
+			code = 'quest_fight', args = 'event_rebels_1',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		} ],
 	},
@@ -38,7 +38,7 @@ var data = {
 		image = 'battlefield', tags = ['dialogue_scene', 'blackscreen_transition_common'],
 		text = [{text = "BETRAYAL_CONFIRMED_4", reqs = []}],
 		options = [ {
-			code = 'quest_fight', args = 'betrayal_confirmed_rebels_2',
+			code = 'quest_fight', args = 'event_rebels_2',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}],
 	},

@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=2]
+[gd_scene load_steps=86 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -82,6 +82,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=80]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/icon_money.png" type="Texture" id=81]
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=82]
+[ext_resource path="res://assets/Themes_v2/hinttooltipTheme.tres" type="Theme" id=83]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 64 )
@@ -414,9 +415,6 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Race"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="icon" type="TextureRect" parent="VBoxContainer/race"]
 margin_left = 7.0
@@ -601,6 +599,7 @@ margin_top = 938.0
 margin_right = 1588.47
 margin_bottom = 996.0
 hint_tooltip = "TOOLTIPSAVECHARACTER"
+theme = ExtResource( 83 )
 texture_normal = ExtResource( 23 )
 texture_pressed = ExtResource( 23 )
 texture_hover = ExtResource( 23 )
@@ -614,6 +613,7 @@ margin_top = 938.0
 margin_right = 1527.0
 margin_bottom = 996.0
 hint_tooltip = "TOOLTIPLOADCHARACTER"
+theme = ExtResource( 83 )
 texture_normal = ExtResource( 27 )
 texture_pressed = ExtResource( 27 )
 texture_hover = ExtResource( 27 )

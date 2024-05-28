@@ -255,6 +255,20 @@ texture_disabled = ExtResource( 16 )
 stretch_mode = 6
 script = ExtResource( 12 )
 
+[node name="SexIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 420.272
+margin_top = 6.05603
+margin_right = 472.272
+margin_bottom = 46.056
+texture = ExtResource( 31 )
+
+[node name="DateIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 274.272
+margin_top = 5.05603
+margin_right = 326.272
+margin_bottom = 45.056
+texture = ExtResource( 32 )
+
 [node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
 margin_left = 7.0
 margin_top = 5.0
@@ -310,6 +324,7 @@ __meta__ = {
 }
 
 [node name="stats" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+visible = false
 margin_left = 252.958
 margin_top = 5.0
 margin_right = 292.958
@@ -343,6 +358,7 @@ texture_progress = ExtResource( 24 )
 fill_mode = 3
 
 [node name="job" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
+visible = false
 margin_left = 317.067
 margin_top = 8.0
 margin_right = 501.067
@@ -596,9 +612,6 @@ custom_fonts/font = ExtResource( 27 )
 text = "1/1"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SexLimit" type="Label" parent="."]
 margin_left = 556.0

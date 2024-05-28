@@ -82,15 +82,13 @@ margin_bottom = 740.0
 texture = ExtResource( 7 )
 expand = true
 stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="RaceSelection"]
 margin_left = 353.0
 margin_top = 27.0
 margin_right = 753.0
 margin_bottom = 721.0
+theme = ExtResource( 3 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true

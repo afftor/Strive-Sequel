@@ -250,15 +250,18 @@ func displaymetrics():
 	$SlaveBodyModule/StatsPanel.visible = !$SlaveBodyModule/StatsPanel.visible
 	
 	if !$SlaveBodyModule/StatsPanel.visible: return
-	
 	var text = ""
 	var person = active_person
 	if person.is_players_character:
-		text += tr("METRICS_BASE") % ResourceScripts.game_globals.get_week_and_day_custom(ResourceScripts.game_globals.date - person.get_stat('metrics_ownership'))
+		if person.is_master():
+			text += tr("METRICS_BASE_YOU")
+		else:
+			text += tr("METRICS_BASE")
+			text = text % ResourceScripts.game_globals.get_week_and_day_custom(ResourceScripts.game_globals.date - person.get_stat('metrics_ownership'))
 	if person.is_master() == true:
-		text += "\n\n" + tr("METRICS_DATES_MASTER") % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')]
+		text += "\n\n" + tr("METRICS_DATES_MASTER") % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')] + " "
 	else:
-		text += "\n\n" + tr("METRICS_DATES") % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')]
+		text += "\n\n" + tr("METRICS_DATES") % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')] + " "
 	var partner_number = person.get_stat('metrics_partners').size() + person.get_stat('metrics_randompartners')
 	var no_sex = false
 	if partner_number == 0:

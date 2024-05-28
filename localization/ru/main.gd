@@ -1474,6 +1474,8 @@ var TranslationDict = {
 	SLAVEBODYHALFSPIDERDESCRIPT = "Нижняя часть [his] тела содержит [color=yellow]ноги и брюшко паука[/color].",
 	SLAVEBODYHALFHORSEDESCRIPT = "В то время как [his] верхняя часть тела человеческая, [his] нижняя часть [color=yellow]лошадиная[/color].",
 	SLAVEBODYHALFSQUIDDESCRIPT = "Нижняя часть [his] тела содержит [color=yellow]некоторое количество щупальцевых отростков[/color], похожие на осьминожьи.",
+	SLAVECLASSSLAVE = """Slave""", # MISSING TRANSLATION
+	SLAVECLASSSERVANT = """Subordinate""", # MISSING TRANSLATION
 
 
 
@@ -3257,6 +3259,20 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 
 	RETURNTOMANSIONBUTTON = "Отправить персонажа обратно в поместье",
 	RETURNCHARACTERCONFIRM = "Приказать [name] немедленно вернуться в поместье?",
+	ITEMMAP_BANDIT_DEN = """Map: Bandit Den""", # MISSING TRANSLATION
+	ITEMMAP_BANDIT_FORT = """Map: Bandit Fort""", # MISSING TRANSLATION
+	ITEMMAP_GROVE = """Map: Grove""", # MISSING TRANSLATION
+	ITEMMAP_GOBLIN_CAVE = """Map: Goblin Cave""", # MISSING TRANSLATION
+	ITEMMAP_UNDEAD_CRYPT = """Map: Crypt""", # MISSING TRANSLATION
+	ITEMMAP_ANCIENT_JUNGLES = """Map: ncient Jungles""", # MISSING TRANSLATION
+	ITEMMAP_FIRE_DEPTHS = """Map: Fire Depths""", # MISSING TRANSLATION
+	ITEMMAP_BANDIT_DENDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_BANDIT_FORTDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_GROVEDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_GOBLIN_CAVEDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_UNDEAD_CRYPTDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_ANCIENT_JUNGLESDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_FIRE_DEPTHSDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
 
 
 	LOCATIONNAMESKIRMISH_BANDIT_CAMP = "Лагерь разбойников",
@@ -13009,6 +13025,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	
 	METRICS_BASE = "[name] был/а частью вашего владения в течение {color=yellow|%d} недель и {color=yellow|%d} дней.",
+	METRICS_BASE_YOU = """[name] is a [master] and has been in this household for {color=yellow|%d} weeks and {color=yellow|%d} days.""", # MISSING TRANSLATION
 	METRICS_DATES_MASTER = "[He] ходил на свидания {color=yellow|%d} раз(а) и занимался сексом {color=yellow|%d} раз(а).",
 	METRICS_DATES = "[He] ходил на свидания с вами {color=yellow|%d} раз(ы) и занимался сексом {color=yellow|%d} раз(ы).",
 	METRICS_PARTNERS = "В целом [He] занимался сексом с {color=yellow|%d} партнерами в течение всего этого времени.",
