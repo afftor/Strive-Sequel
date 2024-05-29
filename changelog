@@ -6,6 +6,7 @@ Added exploration mechanic to dungeons
 	Dungeon chests are more often have no locks on them now
 	Old recruitment/capture events now swapped to challenges
 	Some new events were added
+	Treasure chests now drop more materials
 Added a bit more flavor text scenes to the transition of act 2 and some optional flavor content tied to it
 Dungeons are now activated via purchasable/foundable items
 Added new character rule: Forbid Masturbation
@@ -22,6 +23,8 @@ Fixed unique characters agreeing to wedding without passing the supposed require
 Fixed missing icons in sex interactions
 Fixed some missing translations
 Fixed unique character portraits and sprites resetting when replaced
+Fixed marriage being available before finishing act 1
+Fixed multiple instances where events didn't check the requirements for progress properly
 Fixed service suit having wrong mod affixes
 Fixed writ of redemption to working properly
 Fixed some racial traits not applying correctly (arachna spider silk)

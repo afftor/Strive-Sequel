@@ -254,7 +254,7 @@ var scenedict = {
 		text = tr("DIALOGUEDUNGEONCHEST"),
 		tags = ['locked_chest'],
 		image = 'chest',
-		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5]]}],
+		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5],['easy_chest_map', 0.2]]}],
 		options = [
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
 		]
@@ -263,7 +263,7 @@ var scenedict = {
 		text = tr("DIALOGUEDUNGEONCHEST"),
 		tags = ['locked_chest'],
 		image = 'chest',
-		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['medium_chest_usable', 1], ['medium_chest_gear',0.2], ['medium_chest_cosmetics', 0.5]]}],
+		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['medium_chest_usable', 1], ['medium_chest_gear',0.2], ['medium_chest_cosmetics', 0.5],['medium_chest_map', 0.1]]}],
 		options = [
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
 		]
@@ -302,7 +302,7 @@ var scenedict = {
 	tags = ['good','locked_chest'],
 	default_event_type = "custom_event",
 	image = 'chest',
-	common_effects = [{code = 'make_loot',type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5]]}],
+	common_effects = [{code = 'make_loot',type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5],['easy_chest_map', 0.1]]}],
 	options = [
 	#{code = 'open_chest', reqs = [], text = tr("DIALOGUEFORCECHESTOPEN")},
 	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}

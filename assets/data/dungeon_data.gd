@@ -1501,7 +1501,7 @@ var dungeons = {
 		area = 'forests',
 		travel_time = [1,1],
 		scripteventdata = [
-			{trigger = 'dungeon_complete', event = 'custom_event', args = 'cali_act3_jean_3', reqs = [{code = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage6'}, {code = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage8', orflag = true}]}
+			{trigger = 'dungeon_complete', event = 'custom_event', args = 'cali_act3_jean_3', reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage6'}, {type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage8', orflag = true}]}
 		]
 	},
 	quest_ancient_jungle_location = {

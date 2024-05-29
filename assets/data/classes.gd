@@ -924,7 +924,7 @@ var professions = {
 		tags = [],
 		categories = ['combat','magic'],
 		showupreqs = [{code = 'disabled', check = true}],
-		reqs = [{code ='cant_spawn_naturally'}],
+		reqs = [{code = 'cant_spawn_naturally'}],
 		statchanges = {wits_bonus = 10, mpmax = 15, price = 750, chg_wisdom_max = 1},
 		traits = ['basic_spells','advanced_spells'],
 		skills = [],

@@ -2258,7 +2258,12 @@ func checkreqs(array):
 	return check
 
 func valuecheck(dict):
-	if !dict.has('type'): return true
+	if !dict.has('type'):
+		if dict.empty():
+			return true
+		else:
+			print("Error checking reqs for: " + str(dict))
+			return true
 	match dict['type']:
 		"no_check":
 			return true
@@ -2287,6 +2292,7 @@ func valuecheck(dict):
 		"area_progress":
 			return ResourceScripts.game_progress.if_has_area_progress(dict.value, dict.operant, dict.area)
 		"decision":
+			#print(dict.value, ResourceScripts.game_progress.decisions.has(dict.value))
 			return ResourceScripts.game_progress.decisions.has(dict.value) == dict.check
 		"has_multiple_decisions":
 			var counter = 0

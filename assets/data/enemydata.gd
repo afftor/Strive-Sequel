@@ -1967,40 +1967,40 @@ var summons = {
 
 var loot_variants_data = {
 	easy_chest_usable = [
-	{code = 'material', min = 2, max = 5, grade = ['easy', 'medium']},
-	{code = 'material', min = 2, max = 5, grade = ['location']},
+	{code = 'material', min = 3, max = 8, grade = ['easy', 'medium']},
+	{code = 'material', min = 3, max = 10, grade = ['location']},
 	{code = 'usable', min = 2, max = 4, grade = ['easy']},
 	],
 	easy_chest_gear = [
-	{code = 'material', min = 2, max = 3, grade = ['location']},
+	{code = 'material', min = 4, max = 10, grade = ['location']},
 	{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',10], ['medium', 3]]},
 	],
 	easy_chest_cosmetics = [
-	{code = 'material', min = 2, max = 4, grade = ['location']},
+	{code = 'material', min = 4, max = 10, grade = ['location']},
 	{code = 'static_gear', min = 1, max = 1, grade = ['easy']}
 	],
 	easy_chest_map = [
-	{code = 'material', min = 2, max = 4, grade = ['location']},
+	{code = 'material', min = 4, max = 10, grade = ['location']},
 	{code = 'map', min = 1, max = 1, maps = ['map_bandit_den','map_goblin_cave','map_bandit_fort','map_grove','map_ancient_jungle','map_undead_crypt']}
 	],
 
 
 	medium_chest_usable = [
-	{code = 'material', min = 2, max = 3, grade = ['medium','hard']},
-	{code = 'material', min = 2, max = 3, grade = ['location']},
+	{code = 'material', min = 3, max = 5, grade = ['medium','hard']},
+	{code = 'material', min = 3, max = 5, grade = ['location']},
 	{code = 'usable', min = 2, max = 4, grade = ['easy','medium']},
 	{code = 'usable', min = 0, max = 1, grade = ['easy','medium']},
 	],
 	medium_chest_gear = [
-	{code = 'material', min = 2, max = 4, grade = ['location']},
+	{code = 'material', min = 4, max = 8, grade = ['location']},
 	{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',3], ['medium', 10], ['hard',1]]},
 	],
 	medium_chest_cosmetics = [
-	{code = 'material', min = 2, max = 4, grade = ['location']},
+	{code = 'material', min = 4, max = 8, grade = ['location']},
 	{code = 'static_gear', min = 1, max = 1, grade = ['easy','medium']}
 	],
 	medium_chest_map = [
-	{code = 'material', min = 2, max = 4, grade = ['location']},
+	{code = 'material', min = 4, max = 8, grade = ['location']},
 	{code = 'map', min = 1, max = 1, maps = ['map_bandit_fort','map_ancient_jungle','map_undead_crypt','map_fire_depths']}
 	],
 

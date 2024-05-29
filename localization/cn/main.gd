@@ -3128,6 +3128,7 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	DIALOGUECHESTEROTICMIMICTRAPPED = "当 [name] 在靠近箱子时, [he] 快意识到这不是箱子，而是一个即将吞噬 [him] 的拟态. 然而，拟态似乎并没有伤害 [him], 而是抓住猎物，钻到 [his] 衣服下面. 如果没有外界的帮助，拟态肯定会对 [name] 随心所欲...\n\n{color=aqua|[name]} — {random_chat_active|mimic_rape}\n\n让[him]处于这种状态不会杀死[him]，但是...",
 	DIALOGUECHESTMIMICTRAPPEDLEAVE = "你认为挑战拟态太危险了，把[name]留给他是可以接受的...\n\n{color=aqua|[name]} — {random_chat_active|mimic_leave}",
 	DIALOGUECHESTMIMICEROTICTRAPPEDLEAVE = "你认为挑战拟态太危险了，把[name]留给他是可以接受的...\n\n{color=aqua|[name]} — {random_chat_active|mimic_erotic_leave}\n\n经过大约一个小时的色情呻吟和恳求[name]最终设法逃离.",
+	DIALOGUECHESTLOCKPICKFREE = """As [name] attempts to pick a lock of the chest, [he] realize it was not locked in first place. """, # MISSING TRANSLATION
 	DIALOGUECHESTLOCKPICKSUCCESS = "[name] 熟练地打开了箱子的锁，里面的东西现在属于你了. ",
 
 	DIALOGUECHESTMIMICFIGHT = "挑战拟态",

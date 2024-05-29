@@ -91,8 +91,8 @@ var unique_dict = { #shows available talk characters. Scenes go in order from hi
 	amelia = {
 		code = 'amelia',
 		scenes = [
-			{code = 'amelia_final_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'AMELIA_FINAL_1'},{type = "active_quest_stage", value = "amelia_main_quest", stage = "stage11"}]}, 
-			{code = 'amelia_sex_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'AMELIA_SEX_1'},{type = 'quest_completed', name = 'amelia_main_quest', check = true}]}, 
+			{code = 'amelia_final_1', reqs = [{type = 'dialogue_seen', check = false, value = 'AMELIA_FINAL_1'},{type = "active_quest_stage", value = "amelia_main_quest", stage = "stage11"}]}, 
+			{code = 'amelia_sex_1', reqs = [{type = 'dialogue_seen', check = false, value = 'AMELIA_SEX_1'},{type = 'quest_completed', name = 'amelia_main_quest', check = true}]}, 
 			{code = 'amelia_dialogue_start', reqs = []}, #needs adding  
 		]
 	}

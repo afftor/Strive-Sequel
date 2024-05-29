@@ -992,8 +992,8 @@ var data = {
 			text = [
 				{text = "ANASTASIA_PERSUASION_2_MARRY2_1", reqs = [], previous_dialogue_option = 2},
 				{text = "ANASTASIA_PERSUASION_2_MARRY2", reqs = []},
-				{text = "", reqs = [{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 4}], previous_dialogue_option = 1, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
-				{text = "", reqs = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 5}], previous_dialogue_option = 2, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
+				{text = "", reqs = [{type = 'master_check', value = {code = 'stat', stat = 'charm_factor', operant = 'gte', value = 4}}], previous_dialogue_option = 1, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
+				{text = "", reqs = [{type = 'master_check', value = {code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 5}}], previous_dialogue_option = 2, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
 				{text = "", reqs = [], previous_dialogue_option = 3, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
 			],
 			options = [
@@ -1085,8 +1085,8 @@ var data = {
 			tags = ['dialogue_scene'],
 			text = [
 				{text = "", reqs = []},
-				{text = "", reqs = [{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 3}], previous_dialogue_option = 1, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
-				{text = "", reqs = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 4}], previous_dialogue_option = 2, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
+				{text = "", reqs = [{type = 'master_check', value = {code = 'stat', stat = 'charm_factor', operant = 'gte', value = 3}}], previous_dialogue_option = 1, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
+				{text = "", reqs = [{type = 'master_check', value = {code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 4}}], previous_dialogue_option = 2, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
 				{text = "", reqs = [], previous_dialogue_option = 4, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
 			],
 			options = [
@@ -1108,8 +1108,8 @@ var data = {
 			tags = ['dialogue_scene'],
 			text = [
 				{text = "", reqs = []},
-				{text = "", reqs = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 4}], previous_dialogue_option = 1, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
-				{text = "", reqs = [{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 4}], previous_dialogue_option = 2, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
+				{text = "", reqs = [{type = 'master_check', value = {code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 4}}], previous_dialogue_option = 1, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
+				{text = "", reqs = [{type = 'master_check', value = {code = 'stat', stat = 'charm_factor', operant = 'gte', value = 4}}], previous_dialogue_option = 2, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
 			],
 			options = [
 				{

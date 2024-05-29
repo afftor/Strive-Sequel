@@ -245,7 +245,7 @@ var data = {
 
 	servants_election_finish8 = {
 		variations = [
-		{reqs = [{code = 'decision', value = 'aire_is_dead', check = false}],
+		{reqs = [{type = 'decision', value = 'aire_is_dead', check = false}],
 		image = null,
 		custom_background = "anastasia_event_alive",
 		common_effects = [{code = 'set_music', value = 'battle2'}],
@@ -260,6 +260,7 @@ var data = {
 			{code = 'servants_election_finish9', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1}
 		]},
 		{image = null,
+		reqs = [],
 		custom_background = "anastasia_event_dead",
 		common_effects = [{code = 'set_music', value = 'battle2'}],
 		scene_type = "story_scene",

@@ -3128,6 +3128,7 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	DIALOGUECHESTEROTICMIMICTRAPPED = "Когда [name] опирается на сундук, [he] быстро понимает, что это не сундук, а Мимик, который собирается его съесть. Однако мимик, похоже, не причиняет ему вреда, а скорее хватает свою добычу и забирается под одежду. Без посторонней помощи Мимик, несомненно, справится с [name]...\n\n{color=aqua|[name]} - {random_chat_active|mimic_rape}\n\nОставив [him] в таком состоянии, он, скорее всего, не умрет, но...",
 	DIALOGUECHESTMIMICTRAPPEDLEAVE = "Вы решили, что бросать вызов Мимику слишком опасно и оставить [name] ему - приемлемая цена...\n\n{color=aqua|[name]} - {random_chat_active|mimic_leave}",
 	DIALOGUECHESTMIMICEROTICTRAPPEDLEAVE = "Вы решили, что бросать вызов Мимику слишком опасно и оставить [name] ему - приемлемая цена...\n\n{color=aqua|[name]} - {random_chat_active|mimic_erotic_leave}\n\nПосле примерно часа эротических стонов и мольбы [name] сумело освободить [him] и сбежать.",
+	DIALOGUECHESTLOCKPICKFREE = """As [name] attempts to pick a lock of the chest, [he] realize it was not locked in first place. """, # MISSING TRANSLATION
 	DIALOGUECHESTLOCKPICKSUCCESS = "[name] умело взломал замок сундука, и теперь его содержимое принадлежит вам.",
 
 	DIALOGUECHESTMIMICFIGHT = "*Бой с мимиком*",

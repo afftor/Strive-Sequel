@@ -3622,7 +3622,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	FIGHTERSINTRODUCTION2REPLY5 = "*Present Skull to Duncan*",
 	FIGHTERSINTRODUCTION2REPLY6 = "About Reim...",
 	FIGHTERSINTRODUCTION2REPLY7 = "Sigmund sent me...",
-	WORKERSINTRODUCTION1REPLY6 = "Duncan promised to provide the payment asap.",
+	WORKERSINTRODUCTION1REPLY6 = "Duncan promised to provide the payment as soon as possible.",
 	SERVANTSINTRODUCTION1REPLY5 = "I'm ready for elections.",
 
 
@@ -4024,7 +4024,7 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 	GINNYVISITREPLY3 = "Not interested in whatever you're selling.",
 
 	GINNYVISIT2_1 = "— Ah, I won't take your time, just wanted to say that we are open to any new visitors. Celena wishes to help anyone in need and I hope to build a stable, kind community. I'd be happy if you decide to learn more and drop by at some point. Now, I won't be taking anymore of your time. Goodbye!",
-	GINNYVISIT2_2 = "— I'm sorry, but I can't stay for long. Plus, I've been told not to trust landowners as they often kidnap and enslave strangers... I mean, I don't think you do that, but still. Anyway, if you wish to know more, feel free to see us, I'm always happy to get new visitors. Goodbye!",
+	GINNYVISIT2_2 = "— I'm sorry, but I can't stay for long. ...And I've been told not to trust landowners as they often kidnap and enslave strangers... I mean, I don't think you do that, but still. Anyway, if you wish to know more, feel free to see us, I'm always happy to get new visitors. Goodbye!",
 	GINNYVISIT2_3 = "— Sorry to distract you! I just wanted to tell you since you are new, you can visit our church if you are interested... I'm sorry, goodbye.",
 
 	ALIRONCHURCHFIRSTCOME = "You enter a small local church. The building seems not very spacious but fairly clean and cozy. As your entrance is spotted, Ginny rushes to greet you. \n\n — Welcome, [Sir]. I'm glad you came after all, with Celena's help. Are you seeking guidance or maybe you want to become a member?",
