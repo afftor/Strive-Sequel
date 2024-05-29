@@ -222,6 +222,8 @@ func forget_location():
 func clear_dungeon_confirm():
 	globals.remove_location(selected_loc)
 	input_handler.SystemMessage(tr("LOC_BEEN_REMOVED_LABEL"))
+	reset_to()
+	reset_from()
 	selected_loc = null
 	selected_chars.clear()
 	build_locations_list()
@@ -897,8 +899,8 @@ func confirm_travel():
 	input_handler.PlaySound("ding")
 	globals.emit_signal("slave_departed")
 	selected_chars.clear()
-	from_loc = null
-	to_loc = null
+	reset_from()
+	reset_to()
 	selected_loc = null
 	build_locations_list()
 	build_from_locations()
