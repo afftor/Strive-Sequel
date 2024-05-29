@@ -42,7 +42,7 @@ func fix_serialization():
 			room.enemies = tmp
 	
 	for i in areas.values():
-		for j in i.locations.values():
+		for j in i.locations.values() + i.questlocations.values():
 			if j.type == 'dungeon' and !j.has('stamina'):
 				j.stamina = 100
 			if j.has('stagedevents'):
@@ -51,6 +51,9 @@ func fix_serialization():
 					for ev in j.stagedevents[cat]:
 						tmp[int(ev)] = j.stagedevents[cat][ev]
 					j.stagedevents[cat] = tmp
+			if j.has('progress'):
+				for cat in j.progress:
+					j.progress[cat]  = int(j.progress[cat])
 #	for area in areas.values():
 #		for guild in area.factions.values():
 #			if guild.questsetting.total > globals.get_nquest_for_rep(guild.totalreputation):

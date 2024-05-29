@@ -815,6 +815,7 @@ func finish_character():
 #	$TraitSelection.hide()
 #	$ClassPanel.hide()
 	person.set_stat('portrait_update', true)
+	rebuild_ragdoll()
 	if mode != 'freemode':
 		person.is_active = true
 		

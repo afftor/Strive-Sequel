@@ -222,6 +222,8 @@ func forget_location():
 func clear_dungeon_confirm():
 	globals.remove_location(selected_loc)
 	input_handler.SystemMessage(tr("LOC_BEEN_REMOVED_LABEL"))
+	reset_to()
+	reset_from()
 	selected_loc = null
 	selected_chars.clear()
 	build_locations_list()
@@ -403,8 +405,8 @@ func build_info(loc = null):
 	
 	var location_selected = get_location_data(loc)
 	$InfoPanel/Forget.visible = (!location.tags.has('quest') and location_selected.type in ['dungeon', 'encounter'])
-	if to_loc != null:
-		$InfoPanel/Forget.visible = false
+#	if to_loc != null:
+#		$InfoPanel/Forget.visible = false
 	
 	#build info
 	$InfoPanel/Label.text = tr(location.name)
@@ -532,7 +534,8 @@ func make_panel_for_location(panel, loc):
 				icon = images.icons.travel_city
 			'quest_location', 'encounter':
 				icon = images.icons.travel_event
-		panel.get_node("icon").texture = icon
+		if panel.has_node('icon'):
+			panel.get_node("icon").texture = icon
 
 
 func make_panel_for_character(panel, ch_id):
@@ -558,21 +561,22 @@ func build_from_locations():
 	#update list
 	input_handler.ClearContainer($FromLocList/LocScroll/LocCatList, ['LocCat'])
 	for area in areas:
-		var category = input_handler.DuplicateContainerTemplate($FromLocList/LocScroll/LocCatList, 'LocCat')
-		category.set_meta('area', area)
-		category.get_node('Button/Label').text = tr('AREA' + area.to_upper()) #currently works, but not granted
-		category.get_node('Button').connect('pressed', self, 'area_press', [area, 'from'])
-		category.get_node('Button').connect('mouse_entered', $map.get_node(area), 'Light')
-		category.get_node('Button').connect('mouse_exited', $map.get_node(area), 'UnLight')
 		#no need to clear container
 		for loc_data in areas[area]:
+			var category = input_handler.DuplicateContainerTemplate($FromLocList/LocScroll/LocCatList, 'LocCat')
+			category.set_meta('location', loc_data.id)
+#			category.get_node('Button').connect('pressed', self, 'area_press', [area, 'from'])
+			category.get_node('Button').connect('mouse_entered', $map.get_node(area), 'Light')
+			category.get_node('Button').connect('mouse_exited', $map.get_node(area), 'UnLight')
+			make_panel_for_location(category.get_node('Button'), loc_data)
 			for ch_id in loc_data.heroes:
 				var loc_button = input_handler.DuplicateContainerTemplate(category.get_node('offset/LocList'), 'Button')
 				loc_button.set_meta('location', loc_data.id)
-				loc_button.connect('pressed', self, 'location_press', [loc_data.id, 'from'])
 				loc_button.connect('pressed', self, 'char_loc_press', [ch_id])
+				loc_button.connect('pressed', self, 'location_press', [loc_data.id, 'from'])
 				loc_button.connect('mouse_entered', self, 'build_info', [loc_data.id])
 				loc_button.connect('mouse_exited', self, 'build_info')
+				loc_button.visible = true
 				make_panel_for_character(loc_button, ch_id)
 	
 	update_selected_area()
@@ -631,11 +635,11 @@ func update_selected_area():
 
 
 func update_selected_from_location():
-	for cat in $FromLocList/LocScroll/LocCatList.get_children():
-		for loc in cat.get_node('offset/LocList').get_children():
-			if !loc.has_meta('location'):
-				continue
-			loc.pressed = (loc.get_meta('location') == from_loc)
+	for loc in $FromLocList/LocScroll/LocCatList.get_children():
+#		for loc in cat.get_node('offset/LocList').get_children():
+		if !loc.has_meta('location'):
+			continue
+		loc.get_node('Button').pressed = (loc.get_meta('location') == from_loc)
 
 
 func update_selected_to_location():
@@ -736,19 +740,22 @@ func unselect_area():
 
 
 func char_loc_press(ch_id):
-	selected_chars = [ch_id]
+	if !selected_chars.has(ch_id):
+		selected_chars = [ch_id]
+	else:
+		selected_chars.clear()
+	update_location_chars()
 
 
 func location_press(location, mode):
 	match mode:
 		'from':
-			if selected_loc == location:
+			if selected_loc == location and selected_chars.empty():
 				selected_loc = null
 				unselect_location()
 			else:
 				selected_loc = location
 				set_focus_location(location)
-			selected_chars.clear()
 			update_selected_from_location()
 			build_charpanel()
 			build_info(selected_loc)
@@ -769,11 +776,14 @@ func location_press(location, mode):
 
 
 func build_charpanel():
-	if from_loc == null:
+	var home_loc = from_loc
+	if from_loc == null and selected_loc == null:
 		$CharPanel.visible = false
 		return
+	if home_loc == null:
+		home_loc = selected_loc
 #	$CharPanel.visible = true
-	set_loc_text($CharPanel/mode1, tr(ResourceScripts.world_gen.get_location_from_code(from_loc).name))
+	set_loc_text($CharPanel/mode1, tr(ResourceScripts.world_gen.get_location_from_code(home_loc).name))
 	if to_loc != null:
 		set_loc_text($CharPanel/mode2, tr(ResourceScripts.world_gen.get_location_from_code(to_loc).name))
 	else:
@@ -784,7 +794,7 @@ func build_charpanel():
 	input_handler.ClearContainer($CharPanel/ScrollContainer/CharList)
 	for ch_id in ResourceScripts.game_party.character_order:
 		var ch = characters_pool.get_char_by_id(ch_id)
-		if ch.get_location() != from_loc:
+		if ch.get_location() != home_loc:
 			continue
 		if ch.is_on_quest(): 
 			continue
@@ -812,7 +822,8 @@ func match_state():
 	if from_loc == null:
 		$FromLocList.visible = true
 		$ToLocList.visible = false
-		$CharPanel.visible = false
+		$CharPanel.visible = (selected_loc != null)
+		$CharPanel/Send.visible = false
 	else:
 		$FromLocList.visible = false
 		$ToLocList.visible = true
@@ -897,8 +908,8 @@ func confirm_travel():
 	input_handler.PlaySound("ding")
 	globals.emit_signal("slave_departed")
 	selected_chars.clear()
-	from_loc = null
-	to_loc = null
+	reset_from()
+	reset_to()
 	selected_loc = null
 	build_locations_list()
 	build_from_locations()

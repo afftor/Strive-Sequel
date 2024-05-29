@@ -5541,6 +5541,7 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/Mindread.png",#fix
 		description = "BUFFDESCRIPTMENTOR",
 		t_name = 'master_mentor',
+		mansion_only = true
 	},
 };
 

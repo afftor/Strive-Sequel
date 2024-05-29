@@ -209,17 +209,18 @@ func rebuild_cloth(value):
 			if !(transform.type in ['texture']):
 				continue
 			apply_transform(transform)
-	for stat in ['armor_base', 'armor_lower', 'armor_collar', 'armor_weapon']:
-		if !GeneratorData.transforms.has(stat):
-			continue
-		var st_val = _get_stat(stat)
-		if !GeneratorData.transforms[stat].has(st_val):
-			continue
-		for transform in GeneratorData.transforms[stat][st_val]:
-			if !(transform.type in ['texture']):
+	if value:
+		for stat in ['armor_base', 'armor_lower', 'armor_collar', 'armor_weapon']:
+			if !GeneratorData.transforms.has(stat):
 				continue
-			apply_transform(transform)
-	#second pass - all others
+			var st_val = _get_stat(stat)
+			if !GeneratorData.transforms[stat].has(st_val):
+				continue
+			for transform in GeneratorData.transforms[stat][st_val]:
+				if !(transform.type in ['texture']):
+					continue
+				apply_transform(transform)
+		#second pass - all others
 	for stat in ['cloth']:
 		if !GeneratorData.transforms.has(stat):
 			continue
@@ -230,16 +231,17 @@ func rebuild_cloth(value):
 			if (transform.type in ['texture']):
 				continue
 			apply_transform(transform)
-	for stat in ['armor_color_base', 'armor_color_lower', 'armor_color_collar', 'armor_color_weapon', 'armor_base', 'armor_lower', 'armor_collar', 'armor_weapon']:
-		if !GeneratorData.transforms.has(stat):
-			continue
-		var st_val = _get_stat(stat)
-		if !GeneratorData.transforms[stat].has(st_val):
-			continue
-		for transform in GeneratorData.transforms[stat][st_val]:
-			if (transform.type in ['texture']):
+	if value:
+		for stat in ['armor_color_base', 'armor_color_lower', 'armor_color_collar', 'armor_color_weapon', 'armor_base', 'armor_lower', 'armor_collar', 'armor_weapon']:
+			if !GeneratorData.transforms.has(stat):
 				continue
-			apply_transform(transform)
+			var st_val = _get_stat(stat)
+			if !GeneratorData.transforms[stat].has(st_val):
+				continue
+			for transform in GeneratorData.transforms[stat][st_val]:
+				if (transform.type in ['texture']):
+					continue
+				apply_transform(transform)
 	
 	_root.render_target_clear_mode = Viewport.CLEAR_MODE_ONLY_NEXT_FRAME
 	_root.render_target_update_mode = Viewport.UPDATE_ONCE
