@@ -1226,8 +1226,8 @@ func combat_defeat():
 #	if combat_explore and combat_advance:
 #		exploration_node.advance()
 #	combat_explore = false
-	if exploration_node != null && active_location.has('progress'):
-		exploration_node.open_location_actions()
+#	if exploration_node != null && active_location.has('progress'):
+#		exploration_node.open_location_actions()
 
 func character_boss_defeat():
 	var character_race = []
