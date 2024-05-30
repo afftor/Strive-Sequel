@@ -159,13 +159,13 @@ var data = {
 			{text = "FINDFRED_AFTERWIN", reqs = []}
 		],
 		options = [
-			{code = "fred_talk_initiate", text = "CONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
+			{code = "fred_talk_initiate", text = tr("CONTINUE"), reqs = [], dialogue_argument = 1, type = "next_dialogue"},
 		]
 	},
 	
 	fred_talk_initiate = {
 		image = 'fred',
-		tags = ["dialogue_scene", "master_translate"],
+		tags = ["dialogue_scene", "master_translate", 'blackscreen_transition_common'],
 		text = [
 			{text = "FINDFRED_START", reqs = []}
 		],

@@ -88,7 +88,7 @@ func show_quest_info(quest):
 					#print(i.location)
 				'complete_dungeon':
 					newbutton.texture = images.icons[i.code]
-					globals.connecttexttooltip(newbutton, "Complete quest dungeon at [color=aqua]" + tr(ResourceScripts.game_world.areas[i.area].name) + "[/color]: [color=yellow]" + tr(i.locationname) + "[/color]")
+					globals.connecttexttooltip(newbutton, tr("QUESTCOMPLETEQUESTLOC2") +"[color=aqua]" + tr(ResourceScripts.game_world.areas[i.area].name) + "[/color]: [color=yellow]" + tr(i.locationname) + "[/color]")
 				'random_material':
 					newbutton.texture = Items.materiallist[i.type].icon
 					newbutton.get_node("amount").show()

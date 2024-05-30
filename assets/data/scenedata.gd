@@ -1161,22 +1161,27 @@ var scenedict = {
 		tags = ['dialogue_scene'],
 		text = "STARTINGDIALOGUE4_1",
 		common_effects = [
-#			{code = 'add_timed_event', value = "loan_event1",
-#				args = [
-#					{type = 'fixed_date',
-#					date = 15,
-#					hour = 1}
-#					]
-#			},
 			{code = 'plan_loan_event', stage = 1},
 			{code = 'progress_quest', value = 'main_quest_loan', stage = 'stage0'},
 			{code = 'progress_quest', value = 'guilds_introduction', stage = 'start'},
 			],
 		options = [
-		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue'},
+		{code = 'close', reqs = [{type = 'difficulty', operant = 'eq', value = 'hard'}], text = tr("DIALOGUECLOSE"), type = 'next_dialogue'},
+		{code = 'starting_bonus_upgrade', reqs = [{type = 'difficulty', operant = 'neq', value = 'hard'}], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 1},
 		],
-
 	},
+	starting_bonus_upgrade = {
+		image = null,
+		tags = ['dialogue_scene','blackscreen_transition_common'],
+		text = "STARTUPGRADEBONUS",
+		common_effects = [],
+		options = [
+		{code = 'close', reqs = [], bonus_effects = [{code ='unlock_uprade', upgrade = 'forge', level = 1}], text = tr("STARTUPGRADEBONUS1"), type = 'next_dialogue'},
+		{code = 'close', reqs = [], bonus_effects = [{code ='unlock_uprade', upgrade = 'tailor', level = 1}], text = tr("STARTUPGRADEBONUS2"), type = 'next_dialogue'},
+		{code = 'close', reqs = [], bonus_effects = [{code ='unlock_uprade', upgrade = 'alchemy', level = 1}], text = tr("STARTUPGRADEBONUS3"), type = 'next_dialogue'},
+		],
+	},
+	
 	loan_event1 = {
 		variations = [{
 			reqs = [{type = 'has_loan_money', stage = 1}],
@@ -1190,13 +1195,6 @@ var scenedict = {
 				{code = 'pay_loan', stage = 1},
 				{code = 'progress_quest', value = 'main_quest_loan', stage = 'stage1'},
 				{code = 'plan_loan_event', stage = 2},
-#				{code = 'add_timed_event', value = "loan_event2",
-#					args = [
-#						{type = 'fixed_date',
-#						date = 29,
-#						hour = 1}
-#						]
-#					},
 				{code = 'rewrite_save'}
 				]
 			}],

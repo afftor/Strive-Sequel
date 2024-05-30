@@ -2224,7 +2224,8 @@ func common_effects(effects):
 						rdata.hpmod = 1.0 - i.reduce_hp
 					if i.has('xp_mod'):
 						rdata.xp_mod = i.xp_mod
-			
+			'unlock_uprade':
+				ResourceScripts.game_res.unlock_upgrade(i.upgrade, i.level)
 
 func after_wedding_event(character):
 	if character == null:
@@ -2464,7 +2465,9 @@ func valuecheck(dict):
 			for ch in ResourceScripts.game_party.characters:
 				ch.update_prt()
 		'captured_number':
-				return input_handler.operate(dict.operant,input_handler.active_location.captured_characters.size(), dict.value)  
+			return input_handler.operate(dict.operant,input_handler.active_location.captured_characters.size(), dict.value)
+		'difficulty':
+			return input_handler.operate(dict.operant, ResourceScripts.game_globals.difficulty, dict.value)
 
 
 func apply_starting_preset():

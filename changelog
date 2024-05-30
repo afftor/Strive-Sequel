@@ -17,7 +17,9 @@ Stamina in sex minigame has been renamed to Tolerance
 Reputation required to start election quest is down to 300 from 500
 Reputation to initiate Servants guild letter before elections is down to 200 from 300
 Added reputation display to notice board
-Added a separate message to indicate when chest had no lock on it 
+Added a separate message to indicate when chest had no lock on it
+Non-hard start now allows to pick one of three workshops to start with
+Changed some of menial class bonuses
 Fixed Master portrait missing from dates
 Fixed unique characters agreeing to wedding without passing the supposed requirements
 Fixed missing icons in sex interactions

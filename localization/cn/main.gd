@@ -3548,6 +3548,10 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	STARTINGDIALOGUE3REPLY3 = "什么是行会?",
 	STARTINGDIALOGUE3REPLY4 = "我没问题了",
 	STARTINGDIALOGUE4_1 = "— 我两周后回来。",
+	STARTUPGRADEBONUS = """You go for a short trip through the mansion and one of the previously unnoticed rooms on the first floor catches your sight. Inside of it you find...""", # MISSING TRANSLATION
+	STARTUPGRADEBONUS1 = """Forge""", # MISSING TRANSLATION
+	STARTUPGRADEBONUS2 = """Tailor Worksop""", # MISSING TRANSLATION
+	STARTUPGRADEBONUS3 = """Alchemy Room""", # MISSING TRANSLATION
 	FIGHTERSINTRODUCTION1 = "一个身披重甲的大个子男人给你一个严厉的眼神。\n\n-你是谁？如果你在找工作，你必须先注册为战斗人员。我不接待新兵。 ",
 	FIGHTERSINTRODUCTION1REPLY1 = "你错了，我不是新兵",
 	FIGHTERSINTRODUCTION1REPLY2 = "我是新的土地所有者，表示尊重",

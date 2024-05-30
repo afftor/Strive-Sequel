@@ -968,6 +968,7 @@ var TranslationDict = {
 	CHAR_UNAVALIABLE = "Недоступен",
 	NO_FREE_SLOTS = "Для этой задачи не осталось свободных мест",
 	ANOTHERPROFSELECTED = "Можно выбрать только одну специализацию.",
+	NOMATERIALSFORITEMPART = """You have no suitable materials for this item part""", # MISSING TRANSLATION
 
 	LOGREPORTPREGNANCY = "[name] говорит вам, что [he], кажется, беременна.",
 	LOGREPORTPREGNANCYMASTER = "Похоже, что вы ([name]), беременны.",
@@ -3550,6 +3551,10 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	STARTINGDIALOGUE3REPLY3 = "Что такое гильдии?",
 	STARTINGDIALOGUE3REPLY4 = "Я справлюсь.",
 	STARTINGDIALOGUE4_1 = "- Тогда я вернусь через две недели.",
+	STARTUPGRADEBONUS = """You go for a short trip through the mansion and one of the previously unnoticed rooms on the first floor catches your sight. Inside of it you find...""", # MISSING TRANSLATION
+	STARTUPGRADEBONUS1 = """Forge""", # MISSING TRANSLATION
+	STARTUPGRADEBONUS2 = """Tailor Worksop""", # MISSING TRANSLATION
+	STARTUPGRADEBONUS3 = """Alchemy Room""", # MISSING TRANSLATION
 	FIGHTERSINTRODUCTION1 = "Крупный мужчина в тяжелых доспехах окинул вас незаинтересованным взглядом. \n\n- В чем дело? Если вы ищете работу, вам придется сначала зарегистрироваться как боец. Я не занимаюсь новобранцами.",
 	FIGHTERSINTRODUCTION1REPLY1 = "Вы ошибаетесь, я не новобранец.",
 	FIGHTERSINTRODUCTION1REPLY2 = "Я новый землевладелец, проявите уважение.",

@@ -379,11 +379,7 @@ func selectcraftitem(item):
 			get_node(part_container + i).texture = default_part_texture
 			get_node(part_container + i + '/number').hide()
 			get_node(part_container + i + '/PartDescript').text = ''
-#			get_node("MaterialSetupPanel/ModularSetup/" + i + "/TextureRect").texture = placeholder
 			get_node(part_container + i + "/TextureRect").show()
-#			get_node(part_container + i + "/ResourceSelect/icon").texture = null
-#			get_node(part_container + i + "/ResourceSelect/name").text = "Select Resource"
-#			get_node(part_container + i + "/ResourceSelect/amount").text = ""
 		$MaterialSetupPanel/EndItemFrame/EndItem.texture = null
 
 		get_node(part_container+"Part1/ScrollContainer").set_meta('part',array[0])
@@ -463,6 +459,10 @@ func make_material_list(container):
 			
 			
 			newbutton.connect("pressed",self,'selectmaterial',[i, part, cost])
+	yield(get_tree(),"idle_frame")
+	container.get_parent().get_node("nomats").visible = container.get_node("VBoxContainer").get_children().size() <= 1
+	container.get_parent().get_node("nomats").bbcode_text = tr("NOMATERIALSFORITEMPART")
+
 
 func get_mat_bonuses(material, part):
 	var text = ''
