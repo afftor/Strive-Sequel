@@ -1812,9 +1812,9 @@ func execute_skill(s_skill2):
 
 func Highlight(pos, type):
 	var node = battlefieldpositions[pos].get_node("Character")
-	match type:
-		'selected':
-			ResourceScripts.core_animations.SelectionGlow(node)
+#	match type:
+#		'selected':
+#			ResourceScripts.core_animations.SelectionGlow(node)
 #		'target':
 #			input_handler.TargetGlow(node)
 #		'targetsupport':
