@@ -157,6 +157,7 @@ func area_locked():
 
 
 #map gui
+var locs_chosen = []
 var selected_loc
 var from_loc
 var to_loc
@@ -185,8 +186,6 @@ func _input(event):
 			selected_loc = null
 			selected_chars.clear()
 			unselect_location()
-			update_selected_from_location()
-			build_charpanel()
 			build_info()
 		else:
 			close()
@@ -195,10 +194,8 @@ func _input(event):
 
 func _ready():#2add button connections
 	$Back.connect('pressed', self, 'close')
-	$InfoPanel/Sendbutton.connect('pressed', self, 'from_loc_set')
-	$CharPanel/Send.connect('pressed', self, 'confirm_travel')
-	$CharPanel/mode2.connect('pressed', self, 'reset_to')
-	$CharPanel/mode1.connect('pressed', self, 'reset_from')
+	$FromLocList/Sendbutton.connect('pressed', self, 'from_loc_set')
+	$InfoPanel/Sendbutton.connect('pressed', self, 'confirm_travel')
 	$zoom.min_value = map_zoom_min
 	$zoom.max_value = map_zoom_max
 	$zoom.connect("value_changed", self, 'zoom_change')
@@ -231,7 +228,6 @@ func clear_dungeon_confirm():
 	build_from_locations()
 	build_to_locations()
 	match_state()
-	build_charpanel()
 	build_info(selected_loc)
 
 
@@ -272,7 +268,11 @@ func open():
 	selected_area = null
 	build_locations_list()
 	build_from_locations()
+	locs_chosen = ['aliron']
+	update_location_chars()
 	build_to_locations()
+	selected_area = 'plains'
+	update_selected_area()
 	match_state()
 	build_info(null)
 	show()
@@ -497,7 +497,7 @@ func build_info(loc = null):
 	$InfoPanel/VBoxContainer/Label2.visible = f
 	
 	$InfoPanel.visible = true
-	$InfoPanel/Sendbutton.visible = (from_loc == null and loc == selected_loc)
+	$InfoPanel/Sendbutton.visible = (to_loc != null and loc == to_loc)
 
 
 func make_panel_for_location(panel, loc):
@@ -565,22 +565,23 @@ func build_from_locations():
 		for loc_data in areas[area]:
 			var category = input_handler.DuplicateContainerTemplate($FromLocList/LocScroll/LocCatList, 'LocCat')
 			category.set_meta('location', loc_data.id)
-#			category.get_node('Button').connect('pressed', self, 'area_press', [area, 'from'])
+			category.get_node('Button').connect('pressed', self, 'toggle_from_location', [loc_data.id])
 			category.get_node('Button').connect('mouse_entered', $map.get_node(area), 'Light')
 			category.get_node('Button').connect('mouse_exited', $map.get_node(area), 'UnLight')
+			category.get_node('Button').connect('mouse_entered', self, 'build_info', [loc_data.id])
+			category.get_node('Button').connect('mouse_exited', self, 'build_info')
 			make_panel_for_location(category.get_node('Button'), loc_data)
 			for ch_id in loc_data.heroes:
 				var loc_button = input_handler.DuplicateContainerTemplate(category.get_node('offset/LocList'), 'Button')
 				loc_button.set_meta('location', loc_data.id)
-				loc_button.connect('pressed', self, 'char_loc_press', [ch_id])
-				loc_button.connect('pressed', self, 'location_press', [loc_data.id, 'from'])
-				loc_button.connect('mouse_entered', self, 'build_info', [loc_data.id])
-				loc_button.connect('mouse_exited', self, 'build_info')
+				loc_button.set_meta('character', ch_id)
+				loc_button.connect('pressed', self, 'char_loc_press', [ch_id, loc_data.id])
+#				loc_button.connect('pressed', self, 'location_press', [loc_data.id, 'from'])
+#				loc_button.connect('mouse_entered', self, 'build_info', [loc_data.id])
+#				loc_button.connect('mouse_exited', self, 'build_info')
 				loc_button.visible = true
 				make_panel_for_character(loc_button, ch_id)
-	
-	update_selected_area()
-	update_selected_from_location()
+
 
 
 func build_to_locations():
@@ -622,7 +623,7 @@ func build_to_locations():
 
 
 func update_selected_area():
-	for cat in $FromLocList/LocScroll/LocCatList.get_children() + $ToLocList/LocScroll/LocCatList.get_children():
+	for cat in $ToLocList/LocScroll/LocCatList.get_children():
 		if !cat.has_meta('area'):
 			continue
 		var tarea = cat.get_meta('area')
@@ -634,12 +635,12 @@ func update_selected_area():
 			cat.get_node('offset/LocList').visible = false
 
 
-func update_selected_from_location():
-	for loc in $FromLocList/LocScroll/LocCatList.get_children():
-#		for loc in cat.get_node('offset/LocList').get_children():
-		if !loc.has_meta('location'):
-			continue
-		loc.get_node('Button').pressed = (loc.get_meta('location') == from_loc)
+func toggle_from_location(loc_toggled):
+	if locs_chosen.has(loc_toggled):
+		locs_chosen.erase(loc_toggled)
+	else:
+		locs_chosen.push_back(loc_toggled)
+	update_location_chars()
 
 
 func update_selected_to_location():
@@ -647,45 +648,15 @@ func update_selected_to_location():
 		for loc in cat.get_node('offset/LocList').get_children():
 			if !loc.has_meta('location'):
 				continue
-			loc.pressed = (loc.get_meta('location') == selected_loc)
-
-
-func update_location_chars():
-	for nd in $CharPanel/ScrollContainer/CharList.get_children():
-		if !nd.has_meta('character'):
-			continue
-		var ch_id = nd.get_meta('character')
-		if selected_chars.has(ch_id):
-			nd.pressed = true
-			nd.get_node('icon').material = null
-		else:
-			nd.pressed = false
-			nd.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
-
-
-func update_travel_duration():
-	if from_loc == null or to_loc == null:
-		$CharPanel/time.visible = false
-		return
-#	var res = globals.calculate_travel_time(ResourceScripts.world_gen.get_location_from_code(from_loc), ResourceScripts.world_gen.get_location_from_code(to_loc))
-	var res = globals.calculate_travel_time(from_loc, to_loc)
-	$CharPanel/time.visible = true
-	$CharPanel/time.text = "Travel duration: %d" % res.time
+			loc.pressed = (loc.get_meta('location') == to_loc)
 
 
 func update_confirm():
 	var amount = selected_chars.size()
 	if amount == 0:
-		$CharPanel/Send.visible = false
-		$CharPanel/selected.visible = false
-	elif amount == 1:
-		$CharPanel/Send.visible = true
-		$CharPanel/selected.visible = true
-		$CharPanel/selected.text = "1 character"
-	else:
-		$CharPanel/Send.visible = true
-		$CharPanel/selected.visible = true
-		$CharPanel/selected.text = "%d characters" % amount
+		$InfoPanel/Sendbutton.visible = false
+#	else:
+#		$InfoPanel/Sendbutton.visible = true
 
 
 func map_area_press(area):
@@ -739,12 +710,42 @@ func unselect_area():
 	set_focus_area()
 
 
-func char_loc_press(ch_id):
+func char_loc_press(ch_id, loc_id):
 	if !selected_chars.has(ch_id):
-		selected_chars = [ch_id]
+		if selected_chars.empty():
+			selected_loc = loc_id
+			match_state()
+		selected_chars.push_back(ch_id)
 	else:
-		selected_chars.clear()
+		selected_chars.erase(ch_id)
+		if selected_chars.empty():
+			selected_loc = null
+			match_state()
+	build_info()
+	update_confirm()
 	update_location_chars()
+
+
+func update_location_chars():
+	for loc in $FromLocList/LocScroll/LocCatList.get_children():
+#		for loc in cat.get_node('offset/LocList').get_children():
+		if !loc.has_meta('location'):
+			continue
+		var cloc = loc.get_meta('location')
+		var show_chars = true
+		if locs_chosen.has(cloc):
+			loc.get_node('Button').pressed = true
+		else:
+			loc.get_node('Button').pressed = false
+			show_chars = false
+		for ch in loc.get_node('offset/LocList').get_children():
+			if !ch.has_meta('character'):
+				continue
+			var person_id = ch.get_meta('character')
+			var person = characters_pool.get_char_by_id(person_id)
+			ch.visible = show_chars
+			ch.pressed = (selected_chars.has(person_id))
+			ch.disabled = (selected_loc != null and ch.get_meta('location') != selected_loc)
 
 
 func location_press(location, mode):
@@ -756,8 +757,6 @@ func location_press(location, mode):
 			else:
 				selected_loc = location
 				set_focus_location(location)
-			update_selected_from_location()
-			build_charpanel()
 			build_info(selected_loc)
 			match_state()
 		'to':
@@ -771,71 +770,17 @@ func location_press(location, mode):
 				build_info(to_loc)
 #			selected_chars.clear()
 			update_selected_to_location()
-			build_charpanel()
 			match_state()
-
-
-func build_charpanel():
-	var home_loc = from_loc
-	if from_loc == null and selected_loc == null:
-		$CharPanel.visible = false
-		return
-	if home_loc == null:
-		home_loc = selected_loc
-#	$CharPanel.visible = true
-	set_loc_text($CharPanel/mode1, tr(ResourceScripts.world_gen.get_location_from_code(home_loc).name))
-	if to_loc != null:
-		set_loc_text($CharPanel/mode2, tr(ResourceScripts.world_gen.get_location_from_code(to_loc).name))
-	else:
-		set_loc_text($CharPanel/mode2, tr("SELECTTOLOC"))
-#	$CharPanel/mode1/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(from_loc).name)
-#	$CharPanel/mode2/Label.text = tr(ResourceScripts.world_gen.get_location_from_code(to_loc).name)
-	update_travel_duration()
-	input_handler.ClearContainer($CharPanel/ScrollContainer/CharList)
-	for ch_id in ResourceScripts.game_party.character_order:
-		var ch = characters_pool.get_char_by_id(ch_id)
-		if ch.get_location() != home_loc:
-			continue
-		if ch.is_on_quest(): 
-			continue
-		var panel = input_handler.DuplicateContainerTemplate($CharPanel/ScrollContainer/CharList)
-		panel.set_meta('character', ch_id)
-		panel.get_node('icon').texture = ch.get_icon_small()
-		if (ch.predict_obed_time() <= 0) and !ch.is_controllable():
-			panel.disabled = true
-		panel.connect('pressed', self, 'character_press', [ch_id])
-		globals.connectslavetooltip(panel, ch)
-	update_location_chars()
-	update_confirm()
-
-
-func character_press(ch_id):
-	if selected_chars.has(ch_id):
-		selected_chars.erase(ch_id)
-	else:
-		selected_chars.push_back(ch_id)
-	update_location_chars()
-	update_confirm()
 
 
 func match_state():
 	if from_loc == null:
-		$FromLocList.visible = true
 		$ToLocList.visible = false
-		$CharPanel.visible = (selected_loc != null)
-		$CharPanel/Send.visible = false
+		$FromLocList/Sendbutton.visible = (selected_loc != null)
+		$InfoPanel/Sendbutton.visible = false
 	else:
-		$FromLocList.visible = false
 		$ToLocList.visible = true
-		$CharPanel.visible = true
-		if to_loc != null:
-			$CharPanel/Send.visible = true
-			$CharPanel/mode1.pressed = false
-			$CharPanel/mode2.pressed = false
-		else:
-			$CharPanel/Send.visible = false
-			$CharPanel/mode1.pressed = false
-			$CharPanel/mode2.pressed = true
+		$FromLocList/Sendbutton.visible = false
 
 
 func from_loc_set():
@@ -843,11 +788,10 @@ func from_loc_set():
 		return
 	from_loc = selected_loc
 	loc_locked = false
-	selected_area = null
+#	selected_area = null
 	set_focus_area()
 	build_to_locations()
 	build_info()
-	build_charpanel()
 	match_state()
 
 
@@ -858,7 +802,6 @@ func to_loc_set():
 	loc_locked = false
 #	build_from_locations()
 	build_info()
-	build_charpanel()
 	match_state()
 
 
@@ -869,7 +812,6 @@ func reset_to():
 	unselect_location()
 	match_state()
 	build_to_locations()
-	build_charpanel()
 	build_info(from_loc)
 
 
