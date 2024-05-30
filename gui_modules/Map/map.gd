@@ -266,9 +266,9 @@ func open():
 	to_loc = null
 	selected_loc = null
 	selected_area = null
+	locs_chosen.clear()
 	build_locations_list()
 	build_from_locations()
-	locs_chosen = ['aliron']
 	update_location_chars()
 	build_to_locations()
 	selected_area = 'plains'
@@ -353,6 +353,8 @@ func build_locations_list():
 			continue
 		else:
 			temp_locations[loc].heroes.push_back(character.id)
+			if !locs_chosen.has(loc):
+				locs_chosen.push_back(loc)
 	
 	sorted_locations = temp_locations.values().duplicate()
 	sorted_locations.sort_custom(self, 'sort_locations')
@@ -391,10 +393,10 @@ func get_location_data(loc):
 func build_info(loc = null):
 	if loc == null:
 		loc = to_loc
-	if loc == null:
-		loc = from_loc
-	if loc == null:
-		loc = selected_loc
+#	if loc == null:
+#		loc = from_loc
+#	if loc == null:
+#		loc = selected_loc
 	if loc == null:
 		$InfoPanel.visible = false
 		return
@@ -568,8 +570,8 @@ func build_from_locations():
 			category.get_node('Button').connect('pressed', self, 'toggle_from_location', [loc_data.id])
 			category.get_node('Button').connect('mouse_entered', $map.get_node(area), 'Light')
 			category.get_node('Button').connect('mouse_exited', $map.get_node(area), 'UnLight')
-			category.get_node('Button').connect('mouse_entered', self, 'build_info', [loc_data.id])
-			category.get_node('Button').connect('mouse_exited', self, 'build_info')
+#			category.get_node('Button').connect('mouse_entered', self, 'build_info', [loc_data.id])
+#			category.get_node('Button').connect('mouse_exited', self, 'build_info')
 			make_panel_for_location(category.get_node('Button'), loc_data)
 			for ch_id in loc_data.heroes:
 				var loc_button = input_handler.DuplicateContainerTemplate(category.get_node('offset/LocList'), 'Button')
@@ -721,7 +723,7 @@ func char_loc_press(ch_id, loc_id):
 		if selected_chars.empty():
 			selected_loc = null
 			match_state()
-	build_info()
+#	build_info()
 	update_confirm()
 	update_location_chars()
 
