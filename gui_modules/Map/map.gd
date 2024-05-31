@@ -217,7 +217,9 @@ func forget_location():
 
 
 func clear_dungeon_confirm():
-	globals.remove_location(selected_loc)
+	if to_loc == null:
+		return
+	globals.remove_location(to_loc)
 	input_handler.SystemMessage(tr("LOC_BEEN_REMOVED_LABEL"))
 	reset_to()
 	reset_from()
@@ -228,7 +230,7 @@ func clear_dungeon_confirm():
 	build_from_locations()
 	build_to_locations()
 	match_state()
-	build_info(selected_loc)
+	build_info()
 
 
 func close():
@@ -266,7 +268,6 @@ func open():
 	to_loc = null
 	selected_loc = null
 	selected_area = null
-	locs_chosen.clear()
 	build_locations_list()
 	build_from_locations()
 	update_location_chars()
@@ -283,6 +284,7 @@ func open():
 
 
 func build_locations_list():
+	locs_chosen.clear()
 	sorted_locations.clear()
 	locs_count.clear()
 	lands_count.clear()
