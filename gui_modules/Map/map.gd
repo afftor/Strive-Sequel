@@ -338,7 +338,8 @@ func build_locations_list():
 		else:  locs_count[temp.type] = 1
 		temp_locations[id] = temp
 	
-	for character in ResourceScripts.game_party.characters.values():
+	for ch_id in ResourceScripts.game_party.character_order:
+		var character = characters_pool.get_char_by_id(ch_id)
 		if !character.is_active: 
 			continue
 		var loc = character.get_location()
