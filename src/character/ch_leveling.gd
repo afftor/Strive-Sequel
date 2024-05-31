@@ -1037,9 +1037,10 @@ func get_progress_resource(tempresource, count_crit = false):
 	
 	if count_crit == true && randf() <= get_task_crit_chance():
 		value = value * 2
-	value *= location.gatherable_resources[tempresource].gather_mod
-#	if location.has('gather_mod'): #2fix
-#		value *= location.gather_mod
+	if location.type == 'dungeon':
+		value *= location.gatherable_resources[tempresource].gather_mod
+	elif location.has('gather_mod'): #2fix
+		value *= location.gather_mod
 #	print(task_mods)
 #	print(value)
 	return value
