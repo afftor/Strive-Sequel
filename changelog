@@ -1,3 +1,13 @@
+Fixed elven capital not generating map items in its shop
+Fixed maps not generating in chest rewards properly
+Fixed new rebel dungeon not working
+Fixed fire depths bosses having challenge checks
+0.9.0a
+Fixed dungeon events causing crash
+Fixed some resource location gathering issues
+Fixed location forgetting
+Fixed character order in travel menu
+0.9.0
 Added exploration mechanic to dungeons
 	Dungeons now use stamina system which is restored every day
 	Dungeon deletion now only occurs after everyone has been removed from there

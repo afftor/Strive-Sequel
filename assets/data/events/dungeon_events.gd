@@ -105,7 +105,7 @@ var data = {
 	
 	event_fallen_bridge = {
 			variations = [{
-		
+		reqs = [{type = 'random', value = 50}],
 		text = tr("DIALOGUEFALLENBRIDGE"),
 		tags = ['linked_event'],
 		default_event_type = "trap",
@@ -118,11 +118,12 @@ var data = {
 		},
 		
 		{text = tr("DIALOGUEFALLENBRIDGE2"),
+		reqs = [],
 		tags = ['linked_event'],
 		default_event_type = "trap",
 		image = 'trap',
 		options = [
-		{code = 'dungeon_forest_bridge', not_hide = true, reqs = [{type = 'has_material', material = 'wood', operant = 'gte', value = 10}], text = tr("DIALOGUEFALLENBRIDGESELECT"), bonus_effects = [{code = 'unlock_subroom'}, {code = 'material_change', operant = '-', material = 'wood', value = 10}]},
+		{code = 'pass_fallen_bridge', not_hide = true, reqs = [{type = 'has_material', material = 'wood', operant = 'gte', value = 10}], text = tr("DIALOGUEFALLENBRIDGESELECT"), bonus_effects = [{code = 'unlock_subroom'}, {code = 'material_change', operant = '-', material = 'wood', value = 10}]},
 		{code = 'close', reqs = [{type = 'has_stamina', value = 10}], not_hide = true, bonus_effects = [{code = 'pay_stamina', value = 10}, {code = 'unlock_subroom'}], text = tr("DIALOGUEFALLENBRIDGEBREAK")},
 		{code = 'close', reqs = [], text = tr("DIALOGUECANCEL")},
 		]

@@ -26,8 +26,8 @@ var TranslationDict = {
 	GALLERYSCENES = "Сцены",
 	GALLERYRETURN = "Назад",
 	GALLERYTOOLTIPTOP = "Условия сцены:",
-	GALLERYRESETBUTTON = """Reset""", # MISSING TRANSLATION
-	GALLERYRESETTEXT = """Are you sure you want to reset ALL gallery progress?""", # MISSING TRANSLATION
+	GALLERYRESETBUTTON = "Сброс",
+	GALLERYRESETTEXT = "Вы уверены, что хотите сбросить ВЕСЬ прогресс галереи?",
 	#ModPanel
 	MODLOAD = "Загруженные моды",
 	MODLOAD1 = "Эти моды будут применены к игре и доступны в редакторе при следующем запуске игры.",
@@ -116,7 +116,7 @@ var TranslationDict = {
 	LSPUPDATESAVEFILE = "Обновление файла сохранения",
 	LSPOUTDATED = "{color=red| (Устарело - используйте режим импорта)}",
 	LSPOUTDATED2 = "{color=red|Устарело}",
-	LSIMPORTTOOLTIP = "При включении этого режима игра пересоздает мир и сбрасывает весь игровой прогресс при загрузке, но при этом сохраняет всех ваших персонажей, предметы и инвентарь. Используйте этот режим для загрузки устаревших сохранений.",
+	LSIMPORTTOOLTIP = "При включении этого режима игра пересоздает мир и сбрасывает весь игровой прогресс при загрузке, \nно при этом сохраняет всех ваших персонажей, предметы и инвентарь. Используйте этот режим для загрузки устаревших сохранений.",
 
 	PRONOUNHE = "Он",
 	PRONOUNHEF = "Она",
@@ -156,7 +156,7 @@ var TranslationDict = {
 			
 	BUTTONMENU = "Меню",
 	FINISHTURNBUTTON = "Конец хода",
-	EXPLORESHOP = "Магазин",
+	EXPLORESHOP = "Рынок",
 	EXPLORBUYDUNGEON = "Купить подземелье",
 	EXPLORENOTICEBOARD = "Доска объявлений",
 	EXPLOREHIRE = "Нанять",
@@ -836,7 +836,7 @@ var TranslationDict = {
 	CRITMOD = "Сила крита",
 	LEVELUP = "Уровень +",
 	MAXLEVEL = "Макс. уровень",
-	DUNGEONLEVEL = """Level""", # MISSING TRANSLATION
+	DUNGEONLEVEL = "Уровень",
 	LEVELUPTEXT = " только что получил уровень. Выберите новую черту характера, чтобы разблокировать её",
 	TASKCRITCHANCE = "Шанс крита на работе",
 	TASKEFFICIENCYTOOL = "Эффективность работы",
@@ -854,8 +854,8 @@ var TranslationDict = {
 	TOOLTIPEVASION = "Уменьшает шанс попадания противника на это значение",
 	TOOLTIPSPEED = "Повышает ваши шансы действовать раньше других персонажей",
 	TOOLTIPRESISTS = "Уменьшает урон от стихий на относительное сопротивление",
-	TOOLTIPSTAMINA = "Выносливость истощается при выполнении действий, на которые персонаж не согласен. При полном исчерпании выносливости такие действия истощают Повиновение. Также при полном истощении персонаж не сможет улучшить свое Согласие. Выносливость пополняется за счет оргазмов, однако это связано с уменьшением эффективности.",
-	TOOLTIPSTAMINADUNGEON = """Exploration Stamina is depleted every time you take an exploration action. It will be fully replenished at the start of new day.""", # MISSING TRANSLATION
+	TOOLTIPSTAMINA = "Терпимость истощается при выполнении действий, на которые персонаж не согласен. При полном исчерпании выносливости такие действия истощают Повиновение. Также при полном истощении персонаж не сможет улучшить свое Согласие. Терпимость восполняется за счет оргазмов, однако это связано с уменьшением эффективности.",
+	TOOLTIPSTAMINADUNGEON = "Выносливость исследования истощается каждый раз, когда вы совершаете действие по исследованию. Каждый ход ваша группа восстанавливает определенное количество.",
 
 	TOOLTIPFOODCONSUMPTION = "Ежедневное потребление пищи",
 	TOOLTIPPOPULATION = "Население",
@@ -968,7 +968,7 @@ var TranslationDict = {
 	CHAR_UNAVALIABLE = "Недоступен",
 	NO_FREE_SLOTS = "Для этой задачи не осталось свободных мест",
 	ANOTHERPROFSELECTED = "Можно выбрать только одну специализацию.",
-	NOMATERIALSFORITEMPART = """You have no suitable materials for this item part""", # MISSING TRANSLATION
+	NOMATERIALSFORITEMPART = "У вас нет подходящих материалов для этой части.",
 
 	LOGREPORTPREGNANCY = "[name] говорит вам, что [he], кажется, беременна.",
 	LOGREPORTPREGNANCYMASTER = "Похоже, что вы ([name]), беременны.",
@@ -1046,36 +1046,12 @@ var TranslationDict = {
 	NOTENOUGHLOYALTY = "Недостаточно верности",
 	QUESTCOMPLETEMESSAGE = "Квест завершен",
 	QUESTDAYSLEFT = "дней осталось",
-	QUESTLOCATION = """Quest Location""", # MISSING TRANSLATION
+	QUESTLOCATION = "Локация квеста",
 	
 	#Skills
 	SKILLATTACK = "Атака",
 	SKILLATTACKDESCRIPT = "Атакует цель с помощью экипированного оружия.",
 	SKILLRANGED_ATTACK = "Атака (дальняя)",
-	SKILLFIREBOLT = "Огненный шар",
-	SKILLFIREBOLTDESCRIPT = "Запускает в цель заклинание огня. Наносит %d урона огнем всем целям в одном ряду.",
-	SKILLWINDARROW = "Стрела ветра",
-	SKILLWINDARROWDESCRIPT = "Наделяет стрелу элементом ветра и наносит %d урона. Должен быть экипирован лук.",
-	SKILLENEMY_SLASH = "Полоснуть",
-	SKILLENEMY_SLASHDESCRIPT = "Наносит %d урона от оружия всем целям в ближайшей колонне. Должно быть экипировано оружие.",
-	SKILLMINORHEAL = "Малое исцеление",
-	SKILLMINORHEALDESCRIPT = "Восстановить %d здоровья цели.",
-	SKILLCONCENTRATE = "Концентрация",
-	SKILLCONCENTRATEDESCRIPT = "Восстановить %d вашей маны.",
-	SKILLFIRESTORM = "Огненный шторм",
-	SKILLFIRESTORMDESCRIPT = "Наносит %d урона огнем всем врагам.",
-	SKILLSTRONGSHOT = "Мощный выстрел",
-	SKILLSTRONGSHOTDESCRIPT = "Наносит %d урона оружием выбранному противнику и оглушает его на 1 ход. Должен быть экипирован лук.",
-	SKILLARROWSHOWER = "Душ из стрел",
-	SKILLARROWSHOWERDESCRIPT = "Наносит %d урона оружием всем врагам.",
-	SKILLTACKLE = "Оглушить",
-	SKILLTACKLEDESCRIPT = "Наносит %d физического урона и оглушает цель на 1 ход.",
-	SKILLCRIPPLE = "Покалечить",
-	SKILLCRIPPLEDESCRIPT = "Наносит %d урона от оружия и снижает урон цели на 33%% на 3 хода.",
-	SKILLCOMBOATTACK = "Комбо-атака",
-	SKILLCOMBOATTACKDESCRIPT = "Наносит цели 3 последовательных удара на %d урона оружием.",
-	SKILLDOUBLEATTACK = "Двойная атака",
-	SKILLDOUBLEATTACKDESCRIPT= "Атакует на %d урона дважды.",
 
 	SKILLCOMMAND = "Приказ",
 	SKILLCOMMANDDESCRIPT = "Увеличивает ATK и MATK цели на 50% на 3 хода.",
@@ -1090,9 +1066,9 @@ var TranslationDict = {
 	SKILLWEAPON_REFINE = "Заточка оружия",
 	SKILLWEAPON_REFINEDESCRIPT = "Увеличивает АТК цели на 30% до конца боя.",
 	SKILLACIDBOMB = "Кислотная бомба",
-	SKILLACIDBOMBDESCRIPT = "Бросает в цель кислотную бомбу, нанося 250% от MATK в виде урона водой и снижая броню цели на 25 на 4 хода. Требуется 1 нестабильная смесь.",
+	SKILLACIDBOMBDESCRIPT = "Бросает в цель кислотную бомбу, нанося 250% от MATK в виде урона {color=yellow|Водой} и снижая броню цели на 25 на 4 хода. Требуется 1 нестабильная смесь.",
 	SKILLFIREBOMB = "Огненная бомба",
-	SKILLFIREBOMBDESCRIPT = "Бросает огненную бомбу в колонну, нанося 200% от MATK как урон огнем. Поджигает цели в течение 2 ходов, нанося урон (50% от MATK) каждый ход. Требуется 1 нестабильная смесь.",
+	SKILLFIREBOMBDESCRIPT = "Бросает огненную бомбу в колонну, нанося 200% от MATK как урон {color=yellow|Огнем}. Поджигает цели в течение 2 ходов, нанося урон (50% от MATK) каждый ход. Требуется 1 нестабильная смесь.",
 	SKILLDISTRACT = "Отвлечь",
 	SKILLDISTRACTDESCRIPT = "Уменьшает Урон и Уклонение цели на 30 на 2 хода.",
 	SKILLATTRACT = "Привлечь",
@@ -1100,7 +1076,7 @@ var TranslationDict = {
 	SKILLENTHRAL = "Захват",
 	SKILLENTHRALDESCRIPT = "Оглушает цель и себя на 3 хода или до получения повреждений. Действует только на гуманоидов.",
 	SKILLFIRE_ATTACK = "Огненная атака",
-	SKILLFIRE_ATTACKDESCRIPT = "Наносит 120% от АТК как урон огнем.",
+	SKILLFIRE_ATTACKDESCRIPT = "Наносит 120% от АТК как урон {color=yellow|Огнем}.",
 	SKILLDRAGONMIGHT = "Могущество дракона",
 	SKILLDRAGONMIGHTDESCRIPT = "Увеличивает урон и защиту на 25% до конца боя.",
 	SKILLLESSER_HEAL = "Малое исцеление",
@@ -1108,13 +1084,13 @@ var TranslationDict = {
 	SKILLFAIRY_HEAL = "Грация феи",
 	SKILLFAIRY_HEALDESCRIPT = "Исцеляет цель на 50% от ее максимального здоровья.",
 	SKILLENTANGLE = "Запутать",
-	SKILLENTANGLEDESCRIPT = "Наносит 130% от MATK как урон землей и оглушает цель на 1 ход.",
+	SKILLENTANGLEDESCRIPT = "Наносит 130% от MATK как урон {color=yellow|Землей} и оглушает цель на 1 ход.",
 	SKILLSERRATED_SHOT = "Зазубренный выстрел",
-	SKILLSERRATED_SHOTDESCRIPT = "Наносит 90% ATK физического урона. Вызывает у цели кровотечение на 3 хода, нанося урон (90% от ATK) каждый ход.",
+	SKILLSERRATED_SHOTDESCRIPT = "Наносит 90% ATK {color=yellow|Физического} урона. Вызывает у цели кровотечение на 3 хода, нанося урон (90% от ATK) каждый ход.",
 	SKILLMASS_LESSER_HEAL = "Массовое малое исцеление",
 	SKILLMASS_LESSER_HEALDESCRIPT = "Лечит колонну на 100% от MATK.",
 	SKILLBLIZZARD = "Метель",
-	SKILLBLIZZARDDESCRIPT = "Наносит всем противникам 45% от МАТК в виде урона водой. С вероятностью 30% снижает скорость цели на 20. С вероятностью 50% замораживает цель на 2 хода.",
+	SKILLBLIZZARDDESCRIPT = "Наносит всем противникам 45% от МАТК в виде урона {color=yellow|Водой}. С вероятностью 30% снижает скорость цели на 20. С вероятностью 50% замораживает цель на 2 хода.",
 	SKILLBLESS = "Благословление",
 	SKILLBLESSDESCRIPT = "Увеличивает АТК цели на 25% на 3 хода.",
 	SKILLMENTAL_BLESS = "Ментальное благословение",
@@ -1125,69 +1101,69 @@ var TranslationDict = {
 	SKILLBLOOD_EXPLOSIONDESCRIPT = "Наносит урон цели на 300% от MATK, наносит урон другим врагам на 50% от MATK.",
 
 	SKILLEARTH_ATK = "Удар Земли",
-	SKILLEARTH_ATKDESCRIPT = "Наносит 125% от ATK как урон землей. С вероятностью 30% оглушает цель на 1 ход.",
+	SKILLEARTH_ATKDESCRIPT = "Наносит 125% от ATK как урон {color=yellow|Землей}. С вероятностью 30% оглушает цель на 1 ход.",
 	SKILLWIND_ATK = "Порыв ветра",
-	SKILLWIND_ATKDESCRIPT = "Наносит 80% АТК в виде урона воздухом одной цели и случайному противнику.",
+	SKILLWIND_ATKDESCRIPT = "Наносит 80% АТК в виде урона {color=yellow|Воздухом} одной цели и случайному противнику.",
 	SKILLWATER_ATK = "Водяной клинок",
-	SKILLWATER_ATKDESCRIPT = "Наносит 110% АТК урона водой. Вызывает у цели кровотечение на 2 хода, нанося урон (30% от ATK) каждый ход.",
+	SKILLWATER_ATKDESCRIPT = "Наносит 110% АТК урона {color=yellow|Водой}. Вызывает у цели кровотечение на 2 хода, нанося урон (30% от ATK) каждый ход.",
 	SKILLHOLY_ATK = "Святая атака",
-	SKILLHOLY_ATKDESCRIPT = "Наносит 120% АТК урона светом. С вероятностью 20% сбивает цель с толку.",
+	SKILLHOLY_ATKDESCRIPT = "Наносит 120% АТК урона {color=yellow|Светом}. С вероятностью 20% сбивает цель с толку.",
 	SKILLFIRE_CLEAVE = "Огненное рассечение",
-	SKILLFIRE_CLEAVEDESCRIPT = "Наносит 70% ATK урона огнем колонне. С вероятностью 20% сжигает цель на 2 хода, нанося урон (20% от ATK) каждый ход.",
+	SKILLFIRE_CLEAVEDESCRIPT = "Наносит 70% ATK урона {color=yellow|Огнем} колонне. С вероятностью 20% сжигает цель на 2 хода, нанося урон (20% от ATK) каждый ход.",
 	SKILLEARTH_SHATTER = "Сокрушение земли",
-	SKILLEARTH_SHATTERDESCRIPT = "Наносит всем врагам урон землей в размере 60% от ATK. Снижает уклонение на 25 на 2 хода.",
+	SKILLEARTH_SHATTERDESCRIPT = "Наносит всем врагам урон {color=yellow|Землей} в размере 60% от ATK. Снижает уклонение на 25 на 2 хода.",
 	SKILLREVENGE = "Возмездие",
-	SKILLREVENGEDESCRIPT = "Наносит высокий физический урон, основанный на недостающем здоровье.",
+	SKILLREVENGEDESCRIPT = "Наносит высокий {color=yellow|Физический} урон, основанный на недостающем здоровье.",
 	SKILLFIRE_BURST = "Огненный взрыв",
-	SKILLFIRE_BURSTDESCRIPT = "Наносит всем врагам 50% от MATK в виде урона огнем. Снижает точность цели на 20 на 3 хода.",
+	SKILLFIRE_BURSTDESCRIPT = "Наносит всем врагам 50% от MATK в виде урона {color=yellow|Огнем}. Снижает точность цели на 20 на 3 хода.",
 	SKILLAIR_CUTTER = "Воздушный разрез",
-	SKILLAIR_CUTTERDESCRIPT = "Наносит 85% от ATK в виде урона воздухом одной цели и 2 случайным врагам. С вероятностью 50% вызывает у цели кровотечение на 2 хода, нанося урон (20% от ATK) каждый ход.",
+	SKILLAIR_CUTTERDESCRIPT = "Наносит 85% от ATK в виде урона {color=yellow|Воздухом} одной цели и 2 случайным врагам. С вероятностью 50% вызывает у цели кровотечение на 2 хода, нанося урон (20% от ATK) каждый ход.",
 	SKILLHOLY_LANCE = "Святое копье",
-	SKILLHOLY_LANCEDESCRIPT = "Наносит 100% АТК урона Светом по ряду.",
+	SKILLHOLY_LANCEDESCRIPT = "Наносит 100% АТК урона {color=yellow|Светом} по ряду.",
 	SKILLSWIPE = "Взмах",
 	SKILLSWIPE_EN = "Swipe",
-	SKILLSWIPEDESCRIPT = "Наносит колонне 70% от ATK в качестве урона воздухом. С вероятностью 30% снижает защиту цели на 20 на 2 хода.",
+	SKILLSWIPEDESCRIPT = "Наносит колонне 70% от ATK в виде урона {color=yellow|Воздухом}. С вероятностью 30% снижает защиту цели на 20 на 2 хода.",
 	SKILLARROWRAIN = "Дождь из стрел",
-	SKILLARROWRAINDESCRIPT = "Наносит колонне 65% от ATK в виде урона водой. С вероятностью 30% снижает MDEF цели на 20 на 2 хода.",
+	SKILLARROWRAINDESCRIPT = "Наносит колонне 65% от ATK в виде урона {color=yellow|Водой}. С вероятностью 30% снижает MDEF цели на 20 на 2 хода.",
 	SKILLEXPLOSIVEARR = "Взрывная стрела",
-	SKILLEXPLOSIVEARRDESCRIPT = "Наносит цели 130% ATK урона огнем. Поджигает цель на 2 хода, нанося урон (25% от ATK) каждый ход.",
+	SKILLEXPLOSIVEARRDESCRIPT = "Наносит цели 130% от ATK в виде урона {color=yellow|Огнем}. Поджигает цель на 2 хода, нанося урон (25% от ATK) каждый ход.",
 	SKILLSHADOWSTRIKE = "Теневой удар",
-	SKILLSHADOWSTRIKEDESCRIPT = "Наносит цели 130% от ATK как Темный урон. Снижает ATK и MATK цели на 20 на 2 хода.",
+	SKILLSHADOWSTRIKEDESCRIPT = "Наносит цели 130% от ATK в виде урона {color=yellow|Тьмой}. Снижает ATK и MATK цели на 20 на 2 хода.",
 	SKILLFIREARR = "Огненная стрела",
-	SKILLFIREARRDESCRIPT = "Наносит 120% от ATK как урон от огня. С вероятностью 50% сжигает цель на 2 хода, нанося урон (20% от MATK) каждый ход.",
+	SKILLFIREARRDESCRIPT = "Наносит 120% от МATK от ATK в виде урона {color=yellow|Огнем}. С вероятностью 50% сжигает цель на 2 хода, нанося урон (20% от MATK) каждый ход.",
 	SKILLLIGHTNING = "Молния",
-	SKILLLIGHTNINGDESCRIPT = "Наносит цели 125% от МАТК в виде урона воздухом. Оглушает цель на 1 ход.",
+	SKILLLIGHTNINGDESCRIPT = "Наносит цели 125% от МАТК в виде урона {color=yellow|Воздухом}. Оглушает цель на 1 ход.",
 	SKILLMINDBLAST = "Взрыв разума",
-	SKILLMINDBLASTDESCRIPT = "Наносит цели 120% от MATK в качестве урона разума.",
+	SKILLMINDBLASTDESCRIPT = "Наносит цели 120% от MATK в качестве урона {color=yellow|Разуму}.",
 	SKILLPSYCHICBLAST = "Психический взрыв",
-	SKILLPSYCHICBLASTDESCRIPT = "Наносит 65% от MATK как урон разума колонне.",
+	SKILLPSYCHICBLASTDESCRIPT = "Наносит 65% от MATK как урон {color=yellow|Разуму} колонне.",
 	SKILLRESURRECT = "Воскресить",
-	SKILLRESURRECTDESCRIPT = "Воскрешает целевого союзника на 40% от максимального здоровья.",
+	SKILLRESURRECTDESCRIPT = "Воскрешает союзника-цель на 40% от максимального здоровья.",
 	SKILLDECAY = "Разложение",
-	SKILLDECAYDESCRIPT = "Наносит 65% от MATK в виде темного урона всем врагам.",
+	SKILLDECAYDESCRIPT = "Наносит 65% от MATK в виде урона {color=yellow|Тьмой} всем врагам.",
 	SKILLOVERGROWTH = "Зарастание",
-	SKILLOVERGROWTHDESCRIPT = "Наносит всем врагам 45% от MATK в виде урона землей.",
+	SKILLOVERGROWTHDESCRIPT = "Наносит всем врагам 45% от MATK в виде урона {color=yellow|Землей}.",
 	SKILLFIRST_AID = "Первая помощь",
 	SKILLFIRST_AIDDESCRIPT = "Исцеляет союзника на 30% от максимального здоровья. Для использования требуется 1 бинт.",
 	SKILLLIGHT_SPELL = "Святой свет",
-	SKILLLIGHT_SPELLDESCRIPT = "Наносит цели 100% от MATK в виде урона светом",
+	SKILLLIGHT_SPELLDESCRIPT = "Наносит цели 100% от MATK в виде урона {color=yellow|Светом}",
 	SKILLLIGHT_SPELL_AOE = "Божественное сияние",
-	SKILLLIGHT_SPELL_AOEDESCRIPT = "Наносит 30% от MATK в виде урона светом всем врагам. Снижает MЗАЩ на 20 на 3 хода.",
+	SKILLLIGHT_SPELL_AOEDESCRIPT = "Наносит 30% от MATK в виде урона {color=yellow|Светом} всем врагам. Снижает MЗАЩ на 20 на 3 хода.",
 
 	SKILLENDURE = "Выносливость",
 	SKILLENDUREDESCRIPT = "Увеличивает все сопротивления на 20% на 2 хода.",
 	SKILLMIRROR_IMAGE = "Зеркальное отражение",
 	SKILLMIRROR_IMAGEDESCRIPT = "Баффы для всех союзников: 25% шанс избежать любого урона от способностей на 2 хода (кроме разума). Заменяет Энергетическое поле.",
 	SKILLENERGY_FIELD = "Энергетическое поле",
-	SKILLENERGY_FIELDDESCRIPT = "Баффы для всех союзников: При получении урона наносит атакующему 40% от MATK кастера в качестве урона от воздуха. Заменяет Зеркальное отражение.",
+	SKILLENERGY_FIELDDESCRIPT = "Баффы для всех союзников: При получении урона наносит атакующему 40% от MATK кастера в качестве урона {color=yellow|Воздухом}. Заменяет Зеркальное отражение.",
 	SKILLPROTECTIVE_SHELL = "Защитная оболочка",
 	SKILLPROTECTIVE_SHELLDESCRIPT = "Баффы колонны союзников: Снижение входящего урона на 35% на следующие 3 атаки.",
 	SKILLHAMMERFALL = "Удар молотом",
-	SKILLHAMMERFALLDESCRIPT = "Наносит цели 150% от ATK физического урона. Оглушает цель на 2 хода.",
+	SKILLHAMMERFALLDESCRIPT = "Наносит цели 150% от ATK {color=yellow|Физического} урона. Оглушает цель на 2 хода.",
 	SKILLPURGE = "Очищение",
 	SKILLPURGEDESCRIPT = "Снимает с цели все негативные баффы.",
 	SKILLRIGHTEOUS_FIRE = "Праведный огонь",
-	SKILLRIGHTEOUS_FIREDESCRIPT = "Наносит 75% от MATK как урон от огня. Накладывает немоту на цель на 2 хода",
+	SKILLRIGHTEOUS_FIREDESCRIPT = "Наносит 75% от MATK как урон {color=yellow|Огнем}. Накладывает немоту на цель на 2 хода",
 	SKILLELEMENTAL_WEAKNESS = "Элементная слабость",
 	SKILLELEMENTAL_WEAKNESSDESCRIPT = "Уменьшает сопротивление огня, воздуха, земли и воды цели на 40 единиц на 3 хода.",
 	SKILLELEMENTAL_PROTECTION = "Элементная защита",
@@ -1215,15 +1191,14 @@ var TranslationDict = {
 	SKILLDEVOUR = "Поглотить дух",
 	SKILLDEVOURDESCRIPT = "Дебафф вражеской цели: когда цель умирает, кастер восстанавливает 20% от максимальной маны.",
 	SKILLEARTHQUAKE = "Землетрясение",
-	SKILLEARTHQUAKEDESCRIPT = "Наносит 40% от MATK в виде урона землей всем врагам в течение 3 ходов.",
+	SKILLEARTHQUAKEDESCRIPT = "Наносит 40% от MATK в виде урона {color=yellow|Землей} всем врагам в течение 3 ходов.",
 	SKILLEARTHQUAKE_GLOB = "Землетрясение",
 	SKILLL_ORB = "Сфера молнии",
-	SKILLL_ORBDESCRIPT = "Наносит цели 250% от MATK в виде урона воздухом. Если цель выживает, наносит половину урона случайному противнику.",
+	SKILLL_ORBDESCRIPT = "Наносит цели 250% от MATK в виде урона {color=yellow|Воздухом}. Если цель выживает, наносит половину урона случайному противнику.",
 	SKILLSNIPER_SHOT = "Стрела ловчего",
-	SKILLSNIPER_SHOTDESCRIPT = "Наносит цели 110% от ATK в виде земляного урона. Накладывает на цель эффект Западня на 5 ходов. ",
+	SKILLSNIPER_SHOTDESCRIPT = "Наносит цели 110% от ATK в виде урона {color=yellow|Землей}. Накладывает на цель эффект Западня на 5 ходов. ",
 	SKILLSOUL_BIND = "Связывание души",
-	SKILLSOUL_BINDDESCRIPT = """Bends person's mind to submit to your will. After a day of rest they will follow most of your orders. """, # MISSING TRANSLATION
-	SKILLSOUL_BINDESCRIPT = "Склоняет разум человека, чтобы он подчинился вашей воле. После дня отдыха они будут выполнять большинство ваших приказов. ",	
+	SKILLSOUL_BINDDESCRIPT = "Склоняет разум человека, чтобы он подчинился вашей воле. После дня отдыха они будут выполнять большинство ваших приказов. ",	
 
 	SKILLFLY_EVASION = "Полет",
 	SKILLFLY_EVASIONDESCRIPT = "Увеличивает уворот на 65 на 3 хода.",
@@ -1336,8 +1311,8 @@ var TranslationDict = {
 	LOGLEFTTTOOLTIP = "Показывает основные события",
 	LOGRIGHTLABEL = "Сервис",
 	LOGRIGHTTOOLTIP = "Показывает доходы от услуг",
-	BROTHELLOGSEX = "%s заработал %s золота, выполняя %s с %s",
-	BROTHELLOGNO_SEX = "%s заработал %s золота, работая как %s",
+	BROTHELLOGSEX = "%s заработал/а %s золота, выполняя %s с %s клиентами.",
+	BROTHELLOGNO_SEX = "%s заработал/а %s золота, работая как %s.",
 	
 	BROTHELTOOLTIP = "Вы можете выбрать, какие задания будет разрешено выполнять персонажу во время работы в борделе. Переключая определенные задания, вы можете выбрать только те, которые будут разрешены. Пол клиента влияет только на сексуальные задания.\nБольшая ценность персонажа увеличивает заработок, большее обаяние увеличивает вероятность того, что вас попросят о сексе.\nРазличные задания улучшают и увеличивают разные характеристика.\nСервис - глобальный модификатор для этого задания.",
 	BROTHELWARNING = "Секс-услуги не будут оказываться, если вы не выберете хотя бы 1 разрешенного клиента",
@@ -1475,13 +1450,12 @@ var TranslationDict = {
 	SLAVEBODYHALFSPIDERDESCRIPT = "Нижняя часть [his] тела содержит [color=yellow]ноги и брюшко паука[/color].",
 	SLAVEBODYHALFHORSEDESCRIPT = "В то время как [his] верхняя часть тела человеческая, [his] нижняя часть [color=yellow]лошадиная[/color].",
 	SLAVEBODYHALFSQUIDDESCRIPT = "Нижняя часть [his] тела содержит [color=yellow]некоторое количество щупальцевых отростков[/color], похожие на осьминожьи.",
-	SLAVECLASSSLAVE = """Slave""", # MISSING TRANSLATION
-	SLAVECLASSSERVANT = """Subordinate""", # MISSING TRANSLATION
 
 
 
 	
-	
+	SLAVECLASSSLAVE = 'Раб',
+	SLAVECLASSSERVANT = "Подчиненный",	
 	DESCRIPTCLASSSLAVE = "[name] является вашим рабом и должен подчиняться вашим приказам по закону.",
 	DESCRIPTCLASSSERVANT = "[name] - ваш слуга и должен выполнять ваши приказы",
 	DESCRIPTCLASSMERC = "[name] было нанят/а вами и стоит вам золота.",
@@ -1628,14 +1602,16 @@ var TranslationDict = {
 	STATENCHCAP = "Вместимость зачарований", 
 	STATQUALITY = "Качество",
 	STATPRICE = "Цена",
-	STATCHG_STRENGTH = """Strength Charges""", # MISSING TRANSLATION
-	STATCHG_STRENGTH_MAX = """Maximum Strength Charges""", # MISSING TRANSLATION
-	STATCHG_CHARM = """Charm Charges""", # MISSING TRANSLATION
-	STATCHG_CHARM_MAX = """Maximum Charm Charges""", # MISSING TRANSLATION
-	STATCHG_WISDOM = """Wisdom Charges""", # MISSING TRANSLATION
-	STATCHG_WISDOM_MAX = """Maximum Wisdom Charges""", # MISSING TRANSLATION
-	STATCHG_DEXTERITY = """Dexterity Charges""", # MISSING TRANSLATION
-	STATCHG_DEXTERITY_MAX = """Maximum Dexterity Charges""", # MISSING TRANSLATION
+
+	STATCHG_STRENGTH = "Зарядов силы",
+	STATCHG_STRENGTH_MAX = "Макс. зарядов силы",
+	STATCHG_PERSUASION = "Зарядов убеждения",
+	STATCHG_PERSUASION_MAX = "Макс. зарядов убеждения",
+	STATCHG_WISDOM = "Зарядов мудрости",
+	STATCHG_WISDOM_MAX = "Макс. зарядов мудрости",
+	STATCHG_DEXTERITY = "Заряды ловкости",
+	STATCHG_DEXTERITY_MAX = "Макс. зарядов ловкости",
+	
 	
 	STATFOOD_CONSUMPTION = "Потребление еды",
 	STATFOOD_CONSUMPTIONDESCRIPT = "Количество продуктов питания, необходимое человеку каждый день. Недостаток пищи приводит к голоду, истощению и в конечном итоге к смерти.",
@@ -1908,7 +1884,7 @@ var TranslationDict = {
 	SKILLASSASSINATE = "Устранение",
 	SKILLASSASSINATEDESCRIPT = "Наносит 400% от ATK в виде темного урона. Для выполнения кастер должен быть скрытым.",
 	SKILLPROTECT = "Защита",
-	SKILLPROTECTDESCRIPT = "Принимает урон вместо союзника на 2 хода.",
+	SKILLPROTECTDESCRIPT = "Получает урон вместо союзника на 2 хода.",
 	SKILLSHAREDTOY = "Общая игрушка",
 	SKILLSHAREDTOYDESCRIPT = "Категория: {color=pink|Разврат}\nСтановится на время всеобщим удовольствием и облегчением. Улучшает Повиновение для всех. Улучшается фактором обаяния. \nОсновные эффекты: \nВерность +10, максимальное Повиновение",
 	SKILLPERFORMANCE = "Выступление",
@@ -1936,7 +1912,7 @@ var TranslationDict = {
 
 	DIALOGUEPUBLICEXECUTIONTEXT = "Когда [targetname] узнает о вашем решении, [he] быстро падает на пол, умоляя вас пощадить жизнь [targethis], обещая сделать все что угодно и никогда больше не разочаровывать вас.",
 	DIALOGUEPUBLICEXECUTIONREPORT = "Вы использовали [targetname] как пример для всех в вашем особняке, покончив с жизнью [targethis] у них на глазах. Это кажется довольно эффективным, хотя и излишне жестоким для некоторых.",
-	DIALOGUEPURCHASEDUNGEONLOCATION = "Вы покупаете место для нового подземелья и отмечаете его на своей карте.\n\nНовое место в [areaname] разблокировано: [locationname] - [locationtypename].",
+	DIALOGUEPURCHASEDUNGEONLOCATION = "Вы изучаете сложенную бумагу в поисках подсказок о новой исследуемой локации. Вам удается засечь ее и отметить на карте.\n\n{color=yellow|Новая локация в [areaname] разблокирована: [locationname] - [locationtypename]}",#"Вы купили локацию для нового подземелья и отметили ее на карте.\n\nНовая локация в [areaname] разблокирована: [locationname] - [locationtypename].",
 
 	DIALOGUESHAREDTOYREPORT = "[name] берет на себя обязанность ублажать [his] телом других ваших слуг...\n\nК концу, кажется, даже ваши более кроткие слуги остались довольны.",
 	DIALOGUEPERFORMANCEREPORT = "[name] ставит постановочный танец, собирая всех вокруг, чтобы посмотреть и расслабиться. Похоже, люди довольны [his] выступлением.",
@@ -2318,12 +2294,11 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	BUFFDESCRIPTCURSE = "",
 	BUFFDESCRIPTENCHANT = "",
 	BUFFDESCRIPTMENTOR = "Прирост опыта увеличен",	
-	CHALLENGESTRENGTH = """Strength Challenge""", # MISSING TRANSLATION
-	CHALLENGEDEXTERITY = """Dexterity Challenge""", # MISSING TRANSLATION
-	CHALLENGECHARM = """Charm Challenge""", # MISSING TRANSLATION
-	CHALLENGEWISDOM = """Wisdom Challenge""", # MISSING TRANSLATION
 	
-	
+	CHALLENGESTRENGTH = "Испытание на силу",
+	CHALLENGEDEXTERITY = "Испытание на ловкость",
+	CHALLENGEPERSUASION = "Испытание на убеждение",
+	CHALLENGEWISDOM = "Испытание на мудрость",
 	
 	PROFMASTER = "Мастер",
 	PROFMASTERALT = "Госпожа",
@@ -2787,8 +2762,8 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	BODYPARTAGEADULTDESCRIPT = "[He] - [color=aqua]молодой взрослый [male][/color] из [url=race][color=yellow][raceadj] расы[/color][/url]",
 	BODYPARTAGEMATUREDESCRIPT = "[He] - [color=aqua]зрелый [male][/color] из [url=race][color=yellow][raceadj] расы[/color][/url]",
 
-	BODYPARTBODY_SHAPEHUMANOIDDESCRIPT = "",
-	BODYPARTBODY_SHAPEBESTIALDESCRIPT = "",
+	BODYPARTBODY_SHAPEHUMANOIDDESCRIPT = " ",
+	BODYPARTBODY_SHAPEBESTIALDESCRIPT = " ",
 	BODYPARTBODY_SHAPESHORTSTACKDESCRIPT = "[His] тело довольно [color=yellow]маленькое[/color], примерно в два раза меньше среднего человека.",
 	BODYPARTBODY_SHAPEJELLYDESCRIPT = "[His] тело [color=yellow]желеобразное[/color] и частично прозрачное.",
 	BODYPARTBODY_SHAPEHALFBIRDDESCRIPT = "[His] тело имеет [color=yellow]крылья для рук и птичьи ноги[/color], что затрудняет выполнение повседневных задач.",
@@ -3015,7 +2990,7 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	SEXTRAITMASOCHISTDESCRIPT = "[name] испытывает необычное удовольствие от наказания. Возбуждение от получения наказаний увеличивается на 50%.",
 	SEXTRAITSADISTDESCRIPT = "[name] испытывает необычное удовольствие от наказания других. Возбуждение от наказания увеличивается на 50%.",
 	SEXTRAITSUBMISSIVEDESCRIPT = "[name] находит удовольствие и комфорт в том, что его принуждают к чему-то другие. Возбуждение от подчиненных позиций увеличивается на 20%",
-	SEXTRAITDOORMATDESCRIPT = "[name] очень плохо справляется с сексуальными домогательствами. Действия без [his] согласия с вероятностью 50% не будут тратить выносливость.",
+	SEXTRAITDOORMATDESCRIPT = "[name] очень плохо справляется с сексуальными домогательствами. Действия без [his] согласия с вероятностью 50% не будут тратить терпимость.",
 	SEXTRAITDOMINANTDESCRIPT = "[name] получает удовольствие от ведущей роли. Возбуждение от доминирующих позиций увеличивается на 20%.",
 	SEXTRAITNYMPHOMANIADESCRIPT = "[name] вечно возбужден, всегда готов к сексу, даже если это не в [his] интересах... Начинается в состоянии Возбуждения",
 	SEXTRAITHYPERSENSITIVEDESCRIPT = "[name] беспричинно чувствительное тело. Может испытывать оргазм от любого физического воздействия.",
@@ -3023,7 +2998,7 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	SEXTRAITBOTTLE_FAIRYDESCRIPT = "[name] имеет пристрастие к алкогольным напиткам. Во время пьянства или загула возбуждение увеличивается на 30%.",
 	SEXTRAITIRRESISTIBLEDESCRIPT = "[name] обожают все вокруг [him]. Увеличивает Согласие для всех [his] партнеров",
 	SEXTRAITBEDROOM_PRODIDGYDESCRIPT = "[name] отлично учится, когда дело доходит до сексуальных практик. Приобретение сексуальных навыков увеличено на 50%.",
-	SEXTRAITPUSHOVERDESCRIPT = "[name] имеет необычное желание, чтобы его взяли против [his] воли. Все действия против [him] будут рассматриваться как принудительные с точки зрения описаний. Снижение выносливости при действиях без согласия ниже.",
+	SEXTRAITPUSHOVERDESCRIPT = "[name] имеет необычное желание, чтобы его взяли против [his] воли. Все действия против [him] будут рассматриваться как принудительные с точки зрения описаний. Снижение терпимости при действиях без согласия ниже.",
 	SEXTRAITTEACHERDESCRIPT = "[name] обладает талантом заставлять [his] партнеров быстрее развивать свои сексуальные навыки. Прирост сексуальных навыков партнеров увеличивается на 50% (не суммируется)",
 	SEXTRAITDESIREDDESCRIPT = "[name] чрезвычайно привлекательно, что делает [his] партнеров более возбужденными. Возбуждение партнеров увеличивается на 25%.",
 	SEXTRAITCURIOUSDESCRIPT = "Хотя [name] интересуется сексом, [he] на самом деле получает не только удовольствие. Сексуальные встречи дают на 25% больше опыта.",
@@ -3092,8 +3067,8 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 
 	DIALOGUELOCATIONEVENTGOOD = "Законно",
 	DIALOGUELOCATIONEVENTEVIL = "Злонамеренно",
-	DIALOGUEATTACK = """Attack""", # MISSING TRANSLATION
 
+	DIALOGUEATTACK = "Атака",
 	DIALOGUEATTACKMIMIC = "*Атака мимика*",
 	DIALOGUEMIMICOPENANYWAY = "*Открыть в любом случае*",
 
@@ -3129,7 +3104,7 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	DIALOGUECHESTEROTICMIMICTRAPPED = "Когда [name] опирается на сундук, [he] быстро понимает, что это не сундук, а Мимик, который собирается его съесть. Однако мимик, похоже, не причиняет ему вреда, а скорее хватает свою добычу и забирается под одежду. Без посторонней помощи Мимик, несомненно, справится с [name]...\n\n{color=aqua|[name]} - {random_chat_active|mimic_rape}\n\nОставив [him] в таком состоянии, он, скорее всего, не умрет, но...",
 	DIALOGUECHESTMIMICTRAPPEDLEAVE = "Вы решили, что бросать вызов Мимику слишком опасно и оставить [name] ему - приемлемая цена...\n\n{color=aqua|[name]} - {random_chat_active|mimic_leave}",
 	DIALOGUECHESTMIMICEROTICTRAPPEDLEAVE = "Вы решили, что бросать вызов Мимику слишком опасно и оставить [name] ему - приемлемая цена...\n\n{color=aqua|[name]} - {random_chat_active|mimic_erotic_leave}\n\nПосле примерно часа эротических стонов и мольбы [name] сумело освободить [him] и сбежать.",
-	DIALOGUECHESTLOCKPICKFREE = """As [name] attempts to pick a lock of the chest, [he] realize it was not locked in first place. """, # MISSING TRANSLATION
+	DIALOGUECHESTLOCKPICKFREE = "Когда [name] пытается взломать замок сундука, [he] понимает, что тот изначально не был заперт. ",
 	DIALOGUECHESTLOCKPICKSUCCESS = "[name] умело взломал замок сундука, и теперь его содержимое принадлежит вам.",
 
 	DIALOGUECHESTMIMICFIGHT = "*Бой с мимиком*",
@@ -3172,52 +3147,91 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	DIALOGUEEVENTTRAPFAILURE = "[center]{color=red|Провал!}[/center]\n[name] обезвредил ловушку грубым способом, получив при этом повреждения.",
 	DIALOGUEACTIVATETRAP = "*Деактивировать ловушку*",
 
-	DIALOGUEDUNGEONCHEST = "Вы нашли запертый сундук.",
+	DIALOGUEDUNGEONCHEST = "Вы нашли запертый сундук с сокровищами.",
 	DIALOGUEDUNGEONARMORY = "Вы нашли запертый арсенал, в котором может быть что-то полезное",
 	DIALOGUEEVENTDUNGEONLOOT = "Пройдя в последнюю комнату, вы находите главное хранилище с самыми ценными вещами.",
-	DIALOUELOCKEDDOOR = """The pass forward ends in a sturdy locked door. It seems to get through it you might need an additional force... or someone who can lockpick.""", # MISSING TRANSLATION
-	DIALOUELOCKEDDOORSELECT = """Select character (3 Stamina)""", # MISSING TRANSLATION
-	DIALOUELOCKEDDOORBREAK = """Break Through (10 Stamina)""", # MISSING TRANSLATION
-	DIALOUELOCKEDDOORPASS = """[name] skillfully unlocks door blocking the pass allowing to proceed. """, # MISSING TRANSLATION
-	DIALOGUEBLOCKEDPATH = """The pass ahead is blocked by a collapsed tunnel. It seems it still can be fixed by someone with enough physical fitness relatively quickly.""", # MISSING TRANSLATION
-	DIALOGUEBLOCKEDPATHSELECT = """Select character (3 Stamina)""", # MISSING TRANSLATION
-	DIALOGUEBLOCKEDPATHBREAK = """Spend time clearing the passage (10 Stamina)""", # MISSING TRANSLATION
-	DIALOGUEBLOCKEDPATHPASS = """[name] lifts one of the crushed wooden bars and manages to push it away, clearing the path ahead.""", # MISSING TRANSLATION
-	DIALOGUEMAGICBARRIER = """""", # MISSING TRANSLATION
-	DIALOGUEMAGICBARRIERSELECT = """""", # MISSING TRANSLATION
-	DIALOGUEMAGICBARRIERBREAK = """""", # MISSING TRANSLATION
-	DIALOGUEMAGICBARRIERPASS = """""", # MISSING TRANSLATION
+
+	
+	DIALOUELOCKEDDOOR = "Проход вперед заканчивается прочной запертой дверью. Похоже, чтобы пройти через нее, вам понадобится дополнительная сила... или кто-то, кто умеет взламывать замки",
+	DIALOUELOCKEDDOOR2 = "Проход вперед заканчивается прочной деревянной дверью. Кажется, чтобы пройти через нее, вам понадобится дополнительная сила... или можно попробовать альтернативные методы.",
+	DIALOUELOCKEDDOORSELECT = "[Испытание на ловкость] Выбрать персонажа (3 выносливости)",
+	DIALOUELOCKEDDOORSELECT2 = "Использовать нестабильную смесь (3 выносливости)",
+	DIALOUELOCKEDDOORBREAK = "Прорваться (10 выносливости)",
+	DIALOUELOCKEDDOORPASS = "[name] умело отпирает дверь, блокируя проход, позволяя пройти дальше. ",
+	DIALOGUEBLOCKEDPATH = "Проход вперед заблокирован обрушившимся туннелем. Похоже, что кто-то с достаточной физической подготовкой сможет устранить его относительно быстро.",
+	DIALOGUEBLOCKEDPATH2 = "Проход впереди перекрыт обрушившимся туннелем. Кажется, с помощью иного подхода вы сможете расчистить его быстрее...",
+	DIALOGUEBLOCKEDPATHSELECT = "[Испытание на силу] Выбрать персонажа (3 выносливости)",
+	DIALOGUEBLOCKEDPATHBREAK = "Потратить время на очистку прохода (10 выносливости)",
+	DIALOGUEBLOCKEDPATHPASS = "[name] вытаскивает один из раздавленных деревянных брусьев и умудряется отодвинуть его, расчищая путь вперед.",
+	DIALOGUEMAGICBARRIER = "Группа натыкается на путь, закрытый магическим барьером. Однако сообразительная личность может найти простой способ преодолеть его. ",
+	DIALOGUEMAGICBARRIERSELECT = "[Испытание на мудрость] Выбрать персонажа (3 выносливости)",
+	DIALOGUEMAGICBARRIERBREAK = "Разрушить барьер (10 выносливости)",
+	DIALOGUEMAGICBARRIERPASS = "[name] использует [his] острый ум, чтобы найти место с самой слабой магической структурой и пробить барьер.",
+	DIALOGUEFALLENBRIDGE = "Путь впереди внезапно приводит к сломанному мосту через пропасть. Поиски альтернативного пути займут немало времени, однако здесь есть кусок веревки, который можно перенести для более легкого ремонта тем, кто умеет летать.",
+	DIALOGUEFALLENBRIDGESELECT = "[Испытание на силу] Выбрать персонажа (3 выносливости)",
+	DIALOGUEFALLENBRIDGEBREAK = "Искать другой путь (10 выносливости)",
+	DIALOGUEFALLENBRIDGEPASS = "[name] пролетает над пропастью, благополучно приземляясь с необходимыми инструментами, чтобы исправить путь впереди.",
+	DIALOGUEFALLENBRIDGE2 = "Путь вперед неожиданно приводит к сломанному мосту через пропасть. Поиски иного пути займут немало времени, однако мост можно укрепить с помощью дополнительных материалов...",
+	DIALOGUEFALLENBRIDGESELECT2 = "Отремонтировать мост [10 дерева]",
+	DIALOGUEFALLENBRIDGEPASS2 = "Группа отремонтировала мост с помощью имеющихся материалов и может двигаться дальше",
+	DIALOGUESMALLCRACK = "Путь вперед преграждает тяжелый механизм, управляемый с другой стороны. Разобраться с ним напрямую займет немало времени, однако рядом с ним есть небольшая трещина в прочной стене, через которую может пройти личность меньшего роста. ",
+	DIALOGUESMALLCRACKSELECT = "[Испытание на ловкость]Выбрать персонажа (3 Выносливость)",
+	DIALOGUESMALLCRACKBREAK = "Пробиться напролом (10 выносливости)",
+	DIALOGUESMALLCRACKPASS = "[name] благополучно перебирается на другую сторону двери и тянет за рычаг, открывая проход.",
+	DIALOGUEANCIENTLOCK = "Путь вперед преграждает прочная древняя дверь со сложными механическими механизмами. Пробиться через нее будет непросто, если только кто-то не сможет понять, как она работает.",
+	DIALOGUEANCIENTLOCKSELECT = "[Испытание на мудрость]Выбрать персонажа (3 выносливости)",
+	DIALOGUEANCIENTLOCKBREAK = "Прорваться (10 выносливости)",
+	DIALOGUEANCIENTLOCKPASS = "Внимательно изучив замок, [name] оказалось по силам найти простой способ заклинить и сломать его, заставив дверь открыться самостоятельно.",
+	
+	DIALOGUEENEMYCHARMAVOID = "Группа гуманоидных врагов на дальнейшем пути, кажется, довольно бдительна. Возможно, вы сможете избежать сражения с ними, если убедите их... ",
+	DIALOGUEENEMYCHARMAVOIDSELECT = "[Испытание на убеждение] Выбрать персонажа.",
+	DIALOGUEENEMYCHARMAVOIDPASS = "[name] удается уговорить группу уйти и дать вам пройти беспрепятственно. ",
+	DIALOGUEENEMYCHARMDAMAGE = "Группа врагов впереди не знает о вашем присутствии, вы можете получить преимущество, используя кого-то, чтобы отвлечь их...",
+	DIALOGUEENEMYCHARMDAMAGESELECT = "[Испытание на убеждение] Выбрать персонажа.",
+	DIALOGUEENEMYCHARMDAMAGEPASS = "Пока враги отвлекаются на [name], остальная часть группы успевает атаковать их сзади, нанося значительный урон их строю. ",
+	DIALOGUEENEMYSTRSCARE = "Группа врагов впереди, кажется, колеблется, чувствуя ваше приближение. Возможно, вам удастся отпугнуть их и избежать боя, продемонстрировав свою силу...",
+	DIALOGUEENEMYSTRSCARESELECT = "[Испытание на силу] Выбрать персонажа",
+	DIALOGUEENEMYSTRSCAREPASS = "[name] отпугивает врагов с пути, позволяя остальной группе пройти свободно.",
+	DIALOGUEENEMYDEXSNEAK = "Группа врагов впереди не подозревает о вашем наличии. Наверняка мимо них возможно проскользнуть.",
+	DIALOGUEENEMYDEXSNEAKSELECT = "[Испытание на ловкость] Выбрать персонажа.",
+	DIALOGUEENEMYDEXSNEAKPASS = "[name] удается перебраться на другую сторону прохода и отвлечь группу врагов, которые затем уходят в другом направлении.",
+	DIALOGUEEVENTENEMYDISTRACT = "Группа врагов впереди выглядит довольно немотивированной сражаться. Возможно, выдача им одного из ваших пленников убедит их пропустить вас.",
+	DIALOGUEEVENTENEMYDISTRACTSELECT = "Выбрать пленника.",
+	DIALOGUEEVENTENEMYDISTRACTPASS = "Забрав одного из ваших пленников, группа уходит, оставляя вам свой пост.",
+	
+		
 
 	DIALOGUEGROVEWOOD = "Вы находите тайник с заготовленной древесиной, вероятно, оставленный какими-то дровосеками.",
 	DIALOGUEGROVELEATHER = "Вы находите тайник со спрятанной кожей, вероятно, оставленный браконьерами.",
 	DIALOGUECRYPTBONES = "Вы находите груду прекрасно сохранившихся костей.",
 
 	DIALOGUEEVENTDUNGEONPRISONER = "Вы наткнулись на тюремную комнату, в которой содержится связанный [race] [male], вероятно, удерживаемый бандитами для выкупа или издевательств. При вашем приближении [he] говорит вам, что его зовут [name], и умоляет вас о помощи",
-	DIALOGUETAKESLAVE = "*Захватить и поработить*",
+	DIALOGUETAKESLAVE = "[Испытание на силу] Захватить и поработить",
 	DIALOGUEEVENTDUNGEONPRISONERSENSLAVE = "Вы освобождаете [name] из камеры, только чтобы превратить его в своего раба. Пока [him] сопровождают обратно в ваш особняк, ваша команда продолжает путь.",
 
 	DIALOGUEEVENTDUNGEONPRISONERFREE1 = "Вы освобождаете и развязываете [name], к большому [his] облегчению . Поблагодарив вас, [he] показывает вам небольшой тайник с ресурсами рядом со своей камерой в благодарность за спасение. Объяснив [him], как выбраться, вы готовы продолжить свой путь",
 	DIALOGUEEVENTDUNGEONPRISONERFREE2 = "Вы освобождаете и развязываете [name], к большому [his] облегчению . Когда [he] благодарит вас, [he] показывает вам секретный предмет, который [he] спрятал в [his] камере в благодарность за [his] спасение. Объяснив [him], как выбраться, вы готовы продолжить свой путь",
-	DIALOGUEEVENTDUNGEONRESOURCE = """There are resources in this room. You can harvest {amount} items of {resource} later or spend {stamina_cost} stamina to get half of that amount now.""", # MISSING TRANSLATION
-
+	
+	DIALOGUEEVENTDUNGEONRESOURCE = "В этой комнате есть ресурсы. Вы можете добавить [color=yellow]{amount} единиц {resource}[/color] для сбора или потратить [color=yellow]{stamina_cost} выносливости[/color], чтобы получить половину этого количества мгновенно.",
+	
 	DIALOGUEEVENTGOBLINFRIENDLY = "Пробираясь через пещеры, вы найдете изолированную комнату. Когда вы врываетесь туда, одинокий гоблин [boy] в страхе вскакивает. \n\n- Подождите, подождите, пожалуйста, не убивайте меня! Я не хочу драться, я здесь случайно. Я никому не скажу, что видел тебя, обещаю.\n\n\nУдивленный тем, что [he] знает обычную речь и цивилизован в отличие от других, ты думаешь, что с ним делать.",
-	DIALOGUEEVENTGOBLINRECRUIT = "*Попытка вербовки*",
-	DIALOGUEEVENTGOBLINBRINGTOLEADER = "*Просьба доставить вас к лидеру*",
-	DIALOGUEEVENTGOBLINKILL = "*Убить*",
-	DIALOGUEEVENTGOBLINCAPTURE = "*Захват*",
-	DIALOGUEEVENTGOBLINLEAVE = "*Отпустить*",
+	DIALOGUEEVENTGOBLINRECRUIT = "[Испытание на убеждение] Попытка вербовки",
+	DIALOGUEEVENTGOBLINBRINGTOLEADER = "[Испытание на убеждение] Просьба доставить вас к лидеру",
+	DIALOGUEEVENTGOBLINKILL = "Убить",
+	DIALOGUEEVENTGOBLINCAPTURE = "[Испытание на силу] Захватить",
+	DIALOGUEEVENTGOBLINLEAVE = "Отпустить",
 	DIALOGUEEVENTGOBLINRECRUITSUCCESS = "[center]{color=green|Успех!}[/center]\n- А?... Ты хочешь, чтобы я работал на тебя? Ну, я не могу отказать такому большому и сильному человеку, как ты, не так ли? Я имею в виду, я с радостью приму ваше предложение! В конце концов, это место - большая свалка.\n\nПосле того, как [name] получил инструкции, [he] быстро исчез на пути к вашему особняку.",
 	DIALOGUEEVENTGOBLINRECRUITFAILURE = "[center]{color=red|Провал!}[/center]\n- Эх?... Я... не думаю, что это хорошая идея, мы не очень хорошо относимся к бетрейлам, знаете ли. Теперь, если вы меня извините...\n\nБез вашей реакции, гоблин [boy] исчезает из виду в одном из туннелей, который вы не заметили при входе.",
-	DIALOGUEEVENTGOBLINBRINGTOLEADERSUCCESS = "[center]{color=green|Успех!}[/center]\n- Ты серьезно?! Думаю, кто-то вроде тебя может это сделать... Ладно, хорошо, я покажу тебе дорогу, но после этого ты меня и близко не увидишь. Ты меня понял? \n\nПосле нескольких минут пробирания через пещерный лабиринт, вы оказываетесь перед входом в комнату, которая, похоже, ведет к вождю местных гоблинов. Прежде чем вы успеваете заметить, гоблин уже исчезает из виду.",
+	DIALOGUEEVENTGOBLINBRINGTOLEADERSUCCESS = "[center]{color=green|Успех!}[/center]\n- Ты серьезно?! Думаю, у кого-то вроде тебя может это получиться... Ладно, хорошо, я покажу тебе дорогу, но после этого ты меня и близко не увидишь. Ты меня понял? \n\nПо вашей договоренности гоблин пересказывает вам схему подземелья, которую вы тщательно записываете. Вы не успеваете заметить, как гоблин уже исчез из виду.",
 	DIALOGUEEVENTGOBLINBRINGTOLEADERFAILURE = "[center]{color=red|Провал!}[/center]\n- Это... Это неразумно, знаешь ли, я еще не сошел с ума. Если ты так хочешь умереть, не втягивай меня. \n\nПока [he] говорил, [he] переместился на позицию и выскочил из комнаты, прежде чем вы успели среагировать.",
 	DIALOGUEEVENTGOBLINCAPTUREREPLY = "Вы решили, что цивилизованный гоблин может стать полезным инструментом или принести прибыль на рынке. Не давая ему второго шанса, вы захватываете его.\n\n- Эй, что за {^fuck:hell} ты {^doing:thinking}?! Отпустите меня!.. Вы ублюдки!",
 	DIALOGUEEVENTGOBLINKILLREPLY = "Вы не можете рисковать, чтобы подозрительный гоблин ушел, не говоря уже о том, чтобы предупредить других. Прежде чем [he] успеет отреагировать, ваша группа убивает [him]. К сожалению, больше ничего интересного здесь нет",
 	DIALOGUEEVENTGOBLINLEAVEREPLY = "Нет необходимости избавляться от дружелюбного гоблина даже в таком месте, как это. Вы позволяете [him] выйти на свободу, что приносит облегчение на его лице.\n\n- Отлично! Я сам дальше справлюсь. Удачи вам, ребята!",
 	DIALOGUEEVENTFAIRYFRIENDLY = "Когда вы пробираетесь через лес, одинокая Фея прыгает перед вами. [Похоже, ей любопытно встретить кого-то, кого он никогда раньше не видел. \n\n- Эй, что ты здесь делаешь? Я тебя никогда раньше не видела... \n\n[He], кажется, готов остаться с вами от скуки или любопытства, хотя бы для того, чтобы поболтать.",
-	DIALOGUEEVENTFAIRYRECRUIT = "*Попытка вербовки*",
-	DIALOGUEEVENTFAIRYCAPTURE = "*Захват*",
-	DIALOGUEEVENTFAIRYASKHEAL = "*Попросить исцеления*",
-	DIALOGUEEVENTFAIRYLEAVE = "*Уйти*",
+	DIALOGUEEVENTFAIRYRECRUIT = "[Испытание на убеждение] Попытка вербовки",
+	DIALOGUEEVENTFAIRYCAPTURE = "[Испытание на ловкость] Захватить",
+	DIALOGUEEVENTFAIRYASKHEAL = "Попросить исцеления",
+	DIALOGUEEVENTFAIRYLEAVE = "Уйти",
 	DIALOGUEEVENTFAIRYRECRUITSUCCESS = "[center]{color=green|Успех!}[/center]\n- Приключенцы?... Звучит забавно. Хорошо, ты мне нравишься, я хочу увидеть мир!\n\n\n[scncharname] решает присоединиться к твоей команде.",
 	DIALOGUEEVENTFAIRYRECRUITFAILURE = "[center]{color=red|Провал!}[/center]\n- Простите, я не понимаю. Я думаю, мне лучше уйти, пока!\n\nК сожалению, [name] не смог убедить фею присоединиться к вам. Возможно, [name] нужно больше практики... Фея быстро исчезла в лесу",
 	DIALOGUEEVENTFAIRYASKHEALREPLY = "- Оу, ты ранен? Конечно, я помогу вам!\n\n[His] магия залечивает некоторые раны вашей группы и [he] счастливо уходит, получив вашу благодарность.\n\n Вся группа восстанавливает 35% HP.",
@@ -3233,16 +3247,18 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	DIALOGUETUTHEIR = "*Обучение наследника* (5.000 золотых)",
 	
 	SPRINGTEXT = "Вы нашли небольшую поляну с родником. Самое время сделать перерыв и отдохнуть",
-	SPRING_HEAL = "Ваша группа отдыхает и восстанавливает немного здоровья.",
-	SPRING_STAMINA = """Your group rests and recover their energy.""", # MISSING TRANSLATION
-	SPRING_HEAL_OPTION = "*Отдых*",
-	SPRING_STAMINA_OPTION = """Take a rest""", # MISSING TRANSLATION
+	SPRING_HEAL = "Ваша группа не спеша залечивает раны, полученные в боях.",
+	SPRING_STAMINA = "Ваша группа отдыхает и восстанавливает силы.",
+	SPRING_HEAL_OPTION = "Залечить раны",
+	SPRING_STAMINA_OPTION = "Отдохнуть",
 	SPRING_LOOT_OPTION = "*Осмотреться*",
-	FOUNTAINTEXT = """You find a small fountain still brimming with clear water. You could use it to ease group's exhaustion, but it seems there's also some raw mana available for extraction...""", # MISSING TRANSLATION
-	FOUNTAINSTAMINAOPTION = """Take a rest""", # MISSING TRANSLATION
-	FOUNTAINMANAOPTION = """Harness magic""", # MISSING TRANSLATION
-	FOUNTAIN_MANA = """The group manages to extract mana from the fountain and restore their powers.""", # MISSING TRANSLATION
-	FOUNTAIN_STAMINA = """The group takes a rest in the room and recover their energy.""", # MISSING TRANSLATION
+	FOUNTAINTEXT = "Вы находите небольшой фонтан, все еще наполненный чистой водой. Вы могли бы использовать его, чтобы облегчить усталость группы, но, похоже, здесь также есть немного сырой маны, которую можно извлечь...",
+	FOUNTAINSTAMINAOPTION = "Отдохнуть",
+	FOUNTAINMANAOPTION = "Извлечь магию",
+	FOUNTAIN_MANA = "Группе удается извлечь ману из фонтана и восстановить свои силы.",
+	FOUNTAIN_STAMINA = "Группа отдыхает в комнате и восстанавливает силы.",
+	
+	
 	DIALOGUE_SPRING_LOOT = "Осмотревшись, вы находите небольшой зарытый тайник. Вы решили забрать его содержимое себе",
 	DIALOGUE_SPRING_NO_LOOT = "Вы обыскали все вокруг, но не смогли найти ничего полезного",
 	TRIBALELVES = "Вы обнаружили, что окружены группой местных племенных эльфов. Похоже, они считают вас нарушителем на своей территории и готовятся к нападению...",
@@ -3261,26 +3277,32 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 
 	RETURNTOMANSIONBUTTON = "Отправить персонажа обратно в поместье",
 	RETURNCHARACTERCONFIRM = "Приказать [name] немедленно вернуться в поместье?",
-	ITEMMAP_BANDIT_DEN = """Map: Bandit Den""", # MISSING TRANSLATION
-	ITEMMAP_BANDIT_FORT = """Map: Bandit Fort""", # MISSING TRANSLATION
-	ITEMMAP_GROVE = """Map: Grove""", # MISSING TRANSLATION
-	ITEMMAP_GOBLIN_CAVE = """Map: Goblin Cave""", # MISSING TRANSLATION
-	ITEMMAP_UNDEAD_CRYPT = """Map: Crypt""", # MISSING TRANSLATION
-	ITEMMAP_ANCIENT_JUNGLES = """Map: ncient Jungles""", # MISSING TRANSLATION
-	ITEMMAP_FIRE_DEPTHS = """Map: Fire Depths""", # MISSING TRANSLATION
-	ITEMMAP_BANDIT_DENDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
-	ITEMMAP_BANDIT_FORTDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
-	ITEMMAP_GROVEDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
-	ITEMMAP_GOBLIN_CAVEDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
-	ITEMMAP_UNDEAD_CRYPTDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
-	ITEMMAP_ANCIENT_JUNGLESDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
-	ITEMMAP_FIRE_DEPTHSDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	
+
+	ITEMMAP_BANDIT_DEN = "Карта: Бандитское логово",
+	ITEMMAP_BANDIT_FORT = "Карта: Разбойничий форт",
+	ITEMMAP_GROVE = "Карта: Роща",
+	ITEMMAP_GOBLIN_CAVE = "Карта: Пещера гоблинов",
+	ITEMMAP_UNDEAD_CRYPT = "Карта: Склеп",
+	ITEMMAP_ANCIENT_JUNGLE = "Карта: Древние джунгли",
+	ITEMMAP_FIRE_DEPTHS = "Карта: Огненные глубины",
+	ITEMMAP_REBEL_REDOUBT = """Map: Rebel Redoubt""", # MISSING TRANSLATION
+	ITEMMAP_BANDIT_DENDESCRIPT = "Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.",
+	ITEMMAP_BANDIT_FORTDESCRIPT = "Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.",
+	ITEMMAP_GROVEDESCRIPT = "Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.",
+	ITEMMAP_GOBLIN_CAVEDESCRIPT = "Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.",
+	ITEMMAP_UNDEAD_CRYPTDESCRIPT = "Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.",
+	ITEMMAP_ANCIENT_JUNGLEDESCRIPT = "Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.",
+	ITEMMAP_FIRE_DEPTHSDESCRIPT = "Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.",
+	ITEMMAP_REBEL_REDOUBTDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_REBEL_REDOUBTSDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
 
 
 	LOCATIONNAMESKIRMISH_BANDIT_CAMP = "Лагерь разбойников",
 	LOCATIONNAMESKIRMISH_FOREST_WOLVES = "Лес",
 	LOCATIONNAMEDUNGEON_BANDIT_DEN = "Логово разбойников",
 	LOCATIONNAMEDUNGEON_BANDIT_FORT = "Бандитский форт",
+	LOCATIONNAMEDUNGEON_REBEL_REDOUBT = """Rebel Redoubt""", # MISSING TRANSLATION
 	LOCATIONNAMEDUNGEON_GROVE = "Роща",
 	LOCATIONNAMEDUNGEON_GOBLIN_CAVE = "Пещера гоблинов",
 	LOCATIONNAMEDUNGEON_UNDEAD_CRYPT = "Склеп",
@@ -3500,8 +3522,9 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 
 	WORKRULEPERSONALITY_LOCK = "Заблокировать личность",
 	WORKRULEPERSONALITY_LOCKDESCRIPT = "[name] больше не будет изменять [his] личность благодаря социальным действиям.",
-	WORKRULEMASTURBATION = """Forbid Masturbation""", # MISSING TRANSLATION
-	WORKRULEMASTURBATIONDESCRIPT = """[name] will not be allowed to relieve [him]self, leading to increased stress but higher libido. Obedience Drain +2, Lust Growth +15%.""", # MISSING TRANSLATION
+
+	WORKRULEMASTURBATION = "Запретить мастурбацию",
+	WORKRULEMASTURBATIONDESCRIPT = "[name] не будет иметь возможности разрядить себя, что приведет к повышенному стрессу, но увеличит либидо. Утечка повиновения +2, рост похоти +15%",
 
 	NEWGAMESETTINGINFO = "Эти настройки могут быть изменены в Опциях в любой момент в будущем",
 
@@ -3551,10 +3574,12 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	STARTINGDIALOGUE3REPLY3 = "Что такое гильдии?",
 	STARTINGDIALOGUE3REPLY4 = "Я справлюсь.",
 	STARTINGDIALOGUE4_1 = "- Тогда я вернусь через две недели.",
-	STARTUPGRADEBONUS = """You go for a short trip through the mansion and one of the previously unnoticed rooms on the first floor catches your sight. Inside of it you find...""", # MISSING TRANSLATION
-	STARTUPGRADEBONUS1 = """Forge""", # MISSING TRANSLATION
-	STARTUPGRADEBONUS2 = """Tailor Worksop""", # MISSING TRANSLATION
-	STARTUPGRADEBONUS3 = """Alchemy Room""", # MISSING TRANSLATION
+	STARTUPGRADEBONUS = "Вы совершаете небольшой осмотр особняка, и в поле вашего зрения попадает одна из ранее незамеченных комнат на втором этаже. Внутри нее вы обнаруживаете...",
+	STARTUPGRADEBONUS1 = "Кузницу",
+	STARTUPGRADEBONUS2 = "Комнату портного",
+	STARTUPGRADEBONUS3 = "Алхимическую комнату",
+	
+	
 	FIGHTERSINTRODUCTION1 = "Крупный мужчина в тяжелых доспехах окинул вас незаинтересованным взглядом. \n\n- В чем дело? Если вы ищете работу, вам придется сначала зарегистрироваться как боец. Я не занимаюсь новобранцами.",
 	FIGHTERSINTRODUCTION1REPLY1 = "Вы ошибаетесь, я не новобранец.",
 	FIGHTERSINTRODUCTION1REPLY2 = "Я новый землевладелец, проявите уважение.",
@@ -3662,7 +3687,7 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 
 
 
-	DIALOGUEINTRODUCTIONLETTER = "Рано утром ваш особняк посещает гонец, который передает вам официальное запечатанное письмо. После беглого изучения вы выясняете, что оно отправлено Гильдией Слуг. \n\n 'Уважаемый [name], ваша недавняя деятельность заинтересовала нас, и мы хотели бы пригласить вас на личную встречу.' \n\n\nНесмотря на довольно короткое послание, само письмо выглядит довольно шикарно и использует высококачественную бумагу и чернила.",
+	DIALOGUEINTRODUCTIONLETTER = "Рано утром ваш особняк посещает гонец, который передает вам официальное запечатанное письмо. После беглого изучения вы выясняете, что оно отправлено Гильдией Слуг. \n\n {color=yellow|'Уважаемый [name], ваша недавняя деятельность заинтересовала нас, и мы хотели бы пригласить вас на личную встречу.}' \n\n\nНесмотря на довольно короткое послание, само письмо выглядит довольно богато, выделяясь высококачественной бумагой и чернилами.",
 
 	ELECTIONSTART1 = "- [Sir] [surname], замечательно, что вы пришли! Вам, наверное, интересно, почему мы вас пригласили? Не хочу показаться подозрительной, но мы знаем о вашем денежном положении и отношениях с банком. \n\n- Это ситуация, в которой я никогда не хотел бы оказаться. По правде говоря, почти гарантированно, что вы не сможете вовремя расплатиться с ними. Но я вызвала вас не совсем для этого. Скажите, вы знаете о должности мэра?",
 	ELECTIONSTARTREPLY1_1 = "Не особо.",
@@ -3756,7 +3781,7 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	LICHAIRETALK3 = "- Но у меня ничего нет с собой!... Если только вы не имеете в виду... Но это было бы неприлично. \n\n Эйра сильно покраснела и опустила глаза.",
 	LICHAIRETALK3REPLY1 = "Твоя компания доставит мне огромное удовольствие {проверка секс-фактора}.",
 	LICHAIRETALK3REPLY2 = "Неважно, можешь идти.",
-	LICHAIRETALK4 = """Девушка-эльф нервно накручивает прядь оранжевых волос на палец. 
+	LICHAIRETALK4 = """{color=green|Успех}\n\nДевушка-эльф нервно накручивает прядь оранжевых волос на палец. 
 
 {color=yellow|Эйра: - Может, найдем хотя бы более удобное место, чем эта... пыльная гробница?}
 
@@ -3883,7 +3908,7 @@ LICHAIRETALK6_5 = """Борьба Эйры постепенно ослабева
 	MAGESELECTION2_ANY = "- Ладно, думаю, почему бы и нет. Но сначала я хочу, чтобы ты кое-что сделал для меня. Я хочу, чтобы ты навестил мою сестру, Ксари, и вернул книги, которые она украла. Она живет недалеко от Алирона. ",
 	MAGESELECTION2REPLY1 = "Итак, должен ли я заставить ее силой?",
 	MAGESELECTION2REPLY2 = "Почему твоя сестра не живет здесь?",
-	MAGESELECTION3_1 = "- Нет... Может быть. Делай, что хочешь, наверное... Вообще-то нет, не причиняйте ей вреда.",
+	MAGESELECTION3_1 = "- Нет... Может быть. Делай, что хочешь, наверное... Вообще-то нет, не причиняй ей вреда. ",
 	MAGESELECTION3_2 = "- Она ненавидит толпы и не любит наземные города, я думаю. Не могу сказать, что я сильно отличаюсь, просто более выносливая. В Гильдии магов все не так уж плохо.",
 	MAGESELECTION3_ANY = "Родственники всегда все усложняют. Я дам вам пригласительное письмо со списком вещей, которые нужно получить от нее.",
 	XARIENCOUNTER1 = "Прежде чем вы сможете заглянуть внутрь хижины, которая больше похожа на пещеру, к вам подходит молодая, взволнованная темная эльфийка. \n\n- Гость! Ко мне уже давно не заходили разбойники. Хочешь сгореть в огне или быть съеденным троллями?",
@@ -3984,7 +4009,7 @@ LICHAIRETALK6_5 = """Борьба Эйры постепенно ослабева
 	GINNYVISITREPLY3 = "Не интересуюсь ничем, что бы вы ни продавали.",
 
 	GINNYVISIT2_1 = "- Ах, не буду отнимать ваше время, просто хотела сказать, что мы открыты для любых новых посетителей. Селена хочет помочь любому нуждающемуся, а я надеюсь построить стабильное, доброе сообщество. Я буду рада, если вы решите узнать больше и заглянете к нам когда-нибудь. А теперь я больше не буду отнимать у вас время. До свидания!",
-	GINNYVISIT2_2 = "- Простите, но я не могу остаться надолго. К тому же мне говорили не доверять владельцам земель, так как они часто похищают и обращают в рабство незнакомцев... То есть я не думаю, что вы так поступаете, но все же. В любом случае, если вы хотите узнать больше, заходите к нам, я всегда рада новым посетителям. До свидания!",
+	GINNYVISIT2_2 = "- Простите, но я не могу остаться надолго. И к тому же мне говорили не доверять здешним землевладельцам, так как они часто похищают и обращают в рабство незнакомцев... То есть я не думаю, что вы так поступаете, но все же. В любом случае, если вы хотите узнать больше, заходите к нам, я всегда рада новым посетителям. До свидания!",
 	GINNYVISIT2_3 = "- Извините, что отвлекаю вас! Я просто хотела сказать, что раз вы новенький, то можете посетить нашу церковь, если вам интересно... Извините, до свидания.",
 
 	ALIRONCHURCHFIRSTCOME = "Вы входите в небольшую местную церковь. Здание кажется не очень просторным, но довольно чистым и уютным. Когда ваш вход замечен, Джинни спешит поприветствовать вас.\n\n- Добро пожаловать, [Sir]. Я рада, что вы все-таки пришли, с помощью Селены. Вы ищете совета или, может быть, хотите вступить к нам?",
@@ -4148,12 +4173,12 @@ ALIRONELECTIONSFINISH_QUESTION2 = "Мне показалось, что гиль�
 
 	ALIRONELECTIONSFINISH_ANSWER3 = """- Вы полны энтузиазма, не так ли? Тем лучше, но не действуйте преждевременно.
 
-	- В любом случае, возьмите это постановление инквизиции. Это докажет, что ваше расследование одобрено гильдией, и вы сможете расспросить всех.
+- В любом случае, возьми это постановление инквизиции. Это докажет, что ваше расследование одобрено гильдией, и вы сможете расспросить всех.
 Я предлагаю начать с гильдии магов. Если они еще не догадались, они должны быть в состоянии определить, как наша принцесса попала сюда.""",
 
 	ALIRONELECTIONSFINISH_ANSWER4 = """- Хах, вот это дух. Никому не доверяй. Вот почему я выбрала тебя. Ну, раз вы это поняли, а раз так, то нам не удастся вас обмануть, верно?
 
-- В любом случае, возьмите эту инквизиционную грамоту. Это докажет, что ваше расследование санкционировано гильдией, и вы сможете расспросить всех.
+- В любом случае, возьми это постановление инквизиции. Это докажет, что ваше расследование санкционировано гильдией, и вы сможете расспросить всех.
 Я предлагаю начать с гильдии магов. Если они еще не догадались, они должны быть в состоянии определить, как наша принцесса попала внутрь.""",
 
 	ALIRONELECTIONSFINISH_ANSWER5 = """- Да ладно. Тот, кто претендует на должность мэра, должен быть более уверенным. Не волнуйся, если что-то случится, я тебя прикрою.
@@ -4170,11 +4195,11 @@ ALIRONELECTIONSFINISH_QUESTION2 = "Мне показалось, что гиль�
 	MAGESAFTERELLECTION1_QUESTION1 = "Просто зашел сказать \"Привет\".",
 	MAGESAFTERELLECTION1_QUESTION2 = "Я выясняю, что здесь происходит",
 
-	MAGESAFTERELLECTION1_ANSWER1 = """- Да, точно, черта с два. Тебя послали Истребители? Или, что более вероятно, это идея Амелии, так?
+	MAGESAFTERELLECTION1_ANSWER1 = """- Да, точно, черта с два. Тебя послали Бойцы? Или, что более вероятно, это идея Амелии, так?
 
 - Твою мать. Они не могут прикончить одно отродье, даже не понимают этого, пока не становится слишком поздно, а теперь мы во всем виноваты. Как будто меня это волнует. Так ты хочешь узнать, что произошло на самом деле?""",
 
-	MAGESAFTERELLECTION1_ANSWER2 = """- Черт возьми . Они не могут прикончить одно отродье, даже не понимают этого, пока не становится слишком поздно, и теперь мы во всем виноваты. Как будто меня это волнует. Так ты хочешь узнать, что на самом деле произошло?""",
+	MAGESAFTERELLECTION1_ANSWER2 = """- Черт возьми. Они не могут прикончить одно отродье, даже не понимают этого, пока не становится слишком поздно, и теперь мы во всем виноваты. Как будто меня это волнует. Так ты хочешь узнать, что произошло на самом деле?""",
 
 	MAGESAFTERELLECTION1_QUESTION3 = "Надеялся, что ты мне расскажешь",
 	MAGESAFTERELLECTION1_QUESTION4 = "Думаю, ты тоже не знаешь",
@@ -4185,11 +4210,11 @@ ALIRONELECTIONSFINISH_QUESTION2 = "Мне показалось, что гиль�
 - Если перейти к делу, то доступ разрешен лишь нескольким членам гильдии, и один из них пропал в день происшествия.
 Его зовут Фред. Вы можете найти его и подтвердить, отключил ли он устройство по собственной воле. Если он действительно перешел на сторону повстанцев или Империи, будет лучше, если вы немедленно его уничтожите.
 
-- Я дам вам его домашний адрес, возможно, там вы найдете какие-нибудь подсказки о его местонахождении.""",
+- Я дам вам его домашний адрес, возможно, там ты найдешь какие-нибудь подсказки о его местонахождении.""",
 
 	MAGESAFTERELLECTION1_QUESTION6 = "Что это за источник энергии, который был украден?",
-	MAGESAFTERELLECTION1_QUESTION7 = "Вы подозреваете, что он мертв?",
-	MAGESAFTERELLECTION1_QUESTION8 = "Я дам вам знать, как только что-то узнаю.",
+	MAGESAFTERELLECTION1_QUESTION7 = "Подозреваешь, что он мертв?",
+	MAGESAFTERELLECTION1_QUESTION8 = "Я дам знать, как только что-то узнаю.",
 	MAGESAFTERELLECTION1_ANSWER4 = """- Это артефакт, меч бывшего Короля Николаса. Формально он принадлежал королевской семье, но после революции гильдии решили использовать его для всеобщего блага.""",
 	MAGESAFTERELLECTION1_ANSWER5 = """- Я бы на его месте предпочла быть мертвой. Иначе смерть, которую Дункан с радостью пропишет, будет медленной. Он не относится к предательству легкомысленно""",
 	MAGESAFTERELLECTION1_ANSWER6 = """- Найди его, или то, что от него осталось. Если он еще жив, я не ожидаю, что он будет рад вас видеть, так что не стесняйтесь расправиться с ним, если понадобится... или даже если нет.""",
@@ -5213,7 +5238,7 @@ AFTER_MINES_CONVOY_15 = """В нескольких сотнях футов от 
 Дункан: - [name], теперь ты можешь вернуться в Алирон. Мы спланируем наши дальнейшие действия,}""",
 
 
-	FINAL_OPERATON_START = "- Здравствуйте [name]. Я хочу попросить тебя о помощи в деле, которое должно остаться между нами",
+	FINAL_OPERATON_START = "- Здравствуй [name]. Я хочу попросить тебя о помощи в деле, которое должно остаться между нами",
 	FINAL_OPERATON_START_OPTION_1 = "Буду рад помочь.",
 	FINAL_OPERATON_START_OPTION_2 = "Зависит от того, что это.",
 
@@ -6596,9 +6621,9 @@ AFTER_ELECTION_PRINCESS_MINDBREAK_7 = """Вы чувствуете, как де�
 	MATERIALDIVINE_SYMBOLDESCRIPT = "Небольшой кусок металла в форме монеты, который может служить средством для некоторых искусств. Несмотря на свой простой вид, он демонстрирует значительное мастерство",
 	MATERIALBLESSED_DIVINE_SYMBOL = "Благословенный божественный символ",
 	MATERIALBLESSED_DIVINE_SYMBOLDESCRIPT = "Небольшой кусок металла в форме монеты, излучающий слабый свет",
-	ITEMZEPHYRA_UNDERWEAR = """Ripples of Pristine Waters""", # MISSING TRANSLATION
-	ITEMZEPHYRA_UNDERWEARDESCRIPT = """Excessively rare item, a one of a kind, or at least a one you've obtained.""", # MISSING TRANSLATION
-
+	ITEMZEPHYRA_UNDERWEAR= "Плеск девственных вод",
+	ITEMZEPHYRA_UNDERWEARDESCRIPT = "Чрезвычайно редкий предмет, единственный в своем роде, ну, или один из добытых вами.",
+	
 	UNIQUECLASS = "Не может быть получен обычным путем",
 
 	ITEMANASTASIA_BRACELET = "Браслет Анастасии",
@@ -7863,41 +7888,43 @@ GRYPHON_ANA_SEX_9 = """После нескольких толчков вы вы�
 	ZEPHYRA_SWORD_2_OPTION_1 = "Я сомневаюсь, что они просто отдадут его нам.",
 	ZEPHYRA_SWORD_2_OPTION_2 = "Что будет после того, как мы соберем все артефакты?",
 	ZEPHYRA_SWORD_3_1 = """- Я тоже. Ну, вы же мэр, я верю, что у вас будет возможность, так или иначе, в конце концов. А пока я останусь рядом с вами, если вы не против.""",
-	ZEPHYRA_SWORD_3_2 = """- Без понятия. Простите, но я могу лишь смутно истолковать общую идею того, что от нас ожидается. Надеюсь, это не слишком разочарует вас? Пока мы не достигнем большего прогресса, я надеюсь оставаться рядом с вами""",
-	ZEPHYRA_SWORD_3_2_1 = """[Charm] Are you hiding something from me?""", # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_2_2 = """[Wits] If you want my help, I want to know more about what we are doing.""", # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_2_3 = """Very well, I'll help you.""", # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_2_4 = """I'll get to it when I have time.""", # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_2_FINISH = """Zephyra nods with her usual smile on her face before leaving you to yourself.""", # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_3_1 = """{color=green|Success}
 
-— I wish I could tell you more, but I barely get anything other than my personal hunch about what's going on. All I'm certain of is that there's an ominous plot being staged beyond our sight, the one threatening everyone. I know it's a weak premise, but I can't do nothing on it. 
+	ZEPHYRA_SWORD_3_2 = "- Понятия не имею. Прости, но я могу лишь смутно представить себе общую идею того, что нам предстоит сделать. Надеюсь, это не слишком тебя разочарует? Пока мы не достигнем большего прогресса, я надеюсь оставаться рядом с тобой",
+	ZEPHYRA_SWORD_3_2_1 = "[Очарование] Ты что-то скрываешь от меня?",
+	ZEPHYRA_SWORD_3_2_2 = "[Мудрость] Если тебе нужна моя помощь, я хочу знать больше о том, что мы делаем.",
+	ZEPHYRA_SWORD_3_2_3 = "Так и быть, я помогу тебе",
+	ZEPHYRA_SWORD_3_2_4 = "Я займусь этим, когда у меня будет время",
+	ZEPHYRA_SWORD_3_2_FINISH = "Зефира кивает со своей обычной улыбкой на лице, оставляя вас наедине с собой",
+	ZEPHYRA_SWORD_3_3_1 = """{color=green|Успех}
 
-— And if you want to know why I think my own actions are so important, let's say I'm not just some random girl of unusual descendancy who got granted a god's power and guidance. Well, after all, nothing in this world is truly accidental, don't you think?""", # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_3_1_OPTION_1 = """Many things in our lives are purely random.""", # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_3_1_OPTION_2 = """I can't deny the certainty of some seemingly arbitrary actions.""", # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_3_1_1 = """— Don't be harebrained, [name]. Not a single action taken can be replayed after it is unveiled, there's only single chance for everything what happened was certain to happen. The fate is the truth we live by. And this fate is guided by something far greater than your or mine life.""", # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_3_1_1_OPTION1 = """And if this happens to lead you to your death?""", # MISSING TRANSLATION
+- Хотелось бы рассказать тебе больше, но я почти ничего не понимаю, кроме своих личных догадок о происходящем. Все, в чем я уверена, - это то, что за пределами нашего поля зрения разворачивается зловещий заговор, угрожающий всем. Я знаю, что это слабая предпосылка, но я не могу ничего с этим поделать. 
+
+- И если ты хочешь знать, почему я считаю свои действия такими важными, давайте скажем, что я не просто какая-то случайная девушка необычного происхождения, получившая от бога силу и руководство. В конце концов, ничто в этом мире не бывает случайным, не так ли?""",
+	ZEPHYRA_SWORD_3_3_1_OPTION_1 = "Многие вещи в нашей жизни зависят от случая",
+	ZEPHYRA_SWORD_3_3_1_OPTION_2 = "Я не могу отрицать определенность некоторых кажущихся случайными действий",
+	ZEPHYRA_SWORD_3_3_1_1 = "- Не будь фантазируй, [name]. Ни одно действие не может быть переиграно после того, как оно совершено, есть только один шанс на то, что все, что произошло, должно было произойти. Судьба - это истина, по которой мы живем. И этой судьбой руководит нечто гораздо большее, чем ваша или моя жизнь",
+	ZEPHYRA_SWORD_3_3_1_1_OPTION1 = "А если это приведет вас к смерти?",
 	ZEPHYRA_SWORD_3_3_1_1_OPTION2 = """Enough of this talk.""", # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_3_1_1_1 = """— In this case I'll be very sad. Because of my death. But also because it would indicate a severe disaster for the rest of the world. """, # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_3_1_2 = """— So we are like-minded. That's a relief to know. """, # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_3_2 = """{color=red|Failure}
+	ZEPHYRA_SWORD_3_3_1_1_1_OPTION2 = "Хватит этих разговоров",
+	ZEPHYRA_SWORD_3_3_1_1_1 = "- В этом случае мне будет очень грустно. Из-за моей смерти. Но также и потому, что это будет означать серьезную катастрофу для всего остального мира. ",
+	ZEPHYRA_SWORD_3_3_1_2 = "- Значит, мы единомышленники. Это радует. ",
+	ZEPHYRA_SWORD_3_3_2 = """{color=red|Провал}
 
-	Zephyra looks around with a troubled expression of someone having to answer a childish questions rather than someone being interrogated.
+	Зефира оглядывается по сторонам с обеспокоенным выражением лица, как у человека, вынужденного отвечать на детские вопросы, а не у того, кого допрашивают.
 
-	— *Sigh* Look, if that's still not enough for to convince you, how about I dirty bribe you then? Tell what can I get you.""", # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_3_2_OPTION_1 = """You could give something valuable as a way of insurance.""", # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_3_2_OPTION_2 = """Something intimate could prove your sincerity.""", # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_3_2_OPTION_3 = """Forget about it, I'll trust you.""", # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_3_2_1 = """Hearing your mundane request, Zephyra reaches her pocket and produces a sizable pouch of gold coins. She puts it before you before stepping back.
+- *вздох* Слушай, если этого все еще недостаточно, чтобы убедить тебя, как насчет того, чтобы грязно подкупить тебя? Скажи, что я могу тебе предложить?""",
+	ZEPHYRA_SWORD_3_3_2_OPTION_1 = "Ты можете дать что-нибудь ценное в качестве страховки",
+	ZEPHYRA_SWORD_3_3_2_OPTION_2 = "Что-то интимное могло бы доказать твою искренность",
+	ZEPHYRA_SWORD_3_3_2_OPTION_3 = "Забудь, я тебе верю",
+	ZEPHYRA_SWORD_3_3_2_1 = """Услышав вашу обыденную просьбу, Зефира достает из кармана внушительный мешочек с золотыми монетами. Она кладет его перед вами, а затем отступает назад.
 
-— This is about five hundred and this is all I have as my safety measure. So now I'm financially completely in your care. You wonder why? That's the extension of my trust... or stupidity. """, # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_3_2_2 = """Zephyra blushes for a bit, after which she leaves a room. After a few moments of rustling behind the door, she enters again and puts into your hand a still warm piece cloth, which appear to be her undergarment. 
+- Здесь около пяти сотен, и это все, что у меня есть для подстраховки. Так что теперь я финансово полностью на твоем попечении. Интересует, почему? Это продолжение моего доверия... или глупости. """,
+	ZEPHYRA_SWORD_3_3_2_2 = """Зефира немного краснеет, после чего выходит из комнаты. Через несколько мгновений после шороха за дверью она снова входит и вкладывает вам в руку еще теплый кусок ткани, который, судя по всему, является ее нижним бельем. 
 
-— Happy now, dear Mayor? This way both you get what you want and I could make some scandalous claims if you do something bad. Now, please excuse me, I don't want to keep around here... or anywhere, being that unprotected. 
+- Теперь ты доволен, дорогой мэр? Таким образом, и ты получишь то, что хочешь, и я смогу сделать несколько скандальных заявлений, если ты сделаете что-то плохое. А теперь, пожалуйста, извини меня, я не хочу оставаться здесь... или где-либо еще, будучи настолько незащищенной. 
 
-Zephyra leaves to her room before you get a chance to react. It seems she will take you reaction as an agreement.""", # MISSING TRANSLATION
-	ZEPHYRA_SWORD_3_4 = """- Now, have I satisfied your curiosity? What is your answer?""", # MISSING TRANSLATION
+Зефира уходит в свою комнату, прежде чем вы успеваете отреагировать. Похоже, она восприняла вашу реакцию как согласие.""",
+	ZEPHYRA_SWORD_3_4 = "- Итак, я удовлетворила твое любопытство? Каков твой ответ?",
 	PRIESTESS_SWORD_TALK_1_1 = """Записавшись на прием, вы сможете найти аудиенцию у Верховной жрицы. 
 
 - Чтобы вы знали, я принимаю вас только из-за вашего высокого статуса. Что вам нужно?""",
@@ -8358,10 +8385,10 @@ AFTER_RITUAL_GOOD_2_1_2 = """{color=aqua|Савра: - Нет, все в пор�
 	WHITE_STAG_ENCOUNTER_5_OPTION_3 = "Это не твое дело, демон.",
 	WHITE_STAG_ENCOUNTER_6_1 = """ - Нелепо. Как Фрейя еще не поразила твое бренное тело?
 
-Одно твое присутствие оскверняет эти земли, и все следы этого должны быть уничтожены. Тогда мы снова сможем вернуться к нашему противостоянию.""",
+- Одно твое присутствие оскверняет эти земли, и все следы этого должны быть уничтожены. Тогда мы снова сможем вернуться к нашему противостоянию.""",
 	WHITE_STAG_ENCOUNTER_6_2 = """ - Помочь? Здесь нечем помочь.
 
-Само твое присутствие оскверняет эти земли, и все следы этого должны быть уничтожены. Тогда мы снова сможем вернуться к нашему противостоянию.""",
+- Одно твое присутствие оскверняет эти земли, и все следы этого должны быть уничтожены. Тогда мы снова сможем вернуться к нашему противостоянию.""",
 	WHITE_STAG_ENCOUNTER_6_3 = " - Ты смеешь называть меня Демоном? Очевидно, ты не в своем уме. Бесполезно. Я не только заберу твою жизнь, но и растопчу саму твою душу. Посмотрим, что от нее останется, когда я закончу",
 	WHITE_STAG_ENCOUNTER_6_OPTION_1 = "Я не позволю тебе убить меня.",
 	WHITE_STAG_ENCOUNTER_6_OPTION_2 = "Это ты умрешь здесь.",
@@ -8517,23 +8544,23 @@ AFTER_RITUAL_GOOD_2_1_2 = """{color=aqua|Савра: - Нет, все в пор�
 Хелевиэль соблазнительно двигается к изящной кровати, не сводя с вас глаз. Медленно, она снимает свое элегантное платье.""",
 	AFTER_TEMPLE_PRIESTESS_5_1_2 = """- Тебя радует, что ты получишь то, о чем многие мужчины могут только мечтать? Иди, возьми свою награду.
 	
-	Не желая упускать такую возможность, вы действительно получаете свою награду. Когда вы скользите по кровати, вы понимаете, насколько она мягкая, и поражаетесь, но еще больше поражаетесь, когда соприкасаетесь с ней. Ее кожа мягкая, мягкое шелковистое прикосновение возможно только для тех, кто далек от суровых трудов, которые вы переносите. 
+Не желая упускать такую возможность, вы действительно получаете свою награду. Когда вы скользите по кровати, вы понимаете, насколько она мягкая, и поражаетесь, но еще больше поражаетесь, когда соприкасаетесь с ней. Ее кожа мягкая, мягкое шелковистое прикосновение возможно только для тех, кто далек от суровых трудов, которые вы переносите. 
 	
-	Вы не спешите двигаться вверх по ней, руки скользят по ее бедрам, поддаваясь искушению, ваше лицо скользит по ее бедру, мягко касаясь кожи, а затем слегка покусывая ее. Хелевиэль отреагировала на ваши покусывания не слишком восторженно, бросив на вас взгляд, прежде чем заговорить.""",
+Вы не спешите двигаться вверх по ней, руки скользят по ее бедрам, поддаваясь искушению, ваше лицо скользит по ее бедру, мягко касаясь кожи, а затем слегка покусывая ее. Хелевиэль отреагировала на ваши покусывания не слишком восторженно, бросив на вас взгляд, прежде чем заговорить.""",
 	AFTER_TEMPLE_PRIESTESS_5_1_3 = """- Не оставляй отметин.
 
-	В ее упреке не было злости, только одно решительное замечание, показывающее, что она ожидает послушания. С этим "приказом" в голове вы все еще кусаете ее, хотя достаточно легко, чтобы она вздрогнула и снова попыталась упрекнуть, но он потерялся среди тихих стонов, когда вы нашли ее горло. Ее кожа была восхитительна, мягкая текстура с медовым ароматом. После некоторого времени, проведенного с ее шеей, вы переместились еще выше на кровать, упираясь коленом между ее бедер, и притянули ее ближе.
+В ее упреке не было злости, только одно решительное замечание, показывающее, что она ожидает послушания. С этим "приказом" в голове вы все еще кусаете ее, хотя достаточно легко, чтобы она вздрогнула и снова попыталась упрекнуть, но он потерялся среди тихих стонов, когда вы нашли ее горло. Ее кожа была восхитительна, мягкая текстура с медовым ароматом. После некоторого времени, проведенного с ее шеей, вы переместились еще выше на кровать, упираясь коленом между ее бедер, и притянули ее ближе.
 
-	Теперь вы прижимаетесь друг к другу, бедра трутся, а вы продолжаете пробовать кожу ее шеи и плеч, вознаграждаемые тем, что ее ногти оставляют следы на вашей спине и плечах, а иногда и глубокие следы от особенно удачно расположенных ласк, заставляя ее застонать. К ее чести, вы также не выполняете ее "приказ" не ставить ей отметин несколько раз, потому что она делает то же самое с вами.
+Теперь вы прижимаетесь друг к другу, бедра трутся, а вы продолжаете пробовать кожу ее шеи и плеч, вознаграждаемые тем, что ее ногти оставляют следы на вашей спине и плечах, а иногда и глубокие следы от особенно удачно расположенных ласк, заставляя ее застонать. К ее чести, вы также не выполняете ее "приказ" не ставить ей отметин несколько раз, потому что она делает то же самое с вами.
 
 - Я-я сказала!""",
 	AFTER_TEMPLE_PRIESTESS_5_1_4 = """Вы пресекаете ее протесты, захватывая ее губы своими, эльфийка дрожит, когда ваши руки скользят вверх от ее бедер к ее груди, мягкое поглаживание, а затем один палец скользит по ее соску, вскоре заставляя это внимание занять ее мысли, а не что-либо еще.
 
-	Несколько минут спустя поцелуй прерывается, вы оба задыхаетесь, ваш рот движется вниз по ее телу, исследуя и пробуя его на вкус, пока она не поднимается выше на кровать, ее колени поднимаются к вашим плечам, и вы смотрите на нее сверху. Несколько мгновений ожидания вознаграждаются мягким удовольствием, когда вы начинаете медленно скользить языком по входу эльфийки, не раздвигая пока ее лепестки, ваш язык лишь обводит края ее гладкой женственности.
+Несколько минут спустя поцелуй прерывается, вы оба задыхаетесь, ваш рот движется вниз по ее телу, исследуя и пробуя его на вкус, пока она не поднимается выше на кровать, ее колени поднимаются к вашим плечам, и вы смотрите на нее сверху. Несколько мгновений ожидания вознаграждаются мягким удовольствием, когда вы начинаете медленно скользить языком по входу эльфийки, не раздвигая пока ее лепестки, ваш язык лишь обводит края ее гладкой женственности.
 
-	Хелевиэль, со своей стороны, быстро пришла в себя, ее лицо все еще раскраснелось, она смотрела на вас в задумчивости; о чем она думала, вы никогда не узнаете, но когда ваш язык проскользнул между ее губами и нашел ее чувствительный клитор, звуки и взгляды, которые она издавала, были чистым удовольствием. Несколько мгновений дегустации вскоре перешли в ласкание ее внутренней ножки, за которым последовало мягкое покусывание, после чего вы продолжили собирать свою награду.
+Хелевиэль, со своей стороны, быстро пришла в себя, ее лицо все еще раскраснелось, она смотрела на вас в задумчивости; о чем она думала, вы никогда не узнаете, но когда ваш язык проскользнул между ее губами и нашел ее чувствительный клитор, звуки и взгляды, которые она издавала, были чистым удовольствием. Несколько мгновений дегустации вскоре перешли в ласкание ее внутренней ножки, за которым последовало мягкое покусывание, после чего вы продолжили собирать свою награду.
 """, 
-	AFTER_TEMPLE_PRIESTESS_5_1_5 = """Хелевиэль, к ее чести, сохраняла самообладание некоторое время, ее бедра покачивались, когда она смотрела на вас с таким достоинством, какое обычно было на ее лице, хотя тень удовольствия витала в ее глазах. Секреты её возбуждения найти было несложно, но её реакции были едва уловимы, пока вы в последний раз не провели языком прямо по её клитору, её рука опустилась, чтобы схватить вас за волосы, из её горла вырвался голодный стон.	
+	AFTER_TEMPLE_PRIESTESS_5_1_5 = """Хелевиэль, к ее чести, сохраняла самообладание некоторое время, ее бедра покачивались, когда она смотрела на вас с таким достоинством, какое обычно было на ее лице, хотя тень удовольствия витала в ее глазах. Секреты её возбуждения найти было несложно, но её реакции были едва уловимы, пока вы в последний раз не провели языком прямо по её клитору, её рука опустилась, чтобы схватить вас за волосы, из её горла вырвался голодный стон.
 
 Понимая это, вы продолжили лизать ее там, ее бедра двигались в вашем захвате, она пыхтела и стонала, вскоре звуки перестали быть едва уловимыми, вы почувствовали, как она напряглась, ее бедра задрожали, когда она начала кончать. 
 """, 
@@ -8541,14 +8568,14 @@ AFTER_RITUAL_GOOD_2_1_2 = """{color=aqua|Савра: - Нет, все в пор�
 
 - Стража... выведет вас. 
 
-	Стражники действительно провожают вас, хотя все это время молчаливые мужчины смотрят на вас со страхом и восхищением. Да, дисциплинированно, но вы не можете не заметить, что младший из них выглядел так, словно был готов броситься к вашим ногам.""",
+Стражники действительно провожают вас, хотя все это время молчаливые мужчины смотрят на вас со страхом и восхищением. Да, дисциплинированно, но вы не можете не заметить, что младший из них выглядел так, словно был готов броситься к вашим ногам.""",
 	AFTER_TEMPLE_PRIESTESS_5_1_1_BAD = """{color=red|Провал}
 - Боюсь, это невозможно. Верховная жрица Фрейи не должна быть запятнана прикосновением человека. """,
 	AFTER_TEMPLE_PRIESTESS_5_1AND2 = """Когда вы выходите из покоев жрицы, вас окликает какой-то солдат в капюшоне. Удостоверившись в вашей личности, он сообщает, что Эрлен хочет видеть вас в лесу на окраине. Сообщив вам его местоположение, солдат тихо уходит.""",
 	ERLERN_ENCOUNTER_START = """Обследовав место, вы не можете найти никаких признаков активности и начинаете думать, не пришли ли вы не туда. Вдруг перед вами появляется пара эльфийских солдат, застав вас врасплох. Осмотрев вас, они велят вам следовать за ними, чтобы встретиться с Эрленом.""",
 	ERLERN_ENCOUNTER_1 = """Эрлен встречает вас в импровизированном лагере среди деревьев. Вы, вероятно, не узнали бы его как лагерь, если бы не знали, что он там есть. Лицо Эрлена остается невозмутимым, пока вы не передаете ему письмо от Леона. После прочтения его выражение становится более пессимистичным.
 
- - Понимаю... Это хлопотно. 
+ - Понимаю... Это проблемно. 
 
 После долгой паузы и размышлений над письмом он наконец заговорил. 
 
@@ -8909,7 +8936,7 @@ CALI_INTRO_2 = """Вы видите лежащую на полу молодую 
 Вы оттягиваете промежность ее трусиков в одну сторону, обнажая тугую розовую киску Кали. """,
 	FORCE_CALI_3 = """Когда киска полукровки-волчицы обнажена, ее тон меняется, и она начинает отчаянно торговаться с вами.
 
- - Пожалуйста, [sir], я могу предложить вам кое-что! Что вы хотите? Я не против быть служанкой, я просто... пожалуйста... прекратите... Ооооххх!
+ - Пожалуйста, [Sir], я могу предложить вам кое-что! Что вы хотите? Я не против быть служанкой, я просто... пожалуйста... прекратите... Ооооххх!
 
 Вы начинаете дразнить клитор Кали пальцем, постепенно пропуская большой палец между губок киски, пока он не упирается в девственную плеву. Проходит совсем немного времени, и ее киска становится теплой на ощупь, а половые губы становятся гладкими от непроизвольного возбуждения. Кали напрягается против связывающих ее веревок, дергает верхней частью тела, а ее бедра беспомощно извиваются против ваших пальцев. Ее маленькая упругая попка вздрагивает от напряжения, сжимающего ее стройные ноги. Свободной рукой вы заставляете ее ноги согнуться в тазобедренных суставах, а затем расстегиваете ремень. 
 
@@ -8987,7 +9014,7 @@ CALI_INTRO_2 = """Вы видите лежащую на полу молодую 
 	CALI_SIDEQUEST_2_OPTION_2 = "Может быть, ты сможешь заниматься магией в гильдии магов?",
 	CALI_SIDEQUEST_2_OPTION_3 = "Ты могла бы вступить в гильдию Рабочих ради честного труда.",
 	CALI_SIDEQUEST_2_OPTION_4 = "Слуги могли бы подойти девушке.",
-	CALI_SIDEQUEST_3_1 = """- Хм... Да, мне это нравится! Быть искателем приключений, сражаться с плохими парнями и монстрами. 
+	CALI_SIDEQUEST_3_1 = """- Хм... Да, мне это по душе! Быть искателем приключений, сражаться с плохими парнями и монстрами. 
 
 - Так ты думаешь, я могу пойти туда и стать бойцом? Я также могу быть более полезной для вас, если стану сильнее, верно? Давай отправимся туда!""",
 	CALI_SIDEQUEST_2_2 = """- Нет, я ненавижу учиться, а я слышала, что нужно много заниматься, чтобы стать магом. Мне это не очень подходит, как ты думаешь?""",
@@ -9279,16 +9306,14 @@ CALI_FIGHTERS_3 = """Секретарша перебирала бумаги на
 }
 {color=aqua|Дядя: - Это не "глупые" традиции, это вполне серьезно, и ты это знаешь. }
 
-{color=yellow|Дядя: - Нет, я останусь здесь... Ну, если [name] не против}",
+{color=yellow|Дядя: - Нет, я останусь здесь... Ну, если [name] не против}""",
 	CALI_HEIRLOOM_4_OPTION_1 = "Ты можешь остаться, если хочешь.",
 	CALI_HEIRLOOM_4_OPTION_2 = "Прости, но я не пойду против твоей семьи.",
-	CALI_HEIRLOOM_FINISH = "{color=yellow|Кали: - Ч-чт... Проклятье! Если ты не хочешь, чтобы я была здесь, я просто уйду. 
-}
-{color=aqua|Дядя: - Я благодарю вас за сотрудничество. Тогда мы отправляемся в путь. }
+	CALI_HEIRLOOM_FINISH = """{color=yellow|Кали: - Ч-чт... Проклятье! Если ты не хочешь, чтобы я была здесь, я просто уйду.} 
+{color=aqua|Дядя: - Я благодарю вас за сотрудничество. Тогда мы отправляемся в путь.}
 
 Кали вскоре уезжает и больше никогда не встречается на вашем пути. Либо из-за того, что она пропала, либо из-за нежелания позволить вам найти ее.""",
-	CALI_HEIRLOOM_5 = """{color=aqua|Дядя: - Понятно... Наверное, бесполезно пытаться убедить тебя вернуться. Хорошо, в таком случае верни украденный тобой наследный меч, и я оставлю вас в покое.
-}
+	CALI_HEIRLOOM_5 = """{color=aqua|Дядя: - Понятно... Наверное, бесполезно пытаться убедить тебя вернуться. Хорошо, в таком случае верни украденный тобой наследный меч, и я оставлю вас в покое.}
 Протест Кали резко затихает, когда он слышит это.
 
 {color=yellow|Кали: - Эмм... Ты можешь дать мне немного времени? У меня его сейчас нет...}
@@ -10349,7 +10374,7 @@ The girl's hands instinctively drift to the jewel as she goes quiet. She seems t
 Девушка опускается на четвереньки и нависает над миской. Ее задница слегка приподнята в воздух, пока она пробует еду. Вскоре, поддавшись своим низменным инстинктам, она начинает энергично есть.""",
 	CALI_ACT5_PET_8 = """Ее трусики заметно намокают, когда она ест. Она стонет, когда ваша рука находит ее блестящие трусики и скользит по ее заду, пока вы сидите рядом со своим кормящимся питомцем.  Кали прекращает есть, оглядываясь назад, когда на ее лице появляется темный румянец.
 
-Кали:- [Name], что ты делаешь?
+Кали:- [name], что ты делаешь?
 
 Легкое прикосновение к подбородку - это все, что девушка получает в ответ, молчаливое напоминание закончить трапезу.  Кали старается сохранить самообладание, но из-за поглаживания промежности и уже возникшего возбуждения она не может долго сосредоточиться на еде.
 
@@ -11708,13 +11733,13 @@ ZEPHYRA_BRUSH_6_OPTION_3 = "*Не говорить ничего и взять к
 	AMELIA_MAIN_GUILD_1_OPTION_2 = """Чем вы так заняты?""",
 	AMELIA_MAIN_GUILD_1_OPTION_3 = """Я получил повестку на несколько вопросов.""",
 	AMELIA_MAIN_GUILD_2_1 = """- К сожалению, она... гм... в настоящее время недоступна. Пока что делами Гильдии занимаюсь я. Меня зовут Норлан. Если вам потребуется помощь по вопросам гильдии, я готов оказать ее. Однако, если ваш вопрос касается Амелии... Что ж, боюсь, пока это придется отложить.""",
-	AMELIA_MAIN_GUILD_2_2 = """- Произошли некоторые непредвиденные события, связанные с гильдией и ее членами. Однако вам не стоит беспокоиться, Мэр [Name]. Могу заверить вас, что эти события никак не повлияют на наше деловое взаимодействие. Тем не менее, прежде чем двигаться дальше, необходим короткий период адаптации к новой ситуации.""",
+	AMELIA_MAIN_GUILD_2_2 = """- Произошли некоторые непредвиденные события, связанные с гильдией и ее членами. Однако вам не стоит беспокоиться, Мэр [name]. Могу заверить вас, что эти события никак не повлияют на наше деловое взаимодействие. Тем не менее, прежде чем двигаться дальше, необходим короткий период адаптации к новой ситуации.""",
 	AMELIA_MAIN_GUILD_2_3 = """Норлан: - Хм... Весьма интригующе. Я четко передал нашему секретарю, что мы не намерены причинять вам неудобства по таким пустякам.""",
 	AMELIA_MAIN_GUILD_2 = """Дверь кабинета резко распахивается, и в кабинет вбегает еще один человек. Он обладает плотным телосложением и относительно невысоким ростом. Его одежда безошибочно передает атмосферу роскоши и высокого социального положения.
 
 Член гильдии: Норлан, есть ли какие-нибудь новости о пропавших рабах? Мои клиенты требуют объяснений. Я не могу держать их в неведении! О... Я вижу, у вас гость, [mister] Мэр, чем обязаны?
 
-Норлан: Похоже, наш секретарь счел нужным потратить драгоценное время Мэра [Name] на необоснованные расспросы о действиях Амелии. Я как раз собирался объяснить ему, что его показания не будут...
+Норлан: Похоже, наш секретарь счел нужным потратить драгоценное время Мэра [name] на необоснованные расспросы о действиях Амелии. Я как раз собирался объяснить ему, что его показания не будут...
 """,
 	AMELIA_MAIN_GUILD_3_1 = """Член гильдии: - Отлично! Нам нужна вся информация, которую мы можем получить. Эта хитрая женщина слишком хорошо умеет заметать следы. 
 
@@ -12266,7 +12291,7 @@ AMELIA_TRIAL_NORMAL_1 = """Амелия: - О... Теперь понятно. С
 	AMELIA_RETURN_1_OPTION_1 = "Да, я хочу этого",
 	AMELIA_RETURN_1_OPTION_2 = "Пожалуй, все-таки нет",
 	AMELIA_RETURN_2_1 = """- Очень хорошо, мы восстановим ее в должности лидера гильдии. Возможно, после всего этого она станет более известной.""",
-	AMELIA_GREETING_AFTER_RETURN = """- [Name]... Это было неожиданно, что ты вот так просто отказался от меня. Но я не сержусь, в конце концов, я привыкла к разочарованиям. В любом случае, чем я могу помочь?""",
+	AMELIA_GREETING_AFTER_RETURN = """- [name]... Это было неожиданно, что ты вот так просто отказался от меня. Но я не сержусь, в конце концов, я привыкла к разочарованиям. В любом случае, чем я могу помочь?""",
 
 	AMELIA_FINAL_1 = """- Наконец-то появился спаситель дня. Каково это - так лихо прийти на помощь нуждающейся в помощи деве, Мэр [name]?""",
 	AMELIA_FINAL_1_OPTION_1 = """Это не в первый раз, помнишь? Но лучше не привыкай.""",
@@ -12465,9 +12490,9 @@ ZEPHYRA_COSTUME_1_OPTION_1 = "Проверить дома эльфов",
 	ZEPHYRA_COSTUME_1_2 = """Вы проходите мимо знакомого дома. Вы не уверены, что можете сделать здесь прямо сейчас.""",
 	ZEPHYRA_COSTUME_2 = """Когда вы с Зефирой проходите по деревенской улочке, к вам неожиданно подходит чересчур экспрессивный эльфийский гражданин неопределенного возраста. 
 
-Эльф: - Не может быть, вы... Зефира, чемпионка Алиоса?! 
+Эльф: - Не может быть, вы... Зефира, чемпиона Алиоса?! 
 
-Зефира: - Я бы хотела солгать, но мой договор требует, чтобы я подтвердила свою личность перед верующими...""",
+Зефира: - Я бы хотела солгать, но мой договор требует, чтобы я подтверждала свою личность перед верующими...""",
 	ZEPHYRA_COSTUME_2_OPTION_1 = "Разве ты не счастлива, что кто-то наконец-то признал тебя?",
 	ZEPHYRA_COSTUME_2_OPTION_2 = "Тебе следует быть более верным своему долгу.",
 	ZEPHYRA_COSTUME_2_OPTION_3 = "(К мужчине) Извините, мы не даем интервью незнакомцам.",
@@ -12584,7 +12609,7 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 
 Дейзи садится на вашу кровать, оглядывая все в комнате, кроме вас.
 
-- Итак... как вы хотите меня взять, хозяин?""",
+- Чтож эмм... к-как вы хотите меня взять, хозяин?""",
 	DAISY_WEDDING_3 = """Вы толкаете Дейзи в конец кровати и возбужденно поднимаете ее платье, обнажая ее мокрую киску.
 
 - Ах...!
@@ -12684,47 +12709,40 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 
 - Поторопись, я больше не могу ждать...!
 
-- (Пожалуйста, Мастер...!)
-
 Вы ухмыляетесь готовности Кали, любуясь тем, как ее возбуждение стекает на пол, пока она ждет вас. Вы не заставляете ее долго ждать, освобождаете свой член и подходите ближе, чтобы поласкать ее бедро. Прижимаясь к ней, вы наблюдаете, как ее выражение лица тает от удовольствия, когда ее киска смыкается вокруг вас.
 
-- Ах...! Почему-то сегодня это кажется еще лучше...!
+- Ах...! Почему-то сегодня это ощущается еще лучше...!""",
 
-- (Эта поза... кажется такой правильной...)""",
-	CALI_WEDDING_3_BAD = """As soon as you get into the room, Cali leans against the dresser and holds a leg up, exposing her pussy to you like a wolf in heat.
+	CALI_WEDDING_3_BAD = """Как только вы заходите в комнату, Кали прислоняется к комоду и задирает ногу, обнажая перед вами свою киску, как волчица в течке.
 
-— Please, Master…!
+- Пожалуйста, хозяин...!
 
-You smirk at Cali's readiness, admiring how her arousal drips down onto the floor as she waits for you. You don't keep her waiting for long, freeing your dick and stepping closer to caress her thigh. Pressing into her, you watch as her expression melts into pleasure as her pussy closes around you.
+Вы ухмыляетесь готовности Кали, любуясь тем, как ее возбуждение стекает на пол, пока она ждет вас. Вы не заставляете ее долго ждать, освобождаете свой член и подходите ближе, чтобы погладить ее бедро. Прижимаясь к ней, вы наблюдаете, как ее выражение лица тает от удовольствия, когда ее киска смыкается вокруг вас.
 
-— This pose... feels so right...""", # MISSING TRANSLATION
+- Эта поза... кажется такой правильной...""",
 	CALI_WEDDING_4 = """В ответ вы еще сильнее вжимаетесь в нее и начинаете двигаться. Тугая киска Кали сжимается при каждом толчке и пытается удержать вас внутри, когда вы отступаете. Она с трепетом наблюдает за тем, как ваш член входит в нее, и молчит, наслаждаясь тем, как ваш член согревает ее изнутри.
 
 Ее соки растекаются по вашему стволу по мере нарастания ее возбуждения, делая каждый последующий толчок более плавным и легким благодаря естественной смазке. Липкие звуки, доносящиеся из киски Кали, несомненно, дадут любому четкое представление о том, что происходит между женихом и невестой, если только визгливые стоны Кали не были достаточным намеком. Ее хвост развевается за спиной, когда она тяжело дышит, то и дело задевая вашу ногу.""",
 	CALI_WEDDING_5 = """- Я чувствую тебя так глубоко внутри...
 
-- (А-а-а...! М-мастер! Прости, пожалуйста... Не о-останавливайся...)
-
 Киска Кали прижимается к вашему стволу, когда волна ее спермы проносится мимо, выплескиваясь наружу, а ее тело содрогается от удовольствия. Вы держите ее, пока ее ноги шатаются от ощущений, сотрясающих ее тело.
 
 Чувствуя, как внутри вас нарастает жар, вы увеличиваете темп. Ее сперма дает вам достаточно возможностей, чтобы проскальзывать в ее дырочку и выходить из нее, пока она высасывает из вас семя, которое вы с трудом сдерживаете. Через несколько мгновений ты врываешься в нее, твоя сперма заполняет каждый уголок ее киски, а ты прижимаешь ее к себе.""",
-	CALI_WEDDING_5_BAD = """— Ahh…! M–Master! I’m sorry, please… Don’t s-stop…
+	CALI_WEDDING_5_BAD = """- А-а-ах...! М-мастер! Прости, пожалуйста... Не останавливайся...
 
-Cali's pussy clings to your shaft as a wave of her cum flows past, spilling out as her body shivers from the pleasure. You hold her steady as her leg becomes wobbly from the sensations wracking her body.
+Киска Кали прижимается к твоему стволу, когда волна ее жидкостей вытекает, выплескиваясь наружу, а ее тело содрогается от удовольствия. Вы держите ее, пока ее ноги шатаются от ощущений, сотрясающих ее тело.
 
-Feeling the heat inside you welling up too, you pick up the pace. Her cum gives you ample leverage to slip in and out of her hole as she milks you for the seed you can barely hold back from her. Within a few moments, you burst inside her, your cum filling every nook in her pussy as you hold her close.""", # MISSING TRANSLATION
+Чувствуя, как внутри вас нарастает жар, вы увеличиваете темп. Ее сперма дает вам достаточно возможностей, чтобы проскальзывать в ее дырочку и выходить из нее, пока она высасывает из вас семя, которое вы с трудом сдерживаете. Через несколько мгновений ты врываешься в нее, твоя сперма заполняет каждый уголок ее киски, а ты прижимаешь ее к себе.""",
 	CALI_WEDDING_6 = """Проходит совсем немного времени, и твоя сперма выливается вместе с ее собственной, обе жидкости стекают по ее ноге, пока ты отмечаешь ее как свою. Кали теряет дар речи, наблюдая, как тепло внутри нее вытекает из ее киски, едва удерживаемое вашим членом. Как только вы отстраняетесь от нее, остатки следуют вашему примеру и стекают по ее ноге, превращаясь в беспорядок похоти.
 
-- Это было очень много...
-
-- (...Огромное спасибо, Мастер... за то, что заставили меня почувствовать это...)
+- Е-её было очень много...
 
 Вы прижимаете Кали к себе и целуете ее, проводя остаток ночи рядом друг с другом в постели, наслаждаясь ее маленьким телом.""",
-	CALI_WEDDING_6_BAD = """It doesn’t take long for your cum to spill out with her own, both fluids running down her leg as you mark her as yours. Cali is speechless as she watches the warmth inside her flow out of her pussy, only barely held in by your cock. Once you pull away from her, the rest follows suit and slides down her leg, making a mess of lust.
+	CALI_WEDDING_6_BAD = """Проходит совсем немного времени, и ваша сперма выливается вместе с ее собственной, обе жидкости стекают по ее ноге, пока вы отмечаете ее как свою. Кали теряет дар речи, наблюдая, как тепло внутри нее вытекает из ее киски, едва удерживаемое вашим членом. Как только вы отстраняетесь от нее, остатки следуют вашему примеру и стекают по ее ноге, превращаясь в беспорядок похоти.
 
-— ...T–Thank you so much, Master… for making me feel this…
+- ...Б-большое спасибо, Мастер... за то, что заставили меня прочувствовать это...
 
-You hold Cali close and kiss her, spending the rest of the night close together in bed as you enjoy her petite body.""", # MISSING TRANSLATION
+Вы прижимаете Кали к себе и целуете ее, проводя остаток ночи рядом друг с другом в постели, наслаждаясь ее маленьким телом.""",
 
 
 	#   QUESTS   #
@@ -12764,7 +12782,7 @@ You hold Cali close and kiss her, spending the rest of the night close together 
 
 	ELECTION_GLOBAL_NAME = "Выборы мэра",
 	ELECTION_GLOBAL_SUMMARY = "Согласно городскому процедуре выборов, любой землевладелец может стать мэром, если его поддерживают гильдии.",
-	ELECTION_GLOBAL_STAGE_1 = "Заработайте 500 репутации как минимум с 3 основными гильдиями и заручитесь их поддержкой для будущих выборов.\n\n{custom_text_function=election_quest_text|}",
+	ELECTION_GLOBAL_STAGE_1 = "Заработайте 300 репутации как минимум с 3 основными гильдиями и заручитесь их поддержкой для будущих выборов.\n\n{custom_text_function=election_quest_text|}",
 
 	ALIRON_CHURCH_NAME = "Инициация",
 	ALIRON_CHURCH_SUMMARY = "Вы познакомились с Джинни в ее церкви в Алироне",
@@ -13018,20 +13036,20 @@ You hold Cali close and kiss her, spending the rest of the night close together 
 	DIALOGUELILIAINITIATEH = "Маленькая фея нетерпеливо подпрыгивает, когда вы ее вызываете. \n\n- Мне так одиноко без тебя, [Master]! Ты меня развеселишь?",
 	DIALOGUELILIAINITIATEM = "Ваша экстравагантная жена, Лилия, страстно приветствует вас, едва скрывая свое волнение.\n\n- [Master], ты скучал по Лилии? Давай уже ляжем в постель!",
 	DIALOGUEJEANINITIATEM = "",
-	DIALOGUEZEPHYRA_UNDERWEAR = """In your hands you hold a piece of clothing which was surrendered to you by Zephyra. Pondering on what actual benefit it can have, one mind is stuck in your mind... What if you wear it on your head? Surely, this is a terrible idea...""", # MISSING TRANSLATION
-	DIALOGUEZEPHYRA_UNDERWEAROPTION = """Do it""", # MISSING TRANSLATION
-	DIALOGUEZEPHYRA_UNDERWEAR2 = """Despite your best judgement, you put a girl's underwear onto your head. You feel nothing like you would expect but the sudden revelation is abrupted by the owner entering your room just at this moment. 
 	
-— [Master], can I have a mo...
+	DIALOGUEZEPHYRA_UNDERWEAR = "В руках вы держите предмет одежды, который был передан вам Зефирой. Размышляя о том, какую пользу он может принести, вы задумались... А что, если надеть его на голову? Конечно, это ужасная идея...",
+	DIALOGUEZEPHYRA_UNDERWEAROPTION = "Сделать это",
+	DIALOGUEZEPHYRA_UNDERWEAR2 = """Вопреки здравому смыслу, вы надеваете на голову нижнее белье девушки. Вы не чувствуете ничего такого, чего ожидали бы, но внезапное откровение срывается, когда в комнату входит её владелица, как раз в этот момент. 
+	
+- [Master], можно вас на ми...
 
-Zephyra freezes as she sees your deed. Her face spells your doom. The time stops and you can no longer process the world around you, as the last breath leaves your body...""", # MISSING TRANSLATION
-	
+Зефира замирает, увидев ваш поступок. Ее лицо предвещает вам гибель. Время останавливается, и вы больше не можете воспринимать окружающий мир, когда последний вздох покидает ваше тело...""",
 	
 	
 	
 	
 	METRICS_BASE = "[name] был/а частью вашего владения в течение {color=yellow|%d} недель и {color=yellow|%d} дней.",
-	METRICS_BASE_YOU = """[name] is a [master] and has been in this household for {color=yellow|%d} weeks and {color=yellow|%d} days.""", # MISSING TRANSLATION
+	METRICS_BASE_YOU = "[name] - [master] и был им {color=yellow|%d} недель и {color=yellow|%d} дней.",
 	METRICS_DATES_MASTER = "[He] ходил на свидания {color=yellow|%d} раз(а) и занимался сексом {color=yellow|%d} раз(а).",
 	METRICS_DATES = "[He] ходил на свидания с вами {color=yellow|%d} раз(ы) и занимался сексом {color=yellow|%d} раз(ы).",
 	METRICS_PARTNERS = "В целом [He] занимался сексом с {color=yellow|%d} партнерами в течение всего этого времени.",
@@ -13293,7 +13311,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	MASTER_PUNISH_LINE2 = "Уф... очень больно, [Master].",
 	MASTER_PUNISH_LINE3 = "Я понимаю... это для порядка.",
 	MASTER_PUNISH_LINE4 = "Хм! К твоему сведению, это совсем не больно!",
-	MASTER_PUNISH_LINE5 = "Нет... Пожалейте котейку!",
+	MASTER_PUNISH_LINE5 = "Нет... Прошу, пощадите!",
 	MASTER_PUNISH_LINE6 = "Мне так жаль... Я знаю, что могу сделать лучше, [Master]...",
 	MASTER_PUNISH_LINE7 = "В мыслях не было тебя расстраивать. Мне жаль [Master].",
 	MASTER_PUNISH_LINE8 = "[Master]? Это действительно необходимо?",
@@ -14917,10 +14935,10 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	DAISY_WEDDING_SS = "Возьмите Дейзи в жены (рабыни)",
 	CALI_WEDDING_SS = "Сделать Кали своим пожизненным партнером",
 	AMELIA_WEDDING_SS = "Продвинуть Амелию на пост вице-президента вашего особняка",
-	ANASTASIA_EVENT_ALIVE_SS = """Keep Anastasia alive in the end of act 1""", # MISSING TRANSLATION
-	ELVEN_TEMPLE_SCENE_SS = """Event from elven temple""", # MISSING TRANSLATION
-	ACT1_ART_SS = """Start first act""", # MISSING TRANSLATION
-	ACT2_ART_SS = """Start second act""", # MISSING TRANSLATION
+	ANASTASIA_EVENT_ALIVE_SS = "Сохранить жизнь Анастасии в конце первого акта",
+	ELVEN_TEMPLE_SCENE_SS = "Событие из эльфийского храма",
+	ACT1_ART_SS = "Начать первый акт",
+	ACT2_ART_SS = "Начать второй акт",
 
 }
 
