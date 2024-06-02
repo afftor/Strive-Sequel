@@ -175,8 +175,8 @@ var enemygroups = {
 	firedepths_easy2 = {reqs = [], units = {anthropoid = [1,2], ifrit = [0,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
 	firedepths_medium1 = {reqs = [], units = {salamander = [1,3], rock_thrower = [1,2], ifrit = [0,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
 	firedepths_medium2 = {reqs = [], units = {ifrit = [2,4]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
-	firedepths_boss1 = {reqs = [], units = {magma_beast = [1,1], salamander = [1,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
-	firedepths_boss2 = {reqs = [], units = {erebus_stone = [2,2]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_strength_scare',0.8]], challenge_chance = 0.4},
+	firedepths_boss1 = {reqs = [], units = {magma_beast = [1,1], salamander = [1,1]}},
+	firedepths_boss2 = {reqs = [], units = {erebus_stone = [2,2]}},
 
 	hector_boss_fight = {reqs = [], units = {bandit_melee = [2,2], hector_boss = [1,1], bandit_archer = [2,2], bandit_mage = [1,1]}}, #cali boss fight !!! copied from above, needs fixing
 }

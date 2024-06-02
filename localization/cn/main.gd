@@ -3280,6 +3280,7 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	LOCATIONNAMESKIRMISH_FOREST_WOLVES = "Forest 森林",
 	LOCATIONNAMEDUNGEON_BANDIT_DEN = "Bandit Den 土匪窝",
 	LOCATIONNAMEDUNGEON_BANDIT_FORT = "Bandit Fort 土匪堡",
+	LOCATIONNAMEDUNGEON_REBEL_REDOUBT = """Rebel Redoubt""", # MISSING TRANSLATION
 	LOCATIONNAMEDUNGEON_GROVE = "Grove 树林",
 	LOCATIONNAMEDUNGEON_GOBLIN_CAVE = "Goblin Cave 哥布林巢穴",
 	LOCATIONNAMEDUNGEON_UNDEAD_CRYPT = "Crypt 地穴",

@@ -92,9 +92,9 @@ var lands = {
 			obsidian = {min = 3, max = 5, chance = 0.7},
 			itempool1 = {items = ['sword','bow','battleaxe','dagger','spear','staff','shield'], min = 2, max = 4, chance = 0.8},
 			itempool2 = {items = ['chest_base_cloth','chest_base_leather','legs_base_cloth','legs_base_leather'], min = 1, max = 2, chance = 0.8},
-			soul_stone = {min = 1, max = 1, chance = 0.1}
-			},
+			soul_stone = {min = 1, max = 1, chance = 0.1},
 			itempool3 = {items = ['map_ancient_jungle','map_grove'], min = 1, max = 1, chance = 1},
+			},
 		capital_background = 'elf_capital',
 		capital_name = "Elven Capital",
 		capital_code = 'elf_capital',
@@ -696,6 +696,8 @@ var locationnames = {
 	village_human_quest = [tr("VILLAGE_HUMAN_QUEST1")],
 	bandit_fort_nouns = [tr("BANDIT_FORT_NOUNS1"),tr("BANDIT_FORT_NOUNS2"),tr("BANDIT_FORT_NOUNS3"),tr("BANDIT_FORT_NOUNS4"),tr("BANDIT_FORT_NOUNS5"),tr("BANDIT_FORT_NOUNS6")],
 	bandit_fort_adjs = [tr("BANDIT_FORT_ADJS1"),tr("BANDIT_FORT_ADJS2"),tr("BANDIT_FORT_ADJS3"),tr("BANDIT_FORT_ADJS4"),tr("BANDIT_FORT_ADJS5")],
+	rebel_redoubt_nouns = [tr("BANDIT_FORT_NOUNS1"),tr("BANDIT_FORT_NOUNS2"),tr("BANDIT_FORT_NOUNS3"),tr("BANDIT_FORT_NOUNS4"),tr("BANDIT_FORT_NOUNS5"),tr("BANDIT_FORT_NOUNS6")],
+	rebel_redoubt_adjs = [tr("BANDIT_FORT_ADJS1"),tr("BANDIT_FORT_ADJS2"),tr("BANDIT_FORT_ADJS3"),tr("BANDIT_FORT_ADJS4"),tr("BANDIT_FORT_ADJS5")],
 	goblin_cave_nouns = [tr("GOBLIN_CAVE_NOUNS1"),tr("GOBLIN_CAVE_NOUNS2"),tr("GOBLIN_CAVE_NOUNS3"),tr("GOBLIN_CAVE_NOUNS4"),tr("GOBLIN_CAVE_NOUNS5")],
 	goblin_cave_adjs = [tr("GOBLIN_CAVE_ADJS1"),tr("GOBLIN_CAVE_ADJS2"),tr("GOBLIN_CAVE_ADJS3"),tr("GOBLIN_CAVE_ADJS4"),tr("GOBLIN_CAVE_ADJS5"),tr("GOBLIN_CAVE_ADJS6"),tr("GOBLIN_CAVE_ADJS7")],
 	bandit_den_nouns = [tr("BANDIT_DEN_NOUNS1"),tr("BANDIT_DEN_NOUNS2"),tr("BANDIT_DEN_NOUNS3"),tr("BANDIT_DEN_NOUNS4")],
@@ -720,6 +722,133 @@ var dungeonadj = [tr("DUNGEONADJ1"),tr("DUNGEONADJ2"),tr("DUNGEONADJ3"),tr("DUNG
 
 
 var dungeons = {
+	
+	dungeon_rebel_redoubt = {
+		code = 'dungeon_rebel_redoubt',
+		type = 'dungeon',
+		name = 'rebel_redoubt',
+		classname = '',
+		descript = tr("DUNGEON_BANDIT_FORT_DESC"),
+		character_data = {
+			chance_mod = 1.2,
+			races = [['local', 6], ['common',1]]
+		},
+		difficulty = 'medium',
+		background_pool = ['fort1', 'fort2', 'fort3'],
+		enemyarray =  [['event_rebels_1', 1],['event_rebels_2', 1],['rebels_small', 0.5]],
+		final_enemy = [['rebels_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+		
+		event_data = {
+			dungeon_find_chest_medium = {
+				limit = 0,
+				weight = 6,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['dungeon_find_chest_medium'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.1],
+					['event_small_crack',1]
+				],
+			},
+			dungeon_find_armory_easy = {
+				limit = 1,
+				weight = 2,
+				floor_range = [2,0],
+				icon = 'chest',
+				events = ['dungeon_find_armory_easy'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.2],
+					['event_small_crack',1],
+				],
+			},
+			event_dungeon_prisoner = {
+				limit = 2,
+				weight = 5,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['event_dungeon_prisoner'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.2],
+					['event_small_crack',1],
+				],
+			},
+			celena_shrine_find = {
+				limit = 1,
+				weight = 2,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1]
+				],
+			},
+			fountain = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['fountain'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.8]
+				],
+			},
+		},
+		
+		event_room_number = [3,4],
+		material_room_number = [4,5],
+		
+		main_route_length = [6,7],
+		bonus_rooms = [2,3],
+		levels = [2,3], 
+		base_room_stamina_cost = [7,10], 
+		
+		
+		resources = ['woodiron','leatherthick','iron','steel','clothsilk','mithril'],
+		gatherable_resources = {
+			wood = {
+				amount = [45,60],
+				weight = 10,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			stone = {
+				amount = [35,50],
+				weight = 6,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},  
+			iron = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			woodiron = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			},
+			
+		bgm = "dungeon",
+		gather_mod = [2,2.5],
+		purchase_price = 200,
+		affiliation = 'local',
+		events = [],
+		tags = [],
+	},
+	
 	quest_fighters_lich = {
 		code = 'quest_fighters_lich',
 		type = 'quest_location',

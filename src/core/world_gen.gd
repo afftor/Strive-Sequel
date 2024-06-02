@@ -704,7 +704,7 @@ func make_chest_loot(chest):
 				if amount <= 0:
 					continue
 				for k in Items.itemlist.values():
-					if i.grade.has(k.tier) && k.type == 'usable' && !k.tags.has('no_random'):
+					if i.maps.has(k.code) && k.tier == 'map' && !k.tags.has('no_random'):
 						array.append(k.code)
 				dict.items.append(globals.CreateUsableItem(array[randi()%array.size()], amount))
 			'static_gear':

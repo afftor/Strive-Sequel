@@ -61,6 +61,8 @@ var TranslationDict = {
 						Proofreading: Dorant, ralphomayo, Khuja, Lipach
 
 						Also thanks to: negtize724
+						
+						Russian Translation: LordKrogaton
 
 						Ambient battle noise: swords and shouting - pfranzen
 						https://freesound.org/people/pfranzen/sounds/192072/""",
@@ -1886,7 +1888,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLASSASSINATE = "Assassinate",
 	SKILLASSASSINATEDESCRIPT = "Deals 400% of ATK as Dark damage. Must be hidden to execute.",
 	SKILLPROTECT = "Protect",
-	SKILLPROTECTDESCRIPT = "Takes damage instaed of ally for 2 turns.",
+	SKILLPROTECTDESCRIPT = "Takes damage instead of ally for 2 turns.",
 	SKILLSHAREDTOY = "Shared Toy",
 	SKILLSHAREDTOYDESCRIPT = "Category: {color=pink|Lewd}\nBecome everyone's pleasure and relief for a time. Improves everyone's obedience. Improved by Charm Factor. \nBasic Effects: \nLoyalty +10, Maxes Obedience",
 	SKILLPERFORMANCE = "Performance",
@@ -3287,6 +3289,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMMAP_UNDEAD_CRYPT = "Map: Crypt",
 	ITEMMAP_ANCIENT_JUNGLE = "Map: Ancient Jungles",
 	ITEMMAP_FIRE_DEPTHS = "Map: Fire Depths",
+	ITEMMAP_REBEL_REDOUBT = "Map: Rebel Redoubt",
 	ITEMMAP_BANDIT_DENDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
 	ITEMMAP_BANDIT_FORTDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
 	ITEMMAP_GROVEDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
@@ -3294,12 +3297,14 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMMAP_UNDEAD_CRYPTDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
 	ITEMMAP_ANCIENT_JUNGLEDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
 	ITEMMAP_FIRE_DEPTHSDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
+	ITEMMAP_REBEL_REDOUBTDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
 
 
 	LOCATIONNAMESKIRMISH_BANDIT_CAMP = "Bandit Camp",
 	LOCATIONNAMESKIRMISH_FOREST_WOLVES = "Forest",
 	LOCATIONNAMEDUNGEON_BANDIT_DEN = "Bandit Den",
 	LOCATIONNAMEDUNGEON_BANDIT_FORT = "Bandit Fort",
+	LOCATIONNAMEDUNGEON_REBEL_REDOUBT = "Rebel Redoubt",
 	LOCATIONNAMEDUNGEON_GROVE = "Grove",
 	LOCATIONNAMEDUNGEON_GOBLIN_CAVE = "Goblin Cave",
 	LOCATIONNAMEDUNGEON_UNDEAD_CRYPT = "Crypt",
@@ -3574,7 +3579,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STARTINGDIALOGUE4_1 = "— I will return in two weeks then.",
 	STARTUPGRADEBONUS = "You go for a short trip through the mansion and one of the previously unnoticed rooms on the first floor catches your sight. Inside of it you find...",
 	STARTUPGRADEBONUS1 = "Forge",
-	STARTUPGRADEBONUS2 = "Tailor Worksop",
+	STARTUPGRADEBONUS2 = "Tailor Workshop",
 	STARTUPGRADEBONUS3 = "Alchemy Room",
 	
 	
@@ -4095,7 +4100,7 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 	CREATECHARQUESTION = "Confirm creation of this character?",
 	CREATECHARACTERFEMALE = "Warning: You've selected a female character. Most of the game scripted events are played from male perspective but will be shown regardless. Confirm?",
 	RETURNTOMAINMENUQUESTION = "Return to Main Menu?",
-	FORGETLOCATIONQUESTION = "Forget this location? All present characters will be sent back to Mansion. This action can't be undone.",
+	FORGETLOCATIONQUESTION = "Set this location for deletion? All present characters will be sent back to Mansion. This action can't be undone.",
 
 	SENDCHARBACKQUESTION = "Send [name] back?",
 	SENDCHARBACKTOMANSIONQUESTION = "Send [name] back to Mansion?",
