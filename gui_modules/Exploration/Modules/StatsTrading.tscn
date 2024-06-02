@@ -373,9 +373,6 @@ custom_fonts/font = ExtResource( 5 )
 text = "Character Name"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="icon" type="TextureRect" parent="CharList2/ScrollContainer/CharactersVBox/Button"]
 show_behind_parent = true

@@ -345,9 +345,6 @@ margin_top = 296.242
 margin_right = -9.19934
 margin_bottom = 532.242
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect6" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -386,10 +383,10 @@ rect_pivot_offset = Vector2( 3.08203, 239.505 )
 texture = ExtResource( 2 )
 
 [node name="TextureRect7" type="TextureRect" parent="."]
-margin_left = 663.406
-margin_top = 151.155
-margin_right = 1263.41
-margin_bottom = 351.155
+margin_left = 961.0
+margin_top = 151.0
+margin_right = 961.0
+margin_bottom = 351.0
 rect_pivot_offset = Vector2( 300, 100 )
 texture = ExtResource( 3 )
 expand = true
@@ -406,6 +403,7 @@ margin_right = 980.148
 margin_bottom = 461.004
 rect_scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 6 )
+expand = true
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
@@ -418,9 +416,6 @@ margin_top = 148.742
 margin_right = 1264.84
 margin_bottom = 352.742
 texture = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )

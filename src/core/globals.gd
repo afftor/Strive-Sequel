@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.8.6 experimental 4'
+const gameversion = '0.8.6 experimental 5'
 
 #time
 signal hour_tick
@@ -763,6 +763,7 @@ func LoadGame(filename):
 	characters_pool.cleanup()
 	effects_pool.cleanup()
 	ResourceScripts.game_party.fix_serialization_postload()
+	ResourceScripts.game_party.force_update_portraits()
 
 	if !compare_version(ResourceScripts.game_globals.original_version, '0.5.5b'):
 		ResourceScripts.game_globals.hour = ResourceScripts.game_globals.hour / 6
@@ -2223,7 +2224,8 @@ func common_effects(effects):
 						rdata.hpmod = 1.0 - i.reduce_hp
 					if i.has('xp_mod'):
 						rdata.xp_mod = i.xp_mod
-			
+			'unlock_uprade':
+				ResourceScripts.game_res.unlock_upgrade(i.upgrade, i.level)
 
 func after_wedding_event(character):
 	if character == null:
@@ -2257,7 +2259,12 @@ func checkreqs(array):
 	return check
 
 func valuecheck(dict):
-	if !dict.has('type'): return true
+	if !dict.has('type'):
+		if dict.empty():
+			return true
+		else:
+			print("Error checking reqs for: " + str(dict))
+			return true
 	match dict['type']:
 		"no_check":
 			return true
@@ -2286,6 +2293,7 @@ func valuecheck(dict):
 		"area_progress":
 			return ResourceScripts.game_progress.if_has_area_progress(dict.value, dict.operant, dict.area)
 		"decision":
+			#print(dict.value, ResourceScripts.game_progress.decisions.has(dict.value))
 			return ResourceScripts.game_progress.decisions.has(dict.value) == dict.check
 		"has_multiple_decisions":
 			var counter = 0
@@ -2453,8 +2461,13 @@ func valuecheck(dict):
 			if gui_controller.exploration_dungeon == null:
 				return false
 			return gui_controller.exploration_dungeon.location_chars_check(dict.value)
+		'update_prts':
+			for ch in ResourceScripts.game_party.characters:
+				ch.update_prt()
 		'captured_number':
-				return input_handler.operate(dict.operant,input_handler.active_location.captured_characters.size(), dict.value)  
+			return input_handler.operate(dict.operant,input_handler.active_location.captured_characters.size(), dict.value)
+		'difficulty':
+			return input_handler.operate(dict.operant, ResourceScripts.game_globals.difficulty, dict.value)
 
 
 func apply_starting_preset():

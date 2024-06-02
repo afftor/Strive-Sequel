@@ -160,10 +160,14 @@ func restore_skill_charge(code):
 
 
 
-func use_social_skill(s_code, target):
+func use_social_skill(s_code, target, item):
 	var template = Skilldata.Skilllist[s_code]
 	if template.has('special'):
-		ResourceScripts.custom_effects.call(template.special, parent.get_ref())
+		item = Items.itemlist[item.itembase]
+		if s_code == 'map':
+			ResourceScripts.custom_effects.call(template.special, item.map)
+		else:
+			ResourceScripts.custom_effects.call(template.special, parent.get_ref())
 		return
 	if target != null:
 		var check = parent.get_ref().check_skill_availability(s_code, target)
@@ -356,6 +360,7 @@ func use_social_skill(s_code, target):
 				var next_personality = h.get_stat('personality')
 				if next_personality != cur_personality:
 					effect_text += "\n" + h.get_short_name() + tr("PERSONALITYCHANGE") + tr("PERSONALITYNAME" + next_personality.to_upper())
+				parent.get_ref().update_prt()
 			else:
 				match mod:
 					0:
@@ -463,11 +468,11 @@ func use_mansion_item(item):
 			items_used_global[itembase.code] = 1
 	if itembase.tags.has("save_on_use") == false:
 		item.amount -= 1
-	use_social_skill(skill, parent.get_ref())
+	use_social_skill(skill, parent.get_ref(), item)
 
 func act_prepared():
 	for prep in prepared_act:
-		use_social_skill(prep, null)
+		use_social_skill(prep, null, null)
 	prepared_act.clear()
 
 func repair_skill_panels():

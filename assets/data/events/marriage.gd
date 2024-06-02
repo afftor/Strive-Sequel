@@ -2,7 +2,7 @@ var data = {
 	marriage_church_1 = {
 		variations = [
 			{
-				reqs = [{code = "decision", value = "mayor_election_finished", check = true}], #main 
+				reqs = [{type = "decision", value = "mayor_election_finished", check = true}], #main 
 				image = null, 
 				tags = ['dialogue_scene'],
 				custom_background = "church_event", character = "ginny",
@@ -17,7 +17,7 @@ var data = {
 				image = null, 
 				tags = [],
 				custom_background = "church_event", character = "ginny",
-				text = [{text = "MARRIAGE_CHURCH_DEFAULT", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'marriage_quest_main', stage = 'stage1'}],}],
+				text = [{text = "MARRIAGE_CHURCH_DEFAULT", reqs = [], bonus_effects = [],}],
 				options = [ 
 						{code = 'close', text = "DIALOGUECLOSE", reqs = []}
 					],

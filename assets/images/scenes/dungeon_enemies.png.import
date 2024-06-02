@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zephyra_deafault_prt_serious.png-7b1433439107c29093b6d2c79b31ad2c.stex"
+path="res://.import/dungeon_enemies.png-2ef75c868b961ea25db28e42351dde98.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/zephyra_prt/zephyra_deafault_prt_serious.png"
-dest_files=[ "res://.import/zephyra_deafault_prt_serious.png-7b1433439107c29093b6d2c79b31ad2c.stex" ]
+source_file="res://assets/images/scenes/dungeon_enemies.png"
+dest_files=[ "res://.import/dungeon_enemies.png-2ef75c868b961ea25db28e42351dde98.stex" ]
 
 [params]
 

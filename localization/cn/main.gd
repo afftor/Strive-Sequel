@@ -1474,6 +1474,8 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	SLAVEBODYHALFSPIDERDESCRIPT = "[His] 身体的下半部分由一只 [color=yellow]蜘蛛的腿和腹部[/color]组成。",
 	SLAVEBODYHALFHORSEDESCRIPT = "虽然 [his] 上半身是人，但 [his] 下半身在自然界中是 [color=yellow]马[/color] 。",
 	SLAVEBODYHALFSQUIDDESCRIPT = "[His] 身体的下半部分由 [color=yellow]多条触手[/color]组成, 类似于章鱼的触手。",
+	SLAVECLASSSLAVE = """Slave""", # MISSING TRANSLATION
+	SLAVECLASSSERVANT = """Subordinate""", # MISSING TRANSLATION
 
 
 
@@ -3084,6 +3086,7 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 
 	DIALOGUELOCATIONEVENTGOOD = "合法",
 	DIALOGUELOCATIONEVENTEVIL = "行为不端",
+	DIALOGUEATTACK = """Attack""", # MISSING TRANSLATION
 
 	DIALOGUEATTACKMIMIC = "模拟攻击",
 	DIALOGUEMIMICOPENANYWAY = "想方设法打开",
@@ -3125,6 +3128,7 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	DIALOGUECHESTEROTICMIMICTRAPPED = "当 [name] 在靠近箱子时, [he] 快意识到这不是箱子，而是一个即将吞噬 [him] 的拟态. 然而，拟态似乎并没有伤害 [him], 而是抓住猎物，钻到 [his] 衣服下面. 如果没有外界的帮助，拟态肯定会对 [name] 随心所欲...\n\n{color=aqua|[name]} — {random_chat_active|mimic_rape}\n\n让[him]处于这种状态不会杀死[him]，但是...",
 	DIALOGUECHESTMIMICTRAPPEDLEAVE = "你认为挑战拟态太危险了，把[name]留给他是可以接受的...\n\n{color=aqua|[name]} — {random_chat_active|mimic_leave}",
 	DIALOGUECHESTMIMICEROTICTRAPPEDLEAVE = "你认为挑战拟态太危险了，把[name]留给他是可以接受的...\n\n{color=aqua|[name]} — {random_chat_active|mimic_erotic_leave}\n\n经过大约一个小时的色情呻吟和恳求[name]最终设法逃离.",
+	DIALOGUECHESTLOCKPICKFREE = """As [name] attempts to pick a lock of the chest, [he] realize it was not locked in first place. """, # MISSING TRANSLATION
 	DIALOGUECHESTLOCKPICKSUCCESS = "[name] 熟练地打开了箱子的锁，里面的东西现在属于你了. ",
 
 	DIALOGUECHESTMIMICFIGHT = "挑战拟态",
@@ -3229,8 +3233,15 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	
 	SPRINGTEXT = "你发现一个干净的小空地。这可能是休息的好时机.",
 	SPRING_HEAL = "您的团队休息并恢复一些健康.",
+	SPRING_STAMINA = """Your group rests and recover their energy.""", # MISSING TRANSLATION
 	SPRING_HEAL_OPTION = "休息",
+	SPRING_STAMINA_OPTION = """Take a rest""", # MISSING TRANSLATION
 	SPRING_LOOT_OPTION = "搜索",
+	FOUNTAINTEXT = """You find a small fountain still brimming with clear water. You could use it to ease group's exhaustion, but it seems there's also some raw mana available for extraction...""", # MISSING TRANSLATION
+	FOUNTAINSTAMINAOPTION = """Take a rest""", # MISSING TRANSLATION
+	FOUNTAINMANAOPTION = """Harness magic""", # MISSING TRANSLATION
+	FOUNTAIN_MANA = """The group manages to extract mana from the fountain and restore their powers.""", # MISSING TRANSLATION
+	FOUNTAIN_STAMINA = """The group takes a rest in the room and recover their energy.""", # MISSING TRANSLATION
 	DIALOGUE_SPRING_LOOT = "在四处搜寻后，你发现了一个小藏匿处。你决定自己拿走里面的东西.",
 	DIALOGUE_SPRING_NO_LOOT = "您四处搜索，但找不到任何有用的东西.",
 	TRIBALELVES = "你发现自己被一群当地部落精灵包围。他们似乎认为你是他们领土上的入侵者，正在准备攻击...",
@@ -3249,6 +3260,20 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 
 	RETURNTOMANSIONBUTTON = "将角色送回豪宅",
 	RETURNCHARACTERCONFIRM = "命令 [name] 返回豪宅?",
+	ITEMMAP_BANDIT_DEN = """Map: Bandit Den""", # MISSING TRANSLATION
+	ITEMMAP_BANDIT_FORT = """Map: Bandit Fort""", # MISSING TRANSLATION
+	ITEMMAP_GROVE = """Map: Grove""", # MISSING TRANSLATION
+	ITEMMAP_GOBLIN_CAVE = """Map: Goblin Cave""", # MISSING TRANSLATION
+	ITEMMAP_UNDEAD_CRYPT = """Map: Crypt""", # MISSING TRANSLATION
+	ITEMMAP_ANCIENT_JUNGLES = """Map: ncient Jungles""", # MISSING TRANSLATION
+	ITEMMAP_FIRE_DEPTHS = """Map: Fire Depths""", # MISSING TRANSLATION
+	ITEMMAP_BANDIT_DENDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_BANDIT_FORTDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_GROVEDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_GOBLIN_CAVEDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_UNDEAD_CRYPTDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_ANCIENT_JUNGLESDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_FIRE_DEPTHSDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
 
 
 	LOCATIONNAMESKIRMISH_BANDIT_CAMP = "Bandit Camp 土匪营地",
@@ -3523,6 +3548,10 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	STARTINGDIALOGUE3REPLY3 = "什么是行会?",
 	STARTINGDIALOGUE3REPLY4 = "我没问题了",
 	STARTINGDIALOGUE4_1 = "— 我两周后回来。",
+	STARTUPGRADEBONUS = """You go for a short trip through the mansion and one of the previously unnoticed rooms on the first floor catches your sight. Inside of it you find...""", # MISSING TRANSLATION
+	STARTUPGRADEBONUS1 = """Forge""", # MISSING TRANSLATION
+	STARTUPGRADEBONUS2 = """Tailor Worksop""", # MISSING TRANSLATION
+	STARTUPGRADEBONUS3 = """Alchemy Room""", # MISSING TRANSLATION
 	FIGHTERSINTRODUCTION1 = "一个身披重甲的大个子男人给你一个严厉的眼神。\n\n-你是谁？如果你在找工作，你必须先注册为战斗人员。我不接待新兵。 ",
 	FIGHTERSINTRODUCTION1REPLY1 = "你错了，我不是新兵",
 	FIGHTERSINTRODUCTION1REPLY2 = "我是新的土地所有者，表示尊重",
@@ -12950,6 +12979,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	
 	METRICS_BASE = "[name] 已经成为您家庭的一部分 {color=yellow|%d} 周 {color=yellow|%d} 天了。",
+	METRICS_BASE_YOU = """[name] is a [master] and has been in this household for {color=yellow|%d} weeks and {color=yellow|%d} days.""", # MISSING TRANSLATION
 	METRICS_DATES_MASTER = "[He] 约会了 {color=yellow|%d} 次，并进行了 {color=yellow|%d} 次性活动。",
 	METRICS_DATES = "[He] 与你约会了 {color=yellow|%d} 次，并进行了 {color=yellow|%d} 次性活动。",
 	METRICS_PARTNERS = "总的来说 [he]在这段时间里与 {color=yellow|%d} 名伴侣发生了性关系。 ",

@@ -849,7 +849,7 @@ var unique_sprites = {
 			name = "Nude",
 			descript = "",
 			path = "aire_nude_body", 
-			face_path = "aire", # TODO change
+			face_path = "aire_nude",
 			unlock_reqs = []
 			},
 #		wed = {
@@ -955,7 +955,7 @@ var unique_sprites = {
 			name = "Wed",
 			descript = "",
 			path = "lilia_wed_body", 
-			face_path = "lilia", # TODO change
+			face_path = "lilia_nude",
 			unlock_reqs = []
 			},
 	},
@@ -1040,7 +1040,7 @@ var unique_sprites = {
 			name = "Wed",
 			descript = "",
 			path = "heleviel_wed_body", 
-			face_path = "heleviel_wed", # TODO change
+			face_path = "heleviel_wed",
 			unlock_reqs = []
 			},
 	},

@@ -712,9 +712,6 @@ margin_top = 15.0
 margin_right = 1905.0
 margin_bottom = 745.0
 theme = ExtResource( 31 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="givercontainer" type="VBoxContainer" parent="Panel/givetakepanel"]
 margin_left = 14.1769
@@ -750,6 +747,8 @@ margin_left = 7.0
 margin_top = 6.0
 margin_right = 44.0
 margin_bottom = 46.0
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -800,6 +799,8 @@ margin_left = 8.25146
 margin_top = 6.0
 margin_right = 45.2515
 margin_bottom = 46.0
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }

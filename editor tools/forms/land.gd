@@ -4,7 +4,7 @@ extends "res://editor tools/classes/record_panel.gd"
 onready var codeedit = $MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/codeedit
 var code
 
-var capital_options = ['quest_board','location_purchase']
+var capital_options = ['quest_board']#,'location_purchase']
 
 func _init():
 	tres = {}

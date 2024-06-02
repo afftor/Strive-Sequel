@@ -18,12 +18,12 @@ var lands = {
 		start_locations_number = 2, #will generate this number of smaller locations like dungeons
 		locations = {}, #array to fill up with settlements and dungeons
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'], #array of allowed locations to generate
-		starting_locations = ['dungeon_bandit_fort'],#['dungeon_bandit_den','dungeon_goblin_cave'],
+		starting_locations = ['dungeon_bandit_den','dungeon_goblin_cave'],#['dungeon_bandit_fort'],
 		gatherable_resources = [],
 		guilds = ['workers','servants','fighters','mages','slavemarket','exotic_slave_trader'],
 		events = [],
 		tags = [],
-		capital_options = ['quest_board','location_purchase'],
+		capital_options = ['quest_board'],#,'location_purchase'],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
 		area_shop_items = {
 			meat = {min = 40, max = 80, chance = 1},
@@ -51,6 +51,8 @@ var lands = {
 			itempool2 = {items = ['chest_base_cloth','chest_base_leather','chest_base_metal','legs_base_cloth','legs_base_leather','legs_base_metal'], min = 1, max = 3, chance = 0.8},
 			itempool3 = {items = ['leather_collar','animal_ears','animal_gloves','maid_dress','worker_outfit','lacy_underwear','handcuffs','strapon','anal_beads'], min = 3, max = 6, chance = 0.8},
 			itempool4 = {items = ['beer','alcohol','aphrodisiac','hairdye'], min = 4, max = 8, chance = 0.8},
+			itempool5 = {items = ['map_goblin_cave','map_bandit_den'], min = 1, max = 2, chance = 1},
+			itempool6 = {items = ['map_bandit_fort','map_undead_crypt','map_fire_depths','map_rebel_redoubt'], min = 1, max = 1, chance = 1},
 
 			},
 		capital_background = 'aliron',
@@ -92,6 +94,7 @@ var lands = {
 			itempool2 = {items = ['chest_base_cloth','chest_base_leather','legs_base_cloth','legs_base_leather'], min = 1, max = 2, chance = 0.8},
 			soul_stone = {min = 1, max = 1, chance = 0.1}
 			},
+			itempool3 = {items = ['map_ancient_jungle','map_grove'], min = 1, max = 1, chance = 1},
 		capital_background = 'elf_capital',
 		capital_name = "Elven Capital",
 		capital_code = 'elf_capital',
@@ -1166,7 +1169,7 @@ var dungeons = {
 		},
 		difficulty = 'medium',
 		background_pool = ['cave_1'],
-		enemyarray = [['betrayal_confirmed_rebels_1', 1],['betrayal_confirmed_rebels_2', 1],['rebels_small', 0.5]],
+		enemyarray = [['event_rebels_1', 1],['event_rebels_2', 1],['rebels_small', 0.5]],
 		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
@@ -1633,7 +1636,7 @@ var dungeons = {
 		},
 		difficulty = 'medium',
 		background_pool = ['cave_1'],
-		enemyarray = [['betrayal_confirmed_rebels_1', 1],['betrayal_confirmed_rebels_2', 1],['rebels_small', 0.5]],
+		enemyarray = [['event_rebels_1', 1],['event_rebels_2', 1],['rebels_small', 0.5]],
 		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],

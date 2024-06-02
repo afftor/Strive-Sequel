@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Slave_Module.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/SlaveTooltipPanel.tres" type="StyleBox" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://assets/images/gui/gui icons/wit.png" type="Texture" id=35]
 [ext_resource path="res://assets/images/gui/gui icons/magic_factor.png" type="Texture" id=36]
 [ext_resource path="res://assets/images/gui/gui icons/timid_factor.png" type="Texture" id=37]
+[ext_resource path="res://assets/textures/solid_panel.tres" type="StyleBox" id=38]
 
 [sub_resource type="DynamicFont" id=1]
 size = 14
@@ -683,9 +684,6 @@ custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Panel" type="Control" parent="."]
 visible = false
@@ -812,12 +810,22 @@ __meta__ = {
 }
 
 [node name="Panel2" type="Panel" parent="."]
-margin_left = 1.0
-margin_top = 460.0
-margin_right = 313.0
-margin_bottom = 535.0
+margin_left = 469.0
+margin_top = 1.0
+margin_right = 708.0
+margin_bottom = 201.0
+custom_styles/panel = ExtResource( 38 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel2"]
-margin_right = 316.0
-margin_bottom = 64.0
-text = "Challenges:"
+margin_left = 10.0
+margin_top = 17.0
+margin_right = 230.0
+margin_bottom = 166.0
+bbcode_text = "HG1
+HG2
+HG3
+HG4"
+text = "HG1
+HG2
+HG3
+HG4"

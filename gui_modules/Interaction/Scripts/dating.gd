@@ -201,6 +201,7 @@ func initiate(tempperson):
 		$textfield/slaveportrait/TextureRect.set_texture(null)
 	$textfield/slaveportrait/Name.text = person.get_short_name()
 	$textfield/masterportrait/Name.text = master.get_short_name()
+	$textfield/masterportrait/TextureRect.set_texture(master.get_icon_small())
 	# if $textfield/slaveportrait.texture == null:
 	# 	$textfield/slaveportrait/TextureRect.visible = false
 	# else:
@@ -450,7 +451,7 @@ var date_lines = {
 	hug_negative = [ [tr("DATING_HUG_NEGATIVE_1"), 1], ],
 	kiss_start = [ [tr("DATING_KISS_START_1"), 1], ],
 	kiss_positive = [ [tr("DATING_KISS_POSITIVE_1"), 1], [tr("DATING_KISS_POSITIVE_2"), 1], ],
-	kiss_erotic = [ ["DATING_KISS_EROTIC_1",1], ],
+	kiss_erotic = [ [tr("DATING_KISS_EROTIC_1"),1], ],
 	kiss_erotic_public = [tr("DATING_KISS_EROTIC_PUBLIC_1"), 1],
 	kiss_negative = [ [tr("DATING_KISS_NEGATIVE_1"), 1], [tr("DATING_KISS_NEGATIVE_2"), 1] ],
 	
@@ -964,10 +965,10 @@ func ask_to_marry(person, counter):
 	var unique_text = ""
 	if unique_marry_rules.has(person.get_stat('unique')):
 		for i in unique_marry_rules[person.get_stat('unique')].values():
-			if globals.valuecheck(i.reqs):
+			if globals.checkreqs(i.reqs):
 				gave_consent = i.agrees
-				unique_text = tr(i.text)
-				unique_descript = tr(i.description)
+				unique_text = person.translate(tr(i.text))
+				unique_descript = person.translate(tr(i.description))
 				
 				break
 	else:

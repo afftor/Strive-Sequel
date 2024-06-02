@@ -8,6 +8,7 @@
 [ext_resource path="res://src/scenes/alertpanel.gd" type="Script" id=21]
 
 [node name="AlertPanel" type="Popup"]
+visible = true
 margin_left = 721.0
 margin_top = 331.0
 margin_right = 1245.0

@@ -91,8 +91,8 @@ var unique_dict = { #shows available talk characters. Scenes go in order from hi
 	amelia = {
 		code = 'amelia',
 		scenes = [
-			{code = 'amelia_final_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'AMELIA_FINAL_1'},{type = "active_quest_stage", value = "amelia_main_quest", stage = "stage11"}]}, 
-			{code = 'amelia_sex_1', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'AMELIA_SEX_1'},{type = 'quest_completed', name = 'amelia_main_quest', check = true}]}, 
+			{code = 'amelia_final_1', reqs = [{type = 'dialogue_seen', check = false, value = 'AMELIA_FINAL_1'},{type = "active_quest_stage", value = "amelia_main_quest", stage = "stage11"}]}, 
+			{code = 'amelia_sex_1', reqs = [{type = 'dialogue_seen', check = false, value = 'AMELIA_SEX_1'},{type = 'quest_completed', name = 'amelia_main_quest', check = true}]}, 
 			{code = 'amelia_dialogue_start', reqs = []}, #needs adding  
 		]
 	}
@@ -120,23 +120,8 @@ func remove():
 	input_handler.interactive_message('slave_remove')
 
 func update():
-	# active_person = gui_controller.mansion.active_person if SummaryModule.selected_person == null else SummaryModule.selected_person
 	active_person = input_handler.interacted_character
-	# nudity and wed check for portraits
-	if active_person.has_work_rule('nudity') and active_person.get_stat("unique") != null:
-		if images.portraits.has(active_person.get_stat("unique") + "_nude"):
-#			active_person.set_stat('icon_image', images.portraits[active_person.get_stat("unique") + "_nude"])
-			active_person.set_stat('icon_image', active_person.get_stat("unique") + "_nude")
-	elif active_person.get_stat("unique") != null:
-#		active_person.set_stat('icon_image', images.portraits[active_person.get_stat("unique")])
-		active_person.set_stat('icon_image', active_person.get_stat("unique"))
-	if active_person != null && active_person.statlist.statlist.unique != null:
-		if ResourceScripts.game_progress.spouse != null && globals.valuecheck({type = 'has_spouse', check = true}) && !ResourceScripts.game_progress.marriage_completed:
-			var spouse_person = characters_pool.get_char_by_id(ResourceScripts.game_progress.spouse)
-			if spouse_person.get_stat('unique') == active_person.get_stat('unique') and images.portraits.has(active_person.get_stat("unique") + "_wed"):
-#				active_person.set_stat('icon_image', images.portraits[active_person.get_stat("unique") + "_wed"])
-				active_person.set_stat('icon_image', active_person.get_stat("unique") + "_wed")
-	#do not set stat to object type, only pathes/ids - as stats are serializable
+	active_person.update_prt()
 	SummaryModule.show_summary()
 	SlaveInfo.update()
 	BodyModule.update()
@@ -265,15 +250,18 @@ func displaymetrics():
 	$SlaveBodyModule/StatsPanel.visible = !$SlaveBodyModule/StatsPanel.visible
 	
 	if !$SlaveBodyModule/StatsPanel.visible: return
-	
 	var text = ""
 	var person = active_person
 	if person.is_players_character:
-		text += tr("METRICS_BASE") % ResourceScripts.game_globals.get_week_and_day_custom(ResourceScripts.game_globals.date - person.get_stat('metrics_ownership'))
+		if person.is_master():
+			text += tr("METRICS_BASE_YOU")
+		else:
+			text += tr("METRICS_BASE")
+			text = text % ResourceScripts.game_globals.get_week_and_day_custom(ResourceScripts.game_globals.date - person.get_stat('metrics_ownership'))
 	if person.is_master() == true:
-		text += "\n\n" + tr("METRICS_DATES_MASTER") % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')]
+		text += "\n\n" + tr("METRICS_DATES_MASTER") % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')] + " "
 	else:
-		text += "\n\n" + tr("METRICS_DATES") % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')]
+		text += "\n\n" + tr("METRICS_DATES") % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')] + " "
 	var partner_number = person.get_stat('metrics_partners').size() + person.get_stat('metrics_randompartners')
 	var no_sex = false
 	if partner_number == 0:

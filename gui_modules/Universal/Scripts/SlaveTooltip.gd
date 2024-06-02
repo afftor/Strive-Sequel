@@ -158,8 +158,8 @@ func showup(node, person):
 	var text = ''
 	for i in ['chg_strength','chg_dexterity','chg_persuasion','chg_wisdom']:
 		if person.get_stat(i + "_max") == 0: continue
-		text += statdata.statdata[i].name + " " +  str(person.get_stat(i)) + "/" + str(person.get_stat(i+"_max"))
-	
+		text += statdata.statdata[i].name + ": " +  str(person.get_stat(i+"_max") - person.get_stat(i)) + "/" + str(person.get_stat(i+"_max")) + '\n'
+	$Panel2.visible = text != ''
 	$Panel2/RichTextLabel.bbcode_text = text
 	
 

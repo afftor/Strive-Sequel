@@ -98,6 +98,14 @@ var scenedict = {
 	]
 	},
 
+	lockpick_chest_free = {
+		text = 'DIALOGUECHESTLOCKPICKFREE',
+		tags = ['active_character_translate'],
+		image = 'chest',
+		options = [
+		{code = 'open_chest', reqs = [], text = tr("DIALOGUECHESTOPEN"), bonus_effects = [{code = 'advance_location'}]}
+		],
+	},
 	lockpick_chest_success = {
 		text = 'DIALOGUECHESTLOCKPICKSUCCESS',
 		tags = ['active_character_translate'],
@@ -246,7 +254,7 @@ var scenedict = {
 		text = tr("DIALOGUEDUNGEONCHEST"),
 		tags = ['locked_chest'],
 		image = 'chest',
-		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5]]}],
+		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5],['easy_chest_map', 0.2]]}],
 		options = [
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
 		]
@@ -255,7 +263,7 @@ var scenedict = {
 		text = tr("DIALOGUEDUNGEONCHEST"),
 		tags = ['locked_chest'],
 		image = 'chest',
-		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['medium_chest_usable', 1], ['medium_chest_gear',0.2], ['medium_chest_cosmetics', 0.5]]}],
+		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['medium_chest_usable', 1], ['medium_chest_gear',0.2], ['medium_chest_cosmetics', 0.5],['medium_chest_map', 0.1]]}],
 		options = [
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
 		]
@@ -294,7 +302,7 @@ var scenedict = {
 	tags = ['good','locked_chest'],
 	default_event_type = "custom_event",
 	image = 'chest',
-	common_effects = [{code = 'make_loot',type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5]]}],
+	common_effects = [{code = 'make_loot',type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5],['easy_chest_map', 0.1]]}],
 	options = [
 	#{code = 'open_chest', reqs = [], text = tr("DIALOGUEFORCECHESTOPEN")},
 	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
@@ -424,8 +432,8 @@ var scenedict = {
 	}
 	],
 	options = [
-	{code = 'event_goblin_recruit', reqs = [], challenge = 'charm', select_person = true, text = ("DIALOGUEEVENTGOBLINRECRUIT")},
-	{code = 'event_goblin_skip_dungeon', reqs = [], challenge = 'charm', select_person = true, text = tr("DIALOGUEEVENTGOBLINBRINGTOLEADER")},
+	{code = 'event_goblin_recruit', reqs = [], challenge = 'persuasion', select_person = true, text = ("DIALOGUEEVENTGOBLINRECRUIT")},
+	{code = 'event_goblin_skip_dungeon', reqs = [], challenge = 'persuasion', select_person = true, text = tr("DIALOGUEEVENTGOBLINBRINGTOLEADER")},
 	{code = 'event_goblin_capture', reqs = [], challenge = 'strength', select_person = true, text = tr("DIALOGUEEVENTGOBLINCAPTURE")},
 	#{code = 'event_goblin_kill', reqs = [], text = tr("DIALOGUEEVENTGOBLINKILL")},
 	{code = 'event_goblin_leave', reqs = [], text = tr("DIALOGUEEVENTGOBLINLEAVE")}
@@ -529,7 +537,7 @@ var scenedict = {
 	}
 	],
 	options = [
-	{code = 'event_fairy_recruit', reqs = [], challenge = 'charm', select_person = true, text = ("DIALOGUEEVENTFAIRYRECRUIT")},
+	{code = 'event_fairy_recruit', reqs = [], challenge = 'persuasion', select_person = true, text = ("DIALOGUEEVENTFAIRYRECRUIT")},
 	{code = 'event_fairy_heal', reqs = [], text = tr("DIALOGUEEVENTFAIRYASKHEAL")},
 	{code = 'event_fairy_capture', reqs = [], challenge = 'dexterity', select_person = true, text = tr("DIALOGUEEVENTFAIRYCAPTURE")},
 	{code = 'event_fairy_leave', reqs = [], text = tr("DIALOGUEEVENTFAIRYLEAVE")}
@@ -685,7 +693,7 @@ var scenedict = {
 			{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_combatant'},
 			],
 		options = [
-		{code = 'event_person_recruit_attempt', challenge = 'charm', select_person = true, reqs = [], text = tr("DIALOGUEPERSONASKTOJOIN")},
+		{code = 'event_person_recruit_attempt', challenge = 'persuasion', select_person = true, reqs = [], text = tr("DIALOGUEPERSONASKTOJOIN")},
 		{code = 'close', reqs = [], text = tr("DIALOGUELEAVE")}
 		],
 	},
@@ -1153,22 +1161,27 @@ var scenedict = {
 		tags = ['dialogue_scene'],
 		text = "STARTINGDIALOGUE4_1",
 		common_effects = [
-#			{code = 'add_timed_event', value = "loan_event1",
-#				args = [
-#					{type = 'fixed_date',
-#					date = 15,
-#					hour = 1}
-#					]
-#			},
 			{code = 'plan_loan_event', stage = 1},
 			{code = 'progress_quest', value = 'main_quest_loan', stage = 'stage0'},
 			{code = 'progress_quest', value = 'guilds_introduction', stage = 'start'},
 			],
 		options = [
-		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue'},
+		{code = 'close', reqs = [{type = 'difficulty', operant = 'eq', value = 'hard'}], text = tr("DIALOGUECLOSE"), type = 'next_dialogue'},
+		{code = 'starting_bonus_upgrade', reqs = [{type = 'difficulty', operant = 'neq', value = 'hard'}], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 1},
 		],
-
 	},
+	starting_bonus_upgrade = {
+		image = null,
+		tags = ['dialogue_scene','blackscreen_transition_common'],
+		text = "STARTUPGRADEBONUS",
+		common_effects = [],
+		options = [
+		{code = 'close', reqs = [], bonus_effects = [{code ='unlock_uprade', upgrade = 'forge', level = 1}], text = tr("STARTUPGRADEBONUS1"), type = 'next_dialogue'},
+		{code = 'close', reqs = [], bonus_effects = [{code ='unlock_uprade', upgrade = 'tailor', level = 1}], text = tr("STARTUPGRADEBONUS2"), type = 'next_dialogue'},
+		{code = 'close', reqs = [], bonus_effects = [{code ='unlock_uprade', upgrade = 'alchemy', level = 1}], text = tr("STARTUPGRADEBONUS3"), type = 'next_dialogue'},
+		],
+	},
+	
 	loan_event1 = {
 		variations = [{
 			reqs = [{type = 'has_loan_money', stage = 1}],
@@ -1182,13 +1195,6 @@ var scenedict = {
 				{code = 'pay_loan', stage = 1},
 				{code = 'progress_quest', value = 'main_quest_loan', stage = 'stage1'},
 				{code = 'plan_loan_event', stage = 2},
-#				{code = 'add_timed_event', value = "loan_event2",
-#					args = [
-#						{type = 'fixed_date',
-#						date = 29,
-#						hour = 1}
-#						]
-#					},
 				{code = 'rewrite_save'}
 				]
 			}],
@@ -1444,15 +1450,27 @@ var scenedict = {
 		{code = 'freya_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},
-	spring = {
+	spring = {variations = [{
+		reqs = [{type = 'random', value = 5}],
+		text = tr("SPRINGTEXT"),
+		tags = ['dialogue_scene'],
+		image = 'spring',
+		options = [
+			{code = 'spring_stamina', reqs = [], text = tr("SPRING_STAMINA_OPTION"), dialogue_argument = 1},
+			{code = 'spring_loot', reqs = [], text = tr("SPRING_LOOT_OPTION"), dialogue_argument = 2},
+			{code = 'close', reqs = [], text = "DIALOGUECANCEL"}
+		]
+		},{
+		reqs = [],
 		text = tr("SPRINGTEXT"),
 		tags = ['dialogue_scene'],
 		image = 'spring',
 		options = [
 			{code = 'spring_heal', reqs = [], text = tr("SPRING_HEAL_OPTION"), dialogue_argument = 1},
-			{code = 'spring_loot', reqs = [], text = tr("SPRING_LOOT_OPTION"), dialogue_argument = 2},
+			{code = 'spring_stamina', reqs = [], text = tr("SPRING_STAMINA_OPTION"), dialogue_argument = 1},
+			{code = 'close', reqs = [], text = "DIALOGUECANCEL"}
 		]
-		},
+		}]},
 	spring_heal = {
 		text = tr("SPRING_HEAL"),
 		tags = [],
@@ -1462,9 +1480,18 @@ var scenedict = {
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
 		],
 	},
+	spring_stamina = {
+		text = tr("SPRING_STAMINA"),
+		tags = [],
+		image = 'spring',
+		bonus_effects = [{code = 'add_stamina', value = 50}],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		],
+	},
 	spring_loot = {
 		variations = [
-			{reqs = [{type = 'random', value = 66}],
+			{reqs = [{type = 'random', value = 100}],
 			text = tr("DIALOGUE_SPRING_LOOT"),
 			image = 'spring',
 			default_event_type = "custom_event",
@@ -1517,7 +1544,36 @@ var scenedict = {
 	]
 	},
 	
+	fountain = {
+		text = tr("FOUNTAINTEXT"),
+		tags = ['dialogue_scene'],
+		image = 'spring',
+		options = [
+			{code = 'fountain_stamina', reqs = [], text = tr("FOUNTAIN_STAMINA_OPTION"), dialogue_argument = 1},
+			{code = 'fountain_mana', reqs = [], text = tr("FOUNTAIN_MANA_OPTION"), dialogue_argument = 2},
+			{code = 'close', reqs = [], text = "DIALOGUECANCEL"}
+		]
+	},
 	
+	
+	fountain_stamina = {
+		text = tr("FOUNTAIN_STAMINA"),
+		tags = [],
+		image = 'spring',
+		bonus_effects = [{code = 'add_stamina', value = 50}],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		],
+	},
+	fountain_mana = {
+		text = tr("FOUNTAIN_MANA"),
+		tags = [],
+		image = 'spring',
+		bonus_effects = [{code = 'affect_active_party', type = 'damage_mana_percent', value = -40}],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		],
+	},
 	
 	event_trap_easy = {text = tr("DIALOGUEEVENTTRAP"),
 	tags = ['linked_event'],
@@ -2015,7 +2071,7 @@ var quests = {
 	},
 
 	daisy_lost = {
-		code = 'daisy_clothes',
+		code = 'daisy_lost',
 		summary = "DAISY_LOST_SUMMARY",
 		stages = {
 			stage1 = {code = 'stage1', name = "DAISY_LOST_NAME", descript = "DAISY_LOST_STAGE_1"}, # you should visit Amelia

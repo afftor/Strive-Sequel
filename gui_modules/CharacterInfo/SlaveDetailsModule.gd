@@ -94,6 +94,7 @@ func unique_sprite_choose():
 	ImageSelect.mode = 'unique'
 	ImageSelect.buildimagelist('unique')
 	details_state = 'unique_sprite'
+	$VBoxContainer/IconBlock.get_node("assignboth").pressed = true
 	
 
 func make_random_portrait():

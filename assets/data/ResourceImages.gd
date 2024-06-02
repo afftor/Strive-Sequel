@@ -364,6 +364,16 @@ var scenes = {
 	
 	hire = load("res://assets/images/scenes/hire.png"),
 	
+	dungeon_door = load("res://assets/images/scenes/dungeon_door.png"),
+	dungeon_broken_bridge = load("res://assets/images/scenes/dungeon_broken_bridge.png"),
+	dungeon_cavein = load("res://assets/images/scenes/dungeon_cavein.png"),
+	dungeon_forest_bridge = load("res://assets/images/scenes/dungeon_forest_bridge.png"),
+	dungeon_enemies = load("res://assets/images/scenes/dungeon_enemies.png"),
+	dungeon_gate = load("res://assets/images/scenes/dungeon_gate.png"),
+	dungeon_fountain = load("res://assets/images/scenes/dungeon_fountain.png"),
+	dungeon_magic_barrier = load("res://assets/images/scenes/dungeon_magic_barrier.png"),
+	
+	
 	
 }
 
@@ -413,7 +423,7 @@ var sprites = {
 	jean = load("res://assets/images/sprites/jean.png"),
 	jean_body = load("res://assets/images/sprites/jean_body.png"),
 	hara = load("res://assets/images/sprites/hara.png"),
-	hara_body = load("res://assets/images/sprites/hara.png"),
+	hara_body = load("res://assets/images/sprites/hara_body.png"),
 	cali = load("res://assets/images/sprites/cali.png"),
 	cali_body = load("res://assets/images/sprites/cali_body.png"),
 	cali_collar = load("res://assets/images/sprites/cali_collar.png"),
@@ -469,6 +479,7 @@ var sprites = {
 	heleviel_nude = load("res://assets/images/sprites/heleviel_nude.png"),
 	heleviel_nude_body = load("res://assets/images/sprites/heleviel_nude_body.png"),
 	heleviel_wed = load("res://assets/images/sprites/heleviel_wed.png"),
+	heleviel_wed_body = load("res://assets/images/sprites/heleviel_wed_body.png"),
 	lira_nude = load("res://assets/images/sprites/Lira_nude.png"),
 	lira_nude_body = load("res://assets/images/sprites/Lira_nude_body.png"),
 	amelia_body = load("res://assets/images/sprites/amelia_body.png"),
@@ -487,7 +498,7 @@ var portraits = {
 	daisy_nude = 'res://assets/images/portraits/daisy_nude_prt.png',
 	daisy_wed = 'res://assets/images/portraits/daisy_wed_prt.png',
 	daisy_sad = "res://assets/images/portraits/daisysad_prt.png",
-	daisy_maid = 'res://assets/images/portraits/daisy_maid_portrait.png',
+	daisy_maid = 'res://assets/images/portraits/daisy_maid_prt.png',
 	daisy_christmas = 'res://assets/images/portraits/daisy_christmas_prt.png',
 	anastasia = "res://assets/images/portraits/anastasia_prt.png",
 	anastasia_nude = "res://assets/images/portraits/anastasia_nude_prt.png",
@@ -816,6 +827,13 @@ func loadimages():
 	for i in GFX:
 		GFX[i] = input_handler.loadimage(GFX[i])
 
+func add_portrait_paths():
+	var regex = RegEx.new()
+	regex.compile("[ \\w-]+?(?=\\.)")
+	for i in input_handler.dir_contents("res://assets/images/portraits"):
+		var result = regex.search(i)
+		if result and not "import" in i: 
+			images.portraits[result.get_string()] = i
 
 var upgrade_icons = {
 	alchemy = load("res://assets/images/gui/upgrades/alchemy.png"),

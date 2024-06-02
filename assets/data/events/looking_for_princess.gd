@@ -318,7 +318,7 @@ var data = {
 	looking_for_princess_elven_7 = {
 		variations = [
 			{
-				reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5}],
+				reqs = [{type = 'master_check', value = {code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5}}],
 				image = null, tags = ['dialogue_scene'], character = 'elf_priestess', character2 = 'anastasia',
 				text = [{text = "LOOKING_FOR_PRINCESS_31", reqs = []}],
 				common_effects = [{code = 'play_sound', value = 'slap'}, {code = 'decision', value = 'PrincessObtained'}, #Anastasia is captured alive
@@ -327,7 +327,7 @@ var data = {
 					code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'update_city'}]
 				} ],
 			}, {
-				reqs = [{code = 'stat', stat = 'physics_factor', operant = 'lt', value = 5}], character = 'elf_priestess', character2 = 'anastasia',
+				reqs = [{type = 'master_check', value = {code = 'stat', stat = 'physics_factor', operant = 'lt', value = 5}}], character = 'elf_priestess', character2 = 'anastasia',
 				image = null, tags = ['dialogue_scene'], common_effects = [{code = 'play_sound', value = 'slap'}],
 				text = [{text = "LOOKING_FOR_PRINCESS_32_f", reqs = [], previous_dialogue_option = 2},
 				{text = "LOOKING_FOR_PRINCESS_32", reqs = []}],

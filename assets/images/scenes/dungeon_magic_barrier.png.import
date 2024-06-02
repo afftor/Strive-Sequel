@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/daisy_maid_portrait.png-f529cc72fec6a900b9ee74d9a91ca4b1.stex"
+path="res://.import/dungeon_magic_barrier.png-1579ea46d8890073edf494d063e9b1e3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/daisy_maid_portrait.png"
-dest_files=[ "res://.import/daisy_maid_portrait.png-f529cc72fec6a900b9ee74d9a91ca4b1.stex" ]
+source_file="res://assets/images/scenes/dungeon_magic_barrier.png"
+dest_files=[ "res://.import/dungeon_magic_barrier.png-1579ea46d8890073edf494d063e9b1e3.stex" ]
 
 [params]
 

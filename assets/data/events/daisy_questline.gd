@@ -177,8 +177,10 @@ var data = {
 		reqs = [], character = 'daisy_maid',
 		text = [{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_0", reqs = [], }],
 		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
+			{code = 'unique_variation', operant = '=', value = "maid"},
 			{code = 'body_image', operant = '=', value = "daisy_maid_body"},
-			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/daisy_maid_portrait.png"}]},
+			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/daisy_maid_prt.png"}]},
+			{code = 'update_prts'},
 			{code = 'unique_character_changes',
 					value = 'daisy',
 					args = [
@@ -220,7 +222,7 @@ var data = {
 
 	daisy_dress_acquired_normal_3 = { # NON-LEWD DRESS / WILLING
 		variations = [ {
-			reqs = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 3}],
+			reqs = [{type = 'master_check', value = {code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 3}}],
 			tags = ['dialogue_scene', 'master_translate'], image = null, character = 'daisy_maid',
 			text = [{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_0", reqs = []}],
 			options = [ {
@@ -232,7 +234,7 @@ var data = {
 				bonus_effects = [{code = 'dialogue_counter', name = 'daisy_sympathy', op = '-'}] #right
 			}, ],
 		}, {
-			reqs = [{code = 'stat', stat = 'sexuals_factor', operant = 'lt', value = 3}],
+			reqs = [{type = 'master_check', value = {code = 'stat', stat = 'sexuals_factor', operant = 'lt', value = 3}}],
 			tags = ['dialogue_scene'], image = null, character = 'daisy_maid',
 			text = [{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_BAD", reqs = []}],
 			options = [ {
@@ -348,8 +350,10 @@ var data = {
 		reqs = [], character = 'daisy_maid',
 		text = [{text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_0", reqs = [], }],
 		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
+			{code = 'unique_variation', operant = '=', value = "maid"},
 			{code = 'body_image', operant = '=', value = "daisy_maid_body"},
-			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/daisy_maid_portrait.png"}]},
+			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/daisy_maid_prt.png"}]},
+			{code = 'update_prts'},
 			{code = 'unique_character_changes',
 					value = 'daisy',
 					args = [

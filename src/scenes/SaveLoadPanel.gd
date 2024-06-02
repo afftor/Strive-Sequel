@@ -291,14 +291,17 @@ func hide():
 	pass
 
 func Sort(a,b):
-	if a.get_node("Label").text == "Savename":
+	if a.get_node("Label").text == "Savename" || a.get_node("Date").text == 'savename':
 		return false
 	var Aname = a.get_node("Label").text
 	var Bname = b.get_node("Label").text
 	if savedata.has(Aname) and savedata.has(Bname):
 		pass
 	else:
-		return false
+		if savedata.has(Aname):
+			return true
+		else:
+			return false
 	
 	var x = OS.get_unix_time_from_datetime(savedata[Aname]["time"])
 	var y = OS.get_unix_time_from_datetime(savedata[Bname]["time"])

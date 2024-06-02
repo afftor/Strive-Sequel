@@ -75,7 +75,7 @@ var dungeons = {
 		event_room_number = [3,4],
 		material_room_number = [5,6],
 		
-		main_route_length = [6,7], #remember that first and last rooms in route are effectively empty 
+		main_route_length = [5,6], #remember that first and last rooms in route are effectively empty 
 		bonus_rooms = [2,3],
 		levels = [2,2], 
 		base_room_stamina_cost = [7,10], #random roll for every main/bonus rooms rounded
@@ -176,7 +176,19 @@ var dungeons = {
 					['event_blocked_path',1],
 					['event_small_crack',1]
 				],
-			}
+			},
+			fountain = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['fountain'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.8]
+				],
+			},
 		},
 		
 		event_room_number = [3,4],
@@ -184,7 +196,7 @@ var dungeons = {
 		
 		main_route_length = [6,7],
 		bonus_rooms = [2,3],
-		levels = [3,3], 
+		levels = [2,3], 
 		base_room_stamina_cost = [7,10], 
 		
 		
@@ -219,7 +231,132 @@ var dungeons = {
 		bgm = "dungeon",
 		gather_mod = [2,2.5],
 		purchase_price = 200,
-		affiliation = 'local', #defines character races and events
+		affiliation = 'local',
+		events = [],
+		tags = [],
+	},
+	dungeon_rebel_redoubt = {
+		code = 'dungeon_rebel_redoubt',
+		type = 'dungeon',
+		name = 'bandit_fort',
+		classname = '',
+		descript = tr("DUNGEON_BANDIT_FORT_DESC"),
+		character_data = {
+			chance_mod = 1.2,
+			races = [['local', 6], ['common',1]]
+		},
+		difficulty = 'medium',
+		background_pool = ['fort1', 'fort2', 'fort3'],
+		enemyarray =  [['event_rebels_1', 1],['event_rebels_2', 1],['rebels_small', 0.5]],
+		final_enemy = [['rebels_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+		
+		event_data = {
+			dungeon_find_chest_medium = {
+				limit = 0,
+				weight = 6,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['dungeon_find_chest_medium'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.1],
+					['event_small_crack',1]
+				],
+			},
+			dungeon_find_armory_easy = {
+				limit = 1,
+				weight = 2,
+				floor_range = [2,0],
+				icon = 'chest',
+				events = ['dungeon_find_armory_easy'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.2],
+					['event_small_crack',1],
+				],
+			},
+			event_dungeon_prisoner = {
+				limit = 2,
+				weight = 5,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['event_dungeon_prisoner'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.2],
+					['event_small_crack',1],
+				],
+			},
+			celena_shrine_find = {
+				limit = 1,
+				weight = 2,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1]
+				],
+			},
+			fountain = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['fountain'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.8]
+				],
+			},
+		},
+		
+		event_room_number = [3,4],
+		material_room_number = [4,5],
+		
+		main_route_length = [6,7],
+		bonus_rooms = [2,3],
+		levels = [2,3], 
+		base_room_stamina_cost = [7,10], 
+		
+		
+		resources = ['woodiron','leatherthick','iron','steel','clothsilk','mithril'],
+		gatherable_resources = {
+			wood = {
+				amount = [45,60],
+				weight = 10,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			stone = {
+				amount = [35,50],
+				weight = 6,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},  
+			iron = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			woodiron = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			},
+			
+		bgm = "dungeon",
+		gather_mod = [2,2.5],
+		purchase_price = 200,
+		affiliation = 'local',
 		events = [],
 		tags = [],
 	},
@@ -280,7 +417,19 @@ var dungeons = {
 					['event_fallen_bridge',1],
 					['event_small_crack',1]
 				],
-			}
+			},
+			fountain = {
+				limit = 1,
+				weight = 2,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['fountain'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.8]
+				],
+			},
 		},
 		
 		event_room_number = [3,4],
@@ -326,7 +475,7 @@ var dungeons = {
 		classname = '',
 		descript = tr("DUNGEON_GOBLIN_CAVE_DESC"),
 		character_data = {
-			chance_mod = 1.7,
+			chance_mod = 1.4,
 			races = [["common", 1], ['local', 4], ['Goblin',5]]
 		},
 		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5'],
@@ -378,9 +527,9 @@ var dungeons = {
 		event_room_number = [3,4],
 		material_room_number = [4,5],
 		
-		main_route_length = [6,7],
+		main_route_length = [5,6],
 		bonus_rooms = [2,3],
-		levels = [2,3], 
+		levels = [2,2], 
 		base_room_stamina_cost = [6,9], 
 		
 		resources = ['bone','leather','stone','wood'],
@@ -479,9 +628,9 @@ var dungeons = {
 		event_room_number = [3,4],
 		material_room_number = [4,5],
 		
-		main_route_length = [6,7],
+		main_route_length = [5,6],
 		bonus_rooms = [2,3],
-		levels = [2,3], 
+		levels = [2,2], 
 		base_room_stamina_cost = [5,11], 
 		
 		resources = ['cloth','leather','woodmagic','wood','woodiron'],
@@ -598,7 +747,7 @@ var dungeons = {
 		event_room_number = [3,4],
 		material_room_number = [4,5],
 		
-		main_route_length = [7,8],
+		main_route_length = [6,7],
 		bonus_rooms = [2,4],
 		levels = [3,4], 
 		base_room_stamina_cost = [7,11], 
@@ -687,6 +836,18 @@ var dungeons = {
 					['event_fallen_bridge',1],
 					['event_small_crack',1],
 					['event_ancient_lock',1]
+				],
+			},
+			fountain = { #probably replace later
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['fountain'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.8]
 				],
 			}
 		},
@@ -924,7 +1085,7 @@ var dungeons = {
 		},
 		difficulty = 'medium',
 		background_pool = ['cave_1'],
-		enemyarray = [['betrayal_confirmed_rebels_1', 1],['betrayal_confirmed_rebels_2', 1],['rebels_small', 0.5]],
+		enemyarray = [['event_rebels_1', 1],['event_rebels_2', 1],['rebels_small', 0.5]],
 		final_enemy = [['final_boss_start',1]], final_enemy_type = 'event',
 		event_data = {
 			dungeon_find_chest_easy = {
@@ -1340,7 +1501,7 @@ var dungeons = {
 		area = 'forests',
 		travel_time = [1,1],
 		scripteventdata = [
-			{trigger = 'dungeon_complete', event = 'custom_event', args = 'cali_act3_jean_3', reqs = [{code = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage6'}, {code = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage8', orflag = true}]}
+			{trigger = 'dungeon_complete', event = 'custom_event', args = 'cali_act3_jean_3', reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage6'}, {type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage8', orflag = true}]}
 		]
 	},
 	quest_ancient_jungle_location = {

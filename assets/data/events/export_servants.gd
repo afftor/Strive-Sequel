@@ -114,7 +114,7 @@ var data = {
 		tags = ['dialogue_scene','master_translate'],
 		text = [
 		{text = "ELECTIONSTART4", reqs = []},
-		{text = "ELECTIONSTART4_1", reqs = [{type = "faction_reputation", code = 'servants', operant = 'gte', value = 300}], bonus_effects = [{code = 'decision', value = 'servants_election_support'}]},
+		{text = "ELECTIONSTART4_1", reqs = [{type = "faction_reputation", code = 'servants', operant = 'gte', value = 200}], bonus_effects = [{code = 'decision', value = 'servants_election_support'}]},
 		{text = "ELECTIONSTART4_2", reqs = []},
 		],
 		options = [
@@ -245,7 +245,7 @@ var data = {
 
 	servants_election_finish8 = {
 		variations = [
-		{reqs = [{code = 'decision', value = 'aire_is_dead', check = false}],
+		{reqs = [{type = 'decision', value = 'aire_is_dead', check = false}],
 		image = null,
 		custom_background = "anastasia_event_alive",
 		common_effects = [{code = 'set_music', value = 'battle2'}],
@@ -260,6 +260,7 @@ var data = {
 			{code = 'servants_election_finish9', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1}
 		]},
 		{image = null,
+		reqs = [],
 		custom_background = "anastasia_event_dead",
 		common_effects = [{code = 'set_music', value = 'battle2'}],
 		scene_type = "story_scene",

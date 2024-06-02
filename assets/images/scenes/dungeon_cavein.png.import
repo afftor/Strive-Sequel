@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/daisy_maidu_prt_serious.png-9f3ad0e7afd8d26b1e343794599fc8e8.stex"
+path="res://.import/dungeon_cavein.png-4d5ed7a63783028768133d289ba40dc3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/daisy_prt/daisy_maidu_prt_serious.png"
-dest_files=[ "res://.import/daisy_maidu_prt_serious.png-9f3ad0e7afd8d26b1e343794599fc8e8.stex" ]
+source_file="res://assets/images/scenes/dungeon_cavein.png"
+dest_files=[ "res://.import/dungeon_cavein.png-4d5ed7a63783028768133d289ba40dc3.stex" ]
 
 [params]
 

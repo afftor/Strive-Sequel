@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zephyra_deafault_prt_kind.png-d24f9f087a056ffee87bebc0623b7da2.stex"
+path="res://.import/scroll1.png-250e9e944c92db3c08658a7c8338c0bf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/zephyra_prt/zephyra_deafault_prt_kind.png"
-dest_files=[ "res://.import/zephyra_deafault_prt_kind.png-d24f9f087a056ffee87bebc0623b7da2.stex" ]
+source_file="res://assets/images/iconsitems/scroll1.png"
+dest_files=[ "res://.import/scroll1.png-250e9e944c92db3c08658a7c8338c0bf.stex" ]
 
 [params]
 

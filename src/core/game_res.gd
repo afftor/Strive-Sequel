@@ -167,6 +167,10 @@ func if_has_free_items(name, operant, value):
 			counter += i.amount
 	return input_handler.operate(operant, counter, value)
 
+
+func unlock_upgrade(upgrade, level):
+	upgrades[upgrade] = level
+
 func if_has_upgrade(upgrade, level):
 	if !upgrades.has(upgrade): return false
 	else: return upgrades[upgrade] >= level
@@ -331,8 +335,6 @@ func add_craft_value(currenttask, value, character, _tres = false): #bad rework,
 #		else: 
 #			return true
 
-func unlock_upgrade():
-	pass
 
 func add_build_value(currenttask, value, character, tres = false):
 	if upgrades_queue.empty():

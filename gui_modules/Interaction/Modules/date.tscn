@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://gui_modules/Interaction/Scripts/dating.gd" type="Script" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small.png" type="Texture" id=2]
@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/images/backgrounds/mansion.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/sprites/aire.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=9]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=10]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_tooltip_1.png" type="Texture" id=10]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=11]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=12]
 [ext_resource path="res://assets/Textures_v2/MANSION/Dating/Panels/panel_dating_bigframe.png" type="Texture" id=13]
@@ -53,6 +53,10 @@ size = 36
 use_filter = true
 extra_spacing_top = 1
 font_data = ExtResource( 14 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 550, 289 )
 
 [node name="date" type="Control" groups=["pauseprocess"]]
 margin_right = 40.0
@@ -536,7 +540,7 @@ margin_left = 618.0
 margin_top = 160.0
 margin_right = 1385.0
 margin_bottom = 886.0
-custom_styles/panel = ExtResource( 10 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="Control" type="Control" parent="end"]
 margin_left = -612.666
@@ -568,6 +572,7 @@ margin_left = 81.6396
 margin_top = 64.728
 margin_right = 695.64
 margin_bottom = 529.728
+theme = ExtResource( 41 )
 custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
 __meta__ = {

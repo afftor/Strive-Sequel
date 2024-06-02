@@ -187,7 +187,7 @@ hair = {reqs = [{code = 'stat', stat = 'hairlength', operant = 'neq', value = 'b
 chest = {reqs = [], name = "Chest", text = "[name1] takes his {^penis:cock:dick} into [his1] hand and points at [name2]'s chest, cumming all over it. The hot {^seed:semen:cum} drips down [name2]'s body.", specreqs = [], spectext = ''},
 belly = {reqs = [], name = "Belly", text = "[name1] puts his {^penis:cock:dick} into [his1] hand and points at [name2]'s belly. The hot {^seed:semen:cum} drips down [name2]'s navel and stomach.", specreqs = [], spectext = ''},
 pubis = {reqs = [], name = "Pubis", text = "[name1] takes out {^penis:cock:dick} and places at [name2]'s pubis. The hot {^seed:semen:cum} covers [name2]'s crotch.", specreqs = [], spectext = ''},
-pussy = {reqs = [{code = 'stat', stat = 'has_pussy', operant = 'neq', value = false}], name = "Pussy", text = "[name1] {^sticks:puts} his {^penis:cock:dick} into [name2]'s {^pussy:vagina:cunt}. The hot {^seed:semen:cum} {^splashes into [his2] womb:fills [his2] pussy}.", specreqs = [], spectext = ''},
+pussy = {reqs = [{code = 'stat', stat = 'has_pussy', operant = 'eq', value = true}], name = "Pussy", text = "[name1] {^sticks:puts} his {^penis:cock:dick} into [name2]'s {^pussy:vagina:cunt}. The hot {^seed:semen:cum} {^splashes into [his2] womb:fills [his2] pussy}.", specreqs = [], spectext = ''},
 ass = {reqs = [], name = "Ass", text = "[name1] {^sticks:puts} his {^penis:cock:dick} into [name2]'s {^ass:anus:rear}. The hot {^seed:semen:cum} {^splashes into [his2] intestines:fills [his2] butt}.", specreqs = [], spectext = ''},
 back = {reqs = [], name = "Back", text = "[name1] puts his {^penis:cock:dick} into [his1] hand and points at [name2]'s back, cumming all over it. [name2] gasps as [he2] feels the hot fluid over [his2] back.", specreqs = [], spectext = ''},
 feet = {reqs = [{code = 'stat', stat = 'body_shape', operant = 'in', value = ['humanoid','shortstack']}], name = "Feet", text = "[name1] unable to hold back anymore starts cumming over [name2]'s feet, covering them in [his1] semen.", specreqs = [], spectext = ''},
@@ -205,7 +205,7 @@ func SelectCum(player, victim):
 	
 	input_handler.ClearContainer($CumSelect/ScrollContainer/VBoxContainer)
 	for part in cumdict.values():
-		if victim.checkreqs(part.reqs, 'taker', {scene = victim.lastaction, givers = [player], takers = [victim]}) == false:
+		if victim.person.checkreqs(part.reqs) == false:
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($CumSelect/ScrollContainer/VBoxContainer)
 		newbutton.text = part.name
@@ -346,6 +346,7 @@ func rebuildparticipantslist():
 		newnode.get_node("name").set_text(i.person.get_short_name())
 #		newnode.get_node("name").connect("pressed",self,"slavedescription",[i])
 		newnode.set_meta("person", i)
+		newnode.get_node('portrait').texture = i.person.get_icon_small()
 		newnode.get_node("sex").set_texture(images.icons[i.sex])
 		newnode.get_node("sex").set_tooltip(i.sex)
 		newnode.get_node('HBoxContainer/arousal').value = i.sens
@@ -377,6 +378,7 @@ func rebuildparticipantslist():
 		if givers.find(i) >= 0:
 			newnode.set_pressed(true)
 		newnode.visible = true
+		newnode.get_node('icon').texture = i.person.get_icon_small()
 		newnode.get_node("Label").text = i.person.get_short_name()
 		newnode.set_meta("person", i)
 		newnode.connect("pressed",self,'switchsides',[newnode, 'give'])
@@ -387,6 +389,7 @@ func rebuildparticipantslist():
 		newnode.visible = true
 		newnode.get_node("Label").text = i.person.translate('[name]')
 		newnode.set_meta("person", i)
+		newnode.get_node('icon').texture = i.person.get_icon_small()
 		newnode.connect("pressed",self,'switchsides',[newnode, 'take'])
 
 	var text = ''
@@ -1155,6 +1158,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 					i.person_sexexp.partners[k.id] += 1
 				else:
 					i.person_sexexp.partners[k.id] = 1
+					i.person.add_partner(k.id)
 					if resists.find(i.id) < 0:
 						k.new_consented_partners += 1
 
@@ -1846,7 +1850,7 @@ func endencounter():
 #			consenttext[i.id] += "\nWas drugged with pheromones: -" + str(floor(i.consentgain/2))
 #			i.consentgain = floor(i.consentgain/2)
 		text += i.person.translate("[name]: Orgasms - ") + str(i.orgasms) 
-		text += "; Loyalty gained: " +  str(i.person.get_stat('sexuals_factor') + i.orgasms * 5) 
+		if i.person.is_master() == false: text += "; Loyalty gained: " +  str(i.person.get_stat('sexuals_factor') + i.orgasms * 5) 
 #		i.person.sexuals += i.orgasms not relevant
 		var expgain = round(i.orgasms * 8 + i.sens/200)
 		var bonus = 1

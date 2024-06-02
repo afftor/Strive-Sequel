@@ -361,9 +361,11 @@ func add_location_resource_info():
 func lockpick_attempt(person):
 	var lock = input_handler.scene_loot.lock.difficulty
 	var type = input_handler.scene_loot.lock.type
+	var nonlocked = false
 	var lockpickskill = person.lockpick_chance()
 	if type == 'none':
 		lock = 0
+		nonlocked = true
 	elif type in ['mimic','mimic_erotic']:
 		lock = lock * randf()*2
 	var open = lockpickskill >= lock
@@ -378,6 +380,8 @@ func lockpick_attempt(person):
 		input_handler.interactive_message_follow("chest_is_erotic_mimic_trapped", "story_event", {})
 	elif type in ['alarm']:
 		input_handler.interactive_message_follow("lockpick_alarm_failure", "story_event", {})
+	elif type == 'none':
+		input_handler.interactive_message_follow("lockpick_chest_free", "story_event", {})
 	elif open == true:
 		input_handler.interactive_message_follow("lockpick_chest_success", "story_event", {})
 		input_handler.add_random_chat_message(person, 'lockpick_success')
@@ -797,7 +801,15 @@ func handle_characters_sprites(scene):
 					input_handler.progress_data.characters.append(scene_char)
 					input_handler.save_progress_data(input_handler.progress_data)
 			if scene_char != null and ch1 != scene_char:
-				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, 0.5)
+				# test if it's a different char and not just a variation
+				var unique_name_char: String = "unique_char"
+				var unique_name_ch1: String = "ch1"
+				if ch1 and ch1.find('_') != -1 and scene_char.find('_') != -1:
+					unique_name_ch1 = ch1.left(ch1.find('_'))
+					unique_name_char = scene_char.left(scene_char.find('_'))
+				if not unique_name_char == unique_name_ch1:
+					ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, 0.5)
+				
 				$CharacterImage.texture = images.sprites[scene_char]
 				if char_shade:
 					$CharacterImage.material.set_shader_param('opacity', 1.0)

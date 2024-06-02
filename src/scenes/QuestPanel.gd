@@ -88,7 +88,7 @@ func show_quest_info(quest):
 					#print(i.location)
 				'complete_dungeon':
 					newbutton.texture = images.icons[i.code]
-					globals.connecttexttooltip(newbutton, "Complete quest dungeon at [color=aqua]" + tr(ResourceScripts.game_world.areas[i.area].name) + "[/color]: [color=yellow]" + tr(i.locationname) + "[/color]")
+					globals.connecttexttooltip(newbutton, tr("QUESTCOMPLETEQUESTLOC2") +"[color=aqua]" + tr(ResourceScripts.game_world.areas[i.area].name) + "[/color]: [color=yellow]" + tr(i.locationname) + "[/color]")
 				'random_material':
 					newbutton.texture = Items.materiallist[i.type].icon
 					newbutton.get_node("amount").show()
@@ -252,7 +252,7 @@ func Reward():
 	#remake into data system
 	if selectedquest.area == 'plains':
 		for i in ResourceScripts.game_world.areas[selectedquest.area].factions.values():
-			if i.totalreputation >= 300 && ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1':
+			if i.totalreputation >= 200 && ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1':
 				ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage = 'stage1_5'
 				globals.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
 	if ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1_5':

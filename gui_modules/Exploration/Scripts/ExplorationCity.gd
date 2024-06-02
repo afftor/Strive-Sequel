@@ -19,7 +19,7 @@ var person_to_hire
 var selectedquest
 
 var city_options = {
-	location_purchase = "EXPLORBUYDUNGEON",
+	#location_purchase = "EXPLORBUYDUNGEON",
 	quest_board = "EXPLORENOTICEBOARD",
 }
 
@@ -407,7 +407,7 @@ func faction_guild_shop(pressed, pressed_button, guild):
 		if ResourceScripts.game_progress.unlocked_classes.has(cls):
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($GuildShop/ScrollContainer/VBoxContainer)
-		newbutton.get_node("Title").text = str(cls.capitalize())
+		newbutton.get_node("Title").text = str(classesdata.professions[cls].name)
 		newbutton.get_node("Type").text = tr("CLASS_LABEL")
 		newbutton.get_node("Price").text = "x " + str(guild.reputation_shop.classes[cls])
 		newbutton.get_node("Icon").texture = classesdata.professions[cls].icon
@@ -454,7 +454,7 @@ func buy_item(item_ref, price, amount, type = "item"):
 	var item_name = ''
 	var item_icon = null
 	if type == "class":
-		item_name = item_ref.capitalize()
+		item_name = classesdata.professions[item_ref].name
 		if ResourceScripts.game_progress.unlocked_classes.has(item_ref):
 			$GuildShop/NumberSelection2.show()
 			$GuildShop/NumberSelection2/ItemPrice.text = "Unlocked"
@@ -490,9 +490,9 @@ func buy_item_confirm(amount):
 		item_name = item_to_buy.name
 		price = active_faction.reputation_shop.items[item_to_buy.code][1] * amount
 	if typeof(item_to_buy) == TYPE_STRING:
-		item_name = item_to_buy
+		item_name = classesdata.professions[item_to_buy].name
 		price = active_faction.reputation_shop.classes[item_to_buy]
-	var text = tr("SPEND_REP_QUESTION_LABEL") + " " + str(price) + tr("REP_POINTS_LABEL") + str(item_name)  + "?"
+	var text = tr("SPEND_REP_QUESTION_LABEL") + " {color=yellow|" + str(price) + "} " +   tr("REP_POINTS_LABEL") + str(item_name)  + "?"
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL,
 	[
 		self,

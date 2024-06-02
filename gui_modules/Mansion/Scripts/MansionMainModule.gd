@@ -506,7 +506,7 @@ func update_sex_date_buttons():
 		SexSelect.get_node("DateButton").disabled = true
 	elif ResourceScripts.game_party.get_master().travel.location != ResourceScripts.game_world.mansion_location: 
 		SexSelect.get_node("DateButton").disabled = true
-	elif sex_participants.size() == 2 and !sex_participants.has(ResourceScripts.game_party.get_master()):
+	elif sex_participants.size() > 1 and !sex_participants.has(ResourceScripts.game_party.get_master()):
 		SexSelect.get_node("DateButton").disabled = true
 	elif sex_participants.size() == 1 and sex_participants.has(ResourceScripts.game_party.get_master()):
 		SexSelect.get_node("DateButton").disabled = true
@@ -819,7 +819,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("seethrough_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("sacred_bowl", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("zephyra_underwear"))
-		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 4))
+		globals.AddItemToInventory(globals.CreateUsableItem("map_goblin_cave", 4))
 		globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("soul_stone", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("sparklingpowder", 5))

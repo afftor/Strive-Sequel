@@ -507,3 +507,9 @@ func add_fate(ch_id, value):
 	var data = relativesdata[ch_id]
 	data.fate = value
 
+func force_update_portraits():
+	for id in characters:
+		var person = characters_pool.get_char_by_id(id)
+		if person == null: 
+			return
+		person.update_prt()

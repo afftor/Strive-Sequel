@@ -121,8 +121,10 @@ var data = {
 		options = [ {
 			code = 'zephyra_costume_10', reqs = [], text = tr("ZEPHYRA_COSTUME_9_OPTION_1"), type = 'next_dialogue', dialogue_argument = 1, bonus_effects = [
 			{code = 'unique_character_changes', value = 'zephyra', args = [
+			{code = 'unique_variation', operant = '=', value = "costume_7"},
 			{code = 'body_image', operant = '=', value = "zephyra_costume_7_body"},
-			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/zephyra_7_prt.png"}]}],
+			{code = 'icon_image', operant = '=', value = "res://assets/images/portraits/zephyra_7_prt.png"}]},
+			{code = 'update_prts'},],
 		}, {
 			code = 'zephyra_costume_10', reqs = [], text = tr("ZEPHYRA_COSTUME_9_OPTION_2"), type = 'next_dialogue', dialogue_argument = 2
 		}, {

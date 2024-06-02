@@ -968,6 +968,7 @@ var TranslationDict = {
 	CHAR_UNAVALIABLE = "Недоступен",
 	NO_FREE_SLOTS = "Для этой задачи не осталось свободных мест",
 	ANOTHERPROFSELECTED = "Можно выбрать только одну специализацию.",
+	NOMATERIALSFORITEMPART = """You have no suitable materials for this item part""", # MISSING TRANSLATION
 
 	LOGREPORTPREGNANCY = "[name] говорит вам, что [he], кажется, беременна.",
 	LOGREPORTPREGNANCYMASTER = "Похоже, что вы ([name]), беременны.",
@@ -1474,6 +1475,8 @@ var TranslationDict = {
 	SLAVEBODYHALFSPIDERDESCRIPT = "Нижняя часть [his] тела содержит [color=yellow]ноги и брюшко паука[/color].",
 	SLAVEBODYHALFHORSEDESCRIPT = "В то время как [his] верхняя часть тела человеческая, [his] нижняя часть [color=yellow]лошадиная[/color].",
 	SLAVEBODYHALFSQUIDDESCRIPT = "Нижняя часть [his] тела содержит [color=yellow]некоторое количество щупальцевых отростков[/color], похожие на осьминожьи.",
+	SLAVECLASSSLAVE = """Slave""", # MISSING TRANSLATION
+	SLAVECLASSSERVANT = """Subordinate""", # MISSING TRANSLATION
 
 
 
@@ -3089,6 +3092,7 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 
 	DIALOGUELOCATIONEVENTGOOD = "Законно",
 	DIALOGUELOCATIONEVENTEVIL = "Злонамеренно",
+	DIALOGUEATTACK = """Attack""", # MISSING TRANSLATION
 
 	DIALOGUEATTACKMIMIC = "*Атака мимика*",
 	DIALOGUEMIMICOPENANYWAY = "*Открыть в любом случае*",
@@ -3125,6 +3129,7 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	DIALOGUECHESTEROTICMIMICTRAPPED = "Когда [name] опирается на сундук, [he] быстро понимает, что это не сундук, а Мимик, который собирается его съесть. Однако мимик, похоже, не причиняет ему вреда, а скорее хватает свою добычу и забирается под одежду. Без посторонней помощи Мимик, несомненно, справится с [name]...\n\n{color=aqua|[name]} - {random_chat_active|mimic_rape}\n\nОставив [him] в таком состоянии, он, скорее всего, не умрет, но...",
 	DIALOGUECHESTMIMICTRAPPEDLEAVE = "Вы решили, что бросать вызов Мимику слишком опасно и оставить [name] ему - приемлемая цена...\n\n{color=aqua|[name]} - {random_chat_active|mimic_leave}",
 	DIALOGUECHESTMIMICEROTICTRAPPEDLEAVE = "Вы решили, что бросать вызов Мимику слишком опасно и оставить [name] ему - приемлемая цена...\n\n{color=aqua|[name]} - {random_chat_active|mimic_erotic_leave}\n\nПосле примерно часа эротических стонов и мольбы [name] сумело освободить [him] и сбежать.",
+	DIALOGUECHESTLOCKPICKFREE = """As [name] attempts to pick a lock of the chest, [he] realize it was not locked in first place. """, # MISSING TRANSLATION
 	DIALOGUECHESTLOCKPICKSUCCESS = "[name] умело взломал замок сундука, и теперь его содержимое принадлежит вам.",
 
 	DIALOGUECHESTMIMICFIGHT = "*Бой с мимиком*",
@@ -3229,8 +3234,15 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	
 	SPRINGTEXT = "Вы нашли небольшую поляну с родником. Самое время сделать перерыв и отдохнуть",
 	SPRING_HEAL = "Ваша группа отдыхает и восстанавливает немного здоровья.",
+	SPRING_STAMINA = """Your group rests and recover their energy.""", # MISSING TRANSLATION
 	SPRING_HEAL_OPTION = "*Отдых*",
+	SPRING_STAMINA_OPTION = """Take a rest""", # MISSING TRANSLATION
 	SPRING_LOOT_OPTION = "*Осмотреться*",
+	FOUNTAINTEXT = """You find a small fountain still brimming with clear water. You could use it to ease group's exhaustion, but it seems there's also some raw mana available for extraction...""", # MISSING TRANSLATION
+	FOUNTAINSTAMINAOPTION = """Take a rest""", # MISSING TRANSLATION
+	FOUNTAINMANAOPTION = """Harness magic""", # MISSING TRANSLATION
+	FOUNTAIN_MANA = """The group manages to extract mana from the fountain and restore their powers.""", # MISSING TRANSLATION
+	FOUNTAIN_STAMINA = """The group takes a rest in the room and recover their energy.""", # MISSING TRANSLATION
 	DIALOGUE_SPRING_LOOT = "Осмотревшись, вы находите небольшой зарытый тайник. Вы решили забрать его содержимое себе",
 	DIALOGUE_SPRING_NO_LOOT = "Вы обыскали все вокруг, но не смогли найти ничего полезного",
 	TRIBALELVES = "Вы обнаружили, что окружены группой местных племенных эльфов. Похоже, они считают вас нарушителем на своей территории и готовятся к нападению...",
@@ -3249,6 +3261,20 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 
 	RETURNTOMANSIONBUTTON = "Отправить персонажа обратно в поместье",
 	RETURNCHARACTERCONFIRM = "Приказать [name] немедленно вернуться в поместье?",
+	ITEMMAP_BANDIT_DEN = """Map: Bandit Den""", # MISSING TRANSLATION
+	ITEMMAP_BANDIT_FORT = """Map: Bandit Fort""", # MISSING TRANSLATION
+	ITEMMAP_GROVE = """Map: Grove""", # MISSING TRANSLATION
+	ITEMMAP_GOBLIN_CAVE = """Map: Goblin Cave""", # MISSING TRANSLATION
+	ITEMMAP_UNDEAD_CRYPT = """Map: Crypt""", # MISSING TRANSLATION
+	ITEMMAP_ANCIENT_JUNGLES = """Map: ncient Jungles""", # MISSING TRANSLATION
+	ITEMMAP_FIRE_DEPTHS = """Map: Fire Depths""", # MISSING TRANSLATION
+	ITEMMAP_BANDIT_DENDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_BANDIT_FORTDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_GROVEDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_GOBLIN_CAVEDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_UNDEAD_CRYPTDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_ANCIENT_JUNGLESDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_FIRE_DEPTHSDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
 
 
 	LOCATIONNAMESKIRMISH_BANDIT_CAMP = "Лагерь разбойников",
@@ -3525,6 +3551,10 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	STARTINGDIALOGUE3REPLY3 = "Что такое гильдии?",
 	STARTINGDIALOGUE3REPLY4 = "Я справлюсь.",
 	STARTINGDIALOGUE4_1 = "- Тогда я вернусь через две недели.",
+	STARTUPGRADEBONUS = """You go for a short trip through the mansion and one of the previously unnoticed rooms on the first floor catches your sight. Inside of it you find...""", # MISSING TRANSLATION
+	STARTUPGRADEBONUS1 = """Forge""", # MISSING TRANSLATION
+	STARTUPGRADEBONUS2 = """Tailor Worksop""", # MISSING TRANSLATION
+	STARTUPGRADEBONUS3 = """Alchemy Room""", # MISSING TRANSLATION
 	FIGHTERSINTRODUCTION1 = "Крупный мужчина в тяжелых доспехах окинул вас незаинтересованным взглядом. \n\n- В чем дело? Если вы ищете работу, вам придется сначала зарегистрироваться как боец. Я не занимаюсь новобранцами.",
 	FIGHTERSINTRODUCTION1REPLY1 = "Вы ошибаетесь, я не новобранец.",
 	FIGHTERSINTRODUCTION1REPLY2 = "Я новый землевладелец, проявите уважение.",
@@ -13001,6 +13031,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	
 	METRICS_BASE = "[name] был/а частью вашего владения в течение {color=yellow|%d} недель и {color=yellow|%d} дней.",
+	METRICS_BASE_YOU = """[name] is a [master] and has been in this household for {color=yellow|%d} weeks and {color=yellow|%d} days.""", # MISSING TRANSLATION
 	METRICS_DATES_MASTER = "[He] ходил на свидания {color=yellow|%d} раз(а) и занимался сексом {color=yellow|%d} раз(а).",
 	METRICS_DATES = "[He] ходил на свидания с вами {color=yellow|%d} раз(ы) и занимался сексом {color=yellow|%d} раз(ы).",
 	METRICS_PARTNERS = "В целом [He] занимался сексом с {color=yellow|%d} партнерами в течение всего этого времени.",
