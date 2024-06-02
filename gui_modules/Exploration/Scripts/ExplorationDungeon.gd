@@ -1108,8 +1108,8 @@ func move_to_room(room_id = null):
 				if !ev_data.has('reqs') or globals.checkreqs(ev_data.reqs):
 					globals.start_fixed_event(active_location.stagedevents.full[active_location.progress.full].event)
 					ev_run = true
-		if !ev_run and globals.rng.randf() < variables.dungeon_unique_encounter_chance:
-			globals.start_unique_event()
+#		if !ev_run and globals.rng.randf() < variables.dungeon_unique_encounter_chance:
+#			globals.start_unique_event()
 
 
 

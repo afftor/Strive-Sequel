@@ -653,6 +653,7 @@ func test_mode():
 		character.fill_boosters()
 		character.set_stat('height', 'tiny')
 		character.set_stat('skin', 'grey')
+		character.add_stat('loyalty', 95)
 		characters_pool.move_to_state(character.id)
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
 		character.create('Elf', 'female', 'random')

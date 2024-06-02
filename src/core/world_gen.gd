@@ -371,6 +371,13 @@ func make_location(code, area):
 			build_floor_first_pass(location, i)
 		location.current_level = 0
 		var ev_pool = build_subrooms_pool(location)
+		if globals.rng.randf() < variables.dungeon_unique_encounter_chance:
+			var pool = []
+			for ev_rec in worlddata.random_dungeon_events.values():
+				var ev = ev_rec.event
+				if ResourceScripts.game_world.dungeon_events_assigned.has(ev):
+					continue
+				pass
 		for i in range(levelnumber):
 			finalize_subrooms(location, ev_pool, i)
 		location.stagedevents = {
@@ -1174,5 +1181,9 @@ func finalize_subrooms(locdata, subrooms, level):
 						if tmp[arg] is Array:
 							tmp[arg] = globals.rng.randi_range(tmp[arg][0], tmp[arg][1])
 					tmp.stamina_cost = tmp.stamina
+				_:
+					tmp.type = 'onetime_event'
+					tmp.event = r_data.subrooms[i]
+					tmp.icon = 'question'
 			r_data.subrooms[i] = tmp
 		r_data.subrooms.shuffle()

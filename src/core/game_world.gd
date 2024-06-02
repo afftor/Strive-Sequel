@@ -18,6 +18,8 @@ var locationcounter = 0
 var easter_egg_characters_generated = []
 var easter_egg_characters_acquired = []
 
+var dungeon_events_assigned = {}
+
 func _ready():
 	input_handler.connect("EnemyKilled", self, "quest_kill_receiver")
 
@@ -364,6 +366,10 @@ func remove_location(loc_id):
 	var area = areas[area_id]
 	var location = area[location_links[loc_id].category][loc_id]
 	if location.has('dungeon'):
+		if dungeon_events_assigned.values.has(loc_id):
+			for ev in dungeon_events_assigned.keys().duplicate():
+				if dungeon_events_assigned[ev] == loc_id:
+					dungeon_events_assigned.erase(ev)
 		for d_id in location.dungeon:
 			remove_dungeon(d_id)
 	area[location_links[loc_id].category].erase(loc_id)
