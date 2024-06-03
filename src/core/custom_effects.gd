@@ -163,13 +163,13 @@ func close():#for the cancel function
 	input_handler.get_spec_node(input_handler.NODE_DIALOGUE).close()
 
 func map(dungeon_code):
-	var dungeon = worlddata.dungeons[dungeon_code]
+	var dungeon = DungeonData.dungeons[dungeon_code]
 	if dungeon.has('purchase_area'):
 		input_handler.selected_area = ResourceScripts.game_world.areas[dungeon.purchase_area]
 	if input_handler.selected_area.locations.size() < 8:
 		var randomlocation = []
 		for i in input_handler.selected_area.locationpool:
-			randomlocation.append(worlddata.dungeons[i].code)
+			randomlocation.append(DungeonData.dungeons[i].code)
 		randomlocation = ResourceScripts.world_gen.make_location(
 			dungeon.code, input_handler.selected_area
 		)
@@ -179,7 +179,7 @@ func map(dungeon_code):
 		ResourceScripts.game_world.location_links[randomlocation.id] = {
 			area = input_handler.selected_area.code, category = 'locations'
 		}
-		ResourceScripts.game_res.money -= dungeon.purchase_price
+#		ResourceScripts.game_res.money -= dungeon.purchase_price
 		input_handler.interactive_message(
 			'purchase_dungeon_location', 'location_purchase_event', {}
 		)
