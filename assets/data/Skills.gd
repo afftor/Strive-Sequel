@@ -1405,7 +1405,7 @@ var Skilllist = {
 		allowedtargets = ['enemy'],
 		value = 1,
 		random_factor_p = 0.1,
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'weapon', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	ranged_attack = {#melee attack

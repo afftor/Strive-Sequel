@@ -140,6 +140,19 @@ func get_weapon_element():
 	return 'normal'
 
 
+func get_weapon_animation():
+	var res = 'targetattack'
+	var weapon = gear.rhand
+	if weapon != null:
+		var item = ResourceScripts.game_res.items[weapon]
+		match item.itembase: #add proper animations here
+			'bow', 'bowadv':
+				res = 'targetattack'
+			'crossbow', 'crossbowadv':
+				res = 'targetattack'
+	return res
+
+
 func recheck_equip():
 	#check hands for conflict
 	if gear.rhand != null:
