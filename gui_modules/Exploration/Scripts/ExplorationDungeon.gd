@@ -1037,6 +1037,7 @@ func scout_room(room_id, s_range, stay = false):
 			move_to_room(room_id)
 			pass
 		'ladder_down':
+			move_to_room(room_id)
 			active_location.current_level += 1
 			build_level()
 			var dungeon = active_location.dungeon[active_location.current_level]
