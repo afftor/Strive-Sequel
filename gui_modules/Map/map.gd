@@ -221,11 +221,11 @@ func clear_dungeon_confirm():
 		return
 	globals.remove_location(to_loc)
 	input_handler.SystemMessage(tr("LOC_BEEN_REMOVED_LABEL"))
-	reset_to()
-	reset_from()
 	selected_loc = null
 	selected_chars.clear()
 	build_locations_list()
+	reset_from()
+	reset_to()
 	unselect_location()
 	build_from_locations()
 	build_to_locations()
