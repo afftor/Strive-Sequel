@@ -316,8 +316,8 @@ func make_settlement(code, area):
 
 
 func make_location(code, area):
+#	code = 'dungeon_bandit_fort'
 	var location = DungeonData.dungeons[code].duplicate(true)
-#	var location = DungeonData.dungeons['quest_fighters_lich'].duplicate(true)
 	location.stamina = 100
 	location.active = true
 	var text = tr(location.name)
@@ -374,10 +374,18 @@ func make_location(code, area):
 		if globals.rng.randf() < variables.dungeon_unique_encounter_chance:
 			var pool = []
 			for ev_rec in worlddata.random_dungeon_events.values():
-				var ev = ev_rec.event
-				if ResourceScripts.game_world.dungeon_events_assigned.has(ev):
+				if ResourceScripts.game_world.dungeon_events_assigned.has(ev_rec.event):
 					continue
-				pass
+				if !ev_rec.dungeons.has(code):
+					continue
+				pool.push_back(ev_rec)
+			if !pool.empty():
+				var rec = input_handler.random_from_array(pool)
+				var lv = globals.rng.randi_range(0, levelnumber - 1)
+				if rec.has('levels'):
+					lv = input_handler.random_from_array(rec.levels)
+				ev_pool[lv].push_back(rec.event)
+				ResourceScripts.game_world.dungeon_events_assigned[rec.event] = location.id
 		for i in range(levelnumber):
 			finalize_subrooms(location, ev_pool, i)
 		location.stagedevents = {
