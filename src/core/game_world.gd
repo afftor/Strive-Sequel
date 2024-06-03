@@ -366,7 +366,7 @@ func remove_location(loc_id):
 	var area = areas[area_id]
 	var location = area[location_links[loc_id].category][loc_id]
 	if location.has('dungeon'):
-		if dungeon_events_assigned.values.has(loc_id):
+		if dungeon_events_assigned.values().has(loc_id):
 			for ev in dungeon_events_assigned.keys().duplicate():
 				if dungeon_events_assigned[ev] == loc_id:
 					dungeon_events_assigned.erase(ev)
