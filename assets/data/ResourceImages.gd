@@ -636,6 +636,7 @@ var icons = {
 	man = load("res://assets/Textures_v2/DUNGEON/Icons/bust.png"),
 	shrine = load("res://assets/Textures_v2/DUNGEON/Icons/altar.png"),
 	exclaim = load("res://assets/Textures_v2/DUNGEON/Icons/exclaim.png"),
+	question = load("res://assets/Textures_v2/DUNGEON/Icons/question.png"),
 	
 #	TO COMPLETE AND USE IN DATA TABLES
 #	NEED TO GET RID OF ALL LOAD FUNCTIONS

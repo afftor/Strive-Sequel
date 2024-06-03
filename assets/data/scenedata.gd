@@ -48,7 +48,7 @@ var scenedict = {
 		tags = ['dialogue_scene','active_character_translate'],
 		options = [
 			{code = 'slave_remove_confirm', reqs = [], text = tr("DIALOGUECONFIRM"), dialogue_argument = 0},
-			{code = 'close', text = tr('DIALOGUECANCEL'), reqs = [], bonus_effects = []},
+			{code = 'close', text = tr('DIALOGUECANCEL'), reqs = []},
 		]
 		},
 	slave_remove_confirm = {
@@ -103,7 +103,7 @@ var scenedict = {
 		tags = ['active_character_translate'],
 		image = 'chest',
 		options = [
-		{code = 'open_chest', reqs = [], text = tr("DIALOGUECHESTOPEN"), bonus_effects = [{code = 'advance_location'}]}
+		{code = 'open_chest', reqs = [], text = tr("DIALOGUECHESTOPEN")}
 		],
 	},
 	lockpick_chest_success = {
@@ -111,7 +111,7 @@ var scenedict = {
 		tags = ['active_character_translate'],
 		image = 'chest',
 		options = [
-		{code = 'open_chest', reqs = [], text = tr("DIALOGUECHESTOPEN"), bonus_effects = [{code = 'advance_location'}]}
+		{code = 'open_chest', reqs = [], text = tr("DIALOGUECHESTOPEN")}
 		],
 	},
 	lockpick_alarm_failure = {
@@ -128,7 +128,7 @@ var scenedict = {
 		tags = ['active_character_translate'],
 		image = 'chest',
 		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'advance_location'}]}
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 		],
 	},
 	lockpick_chest_bomb_failure = {
@@ -137,7 +137,7 @@ var scenedict = {
 		image = 'chest',
 		bonus_effects = [{code = 'affect_active_party', type = 'damage_percent', value = 35}],
 		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = []}
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 		],
 	},
 	lockpick_chest_gas_failure = {
@@ -146,7 +146,7 @@ var scenedict = {
 		image = 'chest',
 		bonus_effects = [{code = "affect_active_character", type = 'damage_percent', value = 25},{code = "affect_active_character", type = 'damage_mana_percent', value = 75}],
 		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = []}
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 		],
 	},
 
@@ -159,7 +159,7 @@ var scenedict = {
 		options = [
 		{code = 'fight_skirmish', reqs = [], text = "DIALOGUEATTACKMIMIC"},
 		{code = 'chest_mimic_force_open', reqs = [], text = "DIALOGUEMIMICOPENANYWAY"},
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
 		],
 	},
 
@@ -174,7 +174,6 @@ var scenedict = {
 		{code = 'chest_is_mimic_leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [
 			{code = 'affect_active_character', type = 'stat_set', stat = 'hp', value = 0},
 			{code = 'update_party'},
-			{code = 'advance_location'}
 			]}
 		],
 	},
@@ -186,7 +185,7 @@ var scenedict = {
 		set_enemy = 'mimic',
 		options = [
 		{code = 'fight_skirmish', reqs = [], text = "DIALOGUEATTACKMIMIC"},
-		{code = 'chest_is_erotic_mimic_leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'affect_active_character', type = 'stat_set', stat = 'hp', value = 0}, {code = 'update_party'}, {code = 'advance_location'}]}
+		{code = 'chest_is_erotic_mimic_leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'affect_active_character', type = 'stat_set', stat = 'hp', value = 0}, {code = 'update_party'}]}
 		],
 	},
 
@@ -196,7 +195,7 @@ var scenedict = {
 		image = 'chest_mimic',
 		default_event_type = 'character_event',
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
 		],
 	},
 	chest_is_erotic_mimic_leave = {
@@ -205,7 +204,7 @@ var scenedict = {
 		image = 'chest_mimic',
 		default_event_type = 'character_event',
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
 		],
 	},
 
@@ -215,7 +214,7 @@ var scenedict = {
 		image = 'armory',
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_armory_weapon', 1],['easy_armory_armor', 1]]}],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
 		]
 	},
 	dungeon_find_armory_medium = {
@@ -256,7 +255,7 @@ var scenedict = {
 		image = 'chest',
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5],['easy_chest_map', 0.2]]}],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
 		]
 	},
 	dungeon_find_chest_medium = {
@@ -265,7 +264,7 @@ var scenedict = {
 		image = 'chest',
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['medium_chest_usable', 1], ['medium_chest_gear',0.2], ['medium_chest_cosmetics', 0.5],['medium_chest_map', 0.1]]}],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
 		]
 	},
 	quest_accept = {
@@ -373,7 +372,7 @@ var scenedict = {
 	options = [
 	{code = 'event_dungeon_prisoner_enslave', select_person = true, challenge = 'strength', reqs = [], text = ("DIALOGUETAKESLAVE")},
 	{code = 'event_dungeon_prisoner_free', reqs = [], text = tr("DIALOGUESETFREEPERSON")},
-	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = []}
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 	]
 	},
 	event_dungeon_prisoner_enslave = {text = tr("DIALOGUEEVENTDUNGEONPRISONERSENSLAVE"),
@@ -382,7 +381,7 @@ var scenedict = {
 	common_effects = [],
 	options = [
 	{code = 'capture_from_scene', reqs = [], text = tr("DIALOGUERECRUITCHARACTEROPTION"), bonus_effects = [{code = 'advance_location'}]},
-	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = []}
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 	]
 	},
 	event_dungeon_prisoner_free = {
@@ -452,7 +451,7 @@ var scenedict = {
 			image = 'goblin_encounter',
 			options = [
 				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
-				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"), bonus_effects = []}
+				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION")}
 				]
 			
 #			{reqs = [],
@@ -497,7 +496,7 @@ var scenedict = {
 	tags = ['active_character_translate','scene_character_translate'],
 	options = [
 		{code = 'capture_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"), bonus_effects = []}
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION")}
 		]
 	},
 	event_goblin_kill = {
@@ -1324,7 +1323,7 @@ var scenedict = {
 		image = 'slave_decision', 
 		options = [
 		{code = 'recruit_captured', select_person = true, reqs = [], text = tr("DIALOGUERECRUITCHOOSEPERSON")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = []},]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},]
 	},
 	recruit_meet = {
 		text = tr("DIALOGUEMEET"),
@@ -1332,14 +1331,14 @@ var scenedict = {
 		image = 'recruit', 
 		options = [
 		{code = 'recruit_meet', select_person = true, reqs = [], text = tr("DIALOGUERECRUITCHOOSEPERSON")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = []},]
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},]
 	},
 	recruit_captured_enslave = {text = tr("DIALOGUERECRUITENSLAVE"),
 	tags = ['scene_character_translate'],
 	image = '',
 	common_effects = [],
 	options = [
-	{code = 'capture_from_scene', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = []},
+	{code = 'capture_from_scene', reqs = [], text = tr("DIALOGUECLOSE")},
 	]
 	},
 	recruit_captured_success = {text = tr("DIALOGUERECRUITGOOD"),
@@ -1363,7 +1362,7 @@ var scenedict = {
 	image = '',
 	common_effects = [],
 	options = [
-	{code = 'capture_from_scene', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = []},
+	{code = 'capture_from_scene', reqs = [], text = tr("DIALOGUECLOSE")},
 	]
 	},
 	recruit_meet_success = {text = tr("DIALOGUEMEETGOOD"),
@@ -1387,7 +1386,7 @@ var scenedict = {
 	image = '',
 	common_effects = [],
 	options = [
-	{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = []},
+	{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
 	]
 	},
 	
@@ -1395,7 +1394,7 @@ var scenedict = {
 		text = tr(""),
 		tags = ['location_resource_info'],
 		image = 'chest', 
-		options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = []},]
+		options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},]
 	},
 	
 	
@@ -1508,7 +1507,7 @@ var scenedict = {
 			common_effects = [],
 			tags = [''],
 			options = [
-				{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = [], bonus_effects = []},
+				{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = []},
 				],
 
 			}

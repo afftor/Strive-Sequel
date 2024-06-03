@@ -1924,6 +1924,7 @@ func common_effects(effects):
 				if gui_controller.exploration != null and gui_controller.exploration.visible:
 					gui_controller.exploration.active_location.completed = true
 					gui_controller.exploration.active_location.active = false
+					gui_controller.exploration.open_location_actions()
 			'remove_active_location':
 				remove_location(input_handler.active_location.id)
 			'reputation':

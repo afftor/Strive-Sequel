@@ -1222,6 +1222,7 @@ func combat_defeat():
 		return
 	if gui_controller.exploration_dungeon != null:
 		gui_controller.exploration_dungeon.build_location_group()
+		gui_controller.exploration_dungeon.deny_combat()
 		gui_controller.exploration_dungeon.update_map()
 #	if combat_explore and combat_advance:
 #		exploration_node.advance()
