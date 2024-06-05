@@ -1318,10 +1318,12 @@ func use_skill(skill_code, caster, target):
 		skill_callback_args.value = COPY_DENY
 	turns += 1
 	#preparing animations
-	var animations = skill.sfx
+	var animations = skill.sfx.duplicate(true)
 	var animationdict = {windup = [], predamage = [], postdamage = []}
 	#sort animations
 	for i in animations:
+		if i.code == 'weapon':
+			i.code = caster.get_weapon_animation()
 		animationdict[i.period].append(i)
 	#casteranimations
 	#for sure at windup there should not be real_target-related animations
