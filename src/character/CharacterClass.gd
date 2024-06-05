@@ -1840,6 +1840,5 @@ func update_prt():
 	
 	if images.portraits.keys().has(prt_name):
 		set_stat('icon_image',images.portraits[prt_name])
-	else:
-		print_debug("Failed to find a %s portrait" % prt_name)
-	# can't use such pass needs to be diffirent
+#	else:
+#		print_debug("Failed to find a %s portrait" % prt_name)
