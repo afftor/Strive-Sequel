@@ -502,7 +502,7 @@ func build_info(loc = null):
 	$InfoPanel/VBoxContainer/Label2.visible = f
 	
 	$InfoPanel.visible = true
-	$InfoPanel/Sendbutton.visible = (to_loc != null and loc == to_loc)
+	$InfoPanel/Sendbutton.visible = (from_loc != 'adv_mode' and to_loc != null and loc == to_loc)
 
 
 func make_panel_for_location(panel, loc):
@@ -781,16 +781,29 @@ func location_press(location, mode):
 func match_state():
 	if from_loc == null:
 		$ToLocList.visible = false
-		$FromLocList/Sendbutton.visible = (selected_loc != null)
+		if selected_loc == null:
+			$FromLocList/Sendbutton/Label.text = 'Adv.Mode'
+		else:
+			$FromLocList/Sendbutton/Label.text = 'Send'
+		$FromLocList/Sendbutton.visible = true
 		$InfoPanel/Sendbutton.visible = false
 	else:
 		$ToLocList.visible = true
-		$FromLocList/Sendbutton.visible = false
+		if from_loc == 'adv_mode':
+			$FromLocList/Sendbutton.visible = true
+			$FromLocList/Sendbutton/Label.text = 'Smpl.Mode'
+		else:
+			$FromLocList/Sendbutton.visible = false
 
 
 func from_loc_set():
-	if selected_loc == null: 
+	if from_loc == 'adv_mode':
+		selected_loc = null
+		reset_from()
 		return
+	if selected_loc == null:
+		selected_loc = 'adv_mode'
+		update_location_chars()
 	from_loc = selected_loc
 	loc_locked = false
 #	selected_area = null
