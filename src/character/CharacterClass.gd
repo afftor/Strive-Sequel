@@ -244,6 +244,9 @@ func change_personality_stats(stat, init_value, flag = false):
 func get_weapon_range():
 	return equipment.get_weapon_range()
 
+func get_weapon_animation():
+	return equipment.get_weapon_animation()
+
 func get_damage_mod(skill:Dictionary):
 	return skills.get_damage_mod(skill)
 
