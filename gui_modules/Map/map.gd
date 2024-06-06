@@ -340,6 +340,7 @@ func build_locations_list():
 		else:  locs_count[temp.type] = 1
 		temp_locations[id] = temp
 	
+	var temp = {id = 'travel', heroes = []}
 	for ch_id in ResourceScripts.game_party.character_order:
 		var character = characters_pool.get_char_by_id(ch_id)
 		if !character.is_active: 
@@ -348,7 +349,7 @@ func build_locations_list():
 		if loc == "mansion":
 			character.travel.location = ResourceScripts.game_world.mansion_location
 		if loc == 'travel':
-			continue
+			temp.heroes.push_back(ch_id)
 		elif character.is_on_quest(): 
 			continue
 		elif !temp_locations.has(loc):
@@ -361,6 +362,7 @@ func build_locations_list():
 	
 	sorted_locations = temp_locations.values().duplicate()
 	sorted_locations.sort_custom(self, 'sort_locations')
+	sorted_locations.push_back(temp)
 
 
 func sort_locations(first, second):
@@ -506,8 +508,8 @@ func build_info(loc = null):
 
 
 func make_panel_for_location(panel, loc):
-	if loc.id == 'travel': #not used
-		panel.text = "Characters on the road"
+	if loc.id == 'travel':
+		set_loc_text(panel, "Characters on the road")
 	else:
 		var data = ResourceScripts.world_gen.get_location_from_code(loc.id)
 		var text = data.name
@@ -549,13 +551,19 @@ func make_panel_for_character(panel, ch_id):
 	panel.get_node("icon").texture = tchar.get_icon_small()
 	if (tchar.predict_obed_time() <= 0) and !tchar.is_controllable(): #clearly not sure why not or - but this is used in many places
 		panel.disabled = true
+	if tchar.get_location() == 'travel':
+		panel.disabled = true
 
 
 func build_from_locations():
 	#filter locations
 	var areas = {}
+	var travel_data = null
 	for loc_data in sorted_locations:
 		if loc_data.heroes.empty():
+			continue
+		if loc_data.id == 'travel':
+			travel_data = loc_data
 			continue
 #		if loc_data.id == to_loc:
 #			continue
@@ -586,6 +594,18 @@ func build_from_locations():
 #				loc_button.connect('mouse_exited', self, 'build_info')
 				loc_button.visible = true
 				make_panel_for_character(loc_button, ch_id)
+	if travel_data != null:
+		var category = input_handler.DuplicateContainerTemplate($FromLocList/LocScroll/LocCatList, 'LocCat')
+		category.set_meta('location', travel_data.id)
+		category.get_node('Button').connect('pressed', self, 'toggle_from_location', [travel_data.id])
+		make_panel_for_location(category.get_node('Button'), travel_data)
+		for ch_id in travel_data.heroes:
+			var loc_button = input_handler.DuplicateContainerTemplate(category.get_node('offset/LocList'), 'Button')
+			loc_button.set_meta('location', travel_data.id)
+			loc_button.set_meta('character', ch_id)
+			loc_button.connect('pressed', self, 'char_loc_press', [ch_id, travel_data.id])
+			loc_button.visible = true
+			make_panel_for_character(loc_button, ch_id)
 
 
 
@@ -593,6 +613,8 @@ func build_to_locations():
 	#filter locations
 	var areas = {}
 	for loc_data in sorted_locations:
+		if loc_data.id == 'travel':
+			continue
 #		if loc_data.captured:
 #			continue
 		if loc_data.id == from_loc:
@@ -751,6 +773,10 @@ func update_location_chars():
 			ch.visible = show_chars
 			ch.pressed = (selected_chars.has(person_id))
 			ch.disabled = (selected_loc != null and ch.get_meta('location') != selected_loc)
+			if (person.predict_obed_time() <= 0) and !person.is_controllable(): #clearly not sure why not or - but this is used in many places
+				ch.disabled = true
+			if person.get_location() == 'travel':
+				ch.disabled = true
 
 
 func location_press(location, mode):
