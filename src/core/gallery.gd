@@ -236,6 +236,7 @@ func process_scene_seq(scene_list):
 			if line is Dictionary and line.has("bonus_effects"): 
 				line.erase("bonus_effects")
 		data.erase("save_scene_to_gallery")
+		data.erase("common_effects")
 		#2add syntax for passing direct order to change dialogue type (or simply remove this nonsence)
 		#modifying options
 		var new_options = []
