@@ -8,18 +8,19 @@ func _ready():
 
 
 func update():
-	if input_handler.active_location != null:
-		if !input_handler.active_location.has('captured_characters'):
-			input_handler.active_location.captured_characters = []
+	if get_parent().get_parent().active_location != null:
+		if !get_parent().get_parent().active_location.has('captured_characters'):
+			get_parent().get_parent().active_location.captured_characters = []
 	else:
 		return
-	if input_handler.active_location.captured_characters.empty():
+	if get_parent().get_parent().active_location.captured_characters.empty():
 		input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 		hide()
-#	else:
-#		show()
+	else:
+		if get_parent().get_parent().active_location.type != 'dungeon':
+			show()
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
-	for id in input_handler.active_location.captured_characters:
+	for id in get_parent().get_parent().active_location.captured_characters:
 		var tchar = characters_pool.get_char_by_id(id)
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		var ttex = tchar.get_icon_small()
@@ -43,26 +44,26 @@ func update():
 
 
 func sell_all():
-	for id in input_handler.active_location.captured_characters:
+	for id in get_parent().get_parent().active_location.captured_characters:
 		var tchar = characters_pool.get_char_by_id(id)
 		if tchar.src == 'random_combat':
 			var val = tchar.calculate_price(true) / 2
 			ResourceScripts.game_res.money += int(val)
 			input_handler.PlaySound("money_spend")
 		tchar.is_active = false
-	input_handler.active_location.captured_characters.clear()
+	get_parent().get_parent().active_location.captured_characters.clear()
 	input_handler.emit_signal("LocationSlavesUpdate")
 
 
 func sell_char(ch_id):
-	if input_handler.active_location.captured_characters.has(ch_id):
+	if get_parent().get_parent().active_location.captured_characters.has(ch_id):
 		var tchar = characters_pool.get_char_by_id(ch_id)
 		if tchar.src == 'random_combat':
 			var val = tchar.calculate_price(true) / 2
 			ResourceScripts.game_res.money += int(val)
 			input_handler.PlaySound("money_spend")
 		tchar.is_active = false
-		input_handler.active_location.captured_characters.erase(ch_id)
+		get_parent().get_parent().active_location.captured_characters.erase(ch_id)
 	var slave_tooltip = get_tree().get_root().get_node_or_null("slavetooltip")
 	if slave_tooltip != null:
 		slave_tooltip.hide()
@@ -70,7 +71,7 @@ func sell_char(ch_id):
 
 
 func hire_char(ch_id):
-	if input_handler.active_location.captured_characters.has(ch_id):
+	if get_parent().get_parent().active_location.captured_characters.has(ch_id):
 #		if ResourceScripts.game_party.characters.size() >= ResourceScripts.game_res.get_pop_cap():
 #			if ResourceScripts.game_res.get_pop_cap() < variables.max_population_cap:
 #				input_handler.SystemMessage("You don't have enough rooms")
