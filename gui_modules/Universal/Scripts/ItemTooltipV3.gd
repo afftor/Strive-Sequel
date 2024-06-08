@@ -131,7 +131,9 @@ func material_tooltip(data, workers_data = {}):
 	var item = data.item
 	var text = data.text
 	$TopPanel/Title.text = tr("MATERIAL" + str(item.code).to_upper())
-	if ResourceScripts.game_res.materials.has(data.item) && ResourceScripts.game_res.materials[data.item] > 0:
+	var new_font = input_handler.font_size_calculator($TopPanel/Title)
+	$TopPanel/Title.set("custom_fonts/font", new_font)
+	if ResourceScripts.game_res.materials.has(data.item) && ResourceScripts.game_res.materials[data.item] > 0: #does not work in inventory, huh?
 		text += "\n\n" + tr("CURRENTLYINPOSSESSION") + ": " + str(ResourceScripts.game_res.materials[data.item])
 	if workers_data.has("max"):
 		text += "\n" + tr("MAX_WORKERS_LABEL") + ": " + str(workers_data.max)
@@ -143,7 +145,8 @@ func material_tooltip(data, workers_data = {}):
 	iconnode.texture = item.icon
 	build_price(item.price)
 	textnode2.bbcode_text = globals.TextEncoder(text)
-
+	
+	
 	$LowPanel.show()
 	$MidPanel.hide()
 #	fix_panels()
@@ -170,6 +173,8 @@ func gear_tooltip(data, item = null):
 	else:
 		self.get_stylebox("panel", "" ).set_texture(load("res://assets/Textures_v2/DisassembleNewTooltip/panel_tooltip.png"))
 	$TopPanel/Title.text = data.title
+	var new_font = input_handler.font_size_calculator($TopPanel/Title)
+	$TopPanel/Title.set("custom_fonts/font", new_font)
 	if item == null:
 		item = data.item
 	var text1 = item.tooltiptext_1()
@@ -197,6 +202,8 @@ func gear_detailed_tooltip(data, item = null):
 	if item.parts.size() == 0:
 		return
 	$TopPanel/Title.text = data.item.name
+	var new_font = input_handler.font_size_calculator($TopPanel/Title)
+	$TopPanel/Title.set("custom_fonts/font", new_font)
 	var text = ''
 	for i in item.parts:
 		var material = Items.materiallist[item.parts[i]]
@@ -260,6 +267,8 @@ func gear_detailed_tooltip(data, item = null):
 
 func geartemplete_tooltip(data):
 	$TopPanel/Title.text = data.item.name
+	var new_font = input_handler.font_size_calculator($TopPanel/Title)
+	$TopPanel/Title.set("custom_fonts/font", new_font)
 	var item = data.item
 	var text = '[center]' + item.name + '[/center]\n'
 

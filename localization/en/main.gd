@@ -972,6 +972,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	NO_FREE_SLOTS = "This task has no available slots left",
 	ANOTHERPROFSELECTED = "Can only select one specialization.",
 	NOMATERIALSFORITEMPART = "You have no suitable materials for this item part",
+	QUESTDEFEAT = "Defeat",
+	QUESTREQUIREDCLASS = "Required Class",
 	
 	LOGREPORTPREGNANCY = "[name] tells you, that [he] seems to be pregnant.",
 	LOGREPORTPREGNANCYMASTER = "It seems, that you([name]) are pregnant.",
@@ -6611,7 +6613,7 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	AMELIAFINDPRINCESS1_2 = """— You've been aiming to find our princess, I take it? Well, if you've given up on the imprisoned elf, I have an alternative suggestion.
 	
 — We can rely on our friends in the Mages Guild to find her if you can get a hold of some of her belongings. They have a trick to track down... those less willing to be found. You can check the last place she's been. If you find something useful there, bring it back to me.""",
-	AMELIAFINDPRINCESS2 = "— You've been aiming to find our princess, I take it? There aren't a lot of leads at hand, are there? Well, for such cases we can utilize our friends in the Mages Guild, as long as you can provide them with something belonging to the one we seek. They have a trick to track down... those less willing to be found. You can check the last place she's been. If you find something useful there, bring it back to me.",
+	AMELIAFINDPRINCESS1_3 = "— You've been aiming to find our princess, I take it? There aren't a lot of leads at hand, are there? Well, for such cases we can utilize our friends in the Mages Guild, as long as you can provide them with something belonging to the one we seek. They have a trick to track down... those less willing to be found. You can check the last place she's been. If you find something useful there, bring it back to me.",
 
 	AMELIAFINDPRINCESSOPTION1 = "Thanks for the advice.",
 	AMELIAFINDPRINCESSOPTION2 = "I'll be back once I've found something.",
@@ -13882,7 +13884,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	FIGHTERS_DUNGEON_DESC = "The Fighters Guild requires a local dungeon to be cleared.",
 	
 	FIGHTERS_MONSTER_HUNT_NAME = "Monster Hunt",
-	FIGHTERS_MONSTER_HUNT_DESC = "The Fighters Guild has a task for hunting certain amount of enemies.",
+	FIGHTERS_MONSTER_HUNT_DESC = "The Fighters Guild has a task for hunting certain amount of enemies and defeating them in a proper battle.",
 	
 	FIGHTERS_CRAFT_GEAR_NAME = "Gear Supply",
 	FIGHTERS_CRAFT_GEAR_DESC = "The Fighters Guild requires a gear of certain quality.",

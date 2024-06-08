@@ -782,7 +782,7 @@ var dungeons = {
 		
 		
 		gather_mod = [2.5,3.5],
-		difficulty = 'easy',
+		difficulty = 'medium',
 		purchase_price = 500,
 		affiliation = 'local',
 		events = [],
