@@ -46,6 +46,7 @@ func _ready():
 	gui_controller.win_btn_connections_handler(true, $MansionJournalModule, $JournalButton)
 	gui_controller.windows_opened.clear()
 	globals.connect("hour_tick", self, "build_location_group")
+	globals.connect("update_clock", self, "update_gold")
 	input_handler.connect("EventFinished", self, 'build_location_group')
 	input_handler.connect("LootGathered", self, 'build_location_group')
 	var closebutton = gui_controller.add_close_button($AreaShop)
@@ -750,6 +751,7 @@ func fade(window, time = 0.5):
 
 
 func open_shop(pressed, pressed_button, shop):
+	update_gold()
 	$AreaShop/NumberSelection.hide()
 	gui_controller.win_btn_connections_handler(pressed, $AreaShop, pressed_button)
 	self.current_pressed_area_btn = pressed_button
@@ -1075,3 +1077,7 @@ func select_workers():
 func reset_active_location(arg = null):
 	if input_handler.active_location.id != selected_location:
 		input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(selected_location)
+
+
+func update_gold():
+	$AreaShop/Label2.text = str(ResourceScripts.game_res.money)

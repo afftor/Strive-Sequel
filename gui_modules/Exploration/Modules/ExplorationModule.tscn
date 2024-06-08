@@ -110,12 +110,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureRect2" type="TextureRect" parent="AreaShop"]
+margin_left = 802.0
+margin_top = -1.0
+margin_right = 888.0
+margin_bottom = 85.0
+texture = ExtResource( 112 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label" type="Label" parent="AreaShop"]
-margin_right = 1123.0
+margin_right = 809.0
 margin_bottom = 83.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 119 )
 text = "MARKETPLACE_LABEL"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="AreaShop"]
+margin_left = 894.0
+margin_right = 1081.0
+margin_bottom = 83.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 119 )
+text = "10000000"
 align = 1
 valign = 1
 __meta__ = {
@@ -304,9 +328,6 @@ texture_hover = ExtResource( 53 )
 margin_top = 104.765
 margin_right = 40.0
 margin_bottom = 144.765
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="AreaShop/SellBlock"]
 margin_left = 68.0
@@ -687,4 +708,3 @@ margin_top = 991.439
 margin_right = 1880.24
 margin_bottom = 1037.69
 text = "Test"
-
