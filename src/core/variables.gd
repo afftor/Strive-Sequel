@@ -360,8 +360,7 @@ var master_charm_quests_rep_bonus = {
 
 
 #World settings
-var dungeon_encounter_chance = 0.2
-var dungeon_unique_encounter_chance = 0.1
+var dungeon_unique_encounter_chance = 0.5
 var exp_scroll_quest_reward = false
 
 var subroom_chance = 0.7

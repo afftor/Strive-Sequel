@@ -1,7 +1,13 @@
+Fixed some issues for act 1 when Aire was dead
+Fixed Cali's starting event being too rare
+0.9.0b
 Fixed elven capital not generating map items in its shop
 Fixed maps not generating in chest rewards properly
 Fixed new rebel dungeon not working
 Fixed fire depths bosses having challenge checks
+Fixed some unique dungeons having issues
+Fixed Anastasia agreeing to marry not applying the decision correctly and preventing marriage agreement during date
+Fixed some other minor dungeon issues
 0.9.0a
 Fixed dungeon events causing crash
 Fixed some resource location gathering issues

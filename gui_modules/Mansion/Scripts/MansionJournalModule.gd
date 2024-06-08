@@ -119,7 +119,7 @@ func show_quest_info(quest):
 					newbutton.get_node("TextureRect").texture = images.icons.quest_enemy
 					newbutton.get_node("amount").text = str(i.value)
 					newbutton.get_node("amount").show()
-					newbutton.hint_tooltip = "Defeat: " + tr(variables.enemy_types[i.type]) + " - " + str(i.curvalue) + "/" + str(i.value)
+					newbutton.hint_tooltip = tr("QUESTDEFEAT")+": " + tr(variables.enemy_types[i.type]) + " - " + str(i.curvalue) + "/" + str(i.value)
 				'random_item':
 					var itemtemplate = Items.itemlist[i.type]
 					newbutton.get_node("TextureRect").texture = itemtemplate.icon
@@ -208,7 +208,7 @@ func show_quest_info(quest):
 										else:
 											profname += "/" + classesdata.professions[prof].altname
 										break
-							var prof_name = "Required Class:\n" + profname
+							var prof_name = tr("QUESTREQUIREDCLASS")+":\n" + profname
 							globals.connecttexttooltip(profbutton, prof_name)
 					newbutton.get_node("TextureRect").texture = images.icons.quest_slave_delivery
 					var stats_text = "\n"+tr("QUESTSTATS")+":\n"

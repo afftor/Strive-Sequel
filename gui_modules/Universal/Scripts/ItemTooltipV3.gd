@@ -133,7 +133,7 @@ func material_tooltip(data, workers_data = {}):
 	$TopPanel/Title.text = tr("MATERIAL" + str(item.code).to_upper())
 	var new_font = input_handler.font_size_calculator($TopPanel/Title)
 	$TopPanel/Title.set("custom_fonts/font", new_font)
-	if ResourceScripts.game_res.materials.has(data.item) && ResourceScripts.game_res.materials[data.item] > 0:
+	if ResourceScripts.game_res.materials.has(data.item) && ResourceScripts.game_res.materials[data.item] > 0: #does not work in inventory, huh?
 		text += "\n\n" + tr("CURRENTLYINPOSSESSION") + ": " + str(ResourceScripts.game_res.materials[data.item])
 	if workers_data.has("max"):
 		text += "\n" + tr("MAX_WORKERS_LABEL") + ": " + str(workers_data.max)
@@ -145,7 +145,8 @@ func material_tooltip(data, workers_data = {}):
 	iconnode.texture = item.icon
 	build_price(item.price)
 	textnode2.bbcode_text = globals.TextEncoder(text)
-
+	
+	
 	$LowPanel.show()
 	$MidPanel.hide()
 #	fix_panels()
