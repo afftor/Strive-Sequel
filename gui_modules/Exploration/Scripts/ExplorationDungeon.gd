@@ -147,7 +147,6 @@ func _ready():
 	input_handler.connect("EventFinished", self, 'build_location_group')
 	input_handler.connect("LootGathered", self, 'build_location_group')
 	input_handler.connect("LocationSlavesUpdate", self, 'build_location_group')
-	input_handler.connect("update_itemlist", self, 'update_sell_list')
 	globals.connecttexttooltip($LocationGui/MapPanel/Stamina, tr("TOOLTIPSTAMINADUNGEON"))
 	
 
