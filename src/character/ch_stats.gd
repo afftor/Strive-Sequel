@@ -138,7 +138,7 @@ func custom_stats_set(st, value):
 	if st in ['hair_length','hair_style']: #legacy stub
 		statlist[st] = value
 		var tdata = get_hairs_data()
-		for h_stat in ['hair_base', 'hair_assist', 'hair_back', 'hair_fringe', 'hair_base_lenght', 'hair_fringe_lenght', 'hair_back_lenght', 'hair_assist_lenght',]:
+		for h_stat in ['hair_base', 'hair_assist', 'hair_back', 'hair_fringe', 'hair_base_length', 'hair_fringe_length', 'hair_back_length', 'hair_assist_length',]:
 			statlist[h_stat] = tdata[h_stat]
 	if st in ['hair_color']: #legacy stub
 		statlist[st] = value
@@ -346,10 +346,10 @@ func get_hairs_data():
 		hair_fringe_color_2 = 'blue_2', 
 		hair_back_color_2 = 'blue_2', 
 		hair_assist_color_2 = 'blue_2', 
-		hair_base_lenght = 'long', 
-		hair_fringe_lenght = 'long', 
-		hair_back_lenght = 'long', 
-		hair_assist_lenght = 'long',
+		hair_base_length = 'long', 
+		hair_fringe_length = 'long', 
+		hair_back_length = 'long', 
+		hair_assist_length = 'long',
 	}
 	match statlist.hair_color:
 		'blond':
@@ -437,7 +437,7 @@ func get_hairs_data():
 			res.hair_base_color_1 = 'blue_1'
 			res.hair_base_color_2 = 'blue_1'
 	if statlist.hair_length == 'bald':
-		res.hair_base_lenght = 'bald'
+		res.hair_base_length = 'bald'
 		res.hair_assist = ''
 		res.hair_back = ''
 	else:
@@ -448,179 +448,179 @@ func get_hairs_data():
 						res.hair_base = 'undercut'
 						res.hair_assist = 'no'
 						res.hair_back = 'care'
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'short'
-						res.hair_back_lenght = 'short'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'short'
+						res.hair_back_length = 'short'
 					'neck':
 						res.hair_base = 'dopple'
 						res.hair_assist = 'no'
 						res.hair_back = 'straight'
-						res.hair_base_lenght = 'middle'
-						res.hair_assist_lenght = 'short'
-						res.hair_back_lenght = 'short'
+						res.hair_base_length = 'middle'
+						res.hair_assist_length = 'short'
+						res.hair_back_length = 'short'
 					'shoulder':
 						res.hair_base = 'default'
 						res.hair_assist = 'no'
 						res.hair_back = 'straight'
-						res.hair_base_lenght = 'middle'
-						res.hair_assist_lenght = 'short'
-						res.hair_back_lenght = 'short'
+						res.hair_base_length = 'middle'
+						res.hair_assist_length = 'short'
+						res.hair_back_length = 'short'
 					'waist':
 						res.hair_base = 'default'
 						res.hair_assist = 'no'
 						res.hair_back = 'straight'
-						res.hair_base_lenght = 'long'
-						res.hair_assist_lenght = 'middle'
-						res.hair_back_lenght = 'middle'
+						res.hair_base_length = 'long'
+						res.hair_assist_length = 'middle'
+						res.hair_back_length = 'middle'
 					'hips':
 						res.hair_base = 'straight'
 						res.hair_assist = 'no'
 						res.hair_back = 'very_long'
-						res.hair_base_lenght = 'long'
-						res.hair_assist_lenght = 'long'
-						res.hair_back_lenght = 'long'
+						res.hair_base_length = 'long'
+						res.hair_assist_length = 'long'
+						res.hair_back_length = 'long'
 					_:
 						res.hair_base = 'undercut'
 						res.hair_assist = 'no'
 						res.hair_back = 'no'
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'short'
-						res.hair_back_lenght = 'short'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'short'
+						res.hair_back_length = 'short'
 			'ponytail':
 				res.hair_base = 'back'
 				match statlist.hair_length:
 					'ear':
 						res.hair_assist = 'ponytail'
 						res.hair_back = 'no'
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'short'
-						res.hair_back_lenght = 'short'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'short'
+						res.hair_back_length = 'short'
 					'neck':
 						res.hair_assist = 'ponytail'
 						res.hair_back = 'no'
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'short'
-						res.hair_back_lenght = 'short'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'short'
+						res.hair_back_length = 'short'
 					'shoulder':
 						res.hair_assist = 'ponytail'
 						res.hair_back = 'no'
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'short'
-						res.hair_back_lenght = 'short'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'short'
+						res.hair_back_length = 'short'
 					'waist':
 						res.hair_assist = 'ponytail'
 						res.hair_back = 'no'
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'middle'
-						res.hair_back_lenght = 'middle'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'middle'
+						res.hair_back_length = 'middle'
 					'hips':
 						res.hair_assist = 'ponytail'
 						res.hair_back = 'no'
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'long'
-						res.hair_back_lenght = 'long'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'long'
+						res.hair_back_length = 'long'
 					_:
 						res.hair_assist = 'no'
 						res.hair_back = 'no'
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'short'
-						res.hair_back_lenght = 'short'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'short'
+						res.hair_back_length = 'short'
 			'pigtails':
 				res.hair_base = 'lamb'
 				res.hair_assist = 'pigtails'
 				res.hair_back = 'no'
 				match statlist.hair_length:
 					'ear':
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'short'
-						res.hair_back_lenght = 'short'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'short'
+						res.hair_back_length = 'short'
 					'neck':
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'short'
-						res.hair_back_lenght = 'short'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'short'
+						res.hair_back_length = 'short'
 					'shoulder':
-						res.hair_base_lenght = 'middle'
-						res.hair_assist_lenght = 'middle'
-						res.hair_back_lenght = 'middle'
+						res.hair_base_length = 'middle'
+						res.hair_assist_length = 'middle'
+						res.hair_back_length = 'middle'
 					'waist':
-						res.hair_base_lenght = 'long'
-						res.hair_assist_lenght = 'long'
-						res.hair_back_lenght = 'long'
+						res.hair_base_length = 'long'
+						res.hair_assist_length = 'long'
+						res.hair_back_length = 'long'
 					'hips':
-						res.hair_base_lenght = 'long'
-						res.hair_assist_lenght = 'long'
-						res.hair_back_lenght = 'long'
+						res.hair_base_length = 'long'
+						res.hair_assist_length = 'long'
+						res.hair_back_length = 'long'
 					_:
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'short'
-						res.hair_back_lenght = 'short'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'short'
+						res.hair_back_length = 'short'
 			'braid':
 				res.hair_base = 'back'
 				res.hair_assist = 'braid'
 				res.hair_back = 'no'
 				match statlist.hair_length:
 					'ear':
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'short'
-						res.hair_back_lenght = 'short'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'short'
+						res.hair_back_length = 'short'
 					'neck':
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'short'
-						res.hair_back_lenght = 'short'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'short'
+						res.hair_back_length = 'short'
 					'shoulder':
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'middle'
-						res.hair_back_lenght = 'middle'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'middle'
+						res.hair_back_length = 'middle'
 					'waist':
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'long'
-						res.hair_back_lenght = 'long'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'long'
+						res.hair_back_length = 'long'
 					'hips':
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'long'
-						res.hair_back_lenght = 'long'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'long'
+						res.hair_back_length = 'long'
 					_:
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'short'
-						res.hair_back_lenght = 'short'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'short'
+						res.hair_back_length = 'short'
 			'twinbraids':
 				res.hair_base = 'braids'
 				res.hair_assist = 'no'
 				res.hair_back = 'twin_braids'
 				match statlist.hair_length:
 					'ear':
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'short'
-						res.hair_back_lenght = 'short'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'short'
+						res.hair_back_length = 'short'
 					'neck':
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'short'
-						res.hair_back_lenght = 'short'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'short'
+						res.hair_back_length = 'short'
 					'shoulder':
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'middle'
-						res.hair_back_lenght = 'middle'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'middle'
+						res.hair_back_length = 'middle'
 					'waist':
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'long'
-						res.hair_back_lenght = 'long'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'long'
+						res.hair_back_length = 'long'
 					'hips':
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'long'
-						res.hair_back_lenght = 'long'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'long'
+						res.hair_back_length = 'long'
 					_:
-						res.hair_base_lenght = 'short'
-						res.hair_assist_lenght = 'short'
-						res.hair_back_lenght = 'short'
+						res.hair_base_length = 'short'
+						res.hair_assist_length = 'short'
+						res.hair_back_length = 'short'
 			'bun':
 				res.hair_base = 'back'
 				res.hair_assist = 'bun'
 				res.hair_back = 'no'
-				res.hair_base_lenght = 'short'
-				res.hair_assist_lenght = 'short'
-				res.hair_back_lenght = 'short'
+				res.hair_base_length = 'short'
+				res.hair_assist_length = 'short'
+				res.hair_back_length = 'short'
 	res.hair_fringe = res.hair_base #temp, 2fix
-	res.hair_fringe_lenght = res.hair_base_lenght #possibly 2fix
+	res.hair_fringe_length = res.hair_base_length #possibly 2fix
 	res.hair_fringe_color_1 = res.hair_base_color_1 #keep this
 	res.hair_fringe_color_2 = res.hair_base_color_2 #keep this
 	return res

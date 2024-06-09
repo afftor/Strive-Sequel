@@ -8,7 +8,7 @@ var stats_to_look = [
 'hair_base', 'hair_assist', 
 'hair_back', 'hair_fringe',
 'hair_base_color_1', 'hair_fringe_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 'hair_fringe_color_2', 
-'hair_back_color_2', 'hair_assist_color_2', 'hair_base_lenght', 'hair_fringe_lenght', 'hair_back_lenght', 'hair_assist_lenght',
+'hair_back_color_2', 'hair_assist_color_2', 'hair_base_length', 'hair_fringe_length', 'hair_back_length', 'hair_assist_length',
 'beard', 'hair_facial_color',
 'body_color_skin', 'skin_coverage',
 'ears', 'tail',
@@ -3691,7 +3691,7 @@ var transforms = {
 		],
 	},
 	
-	hair_base_lenght = {
+	hair_base_length = {
 		bald = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_mesh', attr = 'visible', value = false},
@@ -3722,7 +3722,7 @@ var transforms = {
 		],
 	},
 	
-	hair_fringe_lenght = {
+	hair_fringe_length = {
 		bald = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = false},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_fringe_mesh', attr = 'visible', value = false},
@@ -3753,7 +3753,7 @@ var transforms = {
 		],
 	},
 	
-	hair_back_lenght = {
+	hair_back_length = {
 		default = [
 			{type = 'import_deform', node = 'male_pose/HumanF1/Spine/Head/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_default.tres"},
 			{type = 'import_deform', node = 'Female_pose/HumanF1/Spine/Head/Hairs_back_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_default.tres"},
@@ -3772,7 +3772,7 @@ var transforms = {
 		],
 	},
 	
-	hair_assist_lenght = {
+	hair_assist_length = {
 		default = [
 			{type = 'import_deform', node = 'male_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_default.tres"},
 			{type = 'import_deform', node = 'Female_pose/HumanF1/Spine/Head/Hair/Hairs_assist_mesh', material = "res://Character_generator/shaders/shaders_deform_hair_length/hair_lengh_default.tres"},
