@@ -1255,7 +1255,7 @@ func check_location_group():
 		else:
 			cleararray.append(i)
 	for i in cleararray:
-		input_handler.active_location.erase(i)
+		input_handler.active_location.group.erase(i)
 	if counter == 0:
 		return false
 	else:

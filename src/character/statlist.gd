@@ -180,10 +180,10 @@ var template = {
 	hair_fringe_color_2 = '', 
 	hair_back_color_2 = '', 
 	hair_assist_color_2 = '', 
-	hair_base_lenght = '', 
-	hair_fringe_lenght = '', 
-	hair_back_lenght = '', 
-	hair_assist_lenght = '',
+	hair_base_length = '', 
+	hair_fringe_length = '', 
+	hair_back_length = '', 
+	hair_assist_length = '',
 	hair_facial_color = "",
 	
 	#genitals
