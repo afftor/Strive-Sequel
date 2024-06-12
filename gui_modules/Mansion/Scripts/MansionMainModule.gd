@@ -790,7 +790,7 @@ func test_mode():
 						{code = 'add_trait', trait = 'loyalty_sex_basic'},
 						{code = 'add_trait', trait = 'loyalty_sex_oral'},
 						{code = 'add_trait', trait = 'loyalty_sex_anal'},
-						{code = 'add_profession', profession = 'sextoy'},
+						{code = 'add_profession', profession = 'harlot'},
 						{code = "add_trait", trait = 'loyalty_sex_basic'}
 					]
 				},

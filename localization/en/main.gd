@@ -1122,7 +1122,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLFIRE_BURST = "Fire Burst",
 	SKILLFIRE_BURSTDESCRIPT = "Deals 50% of MATK as {color=yellow|Fire} damage to all enemies. Reduces target's hit chance by 20 for 3 turns.",
 	SKILLAIR_CUTTER = "Air Cutter",
-	SKILLAIR_CUTTERDESCRIPT = "Deals 85% of ATK as {color=yellow|Air} damage to one target and 2 random enemies. Has 50% chance to cause targets to bleed for 2 turns.",
+	SKILLAIR_CUTTERDESCRIPT = "Deals 85% of ATK as {color=yellow|Air} damage to one target and 70% of ATK to 2 random enemies. Has 50% chance to cause targets to bleed for 2 turns.",
 	SKILLHOLY_LANCE = "Holy Lance",
 	SKILLHOLY_LANCEDESCRIPT = "Deals 100% of ATK as {color=yellow|Light} damage to a row.",
 	SKILLSWIPE = "Swipe",
@@ -1164,7 +1164,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLPROTECTIVE_SHELL = "Protective Shell",
 	SKILLPROTECTIVE_SHELLDESCRIPT = "Buffs Ally column: Reduce incoming damage by 35% for next 3 attacks.",
 	SKILLHAMMERFALL = "Hammerfall",
-	SKILLHAMMERFALLDESCRIPT = "Deals 150% of ATK as {color=yellow|Physical} damage to a target. Stuns target for 2 turns. ",
+	SKILLHAMMERFALLDESCRIPT = "Deals 150% of ATK as {color=yellow|Earth} damage to a target. Stuns target for 2 turns. ",
 	SKILLPURGE = "Purge",
 	SKILLPURGEDESCRIPT = "Removes all negative buffs from target.",
 	SKILLRIGHTEOUS_FIRE = "Righteous Fire",
@@ -11331,7 +11331,7 @@ The elf snaps his fingers and the shop quickly erupts in fires over the walls. H
 	ZEPHYRA_DISAPPEARANCE_BOY_8_OPTION_3 = "I'll take my leave.",
 	ZEPHYRA_DISAPPEARANCE_BOY_9_1 = """— He has been known for being elusive. Changing his location whenever it gets discovered by authorities. That's how he's been able to earn this reputation. Kinda bad for you, as I expect him to have more than one base he could be hiding at now.""",
 	ZEPHYRA_DISAPPEARANCE_BOY_9_2 = """— There's nothing people like us can do. I've already informed patrolling guards but, given his experience, there's little hope. Sorry, there's not much that we can do.""",
-	ZEPHYRA_DISAPPEARANCE_BOY_ATTACK = """You grab your weapon and quickly finish off the wounded champion. As he falls dead you realize that his words were very likely true, and you have no clue how to find Zephyra now.""",
+	ZEPHYRA_DISAPPEARANCE_BOY_ATTACK = """You grab your weapon and quickly finish off the wounded champion. As he falls dead you realize that his words were very likely true, and you have no clue how to find Zephyra now. You went to the Mages Guild in attempt to track her but whoever possesed her have been knowledgable of such practices and countered your attempts with their own magic. You haven't been able to find her after that.""",
 	ZEPHYRA_DISAPPEARANCE_BED_1_1 = """You lay down on the bed and close your eyes. For some reason you feel very comfortable, quickly dozing to sleep by the crackling of fire...
 
 That is until you feel a hard slap of something fluffy on your head, returning you to your senses. You look around and can't see anyone but feel a pang of guilt. You have been searching for Zephyra before you ended up here, weren't you?
@@ -11381,7 +11381,7 @@ As Ginny withdraws from the main hall, you are left wondering about the church o
 	ZEPHYRA_DISAPPEARANCE_KETCH_3_3 = """— What a fool you are. It seems you don't care about this girl then. Fine, I'll have your head and take the Bowl by force.
 
 Ketch makes a simple magic gesture in the air and Zephyra disappears in a puff of smoke. His henchmen charge at you.""",
-	ZEPHYRA_DISAPPEARANCE_KETCH_3_END = """After a long fight you finally defeat Ketch's group. Before you are able to get anything out of him he dies from his wounds. With this, your chances of getting Zephyra back reach zero...""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_3_END = """After a long fight you finally defeat Ketch's group. Before you are able to get anything out of him he dies from his wounds. You went to the Mages Guild in attempt to track her but whoever possesed her have been knowledgable of such practices and countered your attempts with their own magic. You haven't been able to find her after that.""",
 	ZEPHYRA_DISAPPEARANCE_KETCH_3_1AND2 = """— So you are an obedient [boy], after all. I guess, I'll excuse your previous attempt to kill me this time, ha-ha. You can have your little pet fox then.
 
 He pushes Zephyra into your direction and orders her to walk forward. She hesitantly does so, as if guilt was weighing her down. As she makes halfway through the field you pass the Bowl to a henchman. As Zephyra finally ends up in your arms you realize that Ketch, along with his people, is no longer there.""",
@@ -14450,7 +14450,7 @@ Hotkey: 3""",
 	SLOTS_LABEL = "Slots",
 	TYPE_USABLE_LABEL = "Type: Usable",
 	NAME_LABEL = "Name",
-	SLAVERS_LIST = "List of Slaves",
+	SLAVERS_LIST = "Hiree List",
 	EXP_LABEL = "exp",
 	SHOW_INFO_LABEL = "Show Info",
 	UPGRADE_LABEL = "Factor Upgrade",

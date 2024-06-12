@@ -332,16 +332,21 @@ text = "1/1"
 align = 2
 
 [node name="FromLocList" type="TextureRect" parent="."]
-margin_left = 20.7451
-margin_top = 17.8162
-margin_right = 433.745
-margin_bottom = 659.816
+margin_left = 21.0
+margin_top = 18.0
+margin_right = 434.0
+margin_bottom = 1015.0
 texture = ExtResource( 22 )
+expand = true
 
-[node name="frame" type="TextureRect" parent="FromLocList"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="frame" type="NinePatchRect" parent="FromLocList"]
+margin_right = 413.0
+margin_bottom = 999.0
 texture = ExtResource( 24 )
+patch_margin_left = 15
+patch_margin_top = 144
+patch_margin_right = 15
+patch_margin_bottom = 44
 
 [node name="Label" type="Label" parent="FromLocList"]
 margin_right = 410.0
