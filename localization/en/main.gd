@@ -3226,7 +3226,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEEVENTGOBLINCAPTURE = "[Strength Challenge] Capture",
 	DIALOGUEEVENTGOBLINLEAVE = "Let go",
 	DIALOGUEEVENTGOBLINRECRUITSUCCESS = "[center]{color=green|Success!}[/center]\n— Eh?.. You want me to work for you? Well, I can't refuse someone big and strong like you, can I? I mean, I'll gladly take your offer! This place is a big ass dump after all.\n\nAfter [name] received instructions, [he] quickly disappeared in the way of your mansion.",
-	DIALOGUEEVENTGOBLINRECRUITFAILURE = "[center]{color=red|Failure!}[/center]\n— Eh?.. I... don't think this is a good idea, we don't take betreyals nicely, ya know. Now, if you excuse me...\n\nBefore you can react, the goblin [boy] disappears from sight in one of the tunnels you didn't notice on entrance.",
+	DIALOGUEEVENTGOBLINRECRUITFAILURE = "[center]{color=red|Failure!}[/center]\n— Eh?.. I... don't think this is a good idea, we don't take betrayals nicely, ya know. Now, if you excuse me...\n\nBefore you can react, the goblin [boy] disappears from sight in one of the tunnels you didn't notice on entrance.",
 	DIALOGUEEVENTGOBLINBRINGTOLEADERSUCCESS = "[center]{color=green|Success!}[/center]\n— You actually serious?! I-I guess someone like you can do that... Okay, fine, I'll show you the way, but after this you won't see me anywhere close to it. You got me? \n\nAccording to your agreement, the goblin retells you the layout of the dungeon which you carefully write down. Before you can notice, the goblin is already disapparead from sight.",
 	DIALOGUEEVENTGOBLINBRINGTOLEADERFAILURE = "[center]{color=red|Failure!}[/center]\n— This... This is unreasonable ya know, I'm not out of my mind yet. If you are so willing to die, don't drag me in. \n\nAs [he] was talking [he] moved to the position and darted from the room before you could react. ",
 	DIALOGUEEVENTGOBLINCAPTUREREPLY = "You figure that civilized goblin can be a useful tool or net some profit on the market. Without giving [him] a second chance, you seize [him].\n\n— Hey, what the {^fuck:hell} are you {^doing:thinking}?! Let me go!.. You bastards!",
@@ -5634,7 +5634,7 @@ You hand makes a hard slap on Aire's cheek which turns red, yet her expression d
 
 
 	FINAL_OPERATION_MESSAGE = """In the morning you receive a messenger who asks you to meet Duncan. It seems fairly urgent and he should have a new mission for you.""",
-	LOOKING_FOR_PRINCESS_1 = """— Many of the rebel forces now lie dead or reside in our prison. Unfortunately we missed the princess in our raid and we've got no leads as to where she may have gone. Our interrogation of the prisoners hasn't turned up much.""",
+	LOOKING_FOR_PRINCESS_1 = """— Many of the rebel forces now lie dead or reside in our prison. Unfortunately we missed the princess in our raid and we've got no leads as to where she may have gone. Our interrogation of the prisoners hasn't turned up much. """,
 	LOOKING_FOR_PRINCESS_2 = """
 
 — Don't think I've forgotten your bravery in the raid. Here, your reward. I trust I can continue to count on you, you've proven yourself to be very capable.""",
@@ -5701,7 +5701,7 @@ After closer inspection you confirm that it must belong to the royal family so i
 	LOOKING_FOR_PRINCESS_OPTION_19 = """I've bought the bracelet""",
 	LOOKING_FOR_PRINCESS_19 = """You've presented the bracelet to Amelia who closely inspected it for a few moments.
 
-{color=yellow|Amelia: — Well, fine work. This certainly belonged to the royal family. The engraving was addressed to the youngest daughter.}
+{color=yellow|Amelia: — Fine work. This certainly belonged to the royal family. The engraving was addressed to the youngest daughter.}
 
 {color=aqua|Myr: — Well then, let's get this over with. }
 
@@ -14146,6 +14146,9 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_MAGES_XARI_TEXT = "Xari's Location",
 	QUEST_MAGES_XARI_DESC = "",
 	
+	QUEST_REBEL_BACKROOMS = "Rebel Hideout's Backrooms",
+	QUEST_REBEL_BACKROOMSDESCR = "",
+	
 	QUEST_MAGES_FRED_TEXT = "Fred's Location",
 	QUEST_MAGES_FRED_DESC = "",
 	
@@ -14347,7 +14350,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_DAISY_ADMIRER_LOCATION1 = "Approach",
 	
 	QUEST_GRYPHON_CAVE_LOCATION1 = "Approach Cave",
-	
+	QUEST_MAE_SEARCH = "Search For Mae",
 	QUEST_LEON_FOREST_2_1 = "Search For Leon",
 	
 	QUEST_WHITE_STAG_LOCATION1 = "Search For Leon",

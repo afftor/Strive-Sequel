@@ -1121,8 +1121,8 @@ var dungeons = {
 		event_room_number = [2,2],
 		material_room_number = [2,2],
 		
-		main_route_length = [6,7],
-		bonus_rooms = [2,2],
+		main_route_length = [8,8],
+		bonus_rooms = [1,1],
 		levels = [1,1], 
 		base_room_stamina_cost = [3,5],
 		
@@ -1253,87 +1253,87 @@ var dungeons = {
 		]
 	},
 	
-	quest_ritual_location = {
-		code = 'quest_ritual_location',
-		type = 'dungeon',
-		name = tr("QUEST_RITUAL_LOCATION_TEXT"),
-		classname = '',
-		descript = tr("QUEST_RITUAL_LOCATION_DESC"),
-		difficulty = 'easy',
-		character_data = {
-			chance_mod = 1,
-			races = [['local', 3], ['common',5], ['uncommon',2]]
-		},
-		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
-		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
-		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
-		event_data = {
-			dungeon_find_chest_medium = {
-				limit = 0,
-				weight = 10,
-				floor_range = [0,0],
-				icon = 'chest',
-				events = ['dungeon_find_chest_medium'],
-				possible_challenges = [
-					['event_locked_door',1],
-					['event_blocked_path',1],
-					['event_magic_barrier',1],
-					['event_fallen_bridge',1],
-					['event_small_crack',1],
-					['event_ancient_lock',1]
-				],
-			},
-			freya_shrine_find = {
-				limit = 1,
-				weight = 1,
-				floor_range = [0,0],
-				icon = 'shrine',
-				events = [],
-				possible_challenges = [
-					['event_locked_door',1],
-					['event_blocked_path',1],
-					['event_magic_barrier',1],
-					['event_fallen_bridge',1],
-					['event_small_crack',1],
-					['event_ancient_lock',1]
-				],
-			}
-		},
-		
-		event_room_number = [3,3],
-		material_room_number = [4,4],
-		
-		main_route_length = [6,7],
-		bonus_rooms = [2,3],
-		levels = [2,2], 
-		base_room_stamina_cost = [3,5],
-		
-		resources = ['clothmagic','leatherthick','woodiron','woodmagic','clothsilk'],
-		gatherable_resources = {
-			woodmagic = {
-				amount = [25,40],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},
-			iron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},
-			},
-		gather_mod = [2.5,4],
-		bgm = "dungeon",
-		purchase_price = 0,
-		affiliation = 'local', 
-		events = [],
-		tags = ['quest'],
-		area = 'forests',
-		travel_time = [2,2],
-		scripteventdata = [{trigger = 'enter', args = 'pre_ritual_1'}],
-	},
-	
+#	quest_ritual_location = {
+#		code = 'quest_ritual_location',
+#		type = 'dungeon',
+#		name = tr("QUEST_RITUAL_LOCATION_TEXT"),
+#		classname = '',
+#		descript = tr("QUEST_RITUAL_LOCATION_DESC"),
+#		difficulty = 'easy',
+#		character_data = {
+#			chance_mod = 1,
+#			races = [['local', 3], ['common',5], ['uncommon',2]]
+#		},
+#		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
+#		enemyarray = [['rebels_small', 1],['spiders', 0.2]],
+#		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
+#		event_data = {
+#			dungeon_find_chest_medium = {
+#				limit = 0,
+#				weight = 10,
+#				floor_range = [0,0],
+#				icon = 'chest',
+#				events = ['dungeon_find_chest_medium'],
+#				possible_challenges = [
+#					['event_locked_door',1],
+#					['event_blocked_path',1],
+#					['event_magic_barrier',1],
+#					['event_fallen_bridge',1],
+#					['event_small_crack',1],
+#					['event_ancient_lock',1]
+#				],
+#			},
+#			freya_shrine_find = {
+#				limit = 1,
+#				weight = 1,
+#				floor_range = [0,0],
+#				icon = 'shrine',
+#				events = [],
+#				possible_challenges = [
+#					['event_locked_door',1],
+#					['event_blocked_path',1],
+#					['event_magic_barrier',1],
+#					['event_fallen_bridge',1],
+#					['event_small_crack',1],
+#					['event_ancient_lock',1]
+#				],
+#			}
+#		},
+#
+#		event_room_number = [3,3],
+#		material_room_number = [4,4],
+#
+#		main_route_length = [6,7],
+#		bonus_rooms = [2,3],
+#		levels = [2,2], 
+#		base_room_stamina_cost = [3,5],
+#
+#		resources = ['clothmagic','leatherthick','woodiron','woodmagic','clothsilk'],
+#		gatherable_resources = {
+#			woodmagic = {
+#				amount = [25,40],
+#				weight = 6,
+#				gather_mod = [2,2.5],
+#				stamina = [5,10],
+#				},
+#			iron = {
+#				amount = [15,25],
+#				weight = 2,
+#				gather_mod = [2,2.5],
+#				stamina = [5,10],
+#				},
+#			},
+#		gather_mod = [2.5,4],
+#		bgm = "dungeon",
+#		purchase_price = 0,
+#		affiliation = 'local', 
+#		events = [],
+#		tags = ['quest'],
+#		area = 'forests',
+#		travel_time = [2,2],
+#		scripteventdata = [{trigger = 'enter', args = 'pre_ritual_1'}],
+#	},
+#
 	quest_amelia_bandits_location = {
 		code = 'quest_amelia_bandits_location',
 		type = 'dungeon',
@@ -1714,6 +1714,43 @@ var dungeons = {
 		descript = tr("QUEST_MAGES_XARI_DESC"),
 		difficulty = 'easy',
 		background = 'cave_1',
+		enemyarray =  [],
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		stages_per_level = [1,1],
+		travel_time = [1,1], #[3,3],
+		events = [],
+		tags = ['quest'],
+	},
+	quest_rebels_backrooms = {
+		code = 'quest_rebels_backrooms',
+		type = 'encounter',
+		name = tr("QUEST_REBEL_BACKROOMS"),
+		area = 'plains',
+		classname = '',
+		descript = tr("QUEST_REBEL_BACKROOMSDESC"),
+		difficulty = 'easy',
+		background = 'cave_1',
+		enemyarray =  [],
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		stages_per_level = [1,1],
+		travel_time = [1,1], #[3,3],
+		events = [],
+		tags = ['quest'],
+	},
+	quest_ritual_location = {
+		code = 'quest_ritual_location',
+		type = 'encounter',
+		name = tr("QUEST_RITUAL_LOCATION_TEXT"),
+		area = 'forests',
+		classname = '',
+		descript = tr("QUEST_RITUAL_LOCATION_DESC"),
+		difficulty = 'easy',
+		bgm = "dungeon",
+		background = 'forest3',
 		enemyarray =  [],
 		eventarray = [],
 		levels = [1,1],

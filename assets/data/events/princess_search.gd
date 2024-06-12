@@ -171,7 +171,8 @@ var data = {
 			},
 		],
 	},
-	#servants
+	#servants 
+		#common_effects = [{code = 'make_quest_location', value = 'quest_rebels_backrooms'}],
 	princess_search_servants_1 = {
 		variations = [
 			{
@@ -207,19 +208,6 @@ var data = {
 				],
 			},
 		]
-	},
-	princess_search_servants_leave = {#not used
-		image = null,
-		character = "amelia",
-		tags = [],
-		text = [{text = "", reqs = []}],
-		options = [
-			{
-				code = 'close',
-				text = "DIALOGUECLOSE",
-				reqs = [],
-			},
-		],
 	},
 	#dungeon
 	#look for some minor issues in translation file comments
@@ -1001,7 +989,7 @@ var data = {
 			{text = "AMELIAFINDPRINCESS1_2", reqs = [{type = 'decision', value = 'aire_is_dead', check = false},{type = 'decision', value = 'prison_avail', check = true}]},
 			{text = "AMELIAFINDPRINCESS1_3", reqs = [{type = 'decision', value = 'aire_is_dead', check = true}]},
 		],
-		common_effects = [{code = "decision", value = "AllowSearch"}],
+		common_effects = [{code = "decision", value = "AllowSearch"},{code = 'make_quest_location', value = 'quest_rebels_backrooms'}],
 		options = [
 			{code = 'amelia_princess_advice1' , text = "AMELIAFINDPRINCESSOPTION1", reqs = [], dialogue_argument = 1},
 			{code = 'amelia_princess_advice1' , text = "AMELIAFINDPRINCESSOPTION2", reqs = [], dialogue_argument = 2},

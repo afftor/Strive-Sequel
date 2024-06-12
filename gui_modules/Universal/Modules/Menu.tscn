@@ -1698,7 +1698,24 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.9.0b
+text = "0.9.0c
+Air cutter total damage increased to 225% from 205%
+Bleed and Poison tick damage increased to 10% from 5%. Burn damage reduced to 7% from 8%
+Added location view mod to map and updated some elements. Added travelling characters to visible list
+Added alternative attack animation to ranged attacks
+Armor penetration stat reworked: now maximum amount of DEF it can penetrate is 66%. Penetration formula is
+	If armor penetration * 2 >= target def: target def * 0.33
+	else target def = target def - armor penetration * 1.25
+Fixed settlement recruitment gui not providing an option to hire characters after recruitment
+Fixed certain gameover event being stuck after reloading
+Fixed bracelet quest for Anastasia
+Fixed Mae rescue mission
+Fixed some hair descriptions
+Fixed multitool uprade working in mansion
+Fixed some issues for act 1 when Aire was dead
+Fixed Cali's starting event being too rare
+Some gallery fixes
+0.9.0b
 Fixed elven capital not generating map items in its shop
 Fixed maps not generating in chest rewards properly
 Fixed new rebel dungeon not working
