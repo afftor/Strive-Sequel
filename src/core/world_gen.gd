@@ -616,11 +616,13 @@ func make_quest_location(code):
 	var data = worlddata.dungeons[code]
 	var locationdata = make_location(code, data.area)
 	locationdata.id = code
+	locationdata.tags.push_back('quest')
 	locationdata.travel_time = max(1, globals.rng.randi_range(data.travel_time[0], data.travel_time[1]))#round(rand_range(data.travel_time[0], data.travel_time[1]))
 	var area = ResourceScripts.game_world.areas[data.area]
 	area.questlocations[locationdata.id] = locationdata
 	ResourceScripts.game_world.location_links[locationdata.id] = {area = data.area, category = 'questlocations'}
 	input_handler.active_location = locationdata
+
 
 func make_repeatable_quest_location(quest,area,req):
 	var locationdata = {}
@@ -650,6 +652,7 @@ func make_repeatable_quest_location(quest,area,req):
 #				locationdata.group = {}
 #				locationdata.progress = {level = 0, stage = 0}
 			#'dungeon':
+	locationdata.tags.push_back('quest')
 	return locationdata
 
 

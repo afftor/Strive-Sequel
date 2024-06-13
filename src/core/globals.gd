@@ -1471,6 +1471,7 @@ func remove_location(locationid):
 func unquest_location(locationid):
 	var location = ResourceScripts.world_gen.get_location_from_code(locationid)
 	if location == null: return
+	location.tags.erase('quest')
 	var area = ResourceScripts.world_gen.get_area_from_location_code(locationid)
 	var ldata = ResourceScripts.game_world.location_links[locationid]
 	if ldata.category != "questlocations":

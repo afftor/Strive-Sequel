@@ -327,6 +327,7 @@ func complete_quest(quest, state = 'failed'):
 			#maybe here should be difference (remove or unquest) between quest dungeons and encounters or complete_location and complete_dungeon - its up to you
 			globals.unquest_location(i.location)
 
+
 func get_quest_by_id(id):
 	for i in areas.values():
 		for guild in i.quests.factions:
