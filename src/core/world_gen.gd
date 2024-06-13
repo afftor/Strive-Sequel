@@ -633,6 +633,7 @@ func make_repeatable_quest_location(quest,area,req):
 	match req.code:
 		'complete_dungeon':
 			locationdata.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {id = quest.id, source = quest.source, area = quest.area}})
+#			locationdata.stagedevents.main[dungeon_mainline] = {event = 'finish_quest_dungeon'}
 		'complete_location':
 			for i in locationdata.events:
 				locationdata.scriptedevents.append(i.duplicate(true))
