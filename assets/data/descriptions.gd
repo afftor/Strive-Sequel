@@ -35,7 +35,7 @@ func create_character_description(character):
 	return new_charcter_description(character)
 
 var descriptionorder = [
-'entry', 'age', '[newline]', 'hair_base_length', 'hair_base', 'eye_color', 'eye_shape', 'body_shape', 'horns', 'ears', '[skin_coverage]', 'body_color_skin', 'skin_coverage','wings', 'tail', 'height', 
+'entry', 'age', '[newline]', 'hair_length', 'hair_style', 'eye_color', 'eye_shape', 'body_shape', 'horns', 'ears', '[skin_coverage]', 'body_color_skin', 'skin_coverage','wings', 'tail', 'height', 
 '[newline]','tits_size','multiple_tits','lactation','pregnancy','ass_size','[allowed_sex]','penis_type','[allowed_sex]', 'balls_size','[allowed_sex]', 'has_pussy','[allowed_sex]', "anal_virgin", '[newline]','slave_status', 'piercing','[newline]','tattoo','[newline]','[bonus]'
 ]
 
@@ -403,7 +403,7 @@ var bodypartsdata = {
 	},
 	#duplicate and correct for all other parts of hair. currently only synchronization part made
 	#2add proper values
-	hair_base_length = {
+	hair_length = {
 		bald = {code = 'bald', name = '', chardescript = '', bodychanges = []},
 		ear = {code = 'ear', name = '', chardescript = '', bodychanges = []},
 		neck = {code = 'neck', name = '', chardescript = '', bodychanges = []},
@@ -411,7 +411,7 @@ var bodypartsdata = {
 		waist = {code = 'waist', name = '', chardescript = '', bodychanges = []},
 		hips = {code = 'hips', name = '', chardescript = '', bodychanges = []},
 	},
-	hair_base = {
+	hair_style = {
 		straight = {code = 'straight', name = '', chardescript = '', bodychanges = []},
 		ponytail = {code = 'ponytail', name = '', chardescript = '', bodychanges = []},
 		pigtails = {code = 'pigtails', name = '', chardescript = '', bodychanges = []},

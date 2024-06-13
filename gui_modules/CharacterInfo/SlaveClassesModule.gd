@@ -112,7 +112,10 @@ func update():
 		if !ResourceScripts.game_progress.unlock_all_classes:
 			if i.has('altname') && person.checkreqs(i.altnamereqs):
 				name = i.altname
-			if person.checkreqs(i.reqs, true) == false:
+			var f = person.checkreqs(i.reqs, true)
+			for prof in i.conflict_classes:
+				f = f and !person.has_profession(prof)
+			if  f == false:
 				newbutton.texture_normal = load("res://assets/images/gui/universal/skill_frame_diabled.png")
 				newbutton.texture_hover = load("res://assets/images/gui/universal/skill_frame_diabled.png")
 				newbutton.texture_pressed = load("res://assets/images/gui/universal/skill_frame_diabled.png")

@@ -512,7 +512,7 @@ func character_description(text_input):
 	var text = text_input
 	var temptext = ''
 
-	text = text.replace('[haircolor]', tr(person.get_stat('hair_color'))+" ")
+	text = text.replace('[haircolor]', tr("HAIRCOLOR_" + person.get_stat('hair_color').to_upper()) + " ")
 	for i in descripts:
 		temptext = call(descripts[i].func, person.get_stat(descripts[i].stat))
 		if temptext != '':

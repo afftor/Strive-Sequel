@@ -332,6 +332,170 @@ func set_stat(statname, value): #for direct access only
 	custom_stats_set(statname, value)
 
 #compat getter - stub
+func get_combined_hairs_data():
+	var res = {
+		hair_color ='',
+		hair_style = '',
+		hair_length = '',
+	}
+	var lenghthes = ['bald', 'ear', 'neck', 'shoulder', 'waist', 'hips' ]
+	var length = 0
+	match statlist.hair_fringe: #adjust as you see fit, length is not reverse-compartible with presets autoset
+	#i hate this conversion to older constants, but we are using those - until descriptions are totally rewritten we need this
+		'braids' :
+			res.hair_style = 'multibraids'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 1))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+		'dopple', 'lion', 'parting', 'default', 'fringe':
+			res.hair_style = 'straight'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 2))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+		'back':
+			res.hair_style = 'straight'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 1))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+		'straight' :
+			res.hair_style = 'straight'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 3))
+				'middle':
+					length = int(max(length, 3))
+				'short', 'default':
+					length = int(max(length, 2))
+		'irokez':
+			res.hair_style = 'irokez'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 1))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+		'kare':
+			res.hair_style = 'kare'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 2))
+				'middle':
+					length = int(max(length, 2))
+				'short', 'default':
+					length = int(max(length, 2))
+		'lamb':
+			res.hair_style = 'curved'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 2))
+				'middle':
+					length = int(max(length, 2))
+				'short', 'default':
+					length = int(max(length, 2))
+		'slave':
+			res.hair_style = 'shaved'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 1))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+		'undercut':
+			res.hair_style = 'undercut'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 1))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+	
+	match statlist.hair_assist:
+		'braid':
+			res.hair_style = 'braid'
+			match statlist.hair_assist_length:
+				'long':
+					length = int(max(length, 3))
+				'middle':
+					length = int(max(length, 3))
+				'short', 'default':
+					length = int(max(length, 2))
+		'bun':
+			res.hair_style = 'bun'
+		'pigtails':
+			res.hair_style = 'pigtails'
+		'ponytail': 
+			res.hair_style = 'ponytail'
+			match statlist.hair_assist_length:
+				'long':
+					length = int(max(length, 5))
+				'middle':
+					length = int(max(length, 4))
+				'short', 'default':
+					length = int(max(length, 3))
+		'ponytail_2', 'ponytail_3': 
+			res.hair_style = 'ponytail'
+		'twin_tails', 'twin_tails_3':
+			res.hair_style = 'twinbraids'
+			match statlist.hair_assist_length:
+				'long':
+					length = int(max(length, 3))
+				'middle':
+					length = int(max(length, 3))
+				'short', 'default':
+					length = int(max(length, 2))
+		'twin_tails_2', 'twin_tails_4', 'twin_tails_5':
+			res.hair_style = 'twinbraids'
+	
+	match statlist.hair_back: 
+		'very_long':
+			length = 5
+		'double_tail', 'ponytail_long' :
+			match statlist.hair_back_length:
+				'long':
+					length = int(max(length, 5))
+				'middle':
+					length = int(max(length, 4))
+				'short', 'default':
+					length = int(max(length, 3))
+		'spiral', 'twin_braids', 'straight', 'wave' :
+			match statlist.hair_back_length:
+				'long':
+					length = int(max(length, 3))
+				'middle':
+					length = int(max(length, 2))
+				'short', 'default':
+					length = int(max(length, 2))
+	var colors = []
+	for st in ['hair_base_color_1', 'hair_fringe_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 'hair_fringe_color_2', 'hair_back_color_2', 'hair_assist_color_2']:
+		var tcolor = statlist[st].split('_')[0]
+		if !colors.has(tcolor):
+			colors.push_back(tcolor)
+	if colors.size() > 1: #this is NOT reverse-compatible with preset colors autoassign, auburn preset set colors to different bases. and most base colors do not have translation records. feel free to fix this
+		res.hair_color = 'gradient'
+	else:
+		res.hair_color = colors[0] 
+	
+	res.hair_length = lenghthes[length]
+	
+	return res
+
+
+
 func get_hairs_data():
 	var res = {
 		hair_base = 'dopple', 
@@ -643,6 +807,8 @@ func get_stat(statname, ref = false):
 		else:
 			return get_stat('hair_base_color_1')
 	if statname.begins_with('hair_'): #compart actions, null values should not be returned
+		if statname in ['hair_color', 'hair_style', 'hair_length']:
+			return get_combined_hairs_data()[statname]
 		if statlist[statname] != "":
 			return statlist[statname]
 		else:
@@ -1860,7 +2026,7 @@ func translate(text):
 	text = text.replace("[age]", statlist.age.capitalize())
 	text = text.replace("[male]", sex_nouns[statlist.sex])
 	text = text.replace("[eye_color]", statlist.eye_color)
-	text = text.replace("[hair_color]", statlist.hair_color)
+	text = text.replace("[hair_color]", tr("HAIRCOLOR_" + statlist.hair_color.to_upper()))
 	text = text.replace("[man]", globals.fastif(statlist.sex == 'male', tr('PRONOUNMAN'), tr("PRONOUNMANF")))
 	text = text.replace("[guy]", globals.fastif(statlist.sex == 'male', tr('PRONOUNGUY'), tr("PRONOUNGUYF")))
 	text = text.replace("[husband]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHUSBAND'), tr("PRONOUNHUSBANDF")))
