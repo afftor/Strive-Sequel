@@ -319,6 +319,8 @@ func build_locations_list():
 							closed = false
 					if closed:
 						continue
+		if cdata[id].tags.has('quest'):
+			temp.quest = true
 		if tdata.category == "questlocations":
 			if cdata[id].has("questid") and ResourceScripts.game_progress.if_quest_active(cdata[id].questid):
 				temp.quest = true
@@ -453,7 +455,7 @@ func build_info(loc = null):
 		$InfoPanel/VBoxContainer/Label3.hide()
 	elif location.type == "dungeon":
 		$InfoPanel/InfoFrame/enemies.visible = true
-		if location.tags.has('quest') == true:
+		if location.tags.has('quest'):
 			$InfoPanel/InfoFrame/enemies.text = tr("QUESTLOCATION")
 			
 		else:
@@ -517,6 +519,7 @@ func make_panel_for_location(panel, loc):
 #		if ResourceScripts.game_world.areas[loc.area].questlocations.has(loc.id):
 		if loc.quest:
 			text = "Q:" + text
+			panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.yellow)
 		if  data.has('active') and data.active == false:
 			text += "(!)"
 		set_loc_text(panel, text)
@@ -529,7 +532,7 @@ func make_panel_for_location(panel, loc):
 #				globals.return_characters_from_location(loc.id)
 		if loc.has('locked'):
 			if loc.locked:
-				panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.yellow)
+				panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.red)
 #				globals.connecttexttooltip(panel, "Location Unavailable")
 #				globals.return_characters_from_location(loc.id)
 		var icon

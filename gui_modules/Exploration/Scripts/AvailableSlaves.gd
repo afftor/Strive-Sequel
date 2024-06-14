@@ -80,6 +80,7 @@ func hire_char(ch_id):
 #			return
 		var tchar = characters_pool.get_char_by_id(ch_id)
 		input_handler.active_character = tchar
+		input_handler.active_location = get_parent().get_parent().active_location
 		if tchar.src == 'random_combat':
 			input_handler.interactive_message("recruit_captured", "story_event", {})
 		else:
