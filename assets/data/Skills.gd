@@ -2487,7 +2487,7 @@ var Skilllist = {
 		not_final = true,
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = [['caster.atk','*0.2'],0.6],
+		value = [['caster.atk','*0.2'],0.7],
 		damagestat = ['no_stat', '+damage_hp'],
 	},
 	holy_lance = {

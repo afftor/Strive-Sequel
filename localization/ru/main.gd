@@ -2790,6 +2790,18 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	BODYPARTHAIR_STYLEBRAIDDESCRIPT = "Она зачесана в одну [url=hair][color=aqua]косу[/color][/url]",
 	BODYPARTHAIR_STYLETWINBRAIDSDESCRIPT = "Она зачесана в [url=hair][color=aqua]две косы[/color][/url].",
 	BODYPARTHAIR_STYLEBUNDESCRIPT = "Она завязана в аккуратный [url=hair][color=aqua]пучок[/color][/url].",
+	HAIRCOLOR_GRADIENT = """colorful""", # MISSING TRANSLATION
+	HAIRCOLOR_BROWN = """brown""", # MISSING TRANSLATION
+	HAIRCOLOR_ORANGE = """orange""", # MISSING TRANSLATION
+	HAIRCOLOR_DARK = """dark""", # MISSING TRANSLATION
+	HAIRCOLOR_GREEN = """green""", # MISSING TRANSLATION
+	HAIRCOLOR_CYAN = """cyan""", # MISSING TRANSLATION
+	HAIRCOLOR_PINK = """pink""", # MISSING TRANSLATION
+	HAIRCOLOR_PURPLE = """purple""", # MISSING TRANSLATION
+	HAIRCOLOR_RED = """red""", # MISSING TRANSLATION
+	HAIRCOLOR_WHITE = """white""", # MISSING TRANSLATION
+	HAIRCOLOR_YELLOW = """yellow""", # MISSING TRANSLATION
+	HAIRCOLOR_BLUE = """blue""", # MISSING TRANSLATION
 
 	BODYPARTEYE_COLORDEFAULTDESCRIPT = "[His] глаза [color=aqua][eye_color][/color].",
 	BODYPARTEYE_SHAPENORMALDESCRIPT = ' ',
@@ -5694,6 +5706,10 @@ AFTER_MINES_CONVOY_15 = """В нескольких сотнях футов от 
 
 После тщательного осмотра вы убеждаетесь, что он должен принадлежать королевской семье, так что пора отнести его Майре.""",
 	LOOKING_FOR_PRINCESS_18 = """Когда вы передаете золото кобольду, он отдает браслет и быстро исчезает с деньгами. После более тщательного осмотра вы убеждаетесь, что он должен принадлежать королевской семье, так что пора отнести его Майре.""",
+	LOOKING_FOR_PRINCESS_OPTION_19_1 = """I've been tasked to find the Princess...""", # MISSING TRANSLATION
+	LOOKING_FOR_PRINCESS_19_1 = """You ask Myr for a way to find the Princess. After a short pause she gives you a short response.
+
+— Get some of her personal belongings. Try her last stand, maybe Duncan's goons haven't scrapped it all yet.""", # MISSING TRANSLATION
 	LOOKING_FOR_PRINCESS_OPTION_19 = """Я достал браслет.""",
 	LOOKING_FOR_PRINCESS_19 = """Вы вручили браслет Амелии, которая внимательно осмотрела его в течение нескольких мгновений.
 
@@ -14169,6 +14185,8 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 	
 	QUEST_MAGES_XARI_TEXT = "Местонахождение Ксари",
 	QUEST_MAGES_XARI_DESC = "",
+	QUEST_REBEL_BACKROOMS = """Rebel Hideout's Backrooms""", # MISSING TRANSLATION
+	QUEST_REBEL_BACKROOMSDESCR = """""", # MISSING TRANSLATION
 	
 	QUEST_MAGES_FRED_TEXT = "Местонахождение Фреда",
 	QUEST_MAGES_FRED_DESC = "",
@@ -14371,6 +14389,7 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 	QUEST_DAISY_ADMIRER_LOCATION1 = "Подойти",
 	
 	QUEST_GRYPHON_CAVE_LOCATION1 = "Подойти к пещере",
+	QUEST_MAE_SEARCH = """Search For Mae""", # MISSING TRANSLATION
 	
 	QUEST_LEON_FOREST_2_1 = "Искать Леона",
 	

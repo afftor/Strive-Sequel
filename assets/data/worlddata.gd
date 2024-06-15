@@ -2348,7 +2348,7 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'cali_hector_1', args = []}]
 		}
 	],
-	quest_final_operation_location = [ #not sure about code = 'value_check' here, as it should not be used in option's reqs
+	quest_rebels_backrooms = [
 		{
 			text = tr("QUEST_FINAL_OPERATION_LOCATION1"), 
 			reqs = [ 
@@ -2385,6 +2385,14 @@ var fixed_location_options = { #override serialized data
 			reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_CAVE_START'}],
 			args = [{code = 'start_event', data = 'gryphon_cave_start', args = []}]
 		},
+	],
+	quest_ritual_location = [
+		{
+			text = tr("QUEST_MAE_SEARCH"), 
+			reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRE_RITUAL_2_1'}],
+			args = [{code = 'start_event', data = 'pre_ritual_1', args = []}]
+		},
+		
 	],
 	quest_leon_forest = [
 		{

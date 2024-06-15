@@ -2806,6 +2806,18 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	BODYPARTHAIR_STYLEBRAIDDESCRIPT = "它被梳成一个 [url=hair][color=aqua]辫子[/color][/url].",
 	BODYPARTHAIR_STYLETWINBRAIDSDESCRIPT = "它被梳成一个 [url=hair][color=aqua]双辫子[/color][/url].",
 	BODYPARTHAIR_STYLEBUNDESCRIPT = "它被扎成一个整洁的 [url=hair][color=aqua]发髻[/color][/url].",
+	HAIRCOLOR_GRADIENT = """colorful""", # MISSING TRANSLATION
+	HAIRCOLOR_BROWN = """brown""", # MISSING TRANSLATION
+	HAIRCOLOR_ORANGE = """orange""", # MISSING TRANSLATION
+	HAIRCOLOR_DARK = """dark""", # MISSING TRANSLATION
+	HAIRCOLOR_GREEN = """green""", # MISSING TRANSLATION
+	HAIRCOLOR_CYAN = """cyan""", # MISSING TRANSLATION
+	HAIRCOLOR_PINK = """pink""", # MISSING TRANSLATION
+	HAIRCOLOR_PURPLE = """purple""", # MISSING TRANSLATION
+	HAIRCOLOR_RED = """red""", # MISSING TRANSLATION
+	HAIRCOLOR_WHITE = """white""", # MISSING TRANSLATION
+	HAIRCOLOR_YELLOW = """yellow""", # MISSING TRANSLATION
+	HAIRCOLOR_BLUE = """blue""", # MISSING TRANSLATION
 
 	BODYPARTEYE_COLORDEFAULTDESCRIPT = "[His] 的眼睛是 [color=aqua][eye_color][/color].",
 	BODYPARTEYE_SHAPENORMALDESCRIPT = ' ',
@@ -5664,6 +5676,10 @@ GUILD_ATTACK_ON_HIDEOUT_4_2 = """在叛军藏身处较深的房间里，格雷�
 
 经过仔细检查，你确认它一定是皇室的，所以是时候把它带到梅尔那里了。""",
 	LOOKING_FOR_PRINCESS_18 = """当你把金子递给狗头人时，他把手镯给你，很快就带着钱消失了。经过仔细检查，你确认它一定是皇室的，所以是时候把它带给梅尔了。""",
+	LOOKING_FOR_PRINCESS_OPTION_19_1 = """I've been tasked to find the Princess...""", # MISSING TRANSLATION
+	LOOKING_FOR_PRINCESS_19_1 = """You ask Myr for a way to find the Princess. After a short pause she gives you a short response.
+
+— Get some of her personal belongings. Try her last stand, maybe Duncan's goons haven't scrapped it all yet.""", # MISSING TRANSLATION
 	LOOKING_FOR_PRINCESS_OPTION_19 = """我买了手镯""",
 	LOOKING_FOR_PRINCESS_19 = """您已将手镯赠送给阿米莉亚，阿米莉亚仔细检查了几分钟。
 
@@ -14097,6 +14113,8 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	QUEST_MAGES_XARI_TEXT = "扎里1的位置",
 	QUEST_MAGES_XARI_DESC = "",
+	QUEST_REBEL_BACKROOMS = """Rebel Hideout's Backrooms""", # MISSING TRANSLATION
+	QUEST_REBEL_BACKROOMSDESCR = """""", # MISSING TRANSLATION
 	
 	QUEST_MAGES_FRED_TEXT = "弗雷德的位置",
 	QUEST_MAGES_FRED_DESC = "",
@@ -14299,6 +14317,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_DAISY_ADMIRER_LOCATION1 = "接近",
 	
 	QUEST_GRYPHON_CAVE_LOCATION1 = "接近洞穴",
+	QUEST_MAE_SEARCH = """Search For Mae""", # MISSING TRANSLATION
 	
 	QUEST_LEON_FOREST_2_1 = "搜索莱昂",
 	

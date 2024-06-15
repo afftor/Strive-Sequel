@@ -1122,7 +1122,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLFIRE_BURST = "Fire Burst",
 	SKILLFIRE_BURSTDESCRIPT = "Deals 50% of MATK as {color=yellow|Fire} damage to all enemies. Reduces target's hit chance by 20 for 3 turns.",
 	SKILLAIR_CUTTER = "Air Cutter",
-	SKILLAIR_CUTTERDESCRIPT = "Deals 85% of ATK as {color=yellow|Air} damage to one target and 2 random enemies. Has 50% chance to cause targets to bleed for 2 turns.",
+	SKILLAIR_CUTTERDESCRIPT = "Deals 85% of ATK as {color=yellow|Air} damage to one target and 70% of ATK to 2 random enemies. Has 50% chance to cause targets to bleed for 2 turns.",
 	SKILLHOLY_LANCE = "Holy Lance",
 	SKILLHOLY_LANCEDESCRIPT = "Deals 100% of ATK as {color=yellow|Light} damage to a row.",
 	SKILLSWIPE = "Swipe",
@@ -1164,7 +1164,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLPROTECTIVE_SHELL = "Protective Shell",
 	SKILLPROTECTIVE_SHELLDESCRIPT = "Buffs Ally column: Reduce incoming damage by 35% for next 3 attacks.",
 	SKILLHAMMERFALL = "Hammerfall",
-	SKILLHAMMERFALLDESCRIPT = "Deals 150% of ATK as {color=yellow|Physical} damage to a target. Stuns target for 2 turns. ",
+	SKILLHAMMERFALLDESCRIPT = "Deals 150% of ATK as {color=yellow|Earth} damage to a target. Stuns target for 2 turns. ",
 	SKILLPURGE = "Purge",
 	SKILLPURGEDESCRIPT = "Removes all negative buffs from target.",
 	SKILLRIGHTEOUS_FIRE = "Righteous Fire",
@@ -2794,7 +2794,20 @@ However, while it might seem that Landowners have nothing but contempt for those
 	BODYPARTHAIR_STYLEBRAIDDESCRIPT = "It is combed into a single [url=hair][color=aqua]braid[/color][/url].",
 	BODYPARTHAIR_STYLETWINBRAIDSDESCRIPT = "It is combed into [url=hair][color=aqua]two braids[/color][/url].",
 	BODYPARTHAIR_STYLEBUNDESCRIPT = "It is tied into a neat [url=hair][color=aqua]bun[/color][/url].",
-
+	
+	HAIRCOLOR_GRADIENT = "colorful",
+	HAIRCOLOR_BROWN = "brown",
+	HAIRCOLOR_ORANGE = "orange",
+	HAIRCOLOR_DARK = "dark",
+	HAIRCOLOR_GREEN = "green",
+	HAIRCOLOR_CYAN = "cyan",
+	HAIRCOLOR_PINK = "pink",
+	HAIRCOLOR_PURPLE = "purple",
+	HAIRCOLOR_RED = "red",
+	HAIRCOLOR_WHITE = "white",
+	HAIRCOLOR_YELLOW = "yellow",
+	HAIRCOLOR_BLUE = "blue",
+	
 	BODYPARTEYE_COLORDEFAULTDESCRIPT = "[His] eyes are [color=aqua][eye_color][/color].",
 	BODYPARTEYE_SHAPENORMALDESCRIPT = ' ',
 	BODYPARTEYE_SHAPESLITDESCRIPT = "[He] has [color=aqua]vertical, animalistic pupils[/color].",
@@ -3226,7 +3239,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEEVENTGOBLINCAPTURE = "[Strength Challenge] Capture",
 	DIALOGUEEVENTGOBLINLEAVE = "Let go",
 	DIALOGUEEVENTGOBLINRECRUITSUCCESS = "[center]{color=green|Success!}[/center]\n— Eh?.. You want me to work for you? Well, I can't refuse someone big and strong like you, can I? I mean, I'll gladly take your offer! This place is a big ass dump after all.\n\nAfter [name] received instructions, [he] quickly disappeared in the way of your mansion.",
-	DIALOGUEEVENTGOBLINRECRUITFAILURE = "[center]{color=red|Failure!}[/center]\n— Eh?.. I... don't think this is a good idea, we don't take betreyals nicely, ya know. Now, if you excuse me...\n\nBefore you can react, the goblin [boy] disappears from sight in one of the tunnels you didn't notice on entrance.",
+	DIALOGUEEVENTGOBLINRECRUITFAILURE = "[center]{color=red|Failure!}[/center]\n— Eh?.. I... don't think this is a good idea, we don't take betrayals nicely, ya know. Now, if you excuse me...\n\nBefore you can react, the goblin [boy] disappears from sight in one of the tunnels you didn't notice on entrance.",
 	DIALOGUEEVENTGOBLINBRINGTOLEADERSUCCESS = "[center]{color=green|Success!}[/center]\n— You actually serious?! I-I guess someone like you can do that... Okay, fine, I'll show you the way, but after this you won't see me anywhere close to it. You got me? \n\nAccording to your agreement, the goblin retells you the layout of the dungeon which you carefully write down. Before you can notice, the goblin is already disapparead from sight.",
 	DIALOGUEEVENTGOBLINBRINGTOLEADERFAILURE = "[center]{color=red|Failure!}[/center]\n— This... This is unreasonable ya know, I'm not out of my mind yet. If you are so willing to die, don't drag me in. \n\nAs [he] was talking [he] moved to the position and darted from the room before you could react. ",
 	DIALOGUEEVENTGOBLINCAPTUREREPLY = "You figure that civilized goblin can be a useful tool or net some profit on the market. Without giving [him] a second chance, you seize [him].\n\n— Hey, what the {^fuck:hell} are you {^doing:thinking}?! Let me go!.. You bastards!",
@@ -5634,7 +5647,7 @@ You hand makes a hard slap on Aire's cheek which turns red, yet her expression d
 
 
 	FINAL_OPERATION_MESSAGE = """In the morning you receive a messenger who asks you to meet Duncan. It seems fairly urgent and he should have a new mission for you.""",
-	LOOKING_FOR_PRINCESS_1 = """— Many of the rebel forces now lie dead or reside in our prison. Unfortunately we missed the princess in our raid and we've got no leads as to where she may have gone. Our interrogation of the prisoners hasn't turned up much.""",
+	LOOKING_FOR_PRINCESS_1 = """— Many of the rebel forces now lie dead or reside in our prison. Unfortunately we missed the princess in our raid and we've got no leads as to where she may have gone. Our interrogation of the prisoners hasn't turned up much. """,
 	LOOKING_FOR_PRINCESS_2 = """
 
 — Don't think I've forgotten your bravery in the raid. Here, your reward. I trust I can continue to count on you, you've proven yourself to be very capable.""",
@@ -5701,7 +5714,7 @@ After closer inspection you confirm that it must belong to the royal family so i
 	LOOKING_FOR_PRINCESS_OPTION_19 = """I've bought the bracelet""",
 	LOOKING_FOR_PRINCESS_19 = """You've presented the bracelet to Amelia who closely inspected it for a few moments.
 
-{color=yellow|Amelia: — Well, fine work. This certainly belonged to the royal family. The engraving was addressed to the youngest daughter.}
+{color=yellow|Amelia: — Fine work. This certainly belonged to the royal family. The engraving was addressed to the youngest daughter.}
 
 {color=aqua|Myr: — Well then, let's get this over with. }
 
@@ -11331,7 +11344,7 @@ The elf snaps his fingers and the shop quickly erupts in fires over the walls. H
 	ZEPHYRA_DISAPPEARANCE_BOY_8_OPTION_3 = "I'll take my leave.",
 	ZEPHYRA_DISAPPEARANCE_BOY_9_1 = """— He has been known for being elusive. Changing his location whenever it gets discovered by authorities. That's how he's been able to earn this reputation. Kinda bad for you, as I expect him to have more than one base he could be hiding at now.""",
 	ZEPHYRA_DISAPPEARANCE_BOY_9_2 = """— There's nothing people like us can do. I've already informed patrolling guards but, given his experience, there's little hope. Sorry, there's not much that we can do.""",
-	ZEPHYRA_DISAPPEARANCE_BOY_ATTACK = """You grab your weapon and quickly finish off the wounded champion. As he falls dead you realize that his words were very likely true, and you have no clue how to find Zephyra now.""",
+	ZEPHYRA_DISAPPEARANCE_BOY_ATTACK = """You grab your weapon and quickly finish off the wounded champion. As he falls dead you realize that his words were very likely true, and you have no clue how to find Zephyra now. You went to the Mages Guild in attempt to track her but whoever possesed her have been knowledgable of such practices and countered your attempts with their own magic. You haven't been able to find her after that.""",
 	ZEPHYRA_DISAPPEARANCE_BED_1_1 = """You lay down on the bed and close your eyes. For some reason you feel very comfortable, quickly dozing to sleep by the crackling of fire...
 
 That is until you feel a hard slap of something fluffy on your head, returning you to your senses. You look around and can't see anyone but feel a pang of guilt. You have been searching for Zephyra before you ended up here, weren't you?
@@ -11381,7 +11394,7 @@ As Ginny withdraws from the main hall, you are left wondering about the church o
 	ZEPHYRA_DISAPPEARANCE_KETCH_3_3 = """— What a fool you are. It seems you don't care about this girl then. Fine, I'll have your head and take the Bowl by force.
 
 Ketch makes a simple magic gesture in the air and Zephyra disappears in a puff of smoke. His henchmen charge at you.""",
-	ZEPHYRA_DISAPPEARANCE_KETCH_3_END = """After a long fight you finally defeat Ketch's group. Before you are able to get anything out of him he dies from his wounds. With this, your chances of getting Zephyra back reach zero...""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_3_END = """After a long fight you finally defeat Ketch's group. Before you are able to get anything out of him he dies from his wounds. You went to the Mages Guild in attempt to track her but whoever possesed her have been knowledgable of such practices and countered your attempts with their own magic. You haven't been able to find her after that.""",
 	ZEPHYRA_DISAPPEARANCE_KETCH_3_1AND2 = """— So you are an obedient [boy], after all. I guess, I'll excuse your previous attempt to kill me this time, ha-ha. You can have your little pet fox then.
 
 He pushes Zephyra into your direction and orders her to walk forward. She hesitantly does so, as if guilt was weighing her down. As she makes halfway through the field you pass the Bowl to a henchman. As Zephyra finally ends up in your arms you realize that Ketch, along with his people, is no longer there.""",
@@ -14146,6 +14159,9 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_MAGES_XARI_TEXT = "Xari's Location",
 	QUEST_MAGES_XARI_DESC = "",
 	
+	QUEST_REBEL_BACKROOMS = "Rebel Hideout's Backrooms",
+	QUEST_REBEL_BACKROOMSDESCR = "",
+	
 	QUEST_MAGES_FRED_TEXT = "Fred's Location",
 	QUEST_MAGES_FRED_DESC = "",
 	
@@ -14347,7 +14363,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_DAISY_ADMIRER_LOCATION1 = "Approach",
 	
 	QUEST_GRYPHON_CAVE_LOCATION1 = "Approach Cave",
-	
+	QUEST_MAE_SEARCH = "Search For Mae",
 	QUEST_LEON_FOREST_2_1 = "Search For Leon",
 	
 	QUEST_WHITE_STAG_LOCATION1 = "Search For Leon",
@@ -14450,7 +14466,7 @@ Hotkey: 3""",
 	SLOTS_LABEL = "Slots",
 	TYPE_USABLE_LABEL = "Type: Usable",
 	NAME_LABEL = "Name",
-	SLAVERS_LIST = "List of Slaves",
+	SLAVERS_LIST = "Hiree List",
 	EXP_LABEL = "exp",
 	SHOW_INFO_LABEL = "Show Info",
 	UPGRADE_LABEL = "Factor Upgrade",

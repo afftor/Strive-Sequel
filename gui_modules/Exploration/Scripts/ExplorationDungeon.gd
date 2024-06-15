@@ -1080,6 +1080,7 @@ func move_to_room(room_id = null):
 		globals.common_effects([{code = "complete_active_location_quests"}])
 		build_location_description()
 		globals.start_fixed_event('event_dungeon_complete_loot_' + active_location.difficulty)
+		globals.check_events('complete_location')
 	if data.type in ['event', 'combat', 'combat_boss']:
 		data.type = 'empty'
 	update_map()

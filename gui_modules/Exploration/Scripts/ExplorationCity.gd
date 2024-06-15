@@ -330,25 +330,26 @@ func hide_guild_panels():
 
 func enter_guild(guild):
 	self.current_pressed_area_btn = null
-	if (
-		previous_guild == guild.name
-		&& get_tree().get_root().get_node_or_null("dialogue")
-		&& ! get_tree().get_root().get_node("dialogue").is_visible()
-	):
-		previous_guild = ''
-		update_guild_buttons('')
-		open_city(selected_location)
-		return
-	previous_guild = guild.name
-	update_guild_buttons(guild.name)
-	input_handler.active_area = ResourceScripts.game_world.areas[guild.area]
-	active_faction = guild
-	market_mode = "guild_slaves"
-	input_handler.active_faction = guild
-	update_guild_actions(guild)
+	if guild != null:
+		if (
+			previous_guild == guild.name
+			&& get_tree().get_root().get_node_or_null("dialogue")
+			&& ! get_tree().get_root().get_node("dialogue").is_visible()
+		):
+			previous_guild = ''
+			update_guild_buttons('')
+			open_city(selected_location)
+			return
+		previous_guild = guild.name
+		update_guild_buttons(guild.name)
+		input_handler.active_area = ResourceScripts.game_world.areas[guild.area]
+		active_faction = guild
+		market_mode = "guild_slaves"
+		input_handler.active_faction = guild
+		update_guild_actions(guild)
 
-	# Visuals
-	$GuildBG.texture = images.backgrounds[guild.background]
+		# Visuals
+		$GuildBG.texture = images.backgrounds[guild.background]
 	if get_tree().get_root().get_node_or_null("dialogue") && ! get_tree().get_root().get_node("dialogue").is_visible():
 		unfade($GuildBG)
 	if gui_controller.is_dialogue_just_started:
