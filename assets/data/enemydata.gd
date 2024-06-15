@@ -1449,7 +1449,7 @@ var enemies = {
 		matk = 25,
 		speed = 40,
 		resists = {earth = 100, air = -50, fire = 50, water = 50, light = -50, mind = -100},
-		status_resists = {stun = 75, bleed = 100, poison = 100},
+		status_resists = {stun = 75},
 		race = 'beast',
 		loot = 'anthropoid_loot',
 		icon = "res://assets/images/enemies/GolemIcon.png",

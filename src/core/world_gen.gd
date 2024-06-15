@@ -613,7 +613,7 @@ func make_quest(questcode):
 
 
 func make_quest_location(code):
-	var data = worlddata.dungeons[code]
+	var data = DungeonData.dungeons[code]
 	var locationdata = make_location(code, data.area)
 	locationdata.id = code
 	locationdata.tags.push_back('quest')

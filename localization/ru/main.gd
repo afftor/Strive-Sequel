@@ -5694,6 +5694,10 @@ AFTER_MINES_CONVOY_15 = """В нескольких сотнях футов от 
 
 После тщательного осмотра вы убеждаетесь, что он должен принадлежать королевской семье, так что пора отнести его Майре.""",
 	LOOKING_FOR_PRINCESS_18 = """Когда вы передаете золото кобольду, он отдает браслет и быстро исчезает с деньгами. После более тщательного осмотра вы убеждаетесь, что он должен принадлежать королевской семье, так что пора отнести его Майре.""",
+	LOOKING_FOR_PRINCESS_OPTION_19_1 = """I've been tasked to find the Princess...""", # MISSING TRANSLATION
+	LOOKING_FOR_PRINCESS_19_1 = """You ask Myr for a way to find the Princess. After a short pause she gives you a short response.
+
+— Get some of her personal belongings. Try her last stand, maybe Duncan's goons haven't scrapped it all yet.""", # MISSING TRANSLATION
 	LOOKING_FOR_PRINCESS_OPTION_19 = """Я достал браслет.""",
 	LOOKING_FOR_PRINCESS_19 = """Вы вручили браслет Амелии, которая внимательно осмотрела его в течение нескольких мгновений.
 
@@ -14169,6 +14173,8 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 	
 	QUEST_MAGES_XARI_TEXT = "Местонахождение Ксари",
 	QUEST_MAGES_XARI_DESC = "",
+	QUEST_REBEL_BACKROOMS = """Rebel Hideout's Backrooms""", # MISSING TRANSLATION
+	QUEST_REBEL_BACKROOMSDESCR = """""", # MISSING TRANSLATION
 	
 	QUEST_MAGES_FRED_TEXT = "Местонахождение Фреда",
 	QUEST_MAGES_FRED_DESC = "",
@@ -14371,6 +14377,7 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 	QUEST_DAISY_ADMIRER_LOCATION1 = "Подойти",
 	
 	QUEST_GRYPHON_CAVE_LOCATION1 = "Подойти к пещере",
+	QUEST_MAE_SEARCH = """Search For Mae""", # MISSING TRANSLATION
 	
 	QUEST_LEON_FOREST_2_1 = "Искать Леона",
 	

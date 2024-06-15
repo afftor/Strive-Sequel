@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.9.0b'
+const gameversion = '0.9.0c'
 
 #time
 signal hour_tick
@@ -764,11 +764,6 @@ func LoadGame(filename):
 	effects_pool.cleanup()
 	ResourceScripts.game_party.fix_serialization_postload()
 	ResourceScripts.game_party.force_update_portraits()
-
-	if !compare_version(ResourceScripts.game_globals.original_version, '0.5.5b'):
-		ResourceScripts.game_globals.hour = ResourceScripts.game_globals.hour / 6
-		print(ResourceScripts.game_globals.original_version)
-		print("Warning - unsafe loading")
 	
 	if is_instance_valid(gui_controller.mansion):
 		gui_controller.mansion.queue_free()
@@ -780,6 +775,10 @@ func LoadGame(filename):
 		gui_controller.clock.update_labels()
 		gui_controller.clock.set_sky_pos()
 	input_handler.SystemMessage("Game Loaded")
+	
+	if !compare_version(ResourceScripts.game_globals.original_version, '0.9.0c'):
+		if globals.valuecheck({type = "active_quest_stage", value = 'princess_search', stage = 'stage2', state = true}):
+			globals.common_effects([{code = "decision", value = "AllowSearch"},{code = 'make_quest_location', value = 'quest_rebels_backrooms'}])
 	
 
 
@@ -890,6 +889,7 @@ func fastif(value, result1, result2):
 func return_to_main_menu():
 	input_handler.CurrentScene.queue_free()
 	input_handler.ChangeScene('menu')
+	gui_controller.dialogue.hide()
 	ResourceScripts.revert_gamestate()
 	gui_controller.revert_scenes_data()
 #	ResourceScripts.recreate_singletons()
@@ -2295,7 +2295,7 @@ func valuecheck(dict):
 		"area_progress":
 			return ResourceScripts.game_progress.if_has_area_progress(dict.value, dict.operant, dict.area)
 		"decision":
-			#print(dict.value, ResourceScripts.game_progress.decisions.has(dict.value))
+			#print(dict.value, ResourceScripts.game_progress.decisions.has(dict.value) == dict.check)
 			return ResourceScripts.game_progress.decisions.has(dict.value) == dict.check
 		"has_multiple_decisions":
 			var counter = 0
