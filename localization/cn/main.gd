@@ -2806,6 +2806,18 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	BODYPARTHAIR_STYLEBRAIDDESCRIPT = "它被梳成一个 [url=hair][color=aqua]辫子[/color][/url].",
 	BODYPARTHAIR_STYLETWINBRAIDSDESCRIPT = "它被梳成一个 [url=hair][color=aqua]双辫子[/color][/url].",
 	BODYPARTHAIR_STYLEBUNDESCRIPT = "它被扎成一个整洁的 [url=hair][color=aqua]发髻[/color][/url].",
+	HAIRCOLOR_GRADIENT = """colorful""", # MISSING TRANSLATION
+	HAIRCOLOR_BROWN = """brown""", # MISSING TRANSLATION
+	HAIRCOLOR_ORANGE = """orange""", # MISSING TRANSLATION
+	HAIRCOLOR_DARK = """dark""", # MISSING TRANSLATION
+	HAIRCOLOR_GREEN = """green""", # MISSING TRANSLATION
+	HAIRCOLOR_CYAN = """cyan""", # MISSING TRANSLATION
+	HAIRCOLOR_PINK = """pink""", # MISSING TRANSLATION
+	HAIRCOLOR_PURPLE = """purple""", # MISSING TRANSLATION
+	HAIRCOLOR_RED = """red""", # MISSING TRANSLATION
+	HAIRCOLOR_WHITE = """white""", # MISSING TRANSLATION
+	HAIRCOLOR_YELLOW = """yellow""", # MISSING TRANSLATION
+	HAIRCOLOR_BLUE = """blue""", # MISSING TRANSLATION
 
 	BODYPARTEYE_COLORDEFAULTDESCRIPT = "[His] 的眼睛是 [color=aqua][eye_color][/color].",
 	BODYPARTEYE_SHAPENORMALDESCRIPT = ' ',

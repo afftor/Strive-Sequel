@@ -2026,7 +2026,7 @@ func translate(text):
 	text = text.replace("[age]", statlist.age.capitalize())
 	text = text.replace("[male]", sex_nouns[statlist.sex])
 	text = text.replace("[eye_color]", statlist.eye_color)
-	text = text.replace("[hair_color]", tr("HAIRCOLOR_" + statlist.hair_color.to_upper()))
+	text = text.replace("[hair_color]", tr("HAIRCOLOR_" + get_stat('hair_color').to_upper()))
 	text = text.replace("[man]", globals.fastif(statlist.sex == 'male', tr('PRONOUNMAN'), tr("PRONOUNMANF")))
 	text = text.replace("[guy]", globals.fastif(statlist.sex == 'male', tr('PRONOUNGUY'), tr("PRONOUNGUYF")))
 	text = text.replace("[husband]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHUSBAND'), tr("PRONOUNHUSBANDF")))
