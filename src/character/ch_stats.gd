@@ -2190,10 +2190,11 @@ func change_personality_stats(stat, init_value, communicative = false):
 #	value = value*1+rand_range(0.2,-0.2)
 	value *= 1 + rand_range(0.2,-0.2)
 	
-	var backfire_chance = variables.factor_personality_changes[prim_stat][0]
+	#if character's factor chance is lower than check, then character goes opposite direction on personality grid
+	var backfire_chance = 100 - variables.factor_personality_changes[prim_stat][0]
 	if communicative:
 		backfire_chance *= 0.5
-	if backfire_chance <= randf() * 100: #if character's factor chance is lower than check, then character goes opposite direction on personality grid
+	if randf() * 100 <= backfire_chance: 
 		value = -value
 		rebel = true
 	
