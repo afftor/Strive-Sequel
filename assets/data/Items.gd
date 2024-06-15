@@ -3231,7 +3231,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		map = 'dungeon_ancient_jungle',
+		map = 'dungeon_ancient_jungles',
 		mansion_effect = 'map',
 	},
 	map_fire_depths = {

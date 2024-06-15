@@ -90,7 +90,7 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").show()
 				newbutton.get_node("Icon").texture = images.icons.quest_enemy
 				globals.connecttexttooltip(newbutton, (
-					"Defeat: "
+					tr("QUESTDEFEAT")+": "
 					+ tr(variables.enemy_types[i.type])
 					+ " - "
 					+ str(i.value)
@@ -196,7 +196,7 @@ func see_quest_info(quest):
 									else:
 										profname += "/" + classesdata.professions[prof].altname
 									break
-						var prof_name = "Required Class:\n" + profname
+						var prof_name = tr("QUESTREQUIREDCLASS")+":\n" + profname
 						globals.connecttexttooltip(profbutton, prof_name)
 				newbutton.get_node("Icon").texture = images.icons.quest_slave_delivery
 				var stats_text = "\n"+tr("QUESTSTATS")+":\n"

@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.9.0a'
+const gameversion = '0.9.0b'
 
 #time
 signal hour_tick
@@ -386,7 +386,7 @@ func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
 	var image
 	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
 	var data = {}
-	var text = '[center]' + material.name + '[/center]\n' + material.descript
+	var text = material.descript #'[center]' + material.name + '[/center]\n' + material.descript
 	data.text = text + bonustext
 	data.item = material
 	data.icon = material.icon
@@ -1255,7 +1255,7 @@ func check_location_group():
 		else:
 			cleararray.append(i)
 	for i in cleararray:
-		input_handler.active_location.erase(i)
+		input_handler.active_location.group.erase(i)
 	if counter == 0:
 		return false
 	else:

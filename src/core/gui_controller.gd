@@ -113,14 +113,14 @@ func update_modules():
 
 
 func clock_visibility():
-	if input_handler.combat_node != null or !current_screen in [mansion, exploration, game_menu]:
+	if input_handler.combat_node != null or !current_screen in [mansion, exploration_city, game_menu]:
 		if clock != null:
 			clock.visible = false
 		return
 	if exploration == null:
 		clock.visible = current_screen == mansion || current_screen == game_menu
 	else:
-		clock.visible = ((current_screen == mansion || current_screen == exploration) && !exploration.get_node("LocationGui").is_visible()) || current_screen == game_menu
+		clock.visible = current_screen == mansion || current_screen == exploration_city || current_screen == game_menu
 
 
 func add_close_button(scene, position = "snap"):

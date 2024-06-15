@@ -424,7 +424,7 @@ var data = {
 		reqs = [], character = "ginny",
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_BOWL_3_2", reqs = []}],
 		common_effects = [{code = 'money_change', operant = '-', value = 1000},
-		{code = 'decision', value = 'GotZephyrasBowl'}],
+		{code = 'decision', value = 'GotFakeZephyraBowl'}], # got the fake one
 		options = [ {
 			code = 'zephyra_disappearance_bowl_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 		}, ]
@@ -457,9 +457,10 @@ var data = {
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_KETCH_2", reqs = []},
 		],
 		options = [ {
-			code = 'zephyra_disappearance_ketch_3', text = "ZEPHYRA_DISAPPEARANCE_KETCH_2_OPTION_1", reqs = [{type = 'decision', value = 'GotZephyrasBowl', check = true}], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'zephyra_disappearance_ketch_3', text = "ZEPHYRA_DISAPPEARANCE_KETCH_2_OPTION_1", reqs = [{type = 'decision', value = 'GotFakeZephyraBowl', check = true}], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {
-			code = 'zephyra_disappearance_ketch_3', text = "ZEPHYRA_DISAPPEARANCE_KETCH_2_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
+			code = 'zephyra_disappearance_ketch_3', text = "ZEPHYRA_DISAPPEARANCE_KETCH_2_OPTION_2",
+			bonus_effects = [{code = 'remove_item', name = 'sacred_bowl', number = 1}], reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
 		}, {
 			code = 'zephyra_disappearance_ketch_3_f_1', text = "ZEPHYRA_DISAPPEARANCE_KETCH_2_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
 		}, ]
@@ -492,7 +493,6 @@ var data = {
 		reqs = [], character = "ketch",
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_KETCH_3_1AND2", reqs = []},
 		],
-		common_effects = [{code = 'remove_item', name = 'sacred_bowl', number = 1}],
 		options = [ {
 			code = 'zephyra_disappearance_ketch_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',  
 		}, ]
@@ -504,7 +504,7 @@ var data = {
 		text = [{text = "ZEPHYRA_DISAPPEARANCE_KETCH_4", reqs = []},
 		],
 		options = [ {
-			code = 'zephyra_disappearance_ketch_5', text = "ZEPHYRA_DISAPPEARANCE_KETCH_4_OPTION_1", reqs = [{type = 'decision', value = 'GotZephyrasBowl', check = true}], dialogue_argument = 1, type = 'next_dialogue', 
+			code = 'zephyra_disappearance_ketch_5', text = "ZEPHYRA_DISAPPEARANCE_KETCH_4_OPTION_1", reqs = [{type = 'dialogue_selected', check = true, value = 'ZEPHYRA_DISAPPEARANCE_KETCH_2_OPTION_1'}], dialogue_argument = 1, type = 'next_dialogue', 
 		}, {
 			code = 'zephyra_disappearance_ketch_5', text = "ZEPHYRA_DISAPPEARANCE_KETCH_4_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
 		}, {

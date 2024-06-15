@@ -112,7 +112,13 @@ func calculate_dmg():
 	cap += parent.armor_p * 0.5
 	var reduction = 0
 	if parent.ability_type == 'skill':
-		reduction = max(0, parent.target.get_stat('armor') - parent.armor_p)
+#		reduction = max(0, parent.target.get_stat('armor') - parent.armor_p)
+		reduction = parent.target.get_stat('armor')
+		if reduction <= 2 * parent.armor_p:
+			reduction *= 0.33
+		else:
+			reduction -= 1.25 * parent.armor_p
+		reduction = max(0, reduction)
 	elif parent.ability_type == 'spell':
 		reduction = max(0, parent.target.get_stat('mdef'))
 	if !template.nodef and !template.nomod:

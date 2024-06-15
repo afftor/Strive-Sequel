@@ -580,7 +580,7 @@ func test_mode():
 		character.equip(item)
 	#	character.get_stat('pregnancy', true).duration = 2
 		character.set_stat('charm', 100)
-		character.set_stat('wits', 10)
+		character.set_stat('wits', 100)
 	#	character.add_stat('wits', 100)
 		character.add_stat('hpmax', 100)
 		character.set_stat('eye_color','green')
@@ -820,7 +820,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("seethrough_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("sacred_bowl", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("zephyra_underwear"))
-		globals.AddItemToInventory(globals.CreateUsableItem("map_rebel_redoubt", 4))
+		globals.AddItemToInventory(globals.CreateUsableItem("map_bandit_fort", 4))
 		globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("soul_stone", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("sparklingpowder", 5))
@@ -921,7 +921,7 @@ func test_mode():
 		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
-		#input_handler.interactive_message('event_fairy_friendly', '', {})
+		#input_handler.interactive_message('princess_persuation_2_3', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)

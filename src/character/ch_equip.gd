@@ -147,9 +147,9 @@ func get_weapon_animation():
 		var item = ResourceScripts.game_res.items[weapon]
 		match item.itembase: #add proper animations here
 			'bow', 'bowadv':
-				res = 'targetattack'
+				res = 'ranged_attack'
 			'crossbow', 'crossbowadv':
-				res = 'targetattack'
+				res = 'ranged_attack'
 	return res
 
 

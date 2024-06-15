@@ -180,6 +180,7 @@ func _input(event):
 		elif selected_area != null:
 			unselect_area()
 			update_selected_area()
+			build_info(null)
 		elif from_loc != null:
 			reset_from()
 		elif selected_loc != null:
@@ -856,7 +857,7 @@ func reset_to():
 	unselect_location()
 	match_state()
 	build_to_locations()
-	build_info(from_loc)
+	build_info(null)
 
 
 func reset_from():

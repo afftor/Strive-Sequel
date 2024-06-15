@@ -944,9 +944,16 @@ func get_item_category(item):
 func update_sell_list():
 	input_handler.ClearContainer($AreaShop/SellBlock/ScrollContainer/VBoxContainer)
 	tempitems.clear()
+	var array = []
+	
 	for i in ResourceScripts.game_res.materials:
 		if ResourceScripts.game_res.materials[i] <= 0 || Items.materiallist[i].type == 'quest':
 			continue
+		array.append(i)
+	
+	array.sort_custom(self, 'sort_mats')
+	
+	for i in array:
 		var item = Items.materiallist[i]
 		var type = get_item_category(item)
 		var newbutton = input_handler.DuplicateContainerTemplate(
@@ -985,9 +992,21 @@ func update_sell_list():
 		globals.connectitemtooltip_v2(newbutton, item)
 
 
+func sort_mats(first,second):
+	var material1 = Items.materiallist[first]
+	var material2 = Items.materiallist[second]
+	if material1.name >= material2.name:
+		return false
+	else:
+		return true
+
 func update_buy_list():
 	input_handler.ClearContainer($AreaShop/BuyBlock/ScrollContainer/VBoxContainer)
 	tempitems.clear()
+	
+	var array = []
+	
+	
 	for i in active_shop:
 		if Items.materiallist.has(i):
 			var item = Items.materiallist[i]
@@ -996,26 +1015,33 @@ func update_buy_list():
 				amount = active_shop[i]
 			if amount == 0:
 				continue
-			var type = get_item_category(item)
-			var newbutton = input_handler.DuplicateContainerTemplate(
-				$AreaShop/BuyBlock/ScrollContainer/VBoxContainer
-			)
-			newbutton.get_node("name").text = item.name
-			newbutton.get_node("icon").texture = item.icon
-			newbutton.get_node("price").text = str(item.price)
-			newbutton.set_meta('type', type)
-			newbutton.set_meta('item', item.name)
-			newbutton.set_meta('exploration', true)
-			newbutton.connect("pressed", self, "item_purchase", [item, amount])
-			newbutton.visible = (
-				(newbutton.get_meta("type") == buy_category)
-				|| buy_category == "all"
-			)
-			globals.connectmaterialtooltip(newbutton, item, "", 'material')
-			if amount > 0:
-				newbutton.get_node("amount").text = str(amount)
-				newbutton.get_node("amount").show()
-		elif Items.itemlist.has(i):
+			array.append(i)
+	array.sort_custom(self,'sort_mats')
+	for i in array:
+		var item = Items.materiallist[i]
+		var amount = active_shop[i]
+		var type = get_item_category(item)
+		var newbutton = input_handler.DuplicateContainerTemplate(
+			$AreaShop/BuyBlock/ScrollContainer/VBoxContainer
+		)
+		newbutton.get_node("name").text = item.name
+		newbutton.get_node("icon").texture = item.icon
+		newbutton.get_node("price").text = str(item.price)
+		newbutton.set_meta('type', type)
+		newbutton.set_meta('item', item.name)
+		newbutton.set_meta('exploration', true)
+		newbutton.connect("pressed", self, "item_purchase", [item, amount])
+		newbutton.visible = (
+			(newbutton.get_meta("type") == buy_category)
+			|| buy_category == "all"
+		)
+		globals.connectmaterialtooltip(newbutton, item, "", 'material')
+		if amount > 0:
+			newbutton.get_node("amount").text = str(amount)
+			newbutton.get_node("amount").show()
+	
+	for i in active_shop:
+		if Items.itemlist.has(i):
 			var item = Items.itemlist[i]
 			var amount = -1
 			if item.has('parts'):

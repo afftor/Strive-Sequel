@@ -1131,16 +1131,15 @@ var data = {
 	princess_persuation_2_3 = {
 		variations = [
 			{
-				reqs = [
-					{type = 'local_counter', name = 'sympathy2', add_stat = 'sexuals_factor', operant = 'gte', value = 11, check = true},
-					{type = 'decision', value = 'marry_option', check = true}],
+				reqs = [{type = 'local_counter', name = 'sympathy2', add_stat = 'sexuals_factor', operant = 'gte', value = 11, check = true},
+				{type = 'decision', value = 'marry_option', check = true}],
 				image = null,
 				character = "anastasia",
 				custom_background = "jail",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
 					{text = "ANASTASIA_PERSUASION_53", reqs = []},
-					{text = "ANASTASIA_ACCEPT_MARRY", reqs = [],  bonus_effects = [{code = 'decision', name = 'AnastasiaMarry'}]}, #req same as variation's
+					{text = "ANASTASIA_ACCEPT_MARRY", reqs = [], bonus_effects = [{code = 'decision', value = 'AnastasiaMarry'}]}, #req same as variation's
 					{text = "ANASTASIA_PERSUASION_57", reqs = [{type = 'decision', value = 'AireAnastasiaPersuasion', check = true}]},
 				],
 				options = [

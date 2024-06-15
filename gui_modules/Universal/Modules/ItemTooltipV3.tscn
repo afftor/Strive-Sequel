@@ -97,9 +97,6 @@ mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true
 fit_content_height = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LowPanel" type="NinePatchRect" parent="."]
 margin_top = 389.0
