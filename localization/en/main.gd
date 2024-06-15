@@ -2794,7 +2794,20 @@ However, while it might seem that Landowners have nothing but contempt for those
 	BODYPARTHAIR_STYLEBRAIDDESCRIPT = "It is combed into a single [url=hair][color=aqua]braid[/color][/url].",
 	BODYPARTHAIR_STYLETWINBRAIDSDESCRIPT = "It is combed into [url=hair][color=aqua]two braids[/color][/url].",
 	BODYPARTHAIR_STYLEBUNDESCRIPT = "It is tied into a neat [url=hair][color=aqua]bun[/color][/url].",
-
+	
+	HAIRCOLOR_GRADIENT = "colorful",
+	HAIRCOLOR_BROWN = "brown",
+	HAIRCOLOR_ORANGE = "orange",
+	HAIRCOLOR_DARK = "dark",
+	HAIRCOLOR_GREEN = "green",
+	HAIRCOLOR_CYAN = "cyan",
+	HAIRCOLOR_PINK = "pink",
+	HAIRCOLOR_PURPLE = "purple",
+	HAIRCOLOR_RED = "red",
+	HAIRCOLOR_WHITE = "white",
+	HAIRCOLOR_YELLOW = "yellow",
+	HAIRCOLOR_BLUE = "blue",
+	
 	BODYPARTEYE_COLORDEFAULTDESCRIPT = "[His] eyes are [color=aqua][eye_color][/color].",
 	BODYPARTEYE_SHAPENORMALDESCRIPT = ' ',
 	BODYPARTEYE_SHAPESLITDESCRIPT = "[He] has [color=aqua]vertical, animalistic pupils[/color].",

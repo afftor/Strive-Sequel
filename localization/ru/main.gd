@@ -2790,6 +2790,18 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	BODYPARTHAIR_STYLEBRAIDDESCRIPT = "Она зачесана в одну [url=hair][color=aqua]косу[/color][/url]",
 	BODYPARTHAIR_STYLETWINBRAIDSDESCRIPT = "Она зачесана в [url=hair][color=aqua]две косы[/color][/url].",
 	BODYPARTHAIR_STYLEBUNDESCRIPT = "Она завязана в аккуратный [url=hair][color=aqua]пучок[/color][/url].",
+	HAIRCOLOR_GRADIENT = """colorful""", # MISSING TRANSLATION
+	HAIRCOLOR_BROWN = """brown""", # MISSING TRANSLATION
+	HAIRCOLOR_ORANGE = """orange""", # MISSING TRANSLATION
+	HAIRCOLOR_DARK = """dark""", # MISSING TRANSLATION
+	HAIRCOLOR_GREEN = """green""", # MISSING TRANSLATION
+	HAIRCOLOR_CYAN = """cyan""", # MISSING TRANSLATION
+	HAIRCOLOR_PINK = """pink""", # MISSING TRANSLATION
+	HAIRCOLOR_PURPLE = """purple""", # MISSING TRANSLATION
+	HAIRCOLOR_RED = """red""", # MISSING TRANSLATION
+	HAIRCOLOR_WHITE = """white""", # MISSING TRANSLATION
+	HAIRCOLOR_YELLOW = """yellow""", # MISSING TRANSLATION
+	HAIRCOLOR_BLUE = """blue""", # MISSING TRANSLATION
 
 	BODYPARTEYE_COLORDEFAULTDESCRIPT = "[His] глаза [color=aqua][eye_color][/color].",
 	BODYPARTEYE_SHAPENORMALDESCRIPT = ' ',
