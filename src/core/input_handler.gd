@@ -1187,6 +1187,7 @@ func finish_combat():
 	if encounter_win_script != null and !encounter_win_script.empty():
 		globals.common_effects(encounter_win_script.duplicate(true))
 		encounter_win_script = null
+		globals.check_events("finish_combat")
 		return
 	if active_location.has('scriptedevents') && globals.check_events("finish_combat") == true:
 		yield(input_handler, 'EventFinished') #actually not correct, but fail case never fires
@@ -1197,12 +1198,26 @@ func finish_combat():
 
 
 func finish_quest_dungeon(args):
-	interactive_message('finish_quest_dungeon', 'quest_finish_event', {locationname = active_location.name})
+#	interactive_message('finish_quest_dungeon', 'quest_finish_event', {locationname = active_location.name})
+	autocomplete_quest(args.id)
 	globals.unquest_location(active_location.id)
 
+
 func finish_quest_location(args):
-	interactive_message('finish_quest_location', 'quest_finish_event', {locationname = active_location.name})
+#	interactive_message('finish_quest_location', 'quest_finish_event', {locationname = active_location.name})
+	autocomplete_quest(args.id)
 	exploration_node.clear_dungeon_confirm()
+
+
+func autocomplete_quest(q_id):
+	var questdata = ResourceScripts.game_world.get_quest_by_id(q_id)
+	play_animation("repeatable_quest_completed")
+	globals.Reward(questdata)
+	globals.text_log_add("quest", "Quest Complete: " + questdata.name)
+	ResourceScripts.game_world.complete_quest(questdata, 'complete')
+	
+
+
 
 func start_scene(scene):
 	interactive_message(scene.code, 'event_selection', scene.args)
