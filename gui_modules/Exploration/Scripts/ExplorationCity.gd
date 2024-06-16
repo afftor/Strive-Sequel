@@ -465,6 +465,7 @@ func buy_item(item_ref, price, amount, type = "item"):
 		item_name = item_ref.name
 		item_icon = item_ref.icon
 	elif type == "class":
+		amount = 0
 		if classesdata.professions.has(item_ref):
 			item_icon = classesdata.professions[item_ref].icon
 	item_to_buy = item_ref
