@@ -1430,12 +1430,49 @@ func makerandomgroup(enemygroup, quest = false):
 			combatparty[pos] += "_rare"
 	return combatparty
 
+
 func complete_location(locationid):
 	var location = ResourceScripts.world_gen.get_location_from_code(locationid)
 	if location == null: return
 	var area = ResourceScripts.world_gen.get_area_from_location_code(locationid)
 	return_characters_from_location(locationid)
 	ResourceScripts.game_progress.completed_locations[location.id] = {name = location.name, id = location.id, area = area.code}
+
+
+func Reward(selectedquest):
+	input_handler.PlaySound("questcomplete")
+	for i in selectedquest.rewards:
+		match i.code:
+			'gold':
+				ResourceScripts.game_res.money += round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+			'reputation':
+				ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].reputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+				ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].totalreputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+			'gear':
+				AddItemToInventory(CreateGearItemQuest(i.item, i.itemparts, selectedquest))
+			'gear_static':
+				AddItemToInventory(CreateGearItem(i.item, {}))
+			'material':
+				ResourceScripts.game_res.materials[i.item] += i.value
+			'usable':
+				AddItemToInventory(CreateUsableItem(i.item, i.value))
+	
+	#remake into data system
+	if selectedquest.area == 'plains':
+		for i in ResourceScripts.game_world.areas[selectedquest.area].factions.values():
+			if i.totalreputation >= 200 && ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1':
+				ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage = 'stage1_5'
+				common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
+	if ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1_5':
+		var counter = false
+		for i in ResourceScripts.game_progress.stored_events.timed_events:
+			if i.has('action'):
+				continue
+			if i.code == 'guilds_elections_switch':
+				counter = true
+		if counter == false:
+			common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
+
 
 
 func remove_location(locationid):
@@ -1912,10 +1949,10 @@ func common_effects(effects):
 				ResourceScripts.game_progress.completed_quests.append(i.value)
 			'complete_active_location':
 				complete_location(input_handler.active_location.id)
-			'set_completed_quest_location':
-				var data = ResourceScripts.world_gen.get_faction_from_code(i.id)
-				data.completed = true
-				data.active = false
+#			'set_completed_quest_location':
+#				var data = ResourceScripts.world_gen.get_faction_from_code(i.id)
+#				data.completed = true
+#				data.active = false
 			'set_completed_active_location':
 				#input_handler.active_location.progress.level = input_handler.active_location.levels.size()
 #				input_handler.active_location.progress.stage = input_handler.active_location.levels["L" + str(input_handler.active_location.levels.size())].stages
