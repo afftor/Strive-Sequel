@@ -41,6 +41,9 @@ func open(scene):
 #	if get_tree().get_root().get_node_or_null("ANIMLoot") && get_tree().get_root().get_node("ANIMLoot").is_visible():
 #		get_tree().get_root().get_node("ANIMLoot").raise()
 	input_handler.PlaySound("speech")
+	if gui_controller.is_dialogue_just_started:
+		$RichTextLabel.bbcode_text = ''
+	
 	get_tree().get_root().set_disable_input(true)
 	if scene.has("save_scene_to_gallery") && scene.save_scene_to_gallery:
 		save_scene_to_gallery(scene)
@@ -690,7 +693,8 @@ func select_scene_variation_based_on_data(scene):
 
 func set_dialogue_window_type(scene):
 	gui_controller.dialogue_window_type = scene.dialogue_type
-	gui_controller.dialogue_txt = gui_controller.dialogue.get_node("RichTextLabel").bbcode_text
+#	gui_controller.dialogue_txt = gui_controller.dialogue.get_node("RichTextLabel").bbcode_text
+	gui_controller.dialogue_txt = $RichTextLabel.bbcode_text
 	match gui_controller.dialogue_window_type:
 		1:
 			input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2).hide()
@@ -726,7 +730,7 @@ func handle_scene_transition_fx(scene):
 	if self.visible == false:
 		self.visible = true
 		ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
-		$RichTextLabel.bbcode_text = ''
+#		$RichTextLabel.bbcode_text = ''
 		previous_text = ''
 		yield(get_tree().create_timer(0.2), "timeout")
 	emit_signal("TransitionFinished")
