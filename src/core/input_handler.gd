@@ -901,7 +901,8 @@ func dialogue_option_selected(option):
 		match gui_controller.dialogue_window_type:
 			1:
 				get_spec_node(self.NODE_DIALOGUE).hide()
-				gui_controller.dialogue_txt = ""
+#				gui_controller.dialogue_txt = ""
+				gui_controller.dialogue_txt = get_spec_node(self.NODE_DIALOGUE_T2).get_node("RichTextLabel").bbcode_text
 				if option.has("close_speed"):
 					get_spec_node(self.NODE_DIALOGUE).wait_for = option.close_speed
 					ResourceScripts.core_animations.CloseAnimation(get_spec_node(self.NODE_DIALOGUE_T2), option.close_speed)
@@ -913,13 +914,14 @@ func dialogue_option_selected(option):
 				#gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE)
 			2:
 				#get_spec_node(self.NODE_DIALOGUE).hide()
+				gui_controller.dialogue_txt = get_spec_node(self.NODE_DIALOGUE).get_node("RichTextLabel").bbcode_text
 				if option.has("open_speed"):
 					get_spec_node(self.NODE_DIALOGUE).wait_for = option.open_speed
 					ResourceScripts.core_animations.OpenAnimation(get_spec_node(self.NODE_DIALOGUE_T2), option.open_speed)
 				else:
 					ResourceScripts.core_animations.OpenAnimation(get_spec_node(self.NODE_DIALOGUE_T2), 1.0)
 				#get_spec_node(self.NODE_DIALOGUE_T2).hide()
-				#gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE_T2)
+				gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE_T2)
 				# gui_controller.dialogue.get_node("Background").show()
 		gui_controller.dialogue.get_node("RichTextLabel").bbcode_text = gui_controller.dialogue_txt
 	else:
