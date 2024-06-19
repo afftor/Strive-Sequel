@@ -1609,6 +1609,24 @@ func play_animation_noq(animation, args = {}):
 
 
 const PADDINGS = 25
+#this function did not work properly
+#idk how this was supposed to work - so i remade it into my best assumtion of used math to avoid multiple text rendering in binary-search approach
+
+#func font_size_calculator(label): #, text, font):
+#	var font = label.get_font("font")
+#	var new_font = DynamicFont.new()
+#	new_font.use_filter = true
+#	new_font.font_data = load(font.get_font_data().get_font_path())
+#	new_font.size = font.get_size()
+#	var text_width = new_font.get_string_size(label.get_text()).x
+#	var label_width = label.get_size().x
+#	var diff = (text_width / (label_width * 0.01)) - 100
+#	if text_width >= (label_width - PADDINGS):
+#		var old_size = new_font.get_size()
+#		var new_size = round((old_size - (old_size * 0.01 * (abs(diff) + PADDINGS / 2))))
+#		new_font.size = new_size
+#	return new_font
+
 
 func font_size_calculator(label): #, text, font):
 	var font = label.get_font("font")
@@ -1617,11 +1635,11 @@ func font_size_calculator(label): #, text, font):
 	new_font.font_data = load(font.get_font_data().get_font_path())
 	new_font.size = font.get_size()
 	var text_width = new_font.get_string_size(label.get_text()).x
-	var label_width = label.get_size().x
-	var diff = (text_width / (label_width * 0.01)) - 100
-	if text_width >= (label_width - PADDINGS):
+	var label_text_width = label.get_size().x - PADDINGS
+	var diff = text_width / label_text_width
+	if text_width >= label_text_width:
 		var old_size = new_font.get_size()
-		var new_size = round((old_size - (old_size * 0.01 * (abs(diff) + PADDINGS / 2))))
+		var new_size = round(old_size / diff)
 		new_font.size = new_size
 	return new_font
 
