@@ -188,6 +188,8 @@ func _input(event):
 			selected_chars.clear()
 			unselect_location()
 			build_info()
+			update_location_chars()
+			match_state()
 		else:
 			close()
 		get_tree().set_input_as_handled()
@@ -508,7 +510,11 @@ func build_info(loc = null):
 	$InfoPanel/VBoxContainer/Label2.visible = f
 	
 	$InfoPanel.visible = true
-	$InfoPanel/Sendbutton.visible = (from_loc != 'adv_mode' and to_loc != null and loc == to_loc)
+	if from_loc != 'adv_mode' and to_loc != null and loc == to_loc:
+		$InfoPanel/Sendbutton.visible = true
+		$InfoPanel/Sendbutton/Label.text = "Send - %d t" % globals.calculate_travel_time(from_loc, to_loc).time
+	else:
+		$InfoPanel/Sendbutton.visible = false
 
 
 func make_panel_for_location(panel, loc):
@@ -876,10 +882,13 @@ func reset_to():
 func reset_from():
 	from_loc = null
 	to_loc = null
+	selected_loc = null
+	selected_chars.clear()
 	unselect_area()
 	unselect_location()
-	match_state()
 	build_from_locations()
+	update_location_chars()
+	match_state()
 	build_info(null)
 
 
