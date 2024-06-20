@@ -5020,14 +5020,14 @@ var enchantments = {
 				gold_cost = 3000
 			},
 			2:{
-				statmods = {magic_find_add = 1},
+				statmods = {magic_find_add = 2},
 #				effects = [],
 				weight = 100,
 				cap_cost = 300,
 				gold_cost = 6000
 			},
 			3:{
-				statmods = {magic_find_add = 1},
+				statmods = {magic_find_add = 3},
 #				effects = [],
 				weight = 100,
 				cap_cost = 400,
