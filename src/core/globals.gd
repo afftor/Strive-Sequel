@@ -226,7 +226,7 @@ func CreateGearItemLoot(item, parts, newname = null):
 	diffdata.boost = int(diffdata.boost)
 	
 	var newitem = Item.new()
-	newitem.CreateGear(item, parts)
+	newitem.CreateGear(item, parts, diffdata)
 	if newname != null:
 		newitem.name = newname
 	return newitem
