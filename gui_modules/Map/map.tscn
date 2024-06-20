@@ -189,7 +189,7 @@ margin_top = 2.0
 margin_bottom = 2.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 6 )
-text = "Confirm"
+text = "Confirm - 10 t"
 align = 1
 valign = 1
 
@@ -544,7 +544,7 @@ expand = true
 [node name="Label" type="Label" parent="ToLocList/LocScroll/LocCatList/LocCat/offset/LocList/Button"]
 margin_left = 51.0
 margin_top = 7.0
-margin_right = 264.0
+margin_right = 271.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
@@ -566,10 +566,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 700.821
-margin_top = 980.0
-margin_right = 920.821
-margin_bottom = 1038.0
+margin_left = 1143.0
+margin_top = 987.0
+margin_right = 1363.0
+margin_bottom = 1045.0
 texture_normal = ExtResource( 39 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 16 )
@@ -581,6 +581,29 @@ anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 6 )
 text = "Back"
+align = 1
+valign = 1
+
+[node name="mode" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 594.0
+margin_top = 980.0
+margin_right = 814.0
+margin_bottom = 1038.0
+texture_normal = ExtResource( 39 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
+texture_disabled = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="mode"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "Adv. mode"
 align = 1
 valign = 1
 
