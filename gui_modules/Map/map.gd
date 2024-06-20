@@ -195,6 +195,7 @@ func _input(event):
 
 func _ready():#2add button connections
 	$Back.connect('pressed', self, 'close')
+	$mode.connect('pressed', self, 'from_loc_set')
 	$FromLocList/Sendbutton.connect('pressed', self, 'from_loc_set')
 	$InfoPanel/Sendbutton.connect('pressed', self, 'confirm_travel')
 	$zoom.min_value = map_zoom_min
@@ -810,20 +811,29 @@ func location_press(location, mode):
 
 func match_state():
 	if from_loc == null:
+		$FromLocList.visible = true
 		$ToLocList.visible = false
 		if selected_loc == null:
-			$FromLocList/Sendbutton/Label.text = 'Adv.Mode'
+#			$FromLocList/Sendbutton/Label.text = 'Adv.Mode'
+			$FromLocList/Sendbutton.visible = false
+			$mode/Label.text = 'Adv. Mode'
+			$mode.visible = true
 		else:
-			$FromLocList/Sendbutton/Label.text = 'Send'
-		$FromLocList/Sendbutton.visible = true
+			$FromLocList/Sendbutton.visible = true
+			$mode.visible = false
+#			$FromLocList/Sendbutton/Label.text = 'Send'
+#		$FromLocList/Sendbutton.visible = true
 		$InfoPanel/Sendbutton.visible = false
 	else:
 		$ToLocList.visible = true
 		if from_loc == 'adv_mode':
-			$FromLocList/Sendbutton.visible = true
-			$FromLocList/Sendbutton/Label.text = 'Smpl.Mode'
+			$FromLocList.visible = false
+			$mode/Label.text = 'Smpl.Mode'
+			$mode.visible = true
 		else:
+			$FromLocList.visible = true
 			$FromLocList/Sendbutton.visible = false
+			$mode.visible = false
 
 
 func from_loc_set():
