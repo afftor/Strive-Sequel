@@ -1208,6 +1208,8 @@ var TranslationDict = {
 	SKILLEUPHORIA_APPLYDESCRIPT = "При активации увеличивает весь урон за счет вашей похоти. Истощает вашу похоть каждый ход",
 	SKILLEUPHORIA_REMOVE = "Эйфория",
 	SKILLEUPHORIA_REMOVEDESCRIPT = "Отключить Эйфорию",
+	SKILLENEMY_SLASH = """Slash""", # MISSING TRANSLATION
+	SKILLASSASSINATEEN = """Assassinate""", # MISSING TRANSLATION
 	
 	SKILLMIMIC_ATTACK = "Липкий захват",
 
@@ -2296,6 +2298,7 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	BUFFDESCRIPTCURSE = "",
 	BUFFDESCRIPTENCHANT = "",
 	BUFFDESCRIPTMENTOR = "Прирост опыта увеличен",	
+	BUFFDESCRIPTBISHOP = """Target receive 20%% more Light and Dark damage""", # MISSING TRANSLATION
 	
 	CHALLENGESTRENGTH = "Испытание на силу",
 	CHALLENGEDEXTERITY = "Испытание на ловкость",
@@ -3539,6 +3542,8 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 
 	WORKRULEMASTURBATION = "Запретить мастурбацию",
 	WORKRULEMASTURBATIONDESCRIPT = "[name] не будет иметь возможности разрядить себя, что приведет к повышенному стрессу, но увеличит либидо. Утечка повиновения +2, рост похоти +15%",
+	WORKRULELOCK = """Lock Character""", # MISSING TRANSLATION
+	WORKRULELOCKDESCRIPT = """Locks character from showing [him] in the list of tasks and activites which permanently remove or sell [him].""", # MISSING TRANSLATION
 
 	NEWGAMESETTINGINFO = "Эти настройки могут быть изменены в Опциях в любой момент в будущем",
 

@@ -1442,7 +1442,7 @@ var data = {
 	
 	daisy_consensual_5 = {
 		image =  null,
-		 custom_background = "daisy_bent3",
+		custom_background = "daisy_bent3",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene', 'master_translate'],

@@ -1,3 +1,8 @@
+Added character Lock rule which prevents character from showing in the lists of giveaways and factor sacrifices
+Rarity of legendary quality is increased by 250% (it's still low)
+Fixed communicative master trait causing rebellious behavior happen more often
+Fixed wrong line appearing during searching princess quest
+0.9.0c
 Air cutter total damage increased to 225% from 205%
 Bleed and Poison tick damage increased to 10% from 5%. Burn damage reduced to 7% from 8%
 Added location view mod to map and updated some elements. Added travelling characters to visible list

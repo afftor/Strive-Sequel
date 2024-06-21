@@ -77,7 +77,7 @@ var longears = ['fox','cat','wolf','bunny_standing','bunny_drooping','elven','ta
 var impregnation_compatibility = ['Human','Elf','DarkElf','TribalElf','Beastkin','Halfkin'] #the rest is only for same race
 var inheritedassets = ['ears','eye_color','eye_shape', 'hair_color', 'horns', 'tail', 'wings', 'skin_coverage', 'arms', 'legs', 'body_shape']
 var inheritedstats = ['growth_factor','magic_factor','physics_factor','wits_factor','charm_factor','sexuals_factor']
-var work_rules = ['ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'bindings', 'nudity', 'personality_lock','masturbation']
+var work_rules = ['lock','ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'bindings', 'nudity', 'personality_lock','masturbation']
 var brothel_rules = ['waitress', 'hostess', 'dancer', 'stripper', 'petting', 'oral', 'anal', 'penetration', 'pussy', 'group', 'sextoy', 'males', 'females','futa']
 var brothel_non_sex_options = ['waitress','hostess','dancer','stripper']
 var farming_rules = ['milk', 'pheromones', 'seed', 'eggs', 'magic_dust', 'reptile_blood', 'spider_silk', 'draconic_scales', 'light_essence', 'dark_essence', 'lizard_skin', 'leatherdragon']
@@ -495,6 +495,14 @@ var quality_colors = {
 	epic = load("res://assets/images/iconsitems/quality_bg/purple.png"),
 	legendary = load("res://assets/images/iconsitems/quality_bg/orange.png"),
 	
+}
+
+var itemrairity = {
+	poor = 10000,
+	average = 5000,
+	good = 2500,
+	epic = 500,
+	legendary = 25
 }
 
 

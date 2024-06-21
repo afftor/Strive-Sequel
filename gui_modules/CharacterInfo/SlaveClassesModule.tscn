@@ -814,7 +814,7 @@ margin_right = 676.0
 margin_bottom = 117.0
 theme = ExtResource( 11 )
 custom_fonts/normal_font = ExtResource( 44 )
-text = "Distract 12-20 dmg text"
+bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

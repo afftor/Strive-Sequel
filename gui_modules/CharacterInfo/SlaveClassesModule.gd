@@ -324,7 +324,7 @@ func skill_selected(skill):
 	$SkillTooltip.show()
 	$SkillTooltip/icon.texture = skill.icon
 	$SkillTooltip/name.text = tr("SKILL" + skill.code.to_upper())
-	$SkillTooltip/description.text = tr("SKILL" + skill.code.to_upper() + "DESCRIPT")
+	$SkillTooltip/description.bbcode_text = globals.TextEncoder(tr("SKILL" + skill.code.to_upper() + "DESCRIPT"))
 	if skill.has("learn_cost"):
 		$SkillTooltip/exp.text = str(skill.learn_cost) + " SP"
 	$SkillTooltip/cooldown.text = str(skill.combatcooldown)

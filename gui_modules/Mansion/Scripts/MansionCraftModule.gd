@@ -535,6 +535,8 @@ func selectmaterial(material, part, cost):
 	$CraftSelect.show()
 	for i in get_node("MaterialSetupPanel/ModularSetup/HBoxContainer").get_children():
 		for k in i.get_node("ScrollContainer/VBoxContainer").get_children():
+			if !i.get_node("ScrollContainer").has_meta('part'):
+				continue
 			var checkpart = i.get_node("ScrollContainer").get_meta('part')
 			if itemparts.has(checkpart) && k.has_meta('material'):
 				var is_pressed = itemparts[checkpart].material == k.get_meta('material')

@@ -1058,6 +1058,7 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	SKILLWINDARROW = "Wind Arrow 风箭",
 	SKILLWINDARROWDESCRIPT = "Imbues the arrow with Wind element and deal %d damage. Must have a bow equipped.\n将风元素注入箭中并造成 %d 点伤害。必须装备弓。",
 	SKILLENEMY_SLASH = "Slash 猛击",
+	SKILLASSASSINATEEN = """Assassinate""", # MISSING TRANSLATION
 	SKILLENEMY_SLASHDESCRIPT = "Deals %d Weapon damage to all targets in nearby column. Must have a weapon equipped.\n对附近纵队的所有目标造成 %d 武器伤害。必须装备武器。",
 	SKILLMINORHEAL = "Minor Heal 次要治疗",
 	SKILLMINORHEALDESCRIPT = "Restore %d health of the target.\n恢复目标的 %d 健康状况。",

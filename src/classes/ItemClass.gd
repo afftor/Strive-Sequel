@@ -128,13 +128,7 @@ func UseItem(user = null, target = null):
 
 
 func build_quality_weighthes(diffdata = {boost = 0, prof = false, shop = false}):
-	var res = {
-		poor = 10000,
-		average = 5000,
-		good = 2500,
-		epic = 500,
-		legendary = 10
-	}
+	var res = variables.itemquality_multiplier
 	if !diffdata.has('prof'):
 		diffdata.prof = false
 	if !diffdata.has('shop'):

@@ -873,9 +873,9 @@ func test_mode():
 			)
 		)
 		# ResourceScripts.game_progress.show_tutorial = true
-		# ResourceScripts.game_progress.active_quests.append(
-		# 	{code = 'aliron_church_quest', stage = 'start'}
-		# )
+		ResourceScripts.game_progress.active_quests.append(
+			{code = 'princess_search', stage = 'stage2'}
+		)
 #		globals.common_effects(
 #			[
 #				{code = "make_loot", pool = [['hard_boss_chest',1]]},
@@ -918,7 +918,7 @@ func test_mode():
 
 		
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
-		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
+		ResourceScripts.game_progress.decisions.append("bracelet_found")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
 		#input_handler.interactive_message('zephyra_underwear', '', {})

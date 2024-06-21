@@ -1548,8 +1548,8 @@ var scenedict = {
 		tags = ['dialogue_scene'],
 		image = 'spring',
 		options = [
-			{code = 'fountain_stamina', reqs = [], text = tr("FOUNTAIN_STAMINA_OPTION"), dialogue_argument = 1},
-			{code = 'fountain_mana', reqs = [], text = tr("FOUNTAIN_MANA_OPTION"), dialogue_argument = 2},
+			{code = 'fountain_stamina', reqs = [], text = tr("FOUNTAINSTAMINAOPTION"), dialogue_argument = 1},
+			{code = 'fountain_mana', reqs = [], text = tr("FOUNTAINMANAOPTION"), dialogue_argument = 2},
 			{code = 'close', reqs = [], text = "DIALOGUECANCEL"}
 		]
 	},
