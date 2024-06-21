@@ -895,6 +895,15 @@ func fastif(value, result1, result2):
 
 func return_to_main_menu():
 	input_handler.CurrentScene.queue_free()
+	
+	gui_controller.exploration.queue_free()
+	gui_controller.exploration_city.queue_free()
+	gui_controller.exploration_dungeon.queue_free()
+	
+	gui_controller.exploration = null
+	gui_controller.exploration_city = null
+	gui_controller.exploration_dungeon = null
+	
 	input_handler.ChangeScene('menu')
 	gui_controller.dialogue.hide()
 	ResourceScripts.revert_gamestate()
