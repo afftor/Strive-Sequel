@@ -1682,7 +1682,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SLAVEPROFDESCRIPT_HEALER = "Specialization: Healer",
 	
 	HEALERSLAVETRAITDESCRIPT = "Healing Efficiency: {color=green|+2%}",
-	MANAGERSLAVETRAITDESCRIPT = "Loyalty from skills: +3%",
+	MANAGERSLAVETRAITDESCRIPT = "Loyalty from skills: {color=green|+3%}",
 	
 	INFOHOLDSHIFT = "Hold shift for details",
 	
