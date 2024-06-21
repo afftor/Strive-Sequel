@@ -225,7 +225,7 @@ var data = {
 	
 	
 	looking_for_princess_mages = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = "amelia", character2 = "myr",
+		image = null, tags = ['dialogue_scene'], reqs = [], character = "myr", character2 = "amelia",
 		text = [{text = "LOOKING_FOR_PRINCESS_19", reqs = []}],
 		options = [ {
 			code = 'looking_for_princess_mages_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -234,7 +234,7 @@ var data = {
 
 	#TODO Leave to town
 	looking_for_princess_mages_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = "amelia", character2 = "myr",
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = "myr", character2 = "amelia",
 		text = [{text = "LOOKING_FOR_PRINCESS_20", reqs = []}],
 		options = [ {
 			code = 'looking_for_princess_mages_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'

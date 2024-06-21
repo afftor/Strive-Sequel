@@ -1223,7 +1223,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			if input_handler.combat_node == null:
 				return !i.check
 			return (input_handler.combat_node.playergroupcounter == 1) == i.check
-
+		'workrule':
+			return check_work_rule(i.value) == i.check
 	return check
 
 func decipher_reqs(reqs, colorcode = false, purestat = false):

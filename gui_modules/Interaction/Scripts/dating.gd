@@ -442,7 +442,7 @@ var date_lines = {
 
 
 
-	hug_start_samesize = [ [tr("DATING_HUG_START_SAMESIZE_1"), 1], [tr("DATING_HUG_START_SAMESIZE_2"), 1], ["DATING_HUG_START_SAMESIZE_3", 1], ],
+	hug_start_samesize = [ [tr("DATING_HUG_START_SAMESIZE_1"), 1], [tr("DATING_HUG_START_SAMESIZE_2"), 1], [tr("DATING_HUG_START_SAMESIZE_3"), 1], ],
 	hug_start_bigsize = [ [tr("DATING_HUG_START_BIGSIZE_1"), 1], [tr("DATING_HUG_START_BIGSIZE_2"), 1], ],
 	hug_start_smallsize = [ [tr("DATING_HUG_START_SMALLSIZE_1"), 1], ],
 	hug_positive_samesize = [ [tr("DATING_HUG_POSITIVE_SAMESIZE_1"), 1], [tr("DATING_HUG_POSITIVE_SAMESIZE_2"), 1], ],

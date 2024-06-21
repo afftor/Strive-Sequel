@@ -70,9 +70,6 @@ custom_fonts/font = ExtResource( 5 )
 text = "Stat Name"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="StatInfoCurrentValue" type="Label" parent="StatsPanel"]
 margin_top = 526.0

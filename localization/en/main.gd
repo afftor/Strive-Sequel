@@ -1211,6 +1211,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLEUPHORIA_APPLYDESCRIPT = "When activated increases all damage by your lust. Drains your lust every turn.",
 	SKILLEUPHORIA_REMOVE = "Euphoria",
 	SKILLEUPHORIA_REMOVEDESCRIPT = "Disable Euphoria",
+	SKILLENEMY_SLASH = "Slash",
+	SKILLASSASSINATEEN = "Assassinate",
 	
 	
 	SKILLMIMIC_ATTACK = "Sticky Grab",
@@ -1682,7 +1684,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SLAVEPROFDESCRIPT_HEALER = "Specialization: Healer",
 	
 	HEALERSLAVETRAITDESCRIPT = "Healing Efficiency: {color=green|+2%}",
-	MANAGERSLAVETRAITDESCRIPT = "Loyalty from skills: +3%",
+	MANAGERSLAVETRAITDESCRIPT = "Loyalty from skills: {color=green|+3%}",
 	
 	INFOHOLDSHIFT = "Hold shift for details",
 	
@@ -2295,6 +2297,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	BUFFDESCRIPTCURSE = "",
 	BUFFDESCRIPTENCHANT = "",
 	BUFFDESCRIPTMENTOR = "Experience Gain increased",
+	BUFFDESCRIPTBISHOP = "Target receive 20%% more Light and Dark damage",
 	
 	
 	CHALLENGESTRENGTH = "Strength Challenge",
@@ -3540,6 +3543,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	WORKRULEMASTURBATION = "Forbid Masturbation",
 	WORKRULEMASTURBATIONDESCRIPT = "[name] will not be allowed to relieve [him]self, leading to increased stress but higher libido. Obedience Drain +2, Lust Growth +15%.",
+	
+	WORKRULELOCK = "Lock Character",
+	WORKRULELOCKDESCRIPT = "Locks character from showing [him] in the list of tasks and activites which permanently remove or sell [him].",
 	
 	SERVICEENSLAVE = "Enslave",
 	SERVICEENSLAVEDESCRIPT = "Makes chosen character into a Slave.\n\n[color=aqua]Slaves suffer 10% damage reduction but gain various collection bonuses and but their Loyalty can be increased by punishing skills.[/color]",
@@ -6351,7 +6357,7 @@ Aire sighed deeply in contemplation.\n\n""",
 
 	ANASTASIA_PERSUASION_2_MARRY1 = "— But tell me, I wanna know, why would you choose me?",
 
-	ANASTASIA_PERSUASION_2_MARRY1_OPTION1 = "[Charm Factor] I've fell in love with first sight.",
+	ANASTASIA_PERSUASION_2_MARRY1_OPTION1 = "[Charm Factor] I've fallen in love with you at first sight.",
 	ANASTASIA_PERSUASION_2_MARRY1_OPTION2 = "[Sex Factor] I can't stop imagining you naked.",
 	ANASTASIA_PERSUASION_2_MARRY1_OPTION3 = "How could anyone pass on a girl like you?",
 	ANASTASIA_PERSUASION_2_MARRY1_OPTION4 = "Well, technically you still are a princess.",
@@ -7916,7 +7922,7 @@ Zephyra leaves the church without giving you a second glance.""",
 	ZEPHYRA_SWORD_3_2_FINISH = "Zephyra nods with her usual smile on her face before leaving you to yourself.",
 	ZEPHYRA_SWORD_3_3_1 = """{color=green|Success}
 
-— I wish I could tell you more, but I barely get anything other than my personal hunch about what's going on. All I'm certain of is that there's an ominous plot being staged beyond our sight, the one threatening everyone. I know it's a weak premise, but I can't do nothing on it. 
+— I wish I could tell you more, but I barely get anything other than my personal hunch about what's going on. All I'm certain of is that there's an ominous plot being staged beyond our sight, the one threatening everyone. I know it's a weak premise, but I can't do nothing about it. 
 
 — And if you want to know why I think my own actions are so important, let's say I'm not just some random girl of unusual descendancy who got granted a god's power and guidance. Well, after all, nothing in this world is truly accidental, don't you think?""",
 	ZEPHYRA_SWORD_3_3_1_OPTION_1 = "Many things in our lives are purely random.",
@@ -12967,7 +12973,7 @@ You hold Cali close and kiss her, spending the rest of the night close together 
 	CALI_TAMING_QUEST_STAGE_17 = "Talk to Cali",
 	
 	ZEPHYRA_BATH_QUEST_NAME = "Zephyra: Half-time nun",
-	ZEPHYRA_BATH_QUEST_SUMMARY = "Seems like Zephyra is sceheming on something...",
+	ZEPHYRA_BATH_QUEST_SUMMARY = "Seems like Zephyra is scheming on something...",
 	ZEPHYRA_BATH_QUEST_STAGE_1 = "Upgrade your mansion to host a bath.",
 	ZEPHYRA_BATH_QUEST_STAGE_2 = "Wait for something to happen.",
 	

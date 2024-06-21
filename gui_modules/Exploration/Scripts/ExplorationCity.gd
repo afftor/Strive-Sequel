@@ -735,7 +735,7 @@ func sell_slave():
 	var char_list = []
 	for i in ResourceScripts.game_party.characters:
 		var tchar = characters_pool.get_char_by_id(i)
-		if (tchar.has_profession('master') || tchar.get_stat('slave_class') == 'servant'): # || tchar.valuecheck({code = 'is_free', check = true}) == false):
+		if (tchar.has_profession('master') || tchar.get_stat('slave_class') == 'servant') || tchar.check_work_rule("lock"): # || tchar.valuecheck({code = 'is_free', check = true}) == false):
 			continue
 		char_list.append(tchar)
 		var newbutton = input_handler.DuplicateContainerTemplate($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
@@ -850,7 +850,7 @@ func faction_sellslaves():#obsolete
 	var counter = 0
 	for i in ResourceScripts.game_party.character_order:
 		var tchar = characters_pool.get_char_by_id(i)
-		if tchar.has_profession('master') || tchar.valuecheck({code = 'is_free', check = true}) == false:
+		if tchar.has_profession('master') || tchar.valuecheck({code = 'is_free', check = true}) == false :
 			continue
 		if counter == 0:
 			first_char = tchar

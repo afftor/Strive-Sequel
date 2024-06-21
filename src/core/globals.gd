@@ -511,6 +511,13 @@ func build_attrs_for_char(node, person):
 	connecttexttooltip(node.get_node('race'), "[center]{color=green|"+ races.racelist[person.get_stat('race')].name +"}[/center]\n\n"+ person.show_race_description())
 
 
+func build_desc_for_effect(effect_desc, mul = 1): #stub as it is
+	var res = effect_desc
+	var amount = int(res)
+	res = res.replace(str(amount), str(amount * mul))
+	return res
+
+
 func build_desc_for_bonusstats(bonusstats, mul = 1):
 	var text = ""
 	for i in bonusstats:
