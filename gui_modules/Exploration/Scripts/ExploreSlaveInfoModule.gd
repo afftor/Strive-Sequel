@@ -9,6 +9,11 @@ var current_person
 func _ready():
 	$RichTextLabel.connect("meta_hover_started", self, 'text_url_hover')
 	$RichTextLabel.connect("meta_hover_ended", self, "text_url_hover_hide")
+	$Panel/authoritylabel.visible = false
+	$Panel/loyaltylabel.visible = false
+	$Panel/submissionlabel.visible = false
+	$Panel/authoritylabel2.visible = false
+	$Panel/authoritylabel3.visible = false
 	for i in variables.resists_list:
 		if i == 'all': continue
 		var newlabel = $BaseStatsPanel/resists/Label.duplicate()
@@ -56,19 +61,19 @@ func update(person = null, from_dialogue = false):
 		$Panel/personality.text = tr("PERSONALITYCURRENT") + "\n" + tr("PERSONALITYNAME" + person.get_stat('personality').to_upper())
 		globals.connecttexttooltip($Panel/personality, tr("INFOPERSONALITY" + person.get_stat('personality').to_upper()))
 		
-		if from_dialogue:
-			$Panel/authoritylabel.visible = person.is_known_to_player
-			$Panel/loyaltylabel.visible = person.is_known_to_player
-			$Panel/submissionlabel.visible = person.is_known_to_player
-			$Panel/authoritylabel2.visible = person.is_known_to_player
-			$Panel/authoritylabel3.visible = person.is_known_to_player
-		else:
-			var expnode = gui_controller.exploration_city
-			$Panel/authoritylabel.visible = expnode.hiremode != "hire"
-			$Panel/loyaltylabel.visible = expnode.hiremode != "hire"
-			$Panel/submissionlabel.visible = expnode.hiremode != "hire"
-			$Panel/authoritylabel2.visible = expnode.hiremode != "hire"
-			$Panel/authoritylabel3.visible = expnode.hiremode != "hire"
+#		if from_dialogue:
+#			$Panel/authoritylabel.visible = person.is_known_to_player
+#			$Panel/loyaltylabel.visible = person.is_known_to_player
+#			$Panel/submissionlabel.visible = person.is_known_to_player
+#			$Panel/authoritylabel2.visible = person.is_known_to_player
+#			$Panel/authoritylabel3.visible = person.is_known_to_player
+#		else:
+#			var expnode = gui_controller.exploration_city
+#			$Panel/authoritylabel.visible = expnode.hiremode != "hire"
+#			$Panel/loyaltylabel.visible = expnode.hiremode != "hire"
+#			$Panel/submissionlabel.visible = expnode.hiremode != "hire"
+#			$Panel/authoritylabel2.visible = expnode.hiremode != "hire"
+#			$Panel/authoritylabel3.visible = expnode.hiremode != "hire"
 
 		globals.connecttexttooltip($food_love,"[center]" +statdata.statdata.food_love.name + "[/center]\n"+  statdata.statdata.food_love.descript)
 		globals.connecttexttooltip($food_hate,"[center]" +statdata.statdata.food_hate.name + "[/center]\n"+ statdata.statdata.food_hate.descript)
