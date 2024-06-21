@@ -30,11 +30,15 @@ func open(targetnode = null, targetfunction = null, text = '', itemcost = 0, min
 	target_function = targetfunction
 	target_node = targetnode
 	cost = itemcost
-	$HSlider.step = minvalue
-	$HSlider.value = minvalue
-	if maxvalue == 1:
+	
+	if maxvalue <= 1:
 		minvalue = 0
-		
+		maxvalue = 1
+		$HSlider.step = 1
+		$HSlider.value = 1
+	else:
+		$HSlider.step = minvalue
+		$HSlider.value = minvalue
 	$HSlider.min_value = minvalue
 	$HSlider.max_value = maxvalue
 	require_gold = requiregold

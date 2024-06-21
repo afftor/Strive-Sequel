@@ -339,6 +339,7 @@ func get_combined_hairs_data():
 		hair_length = '',
 	}
 	var lenghthes = ['bald', 'ear', 'neck', 'shoulder', 'waist', 'hips' ]
+	var color_parts = ['hair_fringe_color_1', 'hair_back_color_2', 'hair_assist_color_1']
 	var length = 0
 	match statlist.hair_fringe: #adjust as you see fit, length is not reverse-compartible with presets autoset
 	#i hate this conversion to older constants, but we are using those - until descriptions are totally rewritten we need this
@@ -374,8 +375,10 @@ func get_combined_hairs_data():
 			match statlist.hair_fringe_length:
 				'long':
 					length = int(max(length, 3))
+					color_parts.push_back('hair_fringe_color_2')
 				'middle':
 					length = int(max(length, 3))
+					color_parts.push_back('hair_fringe_color_2')
 				'short', 'default':
 					length = int(max(length, 2))
 		'irokez':
@@ -429,17 +432,20 @@ func get_combined_hairs_data():
 			res.hair_style = 'braid'
 			match statlist.hair_assist_length:
 				'long':
-					length = int(max(length, 3))
+					length = int(max(length, 4))
+					color_parts.push_back('hair_assist_color_2')
 				'middle':
 					length = int(max(length, 3))
+					color_parts.push_back('hair_assist_color_2')
 				'short', 'default':
-					length = int(max(length, 2))
+					length = int(max(length, 3))
 		'bun':
 			res.hair_style = 'bun'
 		'pigtails':
 			res.hair_style = 'pigtails'
 		'ponytail': 
 			res.hair_style = 'ponytail'
+			color_parts.push_back('hair_assist_color_2')
 			match statlist.hair_assist_length:
 				'long':
 					length = int(max(length, 5))
@@ -454,17 +460,22 @@ func get_combined_hairs_data():
 			match statlist.hair_assist_length:
 				'long':
 					length = int(max(length, 3))
+					color_parts.push_back('hair_assist_color_2')
 				'middle':
 					length = int(max(length, 3))
+					color_parts.push_back('hair_assist_color_2')
 				'short', 'default':
 					length = int(max(length, 2))
 		'twin_tails_2', 'twin_tails_4', 'twin_tails_5':
 			res.hair_style = 'twinbraids'
+		_:
+			color_parts.erase('hair_assist_color_1')
 	
 	match statlist.hair_back: 
 		'very_long':
 			length = 5
 		'double_tail', 'ponytail_long' :
+			color_parts.push_back('hair_back_color_1')
 			match statlist.hair_back_length:
 				'long':
 					length = int(max(length, 5))
@@ -472,7 +483,8 @@ func get_combined_hairs_data():
 					length = int(max(length, 4))
 				'short', 'default':
 					length = int(max(length, 3))
-		'spiral', 'twin_braids', 'straight', 'wave' :
+		'twin_braids':
+			color_parts.push_back('hair_back_color_1')
 			match statlist.hair_back_length:
 				'long':
 					length = int(max(length, 3))
@@ -480,8 +492,26 @@ func get_combined_hairs_data():
 					length = int(max(length, 2))
 				'short', 'default':
 					length = int(max(length, 2))
+		'spiral', 'straight', 'wave' :
+			match statlist.hair_back_length:
+				'long':
+					length = int(max(length, 3))
+				'middle':
+					length = int(max(length, 2))
+				'short', 'default':
+					length = int(max(length, 2))
+		'dishevel':
+			match statlist.hair_back_length:
+				'long':
+					length = int(max(length, 2))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+		_:
+			color_parts.erase('hair_back_color_2')
 	var colors = []
-	for st in ['hair_base_color_1', 'hair_fringe_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 'hair_fringe_color_2', 'hair_back_color_2', 'hair_assist_color_2']:
+	for st in color_parts:
 		var tcolor = statlist[st].split('_')[0]
 		if !colors.has(tcolor):
 			colors.push_back(tcolor)
@@ -1414,11 +1444,13 @@ func fill_masternoun():
 func process_chardata(chardata, unique = false):
 	if unique: statlist.unique = chardata.code
 	for i in chardata:
-		if !(i in ['code','class_category', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality']):
+		if !(i in ['code','class_category', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'hair_color', 'hair_style', 'hair_length']):
 			if typeof(chardata[i]) == TYPE_ARRAY or typeof(chardata[i]) == TYPE_DICTIONARY:
 				statlist[i] = chardata[i].duplicate(true)
 			else:
 				statlist[i] = chardata[i]
+		elif i in ['hair_color', 'hair_style', 'hair_length']:
+			set_stat(i, chardata[i])
 	if chardata.has('slave_class'): set_slave_category(chardata.slave_class)
 	if chardata.has("sex_traits"):
 		for i in chardata.sex_traits:

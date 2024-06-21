@@ -226,46 +226,13 @@ func CompleteReqs():
 		match i.code:
 			"random_material":
 				ResourceScripts.game_res.update_materials(i.type, '-', i.value)
-	selectedquest.state = 'complete'
+#	selectedquest.state = 'complete'
 	globals.text_log_add("quest", "Quest Complete: " + selectedquest.name)
 	ResourceScripts.game_world.complete_quest(selectedquest, 'complete')
-	Reward()
-
-func Reward():
-	input_handler.PlaySound("questcomplete")
-	for i in selectedquest.rewards:
-		match i.code:
-			'gold':
-				ResourceScripts.game_res.money += round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-			'reputation':
-				ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].reputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-				ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].totalreputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-			'gear':
-				globals.AddItemToInventory(globals.CreateGearItemQuest(i.item, i.itemparts, selectedquest))
-			'gear_static':
-				globals.AddItemToInventory(globals.CreateGearItem(i.item, {}))
-			'material':
-				ResourceScripts.game_res.materials[i.item] += i.value
-			'usable':
-				globals.AddItemToInventory(globals.CreateUsableItem(i.item, i.value))
-	
-	#remake into data system
-	if selectedquest.area == 'plains':
-		for i in ResourceScripts.game_world.areas[selectedquest.area].factions.values():
-			if i.totalreputation >= 200 && ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1':
-				ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage = 'stage1_5'
-				globals.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
-	if ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1_5':
-		var counter = false
-		for i in ResourceScripts.game_progress.stored_events.timed_events:
-			if i.has('action'):
-				continue
-			if i.code == 'guilds_elections_switch':
-				counter = true
-		if counter == false:
-			globals.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
-	
+	globals.Reward(selectedquest)
 	open()
+
+
 
 func CancelQuest():
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'cancel_quest_confirm', "Forfeit This Quest?"])
