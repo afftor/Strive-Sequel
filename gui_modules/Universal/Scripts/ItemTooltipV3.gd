@@ -102,6 +102,10 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	show()
 	yield(fix_panels(), 'completed')
 	
+	if !is_instance_valid(node):
+		hide()
+		return
+	
 	var pos = node.get_global_rect()
 	if node.has_meta("exploration"):
 		pos = Vector2(pos.end.x + 10, pos.position.y - 30)
