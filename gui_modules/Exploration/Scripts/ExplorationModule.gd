@@ -48,6 +48,7 @@ func _ready():
 	globals.connect("hour_tick", self, "build_location_group")
 	globals.connect("update_clock", self, "update_gold")
 	input_handler.connect("EventFinished", self, 'build_location_group')
+	input_handler.connect("EventFinished", self, 'open_location_actions')
 	input_handler.connect("LootGathered", self, 'build_location_group')
 	var closebutton = gui_controller.add_close_button($AreaShop)
 	input_handler.connect("LocationSlavesUpdate", self, 'build_location_group')
