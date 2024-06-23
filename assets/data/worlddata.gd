@@ -2248,7 +2248,7 @@ var fixed_location_options = { #override serialized data
 	quest_fighters_lich = [
 		{
 			text = tr("QUEST_FIGHTERS_LICH1"), 
-			reqs = [], 
+			reqs = [{type = 'active_quest_stage', value = 'fighters_election_quest', stage = 'start'}], 
 			args = [{code = 'start_event', data = 'lich_enc_initiate', args = []}]
 		}
 	],
@@ -2407,14 +2407,14 @@ var fixed_location_options = { #override serialized data
 	quest_leon_forest_2 = [
 		{
 			text = tr("QUEST_LEON_FOREST_2_1"), 
-			reqs = [],
+			reqs = [], #leon quest still removes location - so there is no req 
 			args = [{code = 'start_event', data = 'leon_encounter_start', args = []}]
 		},
 	],
 	quest_white_stag_location = [
 		{
 			text = tr("QUEST_WHITE_STAG_LOCATION1"), 
-			reqs = [],
+			reqs = [], #same as above
 			args = [{code = 'start_event', data = 'white_stag_encounter_1', args = []}]
 		},
 	],
