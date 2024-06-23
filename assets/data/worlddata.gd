@@ -2344,7 +2344,10 @@ var fixed_location_options = { #override serialized data
 	quest_cali_village = [
 		{
 			text = tr("QUEST_CALI_VILLAGE1"), 
-			reqs = [{type = "location_has_specific_slaves", check = true, value = 1, location = 'quest_cali_village', reqs = [{code = 'unique', value = 'cali'}]}], 
+			reqs = [
+				{type = "location_has_specific_slaves", check = true, value = 1, location = 'quest_cali_village', reqs = [{code = 'unique', value = 'cali'}]},
+				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage10', state = true}
+				], 
 			args = [{code = 'start_event', data = 'cali_hector_1', args = []}]
 		}
 	],
