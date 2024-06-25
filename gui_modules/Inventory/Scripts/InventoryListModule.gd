@@ -1,6 +1,9 @@
  extends Panel
 
-onready var itemcontainer = $Scroller/ScrollContainer/GridContainer
+onready var itemcontainer = $Scroller/ScrollContainer2/GridContainer
+onready var itemcontainergrid = $Scroller/ScrollContainer2/GridContainer
+onready var itemcontainervbox = $Scroller/ScrollContainer/GridContainer
+
 var itemarray = []
 var mode
 var categories = ['all','weapon','gear','usable','material']
@@ -11,6 +14,23 @@ func _ready():
 	for i in $HBoxContainer.get_children():
 		i.connect('pressed',self,'selectcategory', [i])	
 	$SearchFilter.connect("text_changed", self, 'filter_changed')
+	$switchstyle.connect('pressed',self, 'switch_container')
+	if input_handler.globalsettings.grid_inventory == false:
+		switch_container()
+
+func switch_container():
+	if itemcontainer == itemcontainergrid:
+		input_handler.globalsettings.grid_inventory = false
+		itemcontainer = itemcontainervbox
+		itemcontainergrid.get_parent().hide()
+	else:
+		itemcontainer = itemcontainergrid
+		itemcontainervbox.get_parent().hide()
+		input_handler.globalsettings.grid_inventory = false
+	buildinventory()
+	itemcontainer.get_parent().show()
+	
+
 
 
 func buildinventory():
@@ -40,9 +60,10 @@ func buildinventory():
 		newbutton.get_node('Number').text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[i])
 		newbutton.get_node('Number').show()
 		newbutton.set_meta('type', type)
-		newbutton.get_node("Name").text = material.name
+		if itemcontainer == itemcontainervbox:
+			newbutton.get_node("Name").text = material.name
+			newbutton.get_node("Type").texture = get_item_type_icon(material)
 		globals.connectmaterialtooltip(newbutton, material)
-		newbutton.get_node("Type").texture = get_item_type_icon(material)
 		itemarray.append(newbutton)
 		newbutton.set_meta("item", i)
 		if material.type != "tattoo":
@@ -77,8 +98,9 @@ func buildinventory():
 		if type == "tattoo":
 			continue
 		globals.connectitemtooltip_v2(newnode, i)
-		newnode.get_node("Name").text = i.name
-		newnode.get_node("Type").texture = get_item_type_icon(i)
+		if itemcontainer == itemcontainervbox:
+			newnode.get_node("Name").text = i.name
+			newnode.get_node("Type").texture = get_item_type_icon(i)
 		newnode.set_meta('type', type)
 		newnode.set_meta("item", i)
 		newnode.connect("pressed",self,'useitem', [i, i.type])

@@ -1,15 +1,19 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/panel_questdialogue2.png" type="Texture" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/TextButton.gd" type="Script" id=2]
 [ext_resource path="res://gui_modules/Universal/ShowPanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_sprite_hover.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/button_hide.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/button_hide_hover.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/button_hide_pressed.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_sprite_default.png" type="Texture" id=8]
 [ext_resource path="res://gui_modules/Universal/Scripts/InteractiveMessageModuleAnimated.gd" type="Script" id=9]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=10]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=11]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_sprite_active.png" type="Texture" id=12]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=13]
+[ext_resource path="res://MainFont.tres" type="DynamicFont" id=14]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -26,9 +30,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = ExtResource( 10 )
 script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CustomBackground" type="TextureRect" parent="."]
 margin_right = 1920.0
@@ -72,9 +73,6 @@ margin_left = 430.0
 margin_right = 1490.0
 margin_bottom = 1050.0
 texture = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HideButton" type="TextureButton" parent="BackgroundT2"]
 margin_left = 47.0
@@ -98,6 +96,26 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="UnhideButton" type="TextureButton" parent="BackgroundT2"]
+visible = false
+margin_left = -429.831
+margin_top = 0.372803
+margin_right = -201.831
+margin_bottom = 40.3728
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="BackgroundT2/UnhideButton"]
+margin_left = 11.4745
+margin_top = 8.59692
+margin_right = 201.474
+margin_bottom = 32.5969
+custom_fonts/font = ExtResource( 14 )
+text = "Unhide"
+align = 1
+valign = 1
 
 [node name="ShowPanel" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -190,9 +208,9 @@ margin_left = 8.07349
 margin_top = 6.28326
 margin_right = 38.0735
 margin_bottom = 44.2833
-custom_fonts/font = ExtResource( 13 )
 custom_colors/font_color = Color( 1, 0.980392, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 13 )
 text = "1"
 align = 1
 valign = 1
@@ -206,8 +224,8 @@ margin_top = 9.0
 margin_right = 955.0
 margin_bottom = 40.0
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 13 )
 custom_constants/line_separation = -8
+custom_fonts/normal_font = ExtResource( 13 )
 bbcode_enabled = true
 bbcode_text = "[color=#72a887]Test Text[/color]"
 text = "Test Text"

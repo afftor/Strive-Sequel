@@ -376,7 +376,7 @@ var scenedict = {
 	]
 	},
 	event_dungeon_prisoner_enslave = {text = tr("DIALOGUEEVENTDUNGEONPRISONERSENSLAVE"),
-	tags = ['active_character_translate'],
+	tags = ['scene_character_translate'],
 	image = '',
 	common_effects = [],
 	options = [

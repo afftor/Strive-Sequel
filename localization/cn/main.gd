@@ -3393,6 +3393,7 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 
 	SWITCHSTATS = "个人统计",
 	SWITCHLIST = "角色列表",
+	SWITCHINVENTORY = """witch Grid/String mode""", # MISSING TRANSLATION
 
 	SCENEDAISY_MEET_TEXT = "当你在镇上走的时候，你听到一些争吵声。一个大个子男人对着坐在陶器碎片附近哭泣的年轻的混血兔人女孩喊道。\n\n--你这个笨拙的蠢蛋！这已经是第三次了。我现在要把你卖给妓院，至少这样你会有点用。\n\n-这个女孩似乎不适合体力劳动，但很有吸引力. ",
 	SCENEDAISY_MEET_OPTION1 = "提出购买女孩",

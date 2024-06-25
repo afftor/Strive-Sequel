@@ -183,10 +183,12 @@ var globalsettings = {
 	body_folder = 'user://bodies/',
 	#mod_folder = 'user://mods/',
 	
+	
+	grid_inventory = true,
+	
 	no_breed_incompatibility = false,
 	turn_based_time_flow = true,
 
-	guilds_any_race = false, #unused
 
 	autosave = true,
 	autosave_number = 3,
@@ -194,7 +196,8 @@ var globalsettings = {
 	
 	sex_filter = false, # if true skips erotic scenes that doesn't match up with masters gender
 	
-	generate_portraits = true
+	generate_portraits = true,
+	
 
 } setget settings_save
 

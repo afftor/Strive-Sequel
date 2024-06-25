@@ -786,7 +786,9 @@ func LoadGame(filename):
 	if !compare_version(ResourceScripts.game_globals.original_version, '0.9.0c'):
 		if globals.valuecheck({type = "active_quest_stage", value = 'princess_search', stage = 'stage2', state = true}):
 			globals.common_effects([{code = "decision", value = "AllowSearch"},{code = 'make_quest_location', value = 'quest_rebels_backrooms'}])
-	
+	if !compare_version(ResourceScripts.game_globals.original_version, '0.9.1'):
+		if !globals.valuecheck({type = 'location_exists', location = 'quest_mages_xari'}):
+			globals.common_effects([{code = 'make_quest_location', value = 'quest_mages_xari'}])
 
 
 func compare_version(v1:String, v2:String):
@@ -1037,15 +1039,15 @@ func calculate_travel_time(location1, location2): #2remade to new mechanic
 	var adata2 = ResourceScripts.world_gen.get_area_from_location_code(location2)
 	var ldata2 = ResourceScripts.world_gen.get_location_from_code(location2)
 	
-	if location1 != ResourceScripts.game_world.mansion_location:
-		time += ldata1.travel_time
-	if location2 != ResourceScripts.game_world.mansion_location:
-		time += ldata2.travel_time
+#	if location1 != ResourceScripts.game_world.mansion_location:
+#		time += ldata1.travel_time
+	#if location2 != ResourceScripts.game_world.mansion_location:
+	time += ldata2.travel_time
 	if adata1.code != adata2.code:
 		time += adata1.travel_time + adata2.travel_time
 	
 	time = max(1, time - variables.stable_boost_per_level * ResourceScripts.game_res.upgrades.stables)
-	return {time = time, obed_cost = time * 1.5} #or obed_cost is wrong
+	return {time = time}
 
 func check_recipe_resources(temprecipe):
 	var recipe = Items.recipes[temprecipe.code]
@@ -2452,6 +2454,9 @@ func valuecheck(dict):
 				if i.check_location(input_handler.active_location.id):
 					counter += 1
 			return input_handler.operate(dict.operant, counter, dict.value)
+		
+		'location_exists':
+			return !ResourceScripts.game_world.find_location_by_data({code = dict.location}) == null
 		'location_has_specific_slaves':
 			var counter = 0
 			var location = ResourceScripts.game_world.find_location_by_data({code = dict.location}).location

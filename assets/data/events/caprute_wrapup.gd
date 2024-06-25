@@ -326,9 +326,9 @@ var data = {
 		text = [{text = "MIND_CONTROL_18", reqs = []}],
 		common_effects = [{code = 'decision', value = 'mindbreak_enabled'}],
 		options = [ {
-			code = 'close', text = "MIND_CONTROL_OPTION_14", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'remove_quest_location', value = 'quest_mages_xari'}], 
+			code = 'close', text = "MIND_CONTROL_OPTION_14", reqs = [], dialogue_argument = 1
 		}, {
-			code = 'close', text = "MIND_CONTROL_OPTION_15", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'remove_quest_location', value = 'quest_mages_xari'}]
+			code = 'close', text = "MIND_CONTROL_OPTION_15", reqs = [], dialogue_argument = 2
 		}],
 	},
 	
@@ -345,9 +345,9 @@ var data = {
 		text = [{text = "MIND_CONTROL_20", reqs = []}],
 		common_effects = [{code = 'decision', value = 'mindbreak_enabled'}],
 		options = [ {
-			code = 'close', text = "MIND_CONTROL_OPTION_14", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'remove_quest_location', value = 'quest_mages_xari'}]
+			code = 'close', text = "MIND_CONTROL_OPTION_14", reqs = [], dialogue_argument = 1
 		}, {
-			code = 'close', text = "MIND_CONTROL_OPTION_15", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'remove_quest_location', value = 'quest_mages_xari'}]
+			code = 'close', text = "MIND_CONTROL_OPTION_15", reqs = [], dialogue_argument = 2
 		}],
 	},
 	

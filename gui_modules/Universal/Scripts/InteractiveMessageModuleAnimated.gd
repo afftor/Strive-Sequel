@@ -22,6 +22,7 @@ func _ready():
 		$CharacterImage2.material = load("res://assets/silouette_shader.tres").duplicate()
 	base_text_size = $RichTextLabel.rect_size
 	base_text_position = $RichTextLabel.rect_position
+	#$BackgroundT2/UnhideButton.connect('pressed', self, 'hide_dialogue', ['unhide'])
 	
 
 
@@ -31,6 +32,7 @@ func hide_dialogue(action = "hide"):
 			continue
 		if !node.name in ["ShowPanel", "CustomBackground", "ShowPanelBackground"]:
 			node.visible = action != "hide"
+			
 	var tnode = get_node("ShowPanel")
 	if tnode != null:
 		tnode.visible = action == "hide"

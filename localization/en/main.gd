@@ -3118,7 +3118,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUESHRINECHARACTER = "Send [name] to altar",
 	DIALOGUESHRINEDESTROY = "Demolish Shrine",
 	DIALOGUECHESTLOCKPICK = "Attempt to Lockpick",
-	DIALOGUECHESTLOCKPICKFAILURE = "[name] has failed to pick lock's chest and the mechanism has jammed. There's no other option, but to leave it now...",
+	DIALOGUECHESTLOCKPICKFAILURE = "[name] has failed to pick the lock of the chest and the mechanism has jammed. There's no other option, but to leave it now...",
 	DIALOGUELOCKPICKALARMFAILURE = "[name] has failed to pick the lock and caused the alarm to go off. In a few moments enemies charge at your position.",
 	DIALOGUECHESTLOCKPICKBOMBFAILURE = "[name] has triggered the bomb trap mechanism causing an explosion and damaging everyone in the room. The chest is destroyed with its contents...",
 	DIALOGUECHESTLOCKPICKGASFAILURE = "[name] has triggered the trap mechanism. The room fills with poisonous gas and the group quickly retreats from it. However, [name] has still inhaled too much of a gas due to being too close to the chest...",
@@ -3127,7 +3127,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUECHESTEROTICMIMICTRAPPED = "As [name] leans on the chest, [he] quickly realizes that it's not a chest, but a Mimic, which is about to devour [him]. However, the Mimic does not seem to be harming [him], rather seizing its prey and getting under [his] clothes. With no outside help Mimic will surely have its way with [name]...\n\n{color=aqua|[name]} — {random_chat_active|mimic_rape}\n\nLeaving [him] in this state won't likely kill [him], but...",
 	DIALOGUECHESTMIMICTRAPPEDLEAVE = "You decide it's too dangerous to challenge the Mimic and leaving [name] to him is an acceptable price...\n\n{color=aqua|[name]} — {random_chat_active|mimic_leave}",
 	DIALOGUECHESTMIMICEROTICTRAPPEDLEAVE = "You decide it's too dangerous to challenge the Mimic and leaving [name] to him is an acceptable price...\n\n{color=aqua|[name]} — {random_chat_active|mimic_erotic_leave}\n\nAfter about an hour of erotic moans and pleads [name] manages to free [him]self and escape.",
-	DIALOGUECHESTLOCKPICKFREE = "As [name] attempts to pick a lock of the chest, [he] realize it was not locked in first place. ",
+	DIALOGUECHESTLOCKPICKFREE = "As [name] attempts to pick a lock of the chest, [he] realize it was not locked in the first place. ",
 	DIALOGUECHESTLOCKPICKSUCCESS = "[name] has skillfully picked the chest's lock and its contents belong to you now. ",
 
 	DIALOGUECHESTMIMICFIGHT = "Fight Mimic",
@@ -3172,7 +3172,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 	DIALOGUEDUNGEONCHEST = "You find a closed treasure chest. ",
 	DIALOGUEDUNGEONARMORY = "You find a locked armory, which might have something useful in it.",
-	DIALOGUEEVENTDUNGEONLOOT = "After making into the last room, you find the main storage with the most prized possessions. ",
+	DIALOGUEEVENTDUNGEONLOOT = "After making it into the last room, you find the main storage with the most prized possessions. ",
 	
 	DIALOUELOCKEDDOOR = "The pass forward ends in a sturdy locked door. It seems to get through it you might need an additional force... or someone who can lockpick.",
 	DIALOUELOCKEDDOOR2 = "The pass forward ends in a sturdy looking wooden door. It seems to get through it you might need an additional force... or try alternative methods.",
@@ -3228,7 +3228,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 	DIALOGUEEVENTDUNGEONPRISONER = "You come across a jail room holding a bound [race] [male], likely held by the bandits for ransom or mockery. At your approach [he] tells you [his] name is [name] and begs you for help.",
 	DIALOGUETAKESLAVE = "[Strength Challenge] Capture and enslave",
-	DIALOGUEEVENTDUNGEONPRISONERSENSLAVE = "You release [name] from [his] cell, only to turn [him] into your slave. As [he]'s escorted back to your mansion, your team continues on. ",
+	DIALOGUEEVENTDUNGEONPRISONERSENSLAVE = "You release [name] from [his] cell, only to turn [him] into your slave. Your team continues on. ",
 
 	DIALOGUEEVENTDUNGEONPRISONERFREE1 = "You release and unbind [name], much to [his] relief. As [he] thanks you, [he] shows you a small cache of resources near [his] cell as thanks for [his] rescue. After explaining to [him] how to get out, you are ready to continue on your way.",
 	DIALOGUEEVENTDUNGEONPRISONERFREE2 = "You release and unbind [name], much to [his] relief. As [he] thanks you, [he] shows you a secret item [he] has hidden in [his] cell as thanks for [his] rescue. After explaining to [him] how to get out, you are ready to continue on your way.",
@@ -3422,6 +3422,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 	SWITCHSTATS = "Individual Stats",
 	SWITCHLIST = "Character List",
+	SWITCHINVENTORY= "Switch Grid/String mode",
 
 	SCENEDAISY_MEET_TEXT = "As you walk around the city, you hear some arguing. A large man yells at a crying young halfkin bunny girl sitting near some pottery shards.\n\n— You clumsy dumbass! This was the third time. I'm selling you to the brothel now. At least this way you will be useful at something.\n\nThe girl does not seem to be suited for manual labor, but is fairly appealing.",
 	SCENEDAISY_MEET_OPTION1 = "*Offer to purchase the girl*",
@@ -14162,7 +14163,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_FIGHTERS_LICH_TEXT = "Lich's Hideout",
 	QUEST_FIGHTERS_LICH_DESC = "By following Duncan's instructions, you find a small hideout which has a traces of undead monsters.",
 	
-	QUEST_MAGES_XARI_TEXT = "Xari's Location",
+	QUEST_MAGES_XARI_TEXT = "Xari's Hut",
 	QUEST_MAGES_XARI_DESC = "",
 	
 	QUEST_REBEL_BACKROOMS = "Rebel Hideout's Backrooms",

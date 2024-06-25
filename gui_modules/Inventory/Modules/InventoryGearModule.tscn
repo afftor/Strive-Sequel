@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/images/iconsgear/workeroutfit.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/iconsitems/cell/neck.png" type="Texture" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://assets/images/iconsitems/cell/tool.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/iconsitems/cell/booty.png" type="Texture" id=29]
 [ext_resource path="res://assets/images/iconsitems/cell/underwear.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/iconsitems/quality_bg/blue.png" type="Texture" id=31]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
@@ -57,7 +58,6 @@ stretch_mode = 6
 show_behind_parent = true
 position = Vector2( 340, 450 )
 scale = Vector2( 0.8, 0.8 )
-test_mode = false
 
 [node name="bodymask" type="Light2D" parent="."]
 position = Vector2( 353.676, 537.294 )
@@ -86,6 +86,20 @@ texture_hover = ExtResource( 8 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/chest"]
+visible = false
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 99.0
+margin_bottom = 99.0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
 }
 
 [node name="icon" type="TextureRect" parent="InventorySlots/chest"]
@@ -125,12 +139,27 @@ margin_top = 562.451
 margin_right = 651.568
 margin_bottom = 662.451
 rect_min_size = Vector2( 100, 100 )
+rect_pivot_offset = Vector2( -181.228, -80.451 )
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/underwear"]
+visible = false
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 99.0
+margin_bottom = 99.0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
 }
 
 [node name="icon" type="TextureRect" parent="InventorySlots/underwear"]
@@ -176,6 +205,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/legs"]
+visible = false
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 99.0
+margin_bottom = 99.0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
 [node name="icon" type="TextureRect" parent="InventorySlots/legs"]
 show_behind_parent = true
 light_mask = 0
@@ -218,6 +261,20 @@ texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
 
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/hands"]
+visible = false
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 99.0
+margin_bottom = 99.0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
 [node name="icon" type="TextureRect" parent="InventorySlots/hands"]
 show_behind_parent = true
 light_mask = 0
@@ -255,6 +312,20 @@ texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
+
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/rhand"]
+visible = false
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 99.0
+margin_bottom = 99.0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="icon" type="TextureRect" parent="InventorySlots/rhand"]
 show_behind_parent = true
@@ -295,6 +366,20 @@ texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
+
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/lhand"]
+visible = false
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 99.0
+margin_bottom = 99.0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="icon" type="TextureRect" parent="InventorySlots/lhand"]
 show_behind_parent = true
@@ -339,6 +424,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/neck"]
+visible = false
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 99.0
+margin_bottom = 99.0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
 [node name="icon" type="TextureRect" parent="InventorySlots/neck"]
 show_behind_parent = true
 light_mask = 0
@@ -378,6 +477,20 @@ texture_hover = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/head"]
+visible = false
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 99.0
+margin_bottom = 99.0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
 }
 
 [node name="icon" type="TextureRect" parent="InventorySlots/head"]
@@ -421,6 +534,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/ass"]
+visible = false
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 99.0
+margin_bottom = 99.0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
 [node name="icon" type="TextureRect" parent="InventorySlots/ass"]
 show_behind_parent = true
 light_mask = 0
@@ -462,6 +589,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/crotch"]
+visible = false
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 99.0
+margin_bottom = 99.0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
 [node name="icon" type="TextureRect" parent="InventorySlots/crotch"]
 show_behind_parent = true
 light_mask = 0
@@ -501,6 +642,20 @@ texture_hover = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="qualitycolor" type="TextureRect" parent="InventorySlots/tool"]
+visible = false
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 99.0
+margin_bottom = 99.0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
 }
 
 [node name="icon" type="TextureRect" parent="InventorySlots/tool"]
