@@ -75,6 +75,11 @@ func clean_references():
 func base_exp_set(value):
 	xp_module.base_exp = value
 
+
+func swap_alternate_exterior():
+	statlist.swap_alternate_exterior()
+
+
 func get_stat(statname, ref = false):
 	if statname in ['hp', 'mp', 'shield', 'taunt']:
 		return get(statname)
