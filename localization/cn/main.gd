@@ -2273,6 +2273,7 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	TRAITEFFECTCELENABLESS = "Celena's Blessing: +30%% All resistances.",
 	TRAITEFFECTFREYABLESS ="Freya's Blessing: +30 Armor Penetration, +25 Hit Rate.",
 	TRAITEFFECTCELENACURSE = "Celena's Curse: -50%% Max. Health.",
+	TRAITEFFECTHYBRISCURSE = """Hybris' Curse: -50%% DEF""", # MISSING TRANSLATION
 	TRAITEFFECTFREYACURSE = "Freya's Curse: -50 Evasion and Hit Rate.",
 	TRAITEFFECTDATEBONUS = "Loyalty gain increased by 0.5.",
 	TRAITEFFECTRESISTSTATE = "Resist state: Can't gain obedience from positive abilities. Can't use exploration skills. Positive actions during dates less effective.",
@@ -3159,6 +3160,7 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	DIALOGUESHRINECELENA = "你遇到一个宗教建筑：一个由轻金属制成的小神龛。它看起来很破旧，但你可以辨认出它的侧面刻着月亮的象征。尽管位于这样的地方，你仍然感觉到它周围有一种微弱的力量. ",
 	DIALOGUESHRINEEREBUS = "你遇到一个不起眼的石头堆：一个不平整的小金字塔，顶部有一个相当大的洞。尽管它看起来很粗糙，但你能感觉到它周围有一种微弱的力量.",
 	DIALOGUESHRINEFREYA = "你发现一个不同寻常的木结构：一个美丽的女性形象。特别突出的是，它似乎不是雕刻的，而是长成了这样的形状。你可以感觉到它周围有一种微弱的力量. ",
+	DIALOGUESHRINEHYBRIS = """You find an eerie shrine resembling something made by savages. Despite its repulsive appearence, you still feel a faint power around it. """, # MISSING TRANSLATION
 
 
 	DIALOGUESLAVERPURCHASE = "购买",

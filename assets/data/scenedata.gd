@@ -1449,6 +1449,39 @@ var scenedict = {
 		{code = 'freya_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},
+	hybris_shrine_find = {
+		text = tr("DIALOGUESHRINEHYBRIS"),
+		tags = [],
+		image = 'hybris_shrine',
+		options = [
+		{code = 'hybris_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUEAPPROACHSHRINE")},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+	},
+	hybris_shrine_approach = {
+		text = tr("DIALOGUESHRINEHYBRIS"),
+		tags = ['shrine','active_character_translate'],
+		shrine = 'hybris',
+		image = 'hybris_shrine',
+		options = [
+		{code = 'hybris_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+	},
+	hybris_character_loyalty = {
+		text = tr("HYBRIS_ALTAR_CHAR_RESULT1"),
+		tags = ['active_character_translate'],
+		image = 'mindcontrol',
+		common_effects = [{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 50}],
+		options = [
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+	},
+	hybris_character_convert = {
+		text = tr("HYBRIS_ALTAR_CHAR_RESULT2"),
+		tags = ['active_character_translate'],
+		image = 'mindcontrol',
+		common_effects = [{code = 'change_type_scene_characters', type = 'all', value = 'slave'}],
+		options = [
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+	},
 	spring = {variations = [{
 		reqs = [{type = 'random', value = 5}],
 		text = tr("SPRINGTEXT"),

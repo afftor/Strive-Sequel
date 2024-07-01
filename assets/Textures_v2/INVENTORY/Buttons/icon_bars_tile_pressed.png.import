@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lilith_prt.png-ed977b0ce0db813b1d5da2c9121f7347.stex"
+path="res://.import/icon_bars_tile_pressed.png-b8f3a9588bccd18dc4b3e0c0a381859a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/lilith_prt.png"
-dest_files=[ "res://.import/lilith_prt.png-ed977b0ce0db813b1d5da2c9121f7347.stex" ]
+source_file="res://assets/Textures_v2/INVENTORY/Buttons/icon_bars_tile_pressed.png"
+dest_files=[ "res://.import/icon_bars_tile_pressed.png-b8f3a9588bccd18dc4b3e0c0a381859a.stex" ]
 
 [params]
 

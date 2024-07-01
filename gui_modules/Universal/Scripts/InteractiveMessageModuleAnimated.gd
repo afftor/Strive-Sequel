@@ -322,6 +322,8 @@ func shrine_option(option):
 		'select_item':
 			globals.ItemSelect(self, 'gear', 'shrine_item_select')
 		"character":
+			input_handler.scene_characters.append(input_handler.active_character)
+			update_scene_characters()
 			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['character'].output, input_handler.active_character) 
 		'destroy':
 			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['destroy'].output, input_handler.active_character)
@@ -1152,7 +1154,6 @@ func select_option(number):
 	var options = current_scene.options
 	var option = options[button.get_meta("id")]
 	var code = option.code
-	
 	if option.has("repeat_next_day"):
 		var dup = false
 		for i in ResourceScripts.game_progress.daily_dialogues:

@@ -704,9 +704,19 @@ func make_chest_loot(chest):
 				input_handler.AddOrIncrementDict(dict.materials, tempdict)
 			'material_selected':
 				var tempdict
-				var mat = input_handler.weightedrandom(i.options)
-				var value = rand_range(i.value[0], i.value[1])
-				var number = ceil(value/Items.materiallist[mat].price)
+				var mat = 'wood'# = input_handler.weightedrandom(i.options)
+				var number = 1
+				var array = []
+				for k in i.options:
+					array.append([k.code,k.weight])
+				array = input_handler.weightedrandom(array)
+				for k in i.options:
+					if k.code == array:
+						mat = array
+						number = round(rand_range(k.amount[0],k.amount[1]))
+						break
+				#var value = rand_range(i.value[0], i.value[1])
+				#var number = ceil(value/Items.materiallist[mat].price)
 				tempdict = {mat : number}
 				input_handler.AddOrIncrementDict(dict.materials, tempdict)
 			'usable':

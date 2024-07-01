@@ -5051,6 +5051,25 @@ var effect_table = {
 			t_name = 'celena_curse',
 		}]
 	},
+	hybris_curse = {
+		type = 'temp_s',
+		duration = 4,
+		stack = 1,
+		name = 'celena_curse',
+		tick_event = [variables.TR_TICK],
+		args = [],
+		atomic = [
+			{type = 'stat_mul', stat = 'armor', value = 0.5},
+		],
+		sub_effects = [],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/Acid-spit.png",
+			description = "TRAITEFFECTHYBRISCURSE",
+			args = [],
+			limit = 1,
+			t_name = 'hybris_curse',
+		}]
+	},
 	freya_curse = {
 		type = 'temp_s',
 		duration = 8,

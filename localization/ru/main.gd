@@ -2257,6 +2257,7 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	TRAITEFFECTCELENABLESS = "Благословение Селены: +30%% всех сопротивлений.",
 	TRAITEFFECTFREYABLESS = "Благословение Фрейи: +30 бронепробиваемость, +25 точность",
 	TRAITEFFECTCELENACURSE = "Проклятие Селены: -50%% Макс. Здоровья.",
+	TRAITEFFECTHYBRISCURSE = """Hybris' Curse: -50%% DEF""", # MISSING TRANSLATION
 	TRAITEFFECTFREYACURSE = "Проклятие Фрейи: -50 уворота и точности",
 	TRAITEFFECTDATEBONUS = "Прирост верности увеличен на 0,5",
 	TRAITEFFECTRESISTSTATE = "Состояние сопротивления: Не может получить повиновение от положительных способностей. Не может использовать разведывательные навыки. Позитивные действия во время свиданий менее эффективны.",
@@ -3139,6 +3140,7 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	DIALOGUESHRINECELENA = "Вы наткнулись на религиозное сооружение: небольшое святилище, сделанное из светлого металла. Оно кажется довольно изношенным, но вы можете различить символ луны, выгравированный на одной из его сторон. Несмотря на то, что оно расположено в таком месте, вы все еще чувствуете слабую силу вокруг него.",
 	DIALOGUESHRINEEREBUS = "Вы наткнулись на необычное скопление камней: небольшую неровную пирамиду, в вершине которой имеется внушительное отверстие. Несмотря на ее грубый вид, вы чувствуете вокруг нее слабую силу",
 	DIALOGUESHRINEFREYA = "Вы находите необычную деревянную конструкцию: красивую женскую фигуру. Что особенно выделяется, так это то, что кажется, что она не была вырезана, а скорее выросла в такую форму. Вы чувствуете слабую силу вокруг нее.",
+	DIALOGUESHRINEHYBRIS = """You find an eerie shrine resembling something made by savages. Despite its repulsive appearence, you still feel a faint power around it. """, # MISSING TRANSLATION
 
 
 	DIALOGUESLAVERPURCHASE = "*Покупка*",
@@ -14806,6 +14808,16 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 	ALTAR_CHAR_1 = "[name] кладет [his] руку на алтарь. ",
 	ALTAR_CHAR_GOOD = "\n\n{color=green|От алтаря исходит небольшое свечение, которое окутывает [name]. Похоже, [he] получил благословение...}",
 	ALTAR_CHAR_BAD = "\n\nПосле нескольких минут ничего не произошло, и [name] решает идти дальше.",
+	HYBRIS_ALTAR_CHAR = """
+
+{color=green|A small purple low emits from the altar and enshrouds [name]. [His] movements suddenlty slow down and eyes lose focus. It seems you might be able to influene [him] in some way...}""", # MISSING TRANSLATION
+	HYBRIS_ALTAR_CHAR_FAIL = """
+
+{color=red|A small purple low emits from the altar and enshrouds [name], however it does not seem to be strong enough to affect [him]...}""", # MISSING TRANSLATION
+	HYBRIS_ALTAR_CHAR_OPTION1 = """Convert into slavery""", # MISSING TRANSLATION
+	HYBRIS_ALTAR_CHAR_OPTION2 = """Induce loyalty""", # MISSING TRANSLATION
+	HYBRIS_ALTAR_CHAR_RESULT1 = """You persuade [name] that [his] life has always been that of your property. Due to being influenced by altar's dark powers, [he] seemingly accepted it to heart.""", # MISSING TRANSLATION
+	HYBRIS_ALTAR_CHAR_RESULT2 = """You managed to plant some new beliefs into [name], which will make [him] more loyal towards you. """, # MISSING TRANSLATION
 	ALTAR_DESTROY_1 = "[name] разрушает святилище и собирает ресурсы.",
 	ALTAR_DESTROY_2 = "\n\n{color=red|Из остатков алтаря исходит жуткое свечение, окутывающее [name]. Похоже, [he] был проклят...}",
 	FREYA_ITEM_CLOTH = "\n\n{color=green|Подношение исчезает в воздухе, и яркий свет окружает [name]. Похоже, подношение было верным, и [he] восстановил [his] магическую энергию}",

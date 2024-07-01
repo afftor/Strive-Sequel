@@ -2256,6 +2256,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITEFFECTCELENABLESS = "Celena's Blessing: +30%% All resistances.",
 	TRAITEFFECTFREYABLESS ="Freya's Blessing: +30 Armor Penetration, +25 Hit Rate.",
 	TRAITEFFECTCELENACURSE = "Celena's Curse: -50%% Max. Health.",
+	TRAITEFFECTHYBRISCURSE = "Hybris' Curse: -50%% DEF",
 	TRAITEFFECTFREYACURSE = "Freya's Curse: -50 Evasion and Hit Rate.",
 	TRAITEFFECTDATEBONUS = "Loyalty gain increased by 0.5.",
 	TRAITEFFECTRESISTSTATE = "Resist state: Can't gain obedience from positive abilities. Can't use exploration skills. Positive actions during dates less effective.",
@@ -3145,6 +3146,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUESHRINECELENA = "You come across a religious structure: a small shrine made of light metal. It seems to be rather worn, but you can make out a symbol of moon engraved on a side of it. Despite being located at such place, you still feel a faint power around it. ",
 	DIALOGUESHRINEEREBUS = "You come across an unsual assemblence of stones: a small uneven pyramid which has a sizable hole on top. Despite its rough appearance, you can feel a faint power around it.",
 	DIALOGUESHRINEFREYA = "You find an unusual wooden structure: a beautiful female figure. What especially stands out, is it seems it wasn't carved but rather has grown into such shape. You can feel a faint power around it. ",
+	DIALOGUESHRINEHYBRIS = "You find an eerie shrine resembling something made by savages. Despite its repulsive appearence, you still feel a faint power around it. ",
 
 
 	DIALOGUESLAVERPURCHASE = "Purchase",
@@ -3185,7 +3187,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEBLOCKEDPATHSELECT = "[Strength Challenge] Select character (3 Stamina)",
 	DIALOGUEBLOCKEDPATHBREAK = "Spend time clearing the passage (10 Stamina)",
 	DIALOGUEBLOCKEDPATHPASS = "[name] lifts one of the crushed wooden bars and manages to push it away, clearing the path ahead.",
-	DIALOGUEMAGICBARRIER = "The group comes across a way bloked by a magic barrier. However, a clever individual might be able to find an easy way to breach it. ",
+	DIALOGUEMAGICBARRIER = "The group comes across a way blocked by a magic barrier. However, a clever individual might be able to find an easy way to breach it. ",
 	DIALOGUEMAGICBARRIERSELECT = "[Wisdom Challenge] Select character (3 Stamina)",
 	DIALOGUEMAGICBARRIERBREAK = "Wear down the barrier (10 Stamina)",
 	DIALOGUEMAGICBARRIERPASS = "[name] uses [his] keen mind to find the place with the weakest magical structure and breaches the barrier.",
@@ -9842,7 +9844,7 @@ Cali was shy now realizing what she had just done and nodded now, still blushing
 {color=yellow|Citizen A: — Yeah, but the others simply scattered away and paid me no attention. I couldn't bring myself to call her out...}""",
 	LILIA_PRELUDE2 = "You decide to make a note about this village and perhaps visit it next time you go to elven forests.",
 	
-	LILIA_STARTING_1 = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. After she realizes that she has caught your attention, she dashes at you, completely ignoring any formalities as the releases and rapid torrent of questions.
+	LILIA_STARTING_1 = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. After she realizes that she has caught your attention, she dashes at you, completely ignoring any formalities as she releases a rapid torrent of questions.
 
  — Hi! I'm Lilia. What's your name? Are you an adventurer? You are so big! We don't get people like you here often. What brought you here?""",
 	LILIA_STARTING_1_OPTION_1 = "Nice to meet you, I'm [name].",
@@ -10017,7 +10019,7 @@ She passes you a small phial filled with fluid and sends you off.""",
 Hours pass now as you sleep restfully there in your chambers, though deep in your rest you feel that your legs are now cold. This thought is at the forefront as you open your eyes to see Lilia start sliding her panties down now, moving her body up onto you.
 
 — [Master], sorry for being a bit selfish but I really miss this...""",
-	LILIA_MANSION_3 = """Not fully awake, you're not sure what to make of this as the small fae starts to grind herself upon you now. It took mere moments of her petals rubbing up and down your shaft to have the girl slick and ready, panting between pleased little groans. You're impressed and then then curious as the little fairy seems not to be fatigued by her ordeal, if anything she seems thirsty. 
+	LILIA_MANSION_3 = """Not fully awake, you're not sure what to make of this as the small fae starts to grind herself upon you now. It took mere moments of her petals rubbing up and down your shaft to have the girl slick and ready, panting between pleased little groans. You're impressed, and then curious as the little fairy seems not to be fatigued by her ordeal. If anything, she seems thirsty. 
 
 A few moments later her noises picked up in pitch as she lifted herself up, sliding her warm body down onto your shaft. A gentle shifting of her hips followed by a pleased purr and the fairy would stop and look at you, cooing as she started to slowly bounce her hips, becoming more aggressive with time. You begin to wonder if you'd overreacted, surely she couldn't have been so ill before and be able to ride you this aggressively.
 
@@ -14779,6 +14781,14 @@ Hotkey: 3""",
 	ALTAR_CHAR_1 = "[name] puts [his] hand on the altar. ",
 	ALTAR_CHAR_GOOD = "\n\n{color=green|A small glow emits from the altar and enshrouds [name]. It seems [he] has been blessed...}",
 	ALTAR_CHAR_BAD = "\n\nAfter a few minutes nothing still happened and [name] decides to move on.",
+	HYBRIS_ALTAR_CHAR = "\n\n{color=green|A small purple low emits from the altar and enshrouds [name]. [His] movements suddenlty slow down and eyes lose focus. It seems you might be able to influene [him] in some way...}",
+	HYBRIS_ALTAR_CHAR_FAIL = "\n\n{color=red|A small purple low emits from the altar and enshrouds [name], however it does not seem to be strong enough to affect [him]...}",
+	HYBRIS_ALTAR_CHAR_OPTION1 = "Convert into slavery",
+	HYBRIS_ALTAR_CHAR_OPTION2 = "Induce loyalty",
+	HYBRIS_ALTAR_CHAR_RESULT1 = "You persuade [name] that [his] life has always been that of your property. Due to being influenced by altar's dark powers, [he] seemingly accepted it to heart.",
+	HYBRIS_ALTAR_CHAR_RESULT2 = "You managed to plant some new beliefs into [name], which will make [him] more loyal towards you. ",
+	
+	
 	ALTAR_DESTROY_1 = "[name] demolishes the shrine and gathers the resources. ",
 	ALTAR_DESTROY_2 = "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed...}",
 	FREYA_ITEM_CLOTH = "\n\n{color=green|The offering disappears in a thin air and a bright light surrounds [name]. It seems the offer was correct and [he] restored [his] magic energy.}",

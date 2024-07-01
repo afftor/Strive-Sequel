@@ -62,7 +62,7 @@ var dungeons = {
 				weight = 8,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find','hybris_shrine_find'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
@@ -170,7 +170,7 @@ var dungeons = {
 				weight = 2,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find','hybris_shrine_find'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
@@ -409,7 +409,7 @@ var dungeons = {
 				weight = 7,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find','hybris_shrine_find'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
@@ -515,7 +515,7 @@ var dungeons = {
 				weight = 3,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = [['celena_shrine_find',0.5],['erebus_shrine_find',1],['freya_shrine_find',0.2]],
+				events = [['celena_shrine_find',0.4],['erebus_shrine_find',1],['hybris_shrine_find',0.8],['freya_shrine_find',0.2]],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
@@ -617,7 +617,7 @@ var dungeons = {
 				weight = 4,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = [['celena_shrine_find',0.1],['erebus_shrine_find',0.2],['freya_shrine_find',1]],
+				events = [['celena_shrine_find',0.1],['erebus_shrine_find',0.2],['freya_shrine_find',1],['hybris_shrine_find',0.5]],
 				possible_challenges = [
 					['event_blocked_path',1],
 					['event_fallen_bridge',1],
@@ -733,7 +733,7 @@ var dungeons = {
 				weight = 4,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = [['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5]],
+				events = [['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5],['hybris_shrine_find',0.3]],
 				possible_challenges = [
 					['event_blocked_path',1],
 					['event_magic_barrier',1],
@@ -828,7 +828,7 @@ var dungeons = {
 				weight = 4,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = ['erebus_shrine_find'],
+				events = ['erebus_shrine_find','hybris_shrine_find'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
@@ -937,7 +937,7 @@ var dungeons = {
 				weight = 2,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find','hybris_shrine_find'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
@@ -1205,7 +1205,7 @@ var dungeons = {
 				weight = 1,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find','hybris_shrine_find'],
 				possible_challenges = [
 					['event_blocked_path',1],
 					['event_fallen_bridge',1],
