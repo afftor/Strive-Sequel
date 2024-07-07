@@ -13603,6 +13603,24 @@ With that the magic seals and tentacles disappear leaving you alone with Lilith 
 	AMELIA_MAIN_STAGE_10 = "Purchase Amelia from Servants",
 	AMELIA_MAIN_STAGE_11 = "Talk to Amelia in your mansion",
 	
+	LILIA_FINALE_QUEST_NAME = "",
+	LILIA_FINALE_QUEST_SUMMARY = "",
+	LILIA_FINALE_QUEST_STAGE_1 = "", # go to workers
+	LILIA_FINALE_QUEST_STAGE_2 = "", # complete dungeon
+	LILIA_FINALE_QUEST_STAGE_3 = "", # Report back to Sigmund
+	LILIA_FINALE_QUEST_STAGE_4 = "", # wait for flirting
+	LILIA_FINALE_QUEST_STAGE_5 = "", # complete grove dungeon
+	LILIA_FINALE_QUEST_STAGE_6 = "", # wait for bad route scene
+	LILIA_FINALE_QUEST_STAGE_7 = "", # wait for good route scene
+	LILIA_FINALE_QUEST_STAGE_8 = "", # go to Lilia village
+	LILIA_FINALE_QUEST_STAGE_9 = "", # reserve for good route ending
+	LILIA_FINALE_QUEST_STAGE_10 = "", # go to Lilith village
+	LILIA_FINALE_QUEST_STAGE_11 = "", # wait for sex scene
+	LILIA_FINALE_QUEST_STAGE_12 = "", # go to mages
+	LILIA_FINALE_QUEST_STAGE_13 = "", # go to Xari
+	LILIA_FINALE_QUEST_STAGE_14 = "", # ask Lilith about patron
+	LILIA_FINALE_QUEST_STAGE_15 = "", # clear new patron dungeon
+	
 	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n— H-hello, [Master]... How was your day?",
 	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her motivation. She stays silent having no words for you.\n\n— ......",
 	DIALOGUEANAINITIATEHP = "Anastasia greets you with a smile. Even though she does not show it, she looks rather content.\n\n— [Master]. Are you feeling well? What can I do for you?",
@@ -14862,6 +14880,16 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	QUEST_ANCIENT_JUNGLE_LOCATION_TEXT = "Ancient Ruins",
 	QUEST_ANCIENT_JUNGLE_LOCATION_DESC = "",
+	
+	QUEST_ELVEN_ANCIENT_JUNGLE_LOCATION_TEXT = "",
+	QUEST_ELVEN_ANCIENT_JUNGLE_LOCATION_DESC = "",
+
+	QUEST_LILIA_DUNGEON_GROVE_TEXT = "",
+	QUEST_LILIA_DUNGEON_GROVE_DESC = "",
+
+	QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_TEXT = "",
+	QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_DESC = "",
+
 	
 	#eventscrits
 	
