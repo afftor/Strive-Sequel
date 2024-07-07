@@ -259,14 +259,10 @@ var backgrounds = {
 	lilia_transform_6 = load("res://assets/images/fullscreen scenes/FairyCG018.png"),
 	lilia_transform_7 = load("res://assets/images/fullscreen scenes/FairyCG019.png"),
 	
-	lilith_blow_1 = load("res://assets/images/fullscreen scenes/FairyCG019.png"),
-	lilith_blow_2 = load("res://assets/images/fullscreen scenes/FairyCG019.png"),
-	lilith_blow_3 = load("res://assets/images/fullscreen scenes/FairyCG019.png"),
-	lilith_blow_4 = load("res://assets/images/fullscreen scenes/FairyCG019.png"),
-#	lilith_blow_1 = load("res://assets/images/fullscreen scenes/LilithCG001.png"),
-#	lilith_blow_2 = load("res://assets/images/fullscreen scenes/LilithCG002.png"),
-#	lilith_blow_3 = load("res://assets/images/fullscreen scenes/LilithCG004.png"),
-#	lilith_blow_4 = load("res://assets/images/fullscreen scenes/LilithCG005.png"),
+	lilith_blow_1 = load("res://assets/images/fullscreen scenes/LilithCG001.png"),
+	lilith_blow_2 = load("res://assets/images/fullscreen scenes/LilithCG002.png"),
+	lilith_blow_3 = load("res://assets/images/fullscreen scenes/LilithCG004.png"),
+	lilith_blow_4 = load("res://assets/images/fullscreen scenes/LilithCG005.png"),
 	
 	lilith_ride_1 = load("res://assets/images/fullscreen scenes/FairyCG006.png"),
 	lilith_ride_2 = load("res://assets/images/fullscreen scenes/FairyCG007.png"),
