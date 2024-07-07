@@ -251,6 +251,27 @@ var backgrounds = {
 	zephyra_facefuck_3 = load("res://assets/images/fullscreen scenes/ZephyraCG011.png"),
 	zephyra_facefuck_4 = load("res://assets/images/fullscreen scenes/ZephyraCG012.png"),
 	
+	lilia_transform_1 = load("res://assets/images/fullscreen scenes/FairyCG010.png"),
+	lilia_transform_2 = load("res://assets/images/fullscreen scenes/FairyCG011.png"),
+	lilia_transform_3 = load("res://assets/images/fullscreen scenes/FairyCG014.png"),
+	lilia_transform_4 = load("res://assets/images/fullscreen scenes/FairyCG015.png"),
+	lilia_transform_5 = load("res://assets/images/fullscreen scenes/FairyCG016.png"),
+	lilia_transform_6 = load("res://assets/images/fullscreen scenes/FairyCG018.png"),
+	lilia_transform_7 = load("res://assets/images/fullscreen scenes/FairyCG019.png"),
+	
+	lilith_blow_1 = load("res://assets/images/fullscreen scenes/FairyCG019.png"),
+	lilith_blow_2 = load("res://assets/images/fullscreen scenes/FairyCG019.png"),
+	lilith_blow_3 = load("res://assets/images/fullscreen scenes/FairyCG019.png"),
+	lilith_blow_4 = load("res://assets/images/fullscreen scenes/FairyCG019.png"),
+#	lilith_blow_1 = load("res://assets/images/fullscreen scenes/LilithCG001.png"),
+#	lilith_blow_2 = load("res://assets/images/fullscreen scenes/LilithCG002.png"),
+#	lilith_blow_3 = load("res://assets/images/fullscreen scenes/LilithCG004.png"),
+#	lilith_blow_4 = load("res://assets/images/fullscreen scenes/LilithCG005.png"),
+	
+	lilith_ride_1 = load("res://assets/images/fullscreen scenes/FairyCG006.png"),
+	lilith_ride_2 = load("res://assets/images/fullscreen scenes/FairyCG007.png"),
+	lilith_ride_3 = load("res://assets/images/fullscreen scenes/FairyCG008.png"),
+	
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
 	blackscreen = load("res://assets/sfx/black.png"),
