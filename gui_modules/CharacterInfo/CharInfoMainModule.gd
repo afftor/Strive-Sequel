@@ -80,6 +80,13 @@ var unique_dict = { #shows available talk characters. Scenes go in order from hi
 	]
 	},
 	
+	lilith = {
+	code = 'lilith', 
+	scenes = [
+		{code = 'lilith_dialogue_start', reqs = []}
+	]
+	},
+	
 	
 	jean = {
 	code = 'jean', 

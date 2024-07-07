@@ -704,6 +704,20 @@ var data = {
 		],
 	},
 	
+	lilith_dialogue_start = {
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], character = 'lilith',
+		text = [
+			{
+				text = "DIALOGUELILITHINIT", 
+				reqs = [],
+			},
+		], 
+		options = [
+			{code = 'lilith_patron_meeting', text = "LILITH_PATRON_MEETING_OPTION", reqs = [{type = 'active_quest_stage', value = 'lilia_finale_quest', stage = 'stage14'}], dialogue_argument = 1, },
+			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3},
+		],
+	},
+	
 	jean_dialogue_start = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'jean',
 		text = [

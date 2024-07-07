@@ -509,6 +509,7 @@ var data = {
 			bonus_effects = [
 				{code = 'complete_quest', value = 'sick_lilia_quest'},
 				{code = 'update_mansion'},
+				{code = 'add_timed_event', value = "lilia_finale_1", args = [{type = 'add_to_date', date = [7, 7], hour = 1}]}
 			]
 		}, ]
 	},
