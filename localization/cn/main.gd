@@ -1058,6 +1058,7 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	SKILLWINDARROW = "Wind Arrow 风箭",
 	SKILLWINDARROWDESCRIPT = "Imbues the arrow with Wind element and deal %d damage. Must have a bow equipped.\n将风元素注入箭中并造成 %d 点伤害。必须装备弓。",
 	SKILLENEMY_SLASH = "Slash 猛击",
+	SKILLASSASSINATEEN = """Assassinate""", # MISSING TRANSLATION
 	SKILLENEMY_SLASHDESCRIPT = "Deals %d Weapon damage to all targets in nearby column. Must have a weapon equipped.\n对附近纵队的所有目标造成 %d 武器伤害。必须装备武器。",
 	SKILLMINORHEAL = "Minor Heal 次要治疗",
 	SKILLMINORHEALDESCRIPT = "Restore %d health of the target.\n恢复目标的 %d 健康状况。",
@@ -2272,6 +2273,7 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	TRAITEFFECTCELENABLESS = "Celena's Blessing: +30%% All resistances.",
 	TRAITEFFECTFREYABLESS ="Freya's Blessing: +30 Armor Penetration, +25 Hit Rate.",
 	TRAITEFFECTCELENACURSE = "Celena's Curse: -50%% Max. Health.",
+	TRAITEFFECTHYBRISCURSE = """Hybris' Curse: -50%% DEF""", # MISSING TRANSLATION
 	TRAITEFFECTFREYACURSE = "Freya's Curse: -50 Evasion and Hit Rate.",
 	TRAITEFFECTDATEBONUS = "Loyalty gain increased by 0.5.",
 	TRAITEFFECTRESISTSTATE = "Resist state: Can't gain obedience from positive abilities. Can't use exploration skills. Positive actions during dates less effective.",
@@ -2806,6 +2808,18 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	BODYPARTHAIR_STYLEBRAIDDESCRIPT = "它被梳成一个 [url=hair][color=aqua]辫子[/color][/url].",
 	BODYPARTHAIR_STYLETWINBRAIDSDESCRIPT = "它被梳成一个 [url=hair][color=aqua]双辫子[/color][/url].",
 	BODYPARTHAIR_STYLEBUNDESCRIPT = "它被扎成一个整洁的 [url=hair][color=aqua]发髻[/color][/url].",
+	HAIRCOLOR_GRADIENT = """colorful""", # MISSING TRANSLATION
+	HAIRCOLOR_BROWN = """brown""", # MISSING TRANSLATION
+	HAIRCOLOR_ORANGE = """orange""", # MISSING TRANSLATION
+	HAIRCOLOR_DARK = """dark""", # MISSING TRANSLATION
+	HAIRCOLOR_GREEN = """green""", # MISSING TRANSLATION
+	HAIRCOLOR_CYAN = """cyan""", # MISSING TRANSLATION
+	HAIRCOLOR_PINK = """pink""", # MISSING TRANSLATION
+	HAIRCOLOR_PURPLE = """purple""", # MISSING TRANSLATION
+	HAIRCOLOR_RED = """red""", # MISSING TRANSLATION
+	HAIRCOLOR_WHITE = """white""", # MISSING TRANSLATION
+	HAIRCOLOR_YELLOW = """yellow""", # MISSING TRANSLATION
+	HAIRCOLOR_BLUE = """blue""", # MISSING TRANSLATION
 
 	BODYPARTEYE_COLORDEFAULTDESCRIPT = "[His] 的眼睛是 [color=aqua][eye_color][/color].",
 	BODYPARTEYE_SHAPENORMALDESCRIPT = ' ',
@@ -3146,6 +3160,7 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	DIALOGUESHRINECELENA = "你遇到一个宗教建筑：一个由轻金属制成的小神龛。它看起来很破旧，但你可以辨认出它的侧面刻着月亮的象征。尽管位于这样的地方，你仍然感觉到它周围有一种微弱的力量. ",
 	DIALOGUESHRINEEREBUS = "你遇到一个不起眼的石头堆：一个不平整的小金字塔，顶部有一个相当大的洞。尽管它看起来很粗糙，但你能感觉到它周围有一种微弱的力量.",
 	DIALOGUESHRINEFREYA = "你发现一个不同寻常的木结构：一个美丽的女性形象。特别突出的是，它似乎不是雕刻的，而是长成了这样的形状。你可以感觉到它周围有一种微弱的力量. ",
+	DIALOGUESHRINEHYBRIS = """You find an eerie shrine resembling something made by savages. Despite its repulsive appearence, you still feel a faint power around it. """, # MISSING TRANSLATION
 
 
 	DIALOGUESLAVERPURCHASE = "购买",
@@ -3380,6 +3395,7 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 
 	SWITCHSTATS = "个人统计",
 	SWITCHLIST = "角色列表",
+	SWITCHINVENTORY = """witch Grid/String mode""", # MISSING TRANSLATION
 
 	SCENEDAISY_MEET_TEXT = "当你在镇上走的时候，你听到一些争吵声。一个大个子男人对着坐在陶器碎片附近哭泣的年轻的混血兔人女孩喊道。\n\n--你这个笨拙的蠢蛋！这已经是第三次了。我现在要把你卖给妓院，至少这样你会有点用。\n\n-这个女孩似乎不适合体力劳动，但很有吸引力. ",
 	SCENEDAISY_MEET_OPTION1 = "提出购买女孩",
@@ -5664,6 +5680,10 @@ GUILD_ATTACK_ON_HIDEOUT_4_2 = """在叛军藏身处较深的房间里，格雷�
 
 经过仔细检查，你确认它一定是皇室的，所以是时候把它带到梅尔那里了。""",
 	LOOKING_FOR_PRINCESS_18 = """当你把金子递给狗头人时，他把手镯给你，很快就带着钱消失了。经过仔细检查，你确认它一定是皇室的，所以是时候把它带给梅尔了。""",
+	LOOKING_FOR_PRINCESS_OPTION_19_1 = """I've been tasked to find the Princess...""", # MISSING TRANSLATION
+	LOOKING_FOR_PRINCESS_19_1 = """You ask Myr for a way to find the Princess. After a short pause she gives you a short response.
+
+— Get some of her personal belongings. Try her last stand, maybe Duncan's goons haven't scrapped it all yet.""", # MISSING TRANSLATION
 	LOOKING_FOR_PRINCESS_OPTION_19 = """我买了手镯""",
 	LOOKING_FOR_PRINCESS_19 = """您已将手镯赠送给阿米莉亚，阿米莉亚仔细检查了几分钟。
 
@@ -14097,6 +14117,8 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	QUEST_MAGES_XARI_TEXT = "扎里1的位置",
 	QUEST_MAGES_XARI_DESC = "",
+	QUEST_REBEL_BACKROOMS = """Rebel Hideout's Backrooms""", # MISSING TRANSLATION
+	QUEST_REBEL_BACKROOMSDESCR = """""", # MISSING TRANSLATION
 	
 	QUEST_MAGES_FRED_TEXT = "弗雷德的位置",
 	QUEST_MAGES_FRED_DESC = "",
@@ -14299,6 +14321,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_DAISY_ADMIRER_LOCATION1 = "接近",
 	
 	QUEST_GRYPHON_CAVE_LOCATION1 = "接近洞穴",
+	QUEST_MAE_SEARCH = """Search For Mae""", # MISSING TRANSLATION
 	
 	QUEST_LEON_FOREST_2_1 = "搜索莱昂",
 	

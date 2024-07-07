@@ -22,6 +22,7 @@ func _ready():
 		$CharacterImage2.material = load("res://assets/silouette_shader.tres").duplicate()
 	base_text_size = $RichTextLabel.rect_size
 	base_text_position = $RichTextLabel.rect_position
+	#$BackgroundT2/UnhideButton.connect('pressed', self, 'hide_dialogue', ['unhide'])
 	
 
 
@@ -31,6 +32,7 @@ func hide_dialogue(action = "hide"):
 			continue
 		if !node.name in ["ShowPanel", "CustomBackground", "ShowPanelBackground"]:
 			node.visible = action != "hide"
+			
 	var tnode = get_node("ShowPanel")
 	if tnode != null:
 		tnode.visible = action == "hide"
@@ -41,6 +43,9 @@ func open(scene):
 #	if get_tree().get_root().get_node_or_null("ANIMLoot") && get_tree().get_root().get_node("ANIMLoot").is_visible():
 #		get_tree().get_root().get_node("ANIMLoot").raise()
 	input_handler.PlaySound("speech")
+	if gui_controller.is_dialogue_just_started:
+		$RichTextLabel.bbcode_text = ''
+	
 	get_tree().get_root().set_disable_input(true)
 	if scene.has("save_scene_to_gallery") && scene.save_scene_to_gallery:
 		save_scene_to_gallery(scene)
@@ -317,6 +322,8 @@ func shrine_option(option):
 		'select_item':
 			globals.ItemSelect(self, 'gear', 'shrine_item_select')
 		"character":
+			input_handler.scene_characters.append(input_handler.active_character)
+			update_scene_characters()
 			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['character'].output, input_handler.active_character) 
 		'destroy':
 			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['destroy'].output, input_handler.active_character)
@@ -690,7 +697,8 @@ func select_scene_variation_based_on_data(scene):
 
 func set_dialogue_window_type(scene):
 	gui_controller.dialogue_window_type = scene.dialogue_type
-	gui_controller.dialogue_txt = gui_controller.dialogue.get_node("RichTextLabel").bbcode_text
+#	gui_controller.dialogue_txt = gui_controller.dialogue.get_node("RichTextLabel").bbcode_text
+	gui_controller.dialogue_txt = $RichTextLabel.bbcode_text
 	match gui_controller.dialogue_window_type:
 		1:
 			input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2).hide()
@@ -726,7 +734,7 @@ func handle_scene_transition_fx(scene):
 	if self.visible == false:
 		self.visible = true
 		ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
-		$RichTextLabel.bbcode_text = ''
+#		$RichTextLabel.bbcode_text = ''
 		previous_text = ''
 		yield(get_tree().create_timer(0.2), "timeout")
 	emit_signal("TransitionFinished")
@@ -1146,7 +1154,6 @@ func select_option(number):
 	var options = current_scene.options
 	var option = options[button.get_meta("id")]
 	var code = option.code
-	
 	if option.has("repeat_next_day"):
 		var dup = false
 		for i in ResourceScripts.game_progress.daily_dialogues:

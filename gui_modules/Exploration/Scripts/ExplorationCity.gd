@@ -330,25 +330,26 @@ func hide_guild_panels():
 
 func enter_guild(guild):
 	self.current_pressed_area_btn = null
-	if (
-		previous_guild == guild.name
-		&& get_tree().get_root().get_node_or_null("dialogue")
-		&& ! get_tree().get_root().get_node("dialogue").is_visible()
-	):
-		previous_guild = ''
-		update_guild_buttons('')
-		open_city(selected_location)
-		return
-	previous_guild = guild.name
-	update_guild_buttons(guild.name)
-	input_handler.active_area = ResourceScripts.game_world.areas[guild.area]
-	active_faction = guild
-	market_mode = "guild_slaves"
-	input_handler.active_faction = guild
-	update_guild_actions(guild)
+	if guild != null:
+		if (
+			previous_guild == guild.name
+			&& get_tree().get_root().get_node_or_null("dialogue")
+			&& ! get_tree().get_root().get_node("dialogue").is_visible()
+		):
+			previous_guild = ''
+			update_guild_buttons('')
+			open_city(selected_location)
+			return
+		previous_guild = guild.name
+		update_guild_buttons(guild.name)
+		input_handler.active_area = ResourceScripts.game_world.areas[guild.area]
+		active_faction = guild
+		market_mode = "guild_slaves"
+		input_handler.active_faction = guild
+		update_guild_actions(guild)
 
-	# Visuals
-	$GuildBG.texture = images.backgrounds[guild.background]
+		# Visuals
+		$GuildBG.texture = images.backgrounds[guild.background]
 	if get_tree().get_root().get_node_or_null("dialogue") && ! get_tree().get_root().get_node("dialogue").is_visible():
 		unfade($GuildBG)
 	if gui_controller.is_dialogue_just_started:
@@ -464,6 +465,7 @@ func buy_item(item_ref, price, amount, type = "item"):
 		item_name = item_ref.name
 		item_icon = item_ref.icon
 	elif type == "class":
+		amount = 0
 		if classesdata.professions.has(item_ref):
 			item_icon = classesdata.professions[item_ref].icon
 	item_to_buy = item_ref
@@ -733,7 +735,7 @@ func sell_slave():
 	var char_list = []
 	for i in ResourceScripts.game_party.characters:
 		var tchar = characters_pool.get_char_by_id(i)
-		if (tchar.has_profession('master') || tchar.get_stat('slave_class') == 'servant'): # || tchar.valuecheck({code = 'is_free', check = true}) == false):
+		if (tchar.has_profession('master') || tchar.get_stat('slave_class') == 'servant') || tchar.check_work_rule("lock"): # || tchar.valuecheck({code = 'is_free', check = true}) == false):
 			continue
 		char_list.append(tchar)
 		var newbutton = input_handler.DuplicateContainerTemplate($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
@@ -848,7 +850,7 @@ func faction_sellslaves():#obsolete
 	var counter = 0
 	for i in ResourceScripts.game_party.character_order:
 		var tchar = characters_pool.get_char_by_id(i)
-		if tchar.has_profession('master') || tchar.valuecheck({code = 'is_free', check = true}) == false:
+		if tchar.has_profession('master') || tchar.valuecheck({code = 'is_free', check = true}) == false :
 			continue
 		if counter == 0:
 			first_char = tchar

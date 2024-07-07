@@ -112,8 +112,22 @@ var data = {
 			{type = 'decision', value = 'servants_election_support', check = false}], type = 'next_dialogue', dialogue_argument = 1},
 		{code = 'servants_election_finish1', text = "SERVANTSINTRODUCTION1REPLY5", reqs = [{type = "has_multiple_decisions", decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support'], operant = 'gte', value = 3}, {type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 1},
 		{code = 'amelia_ask_location', text = "AIREAMELIAMEETOPTION", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},{type = 'decision', value = 'amelia_interrogation_success', check = true}, {type = 'dialogue_seen', check = false, value = 'AIREAMELIAMEET2'}], type = 'next_dialogue', dialogue_argument = 1},
-		{code = 'amelia_princess_advice', text = "AMELIAFINDPRINCESSOPTION", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},{type = 'decision', value = 'amelia_interrogation_success', check = false},{type = 'dialogue_selected', check = false, value = 'AMELIAFINDPRINCESSOPTION'}], type = 'next_dialogue', dialogue_argument = 1},
-		{code = 'princess_search_servants_1', text = "SEARCH_SERVANTS_OPTION_INIT", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}], type = 'next_dialogue', dialogue_argument = 1, remove_after_first_use = true},
+		
+		{code = 'amelia_princess_advice', 
+		text = "AMELIAFINDPRINCESSOPTION",
+		 reqs = [
+			{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},
+			{type = 'decision', value = 'amelia_interrogation_success', check = false},
+			{type = 'dialogue_selected', check = false, value = 'AMELIAFINDPRINCESSOPTION'}], 
+		type = 'next_dialogue', dialogue_argument = 1},
+		
+#		{code = 'princess_search_servants_1',  shouldn't need this no more
+#		text = "SEARCH_SERVANTS_OPTION_INIT", 
+#		reqs = [
+#			{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}
+#			], 
+#		type = 'next_dialogue', dialogue_argument = 1, remove_after_first_use = true},
+		
 		{code = 'final_operation_servants_1', text = "Ask for Help", reqs = [{type = 'active_quest_stage', value = 'final_operation', stage = 'stage2'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_SERVANTS_1'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'daisy_clothes_amelia_1', text = "DAISY_CLOTHES_AMELIA_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'daisy_clothes', stage = 'stage2'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'daisy_training_1', text = "DAISY_TRAINING_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'daisy_training', stage = 'stage1'}], dialogue_argument = 1, type = 'next_dialogue'},
@@ -192,6 +206,7 @@ var data = {
 			{type = 'decision', value = 'mages_election_support', check = false}], dialogue_argument = 2, type = 'next_dialogue'},
 		{code = 'mages_election4', text = "MAGESINTRODUCTION2REPLY3", reqs = [{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'stage2'}], dialogue_argument = 3, type = 'next_dialogue'},
 		{code = 'fred_return_to_myr_1', text = "FREDQUESTREPORT", reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage4'}], type = 'next_dialogue', dialogue_argument = 3},
+		#{code = 'looking_for_princess_mages_pre_bracelet', text = "LOOKING_FOR_PRINCESS_OPTION_19_1", reqs = [{type = 'decision', value = 'bracelet_found', check = false}, {type = 'dialogue_seen', check = false, value = 'LOOKING_FOR_PRINCESS_19_1'}, {type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}], dialogue_argument = 6, type = 'next_dialogue', },
 		{code = 'looking_for_princess_mages', text = "LOOKING_FOR_PRINCESS_OPTION_19", reqs = [{type = 'decision', value = 'bracelet_found', check = true}, {type = 'dialogue_seen', check = false, value = 'LOOKING_FOR_PRINCESS_19'}, {type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}],
 		dialogue_argument = 6, type = 'next_dialogue', },#bonus_effects = [{code = "screen_black_transition", value = 2}]},
 		{code = 'mindcontrol_start', text = "MIND_CONTROL_OPTION_8", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}], dialogue_argument = 11, remove_after_first_use = true},

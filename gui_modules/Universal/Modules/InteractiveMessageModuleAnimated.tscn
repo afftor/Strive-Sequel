@@ -1,15 +1,15 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/images/portraits/daisy_prt.png" type="Texture" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/images/backgrounds/Aliron.png" type="Texture" id=3]
 [ext_resource path="res://gui_modules/Universal/Modules/TextButton.gd" type="Script" id=4]
 [ext_resource path="res://assets/images/gui/scene/hersoframe.png" type="Texture" id=5]
-[ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_event_lower_high.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/frameclass.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/scenes/noevent.png" type="Texture" id=8]
-[ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_event_lower_divider.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_sprite_hover.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/sprites/duncan.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_sprite_default.png" type="Texture" id=12]
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_event_upper.png" type="Texture" id=13]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=14]
 [ext_resource path="res://gui_modules/Universal/Scripts/InteractiveMessageModuleAnimated.gd" type="Script" id=15]
@@ -19,9 +19,10 @@
 [ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/button_hide_hover.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/button_hide_pressed.png" type="Texture" id=20]
 [ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/panel_questdialogue.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/new/button_sprite_active.png" type="Texture" id=22]
+[ext_resource path="res://MainFont.tres" type="DynamicFont" id=23]
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 800, 679 )
 margin_left = 75.0
 margin_right = 75.0
@@ -29,7 +30,6 @@ margin_top = 75.0
 margin_bottom = 64.5747
 
 [sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 800, 1027 )
 margin_left = 75.0
 margin_right = 75.0
@@ -174,18 +174,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackgroundT2_dis" type="TextureRect" parent="."]
+[node name="BackgroundT2dlc" type="TextureRect" parent="."]
 visible = false
 margin_left = -95.3123
 margin_top = -386.127
 margin_right = 964.688
 margin_bottom = 663.873
 texture = ExtResource( 21 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="HideButton" type="TextureButton" parent="BackgroundT2_dis"]
+[node name="HideButton" type="TextureButton" parent="BackgroundT2dlc"]
 margin_left = 47.0
 margin_top = 988.325
 margin_right = 1017.0
@@ -193,11 +190,8 @@ margin_bottom = 1028.33
 texture_normal = ExtResource( 18 )
 texture_pressed = ExtResource( 20 )
 texture_hover = ExtResource( 19 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Label" type="Label" parent="BackgroundT2_dis/HideButton"]
+[node name="Label" type="Label" parent="BackgroundT2dlc/HideButton"]
 margin_right = 970.0
 margin_bottom = 40.0
 custom_fonts/font = ExtResource( 2 )
@@ -207,6 +201,26 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="UnhideButton" type="TextureButton" parent="BackgroundT2dlc"]
+visible = false
+margin_left = -464.831
+margin_top = -11.6272
+margin_right = -236.831
+margin_bottom = 28.3728
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="BackgroundT2dlc/UnhideButton"]
+margin_left = 11.4745
+margin_top = 8.59692
+margin_right = 201.474
+margin_bottom = 32.5969
+custom_fonts/font = ExtResource( 23 )
+text = "Unhide"
+align = 1
+valign = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 44.0

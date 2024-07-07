@@ -783,7 +783,7 @@ var dungeons = {
 				weight = 2,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find','hybris_shrine_find'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
@@ -2358,7 +2358,7 @@ var fixed_location_options = { #override serialized data
 	quest_fighters_lich = [
 		{
 			text = tr("QUEST_FIGHTERS_LICH1"), 
-			reqs = [], 
+			reqs = [{type = 'active_quest_stage', value = 'fighters_election_quest', stage = 'start'}], 
 			args = [{code = 'start_event', data = 'lich_enc_initiate', args = []}]
 		}
 	],
@@ -2460,11 +2460,14 @@ var fixed_location_options = { #override serialized data
 	quest_cali_village = [
 		{
 			text = tr("QUEST_CALI_VILLAGE1"), 
-			reqs = [{type = "location_has_specific_slaves", check = true, value = 1, location = 'quest_cali_village', reqs = [{code = 'unique', value = 'cali'}]}], 
+			reqs = [
+				{type = "location_has_specific_slaves", check = true, value = 1, location = 'quest_cali_village', reqs = [{code = 'unique', value = 'cali'}]},
+				{type = 'active_quest_stage', value = 'cali_heirloom_quest', stage = 'stage10', state = true}
+				], 
 			args = [{code = 'start_event', data = 'cali_hector_1', args = []}]
 		}
 	],
-	quest_final_operation_location = [ #not sure about code = 'value_check' here, as it should not be used in option's reqs
+	quest_rebels_backrooms = [
 		{
 			text = tr("QUEST_FINAL_OPERATION_LOCATION1"), 
 			reqs = [ 
@@ -2502,6 +2505,14 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'gryphon_cave_start', args = []}]
 		},
 	],
+	quest_ritual_location = [
+		{
+			text = tr("QUEST_MAE_SEARCH"), 
+			reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRE_RITUAL_2_1'}],
+			args = [{code = 'start_event', data = 'pre_ritual_1', args = []}]
+		},
+		
+	],
 	quest_leon_forest = [
 		{
 			text = tr("QUEST_LEON_FOREST_2_1"), 
@@ -2512,14 +2523,14 @@ var fixed_location_options = { #override serialized data
 	quest_leon_forest_2 = [
 		{
 			text = tr("QUEST_LEON_FOREST_2_1"), 
-			reqs = [],
+			reqs = [], #leon quest still removes location - so there is no req 
 			args = [{code = 'start_event', data = 'leon_encounter_start', args = []}]
 		},
 	],
 	quest_white_stag_location = [
 		{
 			text = tr("QUEST_WHITE_STAG_LOCATION1"), 
-			reqs = [],
+			reqs = [], #same as above
 			args = [{code = 'start_event', data = 'white_stag_encounter_1', args = []}]
 		},
 	],

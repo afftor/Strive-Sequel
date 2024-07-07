@@ -790,7 +790,7 @@ func test_mode():
 						{code = 'add_trait', trait = 'loyalty_sex_basic'},
 						{code = 'add_trait', trait = 'loyalty_sex_oral'},
 						{code = 'add_trait', trait = 'loyalty_sex_anal'},
-						{code = 'add_profession', profession = 'sextoy'},
+						{code = 'add_profession', profession = 'harlot'},
 						{code = "add_trait", trait = 'loyalty_sex_basic'}
 					]
 				},
@@ -873,9 +873,9 @@ func test_mode():
 			)
 		)
 		# ResourceScripts.game_progress.show_tutorial = true
-		# ResourceScripts.game_progress.active_quests.append(
-		# 	{code = 'aliron_church_quest', stage = 'start'}
-		# )
+		ResourceScripts.game_progress.active_quests.append(
+			{code = 'princess_search', stage = 'stage2'}
+		)
 #		globals.common_effects(
 #			[
 #				{code = "make_loot", pool = [['hard_boss_chest',1]]},
@@ -918,10 +918,10 @@ func test_mode():
 
 		
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
-		ResourceScripts.game_progress.decisions.append("mayor_election_finished")
+		ResourceScripts.game_progress.decisions.append("bracelet_found")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
-		#input_handler.interactive_message('princess_persuation_2_3', '', {})
+		input_handler.interactive_message('hybris_shrine_find', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)

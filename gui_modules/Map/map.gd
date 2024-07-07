@@ -188,6 +188,8 @@ func _input(event):
 			selected_chars.clear()
 			unselect_location()
 			build_info()
+			update_location_chars()
+			match_state()
 		else:
 			close()
 		get_tree().set_input_as_handled()
@@ -195,6 +197,7 @@ func _input(event):
 
 func _ready():#2add button connections
 	$Back.connect('pressed', self, 'close')
+	$mode.connect('pressed', self, 'from_loc_set')
 	$FromLocList/Sendbutton.connect('pressed', self, 'from_loc_set')
 	$InfoPanel/Sendbutton.connect('pressed', self, 'confirm_travel')
 	$zoom.min_value = map_zoom_min
@@ -319,6 +322,8 @@ func build_locations_list():
 							closed = false
 					if closed:
 						continue
+		if cdata[id].tags.has('quest'):
+			temp.quest = true
 		if tdata.category == "questlocations":
 			if cdata[id].has("questid") and ResourceScripts.game_progress.if_quest_active(cdata[id].questid):
 				temp.quest = true
@@ -453,7 +458,7 @@ func build_info(loc = null):
 		$InfoPanel/VBoxContainer/Label3.hide()
 	elif location.type == "dungeon":
 		$InfoPanel/InfoFrame/enemies.visible = true
-		if location.tags.has('quest') == true:
+		if location.tags.has('quest'):
 			$InfoPanel/InfoFrame/enemies.text = tr("QUESTLOCATION")
 			
 		else:
@@ -505,7 +510,11 @@ func build_info(loc = null):
 	$InfoPanel/VBoxContainer/Label2.visible = f
 	
 	$InfoPanel.visible = true
-	$InfoPanel/Sendbutton.visible = (from_loc != 'adv_mode' and to_loc != null and loc == to_loc)
+	if from_loc != 'adv_mode' and to_loc != null and loc == to_loc:
+		$InfoPanel/Sendbutton.visible = true
+		$InfoPanel/Sendbutton/Label.text = "Send - %d t" % globals.calculate_travel_time(from_loc, to_loc).time
+	else:
+		$InfoPanel/Sendbutton.visible = false
 
 
 func make_panel_for_location(panel, loc):
@@ -517,6 +526,7 @@ func make_panel_for_location(panel, loc):
 #		if ResourceScripts.game_world.areas[loc.area].questlocations.has(loc.id):
 		if loc.quest:
 			text = "Q:" + text
+			panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.yellow)
 		if  data.has('active') and data.active == false:
 			text += "(!)"
 		set_loc_text(panel, text)
@@ -529,7 +539,7 @@ func make_panel_for_location(panel, loc):
 #				globals.return_characters_from_location(loc.id)
 		if loc.has('locked'):
 			if loc.locked:
-				panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.yellow)
+				panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.red)
 #				globals.connecttexttooltip(panel, "Location Unavailable")
 #				globals.return_characters_from_location(loc.id)
 		var icon
@@ -807,20 +817,29 @@ func location_press(location, mode):
 
 func match_state():
 	if from_loc == null:
+		$FromLocList.visible = true
 		$ToLocList.visible = false
 		if selected_loc == null:
-			$FromLocList/Sendbutton/Label.text = 'Adv.Mode'
+#			$FromLocList/Sendbutton/Label.text = 'Adv.Mode'
+			$FromLocList/Sendbutton.visible = false
+			$mode/Label.text = 'Adv. Mode'
+			$mode.visible = true
 		else:
-			$FromLocList/Sendbutton/Label.text = 'Send'
-		$FromLocList/Sendbutton.visible = true
+			$FromLocList/Sendbutton.visible = true
+			$mode.visible = false
+#			$FromLocList/Sendbutton/Label.text = 'Send'
+#		$FromLocList/Sendbutton.visible = true
 		$InfoPanel/Sendbutton.visible = false
 	else:
 		$ToLocList.visible = true
 		if from_loc == 'adv_mode':
-			$FromLocList/Sendbutton.visible = true
-			$FromLocList/Sendbutton/Label.text = 'Smpl.Mode'
+			$FromLocList.visible = false
+			$mode/Label.text = 'Smpl.Mode'
+			$mode.visible = true
 		else:
+			$FromLocList.visible = true
 			$FromLocList/Sendbutton.visible = false
+			$mode.visible = false
 
 
 func from_loc_set():
@@ -863,10 +882,13 @@ func reset_to():
 func reset_from():
 	from_loc = null
 	to_loc = null
+	selected_loc = null
+	selected_chars.clear()
 	unselect_area()
 	unselect_location()
-	match_state()
 	build_from_locations()
+	update_location_chars()
+	match_state()
 	build_info(null)
 
 

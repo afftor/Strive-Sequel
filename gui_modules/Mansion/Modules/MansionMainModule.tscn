@@ -59,6 +59,7 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_vertical_guides_": [ 0.575684 ]
 }
+test_mode = true
 
 [node name="BGHolder" type="Control" parent="."]
 anchor_right = 1.0
@@ -88,9 +89,6 @@ texture = ExtResource( 39 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 38 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MansionBottomLeftModule" parent="." instance=ExtResource( 9 )]
 material = SubResource( 1 )

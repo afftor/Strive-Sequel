@@ -369,6 +369,7 @@ var scenes = {
 	celena_shrine = load("res://assets/images/scenes/celena_shrine.png"),
 	freya_shrine = load("res://assets/images/scenes/freya_shrine.png"),
 	erebus_shrine = load("res://assets/images/scenes/erebus_shrine.png"),
+	hybris_shrine = load("res://assets/images/scenes/hybris_shrine.png"),
 	cali_bandit_win = load("res://assets/images/scenes/cali win.png"),
 	cali_mother_dead = load("res://assets/images/scenes/cali mother.png"),
 	cali_meeting = load("res://assets/images/scenes/conference.png"),

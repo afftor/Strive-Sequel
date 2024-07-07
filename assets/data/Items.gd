@@ -2864,6 +2864,22 @@ var itemlist = {
 		tags = [],
 		mansion_effect = 'oblivionpot',
 	},
+	sexswap_potion = {
+		code = 'sexswap_potion',
+		name = "",
+		descript = "",
+		type = 'usable',
+		itemtype = 'potion',
+		crafttype = 'basic',
+		slots = [],
+		price = 250,
+		icon = load("res://assets/images/iconsitems/oblivionpot.png"),
+		tier = 'medium',
+		reqs = [],
+		effects = [],
+		tags = [],
+		mansion_effect = 'sexswappot',
+	},
 	writ_of_exemption = {# changes slave status to servant
 		code = 'writ_of_exemption',
 		name = "",
@@ -5020,14 +5036,14 @@ var enchantments = {
 				gold_cost = 3000
 			},
 			2:{
-				statmods = {magic_find_add = 1},
+				statmods = {magic_find_add = 2},
 #				effects = [],
 				weight = 100,
 				cap_cost = 300,
 				gold_cost = 6000
 			},
 			3:{
-				statmods = {magic_find_add = 1},
+				statmods = {magic_find_add = 3},
 #				effects = [],
 				weight = 100,
 				cap_cost = 400,

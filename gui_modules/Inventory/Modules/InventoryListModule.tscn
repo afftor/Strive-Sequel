@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_detail.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/iconsitems/quality_bg/blue.png" type="Texture" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=4]
 [ext_resource path="res://assets/images/gui/inventory/icon_armor1.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/iconsgear/ArmorBasic.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/Mods/button_modsname_pressed.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/Mods/button_modsname_hover.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/Mods/button_modsname.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_bars_line_pressed.png" type="Texture" id=10]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_bars_line.png" type="Texture" id=11]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=12]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_potion.png" type="Texture" id=13]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_armor_pressed.png" type="Texture" id=14]
@@ -38,6 +43,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/search.tres" type="StyleBox" id=41]
 [ext_resource path="res://gui_modules/Inventory/Scripts/InventoryListModule.gd" type="Script" id=42]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=43]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_bars_line_hover.png" type="Texture" id=44]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 39 )
@@ -79,15 +85,36 @@ margin_right = 3.0
 margin_top = 3.0
 margin_bottom = 3.0
 
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 393, 40 )
+margin_left = 6.96403
+margin_right = 9.0
+margin_top = 6.96403
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 393, 40 )
+margin_left = 6.96403
+margin_right = 9.0
+margin_top = 6.96403
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 393, 40 )
+margin_left = 6.96403
+margin_right = 9.0
+margin_top = 6.96403
+margin_bottom = 8.0
+
 [node name="InventoryListModule" type="Panel"]
 light_mask = 0
 margin_right = 595.0
 margin_bottom = 1050.0
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 42 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Scroller" type="Control" parent="."]
 light_mask = 0
@@ -113,7 +140,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Scroller"]
+[node name="ScrollContainer2" type="ScrollContainer" parent="Scroller"]
 light_mask = 0
 margin_left = 51.2322
 margin_top = 251.0
@@ -121,9 +148,73 @@ margin_right = 551.232
 margin_bottom = 1033.0
 theme = ExtResource( 4 )
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="GridContainer" type="GridContainer" parent="Scroller/ScrollContainer2"]
+light_mask = 0
+margin_right = 500.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 3
+custom_constants/hseparation = 3
+columns = 7
+
+[node name="Button" type="Button" parent="Scroller/ScrollContainer2/GridContainer"]
+visible = false
+light_mask = 0
+margin_right = 65.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 65, 65 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+toggle_mode = true
+
+[node name="quality_color" type="TextureRect" parent="Scroller/ScrollContainer2/GridContainer/Button"]
+visible = false
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 63.0
+margin_bottom = 65.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="Image" type="TextureRect" parent="Scroller/ScrollContainer2/GridContainer/Button"]
+show_behind_parent = true
+light_mask = 0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 62.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 5, 0 )
+mouse_filter = 2
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 7
+
+[node name="Number" type="Label" parent="Scroller/ScrollContainer2/GridContainer/Button"]
+light_mask = 0
+margin_left = 10.0
+margin_top = 31.0
+margin_right = 61.0
+margin_bottom = 68.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 12 )
+text = "1"
+align = 2
+valign = 1
+autowrap = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Scroller"]
+visible = false
+light_mask = 0
+margin_left = 51.2322
+margin_top = 251.0
+margin_right = 551.232
+margin_bottom = 1033.0
+theme = ExtResource( 4 )
+scroll_horizontal_enabled = false
 
 [node name="GridContainer" type="VBoxContainer" parent="Scroller/ScrollContainer"]
 light_mask = 0
@@ -318,9 +409,9 @@ texture_hover = ExtResource( 25 )
 
 [node name="SearchFilter" type="LineEdit" parent="."]
 light_mask = 0
-margin_left = 48.0
+margin_left = 23.0
 margin_top = 115.61
-margin_right = 548.0
+margin_right = 523.0
 margin_bottom = 167.61
 custom_colors/selection_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/cursor_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -331,7 +422,6 @@ custom_colors/clear_button_color = Color( 0, 0, 0, 1 )
 custom_constants/minimum_spaces = 3
 custom_fonts/font = ExtResource( 12 )
 custom_styles/normal = ExtResource( 41 )
-align = 1
 placeholder_text = "INVENTORYFILTER"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -350,3 +440,14 @@ clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="switchstyle" type="TextureButton" parent="."]
+margin_left = 531.508
+margin_top = 114.662
+margin_right = 585.508
+margin_bottom = 168.662
+rect_scale = Vector2( 1.01143, 0.982205 )
+hint_tooltip = "SWITCHINVENTORY"
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 44 )

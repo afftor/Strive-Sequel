@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lilith.png-1cf1af6ca7be2a6bfef0b7d884c437e9.stex"
+path="res://.import/shaman_apprentice.png-4814a91ad13dd3425da43b8c0613e110.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/lilith.png"
-dest_files=[ "res://.import/lilith.png-1cf1af6ca7be2a6bfef0b7d884c437e9.stex" ]
+source_file="res://assets/images/sprites/shaman_apprentice.png"
+dest_files=[ "res://.import/shaman_apprentice.png-4814a91ad13dd3425da43b8c0613e110.stex" ]
 
 [params]
 

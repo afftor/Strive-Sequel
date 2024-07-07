@@ -48,9 +48,11 @@ func show_characters_panel():
 	input_handler.ClearContainer(CharList2)
 	for i in ResourceScripts.game_party.character_order:
 		var character = ResourceScripts.game_party.characters[i]
-		if character.is_master() : continue
-		if character.is_unique() : continue
-		if character.get_stat('slave_class') == 'servant': continue
+		if (character.is_master() || 
+		character.is_unique() || 
+		character.check_work_rule('lock') || 
+		character.get_stat('slave_class') == 'servant'):
+			 continue
 		var name = character.get_full_name()
 		var newbutton = input_handler.DuplicateContainerTemplate(CharList2)
 		newbutton.get_node("CharacterName").text = name

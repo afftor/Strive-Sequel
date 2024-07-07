@@ -613,14 +613,17 @@ func make_quest(questcode):
 
 
 func make_quest_location(code):
-	var data = worlddata.dungeons[code]
+	if globals.valuecheck({type = 'location_exists', location = code}): return
+	var data = DungeonData.dungeons[code]
 	var locationdata = make_location(code, data.area)
 	locationdata.id = code
+	locationdata.tags.push_back('quest')
 	locationdata.travel_time = max(1, globals.rng.randi_range(data.travel_time[0], data.travel_time[1]))#round(rand_range(data.travel_time[0], data.travel_time[1]))
 	var area = ResourceScripts.game_world.areas[data.area]
 	area.questlocations[locationdata.id] = locationdata
 	ResourceScripts.game_world.location_links[locationdata.id] = {area = data.area, category = 'questlocations'}
 	input_handler.active_location = locationdata
+
 
 func make_repeatable_quest_location(quest,area,req):
 	var locationdata = {}
@@ -631,6 +634,7 @@ func make_repeatable_quest_location(quest,area,req):
 	match req.code:
 		'complete_dungeon':
 			locationdata.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {id = quest.id, source = quest.source, area = quest.area}})
+#			locationdata.stagedevents.main[dungeon_mainline] = {event = 'finish_quest_dungeon'}
 		'complete_location':
 			for i in locationdata.events:
 				locationdata.scriptedevents.append(i.duplicate(true))
@@ -650,6 +654,7 @@ func make_repeatable_quest_location(quest,area,req):
 #				locationdata.group = {}
 #				locationdata.progress = {level = 0, stage = 0}
 			#'dungeon':
+	locationdata.tags.push_back('quest')
 	return locationdata
 
 
@@ -699,9 +704,19 @@ func make_chest_loot(chest):
 				input_handler.AddOrIncrementDict(dict.materials, tempdict)
 			'material_selected':
 				var tempdict
-				var mat = input_handler.weightedrandom(i.options)
-				var value = rand_range(i.value[0], i.value[1])
-				var number = ceil(value/Items.materiallist[mat].price)
+				var mat = 'wood'# = input_handler.weightedrandom(i.options)
+				var number = 1
+				var array = []
+				for k in i.options:
+					array.append([k.code,k.weight])
+				array = input_handler.weightedrandom(array)
+				for k in i.options:
+					if k.code == array:
+						mat = array
+						number = round(rand_range(k.amount[0],k.amount[1]))
+						break
+				#var value = rand_range(i.value[0], i.value[1])
+				#var number = ceil(value/Items.materiallist[mat].price)
 				tempdict = {mat : number}
 				input_handler.AddOrIncrementDict(dict.materials, tempdict)
 			'usable':

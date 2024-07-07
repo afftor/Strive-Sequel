@@ -260,7 +260,7 @@ var data = {
 			{text = "XARI_ENCOUNTER_APPRENTICE", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage2'}]}
 		],
 		options = [
-			{code = 'close', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'remove_quest_location', value = 'quest_mages_xari'}]}
+			{code = 'close', text = tr("DIALOGUECLOSE"), reqs = []}
 		]
 	},
 	
@@ -348,7 +348,7 @@ var data = {
 			{text = "XARIENCOUNTER10", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage2'}]}
 		],
 		options = [
-			{code = 'close', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'remove_quest_location', value = 'quest_mages_xari'}]}
+			{code = 'close', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = []}
 		]
 	},
 }

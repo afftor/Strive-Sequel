@@ -1208,6 +1208,8 @@ var TranslationDict = {
 	SKILLEUPHORIA_APPLYDESCRIPT = "При активации увеличивает весь урон за счет вашей похоти. Истощает вашу похоть каждый ход",
 	SKILLEUPHORIA_REMOVE = "Эйфория",
 	SKILLEUPHORIA_REMOVEDESCRIPT = "Отключить Эйфорию",
+	SKILLENEMY_SLASH = """Slash""", # MISSING TRANSLATION
+	SKILLASSASSINATEEN = """Assassinate""", # MISSING TRANSLATION
 	
 	SKILLMIMIC_ATTACK = "Липкий захват",
 
@@ -2255,6 +2257,7 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	TRAITEFFECTCELENABLESS = "Благословение Селены: +30%% всех сопротивлений.",
 	TRAITEFFECTFREYABLESS = "Благословение Фрейи: +30 бронепробиваемость, +25 точность",
 	TRAITEFFECTCELENACURSE = "Проклятие Селены: -50%% Макс. Здоровья.",
+	TRAITEFFECTHYBRISCURSE = """Hybris' Curse: -50%% DEF""", # MISSING TRANSLATION
 	TRAITEFFECTFREYACURSE = "Проклятие Фрейи: -50 уворота и точности",
 	TRAITEFFECTDATEBONUS = "Прирост верности увеличен на 0,5",
 	TRAITEFFECTRESISTSTATE = "Состояние сопротивления: Не может получить повиновение от положительных способностей. Не может использовать разведывательные навыки. Позитивные действия во время свиданий менее эффективны.",
@@ -2296,6 +2299,7 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	BUFFDESCRIPTCURSE = "",
 	BUFFDESCRIPTENCHANT = "",
 	BUFFDESCRIPTMENTOR = "Прирост опыта увеличен",	
+	BUFFDESCRIPTBISHOP = """Target receive 20%% more Light and Dark damage""", # MISSING TRANSLATION
 	
 	CHALLENGESTRENGTH = "Испытание на силу",
 	CHALLENGEDEXTERITY = "Испытание на ловкость",
@@ -2790,6 +2794,18 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	BODYPARTHAIR_STYLEBRAIDDESCRIPT = "Она зачесана в одну [url=hair][color=aqua]косу[/color][/url]",
 	BODYPARTHAIR_STYLETWINBRAIDSDESCRIPT = "Она зачесана в [url=hair][color=aqua]две косы[/color][/url].",
 	BODYPARTHAIR_STYLEBUNDESCRIPT = "Она завязана в аккуратный [url=hair][color=aqua]пучок[/color][/url].",
+	HAIRCOLOR_GRADIENT = """colorful""", # MISSING TRANSLATION
+	HAIRCOLOR_BROWN = """brown""", # MISSING TRANSLATION
+	HAIRCOLOR_ORANGE = """orange""", # MISSING TRANSLATION
+	HAIRCOLOR_DARK = """dark""", # MISSING TRANSLATION
+	HAIRCOLOR_GREEN = """green""", # MISSING TRANSLATION
+	HAIRCOLOR_CYAN = """cyan""", # MISSING TRANSLATION
+	HAIRCOLOR_PINK = """pink""", # MISSING TRANSLATION
+	HAIRCOLOR_PURPLE = """purple""", # MISSING TRANSLATION
+	HAIRCOLOR_RED = """red""", # MISSING TRANSLATION
+	HAIRCOLOR_WHITE = """white""", # MISSING TRANSLATION
+	HAIRCOLOR_YELLOW = """yellow""", # MISSING TRANSLATION
+	HAIRCOLOR_BLUE = """blue""", # MISSING TRANSLATION
 
 	BODYPARTEYE_COLORDEFAULTDESCRIPT = "[His] глаза [color=aqua][eye_color][/color].",
 	BODYPARTEYE_SHAPENORMALDESCRIPT = ' ',
@@ -3124,6 +3140,7 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 	DIALOGUESHRINECELENA = "Вы наткнулись на религиозное сооружение: небольшое святилище, сделанное из светлого металла. Оно кажется довольно изношенным, но вы можете различить символ луны, выгравированный на одной из его сторон. Несмотря на то, что оно расположено в таком месте, вы все еще чувствуете слабую силу вокруг него.",
 	DIALOGUESHRINEEREBUS = "Вы наткнулись на необычное скопление камней: небольшую неровную пирамиду, в вершине которой имеется внушительное отверстие. Несмотря на ее грубый вид, вы чувствуете вокруг нее слабую силу",
 	DIALOGUESHRINEFREYA = "Вы находите необычную деревянную конструкцию: красивую женскую фигуру. Что особенно выделяется, так это то, что кажется, что она не была вырезана, а скорее выросла в такую форму. Вы чувствуете слабую силу вокруг нее.",
+	DIALOGUESHRINEHYBRIS = """You find an eerie shrine resembling something made by savages. Despite its repulsive appearence, you still feel a faint power around it. """, # MISSING TRANSLATION
 
 
 	DIALOGUESLAVERPURCHASE = "*Покупка*",
@@ -3404,6 +3421,7 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 
 	SWITCHSTATS = "Индивидуальная статистика",
 	SWITCHLIST = "Список персонажей",
+	SWITCHINVENTORY = """witch Grid/String mode""", # MISSING TRANSLATION
 
 	SCENEDAISY_MEET_TEXT = "Прогуливаясь по городу, вы услышали спор. Крупный мужчина кричит на плачущую девушку-кролика, сидящую возле черепков керамики.\n\n\n- Ты неуклюжая тупица! Это уже третий раз. Теперь я продам тебя в бордель, хоть в этом случае ты будешь хоть чем-то полезна.\n\nДевушка, похоже, не подходит для ручного труда, но довольно привлекательна.",
 	SCENEDAISY_MEET_OPTION1 = "*Предложить купить девушку*",
@@ -3527,6 +3545,8 @@ Social skills effect: +10%.""", # MISSING TRANSLATION
 
 	WORKRULEMASTURBATION = "Запретить мастурбацию",
 	WORKRULEMASTURBATIONDESCRIPT = "[name] не будет иметь возможности разрядить себя, что приведет к повышенному стрессу, но увеличит либидо. Утечка повиновения +2, рост похоти +15%",
+	WORKRULELOCK = """Lock Character""", # MISSING TRANSLATION
+	WORKRULELOCKDESCRIPT = """Locks character from showing [him] in the list of tasks and activites which permanently remove or sell [him].""", # MISSING TRANSLATION
 
 	NEWGAMESETTINGINFO = "Эти настройки могут быть изменены в Опциях в любой момент в будущем",
 
@@ -5694,6 +5714,10 @@ AFTER_MINES_CONVOY_15 = """В нескольких сотнях футов от 
 
 После тщательного осмотра вы убеждаетесь, что он должен принадлежать королевской семье, так что пора отнести его Майре.""",
 	LOOKING_FOR_PRINCESS_18 = """Когда вы передаете золото кобольду, он отдает браслет и быстро исчезает с деньгами. После более тщательного осмотра вы убеждаетесь, что он должен принадлежать королевской семье, так что пора отнести его Майре.""",
+	LOOKING_FOR_PRINCESS_OPTION_19_1 = """I've been tasked to find the Princess...""", # MISSING TRANSLATION
+	LOOKING_FOR_PRINCESS_19_1 = """You ask Myr for a way to find the Princess. After a short pause she gives you a short response.
+
+— Get some of her personal belongings. Try her last stand, maybe Duncan's goons haven't scrapped it all yet.""", # MISSING TRANSLATION
 	LOOKING_FOR_PRINCESS_OPTION_19 = """Я достал браслет.""",
 	LOOKING_FOR_PRINCESS_19 = """Вы вручили браслет Амелии, которая внимательно осмотрела его в течение нескольких мгновений.
 
@@ -14169,6 +14193,8 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 	
 	QUEST_MAGES_XARI_TEXT = "Местонахождение Ксари",
 	QUEST_MAGES_XARI_DESC = "",
+	QUEST_REBEL_BACKROOMS = """Rebel Hideout's Backrooms""", # MISSING TRANSLATION
+	QUEST_REBEL_BACKROOMSDESCR = """""", # MISSING TRANSLATION
 	
 	QUEST_MAGES_FRED_TEXT = "Местонахождение Фреда",
 	QUEST_MAGES_FRED_DESC = "",
@@ -14371,6 +14397,7 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 	QUEST_DAISY_ADMIRER_LOCATION1 = "Подойти",
 	
 	QUEST_GRYPHON_CAVE_LOCATION1 = "Подойти к пещере",
+	QUEST_MAE_SEARCH = """Search For Mae""", # MISSING TRANSLATION
 	
 	QUEST_LEON_FOREST_2_1 = "Искать Леона",
 	
@@ -14781,6 +14808,16 @@ ZEPHYRA_COSTUME_3_3 = """Зефира: - Очень жаль, но боюсь, �
 	ALTAR_CHAR_1 = "[name] кладет [his] руку на алтарь. ",
 	ALTAR_CHAR_GOOD = "\n\n{color=green|От алтаря исходит небольшое свечение, которое окутывает [name]. Похоже, [he] получил благословение...}",
 	ALTAR_CHAR_BAD = "\n\nПосле нескольких минут ничего не произошло, и [name] решает идти дальше.",
+	HYBRIS_ALTAR_CHAR = """
+
+{color=green|A small purple low emits from the altar and enshrouds [name]. [His] movements suddenlty slow down and eyes lose focus. It seems you might be able to influene [him] in some way...}""", # MISSING TRANSLATION
+	HYBRIS_ALTAR_CHAR_FAIL = """
+
+{color=red|A small purple low emits from the altar and enshrouds [name], however it does not seem to be strong enough to affect [him]...}""", # MISSING TRANSLATION
+	HYBRIS_ALTAR_CHAR_OPTION1 = """Convert into slavery""", # MISSING TRANSLATION
+	HYBRIS_ALTAR_CHAR_OPTION2 = """Induce loyalty""", # MISSING TRANSLATION
+	HYBRIS_ALTAR_CHAR_RESULT1 = """You persuade [name] that [his] life has always been that of your property. Due to being influenced by altar's dark powers, [he] seemingly accepted it to heart.""", # MISSING TRANSLATION
+	HYBRIS_ALTAR_CHAR_RESULT2 = """You managed to plant some new beliefs into [name], which will make [him] more loyal towards you. """, # MISSING TRANSLATION
 	ALTAR_DESTROY_1 = "[name] разрушает святилище и собирает ресурсы.",
 	ALTAR_DESTROY_2 = "\n\n{color=red|Из остатков алтаря исходит жуткое свечение, окутывающее [name]. Похоже, [he] был проклят...}",
 	FREYA_ITEM_CLOTH = "\n\n{color=green|Подношение исчезает в воздухе, и яркий свет окружает [name]. Похоже, подношение было верным, и [he] восстановил [his] магическую энергию}",

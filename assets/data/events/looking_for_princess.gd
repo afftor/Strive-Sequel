@@ -6,7 +6,7 @@ var data = {
 			text = [{text = "LOOKING_FOR_PRINCESS_1", reqs = []},
 			{text = "LOOKING_FOR_PRINCESS_2", reqs = []},
 			{text = "LOOKING_FOR_PRINCESS_4", reqs = []}],
-			common_effects = [{code = 'material_change', operant = '+', material = 'wood', value = 1}, #TODO add another item
+			common_effects = [{code = 'material_change', operant = '+', material = 'mithril', value = 5}, #TODO add another item
 			{code = 'money_change', operant = '+', value = 760}],
 			options = [ {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_1", reqs = [], dialogue_argument = 3,
@@ -39,8 +39,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'], character = "duncan",
 		text = [{text = "LOOKING_FOR_PRINCESS_5", reqs = []}],
 		options = [ {
-			code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_4", reqs = [], dialogue_argument = 1,
-			bonus_effects = [{code = 'remove_decision', value = 'LookingForPrincessAccess'}]
+			code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_4", reqs = [], dialogue_argument = 1
 		}, {
 			code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_5", reqs = [], dialogue_argument = 2
 		},],
@@ -187,7 +186,7 @@ var data = {
 		common_effects = [{code = 'material_change', operant = '+', material = 'princess_bracelet', value = 1},
 		{code = 'decision', value = 'bracelet_found'}],
 		options = [ {
-			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'update_location'}]
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'remove_quest_location', value = 'quest_rebels_backrooms'}]
 		}],
 	},
 
@@ -199,7 +198,8 @@ var data = {
 			{code = 'material_change', operant = '+', material = 'princess_bracelet', value = 1},
 			{code = 'decision', value = 'bracelet_found'}],
 			options = [ {
-				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'update_location'}]
+				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [
+		{code = 'remove_quest_location', value = 'quest_rebels_backrooms'},]
 			}],
 		}, {
 			image = null, tags = ['dialogue_scene'], reqs = [{type = 'local_counter', name = 'BraceletAttackAttempt', operant = 'gte', value = 2, check = true}],
@@ -208,7 +208,8 @@ var data = {
 			{code = 'material_change', operant = '+', material = 'princess_bracelet', value = 1},
 			{code = 'decision', value = 'bracelet_found'}],
 			options = [ {
-				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'update_location'}]
+				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [
+		{code = 'remove_quest_location', value = 'quest_rebels_backrooms'}]
 			}],
 		}, {
 			image = null, tags = ['dialogue_scene'], reqs = [],
@@ -217,13 +218,14 @@ var data = {
 			{code = 'material_change', operant = '+', material = 'princess_bracelet', value = 1},
 			{code = 'decision', value = 'bracelet_found'}],
 			options = [ {
-				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'update_location'}]
+				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'remove_quest_location', value = 'quest_rebels_backrooms'}]
 			}],
 		}]
 	},
-
+	
+	
 	looking_for_princess_mages = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = "amelia", character2 = "myr",
+		image = null, tags = ['dialogue_scene'], reqs = [], character = "myr", character2 = "amelia",
 		text = [{text = "LOOKING_FOR_PRINCESS_19", reqs = []}],
 		options = [ {
 			code = 'looking_for_princess_mages_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -232,7 +234,7 @@ var data = {
 
 	#TODO Leave to town
 	looking_for_princess_mages_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = "amelia", character2 = "myr",
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = "myr", character2 = "amelia",
 		text = [{text = "LOOKING_FOR_PRINCESS_20", reqs = []}],
 		options = [ {
 			code = 'looking_for_princess_mages_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'

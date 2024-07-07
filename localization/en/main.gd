@@ -1122,7 +1122,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLFIRE_BURST = "Fire Burst",
 	SKILLFIRE_BURSTDESCRIPT = "Deals 50% of MATK as {color=yellow|Fire} damage to all enemies. Reduces target's hit chance by 20 for 3 turns.",
 	SKILLAIR_CUTTER = "Air Cutter",
-	SKILLAIR_CUTTERDESCRIPT = "Deals 85% of ATK as {color=yellow|Air} damage to one target and 2 random enemies. Has 50% chance to cause targets to bleed for 2 turns.",
+	SKILLAIR_CUTTERDESCRIPT = "Deals 85% of ATK as {color=yellow|Air} damage to one target and 70% of ATK to 2 random enemies. Has 50% chance to cause targets to bleed for 2 turns.",
 	SKILLHOLY_LANCE = "Holy Lance",
 	SKILLHOLY_LANCEDESCRIPT = "Deals 100% of ATK as {color=yellow|Light} damage to a row.",
 	SKILLSWIPE = "Swipe",
@@ -1164,7 +1164,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLPROTECTIVE_SHELL = "Protective Shell",
 	SKILLPROTECTIVE_SHELLDESCRIPT = "Buffs Ally column: Reduce incoming damage by 35% for next 3 attacks.",
 	SKILLHAMMERFALL = "Hammerfall",
-	SKILLHAMMERFALLDESCRIPT = "Deals 150% of ATK as {color=yellow|Physical} damage to a target. Stuns target for 2 turns. ",
+	SKILLHAMMERFALLDESCRIPT = "Deals 150% of ATK as {color=yellow|Earth} damage to a target. Stuns target for 2 turns. ",
 	SKILLPURGE = "Purge",
 	SKILLPURGEDESCRIPT = "Removes all negative buffs from target.",
 	SKILLRIGHTEOUS_FIRE = "Righteous Fire",
@@ -1211,6 +1211,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SKILLEUPHORIA_APPLYDESCRIPT = "When activated increases all damage by your lust. Drains your lust every turn.",
 	SKILLEUPHORIA_REMOVE = "Euphoria",
 	SKILLEUPHORIA_REMOVEDESCRIPT = "Disable Euphoria",
+	SKILLENEMY_SLASH = "Slash",
+	SKILLASSASSINATEEN = "Assassinate",
 	
 	
 	SKILLMIMIC_ATTACK = "Sticky Grab",
@@ -1682,7 +1684,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SLAVEPROFDESCRIPT_HEALER = "Specialization: Healer",
 	
 	HEALERSLAVETRAITDESCRIPT = "Healing Efficiency: {color=green|+2%}",
-	MANAGERSLAVETRAITDESCRIPT = "Loyalty from skills: +3%",
+	MANAGERSLAVETRAITDESCRIPT = "Loyalty from skills: {color=green|+3%}",
 	
 	INFOHOLDSHIFT = "Hold shift for details",
 	
@@ -2254,6 +2256,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITEFFECTCELENABLESS = "Celena's Blessing: +30%% All resistances.",
 	TRAITEFFECTFREYABLESS ="Freya's Blessing: +30 Armor Penetration, +25 Hit Rate.",
 	TRAITEFFECTCELENACURSE = "Celena's Curse: -50%% Max. Health.",
+	TRAITEFFECTHYBRISCURSE = "Hybris' Curse: -50%% DEF",
 	TRAITEFFECTFREYACURSE = "Freya's Curse: -50 Evasion and Hit Rate.",
 	TRAITEFFECTDATEBONUS = "Loyalty gain increased by 0.5.",
 	TRAITEFFECTRESISTSTATE = "Resist state: Can't gain obedience from positive abilities. Can't use exploration skills. Positive actions during dates less effective.",
@@ -2295,6 +2298,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	BUFFDESCRIPTCURSE = "",
 	BUFFDESCRIPTENCHANT = "",
 	BUFFDESCRIPTMENTOR = "Experience Gain increased",
+	BUFFDESCRIPTBISHOP = "Target receive 20%% more Light and Dark damage",
 	
 	
 	CHALLENGESTRENGTH = "Strength Challenge",
@@ -2794,7 +2798,20 @@ However, while it might seem that Landowners have nothing but contempt for those
 	BODYPARTHAIR_STYLEBRAIDDESCRIPT = "It is combed into a single [url=hair][color=aqua]braid[/color][/url].",
 	BODYPARTHAIR_STYLETWINBRAIDSDESCRIPT = "It is combed into [url=hair][color=aqua]two braids[/color][/url].",
 	BODYPARTHAIR_STYLEBUNDESCRIPT = "It is tied into a neat [url=hair][color=aqua]bun[/color][/url].",
-
+	
+	HAIRCOLOR_GRADIENT = "colorful",
+	HAIRCOLOR_BROWN = "brown",
+	HAIRCOLOR_ORANGE = "orange",
+	HAIRCOLOR_DARK = "dark",
+	HAIRCOLOR_GREEN = "green",
+	HAIRCOLOR_CYAN = "cyan",
+	HAIRCOLOR_PINK = "pink",
+	HAIRCOLOR_PURPLE = "purple",
+	HAIRCOLOR_RED = "red",
+	HAIRCOLOR_WHITE = "white",
+	HAIRCOLOR_YELLOW = "yellow",
+	HAIRCOLOR_BLUE = "blue",
+	
 	BODYPARTEYE_COLORDEFAULTDESCRIPT = "[His] eyes are [color=aqua][eye_color][/color].",
 	BODYPARTEYE_SHAPENORMALDESCRIPT = ' ',
 	BODYPARTEYE_SHAPESLITDESCRIPT = "[He] has [color=aqua]vertical, animalistic pupils[/color].",
@@ -3102,7 +3119,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUESHRINECHARACTER = "Send [name] to altar",
 	DIALOGUESHRINEDESTROY = "Demolish Shrine",
 	DIALOGUECHESTLOCKPICK = "Attempt to Lockpick",
-	DIALOGUECHESTLOCKPICKFAILURE = "[name] has failed to pick lock's chest and the mechanism has jammed. There's no other option, but to leave it now...",
+	DIALOGUECHESTLOCKPICKFAILURE = "[name] has failed to pick the lock of the chest and the mechanism has jammed. There's no other option, but to leave it now...",
 	DIALOGUELOCKPICKALARMFAILURE = "[name] has failed to pick the lock and caused the alarm to go off. In a few moments enemies charge at your position.",
 	DIALOGUECHESTLOCKPICKBOMBFAILURE = "[name] has triggered the bomb trap mechanism causing an explosion and damaging everyone in the room. The chest is destroyed with its contents...",
 	DIALOGUECHESTLOCKPICKGASFAILURE = "[name] has triggered the trap mechanism. The room fills with poisonous gas and the group quickly retreats from it. However, [name] has still inhaled too much of a gas due to being too close to the chest...",
@@ -3111,7 +3128,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUECHESTEROTICMIMICTRAPPED = "As [name] leans on the chest, [he] quickly realizes that it's not a chest, but a Mimic, which is about to devour [him]. However, the Mimic does not seem to be harming [him], rather seizing its prey and getting under [his] clothes. With no outside help Mimic will surely have its way with [name]...\n\n{color=aqua|[name]} — {random_chat_active|mimic_rape}\n\nLeaving [him] in this state won't likely kill [him], but...",
 	DIALOGUECHESTMIMICTRAPPEDLEAVE = "You decide it's too dangerous to challenge the Mimic and leaving [name] to him is an acceptable price...\n\n{color=aqua|[name]} — {random_chat_active|mimic_leave}",
 	DIALOGUECHESTMIMICEROTICTRAPPEDLEAVE = "You decide it's too dangerous to challenge the Mimic and leaving [name] to him is an acceptable price...\n\n{color=aqua|[name]} — {random_chat_active|mimic_erotic_leave}\n\nAfter about an hour of erotic moans and pleads [name] manages to free [him]self and escape.",
-	DIALOGUECHESTLOCKPICKFREE = "As [name] attempts to pick a lock of the chest, [he] realize it was not locked in first place. ",
+	DIALOGUECHESTLOCKPICKFREE = "As [name] attempts to pick a lock of the chest, [he] realize it was not locked in the first place. ",
 	DIALOGUECHESTLOCKPICKSUCCESS = "[name] has skillfully picked the chest's lock and its contents belong to you now. ",
 
 	DIALOGUECHESTMIMICFIGHT = "Fight Mimic",
@@ -3129,6 +3146,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUESHRINECELENA = "You come across a religious structure: a small shrine made of light metal. It seems to be rather worn, but you can make out a symbol of moon engraved on a side of it. Despite being located at such place, you still feel a faint power around it. ",
 	DIALOGUESHRINEEREBUS = "You come across an unsual assemblence of stones: a small uneven pyramid which has a sizable hole on top. Despite its rough appearance, you can feel a faint power around it.",
 	DIALOGUESHRINEFREYA = "You find an unusual wooden structure: a beautiful female figure. What especially stands out, is it seems it wasn't carved but rather has grown into such shape. You can feel a faint power around it. ",
+	DIALOGUESHRINEHYBRIS = "You find an eerie shrine resembling something made by savages. Despite its repulsive appearence, you still feel a faint power around it. ",
 
 
 	DIALOGUESLAVERPURCHASE = "Purchase",
@@ -3156,7 +3174,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 	DIALOGUEDUNGEONCHEST = "You find a closed treasure chest. ",
 	DIALOGUEDUNGEONARMORY = "You find a locked armory, which might have something useful in it.",
-	DIALOGUEEVENTDUNGEONLOOT = "After making into the last room, you find the main storage with the most prized possessions. ",
+	DIALOGUEEVENTDUNGEONLOOT = "After making it into the last room, you find the main storage with the most prized possessions. ",
 	
 	DIALOUELOCKEDDOOR = "The pass forward ends in a sturdy locked door. It seems to get through it you might need an additional force... or someone who can lockpick.",
 	DIALOUELOCKEDDOOR2 = "The pass forward ends in a sturdy looking wooden door. It seems to get through it you might need an additional force... or try alternative methods.",
@@ -3169,7 +3187,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEBLOCKEDPATHSELECT = "[Strength Challenge] Select character (3 Stamina)",
 	DIALOGUEBLOCKEDPATHBREAK = "Spend time clearing the passage (10 Stamina)",
 	DIALOGUEBLOCKEDPATHPASS = "[name] lifts one of the crushed wooden bars and manages to push it away, clearing the path ahead.",
-	DIALOGUEMAGICBARRIER = "The group comes across a way bloked by a magic barrier. However, a clever individual might be able to find an easy way to breach it. ",
+	DIALOGUEMAGICBARRIER = "The group comes across a way blocked by a magic barrier. However, a clever individual might be able to find an easy way to breach it. ",
 	DIALOGUEMAGICBARRIERSELECT = "[Wisdom Challenge] Select character (3 Stamina)",
 	DIALOGUEMAGICBARRIERBREAK = "Wear down the barrier (10 Stamina)",
 	DIALOGUEMAGICBARRIERPASS = "[name] uses [his] keen mind to find the place with the weakest magical structure and breaches the barrier.",
@@ -3212,7 +3230,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 	DIALOGUEEVENTDUNGEONPRISONER = "You come across a jail room holding a bound [race] [male], likely held by the bandits for ransom or mockery. At your approach [he] tells you [his] name is [name] and begs you for help.",
 	DIALOGUETAKESLAVE = "[Strength Challenge] Capture and enslave",
-	DIALOGUEEVENTDUNGEONPRISONERSENSLAVE = "You release [name] from [his] cell, only to turn [him] into your slave. As [he]'s escorted back to your mansion, your team continues on. ",
+	DIALOGUEEVENTDUNGEONPRISONERSENSLAVE = "You release [name] from [his] cell, only to turn [him] into your slave. Your team continues on. ",
 
 	DIALOGUEEVENTDUNGEONPRISONERFREE1 = "You release and unbind [name], much to [his] relief. As [he] thanks you, [he] shows you a small cache of resources near [his] cell as thanks for [his] rescue. After explaining to [him] how to get out, you are ready to continue on your way.",
 	DIALOGUEEVENTDUNGEONPRISONERFREE2 = "You release and unbind [name], much to [his] relief. As [he] thanks you, [he] shows you a secret item [he] has hidden in [his] cell as thanks for [his] rescue. After explaining to [him] how to get out, you are ready to continue on your way.",
@@ -3226,7 +3244,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEEVENTGOBLINCAPTURE = "[Strength Challenge] Capture",
 	DIALOGUEEVENTGOBLINLEAVE = "Let go",
 	DIALOGUEEVENTGOBLINRECRUITSUCCESS = "[center]{color=green|Success!}[/center]\n— Eh?.. You want me to work for you? Well, I can't refuse someone big and strong like you, can I? I mean, I'll gladly take your offer! This place is a big ass dump after all.\n\nAfter [name] received instructions, [he] quickly disappeared in the way of your mansion.",
-	DIALOGUEEVENTGOBLINRECRUITFAILURE = "[center]{color=red|Failure!}[/center]\n— Eh?.. I... don't think this is a good idea, we don't take betreyals nicely, ya know. Now, if you excuse me...\n\nBefore you can react, the goblin [boy] disappears from sight in one of the tunnels you didn't notice on entrance.",
+	DIALOGUEEVENTGOBLINRECRUITFAILURE = "[center]{color=red|Failure!}[/center]\n— Eh?.. I... don't think this is a good idea, we don't take betrayals nicely, ya know. Now, if you excuse me...\n\nBefore you can react, the goblin [boy] disappears from sight in one of the tunnels you didn't notice on entrance.",
 	DIALOGUEEVENTGOBLINBRINGTOLEADERSUCCESS = "[center]{color=green|Success!}[/center]\n— You actually serious?! I-I guess someone like you can do that... Okay, fine, I'll show you the way, but after this you won't see me anywhere close to it. You got me? \n\nAccording to your agreement, the goblin retells you the layout of the dungeon which you carefully write down. Before you can notice, the goblin is already disapparead from sight.",
 	DIALOGUEEVENTGOBLINBRINGTOLEADERFAILURE = "[center]{color=red|Failure!}[/center]\n— This... This is unreasonable ya know, I'm not out of my mind yet. If you are so willing to die, don't drag me in. \n\nAs [he] was talking [he] moved to the position and darted from the room before you could react. ",
 	DIALOGUEEVENTGOBLINCAPTUREREPLY = "You figure that civilized goblin can be a useful tool or net some profit on the market. Without giving [him] a second chance, you seize [him].\n\n— Hey, what the {^fuck:hell} are you {^doing:thinking}?! Let me go!.. You bastards!",
@@ -3406,6 +3424,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 	SWITCHSTATS = "Individual Stats",
 	SWITCHLIST = "Character List",
+	SWITCHINVENTORY= "Switch Grid/String mode",
 
 	SCENEDAISY_MEET_TEXT = "As you walk around the city, you hear some arguing. A large man yells at a crying young halfkin bunny girl sitting near some pottery shards.\n\n— You clumsy dumbass! This was the third time. I'm selling you to the brothel now. At least this way you will be useful at something.\n\nThe girl does not seem to be suited for manual labor, but is fairly appealing.",
 	SCENEDAISY_MEET_OPTION1 = "*Offer to purchase the girl*",
@@ -3527,6 +3546,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	WORKRULEMASTURBATION = "Forbid Masturbation",
 	WORKRULEMASTURBATIONDESCRIPT = "[name] will not be allowed to relieve [him]self, leading to increased stress but higher libido. Obedience Drain +2, Lust Growth +15%.",
+	
+	WORKRULELOCK = "Lock Character",
+	WORKRULELOCKDESCRIPT = "Locks character from showing [him] in the list of tasks and activites which permanently remove or sell [him].",
 	
 	SERVICEENSLAVE = "Enslave",
 	SERVICEENSLAVEDESCRIPT = "Makes chosen character into a Slave.\n\n[color=aqua]Slaves suffer 10% damage reduction but gain various collection bonuses and but their Loyalty can be increased by punishing skills.[/color]",
@@ -5634,7 +5656,7 @@ You hand makes a hard slap on Aire's cheek which turns red, yet her expression d
 
 
 	FINAL_OPERATION_MESSAGE = """In the morning you receive a messenger who asks you to meet Duncan. It seems fairly urgent and he should have a new mission for you.""",
-	LOOKING_FOR_PRINCESS_1 = """— Many of the rebel forces now lie dead or reside in our prison. Unfortunately we missed the princess in our raid and we've got no leads as to where she may have gone. Our interrogation of the prisoners hasn't turned up much.""",
+	LOOKING_FOR_PRINCESS_1 = """— Many of the rebel forces now lie dead or reside in our prison. Unfortunately we missed the princess in our raid and we've got no leads as to where she may have gone. Our interrogation of the prisoners hasn't turned up much. """,
 	LOOKING_FOR_PRINCESS_2 = """
 
 — Don't think I've forgotten your bravery in the raid. Here, your reward. I trust I can continue to count on you, you've proven yourself to be very capable.""",
@@ -5701,7 +5723,7 @@ After closer inspection you confirm that it must belong to the royal family so i
 	LOOKING_FOR_PRINCESS_OPTION_19 = """I've bought the bracelet""",
 	LOOKING_FOR_PRINCESS_19 = """You've presented the bracelet to Amelia who closely inspected it for a few moments.
 
-{color=yellow|Amelia: — Well, fine work. This certainly belonged to the royal family. The engraving was addressed to the youngest daughter.}
+{color=yellow|Amelia: — Fine work. This certainly belonged to the royal family. The engraving was addressed to the youngest daughter.}
 
 {color=aqua|Myr: — Well then, let's get this over with. }
 
@@ -6338,7 +6360,7 @@ Aire sighed deeply in contemplation.\n\n""",
 
 	ANASTASIA_PERSUASION_2_MARRY1 = "— But tell me, I wanna know, why would you choose me?",
 
-	ANASTASIA_PERSUASION_2_MARRY1_OPTION1 = "[Charm Factor] I've fell in love with first sight.",
+	ANASTASIA_PERSUASION_2_MARRY1_OPTION1 = "[Charm Factor] I've fallen in love with you at first sight.",
 	ANASTASIA_PERSUASION_2_MARRY1_OPTION2 = "[Sex Factor] I can't stop imagining you naked.",
 	ANASTASIA_PERSUASION_2_MARRY1_OPTION3 = "How could anyone pass on a girl like you?",
 	ANASTASIA_PERSUASION_2_MARRY1_OPTION4 = "Well, technically you still are a princess.",
@@ -7903,7 +7925,7 @@ Zephyra leaves the church without giving you a second glance.""",
 	ZEPHYRA_SWORD_3_2_FINISH = "Zephyra nods with her usual smile on her face before leaving you to yourself.",
 	ZEPHYRA_SWORD_3_3_1 = """{color=green|Success}
 
-— I wish I could tell you more, but I barely get anything other than my personal hunch about what's going on. All I'm certain of is that there's an ominous plot being staged beyond our sight, the one threatening everyone. I know it's a weak premise, but I can't do nothing on it. 
+— I wish I could tell you more, but I barely get anything other than my personal hunch about what's going on. All I'm certain of is that there's an ominous plot being staged beyond our sight, the one threatening everyone. I know it's a weak premise, but I can't do nothing about it. 
 
 — And if you want to know why I think my own actions are so important, let's say I'm not just some random girl of unusual descendancy who got granted a god's power and guidance. Well, after all, nothing in this world is truly accidental, don't you think?""",
 	ZEPHYRA_SWORD_3_3_1_OPTION_1 = "Many things in our lives are purely random.",
@@ -9822,7 +9844,7 @@ Cali was shy now realizing what she had just done and nodded now, still blushing
 {color=yellow|Citizen A: — Yeah, but the others simply scattered away and paid me no attention. I couldn't bring myself to call her out...}""",
 	LILIA_PRELUDE2 = "You decide to make a note about this village and perhaps visit it next time you go to elven forests.",
 	
-	LILIA_STARTING_1 = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. After she realizes that she has caught your attention, she dashes at you, completely ignoring any formalities as the releases and rapid torrent of questions.
+	LILIA_STARTING_1 = """As you move through the village with occasional elves and fae observing you, you notice that most residents stay very cautious and turn away once your gaze falls upon them. That is, except for one very curious fairy with long red hair. After she realizes that she has caught your attention, she dashes at you, completely ignoring any formalities as she releases a rapid torrent of questions.
 
  — Hi! I'm Lilia. What's your name? Are you an adventurer? You are so big! We don't get people like you here often. What brought you here?""",
 	LILIA_STARTING_1_OPTION_1 = "Nice to meet you, I'm [name].",
@@ -9997,7 +10019,7 @@ She passes you a small phial filled with fluid and sends you off.""",
 Hours pass now as you sleep restfully there in your chambers, though deep in your rest you feel that your legs are now cold. This thought is at the forefront as you open your eyes to see Lilia start sliding her panties down now, moving her body up onto you.
 
 — [Master], sorry for being a bit selfish but I really miss this...""",
-	LILIA_MANSION_3 = """Not fully awake, you're not sure what to make of this as the small fae starts to grind herself upon you now. It took mere moments of her petals rubbing up and down your shaft to have the girl slick and ready, panting between pleased little groans. You're impressed and then then curious as the little fairy seems not to be fatigued by her ordeal, if anything she seems thirsty. 
+	LILIA_MANSION_3 = """Not fully awake, you're not sure what to make of this as the small fae starts to grind herself upon you now. It took mere moments of her petals rubbing up and down your shaft to have the girl slick and ready, panting between pleased little groans. You're impressed, and then curious as the little fairy seems not to be fatigued by her ordeal. If anything, she seems thirsty. 
 
 A few moments later her noises picked up in pitch as she lifted herself up, sliding her warm body down onto your shaft. A gentle shifting of her hips followed by a pleased purr and the fairy would stop and look at you, cooing as she started to slowly bounce her hips, becoming more aggressive with time. You begin to wonder if you'd overreacted, surely she couldn't have been so ill before and be able to ride you this aggressively.
 
@@ -11332,7 +11354,7 @@ The elf snaps his fingers and the shop quickly erupts in fires over the walls. H
 	ZEPHYRA_DISAPPEARANCE_BOY_8_OPTION_3 = "I'll take my leave.",
 	ZEPHYRA_DISAPPEARANCE_BOY_9_1 = """— He has been known for being elusive. Changing his location whenever it gets discovered by authorities. That's how he's been able to earn this reputation. Kinda bad for you, as I expect him to have more than one base he could be hiding at now.""",
 	ZEPHYRA_DISAPPEARANCE_BOY_9_2 = """— There's nothing people like us can do. I've already informed patrolling guards but, given his experience, there's little hope. Sorry, there's not much that we can do.""",
-	ZEPHYRA_DISAPPEARANCE_BOY_ATTACK = """You grab your weapon and quickly finish off the wounded champion. As he falls dead you realize that his words were very likely true, and you have no clue how to find Zephyra now.""",
+	ZEPHYRA_DISAPPEARANCE_BOY_ATTACK = """You grab your weapon and quickly finish off the wounded champion. As he falls dead you realize that his words were very likely true, and you have no clue how to find Zephyra now. You went to the Mages Guild in attempt to track her but whoever possesed her have been knowledgable of such practices and countered your attempts with their own magic. You haven't been able to find her after that.""",
 	ZEPHYRA_DISAPPEARANCE_BED_1_1 = """You lay down on the bed and close your eyes. For some reason you feel very comfortable, quickly dozing to sleep by the crackling of fire...
 
 That is until you feel a hard slap of something fluffy on your head, returning you to your senses. You look around and can't see anyone but feel a pang of guilt. You have been searching for Zephyra before you ended up here, weren't you?
@@ -11382,7 +11404,7 @@ As Ginny withdraws from the main hall, you are left wondering about the church o
 	ZEPHYRA_DISAPPEARANCE_KETCH_3_3 = """— What a fool you are. It seems you don't care about this girl then. Fine, I'll have your head and take the Bowl by force.
 
 Ketch makes a simple magic gesture in the air and Zephyra disappears in a puff of smoke. His henchmen charge at you.""",
-	ZEPHYRA_DISAPPEARANCE_KETCH_3_END = """After a long fight you finally defeat Ketch's group. Before you are able to get anything out of him he dies from his wounds. With this, your chances of getting Zephyra back reach zero...""",
+	ZEPHYRA_DISAPPEARANCE_KETCH_3_END = """After a long fight you finally defeat Ketch's group. Before you are able to get anything out of him he dies from his wounds. You went to the Mages Guild in attempt to track her but whoever possesed her have been knowledgable of such practices and countered your attempts with their own magic. You haven't been able to find her after that.""",
 	ZEPHYRA_DISAPPEARANCE_KETCH_3_1AND2 = """— So you are an obedient [boy], after all. I guess, I'll excuse your previous attempt to kill me this time, ha-ha. You can have your little pet fox then.
 
 He pushes Zephyra into your direction and orders her to walk forward. She hesitantly does so, as if guilt was weighing her down. As she makes halfway through the field you pass the Bowl to a henchman. As Zephyra finally ends up in your arms you realize that Ketch, along with his people, is no longer there.""",
@@ -13546,7 +13568,7 @@ With that the magic seals and tentacles disappear leaving you alone with Lilith 
 	CALI_TAMING_QUEST_STAGE_17 = "Talk to Cali",
 	
 	ZEPHYRA_BATH_QUEST_NAME = "Zephyra: Half-time nun",
-	ZEPHYRA_BATH_QUEST_SUMMARY = "Seems like Zephyra is sceheming on something...",
+	ZEPHYRA_BATH_QUEST_SUMMARY = "Seems like Zephyra is scheming on something...",
 	ZEPHYRA_BATH_QUEST_STAGE_1 = "Upgrade your mansion to host a bath.",
 	ZEPHYRA_BATH_QUEST_STAGE_2 = "Wait for something to happen.",
 	
@@ -14736,8 +14758,11 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_FIGHTERS_LICH_TEXT = "Lich's Hideout",
 	QUEST_FIGHTERS_LICH_DESC = "By following Duncan's instructions, you find a small hideout which has a traces of undead monsters.",
 	
-	QUEST_MAGES_XARI_TEXT = "Xari's Location",
+	QUEST_MAGES_XARI_TEXT = "Xari's Hut",
 	QUEST_MAGES_XARI_DESC = "",
+	
+	QUEST_REBEL_BACKROOMS = "Rebel Hideout's Backrooms",
+	QUEST_REBEL_BACKROOMSDESCR = "",
 	
 	QUEST_MAGES_FRED_TEXT = "Fred's Location",
 	QUEST_MAGES_FRED_DESC = "",
@@ -14943,7 +14968,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_DAISY_ADMIRER_LOCATION1 = "Approach",
 	
 	QUEST_GRYPHON_CAVE_LOCATION1 = "Approach Cave",
-	
+	QUEST_MAE_SEARCH = "Search For Mae",
 	QUEST_LEON_FOREST_2_1 = "Search For Leon",
 	
 	QUEST_WHITE_STAG_LOCATION1 = "Search For Leon",
@@ -15046,7 +15071,7 @@ Hotkey: 3""",
 	SLOTS_LABEL = "Slots",
 	TYPE_USABLE_LABEL = "Type: Usable",
 	NAME_LABEL = "Name",
-	SLAVERS_LIST = "List of Slaves",
+	SLAVERS_LIST = "Hiree List",
 	EXP_LABEL = "exp",
 	SHOW_INFO_LABEL = "Show Info",
 	UPGRADE_LABEL = "Factor Upgrade",
@@ -15352,6 +15377,14 @@ Hotkey: 3""",
 	ALTAR_CHAR_1 = "[name] puts [his] hand on the altar. ",
 	ALTAR_CHAR_GOOD = "\n\n{color=green|A small glow emits from the altar and enshrouds [name]. It seems [he] has been blessed...}",
 	ALTAR_CHAR_BAD = "\n\nAfter a few minutes nothing still happened and [name] decides to move on.",
+	HYBRIS_ALTAR_CHAR = "\n\n{color=green|A small purple low emits from the altar and enshrouds [name]. [His] movements suddenlty slow down and eyes lose focus. It seems you might be able to influene [him] in some way...}",
+	HYBRIS_ALTAR_CHAR_FAIL = "\n\n{color=red|A small purple low emits from the altar and enshrouds [name], however it does not seem to be strong enough to affect [him]...}",
+	HYBRIS_ALTAR_CHAR_OPTION1 = "Convert into slavery",
+	HYBRIS_ALTAR_CHAR_OPTION2 = "Induce loyalty",
+	HYBRIS_ALTAR_CHAR_RESULT1 = "You persuade [name] that [his] life has always been that of your property. Due to being influenced by altar's dark powers, [he] seemingly accepted it to heart.",
+	HYBRIS_ALTAR_CHAR_RESULT2 = "You managed to plant some new beliefs into [name], which will make [him] more loyal towards you. ",
+	
+	
 	ALTAR_DESTROY_1 = "[name] demolishes the shrine and gathers the resources. ",
 	ALTAR_DESTROY_2 = "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed...}",
 	FREYA_ITEM_CLOTH = "\n\n{color=green|The offering disappears in a thin air and a bright light surrounds [name]. It seems the offer was correct and [he] restored [his] magic energy.}",

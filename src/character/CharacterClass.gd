@@ -75,6 +75,11 @@ func clean_references():
 func base_exp_set(value):
 	xp_module.base_exp = value
 
+
+func swap_alternate_exterior():
+	statlist.swap_alternate_exterior()
+
+
 func get_stat(statname, ref = false):
 	if statname in ['hp', 'mp', 'shield', 'taunt']:
 		return get(statname)
@@ -1223,7 +1228,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			if input_handler.combat_node == null:
 				return !i.check
 			return (input_handler.combat_node.playergroupcounter == 1) == i.check
-
+		'workrule':
+			return check_work_rule(i.value) == i.check
 	return check
 
 func decipher_reqs(reqs, colorcode = false, purestat = false):

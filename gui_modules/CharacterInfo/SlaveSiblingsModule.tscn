@@ -389,8 +389,24 @@ margin_right = 764.0
 margin_bottom = 309.0
 columns = 2
 
+[node name="lock" type="CheckBox" parent="work_rules"]
+margin_right = 411.0
+margin_bottom = 48.0
+custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
+custom_icons/checked_disabled = ExtResource( 9 )
+custom_icons/checked = ExtResource( 17 )
+custom_icons/unchecked = ExtResource( 9 )
+custom_styles/focus = SubResource( 7 )
+text = "WORKRULELOCK"
+
 [node name="ration" type="CheckBox" parent="work_rules"]
-margin_right = 368.0
+margin_left = 415.0
+margin_right = 783.0
 margin_bottom = 48.0
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -405,9 +421,9 @@ custom_styles/focus = SubResource( 7 )
 text = "WORKRULERATION"
 
 [node name="shifts" type="CheckBox" parent="work_rules"]
-margin_left = 372.0
-margin_right = 783.0
-margin_bottom = 48.0
+margin_top = 52.0
+margin_right = 411.0
+margin_bottom = 100.0
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -421,8 +437,9 @@ custom_styles/focus = SubResource( 8 )
 text = "WORKRULESHIFTS"
 
 [node name="constrain" type="CheckBox" parent="work_rules"]
+margin_left = 415.0
 margin_top = 52.0
-margin_right = 368.0
+margin_right = 783.0
 margin_bottom = 100.0
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -437,10 +454,9 @@ custom_styles/focus = SubResource( 9 )
 text = "WORKRULECONSTRAIN"
 
 [node name="luxury" type="CheckBox" parent="work_rules"]
-margin_left = 372.0
-margin_top = 52.0
-margin_right = 783.0
-margin_bottom = 100.0
+margin_top = 104.0
+margin_right = 411.0
+margin_bottom = 152.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -454,8 +470,9 @@ custom_styles/focus = SubResource( 9 )
 text = "UPGRADELUXURY_ROOMS"
 
 [node name="contraceptive" type="CheckBox" parent="work_rules"]
+margin_left = 415.0
 margin_top = 104.0
-margin_right = 368.0
+margin_right = 783.0
 margin_bottom = 152.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -470,10 +487,9 @@ custom_styles/focus = SubResource( 9 )
 text = "WORKRULECONTRACEPTIVE"
 
 [node name="personality_lock" type="CheckBox" parent="work_rules"]
-margin_left = 372.0
-margin_top = 104.0
-margin_right = 783.0
-margin_bottom = 152.0
+margin_top = 156.0
+margin_right = 411.0
+margin_bottom = 204.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -487,8 +503,9 @@ custom_styles/focus = SubResource( 9 )
 text = "WORKRULEPERSONALITY_LOCK"
 
 [node name="nudity" type="CheckBox" parent="work_rules"]
+margin_left = 415.0
 margin_top = 156.0
-margin_right = 368.0
+margin_right = 783.0
 margin_bottom = 204.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -507,10 +524,9 @@ custom_icons/unchecked = ExtResource( 9 )
 text = "WORKRULENUDITY"
 
 [node name="masturbation" type="CheckBox" parent="work_rules"]
-margin_left = 372.0
-margin_top = 156.0
-margin_right = 783.0
-margin_bottom = 204.0
+margin_top = 208.0
+margin_right = 411.0
+margin_bottom = 256.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )

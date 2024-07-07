@@ -621,17 +621,18 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = 'savra',
 		text = [{text = "SAVRA_RITUAL_START", reqs = []}],
+		common_effects = [
+			{code = 'make_quest_location', value = 'quest_ritual_location'}
+			],
 		options = [ {
 			code = 'close', text = "SAVRA_RITUAL_START_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [
 				{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage7'},
 				{code = 'update_city'},
-				{code = 'make_quest_location', value = 'quest_ritual_location'},
 			]
 		}, {
 			code = 'close', text = "SAVRA_RITUAL_START_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
 			bonus_effects = [{code = 'update_city'},
-			{code = 'make_quest_location', value = 'quest_ritual_location'},
 			{code = 'progress_quest', value = 'sword_artifact_quest', stage = 'stage7'},]
 		} ] 
 	},
@@ -655,7 +656,7 @@ var data = {
 	},
 	
 	pre_ritual_2_2 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = 'mae_camp', tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "PRE_RITUAL_2_2", reqs = []}],
 		options = [ {
@@ -664,7 +665,7 @@ var data = {
 	},
 	
 	pre_ritual_3 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = 'mae_camp', tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "PRE_RITUAL_3", reqs = []}],
 		options = [ {
@@ -677,7 +678,7 @@ var data = {
 	},
 	
 	pre_ritual_4_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = 'mae_camp', tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "PRE_RITUAL_4_1_1_300", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'gte', value = 100}]}]},
 		{text = "PRE_RITUAL_4_1_1_500", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'lt', value = 100}]}]}],
@@ -712,14 +713,14 @@ var data = {
 	
 	pre_ritual_4_2 = {
 		variations = [ {
-			image = null, tags = ['dialogue_scene', 'master_translate'],
+			image = 'mae_camp', tags = ['dialogue_scene', 'master_translate'],
 			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = 75}]}],
 			text = [{text = "PRE_RITUAL_4_2_1", reqs = []}],
 			options = [ { 
 				code = 'pre_ritual_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			} ]
 		}, {
-			image = null, tags = ['dialogue_scene', 'master_translate'],
+			image = 'mae_camp', tags = ['dialogue_scene', 'master_translate'],
 			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'lt', value = 75}]}],
 			text = [{text = "PRE_RITUAL_4_2_2", reqs = []}],
 			options = [ {
@@ -832,7 +833,7 @@ var data = {
 	},
 	
 	pre_ritual_7_3_3 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = null, tags = ['dialogue_scene', 'master_translate',"blackscreen_transition_slow"],
 		reqs = [], character = "mae",
 		text = [{text = "PRE_RITUAL_7_3_3", reqs = []}],
 		options = [ {

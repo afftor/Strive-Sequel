@@ -115,7 +115,7 @@ func calculate_dmg():
 #		reduction = max(0, parent.target.get_stat('armor') - parent.armor_p)
 		reduction = parent.target.get_stat('armor')
 		if reduction <= 2 * parent.armor_p:
-			reduction *= 0.33
+			reduction *= 0.25
 		else:
 			reduction -= 1.25 * parent.armor_p
 		reduction = max(0, reduction)

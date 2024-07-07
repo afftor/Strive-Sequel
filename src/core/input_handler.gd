@@ -183,10 +183,12 @@ var globalsettings = {
 	body_folder = 'user://bodies/',
 	#mod_folder = 'user://mods/',
 	
+	
+	grid_inventory = true,
+	
 	no_breed_incompatibility = false,
 	turn_based_time_flow = true,
 
-	guilds_any_race = false, #unused
 
 	autosave = true,
 	autosave_number = 3,
@@ -194,7 +196,8 @@ var globalsettings = {
 	
 	sex_filter = false, # if true skips erotic scenes that doesn't match up with masters gender
 	
-	generate_portraits = true
+	generate_portraits = true,
+	
 
 } setget settings_save
 
@@ -901,7 +904,8 @@ func dialogue_option_selected(option):
 		match gui_controller.dialogue_window_type:
 			1:
 				get_spec_node(self.NODE_DIALOGUE).hide()
-				gui_controller.dialogue_txt = ""
+#				gui_controller.dialogue_txt = ""
+				gui_controller.dialogue_txt = get_spec_node(self.NODE_DIALOGUE_T2).get_node("RichTextLabel").bbcode_text
 				if option.has("close_speed"):
 					get_spec_node(self.NODE_DIALOGUE).wait_for = option.close_speed
 					ResourceScripts.core_animations.CloseAnimation(get_spec_node(self.NODE_DIALOGUE_T2), option.close_speed)
@@ -913,13 +917,14 @@ func dialogue_option_selected(option):
 				#gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE)
 			2:
 				#get_spec_node(self.NODE_DIALOGUE).hide()
+				gui_controller.dialogue_txt = get_spec_node(self.NODE_DIALOGUE).get_node("RichTextLabel").bbcode_text
 				if option.has("open_speed"):
 					get_spec_node(self.NODE_DIALOGUE).wait_for = option.open_speed
 					ResourceScripts.core_animations.OpenAnimation(get_spec_node(self.NODE_DIALOGUE_T2), option.open_speed)
 				else:
 					ResourceScripts.core_animations.OpenAnimation(get_spec_node(self.NODE_DIALOGUE_T2), 1.0)
 				#get_spec_node(self.NODE_DIALOGUE_T2).hide()
-				#gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE_T2)
+				gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE_T2)
 				# gui_controller.dialogue.get_node("Background").show()
 		gui_controller.dialogue.get_node("RichTextLabel").bbcode_text = gui_controller.dialogue_txt
 	else:
@@ -1187,6 +1192,7 @@ func finish_combat():
 	if encounter_win_script != null and !encounter_win_script.empty():
 		globals.common_effects(encounter_win_script.duplicate(true))
 		encounter_win_script = null
+		globals.check_events("finish_combat")
 		return
 	if active_location.has('scriptedevents') && globals.check_events("finish_combat") == true:
 		yield(input_handler, 'EventFinished') #actually not correct, but fail case never fires
@@ -1197,11 +1203,26 @@ func finish_combat():
 
 
 func finish_quest_dungeon(args):
-	interactive_message('finish_quest_dungeon', 'quest_finish_event', {locationname = active_location.name})
+#	interactive_message('finish_quest_dungeon', 'quest_finish_event', {locationname = active_location.name})
+	autocomplete_quest(args.id)
+	globals.unquest_location(active_location.id)
+
 
 func finish_quest_location(args):
-	interactive_message('finish_quest_location', 'quest_finish_event', {locationname = active_location.name})
+#	interactive_message('finish_quest_location', 'quest_finish_event', {locationname = active_location.name})
+	autocomplete_quest(args.id)
 	exploration_node.clear_dungeon_confirm()
+
+
+func autocomplete_quest(q_id):
+	var questdata = ResourceScripts.game_world.get_quest_by_id(q_id)
+	play_animation("repeatable_quest_completed")
+	globals.Reward(questdata)
+	globals.text_log_add("quest", "Quest Complete: " + questdata.name)
+	ResourceScripts.game_world.complete_quest(questdata, 'complete')
+	
+
+
 
 func start_scene(scene):
 	interactive_message(scene.code, 'event_selection', scene.args)
@@ -1591,6 +1612,24 @@ func play_animation_noq(animation, args = {}):
 
 
 const PADDINGS = 25
+#this function did not work properly
+#idk how this was supposed to work - so i remade it into my best assumtion of used math to avoid multiple text rendering in binary-search approach
+
+#func font_size_calculator(label): #, text, font):
+#	var font = label.get_font("font")
+#	var new_font = DynamicFont.new()
+#	new_font.use_filter = true
+#	new_font.font_data = load(font.get_font_data().get_font_path())
+#	new_font.size = font.get_size()
+#	var text_width = new_font.get_string_size(label.get_text()).x
+#	var label_width = label.get_size().x
+#	var diff = (text_width / (label_width * 0.01)) - 100
+#	if text_width >= (label_width - PADDINGS):
+#		var old_size = new_font.get_size()
+#		var new_size = round((old_size - (old_size * 0.01 * (abs(diff) + PADDINGS / 2))))
+#		new_font.size = new_size
+#	return new_font
+
 
 func font_size_calculator(label): #, text, font):
 	var font = label.get_font("font")
@@ -1599,11 +1638,11 @@ func font_size_calculator(label): #, text, font):
 	new_font.font_data = load(font.get_font_data().get_font_path())
 	new_font.size = font.get_size()
 	var text_width = new_font.get_string_size(label.get_text()).x
-	var label_width = label.get_size().x
-	var diff = (text_width / (label_width * 0.01)) - 100
-	if text_width >= (label_width - PADDINGS):
+	var label_text_width = label.get_size().x - PADDINGS
+	var diff = text_width / label_text_width
+	if text_width >= label_text_width:
 		var old_size = new_font.get_size()
-		var new_size = round((old_size - (old_size * 0.01 * (abs(diff) + PADDINGS / 2))))
+		var new_size = round(old_size / diff)
 		new_font.size = new_size
 	return new_font
 

@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.9.0b'
+const gameversion = '0.9.0c'
 
 #time
 signal hour_tick
@@ -226,7 +226,7 @@ func CreateGearItemLoot(item, parts, newname = null):
 	diffdata.boost = int(diffdata.boost)
 	
 	var newitem = Item.new()
-	newitem.CreateGear(item, parts)
+	newitem.CreateGear(item, parts, diffdata)
 	if newname != null:
 		newitem.name = newname
 	return newitem
@@ -511,6 +511,13 @@ func build_attrs_for_char(node, person):
 	connecttexttooltip(node.get_node('race'), "[center]{color=green|"+ races.racelist[person.get_stat('race')].name +"}[/center]\n\n"+ person.show_race_description())
 
 
+func build_desc_for_effect(effect_desc, mul = 1): #stub as it is
+	var res = effect_desc
+	var amount = int(res)
+	res = res.replace(str(amount), str(amount * mul))
+	return res
+
+
 func build_desc_for_bonusstats(bonusstats, mul = 1):
 	var text = ""
 	for i in bonusstats:
@@ -764,11 +771,6 @@ func LoadGame(filename):
 	effects_pool.cleanup()
 	ResourceScripts.game_party.fix_serialization_postload()
 	ResourceScripts.game_party.force_update_portraits()
-
-	if !compare_version(ResourceScripts.game_globals.original_version, '0.5.5b'):
-		ResourceScripts.game_globals.hour = ResourceScripts.game_globals.hour / 6
-		print(ResourceScripts.game_globals.original_version)
-		print("Warning - unsafe loading")
 	
 	if is_instance_valid(gui_controller.mansion):
 		gui_controller.mansion.queue_free()
@@ -785,6 +787,12 @@ func LoadGame(filename):
 	
 	input_handler.SystemMessage("Game Loaded")
 	
+	if !compare_version(ResourceScripts.game_globals.original_version, '0.9.0c'):
+		if globals.valuecheck({type = "active_quest_stage", value = 'princess_search', stage = 'stage2', state = true}):
+			globals.common_effects([{code = "decision", value = "AllowSearch"},{code = 'make_quest_location', value = 'quest_rebels_backrooms'}])
+	if !compare_version(ResourceScripts.game_globals.original_version, '0.9.1'):
+		if !globals.valuecheck({type = 'location_exists', location = 'quest_mages_xari'}):
+			globals.common_effects([{code = 'make_quest_location', value = 'quest_mages_xari'}])
 
 
 func compare_version(v1:String, v2:String):
@@ -893,7 +901,17 @@ func fastif(value, result1, result2):
 
 func return_to_main_menu():
 	input_handler.CurrentScene.queue_free()
+	
+	gui_controller.exploration.queue_free()
+	gui_controller.exploration_city.queue_free()
+	gui_controller.exploration_dungeon.queue_free()
+	
+	gui_controller.exploration = null
+	gui_controller.exploration_city = null
+	gui_controller.exploration_dungeon = null
+	
 	input_handler.ChangeScene('menu')
+	gui_controller.dialogue.hide()
 	ResourceScripts.revert_gamestate()
 	gui_controller.revert_scenes_data()
 #	ResourceScripts.recreate_singletons()
@@ -1025,15 +1043,15 @@ func calculate_travel_time(location1, location2): #2remade to new mechanic
 	var adata2 = ResourceScripts.world_gen.get_area_from_location_code(location2)
 	var ldata2 = ResourceScripts.world_gen.get_location_from_code(location2)
 	
-	if location1 != ResourceScripts.game_world.mansion_location:
-		time += ldata1.travel_time
-	if location2 != ResourceScripts.game_world.mansion_location:
-		time += ldata2.travel_time
+#	if location1 != ResourceScripts.game_world.mansion_location:
+#		time += ldata1.travel_time
+	#if location2 != ResourceScripts.game_world.mansion_location:
+	time += ldata2.travel_time
 	if adata1.code != adata2.code:
 		time += adata1.travel_time + adata2.travel_time
 	
 	time = max(1, time - variables.stable_boost_per_level * ResourceScripts.game_res.upgrades.stables)
-	return {time = time, obed_cost = time * 1.5} #or obed_cost is wrong
+	return {time = time}
 
 func check_recipe_resources(temprecipe):
 	var recipe = Items.recipes[temprecipe.code]
@@ -1434,12 +1452,49 @@ func makerandomgroup(enemygroup, quest = false):
 			combatparty[pos] += "_rare"
 	return combatparty
 
+
 func complete_location(locationid):
 	var location = ResourceScripts.world_gen.get_location_from_code(locationid)
 	if location == null: return
 	var area = ResourceScripts.world_gen.get_area_from_location_code(locationid)
 	return_characters_from_location(locationid)
 	ResourceScripts.game_progress.completed_locations[location.id] = {name = location.name, id = location.id, area = area.code}
+
+
+func Reward(selectedquest):
+	input_handler.PlaySound("questcomplete")
+	for i in selectedquest.rewards:
+		match i.code:
+			'gold':
+				ResourceScripts.game_res.money += round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+			'reputation':
+				ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].reputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+				ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].totalreputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+			'gear':
+				AddItemToInventory(CreateGearItemQuest(i.item, i.itemparts, selectedquest))
+			'gear_static':
+				AddItemToInventory(CreateGearItem(i.item, {}))
+			'material':
+				ResourceScripts.game_res.materials[i.item] += i.value
+			'usable':
+				AddItemToInventory(CreateUsableItem(i.item, i.value))
+	
+	#remake into data system
+	if selectedquest.area == 'plains':
+		for i in ResourceScripts.game_world.areas[selectedquest.area].factions.values():
+			if i.totalreputation >= 200 && ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1':
+				ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage = 'stage1_5'
+				common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
+	if ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1_5':
+		var counter = false
+		for i in ResourceScripts.game_progress.stored_events.timed_events:
+			if i.has('action'):
+				continue
+			if i.code == 'guilds_elections_switch':
+				counter = true
+		if counter == false:
+			common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
+
 
 
 func remove_location(locationid):
@@ -1475,6 +1530,7 @@ func remove_location(locationid):
 func unquest_location(locationid):
 	var location = ResourceScripts.world_gen.get_location_from_code(locationid)
 	if location == null: return
+	location.tags.erase('quest')
 	var area = ResourceScripts.world_gen.get_area_from_location_code(locationid)
 	var ldata = ResourceScripts.game_world.location_links[locationid]
 	if ldata.category != "questlocations":
@@ -1931,10 +1987,10 @@ func common_effects(effects):
 				ResourceScripts.game_progress.completed_quests.append(i.value)
 			'complete_active_location':
 				complete_location(input_handler.active_location.id)
-			'set_completed_quest_location':
-				var data = ResourceScripts.world_gen.get_faction_from_code(i.id)
-				data.completed = true
-				data.active = false
+#			'set_completed_quest_location':
+#				var data = ResourceScripts.world_gen.get_faction_from_code(i.id)
+#				data.completed = true
+#				data.active = false
 			'set_completed_active_location':
 				#input_handler.active_location.progress.level = input_handler.active_location.levels.size()
 #				input_handler.active_location.progress.stage = input_handler.active_location.levels["L" + str(input_handler.active_location.levels.size())].stages
@@ -2314,7 +2370,7 @@ func valuecheck(dict):
 		"area_progress":
 			return ResourceScripts.game_progress.if_has_area_progress(dict.value, dict.operant, dict.area)
 		"decision":
-			#print(dict.value, ResourceScripts.game_progress.decisions.has(dict.value))
+			#print(dict.value, ResourceScripts.game_progress.decisions.has(dict.value) == dict.check)
 			return ResourceScripts.game_progress.decisions.has(dict.value) == dict.check
 		"has_multiple_decisions":
 			var counter = 0
@@ -2418,6 +2474,9 @@ func valuecheck(dict):
 				if i.check_location(input_handler.active_location.id):
 					counter += 1
 			return input_handler.operate(dict.operant, counter, dict.value)
+		
+		'location_exists':
+			return !ResourceScripts.game_world.find_location_by_data({code = dict.location}) == null
 		'location_has_specific_slaves':
 			var counter = 0
 			var location = ResourceScripts.game_world.find_location_by_data({code = dict.location}).location

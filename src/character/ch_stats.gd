@@ -10,6 +10,8 @@ var body_upgrades = []
 var parent: WeakRef = null
 var reported_pregnancy = false
 
+var alternate_exterior = {}
+
 
 func _init():
 	for i in variables.resists_list:
@@ -84,8 +86,34 @@ func fix_serialize():
 		bonuses.erase(st + '_add')
 	if parent.get_ref().is_master():
 		statlist.consent = 100
-	
-	
+
+
+func swap_alternate_exterior(): #only on sex change due to current implementation of recreate method
+	var tmp = {}
+	for st in variables.exterior_stats:
+		tmp[st] = statlist[st]
+	if alternate_exterior.empty():
+		recreate_exterior()
+	else:
+		for st in alternate_exterior:
+			statlist[st] = alternate_exterior[st]
+	alternate_exterior = tmp
+
+
+func recreate_exterior(): #only on sex change
+	var sex = statlist.sex
+	var data = ResourceScripts.descriptions.bodypartsdata.sex[sex].bodychanges
+	for line in data:
+		if !line.code in (variables.exterior_stats + variables.exterior_stats_composite):
+			continue
+		if !parent.get_ref().checkreqs(line.reqs):
+			continue
+		var value = input_handler.weightedrandom(line.value)
+		if line.code in variables.exterior_stats:
+			statlist[line.code] = value
+		else:
+			set_stat(line.code, value)
+
 
 func default_stats_get():
 	return statlist.duplicate()
@@ -332,6 +360,200 @@ func set_stat(statname, value): #for direct access only
 	custom_stats_set(statname, value)
 
 #compat getter - stub
+func get_combined_hairs_data():
+	var res = {
+		hair_color ='',
+		hair_style = '',
+		hair_length = '',
+	}
+	var lenghthes = ['bald', 'ear', 'neck', 'shoulder', 'waist', 'hips' ]
+	var color_parts = ['hair_fringe_color_1', 'hair_back_color_2', 'hair_assist_color_1']
+	var length = 0
+	match statlist.hair_fringe: #adjust as you see fit, length is not reverse-compartible with presets autoset
+	#i hate this conversion to older constants, but we are using those - until descriptions are totally rewritten we need this
+		'braids' :
+			res.hair_style = 'multibraids'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 1))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+		'dopple', 'lion', 'parting', 'default', 'fringe':
+			res.hair_style = 'straight'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 2))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+		'back':
+			res.hair_style = 'straight'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 1))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+		'straight' :
+			res.hair_style = 'straight'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 3))
+					color_parts.push_back('hair_fringe_color_2')
+				'middle':
+					length = int(max(length, 3))
+					color_parts.push_back('hair_fringe_color_2')
+				'short', 'default':
+					length = int(max(length, 2))
+		'irokez':
+			res.hair_style = 'irokez'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 1))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+		'kare':
+			res.hair_style = 'kare'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 2))
+				'middle':
+					length = int(max(length, 2))
+				'short', 'default':
+					length = int(max(length, 2))
+		'lamb':
+			res.hair_style = 'curved'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 2))
+				'middle':
+					length = int(max(length, 2))
+				'short', 'default':
+					length = int(max(length, 2))
+		'slave':
+			res.hair_style = 'shaved'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 1))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+		'undercut':
+			res.hair_style = 'undercut'
+			match statlist.hair_fringe_length:
+				'long':
+					length = int(max(length, 1))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+	
+	match statlist.hair_assist:
+		'braid':
+			res.hair_style = 'braid'
+			match statlist.hair_assist_length:
+				'long':
+					length = int(max(length, 4))
+					color_parts.push_back('hair_assist_color_2')
+				'middle':
+					length = int(max(length, 3))
+					color_parts.push_back('hair_assist_color_2')
+				'short', 'default':
+					length = int(max(length, 3))
+		'bun':
+			res.hair_style = 'bun'
+		'pigtails':
+			res.hair_style = 'pigtails'
+		'ponytail': 
+			res.hair_style = 'ponytail'
+			color_parts.push_back('hair_assist_color_2')
+			match statlist.hair_assist_length:
+				'long':
+					length = int(max(length, 5))
+				'middle':
+					length = int(max(length, 4))
+				'short', 'default':
+					length = int(max(length, 3))
+		'ponytail_2', 'ponytail_3': 
+			res.hair_style = 'ponytail'
+		'twin_tails', 'twin_tails_3':
+			res.hair_style = 'twinbraids'
+			match statlist.hair_assist_length:
+				'long':
+					length = int(max(length, 3))
+					color_parts.push_back('hair_assist_color_2')
+				'middle':
+					length = int(max(length, 3))
+					color_parts.push_back('hair_assist_color_2')
+				'short', 'default':
+					length = int(max(length, 2))
+		'twin_tails_2', 'twin_tails_4', 'twin_tails_5':
+			res.hair_style = 'twinbraids'
+		_:
+			color_parts.erase('hair_assist_color_1')
+	
+	match statlist.hair_back: 
+		'very_long':
+			length = 5
+		'double_tail', 'ponytail_long' :
+			color_parts.push_back('hair_back_color_1')
+			match statlist.hair_back_length:
+				'long':
+					length = int(max(length, 5))
+				'middle':
+					length = int(max(length, 4))
+				'short', 'default':
+					length = int(max(length, 3))
+		'twin_braids':
+			color_parts.push_back('hair_back_color_1')
+			match statlist.hair_back_length:
+				'long':
+					length = int(max(length, 3))
+				'middle':
+					length = int(max(length, 2))
+				'short', 'default':
+					length = int(max(length, 2))
+		'spiral', 'straight', 'wave' :
+			match statlist.hair_back_length:
+				'long':
+					length = int(max(length, 3))
+				'middle':
+					length = int(max(length, 2))
+				'short', 'default':
+					length = int(max(length, 2))
+		'dishevel':
+			match statlist.hair_back_length:
+				'long':
+					length = int(max(length, 2))
+				'middle':
+					length = int(max(length, 1))
+				'short', 'default':
+					length = int(max(length, 1))
+		_:
+			color_parts.erase('hair_back_color_2')
+	var colors = []
+	for st in color_parts:
+		var tcolor = statlist[st].split('_')[0]
+		if !colors.has(tcolor):
+			colors.push_back(tcolor)
+	if colors.size() > 1: #this is NOT reverse-compatible with preset colors autoassign, auburn preset set colors to different bases. and most base colors do not have translation records. feel free to fix this
+		res.hair_color = 'gradient'
+	else:
+		res.hair_color = colors[0] 
+	
+	res.hair_length = lenghthes[length]
+	
+	return res
+
+
+
 func get_hairs_data():
 	var res = {
 		hair_base = 'dopple', 
@@ -643,6 +865,8 @@ func get_stat(statname, ref = false):
 		else:
 			return get_stat('hair_base_color_1')
 	if statname.begins_with('hair_'): #compart actions, null values should not be returned
+		if statname in ['hair_color', 'hair_style', 'hair_length']:
+			return get_combined_hairs_data()[statname]
 		if statlist[statname] != "":
 			return statlist[statname]
 		else:
@@ -1248,11 +1472,13 @@ func fill_masternoun():
 func process_chardata(chardata, unique = false):
 	if unique: statlist.unique = chardata.code
 	for i in chardata:
-		if !(i in ['code','class_category', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality']):
+		if !(i in ['code','class_category', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'hair_color', 'hair_style', 'hair_length']):
 			if typeof(chardata[i]) == TYPE_ARRAY or typeof(chardata[i]) == TYPE_DICTIONARY:
 				statlist[i] = chardata[i].duplicate(true)
 			else:
 				statlist[i] = chardata[i]
+		elif i in ['hair_color', 'hair_style', 'hair_length']:
+			set_stat(i, chardata[i])
 	if chardata.has('slave_class'): set_slave_category(chardata.slave_class)
 	if chardata.has("sex_traits"):
 		for i in chardata.sex_traits:
@@ -1860,7 +2086,7 @@ func translate(text):
 	text = text.replace("[age]", statlist.age.capitalize())
 	text = text.replace("[male]", sex_nouns[statlist.sex])
 	text = text.replace("[eye_color]", statlist.eye_color)
-	text = text.replace("[hair_color]", statlist.hair_color)
+	text = text.replace("[hair_color]", tr("HAIRCOLOR_" + get_stat('hair_color').to_upper()))
 	text = text.replace("[man]", globals.fastif(statlist.sex == 'male', tr('PRONOUNMAN'), tr("PRONOUNMANF")))
 	text = text.replace("[guy]", globals.fastif(statlist.sex == 'male', tr('PRONOUNGUY'), tr("PRONOUNGUYF")))
 	text = text.replace("[husband]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHUSBAND'), tr("PRONOUNHUSBANDF")))
@@ -2024,10 +2250,11 @@ func change_personality_stats(stat, init_value, communicative = false):
 #	value = value*1+rand_range(0.2,-0.2)
 	value *= 1 + rand_range(0.2,-0.2)
 	
-	var backfire_chance = variables.factor_personality_changes[prim_stat][0]
+	#if character's factor chance is lower than check, then character goes opposite direction on personality grid
+	var backfire_chance = 100 - variables.factor_personality_changes[prim_stat][0]
 	if communicative:
 		backfire_chance *= 0.5
-	if backfire_chance <= randf() * 100: #if character's factor chance is lower than check, then character goes opposite direction on personality grid
+	if randf() * 100 <= backfire_chance: 
 		value = -value
 		rebel = true
 	
