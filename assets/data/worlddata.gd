@@ -18,7 +18,7 @@ var lands = {
 		start_locations_number = 2, #will generate this number of smaller locations like dungeons
 		locations = {}, #array to fill up with settlements and dungeons
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'], #array of allowed locations to generate
-		starting_locations = ['dungeon_bandit_den','dungeon_goblin_cave'],#['dungeon_bandit_fort'],
+		starting_locations = ['dungeon_bandit_den','dungeon_goblin_cave', 'dungeon_infinite_example'],#['dungeon_bandit_fort'],
 		gatherable_resources = [],
 		guilds = ['workers','servants','fighters','mages','slavemarket','exotic_slave_trader'],
 		events = [],
@@ -2486,6 +2486,37 @@ var fixed_location_options = { #override serialized data
 
 var fixed_location_events = {
 	
+}
+
+
+var infinite_dungeon_events = {
+	test_event_1 = {
+		event = 'cali_intro',
+		reqs = [], #{type = 'dialogue_seen', check = false, value = 'CALI_INTRO'}],
+		#no reqs for testing purpose, not correct for real use
+		dungeons = ["dungeon_infinite_example"],
+		min_level = 2,
+		chance = 0.5,
+		type = 'enter'
+	},
+	test_event_2 = {
+		event = 'cali_intro',
+		reqs = [], #{type = 'dialogue_seen', check = false, value = 'CALI_INTRO'}],
+		#no reqs for testing purpose, not correct for real use
+		dungeons = ["dungeon_infinite_example"],
+		min_level = 3,
+		chance = 0.5,
+		type = 'subroom'
+	},
+	test_event_3 = {
+		event = 'cali_intro',
+		reqs = [], #{type = 'dialogue_seen', check = false, value = 'CALI_INTRO'}],
+		#no reqs for testing purpose, not correct for real use
+		dungeons = ["dungeon_infinite_example"],
+		min_level = 4,
+		chance = 0.5,
+		type = 'finish'
+	},
 }
 
 

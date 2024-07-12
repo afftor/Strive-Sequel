@@ -1099,8 +1099,12 @@ func buildenemygroup(enemygroup):
 			tchar.tags.push_back("miniboss")
 			tchar.add_trait('miniboss')
 		
-		for stat in ['hpmax', 'atk', 'matk', 'hitrate', 'armor', 'xpreward']:
+		for stat in ['hpmax', 'xpreward']:
 			tchar.mul_stat(stat, combat_data.enemy_stats_mod)
+		for stat in ['atk', 'matk', 'armor']:
+			tchar.mul_stat(stat, min(combat_data.enemy_stats_mod, variables.survival_cap_main))
+		for stat in ['hitrate', 'evasion']:
+			tchar.mul_stat(stat, min(combat_data.enemy_stats_mod, variables.survival_cap_secondary))
 		tchar.hp = tchar.get_stat("hpmax") * combat_data.hpmod
 		tchar.mp = tchar.get_stat("mpmax")
 		tchar.add_trait('core_trait')
