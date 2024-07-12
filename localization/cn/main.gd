@@ -2455,6 +2455,8 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	
 	PROFFREYAS_PRIESTESS = "Former Freya's Priestess 前弗雷娅的女祭司",
 	PROFFREYAS_PRIESTESSDESCRIPT = "Once a high priestess of elves, now this title hold more bluster than power.\n曾经是精灵的高级女祭司，现在这个头衔更多的是虚张声势而非权力。",
+	PROFASHMEDAI_CHAMPION = """Ashmedai Champion""", # MISSING TRANSLATION
+	PROFASHMEDAI_CHAMPIONDESCRIPT = """The new chosen to carry out depraved acts in its name.""", # MISSING TRANSLATION
 	PROFDEATHKNIGHT = """Death Knight""", # MISSING TRANSLATION
 	PROFDEATHKNIGHTDESCRIPT = """Sworn to their nature or master, undead warriors are able to grow stronger the more they slaughter.""", # MISSING TRANSLATION
 	PROFWARLOCK = """Warlock""", # MISSING TRANSLATION
@@ -10084,6 +10086,7 @@ You two stay like this for a few moments, her panting and softly moaning as you 
 	CALI_ACT2_WORKERS_6_1 = """正如他所承诺的，利姆罗夫的快递员在约定的日子一大早就到了你家。看了看包裹，你检查了一下简单的项圈。虽然它的设计没有太多装饰，但工艺质量很好。至少它应该很舒适。""",
 #	CALI_ACT2_WORKERS_6_2 = """正如他所承诺的那样，利姆罗夫的快递员在约定的日子一大早就到达了你的家。看着包裹，你仔细检查精致的项圈。利姆罗夫用这个项圈创造了一个杰作。曲线和细节都是完美无瑕的，每一个都经过了精心的处理。他创作的核心，大宝石，被打磨成镜面般的反射，然后向你闪闪发光。""",
 	CALI_ACT2_WORKERS_6_2 = """正如他所承诺的那样，利姆罗夫的快递员在约定的日子一大早就到了你家。翻看包裹，你发现精致的衣领。利姆罗夫用这个衣领创造了一个杰作。曲线和细节都完美无瑕，每一个都经过精心处理。""",
+	LIMNROV_OPTION_GUILD = """Visit Limnrov""", # MISSING TRANSLATION
 	CALI_ACT2_LIMNROV = """利姆罗夫: — 我有两个设计建议。前者是你的标准设计，但外面的雕刻不会让人怀疑谁是你奴隶的主人。然而，后者，我一直渴望创作一个更精致的作品，一定会引起一些人的注意。""",
 	CALI_ACT2_SIMPLE_COLLAR_1 = """第二天早上你拜访卡莉时。这个女孩很安静，但盯着你看时有点厌恶。
 
@@ -12962,6 +12965,23 @@ You hold Cali close and kiss her, spending the rest of the night close together 
 	AMELIA_MAIN_STAGE_9 = "参加对阿米莉亚的审判",
 	AMELIA_MAIN_STAGE_10 = "从仆人行会那里购买阿米莉亚",
 	AMELIA_MAIN_STAGE_11 = "在你的豪宅里与阿米莉亚交谈",
+	LILIA_FINALE_QUEST_NAME = """""", # MISSING TRANSLATION
+	LILIA_FINALE_QUEST_SUMMARY = """""", # MISSING TRANSLATION
+	LILIA_FINALE_QUEST_STAGE_1 = """""", # MISSING TRANSLATION
+	LILIA_FINALE_QUEST_STAGE_2 = """""", # MISSING TRANSLATION
+	LILIA_FINALE_QUEST_STAGE_3 = """""", # MISSING TRANSLATION
+	LILIA_FINALE_QUEST_STAGE_4 = """""", # MISSING TRANSLATION
+	LILIA_FINALE_QUEST_STAGE_5 = """""", # MISSING TRANSLATION
+	LILIA_FINALE_QUEST_STAGE_6 = """""", # MISSING TRANSLATION
+	LILIA_FINALE_QUEST_STAGE_7 = """""", # MISSING TRANSLATION
+	LILIA_FINALE_QUEST_STAGE_8 = """""", # MISSING TRANSLATION
+	LILIA_FINALE_QUEST_STAGE_9 = """""", # MISSING TRANSLATION
+	LILIA_FINALE_QUEST_STAGE_10 = """""", # MISSING TRANSLATION
+	LILIA_FINALE_QUEST_STAGE_11 = """""", # MISSING TRANSLATION
+	LILIA_FINALE_QUEST_STAGE_12 = """""", # MISSING TRANSLATION
+	LILIA_FINALE_QUEST_STAGE_13 = """""", # MISSING TRANSLATION
+	LILIA_FINALE_QUEST_STAGE_14 = """""", # MISSING TRANSLATION
+	LILIA_FINALE_QUEST_STAGE_15 = """""", # MISSING TRANSLATION
 	
 	DIALOGUEANAINITIATELP = "阿纳斯塔西娅害羞地向你打招呼。她似乎真的不习惯这个新角色。\n\n— 你-你好, [Master]... 你今天过得怎么样?",
 	DIALOGUEANAINITIATELN = "阿纳斯塔西娅带着冷酷的表情来看你。也许你必须努力激发她的动力。她保持沉默，对你无话可说。\n\n— ......",
@@ -12988,6 +13008,7 @@ You hold Cali close and kiss her, spending the rest of the night close together 
 	DIALOGUELILIAINITIATEH = "小仙精在你召唤她的时候不耐烦地扑向你。 \n\n— 没有你，我太孤独了, [Master]! 你能让我高兴起来吗？",
 	DIALOGUELILIAINITIATEM = "你生活奢侈的妻子莉莉娅热情地问候你，几乎没有掩饰她的兴奋。\n\n— [Master], 你一直在想念莉莉娅？我们上床睡觉吧！",
 	DIALOGUEJEANINITIATEM = "",
+	DIALOGUELILITHINIT = """""", # MISSING TRANSLATION
 	DIALOGUEZEPHYRA_UNDERWEAR = """In your hands you hold a piece of clothing which was surrendered to you by Zephyra. Pondering on what actual benefit it can have, one mind is stuck in your mind... What if you wear it on your head? Surely, this is a terrible idea...""", # MISSING TRANSLATION
 	DIALOGUEZEPHYRA_UNDERWEAROPTION = """Do it""", # MISSING TRANSLATION
 	DIALOGUEZEPHYRA_UNDERWEAR2 = """Despite your best judgement, you put a girl's underwear onto your head. You feel nothing like you would expect but the sudden revelation is abrupted by the owner entering your room just at this moment. 
@@ -14218,6 +14239,12 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	QUEST_ANCIENT_JUNGLE_LOCATION_TEXT = "古代遗迹",
 	QUEST_ANCIENT_JUNGLE_LOCATION_DESC = "",
+	QUEST_ELVEN_ANCIENT_JUNGLE_LOCATION_TEXT = """""", # MISSING TRANSLATION
+	QUEST_ELVEN_ANCIENT_JUNGLE_LOCATION_DESC = """""", # MISSING TRANSLATION
+	QUEST_LILIA_DUNGEON_GROVE_TEXT = """""", # MISSING TRANSLATION
+	QUEST_LILIA_DUNGEON_GROVE_DESC = """""", # MISSING TRANSLATION
+	QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_TEXT = """""", # MISSING TRANSLATION
+	QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_DESC = """""", # MISSING TRANSLATION
 	
 	#eventscrits
 	
@@ -14288,6 +14315,8 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	SETTLEMENT_FOREST1_1 = "检查周围环境",
 	SETTLEMENT_FOREST1_2 = "检查周围环境",
+	SETTLEMENT_FOREST2_1 = """Address Lilia""", # MISSING TRANSLATION
+	SETTLEMENT_FOREST2_2 = """Address Lilith""", # MISSING TRANSLATION
 	
 	QUEST_FIGHTERS_LICH1 = "继续",
 	
@@ -14296,6 +14325,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_MAGES_XARI3 = "输入",
 	QUEST_MAGES_XARI4 = "找扎里",
 	QUEST_MAGES_XARI5 = "找扎里",
+	QUEST_MAGES_XARI6 = """Ask about Lilith""", # MISSING TRANSLATION
 	
 	QUEST_MAGES_FRED1 = "搜索弗雷德",
 	

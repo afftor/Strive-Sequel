@@ -932,6 +932,22 @@ var professions = {
 		conflict_classes = [],
 	},
 	
+	ashmedai_champion = {
+		code = 'ashmedai_champion',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/ashmedai_champion.png"),
+		tags = [],
+		categories = ['combat','magic','social'],
+		showupreqs = [{code = 'disabled', check = true}],
+		reqs = [{code = 'cant_spawn_naturally'}],
+		statchanges = {charm_bonus = 10, sexuals_bonus = 10, chg_persuasion_max = 1},
+		traits = ['basic_spells','advanced_spells'],
+		skills = [],
+		combatskills = [],
+		conflict_classes = [],
+	},
+	
 	spouse = {
 		code = 'spouse',
 		name = '',

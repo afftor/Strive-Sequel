@@ -2443,6 +2443,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	PROFFREYAS_PRIESTESS = "Former Freya's Priestess",
 	PROFFREYAS_PRIESTESSDESCRIPT = "Once a high priestess of elves, now this title hold more bluster than power.",
+	PROFASHMEDAI_CHAMPION = "Ashmedai Champion",
+	PROFASHMEDAI_CHAMPIONDESCRIPT = "The new chosen to carry out depraved acts in its name.",
 	
 	
 	PROFDEATHKNIGHT = "Death Knight",
@@ -13645,8 +13647,8 @@ With that the magic seals and tentacles disappear leaving you alone with Lilith 
 	DIALOGUELILIAINITIATEL = "Lilia appears before you cheerfully smiling.\n\n— [Master]? Whatcha doin'? Did you came to play with me?",
 	DIALOGUELILIAINITIATEH = "The small fairy impatiently jumps at you as you summon her. \n\n— It's been so lonely without you, [Master]! Are you gonna cheer me up?",
 	DIALOGUELILIAINITIATEM = "Your extravagant wife, Lilia, passionately greets you barely hiding her excitement.\n\n— [Master], you've been missing Lilia? Let's go to bed already!",
-	DIALOGUEJEANINITIATEM = "",
-	DIALOGUELILITHINIT = "",
+	DIALOGUEJEANINITIATEM = "— Yes? Don't just give me that oogling look, if you don't have anything serious I have business to do.",
+	DIALOGUELILITHINIT = "— [Master], you wanna play? I'm always ready to play.",
 	
 	DIALOGUEZEPHYRA_UNDERWEAR = "In your hands you hold a piece of clothing which was surrendered to you by Zephyra. Pondering on what actual benefit it can have, one mind is stuck in your mind... What if you wear it on your head? Surely, this is a terrible idea...",
 	DIALOGUEZEPHYRA_UNDERWEAROPTION = "Do it",
@@ -14881,13 +14883,13 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_ANCIENT_JUNGLE_LOCATION_TEXT = "Ancient Ruins",
 	QUEST_ANCIENT_JUNGLE_LOCATION_DESC = "",
 	
-	QUEST_ELVEN_ANCIENT_JUNGLE_LOCATION_TEXT = "",
+	QUEST_ELVEN_ANCIENT_JUNGLE_LOCATION_TEXT = "Old Weathered Temple",
 	QUEST_ELVEN_ANCIENT_JUNGLE_LOCATION_DESC = "",
 
-	QUEST_LILIA_DUNGEON_GROVE_TEXT = "",
+	QUEST_LILIA_DUNGEON_GROVE_TEXT = "Abandoned Grove Hideout",
 	QUEST_LILIA_DUNGEON_GROVE_DESC = "",
 
-	QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_TEXT = "",
+	QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_TEXT = "Hidden Grove Abandonment",
 	QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_DESC = "",
 
 	

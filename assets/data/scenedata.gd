@@ -2369,7 +2369,8 @@ var quests = {
 			stage11 = {code = 'stage11', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_11'}, 
 		}
 	},
-	
+	LILIA_FINALE_QUEST_STAGE_1 = "Visit Workers Guild",
+	LILIA_FINALE_QUEST_STAGE_2 = "",
 	lilia_finale_quest = {
 		code = 'lilia_finale_quest',
 		summary = "LILIA_FINALE_QUEST_SUMMARY",

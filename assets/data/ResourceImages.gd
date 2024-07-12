@@ -361,7 +361,14 @@ var scenes = {
 	zephyra_forest = load("res://assets/images/scenes/zephyra_forest.png"),
 	zephyra_forest_shining = load("res://assets/images/scenes/zephyra_forest_shining.png"),
 	zephyra_kiss = load("res://assets/images/scenes/zephyra_kiss.png"),
-
+	zephyra_painting = load("res://assets/images/scenes/Zephyra_painting.png"),
+	
+	lilia_gem = load("res://assets/images/scenes/lilia_gem.png"),
+	lilia_farewell= load("res://assets/images/scenes/lilia_farewell.png"),
+	lilia_unicorn = load("res://assets/images/scenes/lilia_unicorn.png"),
+	lilith_angry = load("res://assets/images/scenes/lilith_angry.png"),
+	
+	
 	celena_shrine = load("res://assets/images/scenes/celena_shrine.png"),
 	freya_shrine = load("res://assets/images/scenes/freya_shrine.png"),
 	erebus_shrine = load("res://assets/images/scenes/erebus_shrine.png"),

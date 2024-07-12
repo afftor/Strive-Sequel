@@ -1,6 +1,6 @@
 var data = {
 	zephyra_painting_1 = {
-		image = null, tags = ['dialogue_scene'], character = "zephyra",
+		image = 'zephyra_painting', tags = ['dialogue_scene'],
 		reqs = [{type = 'unique_character_checks', name = 'zephyra', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'}, {type = 'dialogue_seen', check = false, value = 'ZEPHYRA_PAINTING_1'}],
 		text = [{text = "ZEPHYRA_PAINTING_1", reqs = []}],
 		options = [ {
@@ -13,7 +13,7 @@ var data = {
 	},
 	
 	zephyra_painting_2 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], character = "zephyra",
+		image = 'zephyra_painting', tags = ['dialogue_scene', 'master_translate'], 
 		reqs = [],
 		text = [{text = "ZEPHYRA_PAINTING_2_1", reqs = [], previous_dialogue_option = 1},
 		{text = "ZEPHYRA_PAINTING_2_2", reqs = [], previous_dialogue_option = 2},
@@ -30,7 +30,7 @@ var data = {
 	},
 	
 	zephyra_painting_3 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], character = "zephyra",
+		image = 'zephyra_painting', tags = ['dialogue_scene', 'master_translate'],
 		reqs = [],
 		text = [{text = "ZEPHYRA_PAINTING_3_1", reqs = [], previous_dialogue_option = 1},
 		{text = "ZEPHYRA_PAINTING_3_2", reqs = [], previous_dialogue_option = 2},
