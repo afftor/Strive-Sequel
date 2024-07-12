@@ -7,6 +7,8 @@ onready var res_container = $LocationGui/Resources/Materials
 onready var captured_panel = $LocationGui/AvailableSlaves
 onready var map_panel = $LocationGui/MapPanel
 onready var map_container = $LocationGui/MapPanel/CanvasLayer
+onready var level_container = $LocationGui/Panel/ScrollContainer/GridContainer
+onready var level_panel = $LocationGui/Panel
 
 #var active_area
 var active_location
@@ -137,16 +139,20 @@ func _ready():
 	$LocationGui/Resources/Forget.connect("pressed", self, "forget_location")
 	$LocationGui/PresentedSlavesPanel/ReturnAll.connect("pressed", self, "return_all_to_mansion")
 	$JournalButton.connect("pressed", self, "open_journal")
+	
 	map_panel.get_node("res").connect("toggled", self, 'toggle_res')
 	map_panel.get_node("slaves").connect("toggled", self, 'toggle_slaves')
+	map_panel.get_node("levels").connect("toggled", self, 'toggle_levels')
 	globals.connecttexttooltip(map_panel.get_node("res"), "Show/hide local resources")
 	globals.connecttexttooltip(map_panel.get_node("slaves"), "Show/hide captured characters")
+	globals.connecttexttooltip(map_panel.get_node("levels"), "Select unlocked level")
 	gui_controller.win_btn_connections_handler(true, $MansionJournalModule, $JournalButton)
 	gui_controller.windows_opened.clear()
 	globals.connect("hour_tick", self, "build_location_group")
 	input_handler.connect("EventFinished", self, 'build_location_group')
 	input_handler.connect("LootGathered", self, 'build_location_group')
 	input_handler.connect("LocationSlavesUpdate", self, 'build_location_group')
+	input_handler.connect("survival_advance", self, 'build_levels')
 	globals.connecttexttooltip($LocationGui/MapPanel/Stamina, tr("TOOLTIPSTAMINADUNGEON"))
 	
 
@@ -200,7 +206,16 @@ func open_location(data): #2fix
 #	current_level = 0
 	build_level()
 	update_stamina()
-	var dungeon = active_location.dungeon[active_location.current_level]
+	var dungeon
+	if !data.tags.has('infinite'):
+		map_panel.get_node("levels").visible = false
+		dungeon = active_location.dungeon[active_location.current_level]
+	else:
+		dungeon = active_location.dungeon[0]
+		input_handler.emit_signal("survival_advance")
+		map_panel.get_node("levels").visible = true
+		map_panel.get_node("levels").pressed = false
+	toggle_levels(false)
 	var tdata = ResourceScripts.game_world.dungeons[dungeon]
 	move_to_room(tdata.first_room)
 #	scout_room(tdata.first_room, get_scouting_range(), true)
@@ -241,7 +256,9 @@ func open_location(data): #2fix
 func build_location_description():
 	var text = ''
 	text = active_location.name
-	if active_location.tags.has("quest") != true:
+	if active_location.tags.has("infinite"):
+		text += " (" + tr('INFINITE') + ")"
+	elif !active_location.tags.has("quest"):
 		text += " (" + tr(active_location.classname) + ")"
 	#		+ ")\n"
 	text += " - "
@@ -903,6 +920,22 @@ func toggle_res(value):
 func toggle_slaves(value):
 	captured_panel.visible = value
 
+
+func toggle_levels(value):
+	level_panel.visible = value
+
+
+func build_levels():
+	if !active_location.tags.has('infinite'):
+		return
+	input_handler.ClearContainer(level_container)
+	for i in range(active_location.max_level + 1):
+		var b = input_handler.DuplicateContainerTemplate(level_container)
+		b.text = str(i + 1)
+		b.disabled = (active_location.current_level == i)
+		b.connect('pressed', self, 'advance_survival', [i]) #currently no warning
+
+
 #map movement
 #var current_level = 0
 var selected_room = null #combat cash
@@ -911,7 +944,11 @@ const default_map_pos = Vector2(630, 500)
 const default_room_size = Vector2(270, 270)
 
 func build_level():
-	var dungeon = active_location.dungeon[active_location.current_level]
+	var dungeon
+	if !active_location.tags.has('infinite'):
+		dungeon = active_location.dungeon[active_location.current_level]
+	else:
+		dungeon = active_location.dungeon[0]
 	var data = ResourceScripts.game_world.dungeons[dungeon]
 	
 	input_handler.ClearContainer(map_container, ['room'])
@@ -945,7 +982,7 @@ func can_enter_room(room_id):
 		 return true
 	if data.type in ['ladder_up']:
 		return true
-	if data.status == 'scouted' and data.type == 'ladder_down':
+	if data.status == 'scouted' and data.type in ['ladder_down', 'ladder_down_survival']:
 			return true
 	for i in data.neighbours.values():
 		if i == null:
@@ -955,7 +992,7 @@ func can_enter_room(room_id):
 		 return true
 		if t_data.type in ['ladder_up']:
 			return true
-		if t_data.status == 'scouted' and t_data.type == 'ladder_down':
+		if t_data.status == 'scouted' and t_data.type in ['ladder_down', 'ladder_down_survival']:
 			return true
 	return false
 
@@ -976,7 +1013,7 @@ func room_pressed(room_id):
 	var data = ResourceScripts.game_world.rooms[room_id]
 	if data.type == 'empty':
 		return
-	if !(data.type in ['ladder_up', 'ladder_down']):
+	if !(data.type in ['ladder_up', 'ladder_down', 'ladder_down_survival']):
 		if get_current_stamina() < data.stamina_cost:
 			input_handler.SystemMessage("No stamina")
 			return
@@ -1003,7 +1040,7 @@ func scout_room(room_id, s_range, stay = false):
 		if s_range == get_scouting_range():
 			move_to_room(room_id)
 		else:
-			if data.type == 'ladder_down':
+			if data.type in ['ladder_down', 'ladder_down_survival']:
 				s_range += 1
 			for room in data.neighbours.values():
 				if room != null:
@@ -1049,6 +1086,23 @@ func scout_room(room_id, s_range, stay = false):
 			build_level()
 #			input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).turnoff()
 #			input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
+		'ladder_down_survival':
+			move_to_room(room_id) #or not
+			input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'advance_survival', "EXPLOREADVANCEINFINIT"])
+
+
+func advance_survival(lv = null):
+	if lv == null:
+		lv = active_location.current_level + 1
+	ResourceScripts.world_gen.set_level_infinite(active_location, lv)
+	input_handler.emit_signal("survival_advance")
+	build_level()
+	$LocationGui/MapPanel/BgImage.texture = images.backgrounds[active_location.background]
+	var dungeon = active_location.dungeon[0]
+	var tdata = ResourceScripts.game_world.dungeons[dungeon]
+	scout_room(tdata.first_room, get_scouting_range(), true)
+	map_panel.get_node("levels").pressed = false
+	toggle_levels(false)
 
 
 func obscure_room(room_id):
@@ -1073,7 +1127,7 @@ func move_to_room(room_id = null):
 	build_location_description()
 	
 	data.status = 'cleared'
-	if data.type in ['ladder_down', 'ladder_up']:
+	if data.type in ['ladder_down', 'ladder_up', 'ladder_down_survival']:
 		data.status = 'scouted'
 	if data.type == 'combat_boss':
 		active_location.completed = true
@@ -1163,7 +1217,7 @@ func subroom_pressed(room_id, subroom_id):
 				var _event = globals.start_unique_event()
 				if !_event:
 					_event = globals.start_random_event()
-			'resource': 
+			'resource', 'resource_survival': 
 				selected_room = room_id
 				active_subroom = subroom_id
 				globals.start_fixed_event("resource_gather")

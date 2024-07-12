@@ -8,6 +8,8 @@ var original_version = globals.gameversion
 var newgame = false
 var difficulty = 'medium'
 
+var seed_salt = randi()
+
 #dynamic part
 var date = 1
 var hour = 1
@@ -43,6 +45,7 @@ func get_week_and_day_custom(new_date):
 func fix_serialization():
 	date = int(date)
 	hour = int(hour)
+	seed_salt = int(seed_salt)
 	weekly_sex_left = int(weekly_sex_left)
 	weekly_sex_max = int(weekly_sex_max)
 	weekly_dates_left = int(weekly_dates_left)

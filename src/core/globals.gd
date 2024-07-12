@@ -26,6 +26,7 @@ var start_new_game = false
 var EventList
 
 var rng := RandomNumberGenerator.new()
+var rng_controllable := RandomNumberGenerator.new()
 var file = File.new()
 var dir = Directory.new()
 
@@ -86,6 +87,7 @@ func _ready():
 
 	randomize() #for legacy code sake
 	rng.randomize()
+	rng_controllable.randomize()
 	
 	ResourceScripts.load_scripts()
 	ResourceScripts.recreate_singletons()
@@ -1360,8 +1362,12 @@ func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
 			if enemies[pos].ends_with('_rare'):
 				enemies[pos] = enemies[pos].trim_suffix("_rare")
 			enemies[pos] += "_miniboss"
-
-	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * gui_controller.exploration_dungeon.active_location.current_level
+	
+	var enemy_stats_mod
+	if gui_controller.exploration_dungeon.active_location.tags.has('infinite'):
+		enemy_stats_mod = 1 + gui_controller.exploration_dungeon.active_location.current_level * variables.difficulty_per_level_survival
+	else:
+		enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * gui_controller.exploration_dungeon.active_location.current_level
 	var combat_data = {enemy_stats_mod = enemy_stats_mod}
 	for arg in ['instawin', 'hpmod', 'xp_mod']:
 		if data.has(arg):
@@ -1395,7 +1401,8 @@ func makespecificgroup(group):
 func makerandomgroup(enemygroup, quest = false):
 	var array = []
 	for i in enemygroup.units:
-		var size = round(rand_range(enemygroup.units[i][0],enemygroup.units[i][1]))
+		var size = rng.randi_range(enemygroup.units[i][0], enemygroup.units[i][1])
+#		var size = rng_controllable.randi_range(enemygroup.units[i][0],enemygroup.units[i][1])
 		if size != 0:
 			array.append({units = i, number = size})
 	var countunits = 0
@@ -1416,7 +1423,8 @@ func makerandomgroup(enemygroup, quest = false):
 				for j in combatparty:
 					if combatparty[j] != null:
 						continue
-					var aiposition = unit.ai_position[randi()%unit.ai_position.size()]
+					var aiposition = input_handler.random_from_array(unit.ai_position)
+#					var aiposition = input_handler.random_from_array(unit.ai_position, rng_controllable)
 					if aiposition == 'melee' && j in [1,2,3]:
 						temparray.append(j)
 					if aiposition == 'ranged' && j in [4,5,6]:
@@ -1435,7 +1443,7 @@ func makerandomgroup(enemygroup, quest = false):
 						temparray.append(j)
 
 			if temparray.size() > 0:
-				combatparty[temparray[randi()%temparray.size()]] = i.units
+				combatparty[input_handler.random_from_array(temparray)] = i.units
 			i.number -= 1
 	
 	#handle rares
@@ -1444,10 +1452,12 @@ func makerandomgroup(enemygroup, quest = false):
 		for pos in combatparty:
 			if combatparty[pos] == null: continue
 			if rng.randf() < variables.enemy_rarechance:
+#			if rng_controllable.randf() < variables.enemy_rarechance:
 				champarr.push_back(pos)
 				char_roll_data.rare = true
 		while champarr.size() > 3:
 			champarr.remove(rng.randi_range(0, champarr.size()-1))
+#			champarr.remove(rng_controllable.randi_range(0, champarr.size()-1))
 		for pos in champarr:
 			combatparty[pos] += "_rare"
 	return combatparty

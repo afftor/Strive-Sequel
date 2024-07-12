@@ -282,6 +282,10 @@ var power_adjustments_per_difficulty = {
 	hard = [3,6]
 }
 var difficulty_per_level = 0.05 #% enemy stat increase
+var difficulty_per_level_survival = 0.1 #% enemy stat increase
+var survival_cap_main = 4.0 # added base 1 to max + 300%
+var survival_cap_secondary = 2.5 # added base 1 to max + 150%
+
 var slave_class_list = ['slave', 'servant', 'heir', 'master']#incomplete?
 #sex chances
 

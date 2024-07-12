@@ -327,6 +327,7 @@ func make_location(code, area):
 		text = location.singlename
 	location.name = text
 	location.id = "L" + str(ResourceScripts.game_world.locationcounter)
+	ResourceScripts.game_world.locationcounter += 1
 	location.travel_time = max(1,globals.rng.randi_range(0,0))
 	location.code = code
 	var levelnumber = round(rand_range(location.levels[0], location.levels[1]))
@@ -336,88 +337,98 @@ func make_location(code, area):
 #		location.levels["L"+str(levelnumber)] = {stages = round(rand_range(location.stages_per_level[0], location.stages_per_level[1]))}
 #		levelnumber -= 1
 	location.group = {}
-	location.resources = location.resources
 #	location.randomevents = location.eventarray
 	location.scriptedevents = []
 	location.progress = {main = 0, full = 0} #in rooms
 	location.completed = false
 	location.stagedenemies = [] #obsolete
-	location.enemies = location.enemyarray.duplicate(true)
+	
 	location.tasks = []
-	if location.has('gatherable_resources'):
-		location.gather_limit_resources = {}
-		location.tasks.append("gather")
-		for res in location.gatherable_resources:
-			if location.gatherable_resources[res].gather_mod is Array:
-				location.gatherable_resources[res].gather_mod = globals.rng.randf_range(location.gatherable_resources[res].gather_mod[0], location.gatherable_resources[res].gather_mod[1])
+	if location.tags.has('infinite'):
+#		print(location.id)
+		location.max_level = 0
+		location.dungeon = []
+		location.current_level = 0
+		location.dungeon_seeds = []
+		location.gather_limit_resources = {} #for compat with map
+		set_level_infinite(location, 0)
+	else:
+		location.resources = location.resources
+		location.enemies = location.enemyarray.duplicate(true)
+		if location.has('gatherable_resources'):
+			location.gather_limit_resources = {}
+			location.tasks.append("gather")
+			for res in location.gatherable_resources:
+				if location.gatherable_resources[res].gather_mod is Array:
+					location.gatherable_resources[res].gather_mod = globals.rng.randf_range(location.gatherable_resources[res].gather_mod[0], location.gatherable_resources[res].gather_mod[1])
 #		location.gather_mod = rand_range(location.gather_mod[0],location.gather_mod[1])
 #	location.erase('gatherable_resources')
-	if location.has('background_pool'):
-		location.background = location.background_pool[randi()%location.background_pool.size()]
-		location.erase("background_pool")
-		#temp out
+		if location.has('background_pool'):
+			location.background = location.background_pool[randi()%location.background_pool.size()]
+			location.erase("background_pool")
+			#temp out
 #		location.scriptedevents.append({trigger = 'dungeon_complete', event = 'custom_event', args = 'event_dungeon_complete_loot_' + location.difficulty, reqs = []}) 
 #	if location.has('gather_limit_resources'):
 #		location.scriptedevents.append({trigger = 'dungeon_complete', event = 'custom_event', args = 'event_dungeon_unlock_resources', reqs = []})
 
-	#location.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {}})
-	ResourceScripts.game_world.locationcounter += 1
-	location.erase('difficulties')
-	if location.type == 'dungeon':
-		dungeon_full = 0
-		dungeon_mainline = 0
-		location.dungeon = []
-		for i in range(levelnumber):
-			build_floor_first_pass(location, i)
-		location.current_level = 0
-		var ev_pool = build_subrooms_pool(location)
-		if globals.rng.randf() < variables.dungeon_unique_encounter_chance:
-			var pool = []
-			for ev_rec in worlddata.random_dungeon_events.values():
-				if ResourceScripts.game_world.dungeon_events_assigned.has(ev_rec.event):
-					continue
-				if !ev_rec.dungeons.has(code):
-					continue
-				pool.push_back(ev_rec)
-			if !pool.empty():
-				var rec = input_handler.random_from_array(pool)
-				var lv = globals.rng.randi_range(0, levelnumber - 1)
-				if rec.has('levels'):
-					lv = input_handler.random_from_array(rec.levels)
-				ev_pool[lv].push_back(rec.event)
-				ResourceScripts.game_world.dungeon_events_assigned[rec.event] = location.id
-		for i in range(levelnumber):
-			finalize_subrooms(location, ev_pool, i)
-		location.stagedevents = {
-			main = {},
-			full = {},
-			room = {}
-		}
-		if location.has("final_enemy"):
-#			var bossenemy = input_handler.weightedrandom(location.final_enemy)
-			if location.final_enemy_type == 'character':
-				location.stagedevents.main[dungeon_mainline] = {event = 'character_boss_defeat'}
-		if location.has('scripteventdata'):
-			for scr in location.scripteventdata:
-				match scr.trigger:
-					'enter':
-						location.stagedevents.main[1] = {event = scr.args}
-						if scr.has('reqs'):
-							location.stagedevents.main[1].reqs = scr.reqs
-					'dungeon_complete':
-						location.stagedevents.main[dungeon_mainline] = {event = scr.args}
-						if scr.has('reqs'):
-							location.stagedevents.main[dungeon_mainline].reqs = scr.reqs
-					'stage':
-						match scr.stage:
-							'half':
-								location.stagedevents.main[dungeon_mainline / 2] = {event = scr.args}
-								if scr.has('reqs'):
-									location.stagedevents.main[dungeon_mainline / 2].reqs = scr.reqs
-							'-1':
-								location.stagedevents.main[dungeon_mainline - 1] = {event = scr.args}
-								if scr.has('reqs'):
-									location.stagedevents.main[dungeon_mainline - 1].reqs = scr.reqs
+		#location.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {}})
+		
+		location.erase('difficulties')
+		if location.type == 'dungeon':
+			dungeon_full = 0
+			dungeon_mainline = 0
+			location.dungeon = []
+			for i in range(levelnumber):
+				build_floor_first_pass(location, i)
+			location.current_level = 0
+			var ev_pool = build_subrooms_pool(location)
+			if globals.rng.randf() < variables.dungeon_unique_encounter_chance:
+				var pool = []
+				for ev_rec in worlddata.random_dungeon_events.values():
+					if ResourceScripts.game_world.dungeon_events_assigned.has(ev_rec.event):
+						continue
+					if !ev_rec.dungeons.has(code):
+						continue
+					pool.push_back(ev_rec)
+				if !pool.empty():
+					var rec = input_handler.random_from_array(pool)
+					var lv = globals.rng.randi_range(0, levelnumber - 1)
+					if rec.has('levels'):
+						lv = input_handler.random_from_array(rec.levels)
+					ev_pool[lv].push_back(rec.event)
+					ResourceScripts.game_world.dungeon_events_assigned[rec.event] = location.id
+			for i in range(levelnumber):
+				finalize_subrooms(location, ev_pool, i)
+			location.stagedevents = {
+				main = {},
+				full = {},
+				room = {}
+			}
+			if location.has("final_enemy"):
+	#			var bossenemy = input_handler.weightedrandom(location.final_enemy)
+				if location.final_enemy_type == 'character':
+					location.stagedevents.main[dungeon_mainline] = {event = 'character_boss_defeat'}
+			if location.has('scripteventdata'):
+				for scr in location.scripteventdata:
+					match scr.trigger:
+						'enter':
+							location.stagedevents.main[1] = {event = scr.args}
+							if scr.has('reqs'):
+								location.stagedevents.main[1].reqs = scr.reqs
+						'dungeon_complete':
+							location.stagedevents.main[dungeon_mainline] = {event = scr.args}
+							if scr.has('reqs'):
+								location.stagedevents.main[dungeon_mainline].reqs = scr.reqs
+						'stage':
+							match scr.stage:
+								'half':
+									location.stagedevents.main[dungeon_mainline / 2] = {event = scr.args}
+									if scr.has('reqs'):
+										location.stagedevents.main[dungeon_mainline / 2].reqs = scr.reqs
+								'-1':
+									location.stagedevents.main[dungeon_mainline - 1] = {event = scr.args}
+									if scr.has('reqs'):
+										location.stagedevents.main[dungeon_mainline - 1].reqs = scr.reqs
 	return location
 
 func fill_faction_quests(faction, area):
@@ -1027,11 +1038,13 @@ func build_floor_first_pass(locdata, level):
 		var tmp = build_room(room, generate_data)
 		if room == DungeonGen.pack_vertex(DungeonGen.diameter.front()):
 			res.first_room = r_nm
-			if level == 0:
+			if locdata.dungeon.empty(): #level is 0 or dungeon is infinite
 				tmp.type = 'empty'
 		if room == DungeonGen.pack_vertex(DungeonGen.diameter.back()):
 			res.last_room = r_nm
-			if level == (locdata.levels - 1):
+			if locdata.tags.has('infinite'):
+				tmp.type = 'ladder_down_survival'
+			elif level == (locdata.levels - 1):
 				tmp.stamina_cost = locdata.base_room_stamina_cost
 				if tmp.stamina_cost is Array:
 					tmp.stamina_cost = globals.rng.randi_range(tmp.stamina_cost[0], tmp.stamina_cost[1])
@@ -1115,6 +1128,7 @@ func build_subrooms_pool(locdata):
 	for i in range(locdata.material_room_number):
 		pool.push_back('material')
 	
+#	input_handler.array_shuffle(pool, globals.rng_controllable)
 	pool.shuffle()
 	while pool.size() >= locdata.levels:
 		for i in range(locdata.levels):
@@ -1122,6 +1136,7 @@ func build_subrooms_pool(locdata):
 			pool.pop_back()
 	while pool.size() < locdata.levels:
 		pool.push_back("")
+#	input_handler.array_shuffle(pool, globals.rng_controllable)
 	pool.shuffle()
 	for i in range(locdata.levels):
 		if pool.back() != "":
@@ -1192,7 +1207,10 @@ func finalize_subrooms(locdata, subrooms, level):
 						tmp.challenge = input_handler.weightedrandom(e_data.possible_challenges)
 						
 				'material':
-					tmp.type = 'resource'
+					if locdata.tags.has('infinite'):
+						tmp.type = 'resource_survival'
+					else:
+						tmp.type = 'resource'
 					var pool = []
 					for res in locdata.gatherable_resources:
 						pool.push_back([res, locdata.gatherable_resources[res].weight])
@@ -1210,3 +1228,72 @@ func finalize_subrooms(locdata, subrooms, level):
 					tmp.icon = 'question'
 			r_data.subrooms[i] = tmp
 		r_data.subrooms.shuffle()
+#		input_handler.array_shuffle(r_data.subrooms, globals.rng_controllable)
+
+
+func set_level_infinite(location, level):
+	#cleanup
+	if !location.dungeon.empty():
+#		ResourceScripts.game_world.remove_dungeon(location.dungeon[0])
+		location.dungeon.clear()
+	#set level
+	location.current_level = level
+	location.max_level = max(level, location.max_level)
+	#set biome
+	if location.biomes.size() <= level:
+		var pool = location.avaliable_biomes.duplicate()
+		pool.shuffle()
+		for i in pool:
+			location.biomes.push_back(i)
+	location.biome = location.biomes[level]
+	#setup biome attributes
+	var biome_data = DungeonData.biomes[location.biome]
+	location.background = input_handler.random_from_array(biome_data.background_pool)
+	location.gatherable_resources = biome_data.gatherable_resources.duplicate(true)
+	for res in location.gatherable_resources:
+		if location.gatherable_resources[res].gather_mod is Array:
+			location.gatherable_resources[res].gather_mod = globals.rng.randf_range(location.gatherable_resources[res].gather_mod[0], location.gatherable_resources[res].gather_mod[1])
+	location.enemies = biome_data.enemyarray.duplicate(true)
+	#setup dungeon
+	var tmp = "level seed %d" % level
+	globals.rng_controllable.seed = hash(tmp) + ResourceScripts.game_globals.seed_salt
+	if location.dungeon_seeds.size() <= level:
+		location.dungeon_seeds.push_back(str(globals.rng_controllable.state))
+	else:
+		globals.rng_controllable.state = int(location.dungeon_seeds[level])
+	dungeon_full = 0
+	dungeon_mainline = 0
+	build_floor_first_pass(location, 0)
+	location.stagedevents = {
+		main = {},
+		full = {},
+		room = {}
+	}
+	var ev_pool = build_subrooms_pool(location)
+	var pool = []
+	for ev in worlddata.infinite_dungeon_events:
+		var ev_data = worlddata.infinite_dungeon_events[ev]
+		if !globals.checkreqs(ev_data.reqs):
+			continue
+		if !ev_data.dungeons.has(location.code):
+			continue
+		if ev_data.min_level > level:
+			continue
+		if ev_data.chance > globals.rng.randf():
+			continue
+		pool.push_back(ev)
+	if !pool.empty():
+		var ev = input_handler.random_from_array(pool)
+		var ev_data = worlddata.infinite_dungeon_events[ev] 
+		print(ev_data.event)
+		match ev_data.type:
+			'enter':
+				location.stagedevents.main[1] = {event = ev_data.event}
+			'finish':
+				location.stagedevents.main[dungeon_mainline - 1] = {event = ev_data.event}
+			'half':
+				location.stagedevents.main[dungeon_mainline / 2] = {event = ev_data.event}
+			'subroom':
+				ev_pool[0].push_back(ev_data.event)
+	finalize_subrooms(location, ev_pool, 0)
+	location.progress = {main = 0, full = 0}

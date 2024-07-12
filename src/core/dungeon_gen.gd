@@ -6,6 +6,9 @@ func _ready():
 	if debug:
 #		lines = 8
 #		cols = 10
+		var seed_t = hash("test")
+		globals.rng_controllable.seed = seed_t
+		var state = globals.rng_controllable.state
 		prim()
 		first_pass()
 		second_pass()
@@ -20,6 +23,23 @@ func _ready():
 		else:
 			print_debug_data(tuning)
 			print('fail')
+		globals.rng_controllable.seed = seed_t
+		globals.rng_controllable.state = state
+		prim()
+		first_pass()
+		second_pass()
+		third_pass()
+		fourth_pass()
+#		color_subtrees()
+		init_tuning()
+		fill_diameter()
+		if trim_diameter(10, 8):
+			print_debug_data(tuning)
+			trim_outer(8)
+		else:
+			print_debug_data(tuning)
+			print('fail')
+		print("+")
 
 #graph
 # edges are connections, not walls
@@ -149,7 +169,7 @@ func fill_debug():
 
 func get_random_vertex(): #packed
 	var size_a = lines * cols
-	return globals.rng.randi_range(0, size_a - 1)
+	return globals.rng_controllable.randi_range(0, size_a - 1)
 
 
 func prim():
@@ -166,7 +186,7 @@ func prim():
 		fill_debug()
 	
 	while vertex_arr.size() < cols * lines:
-		var current_edge = input_handler.random_from_array(edges_arr)
+		var current_edge = input_handler.random_from_array(edges_arr, globals.rng_controllable)
 		edges_arr.erase(current_edge)
 		edges_arr_final.push_back(current_edge)
 		
@@ -365,7 +385,7 @@ func trim_diameter(limit, outer_limit):
 	
 	while diameter.size() > limit:
 		var rem_vertex
-		if globals.rng.randf() > 0.5:
+		if globals.rng_controllable.randf() > 0.5:
 			rem_vertex = diameter.front()
 			diameter.pop_front()
 		else:
@@ -397,7 +417,7 @@ func trim_outer(outer_limits, limit = 2): #temp solution - greedy distant based 
 		print("error in calling outer trimming")
 	else:
 		while temp.outer > outer_limits:
-			var t = input_handler.random_from_array(temp.outer_arr)
+			var t = input_handler.random_from_array(temp.outer_arr, globals.rng_controllable)
 			temp.outer_arr.erase(t)
 			isolate_vertex(t)
 			temp.outer -= 1
@@ -416,16 +436,16 @@ func generate(data):
 		debug = data.debug
 	if data.has('rows'):
 		if data.rows is Array:
-			data.rows = globals.rng.randi_range(data.rows[0],data.rows[1])
+			data.rows = globals.rng_controllable.randi_range(data.rows[0],data.rows[1])
 		lines = data.rows
 	if data.has('cols'):
 		if data.cols is Array:
-			data.cols = globals.rng.randi_range(data.cols[0],data.cols[1])
+			data.cols = globals.rng_controllable.randi_range(data.cols[0],data.cols[1])
 		cols = data.cols
 	
 	for arg in ['main_route_length', 'bonus_rooms']:
 		if data[arg] is Array:
-			data[arg] = globals.rng.randi_range(data[arg][0], data[arg][1])
+			data[arg] = globals.rng_controllable.randi_range(data[arg][0], data[arg][1])
 	
 	var main_route_length = data.main_route_length
 	var bonus_rooms = data.bonus_rooms
