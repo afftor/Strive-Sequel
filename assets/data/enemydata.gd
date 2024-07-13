@@ -47,6 +47,9 @@ var encounters = {
 	troll_clothes = {unittype = 'randomgroup', unitcode = 'troll_clothes', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'troll_clothes_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	goblin_quest = {unittype = 'randomgroup', unitcode = 'goblin_quest', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'goblin_quest_10', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	ketch_group = {unittype = 'randomgroup', unitcode = 'ketch_group', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'zephyra_disappearance_ketch_3_f_2', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	robbed_man = {unittype = 'randomgroup', unitcode = 'robbed_man', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lilith_good_route_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	lilia_boss = {unittype = 'randomgroup', unitcode = 'lilia_boss', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lilith_good_route_village_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	lilith_patron = {unittype = 'randomgroup', unitcode = 'lilith_patron', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lilith_beat_demon', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 
 
 	mercenary_fred_quest = {unittype = 'randomgroup', unitcode = 'mercenary_fred_quest', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'fred_got_after_fight', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
@@ -144,6 +147,9 @@ var enemygroups = {
 	troll_clothes = {reqs = [], units = {troll = [1,1]}},
 	goblin_quest = {reqs = [], units = {quest_goblin_boss = [2,2], quest_goblin_shaman = [2,2]}},
 	ketch_group = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
+	robbed_man = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
+	lilia_boss = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
+	lilith_patron = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
 
 	mercenary_fred_quest = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}},
 

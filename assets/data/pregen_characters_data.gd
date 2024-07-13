@@ -414,7 +414,7 @@ var pregen_characters = {
 		personality_bold = 75,
 		food_like = 'vege',
 		food_hate = ['meat'],
-		classes = [],
+		classes = ['ashmedai_champion'],
 		traits = ['mvortex','inept','loyalty_basic_servitude','loyalty_sex_basic'],
 		sex_skills = {petting = 27, pussy = 33, oral = 25, anal = 21},
 	},
