@@ -13605,23 +13605,27 @@ With that the magic seals and tentacles disappear leaving you alone with Lilith 
 	AMELIA_MAIN_STAGE_10 = "Purchase Amelia from Servants",
 	AMELIA_MAIN_STAGE_11 = "Talk to Amelia in your mansion",
 	
+	
+	
+	
+	
 	LILIA_FINALE_QUEST_NAME = "",
-	LILIA_FINALE_QUEST_SUMMARY = "",
-	LILIA_FINALE_QUEST_STAGE_1 = "", # go to workers
-	LILIA_FINALE_QUEST_STAGE_2 = "", # complete dungeon
-	LILIA_FINALE_QUEST_STAGE_3 = "", # Report back to Sigmund
-	LILIA_FINALE_QUEST_STAGE_4 = "", # wait for flirting
-	LILIA_FINALE_QUEST_STAGE_5 = "", # complete grove dungeon
-	LILIA_FINALE_QUEST_STAGE_6 = "", # wait for bad route scene
-	LILIA_FINALE_QUEST_STAGE_7 = "", # wait for good route scene
-	LILIA_FINALE_QUEST_STAGE_8 = "", # go to Lilia village
+	LILIA_FINALE_QUEST_SUMMARY = "Lilia is about to meet the challenge which might change her whole life.",
+	LILIA_FINALE_QUEST_STAGE_1 = "Visit Workers guild", # go to workers
+	LILIA_FINALE_QUEST_STAGE_2 = "Explore Old Weathered Temple", # complete dungeon
+	LILIA_FINALE_QUEST_STAGE_3 = "Report back to Sigmund", # Report back to Sigmund
+	LILIA_FINALE_QUEST_STAGE_4 = "Wait for the event to unfold", # wait for flirting
+	LILIA_FINALE_QUEST_STAGE_5 = "Explore Abandoned Grove Hideout", # complete grove dungeon
+	LILIA_FINALE_QUEST_STAGE_6 = "Wait for the event to unfold", # wait for bad route scene
+	LILIA_FINALE_QUEST_STAGE_7 = "Wait for the event to unfold", # wait for good route scene
+	LILIA_FINALE_QUEST_STAGE_8 = "Visit Lilia's home ivllage", # go to Lilia village
 	LILIA_FINALE_QUEST_STAGE_9 = "", # reserve for good route ending
 	LILIA_FINALE_QUEST_STAGE_10 = "", # go to Lilith village
-	LILIA_FINALE_QUEST_STAGE_11 = "", # wait for sex scene
-	LILIA_FINALE_QUEST_STAGE_12 = "", # go to mages
-	LILIA_FINALE_QUEST_STAGE_13 = "", # go to Xari
-	LILIA_FINALE_QUEST_STAGE_14 = "", # ask Lilith about patron
-	LILIA_FINALE_QUEST_STAGE_15 = "", # clear new patron dungeon
+	LILIA_FINALE_QUEST_STAGE_11 = "Visit Lilia's home ivllage", # wait for sex scene
+	LILIA_FINALE_QUEST_STAGE_12 = "Visit Mage Guild", # go to mages
+	LILIA_FINALE_QUEST_STAGE_13 = "Visit Xari", # go to Xari
+	LILIA_FINALE_QUEST_STAGE_14 = "Ask Lilith to meet with her patron", # ask Lilith about patron
+	LILIA_FINALE_QUEST_STAGE_15 = "Explore Hidden Grove Abandonment", # clear new patron dungeon
 	
 	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n— H-hello, [Master]... How was your day?",
 	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her motivation. She stays silent having no words for you.\n\n— ......",
@@ -14606,6 +14610,10 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	BANDIT_DEN_NOUNS2 = "Cave",
 	BANDIT_DEN_NOUNS3 = "Den",
 	BANDIT_DEN_NOUNS4 = "Pit",
+	BANDIT_DEN_NOUNS5 = "Lair",
+	BANDIT_DEN_NOUNS6 = "Refuge",
+	BANDIT_DEN_NOUNS7 = "Retreat",
+	BANDIT_DEN_NOUNS8 = "Hideaway",
 	
 	BANDIT_DEN_ADJS1 = "Bandit",
 	BANDIT_DEN_ADJS2 = "Dirty",
@@ -14615,6 +14623,12 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	BANDIT_DEN_ADJS6 = "Blue",
 	BANDIT_DEN_ADJS7 = "Black",
 	BANDIT_DEN_ADJS8 = "Lower",
+	BANDIT_DEN_ADJS9 = "Dark",
+	BANDIT_DEN_ADJS10 = "Gloomy",
+	BANDIT_DEN_ADJS11 = "Secluded",
+	BANDIT_DEN_ADJS12 = "Remote",
+	BANDIT_DEN_ADJS13 = "Isolated",
+	BANDIT_DEN_ADJS14 = "Deserted",
 	
 	GROVE_NOUNS1 = "Forest",
 	GROVE_NOUNS2 = "Grove",
@@ -14695,6 +14709,12 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	FIRE_DEPTHS_ADJS2 = "Fire",
 	FIRE_DEPTHS_ADJS3 = "Scorching",
 	FIRE_DEPTHS_ADJS4 = "Heating",
+	FIRE_DEPTHS_ADJS5 = "Blazing",
+	FIRE_DEPTHS_ADJS6 = "Smoldering",
+	FIRE_DEPTHS_ADJS7 = "Fiery",
+	FIRE_DEPTHS_ADJS8 = "Infernal",
+	FIRE_DEPTHS_ADJS9 = "Molten",
+	FIRE_DEPTHS_ADJS10 = "Glowing",
 	
 	CITY_NOUNS1 = "Ruins",
 	CITY_NOUNS2 = "Chambers",

@@ -14539,6 +14539,10 @@ With that the magic seals and tentacles disappear leaving you alone with Lilith 
 	BANDIT_DEN_NOUNS2 = "Пещера",
 	BANDIT_DEN_NOUNS3 = "Логово",
 	BANDIT_DEN_NOUNS4 = "Поселение",
+	BANDIT_DEN_NOUNS5 = """Lair""", # MISSING TRANSLATION
+	BANDIT_DEN_NOUNS6 = """Refuge""", # MISSING TRANSLATION
+	BANDIT_DEN_NOUNS8 = """Retreat""", # MISSING TRANSLATION
+	BANDIT_DEN_NOUNS9 = """Hideaway""", # MISSING TRANSLATION
 	
 	BANDIT_DEN_ADJS1 = "Бандитское",
 	BANDIT_DEN_ADJS2 = "Грязное",
@@ -14548,6 +14552,12 @@ With that the magic seals and tentacles disappear leaving you alone with Lilith 
 	BANDIT_DEN_ADJS6 = "Синее",
 	BANDIT_DEN_ADJS7 = "Черное",
 	BANDIT_DEN_ADJS8 = "Нижнее",
+	BANDIT_DEN_ADJS9 = """Dark""", # MISSING TRANSLATION
+	BANDIT_DEN_ADJS10 = """Gloomy""", # MISSING TRANSLATION
+	BANDIT_DEN_ADJS11 = """Secluded""", # MISSING TRANSLATION
+	BANDIT_DEN_ADJS12 = """Remote""", # MISSING TRANSLATION
+	BANDIT_DEN_ADJS13 = """Isolated""", # MISSING TRANSLATION
+	BANDIT_DEN_ADJS14 = """Deserted""", # MISSING TRANSLATION
 	
 	GROVE_NOUNS1 = "Лес",
 	GROVE_NOUNS2 = "Роща",
@@ -14628,6 +14638,12 @@ With that the magic seals and tentacles disappear leaving you alone with Lilith 
 	FIRE_DEPTHS_ADJS2 = "Огненный",
 	FIRE_DEPTHS_ADJS3 = "Палящий",
 	FIRE_DEPTHS_ADJS4 = "Нагревающийся",
+	FIRE_DEPTHS_ADJS5 = """Blazing""", # MISSING TRANSLATION
+	FIRE_DEPTHS_ADJS6 = """Smoldering""", # MISSING TRANSLATION
+	FIRE_DEPTHS_ADJS7 = """Fiery""", # MISSING TRANSLATION
+	FIRE_DEPTHS_ADJS8 = """Infernal""", # MISSING TRANSLATION
+	FIRE_DEPTHS_ADJS9 = """Molten""", # MISSING TRANSLATION
+	FIRE_DEPTHS_ADJS10 = """Glowing""", # MISSING TRANSLATION
 	
 	CITY_NOUNS1 = "Руины",
 	CITY_NOUNS2 = "Палаты",
