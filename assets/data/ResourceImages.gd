@@ -507,6 +507,10 @@ var sprites = {
 	lilia_nude_body = load("res://assets/images/sprites/lilia_nude_body.png"),
 	lilia_wed = load("res://assets/images/sprites/lilia_wed.png"),
 	lilia_wed_body = load("res://assets/images/sprites/lilia_wed_body.png"),
+	lilith_nude = load("res://assets/images/sprites/lilith.png"), # TODO change
+	lilith_nude_body = load("res://assets/images/sprites/lilith_body.png"), # TODO change
+	lilith_wed = load("res://assets/images/sprites/lilith_wed.png"),
+	lilith_wed_body = load("res://assets/images/sprites/lilith_wed_body.png"),
 	hara_nude = load("res://assets/images/sprites/hara_nude.png"),
 	hara_nude_body = load("res://assets/images/sprites/hara_nude_body.png"),
 	hara_wed = load("res://assets/images/sprites/hara_wed.png"),
@@ -523,7 +527,7 @@ var sprites = {
 	lira_nude_body = load("res://assets/images/sprites/Lira_nude_body.png"),
 	amelia_body = load("res://assets/images/sprites/amelia_body.png"),
 	amelia_nude_body = load("res://assets/images/sprites/amelia_nude_body.png"),
-	
+	amelia_wed_body = load("res://assets/images/sprites/amelia_wed_body.png"),
 	}
 
 var dynamic_backgrounds = {
@@ -554,7 +558,9 @@ var portraits = {
 	lilia = "res://assets/images/portraits/lilia_prt.png",
 	lilia_nude = "res://assets/images/portraits/lilia_nude_prt.png",
 	lilia_wed = "res://assets/images/portraits/lilia_wed_prt.png",
-	lilith = "res://assets/images/portraits/lilith_prt.png",
+	lilith = "res://assets/images/portraits/lilia_prt/lilith_prt.png",
+	lilith_nude = "res://assets/images/portraits/lilia_prt/lilith_nude_prt_bold.png",
+	lilith_wed = "res://assets/images/portraits/lilia_prt/lilith_wed_prt_bold.png", 
 	jean = "res://assets/images/portraits/jean_prt.png",
 	jean_nude = "res://assets/images/portraits/jean_nude_prt.png",
 	jean_wed = "res://assets/images/portraits/jean_wed_prt.png",
