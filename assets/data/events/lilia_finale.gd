@@ -882,16 +882,17 @@ var data = {
 			}
 		],
 		common_effects = [
-			{
-				code = "unique_character_changes",
-				value = "lilia",
-				args = [
-					{
-						code = "transform_to_unique_character",
-						unique = "Lilith"
-					}
-				]
-			}
+			{code = 'affect_unique_character', name = 'lilia', type = 'turn_into_unique', value = 'Lilith'},
+#			{
+#				code = "unique_character_changes",
+#				value = "lilia",
+#				args = [
+#					{
+#						code = "transform_to_unique_character",
+#						unique = "Lilith"
+#					}
+#				]
+#			}
 		],
 		options = [
 			{

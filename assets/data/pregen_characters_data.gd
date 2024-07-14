@@ -974,6 +974,13 @@ var unique_sprites = {
 			face_path = "lilith", # TODO change
 			unlock_reqs = []
 			},
+		wed = {
+			name = "Wed",
+			descript = "",
+			path = "lilith_wed_body", 
+			face_path = "lilith_nude",
+			unlock_reqs = []
+			},
 	},
 	hara = {
 		default = {
@@ -1059,6 +1066,14 @@ var unique_sprites = {
 			face_path = "lira_nude", 
 			unlock_reqs = []
 			},
+		wed = {
+			name = "Wed",
+			descript = "",
+#			path = "lira_wed_body", 
+			path = "", 
+			face_path = "lira_wed",
+			unlock_reqs = []
+			},
 	},
 	amelia = {
 		default = {
@@ -1073,6 +1088,13 @@ var unique_sprites = {
 			descript = "",
 			path = "amelia_nude_body", 
 			face_path = "amelia_nude", 
+			unlock_reqs = []
+			},
+		wed = {
+			name = "Wed",
+			descript = "",
+			path = "amelia_wed_body", 
+			face_path = "amelia_wed",
 			unlock_reqs = []
 			},
 	},
