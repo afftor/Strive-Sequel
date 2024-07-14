@@ -2409,4 +2409,237 @@ var dungeons = {
 		travel_time = [1,1],
 		scripteventdata = []
 	},
+	quest_elven_ancient_jungle_location = {
+		code = 'quest_elven_ancient_jungle_location',
+		type = 'dungeon',
+		name = tr("QUEST_ELVEN_ANCIENT_JUNGLE_LOCATION_TEXT"),
+		classname = '',
+		descript = tr("QUEST_ELVEN_ANCIENT_JUNGLE_LOCATION_DESC"),
+		character_data = {
+			chance_mod = 1.1,
+			races = [["common", 2], ['uncommon', 4],['TribalElf',6], ['rare',1]]
+		},
+		purchase_area = 'forests',
+		background_pool = ['jungle1','jungle2','jungle3','jungle4'],
+		bgm = "dungeon",
+		enemyarray = [['jungle_easy1', 1],['jungle_easy2', 1],['jungle_medium1', 1],['jungle_medium2', 1]],
+		final_enemy = [['jungle_boss1',1],['jungle_boss2',1],['jungle_boss3',1]], final_enemy_type = 'monster',
+		
+		
+		event_data = {
+			dungeon_find_chest_medium = {
+				limit = 0,
+				weight = 8,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['dungeon_find_chest_medium'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
+			},
+			event_tribal_elves = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'person',
+				events = ['event_tribal_elves'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
+			},
+			spring = {
+				limit = 1,
+				weight = 2,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['spring'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
+			},
+			celena_shrine_find = {
+				limit = 1,
+				weight = 4,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = [['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5],['hybris_shrine_find',0.3]],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
+			}
+		},
+		
+		event_room_number = [3,4],
+		material_room_number = [4,5],
+		
+		main_route_length = [5,6],
+		bonus_rooms = [2,4],
+		levels = [1,2], 
+		base_room_stamina_cost = [7,11], 
+		
+		resources = ['woodmagic','woodiron','leatherthick','leathermythic','insect_chitin','iron'],
+		gatherable_resources = {
+			woodmagic = {
+				amount = [25,45],
+				weight = 5,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			woodiron = {
+				amount = [30,45],
+				weight = 8,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},  
+			leatherthick = {
+				amount = [20,35],
+				weight = 4,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			leathermythic = {
+				amount = [10,15],
+				weight = 1,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},
+			}, 
+		
+		tags = ['quest'],
+		options = [],
+		area = 'forests',
+		travel_time = [1,1],
+		scripteventdata = [
+		{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilia_finale_3', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LILIA_FINALE_WORKERS_2'}]}]
+	},
+	quest_lilia_dungeon_grove = {
+		code = 'quest_lilia_dungeon_grove',
+		type = 'dungeon',
+		name = tr("QUEST_LILIA_DUNGEON_GROVE_TEXT"),
+		classname = '',
+		descript = tr("QUEST_LILIA_DUNGEON_GROVE_DESC"),
+		character_data = {
+			chance_mod = 1.5,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
+		difficulty = 'medium',
+		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
+		enemyarray = [['rebels_small', 1]],
+		final_enemy = [['rebels_small', 1]], 
+		final_enemy_type = 'monster',
+		event_data = {
+			dungeon_find_chest_easy = {
+				limit = 0,
+				weight = 10,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['dungeon_find_chest_easy'],
+				possible_challenges = [
+					['event_locked_door',1],
+				],
+			},
+		},
+		
+		event_room_number = [1,1],
+		material_room_number = [1,1],
+		
+		main_route_length = [3,3],
+		bonus_rooms = [0,0],
+		levels = [1,1], 
+		base_room_stamina_cost = [5,5],
+		
+		resources = ['cloth','leather','iron','wood','clothsilk'],
+		gatherable_resources = {
+			stone = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			}, 
+		gather_mod = [2,2.5],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local',
+		events = [],
+		tags = ['quest'],
+		options = [],
+		area = 'forests',
+		travel_time = [1,1],
+		scripteventdata = [
+		{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilith_finish_dungeon_1', reqs = [{code = 'active_quest_stage', value = 'lilia_finale_quest', stage = 'stage5'}]}]
+	},
+	quest_patron_ancient_jungle_location = {
+		code = 'quest_patron_ancient_jungle_location',
+		type = 'dungeon',
+		name = tr("QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_TEXT"),
+		classname = '',
+		descript = tr("QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_DESC"),
+		character_data = {
+			chance_mod = 1.5,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
+		difficulty = 'medium',
+		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
+		enemyarray = [['rebels_small', 1]],
+		final_enemy = [['rebels_small', 1]], 
+		final_enemy_type = 'monster',
+		event_data = {
+			dungeon_find_chest_easy = {
+				limit = 0,
+				weight = 10,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['dungeon_find_chest_easy'],
+				possible_challenges = [
+					['event_locked_door',1],
+				],
+			},
+		},
+		
+		event_room_number = [1,1],
+		material_room_number = [1,1],
+		
+		main_route_length = [3,3],
+		bonus_rooms = [0,0],
+		levels = [1,1], 
+		base_room_stamina_cost = [5,5],
+		
+		resources = ['cloth','leather','iron','wood','clothsilk'],
+		gatherable_resources = {
+			stone = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			}, 
+		gather_mod = [2,2.5],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local',
+		events = [],
+		tags = ['quest'],
+		options = [],
+		area = 'forests',
+		travel_time = [1,1],
+		scripteventdata = [
+		{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilith_finish_new_dungeon', reqs = [{code = 'active_quest_stage', value = 'lilia_finale_quest', stage = 'stage15'}]}]
+	},
 }

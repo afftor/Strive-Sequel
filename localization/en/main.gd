@@ -2443,6 +2443,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	PROFFREYAS_PRIESTESS = "Former Freya's Priestess",
 	PROFFREYAS_PRIESTESSDESCRIPT = "Once a high priestess of elves, now this title hold more bluster than power.",
+	PROFASHMEDAI_CHAMPION = "Ashmedai Champion",
+	PROFASHMEDAI_CHAMPIONDESCRIPT = "The new chosen to carry out depraved acts in its name.",
 	
 	
 	PROFDEATHKNIGHT = "Death Knight",
@@ -10119,6 +10121,7 @@ Limnrov: — Excellent, most excellent. Very well, I'll make sure your slave has
 	CALI_ACT2_WORKERS_6_1 = """As he promised, Limnrov's courier arrives at your home early in the morning on the appointed day. Looking over the package, you examine the simple collar. Though its design lacks much ornamentation, the quality of the craftsmanship is masterful. At a minimum it should be comfortable.""",
 #	CALI_ACT2_WORKERS_6_2 = """As he promised, Limnrov's courier arrives at your home early in the morning on the appointed day. Looking over the package, you examine the exquisite collar. Limnrov has created a masterpiece with this collar. The curves and details are flawless, each applied with fine care. The centerpiece of his creation, the large gem, is polished to a mirror-like reflection and gleams back at you.""",
 	CALI_ACT2_WORKERS_6_2 = """As he promised, Limnrov's courier arrives at your home early in the morning on the appointed day. Looking over the package, you examine the exquisite collar. Limnrov has created a masterpiece with this collar. The curves and details are flawless, each applied with fine care.""",
+	LIMNROV_OPTION_GUILD = "Visit Limnrov",
 	CALI_ACT2_LIMNROV = """Limnrov: — I've two designs I might suggest. The former is your standard affair, however the engravings on the outside would leave no question as to who the [Master] of your slave is. The latter however, I've been eager to create. A far more refined piece that would be sure to turn a few heads.""",
 	CALI_ACT2_SIMPLE_COLLAR_1 = """You call Cali to you the next morning. The girl is quiet, but stares at you with more than a little distaste.
 
@@ -12710,26 +12713,26 @@ Cali walks away with her tail between her legs, slinking away from the festiviti
 
 — Hurry up, I can't wait anymore...!
 
-You smirk at Cali’s readiness, admiring how her arousal drips down onto the floor as she waits for you. You don’t keep her waiting for long, freeing your dick and stepping closer to caress her thigh. Pressing into her, you watch as her expression melts into pleasure as her pussy closes around you.
+You smirk at Cali's readiness, admiring how her arousal drips down onto the floor as she waits for you. You don't keep her waiting for long, freeing your dick and stepping closer to caress her thigh. Pressing into her, you watch as her expression melts into pleasure as her pussy closes around you.
 
-— Ah…! It feels even better today for some reason…!""",
+— Ah...! It feels even better today for some reason...!""",
 
 	CALI_WEDDING_3_BAD = """As soon as you get into the room, Cali leans against the dresser and holds a leg up, exposing her pussy to you like a wolf in heat.
 
-— Please, Master…!
+— Please, Master...!
 
 You smirk at Cali's readiness, admiring how her arousal drips down onto the floor as she waits for you. You don't keep her waiting for long, freeing your dick and stepping closer to caress her thigh. Pressing into her, you watch as her expression melts into pleasure as her pussy closes around you.
 
 — This pose... feels so right...""",
-	CALI_WEDDING_4 = """You respond by pressing further into her and beginning to thrust. Cali’s tight pussy clamps down on you every time you push in, trying to keep you inside each time you pull back. She watches your cock plowing into her in awe, silent as she enjoys the pleasure of your dick warming her from the inside.
+	CALI_WEDDING_4 = """You respond by pressing further into her and beginning to thrust. Cali's tight pussy clamps down on you every time you push in, trying to keep you inside each time you pull back. She watches your cock plowing into her in awe, silent as she enjoys the pleasure of your dick warming her from the inside.
 
 Her juices spill out around your shaft as her arousal builds, making each successive thrust smoother and easier from all the natural lubricant. The sticky sounds coming from Cali's pussy would surely give anyone a clear picture of what's going on between bride and groom, if Cali's squeaky moans weren't enough of a hint. Her tail flails around behind her as she takes heavy breaths, brushing against your leg every so often.""",
 	CALI_WEDDING_5 = """— I-I can feel you so deep inside...
 
-Cali’s pussy clings to your shaft as a wave of her cum flows past, spilling out as her body shivers from the pleasure. You hold her steady as her leg becomes wobbly from the sensations wracking her body.
+Cali's pussy clings to your shaft as a wave of her cum flows past, spilling out as her body shivers from the pleasure. You hold her steady as her leg becomes wobbly from the sensations wracking her body.
 
 Feeling the heat inside you welling up too, you pick up the pace. Her cum gives you ample leverage to slip in and out of her hole as she milks you for the seed you can barely hold back from her. Within a few moments, you burst inside her, your cum filling every nook in her pussy as you hold her close.""",
-	CALI_WEDDING_5_BAD = """— Ahh…! M–Master! I’m sorry, please… Don’t s-stop…
+	CALI_WEDDING_5_BAD = """— Ahh...! M–Master! I'm sorry, please... Don't s-stop...
 
 Cali's pussy clings to your shaft as a wave of her cum flows past, spilling out as her body shivers from the pleasure. You hold her steady as her leg becomes wobbly from the sensations wracking her body.
 
@@ -12739,11 +12742,602 @@ Feeling the heat inside you welling up too, you pick up the pace. Her cum gives 
 — T–That was a lot...
 
 You hold Cali close and kiss her, spending the rest of the night close together in bed as you enjoy her petite body.""",
-	CALI_WEDDING_6_BAD = """It doesn’t take long for your cum to spill out with her own, both fluids running down her leg as you mark her as yours. Cali is speechless as she watches the warmth inside her flow out of her pussy, only barely held in by your cock. Once you pull away from her, the rest follows suit and slides down her leg, making a mess of lust.
+	CALI_WEDDING_6_BAD = """It doesn't take long for your cum to spill out with her own, both fluids running down her leg as you mark her as yours. Cali is speechless as she watches the warmth inside her flow out of her pussy, only barely held in by your cock. Once you pull away from her, the rest follows suit and slides down her leg, making a mess of lust.
 
-— ...T–Thank you so much, Master… for making me feel this…
+— ...T–Thank you so much, Master... for making me feel this...
 
 You hold Cali close and kiss her, spending the rest of the night close together in bed as you enjoy her petite body.""",
+	
+	
+	# lilia finale
+	LILIA_FINALE_LETTER = """In the morning you receive a new letter from the Workers Guild who requests your presence for some unspecified task.""",
+	LILIA_FINALE_WORKERS_1 = """— Heya, Mayor. I have a small mission for ya. Thera was a site fo' our workers at da woods you were at. But it seems it was taken by some cult. We need it cleared so we can get the rare metals there. Hope for yar help.
+
+Sigmund adds a small mark on your map.""",
+	LILIA_FINALE_WORKERS_2 = """After defeating the cultists residing in the dungeon, the last of them, who have been commanding them all this time, makes a quick retreat. You aren't able to go after him, but after the search you find a box filled with valuable trinkets and gold. As you sort that out, one of them particularly catches your eye, a small raw purple crystal you have never seen alike. It seems to be dimly glowing in the dark of the cave so you pack it with the rest of things.""",
+	LILIA_FINALE_WORKERS_OPTION_1 = """Report back to sigmund""",
+	LILIA_FINALE_WORKERS_3 = """You report to Sigmund on your success.
+
+— Good work, Mayor. Here's a bit for yar trouble.
+
+— The crystal? I dunno about dis, maybe ask mages, seems somethin' magical to me.""",
+	LILIA_FINALE_1 = """As you return to your office, you are abrupt by Lilia barging inside. 
+
+— [Master], what are you doing? You were away so...
+
+As with her usual absentmindedness, Lilia is quickly distracted by the purple crystal you've brought back from the mission. She casually snatches it and stares at it on her palm.""",
+	LILIA_FINALE_1_OPTION_1 = "Do you know something about it?",
+	LILIA_FINALE_1_OPTION_2 = "Put it down, it can be dangerous",
+	LILIA_FINALE_2 = """The crystal starts glowing in dim purple light, and before you can do anything it dissipates into thin air to the surprise of you both. For the moment you can swear you saw its energy move in Lilia's direction, merging with her body, however she does not act on it.
+
+— It's gone... I didn't mean it! I swear.
+
+Lilia looks slightly worried by the unusual turn of events, but it seems nothing really has happened to her.""",
+	LILIA_FINALE_2_OPTION_1 = "Maybe it's for the better as I had no idea what else to do with this",
+	LILIA_FINALE_2_OPTION_2 = "Don't worry about it",
+	LILIA_FINALE_2_OPTION_3 = "You really should not touch dangerous things without asking",
+	LILIA_FINALE_2_1AND2 = """— You really aren't mad..? Sorry, [Master], I just was really... drawn to it. Now that it is gone, tell me about your last adventure!
+
+Lilia does not seem to change anyhow after the crystal disappears, making you wonder if it was all just your imagination.""",
+	LILIA_FINALE_2_3 = """— Boo, but it was so shiny and attractive... Sorry. That's enough? I'm sorry and you'll forgive me, right? Now tell me about your last adventure!
+
+Lilia does not seem to change anyhow after the crystal disappears, making you wonder if it was all just your imagination.
+""",
+	LILIA_FLIRTING_1 = """In the next few days you've been approached by Lilia regularly, constantly flirting and tempting you into mating with her, being even more provocative than usual. 
+
+— Say, [Master], what do you think about doing it with someone like me?
+""",
+	LILIA_FLIRTING_1_OPTION_1 = "Now that you mention it, it feels a bit weird",
+	LILIA_FLIRTING_1_OPTION_2 = "I don't really think about it",
+	LILIA_FLIRTING_1_OPTION_3 = "Tiny girls are the best",
+	LILIA_FLIRTING_2 = """— You know, fairies are, what you say, horny creatures and now living in the city I understand it. But even back then in the village I always was a lot more interested in ones who are... bigger than me...
+
+Lilia pauses and smiles as her eyes move down her crotch. 
+
+— ...Your big cock. I can't believe any other fairy can settle for anything smaller... The way it stretches me... Mhmmm... Do you think I'm weird?""",
+	LILIA_FLIRTING_2_OPTION_1 = "Maybe just a bit",
+	LILIA_FLIRTING_2_OPTION_2 = "I don't mind",
+	LILIA_FLIRTING_3 = """Lilia selfishly picks up pace moaning loudly as you both reach orgasm.
+
+— Aaah..! I... Love it... You are filling my pussy...
+
+She falls into your embrace, making you feel her body trembling in the afterglow. After a bit her face changes and the fairy looks concerned.
+
+— I... have been acting weird in the last few days after all. I have this feeling that I want to go somewhere I've never been before. Like it's reaching to me, but I'm scared. Can you come with me? I think this has something to do with me being so horny.""",
+	LILIA_FLIRTING_3_OPTION_1 = "It's better if we investigate it",
+	LILIA_FLIRTING_3_OPTION_2 = "Maybe once I have some time off",
+	# Finish dungeon
+	LILIA_FINISH_DUNGEON_1 = """You enter a medium sized stone walled room dimly lit with candles. In the center of the room you can see a platform clearly arranged to drag your attention to it. A robbed person comes out of the dark to greet you.
+
+— Ah, the destined Chosen have finally come to us. It's an honor to finally meet you.
+
+As he removes his hood, you recognize the man that escaped the place where you found the crystal.""",
+
+	LILIA_FINISH_DUNGEON_1_OPTION_1 = "Who are you?",
+	LILIA_FINISH_DUNGEON_1_OPTION_2 = "What have you done to Lilia?",
+	LILIA_FINISH_DUNGEON_1_OPTION_3 = "What is this place?",
+	LILIA_FINISH_DUNGEON_1_OPTION_4 = "What do you want?",
+
+	LILIA_FINISH_DUNGEON_2_1 = """— I'm only a humble follower of our almighty patron with a mission to guide you.
+
+The man gives Lilia a nod indicating the last part is directed to her.""",
+
+	LILIA_FINISH_DUNGEON_2_2 = """— I've not done anything. It was her destiny to find my patron's guidance as she must be the special one.""",
+
+	LILIA_FINISH_DUNGEON_2_3 = """— Only a small hideout prepared specifically for this occasion. Here we'll be able to perform our ritual without any unnecessary witnesses.""",
+
+	LILIA_FINISH_DUNGEON_2_4 = """Robbed Man: — You see, my patron Ashmedai has been looking for a new Champion, someone to carry his powers. A suitable individual which possesses an emphatic and lusty yet frivolous character. This girl has been marked by her actions and fate. 
+
+— So, my patron offers her his power. By performing the ritual she will become the Champion and will be able to experience much greater pleasure and gain more power than she could ever dream of. 
+
+Lilia looks uncertain to the freshly presented opportunity, but her body language shows her sincere interest in the proposal.
+
+Lilia: — I don't know, [name]... Do you think I should do it?""",
+
+	LILIA_FINISH_DUNGEON_2_4_OPTION_1 = "[Charm Factor] You aren't telling the full story. Why her specifically?",
+	LILIA_FINISH_DUNGEON_2_4_OPTION_2 = "No, this is too dangerous",
+	LILIA_FINISH_DUNGEON_2_4_OPTION_3 = "Why not, this seems fun",
+	LILIA_FINISH_DUNGEON_2_4_OPTION_4 = "Only if I get to participate",
+
+	LILIA_FINISH_DUNGEON_3_1_GOOD = """Robbed Man: — Long ago Ashmedai was exiled by Freya, stripped of his might, and his reign was stolen. I believe his will is to get one of Freya's children and make her into his own. You could consider it a form of revenge for him.""",
+	LILIA_FINISH_DUNGEON_3_1_BAD = """Robbed Man: — I've told you everything necessary, we don't question our patron desires, do we?""",
+
+	LILIA_FINISH_DUNGEON_3_2 = """— This is not allowed. We can't let you take our destined Chosen away. 
+
+The man takes out his weapon and prepares to take Lilia by force.""",
+
+	LILIA_FINISH_DUNGEON_3_3 = """— This is a pleasure to hear. Since everything is ready, please, make yourself comfortable at the altar.""",
+
+	LILIA_FINISH_DUNGEON_3_4 = """Just when you thought you would be refused, the man agrees to your whim.
+
+— This is... acceptable. After all, you've nurtured and brought her to us. You can participate in her conversion once it's started. """,
+
+	LILIA_FINISH_DUNGEON_4 = """As Lilia flies over the altar and lays down on it, her expression is filled with excitement. 
+
+— …You're gonna make me feel really good?""",
+
+	LILIA_FINISH_DUNGEON_AFTER_SCENE = """A fully transformed Lilith rises from the altar, her demeanor has shifted to a more serious one, yet undeniably sensual.
+
+— You didn't lie, it did feel amazing. Hope my new look is not to your dislike, [Master]?""",
+
+	LILIA_FINISH_DUNGEON_AFTER_SCENE_OPTION_1 = "You look even better now",
+	LILIA_FINISH_DUNGEON_AFTER_SCENE_OPTION_2 = "As long as you remain the same inside",
+	LILIA_FINISH_DUNGEON_AFTER_SCENE_OPTION_3 = "I wonder if it was a mistake...",
+
+	LILIA_FINISH_DUNGEON_AFTER_SCENE_1_1 = """— Glad you said that. I do like it as well.
+
+Before you realize, the robbed man is gone, leaving you two alone together.
+
+— Now, [Master], shall we return? I wanna get back home, even for me today was too much to not get some rest.""",
+
+	LILIA_FINISH_DUNGEON_AFTER_SCENE_1_2 = """— Who else can I be, silly?
+
+Before you realize, the robbed man is gone, leaving you two alone together.
+
+— Now, [Master], shall we return? I wanna get back home, even for me today was too much to not get some rest.""",
+
+	LILIA_FINISH_DUNGEON_AFTER_SCENE_1_3 = """— Umm, even so there's no turning back now, is it? After all, you’ve agreed to this, [Master].
+
+Before you realize, the robbed man is gone, leaving you two alone together.
+
+— Now, [Master], shall we return? I wanna get back home, even for me today was too much to not get some rest.""",
+	
+	# Good route
+LILIA_GOOD_ROUTE_1 = """After dealing with the robbed man and the summoned beast, Lilia falls to her knees making you rush to her. You notice a thin purple mist escaping her body, seemingly indicating her purification of the demonic energy which brought you here.
+
+— S-sorry, [Master], I just feel tired after all this. Could you carry me for a bit? I don't wanna stay around here anymore.""",
+LILIA_GOOD_ROUTE_1_OPTION_1 = "*Carry her in your arms*",
+LILIA_GOOD_ROUTE_1_OPTION_2 = "*Put her on your back*",
+
+LILIA_GOOD_ROUTE_1_CHOICE_1 = """To no surprise, Lilia feels really light to you as you start making your way out.
+
+— Hehe, you really are protecting me... and feel so big. My mom used to tell me that we don't fall in love the same way others do, that it's only a fleeting fun attraction eventually always fading, but the more I stay around you...
+
+Lilia's words grow quieter until you can only hear some light breathing as she falls asleep.""",
+
+# After a few days
+LILIA_GOOD_ROUTE_2 = """As you sit in your office, you are interrupted by a knock. As you invite them in, you realize it's Lilia, who had never bothered for such formalities before.
+
+— [Master], are you free? You don't mind me stealing some of your time?""",
+LILIA_GOOD_ROUTE_2_OPTION_1 = "How are you feeling after all that happened?",
+LILIA_GOOD_ROUTE_2_OPTION_2 = "Seems you have mentally matured after all",
+
+LILIA_GOOD_ROUTE_2_1 = """— Ah, I'm good. I'm glad you didn't agree to that offer.""",
+LILIA_GOOD_ROUTE_2_2 = """— I guess I get scolded so often it comes naturally to me now.""",
+
+LILIA_GOOD_ROUTE_2_CONTINUE = """
+
+— I would like to visit my old home. It's been a while since I moved here. Can we go there at some point? There’s that feeling people call… Nostalgia, I think?""",
+LILIA_GOOD_ROUTE_2_CONTINUE_OPTION_1 = "Sure, it can be fun",
+LILIA_GOOD_ROUTE_2_CONTINUE_OPTION_2 = "If I get some free time",
+
+LILIA_GOOD_ROUTE_2_CLOSE = """— Yay, thank you [Master], I'll prepare my stuff for the trip!""",
+
+# Address Lilia (at the village option)
+LILIA_GOOD_ROUTE_3 = """As you bring Lilia to her home village, she quickly notices her old friends. She brightens up and flies to them.
+
+Lilia: — Hey, guys, how are you doing?
+
+Fairy1: — Hey, isn't it the weirdo who left us with some outsider? 
+
+Fairy2: — Sure it's her, haha. What have you come for now? Hey, don't come too close, don't wanna catch your freakiness and whatever you got at the human city.""",
+
+LILIA_GOOD_ROUTE_3_CONTINUE = """Lilia glooms but is not surprised by her old friend's reaction.
+
+Lilia: — I... just wanted to see home... And you, guys.
+
+Fairy1: — Home? You've left it, we don't need you here. Besides, you've always been more interested in those dirty outsiders.
+
+Fairy2: — Whatever, just don't get in our way. 
+
+The fairies fly away to play outside with Lilia following them, leaving you alone for a while.""",
+
+LILIA_GOOD_ROUTE_3_CONTINUE_2 = """As the group approaches a small clearing, they spot something unusual: A unicorn is standing there, a mystically rare creature, so rich with magic energy it is greatly desired by fairies, to the point they hardly can resist approaching one when they see it.
+
+Fairy1: — No way! Look, it's a unicorn!
+
+Fairy2: — Wow! For real, we must’ve been blessed! 
+
+Fairy1: — Yeah, even with Lilia being with us.""",
+
+LILIA_GOOD_ROUTE_3_CONTINUE_3 = """The fairies happily dash in its direction, but Lilia freezes. The time spent outside of the forests stirs some worries inside of her.
+
+Lilia: — Wait... This isn't normal...
+
+Fairy1: — Don't be stupid, have humans rotted your brain?
+
+As the fairies surrounded the unicorn, Lilia worryingly stood behind the bushes.""",
+
+LILIA_GOOD_ROUTE_3_BANDIT = """In the next moment the big net hidden under the leaves on the ground has lifted, quickly trapping all of the fairies inside.
+
+Fairy1: — W-wha.?! Agh, it's a trap!
+
+Boss: — Haha, told you, just put a cone on a white horse and these dumb fairies are ours.
+
+Small Bandit: — For real, who could've thought it was gonna be this easy.
+
+Lilia in panic observed how her friends had been caught. As she realizes what happened, she rushes back to the village.""",
+
+	LILIA_GOOD_ROUTE_3_CONTINUE_4 = """— [Master]! Quick..!
+
+Lilia dashes at you tugging on your hand asking to follow to the place where her friends have just been caught by the bandits. You slowly move through the woods annoyed by the fact you can't get around here as quickly as her.""",
+
+	LILIA_GOOD_ROUTE_3_CONTINUE_5 = """You arrive at the clearing, spotting the bandits, tied down fairies and a clean white horse with what resembles a horn on its head.
+
+Fat bandit: — Oi, look, it's that [guy] again.
+
+Boss: — What do you want? This is our prey that we got fair and square. These are in good demand on the slave market. 
+
+Small bandit: — And really easy to get too. You even got one yourself, didn't ya?
+
+Lilia: — You can't, this is wrong! These are my friends… even if they were jerks to me…""",
+
+	LILIA_GOOD_ROUTE_3_CONTINUE_6 = """Boss: — It seems we have a dispute at our hands. Say, [name], if I remember right? How about you put a blind eye on us, and we can share some of our future profits right now. 700 gold sounds good, doesn't it?
+
+Lilia: — Y-you are saying... [Master], you aren't planning to..?
+
+Small Bandit: — This is a grownup world, little fairy, you should just consider yourself lucky to find a protector like [him]. 
+
+Lilia quiets down, but her eyes visibly water.""",
+
+	LILIA_GOOD_ROUTE_3_OPTION_1 = "This is a fine deal",
+	LILIA_GOOD_ROUTE_3_OPTION_2 = "I have a better idea, I'm gonna take these fairies for myself *Attack*",
+	LILIA_GOOD_ROUTE_3_OPTION_3 = "I don't deal with slavers *Attack*",
+	LILIA_GOOD_ROUTE_3_OPTION_4 = "[Strength Factor] Why don't you get lost right now or I'll beat your ass and take you to Aliron authorities",
+
+	LILIA_GOOD_ROUTE_3_CHOICE_1 = """You agree to the proposal from the bandits and receive their gold. As they disappear from clearing, you turn back to devastated Lilia who just had her friends taken away in front of her.
+
+	Lilia: — [Master], you really let take them away just like this? I can't believe you.""",
+
+	LILIA_GOOD_ROUTE_3_CHOICE_1_OPTION_1 = "[Charm Factor] They might be better this way. Besides, they have been cruel to you",
+	LILIA_GOOD_ROUTE_3_CHOICE_1_OPTION_2 = "It was their fault to get caught",
+
+	LILIA_GOOD_ROUTE_3_CHOICE_1_1 = """Lilia: — I-I see... I guess you are right. The world is a dangerous place and I should be grateful for being with you.
+
+Lilia seemingly accepts your explanation and, despite her ruined mood, obediently follows you back to your mansion, her only home.""",
+
+	LILIA_GOOD_ROUTE_3_CHOICE_1_2 = """Lilia: — N-no, I can't! You are just seeing us... me as an object you can take and sell like that! 
+
+	Before you can say anything back, Lilia disappears in the woods. No matter how much you try to search for her, she never comes out to you.""",
+
+	LILIA_GOOD_ROUTE_3_CHOICE_2 = """As the bandits retreat, leaving their catch to you, you observe the three wriggling fairies fully at your mercy. Since their mouths are gagged the only person who would be able to advocate for them is Lilia.
+
+Lilia: — W-wait, [Master], you really gonna take them to yourself?""",
+
+	LILIA_GOOD_ROUTE_3_CHOICE_2_OPTION_1 = "[Charm Check] It will be better this way, besides, they have been cruel to you",
+	LILIA_GOOD_ROUTE_3_CHOICE_2_OPTION_2 = "Yes, it was their fault to get caught",
+	LILIA_GOOD_ROUTE_3_CHOICE_2_OPTION_3 = "Nah, I was just kidding",
+
+	LILIA_GOOD_ROUTE_3_CHOICE_2_1 = """Lilia: — I-I see... I guess you are right. The world is a dangerous place and I should be grateful for being with you.
+
+Lilia seemingly accepts your explanation and despite ruined mood obediently follows you back to your mansion and her only home with her former friends as your prey.""",
+
+	LILIA_GOOD_ROUTE_3_CHOICE_2_2 = """Lilia: — N-no, I can't! You are just seeing us... me as an object you can take and sell like that! 
+
+Before you can say anything back, Lilia disappears in the woods. No matter how much you try to search for her, she never comes out to you. But at least you get to keep her former friends as a replacement.""",
+
+	LILIA_GOOD_ROUTE_3_CHOICE_4 = """Boss: — Damn you... Fine, let's go guys, we'll do better next time.""",
+
+	LILIA_GOOD_ROUTE_3_CHOICE_4_1 = """Boss: — Hmph, we'll see about it. Get them, guys.""",
+
+# Set fairies free
+	LILIA_SET_FAIRIES_FREE = """You set free the three fairies and they quickly back away from you.
+
+Fairy1: — Damn it, dumb humans! If not for their stupid trap they would never got us!
+
+Fairy2: — Thank you, stranger. I guess you aren't so bad after all.""",
+
+	LILIA_SET_FAIRIES_FREE_OPTION_1 = "You should thank Lilia",
+	LILIA_SET_FAIRIES_FREE_OPTION_2 = "Don't get caught next time",
+	LILIA_SET_FAIRIES_FREE_OPTION_3 = "Shoo, go now! Wild fairies shouldn't get familiar with humans",
+
+	LILIA_SET_FAIRIES_FREE_1 = """Fairy1: — Hmh, I suppose, even you can be useful at times.
+
+Fairy3: — S-sorry for bullying you, Lilia. 
+
+Fairy2: — Yeah. After all, you've proved to be a true friend, or something. 
+
+As the fairies leave the place, Lilia seems relieved how everything went well getting ready to return with you to the mansion.""",
+
+	LILIA_SET_FAIRIES_FREE_2 = """Fairy2: — It's alright, we'll be careful next time. 
+
+Fairy3: — S-sorry for bullying you, Lilia. 
+
+As the fairies leave the place, Lilia seems relieved how everything went well getting ready to return with you to the mansion.""",
+
+	LILIA_SET_FAIRIES_FREE_3 = """Fairy1: — What the heck, you think we are animals or something? 
+
+Fairy2: — It's alright, we'll be careful next time. 
+
+Fairy3: — S-sorry for bullying you, Lilia. 
+
+As the fairies leave the place, Lilia seems relieved how everything went well.""",
+
+	LILIA_SET_FAIRIES_FREE_CONTINUE = """Lilia: — Phew, I'm glad they didn't try flirting with you, I guess they were shocked... Now that I got a bit of recognition, I think I'm ready to leave for good now. With you, [Master].""",
+
+# Bad route (3 days after previous event)
+	LILITH_BAD_ROUTE_1 = """As you sit in your office you are suddenly interrupted by Lilith who seductively smiles at you from under the table. 
+
+— [Master], you aren't too busy with work, are you?""",
+	LILITH_BAD_ROUTE_1_OPTION_1 = "How did you get inside?",
+	LILITH_BAD_ROUTE_1_OPTION_2 = "This is not quite like you, are you alright?",
+	LILITH_BAD_ROUTE_1_OPTION_3 = "Not busy for you at all",
+
+	LILITH_BAD_ROUTE_1_1 = """— Hehe, surprised you? With my new powers I can do some cool tricks, isn't it fun?""",
+
+	LILITH_BAD_ROUTE_1_2 = """— Ah, better than ever. You are such a worrywart, [Master]. You should just relax and let things happen sometimes.""",
+
+	LILITH_BAD_ROUTE_1_3 = """Lilith smiles mischievously. 
+
+— That's great! I wanted to ask you for something... personal. I wanted to visit my old home for a bit. I've been feeling somewhat nostalgic. I know this is a lot to ask, so I'm ready to sweeten my request and... Show you another trick I've acquired.
+
+The demonic fairy girl looks down at your crotch with almost tangible expectation.""",
+
+	LILITH_BAD_ROUTE_1_3_OPTION_1 = "There's no need, I can take you there",
+	LILITH_BAD_ROUTE_1_3_OPTION_2 = "This new trick of yours must be something",
+
+	LILITH_BAD_ROUTE_1_3_1 = """— Awww, you really aren't in the mood right now? Such a shame. Well, don't forget to take me with you once you go there.""",
+
+	LILITH_BAD_ROUTE_1_3_2 = """As she hungrily gulps down on your seed, Lilith looks back up to you.
+
+— Mmmm this is so satisfying. I can feel how it fills me with power.
+
+— Now, I'm looking forward to our trip together.
+
+As Lilith leaves you alone you are left with an impression she was way more enthusiastic about sucking you off than actually visiting her homeland.""",
+
+# Address Lilith (at the village option)
+	LILITH_BAD_ROUTE_2 = """You bring Lilith to her home village which makes her smile widely.
+
+Lilith: — Ah, this place brings back memories. I might be sticking out a bit like this, ain't I?
+
+She finally spots her old friend and flies over to them.
+
+Lilith: — Hehe, haven't seen you guys in a while.""",
+
+	LILITH_BAD_ROUTE_2_CONTINUE = """Fairy1: — Look, isn't it the weirdo who chased after an outsider? 
+
+Fairy2: — Lilia? You look different now.
+
+Fairy1: — Yeah, what's up with these dumb horns and the tail? 
+
+Despite the harsh words Lilith only returns a gleeful smile. However, her tone has a hint of provocation in it.
+
+Lilith: — I like them a lot, you know.""",
+
+	LILITH_BAD_ROUTE_2_CONTINUE_2 = """Fairy1: — Whatever, you freak us out, am I right? 
+
+Fairy2: — …She kinda feels different now.
+
+Fairy1: — Why don't you take your new friend you’ve come here with and get lost? I bet this oaf have made you into one big ho-
+
+Before the fairy could finish Lilith has shot a magic spell at her, binding her neck and dragging her closer.""",
+
+	LILITH_BAD_ROUTE_2_CONTINUE_3 = """The other two fairies have flown away in a panic leaving their friend in Lilith's grasp, who now had her own hands over her neck. The shock and panic of being attacked has left her speechless.
+
+Lilith: — Hahah, why are you so quiet now? Don't like how I look in close? Have trouble breathing? 
+
+Fairy1: — L-let me... go...
+
+Lilith: — Hihi, you don't get what I can do to you now, do you?""",
+
+	LILITH_BAD_ROUTE_2_OPTION_1 = "*Order Lilith to let her go*",
+	LILITH_BAD_ROUTE_2_OPTION_2 = "*Say nothing*",
+
+	LILITH_BAD_ROUTE_2_CHOICE_1 = """Lilith irritatingly eases her hold on the other girl, making her fall on the ground.
+
+Lilith: — Why, [Master]? She deserved a lesson for all the treatment I got from her in the past. She was bad mouthing you!
+
+Before the fairy could crawl away, Lilith switched her attention back, binding her to the ground with the demonic magic.
+
+Lilith: — [Master], you can take her as your slave. No one here would mind her missing.
+
+The laying fairy looks at you in complete shock and disbelief to what can be her new fate.
+
+Fairy: — Y-you won't dare, you filthy [race]! Let me go right now!""",
+
+	LILITH_BAD_ROUTE_2_CHOICE_2 = """Lilith: — I think I found another pleasure in this world. It doesn't compare to [Master]'s cock, but it's really nice to see you whimper in my hands. 
+
+Lilith releases her hold making the other girl fall on the ground, completely powerless. 
+
+Lilith: — [Master], I've an amazing idea. Why don't you make this nasty fairy your slave? No one here would mind her missing.
+
+The laying fairy looks at you in complete shock and disbelief to what can be her new fate.
+
+Fairy: — Y-you won't dare, you filthy [race]! Let me go right now!""",
+
+	LILITH_BAD_ROUTE_2_CHOICE_OPTION_1 = "*Accept proposal and enslave Lilia's friend*",
+	LILITH_BAD_ROUTE_2_CHOICE_OPTION_2 = "*Refuse*",
+
+	LILITH_ACCEPT_PROPOSAL_1 = """Lilith's face lightens with a pure joy at your agreement. 
+
+Lilith: — Yay, I knew it, you are the best, [Master]! Hehe, we can even play all together with her, but let's not be too rough.
+
+The poor fairy is gagged and taken away by you and the demonic fairy. After that Lilith never showed any interest in visiting her hometown again.""",
+
+	LILITH_REFUSE_PROPOSAL_2 = """Lilith visibly grumps but does not protest against your decision. The laying fairy is freed from her binds, making her instantly flee from the scene.
+
+Lilith: — Why not, [Master]? You didn't like her? You could've sold her off to someone then. She really needed to be punished.""",
+	LILITH_REFUSE_OPTION_0_1 = "What you did was wrong, you can't just subject your friends to cruel things like that",
+	LILITH_REFUSE_OPTION_0_2 = "She's a small fry not worthy of my attention or your revenge",
+	LILITH_REFUSE_OPTION_0_3 = "Forget about it, I'm not in the mood",
+	LILITH_REFUSE_OPTION_1 = """Lilith gives you an offended disagreeable look but does not dare to get into argument and turns away with a *hmph!*. You decide to leave the settlement and she does not protest as you get home. Eventually she lets her grudge pass completely and never again brings up her homeland.""",
+
+	LILITH_REFUSE_OPTION_2 = """Lilith looks at you with even greater respect than you previously thought she could have.
+
+Lilith: — Wow, now that you say it, this is true. Well, it's still good that I taught her a lesson, but you are completely right, we are far above her, hahaha.
+
+With that satisfaction Lilith travels back with you to the mansion, never again bringing up her homeland.""",
+
+	LILITH_REFUSE_OPTION_3 = """Lilith looks worried she might have disappointed you in some unexpected way, so compassionately she flies over to you.
+
+Lilith: — Sorry, [Master]. We can go back now, I don't need this place anymore.
+
+True to her words after you return from the village, she never again seems to care about it.""",
+
+	LILITH_NEW_SEX_SCENE = """In recent days Lilith's libido seems to be only growing. As you came inside her, she was filled with energy every time, but only after a couple of days or less she was coming down on you again and again. You could've mistaken it for her usual lustiness, but each session left you more drained every time, to the point you figured something has to be done about it. Perhaps, someone from the Mages Guild might be able to give you an advice.""",
+	LILITH_MAGE_GUILD_OPTION_0 = "Ask about Lilith",
+	LILITH_MAGE_GUILD_OPTION = """Myr gives you her regular scornful look telling you she does not want to deal with this.
+
+— If you are this stupid to strike deals with evil beings, I know someone else you can find a common language with. You know too, so go now, I still have work to do.
+
+You realize she must mean her sister, so it seems to be the time to visit Xari again.""",
+
+	LILITH_XARI_LOCATION = """You humbly tell Xari about all that has happened since the moment of Lilia's transformation. As her sister implied, Xari wasn't repulsed at all, instead showing more interest in the subject than anything.
+
+— So that's the fairy you've been curing before? What a depraved [guy] you are after all. You say the demon's name was Ashmedai? I think I remember reading about him once. I'm pretty sure he uses the girl as a conduit to drain the energy for himself. She gets the energy from you, but because of the connection it soon is all gone so she's all horny and needy again. 
+
+— Unless you are planning to get rid of her, you'll have to do something about that patron of hers. He can't control her directly so you can even turn her against him, but don't expect to undo the transformation or her soul change. If she gets to keep all the energy she gets from you, she might be quite powerful though.""",
+
+	LILITH_THANK_XARI_OPTION = "Thank you, you do know a lot about these things",
+
+	LILITH_THANK_XARI = """— Such magic is dangerous, often forbidden and pretty arousing. For interests like this I live here, but it's manageable when you get used to it. You can't blame royalties for banning it when it could easily cause great political disasters by charming some big deal into falling for you.
+
+— You brought an interesting story to me today, maybe one day you'll bring that demon fairy girl with you, it might be even more curious. But in either case feel free to visit me again.""",
+
+	LILITH_PATRON_MEETING_OPTION = "Ask Lilith about how to meet her patron",
+	LILITH_PATRON_MEETING = """You explain to Lilith how you want to deal with her patron which seems to be the cause of her constant thirst.
+
+— Oh, hmmm I'm not sure I can help much here. Sorry, [Master]. Maybe there's some other way you can get to him?
+
+It seems she's reluctant to endanger her new powers. Perhaps, earning her trust will change her mind.""",
+	LILITH_PATRON_MEETING_2 = """You explain to Lilith how you want to deal with her patron which seems to be the cause of her constant thirst.
+
+— Hmm, well if you believe it's for the best, I can request a meeting with the creep who has helped us with the ritual. 
+
+Lilith uses her powers meditating alone for a while. Soon she leaves her room and gives you directions to the dungeon they seem to be hiding at.""",
+
+LILITH_FINISH_NEW_DUNGEON = """You arrive at the room Lilith pointed out to you. The same robbed man you’ve previously met bows to her questioningly.
+
+— What brought our fated Champion here?
+
+Lilith looks at you trusting to lead the conversation here.""",
+	LILITH_FINISH_NEW_DUNGEON_OPTION_1 = "You've deceived Lilith and have been stealing powers from her",
+	LILITH_FINISH_NEW_DUNGEON_OPTION_2 = "I want her free from your deal",
+
+LILITH_DEAL_1_1 = """Man: — W-we don't know what you are talking about. Obviously this was part of the deal for her to serve her deity.
+
+Lilith looks at the man with visible anger.
+
+Lilith: — The hell? This is true? This is why I constantly need more energy without even using any?""",
+
+LILITH_DEAL_1_2 = """Man: — You can't. This was part of the deal. She has to feed our patron in exchange for the powers she has received.
+
+Lilith looks at the man with visible anger.
+
+Lilith: — The hell? This is true? This is why I constantly need more energy without even using any?""",
+
+LILITH_DEMON_VOICE = """The sound of a deep, familiar voice rings through the cave ceiling.
+
+Voice: — That is enough, you are my Champion and you got your share of power. Who do you think you are to talk back on it now?
+
+Contrary to your expectations, Lilith does not seem to be frightened by this at all. 
+
+Lilith: — No way, if it hurts [name], I won't be doing it. 
+
+Voice: — Turn back, I won't tolerate disobedience from you.""",
+
+	LILITH_DEMON_VOICE_OPTION_1 = "Then you should be good at tolerating the beating *Attack*",
+	LILITH_DEMON_VOICE_OPTION_2 = "[Warlock/Witch] Just give up on it, despite your best effort, I've won the girl over, she won’t follow your bidding.",
+
+	LILITH_BEAT_DEMON = """As you deal sufficient damage to the demonic beast summoned by the man, it shrivels back into the void it came from. The previously heard voice rings through the cave once again.
+
+Voice: — Damn you, mortal. Fine, have it your way. But I'll not forget this.
+
+With that said, the purple mist surrounds Lilith and quickly dissipates. Judging from her reaction, she does not feel any worse and the energy draining curse has been lifted from her.
+
+Lilith: — Aah, I feel it. Thanks, 'Dad'. Not to overstay our welcome, [Master], I think we can go now.
+
+There's no response from the voice and the man in the robes has nothing to add so you quickly retreat.""",
+
+	LILITH_DEMON_SUBMISSION = """You feel the ceiling rumbling with the demon's anger, but as you get ready for the fight, it suddenly stops.
+
+Voice: — So be it, damn mortal. You win… This time.
+
+With that said, the purple mist surrounds Lilith and quickly dissipates. Judging from her reaction, she does not feel any worse and the energy draining curse has been lifted from her.
+
+Lilith: — Aah, I feel it. Thanks, 'Dad'. Not to overstay our welcome, [Master], I think we can go now.
+
+There's no response from the voice and the man in the robes has nothing to add so you quickly retreat.""",
+
+	LILITH_AFTER_DEMON_DEFEAT = """Lilith: — You know, even though I don't feel any energy leaving my body anymore, I'm not really 'full' now. How about you stuff me with your big strong cock once we are back, [Master]?""",
+
+	LILIA_TRANSFORM_1 = """The robed man raises his hands and bolts of dark energy spark and gather around Lilia, forming many small portals through which tendrils escape from. Lilia looks at all the appendages with a glint of curiosity in her eyes, and lies down as instructed by the man. The tentacles slither out of each opening, sprawling toward Lilia as she gazes at them.
+
+– These look strong...
+
+Each tentacle wraps around Lilia's body, spreading a slimy substance along her skin as they explore her warm body. They pull away the cloth covering her pussy, slithering over her clit and tickling it. A few tentacles coil around her breasts, playing with her nipples to mollify her for the upcoming ordeal.
+
+A tentacle slides into her mouth, occupying her throat for the ritual about to commence.""",
+	LILIA_TRANSFORM_2 = """Two tentacles enter Lilia's pussy and ass, stretching them to their limits as they slide in without regard for her body. Filling all of her holes, the tentacles writhe and slither inside her, a trickle of dark energy stimulating her body that gets stronger and stronger the longer the tentacles lodge themselves inside her.
+
+Lilia: – Mmhm... 
+
+Moans of pleasure escape Lilia's mouth despite her seemingly uncomfortable restricted state. Suddenly a deep voice looms over the cave.
+
+Voice: — Yes... You are a perfect subject for my power, I can feel your essential lust and perverse dormant in your body. Let us awaken it.
+
+After a few minutes, the energy gathers in each of her holes, a viscous liquid oozing out of Lilia's mouth, pussy, and ass. A small amount of clear fluids escape her pussy too, mixing in with the tentacle goop that pumps itself inside her. She swallows all of it obediently as her eyes glaze over, her body beginning to relax.""",
+	LILIA_TRANSFORM_3 = """As the ritual progresses, her body begins to undergo changes. Her hair darkens, shadowy marks show up on her body, two horns sprout from her head and a cute little tail extends from her ass. Lilia seems even more intrigued by the changes happening to her body, letting the tentacles explore wherever they want.
+
+Lilia: — Aah... I feel something... Is happening to me...
+
+Pumping and thrusting into her, the tentacles release another wave of dark cum that spills out of Lilia, forcing her orgasm out as her body gets used to being a seedbed for the malicious creature.""",
+	LILIA_TRANSFORM_4 = """As the tentacles keep providing Lilia with pleasure and new orgasms, while pumping her with the dark energy, her looks completely change into a whole new person. Her horns and tail have matured, the shadows have become black marks, and her eyes have gained a demonic glow and mischievous stare. Even her wings have been affected, changed like her now blood-red hair.
+
+Another round of demonic cum is pumped into her willing body, finishing her transformation as she happily suckles on the tentacle feeding her the sustenance which gives her so much pleasure.
+
+Lilia: — This really was amazing. I've never felt this good... and strong.
+
+As the tentacle feeds her corrupted fluids, her eyes glaze over and you insert yourself into her overtly relaxed body. Her pussy clamps to you tight once you enter, suckling on your dick for the meal that it desires so much. You thrust into her as you watch the tentacle fuck her throat, the corrupted cum spilling down the sides of her mouth.""",
+	LILIA_TRANSFORM_5 = """As the ritual progresses, her body begins to undergo changes. Her hair darkens, shadowy marks show up on her body, two horns sprout from her head and a cute little tail extends from her ass. Lilia seems even more intrigued by the changes happening to her body, letting the tentacles explore wherever they want.
+
+Lilia: — Mmhm... 
+
+Moans of pleasure escape Lilia's mouth despite her seemingly uncomfortable restricted state. Suddenly a deep voice looms over the cave.
+
+Voice: — Yes... You are a perfect subject for my power, I can feel your essential lust and perverse dormant in your body. Let us awaken it.""",
+	LILIA_TRANSFORM_6 = """Time passes as Lilia's corruption becomes deeper, horns, tail, and dark shadows on her body all signs of her transformation. As she succumbs to dark temptations, her pussy becomes tighter, almost more playful as it begs for your cum. You stave off as you make short thrusts into her, observing her growing features with bated breath as she guzzles purple cum, gulp after gulp.
+
+Lilia: — Aah... I feel something... Is happening to me...
+
+With her transformation nearly complete, you push into her faster and faster, watching her new tail wag around and her demonic eyes focus on you. Your little fae has transformed into your little succubus, horns and all. Her slutty body licks at the tentacle in her mouth, begging it to unload corrupted cum down her throat forever.""",
+	LILIA_TRANSFORM_7 = """You mark the ritual as completed yourself with a flair of cum that floods her pussy. Her body drinks your seed as much as she drinks the tentacle's fluids, clamping around your cock to entice you to stay. As much as you'd like to indulge, you pull away to claim your newly transformed demon slave
+
+Lilia: — This really was amazing. I've never felt this good... and strong... And you didn't shy away from doing it with me too, [Master].
+
+The voice announces the end of the ritual.
+
+Voice: — With this you are born anew, and you will require a new name. I declare that you are Lilith, my champion. 
+
+With that the magic seals and tentacles disappear leaving you alone with Lilith who seems very pleased with her new form.""",
+	LILITH_BLOW_1 = """Lilith presses her breasts around your cock, their petite stature unable to completely cover your shaft. The warmth of her body is slightly different to how it used to be, a little hotter and somehow tingly as your cock slides along her skin. Her tits point their nipples towards you as they rise and fall, building friction for you to grow in anticipation of something greater.
+
+— Let me show you how I can please you, [Master].""",
+	LILITH_BLOW_2 = """Slithering out of Lilith's mouth is her tongue, elongated by the use of her new powers. It wraps around your tip, stroking it up and down just like her breasts as it licks up droplets of precum leaking from your head. Lilith giggles as she licks your cock as an artform, tightening her tongue to squeeze out more precum for her to taste.
+
+— Hehe, does this excite you? This is just one of the new cool tricks I've learned. """,
+	LILITH_BLOW_3 = """Before long, Lilith takes your head into her mouth, surrounding it in warmth and moistness as her saliva coats your cock. Her tits draw you further in as she pulls you towards her to fit deeper into her throat, the warmth adding pressure to your tip that makes it throb.""",
+	LILITH_BLOW_4 = """Her tongue coils around your shaft, encasing it in saliva and cleaning every inch it can lick. Lilith looks into your eyes as she sucks your cock with hungry suckles, watching you squirm as she licks every sensitive area on your cockhead. She practically drinks your precum as you feel the urge to cum rising in your body, coming to a head in your tip as she wrings your cock with her tongue.
+
+— Your cock is the best treat, [Master]...""",
+	LILITH_BLOW_5 = """In a sudden moment, you burst cum into her throat, your sticky seed overflowing from her mouth. Lilith's eyes glow as she nourishes herself with your cum, swallowing it down as she sucks out every drop from your tip. Her tits keep you locked in place while her tongue wraps around more of your shaft, making you throb against your warm prison as you give her the precious energy she seeks.
+
+— Aahh... Was it fun, [Master]? Sorry, it felt like I was the one who got the best out of this, hope you still will comply to my little request.""",
+	LILITH_RIDE_1 = """You open your eyes to a warm feeling surrounding your cock, Lilith's pussy wrapping around it and engulfing it in her dripping juices. She licks her lips as her fluids cover your shaft from her lower lips, preparing you to enter her and give her the sustenance she desires.
+
+— Good morning, [Master]. Sorry, I felt so lonely that I couldn't hold myself back anymore.""",
+	LILITH_RIDE_2 = """Angling your dick to insert into herself, her pussy clamps around your shaft, pulling it deeper into her as she slides herself down on your cock. Before long, you're fully inserted and watching as Lilith raises herself up only to drop back down on your crotch. She settles into a constant rhythm, using your dick as a means to pleasure herself as she throws her pussy down on you again and again.
+
+— Ah, I put it in without asking. But it's not my fault you have the very cock I need. """,
+	LILITH_RIDE_3 = """The constant thrusts and stimulation wear down on you quickly as you throb inside her, a sudden urge to let go of your resistance overwhelming your mind. Your cum splurges into her, filling her tunnel in seconds as you give her the energy she seeks from you. Lilith's pussy rewards you with fluids of its own as she cums, the influx of energy making her more excited.
+
+— Yes! [Master], give me your energy!.. All of it...""",
+	LILITH_RIDE_4 = """You watch as her eyes glow with renewed vigor from your cum fueling her body, her naughty stare centered on you as thoughts of getting seconds flash across her eyes. Her pussy tightens around you, sucking your cock for her as it tries to coax every drop into her demonic womb. You prepare yourself to feed her again as she licks her lips more and more thinking about your cock, sliding all the way down on it as she begins again...
+
+— Just one more time won't really hurt, right?""",
+
+#LILITH_BAD_ROUTE_2_CHOICE_1_1 =
 	
 	
 	#   QUESTS   #
@@ -13011,6 +13605,24 @@ You hold Cali close and kiss her, spending the rest of the night close together 
 	AMELIA_MAIN_STAGE_10 = "Purchase Amelia from Servants",
 	AMELIA_MAIN_STAGE_11 = "Talk to Amelia in your mansion",
 	
+	LILIA_FINALE_QUEST_NAME = "",
+	LILIA_FINALE_QUEST_SUMMARY = "",
+	LILIA_FINALE_QUEST_STAGE_1 = "", # go to workers
+	LILIA_FINALE_QUEST_STAGE_2 = "", # complete dungeon
+	LILIA_FINALE_QUEST_STAGE_3 = "", # Report back to Sigmund
+	LILIA_FINALE_QUEST_STAGE_4 = "", # wait for flirting
+	LILIA_FINALE_QUEST_STAGE_5 = "", # complete grove dungeon
+	LILIA_FINALE_QUEST_STAGE_6 = "", # wait for bad route scene
+	LILIA_FINALE_QUEST_STAGE_7 = "", # wait for good route scene
+	LILIA_FINALE_QUEST_STAGE_8 = "", # go to Lilia village
+	LILIA_FINALE_QUEST_STAGE_9 = "", # reserve for good route ending
+	LILIA_FINALE_QUEST_STAGE_10 = "", # go to Lilith village
+	LILIA_FINALE_QUEST_STAGE_11 = "", # wait for sex scene
+	LILIA_FINALE_QUEST_STAGE_12 = "", # go to mages
+	LILIA_FINALE_QUEST_STAGE_13 = "", # go to Xari
+	LILIA_FINALE_QUEST_STAGE_14 = "", # ask Lilith about patron
+	LILIA_FINALE_QUEST_STAGE_15 = "", # clear new patron dungeon
+	
 	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n— H-hello, [Master]... How was your day?",
 	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her motivation. She stays silent having no words for you.\n\n— ......",
 	DIALOGUEANAINITIATEHP = "Anastasia greets you with a smile. Even though she does not show it, she looks rather content.\n\n— [Master]. Are you feeling well? What can I do for you?",
@@ -13035,7 +13647,8 @@ You hold Cali close and kiss her, spending the rest of the night close together 
 	DIALOGUELILIAINITIATEL = "Lilia appears before you cheerfully smiling.\n\n— [Master]? Whatcha doin'? Did you came to play with me?",
 	DIALOGUELILIAINITIATEH = "The small fairy impatiently jumps at you as you summon her. \n\n— It's been so lonely without you, [Master]! Are you gonna cheer me up?",
 	DIALOGUELILIAINITIATEM = "Your extravagant wife, Lilia, passionately greets you barely hiding her excitement.\n\n— [Master], you've been missing Lilia? Let's go to bed already!",
-	DIALOGUEJEANINITIATEM = "",
+	DIALOGUEJEANINITIATEM = "— Yes? Don't just give me that oogling look, if you don't have anything serious I have business to do.",
+	DIALOGUELILITHINIT = "— [Master], you wanna play? I'm always ready to play.",
 	
 	DIALOGUEZEPHYRA_UNDERWEAR = "In your hands you hold a piece of clothing which was surrendered to you by Zephyra. Pondering on what actual benefit it can have, one mind is stuck in your mind... What if you wear it on your head? Surely, this is a terrible idea...",
 	DIALOGUEZEPHYRA_UNDERWEAROPTION = "Do it",
@@ -14270,6 +14883,16 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_ANCIENT_JUNGLE_LOCATION_TEXT = "Ancient Ruins",
 	QUEST_ANCIENT_JUNGLE_LOCATION_DESC = "",
 	
+	QUEST_ELVEN_ANCIENT_JUNGLE_LOCATION_TEXT = "Old Weathered Temple",
+	QUEST_ELVEN_ANCIENT_JUNGLE_LOCATION_DESC = "",
+
+	QUEST_LILIA_DUNGEON_GROVE_TEXT = "Abandoned Grove Hideout",
+	QUEST_LILIA_DUNGEON_GROVE_DESC = "",
+
+	QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_TEXT = "Hidden Grove Abandonment",
+	QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_DESC = "",
+
+	
 	#eventscrits
 	
 	BANDITS_THREAT_QUEST_TEXT1 = "You come to the place finding tracks of the bandits.",
@@ -14339,6 +14962,8 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	SETTLEMENT_FOREST1_1 = "Check Surroundings",
 	SETTLEMENT_FOREST1_2 = "Check Surroundings",
+	SETTLEMENT_FOREST2_1 = "Address Lilia",
+	SETTLEMENT_FOREST2_2 = "Address Lilith",
 	
 	QUEST_FIGHTERS_LICH1 = "Proceed",
 	
@@ -14347,6 +14972,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_MAGES_XARI3 = "Enter",
 	QUEST_MAGES_XARI4 = "Find Xari",
 	QUEST_MAGES_XARI5 = "Find Xari",
+	QUEST_MAGES_XARI6 = "Ask about Lilith",
 	
 	QUEST_MAGES_FRED1 = "Search for Fred",
 	

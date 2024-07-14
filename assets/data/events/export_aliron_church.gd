@@ -134,8 +134,8 @@
 				{type = 'quest_completed', name = 'marriage_quest_servants', check = true},
 				{type = 'quest_completed', name = 'marriage_quest_workers', check = true},
 				], dialogue_argument = 1},
-			{code = 'zephyra_disappearance_bowl_1', text = "ZEPHYRA_DISAPPEARANCE_BOWL_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'zephyra_disappearance_quest', stage = 'stage2'},{type = 'dialogue_seen', value = 'ZEPHYRA_DISAPPEARANCE_BOWL_1', check = false}, {type = 'decision', value = 'GotZephyrasBowl', check = false}], dialogue_argument = 0, type = 'next_dialogue'},
-			{code = 'zephyra_disappearance_bowl_2', text = "ZEPHYRA_DISAPPEARANCE_BOWL_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'zephyra_disappearance_quest', stage = 'stage2'}, {type = 'dialogue_seen', value = 'ZEPHYRA_DISAPPEARANCE_BOWL_1', check = true}, {type = 'decision', value = 'GotZephyrasBowl', check = false}], dialogue_argument = 0, type = 'next_dialogue'},
+			{code = 'zephyra_disappearance_bowl_1', text = "ZEPHYRA_DISAPPEARANCE_BOWL_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'zephyra_disappearance_quest', stage = 'stage2'},{type = 'dialogue_seen', value = 'ZEPHYRA_DISAPPEARANCE_BOWL_1', check = false}, {type = 'decision', value = 'GotFakeZephyraBowl', check = false}], dialogue_argument = 0, type = 'next_dialogue'},
+			{code = 'zephyra_disappearance_bowl_2', text = "ZEPHYRA_DISAPPEARANCE_BOWL_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'zephyra_disappearance_quest', stage = 'stage2'}, {type = 'dialogue_seen', value = 'ZEPHYRA_DISAPPEARANCE_BOWL_1', check = true}, {type = 'decision', value = 'GotFakeZephyraBowl', check = false}], dialogue_argument = 0, type = 'next_dialogue'},
 			
 			{code = 'aliron_church_leave', reqs = [], text = "DIALOGUELEAVE", dialogue_argument = 4},
 		],

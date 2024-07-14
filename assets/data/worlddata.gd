@@ -1174,6 +1174,18 @@ var fixed_location_options = { #override serialized data
 			reqs = [{type = 'active_quest_stage', value = 'lilia_meet_quest', stage = 'stage2'}],
 			args = [{code = 'start_event', data = 'lilia_starting_2', args = []}]
 		},
+		{
+			text = tr("SETTLEMENT_FOREST2_1"), 
+			reqs = [{type = 'active_quest_stage', value = 'lilia_finale_quest', stage = 'stage8'},
+			{type = "location_has_specific_slaves", check = true, value = 1, location = 'settlement_forest1', reqs = [{code = 'unique', value = 'lilia'}]}],
+			args = [{code = 'start_event', data = 'lilith_good_route_village', args = []}]
+		},
+		{
+			text = tr("SETTLEMENT_FOREST2_2"), 
+			reqs = [{type = 'active_quest_stage', value = 'lilia_finale_quest', stage = 'stage10'},
+			{type = "location_has_specific_slaves", check = true, value = 1, location = 'settlement_forest1', reqs = [{code = 'unique', value = 'lilith'}]}],
+			args = [{code = 'start_event', data = 'lilith_bad_route_village', args = []}]
+		},
 	],
 	quest_fighters_lich = [
 		{
@@ -1212,6 +1224,12 @@ var fixed_location_options = { #override serialized data
 			reqs = [
 				{type = 'active_quest_stage', value = 'sick_lilia_quest', stage = 'stage4'}],
 			args = [{code = 'start_event', data = 'xari_clothes_7', args = []}]
+		},
+		{
+			text = tr("QUEST_MAGES_XARI6"), 
+			reqs = [
+				{type = 'active_quest_stage', value = 'lilia_finale_quest', stage = 'stage13'}],
+			args = [{code = 'start_event', data = 'lilith_xari_location', args = []}]
 		},
 	],
 	quest_mages_fred = [
