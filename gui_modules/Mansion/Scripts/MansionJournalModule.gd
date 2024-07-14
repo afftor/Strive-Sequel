@@ -333,8 +333,9 @@ func CompleteQuest():
 
 func select_character_for_quest(reqs):
 	selected_req = reqs
-	selected_req.append({code = 'workrule', value = 'lock', check = false})
-	input_handler.ShowSlaveSelectPanel(self, 'character_selected', reqs.statreqs)
+	var statreqs = reqs.statreqs.duplicate(true)
+	statreqs.append({code = 'workrule', value = 'lock', check = false})
+	input_handler.ShowSlaveSelectPanel(self, 'character_selected', statreqs)
 
 var tchar = null
 func character_selected(character):
