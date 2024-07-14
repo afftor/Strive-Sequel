@@ -268,6 +268,20 @@ var backgrounds = {
 	lilith_ride_2 = load("res://assets/images/fullscreen scenes/FairyCG007.png"),
 	lilith_ride_3 = load("res://assets/images/fullscreen scenes/FairyCG008.png"),
 	
+	lilia_wedding_1 = load("res://assets/images/fullscreen scenes/LiliaCG007.png"),
+	lilia_wedding_2 = load("res://assets/images/fullscreen scenes/LiliaCG008.png"),
+	lilia_wedding_3 = load("res://assets/images/fullscreen scenes/LiliaCG009.png"),
+	lilia_wedding_4 = load("res://assets/images/fullscreen scenes/LiliaCG010.png"),
+	lilia_wedding_5 = load("res://assets/images/fullscreen scenes/LiliaCG011.png"),
+	lilia_wedding_6 = load("res://assets/images/fullscreen scenes/LiliaCG012.png"),
+	lilia_wedding_7 = load("res://assets/images/fullscreen scenes/LiliaCG013.png"),
+	
+	lilith_wedding_1 = load("res://assets/images/fullscreen scenes/LilithCG006.png"),
+	lilith_wedding_2 = load("res://assets/images/fullscreen scenes/LilithCG007.png"),
+	lilith_wedding_3 = load("res://assets/images/fullscreen scenes/LilithCG008.png"),
+	lilith_wedding_4 = load("res://assets/images/fullscreen scenes/LilithCG009.png"),
+	lilith_wedding_5 = load("res://assets/images/fullscreen scenes/LilithCG010.png"),
+	
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
 	blackscreen = load("res://assets/sfx/black.png"),

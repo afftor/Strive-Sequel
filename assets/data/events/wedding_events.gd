@@ -33,6 +33,7 @@ var data = {
 		custom_background = "daisy_wedding1", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "daisy_wedding",
 		image = null, tags = ['dialogue_scene'], reqs = [], 
 		text = [{text = "DAISY_WEDDING_3", reqs = [], }],
 		options = [ {
@@ -107,6 +108,7 @@ var data = {
 		custom_background = "amelia_wedding1", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "amelia_wedding",
 		image = null, tags = ['dialogue_scene'], reqs = [], 
 		text = [{text = "AMELIA_WEDDING_3", reqs = [], }],
 		options = [ {
@@ -209,6 +211,7 @@ var data = {
 		custom_background = "cali_wedding1", 
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "cali_wedding",
 		image = null, tags = ['dialogue_scene'], reqs = [], 
 		text = [{text = "CALI_WEDDING_3", reqs = [{type = 'decision', value = 'cali_raped', check = false}]}, {text = "CALI_WEDDING_3_BAD", reqs = [{type = 'decision', value = 'cali_raped', check = true}]}],
 		options = [ {
@@ -246,6 +249,147 @@ var data = {
 		text = [{text = "CALI_WEDDING_6", reqs = [{type = 'decision', value = 'cali_raped', check = false}]}, {text = "CALI_WEDDING_6_BAD", reqs = [{type = 'decision', value = 'cali_raped', check = true}]}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'complete_quest', value = 'marriage_quest_main'}, {code = 'complete_wedding'} ]
+		}, ]
+	},
+	
+	lilia_wedding_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = "lilia", 
+		text = [{text = "LILIA_WEDDING_1", reqs = []}],
+		options = [ {
+			code = 'lilia_wedding_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
+		},  ]
+	}, 
+	
+	lilia_wedding_2 = {
+		custom_background = "lilia_wedding_1", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "lilia_wedding",
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "LILIA_WEDDING_2", reqs = [], }],
+		options = [ {
+			code = 'lilia_wedding_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ]
+	},
+	
+	lilia_wedding_3 = {
+		custom_background = "lilia_wedding_2", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "LILIA_WEDDING_3", reqs = [], }],
+		options = [ {
+			code = 'lilia_wedding_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ]
+	},
+	
+	lilia_wedding_4 = {
+		custom_background = "lilia_wedding_3", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "LILIA_WEDDING_4", reqs = [], }],
+		options = [ {
+			code = 'lilia_wedding_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ]
+	},
+	
+	lilia_wedding_5 = {
+		custom_background = "lilia_wedding_4", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "LILIA_WEDDING_5", reqs = [], }],
+		options = [ {
+			code = 'lilia_wedding_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ]
+	},
+	
+	lilia_wedding_6 = {
+		custom_background = "lilia_wedding_5", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "LILIA_WEDDING_6", reqs = [], }],
+		options = [ {
+			code = 'lilia_wedding_7', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ]
+	},
+	
+	lilia_wedding_7 = {
+		custom_background = "lilia_wedding_7", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "LILIA_WEDDING_7", reqs = [], }],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ]
+	},
+	
+	lilith_wedding_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		reqs = [], character = "lilith", 
+		text = [{text = "LILITH_WEDDING_1", reqs = []}],
+		options = [ {
+			code = 'lilith_wedding_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', change_dialogue_type = 2
+		},  ]
+	}, 
+	
+	lilith_wedding_2 = {
+		custom_background = "lilith_wedding_1", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "lilith_wedding",
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "LILITH_WEDDING_2", reqs = [], }],
+		options = [ {
+			code = 'lilith_wedding_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ]
+	},
+	
+	lilith_wedding_3 = {
+		custom_background = "lilith_wedding_2", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "LILITH_WEDDING_3", reqs = [], }],
+		options = [ {
+			code = 'lilith_wedding_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ]
+	},
+	
+	lilith_wedding_4 = {
+		custom_background = "lilith_wedding_3", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "LILITH_WEDDING_4", reqs = [], }],
+		options = [ {
+			code = 'lilith_wedding_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ]
+	},
+	
+	lilith_wedding_5 = {
+		custom_background = "lilith_wedding_4", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "LILITH_WEDDING_5", reqs = [], }],
+		options = [ {
+			code = 'lilith_wedding_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		}, ]
+	},
+	
+	lilith_wedding_6 = {
+		custom_background = "lilith_wedding_5", 
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], 
+		text = [{text = "LILITH_WEDDING_6", reqs = [], }],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ]
 	},
 }

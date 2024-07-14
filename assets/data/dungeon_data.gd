@@ -2640,6 +2640,6 @@ var dungeons = {
 		area = 'forests',
 		travel_time = [1,1],
 		scripteventdata = [
-		{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilith_finish_new_dungeon', reqs = [{code = 'active_quest_stage', value = 'lilia_finale_quest', stage = 'stage15'}]}]
+		{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilith_finish_new_dungeon', reqs = [{code = 'active_quest_stage', value = 'lilith_patron_quest', stage = 'stage15'}]}]
 	},
 }
