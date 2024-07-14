@@ -520,11 +520,11 @@ func fix_main_data():
 
 	
 	#fix worlddata, dungeons
-	for i in worlddata.dungeons.values():
-		i.classname = tr("LOCATIONNAME" + i.code.to_upper())
-		#purchase fix
-		if !i.has('purchase_area'):
-			i.purchase_area = 'plains'
+#	for i in worlddata.dungeons.values():
+#		i.classname = tr("LOCATIONNAME" + i.code.to_upper())
+#		#purchase fix
+#		if !i.has('purchase_area'):
+#			i.purchase_area = 'plains'
 	for i in DungeonData.dungeons.values():
 		i.classname = tr("LOCATIONNAME" + i.code.to_upper())
 		#purchase fix
@@ -556,6 +556,16 @@ func fix_main_data():
 	for i in Items.enchantments:
 		Items.enchantments[i].name = tr("ENCH" + i.to_upper())
 		Items.enchantments[i].descript = tr("ENCH" + i.to_upper()+"DESCRIPT")
+	
+	var array = ['bandit_den_nouns','bandit_den_adjs','fire_depths_adjs']
+	for i in array:
+		var newarray = worlddata.locationnames[i]
+		var x = 1
+		var string = (i.to_upper()+str(x))
+		while tr(string) != string:
+			newarray.append(tr(string))
+			x += 1
+			string = (i.to_upper()+str(x))
 	
 	#fix races
 	for i in races.racelist.values():

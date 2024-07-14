@@ -1230,8 +1230,8 @@ func location_purchase(pressed, pressed_button):
 	self.current_pressed_area_btn = pressed_button
 	gui_controller.win_btn_connections_handler(pressed, $BuyLocation, pressed_button)
 	input_handler.ClearContainer($BuyLocation/ScrollContainer/VBoxContainer)
-	for i in worlddata.dungeons.values():
-		if i.type != 'dungeon' || i.code.findn('quest') >= 0:
+	for i in DungeonData.dungeons.values():
+		if i.type != 'dungeon' || i.tags.has('quest'):
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($BuyLocation/ScrollContainer/VBoxContainer)
 		newbutton.set_meta("location_name", i.name)
@@ -1275,7 +1275,7 @@ func purchase_location():
 	if input_handler.selected_area.locations.size() < 8:
 		var randomlocation = []
 		for i in input_handler.selected_area.locationpool:
-			randomlocation.append(worlddata.dungeons[i].code)
+			randomlocation.append(DungeonData.dungeons[i].code)
 		randomlocation = ResourceScripts.world_gen.make_location(
 			purchasing_location.code, input_handler.selected_area
 		)

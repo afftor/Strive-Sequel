@@ -138,7 +138,7 @@ func show_quest_info(quest):
 								newbutton.hint_tooltip += "\n"+ tr(Items.Parts[k].name)  + ": " +str(Items.materiallist[i.parts[k]].name)
 				'complete_location':
 					newbutton.get_node("TextureRect").texture = images.icons[i.code]
-					globals.connecttexttooltip(newbutton, tr("QUESTCOMPLETEQUESTLOC")+": " + tr(worlddata.dungeons[i.type].name))
+					globals.connecttexttooltip(newbutton, tr("QUESTCOMPLETEQUESTLOC")+": " + tr(DungeonData.dungeons[i.type].name))
 				'complete_dungeon':
 					newbutton.get_node("TextureRect").texture = images.icons[i.code]
 					globals.connecttexttooltip(newbutton, tr("QUESTCOMPLETEQUESTLOC2") +  " [color=aqua]" + tr(ResourceScripts.game_world.areas[i.area].name) + "[/color]: [color=yellow]" + tr(i.locationname) + "[/color]")
