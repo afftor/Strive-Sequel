@@ -1496,6 +1496,29 @@ func process_chardata(chardata, unique = false):
 	set_virginity_data()
 
 
+func update_chardata(chardata):
+	#possible 2do remove of innate effects
+	statlist.unique = chardata.code
+	for i in chardata:
+		if !(i in variables.personal_stats):
+			continue
+		if !(i in ['hair_color', 'hair_style', 'hair_length']):
+			if typeof(chardata[i]) == TYPE_ARRAY or typeof(chardata[i]) == TYPE_DICTIONARY:
+				statlist[i] = chardata[i].duplicate(true)
+			else:
+				statlist[i] = chardata[i]
+		elif i in ['hair_color', 'hair_style', 'hair_length']: #effectively 'else'
+			set_stat(i, chardata[i])
+	if chardata.has("traits"):
+		for i in chardata.traits:
+			add_trait(i)
+	if chardata.has("sex_skills"):
+		for skill in chardata.sex_skills:
+			statlist.sex_skills[skill] = chardata.sex_skills[skill]
+	if chardata.has('icon_image'):
+		statlist.dynamic_portrait = false
+
+
 func roll_growth(diff):
 	var weight = {}
 	weight[1] = 100 - (diff - 1) * 100.0/14.0

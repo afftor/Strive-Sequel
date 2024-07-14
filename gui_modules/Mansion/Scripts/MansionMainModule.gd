@@ -799,7 +799,8 @@ func test_mode():
 				{code = 'make_story_character', value = 'Jean'},
 				{code = 'make_story_character', value = 'Zephyra'},
 				{code = 'make_story_character', value = 'Anastasia'},
-				#{code = 'make_story_character', value = 'Amelia'},
+				{code = 'make_story_character', value = 'Lilia'},
+				{code = 'affect_unique_character', name = 'lilia', type = 'turn_into_unique', value = 'Lilith'},
 			]
 		)
 

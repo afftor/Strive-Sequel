@@ -380,6 +380,23 @@ func generate_predescribed_character(data):
 		xp_module.set_service_boost()
 	recheck_effect_tag('recheck_stats')
 
+
+func turn_into_unique(code):
+	var data = worlddata.pregen_characters[code]
+	statlist.update_chardata(data)
+	food.process_chardata(data)
+	xp_module.process_chardata(data) #for testing
+	tags = data.tags.duplicate() #or not
+	skills.setup_skills(data)
+	if data.has('service_boosters'):
+		xp_module.set_service_boost(data.service_boosters)
+	else:
+		xp_module.set_service_boost()
+	update_prt()
+	recheck_effect_tag('recheck_stats')
+	globals.emit_signal("slave_added")
+
+
 func create(temp_race, temp_gender, temp_age):
 	id = characters_pool.add_char(self)
 	learn_c_skill('attack')
@@ -1088,6 +1105,9 @@ func affect_char(i):
 			ResourceScripts.game_party.add_fate(id, tr("REMOVED"))
 			ResourceScripts.game_party.remove_slave(self)
 			input_handler.slave_list_node.rebuild()
+		'turn_into_unique':
+			turn_into_unique(i.value)
+
 
 func teleport(data):
 	var locdata = ResourceScripts.game_world.find_location_by_data(data)
