@@ -1793,21 +1793,12 @@ func common_effects(effects):
 						character.assign_to_quest_and_make_unavalible(k.quest, k.work_time)
 					elif k.code == 'remove_character':
 						ResourceScripts.game_party.remove_slave(character)
-					elif k.code == 'transform_to_lilith':
+					elif k.code == 'transform_to_unique_character':
 						# create Lilith
-						var lilith = ResourceScripts.scriptdict.class_slave.new("common_story")
-						lilith.generate_predescribed_character(worlddata.pregen_characters["Lilith"])
-						lilith.travel.area = input_handler.active_area.code
-						lilith.travel.location = input_handler.active_location.id
-						
-						# unequip everythin from Lilia
-						character.unequip_all()
-						
+						var unique = ResourceScripts.scriptdict.class_slave.new("common_story")
+						unique.generate_predescribed_character(worlddata.pregen_characters[k.unique])
 						# copy stats from Lilia to Lilith
-						copy_stats(character, lilith)
-						
-						ResourceScripts.game_party.add_slave(lilith)
-						ResourceScripts.game_party.remove_slave(character)
+						copy_stats(character, unique)
 						
 					elif k.code == 'add_profession':
 						character.unlock_class(k.profession)
@@ -2704,101 +2695,52 @@ func update_localization_file(update_loc: String, primary_loc = "en"):
 		dir.rename(TranslationData[update_loc].data.replace("main.gd", "main2.gd"), TranslationData[update_loc].data)
 
 # used for lilia -> lilith conversion
-func copy_stats(base_ch, target_ch):
-	target_ch.statlist.traits = base_ch.statlist.traits
-	target_ch.statlist.bonuses = base_ch.statlist.bonuses
-	target_ch.statlist.sex_traits = base_ch.statlist.sex_traits
-	target_ch.statlist.negative_sex_traits = base_ch.statlist.negative_sex_traits
-	target_ch.statlist.unlocked_sex_traits = base_ch.statlist.unlocked_sex_traits
-	target_ch.statlist.reported_pregnancy = base_ch.statlist.reported_pregnancy
+func copy_stats(base_ch, unique_ch):
+	var unique_ch_statlist = unique_ch.statlist.statlist
+	var base_ch_statlist = base_ch.statlist.statlist
 	
-	target_ch.statlist.statlist.personality = base_ch.statlist.statlist.personality
-	target_ch.statlist.statlist.personality_bold = base_ch.statlist.statlist.personality_bold
-	target_ch.statlist.statlist.personality_kind = base_ch.statlist.statlist.personality_kind
-	target_ch.statlist.statlist.old_personality = base_ch.statlist.statlist.old_personality
-	target_ch.statlist.statlist.obedience = base_ch.statlist.statlist.obedience
-	target_ch.statlist.statlist.obedience_max = base_ch.statlist.statlist.obedience_max
-	target_ch.statlist.statlist.obedience_drain = base_ch.statlist.statlist.obedience_drain
-	target_ch.statlist.statlist.loyalty = base_ch.statlist.statlist.loyalty
-	target_ch.statlist.statlist.loyalty_gain = base_ch.statlist.statlist.loyalty_gain
-	target_ch.statlist.statlist.loyalty_total = base_ch.statlist.statlist.loyalty_total
-	target_ch.statlist.statlist.slave_spec = base_ch.statlist.statlist.slave_spec
-	target_ch.statlist.statlist.slave_spec_level = base_ch.statlist.statlist.slave_spec_level
-	target_ch.statlist.statlist.slave_spec_progress = base_ch.statlist.statlist.slave_spec_progress
-	target_ch.statlist.statlist.loyalty_locked = base_ch.statlist.statlist.loyalty_locked
-	target_ch.statlist.statlist.submission = base_ch.statlist.statlist.submission
-	target_ch.statlist.statlist.submission_gain_mod = base_ch.statlist.statlist.submission_gain_mod
-	target_ch.statlist.statlist.submission_degrade_mod = base_ch.statlist.statlist.submission_degrade_mod
-	target_ch.statlist.statlist.lust = base_ch.statlist.statlist.lust
-	target_ch.statlist.statlist.lustmax = base_ch.statlist.statlist.lustmax
-	target_ch.statlist.statlist.lusttick = base_ch.statlist.statlist.lusttick
-	target_ch.statlist.statlist.hpmax = base_ch.statlist.statlist.hpmax
-	target_ch.statlist.statlist.mpmax = base_ch.statlist.statlist.mpmax
-	target_ch.statlist.statlist.upgrade_points_total = base_ch.statlist.statlist.upgrade_points_total
-	target_ch.statlist.statlist.hp_reg_mod = base_ch.statlist.statlist.hp_reg_mod
-	target_ch.statlist.statlist.mp_reg_mod = base_ch.statlist.statlist.mp_reg_mod
-	target_ch.statlist.statlist.hp_reg_add = base_ch.statlist.statlist.hp_reg_add
-	target_ch.statlist.statlist.mp_reg_add = base_ch.statlist.statlist.mp_reg_add
-	target_ch.statlist.statlist.exp_gain_mod = base_ch.statlist.statlist.exp_gain_mod
-	target_ch.statlist.statlist.manacost_mod = base_ch.statlist.statlist.manacost_mod
-	target_ch.statlist.statlist.magic_find = base_ch.statlist.statlist.magic_find
-	target_ch.statlist.statlist.xpreward = base_ch.statlist.statlist.xpreward
-	target_ch.statlist.statlist.loottable = base_ch.statlist.statlist.loottable
-	target_ch.statlist.statlist.productivity = base_ch.statlist.statlist.productivity
-	target_ch.statlist.statlist.mod_build = base_ch.statlist.statlist.mod_build
-	target_ch.statlist.statlist.mod_collect = base_ch.statlist.statlist.mod_collect
-	target_ch.statlist.statlist.mod_hunt = base_ch.statlist.statlist.mod_hunt
-	target_ch.statlist.statlist.mod_fish = base_ch.statlist.statlist.mod_fish
-	target_ch.statlist.statlist.mod_cook = base_ch.statlist.statlist.mod_cook
-	target_ch.statlist.statlist.mod_smith = base_ch.statlist.statlist.mod_smith
-	target_ch.statlist.statlist.mod_tailor = base_ch.statlist.statlist.mod_tailor
-	target_ch.statlist.statlist.mod_alchemy = base_ch.statlist.statlist.mod_alchemy
-	target_ch.statlist.statlist.mod_farm = base_ch.statlist.statlist.mod_farm
-	target_ch.statlist.statlist.mod_pros = base_ch.statlist.statlist.mod_pros
-	target_ch.statlist.statlist.mod_waitress = base_ch.statlist.statlist.mod_waitress
-	target_ch.statlist.statlist.mod_hostess = base_ch.statlist.statlist.mod_hostess
-	target_ch.statlist.statlist.mod_dancer = base_ch.statlist.statlist.mod_dancer
-	target_ch.statlist.statlist.mod_strip = base_ch.statlist.statlist.mod_strip
-	target_ch.statlist.statlist.base_task_crit_chance = base_ch.statlist.statlist.base_task_crit_chance
-	target_ch.statlist.statlist.atk = base_ch.statlist.statlist.atk
-	target_ch.statlist.statlist.matk = base_ch.statlist.statlist.matk
-	target_ch.statlist.statlist.hitrate = base_ch.statlist.statlist.hitrate
-	target_ch.statlist.statlist.evasion = base_ch.statlist.statlist.evasion
-	target_ch.statlist.statlist.resists = base_ch.statlist.statlist.resists
-	target_ch.statlist.statlist.resist_damage = base_ch.statlist.statlist.resist_damage
-	target_ch.statlist.statlist.status_resists = base_ch.statlist.statlist.status_resists
-	target_ch.statlist.statlist.damage_mods = base_ch.statlist.statlist.damage_mods
-	target_ch.statlist.statlist.burn_mod = base_ch.statlist.statlist.burn_mod
-	target_ch.statlist.statlist.burn_damage = base_ch.statlist.statlist.burn_damage
-	target_ch.statlist.statlist.poison_mod = base_ch.statlist.statlist.poison_mod
-	target_ch.statlist.statlist.poison_damage = base_ch.statlist.statlist.poison_damage
-	target_ch.statlist.statlist.bleed_mod = base_ch.statlist.statlist.bleed_mod
-	target_ch.statlist.statlist.bleed_damage = base_ch.statlist.statlist.bleed_damage
-	target_ch.statlist.statlist.armor = base_ch.statlist.statlist.armor
-	target_ch.statlist.statlist.mdef = base_ch.statlist.statlist.mdef
-	target_ch.statlist.statlist.armorpenetration = base_ch.statlist.statlist.armorpenetration
-	target_ch.statlist.statlist.critchance = base_ch.statlist.statlist.critchance
-	target_ch.statlist.statlist.critmod = base_ch.statlist.statlist.critmod
-	target_ch.statlist.statlist.speed = base_ch.statlist.statlist.speed
-	target_ch.statlist.statlist.shield = base_ch.statlist.statlist.shield
-	target_ch.statlist.statlist.physics = base_ch.statlist.statlist.physics
-	target_ch.statlist.statlist.physics_bonus = base_ch.statlist.statlist.physics_bonus
-	target_ch.statlist.statlist.physics_cap = base_ch.statlist.statlist.physics_cap
-	target_ch.statlist.statlist.wits = base_ch.statlist.statlist.wits
-	target_ch.statlist.statlist.wits_bonus = base_ch.statlist.statlist.wits_bonus
-	target_ch.statlist.statlist.wits_cap = base_ch.statlist.statlist.wits_cap
-	target_ch.statlist.statlist.sexuals = base_ch.statlist.statlist.sexuals
-	target_ch.statlist.statlist.sexuals_bonus = base_ch.statlist.statlist.sexuals_bonus
-	target_ch.statlist.statlist.charm = base_ch.statlist.statlist.charm
-	target_ch.statlist.statlist.charm_bonus = base_ch.statlist.statlist.charm_bonus
-	target_ch.statlist.statlist.charm_cap = base_ch.statlist.statlist.charm_cap
-	target_ch.statlist.statlist.physics_factor = base_ch.statlist.statlist.physics_factor
-	target_ch.statlist.statlist.magic_factor = base_ch.statlist.statlist.magic_factor
-	target_ch.statlist.statlist.tame_factor = base_ch.statlist.statlist.tame_factor
-	target_ch.statlist.statlist.timid_factor = base_ch.statlist.statlist.timid_factor
-	target_ch.statlist.statlist.growth_factor = base_ch.statlist.statlist.growth_factor
-	target_ch.statlist.statlist.charm_factor = base_ch.statlist.statlist.charm_factor
-	target_ch.statlist.statlist.wits_factor = base_ch.statlist.statlist.wits_factor
-	target_ch.statlist.statlist.sexuals_factor = base_ch.statlist.statlist.sexuals_factor
-	target_ch.statlist.statlist.food_consumption = base_ch.statlist.statlist.food_consumption
-
+#	base_ch_statlist.code = unique_ch_statlist.code
+	base_ch_statlist.name = unique_ch_statlist.name
+	base_ch_statlist.unique = unique_ch_statlist.unique
+	base_ch_statlist.surname = unique_ch_statlist.surname
+	base_ch_statlist.race = unique_ch_statlist.race
+	base_ch_statlist.sex = unique_ch_statlist.sex
+	base_ch_statlist.age = unique_ch_statlist.age
+	base_ch_statlist.slave_class = unique_ch_statlist.slave_class
+	base_ch_statlist.height = unique_ch_statlist.height
+	base_ch_statlist.hair_color = unique_ch_statlist.hair_color
+	base_ch_statlist.hair_length = unique_ch_statlist.hair_length
+	base_ch_statlist.hair_style = unique_ch_statlist.hair_style
+	base_ch_statlist.eye_color = unique_ch_statlist.eye_color
+	base_ch_statlist.skin = unique_ch_statlist.skin
+	base_ch_statlist.icon_image = unique_ch_statlist.icon_image
+	base_ch_statlist.body_image = unique_ch_statlist.body_image
+	base_ch_statlist.horns = unique_ch_statlist.horns
+	base_ch_statlist.tail = unique_ch_statlist.tail
+	base_ch_statlist.ass_size = unique_ch_statlist.ass_size
+	base_ch_statlist.tits_size = unique_ch_statlist.tits_size
+	base_ch_statlist.sex_traits = []
+#	for trait in unique_ch_statlist.sex_traits:
+#		if not trait in base_ch_statlist.sex_traits:
+#			base_ch_statlist.sex_traits.append(trait)
+	base_ch_statlist.tags = []
+	for tag in unique_ch.tags:
+		if not tag in base_ch.tags:
+			base_ch.tags.append(tag)
+	base_ch_statlist.personality_kind = unique_ch_statlist.personality_kind
+	base_ch_statlist.personality_bold = unique_ch_statlist.personality_bold
+	base_ch_statlist.food_like = unique_ch_statlist.food_like
+#	base_ch_statlist.food_hate = []
+#	for food in unique_ch_statlist.food_hate:
+#		if not food in base_ch_statlist.food_hate:
+#			base_ch_statlist.food_hate.append(food)
+	base_ch_statlist.classes = []
+	for cc in unique_ch_statlist.classes:
+		if not cc in base_ch_statlist.classes:
+			base_ch_statlist.classes.append(cc)
+	base_ch_statlist.traits = []
+	for trait in unique_ch_statlist.traits:
+		if not trait in base_ch_statlist.traits:
+			base_ch_statlist.traits.append(trait)
+	
+	base_ch.statlist.statlist = base_ch_statlist

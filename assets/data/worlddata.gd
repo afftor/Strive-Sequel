@@ -2350,7 +2350,7 @@ var fixed_location_options = { #override serialized data
 		},
 		{
 			text = tr("SETTLEMENT_FOREST2_2"), 
-			reqs = [{type = 'active_quest_stage', value = 'lilia_finale_quest', stage = 'stage10'},
+			reqs = [{type = 'active_quest_stage', value = 'lilith_patron_quest', stage = 'stage10'},
 			{type = "location_has_specific_slaves", check = true, value = 1, location = 'settlement_forest1', reqs = [{code = 'unique', value = 'lilith'}]}],
 			args = [{code = 'start_event', data = 'lilith_bad_route_village', args = []}]
 		},
@@ -2396,7 +2396,7 @@ var fixed_location_options = { #override serialized data
 		{
 			text = tr("QUEST_MAGES_XARI6"), 
 			reqs = [
-				{type = 'active_quest_stage', value = 'lilia_finale_quest', stage = 'stage13'}],
+				{type = 'active_quest_stage', value = 'lilith_patron_quest', stage = 'stage13'}],
 			args = [{code = 'start_event', data = 'lilith_xari_location', args = []}]
 		},
 	],
