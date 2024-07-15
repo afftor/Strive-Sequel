@@ -4867,7 +4867,7 @@ var effect_table = {
 		]
 	},
 	succubus_combat_2 = {
-		type = 'temp_s',
+		type = 'temp_toggle',
 		name = 'euphoria',
 		stack = 1,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
