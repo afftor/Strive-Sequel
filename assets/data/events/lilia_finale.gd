@@ -6,7 +6,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		reqs = [{type = 'unique_character_checks', name = 'lilia', value = [], negative = 'repeat_next_day'}, {type = 'dialogue_seen', check = false, value = 'LILIA_FINALE_LETTER'}, {type = 'quest_completed', name = 'sick_lilia_quest', check = true}],
+		reqs = [{type = 'unique_character_checks', name = 'lilia', value = [], negative = 'repeat_next_day'}, {type = 'has_active_quest', name = 'lilia_finale_quest', check = false}, {type = 'quest_completed', name = 'sick_lilia_quest', check = true}],
 		text = [
 			{
 				text = "LILIA_FINALE_LETTER",

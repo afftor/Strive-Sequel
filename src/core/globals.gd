@@ -784,7 +784,7 @@ func LoadGame(filename):
 		gui_controller.clock.update_labels()
 		gui_controller.clock.set_sky_pos()
 	
-	if not ResourceScripts.game_progress.stored_events.timed_events.has("lilia_finale_1") and not ResourceScripts.game_progress.seen_events.has("lilia_finale_1"):
+	if not ResourceScripts.game_progress.stored_events.timed_events.has("lilia_finale_1") and not ResourceScripts.game_progress.seen_events.has("lilia_finale_1") and ResourceScripts.game_progress.completed_quests.has("sick_lilia_quest") and ResourceScripts.game_party.get_unique_slave("lilia"):
 		common_effects([{code = 'add_timed_event', value = "lilia_finale_1", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
 	
 	input_handler.SystemMessage("Game Loaded")
