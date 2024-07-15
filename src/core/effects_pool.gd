@@ -95,6 +95,7 @@ func deserialize_effect(tmp, id, caller = null):
 		'c_static': eff = condition_effect.new(caller)
 		'dynamic': eff = dynamic_effect.new(caller)
 		'temp_global': eff = temp_e_global.new(caller)
+		'temp_toggle': eff = temp_e_toggle.new(caller)
 	eff.id = id
 	eff.deserialize(tmp)
 	return eff
@@ -118,6 +119,7 @@ func e_createfromtemplate(buff_t, caller = null):
 		'c_static': tmp = condition_effect.new(caller)
 		'dynamic': tmp = dynamic_effect.new(caller)
 		'temp_global': tmp = temp_e_global.new(caller)
+		'temp_toggle': tmp = temp_e_toggle.new(caller)
 		_: 
 			print ('wrong eff type - %s' % template.type)
 			return null

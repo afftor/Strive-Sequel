@@ -1498,7 +1498,7 @@ func use_skill(skill_code, caster, target):
 		#instant skills cannot be copied in current realisation, but for now this is not a problem - for only item skills can be instants 
 		RebuildSkillPanel()
 		RebuildItemPanel()
-		SelectSkill(skill_code)
+		SelectSkill(skill_code, false)
 		eot = true
 	#emit_signal("skill_use_finshed")
 
@@ -1945,7 +1945,7 @@ func RebuildSkillPanel():
 		else:
 			newbutton.connect('signal_RMB_release',self,'select_skill_for_position', [i])
 
-func SelectSkill(skill):
+func SelectSkill(skill, user_act = true):
 	if activecharacter == null: return
 	
 	Input.set_custom_mouse_cursor(images.cursors.default)
@@ -1977,6 +1977,9 @@ func SelectSkill(skill):
 	if skill.has('cursor'): customcursor = skill.cursor
 	else: customcursor = null
 	if skill.target == 'self':
+		if !user_act:
+			call_deferred('SelectSkill', activecharacter.get_skill_by_tag('default'))
+			return
 		globals.closeskilltooltip()
 		activecharacter.selectedskill = activecharacter.get_skill_by_tag('default')
 		skill_callback_args = {}

@@ -91,6 +91,9 @@ func apply_temp_effect(eff_id):
 			'temp_s':
 				eff_a.reset_duration()
 				eff.remove()
+			'temp_toggle':
+				eff_a.remove()
+				eff.remove()
 			'temp_p':
 				eff_a.reset_duration() #i'm not sure if this case should exist or if it should be treated like this
 				eff.remove()
@@ -124,7 +127,7 @@ func apply_effect(eff_id):
 			#obj.applied_pos = position
 			obj.applied_char = parent.get_ref().id
 			obj.apply()
-		'temp_s','temp_p','temp_u', 'temp_global':
+		'temp_s','temp_p','temp_u', 'temp_global', 'temp_toggle':
 			if parent.get_ref().is_koed() and !obj.tags.has('on_dead'): return
 			apply_temp_effect(eff_id)
 #		'area':
@@ -151,7 +154,7 @@ func remove_effect(eff_id):
 	match obj.template.type:
 		'static','c_static': static_effects.erase(eff_id)
 		'trigger': triggered_effects.erase(eff_id)
-		'temp_s','temp_p','temp_u', 'temp_global': temp_effects.erase(eff_id)
+		'temp_s','temp_p','temp_u', 'temp_global', 'temp_toggle': temp_effects.erase(eff_id)
 #		'area': remove_area_effect(eff_id)
 
 func clean_broken_effects():
