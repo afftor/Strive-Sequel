@@ -624,7 +624,9 @@ func make_quest(questcode):
 
 
 func make_quest_location(code):
-	if globals.valuecheck({type = 'location_exists', location = code}): return
+	if globals.valuecheck({type = 'location_exists', location = code}): 
+		print(1)
+		return
 	var data = DungeonData.dungeons[code]
 	var locationdata = make_location(code, data.area)
 	locationdata.id = code

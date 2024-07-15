@@ -3,8 +3,6 @@ extends Control
 
 var tutorials = [
 	"TUTORIALLIST1",
-	# "levelup",
-	# "character_list",
 	"TUTORIALLIST2",
 	"TUTORIALLIST3",
 	"TUTORIALLIST4",
@@ -54,17 +52,6 @@ var traveling_text = {
 	0: tr("TRAVELINGTUTORIAL1"),
 	1: tr("TRAVELINGTUTORIAL2"),
 }
-#var traveling_images = {
-#	0: load("res://assets/Textures_v2/MANSION/Tutorial/travelNew_1.png"),
-#	1: load("res://assets/Textures_v2/MANSION/Tutorial/travelNew_2.png"),
-#	2: load("res://assets/Textures_v2/MANSION/Tutorial/travelNew_3.png"),
-#}
-#
-#var traveling_text = {
-#	0: tr("TRAVELINGTUTORIAL1"),
-#	1: tr("TRAVELINGTUTORIAL2"),
-#	2: tr("TRAVELINGTUTORIAL3"),
-#}
 
 var skills_images = {
 	0: load("res://assets/Textures_v2/MANSION/Tutorial/skills_1.png"),
@@ -94,27 +81,6 @@ var craft_text = {
 	
 }
 
-#var craft_images = {
-#	0: load("res://assets/Textures_v2/MANSION/Tutorial/craft_1.png"),
-#	1: load("res://assets/Textures_v2/MANSION/Tutorial/craft_2.png"),
-#	2: load("res://assets/Textures_v2/MANSION/Tutorial/craft_3.png"),
-#	3: load("res://assets/Textures_v2/MANSION/Tutorial/craft_4.png"),
-#	4: load("res://assets/Textures_v2/MANSION/Tutorial/craft_5.png"),
-#	5: load("res://assets/Textures_v2/MANSION/Tutorial/craft_6.png"),
-#	6: load("res://assets/Textures_v2/MANSION/Tutorial/craft_7.png"),
-#	7: load("res://assets/Textures_v2/MANSION/Tutorial/craft_8.png")
-#}
-#
-#var craft_text = {
-#	0: tr("CRAFTTUTORIAL1"),
-#	1: tr("CRAFTTUTORIAL2"),
-#	2: tr("CRAFTTUTORIAL3"),
-#	3: tr("CRAFTTUTORIAL4"),
-#	4: tr("CRAFTTUTORIAL5"),
-#	5: tr("CRAFTTUTORIAL6"),
-#	6: tr("CRAFTTUTORIAL7"),
-#	7: tr("CRAFTTUTORIAL8"),
-#}
 
 var job_images = {
 	0: load("res://assets/Textures_v2/MANSION/Tutorial/jobnew_1.png"),
@@ -191,40 +157,40 @@ func show_tutorial_list(tut):
 		b.pressed = b.get_meta("tut") == tut
 	var img = {}
 	var size = 0
-	match tr(tut):
-		"introduction":
+	match tut:
+		"TUTORIALLIST1":
 			img = introduction_images
 			size = introduction_images.size() - 1
 			text_dict = introduction_text
-		"crafting":
+		"TUTORIALLIST2":
 			img = craft_images
 			size = craft_images.size() - 1
 			text_dict = craft_text
-		"traveling":
+		"TUTORIALLIST3":
 			img = traveling_images
 			size = traveling_images.size() - 1
 			text_dict = traveling_text
-		"job":
+		"TUTORIALLIST4":
 			img = job_images
 			size = job_images.size() - 1
 			text_dict = job_text
-		"quest":
+		"TUTORIALLIST5":
 			img = quest_images
 			size = quest_images.size() - 1
 			text_dict = quest_text
-		"exploration":
+		"TUTORIALLIST6":
 			img = exploration_images
 			size = exploration_images.size() - 1
 			text_dict = exploration_text
-		"skills":
+		"TUTORIALLIST7":
 			img = skills_images
 			size = skills_images.size() - 1
 			text_dict = skills_text
-		"tattoo":
+		"TUTORIALLIST8":
 			img = tattoo_images
 			size = tattoo_images.size() - 1
 			text_dict = tattoo_text
-		"training":
+		"TUTORIALLIST9":
 			img = introduction_images
 			size = introduction_images.size() - 2
 			text_dict = training_text

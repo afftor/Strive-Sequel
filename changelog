@@ -1,12 +1,17 @@
+Added Lilia's complete sidequest 
 Added new shrine type
 Added character Lock rule which prevents character from showing in the lists of giveaways and factor sacrifices
+Added a few more dungeon name variants
 Rarity of legendary quality is increased by 250% (it's still low)
 Changed formula for weekly dates and sex. Dates: 1 + 3 from master's charm factor to 3 + 2; sex 1 +3 from master sex factor to 2 + 3
 Some improvements to inventory gui
 Added some new monochrome arts and fixed some scenes
+Fixed tutorial menu not working properly on other languages
 Fixed communicative master trait causing rebellious behavior happen more often
 Fixed wrong line appearing during searching princess quest
+Fixed some missing gallery scenes and unique character sprites
 Fixed an issue with reloading the game after defeat
+Fixed an issue with leaing game to main menu and starting new one causing weird stuff happening
 0.9.0c
 Air cutter total damage increased to 225% from 205%
 Bleed and Poison tick damage increased to 10% from 5%. Burn damage reduced to 7% from 8%

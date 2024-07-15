@@ -284,17 +284,21 @@ func find_location_by_data(data):
 	elif data.has('code'):
 		for id in location_links:
 			var link_data = location_links[id]
-			location = id
-			area = link_data.area
-			if !areas[area][link_data.category].has(location):
+			if !areas[link_data.area][link_data.category].has(id):
 				continue
-			var loc_data = areas[area][link_data.category][location]
+			var loc_data = areas[link_data.area][link_data.category][id]
 			if link_data.category == 'capital' and data.code == id:
+				location = id
+				area = link_data.area
 				break
 			if !loc_data.has('code'): 
 				continue
 			if loc_data.code == data.code: 
+				location = id
+				area = link_data.area
 				break
+	if location == null || area == null:
+		return null
 	return {location = location, area = area}
 
 
