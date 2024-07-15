@@ -2444,7 +2444,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	PROFFREYAS_PRIESTESS = "Former Freya's Priestess",
 	PROFFREYAS_PRIESTESSDESCRIPT = "Once a high priestess of elves, now this title hold more bluster than power.",
 	PROFASHMEDAI_CHAMPION = "Ashmedai Champion",
-	PROFASHMEDAI_CHAMPIONDESCRIPT = "The new chosen to carry out depraved acts in its name.",
+	PROFASHMEDAI_CHAMPIONDESCRIPT = "The new chosen to carry out depraved acts in its name. WIP",
 	
 	
 	PROFDEATHKNIGHT = "Death Knight",
@@ -13644,7 +13644,7 @@ You can't resist her taunts any longer, finally letting your second load burst i
 	
 	
 	
-	LILIA_FINALE_QUEST_NAME = "",
+	LILIA_FINALE_QUEST_NAME = "Lilia: Temptations",
 	LILIA_FINALE_QUEST_SUMMARY = "Lilia is about to meet the challenge which might change her whole life.",
 	LILIA_FINALE_QUEST_STAGE_1 = "Visit Workers guild", # go to workers
 	LILIA_FINALE_QUEST_STAGE_2 = "Explore Old Weathered Temple", # complete dungeon
@@ -13654,10 +13654,10 @@ You can't resist her taunts any longer, finally letting your second load burst i
 	LILIA_FINALE_QUEST_STAGE_7 = "Wait for the event to unfold", # wait for good route scene
 	LILIA_FINALE_QUEST_STAGE_8 = "Visit Lilia's home village", # go to Lilia village
 	
-	LILITH_PATRON_QUEST_NAME = "",
-	LILITH_PATRON_QUEST_SUMMARY = "",
+	LILITH_PATRON_QUEST_NAME = "Lilith: Taste of Power",
+	LILITH_PATRON_QUEST_SUMMARY = "Lilith's personality has shifted and now new ways and opportunities lie present to her.",
 	LILITH_PATRON_QUEST_STAGE_10 = "Visit Lilia's home village", # go to Lilith village
-	LILITH_PATRON_QUEST_STAGE_11 = "", # wait for sex scene
+	LILITH_PATRON_QUEST_STAGE_11 = "Wait for the event to unfold", # wait for sex scene
 	LILITH_PATRON_QUEST_STAGE_12 = "Visit Mage Guild", # go to mages
 	LILITH_PATRON_QUEST_STAGE_13 = "Visit Xari", # go to Xari
 	LILITH_PATRON_QUEST_STAGE_14 = "Ask Lilith to meet with her patron", # ask Lilith about patron
@@ -13751,6 +13751,18 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	CALI_BAD_ROUTE_FINISHED_DESCRIPTION = """Cali dumbfoundedly looks up at you. After being trained in such lengths, she can only find joy in such recognition from you.""",
 	CALI_BAD_ROUTE_UNFINISHED_TEXT = """Are you kidding me?! Who would ever marry a horrible person like you?""",
 	CALI_BAD_ROUTE_UNFINISHED_DESCRIPTION = """Cali looks clearly agitated by your proposal. It seems you haven't fully bended her yet.""",
+	
+	LILIA_QUEST_FINISHED_TEXT = """You want me to... Become your wife? Alright, [Master]! I'm not great with human customs, but that basically makes me very special, right?""",
+	LILIA_QUEST_FINISHED_DESCRIPTION = """Lilia's wide eyes stare at you as her mouth curves into the happiest smile you've seen from her""",
+	LILIA_QUEST_UNFINISHED_TEXT = """That's... Sorry, I don't think that's appropriate for me yet.""",
+	LILIA_QUEST_UNFINISHED_DESCRIPTION = """Lilia gives you a troubled look, trying to get out of uncomfortable sitaution.""",
+	LILITH_QUEST_FINISHED_TEXT = """Really, [Master]? That's an amazing idea, always being together with your delicious rod, is a fate like no other.""",
+	LILITH_QUEST_FINISHED_DESCRIPTION = """Lilith smiles satisfyingly at hearing your words but behind her smile you can feel her a poorly hidden lust.""",
+	LILITH_QUEST_UNFINISHED_TEXT = """Marriage? Uh... I don't think we should rush into something like this yet, [Master].""",
+	LILITH_QUEST_UNFINISHED_DESCRIPTION = """Lilith gives you a doubtful look, feeling more distant from you.""",
+	
+	AMELIA_PROPOSAL_TEXT = "Oh my, I didn't expect you to make me blush after all of that. Of course, this is an ultimate honor.",
+	AMELIA_PROPOSAL_DESCRIPT = "Amelia looks at you with a reserved satisfaction, betrayed by her slight visible shaking.",
 
 	#ChatNode
 	

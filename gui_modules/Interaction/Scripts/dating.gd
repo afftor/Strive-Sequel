@@ -907,7 +907,7 @@ var unique_marry_rules = {
 			agrees = true
 		},
 		daisy_quest_unfinished = {
-			reqs = [{type = "has_active_quest", name = "daisy_lost", check = true}],
+			reqs = [{type = "quest_completed", name = "daisy_lost", check = false}],
 			text = "DAISY_QUEST_UNFINISHED_TEXT",
 			description = "DAISY_QUEST_UNFINISHED_DESCRIPTION",
 			agrees = false
@@ -938,6 +938,42 @@ var unique_marry_rules = {
 			text = "CALI_BAD_ROUTE_UNFINISHED_TEXT",
 			description = "CALI_BAD_ROUTE_UNFINISHED_DESCRIPTION",
 			agrees = false
+		},
+	},
+	lilia = {
+		lilia_quest_finished = {
+			reqs = [{type = "quest_completed", name = "lilia_finale_quest", check = true}],
+			text = "LILIA_QUEST_FINISHED_TEXT",
+			description = "LILIA_QUEST_FINISHED_DESCRIPTION",
+			agrees = true
+		},
+		lilia_quest_unfinished = {
+			reqs = [{type = "quest_completed", name = "lilia_finale_quest", check = false}],
+			text = "LILIA_QUEST_FINISHED_TEXT",
+			description = "LILIA_QUEST_FINISHED_DESCRIPTION",
+			agrees = false
+		},
+	},
+	lilith = {
+		lilith_quest_finished = {
+			reqs = [{type = "quest_completed", name = "lilith_patron_quest", check = true}],
+			text = "LILIA_QUEST_FINISHED_TEXT",
+			description = "LILIA_QUEST_FINISHED_DESCRIPTION",
+			agrees = true
+		},
+		lilith_quest_unfinished = {
+			reqs = [{type = "quest_completed", name = "lilith_patron_quest", check = false}],
+			text = "LILIA_QUEST_FINISHED_TEXT",
+			description = "LILIA_QUEST_FINISHED_DESCRIPTION",
+			agrees = false
+		},
+	},
+	amelia = {
+		amelia_agree = {
+			reqs = [],
+			text = "AMELIA_PROPOSAL_TEXT",
+			description = "AMELIA_PROPOSAL_DESCRIPT",
+			agrees = true
 		},
 	},
 }
