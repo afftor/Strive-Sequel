@@ -268,6 +268,20 @@ var backgrounds = {
 	lilith_ride_2 = load("res://assets/images/fullscreen scenes/FairyCG007.png"),
 	lilith_ride_3 = load("res://assets/images/fullscreen scenes/FairyCG008.png"),
 	
+	lilia_wedding_1 = load("res://assets/images/fullscreen scenes/LiliaCG007.png"),
+	lilia_wedding_2 = load("res://assets/images/fullscreen scenes/LiliaCG008.png"),
+	lilia_wedding_3 = load("res://assets/images/fullscreen scenes/LiliaCG009.png"),
+	lilia_wedding_4 = load("res://assets/images/fullscreen scenes/LiliaCG010.png"),
+	lilia_wedding_5 = load("res://assets/images/fullscreen scenes/LiliaCG011.png"),
+	lilia_wedding_6 = load("res://assets/images/fullscreen scenes/LiliaCG012.png"),
+	lilia_wedding_7 = load("res://assets/images/fullscreen scenes/LiliaCG013.png"),
+	
+	lilith_wedding_1 = load("res://assets/images/fullscreen scenes/LilithCG006.png"),
+	lilith_wedding_2 = load("res://assets/images/fullscreen scenes/LilithCG007.png"),
+	lilith_wedding_3 = load("res://assets/images/fullscreen scenes/LilithCG008.png"),
+	lilith_wedding_4 = load("res://assets/images/fullscreen scenes/LilithCG009.png"),
+	lilith_wedding_5 = load("res://assets/images/fullscreen scenes/LilithCG010.png"),
+	
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
 	blackscreen = load("res://assets/sfx/black.png"),
@@ -493,6 +507,10 @@ var sprites = {
 	lilia_nude_body = load("res://assets/images/sprites/lilia_nude_body.png"),
 	lilia_wed = load("res://assets/images/sprites/lilia_wed.png"),
 	lilia_wed_body = load("res://assets/images/sprites/lilia_wed_body.png"),
+	lilith_nude = load("res://assets/images/sprites/lilith_nude.png"), 
+	lilith_nude_body = load("res://assets/images/sprites/lilith_nude_body.png"), 
+	lilith_wed = load("res://assets/images/sprites/lilith_wed.png"),
+	lilith_wed_body = load("res://assets/images/sprites/lilith_wed_body.png"),
 	hara_nude = load("res://assets/images/sprites/hara_nude.png"),
 	hara_nude_body = load("res://assets/images/sprites/hara_nude_body.png"),
 	hara_wed = load("res://assets/images/sprites/hara_wed.png"),
@@ -509,7 +527,7 @@ var sprites = {
 	lira_nude_body = load("res://assets/images/sprites/Lira_nude_body.png"),
 	amelia_body = load("res://assets/images/sprites/amelia_body.png"),
 	amelia_nude_body = load("res://assets/images/sprites/amelia_nude_body.png"),
-	
+	amelia_wed_body = load("res://assets/images/sprites/amelia_wed_body.png"),
 	}
 
 var dynamic_backgrounds = {
@@ -540,7 +558,9 @@ var portraits = {
 	lilia = "res://assets/images/portraits/lilia_prt.png",
 	lilia_nude = "res://assets/images/portraits/lilia_nude_prt.png",
 	lilia_wed = "res://assets/images/portraits/lilia_wed_prt.png",
-	lilith = "res://assets/images/portraits/lilith_prt.png",
+	lilith = "res://assets/images/portraits/lilia_prt/lilith_prt.png",
+	lilith_nude = "res://assets/images/portraits/lilia_prt/lilith_nude_prt_bold.png",
+	lilith_wed = "res://assets/images/portraits/lilia_prt/lilith_wed_prt_bold.png", 
 	jean = "res://assets/images/portraits/jean_prt.png",
 	jean_nude = "res://assets/images/portraits/jean_nude_prt.png",
 	jean_wed = "res://assets/images/portraits/jean_wed_prt.png",

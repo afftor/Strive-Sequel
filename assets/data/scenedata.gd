@@ -2255,7 +2255,7 @@ var quests = {
 		code = 'cali_heirloom_quest',
 		summary = "CALI_HEIRLOOM_QUEST_SUMMARY",
 		stages = {
-			stage1 = {code = 'stage1', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_1"}, # go to willage
+			stage1 = {code = 'stage1', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_1"}, # go to village
 			stage2 = {code = 'stage2', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_2"}, # get enough wood
 			stage2_1 = {code = 'stage2_1', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_2_1"}, # get enough wood discount # if needed
 			stage3 = {code = 'stage3', name = "CALI_HEIRLOOM_QUEST_NAME", descript = "CALI_HEIRLOOM_QUEST_STAGE_3"}, # bandits
@@ -2369,8 +2369,6 @@ var quests = {
 			stage11 = {code = 'stage11', name = 'AMELIA_MAIN_QUEST_NAME', descript = 'AMELIA_MAIN_STAGE_11'}, 
 		}
 	},
-	LILIA_FINALE_QUEST_STAGE_1 = "Visit Workers Guild",
-	LILIA_FINALE_QUEST_STAGE_2 = "",
 	lilia_finale_quest = {
 		code = 'lilia_finale_quest',
 		summary = "LILIA_FINALE_QUEST_SUMMARY",
@@ -2380,16 +2378,21 @@ var quests = {
 			stage3 = {code = 'stage3', name = 'LILIA_FINALE_QUEST_NAME', descript = 'LILIA_FINALE_QUEST_STAGE_3'}, # Report back to sigmund
 			stage4 = {code = 'stage4', name = 'LILIA_FINALE_QUEST_NAME', descript = 'LILIA_FINALE_QUEST_STAGE_4'}, # wait for flirting
 			stage5 = {code = 'stage5', name = 'LILIA_FINALE_QUEST_NAME', descript = 'LILIA_FINALE_QUEST_STAGE_5'}, # complete grove dungeon
-			stage6 = {code = 'stage6', name = 'LILIA_FINALE_QUEST_NAME', descript = 'LILIA_FINALE_QUEST_STAGE_6'}, # wait for bad route scene
 			stage7 = {code = 'stage7', name = 'LILIA_FINALE_QUEST_NAME', descript = 'LILIA_FINALE_QUEST_STAGE_7'}, # wait for good route scene
 			stage8 = {code = 'stage8', name = 'LILIA_FINALE_QUEST_NAME', descript = 'LILIA_FINALE_QUEST_STAGE_8'}, # go to lilia village
-			stage9 = {code = 'stage9', name = 'LILIA_FINALE_QUEST_NAME', descript = 'LILIA_FINALE_QUEST_STAGE_9'}, # reserve for good route ending
-			stage10 = {code = 'stage10', name = 'LILIA_FINALE_QUEST_NAME', descript = 'LILIA_FINALE_QUEST_STAGE_10'}, # go to lilith village
-			stage11 = {code = 'stage11', name = 'LILIA_FINALE_QUEST_NAME', descript = 'LILIA_FINALE_QUEST_STAGE_11'}, # wait for sex scene
-			stage12 = {code = 'stage12', name = 'LILIA_FINALE_QUEST_NAME', descript = 'LILIA_FINALE_QUEST_STAGE_12'}, # go to mages
-			stage13 = {code = 'stage13', name = 'LILIA_FINALE_QUEST_NAME', descript = 'LILIA_FINALE_QUEST_STAGE_13'}, # go to xari
-			stage14 = {code = 'stage14', name = 'LILIA_FINALE_QUEST_NAME', descript = 'LILIA_FINALE_QUEST_STAGE_14'}, # ask lilith about patron
-			stage15 = {code = 'stage15', name = 'LILIA_FINALE_QUEST_NAME', descript = 'LILIA_FINALE_QUEST_STAGE_15'}, # clear new patron dungeon
+		},
+	},
+	
+	lilith_patron_quest = {
+		code = 'lilith_patron_quest',
+		summary = "LILITH_PATRON_QUEST_SUMMARY",
+		stages = {
+			stage10 = {code = 'stage10', name = 'LILITH_PATRON_QUEST_NAME', descript = 'LILITH_PATRON_QUEST_STAGE_10'}, # go to lilith village
+			stage11 = {code = 'stage11', name = 'LILITH_PATRON_QUEST_NAME', descript = 'LILITH_PATRON_QUEST_STAGE_11'}, # wait for sex scene
+			stage12 = {code = 'stage12', name = 'LILITH_PATRON_QUEST_NAME', descript = 'LILITH_PATRON_QUEST_STAGE_12'}, # go to mages
+			stage13 = {code = 'stage13', name = 'LILITH_PATRON_QUEST_NAME', descript = 'LILITH_PATRON_QUEST_STAGE_13'}, # go to xari
+			stage14 = {code = 'stage14', name = 'LILITH_PATRON_QUEST_NAME', descript = 'LILITH_PATRON_QUEST_STAGE_14'}, # ask lilith about patron
+			stage15 = {code = 'stage15', name = 'LILITH_PATRON_QUEST_NAME', descript = 'LILITH_PATRON_QUEST_STAGE_15'}, # clear new patron dungeon
 		},
 	},
 }

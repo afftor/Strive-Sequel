@@ -306,6 +306,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource( 11 )
 text = "Test"
+clip_text = true
 
 [node name="PlaceName" type="Label" parent="."]
 margin_left = 269.0

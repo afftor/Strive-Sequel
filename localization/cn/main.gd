@@ -13071,6 +13071,16 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	CALI_BAD_ROUTE_FINISHED_DESCRIPTION = """卡莉傻眼地抬头看着你。经过如此长的训练，她只能从你的认可中找到快乐。""",
 	CALI_BAD_ROUTE_UNFINISHED_TEXT = """你在开玩笑吗？！谁会嫁给像你这样可怕的人？""",
 	CALI_BAD_ROUTE_UNFINISHED_DESCRIPTION = """卡莉显然对你的求婚感到不安。看来你还没有完全掌控她。""",
+	LILIA_QUEST_FINISHED_TEXT = """You want me to... Become your wife? Alright, [Master]! I'm not great with human customs, but that basically makes me very special, right?""", # MISSING TRANSLATION
+	LILIA_QUEST_FINISHED_DESCRIPTION = """Lilia's wide eyes stare at you as her mouth curves into the happiest smile you've seen from her""", # MISSING TRANSLATION
+	LILIA_QUEST_UNFINISHED_TEXT = """That's... Sorry, I don't think that's appropriate for me yet.""", # MISSING TRANSLATION
+	LILIA_QUEST_UNFINISHED_DESCRIPTION = """Lilia gives you a troubled look, trying to get out of uncomfortable sitaution.""", # MISSING TRANSLATION
+	LILITH_QUEST_FINISHED_TEXT = """Really, [Master]? That's an amazing idea, always being together with your delicious rod, is a fate like no other.""", # MISSING TRANSLATION
+	LILITH_QUEST_FINISHED_DESCRIPTION = """Lilith smiles satisfyingly at hearing your words but behind her smile you can feel her a poorly hidden lust.""", # MISSING TRANSLATION
+	LILITH_QUEST_UNFINISHED_TEXT = """Marriage? Uh... I don't think we should rush into something like this yet, [Master].""", # MISSING TRANSLATION
+	LILITH_QUEST_UNFINISHED_DESCRIPTION = """Lilith gives you a doubtful look, feeling more distant from you.""", # MISSING TRANSLATION
+	AMELIA_PROPOSAL_TEXT = """Oh my, I didn't expect you to make me blush after all of that. Of course, this is an ultimate honor.""", # MISSING TRANSLATION
+	AMELIA_PROPOSAL_DESCRIPT = """Amelia looks at you with a reserved satisfaction, betrayed by her slight visible shaking.""", # MISSING TRANSLATION
 
 	#ChatNode
 	
@@ -13964,6 +13974,10 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	BANDIT_DEN_NOUNS2 = "洞穴",
 	BANDIT_DEN_NOUNS3 = "兽穴",
 	BANDIT_DEN_NOUNS4 = "深坑",
+	BANDIT_DEN_NOUNS5 = """Lair""", # MISSING TRANSLATION
+	BANDIT_DEN_NOUNS6 = """Refuge""", # MISSING TRANSLATION
+	BANDIT_DEN_NOUNS8 = """Retreat""", # MISSING TRANSLATION
+	BANDIT_DEN_NOUNS9 = """Hideaway""", # MISSING TRANSLATION
 	
 	BANDIT_DEN_ADJS1 = "强盗",
 	BANDIT_DEN_ADJS2 = "肮脏",
@@ -13973,6 +13987,12 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	BANDIT_DEN_ADJS6 = "蓝色",
 	BANDIT_DEN_ADJS7 = "黑色",
 	BANDIT_DEN_ADJS8 = "低洼",
+	BANDIT_DEN_ADJS9 = """Dark""", # MISSING TRANSLATION
+	BANDIT_DEN_ADJS10 = """Gloomy""", # MISSING TRANSLATION
+	BANDIT_DEN_ADJS11 = """Secluded""", # MISSING TRANSLATION
+	BANDIT_DEN_ADJS12 = """Remote""", # MISSING TRANSLATION
+	BANDIT_DEN_ADJS13 = """Isolated""", # MISSING TRANSLATION
+	BANDIT_DEN_ADJS14 = """Deserted""", # MISSING TRANSLATION
 	
 	GROVE_NOUNS1 = "森林",
 	GROVE_NOUNS2 = "树林",
@@ -14053,6 +14073,12 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	FIRE_DEPTHS_ADJS2 = "着火",
 	FIRE_DEPTHS_ADJS3 = "烧焦",
 	FIRE_DEPTHS_ADJS4 = "加热",
+	FIRE_DEPTHS_ADJS5 = """Blazing""", # MISSING TRANSLATION
+	FIRE_DEPTHS_ADJS6 = """Smoldering""", # MISSING TRANSLATION
+	FIRE_DEPTHS_ADJS7 = """Fiery""", # MISSING TRANSLATION
+	FIRE_DEPTHS_ADJS8 = """Infernal""", # MISSING TRANSLATION
+	FIRE_DEPTHS_ADJS9 = """Molten""", # MISSING TRANSLATION
+	FIRE_DEPTHS_ADJS10 = """Glowing""", # MISSING TRANSLATION
 	
 	CITY_NOUNS1 = "废墟",
 	CITY_NOUNS2 = "会议厅",

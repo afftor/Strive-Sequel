@@ -6,9 +6,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		reqs = [
-
-		],
+		reqs = [{type = 'unique_character_checks', name = 'lilia', value = [], negative = 'repeat_next_day'}, {type = 'has_active_quest', name = 'lilia_finale_quest', check = false}, {type = 'quest_completed', name = 'sick_lilia_quest', check = true}],
 		text = [
 			{
 				text = "LILIA_FINALE_LETTER",
@@ -882,15 +880,17 @@ var data = {
 			}
 		],
 		common_effects = [
-			{
-				code = "unique_character_changes",
-				value = "lilia",
-				args = [
-					{
-						code = "transform_to_lilith"
-					}
-				]
-			}
+			{code = 'affect_unique_character', name = 'lilia', type = 'turn_into_unique', value = 'Lilith'},
+#			{
+#				code = "unique_character_changes",
+#				value = "lilia",
+#				args = [
+#					{
+#						code = "transform_to_unique_character",
+#						unique = "Lilith"
+#					}
+#				]
+#			}
 		],
 		options = [
 			{
@@ -917,9 +917,9 @@ var data = {
 						]
 					},
 					{
-						code = "progress_quest",
+						code = "complete_quest",
 						value = "lilia_finale_quest",
-						stage = "stage6"
+#						stage = "stage6"
 					},
 					{
 						code = "remove_quest_location",
@@ -2041,7 +2041,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "lilia_finale_quest",
+						value = "lilith_patron_quest",
 						stage = "stage10"
 					}
 				]
@@ -2076,7 +2076,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "lilia_finale_quest",
+						value = "lilith_patron_quest",
 						stage = "stage10"
 					}
 				]
@@ -2269,7 +2269,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "lilia_finale_quest",
+						value = "lilith_patron_quest",
 						stage = "stage11"
 					},
 					{
@@ -2366,7 +2366,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "lilia_finale_quest",
+						value = "lilith_patron_quest",
 						stage = "stage11"
 					},
 					{
@@ -2451,7 +2451,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "lilia_finale_quest",
+						value = "lilith_patron_quest",
 						stage = "stage11"
 					},
 					{
@@ -2501,7 +2501,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "lilia_finale_quest",
+						value = "lilith_patron_quest",
 						stage = "stage12"
 					}
 				]
@@ -2544,7 +2544,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "lilia_finale_quest",
+						value = "lilith_patron_quest",
 						stage = "stage13"
 					}
 				]
@@ -2611,7 +2611,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "lilia_finale_quest",
+						value = "lilith_patron_quest",
 						stage = "stage14"
 					},
 					{
@@ -2712,7 +2712,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "lilia_finale_quest",
+						value = "lilith_patron_quest",
 						stage = "stage15"
 					}
 				]
@@ -2946,7 +2946,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "complete_quest",
-						value = "lilia_finale_quest"
+						value = "lilith_patron_quest"
 					}
 				]
 			}
@@ -2956,6 +2956,7 @@ var data = {
 		custom_background = "lilia_transform_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "lilia_transform",
 		image = null,
 		tags = [
 			"dialogue_scene",
@@ -3173,6 +3174,7 @@ var data = {
 		custom_background = "lilith_blow_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "lilith_blow",
 		image = null,
 		tags = [
 			"dialogue_scene",
@@ -3335,6 +3337,7 @@ var data = {
 		custom_background = "lilith_ride_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "lilith_ride",
 		image = null,
 		tags = [
 			"dialogue_scene",

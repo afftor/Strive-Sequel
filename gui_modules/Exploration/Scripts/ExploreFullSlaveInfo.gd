@@ -177,7 +177,6 @@ func hire_character():
 func sell_slave():
 	var selectedperson = gui_controller.exploration_city.person_to_hire
 	var text = ''
-	print(selectedperson.get_stat('unique'))
 	if selectedperson.get_stat('unique') != null:
 		text += "This is a unique character. "
 	text += tr("SELL") + " [name]?"

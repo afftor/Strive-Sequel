@@ -713,7 +713,7 @@ var data = {
 			},
 		], 
 		options = [
-			{code = 'lilith_patron_meeting', text = "LILITH_PATRON_MEETING_OPTION", reqs = [{type = 'active_quest_stage', value = 'lilia_finale_quest', stage = 'stage14'}], dialogue_argument = 1, },
+			{code = 'lilith_patron_meeting', text = "LILITH_PATRON_MEETING_OPTION", reqs = [{type = 'active_quest_stage', value = 'lilith_patron_quest', stage = 'stage14'}], dialogue_argument = 1, },
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3},
 		],
 	},

@@ -557,6 +557,16 @@ func fix_main_data():
 		Items.enchantments[i].name = tr("ENCH" + i.to_upper())
 		Items.enchantments[i].descript = tr("ENCH" + i.to_upper()+"DESCRIPT")
 	
+	var array = ['bandit_den_nouns','bandit_den_adjs','fire_depths_adjs']
+	for i in array:
+		var newarray = worlddata.locationnames[i]
+		var x = 1
+		var string = (i.to_upper()+str(x))
+		while tr(string) != string:
+			newarray.append(tr(string))
+			x += 1
+			string = (i.to_upper()+str(x))
+	
 	#fix races
 	for i in races.racelist.values():
 		i.name = tr("RACE" + i.code.to_upper())
