@@ -259,7 +259,7 @@ valign = 1
 margin_left = 21.0
 margin_top = 407.0
 margin_right = 545.0
-margin_bottom = 670.0
+margin_bottom = 640.0
 
 [node name="Label2" type="Label" parent="InfoPanel/VBoxContainer"]
 margin_right = 524.0
@@ -330,6 +330,19 @@ margin_top = -24.0
 custom_fonts/font = ExtResource( 5 )
 text = "1/1"
 align = 2
+
+[node name="time" type="Label" parent="InfoPanel"]
+anchor_right = 1.0
+margin_left = 0.999995
+margin_top = 641.0
+margin_right = 1.0
+margin_bottom = 678.0
+custom_colors/font_color = Color( 0.870588, 0.870588, 0.870588, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 46 )
+text = "Location Name"
+align = 1
+valign = 1
 
 [node name="FromLocList" type="TextureRect" parent="."]
 margin_left = 21.0
