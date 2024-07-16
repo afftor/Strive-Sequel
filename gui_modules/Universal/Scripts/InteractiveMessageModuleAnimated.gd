@@ -120,8 +120,8 @@ func show_buttons():
 
 func complete_skirmish():
 	hold_selection = true
-	globals.complete_location(input_handler.active_location.id)
-	globals.remove_location(input_handler.active_location.id)
+#	globals.complete_location(input_handler.active_location.id)
+#	globals.remove_location(input_handler.active_location.id)
 	close()
 
 func update_scene_characters():
