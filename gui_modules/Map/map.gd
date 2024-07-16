@@ -515,9 +515,11 @@ func build_info(loc = null):
 	$InfoPanel.visible = true
 	if from_loc != 'adv_mode' and to_loc != null and loc == to_loc:
 		$InfoPanel/Sendbutton.visible = true
-		$InfoPanel/Sendbutton/Label.text = "Send - %d t" % globals.calculate_travel_time(from_loc, to_loc).time
+		$InfoPanel/time.visible = true
+		$InfoPanel/time.text = "Travel time - %d t" % globals.calculate_travel_time(from_loc, to_loc).time
 	else:
 		$InfoPanel/Sendbutton.visible = false
+		$InfoPanel/time.visible = false
 
 
 func make_panel_for_location(panel, loc):
