@@ -116,14 +116,15 @@ var data = {
 		{code = 'close', reqs = [], text = tr("DIALOGUECANCEL")},
 		]
 		},
-		
-		{text = tr("DIALOGUEFALLENBRIDGE2"),
+
+		{
+		text = tr("DIALOGUEFALLENBRIDGE2"),
 		reqs = [],
 		tags = ['linked_event'],
 		default_event_type = "trap",
 		image = 'trap',
 		options = [
-		{code = 'pass_fallen_bridge2', not_hide = true, reqs = [{type = 'has_material', material = 'wood', operant = 'gte', value = 10}], text = tr("DIALOGUEFALLENBRIDGESELECT2"), bonus_effects = [{code = 'unlock_subroom'}, {code = 'material_change', operant = '-', material = 'wood', value = 10}]},
+		{code = 'pass_fallen_bridge2', not_hide = true, reqs = [{type = 'has_material', material = 'wood', operant = 'gte', value = 10}], text = tr("DIALOGUEFALLENBRIDGESELECT2"), bonus_effects = [{code = 'material_change', operant = '-', material = 'wood', value = 10}]},
 		{code = 'close', reqs = [{type = 'has_stamina', value = 10}], not_hide = true, bonus_effects = [{code = 'pay_stamina', value = 10}, {code = 'unlock_subroom'}], text = tr("DIALOGUEFALLENBRIDGEBREAK")},
 		{code = 'close', reqs = [], text = tr("DIALOGUECANCEL")},
 		]
