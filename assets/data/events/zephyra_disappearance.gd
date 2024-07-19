@@ -808,7 +808,7 @@ var data = {
 				image = null, tags = ['dialogue_scene', 'master_translate'],
 				reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'wits', operant = 'gte', value = 90}]}], character = "myr",
 				text = [{text = "ZEPHYRA_BRUSH_2_1", reqs = []}],
-				common_effects = [{code = 'make_quest_location', value = 'quest_ancient_jungle_location'}],
+				common_effects = [{code = 'make_quest_location', value = 'quest_zephyra_jungle_location'}],
 				options = [ {
 					code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = "update_guild"}]
 				} ]
@@ -850,7 +850,7 @@ var data = {
 		text = [{text = "ZEPHYRA_BRUSH_5_1", reqs = []},
 		],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'remove_quest_location', value = 'quest_ancient_jungle_location'}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'remove_quest_location', value = 'quest_zephyra_jungle_location'}]
 		} ]
 	},
 	
@@ -892,7 +892,7 @@ var data = {
 		],
 		common_effects = [{code = 'decision', value = 'GotZephyrasBrush'}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'remove_quest_location', value = 'quest_ancient_jungle_location'}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'remove_quest_location', value = 'quest_zephyra_jungle_location'}]
 		} ]
 	},
 	

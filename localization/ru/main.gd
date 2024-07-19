@@ -2262,6 +2262,7 @@ var TranslationDict = {
 	TRAITEFFECTRESISTSTATE = "Состояние сопротивления: Не может получить повиновение от положительных способностей. Не может использовать разведывательные навыки. Позитивные действия во время свиданий менее эффективны.",
 	TRAITEFFECTISPREGNANT = "Беременна: -10 Скорости, -20 физ. возможностей.",
 	TRAITEFFECTISPREGNANT2 = "Глубоко беременна: -20 Скорость, -40 физ. возможностей.",
+	EUPHORIABUFF = """Damage Increased""", # MISSING TRANSLATION
 	BUFFDESCRIPTSHACKLES = "Оковы",
 	BUFFDESCRIPTGREATSHACKLES = "Великие оковы",
 	BUFFDESCRIPTCHARM = "Зачарован. Осталось %d ходов",

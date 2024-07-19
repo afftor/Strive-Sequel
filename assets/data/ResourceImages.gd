@@ -21,6 +21,8 @@ var backgrounds = {
 	cave_3 = load("res://assets/images/backgrounds/cave3.png"),
 	cave_4 = load("res://assets/images/backgrounds/cave4.png"),
 	cave_5 = load("res://assets/images/backgrounds/cave5.png"),
+	
+	xari_hut = load("res://assets/images/backgrounds/xari_hut.png"),
 
 	village1 = load("res://assets/images/backgrounds/village.png"),
 	village2 = load("res://assets/images/backgrounds/village1.png"),
