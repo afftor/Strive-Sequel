@@ -625,6 +625,8 @@ func get_e_capacity():
 func get_bonusstats():
 	var res = bonusstats.duplicate()
 	var mul = variables.itemquality_multiplier[quality]
+	if tags.has('fixed_stats'):
+		mul = 1.0
 	for st in res:
 		if res[st] > 0: #or more complex behavior in case there are stats negative by default
 			res[st] *= mul
@@ -778,3 +780,39 @@ func get_owner():
 		return null
 	else:
 		return characters_pool.get_char_by_id(owner)
+
+
+func set_quality_level(val): #this method can change quality of any item, use with caution
+	var qualities = variables.itemquality_multiplier.keys()
+	if !qualities.has(val):
+		print ("error - set quality to wrong value %s" % val)
+		return
+	
+	if val == quality:
+		return
+	var towner = null
+	if owner != null:
+		towner = owner
+		characters_pool.get_char_by_id(owner).unequip(self, false)
+	
+	quality = val
+	#store enchants and clear them
+	var t_curse = curse
+	var t_enchants = enchants.duplicate()
+	clear_enchants()
+	#set new stats
+	if Items.fixed_quality_stats.has(itembase):
+		var newdata = Items.fixed_quality_stats[itembase][val]
+		for st in newdata:
+			if newdata[st] is Array or newdata[st] is Dictionary:
+				set(st, newdata[st].duplicate(true))
+			else:
+				set(st, newdata[st])
+	#restore enchants
+	if t_curse != null:
+		add_curse(t_curse)
+	for enc in t_enchants:
+		add_enchant(enc, t_enchants[enc], true)
+	
+	if towner != null:
+		characters_pool.get_char_by_id(towner).equip(self)
