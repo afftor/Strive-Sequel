@@ -1635,7 +1635,7 @@ func play_animation_noq(animation, args = {}):
 
 
 
-const PADDINGS = 25
+const PADDINGS = 40
 #this function did not work properly
 #idk how this was supposed to work - so i remade it into my best assumtion of used math to avoid multiple text rendering in binary-search approach
 

@@ -202,7 +202,7 @@ func build_area_menu(area_actions):
 		# 	newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 		# 	newbutton.connect("pressed", self, "enter_church", [newbutton, action])
 		# newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
-		newbutton.get_node("Label").text = action.name
+		newbutton.get_node("Label").text = tr(action.name)
 		var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
 		newbutton.get_node("Label").set("custom_fonts/font", font)
 	newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
@@ -216,7 +216,7 @@ func build_area_menu(area_actions):
 			if globals.checkreqs(i.reqs) == false:
 				continue
 			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
-			newbutton.get_node("Label").text = i.text
+			newbutton.get_node("Label").text = tr(i.text)
 			var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
 			newbutton.get_node("Label").set("custom_fonts/font", font)
 			newbutton.connect("pressed", globals, 'common_effects', [i.args])
@@ -232,7 +232,7 @@ func build_area_menu(area_actions):
 			if globals.checkreqs(i.reqs) == false:
 				continue
 			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
-			newbutton.get_node("Label").text = i.text
+			newbutton.get_node("Label").text = tr(i.text)
 			var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
 			newbutton.get_node("Label").set("custom_fonts/font", font)
 			if i.args.keys().has("oneshot") && !i.args.oneshot:
@@ -268,7 +268,7 @@ func update_guild_actions(guild):
 			if event == null:
 				continue
 			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
-			newbutton.get_node("Label").text = event.name
+			newbutton.get_node("Label").text = tr(event.name)
 			newbutton.connect(
 				"pressed",
 				input_handler,
@@ -309,7 +309,7 @@ func update_guild_actions(guild):
 		if !check:
 			continue
 		newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
-		newbutton.get_node("Label").text = a.name
+		newbutton.get_node("Label").text = tr(a.name)
 		newbutton.connect("toggled", self, "faction_" + a.code, [newbutton, guild])
 		newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
 		newbutton.texture_pressed = load(

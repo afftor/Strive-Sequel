@@ -2072,6 +2072,8 @@ func update_queue(queue, current): #don't call in asynchroned state
 	
 	for ch in [{pos = current}] + queue:
 		if ch.pos < 0 : continue
+		if battlefield[ch.pos] == null:
+			continue
 		var person = characters_pool.get_char_by_id(battlefield[ch.pos])
 		var tmp = input_handler.DuplicateContainerTemplate($Panel4/VBoxContainer, 'Button')
 		if ch.pos > 6:
