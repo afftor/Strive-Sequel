@@ -130,11 +130,14 @@ func sex_swap(character):
 	match character.get_stat('sex'):
 		'male':
 			character.set_stat('sex', 'female')
+			input_handler.interactive_message_follow("sex_swap_potion_female",'char_translate', character)
 		'female':
 			character.set_stat('sex', 'male')
+			input_handler.interactive_message_follow("sex_swap_potion_male",'char_translate', character)
 	character.swap_alternate_exterior()
 	character.set_stat('portrait_update', true)
 	input_handler.emit_signal('update_ragdoll')
+	
 
 
 func zephyra_underwear(character):
