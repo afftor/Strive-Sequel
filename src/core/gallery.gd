@@ -39,7 +39,8 @@ var scenes = {
 	daisy_wedding = ['daisy_wedding_2_1', 'daisy_wedding_3', 'daisy_wedding_4', 'daisy_wedding_5', 'daisy_wedding_6'],
 	cali_wedding = ['cali_wedding_2_1', 'cali_wedding_3', 'cali_wedding_4', 'cali_wedding_5', 'cali_wedding_6'],
 	amelia_wedding = ['amelia_wedding_2_1', 'amelia_wedding_3', 'amelia_wedding_4_1', 'amelia_wedding_5', 'amelia_wedding_6'],
-	lilia_transform = ['lilia_transform_1','lilia_transform_2','lilia_transform_3','lilia_transform_4','lilia_transform_5','lilia_transform_6','lilia_transform_7'],
+	lilia_transform_t = ['lilia_transform_1','lilia_transform_2','lilia_transform_3','lilia_transform_4'],
+	lilia_transform_mc = ['lilia_transform_1','lilia_transform_5','lilia_transform_6','lilia_transform_7','lilia_transform_8'],
 	lilith_blow = ['lilith_blow_1','lilith_blow_2','lilith_blow_3','lilith_blow_4','lilith_blow_5'],
 	lilith_ride = ['lilith_ride_1', 'lilith_ride_2', 'lilith_ride_3', 'lilith_ride_4'],
 	lilia_wedding = ['lilia_wedding_2', 'lilia_wedding_3', 'lilia_wedding_4', 'lilia_wedding_5', 'lilia_wedding_6', 'lilia_wedding_7'],
@@ -54,7 +55,7 @@ var scenes_order = [
 	"anastasia_aire","aire_gryphon","force_cali","cali_touching","xari_encounter","daisy_admirer",
 	"daisy_dress_acquired_normal","cali_bj_happy","cali_riding","heleviel","lilia_sex","christmas",
 	"heleviel_mansion","lira_mansion", "cali_zephyra","cali_act5_pet","cali_act6_naked","pre_ritual_blow",
-	"zephyra_lilia", 'amelia_sex', 'zephyra_disappearance_sex', 'zephyra_disappearance_guards', 'daisy_wedding', 'cali_wedding', 'amelia_wedding', 'lilia_transform', 'lilith_blow', 'lilith_ride', 'lilia_wedding', 'lilith_wedding',
+	"zephyra_lilia", 'amelia_sex', 'zephyra_disappearance_sex', 'zephyra_disappearance_guards', 'daisy_wedding', 'cali_wedding', 'amelia_wedding', 'lilia_transform_t', 'lilia_transform_mc', 'lilith_blow', 'lilith_ride', 'lilia_wedding', 'lilith_wedding',
 	]
 var story_scenes = ['anastasia_event_alive', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
 var ero_scenes = [
@@ -146,7 +147,7 @@ var ero_scenes_collection = {
 	'daisy_wedding': ['daisy_wedding1', 'daisy_wedding2', 'daisy_wedding3', 'daisy_wedding4'],
 	'cali_wedding': ['cali_wedding1', 'cali_wedding2', 'cali_wedding3', 'cali_wedding4'],
 	'amelia_wedding': ['amelia_wedding1', 'amelia_wedding2', 'amelia_wedding3', 'amelia_wedding4'],
-	'lilia_transform_' : ['lilia_transform_1','lilia_transform_1','lilia_transform_2','lilia_transform_3','lilia_transform_4','lilia_transform_5','lilia_transform_6','lilia_transform_7',],
+	'lilia_transform_' : ['lilia_transform_1','lilia_transform_2','lilia_transform_3','lilia_transform_4','lilia_transform_5','lilia_transform_6','lilia_transform_7'],
 	'lilith_blow_' : ['lilith_blow_1','lilith_blow_2','lilith_blow_3','lilith_blow_4','lilith_blow_5'],
 	'lilith_ride_' : ['lilith_ride_1', 'lilith_ride_2', 'lilith_ride_3', 'lilith_ride_4'],
 	'lilia_wedding_' : ['lilia_wedding_1', 'lilia_wedding_2', 'lilia_wedding_3', 'lilia_wedding_4', 'lilia_wedding_5', 'lilia_wedding_6', 'lilia_wedding_7', ],

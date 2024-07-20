@@ -13270,7 +13270,7 @@ There's no response from the voice and the man in the robes has nothing to add s
 Each tentacle wraps around Lilia's body, spreading a slimy substance along her skin as they explore her warm body. They pull away the cloth covering her pussy, slithering over her clit and tickling it. A few tentacles coil around her breasts, playing with her nipples to mollify her for the upcoming ordeal.
 
 A tentacle slides into her mouth, occupying her throat for the ritual about to commence.""",
-	LILIA_TRANSFORM_2 = """Two tentacles enter Lilia's pussy and ass, stretching them to their limits as they slide in without regard for her body. Filling all of her holes, the tentacles writhe and slither inside her, a trickle of dark energy stimulating her body that gets stronger and stronger the longer the tentacles lodge themselves inside her.
+	LILIA_TRANSFORM_2_T = """Two tentacles enter Lilia's pussy and ass, stretching them to their limits as they slide in without regard for her body. Filling all of her holes, the tentacles writhe and slither inside her, a trickle of dark energy stimulating her body that gets stronger and stronger the longer the tentacles lodge themselves inside her.
 
 Lilia: – Mmhm... 
 
@@ -13279,35 +13279,33 @@ Moans of pleasure escape Lilia's mouth despite her seemingly uncomfortable restr
 Voice: — Yes... You are a perfect subject for my power, I can feel your essential lust and perverse dormant in your body. Let us awaken it.
 
 After a few minutes, the energy gathers in each of her holes, a viscous liquid oozing out of Lilia's mouth, pussy, and ass. A small amount of clear fluids escape her pussy too, mixing in with the tentacle goop that pumps itself inside her. She swallows all of it obediently as her eyes glaze over, her body beginning to relax.""",
-	LILIA_TRANSFORM_3 = """As the ritual progresses, her body begins to undergo changes. Her hair darkens, shadowy marks show up on her body, two horns sprout from her head and a cute little tail extends from her ass. Lilia seems even more intrigued by the changes happening to her body, letting the tentacles explore wherever they want.
+	LILIA_TRANSFORM_3_T = """As the ritual progresses, her body begins to undergo changes. Her hair darkens, shadowy marks show up on her body, two horns sprout from her head and a cute little tail extends from her ass. Lilia seems even more intrigued by the changes happening to her body, letting the tentacles explore wherever they want.
 
 Lilia: — Aah... I feel something... Is happening to me...
 
 Pumping and thrusting into her, the tentacles release another wave of dark cum that spills out of Lilia, forcing her orgasm out as her body gets used to being a seedbed for the malicious creature.""",
-	LILIA_TRANSFORM_4 = """As the tentacles keep providing Lilia with pleasure and new orgasms, while pumping her with the dark energy, her looks completely change into a whole new person. Her horns and tail have matured, the shadows have become black marks, and her eyes have gained a demonic glow and mischievous stare. Even her wings have been affected, changed like her now blood-red hair.
+	LILIA_TRANSFORM_4_T = """As the tentacles keep providing Lilia with pleasure and new orgasms, while pumping her with the dark energy, her looks completely change into a whole new person. Her horns and tail have matured, the shadows have become black marks, and her eyes have gained a demonic glow and mischievous stare. Even her wings have been affected, changed like her now blood-red hair.
 
 Another round of demonic cum is pumped into her willing body, finishing her transformation as she happily suckles on the tentacle feeding her the sustenance which gives her so much pleasure.
 
-Lilia: — This really was amazing. I've never felt this good... and strong.
-
-As the tentacle feeds her corrupted fluids, her eyes glaze over and you insert yourself into her overtly relaxed body. Her pussy clamps to you tight once you enter, suckling on your dick for the meal that it desires so much. You thrust into her as you watch the tentacle fuck her throat, the corrupted cum spilling down the sides of her mouth.""",
-	LILIA_TRANSFORM_5 = """As the ritual progresses, her body begins to undergo changes. Her hair darkens, shadowy marks show up on her body, two horns sprout from her head and a cute little tail extends from her ass. Lilia seems even more intrigued by the changes happening to her body, letting the tentacles explore wherever they want.
+Lilia: — This really was amazing. I've never felt this good... and strong.""",
+	LILIA_TRANSFORM_5_MC = """As the tentacle feeds her corrupted fluids, her eyes glaze over and you insert yourself into her overtly relaxed body. Her pussy clamps to you tight once you enter, suckling on your dick for the meal that it desires so much. You thrust into her as you watch the tentacle fuck her throat, the corrupted cum spilling down the sides of her mouth.""",
+	LILIA_TRANSFORM_6_MC= """As the ritual progresses, her body begins to undergo changes. Her hair darkens, shadowy marks show up on her body, two horns sprout from her head and a cute little tail extends from her ass. Lilia seems even more intrigued by the changes happening to her body, letting the tentacles explore wherever they want.
 
 Lilia: — Mmhm... 
 
 Moans of pleasure escape Lilia's mouth despite her seemingly uncomfortable restricted state. Suddenly a deep voice looms over the cave.
 
 Voice: — Yes... You are a perfect subject for my power, I can feel your essential lust and perverse dormant in your body. Let us awaken it.""",
-	LILIA_TRANSFORM_6 = """Time passes as Lilia's corruption becomes deeper, horns, tail, and dark shadows on her body all signs of her transformation. As she succumbs to dark temptations, her pussy becomes tighter, almost more playful as it begs for your cum. You stave off as you make short thrusts into her, observing her growing features with bated breath as she guzzles purple cum, gulp after gulp.
+	LILIA_TRANSFORM_7_MC= """Time passes as Lilia's corruption becomes deeper, horns, tail, and dark shadows on her body all signs of her transformation. As she succumbs to dark temptations, her pussy becomes tighter, almost more playful as it begs for your cum. You stave off as you make short thrusts into her, observing her growing features with bated breath as she guzzles purple cum, gulp after gulp.
 
 Lilia: — Aah... I feel something... Is happening to me...
 
 With her transformation nearly complete, you push into her faster and faster, watching her new tail wag around and her demonic eyes focus on you. Your little fae has transformed into your little succubus, horns and all. Her slutty body licks at the tentacle in her mouth, begging it to unload corrupted cum down her throat forever.""",
-	LILIA_TRANSFORM_7 = """You mark the ritual as completed yourself with a flair of cum that floods her pussy. Her body drinks your seed as much as she drinks the tentacle's fluids, clamping around your cock to entice you to stay. As much as you'd like to indulge, you pull away to claim your newly transformed demon slave
+	LILIA_TRANSFORM_8_MC= """You mark the ritual as completed yourself with a flair of cum that floods her pussy. Her body drinks your seed as much as she drinks the tentacle's fluids, clamping around your cock to entice you to stay. As much as you'd like to indulge, you pull away to claim your newly transformed demon slave
 
-Lilia: — This really was amazing. I've never felt this good... and strong... And you didn't shy away from doing it with me too, [Master].
-
-The voice announces the end of the ritual.
+Lilia: — This really was amazing. I've never felt this good... and strong... And you didn't shy away from doing it with me too, [Master].""",
+	LILIA_TRANSFORM_9 = """The voice announces the end of the ritual.
 
 Voice: — With this you are born anew, and you will require a new name. I declare that you are Lilith, my champion. 
 

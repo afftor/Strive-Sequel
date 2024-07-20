@@ -256,9 +256,9 @@ var backgrounds = {
 	lilia_transform_1 = load("res://assets/images/fullscreen scenes/FairyCG010.png"),
 	lilia_transform_2 = load("res://assets/images/fullscreen scenes/FairyCG011.png"),
 	lilia_transform_3 = load("res://assets/images/fullscreen scenes/FairyCG014.png"),
-	lilia_transform_4 = load("res://assets/images/fullscreen scenes/FairyCG015.png"),
-	lilia_transform_5 = load("res://assets/images/fullscreen scenes/FairyCG016.png"),
-	lilia_transform_6 = load("res://assets/images/fullscreen scenes/FairyCG018.png"),
+	lilia_transform_4 = load("res://assets/images/fullscreen scenes/FairyCG018.png"),
+	lilia_transform_5 = load("res://assets/images/fullscreen scenes/FairyCG013.png"),
+	lilia_transform_6 = load("res://assets/images/fullscreen scenes/FairyCG016.png"),
 	lilia_transform_7 = load("res://assets/images/fullscreen scenes/FairyCG019.png"),
 	
 	lilith_blow_1 = load("res://assets/images/fullscreen scenes/LilithCG001.png"),
