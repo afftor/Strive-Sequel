@@ -55,4 +55,3 @@ func _on_TextEdit_text_entered(new_text):
 		else:
 			_RichTextLabel.text += "Command complete \n"
 		
-	pass # Replace with function body.

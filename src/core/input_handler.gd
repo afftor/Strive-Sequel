@@ -852,6 +852,8 @@ func open_shell(string):
 			path = "https://discord.gg/VXSx9Zk"
 		'Wiki':
 			path = "https://strive-conquest.fandom.com/wiki/Strive:_Conquest_Wiki"
+		'Subscribestar':
+			path = "https://subscribestar.adult/maverik"
 	OS.shell_open(path)
 
 func SystemMessage(text, time = 4):

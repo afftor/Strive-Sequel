@@ -26,8 +26,6 @@ var CombatAllyHpAlwaysVisible = true
 
 var timeforinteraction = 20
 
-var permanent_classes = ['master','renown_royalty','broken_royalty','alios_champion']
-
 
 var debug_mode = false
 var no_obedience_drain = false

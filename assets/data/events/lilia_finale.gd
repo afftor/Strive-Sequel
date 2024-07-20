@@ -54,7 +54,7 @@ var data = {
 		common_effects = [
 			{
 				code = "make_quest_location",
-				value = "quest_elven_ancient_jungle_location"
+				value = "quest_lilia_ancient_jungle_location"
 			}
 		],
 		options = [
@@ -109,7 +109,7 @@ var data = {
 					},
 					{
 						code = "remove_quest_location",
-						value = "quest_elven_ancient_jungle_location"
+						value = "quest_lilia_ancient_jungle_location"
 					}
 				]
 			}
@@ -2668,7 +2668,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "make_quest_location",
-						value = "quest_patron_ancient_jungle_location"
+						value = "quest_patron_lilia_location"
 					}
 				]
 			}

@@ -1565,8 +1565,8 @@ var dungeons = {
 		{trigger = 'dungeon_complete', args = 'amelia_prison_1'}]
 	},
 	
-	quest_dungeon_grove = {
-		code = 'quest_dungeon_grove',
+	quest_dungeon_cali_grove = {
+		code = 'quest_dungeon_cali_grove',
 		type = 'dungeon',
 		name = tr("QUEST_DUNGEON_GROVE_TEXT"),
 		classname = '',
@@ -1664,8 +1664,8 @@ var dungeons = {
 			{trigger = 'dungeon_complete', event = 'custom_event', args = 'cali_act3_jean_3', reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage6'}, {type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage8', orflag = true}]}
 		]
 	},
-	quest_ancient_jungle_location = {
-		code = 'quest_ancient_jungle_location',
+	quest_zephyra_jungle_location = {
+		code = 'quest_zephyra_jungle_location',
 		type = 'dungeon',
 		name = tr("QUEST_ANCIENT_JUNGLE_LOCATION_TEXT"),
 		classname = '',
@@ -1970,7 +1970,7 @@ var dungeons = {
 		classname = '',
 		descript = tr("QUEST_MAGES_XARI_DESC"),
 		difficulty = 'easy',
-		background = 'cave_1',
+		background = 'xari_hut',
 		enemyarray =  [],
 		eventarray = [],
 		levels = [1,1],
@@ -2409,8 +2409,8 @@ var dungeons = {
 		travel_time = [1,1],
 		scripteventdata = []
 	},
-	quest_elven_ancient_jungle_location = {
-		code = 'quest_elven_ancient_jungle_location',
+	quest_lilia_ancient_jungle_location = {
+		code = 'quest_lilia_ancient_jungle_location',
 		type = 'dungeon',
 		name = tr("QUEST_ELVEN_ANCIENT_JUNGLE_LOCATION_TEXT"),
 		classname = '',
@@ -2419,6 +2419,7 @@ var dungeons = {
 			chance_mod = 1.1,
 			races = [["common", 2], ['uncommon', 4],['TribalElf',6], ['rare',1]]
 		},
+		difficulty = 'medium',
 		purchase_area = 'forests',
 		background_pool = ['jungle1','jungle2','jungle3','jungle4'],
 		bgm = "dungeon",
@@ -2585,8 +2586,8 @@ var dungeons = {
 		scripteventdata = [
 		{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilith_finish_dungeon_1', reqs = [{code = 'active_quest_stage', value = 'lilia_finale_quest', stage = 'stage5'}]}]
 	},
-	quest_patron_ancient_jungle_location = {
-		code = 'quest_patron_ancient_jungle_location',
+	quest_patron_lilia_location = {
+		code = 'quest_patron_lilia_location',
 		type = 'dungeon',
 		name = tr("QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_TEXT"),
 		classname = '',

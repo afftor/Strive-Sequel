@@ -425,7 +425,7 @@ var data = {
 		reqs = [], character = "jean",
 		text = [{text = "CALI_ACT3_JEAN_2_1", reqs = [], previous_dialogue_option = 1},
 		{text = "CALI_ACT3_JEAN_2_2", reqs = [], previous_dialogue_option = 2},],
-		common_effects = [{code = 'make_quest_location', value = 'quest_dungeon_grove'}],
+		common_effects = [{code = 'make_quest_location', value = 'quest_dungeon_cali_grove'}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		},  ]
@@ -439,7 +439,7 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
 				{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage7'},
-				{code = 'remove_quest_location', value = 'quest_dungeon_grove'},
+				{code = 'remove_quest_location', value = 'quest_dungeon_cali_grove'},
 			]
 		},  ]
 	},
@@ -509,7 +509,7 @@ var data = {
 			bonus_effects = [{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage9'},
 			{code = 'money_change', operant = '-', value = 500},
 			{code = "update_guild"},
-			{code = 'remove_quest_location', value = 'quest_dungeon_grove'},
+			{code = 'remove_quest_location', value = 'quest_dungeon_cali_grove'},
 			{code = 'add_timed_event', args = [{type = 'action_to_date', date = [2,2], hour = 1, action = 'quest'}], value = {quest = 'cali_taming_quest', stage = 'stage10'}}]
 		}, ]
 	},

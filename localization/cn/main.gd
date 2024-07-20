@@ -2279,6 +2279,7 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	TRAITEFFECTRESISTSTATE = "Resist state: Can't gain obedience from positive abilities. Can't use exploration skills. Positive actions during dates less effective.",
 	TRAITEFFECTISPREGNANT = "Is pregnant: -10 Speed, -20 Physics",
 	TRAITEFFECTISPREGNANT2 = "Is heavily pregnant: -20 Speed, -40 Physics",
+	EUPHORIABUFF = """Damage Increased""", # MISSING TRANSLATION
 	BUFFDESCRIPTSHACKLES = "Shackles",
 	BUFFDESCRIPTGREATSHACKLES = "Great Shackles",
 	BUFFDESCRIPTCHARM = "Is charmed. %d hours remains",

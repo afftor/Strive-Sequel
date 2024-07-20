@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=2]
@@ -30,6 +30,8 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_26.tres" type="DynamicFont" id=28]
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=29]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_itch2.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/buttons/mainmenu/button_subscribestar.png" type="Texture" id=31]
+[ext_resource path="res://assets/images/buttons/mainmenu/button_subscribestar2.png" type="Texture" id=32]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_discord2.png" type="Texture" id=41]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_discord.png" type="Texture" id=46]
 [ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_StartGame_panel.tres" type="StyleBox" id=54]
@@ -291,9 +293,9 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 97.0
-margin_top = 675.0
+margin_top = 603.0
 margin_right = 436.0
-margin_bottom = 768.0
+margin_bottom = 696.0
 rect_scale = Vector2( 0.8, 0.8 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
@@ -304,9 +306,20 @@ margin_bottom = 692.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_constants/separation = 10
 
-[node name="Patreon" type="TextureButton" parent="Panel/VBoxContainer"]
+[node name="Subscribestar" type="TextureButton" parent="Panel/VBoxContainer"]
 margin_right = 192.0
 margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+texture_normal = ExtResource( 31 )
+texture_hover = ExtResource( 32 )
+texture_focused = ExtResource( 32 )
+expand = true
+stretch_mode = 5
+
+[node name="Patreon" type="TextureButton" parent="Panel/VBoxContainer"]
+margin_top = 160.0
+margin_right = 192.0
+margin_bottom = 310.0
 rect_min_size = Vector2( 150, 150 )
 texture_normal = ExtResource( 55 )
 texture_hover = ExtResource( 58 )
@@ -315,9 +328,9 @@ expand = true
 stretch_mode = 5
 
 [node name="Discord" type="TextureButton" parent="Panel/VBoxContainer"]
-margin_top = 160.0
+margin_top = 320.0
 margin_right = 192.0
-margin_bottom = 310.0
+margin_bottom = 470.0
 rect_min_size = Vector2( 150, 150 )
 texture_normal = ExtResource( 46 )
 texture_hover = ExtResource( 41 )
@@ -326,9 +339,9 @@ expand = true
 stretch_mode = 5
 
 [node name="Itch" type="TextureButton" parent="Panel/VBoxContainer"]
-margin_top = 320.0
+margin_top = 480.0
 margin_right = 192.0
-margin_bottom = 470.0
+margin_bottom = 630.0
 rect_min_size = Vector2( 150, 150 )
 texture_normal = ExtResource( 60 )
 texture_hover = ExtResource( 30 )
@@ -337,9 +350,9 @@ expand = true
 stretch_mode = 5
 
 [node name="Wiki" type="TextureButton" parent="Panel/VBoxContainer"]
-margin_top = 480.0
+margin_top = 640.0
 margin_right = 192.0
-margin_bottom = 630.0
+margin_bottom = 790.0
 rect_min_size = Vector2( 150, 150 )
 texture_normal = ExtResource( 61 )
 texture_hover = ExtResource( 59 )
