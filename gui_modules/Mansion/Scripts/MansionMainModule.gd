@@ -814,7 +814,10 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("service_suit", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("cali_heirloom", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("cali_heirloom_test", {})) #base level
+		var titem = globals.CreateGearItem("cali_heirloom_test", {})
+		titem.set_quality_level('legendary')
+		globals.AddItemToInventory(titem) #legendary version
 		globals.AddItemToInventory(globals.CreateGearItem("craftsman_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("leather_collar", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
@@ -922,7 +925,7 @@ func test_mode():
 		ResourceScripts.game_progress.decisions.append("bracelet_found")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
-		input_handler.interactive_message('mages_election3', '', {})
+#		input_handler.interactive_message('leon_encounter_start', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)
@@ -933,7 +936,7 @@ func test_mode():
 #		ResourceScripts.game_party.get_master().xp_module.professions.append("rogue") 
 
 
-		#ResourceScripts.game_progress.completed_quests.append("daisy_lost")
+		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
 #		input_handler.interactive_message('daisy_dress_acquired_lewd_3', '', {})
 

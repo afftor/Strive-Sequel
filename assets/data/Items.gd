@@ -1676,6 +1676,24 @@ var itemlist = {
 		tags = ['no_random', 'bladed'],
 		basestats = {atk = 3},
 	},
+	cali_heirloom_test = { #some examples added
+		code = 'cali_heirloom',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'weapon',
+		geartype = 'sword',
+		crafttype = 'basic',
+		weaponrange = 'melee',
+		slots = ['rhand','lhand'],
+		price = 300,
+		icon = load("res://assets/images/iconsitems/cali_heirloom.png"),
+		tier = 'medium',
+		reqs = [{code = 'unique', value = 'cali'}],
+		effects = [],
+		tags = ['no_random', 'bladed', 'fixed_stats', 'upgradable'], #3 - for using clear bonusstats wihout muliplyer, 4 - for gui filter 
+		basestats = {atk = 3},
+	},
 	cali_heirloom_active = {
 		code = 'cali_heirloom_active',
 		name = "",
@@ -2875,7 +2893,8 @@ var itemlist = {
 		price = 250,
 		icon = load("res://assets/images/iconsitems/oblivionpot.png"),
 		tier = 'medium',
-		reqs = [],
+		reqs = [{code = 'unique', value = null}],
+		reqs_fail_message = "Can only be applied to non-unique slaves",
 		effects = [],
 		tags = [],
 		mansion_effect = 'sexswappot',
@@ -5404,4 +5423,20 @@ var curses = {
 #		capacity_multiplyer = 1.5
 		statmods = {enchant_capacity_mul = 1.5}
 	},
+}
+
+
+var fixed_quality_stats = {
+	cali_heirloom_test = { #example of data format
+		"" : {},
+		poor = {},
+		average = {},
+		good = {},
+		epic = {},
+		legendary = {
+			bonusstats = {atk = 35, critchance = 20, hitrate = 20, armorpenetration = 15, enchant_capacity = 400}, #not basestats
+			icon = "res://assets/images/iconsitems/holy_sword.png", #not load!
+			effects = ['e_rare_deadly'] #not displayed in tooltip, but may be visible after equip
+		}
+	}
 }

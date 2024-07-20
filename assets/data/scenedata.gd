@@ -867,6 +867,22 @@ var scenedict = {
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
 		],
 	},
+	sex_swap_potion_female = {
+		text = tr("DIALOGUESEXSWAP_FEMALE"),
+		image = null,
+		tags = ['active_character_translate'],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
+		],
+	},
+	sex_swap_potion_male = {
+		text = tr("DIALOGUESEXSWAP_MALE"),
+		image = null,
+		tags = ['active_character_translate'],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
+		],
+	},
 	
 	zephyra_underwear = {
 		text = tr("DIALOGUEZEPHYRA_UNDERWEAR"),
