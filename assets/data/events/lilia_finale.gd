@@ -463,45 +463,45 @@ var data = {
 			}
 		]
 	},
+#	lilith_flirting_3 = {
+#		image = null,
+#		tags = [
+#			"dialogue_scene"
+#		],
+#		reqs = [
+#
+#		],
+#		character = "lilia",
+#		text = [
+#			{
+#				text = "LILIA_FLIRTING_3",
+#				reqs = [
+#
+#				]
+#			}
+#		],
+#		options = [
+#			{
+#				code = "lilith_flirting_4",
+#				text = "LILIA_FLIRTING_3_OPTION_1",
+#				reqs = [
+#
+#				],
+#				dialogue_argument = 1,
+#				type = "next_dialogue"
+#			},
+#			{
+#				code = "lilith_flirting_4",
+#				text = "LILIA_FLIRTING_3_OPTION_2",
+#				reqs = [
+#
+#				],
+#				dialogue_argument = 2,
+#				type = "next_dialogue"
+#			}
+#		]
+#	},
 	lilith_flirting_3 = {
-		image = null,
-		tags = [
-			"dialogue_scene"
-		],
-		reqs = [
-
-		],
-		character = "lilia",
-		text = [
-			{
-				text = "LILIA_FLIRTING_3",
-				reqs = [
-
-				]
-			}
-		],
-		options = [
-			{
-				code = "lilith_flirting_4",
-				text = "LILIA_FLIRTING_3_OPTION_1",
-				reqs = [
-
-				],
-				dialogue_argument = 1,
-				type = "next_dialogue"
-			},
-			{
-				code = "lilith_flirting_4",
-				text = "LILIA_FLIRTING_3_OPTION_2",
-				reqs = [
-
-				],
-				dialogue_argument = 2,
-				type = "next_dialogue"
-			}
-		]
-	},
-	lilith_flirting_4 = {
 		image = null,
 		tags = [
 			"dialogue_scene"
@@ -556,7 +556,8 @@ var data = {
 				text = "LILIA_FINISH_DUNGEON_1",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "LILIA_FINISH_DUNGEON_2_1",
@@ -705,6 +706,7 @@ var data = {
 				reqs = [
 
 				],
+				bonus_effects = [{code = 'decision', value = 'JoinLiliaTransformation'}],
 				dialogue_argument = 4,
 				type = "next_dialogue"
 			}
@@ -2956,14 +2958,12 @@ var data = {
 		custom_background = "lilia_transform_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		unlocked_gallery_seq = "lilia_transform",
 		image = null,
 		tags = [
 			"dialogue_scene",
 			"master_translate"
 		],
 		reqs = [
-
 		],
 		text = [
 			{
@@ -2978,7 +2978,16 @@ var data = {
 				code = "lilia_transform_2",
 				text = "DIALOGUECONTINUE",
 				reqs = [
-
+					{type = 'decision', value = 'JoinLiliaTransformation', check = false}
+				],
+				dialogue_argument = 1,
+				type = "next_dialogue"
+			}, 
+			{
+				code = "lilia_transform_5",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+					{type = 'decision', value = 'JoinLiliaTransformation', check = true}
 				],
 				dialogue_argument = 1,
 				type = "next_dialogue"
@@ -2990,6 +2999,7 @@ var data = {
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		image = null,
+		unlocked_gallery_seq = "lilia_transform_t",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -2999,7 +3009,7 @@ var data = {
 		],
 		text = [
 			{
-				text = "LILIA_TRANSFORM_2",
+				text = "LILIA_TRANSFORM_2_T",
 				reqs = [
 
 				]
@@ -3031,7 +3041,7 @@ var data = {
 		],
 		text = [
 			{
-				text = "LILIA_TRANSFORM_3",
+				text = "LILIA_TRANSFORM_3_T",
 				reqs = [
 
 				]
@@ -3063,7 +3073,7 @@ var data = {
 		],
 		text = [
 			{
-				text = "LILIA_TRANSFORM_4",
+				text = "LILIA_TRANSFORM_4_T",
 				reqs = [
 
 				]
@@ -3071,13 +3081,14 @@ var data = {
 		],
 		options = [
 			{
-				code = "lilia_transform_5",
+				code = "lilia_transform_9",
 				text = "DIALOGUECONTINUE",
 				reqs = [
 
 				],
 				dialogue_argument = 1,
-				type = "next_dialogue"
+				type = "next_dialogue",
+				change_dialogue_type = 1
 			}
 		]
 	},
@@ -3086,6 +3097,7 @@ var data = {
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		image = null,
+		unlocked_gallery_seq = "lilia_transform_mc",
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -3095,7 +3107,7 @@ var data = {
 		],
 		text = [
 			{
-				text = "LILIA_TRANSFORM_5",
+				text = "LILIA_TRANSFORM_5_MC",
 				reqs = [
 
 				]
@@ -3124,7 +3136,7 @@ var data = {
 		reqs = [
 
 		],
-		text = "LILIA_TRANSFORM_6",
+		text = "LILIA_TRANSFORM_6_MC",
 		options = [
 			{
 				code = "lilia_transform_7",
@@ -3133,7 +3145,7 @@ var data = {
 
 				],
 				dialogue_argument = 1,
-				type = "next_dialogue"
+				type = "next_dialogue",
 			}
 		]
 	},
@@ -3141,6 +3153,52 @@ var data = {
 		custom_background = "lilia_transform_7",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		tags = [
+			"dialogue_scene",
+			"master_translate"
+		],
+		reqs = [
+
+		],
+		text = "LILIA_TRANSFORM_7_MC",
+		options = [
+			{
+				code = "lilia_transform_8",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				dialogue_argument = 1,
+				type = "next_dialogue",
+			}
+		]
+	},
+	lilia_transform_8 = {
+		custom_background = "lilia_transform_7",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = [
+			"dialogue_scene",
+			"master_translate"
+		],
+		reqs = [
+
+		],
+		text = "LILIA_TRANSFORM_8_MC",
+		options = [
+			{
+				code = "lilia_transform_9",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				change_dialogue_type = 1
+			}
+		]
+	},
+	lilia_transform_9 = {
 		image = null,
 		tags = [
 			"dialogue_scene",
@@ -3151,7 +3209,7 @@ var data = {
 		],
 		text = [
 			{
-				text = "LILIA_TRANSFORM_7",
+				text = "LILIA_TRANSFORM_9",
 				reqs = [
 
 				]
@@ -3339,6 +3397,7 @@ var data = {
 		save_scene_to_gallery = true,
 		unlocked_gallery_seq = "lilith_ride",
 		image = null,
+		dialogue_type = 2,
 		tags = [
 			"dialogue_scene",
 			"master_translate"
