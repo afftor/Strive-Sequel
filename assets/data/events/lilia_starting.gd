@@ -368,7 +368,6 @@ var data = {
 				{code = 'progress_quest', value = 'sick_lilia_quest', stage = 'stage5'},
 				{code = 'plan_mansion_event', value = 'lilia_mansion_1'},
 				{code = 'update_location'},
-				{code = 'remove_quest_location', value = 'quest_mages_xari'},
 			]
 		}, ]
 	},
@@ -445,7 +444,6 @@ var data = {
 				{code = 'progress_quest', value = 'sick_lilia_quest', stage = 'stage5'},
 				{code = 'plan_mansion_event', value = 'lilia_mansion_1'},
 				{code = 'update_location'},
-				{code = 'remove_quest_location', value = 'quest_mages_xari'},
 				{code = 'remove_quest_location', value = 'quest_troll_cave_location'}
 			]
 		}, ]
@@ -511,6 +509,7 @@ var data = {
 			bonus_effects = [
 				{code = 'complete_quest', value = 'sick_lilia_quest'},
 				{code = 'update_mansion'},
+				{code = 'add_timed_event', value = "lilia_finale_1", args = [{type = 'add_to_date', date = [7, 7], hour = 1}]}
 			]
 		}, ]
 	},

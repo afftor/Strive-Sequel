@@ -10,6 +10,8 @@ var body_upgrades = []
 var parent: WeakRef = null
 var reported_pregnancy = false
 
+var alternate_exterior = {}
+
 
 func _init():
 	for i in variables.resists_list:
@@ -84,8 +86,34 @@ func fix_serialize():
 		bonuses.erase(st + '_add')
 	if parent.get_ref().is_master():
 		statlist.consent = 100
-	
-	
+
+
+func swap_alternate_exterior(): #only on sex change due to current implementation of recreate method
+	var tmp = {}
+	for st in variables.exterior_stats:
+		tmp[st] = statlist[st]
+	if alternate_exterior.empty():
+		recreate_exterior()
+	else:
+		for st in alternate_exterior:
+			statlist[st] = alternate_exterior[st]
+	alternate_exterior = tmp
+
+
+func recreate_exterior(): #only on sex change
+	var sex = statlist.sex
+	var data = ResourceScripts.descriptions.bodypartsdata.sex[sex].bodychanges
+	for line in data:
+		if !line.code in (variables.exterior_stats + variables.exterior_stats_composite):
+			continue
+		if !parent.get_ref().checkreqs(line.reqs):
+			continue
+		var value = input_handler.weightedrandom(line.value)
+		if line.code in variables.exterior_stats:
+			statlist[line.code] = value
+		else:
+			set_stat(line.code, value)
+
 
 func default_stats_get():
 	return statlist.duplicate()

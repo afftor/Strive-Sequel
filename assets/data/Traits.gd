@@ -1065,7 +1065,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_fortune.png",
 		effects = [],
-		bonusstats = {critchance = 0.25, magic_find = 1},
+		bonusstats = {critchance = 25, magic_find = 1},
 		reqs = [],
 		l_cost = 1,
 		tree_position = {tab = 3, x = 7, y = 3}, #fix

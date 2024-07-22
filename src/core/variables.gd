@@ -83,6 +83,10 @@ var brothel_non_sex_options = ['waitress','hostess','dancer','stripper']
 var farming_rules = ['milk', 'pheromones', 'seed', 'eggs', 'magic_dust', 'reptile_blood', 'spider_silk', 'draconic_scales', 'light_essence', 'dark_essence', 'lizard_skin', 'leatherdragon']
 
 var skin_coverage_false = ['scale','fur_white','fur_grey','fur_brown','fur_stripped','fur_black','fur_orange','fur_orange_white'] #list of skincoverage blocking skin desription
+
+var exterior_stats = ['beard', 'ass_size', 'tits_size', 'penis_size', 'balls_size', 'eye_tex', 'chin', 'eyebrows', 'hair_base', 'hair_assist', 'hair_back', 'hair_fringe', 'hair_base_length', 'hair_assist_length', 'hair_back_length', 'hair_fringe_length',] #stats that a backuped on sex change, sure colors should not be here
+var exterior_stats_composite = ['hair_length', 'hair_style'] #stats that are NOT backuped but used in regeneration procedure
+
 var booster_tiers = {
 	1:['milk', 'pheromones', 'seed'],
 	2:['eggs', 'magic_dust', 'reptile_blood', 'spider_silk'],
@@ -278,6 +282,10 @@ var power_adjustments_per_difficulty = {
 	hard = [3,6]
 }
 var difficulty_per_level = 0.05 #% enemy stat increase
+var difficulty_per_level_survival = 0.1 #% enemy stat increase
+var survival_cap_main = 4.0 # added base 1 to max + 300%
+var survival_cap_secondary = 2.5 # added base 1 to max + 150%
+
 var slave_class_list = ['slave', 'servant', 'heir', 'master']#incomplete?
 #sex chances
 

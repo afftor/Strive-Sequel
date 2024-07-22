@@ -8,15 +8,17 @@ var original_version = globals.gameversion
 var newgame = false
 var difficulty = 'medium'
 
+var seed_salt = randi()
+
 #dynamic part
 var date = 1
 var hour = 1
 
 var daily_sex_left = 1
 var daily_dates_left = 1
-var weekly_sex_left = 1
+var weekly_sex_left = 2
 var weekly_sex_max = 1
-var weekly_dates_left = 1
+var weekly_dates_left = 3
 var weekly_dates_max = 1
 
 #not used
@@ -43,6 +45,7 @@ func get_week_and_day_custom(new_date):
 func fix_serialization():
 	date = int(date)
 	hour = int(hour)
+	seed_salt = int(seed_salt)
 	weekly_sex_left = int(weekly_sex_left)
 	weekly_sex_max = int(weekly_sex_max)
 	weekly_dates_left = int(weekly_dates_left)
@@ -105,7 +108,7 @@ func advance_day():
 		gui_controller.mansion.rebuild_mansion()
 
 func reset_limits():
-	weekly_sex_max = 1 + ceil(ResourceScripts.game_party.get_master().get_stat('sexuals_factor') * 0.5) + ResourceScripts.game_res.upgrades.sex_times
+	weekly_sex_max = 2 + ceil(ResourceScripts.game_party.get_master().get_stat('sexuals_factor') * 0.5) + ResourceScripts.game_res.upgrades.sex_times
 	weekly_sex_left = weekly_sex_max
-	weekly_dates_max = 1 + floor(ResourceScripts.game_party.get_master().get_stat('charm_factor') * 0.5)
+	weekly_dates_max = 3 + floor(ResourceScripts.game_party.get_master().get_stat('charm_factor') * 0.34)
 	weekly_dates_left = weekly_dates_max

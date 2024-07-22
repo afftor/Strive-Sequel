@@ -799,6 +799,8 @@ func test_mode():
 				{code = 'make_story_character', value = 'Jean'},
 				{code = 'make_story_character', value = 'Zephyra'},
 				{code = 'make_story_character', value = 'Anastasia'},
+				{code = 'make_story_character', value = 'Lilia'},
+				{code = 'make_story_character', value = 'Lilith'},
 				#{code = 'make_story_character', value = 'Amelia'},
 			]
 		)
@@ -921,7 +923,7 @@ func test_mode():
 		ResourceScripts.game_progress.decisions.append("bracelet_found")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
-		#input_handler.interactive_message('zephyra_underwear', '', {})
+		input_handler.interactive_message('lilia_finale_1', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)

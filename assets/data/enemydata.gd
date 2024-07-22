@@ -47,6 +47,9 @@ var encounters = {
 	troll_clothes = {unittype = 'randomgroup', unitcode = 'troll_clothes', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'troll_clothes_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	goblin_quest = {unittype = 'randomgroup', unitcode = 'goblin_quest', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'goblin_quest_10', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	ketch_group = {unittype = 'randomgroup', unitcode = 'ketch_group', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'zephyra_disappearance_ketch_3_f_2', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	robbed_man = {unittype = 'randomgroup', unitcode = 'robbed_man', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lilith_good_route_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	lilia_boss = {unittype = 'randomgroup', unitcode = 'lilia_boss', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lilith_good_route_village_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	lilith_patron = {unittype = 'randomgroup', unitcode = 'lilith_patron', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lilith_beat_demon', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 
 
 	mercenary_fred_quest = {unittype = 'randomgroup', unitcode = 'mercenary_fred_quest', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'fred_got_after_fight', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
@@ -144,6 +147,9 @@ var enemygroups = {
 	troll_clothes = {reqs = [], units = {troll = [1,1]}},
 	goblin_quest = {reqs = [], units = {quest_goblin_boss = [2,2], quest_goblin_shaman = [2,2]}},
 	ketch_group = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
+	robbed_man = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
+	lilia_boss = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
+	lilith_patron = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
 
 	mercenary_fred_quest = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}},
 
@@ -2047,13 +2053,30 @@ var loot_variants_data = {
 	],
 
 	grove_wood_reward = [
-		{code = 'material_selected', options = [['wood',1],['woodiron',1],['woodmagic',0.7],['woodancient',0.2]], value = [100,200]}
+		{code = 'material_selected', 
+		options = [
+			{code = 'wood', weight = 1, amount = [15,30]},
+			{code = 'woodmagic', weight = 0.7, amount = [10,15]},
+			{code = 'woodancient', weight = 0.2, amount = [1,3]},
+		]
+		},
 	],
 	grove_leather_reward = [
-		{code = 'material_selected', options = [['leather',1],['leatherthick',1],['leathermythic',0.7],['leatherdragon',0.1]], value = [100,200]}
+		{code = 'material_selected', options = [
+			{code = 'leather', weight = 1, amount = [15,30]},
+			{code = 'leatherthick', weight = 1, amount = [10,15]},
+			{code = 'leathermythic', weight = 0.7, amount = [5,10]},
+			{code = 'leatherdragon', weight = 0.2, amount = [1,3]},
+		]
+		}
 	],
 	crypt_bone_reward = [
-		{code = 'material_selected', options = [['bone',1],['boneancient',0.5],['bonedragon',0.1]], value = [100,200]}
+		{code = 'material_selected', options = [
+			{code = 'bone', weight = 1, amount = [15,25]},
+			{code = 'boneancient', weight = 0.5, amount = [5,10]},
+			{code = 'bonedragon', weight = 0.3, amount = [1,3]},
+	]
+	}
 	],
 
 
@@ -2131,6 +2154,34 @@ var loot_variants_data = {
 	],
 	freya_reward1 = [
 		{code = 'defined', name = 'woodancient', min = 3, max = 5},
+	],
+	
+	hybris_reward1 = [
+		{code = 'defined', name = 'bone', min = 4, max = 5},
+	],
+	hybris_reward2 = [
+		{code = 'defined', name = 'boneancient', min = 2, max = 3},
+	],
+	hybris_reward3 = [
+		{code = 'defined', name = 'boneancient', min = 4, max = 5},
+	],
+	hybris_reward4 = [
+		{code = 'defined', name = 'bonedragon', min = 3, max = 5},
+	],
+	hybris_reward5 = [
+		{code = 'material_selected', options = [
+			{code = 'leather', weight = 1, amount = [4,8]},
+			{code = 'leatherthick', weight = 0.5, amount = [2,5]},
+			{code = 'leathermythic', weight = 0.3, amount = [1,3]},
+			{code = 'leatherdragon', weight = 0.1, amount = [1,2]},
+			]
+		}
+	],
+	hybris_destroy_shrine = [
+		{code = 'defined', name = 'wood', min = 3, max = 6},
+		{code = 'defined', name = 'stone', min = 4, max = 9},
+		{code = 'defined', name = 'steel', min = 2, max = 4},
+		
 	],
 	erebus_destroy_shrine = [
 		{code = 'defined', name = 'stone', min = 10, max = 20},
@@ -2246,6 +2297,15 @@ var shrines = {
 		},
 		bless = 'freya_bless',
 		curse = 'freya_curse',
+	},
+	hybris = {
+		options = {
+			"material" : {input = 'material', output = 'hybris_item'},
+			"character" : {input = 'character', output = 'hybris_character'},
+			"destroy" : {input = 'destroy', output = 'hybris_destroy'}
+		},
+		bless = 'hybris_bless',
+		curse = 'hybris_curse',
 
 	},
 }
@@ -2255,11 +2315,16 @@ var celena_item_dict = {
 }
 
 
-var erebus_item_dict = {
+var shrine_item_dict = {
 	stone = "erebus_reward",
 	obsidian = "erebus_reward2",
 	fire_ruby = "erebus_reward3",
-	earth_shard = "erebus_reward4"
+	earth_shard = "erebus_reward4",
+	leather = "hybris_reward1",
+	leatherthick = "hybris_reward2",
+	leathermythic = "hybris_reward3",
+	leatherdragon = "hybris_reward4",
+	meat = "hybris_reward5",
 }
 
 func celena_item(code):
@@ -2294,8 +2359,6 @@ func celena_item(code):
 	else:
 		dict.text += tr('ALTAR_ITEM_BAD')
 		dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
-
-
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
 func celena_character(person):
@@ -2310,8 +2373,6 @@ func celena_character(person):
 		dict.text += tr('ALTAR_CHAR_BAD')
 
 	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
-
-
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
 func celena_destroy(person):
@@ -2405,15 +2466,29 @@ func freya_destroy(person):
 
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
+func hybris_destroy(person):
+
+	var dict = {text = tr('ALTAR_DESTROY_1'), image = '', options = [], tags = ['active_character_translate'], common_effects = []}
+
+	if randf() <= 0.90:
+		dict.text += tr('ALTAR_DESTROY_2')
+
+		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'hybris_curse'})
+
+	dict.common_effects.append({code = 'make_loot', type = 'tableloot', pool = [['hybris_destroy_shrine',1]]})
+	dict.tags.append("free_loot")
+
+	input_handler.interactive_message_follow(dict, 'direct', [])
+
 
 
 func erebus_item(code):
 	var dict = {text = tr('ALTAR_ITEM_1'), image = '', options = [], tags = ['active_character_translate']}
 	var item = Items.materiallist[code]
-	if erebus_item_dict.has(item.code):
+	if shrine_item_dict.has(item.code):
 		globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
 		dict.text += tr('ALTAR_ITEM_GOOD')
-		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [[erebus_item_dict[item.code],3]]}]
+		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [[shrine_item_dict[item.code],3]]}]
 		dict.tags.append("free_loot")
 	else:
 		dict.text += tr('ALTAR_ITEM_BAD')
@@ -2421,6 +2496,7 @@ func erebus_item(code):
 
 
 	input_handler.interactive_message_follow(dict, 'direct', [])
+	
 
 func erebus_character(person):
 
@@ -2434,6 +2510,44 @@ func erebus_character(person):
 		dict.text += tr('ALTAR_CHAR_BAD')
 
 	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
+	input_handler.interactive_message_follow(dict, 'direct', [])
+
+func hybris_character(person):
+	var dict = {}
+	if person.get_stat('unique') != null || person.is_master():
+		dict = {text = tr('HYBRIS_ALTAR_CHAR_FAIL'), image = '', options = [], tags = ['active_character_translate','dialogue_scene'], common_effects = []}
+	else:
+		dict = {text = tr('HYBRIS_ALTAR_CHAR'), image = '', options = [], tags = ['active_character_translate','dialogue_scene'], common_effects = []}
+		if person.get_stat('slave_class') == 'servant':
+			dict.options.append({code = 'hybris_character_convert', reqs = [], text = "HYBRIS_ALTAR_CHAR_OPTION1", dialogue_argument = 1})
+		dict.options.append({code = 'hybris_character_loyalty', reqs = [], text = "HYBRIS_ALTAR_CHAR_OPTION2", dialogue_argument = 1})
+	
+	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
+	input_handler.interactive_message_follow(dict, 'direct', [])
+
+func hybris_character_convert():
+	var dict = {text = tr('HYBRIS_ALTAR_CHAR_RESULT1'), image = '', options = [], tags = ['active_character_translate'], common_effects = []}
+	dict.common_effects.append({code = 'change_type_scene_characters', type = 'all', value = 'slave'})
+	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
+	input_handler.interactive_message_follow(dict, 'direct', [])
+
+func hybris_character_loyalty():
+	var dict = {text = tr('HYBRIS_ALTAR_CHAR_RESULT2'), image = '', options = [], tags = ['active_character_translate'], common_effects = []}
+	dict.common_effects.append({code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 50})
+	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
+	input_handler.interactive_message_follow(dict, 'direct', [])
+
+func hybris_item(code):
+	var dict = {text = tr('ALTAR_ITEM_1'), image = '', options = [], tags = ['active_character_translate']}
+	var item = Items.materiallist[code]
+	if shrine_item_dict.has(item.code):
+		globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
+		dict.text += tr('ALTAR_ITEM_GOOD')
+		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [[shrine_item_dict[item.code],3]]}]
+		dict.tags.append("free_loot")
+	else:
+		dict.text += tr('ALTAR_ITEM_BAD')
+		dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 
 
 	input_handler.interactive_message_follow(dict, 'direct', [])

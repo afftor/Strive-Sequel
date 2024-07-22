@@ -22,6 +22,7 @@ func _ready():
 		$CharacterImage2.material = load("res://assets/silouette_shader.tres").duplicate()
 	base_text_size = $RichTextLabel.rect_size
 	base_text_position = $RichTextLabel.rect_position
+	#$BackgroundT2/UnhideButton.connect('pressed', self, 'hide_dialogue', ['unhide'])
 	
 
 
@@ -31,6 +32,7 @@ func hide_dialogue(action = "hide"):
 			continue
 		if !node.name in ["ShowPanel", "CustomBackground", "ShowPanelBackground"]:
 			node.visible = action != "hide"
+			
 	var tnode = get_node("ShowPanel")
 	if tnode != null:
 		tnode.visible = action == "hide"
@@ -320,6 +322,8 @@ func shrine_option(option):
 		'select_item':
 			globals.ItemSelect(self, 'gear', 'shrine_item_select')
 		"character":
+			input_handler.scene_characters.append(input_handler.active_character)
+			update_scene_characters()
 			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['character'].output, input_handler.active_character) 
 		'destroy':
 			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['destroy'].output, input_handler.active_character)
@@ -1150,7 +1154,6 @@ func select_option(number):
 	var options = current_scene.options
 	var option = options[button.get_meta("id")]
 	var code = option.code
-	
 	if option.has("repeat_next_day"):
 		var dup = false
 		for i in ResourceScripts.game_progress.daily_dialogues:

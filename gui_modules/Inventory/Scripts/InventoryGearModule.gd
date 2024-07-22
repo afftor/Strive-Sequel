@@ -132,12 +132,18 @@ func build_gear_panel():
 			$ragdoll.visible = false
 #		$BodyImage.texture = selectedhero.get_body_image()
 		for i in selectedhero.equipment.gear:
+			$InventorySlots.get_node(i + "/qualitycolor").hide()
 			$InventorySlots.get_node(i + "/icon2").visible = selectedhero.equipment.gear[i] == null
 			if selectedhero.equipment.gear[i] == null:
 				$InventorySlots.get_node(i + "/icon").texture = null
 			else:
 				var item = ResourceScripts.game_res.items[selectedhero.equipment.gear[i]]
 				item.set_icon($InventorySlots.get_node(i + "/icon"))
+				
+				$InventorySlots.get_node(i + "/qualitycolor").visible = item.quality != ""
+				
+				if item.quality != "":
+					$InventorySlots.get_node(i + "/qualitycolor").texture = variables.quality_colors[item.quality]
 
 var tempslot
 

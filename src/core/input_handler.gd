@@ -44,6 +44,7 @@ signal LocationSlavesUpdate
 signal PortraitUpdate
 signal update_ragdoll
 signal update_itemlist
+signal survival_advance
 
 #animations queue
 signal animation_finished
@@ -183,10 +184,12 @@ var globalsettings = {
 	body_folder = 'user://bodies/',
 	#mod_folder = 'user://mods/',
 	
+	
+	grid_inventory = true,
+	
 	no_breed_incompatibility = false,
 	turn_based_time_flow = true,
 
-	guilds_any_race = false, #unused
 
 	autosave = true,
 	autosave_number = 3,
@@ -194,7 +197,8 @@ var globalsettings = {
 	
 	sex_filter = false, # if true skips erotic scenes that doesn't match up with masters gender
 	
-	generate_portraits = true
+	generate_portraits = true,
+	
 
 } setget settings_save
 
@@ -792,27 +796,50 @@ func string_to_math(value = 0, string = ''):
 	return value
 
 
-func weightedrandom_dict(dict): #uses dict of value:weight, returns value
+func weightedrandom_dict(dict, generator = null): #uses dict of value:weight, returns value
 	var temp = []
 	for i in dict:
 		temp.push_back([i, dict[i]])
-	return weightedrandom(temp)
+	return weightedrandom(temp, generator)
 
 
-func weightedrandom(array): #uses an array of [value, weight] with value being returned according to weight change
+func weightedrandom(array, generator = null): #uses an array of [value, weight] with value being returned according to weight change
 	if array.empty(): return null
 	var total = 0
 	var counter = 0
 	for i in array:
 		total += i[1]
-	var random = rand_range(0,total)
+	var random
+	if generator != null:
+		random = generator.randf_range(0, total)
+	else:
+		random = rand_range(0,total)
 	for i in array:
 		if counter + i[1] >= random:
 			return i[0]
 		counter += i[1]
 
-func random_from_array(array):
-	return array[randi()%array.size()]
+
+func random_from_array(array, generator = null):
+	var id
+	if generator != null:
+		id = generator.randi_range(0, array.size() - 1)
+	else:
+		id = randi() % array.size()
+	return array[id]
+
+
+func array_shuffle(arr, generator): #for deterministic shuffling
+	var res = []
+	var pool = []
+	for i in range(arr.size()):
+		pool.push_back(i)
+	while !pool.empty():
+		var id = random_from_array(pool, generator)
+		pool.erase(id)
+		res.push_back(arr[id])
+	return res
+
 
 func open_shell(string):
 	var path = string

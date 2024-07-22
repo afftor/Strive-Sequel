@@ -251,6 +251,23 @@ var backgrounds = {
 	zephyra_facefuck_3 = load("res://assets/images/fullscreen scenes/ZephyraCG011.png"),
 	zephyra_facefuck_4 = load("res://assets/images/fullscreen scenes/ZephyraCG012.png"),
 	
+	lilia_transform_1 = load("res://assets/images/fullscreen scenes/FairyCG010.png"),
+	lilia_transform_2 = load("res://assets/images/fullscreen scenes/FairyCG011.png"),
+	lilia_transform_3 = load("res://assets/images/fullscreen scenes/FairyCG014.png"),
+	lilia_transform_4 = load("res://assets/images/fullscreen scenes/FairyCG015.png"),
+	lilia_transform_5 = load("res://assets/images/fullscreen scenes/FairyCG016.png"),
+	lilia_transform_6 = load("res://assets/images/fullscreen scenes/FairyCG018.png"),
+	lilia_transform_7 = load("res://assets/images/fullscreen scenes/FairyCG019.png"),
+	
+	lilith_blow_1 = load("res://assets/images/fullscreen scenes/LilithCG001.png"),
+	lilith_blow_2 = load("res://assets/images/fullscreen scenes/LilithCG002.png"),
+	lilith_blow_3 = load("res://assets/images/fullscreen scenes/LilithCG004.png"),
+	lilith_blow_4 = load("res://assets/images/fullscreen scenes/LilithCG005.png"),
+	
+	lilith_ride_1 = load("res://assets/images/fullscreen scenes/FairyCG006.png"),
+	lilith_ride_2 = load("res://assets/images/fullscreen scenes/FairyCG007.png"),
+	lilith_ride_3 = load("res://assets/images/fullscreen scenes/FairyCG008.png"),
+	
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
 	blackscreen = load("res://assets/sfx/black.png"),
@@ -344,10 +361,18 @@ var scenes = {
 	zephyra_forest = load("res://assets/images/scenes/zephyra_forest.png"),
 	zephyra_forest_shining = load("res://assets/images/scenes/zephyra_forest_shining.png"),
 	zephyra_kiss = load("res://assets/images/scenes/zephyra_kiss.png"),
-
+	zephyra_painting = load("res://assets/images/scenes/Zephyra_painting.png"),
+	
+	lilia_gem = load("res://assets/images/scenes/lilia_gem.png"),
+	lilia_farewell= load("res://assets/images/scenes/lilia_farewell.png"),
+	lilia_unicorn = load("res://assets/images/scenes/lilia_unicorn.png"),
+	lilith_angry = load("res://assets/images/scenes/lilith_angry.png"),
+	
+	
 	celena_shrine = load("res://assets/images/scenes/celena_shrine.png"),
 	freya_shrine = load("res://assets/images/scenes/freya_shrine.png"),
 	erebus_shrine = load("res://assets/images/scenes/erebus_shrine.png"),
+	hybris_shrine = load("res://assets/images/scenes/hybris_shrine.png"),
 	cali_bandit_win = load("res://assets/images/scenes/cali win.png"),
 	cali_mother_dead = load("res://assets/images/scenes/cali mother.png"),
 	cali_meeting = load("res://assets/images/scenes/conference.png"),

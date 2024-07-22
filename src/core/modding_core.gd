@@ -520,11 +520,11 @@ func fix_main_data():
 
 	
 	#fix worlddata, dungeons
-	for i in worlddata.dungeons.values():
-		i.classname = tr("LOCATIONNAME" + i.code.to_upper())
-		#purchase fix
-		if !i.has('purchase_area'):
-			i.purchase_area = 'plains'
+#	for i in worlddata.dungeons.values():
+#		i.classname = tr("LOCATIONNAME" + i.code.to_upper())
+#		#purchase fix
+#		if !i.has('purchase_area'):
+#			i.purchase_area = 'plains'
 	for i in DungeonData.dungeons.values():
 		i.classname = tr("LOCATIONNAME" + i.code.to_upper())
 		#purchase fix

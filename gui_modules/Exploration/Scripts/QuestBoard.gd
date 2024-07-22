@@ -121,13 +121,13 @@ func see_quest_info(quest):
 				newbutton.get_node("Icon").texture = images.icons.quest_encounter
 				globals.connecttexttooltip(newbutton, (
 					"Complete quest location: "
-					+ tr(worlddata.dungeons[i.type].name)
+					+ tr(DungeonData.dungeons[i.type].name)
 				))
 				text += (
 					"\n"
-					+ tr(worlddata.dungeons[i.type].name)
+					+ tr(DungeonData.dungeons[i.type].name)
 					+ ": "
-					+ tr(worlddata.dungeons[i.type].descript)
+					+ tr(DungeonData.dungeons[i.type].descript)
 				)
 			'complete_dungeon':
 				newbutton.get_node("Icon").texture = images.icons.quest_dungeon

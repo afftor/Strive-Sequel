@@ -472,6 +472,9 @@ func build_info(loc = null):
 			gatherable_resources = location.gather_resources
 	
 	if gatherable_resources != null:
+		if gatherable_resources.empty():
+			info_res_node.hide()
+			$InfoPanel/VBoxContainer/Label3.hide()
 		for i in gatherable_resources:
 			var item = Items.materiallist[i]
 			var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)

@@ -1,6 +1,166 @@
 extends Node
-
+var biomes = {
+	test_biome1 = {
+		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
+		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
+		gatherable_resources = {
+			wood = {
+				amount = [25,40],
+				weight = 10,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			stone = {
+				amount = [25,40],
+				weight = 6,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},  
+			iron = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			},
+	},
+	test_biome2 = {
+		background_pool = ['fort1', 'fort2', 'fort3'],
+		enemyarray = [['jungle_easy1', 1],['jungle_easy2', 1],['jungle_medium1', 1],['jungle_medium2', 1]],
+		gatherable_resources = {
+			wood = {
+				amount = [25,40],
+				weight = 10,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			stone = {
+				amount = [25,40],
+				weight = 6,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},  
+			iron = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			},
+	},
+}
 var dungeons = {
+	dungeon_infinite_example = {
+		code = 'dungeon_bandit_den',
+		type = 'dungeon',
+		name = 'bandit_den',
+		classname = '',
+		descript = tr("DUNGEON_BANDIT_DEN_DESC"),
+		character_data = {
+			chance_mod = 1.5,#increases base chance to get slave after combat by this if its not guaranteed
+			races = [['local', 3], ['common',1]]
+		},
+		difficulty = 'easy',
+#		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
+#		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
+#		final_enemy = [], final_enemy_type = 'monster', final_enemy_class = ['combat'],
+		
+		event_data = {
+			dungeon_find_chest_easy = {
+				limit = 0,
+				weight = 10,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['dungeon_find_chest_easy'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
+			},
+			dungeon_find_armory_easy = {
+				limit = 1,
+				weight = 2,
+				floor_range = [2,0],
+				icon = 'chest',
+				events = ['dungeon_find_armory_easy'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
+			},
+			event_dungeon_prisoner = {
+				limit = 1,
+				weight = 5,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['event_dungeon_prisoner'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
+			},
+			celena_shrine_find = {
+				limit = 1,
+				weight = 8,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find','hybris_shrine_find'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
+			}
+		},
+		
+		event_room_number = [3,4],
+		material_room_number = [5,6],
+		
+		main_route_length = [5,6], #remember that first and last rooms in route are effectively empty 
+		bonus_rooms = [2,3],
+		levels = [1,1], 
+		base_room_stamina_cost = [7,10], #random roll for every main/bonus rooms rounded
+		
+		
+		#do not remove next ones - for they a used in generation
+		resources = ['cloth','leather','iron','wood','clothsilk'],
+#		gatherable_resources = {
+#			wood = {
+#				amount = [25,40],
+#				weight = 10,
+#				gather_mod = [2,2.5],
+#				stamina = [5,10],
+#				}, 
+#			stone = {
+#				amount = [25,40],
+#				weight = 6,
+#				gather_mod = [2,2.5],
+#				stamina = [5,10],
+#				},  
+#			iron = {
+#				amount = [15,25],
+#				weight = 2,
+#				gather_mod = [2,2.5],
+#				stamina = [5,10],
+#				}, 
+#			},
+		bgm = "dungeon",
+		purchase_price = 100,
+		affiliation = 'local', #defines character races and events
+		events = [],
+		tags = ['infinite'],
+		biomes = ['test_biome1', 'test_biome2', 'test_biome2', 'test_biome1'],
+		avaliable_biomes = ['test_biome1', 'test_biome2']
+	},
+	
+	
 	
 	dungeon_bandit_den = {
 		code = 'dungeon_bandit_den',
@@ -62,7 +222,7 @@ var dungeons = {
 				weight = 8,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find','hybris_shrine_find'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
@@ -170,7 +330,7 @@ var dungeons = {
 				weight = 2,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find','hybris_shrine_find'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
@@ -409,7 +569,7 @@ var dungeons = {
 				weight = 7,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find','hybris_shrine_find'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
@@ -515,7 +675,7 @@ var dungeons = {
 				weight = 3,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = [['celena_shrine_find',0.5],['erebus_shrine_find',1],['freya_shrine_find',0.2]],
+				events = [['celena_shrine_find',0.4],['erebus_shrine_find',1],['hybris_shrine_find',0.8],['freya_shrine_find',0.2]],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
@@ -617,7 +777,7 @@ var dungeons = {
 				weight = 4,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = [['celena_shrine_find',0.1],['erebus_shrine_find',0.2],['freya_shrine_find',1]],
+				events = [['celena_shrine_find',0.1],['erebus_shrine_find',0.2],['freya_shrine_find',1],['hybris_shrine_find',0.5]],
 				possible_challenges = [
 					['event_blocked_path',1],
 					['event_fallen_bridge',1],
@@ -733,7 +893,7 @@ var dungeons = {
 				weight = 4,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = [['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5]],
+				events = [['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5],['hybris_shrine_find',0.3]],
 				possible_challenges = [
 					['event_blocked_path',1],
 					['event_magic_barrier',1],
@@ -828,7 +988,7 @@ var dungeons = {
 				weight = 4,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = ['erebus_shrine_find'],
+				events = ['erebus_shrine_find','hybris_shrine_find'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
@@ -937,7 +1097,7 @@ var dungeons = {
 				weight = 2,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find','hybris_shrine_find'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
@@ -1205,7 +1365,7 @@ var dungeons = {
 				weight = 1,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find','hybris_shrine_find'],
 				possible_challenges = [
 					['event_blocked_path',1],
 					['event_fallen_bridge',1],
@@ -1627,6 +1787,103 @@ var dungeons = {
 		travel_time = [1,1],
 		scripteventdata = [
 			{trigger = 'dungeon_complete', args = 'zephyra_brush_3'}
+		]
+	},
+	quest_elven_ancient_jungle_location = {
+		code = 'quest_elven_ancient_jungle_location',
+		type = 'dungeon',
+		name = tr("QUEST_ELVEN_ANCIENT_JUNGLE_LOCATION_TEXT"),
+		classname = '',
+		descript = tr("QUEST_ELVEN_ANCIENT_JUNGLE_LOCATION_DESC"),
+		character_data = {
+			chance_mod = 1,
+			races = [['local', 3], ['common',3], ['uncommon',4], ['rare',1]]
+		},
+		difficulty = 'medium',
+		background_pool = ['cave_1'],
+		enemyarray = [['event_rebels_1', 1],['event_rebels_2', 1],['rebels_small', 0.5]],
+		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		#gatherable_resources = {},
+		#gather_mod = [],
+		gatherable_resources = {number = [0,0], pool = {}}, #temp items for the game to work
+		gather_mod = [2.5,4], #temp mod for the game to work
+		stages_per_level = [10,10],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local', #defines character races and events
+		events = [],
+		quest = true,
+
+		area = 'forests',
+		travel_time = [1,1],#[4,6],
+		scripteventdata = [
+			{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilia_finale_3', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LILIA_FINALE_WORKERS_2'}]}
+		]
+	},
+	quest_lilia_dungeon_grove = {
+		code = 'quest_lilia_dungeon_grove',
+		type = 'dungeon',
+		name = tr("QUEST_LILIA_DUNGEON_GROVE_TEXT"),
+		classname = '',
+		descript = tr("QUEST_LILIA_DUNGEON_GROVE_DESC"),
+		purchase_area = 'forests',
+		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
+		bgm = "dungeon",
+		enemyarray = [["rats_easy", 0.5],['wolves_easy1', 1],['wolves_easy2', 1],['spiders', 1]],
+		final_enemy = [['grove_easy_boss',1]], final_enemy_type = 'monster',
+		eventarray = [['dungeon_find_chest_easy', 1],['grove_find_wood',1],['grove_find_leather',0.5],['event_fairy_friendly', 0.5],['celena_shrine_find',0.1],['erebus_shrine_find',0.2],['freya_shrine_find',1]],
+		levels = [2,4],
+		resources = ['cloth','leather','woodmagic','wood','woodiron'],
+		gatherable_resources = {number = [2,3], pool = {meat = [150,250], wood = [50,100], woodmagic = [15,25], woodiron = [15,25]}},
+		gather_mod = [2,2.5],
+		stages_per_level = [3,5],
+		difficulty = 'easy',
+		purchase_price = 100,
+		affiliation = 'local',
+		events = [],
+		quest = true,
+		area = 'plains',
+		travel_time = [1,1],
+		scripteventdata = [
+			{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilith_finish_dungeon_1', reqs = [{code = 'active_quest_stage', value = 'lilia_finale_quest', stage = 'stage5'}]}
+		]
+	},
+
+	quest_patron_ancient_jungle_location = {
+		code = 'quest_patron_ancient_jungle_location',
+		type = 'dungeon',
+		name = tr("QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_TEXT"),
+		classname = '',
+		descript = tr("QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_DESC"),
+		character_data = {
+			chance_mod = 1,
+			races = [['local', 3], ['common',3], ['uncommon',4], ['rare',1]]
+		},
+		difficulty = 'medium',
+		background_pool = ['cave_1'],
+		enemyarray = [['event_rebels_1', 1],['event_rebels_2', 1],['rebels_small', 0.5]],
+		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		#gatherable_resources = {},
+		#gather_mod = [],
+		gatherable_resources = {number = [0,0], pool = {}}, #temp items for the game to work
+		gather_mod = [2.5,4], #temp mod for the game to work
+		stages_per_level = [10,10],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local', #defines character races and events
+		events = [],
+		quest = true,
+
+		area = 'forests',
+		travel_time = [1,1],#[4,6],
+		scripteventdata = [
+			{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilith_finish_new_dungeon', reqs = []}
 		]
 	},
 	
@@ -2151,5 +2408,238 @@ var dungeons = {
 		area = 'mountains',
 		travel_time = [1,1],
 		scripteventdata = []
+	},
+	quest_elven_ancient_jungle_location = {
+		code = 'quest_elven_ancient_jungle_location',
+		type = 'dungeon',
+		name = tr("QUEST_ELVEN_ANCIENT_JUNGLE_LOCATION_TEXT"),
+		classname = '',
+		descript = tr("QUEST_ELVEN_ANCIENT_JUNGLE_LOCATION_DESC"),
+		character_data = {
+			chance_mod = 1.1,
+			races = [["common", 2], ['uncommon', 4],['TribalElf',6], ['rare',1]]
+		},
+		purchase_area = 'forests',
+		background_pool = ['jungle1','jungle2','jungle3','jungle4'],
+		bgm = "dungeon",
+		enemyarray = [['jungle_easy1', 1],['jungle_easy2', 1],['jungle_medium1', 1],['jungle_medium2', 1]],
+		final_enemy = [['jungle_boss1',1],['jungle_boss2',1],['jungle_boss3',1]], final_enemy_type = 'monster',
+		
+		
+		event_data = {
+			dungeon_find_chest_medium = {
+				limit = 0,
+				weight = 8,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['dungeon_find_chest_medium'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
+			},
+			event_tribal_elves = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'person',
+				events = ['event_tribal_elves'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
+			},
+			spring = {
+				limit = 1,
+				weight = 2,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['spring'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
+			},
+			celena_shrine_find = {
+				limit = 1,
+				weight = 4,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = [['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5],['hybris_shrine_find',0.3]],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
+			}
+		},
+		
+		event_room_number = [3,4],
+		material_room_number = [4,5],
+		
+		main_route_length = [5,6],
+		bonus_rooms = [2,4],
+		levels = [1,2], 
+		base_room_stamina_cost = [7,11], 
+		
+		resources = ['woodmagic','woodiron','leatherthick','leathermythic','insect_chitin','iron'],
+		gatherable_resources = {
+			woodmagic = {
+				amount = [25,45],
+				weight = 5,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			woodiron = {
+				amount = [30,45],
+				weight = 8,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},  
+			leatherthick = {
+				amount = [20,35],
+				weight = 4,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			leathermythic = {
+				amount = [10,15],
+				weight = 1,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},
+			}, 
+		
+		tags = ['quest'],
+		options = [],
+		area = 'forests',
+		travel_time = [1,1],
+		scripteventdata = [
+		{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilia_finale_3', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'LILIA_FINALE_WORKERS_2'}]}]
+	},
+	quest_lilia_dungeon_grove = {
+		code = 'quest_lilia_dungeon_grove',
+		type = 'dungeon',
+		name = tr("QUEST_LILIA_DUNGEON_GROVE_TEXT"),
+		classname = '',
+		descript = tr("QUEST_LILIA_DUNGEON_GROVE_DESC"),
+		character_data = {
+			chance_mod = 1.5,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
+		difficulty = 'medium',
+		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
+		enemyarray = [['rebels_small', 1]],
+		final_enemy = [['rebels_small', 1]], 
+		final_enemy_type = 'monster',
+		event_data = {
+			dungeon_find_chest_easy = {
+				limit = 0,
+				weight = 10,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['dungeon_find_chest_easy'],
+				possible_challenges = [
+					['event_locked_door',1],
+				],
+			},
+		},
+		
+		event_room_number = [1,1],
+		material_room_number = [1,1],
+		
+		main_route_length = [3,3],
+		bonus_rooms = [0,0],
+		levels = [1,1], 
+		base_room_stamina_cost = [5,5],
+		
+		resources = ['cloth','leather','iron','wood','clothsilk'],
+		gatherable_resources = {
+			stone = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			}, 
+		gather_mod = [2,2.5],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local',
+		events = [],
+		tags = ['quest'],
+		options = [],
+		area = 'forests',
+		travel_time = [1,1],
+		scripteventdata = [
+		{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilith_finish_dungeon_1', reqs = [{code = 'active_quest_stage', value = 'lilia_finale_quest', stage = 'stage5'}]}]
+	},
+	quest_patron_ancient_jungle_location = {
+		code = 'quest_patron_ancient_jungle_location',
+		type = 'dungeon',
+		name = tr("QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_TEXT"),
+		classname = '',
+		descript = tr("QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_DESC"),
+		character_data = {
+			chance_mod = 1.5,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
+		difficulty = 'medium',
+		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
+		enemyarray = [['rebels_small', 1]],
+		final_enemy = [['rebels_small', 1]], 
+		final_enemy_type = 'monster',
+		event_data = {
+			dungeon_find_chest_easy = {
+				limit = 0,
+				weight = 10,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['dungeon_find_chest_easy'],
+				possible_challenges = [
+					['event_locked_door',1],
+				],
+			},
+		},
+		
+		event_room_number = [1,1],
+		material_room_number = [1,1],
+		
+		main_route_length = [3,3],
+		bonus_rooms = [0,0],
+		levels = [1,1], 
+		base_room_stamina_cost = [5,5],
+		
+		resources = ['cloth','leather','iron','wood','clothsilk'],
+		gatherable_resources = {
+			stone = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			}, 
+		gather_mod = [2,2.5],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local',
+		events = [],
+		tags = ['quest'],
+		options = [],
+		area = 'forests',
+		travel_time = [1,1],
+		scripteventdata = [
+		{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilith_finish_new_dungeon', reqs = [{code = 'active_quest_stage', value = 'lilia_finale_quest', stage = 'stage15'}]}]
 	},
 }
