@@ -103,7 +103,10 @@ func select_location(location):
 	else:
 		ResourceScripts.core_animations.BlackScreenTransition(0.5)
 		yield(get_tree().create_timer(0.5), 'timeout')
-
+	
+	build_accessible_locations()
+	gui_controller.close_all_closeable_windows()
+	
 	if location in ResourceScripts.game_world.capitals:
 		gui_controller.current_screen = gui_controller.exploration_city
 		gui_controller.exploration_city.open_city(location)#
@@ -137,8 +140,7 @@ func select_location(location):
 				gui_controller.exploration_dungeon.hide()
 
 #	gui_controller.exploration.show()
-	build_accessible_locations()
-	gui_controller.close_all_closeable_windows()
+
 
 
 func return_to_mansion(with_state = "default"):
