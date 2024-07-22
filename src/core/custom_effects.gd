@@ -127,6 +127,7 @@ func oblivionpot(character):
 
 
 func sex_swap(character):
+	input_handler.active_character = character
 	match character.get_stat('sex'):
 		'male':
 			character.set_stat('sex', 'female')

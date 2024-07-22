@@ -2891,7 +2891,7 @@ var itemlist = {
 		crafttype = 'basic',
 		slots = [],
 		price = 250,
-		icon = load("res://assets/images/iconsitems/oblivionpot.png"),
+		icon = load("res://assets/images/iconsitems/sexswap_potion.png"),
 		tier = 'medium',
 		reqs = [{code = 'unique', value = null}],
 		reqs_fail_message = "Can only be applied to non-unique slaves",

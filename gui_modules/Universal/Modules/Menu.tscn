@@ -677,7 +677,12 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "0.9.1
+bbcode_text = "0.9.1a
+Fixed oblivion potion
+Fixed mod editor crashing on opening
+Added dialogue event to sexswap potion
+Added new icon for sex change potion
+0.9.1
 Added Lilia's complete sidequest 
 Added new shrine type
 Added character Lock rule which prevents character from showing in the lists of giveaways and factor sacrifices
@@ -1726,7 +1731,12 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.9.1
+text = "0.9.1a
+Fixed oblivion potion
+Fixed mod editor crashing on opening
+Added dialogue event to sexswap potion
+Added new icon for sex change potion
+0.9.1
 Added Lilia's complete sidequest 
 Added new shrine type
 Added character Lock rule which prevents character from showing in the lists of giveaways and factor sacrifices

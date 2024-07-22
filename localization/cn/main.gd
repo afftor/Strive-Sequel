@@ -3468,6 +3468,8 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	ITEMMAJORUS_POTIONDESCRIPT = "一种特殊的药剂，可以用来增大一个人的特定身体部位。可以用于乳房、臀部、阴茎和睾丸.",
 	ITEMEXP_SCROLL = "知识卷轴",
 	ITEMEXP_SCROLLDESCRIPT = "为使用者提供100点经验.",
+	ITEMSEXSWAP_POTION = """Sex Swap Potion""", # MISSING TRANSLATION
+	ITEMSEXSWAP_POTIONDESCRIPT = """Changes character's sex to the opposite. Won't work on unique characters.""", # MISSING TRANSLATION
 
 
 	DIALOGUEEVENTMINORUSSELECT = "选择 [name] 的哪个身体部位应该缩小.",

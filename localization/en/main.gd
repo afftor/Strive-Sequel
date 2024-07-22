@@ -81,7 +81,7 @@ var TranslationDict = {
 	OPTGAMEPLAYTUTOR = "Enable Tutorials",
 	OPTGAMEPLAYMALERATE = "Male Rate",
 	OPTGAMEPLAYFUTARATE = "Futa Rate",
-	OPTFAMEPLAYAUTOSAVEAMOUNT = "Autasaves amount",
+	OPTFAMEPLAYAUTOSAVEAMOUNT = "Autosaves amount",
 	OPTGAMEPLAYAUTOSAVETIME = "Days per autosave",
 	
 	OPTCHANGELANGUAGE = "To change the language, you need to restart the game",
@@ -3496,6 +3496,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMMAJORUS_POTIONDESCRIPT = "A special potion, which can be used to grow a person's specific body part size. Can be used on Breasts, Butts, Penises and Balls.",
 	ITEMEXP_SCROLL = "Scroll of Knowledge",
 	ITEMEXP_SCROLLDESCRIPT = "Grants 100 points of experience to the user.",
+	ITEMSEXSWAP_POTION = "Sex Swap Potion",
+	ITEMSEXSWAP_POTIONDESCRIPT = "Changes character's sex to the opposite. Won't work on unique characters.",
 
 
 	DIALOGUEEVENTMINORUSSELECT = "Select which body part of [name] should be reduced.",
@@ -3522,6 +3524,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEWRIT_FAILURE = "[name] can't believe [his] eyes as [he] receives proof of [his] freedom from you. However, after a long pause [he] takes this chance and decides to leave your retinue. \n\n{color=aqua|[name]} — {random_chat=0|writ_failure}",
 	DIALOGUELACTATION_SUCCESS = "As [name] drinks the potion, [his] chest begins ripening and feeling heavier. [His] nipples start seeping with milk much to [his] shame.",
 	DIALOGUELACTATION_REVERSE = "As [name] drinks the potion, [his] chest seemingly returns to normal, no longer producing any milk. ",
+	DIALOGUESEXSWAP_MALE = "[name] has been transformed into male form",
+	DIALOGUESEXSWAP_FEMALE = "[name] has been transformed into female form",
 	
 	
 	DIALOGUETITSSELECT = "Breasts",

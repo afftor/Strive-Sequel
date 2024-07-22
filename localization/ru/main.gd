@@ -3491,6 +3491,8 @@ var TranslationDict = {
 	ITEMMAJORUS_POTIONDESCRIPT = "Специальное зелье, которое можно использовать для увеличения размера определенной части тела человека. Можно использовать для груди, зада, пениса и яиц",
 	ITEMEXP_SCROLL = "Свиток знаний",
 	ITEMEXP_SCROLLDESCRIPT = "Дает использующему 100 очков опыта.",
+	ITEMSEXSWAP_POTION = """Sex Swap Potion""", # MISSING TRANSLATION
+	ITEMSEXSWAP_POTIONDESCRIPT = """Changes character's sex to the opposite. Won't work on unique characters.""", # MISSING TRANSLATION
 
 
 	DIALOGUEEVENTMINORUSSELECT = "Выберите, какая часть тела [name] должна быть уменьшена.",
@@ -3517,6 +3519,8 @@ var TranslationDict = {
 	DIALOGUEWRIT_FAILURE = "[name] не может поверить [his] глазам, когда [name] получает от вас доказательство [his] свободы. Однако после долгой паузы [name] использует этот шанс и решает покинуть вашу свиту. \n\n{color=aqua|[name]} - {random_chat=0|writ_failure}",
 	DIALOGUELACTATION_SUCCESS = """Когда [name] пьет зелье, [his] грудь начинает увеличиваться и становится тяжелее. [his] соски, к [his] стыду, начинают наливаться молоком.""",
 	DIALOGUELACTATION_REVERSE = """Когда [name] выпивает зелье, [his] грудь, кажется, возвращается в нормальное состояние, больше не выделяя молока. """,
+	DIALOGUESEXSWAP_MALE = """[name] has been transformed into male form""", # MISSING TRANSLATION
+	DIALOGUESEXSWAP_FEMALE = """[name] has been transformed into female form""", # MISSING TRANSLATION
 
 	DIALOGUETITSSELECT = "Грудь",
 	DIALOGUEASSSELECT = "Зад",
@@ -13261,6 +13265,46 @@ LILITH_DEMON_VOICE = """ Звук глубокого, знакомого гол�
 Каждое щупальце обхватывает тело Лилии, распространяя по коже слизистую субстанцию, исследуя ее теплое тело. Они оттягивают ткань, прикрывающую ее киску, скользят по клитору и щекочут его. Несколько щупалец обвиваются вокруг ее грудей, играя с сосками, чтобы успокоить ее перед предстоящим испытанием.
 
 Одно щупальце проникает в ее рот, занимая горло для предстоящего ритуала.""",
+	LILIA_TRANSFORM_2_T = """Two tentacles enter Lilia's pussy and ass, stretching them to their limits as they slide in without regard for her body. Filling all of her holes, the tentacles writhe and slither inside her, a trickle of dark energy stimulating her body that gets stronger and stronger the longer the tentacles lodge themselves inside her.
+
+Lilia: – Mmhm... 
+
+Moans of pleasure escape Lilia's mouth despite her seemingly uncomfortable restricted state. Suddenly a deep voice looms over the cave.
+
+Voice: — Yes... You are a perfect subject for my power, I can feel your essential lust and perverse dormant in your body. Let us awaken it.
+
+After a few minutes, the energy gathers in each of her holes, a viscous liquid oozing out of Lilia's mouth, pussy, and ass. A small amount of clear fluids escape her pussy too, mixing in with the tentacle goop that pumps itself inside her. She swallows all of it obediently as her eyes glaze over, her body beginning to relax.""", # MISSING TRANSLATION
+	LILIA_TRANSFORM_3_T = """As the ritual progresses, her body begins to undergo changes. Her hair darkens, shadowy marks show up on her body, two horns sprout from her head and a cute little tail extends from her ass. Lilia seems even more intrigued by the changes happening to her body, letting the tentacles explore wherever they want.
+
+Lilia: — Aah... I feel something... Is happening to me...
+
+Pumping and thrusting into her, the tentacles release another wave of dark cum that spills out of Lilia, forcing her orgasm out as her body gets used to being a seedbed for the malicious creature.""", # MISSING TRANSLATION
+	LILIA_TRANSFORM_4_T = """As the tentacles keep providing Lilia with pleasure and new orgasms, while pumping her with the dark energy, her looks completely change into a whole new person. Her horns and tail have matured, the shadows have become black marks, and her eyes have gained a demonic glow and mischievous stare. Even her wings have been affected, changed like her now blood-red hair.
+
+Another round of demonic cum is pumped into her willing body, finishing her transformation as she happily suckles on the tentacle feeding her the sustenance which gives her so much pleasure.
+
+Lilia: — This really was amazing. I've never felt this good... and strong.""", # MISSING TRANSLATION
+	LILIA_TRANSFORM_5_MC = """As the tentacle feeds her corrupted fluids, her eyes glaze over and you insert yourself into her overtly relaxed body. Her pussy clamps to you tight once you enter, suckling on your dick for the meal that it desires so much. You thrust into her as you watch the tentacle fuck her throat, the corrupted cum spilling down the sides of her mouth.""", # MISSING TRANSLATION
+	LILIA_TRANSFORM_6_MC = """As the ritual progresses, her body begins to undergo changes. Her hair darkens, shadowy marks show up on her body, two horns sprout from her head and a cute little tail extends from her ass. Lilia seems even more intrigued by the changes happening to her body, letting the tentacles explore wherever they want.
+
+Lilia: — Mmhm... 
+
+Moans of pleasure escape Lilia's mouth despite her seemingly uncomfortable restricted state. Suddenly a deep voice looms over the cave.
+
+Voice: — Yes... You are a perfect subject for my power, I can feel your essential lust and perverse dormant in your body. Let us awaken it.""", # MISSING TRANSLATION
+	LILIA_TRANSFORM_7_MC = """Time passes as Lilia's corruption becomes deeper, horns, tail, and dark shadows on her body all signs of her transformation. As she succumbs to dark temptations, her pussy becomes tighter, almost more playful as it begs for your cum. You stave off as you make short thrusts into her, observing her growing features with bated breath as she guzzles purple cum, gulp after gulp.
+
+Lilia: — Aah... I feel something... Is happening to me...
+
+With her transformation nearly complete, you push into her faster and faster, watching her new tail wag around and her demonic eyes focus on you. Your little fae has transformed into your little succubus, horns and all. Her slutty body licks at the tentacle in her mouth, begging it to unload corrupted cum down her throat forever.""", # MISSING TRANSLATION
+	LILIA_TRANSFORM_8_MC = """You mark the ritual as completed yourself with a flair of cum that floods her pussy. Her body drinks your seed as much as she drinks the tentacle's fluids, clamping around your cock to entice you to stay. As much as you'd like to indulge, you pull away to claim your newly transformed demon slave
+
+Lilia: — This really was amazing. I've never felt this good... and strong... And you didn't shy away from doing it with me too, [Master].""", # MISSING TRANSLATION
+	LILIA_TRANSFORM_9 = """The voice announces the end of the ritual.
+
+Voice: — With this you are born anew, and you will require a new name. I declare that you are Lilith, my champion. 
+
+With that the magic seals and tentacles disappear leaving you alone with Lilith who seems very pleased with her new form.""", # MISSING TRANSLATION
 	LILIA_TRANSFORM_2 = """Два щупальца входят в киску и попку Лилии, растягивая их до предела, когда они скользят внутрь, не обращая внимания на ее тело. Заполняя все ее отверстия, щупальца извиваются и скользят внутри нее, струйка темной энергии стимулирует ее тело, которая становится все сильнее и сильнее, чем дольше щупальца находятся внутри нее.
 
 Лилия: - Ммхм... 
