@@ -679,6 +679,10 @@ func update_char_button(newbutton, person):
 			newbutton.get_node("job").text = tr('CHAR_UNAVALIABLE')
 			newbutton.pressed = false
 			newbutton.disabled = true
+		'travel':
+			newbutton.get_node("job").text = tr('CHAR_TRAVEL')
+			newbutton.pressed = false
+			newbutton.disabled = true
 		_:
 			if Items.materiallist.has(twork):
 				newbutton.get_node("job").text =  Items.materiallist[twork].name
