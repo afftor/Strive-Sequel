@@ -929,6 +929,7 @@ var dungeon_template = { #sample dungeon data
 		purchase_price = 100,
 		affiliation = 'local', #defines character races and events
 		events = [],
+		tags = [],
 	}
 
 var level_template = {

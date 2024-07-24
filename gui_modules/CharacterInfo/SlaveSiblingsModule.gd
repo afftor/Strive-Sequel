@@ -91,7 +91,7 @@ func update():
 	$change_button.visible = true
 	if !loyalty_mode:
 		swap_mode()
-	input_handler.ActivateTutorial("training")
+	input_handler.ActivateTutorial("TUTORIALLIST9")
 	
 	for i in $work_rules.get_children():
 		globals.disconnect_text_tooltip(i)

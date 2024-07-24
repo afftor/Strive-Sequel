@@ -185,7 +185,7 @@ func open(location):
 
 
 func open_location(data): #2fix
-	input_handler.ActivateTutorial("exploration")
+	input_handler.ActivateTutorial("TUTORIALLIST6")
 	input_handler.StopBackgroundSound()
 	$LocationGui.show()
 	set_process_input(true)

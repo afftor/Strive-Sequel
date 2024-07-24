@@ -32,7 +32,7 @@ func _show():
 	quest_board()
 
 func quest_board():
-	input_handler.ActivateTutorial("quest")
+	input_handler.ActivateTutorial("TUTORIALLIST5")
 	build_reputation()
 	$QuestDetails/Panel.hide()
 	$QuestDetails/AcceptQuest.hide()

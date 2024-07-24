@@ -26,7 +26,7 @@ func _ready():
 	globals.connecttexttooltip($SexIcon, tr("SEXTOOLTIP"))
 
 func OpenJobModule(person = null):
-	input_handler.ActivateTutorial('job')
+	input_handler.ActivateTutorial('TUTORIALLIST4')
 	if person != null:
 		get_parent().get_node("MansionJobModule2").selected_location = person.get_location()
 	get_parent().remove_hovered_person()

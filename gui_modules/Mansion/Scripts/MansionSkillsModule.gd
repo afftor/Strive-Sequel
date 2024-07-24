@@ -75,7 +75,7 @@ func build_skill_panel():
 			newbutton.get_node("charges").hide()
 
 func select_skill_target(skillcode):
-	input_handler.ActivateTutorial('skills')
+	input_handler.ActivateTutorial('TUTORIALLIST7')
 	active_skill = skillcode
 	var template = Skilldata.Skilllist[skillcode]
 	if template.tags.has('no_target'):
