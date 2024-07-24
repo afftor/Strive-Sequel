@@ -365,7 +365,7 @@ func add_build_value(currenttask, value, character, tres = false):
 			input_handler.emit_signal("UpgradeUnlocked", upgradedata.upgradelist[curupgrade])
 			globals.text_log_add('upgrades',"Upgrade finished: " + tdata.name)
 			if curupgrade == "tattoo_set":
-				input_handler.ActivateTutorial("tattoo")
+				input_handler.ActivateTutorial("TUTORIALLIST8")
 			upgrade_progresses.erase(curupgrade)
 			upgrades_queue.erase(curupgrade)
 			return add_build_value(currenttask, newval, character, true)

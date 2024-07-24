@@ -16,7 +16,7 @@ func select_option(enabled):
 	input_handler.SystemMessage(message)
 	yield(get_tree().create_timer(1), "timeout")
 	if enabled:
-		input_handler.ActivateTutorial("introduction")
+		input_handler.ActivateTutorial("TUTORIALLIST1")
 	gui_controller.windows_opened.erase(self)
 	ResourceScripts.game_progress.intro_tutorial_seen = true
 

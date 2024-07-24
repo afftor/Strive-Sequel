@@ -1479,6 +1479,7 @@ var data = {
 					{
 						type = "function",
 						function = "make_local_recruit",
+						number = [3,3],
 						args = {
 							races = [
 								[
@@ -1660,6 +1661,7 @@ var data = {
 					{
 						type = "function",
 						function = "make_local_recruit",
+						number = [3,3],
 						args = {
 							races = [
 								[
@@ -2256,6 +2258,31 @@ var data = {
 				text = "LILITH_ACCEPT_PROPOSAL_1",
 				reqs = [
 
+				]
+			}
+		],
+		common_effects = [
+			{
+				code = "make_scene_character",
+				value = [
+					{
+						type = "function",
+						function = "make_local_recruit",
+						number = [1,1],
+						args = {
+							races = [
+								[
+									"Fairy",
+									3
+								]
+							],
+							difficulty = [
+								0,
+								1
+							],
+							type = "slave"
+						}
+					}
 				]
 			}
 		],
@@ -2982,7 +3009,7 @@ var data = {
 				],
 				dialogue_argument = 1,
 				type = "next_dialogue"
-			}, 
+			},
 			{
 				code = "lilia_transform_5",
 				text = "DIALOGUECONTINUE",
