@@ -159,7 +159,13 @@ var template = {
 	moustache = 'no',
 
 	
-	armor_color = 'default',
+	armor_color = {
+		base = 'default',
+		lower = 'default',
+		collar = 'default',
+		weapon = 'default',
+		underwear = 'default',
+		},
 	
 	#new skin, empty values SHOULD be set in remade char generating function or kept empty to indicate derivative nature
 	body_color_skin = '', 
