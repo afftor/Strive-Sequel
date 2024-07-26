@@ -173,6 +173,10 @@ func custom_stats_set(st, value):
 		var tdata = get_hairs_data()
 		for h_stat in ['hair_base_color_1', 'hair_fringe_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 'hair_fringe_color_2', 'hair_back_color_2', 'hair_assist_color_2']:
 			statlist[h_stat] = tdata[h_stat]
+	if st.begins_with('armor_color_'):
+		set_stat('portrait_update', true)
+		var partname = st.trim_prefix('armor_color_')
+		statlist.armor_color[partname] = value
 
 
 func custom_stats_get(stat):
@@ -874,13 +878,8 @@ func get_stat(statname, ref = false):
 	if statname.begins_with('armor_color_'):
 		var partname = statname.trim_prefix('armor_color_')
 		statname = 'armor_color'
-		var part = parent.get_ref().get_stat('armor_' + partname)
-		if part != null:
-			part = part.trim_prefix('legs_').trim_prefix('chest_')
-		if partname == 'weapon':
-			part = partname #you can add separate data for all weapon types into Items.armor_colors, but i didn't do it 
-		if statlist[statname] is Dictionary and statlist[statname].has(part):
-			return statlist[statname][part]
+		if statlist[statname] is Dictionary and statlist[statname].has(partname):
+			return statlist[statname][partname]
 		if statlist[statname] is String and statlist[statname] != "":
 			return statlist[statname]
 		return 'default'
@@ -1925,9 +1924,11 @@ func get_random_name(keep_surname = false):
 		statlist.surname = Namedata.getRandomFurrySurname()
 
 func get_random_colors():
-	statlist.armor_color = {}
-	for base in Items.armor_colors:
-		statlist.armor_color[base] = input_handler.random_from_array(Items.armor_colors[base])
+#	statlist.armor_color = {}
+#	for base in Items.armor_colors:
+#		statlist.armor_color[base] = input_handler.random_from_array(Items.armor_colors[base])
+	for base in statlist.armor_color:
+		statlist.armor_color[base] = input_handler.random_from_array(Items.color_presets)
 
 func random_icon():
 	var array = []

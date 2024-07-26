@@ -4718,32 +4718,34 @@ var tattoolist = {
 	},
 }
 
+var color_presets = ['default', 'default_underwear', 'default_leather', 'default_metal']
 
-var armor_colors = {
-		underwear = ['default'],
-		lacy_1 = ['default'],
-		lacy_2 = ['default'],
-		servant = ['default'],
-		base_cloth = ['default'],
-		adv_cloth = ['default'],
-		base_leather = ['default'],
-		adv_leather = ['default'],
-		base_metal = ['default'],
-		adv_metal = ['default'],
-		weapon = ['default'],
-#		chest_base_cloth = ['default'],
-#		chest_adv_cloth = ['default'],
-#		chest_base_leather = ['default'],
-#		chest_adv_leather = ['default'],
-#		chest_base_metal = ['default'],
-#		chest_adv_metal = ['default'],
-#		legs_base_cloth = ['default'],
-#		legs_adv_cloth = ['default'],
-#		legs_base_leather = ['default'],
-#		legs_adv_leather = ['default'],
-#		legs_base_metal = ['default'],
-#		legs_adv_metal = ['default'],
-}
+#obsolote
+#var armor_colors = { 
+#		underwear = ['default_underwear'],
+#		lacy_1 = ['default_underwear'],
+#		lacy_2 = ['default_underwear'],
+#		servant = ['default'],
+#		base_cloth = ['default'],
+#		adv_cloth = ['default'],
+#		base_leather = ['default_leather'],
+#		adv_leather = ['default_leather'],
+#		base_metal = ['default_metal'],
+#		adv_metal = ['default_metal'],
+#		weapon = ['default_metal'],
+##		chest_base_cloth = ['default'],
+##		chest_adv_cloth = ['default'],
+##		chest_base_leather = ['default'],
+##		chest_adv_leather = ['default'],
+##		chest_base_metal = ['default'],
+##		chest_adv_metal = ['default'],
+##		legs_base_cloth = ['default'],
+##		legs_adv_cloth = ['default'],
+##		legs_base_leather = ['default'],
+##		legs_adv_leather = ['default'],
+##		legs_base_metal = ['default'],
+##		legs_adv_metal = ['default'],
+#}
 
 
 func get_materials_by_grade(grade):
