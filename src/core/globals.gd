@@ -2180,6 +2180,7 @@ func common_effects(effects):
 			'complete_wedding':
 				ResourceScripts.game_progress.marriage_completed = true
 				ResourceScripts.game_party.get_spouse().unlock_class('spouse')
+				ResourceScripts.game_party.get_spouse().set_slave_category('spouse')
 				ResourceScripts.game_party.get_spouse().set_stat('surname', ResourceScripts.game_party.get_master().get_stat('surname'))
 			'after_wedding_event':
 				after_wedding_event(ResourceScripts.game_party.get_spouse().get_stat('unique'))

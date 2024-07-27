@@ -303,18 +303,16 @@ func check_infinite_obedience():
 
 
 func get_class_icon():
-	if has_profession("master"):
-		return images.icons.class_master
+	if get_stat('slave_class') in ['master', 'heir', 'spouse']:
+		return images.icons[ResourceScripts.descriptions.bodypartsdata.slave_class[get_stat('slave_class')].icon]
 	elif get_stat('slave_spec') != null:
 		var upgrade_data = Traitdata.slave_profs[get_stat('slave_spec')]
 		if upgrade_data.icon_small is String:
 			return load(upgrade_data.icon_small)
 		else:
 			return upgrade_data.icon_small
-	elif get_stat('slave_class') == 'servant':
-		return images.icons.class_servant
 	else:
-		return images.icons.class_slave
+		return images.icons[ResourceScripts.descriptions.bodypartsdata.slave_class[get_stat('slave_class')].icon]
 #end to add
 
 func generate_ea_character(gendata, desired_class):
