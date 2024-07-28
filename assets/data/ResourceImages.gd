@@ -641,7 +641,7 @@ var icons = {
 	class_servant = "res://assets/Textures_v2/MANSION/icon_servant.png",
 	class_slave = "res://assets/Textures_v2/MANSION/icon_slave.png",
 	class_heir = "res://assets/images/iconsclasses/renown_royalty.png", #temp, 2fix
-	class_spouse = "res://assets/images/iconsclasses/Spouse.png", #temp, 2fix
+	class_spouse = "res://assets/Textures_v2/MANSION/icon_ring.png", 
 
 	quest_slave_delivery = "res://assets/images/gui/slavepanel/charm.png",
 	quest_gold = 'res://assets/images/iconsitems/gold.png',

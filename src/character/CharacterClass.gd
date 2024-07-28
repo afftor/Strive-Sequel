@@ -1065,7 +1065,7 @@ func affect_char(i):
 		'damage_percent':
 			deal_damage((i.value / 100.0) * get_stat('hpmax'))
 		'damage_mana_percent':
-			mana_update(-i.value * get_stat('maxmp'))
+			mana_update(-i.value * get_stat('mpmax'))
 		'stat', 'stat_add':
 			add_stat(i.stat, i.value)
 		'stat_set':
