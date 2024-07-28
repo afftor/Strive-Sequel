@@ -284,7 +284,7 @@ func open():
 	input_handler.node_children_visible(get_parent(), self, false)
 	ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
 	set_focus_area()
-	input_handler.ActivateTutorial("traveling")
+	input_handler.ActivateTutorial("TUTORIALLIST3")
 
 
 func build_locations_list():
@@ -322,7 +322,7 @@ func build_locations_list():
 							closed = false
 					if closed:
 						continue
-		if cdata[id].tags.has('quest'):
+		if cdata[id].has("tags") and cdata[id].tags.has('quest'):
 			temp.quest = true
 		if tdata.category == "questlocations":
 			if cdata[id].has("questid") and ResourceScripts.game_progress.if_quest_active(cdata[id].questid):

@@ -9,7 +9,8 @@ var tutorials = [
 	"TUTORIALLIST5",
 	"TUTORIALLIST6",
 	"TUTORIALLIST7",
-	"TUTORIALLIST8"
+	"TUTORIALLIST8",
+	"TUTORIALLIST9",
 ]
 
 var introduction_images = {

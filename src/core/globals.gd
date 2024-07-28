@@ -1166,7 +1166,7 @@ func make_local_recruit(args):
 		if args.has("type"):
 			newchar.set_slave_category(args.type)
 	if newchar.get_stat('slave_class') == '': newchar.set_slave_category('servant')
-	if args.has("is_hirable"): newchar.is_hirable = args.is_hirable
+	if args.has("is_hirable"): newchar.set_stat('is_hirable', args.is_hirable)
 	return newchar
 
 
@@ -2180,6 +2180,7 @@ func common_effects(effects):
 			'complete_wedding':
 				ResourceScripts.game_progress.marriage_completed = true
 				ResourceScripts.game_party.get_spouse().unlock_class('spouse')
+				ResourceScripts.game_party.get_spouse().set_slave_category('spouse')
 				ResourceScripts.game_party.get_spouse().set_stat('surname', ResourceScripts.game_party.get_master().get_stat('surname'))
 			'after_wedding_event':
 				after_wedding_event(ResourceScripts.game_party.get_spouse().get_stat('unique'))

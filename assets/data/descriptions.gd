@@ -607,11 +607,12 @@ var bodypartsdata = {
 		false : {code = 'false', name = '', chardescript = '', bodychanges = []},
 	},
 	slave_class = {
-		'master': {code = 'master', name = 'SLAVECLASSMASTER', chardescript = '', bodychanges = []},
-		'slave': {code = 'slave', name = 'SLAVECLASSSLAVE', chardescript = '', bodychanges = []},
-		'servant': {code = 'servant', name = 'SLAVECLASSSERVANT', chardescript = '', bodychanges = []},
-		'servant_notax': {code = 'servant_notax', name = 'SLAVECLASSSERVANTALT', chardescript = '', bodychanges = []},
-		'heir': {code = 'heir', name = 'SLAVECLASSHEIR', chardescript = '', bodychanges = []},
+		'master': {code = 'master', name = 'SLAVECLASSMASTER', chardescript = '', bodychanges = [], icon = 'class_master'},
+		'slave': {code = 'slave', name = 'SLAVECLASSSLAVE', chardescript = '', bodychanges = [], icon = 'class_slave'},
+		'servant': {code = 'servant', name = 'SLAVECLASSSERVANT', chardescript = '', bodychanges = [], icon = 'class_servant'},
+		'servant_notax': {code = 'servant_notax', name = 'SLAVECLASSSERVANTALT', chardescript = '', bodychanges = [], icon = 'class_servant'},
+		'heir': {code = 'heir', name = 'SLAVECLASSHEIR', chardescript = '', bodychanges = [], icon = 'class_heir'},
+		'spouse': {code = 'spouse', name = 'SLAVECLASSSPOUSE', chardescript = '', bodychanges = [], icon = 'class_spouse'},
 	}
 }
 

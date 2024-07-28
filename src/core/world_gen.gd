@@ -389,6 +389,8 @@ func make_location(code, area):
 						continue
 					if !ev_rec.dungeons.has(code):
 						continue
+					if !globals.checkreqs(ev_rec.reqs):
+						continue
 					pool.push_back(ev_rec)
 				if !pool.empty():
 					var rec = input_handler.random_from_array(pool)
@@ -929,6 +931,7 @@ var dungeon_template = { #sample dungeon data
 		purchase_price = 100,
 		affiliation = 'local', #defines character races and events
 		events = [],
+		tags = [],
 	}
 
 var level_template = {

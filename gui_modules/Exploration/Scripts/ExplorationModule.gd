@@ -81,7 +81,7 @@ func open(location):
 
 
 func open_location(data):
-	input_handler.ActivateTutorial("exploration")
+	input_handler.ActivateTutorial("TUTORIALLIST6")
 	input_handler.StopBackgroundSound()
 	gui_controller.nav_panel = $LocationGui/NavigationModule
 #	nav = $LocationGui/NavigationModule

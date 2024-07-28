@@ -12,6 +12,8 @@ func _ready():
 		i.connect("mouse_entered", self, 'show_tattoo_tooltip', [i.name])
 		i.set_meta("tattoo_slot", i.name)
 		i.hint_tooltip = tr("TATTOO" + i.name.to_upper())
+	for i in $recolor_buttons.get_children():
+		i.connect("pressed", self, 'armor_recolor', [i.name])
 
 
 
@@ -197,3 +199,15 @@ func show_buffs():
 	var person = gui_controller.mansion.active_person
 	globals.build_buffs_for_char(person, $buffscontainer, 'mansion')
 
+
+func armor_recolor(part):
+	var selectedhero = input_handler.interacted_character
+	
+	var val = selectedhero.get_stat('armor_color_' + part)
+	var pos = Items.color_presets.find(val)
+	pos = (pos + 1) %  Items.color_presets.size()
+	val = Items.color_presets[pos]
+	selectedhero.set_stat('armor_color_' + part, val)
+	
+	get_parent().set_active_hero(selectedhero)
+	

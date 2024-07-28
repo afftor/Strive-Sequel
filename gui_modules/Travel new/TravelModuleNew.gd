@@ -38,7 +38,7 @@ func _ready():
 
 
 func show():
-	input_handler.ActivateTutorial("traveling")
+	input_handler.ActivateTutorial("TUTORIALLIST3")
 #	gui_controller.clock.changespeed(0)
 	gui_controller.clock.visible = false
 	gui_controller.current_screen = self

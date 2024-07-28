@@ -64,6 +64,8 @@ func check_location(value, completed = false):
 
 
 func same_location_with(ch_travel_mod):
+	if location == 'travel':
+		return false
 	return location == ch_travel_mod.location
 
 

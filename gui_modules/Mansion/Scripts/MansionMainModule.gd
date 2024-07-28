@@ -100,7 +100,7 @@ func _ready():
 		yield(input_handler, "StartingSequenceComplete")
 		input_handler.GameStartNode.queue_free()
 		show()
-		input_handler.ActivateTutorial("introduction")
+		input_handler.ActivateTutorial("TUTORIALLIST1")
 		globals.apply_starting_preset()
 		
 		ResourceScripts.game_globals.reset_limits()
@@ -939,7 +939,7 @@ func test_mode():
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-#		input_handler.interactive_message('daisy_dress_acquired_lewd_3', '', {})
+		input_handler.interactive_message('lilith_bad_route_4', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		
