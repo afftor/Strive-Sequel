@@ -268,6 +268,7 @@ func setup_overlay(type):
 			#remove particles
 			for nd in $overlay.get_children():
 				nd.queue_free()
+			ResourceScripts.core_animations.gfx_particles_infinite($overlay, 'sparks')
 		'earth':
 			$Icon.material = load("res://assets/sfx/bw_shader.tres").duplicate()
 			$overlay.texture = load("res://assets/Textures_v2/BATTLE/overlays/dirt.png")
@@ -304,6 +305,7 @@ func setup_overlay(type):
 			#remove particles
 			for nd in $overlay.get_children():
 				nd.queue_free()
+			ResourceScripts.core_animations.gfx_particles_infinite($overlay, 'snow')
 		'mind':
 			$Icon.material = load("res://assets/sfx/swirl_shader.tres").duplicate()
 			$overlay.texture = null
