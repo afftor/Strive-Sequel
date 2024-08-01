@@ -974,6 +974,8 @@ func make_fighter_panel(fighter, spot):
 		panel.get_node("mplabel").show()
 	panel.set_meta('character',fighter)
 	panel.get_node("Icon").texture = fighter.get_icon()
+	panel.get_node('Icon').material = load("res://assets/sfx/bw_shader.tres").duplicate()
+	panel.turn_overlay(false)
 	panel.get_node("HP").value = input_handler.calculatepercent(fighter.hp, fighter.get_stat('hpmax'))
 	panel.get_node("MP").value = input_handler.calculatepercent(fighter.mp, fighter.get_stat('mpmax'))
 	panel.hp = fighter.hp
@@ -993,6 +995,7 @@ func make_fighter_panel(fighter, spot):
 	else:
 		g_color = Color(1.0, 0.0, 0.0, 0.0);
 	panel.material.set_shader_param('modulate', g_color);
+	panel.turn_overlay(false)
 	panel.noq_rebuildbuffs(fighter.get_combat_buffs())
 
 
@@ -1814,6 +1817,9 @@ func execute_skill(s_skill2):
 					text += "%s's %s is now %d." %[s_skill2.target.get_short_name(), tr(stat), i.value]
 			else: print('error in damagestat %s' % i.damagestat) #obsolete in new format
 	combatlogadd(text)
+	for i in ['ice']: #add other custom death overlays here
+		if s_skill2.tags.has("kill_animation_%s" % i):
+			s_skill2.target.displaynode.setup_overlay(i)
 
 
 func Highlight(pos, type):

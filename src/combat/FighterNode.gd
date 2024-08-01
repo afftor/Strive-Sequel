@@ -235,7 +235,8 @@ func update_mp_label(newmp, newmpp):
 func noq_defeat():
 	if !visible: return
 	if fighter.is_active:
-		$Icon.material = load("res://assets/sfx/bw_shader.tres")
+		turn_overlay(true)
+#		$Icon.material = load("res://assets/sfx/bw_shader.tres")
 	else:
 		fighter = null
 		is_active = false
@@ -243,9 +244,79 @@ func noq_defeat():
 
 func resurrect():
 	if !visible: return
-	$Icon.material = null
+	turn_overlay(false)
+#	$Icon.material = null
 
 
 func check_active():
 	if !is_active:
 		queue_free()
+
+
+func setup_overlay(type):
+	match type:
+		'normal':
+			$Icon.material = load("res://assets/sfx/bw_shader.tres").duplicate()
+			$overlay.texture = load("res://assets/Textures_v2/BATTLE/overlays/death.png")
+			#remove particles
+			for nd in $overlay.get_children():
+				nd.queue_free()
+#			ResourceScripts.core_animations.gfx_particles_infinite($overlay, 'heal') #test
+		'fire':
+			$Icon.material = load("res://assets/sfx/bw_shader.tres").duplicate()
+			$overlay.texture = load("res://assets/Textures_v2/BATTLE/overlays/fire.png")
+			#remove particles
+			for nd in $overlay.get_children():
+				nd.queue_free()
+		'earth':
+			$Icon.material = load("res://assets/sfx/bw_shader.tres").duplicate()
+			$overlay.texture = load("res://assets/Textures_v2/BATTLE/overlays/dirt.png")
+			#remove particles
+			for nd in $overlay.get_children():
+				nd.queue_free()
+		'air':
+			$Icon.material = load("res://assets/sfx/bw_shader.tres").duplicate()
+			$overlay.texture = load("res://assets/Textures_v2/BATTLE/overlays/lightning1.png")
+			#remove particles
+			for nd in $overlay.get_children():
+				nd.queue_free()
+		'water':
+			$Icon.material = load("res://assets/sfx/bw_shader.tres").duplicate()
+			$overlay.texture = load("res://assets/Textures_v2/BATTLE/overlays/water.png")
+			#remove particles
+			for nd in $overlay.get_children():
+				nd.queue_free()
+		'light':
+			$Icon.material = load("res://assets/sfx/bw_shader.tres").duplicate()
+			$overlay.texture = load("res://assets/Textures_v2/BATTLE/overlays/light.png")
+			#remove particles
+			for nd in $overlay.get_children():
+				nd.queue_free()
+		'dark':
+			$Icon.material = load("res://assets/sfx/bw_shader.tres").duplicate()
+			$overlay.texture = load("res://assets/Textures_v2/BATTLE/overlays/dark.png")
+			#remove particles
+			for nd in $overlay.get_children():
+				nd.queue_free()
+		'ice':
+			$Icon.material = load("res://assets/sfx/bw_shader.tres").duplicate()
+			$overlay.texture = load("res://assets/Textures_v2/BATTLE/overlays/frost.png")
+			#remove particles
+			for nd in $overlay.get_children():
+				nd.queue_free()
+		'mind':
+			$Icon.material = load("res://assets/sfx/swirl_shader.tres").duplicate()
+			$overlay.texture = null
+			#remove particles
+			for nd in $overlay.get_children():
+				nd.queue_free()
+		_:
+			print("no damage type - %s" % type)
+
+
+func turn_overlay(val):
+	$overlay.visible = val
+	if val:
+		$Icon.material.set_shader_param('percent', 1.0)
+	else:
+		$Icon.material.set_shader_param('percent', 0.0)

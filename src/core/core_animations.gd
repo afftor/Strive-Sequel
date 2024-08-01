@@ -270,6 +270,17 @@ func gfx_particles(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
 
 	if wr.get_ref(): x.queue_free()
 
+
+func gfx_particles_infinite(node, effect):
+	if !node.is_inside_tree(): return
+	var x = load(images.GFX_particles[effect]).instance()
+	node.add_child(x)
+	x.position = node.rect_size/2
+	#x.set_anchors_and_margins_preset(Control.PRESET_CENTER)
+	x.emitting = true
+
+
+
 func ResourceGetAnimation(node, startpoint, endpoint, time = 0.5, delay = 0.2):
 	if !node.is_inside_tree(): return
 	var tweennode = input_handler.GetTweenNode(node)
