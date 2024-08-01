@@ -385,6 +385,15 @@ mouse_filter = 2
 expand = true
 stretch_mode = 6
 
+[node name="overlay" type="TextureRect" parent="Panel/PlayerGroup/Back/left/Template"]
+visible = false
+show_behind_parent = true
+margin_right = 181.0
+margin_bottom = 183.0
+mouse_filter = 2
+expand = true
+stretch_mode = 7
+
 [node name="HP" type="TextureProgress" parent="Panel/PlayerGroup/Back/left/Template"]
 show_behind_parent = true
 margin_left = 9.0

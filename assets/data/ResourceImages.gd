@@ -838,6 +838,7 @@ var cursors = {
 var GFX = {
 	slash = load("res://assets/images/gfx/slash-effect.png"),
 	fire = load("res://assets/sfx/fire_effect.png"),
+	slice = "res://assets/Textures_v2/BATTLE/overlays/slice.png"
 }
 
 var GFX_sprites = {
@@ -857,6 +858,8 @@ var GFX_particles = {
 	debuff = "res://assets/sfx/debuff.tscn",
 }
 
+
+
 func loadimages():
 	for i in icons:
 		icons[i] = input_handler.loadimage(icons[i])
@@ -874,6 +877,7 @@ func loadimages():
 		cursors[i] = input_handler.loadimage(cursors[i])
 	for i in GFX:
 		GFX[i] = input_handler.loadimage(GFX[i])
+
 
 func add_portrait_paths():
 	var regex = RegEx.new()

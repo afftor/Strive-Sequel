@@ -382,6 +382,7 @@ func shield_update(node, args):
 
 func defeat(node, args = null):#stub, for this was not correct in FighterNode
 	var delaytime = 0.3
+	ResourceScripts.core_animations.gfx(node, 'slice', 0.3, delaytime)
 	var tween = input_handler.GetTweenNode(node)
 	tween.interpolate_callback(node, delaytime, 'noq_defeat')
 	tween.start()

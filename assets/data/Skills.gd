@@ -1810,7 +1810,7 @@ var Skilllist = {
 		icon = load("res://assets/images/iconsskills/icon_ice.png"),
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage','aoe','learnable'],
+		tags = ['damage','aoe','learnable', 'kill_animation_ice'],
 #		new_syntax = true,
 		learn_reqs = [{code = 'trait', trait = 'advanced_spells', check = true}],
 		learn_cost = 600,
