@@ -858,6 +858,8 @@ var GFX_particles = {
 	heal = "res://assets/sfx/heal.tscn",
 	buff = "res://assets/sfx/buff.tscn",
 	debuff = "res://assets/sfx/debuff.tscn",
+	snow = "res://assets/sfx/snow.tscn",
+	sparks = "res://assets/sfx/spark.tscn",
 }
 
 
