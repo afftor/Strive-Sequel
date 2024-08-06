@@ -6,6 +6,7 @@ var selected_curse = 'no'
 
 func _ready():
 	$Back.connect("pressed", self, 'close')
+	$Mode.connect("pressed", self, 'change_mode')
 	$EnchantPanel/Curse1.connect("pressed", self, 'add_curse_minor')
 	$EnchantPanel/Curse2.connect("pressed", self, 'add_curse_major')
 	$EnchantPanel/Apply.connect('pressed', self, 'apply_selection')
@@ -28,6 +29,14 @@ func close():
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 	hide()
 	get_parent().update()
+
+
+func change_mode():
+	gui_controller.windows_opened.erase(self)
+	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
+	hide()
+	get_parent().update()
+	get_parent().select_category('improve')
 
 
 func build_item_list():

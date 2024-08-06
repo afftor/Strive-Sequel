@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_26.tres" type="DynamicFont" id=2]
@@ -76,6 +76,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_30.tres" type="DynamicFont" id=74]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=75]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Icons/icon_craft_small.png" type="Texture" id=76]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionImproveModule.tscn" type="PackedScene" id=77]
 
 [sub_resource type="StyleBoxTexture" id=1]
 region_rect = Rect2( 0, 0, 12, 48 )
@@ -1253,4 +1254,7 @@ align = 1
 valign = 1
 
 [node name="Enchant" parent="." instance=ExtResource( 18 )]
+visible = false
+
+[node name="Improve" parent="." instance=ExtResource( 77 )]
 visible = false
