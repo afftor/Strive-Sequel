@@ -84,6 +84,9 @@ func select_category(category):
 	if category == 'enchant':
 		$Enchant.open()
 		return
+	if category == 'improve':
+		$Improve.open()
+		return
 	$MaterialSelect.hide()
 	$MaterialSetupPanel.hide()
 	$NumberSelect.hide()

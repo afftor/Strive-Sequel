@@ -1677,7 +1677,7 @@ var itemlist = {
 		basestats = {atk = 3},
 	},
 	cali_heirloom_test = { #some examples added
-		code = 'cali_heirloom',
+		code = 'cali_heirloom_test',
 		name = "",
 		descript = "",
 		type = 'gear',
@@ -5441,4 +5441,27 @@ var fixed_quality_stats = {
 			effects = ['e_rare_deadly'] #not displayed in tooltip, but may be visible after equip
 		}
 	}
+}
+
+
+var amount_to_improve = { #core
+	poor = 2,
+	average = 2,
+	good = 2,
+	epic = 2,
+}
+
+var amount_to_improve_unique = { #unique
+	average = 1,
+	good = 1,
+	epic = 2,
+	legendary = 2
+}
+
+var next_quality = {
+	"": 'average',
+	poor = 'average',
+	average = 'good',
+	good = 'epic',
+	epic = 'legendary',
 }
