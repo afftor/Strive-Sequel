@@ -175,7 +175,7 @@ func OrgasmDenialBeg():
 
 func OrgasmDenialDeny():
 	OrgasmDenyVictim.sens -= 250
-	OrgasmDenyVictim.person.add_stat('submission' ,10 + OrgasmDenyVictim.person.get_stat('sexuals_factor'))
+	#OrgasmDenyVictim.person.add_stat('submission' ,10 + OrgasmDenyVictim.person.get_stat('sexuals_factor')) #todo add new effect
 	$OrgasmDenial.hide()
 	$Panel/sceneeffects.bbcode_text +="\n" + decoder(OrgasmDenyText.deny, [OrgasmDenyPlayer], [OrgasmDenyVictim])
 	rebuildparticipantslist()

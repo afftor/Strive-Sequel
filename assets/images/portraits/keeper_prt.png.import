@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/keeper_prt.png-5a68de62de928dd650924b7f2fd1ad7a.stex"
+path="res://.import/keeper_prt.png-43fb707687eee42a2ce0e4fad0978950.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/keeper_prt.png"
-dest_files=[ "res://.import/keeper_prt.png-5a68de62de928dd650924b7f2fd1ad7a.stex" ]
+source_file="res://assets/images/portraits/keeper_prt.png"
+dest_files=[ "res://.import/keeper_prt.png-43fb707687eee42a2ce0e4fad0978950.stex" ]
 
 [params]
 
