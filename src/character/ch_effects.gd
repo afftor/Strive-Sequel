@@ -73,11 +73,11 @@ func apply_temp_effect(eff_id):
 	var eff = effects_pool.get_effect_by_id(eff_id)
 	var eff_n = eff.template.name
 	if check_status_resist(eff):
-		if input_handler.combat_node != null:
+		if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_n):
 			input_handler.combat_node.combatlogadd("\n%s resists %s." % [parent.get_ref().get_short_name(), eff_n])
 			parent.get_ref().play_sfx('resist')
 		return
-	if input_handler.combat_node != null:
+	if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_n):
 		input_handler.combat_node.combatlogadd("\n%s is affected by %s." % [parent.get_ref().get_short_name(), eff_n])
 	var tmp = find_temp_effect(eff_n)
 	if (tmp.num < eff.template.stack) or (eff.template.stack == 0):
