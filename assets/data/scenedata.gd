@@ -635,9 +635,9 @@ var scenedict = {
 	common_effects = [
 		{code = 'make_scene_character',
 			value = [
-			{type = 'function', function = 'make_local_recruit', args = {races = [['Elf', 10], ['Fairy', 2], ['Dryad', 1]], difficulty = [0,1], bonuses = {pricemod = -0.3, obedience = 100, submission = 10}, type = 'slave'}}],
+			{type = 'function', function = 'make_local_recruit', args = {races = [['Elf', 10], ['Fairy', 2], ['Dryad', 1]], difficulty = [0,1], bonuses = {pricemod = -0.3, obedience = 100}, type = 'slave'}}],
 		},
-		{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 10},{code = 'affect_scene_characters', type = 'all', stat = 'submission', value = 20}],
+		{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 10}],
 	options = [
 	{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},
 	{code = 'event_person_acquired', reqs = [{type = "has_money_for_scene_slave", value = 0}], not_hide = true, text = tr("DIALOGUESLAVERSPURCHASE"), bonus_effects = [{code = 'spend_money_for_scene_character', value = 0}]},
@@ -732,7 +732,7 @@ var scenedict = {
 	set_enemy = 'rebels_small',
 	winscene = 'event_person_acquired',
 	common_effects = [
-	{code = 'make_scene_character', value = [{type = 'function', function = 'make_local_recruit', args = {races = [['beast', 1]], difficulty = [0,1], type = 'slave',bonuses = {submission = 5}}}],},
+	{code = 'make_scene_character', value = [{type = 'function', function = 'make_local_recruit', args = {races = [['beast', 1]], difficulty = [0,1], type = 'slave',bonuses = {}}}],},
 	{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 24}],
 	options = [
 	{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},
@@ -1055,7 +1055,7 @@ var scenedict = {
 		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
 			{code = 'sexuals_factor', value = 1, operant = "+"},
 			{code = 'sextrait', value = 'submissive', operant = 'add', known = true},#for sextrait/add setting, trait is appended to character's traits
-			{code = 'submission', operant = '+', value = 50},
+			#{code = 'submission', operant = '+', value = 50},
 			{code = 'obedience', operant = '+', value = 30},
 			{code = 'tag', operant = 'remove', value = 'no_sex'},
 			]}],

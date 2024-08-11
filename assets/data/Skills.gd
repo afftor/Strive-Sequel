@@ -3628,9 +3628,9 @@ var Skilllist = {
 		dialogue_show_repeat = false,
 		sfx = [], 
 		sound = [],
-		value = [['36'],['10']],
+		value = [['36']],
 		random_factor = [5,0],
-		damagestat = ['+obedience','-submission']
+		damagestat = ['+obedience']
 	},
 	beer = {
 		code = 'alcohol',
@@ -3655,9 +3655,9 @@ var Skilllist = {
 		dialogue_show_repeat = false,
 		sfx = [], 
 		sound = [],
-		value = [['20'],['2']],
+		value = [['20']],
 		random_factor = [4,0],
-		damagestat = ['+obedience','-submission']
+		damagestat = ['+obedience']
 	},
 	exp_scroll = {
 		code = 'exp_scroll',

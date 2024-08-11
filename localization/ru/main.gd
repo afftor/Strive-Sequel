@@ -387,6 +387,7 @@ var TranslationDict = {
 	LOADINGTIP12 = "Назначайте свидания своим персонажам, чтобы узнать об их сексуальных предпочтениях (чертах характера)",
 	LOADINGTIP13 = "Разбирая снаряжение в гильдии рабочих, вы сможете добывать из него редкие ресурсы",
 	LOADINGTIP14 = "Авермик продает рабов экзотических рас в Алироне каждые 2 недели",
+	LOADINGTIP15 = """Character's value boosts all their service income""", # MISSING TRANSLATION
 	
 	
 	LOADLORE1NAME = "Гильдии",

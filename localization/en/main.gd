@@ -225,7 +225,7 @@ var TranslationDict = {
 	PRESETDATADEBUGNORMALDIS = "Standard difficulty for players with a reasonable grasp at management games.",
 	
 	PRESETDATADEBUGHARDNAME = "hard",
-	PRESETDATADEBUGHARDDIS = "Challenging difficulty. Obedience drains faster, defeated characters are lost forever. Loan payments aren't cancelled with prologue completion. Factors can't be upraded at slave market (except growth). ",
+	PRESETDATADEBUGHARDDIS = "Challenging difficulty. Obedience drains faster, defeated characters are lost forever. Loan payments aren't cancelled with prologue completion. Factors can't be upgraded at slave market (except growth). ",
 	
 	PRESETDATADEBUGIMPORTNAME = "import",
 	PRESETDATADEBUGIMPORTDIS = "Start with only a Master. ",
@@ -387,9 +387,10 @@ using       button.""",
 	LOADINGTIP9 = "Injured characters recover faster when resting",
 	LOADINGTIP10 = "Only few human related races can interbred with each other, the rest will only be able to breed with their own race with no adjustments",
 	LOADINGTIP11 = "Babies will inherit their parent stats at random",
-	LOADINGTIP12 = "Date your characters to learn about their sexual preferences (traits)",
+	LOADINGTIP12 = "Date your characters to learn about their sexual preferences (traits) and improve their low consent",
 	LOADINGTIP13 = "Dismantling gear at Workers guild can allow you to extract rare resources from it",
 	LOADINGTIP14 = "Avermik sells slaves of exotic races in Aliron every 2 weeks",
+	LOADINGTIP15 = "Character's value boosts all their service income",
 	
 	
 	LOADLORE1NAME = "Guilds",
@@ -7712,7 +7713,7 @@ Finally Derek comes to you with good news. The hunters were able to find evidenc
 	GRYPHON_FOREST_1_2 = """— Hmph, don't make me laugh. See if you die, I don't care. 
 
 Finally Derek comes to you with good news. The hunters were able to find evidence that the Elder Gryphon must be somewhere nearby. One of them has seen a large cave near the river on your way here and it seems to be the most likely spot. Hearing this you give the order to move out.""",
-	GRYPHON_CAVE_START = """With your group of hired hunters and Aire you enter the spacious cave. Almost by the entrance you spot large feathers indicating that the hunters' guess was correct. After another hundredfeet you hear the screeching roar of an angry beast. The whole group quicky retreats from the cave as you are followed out by a gigantic gryphon, larger than any you've ever seen before.""",
+	GRYPHON_CAVE_START = """With your group of hired hunters and Aire you enter the spacious cave. Almost by the entrance you spot large feathers indicating that the hunters' guess was correct. After another hundred feet you hear the screeching roar of an angry beast. The whole group quicky retreats from the cave as you are followed out by a gigantic gryphon, larger than any you've ever seen before.""",
 	GRYPHON_CAVE_1 = """As the Elder Gryphon is on its last breath, you notice how it focuses its attention on Aire, who is still within the reach of its massive talons. Unexpectedly to everyone, the Elder Gryphon bellows another fierce roar and makes a dash in her direction.""",
 	GRYPHON_CAVE_1_OPTION_1 = "*Try to block it*",
 	GRYPHON_CAVE_1_OPTION_2 = "*Do nothing*",
@@ -9357,7 +9358,7 @@ Cali's protest sinks abruptly upon hearing it.
 
 {color=yellow|Cali: — O-oh... Uh, can you give me some time? I don't have it right now...}
 
-{color=aqua|Uncle: — I see. Very well, but I hope you do realize it's importance to us. I'll be waiting until then.}""",
+{color=aqua|Uncle: — I see. Very well, but I hope you do realize its importance to us. I'll be waiting until then.}""",
 	CALI_HEIRLOOM_6_INIT = """As Cali's uncle leaves, you ask her what's been going on.
 
 — Yeah, I ran away from home and I took a family heirloom with me. I thought it would be useful to me, you know? It's a weapon and I needed it for protection, or to become a warrior, you know? However, it didn't work out. When I met a group of bandits they easily disarmed me, then their boss got it. After that I was planning to be sold. The rest you know, since you found me.
@@ -12831,7 +12832,7 @@ The man gives Lilia a nod indicating the last part is directed to her.""",
 
 	LILIA_FINISH_DUNGEON_2_3 = """— Only a small hideout prepared specifically for this occasion. Here we'll be able to perform our ritual without any unnecessary witnesses.""",
 
-	LILIA_FINISH_DUNGEON_2_4 = """Robbed Man: — You see, my patron Ashmedai has been looking for a new Champion, someone to carry his powers. A suitable individual which possesses an emphatic and lusty yet frivolous character. This girl has been marked by her actions and fate. 
+	LILIA_FINISH_DUNGEON_2_4 = """Robed Man: — You see, my patron Ashmedai has been looking for a new Champion, someone to carry his powers. A suitable individual which possesses an emphatic and lusty yet frivolous character. This girl has been marked by her actions and fate. 
 
 — So, my patron offers her his power. By performing the ritual she will become the Champion and will be able to experience much greater pleasure and gain more power than she could ever dream of. 
 
@@ -12844,8 +12845,8 @@ Lilia: — I don't know, [name]... Do you think I should do it?""",
 	LILIA_FINISH_DUNGEON_2_4_OPTION_3 = "Why not, this seems fun",
 	LILIA_FINISH_DUNGEON_2_4_OPTION_4 = "Only if I get to participate",
 
-	LILIA_FINISH_DUNGEON_3_1_GOOD = """Robbed Man: — Long ago Ashmedai was exiled by Freya, stripped of his might, and his reign was stolen. I believe his will is to get one of Freya's children and make her into his own. You could consider it a form of revenge for him.""",
-	LILIA_FINISH_DUNGEON_3_1_BAD = """Robbed Man: — I've told you everything necessary, we don't question our patron desires, do we?""",
+	LILIA_FINISH_DUNGEON_3_1_GOOD = """Robed Man: — Long ago Ashmedai was exiled by Freya, stripped of his might, and his reign was stolen. I believe his will is to get one of Freya's children and make her into his own. You could consider it a form of revenge for him.""",
+	LILIA_FINISH_DUNGEON_3_1_BAD = """Robed Man: — I've told you everything necessary, we don't question our patron desires, do we?""",
 
 	LILIA_FINISH_DUNGEON_3_2 = """— This is not allowed. We can't let you take our destined Chosen away. 
 
@@ -12871,24 +12872,24 @@ The man takes out his weapon and prepares to take Lilia by force.""",
 
 	LILIA_FINISH_DUNGEON_AFTER_SCENE_1_1 = """— Glad you said that. I do like it as well.
 
-Before you realize, the robbed man is gone, leaving you two alone together.
+Before you realize, the robed man is gone, leaving you two alone together.
 
 — Now, [Master], shall we return? I wanna get back home, even for me today was too much to not get some rest.""",
 
 	LILIA_FINISH_DUNGEON_AFTER_SCENE_1_2 = """— Who else can I be, silly?
 
-Before you realize, the robbed man is gone, leaving you two alone together.
+Before you realize, the robed man is gone, leaving you two alone together.
 
 — Now, [Master], shall we return? I wanna get back home, even for me today was too much to not get some rest.""",
 
 	LILIA_FINISH_DUNGEON_AFTER_SCENE_1_3 = """— Umm, even so there's no turning back now, is it? After all, you've agreed to this, [Master].
 
-Before you realize, the robbed man is gone, leaving you two alone together.
+Before you realize, the robed man is gone, leaving you two alone together.
 
 — Now, [Master], shall we return? I wanna get back home, even for me today was too much to not get some rest.""",
 	
 	# Good route
-LILIA_GOOD_ROUTE_1 = """After dealing with the robbed man and the summoned beast, Lilia falls to her knees making you rush to her. You notice a thin purple mist escaping her body, seemingly indicating her purification of the demonic energy which brought you here.
+LILIA_GOOD_ROUTE_1 = """After dealing with the robed man and the summoned beast, Lilia falls to her knees making you rush to her. You notice a thin purple mist escaping her body, seemingly indicating her purification of the demonic energy which brought you here.
 
 — S-sorry, [Master], I just feel tired after all this. Could you carry me for a bit? I don't wanna stay around here anymore.""",
 LILIA_GOOD_ROUTE_1_OPTION_1 = "*Carry her in your arms*",
@@ -13212,7 +13213,7 @@ It seems she's reluctant to endanger her new powers. Perhaps, earning her trust 
 
 Lilith uses her powers meditating alone for a while. Soon she leaves her room and gives you directions to the dungeon they seem to be hiding at.""",
 
-LILITH_FINISH_NEW_DUNGEON = """You arrive at the room Lilith pointed out to you. The same robbed man you've previously met bows to her questioningly.
+LILITH_FINISH_NEW_DUNGEON = """You arrive at the room Lilith pointed out to you. The same robed man you've previously met bows to her questioningly.
 
 — What brought our fated Champion here?
 

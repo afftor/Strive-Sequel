@@ -104,7 +104,7 @@ func showup(node, person):
 				text += "\n" + str(round(person.get_stat(i)*100)) + " - " + statdata.statdata[i].name
 #		globals.connecttexttooltip($productivity, globals.TextEncoder(text))
 		var authority_text = ""
-		if person.get_stat('loyalty') < 100 && person.get_stat('submission') < 100:
+		if person.get_stat('loyalty') < 100: #&& person.get_stat('submission') < 100:
 #			$Panel/obedlabel.text = str(ceil(person.xp_module.predict_obed_time()))
 			var obed_val = person.get_obed_percent_value()
 			$Panel/obedlabel.text = "%d%%" % obed_val
