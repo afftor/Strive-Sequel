@@ -417,6 +417,7 @@ func tooltiptext():
 		for i in toolcategory:
 			text += statdata.worktoolnames[i] +", "
 		text = text.substr(0, text.length()-2)
+		text += "\n"
 	if description != null:
 		text += description
 	if !reqs.empty():
