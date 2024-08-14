@@ -255,7 +255,7 @@ func check_active():
 
 func setup_overlay(type):
 	match type:
-		'normal':
+		'normal', 'true':
 			$Icon.material = load("res://assets/sfx/bw_shader.tres").duplicate()
 			$overlay.texture = load("res://assets/Textures_v2/BATTLE/overlays/death.png")
 			#remove particles
