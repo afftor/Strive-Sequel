@@ -769,7 +769,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMSHIELD = "Shield",
 
 
-	ITEMAXEDESCRIPT = 'Axe can be used for cutting wood and combat.',
+	ITEMAXEDESCRIPT = 'Can be used for cutting wood and combat.',
 	ITEMSWORDDESCRIPT = "Good damage vs unarmored enemies.",
 	ITEMDAGGERDESCRIPT = "Easily hidden, cheap weapon which can be used by anyone.",
 	ITEMCLUBDESCRIPT = "A weapon of your ancestors. Not outstanding, but easy to make and can be held by anyone.",
@@ -784,7 +784,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMFISHINGTOOLSDESCRIPT = "A set of tools used by fishermen.",
 	ITEMHAMMERDESCRIPT = "A handy tool for smiths and builders.",
 	ITEMHUNT_KNIFEDESCRIPT = "A set of tools to be utilized by seekers of game.",
-
+	ITEMSHIELDDESCRIPT = "A gear for blocking in combat.",
+	
+	
 	ITEMBASICCHEST = "Chestplate",
 	ITEMROBE = "Robe",
 	ITEMHOOD = "Hood",
@@ -1217,6 +1219,56 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	
 	SKILLMIMIC_ATTACK = "Sticky Grab",
+	
+	
+	
+	ACTIONPRAISE = "Praise",
+	ACTIONPRAISEDESCRIPT = "Show sympathy and praise [name].",
+	ACTIONREWARD = "Reward",
+	ACTIOREWARDDESCRIPT = "Reward [name] with 10 pieces of gold.",
+	ACTIONDAYOFF = "Day Off",
+	ACTIONDAYOFFDESCRIPT = "Give [name] a day off. Will make [him] unavailable until then",
+	ACTIONSLAP = "Slap",
+	ACTIONSLAPDESCRIPT = "Slap [name] over [his] face",
+	ACTIONSPANK = "Spank",
+	ACTIONSPANKDESCRIPT = "Give [name] a spanking session.",
+	ACTIONWHIP = "Whip",
+	ACTIONWHIPDESCRIPT = "Whip [name] into discipline.",
+	ACTIONSCOLD = "Scold",
+	ACTIONSCOLDDESCRIPT = "Verbally abuse [name] to instill [his] position.",
+	ACTIONINSULT = "Insult",
+	ACTIONINSULTDESCRIPT = "Derogate [name] with a nasty word.",
+	ACTIONKNEEL = "Kneel",
+	ACTIONKNEELDESCRIPT = "Force [name] onto [his] knees to teach discipline.",
+	ACTIONSHAME = "Shame",
+	ACTIONSHAMEDESCRIPT = "Publicly shame [name] in front of other servants.",
+	ACTIONPUNISH = "Punish",
+	ACTIONPUNISHDESCRIPT = "Give physical punishment to [name] as other watch.",
+	ACTIONMOLEST = "Molest",
+	ACTIONMOLESTDESCRIPT = "Grope and expose [name] in front of others.",
+	ACTIONGROPE = "Grope",
+	ACTIONGROPEDESCRIPT = "Dominatively stroke [name] in a sexual way.",
+	ACTIONSTRIP = "Strip",
+	ACTIONSTRIPDESCRIPT = "Have [name] strip and walk exposed for a day.",
+	ACTIONRAPE = "Rape",
+	ACTIONRAPEDESCRIPT = "Take [name] against [his] will.",
+	ACTIONPUBLICUSE = "Public Use",
+	ACTIONPUBLICUSEDESCRIPT = "Place [name] in stockade having [him] serve a glory hole.",
+	ACTIONMINDREAD = "Mind Read",
+	ACTIONMINDREADDESCRIPT = "Cast Mind Read on [name], potentially learning [his] strong and weak spots.",
+	ACTIONINFLUENCE = "Influence",
+	ACTIONINFLUENCEDESCRIPT = "Use magic to influence [name]'s mind making [him] accept [his] role as a slave.",
+	ACTIONSTRONGINFLUENCE = "Strong Influence",
+	ACTIONSTRONGINFLUENCEDESCRIPT = "Use strong magic to put [name]'s mind into submission.",
+	ACTIONMINDCONTROL = "Hypnosis",
+	ACTIONMINDCONTROLDESCRIPTDESCRIPT = "The stongest control option will greatly bend most minds.",
+
+	ACTIONTYPEPOSITIVE = "Positive",
+	ACTIONTYPEPHYSICAL = "Physical",
+	ACTIONTYPEHUMILIATION = "Humiliation",
+	ACTIONTYPESOCIAL = "Social",
+	ACTIONTYPESEXUAL = "Sexual",
+	ACTIONTYPEMAGIC = "Magic",
 
 	WORKTOOL = "Work Tool",
 	WORKTOOLAXE = "Lumber Axe",
