@@ -783,6 +783,7 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	ITEMFISHINGTOOLSDESCRIPT = "渔民使用的一套工具。",
 	ITEMHAMMERDESCRIPT = "一个为铁匠和建设者设计的工具。",
 	ITEMHUNT_KNIFEDESCRIPT = "猎手使用的一套工具。",
+	ITEMSHIELDDESCRIPT = """A gear for blocking in combat.""", # MISSING TRANSLATION
 
 	ITEMBASICCHEST = "胸甲",
 	ITEMROBE = "长袍",

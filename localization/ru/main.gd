@@ -782,6 +782,7 @@ var TranslationDict = {
 	ITEMFISHINGTOOLSDESCRIPT = "Набор инструментов, используемых рыбаками.",
 	ITEMHAMMERDESCRIPT = "Удобный инструмент для кузнецов и строителей.",
 	ITEMHUNT_KNIFEDESCRIPT = "Набор инструментов для использования охотниками.",
+	ITEMSHIELDDESCRIPT = """A gear for blocking in combat.""", # MISSING TRANSLATION
 
 	ITEMBASICCHEST = "Нагрудник",
 	ITEMROBE = "Роба",

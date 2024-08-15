@@ -339,7 +339,7 @@ var effect_table = {
 	},
 	e_tr_pet = {
 		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_pros', value = 0.25}],
+		atomic = [{type = 'stat_add_p', stat = 'mod_pros', value = 0.20}],
 		buffs = [],
 		sub_effects = [],
 	},
