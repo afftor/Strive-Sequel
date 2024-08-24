@@ -330,9 +330,10 @@ using       button.""",
 	LOADINGTIP9 = "Injured characters recover faster when resting",
 	LOADINGTIP10 = "Only few human related races can interbred with each other, the rest will only be able to breed with their own race with no adjustments",
 	LOADINGTIP11 = "Babies will inherit their parent stats at random",
-	LOADINGTIP12 = "Date your characters to learn about their sexual preferences (traits)",
+	LOADINGTIP12 = "Date your characters to learn about their sexual preferences (traits) and improve their low consent",
 	LOADINGTIP13 = "Dismantling gear at Workers guild can allow you to extract rare resources from it",
 	LOADINGTIP14 = "Avermik sells slaves of exotic races in Aliron every 2 weeks",
+	LOADINGTIP15 = "Character's value boosts all their service income",
 	LOADLORE1NAME = "Guilds",
 	LOADLORE2NAME = "Guild Leaders",
 	LOADLORE3NAME = "The Mad King",
@@ -718,6 +719,7 @@ When casting a spell has 25% chance to cast it an additional time.
 	ITEMHUNT_KNIFE = "Hunting Knife",
 	ITEMSHIELD = "Shield",
 	ITEMAXEDESCRIPT = "Axe can be used for cutting wood and combat.",
+
 	ITEMSWORDDESCRIPT = "Good damage vs unarmored enemies.",
 	ITEMDAGGERDESCRIPT = "Easily hidden, cheap weapon which can be used by anyone.",
 	ITEMCLUBDESCRIPT = "A weapon of your ancestors. Not outstanding, but easy to make and can be held by anyone.",
@@ -732,6 +734,7 @@ When casting a spell has 25% chance to cast it an additional time.
 	ITEMFISHINGTOOLSDESCRIPT = "A set of tools used by fishermen.",
 	ITEMHAMMERDESCRIPT = "A handy tool for smiths and builders.",
 	ITEMHUNT_KNIFEDESCRIPT = "A set of tools to be utilized by seekers of game.",
+	ITEMSHIELDDESCRIPT = "A gear for blocking in combat.",
 	ITEMBASICCHEST = "Chestplate",
 	ITEMROBE = "Robe",
 	ITEMHOOD = "Hood",
@@ -1124,6 +1127,55 @@ Hotkey: 3""",
 	SKILLENEMY_SLASH = "Slash",
 	SKILLASSASSINATEEN = "Assassinate",
 	SKILLMIMIC_ATTACK = "Sticky Grab",
+	
+	
+	ACTIONPRAISE = "Praise",
+	ACTIONPRAISEDESCRIPT = "Show sympathy and praise [name].",
+	ACTIONREWARD = "Reward",
+	ACTIOREWARDDESCRIPT = "Reward [name] with 10 pieces of gold.",
+	ACTIONDAYOFF = "Day Off",
+	ACTIONDAYOFFDESCRIPT = "Give [name] a day off. Will make [him] unavailable until then",
+	ACTIONSLAP = "Slap",
+	ACTIONSLAPDESCRIPT = "Slap [name] over [his] face",
+	ACTIONSPANK = "Spank",
+	ACTIONSPANKDESCRIPT = "Give [name] a spanking session.",
+	ACTIONWHIP = "Whip",
+	ACTIONWHIPDESCRIPT = "Whip [name] into discipline.",
+	ACTIONSCOLD = "Scold",
+	ACTIONSCOLDDESCRIPT = "Verbally abuse [name] to instill [his] position.",
+	ACTIONINSULT = "Insult",
+	ACTIONINSULTDESCRIPT = "Derogate [name] with a nasty word.",
+	ACTIONKNEEL = "Kneel",
+	ACTIONKNEELDESCRIPT = "Force [name] onto [his] knees to teach discipline.",
+	ACTIONSHAME = "Shame",
+	ACTIONSHAMEDESCRIPT = "Publicly shame [name] in front of other servants.",
+	ACTIONPUNISH = "Punish",
+	ACTIONPUNISHDESCRIPT = "Give physical punishment to [name] as other watch.",
+	ACTIONMOLEST = "Molest",
+	ACTIONMOLESTDESCRIPT = "Grope and expose [name] in front of others.",
+	ACTIONGROPE = "Grope",
+	ACTIONGROPEDESCRIPT = "Dominatively stroke [name] in a sexual way.",
+	ACTIONSTRIP = "Strip",
+	ACTIONSTRIPDESCRIPT = "Have [name] strip and walk exposed for a day.",
+	ACTIONRAPE = "Rape",
+	ACTIONRAPEDESCRIPT = "Take [name] against [his] will.",
+	ACTIONPUBLICUSE = "Public Use",
+	ACTIONPUBLICUSEDESCRIPT = "Place [name] in stockade having [him] serve a glory hole.",
+	ACTIONMINDREAD = "Mind Read",
+	ACTIONMINDREADDESCRIPT = "Cast Mind Read on [name], potentially learning [his] strong and weak spots.",
+	ACTIONINFLUENCE = "Influence",
+	ACTIONINFLUENCEDESCRIPT = "Use magic to influence [name]'s mind making [him] accept [his] role as a slave.",
+	ACTIONSTRONGINFLUENCE = "Strong Influence",
+	ACTIONSTRONGINFLUENCEDESCRIPT = "Use strong magic to put [name]'s mind into submission.",
+	ACTIONMINDCONTROL = "Hypnosis",
+	ACTIONMINDCONTROLDESCRIPTDESCRIPT = "The stongest control option will greatly bend most minds.",
+
+	ACTIONTYPEPOSITIVE = "Positive",
+	ACTIONTYPEPHYSICAL = "Physical",
+	ACTIONTYPEHUMILIATION = "Humiliation",
+	ACTIONTYPESOCIAL = "Social",
+	ACTIONTYPESEXUAL = "Sexual",
+	ACTIONTYPEMAGIC = "Magic",
 	WORKTOOL = "Work Tool",
 	WORKTOOLAXE = "Lumber Axe",
 	WORKTOOLROD = "Fishing Tools",
@@ -9115,7 +9167,7 @@ Cali's protest sinks abruptly upon hearing it.
 
 {color=yellow|Cali: — O-oh... Uh, can you give me some time? I don't have it right now...}
 
-{color=aqua|Uncle: — I see. Very well, but I hope you do realize it's importance to us. I'll be waiting until then.}""",
+{color=aqua|Uncle: — I see. Very well, but I hope you do realize its importance to us. I'll be waiting until then.}""",
 	CALI_HEIRLOOM_6_INIT = """As Cali's uncle leaves, you ask her what's been going on.
 
 — Yeah, I ran away from home and I took a family heirloom with me. I thought it would be useful to me, you know? It's a weapon and I needed it for protection, or to become a warrior, you know? However, it didn't work out. When I met a group of bandits they easily disarmed me, then their boss got it. After that I was planning to be sold. The rest you know, since you found me.
@@ -12536,9 +12588,12 @@ As he removes his hood, you recognize the man that escaped the place where you f
 	LILIA_FINISH_DUNGEON_2_1 = """— I'm only a humble follower of our almighty patron with a mission to guide you.
 
 The man gives Lilia a nod indicating the last part is directed to her.""",
-	LILIA_FINISH_DUNGEON_2_2 = "— I've not done anything. It was her destiny to find my patron's guidance as she must be the special one.",
-	LILIA_FINISH_DUNGEON_2_3 = "— Only a small hideout prepared specifically for this occasion. Here we'll be able to perform our ritual without any unnecessary witnesses.",
-	LILIA_FINISH_DUNGEON_2_4 = """Robbed Man: — You see, my patron Ashmedai has been looking for a new Champion, someone to carry his powers. A suitable individual which possesses an emphatic and lusty yet frivolous character. This girl has been marked by her actions and fate. 
+
+	LILIA_FINISH_DUNGEON_2_2 = """— I've not done anything. It was her destiny to find my patron's guidance as she must be the special one.""",
+
+	LILIA_FINISH_DUNGEON_2_3 = """— Only a small hideout prepared specifically for this occasion. Here we'll be able to perform our ritual without any unnecessary witnesses.""",
+
+	LILIA_FINISH_DUNGEON_2_4 = """Robed Man: — You see, my patron Ashmedai has been looking for a new Champion, someone to carry his powers. A suitable individual which possesses an emphatic and lusty yet frivolous character. This girl has been marked by her actions and fate. 
 
 — So, my patron offers her his power. By performing the ritual she will become the Champion and will be able to experience much greater pleasure and gain more power than she could ever dream of. 
 
@@ -12549,8 +12604,9 @@ Lilia: — I don't know, [name]... Do you think I should do it?""",
 	LILIA_FINISH_DUNGEON_2_4_OPTION_2 = "No, this is too dangerous",
 	LILIA_FINISH_DUNGEON_2_4_OPTION_3 = "Why not, this seems fun",
 	LILIA_FINISH_DUNGEON_2_4_OPTION_4 = "Only if I get to participate",
-	LILIA_FINISH_DUNGEON_3_1_GOOD = "Robbed Man: — Long ago Ashmedai was exiled by Freya, stripped of his might, and his reign was stolen. I believe his will is to get one of Freya's children and make her into his own. You could consider it a form of revenge for him.",
-	LILIA_FINISH_DUNGEON_3_1_BAD = "Robbed Man: — I've told you everything necessary, we don't question our patron desires, do we?",
+
+	LILIA_FINISH_DUNGEON_3_1_GOOD = """Robed Man: — Long ago Ashmedai was exiled by Freya, stripped of his might, and his reign was stolen. I believe his will is to get one of Freya's children and make her into his own. You could consider it a form of revenge for him.""",
+	LILIA_FINISH_DUNGEON_3_1_BAD = """Robed Man: — I've told you everything necessary, we don't question our patron desires, do we?""",
 	LILIA_FINISH_DUNGEON_3_2 = """— This is not allowed. We can't let you take our destined Chosen away. 
 
 The man takes out his weapon and prepares to take Lilia by force.""",
@@ -12569,20 +12625,20 @@ The man takes out his weapon and prepares to take Lilia by force.""",
 	LILIA_FINISH_DUNGEON_AFTER_SCENE_OPTION_3 = "I wonder if it was a mistake...",
 	LILIA_FINISH_DUNGEON_AFTER_SCENE_1_1 = """— Glad you said that. I do like it as well.
 
-Before you realize, the robbed man is gone, leaving you two alone together.
+Before you realize, the robed man is gone, leaving you two alone together.
 
 — Now, [Master], shall we return? I wanna get back home, even for me today was too much to not get some rest.""",
 	LILIA_FINISH_DUNGEON_AFTER_SCENE_1_2 = """— Who else can I be, silly?
 
-Before you realize, the robbed man is gone, leaving you two alone together.
+Before you realize, the robed man is gone, leaving you two alone together.
 
 — Now, [Master], shall we return? I wanna get back home, even for me today was too much to not get some rest.""",
 	LILIA_FINISH_DUNGEON_AFTER_SCENE_1_3 = """— Umm, even so there's no turning back now, is it? After all, you've agreed to this, [Master].
 
-Before you realize, the robbed man is gone, leaving you two alone together.
+Before you realize, the robed man is gone, leaving you two alone together.
 
 — Now, [Master], shall we return? I wanna get back home, even for me today was too much to not get some rest.""",
-	LILIA_GOOD_ROUTE_1 = """After dealing with the robbed man and the summoned beast, Lilia falls to her knees making you rush to her. You notice a thin purple mist escaping her body, seemingly indicating her purification of the demonic energy which brought you here.
+LILIA_GOOD_ROUTE_1 = """After dealing with the robed man and the summoned beast, Lilia falls to her knees making you rush to her. You notice a thin purple mist escaping her body, seemingly indicating her purification of the demonic energy which brought you here.
 
 — S-sorry, [Master], I just feel tired after all this. Could you carry me for a bit? I don't wanna stay around here anymore.""",
 	LILIA_GOOD_ROUTE_1_OPTION_1 = "*Carry her in your arms*",
@@ -12846,7 +12902,8 @@ It seems she's reluctant to endanger her new powers. Perhaps, earning her trust 
 — Hmm, well if you believe it's for the best, I can request a meeting with the creep who has helped us with the ritual. 
 
 Lilith uses her powers meditating alone for a while. Soon she leaves her room and gives you directions to the dungeon they seem to be hiding at.""",
-	LILITH_FINISH_NEW_DUNGEON = """You arrive at the room Lilith pointed out to you. The same robbed man you've previously met bows to her questioningly.
+
+LILITH_FINISH_NEW_DUNGEON = """You arrive at the room Lilith pointed out to you. The same robed man you've previously met bows to her questioningly.
 
 — What brought our fated Champion here?
 

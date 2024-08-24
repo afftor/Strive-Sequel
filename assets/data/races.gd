@@ -74,7 +74,15 @@ var racelist = {
 			mouth_virgin = [true, false],
 			beard = [['no',20],['style1',1], ['style2',1], ['style3',1], ['style4',1], ['style5',1], ['style6',1], ['style7',1], ['style8',1], ['style9',1], ['style10',1], ['style11',1], ['style12',1]],
 			},
-			
+		training_disposition = {
+			humiliation = [['resist', 10],['neutral', 10],['weak',3],['kink',1]],
+			physical = [['resist', 5],['neutral', 5],['weak',5],['kink',0.2]],
+			sexual = [['resist', 7],['neutral', 5],['weak',2],['kink',2]],
+			social = [['resist', 7],['neutral', 8],['weak',3],['kink',1]],
+			praise = [['resist', 5],['neutral', 10],['weak',3],['kink',0.1]],
+			magic = [['neutral', 3],['weak',8],['kink',1]],
+		},
+
 		global_weight = 100,
 	},
 	Elf = {
@@ -108,6 +116,14 @@ var racelist = {
 			beard = ['no'],
 			},
 		global_weight = 40,
+		training_disposition = {
+			humiliation = [['resist', 5],['neutral', 10],['weak',5],['kink',0.1]],
+			physical = [['resist', 5],['neutral', 5],['weak',3],['kink',0.2]],
+			sexual = [['resist', 7],['neutral', 5],['weak',4],['kink',1]],
+			social = [['resist', 1],['neutral', 1],['weak',5],['kink',4]],
+			praise = [['resist', 10],['neutral', 10],['weak',1],['kink',0.5]],
+			magic = [['resist', 2],['neutral', 5],['weak',5],['kink',5]],
+		},
 	},
 	TribalElf = {
 		code = "TribalElf",
@@ -140,6 +156,14 @@ var racelist = {
 			beard = ['no'],
 			},
 		global_weight = 30,
+		training_disposition = {
+			humiliation = [['resist', 5],['neutral', 10],['weak',5],['kink',0.1]],
+			physical = [['resist', 5],['neutral', 5],['weak',3],['kink',0.2]],
+			sexual = [['resist', 7],['neutral', 5],['weak',4],['kink',1]],
+			social = [['resist', 1],['neutral', 1],['weak',5],['kink',4]],
+			praise = [['resist', 10],['neutral', 10],['weak',1],['kink',0.5]],
+			magic = [['resist', 2],['neutral', 5],['weak',5],['kink',5]],
+		},
 	},
 	DarkElf = {
 		code = "DarkElf",
@@ -173,6 +197,14 @@ var racelist = {
 			beard = ['no'],
 			},
 		global_weight = 10,
+		training_disposition = {
+			humiliation = [['resist', 5],['neutral', 10],['weak',5],['kink',0.1]],
+			physical = [['resist', 1],['neutral', 3],['weak',10],['kink',3]],
+			sexual = [['resist', 7],['neutral', 5],['weak',4],['kink',2]],
+			social = [['resist', 10],['neutral', 10],['weak',1],['kink',1]],
+			praise = [['resist', 10],['neutral', 10],['weak',1],['kink',0.1]],
+			magic = [['resist', 4],['neutral', 5],['weak',5],['kink',2]],
+		},
 	},
 	Orc = {
 		code = "Orc",
@@ -205,6 +237,14 @@ var racelist = {
 #			hair_base_color_1 = ['yellow_1','red_1', 'red_2', 'red_3','brown_1','brown_2', 'brown_3', 'black_1', 'black_2', 'black_3'],
 			},
 		global_weight = 45,
+		training_disposition = {
+			humiliation = [['resist', 10],['neutral', 10],['weak',3],['kink',1]],
+			physical = [['resist', 5],['neutral', 5],['weak',5],['kink',0.2]],
+			sexual = [['resist', 7],['neutral', 5],['weak',2],['kink',2]],
+			social = [['resist', 7],['neutral', 8],['weak',3],['kink',1]],
+			praise = [['resist', 5],['neutral', 10],['weak',3],['kink',0.1]],
+			magic = [['neutral', 3],['weak',8],['kink',1]],
+		},
 	},
 	Goblin = {
 		code = "Goblin",
@@ -239,6 +279,14 @@ var racelist = {
 #			hair_base_color_1 = ['g','red_1', 'red_2', 'red_3','brown_1','brown_2', 'brown_3', 'black_1', 'black_2', 'black_3'],
 			},
 		global_weight = 20,
+		training_disposition = {
+			humiliation = [['resist', 10],['neutral', 10],['weak',3],['kink',0.1]],
+			physical = [['resist', 5],['neutral', 5],['weak',5],['kink',5]],
+			sexual = [['resist', 7],['neutral', 5],['weak',2],['kink',10]],
+			social = [['resist', 7],['neutral', 8],['weak',3],['kink',3]],
+			praise = [['resist', 5],['neutral', 10]],
+			magic = [['neutral', 3],['weak',8]],
+		},
 	},
 	Kobold = {
 		code = "Kobold",
@@ -368,6 +416,14 @@ var racelist = {
 			beard = ['no'],
 			},
 		global_weight = 10,
+		training_disposition = {
+			humiliation = [['resist', 10],['neutral', 10],['weak',5]],
+			physical = [['resist', 5],['neutral', 5],['weak',5],['kink',0.2]],
+			sexual = [['resist', 7],['neutral', 5],['weak',2],['kink',3]],
+			social = [['resist', 7],['neutral', 8],['weak',3],['kink',0.1]],
+			praise = [['resist', 1],['neutral', 1],['weak',5],['kink',5]],
+			magic = [['resist', 10],['neutral', 3],['weak',10],['kink',5]],
+		},
 	},
 	Dryad = {
 		code = "Dryad",
@@ -435,6 +491,14 @@ var racelist = {
 			tail = ['demon'],
 			},
 		global_weight = 5,
+		training_disposition = {
+			humiliation = [['resist', 10],['neutral', 10],['weak',1],['kink',1]],
+			physical = [['resist', 5],['neutral', 5],['weak',5],['kink',3]],
+			sexual = [['resist', 7],['neutral', 5],['weak',2],['kink',5]],
+			social = [['resist', 7],['neutral', 8]],
+			praise = [['resist', 5],['neutral', 5],['weak',1],['kink',3]],
+			magic = [['resist', 5],['neutral', 3],['weak',5],['kink',2]],
+		},
 	},
 	Seraph = {
 		code = "Seraph",
@@ -463,6 +527,14 @@ var racelist = {
 			beard = ['no'],
 			},
 		global_weight = 5,
+		training_disposition = {
+			humiliation = [['resist', 1],['neutral', 1],['weak',5],['kink',3]],
+			physical = [['resist', 5],['neutral', 5],['weak',5]],
+			sexual = [['neutral', 4],['weak',7],['kink',1]],
+			social = [['neutral', 5],['weak',5],['kink',1]],
+			praise = [['resist', 5],['neutral', 5],['weak',1]],
+			magic = [['resist',1],['neutral', 5],['weak',5],['kink',1]],
+		},
 	},
 	Dragonkin = {
 		code = "Dragonkin",
@@ -496,6 +568,14 @@ var racelist = {
 			wings = ['dragon'],
 			},
 		global_weight = 5,
+		training_disposition = {
+			humiliation = [['resist', 10],['neutral', 10],['weak',1]],
+			physical = [['resist', 10],['neutral', 10],['weak',1],['kink',3]],
+			sexual = [['resist', 10],['neutral', 10],['weak',5],['kink',2]],
+			social = [['resist', 10],['neutral', 10],['weak',1]],
+			praise = [['resist', 5],['neutral', 5],['kink',1]],
+			magic = [['resist', 1],['neutral', 2],['weak',10],['kink',5]],
+		},
 	},
 	Centaur = {
 		code = "Centaur",
@@ -784,6 +864,14 @@ var racelist = {
 			lips = ['beastkin_cry','beastkin_open','beastkin_smile']
 			},
 		global_weight = 10,
+		training_disposition = {
+			humiliation = [['resist', 10],['neutral', 10],['weak',3],['kink',1]],
+			physical = [['resist', 5],['neutral', 5],['weak',5],['kink',1]],
+			sexual = [['resist', 1],['neutral', 5],['weak',5],['kink',2]],
+			social = [['resist', 7],['neutral', 8],['weak',3],['kink',1]],
+			praise = [['resist', 5],['neutral', 10],['weak',3],['kink',3]],
+			magic = [['neutral', 3],['weak',8],['kink',1]],
+		},
 	},
 	BeastkinWolf = {
 		code = "BeastkinWolf",
@@ -820,6 +908,14 @@ var racelist = {
 			lips = ['beastkin_cry','beastkin_open','beastkin_smile']
 			},
 		global_weight = 10,
+		training_disposition = {
+			humiliation = [['resist', 10],['neutral', 10],['weak',3],['kink',1]],
+			physical = [['resist', 5],['neutral', 5],['weak',5],['kink',2]],
+			sexual = [['resist', 7],['neutral', 5],['weak',2],['kink',2]],
+			social = [['resist', 7],['neutral', 8],['weak',3],['kink',3]],
+			praise = [['resist', 5],['neutral', 10],['weak',3],['kink',1]],
+			magic = [['neutral', 3],['weak',8],['kink',1]],
+		},
 	},
 	BeastkinFox = {
 		code = "BeastkinFox",
@@ -856,6 +952,14 @@ var racelist = {
 			lips = ['beastkin_cry','beastkin_open','beastkin_smile']
 			},
 		global_weight = 10,
+		training_disposition = {
+			humiliation = [['resist', 10],['neutral', 10],['weak',3],['kink',1]],
+			physical = [['resist', 5],['neutral', 5],['weak',5],['kink',0.2]],
+			sexual = [['resist', 7],['neutral', 5],['weak',2],['kink',4]],
+			social = [['resist', 7],['neutral', 8],['weak',3],['kink',1]],
+			praise = [['resist', 5],['neutral', 10],['weak',3],['kink',2]],
+			magic = [['neutral', 3],['weak',8],['kink',1]],
+		},
 	},
 	BeastkinBunny = {
 		code = "BeastkinBunny",
@@ -890,6 +994,14 @@ var racelist = {
 			lips = ['beastkin_cry','beastkin_open','beastkin_smile']
 			},
 		global_weight = 10,
+		training_disposition = {
+			humiliation = [['resist', 10],['neutral', 10],['weak',3],['kink',1]],
+			physical = [['neutral', 5],['weak',5],['kink',1]],
+			sexual = [['neutral', 2],['weak',5],['kink',5]],
+			social = [['resist', 7],['neutral', 8],['weak',3],['kink',2]],
+			praise = [['resist', 5],['neutral', 10],['weak',3],['kink',0.1]],
+			magic = [['neutral', 3],['weak',8],['kink',1]],
+		},
 	},
 	BeastkinTanuki = {
 		code = "BeastkinTanuki",
@@ -924,6 +1036,14 @@ var racelist = {
 			lips = ['beastkin_cry','beastkin_open','beastkin_smile']
 			},
 		global_weight = 10,
+		training_disposition = {
+			humiliation = [['resist', 10],['neutral', 10],['weak',3],['kink',1]],
+			physical = [['resist', 5],['neutral', 5],['weak',5],['kink',0.2]],
+			sexual = [['resist', 7],['neutral', 5],['weak',2],['kink',2]],
+			social = [['neutral', 8],['weak',3],['kink',3]],
+			praise = [['resist', 5],['neutral', 10],['weak',3],['kink',1]],
+			magic = [['neutral', 3],['weak',8],['kink',1]],
+		},
 	},
 	HalfkinCat = {
 		code = "HalfkinCat",
@@ -953,6 +1073,14 @@ var racelist = {
 			ears = ['cat'],
 			},
 		global_weight = 10,
+		training_disposition = {
+			humiliation = [['resist', 10],['neutral', 10],['weak',3],['kink',1]],
+			physical = [['resist', 5],['neutral', 5],['weak',5],['kink',1]],
+			sexual = [['resist', 1],['neutral', 5],['weak',5],['kink',2]],
+			social = [['resist', 7],['neutral', 8],['weak',3],['kink',1]],
+			praise = [['resist', 5],['neutral', 10],['weak',3],['kink',3]],
+			magic = [['neutral', 3],['weak',8],['kink',1]],
+		},
 	},
 	HalfkinWolf = {
 		code = "HalfkinWolf",
@@ -982,6 +1110,14 @@ var racelist = {
 			ears = ['wolf'],
 			},
 		global_weight = 10,
+		training_disposition = {
+			humiliation = [['resist', 10],['neutral', 10],['weak',3],['kink',1]],
+			physical = [['resist', 5],['neutral', 5],['weak',5],['kink',2]],
+			sexual = [['resist', 7],['neutral', 5],['weak',2],['kink',2]],
+			social = [['resist', 7],['neutral', 8],['weak',3],['kink',3]],
+			praise = [['resist', 5],['neutral', 10],['weak',3],['kink',1]],
+			magic = [['neutral', 3],['weak',8],['kink',1]],
+		},
 	},
 	HalfkinFox = {
 		code = "HalfkinFox",
@@ -1011,6 +1147,14 @@ var racelist = {
 			ears = ['fox'],
 			},
 		global_weight = 10,
+		training_disposition = {
+			humiliation = [['resist', 10],['neutral', 10],['weak',3],['kink',1]],
+			physical = [['resist', 5],['neutral', 5],['weak',5],['kink',0.2]],
+			sexual = [['resist', 7],['neutral', 5],['weak',2],['kink',4]],
+			social = [['resist', 7],['neutral', 8],['weak',3],['kink',1]],
+			praise = [['resist', 5],['neutral', 10],['weak',3],['kink',2]],
+			magic = [['neutral', 3],['weak',8],['kink',1]],
+		},
 	},
 	HalfkinBunny = {
 		code = "HalfkinBunny",
@@ -1039,6 +1183,14 @@ var racelist = {
 			ears = ['bunny_standing','bunny_drooping', 'bunny'],
 			},
 		global_weight = 10,
+		training_disposition = {
+			humiliation = [['resist', 10],['neutral', 10],['weak',3],['kink',1]],
+			physical = [['neutral', 5],['weak',5],['kink',1]],
+			sexual = [['neutral', 2],['weak',5],['kink',5]],
+			social = [['resist', 7],['neutral', 8],['weak',3],['kink',2]],
+			praise = [['resist', 5],['neutral', 10],['weak',3],['kink',0.1]],
+			magic = [['neutral', 3],['weak',8],['kink',1]],
+		},
 	},
 	HalfkinTanuki = {
 		code = "HalfkinTanuki",
@@ -1067,6 +1219,14 @@ var racelist = {
 			ears = ['tanuki'],
 			},
 		global_weight = 10,
+		training_disposition = {
+			humiliation = [['resist', 10],['neutral', 10],['weak',3],['kink',1]],
+			physical = [['resist', 5],['neutral', 5],['weak',5],['kink',0.2]],
+			sexual = [['resist', 7],['neutral', 5],['weak',2],['kink',2]],
+			social = [['neutral', 8],['weak',3],['kink',3]],
+			praise = [['resist', 5],['neutral', 10],['weak',3],['kink',1]],
+			magic = [['neutral', 3],['weak',8],['kink',1]],
+		},
 	},
 	
 	
@@ -1100,6 +1260,14 @@ var racelist = {
 			beard = ['no'],
 			},
 		global_weight = 8,
+		training_disposition = {
+			humiliation = [['resist', 10],['neutral', 10],['weak',3],['kink',1]],
+			physical = [['neutral', 2],['weak',5],['kink',1]],
+			sexual = [['resist', 7],['neutral', 5],['weak',2],['kink',2]],
+			social = [['resist', 7],['neutral', 8],['weak',3],['kink',1]],
+			praise = [['resist', 5],['neutral', 10],['weak',3],['kink',1]],
+			magic = [['neutral', 3],['weak',8],['kink',3]],
+		},
 	},
 	
 }

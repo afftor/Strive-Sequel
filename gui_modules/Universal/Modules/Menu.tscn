@@ -552,8 +552,9 @@ __meta__ = {
 [node name="RichTextLabel" type="RichTextLabel" parent="NewGamePanel"]
 margin_left = 310.0
 margin_top = 119.0
-margin_right = 629.0
+margin_right = 678.0
 margin_bottom = 447.0
+theme = ExtResource( 3 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true

@@ -66,12 +66,14 @@ func set_list_mode_inventory():
 
 
 func close_inventory(state):
+	input_handler.emit_signal('update_ragdoll')
+	gui_controller.emit_signal("screen_changed")
 	if gui_controller.slavepanel == null:
 		gui_controller.slavepanel = input_handler.get_spec_node(input_handler.NODE_SLAVEMODULE)
 	gui_controller.current_screen = gui_controller.slavepanel
 	gui_controller.previous_screen = gui_controller.mansion
-	gui_controller.slavepanel.set_state(state)
 	gui_controller.slavepanel.show()
+	gui_controller.slavepanel.set_state(state)
 	self.hide()
 	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.slavepanel, 0.3)
 	input_handler.get_spec_node(input_handler.NODE_SLAVEMODULE).SummaryModule.get_node("GridContainer/GearButton").set_pressed(false)
@@ -81,7 +83,7 @@ func update():
 	if selectedhero == null:
 		selectedhero = input_handler.interacted_character
 	list_mode = "inventory"
-	if ResourceScripts.game_res.upgrades.has("tattoo_set") and ResourceScripts.game_res.upgrades.tattoo_set > 0 and selectedhero.has_status('body_mod'):
+	if ResourceScripts.game_res.upgrades.has("tattoo_set") and ResourceScripts.game_res.upgrades.tattoo_set > 0 and selectedhero.has_status('body_mod'): #change to correct status tag
 		GearModule.get_node("TattooButton").visible = list_mode != "tattoo"
 		GearModule.get_node("InventoryButton").visible = !GearModule.get_node("TattooButton").is_visible()
 	else:

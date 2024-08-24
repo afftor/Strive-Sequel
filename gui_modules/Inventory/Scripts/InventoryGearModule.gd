@@ -116,12 +116,14 @@ func highlight_avalible_slots(slots: Array):
 
 func build_gear_panel():
 	var selectedhero = input_handler.interacted_character
+	var editable = true
 	if selectedhero != null:
 		var stored_image = selectedhero.get_stored_body_image()
 		if stored_image != null:
 			$BodyImage.texture = stored_image
 			$BodyImage.visible = true
 			$ragdoll.visible = false
+			editable = false
 		elif !input_handler.globalsettings.disable_paperdoll:
 			$BodyImage.visible = false
 			$ragdoll.visible = true
@@ -132,7 +134,16 @@ func build_gear_panel():
 			$BodyImage.texture = selectedhero.get_body_image()
 			$BodyImage.visible = true
 			$ragdoll.visible = false
+			editable = false
 #		$BodyImage.texture = selectedhero.get_body_image()
+		if editable:
+			$recolor_buttons/base.visible = selectedhero.equipment.gear.chest != null or selectedhero.get_stat('sex') != 'male'
+			$recolor_buttons/lower.visible = true
+			$recolor_buttons/underwear.visible = selectedhero.equipment.gear.underwear != null
+			$recolor_buttons/weapon.visible = selectedhero.equipment.gear.rhand != null
+		else:
+			for i in $recolor_buttons.get_children():
+				i.visible = false
 		for i in selectedhero.equipment.gear:
 			$InventorySlots.get_node(i + "/qualitycolor").hide()
 			$InventorySlots.get_node(i + "/icon2").visible = selectedhero.equipment.gear[i] == null

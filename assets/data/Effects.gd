@@ -1,6 +1,8 @@
 extends Node
 var effects = {
 }
+
+var effect_nolog = ['commander']
 #to fix EFFECT TAGS TO TEMPLATE
 #'positive'/'negative' - the widest classification (to most global cleaning like bard2 skill effect)
 #'buff'/'debuff' - additional markings for common effect removal effects (like purge) (and maybe add two more for a state effects)
@@ -337,7 +339,7 @@ var effect_table = {
 	},
 	e_tr_pet = {
 		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_pros', value = 0.25}],
+		atomic = [{type = 'stat_add_p', stat = 'mod_pros', value = 0.20}],
 		buffs = [],
 		sub_effects = [],
 	},

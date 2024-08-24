@@ -68,7 +68,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = ['e_tr_slave'],
-		bonusstats = {damage_mod_all = -0.1, mod_collect = 0.1, mod_pros = 0.1, mod_farm = 0.1, mod_smith = -0.15, mod_alchemy = -0.15, mod_tailor = -0.15,}
+		bonusstats = {damage_mod_all = -0.1, mod_collect = 0.1, mod_pros = 0.1, mod_service = 0.1, mod_farm = 0.1, mod_smith = -0.15, mod_alchemy = -0.15, mod_tailor = -0.15,}
 	},
 	'heir' : {
 		code = 'heir',
@@ -440,7 +440,7 @@ var traits = {
 		icon = null,
 		effects = [],#'e_tr_pet'],
 		show_in_parent_stats = true,
-		bonusstats = {mod_pros = 0.25} 
+		bonusstats = {mod_pros = 0.2} 
 	}, #not used
 	sextoy = {#+50% gold from prostitution
 		code = 'sextoy',

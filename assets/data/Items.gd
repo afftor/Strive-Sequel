@@ -1429,7 +1429,7 @@ var itemlist = {
 		reqs = [{code = 'trait', trait = 'loyalty_dress_lewd', check = true}],
 		effects = [],
 		tags = [],
-		basestats = {sexuals_bonus = 15, charm_bonus = 15, mod_pros = 0.15},
+		basestats = {sexuals_bonus = 15, charm_bonus = 15, mod_pros = 0.15, mod_service = 0.15},
 	},
 	shackles = {#prevents escape if body_factor < 4; physics -25
 		#maybe still needs reworking
@@ -1677,7 +1677,7 @@ var itemlist = {
 		basestats = {atk = 3},
 	},
 	cali_heirloom_test = { #some examples added
-		code = 'cali_heirloom',
+		code = 'cali_heirloom_test',
 		name = "",
 		descript = "",
 		type = 'gear',
@@ -5441,4 +5441,27 @@ var fixed_quality_stats = {
 			effects = ['e_rare_deadly'] #not displayed in tooltip, but may be visible after equip
 		}
 	}
+}
+
+
+var amount_to_improve = { #core
+	poor = 2,
+	average = 2,
+	good = 2,
+	epic = 2,
+}
+
+var amount_to_improve_unique = { #unique
+	average = 1,
+	good = 1,
+	epic = 2,
+	legendary = 2
+}
+
+var next_quality = {
+	"": 'average',
+	poor = 'average',
+	average = 'good',
+	good = 'epic',
+	epic = 'legendary',
 }

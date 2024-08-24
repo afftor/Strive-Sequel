@@ -389,6 +389,7 @@ var TranslationDict = {
 	LOADINGTIP12 = "与你的角色约会，了解他们的性偏好（特征）",
 	LOADINGTIP13 = "在工人行会拆解装备可以让你从中提取稀有资源",
 	LOADINGTIP14 = "艾维尔明克每两周在阿利隆贩卖一次外来种族的奴隶。",
+	LOADINGTIP15 = """Character's value boosts all their service income""", # MISSING TRANSLATION
 	
 	
 	LOADLORE1NAME = "行会",
@@ -782,6 +783,7 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	ITEMFISHINGTOOLSDESCRIPT = "渔民使用的一套工具。",
 	ITEMHAMMERDESCRIPT = "一个为铁匠和建设者设计的工具。",
 	ITEMHUNT_KNIFEDESCRIPT = "猎手使用的一套工具。",
+	ITEMSHIELDDESCRIPT = """A gear for blocking in combat.""", # MISSING TRANSLATION
 
 	ITEMBASICCHEST = "胸甲",
 	ITEMROBE = "长袍",
