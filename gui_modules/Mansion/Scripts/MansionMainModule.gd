@@ -515,7 +515,7 @@ func update_sex_date_buttons():
 	
 	for i in sex_participants:
 		if i.is_master(): continue
-		if i.has_status("no_date") or !i.has_status("dating") or (i.tags.has("no_date_day") and !ResourceScripts.game_progress.unlimited_date_sex):
+		if i.has_status("no_date") or !i.has_status("relation") or (i.tags.has("no_date_day") and !ResourceScripts.game_progress.unlimited_date_sex):
 			SexSelect.get_node("DateButton").disabled = true
 
 func set_hovered_person(node, person):
@@ -551,7 +551,7 @@ func test_mode():
 		ResourceScripts.game_progress.seen_dialogues.append("PRIESTESS_SWORD_TALK_1_1")
 		ResourceScripts.game_progress.seen_dialogues.append("ALIRONCHURCHFIRSTCOME")
 		var character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
-		character.create('Orc', 'male', 'random')
+		character.create('BeastkinFox', 'male', 'random')
 		character.fill_boosters()
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
@@ -653,7 +653,7 @@ func test_mode():
 		character.fill_boosters()
 		character.set_stat('height', 'tiny')
 		character.set_stat('skin', 'grey')
-		character.add_stat('loyalty', 95)
+#		character.add_stat('loyalty', 95)
 		characters_pool.move_to_state(character.id)
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
 		character.create('Elf', 'female', 'random')
@@ -755,7 +755,7 @@ func test_mode():
 
 #		character.set_stat('loyalty', 100)
 #		character.set_stat('authority', 100)
-		character.add_stat('loyalty', 95)
+#		character.add_stat('loyalty', 95)
 		yield(get_tree(),'idle_frame')
 		character.xp_module.base_exp = 1000
 		character.mp = 10
@@ -778,7 +778,7 @@ func test_mode():
 					code = 'unique_character_changes',
 					value = 'daisy',
 					args = [
-						{code = 'loyalty', value = 150, operant = "+"},
+#						{code = 'loyalty', value = 150, operant = "+"},
 						{code = 'consent', value = 5, operant = "+"},
 						{code = 'price', value = 3000, operant = "+"},
 						{code = 'sexuals_factor', value = 2, operant = "+"},
@@ -787,11 +787,7 @@ func test_mode():
 						{code = 'sex_skills_petting', operant = "+", value = 100},
 						{code = 'sex_skills_pussy', operant = "+", value = 100},
 						{code = 'sex_skills_anal', operant = "+", value = 100},
-						{code = 'add_trait', trait = 'loyalty_sex_basic'},
-						{code = 'add_trait', trait = 'loyalty_sex_oral'},
-						{code = 'add_trait', trait = 'loyalty_sex_anal'},
 						{code = 'add_profession', profession = 'harlot'},
-						{code = "add_trait", trait = 'loyalty_sex_basic'}
 					]
 				},
 				{code = 'make_story_character', value = 'Cali'},

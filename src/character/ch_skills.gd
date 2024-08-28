@@ -274,10 +274,6 @@ func use_social_skill(s_code, target, item):
 						eff.set_args('receiver', null)
 			continue
 #		var detail_tags = []
-#		if i.damagestat == 'loyalty' and i.dmgf == 0:
-#			if parent.get_ref().has_profession('master'): 
-##				detail_tags.append('master_loyalty')
-#				i.value *= 4
 		for h in targ_fin:
 			var cached_value = i.value
 			var detail_tags = []
@@ -285,33 +281,6 @@ func use_social_skill(s_code, target, item):
 				if !h.checkreqs(i.template.receiver_reqs): continue
 			var mod = i.dmgf
 			var stat = i.damagestat
-			if stat in ['obedience', 'loyalty'] and h.has_profession('master'): continue
-			if mod == 0:
-				match stat:
-					'loyalty':
-						var skill_stat_type
-						if h.has_status('no_%s_gain' % stat) or h.has_status('no_%s_gain_temp' % stat): 
-							detail_tags.append('blocked')
-							cached_value = 0
-						if !s_skill.tags.has('no_mod'):
-							if template.tags.has('positive'): 
-								skill_stat_type = parent.get_ref().get_stat('charm_factor')
-								cached_value = round(cached_value * (0.4 + skill_stat_type*0.25))
-							skill_stat_type = h.get_stat('tame_factor')
-							if template.tags.has('negative'): 
-								skill_stat_type = target.get_stat('timid_factor')
-							cached_value = round(cached_value * (0.6 + skill_stat_type*0.4))
-					#obsolete ones
-#					'obedience':
-#						var skill_stat_type
-#						if template.tags.has('positive'): 
-#							skill_stat_type = target.get_stat('tame_factor') 
-#							if h.has_status('no_obed_gain'): 
-#								detail_tags.append('blocked')
-#								cached_value = 0
-#						if template.tags.has('negative'): skill_stat_type = target.get_stat('timid_factor')
-#						cached_value = round(cached_value * (0.9 + skill_stat_type*0.1))
-				
 			var bonusspeech = []
 			var tmp
 			if stat.begins_with('personality'):
@@ -365,12 +334,6 @@ func use_social_skill(s_code, target, item):
 				match mod:
 					0:
 						tmp = h.stat_update(stat, cached_value)
-						if stat == 'obedience':
-							if h.get_stat('obedience') >= h.get_stat('obedience_max'):
-								detail_tags.append('obed_cap') 
-						if stat == 'loyalty' and tmp > 0:
-							h.tags.push_back("no_loyalty_gain_temp")
-							h.stat_update('loyalty_total', tmp)
 						if stat  == 'lust':
 							if h.get_stat('lust') >= h.get_stat('lustmax'):
 								detail_tags.append('lust_cap')
@@ -388,32 +351,21 @@ func use_social_skill(s_code, target, item):
 				effect_text += "\n" + h.get_short_name() + ", " + statdata.statdata[stat].name
 			
 				var maxstat = 100
-				if stat in ['obedience']:
-					maxstat = h.get_stat(stat + '_max')
-				elif i.damagestat.find("factor")>=0 or stat in ['loyalty']:
+				if i.damagestat.find("factor")>=0:
 					maxstat = 0
 				elif h.get_stat(stat+'max') != null:
 					maxstat = h.get_stat(stat + "max")
 				
-				if detail_tags.has("obed_cap") && stat == 'obedience':
-					effect_text += ": Maxed" 
+				var change = '+'
+				if tmp < 0:
+					change = ''
+				effect_text += ": "
+				if maxstat != 0 && !(stat in ['consent', 'lust',]):
+					effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ("(%d)" % cached_value) +  ")"
 				else:
-					var change = '+'
-					if tmp < 0:
-						change = ''
-					effect_text += ": "
-					if maxstat != 0 && !(stat in ['obedience','consent', 'lust', 'loyalty']):
-						effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ("(%d)" % cached_value) +  ")"
-					else:
-						effect_text += change + str(floor(tmp)) 
-		#			if detail_tags.has("loyaltymaxed") && stat == 'loyalty':
-		#				effect_text += " - Maxed"
-					if detail_tags.has("lust_cap") && stat == 'lust':
-						effect_text += " - Maxed"
-					if detail_tags.has("blocked") && stat == 'obedience':
-						effect_text += ' - Is in resist mode'
-					if detail_tags.has("blocked") && stat == 'loyalty':
-						effect_text += " - Has already gained Loyalty today"
+					effect_text += change + str(floor(tmp)) 
+				if detail_tags.has("lust_cap") && stat == 'lust':
+					effect_text += " - Maxed"
 			for j in bonusspeech:
 				effect_text += "\n\n{color=aqua|"+ h.get_short_name() + "} - {random_chat=0|"+ j +"}\n"
 	if target != null and target.skills.skills_received_today.has(s_code) == false: target.skills.skills_received_today.append(s_code)

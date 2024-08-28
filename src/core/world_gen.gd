@@ -234,6 +234,8 @@ func make_slave_for_guild(slavetype, rare_races_upgrade = 0):
 				tr = i[0]
 			else:
 				tr = i
+			if !Traitdata.traits.has(tr):
+				continue #temp
 			var tdata = Traitdata.traits[tr]
 			if tdata.has('reqs') and !newslave.checkreqs(tdata.reqs): 
 				continue

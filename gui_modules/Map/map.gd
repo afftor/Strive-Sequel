@@ -565,7 +565,7 @@ func make_panel_for_character(panel, ch_id):
 	var tchar = characters_pool.get_char_by_id(ch_id)
 	set_loc_text(panel, tchar.get_full_name())
 	panel.get_node("icon").texture = tchar.get_icon_small()
-	if (tchar.predict_obed_time() <= 0) and !tchar.is_controllable(): #clearly not sure why not or - but this is used in many places
+	if !tchar.is_controllable(): 
 		panel.disabled = true
 	if tchar.get_location() == 'travel':
 		panel.disabled = true
@@ -789,7 +789,7 @@ func update_location_chars():
 			ch.visible = show_chars
 			ch.pressed = (selected_chars.has(person_id))
 			ch.disabled = (selected_loc != null and ch.get_meta('location') != selected_loc)
-			if (person.predict_obed_time() <= 0) and !person.is_controllable(): #clearly not sure why not or - but this is used in many places
+			if !person.is_controllable(): 
 				ch.disabled = true
 			if person.get_location() == 'travel':
 				ch.disabled = true
@@ -906,8 +906,6 @@ func confirm_travel():
 		var person = characters_pool.get_char_by_id(chid)
 		person.remove_from_task()
 		person.process_event(variables.TR_MOVE)
-#		if !person.is_controllable():
-#			person.add_stat('obedience', -ceil((travel_cost.obed_cost/person.travel_per_tick())))
 		if ResourceScripts.game_progress.instant_travel == false:
 			person.previous_location = person.travel.location
 			person.set_work('travel')

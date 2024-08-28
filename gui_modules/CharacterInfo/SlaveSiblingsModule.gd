@@ -6,10 +6,10 @@ var person
 
 var universal_skills = ['oral','anal','petting']
 
-onready var loyalty_panel = $UpgradesPanel/ScrollContainer/UpgradesList
+onready var loyalty_panel = $UpgradesPanel/UpgradesList
 onready var loyalty_panel_master = $UpgradesPanel/ScrollContainer2/UpgradesList2
 var loyalty_mode = true
-var loyalty_tab = 1
+var loyalty_tab = 3
 
 func _ready():
 	update()
@@ -31,8 +31,8 @@ func _ready():
 	$work_rules/ration.connect("button_down", self, "update")
 	$work_rules/ration.connect("button_up", self, "update")
 	$change_button.connect("pressed", self, 'swap_mode')
-	$change_button2.connect("pressed", self, 'swap_tab', [1])
-	$change_button3.connect("pressed", self, 'swap_tab', [2])
+#	$change_button2.connect("pressed", self, 'swap_tab', [1])
+#	$change_button3.connect("pressed", self, 'swap_tab', [2])
 	$FF.connect("pressed", self, 'show_food_filter')
 	$SlaveDietModule/close.connect("pressed", self, 'hide_food_filter')
 	loyalty_panel.root = get_parent()
@@ -70,15 +70,26 @@ func update():
 	#relatives
 	$RelativesPanel.build_relatives()
 	if person.is_master():
+		$change_button.visible = true
 		loyalty_tab = 3
-		loyalty_panel.get_parent().visible = false
+		loyalty_panel.visible = false
 		loyalty_panel_master.get_parent().visible = true
-	else:
-		if loyalty_tab == 3:
-			loyalty_tab = 1
-		loyalty_panel.get_parent().visible = true
+		loyalty_panel_master.update_upgrades_tree()
+#		setup_tab()
+		if !loyalty_mode:
+			swap_mode()
+	elif person.get_stat('slave_class') == 'slave':
+		$change_button.visible = true
+		loyalty_panel.visible = true
 		loyalty_panel_master.get_parent().visible = false
-	setup_tab()
+		loyalty_panel.person = person
+		loyalty_panel.match_state()
+		if !loyalty_mode:
+			swap_mode()
+	else:
+		$change_button.visible = false
+		if loyalty_mode:
+			swap_mode()
 #	if person.is_master():
 #		$change_button.visible = false
 #		if loyalty_mode:
@@ -88,9 +99,8 @@ func update():
 #		if !loyalty_mode:
 #			swap_mode()
 #		input_handler.ActivateTutorial("training")
-	$change_button.visible = true
-	if !loyalty_mode:
-		swap_mode()
+#	$change_button.visible = true
+	
 	input_handler.ActivateTutorial("TUTORIALLIST9")
 	
 	for i in $work_rules.get_children():
@@ -100,7 +110,8 @@ func update():
 	if person.is_master():
 		$UpgradesPanel/Label.text = tr("MASTER_POINTS") + ": " + str(ResourceScripts.game_progress.master_points)
 	else:
-		$UpgradesPanel/Label.text = tr("SLAVE_LOYALTY") + ": " + str(floor(person.get_stat("loyalty")))
+#		$UpgradesPanel/Label.text = tr("SLAVE_LOYALTY") + ": " + str(floor(person.get_stat("loyalty")))
+		$UpgradesPanel/Label.text = ""
 	#globals.connecttexttooltip($UpgradesPanel/Label, "")
 	#work_rules part
 	var luxury_rooms_taken = 0
@@ -111,12 +122,12 @@ func update():
 	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.check_work_rule("luxury")
 
 	$work_rules/luxury.visible = !person.is_master()
-	$work_rules/nudity.disabled = !person.has_status('exhibit')
+	$work_rules/nudity.disabled = !person.has_status('sexservice') #or another
 	if person != null:
 		for i in $work_rules.get_children():
 			var t = person.check_work_rule(i.name)
 			i.pressed = person.check_work_rule(i.name)
-		$work_rules/constrain.visible = !person.is_master()
+#		$work_rules/constrain.visible = !person.is_master()
 		$work_rules/contraceptive.visible = !person.check_trait('undead')
 		$work_rules/ration.visible = !person.check_trait('undead')
 	#SexSkillsControl part
@@ -302,18 +313,14 @@ func swap_mode():
 		$UpgradesPanel.visible = false
 		$RelativesPanel.visible = true
 		$change_button/Label.text = tr("SIBLINGMODULETRAININGS")
-		$change_button2.visible = false
-		$change_button3.visible = false
 	else:
 		loyalty_mode = true
 		$UpgradesPanel.visible = true
 		$RelativesPanel.visible = false
-		$change_button2.visible = (loyalty_tab != 3)
-		$change_button3.visible = (loyalty_tab != 3)
 		$change_button/Label.text = tr("SIBLINGMODULERELATIVES")
 
 
-func swap_tab(tab):
+func swap_tab(tab): #obsolete
 	if loyalty_tab != tab:
 		loyalty_tab = tab
 		setup_tab(true)
@@ -321,7 +328,7 @@ func swap_tab(tab):
 		setup_tab(false)
 
 
-func setup_tab(rebuild = true):
+func setup_tab(rebuild = true): #obsolete
 	if loyalty_tab == 3:
 		$change_button2.visible = false
 		$change_button3.visible = false

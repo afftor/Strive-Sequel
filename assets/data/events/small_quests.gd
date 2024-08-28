@@ -149,13 +149,7 @@ var data = {
 			{code = 'tag', operant = 'add', value = 'no_sex'}]}],
 		text = [ {text = "JEAN_INTRO_5_1", reqs = [], previous_dialogue_option = 1},
 		{text = "JEAN_INTRO_5_2", reqs = [], previous_dialogue_option = 2},
-		{text = "JEAN_INTRO_5_3", reqs = [], previous_dialogue_option = 3, bonus_effects = [{
-					code = 'unique_character_changes',
-					value = 'jean',
-					args = [
-						{code = 'obedience', operant = "-", value = 24},
-					]
-				}]}, ],
+		{text = "JEAN_INTRO_5_3", reqs = [], previous_dialogue_option = 3, bonus_effects = []}, ],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [
@@ -302,7 +296,6 @@ var data = {
 			value = 'cali',
 			args = [
 				{code = 'take_virginity', type = 'vaginal', partner = 'master'},
-				{code = 'obedience', operant = '-', value = 90},
 				{code = 'tag', operant = 'add', value = 'no_sex'},
 			]
 		},
@@ -403,7 +396,6 @@ var data = {
 		text = [ {text = "GOT_CALI_3_2", reqs = [], previous_dialogue_option = 2, bonus_effects = [
 			
 			{code = 'make_story_character', value = 'Cali', recruit_from_location = true}, 
-			{code = 'unique_character_changes', value = 'cali',args = [{code = 'add_trait', trait = 'loyalty_basic_servitude'}]},
 			{code = 'add_timed_event', value = "cali_sidequest_1", args = [{type = 'add_to_date', date = [1,1], hour = 2}]}, ]}, 
 		{text = "GOT_CALI_3_3", reqs = [], previous_dialogue_option = 3}, ], 
 #		common_effects = [{code = 'unique_character_changes', value = 'cali', args = [

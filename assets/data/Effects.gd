@@ -52,27 +52,9 @@ var effect_table = {
 		descript = '',
 		conditions = [{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 6}],
 		tags = ['recheck_stats', 'recheck_item'],
-		atomic = [],
+		atomic = [{type = 'stat_add', stat = 'mod_service', value = 0.25}, {type = 'stat_add', stat = 'chg_persuasion_max', value = 1}],
 		buffs = [],
-		sub_effects = [
-			{
-				type = 'trigger',
-				trigger = [variables.TR_S_CAST],
-				req_skill = true,
-				conditions = [{type = 'skill', value = ['tags', 'has', 'positive']}],
-				atomic = [],
-				buffs = [],
-				sub_effects = [
-					{
-						type = 'oneshot',
-						target = 'skill',
-						atomic = [{type = 'stat_mul', stat = 'value', value = 1.2, stats = [ 'loyalty', 'obedience']}],
-						buffs = [],
-						sub_effects = []
-					}
-				]
-			},
-		],
+		sub_effects = [],
 	},
 	e_sex6 = {
 		type = 'c_static',
@@ -101,12 +83,12 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
-	e_tame6 = {
+	e_tame6 = { #real effect is in trainings, for display only
 		type = 'c_static',
 		descript = '',
 		conditions = [{code = 'stat', stat = 'tame_factor', operant = 'gte', value = 6}],
 		tags = ['recheck_stats', 'recheck_item'],
-		atomic = [{type = 'stat_add_p', stat = 'loyalty_gain', value = 0.25}],
+		atomic = [],
 		buffs = [],
 		sub_effects = [],
 	},
@@ -204,145 +186,6 @@ var effect_table = {
 		req_skill = false,
 		sub_effects = ['e_t_hide']
 	},
-	e_tr_heir = {
-		type = 'static',
-		atomic = [
-			{type = 'stat_add_p', stat = 'obedience_drain', value = -0.5},
-			{type = 'stat_add_p', stat = 'loyalty_gain', value = 1}
-		],
-		buffs = [],
-		sub_effects = [],
-	},
-	e_tr_slave = {
-		type = 'static',
-		atomic = [
-			{type = 'stat_add_p', stat = 'loyalty_gain', value = 0.3}
-			],
-		buffs = [],
-		sub_effects = [],
-	},
-	e_tr_master = {
-		type = 'trigger',
-		trigger = [variables.TR_S_CAST],
-		req_skill = true,
-		conditions = [],
-		atomic = [],
-		buffs = [],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				atomic = [{type = 'stat_mul', stat = 'value', value = 1.3, stats = ['loyalty']}],
-				buffs = [],
-				sub_effects = []
-			}
-		],
-	},
-	e_tr_spouse = {
-		type = 'trigger',
-		trigger = [variables.TR_S_CAST],
-		req_skill = true,
-		conditions = [],
-		atomic = [],
-		buffs = [],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				atomic = [
-					{type = 'stat_mul', stat = 'value', value = 1.3, stats = ['loyalty']},
-					],
-				buffs = [],
-				sub_effects = []
-			}
-		]
-	},
-	e_tr_renown = {
-		type = 'trigger',
-		trigger = [variables.TR_S_CAST],
-		req_skill = true,
-		conditions = [],
-		atomic = [],
-		buffs = [],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				atomic = [
-					{type = 'stat_mul', stat = 'value', value = 1.5, stats = ['obedience']},
-					{type = 'stat_mul', stat = 'value', value = 1.5, stats = ['loyalty']},
-					],
-				buffs = [],
-				sub_effects = []
-			}
-		]
-	},
-	e_tr_worker = {
-		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_collect', value = 0.5}],
-		buffs = [],
-		sub_effects = [],
-	},
-	e_tr_foreman = {
-		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_collect', value = 0.33}],
-		buffs = [],
-		sub_effects = [],
-	},
-	e_tr_hunter = {
-		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_hunt', value = 0.5}, {type = 'stat_add_p', stat = 'mod_fish', value = 0.5}],
-		buffs = [],
-		sub_effects = [],
-	},
-	e_tr_smith = {
-		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_smith', value = 1.0}, {type = "stat_add_p", stat = 'mod_tailor', value = 1.0}],
-		buffs = [],
-		sub_effects = [],
-	},
-	e_tr_engi = {
-		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_build', value = 1.0}],
-		buffs = [],
-		sub_effects = [],
-	},
-	e_tr_chef = {
-		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_cook', value = 1.0}],
-		buffs = [],
-		sub_effects = [],
-	},
-	e_tr_alchemist = {
-		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_alchemy', value = 1}],
-		buffs = [],
-		sub_effects = [],
-	},
-	e_tr_cattle = {
-		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_farm', value = 0.5}],
-		buffs = [],
-		sub_effects = [],
-	},
-	e_tr_breeder = {
-		type = 'static',
-		atomic = [],
-		buffs = [],
-		sub_effects = [],
-	},
-	e_tr_harlot = {
-		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_pros', value = 0.5}],
-		buffs = [],
-		sub_effects = [],
-	},
-	e_tr_pet = {
-		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_pros', value = 0.20}],
-		buffs = [],
-		sub_effects = [],
-	},
 	e_tr_mm = {
 		type = 'static',
 		atomic = [{type = 'stat_mul', stat = 'mpmax', value = 0.5}],
@@ -397,11 +240,12 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
-	rations_food = {
-		type = 'static',
-		atomic = [{type = 'stat_add', stat = 'food_consumption', value = 3}],
+	e_brokein = {
+		type = 'oneshot',
+		target = 'owner',
+		atomic = [{type = 'remove_trait', trait = 'untrained'}],
 		buffs = [],
-		sub_effects = [],
+		sub_effects = []
 	},
 	# i think we need to display those statuses as buffs
 	e_mastermentor = {
@@ -418,25 +262,15 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'exp_gain_mod', value = 1}],
 		buffs = ['b_mastermentor'],
 	},
-	work_rule_bindings = {
-		code = 'work_rule_bindings',
-		type = 'static',
-		atomic = [
-			{type = 'stat_add_p', stat = 'obedience_drain', value = -0.5},
-			{type = 'stat_add_p', stat = 'loyalty_gain', value = -0.5},
-		],
-		buffs = [],
-		sub_effects = [],
-	},
 	work_rule_luxury = {
 		code = 'work_rule_luxury',
 		type = 'static',
 		atomic = [
-			{type = 'stat_add', stat = 'obedience_drain', value = -3},
-			{type = 'stat_add', stat = 'loyalty_gain', value = 0.5},
+			{type = 'stat_add', stat = 'exp_gain_mod', value = 0.05},
+			{type = 'stat_add', stat = 'productivity', value = 0.05},
 		],
 		buffs = [],
-		sub_effects = [],
+		sub_effects = [rebuild_simple_dot(['loyalty'], [0.5], variables.TR_DAY),],
 	},
 	work_rule_ration = {
 		code = 'work_rule_ration',
@@ -444,16 +278,6 @@ var effect_table = {
 		atomic = [
 			{type = 'stat_add_p', stat = 'productivity', value = 0.15},
 			{type = 'stat_add', stat = 'food_consumption', value = 3},
-		],
-		buffs = [],
-		sub_effects = [],
-	},
-	work_rule_constrain = {
-		code = 'work_rule_constrain',
-		type = 'static',
-		atomic = [
-			{type = 'stat_add_p', stat = 'productivity', value = 0.15},
-			{type = 'stat_add', stat = 'obedience_drain', value = 6},
 		],
 		buffs = [],
 		sub_effects = [],
@@ -472,7 +296,6 @@ var effect_table = {
 		code = 'work_rule_masturbation',
 		type = 'static',
 		atomic = [
-			{type = 'stat_add', stat = 'obedience_drain', value = 2},
 			{type = 'stat_add_p', stat = 'lusttick', value = 0.15},
 		],
 		buffs = [],
@@ -699,34 +522,6 @@ var effect_table = {
 		sub_effects = ['e_s_bleed_new'],
 		args = [{obj = 'app_obj'}, {obj = 'app_obj'}]
 	},
-	e_s_dominate = {
-		type = 'oneshot',
-		target = 'target',
-		tags = [],
-		args = [],
-		atomic = [
-			{type = 'add_trait', trait = 'loyalty_basic_servitude'},
-			{type = 'add_trait', trait = 'loyalty_dating'},
-			{type = 'add_trait', trait = 'loyalty_combatant'},
-			{type = 'add_trait', trait = 'loyalty_dress_work'},
-			{type = 'add_trait', trait = 'loyalty_adv_servitude'},
-			{type = 'add_trait', trait = 'loyalty_callmaster'},
-#			{type = 'add_trait', trait = 'loyalty_sex_basic'},
-		],
-	},
-#	e_s_dominate = {
-#		type = 'temp_s',
-#		target = 'target',
-#		name = 'soul_bind',
-#		stack = 1,
-#		tick_event = [],
-#		rem_event = [variables.TR_DAY, variables.TR_DEATH],
-#		tags = ['sex_basic', 'combatant', 'basic_servitude', 'adv_servitude', 'dating', 'dress_work', 'callmaster' ],
-#		args = [],
-#		sub_effects = [],
-#		atomic = [],
-#		buffs = ['b_soulbind'],
-#	},
 	e_tr_warlock = {
 		type = 'trigger',
 		trigger = [variables.TR_CAST],
@@ -757,21 +552,17 @@ var effect_table = {
 		type = 'trigger',
 		trigger = [variables.TR_KILL],
 		req_skill = false,
-		conditions = [],
+		conditions = [{type = 'random', value = 0.3}],
 		atomic = [],
 		buffs = [],
 		args = [],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'owner',
-				args = [],
-				atomic = [
-					{type = 'stat_add', stat = 'loyalty', value = ['random', 2, 4]},
-					],
-				buffs = [],
-				sub_effects = []
-			}
+		sub_effects = [],
+		modal_sub_effects = [
+			rebuild_oneshot_addstat('atk', 1),
+			rebuild_oneshot_addstat('matk', 1),
+			rebuild_oneshot_addstat('mpmax', 1),
+			rebuild_oneshot_addstat('hpmax', 1),
+			rebuild_oneshot_addstat('hitrate', 1),
 		]
 	},
 	e_tr_witch1 = {
@@ -817,6 +608,20 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [{type = 'disable'}],
 		buffs = ['b_soulbind'],
+	},
+	e_s_dayoff = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'dayoff',
+		stack = 1,
+		duration = 4,
+		tick_event = [variables.TR_TICK],
+		rem_event = [variables.TR_DEATH],
+		tags = [],
+		args = [],
+		sub_effects = [],
+		atomic = [{type = 'disable'}],
+		buffs = ['b_dayoff'],
 	},
 	
 	e_tr_witcrit = {
@@ -975,81 +780,7 @@ var effect_table = {
 #		],
 #		buffs = ['b_charm'],
 #	},
-	#shackles effects for now have the same bug as shield effects in displaced and here - they don't remove all previous shackles effects before applying (so on breaking shackles removing the first effect reverts shackles_chance to null and removing the second effect reverts this chance to resulting chance of the first effect), this part needs to be fixed after testing before the final version. but for test purpose current version is ok, cause this bug have controlled appearance
-#	e_s_shackles1 = {
-#		type = 'trigger',
-#		trigger = [variables.TR_POSTDAMAGE],
-#		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-#		req_skill = true,
-#		sub_effects = ['e_shackles1'],
-#		args = [{obj = 'parent', param = 'target'}, {obj = 'parent', param = 'caster'}],#[target, caster]
-#		buffs = []
-#	},
-#	e_shackles1 = {
-#		type = 'temp_s',
-#		target = 'target',
-#		name = 'shackles',
-#		rem_event = variables.TR_SHACKLES_OFF,
-#		stack = 1,
-#		tags = [],
-#		sub_effects = [],
-#		args = [{obj = 'parent_arg_get', index = 0, param = 'magic_factor'}, {obj = 'parent_arg_get', index = 1, param = 'magic_factor'}],#[target.magic_factor, caster.magic_factor]
-#		atomic = ['a_shackles_1'],
-#		buffs = ['b_shackles'],
-#	},
-	e_shackles = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'shackles',
-		rem_event = variables.TR_SHACKLES_OFF,
-		stack = 1,
-		tags = ['shackles'],
-		sub_effects = [],
-		args = [],
-		atomic = [
-			{type = 'stat_add', stat = 'obedience_drain', value = -6},
-			{type = 'stat_add', stat = 'loyalty_gain', value = -3},
-			{type = 'stat_add', stat = 'obedience_max', value = 50},
-		],
-		buffs = ['b_shackles'],
-	},
-	e_shackles2 = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'shackles2',
-		rem_event = variables.TR_SHACKLES_OFF,
-		stack = 1,
-		tags = ['shackles'],
-		sub_effects = [],
-		args = [],
-		atomic = [
-			{type = 'stat_add', stat = 'obedience_drain', value = -10},
-			{type = 'stat_add', stat = 'loyalty_gain', value = -3},
-			{type = 'stat_add', stat = 'obedience_max', value = 100},
-		],
-		buffs = ['b_shackles'],
-	},
-#	e_s_shackles2 = {
-#		type = 'trigger',
-#		trigger = [variables.TR_POSTDAMAGE],
-#		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-#		req_skill = true,
-#		sub_effects = ['e_shackles2'],
-#		args = [{obj = 'parent', param = 'target'}, {obj = 'parent', param = 'caster'}],#[target, caster]
-#		buffs = []
-#	},
-#	e_shackles2 = {
-#		type = 'temp_s',
-#		target = 'target',
-#		name = 'shackles',
-#		rem_event = variables.TR_SHACKLES_OFF,
-#		stack = 1,
-#		tags = [],
-#		sub_effects = [],
-#		args = [{obj = 'parent_arg_get', index = 0, param = 'magic_factor'}, {obj = 'parent_arg_get', index = 1, param = 'magic_factor'}],#[target.magic_factor, caster.magic_factor]
-#		atomic = ['a_shackles_2'],
-#		buffs = ['b_great_shackles'],
-#	},
+	
 	e_t_hardwork = {
 		type = 'temp_s',
 		target = 'receiver',
@@ -1124,9 +855,8 @@ var effect_table = {
 		sub_effects = [],
 		tags = [],
 		atomic = [
-#			{type = 'stat_add_p', stat = 'productivity', value = 0.1}, or not comment
-			{type = 'stat_add', stat = 'obedience_drain', value = -1},
-			{type = 'stat_add', stat = 'loyalty_gain', value = 0.5},
+			{type = 'stat_add_p', stat = 'productivity', value = 0.05},
+			{type = 'stat_add', stat = 'exp_gain_mod', value = 0.05},
 		],
 		buffs = [
 			{
@@ -1134,7 +864,7 @@ var effect_table = {
 				description = "TRAITEFFECTFAVFOOD",
 				limit = 1,
 				t_name = 'food_like',
-				mansion_only = true,
+				mansion_only = true, #mb remove
 			}
 		],
 	},
@@ -1329,180 +1059,7 @@ var effect_table = {
 			}
 		],
 	},
-	e_t_seduce = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'seduce',
-		tick_event = variables.TR_TICK,
-		duration = 20,
-		stack = 1,
-#		no_escape = true,
-		tags = ['s_dur_add'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'obedience_drain', value = -7},
-		],
-		buffs = [
-			{
-				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-				description = "TRAITEFFECTSEDUCE",  #2fix
-				limit = 1,
-				t_name = 'seduce',
-				mansion_only = true,
-			}
-		],
-	},
-	e_t_greatseduce = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'seduce1',
-		tick_event = variables.TR_TICK,
-		duration = 20,
-		stack = 1,
-		no_escape = true,
-		tags = ['s_dur_add'],
-		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'obedience_drain', value = -9},],
-		buffs = [
-			{
-				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-				description = "TRAITEFFECTGREATSEDUCE", #2fix
-				limit = 1,
-				t_name = 'seduce',
-				mansion_only = true,
-			}
-		],
-	},
-	e_t_allure1 = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'allure1',
-		tick_event = variables.TR_TICK,
-		duration = 20,
-		stack = 1,
-		tags = ['s_dur_add'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'obedience_drain', value = -5},
-			{type = 'stat_add', stat = 'loyalty_gain', value = 1},
-			],
-		buffs = [
-			{
-				icon = "res://assets/images/iconsskills/Charm.png",
-				description = "TRAITEFFECTALLURE",#2fix
-				limit = 1,
-				t_name = 'allure',
-				mansion_only = true,
-			}
-		],
-	},
-	e_t_sedate = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'sedate',
-		tick_event = variables.TR_TICK,
-		duration = 8,
-		stack = 1,
-		tags = ['s_dur_add'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'obedience_drain', value = -10},
-			],
-		buffs = [
-			{
-				icon = "res://assets/images/iconsskills/Charm.png", #2fix
-				description = "TRAITEFFECTSEDATED",#2fix
-				limit = 1,
-				t_name = 'sedate',
-				mansion_only = true,
-			}
-		],
-	},
-	e_t_fear = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'fear',
-		tick_event = variables.TR_TICK,
-		duration = 16,
-		stack = 1,
-		tags = ['s_dur_add'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'obedience_drain', value = -6},
-			{type = 'stat_add', stat = 'loyalty_gain', value = -1},
-			],
-		buffs = [
-			{
-				icon = "res://assets/images/iconsskills/Charm.png", #2fix
-				description = "TRAITEFFECTFEAR", #2fix
-				limit = 1,
-				t_name = 'fear',
-				mansion_only = true,
-			}
-		],
-	},
-	e_s_mindcontrol = {
-		type = 'trigger',
-		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-		req_skill = true,
-		args = [{obj = 'parent', param = 'caster'}],
-		sub_effects = ['e_t_mindcontrol_t', 'e_t_mindcontrol_c'],
-		buffs = []
-	},
-	e_t_mindcontrol_t = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'mindcontrol',
-		stack = 0,#stacks unlimitely, control this by casting checks
-		no_escape = true,
-		tags = ['mindcontrol'],
-		args = [{obj = 'parent_arg_get', index = 0, param = 'id'}],
-		sub_effects = ['e_t_mindcontrol'],
-		atomic = [
-			{type = 'stat_add', stat = 'wits_bonus', value = -100},
-			{type = 'stat_add', stat = 'charm_bonus', value = -50},
-		],
-		buffs = [
-			{
-				icon = "res://assets/images/iconsskills/Mind_Control.png",
-				description = "TRAITEFFECTMINDCONTROLLED",
-				limit = 1,
-				t_name = '',
-				mansion_only = true,
-			}],
-	},
-	e_t_mindcontrol_c = {
-		type = 'temp_s',
-		target = 'caster',
-		name = 'mindcontrol_caster',
-		stack = 0,
-		tags = [],
-		sub_effects = ['e_t_mindcontrol'],
-		atomic = [],
-		buffs = [],
-	},
-	e_t_mindcontrol = {
-		type = 'trigger',
-		conditions = [],
-		trigger = [variables.TR_MOVE, variables.TR_DEATH, variables.TR_REMOVE],
-		req_skill = false,
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'self',
-				execute = 'remove_siblings'
-			},
-		],
-		buffs = []
-	},
-	e_t_stopcontrol = {
-		type = 'oneshot',
-		target = 'target',
-		atomic = [{type = 'remove_effect', value = 'mindcontrol'}],
-		buffs = [],
-		sub_effects = [],
-	},
+	
 	e_s_undead = {
 		type = 'trigger',
 		trigger = [variables.TR_POSTDAMAGE],
@@ -1563,28 +1120,6 @@ var effect_table = {
 				description = "TRAITEFFECTCOMMANDED",
 				limit = 1,
 				t_name = 'command'
-			}
-		],
-	},
-	e_t_serve = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'serve',
-		tick_event = variables.TR_TICK,
-		duration = 20,
-		stack = 1,
-		tags = [],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'loyalty_gain', value = 1},
-		],
-		buffs = [
-			{
-				icon = "res://assets/images/iconsskills/Charm.png",
-				description = "TRAITEFFECTSERVING",#2fix
-				limit = 1,
-				t_name = 'serve',
-				mansion_only = true,
 			}
 		],
 	},
@@ -2908,8 +2443,8 @@ var effect_table = {
 	curse_decline_2 = rebuild_stat_bonus('exp_gain_mod', -0.5),
 	curse_fragility_1 = rebuild_stat_bonus('hpmax', -0.2, null, 'stat_add_p'),
 	curse_fragility_2 = rebuild_stat_bonus('hpmax', -0.4, null, 'stat_add_p'),
-	curse_distrust_1 = rebuild_stat_bonus('obedience_drain', 0.25, null, 'stat_add_p'),
-	curse_distrust_2 = rebuild_stat_bonus('obedience_drain', 0.5, null, 'stat_add_p'),
+#	curse_distrust_1 = rebuild_stat_bonus('obedience_drain', 0.25, null, 'stat_add_p'),
+#	curse_distrust_2 = rebuild_stat_bonus('obedience_drain', 0.5, null, 'stat_add_p'),
 	
 #	enchant_sharp_1 = {
 #		type = 'static',
@@ -3107,67 +2642,6 @@ var effect_table = {
 			},
 		]
 	},
-	
-#	enchant_carapace_1 = { #armor bonus is not here
-#		type = 'static',
-#		atomic = [],
-#		buffs = ['b_enchant'],
-#		sub_effects = [
-#			rebuild_stat_bonus('resist_fire', 2),
-#			rebuild_stat_bonus('resist_air', 2),
-#			rebuild_stat_bonus('resist_water', 2),
-#			rebuild_stat_bonus('resist_earth', 2),
-#		],
-#		args = []
-#	},
-#	enchant_carapace_2 = { #armor bonus is not here
-#		type = 'static',
-#		atomic = [],
-#		buffs = ['b_enchant'],
-#		sub_effects = [
-#			rebuild_stat_bonus('resist_fire', 4),
-#			rebuild_stat_bonus('resist_air', 4),
-#			rebuild_stat_bonus('resist_water', 4),
-#			rebuild_stat_bonus('resist_earth', 4),
-#		],
-#		args = []
-#	},
-#	enchant_carapace_3 = { #armor bonus is not here
-#		type = 'static',
-#		atomic = [],
-#		buffs = ['b_enchant'],
-#		sub_effects = [
-#			rebuild_stat_bonus('resist_fire', 6),
-#			rebuild_stat_bonus('resist_air', 6),
-#			rebuild_stat_bonus('resist_water', 6),
-#			rebuild_stat_bonus('resist_earth', 6),
-#		],
-#		args = []
-#	},
-#	enchant_carapace_4 = { #armor bonus is not here
-#		type = 'static',
-#		atomic = [],
-#		buffs = ['b_enchant'],
-#		sub_effects = [
-#			rebuild_stat_bonus('resist_fire', 8),
-#			rebuild_stat_bonus('resist_air', 8),
-#			rebuild_stat_bonus('resist_water', 8),
-#			rebuild_stat_bonus('resist_earth', 8),
-#		],
-#		args = []
-#	},
-#	enchant_carapace_5 = { #armor bonus is not here
-#		type = 'static',
-#		atomic = [],
-#		buffs = ['b_enchant'],
-#		sub_effects = [
-#			rebuild_stat_bonus('resist_fire', 10),
-#			rebuild_stat_bonus('resist_air', 10),
-#			rebuild_stat_bonus('resist_water', 10),
-#			rebuild_stat_bonus('resist_earth', 10),
-#		],
-#		args = []
-#	},
 	enchant_vampirism_1 = {
 		type = 'static',
 		atomic = [],
@@ -3467,53 +2941,6 @@ var effect_table = {
 		}],
 		buffs = []
 	},
-	#healer slave
-	e_tr_healerslave = {
-		type = 'trigger',
-		req_skill = true,
-		trigger = [variables.TR_HIT],
-		reset = [variables.TR_CAST],
-		conditions = [
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{type = 'skill', value = ['tags', 'has', 'heal']}
-			],
-		buffs = [],
-		args = [{obj = 'app_obj', param = 'slave_spec_level', dynamic = true}],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				args = [{obj = 'parent_args', param = 0}],
-				atomic = [
-					{type = 'stat_mul', stat = 'value', value = [[['parent_args', 0], '*', 0.02], '+', 1.0]}
-				],
-				buffs = [],
-				sub_effects = []
-			}
-		],
-		descript = "HEALERSLAVETRAITDESCRIPT",
-	},
-	e_tr_manager = {
-		type = 'trigger',
-		trigger = [variables.TR_S_CAST],
-		req_skill = true,
-		conditions = [],
-		atomic = [],
-		buffs = [],
-		args = [{obj = 'app_obj', param = 'slave_spec_level', dynamic = true}],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				args = [{obj = 'parent_args', param = 0}],
-				atomic = [{type = 'stat_mul', stat = 'value', stats = [ 'loyalty', 'obedience'], value = [[['parent_args', 0], '*', 0.03], '+', 1.0]}],
-				buffs = [],
-				sub_effects = []
-			}
-		],
-		descript = "MANAGERSLAVETRAITDESCRIPT",
-	},
-	e_tr_sorcerer = rebuild_stat_bonus('matk', 0.35, null, 'stat_add_p'),
 	#statuses 
 	e_s_burn_new = {
 		type = 'temp_s',
@@ -4467,38 +3894,9 @@ var effect_table = {
 		}]
 	},
 	#items
-	e_i_shackles = {
-		type = 'c_static',
-		descript = 'Prevents escape if Physics Factor less than 4.',
-		conditions = [{code = 'stat', stat = 'physics_factor', operant = 'lt', value = 4}],
-		tags = ['recheck_stats', 'recheck_item'],
-		no_escape = true,
-		atomic = [],
-		buffs = [],
-		sub_effects = [],
-	},
-#	e_i_shackles_obed = {
-#		type = 'c_static',
-#		descript = 'Reduce Obedience drain by 75%',
-#		conditions = [{code = 'stat', stat = 'physics_factor', operant = 'lt', value = 4}],
-#		tags = ['recheck_stats', 'recheck_item'],
-#		atomic = [
-#		{type = 'stat_mul', stat = 'obDrainReduction', value = 0.25}
-#		],
-#		buffs = [],
-#		sub_effects = [],
-#	},
-#	e_i_pet_suit = {
-#		type = 'static',
-##		conditions = [],
-#		descript = "Obedience Drain is increased by 20%.",
-#		tags = ['recheck_class', 'recheck_item'], #useless
-#		atomic = [
-#		{type = 'stat_add', stat = 'obDrainIncrease', value = 0.2},
-#		],
-#		buffs = [],
-#		sub_effects = [],
-#	},
+	e_i_shackles = rebuild_simple_dot(['loyalty', 'spirit'], [1, -1], variables.TR_DAY),
+	e_i_handcuffs = rebuild_simple_dot(['loyalty', 'spirit'], [0.5, -0.5], variables.TR_DAY),
+	e_i_collar = rebuild_simple_dot(['loyalty', 'spirit'], [5, -5], variables.TR_DAY),
 	e_i_pet_suit_bonus = {
 		type = 'c_static',
 		conditions = [{code = 'has_profession', profession = 'pet', check = true}],
@@ -4506,30 +3904,8 @@ var effect_table = {
 		tags = ['recheck_class', 'recheck_item'],
 		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 10}],
 		buffs = [],
-		sub_effects = ['e_pet_suit_bonus_skill'],
+		sub_effects = [],
 	},
-#	e_maid_dress_effect = {
-#		type = 'static',
-##		conditions = [],
-#		descript = "Obedience Drain -30%",
-#		tags = [],
-#		atomic = [
-#		{type = 'stat_mul', stat = 'obDrainReduction', value = 0.7},
-#		],
-#		buffs = [],
-#		sub_effects = [],
-#	},
-#	e_i_handcuffs_obed = {
-#		type = 'static',
-##		conditions = [],
-#		descript = "Obedience Drain -15%",
-#		tags = [],
-#		atomic = [
-#		{type = 'stat_mul', stat = 'obDrainReduction', value = 0.85},
-#		],
-#		buffs = [],
-#		sub_effects = [],
-#	},
 	e_worker_outfit_effect = {
 		type = 'static',
 #		conditions = [],
@@ -4569,23 +3945,6 @@ var effect_table = {
 		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.15}],
 		buffs = [],
 		sub_effects = [],
-	},
-	e_pet_suit_bonus_skill = {
-		type = 'trigger',
-		trigger = [variables.TR_S_CAST],
-		req_skill = true,
-		conditions = [{type = 'skill', value = ['tags', 'has', 'discipline']}],
-		atomic = [],
-		buffs = [],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				atomic = [{type = 'stat_mul', stat = 'value', value = 1.1}],
-				buffs = [],
-				sub_effects = []
-			}
-		]
 	},
 	e_handcuffs_effect = {
 		type = 'trigger',
@@ -4652,27 +4011,6 @@ var effect_table = {
 		sub_effects = []
 	},
 	#temp items
-#	e_leather_collar_effect = {
-#		type = 'static',
-#		atomic = [],#{type = 'stat_mul', stat = 'obDrainReduction', value = 0.65},{type = 'stat_add_p', stat = 'authority_mod', value = 0.20}],
-#		descript = 'Reduces Obedience Drain by 35%. Increases Authority gain by 20%. ',
-#		buffs = [],
-#		sub_effects = [],
-#	},
-#	e_chocker_effect = {
-#		type = 'static',
-#		atomic = [{type = 'stat_mul', stat = 'obDrainReduction', value = 0.8}],
-#		descript = "Reduces Obedience Drain by 20%.",
-#		buffs = [],
-#		sub_effects = [],
-#	},
-#	e_steel_collar_effect = {
-#		type = 'static',
-#		atomic = [],#{type = 'stat_mul', stat = 'obDrainReduction', value = 0.35},{type = 'stat_add_p', stat = 'authority_mod', value = 0.35}],
-#		descript = 'Reduces Obedience Drain by 65%. Increases Authority gain by 35%.',
-#		buffs = [],
-#		sub_effects = [],
-#	},
 	e_tail_plug_effect = {
 		type = 'static',
 		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.1}],
@@ -5094,43 +4432,25 @@ var effect_table = {
 		}]
 	},
 
-	date_bonus = { 
-		type = 'temp_s',
-		duration = 1,
-		stack = 1,
-		name = 'date_bonus',
-		tick_event = [variables.TR_TICK],
-		args = [],
-		sub_effects = [],
-		atomic = [{type = 'stat_add_p', stat = 'loyalty_gain', value = 0.5}],
-		buffs = [{
-			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-			description = "TRAITEFFECTDATEBONUS",
-			args = [],
-			limit = 1,
-			t_name = 'date_effect',
-			mansion_only = true,
-		}]
-	},
+#	date_bonus = { 
+#		type = 'temp_s',
+#		duration = 1,
+#		stack = 1,
+#		name = 'date_bonus',
+#		tick_event = [variables.TR_TICK],
+#		args = [],
+#		sub_effects = [],
+#		atomic = [{type = 'stat_add_p', stat = 'loyalty_gain', value = 0.5}],
+#		buffs = [{
+#			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
+#			description = "TRAITEFFECTDATEBONUS",
+#			args = [],
+#			limit = 1,
+#			t_name = 'date_effect',
+#			mansion_only = true,
+#		}]
+#	},
 
-
-	resist_state = {
-		type = 'temp_s',
-		duration = 6,
-		stack = 1,
-		name = 'resist_state',
-		tick_event = [variables.TR_TICK],
-		args = [],
-		sub_effects = [],
-		tags = ['no_obed_gain'],
-		buffs = [{
-			icon = "res://assets/images/iconsskills/Shackle.png",
-			description = "TRAITEFFECTRESISTSTATE",
-			args = [],
-			limit = 1,
-			t_name = 'resist_state',
-		}]
-	},
 	e_pregnancy = {
 		type = 'temp_u',
 		stack = 1,
@@ -5168,13 +4488,7 @@ var effect_table = {
 			t_name = 'preg',
 		}]
 	},
-	e_brand = {
-		type = 'static',
-		atomic = [{type = 'stat_add', stat = 'loyalty_gain', value = 1},
-			{type = 'stat_add', stat = 'obedience_drain', value = -2}],
-		buffs = [],
-		sub_effects = [],
-	},
+	e_brand = rebuild_simple_dot(['loyalty', 'spirit'], [0.5, -0.5], variables.TR_DAY),
 	e_mkup = {
 		type = 'static',
 		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 10}],
@@ -5228,9 +4542,6 @@ var effect_table = {
 
 var atomic = {
 	#new part
-	a_shackles = {type = 'stat_add', stat = 'timid_factor', value = 2},
-	a_shackles_1 = {type = 'stat_set_revert', comment = 'effect of shackles skill', stat = 'shackles_chance', value = [['parent_args', 0],'-',['parent_args', 1], '*', 10, '-', 5]},
-	a_shackles_2 = {type = 'stat_set_revert', stat = 'shackles_chance', value = [['parent_args', 0],'-',['parent_args', 1], '*', 10, '-', 30]},
 	a_stat_add = {type = 'stat_add', stat = ['parent_args', 0], value = ['parent_args', 1]},
 	a_stat_add_p = {type = 'stat_add_p', stat = ['parent_args', 0], value = ['parent_args', 1]},
 	a_stat_mul = {type = 'stat_mul', stat = ['parent_args', 0], value = ['parent_args', 1]},
@@ -5270,20 +4581,20 @@ var atomic = {
 var buffs = {
 	#new part
 	#icons are defined by path or by name in images.icons, do not load images here!
-	b_shackles = {
-		icon = "res://assets/images/iconsskills/Magic Shackles.png",
-		description = "BUFFDESCRIPTSHACKLES",
-		limit = 1,
-		t_name = 'shackles',
-		mansion_only = true,
-	},
-	b_great_shackles = {
-		icon = "res://assets/images/iconsskills/Strong Magic Shackles.png",
-		description = "BUFFDESCRIPTGREATSHACKLES",
-		limit = 1,
-		t_name = 'shackles',
-		mansion_only = true,
-	},
+#	b_shackles = {
+#		icon = "res://assets/images/iconsskills/Magic Shackles.png",
+#		description = "BUFFDESCRIPTSHACKLES",
+#		limit = 1,
+#		t_name = 'shackles',
+#		mansion_only = true,
+#	},
+#	b_great_shackles = {
+#		icon = "res://assets/images/iconsskills/Strong Magic Shackles.png",
+#		description = "BUFFDESCRIPTGREATSHACKLES",
+#		limit = 1,
+#		t_name = 'shackles',
+#		mansion_only = true,
+#	},
 	b_charm = {
 		icon = "res://assets/images/iconsskills/Charm.png",
 		description = "BUFFDESCRIPTCHARM",
@@ -5548,6 +4859,11 @@ var buffs = {
 		t_name = 'alios',
 		combat_only = true
 	},
+	b_dayoff = {
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		description = "",
+		t_name = 'dayoff',
+	},
 	b_soulbind = {
 		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
 		description = "",
@@ -5772,3 +5088,54 @@ func rebuild_stat_bonus(stat, value, buff = null, mode = 'stat_add'):
 	template.atomic.push_back('a_' + mode)
 	return template
 
+
+func rebuild_simple_dot(stat, value, trigger = variables.TR_TURN_F):
+	var template = {
+		type = 'trigger',
+		trigger = [],
+		req_skill = false,
+		conditions = [],
+		args = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = [],
+				atomic = [],
+			}
+		]
+		}
+	for i in range(stat.size()):
+		var atomic_template = {type = 'stat_add', stat = '', value = ''}
+		
+		atomic_template.stat = stat[i]
+		atomic_template.value = value[i]
+		template.sub_effects[0].atomic.push_back(atomic_template)
+	
+	template.trigger.push_back(trigger)
+	
+	return template
+	
+func rebuild_oneshot_addstat(stat, value, target = 'owner'):
+	var template = {
+		type = 'oneshot',
+		args = [],
+		atomic = [],
+		buffs = [],
+		sub_effects = []
+	}
+	template.target = target
+	if stat is Array:
+		for i in range(stat.size()):
+			var a_template = {type = 'stat_add', stat = 'loyalty', value = 1}
+			a_template.stat = stat[i]
+			a_template.value = value[i]
+			template.atomic.push_back(a_template)
+	else:
+		var a_template = {type = 'stat_add', stat = 'loyalty', value = 1}
+		a_template.stat = stat
+		a_template.value = value
+		template.atomic.push_back(a_template)
+	
+	return template
+	

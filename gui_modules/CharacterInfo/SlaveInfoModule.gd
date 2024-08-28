@@ -12,7 +12,6 @@ func _ready():
 	$RichTextLabel.connect("meta_hover_started", self, 'text_url_hover')
 	$RichTextLabel.connect("meta_hover_ended", self, "text_url_hover_hide")
 	$HairChange/screen.connect("pressed", self, "close_hairstyle")
-	globals.connecttexttooltip($Panel/loyaltylabel, tr("TOOLTIPLOYALTYOBEDIENCE"))
 	globals.connecttexttooltip($Panel/valuelabel, tr("TOOLTIPVALUE"))
 	
 	for i in variables.resists_list:
@@ -42,26 +41,6 @@ func update():
 		$Panel.visible = !person.has_profession("master")
 		$MasterIcon.visible = person.has_profession("master")
 		var text = ""
-		if person.check_infinite_obedience() == false:
-#			$Panel/obedlabel.text = str(ceil(person.xp_module.predict_obed_time()))
-			var obed_val = person.get_obed_percent_value()
-			$Panel/obedlabel.text = "%d%%" % obed_val
-			if obed_val > 40:
-				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.green)
-			elif obed_val > 15:
-				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.yellow)
-			else:
-				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.red)
-		else:
-			$Panel/obedlabel.text = "∞"
-		if person.check_infinite_obedience() == true || person.predict_obed_time() > 0:
-			$Panel/obedlabel/icon.texture = images.icons.obed_good
-		else:
-			$Panel/obedlabel/icon.texture = images.icons.obed_bad
-	
-	
-		$Panel/loyaltylabel.text = tr("SIMLOYALTYGAIN") + ": " + str(stepify(person.get_stat('loyalty_gain'),0.1)) + "\n" + tr("SIMOBEDIENCEDRAIN") + ": " + str(person.get_stat("obedience_drain"))
-		globals.connecttexttooltip($Panel/obedlabel/icon, statdata.statdata.obedience.descript)
 		$Panel/valuelabel.text = str(person.calculate_price())
 #		globals.connecttexttooltip($Panel/loyaltylabel, statdata.statdata.loyalty.descript)
 		#globals.connecttexttooltip($Panel/loyaltylabel, "%.1f" % person.get_stat('loyalty'))

@@ -92,25 +92,6 @@ func show_slave_info():
 			get_node("base_stats/"+ i + '/Label').text = str(floor(person.get_stat(i))) + "/" + str(floor(person.get_stat(i+'max')))
 		#text = "Type: [color=yellow]" + person.translate(statdata.slave_class_names[person.get_stat('slave_class')]) + "[/color]\n"
 		var gatherable = Items.materiallist.has(person.get_work())
-#		if person.is_players_character == true:
-#			if person.get_work() != '' and person.get_work() != "Assignment" and person.get_work() != "disabled" and person.get_work() != "learning":
-#				if !gatherable:
-#					text = races.tasklist[person.get_work()].name
-#				else:
-#					text = Items.materiallist[person.get_work()].progress_formula.capitalize()
-#			else:
-#				text += "Occupation: None"
-#			text += "\n"
-			# if state.get_master() != person:
-				# if person.obedience > 0 || person.loyalty >= 100 || person.submission >= 100:
-				# 	text += "{color=green|Obedience: "
-				# else:
-				# 	text += "{color=red|Obedience: "
-				# if person.loyalty < 100 && person.submission < 100:
-				# 	text += str(ceil(person.obedience)) + "}"
-				# else:
-				# 	text += "∞}"
-		#$job.bbcode_text = globals.TextEncoder(text)
 		
 		$growth.text = tr(ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat('growth_factor')))])
 		$growth.set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat('growth_factor'))))])
@@ -130,33 +111,6 @@ func show_slave_info():
 			else:
 				text += "\n" + str(round(person.get_stat(i)*100)) + " - " + statdata.statdata[i].name
 		globals.connecttexttooltip($productivity, globals.TextEncoder(text))
-		var authority_text = ""
-		if person.check_infinite_obedience() == false:
-#			$Panel/obedlabel.text = str(ceil(person.xp_module.predict_obed_time()))
-			var obed_val = person.get_obed_percent_value()
-			$Panel/obedlabel.text = "%d" % obed_val
-			if obed_val > 40:
-				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.green)
-			elif obed_val > 15:
-				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.yellow)
-			else:
-				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.red)
-		else:
-			$Panel/obedlabel.text = "∞"
-		if person.check_infinite_obedience() == true || person.predict_obed_time() > 0:
-			$Panel/obedlabel/icon.texture = images.icons.obed_good
-		else:
-			$Panel/obedlabel/icon.texture = images.icons.obed_bad
-
-		var authority
-
-		$Panel/authoritylabel2.text = tr("SLAVE_LOYALTY") + ": " + str(floor(person.get_stat('loyalty')))
-		$Panel/submissionlabel.value = person.get_stat('submission')
-
-		globals.connecttexttooltip($Panel/obedlabel/icon, statdata.statdata.obedience.descript)
-#		globals.connecttexttooltip($Panel/loyaltylabel, (str(statdata.statdata.loyalty.descript) + '\n' + str(person.get_stat('loyalty')) + "/100"))
-#		globals.connecttexttooltip($Panel/authoritylabel, statdata.statdata.authority.descript)
-		globals.connecttexttooltip($Panel/submissionlabel, statdata.statdata.submission.descript)
 		
 		globals.build_traitlist_for_char(person, $scroll/traitscontainer)
 		globals.build_buffs_for_char(person, $buffscontainer, 'mansion')

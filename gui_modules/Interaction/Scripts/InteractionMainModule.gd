@@ -154,8 +154,6 @@ func OrgasmDenialCum():
 	else:
 		text += '_petting'
 	#$Panel/sceneeffects.bbcode_text +="\n" +
-	OrgasmDenyVictim.person.add_stat('obedience', 4 + OrgasmDenyVictim.person.get_stat('sexuals_factor') * 2)
-	OrgasmDenyVictim.person.add_stat('loyalty', 3)
 	$OrgasmDenial/ScrollContainer/VBoxContainer/Beg.show()
 	OrgasmDenyVictim.orgasm(decoder(OrgasmDenyText[text], [OrgasmDenyPlayer], [OrgasmDenyVictim]))
 	$OrgasmDenial.hide()
@@ -1829,12 +1827,6 @@ func endencounter():
 		elif i.stamina == 0:
 			text += i.person.translate("[name] has been devastated by this encounter and have not been able to increase [his] open mindedness. ")
 		
-		
-			
-			
-			
-			
-		i.person.add_stat('loyalty', i.person.get_stat('sexuals_factor') + i.orgasms * 5)
 #		if i.new_action_performed == true:
 #			i.consentgain += 1
 #			consenttext[i.id] += '\nTried new action: +1'
@@ -1850,7 +1842,6 @@ func endencounter():
 #			consenttext[i.id] += "\nWas drugged with pheromones: -" + str(floor(i.consentgain/2))
 #			i.consentgain = floor(i.consentgain/2)
 		text += i.person.translate("[name]: Orgasms - ") + str(i.orgasms) 
-		if i.person.is_master() == false: text += "; Loyalty gained: " +  str(i.person.get_stat('sexuals_factor') + i.orgasms * 5) 
 #		i.person.sexuals += i.orgasms not relevant
 		var expgain = round(i.orgasms * 8 + i.sens/200)
 		var bonus = 1
@@ -2082,8 +2073,8 @@ func askslaveforaction(chosen):
 					value *= 2.5
 				if chosen.person.check_trait('Dominant') && j.code in punishcategories && chosenpos == 'giver':
 					value *= 2.5
-				if target.submission < 20  && j.code in punishcategories && chosenpos == 'giver':
-					value *= 3
+#				if target.submission < 20  && j.code in punishcategories && chosenpos == 'giver':
+#					value *= 3
 				if chosen.person.get_stat('penis_size') == 'none' && dom == 'giver' && j.code == 'strapon':
 					value *= 10
 				if chosen.person.check_trait("Pervert") && ((givers.has(chosen) && j.giverconsent == 'advanced') || (takers.has(chosen) && j.takerconsent == 'advanced')):

@@ -41,11 +41,11 @@ enum {S_PHYS = 1, S_FIRE = 2, S_WATER = 4, S_AIR = 8, S_EARTH = 16, S_MAG = 30, 
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_DGRADE, TE_RES_REMOVE}
 #list for values modified by crits, effects etc
 
-var dmg_mod_list = ['+damage_hp', "+hp", '+restore_mana', '+lust', '+obedience', '+loyalty', '+consent', '+energy', '-damage_hp', "-hp", '-restore_mana', '-lust', '-obedience', '-loyalty', '-energy','no_stat'] #not sure about these
+var dmg_mod_list = ['+damage_hp', "+hp", '+restore_mana', '+lust', '+consent', '-damage_hp', "-hp", '-restore_mana', '-lust','no_stat'] #not sure about these
 #list for values modified by random_mod
-var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust', 'obedience', 'loyalty', 'fatigue', 'exhaustion', 'energy']
+var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust']
 #list for values with relative values
-var dmg_rel_list = ['hp', 'mp', 'lust', 'obedience', 'loyalty', 'consent', 'exhaustion', 'energy', 'base_exp','physics_factor','wits_factor','charm_factor','sexuals_factor','tame_factor','timid_factor','brave_factor','growth_factor']
+var dmg_rel_list = ['hp', 'mp', 'lust', 'consent', 'base_exp','physics_factor','wits_factor','charm_factor','sexuals_factor','tame_factor','timid_factor','brave_factor','growth_factor']
 #list for various types of damage mods
 var damage_mods_list = ['all','melee','ranged','normal','fire','earth','air','water','light','dark','mind','physic','spell', 'skill', 'aoe', 'true', 'heal']
 
@@ -64,10 +64,10 @@ var rare_enemy_traits = ['rare_sturdy', 'rare_nimble', 'rare_strong', 'rare_dead
 var bonuses_stat_list = ['productivity','mod_collect','speed','hitrate','evasion','armor','mdef','critchance', 'critmod', 'armorpenetration', 'lusttick','mod_build','mod_hunt','mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros', 'hp_reg_mod', 'mp_reg_mod']
 #list for stats that do not uses bonuses system
 #imho must include all of dmg_rel stats
-var direct_access_stat_list = ['hp', 'mp', 'lust', 'obedience', 'loyalty', 'submission', 'energy', 'physics_bonus', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor','tame_factor','timid_factor', 'sexuals_factor','magic_factor','growth_factor', 'food_consumption', 'consent', 'physics','wits','charm']
+var direct_access_stat_list = ['hp', 'mp', 'lust', 'physics_bonus', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor','tame_factor','timid_factor', 'sexuals_factor','magic_factor','growth_factor', 'food_consumption', 'consent', 'physics','wits','charm']
 
 
-var productivity_mods = ['mod_build','mod_hunt', 'mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros']
+var productivity_mods = ['mod_build','mod_hunt', 'mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros', 'mod_service']
 
 var longtails = ['fox','cat','wolf','dragon','demon','tanuki','fish','lizard']
 var longears = ['fox','cat','wolf','bunny_standing','bunny_drooping','elven','tanuki']
@@ -430,10 +430,10 @@ var dynamic_text_vars = ['name', 'He','he', 'his', 'him', "His", 'raceadj', 'rac
 
 #editor data
 var atomic_types = ['kill','damage','heal','mana','stat_set','stat_set_revert','stat_add','stat_mul','stat_add_p','bonus','remove_effect','remove_all_effects','add_trait','add_sex_trait','unlock_sex_trait','resurrect','use_combat_skill','use_social_skill','add_soc_skill','add_combat_skill','sfx', 'add_tag']
-var char_dmg_stats = ['no_stat//prev value', 'hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'physics_bonus', 'taunt', 'shield', 'damage_hp', 'restore_mana', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor','tame_factor',
+var char_dmg_stats = ['no_stat//prev value', 'hp', 'mp', 'lust', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'physics_bonus', 'taunt', 'shield', 'damage_hp', 'restore_mana', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor','tame_factor',
 'sexuals_factor','magic_factor','growth_factor', 'food_consumption']#incomplete
 var ss_dmg_stats = ['value']
-var damagestat_list = ['no_stat', 'hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion',  'energy', 'physics_bonus', 'taunt', 'shield', 'damage_hp', 'restore_mana']#possibly incomplete
+var damagestat_list = ['no_stat', 'hp', 'mp', 'lust', 'fear', 'loyal', 'fatigue', 'exhaustion',  'energy', 'physics_bonus', 'taunt', 'shield', 'damage_hp', 'restore_mana']#possibly incomplete
 var condtypes = ['conditional static//oneshot', 'random', 'skill', 'caster', 'target', 'owner(skill)', 'owner(character)']
 #var char_condtypes = ['stats', 'stat_index', 'gear', 'race', 'trait', 'class', 'dead']
 var ops = ['==', '!=', '>=', '>', '<=', '<', 'has', '!has']
@@ -548,4 +548,18 @@ var consent_dict = {
 
 var resist_text_chancce = 0.25 #chance to display text of resisting actions during sex minigame
 
-var mentorship_list = ['loyalty_basic_servitude', 'loyalty_combatant']
+
+var disposition_results = {
+	resist = {fail = 50, resist = 50, success = 0, crit_success = 0},
+	neutral = {fail = 45, resist = 10, success = 45, crit_success = 0},
+	weak = {fail = 15, resist = 0, success = 75, crit_success = 10},
+	kink = {fail = 0, resist = 10, success = 45, crit_success = 45},
+}
+var training_results_base = {
+	fail = {loyalty = [4, 5], spirit = [-10, -5]}, 
+	resist = {loyalty = 0, spirit = 0}, 
+	success = {loyalty = [8, 10], spirit = [-10, -5]}, 
+	crit_success = {loyalty = [8, 10], spirit = [-5, -3]}
+	}
+var spirit_limits = [10, 50, 75]
+var training_costs = [15, 25, 35]

@@ -2520,7 +2520,7 @@ func hybris_character(person):
 		dict = {text = tr('HYBRIS_ALTAR_CHAR'), image = '', options = [], tags = ['active_character_translate','dialogue_scene'], common_effects = []}
 		if person.get_stat('slave_class') == 'servant':
 			dict.options.append({code = 'hybris_character_convert', reqs = [], text = "HYBRIS_ALTAR_CHAR_OPTION1", dialogue_argument = 1})
-		dict.options.append({code = 'hybris_character_loyalty', reqs = [], text = "HYBRIS_ALTAR_CHAR_OPTION2", dialogue_argument = 1})
+#		dict.options.append({code = 'hybris_character_loyalty', reqs = [], text = "HYBRIS_ALTAR_CHAR_OPTION2", dialogue_argument = 1})
 	
 	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 	input_handler.interactive_message_follow(dict, 'direct', [])
@@ -2531,11 +2531,11 @@ func hybris_character_convert():
 	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
-func hybris_character_loyalty():
-	var dict = {text = tr('HYBRIS_ALTAR_CHAR_RESULT2'), image = '', options = [], tags = ['active_character_translate'], common_effects = []}
-	dict.common_effects.append({code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 50})
-	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
-	input_handler.interactive_message_follow(dict, 'direct', [])
+#func hybris_character_loyalty():
+#	var dict = {text = tr('HYBRIS_ALTAR_CHAR_RESULT2'), image = '', options = [], tags = ['active_character_translate'], common_effects = []}
+#	dict.common_effects.append({code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 50})
+#	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]})
+#	input_handler.interactive_message_follow(dict, 'direct', [])
 
 func hybris_item(code):
 	var dict = {text = tr('ALTAR_ITEM_1'), image = '', options = [], tags = ['active_character_translate']}

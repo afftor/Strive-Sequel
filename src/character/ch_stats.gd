@@ -49,8 +49,6 @@ func deserialize(savedict):
 func fix_import():
 	if statlist.unique != null and !ResourceScripts.game_world.easter_egg_characters_acquired.has(statlist.unique):
 		ResourceScripts.game_world.easter_egg_characters_acquired.append(statlist.unique)
-	statlist.loyalty = 0
-	statlist.obedience = 100
 	if statlist.slave_class in ['slave']:
 		set_slave_category('slave1')
 
@@ -76,7 +74,7 @@ func fix_serialize():
 		if statlist.metrics.has(metr):
 			continue
 		statlist.metrics[metr] = Statlist_init.template.metrics[metr]
-	for st in ['personality_bold', 'personality_kind', 'slave_spec_level', 'slave_spec_progress']:
+	for st in ['personality_bold', 'personality_kind',]:
 		statlist[st] = int(statlist[st])
 	
 	statlist.consent = min(get_stat('consent'), 6)
@@ -139,12 +137,6 @@ func custom_stats_set(st, value):
 		value = min(value, 100.0)
 		statlist.sex_skills[st] = value
 		return
-	if st in ['submission']:
-#			if value.has(st):
-		var delta = value - statlist[st]
-		if delta != 0:
-			delta *= get_stat(st+'_gain_mod')
-			statlist[st] = clamp(statlist[st] + delta, 0, 100)
 	elif st in ['physics', 'wits', 'charm']: #not sure about sexuals since its getter has no reference to original value
 #			if value.has(st):
 #		statlist[st] = min(value, statlist[st + '_factor'] * 20)
@@ -156,10 +148,6 @@ func custom_stats_set(st, value):
 		statlist[st] = clamp(statlist[st], variables.minimum_factor_value, variables.maximum_factor_value)
 	if st == 'lust':
 		statlist.lust = clamp(value, 0, get_stat('lustmax'))
-#	if st == 'obedience':
-#		statlist.obedience = min(statlist.obedience, get_obed_cap())
-	if st in ['obedience']:
-		statlist[st] = min(statlist[st], statlist[st + '_max'])
 	if st == 'name':
 		if ResourceScripts.game_party.relativesdata.has(parent.get_ref().id):
 			ResourceScripts.game_party.relativesdata[parent.get_ref().id].name = get_full_name()
@@ -211,14 +199,6 @@ func custom_stats_get(stat):
 		if bonuses.has('upgrade_points_total_add'): tres += bonuses.upgrade_points_total_add
 		if bonuses.has('upgrade_points_total_mul'): tres *= bonuses.upgrade_points_total_mul
 		return tres
-	if stat == 'obedience_max':
-		var tres = variables.basic_max_obed
-		if bonuses.has('obedience_max_add'): tres += bonuses.obedience_max_add
-		if bonuses.has('obedience_max_mul'): tres *= bonuses.obedience_max_mul
-		return tres
-	if stat == 'obedience':
-		statlist.obedience =  clamp(statlist.obedience, 0, custom_stats_get('obedience_max'))
-		return statlist.obedience
 	if stat == 'lusttick':
 		var tres = variables.basic_lust_per_tick
 		if bonuses.has('lusttick_add'): tres += bonuses.lusttick_add
@@ -266,25 +246,11 @@ func custom_stats_get(stat):
 		var tres = clamp(statlist.lust, 0, custom_stats_get('lustmax'))
 		statlist.lust = tres
 		return tres
-	if stat == 'obedience_drain':
-		var tres = variables.basic_obed_drain - statlist.timid_factor
-		if bonuses.has('obedience_drain_add'): tres += bonuses.obedience_drain_add
-		if bonuses.has('obedience_drain_mul'): tres *= bonuses.obedience_drain_mul
-		if ResourceScripts.game_globals.difficulty == 'easy':
-			tres *= 0.75
-		if ResourceScripts.game_globals.difficulty == 'hard':
-			tres *= 1.25
-		tres = max(0.0, tres)
-		if parent and (parent.get_ref().has_status('soulbind') or parent.get_ref().get_work() == 'travel'):
-			tres = 0.0
-		return tres
-	if stat == 'loyalty_gain':
-		var tres = 0.75 + 0.375 * statlist.tame_factor
-		if bonuses.has('loyalty_gain_add'): tres += bonuses.loyalty_gain_add
-		if bonuses.has('loyalty_gain_mul'): tres *= bonuses.loyalty_gain_mul
-		tres = max(0.0, tres)
-		if parent and parent.get_ref().has_status('starvation'):
-			tres = 0.0
+	if stat == 'trainee_amount':
+		var tres = statlist.trainee_amount
+		if bonuses.has('trainee_amount_add'):
+			tres += bonuses.tarinees_amount_add
+		tres += int(statlist.timid_factor) / 2
 		return tres
 	if stat == 'resists':
 		var tres = statlist.resists.duplicate()
@@ -319,19 +285,6 @@ func custom_stats_get(stat):
 			if bonuses.has('damage_mod_' + r + '_mul'): tres[r] *= bonuses['damage_mod_' + r + '_mul']
 		return tres
 	return statlist[stat]
-
-
-func get_obed_percent_value():
-	return int(100 * get_stat('obedience') / get_stat('obedience_max'))
-
-
-func predict_obed_time(): # in hours, not in ticks
-	if check_infinite_obedience() == true: return 10000
-	return get_stat('obedience') / get_stat('obedience_drain')
-
-
-func check_infinite_obedience():
-	return get_stat('obedience_drain') == 0 or parent.get_ref().is_master() or parent.get_ref().is_spouse()
 
 
 func predict_preg_time():
@@ -1199,9 +1152,6 @@ func add_stat(statname, value, revert = false):
 		value *= get_stat_gain_rate(statname)
 	if statname.ends_with('_direct'):
 		statname = statname.trim_suffix('_direct')
-	if statname == 'loyalty' and statlist.loyalty_locked:
-		add_slave_prof_progress(value)
-		return
 	if !statdata.statdata.has(statname): 
 		print("no stat - %s" % statname)
 		return
@@ -1256,14 +1206,12 @@ func add_part_stat(statname, value, revert = false):
 
 func stat_update(stat, value, is_set = false): #for permanent changes
 	var tmp
-	if stat.ends_with('Obedience') : tmp = statlist['obedience']
-	else: tmp = statlist[stat]
+	tmp = statlist[stat]
 	value = round(value)
 	if !is_set: add_stat(stat, value)
 	else: set_stat(stat, value)
 	if tmp != null:
-		if stat.ends_with('Obedience'): tmp = get_stat('obedience') - tmp
-		else: tmp = get_stat(stat) - tmp
+		tmp = get_stat(stat) - tmp
 	else:  tmp = get_stat(stat)
 	return tmp
 
@@ -1271,6 +1219,7 @@ func stat_update(stat, value, is_set = false): #for permanent changes
 func add_trait(tr_code):
 	if tr_code == null: return
 	if traits.has(tr_code): return
+	if !Traitdata.traits.has(tr_code): return #temp
 	var trait = Traitdata.traits[tr_code]
 	traits.push_back(tr_code)
 	parent.get_ref().add_stat_bonuses(trait.bonusstats)
@@ -1294,8 +1243,6 @@ func add_trait(tr_code):
 			parent.get_ref().remove_static_effect_by_code('work_rule_contraceptive')
 		parent.get_ref().set_work_rule("ration", false)
 		parent.get_ref().set_work_rule("contraceptive", false)
-	if tr_code == 'master_mentor':
-		ResourceScripts.game_party.unlock_mentor()
 	parent.get_ref().recheck_effect_tag('recheck_trait')
 
 
@@ -1389,10 +1336,6 @@ func has_status(status):
 		var traitdata = Traitdata.sex_traits[tr]
 		if traitdata.has('tags') and traitdata.tags.has(status):
 			return true
-	if statlist.slave_spec !=null:
-		var data = Traitdata.slave_profs[statlist.slave_spec]
-		if data.has('tags') and data.tags.has(status):
-			return true
 	return false
 
 
@@ -1471,7 +1414,7 @@ func fill_masternoun():
 func process_chardata(chardata, unique = false):
 	if unique: statlist.unique = chardata.code
 	for i in chardata:
-		if !(i in ['code','class_category', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'hair_color', 'hair_style', 'hair_length']):
+		if !(i in ['code','class_category', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'hair_color', 'hair_style', 'hair_length', 'training_disposition']):
 			if typeof(chardata[i]) == TYPE_ARRAY or typeof(chardata[i]) == TYPE_DICTIONARY:
 				statlist[i] = chardata[i].duplicate(true)
 			else:
@@ -1552,8 +1495,6 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	
 #	set_stat('growth_factor', input_handler.weightedrandom_dict(variables.growth_factor))
 	roll_growth(adjust_difficulty)
-	
-	
 	
 #	if randf() <= 0.003:
 #		desired_class = parent.get_ref().generate_ea_character(gendata, desired_class)
@@ -1774,6 +1715,7 @@ func create(temp_race, temp_gender, temp_age):
 #	add_trait('core_trait')
 #	learn_c_skill('attack')
 	set_hairs() #temporal, remove this later!!
+	add_trait('untrained')
 	
 	parent.get_ref().hp = get_stat('hpmax')
 	parent.get_ref().mp = get_stat('mpmax')
@@ -2010,21 +1952,6 @@ func get_traits_buffs():
 		if tbuff != null: res.push_back(tbuff)
 	return res
 
-
-func get_price_for_trait(tr_id):
-	var data = Traitdata.traits[tr_id]
-	if !data.tags.has('loyalty'): return 0
-	var res = 0
-	if data.has('l_cost'):
-		res = data.l_cost
-	res += get_stat('loyalty_traits_unlocked') * 5
-	if data.has('bind_trait'):
-		for tr in data.bind_trait:
-			if check_trait(tr):
-				res *= 0.5
-				break
-	return res
-
 func baby_transform():
 	var mother = characters_pool.get_char_by_id(statlist.relatives.mother) #ResourceScripts.game_party.characters[statlist.relatives.mother]
 	statlist.name = 'Child of ' + mother.get_short_name()
@@ -2044,14 +1971,11 @@ func set_slave_category(new_class):
 		remove_trait(statlist.slave_class.to_lower())
 	add_trait(new_class)
 	statlist.slave_class = new_class
+	if has_status('trained'):
+		parent.get_ref().finish_training(true)
 
 
 func tick():
-	if !parent.get_ref().is_master():
-		add_stat('loyalty', get_stat('loyalty_gain'))
-		add_stat('loyalty_total', get_stat('loyalty_gain'))
-		if !parent.get_ref().is_spouse() && variables.no_obedience_drain == false :
-			add_stat('obedience', - get_stat('obedience_drain'))
 	add_stat('lust', get_stat('lusttick'))
 	if statlist.pregnancy.duration > 0 && statlist.pregnancy.baby != null:
 		statlist.pregnancy.duration -= 1
@@ -2073,18 +1997,10 @@ func tick():
 		if statlist.pregnancy.duration == 0:
 			reported_pregnancy = false
 			parent.get_ref().remove_all_temp_effects_tag('pregnant')
-			if has_status('keep_baby'):
+			if has_status('relation'): #or another
 				input_handler.interactive_message('childbirth', 'childbirth', {pregchar = parent.get_ref()})
 			else:
 				input_handler.interactive_message('childbirth_alt', 'childbirth', {pregchar = parent.get_ref()})
-
-
-func is_uncontrollable():
-	return statlist.obedience <= 0 && statlist.loyalty < 100
-
-
-func is_controllable():#not sure - either this or previous is wrong cause of obedience check, nvn, rework both!
-	return statlist.loyalty >= 100
 
 var sex_nouns = {male = tr("PRONOUNSEX"), female = tr("PRONOUNSEXF"), futa = tr("PRONOUNSEXH")}
 
@@ -2343,61 +2259,3 @@ func check_old_personality():
 		statlist.old_personality = get_personality()
 
 
-func remove_slave_prof():
-	if statlist.slave_spec == null:
-		return
-	var data = Traitdata.slave_profs[statlist.slave_spec]
-	for i in range (statlist.slave_spec_level):
-		parent.get_ref().remove_stat_bonuses(data.bonusstats)
-	
-	var arr = parent.get_ref().find_eff_by_trait(statlist.slave_spec)
-	for e in arr:
-		var eff = effects_pool.get_effect_by_id(e)
-		eff.remove()
-	
-	statlist.slave_spec = null
-	statlist.slave_spec_level = 0
-	statlist.slave_spec_progress = 0
-	statlist.loyalty_locked = false
-
-
-func set_slave_prof(prof):
-	if prof != statlist.slave_spec and statlist.slave_spec != null:
-		print('warning - slave prof removed')
-		remove_slave_prof()
-	
-	var data = Traitdata.slave_profs[prof]
-	parent.get_ref().add_stat_bonuses(data.bonusstats)
-	for e in data.effects:
-		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
-		parent.get_ref().apply_effect(effects_pool.add_effect(eff))
-		eff.set_args('trait', prof)
-	
-	statlist.slave_spec = prof
-	statlist.slave_spec_level = 0
-	add_stat('loyalty', -get_next_slave_prof_lv_loyalty())
-	lvup_slave_prof()
-	statlist.slave_spec_progress = 0
-
-
-func get_next_slave_prof_lv_loyalty():
-#	return 500 * (1 + statlist.slave_spec_level)
-	return 50 * (1 + statlist.slave_spec_level)
-
-
-func lvup_slave_prof(): #no cost check! no effects setup
-	var data = Traitdata.slave_profs[statlist.slave_spec]
-	parent.get_ref().add_stat_bonuses(data.bonusstats)
-	statlist.slave_spec_level += 1
-	
-	parent.get_ref().recheck_effect_tag('recheck_trait')
-	parent.get_ref().recheck_effect_tag('recheck_stats')
-
-
-func add_slave_prof_progress(value):
-	print(statlist.slave_spec_progress)
-	statlist.slave_spec_progress += value
-	print(statlist.slave_spec_progress)
-	while statlist.slave_spec_progress >= get_next_slave_prof_lv_loyalty():
-		statlist.slave_spec_progress -= get_next_slave_prof_lv_loyalty()
-		lvup_slave_prof()

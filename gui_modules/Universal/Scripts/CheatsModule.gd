@@ -153,7 +153,7 @@ func max_sex_skills():
 
 
 func max_loyal_auth(): #2REWORK
-	selected_person.set_stat("loyalty", 100)
+#	selected_person.set_stat("loyalty", 100)
 #	selected_person.set_stat("authority", 201)
 	input_handler.SystemMessage("Authority and loyalty set to maximum")
 	gui_controller.mansion.SlaveModule.show_slave_info()
