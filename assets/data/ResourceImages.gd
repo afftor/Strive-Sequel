@@ -414,7 +414,15 @@ var scenes = {
 	dungeon_fountain = load("res://assets/images/scenes/dungeon_fountain.png"),
 	dungeon_magic_barrier = load("res://assets/images/scenes/dungeon_magic_barrier.png"),
 	
-	
+	day_off = load("res://assets/images/scenes/day off.png"),
+	grope = load("res://assets/images/scenes/grope.png"),
+	kneel = load("res://assets/images/scenes/kneel.png"),
+	mindread = load("res://assets/images/scenes/mindread.png"),
+	public_use = load("res://assets/images/scenes/publicuse.png"), 
+	reward = load("res://assets/images/scenes/reward.png"),
+	slap = load("res://assets/images/scenes/slap.png"),
+	spank = load("res://assets/images/scenes/spank.png"),
+	strip = load("res://assets/images/scenes/strip.png"),
 	
 }
 

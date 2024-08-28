@@ -277,8 +277,8 @@ func apply_training(code):
 		text += "\n"
 		text += tr(data.result_text[result])
 	#add custom placeholder translation
-	if data.has('dialogue_image') and data.dialogue_image != '':
-		dialogue_data.image = data.dialogue_image
+	if data.has('scene_image') and data.scene_image != '':
+		dialogue_data.image = data.scene_image
 	else:
 		dialogue_data.image = 'noevent'
 	dialogue_data.text = text + "\n" + effect_text
