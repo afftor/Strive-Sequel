@@ -40,10 +40,10 @@ var stats = {
 	charm_bonus = '',
 	sexuals_bonus = '',
 	timid_factor = '',
-
-	loyalty_gain = '',
-	lusttick = '',
-	obedience_drain = '',
+	
+	training_loyalty = '',
+	training_spirit = '',
+	
 	mod_cook = "",
 }
 
@@ -1171,7 +1171,7 @@ var itemlist = {
 		reqs = [],
 		effects = [], 
 		tags = [],
-		basestats = {obedience_drain = -2, loyalty_gain = 0.5},
+		basestats = {training_loyalty = 2, mod_service = 0.1},
 	},
 	elegant_choker = {
 		code = 'elegant_choker',
@@ -1188,7 +1188,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {obedience_drain = -1, loyalty_gain = 1, sexuals_bonus = 5},
+		basestats = {training_loyalty = 1, training_spirit = 1, mod_service = 0.05, sexuals_bonus = 5},
 	},
 	steel_collar = {
 		code = 'steel_collar',
@@ -1205,7 +1205,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {obedience_drain = -4, loyalty_gain = 0.8},
+		basestats = {training_loyalty = 3, training_spirit = -2, mod_service = 0.05,},
 	},
 	amulet_of_recognition = {
 		code = 'amulet_of_recognition',
@@ -1253,7 +1253,7 @@ var itemlist = {
 		price = 100,
 		icon = load("res://assets/images/iconsgear/tailplug.png"),
 		tier = 'medium',
-		reqs = [{code = 'trait', trait = 'loyalty_dress_lewd', check = true}],
+		reqs = [],
 		effects = [
 			#'e_tail_plug_effect',
 			'e_tail_plug_bonus'],
@@ -1291,9 +1291,9 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [],
 		effects = [#'e_i_pet_suit',
-			 'e_i_pet_suit_bonus'],
+			 'e_i_pet_suit_bonus'], #? 
 		tags = [],
-		basestats = {obedience_drain = 1, charm_bonus = 15},
+		basestats = {training_loyalty = 1, training_spirit = 1, mod_service = 0.15, charm_bonus = 15},
 	},
 	maid_dress = {
 		code = 'maid_dress',
@@ -1307,10 +1307,10 @@ var itemlist = {
 		price = 250,
 		icon = load("res://assets/images/iconsitems/maiduniform.png"),
 		tier = 'medium',
-		reqs = [{code = 'trait', trait = 'loyalty_dress_work', check = true}],
+		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {charm_bonus = 10, obedience_drain = -2, loyalty_gain = 0.6},
+		basestats = {charm_bonus = 10, training_loyalty = 1, training_spirit = 1, mod_service = 0.1},
 	},
 	worker_outfit = {
 		code = 'worker_outfit',
@@ -1324,7 +1324,7 @@ var itemlist = {
 		price = 300,
 		icon = load("res://assets/images/iconsgear/workeroutfit.png"),
 		tier = 'medium',
-		reqs = [{code = 'trait', trait = 'loyalty_dress_work', check = true}],
+		reqs = [],
 		effects = [],#'e_worker_outfit_effect'],
 		tags = [],
 		basestats = {physics_bonus = 10, sexuals_bonus = -15, mod_hunt = 0.25, mod_fish = 0.25, mod_collect = 0.25, mod_farm = 0.25},
@@ -1341,7 +1341,7 @@ var itemlist = {
 		price = 400,
 		icon = load("res://assets/images/iconsgear/craftmanoutfit.png"),
 		tier = 'medium',
-		reqs = [{code = 'trait', trait = 'loyalty_dress_work', check = true}],
+		reqs = [],
 		effects = [],#'e_craftman_suit_effect'],
 		tags = [],
 		basestats = {mod_cook = 0.25, mod_smith = 0.25, mod_alchemy = 0.25, mod_build = 0.25, mod_tailor = 0.25},
@@ -1361,7 +1361,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {charm_bonus = 5, loyalty_gain = 1},
+		basestats = {charm_bonus = 5, training_spirit = 1, mod_service = 0.1},
 	},
 	seethrough_underwear = {
 		code = 'seethrough_underwear',
@@ -1375,7 +1375,7 @@ var itemlist = {
 		price = 250,
 		icon = load("res://assets/images/iconsitems/underwearlacy.png"),
 		tier = 'medium',
-		reqs = [{code = 'trait', trait = 'loyalty_dress_lewd', check = true}],
+		reqs = [],
 		effects = [],
 		tags = [],
 		basestats = {sexuals_bonus = 10, lusttick = 0.1},
@@ -1409,7 +1409,7 @@ var itemlist = {
 		price = 200,
 		icon = load("res://assets/images/iconsitems/clothbdsm.png"),
 		tier = 'medium',
-		reqs = [{code = 'trait', trait = 'loyalty_dress_lewd', check = true}],
+		reqs = [],
 		effects = [],
 		tags = [],
 		basestats = {sexuals_bonus = 15},
@@ -1426,13 +1426,12 @@ var itemlist = {
 		price = 200,
 		icon = load("res://assets/images/iconsgear/bunnysuit.png"),
 		tier = 'medium',
-		reqs = [{code = 'trait', trait = 'loyalty_dress_lewd', check = true}],
+		reqs = [],
 		effects = [],
 		tags = [],
 		basestats = {sexuals_bonus = 15, charm_bonus = 15, mod_pros = 0.15, mod_service = 0.15},
 	},
-	shackles = {#prevents escape if body_factor < 4; physics -25
-		#maybe still needs reworking
+	shackles = {
 		code = 'shackles',
 		name = "",
 		descript = "",
@@ -1447,9 +1446,9 @@ var itemlist = {
 		reqs = [],
 		effects = ['e_i_shackles'],
 		tags = [],
-		basestats = {physics_bonus = -50, obedience_drain = -6},
+		basestats = {physics_bonus = -50,},
 	},
-	handcuffs = {#physics -10, Adds hidden counter: +x value per day, when counter hits 100, add trait "submissive"
+	handcuffs = {
 		code = 'handcuffs',
 		name = "",
 		descript = "",
@@ -1462,9 +1461,9 @@ var itemlist = {
 		icon = load("res://assets/images/iconsitems/handcuffs.png"),
 		tier = 'easy',
 		reqs = [],
-		effects = ['e_handcuffs_effect'],
+		effects = ['e_handcuffs_effect', 'e_i_handcuffs'],
 		tags = [],
-		basestats = {physics_bonus = -10, obedience_drain = -4},
+		basestats = {physics_bonus = -10},
 	},
 	strapon = {#substitutes for penis in sex actions
 		code = 'strapon',
@@ -1495,7 +1494,7 @@ var itemlist = {
 		price = 100,
 		icon = load("res://assets/images/iconsgear/chastitybelt.png"),
 		tier = 'medium',
-		reqs = [{code = 'trait', trait = 'loyalty_dress_lewd', check = true}],
+		reqs = [],
 		effects = [],
 		tags = [],
 		basestats = {sexuals_bonus = -25},
@@ -1512,7 +1511,7 @@ var itemlist = {
 		price = 400,
 		icon = load("res://assets/images/iconsitems/icon_underpants.png"),
 		tier = 'hard',
-		reqs = [{code = 'trait', trait = 'loyalty_dress_lewd', check = true}],
+		reqs = [],
 		effects = [],#'e_sunderwear_effect'],
 		tags = [],
 		basestats = {lusttick = 0.25},
@@ -1529,7 +1528,7 @@ var itemlist = {
 		price = 200,
 		icon = load("res://assets/images/iconsitems/clothtentacle.png"),
 		tier = 'hard',
-		reqs = [{code = 'trait', trait = 'loyalty_dress_lewd', check = true}],
+		reqs = [],
 		effects = [],#'e_tentacle_suit_effect'],
 		tags = [],
 		basestats = {lusttick = 1},
@@ -1546,7 +1545,7 @@ var itemlist = {
 		price = 75,
 		icon = load("res://assets/images/iconsgear/analbeads.png"),
 		tier = 'medium',
-		reqs = [{code = 'trait', trait = 'loyalty_dress_lewd', check = true}],
+		reqs = [],
 		effects = ['e_anal_trait_counter', 'e_i_anal'],
 		tags = [],
 		basestats = {},
@@ -1563,7 +1562,7 @@ var itemlist = {
 		price = 60,
 		icon = load("res://assets/images/iconsgear/analplug.png"),
 		tier = 'medium',
-		reqs = [{code = 'trait', trait = 'loyalty_dress_lewd', check = true}],
+		reqs = [],
 		effects = ['e_anal_trait_counter', 'e_i_anal'],
 		tags = [],
 		basestats = {},
@@ -1585,7 +1584,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'anastasia'}],
 		effects = [],
 		tags = ['no_random'],
-		basestats = {obedience_drain = -3, loyalty_gain = 1.5, charm_bonus = 5},
+		basestats = {training_loyalty = 3, training_spirit = 1, charm_bonus = 5},
 	},
 	
 	anastasia_broken_bracelet = {#
@@ -1603,7 +1602,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'anastasiaBroken'}],
 		effects = [],
 		tags = ['no_random'],
-		basestats = {obedience_drain = -3, loyalty_gain = 1.5, charm_bonus = 5},
+		basestats = {charm_bonus = 5}, #no update for this item
 	},
 
 	daisy_dress = {
@@ -1621,7 +1620,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'daisy'}],
 		effects = [],#'e_maid_dress_effect'],
 		tags = ['no_random'],
-		basestats = {charm_bonus = 15, obedience_drain = -6, loyalty_gain = 2},
+		basestats = {charm_bonus = 15, training_loyalty = 3, training_spirit = 3},
 	},
 	daisy_dress_lewd = {
 		code = 'daisy_dress_lewd',
@@ -1638,7 +1637,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'daisy'}],
 		effects = [],#'e_maid_dress_effect'],
 		tags = ['no_random'],
-		basestats = {lusttick = 0.35, sexuals_bonus = 20},
+		basestats = {lusttick = 0.35, sexuals_bonus = 20, training_loyalty = 2, training_spirit = 1},
 	},
 	jacket = {
 		code = 'jacket',
@@ -1803,7 +1802,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],#'e_maid_dress_effect'],
 		tags = ['no_random'],
-		basestats = {obedience_drain = -4, loyalty_gain = 0.75},
+		basestats = {training_loyalty = 2, training_spirit = -1},
 	},
 	cali_exquisite_collar = {
 		code = 'cali_exquisite_collar',
@@ -1820,7 +1819,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],#'e_maid_dress_effect'],
 		tags = ['no_random'],
-		basestats = {obedience_drain = -5, loyalty_gain = 1.5},
+		basestats = {training_loyalty = 3, training_spirit = 1},
 	},
 	cali_collar_enchanted = {
 		code = 'cali_collar_enchanted',
@@ -1837,7 +1836,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],#'e_maid_dress_effect'],
 		tags = ['no_random'],
-		basestats = {obedience_drain = -6, loyalty_gain = 1, sexuals_bonus = 10},
+		basestats = {training_loyalty = 4, training_spirit = -2, sexuals_bonus = 10},
 	},
 	cali_collar_enchanted_2 = {
 		code = 'cali_collar_enchanted_2',
@@ -1854,7 +1853,7 @@ var itemlist = {
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],#'e_maid_dress_effect'],
 		tags = ['no_random'],
-		basestats = {obedience_drain = -7, loyalty_gain = 1.7, sexuals_bonus = 15},
+		basestats = {training_loyalty = 5, sexuals_bonus = 15},
 	},
 	enslaving_collar = {
 		code = 'enslaving_collar',
@@ -1869,9 +1868,9 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/enslaving_collar.png"),
 		tier = 'medium',
 		reqs = [],
-		effects = [],#'e_maid_dress_effect'],
+		effects = ['e_i_collar'],#'e_maid_dress_effect'],
 		tags = ['no_random'],
-		basestats = {obedience_drain = -5, loyalty_gain = 3, damage_mod_all = -0.9, productivity = -0.9},
+		basestats = { damage_mod_all = -0.9, productivity = -0.9},
 	},
 
 
@@ -3300,7 +3299,7 @@ var itemlist = {
 		price = 250,
 		icon = load("res://assets/images/iconsgear/item_worker_gloves.png"),
 		tier = 'medium',
-		reqs = [{code = 'trait', trait = 'loyalty_dress_work', check = true}],
+		reqs = [],
 		effects = [],
 		tags = [],
 		basestats = {mod_collect = 0.1, mod_farm = 0.1, mod_smith = 0.1, mod_build = 0.15},
@@ -3317,7 +3316,7 @@ var itemlist = {
 		price = 250,
 		icon = load("res://assets/images/iconsgear/item_gauntlets.png"),
 		tier = 'medium',
-		reqs = [{code = 'trait', trait = 'loyalty_combatant', check = true}],
+		reqs = [],
 		effects = [],
 		tags = [],
 		basestats = {physics_bonus = 10, armor = 3},
@@ -3334,7 +3333,7 @@ var itemlist = {
 		price = 200,
 		icon = load("res://assets/images/iconsgear/item_circlet.png"),
 		tier = 'medium',
-		reqs = [{code = 'trait', trait = 'loyalty_combatant', check = true}],
+		reqs = [],
 		effects = [],
 		tags = [],
 		basestats = {matk = 10},
@@ -3351,7 +3350,7 @@ var itemlist = {
 		price = 1000,
 		icon = load("res://assets/Textures_v2/MANSION/crown.png"),
 		tier = 'hard',
-		reqs = [{code = 'trait', trait = 'loyalty_combatant', check = true}],
+		reqs = [],
 		effects = [],
 		tags = ['no_random'],
 		basestats = {resist_mind = 75, mdef = 15},
@@ -5363,14 +5362,14 @@ var curses = {
 #		capacity_multiplyer = 1.25
 		statmods = {enchant_capacity_mul = 1.25}
 	},
-	distrust_minor = {
-		name = '',
-		descript = '',
-		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
-		effects = ['curse_distrust_1'],
-#		capacity_multiplyer = 1.25
-		statmods = {enchant_capacity_mul = 1.25}
-	},
+#	distrust_minor = {
+#		name = '',
+#		descript = '',
+#		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+#		effects = ['curse_distrust_1'],
+##		capacity_multiplyer = 1.25
+#		statmods = {enchant_capacity_mul = 1.25}
+#	},
 	stub_major = {
 		name = '',
 		descript = '',
@@ -5417,14 +5416,14 @@ var curses = {
 #		capacity_multiplyer = 1.5
 		statmods = {enchant_capacity_mul = 1.5}
 	},
-	distrust_major = {
-		name = '',
-		descript = '',
-		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
-		effects = ['curse_distrust_2'],
-#		capacity_multiplyer = 1.5
-		statmods = {enchant_capacity_mul = 1.5}
-	},
+#	distrust_major = {
+#		name = '',
+#		descript = '',
+#		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+#		effects = ['curse_distrust_2'],
+##		capacity_multiplyer = 1.5
+#		statmods = {enchant_capacity_mul = 1.5}
+#	},
 }
 
 

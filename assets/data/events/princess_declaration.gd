@@ -439,7 +439,6 @@ var data = {
 				reqs = [],
 				bonus_effects = [
 				{code = 'unique_character_changes', value = 'anastasia', args = [
-					{code = 'submission', operant = '+', value = 25},
 					{code = 'vaginal_virgin', operant = '=', value = false},
 				]},
 				{code = 'decision', value = 'anastasia_rape'},
@@ -700,7 +699,6 @@ var data = {
 				dialogue_argument = 1,
 				bonus_effects = [
 				{code = 'unique_character_changes', value = 'anastasia', args = [
-					{code = 'loyalty', operant = '+', value = 25},
 					{code = 'vaginal_virgin', operant = '=', value = false},
 					]},
 				{code = 'decision', value = 'anstasia_sex_scene'},
@@ -923,7 +921,6 @@ var data = {
 				reqs = [],
 				bonus_effects = [
 				{code = 'unique_character_changes', value = 'anastasia', args = [
-					{code = 'submission', operant = '+', value = 25},
 					{code = 'vaginal_virgin', operant = '=', value = false},
 				]},
 				{code = 'decision', value = 'anastasia_rape'},

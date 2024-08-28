@@ -840,14 +840,14 @@ func finish_character():
 				preservedsettings.slave_class = 'slave1'
 			person.set_slave_category(preservedsettings.slave_class.to_lower())
 			#basic slave setup
-			person.set_stat('obedience', 48)
-			if guild == 'fighters':
-				person.add_trait('loyalty_combatant')
-			if guild in ['servants', 'workers']:
-				person.add_trait('loyalty_dress_work')
+#			if guild == 'fighters':
+#				person.add_trait('loyalty_combatant')
+#			if guild in ['servants', 'workers']:
+#				person.add_trait('loyalty_dress_work')
 		else:
 			person.set_slave_category('master')
 			person.set_stat('consent', 100)
+			person.set_stat('timid_factor', 5)
 			globals.equip_char(person, 'chest_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
 			globals.equip_char(person, 'legs_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
 		ResourceScripts.game_party.add_slave(person)

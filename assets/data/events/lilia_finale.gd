@@ -1,4 +1,5 @@
 extends Reference
+#!!!needs complete rework of reqs
 var data = {
 	lilia_finale_1 = {
 		image = "letter",

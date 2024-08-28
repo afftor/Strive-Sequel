@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.gd" type="Script" id=2]
@@ -26,12 +26,12 @@
 [ext_resource path="res://assets/images/portraits/aire_prt.png" type="Texture" id=24]
 [ext_resource path="res://gui_modules/CharacterInfo/RelativesPanel.gd" type="Script" id=25]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/ButtonTextOnly.tres" type="Theme" id=26]
-[ext_resource path="res://gui_modules/CharacterInfo/LUpgradesList.tscn" type="PackedScene" id=27]
+[ext_resource path="res://gui_modules/CharacterInfo/TrUpgradesList.tscn" type="PackedScene" id=27]
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods.png" type="Texture" id=28]
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods_pressed.png" type="Texture" id=29]
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mods_hover.png" type="Texture" id=30]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_30.tres" type="DynamicFont" id=31]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/frame_skilltree.png" type="Texture" id=32]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/panel_trainings.png" type="Texture" id=32]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/food_filter/bg_food_filter.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/food_filter/button_close_default.png" type="Texture" id=34]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/food_filter/panel_food_filter.png" type="Texture" id=35]
@@ -47,6 +47,10 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_bold.png" type="Texture" id=45]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/cirlcle.png" type="Texture" id=46]
 [ext_resource path="res://gui_modules/CharacterInfo/MUpgradesList.tscn" type="PackedScene" id=47]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/button_relativies_default.png" type="Texture" id=48]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/button_relativies_hover.png" type="Texture" id=49]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/button_relativies_pressed.png" type="Texture" id=50]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/bg.png" type="Texture" id=51]
 
 [sub_resource type="DynamicFont" id=3]
 size = 36
@@ -390,7 +394,7 @@ margin_bottom = 309.0
 columns = 2
 
 [node name="lock" type="CheckBox" parent="work_rules"]
-margin_right = 411.0
+margin_right = 368.0
 margin_bottom = 48.0
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -405,7 +409,7 @@ custom_styles/focus = SubResource( 7 )
 text = "WORKRULELOCK"
 
 [node name="ration" type="CheckBox" parent="work_rules"]
-margin_left = 415.0
+margin_left = 372.0
 margin_right = 783.0
 margin_bottom = 48.0
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -422,7 +426,7 @@ text = "WORKRULERATION"
 
 [node name="shifts" type="CheckBox" parent="work_rules"]
 margin_top = 52.0
-margin_right = 411.0
+margin_right = 368.0
 margin_bottom = 100.0
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -436,27 +440,11 @@ custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 8 )
 text = "WORKRULESHIFTS"
 
-[node name="constrain" type="CheckBox" parent="work_rules"]
-margin_left = 415.0
+[node name="luxury" type="CheckBox" parent="work_rules"]
+margin_left = 372.0
 margin_top = 52.0
 margin_right = 783.0
 margin_bottom = 100.0
-custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 20 )
-custom_icons/checked_disabled = ExtResource( 9 )
-custom_icons/checked = ExtResource( 17 )
-custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 9 )
-text = "WORKRULECONSTRAIN"
-
-[node name="luxury" type="CheckBox" parent="work_rules"]
-margin_top = 104.0
-margin_right = 411.0
-margin_bottom = 152.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -470,9 +458,8 @@ custom_styles/focus = SubResource( 9 )
 text = "UPGRADELUXURY_ROOMS"
 
 [node name="contraceptive" type="CheckBox" parent="work_rules"]
-margin_left = 415.0
 margin_top = 104.0
-margin_right = 783.0
+margin_right = 368.0
 margin_bottom = 152.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -487,9 +474,10 @@ custom_styles/focus = SubResource( 9 )
 text = "WORKRULECONTRACEPTIVE"
 
 [node name="personality_lock" type="CheckBox" parent="work_rules"]
-margin_top = 156.0
-margin_right = 411.0
-margin_bottom = 204.0
+margin_left = 372.0
+margin_top = 104.0
+margin_right = 783.0
+margin_bottom = 152.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -503,9 +491,8 @@ custom_styles/focus = SubResource( 9 )
 text = "WORKRULEPERSONALITY_LOCK"
 
 [node name="nudity" type="CheckBox" parent="work_rules"]
-margin_left = 415.0
 margin_top = 156.0
-margin_right = 783.0
+margin_right = 368.0
 margin_bottom = 204.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -524,9 +511,11 @@ custom_icons/unchecked = ExtResource( 9 )
 text = "WORKRULENUDITY"
 
 [node name="masturbation" type="CheckBox" parent="work_rules"]
-margin_top = 208.0
-margin_right = 411.0
-margin_bottom = 256.0
+visible = false
+margin_left = 372.0
+margin_top = 156.0
+margin_right = 783.0
+margin_bottom = 204.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -616,9 +605,6 @@ text = "SIBLINGMODULETRAITCAPACITY"
 align = 1
 valign = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RelativesPanel" type="Control" parent="."]
 visible = false
@@ -790,29 +776,19 @@ __meta__ = {
 }
 
 [node name="UpgradesPanel" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="UpgradesPanel"]
-margin_left = 891.238
-margin_top = 101.301
-margin_right = 1599.24
-margin_bottom = 825.301
-texture = ExtResource( 32 )
+margin_left = 822.0
+margin_right = 1671.0
+margin_bottom = 920.0
+texture = ExtResource( 51 )
 
-[node name="Label" type="Label" parent="UpgradesPanel"]
-margin_left = 1432.0
-margin_top = 848.0
-margin_right = 1601.0
-margin_bottom = 888.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = ExtResource( 31 )
-text = "100"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="TextureRect" type="TextureRect" parent="UpgradesPanel/TextureRect"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 32 )
 
 [node name="Label2" type="Label" parent="UpgradesPanel"]
 margin_left = 995.938
@@ -824,21 +800,9 @@ custom_fonts/font = ExtResource( 22 )
 text = "SIBLINGMODULETRAININGS"
 align = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ScrollContainer" type="ScrollContainer" parent="UpgradesPanel"]
-margin_left = 890.0
-margin_top = 102.0
-margin_right = 1639.0
-margin_bottom = 826.0
-theme = ExtResource( 15 )
-scroll_horizontal_enabled = false
-
-[node name="UpgradesList" parent="UpgradesPanel/ScrollContainer" instance=ExtResource( 27 )]
 
 [node name="ScrollContainer2" type="ScrollContainer" parent="UpgradesPanel"]
+visible = false
 margin_left = 890.0
 margin_top = 102.0
 margin_right = 1639.0
@@ -847,6 +811,22 @@ theme = ExtResource( 15 )
 scroll_horizontal_enabled = false
 
 [node name="UpgradesList2" parent="UpgradesPanel/ScrollContainer2" instance=ExtResource( 47 )]
+
+[node name="Label" type="Label" parent="UpgradesPanel"]
+margin_left = 1432.0
+margin_top = 848.0
+margin_right = 1601.0
+margin_bottom = 888.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 31 )
+text = "100"
+align = 1
+
+[node name="UpgradesList" parent="UpgradesPanel" instance=ExtResource( 27 )]
+margin_left = 844.0
+margin_top = 88.0
+margin_right = 1644.0
+margin_bottom = 889.0
 
 [node name="personality" type="TextureRect" parent="."]
 margin_left = 398.0
@@ -932,10 +912,10 @@ __meta__ = {
 }
 
 [node name="PersonalityLabel" type="Label" parent="personality"]
-margin_left = -49.389
-margin_top = 391.108
-margin_right = 368.611
-margin_bottom = 423.108
+margin_left = -69.0
+margin_top = 354.0
+margin_right = 274.0
+margin_bottom = 448.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
 text = "Current Personality"
@@ -949,9 +929,6 @@ margin_bottom = 70.8112
 texture = ExtResource( 21 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ConditionsTooltip" type="TextureRect" parent="."]
 margin_left = 736.642
@@ -975,13 +952,13 @@ expand = true
 stretch_mode = 6
 
 [node name="change_button" type="TextureButton" parent="."]
-margin_left = 892.88
-margin_top = 847.244
-margin_right = 1022.88
-margin_bottom = 887.244
-texture_normal = ExtResource( 28 )
-texture_pressed = ExtResource( 29 )
-texture_hover = ExtResource( 30 )
+margin_left = 617.0
+margin_top = 834.0
+margin_right = 807.0
+margin_bottom = 891.0
+texture_normal = ExtResource( 48 )
+texture_pressed = ExtResource( 50 )
+texture_hover = ExtResource( 49 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -996,14 +973,15 @@ valign = 1
 clip_text = true
 
 [node name="change_button2" type="TextureButton" parent="."]
-margin_left = 1086.51
-margin_top = 847.135
-margin_right = 1216.51
-margin_bottom = 887.135
+visible = false
+margin_left = 616.0
+margin_top = 835.0
+margin_right = 806.0
+margin_bottom = 892.0
 toggle_mode = true
-texture_normal = ExtResource( 28 )
-texture_pressed = ExtResource( 29 )
-texture_hover = ExtResource( 30 )
+texture_normal = ExtResource( 48 )
+texture_pressed = ExtResource( 50 )
+texture_hover = ExtResource( 49 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1018,6 +996,7 @@ valign = 1
 clip_text = true
 
 [node name="change_button3" type="TextureButton" parent="."]
+visible = false
 margin_left = 1246.51
 margin_top = 847.135
 margin_right = 1376.51

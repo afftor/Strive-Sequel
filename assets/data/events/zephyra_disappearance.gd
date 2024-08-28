@@ -987,9 +987,7 @@ var data = {
 		reqs = [], character = 'zephyra',
 		text = [{text = "ZEPHYRA_BRUSH_16_3", reqs = []},
 		],
-		common_effects = [{code = 'unique_character_changes', value = 'zephyra', args = [
-					{code = 'obedience', operant = '-', value = 90}]},
-					{code = 'add_item', item = 'zephyra_brush', number = 1}],
+		common_effects = [{code = 'add_item', item = 'zephyra_brush', number = 1}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		} ]

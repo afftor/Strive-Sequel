@@ -41,6 +41,9 @@ func open(classcode, person):
 		if i == "advanced_combat":
 			newicon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png")
 			globals.connecttexttooltip(newicon, tr("TRAITADVANCED_COMBAT"))
+		if i == "trainer":
+			newicon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png") #2fix
+			globals.connecttexttooltip(newicon, tr("TRAITTRAINER"))
 		if newicon.texture == null:
 			$ReqIcons.remove_child(newicon)
 	

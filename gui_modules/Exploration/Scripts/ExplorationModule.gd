@@ -182,7 +182,7 @@ func slave_position_selected(pos, character):
 	if character.has_status('no_combat'):
 		input_handler.SystemMessage(character.translate(tr("CHAR_NO_COMBAT")))
 		return
-	elif !character.is_master() and !character.has_status('combatant'):
+	elif !character.is_combatant():
 		input_handler.SystemMessage(character.translate(tr("NO_FIGHT_LOW_OBED")))
 		return
 	character = character.id
@@ -447,9 +447,9 @@ func build_location_group():
 		return
 	active_location.group.clear()
 	for ch in ResourceScripts.game_party.characters.values():
-		if !ch.has_profession('master') && ch.get_stat('obedience') == 0:
+		if !ch.is_combatant() == 0:
 			continue
-		if ch.check_location(active_location.id, true) and ch.combat_position != 0 and !ch.has_status('no_combat') and ch.has_status('combatant'):
+		if ch.check_location(active_location.id, true) and ch.combat_position != 0 and !ch.has_status('no_combat') and ch.is_combatant():
 			if !active_location.group.has(['pos' + str(ch.combat_position)]):
 				active_location.group['pos' + str(ch.combat_position)] = ch.id
 	for i in positiondict:

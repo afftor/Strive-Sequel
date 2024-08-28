@@ -39,7 +39,7 @@ func slave_position_selected(character):
 	if character.has_status('no_combat'):
 		input_handler.SystemMessage(character.translate("[name] has sustained a grave injury and is unable to participate in fights."))
 		return
-	elif !character.is_master() and !character.has_status('combatant'):
+	elif !character.is_combatant():
 		input_handler.SystemMessage(character.translate("[name] refuses to participate in a fight (low obedience).")) #2fix
 		return
 	character = character.id

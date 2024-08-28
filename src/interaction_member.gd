@@ -3,8 +3,6 @@ extends Reference
 var name
 var person
 var mood
-var submission
-var loyalty
 var lust = 0 setget lust_set
 var sens = 0 setget sens_set
 var sensmod = 1.0
@@ -119,8 +117,6 @@ func setup_person(ch, no_loyal = false):
 	person_metrics = person.get_stat('metrics', true)
 	person_relations = person.get_stat('relations', true)
 	person_mods = person.get_stat('mods', true)
-	if !no_loyal: loyalty = ch.get_stat('loyalty')
-	submission = ch.get_stat('obedience')
 	sex = ch.get_stat('sex')
 	lust = ch.get_stat('lust')*10
 	sens = 0
@@ -172,7 +168,7 @@ func stamina_set(value):
 		endvalue = endvalue*0.66
 	stamina -= endvalue
 	if stamina <= 0:
-		person.add_stat('obedience', (value + stamina))
+#		person.add_stat('obedience', (value + stamina))
 		stamina = 0
 
 var impregnation_texts = {
@@ -281,13 +277,13 @@ func orgasm(custom_text = null):
 	if stamina > 0:
 		stamina += max(20 + 5*person.get_stat('sexuals_factor') - orgasms*10, 0)
 	
-	if sceneref.participants.size() == 2 && person.has_profession("master"):
-		if person.check_trait("Monogamous") && (sceneref.participants[0].person.has_profession("master") || sceneref.participants[1].person.has_profession("master")):
-			person.add_stat('loyalty', rand_range(1.4,5.6))
-		else:
-			person.add_stat('loyalty', rand_range(1,4))
-	elif person.has_profession("master"):
-		person.add_stat('loyalty', rand_range(1,2))
+#	if sceneref.participants.size() == 2 && person.has_profession("master"):
+#		if person.check_trait("Monogamous") && (sceneref.participants[0].person.has_profession("master") || sceneref.participants[1].person.has_profession("master")):
+#			person.add_stat('loyalty', rand_range(1.4,5.6))
+#		else:
+#			person.add_stat('loyalty', rand_range(1,4))
+#	elif person.has_profession("master"):
+#		person.add_stat('loyalty', rand_range(1,2))
 	#anus in use, find scene
 	if anus != null:
 		scene = anus
@@ -546,10 +542,10 @@ func actioneffect(values, scenedict):
 
 	if values.has('tags'):
 		if values.tags.has('punish'):
-			if (person.predict_obed_time() < 90) && (!person.check_trait('Masochist') && !person.check_trait('Likes it rough') && !person.check_trait('Sex-crazed')):
+			if (!person.check_trait('Masochist') && !person.check_trait('Likes it rough') && !person.check_trait('Sex-crazed')):
 				for i in scenedict.givers:
 					globals.addrelations(person, i.person, -rand_range(5,10))
-				person.add_stat('obedience', values.obed)
+#				person.add_stat('obedience', values.obed)
 #					person.stress += values.stress
 				if effects.has("captured") && randf() >= values.obed/2:
 					effects.captured.duration -= 1

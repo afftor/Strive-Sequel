@@ -610,7 +610,6 @@ func set_baby_name(text):
 	var person = ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby]
 #	person.baby_transform()
 	input_handler.active_character.get_stat('pregnancy', true).baby = null
-	person.set_stat('obedience', 24)
 	person.set_stat('name', text)
 	person.setup_as_heir()
 	ResourceScripts.game_party.add_slave(person, true)

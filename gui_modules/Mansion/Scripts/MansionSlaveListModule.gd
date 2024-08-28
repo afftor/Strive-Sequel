@@ -143,7 +143,7 @@ func build_for_travel(person, newbutton):
 	if person.travel.location == get_parent().selected_destination || get_parent().selected_destination == null || person.travel.location == "travel":
 		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
 		newbutton.disabled = true
-	elif (person.predict_obed_time() <= 0) && !person.is_controllable():
+	elif !person.is_controllable():
 		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
 		newbutton.disabled = true
 	else:
@@ -277,7 +277,7 @@ func build_sex_selection(person, newbutton):
 			button.get_node("SexIcon").self_modulate = Color(variables.hexcolordict.yellow)
 		else:
 			button.get_node("SexIcon").self_modulate = Color(variables.hexcolordict.green)
-		if !person.has_status("dating"):
+		if !person.has_status("relation"):
 			button.get_node("DateIcon").self_modulate = Color(variables.hexcolordict.red)
 		elif person.tags.has("no_date_day") || ResourceScripts.game_globals.weekly_dates_left < 1:
 			button.get_node("DateIcon").self_modulate = Color(variables.hexcolordict.yellow)
@@ -487,10 +487,6 @@ func update_button(newbutton):
 		else:
 			newbutton.get_node("job/Label").text =  Items.materiallist[person.get_work()].name
 	
-	
-	newbutton.get_node("obed").max_value = person.get_stat('obedience_max')
-	newbutton.get_node("obed").value = person.get_stat('obedience')
-
 	if person.get_next_class_exp() <= person.get_stat('base_exp'):
 		newbutton.get_node("explabel").set("custom_colors/font_color", Color(variables.hexcolordict.levelup_text_color))
 	else:
@@ -517,47 +513,15 @@ func update_button(newbutton):
 			#newbutton.get_node('Location').text = tr(ploc.name)
 	newbutton.get_node("job").disabled = false
 	newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict.k_gray)
-	if !person.has_status('basic_servitude'):
+	if !person.is_combatant(): #for conditions for work and combat are the same
 		newbutton.get_node("job").disabled = true
 		newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict['red'])
-		globals.connecttexttooltip(newbutton.get_node("job"), person.translate("[name] lacks Training: Basic Servitude"))
+		globals.connecttexttooltip(newbutton.get_node("job"), person.translate("[name] has no trainer"))
 	if person.travel.location == "travel" || person.is_on_quest():
 		newbutton.get_node("job").disabled = true
 		newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict['red'])
 	newbutton.get_node("state").texture = person.get_class_icon()
 
-
-
-var obed_textures = {
-	high = load("res://assets/images/gui/gui icons/obedience1.png"),
-	med = load("res://assets/images/gui/gui icons/obedience2.png"),
-	low = load("res://assets/images/gui/gui icons/obedience3.png")
-}
-var fear_textures = {
-	high = load('res://assets/images/gui/gui icons/fear1.png'),
-	med = load("res://assets/images/gui/gui icons/fear2.png"),
-	low = load("res://assets/images/gui/gui icons/fear3.png")
-}
-
-func get_obed_texture(tempchar):
-	var rval
-	if tempchar.obedience >= 50:
-		rval = 'high'
-	elif tempchar.obedience < tempchar.timid_factor * 7:
-		rval = 'low'
-	else:
-		rval = 'med'
-	return obed_textures[rval]
-
-func get_fear_texture(tempchar):
-	var rval
-	if tempchar.submission >= 50:
-		rval = 'high'
-	elif tempchar.submission < tempchar.timid_factor * 7:
-		rval = 'low'
-	else:
-		rval = 'med'
-	return fear_textures[rval]
 
 var stateicons = {
 	work = load('res://assets/images/gui/gui icons/workicon.png'),

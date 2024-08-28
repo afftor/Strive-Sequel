@@ -405,10 +405,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate',],
 		character = 'bandits',
 		reqs = [],
-		common_effects = [{code = 'money_change', operant = '+', value = 1000},
-		{code = 'unique_character_changes', value = 'aire', args = [
-					{code = 'obedience', operant = '-', value = 30},
-					]}],
+		common_effects = [{code = 'money_change', operant = '+', value = 1000}],
 		text = [{text = 'TEMPLE_4_1', reqs = [{type = "location_has_specific_slaves", check = true, value = 1, location = 'quest_temple_location', reqs = [
 					{code = 'unique', value = 'aire'}]}]},
 				{text = 'TEMPLE_4_2', reqs = [{type = "location_has_specific_slaves", check = false, value = 1, location = 'quest_temple_location', reqs = [

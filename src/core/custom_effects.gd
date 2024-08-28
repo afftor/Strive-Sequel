@@ -98,22 +98,22 @@ func writ_of_exemption(character):
 func writ_of_exemption_use(): #possibly rework
 	var character = person
 	var acceptance_req = 100
-	var acceptance_chance = 0
+	var acceptance_chance = 100
 	ResourceScripts.game_res.remove_item("writ_of_exemption", 1)
 	input_handler.scene_characters = [person]
 	if gui_controller.inventory.visible:
 		gui_controller.close_scene(gui_controller.inventory)
 	if gui_controller.slavepanel.visible:
 		gui_controller.close_scene(gui_controller.slavepanel)
-	if character.get_stat('loyalty') == 100:
-		acceptance_chance = 100
-	else:
-		acceptance_chance = character.get_stat('loyalty')
-		acceptance_chance = acceptance_chance - acceptance_chance * variables.personality_conversion_rates[character.get_stat('personality')]
+#	if character.get_stat('loyalty') == 100:
+#		acceptance_chance = 100
+#	else:
+#		acceptance_chance = character.get_stat('loyalty')
+#		acceptance_chance = acceptance_chance - acceptance_chance * variables.personality_conversion_rates[character.get_stat('personality')]
 	if acceptance_chance >= randf()*acceptance_req:
 		input_handler.interactive_message_follow("writ_of_exemption_success",'char_translate',character)
 		character.set_slave_category('servant')
-		character.add_stat('loyalty', 25)
+#		character.add_stat('loyalty', 25)
 	else:
 		input_handler.interactive_message_follow("writ_of_exemption_failure",'char_translate',character)
 		ResourceScripts.game_party.add_fate(character.id, tr("WRITFAIL"))
