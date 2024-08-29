@@ -109,9 +109,9 @@ func update_characters():
 		if (selected_slot == null) and mode_farm:
 			newbutton.disabled = true 
 			globals.connecttexttooltip(newbutton, tr("SELECT_SLOT_FIRST_LABEL"))
-		if !person.has_status('basic_servitude') and !person.is_master() and !mode_farm:
+		if !person.is_combatant() and !mode_farm:
 			newbutton.disabled = true
-			globals.connecttexttooltip(newbutton, person.translate("[name]" + tr("LACKS_BASIC_SERV_LABEL")))
+			globals.connecttexttooltip(newbutton, person.translate("[name]" + tr("LACKS_BASIC_SERV_LABEL"))) #change translation
 		if selected_job != null and selected_job.has("code"):
 			if selected_job.code == "prostitution":
 				if person.has_status('no_sex'):
@@ -120,7 +120,7 @@ func update_characters():
 				if person.has_status('no_whoring'):
 					newbutton.disabled = true
 					globals.connecttexttooltip(newbutton, person.translate("[name] " + tr("REFUSE_THIS_TASK_LABEL")))
-				if !person.has_status('prostitution'): 
+				if !person.has_status('sexservice'):  #or mb advanced
 					newbutton.disabled = true
 					globals.connecttexttooltip(newbutton, person.translate("[name] " + tr("LACKS_PROSTITUTUION_LABEL")))
 			if selected_job.code in ['smith','alchemy','tailor','cooking']:

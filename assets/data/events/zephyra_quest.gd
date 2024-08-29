@@ -84,15 +84,9 @@ var data = {
 			custom_background = "church_event",
 			text = [{text = "ZEPHYRA_QUEST_8_1", reqs = [], previous_dialogue_option = 1},
 			{text = "ZEPHYRA_QUEST_8_2_GOOD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'gte', value = 50}]}], previous_dialogue_option = 2,
-			bonus_effects = [
-					{code = 'unique_character_changes', value = 'zephyra', args = [
-						{code = 'loyalty', operant = '+', value = 30},
-						]}],}, 
+			bonus_effects = [],}, 
 			{text = "ZEPHYRA_QUEST_8_2_BAD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'lt', value = 50}]}], previous_dialogue_option = 2}, 
-			{text = "ZEPHYRA_QUEST_8_3", reqs = [], previous_dialogue_option = 3, bonus_effects = [{code = 'money_change', operant = '-', value = 300}, 
-				{code = 'unique_character_changes', value = 'zephyra', args = [
-						{code = 'loyalty', operant = '+', value = 50},
-						]}]}],
+			{text = "ZEPHYRA_QUEST_8_3", reqs = [], previous_dialogue_option = 3, bonus_effects = [{code = 'money_change', operant = '-', value = 300},]}],
 			options = [ { 
 				code = 'zephyra_daisy_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			}, ]
@@ -102,15 +96,9 @@ var data = {
 			custom_background = "church_event",
 			text = [{text = "ZEPHYRA_QUEST_8_1", reqs = [], previous_dialogue_option = 1},
 			{text = "ZEPHYRA_QUEST_8_2_GOOD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'gte', value = 50}]}], previous_dialogue_option = 2,
-			bonus_effects = [
-					{code = 'unique_character_changes', value = 'zephyra', args = [
-						{code = 'loyalty', operant = '+', value = 30},
-						]}],}, 
+			bonus_effects = [],}, 
 			{text = "ZEPHYRA_QUEST_8_2_BAD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm', operant = 'lt', value = 50}]}], previous_dialogue_option = 2}, 
-			{text = "ZEPHYRA_QUEST_8_3", reqs = [], previous_dialogue_option = 3, bonus_effects = [{code = 'money_change', operant = '-', value = 300}, 
-				{code = 'unique_character_changes', value = 'zephyra', args = [
-						{code = 'loyalty', operant = '+', value = 50},
-						]}]}],
+			{text = "ZEPHYRA_QUEST_8_3", reqs = [], previous_dialogue_option = 3, bonus_effects = [{code = 'money_change', operant = '-', value = 300},]}],
 			options = [ { 
 				code = 'zephyra_visitor_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			}, ]
@@ -235,14 +223,8 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		reqs = [], character = "zephyra",
 		custom_background = "church_event",
-		text = [{text = "ZEPHYRA_QUEST_10_1", reqs = [], previous_dialogue_option = 1, bonus_effects = [
-				{code = 'unique_character_changes', value = 'anastasia', args = [
-					{code = 'loyalty', operant = '-', value = 30},
-					]}],},
-		{text = "ZEPHYRA_QUEST_10_2", reqs = [], previous_dialogue_option = 2, bonus_effects = [
-				{code = 'unique_character_changes', value = 'anastasia', args = [
-					{code = 'loyalty', operant = '+', value = 40},
-					]}],},
+		text = [{text = "ZEPHYRA_QUEST_10_1", reqs = [], previous_dialogue_option = 1, bonus_effects = [],},
+		{text = "ZEPHYRA_QUEST_10_2", reqs = [], previous_dialogue_option = 2, bonus_effects = [],},
 		{text = "ZEPHYRA_QUEST_10_3", reqs = [], previous_dialogue_option = 3}],
 		options = [ {
 			code = 'zephyra_quest_11', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
@@ -396,9 +378,7 @@ var data = {
 		reqs = [], character = "zephyra", character2 = "lilia",
 		text = [{text = "ZEPHYRA_LILIA_4_1", reqs = [], bonus_effects = [{code = 'money_change', operant = '-', value = 100}],}],
 		options = [{ 
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
-				{code = 'unique_character_changes', value = 'zephyra', args = [{code = 'loyalty', operant = '+', value = 50},
-			]}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = []
 		}, ]
 	},
 	zephyra_lilia_4_2 = {
@@ -406,9 +386,7 @@ var data = {
 		reqs = [], character = "zephyra", character2 = "lilia",
 		text = [{text = "ZEPHYRA_LILIA_4_2", reqs = []}],
 		options = [{ 
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
-				{code = 'unique_character_changes', value = 'lilia', args = [{code = 'loyalty', operant = '+', value = 50},
-			]}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = []
 		}, ]
 	},
 	zephyra_lilia_4_3 = {

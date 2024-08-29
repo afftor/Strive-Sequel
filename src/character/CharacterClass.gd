@@ -9,6 +9,7 @@ var skills = ResourceScripts.scriptdict.ch_skills.new()
 var travel = ResourceScripts.scriptdict.ch_travel.new()
 var effects = ResourceScripts.scriptdict.ch_effects.new()
 var food = ResourceScripts.scriptdict.ch_food.new()
+var training = ResourceScripts.scriptdict.ch_training.new()
 var displaynode = null
 var ai = null
 
@@ -18,7 +19,6 @@ var is_active = true
 var is_players_character = false
 var is_known_to_player = false #for purpose of private parts
 var npc_reference = null
-var last_escape_day_check
 var tags = []
 #base combat stats
 var hp = 100 setget hp_set, hp_get
@@ -59,6 +59,7 @@ func rebuild_parents():
 	travel.parent = weakref(self)
 	effects.parent = weakref(self)
 	food.parent = weakref(self)
+	training.parent = weakref(self)
 
 
 func clean_references():
@@ -126,6 +127,8 @@ func get_stat(statname, ref = false):
 		return calculate_price()
 	if statname.begins_with('food_') and !(statname in ['food_consumption']):
 		return food.get(statname)
+	if statname in ['spirit', 'loyalty']:
+		return training.get(statname)
 	if statname == 'pregnancy_status':
 		if has_status('heavy_pregnant'):
 			return 'heavy'
@@ -196,11 +199,6 @@ func set_stat(stat, value):
 	statlist.set_stat(stat, value)
 	recheck_effect_tag('recheck_stats')
 
-
-func get_obed_percent_value():
-	return statlist.get_obed_percent_value()
-
-
 func add_stat_bonuses(ls:Dictionary):
 	statlist.add_stat_bonuses(ls)
 	recheck_effect_tag('recheck_stats')
@@ -232,6 +230,8 @@ func add_stat(statname, value, revert = false):
 		else:
 			xp_module.abil_exp += value
 			
+	elif statname in ['spirit', 'loyalty']:
+		training.add_stat(statname, value, revert)
 	else: statlist.add_stat(statname, value, revert)
 	recheck_effect_tag('recheck_stats')
 
@@ -276,11 +276,8 @@ func create_s_trait_select(trait):
 func fill_masternoun():
 	statlist.fill_masternoun()
 #questionable
-func is_uncontrollable():
-	return statlist.is_uncontrollable()
-
-func is_controllable():
-	return statlist.is_controllable() or has_profession('master')
+func is_controllable(): #alias
+	return is_combatant()
 
 func has_profession(profession):
 	if profession in ['pet','petbeast']:
@@ -292,25 +289,18 @@ func check_trait(trait):
 	if is_master() and trait.begins_with('loyalty_'): return true
 	return statlist.check_trait(trait)
 
-func predict_obed_time():
-	return statlist.predict_obed_time()
-
 func predict_preg_time():
 	return statlist.predict_preg_time()
-
-func check_infinite_obedience():
-	return statlist.check_infinite_obedience()
-
 
 func get_class_icon():
 	if get_stat('slave_class') in ['master', 'heir', 'spouse']:
 		return images.icons[ResourceScripts.descriptions.bodypartsdata.slave_class[get_stat('slave_class')].icon]
-	elif get_stat('slave_spec') != null:
-		var upgrade_data = Traitdata.slave_profs[get_stat('slave_spec')]
-		if upgrade_data.icon_small is String:
-			return load(upgrade_data.icon_small)
-		else:
-			return upgrade_data.icon_small
+#	elif get_stat('slave_spec') != null:
+#		var upgrade_data = Traitdata.slave_profs[get_stat('slave_spec')]
+#		if upgrade_data.icon_small is String:
+#			return load(upgrade_data.icon_small)
+#		else:
+#			return upgrade_data.icon_small
 	else:
 		return images.icons[ResourceScripts.descriptions.bodypartsdata.slave_class[get_stat('slave_class')].icon]
 #end to add
@@ -400,6 +390,7 @@ func create(temp_race, temp_gender, temp_age):
 	learn_c_skill('attack')
 	statlist.create(temp_race, temp_gender, temp_age)
 	food.create()
+	training.setup_dispositions(get_stat('race'))
 	add_trait('core_trait')
 	recheck_effect_tag('recheck_stats')
 
@@ -474,18 +465,6 @@ func get_random_traits():
 func get_price_for_trait(tr_id):
 	return statlist.get_price_for_trait(tr_id)
 
-func get_next_slave_prof_lv_loyalty():
-	return statlist.get_next_slave_prof_lv_loyalty()
-
-func add_slave_prof_progress(value):
-	statlist.add_slave_prof_progress(value)
-
-func set_slave_prof(prof):
-	statlist.set_slave_prof(prof)
-
-func remove_slave_prof():
-	statlist.remove_slave_prof()
-
 
 func can_learn_skill(skill_id):
 	var skilldata = Skilldata.Skilllist[skill_id]
@@ -511,6 +490,7 @@ func unlearn_c_skill(skill):
 
 func cooldown_tick():
 	skills.cooldown_tick()
+	training.available = true
 
 
 func check_task(task):
@@ -561,9 +541,6 @@ func recruit(enslave = false):
 	travel.area = input_handler.active_area.code
 	if enslave == true:
 		set_slave_category('slave')
-		var eff =  effects_pool.e_createfromtemplate(Effectdata.effect_table.resist_state)
-		apply_effect(effects_pool.add_effect(eff))
-		eff.remains = 2 * (8 - get_stat('timid_factor'))
 		set_work_rule('bindings', true)
 	ResourceScripts.game_party.add_slave(self)
 
@@ -746,6 +723,12 @@ func can_use_skill(skill):
 func has_status(status):
 	var res = effects.has_status(status) or statlist.has_status(status) or xp_module.has_status(status) or tags.has(status)
 	return res
+
+func is_combatant():
+	if get_stat('slave_class') != 'slave':
+		return true
+	else:
+		return training.get_trainer() != null
 
 func has_work_rule(rule):
 	if !variables.work_rules.has(rule): return false
@@ -930,6 +913,43 @@ func recheck_equip():
 	equipment.recheck_equip()
 
 
+func get_trainer():
+	return training.get_trainer()
+
+func get_trainees():
+	return training.get_trainees()
+
+func get_dispositions_text():
+	return training.get_dispositions_text()
+
+func add_trainee(id):
+	training.add_trainee(id)
+
+func add_training(id):
+	training.add_training(id)
+
+func reset_training():
+	training.reset_training()
+
+func clear_training():
+	training.clear_training()
+
+func can_be_trainer():
+	var res = true
+	if get_stat('slave_class') == 'slave':
+		res = !training.enable
+	return res and has_status('trainer')
+
+func finish_training(internal = false):
+	training.finish_training(internal)
+
+func apply_training(tr_code):
+	training.apply_training(tr_code)
+
+func get_training_cost():
+	return training.get_training_cost()
+
+
 func serialize():
 	var res = inst2dict(self)
 	res.statlist = inst2dict(statlist)
@@ -939,6 +959,7 @@ func serialize():
 	res.travel = inst2dict(travel)
 	res.effects = inst2dict(effects)
 	res.food = inst2dict(food)
+	res.training = inst2dict(training)
 	return res
 
 func fix_serialization():
@@ -952,6 +973,7 @@ func fix_serialization():
 	travel = dict2inst(travel)
 	effects = dict2inst(effects)
 	food = dict2inst(food)
+	training = dict2inst(training)
 	rebuild_parents()
 	xp_module.fix_rules()
 	travel.fix_infinite_travel()
@@ -1047,8 +1069,7 @@ func death():
 func killed(direct_call = true):
 	if direct_call: process_event(variables.TR_DEATH)
 	equipment.clear_equip()
-#	input_handler.active_character = self
-#	input_handler.interactive_message('slave_escape', '', {})
+	training.clear_training()
 	ResourceScripts.game_party.add_fate(id, tr("DIED"))
 	is_active = false
 	ResourceScripts.game_party.character_order.erase(id)
@@ -1387,40 +1408,6 @@ func show_race_description():
 
 	return text
 
-func check_escape_chance():
-	var check = false
-#	if authority_level() == 'low' && get_stat('obedience') < 15 && get_stat('loyalty') < 100 && get_stat('submission') < 100:
-#		check = 45 - get_stat('obedience') - get_stat('timid_factor') * 7 > randf()*100
-	check = (get_stat('obedience') <= 0) #temporal
-	return check
-
-func check_escape_possibility():
-	last_escape_day_check = ResourceScripts.game_globals.date
-	if !check_escape_chance() || is_master() || has_status('no_escape'):
-		return false
-	var shackles_chance = get_stat('shackles_chance')
-	if shackles_chance != null:
-		var tmpchance = max(0, shackles_chance)
-		if randf()*100 <= tmpchance:
-			process_event(variables.TR_SHACKLES_OFF)
-			#shackles_chance = null
-			input_handler.emit_signal('shackles_off') #stub
-		return
-	escape()
-
-
-func escape():
-	process_event(variables.TR_REMOVE)
-	equipment.clear_equip()
-	input_handler.active_character = self
-	input_handler.interactive_message('slave_escape', '', {})
-#	ResourceScripts.game_party.add_fate(id, tr("ESCAPED"))
-#	is_active = false #for now, to replace with corresponding mechanic
-#	ResourceScripts.game_party.character_order.erase(id)
-#	characters_pool.call_deferred('cleanup')
-#	input_handler.slave_list_node.rebuild()
-	#state.text_log_add(get_short_name() + " has escaped. ")
-
 
 func escape_actions():
 	remove_from_work_quest()
@@ -1443,11 +1430,6 @@ func pretick():
 func tick():
 	if is_on_quest():
 		return
-	
-	if last_escape_day_check != ResourceScripts.game_globals.date and randf() <= 0.2 or ( get_stat('obedience') <= 0 and get_work() != 'travel'):
-		check_escape_possibility()
-		if !ResourceScripts.game_party.characters.has(self.id):
-			return
 	
 	var skip_work = false
 	if get_work() == '':
@@ -1478,8 +1460,6 @@ func rest_tick():
 	for e in find_temp_effect_tag('addition_rest_tick'):
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.process_event(variables.TR_TICK)
-	if ResourceScripts.game_res.upgrades.resting > 0 && check_location('mansion', true):
-		add_stat('obedience', get_stat('obedience_drain') * 0.5)
 
 
 func translate(text):
@@ -1558,6 +1538,8 @@ func apply_atomic(template):
 			remove_all_temp_effects_tag(template.value)
 		'add_trait':
 			add_trait(template.trait)
+		'remove_trait': #irrevercible
+			remove_trait(template.trait)
 		'add_sex_trait':
 			add_sex_trait(template.trait, true)
 		'unlock_sex_trait':

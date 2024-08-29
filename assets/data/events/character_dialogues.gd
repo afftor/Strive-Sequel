@@ -1,3 +1,4 @@
+#!!!needs complete rework of reqs
 var data = {
 	zephyra_dialogue_start = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'zephyra',

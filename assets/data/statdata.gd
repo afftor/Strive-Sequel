@@ -109,13 +109,6 @@ var statdata = {
 		abb = 'TIM',
 		direct = true
 	},
-	submission = {
-		code = 'submission',
-		name = '',
-		descript = '',
-		baseicon = 'stat_df',
-		type = '',
-	},
 	physics = {
 		code = 'physics',
 		name = '',
@@ -151,31 +144,6 @@ var statdata = {
 		type = 'primal',
 		custom_get = true
 	},
-	obedience = {
-		code = 'obedience',
-		name = '',
-		descript = '',
-		baseicon = 'stat_obed',
-		type = 'mental_stat',
-		direct = true
-	},
-	obedience_drain = {
-		code = 'obedience_drain',
-		name = '',
-		descript = '',
-		baseicon = 'stat_obed',
-		type = 'mental_stat',
-		is_negative = true,
-		custom_get = true,
-	},
-	obedience_max = {
-		code = 'obedience_max',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		type = 'misc',
-		custom_get = true
-	},
 	fear = {
 		code = 'fear',
 		name = '',
@@ -202,33 +170,36 @@ var statdata = {
 		code = 'loyalty',
 		name = '',
 		descript = '',
-		baseicon = 'stat_df',
-		type = '',
-		direct = true
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
 	},
-	loyalty_total = {
-		code = 'loyalty_total',
+	spirit = {
+		code = 'spirit',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+	},
+	training_loyalty = {
+		code = 'training_loyalty',
 		name = '',
 		descript = '',
 		baseicon = 'stat_df',
 		type = '',
-		direct = true
 	},
-	loyalty_gain = {
-		code = 'loyalty_gain',
+	trainig_spirit = {
+		code = 'trainig_spirit',
 		name = '',
 		descript = '',
 		baseicon = 'stat_df',
 		type = '',
-		custom_get = true
 	},
-	loyalty_traits_unlocked = {
-		code = 'loyalty_traits_unlocked',
+	trainee_amount = {
+		code = 'trainee_amount',
 		name = '',
 		descript = '',
 		baseicon = 'stat_df',
 		type = '',
-		direct = true
 	},
 	personality_bold = {
 		code = 'personality_bold',
@@ -627,6 +598,14 @@ var statdata = {
 	},
 	mod_pros = {
 		code = 'mod_pros',
+		name = '',
+		descript = '',
+		percent = true,
+		baseicon = 'food_love',
+		default_bonus = 'add_part'
+	},
+	mod_service = {
+		code = 'mod_service',
 		name = '',
 		descript = '',
 		percent = true,

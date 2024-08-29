@@ -670,8 +670,8 @@ func update_char_button(newbutton, person):
 	var twork = person.get_work()
 	match twork:
 		'':
-			if !person.has_status('basic_servitude') and !person.is_master():
-				newbutton.get_node("job").text = tr('NOSERVITUDE')
+			if !person.is_combatant():
+				newbutton.get_node("job").text = tr('NOSERVITUDE') #change translation
 				newbutton.pressed = false
 				newbutton.disabled = true
 			else:

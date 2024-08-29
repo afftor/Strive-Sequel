@@ -49,25 +49,6 @@ func update_button(newbutton):
 	else:
 		newbutton.get_node("HBoxContainer/job").text = tasks.tasklist[person.get_work()].name
 	
-	if !person.check_infinite_obedience():
-#		newbutton.get_node("HBoxContainer/obed").text = str(ceil(person.xp_module.predict_obed_time()))
-#		if person.xp_module.predict_obed_time() <= 0:
-#			newbutton.get_node("HBoxContainer/obed").set("custom_colors/font_color", Color(variables.hexcolordict.red))
-#		elif person.xp_module.predict_obed_time() <= 10:
-#			newbutton.get_node("HBoxContainer/obed").set("custom_colors/font_color", Color(variables.hexcolordict.yellow))
-#		else:
-#			newbutton.get_node("HBoxContainer/obed").set("custom_colors/font_color", Color(variables.hexcolordict.green))
-		var obed_val = person.get_obed_percent_value()
-		newbutton.get_node("HBoxContainer/obed").text = "%d%%" % obed_val
-		if obed_val > 40:
-			newbutton.get_node("HBoxContainer/obed").set("custom_colors/font_color", variables.hexcolordict.green)
-		elif obed_val > 15:
-			newbutton.get_node("HBoxContainer/obed").set("custom_colors/font_color", variables.hexcolordict.yellow)
-		else:
-			newbutton.get_node("HBoxContainer/obed").set("custom_colors/font_color", variables.hexcolordict.red)
-	else:
-		newbutton.get_node("HBoxContainer/obed").text = "∞"
-	
 	if person.get_next_class_exp() <= person.get_stat('base_exp'):
 		newbutton.get_node("HBoxContainer/explabel").set("custom_colors/font_color", Color(variables.hexcolordict.levelup_text_color))
 	else:
@@ -85,28 +66,6 @@ func update_button(newbutton):
 func open_slave_tab(character):
 	input_handler.ShowSlavePanel(character)
 
-var obed_textures = {high = images.icons.obed1, med = images.icons.obed2, low = images.icons.obed3}
-var fear_textures = {high = images.icons.fear1, med = images.icons.fear2, low = images.icons.fear3}
-
-func get_obed_texture(tempchar):
-	var rval 
-	if tempchar.get_stat('obedience') >= 50:
-		rval = 'high'
-	elif tempchar.get_stat('obedience') < tempchar.get_stat('timid_factor')*7:
-		rval = 'low'
-	else:
-		rval = 'med'
-	return obed_textures[rval]
-
-func get_fear_texture(tempchar):
-	var rval
-	if tempchar.get_stat('submission') >= 50:
-		rval = 'high'
-	elif tempchar.get_stat('submission') < tempchar.get_stat('timid_factor')*7:
-		rval = 'low'
-	else:
-		rval = 'med'
-	return fear_textures[rval]
 
 func get_state_texture(tempchar):
 	return

@@ -219,13 +219,13 @@ var TranslationDict = {
 	NEWGAMESTART = "Start Game",
 	
 	PRESETDATADEBUGEASYNAME = "easy",
-	PRESETDATADEBUGEASYDIS = "Easier difficulty, you start with more gold and resources. Obedience drain is reduced. Loan payments are reduced",
+	PRESETDATADEBUGEASYDIS = "Easier difficulty, you start with more gold and resources. Loan payments are reduced",
 	
 	PRESETDATADEBUGNORMALNAME = "normal",
 	PRESETDATADEBUGNORMALDIS = "Standard difficulty for players with a reasonable grasp at management games.",
 	
 	PRESETDATADEBUGHARDNAME = "hard",
-	PRESETDATADEBUGHARDDIS = "Challenging difficulty. Obedience drains faster, defeated characters are lost forever. Loan payments aren't cancelled with prologue completion. Factors can't be upgraded at slave market (except growth). ",
+	PRESETDATADEBUGHARDDIS = "Challenging difficulty. Defeated characters are lost forever. Loan payments aren't cancelled with prologue completion. Factors can't be upgraded at slave market (except growth). ",
 	
 	PRESETDATADEBUGIMPORTNAME = "import",
 	PRESETDATADEBUGIMPORTDIS = "Start with only a Master. ",
@@ -596,14 +596,14 @@ However, while it might seem that Landowners have nothing but contempt for those
 	MATERIALHERBS = "",
 	MATERIALHERBSDESCRIPT = "",
 	MATERIALINK_TRIBAL = "Ink: Power",
-	MATERIALINK_BRANDINGDESCRIPT = "A set of tools and ink allowing to apply a certain magical signature on the subject. Initially implemented by graziers and tamers, branding was adopted by slavery societies to establish dominance over the conquered. Tattoos are not nearly as painful to apply but nethertheless just as degrading, featuring the name of the owner.\n\nApplied to: {color=yellow|Neck, Ass, Crotch}\n\nObedience Drain -2, Loyalty Gain +1.\nCan only be applied once.",
+	MATERIALINK_BRANDINGDESCRIPT = "A set of tools and ink allowing to apply a certain magical signature on the subject. Initially implemented by graziers and tamers, branding was adopted by slavery societies to establish dominance over the conquered. Tattoos are not nearly as painful to apply but nethertheless just as degrading, featuring the name of the owner.\n\nApplied to: {color=yellow|Neck, Ass, Crotch}\n\nLoyalty +0.5 per day, Spirit -0.5 per day.\nCan only be applied once.\nWorks only during training.",
 	MATERIALINK_MAKEUPDESCRIPT = "A set of tools and ink allowing to apply a certain magical signature on the subject. While makeup might not be enough to turn the Beast into the Beauty, its a favorable option for the lazy.\n\nApplied to: {color=yellow|Face}\n\nCharm: +10.",
 	MATERIALINK_LUSTDESCRIPT = "A set of tools and ink allowing to apply a certain magical signature on the subject. An obscene crest causing the owner to grow lewder, even against their will...\n\nApplied to: {color=yellow|Crotch, Chest, Ass}\n\nLust Growth: +10%; +20% if applied to Crotch.",
 	MATERIALINK_HPDESCRIPT = "A set of tools and ink allowing to apply a certain magical signature on the subject. An ancient being signatures which strengthening life force.\n\nApplied to: {color=yellow|Arms, Legs, Waist}\n\nHealth Regeneration: +20%.",
 	MATERIALINK_MPDESCRIPT = "A set of tools and ink allowing to apply a certain magical signature on the subject. Energy to supply magic is generally scarce, but this unknown signia will resupply the bearer with some additional traces from the air.\n\nApplied to: {color=yellow|Arms, Legs, Waist}\n\nMana Regeneration: +10%.",
 	MATERIALINK_TRIBALDESCRIPT = "A set of tools and ink allowing to apply a certain magical signature on the subject. The technique of this special ink has been salvaged from the clan of fierce warriors. \n\nApplied to: {color=yellow|Face, Chest, Arms, Legs}\n\nWhen applied to Face: +5 Health\nOtherwise: +3 Physics",
 
-	TATTOOBRANDDESCRIPT = "A sign of your ownership. Reduce Obedience drain by 2 and increase Loyalty Growth by 1.",
+	TATTOOBRANDDESCRIPT = "A sign of your ownership. Loyalty +0.5 per day, Spirit -0.5 per day.",
 	TATTOOLUSTDESCRIPT = "Lust Growth: +10%",
 	TATTOOLUST2DESCRIPT = "Lust Growth: +20%",
 	TATTOOMAKEUPDESCRIPT = "Charm: +10",
@@ -1270,6 +1270,29 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ACTIONTYPESEXUAL = "Sexual",
 	ACTIONTYPEMAGIC = "Magic",
 
+	ACTIONPRAISESCENETEXT = "[name1] has spent some time praising [name2] for [his2] latest work, emphasizing on [his2] acceptance of [his2] slave role.",
+	ACTIONREWARDSCENETEXT = "[name1] gave 10 gold coins to [name2]. This should make [him2] feel better about [his2] dwelling.",
+	ACTIONDAYOFFSCENETEXT = "[name1] has allowed [name2] to have a day off the work in order to restore [his2] energy and boost [his2] behavior.",
+	ACTIONSLAPSCENETEXT = "[name1] loudly slaps [name2] across the face, displaying [his1] power over [him2]. The red mark on [his2] cheek will make a good reminder for this lesson for the next hour. ",
+	ACTIONSPANKSCENETEXT = "[name1] orders [name2] to lay down and expose [his2] rear. Once [he2] comply, the spanking session beggins, slowly breaking [name2] down to sobs.",
+	ACTIONWHIPSCENETEXT = "[name1] ties [name2]'s hands to the iron bars, after which takes a soft whip and slowly begins to 'educate' [him2] on [his2] role.",
+	ACTIONSCOLDSCENETEXT = "[name1] berates [name2]'s recent work imposing [his1] dominance over [him2]. ",
+	ACTIONINSULTSCENETEXT = "[name1] calls [name2] offending names, comparing [him2] to unsavory things. This shall help [name2] to accept [his2] lower place.",
+	ACTIONKNEELSCENETEXT = "[name1] orders [name2] to stand on [his2] knees before [him1]. As [he2] complies, [name1] keeps putting [him2] down while also praising [his2] obedience.",
+	ACTIONSHAMESCENETEXT = "[name1] makes a loud scene of [name2] in front of other servants. [He1] goes into details on how bad [his2] recent work was, making an example out of [him2]. ",
+	ACTIONPUNISHSCENETEXT = "[name1] publicly punishes [name2] in front of other servants. The humiliating experience shall greatly reinforce [his2] role and acceptance.",
+	ACTIONMOLESTSCENETEXT = "[name1] gropes [name2] in sexual ways in front of others. This is certain display of possession over [his2] body.",
+	ACTIONGROPESCENETEXT = "[name1] possessively gropes [name2] in a sexual ways while whispering lewd things on [his2] ears. Not being able to resist [his1] advances, [name1] can only endure this ordeal.",
+	ACTIONSTRIPSCENETEXT = "[name1] orders [name2] to strip [his2] clothes before [him2]. With the reluctance, [name2] is forced to demonstrate [his2] body as a sign of submission.",
+	ACTIONRAPESCENETEXT = "[name1] physically assaults [name2] who is unable to say no. As a part of training, [name1] brings [him2] to a forced orgasm, leaving [him2] in turmoil over this submissive experience.",
+	ACTIONPUBLICUSESCENETEXT = "[name1] puts [name2] into a glory hole room of one of underground brothels. After a few hours [name2] is retrieved in shambles after this cruel experience.",
+	ACTIONMINDREADSCENETEXT = "[name1] uses [his1] magic powers to peer into soul of [name2], learning some new things about [him2].",
+	ACTIONINFLUENCESCENETEXT = "[name1] slightly influences [name2]'s mind instilling the ideas of submission and obedience to being a slave.",
+	ACTIONSTRONGINFLUENCESCENETEXT = "[name1] greatly influences [name2]'s mind with the ideas of obedience and submission, [his2] mind gets filled with positive thoughts about slavery.",
+	ACTIONMINDCONTROLSCENETEXT = "[name1] uses strong magic to dominate [name2]'s mind, slowly rewriting it into a nice obedient slave.",
+	ACTIONEDGINGSCENETEXT = "[name1] teasingly brings [name2] to orgasm but in the last moment stops [his1] movements, preventing [name2] from cumming. This goes on for a few more times until [name2] gives up begging for release. ",
+
+
 	WORKTOOL = "Work Tool",
 	WORKTOOLAXE = "Lumber Axe",
 	WORKTOOLROD = "Fishing Tools",
@@ -1486,6 +1509,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SLAVEAGEMATURE = "Mature",
 
 	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master.",
+	#FIX!!!
 	SERVANTCLASSDESCRIPT = "Subordinates are free people who choose to serve under you. Compared to slaves they have faster Loyalty Growth, lower Obedience Drain but can't be sold or given away for quests. They also receive a payment as fraction of their value each week.",#Peons generally have the same rights of others, but are purchased to serve a master. Many folks end up as peons as a way to pay their, or their family's debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
 	HEIRCLASSDESCRIPT = "Mansion's heir are children born of [Master] and their spouse.\n\n[color=aqua]Heir's Obedience drain 50% slower and Loyalty is 50% faster. Heir has 20% penalty to Collection, Farming and Fishing.[/color] ",
 
@@ -1614,7 +1638,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATOBEDIENCE = "Obedience",
 	STATOBEDIENCEDESCRIPT = "Obedience is a character's willingness to obey your orders. Obedience is gained by using social skills. When depleted character can escape and will be lost in case that happens. ",
 	STATLOYALTY = "Loyalty",
-	STATLOYALTYDESCRIPT = "Loyalty points allow you to unlock new abilities for your servants. Loyalty is gained passively based on character's Tame Factor but can also be improved on dates and usage of social skills.",
+	STATLOYALTYDESCRIPT = "Loyalty points allow you to unlock new abilities for your servants. Loyalty is gained passively based on character's Tame Factor but can also be improved on dates and usage of social skills.", #2fix
 	STATSUBMISSION = "Submission",#Obsolete
 	STATSUBMISSIONDESCRIPT = "Submission is built with punishing skills. It will decrease with time unless maxed out. Maxed out Submission will no longer require Obedience for work and stops escapes.",
 	STATAUTHORITY = "Authority",#Obsolete
@@ -2029,7 +2053,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	CONSENT5 = "Kinky",
 	CONSENT6 = "Deviant",
 
-	TRAITMASTERDESCRIPT = "Social skills build targets Loyalty 30% faster. \nIsn't affected by Obedience or Loyalty. Will not resist any assignments, actions or attempt escapes.",
+	TRAITMASTERDESCRIPT = "Can train servants. Will not resist any assignments or actions.",
 	TRAITWORKERDESCRIPT = "Woodcutting and Mining are 50% more efficient.",
 	TRAITFOREMANDESCRIPT = "Woodcutting and Mining are 33% more efficient",
 	TRAITHUNTERDESCRIPT = "Fishing and Hunting are 50% more efficient.",
@@ -2049,7 +2073,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITVALKYRIE_SPEARDESCRIPT = "+10 Speed while equipped with Spear.",
 	TRAITAUTOHIDE = "Conceal.",
 	TRAITAUTOHIDEDESCRIPT = "Starts combat in Hide if no Heavy or Medium Armor is equipped.",
-	TRAITDEATHKNIGHTDESCRIPT = "Dealing a killing blow increases Loyalty.",
+	TRAITDEATHKNIGHTDESCRIPT = "Dealing a killing blow increases random stat.",
 	TRAITNINJADESCRIPT = "Gain evasion based on your MDEF. Minimal chance for evading hit is reduced to 5%.",
 	TRAITWITCHDESCRIPT = "Your critical hits with spells apply random debuff. Healing spells have chance to apply healing over time.",
 	TRAITWARLOCKDESCRIPT = "Single target spells gain 25% increased critical chance and deal 75% bonus critical damage.",
@@ -2243,7 +2267,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITEFFECTHARDWORK = "Hard Work: +50%% Productivity",
 	TRAITEFFECTPHYSBUF = "Elixir of Ogre's Strength: +80 Physics",
 	TRAITEFFECTWITSBUF = "Elixir of Expanded Mind: +80 Wits",
-	TRAITEFFECTFAVFOOD = "Favorite Food: -1 Obedience Drain, +0.5 Loyalty Gain.", 
+	TRAITEFFECTFAVFOOD = "Favorite Food: +5%% Productivity, +5%% Experience Gain", 
 	TRAITEFFECTHATEDFOOD = "Hated Food: -10%% Productivity.",
 	TRAITEFFECTSTARVE = "Starvation: -50%% Productivity, -50%% Damage.",
 	TRAITEFFECTGRAVEINJ = "Grave Injury: -25%% Productivity, -50 Sexuals. Can't participate in Combat.",
@@ -2493,7 +2517,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	PROFBISHOPDESCRIPT = "Only selected few manage to reach this rank. Highest members of the church capable of unleashing divine powers.",
 	PROFSPOUSE = "Husband",
 	PROFSPOUSEALT = "Wife",
-	PROFSPOUSEDESCRIPT = "An officially engaged spouse of Mansion's [Master]. Obedience Drain is 0. Loyalty Gain +3.",
+	PROFSPOUSEDESCRIPT = "An officially engaged spouse of Mansion's [Master]. Can train 2 more persons.",
 	
 	PROFFREYAS_PRIESTESS = "Former Freya's Priestess",
 	PROFFREYAS_PRIESTESSDESCRIPT = "Once a high priestess of elves, now this title hold more bluster than power.",
@@ -2511,7 +2535,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	PROFNINJADESCRIPT = "Especially agile individuals are trained to evade many attacks as well as also resist magic.",
 	
 	TRAITRENOWN = "Renown",
-	TRAITRENOWNDESCRIPT = "Gracious skills provide 50% more Loyalty. ",
+	TRAITRENOWNDESCRIPT = "Gracious skills provide increased chance of training success. ",
 	
 	SKILLWINDWALL = "Wind Wall",
 	SKILLWINDWALLDESCRIPT = "Reduces ally line received ranged damage by 50% for 4 turns.",
@@ -2604,7 +2628,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	UPGRADEROOMSBONUS4 = "Increases maximum number of hosted characters to 25.",
 	UPGRADEROOMSBONUS5 = "Increases maximum number of hosted characters to 30.",
 	UPGRADELUXURY_ROOMS = "Luxury Rooms",
-	UPGRADELUXURY_ROOMSDESCRIPT = "Increases maximum number of available Luxury Rooms. Luxury Rooms will reduce Obedience Drain and increase Loyalty Gain to its residents. ",
+	UPGRADELUXURY_ROOMSDESCRIPT = "Increases maximum number of available Luxury Rooms. Luxury Rooms will increase Productivity, Experience and Loyalty Gain to its residents. ",
 	UPGRADELUXURYROOMSBONUS1 = "Increases maximum number of available Luxury Rooms to 2.",
 	UPGRADELUXURYROOMSBONUS2 = "Increases maximum number of available Luxury Rooms to 3.",
 	UPGRADELUXURYROOMSBONUS3 = "Increases maximum number of available Luxury Rooms to 4.",
@@ -3593,7 +3617,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	WORKRULECONSTRAIN = "Coerced Labor",
 	WORKRULECONSTRAINDESCRIPT = "Character is forced to work at their best via strict regulations. Boosts productivity by 15%. Obedience Drain is increased by 6.",
 	WORKRULELUXURY = "Private Room",
-	WORKRULELUXURYDESCRIPT = "Character will have a personal room to live at. Obedience Drain -3, Loyalty Gain +0.5",
+	WORKRULELUXURYDESCRIPT = "Character will have a personal room to live at. Productivity and Experience Gain +5%, Loyalty Gain +0.5 per day.",
 	
 	WORKRULECONTRACEPTIVE = "Contraceptive",
 	WORKRULECONTRACEPTIVEDESCRIPT = "Prevents pregnancy and impregnation for selected character.",

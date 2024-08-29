@@ -4,6 +4,8 @@ extends Control
 #authority & consent - increase directly from some actions (punishments/intimacy)
 #loyalty/submission get buff
 
+#need to remove all resist_state checks - for they are obsolete 
+
 var location
 var master
 var person
@@ -228,23 +230,21 @@ func initiate(tempperson):
 		$panel/categories/Location.disabled = false
 		location = 'livingroom'
 		text = tr("DATING_LIVING_ROOM_TEXT_1")
-		if person.has_temp_effect('resist_state'):
-			text += "[he2] reluctantly follows you having no other choice, still sore from [his2] encapture."
-			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start_angry')) + "\n"
-		elif person.get_stat('loyalty_total') >= 35:
-			text += tr("DATING_LIVING_ROOM_TEXT_2")
-			self.mood += 10
-			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start_happy')) + "\n"
-		elif person.get_stat('obedience') >= 40:
-			self.mood += 4
-			text += tr("DATING_LIVING_ROOM_TEXT_3")
-			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start')) + "\n"
-		else:
-
-			text += tr("DATING_LIVING_ROOM_TEXT_4")
-			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start')) + "\n"
-
-
+#		if person.has_temp_effect('resist_state'):
+#			text += "[he2] reluctantly follows you having no other choice, still sore from [his2] encapture."
+#			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start_angry')) + "\n"
+#		elif person.get_stat('loyalty_total') >= 35:
+#			text += tr("DATING_LIVING_ROOM_TEXT_2")
+#			self.mood += 10
+#			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start_happy')) + "\n"
+#		elif person.get_stat('obedience') >= 40:
+#			self.mood += 4
+#			text += tr("DATING_LIVING_ROOM_TEXT_3")
+#			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start')) + "\n"
+#		else:
+#
+#			text += tr("DATING_LIVING_ROOM_TEXT_4")
+#			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start')) + "\n"
 	self.showntext = globals.TextEncoder(text)
 	updatelist()
 	$panel/categories/Affection.emit_signal("pressed")
@@ -844,7 +844,7 @@ func propose(person, counter):
 
 	if gave_consent == false:
 		var difficulty =  self.mood * 2 + drunkness * 6
-		if person.has_status('sex_basic'): difficulty += 40
+#		if person.has_status('sex_basic'): difficulty += 40# 2 rework
 		if dislike_same_sex():
 			difficulty -= 25
 	#	if globals.state.relativesdata.has(person.id) && (int(globals.state.relativesdata[person.id].father) == int(globals.player.id) || int(globals.state.relativesdata[person.id].mother) == int(globals.player.id)):
@@ -1008,7 +1008,7 @@ func ask_to_marry(person, counter):
 				
 				break
 	else:
-		if person.check_trait('loyalty_adv_servitude') && person.check_trait('loyalty_callmaster'):
+		if person.has_status('relation'): #fix, this one is always true
 			gave_consent = true
 	
 	
@@ -1049,7 +1049,7 @@ func praise(person, counter):
 
 	if person.has_temp_effect('resist_state') == false:
 		self.mood += 15
-		person.add_stat('obedience', 50)
+#		person.add_stat('obedience', 50)
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.praise_accept)
 		text += "}"
@@ -1098,33 +1098,33 @@ func scold(person, counter):
 func rubears(person, counter):
 	var text = input_handler.weightedrandom(date_lines.rubears_initiate) + "\n\n"
 
-	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty_total') >= 50 && 8 - counter > 3:
-		self.mood += 8 - counter
-		text += "{color=green|"
-		text += input_handler.weightedrandom(date_lines.rubears_accept)
-		text += "}"
-		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
-	else:
-		self.mood -= 2
-		text += "{color=red|"
-		text += input_handler.weightedrandom(date_lines.rubears_resist)
-		text += "}"
+#	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty_total') >= 50 && 8 - counter > 3:
+#		self.mood += 8 - counter
+#		text += "{color=green|"
+#		text += input_handler.weightedrandom(date_lines.rubears_accept)
+#		text += "}"
+#		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
+#	else:
+#		self.mood -= 2
+#		text += "{color=red|"
+#		text += input_handler.weightedrandom(date_lines.rubears_resist)
+#		text += "}"
 	return character_description(text)
 
 func stroketail(person, counter):
 	var text = input_handler.weightedrandom(date_lines.stroketail_initiate) + "\n\n"
 
-	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty_total') >= 65 && 11 - counter*1.5 > 2:
-		self.mood += 11 - counter*1.5
-		text += "{color=green|"
-		text += input_handler.weightedrandom(date_lines.stroketail_accept)
-		text += "}"
-		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
-	else:
-		self.mood -= 3
-		text += "{color=red|"
-		text += input_handler.weightedrandom(date_lines.stroketail_resist)
-		text += "}"
+#	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty_total') >= 65 && 11 - counter*1.5 > 2:
+#		self.mood += 11 - counter*1.5
+#		text += "{color=green|"
+#		text += input_handler.weightedrandom(date_lines.stroketail_accept)
+#		text += "}"
+#		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
+#	else:
+#		self.mood -= 3
+#		text += "{color=red|"
+#		text += input_handler.weightedrandom(date_lines.stroketail_resist)
+#		text += "}"
 	return character_description(text)
 #	var text = ''
 #	text += "You gently stroke [name2]'s tail. "
@@ -1493,7 +1493,7 @@ func item_selected(item):
 func alcohol(person):
 	var text = ''
 	text += tr("DATING_ALCO_1")
-	if self.mood < 15 || !person.has_status('basic_servitude'):
+	if self.mood < 15 || !person.has_status('relation'): #or another trait, basic servitude removed
 		text += tr("DATING_ALCO_2")
 	else:
 		text += tr("DATING_ALCO_3")
@@ -1541,8 +1541,8 @@ func calculateresults():
 	var endmood = floor(self.mood)
 	var endfear = floor(self.fear)
 
-	var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table['date_bonus'])
-	person.apply_effect(effects_pool.add_effect(eff))
+#	var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table['date_bonus'])
+#	person.apply_effect(effects_pool.add_effect(eff))
 	var obedience = 100
 	var authority = 0
 	var consent = 0
@@ -1569,9 +1569,9 @@ func calculateresults():
 		+ tr("DATING_AUTHORITY_1") + str(authority) + tr("DATING_PHYSF_BONUS_1") + str(master.get_stat("physics_factor")*4)+")"
 		+ tr("DATING_PHYSF_BONUS_2")
 		)
-		person.add_stat("loyalty", loyalty)
+#		person.add_stat("loyalty", loyalty)
 	
-	person.add_stat("obedience", obedience)
+#	person.add_stat("obedience", obedience)
 
 	if person.get_stat('consent') >= 2:
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_sex_offer')) + tr("DATING_SEX_OFFER_1")

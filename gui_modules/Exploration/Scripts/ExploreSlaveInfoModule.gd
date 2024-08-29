@@ -37,27 +37,6 @@ func update(person = null, from_dialogue = false):
 		current_person = person
 	if person != null:
 		var text = ""
-		if person.check_infinite_obedience() == false:
-#			$Panel/obedlabel.text = str(ceil(person.xp_module.predict_obed_time()))
-			var obed_val = person.get_obed_percent_value()
-			$Panel/obedlabel.text = "%d%%" % obed_val
-			if obed_val > 40:
-				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.green)
-			elif obed_val > 15:
-				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.yellow)
-			else:
-				$Panel/obedlabel.set("custom_colors/font_color", variables.hexcolordict.red)
-		else:
-			$Panel/obedlabel.text = "∞"
-		if person.check_infinite_obedience() == true || person.predict_obed_time() > 0:
-			$Panel/obedlabel/icon.texture = images.icons.obed_good
-		else:
-			$Panel/obedlabel/icon.texture = images.icons.obed_bad
-	
-	
-		$Panel/loyaltylabel.value = person.get_stat('loyalty')
-		$Panel/submissionlabel.value = person.get_stat('submission')
-		
 		$Panel/personality.text = tr("PERSONALITYCURRENT") + "\n" + tr("PERSONALITYNAME" + person.get_stat('personality').to_upper())
 		globals.connecttexttooltip($Panel/personality, tr("INFOPERSONALITY" + person.get_stat('personality').to_upper()))
 		
@@ -77,12 +56,7 @@ func update(person = null, from_dialogue = false):
 
 		globals.connecttexttooltip($food_love,"[center]" +statdata.statdata.food_love.name + "[/center]\n"+  statdata.statdata.food_love.descript)
 		globals.connecttexttooltip($food_hate,"[center]" +statdata.statdata.food_hate.name + "[/center]\n"+ statdata.statdata.food_hate.descript)
-		globals.connecttexttooltip($Panel/obedlabel/icon, statdata.statdata.obedience.descript)
-#		globals.connecttexttooltip($Panel/loyaltylabel, statdata.statdata.loyalty.descript)
-		globals.connecttexttooltip($Panel/loyaltylabel, "%.1f" % person.get_stat('loyalty'))
-#		globals.connecttexttooltip($Panel/authoritylabel, statdata.statdata.authority.descript)
-		globals.connecttexttooltip($Panel/submissionlabel, statdata.statdata.submission.descript)	
-
+		
 		for i in $BaseStatsPanel/resists.get_children():
 			var tmp = person.get_stat('resists')
 			if variables.resists_list.has(i.name):

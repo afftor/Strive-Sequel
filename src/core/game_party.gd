@@ -24,7 +24,6 @@ func advance_day():
 	update_global_cooldowns()
 	for i in characters.values():
 		i.tags.erase("no_date_day")
-		i.tags.erase("no_loyalty_gain_temp")
 		i.cooldown_tick()
 		i.process_event(variables.TR_DAY)
 		i.quest_day_tick()
@@ -74,12 +73,12 @@ func fix_import():
 		characters[p].fix_import()
 
 #slaves operations
-func unlock_mentor():
-	for p in characters:
-		if characters[p].is_master(): 
-			continue
-		for tr in variables.mentorship_list:
-			characters[p].add_trait(tr)
+#func unlock_mentor():
+#	for p in characters:
+#		if characters[p].is_master(): 
+#			continue
+#		for tr in variables.mentorship_list:
+#			characters[p].add_trait(tr)
 
 
 func add_slave(person, child = false):
@@ -103,6 +102,7 @@ func add_slave(person, child = false):
 func remove_slave(tempslave, permanent = false):
 	tempslave.remove_from_task()
 	tempslave.unequip_all()
+	tempslave.clear_training()
 	tempslave.process_event(variables.TR_REMOVE)
 	characters_pool.move_to_pool(tempslave.id)
 	tempslave.is_players_character = false
@@ -120,8 +120,8 @@ func subtract_taxes():
 			continue
 		if !ch.get_stat('slave_class') == 'servant':
 			continue
-		tax += ch.calculate_price()
-	ResourceScripts.game_res.money -= int (tax / 100)
+		tax += ch.calculate_price() * (1.0 - 0.05 * ch.get_stat('tame_factor'))
+	ResourceScripts.game_res.money -= int (3 * tax / 100)
 
 #arguable here
 func update_global_cooldowns():
@@ -140,10 +140,7 @@ func get_food_consumption():
 func predict_char_event():
 	var res = 1000
 	for i in characters.values():
-		var tmp = i.predict_obed_time()
-		if tmp + 1 < res:
-			res = tmp + 1
-		tmp = i.predict_preg_time()
+		var tmp = i.predict_preg_time()
 		if tmp != null and tmp < res:
 			res = tmp
 	return int(ceil(res))

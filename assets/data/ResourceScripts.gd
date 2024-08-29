@@ -28,6 +28,7 @@ var scriptdict = {
 	ch_travel = "res://src/character/ch_travelling.gd",
 	ch_effects = "res://src/character/ch_effects.gd",
 	ch_food = "res://src/character/ch_food.gd",
+	ch_training = "res://src/character/ch_training.gd",
 	combat_animation = "res://src/combat/CombatAnimations.gd",
 	sexinteraction_parser = "res://src/sexdescriptions.gd",
 	sexinteraction_member = "res://src/interaction_member.gd",

@@ -181,10 +181,7 @@ var data = {
 			code = 'cali_farmer_5', text = "CALI_FARMER_4_OPTION_1_1", reqs = [{type = 'has_material', operant = 'gte', value = 100, material = 'wood'},{type = "decision", value = "cali_wood_discount", check = true}], dialogue_argument = 1, type = 'next_dialogue',
 		},
 		{
-			code = 'cali_farmer_4', text = "CALI_FARMER_4_OPTION_2", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'worker', check = true}]}], dialogue_argument = 3, type = 'next_dialogue', remove_after_first_use = true, bonus_effects = [
-				{code = 'decision', value = 'cali_wood_discount'},
-				{code = 'unique_character_changes', value = 'cali', args = [{code = 'loyalty', operant = '+', value = 20},]},
-			],
+			code = 'cali_farmer_4', text = "CALI_FARMER_4_OPTION_2", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'worker', check = true}]}], dialogue_argument = 3, type = 'next_dialogue', remove_after_first_use = true, bonus_effects = [{code = 'decision', value = 'cali_wood_discount'},],
 		},
 		{
 			code = 'cali_farmer_6', text = "CALI_FARMER_4_OPTION_3", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
@@ -468,12 +465,7 @@ var data = {
 		character = "cali",
 		text = [ 
 			{text = "CALI_WILLIAM_8_1", reqs = [], previous_dialogue_option = 1},
-			{text = "CALI_WILLIAM_8_2", reqs = [], previous_dialogue_option = 2, bonus_effects = [{code = 'unique_character_changes', value = 'cali', args = [
-					{code = 'loyalty', operant = '+', value = 25},
-					{code = 'obedience', operant = '+', value = 100},
-				]},
-				{code = 'decision', value = 'cali_keep'}]},
-		],
+			{text = "CALI_WILLIAM_8_2", reqs = [], previous_dialogue_option = 2, bonus_effects = [{code = 'decision', value = 'cali_keep'}]},],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'update_city'}]
 		},
@@ -598,7 +590,6 @@ var data = {
 					{code = 'take_virginity', type = 'vaginal', partner = 'william'},
 					{code = 'take_virginity', type = 'anal', partner = 'william'},
 					{code = 'metrics_randompartners', operant = '+', value = 3},
-					{code = 'obedience', operant = '=', value = 20},
 				]
 			},
 		],
@@ -657,7 +648,6 @@ var data = {
 			value = 'cali',
 			args = [
 				{code = 'take_virginity', type = 'vaginal', partner = 'master'},
-				{code = 'obedience', operant = '+', value = 90},
 			]
 		},],
 		text = [ {text = "CALI_GRAT_4", reqs = []} ], 
