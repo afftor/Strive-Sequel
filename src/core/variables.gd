@@ -82,8 +82,8 @@ var farming_rules = ['milk', 'pheromones', 'seed', 'eggs', 'magic_dust', 'reptil
 
 var skin_coverage_false = ['scale','fur_white','fur_grey','fur_brown','fur_stripped','fur_black','fur_orange','fur_orange_white'] #list of skincoverage blocking skin desription
 
-var exterior_stats = ['beard', 'ass_size', 'tits_size', 'penis_size', 'balls_size', 'eye_tex', 'chin', 'eyebrows', 'hair_base', 'hair_assist', 'hair_back', 'hair_fringe', 'hair_base_length', 'hair_assist_length', 'hair_back_length', 'hair_fringe_length',] #stats that a backuped on sex change, sure colors should not be here
-var exterior_stats_composite = ['hair_length', 'hair_style'] #stats that are NOT backuped but used in regeneration procedure
+var exterior_stats = ['beard', 'ass_size', 'tits_size', 'penis_size', 'balls_size', 'eye_tex', 'chin', 'eyebrows', 'hair_base_length', 'hair_assist_length', 'hair_back_length', 'hair_fringe_length',] #stats that a backuped on sex change, sure colors should not be here
+var exterior_stats_composite = ['hair_length'] #stats that are NOT backuped but used in regeneration procedure
 var personal_stats = ['hair_color', 'hair_style', 'hair_length', 'name', "nickname", 'race', 'sex', 'age', 'height', 'eye_color', "eye_shape", 'ears', 'skin', "horns", "wings","tail", "body_lower", "body_shape", "penis_size", "penis_type", "balls_size", "tits_size", "ass_size", "multiple_tits", "multiple_tits_developed","skin_coverage", 'eyeshape', 'eye_tex', 'eyebrows', 'lips', 'chin', 'nose', 'body_color_skin', 'body_color_wings', 'body_color_tail', 'body_color_horns', 'body_color_animal', 'hair_base', 'hair_base_length', 'hair_fringe', 'hair_fringe_length', 'hair_assist', 'hair_assist_length', 'hair_back', 'hair_back_length', 'hair_back_color_1', 'hair_back_color_2', 'hair_assist_color_1', 'hair_assist_color_2', 'hair_base_color_1', 'hair_base_color_2', 'beard', 'hair_facial_color', 'icon_image', 'body_image', ] #stats used to fully change identity
 
 var booster_tiers = {
