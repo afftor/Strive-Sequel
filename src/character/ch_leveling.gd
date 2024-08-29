@@ -166,6 +166,7 @@ func fix_serialize():
 
 
 func fix_import():
+	remove_class('spouse')
 	is_on_quest = false
 	work = ''
 	workproduct = null
