@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_36.tres" type="DynamicFont" id=2]
@@ -9,23 +9,25 @@
 [ext_resource path="res://assets/Textures_v2/craft/buttons/button_return_pressed.png" type="Texture" id=7]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=8]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_unactive.png" type="Texture" id=9]
-[ext_resource path="res://assets/Textures_v2/JOB_MODULE/button_job_sqr_hover.png" type="Texture" id=10]
-[ext_resource path="res://assets/Textures_v2/JOB_MODULE/button_job_sqr_pressed.png" type="Texture" id=11]
-[ext_resource path="res://assets/Textures_v2/JOB_MODULE/button_job_sqr.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/craft/enchant/buttonviolet.png" type="Texture" id=10]
+[ext_resource path="res://assets/Textures_v2/craft/enchant/buttonviolet_pressed.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/craft/enchant/buttonviolet_hover.png" type="Texture" id=12]
 [ext_resource path="res://assets/Textures_v2/craft/panel_item.png" type="Texture" id=13]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionImproveModule.gd" type="Script" id=14]
 [ext_resource path="res://assets/images/iconsgear/ArmorBasicCloth.png" type="Texture" id=15]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_30.tres" type="DynamicFont" id=16]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_20_normal.tres" type="DynamicFont" id=17]
+[ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_hover.png" type="Texture" id=18]
+[ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_default.png" type="Texture" id=19]
+[ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_prassed.png" type="Texture" id=20]
+[ext_resource path="res://assets/Textures_v2/craft/enchant/panel_item.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/craft/panel_enchant_big.png" type="Texture" id=22]
-[ext_resource path="res://assets/Textures_v2/craft/panel_item_ench.png" type="Texture" id=26]
 [ext_resource path="res://assets/Textures_v2/craft/background_panel_enchant.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=28]
 [ext_resource path="res://assets/Textures_v2/craft/buttons/button_apply.png" type="Texture" id=29]
 [ext_resource path="res://assets/Textures_v2/craft/buttons/button_apply_hover.png" type="Texture" id=30]
 [ext_resource path="res://assets/Textures_v2/craft/buttons/button_apply_pressed.png" type="Texture" id=31]
 [ext_resource path="res://assets/Textures_v2/craft/exchant.png" type="Texture" id=32]
-[ext_resource path="res://assets/Textures_v2/craft/panel_enchant.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE/icon_question_small.png" type="Texture" id=34]
 [ext_resource path="res://assets/Textures_v2/craft/enchant_bg.png" type="Texture" id=36]
 [ext_resource path="res://assets/Textures_v2/craft/enchant_item_bg.png" type="Texture" id=37]
@@ -118,9 +120,9 @@ visible = false
 margin_right = 100.0
 margin_bottom = 100.0
 toggle_mode = true
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 11 )
-texture_hover = ExtResource( 10 )
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 20 )
+texture_hover = ExtResource( 18 )
 texture_disabled = ExtResource( 9 )
 
 [node name="Icon" type="TextureRect" parent="ItemList/ItemScroll/Items/Button"]
@@ -161,6 +163,15 @@ margin_right = -35.0
 margin_bottom = 963.0
 texture = ExtResource( 27 )
 
+[node name="TextureRect3" type="NinePatchRect" parent="EnchantPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 13 )
+patch_margin_left = 33
+patch_margin_top = 27
+patch_margin_right = 32
+patch_margin_bottom = 27
+
 [node name="SelectScroll" type="ScrollContainer" parent="EnchantPanel"]
 margin_left = 18.0
 margin_top = 190.0
@@ -169,18 +180,18 @@ margin_bottom = 834.0
 scroll_horizontal_enabled = false
 
 [node name="Items" type="GridContainer" parent="EnchantPanel/SelectScroll"]
-custom_constants/vseparation = 18
-custom_constants/hseparation = 18
-columns = 2
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 3
 
 [node name="Button" type="TextureButton" parent="EnchantPanel/SelectScroll/Items"]
 visible = false
 margin_right = 100.0
 margin_bottom = 100.0
 toggle_mode = true
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 11 )
-texture_hover = ExtResource( 10 )
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 20 )
+texture_hover = ExtResource( 18 )
 texture_disabled = ExtResource( 9 )
 
 [node name="Icon" type="TextureRect" parent="EnchantPanel/SelectScroll/Items/Button"]
@@ -217,7 +228,7 @@ margin_left = 365.0
 margin_top = 28.0
 margin_right = 705.0
 margin_bottom = 634.0
-texture = ExtResource( 26 )
+texture = ExtResource( 21 )
 
 [node name="TextureRect" type="TextureRect" parent="EnchantPanel/Weapon1"]
 margin_left = 8.0
@@ -238,10 +249,10 @@ expand = true
 stretch_mode = 6
 
 [node name="name" type="Label" parent="EnchantPanel/Weapon1"]
-margin_left = 12.0
-margin_top = 263.0
+margin_left = 13.0
+margin_top = 320.0
 margin_right = 328.0
-margin_bottom = 303.0
+margin_bottom = 359.0
 theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 16 )
 text = "Name"
@@ -249,10 +260,10 @@ clip_text = true
 
 [node name="stats" type="VBoxContainer" parent="EnchantPanel/Weapon1"]
 margin_left = 15.0
-margin_top = 321.0
+margin_top = 380.0
 margin_right = 323.0
-margin_bottom = 590.0
-custom_constants/separation = 10
+margin_bottom = 762.0
+custom_constants/separation = 20
 
 [node name="line" type="HBoxContainer" parent="EnchantPanel/Weapon1/stats"]
 visible = false
@@ -308,7 +319,7 @@ margin_left = 820.577
 margin_top = 28.0
 margin_right = 1160.58
 margin_bottom = 634.0
-texture = ExtResource( 33 )
+texture = ExtResource( 21 )
 
 [node name="TextureRect" type="TextureRect" parent="EnchantPanel/Weapon2"]
 margin_left = 8.0
@@ -330,9 +341,9 @@ stretch_mode = 6
 
 [node name="name" type="Label" parent="EnchantPanel/Weapon2"]
 margin_left = 13.0
-margin_top = 263.0
+margin_top = 320.0
 margin_right = 329.0
-margin_bottom = 303.0
+margin_bottom = 357.0
 theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 16 )
 text = "Name"
@@ -340,10 +351,10 @@ clip_text = true
 
 [node name="stats" type="VBoxContainer" parent="EnchantPanel/Weapon2"]
 margin_left = 15.0
-margin_top = 321.0
+margin_top = 380.0
 margin_right = 323.0
-margin_bottom = 590.0
-custom_constants/separation = 10
+margin_bottom = 759.0
+custom_constants/separation = 20
 
 [node name="line" type="HBoxContainer" parent="EnchantPanel/Weapon2/stats"]
 visible = false
@@ -367,16 +378,16 @@ align = 2
 
 [node name="line2" type="RichTextLabel" parent="EnchantPanel/Weapon2/stats"]
 margin_right = 308.0
-margin_bottom = 269.0
+margin_bottom = 379.0
 size_flags_vertical = 3
 theme = ExtResource( 8 )
 bbcode_enabled = true
 
 [node name="TextureRect" type="TextureRect" parent="EnchantPanel"]
 margin_left = 718.126
-margin_top = 303.564
+margin_top = 412.0
 margin_right = 806.126
-margin_bottom = 371.564
+margin_bottom = 480.0
 texture = ExtResource( 32 )
 
 [node name="TextureRect2" type="TextureRect" parent="EnchantPanel"]
@@ -429,10 +440,10 @@ margin_left = -540.0
 margin_top = -79.2582
 margin_right = -308.0
 margin_bottom = -21.2582
-texture_normal = ExtResource( 29 )
-texture_pressed = ExtResource( 31 )
-texture_hover = ExtResource( 30 )
-texture_disabled = ExtResource( 31 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 12 )
+texture_disabled = ExtResource( 11 )
 
 [node name="Label" type="Label" parent="EnchantPanel/reset"]
 anchor_right = 1.0

@@ -49,6 +49,7 @@ func build_item_list():
 			continue
 		var panel = input_handler.DuplicateContainerTemplate($ItemList/ItemScroll/Items, 'Button')
 		panel.connect('pressed', self, 'select_item', [id])
+		globals.connectitemtooltip_v2(panel, item)
 		item.set_icon(panel.get_node('Icon'))
 		panel.pressed = selected_item == id
 		if item.owner != null:
@@ -189,9 +190,10 @@ func build_item_panel(panel, item):
 	panel.get_node('name').text = item.name
 	item.set_icon(panel.get_node('icon'))
 	input_handler.ClearContainer(panel.get_node('stats'), ['line', 'line2'])
-	var enc_cap = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line')
-	enc_cap.get_node('name').text = 'Enchant Capacity:'
-	enc_cap.get_node('value').text = '%d/%d' % [item.get_e_capacity(), item.get_e_capacity_max()] #shows free cap, not used
+	if item.get_e_capacity_max() > 0:
+		var enc_cap = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line')
+		enc_cap.get_node('name').text = 'Enchant Capacity:'
+		enc_cap.get_node('value').text = '%d/%d' % [item.get_e_capacity(), item.get_e_capacity_max()] #shows free cap, not used
 	var quality = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line')
 	quality.get_node('name').text = 'Quality:'
 	quality.get_node('value').text = tr("QUALITY"+item.quality.to_upper())
