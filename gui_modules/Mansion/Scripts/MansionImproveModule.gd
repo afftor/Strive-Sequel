@@ -140,6 +140,7 @@ func build_fuse_list():
 			continue
 		var panel = input_handler.DuplicateContainerTemplate(fuse_list, 'Button')
 		panel.connect('pressed', self, 'select_fuse_item', [id])
+		globals.connectitemtooltip_v2(panel, item)
 		item.set_icon(panel.get_node('Icon'))
 #		panel.pressed = selected_fuse_items.has(id)
 		var am1 = item.amount
@@ -165,9 +166,10 @@ func build_item_panel(panel, item):
 	panel.get_node('name').text = item.name
 	item.set_icon(panel.get_node('icon'))
 	input_handler.ClearContainer(panel.get_node('stats'), ['line', 'line2'])
-	var enc_cap = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line')
-	enc_cap.get_node('name').text = 'Enchant Capacity:'
-	enc_cap.get_node('value').text = '%d/%d' % [item.get_e_capacity(), item.get_e_capacity_max()] #shows free cap, not used
+	if item.get_e_capacity_max() > 0:
+		var enc_cap = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line')
+		enc_cap.get_node('name').text = 'Enchant Capacity:'
+		enc_cap.get_node('value').text = '%d/%d' % [item.get_e_capacity(), item.get_e_capacity_max()] #shows free cap, not used
 	var quality = input_handler.DuplicateContainerTemplate(panel.get_node('stats'), 'line')
 	quality.get_node('name').text = 'Quality:'
 	quality.get_node('value').text = tr("QUALITY"+item.quality.to_upper())
