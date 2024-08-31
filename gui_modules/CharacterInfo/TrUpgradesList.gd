@@ -182,6 +182,8 @@ func build_training_header():
 	$training/spirit.text = "Character spirit: %.1f" % person.get_stat('spirit')
 	$training/loyalty.text = "Character loyalty: %.1f" % person.get_stat('loyalty')
 
+ 
+
 
 func build_training_list():
 	var trainer = person.get_trainer()
@@ -199,6 +201,7 @@ func build_training_list():
 				var panel = input_handler.DuplicateContainerTemplate(line, 'Button')
 				var tr = tr_data[category][j]
 				var trdata = Skilldata.training_actions[tr]
+				var text = tr(trdata.name) + "\n" + tr("CATEGORYKEYWORD") + ": " +  tr("ACTIONCATEGORY"+trdata.type.to_upper()) + "\n" + person.translate(tr(trdata.descript))
 				if cat_data.icon is String:
 					panel.get_node('icon').texture = load(cat_data.icon)
 				else:
@@ -208,28 +211,28 @@ func build_training_list():
 				#reqs check
 				if !trainer.checkreqs(trdata.reqs_trainer):
 					panel.disabled = true
-					globals.connecttexttooltip(panel, tr('WRONGTRAINER'))
+					text = "{color=red|"+tr('ACTIONTRAINERREQSNOTMET') +"}\n\n"+ text
 					panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
 				#avail check
 				elif !person.training.available:
 					panel.disabled = true
-					globals.connecttexttooltip(panel, tr('ALREADYTRAINED'))
+					text = "{color=red|"+tr('ACTIONALREADYDONETODAY') +"}\n\n"+ text
 					panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
 				#cost check
 				else:
-					var f = true
 					for stat in trdata.cost:
 						match stat:
 							'gold':
-								f = f and (ResourceScripts.game_res.money >= trdata.cost[stat])
+								if ResourceScripts.game_res.money < trdata.cost[stat]:
+									panel.disabled = true
+									text = "{color=red|"+tr('NOTENOUGHGOLDACTION') +"}\n\n"+ text
+									panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
 							'mana':
-								f = f and (trainer.mp >= trdata.cost[stat])
-					if !f:
-						panel.disabled = true
-						globals.connecttexttooltip(panel, tr('COSTNOTMET'))
-						panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
-					else:
-						globals.connecttexttooltip(panel, person.translate(tr(trdata.descript)))
+									panel.disabled = true
+									text = "{color=red|"+tr('NOTENOUGHTRAINERMANA') +"}\n\n"+ text
+									panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
+				
+				globals.connecttexttooltip(panel, text)
 
 
 func build_training_traits():

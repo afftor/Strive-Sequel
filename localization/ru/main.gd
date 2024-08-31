@@ -1698,6 +1698,18 @@ var TranslationDict = {
 	INFOSLAVE_CLASS = "Тип персонажа определяет его возможности и поведение. Рабы могут быть принуждены к сексуальным услугам без согласия и имеют более высокую терпимость к отсутствию согласия в сексе. Подчиненные быстрее становятся лояльными, но не могут быть проданы или отданы",
 	INFOCONSENT = "Согласие определяет, какие действия, связанные с сексом, персонаж будет готов совершить. Согласие можно увеличить, подталкивая персонажа к новым практикам в виде свиданий и вариантов в сексе. Согласие влияет на работу, связанную с проституцией.",
 	INFOCONSENTMASTER = "Согласие определяет, какие действия, связанные с сексом, персонаж будет готов совершить. Согласие можно увеличить, подталкивая персонажа к новым действиям с помощью свиданий и вариантов в сексе. {color=green|[Master] не имеет требований к Согласию для любых действий}.",
+	INFOTRAINING = """Slave type characters will be trained by selected person in various actions. Every slave has different {color=aqua|Dispositions} towards different kind of actions. Properly selected actions will award more Loyalty and drain less spirit but most actions have additional effects.""", # MISSING TRANSLATION
+	CATEGORYKEYWORD = """Category""", # MISSING TRANSLATION
+	ACTIONCATEGORYPHYSICAL = """Physical""", # MISSING TRANSLATION
+	ACTIONCATEGORYHUMILIATION = """Humiliation""", # MISSING TRANSLATION
+	ACTIONCATEGORYPOSITIVE = """Positive""", # MISSING TRANSLATION
+	ACTIONCATEGORYSOCIAL = """Social""", # MISSING TRANSLATION
+	ACTIONCATEGORYSEXUAL = """Sexual""", # MISSING TRANSLATION
+	ACTIONCATEGORYMAGIC = """Magic""", # MISSING TRANSLATION
+	ACTIONTRAINERREQSNOTMET = """Trainer does not meet requirements for this action""", # MISSING TRANSLATION
+	ACTIONALREADYDONETODAY = """Already was trained today""", # MISSING TRANSLATION
+	NOTENOUGHGOLDACTION = """Not enough gold for this action""", # MISSING TRANSLATION
+	NOTENOUGHTRAINERMANA = """Trainer does not have enough mana for this action""", # MISSING TRANSLATION
 	PERSONALITYNAMEBOLD = "Решительный",
 	PERSONALITYNAMEKIND = "Добрый",
 	PERSONALITYNAMESERIOUS = "Серьезный",
