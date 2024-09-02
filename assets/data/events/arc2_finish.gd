@@ -1037,11 +1037,15 @@ var data = {
 			code = 'close', text = "CEREMONY_HELEVIEL_4_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'getting_lira_quest'}, 
 			{code = 'add_master_points', value = 1},
+			{code = 'add_timed_event', value = "act3_intro",
+				args = [{type = 'add_to_date', date = [variables.DaysPerWeek,variables.DaysPerWeek], hour = 1}]},
 			{code = 'update_city'}]
 		}, {
 			code = 'close', text = "CEREMONY_HELEVIEL_4_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
 			bonus_effects = [{code = 'complete_quest', value = 'getting_lira_quest'}, 
 			{code = 'add_master_points', value = 1},
+			{code = 'add_timed_event', value = "act3_intro",
+				args = [{type = 'add_to_date', date = [variables.DaysPerWeek,variables.DaysPerWeek], hour = 1}]},
 			{code = 'update_city'}]
 		}, ]
 	},
@@ -1108,6 +1112,8 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
 			bonus_effects = [{code = 'complete_quest', value = 'getting_lira_quest'},
 			{code = 'add_master_points', value = 1},
+			{code = 'add_timed_event', value = "act3_intro",
+				args = [{type = 'add_to_date', date = [variables.DaysPerWeek,variables.DaysPerWeek], hour = 1}]},
 			{code = 'update_city'}]
 		}, ]
 	},

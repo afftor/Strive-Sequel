@@ -1721,6 +1721,24 @@ var dialogue_inits = {
 			target = 'fighters_introduction2',
 			target_option = 5,
 		},
+		{
+			code = 'default',
+			name = tr("DIALOGUE_SACRED_SAP_FIGHTER_GUILD"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'hara_sacsap_quest', stage = 'h_scouts'}
+			],
+			target = 'sacred_sap_fighters_start',
+			target_option = 0,
+		},
+		{
+			code = 'default',
+			name = tr("DIALOGUE_SACRED_SAP_FIGHTER_GUILD"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'hara_sacsap_quest', stage = 'h_price'}
+			],
+			target = 'sacred_sap_fighters_3',
+			target_option = 1,
+		},
 	],
 	servants_init = [
 		{
@@ -2409,6 +2427,43 @@ var quests = {
 			stage13 = {code = 'stage13', name = 'LILITH_PATRON_QUEST_NAME', descript = 'LILITH_PATRON_QUEST_STAGE_13'}, # go to xari
 			stage14 = {code = 'stage14', name = 'LILITH_PATRON_QUEST_NAME', descript = 'LILITH_PATRON_QUEST_STAGE_14'}, # ask lilith about patron
 			stage15 = {code = 'stage15', name = 'LILITH_PATRON_QUEST_NAME', descript = 'LILITH_PATRON_QUEST_STAGE_15'}, # clear new patron dungeon
+		},
+	},
+	hara_capacitor_quest = {
+		code = 'hara_capacitor_quest',
+		summary = "HARA_CAPACITOR_QUEST_SUMMARY",
+		stages = {
+			get_cap = {code = 'get_cap', name = 'HARA_CAPACITOR_QUEST_NAME', descript = 'HARA_CAPACITOR_QUEST_GET_CAP'},
+			bring_cap = {code = 'bring_cap', name = 'HARA_CAPACITOR_QUEST_NAME', descript = 'HARA_CAPACITOR_QUEST_BRING_CAP'},
+		},
+	},
+	hara_shimore_quest = {
+		code = 'hara_shimore_quest',
+		summary = "HARA_SHIMORE_QUEST_SUMMARY",
+		stages = {
+			get_ore = {code = 'get_ore', name = 'HARA_SHIMORE_QUEST_NAME', descript = 'HARA_SHIMORE_QUEST_GET_ORE'},
+			get_gold = {code = 'get_gold', name = 'HARA_SHIMORE_QUEST_NAME', descript = 'HARA_SHIMORE_QUEST_GET_GOLD'},
+			bring_ore = {code = 'bring_ore', name = 'HARA_SHIMORE_QUEST_NAME', descript = 'HARA_SHIMORE_QUEST_BRING_ORE'},
+		},
+	},
+	hara_sacsap_quest = {
+		code = 'hara_sacsap_quest',
+		summary = "HARA_SACSAP_QUEST_SUMMARY",
+		stages = {
+			get_sap = {code = 'get_sap', name = 'HARA_SACSAP_QUEST_NAME', descript = 'HARA_SACSAP_QUEST_GET_SAP'},
+			h_scouts = {code = 'h_scouts', name = 'HARA_SACSAP_QUEST_NAME', descript = 'HELEVIEL_SACSAP_QUEST_SCOUTS'},
+			h_price = {code = 'h_price', name = 'HARA_SACSAP_QUEST_NAME', descript = 'HELEVIEL_SACSAP_QUEST_PRICE'},
+			l_price = {code = 'l_price', name = 'HARA_SACSAP_QUEST_NAME', descript = 'LIRA_SACSAP_QUEST_PRICE'},
+			bring_sap = {code = 'bring_sap', name = 'HARA_SACSAP_QUEST_NAME', descript = 'HARA_SACSAP_QUEST_BRING_SAP'},
+		},
+	},
+	visit_dwarfs_quest = {
+		code = 'visit_dwarfs_quest',
+		summary = "VISIT_DWARFS_QUEST_SUMMARY",
+		stages = {
+			search = {code = 'visit', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_SEARCH'},
+			audience = {code = 'audience', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_AUDIENCE'},
+			tavern = {code = 'tavern', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_TAVERN'},
 		},
 	},
 }

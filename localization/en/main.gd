@@ -3104,6 +3104,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUECLOSE = "Close",
 	DIALOGUECONFIRM = "Confirm",
 	DIALOGUECONTINUE = "Continue",
+	DIALOGUERETURN = "Return",
 	DIALOGUECANCEL = "Cancel",
 	
 	DIALOGUEMEETLEADER = "Meet Leader",
@@ -13429,6 +13430,257 @@ As the surge of pleasure subsides, Lilith inserts your cock into her pussy, only
 	LILITH_WEDDING_6 = """— Come on, give your tiny wife the reward she has deserved...
 
 You can't resist her taunts any longer, finally letting your second load burst into her pussy for her to enjoy. You shiver as your cock is egged on by her pussy tightening around your tip, drinking your cum as you feed it directly into her. Lilith smiles at how much you've cum for her, licking her lips as the carnal heat increases from all the seed you spray into and onto her crotch. Her feet stroke you more to keep you hard and ready for another round as she continues to tease your dick for more and more meals. When she's finally satisfied, the two of you huddle close before falling asleep to each other's warmth.""",
+	DKING_SECOND_TASK_START = """Once again you are brought to the King's as he seems to be in a far greater mood than your first time.
+
+— Ah, my new friend, you've served me well in finding my treasured servant Hara and leading us to the coalition's base in the first place. Lady Kuro has spoken especially highly of you.""",
+	DKING_SECOND_TASK_OPT_1 = "Hara is unharmed and that's our desirable outcome",
+	DKING_SECOND_TASK_OPT_2 = "Didn't expect it from her",
+	DKING_SECOND_TASK_OPT_3 = "About my reward...",
+	DKING_SECOND_TASK_REPLY1 = "— Yes, yes, that's exactly what we both want and it's great she's in working condition.",
+	DKING_SECOND_TASK_REPLY2 = "— That's so? I thought you two are friends or at least have the same ties. Regardless, you both have been providing us with more than valuable help.",
+	DKING_SECOND_TASK_1 = "— Ah, of course, you want those sacred scales from our treasury. The truth is I need you to complete another task for me. Assist Hara with her mission, once she's finished I'll give you what you've asked.",
+	DKING_SECOND_TASK_1_OPT_1 = "What are you planning to do with that machine anyway?",
+	DKING_SECOND_TASK_1_OPT_2 = "No way, you've changed our agreement",
+	DKING_SECOND_TASK_1_OPT_3 = "Fine, but that's better be the last one",
+	DKING_SECOND_TASK_1_REPLY1 = """— That artifact you've come for, it's our ancestral inheritance and it used to make our nation a force to reckon with. Scales of Destiny had the power to always make the correct decision be it diplomacy, trade or even war. It used to lead us to success.
+
+— However a few dozen years ago one of the rebel founders stole and damaged it with some foul ritual. Now they are no longer of any use. But thankfully Lady Kuro has provided us with a way to return its powers. She's a really mysterious and resourceful person despite her looks and origins.""",
+	DKING_SECOND_TASK_1_REPLY2 = "— Are you trying to call me a liar? What your mouth kid. I never said that will get you the artifact. But if you insist, alright, I promise you'll receive it after this.",
+	DKING_SECOND_TASK_2 = "— Great. The guards will show you how to get to Hara. Until then I have more important business.",
+	DKING2TASK_HARA_START = "You enter a palace workshop filled with various engineer tools and gadgets. Hara seems to be busy with tinkering on one of them similarly to your first encounter.",
+	DKING2TASK_HARA_1 = "At the other end of the room you spot Kuro lazily lying on an exquisite sofa reading some ancient looking book.",
+	DKING2TASK_HARA_2 = "Neither of them seem to pay you any attention as if you were a lackey.",
+	DKING2TASK_HARA_2_OPT_1 = "Approach Hara",
+	DKING2TASK_HARA_2_OPT_2 = "Talk to Kuro",
+	DKING2TASK_HARA_3 = """— Fancy seeing you here.""",
+	DKING2TASK_HARA_SO_KING = """ So the King made you help me? That's great given how much I'm late on the schedule, and the resource I've lost after being kidnapped.
+
+— I don't expect you to tinker with complex stuff, just bring me what I need and we'll be good.""",
+	DKING2TASK_HARA_3_OPT_1 = "So what do you need?",
+	DKING2TASK_HARA_3_OPT_2 = "What is it exactly you are making?",
+	DKING2TASK_HARA_3_OPT_3 = "Give Shimmering ore",
+	DKING2TASK_HARA_3_OPT_4 = "I've brought that Sap you needed",
+	DKING2TASK_HARA_3_OPT_5 = "Return the capacitor",
+	DKING2TASK_HARA_3_REPLY1 = "— I'm not entirely sure, just following the blueprint. The King thinks it's gonna make him super strong, immortal or something like this. All that I can say for sure is that it does manipulate magic energies in insane quantities, but I'm no mage and someone who made the blueprint certainly knew more than me.",
+	DKING2TASK_HARA_4 = """— Lots of stuff. At best we are only halfway through the construction but thankfully I got most of the stuff around here, just need time... Some of the rarer materials aren't in order here though, so I need you to get them for me.
+
+— Firstly, bring me Shimmering Ore. It's a magically potent dim shining rock. It's quite rare in other places but thankfully it's not too uncommon in these lands. Perhaps you can find it at the markets or in the caves. """,
+	SHIMMERING_ORE_START = """As you go through the scarce dwarven market catching surly looks from traders, you manage to find one dwarf with a large assortment of various rocks. As you ask him about the Shimmering Ore. 
+
+— Yeah, I have that. But it's rare so you've gotta pay up. A thousand gold for one. It's because you are an outsider, I just promised to sell it to other guys but I might hold on to it if you'll get the money.""",
+	SHIMMERING_ORE_START_REVISIT = "— Oi, got the gold? I still have that ore in case you need it.",
+	SHIMMERING_ORE_START_OPT_1 = "Pay (1000 gold)",
+	SHIMMERING_ORE_START_OPT_2 = "Return later",
+	SHIMMERING_ORE_1 = "You purchase the ore from the dwarf trader and stash it into your bag. The dwarf smirks at the successful deal and completely ignores you attracting new customers.",
+	
+	MATERIALSHIMMERING_ORE = "Shimmering ore",
+	MATERIALSHIMMERING_ORE_SYMBOLDESCRIPT = "",
+	
+	DKING2TASK_HARA_5 = """You pass the ore to Hara to which she nods approvingly. 
+
+— Niiice, that's the one. Hey, I didn't think you'd manage this fast. I haven't thought about it before, but you are a capable and prosperous [guy]. Maybe you'd be interested in my service after I finish this task. Assuming the King doesn't plan to lock me up, haha.""",
+	DKING2TASK_HARA_5_OPT_1 = "I might find a use for a capable engineer, and perhaps more...",
+	DKING2TASK_HARA_5_OPT_2 = "That's rather lighthearted attitude for something bad",
+	DKING2TASK_HARA_5_OPT_3 = "So, what's next?",
+	DKING2TASK_HARA_5_REPLY1 = """— Hey, flirting is fun and everything but you gotta keep it in your pants for now. I don't like fooling around until the work is finished.""",
+	DKING2TASK_HARA_5_REPLY2 = """— Yeah, well, you can't live a life like mine without getting yourself into all sorts of dangers and troubles.""",
+	DKING2TASK_HARA_6 = """Hara: — The next one is a bitch. We need Sacred Sap, and I don't really have any clue where we got it from before. I guess you'll have to search for it.
+
+Kuro's ears flick as she has been listening to your conversation for this whole time. She speaks up without turning into your direction at all.
+
+Kuro: — It's from the Great Elven Tree. I presume you know where it is since the elves are really devoted to guarding it. Have fun getting it.""",
+	DKING2TASK_HARA_7 = """— Hah, that's pretty far away from here then. Once you get it, make sure to store it in an enclosed container so it won't spoil until you get here. And I'm gonna have to process the ore now...
+
+Hara turns away quickly absorbed into her work once again.""",
+	ELF_CAPITAL_SACRED_SAP = "I have a need for Sacred Sap",
+	SACRED_SAP_HELEVIEL_START = """— That's a big request, [race]. We aren't letting anyone approach our Sacred Tree, or worse, harm or harvest it. Normally I'd have you executed for simply thinking about it but...
+
+Heleviel pauses for a moment contemplating something to herself.
+
+— I think we can strike a deal.""",
+	SACRED_SAP_HELEVIEL_2 = "— Two of my scouts have been captured by your friends at Aliron. Set them free and return them to me intact, as I couldn't strike any deal with those Fighters of yours.",
+	SACRED_SAP_HELEVIEL_2_OPT_1 = "You've been spying on us?",
+	SACRED_SAP_HELEVIEL_2_OPT_2 = "I'll see what I can do",
+	SACRED_SAP_HELEVIEL_2_REPLY1 = "— Huh? You expect us to just sit around? You are a leader yourself, aren't you. Surely you know you can't risk your safety, it's common sense.",
+	SACRED_SAP_HELEVIEL_3 = "— I'll be waiting for your return.",
+	DIALOGUE_SACRED_SAP_FIGHTER_GUILD = "Ask about prisoners",
+	SACRED_SAP_FIGHTERS_START = """You find the closest representative and ask them about the recently captured elven scouts. 
+
+— Mayor? Ah, yes, there's been a couple of spies from elven land, we've been ordered to keep them in jail. You can ask about them there.""",
+	SACRED_SAP_FIGHTERS_1 = """The jailer leads you to the room with two tied and gagged elven girls who seem less than happy. 
+
+— These two are who you are looking for? Have been caught at the borders of elven forests by the patrol.""",
+	SACRED_SAP_FIGHTERS_1_OPT1 = "It seems you've roughed them up",
+	SACRED_SAP_FIGHTERS_1_OPT2 = "Why keep them in prison?",
+	SACRED_SAP_FIGHTERS_2 = """— They've killed one farmer boy before they got caught. Seems like he sneaked up on them and got shot in the throat, after that our men managed to capture them with two injured. As you see we can't just let them go free now even if we forget those are spies. I mean, you are the mayor, but the guild will not overlook it.
+
+The elves look defiantly at you, their spirit does not seem to be broken yet.""",
+	SACRED_SAP_FIGHTERS_2_OPT1 = "However, I need them freed.",
+	SACRED_SAP_FIGHTERS_2_OPT2 = "What can be done then? You can't keep them locked in forever",
+	SACRED_SAP_FIGHTERS_3 = """The guard strokes his beard thinking about your request.
+
+— Given how much you've done for the city and the guild I can trust your intentions, however we need to do something about them going missing for the officials. One thousand gold will be enough to make them turn a blind eye to it. Or... you could find a couple of elven slaves for substitution. """,
+	SACRED_SAP_FIGHTERS_3_OPT1 = "Pay (1000 gold + 1000 fighter guild reputation)",
+	SACRED_SAP_FIGHTERS_3_OPT2 = "Deliver 2 female elven slaves",
+	SACRED_SAP_FIGHTERS_3_OPT3 = "I'll return later",
+	SACRED_SAP_FIGHTERS_3_REVISIT = "The guard leads you to the captured elven girls waiting for you to make the decision on how you're gonna get them out.",
+	SACRED_SAP_FIGHTERS_4 = """You get the elven girls out of jail, instructing them to stay close to you so you can get them back to the elven lands. Initially they don't seem to trust you but as you bring up Heleviel's orders they agree to obey.
+
+You lead them chained and meet no interruption, soon making it out of city gates.""",
+	SACRED_SAP_FIGHTERS_5 = "As you get deeper into woods you unchain them, making it easier to move. Soon you all reach elven capital and meet Heleviel once more.",
+	SACRED_SAP_HELEVIEL_4 = "— You've done your part of the deal faithfully, [race]. I can respect that. Here's the item you've requested from us, take it and don't tell how you've earned it.",
+	
+	SACRED_SAP_ERLEN_START = """— Hold on, [name]. Care for a small talk? 
+
+— You are visiting Lira? You know, since the moment she became the new High Priestess she was quite busy with her tasks... 
+
+— Do you think, maybe... I shouldn't be bothering her?""",
+	SACRED_SAP_ERLEN_START_OPT1 = "Don't speak nonsense, she'd still like to see you",
+	SACRED_SAP_ERLEN_START_OPT2 = "Perhaps it is a bad idea, she's an important figure now",
+	SACRED_SAP_ERLEN_1_REPLY1 = "— You are right, after all we've gone through I can't just give up now. Thank you.",
+	SACRED_SAP_ERLEN_1_REPLY2 = "— I guess you are right... Well, sorry for wasting your time.",
+	SACRED_SAP_ERLEN_1 = "\n\nErlen turns away letting you pass further for meeting Lira.",
+	SACRED_SAP_LIRA_1 = """— You want... Our Great Tree's sap? That's not simple as it has great importance to us and we aren't allowed to harm or harvest it, especially letting others approach it. 
+
+— Actually we've been looking into other ways to deal with our shortcomings related to religious practices. As such, I have a request in turn for you.""",
+	SACRED_SAP_LIRA_2 = """— As an unspoken rule the elves should not harm the trees given its connection to the Sacred Tree, we aren't using any wooden crafts. All of the wooden things in the city are living trees produced by magic and the Sacred Tree.
+
+— But I want to give it a try and see if we can work with that material in some new way. I've decided that if we get it from others it wouldn't be us who harmed the trees in the first place.
+
+— So I need 1.000 wood pieces for our research. And also 100 steel for Erlen's forces, it's hard for us to get metals not from trading over here. Help us out and I'll give you the sap you need.""",
+	SACRED_SAP_LIRA_3 = """— Hello, [name]. Have you got what I asked you for?""",
+	SACRED_SAP_LIRA_3_OPT1 = "Provide 1.000 wood and 100 steel.",
+	SACRED_SAP_LIRA_3_OPT2 = "Not yet (close)",
+	SACRED_SAP_LIRA_4 = """— Great! Here's the instructions for your haulers to bring without attracting needless attention. And the Sap we've agreed on...
+
+Lira passes you an exquisite bottle with clear white liquid.
+
+— Thank you and good luck with your task. Don't forget about us and visit sometimes.""",
+	MATERIALSACRED_SAP = "Sacred sap",
+	MATERIALSACRED_SAP_SYMBOLDESCRIPT = "",
+	
+	SACRED_SAP_INTERMISSION_START = """In the dim halls of the cult's hideout a voluptuous red haired woman has met with the demonic leader.
+
+Demon woman: — I presume you haven't obtained the item I tasked you with yet. What's the purpose of your visit?
+
+Red fox: — Just checking up on this sorry place. You've got a problem with it?
+
+Demon woman: — ...No. But we are in the middle of serious preparations.""",
+	SACRED_SAP_INTERMISSION_1 = """Red fox: — Whatever. By the way, how's my egghead excuse of a sister doing? She was in lands of shorties recently if I recall. Fitting for her.
+
+Demon woman: — She seems fine, in fact she's close to completing her tasks and so should be you...
+
+Red fox: — Shut it. Hmph. You say she made some progress? Maybe I should pay her a little visit then.
+
+The fox woman chuckles to herself. Her counterpart considers objecting to her but decides it ultimately won't change anything and only makes her more annoyed.""",
+	DKING2TASK_HARA_8 = """— Wow, that's a lot. You didn't put anything... weird in it, did you? Just kidding. Alright, with these I've basically finished. It's just one thing...
+
+— You see, when you were away someone seems to have gotten inside of the workshop at night and stolen one of the crucial components, an Ancient Magic Capacitor. I can't imagine how that could even happen. """,
+	DKING2TASK_HARA_9 = """You switch your attention to Kuro suspecting she's the most likable culprit.
+
+Kuro: — I have no clue and no benefit from losing it now.
+
+Despite her flat tone you can nearly feel her irritation with this nuisance. 
+
+Kuro: — I've searched through the workshop and there seems to be a note with the map... Whoever it was, they imply the Capacitor is located at Molten Grounds, a deep monster filled caves. Don't give me that look, it's your job so go there and get it back.
+
+Kuro turns away back to her book leaving no room for negotiation.""",
+	CAPACITOR_MOLTEN_START = """You find a small locked chest very much out of place for this hot depths. However as you try to approach it, you are pushed back by a strong magic barrier. 
+
+An autonomous image of fox woman has appeared in front of you seemingly made out of magic.
+
+— Ooh, that's unexpected. Are you a henchman? Sorry, this is only for my nasty sibling.""",
+	CAPACITOR_MOLTEN_START_OPT1 = "*Look at Zephyra*",
+	CAPACITOR_MOLTEN_START_OPT2 = "Not sure who do you mean",
+	CAPACITOR_MOLTEN_Z_1 = """You questionably look at Zephyra who has been acting weird from the moment she saw the other woman. She makes a step forward however slightly getting closer to you as if trying to shield herself.
+
+Zephyra: — Um... hello sister.
+
+Woman: — Huh? What is a wimp doing here? Are you actually serving the egghead now? And who's the [boy] with you? [He] seems kinda familiar.
+
+Zephyra: — T-that's a long story. We need that thing you took from the workshop...
+
+Woman: — Are you daring to call me a thief? What an insolence. Have you become bolder with nobody to oversee you?""",
+	CAPACITOR_MOLTEN_Z_2 = """Zephyra: — I-I'm sorry! I'm just...
+
+Woman: — Whatever, tell her I said hi. 
+
+The woman's image disappears as quickly as it appeared and the barrier is gone. Zephyra lets out a deep sigh, recomposing herself.""",
+	CAPACITOR_MOLTEN_Z_2_OPT1 = "It's your other sister?",
+	CAPACITOR_MOLTEN_Z_2_OPT2 = "*Stay silent* (close)",
+	CAPACITOR_MOLTEN_Z_3 = "— Yeah, it certainly looked like her... Well, good thing it was not her in person. Let's hurry up with the capacitor thing.",
+	CAPACITOR_MOLTEN_K_1 = """You feel a sudden presence coming from behind. As you turn around you see Kuro materializing from the shadows as if she was following you all this time.
+
+Kuro: — Quite your games. Trying to distract me from finishing my job?
+
+
+Woman: — You are as keen as usual. Come on, what's the harm in a little play? And this [guy], I believe there's been some rumors about [him]. Hey, won't [he] make you a nice pair? Or maybe I should check up on [him] once I'm free again...""",
+	CAPACITOR_MOLTEN_K_2 = """Despite her usual blank expression you feel like Kuro is unusually angry.
+
+Kuro: — Begone.
+
+Kuro waves her hand, ordering her shadows to quickly swarm over the woman's image, tearing it apart. As it disappears and the barrier is removed you hear a distant chuckling laugh.
+
+Kuro: — Take the capacitor and return to Hara.""",
+	CAPACITOR_MOLTEN_K_2_OPT1 = "Who was that?",
+	CAPACITOR_MOLTEN_K_2_OPT2 = "You've been following us all this time?",
+	CAPACITOR_MOLTEN_K_2_OPT3 = "Wow, she looked hot. Is she like your older sister?",
+	CAPACITOR_MOLTEN_K_3_REPLY1 = "— None of your business. And you'd prefer it to stay this way.",
+	CAPACITOR_MOLTEN_K_3_REPLY2 = "— That's just safe measures to make sure you don't screw up anything.",
+	CAPACITOR_MOLTEN_K_3_REPLY3 = "Kuro glares at you from behind her glasses but does not say anything. ",
+	CAPACITOR_MOLTEN_K_3 = "\n\nAs you fish out the item from the chest, Kuro is already gone from the view.",
+	
+	MATERIALCAPACITOR = "Ancient Magic Capacitor",
+	MATERIALCAPACITOR_SYMBOLDESCRIPT = "",
+	
+	DKING2TASK_HARA_10 = "— You got it? That's great, I was about to start making a new one. With that everything is ready, we are gonna need another day to set things up, so you better return tomorrow. Oh, and perhaps you should talk to Kuro.",
+	DKING2TASK_KURO_1 = "— Good, you are finally here. Now why don't you get to work?",
+	DKING2TASK_KURO_1_OPT1 = "That's not the best place for reading",
+	DKING2TASK_KURO_1_OPT2 = "Why the hell are you here?",
+	DKING2TASK_KURO_2_REPLY1 = "—  Indeed, but with limited options I'm using what I get. And I'm here to watch over your progress ensuring this project gets finished.",
+	DKING2TASK_KURO_2_REPLY2 = "— Do you always have to ask stupid questions? I'm watching over your progress ensuring this project gets finished.",
+	DKING2TASK_KURO_2_REPLY3 = "— I'm an overseer, not a dumb muscle, that's your job if that wasn't clear already. Now why don't you take your place and produce some results already.",
+	DKING2TASK_KURO_2_OPT1 = "Why aren't you helping it then?",
+	DKING2TASK_KURO_2_OPT2 = "I have more questions for you",
+	DKING2TASK_KURO_3 = """The black foxgirl lets out a lengthy sigh before continuing. 
+ 
+— I don't believe any of your questions are worth my time, but fine. If you are so curious I will answer one of your questions to my best capability after you get some progress with the machine.
+
+— Until then, you better get to work.""",
+	KURO_QUESTIONS_NO = "\n\nAs you try to get any attention from Kuro she completely ignores you, pulling her shadows over herself so you can't bother her anymore.",
+	KURO_QUESTIONS_HAS = "You have {custom_text_function=get_kuros_questions_count|} new questions left to ask Kuro about.",
+	KURO_QUESTIONS_OPT_SIDE = "Who's side are you on?",
+	KURO_QUESTIONS_OPT_PLAN = "What are you planning to do with the artifacts",
+	KURO_QUESTIONS_OPT_ZEPH = "What's your relationship with Zephyra?",
+	KURO_QUESTIONS_OPT_POWER = "I want to know about your powers",
+	KURO_QUESTIONS_OPT_LIKE = "What things do you like or hate?",
+	KURO_QUESTIONS_OPT_RED = "Who's the red haired foxgirl who seems to be your relative?",
+	KURO_QUESTIONS_OPT_LEAVE = "Nevermind",
+	KURO_QUESTIONS_REPLAY_SIDE = """— Typical dumb question. I'm with the cult obviously. For the same reason here as you are, to get the artifact for it.
+
+You are slightly shocked as Kuro reveals her affiliation and the true goal. 
+
+— You might be thinking why I'm telling you this. It won't change anything, nobody here will believe or care about it and the King knows anyway. Now that you've got your answer, get back to work.""",
+	KURO_QUESTIONS_REPLAY_PLAN = """— Oddly enough, I don't have full information on it, but it's safe to assume their power will be used in connection with their origin to change the global balance of powers, political or that of nature.
+
+— And before you ask for their origin, don't bother. It's not a lecture I'm willing to give nor it's the one I believe you to understand.""",
+	KURO_QUESTIONS_REPLAY_ZEPH = """— We are sisters. Not in a biological sense but in a spiritual one. And not in a sense that we've chosen to be close to each other like friends, but more of that we were born in this way. We just know that we are, simple as that. 
+
+— Neither me, nor our third sister, Rouge, particularly like her. I guess that's exactly the sort of relationship you have with your biological siblings, you don't like them but still they exist in our life for better or worse.""",
+	KURO_QUESTIONS_REPLAY_POWER = """— I'm as powerful as I look. Or do you mean non-physical powers? That's surprisingly clever of you to study your enemy like this. I can control shadows and conceal my presence by hiding inside of them. Naturally I'm unbound by moving inside of them and my shadow can't be dispelled by light. 
+
+— I'm not a skilled fighter nor do I like fighting, but I guess I could beat Zephyra.""",
+	KURO_QUESTIONS_REPLAY_LIKE = """— What kind of weird question is that? Are you trying to hit on me? I like books and I hate nitwits.
+
+Kuro takes a pause figuring that answer is not really sufficient for you.
+
+— I guess I like venison and grapes. These are hard to get around dwarven cities but at least royalty gets some from trading even if it's pretty stale. And I hate my tail being touched for that matter, so better watch your hands around me.""",
+	KURO_QUESTIONS_REPLAY_RED = """— Rouge. She's the brute of the trio, so you don't wanna get on her bad side. Not that she has any good side. It's very much like her to get on my nerves when she has her own job to do. 
+
+— I've said enough, don't wanna talk about her more than necessary, and you better hope you won't have to deal with her either.""",
+	KURO_QUESTIONS_END = """\n\n— Now that job is done, here's my sincere advice as a reward for your work. Don't bother coming here tomorrow. 
+
+Kuro turns away indicating her unwillingness to continue.""",
 	
 	
 	#   QUESTS   #
@@ -13718,6 +13970,32 @@ You can't resist her taunts any longer, finally letting your second load burst i
 	LILITH_PATRON_QUEST_STAGE_13 = "Visit Xari", # go to Xari
 	LILITH_PATRON_QUEST_STAGE_14 = "Ask Lilith to meet with her patron", # ask Lilith about patron
 	LILITH_PATRON_QUEST_STAGE_15 = "Explore Hidden Grove Abandonment", # clear new patron dungeon
+	
+	HARA_CAPACITOR_QUEST_NAME = "Hara: Magic Capacitor",
+	HARA_CAPACITOR_QUEST_SUMMARY = "Find stolen Magic Capacitor.",
+	HARA_CAPACITOR_QUEST_GET_CAP = "Search Molten Grounds for stolen Magic Capacitor.",
+	HARA_CAPACITOR_QUEST_BRING_CAP = "Bring Magic Capacitor to Hara.",
+	
+	HARA_SHIMORE_QUEST_NAME = "Hara: Shimmering Ore",
+	HARA_SHIMORE_QUEST_SUMMARY = "Acquire Shimmering Ore for Hara.",
+	HARA_SHIMORE_QUEST_GET_ORE = "Shimmering Ore can be found at the markets or in the caves.",
+	HARA_SHIMORE_QUEST_GET_GOLD = "Merchant at the markets asks 1000 gold for Shimmering Ore.",
+	HARA_SHIMORE_QUEST_BRING_ORE = "Bring Shimmering Ore to Hara.",
+	
+	HARA_SACSAP_QUEST_NAME = "Hara: Sacred Sap",
+	HARA_SACSAP_QUEST_SUMMARY = "Acquire Sacred Sap for Hara.",
+	HARA_SACSAP_QUEST_GET_SAP = "Find a way to get Sacred Sap from Great Elven Tree.",
+	HELEVIEL_SACSAP_QUEST_SCOUTS = "Free elven scouts from Aliron's Fighters guild",
+	HELEVIEL_SACSAP_QUEST_PRICE = "Fighters guild's guard can use 1000 gold to bribe officials, if guild reputation high enough (1000); or a couple of elven slaves could serve a substitution.",
+	LIRA_SACSAP_QUEST_PRICE = "Bring 1000 wood pieces and 100 steel to Lira",
+	HARA_SACSAP_QUEST_BRING_SAP = "Bring Sacred Sap to Hara.",
+	
+	VISIT_DWARFS_QUEST_NAME = "Visit dwarven kingdom",
+	VISIT_DWARFS_QUEST_SUMMARY = "Next artifact should be in dwarven kingdom's possession.",
+	VISIT_DWARFS_QUEST_SEARCH = "Search a nearby mountain for an entrance to dwarven kingdom.",
+	VISIT_DWARFS_QUEST_AUDIENCE = "Get audience with king.",
+	VISIT_DWARFS_QUEST_TAVERN = "Find a way to attract king's attention. Visit a tavern for a start.",
+	
 	
 	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n— H-hello, [Master]... How was your day?",
 	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her motivation. She stays silent having no words for you.\n\n— ......",
@@ -15025,6 +15303,9 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT1 = "You meet a lone adventurer: [name].",
 	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT2 = "Attack",
 	
+	QUEST_DWARFS_GATE_TEXT = "Dwarven city gate",
+	QUEST_DWARFS_GATE_DESC = "",
+	
 	#fixed_location_options
 	
 	ALIRON1 = "Check the streets",
@@ -15062,6 +15343,10 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	ELF_CAPITAL9 = "Search For Lira",
 	ELF_CAPITAL10 = "Find Lira",
 	ELF_CAPITAL11 = "Initiate",
+	
+	DWARF_CAPITAL_PALACE = "Palace",
+	DWARF_CAPITAL_WORKSHOP = "Workshop",
+	DWARF_CAPITAL_TAVERN = "Tavern",
 	
 	BEASTKIN_CAPITAL1 = "Find Chieftain",
 	BEASTKIN_CAPITAL2 = "Visit Shaman's Lodge",
@@ -15139,6 +15424,8 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_GOBLIN_LOCATION2 = "Search for tracks",
 	QUEST_GOBLIN_LOCATION3 = "Search for goblin tracks",
 	QUEST_GOBLIN_LOCATION4 = "Report back",
+	
+	QUEST_DWARFS_GATE_LOCATION = "Approach",
 	
 	# Missing keys
 	CURRENT_PREFERRED_FOOD_CONSUMPTION = "Current Preferred Food Consumption",
@@ -15700,6 +15987,1828 @@ Hotkey: 3""",
 	LILITH_RIDE_SS = "Progress Lilith's story",
 	LILIA_WEDDING_SS = "Keep Fairy forever with you",
 	LILITH_WEDDING_SS = "Devote your soul to the little imp",
+
+
+
+	ACT3_INTRO_Z = """— [Master], I hope you are not too busy? Because my divination has revealed our next mission. We gotta get the next artifact. I believe it should be in a nearby mountain region in possession of dwarven royalty. 
+
+— They seem to be quite secluded folk, so I rely on your diplomatic prowess.""",
+	ACT3_INTRO_NO_Z = """You receive an unnamed letter seemingly from the far mountain region of dwarven lands. The anonymous writer hints on the cult's recent goal lying inside the dwarven kingdom's treasure: powerful artifact of magical scales. 
+
+You wonder who could be the sender but it's likely someone else standing against the cult. Regardless, it's better not to let it fall into the enemy's hands.""",
+	
+	ENTER_CITY_T_0 = """The subterranean capital looms heavily as you approach, with towering stone gateways creating an imposing presence along the underground trail. A pair of guards stand sentinel at the entrance, and as they notice your approach, one of them dismissively scoffs, adding a contemptuous spit to the ground. Another one addresses you. 
+
+— Halt immediately, outsider. Any step closer will be seen as hostile, warranting elimination.
+
+The first guard gestures toward the crossbowmen positioned atop the city wall. Engaging in a skirmish would be futile; the archers, with precision akin to a lightning strike, could transform you into a pincushion of blot in mere moments.
+
+— State your identity.""",
+	ENTER_CITY_OPTION_ALERT = "You have a small army up there. Are you on alert?",
+	ENTER_CITY_OPTION_VISITORS = "What's going on? Is the city closed to visitors?",
+	ENTER_CITY_OPTION_INTRODUCE = "*Introduce yourself*",
+	ENTER_CITY_OPTION_TURN_AWAY = "Turn away",
+
+	ENTER_CITY_RESPOND_VISITORS_NOTDWARF = """Guard 1: You surface dwellers are not welcome here. Better you understand right away, before you even set foot into the city...
+
+The guard pauses and grins.
+
+— That is, if I allow you to enter in the first place.""",
+	ENTER_CITY_RESPOND_VISITORS_DWARF = "— No, but you have to follow the procedures. All visiting from outside must be registered.",
+	ENTER_CITY_RESPOND_ALERT_NOTDWARF = "— Aren't you a little nosy for someone who just arrived? Did you come to scout? Spy? Regardless, if you are a threat... or even if I just don't like you, you are going to be killed. So better don't try to annoy me, and state your damn identity already.",
+	ENTER_CITY_RESPOND_ALERT_DWARF = "— Aren't you a little nosy for someone who just arrived? If you're not careful with your questions, people will think you're here to spy. Don't make this harder than it needs to be. State your identity and we'll let you through.",
+	ENTER_CITY_RESPOND_INTRODUCE_NOTDWARF = """The guard examines you from top to bottom, disdain in his eyes.
+
+He looks away to record your name in a journal.
+
+— Alright. Approach.
+
+You do as instructed and approach the guard. The crossbowmen are still aiming at you, however, observing your every move.""",
+	ENTER_CITY_RESPOND_INTRODUCE_DWARF = """The guard diligently records your name in the journal.
+
+— Alright, you can approach.
+
+You do as instructed and approach the guard. The crossbowmen are still aiming at you, however, observing your every move.""",
+	ENTER_CITY_BODY_CHECK = """One of the guards pushes you against the wall and starts feeling you up. A body check. In a few moments, he lets go and nods to his colleague.
+
+— Alright, you don't seem to have anything forbidden on you.
+
+The guard motions for the archers to stand at ease.
+
+— You can enter the city. But be warned, don't expect a warm welcome. Finish your business here quickly and begone.""",
+	DWARF_PALACE_FIRST = """The grandest structure in the entire city, the king's palace, stands before you. Despite its opulence, an air of coldness and unapproachability surrounds it, as if visitors are even more unwelcome within its walls than in the city itself. The massive doors leading to the waiting hall inside are open. As you enter, another pair of guards immediately fix their gaze upon you. Though their faces differ, an inexplicable sense of deja vu unsettles you.
+
+— You're not local, are you? The palace is not a tourist spot. Find another attraction.""",
+	DWARF_PALACE_OPT_PATTERN = "I am noticing a pattern here. What's with your attitude towards visitors?",
+	DWARF_PALACE_OPT_BIZ = "I have business with the king.",
+#	ENTER_CITY_OPTION_REPORT_CRIME = "I have something to report on the crime which is about to happen...",
+	DWARF_PALACE_REPLY_PATTERN1 = """— You are looking for a problem?
+One of the guards asks with a challenge in his voice.
+
+— Hold on, [He]'s an outsider and hasn't committed a crime yet. Don't need to jump on the edge yet. Let's try to be civilized here.""",
+	DWARF_PALACE_REPLY_PATTERN2_NOSHORT = "\n\nThe other guard turns to you. He's considerably shorter than you, yet his expression somehow makes it feel like he's looking down at you.",
+	DWARF_PALACE_REPLY_PATTERN2_SHORT = "\n\nThe other guard turns to you. His expression somehow makes it feel like he's looking down at you.",
+	DWARF_PALACE_REPLY_PATTERN3 = """\n\n— We are a community, outsider. A community that doesn't like to be disturbed. Case in point, you come here and immediately accuse us.
+
+— You are a guest. And you are in the most important place in the city. Show some respect!""",
+	DWARF_PALACE_BIZ = """The guards start laughing.
+
+— What makes you think the king has business with you? The king is a busy man, you know. You can't meet him without making an appointment.""",
+	DWARF_PALACE_OPT_URGENT = "This is quite urgent.",
+	DWARF_PALACE_OPT_IMPORTANT = "I am an important person. The king will want to see me.",
+	DWARF_PALACE_REPLY_URGENT = """Guard1: — Isn't it always urgent? It doesn't matter. The king is indisposed to meet with you... whoever you are. But I am in a good mood, so I will... I will put you in the queue!
+
+Guard2: — Right. The Queue. Hah!
+
+Guard1: — How about coming back tomorrow? Maybe the king will be more willing for an audience then?
+
+Guard2: — You can stay at the local tavern in the meantime. I am sure you'll have your proper welcome there.
+
+Guard1: — Isn't it right? Can't find a more welcoming person than Durand! His ale is the best in town, too!
+
+Guard2: — Oh yeah... How I would like to have a glass right now.""",
+	DWARF_PALACE_REPLY_IMPORTANT1 = """Guard1: — Oh, really? Important enough to distract the king from attending to the matters of the nation? More important than the well-being of its subjects, no doubt.
+
+The guard sighs.
+
+Guard2: — We'll put you on the list.
+
+Guard1: — Indeed. How about coming back tomorrow? Maybe the king will be more willing for an audience then?""",
+	DWARF_PALACE_REPLY_IMPORTANT2 = """Guard2: — You can stay at the local tavern in the meantime. I am sure you'll have your proper welcome there.
+
+Guard1: — Isn't it right? Can't find a more welcoming person than Durand! His ale is the best in town, too!
+
+Guard2: — Oh yeah... How I would like to have a glass right now.
+
+The guards keep chuckling between each other.""",
+	DWARF_PALACE_FIRST_END = """The guards look at each other, holding back as much as they can to not burst into laughter. These two won't let you pass. It seems you have no choice but to find another way. Perhaps you'll be able to attract the attention of the king somehow? In any case, it won't hurt to acquaint yourself with the city. Something tells you you'll be here for a while.""",
+
+
+
+
+
+	ENTER_CITY_WORKSHOP_INTRO = """As you walk down the streets, a strange-looking building catches your attention. An armory of some sort, or a workshop to be precise. Clockwork mechanisms of unfamiliar nature or purpose are displayed outside.
+
+The building entrance door appears to be sealed off, however. It's shut, and there's a message attached:""",
+	ENTER_CITY_WORKSHOP_MESSAGE = """“The shop is temporarily closed and I take no more contracts at the moment. Inquiries about unfinished orders can be directed to the palace.”
+
+The message is signed - Hara.
+
+Whatever this shop is, it seems its owner is not around.""",
+
+	TAVERN_INTRO = """The smell of spilled ale, originating from both the glasses and the less fortunate stomachs of the patrons, assails your senses as you enter the local tavern. You immediately start to feel like you're the center of everyone's attention, as everyone, from patrons to staff, turn their heads to look at you. A familiar feeling at this point.
+
+There aren't many visitors here this time of the day. A barkeep, wiping glasses, eyes you suspiciously, but says nothing.
+
+You can't help but notice that there are almost exclusively dwarves among the present. It's no surprise your foreign features stand out.
+
+The only non-dwarf here beside you is a human girl, sitting quietly in the corner, reading a book. A bit of a strange choice of a place for this kind of activity. None of the guests pay her any mind. Perhaps, because of her small stature she fits in a little better?""",
+
+	TAVERN_OPTION_TALK_BARKEEP = "Talk to the Barkeep",
+	TAVERN_OPTION_TALK_PATRONS = "Interact with the patrons",
+	TAVERN_OPTION_TALK_GIRL = "Interact with the girl",
+	
+	TAVERN_BARKEEP_DIALOGUE = """The sullen-looking barkeeper gives you a side glance before making clear he's unwilling to interact with you.
+
+Barkeep: We're closed.""",
+
+	TAVERN_OPTION_DOESNT_SEEM_CLOSED = "Doesn't seem that way",
+	TAVERN_OPTION_WANT_INFORMATION = "I am not here to stay. I want information.",
+	
+	TAVERN_DOESNT_SEEM_CLOSED = """— We're closed for you. This establishment is for local dwarves only. We don't need you outsiders taking over our spaces. This isn't a place for passerbyers.""",
+
+	TAVERN_WANT_INFORMATION = """— I thought the sign on the outside says “Tavern” not a fucking “Library”. Ask your questions elsewhere. Preferably outside the city. We don't need you outsiders taking over our spaces. This isn't a place for passerbyers.""",
+
+	TAVERN_OPTION_ASK_ABOUT_GIRL = "What about the girl reading a book over there?",
+	TAVERN_OPTION_ASK_DOOR_SIZE = "Why is the entrance door normal-sized and not pygmy-sized then?",
+	TAVERN_OPTION_AVOID_CONFLICT = "Easy. I don't need a conflict. Answer my questions and I will be gone.",
+
+	TAVERN_ASK_ABOUT_GIRL = """— I don't mind her she's easy on the eyes. You are not.""",
+
+	TAVERN_ASK_DOOR_SIZE = """— You better watch your mouth shitface. Or I'll make you pygmy-sized in no time.""",
+
+	TAVERN_AVOID_CONFLICT = """— You're awfully slow aren't you? I said we're closed.""",
+
+	TAVERN_GROUP_OF_DWARVES = """A group of dwarves approaches the counter. Three of them. Two sit down next to you on each side. Another leans on the counter.
+
+Dwarf1: — Is there a problem barkeep? Does he bother you?
+
+Barkeep: — Yeah. His face is bothering me.
+
+Dwarf2: — You heard the man. Stop bothering people it's rude.""",
+
+	TAVERN_OPTION_WANTED_TO_ASK_QUESTIONS = "I simply wanted to ask a few questions.",
+	TAVERN_OPTION_INSULT_BARKEEP = "What's that barkeep? Your nannies?",
+
+	TAVERN_WANTED_TO_ASK_QUESTIONS = """— Well the barkeep doesn't seem to be in the mood for a conversation. Or in the mood for seeing you in his shop. I think you should respect that and leave.""",
+
+	TAVERN_INSULT_BARKEEP = """— What a funny guy you are. Want me to cut a permanent smile on your face?""",
+
+	TAVERN_DWARF_DAGGER = """The dwarf folds the hem of his cloak back revealing a dagger.""",
+
+	TAVERN_OPTION_PHYSICS_FACTOR = "[Physics Factor] Put that away. I don't want to spill your blood all over the floor.",
+	TAVERN_OPTION_NO_TROUBLE = "I want no trouble.",
+	TAVERN_OPTION_HARD_WAY = "Alright let's do it the hard way (Fight).",
+
+	TAVERN_PHYSICS_FACTOR_SUCCESS = """{color=green|Success}
+
+The dwarf examines you. Then looks you straight in the eyes.
+
+— Alright. No need to make a mess. For now. But you better get a hint and stop bothering our friend or this will not end well for you.
+
+— You heard the guy. I'll just pretend you're not here as long as you mind your own business.""",
+
+	TAVERN_PHYSICS_FACTOR_FAILURE = """{color=red|Failure}
+
+— Hah let's see you try.""",
+
+	TAVERN_OPTION_FIGHT = "Fight",
+
+	TAVERN_NO_TROUBLE = """— I am sure you don't. But here's the thing. Trouble doesn't care it finds you whether you want it or not. Come on boys let's escort him outside.""",
+
+	TAVERN_OPTION_LEAVE_TAVERN = "No need. I'll leave.",
+	TAVERN_OPTION_RESIST = "Resist (Fight)",
+
+	TAVERN_LEAVE_TAVERN = """— Right choice.""",
+
+	TAVERN_AFTER_FIGHT = """— What do you think you're doing?! Barging at my place assaulting my customers! Somebody! Call the guards on this asshole!
+
+You notice one of the patrons dashing to the exit. It's just a matter of time before the guards show up. You have a feeling they won't try to understand the situation. Even if they will there's little chance the blame won't be placed on you. It's best to leave as soon as possible.""",
+
+	TAVERN_GIRL_OUTSIDE = """You feel somebody tugging on your sleeve. A girl you noticed when you entered. She was reading a book in the corner earlier.
+
+Girl: — Come on. You don't want to stay here. Local drinks are terrible anyway.
+
+The girl leads you outside of the tavern.
+
+After you defeat the punks trying to attack you earlier nobody seems to want to try and detain you until the guards arrive.
+
+— Yeah. And don't ever come back here again. Asshole.
+
+The barkeep throws the last insult as you exit the tavern.""",
+
+	TAVERN_OPTION_TALK_PATRONS_AGAIN = "Talk to the patrons",
+	TAVERN_OPTION_TALK_GIRL_AGAIN = "Talk to the girl",
+
+	PATRONS_DLG_ATTEMPT = """You look around the establishment trying to pick any person who seems like they would be willing to talk but with no luck. The dwarves stare at you but as soon as your eyes lock with anybody they turn away pretending you are not even there.
+
+You decide to pick a person at random and try your luck anyway.
+
+— Leave me alone. I am just trying to relax before my shift starts. I am not looking for a company.""",
+
+	PATRONS_OPTION_ASK_QUESTIONS = "I want to ask some questions.",
+	PATRONS_OPTION_NOT_FRIENDLY = "Not a very friendly place this city.",
+	PATRONS_OPTION_ENJOY_DRINKS = "Well enjoy your drinks.",
+
+	PATRONS_ASK_QUESTIONS = """The dwarf lets out a heavy sigh.
+
+— I don't know anything. I kill myself on the clock every day. Don't really have time to follow the news and trends or whatever else you want to know about. Try your luck somewhere else okay?""",
+
+	PATRONS_NOT_FRIENDLY = """— Try living underground I'll look at how friendly you'll be in a year. They say it's natural for a dwarf to never see sunlight but I really gotta question this. And besides you gotta be careful who you talk to out here.""",
+
+	PATRONS_ENJOY_DRINKS = """— I'll do just that.""",
+	
+	TAVERN_PATRONS_DLG = """You look around the establishment, trying to pick any person who seems like they would be willing to talk, but with no luck. The dwarves stare at you, but as soon as your eyes lock with anybody, they turn away, pretending you are not even there.
+
+You decide to pick a person at random and try your luck anyway.
+
+— Leave me alone. I am just trying to relax before my shift starts. I am not looking for a company.""",
+
+	TAVERN_PATRONS_IGNORED = """You try another person... 
+... But he simply ignores you, pretending not to notice you are addressing him.
+
+As you try to sit down, joining another group of dwarves, they take their drinks and move to a different table.
+
+If the message was not clear before, it has become crystal clear at this point.""",
+
+	TAVERN_GIRL_DLG = """Your eyes lock with the girl. She pouts at you with a side look, and with a motion of her hand invites you to sit down at her table. Apparently she expected you to notice her. It would be difficult not to, considering hers is the only neutral face in this place.
+
+— Perfect timing. You're just the person I need.
+
+She slams the book she was reading. The patrons keep occasionally glancing at the two of you. Noticing this, her face takes on an annoyed expression.
+
+— Probably not the best idea to talk here. Let's go outside. I have a proposition that might interest you.
+
+She gets up and leaves the tavern.""",
+
+	TAVERN_GIRL_OUTSIDE_PROPOSITION = """You follow the girl into an alleyway, just a little off the main street.
+
+— Good enough place to talk. I don't think anybody is going to disturb us here.""",
+
+	TAVERN_OPTION_NO_HELP = "I didn't need your help.",
+	TAVERN_OPTION_THANKS = "Thanks.",
+
+	TAVERN_GIRL_RESPONSE_NO_HELP = """— Another ungrateful brute. Just my luck. Well, you're welcome to go back in and wait for the guards to show up. Don't expect any handovers from me in prison.""",
+
+	TAVERN_GIRL_RESPONSE_THANKS = """— This is a one-time thing. I am not your guardian angel.""",
+
+	TAVERN_GIRL_OPTION_WHO_ARE_YOU = "Who are you?",
+	TAVERN_GIRL_OPTION_WHY_HELP = "Why did you interfere?",
+	TAVERN_GIRL_OPTION_MEET_KING = "I don't really have time to chat. I need to meet the king.",
+
+	TAVERN_GIRL_WHO_ARE_YOU = """— Name's Jean. A soon-to-be famous magician. You better remember my name, because it will be big... soon... Some time in the future... Anyway, I decided you are going to help me take the first step towards my goals. You're welcome to feel honored.""",
+
+	TAVERN_GIRL_WHY_HELP = """— I wanted to talk to you, and I think you would agree it would be difficult to do with you behind bars in a palace dungeon. No, this wouldn't do. I have other plans. Jean, by the way. A soon-to-be famous magician. I decided you are going to help me take the first step towards my goals. You're welcome to feel honored.""",
+
+	TAVERN_GIRL_MEET_KING = """— Oh, so that's what you were doing at the palace earlier. I happened to see you being mocked by those guards at the entrance. Meet the king, hah! You might have guessed it by now, but people here don't like outsiders. Especially the king.""",
+
+	TAVERN_GIRL_HELP_OFFER = """— But you are in luck! The palace door might have shut itself before your face, but I know how to make another one. If they don't let you meet the king, I say, you have to find your own way to do that, right? Of course, if you want my help, you will have to help me out in return.""",
+
+	TAVERN_GIRL_OPTION_WE_JUST_MET = "We've only just met and you are already pushing me into some shady scheme?",
+	TAVERN_GIRL_OPTION_WHAT_PLAN = "What do you have in mind?",
+
+	TAVERN_GIRL_RESPONSE_WE_JUST_MET = """— Apparently we're both on a tight schedule here. It'll be easy work for somebody with your talents. And my plan is foolproof. Nothing to be worried about!""",
+
+	TAVERN_GIRL_RESPONSE_WHAT_PLAN = """Jean: Straight to business then.""",
+
+	TAVERN_GIRL_EXPLANATION = """— I've been tracking down a certain thing across the lands and I've information it is currently stored in the Dwarven Palace Treasury. I have a way inside the treasury, but I need a... bodyguard. In case things get complicated.""",
+
+	TAVERN_GIRL_OPTION_TRUSTING = "Aren't you too trusting of a person you've just met?",
+	TAVERN_GIRL_OPTION_DO_IT_ALONE = "Or you could just tell me how to get in and I'll get what you want on my own.",
+	TAVERN_GIRL_OPTION_NO_DEAL = "No deal. I don't know you, I can't trust you.",
+
+	TAVERN_GIRL_RESPONSE_TRUSTING = """— Tight schedule, desperate times. And you do have a reputation, mister mayor of Aliron. I wouldn't have turned to you if you were just a simple nobody. I am not an idiot.""",
+
+	TAVERN_GIRL_RESPONSE_DO_IT_ALONE = """— That would be great, if only you could get inside without me. But you can't. And besides, I prefer to be in control. We're doing it together or I am doing it without you.""",
+
+	TAVERN_GIRL_RESPONSE_NO_DEAL = """— Just like that? Don't turn me down now that I've shared my plans with you. Let's do it this way...""",
+
+	TAVERN_GIRL_OFFER_FINAL = """Jean pushes a piece of paper into your hands.
+
+— You think it over. And when you understand you won't get another chance to get into the palace and get ready to do the sensible thing, meet me at the location. I'll tell you more about the plan then.
+
+Jean turns to leave. But quickly turns around to tell you one more thing:
+
+— Don't make me wait too long!""",
+
+	TAVERN_GIRL_MAP = """You examine a piece of paper in your hands. It's a map with a specific location marked on it. It's outside of the city. Outside of the caves even, way above, on the surface. Whatever the girl's plan is, she seems to be serious about it. You might benefit from working with her.
+
+Or... you could abuse her misguided and careless trust. Somebody is trying to infiltrate the palace's treasury. Now that is very valuable information. The kind that might convince the guards to let you see the king. Good for you, but maybe not so good for Jean.""",
+
+	OUTSIDE_JEAN_DLG2 = """As you leave the tavern, somebody follows you outside. A girl you noticed who was reading a book in the corner earlier.
+
+— I thought you were going to get in trouble. Good to know you don't think with your muscles.
+
+The girl points in the direction of an alleyway just a little off the main street.
+
+— I have a proposition. Let's talk there.
+
+She takes you by the sleeve and leads you there.
+
+— Yeah, good enough, Nobody is going to disturb us here.""",
+	
+		BARKEEP_DWARF_INTRO = "— What are you having?",
+
+	BARKEEP_OPTION_GIRL = "Who's the girl over there?",
+	BARKEEP_OPTION_POUR_DRINK = "Pour me your best. (10 gold)",
+	BARKEEP_OPTION_INFORMATION = "I am here for information.",
+
+	BARKEEP_RESPONSE_GIRL = """— Beats me. Haven't seen her around. But she's easy on the eyes and minds her own business, so I don't care.""",
+
+	BARKEEP_RESPONSE_POUR_DRINK = """The barkeep carelessly tosses you a glass of ale.
+
+— Here you go.
+
+You take a sip... It's the worst ale you've ever tasted. You feel like throwing up. For a tavern located on the main street, the drinks here are surprisingly terrible. After taking another look at the barkeep, you aren't sure if that was a prank from him.""",
+
+	BARKEEP_RESPONSE_INFORMATION = """— Since I haven't seen you before, I take it you're not from here? This isn't a library. People come here to relax after a day of hard work... or before their day starts. Not to ask questions. But I guess I can help out a fellow dwarf. What are you looking for?""",
+
+	BARKEEP_OPTION_PEOPLE_TENSE = "People around seem tense. Did something happen?",
+	BARKEEP_OPTION_CITY_INFO = "What can you tell me about the city?",
+	BARKEEP_OPTION_MEET_KING = "I want to meet the king, but the guards won't let me.",
+	BARKEEP_OPTION_THATS_ALL = "That's all I wanted to ask.",
+
+	BARKEEP_RESPONSE_PEOPLE_TENSE = """— Nothing much. Nothing special, at least. People here tend to keep to themselves, so if you're looking for company, you should try someplace else.
+
+The barkeep thinks for a moment, then adds:
+
+— A bit of advice for an outsider. You better watch your mouth and who you are talking to. The guards can get violent for even a little reason... If anybody is tenser than usual, it's them. I don't know what happened, but it seems they've screwed up somewhere and now the king is on their asses. Probably something to do with the coalition.""",
+
+	BARKEEP_OPTION_COALITION = "The coalition?",
+
+	BARKEEP_RESPONSE_COALITION = """— Rebels, or whatever they are. Go around the city causing all kinds of trouble. We don't really care about them, they don't hurt anybody. But the king cares. And when the king cares, it becomes everybody's business. Especially the guards.""",
+
+	BARKEEP_RESPONSE_CITY_INFO = """— It's fine... not the worst city in the world. But it's going to be tough for a dwarf from outside if you think of staying here. People don't like outsiders here, no matter who they are. Myself, to be honest, I'd love to leave, but I have nowhere to go. And this place ain't going to run itself.""",
+
+	BARKEEP_RESPONSE_MEET_KING = """— Hah! No surprises there. The king is not a social person. Even his ministers have a hard time getting an audience, from what I heard. Give up. Unless you have something he wants, you will never get to meet him.""",
+
+	BARKEEP_RESPONSE_THATS_ALL = "— Uh-huh.",
+
+	JEAN_MOUNTAIN_PASS_INTRO = """To your surprise, the meeting spot for Jean was far out of the dwarven caves. After a strenuous hike up the mountain, you finally arrive at the location specified on the map.
+
+Surveying the surroundings, you find nothing noteworthy—it's the middle of nowhere. If there's anything special about this place, it eludes your attention.
+
+Amidst the trees, a campfire's light catches your eye. Approaching, you discover Jean, sitting by the fire, looking bored. She notices your arrival and stands up.
+
+— Finally, you decided to show up.""",
+
+	JEAN_MOUNTAIN_PASS_CONTINUE = """With an irritated expression, she walks toward you, not stopping when she reaches you but marching right past.
+
+— This way.
+
+She urges you to follow her. After a few paces forward, Jean stops and looks around.
+
+— Here... Seems about right... Are you prepared?""",
+
+	JEAN_OPTION_WHAT_FOR = "What for? What's the plan, exactly?",
+	JEAN_OPTION_WHAT_LOOKING_FOR = "What are you looking for in the vault?",
+	JEAN_OPTION_HOW_RETURN = "How are we going to go back?",
+	JEAN_OPTION_GUARDS = "What about the guards?",
+	JEAN_OPTION_LETS_DO_THIS = "Fine, Let's do this.",
+
+	JEAN_RESPONSE_WHAT_FOR = """— Isn't it obvious? We're on the mountain below the palace. Directly below, which you would have noticed if you paid attention while walking here. I am going to make a hole in the ground, and it will take us to the vault.""",
+
+	JEAN_RESPONSE_WHAT_LOOKING_FOR = """— You'll find out once we get it. Or not. Either way, this is none of your concern. I just need you to do your part, which is to be there to protect me if things don't go according to plan. Simple.""",
+
+	JEAN_RESPONSE_HOW_RETURN = """— Don't worry; I have us covered. I'll create a gravitational corridor once we're done. We simply step into it and fly back here.""",
+
+	JEAN_RESPONSE_GUARDS = """— What about them? They're not going to notice. I am not drilling the hole; I am creating it with magic. There'll be no sound. And the Vault is sealed at all times. The guards might be standing watch at the entrance, but I don't think they have anyone stationed inside. That wouldn't make sense!""",
+
+	JEAN_RESPONSE_LETS_DO_THIS = """Jean prepares to cast some kind of spell, but after a few seconds, she stops and looks at you with an irritated expression.
+
+— How about you move out of the way? Unless you want to be disintegrated together with the ground.
+
+You step out of the way, and Jean continues her chanting. A faint glow emanates from her fingertips, and she traces a circle on the ground. Suddenly, the earth beneath you trembles, and a soft humming fills the air. The ground begins to shift, revealing a seemingly endless pit. It's too dark to see the bottom.""",
+
+	JEAN_OPTION_CONTINUE_JUMP = "There? It doesn't look very inviting.",
+	JEAN_OPTION_YOU_FIRST = "You jump first.",
+	JEAN_OPTION_PUSH_JEAN = "*Push Jean into the pit*",
+	JEAN_OPTION_JUMP_IN = "*Jump into the pit*",
+
+	JEAN_RESPONSE_CONTINUE_JUMP = """— Ugh! You're not going to break your legs. There's a gravitational anomaly, it will make your landing soft. Now, come on. We don't have all day.""",
+
+	JEAN_RESPONSE_YOU_FIRST = """— What a silly suggestion. You're supposed to keep me safe, which means you need to go there first to see if it's safe for me to jump. If I knew you'd be complaining, I'd find someone else for the job.""",
+
+	JEAN_RESPONSE_PUSH_JEAN = """A gentle push is all it takes to make the girl lose her balance.
+
+— W-what are you– ah!
+
+Jean stumbles on her own feet and falls into the pit, screaming. Then, suddenly, the screaming stops. You look down the pit. A magical projectile flies dangerously close to your head. Just a few centimeters off, and it would hit you right in the face. The message is clear. You jump down, following Jean.""",
+
+	JEAN_RESPONSE_JUMP_IN = """The fall is short, and, as Jean promised, your speed gradually slows down as you approach the ground, making you land softly, like a feather would. The inside of the vault is dark, save for a little ambient light coming off a few lit torches. In that light, you notice glints all over the place. Clearly, no expenses were spared when building this place. Even the walls are gilded. They might as well be wholly solid gold.
+
+Jean's facial expression is not fully visible in the dark, but you can imagine it.
+
+— You asshole, if not for our situation I'd make you pay for this!""",
+
+	VAULT_ALTAR_INTRO = """At one corner you notice an especially exquisite-looking altar with intricate-looking scales on top of it. As you move closer, you realize these seem to be exactly the artifact you are looking for, but for one major detail, they don't seem or feel magical, as if it's just a timed-out replica.
+
+You touch them, but they seem to be stuck in place by some mechanism holding their base. Regardless, you don't feel like it's what you are looking for and turn away from them.""",
+
+	VAULT_JEAN_SEARCH = """Despite her anger, Jean manages to calm herself and look around, now fully focused on the challenge at hand.
+
+— This vault is bigger than I thought, so it will be faster if we're both searching. What we're looking for looks like—
+
+Before the magician can finish, you hear a sound of metal grinding on metal, like gears turning. Heavy stomping accompanies it, and it's coming closer.""",
+
+	VAULT_GOLEM_INTRO = """The origin of this sound reveals itself shortly—a towering metallic monstrosity, a golem. Powered by magic, no doubt, but its construction reveals a genius behind the mechanical design as well. A capable engineer was involved in developing this piece of technology.
+
+The golem's eye sockets—or what looks like them—fixate on the two of you.
+
+Golem: — Intruder alert. Nearby guards are notified of trespass. Entering combat mode.
+
+Jean: — W-what is that? It was not supposed to be here!
+
+Whether it was or wasn't doesn't matter now. The golem will not let you walk away easily.""",
+
+	VAULT_FIGHT_GUARD_INTRO = """The monstrosity is defeated, but you don't get to have a rest after the battle, as the swarm of guards rush into the vault and surround you.
+
+Jean: — Wait, wait, wait! We surrender! Surrender!
+
+Guard: — Drop your weapons!
+
+The guards heavily outnumber you. Your chances of winning this fight don't look good. And even if you manage to win, you are on their territory. Who knows how many guards are stationed inside this palace? Their supply of backup might as well be endless from where you stand.
+
+Jean obeys the guards' orders and drops her weapons. Considering the situation and having no choice, you are forced to follow her example.""",
+
+	VAULT_DUNGEON_INTRO = """After restraining you, the guards have placed you in a dungeon cell, somewhere in the palace. 
+
+Jean was put into a cell directly opposite of yours. Initially, it seemed like a favorable development, but...
+
+— I should've known better than to rely on a complete stranger for such an important job! You turned out to be useless. So much for all the rumors about you, I guess.
+
+Since you've been locked away, Jean never stopped complaining. And here you are, stuck, listening to her with no way of escaping or making her shut up. One might think your placing was chosen on purpose as a form of torture. But it's doubtful the guards at this place are so calculating.""",
+
+	DUNGEON_GUARD_INTRO = """After hours of enduring Jean's nagging, suddenly, an unlikely rescue came.
+
+Guard: — Hey! No talking!
+
+The guard appeared in the corridor. After chastising Jean, he turned to you.
+
+Guard: — You. Stand back and put your arms behind your back.""",
+
+	DUNGEON_GUARD_OPTION_WHAT_FOR = "What for?",
+	DUNGEON_GUARD_OPTION_OBEY = "*Do as you're told*",
+
+	DUNGEON_GUARD_RESPONSE_WHAT_FOR = """— You're in no position to ask questions. Just do as you're told.""",
+
+	DUNGEON_GUARD_OPTION_INSIST = "Not until you tell me what you're going to do.",
+
+	DUNGEON_GUARD_RESPONSE_INSIST = """Guard: — Tsk, a cheeky one. Just my luck. Fine! Apparently, the king was impressed with how daring you are, breaking into his vault. He wants to meet you. I am going to take you to him.
+
+Jean: — What? Excuse me, but that was my plan, not his! It's me the king wants to meet.
+
+The guard turns to Jean and looks at her, his expression not even irritated. Blank. A scary one, like a murderer might have before assaulting the victim.""",
+
+	DUNGEON_GUARD_FINAL_RESPONSE = """Guard: — You shut up or I will shut you up.
+
+Jean: — ... Damn you. Meeting the king was your goal to begin with. Perhaps you are in luck, after all.""",
+
+	DUNGEON_GUARD_OBEY_RESPONSE = """You do as the guard demands. You hear the cell's metallic door cracking open behind your back. Your hands get chained, and you're led into the corridor.
+
+Jean watches you with silent disdain.
+
+Guard: — Move.
+
+The guard pushes you forward. You are led out of the dungeon and onto the palace main grounds. You are led past a garden full of exotic flowers and trees from all over the continent. A number of devices emitting a blinding white light are mounted on the pillars all across. Perhaps, thanks to them, the flowers are able to thrive here, where the natural sunlight doesn't reach.""",
+
+	PALACE_INTRO_CONTINUE = """After passing the garden, you enter the grand, decorated building, located deep inside the inner court, away from the eyes of common citizens. If the palace exterior already seemed exquisite enough, but after seeing this building, it pales in comparison.
+
+Inside, a whole army of maids swarm around, busily tending to the decorum: cleaning, carrying gilded trays with food and drinks.
+
+You are led up the stairs and up to a big, metallic double door. The guard stops you.
+
+Guard: — Now, when you're inside, watch your manners. It's not every day even a law-abiding citizen gets the chance to meet a king, let alone a criminal like you.""",
+
+	PALACE_INTRO_DOOR = """The guard manipulates a device by the door, the purpose of which is unknown to you. He speaks something into it, and after a few seconds, the heavy double doors start to shift.
+
+The guard unlocks the chains on your hands, setting you free.
+
+Guard: — Go on inside. I will wait here.
+
+You step into the room ahead.""",
+
+	PALACE_REPORT_ON_JEAN = """You tell the guards about the proposal you've received from the magician girl in exchange for the audience with the king. After waiting for a couple of hours you've actually been invited inside.
+
+You enter the grand, decorated building, located deep inside the inner court, away from the eyes of common citizens. If the palace exterior already seemed exquisite enough, but after seeing this building, it pales in comparison.
+
+Inside, a whole army of maids swarm around, busily tending to the decorum: cleaning, carrying gilded trays with food and drinks.
+
+You are led up the stairs and up to a big, metallic double door. The guard stops you.
+
+Guard: — Now, when you're inside, watch your manners. Nobody cares who you are in the human lands. Try to offend the king, and you'll end up next to the criminal you've reported.""",
+
+	MEETING_THE_KING = """The hall you end up in seems even richer than a treasury. The walls are covered in all kinds of vegetation: vines, blooming with flowers. Devices, similar to the lights you've seen in the garden, are mounted onto the ceiling.
+
+A set of small waterfalls cover the space in between the plants, flowing constantly, creating a somewhat pleasant ambiance.
+
+In the center of the hall, a huge pillow on top of which the king himself sits, surrounded by dozens of concubines, mostly dwarves and gnomes, tending to his needs: one pours wine into his glass, another feeds him grapes.""",
+
+	KING_INTRO_DIALOGUE = """— Ah, the talk of the palace!
+
+The king addresses you, His voice is loud, deep, commanding.
+
+— Welcome. I must say, you have surprised me with your daring feat. Normally, I would have you executed on the town's square, but... your reputation has reached even my ears. And I am in need of somebody daring like yourself to solve a little problem of mine.
+
+The king takes a sip from his glass, then addresses a concubine tending to his nether region.
+
+— You can stop now. I have important business to discuss with my guest. You go tend to my ministers. They've been working all day and are in need of a break.""",
+
+	KING_INTRO_CONTINUE = """The girl stops. She stands up, bows, and leaves the hall. All without speaking even a word. She passes you by on her way out. Her head is down, but you notice her face all the same. It's expressionless, resigned.""",
+
+	KING_DIALOGUE_REPUTATION = """— Your name is [name], am I right? You've done a great service to our kingdom by preventing a severe crime from another surface dweller. She has already been caught by us, and since you did request the audience...""",
+
+	KING_DIALOGUE_OPTIONS = "It's a long story, but I'm searching for artifacts / There's something I need from you",
+	KING_DIALOGUE_RESPONSE = """You vaguely explain your goal of collecting the artifacts to which the king shows no particular interest.
+
+— Yes, yes... The artifacts. We can do something about it, but frankly, I'll request your help before that. After all, you have proven to be someone showing favor to my authority.""",
+	
+		KING_CAPTURED_INTRO = """— I must admit, the kingdom's treasure hasn't been breached for ages. The last time it happened was during my grandfather's reign. And you've proven to be very capable to attempt and execute it. So I want to hear the explanation, do authorities from human lands do such things regularly? What was your intention?""",
+
+	KING_CAPTURED_OPTION_1 = "I just got asked to",
+	KING_CAPTURED_OPTION_2 = "I needed some way to meet with you",
+	KING_CAPTURED_OPTION_3 = "You can't help yourself around the opportunity to get even more rich",
+
+	KING_CAPTURED_RESPONSE_1 = """— What a lousy way to ruin your reputation, especially given your status. But... This might not be too bad if you do just what you are asked to, because then you can still be useful to us.""",
+	KING_CAPTURED_RESPONSE_2 = """The king smirks as if he's talking to a clueless child.
+
+— Are surface dwellers getting dumber from the sunlight by the day?""",
+	KING_CAPTURED_RESPONSE_3 = """— A scoundrel mayor then. You aren't very different from some folk around here. I've just sliced a few ears of corrupt clerks in the last month.""",
+
+	KING_CAPTURED_CONTINUE = """— You know, after you've been captured, I was very angry. After all, you've damaged our ancient architecture among other things, but I'm calm now. After all, you are more useful alive to us. What do you say about paying for your damages and helping us out?""",
+
+	KING_TASK_INTRO = """— Now, I will task you with a very important matter. You will receive your freedom back for the sake of completing your task, and, if you succeed, you will be freed for good. If you fail, however... Well, I trust you will not disappoint me.""",
+
+	KING_TASK_OPTION_1 = "What is the task?",
+	KING_TASK_OPTION_2 = "What about Jean? (remove after 1 use)",
+	KING_TASK_OPTION_3 = "I want something you possess in exchange for my service.",
+
+	KING_TASK_RESPONSE_1 = """— Take a look around you. You see my palace, my grand royal hall. The beauty of it is created by these curious contraptions all across. The waterfalls, the flowers blooming, even though no sunlight reaches them down here, in the subterranean darkness. And then, the guardian you've met at the treasure vault. Quite an invention, wouldn't you say?""",
+
+	KING_TASK_RESPONSE_2 = """— Your companion, I believe? I won't make any promises regarding her. I have seen her and I have come to appreciate her beauty. I think I will keep her. After all, you two have committed a crime, and somebody always has to pay the price for crossing me. In this case, the responsibility will fall onto her shoulders entirely. Unless you disappoint me. In which case, you both will have to carry the burden of atonement.""",
+
+	KING_TASK_RESPONSE_3 = """— Ha-ha-ha! What did I say? Daring you are, indeed. Not many people are brave enough to express their wants in a situation like yours. I like that. We will discuss your reward if the task is completed.""",
+
+	KING_TASK_OPTION_RESPONSE_1 = "I will not leave without Jean",
+	KING_TASK_OPTION_RESPONSE_2 = "As long as I get to keep my freedom. I don't really care about her.",
+
+	KING_TASK_FINAL_RESPONSE_1 = """— Hmm... You stand accused of a crime of the highest order, and yet you demand something of me? You are not afraid to ask what you want, and I appreciate that. But there are limits to my generosity. But so be it. I will make no promises, but depending on the quality of your service, I might consider parting with that prize as well.""",
+
+	KING_TASK_FINAL_RESPONSE_2 = """— Then we have an understanding. You do not have to worry about your companion. I can promise she will not rot in the cell forever. She's too fine a jewel to keep locked away like that. I will grant her a chance at life befitting her beauty.""",
+
+	KING_TASK_CONTINUE_RESPONSE = """— The missing servant's name is Hara, and I will have you retrieve her from the terrorists' crooked grasp. I stress again that it is a task of utmost importance, as well as urgency. For everything she has already accomplished, there's one last task remaining she's yet to fulfill. And I want to see it completed as soon as possible.""",
+	
+	KING_HARA_TASK_QUESTION_1 = "What is Hara's last task?",
+	KING_HARA_TASK_QUESTION_2 = "What is that group that kidnapped her?",
+	KING_HARA_TASK_QUESTION_3 = "What do I start with?",
+
+	KING_HARA_TASK_RESPONSE_1 = """— This matter is out of scope of what you should know. It does not concern you in any way. But I will have you know that the matter is so important, the future of this very kingdom depends on it. So you must realize how much of a responsibility I am placing on you.""",
+
+	KING_HARA_TASK_RESPONSE_2 = """— They call themselves the Coalition. Typical rebel scum. Not particularly numerous or well organized, but this makes them elusive. I have been diligently hunting them down for the past couple of months, but my men fail to discover their hideout and capture its leader... It is just a matter of time. They will have their dues soon.""",
+
+	KING_HARA_TASK_RESPONSE_3 = """— I have a plan for it. Recently my guards have managed to catch one of their agents. However, he's a tough nut to crack. But unknown to him, we've also eliminated another member of their group. I want you to find a gnome not from these lands. With a bit of makeup and instructions, we can manage to have him play along and get the necessary information.
+
+— Might need to rough him up a bit before it, but I trust you to bring an agreeable pawn.""",
+
+	KING_HARA_TASK_OPTION_1 = "Very well, I'll find a gnome to play this role",
+	KING_HARA_TASK_OPTION_2 = "I'll bring a gnome but you can't just beat him up like that",
+	KING_HARA_TASK_OPTION_3 = "Instead of wasting time on this, just let me torture that agent",
+
+	KING_HARA_TASK_RESPONSE_2_1 = """— ...I was just joking, of course, we will only smear him a bit to look like someone seriously damaged and fake his identity.""",
+
+	KING_HARA_TASK_RESPONSE_3_1 = """The king raises his brow at your proposal.
+
+— My best servants have not been able to do it, but if you insist... Might I warn you if he perishes during your interrogation, you might take his place.""",
+
+	KING_HARA_TASK_FINAL_OPTION_1 = "Consider it done",
+	KING_HARA_TASK_FINAL_OPTION_2 = "Nevermind, I'll rather find someone else",
+
+	KING_HARA_TASK_END = """The king nods and turns away, demonstrating that this talk is over.""",
+
+	KING_HARA_TASK_GNOME_NOTE = """You note to yourself that this task is going to need an especially well-behaved and tamed character.""",
+
+	KURO_EVENT_INTRO = """As you are being escorted outside by the guard through the palace, you catch sight of a girl who seems very alien to this place.""",
+
+	KURO_EVENT_OPTION_1 = "*Ask about the girl*",
+	KURO_EVENT_OPTION_2 = "*Ignore it*",
+
+	KURO_EVENT_RESPONSE_1 = """Guard: — Her? It's Lady Kuro. The King appointed her as his chancellor a few months ago. Eerie woman, I say, but she must have something the King needs.""",
+
+	KURO_EVENT_RESPONSE_1_1 = """You aren't afraid of calling her eerie right next to her?""",
+	KURO_EVENT_RESPONSE_1_2 = "Where did she come from?",
+	KURO_EVENT_RESPONSE_1_3 = "*Remain silent*",
+
+	KURO_EVENT_RESPONSE_2_1 = """The guard shakes his head. Kuro does not pay any attention to it either. It seems she simply does not care for him, only giving you a side glance.""",
+
+	KURO_EVENT_RESPONSE_2_2 = """Guard: — Who knows. One day she just appeared out of thin air, then the captain ordered us to obey her orders. Thankfully, she doesn't ask for much. Some say she must've come from the darkest depths of the coal mines, but I think her skin is too clean, haha.""",
+
+	PRISON_DELIVER_SLAVE = "Deliver slave",
+	PRISON_INTERROGATE_PRISONER = "Interrogate prisoner",
+	PRISON_LEAVE = "Leave",
+
+	PRISON_DELIVER_SLAVE_INTRO = """The gnome, carefully chosen for [his] ability to play along convincingly, walks beside you. You've briefed [him] on his role, but there's always a risk in such deceptions.
+
+The prison guards eye you suspiciously as you arrive, but the King's seal on your orders grants you immediate access. You're led to a secluded corner near the interrogation room, where you can listen without being seen.
+
+Guard: — Wait here. We'll bring the prisoner in shortly.""",
+
+	PRISON_DELIVER_SLAVE_CONTINUE = """Prisoner: — What now? I've told you everything I-
+
+His words cut off abruptly as he presumably sees the gnome. There's a moment of stunned silence.
+
+Guard: — Look who we found trying to sneak into the castle. Your little friend here was quite cooperative once we explained the situation.
+
+You strain to hear the prisoner's reaction, knowing that the next few moments could make or break this plan.""",
+
+		PRISON_DELIVER_SLAVE_REACTION = """As you wait behind the corner, straining to hear the conversation, the prisoner's voice breaks the tense silence.
+
+Prisoner: — What... Gork? Is that you? How did they...
+
+The gnome, playing [his] part perfectly, responds with a trembling voice.
+
+Gnome: — I'm sorry, I... I couldn't let them hurt my family. They know everything.
+
+There's a long pause, filled only by the sound of heavy breathing.
+
+Prisoner: — You think I'll buy into this crap?""",
+
+	PRISON_INTERROGATE_PRISONER_INTRO = """You are led to a dimly lit prison cell, where a chained figure slumps against the wall. The guard unlocks the door, gesturing for you to enter.
+
+Guard: — Here's the rebel we caught. Get what you need from him, but don't kill him. The King wants him alive... for now.
+
+The prisoner raises his head slightly as you approach. His face is bruised and swollen, one eye nearly shut from the beating he's endured. Despite his condition, there's a defiant glint in his good eye.""",
+
+	PRISON_INTERROGATE_PRISONER_CONTINUE = """Prisoner: — Another interrogator? You're wasting your time. I won't betray my comrades.
+
+The guard snorts and turns to leave, calling over his shoulder:
+
+Guard: — He's all yours. Just remember, no permanent damage without the King's approval.
+
+The cell door clangs shut behind you, leaving you alone with the battered rebel. The air is thick with the smell of sweat and blood.""",
+
+	PRISON_INTERROGATE_OPTION_1 = "Great, I've grown bored from not inflicting any pain for so long (physics factor)",
+	PRISON_INTERROGATE_OPTION_2 = "You will make a nice magic practice target (magic factor)",
+	PRISON_INTERROGATE_OPTION_3 = "It's not too late to strike a deal, you know (charm factor)",
+
+	PRISON_INTERROGATE_PHYSICS = """As you approach the prisoner, you can see the tension in his body increase. He tries to shrink back against the wall, but the chains prevent him from moving far. His one good eye darts between you and the door, as if gauging his chances of escape.
+
+You notice a few implements left behind by previous interrogators—a wooden club leaning against the wall, a bucket of dirty water in the corner, and some frayed rope coiled on a hook. The sight of these tools seems to make the prisoner even more anxious.
+
+Prisoner: — S-stay back! I won't tell you anything, no matter what you do to me!
+
+His voice quavers despite his attempt at bravado. It's clear that while he may have resisted so far, his resolve is weakening.""",
+
+	PRISON_INTERROGATE_MAGIC = """As you consider using torture magic on the prisoner, a cold, unsettling energy begins to crackle in the air around you. The prisoner's eyes widen slightly, sensing the change in atmosphere.
+
+The magical energy coalesces around your hands, forming ethereal tendrils that snake towards the chained man. He tries to press himself further against the wall, but there's nowhere for him to escape.
+
+Prisoner: — W-what are you doing? Stay back!
+
+His voice wavers, a mix of fear and defiance. The magical tendrils hover inches from his skin, ready to inflict pain beyond physical means. The prisoner's ragged breathing is the only sound breaking the eerie silence.""",
+
+	PRISON_ATTACK = """Suddenly, the cell door bursts open. Three masked figures rush in, weapons drawn. One of them quickly breaks the prisoner's chains while the others keep their weapons trained on you.
+
+Masked Figure: — Don't move! We're taking our comrade back.
+
+You find yourself outnumbered and outmaneuvered. The rebels work swiftly, supporting their injured comrade as they back out of the cell. The last one keeps their weapon pointed at you until they're clear.
+
+Masked Figure: — Stay put if you want to live.
+
+The sounds of fighting grow more distant as the rescue team makes their escape. You're left alone in the cell, the opportunity for interrogation lost in the chaos of the rebel attack.""",
+
+	SEARCH_REBEL_TRACKS_COMPLETE = """After hours of searching, you finally stumble upon some promising tracks leading away from the Dwarf capital. The trail is faint, barely visible in the dim light of the underground caverns, but it's there—a mix of footprints and what appears to be drag marks, likely from the injured prisoner.
+
+After scouting the area, you manage to get more information on their likely destination which will require you to investigate it.""",
+
+	HOLLOW_PASSAGE_INTRO = """Eventually, you reach the Hollow Passage. Infamous place, even outside of the dwarven kingdom it is known for how dangerous it is... You also know it is a dead end. The coalition base should be somewhere within this passage.
+
+It would be wiser to prepare for the trip before venturing forth.""",
+
+	HOLLOW_PASSAGE_SEARCH = "Search for rebel tracks",
+
+	HOLLOW_PASSAGE_LOCATION = """Finally, you reach the place you were looking for. It's immediately evident why haven't the king's men found the headquarters until now. The entrance is remarkably well-hidden by a natural rock formation and is impossible to discover unless you know exactly what to look for.
+
+You follow inside the crack in the ground, into the passage below.""",
+
+	HOLLOW_PASSAGE_KOBOLDS_INTRO = """As you cautiously navigate the dimly-lit tunnels of the Hollow Passage, the sound of soft footsteps catches your attention. You halt, your senses heightening as two small, reptilian figures emerge from the shadows. They are kobolds, garbed in patchwork armor, with rough-hewn spears gripped tightly in their scaly hands.
+
+Kobold 1: — Halt, surface-dweller. What business have you skulking around our domain?
+
+Kobold 2: — Yes, speak quickly! Words or steel, choose your offering.""",
+
+	HOLLOW_PASSAGE_OPTION_1 = "I mean no harm, just exploring these parts.",
+	HOLLOW_PASSAGE_OPTION_2 = "I'm on a mission from the king himself.",
+	HOLLOW_PASSAGE_OPTION_3 = "Just take me to your leader, and all will be clear.",
+
+	HOLLOW_PASSAGE_RESPONSE_1 = """Kobold 2: — An explorer? Odd choice of location, this is no tourist destination.""",
+	HOLLOW_PASSAGE_RESPONSE_2 = """Kobold 1: — The king's lackey, hmm? That gives us even more reason to be wary.""",
+	HOLLOW_PASSAGE_RESPONSE_3 = """Kobold 1: — Bold. Not many come here seeking an audience without cause.""",
+
+	HOLLOW_PASSAGE_FOLLOW = """The kobolds exchange a glance, communicating silently through quick, darting looks. Finally, the first one nods.
+
+Kobold 1: — Very well. We shall escort you. We gotta blindfold you though. Don't wanna you bring king soldiers with you next time.
+
+They approach with caution, one keeping you at spear's length while the other ties a piece of rough cloth around your eyes, obscuring your vision entirely.
+
+Kobold 2: — Follow our lead, surface-dweller. One false move and you'll find yourself at the mercy of the depths.""",
+
+	HOLLOW_PASSAGE_JOURNEY = """You feel a firm grip on your arm, guiding you forward. The ground beneath your feet shifts from solid stone to what feels like loose gravel. Echoes of dripping water and distant conversations grow louder, then fade away, painting a confusing tapestry of sound.
+
+Time stretches on indefinably as you're led deeper into unknown territory. Every so often, the kobolds whisper to each other in hushed tones, too quiet for you to catch more than the sibilant hisses of their language. The air grows warmer, the scent of torch-smoke mingling with earthy dampness.""",
+
+	HOLLOW_PASSAGE_ARRIVAL = """Finally, you feel the pace slow and the grip on your arm loosen.
+
+Kobold 1: — We have arrived. Do not remove the blindfold until you are told.
+
+You hear a door creak open, followed by a rush of air that carries the scent of many beings caged too close together. Murmurs of conversation and the clinking of metal suggest a bustling environment. This must be the heart of the rebel's lair.""",
+
+	COALITION_HQ_INTRO = """The coarse fabric falls away from your eyes, revealing a cavernous room lit by flickering candlelight. Opposite you sits a gnome dressed in modest robes rather than armor, his demeanor calm yet imposing.
+
+Bolthar: — Welcome. I am Bolthar, the one you've been searching for.""",
+
+	COALITION_HQ_OPTION_1 = "*Nod in acknowledgment and sit*",
+	COALITION_HQ_OPTION_2 = "I'm not here for introductions; I came for Hara.",
+	COALITION_HQ_OPTION_3 = "Was expecting more chains and less chatter from a rebel leader.",
+
+	COALITION_HQ_RESPONSE_1 = """Bolthar nods back and signals you to speak.
+
+Bolthar: — Decent manners are rare these days. You've come here searching for Hara. Don't be surprised, we know of King's goals, but not of yours.""",
+	COALITION_HQ_RESPONSE_2 = """Bolthar maintains a collected composure.
+
+Bolthar: — Direct, I like that. But nothing is handed over lightly here. We are already aware of King's goals, but not of yours.""",
+	COALITION_HQ_RESPONSE_3 = """A slight smile plays on Bolthar's lips; his eyes reflect a seasoned warrior's resolve.
+
+Bolthar: — Chains are earned. Respect is free. Now, let's get down to brass tacks.
+You've come here searching for Hara. Don't be surprised, we know of King's goals, but not of yours.""",
+
+	COALITION_HQ_BOLTHAR_QUESTION = "What is your business with the King?",
+
+	COALITION_HQ_OPTION_KING_1 = "My business is my own, I have no quarrel with you",
+	COALITION_HQ_OPTION_KING_2 = "Maybe I favor his reign",
+	COALITION_HQ_OPTION_KING_3 = "I only want a certain thing from him and that's it",
+
+	COALITION_HQ_BOLTHAR_RESPONSE = """Bolthar calmly listens to your declaration, showing absolutely no emotions. After a short moment of silence, he continues as if he forgot his previous question.
+
+Bolthar: — Hara's somewhere safe, and she'll stay that way. She's valuable to us, more than a simple pawn or trade.
+
+Bolthar: — But we need someone resourceful to check on a group that's gone to an old temple and hasn't returned. Doing so might just put you in our good graces.""",
+
+	COALITION_HQ_MAP = """Standing, Bolthar walks to the table, rummaging through scrolls, and presents a map to you.
+
+Bolthar: — Here. This will get you to the temple. You'll find our men there. Help them to complete their mission and we'll get back to Hara.
+
+Bolthar: — Oh, and it might appear like a good idea to report to the King, but let me warn you, neither of us have a lot of time on our hands and it will prove fruitless if you do so.""",
+
+	COALITION_HQ_MAP_OPTION_1 = "*Take the map and rise from your chair*",
+	COALITION_HQ_MAP_OPTION_2 = "I came here for Hara, not to wander old ruins.",
+	COALITION_HQ_MAP_OPTION_3 = "Fine, I'll play your game for now.",
+	COALITION_HQ_MAP_OPTION_4 = "I want assurances. I do this, you promise to forfeit Hara",
+
+	COALITION_HQ_MAP_RESPONSE_1 = """Bolthar nods approvingly as you take the map.""",
+	COALITION_HQ_MAP_RESPONSE_2 = """There's a firmness to Bolthar's voice, steady as the stone walls around you.
+
+Bolthar: — Wandering can lead to finding. Do the task; we'll see what comes next.""",
+	COALITION_HQ_MAP_RESPONSE_3 = """Acknowledging your compliance, Bolthar folds his arms.
+
+Bolthar: — It's not a game. It's a test. Pass it and you'll earn more than a chat.""",
+	COALITION_HQ_MAP_RESPONSE_4 = """Bolthar considers this.
+
+Bolthar: — I promise to do what is in my powers to trust you to the degree of letting you get what you want. That is if you do your part of the deal.""",
+
+	COALITION_HQ_END = """With the conversation settled, kobolds guide you back through the convoluted network of tunnels the way you came. Silence embraces you once the blindfold is secured again.
+
+As you are led out into the open air and the blindfold falls away, you're alone, the map in hand at the start of an uncertain path.""",
+
+	TEMPLE_OLD_GODS_INTRO = """As you arrive at the location depicted on the map, you find yourself in front of an old dilapidated temple. Its walls are covered in thick moss and cracks, making it nearly indistinguishable from the surrounding nature.
+
+As you make your way inside, you are suddenly approached by a couple of armed kobolds, clearly members of the coalition. One of them, having a leader-like appearance, greets you.
+
+— Bolthar sent you? Right about time.""",
+
+	TEMPLE_KOBOLD_REMEMBER = """— Oh, it's you, I remember you hunting for that bracelet. World is small, eh? Can use your help now.""",
+
+	TEMPLE_KOBOLD_OPTION_QUESTIONS = "How come you are with the coalition?",
+	TEMPLE_KOBOLD_OPTION_WHATS_GOING_ON = "What's going on here?",
+
+	TEMPLE_KOBOLD_RESPONSE_LIFE = """— Never know where life gets you. These are my homelands, and dwarves are being the bastards they have declared to us we are all either giving them everything or become outlaws. And I'm no fly to give up on my hard-earned stuff.""",
+
+	TEMPLE_KOBOLD_RESPONSE_PROBLEM = """— We are in a small nuisance.
+
+Kobold points at the large pile of rubble blocking the passage behind him.
+
+— A few of our comrades are stuck, injured, on the other side. You've gotta search through the temple and find the magic tool we were sent to retrieve. After that, get back to us.""",
+
+	TEMPLE_KOBOLD_OPTION_RUBBLE = "Can't we take out the rubble?",
+	TEMPLE_KOBOLD_OPTION_ITEM = "What's the item exactly?",
+	TEMPLE_KOBOLD_OPTION_FINE = "Fine, I'll see what I can do",
+
+	TEMPLE_KOBOLD_RESPONSE_RUBBLE = """— Bad idea, the tunnel is unstable, and the monsters in here will hear us work. Even if we take them out, there's nobody on the other side to protect my guys.""",
+
+	TEMPLE_KOBOLD_RESPONSE_ITEM = """The kobold gives you a fairly decent drawing of a pair of intricate hand-sized rings on it.
+
+— I think you'll know when you see it. Get it to us, and we might be able to save our men on the other side.""",
+
+	TEMPLE_KOBOLD_RESPONSE_FINE = """— We'll be watching over our people. You never know when some other monster comes across and decides to attack.""",
+
+	TEMPLE_FINAL_ROOM = """In the final room with a big statue of some ancient goddess, you find a small coffer with a flimsy lock on it. As it falls down on its own, you find a pair of rings inside of it, clearly of magical nature. As you take it, you decide to return back to the coalition scout group.""",
+
+	TEMPLE_RETURN_KOBOLD = """The kobold looks enthusiastic with your return.
+
+— You really are capable beyond your looks. Alright, stay here.
+
+He takes one of the rings from you and makes his way through the smallest cracks of the rubble behind him. After a few minutes of nothing happening, you suddenly feel small vibrations coming from the ring.""",
+
+	TEMPLE_TELEPORT_KOBOLDS = """Suddenly, a group of kobolds is teleported next to you. Their leader and numerous injured have been moved all at once by the power of the magical item.
+
+Kobold Leader: — Just in time. You've done well, dweller. If it was just a bit later, we'd have more dead on our hands.
+
+He takes the other ring from you and orders everyone to move out of the temple.
+
+Kobold Leader: — Come to the dwarven capital tavern in 3 days; by that time, we'll get a new route to get you to us without King's men finding it.
+
+After stating that, he leaves with his group.""",
+
+	DWARVEN_TAVERN_SEARCH_REBEL = """Quickly scanning the room, your attention is drawn to a hooded figure seated far in the back. The cloak he wears is a drab collection of earthen colors, blending perfectly with the shadows in the corner.
+
+Hooded Figure: — You the one I'm waitin' for? Don't stand out. Blend in and follow after a while.
+
+Slipping out of the tavern, the contact disappears into the alleyways.""",
+
+	DWARVEN_TAVERN_ALLEYWAY = """Winding through the dimly lit streets, you shake off the suspicious gazes of the patrolling guards. Despite that, you still have a feeling of some unseen presence observing you. The figure stops before a nondescript door, its bronze sheen dulled by age, and taps it—a coded request for entry.
+
+As you follow after him inside of the room, more coalition members stand before. Once again, they blindfold you before escorting you to their base.""",
+
+	RETURNING_BOLTHAR = """Escorted back through the winding passageways of the Coalition base, you feel the fabric blindfold snug against your skin. You trace the steps in your mind, attempting to memorize the labyrinthine route. Eventually, the hands of the kobolds cease to guide you, and the room before you comes into view as the cloth is lifted away.
+
+Bolthar stands at the chamber's center, an approving look etched across his features.
+
+Bolthar: — Hello again, [name]. I've got the report on your involvement. It was impressive. The magical items are back in our possession, thanks to your efforts. You've proven to be quite resourceful.""",
+
+	RETURNING_BOLTHAR_OPTION_RECOGNIZE = "It's good to be recognized for it.",
+	RETURNING_BOLTHAR_OPTION_HARA = "I'm not here for praise, I need Hara.",
+	RETURNING_BOLTHAR_OPTION_COMPLIMENTS = "Spare me the compliments. Let's get down to the part where I meet Hara.",
+
+	RETURNING_BOLTHAR_RESPONSE_RECOGNIZE = """Bolthar's expression softens slightly at your reception of his acknowledgment.
+
+Bolthar: — It is indeed a rarity to encounter someone of your caliber. Consider the commendation well earned.""",
+
+	RETURNING_BOLTHAR_RESPONSE_HARA = """Bolthar's eyes narrow, weighing your impatience against your usefulness.
+
+Bolthar: — Patience is a virtue, but I admire your focus. Follow me.""",
+
+	RETURNING_BOLTHAR_RESPONSE_COMPLIMENTS = """His nod is sharp—a reflection of your own straightforward approach.
+
+Bolthar: — Very well. Let's not delay further. We hope by her state and your previous deed you will see how we treat every race fairly even affiliated with the current king. Come with me.""",
+
+	BOLTHAR_LEADS_TO_HARA = """With measured steps, Bolthar escorts you along corridors hewn from the living rock until you reach a nondescript door. Gently pushing it open, he stands aside, allowing you passage into Hara's confinement.""",
+
+	HARA_INTRO = """The room haloed by torchlight reveals Hara in her element; a goblin engrossed in her mechanical tapestry. The collection of devices would seem chaotic were it not for her hands, which dance with practiced precision across their surfaces.""",
+
+	HARA_DIALOGUE_INTRO = """The room abounds with mechanical tinkering, and there, at the heart of it, is the tomboyish figure of Hara, a goblin engineer of considerable renown. Engrossed in her work on a peculiar tool, her hands move with an experienced assurance; her focus unmarred by your sudden entrance, only sparing a casual glance in acknowledgment.
+
+Hara: — King's goon? Took you long enough to get here.""",
+
+	HARA_OPTION_REBELS = "Are you actually helping the rebels?",
+	HARA_OPTION_KING = "What's your arrangement with the King?",
+	HARA_OPTION_TREATMENT = "How have the rebels been treating you?",
+	HARA_OPTION_BACK_TO_KING = "I need to take you back to the King",
+
+	HARA_RESPONSE_REBELS = """Adjusting her goggles, Hara shrugs nonchalantly, a smirk plays across her lips.
+
+Hara: — They pay, I work—simple as that. It beats sitting around doing nothing, even if pay is not spectacular.
+
+Her attention shifts back to the contraption before her, twisting and realigning components with a deftness that hints at many years of dedication to her craft.""",
+
+	HARA_RESPONSE_KING = """Pausing, she sets down her tools and leans back against the tangle of machinery.
+
+Hara: — That creep? He wants a machine—gave me hard work to follow his design. I mean unlikely it's his, but he got some ancient schematic from gods know where. It should make him near immortal or something dumb like that.
+
+Hara: — Yeah, I don't really care but the payment is enough to let me do what I want for a long time. And despite his... leers, funnily he lacks the guts to put his hand on me. Or maybe he doesn't want to make me mad.""",
+
+	HARA_RESPONSE_TREATMENT = """She scratches her head, considering her response.
+
+Hara: — Given that they dragged me here against my will, not too shabby. They've got decency, not locking me in a dungeon or anything. Don't wanna stay here anymore though, their food and service suck ass compared to what I could get from the dwarves.""",
+
+	HARA_RESPONSE_BACK_TO_KING = """Hara: — Good. So we have it figured out? 
+
+Hara looks at Bolthar who has been observing your conversation silently up to this point.
+
+Bolthar: — Yes, you can prepare yourself for leaving. And meanwhile, I want to talk with you privately, [name].""",
+
+	BOLTHAR_PRIVATE_TALK = """Bolthar leads you to another room resembling an office. As he sits down, he carefully measures your reaction as he speaks.
+
+Bolthar: — Are you planning to keep working for the King? The Coalition can utilize your skills for the good cause of taking him down.""",
+
+	BOLTHAR_OPTION_INDEPENDENT = "I'm not willing to get involved on either side.",
+	BOLTHAR_OPTION_KING = "I'm with the King.",
+	BOLTHAR_OPTION_OFFER = "What can you even offer?",
+	BOLTHAR_OPTION_COALITION = "I will work with you",
+
+	BOLTHAR_RESPONSE_INDEPENDENT = """Bolthar: — I see... I can respect that, but that will make you our enemy, I'm afraid. We'll stick to our unspoken promise not to cause any harm to the stranger coming to us willingly and helping us, but next time we meet...""",
+
+	BOLTHAR_RESPONSE_KING = """Bolthar: — I see... I can respect that, but that will make you our enemy, I'm afraid. We'll stick to our unspoken promise not to cause any harm to the stranger coming to us willingly and helping us, but next time we meet...""",
+
+	BOLTHAR_RESPONSE_OFFER = """Bolthar: — You have something you want from the King, that much we can provide after our victory. Anything more than that is above my current disposition to promise to you. But will the King give you that at all? Consider it.""",
+
+	BOLTHAR_RESPONSE_COALITION = """Bolthar: — I'm glad to hear that. Then take this. Keep it hidden and just do what you've  planned. 
+
+Bolthar passes you one of the rings you've retrieved at the temple.
+
+Bolthar: — Once it's the time, we shall...""",
+
+		COALITION_ATTACK_INTRO = """Your dialogue is interrupted by a sudden coalition soldier barging inside the room.
+
+Soldier: — King's forces are here! They are preparing for the attack just outside of the gates.
+
+Bolthar does not seem surprised as if he expected this to happen sooner or later.
+
+Bolthar: — Our discussion is over then. I bet they've likely been following you here. Don't bother fighting on our side for now, this is not the time.
+
+Just as you look at the door, Bolthar is already gone from the room. The coalition troops are running around chaotically.""",
+
+	COALITION_ATTACK_APPROACH = """You make your way to the main gates which you've likely been brought through more than once. A few hundred feet ahead you spot a group of dwarven armed troops, judging from their armor, no less than veteran troops.
+
+One figure particularly sticking out of the group is a slightly taller girl in a fancy dress, clearly unfit for this situation, you've already seen before - Kuro, seems to be leading the assault. As she sees you approaching, she commands the troops to halt.
+
+Kuro: — Oh, you are still alive. I was afraid I wouldn't be able to thank you for bringing us here.
+
+Given the girl's flat tone and lack of emotions, you can't tell if she's joking or serious.""",
+
+	COALITION_ATTACK_OPTION_1 = "What's this about?",
+	COALITION_ATTACK_OPTION_2 = "You've been following me? How?",
+
+	COALITION_ATTACK_RESPONSE_1_2 = """Kuro: — Spare me of dumb questions please. The King requested to bring back the goblin girl and we are here for it, simple as that.""",
+
+	COALITION_ATTACK_OPTION_SECURED = "I've already secured her and rebels are on the run, there's no need to fight.",
+
+	COALITION_ATTACK_RESPONSE_SECURED = """Kuro slightly raises her brow after hearing that.
+
+Kuro: — I'm aware of it, but you are still here, aren't you? It's in my interest to take care of you for good. And even if it wasn't, the King's troops have been itching for a fight for a long time.""",
+
+	COALITION_ATTACK_OPTION_WITS = "If you have us fight, Hara might get harmed in the process.",
+	COALITION_ATTACK_OPTION_ZEPHYRA = "*Ask Zephyra for help*",
+	COALITION_ATTACK_OPTION_FIGHT = "It's a mistake to challenge me.",
+
+	COALITION_ATTACK_RESPONSE_WITS = """(if wits factor gte 5)
+
+Kuro: — Tsk. You are right. Stand back soldiers, we need him in one piece. Go on, get the goblin girl to the King. Don't think it's over between us.
+
+Without saying anything else, Kuro turns away from you. Her body is instantly covered in pitch black mist which merges with surrounding shadows. After less than a moment, her presence is gone leaving you alone with the defeated soldiers.""",
+
+	COALITION_ATTACK_RESPONSE_ZEPHYRA = """Zephyra: — Oh, Hi Kuro. Long time no see.
+
+Kuro winces seeing Zephyra coming out from behind. Despite bringing some visible emotion, her presence does not seem to have exactly positive effect on her.
+
+Kuro: — Sister. What do you want?
+
+Zephyra: — What's up with the bad guys you've teamed up with? That's not good, you know.
+
+Kuro: — Spare me from your goodiness, the last thing I need now is your dumb moral lecture.
+
+Zephyra: — Right, sorry for being dumb. Could you maybe consider not hurting us? [name] is my special chosen person for this grand ordeal.
+
+Upon hearing Zephyra's innocent proposal, Kuro gives a cold smirk.
+
+Kuro: — That's just a stronger reason for me to take care of him right here.
+
+Zephyra: — ...Right, I didn't think about it. Sorry, [name], I guess we'll have to teach Kuro a lesson.""",
+
+	COALITION_ATTACK_RESPONSE_FIGHT = """As the last dwarven soldier is knocked out, Kuro is still standing, albeit visibly exhausted.
+
+Kuro: — Ha-ah... You are so annoying. Fine, you've won this battle, I'm not fit for this kind of brawl...
+
+Kuro: — Don't forget to bring the goblin girl with you.""",
+
+	COALITION_ATTACK_2_OPTION_1 = "So you've just wasted our time?",
+	COALITION_ATTACK_2_OPTION_2 = "I won't let you get away!",
+	COALITION_ATTACK_2_OPTION_3 = "Running away like a coward now?",
+
+	COALITION_ATTACK_RESPONSE_EXIT = """Kuro does not respond. As she turns away from you, her body is instantly covered in pitch black mist which merges with surrounding shadows. After less than a moment, her presence is gone leaving you alone with the defeated soldiers.""",
+
+	HARA_RETURN = """You return to Hara's room finding her still waiting for you, mildly annoyed.
+
+Hara: — Everyone's gone and I thought you weren't coming back either. Took you long enough. I take it, is it safe outside? Let's get out of this shithole then.""",
+
+	HARA_RETURN_EXIT = """After delivering Hara to the city you pass her to the palace guards. They instruct you to return on the next day as the King will be waiting for you.""",
+	
+	KING_SECOND_TASK_INTRO = """Once again you are brought to the King's as he seems to be in a far greater mood than your first time.
+
+— Ah, my new friend, you've served me well in finding my treasured servant Hara and leading us to the coalition's base in the first place. Lady Kuro has spoken especially highly of you.""",
+
+	KING_SECOND_TASK_OPTION_HARA_UNHARMED = "Hara is unharmed and that's our desirable outcome",
+	KING_SECOND_TASK_OPTION_SURPRISED_BY_KURO = "Didn't expect it from her",
+	KING_SECOND_TASK_OPTION_ABOUT_REWARD = "About my reward...",
+
+	KING_SECOND_TASK_RESPONSE_HARA_UNHARMED = """— Yes, yes, that's exactly what we both want and it's great she's in working condition.""",
+
+	KING_SECOND_TASK_RESPONSE_SURPRISED_BY_KURO = """— That's so? I thought you two are friends or at least have the same ties. Regardless, you both have been providing us with more than valuable help.""",
+
+	KING_SECOND_TASK_RESPONSE_ABOUT_REWARD = """— Ah, of course, you want those sacred scales from our treasury. The truth is I need you to complete another task for me. Assist Hara with her mission, once she's finished I'll give you what you've asked.""",
+
+	KING_SECOND_TASK_OPTION_ABOUT_MACHINE = "What are you planning to do with that machine anyway?",
+	KING_SECOND_TASK_OPTION_NO_WAY = "No way, you've changed our agreement",
+	KING_SECOND_TASK_OPTION_AGREE_TASK = "Fine, but that's better be the last one",
+
+	KING_SECOND_TASK_RESPONSE_ABOUT_MACHINE = """— That artifact you've come for, it's our ancestral inheritance and it used to make our nation a force to reckon with. Scales of Destiny had the power to always make the correct decision be it diplomacy, trade or even war. It used to lead us to success.
+
+— However a few dozen years ago one of the rebel founders stole and damaged it with some foul ritual. Now they are no longer of any use. But thankfully Lady Kuro has provided us with a way to return its powers. She's a really mysterious and resourceful person despite her looks and origins.""",
+
+	KING_SECOND_TASK_RESPONSE_NO_WAY = """— Are you trying to call me a liar? What your mouth kid. I never said that will get you the artifact. But if you insist, alright, I promise you'll receive it after this.""",
+
+	KING_SECOND_TASK_RESPONSE_AGREE_TASK = """— Great. The guards will show you how to get to Hara. Until then I have more important business.""",
+
+	HARA_VISIT_INTRO = """You enter a palace workshop filled with various engineer tools and gadgets. Hara seems to be busy with tinkering on one of them similarly to your first encounter.""",
+
+	HARA_VISIT_INTRO_KURO_PRESENT = """At the other end of the room you spot Kuro lazily lying on an exquisite sofa reading some ancient looking book.""",
+
+	HARA_VISIT_NO_ATTENTION = """Neither of them seem to pay you any attention as if you were a lackey.""",
+
+	HARA_VISIT_OPTION_APPROACH_HARA = "Approach Hara",
+	HARA_VISIT_OPTION_TALK_TO_KURO = "Talk to Kuro",
+
+	HARA_DIALOGUE_GREETING = """Hara: — Fancy seeing you here. So the King made you help me? That's great given how much I'm late on the schedule, and the resource I've lost after being kidnapped.
+
+Hara: — I don't expect you to tinker with complex stuff, just bring me what I need and we'll be good.""",
+
+	HARA_OPTION_WHAT_DO_YOU_NEED = "So what do you need?",
+	HARA_OPTION_WHAT_ARE_YOU_MAKING = "What is it exactly you are making",
+
+	HARA_RESPONSE_WHAT_DO_YOU_NEED = """Hara: — Lots of stuff. At best we are only halfway through the construction but thankfully I got most of the stuff around here, just need time... Some of the rarer materials aren't in order here though, so I need you to get them for me.
+
+Hara: — Firstly, bring me Shimmering Ore. It's a magically potent dim shining rock. It's quite rare in other places but thankfully it's not too uncommon in these lands. Perhaps you can find it at the markets or in the caves.""",
+
+	HARA_RESPONSE_WHAT_ARE_YOU_MAKING = """Hara: — I'm not entirely sure, just following the blueprint. The King thinks it's gonna make him super strong, immortal or something like this. All that I can say for sure is that it does manipulate magic energies in insane quantities, but I'm no mage and someone who made the blueprint certainly knew more than me.""",
+
+	MARKET_SEARCH_SHIMMERING_ORE_INTRO = """As you go through the scarce dwarven market catching surly looks from traders, you manage to find one dwarf with a large assortment of various rocks. As you ask him about the Shimmering Ore.""",
+
+	MARKET_SEARCH_SHIMMERING_ORE_OFFER = """— Yeah, I have that. But it's rare so you've gotta pay up. A thousand gold for one. It's because you are an outsider, I just promised to sell it to other guys but I might hold on to it if you'll get the money.""",
+
+	MARKET_SEARCH_SHIMMERING_ORE_OPTION_PAY = "Pay (1000 gold)",
+	MARKET_SEARCH_SHIMMERING_ORE_OPTION_RETURN_LATER = "Return later",
+
+	MARKET_SEARCH_SHIMMERING_ORE_PURCHASE = """You purchase the ore from the dwarf trader and stash it into your bag. The dwarf smirks at the successful deal and completely ignores you attracting new customers.""",
+
+	MARKET_SEARCH_SHIMMERING_ORE_REVISIT = """— Oi, got the gold? I still have that ore in case you need it.""",
+
+	HARA_GIVE_SHIMMERING_ORE = """You pass the ore to Hara to which she nods approvingly.
+
+Hara: — Niiice, that's the one. Hey, I didn't think you'd manage this fast. I haven't thought about it before, but you are a capable and prosperous [guy]. Maybe you'd be interested in my service after I finish this task. Assuming the King doesn't plan to lock me up, haha.""",
+
+	HARA_OPTION_FLIRT = "I might find a use for a capable engineer, and perhaps more...",
+	HARA_OPTION_LIGHT_ATTITUDE = "That's rather lighthearted attitude for something bad",
+	HARA_OPTION_WHATS_NEXT = "So, what's next?",
+
+	HARA_RESPONSE_FLIRT = """Hara: — Hey, flirting is fun and everything but you gotta keep it in your pants for now. I don't like fooling around until the work is finished.""",
+
+	HARA_RESPONSE_LIGHT_ATTITUDE = """Hara: — Yeah, well, you can't live a life like mine without getting yourself into all sorts of dangers and troubles.""",
+
+	HARA_RESPONSE_WHATS_NEXT = """Hara: — The next one is a bitch. We need Sacred Sap, and I don't really have any clue where we got it from before. I guess you'll have to search for it.""",
+
+	KURO_RESPONSE_SACRED_SAP = """Kuro's ears flick as she has been listening to your conversation for this whole time. She speaks up without turning into your direction at all.
+
+Kuro: — It's from the Great Elven Tree. I presume you know where it is since the elves are really devoted to guarding it. Have fun getting it.""",
+
+	HARA_RESPONSE_AFTER_KURO = """Hara: — Hah, that's pretty far away from here then. Once you get it, make sure to store it in an enclosed container so it won't spoil until you get here. And I'm gonna have to process the ore now...
+
+Hara turns away quickly absorbed into her work once again.""",
+	
+		SACRED_SAP_HELEVIEL_INTRO = """— That's a big request, [race]. We aren't letting anyone approach our Sacred Tree, or worse, harm or harvest it. Normally I'd have you executed for simply thinking about it but...
+
+Heleviel pauses for a moment contemplating something to herself.
+
+— I think we can strike a deal.""",
+
+	SACRED_SAP_HELEVIEL_OPTION_SPYING = "You've been spying on us?",
+	SACRED_SAP_HELEVIEL_OPTION_I_WILL_HELP = "I'll see what I can do",
+
+	SACRED_SAP_HELEVIEL_RESPONSE_SPYING = """— Huh? You expect us to just sit around? You are a leader yourself, aren't you. Surely you know you can't risk your safety, it's common sense.""",
+
+	SACRED_SAP_HELEVIEL_RESPONSE_I_WILL_HELP = """— I'll be waiting for your return.""",
+
+	SACRED_SAP_PRISONER_INQUIRY = """You find the closest representative and ask them about the recently captured elven scouts.
+
+— Mayor? Ah, yes, there's been a couple of spies from elven land, we've been ordered to keep them in jail. You can ask about them there.""",
+
+	SACRED_SAP_JAIL_VISIT = """The jailer leads you to the room with two tied and gagged elven girls who seem less than happy.
+
+— These two are who you are looking for? Have been caught at the borders of elven forests by the patrol.""",
+
+	SACRED_SAP_OPTION_ROUGHED_UP = "It seems you've roughed them up",
+	SACRED_SAP_OPTION_WHY_KEEP_PRISONERS = "Why keep them in prison?",
+
+	SACRED_SAP_RESPONSE_ROUGHED_UP = """— They've killed one farmer boy before they got caught. Seems like he sneaked up on them and got shot in the throat, after that our men managed to capture them with two injured. As you see we can't just let them go free now even if we forget those are spies. I mean, you are the mayor, but the guild will not overlook it.""",
+
+	SACRED_SAP_RESPONSE_WHY_KEEP_PRISONERS = """— They've killed one farmer boy before they got caught. Seems like he sneaked up on them and got shot in the throat, after that our men managed to capture them with two injured. As you see we can't just let them go free now even if we forget those are spies. I mean, you are the mayor, but the guild will not overlook it.""",
+
+	SACRED_SAP_OPTION_FREE_THEM = "However, I need them freed.",
+	SACRED_SAP_OPTION_WHAT_CAN_BE_DONE = "What can be done then? You can't keep them locked in forever",
+
+	SACRED_SAP_RESPONSE_FREE_THEM = """The guard strokes his beard thinking about your request.
+
+— Given how much you've done for the city and the guild I can trust your intentions, however we need to do something about them going missing for the officials. One thousand gold will be enough to make them turn a blind eye to it. Or... you could find a couple of elven slaves for substitution.""",
+
+	SACRED_SAP_RESPONSE_WHAT_CAN_BE_DONE = """The guard strokes his beard thinking about your request.
+
+— Given how much you've done for the city and the guild I can trust your intentions, however we need to do something about them going missing for the officials. One thousand gold will be enough to make them turn a blind eye to it. Or... you could find a couple of elven slaves for substitution.""",
+
+	SACRED_SAP_OPTION_PAY = "Pay (1000 gold + 1000 fighter guild reputation)",
+	SACRED_SAP_OPTION_DELIVER_SLAVES = "Deliver 2 female elven slaves",
+	SACRED_SAP_OPTION_RETURN_LATER = "I'll return later",
+
+	SACRED_SAP_RESPONSE_PAY_OR_DELIVER = """You get the elven girls out of jail, instructing them to stay close to you so you can get them back to the elven lands. Initially they don't seem to trust you but as you bring up Heleviel's orders they agree to obey.
+
+You lead them chained and meet no interruption, soon making it out of city gates.""",
+
+	SACRED_SAP_RETURN_TO_HELEVIEL = """As you get deeper into woods you unchain them, making it easier to move. Soon you all reach elven capital and meet Heleviel once more.""",
+
+	SACRED_SAP_HELEVIEL_FINAL_RESPONSE = """— You've done your part of the deal faithfully, [race]. I can respect that. Here's the item you've requested from us, take it and don't tell how you've earned it.""",
+
+	ERLEN_EVENT = """— Hold on, [name]. Care for a small talk?
+
+— You are visiting Lira? You know, since the moment she became the new High Priestess she was quite busy with her tasks...
+
+— Do you think, maybe... I shouldn't be bothering her?""",
+
+	ERLEN_OPTION_ENCOURAGE = "Don't speak nonsense, she'd still like to see you",
+	ERLEN_OPTION_DISCOURAGE = "Perhaps it is a bad idea, she's an important figure now",
+
+	ERLEN_RESPONSE_ENCOURAGE = """— You are right, after all we've gone through I can't just give up now. Thank you.""",
+
+	ERLEN_RESPONSE_DISCOURAGE = """— I guess you are right... Well, sorry for wasting your time.""",
+
+	LIRA_SAP_INTRO = """— You want... Our Great Tree's sap? That's not simple as it has great importance to us and we aren't allowed to harm or harvest it, especially letting others approach it.
+
+— Actually we've been looking into other ways to deal with our shortcomings related to religious practices. As such, I have a request in turn for you.""",
+
+	LIRA_SAP_REQUEST = """— As an unspoken rule the elves should not harm the trees given its connection to the Sacred Tree, we aren't using any wooden crafts. All of the wooden things in the city are living trees produced by magic and the Sacred Tree.
+
+— But I want to give it a try and see if we can work with that material in some new way. I've decided that if we get it from others it wouldn't be us who harmed the trees in the first place.
+
+— So I need 1,000 wood pieces for our research. And also 100 steel for Erlen's forces, it's hard for us to get metals not from trading over here. Help us out and I'll give you the sap you need.""",
+
+	LIRA_OPTION_PROVIDE_RESOURCES = "Provide 1,000 wood and 100 steel.",
+	LIRA_OPTION_NOT_YET = "Not yet",
+
+	LIRA_SAP_FINAL_RESPONSE = """— Great! Here's the instructions for your haulers to bring without attracting needless attention. And the Sap we've agreed on...
+
+Lira passes you an exquisite bottle with clear white liquid.
+
+— Thank you and good luck with your task. Don't forget about us and visit sometimes.""",
+
+	INTERMISSION_SCENE = """In the dim halls of the cult's hideout a voluptuous red-haired woman has met with the demonic leader.
+
+Demon woman: — I presume you haven't obtained the item I tasked you with yet. What's the purpose of your visit?
+
+Red fox: — Just checking up on this sorry place. You've got a problem with it?
+
+Demon woman: — ...No. But we are in the middle of serious preparations.""",
+
+	INTERMISSION_CONTINUE = """Red fox: — Whatever. By the way, how's my egghead excuse of a sister doing? She was in lands of shorties recently if I recall. Fitting for her.
+
+Demon woman: — She seems fine, in fact she's close to completing her tasks and so should be you...
+
+Red fox: — Shut it. Hmph. You say she made some progress? Maybe I should pay her a little visit then.
+
+The fox woman chuckles to herself. Her counterpart considers objecting to her but decides it ultimately won't change anything and only makes her more annoyed.""",
+
+	HARA_SAP_DELIVERY = """— Wow, that's a lot. You didn't put anything... weird in it, did you? Just kidding. Alright, with these I've basically finished. It's just one thing...
+
+— You see, when you were away someone seems to have gotten inside of the workshop at night and stolen one of the crucial components, an Ancient Magic Capacitor. I can't imagine how that could even happen.""",
+
+	HARA_SAP_DELIVERY_SUSPICION = """You switch your attention to Kuro suspecting she's the most likable culprit.
+
+Kuro: — I have no clue and no benefit from losing it now.
+
+Despite her flat tone you can nearly feel her irritation with this nuisance.
+
+Kuro — I've searched through the workshop and there seems to be a note with the map... Whoever it was, they imply the Capacitor is located at Molten Grounds, a deep monster filled caves. Don't give me that look, it's your job so go there and get it back.
+
+Kuro turns away back to her book leaving no room for negotiation.""",
+
+	MOLTEN_GROUNDS_COMPLETION = """You find a small locked chest very much out of place for this hot depths. However as you try to approach it, you are pushed back by a strong magic barrier.
+
+An autonomous image of a fox woman has appeared in front of you seemingly made out of magic.
+
+— Ooh, that's unexpected. Are you a henchman? Sorry, this is only for my nasty sibling.""",
+
+	MOLTEN_GROUNDS_OPTION_LOOK_ZEPHYRA = "*Look at Zephyra*",
+	MOLTEN_GROUNDS_OPTION_NOT_SURE = "Not sure who do you mean",
+
+	MOLTEN_GROUNDS_RESPONSE_LOOK_ZEPHYRA = """You questionably look at Zephyra who has been acting weird from the moment she saw the other woman. She makes a step forward however slightly getting closer to you as if trying to shield herself.
+
+Zephyra: — Um... hello sister.
+
+Woman: — Huh? What is a wimp doing here? Are you actually serving the egghead now? And who's the [boy] with you? [He] seems kinda familiar.
+
+Zephyra: — T-that's a long story. We need that thing you took from the workshop...
+
+Woman: — Are you daring to call me a thief? What an insolence. Have you become bolder with nobody to oversee you?""",
+
+	MOLTEN_GROUNDS_CONTINUE_LOOK_ZEPHYRA = """Zephyra: — I-I'm sorry! I'm just...
+
+Woman: — Whatever, tell her I said hi.
+
+The woman's image disappears as quickly as it appeared and the barrier is gone. Zephyra lets out a deep sigh, recomposing herself.""",
+
+	MOLTEN_GROUNDS_OPTION_OTHER_SISTER = "It's your other sister?",
+	MOLTEN_GROUNDS_OPTION_STAY_SILENT = "*Stay silent*",
+
+	MOLTEN_GROUNDS_RESPONSE_OTHER_SISTER = """Zephyra: — Yeah, it certainly looked like her... Well, good thing it was not her in person. Let's hurry up with the capacitor thing.""",
+
+	MOLTEN_GROUNDS_RESPONSE_NOT_SURE = """You feel a sudden presence coming from behind. As you turn around you see Kuro materializing from the shadows as if she was following you all this time.
+
+Kuro: — Quit your games. Trying to distract me from finishing my job?
+
+Woman: — You are as keen as usual. Come on, what's the harm in a little play? And this [guy], I believe there's been some rumors about [him]. Hey, won't [he] make you a nice pair? Or maybe I should check up on [him] once I'm free again...""",
+
+	MOLTEN_GROUNDS_KURO_BANISHES = """Despite her usual blank expression you feel like Kuro is unusually angry.
+
+Kuro: — Begone.
+
+Kuro waves her hand, ordering her shadows to quickly swarm over the woman's image, tearing it apart. As it disappears and the barrier is removed you hear a distant chuckling laugh.
+
+Kuro: — Take the capacitor and return to Hara.""",
+
+	MOLTEN_GROUNDS_OPTION_WHO_WAS_THAT = "Who was that?",
+	MOLTEN_GROUNDS_OPTION_BEEN_FOLLOWING = "You've been following us all this time?",
+	MOLTEN_GROUNDS_OPTION_SISTER_HOT = "Wow, she looked hot. Is she like your older sister?",
+
+		MOLTEN_GROUNDS_RESPONSE_WHO_WAS_THAT = """Kuro: — None of your business. And you'd prefer it to stay this way.
+
+As you fish out the item from the chest, Kuro is already gone from the view.""",
+
+	MOLTEN_GROUNDS_RESPONSE_BEEN_FOLLOWING = """Kuro: — That's just safe measures to make sure you don't screw up anything.
+
+As you fish out the item from the chest, Kuro is already gone from the view.""",
+
+	MOLTEN_GROUNDS_RESPONSE_SISTER_HOT = """Kuro glares at you from behind her glasses but does not say anything.
+
+As you fish out the item from the chest, Kuro is already gone from the view.""",
+
+
+	HARA_CAPACITOR_RETURN = """Hara: — You got it? That's great, I was about to start making a new one. With that everything is ready, we are gonna need another day to set things up, so you better return tomorrow. Oh, and perhaps you should talk to Kuro.""",
+
+	KURO_DIALOGUE_INTRO = """Kuro: — Good, you are finally here. Now why don't you get to work?""",
+
+	KURO_OPTION_READING_PLACE = "That's not the best place for reading",
+	KURO_OPTION_WHY_HERE = "Why the hell are you here?",
+
+	KURO_RESPONSE_READING_PLACE = """Kuro: —  Indeed, but with limited options I'm using what I get. And I'm here to watch over your progress ensuring this project gets finished.""",
+
+	KURO_RESPONSE_WHY_HERE = """Kuro: — Do you always have to ask stupid questions? I'm watching over your progress ensuring this project gets finished.""",
+
+	KURO_OPTION_HELPING_OUT = "Why aren't you helping it then?",
+	KURO_OPTION_MORE_QUESTIONS = "I have more questions for you",
+
+	KURO_RESPONSE_HELPING_OUT = """Kuro: — I'm an overseer, not a dumb muscle, that's your job if that wasn't clear already. Now why don't you take your place and produce some results already.""",
+
+	KURO_RESPONSE_MORE_QUESTIONS = """The black foxgirl lets out a lengthy sigh before continuing.
+
+Kuro: — I don't believe any of your questions are worth my time, but fine. If you are so curious I will answer one of your questions to my best capability after you get some progress with the machine.
+
+Kuro: — Until then, you better get to work.""",
+
+	KURO_NO_QUESTIONS_LEFT = """As you try to get any attention from Kuro she completely ignores you, pulling her shadows over herself so you can't bother her anymore.""",
+
+	KURO_QUESTIONS_LEFT = """You have x (insert number of questions left) questions left to ask Kuro about.""",
+
+	KURO_OPTION_SIDE = "Who's side are you on?",
+	KURO_OPTION_ARTIFACTS = "What are you planning to do with the artifacts?",
+	KURO_OPTION_ZEPHYRA = "What's your relationship with Zephyra?",
+	KURO_OPTION_POWERS = "I want to know about your powers.",
+	KURO_OPTION_LIKES_HATES = "What things do you like or hate?",
+	KURO_OPTION_ROUGE = "Who's the red-haired foxgirl who seems to be your relative?",
+	KURO_OPTION_NEVERMIND = "Nevermind",
+
+	KURO_QUESTION_SIDE = """Kuro: — Typical dumb question. I'm with the cult obviously. For the same reason here as you are, to get the artifact for it.
+
+You are slightly shocked as Kuro reveals her affiliation and the true goal.
+
+Kuro: — You might be thinking why I'm telling you this. It won't change anything, nobody here will believe or care about it and the King knows anyway. Now that you've got your answer, get back to work.""",
+
+	KURO_QUESTION_ARTIFACTS = """Kuro: — Oddly enough, I don't have full information on it, but it's safe to assume their power will be used in connection with their origin to change the global balance of powers, political or that of nature.
+
+Kuro: — And before you ask for their origin, don't bother. It's not a lecture I'm willing to give nor it's the one I believe you to understand.""",
+
+	KURO_QUESTION_ZEPHYRA = """Kuro: — We are sisters. Not in a biological sense but in a spiritual one. And not in a sense that we've chosen to be close to each other like friends, but more of that we were born in this way. We just know that we are, simple as that.
+
+Kuro: — Neither me, nor our third sister, Rouge, particularly like her. I guess that's exactly the sort of relationship you have with your biological siblings, you don't like them but still they exist in our life for better or worse.""",
+
+	KURO_QUESTION_POWERS = """Kuro: — I'm as powerful as I look. Or do you mean non-physical powers? That's surprisingly clever of you to study your enemy like this. I can control shadows and conceal my presence by hiding inside of them. Naturally I'm unbound by moving inside of them and my shadow can't be dispelled by light.
+
+Kuro: — I'm not a skilled fighter nor do I like fighting, but I guess I could beat Zephyra.""",
+
+	KURO_QUESTION_LIKES_HATES = """Kuro: — What kind of weird question is that? Are you trying to hit on me? I like books and I hate nitwits.
+
+Kuro takes a pause figuring that answer is not really sufficient for you.
+
+Kuro: — I guess I like venison and grapes. These are hard to get around dwarven cities but at least royalty gets some from trading even if it's pretty stale. And I hate my tail being touched for that matter, so better watch your hands around me.""",
+
+	KURO_QUESTION_ROUGE = """Kuro: — Rouge. She's the brute of the trio, so you don't wanna get on her bad side. Not that she has any good side. It's very much like her to get on my nerves when she has her own job to do.
+
+Kuro: — I've said enough, don't wanna talk about her more than necessary, and you better hope you won't have to deal with her either.""",
+
+	KURO_FINAL_ADVICE = """Kuro: — Now that job is done, here's my sincere advice as a reward for your work. Don't bother coming here tomorrow.
+
+Kuro turns away indicating her unwillingness to continue.""",
+	
+	CEREMONY_START = """You make your way to the palace main hall where the machine Hara worked on has been moved. The King, guards, and Kuro have all gathered waiting for it to start.
+
+King: — A fine work, [name]. This day will be remembered in ages.""",
+
+	CEREMONY_OPTION_PAYMENT = "What about my payment?",
+	CEREMONY_OPTION_SAFETY = "Are you sure this is safe?",
+
+	CEREMONY_RESPONSE_PAYMENT = """King: — Patience. After I receive all of its machine powers you'll get your artifact you came for. This is what is going to happen, am I right, Lady Kuro.
+
+Kuro: — ...Yes, we are almost finished.""",
+
+	CEREMONY_RESPONSE_SAFETY = """King: — Hmph, no guts, no glory. I trust the girls will deliver on their promises and then I will deliver you mine. Is that right, Lady Kuro?
+
+Kuro: — ...Yes, we are almost finished.""",
+
+	CEREMONY_IF_IN_VAULT = """Kuro gave a sign to the King after which one of the guards left the room and returned with the very same scales you've discovered at the vault that day.""",
+
+	CEREMONY_IF_NOT_IN_VAULT = """Kuro gave a sign to the King after which one of the guards left the room and returned with the dull-looking scales fitting the description of the artifact you needed. However, it was clear to you they didn't have any real powers in them, feeling more like a replica.""",
+
+	CEREMONY_CONTINUE = """The scales get inserted into the machine's sliding section after which Hara begins its activation. As she flips some levers following the instruction, the rest of the room, save for Kuro, observes in awe as the mechanical components spring to life.
+
+After a few moments, the sliding section starts glowing and a deafening hum fills the room.
+
+The King: — This is it!? It's working! Hah, finally I'll be able to reenact our dynasty's powers and make the dwarven kingdom a fearsome power that outsiders will have to consider.""",
+		KINGS_ROUTE_FINALE = """As the charging reaches its peak a blinding blue flash erupts from the machine leaving everyone dazed as Kuro shields herself with her powers. As she springs into action, she quickly retrieves now restored scales from the machine and makes her way to the exit.
+
+The King: — You... Betrayer!
+
+Kuro: — Don't be ridiculous, I've only promised to help with the artifact restoration, there was no alliance between us.
+
+As she turns away suddenly numerous cultists barge into the room starting a fight with dwarven guards and helping her escape.""",
+
+	KINGS_ROUTE_FINALE_DEX_CHALLENGE = "Chase after Kuro",
+	KINGS_ROUTE_FINALE_FIGHT = "Fight",
+
+	KINGS_ROUTE_FINALE_SUCCESS = """You skillfully push through the chaos following Kuro's steps out of the palace.""",
+
+	CHASE_AFTER_KURO = """As you get through the palace following Kuro's footsteps, you soon end up on the empty streets of the city. Kuro stays at the opposite side giving you her usual disinterested look.
+
+Kuro: — Rumors didn't lie, you are a skirt chaser after all. Do you mind giving me some space?""",
+
+	CHASE_OPTION_1 = "You've planned this betrayal since the start?",
+	CHASE_OPTION_2 = "I won't let you take the artifact just like that",
+	CHASE_OPTION_3 = "Maybe we could talk it over? What cult offers what I can't?",
+
+	CHASE_RESPONSE_1 = """Kuro rubs her forehead and visibly sighs.
+
+Kuro: — I honestly was hoping we are past asking stupid questions at this point. Yes. This was the cult's goal all along, to restore the artifact's powers and take it away. Why else would I deliver the blueprint for the machine to empower it?""",
+
+	CHASE_RESPONSE_2 = """Kuro: — Huh? I worked way harder than you to get it. I came up with the plan, blueprint and was forced to stay with that horny bastard and his lunatic dreams of former glory. Give credit where it's due, will you?""",
+
+	CHASE_RESPONSE_3 = """Kuro smirks at your sudden proposal but it's painstakingly obvious this is not a time or place for such negotiations.
+
+Kuro: — Not much, but it would be weird for me to switch sides just from being asked, wouldn't it? You have been an interesting acquaintance so far, but alas.""",
+
+	CHASE_AFTER_RESPONSE = """As she was talking the King and his guards had caught up with you.
+
+The King: — You'll pay for this you damn wretch!
+
+Kuro pays no attention to his words, simply turns around and prepares to continue on her way.
+
+Kuro: — Now excuse me, but there's people who have more free time to keep you company unlike me.""",
+
+	COALITION_NOT_HELPED = """As she turns away, a group of coalition troops laying in the hiding who were just waiting for the king to appear.
+
+The King: — That bitch even sided with the coalition behind my back! Take them out and get her!""",
+
+	COALITION_HELPED = """As she turns away, a group of cultists join the street blocking you from going after her.""",
+
+	FIGHT_AFTER_WIN = """The charging of scales reaches its peak as you feel the ring you've gotten from Bolthar starts vibrating. At the crucial moment when it reaches its peak, coalition forces start flooding the room through the amplified portal technique.
+
+However, Kuro is unhindered by this. As a blinding blue flash erupts from the machine leaving everyone dazed as Kuro shields herself with her powers. She quickly retrieves now restored scales from the machine and makes her way to the exit.
+
+The King: — You two... Betrayers! Guards! Kill everyone!""",
+
+	CHASE_AFTER_KURO_COALITION_HELP = """You make your way to the nearby caves chasing after Kuro carrying the artifact. By going through unconventional paths soon you arrive in a desolated area.
+
+Everything apparently has been prepared beforehand as you spot Kuro standing in the middle of the ritual circle opening the portal. On a much larger perimeter, the area is blocked out by a semi-transparent barrier not unlike one you've encountered at Millford, however, this one is much darker.""",
+
+	FINALE_WITHOUT_KETCH = """The small-sized portal starts opening as you observe, unable to get past the barrier and do anything.
+
+Out of it, a person walks out, a demon woman you've met previously. Both women look at each other with a hint of challenge in their eyes.
+
+Kuro: — Here's the artifact. We should depart immediately.
+
+The demon takes the scales from Kuro's hand and turns away.
+
+Demon: — I'm afraid there's not enough power to get both of us and the artifact out of here. The local forces are upon us already.""",
+
+	KURO_RESPONSE_TO_BETRAYAL = """Kuro: — Huh? You've planned to betray me since the very start?
+
+Demon: — Does that surprise you? You simply aren't trustful, you didn't get rid of this [man] over there as ordered. I don't know what's in your mind and that makes you nothing but dangerous.
+
+Demon: — Yet, you've completed your mission for the most of it, so I'll let you keep your life. Enjoy your future confinement.""",
+
+	KURO_FALLS_KNEES = """Kuro's face distorts in anger as the woman teleports outside with the artifact. Kuro falls to her knees as her barrier is dispelled. She does not fight back as they restrain her and take back to the palace.""",
+
+	FINALE_WITH_KETCH = """The small-sized portal starts opening as you observe, unable to get past the barrier and do anything.
+
+Out of it, a person walks out, the tall rough-looking male elf. He swiftly snatches the scales out of Kuro's hands.
+
+Kuro: — Ketch...
+
+Ketch: — Admirable, you really did get it. That [guy] on the other side of the barrier though... Well, it doesn't matter.""",
+
+	KURO_RESPONSE_KETCH = """Kuro's expression has darkened even more with the appearance of Ketch.
+
+Kuro: — Where's Mhyrana?
+
+Ketch: — Don't sweat about it, she sent me in her place.
+
+Kuro: — So you are planning to finish me off? Or let [him] take care of me?
+
+Ketch: — Oh, you figured it right away? You really are too smart for your own good.""",
+
+	KETCH_FINALE_NO_ZEPHYRA = """The atmosphere inside the barrier has grown even more tense now with both participants circling around each other.
+
+Kuro: — The fact you've shown up instead is a dead giveaway.
+
+Ketch: — Right. And about the part about finishing you up personally, we aren't leaving it up to chance—""",
+
+	KETCH_ATTACK_KURO = """Kuro launches an attack at the elf but his speed is far superior. The dagger from his hand sank deep inside of Kuro's body as her control over the divine barrier ceases, it shatters in pieces as she falls onto the ground.
+
+Kuro: — Gh... Damn you...
+
+Blood is gushing out of Kuro's mouth indicating the seriousness of the injury.
+
+Ketch: — With this little power, you stand no chance against me, you idiot. Shouldn't have put up that barrier in the first place. Now then, the poison should finish its work and I wouldn't want to stay around with these guys in sight...""",
+	
+	HELP_KURO_OPTION = "Help Kuro",
+	CHASE_AFTER_KETCH_OPTION = "Chase after Ketch",
+	HELP_KURO = """You decide to ignore Ketch and go over to Kuro for help. As you slowly put her on her back she curses you.
+
+Kuro: — What are you doing helping your enemy, you moron... he leaves... with the artifact...
+
+Ignoring her protest, you pull out the poisoned dagger and do your best to stop the bleeding until one of the healers helps out with the wound.""",
+
+	FADE_TO_BLACK = """Kuro passes out from pain as only your effort keeps her from dying. However, Ketch has escaped with the artifact and there's no chance to retrieve it now.""",
+
+	KETCH_FINALE_WITH_ZEPHYRA = """The atmosphere inside the barrier has grown even more tense now with both participants circling around each other.
+
+Kuro: — The fact you've shown up instead is a dead giveaway.
+
+Ketch: — Right. And about the part about finishing you up personally, we aren't leaving it up to chance—""",
+
+	KETCH_ATTACK_KURO_ZEPHYRA = """Kuro launches an attack at the elf but his speed is far superior. The dagger from his hand ends up in Kuro's body, however...
+
+In the last moment Zephyra, who has passed the barrier on her own, blocks the attack with her body, the dagger ends up right on the place of heart. Both parties stand in shock as the barrier cracks allowing your group to follow up after her.
+
+Ketch: — Fuck... Whatever, one bitch or the other, I'm out of here!
+
+Ketch quickly dashes away as Kuro stands in shock over dying Zephyra.""",
+
+	CHASE_KETCH = "Chase after Ketch",
+	RUSH_ZEPHYRA = "Rush to Zephyra",
+
+	RUSH_TO_ZEPHYRA = """Kuro: — Damn it... Why?! This was punishment for my mistake, not...
+
+For the rare moment, you see genuine rage and tears over Kuro's face as she looks down at Zephyra.
+
+Zephyra: — ...I guess... I didn't want to see my little sister... die on me...
+
+Kuro: — No... Goddamnit, [name], don't just stand there, do something!""",
+
+	ZEPHYRA_OPTION_1 = "This can't be helped.",
+	ZEPHYRA_OPTION_2 = "[Bishop Class] *Expend all powers you have*",
+	ZEPHYRA_OPTION_3 = "*Pray to the gods*",
+
+	ZEPHYRA_HELP_1 = """Kuro: — No... This... isn't... What I wanted...
+
+You both watch silently as Zephyra's body lies breathless between you. Kuro has lost any will to fight or resist you, making it easy for you to tie her up before leaving.""",
+
+	ZEPHYRA_HELP_2 = """Your exceptional proficiency in healing arts and all of your magic energy is just enough to prevent Zephyra's damaged heart from failing completely as you slowly restore it to working condition. Kuro observes you with her teeth clenching as you exhaust yourself over Zephyra's body.
+
+You feel like you've managed to turn the inevitable by your powers alone. Kuro watches in disbelief staying completely silent and powerless in a room with her sister barely surviving and you covered in sweat and trembling.""",
+
+	ZEPHYRA_HELP_3 = """You put everything you have into a feeble attempt to call for justice in order to save Zephyra from certain death, and unexpectedly to everyone there, a faint light appears over her body. The gushing blood stops as her wound cauterizes around it.
+
+You feel like you've managed to turn the inevitable but you pay the price – you feel yourself getting weaker, as dizziness strikes you. Kuro watches in disbelief staying completely silent and powerless in a room with her sister barely surviving and her savior doing the impossible.""",
+
+	CHASE_AFTER_KETCH = """Ignoring Kuro, you dash after Ketch who tries his best to lose you in the cramped tunnels but his size does not help here at all. After a few turns, you finally catch up to him, landing a glancing hit.
+
+Ketch: — You fucker...
+
+This is enough to throw him off balance and stumble. However, his combat prowess is enough to not lose his speed as he jumps right back to the other side of the room.
+
+Ketch: — This damn thing is not worth it.""",
+
+	CHASE_KETCH_SUCCESS = """To your full surprise he throws the scales in your direction with a small blinding bomb tied to it. As you cover from the explosion, he's no longer there, a faint trace of prepared teleportation magic has taken him away to safety. It's your luck the power of the artifact was too strong to have him teleport with it.
+
+As you pick up the scales, you are left with no other option but to return back.""",
+	
+
+	AFTERMATH_KING_ROUTE_KURO_DEAD = """You return to The King, whose forces finish cleaning up the coalition remnants and the cultists. After a few hours, the place is swept as if nothing at all has happened in the first place. You stand before the King in his private chambers as he talks to you.
+
+The King: — You've made some mistakes on this path, but I can't blame you. We've... miscalculated our trust as well. Besides, you've brought the rebels to their downfall and you've dealt with the filthy betrayer who led us astray.
+
+The King: — You've even retrieved and restored the scales, but it was all just a plan by the foul fox. And that damned cult has tried to use us... Initially, they've wanted to get them to themselves but seeing how they've tried to overthrow us, I let you have it.
+
+You realize that the King must be scared to keep the artifact around his castle and is ready to settle on the fact that the coalition is no longer any threat to him.
+
+The King: — You can have those. And we hope for a positive future relationship with Aliron, but don't think you can play us for fools like the cultist has tried.""",
+
+	AFTERMATH_KING_ROUTE_KURO_ALIVE = """As you're approached by the king's forces, they seize Kuro, taking her to jail. Soon you are informed that the rest of the cultists and rebels have been eliminated by the king's forces. After a few hours, the place is swept as if nothing at all has happened in the first place. You return to the King who is ready to meet with you.
+
+The King: — You've made some mistakes on this path but I can't blame you. We've... miscalculated our trust as well. Besides, you've brought the rebels to their downfall and you've dealt with the filthy betrayer who led us astray.
+
+The King: — I've been informed that our artifact has been taken away after all. This must have been the cult's and that foul fox's plan all along. They've been trying to use us since the start.
+
+The King: — Nevertheless, at least we have one less problem on our hands now and we hope for future cooperation with the Aliron.""",
+
+	AFTERMATH_KING_OPTION_HARA = "About Hara...",
+	AFTERMATH_KING_OPTION_JEAN = "About Jean...",
+	AFTERMATH_KING_OPTION_KURO = "About Kuro...",
+	AFTERMATH_KING_OPTION_LEAVE = "Leave",
+
+	AFTERMATH_KING_RESPONSE_HARA = """The King: — Hara? I have no use for her. She has completed her mission, I thought she's with the cult so we had to interrogate her, but we've let her go now. She's still probably somewhere around the town.""",
+
+	AFTERMATH_KING_RESPONSE_KURO = """The King: — She must be punished for her devious plans, there's no discussion about it.""",
+
+	AFTERMATH_KING_RESPONSE_KURO_POINT = "With her ties to the cult they might come for her again",
+	AFTERMATH_KING_RESPONSE_KURO_AGREE = "I guess you are right",
+
+	AFTERMATH_KING_RESPONSE_KURO_POINT_CONTINUE = """The King pauses, considering your words; it's clear he's very cautious about the cult now.
+
+The King: — ...You have a point after all. Alright, take that traitor and do what you want with her, just make sure she stays away from our kingdom.""",
+
+	AFTERMATH_BOLTHAR_ROUTE_KURO_DEAD = """After dealing with the former King's main forces, coalition soldiers have secured the palace. After a few hours, you meet with Bolthar who announces his gratitude to you.
+
+Bolthar: — Because of you, [name], we have finally got rid of the dwarven supremacist regime. We can't thank you enough for that. But there's still a lot of work to reestablish the new order in this society.
+
+Bolthar: — I've heard you've already obtained the artifact you've been looking for, but if there's something else I could help you with, please ask.""",
+
+	AFTERMATH_BOLTHAR_ROUTE_KURO_ALIVE = """After dealing with the former King's main forces, coalition soldiers have secured the palace. After a few hours, you meet with Bolthar who announces his gratitude to you.
+
+Bolthar: — Because of you, [name], we have finally got rid of the dwarven supremacist regime. We can't thank you enough for that. But there's still a lot of work to reestablish the new order in this society.
+
+Bolthar: — I've heard you have not been able to get the artifact you've come for. In my opinion, you should've gone for it instead of helping one of the king's allies. We've taken her to jail.""",
+
+	AFTERMATH_BOLTHAR_OPTION_HARA = "About Hara...",
+	AFTERMATH_BOLTHAR_OPTION_JEAN = "About Jean...",
+	AFTERMATH_BOLTHAR_OPTION_KURO = "About Kuro...",
+	AFTERMATH_BOLTHAR_OPTION_CULT = "About cult...",
+	AFTERMATH_BOLTHAR_OPTION_LEAVE = "Leave",
+
+	AFTERMATH_BOLTHAR_RESPONSE_HARA = """Bolthar: — We've already known her well so we let her go. I think she's waiting for you in town.""",
+
+	AFTERMATH_BOLTHAR_RESPONSE_KURO = """Bolthar: — We've taken care of her wounds and her life is in no danger, however we plan to publicly judge her with other dwarven officials.""",
+
+	AFTERMATH_BOLTHAR_RESPONSE_KURO_POINT = "I want to take her instead",
+	AFTERMATH_BOLTHAR_RESPONSE_KURO_AGREE = "Nevermind",
+
+	AFTERMATH_BOLTHAR_RESPONSE_KURO_POINT_CONTINUE = """Bolthar considers your request for a bit before agreeing to it.
+
+Bolthar: — I suppose you've earned it. After all, we couldn't give you the item you needed, so this is compensation we can provide. Just make sure to keep her out of here so there would be no questions asked about her status.""",
+
+		AFTERMATH_JEAN_BOLTHAR_NEGOTIATION = """Bolthar: — We have freed all political prisoners and foreigners. She's left quickly and is probably in town.""",
+
+	AFTERMATH_JEAN_KING_NEGOTIATION = """The King: — Who? Oh, that mage woman. I've almost forgotten about her with all this ruckus.""",
+
+	AFTERMATH_JEAN_KING_TREASURY = """The King: — She has not paid for her deeds, so I see no reason to let her go.""",
+
+	AFTERMATH_JEAN_KING_OPTION_PAY = "What if I pay for her? (1000 gold)",
+	AFTERMATH_JEAN_KING_OPTION_SLAVE = "What if I get you someone instead of her?",
+	AFTERMATH_JEAN_KING_OPTION_LEAVE = "Actually, nevermind",
+
+	AFTERMATH_JEAN_KING_RESPONSE_PAY = """The King: — Hmm, we can use some treasury donations for the damage reparations. Very well, you can have her.""",
+
+	AFTERMATH_JEAN_KING_RESPONSE_SLAVE = """The King: — Someone, you say? A pretty woman like her? Hehe, fine, I want a blond elf gal then. Bring her to me and I won't touch that haughty mage then.""",
+
+	AFTERMATH_JEAN_KING_OPTION_SELECT_SLAVE = "Select slave (need female blond elf slave)",
+	AFTERMATH_JEAN_KING_OPTION_LEAVE_2 = "Leave",
+
+	AFTERMATH_JEAN_KING_RATTED_OUT = """The King: — What does it matter to you? We shall punish her accordingly.""",
+
+	AFTERMATH_JEAN_KING_OPTION_SLAVE_2 = "I could use a slave like her",
+	AFTERMATH_JEAN_KING_OPTION_FREE = "I want to set her free",
+	AFTERMATH_JEAN_KING_OPTION_NEVERMIND = "Nevermind",
+
+	AFTERMATH_JEAN_KING_RESPONSE_SLAVE_2 = """The King: — Is that some weird human custom? I guess she's attractive enough for you to want it... However, there's a law, and she must pay for her misdeeds.""",
+
+	AFTERMATH_JEAN_KING_RESPONSE_PAY_2 = """The King: — Hmm, we can use some treasury donation for the damage reparations. Very well, you can have her.""",
+
+	AFTERMATH_JEAN_KING_RESPONSE_SLAVE_2B = """The King: — Someone, you say? A pretty woman like her? Hehe, fine, I want a blond elf gal then. Bring her to me and I won't touch that haughty mage then.""",
+
+	AFTERMATH_JEAN_RECRUIT_DIALOGUE = """The mage girl is brought to you from the jail. Despite not being in the best state, she has not lost any spunk.
+
+Jean: — About time you've let me go. Was your deed, [name]? Must say I'm impressed. So, you expect something in return from me now?""",
+
+	AFTERMATH_JEAN_OPTION_JOIN = "Why don't you join me? I could use a resourceful mage",
+	AFTERMATH_JEAN_OPTION_NO_NEED = "I actually don't need you for anything",
+
+	AFTERMATH_JEAN_RESPONSE_JOIN = """Jean: — You are residing in Aliron, aren't you? Fine, I guess I could use a vacation from this place. Don't think I'm gonna drool over you just because you let me live at your place, I'm not a girl like that.""",
+
+	AFTERMATH_JEAN_RESPONSE_NO_NEED = """Jean: — ...That's so? Very well, I shall be on my way then. Perhaps we may meet again some day.""",
+
+	AFTERMATH_JEAN_RATTED_OUT_DIALOGUE = """The mage girl is brought to you from the jail. She hatefully glares at you as her limbs are still restricted by the manacles.
+
+Jean: — You've ratted me out, you bastard! Why did you bring me here?""",
+
+	AFTERMATH_JEAN_OPTION_SLAVE_MYSELF = "I'll take you as a slave to myself.",
+	AFTERMATH_JEAN_OPTION_SET_FREE = "I just wanted to let you go.",
+
+	AFTERMATH_JEAN_RESPONSE_SLAVE_MYSELF = """Jean: — Wha... You won't dare!...
+
+Despite her protests, you order to plug her mouth and deliver her to your mansion.""",
+
+	AFTERMATH_JEAN_RESPONSE_SET_FREE = """You order the guards to release her. Both her and the guards look surprised. As she rubs her numb hands, she looks at you warily.
+
+Jean: — Huh... So what now? I just get to go? What was it all even about?""",
+
+	AFTERMATH_JEAN_OPTION_PERSUASION = "[Persuasion challenge]I had to get access to the King asap, sorry about that. Maybe you could join me?",
+	AFTERMATH_JEAN_OPTION_JUST_GO = "Yeah, you can go, just wanted to fix some misunderstandings until it's too late.",
+
+	AFTERMATH_JEAN_RESPONSE_PERSUASION = """[Success]
+
+Jean: — I can't believe it... Damn it, alright. It's not like I have any better place to stay now. But do know, you make one wrong move and I fry you alive.""",
+
+	AFTERMATH_JEAN_RESPONSE_JUST_GO = """Jean: — You are unbelievable! Whatever, I'm leaving now then. Pray we won't meet again or I might settle a score with you for this.
+
+Jean turns away and leaves the scene as if fearing that you might change your mind.""",
+
+	AFTERMATH_HARA_RECRUITMENT_DIALOGUE = """You find Hara in her old workshop as she seemingly packs her most important tools, preparing to move out.
+
+Hara: — Oh, it's you, big guy. Fancy work there, gotta say you've been the most reliable helper I had in years. So... I take it you've not come here just to see me?""",
+
+	AFTERMATH_HARA_OPTION_PROFESSIONAL = "I could use a professional like you",
+	AFTERMATH_HARA_OPTION_FLIRTY_REMARKS = "I remember you made some flirty remarks while we worked together",
+	AFTERMATH_HARA_OPTION_NEVERMIND = "Nevermind",
+
+	AFTERMATH_HARA_RESPONSE_PROFESSIONAL = """Hara: — You are from Aliron, aren't you? I haven't been there yet for a while, even though I heard that place has been pretty accepting for any race including goblins. Alright, since you are offering, I don't mind giving it a chance.""",
+
+	AFTERMATH_HARA_RESPONSE_FLIRTY_REMARKS = """Hara: — Well, that's... A good memory from you. And even though I'm not backing out from this, I'm in a bit of a hurry right now. Don't wanna push the hospitality of this place. Say, I remember you had some property in Aliron? Do you have a need for a skilled engineer and maybe a bit more?""",
+
+	AFTERMATH_HARA_OPTION_I_DO = "I do",
+	AFTERMATH_HARA_OPTION_MAYBE_OTHER_DAY = "Maybe some other day (close)",
+
+	AFTERMATH_HARA_RESPONSE_I_DO = """Hara: — Excellent. I'll rely on you for a bit if you don't mind. Haven't been in Aliron yet, but I've heard it's been pretty accepting for other races including goblins. Should be a fun new experience.""",
+
+	AFTERMATH_KURO_RECRUITMENT_DIALOGUE = """You walk into the prison room with Kuro laying on the floor with her arms bound. Despite her mostly healthy appearance, she seems even more disinterested and apathetic than usual.
+
+Kuro: — ...About the time you'd start bothering me. So what do you have for me? Torture? Interrogation? Molestation?""",
+
+	AFTERMATH_KURO_OPTION_QUESTIONS = "I wanna get some answers",
+	AFTERMATH_KURO_OPTION_JOIN = "Why don't you join me?",
+	AFTERMATH_KURO_OPTION_LEAVE = "I'll leave for now",
+
+	AFTERMATH_KURO_RESPONSE_QUESTIONS = """Kuro: — Ask your questions, then.""",
+
+	AFTERMATH_KURO_OPTION_TRUST = "Can I really trust your words?",
+	AFTERMATH_KURO_OPTION_PALACE = "What has actually happened at the palace?",
+	AFTERMATH_KURO_OPTION_CULT_JOIN = "Why did you join the cult?",
+	AFTERMATH_KURO_OPTION_CULT_PLAN = "What's the cult's real plan?",
+	AFTERMATH_KURO_OPTION_PLAN = "What are you planning to do?",
+	AFTERMATH_KURO_OPTION_ENOUGH = "That's enough questions for now",
+
+	AFTERMATH_KURO_RESPONSE_TRUST = """Kuro: — I have no reason to lie, nor do I want to be tortured. My connection with the cult is obviously over at this point. Besides I guess I owe you my life somewhat.""",
+
+	AFTERMATH_KURO_RESPONSE_PALACE = """Kuro visibly sighs showing her annoyance with the question.
+
+Kuro: — You've decided to both interrogate and torture me with dumb questions. We've restored the artifact, the cult took it. I got ditched. Have you been too stupid to not figure it all out by yourself? I thought better of you.""",
+
+	AFTERMATH_KURO_RESPONSE_CULT_JOIN = """Kuro: — Are you expecting to hear some tear-jerking story from me or something? I've joined them out of my free will, that's likely why I've got ditched too. I was curious about their ambitions and their vision has resonated with me to some extent. I suppose it still does, but I'm here now and it's all in the past.""",
+
+	AFTERMATH_KURO_RESPONSE_CULT_PLAN = """Kuro: — World domination, I suppose. Or maybe its destruction. It's terra incognita for them. It's when you start digging down, and you find something, but there's no way to tell what exactly you found until you are so deep you can't get out.
+
+Kuro: — I've come to the same discoveries before I joined them, curious on what will unfold if you pursue these goals, but even I can only guess.""",
+
+	AFTERMATH_KURO_OPTION_LESS_CRYPTIC = "Can you be less cryptic?",
+	AFTERMATH_KURO_OPTION_CHANGE_MIND = "You've changed your mind now?",
+
+	AFTERMATH_KURO_RESPONSE_LESS_CRYPTIC = """Kuro: — ...No. You should figure things out on your own. The knowledge you get without comprehension will do more harm than good. Don't sweat over it, this won't help you anyway.""",
+
+	AFTERMATH_KURO_RESPONSE_CHANGE_MIND = """Kuro: — You are rushing things. Let's say I'm facing a crisis that forces me to change my mind. I'm no idiot to stick to my old sentiments in the current situation.""",
+
+	AFTERMATH_KURO_RESPONSE_PLAN = """Kuro gives you a look that clearly tells she thinks you are an idiot for asking this.
+
+Kuro: — What do you expect me to do? If you wonder what I'd do if I end up free, I don't. I've had enough; now it's all up to you.""",
+
+	AFTERMATH_KURO_RESPONSE_JOIN_ZEPHYRA = """Kuro: — This is–""",
+
+	AFTERMATH_KURO_RECRUIT_ZEPHYRA_SPRITE = """Before Kuro can finish, you hear a knock from the other side of the cell. You walk out to check on it and find Zephyra, who seems to be eavesdropping on your conversation up until this point.
+
+Zephyra: — [Master], I heard you want to recruit my sister. I could help with that if you allow.""",
+
+	AFTERMATH_KURO_OPTION_HELP_ZEPHYRA = "Alright",
+	AFTERMATH_KURO_OPTION_NO_HELP_ZEPHYRA = "No, thank you",
+
+	AFTERMATH_KURO_RESPONSE_NO_HELP_ZEPHYRA = """You return to the room continuing your conversation.
+
+Kuro: — You actually want me to become your ally? I don't think this can work out.""",
+
+	AFTERMATH_KURO_RESPONSE_HELP_ZEPHYRA = """You and Zephyra both walk back into the room. Kuro's eyes slightly widen as she sees her accompanying you now.
+
+Zephyra: — Hi. That must not be a terribly comfortable place to stay at.
+
+Kuro: — I see you have got better after all.
+
+Zephyra: — Yep, thanks for worrying about me.
+
+Kuro snorts and looks away at Zephyra's remark.""",
+
+	AFTERMATH_KURO_OPTION_WORRIED = "She didn't seem to be worried about you until this moment",
+	AFTERMATH_KURO_OPTION_LISTEN_SILENTLY = "*Listen silently*",
+
+	AFTERMATH_KURO_RESPONSE_WORRIED = """Kuro: — It's not a big deal if either of us dies on a larger scale of things. It's not like we truly die anyway.""",
+
+	AFTERMATH_KURO_RESPONSE_LISTEN_SILENTLY = """Zephyra: — Come join us. You have no other option left now. Besides, I'm your older sister and you have to listen to me.
+
+Kuro smirks at Zephyra's joke but there's no resistance in her body language.
+
+Kuro: — I would rather listen to [name] than a birdbrain like you. This is your best try at making me side with you?""",
+
+	AFTERMATH_KURO_OPTION_CONTINUE_2 = "Continue",
+
+	AFTERMATH_KURO_RESPONSE_CONTINUE_2 = """Zephyra: — Come on, you want to join us, we both know that. I'm sure [Master] will give you all the stuff and freedom you will ask for, as long as you will be a good girl.
+
+Kuro: — What a sickening proposal. You must know it by heart? Would you really trust someone like me to invite me like that?
+
+Zephyra: — Ah, but it's [Master]'s suggestion in the first place. We all want the same thing here.""",
+
+	AFTERMATH_KURO_RESPONSE_CONTINUE_3 = """Kuro: — Damn... You can be really manipulative despite your cutesy appearance. You surely know what me joining you will imply, don't you? All is fair between us.
+
+Zephyra: — ...Not sure what you are talking about, but I'm a very generous person.
+
+Kuro: — You know what I'm talking about. Very well, [race], if you want me on your side, I will swear to not turn on you. As long as you do the same.
+
+Zephyra: — Great! [Master], the dinner is soon, isn't it? I've got some sweets from the merchant. Kuro, you should try those too...""",
+
+	AFTERMATH_KURO_RESPONSE_NO_ZEPHYRA = """Kuro: — What a silly request. You actually want me to become your ally? I don't think this can work out.
+
+Kuro stays quiet for some time looking away until she finally looks back at you.
+
+Kuro: — So this is a sincere offer after all? Alright, I'll ask you some questions but if I don't like any of your answers, I will rather stay imprisoned or whatever nasty fate you've prepared for me.""",
+
+	AFTERMATH_KURO_OPTION_PUNISHMENT = "How can you willingly choose to be punished?",
+	AFTERMATH_KURO_OPTION_FAIR = "That's fair, I suppose",
+	AFTERMATH_KURO_OPTION_QUIZ = "Is this a quiz? I like quizzes",
+
+	AFTERMATH_KURO_RESPONSE_PUNISHMENT = """Kuro: — It is what it is. I don't believe I deserve freedom in the first place, so whatever you throw at me might be just what my mistakes have earned me.""",
+
+	AFTERMATH_KURO_RESPONSE_FAIR = """Kuro: — Alright. Why do you think I should join you despite my deeds? Can you even trust me?""",
+
+	AFTERMATH_KURO_OPTION_BELIEVE = "I want to believe in the best in people",
+	AFTERMATH_KURO_OPTION_SENSIBILITY = "Since you have no other option left, I trust your sensibility",
+	AFTERMATH_KURO_OPTION_DISTRUST = "I can't trust anyone, even myself",
+
+	AFTERMATH_KURO_RESPONSE_BELIEVE = """Kuro: — So you are this dense, huh? Fine, don't cry to me when you get betrayed then.""",
+
+	AFTERMATH_KURO_RESPONSE_SENSIBILITY = """Kuro: — Pretty naive of you, but that's not the worst line of reasoning I've heard.""",
+
+	AFTERMATH_KURO_RESPONSE_DISTRUST = """Kuro: — What nonsense. Forget about it, I'm not siding with anyone who's not responsible for their own actions.""",
+
+	AFTERMATH_KURO_RESPONSE_REASON = """Kuro: — What's the reason for you to get me to join you?""",
+
+	AFTERMATH_KURO_OPTION_KNOWLEDGE = "Your knowledge and smarts should not go to waste",
+	AFTERMATH_KURO_OPTION_CUTE_GIRLS = "I simply collect cute girls",
+	AFTERMATH_KURO_OPTION_COMPANION = "You should make a good companion while paying back to the cult.",
+
+	AFTERMATH_KURO_RESPONSE_CUTE_GIRLS = """Kuro rolls her eyes back, her voice dripping with detest.
+
+Kuro: — I expected you to be more serious over this. The talk is over.""",
+
+	AFTERMATH_KURO_RESPONSE_COMPANION = """Kuro: — You moron, I have no interest in some puny revenge, if anything I got exactly what I deserved and I thought it was pretty clear. Forget it, this is going nowhere.""",
+
+	AFTERMATH_KURO_RESPONSE_KNOWLEDGE = """Kuro: — You know, except for this one time, flattery won't do you any good for me. However, you should not overestimate these things. What good did they do if I ended up like this? But I digress.
+
+Kuro: — Now, why don't you prove to me that you are not just all sweet talk.""",
+
+	AFTERMATH_KURO_BLACK_BACKGROUND = "set black background",
+
+	AFTERMATH_KURO_RESPONSE_DARKNESS = """Suddenly, the shadows emerge from under Kuro, quickly filling the room entirely. In its darkness, you realize everything becomes pitch black and ethereal as if the whole room is gone. Yet the darkness does not seem threatening like it usually was.
+
+Kuro's eyes focus on you, glimmering in red, her mouth crooks in a dangerous smile.""",
+		AFTERMATH_KURO_OPTION_STRENGTH = "[Strength Challenge] This threat does not feel like it has any weight behind it.",
+	AFTERMATH_KURO_OPTION_DEXTERITY = "[Dexterity Challenge] I could still stop you before you do that, and even keep you alive.",
+	AFTERMATH_KURO_OPTION_WISDOM = "[Wisdom Challenge] Because that will go against your purpose.",
+	AFTERMATH_KURO_OPTION_PERSUASION = "[Persuasion Challenge] Because you've always wanted to be on my side more than you want to kill me.",
+	AFTERMATH_KURO_OPTION_DARE = "You won't dare...",
+
+	AFTERMATH_KURO_RESPONSE_STRENGTH_SUCCESS = """Kuro makes a pause, taking in your answer. After a moment, she closes her eyes, and the darkness surrounding you clears, revealing the same prison room you've been in.
+
+Kuro: — It's your win. Fine, I can join you if that's what you want.""",
+
+	AFTERMATH_KURO_RESPONSE_DEXTERITY_SUCCESS = """Kuro hesitates, considering your words. She smirks slightly before closing her eyes. The darkness dissipates, revealing the familiar prison surroundings.
+
+Kuro: — Impressive. I'll admit defeat this time. I suppose I'll join you.""",
+
+	AFTERMATH_KURO_RESPONSE_WISDOM_SUCCESS = """Kuro's red eyes flicker with a moment of understanding. She slowly nods before the shadows around you fade, bringing you back to the present reality of the prison.
+
+Kuro: — Perhaps you're right. I'll follow your lead, for now.""",
+
+	AFTERMATH_KURO_RESPONSE_PERSUASION_SUCCESS = """Kuro's expression softens slightly, and she lets out a resigned sigh. The shadows retreat, leaving you both standing in the dim prison cell.
+
+Kuro: — Maybe you're not as foolish as you look. Alright, I'll join you.""",
+
+	AFTERMATH_KURO_RESPONSE_DARE_FAIL = """Kuro looks at you disappointedly as her magic seeps back.
+
+Kuro: — Huh... I expected way more from you. No deal, maybe in the next life you can grow more balls than that.""",
+
+	AFTERMATH_KURO_RESPONSE_RECRUIT = """You unshackle Kuro, allowing her to begrudgingly join your cause.""",
+
+
+#	ENTER_CITY_UNLOCK_MOUNTAIN_CAPITAL = "Unlock mountain capital",
+#	ENTER_CITY_OPTION_PALACE = "Palace",
+#	ENTER_CITY_OPTION_WORKSHOP = "Workshop",
+#	ENTER_CITY_OPTION_TAVERN = "Tavern",
 }
 
 

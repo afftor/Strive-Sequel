@@ -322,6 +322,11 @@ func build_locations_list():
 							closed = false
 					if closed:
 						continue
+				if adata.capital_code == "dwarf_capital":
+					if !(globals.valuecheck({type = "quest_completed", name = "visit_dwarfs_quest", check = true})
+						or globals.valuecheck({type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'search', check = false})
+						):#closed that is
+						continue
 		if cdata[id].has("tags") and cdata[id].tags.has('quest'):
 			temp.quest = true
 		if tdata.category == "questlocations":

@@ -118,8 +118,15 @@ var lands = {
 		locationpool = ['dungeon_undead_crypt'],
 		guilds = [],
 		tags = [],
+		capital_options = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
 		area_shop_items = {},
+#		capital_background = '',
+		capital_name = "Dwarven Capital",
+		capital_code = 'dwarf_capital',
+		capital_dynamic_background = 'dwarfs_city',
+#		capital_background_noise = '',
+#		capital_background_music = '',
 	},
 	steppe = {
 		code = 'steppe',
@@ -1046,6 +1053,45 @@ var fixed_location_options = { #override serialized data
 			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'ZEPHYRA_COSTUME_2'}], 
 			args = [{code = 'start_event', data = 'zephyra_costume_1', args = []}]
 		},
+		{
+			text =  tr("ELF_CAPITAL_SACRED_SAP"),
+			reqs = [
+				{type = "has_active_quest", name = "hara_sacsap_quest", check = true},
+				{type = 'decision', value = 'HelevielPriestess', check = true}
+			],
+			args = [{code = 'start_event', data = 'sacred_sap_heleviel_start', args = []}]
+		},
+		{
+			text =  tr("ELF_CAPITAL_SACRED_SAP"),
+			reqs = [
+				{type = "has_active_quest", name = "hara_sacsap_quest", check = true},
+				{type = 'active_quest_stage', value = 'hara_sacsap_quest', stage = 'l_price', state = false},
+				{type = 'decision', value = 'LiraPriestess', check = true}
+			],
+			args = [{code = 'start_event', data = 'sacred_sap_erlen_start', args = []}]
+		},
+		{
+			text =  tr("ELF_CAPITAL8"),#"Meet High Priestess"
+			reqs = [
+				{type = 'active_quest_stage', value = 'hara_sacsap_quest', stage = 'l_price'}
+			],
+			args = [{code = 'start_event', data = 'sacred_sap_lira_3', args = []}]
+		},
+	],
+	dwarf_capital = [
+		{
+			text = tr("DWARF_CAPITAL_PALACE"), 
+			reqs = [{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'audience'}],
+			args = [{code = 'start_event', data = 'dwarf_palace_first', args = []}]
+		},{
+			text = tr("DWARF_CAPITAL_WORKSHOP"), 
+			reqs = [],
+			args = [{code = 'start_event', data = '', args = []}]
+		},{
+			text = tr("DWARF_CAPITAL_TAVERN"), 
+			reqs = [],
+			args = [{code = 'start_event', data = '', args = []}]
+		},
 	],
 	beastkin_capital = [
 		{
@@ -1429,6 +1475,13 @@ var fixed_location_options = { #override serialized data
 			reqs = [{type = 'active_quest_stage', value = 'goblin_quest', stage = 'stage5', state = true}],
 			args = [{code = 'start_event', data = 'goblin_quest_14', args = []}]
 		},
+	],
+	quest_dwarfs_gate = [
+		{
+			text = tr("QUEST_DWARFS_GATE_LOCATION"), 
+			reqs = [], 
+			args = [{code = 'start_event', data = 'enter_city_t_0', args = []}]
+		}
 	],
 }
 
