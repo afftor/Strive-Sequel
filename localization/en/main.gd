@@ -16128,7 +16128,7 @@ Guard1: — Isn't it right? Can't find a more welcoming person than Durand! His 
 Guard2: — Oh yeah... How I would like to have a glass right now.
 
 The guards keep chuckling between each other.""",
-	DWARF_PALACE_FIRST_END = """The guards look at each other, holding back as much as they can to not burst into laughter. These two won't let you pass. It seems you have no choice but to find another way. Perhaps you'll be able to attract the attention of the king somehow? In any case, it won't hurt to acquaint yourself with the city. Something tells you you'll be here for a while.""",
+	DWARF_PALACE_FIRST_END = """\n\nThe guards look at each other, holding back as much as they can to not burst into laughter. These two won't let you pass. It seems you have no choice but to find another way. Perhaps you'll be able to attract the attention of the king somehow? In any case, it won't hurt to acquaint yourself with the city. Something tells you you'll be here for a while.""",
 
 
 

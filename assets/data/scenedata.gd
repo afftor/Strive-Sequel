@@ -2442,7 +2442,7 @@ var quests = {
 		code = 'visit_dwarfs_quest',
 		summary = "VISIT_DWARFS_QUEST_SUMMARY",
 		stages = {
-			search = {code = 'visit', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_SEARCH'},
+			search = {code = 'search', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_SEARCH'},
 			audience = {code = 'audience', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_AUDIENCE'},
 			tavern = {code = 'tavern', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_TAVERN'},
 		},
