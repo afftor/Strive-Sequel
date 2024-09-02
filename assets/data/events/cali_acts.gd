@@ -87,9 +87,7 @@ var data = {
 		],
 		common_effects = [],
 		options = [ {
-			code = 'cali_act2_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'unique_character_changes', value = 'cali', args = [{code = 'obedience', operant = '-', value = 10},]},]
-		} ]
+			code = 'cali_act2_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = []} ]
 	},
 	
 	cali_act2_2_3 = { 
@@ -282,7 +280,6 @@ var data = {
 					{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage5'},
 					{code = 'add_timed_event', value = "cali_act3_magic_1", args = [{type = 'add_to_date', date = [5,5], hour = 1}]},
 					{code = "decision", value = "cali_normal_collar"},
-					{code = 'unique_character_changes', value = 'cali', args = [{code = 'loyalty', operant = '+', value = 20},]},
 					{code = 'unique_character_changes',
 					value = 'cali',
 					args = [
@@ -392,9 +389,7 @@ var data = {
 		], 
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'update_mansion'},
-				{code = 'unique_character_changes', value = 'cali', args = [{code = 'obedience', operant = '+', value = 10},]},
-			]
+			bonus_effects = [{code = 'update_mansion'},]
 		}, ]
 	},
 	
@@ -890,8 +885,7 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 			bonus_effects = [{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage17'},
-			{code = 'add_timed_event', args = [{type = 'action_to_date', date = [1,1], hour = 1, action = 'quest'}], value = {quest = 'cali_taming_quest', stage = 'stage16'}},
-			{code = 'unique_character_changes', value = 'cali', args = [{code = 'obedience', operant = '-', value = 10},]},]
+			{code = 'add_timed_event', args = [{type = 'action_to_date', date = [1,1], hour = 1, action = 'quest'}], value = {quest = 'cali_taming_quest', stage = 'stage16'}},]
 		},  ],
 	},
 	
@@ -1017,8 +1011,7 @@ var data = {
 		text = [{text = "CALI_ACT6_NAKED_2_3", reqs = []}], 
 		options = [ { 
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
-			bonus_effects = [{code = 'add_timed_event', value = "cali_act6_naked_1", args = [{type = 'add_to_date', date = [1,1], hour = 3}]},
-			{code = 'unique_character_changes', value = 'cali', args = [{code = 'obedience', operant = '-', value = 10},]},]
+			bonus_effects = [{code = 'add_timed_event', value = "cali_act6_naked_1", args = [{type = 'add_to_date', date = [1,1], hour = 3}]},]
 		}, ],
 	},
 	

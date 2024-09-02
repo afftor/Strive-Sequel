@@ -18,7 +18,7 @@ var scenedict = {
 			{code = 'close', text = tr('DIALOGUETUTHEIR'), reqs = [{type = 'has_money', value = 5000}, {type = 'scene_character_checks', value = [{code = 'trait', trait = 'heir', check = true}]}], not_hide = true, bonus_effects = [{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'heir'}, {code = 'money_change', operant = '-', value = 5000}, {code = 'rewrite_save'}]},
 		]
 	},
-	slave_escape = {text = tr("DIALOGUEESCAPETEXT"), image = 'slaveescape', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUEESCAPECLOSE"), bonus_effects = [{code = "affect_active_character", type = 'escape'}]}]},
+	slave_escape = {text = tr("DIALOGUEESCAPETEXT"), image = 'slaveescape', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUEESCAPECLOSE"), bonus_effects = [{code = "affect_active_character", type = 'escape'}]}]}, #possibly obsolete
 
 	aliron_exotic_trader = {text = tr("DIALOGUEALIRONEXOTICTRADER"), image = 'avermik', bonus_effects = [{code = 'add_timed_event', value = "aliron_exotic_trader", args = [{type = 'add_to_date', date = [14,14], hour = 1}]}], tags = [], options = [{code = 'close', reqs = [], bonus_effects = [{code = 'rewrite_save'}], text = tr("DIALOGUECLOSE")}]},
 
@@ -442,11 +442,7 @@ var scenedict = {
 	event_goblin_recruit = {#2REMAKE
 			reqs = [],
 			text = 'DIALOGUEEVENTGOBLINRECRUITSUCCESS',
-			common_effects = [
-				{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 100},
-				{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},
-				{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 25}
-				],
+			common_effects = [],
 			tags = ['scene_character_translate','active_character_translate'],
 			image = 'goblin_encounter',
 			options = [
@@ -545,10 +541,7 @@ var scenedict = {
 	event_fairy_recruit = {
 			reqs = [],
 			text = 'DIALOGUEEVENTFAIRYRECRUITSUCCESS',
-			common_effects = [
-				{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 30},
-				{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},
-				{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 25}],
+			common_effects = [],
 			tags = ['active_character_translate','scene_character_translate'],
 			image = 'fairy_encounter',
 			options = [
@@ -611,7 +604,7 @@ var scenedict = {
 			races = [['monster', 1],['rare', 4]],
 			difficulty = [0,2],
 			type = 'slave',
-			bonuses = {pricemod = 0.5, obedience = 100},
+			bonuses = {pricemod = 0.5},
 			is_hirable = true
 			}
 		},
@@ -635,9 +628,8 @@ var scenedict = {
 	common_effects = [
 		{code = 'make_scene_character',
 			value = [
-			{type = 'function', function = 'make_local_recruit', args = {races = [['Elf', 10], ['Fairy', 2], ['Dryad', 1]], difficulty = [0,1], bonuses = {pricemod = -0.3, obedience = 100}, type = 'slave'}}],
-		},
-		{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 10}],
+			{type = 'function', function = 'make_local_recruit', args = {races = [['Elf', 10], ['Fairy', 2], ['Dryad', 1]], difficulty = [0,1], bonuses = {pricemod = -0.3}, type = 'slave'}}],
+		}],
 	options = [
 	{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},
 	{code = 'event_person_acquired', reqs = [{type = "has_money_for_scene_slave", value = 0}], not_hide = true, text = tr("DIALOGUESLAVERSPURCHASE"), bonus_effects = [{code = 'spend_money_for_scene_character', value = 0}]},
@@ -687,10 +679,7 @@ var scenedict = {
 		tags = ['scene_character_translate'],
 		default_event_type = 'scene_character_event',
 		image = 'slave_decision',
-		common_effects = [
-			{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},
-			{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_combatant'},
-			],
+		common_effects = [],
 		options = [
 		{code = 'event_person_recruit_attempt', challenge = 'persuasion', select_person = true, reqs = [], text = tr("DIALOGUEPERSONASKTOJOIN")},
 		{code = 'close', reqs = [], text = tr("DIALOGUELEAVE")}
@@ -700,10 +689,7 @@ var scenedict = {
 	event_person_recruit_attempt = {#2REMAKE
 		reqs = [],
 			text = tr("DIALOGUERECRUITSUCCESS"),
-			common_effects = [
-				{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 78},
-				{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},
-				{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 20}],
+			common_effects = [],
 			tags = ['active_character_translate','scene_character_translate'],
 			image = 'slave_decision',
 			options = [
@@ -732,8 +718,7 @@ var scenedict = {
 	set_enemy = 'rebels_small',
 	winscene = 'event_person_acquired',
 	common_effects = [
-	{code = 'make_scene_character', value = [{type = 'function', function = 'make_local_recruit', args = {races = [['beast', 1]], difficulty = [0,1], type = 'slave',bonuses = {}}}],},
-	{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 24}],
+	{code = 'make_scene_character', value = [{type = 'function', function = 'make_local_recruit', args = {races = [['beast', 1]], difficulty = [0,1], type = 'slave',bonuses = {}}}],},],
 	options = [
 	{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},
 	{code = 'event_good_rebels_intimidate', challenge = 'strength', select_person = true, reqs = [], text = tr("DIALOGUEINTIMIDATE")},
@@ -1037,7 +1022,6 @@ var scenedict = {
 		{code = 'add_timed_event', value = "daisy_confess_event", args = [{type = 'add_to_date', date = [7,10], hour = 3}]},
 		{code = 'unique_character_changes', value = 'daisy', args = [ #unique_character_changes takes an unique character and apply specific values to their values with exceptions of traits and tags which treated separately
 			{code = 'tame_factor', value = 1, operant = "+"},
-			{code = 'obedience', operant = '+', value = 75}
 			]},
 		],
 		options = [
@@ -1055,8 +1039,6 @@ var scenedict = {
 		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
 			{code = 'sexuals_factor', value = 1, operant = "+"},
 			{code = 'sextrait', value = 'submissive', operant = 'add', known = true},#for sextrait/add setting, trait is appended to character's traits
-			#{code = 'submission', operant = '+', value = 50},
-			{code = 'obedience', operant = '+', value = 30},
 			{code = 'tag', operant = 'remove', value = 'no_sex'},
 			]}],
 		options = [
@@ -1081,7 +1063,6 @@ var scenedict = {
 		{code = 'unique_character_changes', value = 'daisy', args = [
 			{code = 'growth_factor', value = 1, operant = "+"},
 			{code = 'wits_factor', value = 1, operant = "+"},
-			{code = 'obedience', operant = '+', value = 75},
 			{code = 'tag', operant = 'remove', value = 'no_sex'},
 			]},
 		],
@@ -1362,7 +1343,7 @@ var scenedict = {
 	image = '',
 	common_effects = [],
 	options = [
-	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSERVANT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'},]},
+	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSERVANT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'},]},
 	]
 	},
 	recruit_captured_success_seduce = {text = tr("DIALOGUERECRUITGOODSEDUCE"),
@@ -1370,7 +1351,7 @@ var scenedict = {
 	image = 'mindcontrol',
 	common_effects = [],
 	options = [
-	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSERVANT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'add_trait', value = 'loyalty_basic_servitude'},{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'},]},
+	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUERECRUITGOODSERVANT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'},]},
 	]
 	},
 	recruit_captured_fail = {text = tr("DIALOGUERECRUITBAD"),
@@ -1482,14 +1463,14 @@ var scenedict = {
 		{code = 'hybris_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},
-	hybris_character_loyalty = {
-		text = tr("HYBRIS_ALTAR_CHAR_RESULT1"),
-		tags = ['active_character_translate'],
-		image = 'mindcontrol',
-		common_effects = [{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 50}],
-		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
-	},
+#	hybris_character_loyalty = {
+#		text = tr("HYBRIS_ALTAR_CHAR_RESULT1"),
+#		tags = ['active_character_translate'],
+#		image = 'mindcontrol',
+#		common_effects = [],
+#		options = [
+#		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
+#	},
 	hybris_character_convert = {
 		text = tr("HYBRIS_ALTAR_CHAR_RESULT2"),
 		tags = ['active_character_translate'],

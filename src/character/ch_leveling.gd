@@ -166,6 +166,7 @@ func fix_serialize():
 
 
 func fix_import():
+	remove_class('spouse')
 	is_on_quest = false
 	work = ''
 	workproduct = null
@@ -569,8 +570,8 @@ func finish_learning():
 			else:
 				res_text += "\nNo traits acquired"
 		'slave_training':
-			parent.get_ref().add_stat('loyalty', 50) #possibly to remake
-			res_text += "\n%s + 50" % statdata.statdata.loyalty.name
+#			parent.get_ref().add_stat('loyalty', 50) #possibly to remake
+#			res_text += "\n%s + 50" % statdata.statdata.loyalty.name
 			if randf() < 0.5:
 				parent.get_ref().add_stat('tame_factor', 1)
 				res_text += "\n%s + 1" % statdata.statdata.tame_factor.name
@@ -850,7 +851,7 @@ func work_tick():
 		parent.get_ref().rest_tick()
 		return
 	
-	if parent.get_ref().is_uncontrollable() && !parent.get_ref().has_profession('master'):
+	if !parent.get_ref().is_controllable():
 		if !messages.has("refusedwork"):
 			globals.text_log_add('work', parent.get_ref().get_short_name() + ": Refused to work")
 			messages.append("refusedwork")

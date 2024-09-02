@@ -25,22 +25,11 @@ var template = {
 	personality_kind = 0,
 	old_personality = 'kind',
 #	personaltiy_values = [0,0],
-	obedience = variables.basic_max_obed,
-	obedience_max = variables.basic_max_obed,
-	obedience_drain = variables.basic_obed_drain,
-	loyalty = 0.0,
-	loyalty_gain = 0.0,
-	loyalty_total = 0.0,
-	loyalty_traits_unlocked = 0,
 	
-	slave_spec = null,
-	slave_spec_level = 0,
-	slave_spec_progress = 0,
-	loyalty_locked = false,
+	trainee_amount = 0,
+	training_loyalty = 0,
+	training_spirit = 0,
 	
-	submission = 0.0, #obsolete or not?
-	submission_gain_mod = 1.0,
-	submission_degrade_mod = 1.0,
 	lust = 0.0,
 	lustmax = 50,
 	lusttick = variables.basic_lust_per_tick,
@@ -71,6 +60,7 @@ var template = {
 	mod_alchemy = 1.0,
 	mod_farm = 1.0,
 	mod_pros = 1.0,
+	mod_service = 1.0,
 	mod_waitress = 1.0,
 	mod_hostess = 1.0,
 	mod_dancer = 1.0,
@@ -117,7 +107,7 @@ var template = {
 	physics_factor = 1,
 	magic_factor = 1,
 	tame_factor = 1,
-	timid_factor = 1,
+	timid_factor = 1, #authority factor
 	growth_factor = 1,
 	charm_factor = 1,
 	wits_factor = 1,
@@ -221,10 +211,6 @@ var template = {
 	anal_virgin_lost = {source = null},
 	mouth_virgin_lost = {source = null},
 	
-	#tasks
-
-	shackles_chance = null,
-	last_escape_day_check = 0,
 	#communications
 	relatives = {},
 	sexexp = {partners = {}, watchers = {}, actions = {}, seenactions = {}, orgasms = {}, orgasmpartners = {}},
