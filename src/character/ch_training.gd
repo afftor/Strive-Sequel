@@ -294,7 +294,7 @@ func apply_training(code):
 
 
 func get_dispositions_text():
-	var text = "Trainig dispositions: \n"
+	var text = "Training dispositions: \n"
 	for dis in dispositions_known:
 		var ddata = Skilldata.training_categories[dis]
 		if dispositions_known[dis]:

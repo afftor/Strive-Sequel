@@ -175,7 +175,7 @@ var TranslationDict = {
 	SIBLINGMODULERULES = "Rules and Conditions",
 	SIBLINGMODULESEXTRAITS = "Sex Traits",
 	SIBLINGMODULERELATIVES = "Relatives",
-	SIBLINGMODULETRAININGS = "Trainings",
+	SIBLINGMODULETRAININGS = "Slave Training",
 	SIBLINGMODULEFOODCONSUMPTION = "Daily Consumption",
 	SIBLINGMODULEMAIN = "Main",
 	SIBLINGMODULESEX = "Sex",
@@ -1269,6 +1269,14 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ACTIONTYPESOCIAL = "Social",
 	ACTIONTYPESEXUAL = "Sexual",
 	ACTIONTYPEMAGIC = "Magic",
+	
+	ACTIONREACTVERYSUCCESSFUL = "[name] has shown {color=aqua|major improvement} to [his] obedience after the training.",
+	ACTIONREACTSUCCESSFUL = "[name] has shown {color=aqua|positive signs} of submitting to [his] role as a slave after the training.",
+	ACTIONREACTRESIST = "[name] has seemingly {color=aqua|rejected} the training and shown no sign of changes after it.",
+	ACTIONREACTFAILURE = "[name] has shown {color=aqua|minor} obedience improvement after training.",
+	
+	ACTIONKINKTEXT = "[name] has shown a weirdly positive reaction after the training was finished...",
+	
 
 	ACTIONPRAISESCENETEXT = "[name1] has spent some time praising [name2] for [his2] latest work, emphasizing on [his2] acceptance of [his2] slave role.",
 	ACTIONREWARDSCENETEXT = "[name1] gave 10 gold coins to [name2]. This should make [him2] feel better about [his2] dwelling.",
@@ -1740,6 +1748,21 @@ However, while it might seem that Landowners have nothing but contempt for those
 	INFOSLAVE_CLASS = "Character type will define its options and behavior. Slaves can be forced into sexual services without consent and have higher tolerance for lack of consent in sex. Subordinates become loyal faster but can't be sold or given away.",
 	INFOCONSENT = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. Consent will affect prostitution related jobs.",
 	INFOCONSENTMASTER = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. {color=green|[Master] has no Consent requirements for any actions.}",
+	INFOTRAINING = "Slave type characters will be trained by selected person in various actions. Every slave has different {color=aqua|Dispositions} towards different kind of actions. Properly selected actions will award more Loyalty and drain less spirit but most actions have additional effects.",
+	
+	CATEGORYKEYWORD = "Category",
+	ACTIONCATEGORYPHYSICAL = "Physical", 
+	ACTIONCATEGORYHUMILIATION = "Humiliation", 
+	ACTIONCATEGORYPOSITIVE = "Positive", 
+	ACTIONCATEGORYSOCIAL = "Social", 
+	ACTIONCATEGORYSEXUAL = "Sexual", 
+	ACTIONCATEGORYMAGIC = "Magic",
+	
+	ACTIONTRAINERREQSNOTMET = "Trainer does not meet requirements for this action",
+	ACTIONALREADYDONETODAY = "Already was trained today",
+	NOTENOUGHGOLDACTION = "Not enough gold for this action",
+	NOTENOUGHTRAINERMANA = "Trainer does not have enough mana for this action",
+	
 	PERSONALITYNAMEBOLD = "Bold",
 	PERSONALITYNAMEKIND = "Kind",
 	PERSONALITYNAMESERIOUS = "Serious",
@@ -10630,7 +10653,7 @@ You remind her as you're still deep inside that she should call you what you are
 
 {color=aqua|Anastasia: — W-well, as long as [Master] likes it, I don't mind wearing it I suppose...}""",
 
-	HELEVIEL_MANSION_1 = """Where as you might take a newly acquired slave to their room, or yours for that matter, Heleviel's behavior makes another approach seem needed. You allow her to spit her vitriol at you and your servants as you decide to instead take her below the rooms, stairs narrow as you drag the fallen priestess along to your dungeon.
+	HELEVIEL_MANSION_1 = """Where as you might take a newly acquired slave to their room, or yours for that matter, Heleviel's behavior makes another approach necessary. You allow her to spit her vitriol at you and your servants as you decide to instead take her below the rooms, stairs narrow as you drag the fallen priestess along to your dungeon.
 
 Reaching the bottom of the stairs you're not quite sure what she was expecting, but the sight of a dungeon so well equipped for the usage of slaves seemed to be far removed from what she perceived as a reality.
 

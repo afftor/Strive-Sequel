@@ -183,6 +183,8 @@ func build_training_header():
 	$training/spirit.text = tr('TRAININGLABELSPIRIT') % person.get_stat('spirit')
 	$training/loyalty.text = tr('TRAININGLABELLOYALTY') % person.get_stat('loyalty')
 
+ 
+
 
 func build_training_list():
 	var trainer = person.get_trainer()
@@ -193,6 +195,7 @@ func build_training_list():
 		for tr in tr_data[category]:
 			var panel = input_handler.DuplicateContainerTemplate($training/ScrollContainer/VBoxContainer, 'Button')
 			var trdata = Skilldata.training_actions[tr]
+      var text = tr(trdata.name) + "\n" + tr("CATEGORYKEYWORD") + ": " +  tr("ACTIONCATEGORY"+trdata.type.to_upper()) + "\n" + person.translate(tr(trdata.descript))
 			if cat_data.icon is String:
 				panel.get_node('icon').texture = load(cat_data.icon)
 			else:
@@ -202,12 +205,12 @@ func build_training_list():
 			#reqs check
 			if !trainer.checkreqs(trdata.reqs_trainer):
 				panel.disabled = true
-				globals.connecttexttooltip(panel, tr('WRONGTRAINER'))
+				text = "{color=red|"+tr('ACTIONTRAINERREQSNOTMET') +"}\n\n"+ text
 				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
 			#avail check
 			elif !person.training.available:
 				panel.disabled = true
-				globals.connecttexttooltip(panel, tr('ALREADYTRAINED'))
+				text = "{color=red|"+tr('ACTIONALREADYDONETODAY') +"}\n\n"+ text
 				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
 			#cost check
 			else:
@@ -223,7 +226,7 @@ func build_training_list():
 					globals.connecttexttooltip(panel, tr('COSTNOTMET'))
 					panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
 				else:
-					globals.connecttexttooltip(panel, person.translate(tr(trdata.descript)))
+					globals.connecttexttooltip(panel, text)
 
 
 func build_training_traits():

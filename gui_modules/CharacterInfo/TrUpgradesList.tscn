@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/icons_40x40/magic effect.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/skill_frame_learned.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_disabled.png" type="Texture" id=4]
 [ext_resource path="res://gui_modules/CharacterInfo/TrUpgradesList.gd" type="Script" id=6]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_36.tres" type="DynamicFont" id=8]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=9]
@@ -176,7 +177,7 @@ expand = true
 
 [node name="trainer_frame" type="TextureButton" parent="training"]
 margin_left = 5.0
-margin_top = 50.0
+margin_top = 18.0
 margin_right = 125.0
 margin_bottom = 170.0
 texture_normal = ExtResource( 10 )
@@ -190,10 +191,10 @@ anchor_bottom = 1.0
 expand = true
 
 [node name="d_button" type="TextureButton" parent="training"]
-margin_left = 543.0
-margin_top = 52.0
-margin_right = 589.0
-margin_bottom = 98.0
+margin_left = 527.0
+margin_top = 20.0
+margin_right = 573.0
+margin_bottom = 66.0
 texture_normal = ExtResource( 23 )
 texture_pressed = ExtResource( 22 )
 texture_hover = ExtResource( 24 )
@@ -215,9 +216,9 @@ clip_text = true
 [node name="name" type="Label" parent="training"]
 light_mask = 0
 margin_left = 129.0
-margin_top = 50.0
+margin_top = 18.0
 margin_right = 527.0
-margin_bottom = 85.0
+margin_bottom = 53.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
 text = "Reset training"
@@ -227,9 +228,9 @@ clip_text = true
 [node name="spirit" type="Label" parent="training"]
 light_mask = 0
 margin_left = 129.0
-margin_top = 89.0
+margin_top = 57.0
 margin_right = 428.0
-margin_bottom = 124.0
+margin_bottom = 92.0
 custom_fonts/font = ExtResource( 9 )
 text = "Reset training"
 valign = 1
@@ -238,9 +239,9 @@ clip_text = true
 [node name="loyalty" type="Label" parent="training"]
 light_mask = 0
 margin_left = 129.0
-margin_top = 128.0
+margin_top = 96.0
 margin_right = 423.0
-margin_bottom = 163.0
+margin_bottom = 131.0
 custom_fonts/font = ExtResource( 9 )
 text = "character loyalty: 100"
 valign = 1
@@ -248,9 +249,9 @@ clip_text = true
 
 [node name="cost" type="Label" parent="training"]
 light_mask = 0
-margin_left = 9.0
+margin_left = 17.0
 margin_top = 681.0
-margin_right = 292.0
+margin_right = 300.0
 margin_bottom = 716.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
@@ -266,7 +267,7 @@ margin_bottom = 168.0
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 21 )
-texture_disabled = ExtResource( 19 )
+texture_disabled = ExtResource( 4 )
 
 [node name="reset" type="Label" parent="training/complete_button"]
 light_mask = 0
@@ -280,10 +281,10 @@ valign = 1
 clip_text = true
 
 [node name="Tooltip" type="TextureRect" parent="training"]
-margin_left = 631.0
-margin_top = 43.0
-margin_right = 681.0
-margin_bottom = 90.0
+margin_left = 629.0
+margin_top = 20.0
+margin_right = 679.0
+margin_bottom = 67.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
