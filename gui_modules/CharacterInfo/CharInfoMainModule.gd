@@ -152,6 +152,10 @@ func set_state(state):
 	match_state()
 
 func match_state():
+	var tooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP)
+	globals.disconnect_text_tooltip(tooltip.parentnode)
+	tooltip.turnoff()
+	tooltip.hide()
 	$CloseButton.visible = !ClassesModule.get_node("ClassPanel").is_visible_in_tree() #currently this is not required at all - due to similar effect of both closebuttons
 	for b in SummaryModule.get_node("GridContainer").get_children():
 		b.set_pressed(false)

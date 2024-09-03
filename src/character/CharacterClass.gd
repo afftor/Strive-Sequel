@@ -934,6 +934,9 @@ func reset_training():
 func clear_training():
 	training.clear_training()
 
+func can_be_trained():
+	return training.can_be_trained()
+
 func can_be_trainer():
 	var res = true
 	if get_stat('slave_class') == 'slave':
