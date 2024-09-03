@@ -1292,6 +1292,16 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ACTIONMINDCONTROLSCENETEXT = "[name1] uses strong magic to dominate [name2]'s mind, slowly rewriting it into a nice obedient slave.",
 	ACTIONEDGINGSCENETEXT = "[name1] teasingly brings [name2] to orgasm but in the last moment stops [his1] movements, preventing [name2] from cumming. This goes on for a few more times until [name2] gives up begging for release. ",
 
+	TRAININGFINISHHEADER = "Trainings by the end of training:",
+	TRAININGSTATUS1 = "Spirit status: broken",
+	TRAININGSTATUS2 = "Spirit status: damaged",
+	TRAININGSTATUS3 = "Spirit status: retained",
+	TRAININGSTATUS4 = "Spirit status: preserved",
+	TRAININGLABELSPIRIT = "Character spirit: %.1f",
+	TRAININGLABELLOYALTY = "Character loyalty: %.1f",
+	TRAININGCOST = "Trait unlock: %d loyalty",
+	TRAINNOTRAINER = "[name] has no trainer",
+
 
 	WORKTOOL = "Work Tool",
 	WORKTOOLAXE = "Lumber Axe",

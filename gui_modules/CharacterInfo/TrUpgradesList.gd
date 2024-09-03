@@ -10,6 +10,7 @@ var tr_rewards = []
 func _ready():
 	gather_data()
 	$no_trainer/TextureButton.connect("pressed", self, 'build_trainer_list')
+	$training/trainer_frame.connect("pressed", self, 'build_trainer_list')
 	$finished/reset_button.connect("pressed", self, 'reset_training')
 	$training/complete_button.connect("pressed", self, 'finish_training')
 	globals.connecttexttooltip($training/Tooltip, tr("INFOTRAINING"))
@@ -111,7 +112,7 @@ func build_posttrain():
 	var spirit = person.get_stat('spirit')
 	#add par about training result selection & other
 	
-	var text = "Trainings by the end of training:"
+	var text = tr('TRAININGFINISHHEADER')
 	var list = person.get_traits_by_tag('training')
 	for tr in list:
 		var trdata = Traitdata.traits[tr]
@@ -147,13 +148,13 @@ func build_posttrain():
 			panel.connect('pressed', self, 'select_final_trait', [tr])
 	
 	if spirit < variables.spirit_limits[0]:
-		$finished/status.text = "Spirit status: broken"
+		$finished/status.text = tr('TRAININGSTATUS1')
 	elif spirit < variables.spirit_limits[0]:
-		$finished/status.text = "Spirit status: damaged"
+		$finished/status.text = tr('TRAININGSTATUS2')
 	elif spirit < variables.spirit_limits[0]:
-		$finished/status.text = "Spirit status: retained"
+		$finished/status.text = tr('TRAININGSTATUS3')
 	else:
-		$finished/status.text = "Spirit status: preserved"
+		$finished/status.text = tr('TRAININGSTATUS4')
 
 
 func reset_training():
@@ -179,62 +180,55 @@ func build_training_header():
 	var trainer = person.get_trainer()
 	$training/trainer_frame/icon.texture = trainer.get_icon()
 	$training/name.text = trainer.get_full_name()
-	$training/spirit.text = "Character spirit: %.1f" % person.get_stat('spirit')
-	$training/loyalty.text = "Character loyalty: %.1f" % person.get_stat('loyalty')
+	$training/spirit.text = tr('TRAININGLABELSPIRIT') % person.get_stat('spirit')
+	$training/loyalty.text = tr('TRAININGLABELLOYALTY') % person.get_stat('loyalty')
 
 
 func build_training_list():
 	var trainer = person.get_trainer()
-	input_handler.ClearContainer($training/ScrollContainer/VBoxContainer, ['category'])
+	input_handler.ClearContainer($training/ScrollContainer/VBoxContainer, ['Button'])
 	for category in Skilldata.training_categories:
 		var cat_data = Skilldata.training_categories[category]
 		var amount = tr_data[category].size()
-		for i in range((amount - 1)/ 3 + 1):
-			var line = input_handler.DuplicateContainerTemplate($training/ScrollContainer/VBoxContainer, 'category')
-			var start = i * 3
-			var finish = i * 3 + 3
-			if finish > amount:
-				finish = amount
-			for j in range(start, finish):
-				var panel = input_handler.DuplicateContainerTemplate(line, 'Button')
-				var tr = tr_data[category][j]
-				var trdata = Skilldata.training_actions[tr]
-				if cat_data.icon is String:
-					panel.get_node('icon').texture = load(cat_data.icon)
-				else:
-					panel.get_node('icon').texture = cat_data.icon
-				panel.get_node('name').text = tr(trdata.name)
-				panel.connect('pressed', self, 'activate_training', [tr])
-				#reqs check
-				if !trainer.checkreqs(trdata.reqs_trainer):
+		for tr in tr_data[category]:
+			var panel = input_handler.DuplicateContainerTemplate($training/ScrollContainer/VBoxContainer, 'Button')
+			var trdata = Skilldata.training_actions[tr]
+			if cat_data.icon is String:
+				panel.get_node('icon').texture = load(cat_data.icon)
+			else:
+				panel.get_node('icon').texture = cat_data.icon
+			panel.get_node('name').text = tr(trdata.name)
+			panel.connect('pressed', self, 'activate_training', [tr])
+			#reqs check
+			if !trainer.checkreqs(trdata.reqs_trainer):
+				panel.disabled = true
+				globals.connecttexttooltip(panel, tr('WRONGTRAINER'))
+				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
+			#avail check
+			elif !person.training.available:
+				panel.disabled = true
+				globals.connecttexttooltip(panel, tr('ALREADYTRAINED'))
+				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
+			#cost check
+			else:
+				var f = true
+				for stat in trdata.cost:
+					match stat:
+						'gold':
+							f = f and (ResourceScripts.game_res.money >= trdata.cost[stat])
+						'mana':
+							f = f and (trainer.mp >= trdata.cost[stat])
+				if !f:
 					panel.disabled = true
-					globals.connecttexttooltip(panel, tr('WRONGTRAINER'))
+					globals.connecttexttooltip(panel, tr('COSTNOTMET'))
 					panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
-				#avail check
-				elif !person.training.available:
-					panel.disabled = true
-					globals.connecttexttooltip(panel, tr('ALREADYTRAINED'))
-					panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
-				#cost check
 				else:
-					var f = true
-					for stat in trdata.cost:
-						match stat:
-							'gold':
-								f = f and (ResourceScripts.game_res.money >= trdata.cost[stat])
-							'mana':
-								f = f and (trainer.mp >= trdata.cost[stat])
-					if !f:
-						panel.disabled = true
-						globals.connecttexttooltip(panel, tr('COSTNOTMET'))
-						panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
-					else:
-						globals.connecttexttooltip(panel, person.translate(tr(trdata.descript)))
+					globals.connecttexttooltip(panel, person.translate(tr(trdata.descript)))
 
 
 func build_training_traits():
-	$training/complete_button.disabled = !person.has_status('callmaster')
-	$training/cost.text = "Trait unlock: %d loyalty" % person.get_training_cost()
+	$training/complete_button.visible = person.has_status('callmaster')
+	$training/cost.text = tr('TRAININGCOST') % person.get_training_cost()
 	input_handler.ClearContainer($training/HBoxContainer2, ['Button'])
 	for tr in tr_traits:
 		var panel = input_handler.DuplicateContainerTemplate($training/HBoxContainer2, 'Button')

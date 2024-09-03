@@ -1,10 +1,10 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=2]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=3]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=4]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/MANSION/Job/button_occupation.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/MANSION/Job/button_occupation_pressed.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/MANSION/Job/button_occupation_hover.png" type="Texture" id=5]
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/ChC_Theme.tres" type="Theme" id=6]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=7]
 [ext_resource path="res://assets/images/sexicons/male.png" type="Texture" id=8]
@@ -14,13 +14,13 @@
 [ext_resource path="res://dragarraytemplate.gd" type="Script" id=12]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionSlaveListModule.gd" type="Script" id=13]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_foodperday.png" type="Texture" id=14]
-[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char.png" type="Texture" id=15]
-[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_pressed.png" type="Texture" id=16]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/hpmp_icon_hp.png" type="Texture" id=17]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_population.png" type="Texture" id=18]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/divider_navi_slavelist.png" type="Texture" id=19]
-[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_pressed.png" type="Texture" id=20]
-[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_hover.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_hover.png" type="Texture" id=20]
+[ext_resource path="res://assets/Textures_v2/MANSION/yes.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Icons/hpmp_icon.png" type="Texture" id=22]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Icons/icon_slave.png" type="Texture" id=23]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/hpmp_icon_mp.png" type="Texture" id=24]
@@ -34,11 +34,14 @@
 [ext_resource path="res://assets/images/gui/gui icons/icon_twohearts.png" type="Texture" id=32]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/bar_trainees.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/bar_trainees_filler.png" type="Texture" id=34]
-[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/bar_obedience_filler_g.png" type="Texture" id=35]
-[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/bar_obedience_filler_r.png" type="Texture" id=36]
-[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/bar_obedience.png" type="Texture" id=37]
-[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/bar_obedience_filler_y.png" type="Texture" id=38]
-[ext_resource path="res://src/3stateProgressBar.gd" type="Script" id=39]
+[ext_resource path="res://assets/Textures_v2/MANSION/no.png" type="Texture" id=35]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_disabled.png" type="Texture" id=36]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_inventory_neutral.png" type="Texture" id=37]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_inventory_hover.png" type="Texture" id=38]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/frame_inventory.png" type="Texture" id=39]
+[ext_resource path="res://assets/Textures_v2/MANSION/icon_interactions.png" type="Texture" id=40]
+[ext_resource path="res://assets/Textures_v2/MANSION/icon_twohearts.png" type="Texture" id=41]
+[ext_resource path="res://assets/images/iconsgear/battleaxe.png" type="Texture" id=42]
 
 [sub_resource type="DynamicFont" id=6]
 size = 30
@@ -60,9 +63,6 @@ margin_bottom = 845.0
 theme = ExtResource( 9 )
 custom_styles/panel = ExtResource( 25 )
 script = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -88,16 +88,15 @@ __meta__ = {
 }
 
 [node name="Categories" type="VBoxContainer" parent="."]
-visible = false
-margin_left = 45.6438
-margin_top = 19.7328
-margin_right = 1049.64
-margin_bottom = 69.7328
+margin_left = 14.0
+margin_top = 20.0
+margin_right = 1068.0
+margin_bottom = 70.0
 size_flags_horizontal = 3
 theme = ExtResource( 11 )
 
 [node name="Button" type="TextureButton" parent="Categories"]
-margin_right = 1003.0
+margin_right = 1054.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 expand = true
@@ -107,9 +106,6 @@ margin_left = -5.0
 margin_top = 3.0
 margin_right = 986.0
 margin_bottom = 54.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="icon" type="TextureRect" parent="Categories/Button/HBoxContainer"]
 margin_right = 50.0
@@ -171,24 +167,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="obed" type="Label" parent="Categories/Button/HBoxContainer"]
+[node name="inventory" type="Label" parent="Categories/Button/HBoxContainer"]
 margin_left = 675.0
 margin_top = 4.0
-margin_right = 792.0
+margin_right = 825.0
 margin_bottom = 46.0
-rect_min_size = Vector2( 80, 0 )
+rect_min_size = Vector2( 150, 0 )
 hint_tooltip = "STATOBEDIENCEDESCRIPT"
 mouse_filter = 0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 26 )
-text = "MSLMOB"
+text = "MSLMINV"
 align = 1
 
 [node name="explabel" type="Label" parent="Categories/Button/HBoxContainer"]
-margin_left = 796.0
+margin_left = 829.0
 margin_top = 4.0
-margin_right = 924.0
+margin_right = 957.0
 margin_bottom = 46.0
 rect_min_size = Vector2( 70, 0 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -196,23 +192,51 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 26 )
 text = "MSLMEXP"
 
+[node name="icon2" type="TextureRect" parent="Categories/Button/HBoxContainer"]
+margin_left = 961.0
+margin_right = 1011.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+texture = ExtResource( 41 )
+expand = true
+stretch_mode = 6
+
+[node name="icon3" type="TextureRect" parent="Categories/Button/HBoxContainer"]
+margin_left = 1015.0
+margin_right = 1065.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+texture = ExtResource( 40 )
+expand = true
+stretch_mode = 6
+
+[node name="icon4" type="TextureRect" parent="Categories/Button/HBoxContainer"]
+margin_left = 1069.0
+margin_right = 1119.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
 [node name="location" type="Label" parent="Categories/Button/HBoxContainer"]
-margin_left = 928.0
+margin_left = 1123.0
 margin_top = 4.0
-margin_right = 1128.0
+margin_right = 1223.0
 margin_bottom = 46.0
-rect_min_size = Vector2( 200, 0 )
+rect_min_size = Vector2( 100, 0 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 26 )
-text = "MSLMLOC"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="state2" type="Label" parent="Categories/Button/HBoxContainer"]
-margin_left = 1132.0
+margin_left = 1227.0
 margin_top = 4.0
-margin_right = 1276.0
+margin_right = 1371.0
 margin_bottom = 46.0
 rect_min_size = Vector2( 50, 0 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -223,24 +247,23 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 44.0
-margin_top = 32.0
-margin_right = 1048.0
-margin_bottom = 732.0
+margin_left = 11.0
+margin_top = 80.0
+margin_right = 1089.0
+margin_bottom = 718.0
 rect_min_size = Vector2( 996, 10 )
 theme = ExtResource( 2 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 1004.0
-margin_bottom = 45.0
+margin_right = 1078.0
+margin_bottom = 52.0
 rect_min_size = Vector2( 996, 45 )
 size_flags_horizontal = 3
 custom_constants/separation = 1
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
-visible = false
-margin_right = 1004.0
+margin_right = 1078.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 1004, 52 )
 mouse_default_cursor_shape = 2
@@ -249,25 +272,11 @@ size_flags_vertical = 3
 theme = ExtResource( 10 )
 toggle_mode = true
 texture_normal = ExtResource( 15 )
-texture_pressed = ExtResource( 20 )
-texture_hover = ExtResource( 21 )
-texture_disabled = ExtResource( 16 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 20 )
+texture_disabled = ExtResource( 36 )
 stretch_mode = 6
 script = ExtResource( 12 )
-
-[node name="SexIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 420.272
-margin_top = 6.05603
-margin_right = 472.272
-margin_bottom = 46.056
-texture = ExtResource( 31 )
-
-[node name="DateIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 274.272
-margin_top = 5.05603
-margin_right = 326.272
-margin_bottom = 45.056
-texture = ExtResource( 32 )
 
 [node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
 margin_left = 7.0
@@ -289,50 +298,25 @@ mouse_filter = 2
 texture = ExtResource( 8 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="explabel" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 652.0
-margin_top = 5.0
-margin_right = 727.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 75, 0 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 27 )
-text = "100"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="name" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
 margin_left = 107.0
-margin_top = 3.0
-margin_right = 230.0
-margin_bottom = 43.0
+margin_top = 5.0
+margin_right = 232.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 125, 0 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/font = ExtResource( 27 )
 text = "Name "
 valign = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="stats" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
-visible = false
-margin_left = 252.958
-margin_top = 5.0
-margin_right = 292.958
-margin_bottom = 45.0
+margin_left = 250.0
+margin_top = 6.0
+margin_right = 290.0
+margin_bottom = 46.0
 texture = ExtResource( 22 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="hp" type="TextureProgress" parent="ScrollContainer/VBoxContainer/Button/stats"]
 show_behind_parent = true
@@ -358,20 +342,16 @@ texture_progress = ExtResource( 24 )
 fill_mode = 3
 
 [node name="job" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
-visible = false
-margin_left = 317.067
-margin_top = 8.0
-margin_right = 501.067
-margin_bottom = 40.0
+margin_left = 311.0
+margin_top = 6.0
+margin_right = 480.0
+margin_bottom = 46.0
 size_flags_horizontal = 0
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 3 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 5 )
 texture_disabled = ExtResource( 29 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/job"]
 margin_left = 2.0
@@ -386,58 +366,142 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="obed" type="TextureProgress" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 507.0
+[node name="weapon" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 490.0
 margin_top = 6.0
-margin_right = 572.0
-margin_bottom = 44.0
-rect_min_size = Vector2( 45, 0 )
-value = 100.0
-texture_under = ExtResource( 37 )
-texture_over = ExtResource( 37 )
-texture_progress = ExtResource( 35 )
-script = ExtResource( 39 )
+margin_right = 530.0
+margin_bottom = 46.0
+texture_normal = ExtResource( 37 )
+texture_pressed = ExtResource( 39 )
+texture_hover = ExtResource( 38 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/weapon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="tool" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 530.0
+margin_top = 6.0
+margin_right = 570.0
+margin_bottom = 46.0
+texture_normal = ExtResource( 37 )
+texture_pressed = ExtResource( 39 )
+texture_hover = ExtResource( 38 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/tool"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+
+[node name="armor1" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 570.0
+margin_top = 6.0
+margin_right = 610.0
+margin_bottom = 46.0
+texture_normal = ExtResource( 37 )
+texture_pressed = ExtResource( 39 )
+texture_hover = ExtResource( 38 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/armor1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+
+[node name="armor2" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 610.0
+margin_top = 6.0
+margin_right = 650.0
+margin_bottom = 46.0
+texture_normal = ExtResource( 37 )
+texture_pressed = ExtResource( 39 )
+texture_hover = ExtResource( 38 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/armor2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+
+[node name="explabel" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 664.0
+margin_top = 5.0
+margin_right = 727.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "1000"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-texture_1 = ExtResource( 36 )
-texture_2 = ExtResource( 38 )
-texture_3 = ExtResource( 35 )
+
+[node name="DateIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 740.0
+margin_top = 5.0
+margin_right = 780.0
+margin_bottom = 45.0
+texture = ExtResource( 35 )
+stretch_mode = 4
+
+[node name="SexIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 780.0
+margin_top = 5.0
+margin_right = 820.0
+margin_bottom = 45.0
+texture = ExtResource( 21 )
+stretch_mode = 4
+
+[node name="TrainIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 820.0
+margin_top = 5.0
+margin_right = 860.0
+margin_bottom = 45.0
+texture = ExtResource( 21 )
+stretch_mode = 4
+
+[node name="LocIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 940.0
+margin_top = 6.0
+margin_right = 980.0
+margin_bottom = 46.0
+texture = ExtResource( 21 )
+stretch_mode = 4
+
+[node name="loctext" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 838.0
+margin_top = 5.0
+margin_right = 1049.0
+margin_bottom = 43.0
+rect_min_size = Vector2( 125, 0 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "Name "
+valign = 1
+clip_text = true
 
 [node name="state" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 939.188
-margin_top = 5.35927
-margin_right = 999.188
-margin_bottom = 45.3593
+margin_left = 987.0
+margin_top = 5.0
+margin_right = 1047.0
+margin_bottom = 45.0
 rect_min_size = Vector2( 50, 0 )
 mouse_filter = 2
 texture = ExtResource( 23 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Location" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 734.0
-margin_top = 6.0
-margin_right = 924.0
-margin_bottom = 45.0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 27 )
-text = "Location"
-valign = 1
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="progress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/Button"]
-visible = false
-margin_left = 253.0
-margin_top = 11.0454
-margin_right = 676.0
-margin_bottom = 38.0454
+margin_left = 423.0
+margin_top = 8.0
+margin_right = 846.0
+margin_bottom = 42.0
 texture_under = ExtResource( 33 )
 texture_progress = ExtResource( 34 )
 
@@ -464,9 +528,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -101.0
-margin_top = -90.6971
+margin_top = -44.0001
 margin_right = -54.0002
-margin_bottom = -63.697
+margin_bottom = -14.0001
 hint_tooltip = "TOOLTIPFOODCONSUMPTION"
 theme = ExtResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -492,10 +556,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -219.0
-margin_top = -92.926
-margin_right = -173.0
-margin_bottom = -62.926
+margin_left = -222.0
+margin_top = -46.0
+margin_right = -176.0
+margin_bottom = -16.0
 hint_tooltip = "TOOLTIPPOPULATION"
 theme = ExtResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -520,9 +584,6 @@ margin_top = 526.0
 margin_right = 1082.0
 margin_bottom = 569.0
 custom_styles/panel = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TravelsContainer" type="ScrollContainer" parent="TravelsContainerPanel"]
 margin_left = 2.0

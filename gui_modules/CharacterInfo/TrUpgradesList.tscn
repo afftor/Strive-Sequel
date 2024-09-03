@@ -117,12 +117,10 @@ margin_bottom = 539.0
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="training/ScrollContainer"]
+[node name="VBoxContainer" type="GridContainer" parent="training/ScrollContainer"]
+columns = 3
 
-[node name="category" type="HBoxContainer" parent="training/ScrollContainer/VBoxContainer"]
-custom_constants/separation = 2
-
-[node name="Button" type="TextureButton" parent="training/ScrollContainer/VBoxContainer/category"]
+[node name="Button" type="TextureButton" parent="training/ScrollContainer/VBoxContainer"]
 visible = false
 margin_right = 270.0
 margin_bottom = 60.0
@@ -131,7 +129,7 @@ texture_pressed = ExtResource( 28 )
 texture_hover = ExtResource( 27 )
 texture_disabled = ExtResource( 28 )
 
-[node name="icon" type="TextureRect" parent="training/ScrollContainer/VBoxContainer/category/Button"]
+[node name="icon" type="TextureRect" parent="training/ScrollContainer/VBoxContainer/Button"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 50.0
@@ -140,7 +138,7 @@ mouse_filter = 2
 texture = ExtResource( 29 )
 expand = true
 
-[node name="name" type="Label" parent="training/ScrollContainer/VBoxContainer/category/Button"]
+[node name="name" type="Label" parent="training/ScrollContainer/VBoxContainer/Button"]
 light_mask = 0
 margin_left = 58.0
 margin_top = 12.0
@@ -176,12 +174,14 @@ anchor_bottom = 1.0
 texture = ExtResource( 1 )
 expand = true
 
-[node name="trainer_frame" type="TextureRect" parent="training"]
+[node name="trainer_frame" type="TextureButton" parent="training"]
 margin_left = 5.0
 margin_top = 50.0
 margin_right = 125.0
 margin_bottom = 170.0
-texture = ExtResource( 10 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 10 )
 
 [node name="icon" type="TextureRect" parent="training/trainer_frame"]
 show_behind_parent = true

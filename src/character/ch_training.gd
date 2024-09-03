@@ -57,6 +57,10 @@ func add_trainee(id): #unsafe - no limit check
 	tchar.training.trainer = parent.get_ref().id
 
 
+func can_be_trained():
+	return available and enable and trainer != null
+
+
 func clear_training():
 	if trainer != null:
 		var tchar = characters_pool.get_char_by_id(trainer)
