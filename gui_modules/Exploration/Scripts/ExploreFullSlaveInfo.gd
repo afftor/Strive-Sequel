@@ -139,7 +139,7 @@ func hire_character():
 	input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(gui_controller.exploration_city.selected_location)
 	var person = gui_controller.exploration_city.person_to_hire
 	if ResourceScripts.game_party.characters.size() >= ResourceScripts.game_res.get_pop_cap():
-		if ResourceScripts.game_res.get_pop_cap() < variables.max_population_cap:
+		if ResourceScripts.game_res.get_pop_cap() < ResourceScripts.game_res.get_pop_cap_limit():
 			input_handler.SystemMessage("You don't have enough rooms")
 		else:
 			input_handler.SystemMessage("Population limit reached")

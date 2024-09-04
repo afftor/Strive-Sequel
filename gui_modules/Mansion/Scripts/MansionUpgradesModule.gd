@@ -14,7 +14,7 @@ func _ready():
 #	$StateButton.connect("pressed", self, "change_state")
 #	$StateButton.text = str(state_list[state_id]).capitalize()
 	yield(get_tree().create_timer(0.3), "timeout")
-	if ResourceScripts.game_progress.unlock_all_upgrades == true:
+	if ResourceScripts.game_globals.unlock_all_upgrades == true:
 		for i in globals.upgradelist.values():
 			ResourceScripts.game_res.upgrades[i.code] = i.levels.keys().back()
 	globals.connect("hour_tick", self, "update_buttons")
@@ -225,7 +225,7 @@ func selectupgrade(upgrade):
 
 	if ResourceScripts.game_res.upgrade_progresses.has(upgrade.code) && ResourceScripts.game_res.selected_upgrade.code == upgrade.code:
 		canpurchase = false
-	if ResourceScripts.game_progress.free_upgrades == true || ResourceScripts.game_res.upgrade_progresses.has(upgrade.code):
+	if ResourceScripts.game_globals.free_upgrades == true || ResourceScripts.game_res.upgrade_progresses.has(upgrade.code):
 		canpurchase = true
 
 	$UpgradeDescript/RichTextLabel.bbcode_text = text
@@ -266,13 +266,13 @@ func add_to_upgrades_queue():
 		input_handler.SystemMessage("Upgrade already in the queue.")
 		return
 	var currentupgradelevel = int(findupgradelevel(upgrade) + 1)
-	if ResourceScripts.game_progress.free_upgrades == false:
+	if ResourceScripts.game_globals.free_upgrades == false:
 		for i in upgrade.levels[currentupgradelevel].cost:
 			ResourceScripts.game_res.materials[i] -= int(upgrade.levels[currentupgradelevel].cost[i])
 	if !ResourceScripts.game_res.upgrades_queue.has(upgrade.code):
 		ResourceScripts.game_res.upgrades_queue.append(upgrade.code)
 
-	if ResourceScripts.game_progress.instant_upgrades == false:
+	if ResourceScripts.game_globals.instant_upgrades == false:
 		if !ResourceScripts.game_res.upgrade_progresses.has(upgrade.code):
 			ResourceScripts.game_res.upgrade_progresses[upgrade.code] = {level = currentupgradelevel, progress = 0}
 	else:

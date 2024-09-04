@@ -1230,6 +1230,8 @@ func add_trait(tr_code):
 	if trait.has('traits'):
 		for id in trait.traits: #for free basic_sevitude and others
 			add_trait(id)
+	if trait.has('disposition_change'):
+		parent.get_ref().process_disposition_data(trait.disposition_change)
 	if tr_code == 'undead':
 		statlist.food_consumption = 0
 		statlist.charm -= 100
@@ -1728,7 +1730,7 @@ func get_racial_features():
 	var race_template = races.racelist[statlist.race]
 	for i in race_template.basestats:
 		statlist[i] = round(rand_range(race_template.basestats[i][0], race_template.basestats[i][1])) #1 - terrible, 2 - bad, 3 - average, 4 - good, 5 - great, 6 - superb
-	
+	parent.get_ref().training.setup_dispositions(statlist.race)
 	add_stat_bonuses(race_template.race_bonus)
 	for i in races.racelist.Human.bodyparts:
 		if races.racelist.Human.bodyparts[i].empty():

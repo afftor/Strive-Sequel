@@ -390,7 +390,6 @@ func create(temp_race, temp_gender, temp_age):
 	learn_c_skill('attack')
 	statlist.create(temp_race, temp_gender, temp_age)
 	food.create()
-	training.setup_dispositions(get_stat('race'))
 	add_trait('core_trait')
 	recheck_effect_tag('recheck_stats')
 
@@ -912,6 +911,8 @@ func recheck_upgrades():
 func recheck_equip():
 	equipment.recheck_equip()
 
+func process_disposition_data(data):
+	training.process_disposition_data(data)
 
 func get_trainer():
 	return training.get_trainer()
@@ -1657,7 +1658,7 @@ func set_shield(value):
 func deal_damage(value, source = 'normal'):
 	if npc_reference == 'combat_global': return null
 	var tmp = hp
-	if ResourceScripts.game_party.characters.has(self.id) && ResourceScripts.game_progress.invincible_player:
+	if ResourceScripts.game_party.characters.has(self.id) && ResourceScripts.game_globals.invincible_player:
 		return 0
 	value *= (1.0 - get_stat('resists')['all']/100.0)
 	if source != 'true':

@@ -30,7 +30,8 @@ var cheats = [
 	'unlock_all_classes',
 	'add_new_character',
 	'add_material',
-	'unlock_all_scenes'
+	'unlock_all_scenes',
+	'unlimited_popcap'
 ]
 
 func _ready():
@@ -63,13 +64,15 @@ func list_cheats():
 			newbutton.get_node("Label").text = "Unlock All Upgrades"
 		if cheat == "unlock_all_scenes":
 			newbutton.get_node("Label").text = "Unlock All Scenes"
+		if cheat == "unlimited_popcap":
+			newbutton.get_node("Label").text = "Set Character Limit to 100"
 		var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
 		newbutton.get_node("Label").set("custom_fonts/font", font)
 
 
 func set_cheat(cheat = null, btn = null):
 	if cheat != null && btn != null && !cheat in ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material", 'unlock_all_scenes']:
-		ResourceScripts.game_progress[cheat] = btn.is_pressed()
+		ResourceScripts.game_globals[cheat] = btn.is_pressed()
 	match cheat:
 		"instant_upgrades":
 			max_all_upgrades()
@@ -87,7 +90,7 @@ func set_cheat(cheat = null, btn = null):
 		if button.name == "Button" || button.get_meta("cheat") in ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material", 'unlock_all_scenes']:
 			continue
 		button.toggle_mode = !button.get_meta("cheat") in ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material", 'unlock_all_scenes'] # this means 'true' i think
-		button.pressed = ResourceScripts.game_progress[button.get_meta("cheat")]
+		button.pressed = ResourceScripts.game_globals[button.get_meta("cheat")]
 
 
 func list_characters():

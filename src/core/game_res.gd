@@ -143,7 +143,14 @@ func get_food():
 
 #mansion
 func get_pop_cap():
-	return variables.base_population_cap + variables.population_cap_per_room_upgrade * upgrades.rooms
+	var res = variables.base_population_cap + variables.population_cap_per_room_upgrade * upgrades.rooms
+	if ResourceScripts.game_globals.unlimited_popcap:
+		res = 100
+	return res
+
+func get_pop_cap_limit():
+	var res = variables.base_population_cap + variables.population_cap_per_room_upgrade * upgradedata.upgradelist.rooms.levels.size()
+	return res
 
 #checks
 func if_has_money(value):
@@ -222,14 +229,14 @@ func add_upgrade_to_queue(upgrade_id):
 		input_handler.SystemMessage("Upgrade already in the queue.")
 		#something goes wrong for confirm button shoul be disabled in this case
 		return
-	if ResourceScripts.game_progress.free_upgrades == false and !upgrade_progresses.has(upgrade_id):
+	if ResourceScripts.game_globals.free_upgrades == false and !upgrade_progresses.has(upgrade_id):
 		for i in upgrade_next_state.cost:
 			if i == 'gold':
 				money -= int(upgrade_next_state.cost[i])
 			else:
 				materials[i] -= int(upgrade_next_state.cost[i])
 
-	if ResourceScripts.game_progress.instant_upgrades == false:
+	if ResourceScripts.game_globals.instant_upgrades == false:
 		upgrades_queue.append(upgrade_id)
 		if !upgrade_progresses.has(upgrade_id):
 			upgrade_progresses[upgrade_id] = {level = upgrade_lv + 1, progress = 0}

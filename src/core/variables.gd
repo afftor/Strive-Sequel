@@ -239,7 +239,6 @@ var guild_quest_update_time = 3
 #mansion & ugprades
 var base_population_cap = 5
 var population_cap_per_room_upgrade = 5
-var max_population_cap = 30
 var stable_boost_per_level = 1
 
 #Items
