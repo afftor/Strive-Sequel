@@ -129,7 +129,7 @@ func return_to_mansion():
 			if active_location.group[i] == parent.get_ref().id:
 				active_location.group.erase(i)
 				break
-	if ResourceScripts.game_progress.instant_travel == false and parent.get_ref().get_work() != 'disabled':
+	if ResourceScripts.game_globals.instant_travel == false and parent.get_ref().get_work() != 'disabled':
 		location = 'travel'
 		parent.get_ref().set_work('travel')
 		travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
@@ -140,7 +140,7 @@ func return_to_mansion():
 		globals.emit_signal("slave_arrived")
 
 func return_recruit():
-	if ResourceScripts.game_progress.instant_travel == false:
+	if ResourceScripts.game_globals.instant_travel == false:
 		travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
 		travel_time = input_handler.active_area.travel_time + input_handler.active_location.travel_time
 		parent.get_ref().set_work('travel')

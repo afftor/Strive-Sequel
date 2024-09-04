@@ -10,7 +10,7 @@ func start_scene():
 	var choosen_chars = get_parent().sex_participants
 	for i in choosen_chars:
 		i.add_stat('metrics_sex', 1)
-	if !ResourceScripts.game_progress.unlimited_date_sex:
+	if !ResourceScripts.game_globals.unlimited_date_sex:
 		ResourceScripts.game_globals.weekly_sex_left -= 1
 	ResourceScripts.core_animations.BlackScreenTransition()
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -30,7 +30,7 @@ func start_date():
 	else:
 		person = get_parent().sex_participants[0]
 	person.add_stat('metrics_dates', 1)
-	if !ResourceScripts.game_progress.unlimited_date_sex:
+	if !ResourceScripts.game_globals.unlimited_date_sex:
 		ResourceScripts.game_globals.weekly_dates_left -= 1
 	person.tags.push_back("no_date_day")
 	ResourceScripts.core_animations.BlackScreenTransition()

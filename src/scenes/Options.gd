@@ -74,7 +74,7 @@ func text_changed(text):
 
 
 func activate_cheats():
-	ResourceScripts.game_progress.cheats_active = true
+	ResourceScripts.game_globals.cheats_active = true
 	$TabContainer/Cheats/EnterCodeMenu.hide()
 	$TabContainer/Cheats/OpenCheatsMenu.show()
 
@@ -86,8 +86,8 @@ func go_for_code():
 func open():
 	$TabContainer/Gameplay/enable_tutorials.pressed = ResourceScripts.game_progress.show_tutorial
 	# $TabContainer/Cheats/EnterCodeMenu/Activate.disabled = true
-	$TabContainer/Cheats/EnterCodeMenu.visible = !ResourceScripts.game_progress.cheats_active
-	$TabContainer/Cheats/OpenCheatsMenu.visible = ResourceScripts.game_progress.cheats_active
+	$TabContainer/Cheats/EnterCodeMenu.visible = !ResourceScripts.game_globals.cheats_active
+	$TabContainer/Cheats/OpenCheatsMenu.visible = ResourceScripts.game_globals.cheats_active
 	$TabContainer/Cheats/OpenCheatsMenu/CheatsMenu.visible = get_parent().name != "Menu_v2"
 	male_rate_change(input_handler.globalsettings.malechance)
 	futa_rate_change(input_handler.globalsettings.futachance)
