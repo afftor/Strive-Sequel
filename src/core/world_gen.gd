@@ -155,6 +155,8 @@ func make_guild(code, area):
 		guilddatatemplate.reputation_shop = data.reputation_shop.duplicate(true)
 	if data.slavenumber.size() > 0:
 		data.slavenumber = round(rand_range(data.slavenumber[0], data.slavenumber[1]))
+	else:
+		data.slavenumber = 0
 #	if data.questnumber.size() > 0:
 #		data.questnumber = round(rand_range(data.questnumber[0], data.questnumber[1]))
 #		area.quests.factions[data.code] = {}
