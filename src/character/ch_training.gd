@@ -29,8 +29,13 @@ func setup_dispositions(race_id):
 	var data = races.racelist.Human.training_disposition
 	if races.racelist[race_id].has('training_disposition'):
 		data = races.racelist[race_id].training_disposition
+	process_disposition_data(data, true)
+
+
+func process_disposition_data(data, setup = false):
 	for cat in data:
-		dispositions_known[cat] = false
+		if setup:
+			dispositions_known[cat] = false
 		dispositions[cat] = input_handler.weightedrandom(data[cat])
 
 

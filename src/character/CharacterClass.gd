@@ -390,7 +390,6 @@ func create(temp_race, temp_gender, temp_age):
 	learn_c_skill('attack')
 	statlist.create(temp_race, temp_gender, temp_age)
 	food.create()
-	training.setup_dispositions(get_stat('race'))
 	add_trait('core_trait')
 	recheck_effect_tag('recheck_stats')
 
@@ -912,6 +911,8 @@ func recheck_upgrades():
 func recheck_equip():
 	equipment.recheck_equip()
 
+func process_disposition_data(data):
+	training.process_disposition_data(data)
 
 func get_trainer():
 	return training.get_trainer()

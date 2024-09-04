@@ -593,7 +593,10 @@ var traits = {
 		bonusstats = {exp_gain_mod = 0.25},
 		weight = 100,
 		conflicts = ['dim'],
-		tags = ['positive', 'can_start']
+		tags = ['positive', 'can_start'],
+		disposition_change = {
+			positive = [['resist', 75],['neutral', 25]]
+		}
 	},
 	passive = {
 		code = 'passive',
@@ -606,6 +609,9 @@ var traits = {
 		weight = 100,
 		conflicts = ['rebel'],
 		reqs = [{code = 'is_master', check = false}],
+		disposition_change = {
+			positive = [['weak', 50],['kink', 50]]
+		},
 		tags = ['positive', 'can_start']
 	},
 	nimble = {
@@ -618,6 +624,9 @@ var traits = {
 		bonusstats = {speed = 10},
 		weight = 100,
 		conflicts = ['slow'],
+		disposition_change = {
+			sexual = [['weeak', 75],['kink', 25]]
+		},
 		tags = ['positive', 'can_start']
 	},
 	quick = {
@@ -630,6 +639,9 @@ var traits = {
 		bonusstats = {mod_collect = 0.2},
 		weight = 100,
 		conflicts = ['blundering', 'clumsy'],
+		disposition_change = {
+			physical = [['weak', 50],['kink', 50]]
+		},
 		tags = ['positive', 'can_start']
 	},
 	handy = {
@@ -642,6 +654,9 @@ var traits = {
 		bonusstats = {mod_tailor = 0.2, mod_smith = 0.2, mod_alchemy = 0.2, mod_cook = 0.2},
 		weight = 100,
 		conflicts = ['crude', 'inept'],
+		disposition_change = {
+			humiliation = [['weak', 50],['kink', 50]]
+		},
 		tags = ['positive', 'can_start']
 	},
 	deadly = {
@@ -653,6 +668,9 @@ var traits = {
 		effects = [],
 		bonusstats = {critchance = 9},
 		weight = 100,
+		disposition_change = {
+			physical = [['weak', 50],['kink', 50]]
+		},
 		tags = ['positive', 'can_start']
 	},
 	lively = {
@@ -677,6 +695,9 @@ var traits = {
 		bonusstats = {mp_reg_add = 1},
 		weight = 100,
 		conflicts = ['m_inept'],
+		disposition_change = {
+			magic = [['weak', 50],['kink', 50]]
+		},
 		tags = ['positive', 'can_start']
 	},
 	bawdy = {
@@ -689,6 +710,9 @@ var traits = {
 		weight = 100,
 		tags = ['positive', 'can_start'],
 		conflicts = ['chaste', 'frigid'],
+		disposition_change = {
+			sexual = [['weak', 25],['kink', 75]]
+		},
 		bonusstats = {mod_pros = 0.25}
 	},
 	sturdy = {
@@ -701,6 +725,9 @@ var traits = {
 		bonusstats = {armor = 10},
 		weight = 100,
 		conflicts = ['frail'],
+		disposition_change = {
+			physical = [['resist', 50],['neutral', 50]]
+		},
 		tags = ['positive', 'can_start']
 	},
 	talented = {
@@ -713,6 +740,9 @@ var traits = {
 		bonusstats = {base_task_crit_chance = 0.15}, 
 		weight = 100,
 		conflicts = ['menial'],
+		disposition_change = {
+			humiliation = [['weak', 75],['neutral', 25]]
+		},
 		tags = ['positive', 'can_start']
 	},
 	forager = {
@@ -724,6 +754,9 @@ var traits = {
 		effects = [],
 		bonusstats = {}, #hardcoded
 		weight = 100,
+		disposition_change = {
+			positive = [['weak', 75],['neutral', 25]]
+		},
 		tags = ['positive', 'can_start']
 	},
 	gifted = {
@@ -736,6 +769,9 @@ var traits = {
 		bonusstats = {},
 		weight = 100,
 		conflicts = ['magicmutt'],
+		disposition_change = {
+			magic = [['kink', 75],['weak', 25]]
+		},
 		tags = ['positive', 'can_start']
 	},
 	belligerent = {
@@ -747,6 +783,9 @@ var traits = {
 		effects = ['e_tr_bell'],
 		bonusstats = {},
 		weight = 100,
+		disposition_change = {
+			physical = [['resist', 50],['neutral', 50]]
+		},
 		tags = ['positive', 'can_start']
 	},
 	hiddenpowers = {
@@ -759,6 +798,9 @@ var traits = {
 		bonusstats = {},
 		weight = 100,
 		conflicts = ['m_inept'],
+		disposition_change = {
+			magic = [['resist', 75],['neutral', 25]]
+		},
 		tags = ['positive', 'can_start']
 	},
 	healthy = {
@@ -784,6 +826,9 @@ var traits = {
 		bonusstats = {exp_gain_mod = -0.25},
 		weight = 100,
 		conflicts = ['prodigy'],
+		disposition_change = {
+			magic = [['weak', 75],['neutral', 25]]
+		},
 		tags = ['negative']
 	},
 	rebel = {
@@ -796,6 +841,9 @@ var traits = {
 		bonusstats = {training_loyalty = -2}, 
 		weight = 100,
 		conflicts = ['passive'],
+		disposition_change = {
+			sexual = [['weak', 50],['kink', 50]]
+		},
 		tags = ['negative']
 	},
 	slow = {
@@ -808,6 +856,9 @@ var traits = {
 		bonusstats = {speed = -10},
 		weight = 100,
 		conflicts = ['nimble'],
+		disposition_change = {
+			social = [['kink', 75],['weak', 25]]
+		},
 		tags = ['negative']
 	},
 	clumsy = {
@@ -820,6 +871,9 @@ var traits = {
 		bonusstats = {mod_collect = -0.8},
 		weight = 100,
 		conflicts = ['quick', 'blundering'],
+		disposition_change = {
+			positive = [['weak', 50],['kink', 50]]
+		},
 		tags = ['negative']
 	},
 	inept = {
@@ -832,6 +886,9 @@ var traits = {
 		bonusstats = {mod_tailor = -0.8, mod_smith = -0.8, mod_alchemy = -0.8, mod_cook = -0.8},
 		weight = 100,
 		conflicts = ['handy', 'crude'],
+		disposition_change = {
+			magic = [['resist', 75],['neutral', 25]]
+		},
 		tags = ['negative']
 	},
 	sicky = {
@@ -844,6 +901,9 @@ var traits = {
 		bonusstats = {hp_reg_add = -3},
 		weight = 100,
 		conflicts = ['lively', 'healthy'],
+		disposition_change = {
+			physical = [['weak', 50],['kink', 50]]
+		},
 		tags = ['negative']
 	},
 	frail = {
@@ -856,6 +916,9 @@ var traits = {
 		bonusstats = {armor = -10},
 		weight = 100,
 		conflicts = ['sturdy'],
+		disposition_change = {
+			physical = [['kink', 75],['weak', 25]]
+		},
 		tags = ['negative']
 	},
 	magicmutt = {
@@ -868,6 +931,9 @@ var traits = {
 		bonusstats = {},
 		weight = 100,
 		conflicts = ['gifted'],
+		disposition_change = {
+			magic = [['resist', 50],['neutral', 50]]
+		},
 		tags = ['negative']
 	},
 	blundering = {
@@ -881,6 +947,9 @@ var traits = {
 		bonusstats = {mod_collect = -0.8, mod_farm = -0.8, mod_fish = -0.8},
 		weight = 100,
 		conflicts = ['quick', 'clumsy'],
+		disposition_change = {
+			humiliation = [['weak', 50],['kink', 50]]
+		},
 		tags = ['negative'],# 'no_collect']
 	},
 	crude = {
@@ -894,6 +963,9 @@ var traits = {
 		bonusstats = {mod_smith = -0.8, mod_tailor = -0.8, mod_alchemy = -0.8},
 		weight = 100,
 		conflicts = ['handy', 'inept'],
+		disposition_change = {
+			humiliation = [['weak', 50],['kink', 50]]
+		},
 		tags = ['negative'],# 'no_craft']
 	},
 	chaste = {
@@ -907,6 +979,9 @@ var traits = {
 		bonusstats = {mod_pros = -0.8},
 		weight = 100,
 		conflicts = ['bawdy'],
+		disposition_change = {
+			sexual = [['resist', 50],['kink', 50]]
+		},
 		tags = ['negative'],# 'no_whoring']
 	},
 	pacifist = {
@@ -918,6 +993,9 @@ var traits = {
 		effects = ['e_tr_pacifist'],
 		bonusstats = {},
 		weight = 100,
+		disposition_change = {
+			physical = [['weak', 75],['neutral', 25]]
+		},
 		tags = ['negative'],# 'no_combat']
 	},
 	menial = {
@@ -930,6 +1008,9 @@ var traits = {
 		bonusstats = {},
 		weight = 100,
 		conflicts = ['talented'],
+		disposition_change = {
+			humiliation = [['weak', 50],['kink', 50]]
+		},
 		tags = ['negative', 'no_task_crit']
 	},
 	whimp = {
@@ -942,6 +1023,9 @@ var traits = {
 		effects = ['e_tr_whimp'],
 		bonusstats = {},
 		weight = 100,
+		disposition_change = {
+			social = [['weak', 50],['kink', 50]]
+		},
 		tags = ['negative'],# 'no_combat_skills']
 	},
 	m_inept = {
@@ -954,6 +1038,9 @@ var traits = {
 		effects = ['e_tr_minept'],
 		bonusstats = {},
 		weight = 100,
+		disposition_change = {
+			magic = [['resist', 75],['neutral', 25]]
+		},
 		conflicts = ['mvortex', 'hiddenpowers'],
 		tags = ['negative'],# 'no_combat_spells']
 	},
@@ -967,6 +1054,9 @@ var traits = {
 		effects = [],
 		bonusstats = {},
 		weight = 100,
+		disposition_change = {
+			positive = [['weak', 50],['kink', 50]]
+		},
 		tags = ['negative', 'no_combat_support']
 	},
 	coward = {
@@ -978,6 +1068,10 @@ var traits = {
 		effects = [],
 		bonusstats = {hitrate = -50},
 		weight = 100,
+		disposition_change = {
+			positive = [['kink', 75],['weak', 25]],
+			humiliation = [['weak', 75],['kink', 25]],
+		},
 		tags = ['negative'],# 'no_social_skills']
 	},
 	frigid = {
@@ -991,6 +1085,9 @@ var traits = {
 		bonusstats = {},
 		weight = 100,
 		conflicts = ['bawdy'],
+		disposition_change = {
+			sexual = [['resist', 75],['neutral', 25]]
+		},
 		tags = ['negative', 'no_sex_traits']
 	},
 	#master
