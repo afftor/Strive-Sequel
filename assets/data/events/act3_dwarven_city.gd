@@ -219,689 +219,680 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 0, type = 'next_dialogue',
 			bonus_effects = [
 				{code = 'progress_quest', value = 'visit_dwarfs_quest', stage = 'tavern'},
+				{code = "update_city"}
 			]
 		}]
 	},
 
-
-
-
-	enter_city_option_workshop = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
+	dwarf_workshop_closed1 = {
+		reqs = [],
+		tags = ['dialogue_scene'],
 		text = [{
-			text = "ENTER_CITY_WORKSHOP_INTRO", reqs = []
+			text = "DWARF_WORKSHOP_CLOSED1", reqs = []
 		}],
 		options = [{
-			code = 'close', 
-			text = "ENTER_CITY_WORKSHOP_MESSAGE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'dwarf_workshop_closed2', 
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
 		}]
 	},
-	
-	enter_city_option_tavern = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
+	dwarf_workshop_closed2 = {
+		reqs = [],
+		tags = ['dialogue_scene'],
 		text = [{
-			text = "TAVERN_INTRO", reqs = []
-		}],
-		options = [
-			{
-				code = 'tavern_barkeep_dialogue', 
-				text = "TAVERN_OPTION_TALK_BARKEEP", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_patrons_dialogue', 
-				text = "TAVERN_OPTION_TALK_PATRONS", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_girl_dialogue', 
-				text = "TAVERN_OPTION_TALK_GIRL", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
-			},
-			{
-				code = 'close', 
-				text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
-			}
-		]
-	},
-
-	tavern_barkeep_dialogue = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_BARKEEP_DIALOGUE", reqs = []
-		}],
-		options = [
-			{
-				code = 'tavern_barkeep_doesnt_seem_closed', 
-				text = "TAVERN_OPTION_DOESNT_SEEM_CLOSED", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_barkeep_want_information', 
-				text = "TAVERN_OPTION_WANT_INFORMATION", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
-			},
-			{
-				code = 'close', 
-				text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
-			}
-		]
-	},
-
-	tavern_barkeep_doesnt_seem_closed = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_DOESNT_SEEM_CLOSED", reqs = []
-		}],
-		options = [
-			{
-				code = 'tavern_after_barkeep_response', 
-				text = "TAVERN_OPTION_ASK_ABOUT_GIRL", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_after_barkeep_response', 
-				text = "TAVERN_OPTION_ASK_DOOR_SIZE", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_after_barkeep_response', 
-				text = "TAVERN_OPTION_AVOID_CONFLICT", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
-			}
-		]
-	},
-
-	tavern_barkeep_want_information = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_WANT_INFORMATION", reqs = []
-		}],
-		options = [
-			{
-				code = 'tavern_after_barkeep_response', 
-				text = "TAVERN_OPTION_ASK_ABOUT_GIRL", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_after_barkeep_response', 
-				text = "TAVERN_OPTION_ASK_DOOR_SIZE", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_after_barkeep_response', 
-				text = "TAVERN_OPTION_AVOID_CONFLICT", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
-			}
-		]
-	},
-
-	tavern_after_barkeep_response = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [
-			{
-				text = "TAVERN_ASK_ABOUT_GIRL", reqs = []
-			},
-			{
-				text = "TAVERN_ASK_DOOR_SIZE", reqs = []
-			},
-			{
-				text = "TAVERN_AVOID_CONFLICT", reqs = []
-			}
-		],
-		options = [{
-			code = 'tavern_group_of_dwarves', 
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	tavern_group_of_dwarves = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_GROUP_OF_DWARVES", reqs = []
-		}],
-		options = [
-			{
-				code = 'tavern_wanted_to_ask_questions', 
-				text = "TAVERN_OPTION_WANTED_TO_ASK_QUESTIONS", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_insult_barkeep', 
-				text = "TAVERN_OPTION_INSULT_BARKEEP", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
-			}
-		]
-	},
-
-	tavern_wanted_to_ask_questions = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_WANTED_TO_ASK_QUESTIONS", reqs = []
-		}],
-		options = [{
-			code = 'tavern_dwarf_dagger', 
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	tavern_insult_barkeep = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_INSULT_BARKEEP", reqs = []
-		}],
-		options = [{
-			code = 'tavern_dwarf_dagger', 
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	tavern_dwarf_dagger = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_DWARF_DAGGER", reqs = []
-		}],
-		options = [
-			{
-				code = 'tavern_physics_factor', 
-				text = "TAVERN_OPTION_PHYSICS_FACTOR", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_no_trouble', 
-				text = "TAVERN_OPTION_NO_TROUBLE", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_hard_way_fight', 
-				text = "TAVERN_OPTION_HARD_WAY", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
-			}
-		]
-	},
-
-	tavern_physics_factor = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [
-			{
-				text = "TAVERN_PHYSICS_FACTOR_SUCCESS", 
-				reqs = [] # condition: physics factor gte 5
-			},
-			{
-				text = "TAVERN_PHYSICS_FACTOR_FAILURE", 
-				reqs = [] # condition: physics factor lt 5
-			}
-		],
-		options = [{
-			code = 'tavern_peaceful_resolution', 
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	tavern_no_trouble = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_NO_TROUBLE", reqs = []
-		}],
-		options = [
-			{
-				code = 'tavern_leave_tavern', 
-				text = "TAVERN_OPTION_LEAVE_TAVERN", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_resist_fight', 
-				text = "TAVERN_OPTION_RESIST", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
-			}
-		]
-	},
-
-	tavern_leave_tavern = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
-		text = [{
-			text = "TAVERN_LEAVE_TAVERN", reqs = []
-		}],
-		options = [{
-			code = 'close', 
-			text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	tavern_resist_fight = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
-		text = [{
-			text = "TAVERN_AFTER_FIGHT", reqs = []
-		}],
-		options = [{
-			code = 'tavern_girl_outside', 
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	tavern_girl_outside = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_GIRL_OUTSIDE", reqs = []
-		}],
-		options = [
-			{
-				code = 'tavern_talk_patrons_again', 
-				text = "TAVERN_OPTION_TALK_PATRONS_AGAIN", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_talk_girl_again', 
-				text = "TAVERN_OPTION_TALK_GIRL_AGAIN", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
-			}
-		]
-	},
-
-		tavern_option_talk_patrons_again = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "PATRONS_DLG_ATTEMPT", reqs = []
-		}],
-		options = [
-			{
-				code = 'patrons_ask_questions', 
-				text = "PATRONS_OPTION_ASK_QUESTIONS", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-			},
-			{
-				code = 'patrons_not_friendly', 
-				text = "PATRONS_OPTION_NOT_FRIENDLY", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
-			},
-			{
-				code = 'patrons_enjoy_drinks', 
-				text = "PATRONS_OPTION_ENJOY_DRINKS", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
-			}
-		]
-	},
-
-	patrons_ask_questions = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "PATRONS_ASK_QUESTIONS", reqs = []
-		}],
-		options = [{
-			code = 'close', 
-			text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	patrons_not_friendly = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "PATRONS_NOT_FRIENDLY", reqs = []
-		}],
-		options = [{
-			code = 'close', 
-			text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	patrons_enjoy_drinks = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "PATRONS_ENJOY_DRINKS", reqs = []
-		}],
-		options = [{
-			code = 'close', 
-			text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	tavern_girl_outside_proposition = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
-		text = [{
-			text = "TAVERN_GIRL_OUTSIDE_PROPOSITION", reqs = []
-		}],
-		options = [
-			{
-				code = 'tavern_girl_response_no_help', 
-				text = "TAVERN_OPTION_NO_HELP", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_girl_response_thanks', 
-				text = "TAVERN_OPTION_THANKS", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
-			}
-		]
-	},
-
-	tavern_girl_response_no_help = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_GIRL_RESPONSE_NO_HELP", reqs = []
-		}],
-		options = [{
-			code = 'tavern_girl_options', 
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	tavern_girl_response_thanks = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_GIRL_RESPONSE_THANKS", reqs = []
-		}],
-		options = [{
-			code = 'tavern_girl_options', 
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	tavern_girl_options = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [
-			{
-				text = "TAVERN_GIRL_OPTION_WHO_ARE_YOU", reqs = []
-			},
-			{
-				text = "TAVERN_GIRL_OPTION_WHY_HELP", reqs = [] # If came from fight
-			},
-			{
-				text = "TAVERN_GIRL_OPTION_MEET_KING", reqs = []
-			}
-		],
-		options = [
-			{
-				code = 'tavern_girl_who_are_you', 
-				text = "TAVERN_GIRL_OPTION_WHO_ARE_YOU", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_girl_why_help', 
-				text = "TAVERN_GIRL_OPTION_WHY_HELP", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_girl_meet_king', 
-				text = "TAVERN_GIRL_OPTION_MEET_KING", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
-			}
-		]
-	},
-
-	tavern_girl_who_are_you = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_GIRL_WHO_ARE_YOU", reqs = []
-		}],
-		options = [{
-			code = 'tavern_girl_help_offer', 
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	tavern_girl_why_help = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_GIRL_WHY_HELP", reqs = []
-		}],
-		options = [{
-			code = 'tavern_girl_help_offer', 
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	tavern_girl_meet_king = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_GIRL_MEET_KING", reqs = []
-		}],
-		options = [{
-			code = 'tavern_girl_help_offer', 
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	tavern_girl_help_offer = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_GIRL_HELP_OFFER", reqs = []
-		}],
-		options = [
-			{
-				code = 'tavern_girl_response_trusting', 
-				text = "TAVERN_GIRL_OPTION_WE_JUST_MET", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_girl_response_what_plan', 
-				text = "TAVERN_GIRL_OPTION_WHAT_PLAN", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
-			}
-		]
-	},
-
-	tavern_girl_response_trusting = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_GIRL_RESPONSE_TRUSTING", reqs = []
-		}],
-		options = [{
-			code = 'tavern_girl_offer_final', 
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-	
-	tavern_girl_response_what_plan = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_GIRL_RESPONSE_WHAT_PLAN", reqs = []
-		}],
-		options = [{
-			code = 'tavern_girl_explanation',
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	tavern_girl_explanation = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_GIRL_EXPLANATION", reqs = []
-		}],
-		options = [
-			{
-				code = 'tavern_girl_response_trusting',
-				text = "TAVERN_GIRL_OPTION_TRUSTING", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_girl_response_do_it_alone',
-				text = "TAVERN_GIRL_OPTION_DO_IT_ALONE", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
-			},
-			{
-				code = 'tavern_girl_response_no_deal',
-				text = "TAVERN_GIRL_OPTION_NO_DEAL", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
-			}
-		]
-	},
-	
-	tavern_girl_response_do_it_alone = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_GIRL_RESPONSE_DO_IT_ALONE", reqs = []
-		}],
-		options = [{
-			code = 'tavern_girl_offer_final',
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	tavern_girl_response_no_deal = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_GIRL_RESPONSE_NO_DEAL", reqs = []
-		}],
-		options = [{
-			code = 'tavern_girl_offer_final',
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	tavern_girl_offer_final = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_GIRL_OFFER_FINAL", reqs = []
-		}],
-		options = [{
-			code = 'tavern_girl_map',
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	tavern_girl_map = {
-		image = null, reqs = [],
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "TAVERN_GIRL_MAP", reqs = []
+			text = "DWARF_WORKSHOP_CLOSED2", reqs = []
 		}],
 		options = [{
 			code = 'close',
-			text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
 		}]
 	},
-
-	outside_jean_dlg2 = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "OUTSIDE_JEAN_DLG2", reqs = []
-		}],
-		options = [{
-			code = 'outside_jean_dlg1_fight', 
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	barkeep_dwarf_intro = {
-		image = null, reqs = ['is_dwarf'], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "BARKEEP_DWARF_INTRO", reqs = []
-		}],
+	
+	
+	
+	dwarf_tavern_intro = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{
+				text = "DTAVERN_INTRO",
+				reqs = [{type = 'master_check', value = [{code = 'race', race = 'Dwarf', check = false}]}]
+			},{
+				text = "DTAVERN_INTRO_DWARF",
+				reqs = [{type = 'master_check', value = [{code = 'race', race = 'Dwarf', check = true}]}]
+			},
+		],
 		options = [
 			{
-				code = 'barkeep_response_girl', 
-				text = "BARKEEP_OPTION_GIRL", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-			},
-			{
-				code = 'barkeep_response_pour_drink', 
-				text = "BARKEEP_OPTION_POUR_DRINK", reqs = ['has_gold_10'], dialogue_argument = 2, type = 'next_dialogue'
-			},
-			{
-				code = 'barkeep_response_information', 
-				text = "BARKEEP_OPTION_INFORMATION", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+				code = 'close',
+				text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 0, type = 'next_dialogue',
+				bonus_effects = [{code = "update_guild"}]
 			}
 		]
 	},
 
-	barkeep_response_girl = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "BARKEEP_RESPONSE_GIRL", reqs = []
-		}],
-		options = [{
-			code = 'barkeep_dwarf_intro', 
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
+	dwarf_tavern_barkeep = {
+		variations = [{
+			reqs = [{type = 'master_check', value = [{code = 'race', race = 'Dwarf', check = false}]}],
+			tags = ['dialogue_scene'],
+			text = [{
+				text = "DTAVERN_BARK_CLOSED", reqs = []
+			}],
+			options = [
+				{
+					code = 'dwarf_tavern_barkeep2', 
+					text = "DTAVERN_BARK_OPT_DOESNT", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+				},{
+					code = 'dwarf_tavern_barkeep2', 
+					text = "DTAVERN_BARK_OPT_INFO", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+				},{
+					code = 'close', 
+					text = "DIALOGUENEVERMIND", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+				}
+			]
+		},{
+			reqs = [{type = 'master_check', value = [{code = 'race', race = 'Dwarf', check = true}]}],
+			tags = ['dialogue_scene'],
+			text = [
+				{
+					text = "DTAVERN_BARK_HAVING", reqs = [], previous_dialogue_option = 0
+				},{
+					text = "DTAVERN_BARK_REPLY_GIRL_D", reqs = [], previous_dialogue_option = 1
+				},{
+					text = "DTAVERN_BARK_REPLY_DRINK", reqs = [], previous_dialogue_option = 2
+				},
+			],
+			options = [
+				{
+					code = 'dwarf_tavern_barkeep',
+					text = "DTAVERN_BARK_OPT_GIRL_D", dialogue_argument = 1,
+					reqs = []
+				},{
+					code = 'dwarf_tavern_barkeep', 
+					text = "DTAVERN_BARK_OPT_DRINK", reqs = [], dialogue_argument = 2,
+					bonus_effects = [{code = 'money_change', operant = '-', value = 10}]
+				},{
+					code = 'dwarf_tavern_barkeep2_dwarf', 
+					text = "DTAVERN_BARK_OPT_INFO_D", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+				}
+			]
+		},
+	]
 	},
-
-	barkeep_response_pour_drink = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "BARKEEP_RESPONSE_POUR_DRINK", reqs = []
-		}],
-		options = [{
-			code = 'barkeep_dwarf_intro', 
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
-
-	barkeep_response_information = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "BARKEEP_RESPONSE_INFORMATION", reqs = []
-		}],
+	
+	
+	dwarf_tavern_barkeep2 = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_BARK_REPLY_DOESNT", reqs = [], previous_dialogue_option = 1},
+			{text = "DTAVERN_BARK_REPLY_INFO", reqs = [], previous_dialogue_option = 2},
+			{text = "DTAVERN_BARK_REPLY_GIRL", reqs = [], previous_dialogue_option = 3},
+			{text = "DTAVERN_BARK_REPLY_SIZE", reqs = [], previous_dialogue_option = 4},
+		],
 		options = [
 			{
-				code = 'barkeep_response_people_tense', 
-				text = "BARKEEP_OPTION_PEOPLE_TENSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+				code = 'dwarf_tavern_barkeep2', 
+				text = "DTAVERN_BARK_OPT_GIRL", dialogue_argument = 3,
+				reqs = []
+			},{
+				code = 'dwarf_tavern_barkeep2', 
+				text = "DTAVERN_BARK_OPT_SIZE", reqs = [], dialogue_argument = 4
+			},{
+				code = 'dwarf_tavern_bark_conflict1', 
+				text = "DTAVERN_BARK_OPT_EASY", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
 			},
+		]
+	},
+	
+	dwarf_tavern_bark_conflict1 = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_BARK_REPLY_EASY", reqs = []},
+		],
+		options = [{
+			code = 'dwarf_tavern_bark_conflict2', 
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+		}]
+	},
+	dwarf_tavern_bark_conflict2 = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_BARK_GROUP", reqs = []},
+		],
+		options = [
 			{
-				code = 'barkeep_response_city_info', 
-				text = "BARKEEP_OPTION_CITY_INFO", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+				code = 'dwarf_tavern_bark_conflict3', 
+				text = "DTAVERN_BARK_OPT_WANTED", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			},{
+				code = 'dwarf_tavern_bark_conflict3', 
+				text = "DTAVERN_BARK_OPT_NANNIES", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
 			},
+		]
+	},
+	dwarf_tavern_bark_conflict3 = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_BARK_REPLY_WANTED", reqs = [], previous_dialogue_option = 1},
+			{text = "DTAVERN_BARK_REPLY_NANNIES", reqs = [], previous_dialogue_option = 2},
+			{text = "DTAVERN_BARK_DAGGER", reqs = []},
+		],
+		options = [
 			{
-				code = 'barkeep_response_meet_king', 
-				text = "BARKEEP_OPTION_MEET_KING", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+				code = 'dwarf_tavern_bark_physics', 
+				text = "DTAVERN_BARK_OPT_PHYSICS", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			},{
+				code = 'dwarf_tavern_bark_trouble', 
+				text = "DTAVERN_BARK_OPT_NOTROUBLE", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+			},{
+				code = 'dwarf_tavern_bark_conflict3', 
+				text = "DTAVERN_BARK_OPT_FIGHT", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
 			},
+		]
+	},
+	
+	dwarf_tavern_bark_physics = {
+		variations = [
+			{#Peaceful Resolution
+				reqs = [
+					{type = "master_check", 
+					value = [{code = "stat", stat = "physics_factor", operant = "gte", value = 5}]}
+				],
+				tags = ['dialogue_scene'],
+				text = [{text = "DTAVERN_BARK_REPLY_PHYSICS_SUCCESS", reqs = []}],
+				options = [{
+					code = 'close', 
+					text = "DIALOGUENEVERMIND", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+				}]
+			},{#fight
+				reqs = [
+					{type = "master_check", 
+					value = [{code = "stat", stat = "physics_factor", operant = "lt", value = 5}]}
+				],
+				tags = ['dialogue_scene'],
+				text = [{text = "DTAVERN_BARK_REPLY_PHYSICS_FAILURE",reqs = []}
+				],
+				options = [{
+					code = 'quest_fight', args = 'dwarf_tavern_patrons',
+					text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 0, type = 'next_dialogue', 
+				}]
+			},
+		],
+	},
+	
+	dwarf_tavern_bark_after_fight = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_BARK_AFTER_FIGHT", reqs = []},
+		],
+		options = [{
+			code = 'dwarf_tavern_bark_after_fight2',
+			text = "DIALOGUECONTINUE", dialogue_argument = 0, type = 'next_dialogue',
+			reqs = []
+		}]
+	},
+	dwarf_tavern_bark_after_fight2 = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_BARK_OUTSIDE", reqs = []},
+		],
+		options = [{
+			code = 'dwarf_tavern_jean_after_fight',
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+		}]
+	},
+	dwarf_tavern_jean_after_fight = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_JEAN_AFIGHT", reqs = []},
+		],
+		options = [
 			{
-				code = 'close', 
-				text = "BARKEEP_OPTION_THATS_ALL", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
+				code = 'dwarf_tavern_jean_outside',
+				text = "DTAVERN_JEAN_AFIGHT_OPT_HELP", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+			},{
+				code = 'dwarf_tavern_jean_outside',
+				text = "DTAVERN_JEAN_AFIGHT_OPT_THK", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+			},
+		]
+	},
+	
+	dwarf_tavern_bark_trouble = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_BARK_REPLY_NOTROUBLE", reqs = []},
+		],
+		options = [
+			{
+				code = 'dwarf_tavern_bark_leave',
+				text = "DTAVERN_BARK_OPT_LEAVE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+			},{
+				code = 'quest_fight', args = 'dwarf_tavern_patrons',
+				text = "DTAVERN_BARK_OPT_RESIST", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+			},
+		]
+	},
+	dwarf_tavern_bark_leave = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_BARK_REPLY_LEAVE", reqs = []},
+		],
+		options = [{
+			code = 'dwarf_tavern_jean_outside',
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
+			bonus_effects = [{code = "update_city"}],#should close tavern
+		}]
+	},
+	
+	dwarf_tavern_patron = {
+		variations = [
+			{
+				reqs = [{type = 'master_check', value = [{code = 'race', race = 'Dwarf', check = false}]}],
+				tags = ['dialogue_scene'],
+				text = [
+					{text = "DTAVERN_PATRONS1", reqs = []},
+				],
+				options = [{
+					code = 'dwarf_tavern_patron2',
+					text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+				}]
+			},{
+				reqs = [{type = 'master_check', value = [{code = 'race', race = 'Dwarf', check = true}]}],
+				tags = ['dialogue_scene'],
+				text = [
+					{text = "DTAVERN_PATRONS_DWARF", reqs = [], previous_dialogue_option = 0},
+					{text = "DTAVERN_PATRONS_REPLY_ASK", reqs = [], previous_dialogue_option = 1},
+					{text = "DTAVERN_PATRONS_REPLY_FRIENDLY", reqs = [], previous_dialogue_option = 2},
+				],
+				options = [
+					{
+						code = 'dwarf_tavern_patron',
+						text = "DTAVERN_PATRONS_OPT_ASK", reqs = [], dialogue_argument = 1
+					},{
+						code = 'dwarf_tavern_patron',
+						text = "DTAVERN_PATRONS_OPT_FRIENDLY", reqs = [], dialogue_argument = 2
+					},{
+						code = 'dwarf_tavern_patron_end',
+						text = "DTAVERN_PATRONS_OPT_ENJOY", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+					}
+				]
+			},
+		]
+	},
+	
+	
+	dwarf_tavern_patron2 = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_PATRONS2", reqs = []},
+		],
+		options = [{
+			code = 'close',
+			text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+		}]
+	},
+	
+	dwarf_tavern_jean = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_JEAN", reqs = []},
+		],
+		options = [{
+			code = 'dwarf_tavern_jean_outside',
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}]
+	},
+	dwarf_tavern_jean_outside = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_JEAN2", reqs = [], previous_dialogue_option = 1},
+			{text = "DTAVERN_JEAN_AFIGHT_REPLY_HELP", reqs = [], previous_dialogue_option = 2},
+			{text = "DTAVERN_JEAN_AFIGHT_REPLY_THK", reqs = [], previous_dialogue_option = 3},
+			{text = "DTAVERN_JEAN_OUTSIDE_FORCED", reqs = [], previous_dialogue_option = 4},
+		],
+		options = [
+			{
+				code = 'dwarf_tavern_jean_outside2',
+				text = "DTAVERN_JEAN_OPT_WHO", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			},{
+				code = 'dwarf_tavern_jean_outside2',
+				text = "DTAVERN_JEAN_OPT_WHY",
+				reqs = [{type = 'event_seen', check = true, value = 'dwarf_tavern_bark_after_fight'}],
+				dialogue_argument = 2, type = 'next_dialogue'
+			},{
+				code = 'dwarf_tavern_jean_king',
+				text = "DTAVERN_JEAN_OPT_KING", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+			},
+		]
+	},
+	dwarf_tavern_jean_king = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_JEAN_REPLY_KING1", reqs = []},
+		],
+		options = [
+			{
+				code = 'dwarf_tavern_jean_outside2',
+				text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
 			}
 		]
 	},
-
-	barkeep_response_people_tense = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "BARKEEP_RESPONSE_PEOPLE_TENSE", reqs = []
-		}],
+	dwarf_tavern_jean_outside2 = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_JEAN_REPLY_WHO", reqs = [], previous_dialogue_option = 1},
+			{text = "DTAVERN_JEAN_REPLY_WHY", reqs = [], previous_dialogue_option = 2},
+			{text = "DTAVERN_JEAN_REPLY_KING2", reqs = [], previous_dialogue_option = 3},
+			{text = "DTAVERN_JEAN_HEARD", reqs = []},
+		],
+		options = [
+			{
+				code = 'dwarf_tavern_jean_thing',
+				text = "DTAVERN_JEAN_OPT_MET", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			},{
+				code = 'dwarf_tavern_jean_thing',
+				text = "DTAVERN_JEAN_OPT_PLAN", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+			},
+		]
+	},
+	dwarf_tavern_jean_thing = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_JEAN_REPLY_MET", reqs = [], previous_dialogue_option = 1},
+			{text = "DTAVERN_JEAN_REPLY_PLAN", reqs = [], previous_dialogue_option = 2},
+			{text = "DTAVERN_JEAN_THING", reqs = [], previous_dialogue_option = [1,2]},
+			{text = "DTAVERN_JEAN_REPLY_TRUST", reqs = [], previous_dialogue_option = 3},
+		],
+		options = [
+			{
+				code = 'dwarf_tavern_jean_thing',
+				text = "DTAVERN_JEAN_OPT_TRUST", reqs = [], dialogue_argument = 3
+			},{
+				code = 'dwarf_tavern_jean_map',
+				text = "DTAVERN_JEAN_OPT_ALONE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			},{
+				code = 'dwarf_tavern_jean_map',
+				text = "DTAVERN_JEAN_OPT_NODEAL", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+			},
+		]
+	},
+	dwarf_tavern_jean_map = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_JEAN_REPLY_ALONE", reqs = [], previous_dialogue_option = 1},
+			{text = "DTAVERN_JEAN_REPLY_NODEAL", reqs = [], previous_dialogue_option = 2},
+			{text = "DTAVERN_JEAN_MAP", reqs = []},
+		],
 		options = [{
-			code = 'barkeep_response_coalition', 
-			text = "BARKEEP_OPTION_COALITION", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'dwarf_tavern_jean_map2',
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+		}]
+	},
+	dwarf_tavern_jean_map2 = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [{text = "DTAVERN_JEAN_MAP2", reqs = []}],
+		options = [{
+			code = 'close',
+			text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 0, type = 'next_dialogue',
+			bonus_effects = [
+				{code = 'progress_quest', value = 'visit_dwarfs_quest', stage = 'jean'},
+				{code = 'make_quest_location', value = 'quest_mountain_pass'},
+				{code = "update_city"}
+			],
+		}]
+	},
+	
+	
+	dwarf_tavern_barkeep2_dwarf = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_BARK_REPLY_INFO_D", reqs = [], previous_dialogue_option = 0},
+			{text = "DTAVERN_BARK_REPLY_TENSE", reqs = [], previous_dialogue_option = 1},
+			{text = "DTAVERN_BARK_REPLY_COALITION", reqs = [], previous_dialogue_option = 2},
+			{text = "DTAVERN_BARK_REPLY_CITY", reqs = [], previous_dialogue_option = 3},
+			{text = "DTAVERN_BARK_REPLY_KING", reqs = [], previous_dialogue_option = 4},
+		],
+		options = [
+			{
+				code = 'dwarf_tavern_barkeep2_dwarf',
+				text = "DTAVERN_BARK_OPT_TENSE", reqs = [], dialogue_argument = 1
+			},{
+				code = 'dwarf_tavern_barkeep2_dwarf',
+				text = "DTAVERN_BARK_OPT_COALITION", dialogue_argument = 2,
+				reqs = [{type = 'dialogue_seen', check = true, value = 'DTAVERN_BARK_REPLY_TENSE'}],
+			},{
+				code = 'dwarf_tavern_barkeep2_dwarf',
+				text = "DTAVERN_BARK_OPT_CITY", reqs = [], dialogue_argument = 3
+			},{
+				code = 'dwarf_tavern_barkeep2_dwarf',
+				text = "DTAVERN_BARK_OPT_KING", reqs = [], dialogue_argument = 4
+			},{
+				code = 'dwarf_tavern_barkeep_end',
+				text = "DTAVERN_BARK_OPT_THATSALL", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+			},
+		]
+	},
+	dwarf_tavern_barkeep_end = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_BARK_REPLY_THATSALL", reqs = []},
+		],
+		options = [{
+			code = 'close',
+			text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+		}]
+	},
+	
+	dwarf_tavern_patron_end = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "DTAVERN_PATRONS_REPLY_ENJOY", reqs = []},
+		],
+		options = [{
+			code = 'close',
+			text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+		}]
+	},
+	
+	
+	jean_mountain_start = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		common_effects = [{code = 'decision', value = 'JeanHelp'}],#remove if useless
+		text = [
+			{text = "JEAN_MOUNTAIN_START", reqs = []},
+		],
+		options = [{
+			code = 'jean_mountain_start2',
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+		}]
+	},
+	jean_mountain_start2 = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "JEAN_MOUNTAIN_START2", reqs = [], previous_dialogue_option = 0},
+			{text = "JEAN_MOUNTAIN_REPLY_PLAN", reqs = [], previous_dialogue_option = 1},
+			{text = "JEAN_MOUNTAIN_REPLY_LOOK", reqs = [], previous_dialogue_option = 2},
+			{text = "JEAN_MOUNTAIN_REPLY_BACK", reqs = [], previous_dialogue_option = 3},
+			{text = "JEAN_MOUNTAIN_REPLY_GUARDS", reqs = [], previous_dialogue_option = 4},
+		],
+		options = [
+			{
+				code = 'jean_mountain_start2',
+				text = "JEAN_MOUNTAIN_OPT_PLAN", reqs = [], dialogue_argument = 1
+			},{
+				code = 'jean_mountain_start2',
+				text = "JEAN_MOUNTAIN_OPT_LOOK", reqs = [], dialogue_argument = 2
+			},{
+				code = 'jean_mountain_start2',
+				text = "JEAN_MOUNTAIN_OPT_BACK", dialogue_argument = 3,
+				reqs = [{type = 'dialogue_seen', check = true, value = 'JEAN_MOUNTAIN_REPLY_PLAN'}]
+			},{
+				code = 'jean_mountain_start2',
+				text = "JEAN_MOUNTAIN_OPT_GUARDS", dialogue_argument = 4,
+				reqs = [{type = 'dialogue_seen', check = true, value = 'JEAN_MOUNTAIN_REPLY_PLAN'}]
+			},{
+				code = 'jean_mountain_cast',
+				text = "JEAN_MOUNTAIN_OPT_DOTHIS", dialogue_argument = 0, type = 'next_dialogue',
+				reqs = [{type = 'dialogue_seen', check = true, value = 'JEAN_MOUNTAIN_REPLY_PLAN'}]
+			},
+		]
+	},
+	jean_mountain_cast = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [{text = "JEAN_MOUNTAIN_CAST", reqs = []}],
+		options = [{
+			code = 'jean_mountain_cast2',
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+		}]
+	},
+	jean_mountain_cast2 = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "JEAN_MOUNTAIN_CAST2", reqs = [], previous_dialogue_option = 0},
+			{text = "JEAN_MOUNTAIN_REPLY_LOOKNOT", reqs = [], previous_dialogue_option = 1},
+			{text = "JEAN_MOUNTAIN_REPLY_FIRST", reqs = [], previous_dialogue_option = 2},
+		],
+		options = [
+			{
+				code = 'jean_mountain_cast2',
+				text = "JEAN_MOUNTAIN_OPT_LOOKNOT", reqs = [], dialogue_argument = 1
+			},{
+				code = 'jean_mountain_cast2',
+				text = "JEAN_MOUNTAIN_OPT_FIRST", reqs = [], dialogue_argument = 2
+			},{
+				code = 'jean_mountain_push',
+				text = "JEAN_MOUNTAIN_OPT_PUSH", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+			},{
+				code = 'jean_mountain_jump',
+				text = "JEAN_MOUNTAIN_OPT_JUMP", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+			},
+		]
+	},
+	jean_mountain_push = {
+		reqs = [],
+		common_effects = [{code = 'play_sound', value = 'fall'}],
+		tags = ['dialogue_scene'],
+		text = [{text = "JEAN_MOUNTAIN_PUSH", reqs = []}],
+		options = [{
+			code = 'jean_mountain_push2',
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+		}]
+	},
+	jean_mountain_push2 = {
+		reqs = [],
+		tags = ['dialogue_scene', 'blackscreen_transition_common'],
+		text = [{text = "JEAN_MOUNTAIN_PUSH2", reqs = []}],
+		options = [{
+			code = 'jean_mountain_push_altar',
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+		}]
+	},
+	jean_mountain_push_altar = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [{text = "JEAN_MOUNTAIN_ALTAR", reqs = []}],
+		options = [{
+			code = 'jean_mountain_push_search',
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+		}]
+	},
+	jean_mountain_push_search = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [{text = "JEAN_MOUNTAIN_PUSH_SEARCH", reqs = []}],
+		options = [{
+			code = 'jean_mountain_push_golem',
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+		}]
+	},
+	jean_mountain_push_golem = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "JEAN_MOUNTAIN_GOLEM", reqs = []},
+			{text = "JEAN_MOUNTAIN_PUSH_GOLEM", reqs = []},
+		],
+		options = [{
+			code = 'quest_fight', args = 'vault_golem',
+			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+		}]
+	},
+	jean_mountain_jump = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [{text = "JEAN_MOUNTAIN_JUMP", reqs = []}],
+		options = [{
+			code = 'jean_mountain_jump_altar',
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+		}]
+	},
+	jean_mountain_jump_altar = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [{text = "JEAN_MOUNTAIN_ALTAR", reqs = []}],
+		options = [{
+			code = 'jean_mountain_jump_search',
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+		}]
+	},
+	jean_mountain_jump_search = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [{text = "JEAN_MOUNTAIN_JUMP_SEARCH", reqs = []}],
+		options = [{
+			code = 'jean_mountain_jump_golem',
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+		}]
+	},
+	jean_mountain_jump_golem = {
+		reqs = [],
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "JEAN_MOUNTAIN_GOLEM", reqs = []},
+			{text = "JEAN_MOUNTAIN_JUMP_GOLEM", reqs = []},
+		],
+		options = [{
+			code = 'quest_fight', args = 'vault_golem',
+			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
 		}]
 	},
 
-	barkeep_response_coalition = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "BARKEEP_RESPONSE_COALITION", reqs = []
-		}],
-		options = [{
-			code = 'barkeep_response_city_info', 
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
 
-	barkeep_response_city_info = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "BARKEEP_RESPONSE_CITY_INFO", reqs = []
-		}],
-		options = [{
-			code = 'barkeep_response_meet_king', 
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
 
-	barkeep_response_meet_king = {
-		image = null, reqs = [], 
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [{
-			text = "BARKEEP_RESPONSE_MEET_KING", reqs = []
-		}],
-		options = [{
-			code = 'close', 
-			text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}]
-	},
+
+
+
+
+
+
+
+
+
+
+
+
 
 	jean_mountain_pass_intro = {
 		image = null, reqs = [], 

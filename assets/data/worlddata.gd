@@ -116,7 +116,7 @@ var lands = {
 		starting_locations = ['dungeon_undead_crypt'],
 		locations = {},
 		locationpool = ['dungeon_undead_crypt'],
-		guilds = [],
+		guilds = ['dwarf_tavern'],
 		tags = [],
 		capital_options = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
@@ -568,6 +568,25 @@ var factiondata = {
 			slavenumber = [],
 			}
 		],
+	},
+	dwarf_tavern = {
+		code = 'dwarf_tavern',
+		name = tr("DWARF_TAVERN"),
+		description = '',
+		actions = [],
+		bonus_actions = [],
+		conditions = [{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'tavern'}],
+		events = ['dwarf_tavern_barkeep', 'dwarf_tavern_patrons', 'dwarf_tavern_girl'],
+		quests_easy = [],
+		quests_medium = [],
+		quests_hard = [],
+		slavenumber = [],
+		questnumber = [],
+		tags = [],
+#		icon = load("res://assets/Textures_v2/CITY/Icons/icon_workers.png"),
+		background = "servants_guild",
+#		reputation_shop = {},
+		hireable_characters = [],
 	},
 }
 
@@ -1084,14 +1103,10 @@ var fixed_location_options = { #override serialized data
 			reqs = [{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'audience'}],
 			args = [{code = 'start_event', data = 'dwarf_palace_first', args = []}]
 		},{
-			text = tr("DWARF_CAPITAL_WORKSHOP"), 
-			reqs = [],
-			args = [{code = 'start_event', data = '', args = []}]
-		},{
-			text = tr("DWARF_CAPITAL_TAVERN"), 
-			reqs = [],
-			args = [{code = 'start_event', data = '', args = []}]
-		},
+			text = tr("DWARF_WORKSHOP"), 
+			reqs = [{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'tavern'}],
+			args = [{code = 'start_event', data = 'dwarf_workshop_closed1', args = []}]
+		}
 	],
 	beastkin_capital = [
 		{
@@ -1481,6 +1496,13 @@ var fixed_location_options = { #override serialized data
 			text = tr("QUEST_DWARFS_GATE_LOCATION"), 
 			reqs = [], 
 			args = [{code = 'start_event', data = 'enter_city_t_0', args = []}]
+		}
+	],
+	quest_mountain_pass = [
+		{
+			text = tr("QUEST_MOUNTAIN_PASS_LOCATION"), 
+			reqs = [], 
+			args = [{code = 'start_event', data = 'jean_mountain_start', args = []}]
 		}
 	],
 }

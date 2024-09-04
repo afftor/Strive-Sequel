@@ -60,6 +60,8 @@ var encounters = {
 	aire_boss_fight = {unittype = 'randomgroup', unitcode = 'aire_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'aire_combat_on_win_2', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	
 	hector = {unittype = 'randomgroup', unitcode = 'hector_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'cali_finale_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	dwarf_tavern_patrons = {unittype = 'randomgroup', unitcode = 'dwarf_tavern_patrons', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'dwarf_tavern_bark_after_fight', args = []}], lose_effects = [{code = 'start_event', data = 'dwarf_tavern_bark_after_fight', args = []}]},
+	vault_golem = {unittype = 'randomgroup', unitcode = 'vault_golem', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = '', args = []}], lose_effects = [{code = 'start_event', data = '', args = []}]},
 }
 
 var enemygroups = {
@@ -185,6 +187,8 @@ var enemygroups = {
 	firedepths_boss2 = {reqs = [], units = {erebus_stone = [2,2]}},
 
 	hector_boss_fight = {reqs = [], units = {bandit_melee = [2,2], hector_boss = [1,1], bandit_archer = [2,2], bandit_mage = [1,1]}}, #cali boss fight !!! copied from above, needs fixing
+	dwarf_tavern_patrons = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}}, #dummy
+	vault_golem = {reqs = [], units = {guardian_golem = [1,1]}}, #dummy
 }
 
 #Ai patterns: basic - basic attack/ranged attack or pass (if exist), ads - advanced single target skill, aoe - aoe skill, buff - buffing skill

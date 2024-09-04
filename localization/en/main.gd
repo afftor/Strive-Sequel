@@ -3153,6 +3153,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUECONTINUE = "Continue",
 	DIALOGUERETURN = "Return",
 	DIALOGUECANCEL = "Cancel",
+	DIALOGUENEVERMIND = "Nevermind",
 	
 	DIALOGUEMEETLEADER = "Meet Leader",
 
@@ -13702,7 +13703,6 @@ Kuro: — Take the capacitor and return to Hara.""",
 	KURO_QUESTIONS_OPT_POWER = "I want to know about your powers",
 	KURO_QUESTIONS_OPT_LIKE = "What things do you like or hate?",
 	KURO_QUESTIONS_OPT_RED = "Who's the red haired foxgirl who seems to be your relative?",
-	KURO_QUESTIONS_OPT_LEAVE = "Nevermind",
 	KURO_QUESTIONS_REPLAY_SIDE = """— Typical dumb question. I'm with the cult obviously. For the same reason here as you are, to get the artifact for it.
 
 You are slightly shocked as Kuro reveals her affiliation and the true goal. 
@@ -14042,6 +14042,7 @@ Kuro turns away indicating her unwillingness to continue.""",
 	VISIT_DWARFS_QUEST_SEARCH = "Search a nearby mountain for an entrance to dwarven kingdom.",
 	VISIT_DWARFS_QUEST_AUDIENCE = "Get audience with king.",
 	VISIT_DWARFS_QUEST_TAVERN = "Find a way to attract king's attention. Visit a tavern for a start.",
+	VISIT_DWARFS_QUEST_JEAN = "Help Jean, meet here at Mountain Pass marked on here map, or... You can turn here in. King could be pleased with such revelation.",
 	
 	
 	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n— H-hello, [Master]... How was your day?",
@@ -14869,6 +14870,8 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	ELVISH_SLAVE_TRADER = "Elvish Slave Trader",
 	EXOTIC_SLAVE_TRADER = "Exotic Slave Trader",
 	ALIRON_CHURCH = "Aliron Church",
+	DWARF_TAVERN = "Tavern",
+	DWARF_WORKSHOP = "Workshop",
 	
 	#locations
 	
@@ -15353,6 +15356,9 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_DWARFS_GATE_TEXT = "Dwarven city gate",
 	QUEST_DWARFS_GATE_DESC = "",
 	
+	QUEST_MOUNTAIN_PASS_TEXT = "Mountain Pass",
+	QUEST_MOUNTAIN_PASS_DESC = "",
+	
 	#fixed_location_options
 	
 	ALIRON1 = "Check the streets",
@@ -15391,9 +15397,11 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	ELF_CAPITAL10 = "Find Lira",
 	ELF_CAPITAL11 = "Initiate",
 	
-	DWARF_CAPITAL_PALACE = "Palace",
-	DWARF_CAPITAL_WORKSHOP = "Workshop",
-	DWARF_CAPITAL_TAVERN = "Tavern",
+	DWARF_CAPITAL_PALACE = "Visit Palace",
+	DWARF_TAVERN_INIT = "Walk in",
+	DWARF_TAVERN_BARKEEP = "Talk to the Barkeep",
+	DWARF_TAVERN_PATRONS = "Interact with the patrons",
+	DWARF_TAVERN_GIRL = "Interact with the girl",
 	
 	BEASTKIN_CAPITAL1 = "Find Chieftain",
 	BEASTKIN_CAPITAL2 = "Visit Shaman's Lodge",
@@ -15473,6 +15481,8 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_GOBLIN_LOCATION4 = "Report back",
 	
 	QUEST_DWARFS_GATE_LOCATION = "Approach",
+	
+	QUEST_MOUNTAIN_PASS_LOCATION = "Find Jean",
 	
 	# Missing keys
 	CURRENT_PREFERRED_FOOD_CONSUMPTION = "Current Preferred Food Consumption",
@@ -16130,99 +16140,77 @@ Guard2: — Oh yeah... How I would like to have a glass right now.
 The guards keep chuckling between each other.""",
 	DWARF_PALACE_FIRST_END = """\n\nThe guards look at each other, holding back as much as they can to not burst into laughter. These two won't let you pass. It seems you have no choice but to find another way. Perhaps you'll be able to attract the attention of the king somehow? In any case, it won't hurt to acquaint yourself with the city. Something tells you you'll be here for a while.""",
 
-
-
-
-
-	ENTER_CITY_WORKSHOP_INTRO = """As you walk down the streets, a strange-looking building catches your attention. An armory of some sort, or a workshop to be precise. Clockwork mechanisms of unfamiliar nature or purpose are displayed outside.
+	DWARF_WORKSHOP_CLOSED1 = """As you walk down the streets, a strange-looking building catches your attention. An armory of some sort, or a workshop to be precise. Clockwork mechanisms of unfamiliar nature or purpose are displayed outside.
 
 The building entrance door appears to be sealed off, however. It's shut, and there's a message attached:""",
-	ENTER_CITY_WORKSHOP_MESSAGE = """“The shop is temporarily closed and I take no more contracts at the moment. Inquiries about unfinished orders can be directed to the palace.”
+	DWARF_WORKSHOP_CLOSED2 = """“The shop is temporarily closed and I take no more contracts at the moment. Inquiries about unfinished orders can be directed to the palace.”
 
 The message is signed - Hara.
 
 Whatever this shop is, it seems its owner is not around.""",
-
-	TAVERN_INTRO = """The smell of spilled ale, originating from both the glasses and the less fortunate stomachs of the patrons, assails your senses as you enter the local tavern. You immediately start to feel like you're the center of everyone's attention, as everyone, from patrons to staff, turn their heads to look at you. A familiar feeling at this point.
+	DTAVERN_INTRO = """The smell of spilled ale, originating from both the glasses and the less fortunate stomachs of the patrons, assails your senses as you enter the local tavern. You immediately start to feel like you're the center of everyone's attention, as everyone, from patrons to staff, turn their heads to look at you. A familiar feeling at this point.
 
 There aren't many visitors here this time of the day. A barkeep, wiping glasses, eyes you suspiciously, but says nothing.
 
 You can't help but notice that there are almost exclusively dwarves among the present. It's no surprise your foreign features stand out.
 
 The only non-dwarf here beside you is a human girl, sitting quietly in the corner, reading a book. A bit of a strange choice of a place for this kind of activity. None of the guests pay her any mind. Perhaps, because of her small stature she fits in a little better?""",
+	DTAVERN_INTRO_DWARF = """The smell of spilled ale, originating from both the glasses and the less fortunate stomachs of the patrons, assails your senses as you enter the local tavern.
+There aren't many visitors here this time of the day. A barkeep, wiping glasses, throws a glance at you, his expression indifferent.
 
-	TAVERN_OPTION_TALK_BARKEEP = "Talk to the Barkeep",
-	TAVERN_OPTION_TALK_PATRONS = "Interact with the patrons",
-	TAVERN_OPTION_TALK_GIRL = "Interact with the girl",
-	
-	TAVERN_BARKEEP_DIALOGUE = """The sullen-looking barkeeper gives you a side glance before making clear he's unwilling to interact with you.
+You can't help but notice that there are almost exclusively dwarves among the present.
+
+The only non-dwarf here is a human girl, sitting quietly in the corner, reading a book. A bit of a strange choice of a place for this kind of activity. None of the guests pay her any mind.""",
+	DTAVERN_BARK_CLOSED = """The sullen-looking barkeeper gives you a side glance before making clear he's unwilling to interact with you.
 
 Barkeep: We're closed.""",
+	DTAVERN_BARK_OPT_DOESNT = "Doesn't seem that way",
+	DTAVERN_BARK_OPT_INFO = "I am not here to stay. I want information.",
 
-	TAVERN_OPTION_DOESNT_SEEM_CLOSED = "Doesn't seem that way",
-	TAVERN_OPTION_WANT_INFORMATION = "I am not here to stay. I want information.",
-	
-	TAVERN_DOESNT_SEEM_CLOSED = """— We're closed for you. This establishment is for local dwarves only. We don't need you outsiders taking over our spaces. This isn't a place for passerbyers.""",
+	DTAVERN_BARK_REPLY_DOESNT = """— We're closed for you. This establishment is for local dwarves only. We don't need you outsiders taking over our spaces. This isn't a place for passerbyers.""",
+	DTAVERN_BARK_REPLY_INFO = """— I thought the sign on the outside says “Tavern” not a fucking “Library”. Ask your questions elsewhere. Preferably outside the city. We don't need you outsiders taking over our spaces. This isn't a place for passerbyers.""",
 
-	TAVERN_WANT_INFORMATION = """— I thought the sign on the outside says “Tavern” not a fucking “Library”. Ask your questions elsewhere. Preferably outside the city. We don't need you outsiders taking over our spaces. This isn't a place for passerbyers.""",
+	DTAVERN_BARK_OPT_GIRL = "What about the girl reading a book over there?",
+	DTAVERN_BARK_OPT_SIZE = "Why is the entrance door normal-sized and not pygmy-sized then?",
+	DTAVERN_BARK_OPT_EASY = "Easy. I don't need a conflict. Answer my questions and I will be gone.",
 
-	TAVERN_OPTION_ASK_ABOUT_GIRL = "What about the girl reading a book over there?",
-	TAVERN_OPTION_ASK_DOOR_SIZE = "Why is the entrance door normal-sized and not pygmy-sized then?",
-	TAVERN_OPTION_AVOID_CONFLICT = "Easy. I don't need a conflict. Answer my questions and I will be gone.",
+	DTAVERN_BARK_REPLY_GIRL = """— I don't mind her she's easy on the eyes. You are not.""",
+	DTAVERN_BARK_REPLY_SIZE = """— You better watch your mouth shitface. Or I'll make you pygmy-sized in no time.""",
+	DTAVERN_BARK_REPLY_EASY = """— You're awfully slow aren't you? I said we're closed.""",
 
-	TAVERN_ASK_ABOUT_GIRL = """— I don't mind her she's easy on the eyes. You are not.""",
-
-	TAVERN_ASK_DOOR_SIZE = """— You better watch your mouth shitface. Or I'll make you pygmy-sized in no time.""",
-
-	TAVERN_AVOID_CONFLICT = """— You're awfully slow aren't you? I said we're closed.""",
-
-	TAVERN_GROUP_OF_DWARVES = """A group of dwarves approaches the counter. Three of them. Two sit down next to you on each side. Another leans on the counter.
+	DTAVERN_BARK_GROUP = """A group of dwarves approaches the counter. Three of them. Two sit down next to you on each side. Another leans on the counter.
 
 Dwarf1: — Is there a problem barkeep? Does he bother you?
 
 Barkeep: — Yeah. His face is bothering me.
 
 Dwarf2: — You heard the man. Stop bothering people it's rude.""",
+	DTAVERN_BARK_OPT_WANTED = "I simply wanted to ask a few questions.",
+	DTAVERN_BARK_OPT_NANNIES = "What's that barkeep? Your nannies?",
 
-	TAVERN_OPTION_WANTED_TO_ASK_QUESTIONS = "I simply wanted to ask a few questions.",
-	TAVERN_OPTION_INSULT_BARKEEP = "What's that barkeep? Your nannies?",
+	DTAVERN_BARK_REPLY_WANTED = """— Well the barkeep doesn't seem to be in the mood for a conversation. Or in the mood for seeing you in his shop. I think you should respect that and leave.""",
+	DTAVERN_BARK_REPLY_NANNIES = """— What a funny guy you are. Want me to cut a permanent smile on your face?""",
+	DTAVERN_BARK_DAGGER = """\n\nThe dwarf folds the hem of his cloak back revealing a dagger.""",
 
-	TAVERN_WANTED_TO_ASK_QUESTIONS = """— Well the barkeep doesn't seem to be in the mood for a conversation. Or in the mood for seeing you in his shop. I think you should respect that and leave.""",
+	DTAVERN_BARK_OPT_PHYSICS = "[Physics Factor] Put that away. I don't want to spill your blood all over the floor.",
+	DTAVERN_BARK_OPT_NOTROUBLE = "I want no trouble.",
+	DTAVERN_BARK_OPT_FIGHT = "Alright let's do it the hard way (Fight).",
 
-	TAVERN_INSULT_BARKEEP = """— What a funny guy you are. Want me to cut a permanent smile on your face?""",
-
-	TAVERN_DWARF_DAGGER = """The dwarf folds the hem of his cloak back revealing a dagger.""",
-
-	TAVERN_OPTION_PHYSICS_FACTOR = "[Physics Factor] Put that away. I don't want to spill your blood all over the floor.",
-	TAVERN_OPTION_NO_TROUBLE = "I want no trouble.",
-	TAVERN_OPTION_HARD_WAY = "Alright let's do it the hard way (Fight).",
-
-	TAVERN_PHYSICS_FACTOR_SUCCESS = """{color=green|Success}
+	DTAVERN_BARK_REPLY_PHYSICS_SUCCESS = """{color=green|Success}
 
 The dwarf examines you. Then looks you straight in the eyes.
 
 — Alright. No need to make a mess. For now. But you better get a hint and stop bothering our friend or this will not end well for you.
 
 — You heard the guy. I'll just pretend you're not here as long as you mind your own business.""",
-
-	TAVERN_PHYSICS_FACTOR_FAILURE = """{color=red|Failure}
+	DTAVERN_BARK_REPLY_PHYSICS_FAILURE = """{color=red|Failure}
 
 — Hah let's see you try.""",
-
-	TAVERN_OPTION_FIGHT = "Fight",
-
-	TAVERN_NO_TROUBLE = """— I am sure you don't. But here's the thing. Trouble doesn't care it finds you whether you want it or not. Come on boys let's escort him outside.""",
-
-	TAVERN_OPTION_LEAVE_TAVERN = "No need. I'll leave.",
-	TAVERN_OPTION_RESIST = "Resist (Fight)",
-
-	TAVERN_LEAVE_TAVERN = """— Right choice.""",
-
-	TAVERN_AFTER_FIGHT = """— What do you think you're doing?! Barging at my place assaulting my customers! Somebody! Call the guards on this asshole!
+	
+	DTAVERN_BARK_AFTER_FIGHT = """— What do you think you're doing?! Barging at my place assaulting my customers! Somebody! Call the guards on this asshole!
 
 You notice one of the patrons dashing to the exit. It's just a matter of time before the guards show up. You have a feeling they won't try to understand the situation. Even if they will there's little chance the blame won't be placed on you. It's best to leave as soon as possible.""",
-
-	TAVERN_GIRL_OUTSIDE = """You feel somebody tugging on your sleeve. A girl you noticed when you entered. She was reading a book in the corner earlier.
+	DTAVERN_BARK_OUTSIDE = """You feel somebody tugging on your sleeve. A girl you noticed when you entered. She was reading a book in the corner earlier.
 
 Girl: — Come on. You don't want to stay here. Local drinks are terrible anyway.
 
@@ -16233,106 +16221,22 @@ After you defeat the punks trying to attack you earlier nobody seems to want to 
 — Yeah. And don't ever come back here again. Asshole.
 
 The barkeep throws the last insult as you exit the tavern.""",
+	DTAVERN_JEAN_AFIGHT = """The girl leads you to an alleyway, off the main street. 
 
-	TAVERN_OPTION_TALK_PATRONS_AGAIN = "Talk to the patrons",
-	TAVERN_OPTION_TALK_GIRL_AGAIN = "Talk to the girl",
+— I think nobody will bother us here.  I am guessing it's your first time visiting the glorious dwarven capital. You're fast to get in trouble. You'd better be grateful I came to your rescue.""",
+	DTAVERN_JEAN_AFIGHT_OPT_HELP = "I didn't need your help.",
+	DTAVERN_JEAN_AFIGHT_OPT_THK = "Thanks.",
+	DTAVERN_JEAN_AFIGHT_REPLY_HELP = """— Another ungrateful brute. Just my luck. Well, you're welcome to go back in and wait for the guards to show up. Don't expect any handovers from me in prison.""",
+	DTAVERN_JEAN_AFIGHT_REPLY_THK = """— This is a one-time thing. I am not your guardian angel.""",
 
-	PATRONS_DLG_ATTEMPT = """You look around the establishment trying to pick any person who seems like they would be willing to talk but with no luck. The dwarves stare at you but as soon as your eyes lock with anybody they turn away pretending you are not even there.
+	DTAVERN_BARK_REPLY_NOTROUBLE = """— I am sure you don't. But here's the thing. Trouble doesn't care it finds you whether you want it or not. Come on boys let's escort him outside.""",
 
-You decide to pick a person at random and try your luck anyway.
+	DTAVERN_BARK_OPT_LEAVE = "No need. I'll leave.",
+	DTAVERN_BARK_OPT_RESIST = "Resist (Fight)",
 
-— Leave me alone. I am just trying to relax before my shift starts. I am not looking for a company.""",
-
-	PATRONS_OPTION_ASK_QUESTIONS = "I want to ask some questions.",
-	PATRONS_OPTION_NOT_FRIENDLY = "Not a very friendly place this city.",
-	PATRONS_OPTION_ENJOY_DRINKS = "Well enjoy your drinks.",
-
-	PATRONS_ASK_QUESTIONS = """The dwarf lets out a heavy sigh.
-
-— I don't know anything. I kill myself on the clock every day. Don't really have time to follow the news and trends or whatever else you want to know about. Try your luck somewhere else okay?""",
-
-	PATRONS_NOT_FRIENDLY = """— Try living underground I'll look at how friendly you'll be in a year. They say it's natural for a dwarf to never see sunlight but I really gotta question this. And besides you gotta be careful who you talk to out here.""",
-
-	PATRONS_ENJOY_DRINKS = """— I'll do just that.""",
+	DTAVERN_BARK_REPLY_LEAVE = """— Right choice.""",
 	
-	TAVERN_PATRONS_DLG = """You look around the establishment, trying to pick any person who seems like they would be willing to talk, but with no luck. The dwarves stare at you, but as soon as your eyes lock with anybody, they turn away, pretending you are not even there.
-
-You decide to pick a person at random and try your luck anyway.
-
-— Leave me alone. I am just trying to relax before my shift starts. I am not looking for a company.""",
-
-	TAVERN_PATRONS_IGNORED = """You try another person... 
-... But he simply ignores you, pretending not to notice you are addressing him.
-
-As you try to sit down, joining another group of dwarves, they take their drinks and move to a different table.
-
-If the message was not clear before, it has become crystal clear at this point.""",
-
-	TAVERN_GIRL_DLG = """Your eyes lock with the girl. She pouts at you with a side look, and with a motion of her hand invites you to sit down at her table. Apparently she expected you to notice her. It would be difficult not to, considering hers is the only neutral face in this place.
-
-— Perfect timing. You're just the person I need.
-
-She slams the book she was reading. The patrons keep occasionally glancing at the two of you. Noticing this, her face takes on an annoyed expression.
-
-— Probably not the best idea to talk here. Let's go outside. I have a proposition that might interest you.
-
-She gets up and leaves the tavern.""",
-
-	TAVERN_GIRL_OUTSIDE_PROPOSITION = """You follow the girl into an alleyway, just a little off the main street.
-
-— Good enough place to talk. I don't think anybody is going to disturb us here.""",
-
-	TAVERN_OPTION_NO_HELP = "I didn't need your help.",
-	TAVERN_OPTION_THANKS = "Thanks.",
-
-	TAVERN_GIRL_RESPONSE_NO_HELP = """— Another ungrateful brute. Just my luck. Well, you're welcome to go back in and wait for the guards to show up. Don't expect any handovers from me in prison.""",
-
-	TAVERN_GIRL_RESPONSE_THANKS = """— This is a one-time thing. I am not your guardian angel.""",
-
-	TAVERN_GIRL_OPTION_WHO_ARE_YOU = "Who are you?",
-	TAVERN_GIRL_OPTION_WHY_HELP = "Why did you interfere?",
-	TAVERN_GIRL_OPTION_MEET_KING = "I don't really have time to chat. I need to meet the king.",
-
-	TAVERN_GIRL_WHO_ARE_YOU = """— Name's Jean. A soon-to-be famous magician. You better remember my name, because it will be big... soon... Some time in the future... Anyway, I decided you are going to help me take the first step towards my goals. You're welcome to feel honored.""",
-
-	TAVERN_GIRL_WHY_HELP = """— I wanted to talk to you, and I think you would agree it would be difficult to do with you behind bars in a palace dungeon. No, this wouldn't do. I have other plans. Jean, by the way. A soon-to-be famous magician. I decided you are going to help me take the first step towards my goals. You're welcome to feel honored.""",
-
-	TAVERN_GIRL_MEET_KING = """— Oh, so that's what you were doing at the palace earlier. I happened to see you being mocked by those guards at the entrance. Meet the king, hah! You might have guessed it by now, but people here don't like outsiders. Especially the king.""",
-
-	TAVERN_GIRL_HELP_OFFER = """— But you are in luck! The palace door might have shut itself before your face, but I know how to make another one. If they don't let you meet the king, I say, you have to find your own way to do that, right? Of course, if you want my help, you will have to help me out in return.""",
-
-	TAVERN_GIRL_OPTION_WE_JUST_MET = "We've only just met and you are already pushing me into some shady scheme?",
-	TAVERN_GIRL_OPTION_WHAT_PLAN = "What do you have in mind?",
-
-	TAVERN_GIRL_RESPONSE_WE_JUST_MET = """— Apparently we're both on a tight schedule here. It'll be easy work for somebody with your talents. And my plan is foolproof. Nothing to be worried about!""",
-
-	TAVERN_GIRL_RESPONSE_WHAT_PLAN = """Jean: Straight to business then.""",
-
-	TAVERN_GIRL_EXPLANATION = """— I've been tracking down a certain thing across the lands and I've information it is currently stored in the Dwarven Palace Treasury. I have a way inside the treasury, but I need a... bodyguard. In case things get complicated.""",
-
-	TAVERN_GIRL_OPTION_TRUSTING = "Aren't you too trusting of a person you've just met?",
-	TAVERN_GIRL_OPTION_DO_IT_ALONE = "Or you could just tell me how to get in and I'll get what you want on my own.",
-	TAVERN_GIRL_OPTION_NO_DEAL = "No deal. I don't know you, I can't trust you.",
-
-	TAVERN_GIRL_RESPONSE_TRUSTING = """— Tight schedule, desperate times. And you do have a reputation, mister mayor of Aliron. I wouldn't have turned to you if you were just a simple nobody. I am not an idiot.""",
-
-	TAVERN_GIRL_RESPONSE_DO_IT_ALONE = """— That would be great, if only you could get inside without me. But you can't. And besides, I prefer to be in control. We're doing it together or I am doing it without you.""",
-
-	TAVERN_GIRL_RESPONSE_NO_DEAL = """— Just like that? Don't turn me down now that I've shared my plans with you. Let's do it this way...""",
-
-	TAVERN_GIRL_OFFER_FINAL = """Jean pushes a piece of paper into your hands.
-
-— You think it over. And when you understand you won't get another chance to get into the palace and get ready to do the sensible thing, meet me at the location. I'll tell you more about the plan then.
-
-Jean turns to leave. But quickly turns around to tell you one more thing:
-
-— Don't make me wait too long!""",
-
-	TAVERN_GIRL_MAP = """You examine a piece of paper in your hands. It's a map with a specific location marked on it. It's outside of the city. Outside of the caves even, way above, on the surface. Whatever the girl's plan is, she seems to be serious about it. You might benefit from working with her.
-
-Or... you could abuse her misguided and careless trust. Somebody is trying to infiltrate the palace's treasury. Now that is very valuable information. The kind that might convince the guards to let you see the king. Good for you, but maybe not so good for Jean.""",
-
-	OUTSIDE_JEAN_DLG2 = """As you leave the tavern, somebody follows you outside. A girl you noticed who was reading a book in the corner earlier.
+	DTAVERN_JEAN_OUTSIDE_FORCED = """As you leave the tavern, somebody follows you outside. A girl you noticed who was reading a book in the corner earlier.
 
 — I thought you were going to get in trouble. Good to know you don't think with your muscles.
 
@@ -16344,52 +16248,121 @@ She takes you by the sleeve and leads you there.
 
 — Yeah, good enough, Nobody is going to disturb us here.""",
 	
-		BARKEEP_DWARF_INTRO = "— What are you having?",
+	DTAVERN_PATRONS1 = """You look around the establishment trying to pick any person who seems like they would be willing to talk but with no luck. The dwarves stare at you but as soon as your eyes lock with anybody they turn away pretending you are not even there.
 
-	BARKEEP_OPTION_GIRL = "Who's the girl over there?",
-	BARKEEP_OPTION_POUR_DRINK = "Pour me your best. (10 gold)",
-	BARKEEP_OPTION_INFORMATION = "I am here for information.",
+You decide to pick a person at random and try your luck anyway.
 
-	BARKEEP_RESPONSE_GIRL = """— Beats me. Haven't seen her around. But she's easy on the eyes and minds her own business, so I don't care.""",
+— Leave me alone. I am just trying to relax before my shift starts. I am not looking for a company.""",
+	DTAVERN_PATRONS2 = """You try another person... 
+... But he simply ignores you, pretending not to notice you are addressing him.
 
-	BARKEEP_RESPONSE_POUR_DRINK = """The barkeep carelessly tosses you a glass of ale.
+As you try to sit down, joining another group of dwarves, they take their drinks and move to a different table.
+
+If the message was not clear before, it has become crystal clear at this point.""",
+	DTAVERN_JEAN = """Your eyes lock with the girl. She pouts at you with a side look, and with a motion of her hand invites you to sit down at her table. Apparently she expected you to notice her. It would be difficult not to, considering hers is the only neutral face in this place.
+
+— Perfect timing. You're just the person I need.
+
+She slams the book she was reading. The patrons keep occasionally glancing at the two of you. Noticing this, her face takes on an annoyed expression.
+
+— Probably not the best idea to talk here. Let's go outside. I have a proposition that might interest you.
+
+She gets up and leaves the tavern.""",
+	DTAVERN_JEAN2 = """You follow the girl into an alleyway, just a little off the main street.
+
+— Good enough place to talk. I don't think anybody is going to disturb us here.""",
+
+	DTAVERN_JEAN_OPT_WHO = "Who are you?",
+	DTAVERN_JEAN_OPT_WHY = "Why did you interfere?",
+	DTAVERN_JEAN_OPT_KING = "I don't really have time to chat. I need to meet the king.",
+
+	DTAVERN_JEAN_REPLY_WHO = """— Name's Jean. A soon-to-be famous magician. You better remember my name, because it will be big... soon... Some time in the future... Anyway, I decided you are going to help me take the first step towards my goals. You're welcome to feel honored.""",
+	DTAVERN_JEAN_REPLY_WHY = """— I wanted to talk to you, and I think you would agree it would be difficult to do with you behind bars in a palace dungeon. No, this wouldn't do. I have other plans. Jean, by the way. A soon-to-be famous magician. I decided you are going to help me take the first step towards my goals. You're welcome to feel honored.""",
+	DTAVERN_JEAN_REPLY_KING1 = """— Oh, so that's what you were doing at the palace earlier. I happened to see you being mocked by those guards at the entrance. Meet the king, hah! You might have guessed it by now, but people here don't like outsiders. Especially the king.""",
+	DTAVERN_JEAN_REPLY_KING2 = """— But you are in luck! The palace door might have shut itself before your face, but I know how to make another one. If they don't let you meet the king, I say, you have to find your own way to do that, right? Of course, if you want my help, you will have to help me out in return.""",
+	DTAVERN_JEAN_HEARD = """\n\n— I actually heard about you and your... exploits here and there. And I just so happen to be in need of somebody capable. You will do just fine.
+
+She pauses, turns and points in the direction of the palace.
+
+— You want to get inside, I want to get inside. I have a way in, you... can do some dirty work.  Our goals align, so a sensible thing to do would be to put our unique talents to work together.""",
+
+	DTAVERN_JEAN_OPT_MET = "We've only just met and you are already pushing me into some shady scheme?",
+	DTAVERN_JEAN_OPT_PLAN = "What do you have in mind?",
+	
+	DTAVERN_JEAN_REPLY_MET = """— Apparently we're both on a tight schedule here. It'll be easy work for somebody with your talents. And my plan is foolproof. Nothing to be worried about!""",
+	DTAVERN_JEAN_REPLY_PLAN = """— Straight to business then.""",
+	DTAVERN_JEAN_THING = """\n\n— I've been tracking down a certain thing across the lands and I've information it is currently stored in the Dwarven Palace Treasury. I have a way inside the treasury, but I need a... bodyguard. In case things get complicated.""",
+
+	DTAVERN_JEAN_OPT_TRUST = "Aren't you too trusting of a person you've just met?",
+	DTAVERN_JEAN_OPT_ALONE = "Or you could just tell me how to get in and I'll get what you want on my own.",
+	DTAVERN_JEAN_OPT_NODEAL = "No deal. I don't know you, I can't trust you.",
+
+	DTAVERN_JEAN_REPLY_TRUST = """— Tight schedule, desperate times. And you do have a reputation, mister mayor of Aliron. I wouldn't have turned to you if you were just a simple nobody. I am not an idiot.""",
+	DTAVERN_JEAN_REPLY_ALONE = """— That would be great, if only you could get inside without me. But you can't. And besides, I prefer to be in control. We're doing it together or I am doing it without you.""",
+	DTAVERN_JEAN_REPLY_NODEAL = """— Just like that? Don't turn me down now that I've shared my plans with you. Let's do it this way...""",
+	DTAVERN_JEAN_MAP = """Jean pushes a piece of paper into your hands.
+
+— You think it over. And when you understand you won't get another chance to get into the palace and get ready to do the sensible thing, meet me at the location. I'll tell you more about the plan then.
+
+Jean turns to leave. But quickly turns around to tell you one more thing:
+
+— Don't make me wait too long!""",
+	DTAVERN_JEAN_MAP2 = """You examine a piece of paper in your hands. It's a map with a specific location marked on it. It's outside of the city. Outside of the caves even, way above, on the surface. Whatever the girl's plan is, she seems to be serious about it. You might benefit from working with her.
+
+Or... you could abuse her misguided and careless trust. Somebody is trying to infiltrate the palace's treasury. Now that is very valuable information. The kind that might convince the guards to let you see the king. Good for you, but maybe not so good for Jean.""",
+
+	DTAVERN_BARK_HAVING = "— What are you having?",
+
+	DTAVERN_BARK_OPT_GIRL_D = "Who's the girl over there?",
+	DTAVERN_BARK_OPT_DRINK = "Pour me your best. (10 gold)",
+	DTAVERN_BARK_OPT_INFO_D = "I am here for information.",
+
+	DTAVERN_BARK_REPLY_GIRL_D = """— Beats me. Haven't seen her around. But she's easy on the eyes and minds her own business, so I don't care.""",
+	DTAVERN_BARK_REPLY_DRINK = """The barkeep carelessly tosses you a glass of ale.
 
 — Here you go.
 
 You take a sip... It's the worst ale you've ever tasted. You feel like throwing up. For a tavern located on the main street, the drinks here are surprisingly terrible. After taking another look at the barkeep, you aren't sure if that was a prank from him.""",
+	DTAVERN_BARK_REPLY_INFO_D = """— Since I haven't seen you before, I take it you're not from here? This isn't a library. People come here to relax after a day of hard work... or before their day starts. Not to ask questions. But I guess I can help out a fellow dwarf. What are you looking for?""",
 
-	BARKEEP_RESPONSE_INFORMATION = """— Since I haven't seen you before, I take it you're not from here? This isn't a library. People come here to relax after a day of hard work... or before their day starts. Not to ask questions. But I guess I can help out a fellow dwarf. What are you looking for?""",
+	DTAVERN_BARK_OPT_TENSE = "People around seem tense. Did something happen?",
+	DTAVERN_BARK_OPT_COALITION = "The coalition?",
+	DTAVERN_BARK_OPT_CITY = "What can you tell me about the city?",
+	DTAVERN_BARK_OPT_KING = "I want to meet the king, but the guards won't let me.",
+	DTAVERN_BARK_OPT_THATSALL = "That's all I wanted to ask.",
 
-	BARKEEP_OPTION_PEOPLE_TENSE = "People around seem tense. Did something happen?",
-	BARKEEP_OPTION_CITY_INFO = "What can you tell me about the city?",
-	BARKEEP_OPTION_MEET_KING = "I want to meet the king, but the guards won't let me.",
-	BARKEEP_OPTION_THATS_ALL = "That's all I wanted to ask.",
-
-	BARKEEP_RESPONSE_PEOPLE_TENSE = """— Nothing much. Nothing special, at least. People here tend to keep to themselves, so if you're looking for company, you should try someplace else.
+	DTAVERN_BARK_REPLY_TENSE = """— Nothing much. Nothing special, at least. People here tend to keep to themselves, so if you're looking for company, you should try someplace else.
 
 The barkeep thinks for a moment, then adds:
 
 — A bit of advice for an outsider. You better watch your mouth and who you are talking to. The guards can get violent for even a little reason... If anybody is tenser than usual, it's them. I don't know what happened, but it seems they've screwed up somewhere and now the king is on their asses. Probably something to do with the coalition.""",
+	DTAVERN_BARK_REPLY_COALITION = """— Rebels, or whatever they are. Go around the city causing all kinds of trouble. We don't really care about them, they don't hurt anybody. But the king cares. And when the king cares, it becomes everybody's business. Especially the guards.""",
+	DTAVERN_BARK_REPLY_CITY = """— It's fine... not the worst city in the world. But it's going to be tough for a dwarf from outside if you think of staying here. People don't like outsiders here, no matter who they are. Myself, to be honest, I'd love to leave, but I have nowhere to go. And this place ain't going to run itself.""",
+	DTAVERN_BARK_REPLY_KING = """— Hah! No surprises there. The king is not a social person. Even his ministers have a hard time getting an audience, from what I heard. Give up. Unless you have something he wants, you will never get to meet him.""",
+	DTAVERN_BARK_REPLY_THATSALL = "— Uh-huh.",
 
-	BARKEEP_OPTION_COALITION = "The coalition?",
+	DTAVERN_PATRONS_DWARF = """You look around the establishment, trying to pick any person who seems like they would be willing to talk, but with no luck. As soon as your eyes locks with anybody, they turn away, pretending you are not even there.
 
-	BARKEEP_RESPONSE_COALITION = """— Rebels, or whatever they are. Go around the city causing all kinds of trouble. We don't really care about them, they don't hurt anybody. But the king cares. And when the king cares, it becomes everybody's business. Especially the guards.""",
+You decide to pick a person at random and try your luck anyway.
 
-	BARKEEP_RESPONSE_CITY_INFO = """— It's fine... not the worst city in the world. But it's going to be tough for a dwarf from outside if you think of staying here. People don't like outsiders here, no matter who they are. Myself, to be honest, I'd love to leave, but I have nowhere to go. And this place ain't going to run itself.""",
+— I am not really looking for company. I'm just trying to relax before my shift.""",
+	DTAVERN_PATRONS_OPT_ASK = "I want to ask some questions.",
+	DTAVERN_PATRONS_OPT_FRIENDLY = "Not a very friendly place this city.",
+	DTAVERN_PATRONS_OPT_ENJOY = "Well enjoy your drinks.",
+	DTAVERN_PATRONS_REPLY_ASK = """The dwarf lets out a heavy sigh.
 
-	BARKEEP_RESPONSE_MEET_KING = """— Hah! No surprises there. The king is not a social person. Even his ministers have a hard time getting an audience, from what I heard. Give up. Unless you have something he wants, you will never get to meet him.""",
+— I don't know anything. I kill myself on the clock every day. Don't really have time to follow the news and trends or whatever else you want to know about. Try your luck somewhere else okay?""",
+	DTAVERN_PATRONS_REPLY_FRIENDLY = """— Try living underground I'll look at how friendly you'll be in a year. They say it's natural for a dwarf to never see sunlight but I really gotta question this. And besides you gotta be careful who you talk to out here.""",
+	DTAVERN_PATRONS_REPLY_ENJOY = """— I'll do just that.""",
 
-	BARKEEP_RESPONSE_THATS_ALL = "— Uh-huh.",
-
-	JEAN_MOUNTAIN_PASS_INTRO = """To your surprise, the meeting spot for Jean was far out of the dwarven caves. After a strenuous hike up the mountain, you finally arrive at the location specified on the map.
+	JEAN_MOUNTAIN_START = """To your surprise, the meeting spot for Jean was far out of the dwarven caves. After a strenuous hike up the mountain, you finally arrive at the location specified on the map.
 
 Surveying the surroundings, you find nothing noteworthy—it's the middle of nowhere. If there's anything special about this place, it eludes your attention.
 
 Amidst the trees, a campfire's light catches your eye. Approaching, you discover Jean, sitting by the fire, looking bored. She notices your arrival and stands up.
 
 — Finally, you decided to show up.""",
-
-	JEAN_MOUNTAIN_PASS_CONTINUE = """With an irritated expression, she walks toward you, not stopping when she reaches you but marching right past.
+	JEAN_MOUNTAIN_START2 = """With an irritated expression, she walks toward you, not stopping when she reaches you but marching right past.
 
 — This way.
 
@@ -16397,66 +16370,78 @@ She urges you to follow her. After a few paces forward, Jean stops and looks aro
 
 — Here... Seems about right... Are you prepared?""",
 
-	JEAN_OPTION_WHAT_FOR = "What for? What's the plan, exactly?",
-	JEAN_OPTION_WHAT_LOOKING_FOR = "What are you looking for in the vault?",
-	JEAN_OPTION_HOW_RETURN = "How are we going to go back?",
-	JEAN_OPTION_GUARDS = "What about the guards?",
-	JEAN_OPTION_LETS_DO_THIS = "Fine, Let's do this.",
+	JEAN_MOUNTAIN_OPT_PLAN = "What for? What's the plan, exactly?",
+	JEAN_MOUNTAIN_OPT_LOOK = "What are you looking for in the vault?",
+	JEAN_MOUNTAIN_OPT_BACK = "How are we going to go back?",
+	JEAN_MOUNTAIN_OPT_GUARDS = "What about the guards?",
+	JEAN_MOUNTAIN_OPT_DOTHIS = "Fine, Let's do this.",
 
-	JEAN_RESPONSE_WHAT_FOR = """— Isn't it obvious? We're on the mountain below the palace. Directly below, which you would have noticed if you paid attention while walking here. I am going to make a hole in the ground, and it will take us to the vault.""",
+	JEAN_MOUNTAIN_REPLY_PLAN = """— Isn't it obvious? We're on the mountain below the palace. Directly below, which you would have noticed if you paid attention while walking here. I am going to make a hole in the ground, and it will take us to the vault.""",
+	JEAN_MOUNTAIN_REPLY_LOOK = """— You'll find out once we get it. Or not. Either way, this is none of your concern. I just need you to do your part, which is to be there to protect me if things don't go according to plan. Simple.""",
+	JEAN_MOUNTAIN_REPLY_BACK = """— Don't worry; I have us covered. I'll create a gravitational corridor once we're done. We simply step into it and fly back here.""",
+	JEAN_MOUNTAIN_REPLY_GUARDS = """— What about them? They're not going to notice. I am not drilling the hole; I am creating it with magic. There'll be no sound. And the Vault is sealed at all times. The guards might be standing watch at the entrance, but I don't think they have anyone stationed inside. That wouldn't make sense!""",
 
-	JEAN_RESPONSE_WHAT_LOOKING_FOR = """— You'll find out once we get it. Or not. Either way, this is none of your concern. I just need you to do your part, which is to be there to protect me if things don't go according to plan. Simple.""",
-
-	JEAN_RESPONSE_HOW_RETURN = """— Don't worry; I have us covered. I'll create a gravitational corridor once we're done. We simply step into it and fly back here.""",
-
-	JEAN_RESPONSE_GUARDS = """— What about them? They're not going to notice. I am not drilling the hole; I am creating it with magic. There'll be no sound. And the Vault is sealed at all times. The guards might be standing watch at the entrance, but I don't think they have anyone stationed inside. That wouldn't make sense!""",
-
-	JEAN_RESPONSE_LETS_DO_THIS = """Jean prepares to cast some kind of spell, but after a few seconds, she stops and looks at you with an irritated expression.
+	JEAN_MOUNTAIN_CAST = """Jean prepares to cast some kind of spell, but after a few seconds, she stops and looks at you with an irritated expression.
 
 — How about you move out of the way? Unless you want to be disintegrated together with the ground.
 
 You step out of the way, and Jean continues her chanting. A faint glow emanates from her fingertips, and she traces a circle on the ground. Suddenly, the earth beneath you trembles, and a soft humming fills the air. The ground begins to shift, revealing a seemingly endless pit. It's too dark to see the bottom.""",
+	JEAN_MOUNTAIN_CAST2 = """— Take this. A simple projectile spell. If everything's good, launch it into the opening to signal it's alright for me to follow.
 
-	JEAN_OPTION_CONTINUE_JUMP = "There? It doesn't look very inviting.",
-	JEAN_OPTION_YOU_FIRST = "You jump first.",
-	JEAN_OPTION_PUSH_JEAN = "*Push Jean into the pit*",
-	JEAN_OPTION_JUMP_IN = "*Jump into the pit*",
+She gives you the flare and looks at you expectantly. After a few seconds, expectation changes to irritation.
 
-	JEAN_RESPONSE_CONTINUE_JUMP = """— Ugh! You're not going to break your legs. There's a gravitational anomaly, it will make your landing soft. Now, come on. We don't have all day.""",
+— What are you waiting for? Jump down.""",
+	
+	JEAN_MOUNTAIN_OPT_LOOKNOT = "There? It doesn't look very inviting.",
+	JEAN_MOUNTAIN_OPT_FIRST = "You jump first.",
+	JEAN_MOUNTAIN_OPT_PUSH = "*Push Jean into the pit*",
+	JEAN_MOUNTAIN_OPT_JUMP = "*Jump into the pit*",
 
-	JEAN_RESPONSE_YOU_FIRST = """— What a silly suggestion. You're supposed to keep me safe, which means you need to go there first to see if it's safe for me to jump. If I knew you'd be complaining, I'd find someone else for the job.""",
+	JEAN_MOUNTAIN_REPLY_LOOKNOT = """— Ugh! You're not going to break your legs. There's a gravitational anomaly, it will make your landing soft. Now, come on. We don't have all day.""",
+	JEAN_MOUNTAIN_REPLY_FIRST = """— What a silly suggestion. You're supposed to keep me safe, which means you need to go there first to see if it's safe for me to jump. If I knew you'd be complaining, I'd find someone else for the job.""",
 
-	JEAN_RESPONSE_PUSH_JEAN = """A gentle push is all it takes to make the girl lose her balance.
+	JEAN_MOUNTAIN_PUSH = """A gentle push is all it takes to make the girl lose her balance.
 
 — W-what are you– ah!
 
 Jean stumbles on her own feet and falls into the pit, screaming. Then, suddenly, the screaming stops. You look down the pit. A magical projectile flies dangerously close to your head. Just a few centimeters off, and it would hit you right in the face. The message is clear. You jump down, following Jean.""",
-
-	JEAN_RESPONSE_JUMP_IN = """The fall is short, and, as Jean promised, your speed gradually slows down as you approach the ground, making you land softly, like a feather would. The inside of the vault is dark, save for a little ambient light coming off a few lit torches. In that light, you notice glints all over the place. Clearly, no expenses were spared when building this place. Even the walls are gilded. They might as well be wholly solid gold.
+	JEAN_MOUNTAIN_PUSH2 = """The fall is short, and, as Jean promised, your speed gradually slows down as you approach the ground, making you land softly, like a feather would. The inside of the vault is dark, save for a little ambient light coming off a few lit torches. In that light, you notice glints all over the place. Clearly, no expenses were spared when building this place. Even the walls are gilded. They might as well be wholly solid gold.
 
 Jean's facial expression is not fully visible in the dark, but you can imagine it.
 
 — You asshole, if not for our situation I'd make you pay for this!""",
-
-	VAULT_ALTAR_INTRO = """At one corner you notice an especially exquisite-looking altar with intricate-looking scales on top of it. As you move closer, you realize these seem to be exactly the artifact you are looking for, but for one major detail, they don't seem or feel magical, as if it's just a timed-out replica.
+	JEAN_MOUNTAIN_ALTAR = """At one corner you notice an especially exquisite-looking altar with intricate-looking scales on top of it. As you move closer, you realize these seem to be exactly the artifact you are looking for, but for one major detail, they don't seem or feel magical, as if it's just a timed-out replica.
 
 You touch them, but they seem to be stuck in place by some mechanism holding their base. Regardless, you don't feel like it's what you are looking for and turn away from them.""",
-
-	VAULT_JEAN_SEARCH = """Despite her anger, Jean manages to calm herself and look around, now fully focused on the challenge at hand.
+	JEAN_MOUNTAIN_PUSH_SEARCH = """Despite her anger, Jean manages to calm herself and look around, now fully focused on the challenge at hand.
 
 — This vault is bigger than I thought, so it will be faster if we're both searching. What we're looking for looks like—
 
 Before the magician can finish, you hear a sound of metal grinding on metal, like gears turning. Heavy stomping accompanies it, and it's coming closer.""",
-
-	VAULT_GOLEM_INTRO = """The origin of this sound reveals itself shortly—a towering metallic monstrosity, a golem. Powered by magic, no doubt, but its construction reveals a genius behind the mechanical design as well. A capable engineer was involved in developing this piece of technology.
+	JEAN_MOUNTAIN_GOLEM = """The origin of this sound reveals itself shortly—a towering metallic monstrosity, a golem. Powered by magic, no doubt, but its construction reveals a genius behind the mechanical design as well. A capable engineer was involved in developing this piece of technology.
 
 The golem's eye sockets—or what looks like them—fixate on the two of you.
 
-Golem: — Intruder alert. Nearby guards are notified of trespass. Entering combat mode.
-
-Jean: — W-what is that? It was not supposed to be here!
+Golem: — Intruder alert. Nearby guards are notified of trespass. Entering combat mode.""",
+	JEAN_MOUNTAIN_PUSH_GOLEM = """\n\nJean: — W-what is that? It was not supposed to be here!
 
 Whether it was or wasn't doesn't matter now. The golem will not let you walk away easily.""",
+	JEAN_MOUNTAIN_JUMP = """You take the leap of faith right down the dark pit. The fall is short, and, as Jean promised, your speed gradually slows down as you approach the ground, making you land softly, like a feather would.
+
+The inside of the vault is dark, save for a little ambient light coming off a few lit torches. In that light, you notice glints, all over the place. Clearly, no expenses were spared when building this place. Even the walls are gilded. They might as well be wholly solid gold.""",
+	JEAN_MOUNTAIN_JUMP_SEARCH = """Everything seems quiet. There doesn't seem to be any guards here. You launch the projectile into the opening to signal Jean to follow.
+
+And a few seconds later, she slowly descends down. Once landed, she looks around.
+
+— Huh, surprisingly empty for a treasury vault. And big. Bigger than I thought. It's best we split. What we're looking for looks like—
+
+Before the magician can finish, you hear a sound of metal grinding on metal, like gears turning. Heavy stomping accompanies it, and it's coming closer.""",
+	JEAN_MOUNTAIN_JUMP_GOLEM = """\n\nJean: — I thought I told you to only shoot the projectile if it's safe!
+
+It is too late to consider what should or should not be done, however. The golem is not going to let you walk away easily.""",
+
+
+
 
 	VAULT_FIGHT_GUARD_INTRO = """The monstrosity is defeated, but you don't get to have a rest after the battle, as the swarm of guards rush into the vault and surround you.
 
@@ -17856,6 +17841,11 @@ Kuro: — Huh... I expected way more from you. No deal, maybe in the next life y
 #	ENTER_CITY_OPTION_PALACE = "Palace",
 #	ENTER_CITY_OPTION_WORKSHOP = "Workshop",
 #	ENTER_CITY_OPTION_TAVERN = "Tavern",
+#	TAVERN_OPTION_TALK_BARKEEP = "Talk to the Barkeep",
+#	TAVERN_OPTION_TALK_PATRONS = "Interact with the patrons",
+#	TAVERN_OPTION_TALK_GIRL = "Interact with the girl",
+#	TAVERN_OPTION_FIGHT = "Fight",
+
 }
 
 

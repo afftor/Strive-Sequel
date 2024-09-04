@@ -1088,7 +1088,7 @@ var data = {
 #				dialogue_argument = 6,
 			},{
 				code = 'dking2task_hara_2',
-				text = "KURO_QUESTIONS_OPT_LEAVE",
+				text = "DIALOGUENEVERMIND",
 				reqs = [{type = 'dialogue_seen', check = false, value = 'KURO_QUESTIONS_END'}],
 				dialogue_argument = 0,
 				type = 'next_dialogue'
