@@ -653,7 +653,7 @@ func build_location_group():
 		return
 	active_location.group.clear()
 	for ch in ResourceScripts.game_party.characters.values():
-		if !ch.is_combatant() == 0:
+		if !ch.is_combatant():
 			continue
 		if ch.check_location(active_location.id, true) and ch.combat_position != 0 and !ch.has_status('no_combat') and ch.is_combatant():
 			if !active_location.group.has(['pos' + str(ch.combat_position)]):

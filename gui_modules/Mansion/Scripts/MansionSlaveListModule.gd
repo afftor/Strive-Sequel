@@ -149,7 +149,7 @@ func build_for_default(person, newbutton):
 	newbutton.get_node('armor2').visible = true
 	newbutton.get_node('DateIcon').visible = !person.is_master()
 	newbutton.get_node('SexIcon').visible = true
-	newbutton.get_node('TrainIcon').visible = true
+	newbutton.get_node('TrainIcon').visible = person.training.enable
 	newbutton.get_node('LocIcon').visible = true
 	newbutton.get_node('state').visible = true
 
@@ -245,7 +245,7 @@ func build_sex_selection(person, newbutton):
 	newbutton.get_node('armor2').visible = true
 	newbutton.get_node('DateIcon').visible = !person.is_master()
 	newbutton.get_node('SexIcon').visible = true
-	newbutton.get_node('TrainIcon').visible = true
+	newbutton.get_node('TrainIcon').visible = person.training.enable
 	newbutton.get_node('LocIcon').visible = true
 	newbutton.get_node('state').visible = true
 
@@ -341,7 +341,7 @@ func show_location_characters(button = null):
 		if get_parent().mansion_state == "sex":
 			person.visible = person_reference.travel.location == ResourceScripts.game_world.mansion_location
 	
-	if visible_persons.size() < 1:
+	if visible_persons.size() < 1 and selected_location != "show_all":
 		selected_location = "show_all"
 		show_location_characters()
 
@@ -366,7 +366,7 @@ func build_for_skills(person, newbutton):
 	newbutton.get_node('armor2').visible = true
 	newbutton.get_node('DateIcon').visible = !person.is_master()
 	newbutton.get_node('SexIcon').visible = true
-	newbutton.get_node('TrainIcon').visible = true
+	newbutton.get_node('TrainIcon').visible = person.training.enable
 	newbutton.get_node('LocIcon').visible = true
 	newbutton.get_node('state').visible = true
 	if person == get_parent().skill_source:
