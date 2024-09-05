@@ -1624,6 +1624,9 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	STATWITS_BONUS = "Wits 智慧",
 	STATCHARM_BONUS = "Charm 魅力",
 	STATSEXUALS_BONUS = "Sexuals 性能力",
+	STATTRAINEE_AMOUNT = """Training Slots""", # MISSING TRANSLATION
+	TRAITTRAINER = """Trainer""", # MISSING TRANSLATION
+	TRAITTRAINERDESCRIPT = """Can oversee slaves""", # MISSING TRANSLATION
 
 	STATOBEDIENCE = "Obedience",
 	STATOBEDIENCEDESCRIPT = "Obedience is a character's willingness to obey your orders. Obedience is gained by using social skills. When depleted character can escape and will be lost in case that happens. ",

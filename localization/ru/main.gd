@@ -1603,6 +1603,9 @@ var TranslationDict = {
 	STATWITS_BONUS = "Мудрость",
 	STATCHARM_BONUS = "Обаяние",
 	STATSEXUALS_BONUS = "Сексуальность",
+	STATTRAINEE_AMOUNT = """Training Slots""", # MISSING TRANSLATION
+	TRAITTRAINER = """Trainer""", # MISSING TRANSLATION
+	TRAITTRAINERDESCRIPT = """Can oversee slaves""", # MISSING TRANSLATION
 
 
 	STATOBEDIENCE = "Повиновение",

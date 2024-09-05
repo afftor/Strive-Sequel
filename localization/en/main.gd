@@ -278,7 +278,7 @@ using       button.""",
 	MSLMTYPE = "Type",
 	MSLMINV = "Gear",
 	
-	
+	TRAINERSAVAILABLE = "Available Trainers",
 	MSLMRELOC = "Relocating",
 	MSLMRE = "in",
 	MSLMTURN = " turns",
@@ -1657,7 +1657,12 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATWITS_BONUS = "Wits",
 	STATCHARM_BONUS = "Charm",
 	STATSEXUALS_BONUS = "Sexuals",
-
+	
+	STATTRAINEE_AMOUNT = "Training Slots",
+	TRAITTRAINER = "Trainer",
+	TRAITTRAINERDESCRIPT = "Can oversee slaves",
+	
+	
 	STATOBEDIENCE = "Obedience",
 	STATOBEDIENCEDESCRIPT = "Obedience is a character's willingness to obey your orders. Obedience is gained by using social skills. When depleted character can escape and will be lost in case that happens. ",
 	STATLOYALTY = "Loyalty",
@@ -1754,6 +1759,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	INFOCONSENT = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. Consent will affect prostitution related jobs.",
 	INFOCONSENTMASTER = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. {color=green|[Master] has no Consent requirements for any actions.}",
 	INFOTRAINING = "Slave type characters will be trained by selected person in various actions. Every slave has different {color=aqua|Dispositions} towards different kind of actions. Properly selected actions will award more Loyalty and drain less spirit but most actions have additional effects.",
+	INFOSLAVETRAINER = "Assign a Trainer to oversee and train untrained slave. Trainer have a limited number of slaves they can work with. Slaves with nobody overseeing them will not do any work until fully trained.",
 	
 	CATEGORYKEYWORD = "Category",
 	ACTIONCATEGORYPHYSICAL = "Physical", 
