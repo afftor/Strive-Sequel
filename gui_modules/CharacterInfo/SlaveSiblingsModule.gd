@@ -75,6 +75,7 @@ func update():
 		loyalty_panel.visible = false
 		loyalty_panel_master.get_parent().visible = true
 		loyalty_panel_master.update_upgrades_tree()
+		$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGSMASTER')
 #		setup_tab()
 		if !loyalty_mode:
 			swap_mode()
@@ -84,6 +85,7 @@ func update():
 		loyalty_panel_master.get_parent().visible = false
 		loyalty_panel.person = person
 		loyalty_panel.match_state()
+		$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGS')
 		if !loyalty_mode:
 			swap_mode()
 	else:

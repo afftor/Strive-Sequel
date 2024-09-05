@@ -489,7 +489,7 @@ var traits = {
 		code = 'trainer',
 		name = '',
 		descript = '',
-		visible = true,
+		visible = false,
 		icon = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png"), #2fix
 		effects = [],
 		tags = ['simple_icon', 'trainer']
@@ -1211,7 +1211,7 @@ var traits = {
 	},
 	training_broke_in = {
 		code = 'training_broke_in',
-		visible = true,
+		visible = false,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_hand2.png",
@@ -1222,7 +1222,7 @@ var traits = {
 	},
 	training_obedience = {
 		code = 'training_obedience',
-		visible = true,
+		visible = false,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_crown.png",
@@ -1233,7 +1233,7 @@ var traits = {
 	},
 	training_callmaster = {
 		code = 'training_callmaster',
-		visible = true,
+		visible = false,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_crown2.png",
@@ -1244,7 +1244,7 @@ var traits = {
 	},
 	training_relation = {
 		code = 'training_relation',
-		visible = true,
+		visible = false,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_date.png",
@@ -1255,7 +1255,7 @@ var traits = {
 	},
 	training_sexservice = {
 		code = 'training_sexservice',
-		visible = true,
+		visible = false,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_harlotry.png",
@@ -1266,7 +1266,7 @@ var traits = {
 	},
 	training_sexservice_adv = {
 		code = 'training_sexservice_adv',
-		visible = true,
+		visible = false,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_group.png", 
@@ -1307,6 +1307,7 @@ var traits = {
 	},
 	training_damaged = {
 		code = 'training_damaged',
+		visible = false,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
@@ -1316,6 +1317,7 @@ var traits = {
 	},
 	training_broken = {
 		code = 'training_broken',
+		visible = false,
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix

@@ -57,6 +57,8 @@ func get_trainees(): #unsafe - returns array, not copy, but it's for a reason
 
 
 func add_trainee(id): #unsafe - no limit check
+	if trainees.has(id):
+		return
 	trainees.push_back(id)
 	var tchar = characters_pool.get_char_by_id(id)
 	tchar.training.trainer = parent.get_ref().id

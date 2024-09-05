@@ -176,6 +176,7 @@ var TranslationDict = {
 	SIBLINGMODULESEXTRAITS = "Sex Traits",
 	SIBLINGMODULERELATIVES = "Relatives",
 	SIBLINGMODULETRAININGS = "Slave Training",
+	SIBLINGMODULETRAININGSMASTER = "Master Training",
 	SIBLINGMODULEFOODCONSUMPTION = "Daily Consumption",
 	SIBLINGMODULEMAIN = "Main",
 	SIBLINGMODULESEX = "Sex",
@@ -1310,10 +1311,12 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAININGSTATUS2 = "Spirit status: damaged",
 	TRAININGSTATUS3 = "Spirit status: retained",
 	TRAININGSTATUS4 = "Spirit status: preserved",
-	TRAININGLABELSPIRIT = "Character spirit: %.1f",
-	TRAININGLABELLOYALTY = "Character loyalty: %.1f",
+	TRAININGLABELSPIRIT = "Character spirit: %.0f",
+	TRAININGLABELLOYALTY = "Character loyalty: %.0f",
 	TRAININGCOST = "Trait unlock: %d loyalty",
 	TRAINNOTRAINER = "[name] has no trainer",
+	NOTRAINSLOTS = "No free training slots",
+	ALREADYTRAINER = "Current trainer",
 
 
 	WORKTOOL = "Work Tool",

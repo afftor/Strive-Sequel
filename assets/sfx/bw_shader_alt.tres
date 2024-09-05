@@ -4,4 +4,4 @@
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/percent = 1.0
+shader_param/percent = 0.0
