@@ -260,6 +260,7 @@ var TranslationDict = {
 	LMMINVENTORY = "Инвентарь",
 	LMMCRAFT = "Крафт",
 	LMMJOURNAL = "Журнал",
+	LMMWORK = """Work""", # MISSING TRANSLATION
 	#MansionSlaveListModule
 	MSLMNAME = "Список персонажей",
 	MSLMSex = "Пол",
@@ -270,6 +271,7 @@ var TranslationDict = {
 	MSLMEXP = "Опыт",
 	MSLMLOC = "Локация",
 	MSLMTYPE = "Тип",
+	MSLMINV = """Gear""", # MISSING TRANSLATION
 	
 	MSLMRELOC = "В пути",
 	MSLMRE = "чрз",
@@ -2218,6 +2220,9 @@ var TranslationDict = {
 	TRAITLOYALTY_INTERBREEDDESCRIPT = "{color=green|Позволяет персонажу оплодотворить или быть оплодотворенным обычно несовместимым расовым партнером}\n\nТребуется: Секс:Продвинутый",
 	TRAITMASTER_MENTOR = "Наставник",
 	TRAITMASTER_MENTORDESCRIPT = "Все текущие и будущие персонажи автоматически получают базовые черты послушания и боевой преданности",
+	TRAITUNTRAINED = """Rebellious""", # MISSING TRANSLATION
+	TRAITUNTRAINEDDESCRIPT = """[name] has not been subjected to any training yet. [His] resisting attitude makes it hard to make [him] do any work. 
+-50% Productivity, -30% Damage""", # MISSING TRANSLATION
 	TRAITMASTER_HARLOTRY = "Блудница",
 	TRAITMASTER_HARLOTRYDESCRIPT = "Занимаясь сервисом, вы продолжаете получать преимущества Отдыха.",
 	TRAITMASTER_PROGENECY = "Родословная",

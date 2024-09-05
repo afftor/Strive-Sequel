@@ -195,7 +195,7 @@ func build_training_list():
 		for tr in tr_data[category]:
 			var panel = input_handler.DuplicateContainerTemplate($training/ScrollContainer/VBoxContainer, 'Button')
 			var trdata = Skilldata.training_actions[tr]
-			var text = tr(trdata.name) + "\n" + tr("CATEGORYKEYWORD") + ": " +  tr("ACTIONCATEGORY"+trdata.type.to_upper()) + "\n" + person.translate(tr(trdata.descript))
+			var text = tr(trdata.name) + "\n" + tr("CATEGORYKEYWORD") + ": {color|yellow" + tr("ACTIONCATEGORY"+trdata.type.to_upper()) + "}\n" + person.translate(tr(trdata.descript))
 			if cat_data.icon is String:
 				panel.get_node('icon').texture = load(cat_data.icon)
 			else:
@@ -240,7 +240,7 @@ func build_training_traits():
 			panel.get_node('icon').texture = load(trdata.icon)
 		else:
 			panel.get_node('icon').texture = trdata.icon
-		globals.connecttexttooltip(panel, tr(trdata.descript))
+		globals.connecttexttooltip(panel, person.translate(tr(trdata.descript)))
 		if person.check_trait(tr):
 			panel.pressed = true
 		else:

@@ -629,7 +629,7 @@ var traits = {
 		},
 		tags = ['positive', 'can_start']
 	},
-	quick = {
+		quick = {
 		code = 'quick',
 		name = '',
 		descript = '',
@@ -1044,7 +1044,7 @@ var traits = {
 		conflicts = ['mvortex', 'hiddenpowers'],
 		tags = ['negative'],# 'no_combat_spells']
 	},
-	selfish = {
+		selfish = {
 		code = 'selfish',
 		name = '',
 		descript = '',
@@ -1198,12 +1198,13 @@ var traits = {
 	},
 	#trainings etc
 	#icons are for testing, need fixing
+	
 	untrained = {
 		code = 'untrained',
 		visible = true,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
+		icon = "res://assets/images/iconsskills/Serve2.png",
 		effects = [],
 		bonusstats = {productivity = -0.5, damage_mod_all = -0.3}, 
 		tags = ['training', 'simple_icon']
@@ -1213,7 +1214,7 @@ var traits = {
 		visible = true,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
+		icon = "res://assets/images/iconstraits/l_hand2.png",
 		effects = ['e_brokein'],
 		bonusstats = {}, 
 		reqs = [],
@@ -1224,7 +1225,7 @@ var traits = {
 		visible = true,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
+		icon = "res://assets/images/iconstraits/l_crown.png",
 		effects = [],
 		reqs = [],
 		bonusstats = {}, 
@@ -1235,7 +1236,7 @@ var traits = {
 		visible = true,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
+		icon = "res://assets/images/iconstraits/l_crown2.png",
 		effects = [],
 		reqs = [],
 		bonusstats = {}, 
@@ -1246,7 +1247,7 @@ var traits = {
 		visible = true,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
+		icon = "res://assets/images/iconstraits/l_date.png",
 		effects = [],
 		reqs = [],
 		bonusstats = {}, 
@@ -1257,7 +1258,7 @@ var traits = {
 		visible = true,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
+		icon = "res://assets/images/iconstraits/l_harlotry.png",
 		effects = [],
 		reqs = [],
 		bonusstats = {}, 
@@ -1268,7 +1269,7 @@ var traits = {
 		visible = true,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
+		icon = "res://assets/images/iconstraits/l_group.png", 
 		effects = [],
 		reqs = [{code = 'trait', trait = 'training_sexservice', check = true}],
 		bonusstats = {}, 

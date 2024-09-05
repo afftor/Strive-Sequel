@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/icons_40x40/magic effect.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/skill_frame_learned.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_disabled.png" type="Texture" id=4]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=5]
 [ext_resource path="res://gui_modules/CharacterInfo/TrUpgradesList.gd" type="Script" id=6]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_36.tres" type="DynamicFont" id=8]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=9]
@@ -16,9 +17,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_pressed.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset training_pressed.png" type="Texture" id=20]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_hover.png" type="Texture" id=21]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button d/button_d_pressed.png" type="Texture" id=22]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button d/button_d_default.png" type="Texture" id=23]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button d/button_d_hover.png" type="Texture" id=24]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_default.png" type="Texture" id=26]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_hover.png" type="Texture" id=27]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_pressed.png" type="Texture" id=28]
@@ -111,11 +110,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="training"]
-margin_left = 5.0
+margin_left = -6.0
 margin_top = 200.0
-margin_right = 685.0
+margin_right = 824.0
 margin_bottom = 539.0
 size_flags_vertical = 3
+theme = ExtResource( 5 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="GridContainer" parent="training/ScrollContainer"]
@@ -188,16 +188,17 @@ texture_hover = ExtResource( 10 )
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -4.0
+margin_bottom = -36.0
 expand = true
+stretch_mode = 6
 
-[node name="d_button" type="TextureButton" parent="training"]
+[node name="d_button" type="TextureRect" parent="training"]
 margin_left = 527.0
 margin_top = 20.0
 margin_right = 573.0
 margin_bottom = 66.0
-texture_normal = ExtResource( 23 )
-texture_pressed = ExtResource( 22 )
-texture_hover = ExtResource( 24 )
+texture = ExtResource( 23 )
 
 [node name="status" type="Label" parent="training/d_button"]
 anchor_right = 1.0
