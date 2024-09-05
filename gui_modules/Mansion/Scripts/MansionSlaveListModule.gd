@@ -341,7 +341,7 @@ func show_location_characters(button = null):
 		if get_parent().mansion_state == "sex":
 			person.visible = person_reference.travel.location == ResourceScripts.game_world.mansion_location
 	
-	if visible_persons.size() < 1:
+	if visible_persons.size() < 1 and selected_location != "show_all":
 		selected_location = "show_all"
 		show_location_characters()
 
