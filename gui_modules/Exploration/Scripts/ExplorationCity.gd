@@ -828,7 +828,7 @@ func show_slave_info(person):
 			i.get_node("Label").text = str(floor(person.get_stat(i.name)))
 			i.get_node("Label").set("custom_colors/font_color", Color(1, 1, 1))
 	
-	globals.build_loyalty_traitlist(person, $SlaveMarket/scroll/traitscontainer)
+#	globals.build_loyalty_traitlist(person, $SlaveMarket/scroll/traitscontainer)
 	
 	$SlaveMarket/ConsentLabel.text = "Consent: " + str(floor(person.get_stat('consent')))
 	$SlaveMarket/PurchaseButton.disabled = false
