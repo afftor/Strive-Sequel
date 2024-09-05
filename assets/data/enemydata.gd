@@ -60,8 +60,8 @@ var encounters = {
 	aire_boss_fight = {unittype = 'randomgroup', unitcode = 'aire_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'aire_combat_on_win_2', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	
 	hector = {unittype = 'randomgroup', unitcode = 'hector_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'cali_finale_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
-	dwarf_tavern_patrons = {unittype = 'randomgroup', unitcode = 'dwarf_tavern_patrons', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'dwarf_tavern_bark_after_fight', args = []}], lose_effects = [{code = 'start_event', data = 'dwarf_tavern_bark_after_fight', args = []}]},
-	vault_golem = {unittype = 'randomgroup', unitcode = 'vault_golem', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = '', args = []}], lose_effects = [{code = 'start_event', data = '', args = []}]},
+	dwarf_tavern_patrons = {unittype = 'randomgroup', unitcode = 'dwarf_tavern_patrons', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'dwarf_tavern_bark_after_fight', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	vault_golem = {unittype = 'randomgroup', unitcode = 'vault_golem', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_mountain_guards', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 }
 
 var enemygroups = {

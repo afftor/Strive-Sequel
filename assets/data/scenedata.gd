@@ -1938,45 +1938,45 @@ var dialogue_inits = {
 		},
 	],
 	
-	dwarf_tavern_barkeep = [
-		{
-			code = 'default',
-			name = tr("DWARF_TAVERN_INIT"),
-			reqs = [{type = 'event_seen', check = false, value = 'dwarf_tavern_intro'}],
-			target = 'dwarf_tavern_intro',
-			target_option = 0,
-		},{
-			code = 'default',
-			name = tr("DWARF_TAVERN_BARKEEP"),
-			reqs = [
-				{type = 'event_seen', check = true, value = 'dwarf_tavern_intro'},
-				{type = 'event_seen', check = false, value = 'dwarf_tavern_bark_physics'},
-			],
-			target = 'dwarf_tavern_barkeep',
-			target_option = 0,
-		},
-	],
-	dwarf_tavern_patrons = [
-		{
-			code = 'default',
-			name = tr("DWARF_TAVERN_PATRONS"),
-			reqs = [{type = 'event_seen', check = true, value = 'dwarf_tavern_intro'}],
-			target = 'dwarf_tavern_patron',
-			target_option = 0,
-		},
-	],
-	dwarf_tavern_girl = [
-		{
-			code = 'default',
-			name = tr("DWARF_TAVERN_GIRL"),
-			reqs = [
-				{type = 'event_seen', check = true, value = 'dwarf_tavern_intro'},
-				{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'tavern'}
-			],
-			target = 'dwarf_tavern_jean',
-			target_option = 0,
-		},
-	],
+#	dwarf_tavern_barkeep = [
+#		{
+#			code = 'default',
+#			name = tr("DWARF_TAVERN_INIT"),
+#			reqs = [{type = 'event_seen', check = false, value = 'dwarf_tavern_intro'}],
+#			target = 'dwarf_tavern_intro',
+#			target_option = 0,
+#		},{
+#			code = 'default',
+#			name = tr("DWARF_TAVERN_BARKEEP"),
+#			reqs = [
+#				{type = 'event_seen', check = true, value = 'dwarf_tavern_intro'},
+#				{type = 'event_seen', check = false, value = 'dwarf_tavern_bark_physics'},
+#			],
+#			target = 'dwarf_tavern_barkeep',
+#			target_option = 0,
+#		},
+#	],
+#	dwarf_tavern_patrons = [
+#		{
+#			code = 'default',
+#			name = tr("DWARF_TAVERN_PATRONS"),
+#			reqs = [{type = 'event_seen', check = true, value = 'dwarf_tavern_intro'}],
+#			target = 'dwarf_tavern_patron',
+#			target_option = 0,
+#		},
+#	],
+#	dwarf_tavern_girl = [
+#		{
+#			code = 'default',
+#			name = tr("DWARF_TAVERN_GIRL"),
+#			reqs = [
+#				{type = 'event_seen', check = true, value = 'dwarf_tavern_intro'},
+#				{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'tavern'}
+#			],
+#			target = 'dwarf_tavern_jean',
+#			target_option = 0,
+#		},
+#	],
 }
 
 var dict = {
@@ -2484,6 +2484,14 @@ var quests = {
 			audience = {code = 'audience', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_AUDIENCE'},
 			tavern = {code = 'tavern', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_TAVERN'},
 			jean = {code = 'jean', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_JEAN'},
+		},
+	},
+	dking_hara_quest = {
+		code = 'dking_hara_quest',
+		summary = "DKING_HARA_QUEST_SUMMARY",
+		stages = {
+			info = {code = 'info', name = 'DKING_HARA_QUEST_NAME', descript = 'DKING_HARA_QUEST_INFO'},
+			tracks = {code = 'tracks', name = 'DKING_HARA_QUEST_NAME', descript = 'DKING_HARA_QUEST_TRACKS'},
 		},
 	},
 }

@@ -3154,6 +3154,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUERETURN = "Return",
 	DIALOGUECANCEL = "Cancel",
 	DIALOGUENEVERMIND = "Nevermind",
+	DIALOGUEWALKAWAY = "Walk away",
 	
 	DIALOGUEMEETLEADER = "Meet Leader",
 
@@ -13495,7 +13496,8 @@ You can't resist her taunts any longer, finally letting your second load burst i
 — However a few dozen years ago one of the rebel founders stole and damaged it with some foul ritual. Now they are no longer of any use. But thankfully Lady Kuro has provided us with a way to return its powers. She's a really mysterious and resourceful person despite her looks and origins.""",
 	DKING_SECOND_TASK_1_REPLY2 = "— Are you trying to call me a liar? What your mouth kid. I never said that will get you the artifact. But if you insist, alright, I promise you'll receive it after this.",
 	DKING_SECOND_TASK_2 = "— Great. The guards will show you how to get to Hara. Until then I have more important business.",
-	DKING2TASK_HARA_START = "You enter a palace workshop filled with various engineer tools and gadgets. Hara seems to be busy with tinkering on one of them similarly to your first encounter.",
+	DWARF_WARKSHOP_START = "You enter a palace workshop filled with various engineer tools and gadgets.",
+	DKING2TASK_HARA_START = " Hara seems to be busy with tinkering on one of them similarly to your first encounter.",
 	DKING2TASK_HARA_1 = "At the other end of the room you spot Kuro lazily lying on an exquisite sofa reading some ancient looking book.",
 	DKING2TASK_HARA_2 = "Neither of them seem to pay you any attention as if you were a lackey.",
 	DKING2TASK_HARA_2_OPT_1 = "Approach Hara",
@@ -14044,6 +14046,10 @@ Kuro turns away indicating her unwillingness to continue.""",
 	VISIT_DWARFS_QUEST_TAVERN = "Find a way to attract king's attention. Visit a tavern for a start.",
 	VISIT_DWARFS_QUEST_JEAN = "Help Jean, meet here at Mountain Pass marked on here map, or... You can turn here in. King could be pleased with such revelation.",
 	
+	DKING_HARA_QUEST_NAME = "Rescue Hara",
+	DKING_HARA_QUEST_SUMMARY = "Find and free Hara from Coalition",
+	DKING_HARA_QUEST_INFO = "You need to get information out of Coalition's agent in prison, whether by bringing gnome-decoy (Charm >= 50; Tame Factor >= 4) or by direct torture.",
+	DKING_HARA_QUEST_TRACKS = "You'll have to search for tracks of rebel attackers.",
 	
 	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n— H-hello, [Master]... How was your day?",
 	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her motivation. She stays silent having no words for you.\n\n— ......",
@@ -14870,8 +14876,6 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	ELVISH_SLAVE_TRADER = "Elvish Slave Trader",
 	EXOTIC_SLAVE_TRADER = "Exotic Slave Trader",
 	ALIRON_CHURCH = "Aliron Church",
-	DWARF_TAVERN = "Tavern",
-	DWARF_WORKSHOP = "Workshop",
 	
 	#locations
 	
@@ -15397,11 +15401,14 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	ELF_CAPITAL10 = "Find Lira",
 	ELF_CAPITAL11 = "Initiate",
 	
-	DWARF_CAPITAL_PALACE = "Visit Palace",
-	DWARF_TAVERN_INIT = "Walk in",
+	DWARF_PALACE = "Palace",
+	DWARF_TAVERN = "Tavern",
+#	DWARF_TAVERN_INIT = "Walk in",
 	DWARF_TAVERN_BARKEEP = "Talk to the Barkeep",
 	DWARF_TAVERN_PATRONS = "Interact with the patrons",
 	DWARF_TAVERN_GIRL = "Interact with the girl",
+	DWARF_WORKSHOP = "Workshop",
+	DWARF_PRISON = "Prison",
 	
 	BEASTKIN_CAPITAL1 = "Find Chieftain",
 	BEASTKIN_CAPITAL2 = "Visit Shaman's Lodge",
@@ -16098,7 +16105,7 @@ The guard motions for the archers to stand at ease.
 — You're not local, are you? The palace is not a tourist spot. Find another attraction.""",
 	DWARF_PALACE_OPT_PATTERN = "I am noticing a pattern here. What's with your attitude towards visitors?",
 	DWARF_PALACE_OPT_BIZ = "I have business with the king.",
-#	ENTER_CITY_OPTION_REPORT_CRIME = "I have something to report on the crime which is about to happen...",
+	DWARF_PALACE_OPT_CRIME = "I have something to report on the crime which is about to happen...",
 	DWARF_PALACE_REPLY_PATTERN1 = """— You are looking for a problem?
 One of the guards asks with a challenge in his voice.
 
@@ -16148,15 +16155,15 @@ The building entrance door appears to be sealed off, however. It's shut, and the
 The message is signed - Hara.
 
 Whatever this shop is, it seems its owner is not around.""",
-	DTAVERN_INTRO = """The smell of spilled ale, originating from both the glasses and the less fortunate stomachs of the patrons, assails your senses as you enter the local tavern. You immediately start to feel like you're the center of everyone's attention, as everyone, from patrons to staff, turn their heads to look at you. A familiar feeling at this point.
+	DTAVERN_START = "The smell of spilled ale, originating from both the glasses and the less fortunate stomachs of the patrons, assails your senses as you enter the local tavern.",
+	DTAVERN_INTRO = """ You immediately start to feel like you're the center of everyone's attention, as everyone, from patrons to staff, turn their heads to look at you. A familiar feeling at this point.
 
 There aren't many visitors here this time of the day. A barkeep, wiping glasses, eyes you suspiciously, but says nothing.
 
 You can't help but notice that there are almost exclusively dwarves among the present. It's no surprise your foreign features stand out.
 
 The only non-dwarf here beside you is a human girl, sitting quietly in the corner, reading a book. A bit of a strange choice of a place for this kind of activity. None of the guests pay her any mind. Perhaps, because of her small stature she fits in a little better?""",
-	DTAVERN_INTRO_DWARF = """The smell of spilled ale, originating from both the glasses and the less fortunate stomachs of the patrons, assails your senses as you enter the local tavern.
-There aren't many visitors here this time of the day. A barkeep, wiping glasses, throws a glance at you, his expression indifferent.
+	DTAVERN_INTRO_DWARF = """\nThere aren't many visitors here this time of the day. A barkeep, wiping glasses, throws a glance at you, his expression indifferent.
 
 You can't help but notice that there are almost exclusively dwarves among the present.
 
@@ -16439,11 +16446,7 @@ Before the magician can finish, you hear a sound of metal grinding on metal, lik
 	JEAN_MOUNTAIN_JUMP_GOLEM = """\n\nJean: — I thought I told you to only shoot the projectile if it's safe!
 
 It is too late to consider what should or should not be done, however. The golem is not going to let you walk away easily.""",
-
-
-
-
-	VAULT_FIGHT_GUARD_INTRO = """The monstrosity is defeated, but you don't get to have a rest after the battle, as the swarm of guards rush into the vault and surround you.
+	JEAN_MOUNTAIN_GUARDS = """The monstrosity is defeated, but you don't get to have a rest after the battle, as the swarm of guards rush into the vault and surround you.
 
 Jean: — Wait, wait, wait! We surrender! Surrender!
 
@@ -16452,65 +16455,55 @@ Guard: — Drop your weapons!
 The guards heavily outnumber you. Your chances of winning this fight don't look good. And even if you manage to win, you are on their territory. Who knows how many guards are stationed inside this palace? Their supply of backup might as well be endless from where you stand.
 
 Jean obeys the guards' orders and drops her weapons. Considering the situation and having no choice, you are forced to follow her example.""",
-
-	VAULT_DUNGEON_INTRO = """After restraining you, the guards have placed you in a dungeon cell, somewhere in the palace. 
+	JEAN_DUNGEON_INTRO = """After restraining you, the guards have placed you in a dungeon cell, somewhere in the palace. 
 
 Jean was put into a cell directly opposite of yours. Initially, it seemed like a favorable development, but...
 
 — I should've known better than to rely on a complete stranger for such an important job! You turned out to be useless. So much for all the rumors about you, I guess.
 
 Since you've been locked away, Jean never stopped complaining. And here you are, stuck, listening to her with no way of escaping or making her shut up. One might think your placing was chosen on purpose as a form of torture. But it's doubtful the guards at this place are so calculating.""",
-
-	DUNGEON_GUARD_INTRO = """After hours of enduring Jean's nagging, suddenly, an unlikely rescue came.
+	JEAN_DUNGEON_GUARD = """After hours of enduring Jean's nagging, suddenly, an unlikely rescue came.
 
 Guard: — Hey! No talking!
 
 The guard appeared in the corridor. After chastising Jean, he turned to you.
 
 Guard: — You. Stand back and put your arms behind your back.""",
+	JEAN_DUNGEON_OPT_WHAT = "What for?",
+	JEAN_DUNGEON_OPT_OBEY = "*Do as you're told*",
+	JEAN_DUNGEON_OPT_UNTIL = "Not until you tell me what you're going to do.",
 
-	DUNGEON_GUARD_OPTION_WHAT_FOR = "What for?",
-	DUNGEON_GUARD_OPTION_OBEY = "*Do as you're told*",
-
-	DUNGEON_GUARD_RESPONSE_WHAT_FOR = """— You're in no position to ask questions. Just do as you're told.""",
-
-	DUNGEON_GUARD_OPTION_INSIST = "Not until you tell me what you're going to do.",
-
-	DUNGEON_GUARD_RESPONSE_INSIST = """Guard: — Tsk, a cheeky one. Just my luck. Fine! Apparently, the king was impressed with how daring you are, breaking into his vault. He wants to meet you. I am going to take you to him.
+	JEAN_DUNGEON_REPLY_WHAT = """— You're in no position to ask questions. Just do as you're told.""",
+	JEAN_DUNGEON_REPLY_UNTIL = """Guard: — Tsk, a cheeky one. Just my luck. Fine! Apparently, the king was impressed with how daring you are, breaking into his vault. He wants to meet you. I am going to take you to him.
 
 Jean: — What? Excuse me, but that was my plan, not his! It's me the king wants to meet.
 
 The guard turns to Jean and looks at her, his expression not even irritated. Blank. A scary one, like a murderer might have before assaulting the victim.""",
-
-	DUNGEON_GUARD_FINAL_RESPONSE = """Guard: — You shut up or I will shut you up.
+	JEAN_DUNGEON_REPLY_UNTIL2 = """Guard: — You shut up or I will shut you up.
 
 Jean: — ... Damn you. Meeting the king was your goal to begin with. Perhaps you are in luck, after all.""",
-
-	DUNGEON_GUARD_OBEY_RESPONSE = """You do as the guard demands. You hear the cell's metallic door cracking open behind your back. Your hands get chained, and you're led into the corridor.
+	JEAN_DUNGEON_REPLY_OBEY = """You do as the guard demands. You hear the cell's metallic door cracking open behind your back. Your hands get chained, and you're led into the corridor.
 
 Jean watches you with silent disdain.
 
 Guard: — Move.
 
 The guard pushes you forward. You are led out of the dungeon and onto the palace main grounds. You are led past a garden full of exotic flowers and trees from all over the continent. A number of devices emitting a blinding white light are mounted on the pillars all across. Perhaps, thanks to them, the flowers are able to thrive here, where the natural sunlight doesn't reach.""",
-
-	PALACE_INTRO_CONTINUE = """After passing the garden, you enter the grand, decorated building, located deep inside the inner court, away from the eyes of common citizens. If the palace exterior already seemed exquisite enough, but after seeing this building, it pales in comparison.
+	JEAN_DUNGEON_END = """After passing the garden, you enter the grand, decorated building, located deep inside the inner court, away from the eyes of common citizens. If the palace exterior already seemed exquisite enough, but after seeing this building, it pales in comparison.
 
 Inside, a whole army of maids swarm around, busily tending to the decorum: cleaning, carrying gilded trays with food and drinks.
 
 You are led up the stairs and up to a big, metallic double door. The guard stops you.
 
 Guard: — Now, when you're inside, watch your manners. It's not every day even a law-abiding citizen gets the chance to meet a king, let alone a criminal like you.""",
-
-	PALACE_INTRO_DOOR = """The guard manipulates a device by the door, the purpose of which is unknown to you. He speaks something into it, and after a few seconds, the heavy double doors start to shift.
+	JEAN_DUNGEON_END2 = """The guard manipulates a device by the door, the purpose of which is unknown to you. He speaks something into it, and after a few seconds, the heavy double doors start to shift.
 
 The guard unlocks the chains on your hands, setting you free.
 
 Guard: — Go on inside. I will wait here.
 
 You step into the room ahead.""",
-
-	PALACE_REPORT_ON_JEAN = """You tell the guards about the proposal you've received from the magician girl in exchange for the audience with the king. After waiting for a couple of hours you've actually been invited inside.
+	JEAN_REPORT = """You tell the guards about the proposal you've received from the magician girl in exchange for the audience with the king. After waiting for a couple of hours you've actually been invited inside.
 
 You enter the grand, decorated building, located deep inside the inner court, away from the eyes of common citizens. If the palace exterior already seemed exquisite enough, but after seeing this building, it pales in comparison.
 
@@ -16520,13 +16513,12 @@ You are led up the stairs and up to a big, metallic double door. The guard stops
 
 Guard: — Now, when you're inside, watch your manners. Nobody cares who you are in the human lands. Try to offend the king, and you'll end up next to the criminal you've reported.""",
 
-	MEETING_THE_KING = """The hall you end up in seems even richer than a treasury. The walls are covered in all kinds of vegetation: vines, blooming with flowers. Devices, similar to the lights you've seen in the garden, are mounted onto the ceiling.
+	DKING_START = """The hall you end up in seems even richer than a treasury. The walls are covered in all kinds of vegetation: vines, blooming with flowers. Devices, similar to the lights you've seen in the garden, are mounted onto the ceiling.
 
 A set of small waterfalls cover the space in between the plants, flowing constantly, creating a somewhat pleasant ambiance.
 
 In the center of the hall, a huge pillow on top of which the king himself sits, surrounded by dozens of concubines, mostly dwarves and gnomes, tending to his needs: one pours wine into his glass, another feeds him grapes.""",
-
-	KING_INTRO_DIALOGUE = """— Ah, the talk of the palace!
+	DKING_START2 = """— Ah, the talk of the palace!
 
 The king addresses you, His voice is loud, deep, commanding.
 
@@ -16535,114 +16527,113 @@ The king addresses you, His voice is loud, deep, commanding.
 The king takes a sip from his glass, then addresses a concubine tending to his nether region.
 
 — You can stop now. I have important business to discuss with my guest. You go tend to my ministers. They've been working all day and are in need of a break.""",
+	DKING_GIRLSTOPS = """The girl stops. She stands up, bows, and leaves the hall. All without speaking even a word. She passes you by on her way out. Her head is down, but you notice her face all the same. It's expressionless, resigned.""",
+	DKING_FIRST_REPORTED = """\n\n— Your name is [name], am I right? You've done a great service to our kingdom by preventing a severe crime from another surface dweller. She has already been caught by us, and since you did request the audience...""",
 
-	KING_INTRO_CONTINUE = """The girl stops. She stands up, bows, and leaves the hall. All without speaking even a word. She passes you by on her way out. Her head is down, but you notice her face all the same. It's expressionless, resigned.""",
+	DKING_FIRST_OPT_ARTS = "It's a long story, but I'm searching for artifacts",
+	DKING_FIRST_OPT_INEED = "There's something I need from you",
 
-	KING_DIALOGUE_REPUTATION = """— Your name is [name], am I right? You've done a great service to our kingdom by preventing a severe crime from another surface dweller. She has already been caught by us, and since you did request the audience...""",
-
-	KING_DIALOGUE_OPTIONS = "It's a long story, but I'm searching for artifacts / There's something I need from you",
-	KING_DIALOGUE_RESPONSE = """You vaguely explain your goal of collecting the artifacts to which the king shows no particular interest.
+	DKING_FIRST_GOAL = """You vaguely explain your goal of collecting the artifacts to which the king shows no particular interest.
 
 — Yes, yes... The artifacts. We can do something about it, but frankly, I'll request your help before that. After all, you have proven to be someone showing favor to my authority.""",
-	
-		KING_CAPTURED_INTRO = """— I must admit, the kingdom's treasure hasn't been breached for ages. The last time it happened was during my grandfather's reign. And you've proven to be very capable to attempt and execute it. So I want to hear the explanation, do authorities from human lands do such things regularly? What was your intention?""",
+	DKING_FIRST_CAPTURED = """\n\n— I must admit, the kingdom's treasure hasn't been breached for ages. The last time it happened was during my grandfather's reign. And you've proven to be very capable to attempt and execute it. So I want to hear the explanation, do authorities from human lands do such things regularly? What was your intention?""",
 
-	KING_CAPTURED_OPTION_1 = "I just got asked to",
-	KING_CAPTURED_OPTION_2 = "I needed some way to meet with you",
-	KING_CAPTURED_OPTION_3 = "You can't help yourself around the opportunity to get even more rich",
+	DKING_FIRST_OPT_ASKED = "I just got asked to",
+	DKING_FIRST_OPT_MEET = "I needed some way to meet with you",
+	DKING_FIRST_OPT_RICH = "You can't help yourself around the opportunity to get even more rich",
 
-	KING_CAPTURED_RESPONSE_1 = """— What a lousy way to ruin your reputation, especially given your status. But... This might not be too bad if you do just what you are asked to, because then you can still be useful to us.""",
-	KING_CAPTURED_RESPONSE_2 = """The king smirks as if he's talking to a clueless child.
+	DKING_FIRST_REPLY_ASKED = """— What a lousy way to ruin your reputation, especially given your status. But... This might not be too bad if you do just what you are asked to, because then you can still be useful to us.""",
+	DKING_FIRST_REPLY_MEET = """The king smirks as if he's talking to a clueless child.
 
 — Are surface dwellers getting dumber from the sunlight by the day?""",
-	KING_CAPTURED_RESPONSE_3 = """— A scoundrel mayor then. You aren't very different from some folk around here. I've just sliced a few ears of corrupt clerks in the last month.""",
+	DKING_FIRST_REPLY_RICH = """— A scoundrel mayor then. You aren't very different from some folk around here. I've just sliced a few ears of corrupt clerks in the last month.""",
+	DKING_FIRST_PAY = """\n\n— You know, after you've been captured, I was very angry. After all, you've damaged our ancient architecture among other things, but I'm calm now. After all, you are more useful alive to us. What do you say about paying for your damages and helping us out?""",
+	DKING_FIRST_IMPORTANT = """— Now, I will task you with a very important matter. You will receive your freedom back for the sake of completing your task, and, if you succeed, you will be freed for good. If you fail, however... Well, I trust you will not disappoint me.""",
 
-	KING_CAPTURED_CONTINUE = """— You know, after you've been captured, I was very angry. After all, you've damaged our ancient architecture among other things, but I'm calm now. After all, you are more useful alive to us. What do you say about paying for your damages and helping us out?""",
+	DKING_FIRST_OPT_TASK = "What is the task?",
+	DKING_FIRST_OPT_JEAN = "What about Jean? (remove after 1 use)",
+	DKING_FIRST_OPT_EXCHANGE = "I want something you possess in exchange for my service.",
+	DKING_FIRST_OPT_WITHOUT_J = "I will not leave without Jean",
+	DKING_FIRST_OPT_NOTCARE = "As long as I get to keep my freedom. I don't really care about her.",
 
-	KING_TASK_INTRO = """— Now, I will task you with a very important matter. You will receive your freedom back for the sake of completing your task, and, if you succeed, you will be freed for good. If you fail, however... Well, I trust you will not disappoint me.""",
+	DKING_FIRST_REPLY_JEAN = """— Your companion, I believe? I won't make any promises regarding her. I have seen her and I have come to appreciate her beauty. I think I will keep her. After all, you two have committed a crime, and somebody always has to pay the price for crossing me. In this case, the responsibility will fall onto her shoulders entirely. Unless you disappoint me. In which case, you both will have to carry the burden of atonement.""",
+	DKING_FIRST_REPLY_EXCHANGE = """— Ha-ha-ha! What did I say? Daring you are, indeed. Not many people are brave enough to express their wants in a situation like yours. I like that. We will discuss your reward if the task is completed.""",
+	DKING_FIRST_REPLY_WITHOUT_J = """— Hmm... You stand accused of a crime of the highest order, and yet you demand something of me? You are not afraid to ask what you want, and I appreciate that. But there are limits to my generosity. But so be it. I will make no promises, but depending on the quality of your service, I might consider parting with that prize as well.""",
+	DKING_FIRST_REPLY_NOTCARE = """— Then we have an understanding. You do not have to worry about your companion. I can promise she will not rot in the cell forever. She's too fine a jewel to keep locked away like that. I will grant her a chance at life befitting her beauty.""",
 
-	KING_TASK_OPTION_1 = "What is the task?",
-	KING_TASK_OPTION_2 = "What about Jean? (remove after 1 use)",
-	KING_TASK_OPTION_3 = "I want something you possess in exchange for my service.",
+	DKING_FIRST_TASK1_1 = """— Take a look around you. You see my palace, my grand royal hall. The beauty of it created by these curious contraptions all across. The waterfalls, the flowers, blooming, even though no sunlight reaches them down here, in the subterranean darkness.""",
+	DKING_FIRST_TASK1_CAPTURED = " And then, the guardian you’ve met at the treasure vault. Quite an invention, wouldn’t you say?",
+	DKING_FIRST_TASK1_2 = """\n\nThe king pauses to take another sip of wine from his glass.
 
-	KING_TASK_RESPONSE_1 = """— Take a look around you. You see my palace, my grand royal hall. The beauty of it is created by these curious contraptions all across. The waterfalls, the flowers blooming, even though no sunlight reaches them down here, in the subterranean darkness. And then, the guardian you've met at the treasure vault. Quite an invention, wouldn't you say?""",
+—  One particular servant of mine greatly contributed to building this place. It humbles me to admit, she does not belong to my kind. A petty goblin she is, but with an intellect to match the brightest dwarven minds. A true wonder of the world! """,
+	DKING_FIRST_TASK2 = """The king grasps the glass in his hand with all the strength he can muster and the glass breaks, spilling its contents on the pillow.
 
-	KING_TASK_RESPONSE_2 = """— Your companion, I believe? I won't make any promises regarding her. I have seen her and I have come to appreciate her beauty. I think I will keep her. After all, you two have committed a crime, and somebody always has to pay the price for crossing me. In this case, the responsibility will fall onto her shoulders entirely. Unless you disappoint me. In which case, you both will have to carry the burden of atonement.""",
+— She was taken from me! Shamelessly stolen by a group that has been meddling in the affairs of the state for quite some time. 
 
-	KING_TASK_RESPONSE_3 = """— Ha-ha-ha! What did I say? Daring you are, indeed. Not many people are brave enough to express their wants in a situation like yours. I like that. We will discuss your reward if the task is completed.""",
+The king pauses and takes a look at the spilled wine, and addresses one of his concubines.
 
-	KING_TASK_OPTION_RESPONSE_1 = "I will not leave without Jean",
-	KING_TASK_OPTION_RESPONSE_2 = "As long as I get to keep my freedom. I don't really care about her.",
+— Clean this mess up.""",
+	DKING_FIRST_TASK3 = """— The missing servant's name is Hara, and I will have you retrieve her from the terrorists' crooked grasp. I stress again that it is a task of utmost importance, as well as urgency. For everything she has already accomplished, there's one last task remaining she's yet to fulfill. And I want to see it completed as soon as possible.""",
 
-	KING_TASK_FINAL_RESPONSE_1 = """— Hmm... You stand accused of a crime of the highest order, and yet you demand something of me? You are not afraid to ask what you want, and I appreciate that. But there are limits to my generosity. But so be it. I will make no promises, but depending on the quality of your service, I might consider parting with that prize as well.""",
+	DKING_FIRST_OPT_HARATASK = "What is Hara's last task?",
+	DKING_FIRST_OPT_GROUP = "What is that group that kidnapped her?",
+	DKING_FIRST_OPT_START = "What do I start with?",
 
-	KING_TASK_FINAL_RESPONSE_2 = """— Then we have an understanding. You do not have to worry about your companion. I can promise she will not rot in the cell forever. She's too fine a jewel to keep locked away like that. I will grant her a chance at life befitting her beauty.""",
-
-	KING_TASK_CONTINUE_RESPONSE = """— The missing servant's name is Hara, and I will have you retrieve her from the terrorists' crooked grasp. I stress again that it is a task of utmost importance, as well as urgency. For everything she has already accomplished, there's one last task remaining she's yet to fulfill. And I want to see it completed as soon as possible.""",
-	
-	KING_HARA_TASK_QUESTION_1 = "What is Hara's last task?",
-	KING_HARA_TASK_QUESTION_2 = "What is that group that kidnapped her?",
-	KING_HARA_TASK_QUESTION_3 = "What do I start with?",
-
-	KING_HARA_TASK_RESPONSE_1 = """— This matter is out of scope of what you should know. It does not concern you in any way. But I will have you know that the matter is so important, the future of this very kingdom depends on it. So you must realize how much of a responsibility I am placing on you.""",
-
-	KING_HARA_TASK_RESPONSE_2 = """— They call themselves the Coalition. Typical rebel scum. Not particularly numerous or well organized, but this makes them elusive. I have been diligently hunting them down for the past couple of months, but my men fail to discover their hideout and capture its leader... It is just a matter of time. They will have their dues soon.""",
-
-	KING_HARA_TASK_RESPONSE_3 = """— I have a plan for it. Recently my guards have managed to catch one of their agents. However, he's a tough nut to crack. But unknown to him, we've also eliminated another member of their group. I want you to find a gnome not from these lands. With a bit of makeup and instructions, we can manage to have him play along and get the necessary information.
+	DKING_FIRST_REPLY_HARATASK = """— This matter is out of scope of what you should know. It does not concern you in any way. But I will have you know that the matter is so important, the future of this very kingdom depends on it. So you must realize how much of a responsibility I am placing on you.""",
+	DKING_FIRST_REPLY_GROUP = """— They call themselves the Coalition. Typical rebel scum. Not particularly numerous or well organized, but this makes them elusive. I have been diligently hunting them down for the past couple of months, but my men fail to discover their hideout and capture its leader... It is just a matter of time. They will have their dues soon.""",
+	DKING_FIRST_PLAN = """— I have a plan for it. Recently my guards have managed to catch one of their agents. However he’s a tough nut to crack. But unknown to him we’ve also eliminated another member of their group. I want you to find a gnome not from these lands. With a bit of makeup and instructions we can manage him to play along and get necessary information about it.
 
 — Might need to rough him up a bit before it, but I trust you to bring an agreeable pawn.""",
 
-	KING_HARA_TASK_OPTION_1 = "Very well, I'll find a gnome to play this role",
-	KING_HARA_TASK_OPTION_2 = "I'll bring a gnome but you can't just beat him up like that",
-	KING_HARA_TASK_OPTION_3 = "Instead of wasting time on this, just let me torture that agent",
+	DKING_FIRST_OPT_GNOME = "Very well, I'll find a gnome to play this role",
+	DKING_FIRST_OPT_CANTBEAT = "I'll bring a gnome but you can't just beat him up like that",
+	DKING_FIRST_OPT_TORTURE = "Instead of wasting time on this, just let me torture that agent",
 
-	KING_HARA_TASK_RESPONSE_2_1 = """— ...I was just joking, of course, we will only smear him a bit to look like someone seriously damaged and fake his identity.""",
-
-	KING_HARA_TASK_RESPONSE_3_1 = """The king raises his brow at your proposal.
+	DKING_FIRST_REPLY_CANTBEAT = """— ...I was just joking, of course, we will only smear him a bit to look like someone seriously damaged and fake his identity.""",
+	DKING_FIRST_REPLY_TORTURE = """The king raises his brow at your proposal.
 
 — My best servants have not been able to do it, but if you insist... Might I warn you if he perishes during your interrogation, you might take his place.""",
 
-	KING_HARA_TASK_FINAL_OPTION_1 = "Consider it done",
-	KING_HARA_TASK_FINAL_OPTION_2 = "Nevermind, I'll rather find someone else",
+	DKING_FIRST_OPT_DONE = "Consider it done",
+	DKING_FIRST_OPT_NEVERMIND = "Nevermind, I'll rather find someone else",
 
-	KING_HARA_TASK_END = """The king nods and turns away, demonstrating that this talk is over.""",
+	DKING_FIRST_END = """The king nods and turns away, demonstrating that this talk is over.""",
+	DKING_FIRST_END_GNOME = """\n\nYou note to yourself that this task is going to need an especially well-behaved and tamed character.
+(Charm >= 50; Tame Factor >= 4)""",
 
-	KING_HARA_TASK_GNOME_NOTE = """You note to yourself that this task is going to need an especially well-behaved and tamed character.""",
+	KURO_FIRST_START1 = """As you are being escorted outside by the guard through the palace, you catch sight of a girl who seems very alien to this place.""",
+	KURO_FIRST_START1_ZEPHYRA = """You recognize her from the time you’ve been tracking down Zephyra’s paintbrush.""",
+	KURO_FIRST_START1_NOZEPHYRA = """\nThe girl’s clothes and hair are exceedingly dark even for the underground location you are at.""",
+	KURO_FIRST_START2 = """\n\nGuardl: — What are you looking at? Keep moving.""",
 
-	KURO_EVENT_INTRO = """As you are being escorted outside by the guard through the palace, you catch sight of a girl who seems very alien to this place.""",
+	KURO_FIRST_OPT_GIRL = "*Ask about the girl*",
+	KURO_FIRST_OPT_IGNORE = "*Ignore it*",
 
-	KURO_EVENT_OPTION_1 = "*Ask about the girl*",
-	KURO_EVENT_OPTION_2 = "*Ignore it*",
+	KURO_FIRST_REPLY_GIRL = """Guard: — Her? It's Lady Kuro. The King appointed her as his chancellor a few months ago. Eerie woman, I say, but she must have something the King needs.""",
 
-	KURO_EVENT_RESPONSE_1 = """Guard: — Her? It's Lady Kuro. The King appointed her as his chancellor a few months ago. Eerie woman, I say, but she must have something the King needs.""",
+	KURO_FIRST_OPT_EERIE = """You aren't afraid of calling her eerie right next to her?""",
+	KURO_FIRST_OPT_FROM = "Where did she come from?",
+	KURO_FIRST_OPT_SILENT = "*Remain silent*",
 
-	KURO_EVENT_RESPONSE_1_1 = """You aren't afraid of calling her eerie right next to her?""",
-	KURO_EVENT_RESPONSE_1_2 = "Where did she come from?",
-	KURO_EVENT_RESPONSE_1_3 = "*Remain silent*",
+	KURO_FIRST_REPLY_EERIE = """The guard shakes his head. Kuro does not pay any attention to it either. It seems she simply does not care for him, only giving you a side glance.""",
+	KURO_FIRST_REPLY_FROM = """Guard: — Who knows. One day she just appeared out of thin air, then the captain ordered us to obey her orders. Thankfully, she doesn't ask for much. Some say she must've come from the darkest depths of the coal mines, but I think her skin is too clean, haha.""",
 
-	KURO_EVENT_RESPONSE_2_1 = """The guard shakes his head. Kuro does not pay any attention to it either. It seems she simply does not care for him, only giving you a side glance.""",
+	DWARF_PRISON_OPT_SLAVE = "Deliver slave",
+	DWARF_PRISON_OPT_INTERROGATE = "Interrogate prisoner",
 
-	KURO_EVENT_RESPONSE_2_2 = """Guard: — Who knows. One day she just appeared out of thin air, then the captain ordered us to obey her orders. Thankfully, she doesn't ask for much. Some say she must've come from the darkest depths of the coal mines, but I think her skin is too clean, haha.""",
-
-	PRISON_DELIVER_SLAVE = "Deliver slave",
-	PRISON_INTERROGATE_PRISONER = "Interrogate prisoner",
-	PRISON_LEAVE = "Leave",
-
-	PRISON_DELIVER_SLAVE_INTRO = """The gnome, carefully chosen for [his] ability to play along convincingly, walks beside you. You've briefed [him] on his role, but there's always a risk in such deceptions.
+	DWARF_PRISON_SLAVE1 = """The gnome, carefully chosen for [his] ability to play along convincingly, walks beside you. You've briefed [him] on his role, but there's always a risk in such deceptions.
 
 The prison guards eye you suspiciously as you arrive, but the King's seal on your orders grants you immediate access. You're led to a secluded corner near the interrogation room, where you can listen without being seen.
 
 Guard: — Wait here. We'll bring the prisoner in shortly.""",
-
-	PRISON_DELIVER_SLAVE_CONTINUE = """Prisoner: — What now? I've told you everything I-
+	DWARF_PRISON_SLAVE2 = """Prisoner: — What now? I've told you everything I-
 
 His words cut off abruptly as he presumably sees the gnome. There's a moment of stunned silence.
 
 Guard: — Look who we found trying to sneak into the castle. Your little friend here was quite cooperative once we explained the situation.
 
 You strain to hear the prisoner's reaction, knowing that the next few moments could make or break this plan.""",
-
-		PRISON_DELIVER_SLAVE_REACTION = """As you wait behind the corner, straining to hear the conversation, the prisoner's voice breaks the tense silence.
+	DWARF_PRISON_SLAVE3 = """As you wait behind the corner, straining to hear the conversation, the prisoner's voice breaks the tense silence.
 
 Prisoner: — What... Gork? Is that you? How did they...
 
@@ -16653,14 +16644,12 @@ Gnome: — I'm sorry, I... I couldn't let them hurt my family. They know everyth
 There's a long pause, filled only by the sound of heavy breathing.
 
 Prisoner: — You think I'll buy into this crap?""",
-
-	PRISON_INTERROGATE_PRISONER_INTRO = """You are led to a dimly lit prison cell, where a chained figure slumps against the wall. The guard unlocks the door, gesturing for you to enter.
+	DWARF_PRISON_INTERROGATE1 = """You are led to a dimly lit prison cell, where a chained figure slumps against the wall. The guard unlocks the door, gesturing for you to enter.
 
 Guard: — Here's the rebel we caught. Get what you need from him, but don't kill him. The King wants him alive... for now.
 
 The prisoner raises his head slightly as you approach. His face is bruised and swollen, one eye nearly shut from the beating he's endured. Despite his condition, there's a defiant glint in his good eye.""",
-
-	PRISON_INTERROGATE_PRISONER_CONTINUE = """Prisoner: — Another interrogator? You're wasting your time. I won't betray my comrades.
+	DWARF_PRISON_INTERROGATE2 = """Prisoner: — Another interrogator? You're wasting your time. I won't betray my comrades.
 
 The guard snorts and turns to leave, calling over his shoulder:
 
@@ -16668,27 +16657,25 @@ Guard: — He's all yours. Just remember, no permanent damage without the King's
 
 The cell door clangs shut behind you, leaving you alone with the battered rebel. The air is thick with the smell of sweat and blood.""",
 
-	PRISON_INTERROGATE_OPTION_1 = "Great, I've grown bored from not inflicting any pain for so long (physics factor)",
-	PRISON_INTERROGATE_OPTION_2 = "You will make a nice magic practice target (magic factor)",
-	PRISON_INTERROGATE_OPTION_3 = "It's not too late to strike a deal, you know (charm factor)",
+	DWARF_PRISON_OPT_PHYSICS = "Great, I've grown bored from not inflicting any pain for so long (physics factor)",
+	DWARF_PRISON_OPT_MAGIC = "You will make a nice magic practice target (magic factor)",
+	DWARF_PRISON_OPT_CHARM = "It's not too late to strike a deal, you know (charm factor)",
 
-	PRISON_INTERROGATE_PHYSICS = """As you approach the prisoner, you can see the tension in his body increase. He tries to shrink back against the wall, but the chains prevent him from moving far. His one good eye darts between you and the door, as if gauging his chances of escape.
+	DWARF_PRISON_PHYSICS = """As you approach the prisoner, you can see the tension in his body increase. He tries to shrink back against the wall, but the chains prevent him from moving far. His one good eye darts between you and the door, as if gauging his chances of escape.
 
 You notice a few implements left behind by previous interrogators—a wooden club leaning against the wall, a bucket of dirty water in the corner, and some frayed rope coiled on a hook. The sight of these tools seems to make the prisoner even more anxious.
 
 Prisoner: — S-stay back! I won't tell you anything, no matter what you do to me!
 
 His voice quavers despite his attempt at bravado. It's clear that while he may have resisted so far, his resolve is weakening.""",
-
-	PRISON_INTERROGATE_MAGIC = """As you consider using torture magic on the prisoner, a cold, unsettling energy begins to crackle in the air around you. The prisoner's eyes widen slightly, sensing the change in atmosphere.
+	DWARF_PRISON_MAGIC = """As you consider using torture magic on the prisoner, a cold, unsettling energy begins to crackle in the air around you. The prisoner's eyes widen slightly, sensing the change in atmosphere.
 
 The magical energy coalesces around your hands, forming ethereal tendrils that snake towards the chained man. He tries to press himself further against the wall, but there's nowhere for him to escape.
 
 Prisoner: — W-what are you doing? Stay back!
 
 His voice wavers, a mix of fear and defiance. The magical tendrils hover inches from his skin, ready to inflict pain beyond physical means. The prisoner's ragged breathing is the only sound breaking the eerie silence.""",
-
-	PRISON_ATTACK = """Suddenly, the cell door bursts open. Three masked figures rush in, weapons drawn. One of them quickly breaks the prisoner's chains while the others keep their weapons trained on you.
+	DWARF_PRISON_ATTACK1 = """Suddenly, the cell door bursts open. Three masked figures rush in, weapons drawn. One of them quickly breaks the prisoner's chains while the others keep their weapons trained on you.
 
 Masked Figure: — Don't move! We're taking our comrade back.
 
@@ -16697,6 +16684,11 @@ You find yourself outnumbered and outmaneuvered. The rebels work swiftly, suppor
 Masked Figure: — Stay put if you want to live.
 
 The sounds of fighting grow more distant as the rescue team makes their escape. You're left alone in the cell, the opportunity for interrogation lost in the chaos of the rebel attack.""",
+	DWARF_PRISON_ATTACK2 = "After the attack is over and the King’s forces reestablish their presence you are only left with an option to search and pursue these attackers.",
+
+
+
+
 
 	SEARCH_REBEL_TRACKS_COMPLETE = """After hours of searching, you finally stumble upon some promising tracks leading away from the Dwarf capital. The trail is faint, barely visible in the dim light of the underground caverns, but it's there—a mix of footprints and what appears to be drag marks, likely from the injured prisoner.
 

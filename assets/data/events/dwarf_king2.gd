@@ -93,20 +93,8 @@ var data = {
 			}
 		]
 	},
-	dking2task_hara_start = {
-		tags = ["dialogue_scene"],
-		reqs = [],
-		text = [{text = "DKING2TASK_HARA_START", reqs = []}],
-		options = [
-			{
-				code = "dking2task_hara_1",
-				text = "DIALOGUECONTINUE",
-				reqs = [],
-				type = 'next_dialogue',
-				dialogue_argument = 0
-			}
-		]
-	},
+
+
 	dking2task_hara_1 = {
 		tags = ["dialogue_scene"],
 		custom_background = "kuro_book_0",
@@ -114,48 +102,11 @@ var data = {
 		text = [{text = "DKING2TASK_HARA_1", reqs = []}],
 		options = [
 			{
-				code = "dking2task_hara_2",
+				code = "dwarf_workshop",
 				text = "DIALOGUECONTINUE",
 				reqs = [],
 				type = 'next_dialogue',
-				dialogue_argument = 1
-			}
-		]
-	},
-	dking2task_hara_2 = {
-		tags = ["dialogue_scene"],
-		reqs = [],
-		text = [
-			{text = "DKING2TASK_HARA_2", reqs = [], previous_dialogue_option = 1}
-			#add text for further starts
-		],
-		options = [
-			{
-				code = "dking2task_hara_3",
-				text = "DKING2TASK_HARA_2_OPT_1",
-				reqs = [
-					{type = "quest_completed", name = "hara_capacitor_quest", check = false}
-				],
-				type = 'next_dialogue',
-				dialogue_argument = 0
-			},{
-				code = "dking2task_kuro_1",
-				text = "DKING2TASK_HARA_2_OPT_2",
-				reqs = [{type = 'dialogue_seen', check = false, value = 'DKING2TASK_KURO_3'}],
-				type = 'next_dialogue',
-				dialogue_argument = 0
-			},{
-				code = "kuro_questions",
-				text = "DKING2TASK_HARA_2_OPT_2",
-				reqs = [{type = 'dialogue_seen', check = true, value = 'DKING2TASK_KURO_3'}],
-				type = 'next_dialogue',
-				dialogue_argument = 0
-			},{
-				code = 'close',
-				text = "DIALOGUELEAVE",
-				reqs = [],
-				dialogue_argument = 0,
-				type = 'next_dialogue'
+				dialogue_argument = 2
 			}
 		]
 	},
@@ -899,10 +850,10 @@ var data = {
 		text = [{text = "DKING2TASK_HARA_10", reqs = []}],
 		options = [
 			{
-				code = 'dking2task_hara_2',
-				text = "DIALOGUELEAVE",
+				code = 'dwarf_workshop',
+				text = "DIALOGUEWALKAWAY",
 				reqs = [],
-				dialogue_argument = 0,
+				dialogue_argument = 1,
 				type = 'next_dialogue'
 			}
 		]
@@ -963,10 +914,10 @@ var data = {
 		],
 		options = [
 			{
-				code = 'dking2task_hara_2',
-				text = "DIALOGUELEAVE",
+				code = 'dwarf_workshop',
+				text = "DIALOGUEWALKAWAY",
 				reqs = [],
-				dialogue_argument = 0,
+				dialogue_argument = 1,
 				type = 'next_dialogue'
 			}
 		]
@@ -1087,10 +1038,10 @@ var data = {
 #				reqs = [{type = 'dialogue_seen', check = true, value = 'KURO_QUESTIONS_REPLAY_RED'}],
 #				dialogue_argument = 6,
 			},{
-				code = 'dking2task_hara_2',
+				code = 'dwarf_workshop',
 				text = "DIALOGUENEVERMIND",
 				reqs = [{type = 'dialogue_seen', check = false, value = 'KURO_QUESTIONS_END'}],
-				dialogue_argument = 0,
+				dialogue_argument = 1,
 				type = 'next_dialogue'
 			},{
 				code = 'close',

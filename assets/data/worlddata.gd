@@ -116,7 +116,7 @@ var lands = {
 		starting_locations = ['dungeon_undead_crypt'],
 		locations = {},
 		locationpool = ['dungeon_undead_crypt'],
-		guilds = ['dwarf_tavern'],
+		guilds = [],
 		tags = [],
 		capital_options = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
@@ -569,25 +569,25 @@ var factiondata = {
 			}
 		],
 	},
-	dwarf_tavern = {
-		code = 'dwarf_tavern',
-		name = tr("DWARF_TAVERN"),
-		description = '',
-		actions = [],
-		bonus_actions = [],
-		conditions = [{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'tavern'}],
-		events = ['dwarf_tavern_barkeep', 'dwarf_tavern_patrons', 'dwarf_tavern_girl'],
-		quests_easy = [],
-		quests_medium = [],
-		quests_hard = [],
-		slavenumber = [],
-		questnumber = [],
-		tags = [],
-#		icon = load("res://assets/Textures_v2/CITY/Icons/icon_workers.png"),
-		background = "servants_guild",
-#		reputation_shop = {},
-		hireable_characters = [],
-	},
+#	dwarf_tavern = {
+#		code = 'dwarf_tavern',
+#		name = tr("DWARF_TAVERN"),
+#		description = '',
+#		actions = [],
+#		bonus_actions = [],
+#		conditions = [{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'tavern'}],
+#		events = ['dwarf_tavern_barkeep', 'dwarf_tavern_patrons', 'dwarf_tavern_girl'],
+#		quests_easy = [],
+#		quests_medium = [],
+#		quests_hard = [],
+#		slavenumber = [],
+#		questnumber = [],
+#		tags = [],
+##		icon = load("res://assets/Textures_v2/CITY/Icons/icon_workers.png"),
+#		background = "servants_guild",
+##		reputation_shop = {},
+#		hireable_characters = [],
+#	},
 }
 
 
@@ -1099,13 +1099,25 @@ var fixed_location_options = { #override serialized data
 	],
 	dwarf_capital = [
 		{
-			text = tr("DWARF_CAPITAL_PALACE"), 
-			reqs = [{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'audience'}],
+			text = tr("DWARF_PALACE"), 
+			reqs = [{type = 'any_quest_stage', value = 'visit_dwarfs_quest', stages = ['audience', 'jean']}],
 			args = [{code = 'start_event', data = 'dwarf_palace_first', args = []}]
 		},{
 			text = tr("DWARF_WORKSHOP"), 
-			reqs = [{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'tavern'}],
-			args = [{code = 'start_event', data = 'dwarf_workshop_closed1', args = []}]
+			reqs = [],#{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'audience', state = false}
+			args = [{code = 'start_event', data = 'dwarf_workshop', args = []}]
+		},{
+			text = tr("DWARF_TAVERN"), 
+			reqs = [
+				{type = 'any_quest_stage', value = 'visit_dwarfs_quest', stages = ['tavern', 'jean']},
+				{type = 'event_seen', check = false, value = 'dwarf_tavern_bark_after_fight'},
+				{type = 'event_seen', check = false, value = 'dwarf_tavern_bark_leave'},
+			],
+			args = [{code = 'start_event', data = 'dwarf_tavern', args = []}]
+		},{
+			text = tr("DWARF_PRISON"), 
+			reqs = [{type = 'active_quest_stage', value = 'dking_hara_quest', stage = 'info'}],
+			args = [{code = 'start_event', data = 'dwarf_prison_start', args = []}]
 		}
 	],
 	beastkin_capital = [
