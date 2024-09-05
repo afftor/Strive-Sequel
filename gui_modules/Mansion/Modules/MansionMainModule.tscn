@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveListModule.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSkillsModule.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/core/Console.gd" type="Script" id=7]
-[ext_resource path="res://gui_modules/Travel new/TravelModuleNew.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionLeftMenuModule.tscn" type="PackedScene" id=9]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionLogModule.tscn" type="PackedScene" id=10]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveModule.tscn" type="PackedScene" id=11]
@@ -58,7 +57,6 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_vertical_guides_": [ 0.575684 ]
 }
-test_mode = true
 
 [node name="BGHolder" type="Control" parent="."]
 anchor_right = 1.0
@@ -151,9 +149,6 @@ margin_left = 320.0
 margin_top = 948.0
 margin_right = -500.0
 margin_bottom = -12.0
-
-[node name="TravelsModule" parent="." instance=ExtResource( 8 )]
-visible = false
 
 [node name="upgrades" parent="." instance=ExtResource( 35 )]
 visible = false
