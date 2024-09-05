@@ -149,7 +149,7 @@ func build_for_default(person, newbutton):
 	newbutton.get_node('armor2').visible = true
 	newbutton.get_node('DateIcon').visible = !person.is_master()
 	newbutton.get_node('SexIcon').visible = true
-	newbutton.get_node('TrainIcon').visible = true
+	newbutton.get_node('TrainIcon').visible = person.training.enable
 	newbutton.get_node('LocIcon').visible = true
 	newbutton.get_node('state').visible = true
 
@@ -245,7 +245,7 @@ func build_sex_selection(person, newbutton):
 	newbutton.get_node('armor2').visible = true
 	newbutton.get_node('DateIcon').visible = !person.is_master()
 	newbutton.get_node('SexIcon').visible = true
-	newbutton.get_node('TrainIcon').visible = true
+	newbutton.get_node('TrainIcon').visible = person.training.enable
 	newbutton.get_node('LocIcon').visible = true
 	newbutton.get_node('state').visible = true
 
@@ -366,7 +366,7 @@ func build_for_skills(person, newbutton):
 	newbutton.get_node('armor2').visible = true
 	newbutton.get_node('DateIcon').visible = !person.is_master()
 	newbutton.get_node('SexIcon').visible = true
-	newbutton.get_node('TrainIcon').visible = true
+	newbutton.get_node('TrainIcon').visible = person.training.enable
 	newbutton.get_node('LocIcon').visible = true
 	newbutton.get_node('state').visible = true
 	if person == get_parent().skill_source:
