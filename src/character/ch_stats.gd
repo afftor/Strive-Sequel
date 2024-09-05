@@ -249,7 +249,7 @@ func custom_stats_get(stat):
 	if stat == 'trainee_amount':
 		var tres = statlist.trainee_amount
 		if bonuses.has('trainee_amount_add'):
-			tres += bonuses.tarinees_amount_add
+			tres += bonuses.trainee_amount_add
 		tres += int(statlist.timid_factor) / 2
 		return tres
 	if stat == 'resists':

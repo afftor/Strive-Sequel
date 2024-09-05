@@ -89,15 +89,20 @@ func build_trainer_list():
 		globals.connectslavetooltip(panel.get_node('icon'), tchar)
 		panel.get_node('name').text = tchar.get_full_name() + "%d/%d" % [used, amount]
 		panel.connect('pressed', self, 'assign_trainer', [id])
-		if used >= amount:
-			panel.disabled = true
-			panel.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
 		var text = ""
 		for prof in tchar.xp_module.professions:
 			var data = classesdata.professions[prof]
 			if data.traits.has('trainer'):
 				text += "%s, " % tr(data.name)
 		text = text.trim_suffix(', ')
+		if used >= amount:
+			panel.disabled = true
+			panel.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
+			text += "\n" + tr('NOTRAINSLOTS')
+		if id == person.training.trainer:
+			panel.disabled = true
+			panel.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
+			text += "\n" + tr('ALREADYTRAINER')
 		panel.get_node('desc').text = text 
 
 
