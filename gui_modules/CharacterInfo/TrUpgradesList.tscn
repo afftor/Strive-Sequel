@@ -358,7 +358,6 @@ custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 
 [node name="icon" type="TextureRect" parent="trainer_list/Container/Button"]
-show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -645.0
@@ -366,7 +365,6 @@ texture = ExtResource( 7 )
 expand = true
 
 [node name="icon2" type="TextureRect" parent="trainer_list/Container/Button"]
-show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -645.0
