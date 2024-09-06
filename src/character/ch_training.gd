@@ -36,7 +36,10 @@ func process_disposition_data(data, setup = false):
 	for cat in data:
 		if setup:
 			dispositions_known[cat] = false
-		dispositions[cat] = input_handler.weightedrandom(data[cat])
+		if data[cat] is Array:
+			dispositions[cat] = input_handler.weightedrandom(data[cat])
+		else:
+			dispositions[cat] = data[cat]
 
 
 func unlock_disposition(cat):

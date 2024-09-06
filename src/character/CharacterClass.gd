@@ -911,8 +911,8 @@ func recheck_upgrades():
 func recheck_equip():
 	equipment.recheck_equip()
 
-func process_disposition_data(data):
-	training.process_disposition_data(data)
+func process_disposition_data(data, setup = false):
+	training.process_disposition_data(data, setup)
 
 func get_trainer():
 	return training.get_trainer()

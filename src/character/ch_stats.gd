@@ -1423,6 +1423,8 @@ func process_chardata(chardata, unique = false):
 				statlist[i] = chardata[i]
 		elif i in ['hair_color', 'hair_style', 'hair_length']:
 			set_stat(i, chardata[i])
+		elif i == 'training_disposition':
+			parent.get_ref().process_disposition_data(chardata.training_disposition, true)
 	if chardata.has('slave_class'): set_slave_category(chardata.slave_class)
 	if chardata.has("sex_traits"):
 		for i in chardata.sex_traits:
