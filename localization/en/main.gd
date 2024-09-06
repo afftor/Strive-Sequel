@@ -189,6 +189,8 @@ var TranslationDict = {
 	SIBLINGMODULEPERSONALITY = "Personality",
 	SYSMESSAGEATLEAST1CHAR = "Select at least 1 character to fight.",
 	
+	
+	
 	OPERANTATLEAST = "At least",
 	OPERANTATMOST = "At most",
 	
@@ -264,6 +266,7 @@ using       button.""",
 	LMMINVENTORY = "Inventory",
 	LMMCRAFT = "Craft",
 	LMMJOURNAL = "Journal",
+	LMMWORK = "Work",
 	#MansionSlaveListModule
 	MSLMNAME = "Character List",
 	MSLMSex = "Sex",
@@ -274,7 +277,9 @@ using       button.""",
 	MSLMEXP = "Exp",
 	MSLMLOC = "Location",
 	MSLMTYPE = "Type",
+	MSLMINV = "Gear",
 	
+	TRAINERSAVAILABLE = "Available Trainers",
 	MSLMRELOC = "Relocating",
 	MSLMRE = "in",
 	MSLMTURN = " turns",
@@ -1226,7 +1231,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ACTIONPRAISE = "Praise",
 	ACTIONPRAISEDESCRIPT = "Show sympathy and praise [name].",
 	ACTIONREWARD = "Reward",
-	ACTIOREWARDDESCRIPT = "Reward [name] with 10 pieces of gold.",
+	ACTIONREWARDDESCRIPT = "Reward [name] with 10 pieces of gold.",
 	ACTIONDAYOFF = "Day Off",
 	ACTIONDAYOFFDESCRIPT = "Give [name] a day off. Will make [him] unavailable until then",
 	ACTIONSLAP = "Slap",
@@ -1655,7 +1660,12 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATWITS_BONUS = "Wits",
 	STATCHARM_BONUS = "Charm",
 	STATSEXUALS_BONUS = "Sexuals",
-
+	
+	STATTRAINEE_AMOUNT = "Training Slots",
+	TRAITTRAINER = "Trainer",
+	TRAITTRAINERDESCRIPT = "Can oversee slaves",
+	
+	
 	STATOBEDIENCE = "Obedience",
 	STATOBEDIENCEDESCRIPT = "Obedience is a character's willingness to obey your orders. Obedience is gained by using social skills. When depleted character can escape and will be lost in case that happens. ",
 	STATLOYALTY = "Loyalty",
@@ -1752,6 +1762,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	INFOCONSENT = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. Consent will affect prostitution related jobs.",
 	INFOCONSENTMASTER = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. {color=green|[Master] has no Consent requirements for any actions.}",
 	INFOTRAINING = "Slave type characters will be trained by selected person in various actions. Every slave has different {color=aqua|Dispositions} towards different kind of actions. Properly selected actions will award more Loyalty and drain less spirit but most actions have additional effects.",
+	INFOSLAVETRAINER = "Assign a Trainer to oversee and train untrained slave. Trainer have a limited number of slaves they can work with. Slaves with nobody overseeing them will not do any work until fully trained.",
 	
 	CATEGORYKEYWORD = "Category",
 	ACTIONCATEGORYPHYSICAL = "Physical", 
@@ -2274,6 +2285,22 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITLOYALTY_INTERBREEDDESCRIPT = "{color=green|Allows character to impregnate or be impregnated by usually incompatible race partner}\n\nRequires: Sex:Advanced",
 	TRAITMASTER_MENTOR = "Mentor",
 	TRAITMASTER_MENTORDESCRIPT = "All present and future characters automatically receive Basic Obedience and Combat loyalty traits.",
+	
+	TRAITUNTRAINED = "Rebellious",
+	TRAITUNTRAINEDDESCRIPT = "[name] has not been subjected to any training yet. [His] resisting attitude makes it hard to make [him] do any work. \n-50% Productivity, -30% Damage",
+	TRAITTRAINING_BROKE_IN = "Break In",
+	TRAITTRAINING_BROKE_INDESCRIPT = "Break [name]'s Rebellious state, making [him] respect your possession of [him] and follow your orders with no visible reluctance.",
+	TRAITTRAINING_OBEDIENCE = "Obedience",
+	TRAITTRAINING_OBEDIENCEDESCRIPT = "Make [name] give up on [his] autonomy, which will allow to freely sell or give [him] away.",
+	TRAITTRAINING_CALLMASTER = "Master Acknowledgement",
+	TRAITTRAINING_CALLMASTERDESCRIPT = "Demand [name] of [his] unwavering loyalty to you. \nAllows to finish training and provide [him] with specilization. ",
+	TRAITTRAINING_RELATION = "Relationship",
+	TRAITTRAINING_RELATIONDESCRIPT = "Make move onto [name]'s personal life. After all, shouldn't [he] like you enough already?\nUnlocks Dating option and removes consent penalty in sex.",
+	TRAITTRAINING_SEXSERVICE = "Sex Service",
+	TRAITTRAINING_SEXSERVICEDESCRIPT = "Since [name]'s body belong to you, it makes sense to make [him] use it for your prosperity.\nUnlocks sex service tasks.",
+	TRAITTRAINING_SEXSERVICE_ADV = "Advanced Sex Service",
+	TRAITTRAINING_SEXSERVICE_ADVDESCRIPT = "With all well and done, its a logical step to push [name] further into depravity.\nUnlocks advanced sex service options..",
+	
 	TRAITMASTER_HARLOTRY = "Harlotry",
 	TRAITMASTER_HARLOTRYDESCRIPT = "While in service you still receive Rest benefits.",
 	TRAITMASTER_PROGENECY = "Progenecy",

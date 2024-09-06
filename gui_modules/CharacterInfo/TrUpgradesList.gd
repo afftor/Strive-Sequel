@@ -14,6 +14,7 @@ func _ready():
 	$finished/reset_button.connect("pressed", self, 'reset_training')
 	$training/complete_button.connect("pressed", self, 'finish_training')
 	globals.connecttexttooltip($training/Tooltip, tr("INFOTRAINING"))
+	globals.connecttexttooltip($trainer_list/tooltip, tr("INFOSLAVETRAINER"))
 	
 
 
@@ -87,7 +88,7 @@ func build_trainer_list():
 		var panel = input_handler.DuplicateContainerTemplate($trainer_list/Container, 'Button')
 		panel.get_node('icon').texture = tchar.get_icon()
 		globals.connectslavetooltip(panel.get_node('icon'), tchar)
-		panel.get_node('name').text = tchar.get_full_name() + "%d/%d" % [used, amount]
+		panel.get_node('name').text = tchar.get_full_name() + " - Slaves Taken: %d/%d" % [used, amount]
 		panel.connect('pressed', self, 'assign_trainer', [id])
 		var text = ""
 		for prof in tchar.xp_module.professions:
@@ -200,7 +201,7 @@ func build_training_list():
 		for tr in tr_data[category]:
 			var panel = input_handler.DuplicateContainerTemplate($training/ScrollContainer/VBoxContainer, 'Button')
 			var trdata = Skilldata.training_actions[tr]
-			var text = tr(trdata.name) + "\n" + tr("CATEGORYKEYWORD") + ": " +  tr("ACTIONCATEGORY"+trdata.type.to_upper()) + "\n" + person.translate(tr(trdata.descript))
+			var text = tr(trdata.name) + "\n" + tr("CATEGORYKEYWORD") + ": {color=yellow|" + tr("ACTIONCATEGORY"+trdata.type.to_upper()) + "}\n" + person.translate(tr(trdata.descript))
 			if cat_data.icon is String:
 				panel.get_node('icon').texture = load(cat_data.icon)
 			else:
@@ -245,7 +246,7 @@ func build_training_traits():
 			panel.get_node('icon').texture = load(trdata.icon)
 		else:
 			panel.get_node('icon').texture = trdata.icon
-		globals.connecttexttooltip(panel, tr(trdata.descript))
+		globals.connecttexttooltip(panel, person.translate(tr(trdata.descript)))
 		if person.check_trait(tr):
 			panel.pressed = true
 		else:

@@ -452,17 +452,17 @@ texture = ExtResource( 35 )
 stretch_mode = 4
 
 [node name="SexIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 780.0
+margin_left = 790.0
 margin_top = 5.0
-margin_right = 820.0
+margin_right = 830.0
 margin_bottom = 45.0
 texture = ExtResource( 21 )
 stretch_mode = 4
 
 [node name="TrainIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 820.0
+margin_left = 836.0
 margin_top = 5.0
-margin_right = 860.0
+margin_right = 876.0
 margin_bottom = 45.0
 texture = ExtResource( 21 )
 stretch_mode = 4
