@@ -36,7 +36,10 @@ func process_disposition_data(data, setup = false):
 	for cat in data:
 		if setup:
 			dispositions_known[cat] = false
-		dispositions[cat] = input_handler.weightedrandom(data[cat])
+		if data[cat] is Array:
+			dispositions[cat] = input_handler.weightedrandom(data[cat])
+		else:
+			dispositions[cat] = data[cat]
 
 
 func unlock_disposition(cat):
@@ -91,6 +94,7 @@ func reset_training():
 	tarr = parent.get_ref().get_traits_by_tag('training_final')
 	for tr in tarr:
 		parent.get_ref().remove_trait(tr)
+	parent.get_ref().set_slave_category('slave1')
 	parent.get_ref().add_trait('untrained')
 
 

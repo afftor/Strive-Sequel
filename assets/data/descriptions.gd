@@ -609,6 +609,7 @@ var bodypartsdata = {
 	slave_class = {
 		'master': {code = 'master', name = 'SLAVECLASSMASTER', chardescript = '', bodychanges = [], icon = 'class_master'},
 		'slave': {code = 'slave', name = 'SLAVECLASSSLAVE', chardescript = '', bodychanges = [], icon = 'class_slave'},
+		'slave_trained': {code = 'slave_trained', name = 'SLAVECLASSSLAVETRAINED', chardescript = '', bodychanges = [], icon = 'class_slave'}, #fix icon
 		'servant': {code = 'servant', name = 'SLAVECLASSSERVANT', chardescript = '', bodychanges = [], icon = 'class_servant'},
 		'servant_notax': {code = 'servant_notax', name = 'SLAVECLASSSERVANTALT', chardescript = '', bodychanges = [], icon = 'class_servant'},
 		'heir': {code = 'heir', name = 'SLAVECLASSHEIR', chardescript = '', bodychanges = [], icon = 'class_heir'},

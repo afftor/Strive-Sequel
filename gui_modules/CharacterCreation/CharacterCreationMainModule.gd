@@ -20,7 +20,8 @@ var guild = 'none'
 #var bodypartsarray = ['skin', 'hair_length', 'hair_color', 'eye_color', 'eye_shape', 'ears', 'horns', 'tail', 'wings', 'height']
 #var sexbodypartsarray = ['slave_class','penis_size', 'penis_type', 'balls_size','tits_size', 'ass_size']
 
-var slave_classes = ['slave','servant']
+#var slave_classes = ['slave','servant']
+var slave_classes = ['servant']
 
 var critical_stats = ["body_lower", "body_shape",
  "penis_size", # should be filtered by sex
