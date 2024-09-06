@@ -1971,6 +1971,8 @@ func baby_transform():
 func set_slave_category(new_class):
 	if new_class in ['slave']:
 		new_class = 'slave1'
+	if statlist.slave_class == new_class:
+		return
 	if statlist.slave_class != '':
 		remove_trait(statlist.slave_class.to_lower())
 	add_trait(new_class)

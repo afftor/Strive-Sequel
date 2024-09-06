@@ -94,6 +94,7 @@ func reset_training():
 	tarr = parent.get_ref().get_traits_by_tag('training_final')
 	for tr in tarr:
 		parent.get_ref().remove_trait(tr)
+	parent.get_ref().set_slave_category('slave1')
 	parent.get_ref().add_trait('untrained')
 
 

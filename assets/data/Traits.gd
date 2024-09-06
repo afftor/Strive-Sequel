@@ -111,6 +111,16 @@ var traits = {
 		bonusstats = {},
 		tags = []
 	},
+	slave_trained = {
+		code = 'slave_trained',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		bonusstats = {},
+		tags = ['trained']
+	},
 	worker = {
 		code = 'worker',
 		name = '',
