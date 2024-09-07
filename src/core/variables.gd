@@ -185,14 +185,14 @@ var sex_factor_skill_multiplier = {
 	6 : 2.2,
 }
 
-var growth_factor = {
-1 : 150,
-2 : 70,
-3 : 30,
-4 : 10,
-5 : 3,
-6 : 1,
-}
+#var growth_factor = {
+#1 : 150,
+#2 : 70,
+#3 : 30,
+#4 : 10,
+#5 : 3,
+#6 : 1,
+#}
 
 var basestats_factor_mod = {
 1 : 0.5,
@@ -562,4 +562,3 @@ var training_results_base = {
 	}
 var spirit_limits = [10, 50, 75]
 var training_costs = [15, 25, 35]
-var training_costs_gold = [500, 1000, 2000]

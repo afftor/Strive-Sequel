@@ -173,6 +173,8 @@ var TranslationDict = {
 	SIBLINGMODULESEXTRAITS = "Сексуальные черты",
 	SIBLINGMODULERELATIVES = "Родственники",
 	SIBLINGMODULETRAININGS = "Обучение",
+	SIBLINGMODULETRAININGSSERVANTS = """Servant Training""", # MISSING TRANSLATION
+	SIBLINGMODULETRAININGSMASTER = """Master Training""", # MISSING TRANSLATION
 	SIBLINGMODULEFOODCONSUMPTION = "Суточное потребление",
 	SIBLINGMODULEMAIN = "Главный",
 	SIBLINGMODULESEX = "Секс",
@@ -252,6 +254,7 @@ var TranslationDict = {
 	TUTORIALLIST6 = "исследование",
 	TUTORIALLIST7 = "навыки",
 	TUTORIALLIST8 = "татуировки",
+	TUTORIALLIST9 = """training""", # MISSING TRANSLATION
 	##Mansion
 	#LeftMenuModule
 	LMMTRAVEL = "Путешествия",
@@ -2090,6 +2093,7 @@ var TranslationDict = {
 	TRAITHEALER1DESCRIPT = "Исцеляющие заклинания на 25% эффективнее.",
 	TRAITHEALER2 = "Целитель:Эксперт",
 	TRAITHEALER2DESCRIPT = "Исцеляющие заклинания на 25% эффективнее.",
+	REMOVETRAINER = """Unassign Trainer""", # MISSING TRANSLATION
 	
 	
 	
@@ -3542,6 +3546,8 @@ var TranslationDict = {
 	
 	TRAINTUTORIAL1 = "Каждый персонаж, кроме [Master]а, должен быть обучен с помощью очков Верности. Очки Верности получаются пассивно или с помощью социальных навыков.",
 	TRAINTUTORIAL2 = "Некоторые черты облегчают управление, а другие открывают новые способности. Каждая купленная черта увеличивает количество Верности, необходимое для следующей покупки, так что обдумайте свой путь.",
+	TRAINTUTORIAL3 = """Training is done via trainer actions. Training a slave reduces their {color=aqua|Spirit}. By draining their spirit too much during the training, they will become a broken version of themselves.""", # MISSING TRANSLATION
+	TRAINTUTORIAL4 = """Each slave has their own hidden disposition towards different action types. By finding out which action type works the best, it will be a lot easier to obtain Loyalty Points without draining their spirit too much.""", # MISSING TRANSLATION
 	
 	COMBATSKILLSTUTORIAL = "Некоторые боевые навыки можно получить автоматически после покупки определенных классов. Кроме того, их можно разблокировать с помощью очков умений. Очки умений можно получить в бою. Многие навыки требуют определенных специализаций, которые получаются из классов.",
 	MARRYTUTORIAL = "После окончания гражданской войны вы сможете жениться на одной из своих подчиненных. Для начала вам нужно будет получить их согласие во время свидания. Затем приступайте к подготовке к свадьбе в церкви. В текущем состоянии игры вы можете жениться только на 1 персонаже и не можете развестись.",

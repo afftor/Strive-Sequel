@@ -68,6 +68,7 @@ __meta__ = {
 }
 
 [node name="obedlabel" type="Label" parent="Panel" groups=["hide_master", "hide_stranger"]]
+visible = false
 light_mask = 0
 margin_left = 233.571
 margin_top = 34.115
@@ -108,6 +109,7 @@ align = 1
 valign = 1
 
 [node name="loyaltylabel" type="Label" parent="Panel" groups=["hide_master", "hide_stranger"]]
+visible = false
 light_mask = 0
 margin_left = 26.0
 margin_top = 143.0
@@ -121,10 +123,10 @@ __meta__ = {
 
 [node name="character_class" type="Label" parent="Panel" groups=["hide_master"]]
 light_mask = 0
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 163.0
-margin_bottom = 84.0
+margin_left = 9.48987
+margin_top = 4.63261
+margin_right = 284.49
+margin_bottom = 81.6326
 mouse_filter = 1
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 1 )
@@ -137,24 +139,21 @@ __meta__ = {
 
 [node name="valuelabel" type="Label" parent="Panel" groups=["hide_master"]]
 light_mask = 0
-margin_left = 138.636
-margin_top = 93.8409
-margin_right = 265.636
-margin_bottom = 135.841
+margin_left = 123.778
+margin_top = 133.127
+margin_right = 250.778
+margin_bottom = 175.127
 mouse_filter = 1
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "Slave"
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="valueicon" type="TextureRect" parent="Panel" groups=["hidemaster"]]
-margin_left = 95.9311
-margin_top = 91.6577
-margin_right = 139.931
-margin_bottom = 135.658
+margin_left = 60.8689
+margin_top = 132.066
+margin_right = 104.869
+margin_bottom = 176.067
 texture = ExtResource( 4 )
 
 [node name="BaseStatsPanel" type="Panel" parent="."]
