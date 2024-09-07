@@ -109,7 +109,7 @@ func update_characters():
 		if (selected_slot == null) and mode_farm:
 			newbutton.disabled = true 
 			globals.connecttexttooltip(newbutton, tr("SELECT_SLOT_FIRST_LABEL"))
-		if !person.is_combatant() and !mode_farm:
+		if !person.is_worker() and !mode_farm:
 			newbutton.disabled = true
 			globals.connecttexttooltip(newbutton, person.translate("[name]" + tr("LACKS_BASIC_SERV_LABEL"))) #change translation
 		if selected_job != null and selected_job.has("code"):

@@ -1314,6 +1314,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAININGLABELSPIRIT = "Character spirit: %.0f",
 	TRAININGLABELLOYALTY = "Character loyalty: %.0f",
 	TRAININGCOST = "Trait unlock: %d loyalty",
+	TRAININGCOSTGOLD = "Trait unlock: %d gold",
 	TRAINNOTRAINER = "[name] has no trainer",
 	NOTRAINSLOTS = "No free training slots",
 	ALREADYTRAINER = "Current trainer",

@@ -510,7 +510,7 @@ func update_button(newbutton):
 	#job
 	newbutton.get_node("job").disabled = false
 	newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict.k_gray)
-	if !person.is_combatant(): #for conditions for work and combat are the same
+	if !person.is_worker(): #for conditions for work and combat are the same
 		newbutton.get_node("job").disabled = true
 		newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict['red'])
 		globals.connecttexttooltip(newbutton.get_node("job"), person.translate(tr('TRAINNOTRAINER')))

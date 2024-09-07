@@ -41,7 +41,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		tags = ['exhibit', 'tr_obedience', 'relation', 'sexservice', 'sexservice_adv', 'trained'],
+		tags = ['exhibit', 'tr_obedience', 'relation', 'sexservice', 'sexservice_adv', 'trained', 'worker', 'combatant'],
 		effects = []#,'test_recast'],
 	},
 	'spouse' : {#130% effect from social skills
@@ -51,7 +51,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],#,'test_recast'],
-		tags = ['tr_obedience', 'relation', 'sexservice', 'sexservice_adv', 'trained'],
+		tags = ['tr_obedience', 'relation', 'sexservice', 'sexservice_adv', 'trained', 'worker', 'combatant'],
 		bonusstats = {}
 	},
 	'director' : {#150% effect from social skills
@@ -78,7 +78,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],
-		tags = ['tr_obedience', 'relation', 'sexservice', 'sexservice_adv', 'trained',],
+		tags = ['tr_obedience', 'relation', 'sexservice', 'sexservice_adv', 'trained', 'worker', 'combatant'],
 		bonusstats = {mod_collect = -0.2, mod_farm = -0.2, mod_fish = -0.2}
 	},
 	servant = {#servant class trait, taxing is hardcoded
@@ -88,7 +88,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],
-		tags = ['tr_obedience', 'relation', 'sexservice', 'sexservice_adv', 'trained'],
+		tags = ['tr_obedience', 'trained'],
 		bonusstats = {}
 	},
 	servant_notax = {#new class trait
@@ -98,7 +98,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],
-		tags = ['tr_obedience', 'relation', 'sexservice', 'sexservice_adv', 'trained'],
+		tags = ['tr_obedience', 'trained'],
 		bonusstats = {}
 	},
 	slave1 = {#slave class trait
@@ -119,7 +119,7 @@ var traits = {
 		icon = null,
 		effects = [],
 		bonusstats = {},
-		tags = ['trained']
+		tags = ['trained', 'worker', 'combatant']
 	},
 	worker = {
 		code = 'worker',
@@ -1284,6 +1284,61 @@ var traits = {
 		reqs = [{code = 'trait', trait = 'training_sexservice', check = true}],
 		bonusstats = {}, 
 		tags = ['training', 'sexservice', 'sexservice_adv', 'simple_icon']
+	},
+	training_s_combat = {
+		code = 'training_s_combat',
+		visible = false,
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_hand2.png",
+		effects = [],
+		bonusstats = {}, 
+		reqs = [],
+		tags = ['servant_training', 'simple_icon', 'combatant']
+	},
+	training_s_working = {
+		code = 'training_s_working',
+		visible = false,
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_hand2.png",
+		effects = [],
+		bonusstats = {}, 
+		reqs = [],
+		tags = ['servant_training', 'simple_icon', 'worker']
+	},
+	training_s_relation = {
+		code = 'training_s_relation',
+		visible = false,
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_date.png",
+		effects = [],
+		reqs = [],
+		bonusstats = {}, 
+		tags = ['relation', 'simple_icon', 'servant_training']
+	},
+	training_s_sexservice = {
+		code = 'training_s_sexservice',
+		visible = false,
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_harlotry.png",
+		effects = [],
+		reqs = [],
+		bonusstats = {}, 
+		tags = ['sexservice', 'simple_icon', 'servant_training']
+	},
+	training_s_sexservice_adv = {
+		code = 'training_s_sexservice_adv',
+		visible = false,
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_group.png", 
+		effects = [],
+		reqs = [{code = 'trait', trait = 'training_s_sexservice', check = true}], #should be status - for mixing servant & slave trainings
+		bonusstats = {}, 
+		tags = ['sexservice', 'sexservice_adv', 'simple_icon', 'servant_training']
 	},
 	training_workforce = {
 		code = 'training_workforce',

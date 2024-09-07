@@ -133,6 +133,7 @@ valign = 1
 clip_text = true
 
 [node name="training" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -317,7 +318,58 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
 
+[node name="training_servant" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="training_servant"]
+margin_left = 10.0
+margin_top = 110.0
+margin_right = 690.0
+margin_bottom = 210.0
+custom_constants/separation = 20
+
+[node name="Button" type="TextureButton" parent="training_servant/HBoxContainer2"]
+visible = false
+margin_right = 101.0
+margin_bottom = 100.0
+toggle_mode = true
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 16 )
+texture_disabled = ExtResource( 17 )
+
+[node name="icon" type="TextureRect" parent="training_servant/HBoxContainer2/Button"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="cost" type="Label" parent="training_servant"]
+light_mask = 0
+margin_left = 13.0
+margin_top = 264.0
+margin_right = 296.0
+margin_bottom = 299.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "Reset training"
+valign = 1
+clip_text = true
+
+[node name="Tooltip" type="TextureRect" parent="training_servant"]
+margin_left = 767.591
+margin_top = -73.2341
+margin_right = 817.591
+margin_bottom = -26.2341
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
 [node name="trainer_list" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 106.0
