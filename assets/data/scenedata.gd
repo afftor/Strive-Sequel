@@ -1706,7 +1706,7 @@ var dialogue_inits = {
 			code = 'default',
 			name = tr("DIALOGUE_SACRED_SAP_FIGHTER_GUILD"),
 			reqs = [
-				{type = 'active_quest_stage', value = 'hara_sacsap_quest', stage = 'h_scouts'}
+				{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'h_scouts'}
 			],
 			target = 'sacred_sap_fighters_start',
 			target_option = 0,
@@ -1715,7 +1715,7 @@ var dialogue_inits = {
 			code = 'default',
 			name = tr("DIALOGUE_SACRED_SAP_FIGHTER_GUILD"),
 			reqs = [
-				{type = 'active_quest_stage', value = 'hara_sacsap_quest', stage = 'h_price'}
+				{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'h_price'}
 			],
 			target = 'sacred_sap_fighters_3',
 			target_option = 1,
@@ -2448,34 +2448,7 @@ var quests = {
 			stage15 = {code = 'stage15', name = 'LILITH_PATRON_QUEST_NAME', descript = 'LILITH_PATRON_QUEST_STAGE_15'}, # clear new patron dungeon
 		},
 	},
-	hara_capacitor_quest = {
-		code = 'hara_capacitor_quest',
-		summary = "HARA_CAPACITOR_QUEST_SUMMARY",
-		stages = {
-			get_cap = {code = 'get_cap', name = 'HARA_CAPACITOR_QUEST_NAME', descript = 'HARA_CAPACITOR_QUEST_GET_CAP'},
-			bring_cap = {code = 'bring_cap', name = 'HARA_CAPACITOR_QUEST_NAME', descript = 'HARA_CAPACITOR_QUEST_BRING_CAP'},
-		},
-	},
-	hara_shimore_quest = {
-		code = 'hara_shimore_quest',
-		summary = "HARA_SHIMORE_QUEST_SUMMARY",
-		stages = {
-			get_ore = {code = 'get_ore', name = 'HARA_SHIMORE_QUEST_NAME', descript = 'HARA_SHIMORE_QUEST_GET_ORE'},
-			get_gold = {code = 'get_gold', name = 'HARA_SHIMORE_QUEST_NAME', descript = 'HARA_SHIMORE_QUEST_GET_GOLD'},
-			bring_ore = {code = 'bring_ore', name = 'HARA_SHIMORE_QUEST_NAME', descript = 'HARA_SHIMORE_QUEST_BRING_ORE'},
-		},
-	},
-	hara_sacsap_quest = {
-		code = 'hara_sacsap_quest',
-		summary = "HARA_SACSAP_QUEST_SUMMARY",
-		stages = {
-			get_sap = {code = 'get_sap', name = 'HARA_SACSAP_QUEST_NAME', descript = 'HARA_SACSAP_QUEST_GET_SAP'},
-			h_scouts = {code = 'h_scouts', name = 'HARA_SACSAP_QUEST_NAME', descript = 'HELEVIEL_SACSAP_QUEST_SCOUTS'},
-			h_price = {code = 'h_price', name = 'HARA_SACSAP_QUEST_NAME', descript = 'HELEVIEL_SACSAP_QUEST_PRICE'},
-			l_price = {code = 'l_price', name = 'HARA_SACSAP_QUEST_NAME', descript = 'LIRA_SACSAP_QUEST_PRICE'},
-			bring_sap = {code = 'bring_sap', name = 'HARA_SACSAP_QUEST_NAME', descript = 'HARA_SACSAP_QUEST_BRING_SAP'},
-		},
-	},
+	
 	visit_dwarfs_quest = {
 		code = 'visit_dwarfs_quest',
 		summary = "VISIT_DWARFS_QUEST_SUMMARY",
@@ -2492,6 +2465,30 @@ var quests = {
 		stages = {
 			info = {code = 'info', name = 'DKING_HARA_QUEST_NAME', descript = 'DKING_HARA_QUEST_INFO'},
 			tracks = {code = 'tracks', name = 'DKING_HARA_QUEST_NAME', descript = 'DKING_HARA_QUEST_TRACKS'},
+			temple = {code = 'temple', name = 'DKING_HARA_QUEST_NAME', descript = 'DKING_HARA_QUEST_TEMPLE'},
+			wait = {code = 'wait', name = 'DKING_HARA_QUEST_NAME', descript = 'DKING_HARA_QUEST_WAIT'},
+			rebeltavern = {code = 'rebeltavern', name = 'DKING_HARA_QUEST_NAME', descript = 'DKING_HARA_QUEST_REBELTAVERN'},
+			nextday = {code = 'nextday', name = 'DKING_HARA_QUEST_NAME', descript = 'DKING_HARA_QUEST_NEXTDAY'},
+			visit = {code = 'visit', name = 'DKING_HARA_QUEST_NAME', descript = 'DKING_HARA_QUEST_VISIT'},
+		},
+	},
+	hara_scales_quest = {
+		code = 'hara_scales_quest',
+		summary = "HARA_SCALES_QUEST_SUMMARY",
+		stages = {
+			see_hara = {code = 'see_hara', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_SEE_HARA'},
+			get_ore = {code = 'get_ore', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_GET_ORE'},
+			get_gold = {code = 'get_gold', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_GET_GOLD'},
+			bring_ore = {code = 'bring_ore', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_BRING_ORE'},
+			get_sap = {code = 'get_sap', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_GET_SAP'},
+			h_scouts = {code = 'h_scouts', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_H_SCOUTS'},
+			h_price = {code = 'h_price', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_H_PRICE'},
+			l_price = {code = 'l_price', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_L_PRICE'},
+			bring_sap = {code = 'bring_sap', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_BRING_SAP'},
+			get_cap = {code = 'get_cap', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_GET_CAP'},
+			bring_cap = {code = 'bring_cap', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_BRING_CAP'},
+			next_day = {code = 'next_day', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_NEXT_DAY'},
+			visit = {code = 'visit', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_VISIT'},
 		},
 	},
 }

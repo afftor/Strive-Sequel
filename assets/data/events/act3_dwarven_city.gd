@@ -101,6 +101,10 @@ var data = {
 	enter_city_body_check = {
 		reqs = [],
 		tags = ['dialogue_scene', 'blackscreen_transition_common'],
+		common_effects = [
+			{code = 'teleport_active_location',#?
+				to_loc = {location = 'dwarf_capital', code = 'dwarf_capital', area = 'mountains'}}
+		],
 		text = [{
 			text = "ENTER_CITY_BODY_CHECK", reqs = []
 		}],
@@ -109,7 +113,7 @@ var data = {
 			text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 0, type = 'next_dialogue',
 			bonus_effects = [
 				{code = 'progress_quest', value = 'visit_dwarfs_quest', stage = 'audience'},
-#				{code = 'teleport_active_location', to_loc = {location = 'dwarf_capital', code = 'dwarf_capital', area = 'mountains'}},
+				{code = 'open_location', location = "dwarf_capital", area = "mountains"},#?
 				{code = 'remove_quest_location', value = 'quest_dwarfs_gate'},
 			]
 		}]
@@ -390,6 +394,7 @@ var data = {
 	},
 	dwarf_tavern_bark_after_fight2 = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "DTAVERN_BARK_OUTSIDE", reqs = []},
@@ -401,6 +406,7 @@ var data = {
 	},
 	dwarf_tavern_jean_after_fight = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "DTAVERN_JEAN_AFIGHT", reqs = []},
@@ -503,6 +509,7 @@ var data = {
 	
 	dwarf_tavern_jean = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "DTAVERN_JEAN", reqs = []},
@@ -514,6 +521,7 @@ var data = {
 	},
 	dwarf_tavern_jean_outside = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "DTAVERN_JEAN2", reqs = [], previous_dialogue_option = 1},
@@ -538,6 +546,7 @@ var data = {
 	},
 	dwarf_tavern_jean_king = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "DTAVERN_JEAN_REPLY_KING1", reqs = []},
@@ -551,6 +560,7 @@ var data = {
 	},
 	dwarf_tavern_jean_outside2 = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "DTAVERN_JEAN_REPLY_WHO", reqs = [], previous_dialogue_option = 1},
@@ -570,6 +580,7 @@ var data = {
 	},
 	dwarf_tavern_jean_thing = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "DTAVERN_JEAN_REPLY_MET", reqs = [], previous_dialogue_option = 1},
@@ -592,6 +603,7 @@ var data = {
 	},
 	dwarf_tavern_jean_map = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "DTAVERN_JEAN_REPLY_ALONE", reqs = [], previous_dialogue_option = 1},
@@ -642,7 +654,8 @@ var data = {
 				text = "DTAVERN_BARK_OPT_CITY", reqs = [], dialogue_argument = 3
 			},{
 				code = 'dwarf_tavern_barkeep2_dwarf',
-				text = "DTAVERN_BARK_OPT_KING", reqs = [], dialogue_argument = 4
+				text = "DTAVERN_BARK_OPT_KING", dialogue_argument = 4,
+				reqs = [{type = 'any_quest_stage', value = 'visit_dwarfs_quest', stages = ['tavern', 'jean']}]
 			},{
 				code = 'dwarf_tavern_barkeep_end',
 				text = "DTAVERN_BARK_OPT_THATSALL", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
@@ -676,6 +689,7 @@ var data = {
 	
 	jean_mountain_start = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		common_effects = [{code = 'decision', value = 'JeanHelp'}],#remove if useless
 		text = [
@@ -688,6 +702,7 @@ var data = {
 	},
 	jean_mountain_start2 = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "JEAN_MOUNTAIN_START2", reqs = [], previous_dialogue_option = 0},
@@ -720,6 +735,7 @@ var data = {
 	},
 	jean_mountain_cast = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		text = [{text = "JEAN_MOUNTAIN_CAST", reqs = []}],
 		options = [{
@@ -729,6 +745,7 @@ var data = {
 	},
 	jean_mountain_cast2 = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "JEAN_MOUNTAIN_CAST2", reqs = [], previous_dialogue_option = 0},
@@ -763,6 +780,7 @@ var data = {
 	},
 	jean_mountain_push2 = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene', 'blackscreen_transition_common'],
 		text = [{text = "JEAN_MOUNTAIN_PUSH2", reqs = []}],
 		options = [{
@@ -772,6 +790,7 @@ var data = {
 	},
 	jean_mountain_push_altar = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		text = [{text = "JEAN_MOUNTAIN_ALTAR", reqs = []}],
 		options = [{
@@ -781,6 +800,7 @@ var data = {
 	},
 	jean_mountain_push_search = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		text = [{text = "JEAN_MOUNTAIN_PUSH_SEARCH", reqs = []}],
 		options = [{
@@ -790,6 +810,7 @@ var data = {
 	},
 	jean_mountain_push_golem = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "JEAN_MOUNTAIN_GOLEM", reqs = []},
@@ -820,6 +841,7 @@ var data = {
 	},
 	jean_mountain_jump_search = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		text = [{text = "JEAN_MOUNTAIN_JUMP_SEARCH", reqs = []}],
 		options = [{
@@ -829,6 +851,7 @@ var data = {
 	},
 	jean_mountain_jump_golem = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "JEAN_MOUNTAIN_GOLEM", reqs = []},
@@ -842,6 +865,7 @@ var data = {
 	
 	jean_mountain_guards = {
 		reqs = [],
+		character = 'jean',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "JEAN_MOUNTAIN_GUARDS", reqs = []},

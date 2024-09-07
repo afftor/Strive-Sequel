@@ -25,7 +25,10 @@ var data = {
 			{
 				code = 'dwarf_tavern_barkeep',
 				text = "DWARF_TAVERN_BARKEEP", dialogue_argument = 0, type = 'next_dialogue',
-				reqs = [{type = 'event_seen', check = false, value = 'dwarf_tavern_bark_physics'}]
+				reqs = [
+					{type = 'event_seen', check = false, value = 'dwarf_tavern_bark_physics'},
+					{type = 'event_seen', check = false, value = 'dwarf_tavern_bark_leave'}
+				]
 			},{
 				code = 'dwarf_tavern_patron',
 				text = "DWARF_TAVERN_PATRONS", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
@@ -33,6 +36,10 @@ var data = {
 				code = 'dwarf_tavern_jean',
 				text = "DWARF_TAVERN_GIRL", dialogue_argument = 0, type = 'next_dialogue',
 				reqs = [{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'tavern'}],
+			},{
+				code = 'dwarf_tavern_rebel',
+				text = "DWARF_TAVERN_REBELS", dialogue_argument = 0, type = 'next_dialogue',
+				reqs = [{type = 'active_quest_stage', value = 'dking_hara_quest', stage = 'rebeltavern'}],
 			},{
 				code = 'close',
 				text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
@@ -45,7 +52,7 @@ var data = {
 	dwarf_workshop = {
 		variations = [
 			{#closed
-				reqs = [],#not open condition
+				reqs = [{type = "has_active_quest", name = "hara_scales_quest", check = false}],
 				tags = ['dialogue_scene'],
 				text = [{text = "DWARF_WORKSHOP_CLOSED1", reqs = []}],
 				options = [
@@ -81,7 +88,7 @@ var data = {
 					{
 						code = "dking2task_hara_3",
 						text = "DKING2TASK_HARA_2_OPT_1",
-						reqs = [{type = "quest_completed", name = "hara_capacitor_quest", check = false}],
+						reqs = [{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'next_day', state = false}],
 						type = 'next_dialogue',
 						dialogue_argument = 0
 					},{
@@ -107,5 +114,4 @@ var data = {
 			},
 		],
 	},
-
 }

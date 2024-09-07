@@ -1075,7 +1075,7 @@ var fixed_location_options = { #override serialized data
 		{
 			text =  tr("ELF_CAPITAL_SACRED_SAP"),
 			reqs = [
-				{type = "has_active_quest", name = "hara_sacsap_quest", check = true},
+				{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'get_sap'},
 				{type = 'decision', value = 'HelevielPriestess', check = true}
 			],
 			args = [{code = 'start_event', data = 'sacred_sap_heleviel_start', args = []}]
@@ -1083,16 +1083,15 @@ var fixed_location_options = { #override serialized data
 		{
 			text =  tr("ELF_CAPITAL_SACRED_SAP"),
 			reqs = [
-				{type = "has_active_quest", name = "hara_sacsap_quest", check = true},
-				{type = 'active_quest_stage', value = 'hara_sacsap_quest', stage = 'l_price', state = false},
+				{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'get_sap'},
 				{type = 'decision', value = 'LiraPriestess', check = true}
 			],
 			args = [{code = 'start_event', data = 'sacred_sap_erlen_start', args = []}]
 		},
 		{
-			text =  tr("ELF_CAPITAL8"),#"Meet High Priestess"
+			text =  tr("ELF_CAPITAL_SACRED_SAP"),
 			reqs = [
-				{type = 'active_quest_stage', value = 'hara_sacsap_quest', stage = 'l_price'}
+				{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'l_price'}
 			],
 			args = [{code = 'start_event', data = 'sacred_sap_lira_3', args = []}]
 		},
@@ -1103,8 +1102,16 @@ var fixed_location_options = { #override serialized data
 			reqs = [{type = 'any_quest_stage', value = 'visit_dwarfs_quest', stages = ['audience', 'jean']}],
 			args = [{code = 'start_event', data = 'dwarf_palace_first', args = []}]
 		},{
+			text = tr("DWARF_PALACE"), 
+			reqs = [{type = 'active_quest_stage', value = 'dking_hara_quest', stage = 'visit'}],
+			args = [{code = 'start_event', data = 'dking_second_task_start', args = []}]
+		},{
+			text = tr("DWARF_CAPITAL_SHIMORE"), 
+			reqs = [{type = 'any_quest_stage', value = 'hara_scales_quest', stages = ['get_ore','get_gold']}],
+			args = [{code = 'start_event', data = 'shimmering_ore_start', args = []}]
+		},{
 			text = tr("DWARF_WORKSHOP"), 
-			reqs = [],#{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'audience', state = false}
+			reqs = [],#{type = "quest_completed", name = "hara_scales_quest", check = false}
 			args = [{code = 'start_event', data = 'dwarf_workshop', args = []}]
 		},{
 			text = tr("DWARF_TAVERN"), 
@@ -1115,9 +1122,23 @@ var fixed_location_options = { #override serialized data
 			],
 			args = [{code = 'start_event', data = 'dwarf_tavern', args = []}]
 		},{
+			text = tr("DWARF_TAVERN"), 
+			reqs = [
+				{type = 'quest_completed', value = 'visit_dwarfs_quest', check = true}
+#				{type = 'active_quest_stage', value = 'dking_hara_quest', stage = 'rebeltavern'}
+			],
+			args = [{code = 'start_event', data = 'dwarf_tavern', args = []}]
+		},{
 			text = tr("DWARF_PRISON"), 
 			reqs = [{type = 'active_quest_stage', value = 'dking_hara_quest', stage = 'info'}],
 			args = [{code = 'start_event', data = 'dwarf_prison_start', args = []}]
+		},{
+			text = tr("DWARF_CAPITAL_SEARCH"), 
+			reqs = [
+				{type = 'active_quest_stage', value = 'dking_hara_quest', stage = 'tracks'},
+				{type = 'event_seen', check = false, value = 'dwarf_search'}
+			],
+			args = [{code = 'start_event', data = 'dwarf_search', args = []}]
 		}
 	],
 	beastkin_capital = [
@@ -1517,6 +1538,20 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'jean_mountain_start', args = []}]
 		}
 	],
+	quest_hollow_passage = [
+		{
+			text = tr("QUEST_HOLLOW_PASSAGE_LOCATION"), 
+			reqs = [{type = 'active_quest_stage', value = 'dking_hara_quest', stage = 'tracks'}], 
+			args = [{code = 'start_event', data = 'hollow_pass_start', args = []}]
+		}
+	],
+#	quest_old_gods_temple = [
+#		{
+#			text = tr("QUEST_OLD_GODS_TEMPLE_LOCATION"), 
+#			reqs = [],
+#			args = [{code = 'start_event', data = '', args = []}]
+#		}
+#	],
 }
 
 var fixed_location_events = {

@@ -2,6 +2,7 @@ var data = {
 	dking_second_task_start = {
 		tags = ["dialogue_scene"],
 		character = 'dwarf_king',
+		common_effects = [{code = 'complete_quest', value = 'dking_hara_quest'}],
 		reqs = [],
 		text = [{
 				text = "DKING_SECOND_TASK_START",
@@ -88,7 +89,7 @@ var data = {
 				dialogue_argument = 0,
 				type = 'next_dialogue',
 				bonus_effects = [
-					#add option "Visit Hara" in dwarf capital/palace
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'see_hara'}
 				]
 			}
 		]
@@ -133,10 +134,7 @@ var data = {
 			{
 				code = "dking2task_hara_4",
 				text = "DKING2TASK_HARA_3_OPT_1",
-				reqs = [
-					{type = "has_active_quest", name = "hara_shimore_quest", check = false},
-					{type = "quest_completed", name = "hara_shimore_quest", check = false}
-				],
+				reqs = [{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'see_hara'}],
 				type = 'next_dialogue',
 				dialogue_argument = 0
 			},{
@@ -147,30 +145,27 @@ var data = {
 			},{
 				code = "dking2task_hara_5",
 				text = "DKING2TASK_HARA_3_OPT_3",
-				reqs = [{type = 'active_quest_stage', value = 'hara_shimore_quest', stage = 'bring_ore'}],
+				reqs = [{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'bring_ore'}],
 				bonus_effects = [
-					{code = 'dialogue_counter', name = 'kuros_questions', op = '+'},#2nd
-					{code = 'complete_quest', value = 'hara_shimore_quest'}
+					{code = 'dialogue_counter', name = 'kuros_questions', op = '+'}#2nd
 				],
 				type = 'next_dialogue',
 				dialogue_argument = 0
 			},{
 				code = "dking2task_hara_8",
 				text = "DKING2TASK_HARA_3_OPT_4",
-				reqs = [{type = 'active_quest_stage', value = 'hara_sacsap_quest', stage = 'bring_sap'}],
+				reqs = [{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'bring_sap'}],
 				bonus_effects = [
 					{code = 'dialogue_counter', name = 'kuros_questions', op = '+'},#4th
-					{code = 'complete_quest', value = 'hara_sacsap_quest'}#or at the end of dialog?
 				],
 				type = 'next_dialogue',
 				dialogue_argument = 0
 			},{
 				code = "dking2task_hara_10",
 				text = "DKING2TASK_HARA_3_OPT_5",
-				reqs = [{type = 'active_quest_stage', value = 'hara_capacitor_quest', stage = 'bring_cap'}],
+				reqs = [{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'bring_cap'}],
 				bonus_effects = [
 					{code = 'dialogue_counter', name = 'kuros_questions', op = '+'},#6th
-					{code = 'complete_quest', value = 'hara_capacitor_quest'}#or at the end of dialog?
 				],
 				type = 'next_dialogue',
 				dialogue_argument = 0
@@ -190,7 +185,7 @@ var data = {
 				dialogue_argument = 0,
 				type = 'next_dialogue',
 				bonus_effects = [
-					{code = 'progress_quest', value = 'hara_shimore_quest', stage = 'get_ore'}
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'get_ore'}
 				]
 			}
 		]
@@ -225,7 +220,7 @@ var data = {
 				type = 'next_dialogue',
 				dialogue_argument = 1,
 				bonus_effects = [
-					{code = 'progress_quest', value = 'hara_shimore_quest', stage = 'get_gold'}
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'get_gold'}
 				]
 			}
 		]
@@ -242,7 +237,7 @@ var data = {
 				dialogue_argument = 0,
 				type = 'next_dialogue',
 				bonus_effects = [
-					{code = 'progress_quest', value = 'hara_shimore_quest', stage = 'bring_ore'}
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'bring_ore'}
 				]
 			}
 		]
@@ -314,7 +309,7 @@ var data = {
 				dialogue_argument = 0,
 				type = 'next_dialogue',
 				bonus_effects = [
-					{code = 'progress_quest', value = 'hara_sacsap_quest', stage = 'get_sap'}
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'get_sap'}
 				]
 			}
 		]
@@ -371,7 +366,7 @@ var data = {
 				dialogue_argument = 0,
 				type = 'next_dialogue',
 				bonus_effects = [
-					{code = 'progress_quest', value = 'hara_sacsap_quest', stage = 'h_scouts'},
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'h_scouts'},
 					{code = 'dialogue_counter', name = 'kuros_questions', op = '+'},#3rd (parallel with Lira's)
 					{code = 'add_timed_event', value = "sacred_sap_intermission_start", args = [{type = 'add_to_hour', hour = [1,1]}]}
 				]
@@ -434,6 +429,7 @@ var data = {
 		text = [
 			{text = "SACRED_SAP_FIGHTERS_3", reqs = [], previous_dialogue_option = 0},
 			{text = "SACRED_SAP_FIGHTERS_3_REVISIT", reqs = [], previous_dialogue_option = 1},
+			{text = "", reqs = [], previous_dialogue_option = 2},
 		],
 		options = [
 			{
@@ -445,16 +441,16 @@ var data = {
 				type = 'next_dialogue',
 				bonus_effects = [{code = 'money_change', operant = '-', value = 1000}]
 			},{
-				code = "sacred_sap_fighters_4",
+				code = "sacred_sap_fighters_slave", dialogue_argument = 0,
 				text = "SACRED_SAP_FIGHTERS_3_OPT2",
-				reqs = [
-					#has 2 female elven slaves
+				reqs = [],
+				select_person = true,
+				person_reqs = [
+					{code = 'is_at_location', value = 'aliron', check = true},
+					{code = 'race', race = 'Elf', check = true},
+					{code = 'sex', operant = 'eq', value = 'female'}
 				],
-				dialogue_argument = 0,
-				type = 'next_dialogue',
-				bonus_effects = [
-					#remove 2 female elven slaves
-				]
+				type = 'next_dialogue'
 			},{
 				code = "close",
 				text = "SACRED_SAP_FIGHTERS_3_OPT3",
@@ -462,9 +458,37 @@ var data = {
 				type = 'next_dialogue',
 				dialogue_argument = 0,
 				bonus_effects = [
-					{code = 'progress_quest', value = 'hara_sacsap_quest', stage = 'h_price'},
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'h_price'},
 				]
 			}
+		]
+	},
+	sacred_sap_fighters_slave = {
+		tags = ["dialogue_scene"],
+		reqs = [],
+		common_effects = [
+			{code = 'affect_active_character', type = 'remove'},
+			{code = 'dialogue_counter', name = 'sacred_sap_slaves', op = '+'}
+		],
+		text = [
+			{text = "SACRED_SAP_FIGHTERS_3_REPLY2", 
+				reqs = [{type = 'local_counter', name = 'sacred_sap_slaves', operant = 'eq', value = 1, check = true}]},
+			{text = "SACRED_SAP_FIGHTERS_3_REPLY2_2", 
+				reqs = [{type = 'local_counter', name = 'sacred_sap_slaves', operant = 'eq', value = 2, check = true}]}
+		],
+		options = [
+			{
+				code = "sacred_sap_fighters_4",
+				text = "DIALOGUECONTINUE",
+				reqs = [{type = 'local_counter', name = 'sacred_sap_slaves', operant = 'gte', value = 2, check = true}],
+				dialogue_argument = 0,
+				type = 'next_dialogue',
+			},{
+				code = "sacred_sap_fighters_3", dialogue_argument = 2,
+				text = "DIALOGUECONTINUE",
+				reqs = [{type = 'local_counter', name = 'sacred_sap_slaves', operant = 'lt', value = 2, check = true}],
+				type = 'next_dialogue',
+			},
 		]
 	},
 	sacred_sap_fighters_4 = {
@@ -508,7 +532,7 @@ var data = {
 				dialogue_argument = 0,
 				type = 'next_dialogue',
 				bonus_effects = [
-					{code = 'progress_quest', value = 'hara_sacsap_quest', stage = 'bring_sap'}
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'bring_sap'}
 				],
 			}
 		]
@@ -581,7 +605,7 @@ var data = {
 				dialogue_argument = 0,
 				type = 'next_dialogue',
 				bonus_effects = [
-					{code = 'progress_quest', value = 'hara_sacsap_quest', stage = 'l_price'},
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'l_price'},
 					{code = 'dialogue_counter', name = 'kuros_questions', op = '+'},#3rd (parallel with Heleviel's)
 					{code = 'add_timed_event', value = "sacred_sap_intermission_start", args = [{type = 'add_to_hour', hour = [1,1]}]}
 				]
@@ -629,13 +653,12 @@ var data = {
 				dialogue_argument = 0,
 				type = 'next_dialogue',
 				bonus_effects = [
-					{code = 'progress_quest', value = 'hara_sacsap_quest', stage = 'bring_sap'}
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'bring_sap'}
 				]
 			}
 		]
 	},
 	
-	#plays after visiting heleviel/lira first time, but I yet don't understand, how to do it
 	sacred_sap_intermission_start = {
 		tags = ["dialogue_scene", "blackscreen_transition_common"],
 		reqs = [],
@@ -696,8 +719,8 @@ var data = {
 				reqs = [],
 				dialogue_argument = 0,
 				bonus_effects = [
-					#add new fiery depths dungeon
-					{code = 'progress_quest', value = 'hara_capacitor_quest', stage = 'get_cap'},
+					{code = 'make_quest_location', value = 'quest_molten_grounds'},
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'get_cap'},
 				]
 			}
 		]
@@ -771,7 +794,7 @@ var data = {
 				type = 'next_dialogue',
 				dialogue_argument = 0,
 				bonus_effects = [
-					{code = 'progress_quest', value = 'hara_capacitor_quest', stage = 'bring_cap'},
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'bring_cap'},
 					{code = 'dialogue_counter', name = 'kuros_questions', op = '+'}#5th (parallel with Kuro's)
 				]
 			}
@@ -837,7 +860,7 @@ var data = {
 				dialogue_argument = 0,
 				type = 'next_dialogue',
 				bonus_effects = [
-					{code = 'progress_quest', value = 'hara_capacitor_quest', stage = 'bring_cap'},
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'bring_cap'},
 					{code = 'dialogue_counter', name = 'kuros_questions', op = '+'}#5th (parallel with Zephyra's)
 				]
 			}
@@ -854,7 +877,11 @@ var data = {
 				text = "DIALOGUEWALKAWAY",
 				reqs = [],
 				dialogue_argument = 1,
-				type = 'next_dialogue'
+				type = 'next_dialogue',
+				bonus_effects = [
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'next_day'},
+					{code = 'add_timed_event', value = {quest = 'hara_scales_quest', stage = 'visit'}, args = [{type = 'action_to_date', date = [1,1], hour = 1, action = 'quest'}]}
+				]
 			}
 		]
 	},
@@ -937,11 +964,11 @@ var data = {
 			{text = "KURO_QUESTIONS_HAS", previous_dialogue_option = 0, reqs = []},
 			{text = "KURO_QUESTIONS_NO", reqs = [
 				{type = 'local_counter', name = 'kuros_questions', operant = 'eq', value = 0, check = true},
-				{type = "quest_completed", name = "hara_capacitor_quest", check = false}
+				{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'next_day', state = false}
 			]},
 			{text = "KURO_QUESTIONS_END", reqs = [
 				{type = 'local_counter', name = 'kuros_questions', operant = 'eq', value = 0, check = true},
-				{type = "quest_completed", name = "hara_capacitor_quest", check = true},
+				{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'next_day'}
 			]},
 		],
 		options = [
@@ -949,7 +976,7 @@ var data = {
 				code = 'kuro_questions',
 				text = "KURO_QUESTIONS_OPT_SIDE",
 				reqs = [
-					{type = 'dialogue_seen', check = false, value = 'KURO_QUESTIONS_REPLAY_SIDE'},
+#					{type = 'dialogue_seen', check = false, value = 'KURO_QUESTIONS_REPLAY_SIDE'},
 					{type = 'local_counter', name = 'kuros_questions', operant = 'gt', value = 0, check = true}
 				],
 				dialogue_argument = 1,
@@ -964,7 +991,7 @@ var data = {
 				code = 'kuro_questions',
 				text = "KURO_QUESTIONS_OPT_PLAN",
 				reqs = [
-					{type = 'dialogue_seen', check = false, value = 'KURO_QUESTIONS_REPLAY_PLAN'},
+#					{type = 'dialogue_seen', check = false, value = 'KURO_QUESTIONS_REPLAY_PLAN'},
 					{type = 'local_counter', name = 'kuros_questions', operant = 'gt', value = 0, check = true},
 					{type = 'dialogue_seen', check = true, value = 'KURO_QUESTIONS_REPLAY_SIDE'}
 				],
@@ -980,7 +1007,7 @@ var data = {
 				code = 'kuro_questions',
 				text = "KURO_QUESTIONS_OPT_ZEPH",
 				reqs = [
-					{type = 'dialogue_seen', check = false, value = 'KURO_QUESTIONS_REPLAY_ZEPH'},
+#					{type = 'dialogue_seen', check = false, value = 'KURO_QUESTIONS_REPLAY_ZEPH'},
 					{type = 'local_counter', name = 'kuros_questions', operant = 'gt', value = 0, check = true},
 				],
 				dialogue_argument = 3,
@@ -995,7 +1022,7 @@ var data = {
 				code = 'kuro_questions',
 				text = "KURO_QUESTIONS_OPT_POWER",
 				reqs = [
-					{type = 'dialogue_seen', check = false, value = 'KURO_QUESTIONS_REPLAY_POWER'},
+#					{type = 'dialogue_seen', check = false, value = 'KURO_QUESTIONS_REPLAY_POWER'},
 					{type = 'local_counter', name = 'kuros_questions', operant = 'gt', value = 0, check = true},
 				],
 				dialogue_argument = 4,
@@ -1010,7 +1037,7 @@ var data = {
 				code = 'kuro_questions',
 				text = "KURO_QUESTIONS_OPT_LIKE",
 				reqs = [
-					{type = 'dialogue_seen', check = false, value = 'KURO_QUESTIONS_REPLAY_LIKE'},
+#					{type = 'dialogue_seen', check = false, value = 'KURO_QUESTIONS_REPLAY_LIKE'},
 					{type = 'local_counter', name = 'kuros_questions', operant = 'gt', value = 0, check = true},
 				],
 				dialogue_argument = 5,
@@ -1025,9 +1052,9 @@ var data = {
 				code = 'kuro_questions',
 				text = "KURO_QUESTIONS_OPT_RED",
 				reqs = [
-					{type = 'dialogue_seen', check = false, value = 'KURO_QUESTIONS_REPLAY_RED'},
+#					{type = 'dialogue_seen', check = false, value = 'KURO_QUESTIONS_REPLAY_RED'},
 					{type = 'local_counter', name = 'kuros_questions', operant = 'gt', value = 0, check = true},
-					{type = "quest_completed", name = "hara_capacitor_quest", check = true}
+					{type = 'dialogue_seen', check = true, value = 'CAPACITOR_MOLTEN_START'},
 				],
 				dialogue_argument = 6,
 				bonus_effects = [{code = 'dialogue_counter', name = 'kuros_questions', op = '-'}],

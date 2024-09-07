@@ -62,6 +62,7 @@ var encounters = {
 	hector = {unittype = 'randomgroup', unitcode = 'hector_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'cali_finale_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	dwarf_tavern_patrons = {unittype = 'randomgroup', unitcode = 'dwarf_tavern_patrons', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'dwarf_tavern_bark_after_fight', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	vault_golem = {unittype = 'randomgroup', unitcode = 'vault_golem', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_mountain_guards', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	coalition_base_kuro = {unittype = 'randomgroup', unitcode = 'coalition_base_kuro', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'coalbase_attack_after_fight', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 }
 
 var enemygroups = {
@@ -189,6 +190,7 @@ var enemygroups = {
 	hector_boss_fight = {reqs = [], units = {bandit_melee = [2,2], hector_boss = [1,1], bandit_archer = [2,2], bandit_mage = [1,1]}}, #cali boss fight !!! copied from above, needs fixing
 	dwarf_tavern_patrons = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}}, #dummy
 	vault_golem = {reqs = [], units = {guardian_golem = [1,1]}}, #dummy
+	coalition_base_kuro = {reqs = [], units = {bandit_melee = [2,2]}}, #dummy
 }
 
 #Ai patterns: basic - basic attack/ranged attack or pass (if exist), ads - advanced single target skill, aoe - aoe skill, buff - buffing skill
