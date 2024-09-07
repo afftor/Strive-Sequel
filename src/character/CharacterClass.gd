@@ -725,7 +725,13 @@ func has_status(status):
 
 func is_combatant():
 	if get_stat('slave_class') != 'slave':
-		return true
+		return has_status('combatant')
+	else:
+		return training.get_trainer() != null
+
+func is_worker():
+	if get_stat('slave_class') != 'slave':
+		return has_status('worker')
 	else:
 		return training.get_trainer() != null
 
@@ -953,6 +959,8 @@ func apply_training(tr_code):
 func get_training_cost():
 	return training.get_training_cost()
 
+func get_training_cost_gold():
+	return training.get_training_cost_gold()
 
 func serialize():
 	var res = inst2dict(self)

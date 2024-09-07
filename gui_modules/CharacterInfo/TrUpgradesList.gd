@@ -5,6 +5,7 @@ var root
 
 var tr_data = {}
 var tr_traits = []
+var tr_traits_s = []
 var tr_rewards = []
 
 func _ready():
@@ -31,6 +32,7 @@ func gather_data():
 			tr_data[tr.type] = []
 		tr_data[tr.type].push_back(tr.code)
 	tr_traits.clear()
+	tr_traits_s.clear()
 	tr_rewards.clear()
 	for tr in Traitdata.traits.values():
 		if tr.code == 'untrained':
@@ -39,13 +41,17 @@ func gather_data():
 			continue
 		if tr.tags.has('training'):
 			tr_traits.push_back(tr.code)
+		if tr.tags.has('servant_training'):
+			tr_traits_s.push_back(tr.code)
 		if tr.tags.has('training_success'):
 			tr_rewards.push_back(tr.code)
 		
 
 func match_state():
 	hide_all()
-	if person.training.enable:
+	if person.get_stat('slave_class') in ['servant', 'servant_notax']:
+		build_training_servant()
+	elif person.training.enable:
 		if person.get_trainer() != null:
 			build_training()
 		else:
@@ -204,6 +210,33 @@ func build_training():
 	build_training_traits()
 
 
+func build_training_servant():
+	gather_data()
+	$training_servant.visible = true
+	$training_servant/cost.text = tr('TRAININGCOSTGOLD') % person.get_training_cost_gold()
+	if person.get_stat('slave_class') == 'servant_notax':
+		$training_servant/cost.visible = false
+	input_handler.ClearContainer($training_servant/HBoxContainer2, ['Button'])
+	for tr in tr_traits_s:
+		var panel = input_handler.DuplicateContainerTemplate($training_servant/HBoxContainer2, 'Button')
+		var trdata = Traitdata.traits[tr]
+		if trdata.icon is String:
+			panel.get_node('icon').texture = load(trdata.icon)
+		else:
+			panel.get_node('icon').texture = trdata.icon
+		globals.connecttexttooltip(panel, person.translate(tr(trdata.descript)))
+		if person.check_trait(tr):
+			panel.pressed = true
+		else:
+			panel.pressed = false
+			if ResourceScripts.game_res.money >= person.get_training_cost_gold() and person.checkreqs(trdata.reqs) and person.get_stat('slave_class') != 'servant_notax': 
+				panel.connect('toggled', self, 'press_trait_servant', [tr])
+			else:
+				panel.disabled = true
+				panel.material = load("res://assets/sfx/bw_shader.tres")
+				panel.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
+
+
 func build_training_header():
 	var trainer = person.get_trainer()
 	$training/trainer_frame/icon.texture = trainer.get_icon()
@@ -305,18 +338,43 @@ func press_trait(value, tr_code):
 	build_training_traits()
 
 
+func press_trait_servant(value, tr_code):
+	if !person.check_trait(tr_code):
+		selected_id = tr_code
+		var data = Traitdata.traits[tr_code]
+		var text = "Unlock this for {color=green|" + str(person.get_training_cost_gold()) + "} Gold?"
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'learn_upgrade_servant_confirmed', tr(text)])
+#		person.add_training(tr_code)
+	build_training_servant()
+
+
 func finish_training():
 	person.finish_training()
 	match_state()
 
 
 func learn_upgrade_confirmed():
-	if selected_id == "": return
+	if selected_id == "": 
+		return
 	var data = Traitdata.traits[selected_id]
 	var args = {}
 	args["current_trait"] = selected_id
 	args["person"] = person
 	person.add_training(selected_id)
+	selected_id = ""
+	root.update()
+	input_handler.play_animation("trait_aquired", args)
+
+
+func learn_upgrade_servant_confirmed():
+	if selected_id == "": 
+		return
+	var data = Traitdata.traits[selected_id]
+	var args = {}
+	args["current_trait"] = selected_id
+	args["person"] = person
+	ResourceScripts.game_res.money -= person.get_training_cost_gold()
+	person.add_trait(selected_id)
 	selected_id = ""
 	root.update()
 	input_handler.play_animation("trait_aquired", args)

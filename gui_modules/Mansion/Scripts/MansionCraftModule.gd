@@ -670,7 +670,7 @@ func update_char_button(newbutton, person):
 	var twork = person.get_work()
 	match twork:
 		'':
-			if !person.is_combatant():
+			if !person.is_worker():
 				newbutton.get_node("job").text = tr('NOSERVITUDE') #change translation
 				newbutton.pressed = false
 				newbutton.disabled = true

@@ -98,8 +98,8 @@ func reset_training():
 	parent.get_ref().add_trait('untrained')
 
 
-func get_trainings_amount():
-	return parent.get_ref().get_traits_by_tag('training').size()
+func get_trainings_amount(tag = 'training'):
+	return parent.get_ref().get_traits_by_tag(tag).size()
 
 
 func get_training_cost():
@@ -110,6 +110,16 @@ func get_training_cost():
 	if tr_a > 1:
 		cost = variables.training_costs[2]
 	return cost
+
+
+func get_training_cost_gold():
+	var cost = variables.training_costs_gold[0]
+	var tr_a = get_trainings_amount('servant_training')
+	if tr_a > 0:
+		cost = variables.training_costs_gold[1]
+	if tr_a > 1:
+		cost = variables.training_costs_gold[2]
+	return cost * (1.0 - 0.07 * parent.get_ref().get_stat('tame_factor'))
 
 
 func add_training(id):
