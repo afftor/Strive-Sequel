@@ -406,7 +406,9 @@ func lockpick_attempt(person):
 func select_person_for_next_event(option): #needs a rework
 	var reqs
 	var code = option.code
-	if code.find('marriage')!= -1:
+	if option.has('person_reqs'):
+		reqs = option.person_reqs
+	elif code.find('marriage')!= -1:
 		reqs = [
 			{code = 'stat', stat = 'agreed_to_marry', operant = 'eq', value = true}
 		]
