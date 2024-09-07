@@ -513,7 +513,10 @@ func update_button(newbutton):
 	if !person.is_worker(): #for conditions for work and combat are the same
 		newbutton.get_node("job").disabled = true
 		newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict['red'])
-		globals.connecttexttooltip(newbutton.get_node("job"), person.translate(tr('TRAINNOTRAINER')))
+		if person.get_stat('slave_class') == 'slave':
+			globals.connecttexttooltip(newbutton.get_node("job"), person.translate(tr('TRAINNOTRAINER')))
+		else:
+			globals.connecttexttooltip(newbutton.get_node("job"), person.translate(tr('TRAINNOWORKTRAIT')))
 	if person.travel.location == "travel" || person.is_on_quest():
 		newbutton.get_node("job").disabled = true
 		newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict['red'])

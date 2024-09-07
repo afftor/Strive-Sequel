@@ -176,6 +176,7 @@ var TranslationDict = {
 	SIBLINGMODULESEXTRAITS = "Sex Traits",
 	SIBLINGMODULERELATIVES = "Relatives",
 	SIBLINGMODULETRAININGS = "Slave Training",
+	SIBLINGMODULETRAININGSSERVANTS = "Servant Training",
 	SIBLINGMODULETRAININGSMASTER = "Master Training",
 	SIBLINGMODULEFOODCONSUMPTION = "Daily Consumption",
 	SIBLINGMODULEMAIN = "Main",
@@ -1316,6 +1317,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAININGCOST = "Trait unlock: %d loyalty",
 	TRAININGCOSTGOLD = "Trait unlock: %d gold",
 	TRAINNOTRAINER = "[name] has no trainer",
+	TRAINNOWORKTRAIT = "[name] lacks Trait: Worker",
 	NOTRAINSLOTS = "No free training slots",
 	ALREADYTRAINER = "Current trainer",
 

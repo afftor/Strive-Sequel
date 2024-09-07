@@ -85,7 +85,10 @@ func update():
 		loyalty_panel_master.get_parent().visible = false
 		loyalty_panel.person = person
 		loyalty_panel.match_state()
-		$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGS')
+		if person.get_stat('slave_class') in ['slave', 'slave_trained']:
+			$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGS')
+		else:
+			$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGSSERVANTS')
 		if !loyalty_mode:
 			swap_mode()
 	else:
