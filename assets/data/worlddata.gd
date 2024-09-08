@@ -1371,6 +1371,7 @@ var fixed_location_options = { #override serialized data
 		{
 			text = tr("QUEST_TEMPLE_LOCATION1"), 
 			reqs = [
+				{type = 'active_quest_stage', value = 'temple_quest', stage = 'stage1', state = true},
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_2_2', },
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_2_1'}],
 			args = [{code = 'start_event', data = 'temple_start', args = []}]
@@ -1378,8 +1379,10 @@ var fixed_location_options = { #override serialized data
 		{
 			text = tr("QUEST_TEMPLE_LOCATION2"), 
 			reqs = [
+				
 				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_2', },
-				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_1', orflag = true}],
+				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_1', orflag = true},
+				{type = 'active_quest_stage', value = 'temple_quest', stage = 'stage1', state = true},],
 			args = [{code = 'start_event', data = 'temple_6', args = []}]
 		},
 	],
