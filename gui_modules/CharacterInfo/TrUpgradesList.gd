@@ -84,7 +84,7 @@ func build_no_trainer():
 func build_trainer_list():
 	hide_all()
 	$trainer_list.visible = true
-	input_handler.ClearContainer($trainer_list/Container2/Containerr, ['Button'])
+	input_handler.ClearContainer($trainer_list/Container2/Container, ['Button'])
 	
 	if person.get_trainer() != null:
 		var panel = input_handler.DuplicateContainerTemplate($trainer_list/Container2/Container, 'Button')
