@@ -16,6 +16,7 @@ func _ready():
 	$training/complete_button.connect("pressed", self, 'finish_training')
 	globals.connecttexttooltip($training/Tooltip, tr("INFOTRAINING"))
 	globals.connecttexttooltip($trainer_list/tooltip, tr("INFOSLAVETRAINER"))
+	$training/spirit.max_value = 100
 	
 
 
@@ -243,7 +244,9 @@ func build_training_header():
 	var trainer = person.get_trainer()
 	$training/trainer_frame/icon.texture = trainer.get_icon()
 	$training/name.text = trainer.get_full_name()
-	$training/spirit.text = tr('TRAININGLABELSPIRIT') % person.get_stat('spirit')
+#	$training/spirit.text = tr('TRAININGLABELSPIRIT') % person.get_stat('spirit')
+	$training/spirit.value = person.get_stat('spirit')
+	
 	$training/loyalty.text = tr('TRAININGLABELLOYALTY') % person.get_stat('loyalty')
 
  

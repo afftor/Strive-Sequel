@@ -1320,6 +1320,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAINNOWORKTRAIT = "[name] lacks Trait: Worker",
 	NOTRAINSLOTS = "No free training slots",
 	ALREADYTRAINER = "Current trainer",
+	SPIRITNO = 'No spirit change',
+	SPIRITSMALL = 'Spirit decreases a bit',
+	SPIRITOTHER = 'Huge spirit loss',
 
 
 	WORKTOOL = "Work Tool",
