@@ -84,14 +84,21 @@ func build_no_trainer():
 func build_trainer_list():
 	hide_all()
 	$trainer_list.visible = true
-	input_handler.ClearContainer($trainer_list/Container, ['Button'])
+	input_handler.ClearContainer($trainer_list/Container2/Containerr, ['Button'])
+	
+	if person.get_trainer() != null:
+		var panel = input_handler.DuplicateContainerTemplate($trainer_list/Container2/Container, 'Button')
+		panel.get_node('icon').texture = load("res://assets/Textures_v2/MANSION/no.png")
+		panel.get_node('name').text = tr('REMOVETRAINER')
+		panel.connect('pressed', self, 'remove_trainer')
+	
 	for id in ResourceScripts.game_party.character_order:
 		var tchar = characters_pool.get_char_by_id(id)
 		if !tchar.can_be_trainer():
 			continue
 		var amount = tchar.get_stat('trainee_amount')
 		var used = tchar.get_trainees().size()
-		var panel = input_handler.DuplicateContainerTemplate($trainer_list/Container, 'Button')
+		var panel = input_handler.DuplicateContainerTemplate($trainer_list/Container2/Container, 'Button')
 		panel.get_node('icon').texture = tchar.get_icon()
 		globals.connectslavetooltip(panel.get_node('icon'), tchar)
 		panel.get_node('name').text = tchar.get_full_name() + " - Slaves Taken: %d/%d" % [used, amount]
@@ -112,12 +119,7 @@ func build_trainer_list():
 			text += "\n" + tr('ALREADYTRAINER')
 		panel.get_node('desc').text = text 
 	
-	var panel = input_handler.DuplicateContainerTemplate($trainer_list/Container, 'Button')
-	panel.get_node('icon').texture = load("res://assets/Textures_v2/MANSION/no.png")
-	panel.get_node('name').text = tr('REMOVETRAINER')
-	panel.connect('pressed', self, 'remove_trainer')
-	
-	panel = input_handler.DuplicateContainerTemplate($trainer_list/Container, 'Button')
+	var panel = input_handler.DuplicateContainerTemplate($trainer_list/Container2/Container, 'Button')
 	panel.get_node('icon').texture = load("res://assets/Textures_v2/MANSION/arrow_navigator.png")
 	panel.get_node('name').text = tr('RETURN')
 	panel.connect('pressed', self, 'hide_training_list')

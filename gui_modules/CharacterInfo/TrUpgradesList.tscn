@@ -369,7 +369,6 @@ expand = true
 stretch_mode = 6
 
 [node name="trainer_list" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 106.0
@@ -392,15 +391,18 @@ text = "TRAINERSAVAILABLE"
 align = 1
 clip_text = true
 
-[node name="Container" type="VBoxContainer" parent="trainer_list"]
+[node name="Container2" type="ScrollContainer" parent="trainer_list"]
 margin_left = 13.0
 margin_top = 66.0
-margin_right = 758.0
-margin_bottom = 166.0
+margin_right = 555.0
+margin_bottom = 715.0
+scroll_horizontal_enabled = false
 
-[node name="Button" type="Button" parent="trainer_list/Container"]
+[node name="Container" type="VBoxContainer" parent="trainer_list/Container2"]
+
+[node name="Button" type="Button" parent="trainer_list/Container2/Container"]
 visible = false
-margin_right = 745.0
+margin_right = 500.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 500, 100 )
 rect_pivot_offset = Vector2( -294, -94 )
@@ -409,21 +411,20 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 
-[node name="icon" type="TextureRect" parent="trainer_list/Container/Button"]
+[node name="icon" type="TextureRect" parent="trainer_list/Container2/Container/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -645.0
+margin_right = -401.0
 texture = ExtResource( 7 )
 expand = true
 
-[node name="icon2" type="TextureRect" parent="trainer_list/Container/Button"]
+[node name="icon2" type="TextureRect" parent="trainer_list/Container2/Container/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -645.0
+margin_right = -399.0
 texture = ExtResource( 17 )
-expand = true
 
-[node name="name" type="Label" parent="trainer_list/Container/Button"]
+[node name="name" type="Label" parent="trainer_list/Container2/Container/Button"]
 light_mask = 0
 anchor_left = 1.0
 anchor_top = 0.5
@@ -440,7 +441,7 @@ align = 1
 valign = 1
 clip_text = true
 
-[node name="desc" type="Label" parent="trainer_list/Container/Button"]
+[node name="desc" type="Label" parent="trainer_list/Container2/Container/Button"]
 visible = false
 light_mask = 0
 anchor_left = 1.0
