@@ -394,7 +394,7 @@ clip_text = true
 [node name="Container2" type="ScrollContainer" parent="trainer_list"]
 margin_left = 13.0
 margin_top = 66.0
-margin_right = 555.0
+margin_right = 766.0
 margin_bottom = 715.0
 scroll_horizontal_enabled = false
 
@@ -402,9 +402,9 @@ scroll_horizontal_enabled = false
 
 [node name="Button" type="Button" parent="trainer_list/Container2/Container"]
 visible = false
-margin_right = 500.0
+margin_right = 700.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 500, 100 )
+rect_min_size = Vector2( 700, 100 )
 rect_pivot_offset = Vector2( -294, -94 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
@@ -414,14 +414,14 @@ custom_styles/normal = SubResource( 3 )
 [node name="icon" type="TextureRect" parent="trainer_list/Container2/Container/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -401.0
+margin_right = -601.0
 texture = ExtResource( 7 )
 expand = true
 
 [node name="icon2" type="TextureRect" parent="trainer_list/Container2/Container/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -399.0
+margin_right = -599.0
 texture = ExtResource( 17 )
 
 [node name="name" type="Label" parent="trainer_list/Container2/Container/Button"]
@@ -430,7 +430,7 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -640.0
+margin_left = -595.0
 margin_top = -48.0
 margin_right = -1.0
 margin_bottom = -13.0
@@ -442,15 +442,14 @@ valign = 1
 clip_text = true
 
 [node name="desc" type="Label" parent="trainer_list/Container2/Container/Button"]
-visible = false
 light_mask = 0
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -642.0
-margin_top = -13.0
-margin_right = 1.0
+margin_left = -599.0
+margin_top = -12.0
+margin_right = -12.0
 margin_bottom = 45.0
 
 [node name="finished" type="Control" parent="."]
