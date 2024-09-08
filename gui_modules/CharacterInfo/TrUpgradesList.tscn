@@ -135,7 +135,6 @@ valign = 1
 clip_text = true
 
 [node name="training" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -256,16 +255,14 @@ text = "Reset training"
 valign = 1
 clip_text = true
 
-[node name="spirit" type="Label" parent="training"]
+[node name="spirit" type="ProgressBar" parent="training"]
 light_mask = 0
 margin_left = 129.0
 margin_top = 57.0
-margin_right = 428.0
+margin_right = 506.0
 margin_bottom = 92.0
 custom_fonts/font = ExtResource( 9 )
-text = "Reset training"
-valign = 1
-clip_text = true
+percent_visible = false
 
 [node name="loyalty" type="Label" parent="training"]
 light_mask = 0
@@ -371,6 +368,7 @@ expand = true
 stretch_mode = 6
 
 [node name="trainer_list" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 106.0

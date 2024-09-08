@@ -288,8 +288,12 @@ func apply_training(code):
 	effect_text += tr(result)  + "\n" #fix
 	if result_data.loyalty != 0:
 		effect_text += statdata.statdata.loyalty.name + " + " + str(result_data.loyalty) + "\n"
-	if result_data.spirit != 0:
-		effect_text += statdata.statdata.spirit.name + " - " + str(- result_data.spirit)  + "\n"
+#	if result_data.spirit != 0:
+#		effect_text += statdata.statdata.spirit.name + " - " + str(- result_data.spirit)  + "\n"
+	for rec in variables.spirit_changes:
+		if result_data.spirit >= rec.min and result_data.spirit <= rec.max:
+			effect_text += tr(rec.desc) + "\n"
+			break
 	if spirit < 0:
 		spirit = 0
 	#display
