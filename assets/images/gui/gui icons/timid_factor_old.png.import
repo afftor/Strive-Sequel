@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/timid_factor.png-b9f34dd52214439f6bf9e36026e145fa.stex"
+path="res://.import/timid_factor_old.png-1950f6f78e0d58c9f84e8a502e881029.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/gui icons/timid_factor.png"
-dest_files=[ "res://.import/timid_factor.png-b9f34dd52214439f6bf9e36026e145fa.stex" ]
+source_file="res://assets/images/gui/gui icons/timid_factor_old.png"
+dest_files=[ "res://.import/timid_factor_old.png-1950f6f78e0d58c9f84e8a502e881029.stex" ]
 
 [params]
 

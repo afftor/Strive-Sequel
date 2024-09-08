@@ -102,7 +102,7 @@ func build_trainer_list():
 		var panel = input_handler.DuplicateContainerTemplate($trainer_list/Container2/Container, 'Button')
 		panel.get_node('icon').texture = tchar.get_icon()
 		globals.connectslavetooltip(panel.get_node('icon'), tchar)
-		panel.get_node('name').text = tchar.get_full_name() + " - Slaves Taken: %d/%d" % [used, amount]
+		panel.get_node('name').text = tchar.get_full_name() + " - Slaves Assigned: %d/%d" % [used, amount]
 		panel.connect('pressed', self, 'assign_trainer', [id])
 		var text = ""
 		for prof in tchar.xp_module.professions:
@@ -122,7 +122,7 @@ func build_trainer_list():
 	
 	var panel = input_handler.DuplicateContainerTemplate($trainer_list/Container2/Container, 'Button')
 	panel.get_node('icon').texture = load("res://assets/Textures_v2/MANSION/arrow_navigator.png")
-	panel.get_node('name').text = tr('RETURN')
+	panel.get_node('name').text = tr('CANCEL')
 	panel.connect('pressed', self, 'hide_training_list')
 	
 
