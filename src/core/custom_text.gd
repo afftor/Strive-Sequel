@@ -44,10 +44,10 @@ func lock_difficulty(value):
 
 var magLabels = ['', 'K', 'M', 'B']
 func transform_number(num):
-	if num < 10000:
+	if num < 1000:
 		return str(int(num))
-	var mag = min( int( log(num)/log(10) - 1) / 3, magLabels.size() - 1)
-	return str( int(num) / int(pow(1000, mag)) ) + magLabels[mag]
+	var mag = min( int( log(num)/log(10)) / 3, magLabels.size() - 1)
+	return  "%.1f%s" % [num / pow(1000, mag) , magLabels[mag]]
 
 #func transform_number(number):
 #	var magnitude = 0
