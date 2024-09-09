@@ -50,17 +50,25 @@ func create():
 		food_filter[type].clear()
 	for i in Items.materiallist.values():
 		if i.type == 'food':
+			var has_like = false
+			var has_hate = false
 			if i.tags.has(food_love):
-				food_filter.high.append(i.code)
-			else:
-				var check = false
-				for k in food_hate:
-					if i.tags.has(k):
-						food_filter.low.append(i.code)
-						check = true
-						break
-				if check == false:
+				has_like = true
+#				food_filter.high.append(i.code)
+			for k in food_hate:
+				if i.tags.has(k):
+#					food_filter.low.append(i.code)
+					has_hate = true
+					break
+			if has_like:
+				if has_hate:
 					food_filter.med.append(i.code)
+				else:
+					food_filter.high.append(i.code)
+			elif has_hate:
+				food_filter.low.append(i.code)
+			else:
+				food_filter.med.append(i.code)
 
 
 func get_food():

@@ -75,15 +75,20 @@ func update():
 		loyalty_panel.visible = false
 		loyalty_panel_master.get_parent().visible = true
 		loyalty_panel_master.update_upgrades_tree()
+		$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGSMASTER')
 #		setup_tab()
 		if !loyalty_mode:
 			swap_mode()
-	elif person.get_stat('slave_class') == 'slave':
+	elif person.get_stat('slave_class') in ['slave', 'slave_trained', 'servant', 'servant_notax']:
 		$change_button.visible = true
 		loyalty_panel.visible = true
 		loyalty_panel_master.get_parent().visible = false
 		loyalty_panel.person = person
 		loyalty_panel.match_state()
+		if person.get_stat('slave_class') in ['slave', 'slave_trained']:
+			$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGS')
+		else:
+			$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGSSERVANTS')
 		if !loyalty_mode:
 			swap_mode()
 	else:

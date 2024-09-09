@@ -20,7 +20,8 @@ var guild = 'none'
 #var bodypartsarray = ['skin', 'hair_length', 'hair_color', 'eye_color', 'eye_shape', 'ears', 'horns', 'tail', 'wings', 'height']
 #var sexbodypartsarray = ['slave_class','penis_size', 'penis_type', 'balls_size','tits_size', 'ass_size']
 
-var slave_classes = ['slave','servant']
+#var slave_classes = ['slave','servant']
+var slave_classes = ['servant']
 
 var critical_stats = ["body_lower", "body_shape",
  "penis_size", # should be filtered by sex
@@ -842,8 +843,11 @@ func finish_character():
 			#basic slave setup
 #			if guild == 'fighters':
 #				person.add_trait('loyalty_combatant')
-#			if guild in ['servants', 'workers']:
-#				person.add_trait('loyalty_dress_work')
+			if guild in ['servants']:
+				person.add_trait('training_s_sexservice')
+			person.add_trait('training_s_combat')
+			person.add_trait('training_s_working')
+			person.add_trait('training_s_relation')
 		else:
 			person.set_slave_category('master')
 			person.set_stat('consent', 100)

@@ -173,6 +173,8 @@ var TranslationDict = {
 	SIBLINGMODULESEXTRAITS = "Сексуальные черты",
 	SIBLINGMODULERELATIVES = "Родственники",
 	SIBLINGMODULETRAININGS = "Обучение",
+	SIBLINGMODULETRAININGSSERVANTS = """Servant Training""", # MISSING TRANSLATION
+	SIBLINGMODULETRAININGSMASTER = """Master Training""", # MISSING TRANSLATION
 	SIBLINGMODULEFOODCONSUMPTION = "Суточное потребление",
 	SIBLINGMODULEMAIN = "Главный",
 	SIBLINGMODULESEX = "Секс",
@@ -252,6 +254,7 @@ var TranslationDict = {
 	TUTORIALLIST6 = "исследование",
 	TUTORIALLIST7 = "навыки",
 	TUTORIALLIST8 = "татуировки",
+	TUTORIALLIST9 = """training""", # MISSING TRANSLATION
 	##Mansion
 	#LeftMenuModule
 	LMMTRAVEL = "Путешествия",
@@ -260,6 +263,7 @@ var TranslationDict = {
 	LMMINVENTORY = "Инвентарь",
 	LMMCRAFT = "Крафт",
 	LMMJOURNAL = "Журнал",
+	LMMWORK = """Work""", # MISSING TRANSLATION
 	#MansionSlaveListModule
 	MSLMNAME = "Список персонажей",
 	MSLMSex = "Пол",
@@ -270,6 +274,7 @@ var TranslationDict = {
 	MSLMEXP = "Опыт",
 	MSLMLOC = "Локация",
 	MSLMTYPE = "Тип",
+	MSLMINV = """Gear""", # MISSING TRANSLATION
 	
 	MSLMRELOC = "В пути",
 	MSLMRE = "чрз",
@@ -1601,6 +1606,9 @@ var TranslationDict = {
 	STATWITS_BONUS = "Мудрость",
 	STATCHARM_BONUS = "Обаяние",
 	STATSEXUALS_BONUS = "Сексуальность",
+	STATTRAINEE_AMOUNT = """Training Slots""", # MISSING TRANSLATION
+	TRAITTRAINER = """Trainer""", # MISSING TRANSLATION
+	TRAITTRAINERDESCRIPT = """Can oversee slaves""", # MISSING TRANSLATION
 
 
 	STATOBEDIENCE = "Повиновение",
@@ -2085,6 +2093,7 @@ var TranslationDict = {
 	TRAITHEALER1DESCRIPT = "Исцеляющие заклинания на 25% эффективнее.",
 	TRAITHEALER2 = "Целитель:Эксперт",
 	TRAITHEALER2DESCRIPT = "Исцеляющие заклинания на 25% эффективнее.",
+	REMOVETRAINER = """Unassign Trainer""", # MISSING TRANSLATION
 	
 	
 	
@@ -2218,6 +2227,9 @@ var TranslationDict = {
 	TRAITLOYALTY_INTERBREEDDESCRIPT = "{color=green|Позволяет персонажу оплодотворить или быть оплодотворенным обычно несовместимым расовым партнером}\n\nТребуется: Секс:Продвинутый",
 	TRAITMASTER_MENTOR = "Наставник",
 	TRAITMASTER_MENTORDESCRIPT = "Все текущие и будущие персонажи автоматически получают базовые черты послушания и боевой преданности",
+	TRAITUNTRAINED = """Rebellious""", # MISSING TRANSLATION
+	TRAITUNTRAINEDDESCRIPT = """[name] has not been subjected to any training yet. [His] resisting attitude makes it hard to make [him] do any work. 
+-50% Productivity, -30% Damage""", # MISSING TRANSLATION
 	TRAITMASTER_HARLOTRY = "Блудница",
 	TRAITMASTER_HARLOTRYDESCRIPT = "Занимаясь сервисом, вы продолжаете получать преимущества Отдыха.",
 	TRAITMASTER_PROGENECY = "Родословная",
@@ -3534,6 +3546,8 @@ var TranslationDict = {
 	
 	TRAINTUTORIAL1 = "Каждый персонаж, кроме [Master]а, должен быть обучен с помощью очков Верности. Очки Верности получаются пассивно или с помощью социальных навыков.",
 	TRAINTUTORIAL2 = "Некоторые черты облегчают управление, а другие открывают новые способности. Каждая купленная черта увеличивает количество Верности, необходимое для следующей покупки, так что обдумайте свой путь.",
+	TRAINTUTORIAL3 = """Training is done via trainer actions. Training a slave reduces their {color=aqua|Spirit}. By draining their spirit too much during the training, they will become a broken version of themselves.""", # MISSING TRANSLATION
+	TRAINTUTORIAL4 = """Each slave has their own hidden disposition towards different action types. By finding out which action type works the best, it will be a lot easier to obtain Loyalty Points without draining their spirit too much.""", # MISSING TRANSLATION
 	
 	COMBATSKILLSTUTORIAL = "Некоторые боевые навыки можно получить автоматически после покупки определенных классов. Кроме того, их можно разблокировать с помощью очков умений. Очки умений можно получить в бою. Многие навыки требуют определенных специализаций, которые получаются из классов.",
 	MARRYTUTORIAL = "После окончания гражданской войны вы сможете жениться на одной из своих подчиненных. Для начала вам нужно будет получить их согласие во время свидания. Затем приступайте к подготовке к свадьбе в церкви. В текущем состоянии игры вы можете жениться только на 1 персонаже и не можете развестись.",
@@ -14525,6 +14539,31 @@ With that the magic seals and tentacles disappear leaving you alone with Lilith 
 	TREAT_FOOD_NEUTRAL1 = "Спасибо, [Master], я приму это",
 
 	LEAVE_CHAT1 = "Тогда прощайте, я полагаю...",
+	TRAIN_FAILURE1 = """P-please... I can't...""", # MISSING TRANSLATION
+	TRAIN_FAILURE2 = """This is wrong...""", # MISSING TRANSLATION
+	TRAIN_FAILURE3 = """I don't want to be here...""", # MISSING TRANSLATION
+	TRAIN_FAILURE4 = """This is wrong...""", # MISSING TRANSLATION
+	TRAIN_FAILURE5 = """I don't want to be here...""", # MISSING TRANSLATION
+	TRAIN_FAILURE6 = """I don't want this...""", # MISSING TRANSLATION
+	TRAIN_RESIST1 = """I won't... agree to this.""", # MISSING TRANSLATION
+	TRAIN_RESIST2 = """No, this is wrong...""", # MISSING TRANSLATION
+	TRAIN_RESIST3 = """I can't give up.""", # MISSING TRANSLATION
+	TRAIN_RESIST4 = """Screw it.""", # MISSING TRANSLATION
+	TRAIN_RESIST5 = """Like hell I'll obey after this!""", # MISSING TRANSLATION
+	TRAIN_RESIST6 = """This won't work on me.""", # MISSING TRANSLATION
+	TRAIN_SUCCESS1 = """This... isn't too bad.""", # MISSING TRANSLATION
+	TRAIN_SUCCESS2 = """I'm... growing tolerant of this?""", # MISSING TRANSLATION
+	TRAIN_SUCCESS3 = """I guess this is my role now...""", # MISSING TRANSLATION
+	TRAIN_SUCCESS4 = """As long as I get a food and shelter...""", # MISSING TRANSLATION
+	TRAIN_SUCCESS5 = """I'll just follow the rules...""", # MISSING TRANSLATION
+	TRAIN_SUCCESS6 = """I... Understand.""", # MISSING TRANSLATION
+	TRAIN_KINK1 = """I... Why I'm enjoying this...""", # MISSING TRANSLATION
+	TRAIN_KINK2 = """This was thrilling... for some reason...""", # MISSING TRANSLATION
+	TRAIN_KINK3 = """Being a slave doesn't seem to be too bad... Wait, what am I thinking...""", # MISSING TRANSLATION
+	TRAIN_KINK4 = """This role is... Not too bad...""", # MISSING TRANSLATION
+	TRAIN_KINK5 = """My mind... is accepting it?""", # MISSING TRANSLATION
+	TRAIN_KINK6 = """Why... Am I getting... Aroused?""", # MISSING TRANSLATION
+	TRAIN_KINK7 = """This... felt good...""", # MISSING TRANSLATION
 	
 	#worlddata land
 	

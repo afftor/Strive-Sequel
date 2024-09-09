@@ -185,14 +185,14 @@ var sex_factor_skill_multiplier = {
 	6 : 2.2,
 }
 
-var growth_factor = {
-1 : 150,
-2 : 70,
-3 : 30,
-4 : 10,
-5 : 3,
-6 : 1,
-}
+#var growth_factor = {
+#1 : 150,
+#2 : 70,
+#3 : 30,
+#4 : 10,
+#5 : 3,
+#6 : 1,
+#}
 
 var basestats_factor_mod = {
 1 : 0.5,
@@ -239,7 +239,6 @@ var guild_quest_update_time = 3
 #mansion & ugprades
 var base_population_cap = 5
 var population_cap_per_room_upgrade = 5
-var max_population_cap = 30
 var stable_boost_per_level = 1
 
 #Items
@@ -563,3 +562,9 @@ var training_results_base = {
 	}
 var spirit_limits = [10, 50, 75]
 var training_costs = [15, 25, 35]
+var training_costs_gold = [500, 1000, 2000]
+var spirit_changes = [
+	{max = 0, min = 0, desc = 'SPIRITNO'},
+	{max = -0.5, min = -5, desc = 'SPIRITSMALL'},
+	{max = -5.5, min = -100, desc = 'SPIRITOTHER'},
+]

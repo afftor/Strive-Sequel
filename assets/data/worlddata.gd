@@ -280,7 +280,7 @@ var factiondata = {
 			character_bonuses = {},
 			slave_races = [],
 			tags = [],
-			traits = [],
+			traits = ['training_s_combat','training_s_working'],
 			slavenumber = [2, 2],
 			no_traits = ['whimp','pacifist','coward'],
 			}
@@ -317,7 +317,7 @@ var factiondata = {
 			slave_races = [],
 			tags = [],
 			slavenumber = [2,2],
-			traits = [],
+			traits = ['training_s_combat','training_s_working'],
 			no_traits = ['whimp','m_inept','coward'],
 			}
 		],
@@ -365,7 +365,7 @@ var factiondata = {
 			slave_races = [],
 			tags = [],
 			slavenumber = [2,2],
-			traits = [],
+			traits = ['training_s_combat','training_s_working'],
 			no_traits = ['crude','blundering','inept','clumsy'],
 			}
 		],
@@ -401,7 +401,7 @@ var factiondata = {
 			slave_races = [],
 			tags = [],
 			slavenumber = [2,3],
-			traits = [],
+			traits = ['training_s_combat','training_s_working','training_s_sexservice'],
 			no_traits = ['chaste','frigid'],
 			}
 		],
@@ -428,7 +428,7 @@ var factiondata = {
 			slave_races = [['rare',3]],
 			tags = [],
 			slavenumber = [3,5],
-			traits = [],
+			traits = ['training_broke_in','training_obedience'],
 			}
 		],
 	},
@@ -462,7 +462,7 @@ var factiondata = {
 			character_bonuses = {pricemod = 1.3},
 			slave_races = [['halfbeast',1]],
 			tags = ['unique_slave_races'],
-			traits = [],
+			traits = ['training_broke_in'],
 			slavenumber = [1,1],
 			}
 		],
@@ -489,7 +489,7 @@ var factiondata = {
 			character_types = [['slave',1]],
 			character_bonuses = {pricemod = 1.1},#authority = [30,50], obedience = [48,48], 
 			slave_races = [['Elf',5],['TribalElf',1]],
-			traits = [],
+			traits = ['training_broke_in'],
 			tags = [],
 			slavenumber = [2,3],
 			},
@@ -501,6 +501,7 @@ var factiondata = {
 			slave_races = [['TribalElf',1]],
 			tags = [],
 			slavenumber = [1,1],
+			traits = ['training_broke_in'],
 			}
 		],
 	},
@@ -1464,6 +1465,7 @@ var fixed_location_options = { #override serialized data
 		{
 			text = tr("QUEST_TEMPLE_LOCATION1"), 
 			reqs = [
+				{type = 'active_quest_stage', value = 'temple_quest', stage = 'stage1', state = true},
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_2_2', },
 				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'TEMPLE_2_1'}],
 			args = [{code = 'start_event', data = 'temple_start', args = []}]
@@ -1471,8 +1473,10 @@ var fixed_location_options = { #override serialized data
 		{
 			text = tr("QUEST_TEMPLE_LOCATION2"), 
 			reqs = [
+				
 				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_2', },
-				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_1', orflag = true}],
+				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'TEMPLE_2_1', orflag = true},
+				{type = 'active_quest_stage', value = 'temple_quest', stage = 'stage1', state = true},],
 			args = [{code = 'start_event', data = 'temple_6', args = []}]
 		},
 	],

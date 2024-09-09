@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveListModule.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSkillsModule.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/core/Console.gd" type="Script" id=7]
-[ext_resource path="res://gui_modules/Travel new/TravelModuleNew.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionLeftMenuModule.tscn" type="PackedScene" id=9]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionLogModule.tscn" type="PackedScene" id=10]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveModule.tscn" type="PackedScene" id=11]
@@ -24,7 +23,6 @@
 [ext_resource path="res://gui_modules/Universal/Scripts/NavigationModule.gd" type="Script" id=22]
 [ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion.png" type="Texture" id=23]
 [ext_resource path="res://assets/images/backgrounds/mansion_morning.png" type="Texture" id=24]
-[ext_resource path="res://assets/Themes_v2/MANSION/M_Left_Menu_Panel.tres" type="StyleBox" id=25]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu.png" type="Texture" id=26]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu_pressed.png" type="Texture" id=27]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu_hover.png" type="Texture" id=28]
@@ -93,12 +91,11 @@ texture = ExtResource( 38 )
 [node name="MansionBottomLeftModule" parent="." instance=ExtResource( 9 )]
 material = SubResource( 1 )
 margin_left = 15.0
-margin_top = 678.0
+margin_top = 625.0
 margin_right = 305.0
-margin_bottom = 1063.0
+margin_bottom = 1068.0
 rect_min_size = Vector2( 290, 385 )
 theme = ExtResource( 12 )
-custom_styles/panel = ExtResource( 25 )
 
 [node name="MansionSlaveListModule" parent="." instance=ExtResource( 5 )]
 margin_left = 320.0
@@ -153,9 +150,6 @@ margin_left = 320.0
 margin_top = 948.0
 margin_right = -500.0
 margin_bottom = -12.0
-
-[node name="TravelsModule" parent="." instance=ExtResource( 8 )]
-visible = false
 
 [node name="upgrades" parent="." instance=ExtResource( 35 )]
 visible = false

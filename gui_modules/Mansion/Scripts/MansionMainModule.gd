@@ -484,7 +484,7 @@ func slave_list_manager():
 
 func update_sex_date_buttons():
 	SexSelect.get_node("SexButton").hint_tooltip = ""
-	if ResourceScripts.game_progress.unlimited_date_sex:
+	if ResourceScripts.game_globals.unlimited_date_sex:
 		if sex_participants.has(ResourceScripts.game_party.get_master()):
 			SexSelect.get_node("DateButton").disabled = true
 		else:
@@ -515,7 +515,7 @@ func update_sex_date_buttons():
 	
 	for i in sex_participants:
 		if i.is_master(): continue
-		if i.has_status("no_date") or !i.has_status("relation") or (i.tags.has("no_date_day") and !ResourceScripts.game_progress.unlimited_date_sex):
+		if i.has_status("no_date") or !i.has_status("relation") or (i.tags.has("no_date_day") and !ResourceScripts.game_globals.unlimited_date_sex):
 			SexSelect.get_node("DateButton").disabled = true
 
 func set_hovered_person(node, person):
@@ -544,7 +544,7 @@ func show_map():
 func test_mode():
 	input_handler.CurrentScene = self
 	gui_controller.mansion = self
-	ResourceScripts.game_progress.allow_skip_fights = true
+	ResourceScripts.game_globals.allow_skip_fights = true
 	variables.allow_remote_intereaction = true
 	ResourceScripts.game_world.make_world()
 	if true:

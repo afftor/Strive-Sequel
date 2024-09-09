@@ -610,7 +610,7 @@ func confirm_travel(): #hope this script is obsolete
 		person.process_event(variables.TR_MOVE)
 #		if !person.is_controllable():
 #			person.add_stat('obedience', -ceil((travel_cost.obed_cost/person.travel_per_tick())))
-		if ResourceScripts.game_progress.instant_travel == false:
+		if ResourceScripts.game_globals.instant_travel == false:
 			person.previous_location = person.travel.location
 			person.xp_module.work = 'travel'
 			person.travel.location = 'travel'

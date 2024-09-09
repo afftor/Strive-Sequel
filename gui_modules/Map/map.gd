@@ -911,7 +911,7 @@ func confirm_travel():
 		var person = characters_pool.get_char_by_id(chid)
 		person.remove_from_task()
 		person.process_event(variables.TR_MOVE)
-		if ResourceScripts.game_progress.instant_travel == false:
+		if ResourceScripts.game_globals.instant_travel == false:
 			person.previous_location = person.travel.location
 			person.set_work('travel')
 			person.travel.location = 'travel'

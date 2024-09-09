@@ -29,9 +29,17 @@ func setup_dispositions(race_id):
 	var data = races.racelist.Human.training_disposition
 	if races.racelist[race_id].has('training_disposition'):
 		data = races.racelist[race_id].training_disposition
+	process_disposition_data(data, true)
+
+
+func process_disposition_data(data, setup = false):
 	for cat in data:
-		dispositions_known[cat] = false
-		dispositions[cat] = input_handler.weightedrandom(data[cat])
+		if setup:
+			dispositions_known[cat] = false
+		if data[cat] is Array:
+			dispositions[cat] = input_handler.weightedrandom(data[cat])
+		else:
+			dispositions[cat] = data[cat]
 
 
 func unlock_disposition(cat):
@@ -52,9 +60,15 @@ func get_trainees(): #unsafe - returns array, not copy, but it's for a reason
 
 
 func add_trainee(id): #unsafe - no limit check
+	if trainees.has(id):
+		return
 	trainees.push_back(id)
 	var tchar = characters_pool.get_char_by_id(id)
 	tchar.training.trainer = parent.get_ref().id
+
+
+func can_be_trained():
+	return available and enable and trainer != null
 
 
 func clear_training():
@@ -80,11 +94,14 @@ func reset_training():
 	tarr = parent.get_ref().get_traits_by_tag('training_final')
 	for tr in tarr:
 		parent.get_ref().remove_trait(tr)
+	parent.get_ref().set_slave_category('slave1')
 	parent.get_ref().add_trait('untrained')
 
 
-func get_trainings_amount():
-	return parent.get_ref().get_traits_by_tag('training').size()
+func get_trainings_amount(tag = 'training'):
+	var tmp = parent.get_ref().get_traits_by_tag(tag)
+	tmp.erase('untrained')
+	return tmp.size()
 
 
 func get_training_cost():
@@ -95,6 +112,16 @@ func get_training_cost():
 	if tr_a > 1:
 		cost = variables.training_costs[2]
 	return cost
+
+
+func get_training_cost_gold():
+	var cost = variables.training_costs_gold[0]
+	var tr_a = get_trainings_amount('servant_training')
+	if tr_a > 0:
+		cost = variables.training_costs_gold[1]
+	if tr_a > 1:
+		cost = variables.training_costs_gold[2]
+	return cost * (1.0 - 0.07 * parent.get_ref().get_stat('tame_factor'))
 
 
 func add_training(id):
@@ -263,8 +290,12 @@ func apply_training(code):
 	effect_text += tr(result)  + "\n" #fix
 	if result_data.loyalty != 0:
 		effect_text += statdata.statdata.loyalty.name + " + " + str(result_data.loyalty) + "\n"
-	if result_data.spirit != 0:
-		effect_text += statdata.statdata.spirit.name + " - " + str(- result_data.spirit)  + "\n"
+#	if result_data.spirit != 0:
+#		effect_text += statdata.statdata.spirit.name + " - " + str(- result_data.spirit)  + "\n"
+	for rec in variables.spirit_changes:
+		if result_data.spirit >= rec.min and result_data.spirit <= rec.max:
+			effect_text += tr(rec.desc) + "\n"
+			break
 	if spirit < 0:
 		spirit = 0
 	#display
@@ -290,7 +321,7 @@ func apply_training(code):
 
 
 func get_dispositions_text():
-	var text = "Training dispositions: \n"
+	var text = "Dispositions: \n"
 	for dis in dispositions_known:
 		var ddata = Skilldata.training_categories[dis]
 		if dispositions_known[dis]:

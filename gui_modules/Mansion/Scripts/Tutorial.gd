@@ -37,9 +37,19 @@ var exploration_text = {
 	2: tr("EXPLORATIONTUTORIAL3")
 }
 
+var training_images = {
+	
+	0: load("res://assets/Textures_v2/MANSION/Tutorial/map_1.png"),
+	1: load("res://assets/Textures_v2/MANSION/Tutorial/map_2.png"),
+	2: load("res://assets/Textures_v2/MANSION/Tutorial/map_2.png"),
+	3: load("res://assets/Textures_v2/MANSION/Tutorial/map_2.png"),
+}
+
 var training_text = {
 	0: tr("TRAINTUTORIAL1"),
-	1: tr("TRAINTUTORIAL2")
+	1: tr("TRAINTUTORIAL2"),
+	2: tr("TRAINTUTORIAL2"),
+	3: tr("TRAINTUTORIAL2")
 }
 
 var traveling_images = {
@@ -192,8 +202,8 @@ func show_tutorial_list(tut):
 			size = tattoo_images.size() - 1
 			text_dict = tattoo_text
 		"TUTORIALLIST9":
-			img = introduction_images
-			size = introduction_images.size() - 2
+			img =  training_images
+			size =  training_images.size() - 1
 			text_dict = training_text
 	img_index = 0
 	if !ResourceScripts.game_progress.seen_tutorials.has(tut):

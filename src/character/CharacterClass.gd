@@ -390,7 +390,6 @@ func create(temp_race, temp_gender, temp_age):
 	learn_c_skill('attack')
 	statlist.create(temp_race, temp_gender, temp_age)
 	food.create()
-	training.setup_dispositions(get_stat('race'))
 	add_trait('core_trait')
 	recheck_effect_tag('recheck_stats')
 
@@ -726,7 +725,13 @@ func has_status(status):
 
 func is_combatant():
 	if get_stat('slave_class') != 'slave':
-		return true
+		return has_status('combatant')
+	else:
+		return training.get_trainer() != null
+
+func is_worker():
+	if get_stat('slave_class') != 'slave':
+		return has_status('worker')
 	else:
 		return training.get_trainer() != null
 
@@ -912,6 +917,8 @@ func recheck_upgrades():
 func recheck_equip():
 	equipment.recheck_equip()
 
+func process_disposition_data(data, setup = false):
+	training.process_disposition_data(data, setup)
 
 func get_trainer():
 	return training.get_trainer()
@@ -934,6 +941,9 @@ func reset_training():
 func clear_training():
 	training.clear_training()
 
+func can_be_trained():
+	return training.can_be_trained()
+
 func can_be_trainer():
 	var res = true
 	if get_stat('slave_class') == 'slave':
@@ -949,6 +959,8 @@ func apply_training(tr_code):
 func get_training_cost():
 	return training.get_training_cost()
 
+func get_training_cost_gold():
+	return training.get_training_cost_gold()
 
 func serialize():
 	var res = inst2dict(self)
@@ -1654,7 +1666,7 @@ func set_shield(value):
 func deal_damage(value, source = 'normal'):
 	if npc_reference == 'combat_global': return null
 	var tmp = hp
-	if ResourceScripts.game_party.characters.has(self.id) && ResourceScripts.game_progress.invincible_player:
+	if ResourceScripts.game_party.characters.has(self.id) && ResourceScripts.game_globals.invincible_player:
 		return 0
 	value *= (1.0 - get_stat('resists')['all']/100.0)
 	if source != 'true':

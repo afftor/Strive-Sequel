@@ -11,7 +11,6 @@ var default_locations = ["show_all", "mansion"]
 var selected_location = "mansion"
 var prev_selected_location = "show_all"
 var visible_persons = []
-var limit
 
 const BUTTON_HEIGHT = 64
 
@@ -38,6 +37,19 @@ func OpenJobModule(person = null):
 #	ResourceScripts.core_animations.FadeAnimation(gui_controller.clock, 0.3)
 	#yield(get_tree().create_timer(0.3), 'timeout')
 
+
+func OpenInventory(person = null):
+	get_parent().remove_hovered_person()
+	gui_controller.inventory = input_handler.get_spec_node(input_handler.NODE_INVENTORY_NEW)
+	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.inventory, 0.3)
+	gui_controller.inventory.show()
+	gui_controller.inventory.get_node("GridContainer/GearButton").set_pressed(true)
+	gui_controller.previous_screen = gui_controller.current_screen
+	gui_controller.current_screen = gui_controller.inventory
+	gui_controller.inventory.set_active_hero(person)
+	gui_controller.emit_signal("screen_changed")
+
+
 func rebuild():
 	build_locations_list()
 	LocationsPanel.visible = (get_parent().mansion_state != "sex")
@@ -59,7 +71,8 @@ func rebuild():
 		
 		newbutton.disabled = person.is_on_quest()
 		if !person.is_on_quest():
-			newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char.png")
+			newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars.png")
+			newbutton.texture_hover = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_hover.png")
 
 		newbutton.pressed = (get_parent().active_person == person)
 		newbutton.set_meta('slave', person)
@@ -75,34 +88,33 @@ func rebuild():
 		newbutton.connect('gui_input', self, 'double_clicked', [newbutton])
 		newbutton.connect('mouse_entered', get_parent(), 'set_hovered_person', [newbutton, person])
 		newbutton.connect('mouse_exited_custom', get_parent(), 'remove_hovered_person')
-		globals.connecttexttooltip(newbutton.get_node("obed"), tr("STATOBEDIENCEDESCRIPT"))
-		
 		
 		newbutton.get_node("job").connect("pressed", self, 'OpenJobModule', [person])
 		newbutton.get_node("job").set_disabled(false)
 		newbutton.get_node("job").disabled = person.travel.location == "travel" || person.is_on_quest()
+		
+		newbutton.get_node("weapon").connect("pressed", self, 'OpenInventory', [person])
+		newbutton.get_node("weapon").set_disabled(false)
+		newbutton.get_node("tool").connect("pressed", self, 'OpenInventory', [person])
+		newbutton.get_node("tool").set_disabled(false)
+		newbutton.get_node("armor1").connect("pressed", self, 'OpenInventory', [person])
+		newbutton.get_node("armor1").set_disabled(false)
+		newbutton.get_node("armor2").connect("pressed", self, 'OpenInventory', [person])
+		newbutton.get_node("armor2").set_disabled(false)
+		
 		match get_parent().mansion_state:
-			"travels":
-				build_for_travel(person, newbutton)
-				newbutton.get_node("job").set_disabled(true)
-				newbutton.get_node("job").set_mouse_filter(MOUSE_FILTER_IGNORE)
 			"skill":
 				build_for_skills(person, newbutton)
 				newbutton.get_node("job").set_disabled(true)
 				newbutton.get_node("job").set_mouse_filter(MOUSE_FILTER_IGNORE)
-			"upgrades":
-				build_for_upgrades(person, newbutton)
 			"default":
 				build_for_default(person, newbutton)
-			"occupation":
-				build_for_ocupation(person, newbutton)
-			"craft":
-				build_for_craft(person, newbutton)
 			"sex":
 				build_sex_selection(person, newbutton)
 		var pos = self.rect_size
 		$TravelsContainerPanel.rect_position.y = pos.y - 50
-		show_location_characters()
+	show_location_characters()
+	update_description()
 
 
 func double_clicked(event, button):
@@ -113,67 +125,33 @@ func double_clicked(event, button):
 		get_parent().set_active_person(button.get_meta("slave"))
 		get_parent().mansion_state = "char_info"
 
-
+#obsolete
 func build_for_ocupation(person, newbutton):
 	newbutton.get_node('progress').visible = false
 	newbutton.get_node('explabel').visible = true
 	newbutton.get_node('stats').visible = true
 	newbutton.get_node('job').visible = true
-	newbutton.get_node('obed').visible = !person.is_master()
 	if person.travel.location == "travel":
 		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
 		newbutton.disabled = true
 
+
 func build_for_default(person, newbutton):
 	newbutton.get_node('progress').visible = false
+	newbutton.get_node('loctext').visible = false
+	
 	newbutton.get_node('explabel').visible = true
 	newbutton.get_node('stats').visible = true
 	newbutton.get_node('job').visible = true
-	newbutton.get_node("DateIcon").hide()
-	newbutton.get_node("SexIcon").hide()
-	newbutton.get_node('obed').visible = !person.is_master()
-
-func build_for_travel(person, newbutton):
-	newbutton.get_node('progress').visible = false
-	newbutton.get_node('explabel').visible = true
-	newbutton.get_node('stats').visible = true
-	newbutton.get_node('job').visible = true
-	newbutton.get_node('obed').visible = !person.is_master()
-	var selected_travel_characters = get_parent().selected_travel_characters
-	if person.travel.location == get_parent().selected_destination || get_parent().selected_destination == null || person.travel.location == "travel":
-		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
-		newbutton.disabled = true
-	elif !person.is_controllable():
-		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
-		newbutton.disabled = true
-	else:
-		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available.png")
-		newbutton.texture_hover = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
-	for button in SlaveContainer.get_children():
-		if newbutton.get_meta("slave") in selected_travel_characters:
-			newbutton.texture_pressed = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
-			newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
-
-
-func build_for_craft(person, newbutton):
-	newbutton.get_node('progress').visible = false
-	newbutton.get_node('explabel').visible = true
-	newbutton.get_node('stats').visible = true
-	newbutton.get_node('job').visible = true
-	newbutton.get_node('obed').visible = !person.is_master()
-	newbutton.pressed = false
-	if person.travel.location != ResourceScripts.game_world.mansion_location:
-		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
-		newbutton.disabled = true
-	# if person in get_parent().persons_for_craft:
-	# 	newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/panel_char_available.png")
-	# else:
-	# 	newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/panel_char.png")
-	for button in SlaveContainer.get_children():
-		if newbutton.get_meta("slave") in get_parent().persons_for_craft:
-			newbutton.texture_pressed = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
-			newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
-
+	newbutton.get_node('weapon').visible = true
+	newbutton.get_node('tool').visible = true
+	newbutton.get_node('armor1').visible = true
+	newbutton.get_node('armor2').visible = true
+	newbutton.get_node('DateIcon').visible = !person.is_master()
+	newbutton.get_node('SexIcon').visible = true
+	newbutton.get_node('TrainIcon').visible = person.training.enable
+	newbutton.get_node('LocIcon').visible = true
+	newbutton.get_node('state').visible = true
 
 
 func update_dislocations():
@@ -256,39 +234,52 @@ func sort_locations():
 
 func build_sex_selection(person, newbutton):
 	newbutton.get_node('progress').visible = false
+	newbutton.get_node('loctext').visible = false
+	
 	newbutton.get_node('explabel').visible = true
-	newbutton.get_node('stats').visible = false
-	newbutton.get_node('job').visible = false
-	newbutton.get_node("DateIcon").visible = true
-	newbutton.get_node("SexIcon").visible = true
-	newbutton.get_node('obed').visible = !person.is_master()
-	calculate_sex_limits()
-	#print(ResourceScripts.game_globals.weekly_sex_left)
-	var sex_participants = get_parent().sex_participants
-	for button in SlaveContainer.get_children():
-		if button == SlaveContainer.get_child(SlaveContainer.get_children().size()-1):
-			continue
-		var ch = button.get_meta("slave")
-		button.pressed = sex_participants.has(ch)
-		button.disabled = (sex_participants.size() >= limit && !button.is_pressed())
-		if ch.has_status('no_sex'):
-			button.get_node("SexIcon").self_modulate = Color(variables.hexcolordict.red)
-		elif ResourceScripts.game_globals.weekly_sex_left < 1:
-			button.get_node("SexIcon").self_modulate = Color(variables.hexcolordict.yellow)
-		else:
-			button.get_node("SexIcon").self_modulate = Color(variables.hexcolordict.green)
-		if !person.has_status("relation"):
-			button.get_node("DateIcon").self_modulate = Color(variables.hexcolordict.red)
-		elif person.tags.has("no_date_day") || ResourceScripts.game_globals.weekly_dates_left < 1:
-			button.get_node("DateIcon").self_modulate = Color(variables.hexcolordict.yellow)
-		else:
-			button.get_node("DateIcon").self_modulate = Color(variables.hexcolordict.green)
-		
-#		if ch.has_status("no_sex") or !ch.has_status("sex_basic") or (sex_participants.size() > 1 and !ch.has_status("sex_group")):
-#			button.hint_tooltip = "Sex Requirements aren't met"
-#			button.get_node("name").set("custom_colors/font_color", Color(variables.hexcolordict.red))
+	newbutton.get_node('stats').visible = true
+	newbutton.get_node('job').visible = true
+	newbutton.get_node('weapon').visible = true
+	newbutton.get_node('tool').visible = true
+	newbutton.get_node('armor1').visible = true
+	newbutton.get_node('armor2').visible = true
+	newbutton.get_node('DateIcon').visible = !person.is_master()
+	newbutton.get_node('SexIcon').visible = true
+	newbutton.get_node('TrainIcon').visible = person.training.enable
+	newbutton.get_node('LocIcon').visible = true
+	newbutton.get_node('state').visible = true
 
-	update_description()
+	var limit = calculate_sex_limits()
+	var sex_participants = get_parent().sex_participants
+	
+	newbutton.texture_disabled = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_disabled.png")
+	
+	if sex_participants.has(person):
+		newbutton.pressed = true
+	else:
+		newbutton.pressed = false
+		if sex_participants.size() >= limit:
+			newbutton.disabled = true
+#	for button in SlaveContainer.get_children():
+#		if button == SlaveContainer.get_child(SlaveContainer.get_children().size()-1):
+#			continue
+#		var ch = button.get_meta("slave")
+#		button.pressed = sex_participants.has(ch)
+#		button.disabled = (sex_participants.size() >= limit && !button.is_pressed())
+#		if ch.has_status('no_sex'):
+#			button.get_node("SexIcon").self_modulate = Color(variables.hexcolordict.red)
+#		elif ResourceScripts.game_globals.weekly_sex_left < 1:
+#			button.get_node("SexIcon").self_modulate = Color(variables.hexcolordict.yellow)
+#		else:
+#			button.get_node("SexIcon").self_modulate = Color(variables.hexcolordict.green)
+#		if !person.has_status("relation"):
+#			button.get_node("DateIcon").self_modulate = Color(variables.hexcolordict.red)
+#		elif person.tags.has("no_date_day") || ResourceScripts.game_globals.weekly_dates_left < 1:
+#			button.get_node("DateIcon").self_modulate = Color(variables.hexcolordict.yellow)
+#		else:
+#			button.get_node("DateIcon").self_modulate = Color(variables.hexcolordict.green)
+
+#	update_description()
 
 
 
@@ -304,8 +295,7 @@ func calculate_sex_limits():
 	var slavelimit = 2
 	if ResourceScripts.game_res.upgrades.has('master_bedroom'):
 		slavelimit += ResourceScripts.game_res.upgrades.master_bedroom
-	limit = slavelimit
-	return limit
+	return slavelimit
 
 
 func show_location_characters(button = null):
@@ -351,10 +341,9 @@ func show_location_characters(button = null):
 		if get_parent().mansion_state == "sex":
 			person.visible = person_reference.travel.location == ResourceScripts.game_world.mansion_location
 	
-	if visible_persons.size() < 1:
+	if visible_persons.size() < 1 and selected_location != "show_all":
 		selected_location = "show_all"
 		show_location_characters()
-
 
 
 func update_location_buttons():
@@ -364,49 +353,33 @@ func update_location_buttons():
 		i.pressed = selected_location == i.get_meta("location")
 
 
-func build_for_upgrades(person, newbutton):
-	newbutton.get_node('progress').visible = false
-	newbutton.get_node('explabel').visible = true
-	newbutton.get_node('stats').visible = true
-	newbutton.get_node('job').visible = true
-	newbutton.get_node('obed').visible = !person.is_master()
-	if get_parent().select_chars_mode:
-		if person.get_work() == "building" || !person.check_location('aliron'):
-			newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
-			newbutton.disabled = true
-		else:
-			newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available.png")
-			newbutton.texture_hover = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
-			newbutton.texture_pressed = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
-		for button in SlaveContainer.get_children():
-			if button == SlaveContainer.get_child(SlaveContainer.get_children().size()-1):
-				continue
-			button.pressed = get_parent().chars_for_upgrades.has(button.get_meta("slave"))
-	else:
-		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char.png")
-		newbutton.texture_pressed = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_pressed.png")
-		# for i in $ScrollContainer/VBoxContainer.get_children():
-		# 	i.pressed = i.get_meta("slave") == get_parent().active_person
-	newbutton.get_node("job").disabled = person.is_on_quest()
-
-
-
 func build_for_skills(person, newbutton):
 	newbutton.get_node('progress').visible = false
+	newbutton.get_node('loctext').visible = false
+	
 	newbutton.get_node('explabel').visible = true
 	newbutton.get_node('stats').visible = true
 	newbutton.get_node('job').visible = true
-	newbutton.get_node('obed').visible = !person.is_master()
+	newbutton.get_node('weapon').visible = true
+	newbutton.get_node('tool').visible = true
+	newbutton.get_node('armor1').visible = true
+	newbutton.get_node('armor2').visible = true
+	newbutton.get_node('DateIcon').visible = !person.is_master()
+	newbutton.get_node('SexIcon').visible = true
+	newbutton.get_node('TrainIcon').visible = person.training.enable
+	newbutton.get_node('LocIcon').visible = true
+	newbutton.get_node('state').visible = true
 	if person == get_parent().skill_source:
-		newbutton.texture_disabled = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_chosen.png")
+		newbutton.texture_disabled = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_pressed.png")
 		newbutton.disabled = true
 	if !person in get_parent().chars_for_skill:
-		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
+		newbutton.texture_disabled = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_disabled.png")
 		newbutton.disabled = true
 	else:
-		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available.png")
-		newbutton.texture_hover = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
+		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_avail.png")
+		newbutton.texture_hover = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_hover2.png")
 	newbutton.get_node("job").disabled = person.is_on_quest()
+
 
 var training_types = {
 	nothing = 'No Training',
@@ -419,12 +392,19 @@ var training_types = {
 func build_for_tutelage(person, newbutton):
 	newbutton.get_node('progress').visible = true
 	newbutton.get_node('explabel').visible = false
-	newbutton.get_node('stats').visible = false
+	newbutton.get_node('stats').visible = true
+	newbutton.get_node('loctext').visible = true
 	newbutton.get_node('job').visible = false
-	newbutton.get_node('obed').visible = false
+	newbutton.get_node('weapon').visible = false
+	newbutton.get_node('tool').visible = false
+	newbutton.get_node('armor1').visible = false
+	newbutton.get_node('armor2').visible = false
+	newbutton.get_node('DateIcon').visible = false
+	newbutton.get_node('SexIcon').visible = false
+	newbutton.get_node('TrainIcon').visible = false
 	newbutton.get_node('progress').value = variables.tutduration - person.get_quest_time_remains()
 	newbutton.get_node('progress').max_value = variables.tutduration
-	newbutton.get_node('Location').text = training_types[person.get_tutelage_type()]
+	newbutton.get_node('loctext').text = training_types[person.get_tutelage_type()]
 	
 
 
@@ -438,6 +418,7 @@ func update():
 #	get_parent().NavModule.build_accessible_locations()
 	for i in $ScrollContainer/VBoxContainer.get_children():
 		update_button(i)
+	update_description()
 
 
 func update_button(newbutton):
@@ -445,7 +426,7 @@ func update_button(newbutton):
 	if newbutton.name == 'Button':
 		return
 	var person = newbutton.get_meta('slave')
-
+	
 	newbutton.get_node("icon").texture = person.get_icon_small()
 	newbutton.get_node("name").text = person.get_short_name()
 	if person.is_master() or person.is_unique():
@@ -457,8 +438,6 @@ func update_button(newbutton):
 	newbutton.get_node("stats/mp").max_value = person.get_stat('mpmax')
 	newbutton.get_node("stats/mp").value = person.mp
 	newbutton.get_node("stats").hint_tooltip = "HP: " + str(round(person.hp)) + "/" + str(round(person.get_stat('hpmax'))) + "\nMP: " + str(round(person.mp)) + "/" + str(round(person.get_stat('mpmax')))
-	#newbutton.get_node("HBoxContainer/stats/hplabel").text = str(round(person.hp)) + "/" + str(round(person.hpmax))
-	#newbutton.get_node("HBoxContainer/stats/mplabel").text = str(round(person.mp)) + "/" + str(round(person.mpmax))
 	newbutton.get_node("explabel").text = str(floor(person.get_stat('base_exp')))
 	var gatherable = Items.materiallist.has(person.get_work())
 	if person.get_work() == '' or person.get_work() == "Assignment" or person.get_work() == "disabled":
@@ -492,13 +471,20 @@ func update_button(newbutton):
 	else:
 		newbutton.get_node("explabel").set("custom_colors/font_color", Color(1,1,1))
 	# if !person.check_location('Aliron'):
+	#location
 	if person.get_work() == "disabled":
-		newbutton.get_node('Location').text = tr("CHAR_UNAVALIABLE")
+		newbutton.get_node('loctext').text = tr("CHAR_UNAVALIABLE")
+		newbutton.get_node('LocIcon').texture = null
 		person_location = null
 	elif person.check_location('travel'):
-		newbutton.get_node('Location').text = tr("MSLMRELOC") + ": " + tr("MSLMRE") + " " + str(ceil(person.travel.travel_time / person.travel_per_tick())) + tr("MSLMTURN") + ". "
+		newbutton.get_node('loctext').text = tr("MSLMRELOC") + ": " + tr("MSLMRE") + " " + str(ceil(person.travel.travel_time / person.travel_per_tick())) + tr("MSLMTURN") + ". "
+		newbutton.get_node('LocIcon').texture = load("res://assets/Textures_v2/MANSION/icon_travel_small.png")
+		newbutton.get_node('LocIcon').hint_tooltip = tr("MSLMRELOC") + ": " + tr("MSLMRE") + " " + str(ceil(person.travel.travel_time / person.travel_per_tick())) + tr("MSLMTURN") + ". "
+		person_location = null
+		
 	elif person.check_location('aliron') || person.get_location() == "mansion": # Temporary
-		newbutton.get_node('Location').text = tr("MSLMMANSION")#ResourceScripts.world_gen.get_location_from_code(person.get_location()).name
+		newbutton.get_node('loctext').text = tr("MSLMMANSION")#ResourceScripts.world_gen.get_location_from_code(person.get_location()).name
+		person_location = "aliron"
 	else:
 		### Temporary
 		if person.get_location() == "mansion":
@@ -509,18 +495,79 @@ func update_button(newbutton):
 	if person_location != null:
 		var ploc = ResourceScripts.world_gen.get_location_from_code(person_location)
 		if ploc != null: 
-			newbutton.get_node('Location').text = ploc.name
+			newbutton.get_node('loctext').text = ploc.name
+			match ploc.type:
+				'settlement':
+					newbutton.get_node('LocIcon').texture = images.icons.travel_village
+				'dungeon':
+					newbutton.get_node('LocIcon').texture = images.icons.travel_dungeon
+				'capital':
+					newbutton.get_node('LocIcon').texture = images.icons.travel_city
+				'quest_location', 'encounter':
+					newbutton.get_node('LocIcon').texture = images.icons.travel_event
+			newbutton.get_node('LocIcon').hint_tooltip = tr(ploc.name)
 			#newbutton.get_node('Location').text = tr(ploc.name)
+	#job
 	newbutton.get_node("job").disabled = false
 	newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict.k_gray)
-	if !person.is_combatant(): #for conditions for work and combat are the same
+	if !person.is_worker(): #for conditions for work and combat are the same
 		newbutton.get_node("job").disabled = true
 		newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict['red'])
-		globals.connecttexttooltip(newbutton.get_node("job"), person.translate("[name] has no trainer"))
+		if person.get_stat('slave_class') == 'slave':
+			globals.connecttexttooltip(newbutton.get_node("job"), person.translate(tr('TRAINNOTRAINER')))
+		else:
+			globals.connecttexttooltip(newbutton.get_node("job"), person.translate(tr('TRAINNOWORKTRAIT')))
 	if person.travel.location == "travel" || person.is_on_quest():
 		newbutton.get_node("job").disabled = true
 		newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict['red'])
+	#class
 	newbutton.get_node("state").texture = person.get_class_icon()
+	#gear
+	var titem
+	titem = person.equipment.gear.rhand
+	if titem == null:
+		newbutton.get_node("weapon/icon").texture = null
+	else:
+		var item = ResourceScripts.game_res.items[titem]
+		item.set_icon(newbutton.get_node("weapon/icon"))
+		globals.connectitemtooltip_v2(newbutton.get_node("weapon"), item)
+	titem = person.equipment.gear.tool
+	if titem == null:
+		newbutton.get_node("tool/icon").texture = null
+	else:
+		var item = ResourceScripts.game_res.items[titem]
+		item.set_icon(newbutton.get_node("tool/icon"))
+		globals.connectitemtooltip_v2(newbutton.get_node("tool"), item)
+	titem = person.equipment.gear.chest
+	if titem == null:
+		newbutton.get_node("armor1/icon").texture = null
+	else:
+		var item = ResourceScripts.game_res.items[titem]
+		item.set_icon(newbutton.get_node("armor1/icon"))
+		globals.connectitemtooltip_v2(newbutton.get_node("armor1"), item)
+	titem = person.equipment.gear.legs
+	if titem == null:
+		newbutton.get_node("armor2/icon").texture = null
+	else:
+		var item = ResourceScripts.game_res.items[titem]
+		item.set_icon(newbutton.get_node("armor2/icon"))
+		globals.connectitemtooltip_v2(newbutton.get_node("armor2"), item)
+	#checks
+	if !person.has_status('relation'):
+		newbutton.get_node("DateIcon").texture = load("res://assets/Textures_v2/MANSION/no.png")
+	elif person.tags.has("no_date_day"):
+		newbutton.get_node("DateIcon").texture = load("res://assets/Textures_v2/MANSION/no.png")
+	else:
+		newbutton.get_node("DateIcon").texture = load("res://assets/Textures_v2/MANSION/yes.png")
+	if person.has_status('no_sex'):
+		newbutton.get_node("SexIcon").texture = load("res://assets/Textures_v2/MANSION/no.png")
+	else:
+		newbutton.get_node("SexIcon").texture = load("res://assets/Textures_v2/MANSION/yes.png")
+	if !person.can_be_trained():
+		newbutton.get_node("TrainIcon").texture = load("res://assets/Textures_v2/MANSION/no.png")
+	else:
+		newbutton.get_node("TrainIcon").texture = load("res://assets/Textures_v2/MANSION/yes.png")
+	
 
 
 var stateicons = {

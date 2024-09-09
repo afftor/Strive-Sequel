@@ -176,6 +176,8 @@ var TranslationDict = {
 	SIBLINGMODULESEXTRAITS = "Sex Traits",
 	SIBLINGMODULERELATIVES = "Relatives",
 	SIBLINGMODULETRAININGS = "Slave Training",
+	SIBLINGMODULETRAININGSSERVANTS = "Subordinate Unlocks",
+	SIBLINGMODULETRAININGSMASTER = "Master Training",
 	SIBLINGMODULEFOODCONSUMPTION = "Daily Consumption",
 	SIBLINGMODULEMAIN = "Main",
 	SIBLINGMODULESEX = "Sex",
@@ -187,6 +189,8 @@ var TranslationDict = {
 	SIBLINGMODULECURRENTCAPACITY = "Current Capacity",
 	SIBLINGMODULEPERSONALITY = "Personality",
 	SYSMESSAGEATLEAST1CHAR = "Select at least 1 character to fight.",
+	
+	
 	
 	OPERANTATLEAST = "At least",
 	OPERANTATMOST = "At most",
@@ -255,6 +259,7 @@ using       button.""",
 	TUTORIALLIST6 = "exploration",
 	TUTORIALLIST7 = "skills",
 	TUTORIALLIST8 = "tattoo",
+	TUTORIALLIST9 = "training",
 	##Mansion
 	#LeftMenuModule
 	LMMTRAVEL = "Travels",
@@ -263,6 +268,7 @@ using       button.""",
 	LMMINVENTORY = "Inventory",
 	LMMCRAFT = "Craft",
 	LMMJOURNAL = "Journal",
+	LMMWORK = "Work",
 	#MansionSlaveListModule
 	MSLMNAME = "Character List",
 	MSLMSex = "Sex",
@@ -273,7 +279,9 @@ using       button.""",
 	MSLMEXP = "Exp",
 	MSLMLOC = "Location",
 	MSLMTYPE = "Type",
+	MSLMINV = "Gear",
 	
+	TRAINERSAVAILABLE = "Available Trainers",
 	MSLMRELOC = "Relocating",
 	MSLMRE = "in",
 	MSLMTURN = " turns",
@@ -665,7 +673,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ITEMBEER = "Beer",
 	ITEMBEERDESCRIPT = "A nectar of the gods. \n\nImproves obedience when consumed normally. Improves horniness and sensitivity during sex interactions.",
 	ITEMTAMEDRUG = "Tame Drug",
-	ITEMTAMEDRUGDESCRIPT = "Tame Factor +1-2. Timid Factor +1-2. Wits Factor -1.",
+	ITEMTAMEDRUGDESCRIPT = "Tame Factor +1-2. Authority Factor +1-2. Wits Factor -1.",
 	ITEMRAGEDRUG = "Rage Drug",
 	ITEMRAGEDRUGDESCRIPT = "Tame Factor -1-2. Wits Factor -1-2. Physics Factor +1.",
 	ITEMSEXDRUG = "Sex Drug",
@@ -1225,7 +1233,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ACTIONPRAISE = "Praise",
 	ACTIONPRAISEDESCRIPT = "Show sympathy and praise [name].",
 	ACTIONREWARD = "Reward",
-	ACTIOREWARDDESCRIPT = "Reward [name] with 10 pieces of gold.",
+	ACTIONREWARDDESCRIPT = "Reward [name] with 10 pieces of gold.",
 	ACTIONDAYOFF = "Day Off",
 	ACTIONDAYOFFDESCRIPT = "Give [name] a day off. Will make [him] unavailable until then",
 	ACTIONSLAP = "Slap",
@@ -1299,6 +1307,27 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ACTIONSTRONGINFLUENCESCENETEXT = "[name1] greatly influences [name2]'s mind with the ideas of obedience and submission, [his2] mind gets filled with positive thoughts about slavery.",
 	ACTIONMINDCONTROLSCENETEXT = "[name1] uses strong magic to dominate [name2]'s mind, slowly rewriting it into a nice obedient slave.",
 	ACTIONEDGINGSCENETEXT = "[name1] teasingly brings [name2] to orgasm but in the last moment stops [his1] movements, preventing [name2] from cumming. This goes on for a few more times until [name2] gives up begging for release. ",
+
+	TRAININGFINISHHEADER = "Trainings by the end of training:",
+	TRAININGSTATUS1 = "Spirit status: Broken",
+	TRAININGSTATUS2 = "Spirit status: Damaged",
+	TRAININGSTATUS3 = "Spirit status: Retained",
+	TRAININGSTATUS4 = "Spirit status: Preserved",
+	TRAININGLABELSPIRIT = "Character Spirit: %.0f",
+	TRAININGLABELLOYALTY = "%.0f",
+	TRAININGCOST = "Trait unlock: %d loyalty",
+	TRAININGCOSTGOLD = "Trait unlock: %d gold",
+	TRAINNOTRAINER = "[name] has no trainer",
+	TRAINNOWORKTRAIT = "[name] lacks Trait: Worker",
+	NOTRAINSLOTS = "No free training slots",
+	ALREADYTRAINER = "Current trainer",
+	SPIRITNO = 'No spirit change',
+	SPIRITSMALL = 'Spirit decreases a bit',
+	SPIRITOTHER = 'Huge spirit loss',
+	
+	SPIRITTOOLTIP = "Spirit represents character's leftover will. If it drops too low they will become broken on training completion and suffer considerable penalties. ",
+	LOYALTYTOOLTIP = "Loylaty is used to unlock character's actions and is obtained from doing training once a day.",
+	CLICKTOCHANGE = "Click to change",
 
 
 	WORKTOOL = "Work Tool",
@@ -1381,7 +1410,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TOOLTIPLOYALTYOBEDIENCE = "Loyalty points are gained every turn based on Tame Factor. You can unlock new actions and passives with it.\n\nObedience Drain is based on Timid Factor and character training. If Obedience falls to 0 the character will attempt to escape. Unlock new options and use proper gear to reduce Obedience Drain and make it more manageble. ",
 	TOOLTIPVALUE = "Character's value means their market price. It's based on their Growth Factor, Race, Training and certain features. Higher value characters will earn more money when providing services and prostitution.",
 	
-	SERVICEREST = "[name] will rest. Toggle [color=aqua]Rest[/color] to switch to work state.",
+	SERVICEREST = "[name] will rest. Uncheck [color=aqua]Rest[/color] to switch to work state.",
 	SERVICESEXUALPENETRATIVE = "[name] will entertain clients by serving and sleeping with them if they find [him] appealing.",
 	SERVICEPREGNANT = "[He] can lose virginity and get pregnant from penetration.",
 	SERVICESEXUALNONPENETRATIVE = "[name] will entertain clients by serving them and provide them with light sexual services not involving penetration.",
@@ -1635,14 +1664,19 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATCHARM_FACTOR = "Charm Factor",
 	STATSEXUALS_FACTOR = "Sex Factor",
 	STATTAME_FACTOR = "Tame Factor",
-	STATTIMID_FACTOR = "Timid Factor",
+	STATTIMID_FACTOR = "Authority Factor",
 	STATSLAVE_CLASS = "Type",
 
 	STATPHYSICS_BONUS = "Physics",
 	STATWITS_BONUS = "Wits",
 	STATCHARM_BONUS = "Charm",
 	STATSEXUALS_BONUS = "Sexuals",
-
+	
+	STATTRAINEE_AMOUNT = "Training Slots",
+	TRAITTRAINER = "Trainer",
+	TRAITTRAINERDESCRIPT = "Can oversee slaves",
+	STATSPIRIT = "Spirit",
+	
 	STATOBEDIENCE = "Obedience",
 	STATOBEDIENCEDESCRIPT = "Obedience is a character's willingness to obey your orders. Obedience is gained by using social skills. When depleted character can escape and will be lost in case that happens. ",
 	STATLOYALTY = "Loyalty",
@@ -1739,6 +1773,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	INFOCONSENT = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. Consent will affect prostitution related jobs.",
 	INFOCONSENTMASTER = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. {color=green|[Master] has no Consent requirements for any actions.}",
 	INFOTRAINING = "Slave type characters will be trained by selected person in various actions. Every slave has different {color=aqua|Dispositions} towards different kind of actions. Properly selected actions will award more Loyalty and drain less spirit but most actions have additional effects.",
+	INFOSLAVETRAINER = "Assign a Trainer to oversee and train untrained slave. Trainer have a limited number of slaves they can work with. Slaves with nobody overseeing them will not do any work until fully trained.",
 	
 	CATEGORYKEYWORD = "Category",
 	ACTIONCATEGORYPHYSICAL = "Physical", 
@@ -1792,7 +1827,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	STATPHYSICS_FACTORDESCRIPT = "Physics factor represents physical potential of the character. It increases [color=aqua]Physical[/color] growth and influences melee combat.\n\n{color=green|Maxed Physics Factor increases natural Health Regeneration.}",
 	STATMAGIC_FACTORDESCRIPT = "Magic factor represents character's magic affinity. The higher it is, the more mana you have and the stronger magic classes you can unlock. Also affects mana regeneration.\n{color=green|Maxed Magic Factor provides MATK bonus.}",
 	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy it is to befriend the character. The higher it is, the more Loyalty character will gain passively and from Gracious and Lewd social skills. It will also make personality changes more stable on Kind axis.\n\n{color=green|Maxed Tame Factor increases Loyalty Gain.}",
-	STATTIMID_FACTORDESCRIPT = "Timid factor represents how easily the character can be influenced by punishments and abuse. The higher it is, the more effective Mean Social Skills are for building loyalty and lower Obedience Drain. It will also make personality changes more stable on Bold axis.\n\n{color=green|Maxed Timid Factor reduces Damage Taken.}",
+	STATTIMID_FACTORDESCRIPT = "Authority Factor represents capability of inflict character's authority over others. The higher it is the more efficient is character's training and more trainees are available to them.\n\n{color=green|Maxed Authority Factor reduces Damage Taken.}",
 	STATWITS_FACTORDESCRIPT = "Wits factor represents the character's mind potential. It increases [color=aqua]Wits[/color] growth.\n\n{color=green|Maxed Wits Factor increases experience gain.}",
 	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. [Master]'s charm also increases gold and reputation rewards from repeatable quests and number of dates per week.\n\n{color=green|Maxed Charm Factor furtherly increases social skill efficiency.}",
 	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It speeds sexual skills acquirement, makes Consent easier to progress and occasionally boosts sexual options in events. [Master]'s Sex factor also increases number of sex interactions per week.\n\n{color=green|Maxed Sex Factor provides Speed bonus}.",
@@ -1804,7 +1839,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SEXUALS_FACTORBONUSDESCRIPT = "Sex Factor: Speed: +10",
 	MAGIC_FACTORBONUSDESCRIPT = "Magic Factor: MATK: +10%%",
 	TAME_FACTORBONUSDESCRIPT = "Tame Factor: Loyalty Gain: +25%%",
-	TIMID_FACTORBONUSDESCRIPT = "Timid Factor: Damage taken: -15%%",
+	TIMID_FACTORBONUSDESCRIPT = "Authority Factor: Damage taken: -15%%",
 	
 
 	STATFOOD_LOVE = "Loved Food",
@@ -2041,7 +2076,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUESEDATEREPORT = "[name] puts a Sedation spell on [targetname], calming [targethis] mind and making [targethe] more docile.",
 	DIALOGUEFEARREPORT = "[name] puts a Fear spell on [targetname] as a serious warning. After coming to his senses, [targetname] seems to be much more respectful towards others and especially you.",
 	DIALOGUEINNERVATEREPORT = "[name] uses an Innervate spell on [targetname] restoring some of [targethis] energy.",
-	DIALOGUESHACKLESREPORT = "[name] conjures magical shackles on [targetname] which will prevent [targethim] from escaping. Timid Factor: +2",
+	DIALOGUESHACKLESREPORT = "[name] conjures magical shackles on [targetname] which will prevent [targethim] from escaping. Timid Factor: +2", #not used
 	DIALOGUEGREATSHACKLESREPORT = "[name] conjures strong magical shackles on [targetname] which will prevent [targethim] from escaping.",
 	DIALOGUEMINDCONTROLREPORT = "[name] dominates [targetname]'s mind with a powerful magic, turning [targethim] into an obedient puppet. ",
 	DIALOGUESTOPMINDCONTROLREPORT = "[name] removes the spell from [targetname] allowing [targethim]independent thought again.",
@@ -2129,6 +2164,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITHEALER2 = "Healer:Expert",
 	TRAITHEALER2DESCRIPT = "Healing spells are 25% more effective.",
 	
+	REMOVETRAINER = "Unassign Trainer",
 	
 	
 	TRAITWEAPON_MASTERY = "Weapon Mastery",
@@ -2261,6 +2297,33 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITLOYALTY_INTERBREEDDESCRIPT = "{color=green|Allows character to impregnate or be impregnated by usually incompatible race partner}\n\nRequires: Sex:Advanced",
 	TRAITMASTER_MENTOR = "Mentor",
 	TRAITMASTER_MENTORDESCRIPT = "All present and future characters automatically receive Basic Obedience and Combat loyalty traits.",
+	
+	TRAITUNTRAINED = "Rebellious",
+	TRAITUNTRAINEDDESCRIPT = "[name] has not been subjected to any training yet. [His] resisting attitude makes it hard to make [him] do any work. \n-50% Productivity, -30% Damage",
+	TRAITTRAINING_BROKE_IN = "Break In",
+	TRAITTRAINING_BROKE_INDESCRIPT = "Break [name]'s Rebellious state, making [him] respect your possession of [him] and follow your orders with no visible reluctance.",
+	TRAITTRAINING_OBEDIENCE = "Obedience",
+	TRAITTRAINING_OBEDIENCEDESCRIPT = "Make [name] give up on [his] autonomy, which will allow to freely sell or give [him] away.",
+	TRAITTRAINING_CALLMASTER = "Master Acknowledgement",
+	TRAITTRAINING_CALLMASTERDESCRIPT = "Demand [name] of [his] unwavering loyalty to you. \nAllows to finish training and provide [him] with specilization. ",
+	TRAITTRAINING_RELATION = "Relationship",
+	TRAITTRAINING_RELATIONDESCRIPT = "Make move onto [name]'s personal life. After all, shouldn't [he] like you enough already?\nUnlocks Dating option and removes consent penalty in sex.",
+	TRAITTRAINING_SEXSERVICE = "Sex Service",
+	TRAITTRAINING_SEXSERVICEDESCRIPT = "Since [name]'s body belong to you, it makes sense to make [him] use it for your prosperity.\nUnlocks sex service tasks.",
+	TRAITTRAINING_SEXSERVICE_ADV = "Advanced Sex Service",
+	TRAITTRAINING_SEXSERVICE_ADVDESCRIPT = "With all well and done, its a logical step to push [name] further into depravity.\nUnlocks advanced sex service options.",
+	
+	TRAITTRAINING_S_COMBAT = "Combat",
+	TRAITTRAINING_S_COMBATDESCRIPT = "[name] will allow to be drafted into combat scenarios. Perhaps not everyone is willing to combat for you with no concerns.\nUnlocks sending [name] into combat.",
+	TRAITTRAINING_S_WORKING = "Work",
+	TRAITTRAINING_S_WORKINGDESCRIPT = "[name] will eagerly work for you on generic occupations.\nUnlocks setting [name] for various labors.",
+	TRAITTRAINING_S_RELATION = "Relationship",
+	TRAITTRAINING_S_RELATIONDESCRIPT = "With some convincing [name] will find your company favorable even beyond simple labor. \nUnlocks Dating and Sex options.",
+	TRAITTRAINING_S_SEXSERVICE = "Sex Service",
+	TRAITTRAINING_S_SEXSERVICEDESCRIPT = "Not everyone is willing to get into selling their body for your benefit. But with some persuasion...\nUnlock sex service tasks. ",
+	TRAITTRAINING_S_SEXSERVICE_ADV = "Advanced Sex Service",
+	TRAITTRAINING_S_SEXSERVICE_ADVDESCRIPT = "If [name] is already willing to perform sex services for your profits, why stop there?..\nUnlock advanced sex service options. ",
+	
 	TRAITMASTER_HARLOTRY = "Harlotry",
 	TRAITMASTER_HARLOTRYDESCRIPT = "While in service you still receive Rest benefits.",
 	TRAITMASTER_PROGENECY = "Progenecy",
@@ -3368,7 +3431,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEVENTFAIRYLEAVEREPLY = "After chatting for a bit you part your ways with fairy. ",
 	
 	
-	DIALOGUETUTELAGETEXT = "You decided to keep the newborn child, however you have to decide on its future education which might improve or correct their potential. In either way growing up will take 2 weeks.\n\n{color=aqua|No Training}— {color=yellow|No cost}, but has chance to obtain a new negative trait;\n{color=aqua|Slave Training}— {color=yellow|500 gold}, provides a large boost to Loyalty with a chance to improve Tame or Timid factors;\n{color=aqua|Academy}— {color=yellow|1.500 gold}, provides a boost to Physics and Wits and a good amount of EXP;\n{color=aqua|Heir Education} (only for potential Heirs)— {color=yellow|5.000 gold}, provides boost to all stats and factors, large amount of EXP and 1 random positive trait.",
+	DIALOGUETUTELAGETEXT = "You decided to keep the newborn child, however you have to decide on its future education which might improve or correct their potential. In either way growing up will take 2 weeks.\n\n{color=aqua|No Training}— {color=yellow|No cost}, but has chance to obtain a new negative trait;\n{color=aqua|Slave Training}— {color=yellow|500 gold}, provides a large boost to Loyalty with a chance to improve Tame or Authority factors;\n{color=aqua|Academy}— {color=yellow|1.500 gold}, provides a boost to Physics and Wits and a good amount of EXP;\n{color=aqua|Heir Education} (only for potential Heirs)— {color=yellow|5.000 gold}, provides boost to all stats and factors, large amount of EXP and 1 random positive trait.",
 	
 	DIALOGUETUTNOTHING = "No Training (free)",
 	DIALOGUETUTSLAVE = "Slave Training (500 Gold)",
@@ -3564,7 +3627,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TUTORIAL_MAINSCREEN = "The center of your Mansion is the list of available characters before you. Click once to see details and skills available to selected character. You can view detailed info about them by double clicking or selecting \"Character Info\" in the left bottom corner. You can assign them to task by clicking on Occupation button. You can use their skills by selecting them at the bottom of the screen. ",
 
 
-	TUTORIAL_SLAVEBASICS = "Characters are the centerpiece of the game, as they do all the work and fighting. All characters require food daily to sustain themselves, and they also have food preferences often related to their race. \n\nAll characters, besides the [Master], must be constantly monitored. If character's Obedience drops to 0, they leave you and you lose them forever. To prevent that you can use social skills on them. The characters will also gain Loyalty with time which can be used to unlock vital bonuses and reduce Obedience drain.",
+	TUTORIAL_SLAVEBASICS = "Characters are the centerpiece of the game, as they do all the work and fighting. All characters require food daily to sustain themselves, and they also have food preferences often related to their race.",
 	TUTORIAL_LUST = "Lust is a special stat used by every character and is more akin to a resource like Mana. It slowly grows every day and can be utilized by certain skills to provide unusual effects. Some classes, like the Succubus/Incubus are focused on manipulating this resource. Besides growing naturally, Lust can be increased from sexual interactions, based on the number of orgasms reached.",
 	TUTORIAL_SLAVEPANEL = "This is the character's detailed screen. Here you can see all of the visible stats and details.\n\nEvery character consists of a number of stats, some of which can be seen on the left. You can hover over them at any time to see details on them. \n\nAt the bottom left you can select items, unlock new classes and configure additional details like imported image.",
 	TUTORIAL_CLASSES_AND_SKILLS = "Every character has access to multiple classes they can unlock. After a class is unlocked, a character receives its bonuses and can use its skills. Skills can be either social or combat, with social skills helping to manage characters' behavior. Many skills have no other cost than daily charges, so feel free to use them as often as needed. ",
@@ -3580,8 +3643,10 @@ However, while it might seem that Landowners have nothing but contempt for those
 	JOBTUTORIAL3 = "On the right you can see the list of characters available at the present location. By clicking on them they will be assigned to the selected task.",
 	
 	
-	TRAINTUTORIAL1 = "Every character besides [Master] will have to be trained with Loyalty Points. Loyalty points are acquired passively or by using social skills.",
-	TRAINTUTORIAL2 = "Some traits make the management easier while other unlock new abilities. Every purchased trait will increase amount of Loyatly required for next purchase so consider your path.",
+	TRAINTUTORIAL1 = "Every character besides Master will have some of their functionality locked. Characters can be slaves or subordinates. Slaves must be trained by assigning a trainer to them.",
+	TRAINTUTORIAL2 = "Assigned trainer will allow to put a slave on work or into combat, however to get out the most out of the slave, they must be trained to accept their role as your property.",
+	TRAINTUTORIAL3 = "Training is done via trainer actions. Training a slave reduces their {color=aqua|Spirit}. By draining their spirit too much during the training, they will become a broken version of themselves.",
+	TRAINTUTORIAL4 = "Each slave has their own hidden disposition towards different action types. By finding out which action type works the best, it will be a lot easier to obtain Loyalty Points without draining their spirit too much.",
 	
 	COMBATSKILLSTUTORIAL = "Some combat skills can be learned automatically after purchasing certain classes. Besides that, they can be unlocked with Skill Points. Skill Points are obtained from combat. Many skills will require certain specilizations, which are obtained from classes.",
 	MARRYTUTORIAL = "After resolving the civil war, you are able to marry one of your subordinates. Firstly, you'll have to get their agreement during the date. Then, proceed with wedding preparations from church. You can only marry 1 person and you can't divorce at current state of the game. ",
@@ -3758,7 +3823,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SERVANTSQUESTIONS_1 = "— Absolutely! What would you like to know?",
 	SERVANTSQUESTIONS_2 = "— Hahaha, you underestimate how important an elaborate sex service can be. We don't provide 'only' sex service, we train diligent trainees which can do anything you might want. Cleaning, escort, massage, entertainment... But serving their masters' carnal desires is where our trainees excel. You want them begging, screaming, moaning, silent, or dominating, we find the best suited personality and appearance for the task and turn them into a toy of your dreams. Or, in case you are more romantically inclined, we are also ready to get you a love of your life.	\n\n— Oh, sorry, I've got carried away. We also help to find new connections and support many artists and street performers, but landowners rarely care about these things. Still, we appreciate good art and entertainment, even if it's not very profitable.",
 	SERVANTSQUESTIONS_3 = "— Oh, nobody has explained it to you, I suppose. You see, the landowners are the only ones who can become a part of the city's government and it's you who make the most use of people and profits. Every guild has distinct groups following them and every new person means more power for us. On the other hand, it's guilds which present and vote for the candidates, so it's a mutual benefit.	\n\n— You aren't tied to a specific guild though and are free to deal with others, but we aren't obligated to stick to you either. Just consider it a sign of good will.",
-	SERVANTSQUESTIONS_4 = "— You must be interested in managing your subordinates, right? Firstly, you'll be using your skills to Praise and Punish them. Depending on the subordinate they will be more responsive to one or another. Without it keeping them in check they can escape. Taking them on the private dates is a great way to build their Loyalty. With said Loyalty you can make them lose their obedience slower. \n\n— Controlling your servants is just as important as feeding them. If you have problems with it, there's classes and items suited for it. You can teach other servants to help you with discipline. Some abilities can be really powerful and affect multiple targets.",
+	SERVANTSQUESTIONS_4 = "— You need some guidance on working with your property I presume? Unwilling participants must be monitored and trained in obedience by someone capable of it. Certain magic and practices can help you learn which actions are the best for them. \n\nIf you screw over their training you can reset it by feeding them Oblivion Potion and start the training over. That can help you get the more desired results but that will cancel all of your previous training. ",
 	SERVANTSINTRODUCTION1_2 = "— Welcome back, [Sir] [surname]. Have you made up your mind yet?",
 	SERVANTSINTRODUCTION1_3 = "— Welcome back, [Sir] [surname]. How can I please you?",
 	SERVANTSINTRODUCTION1_4 = "— Let me know if you need anything else.",
@@ -4192,7 +4257,7 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 	ALIRONCHURCHQUESTCOMPLETE2 = "— This is wonderful! I know it's not much, but I can spare you some life shards. These are Celena's gift to us, so you can use them in your adventures.",
 
 	# Tutorials
-	INTRODUCTIONTUTORIAL1 = "This is the main Mansion screen. At the center you can see the list of all your possessed characters.",
+	INTRODUCTIONTUTORIAL1 = "This is the main Mansion screen. At the center you can see the list of all your controlled characters.",
 	INTRODUCTIONTUTORIAL2 = "Main actions can be found at the bottom left corner.",
 	INTRODUCTIONTUTORIAL3 = "At the top of the screen you can find a navigation panel, which will list available locations to visit and interact with. Click on the Aliron to go to town.",
 
@@ -4200,7 +4265,7 @@ Lust satisfied, you look at her lying there exhausted, broken and defenceless on
 	QUESTTUTORIAL2 = "Once you've completed a quest, or procured the required items, you can submit it and receive your reward from the Journal tab.",
 	QUESTTUTORIAL3 = "Select \"Complete\" when on the selected quest to finish it.",
 
-	SKILLSTUTORIAL1 = "At the bottom of the screen you can see abilities available to the currently selected character. Abilities are acquired from Classes and can be used on characters in the same location as caster. Social abilities are important for keeping obedience high, which is necessary to prevent them from escapes. However, many of them will have a subtype. {color=green|Generous} subtype is more effective on targets with high Tame Factor, while {color=red|Mean} is more effective on targets with high Timid Factor.",
+	SKILLSTUTORIAL1 = "At the bottom of the screen you can see abilities available to the currently selected character. Abilities are acquired from Classes and can be used on characters in the same location as caster. Social abilities are helpful to get the best out of your characters outside of combat. ",
 	SKILLSTUTORIAL2 = "Loyalty can be used to make their respect for you stronger and reduce their Obedience Drain while also unlock new abilities.",
 	SKILLSTUTORIAL3 = "After selecting an ability you'll have to select a target for it. Remember that only targets from the same location are viable.",
 	SKILLSTUTORIAL4 = "At the right side you can switch to combat abilities set up. While you can't use them outside of combat, you can still check their descriptions and prepare yourself before it.",
@@ -15729,6 +15794,37 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	
 	LEAVE_CHAT1 = "This is a farewell, I suppose...",
+	
+	
+	TRAIN_FAILURE1 = "P-please... I can't...",
+	TRAIN_FAILURE2 = "This is wrong...",
+	TRAIN_FAILURE3 = "I don't want to be here...",
+	TRAIN_FAILURE4 = "This is wrong...",
+	TRAIN_FAILURE5 = "I don't want to be here...",
+	TRAIN_FAILURE6 = "I don't want this...",
+
+	TRAIN_RESIST1 = "I won't... agree to this.",
+	TRAIN_RESIST2 = "No, this is wrong...",
+	TRAIN_RESIST3 = "I can't give up.",
+	TRAIN_RESIST4 = "Screw it.",
+	TRAIN_RESIST5 = "Like hell I'll obey after this!",
+	TRAIN_RESIST6 = "This won't work on me.",
+
+	TRAIN_SUCCESS1 = "This... isn't too bad.",
+	TRAIN_SUCCESS2 = "I'm... growing tolerant of this?",
+	TRAIN_SUCCESS3 = "I guess this is my role now...",
+	TRAIN_SUCCESS4 = "As long as I get a food and shelter...",
+	TRAIN_SUCCESS5 = "I'll just follow the rules...",
+	TRAIN_SUCCESS6 = "I... Understand.",
+
+	TRAIN_KINK1 = "I... Why I'm enjoying this...",
+	TRAIN_KINK2 = "This was thrilling... for some reason...",
+	TRAIN_KINK3 = "Being a slave doesn't seem to be too bad... Wait, what am I thinking...",
+	TRAIN_KINK4 = "This role is... Not too bad...",
+	TRAIN_KINK5 = "My mind... is accepting it?",
+	TRAIN_KINK6 = "Why... Am I getting... Aroused?",
+	TRAIN_KINK7 = "This... felt good...",
+
 	
 	#worlddata land
 	

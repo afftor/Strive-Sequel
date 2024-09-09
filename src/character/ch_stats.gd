@@ -249,7 +249,7 @@ func custom_stats_get(stat):
 	if stat == 'trainee_amount':
 		var tres = statlist.trainee_amount
 		if bonuses.has('trainee_amount_add'):
-			tres += bonuses.tarinees_amount_add
+			tres += bonuses.trainee_amount_add
 		tres += int(statlist.timid_factor) / 2
 		return tres
 	if stat == 'resists':
@@ -1230,6 +1230,8 @@ func add_trait(tr_code):
 	if trait.has('traits'):
 		for id in trait.traits: #for free basic_sevitude and others
 			add_trait(id)
+	if trait.has('disposition_change'):
+		parent.get_ref().process_disposition_data(trait.disposition_change)
 	if tr_code == 'undead':
 		statlist.food_consumption = 0
 		statlist.charm -= 100
@@ -1421,6 +1423,8 @@ func process_chardata(chardata, unique = false):
 				statlist[i] = chardata[i]
 		elif i in ['hair_color', 'hair_style', 'hair_length']:
 			set_stat(i, chardata[i])
+		elif i == 'training_disposition':
+			parent.get_ref().process_disposition_data(chardata.training_disposition, true)
 	if chardata.has('slave_class'): set_slave_category(chardata.slave_class)
 	if chardata.has("sex_traits"):
 		for i in chardata.sex_traits:
@@ -1728,7 +1732,7 @@ func get_racial_features():
 	var race_template = races.racelist[statlist.race]
 	for i in race_template.basestats:
 		statlist[i] = round(rand_range(race_template.basestats[i][0], race_template.basestats[i][1])) #1 - terrible, 2 - bad, 3 - average, 4 - good, 5 - great, 6 - superb
-	
+	parent.get_ref().training.setup_dispositions(statlist.race)
 	add_stat_bonuses(race_template.race_bonus)
 	for i in races.racelist.Human.bodyparts:
 		if races.racelist.Human.bodyparts[i].empty():
@@ -1967,6 +1971,8 @@ func baby_transform():
 func set_slave_category(new_class):
 	if new_class in ['slave']:
 		new_class = 'slave1'
+	if statlist.slave_class == new_class:
+		return
 	if statlist.slave_class != '':
 		remove_trait(statlist.slave_class.to_lower())
 	add_trait(new_class)

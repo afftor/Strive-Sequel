@@ -174,6 +174,8 @@ var TranslationDict = {
 	SIBLINGMODULESEXTRAITS = "性特征",
 	SIBLINGMODULERELATIVES = "Relatives",
 	SIBLINGMODULETRAININGS = "Trainings",
+	SIBLINGMODULETRAININGSSERVANTS = """Servant Training""", # MISSING TRANSLATION
+	SIBLINGMODULETRAININGSMASTER = """Master Training""", # MISSING TRANSLATION
 	SIBLINGMODULEFOODCONSUMPTION = "每日消费量",
 	SIBLINGMODULEMAIN = "Main",
 	SIBLINGMODULESEX = "Sex",
@@ -254,6 +256,7 @@ var TranslationDict = {
 	TUTORIALLIST6 = "探索",
 	TUTORIALLIST7 = "技能",
 	TUTORIALLIST8 = "纹身",
+	TUTORIALLIST9 = """training""", # MISSING TRANSLATION
 	##Mansion
 	#LeftMenuModule
 	LMMTRAVEL = "旅行",
@@ -262,6 +265,7 @@ var TranslationDict = {
 	LMMINVENTORY = "库存",
 	LMMCRAFT = "工艺",
 	LMMJOURNAL = "日志",
+	LMMWORK = """Work""", # MISSING TRANSLATION
 	#MansionSlaveListModule
 	MSLMNAME = "Character List",
 	MSLMSex = "Sex",
@@ -272,6 +276,7 @@ var TranslationDict = {
 	MSLMEXP = "Exp",
 	MSLMLOC = "位置",
 	MSLMTYPE = "类型",
+	MSLMINV = """Gear""", # MISSING TRANSLATION
 	
 	MSLMRELOC = "重新部署",
 	MSLMRE = "在",
@@ -1622,6 +1627,9 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	STATWITS_BONUS = "Wits 智慧",
 	STATCHARM_BONUS = "Charm 魅力",
 	STATSEXUALS_BONUS = "Sexuals 性能力",
+	STATTRAINEE_AMOUNT = """Training Slots""", # MISSING TRANSLATION
+	TRAITTRAINER = """Trainer""", # MISSING TRANSLATION
+	TRAITTRAINERDESCRIPT = """Can oversee slaves""", # MISSING TRANSLATION
 
 	STATOBEDIENCE = "Obedience",
 	STATOBEDIENCEDESCRIPT = "Obedience is a character's willingness to obey your orders. Obedience is gained by using social skills. When depleted character can escape and will be lost in case that happens. ",
@@ -2093,6 +2101,7 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	TRAITHEALER1DESCRIPT = "Healing spells are 25% more effective.\n治疗法术的效果提高25%。",
 	TRAITHEALER2 = "Healer:Expert 治疗者：专家",
 	TRAITHEALER2DESCRIPT = "Healing spells are 25% more effective.\n治疗法术的效果提高25%。",
+	REMOVETRAINER = """Unassign Trainer""", # MISSING TRANSLATION
 	
 	
 	
@@ -3499,6 +3508,8 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	
 	TRAINTUTORIAL1 = "Every character besides Master will have to be trained with Loyalty Points. Loyalty points are acquired passively or by using social skills.",
 	TRAINTUTORIAL2 = "Some traits make the management easier while other unlock new abilities. Every purchased trait will increase amount of Loyatly required for next purchase so consider your path.",
+	TRAINTUTORIAL3 = """Training is done via trainer actions. Training a slave reduces their {color=aqua|Spirit}. By draining their spirit too much during the training, they will become a broken version of themselves.""", # MISSING TRANSLATION
+	TRAINTUTORIAL4 = """Each slave has their own hidden disposition towards different action types. By finding out which action type works the best, it will be a lot easier to obtain Loyalty Points without draining their spirit too much.""", # MISSING TRANSLATION
 	
 	COMBATSKILLSTUTORIAL = "Some combat skills can be learned automatically after purchasing certain classes. Besides that, they can be unlocked with Skill Points. Skill Points are obtained from combat. Many skills will require certain specilizations, which are obtained from classes.",
 	MARRYTUTORIAL = "After resolving the civil war, you are able to marry one of your subordinates. Firstly, you'll have to get their agreement during the date. Then, proceed with wedding preparations from church. ",
