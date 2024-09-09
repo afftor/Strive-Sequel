@@ -718,7 +718,36 @@ var individual_lines = {
 	
 	
 	leave1 = {text = tr("LEAVE_CHAT1"), events = ['leave'], personalities = ['bold','kind','shy','serious','neutral'], reqs = [], weight = 1, tags = []},
-
+	
+	training_fail1 = {text = tr("TRAIN_FAIL1"), events = ['train_fail'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_fail2 = {text = tr("TRAIN_FAIL2"), events = ['train_fail'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_fail3 = {text = tr("TRAIN_FAIL3"), events = ['train_fail'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_fail4 = {text = tr("TRAIN_FAIL4"), events = ['train_fail'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_fail5 = {text = tr("TRAIN_FAIL5"), events = ['train_fail'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_fail6 = {text = tr("TRAIN_FAIL6"), events = ['train_fail'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	
+	training_resist1 = {text = tr("TRAIN_RESIST1"), events = ['train_resist'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_resist2 = {text = tr("TRAIN_RESIST2"), events = ['train_resist'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_resist3 = {text = tr("TRAIN_RESIST3"), events = ['train_resist'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_resist4 = {text = tr("TRAIN_RESIST4"), events = ['train_resist'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_resist5 = {text = tr("TRAIN_RESIST5"), events = ['train_resist'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_resist6 = {text = tr("TRAIN_RESIST6"), events = ['train_resist'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	
+	training_success1 = {text = tr("TRAIN_SUCCESS1"), events = ['train_success'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_success2 = {text = tr("TRAIN_SUCCESS2"), events = ['train_success'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_success3 = {text = tr("TRAIN_SUCCESS3"), events = ['train_success'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_success4 = {text = tr("TRAIN_SUCCESS4"), events = ['train_success'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_success5 = {text = tr("TRAIN_SUCCESS5"), events = ['train_success'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_success6 = {text = tr("TRAIN_SUCCESS6"), events = ['train_success'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	
+	training_kink1 = {text = tr("TRAIN_KINK1"), events = ['train_kink'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_kink2 = {text = tr("TRAIN_KINK2"), events = ['train_kink'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_kink3 = {text = tr("TRAIN_KINK3"), events = ['train_kink'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_kink4 = {text = tr("TRAIN_KINK4"), events = ['train_kink'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_kink5 = {text = tr("TRAIN_KINK5"), events = ['train_kink'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_kink6 = {text = tr("TRAIN_KINK6"), events = ['train_kink'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	training_kink7 = {text = tr("TRAIN_KINK7"), events = ['train_kink'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
+	
 }
 
 func build_lines():

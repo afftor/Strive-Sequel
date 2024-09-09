@@ -17,6 +17,10 @@ func _ready():
 	globals.connecttexttooltip($training/Tooltip, tr("INFOTRAINING"))
 	globals.connecttexttooltip($trainer_list/tooltip, tr("INFOSLAVETRAINER"))
 	$training/spirit.max_value = 100
+	globals.connecttexttooltip($training/TextureRect, tr("LOYALTYTOOLTIP")) 
+	globals.connecttexttooltip($training/TextureRect2, tr("SPIRITTOOLTIP")) 
+	globals.connecttexttooltip($training/spirit, tr("SPIRITTOOLTIP")) 
+	globals.connecttexttooltip($training/trainer_frame, tr("CLICKTOCHANGE"))
 	
 
 
@@ -243,7 +247,7 @@ func build_training_servant():
 func build_training_header():
 	var trainer = person.get_trainer()
 	$training/trainer_frame/icon.texture = trainer.get_icon()
-	$training/name.text = trainer.get_full_name()
+	$training/name.text = "Trainer: " + trainer.get_full_name()
 #	$training/spirit.text = tr('TRAININGLABELSPIRIT') % person.get_stat('spirit')
 	$training/spirit.value = person.get_stat('spirit')
 	
@@ -277,7 +281,8 @@ func build_training_list():
 			elif !person.training.available:
 				panel.disabled = true
 				text = "{color=red|"+tr('ACTIONALREADYDONETODAY') +"}\n\n"+ text
-				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
+				globals.connecttexttooltip(panel, 'Has already been trained today')
+				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.gray))
 			#cost check
 			else:
 				var f = true
@@ -307,6 +312,7 @@ func build_training_traits():
 		else:
 			panel.get_node('icon').texture = trdata.icon
 		globals.connecttexttooltip(panel, person.translate(tr(trdata.descript)))
+		panel.get_node('Label').text = str(person.get_training_cost())
 		if person.check_trait(tr):
 			panel.pressed = true
 		else:
