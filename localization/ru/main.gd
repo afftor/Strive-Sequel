@@ -14539,6 +14539,31 @@ With that the magic seals and tentacles disappear leaving you alone with Lilith 
 	TREAT_FOOD_NEUTRAL1 = "Спасибо, [Master], я приму это",
 
 	LEAVE_CHAT1 = "Тогда прощайте, я полагаю...",
+	TRAIN_FAILURE1 = """P-please... I can't...""", # MISSING TRANSLATION
+	TRAIN_FAILURE2 = """This is wrong...""", # MISSING TRANSLATION
+	TRAIN_FAILURE3 = """I don't want to be here...""", # MISSING TRANSLATION
+	TRAIN_FAILURE4 = """This is wrong...""", # MISSING TRANSLATION
+	TRAIN_FAILURE5 = """I don't want to be here...""", # MISSING TRANSLATION
+	TRAIN_FAILURE6 = """I don't want this...""", # MISSING TRANSLATION
+	TRAIN_RESIST1 = """I won't... agree to this.""", # MISSING TRANSLATION
+	TRAIN_RESIST2 = """No, this is wrong...""", # MISSING TRANSLATION
+	TRAIN_RESIST3 = """I can't give up.""", # MISSING TRANSLATION
+	TRAIN_RESIST4 = """Screw it.""", # MISSING TRANSLATION
+	TRAIN_RESIST5 = """Like hell I'll obey after this!""", # MISSING TRANSLATION
+	TRAIN_RESIST6 = """This won't work on me.""", # MISSING TRANSLATION
+	TRAIN_SUCCESS1 = """This... isn't too bad.""", # MISSING TRANSLATION
+	TRAIN_SUCCESS2 = """I'm... growing tolerant of this?""", # MISSING TRANSLATION
+	TRAIN_SUCCESS3 = """I guess this is my role now...""", # MISSING TRANSLATION
+	TRAIN_SUCCESS4 = """As long as I get a food and shelter...""", # MISSING TRANSLATION
+	TRAIN_SUCCESS5 = """I'll just follow the rules...""", # MISSING TRANSLATION
+	TRAIN_SUCCESS6 = """I... Understand.""", # MISSING TRANSLATION
+	TRAIN_KINK1 = """I... Why I'm enjoying this...""", # MISSING TRANSLATION
+	TRAIN_KINK2 = """This was thrilling... for some reason...""", # MISSING TRANSLATION
+	TRAIN_KINK3 = """Being a slave doesn't seem to be too bad... Wait, what am I thinking...""", # MISSING TRANSLATION
+	TRAIN_KINK4 = """This role is... Not too bad...""", # MISSING TRANSLATION
+	TRAIN_KINK5 = """My mind... is accepting it?""", # MISSING TRANSLATION
+	TRAIN_KINK6 = """Why... Am I getting... Aroused?""", # MISSING TRANSLATION
+	TRAIN_KINK7 = """This... felt good...""", # MISSING TRANSLATION
 	
 	#worlddata land
 	

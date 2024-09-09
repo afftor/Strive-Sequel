@@ -1314,7 +1314,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAININGSTATUS3 = "Spirit status: Retained",
 	TRAININGSTATUS4 = "Spirit status: Preserved",
 	TRAININGLABELSPIRIT = "Character Spirit: %.0f",
-	TRAININGLABELLOYALTY = "Character Loyalty: %.0f",
+	TRAININGLABELLOYALTY = "%.0f",
 	TRAININGCOST = "Trait unlock: %d loyalty",
 	TRAININGCOSTGOLD = "Trait unlock: %d gold",
 	TRAINNOTRAINER = "[name] has no trainer",
@@ -1324,6 +1324,10 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SPIRITNO = 'No spirit change',
 	SPIRITSMALL = 'Spirit decreases a bit',
 	SPIRITOTHER = 'Huge spirit loss',
+	
+	SPIRITTOOLTIP = "Spirit represents character's leftover will. If it drops too low they will become broken on training completion and suffer considerable penalties. ",
+	LOYALTYTOOLTIP = "Loylaty is used to unlock character's actions and is obtained from doing training once a day.",
+	CLICKTOCHANGE = "Click to change",
 
 
 	WORKTOOL = "Work Tool",
@@ -1406,7 +1410,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TOOLTIPLOYALTYOBEDIENCE = "Loyalty points are gained every turn based on Tame Factor. You can unlock new actions and passives with it.\n\nObedience Drain is based on Timid Factor and character training. If Obedience falls to 0 the character will attempt to escape. Unlock new options and use proper gear to reduce Obedience Drain and make it more manageble. ",
 	TOOLTIPVALUE = "Character's value means their market price. It's based on their Growth Factor, Race, Training and certain features. Higher value characters will earn more money when providing services and prostitution.",
 	
-	SERVICEREST = "[name] will rest. Toggle [color=aqua]Rest[/color] to switch to work state.",
+	SERVICEREST = "[name] will rest. Uncheck [color=aqua]Rest[/color] to switch to work state.",
 	SERVICESEXUALPENETRATIVE = "[name] will entertain clients by serving and sleeping with them if they find [him] appealing.",
 	SERVICEPREGNANT = "[He] can lose virginity and get pregnant from penetration.",
 	SERVICESEXUALNONPENETRATIVE = "[name] will entertain clients by serving them and provide them with light sexual services not involving penetration.",
@@ -14602,6 +14606,37 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	
 	LEAVE_CHAT1 = "This is a farewell, I suppose...",
+	
+	
+	TRAIN_FAILURE1 = "P-please... I can't...",
+	TRAIN_FAILURE2 = "This is wrong...",
+	TRAIN_FAILURE3 = "I don't want to be here...",
+	TRAIN_FAILURE4 = "This is wrong...",
+	TRAIN_FAILURE5 = "I don't want to be here...",
+	TRAIN_FAILURE6 = "I don't want this...",
+
+	TRAIN_RESIST1 = "I won't... agree to this.",
+	TRAIN_RESIST2 = "No, this is wrong...",
+	TRAIN_RESIST3 = "I can't give up.",
+	TRAIN_RESIST4 = "Screw it.",
+	TRAIN_RESIST5 = "Like hell I'll obey after this!",
+	TRAIN_RESIST6 = "This won't work on me.",
+
+	TRAIN_SUCCESS1 = "This... isn't too bad.",
+	TRAIN_SUCCESS2 = "I'm... growing tolerant of this?",
+	TRAIN_SUCCESS3 = "I guess this is my role now...",
+	TRAIN_SUCCESS4 = "As long as I get a food and shelter...",
+	TRAIN_SUCCESS5 = "I'll just follow the rules...",
+	TRAIN_SUCCESS6 = "I... Understand.",
+
+	TRAIN_KINK1 = "I... Why I'm enjoying this...",
+	TRAIN_KINK2 = "This was thrilling... for some reason...",
+	TRAIN_KINK3 = "Being a slave doesn't seem to be too bad... Wait, what am I thinking...",
+	TRAIN_KINK4 = "This role is... Not too bad...",
+	TRAIN_KINK5 = "My mind... is accepting it?",
+	TRAIN_KINK6 = "Why... Am I getting... Aroused?",
+	TRAIN_KINK7 = "This... felt good...",
+
 	
 	#worlddata land
 	
