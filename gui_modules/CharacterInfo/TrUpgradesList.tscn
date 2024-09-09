@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/icons_40x40/magic effect.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=2]
@@ -17,10 +17,14 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assign trainer/button_Assign_trainer_pressed.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_hover.png" type="Texture" id=16]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_default.png" type="Texture" id=17]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=18]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_pressed.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset training_pressed.png" type="Texture" id=20]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_hover.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/frame_room_pressed.png" type="Texture" id=22]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button d/button_d_default.png" type="Texture" id=23]
+[ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/frame_room_default.png" type="Texture" id=24]
+[ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/frame_room_hover.png" type="Texture" id=25]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_default.png" type="Texture" id=26]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_hover.png" type="Texture" id=27]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_pressed.png" type="Texture" id=28]
@@ -208,17 +212,15 @@ expand = true
 margin_left = 5.0
 margin_top = 18.0
 margin_right = 125.0
-margin_bottom = 170.0
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 10 )
-texture_hover = ExtResource( 10 )
+margin_bottom = 138.0
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 25 )
 
 [node name="icon" type="TextureRect" parent="training/trainer_frame"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -4.0
-margin_bottom = -36.0
 expand = true
 stretch_mode = 6
 
@@ -451,6 +453,7 @@ margin_left = -599.0
 margin_top = -12.0
 margin_right = -12.0
 margin_bottom = 45.0
+custom_fonts/font = ExtResource( 18 )
 
 [node name="finished" type="Control" parent="."]
 visible = false

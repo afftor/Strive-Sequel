@@ -99,7 +99,9 @@ func reset_training():
 
 
 func get_trainings_amount(tag = 'training'):
-	return parent.get_ref().get_traits_by_tag(tag).size()
+	var tmp = parent.get_ref().get_traits_by_tag(tag)
+	tmp.erase('untrained')
+	return tmp.size()
 
 
 func get_training_cost():
