@@ -298,6 +298,14 @@ func build_training_list():
 					panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
 				else:
 					globals.connecttexttooltip(panel, text)
+					if person.training.dispositions_known[category]:
+						match person.training.dispositions[category]:
+							'weak', 'kink':
+								panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.green))
+							'neutral':
+								panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.yellow))
+							'resist':
+								panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
 
 
 func build_training_traits():
