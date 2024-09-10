@@ -116,7 +116,7 @@ func show_summary(person = selected_char):
 
 func update_traitlist(person):
 	globals.build_traitlist_for_char(person, traitlist)
-#	globals.build_loyalty_traitlist(person, traitlist2)
+	globals.build_training_traitlist(person, traitlist2)
 
 
 

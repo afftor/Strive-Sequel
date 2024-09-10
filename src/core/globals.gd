@@ -462,20 +462,23 @@ func build_traitlist_for_char(person, node):
 				button.texture_normal = load("res://assets/images/iconstraits/red.png")
 
 
-#func build_loyalty_traitlist(person, node):
-#	input_handler.ClearContainer(node, ['Button'])
-#	for tr in person.get_traits_by_tag('loyalty'):
-#		var upgrade_data = Traitdata.traits[tr]
-#		var button = input_handler.DuplicateContainerTemplate(node, 'Button')
-#		var text = '[center]'+tr(upgrade_data.name)+'[/center]\n'
-#		text += build_desc_for_bonusstats(upgrade_data.bonusstats)
-#		text += tr(upgrade_data.descript)
-#		connecttexttooltip(button, text)
-##		button.self_modulate = Color(variables.hexcolordict.green)
-#		if upgrade_data.icon is String:
-#			button.get_node('icon').texture = load(upgrade_data.icon)
-#		else:
-#			button.get_node('icon').texture = upgrade_data.icon
+func build_training_traitlist(person, node):
+	input_handler.ClearContainer(node, ['Button'])
+	for tr in person.get_traits_by_tag('training') + person.get_traits_by_tag('servant_training'):
+		if tr == 'untrained':
+			continue
+		var upgrade_data = Traitdata.traits[tr]
+		var button = input_handler.DuplicateContainerTemplate(node, 'Button')
+		var text = '[center]'+tr(upgrade_data.name)+'[/center]\n'
+		text += build_desc_for_bonusstats(upgrade_data.bonusstats)
+		text += person.translate(tr(upgrade_data.descript))
+		connecttexttooltip(button, text)
+#		button.self_modulate = Color(variables.hexcolordict.green)
+		if upgrade_data.icon is String:
+			button.get_node('icon').texture = load(upgrade_data.icon)
+		else:
+			button.get_node('icon').texture = upgrade_data.icon
+
 
 
 func build_buffs_for_char(person, node, mode):
