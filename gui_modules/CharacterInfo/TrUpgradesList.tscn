@@ -143,6 +143,7 @@ valign = 1
 clip_text = true
 
 [node name="training" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -495,7 +496,6 @@ margin_bottom = 45.0
 custom_fonts/font = ExtResource( 18 )
 
 [node name="finished" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -595,6 +595,25 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 8 )
 text = "Trainees:"
 clip_text = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="finished/VBoxContainer"]
+margin_top = 228.0
+margin_right = 600.0
+margin_bottom = 228.0
+custom_constants/separation = 20
+
+[node name="Button" type="TextureRect" parent="finished/VBoxContainer/HBoxContainer2"]
+visible = false
+margin_right = 101.0
+margin_bottom = 100.0
+texture = ExtResource( 17 )
+
+[node name="icon" type="TextureRect" parent="finished/VBoxContainer/HBoxContainer2/Button"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
 
 [node name="status" type="Label" parent="finished"]
 margin_left = 51.0
