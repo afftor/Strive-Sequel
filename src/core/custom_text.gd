@@ -98,3 +98,6 @@ func GetLoanDayDetailed(stage):
 	day = ResourceScripts.game_globals.get_week_and_day_custom(day)
 	day[0] += 1 #or not if function above is incorrect
 	return res % day
+
+func get_kuros_questions_count():
+	return str(ResourceScripts.game_progress.get_counter('kuros_questions'))

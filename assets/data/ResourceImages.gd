@@ -284,6 +284,8 @@ var backgrounds = {
 	lilith_wedding_4 = load("res://assets/images/fullscreen scenes/LilithCG009.png"),
 	lilith_wedding_5 = load("res://assets/images/fullscreen scenes/LilithCG010.png"),
 	
+	kuro_book_0 = load("res://assets/images/fullscreen scenes/kuro_book_0.png"),
+	
 	#technical screens
 	whitescreen = load("res://assets/sfx/white.png"),
 	blackscreen = load("res://assets/sfx/black.png"),
@@ -538,12 +540,19 @@ var sprites = {
 	amelia_body = load("res://assets/images/sprites/amelia_body.png"),
 	amelia_nude_body = load("res://assets/images/sprites/amelia_nude_body.png"),
 	amelia_wed_body = load("res://assets/images/sprites/amelia_wed_body.png"),
+	dwarf_king = load("res://assets/images/sprites/king.png"),
+#	dwarf_king_body = load("res://assets/images/sprites/king_body.png"),#?
+	zephyras_sister = load("res://assets/images/sprites/zephyrasister.png"),
+#	zephyras_sister_body = load("res://assets/images/sprites/zephyrasister_body.png"),
+#	zephyras_sister_nude = load("res://assets/images/sprites/zephyrasister_nude.png"),
+#	zephyras_sister_nude_body = load("res://assets/images/sprites/zephyrasister_nude_body.png"),
 	}
 
 var dynamic_backgrounds = {
 	aliron = load("res://assets/dynamic_backgrounds/aliron.ogv"),
 	elf_capital = load("res://assets/dynamic_backgrounds/elf_capital.ogv"),
 	beastkin_capital = load("res://assets/dynamic_backgrounds/furry_camp.ogv"),
+	dwarfs_city = load("res://assets/dynamic_backgrounds/dwarfs_city.ogv"),
 }
 
 var portraits = {

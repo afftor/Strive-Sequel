@@ -118,8 +118,15 @@ var lands = {
 		locationpool = ['dungeon_undead_crypt'],
 		guilds = [],
 		tags = [],
+		capital_options = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
 		area_shop_items = {},
+#		capital_background = '',
+		capital_name = "Dwarven Capital",
+		capital_code = 'dwarf_capital',
+		capital_dynamic_background = 'dwarfs_city',
+#		capital_background_noise = '',
+#		capital_background_music = '',
 	},
 	steppe = {
 		code = 'steppe',
@@ -251,7 +258,7 @@ var factiondata = {
 		actions = ['hire','upgrade', 'guild_shop'],
 		bonus_actions = [],
 		events = [
-			'fighters_init',
+			'fighters_init', 'fighters_sap'
 			],
 		quests_easy = ['fighters_monster_hunt_easy','fighters_dungeon_easy','fighters_threat_easy','fighters_task_easy','fighters_slave_easy'],
 		quests_medium = ['fighters_craft_gear_medium','fighters_threat_medium', 'fighters_dungeon_medium','fighters_monster_hunt_medium','fighters_task_medium', 'fighters_slave_medium'],
@@ -1047,6 +1054,94 @@ var fixed_location_options = { #override serialized data
 			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'ZEPHYRA_COSTUME_2'}], 
 			args = [{code = 'start_event', data = 'zephyra_costume_1', args = []}]
 		},
+		{
+			text =  tr("ELF_CAPITAL_SACRED_SAP"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'get_sap'},
+				{type = 'decision', value = 'HelevielPriestess', check = true}
+			],
+			args = [{code = 'start_event', data = 'sacred_sap_heleviel_start', args = []}]
+		},
+		{
+			text =  tr("ELF_CAPITAL_SACRED_SAP"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'get_sap'},
+				{type = 'decision', value = 'LiraPriestess', check = true}
+			],
+			args = [{code = 'start_event', data = 'sacred_sap_erlen_start', args = []}]
+		},
+		{
+			text =  tr("ELF_CAPITAL_SACRED_SAP"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'l_price'}
+			],
+			args = [{code = 'start_event', data = 'sacred_sap_lira_3', args = []}]
+		},
+	],
+	dwarf_capital = [
+		{
+			text = tr("DWARF_PALACE"),
+			reqs = [{type = 'any_quest_stage', value = 'visit_dwarfs_quest', stages = ['audience', 'jean']}],
+			args = [{code = 'start_event', data = 'dwarf_palace_first', args = []}]
+		},{
+			text = tr("DWARF_PALACE"),
+			reqs = [{type = 'active_quest_stage', value = 'dking_hara_quest', stage = 'visit'}],
+			args = [{code = 'start_event', data = 'dking_second_task_start', args = []}]
+		},{
+			text = tr("DWARF_PALACE"),
+			reqs = [{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'visit'}],
+			args = [{code = 'start_event', data = 'dwarf_ceremony_intro', args = []}]
+		},{
+			text = tr("DWARF_PALACE"),
+			reqs = [{type = "has_active_quest", name = "jean_free_quest", check = true}],
+			args = [{code = 'start_event', data = 'dwarf_aftermatch_jean_return', args = []}]
+		},{
+			text = tr("DWARF_CAPITAL_JEAN"),
+			reqs = [{type = 'decision', value = 'TempRecruitJean', check = true}],
+			args = [{code = 'start_event', data = 'jean_recruit_start', args = []}]
+		},{
+			text = tr("DWARF_CAPITAL_SHIMORE"),
+			reqs = [{type = 'any_quest_stage', value = 'hara_scales_quest', stages = ['get_ore','get_gold']}],
+			args = [{code = 'start_event', data = 'shimmering_ore_start', args = []}]
+		},{
+			text = tr("DWARF_WORKSHOP"),
+			reqs = [{type = "quest_completed", name = "hara_scales_quest", check = false}],
+			args = [{code = 'start_event', data = 'dwarf_workshop', args = []}]
+		},{
+			text = tr("DWARF_WORKSHOP"),
+			reqs = [{type = 'decision', value = 'TempRecruitHara', check = true}],
+			args = [{code = 'start_event', data = 'hara_recruit_start', args = []}]
+		},{
+			text = tr("DWARF_TAVERN"),
+			reqs = [
+				{type = 'any_quest_stage', value = 'visit_dwarfs_quest', stages = ['tavern', 'jean']},
+				{type = 'event_seen', check = false, value = 'dwarf_tavern_bark_after_fight'},
+				{type = 'event_seen', check = false, value = 'dwarf_tavern_bark_leave'},
+			],
+			args = [{code = 'start_event', data = 'dwarf_tavern', args = []}]
+		},{
+			text = tr("DWARF_TAVERN"),
+			reqs = [
+				{type = 'quest_completed', name = 'visit_dwarfs_quest', check = true}
+#				{type = 'active_quest_stage', value = 'dking_hara_quest', stage = 'rebeltavern'}
+			],
+			args = [{code = 'start_event', data = 'dwarf_tavern', args = []}]
+		},{
+			text = tr("DWARF_PRISON"),
+			reqs = [{type = 'active_quest_stage', value = 'dking_hara_quest', stage = 'info'}],
+			args = [{code = 'start_event', data = 'dwarf_prison_start', args = []}]
+		},{
+			text = tr("DWARF_PRISON"),
+			reqs = [{type = 'decision', value = 'TempRecruitKuro', check = true}],
+			args = [{code = 'start_event', data = 'kuro_recruit_start', args = []}]
+		},{
+			text = tr("DWARF_CAPITAL_SEARCH"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'dking_hara_quest', stage = 'tracks'},
+				{type = 'event_seen', check = false, value = 'dwarf_search'}
+			],
+			args = [{code = 'start_event', data = 'dwarf_search', args = []}]
+		}
 	],
 	beastkin_capital = [
 		{
@@ -1433,6 +1528,27 @@ var fixed_location_options = { #override serialized data
 			reqs = [{type = 'active_quest_stage', value = 'goblin_quest', stage = 'stage5', state = true}],
 			args = [{code = 'start_event', data = 'goblin_quest_14', args = []}]
 		},
+	],
+	quest_dwarfs_gate = [
+		{
+			text = tr("QUEST_DWARFS_GATE_LOCATION"), 
+			reqs = [], 
+			args = [{code = 'start_event', data = 'enter_city_t_0', args = []}]
+		}
+	],
+	quest_mountain_pass = [
+		{
+			text = tr("QUEST_MOUNTAIN_PASS_LOCATION"), 
+			reqs = [], 
+			args = [{code = 'start_event', data = 'jean_mountain_start', args = []}]
+		}
+	],
+	quest_hollow_passage = [
+		{
+			text = tr("QUEST_HOLLOW_PASSAGE_LOCATION"), 
+			reqs = [{type = 'active_quest_stage', value = 'dking_hara_quest', stage = 'tracks'}], 
+			args = [{code = 'start_event', data = 'hollow_pass_start', args = []}]
+		}
 	],
 }
 

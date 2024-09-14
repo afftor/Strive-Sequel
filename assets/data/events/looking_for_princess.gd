@@ -48,6 +48,7 @@ var data = {
 	# KOBOLD part
 	looking_for_princess_3 = {
 		image = "kobold", tags = ['dialogue_scene'],
+		common_effects = [{code = 'decision', value = 'MetKobold'}],
 		text = [{text = "LOOKING_FOR_PRINCESS_6", reqs = []}],
 		options = [ {
 			code = 'looking_for_princess_4', text = "LOOKING_FOR_PRINCESS_OPTION_6", reqs = [], dialogue_argument = 1, type = 'next_dialogue',

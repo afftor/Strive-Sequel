@@ -243,6 +243,10 @@ func counter_cond(c_name, c_op, value):
 		dialogue_local_counters[c_name] = 0
 	return input_handler.operate(c_op, dialogue_local_counters[c_name], value)
 
+func get_counter(c_name):
+	if !dialogue_local_counters.has(c_name):
+		dialogue_local_counters[c_name] = 0
+	return dialogue_local_counters[c_name]
 
 func if_quest_active(id):
 	if completed_quests.has(id): return false

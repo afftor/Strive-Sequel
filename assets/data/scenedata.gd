@@ -1703,6 +1703,26 @@ var dialogue_inits = {
 			target_option = 5,
 		},
 	],
+	fighters_sap = [
+		{
+			code = 'default',
+			name = tr("DIALOGUE_SACRED_SAP_FIGHTER_GUILD"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'h_scouts'}
+			],
+			target = 'sacred_sap_fighters_start',
+			target_option = 0,
+		},
+		{
+			code = 'default',
+			name = tr("DIALOGUE_SACRED_SAP_FIGHTER_GUILD"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'h_price'}
+			],
+			target = 'sacred_sap_fighters_3',
+			target_option = 1,
+		},
+	],
 	servants_init = [
 		{
 			code = 'default',
@@ -1919,8 +1939,6 @@ var dialogue_inits = {
 			target_option = 1,
 		},
 	],
-	
-	
 }
 
 var dict = {
@@ -2390,6 +2408,56 @@ var quests = {
 			stage13 = {code = 'stage13', name = 'LILITH_PATRON_QUEST_NAME', descript = 'LILITH_PATRON_QUEST_STAGE_13'}, # go to xari
 			stage14 = {code = 'stage14', name = 'LILITH_PATRON_QUEST_NAME', descript = 'LILITH_PATRON_QUEST_STAGE_14'}, # ask lilith about patron
 			stage15 = {code = 'stage15', name = 'LILITH_PATRON_QUEST_NAME', descript = 'LILITH_PATRON_QUEST_STAGE_15'}, # clear new patron dungeon
+		},
+	},
+	
+	visit_dwarfs_quest = {
+		code = 'visit_dwarfs_quest',
+		summary = "VISIT_DWARFS_QUEST_SUMMARY",
+		stages = {
+			search = {code = 'search', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_SEARCH'},
+			audience = {code = 'audience', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_AUDIENCE'},
+			tavern = {code = 'tavern', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_TAVERN'},
+			jean = {code = 'jean', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_JEAN'},
+		},
+	},
+	dking_hara_quest = {
+		code = 'dking_hara_quest',
+		summary = "DKING_HARA_QUEST_SUMMARY",
+		stages = {
+			info = {code = 'info', name = 'DKING_HARA_QUEST_NAME', descript = 'DKING_HARA_QUEST_INFO'},
+			tracks = {code = 'tracks', name = 'DKING_HARA_QUEST_NAME', descript = 'DKING_HARA_QUEST_TRACKS'},
+			temple = {code = 'temple', name = 'DKING_HARA_QUEST_NAME', descript = 'DKING_HARA_QUEST_TEMPLE'},
+			wait = {code = 'wait', name = 'DKING_HARA_QUEST_NAME', descript = 'DKING_HARA_QUEST_WAIT'},
+			rebeltavern = {code = 'rebeltavern', name = 'DKING_HARA_QUEST_NAME', descript = 'DKING_HARA_QUEST_REBELTAVERN'},
+			nextday = {code = 'nextday', name = 'DKING_HARA_QUEST_NAME', descript = 'DKING_HARA_QUEST_NEXTDAY'},
+			visit = {code = 'visit', name = 'DKING_HARA_QUEST_NAME', descript = 'DKING_HARA_QUEST_VISIT'},
+		},
+	},
+	hara_scales_quest = {
+		code = 'hara_scales_quest',
+		summary = "HARA_SCALES_QUEST_SUMMARY",
+		stages = {
+			see_hara = {code = 'see_hara', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_SEE_HARA'},
+			get_ore = {code = 'get_ore', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_GET_ORE'},
+			get_gold = {code = 'get_gold', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_GET_GOLD'},
+			bring_ore = {code = 'bring_ore', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_BRING_ORE'},
+			get_sap = {code = 'get_sap', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_GET_SAP'},
+			h_scouts = {code = 'h_scouts', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_H_SCOUTS'},
+			h_price = {code = 'h_price', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_H_PRICE'},
+			l_price = {code = 'l_price', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_L_PRICE'},
+			bring_sap = {code = 'bring_sap', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_BRING_SAP'},
+			get_cap = {code = 'get_cap', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_GET_CAP'},
+			bring_cap = {code = 'bring_cap', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_BRING_CAP'},
+			next_day = {code = 'next_day', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_NEXT_DAY'},
+			visit = {code = 'visit', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_VISIT'},
+		},
+	},
+	jean_free_quest = {
+		code = 'jean_free_quest',
+		summary = "JEAN_FREE_QUEST_SUMMARY",
+		stages = {
+			price = {code = 'price', name = 'JEAN_FREE_QUEST_NAME', descript = 'JEAN_FREE_QUEST_PRICE'},
 		},
 	},
 }
