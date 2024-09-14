@@ -1248,7 +1248,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_crown2.png",
 		effects = [],
-		reqs = [],
+		reqs = [{code = 'trait', trait = 'training_obedience', check = true}],
 		bonusstats = {}, 
 		tags = ['training', 'callmaster', 'simple_icon']
 	},
@@ -1259,7 +1259,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_date.png",
 		effects = [],
-		reqs = [],
+		reqs = [{code = 'trait', trait = 'training_obedience', check = true}],
 		bonusstats = {}, 
 		tags = ['training', 'relation', 'simple_icon']
 	},
@@ -1270,7 +1270,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_harlotry.png",
 		effects = [],
-		reqs = [],
+		reqs = [{code = 'trait', trait = 'training_obedience', check = true}],
 		bonusstats = {}, 
 		tags = ['training', 'sexservice', 'simple_icon']
 	},

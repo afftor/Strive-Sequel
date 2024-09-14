@@ -155,11 +155,18 @@ func build_posttrain():
 	
 	var text = tr('TRAININGFINISHHEADER')
 	var list = person.get_traits_by_tag('training')
+	input_handler.ClearContainer($finished/VBoxContainer/HBoxContainer2, ['Button'])
+	$finished/VBoxContainer/list.text = text
 	for tr in list:
 		var trdata = Traitdata.traits[tr]
-		text += "\n \t"
-		text += tr(trdata.name)
-	$finished/VBoxContainer/list.text = text
+#		text += "\n \t"
+#		text += tr(trdata.name)
+		var panel = input_handler.DuplicateContainerTemplate($finished/VBoxContainer/HBoxContainer2, 'Button')
+		if trdata.icon is String:
+			panel.get_node('icon').texture = load(trdata.icon)
+		else:
+			panel.get_node('icon').texture = trdata.icon
+		globals.connecttexttooltip(panel, person.translate(tr(trdata.descript)))
 	
 	var tmp = person.get_traits_by_tag('training_final')
 	if !tmp.empty():
