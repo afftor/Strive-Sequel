@@ -169,6 +169,9 @@ var data = {
 				],
 				type = 'next_dialogue',
 				dialogue_argument = 0
+			},{
+				code = 'dwarf_workshop', 
+				text = "DIALOGUEWALKAWAY", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 			}
 		]
 	},
@@ -185,7 +188,8 @@ var data = {
 				dialogue_argument = 0,
 				type = 'next_dialogue',
 				bonus_effects = [
-					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'get_ore'}
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'get_ore'},
+					{code = "update_city"}
 				]
 			}
 		]
@@ -237,7 +241,8 @@ var data = {
 				dialogue_argument = 0,
 				type = 'next_dialogue',
 				bonus_effects = [
-					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'bring_ore'}
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'bring_ore'},
+					{code = "update_city"}
 				]
 			}
 		]
@@ -368,7 +373,8 @@ var data = {
 				bonus_effects = [
 					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'h_scouts'},
 					{code = 'dialogue_counter', name = 'kuros_questions', op = '+'},#3rd (parallel with Lira's)
-					{code = 'add_timed_event', value = "sacred_sap_intermission_start", args = [{type = 'add_to_hour', hour = [1,1]}]}
+					{code = 'add_timed_event', value = "sacred_sap_intermission_start", args = [{type = 'add_to_hour', hour = [1,1]}]},
+					{code = "update_city"}
 				]
 			}
 		]
@@ -396,12 +402,12 @@ var data = {
 				code = "sacred_sap_fighters_2",
 				text = "SACRED_SAP_FIGHTERS_1_OPT1",
 				reqs = [],
-				dialogue_argument = 0
+				dialogue_argument = 0, type = 'next_dialogue'
 			},{
 				code = "sacred_sap_fighters_2",
 				text = "SACRED_SAP_FIGHTERS_1_OPT2",
 				reqs = [],
-				dialogue_argument = 0
+				dialogue_argument = 0, type = 'next_dialogue'
 			}
 		]
 	},
@@ -414,12 +420,12 @@ var data = {
 				code = "sacred_sap_fighters_3",
 				text = "SACRED_SAP_FIGHTERS_2_OPT1",
 				reqs = [],
-				dialogue_argument = 0
+				dialogue_argument = 0, type = 'next_dialogue'
 			},{
 				code = "sacred_sap_fighters_3",
 				text = "SACRED_SAP_FIGHTERS_2_OPT2",
 				reqs = [],
-				dialogue_argument = 0
+				dialogue_argument = 0, type = 'next_dialogue'
 			}
 		]
 	},
@@ -459,6 +465,7 @@ var data = {
 				dialogue_argument = 0,
 				bonus_effects = [
 					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'h_price'},
+					{code = "update_guild"}
 				]
 			}
 		]
@@ -507,6 +514,7 @@ var data = {
 	},
 	sacred_sap_fighters_5 = {
 		tags = ["dialogue_scene"],
+		custom_background = "forest1",
 		reqs = [],
 		text = [{text = "SACRED_SAP_FIGHTERS_5", reqs = []}],
 		options = [
@@ -521,6 +529,7 @@ var data = {
 	},
 	sacred_sap_heleviel_4 = {
 		tags = ["dialogue_scene", "master_translate"],
+		custom_background = "elf_capital",
 		character = 'elf_priestess',
 		reqs = [],
 		text = [{text = "SACRED_SAP_HELEVIEL_4", reqs = []}],
@@ -532,7 +541,8 @@ var data = {
 				dialogue_argument = 0,
 				type = 'next_dialogue',
 				bonus_effects = [
-					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'bring_sap'}
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'bring_sap'},
+					{code = "update_guild"}#if we are still at guild for that moment
 				],
 			}
 		]
@@ -607,7 +617,8 @@ var data = {
 				bonus_effects = [
 					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'l_price'},
 					{code = 'dialogue_counter', name = 'kuros_questions', op = '+'},#3rd (parallel with Heleviel's)
-					{code = 'add_timed_event', value = "sacred_sap_intermission_start", args = [{type = 'add_to_hour', hour = [1,1]}]}
+					{code = 'add_timed_event', value = "sacred_sap_intermission_start", args = [{type = 'add_to_hour', hour = [1,1]}]},
+					{code = "update_city"}
 				]
 			}
 		]
@@ -653,7 +664,8 @@ var data = {
 				dialogue_argument = 0,
 				type = 'next_dialogue',
 				bonus_effects = [
-					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'bring_sap'}
+					{code = 'progress_quest', value = 'hara_scales_quest', stage = 'bring_sap'},
+					{code = "update_city"}
 				]
 			}
 		]
@@ -736,12 +748,12 @@ var data = {
 				code = "capacitor_molten_z_1",
 				text = "CAPACITOR_MOLTEN_START_OPT1",
 				reqs = [{type = 'has_hero', name = 'zephyra', check = true}],
-				dialogue_argument = 0,
+				dialogue_argument = 0, type = 'next_dialogue',
 			},{
 				code = "capacitor_molten_k_1",
 				text = "CAPACITOR_MOLTEN_START_OPT2",
 				reqs = [],
-				dialogue_argument = 0,
+				dialogue_argument = 0, type = 'next_dialogue',
 			}
 		]
 	},

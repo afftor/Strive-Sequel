@@ -383,7 +383,9 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
 			bonus_effects = [{code = 'complete_quest', value = 'zephyra_disappearance_quest'},
-			{code = 'unique_character_changes', value = 'zephyra', args = [{code = 'remove_character'}]}, {code = "update_city"}] 
+			{code = 'unique_character_changes', value = 'zephyra', args = [{code = 'remove_character'}]},
+			{code = "update_city"},
+			{code = 'decision', value = 'KetchKilled'}]
 		}, ]
 	},
 	
@@ -484,7 +486,9 @@ var data = {
 		options = [ { # rem zephyra 
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'complete_quest', value = 'zephyra_disappearance_quest'},
-			{code = 'unique_character_changes', value = 'zephyra', args = [{code = 'remove_character'}]}, {code = "update_city"}] 
+			{code = 'unique_character_changes', value = 'zephyra', args = [{code = 'remove_character'}]},
+			{code = "update_city"},
+			{code = 'decision', value = 'KetchKilled'}]
 		}, ]
 	},
 	

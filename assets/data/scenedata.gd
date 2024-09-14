@@ -1702,6 +1702,8 @@ var dialogue_inits = {
 			target = 'fighters_introduction2',
 			target_option = 5,
 		},
+	],
+	fighters_sap = [
 		{
 			code = 'default',
 			name = tr("DIALOGUE_SACRED_SAP_FIGHTER_GUILD"),
@@ -2489,6 +2491,13 @@ var quests = {
 			bring_cap = {code = 'bring_cap', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_BRING_CAP'},
 			next_day = {code = 'next_day', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_NEXT_DAY'},
 			visit = {code = 'visit', name = 'HARA_SCALES_QUEST_NAME', descript = 'HARA_SCALES_QUEST_VISIT'},
+		},
+	},
+	jean_free_quest = {
+		code = 'jean_free_quest',
+		summary = "JEAN_FREE_QUEST_SUMMARY",
+		stages = {
+			price = {code = 'price', name = 'JEAN_FREE_QUEST_NAME', descript = 'JEAN_FREE_QUEST_PRICE'},
 		},
 	},
 }

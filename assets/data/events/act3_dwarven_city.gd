@@ -102,8 +102,7 @@ var data = {
 		reqs = [],
 		tags = ['dialogue_scene', 'blackscreen_transition_common'],
 		common_effects = [
-			{code = 'teleport_active_location',#?
-				to_loc = {location = 'dwarf_capital', code = 'dwarf_capital', area = 'mountains'}}
+			{code = 'progress_quest', value = 'visit_dwarfs_quest', stage = 'audience'}#for now it looks bad in bonus_effects
 		],
 		text = [{
 			text = "ENTER_CITY_BODY_CHECK", reqs = []
@@ -112,12 +111,14 @@ var data = {
 			code = 'close', 
 			text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 0, type = 'next_dialogue',
 			bonus_effects = [
-				{code = 'progress_quest', value = 'visit_dwarfs_quest', stage = 'audience'},
-				{code = 'open_location', location = "dwarf_capital", area = "mountains"},#?
+				{code = 'teleport_active_location_all',
+					to_loc = {location = 'dwarf_capital', code = 'dwarf_capital', area = 'mountains'}},
+				{code = 'open_location', location = "dwarf_capital", area = "mountains"},
 				{code = 'remove_quest_location', value = 'quest_dwarfs_gate'},
 			]
 		}]
 	},
+
 
 	dwarf_palace_first = {
 		reqs = [],
@@ -691,7 +692,7 @@ var data = {
 		reqs = [],
 		character = 'jean',
 		tags = ['dialogue_scene'],
-		common_effects = [{code = 'decision', value = 'JeanHelp'}],#remove if useless
+		common_effects = [{code = 'decision', value = 'JeanHelp'}],
 		text = [
 			{text = "JEAN_MOUNTAIN_START", reqs = []},
 		],
@@ -877,7 +878,13 @@ var data = {
 	},
 	jean_dungeon_in = {
 		reqs = [],
-		tags = ['dialogue_scene', 'blackscreen_transition_common'],
+		tags = ['dialogue_scene', 'blackscreen_transition_common'],#blackscreen_transition_common looks bad with open_location in common_effects
+		common_effects = [
+			{code = 'teleport_active_location_all',
+				to_loc = {location = 'dwarf_capital', code = 'dwarf_capital', area = 'mountains'}},
+			{code = 'open_location', location = "dwarf_capital", area = "mountains"},
+			{code = 'remove_quest_location', value = 'quest_mountain_pass'},
+		],
 		text = [
 			{text = "JEAN_DUNGEON_INTRO", reqs = []},
 		],
@@ -967,7 +974,7 @@ var data = {
 		reqs = [],
 		tags = ['dialogue_scene'],
 		common_effects = [
-			{code = 'decision', value = 'JeanReport'},#remove if useless
+			{code = 'decision', value = 'JeanReport'},
 			{code = 'remove_quest_location', value = 'quest_mountain_pass'},
 		],
 		text = [{text = "JEAN_REPORT", reqs = []}],

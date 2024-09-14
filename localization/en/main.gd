@@ -14044,7 +14044,7 @@ The king takes a sip from his glass, then addresses a concubine tending to his n
 	DKING_FIRST_IMPORTANT = """— Now, I will task you with a very important matter. You will receive your freedom back for the sake of completing your task, and, if you succeed, you will be freed for good. If you fail, however... Well, I trust you will not disappoint me.""",
 
 	DKING_FIRST_OPT_TASK = "What is the task?",
-	DKING_FIRST_OPT_JEAN = "What about Jean? (remove after 1 use)",
+	DKING_FIRST_OPT_JEAN = "What about Jean?",
 	DKING_FIRST_OPT_EXCHANGE = "I want something you possess in exchange for my service.",
 	DKING_FIRST_OPT_WITHOUT_J = "I will not leave without Jean",
 	DKING_FIRST_OPT_NOTCARE = "As long as I get to keep my freedom. I don't really care about her.",
@@ -14235,8 +14235,7 @@ Bolthar: — Decent manners are rare these days. You've come here searching for 
 Bolthar: — Direct, I like that. But nothing is handed over lightly here. We are already aware of King's goals, but not of yours.""",
 	HOLLOW_PASS_REPLY_CHAINS = """A slight smile plays on Bolthar's lips; his eyes reflect a seasoned warrior's resolve.
 
-Bolthar: — Chains are earned. Respect is free. Now, let's get down to brass tacks.
-You've come here searching for Hara. Don't be surprised, we know of King's goals, but not of yours.""",
+Bolthar: — Chains are earned. Respect is free. Now, let's get down to brass tacks. You've come here searching for Hara. Don't be surprised, we know of King's goals, but not of yours.""",
 	HOLLOW_PASS_KINGBIZ = """Bolthar leans back, regarding you with a scrutinizing gaze.
 
 — Tell us, what is your business with the King?""",
@@ -14698,6 +14697,367 @@ Kuro takes a pause figuring that answer is not really sufficient for you.
 Kuro turns away indicating her unwillingness to continue.""",
 	
 	
+	
+	DWARF_CEREMONY_INTRO = """You make your way to the palace main hall where the machine Hara worked on has been moved. The King, guards and Kuro have all gathered waiting for it to start.
+
+King: — A fine work, [name]. This day will be remembered in ages.""",
+	DWARF_CEREMONY_OPT_PAYMENT = "What about my payment?",
+	DWARF_CEREMONY_OPT_SAFE = "Are you sure this is safe?",
+	DWARF_CEREMONY_REPLY_PAYMENT = """King: — Patience. After I receive all of its machine powers you'll get your artifact you came for. This is what is going to happen, am I right, Lady Kuro.""",
+	DWARF_CEREMONY_REPLY_SAFE = """King: — Hmph, no guts, no glory. I trust the girls will deliver on their promises and then I will deliver you mine. Is that right, Lady Kuro?""",
+	DWARF_CEREMONY_INTRO2 = "\n\nKuro: — ...Yes, we are almost finished.",
+	DWARF_CEREMONY_INTRO2_VAULT = "\n\nKuro gave a sign to the King after which one of the guards left the room and returned with the very same scales you've discovered at the vault that day.",
+	DWARF_CEREMONY_INTRO2_NOVAULT = "\n\nKuro gave a sign to the King after which one of the guards left the room and returned with the dull looking scales fitting the description of the artifact you needed. However it was clear to you they didn't have any real powers in them, feeling more like a replica.",
+	DWARF_CEREMONY_INTRO3 = """The scales get inserted into the machine's sliding section after which Hara begins its activation. As she flips some levers following the instruction rest of the room, save for Kuro, observe in awe how mechanical components spring to life. 
+
+After a few moments the sliding section starts glowing and deafening humming fills the room. 
+
+The King: — This is it!? It's working! Hah, finally I'll be able to reenact our dynasty's powers and make the dwarven kingdom fearsome power the outsiders will have to consider.""",
+	DWARF_CEREMONY_PEAK_KING = """As the charging reaches its peak a blinding blue flash erupts from the machine leaving everyone dazed as Kuro shields herself with her powers. As she springs into action, she quickly retrieves now restored scales from the machine and makes her way to the exit.
+
+The King: — You... Betrayer!
+
+Kuro: — Don't be ridiculous, I've only promised to help with the artifact restoration, there was no alliance between us. 
+
+As she turns away suddenly numerous cultists barge into the room starting a fight with dwarven guards and helping her escape.""",
+	DWARF_CEREMONY_PEAK_COAL = """The charging of scales reaches its peak as you feel the ring you've gotten from Bolthar starts vibrating. At the crucial moment when it reaches its peak, coalition forces start flooding the room through the amplified portal technique.
+
+However, Kuro is unhindered by this. As a blinding blue flash erupts from the machine leaving everyone dazed as Kuro shields herself with her powers. She quickly retrieves now restored scales from the machine and makes her way to the exit.
+
+The King: — You two... Betrayers! Guards! Kill everyone!""",
+	DWARF_CEREMONY_OPT_CHASE = "[Dexterity challenge] Chase after Kuro",
+	DWARF_CEREMONY_OPT_FIGHT = "Fight",
+	DWARF_CEREMONY_REPLY_CHASE = """{color=green|Success}
+
+You skillfully push through the chaos following Kuro's steps out of the palace.""",
+	DWARF_CEREMONY_KURO = """As you get through the palace following Kuro's footsteps, you soon end up on the empty streets of the city. Kuro stays at the opposite side giving you her usual disinterested look.
+
+— Rumors didn't lie, you are a skirt chaser after all. Do you mind giving me some space?""",
+	DWARF_CEREMONY_OPT_BETRAYAL = "You've planned this betrayal since the start?",
+	DWARF_CEREMONY_OPT_ARTIFACT = "I won't let you take the artifact just like that",
+	DWARF_CEREMONY_OPT_TALKOVER = "Maybe we could talk it over? What cult offers what I can't?",
+	DWARF_CEREMONY_REPLY_BETRAYAL = """Kuro rubs her forehead and visibly sighs.
+
+— I honestly was hoping we are past asking stupid questions at this point. Yes. This was the cult's goal all along, to restore the artifact's powers and take it away. Why else would I deliver the blueprint for the machine to empower it?""",
+	DWARF_CEREMONY_REPLY_ARTIFACT = """— Huh? I worked way harder than you to get it. I came up with the plan, blueprint and was forced to stay with that horny bastard and his lunatic dreams of former glory. Give credit where it's due, will you?""",
+	DWARF_CEREMONY_REPLY_TALKOVER = """Kuro smirks at your sudden proposal but it's painstakingly obvious this is not a time or place for such negotiations.
+
+— Not much, but it would be weird for me to switch sides just from being asked, wouldn't it? You have been an interesting acquaintance so far, but alas.""",
+	DWARF_CEREMONY_CAUGHTUP = """As she was talking the King and his guards had caught up with you. 
+
+The King: — You'll pay for this you damn wretch!
+
+Kuro pays no attention to his words, simply turns around and prepares to continue on her way.
+
+Kuro: — Now excuse me, but there's people who have more free time to keep you company unlike me.""",
+	DWARF_CEREMONY_CAUGHTUP_COAL = """\n\nAs she turns away, a group of coalition troops laying in the hiding who were just waiting for the king to appear.
+
+The King: — That bitcheven sided with the coalition behind my back! Take them out and get her!""",
+	DWARF_CEREMONY_CAUGHTUP_CULT = """\n\nAs she turns away, a group of cultists join the street blocking you from going after her.""",
+	
+	KURO_RESOLUTION_INTRO = """You make your way to the nearby caves chasing after Kuro carrying the artifact. By going through unconventional paths soon you arrive in a desolated area. 
+
+Everything apparently has been prepared beforehand as you spot Kuro standing in the middle of the ritual circle opening the portal. On a much larger perimeter the area is blocked out by a semi-transparent barrier not unlike one you've encountered at Millford, however this one is much darker.""",
+	KURORES_FINALE_NO_KETCH = """The small-sized portal starts opening as you observe, unable to get past the barrier and do anything. 
+
+Out of it a person walks out, a demon woman you've met previously. Both women look at each other with a hint of challenge in their eyes.
+
+Kuro: — Here's the artifact. We should depart immediately. 
+
+The demon takes the scales from Kuro's hand and turns away.
+
+Demon: — I'm afraid there's not enough power to get both of us and the artifact out of here. The local forces are upon us already.""",
+	KURORES_FINALE_NO_KETCH2 = """Kuro: — Huh? You've planned to betray me since the very start?
+
+Demon: — Does that surprise you? You simply aren't trustful, you didn't get rid of this [man] over there as ordered. I don't know what's in your mind and that makes you nothing but dangerous. 
+
+Demon: — Yet, you've completed your mission for the most of it, so I'll let you keep your life. Enjoy your future confinement.
+
+Kuro's face distorts in anger as the woman teleports outside with the artifact. Kuro falls to her knees as her barrier is dispelled. She does not fight back as restrain her and take back to the palace.""",
+	KURORES_FINALE_KETCH = """The small-sized portal starts opening as you observe, unable to get past the barrier and do anything. 
+
+Out of it a person walks out, the tall rough looking male elf. He swiftly snatches the scales out of Kuro's hands.
+
+Kuro: — Ketch...
+
+Ketch: — Admirable, you really did get it. That [guy] on the other side of the barrier though... Well, it doesn't matter.""",
+	KURORES_FINALE_KETCH2 = """Kuro's expression has darkened even more with the appearance of Ketch.
+
+Kuro: — Where's Mhyrana?
+
+Ketch: — Don't sweat about it, she sent me in her place. 
+
+Kuro: — So you are planning to finish me off? Or let [him] take care of me?
+
+Ketch: — Oh, you figured it right away? You really are too smart for your own good.""",
+	KURORES_FINALE_KETCH3 = """The atmosphere inside the barrier has grown even more tense now with both participants circling around each other.
+
+Kuro: — The fact you've shown up instead is a dead giveaway.
+
+Ketch: — Right. And about the part about finishing you up personally, we aren't leaving it up to chance—""",
+	KURORES_FINALE_KUROHIT = """Kuro launches an attack at the elf but his speed is far superior. The dagger from his hand sanks deep inside of Kuro's body as her control over the divine barrier ceases, it shatters in pieces as she falls onto ground.
+
+Kuro: — Gh... Damn you...
+
+Blood is gushing out of Kuro's mouth indicating the seriousness of the injury.
+
+Ketch: — With this little power you stand no chance to me, you idiot. Shouldn't have put up that barrier in the first place. Now then, the poison should finish its work and I wouldn't want to stay around with these guys in sight...""",
+	KURORES_FINALE_OPT_HELPKURO = "Help Kuro",
+	KURORES_FINALE_OPT_CHASE = "Chase after Ketch",
+	KURORES_FINALE_HELPKURO = """You decide to ignore Ketch and go over to Kuro for help. As you slowly put her on her back she curses you. 
+
+Kuro: — What are you doing helping your enemy, you moron... he leaves... with the artifact...
+
+Ignoring her protest, you pull out the poisoned dagger and do your best to stop the bleeding until one of the healers helps out with the wound.""",
+	KURORES_FINALE_HELPKURO2 = "Kuro passes out from pain as only your effort keeps her from dying. However Ketch has escaped with the artifact and there's no chances to retrieve it now.",
+	KURORES_FINALE_ZEPHHIT = """Kuro launches an attack at the elf but his speed is far superior. The dagger from his hand ends up in Kuro's body, however... 
+
+In the last moment Zephyra, who has passed the barrier on her own, blocks the attack with her body, the dagger ends up right on the place of heart. Both parties stand in shock as the barrier cracks allowing your group to follow up after her.
+
+Ketch: — Fuck... Whatever, one bitch or the other, I'm out of here!
+
+Ketch quickly dashes away as Kuro stands in shock over dying Zephyra.""",
+	KURORES_FINALE_OPT_HELPZEPH = "Rush to Zephyra",
+	KURORES_FINALE_HELPZEPH = """Kuro: — Damn it... Why?! This was punishment for my mistake, not...
+
+For the rare moment you see genuine rage and tears over Kuro's face as she looks down at Zephyra. 
+
+Zephyra: — ...I guess... I didn't want to see my little sister... die on me...
+
+Kuro: — No... Goddamnit, [name], don't just stand there, do something!""",
+	KURORES_FINALE_OPT_CANT = "This can't be helped.",
+	KURORES_FINALE_OPT_POWER = "*Expend all powers you have*",
+	KURORES_FINALE_OPT_PRAY = "*Pray to the gods*",
+	KURORES_FINALE_REPLY_CANT = """Kuro: — No... This... isn't... What I wanted...
+
+You both watch silently as Zephyra's body lies breathless between you. Kuro has lost any will to fight or resist you, making it easy for you to tie her up before leaving.""",
+	KURORES_FINALE_REPLY_POWER = """Your exceptional proficiency in healing arts and all of magic energy is just enough to prevent Zephhyra's damaged heart from failing completely as you slowly restore it to working condition. Kuro observes you with her teeth clenching as you exhaust yourself over Zephyra's body. 
+
+You feel like you've managed to turn the inevitable by your powers alone. Kuro watches in disbelief staying completely silent and powerless in a room with her sister barely surviving and you covered in sweat and trembling.""",
+	KURORES_FINALE_REPLY_PRAY = """You put everything you have into a feeble attempt to call for justice in order to save Zephyra from a certain death, and unexpectedly to everyone there, a faint light appears over her body. The gushing blood stops as her wound cauterizes around it. 
+
+You feel like you've managed to turn the inevitable but you pay the price – you feel yourself getting weaker, as dizziness strikes you. Kuro watches in disbelief staying completely silent and powerless in a room with her sister barely surviving and her savior doing the impossible.""",
+	KURORES_FINALE_CHASE = """Ignoring Kuro, you dash after Ketch who tries his best to lose you in the cramped tunnels but his size does not help here at all. After a few turns you finally catch up to him, landing a glancing hit. 
+
+Ketch: — You fucker...
+
+This is enough to throw him off balance and stumble. However his combat prowess is enough to not lose his speed as he jumps right back at the other side of the room. 
+
+Ketch: — This damn thing is not worth it.""",
+	KURORES_FINALE_CHASE2 = """To your full surprise he throws the scales in your direction with a small blinding bomb tied to it. As you cover from the explosion, he's no longer there, a faint trace of prepared teleportation magic has taken him away to safety. It's your luck the power of the artifact was too strong to have him teleport with it. 
+
+As you pick up the scales, you are left with no other option but to return back.""",
+	
+	DWARF_AFTERMATCH_KING_NOKURO = """You return to The King, whose forces finish cleaning up the coalition remnants and the cultists. After a few hours the place is swooped as if nothing at all has happened in the first place. You stand before the King in his private chambers as he talks to you.
+
+The King: — You've made some mistakes on this path but I can't blame you. We've... miscalculated our trust as well. Besides, you've brought the rebels to their downfall and you've dealt with the filthy betrayer who led us astray. 
+
+The King: — You've even retrieved and restored the scales but it was all just a plan by the foul fox. And that damned cult has tried to use us... Initially they've wanted to get them to themselves but seeing how they've tried to overthrow us, I let you have it.
+
+You realize that the King must be scared to keep the artifact around his castle and is ready to settle on the fact that the coalition is no longer any threat to him.""",
+	DWARF_AFTERMATCH_KING_NOKURO2 = "The King: — You can have those. And we hope for a positive future relationship with Aliron, but don't think you can play us for fools like the cultist has tried.",
+	DWARF_AFTERMATCH_KING = """As you're approached by the king's forces, they seize Kuro, taking her to jail. Soon you are informed that the rest of the cultists and rebels have been eliminated by the king's forces. After a few hours the place is swooped as if nothing at all has happened in the first place. You return to the King who is ready to meet with you.
+
+The King: — You've made some mistakes on this path but I can't blame you. We've... miscalculated our trust as well. Besides, you've brought the rebels to their downfall and you've dealt with the filthy betrayer who led us astray. 
+
+The King: — I've been informed that our artifact has been taken away after all. This must have been the cult's and that foul fox's plan all along. They've been trying to use us since the start. 
+
+The King: — Nevertheless, at least we have one less problem on our hands now and we hope for future cooperation with the Aliron.""",
+	DWARF_AFTERMATCH_OPT_HARA = "About Hara...",
+	DWARF_AFTERMATCH_OPT_JEAN = "About Jean...",
+	DWARF_AFTERMATCH_OPT_KURO = "About Kuro...",
+#	DWARF_AFTERMATCH_OPT_CULT = "About cult...",
+	DWARF_AFTERMATCH_REPLY_K_HARA = """The King: — Hara? I have no use for her. She has completed her mission, I thought she's with the cult so we had to interrogate her, but we've let her go now. She's still probably somewhere around the town.""",
+	DWARF_AFTERMATCH_REPLY_K_KURO = "The King: — She must be punished for her devious plans, there's no discussion about it.",
+	DWARF_AFTERMATCH_OPT_TIES = "With her ties to the cult they might come for her again",
+	DWARF_AFTERMATCH_OPT_RIGHT = "I guess you are right",
+	DWARF_AFTERMATCH_REPLY_TIES = """The King pauses considering your words, it's clear he's very cautious about the cult now.
+
+The King: — ...You have a point after all. Alright, take that traitor and do what you want with her, just make sure she stays away from our kingdom.""",
+	DWARF_AFTERMATCH_COAL = """After dealing with the former King's main forces, coalition soldiers have secured the palace. After a few hours you meet with Bolthar who announces his gratitude to you.
+
+Bolthar: — Because of you, [name], we have finally got rid of the dwarven supremacist regime. We can't thank you enough for that. But there's still a lot of work to reestablish the new order in this society.""",
+	DWARF_AFTERMATCH_COAL_ART = "\n\nBolthar: — I've heard you've already obtained the artifact you've been looking for, but if there's something else I could help you with, please ask.",
+	DWARF_AFTERMATCH_COAL_NOART = "\n\nBolthar: — I've heard you have not been able to get the artifact you've come for. In my opinion You should've gone for it instead of helping one of the king's allies. We've taken her to jail.",
+	DWARF_AFTERMATCH_REPLY_C_HARA = "Bolthar: — We've already known her well so we let her go. I think she's waiting for you in town.",
+	DWARF_AFTERMATCH_REPLY_C_KURO = "Bolthar: — We've taken care of her wounds and her life is in no danger, however we plan to publicly judge her with other dwarven officials.",
+	DWARF_AFTERMATCH_OPT_TAKE = "I want to take her instead",
+	DWARF_AFTERMATCH_REPLY_TAKE = """Bolthar considers your request for a bit before agreeing to it.
+
+Bolthar: — I suppose you've earned it. After all, we couldn't give you the item you needed, so this is compensation we can provide. Just make sure to keep her out of here so there would be no questions asked about her status.""",
+	DWARF_AFTERMATCH_REPLY_C_JEAN = "Bolthar: — We have freed all political prisoners and foreigners. She's left quickly and is probably in town.",
+	DWARF_AFTERMATCH_REPLY_K_JEAN = "The King: — Who? Oh, that mage woman. I've almost forgotten about her with all this ruckus.",
+	DWARF_AFTERMATCH_K_JEAN_HELP = "\n\nThe King: — She has not paid for her deeds so I see no reason to let her go.",
+	DWARF_AFTERMATCH_K_JEAN_REPORT = "\n\nThe King: — What does it matter to you? We shall punish her accordingly. ",
+	DWARF_AFTERMATCH_JEAN_RETURN = "The King: — Mage woman again?",
+	DWARF_AFTERMATCH_OPT_PAY = "What if I pay for her? (1000 gold)",
+	DWARF_AFTERMATCH_OPT_INSTEAD = "What if I get you someone instead of her?",
+	DWARF_AFTERMATCH_OPT_NEVERMIND = "Actually, nevermind",
+	DWARF_AFTERMATCH_REPLY_PAY = "The King: — Hmm we can use some treasury donation for the damage reparations. Very well, you can have her.",
+	DWARF_AFTERMATCH_REPLY_INSTEAD = "The King: — Someone, you say? A pretty woman like her? Hehe, fine, I want a blond elf gal then. Bring her to me and I won't touch that haughty mage then.",
+	DWARF_AFTERMATCH_OPT_SLAVE = "Select slave",
+	DWARF_AFTERMATCH_REPLY_SLAVE = "You are handing over a slave",
+	DWARF_AFTERMATCH_OPT_ENSLAVE = "I could use a slave like her",
+	DWARF_AFTERMATCH_OPT_FREE = "I want to set her free",
+	DWARF_AFTERMATCH_REPLY_ENSLAVE = "The King: — Is that some weird human custom? I guess she's attractive enough for you to want it... However there's a law and she must pay for her misdeeds.",
+	DWARF_AFTERMATCH_REPLY_FREE = "The King: — I don't get it. And I can't possibly let someone like her go free.",
+	
+	JEAN_RECRUIT_START_HELP = """The mage girl is brought to you from the jail. Despite not being in the best state, she has not lost any spunk.
+
+Jean: — About time you've let me go. Was your deed, [name]? Must say I'm impressed. So, you expect something in return from me now?""",
+	JEAN_RECRUIT_OPT_JOIN = "Why don't you join me? I could use a resourceful mage",
+	JEAN_RECRUIT_OPT_NONEED = "I actually don't need you for anything",
+	JEAN_RECRUIT_REPLY_JOIN = "Jean: — You are residing in Aliron, aren't you? Fine, I guess I could use a vacation from this place. Don't think I'm gonna drool over you just because you let me live at your place, I'm not a girl like that.",
+	JEAN_RECRUIT_REPLY_NONEED = "Jean: — ...That's so? Very well, I shall be on my way then. Perhaps we may meet again some day.",
+	JEAN_RECRUIT_START_REPORT = """The mage girl is brought to you from the jail. She hatefully glares at you as her limbs are still restricted by the manacles.
+
+Jean: — You've ratted me out, you bastard! Why did you bring me here?""",
+	JEAN_RECRUIT_OPT_SLAVE = "I'll take you as a slave to myself.",
+	JEAN_RECRUIT_OPT_GO = "I just wanted to let you go.",
+	JEAN_RECRUIT_REPLY_SLAVE = """Jean: — Wha... You won't dare!...
+
+Despite her protests you order to plug her mouth and order to deliver her to your mansion.""",
+	JEAN_RECRUIT_GO = """You order the guards to release her. Both her and the guards look surprised. As she rubs her numb hands, she looks at you warily.
+
+Jean: — Huh... So what now? I just get to go? What was it all even about?""",
+	JEAN_RECRUIT_OPT_ASAP = "[Persuasion challenge] I had to get access to the King asap, sorry about that. Maybe you could join me?",
+	JEAN_RECRUIT_OPT_FIX = "Yeah, you can go, just wanted to fix some misunderstandings until it's too late.",
+	JEAN_RECRUIT_REPLY_ASAP = """{color=green|Success}
+
+Jean: — I can't believe it... Damn it, alright. It's not like I have any better place to stay now. But do know, you make one wrong move and I fry you alive.""",
+	JEAN_RECRUIT_REPLY_FIX = """Jean: — You are unbelievable! Whatever, I'm leaving now then. Pray we won't meet again or I might settle a score with you for this.
+
+Jean turns away and leaves the scene as if fearing that you might change your mind.""",
+	
+	HARA_RECRUIT_START = """You find Hara in her old workshop as she seemingly packs her most important tools preparing to move out.
+
+Hara: — Oh, it's you, big guy. Fancy work there, gotta say you've been the most reliable helper I had in years. So... I take it you've not come here just to see me?""",
+	HARA_RECRUIT_OPT_PRO = "I could use a professional like you",
+	HARA_RECRUIT_OPT_FLIRTY = "I remember you made some flirty remarks while we worked together",
+	HARA_RECRUIT_REPLY_PRO = "Hara: — You are from Aliron, aren't you? I haven't been there yet for a while, even though I heard that place has been pretty accepting for any race including goblins. Alright, since you are offering, I don't mind giving it a chance.",
+	HARA_RECRUIT_FLIRTY = "Hara: — Well, that's... A good memory from you. And even though I'm not backing out from this, I'm in a bit of a hurry right now. Don't wanna push the hospitality of this place. Say, I remember you had some property in Aliron? Do you have a need for a skilled engineer and maybe a bit more?",
+	HARA_RECRUIT_OPT_DO = "I do",
+	HARA_RECRUIT_OPT_OTHER = "Maybe some other day",
+	HARA_RECRUIT_REPLY_DO = "Hara: — Excellent. I'll rely on you for a bit if you don't mind. Haven't been in Aliron yet, but I've heard it's been pretty accepting for other races including goblins. Should be a fun new experience.",
+	
+	KURO_RECRUIT_START = """You walk into the prison room with Kuro laying on the floor with her arms bound. Despite her mostly healthy appearance, she seems even more disinterested and apathetic than usual. 
+
+— ...About the time you'd start bothering me. So what do you have for me? Torture? Interrogation? Molestation?""",
+	KURO_RECRUIT_OPT_ANSWER = "I wanna get some answers",
+	KURO_RECRUIT_OPT_JOIN = "Why don't you join me?",
+	KURO_RECRUIT_OPT_LEAVE = "I'll leave for now",
+	KURO_RECRUIT_OPT_TRUST = "Can I really trust your words?",
+	KURO_RECRUIT_OPT_HAPPENED = "What has actually happened at the palace?",
+	KURO_RECRUIT_OPT_CULTJOIN = "Why did you join the cult?",
+	KURO_RECRUIT_OPT_CULTPLAN = "What's the cult's real plan?",
+	KURO_RECRUIT_OPT_PLAN = "What are you planning to do?",
+	KURO_RECRUIT_OPT_ENOUGH = "That's enough questions for now",
+	KURO_RECRUIT_REPLY_TRUST = "— I have no reason to lie, nor do I want to be tortured. My connection with the cult is obviously over at this point. Besides I guess I owe you my life somewhat.",
+	KURO_RECRUIT_REPLY_HAPPENED = """Kuro visibly sighs showing her annoyance with the question.
+
+— You've decided for both interrogation and torture me with dumb questions. We've restored the artifact, the cult took it. I got ditched. Have you been too stupid to not figure it all out by yourself? I thought better of you.""",
+	KURO_RECRUIT_REPLY_CULTJOIN = "— Are you expecting to hear some tear jerking story from me or something? I've joined them out of my free will, that's likely why I've got ditched too. I was curious about their ambitions and their vision has resonated with me to some extent. I suppose it still does but I'm here now and it's all in the past.",
+	KURO_RECRUIT_REPLY_CULTPLAN = """— World domination, I suppose. Or maybe its destruction. It's terra incognita for them. It's when you start digging down and you find something, but there's no way to tell what exactly you found until you are so deep you can't get out. 
+
+— I've come to the same discoveries before I joined them, curious on what will unfold if you pursue these goals, but even I can only guess.""",
+	KURO_RECRUIT_OPT_CRYPTIC = "Can you be less cryptic?",
+	KURO_RECRUIT_OPT_MIND = "You've changed your mind now?",
+	KURO_RECRUIT_REPLY_CRYPTIC = "— ...No. You should figure things out on your own. The knowledge you get without comprehension will do more harm than good. Don't sweat over it, this won't help you anyway.",
+	KURO_RECRUIT_REPLY_MIND = "— You are rushing things. Let's say I'm facing a crisis which forces me to change my mind. I'm no idiot to stick to my old sentiments in the current situation.",
+	KURO_RECRUIT_REPLY_PLAN = """Kuro gives you a look clearly telling she thinks you are an idiot for asking this.
+
+— What do you expect me to do? If you wonder what I'd do if I end up free, I don't. I've had enough, now it's all up to you.""",
+	KURO_RECRUIT_JOIN_ZEPH = "— This is–",
+	KURO_RECRUIT_JOIN_ZEPH2 = """Before Kuro can finish you hear a knock from the other side of the cell. You walk out to check on it and find Zephyra who seems to be eavesdropping your conversation up until this point.
+
+Zephyra: — [Master], I heard you want to recruit my sister. I could help with that if you allow.""",
+	KURO_RECRUIT_OPT_ALRIGHT = "Alright",
+	KURO_RECRUIT_OPT_NO = "No, thank you",
+	KURO_RECRUIT_REPLY_NO = """You return to the room continuing your conversation.
+
+—  You actually want me to become your ally? I don't think this can work out. """,
+	KURO_RECRUIT_JOIN_NOZEPH = "— What a silly request. You actually want me to become your ally? I don't think this can work out.",
+	KURO_RECRUIT_JOIN = """\n\nKuro stays quiet for some time looking away until she finally looks back at you.
+
+— So this is a sincere offer after all? Alright, I'll ask you some questions but if I don't like any of your answers, I will rather stay imprisoned or whatever nasty fate you've prepared for me.""",
+	KURO_RECRUIT_JOIN_ZEPH3 = """You and Zephyra both walk back into the room. Kuro's eyes slightly widen as she sees her accompanying you now.
+
+Zephyra: — Hi. That must not be a terribly comfortable place to stay at.
+
+Kuro: — I see you have got better after all.
+
+Zephyra: — Yep, thanks for worrying about me.
+
+Kuro snorts and looks away at Zephyra's remark.""",
+	KURO_RECRUIT_OPT_NOWORRY = "She didn't seem to be worried about you until this moment",
+	KURO_RECRUIT_OPT_SILENT = "*Listen silently*",
+	KURO_RECRUIT_REPLY_NOWORRY = """Kuro: — It's not a big deal if either of us dies on a larger scale of things. It's not like we truly die anyway.
+
+You look at Zephyra wondering if she understands what Kuro is talking about but if so she does not seem to show it, ignoring it and moving on.""",
+	KURO_RECRUIT_JOIN_ZEPH4 = """Zephyra: — Come join us. You have no other option left now. Besides, I'm your older sister and you have to listen to me.
+
+Kuro smirks at Zephyra's joke but there's no resistance in her body language.
+
+Kuro: — I would rather listen to [name] than a birdbrain like you. This is your best try at making me side with you?""",
+	KURO_RECRUIT_JOIN_ZEPH5 = """Zephyra: — Come on, you want to join us, we both know that. I'm sure [Master] will give you all the stuff and freedom you will ask for, as long as you will be a good girl.
+
+Kuro: — What a sickening proposal, You must know it by heart? Would you really trust someone like me to invite me like that?
+
+Zephyra: — Ah, but it's [Master]'s suggestion in the first place. We all want the same thing here.""",
+	KURO_RECRUIT_JOIN_ZEPH6 = """Kuro: — Damn... You can be really manipulative despite your cutesy appearance. You surely know what me joining you will imply, don't you? All is fair between us. 
+
+Zephyra: — ...Not sure what you are talking about, but I'm a very generous person. 
+
+Kuro: — You know what I'm talking about. Very well, [race], if you want me on your side, I will swear to not turn on you. As long as you do the same.
+
+Zephyra: — Great! [Master], the dinner is soon, isn't it? I've got some sweets from the merchant. Kuro, you should try those too...""",
+	KURO_RECRUIT_OPT_PUNISH = "How can you willingly choose to be punished?",
+	KURO_RECRUIT_OPT_FAIR = "That's fair I suppose",
+	KURO_RECRUIT_OPT_QUIZ = "Is this a quiz? I like quizzes",
+	KURO_RECRUIT_REPLY_PUNISH = "— It is what it is. I don't believe I deserve freedom in the first place, so whatever you throw at me might be just what my mistakes have earned me.",
+	KURO_RECRUIT_REPLY_QUIZ = "placeholder for wrong answer on quiz",
+	KURO_RECRUIT_Q_TRUST = "— Alright. Why do you think I should join you despite my deeds? Can you even trust me?",
+	KURO_RECRUIT_A_BEST = "I want to believe in the best in people",
+	KURO_RECRUIT_A_NOOPTION = "Since you have no other option left, I trust your sensibility",
+	KURO_RECRUIT_A_NOTRUST = "I can't trust anyone, even myself",
+	KURO_RECRUIT_REPLY_A_BEST = "— So you are this dense, huh? Fine, don't cry to me when you get betrayed then.",
+	KURO_RECRUIT_REPLY_A_NOOPTION = "— Pretty naive of you, but that's not the worst line of reasoning I've heard.",
+	KURO_RECRUIT_REPLY_A_NOTRUST = "— What nonsense. Forget about it, I'm not siding with anyone who's not responsible for their own actions.",
+	KURO_RECRUIT_Q_REASON = "— What's the reason for you to get to me to join you?",
+	KURO_RECRUIT_A_SMART = "Your knowledge and smarts should not go to waste.",
+	KURO_RECRUIT_A_CUTE = "I simply collect cute girls.",
+	KURO_RECRUIT_A_PAYBACK = "You should make a good companion while paying back to the cult.",
+	KURO_RECRUIT_REPLY_A_SMART = """— You know, except for this one time flattery won't do you any good for me. However you should overestimate these things. What good did they do if I ended up like this? But I digress. 
+
+— Now, why don't you prove to me that you are not just all sweet talk.""",
+	KURO_RECRUIT_REPLY_A_CUTE = """Kuro rolls her eyes back, her voice drips with detest.
+
+— I expected you to be more serious over this. The talk is over.""",
+	KURO_RECRUIT_REPLY_A_PAYBACK = """— You moron, I have no interest in some puny revenge, if anything I got exactly what I deserved and I thought it was pretty clear. Forget it, this is going nowhere.""",
+	KURO_RECRUIT_Q_KILL = """Suddenly the shadows emerge from under Kuro, quickly filling the room entirely. In its darkness you realize everything becomes pitch black and ethereal as if the whole room is gone. Yet the darkness does not seem threatening like it usually was.
+
+Kuro's eyes focus on you, glimmering in red, her mouth crooks in a dangerous smile. 
+
+— Tell me one reason why I shouldn't just kill you here?""",
+	KURO_RECRUIT_A_WEIGHT = "[Strength Challenge] This threat does not feel like it has any weight behind it.",
+	KURO_RECRUIT_A_STOP = "[Dexterity Challenge] I could still stop you before you do that, and even keep you alive.",
+	KURO_RECRUIT_A_PURPOSE = "[Wisdom Challenge] Because that will go against your purpose.",
+	KURO_RECRUIT_A_WANT = "[Persuasion Challenge] Because you've always wanted to be on my side more than you want to kill me.",
+	KURO_RECRUIT_A_DARE = "You won't dare...",
+	KURO_RECRUIT_REPLY_A_DARE = """Kuro looks at you disappointedly as her magic seeps back.
+
+— Huh... I expected way more from you. No deal, maybe in the next life you can grow more balls than that.""",
+	KURO_RECRUIT_RIGHT = """{color=green|Success}
+
+Kuro makes a pause taking in your answer after which she closes her eyes. The darkness surrounding you clears revealing the same prison room you've been in.
+
+— It's your win. Fine, I can join you if that's what you want.""",
+	KURO_RECRUIT_END = "You unshackle Kuro allowing her begrudgingly join your cause.",
+	
+	
+	
+	
+	
 	#   QUESTS   #
 	MAIN_QUEST_LOAN_NAME = "The Loan",
 	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find enough money to pay off the bank or you'll be thrown out of your newly acquired home. Or, perhaps find some other way to deal with it...",
@@ -15018,6 +15378,10 @@ Kuro turns away indicating her unwillingness to continue.""",
 	DKING_HARA_QUEST_REBELTAVERN = "Search for Coalition's member in dwarven capital's tavern.",
 	DKING_HARA_QUEST_NEXTDAY = "Guards instructed you to return on the next day as the King will be waiting for you.",
 	DKING_HARA_QUEST_VISIT = "Return to the King.",
+	
+	JEAN_FREE_QUEST_NAME = "Free Jean",
+	JEAN_FREE_QUEST_SUMMARY = "Buy out Jean from dwarven King's prison",
+	JEAN_FREE_QUEST_PRICE = "Dwarven King wants a blond elf slave girl instead of Jean, or there is a price of 1000 gold for here.",
 	
 	DIALOGUEANAINITIATELP = "Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.\n\n— H-hello, [Master]... How was your day?",
 	DIALOGUEANAINITIATELN = "Anastasia visits you with a grim look. Perhaps you will have to work on her motivation. She stays silent having no words for you.\n\n— ......",
@@ -16420,6 +16784,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	DWARF_PRISON = "Prison",
 	DWARF_CAPITAL_SEARCH = "Search for tracks",
 	DWARF_CAPITAL_SHIMORE = "Search for Ore",
+	DWARF_CAPITAL_JEAN = "Search for Jean",
 	
 	BEASTKIN_CAPITAL1 = "Find Chieftain",
 	BEASTKIN_CAPITAL2 = "Visit Shaman's Lodge",

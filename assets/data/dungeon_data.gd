@@ -2478,11 +2478,11 @@ var dungeons = {
 		enemyarray = [['bandits_easy', 1]],
 		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'monster',
 		event_data = {},
-#		event_room_number = [2,2],
-#		material_room_number = [2,2],
+		event_room_number = [0,0],
+		material_room_number = [0,0],
 		
 		main_route_length = [3,3],
-#		bonus_rooms = [2,2],
+		bonus_rooms = [0,0],
 		levels = [1,1], 
 		base_room_stamina_cost = [5,8],
 		
@@ -2516,11 +2516,11 @@ var dungeons = {
 		enemyarray = [['bandits_easy', 1]],
 		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'monster',
 		event_data = {},
-#		event_room_number = [2,2],
-#		material_room_number = [2,2],
+		event_room_number = [0,0],
+		material_room_number = [0,0],
 		
 		main_route_length = [3,3],
-#		bonus_rooms = [2,2],
+		bonus_rooms = [0,0],
 		levels = [1,1], 
 		base_room_stamina_cost = [5,8],
 		

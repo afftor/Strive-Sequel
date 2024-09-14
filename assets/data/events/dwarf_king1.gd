@@ -809,12 +809,15 @@ var data = {
 		],
 		options = [{
 			code = 'bolthar_return_recruit',
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue',
+			bonus_effects = [
+				{code = 'screen_black_transition', value = 0.5}#screen closes befor transition
+			]
 		}]
 	},
 	bolthar_return_recruit = {
 		reqs = [],
-		tags = ['dialogue_scene', 'blackscreen_transition_common'],
+		tags = ['dialogue_scene'],#'blackscreen_transition_common' - useless with need to return to this scene
 		text = [
 			{text = "BOLTHAR_RETURN_RECRUIT", reqs = [], previous_dialogue_option = 0},
 			{text = "BOLTHAR_RETURN_REPLY_OFFER", reqs = [], previous_dialogue_option = 1},
@@ -908,7 +911,7 @@ var data = {
 				reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 5}]}],
 				bonus_effects = [{code = 'dialogue_counter', name = 'kuro_sympathy', op = '+'}]
 			},{
-				code = 'coalbase_attack_itching',
+				code = 'coalbase_attack_itching', remove_after_first_use = true,
 				text = "COALBASE_ATTACK_OPT_HARMED", dialogue_argument = 1, type = 'next_dialogue',
 				reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'wits_factor', operant = 'lt', value = 5}]}],
 			},{
