@@ -607,11 +607,11 @@ var data = {
 			{
 				code = 'old_temple_kobold',
 				text = "DIALOGUECONTINUE", dialogue_argument = 0, type = 'next_dialogue',
-				reqs = [{type = 'decision', value = 'met_kobold', check = true}]
+				reqs = [{type = 'decision', value = 'MetKobold', check = true}]
 			},{
 				code = 'old_temple_nuisance',
 				text = "DIALOGUECONTINUE", dialogue_argument = 0, type = 'next_dialogue',
-				reqs = [{type = 'decision', value = 'met_kobold', check = false}]
+				reqs = [{type = 'decision', value = 'MetKobold', check = false}]
 			}
 		]
 	},

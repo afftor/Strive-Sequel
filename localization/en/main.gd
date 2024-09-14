@@ -16775,7 +16775,6 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	DWARF_PALACE = "Palace",
 	DWARF_TAVERN = "Tavern",
-#	DWARF_TAVERN_INIT = "Walk in",
 	DWARF_TAVERN_BARKEEP = "Talk to the Barkeep",
 	DWARF_TAVERN_PATRONS = "Interact with the patrons",
 	DWARF_TAVERN_GIRL = "Interact with the girl",

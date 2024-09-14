@@ -1939,46 +1939,6 @@ var dialogue_inits = {
 			target_option = 1,
 		},
 	],
-	
-#	dwarf_tavern_barkeep = [
-#		{
-#			code = 'default',
-#			name = tr("DWARF_TAVERN_INIT"),
-#			reqs = [{type = 'event_seen', check = false, value = 'dwarf_tavern_intro'}],
-#			target = 'dwarf_tavern_intro',
-#			target_option = 0,
-#		},{
-#			code = 'default',
-#			name = tr("DWARF_TAVERN_BARKEEP"),
-#			reqs = [
-#				{type = 'event_seen', check = true, value = 'dwarf_tavern_intro'},
-#				{type = 'event_seen', check = false, value = 'dwarf_tavern_bark_physics'},
-#			],
-#			target = 'dwarf_tavern_barkeep',
-#			target_option = 0,
-#		},
-#	],
-#	dwarf_tavern_patrons = [
-#		{
-#			code = 'default',
-#			name = tr("DWARF_TAVERN_PATRONS"),
-#			reqs = [{type = 'event_seen', check = true, value = 'dwarf_tavern_intro'}],
-#			target = 'dwarf_tavern_patron',
-#			target_option = 0,
-#		},
-#	],
-#	dwarf_tavern_girl = [
-#		{
-#			code = 'default',
-#			name = tr("DWARF_TAVERN_GIRL"),
-#			reqs = [
-#				{type = 'event_seen', check = true, value = 'dwarf_tavern_intro'},
-#				{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'tavern'}
-#			],
-#			target = 'dwarf_tavern_jean',
-#			target_option = 0,
-#		},
-#	],
 }
 
 var dict = {

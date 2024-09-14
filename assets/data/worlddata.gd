@@ -570,25 +570,6 @@ var factiondata = {
 			}
 		],
 	},
-#	dwarf_tavern = {
-#		code = 'dwarf_tavern',
-#		name = tr("DWARF_TAVERN"),
-#		description = '',
-#		actions = [],
-#		bonus_actions = [],
-#		conditions = [{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'tavern'}],
-#		events = ['dwarf_tavern_barkeep', 'dwarf_tavern_patrons', 'dwarf_tavern_girl'],
-#		quests_easy = [],
-#		quests_medium = [],
-#		quests_hard = [],
-#		slavenumber = [],
-#		questnumber = [],
-#		tags = [],
-##		icon = load("res://assets/Textures_v2/CITY/Icons/icon_workers.png"),
-#		background = "servants_guild",
-##		reputation_shop = {},
-#		hireable_characters = [],
-#	},
 }
 
 
@@ -1569,13 +1550,6 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'hollow_pass_start', args = []}]
 		}
 	],
-#	quest_old_gods_temple = [
-#		{
-#			text = tr("QUEST_OLD_GODS_TEMPLE_LOCATION"), 
-#			reqs = [],
-#			args = [{code = 'start_event', data = '', args = []}]
-#		}
-#	],
 }
 
 var fixed_location_events = {
