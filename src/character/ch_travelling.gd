@@ -76,6 +76,7 @@ func tick():
 			travel_time = 0
 			area = travel_target.area
 			location = travel_target.location
+			travel_target = {area = '', location = ''}
 			globals.emit_signal("slave_arrived", parent.get_ref())
 			input_handler.PlaySound("ding")
 			if location == ResourceScripts.game_world.mansion_location:
