@@ -2118,6 +2118,30 @@ func common_effects(effects):
 						characters_pool.get_char_by_id(ch_id).teleport(location)
 				gui_controller.nav_panel.build_accessible_locations()
 				#(i.to_loc.location)
+			'teleport_active_location_all':
+				var location
+				for a in ResourceScripts.game_world.areas[i.to_loc.area].locations.values():
+					if a.code == i.to_loc.location.to_upper() || a.code == i.to_loc.location: # SETTLEMENT_PLAINS1
+						location = a
+				# trying to find capital
+				if location == null:
+					var area = null
+					var data = i.to_loc
+					if data.has('area'):
+						if ResourceScripts.game_world.areas.has(data.area): area = ResourceScripts.game_world.areas[data.area]
+						else:
+							print("error - no area %s" % data.area)
+							continue
+						if area.has('capital'):
+							location = ResourceScripts.game_world.get_area_capital(area)
+							area = area.code
+					location = {location = location, area = area}
+				
+				for ch_id in ResourceScripts.game_party.character_order:
+					var person = characters_pool.get_char_by_id(ch_id)
+					if person.check_location(input_handler.active_location.id, true):
+						person.teleport(location)
+				gui_controller.nav_panel.build_accessible_locations()
 			'teleport_location':
 				var locdata = ResourceScripts.game_world.find_location_by_data(i.from_loc)
 				if locdata.location == null:
