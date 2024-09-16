@@ -564,7 +564,7 @@ var data = {
 				options = [
 					{
 						code = 'dwarf_aftermatch_reply_k_jean', dialogue_argument = 1,
-						text = "DWARF_AFTERMATCH_OPT_ENSLAVE", type = 'next_dialogue',
+						text = "DWARF_AFTERMATCH_OPT_ENSLAVE", reqs = [], type = 'next_dialogue',
 					},{
 						code = 'dwarf_aftermatch_reply_free', dialogue_argument = 1,
 						text = "DWARF_AFTERMATCH_OPT_FREE", reqs = [], type = 'next_dialogue'
