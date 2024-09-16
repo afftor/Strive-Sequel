@@ -1416,7 +1416,7 @@ func fill_masternoun():
 func process_chardata(chardata, unique = false):
 	if unique: statlist.unique = chardata.code
 	for i in chardata:
-		if !(i in ['code','class_category', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'hair_color', 'hair_style', 'hair_length', 'training_disposition']):
+		if !(i in ['code','class_category', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'hair_color', 'hair_style', 'hair_length', 'training_disposition', 'custom_traits_availability']):
 			if typeof(chardata[i]) == TYPE_ARRAY or typeof(chardata[i]) == TYPE_DICTIONARY:
 				statlist[i] = chardata[i].duplicate(true)
 			else:
@@ -1425,6 +1425,8 @@ func process_chardata(chardata, unique = false):
 			set_stat(i, chardata[i])
 		elif i == 'training_disposition':
 			parent.get_ref().process_disposition_data(chardata.training_disposition, true)
+		elif i == 'custom_traits_availability':
+			parent.get_ref().process_traits_availability_data(chardata.custom_traits_availability)
 	if chardata.has('slave_class'): set_slave_category(chardata.slave_class)
 	if chardata.has("sex_traits"):
 		for i in chardata.sex_traits:

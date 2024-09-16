@@ -4014,6 +4014,7 @@ var training_actions = {
 		reqs = [],
 		reqs_trainer = [],
 		cost = {gold = 10},
+		disposition_affects = ['humiliation']
 	},
 	dayoff = {
 		code = 'dayoff',
@@ -4029,6 +4030,7 @@ var training_actions = {
 		reqs = [],
 		reqs_trainer = [],
 		cost = {},
+		disposition_affects = ['social']
 	},
 	slap = {
 		code = 'slap',
@@ -4042,6 +4044,7 @@ var training_actions = {
 		reqs = [],
 		reqs_trainer = [],
 		cost = {},
+		disposition_affects = ['positive']
 	},
 	spank = {
 		code = 'spank',
@@ -4068,6 +4071,7 @@ var training_actions = {
 		reqs = [],
 		reqs_trainer = [],
 		cost = {},
+		disposition_affects = ['magic']
 	},
 	scold = {
 		code = 'scold',
@@ -4094,6 +4098,7 @@ var training_actions = {
 		reqs = [],
 		reqs_trainer = [],
 		cost = {},
+		disposition_affects = ['positive']
 	},
 	kneel = {
 		code = 'kneel',
@@ -4110,6 +4115,7 @@ var training_actions = {
 		reqs = [],
 		reqs_trainer = [],
 		cost = {},
+		disposition_affects = ['social']
 	},
 	shame = {
 		code = 'shame',
@@ -4152,6 +4158,7 @@ var training_actions = {
 		reqs = [],
 		reqs_trainer = [],
 		cost = {},
+		disposition_affects = ['sexual']
 	},
 	grope = {
 		code = 'grope',
@@ -4165,6 +4172,7 @@ var training_actions = {
 		reqs = [],
 		reqs_trainer = [],
 		cost = {},
+		disposition_affects = ['physical']
 	},
 	strip = {
 		code = 'strip',
@@ -4178,6 +4186,7 @@ var training_actions = {
 		reqs = [],
 		reqs_trainer = [],
 		cost = {},
+		disposition_affects = ['social']
 	},
 	rape = {
 		code = 'rape',
@@ -4210,6 +4219,7 @@ var training_actions = {
 		reqs = [],
 		reqs_trainer = [],
 		cost = {},
+		disposition_affects = ['positive', 'humiliation']
 	},
 	mindread = {
 		code = 'mindread',
@@ -4236,6 +4246,7 @@ var training_actions = {
 		reqs = [],
 		reqs_trainer = [],
 		cost = {mana = 5},
+		disposition_affects = [['positive', 'physical', 'humiliation', 'social', 'sexual']]
 	},
 	stronginfluence = {
 		code = 'stronginfluence',

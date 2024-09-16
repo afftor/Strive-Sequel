@@ -192,8 +192,12 @@ func build_posttrain():
 				panel.get_node('icon').texture = load(trdata.icon)
 			else:
 				panel.get_node('icon').texture = trdata.icon
-			globals.connecttexttooltip(panel, tr(trdata.name) + "\n" + tr(trdata.descript))
-			panel.connect('pressed', self, 'select_final_trait', [tr])
+			if person.training.check_stored_reqs(tr):
+				panel.connect('pressed', self, 'select_final_trait', [tr])
+				globals.connecttexttooltip(panel, tr(trdata.name) + "\n" + tr(trdata.descript))
+			else:
+				panel.disabled = true
+				globals.connecttexttooltip(panel, tr(trdata.name) + "\n" + tr(trdata.descript) + person.training.build_stored_req_desc(tr))
 	
 	if spirit < variables.spirit_limits[0]:
 		$finished/status.text = tr('TRAININGSTATUS1')
@@ -206,6 +210,10 @@ func build_posttrain():
 
 
 func reset_training():
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'reset_training_confirm', tr("RESETTRAINING")])
+
+func reset_training_confirm():
+	ResourceScripts.game_res.remove_item('oblivion_potion', 1)
 	person.reset_training()
 	match_state()
 
@@ -228,8 +236,6 @@ func build_training_servant():
 	gather_data()
 	$training_servant.visible = true
 	$training_servant/cost.text = tr('TRAININGCOSTGOLD') % person.get_training_cost_gold()
-	if person.get_stat('slave_class') == 'servant_notax':
-		$training_servant/cost.visible = false
 	input_handler.ClearContainer($training_servant/HBoxContainer2, ['Button'])
 	for tr in tr_traits_s:
 		var panel = input_handler.DuplicateContainerTemplate($training_servant/HBoxContainer2, 'Button')
@@ -243,7 +249,7 @@ func build_training_servant():
 			panel.pressed = true
 		else:
 			panel.pressed = false
-			if ResourceScripts.game_res.money >= person.get_training_cost_gold() and person.checkreqs(trdata.reqs) and person.get_stat('slave_class') != 'servant_notax': 
+			if ResourceScripts.game_res.money >= person.get_training_cost_gold() and person.checkreqs(trdata.reqs) and person.training.check_stored_reqs(tr): 
 				panel.connect('toggled', self, 'press_trait_servant', [tr])
 			else:
 				panel.disabled = true
@@ -317,6 +323,7 @@ func build_training_list():
 
 func build_training_traits():
 	$training/complete_button.visible = person.has_status('callmaster')
+	$training/complete_button.disabled = (ResourceScripts.game_res.if_has_items('oblivion_potion', 'lt', 1))
 	$training/cost.text = tr('TRAININGCOST') % person.get_training_cost()
 	input_handler.ClearContainer($training/HBoxContainer2, ['Button'])
 	for tr in tr_traits:
@@ -326,18 +333,27 @@ func build_training_traits():
 			panel.get_node('icon').texture = load(trdata.icon)
 		else:
 			panel.get_node('icon').texture = trdata.icon
-		globals.connecttexttooltip(panel, person.translate(tr(trdata.descript)))
+		globals.connecttexttooltip(panel, person.translate(tr(trdata.descript)) +  person.training.build_stored_req_desc(tr))
 		panel.get_node('Label').text = str(person.get_training_cost())
 		if person.check_trait(tr):
 			panel.pressed = true
 		else:
 			panel.pressed = false
-			if person.get_stat('loyalty') >= person.get_training_cost() and person.checkreqs(trdata.reqs): 
+			if person.get_stat('loyalty') >= person.get_training_cost() and person.checkreqs(trdata.reqs) and person.training.check_stored_reqs(tr): 
 				panel.connect('toggled', self, 'press_trait', [tr])
 			else:
 				panel.disabled = true
 				panel.material = load("res://assets/sfx/bw_shader.tres")
 				panel.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
+	input_handler.ClearContainer($training/HBoxContainer3, ['Button'])
+	for tr in tr_rewards:
+		var trdata = Traitdata.traits[tr]
+		var panel = input_handler.DuplicateContainerTemplate($training/HBoxContainer3, 'Button')
+		if trdata.icon is String:
+			panel.get_node('icon').texture = load(trdata.icon)
+		else:
+			panel.get_node('icon').texture = trdata.icon
+			globals.connecttexttooltip(panel, tr(trdata.name) + "\n" + tr(trdata.descript) + person.training.build_stored_req_desc(tr))
 
 
 func activate_training(tr_code):
@@ -375,6 +391,10 @@ func press_trait_servant(value, tr_code):
 
 
 func finish_training():
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'finish_training_confirm', tr("FINISHTRAINING")])
+
+
+func finish_training_confirm():
 	person.finish_training()
 	match_state()
 

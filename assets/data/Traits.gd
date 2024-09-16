@@ -603,7 +603,7 @@ var traits = {
 		bonusstats = {exp_gain_mod = 0.25},
 		weight = 100,
 		conflicts = ['dim'],
-		tags = ['positive', 'can_start'],
+		tags = ['positive', 'can_start', 'disposition_change'],
 		disposition_change = {
 			positive = [['resist', 75],['neutral', 25]]
 		}
@@ -622,7 +622,7 @@ var traits = {
 		disposition_change = {
 			positive = [['weak', 50],['kink', 50]]
 		},
-		tags = ['positive', 'can_start']
+		tags = ['positive', 'can_start', 'disposition_change']
 	},
 	nimble = {
 		code = 'nimble',
@@ -637,7 +637,7 @@ var traits = {
 		disposition_change = {
 			sexual = [['weeak', 75],['kink', 25]]
 		},
-		tags = ['positive', 'can_start']
+		tags = ['positive', 'can_start', 'disposition_change']
 	},
 		quick = {
 		code = 'quick',
@@ -652,7 +652,7 @@ var traits = {
 		disposition_change = {
 			physical = [['weak', 50],['kink', 50]]
 		},
-		tags = ['positive', 'can_start']
+		tags = ['positive', 'can_start', 'disposition_change']
 	},
 	handy = {
 		code = 'handy',
@@ -667,7 +667,7 @@ var traits = {
 		disposition_change = {
 			humiliation = [['weak', 50],['kink', 50]]
 		},
-		tags = ['positive', 'can_start']
+		tags = ['positive', 'can_start', 'disposition_change']
 	},
 	deadly = {
 		code = 'deadly',
@@ -681,7 +681,7 @@ var traits = {
 		disposition_change = {
 			physical = [['weak', 50],['kink', 50]]
 		},
-		tags = ['positive', 'can_start']
+		tags = ['positive', 'can_start', 'disposition_change']
 	},
 	lively = {
 		code = 'lively',
@@ -708,7 +708,7 @@ var traits = {
 		disposition_change = {
 			magic = [['weak', 50],['kink', 50]]
 		},
-		tags = ['positive', 'can_start']
+		tags = ['positive', 'can_start', 'disposition_change']
 	},
 	bawdy = {
 		code = 'bawdy',
@@ -718,7 +718,7 @@ var traits = {
 		icon = "res://assets/images/iconstraits/bed.png",
 		effects = [],
 		weight = 100,
-		tags = ['positive', 'can_start'],
+		tags = ['positive', 'can_start', 'disposition_change'],
 		conflicts = ['chaste', 'frigid'],
 		disposition_change = {
 			sexual = [['weak', 25],['kink', 75]]
@@ -738,7 +738,7 @@ var traits = {
 		disposition_change = {
 			physical = [['resist', 50],['neutral', 50]]
 		},
-		tags = ['positive', 'can_start']
+		tags = ['positive', 'can_start', 'disposition_change']
 	},
 	talented = {
 		code = 'talented',
@@ -753,7 +753,7 @@ var traits = {
 		disposition_change = {
 			humiliation = [['weak', 75],['neutral', 25]]
 		},
-		tags = ['positive', 'can_start']
+		tags = ['positive', 'can_start', 'disposition_change']
 	},
 	forager = {
 		code = 'forager',
@@ -767,7 +767,7 @@ var traits = {
 		disposition_change = {
 			positive = [['weak', 75],['neutral', 25]]
 		},
-		tags = ['positive', 'can_start']
+		tags = ['positive', 'can_start', 'disposition_change']
 	},
 	gifted = {
 		code = 'gifted',
@@ -782,7 +782,7 @@ var traits = {
 		disposition_change = {
 			magic = [['kink', 75],['weak', 25]]
 		},
-		tags = ['positive', 'can_start']
+		tags = ['positive', 'can_start', 'disposition_change']
 	},
 	belligerent = {
 		code = 'belligerent',
@@ -796,7 +796,7 @@ var traits = {
 		disposition_change = {
 			physical = [['resist', 50],['neutral', 50]]
 		},
-		tags = ['positive', 'can_start']
+		tags = ['positive', 'can_start', 'disposition_change']
 	},
 	hiddenpowers = {
 		code = 'hiddenpowers',
@@ -811,7 +811,7 @@ var traits = {
 		disposition_change = {
 			magic = [['resist', 75],['neutral', 25]]
 		},
-		tags = ['positive', 'can_start']
+		tags = ['positive', 'can_start', 'disposition_change']
 	},
 	healthy = {
 		code = 'healthy',
@@ -839,7 +839,7 @@ var traits = {
 		disposition_change = {
 			magic = [['weak', 75],['neutral', 25]]
 		},
-		tags = ['negative']
+		tags = ['negative', 'disposition_change']
 	},
 	rebel = {
 		code = 'rebel',
@@ -854,7 +854,7 @@ var traits = {
 		disposition_change = {
 			sexual = [['weak', 50],['kink', 50]]
 		},
-		tags = ['negative']
+		tags = ['negative', 'disposition_change']
 	},
 	slow = {
 		code = 'slow',
@@ -869,7 +869,7 @@ var traits = {
 		disposition_change = {
 			social = [['kink', 75],['weak', 25]]
 		},
-		tags = ['negative']
+		tags = ['negative', 'disposition_change']
 	},
 	clumsy = {
 		code = 'clumsy',
@@ -884,7 +884,7 @@ var traits = {
 		disposition_change = {
 			positive = [['weak', 50],['kink', 50]]
 		},
-		tags = ['negative']
+		tags = ['negative', 'disposition_change']
 	},
 	inept = {
 		code = 'inept',
@@ -899,7 +899,7 @@ var traits = {
 		disposition_change = {
 			magic = [['resist', 75],['neutral', 25]]
 		},
-		tags = ['negative']
+		tags = ['negative', 'disposition_change']
 	},
 	sicky = {
 		code = 'sicky',
@@ -914,7 +914,7 @@ var traits = {
 		disposition_change = {
 			physical = [['weak', 50],['kink', 50]]
 		},
-		tags = ['negative']
+		tags = ['negative', 'disposition_change']
 	},
 	frail = {
 		code = 'frail',
@@ -929,7 +929,7 @@ var traits = {
 		disposition_change = {
 			physical = [['kink', 75],['weak', 25]]
 		},
-		tags = ['negative']
+		tags = ['negative', 'disposition_change']
 	},
 	magicmutt = {
 		code = 'magicmutt',
@@ -944,7 +944,7 @@ var traits = {
 		disposition_change = {
 			magic = [['resist', 50],['neutral', 50]]
 		},
-		tags = ['negative']
+		tags = ['negative', 'disposition_change']
 	},
 	blundering = {
 		code = 'blundering',
@@ -960,7 +960,7 @@ var traits = {
 		disposition_change = {
 			humiliation = [['weak', 50],['kink', 50]]
 		},
-		tags = ['negative'],# 'no_collect']
+		tags = ['negative', 'disposition_change'],# 'no_collect']
 	},
 	crude = {
 		code = 'crude',
@@ -976,7 +976,7 @@ var traits = {
 		disposition_change = {
 			humiliation = [['weak', 50],['kink', 50]]
 		},
-		tags = ['negative'],# 'no_craft']
+		tags = ['negative', 'disposition_change'],# 'no_craft']
 	},
 	chaste = {
 		code = 'chaste',
@@ -992,7 +992,7 @@ var traits = {
 		disposition_change = {
 			sexual = [['resist', 50],['kink', 50]]
 		},
-		tags = ['negative'],# 'no_whoring']
+		tags = ['negative', 'disposition_change'],# 'no_whoring']
 	},
 	pacifist = {
 		code = 'pacifist',
@@ -1006,7 +1006,7 @@ var traits = {
 		disposition_change = {
 			physical = [['weak', 75],['neutral', 25]]
 		},
-		tags = ['negative'],# 'no_combat']
+		tags = ['negative', 'disposition_change'],# 'no_combat']
 	},
 	menial = {
 		code = 'menial',
@@ -1021,7 +1021,7 @@ var traits = {
 		disposition_change = {
 			humiliation = [['weak', 50],['kink', 50]]
 		},
-		tags = ['negative', 'no_task_crit']
+		tags = ['negative', 'no_task_crit', 'disposition_change']
 	},
 	whimp = {
 		code = 'whimp',
@@ -1036,7 +1036,7 @@ var traits = {
 		disposition_change = {
 			social = [['weak', 50],['kink', 50]]
 		},
-		tags = ['negative'],# 'no_combat_skills']
+		tags = ['negative', 'disposition_change'],# 'no_combat_skills']
 	},
 	m_inept = {
 		code = 'm_inept',
@@ -1052,9 +1052,9 @@ var traits = {
 			magic = [['resist', 75],['neutral', 25]]
 		},
 		conflicts = ['mvortex', 'hiddenpowers'],
-		tags = ['negative'],# 'no_combat_spells']
+		tags = ['negative', 'disposition_change'],# 'no_combat_spells']
 	},
-		selfish = {
+	selfish = {
 		code = 'selfish',
 		name = '',
 		descript = '',
@@ -1067,7 +1067,7 @@ var traits = {
 		disposition_change = {
 			positive = [['weak', 50],['kink', 50]]
 		},
-		tags = ['negative', 'no_combat_support']
+		tags = ['negative', 'no_combat_support', 'disposition_change']
 	},
 	coward = {
 		code = 'coward',
@@ -1082,7 +1082,7 @@ var traits = {
 			positive = [['kink', 75],['weak', 25]],
 			humiliation = [['weak', 75],['kink', 25]],
 		},
-		tags = ['negative'],# 'no_social_skills']
+		tags = ['negative', 'disposition_change'],# 'no_social_skills']
 	},
 	frigid = {
 		code = 'frigid',
@@ -1098,7 +1098,7 @@ var traits = {
 		disposition_change = {
 			sexual = [['resist', 75],['neutral', 25]]
 		},
-		tags = ['negative', 'no_sex_traits']
+		tags = ['negative', 'no_sex_traits', 'disposition_change']
 	},
 	#master
 	master_mentor = {
@@ -1237,7 +1237,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_crown.png",
 		effects = [],
-		reqs = [],
+		reqs = [{code = 'trait', trait = 'training_broke_in', check = true}],
 		bonusstats = {}, 
 		tags = ['training', 'tr_obedience', 'simple_icon']
 	},
@@ -1248,7 +1248,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_crown2.png",
 		effects = [],
-		reqs = [{code = 'trait', trait = 'training_obedience', check = true}],
+		reqs = [{code = 'trait', trait = 'training_broke_in', check = true}],
 		bonusstats = {}, 
 		tags = ['training', 'callmaster', 'simple_icon']
 	},
@@ -1259,7 +1259,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_date.png",
 		effects = [],
-		reqs = [{code = 'trait', trait = 'training_obedience', check = true}],
+		reqs = [{code = 'trait', trait = 'training_broke_in', check = true}],
 		bonusstats = {}, 
 		tags = ['training', 'relation', 'simple_icon']
 	},
@@ -1270,7 +1270,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_harlotry.png",
 		effects = [],
-		reqs = [{code = 'trait', trait = 'training_obedience', check = true}],
+		reqs = [{code = 'trait', trait = 'training_broke_in', check = true}],
 		bonusstats = {}, 
 		tags = ['training', 'sexservice', 'simple_icon']
 	},
@@ -1348,6 +1348,7 @@ var traits = {
 		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
 		effects = [],
 		bonusstats = {productivity = 0.4}, 
+		custom_reqs = {humiliation = 3, random = 2},
 		tags = ['training_final', 'training_success', 'simple_icon']
 	},
 	training_service = {
@@ -1358,6 +1359,7 @@ var traits = {
 		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
 		effects = [],
 		bonusstats = {pricemod = 0.5}, 
+		custom_reqs = {humiliation = 1, sexual = 1, social = 1, random = 2},
 		tags = ['training_final', 'training_success', 'simple_icon']
 	},
 	training_warrior = {
@@ -1368,6 +1370,7 @@ var traits = {
 		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
 		effects = [],
 		bonusstats = {damage_mod_all = 0.15, hpmax = 20}, 
+		custom_reqs = {positive = 1, physical = 2, random = 2},
 		tags = ['training_final', 'training_success', 'simple_icon']
 	},
 	training_damaged = {
