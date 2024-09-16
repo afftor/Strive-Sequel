@@ -1622,18 +1622,18 @@ func setup_baby(mother, father):
 		temp_race = race1
 	else:
 		temp_race = race2
+	var furryfix = false
 	if race2.find('Beastkin') >= 0 && race1.find("Beastkin") < 0:
 		temp_race = race2.replace("Beastkin", "Halfkin")
+		furryfix = true
 	elif race1.find('Beastkin') >= 0 && race2.find("Beastkin") < 0:
 		temp_race = race1.replace("Beastkin", "Halfkin")
+		furryfix = true
 	parent.get_ref().create(temp_race, 'random', 'teen')
-	for i in variables.inheritedassets:
-		if randf() >= 0.5:
-			statlist[i] = father.statlist.statlist[i]
-		else:
-			statlist[i] = mother.statlist.statlist[i]
-
+	
 	for i in variables.inheritedstats:
+		if furryfix and i == 'skin_coverage':
+			continue
 		if randf() >= 0.5 || mother.has_profession("breeder"):
 			statlist[i] = mother.statlist.statlist[i]
 		else:
