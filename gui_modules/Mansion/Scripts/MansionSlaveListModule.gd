@@ -90,8 +90,8 @@ func rebuild():
 		newbutton.connect('mouse_exited_custom', get_parent(), 'remove_hovered_person')
 		
 		newbutton.get_node("job").connect("pressed", self, 'OpenJobModule', [person])
-		newbutton.get_node("job").set_disabled(false)
-		newbutton.get_node("job").disabled = person.travel.location == "travel" || person.is_on_quest()
+#		newbutton.get_node("job").set_disabled(false)
+#		newbutton.get_node("job").disabled = person.travel.location == "travel" || person.is_on_quest()
 		
 		newbutton.get_node("weapon").connect("pressed", self, 'OpenInventory', [person])
 		newbutton.get_node("weapon").set_disabled(false)
@@ -378,7 +378,7 @@ func build_for_skills(person, newbutton):
 	else:
 		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_avail.png")
 		newbutton.texture_hover = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_hover2.png")
-	newbutton.get_node("job").disabled = person.is_on_quest()
+	newbutton.get_node("job").disabled = true
 
 
 var training_types = {
