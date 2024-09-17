@@ -1325,6 +1325,15 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SPIRITSMALL = 'Spirit decreases a bit',
 	SPIRITOTHER = 'Huge spirit loss',
 	
+	NOTAVAILABLE = "[color=red]Not available[/color]\n",
+	REQUIRES = "Requires trainings usage:\n",
+	
+	DISPOSITIONCHANGE = 'Disposition in %s is changed\n',
+	DISPOSITIONSETRESIST = 'Disposition in %s is now resist\n',
+	DISPOSITIONSETNEUTRAL = 'Disposition in %s is now neutral\n',
+	DISPOSITIONSETWEAK = 'Disposition in %s is now weak\n',
+	DISPOSITIONSETKINK = 'Disposition in %s is now kink\n',
+	
 	SPIRITTOOLTIP = "Spirit represents character's leftover will. If it drops too low they will become broken on training completion and suffer considerable penalties. ",
 	LOYALTYTOOLTIP = "Loylaty is used to unlock character's actions and is obtained from doing training once a day.",
 	CLICKTOCHANGE = "Click to change",
