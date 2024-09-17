@@ -343,14 +343,15 @@ func apply_training(code):
 	#apply
 	loyalty += result_data.loyalty
 	spirit += result_data.spirit
-	effect_text += tr(result)  + "\n" #fix
+	
+	effect_text += "\n({color=aqua|" + parent.get_ref().get_short_name() + "}: " + parent.get_ref().translate(input_handler.get_random_chat_line(parent.get_ref(), 'train_'+result)) + ")\n"
 	if result_data.loyalty != 0:
 		effect_text += statdata.statdata.loyalty.name + " + " + str(result_data.loyalty) + "\n"
 #	if result_data.spirit != 0:
 #		effect_text += statdata.statdata.spirit.name + " - " + str(- result_data.spirit)  + "\n"
 	for rec in variables.spirit_changes:
 		if result_data.spirit >= rec.min and result_data.spirit <= rec.max:
-			effect_text += tr(rec.desc) + "\n"
+			effect_text += "{color=yellow|" + tr(rec.desc) + "}\n"
 			break
 	if spirit < 0:
 		spirit = 0
@@ -369,6 +370,7 @@ func apply_training(code):
 	for tag in variables.dynamic_text_vars:
 		text = text.replace('[%s1]' % tag, ch_trainer.translate('[%s]' % tag))
 		text = text.replace('[%s2]' % tag, parent.get_ref().translate('[%s]' % tag))
+	
 	if data.result_text.has(result):
 		text += "\n"
 		text += tr(data.result_text[result])

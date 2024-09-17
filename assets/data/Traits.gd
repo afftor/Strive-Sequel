@@ -1356,7 +1356,7 @@ var traits = {
 		visible = true,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
+		icon = "res://assets/images/iconstraits/l_maidu.png",
 		effects = [],
 		bonusstats = {pricemod = 0.5}, 
 		custom_reqs = {humiliation = 1, sexual = 1, social = 1, random = 2},
@@ -1367,7 +1367,7 @@ var traits = {
 		visible = true,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
+		icon = "res://assets/images/iconstraits/l_warrior.png",
 		effects = [],
 		bonusstats = {damage_mod_all = 0.15, hpmax = 20}, 
 		custom_reqs = {positive = 1, physical = 2, random = 2},

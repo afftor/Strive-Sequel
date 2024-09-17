@@ -338,10 +338,10 @@ valign = 1
 clip_text = true
 
 [node name="complete_button" type="TextureButton" parent="training"]
-margin_left = 606.0
-margin_top = 135.0
-margin_right = 856.0
-margin_bottom = 193.0
+margin_left = 270.0
+margin_top = 735.0
+margin_right = 520.0
+margin_bottom = 793.0
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 21 )

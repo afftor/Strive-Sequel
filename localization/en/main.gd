@@ -1321,9 +1321,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAINNOWORKTRAIT = "[name] lacks Trait: Worker",
 	NOTRAINSLOTS = "No free training slots",
 	ALREADYTRAINER = "Current trainer",
-	SPIRITNO = 'No spirit change',
-	SPIRITSMALL = 'Spirit decreases a bit',
-	SPIRITOTHER = 'Huge spirit loss',
+	SPIRITNO = 'Spirit has been unaffected',
+	SPIRITSMALL = 'Moderate Spirit Loss',
+	SPIRITOTHER = 'Big Spirit Loss',
 	
 	NOTAVAILABLE = "[color=red]Not available[/color]\n",
 	REQUIRES = "Requires trainings usage:\n",
@@ -1415,6 +1415,10 @@ However, while it might seem that Landowners have nothing but contempt for those
 	BEDROOMTOOLTIP = "Available number of characters for sexual interactions. Increases with Bedroom Upgrade",
 	DATETOOLTIP = "Dates left this week. Increases with Master's Charm Factor and resets at the start of a week.",
 	SEXTOOLTIP = "Sexual Interactions left this week. Increases with Master's Sexual Factor and resets at the start of a week.",
+	
+	DATETOOLTIPSHORT = "Character can be dated today",
+	SEXTOOLTIPSHORT = "Character can be assigned to sexual interaction today",
+	TRAINTOOLTIP = "Character can be trained today",
 	
 	TOOLTIPLOYALTYOBEDIENCE = "Loyalty points are gained every turn based on Tame Factor. You can unlock new actions and passives with it.\n\nObedience Drain is based on Timid Factor and character training. If Obedience falls to 0 the character will attempt to escape. Unlock new options and use proper gear to reduce Obedience Drain and make it more manageble. ",
 	TOOLTIPVALUE = "Character's value means their market price. It's based on their Growth Factor, Race, Training and certain features. Higher value characters will earn more money when providing services and prostitution.",
@@ -1685,6 +1689,16 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITTRAINER = "Trainer",
 	TRAITTRAINERDESCRIPT = "Can oversee slaves",
 	STATSPIRIT = "Spirit",
+	TRAITTRAINING_WORKFORCE = "Training: Workforce",
+	TRAITTRAINING_WORKFORCEDESCRIPT = "Set for labor slavery. \nProductivity increased by 40%.",
+	TRAITTRAINING_SERVICE = "Training: Service",
+	TRAITTRAINING_SERVICEDESCRIPT = "Set for sexual slavery. \nValue increased by 50%.",
+	TRAITTRAINING_WARRIOR = "Training: Combat",
+	TRAITTRAINING_WARRIORDESCRIPT = "Asset as a combat slave. \nDamage +15%, Health +20.",
+	TRAITTRAINING_DAMAGED = "Damaged Spirit",
+	TRAITTRAINING_DAMAGEDDESCRIPT = "Reduces value by 15%, Experience gain by 10%.",
+	TRAITTRAINING_BROKEN = "Broken",
+	TRAITTRAINING_BROKENDESCRIPT = "Reduces Value by 25%, Experience gain by 20%. Can't pass Persuasion and Wisdom challenges.",
 	
 	STATOBEDIENCE = "Obedience",
 	STATOBEDIENCEDESCRIPT = "Obedience is a character's willingness to obey your orders. Obedience is gained by using social skills. When depleted character can escape and will be lost in case that happens. ",
@@ -3397,9 +3411,9 @@ However, while it might seem that Landowners have nothing but contempt for those
 	DIALOGUEENEMYDEXSNEAK = "The group of enemies head are unaware of your pressence. Sneaking past them might be possible ",
 	DIALOGUEENEMYDEXSNEAKSELECT = "[Dexterity Challenge] Select Character",
 	DIALOGUEENEMYDEXSNEAKPASS = "[name] manages to get on the other side of the pass and distracts the group of enemies who leave in other direction.",
-	DIALOGUEEVENTENEMYDISTRACT = "The group of enemies ahead seem rather unfocused and unwilling to fight. Perhaps surrendering one of your capturees to them will persuade them to let you pass.",
-	DIALOGUEEVENTENEMYDISTRACTSELECT = "Select Capturee",
-	DIALOGUEEVENTENEMYDISTRACTPASS = "After taking away one of your capturees the group leaves their post to you.",
+	DIALOGUEEVENTENEMYDISTRACT = "The group of enemies ahead seem rather unfocused and unwilling to fight. Perhaps surrendering one of your captives to them will persuade them to let you pass.",
+	DIALOGUEEVENTENEMYDISTRACTSELECT = "Select Captive",
+	DIALOGUEEVENTENEMYDISTRACTPASS = "After taking away one of your captives the group leaves their post to you.",
 	
 		
 	DIALOGUEGROVEWOOD = "You find a stash of prepared wood likely abandoned by some lumberjacks. ",

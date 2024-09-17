@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=2]
@@ -42,6 +42,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_interactions.png" type="Texture" id=40]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_twohearts.png" type="Texture" id=41]
 [ext_resource path="res://assets/images/iconsgear/battleaxe.png" type="Texture" id=42]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=43]
 
 [sub_resource type="DynamicFont" id=6]
 size = 30
@@ -173,7 +174,6 @@ margin_top = 4.0
 margin_right = 825.0
 margin_bottom = 46.0
 rect_min_size = Vector2( 150, 0 )
-hint_tooltip = "STATOBEDIENCEDESCRIPT"
 mouse_filter = 0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -197,29 +197,42 @@ margin_left = 961.0
 margin_right = 1011.0
 margin_bottom = 51.0
 rect_min_size = Vector2( 50, 0 )
-mouse_filter = 2
+hint_tooltip = "DATETOOLTIPSHORT"
+theme = ExtResource( 43 )
 texture = ExtResource( 41 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="icon3" type="TextureRect" parent="Categories/Button/HBoxContainer"]
 margin_left = 1015.0
 margin_right = 1065.0
 margin_bottom = 51.0
 rect_min_size = Vector2( 50, 0 )
-mouse_filter = 2
+hint_tooltip = "SEXTOOLTIPSHORT"
+theme = ExtResource( 43 )
 texture = ExtResource( 40 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="icon4" type="TextureRect" parent="Categories/Button/HBoxContainer"]
 margin_left = 1069.0
 margin_right = 1119.0
 margin_bottom = 51.0
 rect_min_size = Vector2( 50, 0 )
-mouse_filter = 2
+hint_tooltip = "TRAINTOOLTIP"
+theme = ExtResource( 43 )
+texture = ExtResource( 23 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="location" type="Label" parent="Categories/Button/HBoxContainer"]
 margin_left = 1123.0
@@ -523,7 +536,6 @@ margin_bottom = 28.0
 text = "Sex"
 
 [node name="food_consumption" type="Label" parent="."]
-visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -533,6 +545,7 @@ margin_top = -44.0001
 margin_right = -54.0002
 margin_bottom = -14.0001
 hint_tooltip = "TOOLTIPFOODCONSUMPTION"
+mouse_filter = 0
 theme = ExtResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 28 )
@@ -546,10 +559,8 @@ margin_left = -45.9306
 margin_top = -5.77057
 margin_right = -3.9306
 margin_bottom = 34.2294
+hint_tooltip = "TOOLTIPFOODCONSUMPTION"
 texture = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="population" type="Label" parent="."]
 visible = false
@@ -562,6 +573,7 @@ margin_top = -46.0
 margin_right = -176.0
 margin_bottom = -16.0
 hint_tooltip = "TOOLTIPPOPULATION"
+mouse_filter = 0
 theme = ExtResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 28 )
@@ -574,6 +586,7 @@ margin_left = -26.1069
 margin_top = -5.77057
 margin_right = 5.89313
 margin_bottom = 26.2294
+hint_tooltip = "TOOLTIPPOPULATION"
 texture = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -582,18 +595,15 @@ __meta__ = {
 [node name="TravelsContainerPanel" type="Panel" parent="."]
 margin_left = 25.0
 margin_top = 526.0
-margin_right = 1082.0
+margin_right = 796.0
 margin_bottom = 569.0
 custom_styles/panel = ExtResource( 7 )
 
 [node name="TravelsContainer" type="ScrollContainer" parent="TravelsContainerPanel"]
 margin_left = 2.0
-margin_right = 1053.0
+margin_right = 806.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 0, 55 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TravelsContainerPanel/TravelsContainer"]
 custom_constants/separation = 18
@@ -646,9 +656,6 @@ margin_right = 561.133
 margin_bottom = 833.796
 hint_tooltip = "Date limit. Renews once a week."
 texture = ExtResource( 30 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BedroomLimit" type="Label" parent="."]
 margin_left = 731.326

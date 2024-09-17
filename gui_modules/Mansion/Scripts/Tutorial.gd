@@ -39,17 +39,17 @@ var exploration_text = {
 
 var training_images = {
 	
-	0: load("res://assets/Textures_v2/MANSION/Tutorial/map_1.png"),
-	1: load("res://assets/Textures_v2/MANSION/Tutorial/map_2.png"),
-	2: load("res://assets/Textures_v2/MANSION/Tutorial/map_2.png"),
-	3: load("res://assets/Textures_v2/MANSION/Tutorial/map_2.png"),
+	0: load("res://assets/Textures_v2/MANSION/Tutorial/training_0.png"),
+	1: load("res://assets/Textures_v2/MANSION/Tutorial/training_0.png"),
+	2: load("res://assets/Textures_v2/MANSION/Tutorial/training_1.png"),
+	3: load("res://assets/Textures_v2/MANSION/Tutorial/training_2.png"),
 }
 
 var training_text = {
 	0: tr("TRAINTUTORIAL1"),
 	1: tr("TRAINTUTORIAL2"),
-	2: tr("TRAINTUTORIAL2"),
-	3: tr("TRAINTUTORIAL2")
+	2: tr("TRAINTUTORIAL3"),
+	3: tr("TRAINTUTORIAL4")
 }
 
 var traveling_images = {

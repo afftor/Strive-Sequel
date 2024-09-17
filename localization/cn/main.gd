@@ -1364,6 +1364,9 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	BEDROOMTOOLTIP = "Available number of characters for sexual interactions. Increases with Bedroom Upgrade",
 	DATETOOLTIP = "Dates left this week. Increases with Master's Charm Factor and resets at the start of a week.",
 	SEXTOOLTIP = "Sexual Interactions left this week. Increases with Master's Sexual Factor and resets at the start of a week.",
+	DATETOOLTIPSHORT = """Character can be dated today""", # MISSING TRANSLATION
+	SEXTOOLTIPSHORT = """Character can be assigned to sexual interaction today""", # MISSING TRANSLATION
+	TRAINTOOLTIP = """Character can be trained today""", # MISSING TRANSLATION
 	
 	TOOLTIPLOYALTYOBEDIENCE = "Loyalty points are gained every turn based on Tame Factor. You can unlock new actions and passives with it.\n\nObedience Drain is based on Timid Factor and character training. If Obedience falls to 0 the character will attempt to escape. Unlock new options and use proper gear to reduce Obedience Drain and make it more manageble. ",
 	TOOLTIPVALUE = "Character's value means their market price. It's based on their Growth Factor, Race, Training and certain features. Higher value characters will earn more money when providing services and prostitution.",
@@ -3117,7 +3120,10 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	DIALOGUECLOSE = "关闭",
 	DIALOGUECONFIRM = "确认",
 	DIALOGUECONTINUE = "继续",
+	DIALOGUERETURN = """Return""", # MISSING TRANSLATION
 	DIALOGUECANCEL = "取消",
+	DIALOGUENEVERMIND = """Nevermind""", # MISSING TRANSLATION
+	DIALOGUEWALKAWAY = """Walk away""", # MISSING TRANSLATION
 	
 	DIALOGUEMEETLEADER = "会见领袖",
 
@@ -14341,6 +14347,16 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT1 = "你遇到了一个孤独的冒险家: [name].",
 	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT2 = "攻击",
+	QUEST_DWARFS_GATE_TEXT = """Dwarven city gate""", # MISSING TRANSLATION
+	QUEST_DWARFS_GATE_DESC = """""", # MISSING TRANSLATION
+	QUEST_MOUNTAIN_PASS_TEXT = """Mountain Pass""", # MISSING TRANSLATION
+	QUEST_MOUNTAIN_PASS_DESC = """""", # MISSING TRANSLATION
+	QUEST_HOLLOW_PASSAGE_TEXT = """Hollow Passage""", # MISSING TRANSLATION
+	QUEST_HOLLOW_PASSAGE_DESC = """""", # MISSING TRANSLATION
+	QUEST_OLD_GODS_TEMPLE_TEXT = """Temple of the Old Gods""", # MISSING TRANSLATION
+	QUEST_OLD_GODS_TEMPLE_DESC = """""", # MISSING TRANSLATION
+	QUEST_MOLTEN_GROUNDS_TEXT = """Molten Grounds""", # MISSING TRANSLATION
+	QUEST_MOLTEN_GROUNDS_DESC = """""", # MISSING TRANSLATION
 	
 	#fixed_location_options
 	
@@ -14379,6 +14395,17 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	ELF_CAPITAL9 = "搜索里拉",
 	ELF_CAPITAL10 = "找到里拉",
 	ELF_CAPITAL11 = "启动",
+	DWARF_PALACE = """Palace""", # MISSING TRANSLATION
+	DWARF_TAVERN = """Tavern""", # MISSING TRANSLATION
+	DWARF_TAVERN_BARKEEP = """Talk to the Barkeep""", # MISSING TRANSLATION
+	DWARF_TAVERN_PATRONS = """Interact with the patrons""", # MISSING TRANSLATION
+	DWARF_TAVERN_GIRL = """Interact with the girl""", # MISSING TRANSLATION
+	DWARF_TAVERN_REBELS = """Search for rebel member""", # MISSING TRANSLATION
+	DWARF_WORKSHOP = """Workshop""", # MISSING TRANSLATION
+	DWARF_PRISON = """Prison""", # MISSING TRANSLATION
+	DWARF_CAPITAL_SEARCH = """Search for tracks""", # MISSING TRANSLATION
+	DWARF_CAPITAL_SHIMORE = """Search for Ore""", # MISSING TRANSLATION
+	DWARF_CAPITAL_JEAN = """Search for Jean""", # MISSING TRANSLATION
 	
 	BEASTKIN_CAPITAL1 = "找首领",
 	BEASTKIN_CAPITAL2 = "参观萨满小屋",
@@ -14457,6 +14484,10 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_GOBLIN_LOCATION2 = "追踪痕迹",
 	QUEST_GOBLIN_LOCATION3 = "追踪哥布林的痕迹",
 	QUEST_GOBLIN_LOCATION4 = "返回报告",
+	QUEST_DWARFS_GATE_LOCATION = """Approach""", # MISSING TRANSLATION
+	QUEST_MOUNTAIN_PASS_LOCATION = """Find Jean""", # MISSING TRANSLATION
+	QUEST_HOLLOW_PASSAGE_LOCATION = """Search for rebel tracks""", # MISSING TRANSLATION
+	QUEST_OLD_GODS_TEMPLE_LOCATION = """Approach""", # MISSING TRANSLATION
 	
 	# Missing keys
 	CURRENT_PREFERRED_FOOD_CONSUMPTION = "Current Preferred Food Consumption",
