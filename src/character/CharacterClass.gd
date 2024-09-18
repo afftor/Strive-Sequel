@@ -380,6 +380,8 @@ func turn_into_unique(code):
 		xp_module.set_service_boost(data.service_boosters)
 	else:
 		xp_module.set_service_boost()
+	if data.has('training_disposition'):
+		process_disposition_data(data.training_disposition, true)
 	update_prt()
 	recheck_effect_tag('recheck_stats')
 	globals.emit_signal("slave_added")
@@ -390,6 +392,7 @@ func create(temp_race, temp_gender, temp_age):
 	learn_c_skill('attack')
 	statlist.create(temp_race, temp_gender, temp_age)
 	food.create()
+	training.build_stored_reqs()
 	add_trait('core_trait')
 	recheck_effect_tag('recheck_stats')
 
@@ -920,6 +923,9 @@ func recheck_equip():
 func process_disposition_data(data, setup = false):
 	training.process_disposition_data(data, setup)
 
+func process_traits_availability_data(data):
+	training.process_traits_availability_data(data)
+
 func get_trainer():
 	return training.get_trainer()
 
@@ -1125,6 +1131,8 @@ func affect_char(i):
 			remove_trait(i.value)
 		'add_trait':
 			add_trait(i.value)
+		'unlock_trait':
+			training.unlock_trait(i.value)
 		'set_tutelage':
 			xp_module.assign_to_learning(i.value)
 			input_handler.rebuild_slave_list()
@@ -1154,6 +1162,10 @@ func teleport(data):
 	globals.emit_signal("slave_arrived", self)
 	input_handler.update_slave_list()
 	#add logging if reqired
+
+
+func process_stored_check(check): #compatibility stub
+	return training.check_stored_reqs(check)
 
 
 func process_check(check): #compatibility stub
@@ -1281,6 +1293,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			return (input_handler.combat_node.playergroupcounter == 1) == i.check
 		'workrule':
 			return check_work_rule(i.value) == i.check
+		'check_stored':
+			return training.check_stored_reqs(i.value)
 	return check
 
 func decipher_reqs(reqs, colorcode = false, purestat = false):

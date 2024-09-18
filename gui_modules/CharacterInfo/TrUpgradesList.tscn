@@ -143,7 +143,6 @@ valign = 1
 clip_text = true
 
 [node name="training" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -224,6 +223,31 @@ custom_fonts/font = ExtResource( 30 )
 text = "500"
 align = 1
 valign = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="training"]
+margin_left = 580.0
+margin_top = 70.0
+margin_right = 780.0
+margin_bottom = 130.0
+custom_constants/separation = 5
+
+[node name="Button" type="TextureButton" parent="training/HBoxContainer3"]
+visible = false
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 16 )
+texture_disabled = ExtResource( 17 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="training/HBoxContainer3/Button"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
 
 [node name="trainer_frame" type="TextureButton" parent="training"]
 margin_left = 5.0
@@ -314,10 +338,10 @@ valign = 1
 clip_text = true
 
 [node name="complete_button" type="TextureButton" parent="training"]
-margin_left = 606.0
-margin_top = 135.0
-margin_right = 856.0
-margin_bottom = 193.0
+margin_left = 270.0
+margin_top = 735.0
+margin_right = 520.0
+margin_bottom = 793.0
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 21 )
@@ -496,6 +520,7 @@ margin_bottom = 45.0
 custom_fonts/font = ExtResource( 18 )
 
 [node name="finished" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 

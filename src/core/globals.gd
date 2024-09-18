@@ -2511,7 +2511,6 @@ func valuecheck(dict):
 				if i.check_location(input_handler.active_location.id):
 					counter += 1
 			return input_handler.operate(dict.operant, counter, dict.value)
-		
 		'location_exists':
 			return !ResourceScripts.game_world.find_location_by_data({code = dict.location}) == null
 		'location_has_specific_slaves':

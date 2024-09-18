@@ -10,6 +10,9 @@ var dispositions_known = {}
 
 var spirit = 100
 var loyalty = 0
+var training_metrics = {}
+
+var stored_reqs = {}
 
 var enable = true
 var available = true
@@ -40,6 +43,26 @@ func process_disposition_data(data, setup = false):
 			dispositions[cat] = input_handler.weightedrandom(data[cat])
 		else:
 			dispositions[cat] = data[cat]
+
+
+func disposition_change_report(type, value):
+	var cval = dispositions[type]
+	var data = Skilldata.training_categories[type]
+	var val_list = variables.disposition_results.keys()
+	cval = val_list.find(cval)
+	cval += value
+	cval = int(clamp(cval, 0, val_list.size() - 1))
+	cval = val_list[cval]
+	if dispositions[type] == cval:
+		return ""
+	else:
+		dispositions[type] = cval
+		var text = ""
+		if dispositions_known[type]:
+			text += tr('DISPOSITIONSET' + cval.to_upper()) % tr(data.name)
+		else:
+			text += tr('DISPOSITIONCHANGE') % tr(data.name)
+		return text
 
 
 func unlock_disposition(cat):
@@ -88,12 +111,28 @@ func reset_training():
 	spirit = 100
 	loyalty = 0
 	enable = true
+	training_metrics.clear()
+	
+	#remove traits
 	var tarr = parent.get_ref().get_traits_by_tag('training')
 	for tr in tarr:
 		parent.get_ref().remove_trait(tr)
 	tarr = parent.get_ref().get_traits_by_tag('training_final')
 	for tr in tarr:
 		parent.get_ref().remove_trait(tr)
+	
+	#regenerate dispositions
+	var race = parent.get_ref().get_stat('race')
+	setup_dispositions(race)
+	if parent.get_ref().get_stat('unique') != null:
+		var udata = worlddata.pregen_characters[parent.get_ref().get_stat('unique')]
+		if udata.has('training_disposition'):
+			process_disposition_data(udata.training_disposition)
+	tarr = parent.get_ref().get_traits_by_tag('disposition_change')
+	for tr in tarr:
+		var trdata = Traitdata.traits[tr].disposition_change
+		process_disposition_data(trdata)
+	#reset slavetype
 	parent.get_ref().set_slave_category('slave1')
 	parent.get_ref().add_trait('untrained')
 
@@ -137,10 +176,6 @@ func finish_training(internal = false):
 		if !parent.get_ref().has_status('callmaster'):
 			return
 		enable = false
-		if spirit < variables.spirit_limits[0]:
-			parent.get_ref().add_trait('training_broken')
-		elif spirit < variables.spirit_limits[1]:
-			parent.get_ref().add_trait('training_damaged')
 		if trainer != null:
 			var tchar = characters_pool.get_char_by_id(trainer)
 			tchar.get_trainees().erase(parent.get_ref().id)
@@ -154,12 +189,20 @@ func apply_training(code):
 	if !Skilldata.training_actions.has(code):
 		print("no training data %s" % code)
 		return
+	
 	var effect_text = ""
 	var result_tags = []
 	var data = Skilldata.training_actions[code]
 	var cat = data.type
 	var cat_data = Skilldata.training_categories[cat]
 	var disposition = dispositions[cat]
+	
+#	if !training_metrics.has(code):
+#		training_metrics[code] = 0
+#	training_metrics[code] += 1
+	if !training_metrics.has(cat):
+		training_metrics[cat] = 0
+	training_metrics[cat] += 1
 	#gather chance effects
 	var effects = []
 	for eff in data.bonus_changes + cat_data.bonus_changes:
@@ -284,26 +327,50 @@ func apply_training(code):
 				pool.erase(dis)
 				dispositions_known[dis] = true  
 				effect_text += "%s - %s \n" % [dis, dispositions[dis]] 
+	if data.has('disposition_affects'):
+		for tag in data.disposition_affects:
+			if tag is Array:
+				var newtag = input_handler.random_from_array(tag)
+				if globals.rng.randf() < 0.25:
+					effect_text += disposition_change_report(newtag, 2)
+				else:
+					effect_text += disposition_change_report(newtag, 1)
+			else:
+				if globals.rng.randf() < 0.25:
+					effect_text += disposition_change_report(tag, 2)
+				else:
+					effect_text += disposition_change_report(tag, 1)
 	#apply
 	loyalty += result_data.loyalty
 	spirit += result_data.spirit
-	effect_text += tr(result)  + "\n" #fix
+	
+	effect_text += "\n({color=aqua|" + parent.get_ref().get_short_name() + "}: " + parent.get_ref().translate(input_handler.get_random_chat_line(parent.get_ref(), 'train_'+result)) + ")\n"
 	if result_data.loyalty != 0:
 		effect_text += statdata.statdata.loyalty.name + " + " + str(result_data.loyalty) + "\n"
 #	if result_data.spirit != 0:
 #		effect_text += statdata.statdata.spirit.name + " - " + str(- result_data.spirit)  + "\n"
 	for rec in variables.spirit_changes:
 		if result_data.spirit >= rec.min and result_data.spirit <= rec.max:
-			effect_text += tr(rec.desc) + "\n"
+			effect_text += "{color=yellow|" + tr(rec.desc) + "}\n"
 			break
 	if spirit < 0:
 		spirit = 0
+	if spirit < variables.spirit_limits[0]:
+		if !parent.get_ref().check_trait('training_broken'):
+			effect_text += tr('TRAININGSTATUS1') + "\n"
+			parent.get_ref().remove_trait('training_damaged')
+			parent.get_ref().add_trait('training_broken')
+	elif spirit < variables.spirit_limits[1]:
+		if !parent.get_ref().check_trait('training_damaged'):
+			effect_text += tr('TRAININGSTATUS2') + "\n"
+			parent.get_ref().add_trait('training_damaged')
 	#display
 	var dialogue_data = {text = '', tags = ['skill_report_event'], options = []}
 	var text = tr(data.scene_text)
 	for tag in variables.dynamic_text_vars:
 		text = text.replace('[%s1]' % tag, ch_trainer.translate('[%s]' % tag))
 		text = text.replace('[%s2]' % tag, parent.get_ref().translate('[%s]' % tag))
+	
 	if data.result_text.has(result):
 		text += "\n"
 		text += tr(data.result_text[result])
@@ -328,4 +395,79 @@ func get_dispositions_text():
 			text += "%s : %s\n" % [tr(ddata.name), dispositions[dis]]
 		else:
 			 text += "%s : unknown\n" % tr(ddata.name)
+	return text
+
+
+func build_stored_reqs():
+	#do not clear stored reqs, only overwrite
+	for tr in Traitdata.traits:
+		var data = Traitdata.traits[tr]
+		if !data.has('tags'):
+			continue
+		if data.tags.has('training_success'):
+			#roll reqs
+			var tres = {}
+			var req_data = data.custom_reqs
+			for cat in req_data:
+				var newcat = cat
+				if cat == 'random':
+					newcat = input_handler.random_from_array(['positive', 'social', 'sexual', 'humiliation', 'physical'])
+				if tres.has(newcat):
+					tres[newcat] += req_data[cat]
+				else:
+					tres[newcat] = req_data[cat]
+			stored_reqs[tr] = tres
+#		if data.tags.has('servant_training') or data.tags.has('training'):
+#			pass
+
+
+func process_traits_availability_data(data):
+	for id in data:
+		stored_reqs[id] = data[id]
+
+
+func unlock_trait(arr):
+	if arr is String:
+		arr = [arr]
+	for id in arr:
+		stored_reqs[id] = true
+
+
+func check_stored_reqs(id):
+	if !stored_reqs.has(id):
+		return true
+	var reqs = stored_reqs[id]
+	if reqs is bool:
+		#reqs is value
+		return reqs
+	#reqs is dict of training categories
+	for cat in reqs:
+		if !training_metrics.has(cat):
+			return false
+		if training_metrics[cat] < reqs[cat]:
+			return false
+	return true
+
+
+func build_stored_req_desc(id):
+	var text = '\n'
+	if stored_reqs.has(id):
+		var reqs = stored_reqs[id]
+		if reqs is bool:
+			if !reqs:
+				text += tr('NOTAVAILABLE')
+		else:
+			text += tr('REQUIRES')
+			for cat in reqs:
+				var cdata = Skilldata.training_categories[cat] 
+				var line = ""
+				var amount = 0
+				if training_metrics.has(cat):
+					amount = training_metrics[cat]
+				if amount >= reqs[cat]:
+					line = '[color=green]'
+				else:
+					line = '[color=red]'
+				line += ("%s - %d/%d" % [tr(cdata.name), int(reqs[cat]), int(amount)]) + '[/color]\n'
+				text += line
 	return text

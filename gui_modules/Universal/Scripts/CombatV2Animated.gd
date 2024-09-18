@@ -566,7 +566,8 @@ func victory():
 		newbutton.get_node('name').set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(tchar.get_stat('growth_factor')))])
 		newbutton.get_node("amount").text = ""
 		globals.connectslavetooltip(newbutton, tchar)
-	input_handler.exploration_node.add_rolled_chars(rewardchars)
+	if input_handler.exploration_node != null:
+		input_handler.exploration_node.add_rolled_chars(rewardchars)
 	for i in rewardsdict.materials:
 		var item = Items.materiallist[i]
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)

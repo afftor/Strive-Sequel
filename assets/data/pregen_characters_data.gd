@@ -53,6 +53,9 @@ var pregen_characters = {
 			positive = 'kink',
 			magic = 'weak',
 		},
+#		custom_traits_availability = { #example
+#			training_broke_in = false
+#		}
 	},
 
 	Kurdan = {
