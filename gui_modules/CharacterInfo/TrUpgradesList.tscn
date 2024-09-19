@@ -148,10 +148,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="training"]
-margin_left = 7.0
-margin_top = 201.0
-margin_right = 837.0
-margin_bottom = 573.0
+margin_left = -8.0
+margin_top = 202.0
+margin_right = 822.0
+margin_bottom = 574.0
 size_flags_vertical = 3
 theme = ExtResource( 5 )
 scroll_horizontal_enabled = false
@@ -605,6 +605,7 @@ text = "Trainees:"
 clip_text = true
 
 [node name="finish" type="Panel" parent="."]
+visible = false
 margin_left = 17.0
 margin_top = -78.0
 margin_right = 704.0

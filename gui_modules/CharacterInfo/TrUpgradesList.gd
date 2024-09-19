@@ -443,8 +443,11 @@ func build_finish():
 			text += '[color=green]'
 		else:
 			text += '[color=red]'
+			panel.disabled = true
 		text += "Spirit - %d[/color]" % variables.spirit_limits[1]
 		text += person.training.build_stored_req_desc(tr)
+		if !person.training.check_stored_reqs(tr):
+			panel.disabled = true
 		text = text.trim_suffix('\n')
 		panel.get_node('reqs').bbcode_text = text
 		
@@ -457,5 +460,5 @@ func build_finish():
 	panel.connect('pressed', self, 'select_reward', [null])
 	
 	update_reward()
-	$finish/confirm.disabled = person.has_status('callmaster')
+	$finish/confirm.disabled = !person.has_status('callmaster')
 
