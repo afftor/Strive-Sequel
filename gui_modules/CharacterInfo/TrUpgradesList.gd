@@ -426,7 +426,7 @@ func select_reward(val):
 func build_finish():
 	$finish.visible = true
 	selected_reward = null
-	input_handler.ClearContainer($finish/rewards, ['button'])
+	input_handler.ClearContainer($finish/rewards, ['button', 'button2'])
 	for tr in tr_rewards:
 		var trdata = Traitdata.traits[tr]
 		var panel = input_handler.DuplicateContainerTemplate($finish/rewards, 'button')
@@ -443,12 +443,17 @@ func build_finish():
 			text += '[color=red]'
 		text += "Spirit - %d[/color]" % variables.spirit_limits[1]
 		text += person.training.build_stored_req_desc(tr)
+		text = text.trim_suffix('\n')
 		panel.get_node('reqs').bbcode_text = text
 		
 		panel.set_meta('trait', tr)
 		panel.connect('pressed', self, 'select_reward', [tr])
 		globals.connecttexttooltip(panel, tr(trdata.name) + "\n" + tr(trdata.descript))
-		
+	var panel = input_handler.DuplicateContainerTemplate($finish/rewards, 'button2')
+	panel.get_node('name').text = tr('NOSPEC')
+	panel.set_meta('trait', null)
+	panel.connect('pressed', self, 'select_reward', [null])
+	
 	update_reward()
 	$finish/confirm.disabled = person.has_status('callmaster')
 

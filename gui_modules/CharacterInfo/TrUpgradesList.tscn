@@ -605,11 +605,10 @@ text = "Trainees:"
 clip_text = true
 
 [node name="finish" type="Panel" parent="."]
-visible = false
 margin_left = 17.0
-margin_top = 24.0
+margin_top = -78.0
 margin_right = 704.0
-margin_bottom = 721.0
+margin_bottom = 808.0
 
 [node name="header" type="Label" parent="finish"]
 light_mask = 0
@@ -628,13 +627,13 @@ margin_left = 23.0
 margin_top = 69.0
 margin_right = 623.0
 margin_bottom = 69.0
-custom_constants/separation = 20
+custom_constants/separation = 5
 
 [node name="button" type="Button" parent="finish/rewards"]
 visible = false
 margin_right = 600.0
-margin_bottom = 160.0
-rect_min_size = Vector2( 0, 160 )
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 215 )
 toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="finish/rewards/button"]
@@ -654,7 +653,7 @@ anchor_bottom = 1.0
 margin_left = 163.0
 margin_top = 10.0
 margin_right = -18.0
-margin_bottom = -115.0
+margin_bottom = -155.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
 text = "Confirm"
@@ -666,7 +665,7 @@ light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 163.0
-margin_top = 46.0
+margin_top = 49.0
 margin_right = -18.0
 margin_bottom = -9.0
 bbcode_enabled = true
@@ -683,11 +682,29 @@ Confirm
 Confirm
 Confirm"
 
+[node name="button2" type="Button" parent="finish/rewards"]
+visible = false
+margin_right = 600.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+toggle_mode = true
+
+[node name="name" type="Label" parent="finish/rewards/button2"]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "Confirm"
+align = 1
+valign = 1
+clip_text = true
+
 [node name="confirm" type="TextureButton" parent="finish"]
 margin_left = 40.0
-margin_top = 617.0
+margin_top = 794.0
 margin_right = 290.0
-margin_bottom = 675.0
+margin_bottom = 852.0
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 21 )
@@ -706,9 +723,9 @@ clip_text = true
 
 [node name="cancel" type="TextureButton" parent="finish"]
 margin_left = 392.0
-margin_top = 617.0
+margin_top = 794.0
 margin_right = 642.0
-margin_bottom = 675.0
+margin_bottom = 852.0
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 21 )
