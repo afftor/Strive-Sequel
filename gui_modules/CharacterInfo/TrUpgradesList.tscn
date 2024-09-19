@@ -144,7 +144,6 @@ valign = 1
 clip_text = true
 
 [node name="training" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -281,14 +280,16 @@ clip_text = true
 
 [node name="spirit" type="TextureProgress" parent="training"]
 light_mask = 0
-margin_left = 216.651
-margin_top = 134.485
-margin_right = 593.651
-margin_bottom = 169.485
+margin_left = 217.0
+margin_top = 134.0
+margin_right = 477.0
+margin_bottom = 162.0
+rect_scale = Vector2( 1.25, 1.25 )
 value = 100.0
 texture_under = ExtResource( 33 )
+texture_over = ExtResource( 33 )
 texture_progress = ExtResource( 22 )
-nine_patch_stretch = true
+texture_progress_offset = Vector2( 29, 3 )
 
 [node name="loyalty" type="Label" parent="training"]
 light_mask = 0
@@ -604,6 +605,7 @@ text = "Trainees:"
 clip_text = true
 
 [node name="finish" type="Panel" parent="."]
+visible = false
 margin_left = 17.0
 margin_top = 24.0
 margin_right = 704.0
