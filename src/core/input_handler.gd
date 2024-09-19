@@ -1505,14 +1505,15 @@ func get_active_party():
 	return res
 
 func get_location_characters():
+	return get_location_characters_by_id(active_location.id)
+
+func get_location_characters_by_id(loc_id):
 	var array = []
 	for id in ResourceScripts.game_party.character_order:
 		var i = ResourceScripts.game_party.characters[id]
-		if i.check_location(active_location.id, true):
+		if i.check_location(loc_id, true):
 			array.append(i)
-
 	return array
-
 
 func play_animation(animation, args = {}):
 	animations_queue.push_back({animation = animation, args = args})
