@@ -293,7 +293,7 @@ func predict_preg_time():
 	return statlist.predict_preg_time()
 
 func get_class_icon():
-	if get_stat('slave_class') in ['master', 'heir', 'spouse']:
+	if get_stat('slave_class') in ['master', 'heir', 'spouse', 'servant', 'servant_notax']:
 		return images.icons[ResourceScripts.descriptions.bodypartsdata.slave_class[get_stat('slave_class')].icon]
 #	elif get_stat('slave_spec') != null:
 #		var upgrade_data = Traitdata.slave_profs[get_stat('slave_spec')]
@@ -301,6 +301,13 @@ func get_class_icon():
 #			return load(upgrade_data.icon_small)
 #		else:
 #			return upgrade_data.icon_small
+	elif has_status('training_success'):
+		var tmp = get_traits_by_tag('training_success')
+		var upgrade_data = Traitdata.traits[tmp[0]]
+		if upgrade_data.icon_small is String:
+			return load(upgrade_data.icon_small)
+		else:
+			return upgrade_data.icon_small
 	else:
 		return images.icons[ResourceScripts.descriptions.bodypartsdata.slave_class[get_stat('slave_class')].icon]
 #end to add
@@ -967,6 +974,9 @@ func get_training_cost():
 
 func get_training_cost_gold():
 	return training.get_training_cost_gold()
+
+func process_training_metrics(value):
+	training.process_training_metrics(value)
 
 func serialize():
 	var res = inst2dict(self)

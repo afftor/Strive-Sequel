@@ -180,6 +180,7 @@ func finish_training(internal = false):
 			var tchar = characters_pool.get_char_by_id(trainer)
 			tchar.get_trainees().erase(parent.get_ref().id)
 			trainer = null
+		parent.get_ref().set_slave_category('slave_trained')
 
 
 func apply_training(code):
@@ -471,3 +472,8 @@ func build_stored_req_desc(id):
 				line += ("%s - %d/%d" % [tr(cdata.name), int(reqs[cat]), int(amount)]) + '[/color]\n'
 				text += line
 	return text
+
+
+func process_training_metrics(value):
+	for cat in value:
+		training_metrics[cat] = value[cat] 

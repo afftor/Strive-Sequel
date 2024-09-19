@@ -13,7 +13,9 @@ func _ready():
 	$no_trainer/TextureButton.connect("pressed", self, 'build_trainer_list')
 	$training/trainer_frame.connect("pressed", self, 'build_trainer_list')
 	$finished/reset_button.connect("pressed", self, 'reset_training')
-	$training/complete_button.connect("pressed", self, 'finish_training')
+	$training/complete_button.connect("pressed", self, 'build_finish')
+	$finish/cancel.connect("pressed", self, 'hide_finish_dialogue')
+	$finish/confirm.connect("pressed", self, 'confirm_finish_dialogue')
 	globals.connecttexttooltip($training/Tooltip, tr("INFOTRAINING"))
 	globals.connecttexttooltip($trainer_list/tooltip, tr("INFOSLAVETRAINER"))
 	$training/spirit.max_value = 100
@@ -150,9 +152,8 @@ func remove_trainer():
 
 func build_posttrain():
 	$finished.visible = true
+	$finished/reset_button.disabled = !(ResourceScripts.game_res.if_has_items('oblivion_potion', 'lt', 1))
 	var spirit = person.get_stat('spirit')
-	#add par about training result selection & other
-	
 	var text = tr('TRAININGFINISHHEADER')
 	var list = person.get_traits_by_tag('training')
 	input_handler.ClearContainer($finished/VBoxContainer/HBoxContainer2, ['Button'])
@@ -180,30 +181,12 @@ func build_posttrain():
 			$finished/VBoxContainer/result_frame/icon.texture = trdata.icon
 		$finished/VBoxContainer/result_frame/header_text.text = tr(trdata.name)
 		globals.connecttexttooltip($finished/VBoxContainer/result_frame, tr(trdata.descript))
-	elif person.get_stat('spirit') >= variables.spirit_limits[2]:
-		$finished/VBoxContainer/result_frame.visible = false
-		$finished/VBoxContainer/select_text.visible = true
-		$finished/VBoxContainer/rewards.visible = true
-		input_handler.ClearContainer($finished/VBoxContainer/rewards, ['button'])
-		for tr in tr_rewards:
-			var trdata = Traitdata.traits[tr]
-			var panel = input_handler.DuplicateContainerTemplate($finished/VBoxContainer/rewards, 'button')
-			if trdata.icon is String:
-				panel.get_node('icon').texture = load(trdata.icon)
-			else:
-				panel.get_node('icon').texture = trdata.icon
-			if person.training.check_stored_reqs(tr):
-				panel.connect('pressed', self, 'select_final_trait', [tr])
-				globals.connecttexttooltip(panel, tr(trdata.name) + "\n" + tr(trdata.descript))
-			else:
-				panel.disabled = true
-				globals.connecttexttooltip(panel, tr(trdata.name) + "\n" + tr(trdata.descript) + person.training.build_stored_req_desc(tr))
 	
 	if spirit < variables.spirit_limits[0]:
 		$finished/status.text = tr('TRAININGSTATUS1')
-	elif spirit < variables.spirit_limits[0]:
+	elif spirit < variables.spirit_limits[1]:
 		$finished/status.text = tr('TRAININGSTATUS2')
-	elif spirit < variables.spirit_limits[0]:
+	elif spirit < variables.spirit_limits[2]:
 		$finished/status.text = tr('TRAININGSTATUS3')
 	else:
 		$finished/status.text = tr('TRAININGSTATUS4')
@@ -267,8 +250,6 @@ func build_training_header():
 	$training/loyalty.text = tr('TRAININGLABELLOYALTY') % person.get_stat('loyalty')
 
  
-
-
 func build_training_list():
 	var trainer = person.get_trainer()
 	input_handler.ClearContainer($training/ScrollContainer/VBoxContainer, ['Button'])
@@ -322,8 +303,6 @@ func build_training_list():
 
 
 func build_training_traits():
-	$training/complete_button.visible = person.has_status('callmaster')
-	$training/complete_button.disabled = (ResourceScripts.game_res.if_has_items('oblivion_potion', 'lt', 1))
 	$training/cost.text = tr('TRAININGCOST') % person.get_training_cost()
 	input_handler.ClearContainer($training/HBoxContainer2, ['Button'])
 	for tr in tr_traits:
@@ -345,15 +324,6 @@ func build_training_traits():
 				panel.disabled = true
 				panel.material = load("res://assets/sfx/bw_shader.tres")
 				panel.get_node('icon').material = load("res://assets/sfx/bw_shader.tres")
-	input_handler.ClearContainer($training/HBoxContainer3, ['Button'])
-	for tr in tr_rewards:
-		var trdata = Traitdata.traits[tr]
-		var panel = input_handler.DuplicateContainerTemplate($training/HBoxContainer3, 'Button')
-		if trdata.icon is String:
-			panel.get_node('icon').texture = load(trdata.icon)
-		else:
-			panel.get_node('icon').texture = trdata.icon
-			globals.connecttexttooltip(panel, tr(trdata.name) + "\n" + tr(trdata.descript) + person.training.build_stored_req_desc(tr))
 
 
 func activate_training(tr_code):
@@ -424,3 +394,61 @@ func learn_upgrade_servant_confirmed():
 	selected_id = ""
 	root.update()
 	input_handler.play_animation("trait_aquired", args)
+
+
+var selected_reward = null
+func hide_finish_dialogue():
+	$finish.visible = false
+
+
+func confirm_finish_dialogue():
+	$finish.visible = false
+	if selected_reward != null:
+		person.add_trait(selected_reward)
+	finish_training_confirm()
+
+
+func update_reward():
+	for nd in $finish/rewards.get_children():
+		if !nd.has_meta('trait'):
+			continue
+		nd.pressed = (selected_reward == nd.get_meta('trait'))
+
+
+func select_reward(val):
+	if selected_reward == val:
+		selected_reward = null
+	else:
+		selected_reward = val
+	update_reward()
+
+
+func build_finish():
+	$finish.visible = true
+	selected_reward = null
+	input_handler.ClearContainer($finish/rewards, ['button'])
+	for tr in tr_rewards:
+		var trdata = Traitdata.traits[tr]
+		var panel = input_handler.DuplicateContainerTemplate($finish/rewards, 'button')
+		panel.get_node('name').text = tr(trdata.name)
+		if trdata.icon is String:
+			panel.get_node('icon').texture = load(trdata.icon)
+		else:
+			panel.get_node('icon').texture = trdata.icon
+		#reqs
+		var text = ""
+		if person.get_stat('spirit') >= variables.spirit_limits[1]:
+			text += '[color=green]'
+		else:
+			text += '[color=red]'
+		text += "Spirit - %d[/color]" % variables.spirit_limits[1]
+		text += person.training.build_stored_req_desc(tr)
+		panel.get_node('reqs').bbcode_text = text
+		
+		panel.set_meta('trait', tr)
+		panel.connect('pressed', self, 'select_reward', [tr])
+		globals.connecttexttooltip(panel, tr(trdata.name) + "\n" + tr(trdata.descript))
+		
+	update_reward()
+	$finish/confirm.disabled = person.has_status('callmaster')
+
