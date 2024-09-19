@@ -491,7 +491,7 @@ func update_sex_date_buttons():
 			SexSelect.get_node("DateButton").disabled = false
 		SexSelect.get_node("SexButton").disabled = false
 	if ResourceScripts.game_globals.weekly_sex_left > 0:
-		SexSelect.get_node("SexButton").disabled = sex_participants.size() < 2 || sex_participants.size() > SlaveListModule.limit
+		SexSelect.get_node("SexButton").disabled = sex_participants.size() < 2 || sex_participants.size() > SlaveListModule.calculate_sex_limits()
 	else:
 		SexSelect.get_node("SexButton").disabled = true
 	
@@ -655,6 +655,7 @@ func test_mode():
 		character.set_stat('skin', 'grey')
 #		character.add_stat('loyalty', 95)
 		characters_pool.move_to_state(character.id)
+		character.process_training_metrics({physical = 10, magic = 5, positive = 20}) #example of testing
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
 		character.create('Elf', 'female', 'random')
 		character.fill_boosters()
@@ -935,7 +936,7 @@ func test_mode():
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-		input_handler.interactive_message('lilith_bad_route_4', '', {})
+#		input_handler.interactive_message('jean_mountain_push_golem', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		
