@@ -257,8 +257,10 @@ func build_training_list():
 		var cat_data = Skilldata.training_categories[category]
 		var amount = tr_data[category].size()
 		for tr in tr_data[category]:
-			var panel = input_handler.DuplicateContainerTemplate($training/ScrollContainer/VBoxContainer, 'Button')
 			var trdata = Skilldata.training_actions[tr]
+			if trdata.has('showup_reqs') and !trainer.checkreqs(trdata.showup_reqs):
+				continue
+			var panel = input_handler.DuplicateContainerTemplate($training/ScrollContainer/VBoxContainer, 'Button')
 			var text = tr(trdata.name) + "\n" + tr("CATEGORYKEYWORD") + ": {color=yellow|" + tr("ACTIONCATEGORY"+trdata.type.to_upper()) + "}\n" + person.translate(tr(trdata.descript))
 			if cat_data.icon is String:
 				panel.get_node('icon').texture = load(cat_data.icon)
@@ -426,7 +428,7 @@ func select_reward(val):
 func build_finish():
 	$finish.visible = true
 	selected_reward = null
-	input_handler.ClearContainer($finish/rewards, ['button'])
+	input_handler.ClearContainer($finish/rewards, ['button', 'button2'])
 	for tr in tr_rewards:
 		var trdata = Traitdata.traits[tr]
 		var panel = input_handler.DuplicateContainerTemplate($finish/rewards, 'button')
@@ -441,14 +443,22 @@ func build_finish():
 			text += '[color=green]'
 		else:
 			text += '[color=red]'
+			panel.disabled = true
 		text += "Spirit - %d[/color]" % variables.spirit_limits[1]
 		text += person.training.build_stored_req_desc(tr)
+		if !person.training.check_stored_reqs(tr):
+			panel.disabled = true
+		text = text.trim_suffix('\n')
 		panel.get_node('reqs').bbcode_text = text
 		
 		panel.set_meta('trait', tr)
 		panel.connect('pressed', self, 'select_reward', [tr])
 		globals.connecttexttooltip(panel, tr(trdata.name) + "\n" + tr(trdata.descript))
-		
+	var panel = input_handler.DuplicateContainerTemplate($finish/rewards, 'button2')
+	panel.get_node('name').text = tr('NOSPEC')
+	panel.set_meta('trait', null)
+	panel.connect('pressed', self, 'select_reward', [null])
+	
 	update_reward()
-	$finish/confirm.disabled = person.has_status('callmaster')
+	$finish/confirm.disabled = !person.has_status('callmaster')
 
