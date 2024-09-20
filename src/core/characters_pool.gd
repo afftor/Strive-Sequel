@@ -21,11 +21,13 @@ func add_char(ch):
 func add_stored_char(id, ch):
 	characters[id] = ch
 
+
 func get_char_by_id(id):
 	if ResourceScripts.game_party.characters.has(id): return ResourceScripts.game_party.characters[id]
 	if ResourceScripts.game_party.babies.has(id): return ResourceScripts.game_party.babies[id]
 	if characters.has(id): return characters[id]
 	return null
+
 
 func cleanup(on_exit = false):
 	for id in characters.keys():
@@ -53,6 +55,7 @@ func cleanup(on_exit = false):
 	if !on_exit and input_handler.slave_list_node != null: 
 		input_handler.slave_list_node.update_dislocations() #temporal, needs remake
 		input_handler.slave_list_node.rebuild() #temporal, needs remake
+
 
 func remove_id(id):
 	if ResourceScripts.game_party.characters.has(id): ResourceScripts.game_party.characters.erase(id)

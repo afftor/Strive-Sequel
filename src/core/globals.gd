@@ -744,16 +744,18 @@ func SaveGame(name):
 	metadata.save(variables.userfolder + "saves/" + name + ".dat")
 	input_handler.SystemMessage("Game saved as " + name + ".sav")
 
+
 func LoadGame(filename):
 	if !file.file_exists(variables.userfolder+'saves/'+ filename + '.sav') :
 		print("no file %s" % (variables.userfolder+'saves/'+ filename + '.sav'))
 		return
-
+	
 	ResourceScripts.core_animations.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')
-	input_handler.CloseableWindowsArray.clear()
+#	input_handler.CloseableWindowsArray.clear()
+	gui_controller.revert_scenes_data()
 	ResourceScripts.revert_gamestate()
-
+	
 	file.open(variables.userfolder+'saves/'+ filename + '.sav', File.READ)
 	var savedict = parse_json(file.get_as_text())
 	file.close()
@@ -762,7 +764,7 @@ func LoadGame(filename):
 		var current_faction = savedict.game_world.areas.plains.factions[faction]
 		if !current_faction.has("bonus_actions"):
 			savedict.game_world.areas.plains.factions[faction]["bonus_actions"] = worlddata.factiondata[faction].bonus_actions
-
+	
 #	state.deserialize(savedict)
 	characters_pool.deserialize(savedict.charpool)
 	for p in ResourceScripts.gamestate:
@@ -821,8 +823,9 @@ func ImportGame(filename):
 
 	ResourceScripts.core_animations.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')
-	input_handler.CloseableWindowsArray.clear()
+#	input_handler.CloseableWindowsArray.clear()
 	ResourceScripts.revert_gamestate()
+	gui_controller.revert_scenes_data()
 
 	file.open(variables.userfolder+'saves/'+ filename + '.sav', File.READ)
 	var savedict = parse_json(file.get_as_text())
@@ -843,8 +846,7 @@ func ImportGame(filename):
 #	ResourceScripts.game_progress.fix_import()
 #	characters_pool.get_babies_from_data(savedict.charpool)
 	effects_pool.deserialize(savedict.effpool)
-	characters_pool.cleanup()
-	effects_pool.cleanup()
+
 	if !compare_version(savedict.game_globals.original_version, '0.5.5b'):
 		effects_pool.fix_durations()
 	
@@ -872,7 +874,7 @@ func ImportGame(filename):
 			{code = 'progress_quest', value = 'guilds_introduction', stage = 'start'},
 			{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 1}]}
 			])
-
+	
 
 
 
