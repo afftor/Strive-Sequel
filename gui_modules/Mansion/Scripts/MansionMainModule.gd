@@ -653,7 +653,7 @@ func test_mode():
 		character.fill_boosters()
 		character.set_stat('height', 'tiny')
 		character.set_stat('skin', 'grey')
-#		character.add_stat('loyalty', 95)
+		character.add_stat('loyalty', 95)
 		characters_pool.move_to_state(character.id)
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
 		character.create('Elf', 'female', 'random')
@@ -935,7 +935,7 @@ func test_mode():
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-		input_handler.interactive_message('lilith_bad_route_4', '', {})
+		#input_handler.interactive_message('lilith_bad_route_4', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		

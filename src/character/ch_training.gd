@@ -298,7 +298,7 @@ func apply_training(code):
 		if result_data.spirit > 0:
 			result_data.spirit = 0 
 	#other effects
-	if code != 'influence' or !trainer.has_profession('caster'):
+	if code != 'influence' or !ch_trainer.has_profession('caster'):
 		available = false
 	if code == 'dayoff':
 		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table['e_s_dayoff'])
@@ -328,31 +328,18 @@ func apply_training(code):
 				pool.erase(dis)
 				dispositions_known[dis] = true  
 				effect_text += "%s - %s \n" % [dis, dispositions[dis]] 
-	if data.has('disposition_affects'):
-		for tag in data.disposition_affects:
-			if tag is Array:
-				var newtag = input_handler.random_from_array(tag)
-				if globals.rng.randf() < 0.25:
-					effect_text += disposition_change_report(newtag, 2)
-				else:
-					effect_text += disposition_change_report(newtag, 1)
-			else:
-				if globals.rng.randf() < 0.25:
-					effect_text += disposition_change_report(tag, 2)
-				else:
-					effect_text += disposition_change_report(tag, 1)
 	#apply
 	loyalty += result_data.loyalty
 	spirit += result_data.spirit
-	
-	effect_text += "\n({color=aqua|" + parent.get_ref().get_short_name() + "}: " + parent.get_ref().translate(input_handler.get_random_chat_line(parent.get_ref(), 'train_'+result)) + ")\n"
+	if randf() >= 0.6 && cat != 'positive' && code != 'mindread':
+		effect_text += "\n({color=aqua|" + parent.get_ref().get_short_name() + "}: " + parent.get_ref().translate(input_handler.get_random_chat_line(parent.get_ref(), 'train_'+result)) + ")\n"
 	if result_data.loyalty != 0:
 		effect_text += statdata.statdata.loyalty.name + " + " + str(result_data.loyalty) + "\n"
 #	if result_data.spirit != 0:
 #		effect_text += statdata.statdata.spirit.name + " - " + str(- result_data.spirit)  + "\n"
 	for rec in variables.spirit_changes:
 		if result_data.spirit >= rec.min and result_data.spirit <= rec.max:
-			effect_text += "{color=yellow|" + tr(rec.desc) + "}\n"
+			effect_text += "{color=yellow|" + parent.get_ref().translate(tr(rec.desc)) + "}\n"
 			break
 	if spirit < 0:
 		spirit = 0
@@ -381,6 +368,23 @@ func apply_training(code):
 	else:
 		dialogue_data.image = 'noevent'
 	dialogue_data.text = text + "\n" + effect_text
+	
+	
+	if data.has('disposition_affects'):
+		for tag in data.disposition_affects:
+			if tag is Array:
+				var newtag = input_handler.random_from_array(tag)
+				if globals.rng.randf() < 0.25:
+					effect_text += disposition_change_report(newtag, 2)
+				else:
+					effect_text += disposition_change_report(newtag, 1)
+			else:
+				if globals.rng.randf() < 0.25:
+					effect_text += disposition_change_report(tag, 2)
+				else:
+					effect_text += disposition_change_report(tag, 1)
+	
+	
 	input_handler.active_character = parent.get_ref()
 	
 	dialogue_data.options.append({code = 'close', text = tr("DIALOGUECLOSE"), reqs = []})

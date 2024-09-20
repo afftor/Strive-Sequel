@@ -16059,6 +16059,14 @@ Kuro makes a pause taking in your answer after which she closes her eyes. The da
 	TREAT_FOOD_NEUTRAL1 = "Спасибо, [Master], я приму это",
 
 	LEAVE_CHAT1 = "Тогда прощайте, я полагаю...",
+	LEAVE_CHAT2 = """Goodbye, and... Thanks...""", # MISSING TRANSLATION
+	LEAVE_CHAT3 = """...Bye.""", # MISSING TRANSLATION
+	TRAIN_FAIL1 = """What's this?.. I hate it, but I must submit...""", # MISSING TRANSLATION
+	TRAIN_FAIL2 = """This feels wrong, but what other choice I have...""", # MISSING TRANSLATION
+	TRAIN_FAIL3 = """I don't like this... I don't want to be here...""", # MISSING TRANSLATION
+	TRAIN_FAIL4 = """This is wrong... Why must I obey something like this?""", # MISSING TRANSLATION
+	TRAIN_FAIL5 = """Maybe if I just follow orders this is going to end...""", # MISSING TRANSLATION
+	TRAIN_FAIL6 = """They try to break me like this...""", # MISSING TRANSLATION
 	TRAIN_FAILURE1 = """P-please... I can't...""", # MISSING TRANSLATION
 	TRAIN_FAILURE2 = """This is wrong...""", # MISSING TRANSLATION
 	TRAIN_FAILURE3 = """I don't want to be here...""", # MISSING TRANSLATION

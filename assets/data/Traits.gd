@@ -1345,8 +1345,8 @@ var traits = {
 		visible = true,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
-		icon_small = "res://assets/images/iconstraits/l_sorcery.png", #2fix
+		icon = "res://assets/images/iconstraits/l_worker.png", 
+		icon_small = "res://assets/images/iconstraits/l_worker_prt.png", 
 		effects = [],
 		bonusstats = {productivity = 0.4}, 
 		custom_reqs = {humiliation = 3, random = 2},
