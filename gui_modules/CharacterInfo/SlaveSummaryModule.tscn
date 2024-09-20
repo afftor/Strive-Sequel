@@ -98,75 +98,97 @@ __meta__ = {
 
 [node name="base_stats" type="VBoxContainer" parent="." groups=["hide_stranger"]]
 light_mask = 0
-margin_left = 8.0
+margin_left = 30.0
 margin_top = 232.0
-margin_right = 208.0
+margin_right = 190.0
 margin_bottom = 333.0
 custom_constants/separation = 13
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="hp" type="TextureProgress" parent="base_stats"]
 light_mask = 0
-margin_right = 200.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 200, 25 )
+margin_right = 160.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 160, 19 )
 value = 100.0
-texture_over = ExtResource( 4 )
 texture_progress = ExtResource( 6 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="base_stats/hp"]
 light_mask = 0
-margin_top = -4.0
-margin_right = 199.0
-margin_bottom = 28.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -80.0
+margin_top = -14.5
+margin_right = 80.0
+margin_bottom = 14.5
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 26 )
 text = "1.100"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="TextureRect" type="TextureRect" parent="base_stats/hp"]
+margin_left = -20.0
+margin_top = -2.0
+margin_right = 180.0
+margin_bottom = 22.0
+texture = ExtResource( 4 )
+expand = true
 
 [node name="mp" type="TextureProgress" parent="base_stats"]
 light_mask = 0
-margin_top = 38.0
-margin_right = 200.0
-margin_bottom = 63.0
-rect_min_size = Vector2( 200, 25 )
+margin_top = 32.0
+margin_right = 160.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 160, 19 )
 value = 50.0
-texture_over = ExtResource( 4 )
 texture_progress = ExtResource( 9 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="base_stats/mp"]
 light_mask = 0
-margin_top = -4.0
-margin_right = 199.0
-margin_bottom = 28.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -80.0
+margin_top = -14.5
+margin_right = 80.0
+margin_bottom = 14.5
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 26 )
 text = "1.100"
 align = 1
 
+[node name="TextureRect" type="TextureRect" parent="base_stats/mp"]
+margin_left = -20.0
+margin_top = -2.0
+margin_right = 180.0
+margin_bottom = 22.0
+texture = ExtResource( 4 )
+expand = true
+
 [node name="lust" type="TextureProgress" parent="base_stats"]
 light_mask = 0
-margin_top = 76.0
-margin_right = 200.0
-margin_bottom = 101.0
-rect_min_size = Vector2( 200, 25 )
+margin_top = 64.0
+margin_right = 160.0
+margin_bottom = 83.0
+rect_min_size = Vector2( 160, 19 )
 value = 50.0
-texture_over = ExtResource( 4 )
 texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="base_stats/lust"]
 light_mask = 0
-margin_top = -4.0
-margin_right = 199.0
-margin_bottom = 28.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -80.0
+margin_top = -14.5
+margin_right = 80.0
+margin_bottom = 14.5
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 26 )
 text = "1.100"
@@ -174,6 +196,14 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureRect" type="TextureRect" parent="base_stats/lust"]
+margin_left = -20.0
+margin_top = -2.0
+margin_right = 180.0
+margin_bottom = 22.0
+texture = ExtResource( 4 )
+expand = true
 
 [node name="factors" type="VBoxContainer" parent="."]
 light_mask = 0
@@ -184,9 +214,6 @@ margin_bottom = 835.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="growth_factor" type="TextureRect" parent="factors" groups=["hide_master"]]
 light_mask = 0

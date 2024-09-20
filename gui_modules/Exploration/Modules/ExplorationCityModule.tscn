@@ -421,7 +421,6 @@ __meta__ = {
 }
 
 [node name="SlaveMarket" type="Panel" parent="." groups=["pauseprocess"]]
-visible = false
 margin_left = 516.0
 margin_top = 137.0
 margin_right = 1519.0
@@ -674,17 +673,13 @@ __meta__ = {
 
 [node name="hp" type="TextureProgress" parent="SlaveMarket/base_stats"]
 margin_right = 264.0
-margin_bottom = 25.0
+margin_bottom = 28.0
 rect_min_size = Vector2( 200, 25 )
 value = 100.0
 rounded = true
 texture_over = ExtResource( 13 )
 texture_progress = ExtResource( 16 )
-nine_patch_stretch = true
-stretch_margin_left = 5
-stretch_margin_top = 5
-stretch_margin_right = 5
-stretch_margin_bottom = 5
+texture_progress_offset = Vector2( 29, 3 )
 
 [node name="Label" type="Label" parent="SlaveMarket/base_stats/hp"]
 margin_top = -3.0
@@ -699,41 +694,36 @@ __meta__ = {
 }
 
 [node name="mp" type="TextureProgress" parent="SlaveMarket/base_stats"]
-margin_top = 34.0
+margin_top = 37.0
 margin_right = 264.0
-margin_bottom = 59.0
+margin_bottom = 65.0
 rect_min_size = Vector2( 200, 25 )
 value = 50.0
 texture_over = ExtResource( 13 )
 texture_progress = ExtResource( 23 )
-nine_patch_stretch = true
+texture_progress_offset = Vector2( 29, 3 )
 
 [node name="Label" type="Label" parent="SlaveMarket/base_stats/mp"]
-margin_top = -4.0
-margin_right = 262.0
-margin_bottom = 26.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 20 )
 text = "1.100"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="lust" type="TextureProgress" parent="SlaveMarket/base_stats"]
-margin_top = 68.0
+margin_top = 74.0
 margin_right = 264.0
-margin_bottom = 93.0
+margin_bottom = 102.0
 rect_min_size = Vector2( 200, 25 )
-value = 50.0
+value = 100.0
 texture_over = ExtResource( 13 )
 texture_progress = ExtResource( 24 )
-nine_patch_stretch = true
+texture_progress_offset = Vector2( 29, 3 )
 
 [node name="Label" type="Label" parent="SlaveMarket/base_stats/lust"]
-margin_top = -4.0
-margin_right = 263.0
-margin_bottom = 26.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 20 )
 text = "1.100"
