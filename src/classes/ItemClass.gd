@@ -128,7 +128,7 @@ func UseItem(user = null, target = null):
 
 
 func build_quality_weighthes(diffdata = {boost = 0, prof = false, shop = false}):
-	var res = variables.itemrairity
+	var res = variables.itemrairity.duplicate()
 	if !diffdata.has('prof'):
 		diffdata.prof = false
 	if !diffdata.has('shop'):
