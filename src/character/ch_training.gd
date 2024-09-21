@@ -441,6 +441,11 @@ func check_stored_reqs(id):
 	if reqs is bool:
 		#reqs is value
 		return reqs
+	if reqs is Array:
+		for decision in reqs:
+			if ResourceScripts.game_progress.decisions.has(decision):
+				return true
+		return false
 	#reqs is dict of training categories
 	for cat in reqs:
 		if !training_metrics.has(cat):
