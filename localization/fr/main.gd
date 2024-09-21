@@ -2182,7 +2182,7 @@ Cependant, bien qu'il semble que les propriétaires terriens n'aient que du mép
 	
 	
 	
-	TRAITEFFECTVIRGIN = "[center]{color=yellow|Virginity}[/center]\nComme [name] a une virginité observable, cela le rend plus désirable pour certaines personnes. \n{color=yellow|Le prix de vente est augmenté de 25%}",
+	TRAITEFFECTVIRGIN = "[center]{color=yellow|Virginity}[/center]\nComme [name] a une virginité observable, cela le rend plus désirable pour certaines personnes. \n{color=yellow|Le prix de vente est augmenté de 25%%}",
 	TRAITEFFECTRARESTURDY = "Rare : Robuste Augmentation de la santé et de la pénétration d'armure",
 	TRAITEFFECTRARENIMBLE = "Rare : Nimble Augmentation de l'évasion et de la vitesse", 
 	TRAITEFFECTRARESTRONG = "Rare : Fort Augmentation des dégâts et des points de vie maximum",

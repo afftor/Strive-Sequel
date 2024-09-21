@@ -23,6 +23,7 @@ func _ready():
 	globals.connecttexttooltip($training/TextureRect2, tr("SPIRITTOOLTIP")) 
 	globals.connecttexttooltip($training/spirit, tr("SPIRITTOOLTIP")) 
 	globals.connecttexttooltip($training/trainer_frame, tr("CLICKTOCHANGE"))
+	$finish/header.bbcode_text = tr("TRAINFINISHTEXT")
 	
 
 
@@ -411,7 +412,7 @@ func confirm_finish_dialogue():
 
 
 func update_reward():
-	for nd in $finish/rewards.get_children():
+	for nd in $finish/ScrollContainer/rewards.get_children():
 		if !nd.has_meta('trait'):
 			continue
 		nd.pressed = (selected_reward == nd.get_meta('trait'))
@@ -428,10 +429,10 @@ func select_reward(val):
 func build_finish():
 	$finish.visible = true
 	selected_reward = null
-	input_handler.ClearContainer($finish/rewards, ['button', 'button2'])
+	input_handler.ClearContainer($finish/ScrollContainer/rewards, ['button', 'button2'])
 	for tr in tr_rewards:
 		var trdata = Traitdata.traits[tr]
-		var panel = input_handler.DuplicateContainerTemplate($finish/rewards, 'button')
+		var panel = input_handler.DuplicateContainerTemplate($finish/ScrollContainer/rewards, 'button')
 		panel.get_node('name').text = tr(trdata.name)
 		if trdata.icon is String:
 			panel.get_node('icon').texture = load(trdata.icon)
@@ -439,12 +440,9 @@ func build_finish():
 			panel.get_node('icon').texture = trdata.icon
 		#reqs
 		var text = ""
-		if person.get_stat('spirit') >= variables.spirit_limits[1]:
-			text += '[color=green]'
-		else:
-			text += '[color=red]'
+		if person.get_stat('spirit') < variables.spirit_limits[1]:
 			panel.disabled = true
-		text += "Spirit - %d[/color]" % variables.spirit_limits[1]
+		#text += "Spirit - %d[/color]" % variables.spirit_limits[1]
 		text += person.training.build_stored_req_desc(tr)
 		if !person.training.check_stored_reqs(tr):
 			panel.disabled = true
@@ -454,11 +452,11 @@ func build_finish():
 		panel.set_meta('trait', tr)
 		panel.connect('pressed', self, 'select_reward', [tr])
 		globals.connecttexttooltip(panel, tr(trdata.name) + "\n" + tr(trdata.descript))
-	var panel = input_handler.DuplicateContainerTemplate($finish/rewards, 'button2')
+	var panel = input_handler.DuplicateContainerTemplate($finish/ScrollContainer/rewards, 'button2')
 	panel.get_node('name').text = tr('NOSPEC')
+	panel.get_node("RichTextLabel").bbcode_text = tr("NOSPECDESCRIPT")
 	panel.set_meta('trait', null)
 	panel.connect('pressed', self, 'select_reward', [null])
 	
 	update_reward()
 	$finish/confirm.disabled = !person.has_status('callmaster')
-

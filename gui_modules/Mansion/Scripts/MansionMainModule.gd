@@ -653,7 +653,7 @@ func test_mode():
 		character.fill_boosters()
 		character.set_stat('height', 'tiny')
 		character.set_stat('skin', 'grey')
-#		character.add_stat('loyalty', 95)
+		character.add_stat('loyalty', 95)
 		characters_pool.move_to_state(character.id)
 		character.process_training_metrics({physical = 10, magic = 5, positive = 20}) #example of testing
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
@@ -936,7 +936,7 @@ func test_mode():
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-#		input_handler.interactive_message('jean_mountain_push_golem', '', {})
+		#input_handler.interactive_message('lilith_bad_route_4', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		

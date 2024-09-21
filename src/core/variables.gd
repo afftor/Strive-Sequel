@@ -565,6 +565,6 @@ var training_costs = [15, 25, 35]
 var training_costs_gold = [500, 1000, 2000]
 var spirit_changes = [
 	{max = 0, min = 0, desc = ''},
-	{max = -0.5, min = -5, desc = 'SPIRITSMALL'},
-	{max = -5.5, min = -100, desc = 'SPIRITOTHER'},
+	{max = -0.5, min = -10, desc = 'SPIRITLOSSSMALL'},
+	{max = -10.1, min = -100, desc = 'SPIRITLOSSGREAT'},
 ]

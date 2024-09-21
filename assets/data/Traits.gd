@@ -1345,8 +1345,8 @@ var traits = {
 		visible = true,
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
-		icon_small = "res://assets/images/iconstraits/l_sorcery.png", #2fix
+		icon = "res://assets/images/iconstraits/l_worker.png", 
+		icon_small = "res://assets/images/iconstraits/l_worker_prt.png", 
 		effects = [],
 		bonusstats = {productivity = 0.4}, 
 		custom_reqs = {humiliation = 3, random = 2},
@@ -1357,8 +1357,8 @@ var traits = {
 		visible = true,
 		name = '',
 		descript = '',
-		icon = "",
-		icon_small = "res://assets/images/iconstraits/l_maidu.png", #2fix
+		icon = "res://assets/images/iconstraits/l_maidu.png",
+		icon_small = "res://assets/images/iconstraits/l_maidu_prt.png",
 		effects = [],
 		bonusstats = {pricemod = 0.5}, 
 		custom_reqs = {humiliation = 1, sexual = 1, social = 1, random = 2},
@@ -1370,7 +1370,7 @@ var traits = {
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_warrior.png",
-		icon_small = "res://assets/images/iconstraits/l_warrior.png", #2fix
+		icon_small = "res://assets/images/iconstraits/l_warrior_prt.png", #2fix
 		effects = [],
 		bonusstats = {damage_mod_all = 0.15, hpmax = 20}, 
 		custom_reqs = {positive = 1, physical = 2, random = 2},

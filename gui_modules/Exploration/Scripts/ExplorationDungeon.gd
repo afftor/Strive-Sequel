@@ -723,7 +723,7 @@ func build_location_group():
 	var newbutton
 	var counter = 0
 	input_handler.ClearContainer($LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer)
-	var char_array = input_handler.get_location_characters()
+	var char_array = input_handler.get_location_characters_by_id(active_location.id)
 	for i in char_array:
 		counter += 1
 		newbutton = input_handler.DuplicateContainerTemplate(
@@ -743,7 +743,9 @@ func build_location_group():
 		if active_location.group.values().has(i.id):
 			newbutton.get_node("icon").modulate = Color(0.3, 0.3, 0.3)
 		globals.connectslavetooltip(newbutton, i)
-	if counter == 0 && gui_controller.exploration.get_node("LocationGui").is_visible():
+	if (counter == 0
+		&& input_handler.active_location.id == active_location.id
+		&& is_visible()):#$LocationGui.is_visible()
 		nav.return_to_mansion()
 		return
 	build_item_panel()

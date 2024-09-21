@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/icons_40x40/magic effect.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=2]
@@ -34,6 +34,10 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_active.png" type="Texture" id=32]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=33]
 [ext_resource path="res://assets/images/iconstraits/l_maidu.png" type="Texture" id=34]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu_pressed.png" type="Texture" id=35]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu.png" type="Texture" id=36]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu_hover.png" type="Texture" id=37]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/panel_class.png" type="Texture" id=38]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 16 )
@@ -58,6 +62,47 @@ margin_left = 31.0
 margin_right = 27.0
 margin_top = 29.0
 margin_bottom = 30.0
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 38 )
+region_rect = Rect2( 0, 0, 600, 200 )
+margin_left = 22.0993
+margin_right = 15.9606
+margin_top = 24.1174
+margin_bottom = 17.1883
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 37 )
+region_rect = Rect2( 0, 0, 116, 54 )
+margin_left = 13.2964
+margin_right = 13.2964
+margin_top = 11.7839
+margin_bottom = 9.9723
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 35 )
+region_rect = Rect2( 0, 0, 116, 54 )
+margin_left = 13.2964
+margin_right = 13.2964
+margin_top = 11.7839
+margin_bottom = 9.9723
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 36 )
+region_rect = Rect2( 0, 0, 116, 54 )
+margin_left = 13.2964
+margin_right = 13.2964
+margin_top = 11.7839
+margin_bottom = 9.9723
+modulate_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 36 )
+region_rect = Rect2( 0, 0, 116, 54 )
+margin_left = 13.2964
+margin_right = 13.2964
+margin_top = 11.7839
+margin_bottom = 9.9723
 
 [node name="UpgradesList" type="Control"]
 margin_right = 500.0
@@ -605,70 +650,82 @@ text = "Trainees:"
 clip_text = true
 
 [node name="finish" type="Panel" parent="."]
-visible = false
-margin_left = 17.0
-margin_top = -78.0
-margin_right = 704.0
-margin_bottom = 808.0
+margin_left = -21.0
+margin_top = -84.0
+margin_right = 822.0
+margin_bottom = 821.0
+custom_styles/panel = SubResource( 4 )
 
-[node name="header" type="Label" parent="finish"]
+[node name="header" type="RichTextLabel" parent="finish"]
 light_mask = 0
-margin_left = 17.0
-margin_top = 14.0
-margin_right = 668.0
-margin_bottom = 49.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 9 )
-text = "To finish training you need Master Acknowledgement trait"
-valign = 1
-clip_text = true
+margin_left = 35.0
+margin_top = 25.0
+margin_right = 813.0
+margin_bottom = 86.0
+custom_fonts/normal_font = ExtResource( 30 )
+bbcode_enabled = true
+bbcode_text = "TRAINFINISHTEXT"
+text = "TRAINFINISHTEXT"
 
-[node name="rewards" type="VBoxContainer" parent="finish"]
-margin_left = 23.0
-margin_top = 69.0
-margin_right = 623.0
-margin_bottom = 69.0
+[node name="ScrollContainer" type="ScrollContainer" parent="finish"]
+margin_left = 127.0
+margin_top = 112.0
+margin_right = 727.0
+margin_bottom = 715.0
+theme = ExtResource( 5 )
+
+[node name="rewards" type="VBoxContainer" parent="finish/ScrollContainer"]
+margin_right = 600.0
+size_flags_horizontal = 3
 custom_constants/separation = 5
 
-[node name="button" type="Button" parent="finish/rewards"]
+[node name="button" type="Button" parent="finish/ScrollContainer/rewards"]
 visible = false
 margin_right = 600.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 0, 215 )
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 150 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
 toggle_mode = true
 
-[node name="icon" type="TextureRect" parent="finish/rewards/button"]
+[node name="icon" type="TextureRect" parent="finish/ScrollContainer/rewards/button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -445.0
-margin_bottom = -5.0
+margin_left = 14.4387
+margin_top = 19.1581
+margin_right = -469.561
+margin_bottom = -16.8419
 mouse_filter = 2
 texture = ExtResource( 34 )
+expand = true
+stretch_mode = 6
 
-[node name="name" type="Label" parent="finish/rewards/button"]
+[node name="name" type="Label" parent="finish/ScrollContainer/rewards/button"]
 light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 163.0
 margin_top = 10.0
-margin_right = -18.0
-margin_bottom = -155.0
+margin_right = -43.0
+margin_bottom = -105.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
 text = "Confirm"
+align = 1
 valign = 1
 clip_text = true
 
-[node name="reqs" type="RichTextLabel" parent="finish/rewards/button"]
+[node name="reqs" type="RichTextLabel" parent="finish/ScrollContainer/rewards/button"]
 light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 163.0
+margin_left = 155.0
 margin_top = 49.0
 margin_right = -18.0
 margin_bottom = -9.0
+mouse_filter = 2
 bbcode_enabled = true
 bbcode_text = "Confirm
 Confirm
@@ -683,17 +740,26 @@ Confirm
 Confirm
 Confirm"
 
-[node name="button2" type="Button" parent="finish/rewards"]
+[node name="button2" type="Button" parent="finish/ScrollContainer/rewards"]
 visible = false
+margin_top = 155.0
 margin_right = 600.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 0, 40 )
+margin_bottom = 305.0
+rect_min_size = Vector2( 0, 150 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
 toggle_mode = true
 
-[node name="name" type="Label" parent="finish/rewards/button2"]
+[node name="name" type="Label" parent="finish/ScrollContainer/rewards/button2"]
 light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 88.3921
+margin_top = 16.3496
+margin_right = -117.608
+margin_bottom = -98.6504
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
 text = "Confirm"
@@ -701,11 +767,18 @@ align = 1
 valign = 1
 clip_text = true
 
+[node name="RichTextLabel" type="RichTextLabel" parent="finish/ScrollContainer/rewards/button2"]
+margin_left = 20.0
+margin_top = 56.0
+margin_right = 573.0
+margin_bottom = 123.0
+mouse_filter = 2
+
 [node name="confirm" type="TextureButton" parent="finish"]
-margin_left = 40.0
-margin_top = 794.0
-margin_right = 290.0
-margin_bottom = 852.0
+margin_left = 123.408
+margin_top = 788.337
+margin_right = 373.408
+margin_bottom = 846.337
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 21 )
@@ -715,6 +788,10 @@ texture_disabled = ExtResource( 4 )
 light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -5.01807
+margin_top = 3.10907
+margin_right = -19.0181
+margin_bottom = -6.89093
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
 text = "Confirm"
@@ -723,10 +800,10 @@ valign = 1
 clip_text = true
 
 [node name="cancel" type="TextureButton" parent="finish"]
-margin_left = 392.0
-margin_top = 794.0
-margin_right = 642.0
-margin_bottom = 852.0
+margin_left = 475.408
+margin_top = 788.337
+margin_right = 725.408
+margin_bottom = 846.337
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 21 )

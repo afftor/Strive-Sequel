@@ -718,6 +718,8 @@ var individual_lines = {
 	
 	
 	leave1 = {text = tr("LEAVE_CHAT1"), events = ['leave'], personalities = ['bold','kind','shy','serious','neutral'], reqs = [], weight = 1, tags = []},
+	leave2 = {text = tr("LEAVE_CHAT2"), events = ['leave'], personalities = ['bold','kind','shy','serious','neutral'], reqs = [], weight = 1, tags = []},
+	leave3= {text = tr("LEAVE_CHAT3"), events = ['leave'], personalities = ['bold','kind','shy','serious','neutral'], reqs = [], weight = 1, tags = []},
 	
 	training_fail1 = {text = tr("TRAIN_FAIL1"), events = ['train_fail'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},
 	training_fail2 = {text = tr("TRAIN_FAIL2"), events = ['train_fail'], personalities = ['serious','kind','bold','shy','neutral'], reqs = [], weight = 1, tags = []},

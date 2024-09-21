@@ -1578,7 +1578,7 @@ func return_characters_from_location(locationid):
 	var area = ResourceScripts.world_gen.get_area_from_location_code(locationid)
 	for id in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[id]
-		if person.check_location(location.id, true) || person.travel.travel_target.location == location.id:
+		if person.check_location(location.id):
 			if ResourceScripts.game_globals.instant_travel:
 				person.travel.location = ResourceScripts.game_world.mansion_location
 				person.return_to_task()

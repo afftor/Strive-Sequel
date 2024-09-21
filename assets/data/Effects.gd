@@ -118,10 +118,10 @@ var effect_table = {
 		conditions = [{code = 'stat', stat = 'personality', operant = 'eq', value = 'bold'}],
 		tags = ['recheck_stats'],
 		atomic = [
-			{type = 'stat_add_p', stat = 'matk', value = -0.25}
+			#{type = 'stat_add_p', stat = 'matk', value = -0.25}
 		],
 		buffs = [],
-		sub_effects = [rebuild_skillvalue_template({skilltype = 'skill', value = 1.25})],
+		sub_effects = [rebuild_skillvalue_template({skilltype = 'skill', value = 1.15})],
 	},
 	e_person_shy = {
 		type = 'c_static',
@@ -129,8 +129,8 @@ var effect_table = {
 		conditions = [{code = 'stat', stat = 'personality', operant = 'eq', value = 'shy'}],
 		tags = ['recheck_stats'],
 		atomic = [
-			{type = 'stat_add_p', stat = 'matk', value = 0.25},
-			{type = 'stat_add_p', stat = 'atk', value = -0.2}
+			{type = 'stat_add_p', stat = 'matk', value = 0.15},
+			#{type = 'stat_add_p', stat = 'atk', value = -0.2}
 		],
 		buffs = [],
 		sub_effects = [],
