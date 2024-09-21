@@ -995,13 +995,20 @@ func fix_serialization():
 	var tmp = statlist.duplicate()
 	statlist = ResourceScripts.scriptdict.ch_statlist.new()
 	statlist.deserialize(tmp)
-	xp_module = dict2inst(xp_module)
-	equipment = dict2inst(equipment)
-	skills = dict2inst(skills)
-	travel = dict2inst(travel)
-	effects = dict2inst(effects)
-	food = dict2inst(food)
-	training = dict2inst(training)
+	if xp_module is Dictionary:
+		xp_module = dict2inst(xp_module)
+	if equipment is Dictionary:
+		equipment = dict2inst(equipment)
+	if skills is Dictionary:
+		skills = dict2inst(skills)
+	if travel is Dictionary:
+		travel = dict2inst(travel)
+	if effects is Dictionary:
+		effects = dict2inst(effects)
+	if food is Dictionary:
+		food = dict2inst(food)
+	if training is Dictionary:
+		training = dict2inst(training)
 	rebuild_parents()
 	xp_module.fix_rules()
 	travel.fix_infinite_travel()
