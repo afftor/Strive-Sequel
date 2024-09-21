@@ -802,7 +802,6 @@ align = 1
 clip_text = true
 
 [node name="ScrollContainer2" type="ScrollContainer" parent="UpgradesPanel"]
-visible = false
 margin_left = 890.0
 margin_top = 102.0
 margin_right = 1639.0

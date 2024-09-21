@@ -455,26 +455,28 @@ func check_stored_reqs(id):
 
 
 func build_stored_req_desc(id):
-	var text = '\n'
+	var text = ''
 	if stored_reqs.has(id):
 		var reqs = stored_reqs[id]
 		if reqs is bool:
 			if !reqs:
 				text += tr('NOTAVAILABLE')
 		else:
-			text += tr('REQUIRES')
+			text += tr('TRIANINGREQUIRES')
 			for cat in reqs:
 				var cdata = Skilldata.training_categories[cat] 
 				var line = ""
 				var amount = 0
 				if training_metrics.has(cat):
 					amount = training_metrics[cat]
+				line = "%s - " % [tr(cdata.name)] 
 				if amount >= reqs[cat]:
-					line = '[color=green]'
+					line = line + ('{color=green|' + "%d/%d" + "}") % [int(amount),int(reqs[cat])]
 				else:
-					line = '[color=red]'
-				line += ("%s - %d/%d" % [tr(cdata.name), int(reqs[cat]), int(amount)]) + '[/color]\n'
+					line = line + ('{color=red|' + "%d/%d" + "}") % [int(amount),int(reqs[cat])]
+				line += ', '
 				text += line
+			text = globals.TextEncoder(text.trim_suffix(", ") + ".")
 	return text
 
 

@@ -1260,6 +1260,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ACTIONSTRIPDESCRIPT = "Have [name] strip and walk exposed for a day.\nImproves disposition towards {color=yellow|Social} actions.",
 	ACTIONRAPE = "Rape",
 	ACTIONRAPEDESCRIPT = "Take [name] against [his] will.",
+	ACTIONEDGE = "Edging",
+	ACTIONEDGEDESCRIPT = "Use edging technique to sexually arouse [name] but prevent them from reaching climax until they beg for it.",
 	ACTIONPUBLICUSE = "Public Use",
 	ACTIONPUBLICUSEDESCRIPT = "Place [name] in stockade having [him] serve a glory hole.\nImproves disposition towards {color=yellow|Positive and Humiliation} actions.",
 	ACTIONMINDREAD = "Mind Read",
@@ -1297,6 +1299,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	ACTIONKNEELSCENETEXT = "[name1] orders [name2] to stand on [his2] knees before [him1]. As [he2] complies, [name1] keeps putting [him2] down while also praising [his2] obedience.",
 	ACTIONSHAMESCENETEXT = "[name1] makes a loud scene of [name2] in front of other servants. [He1] goes into details on how bad [his2] recent work was, making an example out of [him2]. ",
 	ACTIONPUNISHSCENETEXT = "[name1] publicly punishes [name2] in front of other servants. The humiliating experience shall greatly reinforce [his2] role and acceptance.",
+	ACTIONEDGESCENETEXT = "[name1] sexually grops and strokes [name2] making [him2] squirm in arousal until it is too much for [him2] to take it. [name2] begs for the release to the smirking expression of [name1].",
 	ACTIONMOLESTSCENETEXT = "[name1] gropes [name2] in sexual ways in front of others. This is certain display of possession over [his2] body.",
 	ACTIONGROPESCENETEXT = "[name1] possessively gropes [name2] in a sexual ways while whispering lewd things on [his2] ears. Not being able to resist [his1] advances, [name1] can only endure this ordeal.",
 	ACTIONSTRIPSCENETEXT = "[name1] orders [name2] to strip [his2] clothes before [him2]. With the reluctance, [name2] is forced to demonstrate [his2] body as a sign of submission.",
@@ -1326,7 +1329,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SPIRITLOSSGREAT = "The training has greatly impacted [name]'s Spirit",
 	
 	NOTAVAILABLE = "[color=red]Not available[/color]\n",
-	REQUIRES = "Requires trainings usage:\n",
+	TRIANINGREQUIRES = "Must do training categories: ",
 	
 	DISPOSITIONCHANGE = 'Disposition to %s is changed',
 	DISPOSITIONSETRESIST = 'Disposition to %s is now resist\n',
@@ -16215,6 +16218,9 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	TRAIN_KINK7 = "This felt good... Despite everything, my body didn't resist it at all.",
 
 	
+	NOSPEC = "No Speciality",
+	NOSPECDESCRIPT = "Take no speciality and finish training.",
+	TRAINFINISHTEXT = "Finish training after taking Master Acknowledgement trait. To take speciality [color=yellow]Spirit[/color] must be above 50%.",
 	#worlddata land
 	
 	AREAPLAINS = "Plains",
