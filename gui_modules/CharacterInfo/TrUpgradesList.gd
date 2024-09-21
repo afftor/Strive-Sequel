@@ -406,7 +406,7 @@ func hide_finish_dialogue():
 
 func confirm_finish_dialogue():
 	$finish.visible = false
-	if selected_reward != null:
+	if selected_reward != null and selected_reward != "":
 		person.add_trait(selected_reward)
 	finish_training_confirm()
 
@@ -424,6 +424,16 @@ func select_reward(val):
 	else:
 		selected_reward = val
 	update_reward()
+	update_confirm_finish()
+
+
+func update_confirm_finish():
+	$finish/confirm.disabled = false
+	if !person.has_status('callmaster'):
+		$finish/confirm.disabled = true
+	if selected_reward == null:
+		$finish/confirm.disabled = true
+
 
 
 func build_finish():
@@ -455,8 +465,8 @@ func build_finish():
 	var panel = input_handler.DuplicateContainerTemplate($finish/ScrollContainer/rewards, 'button2')
 	panel.get_node('name').text = tr('NOSPEC')
 	panel.get_node("RichTextLabel").bbcode_text = tr("NOSPECDESCRIPT")
-	panel.set_meta('trait', null)
-	panel.connect('pressed', self, 'select_reward', [null])
+	panel.set_meta('trait', "")
+	panel.connect('pressed', self, 'select_reward', [""])
 	
 	update_reward()
-	$finish/confirm.disabled = !person.has_status('callmaster')
+	update_confirm_finish()
