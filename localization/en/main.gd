@@ -1340,6 +1340,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	SPIRITTOOLTIP = "Spirit represents character's leftover will. If it drops too low they will become broken on training completion and suffer considerable penalties. ",
 	LOYALTYTOOLTIP = "Loylaty is used to unlock character's actions and is obtained from doing training once a day.",
 	CLICKTOCHANGE = "Click to change",
+	WITSREVEALDISPOSITION = "Disposition figured out:\n",
+	MINDREADREVEALDISPOSITION = "Dispositions revealed:\n",
 
 
 	WORKTOOL = "Work Tool",

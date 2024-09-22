@@ -313,7 +313,7 @@ func apply_training(code):
 			if !dispositions_known[dis]:
 				pool.push_back(dis)
 		if pool.size() > 0 and result in ['success', 'crit_success']:
-			effect_text += "Dispositions revealed:\n"
+			effect_text += tr('MINDREADREVEALDISPOSITION')
 			var max_amount = pool.size()
 #			if max_amount > 3:
 #				max_amount = 3
@@ -328,6 +328,11 @@ func apply_training(code):
 				pool.erase(dis)
 				dispositions_known[dis] = true  
 				effect_text += "%s - %s \n" % [dis, dispositions[dis]] 
+	if globals.rng.randf() < 0.1 + 0.15 * ch_trainer.get_stat('wits_factor'):
+		if !dispositions_known[cat]: # and result in ['success', 'crit_success']:
+			effect_text += tr('WITSREVEALDISPOSITION')
+			dispositions_known[cat] = true  
+			effect_text += "%s - %s \n" % [tr(cat_data.name), dispositions[cat]] 
 	#apply
 	loyalty += result_data.loyalty
 	spirit += result_data.spirit
@@ -341,6 +346,21 @@ func apply_training(code):
 		if result_data.spirit >= rec.min and result_data.spirit <= rec.max:
 			effect_text += "{color=yellow|" + parent.get_ref().translate(tr(rec.desc)) + "}\n"
 			break
+	
+	if data.has('disposition_affects'):
+		for tag in data.disposition_affects:
+			if tag is Array:
+				var newtag = input_handler.random_from_array(tag)
+				if globals.rng.randf() < 0.25:
+					effect_text += disposition_change_report(newtag, 2)
+				else:
+					effect_text += disposition_change_report(newtag, 1)
+			else:
+				if globals.rng.randf() < 0.25:
+					effect_text += disposition_change_report(tag, 2)
+				else:
+					effect_text += disposition_change_report(tag, 1)
+	
 	if spirit < 0:
 		spirit = 0
 	if spirit < variables.spirit_limits[0]:
@@ -368,22 +388,6 @@ func apply_training(code):
 	else:
 		dialogue_data.image = 'noevent'
 	dialogue_data.text = text + "\n" + effect_text
-	
-	
-	if data.has('disposition_affects'):
-		for tag in data.disposition_affects:
-			if tag is Array:
-				var newtag = input_handler.random_from_array(tag)
-				if globals.rng.randf() < 0.25:
-					effect_text += disposition_change_report(newtag, 2)
-				else:
-					effect_text += disposition_change_report(newtag, 1)
-			else:
-				if globals.rng.randf() < 0.25:
-					effect_text += disposition_change_report(tag, 2)
-				else:
-					effect_text += disposition_change_report(tag, 1)
-	
 	
 	input_handler.active_character = parent.get_ref()
 	
@@ -445,6 +449,11 @@ func check_stored_reqs(id):
 	if reqs is bool:
 		#reqs is value
 		return reqs
+	if reqs is Array:
+		for decision in reqs:
+			if ResourceScripts.game_progress.decisions.has(decision):
+				return true
+		return false
 	#reqs is dict of training categories
 	for cat in reqs:
 		if !training_metrics.has(cat):
