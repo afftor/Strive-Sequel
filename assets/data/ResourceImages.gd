@@ -426,6 +426,14 @@ var scenes = {
 	spank = load("res://assets/images/scenes/spank.png"),
 	strip = load("res://assets/images/scenes/strip.png"),
 	
+	#act 3
+	dwarf_king_palace = load("res://assets/images/scenes/dwarf_king_palace.png"),
+	dwarf_barman = load("res://assets/images/scenes/barman.png"),
+	dwarf_goons = load("res://assets/images/scenes/dwarf_goons.png"),
+	elven_prisoners = load("res://assets/images/scenes/elven_prisoner.png"),
+	dwarf_guard = load("res://assets/images/scenes/dwarf_guard.png"),
+	kobolds = load("res://assets/images/scenes/kobolds.png"),
+	dwarf_machine = load("res://assets/images/scenes/machine.png")
 }
 
 var sprites = {
@@ -546,6 +554,7 @@ var sprites = {
 #	zephyras_sister_body = load("res://assets/images/sprites/zephyrasister_body.png"),
 #	zephyras_sister_nude = load("res://assets/images/sprites/zephyrasister_nude.png"),
 #	zephyras_sister_nude_body = load("res://assets/images/sprites/zephyrasister_nude_body.png"),
+	bolthar = load("res://assets/images/sprites/gnome.png"),
 	}
 
 var dynamic_backgrounds = {

@@ -23,7 +23,19 @@ var data = {
 				]},
 			{text = "CALI_ACT1_2_2", reqs = [], previous_dialogue_option = 2,
 				bonus_effects = [
-					{code = 'add_timed_event', value = "cali_act2_1", args = [{type = 'add_to_date', date = [3,3], hour = 1}]}
+					{code = 'add_timed_event', value = "cali_act2_1", args = [{type = 'add_to_date', date = [3,3], hour = 1}]},
+					{
+					code = "affect_unique_character",
+					name = "cali",
+					type = "add_trait",
+					value = "training_broke_in"
+					},
+					{
+					code = "affect_unique_character",
+					name = "cali",
+					type = "add_trait",
+					value = "training_obedience"
+					},
 				]}
 		],
 		options = [ {
@@ -622,6 +634,7 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
 			bonus_effects = [{code = 'progress_quest', value = 'cali_taming_quest', stage = 'stage11'},
 				{code = 'add_timed_event', value = "cali_act4_merchant_start", args = [{type = 'add_to_date', date = [5,5], hour = 1}]},
+			{code = 'decision', value = 'cali_dating_unlocked'}
 			]
 		}, ]
 	},
@@ -1067,7 +1080,8 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], unique_character = "cali",
 		text = [{text = "CALI_ACT6_NAKED_7", reqs = []}], 
-		common_effects = [{code = 'plan_mansion_event', value = 'ZCEvent_1'}],
+		common_effects = [{code = 'plan_mansion_event', value = 'ZCEvent_1'},
+					{code = 'decision', value = "cali_training_unlocked"}],
 		options = [ {
 			code = 'close', text = "CALI_ACT6_NAKED_7_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'unique_character_changes', value = 'cali', args = [{code = 'add_profession', profession = "petbeast"}]},]

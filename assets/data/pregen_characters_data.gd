@@ -53,6 +53,11 @@ var pregen_characters = {
 			positive = 'kink',
 			magic = 'weak',
 		},
+		blocked_training_traits = {
+			training_sex_service = ['DaisyTrainingFinished'],
+			training_sexservice_adv = ["DaisyTrainingFinished"],
+			training_callmaster = ['DaisyQuestlineFinished'],
+		},
 #		custom_traits_availability = { #example
 #			training_broke_in = false
 #		}
@@ -504,6 +509,13 @@ var pregen_characters = {
 			positive = 'resist',
 			magic = 'weak',
 		},
+		blocked_training_traits = {
+			training_relation = ['cali_dating_unlocked'],
+			training_sex_service = ['cali_dating_unlocked'],
+			training_callmaster = ['cali_training_unlocked'],
+			training_sexservice_adv = ['cali_training_unlocked'],
+		},
+		
 	},
 	Jean = {
 		code = 'jean',

@@ -59,9 +59,9 @@ func disposition_change_report(type, value):
 		dispositions[type] = cval
 		var text = ""
 		if dispositions_known[type]:
-			text += tr('DISPOSITIONSET' + cval.to_upper()) % tr(data.name)
+			text += "{color=yellow|" + tr('DISPOSITIONSET' + cval.to_upper()) % tr(data.name) + "}"
 		else:
-			text += tr('DISPOSITIONCHANGE') % tr(data.name)
+			text += "{color=yellow|" +tr('DISPOSITIONCHANGE') % tr(data.name) +  "}"
 		return text
 
 
