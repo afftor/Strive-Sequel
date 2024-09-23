@@ -67,6 +67,7 @@ var backgrounds = {
 	anastasia_execution3 = load("res://assets/images/fullscreen scenes/AnastasiaCG008.png"),
 	act1_art = load("res://assets/images/fullscreen scenes/splash_pure_act1.png"),
 	act2_art = load("res://assets/images/fullscreen scenes/splash_pure_act2.png"),
+	act3_art = load("res://assets/images/fullscreen scenes/splash_act3.png"),
 	elven_temple_scene = load("res://assets/images/fullscreen scenes/Scene_Elven_Temple.png"),
 
 	#custom dialogue backgrounds

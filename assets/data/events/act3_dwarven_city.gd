@@ -32,24 +32,15 @@ var data = {
 				],
 				options = [
 					{
-						code = "close",
-						text = "DIALOGUECLOSE",
+						code = "act3_scene",
+						text = "DIALOGUECONTINUE",
 						reqs = [
-
+							
 						],
 						dialogue_argument = 1,
 						type = "next_dialogue",
-						bonus_effects = [
-							{
-								code = "progress_quest",
-								value = "visit_dwarfs_quest",
-								stage = "search"
-							},
-							{
-								code = "make_quest_location",
-								value = "quest_dwarfs_gate"
-							}
-						]
+						change_dialogue_type = 2,
+						tags = ["blackscreen_transition_slow"]
 					}
 				]
 			},
@@ -76,24 +67,15 @@ var data = {
 				],
 				options = [
 					{
-						code = "close",
-						text = "DIALOGUECLOSE",
+						code = "act3_scene",
+						text = "DIALOGUECONTINUE",
 						reqs = [
-
+							
 						],
 						dialogue_argument = 1,
 						type = "next_dialogue",
-						bonus_effects = [
-							{
-								code = "progress_quest",
-								value = "visit_dwarfs_quest",
-								stage = "search"
-							},
-							{
-								code = "make_quest_location",
-								value = "quest_dwarfs_gate"
-							}
-						]
+						change_dialogue_type = 2,
+						tags = ["blackscreen_transition_slow"]
 					}
 				]
 			}
@@ -273,13 +255,6 @@ var data = {
 			"dialogue_scene",
 			"blackscreen_transition_common"
 		],
-		common_effects = [
-			{
-				code = "progress_quest",
-				value = "visit_dwarfs_quest",
-				stage = "audience"
-			}
-		],
 		text = "ENTER_CITY_BODY_CHECK",
 		options = [
 			{
@@ -291,23 +266,14 @@ var data = {
 				type = "next_dialogue",
 				bonus_effects = [
 					{
-						code = "teleport_active_location_all",
-						to_loc = {
-							location = "dwarf_capital",
-							code = "dwarf_capital",
-							area = "mountains"
-						}
+						code = "progress_quest",
+						value = "visit_dwarfs_quest",
+						stage = "audience"
 					},
 					{
-						code = "open_location",
-						location = "dwarf_capital",
-						area = "mountains"
-					},
-					{
-						code = "remove_quest_location",
-						value = "quest_dwarfs_gate"
+						code = "update_city"
 					}
-				]
+				],
 			}
 		],
 		image = "dwarf_guard"
