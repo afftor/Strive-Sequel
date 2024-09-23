@@ -171,6 +171,7 @@ var globalsettings = {
 	textmonocolor = false,
 	warnseen = false,
 	disabletips = false,
+	easytrain = false,
 
 	futa = false,
 	furry = true,
