@@ -48,12 +48,228 @@ var biomes = {
 				}, 
 			},
 	},
+	biome_bandit_den = {
+		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
+		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
+		gatherable_resources = {
+			wood = {
+				amount = [25,40],
+				weight = 10,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			stone = {
+				amount = [25,40],
+				weight = 6,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},  
+			iron = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			},
+	},
+	biome_bandit_fort = {
+		background_pool = ['fort1', 'fort2', 'fort3'],
+		enemyarray =  [["bandits_assassin", 1],['bandits_medium', 1],['bandits_medium2', 1],['bandits_golem', 0.5],['bandits_ballista', 0.5]],
+		gatherable_resources = {
+			wood = {
+				amount = [45,60],
+				weight = 10,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			stone = {
+				amount = [35,50],
+				weight = 6,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},  
+			iron = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			woodiron = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			},
+	},
+	biome_rebel_redoubt = {
+		background_pool = ['fort1', 'fort2', 'fort3'],
+		enemyarray =  [['event_rebels_1', 1],['event_rebels_2', 1],['rebels_small', 0.5]],
+		gatherable_resources = {
+			wood = {
+				amount = [45,60],
+				weight = 10,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			stone = {
+				amount = [35,50],
+				weight = 6,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},  
+			iron = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			woodiron = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			},
+	},
+	biome_undead_crypt = {
+		background_pool = ['crypt1', 'crypt2', 'crypt3', 'crypt4', 'crypt5'],
+		enemyarray =  [["skeletons_easy", 1],['skeletons_easy2', 1],['skeletons_zombies', 1],['skeletons_zombies2', 1],['skeletons_lich', 0.5]],
+		gatherable_resources = {
+			stone = {
+				amount = [45,60],
+				weight = 10,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			bone = {
+				amount = [35,50],
+				weight = 6,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},  
+			boneancient = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			},
+	},
+	biome_goblin_cave = {
+		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5'],
+		enemyarray =  [["rats_easy", 0.5],['spiders', 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
+		gatherable_resources = {
+			stone = {
+				amount = [45,60],
+				weight = 6,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			bone = {
+				amount = [35,50],
+				weight = 3,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},  
+			leather = {
+				amount = [15,25],
+				weight = 4,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			},
+	},
+	biome_grove = {
+		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
+		enemyarray = [["rats_easy", 0.5],['wolves_easy1', 1],['wolves_easy2', 1],['spiders', 1]],
+		gatherable_resources = {
+			meat = {
+				amount = [90,120],
+				weight = 6,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			wood = {
+				amount = [60,90],
+				weight = 8,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},  
+			woodmagic = {
+				amount = [15,25],
+				weight = 3,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			woodiron = {
+				amount = [15,25],
+				weight = 1,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			},
+	},
+	biome_ancient_jungles = {
+		background_pool = ['jungle1','jungle2','jungle3','jungle4'],
+		enemyarray = [['jungle_easy1', 1],['jungle_easy2', 1],['jungle_medium1', 1],['jungle_medium2', 1]],
+		gatherable_resources = {
+			woodmagic = {
+				amount = [25,45],
+				weight = 5,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			woodiron = {
+				amount = [30,45],
+				weight = 8,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},  
+			leatherthick = {
+				amount = [20,35],
+				weight = 4,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			leathermythic = {
+				amount = [10,15],
+				weight = 1,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},
+			}, 
+	},
+	biome_fire_depths = {
+		background_pool = ['fire_depths1', 'fire_depths2', 'fire_depths3', 'fire_depths4'],
+		enemyarray = [['firedepths_easy1', 1],['firedepths_easy2', 1],['firedepths_medium1', 1],['firedepths_medium2', 1]],
+		gatherable_resources = {
+			iron = {
+				amount = [40,70],
+				weight = 8,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			mithril = {
+				amount = [25,40],
+				weight = 4,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			adamantine = {
+				amount = [10,20],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},  
+			},
+	},
 }
 var dungeons = {
 	dungeon_infinite_example = {
-		code = 'dungeon_bandit_den',
+		code = 'dungeon_infinite_example',
 		type = 'dungeon',
-		name = 'bandit_den',
+		name = 'infinite',
 		classname = '',
 		descript = tr("DUNGEON_BANDIT_DEN_DESC"),
 		character_data = {
@@ -131,33 +347,14 @@ var dungeons = {
 		
 		#do not remove next ones - for they a used in generation
 		resources = ['cloth','leather','iron','wood','clothsilk'],
-#		gatherable_resources = {
-#			wood = {
-#				amount = [25,40],
-#				weight = 10,
-#				gather_mod = [2,2.5],
-#				stamina = [5,10],
-#				}, 
-#			stone = {
-#				amount = [25,40],
-#				weight = 6,
-#				gather_mod = [2,2.5],
-#				stamina = [5,10],
-#				},  
-#			iron = {
-#				amount = [15,25],
-#				weight = 2,
-#				gather_mod = [2,2.5],
-#				stamina = [5,10],
-#				}, 
-#			},
 		bgm = "dungeon",
 		purchase_price = 100,
 		affiliation = 'local', #defines character races and events
 		events = [],
+		area = 'mountains',
 		tags = ['infinite'],
-		biomes = ['test_biome1', 'test_biome2', 'test_biome2', 'test_biome1'],
-		avaliable_biomes = ['test_biome1', 'test_biome2']
+		biomes = [],#['test_biome1', 'test_biome2', 'test_biome2', 'test_biome1'], #fixed order of first levels
+		avaliable_biomes = ['biome_bandit_den', 'biome_bandit_fort', 'biome_rebel_redoubt', 'biome_undead_crypt', 'biome_goblin_cave', 'biome_grove', 'biome_ancient_jungles', 'biome_fire_depths']
 	},
 	
 	

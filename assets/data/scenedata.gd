@@ -284,6 +284,17 @@ var scenedict = {
 		{code = 'close', reqs = [], text = "DIALOGUECLOSE"},
 		],
 	},
+	unlock_infinite_dungeon = {
+		text = tr("DIALOGUEUNLOCKINFINITEDUNGEON"),
+		image = 'locationpurchase',
+		tags = [],
+		options = [
+		{code = 'close', reqs = [], text = "DIALOGUECLOSE", bonus_effects = [
+			{code = 'make_quest_location', value = 'dungeon_infinite_example'}, #not sure
+			{code = 'update_city'},
+			] },
+		],
+	},
 
 	event_good_recruit = {text = "DIALOGUEEVENTGOODRECRUIT",
 	args = {},

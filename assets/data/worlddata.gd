@@ -722,6 +722,8 @@ var locationnames = {
 	city_adjs =  [tr("CITY_ADJS1"),tr("CITY_ADJS2"),tr("CITY_ADJS3"),tr("CITY_ADJS4"),tr("CITY_ADJS5"),tr("CITY_ADJS6"),tr("CITY_ADJS7"),tr("CITY_ADJS8"),tr("CITY_ADJS9"),tr("CITY_ADJS10")],
 	ancient_jungle_nouns = [tr("ANCIENT_JUNGLES_NOUNS1"),tr("ANCIENT_JUNGLES_NOUNS2"),tr("ANCIENT_JUNGLES_NOUNS3"),tr("ANCIENT_JUNGLES_NOUNS4"),tr("ANCIENT_JUNGLES_NOUNS5"),tr("ANCIENT_JUNGLES_NOUNS6"),tr("ANCIENT_JUNGLES_NOUNS7"),tr("ANCIENT_JUNGLES_NOUNS8"),tr("ANCIENT_JUNGLES_NOUNS9")],
 	ancient_jungle_adjs = [tr("ANCIENT_JUNGLES_ADJS1"),tr("ANCIENT_JUNGLES_ADJS2"),tr("ANCIENT_JUNGLES_ADJS3"),tr("ANCIENT_JUNGLES_ADJS4"),tr("ANCIENT_JUNGLES_ADJS5"),tr("ANCIENT_JUNGLES_ADJS6"),tr("ANCIENT_JUNGLES_ADJS7"),tr("ANCIENT_JUNGLES_ADJS8"),tr("ANCIENT_JUNGLES_ADJS9"),tr("ANCIENT_JUNGLES_ADJS10"),tr("ANCIENT_JUNGLES_ADJS11"),tr("ANCIENT_JUNGLES_ADJS12")],
+	infinite_nouns = [],
+	infinite_adjs = [],
 }
 
 
@@ -1084,6 +1086,10 @@ var fixed_location_options = { #override serialized data
 			reqs = [{type = 'any_quest_stage', value = 'visit_dwarfs_quest', stages = ['audience', 'jean']}],
 			args = [{code = 'start_event', data = 'dwarf_palace_first', args = []}]
 		},{
+			text = tr("INFINITEDUNGEON"),
+			reqs = [{code = 'value_check', type = 'event_seen', check = false, value = 'unlock_infinite_dungeon'}],
+			args = [{code = 'start_event', data = 'unlock_infinite_dungeon', args = []}]
+		}, {
 			text = tr("DWARF_PALACE"),
 			reqs = [{type = 'active_quest_stage', value = 'dking_hara_quest', stage = 'visit'}],
 			args = [{code = 'start_event', data = 'dking_second_task_start', args = []}]
@@ -1558,33 +1564,33 @@ var fixed_location_events = {
 
 
 var infinite_dungeon_events = {
-	test_event_1 = {
-		event = 'cali_intro',
-		reqs = [], #{type = 'dialogue_seen', check = false, value = 'CALI_INTRO'}],
-		#no reqs for testing purpose, not correct for real use
-		dungeons = ["dungeon_infinite_example"],
-		min_level = 2,
-		chance = 0.5,
-		type = 'enter'
-	},
-	test_event_2 = {
-		event = 'cali_intro',
-		reqs = [], #{type = 'dialogue_seen', check = false, value = 'CALI_INTRO'}],
-		#no reqs for testing purpose, not correct for real use
-		dungeons = ["dungeon_infinite_example"],
-		min_level = 3,
-		chance = 0.5,
-		type = 'subroom'
-	},
-	test_event_3 = {
-		event = 'cali_intro',
-		reqs = [], #{type = 'dialogue_seen', check = false, value = 'CALI_INTRO'}],
-		#no reqs for testing purpose, not correct for real use
-		dungeons = ["dungeon_infinite_example"],
-		min_level = 4,
-		chance = 0.5,
-		type = 'finish'
-	},
+#	test_event_1 = {
+#		event = 'cali_intro',
+#		reqs = [], #{type = 'dialogue_seen', check = false, value = 'CALI_INTRO'}],
+#		#no reqs for testing purpose, not correct for real use
+#		dungeons = ["dungeon_infinite_example"],
+#		min_level = 2,
+#		chance = 0.5,
+#		type = 'enter'
+#	},
+#	test_event_2 = {
+#		event = 'cali_intro',
+#		reqs = [], #{type = 'dialogue_seen', check = false, value = 'CALI_INTRO'}],
+#		#no reqs for testing purpose, not correct for real use
+#		dungeons = ["dungeon_infinite_example"],
+#		min_level = 3,
+#		chance = 0.5,
+#		type = 'subroom'
+#	},
+#	test_event_3 = {
+#		event = 'cali_intro',
+#		reqs = [], #{type = 'dialogue_seen', check = false, value = 'CALI_INTRO'}],
+#		#no reqs for testing purpose, not correct for real use
+#		dungeons = ["dungeon_infinite_example"],
+#		min_level = 4,
+#		chance = 0.5,
+#		type = 'finish'
+#	},
 }
 
 

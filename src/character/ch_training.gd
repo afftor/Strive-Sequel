@@ -244,6 +244,8 @@ func apply_training(code):
 			chance_data[res] = 0
 	#roll result
 	var result = input_handler.weightedrandom_dict(chance_data)
+	if input_handler.globalsettings.easytrain:
+		result = 'crit_success'
 	var result_data = variables.training_results_base[result].duplicate(true)
 	for st in result_data:
 		if result_data[st] is Array:
@@ -454,6 +456,8 @@ func check_stored_reqs(id):
 			if ResourceScripts.game_progress.decisions.has(decision):
 				return true
 		return false
+	if input_handler.globalsettings.easytrain:
+		return true
 	#reqs is dict of training categories
 	for cat in reqs:
 		if !training_metrics.has(cat):
@@ -470,7 +474,14 @@ func build_stored_req_desc(id):
 		if reqs is bool:
 			if !reqs:
 				text += tr('NOTAVAILABLE')
-		else:
+		elif reqs is Array:
+			var f = false
+			for decision in reqs:
+				if ResourceScripts.game_progress.decisions.has(decision):
+					f = true
+			if !f:
+				text += tr('NOTAVAILABLE')
+		elif !input_handler.globalsettings.easytrain:
 			text += tr('TRIANINGREQUIRES')
 			for cat in reqs:
 				var cdata = Skilldata.training_categories[cat] 

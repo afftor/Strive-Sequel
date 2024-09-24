@@ -571,8 +571,8 @@ func make_panel_for_character(panel, ch_id):
 	var tchar = characters_pool.get_char_by_id(ch_id)
 	set_loc_text(panel, tchar.get_full_name())
 	panel.get_node("icon").texture = tchar.get_icon_small()
-	if !tchar.is_controllable(): 
-		panel.disabled = true
+#	if !tchar.is_controllable(): 
+#		panel.disabled = true
 	if tchar.get_location() == 'travel':
 		panel.disabled = true
 

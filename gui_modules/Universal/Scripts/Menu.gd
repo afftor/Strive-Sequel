@@ -177,7 +177,7 @@ func mods(pressed, pressed_button):
 	self.current_pressed_btn = pressed_button
 	$mod_panel.visible = pressed
 
-var settingarray = ['futa','furry']#,'turn_based_time_flow']
+var settingarray = ['futa','furry', 'easytrain']#,'turn_based_time_flow']
 
 
 func start_preset_set(button):
