@@ -421,6 +421,7 @@ __meta__ = {
 }
 
 [node name="SlaveMarket" type="Panel" parent="." groups=["pauseprocess"]]
+visible = false
 margin_left = 516.0
 margin_top = 137.0
 margin_right = 1519.0
