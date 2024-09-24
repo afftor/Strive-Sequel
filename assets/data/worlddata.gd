@@ -1111,7 +1111,10 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'shimmering_ore_start', args = []}]
 		},{
 			text = tr("DWARF_WORKSHOP"),
-			reqs = [{type = "quest_completed", name = "hara_scales_quest", check = false}],
+			reqs = [
+				{type = "quest_completed", name = "hara_scales_quest", check = false},
+				{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'search', state = false}
+			],
 			args = [{code = 'start_event', data = 'dwarf_workshop', args = []}]
 		},{
 			text = tr("DWARF_WORKSHOP"),
@@ -1534,13 +1537,6 @@ var fixed_location_options = { #override serialized data
 			reqs = [{type = 'active_quest_stage', value = 'goblin_quest', stage = 'stage5', state = true}],
 			args = [{code = 'start_event', data = 'goblin_quest_14', args = []}]
 		},
-	],
-	quest_dwarfs_gate = [
-		{
-			text = tr("QUEST_DWARFS_GATE_LOCATION"), 
-			reqs = [], 
-			args = [{code = 'start_event', data = 'enter_city_t_0', args = []}]
-		}
 	],
 	quest_mountain_pass = [
 		{

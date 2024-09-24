@@ -21,7 +21,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_king_palace"
@@ -257,7 +258,8 @@ var data = {
 				text = "DKING_FIRST_IMPORTANT",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "DKING_FIRST_REPLY_EXCHANGE",
@@ -288,7 +290,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			},
 			{
 				code = "dking_first_jean",
@@ -296,7 +299,8 @@ var data = {
 				text = "DKING_FIRST_OPT_JEAN",
 				reqs = [
 
-				]
+				],
+				dialogue_argument = 0
 			},
 			{
 				code = "dking_first_important",
@@ -777,7 +781,8 @@ var data = {
 						operant = "gte",
 						value = 4
 					}
-				]
+				],
+				dialogue_argument = 0
 			},
 			{
 				code = "dwarf_prison_interrogate",
@@ -785,7 +790,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			},
 			{
 				code = "close",
@@ -793,7 +799,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		]
 	},
@@ -813,7 +820,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -834,7 +842,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -855,7 +864,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -875,7 +885,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -913,7 +924,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -948,7 +960,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -974,7 +987,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -1005,7 +1019,8 @@ var data = {
 					{
 						code = "update_city"
 					}
-				]
+				],
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -1182,7 +1197,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "kobolds"
@@ -1202,7 +1218,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "kobolds"
@@ -1223,7 +1240,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "kobolds"
@@ -1304,7 +1322,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		character = "bolthar"
@@ -1324,7 +1343,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			},
 			{
 				code = "hollow_pass_temple",
@@ -1332,7 +1352,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			},
 			{
 				code = "hollow_pass_temple",
@@ -1340,7 +1361,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		character = "bolthar"
@@ -1360,7 +1382,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		character = "bolthar"
@@ -1457,7 +1480,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		character = "bolthar"
@@ -1523,7 +1547,8 @@ var data = {
 						value = "MetKobold",
 						check = true
 					}
-				]
+				],
+				dialogue_argument = 0
 			},
 			{
 				code = "old_temple_nuisance",
@@ -1535,7 +1560,8 @@ var data = {
 						value = "MetKobold",
 						check = false
 					}
-				]
+				],
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -1552,7 +1578,8 @@ var data = {
 				text = "OLD_TEMPLE_KOBOLD",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "OLD_TEMPLE_REPLY_WITHCOAL",
@@ -1577,7 +1604,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -1594,7 +1622,8 @@ var data = {
 				text = "OLD_TEMPLE_NUISANCE",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "OLD_TEMPLE_REPLY_RUBBLE",
@@ -1634,7 +1663,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -1654,7 +1684,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -1674,7 +1705,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -1695,7 +1727,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -1744,7 +1777,8 @@ var data = {
 							}
 						]
 					}
-				]
+				],
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -1764,7 +1798,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -1784,7 +1819,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -1893,7 +1929,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		character = "hara"
@@ -2022,7 +2059,8 @@ var data = {
 						code = "screen_black_transition",
 						value = 0.5
 					}
-				]
+				],
+				dialogue_argument = 0
 			}
 		],
 		character = "hara",
@@ -2040,7 +2078,8 @@ var data = {
 				text = "BOLTHAR_RETURN_RECRUIT",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "BOLTHAR_RETURN_REPLY_OFFER",
@@ -2130,7 +2169,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		character = "bolthar"
@@ -2150,7 +2190,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		character = "bolthar"
@@ -2170,7 +2211,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			},
 			{
 				code = "coalbase_attack_bring_girl",
@@ -2178,7 +2220,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -2224,7 +2267,8 @@ var data = {
 				text = "COALBASE_ATTACK_ITCHING",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "COALBASE_ATTACK_REPLY_HARMED_FAIL",
@@ -2265,7 +2309,8 @@ var data = {
 						name = "kuro_sympathy",
 						op = "+"
 					}
-				]
+				],
+				dialogue_argument = 0
 			},
 			{
 				code = "coalbase_attack_itching",
@@ -2309,7 +2354,8 @@ var data = {
 						name = "kuro_sympathy",
 						op = "+"
 					}
-				]
+				],
+				dialogue_argument = 0
 			},
 			{
 				code = "quest_fight",
@@ -2318,7 +2364,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		]
 	},

@@ -438,6 +438,22 @@ var data = {
 		]
 	},
 	
+	act3_scene = {
+		tags = ["dialogue_scene"],
+		custom_background = "act3_art",
+		scene_type = "story_scene",
+		save_scene_to_gallery = true,
+		common_effects = [{code = "hide_dialogue"}],
+		text = [{text = "", reqs = []}],
+		options = [{
+			code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 0, type = "next_dialogue",
+			bonus_effects = [
+				{code = "progress_quest", value = "visit_dwarfs_quest", stage = "search"},
+				{code = 'plan_loc_event', loc = 'dwarf_capital', event = 'enter_city_t_0'}
+			]
+		}]
+	},
+	
 	excalibur_quest_1 = {
 		image = 'stone_sword', tags = ['dialogue_scene'], reqs = [], 
 		text = [ {text = "EXCALIBUR_QUEST_1", reqs = []} ], 

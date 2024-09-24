@@ -36,6 +36,7 @@ var work_quests_finished = []
 var dialogue_local_counters = {}
 
 var planned_mansion_events = []
+var planned_loc_events = {}
 
 
 var master_points = 1
@@ -257,3 +258,28 @@ func if_quest_active(id):
 	if qdata != null and !(qdata.state in ['complete', 'failed']):
 		return true
 	return false
+
+#planned_loc_events, theoretically, can be used for any location, while it's id is unique,
+#including mansion (by incorporating planned_mansion_events functionality in planned_loc_events),
+#but for now I'll make it only for cities
+func plan_loc_event(loc, event):
+	if !planned_loc_events.has(loc):
+		planned_loc_events[loc] = []
+	if planned_loc_events[loc].has(event):
+		return
+	planned_loc_events[loc].append(event)
+
+func try_planned_loc_event(loc):
+	if !planned_loc_events.has(loc):
+		return
+	
+	var to_rem = []
+	for loc_event in planned_loc_events[loc]:
+		if globals.checkreqs(scenedata.scenedict[loc_event].reqs.duplicate(true)):#is duplicate() truly needed?
+			input_handler.interactive_message(loc_event, '', {})
+			to_rem.append(loc_event)
+	
+	for rem in to_rem:
+		planned_loc_events[loc].erase(rem)
+	if planned_loc_events[loc].empty():
+		planned_loc_events.erase(loc)
