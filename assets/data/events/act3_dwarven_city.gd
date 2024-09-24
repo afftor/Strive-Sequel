@@ -93,7 +93,8 @@ var data = {
 				text = "ENTER_CITY_T_0",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "ENTER_CITY_RESPOND_VISITORS_NOTDWARF",
@@ -183,7 +184,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			},
 			{
 				code = "close",
@@ -191,7 +193,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_guard"
@@ -242,7 +245,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_guard"
@@ -274,6 +278,7 @@ var data = {
 						code = "update_city"
 					}
 				],
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_guard"
@@ -291,7 +296,8 @@ var data = {
 				text = "DWARF_PALACE_FIRST",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "DWARF_PALACE_REPLY_PATTERN1",
@@ -361,7 +367,8 @@ var data = {
 						value = "visit_dwarfs_quest",
 						stage = "audience"
 					}
-				]
+				],
+				dialogue_argument = 0
 			},
 			{
 				code = "jean_report",
@@ -373,7 +380,8 @@ var data = {
 						value = "visit_dwarfs_quest",
 						stage = "jean"
 					}
-				]
+				],
+				dialogue_argument = 0
 			},
 			{
 				code = "close",
@@ -381,7 +389,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_guard"
@@ -398,7 +407,8 @@ var data = {
 				text = "DWARF_PALACE_BIZ",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			}
 		],
 		options = [
@@ -417,7 +427,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_guard"
@@ -434,7 +445,8 @@ var data = {
 				text = "DWARF_PALACE_REPLY_IMPORTANT1",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			}
 		],
 		options = [
@@ -500,7 +512,8 @@ var data = {
 					{
 						code = "update_city"
 					}
-				]
+				],
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_guard"
@@ -520,7 +533,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_machine"
@@ -726,7 +740,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_barman"
@@ -746,7 +761,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_barman"
@@ -836,7 +852,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_goons"
@@ -940,7 +957,8 @@ var data = {
 						value = "visit_dwarfs_quest",
 						stage = "tavern"
 					}
-				]
+				],
+				dialogue_argument = 0
 			},
 			{
 				code = "close",
@@ -953,7 +971,8 @@ var data = {
 						stage = "tavern",
 						state = false
 					}
-				]
+				],
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_goons"
@@ -1038,7 +1057,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			},
 			{
 				code = "quest_fight",
@@ -1047,7 +1067,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_goons"
@@ -1085,7 +1106,8 @@ var data = {
 						stage = "tavern",
 						state = false
 					}
-				]
+				],
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_goons"
@@ -1570,7 +1592,8 @@ var data = {
 				text = "DTAVERN_BARK_REPLY_INFO_D",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "DTAVERN_BARK_REPLY_TENSE",
@@ -1651,7 +1674,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_barman"
@@ -2097,7 +2121,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -2117,7 +2142,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "toadd"
@@ -2248,7 +2274,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		character = "jean"
@@ -2265,7 +2292,8 @@ var data = {
 				text = "JEAN_DUNGEON_GUARD",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "JEAN_DUNGEON_REPLY_WHAT",
@@ -2293,7 +2321,8 @@ var data = {
 						check = true,
 						value = "JEAN_DUNGEON_REPLY_WHAT"
 					}
-				]
+				],
+				dialogue_argument = 0
 			},
 			{
 				code = "jean_dungeon_obey",
@@ -2301,7 +2330,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_guard"
@@ -2321,7 +2351,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_guard"
@@ -2341,7 +2372,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		character = "jean"
@@ -2388,7 +2420,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_guard"
@@ -2408,7 +2441,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_guard"
@@ -2438,7 +2472,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		],
 		image = "dwarf_guard"
