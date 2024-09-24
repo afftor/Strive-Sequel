@@ -194,7 +194,17 @@ var data = {
 
 				],
 				type = "next_dialogue",
-				dialogue_argument = 0
+				dialogue_argument = 0,
+				bonus_effects = [
+					{
+						code = "return_to_mansion"
+					},
+					{
+						code = 'plan_loc_event',
+						loc = 'dwarf_capital',
+						event = 'enter_city_t_0'
+					}
+				]
 			}
 		],
 		image = "dwarf_guard"

@@ -16216,7 +16216,6 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	ELF_CAPITAL9 = "Search For Lira",
 	ELF_CAPITAL10 = "Find Lira",
 	ELF_CAPITAL11 = "Initiate",
-	DWARF_GATES = "Approach gates",
 	DWARF_PALACE = "Palace",
 	DWARF_TAVERN = "Tavern",
 	DWARF_TAVERN_BARKEEP = "Talk to the Barkeep",

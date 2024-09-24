@@ -447,7 +447,10 @@ var data = {
 		text = [{text = "", reqs = []}],
 		options = [{
 			code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 0, type = "next_dialogue",
-			bonus_effects = [{code = "progress_quest", value = "visit_dwarfs_quest", stage = "search"}]
+			bonus_effects = [
+				{code = "progress_quest", value = "visit_dwarfs_quest", stage = "search"},
+				{code = 'plan_loc_event', loc = 'dwarf_capital', event = 'enter_city_t_0'}
+			]
 		}]
 	},
 	

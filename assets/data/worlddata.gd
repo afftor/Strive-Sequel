@@ -1080,10 +1080,6 @@ var fixed_location_options = { #override serialized data
 	],
 	dwarf_capital = [
 		{
-			text = tr("DWARF_GATES"),
-			reqs = [{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'search'}],
-			args = [{code = 'start_event', data = 'enter_city_t_0', args = []}]
-		},{
 			text = tr("DWARF_PALACE"),
 			reqs = [{type = 'any_quest_stage', value = 'visit_dwarfs_quest', stages = ['audience', 'jean']}],
 			args = [{code = 'start_event', data = 'dwarf_palace_first', args = []}]
