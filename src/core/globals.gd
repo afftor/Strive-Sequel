@@ -2221,6 +2221,8 @@ func common_effects(effects):
 			'plan_mansion_event':
 				if !ResourceScripts.game_progress.planned_mansion_events.has(i.value):
 					ResourceScripts.game_progress.planned_mansion_events.append(i.value)
+			'plan_loc_event':
+				ResourceScripts.game_progress.plan_loc_event(i.loc, i.event)
 			'add_special_task_for_location':
 				var template = {
 					code = 'special',

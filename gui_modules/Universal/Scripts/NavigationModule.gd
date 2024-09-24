@@ -108,6 +108,9 @@ func select_location(location):
 	gui_controller.close_all_closeable_windows()
 	
 	if location in ResourceScripts.game_world.capitals:
+		#planned_loc_events for now is only for cities
+		ResourceScripts.game_progress.try_planned_loc_event(location)
+		
 		gui_controller.current_screen = gui_controller.exploration_city
 		gui_controller.exploration_city.open_city(location)#
 		gui_controller.exploration_dungeon.hide()
