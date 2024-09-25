@@ -16147,6 +16147,7 @@ Kuro makes a pause taking in your answer after which she closes her eyes. The da
 	SETTLEMENT_PLAINS1_ = "Человеческая деревня",
 	SETTLEMENT_PLAINS2_ = "Поселение",
 	SETTLEMENT_MOUNTAINS1 = "Поселение",
+	INFINITEDUNGEON = """Tower of Dreams""", # MISSING TRANSLATION
 	
 	#questdata
 	

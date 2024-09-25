@@ -280,7 +280,7 @@ var dungeons = {
 #		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
 #		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
 #		final_enemy = [], final_enemy_type = 'monster', final_enemy_class = ['combat'],
-		
+		travel_time = [1,1],
 		event_data = {
 			dungeon_find_chest_easy = {
 				limit = 0,

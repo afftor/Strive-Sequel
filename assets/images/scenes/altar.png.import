@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hybris_shrine.png-8ef0c631da3094ef9ecac5a40caf84d9.stex"
+path="res://.import/altar.png-4ebd3bd1acf692fcbd2361ff5ccd6100.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/hybris_shrine.png"
-dest_files=[ "res://.import/hybris_shrine.png-8ef0c631da3094ef9ecac5a40caf84d9.stex" ]
+source_file="res://assets/images/scenes/altar.png"
+dest_files=[ "res://.import/altar.png-4ebd3bd1acf692fcbd2361ff5ccd6100.stex" ]
 
 [params]
 

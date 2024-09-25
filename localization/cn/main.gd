@@ -13878,6 +13878,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	SETTLEMENT_PLAINS1_ = "village_human_quest",
 	SETTLEMENT_PLAINS2_ = "Settlement",
 	SETTLEMENT_MOUNTAINS1 = "Settlement",
+	INFINITEDUNGEON = """Tower of Dreams""", # MISSING TRANSLATION
 	
 	#questdata
 	

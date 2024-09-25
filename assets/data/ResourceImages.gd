@@ -391,7 +391,7 @@ var scenes = {
 	celena_shrine = load("res://assets/images/scenes/celena_shrine.png"),
 	freya_shrine = load("res://assets/images/scenes/freya_shrine.png"),
 	erebus_shrine = load("res://assets/images/scenes/erebus_shrine.png"),
-	hybris_shrine = load("res://assets/images/scenes/hybris_shrine.png"),
+	hybris_shrine = load("res://assets/images/scenes/altar.png"),
 	cali_bandit_win = load("res://assets/images/scenes/cali win.png"),
 	cali_mother_dead = load("res://assets/images/scenes/cali mother.png"),
 	cali_meeting = load("res://assets/images/scenes/conference.png"),
@@ -434,7 +434,10 @@ var scenes = {
 	elven_prisoners = load("res://assets/images/scenes/elven_prisoner.png"),
 	dwarf_guard = load("res://assets/images/scenes/dwarf_guard.png"),
 	kobolds = load("res://assets/images/scenes/kobolds.png"),
-	dwarf_machine = load("res://assets/images/scenes/machine.png")
+	dwarf_machine = load("res://assets/images/scenes/machine.png"),
+	kuro_dwarves = load("res://assets/images/scenes/kuro dwarfs.png"),
+	rings_in_box = load("res://assets/images/scenes/rings_in_box.png"),
+	dwarf_tavern_stranger = load("res://assets/images/scenes/tavern stranger.png"),
 }
 
 var sprites = {
