@@ -150,8 +150,8 @@ func advance_day():
 
 func advance_hour():
 	for i in areas.values():
-		for j in i.locations.values() + i.questlocations.values():
-			if j.type == 'dungeon':
+		for j in i.locations.values() + i.questlocations.values() + i.capital.values():
+			if j.has('stamina'):
 				j.stamina += 25
 				if j.stamina > 100:
 					j.stamina = 100
