@@ -266,7 +266,7 @@ var biomes = {
 	},
 }
 var dungeons = {
-	dungeon_infinite_example = {
+	infinite_aliron = {
 		code = 'dungeon_infinite_example',
 		type = 'dungeon',
 		name = 'infinite',
@@ -351,7 +351,7 @@ var dungeons = {
 		purchase_price = 100,
 		affiliation = 'local', #defines character races and events
 		events = [],
-		area = 'mountains',
+		area = 'plains',
 		tags = ['infinite'],
 		biomes = [],#['test_biome1', 'test_biome2', 'test_biome2', 'test_biome1'], #fixed order of first levels
 		avaliable_biomes = ['biome_bandit_den', 'biome_bandit_fort', 'biome_rebel_redoubt', 'biome_undead_crypt', 'biome_goblin_cave', 'biome_grove', 'biome_ancient_jungles', 'biome_fire_depths']

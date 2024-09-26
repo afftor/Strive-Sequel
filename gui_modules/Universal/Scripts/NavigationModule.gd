@@ -26,7 +26,7 @@ func update_buttons():
 
 
 func sort_locations(locations_array):
-	var capitals = ["Mansion"]
+	var capitals = ["Mansion", "Infinite"]
 	var settlements = []
 	var dungeons = []
 	var quest_locations = []
@@ -72,6 +72,15 @@ func build_accessible_locations(args = null):
 			newbutton.pressed = gui_controller.current_screen == gui_controller.mansion
 			newbutton.toggle_mode = !gui_controller.current_screen == gui_controller.mansion
 			continue
+		if i == "Infinite":
+			newbutton.text = "Infinite Dungeon"
+			newbutton.connect("pressed", self, "open_infinite")
+			# newbutton.set_meta("data", i)
+			newseparator.visible = true
+			if !ResourceScripts.game_progress.decisions.has('unlock_infinite'):
+				newseparator.visible = false
+				newbutton.visible = false
+			continue
 		if i != sorted_locations[sorted_locations.size() - 1]:
 			newseparator.visible = true
 		else:
@@ -80,6 +89,42 @@ func build_accessible_locations(args = null):
 		newbutton.connect("pressed", self, "select_location", [i])
 		newbutton.set_meta("data", i)
 		update_buttons()
+
+
+func open_infinite():
+	input_handler.selected_location = 'aliron'
+	var data = ResourceScripts.world_gen.get_location_from_code(input_handler.selected_location)
+	input_handler.active_location = data
+	input_handler.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[input_handler.selected_location].area]
+	if gui_controller.exploration == null:
+		gui_controller.exploration = input_handler.get_spec_node(input_handler.NODE_EXPLORATION, null, false, false)
+	if gui_controller.exploration_city == null:
+		gui_controller.exploration_city = input_handler.get_spec_node(input_handler.NODE_EXPLORATION_CITY, null, false, false)
+	if gui_controller.exploration_dungeon == null:
+		gui_controller.exploration_dungeon = input_handler.get_spec_node(input_handler.NODE_EXPLORATION_DUNGEON, null, false, false)
+	if gui_controller.current_screen == gui_controller.mansion:
+		input_handler.PlaySound("door_open")
+		gui_controller.previous_screen = gui_controller.current_screen
+		ResourceScripts.core_animations.BlackScreenTransition(0.5)
+		yield(get_tree().create_timer(0.5), 'timeout')
+#		gui_controller.open_exploration(location)
+		gui_controller.mansion.hide()
+	build_accessible_locations()
+	gui_controller.close_all_closeable_windows()
+	
+	var presented_characters = []
+	for id in ResourceScripts.game_party.character_order:
+		var i = ResourceScripts.game_party.characters[id]
+		if i.check_location(data.id, true):
+			presented_characters.append(i)
+	if presented_characters.size() == 0:
+		select_location('Aliron')
+		return
+	gui_controller.current_screen = gui_controller.exploration_dungeon
+	gui_controller.exploration_dungeon.open_location(data)
+	gui_controller.exploration_dungeon.show()
+	gui_controller.exploration_city.hide()
+	gui_controller.exploration.hide()
 
 
 func select_location(location):
@@ -115,6 +160,12 @@ func select_location(location):
 		gui_controller.exploration_city.show()
 		gui_controller.clock.raise()
 		gui_controller.clock.show()
+#		var data = ResourceScripts.world_gen.get_location_from_code(location)
+#		gui_controller.current_screen = gui_controller.exploration_dungeon
+#		gui_controller.exploration_dungeon.open_location(data)
+#		gui_controller.exploration_dungeon.show()
+#		gui_controller.exploration_city.hide()
+#		gui_controller.exploration.hide()
 	else:
 		var data = ResourceScripts.world_gen.get_location_from_code(location)
 		var presented_characters = []

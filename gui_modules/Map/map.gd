@@ -430,10 +430,10 @@ func build_info(loc = null):
 	#build info
 	$InfoPanel/Label.text = tr(location.name)
 	var icon = null
-	if location.has('background'):
-		icon = location.background
-	elif location.type == 'capital' and adata.has('capital_background'):
+	if location.type == 'capital' and adata.has('capital_background'):
 		icon = adata.capital_background
+	elif location.has('background'):
+		icon = location.background
 	if icon != null:
 		icon = images.backgrounds[icon]
 	$InfoPanel/InfoFrame/icon.texture = icon
@@ -795,8 +795,8 @@ func update_location_chars():
 			ch.visible = show_chars
 			ch.pressed = (selected_chars.has(person_id))
 			ch.disabled = (selected_loc != null and ch.get_meta('location') != selected_loc)
-			if !person.is_controllable(): 
-				ch.disabled = true
+#			if !person.is_controllable(): 
+#				ch.disabled = true
 			if person.get_location() == 'travel':
 				ch.disabled = true
 
