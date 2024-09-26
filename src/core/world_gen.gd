@@ -46,7 +46,15 @@ func make_area(code):
 		ResourceScripts.game_world.capitals.append(areadata.capital_code)
 		areadata.capital = {}
 		ResourceScripts.game_world.location_links[areadata.capital_code] = {name = areadata.capital_name, area = areadata.code, type = 'capital', travel_time = 0, category = 'capital', id = areadata.capital_code}
-		areadata.capital[areadata.capital_code] = {name = areadata.capital_name, area = areadata.code, type = 'capital', travel_time = 0, category = 'capital', id = areadata.capital_code, group = {}, tags = []}
+		if DungeonData.dungeons.has('infinite_' + areadata.capital_code):
+			areadata.capital[areadata.capital_code] = make_location('infinite_' + areadata.capital_code, code)
+			areadata.capital[areadata.capital_code].name = areadata.capital_name
+			areadata.capital[areadata.capital_code].type = 'capital'
+			areadata.capital[areadata.capital_code].travel_time = 0
+			areadata.capital[areadata.capital_code].category = 'capital'
+			areadata.capital[areadata.capital_code].id = areadata.capital_code
+		else:
+			areadata.capital[areadata.capital_code] = {name = areadata.capital_name, area = areadata.code, type = 'capital', travel_time = 0, category = 'capital', id = areadata.capital_code, group = {}, tags = []}
 	for i in areadata.guilds:
 		make_guild(i, areadata)
 	areadata.erase('guilds')

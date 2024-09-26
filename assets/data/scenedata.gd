@@ -290,7 +290,7 @@ var scenedict = {
 		tags = [],
 		options = [
 		{code = 'close', reqs = [], text = "DIALOGUECLOSE", bonus_effects = [
-			{code = 'make_quest_location', value = 'dungeon_infinite_example'}, #not sure
+			{code = 'decision', value = 'unlock_infinite'}, 
 			{code = 'update_city'},
 			] },
 		],
