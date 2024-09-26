@@ -16618,8 +16618,6 @@ Kuro makes a pause taking in your answer after which she closes her eyes. The da
 	
 	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT1 = "Вы встречаете одинокого искателя приключений: [name].",
 	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT2 = "Атаковать",
-	QUEST_DWARFS_GATE_TEXT = """Dwarven city gate""", # MISSING TRANSLATION
-	QUEST_DWARFS_GATE_DESC = """""", # MISSING TRANSLATION
 	QUEST_MOUNTAIN_PASS_TEXT = """Mountain Pass""", # MISSING TRANSLATION
 	QUEST_MOUNTAIN_PASS_DESC = """""", # MISSING TRANSLATION
 	QUEST_HOLLOW_PASSAGE_TEXT = """Hollow Passage""", # MISSING TRANSLATION
@@ -16754,7 +16752,6 @@ Kuro makes a pause taking in your answer after which she closes her eyes. The da
 	QUEST_GOBLIN_LOCATION2 = "Искать следы",
 	QUEST_GOBLIN_LOCATION3 = "Искать следы гоблинов",
 	QUEST_GOBLIN_LOCATION4 = "Отчитаться",
-	QUEST_DWARFS_GATE_LOCATION = """Approach""", # MISSING TRANSLATION
 	QUEST_MOUNTAIN_PASS_LOCATION = """Find Jean""", # MISSING TRANSLATION
 	QUEST_HOLLOW_PASSAGE_LOCATION = """Search for rebel tracks""", # MISSING TRANSLATION
 	QUEST_OLD_GODS_TEMPLE_LOCATION = """Approach""", # MISSING TRANSLATION

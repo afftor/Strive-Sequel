@@ -13805,6 +13805,11 @@ The magical energy coalesces around your hands, forming ethereal tendrils that s
 Prisoner: — W-what are you doing? Stay back!
 
 His voice wavers, a mix of fear and defiance. The magical tendrils hover inches from his skin, ready to inflict pain beyond physical means. The prisoner's ragged breathing is the only sound breaking the eerie silence.""",
+	DWARF_PRISON_CHARM = """You approach the prisoner with a friendly smile and try to ease him up. He stays wary despite your attempt but visually relaxes a bit.
+
+Prisoner: — I-I told you I won't say a thing...
+
+You hear a sign of exhaustion and readiness to give in in his voice while considering how you can make him surrender.""",
 	DWARF_PRISON_ATTACK1 = """Suddenly, the cell door bursts open. Three masked figures rush in, weapons drawn. One of them quickly breaks the prisoner's chains while the others keep their weapons trained on you.
 
 Masked Figure: — Don't move! We're taking our comrade back.
@@ -16174,8 +16179,6 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	BANDITS_THREAT_QUEST_TEXT2 = "Fight",
 	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT1 = "You meet a lone adventurer: [name].",
 	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT2 = "Attack",
-	QUEST_DWARFS_GATE_TEXT = "Dwarven city gate",
-	QUEST_DWARFS_GATE_DESC = "",
 	QUEST_MOUNTAIN_PASS_TEXT = "Mountain Pass",
 	QUEST_MOUNTAIN_PASS_DESC = "",
 	QUEST_HOLLOW_PASSAGE_TEXT = "Hollow Passage",
@@ -16284,7 +16287,6 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_GOBLIN_LOCATION2 = "Search for tracks",
 	QUEST_GOBLIN_LOCATION3 = "Search for goblin tracks",
 	QUEST_GOBLIN_LOCATION4 = "Report back",
-	QUEST_DWARFS_GATE_LOCATION = "Approach",
 	QUEST_MOUNTAIN_PASS_LOCATION = "Find Jean",
 	QUEST_HOLLOW_PASSAGE_LOCATION = "Search for rebel tracks",
 	QUEST_OLD_GODS_TEMPLE_LOCATION = "Approach",
@@ -16902,3 +16904,4 @@ After a few minutes nothing still happened and [name] decides to move on.""",
 	LILIA_WEDDING_SS = "Keep Fairy forever with you",
 	LILITH_WEDDING_SS = "Devote your soul to the little imp"
 }
+

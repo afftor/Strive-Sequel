@@ -919,13 +919,13 @@ var data = {
 				type = "next_dialogue"
 			},
 			{
-				code = "dwarf_prison_attack",
+				code = "dwarf_prison_interrogate_res",
 				text = "DWARF_PRISON_OPT_CHARM",
 				reqs = [
 
 				],
 				type = "next_dialogue",
-				dialogue_argument = 0
+				dialogue_argument = 3
 			}
 		],
 		image = "toadd"
@@ -951,6 +951,13 @@ var data = {
 
 				],
 				previous_dialogue_option = 2
+			},
+			{
+				text = "DWARF_PRISON_CHARM",
+				reqs = [
+
+				],
+				previous_dialogue_option = 3
 			}
 		],
 		options = [
