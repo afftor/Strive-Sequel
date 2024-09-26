@@ -383,7 +383,8 @@ var data = {
 				text = "AFTER_RITUAL_START",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "AFTER_RITUAL_1_1",

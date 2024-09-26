@@ -171,7 +171,8 @@ var data = {
 				],
 				select_person = true,
 				challenge = "dexterity",
-				not_hide = true
+				not_hide = true,
+				dialogue_argument = 0
 			},
 			{
 				code = "quest_fight",
@@ -184,7 +185,8 @@ var data = {
 						value = "JoinCoalition",
 						check = false
 					}
-				]
+				],
+				dialogue_argument = 0
 			},
 			{
 				code = "quest_fight",
@@ -197,7 +199,8 @@ var data = {
 						value = "JoinCoalition",
 						check = true
 					}
-				]
+				],
+				dialogue_argument = 0
 			}
 		]
 	},
@@ -1739,7 +1742,8 @@ var data = {
 						operant = "eq",
 						value = "blond"
 					}
-				]
+				],
+				dialogue_argument = 0
 			},
 			{
 				code = "dwarf_aftermatch_start",
@@ -1880,7 +1884,8 @@ var data = {
 						operant = "-",
 						value = 1000
 					}
-				]
+				],
+				dialogue_argument = 0
 			},
 			{
 				code = "dwarf_aftermatch_slave2",
@@ -1912,7 +1917,8 @@ var data = {
 						operant = "eq",
 						value = "blond"
 					}
-				]
+				],
+				dialogue_argument = 0
 			},
 			{
 				code = "close",
@@ -1920,7 +1926,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		]
 	},
@@ -2127,7 +2134,8 @@ var data = {
 				type = "next_dialogue",
 				select_person = true,
 				challenge = "persuasion",
-				not_hide = true
+				not_hide = true,
+				dialogue_argument = 0
 			},
 			{
 				code = "jean_recruit_reply",
@@ -3063,7 +3071,8 @@ var data = {
 				type = "next_dialogue",
 				select_person = true,
 				challenge = "strength",
-				not_hide = true
+				not_hide = true,
+				dialogue_argument = 0
 			},
 			{
 				code = "kuro_recruit_right",
@@ -3074,7 +3083,8 @@ var data = {
 				type = "next_dialogue",
 				select_person = true,
 				challenge = "dexterity",
-				not_hide = true
+				not_hide = true,
+				dialogue_argument = 0
 			},
 			{
 				code = "kuro_recruit_right",
@@ -3085,7 +3095,8 @@ var data = {
 				type = "next_dialogue",
 				select_person = true,
 				challenge = "wisdom",
-				not_hide = true
+				not_hide = true,
+				dialogue_argument = 0
 			},
 			{
 				code = "kuro_recruit_right",
@@ -3096,7 +3107,8 @@ var data = {
 				type = "next_dialogue",
 				select_person = true,
 				challenge = "persuasion",
-				not_hide = true
+				not_hide = true,
+				dialogue_argument = 0
 			},
 			{
 				code = "kuro_recruit_wrong",
