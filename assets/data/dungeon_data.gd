@@ -270,6 +270,7 @@ var dungeons = {
 		code = 'dungeon_infinite_example',
 		type = 'dungeon',
 		name = 'infinite',
+		altname = 'infinite',
 		classname = '',
 		descript = tr("DUNGEON_BANDIT_DEN_DESC"),
 		character_data = {

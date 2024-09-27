@@ -210,7 +210,13 @@ func open_location(data): #2fix
 	if !data.tags.has('infinite'):
 		map_panel.get_node("levels").visible = false
 		dungeon = active_location.dungeon[active_location.current_level]
+		$LocationGui/PresentedSlavesPanel/ReturnAll.visible = true
+		map_panel.get_node("res").visible = true
+#		res_panel.visible = true
 	else:
+		$LocationGui/PresentedSlavesPanel/ReturnAll.visible = false
+		map_panel.get_node("res").visible = false
+		res_panel.visible = false
 		dungeon = active_location.dungeon[0]
 		input_handler.emit_signal("survival_advance")
 		map_panel.get_node("levels").visible = true
@@ -255,7 +261,10 @@ func open_location(data): #2fix
 
 func build_location_description():
 	var text = ''
-	text = active_location.name
+	if active_location.has('altname'):
+		text = active_location.altname
+	else:
+		text = active_location.name
 	if active_location.tags.has("infinite"):
 		text += " (" + tr('INFINITE') + ")"
 	elif !active_location.tags.has("quest"):

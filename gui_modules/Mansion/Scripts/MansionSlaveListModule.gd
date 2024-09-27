@@ -325,9 +325,9 @@ func show_location_characters(button = null):
 			var person_location = person_reference.travel.location
 			if selected_location == "show_all":
 				person.visible = true
-			elif selected_location == "mansion" || selected_location == "Aliron":
-				if person_location == "mansion": person_location = "Aliron"
-				person.visible = person_location == "Aliron"
+			elif selected_location == "mansion" || selected_location == "aliron":
+				if person_location == "mansion": person_location = "aliron"
+				person.visible = person_location == "aliron"
 			else:
 				person.visible = (person_location == selected_location)
 		if person.is_visible():

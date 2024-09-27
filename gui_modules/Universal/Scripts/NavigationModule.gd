@@ -118,7 +118,7 @@ func open_infinite():
 		if i.check_location(data.id, true):
 			presented_characters.append(i)
 	if presented_characters.size() == 0:
-		select_location('Aliron')
+		select_location('aliron')
 		return
 	gui_controller.current_screen = gui_controller.exploration_dungeon
 	gui_controller.exploration_dungeon.open_location(data)
@@ -177,7 +177,7 @@ func select_location(location):
 			if i.check_location(data.id, true):
 				presented_characters.append(i)
 		if presented_characters.size() == 0:
-			select_location('Aliron')
+			select_location('aliron')
 			return
 		else:
 			if data.type == 'dungeon':
