@@ -930,8 +930,9 @@ var data = {
 				type = "next_dialogue",
 				bonus_effects = [
 					{
-						code = "decision",
-						value = "HaveScales"
+						code = 'add_item',
+						item = 'sacred_scales',
+						number = 1
 					}
 				]
 			}
@@ -1184,9 +1185,10 @@ var data = {
 						previous_dialogue_option = 0,
 						reqs = [
 							{
-								type = "decision",
-								value = "HaveScales",
-								check = true
+								type = 'has_items',
+								operant = 'gte',
+								value = 1,
+								name = 'sacred_scales'
 							}
 						]
 					},
@@ -1195,9 +1197,10 @@ var data = {
 						previous_dialogue_option = 0,
 						reqs = [
 							{
-								type = "decision",
-								value = "HaveScales",
-								check = false
+								type = 'has_items',
+								operant = 'lt',
+								value = 1,
+								name = 'sacred_scales'
 							}
 						]
 					},
