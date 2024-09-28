@@ -16,13 +16,34 @@ var data = {
 		text = "DKING_START",
 		options = [
 			{
+				code = "dking_first_start1",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				type = "next_dialogue",
+				dialogue_argument = 1
+			}
+		],
+		image = "dwarf_king_palace"
+	},
+	dking_first_start1 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = "DKING_START1",
+		options = [
+			{
 				code = "dking_first_start2",
 				text = "DIALOGUECONTINUE",
 				reqs = [
 
 				],
 				type = "next_dialogue",
-				dialogue_argument = 0
+				dialogue_argument = 1
 			}
 		],
 		image = "dwarf_king_palace"
@@ -821,7 +842,7 @@ var data = {
 
 				],
 				type = "next_dialogue",
-				dialogue_argument = 0
+				dialogue_argument = 1
 			}
 		],
 		image = "toadd"
@@ -837,13 +858,35 @@ var data = {
 		text = "DWARF_PRISON_SLAVE2",
 		options = [
 			{
+				code = "dwarf_prison_slave2_1",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				type = "next_dialogue",
+				dialogue_argument = 1
+			}
+		],
+		image = "toadd"
+	},
+	dwarf_prison_slave2_1 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+		text = "DWARF_PRISON_SLAVE2_1",
+		options = [
+			{
 				code = "dwarf_prison_slave3",
 				text = "DIALOGUECONTINUE",
 				reqs = [
 
 				],
 				type = "next_dialogue",
-				dialogue_argument = 0
+				dialogue_argument = 1
 			}
 		],
 		image = "toadd"
@@ -857,6 +900,28 @@ var data = {
 			"active_character_translate"
 		],
 		text = "DWARF_PRISON_SLAVE3",
+		options = [
+			{
+				code = "dwarf_prison_slave3_1",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				type = "next_dialogue",
+				dialogue_argument = 1
+			}
+		],
+		image = "toadd"
+	},
+	dwarf_prison_slave3_1 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+		text = "DWARF_PRISON_SLAVE3_1",
 		options = [
 			{
 				code = "dwarf_prison_attack",
@@ -880,13 +945,34 @@ var data = {
 		text = "DWARF_PRISON_INTERROGATE1",
 		options = [
 			{
+				code = "dwarf_prison_interrogate1_1",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				type = "next_dialogue",
+				dialogue_argument = 1
+			}
+		],
+		image = "toadd"
+	},
+	dwarf_prison_interrogate1_1 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = "DWARF_PRISON_INTERROGATE1_1",
+		options = [
+			{
 				code = "dwarf_prison_interrogate2",
 				text = "DIALOGUECONTINUE",
 				reqs = [
 
 				],
 				type = "next_dialogue",
-				dialogue_argument = 0
+				dialogue_argument = 1
 			}
 		],
 		image = "toadd"
@@ -901,7 +987,7 @@ var data = {
 		text = "DWARF_PRISON_INTERROGATE2",
 		options = [
 			{
-				code = "dwarf_prison_interrogate_res",
+				code = "dwarf_prison_physics",
 				text = "DWARF_PRISON_OPT_PHYSICS",
 				reqs = [
 
@@ -910,27 +996,27 @@ var data = {
 				type = "next_dialogue"
 			},
 			{
-				code = "dwarf_prison_interrogate_res",
+				code = "dwarf_prison_magic",
 				text = "DWARF_PRISON_OPT_MAGIC",
 				reqs = [
 
 				],
-				dialogue_argument = 2,
+				dialogue_argument = 1,
 				type = "next_dialogue"
 			},
 			{
-				code = "dwarf_prison_attack",
+				code = "dwarf_prison_interrogate_res",
 				text = "DWARF_PRISON_OPT_CHARM",
 				reqs = [
 
 				],
 				type = "next_dialogue",
-				dialogue_argument = 0
+				dialogue_argument = 3
 			}
 		],
 		image = "toadd"
 	},
-	dwarf_prison_interrogate_res = {
+	dwarf_prison_physics = {
 		reqs = [
 
 		],
@@ -945,12 +1031,106 @@ var data = {
 				],
 				previous_dialogue_option = 1
 			},
+		],
+		options = [
+			{
+				code = "dwarf_prison_physics2",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				type = "next_dialogue",
+				dialogue_argument = 1
+			}
+		],
+		image = "toadd"
+	},
+	dwarf_prison_physics2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = [
+			{
+				text = "DWARF_PRISON_PHYSICS2",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+		],
+		options = [
+			{
+				code = "dwarf_prison_interrogate_res",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				type = "next_dialogue",
+				dialogue_argument = 1
+			}
+		],
+		image = "toadd"
+	},
+	dwarf_prison_magic = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = [
 			{
 				text = "DWARF_PRISON_MAGIC",
 				reqs = [
 
 				],
+				previous_dialogue_option = 1
+			},
+		],
+		options = [
+			{
+				code = "dwarf_prison_interrogate_res",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				type = "next_dialogue",
+				dialogue_argument = 2
+			}
+		],
+		image = "toadd"
+	},
+	dwarf_prison_interrogate_res = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = [
+			{
+				text = "DWARF_PRISON_PHYSICS3",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+			{
+				text = "DWARF_PRISON_MAGIC2",
+				reqs = [
+
+				],
 				previous_dialogue_option = 2
+			},
+			{
+				text = "DWARF_PRISON_CHARM",
+				reqs = [
+
+				],
+				previous_dialogue_option = 3
 			}
 		],
 		options = [
@@ -982,13 +1162,55 @@ var data = {
 		text = "DWARF_PRISON_ATTACK1",
 		options = [
 			{
+				code = "dwarf_prison_attack1_1",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				type = "next_dialogue",
+				dialogue_argument = 1
+			}
+		],
+		image = "toadd"
+	},
+	dwarf_prison_attack1_1 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = "DWARF_PRISON_ATTACK1_1",
+		options = [
+			{
+				code = "dwarf_prison_attack1_2",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				type = "next_dialogue",
+				dialogue_argument = 1
+			}
+		],
+		image = "toadd"
+	},
+	dwarf_prison_attack1_2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = "DWARF_PRISON_ATTACK1_2",
+		options = [
+			{
 				code = "dwarf_prison_attack2",
 				text = "DIALOGUECONTINUE",
 				reqs = [
 
 				],
 				type = "next_dialogue",
-				dialogue_argument = 0
+				dialogue_argument = 1
 			}
 		],
 		image = "toadd"
@@ -1125,6 +1347,27 @@ var data = {
 		text = "HOLLOW_PASS_KOBOLDS",
 		options = [
 			{
+				code = "hollow_pass_kobolds2",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				dialogue_argument = 1,
+				type = "next_dialogue"
+			}
+		],
+		image = "kobolds"
+	},
+	hollow_pass_kobolds2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = "HOLLOW_PASS_KOBOLDS2",
+		options = [
+			{
 				code = "hollow_pass_escort",
 				text = "HOLLOW_PASS_OPT_EXPLORE",
 				reqs = [
@@ -1192,13 +1435,41 @@ var data = {
 		],
 		options = [
 			{
+				code = "hollow_pass_escort1",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				type = "next_dialogue",
+				dialogue_argument = 1
+			}
+		],
+		image = "kobolds"
+	},
+	hollow_pass_escort1 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = [
+			{
+				text = "HOLLOW_PASS_ESCORT1",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
 				code = "hollow_pass_escort2",
 				text = "DIALOGUECONTINUE",
 				reqs = [
 
 				],
 				type = "next_dialogue",
-				dialogue_argument = 0
+				dialogue_argument = 1
 			}
 		],
 		image = "kobolds"
@@ -1213,13 +1484,34 @@ var data = {
 		text = "HOLLOW_PASS_ESCORT2",
 		options = [
 			{
+				code = "hollow_pass_escort2_1",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				type = "next_dialogue",
+				dialogue_argument = 1
+			}
+		],
+		image = "kobolds"
+	},
+	hollow_pass_escort2_1 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = "HOLLOW_PASS_ESCORT2_1",
+		options = [
+			{
 				code = "hollow_pass_escort3",
 				text = "DIALOGUECONTINUE",
 				reqs = [
 
 				],
 				type = "next_dialogue",
-				dialogue_argument = 0
+				dialogue_argument = 1
 			}
 		],
 		image = "kobolds"
@@ -1728,7 +2020,7 @@ var data = {
 
 				],
 				type = "next_dialogue",
-				dialogue_argument = 0
+				dialogue_argument = 1
 			}
 		],
 		image = "toadd"
@@ -1741,6 +2033,27 @@ var data = {
 			"dialogue_scene"
 		],
 		text = "OLD_TEMPLE_FINISH3",
+		options = [
+			{
+				code = "old_temple_finish3_1",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				type = "next_dialogue",
+				dialogue_argument = 1
+			}
+		],
+		image = "toadd"
+	},
+	old_temple_finish3_1 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = "OLD_TEMPLE_FINISH3_1",
 		options = [
 			{
 				code = "close",
@@ -1778,7 +2091,7 @@ var data = {
 						]
 					}
 				],
-				dialogue_argument = 0
+				dialogue_argument = 1
 			}
 		],
 		image = "toadd"
@@ -2206,6 +2519,27 @@ var data = {
 		text = "COALBASE_ATTACK_GATES",
 		options = [
 			{
+				code = "coalbase_attack_gates2",
+				dialogue_argument = 1,
+				text = "DIALOGUECONTINUE",
+				type = "next_dialogue",
+				reqs = [
+					
+				]
+			}
+		],
+		image = "toadd"
+	},
+	coalbase_attack_gates2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = "COALBASE_ATTACK_GATES2",
+		options = [
+			{
 				code = "coalbase_attack_bring_girl",
 				text = "COALBASE_ATTACK_OPT_WHAT",
 				reqs = [
@@ -2381,6 +2715,35 @@ var data = {
 		text = [
 			{
 				text = "COALBASE_ATTACK_REPLY_ZEPHYRA",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "coalbase_attack_reply_zephyra2",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				dialogue_argument = 1,
+				type = "next_dialogue"
+			}
+		]
+	},
+	coalbase_attack_reply_zephyra2 = {
+		reqs = [
+
+		],
+		character = "kuro",
+		character2 = "zephyra",
+		tags = [
+			"dialogue_scene"
+		],
+		text = [
+			{
+				text = "COALBASE_ATTACK_REPLY_ZEPHYRA2",
 				reqs = [
 
 				]

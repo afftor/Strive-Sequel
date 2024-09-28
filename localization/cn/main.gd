@@ -14348,8 +14348,6 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT1 = "你遇到了一个孤独的冒险家: [name].",
 	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT2 = "攻击",
-	QUEST_DWARFS_GATE_TEXT = """Dwarven city gate""", # MISSING TRANSLATION
-	QUEST_DWARFS_GATE_DESC = """""", # MISSING TRANSLATION
 	QUEST_MOUNTAIN_PASS_TEXT = """Mountain Pass""", # MISSING TRANSLATION
 	QUEST_MOUNTAIN_PASS_DESC = """""", # MISSING TRANSLATION
 	QUEST_HOLLOW_PASSAGE_TEXT = """Hollow Passage""", # MISSING TRANSLATION
@@ -14485,7 +14483,6 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_GOBLIN_LOCATION2 = "追踪痕迹",
 	QUEST_GOBLIN_LOCATION3 = "追踪哥布林的痕迹",
 	QUEST_GOBLIN_LOCATION4 = "返回报告",
-	QUEST_DWARFS_GATE_LOCATION = """Approach""", # MISSING TRANSLATION
 	QUEST_MOUNTAIN_PASS_LOCATION = """Find Jean""", # MISSING TRANSLATION
 	QUEST_HOLLOW_PASSAGE_LOCATION = """Search for rebel tracks""", # MISSING TRANSLATION
 	QUEST_OLD_GODS_TEMPLE_LOCATION = """Approach""", # MISSING TRANSLATION

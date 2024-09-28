@@ -1394,7 +1394,8 @@ var data = {
 				text = "CHIEFTAIN_MEETING_1",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "CHIEFTAIN_MEETING_2_1",
@@ -3010,7 +3011,8 @@ var data = {
 				text = "PRE_RITUAL_8",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "PRE_RITUAL_9_1",

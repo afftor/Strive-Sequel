@@ -171,7 +171,8 @@ var data = {
 				],
 				select_person = true,
 				challenge = "dexterity",
-				not_hide = true
+				not_hide = true,
+				dialogue_argument = 0
 			},
 			{
 				code = "quest_fight",
@@ -184,7 +185,8 @@ var data = {
 						value = "JoinCoalition",
 						check = false
 					}
-				]
+				],
+				dialogue_argument = 0
 			},
 			{
 				code = "quest_fight",
@@ -197,7 +199,8 @@ var data = {
 						value = "JoinCoalition",
 						check = true
 					}
-				]
+				],
+				dialogue_argument = 0
 			}
 		]
 	},
@@ -927,8 +930,9 @@ var data = {
 				type = "next_dialogue",
 				bonus_effects = [
 					{
-						code = "decision",
-						value = "HaveScales"
+						code = 'add_item',
+						item = 'sacred_scales',
+						number = 1
 					}
 				]
 			}
@@ -1181,9 +1185,10 @@ var data = {
 						previous_dialogue_option = 0,
 						reqs = [
 							{
-								type = "decision",
-								value = "HaveScales",
-								check = true
+								type = 'has_items',
+								operant = 'gte',
+								value = 1,
+								name = 'sacred_scales'
 							}
 						]
 					},
@@ -1192,9 +1197,10 @@ var data = {
 						previous_dialogue_option = 0,
 						reqs = [
 							{
-								type = "decision",
-								value = "HaveScales",
-								check = false
+								type = 'has_items',
+								operant = 'lt',
+								value = 1,
+								name = 'sacred_scales'
 							}
 						]
 					},
@@ -1737,9 +1743,10 @@ var data = {
 						code = "stat",
 						stat = "hair_color",
 						operant = "eq",
-						value = "blond"
+						value = "yellow"#blond
 					}
-				]
+				],
+				dialogue_argument = 0
 			},
 			{
 				code = "dwarf_aftermatch_start",
@@ -1880,7 +1887,8 @@ var data = {
 						operant = "-",
 						value = 1000
 					}
-				]
+				],
+				dialogue_argument = 0
 			},
 			{
 				code = "dwarf_aftermatch_slave2",
@@ -1910,9 +1918,10 @@ var data = {
 						code = "stat",
 						stat = "hair_color",
 						operant = "eq",
-						value = "blond"
+						value = "yellow"#blond
 					}
-				]
+				],
+				dialogue_argument = 0
 			},
 			{
 				code = "close",
@@ -1920,7 +1929,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 0
 			}
 		]
 	},
@@ -2127,7 +2137,8 @@ var data = {
 				type = "next_dialogue",
 				select_person = true,
 				challenge = "persuasion",
-				not_hide = true
+				not_hide = true,
+				dialogue_argument = 0
 			},
 			{
 				code = "jean_recruit_reply",
@@ -3063,7 +3074,8 @@ var data = {
 				type = "next_dialogue",
 				select_person = true,
 				challenge = "strength",
-				not_hide = true
+				not_hide = true,
+				dialogue_argument = 0
 			},
 			{
 				code = "kuro_recruit_right",
@@ -3074,7 +3086,8 @@ var data = {
 				type = "next_dialogue",
 				select_person = true,
 				challenge = "dexterity",
-				not_hide = true
+				not_hide = true,
+				dialogue_argument = 0
 			},
 			{
 				code = "kuro_recruit_right",
@@ -3085,7 +3098,8 @@ var data = {
 				type = "next_dialogue",
 				select_person = true,
 				challenge = "wisdom",
-				not_hide = true
+				not_hide = true,
+				dialogue_argument = 0
 			},
 			{
 				code = "kuro_recruit_right",
@@ -3096,7 +3110,8 @@ var data = {
 				type = "next_dialogue",
 				select_person = true,
 				challenge = "persuasion",
-				not_hide = true
+				not_hide = true,
+				dialogue_argument = 0
 			},
 			{
 				code = "kuro_recruit_wrong",
