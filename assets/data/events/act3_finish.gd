@@ -1918,7 +1918,7 @@ var data = {
 						code = "stat",
 						stat = "hair_color",
 						operant = "eq",
-						value = "blond"
+						value = "yellow"#blond
 					}
 				],
 				dialogue_argument = 0
