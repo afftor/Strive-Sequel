@@ -95,6 +95,35 @@ var data = {
 
 				],
 				previous_dialogue_option = 0
+			}
+		],
+		options = [
+			{
+				code = "enter_city_t_1",
+				dialogue_argument = 0,
+				text = "DIALOGUECONTINUE",
+				type = "next_dialogue",
+				reqs = [
+					
+				]
+			},
+		],
+		image = "dwarf_guard"
+	},
+	enter_city_t_1 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = [
+			{
+				text = "ENTER_CITY_T_1",
+				reqs = [
+
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "ENTER_CITY_RESPOND_VISITORS_NOTDWARF",
@@ -163,7 +192,7 @@ var data = {
 		],
 		options = [
 			{
-				code = "enter_city_t_0",
+				code = "enter_city_t_1",
 				text = "ENTER_CITY_OPTION_VISITORS",
 				reqs = [
 
@@ -171,7 +200,7 @@ var data = {
 				dialogue_argument = 1
 			},
 			{
-				code = "enter_city_t_0",
+				code = "enter_city_t_1",
 				text = "ENTER_CITY_OPTION_ALERT",
 				reqs = [
 
@@ -310,47 +339,6 @@ var data = {
 				previous_dialogue_option = 0
 			},
 			{
-				text = "DWARF_PALACE_REPLY_PATTERN1",
-				reqs = [
-
-				],
-				previous_dialogue_option = 1
-			},
-			{
-				text = "DWARF_PALACE_REPLY_PATTERN2_NOSHORT",
-				previous_dialogue_option = 1,
-				reqs = [
-					{
-						type = "master_check",
-						value = [
-							{
-								code = "stat",
-								stat = "body_shape",
-								operant = "neq",
-								value = "shortstack"
-							}
-						]
-					}
-				]
-			},
-			{
-				text = "DWARF_PALACE_REPLY_PATTERN2_SHORT",
-				previous_dialogue_option = 1,
-				reqs = [
-					{
-						type = "master_check",
-						value = [
-							{
-								code = "stat",
-								stat = "body_shape",
-								operant = "eq",
-								value = "shortstack"
-							}
-						]
-					}
-				]
-			},
-			{
 				text = "DWARF_PALACE_REPLY_PATTERN3",
 				reqs = [
 
@@ -360,7 +348,7 @@ var data = {
 		],
 		options = [
 			{
-				code = "dwarf_palace_first",
+				code = "dwarf_palace_reply_pattern",
 				text = "DWARF_PALACE_OPT_PATTERN",
 				reqs = [
 
@@ -405,6 +393,70 @@ var data = {
 		],
 		image = "dwarf_guard"
 	},
+	dwarf_palace_reply_pattern = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"master_translate"
+		],
+		text = [
+			{
+				text = "DWARF_PALACE_REPLY_PATTERN1",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+			{
+				text = "DWARF_PALACE_REPLY_PATTERN2_NOSHORT",
+				previous_dialogue_option = 1,
+				reqs = [
+					{
+						type = "master_check",
+						value = [
+							{
+								code = "stat",
+								stat = "body_shape",
+								operant = "neq",
+								value = "shortstack"
+							}
+						]
+					}
+				]
+			},
+			{
+				text = "DWARF_PALACE_REPLY_PATTERN2_SHORT",
+				previous_dialogue_option = 1,
+				reqs = [
+					{
+						type = "master_check",
+						value = [
+							{
+								code = "stat",
+								stat = "body_shape",
+								operant = "eq",
+								value = "shortstack"
+							}
+						]
+					}
+				]
+			}
+		],
+		options = [
+			{
+				code = "dwarf_palace_first",
+				dialogue_argument = 1,
+				text = "DIALOGUECONTINUE",
+				type = "next_dialogue",
+				reqs = [
+					
+				]
+			},
+		],
+		image = "dwarf_guard"
+	},
 	dwarf_palace_first_biz = {
 		reqs = [
 
@@ -423,7 +475,7 @@ var data = {
 		],
 		options = [
 			{
-				code = "dwarf_palace_first_end",
+				code = "dwarf_palace_reply_urgent",
 				text = "DWARF_PALACE_OPT_URGENT",
 				reqs = [
 
@@ -472,7 +524,7 @@ var data = {
 		],
 		image = "dwarf_guard"
 	},
-	dwarf_palace_first_end = {
+	dwarf_palace_reply_urgent = {
 		reqs = [
 
 		],
@@ -486,6 +538,35 @@ var data = {
 
 				],
 				previous_dialogue_option = 1
+			}
+		],
+		options = [
+			{
+				code = "dwarf_palace_first_end",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				dialogue_argument = 1,
+				type = "next_dialogue"
+			}
+		],
+		image = "dwarf_guard"
+	},
+	dwarf_palace_first_end = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = [
+			{
+				text = "DWARF_PALACE_REPLY_URGENT2",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
 			},
 			{
 				text = "DWARF_PALACE_REPLY_IMPORTANT2",
@@ -493,16 +574,35 @@ var data = {
 
 				],
 				previous_dialogue_option = 2
-			},
+			}
+		],
+		options = [
+			{
+				code = "dwarf_palace_first_end2",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				dialogue_argument = 1,
+				type = "next_dialogue"
+			}
+		],
+		image = "dwarf_guard"
+	},
+	dwarf_palace_first_end2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = [
 			{
 				text = "DWARF_PALACE_FIRST_END",
 				reqs = [
 
 				],
-				previous_dialogue_option = [
-					1,
-					2
-				]
+				previous_dialogue_option = 1
 			}
 		],
 		options = [
@@ -1606,7 +1706,7 @@ var data = {
 				previous_dialogue_option = 0
 			},
 			{
-				text = "DTAVERN_BARK_REPLY_TENSE",
+				text = "DTAVERN_BARK_REPLY_TENSE2",
 				reqs = [
 
 				],
@@ -1636,7 +1736,7 @@ var data = {
 		],
 		options = [
 			{
-				code = "dwarf_tavern_barkeep2_dwarf",
+				code = "dtavern_bark_reply_tense",
 				text = "DTAVERN_BARK_OPT_TENSE",
 				reqs = [
 
@@ -1686,6 +1786,35 @@ var data = {
 				],
 				type = "next_dialogue",
 				dialogue_argument = 0
+			}
+		],
+		image = "dwarf_barman"
+	},
+	dtavern_bark_reply_tense = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = [
+			{
+				text = "DTAVERN_BARK_REPLY_TENSE",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			}
+		],
+		options = [
+			{
+				code = "dwarf_tavern_barkeep2_dwarf",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				dialogue_argument = 1,
+				type = "next_dialogue"
 			}
 		],
 		image = "dwarf_barman"
@@ -2425,6 +2554,26 @@ var data = {
 		text = "JEAN_DUNGEON_END",
 		options = [
 			{
+				code = "jean_dungeon_end1",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				type = "next_dialogue",
+				dialogue_argument = 0
+			}
+		]
+	},
+	jean_dungeon_end1 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = "JEAN_DUNGEON_END1",
+		options = [
+			{
 				code = "jean_dungeon_end2",
 				text = "DIALOGUECONTINUE",
 				reqs = [
@@ -2475,6 +2624,27 @@ var data = {
 			}
 		],
 		text = "JEAN_REPORT",
+		options = [
+			{
+				code = "jean_report2",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				dialogue_argument = 1,
+				type = "next_dialogue"
+			}
+		],
+		image = "dwarf_guard"
+	},
+	jean_report2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		text = "JEAN_REPORT2",
 		options = [
 			{
 				code = "dking_first_start",

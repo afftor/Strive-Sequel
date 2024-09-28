@@ -13219,9 +13219,8 @@ You can't resist her taunts any longer, finally letting your second load burst i
 You wonder who could be the sender but it's likely someone else standing against the cult. Regardless, it's better not to let it fall into the enemy's hands.""",
 	ENTER_CITY_T_0 = """The subterranean capital looms heavily as you approach, with towering stone gateways creating an imposing presence along the underground trail. A pair of guards stand sentinel at the entrance, and as they notice your approach, one of them dismissively scoffs, adding a contemptuous spit to the ground. Another one addresses you. 
 
-— Halt immediately, outsider. Any step closer will be seen as hostile, warranting elimination.
-
-The first guard gestures toward the crossbowmen positioned atop the city wall. Engaging in a skirmish would be futile; the archers, with precision akin to a lightning strike, could transform you into a pincushion of blot in mere moments.
+— Halt immediately, outsider. Any step closer will be seen as hostile, warranting elimination.""",
+	ENTER_CITY_T_1 = """The first guard gestures toward the crossbowmen positioned atop the city wall. Engaging in a skirmish would be futile; the archers, with precision akin to a lightning strike, could transform you into a pincushion of blot in mere moments.
 
 — State your identity.""",
 	ENTER_CITY_OPTION_ALERT = "You have a small army up there. Are you on alert?",
@@ -13271,9 +13270,7 @@ The other guard turns to you. He's considerably shorter than you, yet his expres
 	DWARF_PALACE_REPLY_PATTERN2_SHORT = """
 
 The other guard turns to you. His expression somehow makes it feel like he's looking down at you.""",
-	DWARF_PALACE_REPLY_PATTERN3 = """
-
-— We are a community, outsider. A community that doesn't like to be disturbed. Case in point, you come here and immediately accuse us.
+	DWARF_PALACE_REPLY_PATTERN3 = """— We are a community, outsider. A community that doesn't like to be disturbed. Case in point, you come here and immediately accuse us.
 
 — You are a guest. And you are in the most important place in the city. Show some respect!""",
 	DWARF_PALACE_BIZ = """The guards start laughing.
@@ -13285,9 +13282,8 @@ The other guard turns to you. His expression somehow makes it feel like he's loo
 
 Guard2: — Right. The Queue. Hah!
 
-Guard1: — How about coming back tomorrow? Maybe the king will be more willing for an audience then?
-
-Guard2: — You can stay at the local tavern in the meantime. I am sure you'll have your proper welcome there.
+Guard1: — How about coming back tomorrow? Maybe the king will be more willing for an audience then?""",
+	DWARF_PALACE_REPLY_URGENT2 = """Guard2: — You can stay at the local tavern in the meantime. I am sure you'll have your proper welcome there.
 
 Guard1: — Isn't it right? Can't find a more welcoming person than Durand! His ale is the best in town, too!
 
@@ -13306,9 +13302,7 @@ Guard1: — Isn't it right? Can't find a more welcoming person than Durand! His 
 Guard2: — Oh yeah... How I would like to have a glass right now.
 
 The guards keep chuckling between each other.""",
-	DWARF_PALACE_FIRST_END = """
-
-The guards look at each other, holding back as much as they can to not burst into laughter. These two won't let you pass. It seems you have no choice but to find another way. Perhaps you'll be able to attract the attention of the king somehow? In any case, it won't hurt to acquaint yourself with the city. Something tells you you'll be here for a while.""",
+	DWARF_PALACE_FIRST_END = """The guards look at each other, holding back as much as they can to not burst into laughter. These two won't let you pass. It seems you have no choice but to find another way. Perhaps you'll be able to attract the attention of the king somehow? In any case, it won't hurt to acquaint yourself with the city. Something tells you you'll be here for a while.""",
 	DWARF_WORKSHOP_CLOSED1 = """As you walk down the streets, a strange-looking building catches your attention. An armory of some sort, or a workshop to be precise. Clockwork mechanisms of unfamiliar nature or purpose are displayed outside.
 
 The building entrance door appears to be sealed off, however. It's shut, and there's a message attached:""",
@@ -13483,9 +13477,8 @@ You take a sip... It's the worst ale you've ever tasted. You feel like throwing 
 	DTAVERN_BARK_OPT_CITY = "What can you tell me about the city?",
 	DTAVERN_BARK_OPT_KING = "I want to meet the king, but the guards won't let me.",
 	DTAVERN_BARK_OPT_THATSALL = "That's all I wanted to ask.",
-	DTAVERN_BARK_REPLY_TENSE = """— Nothing much. Nothing special, at least. People here tend to keep to themselves, so if you're looking for company, you should try someplace else.
-
-The barkeep thinks for a moment, then adds:
+	DTAVERN_BARK_REPLY_TENSE = "— Nothing much. Nothing special, at least. People here tend to keep to themselves, so if you're looking for company, you should try someplace else.",
+	DTAVERN_BARK_REPLY_TENSE2 = """The barkeep thinks for a moment, then adds:
 
 — A bit of advice for an outsider. You better watch your mouth and who you are talking to. The guards can get violent for even a little reason... If anybody is tenser than usual, it's them. I don't know what happened, but it seems they've screwed up somewhere and now the king is on their asses. Probably something to do with the coalition.""",
 	DTAVERN_BARK_REPLY_COALITION = "— Rebels, or whatever they are. Go around the city causing all kinds of trouble. We don't really care about them, they don't hurt anybody. But the king cares. And when the king cares, it becomes everybody's business. Especially the guards.",
@@ -13631,9 +13624,8 @@ Guard: — Move.
 The guard pushes you forward. You are led out of the dungeon and onto the palace main grounds. You are led past a garden full of exotic flowers and trees from all over the continent. A number of devices emitting a blinding white light are mounted on the pillars all across. Perhaps, thanks to them, the flowers are able to thrive here, where the natural sunlight doesn't reach.""",
 	JEAN_DUNGEON_END = """After passing the garden, you enter the grand, decorated building, located deep inside the inner court, away from the eyes of common citizens. If the palace exterior already seemed exquisite enough, but after seeing this building, it pales in comparison.
 
-Inside, a whole army of maids swarm around, busily tending to the decorum: cleaning, carrying gilded trays with food and drinks.
-
-You are led up the stairs and up to a big, metallic double door. The guard stops you.
+Inside, a whole army of maids swarm around, busily tending to the decorum: cleaning, carrying gilded trays with food and drinks.""",
+	JEAN_DUNGEON_END1 = """You are led up the stairs and up to a big, metallic double door. The guard stops you.
 
 Guard: — Now, when you're inside, watch your manners. It's not every day even a law-abiding citizen gets the chance to meet a king, let alone a criminal like you.""",
 	JEAN_DUNGEON_END2 = """The guard manipulates a device by the door, the purpose of which is unknown to you. He speaks something into it, and after a few seconds, the heavy double doors start to shift.
@@ -13645,18 +13637,16 @@ Guard: — Go on inside. I will wait here.
 You step into the room ahead.""",
 	JEAN_REPORT = """You tell the guards about the proposal you've received from the magician girl in exchange for the audience with the king. After waiting for a couple of hours you've actually been invited inside.
 
-You enter the grand, decorated building, located deep inside the inner court, away from the eyes of common citizens. If the palace exterior already seemed exquisite enough, but after seeing this building, it pales in comparison.
-
-Inside, a whole army of maids swarm around, busily tending to the decorum: cleaning, carrying gilded trays with food and drinks.
+You enter the grand, decorated building, located deep inside the inner court, away from the eyes of common citizens. If the palace exterior already seemed exquisite enough, but after seeing this building, it pales in comparison.""",
+	JEAN_REPORT2 = """Inside, a whole army of maids swarm around, busily tending to the decorum: cleaning, carrying gilded trays with food and drinks.
 
 You are led up the stairs and up to a big, metallic double door. The guard stops you.
 
 Guard: — Now, when you're inside, watch your manners. Nobody cares who you are in the human lands. Try to offend the king, and you'll end up next to the criminal you've reported.""",
 	DKING_START = """The hall you end up in seems even richer than a treasury. The walls are covered in all kinds of vegetation: vines, blooming with flowers. Devices, similar to the lights you've seen in the garden, are mounted onto the ceiling.
 
-A set of small waterfalls cover the space in between the plants, flowing constantly, creating a somewhat pleasant ambiance.
-
-In the center of the hall, a huge pillow on top of which the king himself sits, surrounded by dozens of concubines, mostly dwarves and gnomes, tending to his needs: one pours wine into his glass, another feeds him grapes.""",
+A set of small waterfalls cover the space in between the plants, flowing constantly, creating a somewhat pleasant ambiance.""",
+	DKING_START1 = "In the center of the hall, a huge pillow on top of which the king himself sits, surrounded by dozens of concubines, mostly dwarves and gnomes, tending to his needs: one pours wine into his glass, another feeds him grapes.",
 	DKING_START2 = """— Ah, the talk of the palace!
 
 The king addresses you, His voice is loud, deep, commanding.
@@ -13760,16 +13750,14 @@ The prison guards eye you suspiciously as you arrive, but the King's seal on you
 Guard: — Wait here. We'll bring the prisoner in shortly.""",
 	DWARF_PRISON_SLAVE2 = """Prisoner: — What now? I've told you everything I-
 
-His words cut off abruptly as he presumably sees the gnome. There's a moment of stunned silence.
-
-Guard: — Look who we found trying to sneak into the castle. Your little friend here was quite cooperative once we explained the situation.
+His words cut off abruptly as he presumably sees the gnome. There's a moment of stunned silence.""",
+	DWARF_PRISON_SLAVE2_1 = """Guard: — Look who we found trying to sneak into the castle. Your little friend here was quite cooperative once we explained the situation.
 
 You strain to hear the prisoner's reaction, knowing that the next few moments could make or break this plan.""",
 	DWARF_PRISON_SLAVE3 = """As you wait behind the corner, straining to hear the conversation, the prisoner's voice breaks the tense silence.
 
-Prisoner: — What... Gork? Is that you? How did they...
-
-The gnome, playing [his] part perfectly, responds with a trembling voice.
+Prisoner: — What... Gork? Is that you? How did they...""",
+	DWARF_PRISON_SLAVE3_1 = """The gnome, playing [his] part perfectly, responds with a trembling voice.
 
 Gnome: — I'm sorry, I... I couldn't let them hurt my family. They know everything.
 
@@ -13778,9 +13766,8 @@ There's a long pause, filled only by the sound of heavy breathing.
 Prisoner: — You think I'll buy into this crap?""",
 	DWARF_PRISON_INTERROGATE1 = """You are led to a dimly lit prison cell, where a chained figure slumps against the wall. The guard unlocks the door, gesturing for you to enter.
 
-Guard: — Here's the rebel we caught. Get what you need from him, but don't kill him. The King wants him alive... for now.
-
-The prisoner raises his head slightly as you approach. His face is bruised and swollen, one eye nearly shut from the beating he's endured. Despite his condition, there's a defiant glint in his good eye.""",
+Guard: — Here's the rebel we caught. Get what you need from him, but don't kill him. The King wants him alive... for now.""",
+	DWARF_PRISON_INTERROGATE1_1 = "The prisoner raises his head slightly as you approach. His face is bruised and swollen, one eye nearly shut from the beating he's endured. Despite his condition, there's a defiant glint in his good eye.",
 	DWARF_PRISON_INTERROGATE2 = """Prisoner: — Another interrogator? You're wasting your time. I won't betray my comrades.
 
 The guard snorts and turns to leave, calling over his shoulder:
@@ -13791,18 +13778,15 @@ The cell door clangs shut behind you, leaving you alone with the battered rebel.
 	DWARF_PRISON_OPT_PHYSICS = "Great, I've grown bored from not inflicting any pain for so long (physics factor)",
 	DWARF_PRISON_OPT_MAGIC = "You will make a nice magic practice target (magic factor)",
 	DWARF_PRISON_OPT_CHARM = "It's not too late to strike a deal, you know (charm factor)",
-	DWARF_PRISON_PHYSICS = """As you approach the prisoner, you can see the tension in his body increase. He tries to shrink back against the wall, but the chains prevent him from moving far. His one good eye darts between you and the door, as if gauging his chances of escape.
-
-You notice a few implements left behind by previous interrogators—a wooden club leaning against the wall, a bucket of dirty water in the corner, and some frayed rope coiled on a hook. The sight of these tools seems to make the prisoner even more anxious.
-
-Prisoner: — S-stay back! I won't tell you anything, no matter what you do to me!
+	DWARF_PRISON_PHYSICS = "As you approach the prisoner, you can see the tension in his body increase. He tries to shrink back against the wall, but the chains prevent him from moving far. His one good eye darts between you and the door, as if gauging his chances of escape.",
+	DWARF_PRISON_PHYSICS2 = "You notice a few implements left behind by previous interrogators—a wooden club leaning against the wall, a bucket of dirty water in the corner, and some frayed rope coiled on a hook. The sight of these tools seems to make the prisoner even more anxious.",
+	DWARF_PRISON_PHYSICS3 = """Prisoner: — S-stay back! I won't tell you anything, no matter what you do to me!
 
 His voice quavers despite his attempt at bravado. It's clear that while he may have resisted so far, his resolve is weakening.""",
 	DWARF_PRISON_MAGIC = """As you consider using torture magic on the prisoner, a cold, unsettling energy begins to crackle in the air around you. The prisoner's eyes widen slightly, sensing the change in atmosphere.
 
-The magical energy coalesces around your hands, forming ethereal tendrils that snake towards the chained man. He tries to press himself further against the wall, but there's nowhere for him to escape.
-
-Prisoner: — W-what are you doing? Stay back!
+The magical energy coalesces around your hands, forming ethereal tendrils that snake towards the chained man. He tries to press himself further against the wall, but there's nowhere for him to escape.""",
+	DWARF_PRISON_MAGIC2 = """Prisoner: — W-what are you doing? Stay back!
 
 His voice wavers, a mix of fear and defiance. The magical tendrils hover inches from his skin, ready to inflict pain beyond physical means. The prisoner's ragged breathing is the only sound breaking the eerie silence.""",
 	DWARF_PRISON_CHARM = """You approach the prisoner with a friendly smile and try to ease him up. He stays wary despite your attempt but visually relaxes a bit.
@@ -13812,13 +13796,11 @@ Prisoner: — I-I told you I won't say a thing...
 You hear a sign of exhaustion and readiness to give in in his voice while considering how you can make him surrender.""",
 	DWARF_PRISON_ATTACK1 = """Suddenly, the cell door bursts open. Three masked figures rush in, weapons drawn. One of them quickly breaks the prisoner's chains while the others keep their weapons trained on you.
 
-Masked Figure: — Don't move! We're taking our comrade back.
+Masked Figure: — Don't move! We're taking our comrade back.""",
+	DWARF_PRISON_ATTACK1_1 = """You find yourself outnumbered and outmaneuvered. The rebels work swiftly, supporting their injured comrade as they back out of the cell. The last one keeps their weapon pointed at you until they're clear.
 
-You find yourself outnumbered and outmaneuvered. The rebels work swiftly, supporting their injured comrade as they back out of the cell. The last one keeps their weapon pointed at you until they're clear.
-
-Masked Figure: — Stay put if you want to live.
-
-The sounds of fighting grow more distant as the rescue team makes their escape. You're left alone in the cell, the opportunity for interrogation lost in the chaos of the rebel attack.""",
+Masked Figure: — Stay put if you want to live.""",
+	DWARF_PRISON_ATTACK1_2 = "The sounds of fighting grow more distant as the rescue team makes their escape. You're left alone in the cell, the opportunity for interrogation lost in the chaos of the rebel attack.",
 	DWARF_PRISON_ATTACK2 = "After the attack is over and the King's forces reestablish their presence you are only left with an option to search and pursue these attackers.",
 	DWARF_SEARCH = """After hours of searching, you finally stumble upon some promising tracks leading away from the Dwarf capital. The trail is faint, barely visible in the dim light of the underground caverns, but it's there—a mix of footprints and what appears to be drag marks, likely from the injured prisoner.
 
@@ -13829,9 +13811,8 @@ It would be wiser to prepare for the trip before venturing forth.""",
 	HOLLOW_PASS_START = """Finally, you reach the place you were looking for. It's immediately evident why haven't the king's men found the headquarters until now. The entrance is remarkably well-hidden by a natural rock formation and is impossible to discover unless you know exactly what to look for.
 
 You follow inside the crack in the ground, into the passage below.""",
-	HOLLOW_PASS_KOBOLDS = """As you cautiously navigate the dimly-lit tunnels of the Hollow Passage, the sound of soft footsteps catches your attention. You halt, your senses heightening as two small, reptilian figures emerge from the shadows. They are kobolds, garbed in patchwork armor, with rough-hewn spears gripped tightly in their scaly hands.
-
-Kobold 1: — Halt, surface-dweller. What business have you skulking around our domain?
+	HOLLOW_PASS_KOBOLDS = "As you cautiously navigate the dimly-lit tunnels of the Hollow Passage, the sound of soft footsteps catches your attention. You halt, your senses heightening as two small, reptilian figures emerge from the shadows. They are kobolds, garbed in patchwork armor, with rough-hewn spears gripped tightly in their scaly hands.",
+	HOLLOW_PASS_KOBOLDS2 = """Kobold 1: — Halt, surface-dweller. What business have you skulking around our domain?
 
 Kobold 2: — Yes, speak quickly! Words or steel, choose your offering.
 
@@ -13846,14 +13827,12 @@ As you realize there's might never be a better option to get closer to the rebel
 
 The kobolds exchange a glance, communicating silently through quick, darting looks. Finally, the first one nods.
 
-Kobold 1: — Very well. We shall escort you. We gotta blindfold you though. Don't wanna you bring king soldiers with you next time.
-
-They approach with caution, one keeping you at spear's length while the other ties a piece of rough cloth around your eyes, obscuring your vision entirely.
+Kobold 1: — Very well. We shall escort you. We gotta blindfold you though. Don't wanna you bring king soldiers with you next time.""",
+	HOLLOW_PASS_ESCORT1 = """They approach with caution, one keeping you at spear's length while the other ties a piece of rough cloth around your eyes, obscuring your vision entirely.
 
 Kobold 2: — Follow our lead, surface-dweller. One false move and you'll find yourself at the mercy of the depths.""",
-	HOLLOW_PASS_ESCORT2 = """You feel a firm grip on your arm, guiding you forward. The ground beneath your feet shifts from solid stone to what feels like loose gravel. Echoes of dripping water and distant conversations grow louder, then fade away, painting a confusing tapestry of sound.
-
-Time stretches on indefinably as you're led deeper into unknown territory. Every so often, the kobolds whisper to each other in hushed tones, too quiet for you to catch more than the sibilant hisses of their language. The air grows warmer, the scent of torch-smoke mingling with earthy dampness.""",
+	HOLLOW_PASS_ESCORT2 = "You feel a firm grip on your arm, guiding you forward. The ground beneath your feet shifts from solid stone to what feels like loose gravel. Echoes of dripping water and distant conversations grow louder, then fade away, painting a confusing tapestry of sound.",
+	HOLLOW_PASS_ESCORT2_1 = "Time stretches on indefinably as you're led deeper into unknown territory. Every so often, the kobolds whisper to each other in hushed tones, too quiet for you to catch more than the sibilant hisses of their language. The air grows warmer, the scent of torch-smoke mingling with earthy dampness.",
 	HOLLOW_PASS_ESCORT3 = """Finally, you feel the pace slow and the grip on your arm loosen.
 
 Kobold 1: — We have arrived. Do not remove the blindfold until you are told.
@@ -13937,9 +13916,8 @@ Kobold points at the large pile of rubble blocking the passage behind him.
 He takes one of the rings from you and makes his way through the smallest cracks of the rubble behind him. After a few minutes of nothing happening, you suddenly feel small vibrations coming from the ring.""",
 	OLD_TEMPLE_FINISH3 = """Suddenly, a group of kobolds is teleported next to you. Their leader and numerous injured have been moved all at once by the power of the magical item.
 
-Kobold Leader: — Just in time. You've done well, dweller. If it was just a bit later, we'd have more dead on our hands.
-
-He takes the other ring from you and orders everyone to move out of the temple.
+Kobold Leader: — Just in time. You've done well, dweller. If it was just a bit later, we'd have more dead on our hands.""",
+	OLD_TEMPLE_FINISH3_1 = """He takes the other ring from you and orders everyone to move out of the temple.
 
 Kobold Leader: — Come to the dwarven capital tavern in 3 days; by that time, we'll get a new route to get you to us without King's men finding it.
 
@@ -14019,9 +13997,8 @@ Bolthar does not seem surprised as if he expected this to happen sooner or later
 Bolthar: — Our discussion is over then. I bet they've likely been following you here. Don't bother fighting on our side for now, this is not the time.
 
 Just as you look at the door, Bolthar is already gone from the room. The coalition troops are running around chaotically.""",
-	COALBASE_ATTACK_GATES = """You make your way to the main gates which you've likely been brought through more than once. A few hundred feet ahead you spot a group of dwarven armed troops, judging from their armor, no less than veteran troops.
-
-One figure particularly sticking out of the group is a slightly taller girl in a fancy dress, clearly unfit for this situation, you've already seen before - Kuro, seems to be leading the assault. As she sees you approaching, she commands the troops to halt.
+	COALBASE_ATTACK_GATES = "You make your way to the main gates which you've likely been brought through more than once. A few hundred feet ahead you spot a group of dwarven armed troops, judging from their armor, no less than veteran troops.",
+	COALBASE_ATTACK_GATES2 = """One figure particularly sticking out of the group is a slightly taller girl in a fancy dress, clearly unfit for this situation, you've already seen before - Kuro, seems to be leading the assault. As she sees you approaching, she commands the troops to halt.
 
 Kuro: — Oh, you are still alive. I was afraid I wouldn't be able to thank you for bringing us here.
 
@@ -14050,9 +14027,8 @@ Kuro: — Sister. What do you want?
 
 Zephyra: — What's up with the bad guys you've teamed up with? That's not good, you know.
 
-Kuro: — Spare me from your goodiness, the last thing I need now is your dumb moral lecture.
-
-Zephyra: — Right, sorry for being dumb. Could you maybe consider not hurting us? [name] is my special chosen person for this grand ordeal.
+Kuro: — Spare me from your goodiness, the last thing I need now is your dumb moral lecture.""",
+	COALBASE_ATTACK_REPLY_ZEPHYRA2 = """Zephyra: — Right, sorry for being dumb. Could you maybe consider not hurting us? [name] is my special chosen person for this grand ordeal.
 
 Upon hearing Zephyra's innocent proposal, Kuro gives a cold smirk.
 
