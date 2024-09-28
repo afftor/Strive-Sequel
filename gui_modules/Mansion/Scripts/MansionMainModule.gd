@@ -796,6 +796,7 @@ func test_mode():
 				{code = 'make_story_character', value = 'Jean'},
 				{code = 'make_story_character', value = 'Zephyra'},
 				{code = 'make_story_character', value = 'Anastasia'},
+				{code = 'make_story_character', value = 'Kuro'},
 				{code = 'make_story_character', value = 'Lilia'},
 				{code = 'affect_unique_character', name = 'lilia', type = 'turn_into_unique', value = 'Lilith'},
 			]
@@ -936,7 +937,7 @@ func test_mode():
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-		input_handler.interactive_message('act3_intro', '', {})
+		input_handler.interactive_message('sacred_sap_fighters_2', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		

@@ -204,6 +204,7 @@ var TranslationDict = {
 	CHARNAMEHELEVIEL = "Хелевиэль",
 	CHARNAMELIRA = "Лира",
 	CHARNAMEAMELIA = "Амелия",
+	CHARNAMEKURO = """Kuro""", # MISSING TRANSLATION
 	
 	LOCATIONTHE = "",
 	TOTALPRODUCTIVITY = "Общая производительность",
@@ -738,6 +739,8 @@ var TranslationDict = {
 	
 	ITEMSACRED_BOWL = "Священная чаша",
 	ITEMSACRED_BOWLDESCRIPT = "Древний артефакт, принадлежавший эльфийскому королевству",
+	ITEMSACRED_SCALES = """Sacred Scales""", # MISSING TRANSLATION
+	ITEMSACRED_SCALESDESCRIPT = """An ancient artifact which used to belong to dwarven kingdom.""", # MISSING TRANSLATION
 	
 	ITEMJACKET = "Пиджак",
 	ITEMJACKETDESCRIPT = "Легкая одежда, не обеспечивающая защиту.",
@@ -2494,6 +2497,8 @@ var TranslationDict = {
 
 	PROFALIOS_CHAMPION = "Чемпион Алиоса",
 	PROFALIOS_CHAMPIONDESCRIPT = "Одинокая девушка с загадочными способностями и прошлым. Ясно одно - ее божественная принадлежность реальна.",
+	PROFNIXX_CHAMPION = """Champion of Nixx""", # MISSING TRANSLATION
+	PROFNIXX_CHAMPIONDESCRIPT = """These terrifying powers come from unknown source which only very few of world's sages are able to descry. """, # MISSING TRANSLATION
 	PROFRENOWN_ROYALTY = "Королевская власть",
 	PROFRENOWN_ROYALTYDESCRIPT = "Королевская кровь сама по себе является благом, тем более, когда ее признают другие.",
 	PROFBROKEN_ROYALTY = "Сломанная королевская власть",

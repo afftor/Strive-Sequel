@@ -35,12 +35,14 @@ var data = {
 						code = "act3_scene",
 						text = "DIALOGUECONTINUE",
 						reqs = [
-							
+
 						],
 						dialogue_argument = 1,
 						type = "next_dialogue",
 						change_dialogue_type = 2,
-						tags = ["blackscreen_transition_slow"]
+						tags = [
+							"blackscreen_transition_slow"
+						]
 					}
 				]
 			},
@@ -70,12 +72,14 @@ var data = {
 						code = "act3_scene",
 						text = "DIALOGUECONTINUE",
 						reqs = [
-							
+
 						],
 						dialogue_argument = 1,
 						type = "next_dialogue",
 						change_dialogue_type = 2,
-						tags = ["blackscreen_transition_slow"]
+						tags = [
+							"blackscreen_transition_slow"
+						]
 					}
 				]
 			}
@@ -104,9 +108,9 @@ var data = {
 				text = "DIALOGUECONTINUE",
 				type = "next_dialogue",
 				reqs = [
-					
+
 				]
-			},
+			}
 		],
 		image = "dwarf_guard"
 	},
@@ -229,9 +233,9 @@ var data = {
 						code = "return_to_mansion"
 					},
 					{
-						code = 'plan_loc_event',
-						loc = 'dwarf_capital',
-						event = 'enter_city_t_0'
+						code = "plan_loc_event",
+						loc = "dwarf_capital",
+						event = "enter_city_t_0"
 					}
 				]
 			}
@@ -451,9 +455,9 @@ var data = {
 				text = "DIALOGUECONTINUE",
 				type = "next_dialogue",
 				reqs = [
-					
+
 				]
-			},
+			}
 		],
 		image = "dwarf_guard"
 	},
@@ -2260,11 +2264,10 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			}
 		],
-		image = "toadd"
+		image = "dwarf_treasury"
 	},
 	jean_mountain_jump_altar = {
 		reqs = [
@@ -2281,11 +2284,10 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			}
 		],
-		image = "toadd"
+		image = "dwarf_treasury"
 	},
 	jean_mountain_jump_search = {
 		reqs = [

@@ -205,6 +205,7 @@ var TranslationDict = {
 	CHARNAMEHELEVIEL = "赫利沃尔",
 	CHARNAMELIRA = "里拉",
 	CHARNAMEAMELIA = "阿米莉亚",
+	CHARNAMEKURO = """Kuro""", # MISSING TRANSLATION
 	
 	LOCATIONTHE = " ",
 	TOTALPRODUCTIVITY = "总生产力",
@@ -739,6 +740,8 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	
 	ITEMSACRED_BOWL = "圣钵",
 	ITEMSACRED_BOWLDESCRIPT = "一种古代的神器，曾经属于精灵王国。",
+	ITEMSACRED_SCALES = """Sacred Scales""", # MISSING TRANSLATION
+	ITEMSACRED_SCALESDESCRIPT = """An ancient artifact which used to belong to dwarven kingdom.""", # MISSING TRANSLATION
 	
 	ITEMJACKET = "夹克",
 	ITEMJACKETDESCRIPT = "轻便的衣服，不提供任何保护。",
@@ -2496,6 +2499,8 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 
 	PROFALIOS_CHAMPION = "Champion of Alios 阿利奥斯的神眷者",
 	PROFALIOS_CHAMPIONDESCRIPT = "A lone girl with mysterious powers and the past. One thing is clear, her divine affiliation is real. \n一个拥有神秘力量和过去的孤独女孩。有一点很清楚，她的神眷者身份是真实的。",
+	PROFNIXX_CHAMPION = """Champion of Nixx""", # MISSING TRANSLATION
+	PROFNIXX_CHAMPIONDESCRIPT = """These terrifying powers come from unknown source which only very few of world's sages are able to descry. """, # MISSING TRANSLATION
 	PROFRENOWN_ROYALTY = "Renown Royalty 著名王权",
 	PROFRENOWN_ROYALTYDESCRIPT = "The royal blood is a boon in itself, even more so when recognized by others. \n皇室血统本身就是一种恩惠，当被他人认可时更是如此。",
 	PROFBROKEN_ROYALTY = "Broken Royalty 破碎王权",

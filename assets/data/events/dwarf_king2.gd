@@ -835,8 +835,7 @@ var data = {
 				text = "SACRED_SAP_FIGHTERS_3",
 				reqs = [
 
-				],
-				previous_dialogue_option = 0
+				]
 			},
 			{
 				text = "SACRED_SAP_FIGHTERS_3_REVISIT",
@@ -876,8 +875,7 @@ var data = {
 						operant = "-",
 						value = 1000
 					}
-				],
-				dialogue_argument = 0
+				]
 			},
 			{
 				code = "sacred_sap_fighters_slave",
@@ -903,8 +901,7 @@ var data = {
 						value = "female"
 					}
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			},
 			{
 				code = "close",
@@ -922,8 +919,7 @@ var data = {
 					{
 						code = "update_guild"
 					}
-				],
-				dialogue_argument = 0
+				]
 			}
 		],
 		image = "elven_prisoners"
@@ -2007,8 +2003,7 @@ var data = {
 				text = "KURO_QUESTIONS_HAS",
 				reqs = [
 
-				],
-				previous_dialogue_option = 0
+				]
 			},
 			{
 				text = "KURO_QUESTIONS_NO",
@@ -2212,8 +2207,7 @@ var data = {
 						value = "KURO_QUESTIONS_END"
 					}
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			}
 		]
 	}

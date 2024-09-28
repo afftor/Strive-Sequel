@@ -802,8 +802,7 @@ var data = {
 						operant = "gte",
 						value = 4
 					}
-				],
-				dialogue_argument = 0
+				]
 			},
 			{
 				code = "dwarf_prison_interrogate",
@@ -811,8 +810,7 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			},
 			{
 				code = "close",
@@ -820,10 +818,10 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			}
-		]
+		],
+		image = "dwarf_prison"
 	},
 	dwarf_prison_slave = {
 		reqs = [
@@ -845,7 +843,7 @@ var data = {
 				dialogue_argument = 1
 			}
 		],
-		image = "toadd"
+		image = "dwarf_prisoner"
 	},
 	dwarf_prison_slave2 = {
 		reqs = [
@@ -867,7 +865,7 @@ var data = {
 				dialogue_argument = 1
 			}
 		],
-		image = "toadd"
+		image = "dwarf_prisoner"
 	},
 	dwarf_prison_slave2_1 = {
 		reqs = [
@@ -889,7 +887,7 @@ var data = {
 				dialogue_argument = 1
 			}
 		],
-		image = "toadd"
+		image = "dwarf_prisoner"
 	},
 	dwarf_prison_slave3 = {
 		reqs = [
@@ -911,7 +909,7 @@ var data = {
 				dialogue_argument = 1
 			}
 		],
-		image = "toadd"
+		image = "dwarf_prisoner"
 	},
 	dwarf_prison_slave3_1 = {
 		reqs = [
@@ -929,11 +927,10 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			}
 		],
-		image = "toadd"
+		image = "dwarf_prisoner"
 	},
 	dwarf_prison_interrogate = {
 		reqs = [
@@ -954,7 +951,7 @@ var data = {
 				dialogue_argument = 1
 			}
 		],
-		image = "toadd"
+		image = "dwarf_prisoner"
 	},
 	dwarf_prison_interrogate1_1 = {
 		reqs = [
@@ -975,7 +972,7 @@ var data = {
 				dialogue_argument = 1
 			}
 		],
-		image = "toadd"
+		image = "dwarf_prisoner"
 	},
 	dwarf_prison_interrogate2 = {
 		reqs = [
@@ -1014,7 +1011,7 @@ var data = {
 				dialogue_argument = 3
 			}
 		],
-		image = "toadd"
+		image = "dwarf_prisoner"
 	},
 	dwarf_prison_physics = {
 		reqs = [
@@ -1030,7 +1027,7 @@ var data = {
 
 				],
 				previous_dialogue_option = 1
-			},
+			}
 		],
 		options = [
 			{
@@ -1043,7 +1040,7 @@ var data = {
 				dialogue_argument = 1
 			}
 		],
-		image = "toadd"
+		image = "dwarf_prisoner"
 	},
 	dwarf_prison_physics2 = {
 		reqs = [
@@ -1059,7 +1056,7 @@ var data = {
 
 				],
 				previous_dialogue_option = 1
-			},
+			}
 		],
 		options = [
 			{
@@ -1072,7 +1069,7 @@ var data = {
 				dialogue_argument = 1
 			}
 		],
-		image = "toadd"
+		image = "dwarf_prisoner"
 	},
 	dwarf_prison_magic = {
 		reqs = [
@@ -1088,7 +1085,7 @@ var data = {
 
 				],
 				previous_dialogue_option = 1
-			},
+			}
 		],
 		options = [
 			{
@@ -1101,7 +1098,7 @@ var data = {
 				dialogue_argument = 2
 			}
 		],
-		image = "toadd"
+		image = "dwarf_prisoner"
 	},
 	dwarf_prison_interrogate_res = {
 		reqs = [
@@ -1140,11 +1137,10 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			}
 		],
-		image = "toadd"
+		image = "dwarf_prisoner"
 	},
 	dwarf_prison_attack = {
 		reqs = [
@@ -1171,7 +1167,7 @@ var data = {
 				dialogue_argument = 1
 			}
 		],
-		image = "toadd"
+		image = "dwarf_prison_attack"
 	},
 	dwarf_prison_attack1_1 = {
 		reqs = [
@@ -1192,7 +1188,7 @@ var data = {
 				dialogue_argument = 1
 			}
 		],
-		image = "toadd"
+		image = "dwarf_prison_attack"
 	},
 	dwarf_prison_attack1_2 = {
 		reqs = [
@@ -1213,7 +1209,7 @@ var data = {
 				dialogue_argument = 1
 			}
 		],
-		image = "toadd"
+		image = "dwarf_prison_attack"
 	},
 	dwarf_prison_attack2 = {
 		reqs = [
@@ -1241,11 +1237,10 @@ var data = {
 					{
 						code = "update_city"
 					}
-				],
-				dialogue_argument = 0
+				]
 			}
 		],
-		image = "toadd"
+		image = "dwarf_prison_attack"
 	},
 	dwarf_search = {
 		reqs = [
@@ -1839,8 +1834,7 @@ var data = {
 						value = "MetKobold",
 						check = true
 					}
-				],
-				dialogue_argument = 0
+				]
 			},
 			{
 				code = "old_temple_nuisance",
@@ -1852,11 +1846,10 @@ var data = {
 						value = "MetKobold",
 						check = false
 					}
-				],
-				dialogue_argument = 0
+				]
 			}
 		],
-		image = "toadd"
+		image = "kobold_temple"
 	},
 	old_temple_kobold = {
 		reqs = [
@@ -1870,8 +1863,7 @@ var data = {
 				text = "OLD_TEMPLE_KOBOLD",
 				reqs = [
 
-				],
-				previous_dialogue_option = 0
+				]
 			},
 			{
 				text = "OLD_TEMPLE_REPLY_WITHCOAL",
@@ -1896,11 +1888,10 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			}
 		],
-		image = "toadd"
+		image = "kobold_temple"
 	},
 	old_temple_nuisance = {
 		reqs = [
@@ -1914,8 +1905,7 @@ var data = {
 				text = "OLD_TEMPLE_NUISANCE",
 				reqs = [
 
-				],
-				previous_dialogue_option = 0
+				]
 			},
 			{
 				text = "OLD_TEMPLE_REPLY_RUBBLE",
@@ -1955,11 +1945,10 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			}
 		],
-		image = "toadd"
+		image = "kobold_temple"
 	},
 	old_temple_fine = {
 		reqs = [
@@ -1976,11 +1965,10 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			}
 		],
-		image = "toadd"
+		image = "kobold_temple"
 	},
 	old_temple_finish = {
 		reqs = [
@@ -1997,11 +1985,10 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			}
 		],
-		image = "toadd"
+		image = "rings_in_box"
 	},
 	old_temple_finish2 = {
 		reqs = [
@@ -2023,7 +2010,7 @@ var data = {
 				dialogue_argument = 1
 			}
 		],
-		image = "toadd"
+		image = "kobold_temple"
 	},
 	old_temple_finish3 = {
 		reqs = [
@@ -2044,7 +2031,7 @@ var data = {
 				dialogue_argument = 1
 			}
 		],
-		image = "toadd"
+		image = "kobold_temple"
 	},
 	old_temple_finish3_1 = {
 		reqs = [
@@ -2094,7 +2081,7 @@ var data = {
 				dialogue_argument = 1
 			}
 		],
-		image = "toadd"
+		image = "kobold_temple"
 	},
 	dwarf_tavern_rebel = {
 		reqs = [
@@ -2111,11 +2098,10 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			}
 		],
-		image = "toadd"
+		image = "dwarf_tavern_stranger"
 	},
 	dwarf_tavern_rebel2 = {
 		reqs = [
@@ -2132,11 +2118,10 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			}
 		],
-		image = "toadd"
+		image = "dwarf_tavern_stranger"
 	},
 	bolthar_return = {
 		reqs = [
@@ -2391,8 +2376,7 @@ var data = {
 				text = "BOLTHAR_RETURN_RECRUIT",
 				reqs = [
 
-				],
-				previous_dialogue_option = 0
+				]
 			},
 			{
 				text = "BOLTHAR_RETURN_REPLY_OFFER",
@@ -2524,11 +2508,11 @@ var data = {
 				text = "DIALOGUECONTINUE",
 				type = "next_dialogue",
 				reqs = [
-					
+
 				]
 			}
 		],
-		image = "toadd"
+		image = "kuro_dwarves"
 	},
 	coalbase_attack_gates2 = {
 		reqs = [
@@ -2545,8 +2529,7 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			},
 			{
 				code = "coalbase_attack_bring_girl",
@@ -2554,11 +2537,10 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			}
 		],
-		image = "toadd"
+		image = "kuro_dwarves"
 	},
 	coalbase_attack_bring_girl = {
 		reqs = [
@@ -2601,8 +2583,7 @@ var data = {
 				text = "COALBASE_ATTACK_ITCHING",
 				reqs = [
 
-				],
-				previous_dialogue_option = 0
+				]
 			},
 			{
 				text = "COALBASE_ATTACK_REPLY_HARMED_FAIL",
@@ -2643,8 +2624,7 @@ var data = {
 						name = "kuro_sympathy",
 						op = "+"
 					}
-				],
-				dialogue_argument = 0
+				]
 			},
 			{
 				code = "coalbase_attack_itching",
@@ -2688,8 +2668,7 @@ var data = {
 						name = "kuro_sympathy",
 						op = "+"
 					}
-				],
-				dialogue_argument = 0
+				]
 			},
 			{
 				code = "quest_fight",
@@ -2698,8 +2677,7 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			}
 		]
 	},

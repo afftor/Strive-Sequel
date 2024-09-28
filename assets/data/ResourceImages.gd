@@ -9,6 +9,7 @@ var backgrounds = {
 	aliron = load("res://assets/images/backgrounds/Aliron.png"),
 	elf_capital = load("res://assets/images/backgrounds/elf_capital.png"),
 	beastkin_capital = load("res://assets/images/backgrounds/beastkin_capital.png"),
+	dwarfs_city = load("res://assets/images/backgrounds/dwarf_city.png"),
 	
 	forest1_menu = load("res://assets/images/backgroundmenu/forest1.jpg"),
 	mountain1_menu = load("res://assets/images/backgroundmenu/mountain1.jpg"),
@@ -435,9 +436,14 @@ var scenes = {
 	dwarf_guard = load("res://assets/images/scenes/dwarf_guard.png"),
 	kobolds = load("res://assets/images/scenes/kobolds.png"),
 	dwarf_machine = load("res://assets/images/scenes/machine.png"),
-	kuro_dwarves = load("res://assets/images/scenes/kuro dwarfs.png"),
+	kuro_dwarves = load("res://assets/images/scenes/kuro_dwarves.png"),
 	rings_in_box = load("res://assets/images/scenes/rings_in_box.png"),
 	dwarf_tavern_stranger = load("res://assets/images/scenes/tavern stranger.png"),
+	dwarf_prison = load("res://assets/images/scenes/dwarf_prison.png"),
+	dwarf_prison_attack = load("res://assets/images/scenes/dwarf_prison_attack.png"),
+	dwarf_treasury = load("res://assets/images/scenes/treasury.png"),
+	kobold_temple = load("res://assets/images/scenes/kobold_temple.png"),
+	dwarf_prisoner = load("res://assets/images/scenes/gnome_prisoner.png"),
 }
 
 var sprites = {
@@ -613,6 +619,9 @@ var portraits = {
 	amelia = "res://assets/images/portraits/amelia_prt.png",
 	amelia_nude = "res://assets/images/portraits/amelia_nude_prt.png",
 	amelia_wed = "res://assets/images/portraits/amelia_wed_prt.png",
+	kuro = "res://assets/images/portraits/Kuro_prt.png",
+	kuro_nude = "res://assets/images/portraits/Kuro_prt_nude.png",
+	kuro_wed = "res://assets/images/portraits/kuro_wed_prt.png",
 }
 
 var gui = {

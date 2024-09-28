@@ -121,7 +121,7 @@ var lands = {
 		capital_options = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
 		area_shop_items = {},
-#		capital_background = '',
+		capital_background = 'dwarfs_city',
 		capital_name = "Dwarven Capital",
 		capital_code = 'dwarf_capital',
 		capital_dynamic_background = 'dwarfs_city',
@@ -1084,7 +1084,7 @@ var fixed_location_options = { #override serialized data
 			reqs = [{type = 'any_quest_stage', value = 'visit_dwarfs_quest', stages = ['audience', 'jean']}],
 			args = [{code = 'start_event', data = 'dwarf_palace_first', args = []}]
 		},{
-			text = tr("INFINITEDUNGEON"),
+			text = tr("INFINITEDUNGEONUNLOCK"),
 			reqs = [{code = 'value_check', type = 'event_seen', check = false, value = 'unlock_infinite_dungeon'}],
 			args = [{code = 'start_event', data = 'unlock_infinite_dungeon', args = []}]
 		}, {

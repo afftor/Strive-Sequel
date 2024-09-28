@@ -639,7 +639,7 @@ var traits = {
 		},
 		tags = ['positive', 'can_start', 'disposition_change']
 	},
-		quick = {
+	quick = {
 		code = 'quick',
 		name = '',
 		descript = '',
