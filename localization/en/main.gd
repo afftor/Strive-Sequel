@@ -209,7 +209,8 @@ var TranslationDict = {
 	CHARNAMEHELEVIEL = "Heleviel",
 	CHARNAMELIRA = "Lira",
 	CHARNAMEAMELIA = "Amelia",
-	
+	CHARNAMEKURO = "Kuro",
+
 	LOCATIONTHE = "The ",
 	TOTALPRODUCTIVITY = "Total Productivity",
 	
@@ -743,7 +744,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	ITEMSACRED_BOWL = "Sacred Bowl",
 	ITEMSACRED_BOWLDESCRIPT = "An ancient artifact which used to belong to elven kingdom.",
-	
+	ITEMSACRED_SCALES = "Sacred Scales",
+	ITEMSACRED_SCALESDESCRIPT = "An ancient artifact which used to belong to dwarven kingdom.",
 	ITEMJACKET = "Jacket",
 	ITEMJACKETDESCRIPT = "A lightweight clothing which offers no protecting.",
 	ITEMENSLAVING_COLLAR = "Enslaving Collar",
@@ -2250,7 +2252,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	
 	
 	TRAITPRODIGYDESCRIPT = "Gain 25% more EXP points.",
-	TRAITPASSIVEDESCRIPT = "Obedience Drain -5.",
+	TRAITPASSIVEDESCRIPT = "Loyalty Gain +2.",
 	TRAITNIMBLEDESCRIPT = "Speed is increased by 10.",
 	TRAITQUICKDESCRIPT = "Collection modifier +20%.",
 	TRAITHANDYDESCRIPT = "Craft modifier +20%.",
@@ -2262,7 +2264,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITHIDDENPOWERSDESCRIPT = "MATK +10%.",
 	TRAITHEALTHYDESCRIPT = "+10 Max Health.",
 	TRAITDIMDESCRIPT = "Gain 25% less EXP points.",
-	TRAITREBELDESCRIPT = "Obedience Drain +5.",
+	TRAITREBELDESCRIPT = "Loyatly Gain -2.",
 	TRAITSLOWDESCRIPT = "Speed is reduced by 10.",
 	TRAITCLUMSYDESCRIPT = "Collection modifier -80%.",
 	TRAITINEPTDESCRIPT = "Craft modifier -80%.",
@@ -2337,7 +2339,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	TRAITTRAINING_RELATION = "Relationship",
 	TRAITTRAINING_RELATIONDESCRIPT = "Make move onto [name]'s personal life. After all, shouldn't [he] like you enough already?\nUnlocks Dating option and removes consent penalty in sex.",
 	TRAITTRAINING_SEXSERVICE = "Sex Service",
-	TRAITTRAINING_SEXSERVICEDESCRIPT = "Since [name]'s body belong to you, it makes sense to make [him] use it for your prosperity.\nUnlocks sex service tasks.",
+	TRAITTRAINING_SEXSERVICEDESCRIPT = """Since [name]'s body belong to you, it makes sense to make [him] use it for your prosperity.
+Unlocks sex service tasks and Nudity rule.""",
 	TRAITTRAINING_SEXSERVICE_ADV = "Advanced Sex Service",
 	TRAITTRAINING_SEXSERVICE_ADVDESCRIPT = "With all well and done, its a logical step to push [name] further into depravity.\nUnlocks advanced sex service options.",
 	
@@ -2614,6 +2617,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 
 	PROFALIOS_CHAMPION = "Champion of Alios",
 	PROFALIOS_CHAMPIONDESCRIPT = "A lone girl with mysterious powers and the past. One thing is clear, her divine affiliation is real. ",
+	PROFNIXX_CHAMPION = "Champion of Nixx",
+	PROFNIXX_CHAMPIONDESCRIPT = "These terrifying powers come from unknown source which only very few of world's sages are able to descry. ",
 	PROFRENOWN_ROYALTY = "Renown Royalty",
 	PROFRENOWN_ROYALTYDESCRIPT = "The royal blood is a boon in itself, even more so when recognized by others. ",
 	PROFBROKEN_ROYALTY = "Broken Royalty",
@@ -13666,7 +13671,7 @@ Guard1: — Isn't it right? Can't find a more welcoming person than Durand! His 
 Guard2: — Oh yeah... How I would like to have a glass right now.
 
 The guards keep chuckling between each other.""",
-	DWARF_PALACE_FIRST_END = """\n\nThe guards look at each other, holding back as much as they can to not burst into laughter. These two won't let you pass. It seems you have no choice but to find another way. Perhaps you'll be able to attract the attention of the king somehow? In any case, it won't hurt to acquaint yourself with the city. Something tells you you'll be here for a while.""",
+	DWARF_PALACE_FIRST_END = "The guards look at each other, holding back as much as they can to not burst into laughter. These two won't let you pass. It seems you have no choice but to find another way. Perhaps you'll be able to attract the attention of the king somehow? In any case, it won't hurt to acquaint yourself with the city. Something tells you you'll be here for a while.",
 
 	DWARF_WORKSHOP_CLOSED1 = """As you walk down the streets, a strange-looking building catches your attention. An armory of some sort, or a workshop to be precise. Clockwork mechanisms of unfamiliar nature or purpose are displayed outside.
 
@@ -16817,7 +16822,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	DWARF_CAPITAL_SEARCH = "Search for tracks",
 	DWARF_CAPITAL_SHIMORE = "Search for Ore",
 	DWARF_CAPITAL_JEAN = "Search for Jean",
-	
+	INFINITEDUNGEONUNLOCK = "Dark Alley",
 	BEASTKIN_CAPITAL1 = "Find Chieftain",
 	BEASTKIN_CAPITAL2 = "Visit Shaman's Lodge",
 	BEASTKIN_CAPITAL3 = "Visit Savra",
@@ -17461,8 +17466,3 @@ Hotkey: 3""",
 	LILIA_WEDDING_SS = "Keep Fairy forever with you",
 	LILITH_WEDDING_SS = "Devote your soul to the little imp",
 }
-
-
-
-
-

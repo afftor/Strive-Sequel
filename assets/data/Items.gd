@@ -3457,6 +3457,23 @@ var itemlist = {
 		tags = ['unsellable','no_random'],
 		basestats = {wits_bonus = 10, exp_gain_mod = 1},
 	},
+	sacred_scales = {
+		code = 'sacred_scales',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'armor',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['neck'],
+		price = 1000,
+		icon = load("res://assets/images/iconsitems/sacred_bowl.png"),
+		tier = 'hard',
+		reqs = [],
+		effects = [],
+		tags = ['unsellable','no_random'],
+		basestats = {hitrate = 100, armorpenetration = 50},
+	},
 }
 
 var recipes = {

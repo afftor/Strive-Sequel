@@ -1026,4 +1026,19 @@ var professions = {
 		conflict_classes = [],
 	},
 	
+	nixx_champion = {
+		code = 'nixx_champion',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/nixx_champion.png"),
+		tags = ['permanent'],
+		categories = ['magic','combat'],
+		showupreqs = [{code = 'disabled', check = true}],
+		reqs = [{code = 'cant_spawn_naturally'}],
+		statchanges = {mpmax = 10, hpmax = 25, resist_dark = 75, price = 500, chg_wisdom_max = 1, chg_dexterity_max = 1},
+		traits = [],
+		skills = [],
+		combatskills = [],
+		conflict_classes = [],
+	},
 }
