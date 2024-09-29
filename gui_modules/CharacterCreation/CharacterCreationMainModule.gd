@@ -838,7 +838,7 @@ func finish_character():
 		if mode != 'master':
 			#apply delayed slave class
 			if !preservedsettings.has('slave_class'):
-				preservedsettings.slave_class = 'slave1'
+				preservedsettings.slave_class = 'servant'
 			person.set_slave_category(preservedsettings.slave_class.to_lower())
 			#basic slave setup
 #			if guild == 'fighters':
