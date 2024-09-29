@@ -838,14 +838,15 @@ var statdata = {
 	},
 }
 
-var slave_class_names = {
-	'slave' : 'Slave',
-	servant = 'Peon',
-	'master' : '[Master]',
-	hireling = 'Hireling',
-	heir = "Heir",
-	spouse = "Spouse"
-}
+#var slave_class_names = {
+#	'slave' : 'Slave',
+#	servant = 'Peon',
+#	'master' : '[Master]',
+#	hireling = 'Hireling',
+#	heir = "Heir",
+#	spouse = "Spouse",
+#	'slave_trained' : 'Trained Slave'
+#}
 
 var worktoolnames = {
 	bow = '',

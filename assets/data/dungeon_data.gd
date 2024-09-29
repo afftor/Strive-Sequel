@@ -315,7 +315,7 @@ var dungeons = {
 		classname = '',
 		descript = tr("DUNGEON_BANDIT_DEN_DESC"),
 		character_data = {
-			chance_mod = 1.5,#increases base chance to get slave after combat by this if its not guaranteed
+			chance_mod = 0.7,#increases base chance to get slave after combat by this if its not guaranteed
 			races = [['local', 3], ['common',1]]
 		},
 		difficulty = 'easy',
@@ -408,7 +408,7 @@ var dungeons = {
 		classname = '',
 		descript = tr("DUNGEON_BANDIT_DEN_DESC"),
 		character_data = {
-			chance_mod = 1.5,#increases base chance to get slave after combat by this if its not guaranteed
+			chance_mod = 1.2,#increases base chance to get slave after combat by this if its not guaranteed
 			races = [['local', 3], ['common',1]]
 		},
 		difficulty = 'easy',
@@ -516,7 +516,7 @@ var dungeons = {
 		classname = '',
 		descript = tr("DUNGEON_BANDIT_FORT_DESC"),
 		character_data = {
-			chance_mod = 1.5,
+			chance_mod = 1.2,
 			races = [['local', 3], ['common',5], ['uncommon',1]]
 		},
 		difficulty = 'medium',
@@ -641,7 +641,7 @@ var dungeons = {
 		classname = '',
 		descript = tr("DUNGEON_BANDIT_FORT_DESC"),
 		character_data = {
-			chance_mod = 1.2,
+			chance_mod = 1,
 			races = [['local', 6], ['common',1]]
 		},
 		difficulty = 'medium',
@@ -874,7 +874,7 @@ var dungeons = {
 		classname = '',
 		descript = tr("DUNGEON_GOBLIN_CAVE_DESC"),
 		character_data = {
-			chance_mod = 1.4,
+			chance_mod = 1.1,
 			races = [["common", 1], ['local', 4], ['Goblin',5]]
 		},
 		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5'],
@@ -967,7 +967,7 @@ var dungeons = {
 		classname = '',
 		descript = tr("DUNGEON_GROVE_DESC"),
 		character_data = {
-			chance_mod = 0.8,
+			chance_mod = 0.7,
 			races = [["common", 2], ['local', 4],['uncommon',1]]
 		},
 		purchase_area = 'forests',
@@ -1074,7 +1074,7 @@ var dungeons = {
 		classname = '',
 		descript = tr("DUNGEON_ANCIENT_JUNGLES_DESC"),
 		character_data = {
-			chance_mod = 1.1,
+			chance_mod = 1,
 			races = [["common", 2], ['uncommon', 4],['TribalElf',6], ['rare',1]]
 		},
 		purchase_area = 'forests',
@@ -1195,7 +1195,7 @@ var dungeons = {
 		classname = '',
 		descript = tr("DUNGEON_FIRE_DEPTHS_DESC"),
 		character_data = {
-			chance_mod = 1.0,
+			chance_mod = 0.8,
 			races = [["common", 2], ['uncommon', 4],['rare',1]]
 		},
 		purchase_area = 'mountains',
@@ -1297,7 +1297,7 @@ var dungeons = {
 		classname = '',
 		descript = tr("QUEST_CALI_BANDITS_LOCATION_DESC"),
 		character_data = {
-			chance_mod = 1.5,
+			chance_mod = 1.1,
 			races = [['local', 3], ['common',5], ['uncommon',1]]
 		},
 		difficulty = 'medium',

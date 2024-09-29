@@ -175,7 +175,7 @@ func build_posttrain():
 		var trdata = Traitdata.traits[tmp[0]]
 		$finished/VBoxContainer/result_frame.visible = true
 		$finished/VBoxContainer/select_text.visible = false
-		$finished/VBoxContainer/rewards.visible = false
+		#$finished/VBoxContainer/rewards.visible = false
 		if trdata.icon is String:
 			$finished/VBoxContainer/result_frame/icon.texture = load(trdata.icon)
 		else:

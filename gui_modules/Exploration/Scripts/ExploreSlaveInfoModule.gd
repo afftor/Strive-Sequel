@@ -111,11 +111,13 @@ func update(person = null, from_dialogue = false):
 		rebuild_traits()
 	
 		$ConsentLabel.text = "Consent: " + str(floor(person.get_stat('consent')))
-		if person != ResourceScripts.game_party.get_master():
-			$Panel/character_class.text = tr(statdata.slave_class_names[person.get_stat('slave_class')].to_upper())
-			globals.connecttexttooltip($Panel/character_class, tr(person.get_stat('slave_class').to_upper()+"CLASSDESCRIPT"))
-		else:
-			$Panel/character_class.text = ""
+		
+		
+		var slavename = "CHARTYPE" + person.get_stat('slave_class').to_upper()
+		globals.connecttexttooltip($Panel/character_class, person.translate(tr(slavename + "DESCRIPT")))
+		if person.get_stat('sex') != 'male':
+			slavename += "F"
+		$Panel/character_class.text = tr(slavename)
 
 
 

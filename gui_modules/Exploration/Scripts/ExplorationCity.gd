@@ -805,9 +805,13 @@ func show_slave_info(person):
 			+ "/"
 			+ str(floor(person.get_stat(i + 'max')))
 		)
+	
+	var slavename = "CHARTYPE" + person.get_stat('slave_class').to_upper()
+	if person.get_stat('sex') != 'male':
+		slavename += "F"
 	text = (
 		tr('TYPE_LABEL') + ': ' + "[color=yellow]"
-		+ person.translate(statdata.slave_class_names[person.get_stat('slave_class')])
+		+ slavename
 		+ "[/color]\n"
 	)
 	

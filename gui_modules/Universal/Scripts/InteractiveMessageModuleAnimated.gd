@@ -1200,6 +1200,8 @@ func select_option(number):
 		if option.has('change_dialogue_type'):
 			dialogue_next(code, option.dialogue_argument, {changed_window_type = true})
 		else:
+			if option.has('dialogue_argumet') == false:
+				option.dialogue_argument = 0
 			dialogue_next(code, option.dialogue_argument)
 	else:
 		var args
