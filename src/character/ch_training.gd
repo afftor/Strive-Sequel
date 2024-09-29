@@ -264,6 +264,12 @@ func apply_training(code):
 			'trainer_class':
 				if ch_trainer.has_profession(eff.check):
 					effects.push_back(eff.effect)
+			'trainer_trait':
+				if ch_trainer.check_trait(eff.check):
+					effects.push_back(eff.effect)
+			'trainer_status':
+				if ch_trainer.has_status(eff.check):
+					effects.push_back(eff.effect)
 			'disposition':
 				if disposition in eff.check:
 					effects.push_back(eff.effect)

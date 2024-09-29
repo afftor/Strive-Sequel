@@ -4303,6 +4303,7 @@ var training_categories = {
 			{type = 'trainer_class', check = 'headgirl', effect = {loyalty_mul = 1.25}},
 			{type = 'trainer_class', check = 'director', effect = {spirit_mul = 0.8}},
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
+			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
 		]
 	},
@@ -4317,6 +4318,7 @@ var training_categories = {
 			{type = 'trainer_class', check = 'headgirl', effect = {loyalty_mul = 1.15}},
 			{type = 'trainer_class', check = 'director', effect = {spirit_mul = 0.8}},
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
+			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
 			]
 	},
@@ -4330,6 +4332,7 @@ var training_categories = {
 			{type = 'trainer_class', check = 'headgirl', effect = {loyalty_mul = 1.15}},
 			{type = 'trainer_class', check = 'director', effect = {spirit_mul = 0.8}},
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
+			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
 		]
 	},
@@ -4343,6 +4346,7 @@ var training_categories = {
 			{type = 'trainer_class', check = 'headgirl', effect = {loyalty_mul = 1.15}},
 			{type = 'trainer_class', check = 'director', effect = {spirit_mul = 0.8}},
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
+			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
 			]
 	},
@@ -4358,6 +4362,7 @@ var training_categories = {
 			{type = 'trainer_class', check = 'sadist', effect = {spirit_mul = 1.2, loyalty_mul = 1.2}},
 			{type = 'trainer_class', check = 'director', effect = {spirit_mul = 0.8}},
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
+			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
 			]
 	},
@@ -4370,6 +4375,7 @@ var training_categories = {
 			{type = 'trainer_class', check = 'renown_royalty', chance = {success_add = 20, crit_success_add = 20}},
 			{type = 'trainer_class', check = 'director', effect = {spirit_mul = 0.8}},
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
+			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
 			]
 	},
