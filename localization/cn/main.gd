@@ -237,6 +237,7 @@ var TranslationDict = {
 	NEWGAMEADDITIONAL = "附加角色",
 	NEWGAMESETTINGFUTA = "扶她",
 	NEWGAMESETTINGFURRY = "福瑞",
+	NEWGAMESETTINGEASYTRAIN = """Easy Training""", # MISSING TRANSLATION
 	#TutorialInfo
 	TUTORIALINFONAME = "介绍",
 	TUTORIALINFOQUESTION = "这是你第一次玩《奋斗：征服》吗？",
@@ -3606,6 +3607,10 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	SETTINGFUTACHANCE_DESCRIPT = "Sets a chance that a randomly generated female will be a futanari.",
 	SETTINGMALECHANCE_NAME = "男性比例",
 	SETTINGMALECHANCE_DESCRIPT = "Sets a chance that a character with no preset gender will become a male instead of female.",
+	SETTINGEASYTRAIN_NAME = """Simple Training""", # MISSING TRANSLATION
+	SETTINGEASYTRAIN_DESCRIPT = """Slavery training will never fail because incorrect option is selected. Select if you hate being harsh to your slaves.""", # MISSING TRANSLATION
+	SETTINGEASY_TRAINNAME = """Simple Training""", # MISSING TRANSLATION
+	SETTINGEASY_TRAINDESCRIPT = """Slavery training will never fail because incorrect option is selected. Select if you hate being harsh to your slaves.""", # MISSING TRANSLATION
 	SETTINGMEOWING_NAME = "喵喵叫",
 	SETTINGMEOWING_DESCRIPT = "Beastkin and Halfkin Cat characters will have slightly different speech patterns.",
 	SETTINGTURN_BASED_TIME_FLOW_NAME = "基于回合\n时间流",

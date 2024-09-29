@@ -503,13 +503,10 @@ toggle_mode = true
 
 [node name="Settings" type="VBoxContainer" parent="NewGamePanel"]
 margin_left = 24.0
-margin_top = 567.0
+margin_top = 545.0
 margin_right = 280.0
-margin_bottom = 743.0
+margin_bottom = 721.0
 theme = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Button" type="CheckBox" parent="NewGamePanel/Settings"]
 visible = false
@@ -528,13 +525,14 @@ __meta__ = {
 }
 
 [node name="SkipP" type="CheckBox" parent="NewGamePanel"]
-margin_left = 24.0203
-margin_top = 697.391
-margin_right = 269.02
-margin_bottom = 745.391
+margin_left = 23.0
+margin_top = 713.0
+margin_right = 284.0
+margin_bottom = 761.0
 theme = ExtResource( 12 )
 custom_fonts/font = ExtResource( 28 )
 text = "NEWGAMESKIPPROL"
+clip_text = true
 
 [node name="tip" type="TextureRect" parent="NewGamePanel"]
 visible = false

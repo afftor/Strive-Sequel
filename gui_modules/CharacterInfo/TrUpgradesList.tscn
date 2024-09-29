@@ -591,6 +591,7 @@ margin_right = -497.0
 margin_bottom = -5.0
 mouse_filter = 2
 expand = true
+stretch_mode = 6
 
 [node name="header_text" type="Label" parent="finished/VBoxContainer/result_frame"]
 margin_left = 119.0
@@ -612,18 +613,18 @@ text = "Select specialization:"
 clip_text = true
 
 [node name="list" type="Label" parent="finished/VBoxContainer"]
-margin_top = 171.0
+margin_top = 167.0
 margin_right = 600.0
-margin_bottom = 224.0
+margin_bottom = 220.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 8 )
 text = "Trainees:"
 clip_text = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="finished/VBoxContainer"]
-margin_top = 228.0
+margin_top = 224.0
 margin_right = 600.0
-margin_bottom = 228.0
+margin_bottom = 224.0
 custom_constants/separation = 20
 
 [node name="Button" type="TextureRect" parent="finished/VBoxContainer/HBoxContainer2"]
