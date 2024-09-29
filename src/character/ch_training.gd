@@ -306,7 +306,7 @@ func apply_training(code):
 		if result_data.spirit > 0:
 			result_data.spirit = 0 
 	#other effects
-	if code != 'influence' or !ch_trainer.has_profession('caster'):
+	if code != 'influence':
 		available = false
 	if code == 'dayoff':
 		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table['e_s_dayoff'])

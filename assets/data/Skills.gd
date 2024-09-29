@@ -4246,7 +4246,7 @@ var training_actions = {
 		result_text = {},
 		bonus_changes = [{type = 'always', effect = {loyalty_mul = 0, spirit_mul = 0}},],
 		reqs = [],
-		reqs_trainer = [],
+		reqs_trainer = [{code = 'trait', trait = 'basic_spells', check = true}],
 		cost = {mana = 3},
 	},
 	influence = {
@@ -4259,7 +4259,7 @@ var training_actions = {
 		result_text = {},
 		bonus_changes = [],
 		reqs = [],
-		reqs_trainer = [],
+		reqs_trainer = [{code = 'trait', trait = 'basic_spells', check = true}],
 		cost = {mana = 5},
 		disposition_affects = [['positive', 'physical', 'humiliation', 'social', 'sexual']]
 	},
