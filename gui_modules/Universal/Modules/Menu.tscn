@@ -678,7 +678,14 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "0.9.1a
+bbcode_text = "0.10.0
+Added 3rd act
+Revamped character list
+Revamped slave training system
+Added quality upgrade options to gear
+Added infinite dungeon system
+Many bug and typo and event fixes through the game
+0.9.1a
 Fixed oblivion potion
 Fixed mod editor crashing on opening
 Added dialogue event to sexswap potion
@@ -1732,7 +1739,14 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.9.1a
+text = "0.10.0
+Added 3rd act
+Revamped character list
+Revamped slave training system
+Added quality upgrade options to gear
+Added infinite dungeon system
+Many bug and typo and event fixes through the game
+0.9.1a
 Fixed oblivion potion
 Fixed mod editor crashing on opening
 Added dialogue event to sexswap potion

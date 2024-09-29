@@ -1197,11 +1197,11 @@ func select_option(number):
 	elif current_scene.tags.has("dialogue_scene") && !(code in ['close','quest_fight']):
 		
 		hold_selection = true
+		if option.has('dialogue_argument') == false:
+			option.dialogue_argument = 0
 		if option.has('change_dialogue_type'):
 			dialogue_next(code, option.dialogue_argument, {changed_window_type = true})
 		else:
-			if option.has('dialogue_argumet') == false:
-				option.dialogue_argument = 0
 			dialogue_next(code, option.dialogue_argument)
 	else:
 		var args

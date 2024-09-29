@@ -1663,6 +1663,10 @@ margin_bottom = 437.0
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 5.0
+margin_right = -4.0
+margin_bottom = -2.0
 scroll_horizontal_enabled = false
 
 [node name="GridContainer" type="GridContainer" parent="Panel/ScrollContainer"]
