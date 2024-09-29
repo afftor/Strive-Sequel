@@ -66,7 +66,7 @@ func open_cheats_menu():
 
 
 func text_changed(text):
-	if ResourceScripts.game_progress.cheat_code == text:
+	if ResourceScripts.game_globals.cheat_code == text:
 		$TabContainer/Cheats/EnterCodeMenu/Activate.disconnect("pressed", self, "go_for_code")
 		$TabContainer/Cheats/EnterCodeMenu/Activate.connect("pressed", self, "activate_cheats")
 
