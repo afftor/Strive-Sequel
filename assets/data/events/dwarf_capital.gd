@@ -270,7 +270,7 @@ var data = {
 							}
 						],
 						type = "next_dialogue",
-						dialogue_argument = 0
+						dialogue_argument = 9
 					},
 					{
 						code = "close",
