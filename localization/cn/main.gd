@@ -1669,6 +1669,7 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	STATMOD_TAILOR = "Tailor",
 	STATMOD_ALCHEMY = "Alchemy",
 	STATMOD_FARM = "Farming",
+	STATMOD_SERVICE = """Service""", # MISSING TRANSLATION
 	STATMOD_PROS = "Service",
 	STATMOD_TASK_EFFICIECNY = "Task Effciency",
 	STATMOD_WAITRESS = "Waitress Income",

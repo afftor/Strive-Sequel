@@ -444,6 +444,7 @@ var scenes = {
 	dwarf_treasury = load("res://assets/images/scenes/treasury.png"),
 	kobold_temple = load("res://assets/images/scenes/kobold_temple.png"),
 	dwarf_prisoner = load("res://assets/images/scenes/gnome_prisoner.png"),
+	dwarf_gates = load("res://assets/images/scenes/dwarf_gates.png"),
 }
 
 var sprites = {

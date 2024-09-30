@@ -1671,6 +1671,7 @@ var TranslationDict = {
 	STATMOD_TAILOR = "Портняжество",
 	STATMOD_ALCHEMY = "Алхимия",
 	STATMOD_FARM = "Фермерство",
+	STATMOD_SERVICE = """Service""", # MISSING TRANSLATION
 	STATMOD_PROS = "Услуги",
 	STATMOD_TASK_EFFICIECNY = "Эффективность задач",
 	STATMOD_WAITRESS = "Доход официантки",
