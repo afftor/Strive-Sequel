@@ -468,7 +468,7 @@ var gold_tasks_data = {
 		formula = 'gold_waitress',
 		text_events = [],
 		workstats = ['charm'],
-		workmod = 'mod_pros',
+		workmod = 'mod_service',
 		tags = ['has_alt_name'],
 	},
 	hostess = {
@@ -476,7 +476,7 @@ var gold_tasks_data = {
 		formula = 'gold_hostess',
 		text_events = [],
 		workstats = ['wits'],
-		workmod = 'mod_pros',
+		workmod = 'mod_service',
 		tags = ['has_alt_name'],
 	},
 	dancer = {
@@ -484,7 +484,7 @@ var gold_tasks_data = {
 		formula = 'gold_dancer',
 		text_events = [],
 		workstats = ['physics'],
-		workmod = 'mod_pros',
+		workmod = 'mod_service',
 		tags = [],
 	},
 	stripper = {
@@ -493,7 +493,7 @@ var gold_tasks_data = {
 		text_events = [],
 		workstats = ['charm'],
 #		req_training = 'loyalty_dress_lewd',
-		workmod = 'mod_pros',
+		workmod = 'mod_service',
 		tags = [],
 	},
 	
