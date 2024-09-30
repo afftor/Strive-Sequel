@@ -1,56 +1,12 @@
 extends Node
 var biomes = {
-	test_biome1 = {
-		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
-		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
-		gatherable_resources = {
-			wood = {
-				amount = [25,40],
-				weight = 10,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			stone = {
-				amount = [25,40],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			iron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			},
-	},
-	test_biome2 = {
-		background_pool = ['fort1', 'fort2', 'fort3'],
-		enemyarray = [['jungle_easy1', 1],['jungle_easy2', 1],['jungle_medium1', 1],['jungle_medium2', 1]],
-		gatherable_resources = {
-			wood = {
-				amount = [25,40],
-				weight = 10,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			stone = {
-				amount = [25,40],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			iron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			},
-	},
 	biome_bandit_den = {
 		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
 		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
+		character_data = {
+			chance_mod = 1.5,#increases base chance to get slave after combat by this if its not guaranteed
+			races = [['local', 3], ['common',1]]
+		},
 		event_room_number = [3,4],
 		material_room_number = [5,6],
 		main_route_length = [5,6], 
@@ -80,6 +36,11 @@ var biomes = {
 	biome_bandit_fort = {
 		background_pool = ['fort1', 'fort2', 'fort3'],
 		enemyarray =  [["bandits_assassin", 1],['bandits_medium', 1],['bandits_medium2', 1],['bandits_golem', 0.5],['bandits_ballista', 0.5]],
+		character_data = {
+			chance_mod = 1.5,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
+
 		event_room_number = [3,4],
 		material_room_number = [4,5],
 		main_route_length = [6,7],
@@ -116,6 +77,10 @@ var biomes = {
 	biome_rebel_redoubt = {
 		background_pool = ['fort1', 'fort2', 'fort3'],
 		enemyarray =  [['event_rebels_1', 1],['event_rebels_2', 1],['rebels_small', 0.5]],
+		character_data = {
+			chance_mod = 1.2,
+			races = [['local', 6], ['common',1]]
+		},
 		event_room_number = [3,4],
 		material_room_number = [4,5],
 		main_route_length = [6,7],
@@ -151,6 +116,10 @@ var biomes = {
 	biome_undead_crypt = {
 		background_pool = ['crypt1', 'crypt2', 'crypt3', 'crypt4', 'crypt5'],
 		enemyarray =  [["skeletons_easy", 1],['skeletons_easy2', 1],['skeletons_zombies', 1],['skeletons_zombies2', 1],['skeletons_lich', 0.5]],
+		character_data = {
+			chance_mod = 0.7,
+			races = [['common', 6], ['uncommon', 1]]
+		},
 		event_room_number = [3,4],
 		material_room_number = [4,5],
 		main_route_length = [6,7],
@@ -180,6 +149,10 @@ var biomes = {
 	biome_goblin_cave = {
 		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5'],
 		enemyarray =  [["rats_easy", 0.5],['spiders', 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
+		character_data = {
+			chance_mod = 1.4,
+			races = [["common", 1], ['local', 4], ['Goblin',5]]
+		},
 		event_room_number = [3,4],
 		material_room_number = [4,5],
 		main_route_length = [5,6],
@@ -209,6 +182,10 @@ var biomes = {
 	biome_grove = {
 		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
 		enemyarray = [["rats_easy", 0.5],['wolves_easy1', 1],['wolves_easy2', 1],['spiders', 1]],
+		character_data = {
+			chance_mod = 0.8,
+			races = [["common", 2], ['local', 4],['uncommon',1]]
+		},
 		event_room_number = [3,4],
 		material_room_number = [4,5],
 		main_route_length = [5,6],
@@ -244,6 +221,10 @@ var biomes = {
 	biome_ancient_jungles = {
 		background_pool = ['jungle1','jungle2','jungle3','jungle4'],
 		enemyarray = [['jungle_easy1', 1],['jungle_easy2', 1],['jungle_medium1', 1],['jungle_medium2', 1]],
+		character_data = {
+			chance_mod = 1.1,
+			races = [["common", 2], ['uncommon', 4],['TribalElf',6], ['rare',1]]
+		},
 		event_room_number = [3,4],
 		material_room_number = [4,5],
 		main_route_length = [6,7],
@@ -279,6 +260,10 @@ var biomes = {
 	biome_fire_depths = {
 		background_pool = ['fire_depths1', 'fire_depths2', 'fire_depths3', 'fire_depths4'],
 		enemyarray = [['firedepths_easy1', 1],['firedepths_easy2', 1],['firedepths_medium1', 1],['firedepths_medium2', 1]],
+		character_data = {
+			chance_mod = 1.0,
+			races = [["common", 2], ['uncommon', 4],['rare',1]]
+		},
 		event_room_number = [3,4],
 		material_room_number = [4,5],
 		main_route_length = [6,8],
