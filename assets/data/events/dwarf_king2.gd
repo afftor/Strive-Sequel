@@ -809,7 +809,7 @@ var data = {
 
 				],
 				type = "next_dialogue",
-				dialogue_argument = 0
+				dialogue_argument = 9
 			},
 			{
 				code = "sacred_sap_fighters_3",
@@ -818,7 +818,7 @@ var data = {
 
 				],
 				type = "next_dialogue",
-				dialogue_argument = 0
+				dialogue_argument = 9
 			}
 		],
 		image = "elven_prisoners"
@@ -835,7 +835,8 @@ var data = {
 				text = "SACRED_SAP_FIGHTERS_3",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 9
 			},
 			{
 				text = "SACRED_SAP_FIGHTERS_3_REVISIT",
@@ -2003,7 +2004,8 @@ var data = {
 				text = "KURO_QUESTIONS_HAS",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 9
 			},
 			{
 				text = "KURO_QUESTIONS_NO",

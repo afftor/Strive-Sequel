@@ -1834,7 +1834,8 @@ var data = {
 						value = "MetKobold",
 						check = true
 					}
-				]
+				],
+				dialogue_argument = 9
 			},
 			{
 				code = "old_temple_nuisance",
@@ -1846,7 +1847,8 @@ var data = {
 						value = "MetKobold",
 						check = false
 					}
-				]
+				],
+				dialogue_argument = 9
 			}
 		],
 		image = "kobold_temple"
@@ -1863,7 +1865,8 @@ var data = {
 				text = "OLD_TEMPLE_KOBOLD",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 9
 			},
 			{
 				text = "OLD_TEMPLE_REPLY_WITHCOAL",
@@ -1888,7 +1891,8 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue"
+				type = "next_dialogue",
+				dialogue_argument = 9
 			}
 		],
 		image = "kobold_temple"
@@ -1905,7 +1909,8 @@ var data = {
 				text = "OLD_TEMPLE_NUISANCE",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 9
 			},
 			{
 				text = "OLD_TEMPLE_REPLY_RUBBLE",
@@ -2358,7 +2363,7 @@ var data = {
 						value = 0.5
 					}
 				],
-				dialogue_argument = 0
+				dialogue_argument = 9
 			}
 		],
 		character = "hara",
@@ -2376,7 +2381,8 @@ var data = {
 				text = "BOLTHAR_RETURN_RECRUIT",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 9
 			},
 			{
 				text = "BOLTHAR_RETURN_REPLY_OFFER",
@@ -2565,7 +2571,7 @@ var data = {
 				reqs = [
 
 				],
-				dialogue_argument = 0,
+				dialogue_argument = 9,
 				type = "next_dialogue"
 			}
 		]
@@ -2583,7 +2589,8 @@ var data = {
 				text = "COALBASE_ATTACK_ITCHING",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 9
 			},
 			{
 				text = "COALBASE_ATTACK_REPLY_HARMED_FAIL",
