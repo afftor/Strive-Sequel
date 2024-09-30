@@ -1036,9 +1036,9 @@ var professions = {
 		showupreqs = [{code = 'disabled', check = true}],
 		reqs = [{code = 'cant_spawn_naturally'}],
 		statchanges = {mpmax = 10, hpmax = 25, resist_dark = 75, price = 500, chg_wisdom_max = 1, chg_dexterity_max = 1},
-		traits = [],
+		traits = ['nixx_champion'],
 		skills = [],
-		combatskills = [],
+		combatskills = ['dark_atk'],
 		conflict_classes = [],
 	},
 }

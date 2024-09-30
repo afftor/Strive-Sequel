@@ -595,6 +595,31 @@ var effect_table = {
 		modal_sub_effects = ['e_s_rejuvenation', 'e_s_mward2'],
 		buffs = []
 	},
+	e_tr_nixx = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		req_skill = true,
+		conditions = [
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['damage_type', 'eq', 'dark']}
+		],
+		atomic = [],
+		buffs = [],
+		args = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				args = [],
+				atomic = [
+					{type = 'stat_add', stat = 'chance', value = 30},
+					{type = 'add_tag', value = 'nodef'},
+					],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
 	e_s_bond = {
 		type = 'temp_s',
 		target = 'target',

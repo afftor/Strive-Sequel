@@ -264,6 +264,12 @@ func apply_training(code):
 			'trainer_class':
 				if ch_trainer.has_profession(eff.check):
 					effects.push_back(eff.effect)
+			'trainer_trait':
+				if ch_trainer.check_trait(eff.check):
+					effects.push_back(eff.effect)
+			'trainer_status':
+				if ch_trainer.has_status(eff.check):
+					effects.push_back(eff.effect)
 			'disposition':
 				if disposition in eff.check:
 					effects.push_back(eff.effect)
@@ -300,7 +306,7 @@ func apply_training(code):
 		if result_data.spirit > 0:
 			result_data.spirit = 0 
 	#other effects
-	if code != 'influence' or !ch_trainer.has_profession('caster'):
+	if code != 'influence':
 		available = false
 	if code == 'dayoff':
 		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table['e_s_dayoff'])
