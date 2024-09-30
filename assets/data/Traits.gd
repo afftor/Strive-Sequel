@@ -1270,7 +1270,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_harlotry.png",
 		effects = [],
-		reqs = [{code = 'trait', trait = 'training_broke_in', check = true}],
+		reqs = [{code = 'trait', trait = 'training_broke_in', check = true}, {code = 'stat', stat = 'consent', operant = 'gte', value = 1 }],
 		bonusstats = {}, 
 		tags = ['training', 'sexservice', 'simple_icon']
 	},
@@ -1281,7 +1281,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_group.png", 
 		effects = [],
-		reqs = [{code = 'trait', trait = 'training_sexservice', check = true}],
+		reqs = [{code = 'trait', trait = 'training_sexservice', check = true}, {code = 'stat', stat = 'consent', operant = 'gte', value = 3 }],
 		bonusstats = {}, 
 		tags = ['training', 'sexservice', 'sexservice_adv', 'simple_icon']
 	},
@@ -1325,7 +1325,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_harlotry.png",
 		effects = [],
-		reqs = [],
+		reqs = [{code = 'stat', stat = 'consent', operant = 'gte', value = 1 }],
 		bonusstats = {}, 
 		tags = ['sexservice', 'simple_icon', 'servant_training']
 	},
@@ -1335,7 +1335,7 @@ var traits = {
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_group.png", 
-		effects = [],
+		effects = [{code = 'stat', stat = 'consent', operant = 'gte', value = 3 }],
 		reqs = [{code = 'trait', trait = 'training_s_sexservice', check = true}], #should be status - for mixing servant & slave trainings
 		bonusstats = {}, 
 		tags = ['sexservice', 'sexservice_adv', 'simple_icon', 'servant_training']

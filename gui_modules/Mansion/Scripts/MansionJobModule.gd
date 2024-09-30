@@ -758,9 +758,9 @@ func show_brothel_options():
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
 		var text = ''
-		text += "Minimum consent: {color=aqua|" + tr(variables.consent_dict[tasks.gold_tasks_data[i].min_consent]) + "},"
-		if person.is_master() == false:
-			text +=  "[name]'s consent: {color=aqua|" + tr(variables.consent_dict[int(person.get_stat('consent'))]) + "}\n"
+#		text += "Minimum consent: {color=aqua|" + tr(variables.consent_dict[tasks.gold_tasks_data[i].min_consent]) + "},"
+#		if person.is_master() == false:
+#			text +=  "[name]'s consent: {color=aqua|" + tr(variables.consent_dict[int(person.get_stat('consent'))]) + "}\n"
 		newbutton.text = tr("BROTHEL"+i.to_upper())
 		text += person.translate(tr("BROTHEL"+i.to_upper() +"DESCRIPT")) 
 		newbutton.pressed = person.check_brothel_rule(i)
@@ -769,7 +769,7 @@ func show_brothel_options():
 		#if person.get_work() == '':
 		#	newbutton.disabled = true
 		if person.is_master() == false:
-			if person.checkreqs([{code = 'trait', trait = tasks.gold_tasks_data[i].req_training, check = false}]) && (tasks.gold_tasks_data[i].has('min_consent') && person.get_stat('consent') < tasks.gold_tasks_data[i].min_consent):
+			if !person.has_status(tasks.gold_tasks_data[i].req_training):
 				if person.get_stat('slave_class') != 'slave':
 					newbutton.disabled = true
 					text += tr("LACKSEXTRAINING")
