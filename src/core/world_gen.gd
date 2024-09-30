@@ -1270,8 +1270,8 @@ func set_level_infinite(location, level):
 		if location.gatherable_resources[res].gather_mod is Array:
 			location.gatherable_resources[res].gather_mod = globals.rng.randf_range(location.gatherable_resources[res].gather_mod[0], location.gatherable_resources[res].gather_mod[1])
 	location.enemies = biome_data.enemyarray.duplicate(true)
-	for st in ['event_room_number', 'material_room_number', 'main_route_length', 'bonus_rooms', 'base_room_stamina_cost']:
-		location[st] = biome_data[st].duplicate()
+	for st in ['event_room_number', 'material_room_number', 'main_route_length', 'bonus_rooms', 'base_room_stamina_cost', 'character_data']:
+		location[st] = biome_data[st].duplicate(true)
 	#setup dungeon
 	var tmp = "level seed %d" % level
 	globals.rng_controllable.seed = hash(tmp) + ResourceScripts.game_globals.seed_salt
