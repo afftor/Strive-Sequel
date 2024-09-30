@@ -193,7 +193,7 @@ func update_buttons():
 		return
 	if l.has("background"):
 		$Landscape.texture = images.backgrounds[l.background]
-	elif l.has("id"):
+	if l.has("id"):
 		if l.id == "aliron":
 			$Landscape.texture = images.backgrounds["aliron"]
 
@@ -258,7 +258,7 @@ func select_location(location):
 	var l = ResourceScripts.world_gen.get_location_from_code(location)
 	if l.has("background"):
 		$Landscape.texture = images.backgrounds[l.background]
-	elif l.has("id"):
+	if l.has("id"):
 		if l.id == "aliron":
 			$Landscape.texture = images.backgrounds["aliron"]
 
