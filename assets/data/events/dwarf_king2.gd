@@ -407,7 +407,8 @@ var data = {
 						operant = "-",
 						value = 1000
 					}
-				]
+				],
+				not_hide = true
 			},
 			{
 				code = "close",
@@ -876,7 +877,8 @@ var data = {
 						operant = "-",
 						value = 1000
 					}
-				]
+				],
+				not_hide = true
 			},
 			{
 				code = "sacred_sap_fighters_slave",
@@ -1311,7 +1313,8 @@ var data = {
 						material = "steel",
 						value = 100
 					}
-				]
+				],
+				not_hide = true
 			},
 			{
 				code = "close",
