@@ -354,6 +354,15 @@ var traits = {
 		effects = ['e_tr_deathknight'],
 		tags = []
 	},
+	nixx_champion = {
+		code = 'nixx_champion',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_nixx'],
+		tags = []
+	},
 	witch = {
 		code = 'witch',
 		name = '',

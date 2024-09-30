@@ -121,7 +121,7 @@ func calculate_dmg():
 		reduction = max(0, reduction)
 	elif parent.ability_type == 'spell':
 		reduction = max(0, parent.target.get_stat('mdef'))
-	if !template.nodef and !template.nomod:
+	if !template.nodef and !template.nomod and !parent.tags.has('nodef'):
 		value -= reduction
 	
 	value = max(value, cap)
@@ -146,7 +146,7 @@ func calculate_dmg():
 		reduction = mods.ranged
 	elif parent.target_range == 'melee': #or add tags for this
 		reduction = mods.melee
-	if !template.nodef and !template.nomod:
+	if !template.nodef and !template.nomod and !parent.tags.has('nodef'):
 		value *= (float(100 - reduction)/100.0)
 	if parent.tags.has('heal'):
 		reduction = mods.heal
