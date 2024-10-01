@@ -1481,6 +1481,8 @@ func tick():
 	var treg = variables.basic_hp_regen * get_stat('hp_reg_mod') + get_stat('hp_reg_add')
 	self.hp += max(treg, 0)
 	treg = (variables.basic_mp_regen + get_stat('magic_factor') * variables.mp_regen_per_magic) * get_stat('mp_reg_mod') + get_stat('mp_reg_add')
+	if ResourceScripts.game_res.upgrades.has('resting') and ResourceScripts.game_res.upgrades.resting > 0:
+		treg *= 1.2
 	self.mp += max(treg, 0)
 	#loyalty and obedience changes are in sats
 	if ResourceScripts.game_globals.hour == 2:
