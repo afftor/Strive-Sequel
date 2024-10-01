@@ -49,8 +49,7 @@ func deserialize(savedict):
 func fix_import():
 	if statlist.unique != null and !ResourceScripts.game_world.easter_egg_characters_acquired.has(statlist.unique):
 		ResourceScripts.game_world.easter_egg_characters_acquired.append(statlist.unique)
-	if statlist.slave_class in ['slave']:
-		set_slave_category('slave1')
+	
 
 
 func fix_serialize():
@@ -76,7 +75,8 @@ func fix_serialize():
 		statlist.metrics[metr] = Statlist_init.template.metrics[metr]
 	for st in ['personality_bold', 'personality_kind',]:
 		statlist[st] = int(statlist[st])
-	
+	if statlist.slave_class in ['slave']:
+		set_slave_category('slave1')
 	statlist.consent = min(get_stat('consent'), 6)
 	bonuses.erase('consent_add')
 	bonuses.erase('consent_mul')
