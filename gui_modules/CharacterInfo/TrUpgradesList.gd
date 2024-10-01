@@ -182,6 +182,9 @@ func build_posttrain():
 			$finished/VBoxContainer/result_frame/icon.texture = trdata.icon
 		$finished/VBoxContainer/result_frame/header_text.text = tr(trdata.name)
 		globals.connecttexttooltip($finished/VBoxContainer/result_frame, tr(trdata.descript))
+	else:
+		$finished/VBoxContainer/result_frame.visible = false
+		$finished/VBoxContainer/select_text.visible = false
 	
 	if spirit < variables.spirit_limits[0]:
 		$finished/status.text = tr('TRAININGSTATUS1')
