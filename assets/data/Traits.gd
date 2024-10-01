@@ -1344,8 +1344,8 @@ var traits = {
 		name = '',
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_group.png", 
-		effects = [{code = 'stat', stat = 'consent', operant = 'gte', value = 3 }],
-		reqs = [{code = 'trait', trait = 'training_s_sexservice', check = true}], #should be status - for mixing servant & slave trainings
+		effects = [],
+		reqs = [{code = 'trait', trait = 'training_s_sexservice', check = true}, {code = 'stat', stat = 'consent', operant = 'gte', value = 3 }], #should be status - for mixing servant & slave trainings
 		bonusstats = {}, 
 		tags = ['sexservice', 'sexservice_adv', 'simple_icon', 'servant_training']
 	},
