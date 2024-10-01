@@ -10,7 +10,7 @@ var stats_dict = {
 	"wits_factor": "Wits Factor",
 	"charm_factor": "Charm Factor",
 	"sexuals_factor": "Sexuals Factor",
-	"timid_factor": "Timid Factor",
+	"timid_factor": "Authority Factor",
 	"tame_factor": "Tame Factor",
 	"magic_factor": "Magic Factor",
 }
