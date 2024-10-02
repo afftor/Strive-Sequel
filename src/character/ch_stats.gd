@@ -2005,7 +2005,7 @@ func tick():
 		if statlist.pregnancy.duration == 0:
 			reported_pregnancy = false
 			parent.get_ref().remove_all_temp_effects_tag('pregnant')
-			if has_status('relation'): #or another
+			if true: #has_status('relation'): #or another
 				input_handler.interactive_message('childbirth', 'childbirth', {pregchar = parent.get_ref()})
 			else:
 				input_handler.interactive_message('childbirth_alt', 'childbirth', {pregchar = parent.get_ref()})

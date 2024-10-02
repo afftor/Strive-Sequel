@@ -280,6 +280,8 @@ func apply_training(code):
 				if input_handler.operate(eff.operant, parent.get_ref().get_stat(eff.stat), eff.check):
 					effects.push_back(eff.effect)
 	#modify result
+	if ResourceScripts.game_res.upgrades.has('resting') and ResourceScripts.game_res.upgrades.resting > 0:
+		result_data.spirit += 1
 	for eff_dict in effects:
 		for eff in eff_dict:
 			if eff.ends_with('_mul'):
