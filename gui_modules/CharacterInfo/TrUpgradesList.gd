@@ -322,6 +322,7 @@ func build_training_traits():
 		panel.get_node('Label').text = str(person.get_training_cost())
 		if person.check_trait(tr):
 			panel.pressed = true
+			panel.get_node('Label').visible = false
 		else:
 			panel.pressed = false
 			if person.get_stat('loyalty') >= person.get_training_cost() and person.checkreqs(trdata.reqs) and person.training.check_stored_reqs(tr): 
