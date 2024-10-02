@@ -851,7 +851,7 @@ func work_tick():
 		parent.get_ref().rest_tick()
 		return
 	
-	if !parent.get_ref().is_controllable():
+	if !parent.get_ref().is_worker():
 		if !messages.has("refusedwork"):
 			globals.text_log_add('work', parent.get_ref().get_short_name() + ": Refused to work")
 			messages.append("refusedwork")
