@@ -189,6 +189,7 @@ valign = 1
 clip_text = true
 
 [node name="training" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -543,7 +544,6 @@ margin_bottom = 45.0
 custom_fonts/font = ExtResource( 18 )
 
 [node name="finished" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -583,12 +583,10 @@ margin_bottom = 106.0
 texture = ExtResource( 3 )
 
 [node name="icon" type="TextureRect" parent="finished/VBoxContainer/result_frame"]
-anchor_right = 1.0
-anchor_bottom = 1.0
 margin_left = 5.0
 margin_top = 5.0
-margin_right = -497.0
-margin_bottom = -5.0
+margin_right = 103.0
+margin_bottom = 103.0
 mouse_filter = 2
 expand = true
 stretch_mode = 6

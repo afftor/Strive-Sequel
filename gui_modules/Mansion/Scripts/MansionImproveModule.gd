@@ -149,6 +149,8 @@ func build_fuse_list():
 			am2 = selected_fuse_items[id]
 		if id == selected_item:
 			am1 -= 1
+			if am1 == 0:
+				panel.visible = false
 			panel.pressed = true
 			panel.get_node('amount').text = "%d/%d" % [am1, am2]
 		elif selected_fuse_items.has(id):
@@ -237,6 +239,8 @@ func apply_selection():
 	
 	for id in selected_fuse_items:
 		var tmp = ResourceScripts.game_res.items[id]
+		if tmp.owner != null:
+			characters_pool.get_char_by_id(tmp.owner).unequip(tmp)
 		tmp.amount -= selected_fuse_items[id]
 	
 	item.clear_enchants()
