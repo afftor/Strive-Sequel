@@ -4478,6 +4478,7 @@ var effect_table = {
 
 	alcohol = { 
 		type = 'temp_s',
+		target = 'caster',
 		duration = 2,
 		stack = 1,
 		name = 'alcohol',

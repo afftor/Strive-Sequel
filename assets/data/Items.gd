@@ -2744,7 +2744,7 @@ var itemlist = {
 		effects = [],
 		tags = ['date'],
 		uses_per_day = 0,
-		mansion_effect = 'alcohol',
+		mansion_effect = 'alcohol_4',
 		interaction_effect = 'alcohol',
 	},
 	wine = {
@@ -2762,7 +2762,7 @@ var itemlist = {
 		effects = [],
 		tags = ['date'],
 		uses_per_day = 0,
-		mansion_effect = 'alcohol',
+		mansion_effect = 'alcohol_3',
 		interaction_effect = 'alcohol',
 	},
 	wine2 = {
@@ -2780,7 +2780,7 @@ var itemlist = {
 		effects = [],
 		tags = ['date'],
 		uses_per_day = 0,
-		mansion_effect = 'alcohol',
+		mansion_effect = 'alcohol_2',
 		interaction_effect = 'alcohol',
 	},
 	beer = {
@@ -2798,7 +2798,7 @@ var itemlist = {
 		effects = [],
 		tags = ['date'],
 		uses_per_day = 0,
-		mansion_effect = 'beer',
+		mansion_effect = 'alcohol_1',
 		interaction_effect = 'beer',
 	},
 	hairdye = {

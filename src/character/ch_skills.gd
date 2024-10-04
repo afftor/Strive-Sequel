@@ -287,8 +287,8 @@ func use_social_skill(s_code, target, item):
 				var cur_personality = h.get_stat('personality')
 				var st = stat.trim_prefix('direct_')
 				var st_res = st
-				if mod == 1:
-					cached_value = -cached_value
+				if cached_value < 0:
+#					cached_value = -cached_value
 					if st == 'personality_bold':
 						st_res = 'personality_shy'
 					else:
