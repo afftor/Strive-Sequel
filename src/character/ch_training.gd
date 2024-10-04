@@ -87,7 +87,11 @@ func add_trainee(id): #unsafe - no limit check
 		return
 	trainees.push_back(id)
 	var tchar = characters_pool.get_char_by_id(id)
-	tchar.training.trainer = parent.get_ref().id
+	if tchar.training.trainer == parent.get_ref().id:
+		print ('warning - error in trainee setup')
+	else:
+		tchar.clear_training()
+		tchar.training.trainer = parent.get_ref().id
 
 
 func can_be_trained():
