@@ -674,7 +674,6 @@ margin_bottom = 715.0
 theme = ExtResource( 5 )
 
 [node name="rewards" type="VBoxContainer" parent="finish/ScrollContainer"]
-margin_right = 600.0
 size_flags_horizontal = 3
 custom_constants/separation = 5
 

@@ -903,6 +903,7 @@ var TranslationDict = {
 
 	SAVENAME = "Сохранение",
 	SAVETEMPLATEDESCRIPT = "Вы можете сохранить существующий шаблон персонажа для повторного использования.",
+	TOOLTIPIMPROVESCREEN = """Improve your gear by sacrficing similar gear of same quality. Sacrificed gear will be lost.""", # MISSING TRANSLATION
 
 	#Item Parts
 	TOOLHANDLE = 'Рукоятка инструмента',

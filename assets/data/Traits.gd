@@ -644,7 +644,7 @@ var traits = {
 		weight = 100,
 		conflicts = ['slow'],
 		disposition_change = {
-			sexual = [['weeak', 75],['kink', 25]]
+			sexual = [['weak', 75],['kink', 25]]
 		},
 		tags = ['positive', 'can_start', 'disposition_change']
 	},

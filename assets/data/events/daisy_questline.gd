@@ -2374,7 +2374,11 @@ var data = {
 					{
 						code = "complete_quest",
 						value = "daisy_training"
-					}
+					},
+					{
+						code = "decision",
+						value = "DaisyTrainingFinished"
+					},
 				]
 			}
 		]
@@ -2570,7 +2574,12 @@ var data = {
 					{
 						code = "complete_quest",
 						value = "daisy_training"
-					}
+					},
+					
+					{
+						code = "decision",
+						value = "DaisyTrainingFinished"
+					},
 				]
 			}
 		]
@@ -2782,7 +2791,12 @@ var data = {
 					{
 						code = "complete_quest",
 						value = "daisy_training"
-					}
+					},
+					
+					{
+						code = "decision",
+						value = "DaisyTrainingFinished"
+					},
 				],
 				type = "next_dialogue"
 			}
@@ -2916,7 +2930,12 @@ var data = {
 					{
 						code = "complete_quest",
 						value = "daisy_training"
-					}
+					},
+					
+					{
+						code = "decision",
+						value = "DaisyTrainingFinished"
+					},
 				],
 				type = "next_dialogue"
 			}
@@ -3062,7 +3081,12 @@ var data = {
 					{
 						code = "complete_quest",
 						value = "daisy_training"
-					}
+					},
+					
+					{
+						code = "decision",
+						value = "DaisyTrainingFinished"
+					},
 				],
 				type = "next_dialogue"
 			}

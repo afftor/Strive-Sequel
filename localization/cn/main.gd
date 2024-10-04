@@ -882,6 +882,7 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 
 	SAVENAME = "存档名称",
 	SAVETEMPLATEDESCRIPT = "您可以保存现有的角色模板以供重复使用。",
+	TOOLTIPIMPROVESCREEN = """Improve your gear by sacrficing similar gear of same quality. Sacrificed gear will be lost.""", # MISSING TRANSLATION
 
 	#Item Parts
 	TOOLHANDLE = '工具手柄',

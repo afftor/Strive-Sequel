@@ -922,14 +922,15 @@ var fixed_location_options = { #override serialized data
 			], 
 			args = [{code = 'start_event', data = 'lilia_search_start', args = []}]
 		},
-		{
-			text = tr("ALIRON20"), 
-			reqs = [
-				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GOBLIN_QUEST_HARA_1'},
-				{type = 'quest_completed', name = 'goblin_quest', check = true}
-			], 
-			args = [{code = 'start_event', data = 'goblin_quest_hara_1', args = []}]
-		},
+		#Legacy event after act 3
+#		{ 
+#			text = tr("ALIRON20"), 
+#			reqs = [
+#				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GOBLIN_QUEST_HARA_1'},
+#				{type = 'quest_completed', name = 'goblin_quest', check = true}
+#			], 
+#			args = [{code = 'start_event', data = 'goblin_quest_hara_1', args = []}]
+#		},
 		{
 			text = tr("ALIRON21"), 
 			reqs = [

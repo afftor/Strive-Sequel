@@ -1,5 +1,5 @@
 extends Reference
-#!!!needs complete rework of reqs
+
 var data = {
 	lilia_finale_1 = {
 		image = "letter",
@@ -2671,7 +2671,7 @@ var data = {
 						value = [
 							{
 								code = "trait",
-								trait = "loyalty_callmaster",
+								trait = "training_s_relation",
 								check = false
 							}
 						]
@@ -2687,7 +2687,7 @@ var data = {
 						value = [
 							{
 								code = "trait",
-								trait = "loyalty_callmaster",
+								trait = "training_s_relation",
 								check = true
 							}
 						]
@@ -2712,7 +2712,7 @@ var data = {
 						value = [
 							{
 								code = "trait",
-								trait = "loyalty_callmaster",
+								trait = "training_s_relation",
 								check = false
 							}
 						]
@@ -2731,7 +2731,7 @@ var data = {
 						value = [
 							{
 								code = "trait",
-								trait = "loyalty_callmaster",
+								trait = "training_s_relation",
 								check = true
 							}
 						]
