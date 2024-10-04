@@ -105,7 +105,7 @@ var professions = {
 		tags = [],
 		categories = ['social'],
 		showupreqs = [],
-		reqs = [{code = 'has_any_profession', value = ['master', 'watchdog']},{code = 'stat', stat = 'physics', operant = 'gte', value = 40}],
+		reqs = [{code = 'stat', stat = 'timid_factor', operant = 'gte', value = 3}],
 		statchanges = {wits_bonus = 5, physics_bonus = 5, trainee_amount = 1},
 		traits = ['trainer'],
 		skills = ['discipline'],

@@ -188,7 +188,7 @@ var statdata = {
 		type = '',
 	},
 	training_spirit = {
-		code = 'trainig_spirit',
+		code = 'training_spirit',
 		name = '',
 		descript = '',
 		baseicon = 'stat_df',

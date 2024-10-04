@@ -1896,13 +1896,13 @@ var dialogue_inits = {
 			target = 'cali_act3_mages_1',
 			target_option = 1,
 		},
-		{
-			code = 'default',
-			name = tr("DIALOGUEMEETLEADER"),
-			reqs = [{type = 'dialogue_seen', check = false, value = 'JEAN_INTRO'}, {type = 'decision', value = 'mayor_election_finished', check = true}],
-			target = 'jean_intro',
-			target_option = 1,
-		},
+#		{
+#			code = 'default',
+#			name = tr("DIALOGUEMEETLEADER"),
+#			reqs = [{type = 'dialogue_seen', check = false, value = 'JEAN_INTRO'}, {type = 'decision', value = 'mayor_election_finished', check = true}],
+#			target = 'jean_intro',
+#			target_option = 1,
+#		},
 		{
 			code = 'default',
 			name = "Talk To Apprentice",

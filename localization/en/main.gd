@@ -844,6 +844,7 @@ Reduced by enemy's evasion""",
 	TOOLTIPSKILLPOINTS = "Skill Points are earned from battles and are used to purchase new combat skills.",
 	SAVENAME = "Save Name",
 	SAVETEMPLATEDESCRIPT = "You can save existing character template for the repeated use.",
+	TOOLTIPIMPROVESCREEN = "Improve your gear by sacrficing similar gear of same quality. Sacrificed gear will be lost.",
 	TOOLHANDLE = "Tool Handle",
 	WEAPONHANDLE = "Weapon Handle",
 	BLADE = "Blade",
@@ -1570,7 +1571,7 @@ Service is a global modifier for this assignment.""",
 	STATSEXUALS_BONUS = "Sexuals",
 	STATTRAINEE_AMOUNT = "Training Slots",
 	STATTRAINING_LOYALTY = "Loyalty from Training",
-	STATTRAINING_SPIRIT = "Spirit from Trainin",
+	STATTRAINING_SPIRIT = "Spirit from Training",
 	TRAITTRAINER = "Trainer",
 	TRAITTRAINERDESCRIPT = "Can oversee slaves",
 	STATSPIRIT = "Spirit",
@@ -2017,7 +2018,7 @@ Loyalty +5, Maxes Obedience.""",
 
 1. Convert it into Experience
 2. Restore Health and Mana
-3. Gain Obedience and Loyalty
+3. Receive Damage boost
 4. Increase Atk and Matk by 25% for 2 days for 50 lust.""",
 	DIALOGUEPUBLICHUMILIATIONREPORT = "[name] brings [targetname] to the large room where everyone has been gathered. In the following display [targethe]'s being punished as the audience hears [targethis] cries. By the end of it not only has [targetname] learned [targethis] lesson, but the observers have seemed to become more docile. ",
 	DIALOGUEPUBLICSEXHUMILIATIONREPORT = "[name] brings [targetname] to the large room where everyone has been gathered. In the following show [targethe]'s sexual punishment is clearly exposed to the audience. By the end of it not only do the observers get more docile, but they also have shown some hints of excitement. ",
@@ -2327,7 +2328,7 @@ Requires: Sex:Basics""",
 
 Requires: Sex:Advanced""",
 	TRAITMASTER_MENTOR = "Mentor",
-	TRAITMASTER_MENTORDESCRIPT = "All present and future characters automatically receive Basic Obedience and Combat loyalty traits.",
+	TRAITMASTER_MENTORDESCRIPT = "Training actions have lower impact on spirit.",
 	TRAITUNTRAINED = "Rebellious",
 	TRAITUNTRAINEDDESCRIPT = """[name] has not been subjected to any training yet. [His] resisting attitude makes it hard to make [him] do any work. 
 -50% Productivity, -30% Damage""",
@@ -2343,10 +2344,12 @@ Allows to finish training and provide [him] with specilization. """,
 Unlocks Dating option and removes consent penalty in sex.""",
 	TRAITTRAINING_SEXSERVICE = "Sex Service",
 	TRAITTRAINING_SEXSERVICEDESCRIPT = """Since [name]'s body belong to you, it makes sense to make [him] use it for your prosperity.
-Unlocks sex service tasks and Nudity rule.""",
+Unlocks sex service tasks and Nudity rule.
+Requires consent "Curious" or above.""",
 	TRAITTRAINING_SEXSERVICE_ADV = "Advanced Sex Service",
 	TRAITTRAINING_SEXSERVICE_ADVDESCRIPT = """With all well and done, its a logical step to push [name] further into depravity.
-Unlocks advanced sex service options.""",
+Unlocks advanced sex service options.
+Requires consent "Willing" or above.""",
 	TRAITTRAINING_S_COMBAT = "Combat",
 	TRAITTRAINING_S_COMBATDESCRIPT = """[name] will allow to be drafted into combat scenarios. Perhaps not everyone is willing to combat for you with no concerns.
 Unlocks sending [name] into combat.""",
@@ -2358,10 +2361,12 @@ Unlocks setting [name] for various labors.""",
 Unlocks Dating and Sex options.""",
 	TRAITTRAINING_S_SEXSERVICE = "Sex Service",
 	TRAITTRAINING_S_SEXSERVICEDESCRIPT = """Not everyone is willing to get into selling their body for your benefit. But with some persuasion...
-Unlock sex service tasks. """,
+Unlock sex service tasks. 
+Requires consent "Curious" or above.""",
 	TRAITTRAINING_S_SEXSERVICE_ADV = "Advanced Sex Service",
 	TRAITTRAINING_S_SEXSERVICE_ADVDESCRIPT = """If [name] is already willing to perform sex services for your profits, why stop there?..
-Unlock advanced sex service options. """,
+Unlock advanced sex service options. 
+Requires consent "Willing" or above.""",
 	TRAITMASTER_HARLOTRY = "Harlotry",
 	TRAITMASTER_HARLOTRYDESCRIPT = "While in service you still receive Rest benefits.",
 	TRAITMASTER_PROGENECY = "Progenecy",
@@ -2769,7 +2774,7 @@ Social skills effect: +10%.""",
 	UPGRADESEX_TIMEBONUS1 = "Increase daily sex interactions to 2",
 	UPGRADESEX_TIMEBONUS2 = "Increase daily sex interactions to 3",
 	UPGRADERESTING = "Bath",
-	UPGRADERESTINGDESCRIPT = "Characters resting at Mansion will deplete their Obedience at half speed.",
+	UPGRADERESTINGDESCRIPT = "Spirit impact from slave trainings is slightly reduced. Increases mana regeneration by 20%.",
 	UPGRADERESTINGBONUS1 = "",
 	UPGRADEACADEMY = "Academy",
 	UPGRADEACADEMYDESCRIPT = "Allows to send newborn children for Academy training.",
@@ -13246,7 +13251,7 @@ You wonder who could be the sender but it's likely someone else standing against
 	ENTER_CITY_T_0 = """The subterranean capital looms heavily as you approach, with towering stone gateways creating an imposing presence along the underground trail. A pair of guards stand sentinel at the entrance, and as they notice your approach, one of them dismissively scoffs, adding a contemptuous spit to the ground. Another one addresses you. 
 
 — Halt immediately, outsider. Any step closer will be seen as hostile, warranting elimination.""",
-	ENTER_CITY_T_1 = """The first guard gestures toward the crossbowmen positioned atop the city wall. Engaging in a skirmish would be futile; the archers, with precision akin to a lightning strike, could transform you into a pincushion of blot in mere moments.
+	ENTER_CITY_T_1 = """The first guard gestures toward the crossbowmen positioned atop the city wall. Engaging in a skirmish would be futile; the archers, with precision akin to a lightning strike, could transform you into a pincushion of bolt in mere moments.
 
 — State your identity.""",
 	ENTER_CITY_OPTION_ALERT = "You have a small army up there. Are you on alert?",
@@ -13543,7 +13548,7 @@ She urges you to follow her. After a few paces forward, Jean stops and looks aro
 	JEAN_MOUNTAIN_OPT_BACK = "How are we going to go back?",
 	JEAN_MOUNTAIN_OPT_GUARDS = "What about the guards?",
 	JEAN_MOUNTAIN_OPT_DOTHIS = "Fine, Let's do this.",
-	JEAN_MOUNTAIN_REPLY_PLAN = "— Isn't it obvious? We're on the mountain below the palace. Directly below, which you would have noticed if you paid attention while walking here. I am going to make a hole in the ground, and it will take us to the vault.",
+	JEAN_MOUNTAIN_REPLY_PLAN = "— Isn't it obvious? We're on the mountain above the palace. Directly above, which you would have noticed if you paid attention while walking here. I am going to make a hole in the ground, and it will take us to the vault.",
 	JEAN_MOUNTAIN_REPLY_LOOK = "— You'll find out once we get it. Or not. Either way, this is none of your concern. I just need you to do your part, which is to be there to protect me if things don't go according to plan. Simple.",
 	JEAN_MOUNTAIN_REPLY_BACK = "— Don't worry; I have us covered. I'll create a gravitational corridor once we're done. We simply step into it and fly back here.",
 	JEAN_MOUNTAIN_REPLY_GUARDS = "— What about them? They're not going to notice. I am not drilling the hole; I am creating it with magic. There'll be no sound. And the Vault is sealed at all times. The guards might be standing watch at the entrance, but I don't think they have anyone stationed inside. That wouldn't make sense!",
@@ -16315,7 +16320,7 @@ Hotkey: 3""",
 	PERSONAL_STAT = "Personal Statistics",
 	REMOVE_BUTTON = "Set Free",
 	TALK_BUTTON = "Talk To",
-	BODY_UPGRADE_TOOLTIP = "",
+	BODY_UPGRADE_TOOLTIP = "You can visually modify your character for a price here",
 	CAT_ALL = "All",
 	CAT_SOCIAL = "Soc",
 	CAT_LABOR = "Lab",

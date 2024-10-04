@@ -1,4 +1,4 @@
-#!!!needs complete rework of reqs
+
 var data = {
 	zephyra_dialogue_start = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'zephyra',
@@ -7,7 +7,7 @@ var data = {
 				text = "DIALOGUEZEPHINITIATEL", 
 				reqs = [
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
+						{code = 'trait', trait = 'training_s_relation', check = false},
 						{code = 'has_profession', profession = 'spouse', check = false},
 						]
 					},
@@ -17,7 +17,7 @@ var data = {
 				text = "DIALOGUEZEPHINITIATEH", 
 				reqs = [
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						{code = 'trait', trait = 'training_s_relation', check = true},
 						{code = 'has_profession', profession = 'spouse', check = false},
 						]
 					},
@@ -153,7 +153,7 @@ var data = {
 					{type = 'decision', value = 'mindbreak_completed', check = false},
 					{type = 'decision', value = 'anastasia_rape_scene', check = false},
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
+						{code = 'trait', trait = 'training_s_relation', check = false},
 						{code = 'has_profession', profession = 'spouse', check = false},
 						]
 					}],
@@ -164,7 +164,7 @@ var data = {
 					{type = 'decision', value = 'mindbreak_completed', check = false},
 					{type = 'decision', value = 'anastasia_rape_scene', check = false},
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						{code = 'trait', trait = 'training_s_relation', check = true},
 						{code = 'has_profession', profession = 'spouse', check = false},
 						]
 					}],
@@ -175,7 +175,7 @@ var data = {
 					{type = 'decision', value = 'mindbreak_completed', check = false},
 					{type = 'decision', value = 'anastasia_rape_scene', check = true},
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
+						{code = 'trait', trait = 'training_s_relation', check = false},
 						]
 					}],
 			},
@@ -185,7 +185,7 @@ var data = {
 					{type = 'decision', value = 'mindbreak_completed', check = false},
 					{type = 'decision', value = 'anastasia_rape_scene', check = true},
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						{code = 'trait', trait = 'training_s_relation', check = true},
 						]
 					}],
 			},
@@ -222,7 +222,7 @@ var data = {
 				text = "DIALOGUEDAISYINITIATEL", 
 				reqs = [
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
+						{code = 'trait', trait = 'training_s_relation', check = false},
 						{code = 'has_profession', profession = 'spouse', check = false},
 						]
 					}],
@@ -231,7 +231,7 @@ var data = {
 				text = "DIALOGUEDAISYINITIATEH", 
 				reqs = [
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						{code = 'trait', trait = 'training_s_relation', check = true},
 						{code = 'has_profession', profession = 'spouse', check = false},
 						]
 					}],
@@ -435,7 +435,7 @@ var data = {
 				reqs = [
 					{type = 'has_multiple_decisions', decisions = ['anastasia_rape_scene','aire_raped','PrincessDead'], operant = 'eq', value = 0},
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
+						{code = 'trait', trait = 'training_s_relation', check = false},
 						]
 					}],
 			},
@@ -444,7 +444,7 @@ var data = {
 				reqs = [
 					{type = 'has_multiple_decisions', decisions = ['anastasia_rape_scene','aire_raped','PrincessDead'], operant = 'eq', value = 0},
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						{code = 'trait', trait = 'training_s_relation', check = true},
 						]
 					}],
 			},
@@ -453,7 +453,7 @@ var data = {
 				reqs = [
 					{type = 'has_multiple_decisions', decisions = ['anastasia_rape_scene','aire_raped','PrincessDead'], operant = 'gte', value = 1},
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						{code = 'trait', trait = 'training_s_relation', check = true},
 						]
 					}],
 			},
@@ -462,7 +462,7 @@ var data = {
 				reqs = [
 					{type = 'has_multiple_decisions', decisions = ['anastasia_rape_scene','aire_raped','PrincessDead'], operant = 'gte', value = 1},
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						{code = 'trait', trait = 'training_s_relation', check = true},
 						]
 					}],
 			},
@@ -480,7 +480,7 @@ var data = {
 				reqs = [
 					{type = 'decision', value = 'cali_raped', check = false},
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
+						{code = 'trait', trait = 'training_s_relation', check = false},
 						{code = 'has_profession', profession = 'spouse', check = false},
 						]
 					}],
@@ -490,7 +490,7 @@ var data = {
 				reqs = [
 					{type = 'decision', value = 'cali_raped', check = false},
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						{code = 'trait', trait = 'training_s_relation', check = true},
 						{code = 'has_profession', profession = 'spouse', check = false},
 						]
 					}],
@@ -500,7 +500,7 @@ var data = {
 				reqs = [
 					{type = 'decision', value = 'cali_raped', check = true},
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						{code = 'trait', trait = 'training_s_relation', check = true},
 						]
 					}],
 			},
@@ -509,7 +509,7 @@ var data = {
 				reqs = [
 					{type = 'decision', value = 'cali_raped', check = true},
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						{code = 'trait', trait = 'training_s_relation', check = true},
 						]
 					}],
 			},
@@ -677,7 +677,7 @@ var data = {
 				text = "DIALOGUELILIAINITIATEL", 
 				reqs = [
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
+						{code = 'trait', trait = 'training_s_relation', check = false},
 						{code = 'has_profession', profession = 'spouse', check = false},
 						]
 					}],
@@ -686,7 +686,7 @@ var data = {
 				text = "DIALOGUELILIAINITIATEH", 
 				reqs = [
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = true},
+						{code = 'trait', trait = 'training_s_relation', check = true},
 						{code = 'has_profession', profession = 'spouse', check = false},
 						]
 					}],
@@ -726,7 +726,7 @@ var data = {
 				text = "DIALOGUEJEANINITIATEM", 
 				reqs = [
 					{type = 'active_character_checks', value = [
-						{code = 'trait', trait = 'loyalty_adv_servitude', check = false},
+						{code = 'trait', trait = 'training_s_relation', check = false},
 						{code = 'has_profession', profession = 'spouse', check = false},
 						]
 					}],
