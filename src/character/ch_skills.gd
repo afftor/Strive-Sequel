@@ -283,7 +283,24 @@ func use_social_skill(s_code, target, item):
 			var stat = i.damagestat
 			var bonusspeech = []
 			var tmp
-			if stat.begins_with('personality'):
+			if stat.begins_with('direct_personality'):
+				var cur_personality = h.get_stat('personality')
+				var st = stat.trim_prefix('direct_')
+				var st_res = st
+				if mod == 1:
+					cached_value = -cached_value
+					if st == 'personality_bold':
+						st_res = 'personality_shy'
+					else:
+						st_res = 'personality_serious'
+				h.add_stat(st, cached_value)
+				effect_text += "\n" + h.translate(tr("PERSONALITYSHIFT" + st_res.to_upper()))
+				
+				var next_personality = h.get_stat('personality')
+				if next_personality != cur_personality:
+					effect_text += "\n" + h.get_short_name() + tr("PERSONALITYCHANGE") + tr("PERSONALITYNAME" + next_personality.to_upper())
+				parent.get_ref().update_prt()
+			elif stat.begins_with('personality'):
 				if h.check_work_rule("personality_lock"):
 					continue
 				var cur_personality = h.get_stat('personality')

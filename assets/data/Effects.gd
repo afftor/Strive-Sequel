@@ -4476,6 +4476,30 @@ var effect_table = {
 #		}]
 #	},
 
+	alcohol = { 
+		type = 'temp_s',
+		duration = 2,
+		stack = 1,
+		name = 'alcohol',
+		tick_event = [variables.TR_TICK],
+		args = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'training_loyalty', value = -1},
+			{type = 'stat_add', stat = 'training_spirit', value = 1},
+			{type = 'stat_add', stat = 'consent', value = 1},
+			{type = 'stat_add', stat = 'productivity', value = -0.15},
+			],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png", #fix
+			description = "TRAITEFFECTALCOHOL",
+			args = [],
+			limit = 1,
+			t_name = 'alcohol',
+			mansion_only = true,
+		}]
+	},
+
 	e_pregnancy = {
 		type = 'temp_u',
 		stack = 1,
