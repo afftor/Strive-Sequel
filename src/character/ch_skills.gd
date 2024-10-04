@@ -204,7 +204,8 @@ func use_social_skill(s_code, target, item):
 		input_handler.activated_skill = s_code
 		for i in template.dialogue_options:
 			data.options.append(i)
-		data.options.append({code = 'cancel_skill_usage', text = "Cancel", reqs = []})
+		if template.ability_type != 'item':
+			data.options.append({code = 'cancel_skill_usage', text = "Cancel", reqs = []})
 		input_handler.scene_characters.append(target)
 		input_handler.interactive_message_custom(data)
 		return
