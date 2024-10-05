@@ -1148,6 +1148,10 @@ func add_stat(statname, value, revert = false):
 		else:
 			print("no stat - %s" % statname)
 		return
+	if statname.begins_with('personality_'):
+		statlist[statname] += value
+		statlist[statname] = clamp(statlist[statname], -100.0, 100.0)
+		return
 	if statname in ['physics', 'wits', 'charm'] and value > 0:
 		value *= get_stat_gain_rate(statname)
 	if statname.ends_with('_direct'):
