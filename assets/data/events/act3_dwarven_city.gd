@@ -107,7 +107,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				]
+				],
+				dialogue_argument = 9
 			}
 		],
 		image = "dwarf_gates"
@@ -124,7 +125,8 @@ var data = {
 				text = "ENTER_CITY_T_1",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 9
 			},
 			{
 				text = "ENTER_CITY_RESPOND_VISITORS_NOTDWARF",
