@@ -70,6 +70,8 @@ var backgrounds = {
 	act2_art = load("res://assets/images/fullscreen scenes/splash_pure_act2.png"),
 	act3_art = load("res://assets/images/fullscreen scenes/splash_act3.png"),
 	elven_temple_scene = load("res://assets/images/fullscreen scenes/Scene_Elven_Temple.png"),
+	
+	tower = load("res://assets/images/backgrounds/tower.png"),
 
 	#custom dialogue backgrounds
 	church_event = load("res://assets/images/backgrounds/church.png"),
@@ -382,6 +384,7 @@ var scenes = {
 	zephyra_forest_shining = load("res://assets/images/scenes/zephyra_forest_shining.png"),
 	zephyra_kiss = load("res://assets/images/scenes/zephyra_kiss.png"),
 	zephyra_painting = load("res://assets/images/scenes/Zephyra_painting.png"),
+	slave_drink = load("res://assets/images/scenes/slave_drink.png"),
 	
 	lilia_gem = load("res://assets/images/scenes/lilia_gem.png"),
 	lilia_farewell= load("res://assets/images/scenes/lilia_farewell.png"),
@@ -566,6 +569,7 @@ var sprites = {
 #	zephyras_sister_nude = load("res://assets/images/sprites/zephyrasister_nude.png"),
 #	zephyras_sister_nude_body = load("res://assets/images/sprites/zephyrasister_nude_body.png"),
 	bolthar = load("res://assets/images/sprites/gnome.png"),
+	keeper = load("res://assets/images/sprites/keeper.png"),
 	}
 
 var dynamic_backgrounds = {

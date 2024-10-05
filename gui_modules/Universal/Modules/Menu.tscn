@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=2]
@@ -32,6 +32,7 @@
 [ext_resource path="res://assets/images/buttons/mainmenu/button_itch2.png" type="Texture" id=30]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_subscribestar.png" type="Texture" id=31]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_subscribestar2.png" type="Texture" id=32]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_24.tres" type="DynamicFont" id=33]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_discord2.png" type="Texture" id=41]
 [ext_resource path="res://assets/images/buttons/mainmenu/button_discord.png" type="Texture" id=46]
 [ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_StartGame_panel.tres" type="StyleBox" id=54]
@@ -674,7 +675,7 @@ margin_top = 49.6543
 margin_right = 918.044
 margin_bottom = 687.654
 theme = ExtResource( 3 )
-custom_fonts/normal_font = SubResource( 7 )
+custom_fonts/normal_font = ExtResource( 33 )
 bbcode_enabled = true
 bbcode_text = "0.10.0
 Added 3rd act

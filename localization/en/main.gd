@@ -644,11 +644,19 @@ Turns character Horny during sex interactions. """,
 	ITEMALCOHOL = "Whiskey",
 	ITEMALCOHOLDESCRIPT = """A simple strong beverage produced from various grains. 
 
-Improves obedience when consumed normally. Improves horniness and sensitivity during sex interactions but can be rejected by a weaker body.""",
+When consumed normally can apply "Drunk" status, or shift personality towards "Serious". Improves horniness and sensitivity during sex interactions but can be rejected by a weaker body.""",
 	ITEMBEER = "Beer",
 	ITEMBEERDESCRIPT = """A nectar of the gods. 
 
-Improves obedience when consumed normally. Improves horniness and sensitivity during sex interactions.""",
+When consumed normally can apply "Drunk" status, or shift personality towards "Bold". Improves horniness and sensitivity during sex interactions.""",
+	ITEMWINE = "Dry Wine",
+	ITEMWINEDESCRIPT = """A sour fruit bevearage. 
+
+When consumed normally can apply "Drunk" status, or shift personality towards "Kind". Improves horniness and sensitivity during sex interactions.""",
+	ITEMWINE2 = "Sweet Wine",
+	ITEMWINE2DESCRIPT = """A sweet fruit bevarage. 
+
+When consumed normally can apply "Drunk" status, or shift personality towards "Shy". Improves horniness and sensitivity during sex interactions.""",
 	ITEMTAMEDRUG = "Tame Drug",
 	ITEMTAMEDRUGDESCRIPT = "Tame Factor +1-2. Authority Factor +1-2. Wits Factor -1.",
 	ITEMRAGEDRUG = "Rage Drug",
@@ -1238,7 +1246,7 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana. Requir
 	ACTIONEDGESCENETEXT = "[name1] sexually grops and strokes [name2] making [him2] squirm in arousal until it is too much for [him2] to take it. [name2] begs for the release to the smirking expression of [name1].",
 	ACTIONMOLESTSCENETEXT = "[name1] gropes [name2] in sexual ways in front of others. This is certain display of possession over [his2] body.",
 	ACTIONGROPESCENETEXT = "[name1] possessively gropes [name2] in a sexual ways while whispering lewd things on [his2] ears. Not being able to resist [his1] advances, [name2] can only endure this ordeal.",
-	ACTIONSTRIPSCENETEXT = "[name1] orders [name2] to strip [his2] clothes before [him2]. With the reluctance, [name2] is forced to demonstrate [his2] body as a sign of submission.",
+	ACTIONSTRIPSCENETEXT = "[name1] orders [name2] to strip [his2] clothes before [him1]. With the reluctance, [name2] is forced to demonstrate [his2] body as a sign of submission.",
 	ACTIONRAPESCENETEXT = "[name1] physically assaults [name2] who is unable to say no. As a part of training, [name1] brings [him2] to a forced orgasm, leaving [him2] in turmoil over this submissive experience.",
 	ACTIONPUBLICUSESCENETEXT = "[name1] puts [name2] into a glory hole room of one of underground brothels. After a few hours [name2] is retrieved in shambles after this cruel experience.",
 	ACTIONMINDREADSCENETEXT = "[name1] uses [his1] magic powers to peer into soul of [name2], learning some new things about [him2].",
@@ -3466,6 +3474,26 @@ As the [boy] is made your slave, [he] can be a very useful addition to your roos
 	DIALOGUEEVENTREBELSBEASTINTIMIDATEFAILURE = """[center]{color=red|Failure!}[/center]
 [name] hasn't managed to intimidate the rebels and they are preparing to attack you. """,
 	DIALOGUEINTIMIDATE = "Intimidate",
+	
+	DIALOGUEALCOHOL_1TEXT = "Use this beverage to get drunk or shift personality?",
+	DIALOGUEALCOHOL_2TEXT = "Use this beverage to get drunk or shift personality?",
+	DIALOGUEALCOHOL_3TEXT = "Use this beverage to get drunk or shift personality?",
+	DIALOGUEALCOHOL_4TEXT = "Use this beverage to get drunk or shift personality?",
+	DIALOGUEALCO_DEFAULTREPORT = "[name] has drank the beverage and feels tipsy now.",
+	DIALOGUEALCO_KINDREPORT = "[name] feels more relaxed after digesting the wine.",
+	DIALOGUEALCO_SHYREPORT = "[name] feels more soft after digesting the wine.",
+	DIALOGUEALCO_BOLDREPORT = "[name] feels more brave with the help of beer.",
+	DIALOGUEALCO_SERIOUSREPORT = "[name] becomes more cautious of [his] surroundings after ingesting whiskey.",
+	DIALOGUEUNLOCKINFINITEDUNGEON = """You walk through one of city's streets as you notice a faint glow emitting from one of the dead ends. Nobody besides you apparently notice it despite being clearly unusual occurrence. As you get closer to it something changes in the surrounding air. The darkness of an alley surrounds you until it suddenly is gone, revealing a mesmerizing view. """,
+DIALOGUEUNLOCKINFINITEDUNGEON1 = """A gigantic tower stands before you, completely unsuited for the underground caves you are in. Its top is concealed by the darkness of underground and its base feels like it stretch for a good mile. Apparently you still are able to traverse towards it.""",
+DIALOGUEUNLOCKINFINITEDUNGEON2 = """After uncertain amount of time you stand right before the giant doors. Just as you try to approach them you feel a presence behind your back. As you turn around, you see a beautiful woman floating in the air. 
+
+— Welcome to Tower of Dreams stranger. It's rare to see mortals come here consciously. This place exists behind the real world, hosting the dreams of many. While other get stuck in here, you might be able to take what's inside to yourself. 
+
+— We'll meet later if you decide to stay around here. For now, I beg your excuse.
+
+The woman disappears as quickly as she appeared before you, leaving you in front of the monstrous structure.""",
+	
 	LOCAL_SHOP = "Shop",
 	LOCAL_EVENTS_SEARCH = "Search",
 	RETURNTOMANSIONBUTTON = "Send character back to the Mansion",
@@ -15795,6 +15823,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	AREAQUEST = "Quest",
 	AREADUNGEON = "Dungeon",
 	AREAENCOUNTER = "Encounter",
+	INFINITEDUNGEONNAME = "Tower of Dreams",
 	SLAVENUMBERUPGRADE_NAME = "Hirelings number",
 	SLAVENUMBERUPGRADE_DISC = "Increases the number of available characters for hire at once by 1.",
 	SLAVEQUALITY_NAME = "Hirelings quality",

@@ -83,7 +83,7 @@ var data = {
 			]
 		}, ],
 	},
-	#No longer used
+	
 	jean_intro = {
 		image = null, tags = ['dialogue_scene'], reqs = [], 
 		text = [ {text = "JEAN_INTRO", reqs = []} ],

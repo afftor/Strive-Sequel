@@ -3462,7 +3462,7 @@ var Skilllist = {
 		damagestat = ['lust'],
 	},
 	#those for items
-	alcohol_1 ={
+	alcohol_1 = {
 		code = 'alcohol_1',
 		new_syntax = true,
 		descript = '',
@@ -3479,11 +3479,11 @@ var Skilllist = {
 		dialogue_text = '',
 		dialogue_image = null,
 		dialogue_options = [
-			{code = "alco_default", reqs = [], text = '1'},
-			{code = "alco_bold", reqs = [], text = '2'},
+			{code = "alco_default", reqs = [], text = 'Get wasted'},
+			{code = "alco_bold", reqs = [], text = 'Shift personality (Bold)'},
 		],
 	},
-	alcohol_2 ={
+	alcohol_2 = {
 		code = 'alcohol_2',
 		new_syntax = true,
 		descript = '',
@@ -3500,11 +3500,11 @@ var Skilllist = {
 		dialogue_text = '',
 		dialogue_image = null,
 		dialogue_options = [
-			{code = "alco_default", reqs = [], text = '1'},
-			{code = "alco_kind", reqs = [], text = '2'},
+			{code = "alco_default", reqs = [], text = 'Get wasted'},
+			{code = "alco_kind", reqs = [], text = 'Shift personality (Kind)'},
 		],
 	},
-	alcohol_3 ={
+	alcohol_3 = {
 		code = 'alcohol_3',
 		new_syntax = true,
 		descript = '',
@@ -3521,11 +3521,11 @@ var Skilllist = {
 		dialogue_text = '',
 		dialogue_image = null,
 		dialogue_options = [
-			{code = "alco_default", reqs = [], text = '1'},
-			{code = "alco_shy", reqs = [], text = '2'},
+			{code = "alco_default", reqs = [], text = 'Get wasted'},
+			{code = "alco_shy", reqs = [], text = 'Shift personality (Shy)'},
 		],
 	},
-	alcohol_4 ={
+	alcohol_4 = {
 		code = 'alcohol_4',
 		new_syntax = true,
 		descript = '',
@@ -3542,8 +3542,8 @@ var Skilllist = {
 		dialogue_text = '',
 		dialogue_image = null,
 		dialogue_options = [
-			{code = "alco_default", reqs = [], text = '1'},
-			{code = "alco_serious", reqs = [], text = '2'},
+			{code = "alco_default", reqs = [], text = 'Get wasted'},
+			{code = "alco_serious", reqs = [], text = 'Shift personality (Serious)'},
 		],
 	},
 	alco_default = {
@@ -3566,6 +3566,7 @@ var Skilllist = {
 		target_range = 'any',
 		damage_type = 'weapon',
 		dialogue_report = '',
+		dialogue_image = null,
 		dialogue_show_repeat = false,
 		sfx = [], 
 		sound = [],
@@ -3593,6 +3594,7 @@ var Skilllist = {
 		damage_type = 'weapon',
 		dialogue_report = '',
 		dialogue_show_repeat = false,
+		dialogue_image = 'slave_drink',
 		sfx = [], 
 		sound = [],
 		value = [['25']],
@@ -3620,6 +3622,7 @@ var Skilllist = {
 		damage_type = 'weapon',
 		dialogue_report = '',
 		dialogue_show_repeat = false,
+		dialogue_image = 'slave_drink',
 		sfx = [], 
 		sound = [],
 		value = [['-25']],
@@ -3647,6 +3650,7 @@ var Skilllist = {
 		damage_type = 'weapon',
 		dialogue_report = '',
 		dialogue_show_repeat = false,
+		dialogue_image = 'slave_drink',
 		sfx = [], 
 		sound = [],
 		value = [['25']],
@@ -3674,6 +3678,7 @@ var Skilllist = {
 		damage_type = 'weapon',
 		dialogue_report = '',
 		dialogue_show_repeat = false,
+		dialogue_image = 'slave_drink',
 		sfx = [], 
 		sound = [],
 		value = [['-25']],

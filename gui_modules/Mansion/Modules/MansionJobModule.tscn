@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=2]
@@ -58,6 +58,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HScrollBar.tres" type="Theme" id=56]
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE/farm/button_hero_disabled_1.png" type="Texture" id=57]
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE/icon_question_small.png" type="Texture" id=58]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/NOTO_SANS_Regular_16px.tres" type="DynamicFont" id=59]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -837,9 +838,6 @@ margin_right = 239.102
 margin_bottom = 39.8572
 custom_fonts/font = ExtResource( 44 )
 text = "Service Rules"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label2" type="Label" parent="BrothelRules"]
 margin_left = 423.0
@@ -858,7 +856,7 @@ margin_left = 436.385
 margin_top = 17.9955
 margin_right = 777.385
 margin_bottom = 310.995
-custom_fonts/normal_font = ExtResource( 44 )
+custom_fonts/normal_font = ExtResource( 59 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false

@@ -828,6 +828,9 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateUsableItem("sparklingpowder", 5))
 		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("beer", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("wine", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("wine2", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("sexswap_potion", 10))
 		globals.AddItemToInventory(globals.CreateUsableItem("oblivion_potion", 10))
@@ -937,7 +940,7 @@ func test_mode():
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-		input_handler.interactive_message('sacred_sap_fighters_3', '', {})
+		#input_handler.interactive_message('unlock_infinite_dungeon', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		

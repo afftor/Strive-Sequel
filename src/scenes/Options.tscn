@@ -21,6 +21,7 @@
 [ext_resource path="res://gui_modules/Universal/Modules/ChangeLanguageMenuButtonModule.gd" type="Script" id=19]
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=20]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=21]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_24.tres" type="DynamicFont" id=22]
 
 [sub_resource type="DynamicFont" id=1]
 size = 19
@@ -28,10 +29,6 @@ font_data = ExtResource( 20 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 33
-font_data = ExtResource( 20 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 29
 font_data = ExtResource( 20 )
 
 [node name="Options" type="Panel"]
@@ -633,7 +630,7 @@ margin_left = 69.0
 margin_top = 298.0
 margin_right = 583.0
 margin_bottom = 567.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 22 )
 text = "OPTCHANGELANGUAGE"
 align = 1
 valign = 1
