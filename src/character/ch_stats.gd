@@ -1985,6 +1985,8 @@ func set_slave_category(new_class):
 	statlist.slave_class = new_class
 	if has_status('trained'):
 		parent.get_ref().finish_training(true)
+	else:
+		parent.get_ref().reset_training()
 
 
 func tick():
