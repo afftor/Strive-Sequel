@@ -109,11 +109,16 @@ func remove_item(itemcode, number):
 	while number > 0:
 		var item
 		for i in items.values():
-			if (i.code == itemcode or i.itembase == itemcode) and i.owner == null:
+			if i.code == itemcode or i.itembase == itemcode:
 				item = i
-				break
+				if item.owner == null:
+					break
 		if item != null:
+			if item.owner != null:
+				characters_pool.get_char_by_id(item.owner).unequip(item, false)
 			item.amount -= 1
+		else:
+			break
 		number -= 1
 #
 

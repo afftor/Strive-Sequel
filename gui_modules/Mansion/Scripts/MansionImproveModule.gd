@@ -240,7 +240,7 @@ func apply_selection():
 	for id in selected_fuse_items:
 		var tmp = ResourceScripts.game_res.items[id]
 		if tmp.owner != null:
-			characters_pool.get_char_by_id(tmp.owner).unequip(tmp)
+			characters_pool.get_char_by_id(tmp.owner).unequip(tmp, false)
 		tmp.amount -= selected_fuse_items[id]
 	
 	item.clear_enchants()
