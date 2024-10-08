@@ -129,7 +129,11 @@ func reset_training():
 	var race = parent.get_ref().get_stat('race')
 	setup_dispositions(race)
 	if parent.get_ref().get_stat('unique') != null:
-		var udata = worlddata.pregen_characters[parent.get_ref().get_stat('unique')]
+		#huge stub here - better fix pregen chars data properly
+		var name = parent.get_ref().get_stat('unique')
+		var h = name.substr(0, 1).to_upper()
+		name = h + name.substr(1)
+		var udata = worlddata.pregen_characters[name]
 		if udata.has('training_disposition'):
 			process_disposition_data(udata.training_disposition)
 	tarr = parent.get_ref().get_traits_by_tag('disposition_change')
