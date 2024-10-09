@@ -173,12 +173,13 @@ func get_training_cost():
 
 
 func get_training_cost_gold():
-	var cost = variables.training_costs_gold[0]
+	var val = parent.get_ref().calculate_price()
+	var cost = val * 0.25
 	var tr_a = get_trainings_amount('servant_training')
 	if tr_a > 0:
-		cost = variables.training_costs_gold[1]
+		cost = val * 0.66
 	if tr_a > 1:
-		cost = variables.training_costs_gold[2]
+		cost = val
 	return cost * (1.0 - 0.07 * parent.get_ref().get_stat('tame_factor'))
 
 
