@@ -2762,7 +2762,7 @@ var itemlist = {
 		effects = [],
 		tags = ['date'],
 		uses_per_day = 0,
-		mansion_effect = 'alcohol_3',
+		mansion_effect = 'alcohol_2',
 		interaction_effect = 'alcohol',
 	},
 	wine2 = {
@@ -2780,7 +2780,7 @@ var itemlist = {
 		effects = [],
 		tags = ['date'],
 		uses_per_day = 0,
-		mansion_effect = 'alcohol_2',
+		mansion_effect = 'alcohol_3',
 		interaction_effect = 'alcohol',
 	},
 	beer = {

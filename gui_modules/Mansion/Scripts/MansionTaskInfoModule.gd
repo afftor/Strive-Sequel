@@ -198,7 +198,8 @@ func show_resources_info():
 				for worker in task.workers:
 					var ch = ResourceScripts.game_party.characters[worker]
 					progress += ch.xp_module.get_progress_resource(task.code)
-				newtask.get_node("progress").text = "%.1f + (%.1f - %.1f) / %.1f" % [task.progress, progress, progress * 2, task.threshold]
+				var value = task.threshold/task.progress+progress
+				newtask.get_node("progress").text = "+ ~"+str(stepify(value,0.1))#"%.1f + (%.1f - %.1f) / %.1f" % [task.progress, progress, progress * 2, task.threshold]
 				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[task.code].icon
 				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[task.code])
 				globals.connectmaterialtooltip(newtask.get_node("Task/TaskIcon"), Items.materiallist[task.code])
@@ -216,7 +217,9 @@ func show_resources_info():
 				for worker in task.workers:
 					var ch = ResourceScripts.game_party.characters[worker]
 					progress += ch.get_progress_task(task.code, task.product)
-				newtask.get_node("progress").text = "%.1f + (%.1f - %.1f) / %.1f" % [task.progress, progress, progress * 2, task.threshold]
+				var value = task.threshold/task.progress+progress
+				newtask.get_node("progress").text = "+ ~"+str(stepify(value,0.1))
+				#newtask.get_node("progress").text = "%.1f + (%.1f - %.1f) / %.1f" % [task.progress, progress, progress * 2, task.threshold]
 				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[tasks.tasklist[task_name].production_item].icon
 				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[tasks.tasklist[task_name].production_item])
 				globals.connectmaterialtooltip(newtask.get_node("Task/TaskIcon"), Items.materiallist[tasks.tasklist[task_name].production_item])
