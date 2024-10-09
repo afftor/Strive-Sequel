@@ -1,3 +1,9 @@
+0.10.0a
+Fixed alcohol items not working and giving wrong personality changes
+Lowered training costs for servants
+Lowered training action cooldown to 3 days (mindread has its own 3 days cooldown though)
+Fixed unique character trainings and trainings after converting characters to slaves
+Minor quest text and dialogue fixes
 0.10.0
 Added 3rd act
 Revamped character list

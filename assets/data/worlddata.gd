@@ -965,11 +965,6 @@ var fixed_location_options = { #override serialized data
 			], 
 			args = [{code = 'start_event', data = 'amelia_slave3_1', args = []}]
 		},
-		{
-			text = tr("INFINITEDUNGEONUNLOCK"),
-			reqs = [{code = 'value_check', type = 'event_seen', check = false, value = 'unlock_infinite_dungeon'}],
-			args = [{code = 'start_event', data = 'unlock_infinite_dungeon', args = []}]
-		},
 	],
 	elf_capital = [
 		{
