@@ -15,7 +15,18 @@ var training_metrics = {}
 var stored_reqs = {}
 
 var enable = true
-var available = true
+var cooldown = {
+	main = 0,
+	mindread = 0,
+}
+
+
+func cooldown_tick():
+	if cooldown.main > 0:
+		cooldown.main -= 1
+	if cooldown.mindread > 0:
+		cooldown.mindread -= 1
+
 
 func add_stat(statname, value, revert = false):
 	if !enable:
@@ -95,7 +106,7 @@ func add_trainee(id): #unsafe - no limit check
 
 
 func can_be_trained():
-	return available and enable and trainer != null
+	return cooldown.main < 1 and enable and trainer != null
 
 
 func clear_training():
@@ -162,12 +173,13 @@ func get_training_cost():
 
 
 func get_training_cost_gold():
-	var cost = variables.training_costs_gold[0]
+	var val = parent.get_ref().calculate_price()
+	var cost = val * 0.25
 	var tr_a = get_trainings_amount('servant_training')
 	if tr_a > 0:
-		cost = variables.training_costs_gold[1]
+		cost = val * 0.66
 	if tr_a > 1:
-		cost = variables.training_costs_gold[2]
+		cost = val
 	return cost * (1.0 - 0.07 * parent.get_ref().get_stat('tame_factor'))
 
 
@@ -316,8 +328,6 @@ func apply_training(code):
 		if result_data.spirit > 0:
 			result_data.spirit = 0 
 	#other effects
-	if code != 'influence':
-		available = false
 	if code == 'dayoff':
 		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table['e_s_dayoff'])
 		parent.get_ref().apply_effect(effects_pool.add_effect(eff))
@@ -326,6 +336,7 @@ func apply_training(code):
 			effect_text += "%s takes virginity of %s" % [ch_trainer.get_short_name(), parent.get_ref().get_short_name()]
 			parent.get_ref().take_virginity('vaginal', trainer) #add finetune for bodypart checking
 	if code == 'mindread':
+		cooldown.mindread = 1
 		var pool = []
 		for dis in dispositions_known:
 			if !dispositions_known[dis]:
@@ -346,6 +357,8 @@ func apply_training(code):
 				pool.erase(dis)
 				dispositions_known[dis] = true  
 				effect_text += "%s - %s \n" % [dis, dispositions[dis]] 
+	else:
+		cooldown.main = 3
 	if globals.rng.randf() < 0.1 + 0.15 * ch_trainer.get_stat('wits_factor'):
 		if !dispositions_known[cat]: # and result in ['success', 'crit_success']:
 			effect_text += tr('WITSREVEALDISPOSITION')

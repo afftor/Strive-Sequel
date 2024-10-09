@@ -252,6 +252,10 @@ func build_training_header():
 	$training/spirit.value = person.get_stat('spirit')
 	
 	$training/loyalty.text = tr('TRAININGLABELLOYALTY') % person.get_stat('loyalty')
+	if person.training.cooldown.main >= 1:
+		$training/cd.text = tr ('TRAINCOOLDOWN') % person.training.cooldown.main
+	else:
+		$training/cd.text = tr ('TRAINREADY')
 
  
 func build_training_list():
@@ -278,10 +282,15 @@ func build_training_list():
 				text = "{color=red|"+tr('ACTIONTRAINERREQSNOTMET') +"}\n\n"+ text
 				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
 			#avail check
-			elif !person.training.available:
+			elif tr == 'mindread' and person.training.cooldown.mindread > 0:
 				panel.disabled = true
 				text = "{color=red|"+tr('ACTIONALREADYDONETODAY') +"}\n\n"+ text
 				globals.connecttexttooltip(panel, 'Has already been trained today')
+				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.gray))
+			elif tr != 'mindread' and person.training.cooldown.main > 0:
+				panel.disabled = true
+				text = "{color=red|"+tr('ACTIONALREADYDONETODAY') +"}\n\n"+ text
+				globals.connecttexttooltip(panel, 'Has already been trained')
 				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.gray))
 			#cost check
 			else:
