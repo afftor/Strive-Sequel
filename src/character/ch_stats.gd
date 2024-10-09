@@ -1222,6 +1222,7 @@ func stat_update(stat, value, is_set = false): #for permanent changes
 #traits
 func add_trait(tr_code):
 	if tr_code == null: return
+	if tr_code == 'untrained' and has_status('trained'): return
 	if traits.has(tr_code): return
 	if !Traitdata.traits.has(tr_code): return #temp
 	var trait = Traitdata.traits[tr_code]
