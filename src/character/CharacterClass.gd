@@ -499,7 +499,7 @@ func unlearn_c_skill(skill):
 
 func cooldown_tick():
 	skills.cooldown_tick()
-	training.available = true
+	training.cooldown_tick()
 
 
 func check_task(task):

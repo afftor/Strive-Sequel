@@ -1683,6 +1683,8 @@ Consent represents character's general acceptance of various sexual actions, but
 	INFOCONSENTMASTER = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. {color=green|[Master] has no Consent requirements for any actions.}",
 	INFOTRAINING = "Slave type characters will be trained by selected person in various actions. Every slave has different {color=aqua|Dispositions} towards different kind of actions. Properly selected actions will award more Loyalty and drain less spirit but most actions have additional effects.",
 	INFOSLAVETRAINER = "Assign a Trainer to oversee and train untrained slave. Trainer have a limited number of slaves they can work with. Slaves with nobody overseeing them will not do any work until fully trained.",
+	TRAINREADY = "Ready",
+	TRAINCOOLDOWN = "Cooldown. Days until ready: %d",
 	CATEGORYKEYWORD = "Category",
 	ACTIONCATEGORYPHYSICAL = "Physical",
 	ACTIONCATEGORYHUMILIATION = "Humiliation",
