@@ -69,8 +69,9 @@ func show_upgrades_info():
 				for worker in task.workers:
 					if !ResourceScripts.game_party.characters.has(worker):
 						continue
-					text += ResourceScripts.game_party.characters[worker].get_short_name() + '\n'
-					prog_units += ResourceScripts.game_party.characters[worker].get_progress_task(task.code, task.product)
+					var tmp = ResourceScripts.game_party.characters[worker].get_progress_task(task.code, task.product)
+					prog_units += tmp
+					text += "%s: + %.1f\n" %[ResourceScripts.game_party.characters[worker].get_short_name(), tmp]
 				globals.connecttexttooltip(newupgrade, text)
 			
 			if first:
@@ -83,7 +84,7 @@ func show_upgrades_info():
 
 
 
-func show_workers(task, button):
+func show_workers(task, button): #obsolete
 	input_handler.ClearContainer(WorkersContainer)
 	var text
 	for worker in task.workers:
@@ -105,22 +106,19 @@ func show_resources_info():
 			newtask.hide()
 			continue
 		
-#		var progress = {base = 0, res = 0, gold = 0, farm = 0}
-		
 		var text = "Workers:\n"
 		var cleararray = []
 		for worker in task.workers:
-			if ResourceScripts.game_party.characters.has(worker):
-				var ch = ResourceScripts.game_party.characters[worker]
-				text += ch.get_short_name() + '\n'
+			if !ResourceScripts.game_party.characters.has(worker):
+#				var ch = ResourceScripts.game_party.characters[worker]
+#				text += ch.get_short_name() + '\n'
 #				progress.base += ch.get_progress_task(task.code, task.product)
 #				progress.res += ch.get_progress_resource(task.code)
 #				progress.farm += ch.get_progress_farm(task.code)
-			else:
+#			else:
 				cleararray.append(worker)
 		for i in cleararray:
 			task.workers.erase(i)
-		globals.connecttexttooltip(newtask, text)
 		
 		if task_name in ['alchemy','tailor','cooking','smith']:
 			if ResourceScripts.game_res.craftinglists[task_name].size() <= 0:
@@ -131,7 +129,9 @@ func show_resources_info():
 				var progress = 0
 				for worker in task.workers:
 					var ch = ResourceScripts.game_party.characters[worker]
-					progress += ch.get_progress_task(task.code, task.product)
+					var tmp = ch.get_progress_task(task.code, task.product)
+					text += "%s: + %.1f\n" % [ch.get_short_name(), tmp]
+					progress += tmp
 				newtask.get_node("ProgressBar").visible = false
 				newtask.get_node("progress").visible = true
 				newtask.get_node("progress").text = "%d + (%d - %d) / %d" % [ResourceScripts.game_res.craftinglists[task_name][0].workunits, progress, progress * 2, ResourceScripts.game_res.craftinglists[task_name][0].workunits_needed]
@@ -161,6 +161,7 @@ func show_resources_info():
 			var progress = 0
 			for worker in task.workers:
 				var ch = ResourceScripts.game_party.characters[worker]
+				text += ch.get_short_name() + '\n'
 #				var taskdata = tasks.tasklist[task.code]
 #				var val = 1
 #				if taskdata.has('function'):
@@ -176,8 +177,9 @@ func show_resources_info():
 			task_name = "recruiting"
 		elif task.product in ['special']:
 			var progress = 0
-#			for worker in task.workers:
-#				var ch = ResourceScripts.game_party.characters[worker]
+			for worker in task.workers:
+				var ch = ResourceScripts.game_party.characters[worker]
+				text += ch.get_short_name() + '\n'
 #				var val = 1
 #				if task.has('function'):
 #					val = ch.xp_module.call(task.function)
@@ -192,8 +194,9 @@ func show_resources_info():
 			task_name = tr(task.name)
 		elif task.product in ['gold']:
 			var progress = 0
-#			for worker in task.workers:
-#				var ch = ResourceScripts.game_party.characters[worker]
+			for worker in task.workers:
+				var ch = ResourceScripts.game_party.characters[worker]
+				text += ch.get_short_name() + '\n'
 #				progress += ch.get_progress_farm(task.product)
 			newtask.get_node("progress").text = "" 
 			newtask.get_node("ProgressBar").visible = false
@@ -202,48 +205,58 @@ func show_resources_info():
 #			newtask.get_node("ProgressBar").max_value = task.threshold
 #			newtask.get_node("ProgressBar").value = task.progress
 		else:
-			newtask.get_node("Task/TaskIcon/Label").show()
+#			newtask.get_node("Task/TaskIcon/Label").show()
 			if Items.materiallist.has(task.code):
 				var progress = 0
 				for worker in task.workers:
 					var ch = ResourceScripts.game_party.characters[worker]
-					progress += ch.xp_module.get_progress_resource(task.code)
-				var value = task.threshold/task.progress+progress
+					var tmp = ch.xp_module.get_progress_resource(task.code)
+					text += "%s: +%.1f-%.1f \n" % [ch.get_short_name(), tmp / task.threshold, tmp * 2.0 / task.threshold]
+					progress += tmp
+				text += "In inventory: " + ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[task.code])
+				var value = (task.progress + progress) / task.threshold
 				newtask.get_node("progress").text = "+ ~"+str(stepify(value,0.1))#"%.1f + (%.1f - %.1f) / %.1f" % [task.progress, progress, progress * 2, task.threshold]
 				newtask.get_node("ProgressBar").visible = false
 				newtask.get_node("progress").visible = true
 				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[task.code].icon
-				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[task.code])
+#				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[task.code])
 				globals.connectmaterialtooltip(newtask.get_node("Task/TaskIcon"), Items.materiallist[task.code])
 			elif task.code == 'produce':
 				var progress = 0
 				for worker in task.workers:
 					var ch = ResourceScripts.game_party.characters[worker]
-					progress += ch.get_progress_farm(task.product)
+					var tmp = ch.get_progress_farm(task.product)
+					text += "%s: + %.1f\n" % [ch.get_short_name(), tmp / task.threshold]
+					progress += tmp
+				text += "In inventory: " + ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[task.product])
 				newtask.get_node("progress").text = "%d + %d / %d" % [task.progress, progress, task.threshold]
 				newtask.get_node("ProgressBar").visible = false
 				newtask.get_node("progress").visible = true
 				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[task.product].icon
-				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[task.product])
+#				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[task.product])
 				globals.connectmaterialtooltip(newtask.get_node("Task/TaskIcon"), Items.materiallist[task.product])
 			else:
 				var progress = 0
 				for worker in task.workers:
 					var ch = ResourceScripts.game_party.characters[worker]
-					progress += ch.get_progress_task(task.code, task.product)
-				var value = task.threshold/task.progress+progress
+					var tmp = ch.get_progress_task(task.code, task.product)
+					text += "%s: +%.1f-%.1f \n" % [ch.get_short_name(), tmp / task.threshold, tmp * 2.0 / task.threshold]
+					progress += tmp
+				text += "In inventory: " + ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[tasks.tasklist[task_name].production_item])
+				var value = (task.progress + progress) / task.threshold
 				newtask.get_node("progress").text = "+ ~"+str(stepify(value,0.1))
 				newtask.get_node("ProgressBar").visible = false
 				newtask.get_node("progress").visible = true
 				#newtask.get_node("progress").text = "%.1f + (%.1f - %.1f) / %.1f" % [task.progress, progress, progress * 2, task.threshold]
 				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[tasks.tasklist[task_name].production_item].icon
-				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[tasks.tasklist[task_name].production_item])
+#				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[tasks.tasklist[task_name].production_item])
 				globals.connectmaterialtooltip(newtask.get_node("Task/TaskIcon"), Items.materiallist[tasks.tasklist[task_name].production_item])
 #			newtask.get_node("ProgressBar").max_value = task.threshold
 #			newtask.get_node("ProgressBar").value = task.progress
 			newtask.get_node("Task").show()
 			
 		newtask.get_node("Task").text = task_name.capitalize()
+		globals.connecttexttooltip(newtask, text)
 		
 	for ch in ResourceScripts.game_party.characters.values():
 		if ch.is_on_quest():
