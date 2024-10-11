@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionTaskInfoModule.gd" type="Script" id=2]
 [ext_resource path="res://assets/Textures_v2/MANSION/panel_resourses.png" type="Texture" id=3]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_Prog_Small_FG.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_Prog_Small_BG.tres" type="StyleBox" id=5]
 [ext_resource path="res://assets/Textures_v2/MANSION/TaskInfo/button_taskinfo_hover.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/MANSION/TaskInfo/taskinfo_header.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/MANSION/TaskInfo/button_taskinfo.png" type="Texture" id=8]
@@ -136,6 +138,15 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "+10(20)/100"
 align = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="TaskList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 1.41422
+margin_top = 38.0
+margin_right = 245.414
+margin_bottom = 54.0
+custom_styles/fg = ExtResource( 4 )
+custom_styles/bg = ExtResource( 5 )
+value = 50.0
 
 [node name="NoResources" type="Label" parent="TaskList/ScrollContainer/VBoxContainer/Button"]
 visible = false

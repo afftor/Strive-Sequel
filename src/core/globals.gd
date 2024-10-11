@@ -1,5 +1,4 @@
 extends Node
-
 const gameversion = '0.10.0a'
 
 #time
