@@ -1,7 +1,6 @@
 extends Node
 const gameversion = '0.10.0a'
 
-
 #time
 signal hour_tick
 signal task_added

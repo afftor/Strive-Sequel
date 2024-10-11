@@ -1619,7 +1619,8 @@ var data = {
 								operant = "-",
 								value = 1000
 							}
-						]
+						],
+						not_hide = true
 					},
 					{
 						code = "dwarf_aftermatch_slave",
@@ -1883,7 +1884,8 @@ var data = {
 						operant = "-",
 						value = 1000
 					}
-				]
+				],
+				not_hide = true
 			},
 			{
 				code = "dwarf_aftermatch_slave2",

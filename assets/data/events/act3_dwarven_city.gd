@@ -97,22 +97,21 @@ var data = {
 				text = "ENTER_CITY_T_0",
 				reqs = [
 
-				],
-				previous_dialogue_option = 0
+				]
 			}
 		],
 		options = [
 			{
 				code = "enter_city_t_1",
-				dialogue_argument = 0,
 				text = "DIALOGUECONTINUE",
 				type = "next_dialogue",
 				reqs = [
 
-				]
+				],
+				dialogue_argument = 9
 			}
 		],
-		image = "dwarf_guard"
+		image = "dwarf_gates"
 	},
 	enter_city_t_1 = {
 		reqs = [
@@ -127,7 +126,7 @@ var data = {
 				reqs = [
 
 				],
-				previous_dialogue_option = 0
+				previous_dialogue_option = 9
 			},
 			{
 				text = "ENTER_CITY_RESPOND_VISITORS_NOTDWARF",
@@ -217,8 +216,7 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			},
 			{
 				code = "close",
@@ -227,7 +225,6 @@ var data = {
 
 				],
 				type = "next_dialogue",
-				dialogue_argument = 0,
 				bonus_effects = [
 					{
 						code = "return_to_mansion"
@@ -240,7 +237,7 @@ var data = {
 				]
 			}
 		],
-		image = "dwarf_guard"
+		image = "dwarf_gates"
 	},
 	enter_city_introduce = {
 		reqs = [
@@ -288,11 +285,10 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				dialogue_argument = 0
+				type = "next_dialogue"
 			}
 		],
-		image = "dwarf_guard"
+		image = "dwarf_gates"
 	},
 	enter_city_body_check = {
 		reqs = [
@@ -320,11 +316,10 @@ var data = {
 					{
 						code = "update_city"
 					}
-				],
-				dialogue_argument = 0
+				]
 			}
 		],
-		image = "dwarf_guard"
+		image = "dwarf_gates"
 	},
 	dwarf_palace_first = {
 		reqs = [

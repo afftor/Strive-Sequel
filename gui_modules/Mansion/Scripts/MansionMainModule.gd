@@ -820,7 +820,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("leather_collar", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("seethrough_underwear", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("sacred_bowl", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("zephyra_underwear"))
 		globals.AddItemToInventory(globals.CreateUsableItem("map_bandit_fort", 4))
 		globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
@@ -940,7 +940,7 @@ func test_mode():
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-		input_handler.interactive_message('sacred_sap_fighters_3', '', {})
+		#input_handler.interactive_message('unlock_infinite_dungeon', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		

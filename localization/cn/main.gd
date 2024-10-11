@@ -670,6 +670,14 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	ITEMALCOHOLDESCRIPT = "一种由各种谷物制成的简单的烈性饮料。\n\n在正常消费时提高服从性。改善性交过程中的性欲和敏感度，但会被较弱的身体所排斥。",
 	ITEMBEER = "啤酒",
 	ITEMBEERDESCRIPT = "众神的甘露。\n\n在正常消费时提高服从性。改善性交过程中的性欲和敏感度。",
+	ITEMWINE = """Dry Wine""", # MISSING TRANSLATION
+	ITEMWINEDESCRIPT = """A sour fruit bevearage. 
+
+When consumed normally can apply "Drunk" status, or shift personality towards "Kind". Improves horniness and sensitivity during sex interactions.""", # MISSING TRANSLATION
+	ITEMWINE2 = """Sweet Wine""", # MISSING TRANSLATION
+	ITEMWINE2DESCRIPT = """A sweet fruit bevarage. 
+
+When consumed normally can apply "Drunk" status, or shift personality towards "Shy". Improves horniness and sensitivity during sex interactions.""", # MISSING TRANSLATION
 	ITEMTAMEDRUG = "驯服药",
 	ITEMTAMEDRUGDESCRIPT = "驯服因素+1-2。胆怯因素+1-2。机智因素-1。",
 	ITEMRAGEDRUG = "狂怒药",
@@ -1670,6 +1678,7 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	STATMOD_TAILOR = "Tailor",
 	STATMOD_ALCHEMY = "Alchemy",
 	STATMOD_FARM = "Farming",
+	STATMOD_SERVICE = """Service""", # MISSING TRANSLATION
 	STATMOD_PROS = "Service",
 	STATMOD_TASK_EFFICIECNY = "Task Effciency",
 	STATMOD_WAITRESS = "Waitress Income",
@@ -3341,6 +3350,15 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	DIALOGUEEVENTREBELSBEASTINTIMIDATEFAILURE = "[center]{color=red|失败!}[/center]\n[name] 未能恐吓叛军，他们正准备攻击你. ",
 
 	DIALOGUEINTIMIDATE = "恐吓",
+	DIALOGUEALCOHOL_1TEXT = """Use this beverage to get drunk or shift personality?""", # MISSING TRANSLATION
+	DIALOGUEALCOHOL_2TEXT = """Use this beverage to get drunk or shift personality?""", # MISSING TRANSLATION
+	DIALOGUEALCOHOL_3TEXT = """Use this beverage to get drunk or shift personality?""", # MISSING TRANSLATION
+	DIALOGUEALCOHOL_4TEXT = """Use this beverage to get drunk or shift personality?""", # MISSING TRANSLATION
+	DIALOGUEALCO_DEFAULTREPORT = """[name] has drank the beverage and feels tipsy now.""", # MISSING TRANSLATION
+	DIALOGUEALCO_KINDREPORT = """[name] feels more relaxed after digesting the wine.""", # MISSING TRANSLATION
+	DIALOGUEALCO_SHYREPORT = """[name] feels more soft after digesting the wine.""", # MISSING TRANSLATION
+	DIALOGUEALCO_BOLDREPORT = """[name] feels more brave with the help of beer.""", # MISSING TRANSLATION
+	DIALOGUEALCO_SERIOUSREPORT = """[name] becomes more cautious of [his] surroundings after ingesting whiskey.""", # MISSING TRANSLATION
 
 
 	LOCAL_SHOP = "商店",
@@ -13857,6 +13875,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	AREAQUEST = "Quest 探索",
 	AREADUNGEON = "Dungeon 地下城",
 	AREAENCOUNTER = "Encounter 遭遇",
+	INFINITEDUNGEONNAME = """Tower of Dreams""", # MISSING TRANSLATION
 	
 	
 	#worlddata guild_upgrades

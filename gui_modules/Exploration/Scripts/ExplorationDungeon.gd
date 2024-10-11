@@ -266,7 +266,7 @@ func build_location_description():
 	else:
 		text = active_location.name
 	if active_location.tags.has("infinite"):
-		text += " (" + tr('INFINITE') + ")"
+		text += ""
 	elif !active_location.tags.has("quest"):
 		text += " (" + tr(active_location.classname) + ")"
 	#		+ ")\n"

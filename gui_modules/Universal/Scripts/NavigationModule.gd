@@ -73,7 +73,7 @@ func build_accessible_locations(args = null):
 			newbutton.toggle_mode = !gui_controller.current_screen == gui_controller.mansion
 			continue
 		if i == "Infinite":
-			newbutton.text = "Infinite Dungeon"
+			newbutton.text = tr("INFINITEDUNGEONNAME")
 			newbutton.connect("pressed", self, "open_infinite")
 			# newbutton.set_meta("data", i)
 			newseparator.visible = true

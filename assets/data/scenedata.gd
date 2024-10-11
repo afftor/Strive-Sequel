@@ -286,7 +286,39 @@ var scenedict = {
 	},
 	unlock_infinite_dungeon = {
 		text = tr("DIALOGUEUNLOCKINFINITEDUNGEON"),
-		image = 'locationpurchase',
+		save_scene_to_gallery = true,
+		image = null,
+		tags = ['dialogue_scene'],
+		options = [
+					{
+						code = "unlock_infinite_dungeon1",
+						text = "DIALOGUECONTINUE",
+						reqs = [],
+						dialogue_argument = 1,
+						type = "next_dialogue",
+						change_dialogue_type = 2,
+						tags = ["blackscreen_transition_slow"]
+					}
+		]
+	},
+	unlock_infinite_dungeon1 = {
+		text = tr("DIALOGUEUNLOCKINFINITEDUNGEON1"),
+		custom_background = "tower",
+		scene_type = "story_scene",
+		save_scene_to_gallery = true,
+		common_effects = [{code = "hide_dialogue"}],
+		image = null,
+		tags = ["blackscreen_transition_slow",'dialogue_scene'],
+		options = [
+		{code = 'unlock_infinite_dungeon2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+			] 
+		
+	},unlock_infinite_dungeon2 = {
+		text = tr("DIALOGUEUNLOCKINFINITEDUNGEON2"),
+		custom_background = "tower",
+		scene_type = "story_scene",
+		image = null,
+		character = 'keeper',
 		tags = [],
 		options = [
 		{code = 'close', reqs = [], text = "DIALOGUECLOSE", bonus_effects = [
