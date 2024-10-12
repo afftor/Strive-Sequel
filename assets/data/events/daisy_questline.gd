@@ -4106,6 +4106,10 @@ var data = {
 						value = "daisy_lost"
 					},
 					{
+						code = "decision",
+						value = "DaisyQuestlineFinished"
+					},
+					{
 						code = "remove_quest_location",
 						value = "quest_daisy_admirer_location"
 					}
@@ -4213,12 +4217,7 @@ var data = {
 				],
 				dialogue_argument = 1,
 				type = "next_dialogue",
-				bonus_effects = [
-					{
-						code = "decision",
-						value = "DaisyQuestlineFinished"
-					}
-				]
+				bonus_effects = []
 			},
 			{
 				code = "close",
