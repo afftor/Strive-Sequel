@@ -93,14 +93,14 @@ func rebuild():
 #		newbutton.get_node("job").set_disabled(false)
 #		newbutton.get_node("job").disabled = person.travel.location == "travel" || person.is_on_quest()
 		
-		newbutton.get_node("weapon").connect("pressed", self, 'OpenInventory', [person])
-		newbutton.get_node("weapon").set_disabled(false)
+		newbutton.get_node("rhand").connect("pressed", self, 'OpenInventory', [person])
+		newbutton.get_node("rhand").set_disabled(false)
 		newbutton.get_node("tool").connect("pressed", self, 'OpenInventory', [person])
 		newbutton.get_node("tool").set_disabled(false)
-		newbutton.get_node("armor1").connect("pressed", self, 'OpenInventory', [person])
-		newbutton.get_node("armor1").set_disabled(false)
-		newbutton.get_node("armor2").connect("pressed", self, 'OpenInventory', [person])
-		newbutton.get_node("armor2").set_disabled(false)
+		newbutton.get_node("chest").connect("pressed", self, 'OpenInventory', [person])
+		newbutton.get_node("chest").set_disabled(false)
+		newbutton.get_node("legs").connect("pressed", self, 'OpenInventory', [person])
+		newbutton.get_node("legs").set_disabled(false)
 		
 		match get_parent().mansion_state:
 			"skill":
@@ -143,10 +143,10 @@ func build_for_default(person, newbutton):
 	newbutton.get_node('explabel').visible = true
 	newbutton.get_node('stats').visible = true
 	newbutton.get_node('job').visible = true
-	newbutton.get_node('weapon').visible = true
+	newbutton.get_node('rhand').visible = true
 	newbutton.get_node('tool').visible = true
-	newbutton.get_node('armor1').visible = true
-	newbutton.get_node('armor2').visible = true
+	newbutton.get_node('chest').visible = true
+	newbutton.get_node('legs').visible = true
 	newbutton.get_node('DateIcon').visible = !person.is_master()
 	newbutton.get_node('SexIcon').visible = true
 	newbutton.get_node('TrainIcon').visible = person.training.enable
@@ -239,10 +239,10 @@ func build_sex_selection(person, newbutton):
 	newbutton.get_node('explabel').visible = true
 	newbutton.get_node('stats').visible = true
 	newbutton.get_node('job').visible = true
-	newbutton.get_node('weapon').visible = true
+	newbutton.get_node('rhand').visible = true
 	newbutton.get_node('tool').visible = true
-	newbutton.get_node('armor1').visible = true
-	newbutton.get_node('armor2').visible = true
+	newbutton.get_node('chest').visible = true
+	newbutton.get_node('legs').visible = true
 	newbutton.get_node('DateIcon').visible = !person.is_master()
 	newbutton.get_node('SexIcon').visible = true
 	newbutton.get_node('TrainIcon').visible = person.training.enable
@@ -360,10 +360,10 @@ func build_for_skills(person, newbutton):
 	newbutton.get_node('explabel').visible = true
 	newbutton.get_node('stats').visible = true
 	newbutton.get_node('job').visible = true
-	newbutton.get_node('weapon').visible = true
+	newbutton.get_node('rhand').visible = true
 	newbutton.get_node('tool').visible = true
-	newbutton.get_node('armor1').visible = true
-	newbutton.get_node('armor2').visible = true
+	newbutton.get_node('chest').visible = true
+	newbutton.get_node('legs').visible = true
 	newbutton.get_node('DateIcon').visible = !person.is_master()
 	newbutton.get_node('SexIcon').visible = true
 	newbutton.get_node('TrainIcon').visible = person.training.enable
@@ -395,10 +395,10 @@ func build_for_tutelage(person, newbutton):
 	newbutton.get_node('stats').visible = true
 	newbutton.get_node('loctext').visible = true
 	newbutton.get_node('job').visible = false
-	newbutton.get_node('weapon').visible = false
+	newbutton.get_node('rhand').visible = false
 	newbutton.get_node('tool').visible = false
-	newbutton.get_node('armor1').visible = false
-	newbutton.get_node('armor2').visible = false
+	newbutton.get_node('chest').visible = false
+	newbutton.get_node('legs').visible = false
 	newbutton.get_node('DateIcon').visible = false
 	newbutton.get_node('SexIcon').visible = false
 	newbutton.get_node('TrainIcon').visible = false
@@ -523,35 +523,21 @@ func update_button(newbutton):
 	#class
 	newbutton.get_node("state").texture = person.get_class_icon()
 	#gear
-	var titem
-	titem = person.equipment.gear.rhand
-	if titem == null:
-		newbutton.get_node("weapon/icon").texture = null
-	else:
-		var item = ResourceScripts.game_res.items[titem]
-		item.set_icon(newbutton.get_node("weapon/icon"))
-		globals.connectitemtooltip_v2(newbutton.get_node("weapon"), item)
-	titem = person.equipment.gear.tool
-	if titem == null:
-		newbutton.get_node("tool/icon").texture = null
-	else:
-		var item = ResourceScripts.game_res.items[titem]
-		item.set_icon(newbutton.get_node("tool/icon"))
-		globals.connectitemtooltip_v2(newbutton.get_node("tool"), item)
-	titem = person.equipment.gear.chest
-	if titem == null:
-		newbutton.get_node("armor1/icon").texture = null
-	else:
-		var item = ResourceScripts.game_res.items[titem]
-		item.set_icon(newbutton.get_node("armor1/icon"))
-		globals.connectitemtooltip_v2(newbutton.get_node("armor1"), item)
-	titem = person.equipment.gear.legs
-	if titem == null:
-		newbutton.get_node("armor2/icon").texture = null
-	else:
-		var item = ResourceScripts.game_res.items[titem]
-		item.set_icon(newbutton.get_node("armor2/icon"))
-		globals.connectitemtooltip_v2(newbutton.get_node("armor2"), item)
+	for slot in ['rhand', 'tool', 'chest', 'legs']:
+		var titem = person.equipment.gear[slot]
+		if titem == null:
+			newbutton.get_node(slot + "/icon").texture = null
+			newbutton.get_node(slot + "/quality_color").hide()
+		else:
+			var item = ResourceScripts.game_res.items[titem]
+			item.set_icon(newbutton.get_node(slot + "/icon"))
+			if item.quality != "":
+				newbutton.get_node(slot + "/quality_color").show()
+				newbutton.get_node(slot + "/quality_color").texture = variables.quality_colors[item.quality]
+			else:
+				newbutton.get_node(slot + "/quality_color").hide()
+			globals.connectitemtooltip_v2(newbutton.get_node(slot), item)
+	
 	#checks
 	if !person.has_status('relation'):
 		newbutton.get_node("DateIcon").texture = load("res://assets/Textures_v2/MANSION/no.png")
