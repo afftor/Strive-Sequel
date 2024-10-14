@@ -78,13 +78,13 @@ var data = {
 		text = [{text = "SEARCH_FIGHTERS_4", reqs = []}],
 		options = [
 			{
-				code = 'princess_search_fighters_main',
+				code = 'princess_search_fighters_5',
 				text = "SEARCH_FIGHTERS_OPTION_7",
 				reqs = [],
 				dialogue_argument = 2,
 			},
 			{
-				code = 'princess_search_fighters_main',
+				code = 'princess_search_fighters_5',
 				text = "SEARCH_FIGHTERS_OPTION_8",
 				reqs = [],
 				dialogue_argument = 3,
