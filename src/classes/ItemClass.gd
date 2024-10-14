@@ -359,11 +359,6 @@ func substractitemcost():
 
 func set_icon(node):
 	var icon_texture = input_handler.loadimage(icon)
-#	if ResourcePreloader.new().has_resource(icon) == false:
-#		icon_texture = input_handler.loadimage(icon)
-#	else:
-#		icon_texture = load(icon)
-
 	if node.get_class() == "TextureButton":
 		node.texture_normal = icon_texture
 	else:
@@ -371,10 +366,8 @@ func set_icon(node):
 	node.material = null
 	if parts.size() > 0:
 		var shader = load("res://assets/ItemShader.tres").duplicate()
-		if node.material != shader:
+		if node.material != shader: #technically always
 			node.material = shader
-		else:
-			shader = node.material
 		for i in parts:
 			var part = 'part' +  str(partcolororder[i]) + 'color'
 			var color = Items.materiallist[parts[i]].color

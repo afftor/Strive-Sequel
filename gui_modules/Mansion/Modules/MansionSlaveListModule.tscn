@@ -380,7 +380,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="weapon" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="rhand" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
 margin_left = 490.0
 margin_top = 6.0
 margin_right = 530.0
@@ -390,7 +390,17 @@ texture_pressed = ExtResource( 39 )
 texture_hover = ExtResource( 38 )
 expand = true
 
-[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/weapon"]
+[node name="quality_color" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/rhand"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/rhand"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 42 )
@@ -406,12 +416,22 @@ texture_pressed = ExtResource( 39 )
 texture_hover = ExtResource( 38 )
 expand = true
 
+[node name="quality_color" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/tool"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+texture = ExtResource( 42 )
+expand = true
+
 [node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/tool"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 expand = true
 
-[node name="armor1" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="chest" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
 margin_left = 570.0
 margin_top = 6.0
 margin_right = 610.0
@@ -421,12 +441,22 @@ texture_pressed = ExtResource( 39 )
 texture_hover = ExtResource( 38 )
 expand = true
 
-[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/armor1"]
+[node name="quality_color" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/chest"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/chest"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 expand = true
 
-[node name="armor2" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="legs" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
 margin_left = 610.0
 margin_top = 6.0
 margin_right = 650.0
@@ -436,9 +466,19 @@ texture_pressed = ExtResource( 39 )
 texture_hover = ExtResource( 38 )
 expand = true
 
-[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/armor2"]
+[node name="quality_color" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/legs"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/legs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
 expand = true
 
 [node name="explabel" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
