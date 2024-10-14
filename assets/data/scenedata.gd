@@ -413,9 +413,9 @@ var scenedict = {
 	}
 	],
 	options = [
-	{code = 'event_dungeon_prisoner_enslave', select_person = true, challenge = 'strength', reqs = [], text = ("DIALOGUETAKESLAVE")},
-	{code = 'event_dungeon_prisoner_free', reqs = [], text = tr("DIALOGUESETFREEPERSON")},
-	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
+		{code = 'event_dungeon_prisoner_enslave', select_person = true, challenge = 'strength', reqs = [], text = ("DIALOGUETAKESLAVE")},
+		{code = 'event_dungeon_prisoner_free', reqs = [], text = tr("DIALOGUESETFREEPERSON")},
+#		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 	]
 	},
 	event_dungeon_prisoner_enslave = {text = tr("DIALOGUEEVENTDUNGEONPRISONERSENSLAVE"),
