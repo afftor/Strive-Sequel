@@ -755,7 +755,7 @@ func sell_slave():
 func show_slave_info(person):
 	$SlaveMarket/HBoxContainer/UpgradeButton2.visible = true #add correct condition here
 	person_to_hire = person
-	$SlaveMarket/HBoxContainer/EnslaveButton.visible = person.get_stat("slave_class") != "slave" && market_mode != "guild_slaves" && person.get_stat("unique") == null # && (!person.has_profession('master'))
+	$SlaveMarket/HBoxContainer/EnslaveButton.visible = !(person.get_stat("slave_class") in  ["slave", 'slave_trained']) && market_mode != "guild_slaves" && person.get_stat("unique") == null # && (!person.has_profession('master'))
 	for button in SlaveMarketList.get_children():
 		if button.name == "Button":
 			continue
