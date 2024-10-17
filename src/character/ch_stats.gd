@@ -161,6 +161,38 @@ func custom_stats_set(st, value):
 		var tdata = get_hairs_data()
 		for h_stat in ['hair_base_color_1', 'hair_fringe_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 'hair_fringe_color_2', 'hair_back_color_2', 'hair_assist_color_2']:
 			statlist[h_stat] = tdata[h_stat]
+	if st == 'skin':
+		match value: #feel free to change values
+			'pale':
+				statlist.body_color_skin = 'human1'
+			'grey':
+				statlist.body_color_skin = 'grey2'
+			'fair':
+				statlist.body_color_skin = 'human3'
+			'olive':
+				statlist.body_color_skin = 'human4'
+			'tan':
+				statlist.body_color_skin = 'human4'
+			'brown':
+				statlist.body_color_skin = 'human5'
+			'dark':
+				statlist.body_color_skin = 'human5'
+			'slime':
+				statlist.body_color_skin = 'green1'
+			'blue':
+				statlist.body_color_skin = 'blue3'
+			'paleblue':
+				statlist.body_color_skin = 'blue1'
+			'green':
+				statlist.body_color_skin = 'green3'
+			'red':
+				statlist.body_color_skin = 'red3'
+			'purple':
+				statlist.body_color_skin = 'purple3'
+			'teal':
+				statlist.body_color_skin = 'blue2'
+			_:
+				statlist.body_color_skin = 'human2'
 	if st.begins_with('armor_color_'):
 		set_stat('portrait_update', true)
 		var partname = st.trim_prefix('armor_color_')
@@ -1421,12 +1453,12 @@ func fill_masternoun():
 func process_chardata(chardata, unique = false):
 	if unique: statlist.unique = chardata.code
 	for i in chardata:
-		if !(i in ['code','class_category', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'hair_color', 'hair_style', 'hair_length', 'training_disposition', 'custom_traits_availability', 'blocked_training_traits']):
+		if !(i in ['code','class_category', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'hair_color', 'hair_style', 'hair_length', 'training_disposition', 'custom_traits_availability', 'blocked_training_traits', 'skin']):
 			if typeof(chardata[i]) == TYPE_ARRAY or typeof(chardata[i]) == TYPE_DICTIONARY:
 				statlist[i] = chardata[i].duplicate(true)
 			else:
 				statlist[i] = chardata[i]
-		elif i in ['hair_color', 'hair_style', 'hair_length']:
+		elif i in ['hair_color', 'hair_style', 'hair_length', 'skin']:
 			set_stat(i, chardata[i])
 		elif i == 'training_disposition':
 			parent.get_ref().process_disposition_data(chardata.training_disposition, true)
@@ -1930,7 +1962,7 @@ func get_body_image():
 		else:
 			text += "_f"
 		if images.shades.has(text):
-			return images.shades[text]
+			return images.get_shade(text)
 		else:
 			return null
 	return load(statlist.body_image)
