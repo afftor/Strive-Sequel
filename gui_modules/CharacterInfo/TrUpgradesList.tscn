@@ -189,7 +189,6 @@ valign = 1
 clip_text = true
 
 [node name="training" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -347,6 +346,16 @@ custom_fonts/font = ExtResource( 9 )
 text = "character loyalty: 100"
 valign = 1
 clip_text = true
+
+[node name="cd" type="Label" parent="training"]
+light_mask = 0
+margin_left = 180.0
+margin_top = 67.0
+margin_right = 474.0
+margin_bottom = 102.0
+custom_fonts/font = ExtResource( 9 )
+text = "character loyalty: 100"
+valign = 1
 
 [node name="cost" type="Label" parent="training"]
 visible = false
@@ -544,6 +553,7 @@ margin_bottom = 45.0
 custom_fonts/font = ExtResource( 18 )
 
 [node name="finished" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -649,6 +659,7 @@ text = "Trainees:"
 clip_text = true
 
 [node name="finish" type="Panel" parent="."]
+visible = false
 margin_left = -21.0
 margin_top = -84.0
 margin_right = 822.0
