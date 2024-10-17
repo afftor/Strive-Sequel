@@ -510,7 +510,7 @@ func build_buffs_for_char(person, node, mode):
 
 func build_attrs_for_char(node, person):
 	node.get_node('Portrait').texture = person.get_icon()
-	node.get_node('sex').texture = images.icons[person.get_stat('sex')]
+	node.get_node('sex').texture = images.get_icon(person.get_stat('sex'))
 	node.get_node('race').texture = races.racelist[person.get_stat('race')].icon
 	node.get_node('age').texture = images.ages[person.get_stat('age')]
 	connecttexttooltip(node.get_node('sex'), tr("MSLMSex")+": " + tr("SLAVESEX" + person.get_stat('sex').to_upper()))

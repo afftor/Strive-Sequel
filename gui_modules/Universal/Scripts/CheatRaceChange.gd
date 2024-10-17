@@ -51,7 +51,7 @@ func show_race_info(temprace):
 			text += "_f"
 
 		if images.shades.has(text):
-			image = images.shades[text]
+			image = images.get_shade(text)
 
 	$RaceSelection/TextureRect.texture = image
 	update_buttons()

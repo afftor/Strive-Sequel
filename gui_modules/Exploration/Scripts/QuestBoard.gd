@@ -63,7 +63,7 @@ func build_reputation():
 		var newbutton = input_handler.DuplicateContainerTemplate($QuestDetails/VBoxContainer)
 		var text = i.capitalize() + ": "+  str(ResourceScripts.game_world.areas.plains.factions[i].reputation)
 		newbutton.get_node('Label').text = text
-		newbutton.get_node("TextureRect").texture = images.icons["guilds_" + i]
+		newbutton.get_node("TextureRect").texture = images.get_icon("guilds_" + i)
 
 func see_quest_info(quest):
 	var req_counter : int = 0
@@ -88,7 +88,7 @@ func see_quest_info(quest):
 #				newbutton.texture = images.icons.quest_enemy
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
-				newbutton.get_node("Icon").texture = images.icons.quest_enemy
+				newbutton.get_node("Icon").texture = images.get_icon('quest_enemy')
 				globals.connecttexttooltip(newbutton, (
 					tr("QUESTDEFEAT")+": "
 					+ tr(variables.enemy_types[i.type])
@@ -118,7 +118,7 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
 			'complete_location':
-				newbutton.get_node("Icon").texture = images.icons.quest_encounter
+				newbutton.get_node("Icon").texture = images.get_icon('quest_encounter')
 				globals.connecttexttooltip(newbutton, (
 					"Complete quest location: "
 					+ tr(DungeonData.dungeons[i.type].name)
@@ -130,7 +130,7 @@ func see_quest_info(quest):
 					+ tr(DungeonData.dungeons[i.type].descript)
 				)
 			'complete_dungeon':
-				newbutton.get_node("Icon").texture = images.icons.quest_dungeon
+				newbutton.get_node("Icon").texture = images.get_icon('quest_dungeon')
 				globals.connecttexttooltip(newbutton, tr("QUESTCOMPLETEQUESTLOC")+": " + tr("LOCATIONNAME" + i.type.to_upper())) #todo add dungeon name 
 			'random_material': 
 				newbutton.get_node("Icon").texture = Items.materiallist[i.type].icon
@@ -142,7 +142,7 @@ func see_quest_info(quest):
 					'\n\n[color=yellow]' + tr("QUESTREQUIRED") + ":" + str(i.value) + "[/color]"
 				)
 			'slave_delivery':
-				newbutton.get_node("Icon").texture = images.icons.quest_slave_delivery
+				newbutton.get_node("Icon").texture = images.get_icon('quest_slave_delivery')
 				newbutton.get_node("amount").show()
 				newbutton.get_node("amount").text = str(i.value)
 				var tooltiptext = tr("QUESTSLAVEREQUIRED") + ":\n"
@@ -198,7 +198,7 @@ func see_quest_info(quest):
 									break
 						var prof_name = tr("QUESTREQUIREDCLASS")+":\n" + profname
 						globals.connecttexttooltip(profbutton, prof_name)
-				newbutton.get_node("Icon").texture = images.icons.quest_slave_delivery
+				newbutton.get_node("Icon").texture = images.get_icon('quest_slave_delivery')
 				var stats_text = "\n"+tr("QUESTSTATS")+":\n"
 				var tooltiptext = tr("QUESTSLAVEREQUIRED") + ":\n"
 				if sex != "":
@@ -255,7 +255,7 @@ func see_quest_info(quest):
 				if i.value is Array:
 					newbutton.get_node("amount").show()
 					newbutton.get_node("amount").text = "x" + str(stepify(i.value[0],0.1))
-					newbutton.get_node("Icon").texture = images.icons.quest_gold
+					newbutton.get_node("Icon").texture = images.get_icon('quest_gold')
 					globals.connecttexttooltip(newbutton, tr("QUESTGOLDREWARD"))
 				else:
 					var value = round(
@@ -269,7 +269,7 @@ func see_quest_info(quest):
 							)
 						)
 					)
-					newbutton.get_node("Icon").texture = images.icons.quest_gold
+					newbutton.get_node("Icon").texture = images.get_icon('quest_gold')
 					newbutton.get_node("amount").text = str(value)
 					newbutton.get_node("amount").show()
 					globals.connecttexttooltip(newbutton, (
@@ -300,7 +300,7 @@ func see_quest_info(quest):
 						)
 					)
 				)
-				newbutton.get_node("Icon").texture = images.icons["guilds_" + quest.source + "_colored"]
+				newbutton.get_node("Icon").texture = images.get_icon("guilds_" + quest.source + "_colored")
 				newbutton.get_node("amount").text = str(value)
 				newbutton.get_node("amount").show()
 				globals.connecttexttooltip(newbutton, (

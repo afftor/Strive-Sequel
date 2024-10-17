@@ -163,14 +163,14 @@ func update():
 		globals.connecttexttooltip($SlaveDietModule/food_hate,"[center]" + statdata.statdata.food_hate.name + "[/center]\n"+ statdata.statdata.food_hate.descript)
 		$SlaveDietModule/food_consumption/Label.text = str(floor(person.get_stat("food_consumption")))
 		if person.food.food_love != null:
-			$SlaveDietModule/food_love/Button.texture = images.icons[person.food.food_love]
+			$SlaveDietModule/food_love/Button.texture = images.get_icon(person.food.food_love)
 			$SlaveDietModule/food_love/Button.hint_tooltip = tr("FOODTYPE" +person.food.food_love.to_upper())
 		$SlaveDietModule/food_love/Button.visible = person.food.food_love != null
 		input_handler.ClearContainer($SlaveDietModule/food_hate/Container)
 		if person.food.food_hate != null:
 			for i in person.food.food_hate:
 				var newnode = input_handler.DuplicateContainerTemplate($SlaveDietModule/food_hate/Container)
-				newnode.texture = images.icons[i]
+				newnode.texture = images.get_icon(i)
 				newnode.hint_tooltip =  tr("FOODTYPE" +i.to_upper())
 		$SlaveDietModule/food_hate/Container.visible = person.food.food_hate != null
 		sex_traits_open()

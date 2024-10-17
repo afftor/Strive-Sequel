@@ -34,7 +34,7 @@ func update_button(newbutton):
 	var person = newbutton.get_meta('slave')
 	newbutton.get_node("HBoxContainer/icon").texture = person.get_icon_small()
 	newbutton.get_node("HBoxContainer/name").text = person.get_full_name()
-	newbutton.get_node("HBoxContainer/sex").texture = images.icons[person.get_stat('sex')]
+	newbutton.get_node("HBoxContainer/sex").texture = images.get_icon(person.get_stat('sex'))
 	
 	newbutton.get_node("HBoxContainer/stats/hp").max_value = person.get_stat('hpmax')
 	newbutton.get_node("HBoxContainer/stats/hp").value = person.hp
@@ -67,10 +67,10 @@ func open_slave_tab(character):
 	input_handler.ShowSlavePanel(character)
 
 
-func get_state_texture(tempchar):
+func get_state_texture(tempchar): #not used
 	return
 	var rval = tempchar.last_tick_assignement
 	
-	rval = images.icons[rval]
+	rval = images.get_icon(rval)
 	return rval
 

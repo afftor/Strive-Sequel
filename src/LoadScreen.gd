@@ -42,7 +42,7 @@ func goto_scene(path): # game requests to switch to this scene
 	var lore_data = load_lore[rand_range(0, load_lore.size())]
 	$loading/Loretext.bbcode_text = tr(lore_data.text)
 	$loading/Lorelabel.text = tr(lore_data.name)
-	$loading/Sprite.texture = images.sprites[lore_data.characters[rand_range(0, lore_data.characters.size())]]
+	$loading/Sprite.texture = images.get_sprite(input_handler.random_from_array(lore_data.characters))
 	
 	set_process(true)
 	#current_scene.queue_free() # get rid of the old scene

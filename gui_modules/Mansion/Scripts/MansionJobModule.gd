@@ -192,10 +192,10 @@ func update_buttons():
 	if l == null:
 		return
 	if l.has("background"):
-		$Landscape.texture = images.backgrounds[l.background]
+		$Landscape.texture = images.get_background(l.background)
 	if l.has("id"):
 		if l.id == "aliron":
-			$Landscape.texture = images.backgrounds["aliron"]
+			$Landscape.texture = images.get_background("aliron")
 
 
 func sort_locations(locations_array):
@@ -257,10 +257,10 @@ func select_location(location):
 	rebuild()
 	var l = ResourceScripts.world_gen.get_location_from_code(location)
 	if l.has("background"):
-		$Landscape.texture = images.backgrounds[l.background]
+		$Landscape.texture = images.get_background(l.background)
 	if l.has("id"):
 		if l.id == "aliron":
-			$Landscape.texture = images.backgrounds["aliron"]
+			$Landscape.texture = images.get_background("aliron")
 
 
 func close_job_pannel():

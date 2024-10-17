@@ -58,7 +58,7 @@ func build_unique_sprites():
 		get_parent().get_node("ScrollContainer/GridContainer").add_child(newbutton)
 		newbutton.show()
 		newbutton.get_node("Label").text = i.name
-		newbutton.get_node('pic').texture = images.portraits[i.face_path]
+		newbutton.get_node('pic').texture = images.get_portrait(i.face_path)
 		newbutton.connect('pressed',self,'select_unique_sprite', [i])
 
 func select_unique_sprite(data):

@@ -66,11 +66,11 @@ func _ready():
 	cycle_backgrounds()
 
 func cycle_backgrounds():
-	var arr = [images.backgrounds["forest1_menu"],
-		images.backgrounds["mountain1_menu"],
-		images.backgrounds["mountain2_menu"],
-		images.backgrounds["town1_menu"],
-		images.backgrounds["town2_menu"],
+	var arr = [images.get_background("forest1_menu"),
+		images.get_background("mountain1_menu"),
+		images.get_background("mountain2_menu"),
+		images.get_background("town1_menu"),
+		images.get_background("town2_menu"),
 	]
 	randomize()
 	arr.shuffle()

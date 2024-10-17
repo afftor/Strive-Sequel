@@ -86,14 +86,14 @@ func update(person = null, from_dialogue = false):
 	
 		$food_consumption/Label.text = str(floor(person.get_stat("food_consumption")))
 		if person.food.food_love != null:
-			$food_love/Button.texture = images.icons[person.food.food_love]
+			$food_love/Button.texture = images.get_icon(person.food.food_love)
 			$food_love/Button.hint_tooltip = tr("FOODTYPE" +person.food.food_love.to_upper())
 		$food_love/Button.visible =  person.food.food_love != null
 		input_handler.ClearContainer($food_hate/Container)
 		if person.food.food_hate != null:
 			for i in person.food.food_hate:
 				var newnode = input_handler.DuplicateContainerTemplate($food_hate/Container)
-				newnode.texture = images.icons[i]
+				newnode.texture = images.get_icon(i)
 				newnode.hint_tooltip =  tr("FOODTYPE" +i.to_upper())
 		$food_hate/Container.visible = person.food.food_hate != null
 

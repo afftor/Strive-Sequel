@@ -184,7 +184,7 @@ func rebuild_recipe_list():
 
 
 		var progressnode = newbutton.get_node("WorkUnits")
-		progressnode.texture = images.icons[i.worktype]
+		progressnode.texture = images.get_icon(i.worktype)
 		progressnode.get_node("Label").text = str(i.workunits)
 		progressnode.hint_tooltip = 'Progress required per craft'
 

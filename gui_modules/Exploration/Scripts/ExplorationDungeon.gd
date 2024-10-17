@@ -190,7 +190,7 @@ func open_location(data): #2fix
 	$LocationGui.show()
 	set_process_input(true)
 	gui_controller.nav_panel = $LocationGui/NavigationModule
-	$LocationGui/MapPanel/BgImage.texture = images.backgrounds[data.background]
+	$LocationGui/MapPanel/BgImage.texture = images.get_background(data.background)
 #	active_location = data.id #wrong
 #	var gatherable_resources
 #	$LocationGui/Resources/Forget.visible = true
@@ -742,11 +742,11 @@ func build_location_group():
 		newbutton.get_node("icon").texture = i.get_icon_small()
 		if newbutton.get_node('icon').texture == null:
 			if i.has_profession('master'):
-				newbutton.get_node('icon').texture = images.icons.class_master
+				newbutton.get_node('icon').texture = images.get_icon('class_master')
 			elif i.get_stat('slave_class') == 'servant':
-				newbutton.get_node('icon').texture = images.icons.class_servant
+				newbutton.get_node('icon').texture = images.get_icon('class_servant')
 			else:
-				newbutton.get_node('icon').texture = images.icons.class_slave
+				newbutton.get_node('icon').texture = images.get_icon('class_slave')
 		newbutton.get_node("Label").text = i.get_short_name()
 		newbutton.connect("pressed", self, "return_character", [i])
 		if active_location.group.values().has(i.id):
@@ -1108,7 +1108,7 @@ func advance_survival(lv = null):
 	ResourceScripts.world_gen.set_level_infinite(active_location, lv)
 	input_handler.emit_signal("survival_advance")
 	build_level()
-	$LocationGui/MapPanel/BgImage.texture = images.backgrounds[active_location.background]
+	$LocationGui/MapPanel/BgImage.texture = images.get_background(active_location.background)
 	var dungeon = active_location.dungeon[0]
 	var tdata = ResourceScripts.game_world.dungeons[dungeon]
 	scout_room(tdata.first_room, get_scouting_range(), true)
