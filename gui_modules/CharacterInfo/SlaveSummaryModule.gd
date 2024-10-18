@@ -9,8 +9,8 @@ func _ready():
 	var base_stats_container = $VBoxContainer2/TextureRect2
 	for i in $base_stats.get_children():
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
-	for i in $factors.get_children():
-		globals.connecttexttooltip(i, ResourceScripts.game_party.get_master().translate(statdata.statdata[i.name].descript))
+#	for i in $factors.get_children():
+#		globals.connecttexttooltip(i, ResourceScripts.game_party.get_master().translate(statdata.statdata[i.name].descript))
 	globals.connecttexttooltip(get_node("VBoxContainer2/TextureRect2/Exp"), statdata.statdata["base_exp"].descript)
 	$VBoxContainer2/TextureRect4/NextClassExp.hint_tooltip = tr("NEXTCLASSEXP")# + str(person.get_next_class_exp())
 	globals.connecttexttooltip($GridContainer/SkillsButton, tr("BUTTONCLASS"))#"Class and Skills")
@@ -98,7 +98,7 @@ func show_summary():
 		i.get_node("Label").text = str(floor(i.value)) + "/" + str(floor(i.max_value))
 
 	for i in $factors.get_children():
-		if person == ResourceScripts.game_party.get_master() && i.name in ["tame_factor", "timid_factor"]:
+		if person.is_master() && i.name in ["tame_factor", "timid_factor"]:
 			i.hide()
 		else:
 			i.show()
@@ -111,6 +111,7 @@ func show_summary():
 		else:
 			i.get_node("Label").text = str(floor(person.get_stat(i.name)))
 			i.get_node("Label").set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat(i.name))))])
+		globals.connecttexttooltip(i, person.translate(statdata.statdata[i.name].descript))
 
 	for i in ['physics','wits','charm','sexuals']:
 		var text = ''
