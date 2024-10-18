@@ -99,8 +99,8 @@ var effect_table = {
 			{code = 'stat', stat = 'sex', operant = 'neq', value = 'male'},
 			{code = 'stat', stat = 'vaginal_virgin', operant = 'eq', value = true},
 			],
-		tags = ['recheck_stats'],
-		atomic = [{type = 'stat_add_p', stat = 'price', value = 0.25}],
+		tags = ['recheck_stats', 'virgin'],
+		atomic = [], #{type = 'stat_add_p', stat = 'price', value = 0.25}],
 		buffs = [{
 			icon = "res://assets/images/iconstraits/lotus.png",
 			description = "TRAITEFFECTVIRGIN",

@@ -715,10 +715,12 @@ func get_mansion_buffs():
 
 func can_act():
 	if is_koed(): return false
-	return effects.can_act()
+	return !has_status('disable')
 
 func can_evade():
-	return effects.can_evade()
+	var res = can_act()
+	if has_status('defend'): res = false
+	return res
 
 func can_use_skill(skill):
 	if !check_cost(skill.cost): return false
@@ -768,7 +770,10 @@ func add_rare_trait():
 	#input_handler.ActivateTutorial('rares')
 
 func can_be_damaged(s_name):
-	return effects.can_be_damaged(s_name)
+	var skill = Skilldata.Skilllist[s_name]
+	match skill.ability_type:
+		'skill': return !has_status('banish')
+		'spell': return !has_status('void')
 
 func restore_skill_charge(code):
 	skills.restore_skill_charge(code)
@@ -1538,10 +1543,12 @@ func calculate_price(shopflag = false):
 	tr_mul2 = get_traits_by_tag('negative').size()
 	mod_mul += min (tr_mul1 * 0.2, 0.6)
 	mod_mul -= tr_mul2 * 0.2 
-	if statlist.bonuses.has("price_mul"): mod_mul2 += statlist.bonuses.price_mul - 1.0
+	if statlist.bonuses.has("price_mul"): mod_mul += statlist.bonuses.price_mul - 1.0
 	if statlist.bonuses.has("price_add"): value += statlist.bonuses.price_add
 #	value *= mod_mul
 	if shopflag:
+		if has_status('virgin'):
+			mod_mul2 += 0.25
 		value *= mod_mul + mod_mul2
 	else:
 		if has_status('soulbind'):

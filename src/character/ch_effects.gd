@@ -286,31 +286,13 @@ func get_all_buffs():
 	return tmp
 
 
-
-func can_act():
-	for e in static_effects + temp_effects + triggered_effects:
-		var obj = effects_pool.get_effect_by_id(e)
-		if obj.template.has('disable'):
-			return false
-	return true
-
-func can_evade():
-	var res = parent.get_ref().can_act()
-	if has_status('defend'): res = false
-	return res
-
 func has_status(status):
 	var res = false
 	for e in static_effects + temp_effects + triggered_effects:
 		var obj = effects_pool.get_effect_by_id(e)
-		if obj.template.has(status):
-			res = true
-		if obj.tags.has(status):
-			res = true
+		if !(obj is condition_effect) or obj.cond_true:
+			if obj.template.has(status):
+				res = true
+			if obj.tags.has(status):
+				res = true
 	return res
-
-func can_be_damaged(s_name):
-	var skill = Skilldata.Skilllist[s_name]
-	match skill.ability_type:
-		'skill': return !has_status('banish')
-		'spell': return !has_status('void')
