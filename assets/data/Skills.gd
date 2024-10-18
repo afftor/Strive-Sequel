@@ -2105,11 +2105,11 @@ var Skilllist = {
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.8,
 	},
-	dark_atk = {
-		code = 'dark_atk',
+	void_barrage = {
+		code = 'void_barrage',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/windblade.png"),
+		icon = load("res://assets/images/iconsskills/barrage.png"),
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage','ads'],
@@ -2129,10 +2129,10 @@ var Skilllist = {
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.8,
-		follow_up = 'dark_atk_1'
+		follow_up = 'void_barrage_1'
 	},
-	dark_atk_1 = {
-		code = 'dark_atk_1',
+	void_barrage_1 = {
+		code = 'void_barrage_1',
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
@@ -3478,7 +3478,7 @@ var Skilllist = {
 		icon = null,
 		tags = ['dialogue_skill'],
 		dialogue_text = '',
-		dialogue_image = null,
+		dialogue_image = 'slave_drink2',
 		dialogue_options = [
 			{code = "alco_default", reqs = [], text = 'Get wasted'},
 			{code = "alco_bold", reqs = [], text = 'Shift personality (Bold)'},
@@ -3499,7 +3499,7 @@ var Skilllist = {
 		icon = null,
 		tags = ['dialogue_skill'],
 		dialogue_text = '',
-		dialogue_image = null,
+		dialogue_image = 'slave_drink',
 		dialogue_options = [
 			{code = "alco_default", reqs = [], text = 'Get wasted'},
 			{code = "alco_kind", reqs = [], text = 'Shift personality (Kind)'},
@@ -3520,7 +3520,7 @@ var Skilllist = {
 		icon = null,
 		tags = ['dialogue_skill'],
 		dialogue_text = '',
-		dialogue_image = null,
+		dialogue_image = 'slave_drink',
 		dialogue_options = [
 			{code = "alco_default", reqs = [], text = 'Get wasted'},
 			{code = "alco_shy", reqs = [], text = 'Shift personality (Shy)'},
@@ -3541,7 +3541,7 @@ var Skilllist = {
 		icon = null,
 		tags = ['dialogue_skill'],
 		dialogue_text = '',
-		dialogue_image = null,
+		dialogue_image = 'slave_drink2',
 		dialogue_options = [
 			{code = "alco_default", reqs = [], text = 'Get wasted'},
 			{code = "alco_serious", reqs = [], text = 'Shift personality (Serious)'},
@@ -3595,7 +3595,7 @@ var Skilllist = {
 		damage_type = 'weapon',
 		dialogue_report = '',
 		dialogue_show_repeat = false,
-		dialogue_image = 'slave_drink',
+		dialogue_image = 'slave_drink2',
 		sfx = [], 
 		sound = [],
 		value = [['25']],
@@ -3679,7 +3679,7 @@ var Skilllist = {
 		damage_type = 'weapon',
 		dialogue_report = '',
 		dialogue_show_repeat = false,
-		dialogue_image = 'slave_drink',
+		dialogue_image = 'slave_drink2',
 		sfx = [], 
 		sound = [],
 		value = [['-25']],
@@ -4476,7 +4476,7 @@ var training_actions = {
 		bonus_changes = [],
 		reqs = [],
 		reqs_trainer = [],
-		showup_reqs = [{code = 'unique', value = 'amelia'}],
+		showup_reqs = [],
 		disposition_affects = ['positive','humiliation'],
 		cost = {},
 	},
@@ -4493,7 +4493,7 @@ var training_actions = {
 			{type = 'disposition', check = ['kink'], effect = {loyalty_add = [5, 6]}},
 		],
 		reqs = [],
-		reqs_trainer = [],
+		reqs_trainer = [{code = 'unique', value = 'amelia'}],
 		cost = {},
 	},
 	publicuse = {

@@ -1255,6 +1255,8 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	
 	
 	SKILLMIMIC_ATTACK = "粘性抓取",
+	SKILLVOID_BARRAGE = """Void Barrage""", # MISSING TRANSLATION
+	SKILLVOID_BARRAGEDESCRIPT = """Deals 80% of MATK as {color=yellow|Dark} damage 5 times to random targets.""", # MISSING TRANSLATION
 	ACTIONPRAISE = """Praise""", # MISSING TRANSLATION
 	ACTIONPRAISEDESCRIPT = """Show sympathy and praise [name].""", # MISSING TRANSLATION
 	ACTIONREWARD = """Reward""", # MISSING TRANSLATION

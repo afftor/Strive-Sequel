@@ -49,6 +49,7 @@ func build_unique_sprites():
 			i.free()
 	person = input_handler.interacted_character
 	var unique = person.get_stat('unique')
+	if unique == 'AnastasiaBroken': unique = 'anastasia'
 	if worlddata.pregen_character_sprites.has(unique) == false:
 		return
 	for i in worlddata.pregen_character_sprites[unique].values():

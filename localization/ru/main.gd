@@ -1230,6 +1230,8 @@ Hotkey: 3""",
 	SKILLASSASSINATEEN = """Ликвидация""",
 	
 	SKILLMIMIC_ATTACK = """Липкий захват""",
+	SKILLVOID_BARRAGE = """Void Barrage""", # MISSING TRANSLATION
+	SKILLVOID_BARRAGEDESCRIPT = """Deals 80% of MATK as {color=yellow|Dark} damage 5 times to random targets.""", # MISSING TRANSLATION
 	ACTIONPRAISE = """Похвалить""",
 	ACTIONPRAISEDESCRIPT = """Проявите сочувствие и похвалите [name].""",
 	ACTIONREWARD = """Наградить""",
@@ -2319,6 +2321,7 @@ Hotkey: 3""",
 	TRAITNECROMANCERDESCRIPT = """{color=brown|Мастерство смерти}: Пассивный Призыв: Скелеты. Количество скелетов определяется фактором магии.""",
 	TRAITRANGERDESCRIPT = """{color=brown|Компаньон-зверь}: Пассивный Призыв: Тренированный пес""",
 	TRAITALIOSDESCRIPT = """{color=brown|Срывающийся}: Если в группе жив только этот персонаж: получайте +50 уворота, +20 скорости до конца боя.""",
+	TRAITMIXX_CHAMPIONDESCRIPT = """{color=brown|Seething Blackness}: Dark Element attacks ignore all DEF/MDEF and have +30 hit rating.""", # MISSING TRANSLATION
 	TRAITSADISTDESCRIPT = """{color=brown|Открытые вены}: Физические атаки ближнего боя с вероятностью 25% вызывают кровотечение на 2 хода.""",	
 
 	TRAITHEALER1 = """Целитель:Новичок""",
