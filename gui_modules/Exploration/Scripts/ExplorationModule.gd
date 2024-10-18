@@ -126,7 +126,7 @@ func open_location(data):
 #		current_level = active_location.progress.level
 #		current_stage = active_location.progress.stage
 	if active_location.has('background'):
-		$LocationGui/Image/TextureRect.texture = images.backgrounds[active_location.background]
+		$LocationGui/Image/TextureRect.texture = images.get_background(active_location.background)
 	if active_location.has('bgm'):
 		input_handler.SetMusic(active_location.bgm)
 
@@ -527,11 +527,11 @@ func build_location_group():
 		newbutton.get_node("icon").texture = i.get_icon_small()
 		if newbutton.get_node('icon').texture == null:
 			if i.has_profession('master'):
-				newbutton.get_node('icon').texture = images.icons.class_master
+				newbutton.get_node('icon').texture = images.get_icon('class_master')
 			elif i.get_stat('slave_class') == 'servant':
-				newbutton.get_node('icon').texture = images.icons.class_servant
+				newbutton.get_node('icon').texture = images.get_icon('class_servant')
 			else:
-				newbutton.get_node('icon').texture = images.icons.class_slave
+				newbutton.get_node('icon').texture = images.get_icon('class_slave')
 		newbutton.get_node("Label").text = i.get_short_name()
 		newbutton.connect("pressed", self, "return_character", [i])
 		if active_location.group.values().has(i.id):

@@ -5538,7 +5538,7 @@ var transforms = {
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Dick', attr = 'position', value = Vector2(61.2, 9.9)},
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'z_index', value = 14},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'z_index', value = 4},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'z_index', value = 6},
 			
 			{type = 'node_group_select', group = 'hand_l', select = 'HandL2'},
 			{type = 'node_group_select', group = 'hand_r', select = 'HandR3'},

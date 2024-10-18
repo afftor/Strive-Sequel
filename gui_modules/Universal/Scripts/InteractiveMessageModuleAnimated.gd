@@ -748,7 +748,7 @@ func clear_character_images():
 func handle_scene_backgrounds(scene):
 	var node = $CustomBackground
 	if scene.has("custom_background"):
-		var newtexture = images.backgrounds[scene.custom_background]
+		var newtexture = images.get_background(scene.custom_background)
 		if node.visible == false:
 			node.show()
 			ResourceScripts.core_animations.UnfadeAnimation(node, 0.5)
@@ -788,7 +788,7 @@ func handle_characters_sprites(scene):
 			$CharacterImage2.hide()
 		$CharacterImage.hide()
 		if scene.has('image') && scene.image != '' && scene.image != null:
-			$ImagePanel/SceneImage.texture = images.scenes[scene.image]
+			$ImagePanel/SceneImage.texture = images.get_scene(scene.image)
 		else:
 			$ImagePanel.hide()
 			if self.name == "dialogue":
@@ -820,7 +820,7 @@ func handle_characters_sprites(scene):
 				if not unique_name_char == unique_name_ch1:
 					ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, 0.5)
 				
-				$CharacterImage.texture = images.sprites[scene_char]
+				$CharacterImage.texture = images.get_sprite(scene_char)
 				if char_shade:
 					$CharacterImage.material.set_shader_param('opacity', 1.0)
 					ch1_shade = true
@@ -852,7 +852,7 @@ func handle_characters_sprites(scene):
 					input_handler.save_progress_data(input_handler.progress_data)
 			if scene_char != null and ch2 != scene_char:
 				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2, 0.5)
-				$CharacterImage2.texture = images.sprites[scene_char]
+				$CharacterImage2.texture = images.get_sprite(scene_char)
 				if char_shade:
 					$CharacterImage2.material.set_shader_param('opacity', 1.0)
 					ch2_shade = true
@@ -887,8 +887,9 @@ func handle_characters_sprites(scene):
 			if scene_char != null && person.get_stat("unique") == scene_char && person.has_work_rule('nudity') && worlddata.pregen_character_sprites[scene_char].has("nude"):
 				var non_body = person.statlist.statlist.body_image.replace("_body", "")
 	#			var image = input_handler.loadimage(images.sprites[non_body], 'shades')
-				var image = images.sprites[worlddata.pregen_character_sprites[scene_char].nude.path.replace("_body", "")]
-				if images.sprites.has(non_body):
+#				var image = images.get_sprite(worlddata.pregen_character_sprites[scene_char].nude.path.replace("_body", ""))
+				var image = images.get_sprite(non_body)
+				if image != null:
 					$CharacterImage.texture = image
 				else:
 					$CharacterImage.texture = person.get_body_image()
@@ -900,8 +901,9 @@ func handle_characters_sprites(scene):
 			if scene_char != null && person.get_stat("unique") == scene_char && person.has_work_rule('nudity') && worlddata.pregen_character_sprites[scene_char].has("nude"):
 				var non_body = person.statlist.statlist.body_image.replace("_body", "")
 	#			var image = input_handler.loadimage(images.sprites[non_body], 'shades')
-				var image = images.sprites[worlddata.pregen_character_sprites[scene_char].nude.path.replace("_body", "")]
-				if images.sprites.has(non_body):
+#				var image = images.sprites[worlddata.pregen_character_sprites[scene_char].nude.path.replace("_body", "")]
+				var image = images.get_sprite(non_body)
+				if image != null:
 					$CharacterImage2.texture = image
 				else:
 					$CharacterImage2.texture = person.get_body_image()
@@ -915,7 +917,7 @@ func handle_characters_sprites(scene):
 			var spouse_person = characters_pool.get_char_by_id(ResourceScripts.game_progress.spouse)
 			var spouse_unique_name = spouse_person.get_stat('unique')
 			if scene_char == spouse_unique_name and worlddata.pregen_character_sprites[scene_char].has("wed"):
-				var image = images.sprites[worlddata.pregen_character_sprites[scene_char].wed.path]
+				var image = images.get_sprite(worlddata.pregen_character_sprites[scene_char].wed.path)
 				$CharacterImage.texture = image
 	
 	
@@ -926,7 +928,7 @@ func handle_characters_sprites(scene):
 			if person.get_stat("unique") == scene.unique_character:
 				$CharacterImage.show()
 				var non_body = person.statlist.statlist.body_image.replace("_body", "")
-				var image = input_handler.loadimage(images.sprites[non_body], 'shades')
+				var image = input_handler.loadimage(images.sprites[non_body], 'shades') #needs testing, idk if this is still in use
 				if $CharacterImage.texture != image:
 					ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, 0.5)
 				if images.sprites.has(non_body):
@@ -943,7 +945,7 @@ func handle_characters_sprites(scene):
 			if person.get_stat("unique") == scene.unique_character2:
 				$CharacterImage2.show()
 				var non_body = person.statlist.statlist.body_image.replace("_body", "")
-				var image = input_handler.loadimage(images.sprites[non_body], 'shades')
+				var image = input_handler.loadimage(images.sprites[non_body], 'shades') #the same as above
 				if $CharacterImage2.texture != image:
 					ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2, 0.5)
 				if images.sprites.has(non_body):

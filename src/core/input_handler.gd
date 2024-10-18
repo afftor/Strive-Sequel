@@ -1304,7 +1304,11 @@ func loadimage(path, type = ""):
 	if type != "":
 		var lib = images.get(type)
 		if lib != null:
-			if lib.has(path): return lib[path]
+			if lib.has(path): 
+				var res = lib[path]
+				if res is String:
+					res = load(res)
+				return res
 	#indexed resource check
 	if ResourceLoader.exists(path):
 		return load(path)

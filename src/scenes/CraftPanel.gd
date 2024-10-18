@@ -164,7 +164,7 @@ func rebuild_recipe_list():
 		
 		
 		var progressnode = input_handler.DuplicateContainerTemplate(newbutton.get_node("HBoxContainer"))
-		progressnode.texture = images.icons.craft_time
+		progressnode.texture = images.get_icon('craft_time')
 		progressnode.get_node("Label").text = str(i.workunits)
 		progressnode.hint_tooltip = 'Progress required per craft'
 

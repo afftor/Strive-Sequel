@@ -1,5 +1,5 @@
 extends "res://src/scenes/ClosingPanel.gd"
-
+#obsolete
 
 onready var info_text_node = $area/info_panel/VBoxContainer/info_text
 onready var info_text_icon = $area/info_panel/VBoxContainer/TextureRect

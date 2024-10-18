@@ -50,7 +50,7 @@ func update():
 					sb_text += "Subroom - empty"
 				'event', 'unique_event', 'onetime_event':
 					var icon = data.subrooms[i].icon
-					get_node("subroom%d/icon"%(i + 1)).texture = images.icons[icon]
+					get_node("subroom%d/icon"%(i + 1)).texture = images.get_icon(icon)
 					sb_text += "Subroom - event\nCost- %d" % data.subrooms[i].stamina_cost
 				'resource', 'resource_survival':
 					get_node("subroom%d/icon"%(i + 1)).texture = load("res://assets/Textures_v2/Universal/Icons/icon_resources_pressed.png")

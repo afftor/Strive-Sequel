@@ -1048,7 +1048,7 @@ func RebuildStatsContainer(): #onready scheme build, not values
 			var i = statdata.statdata[stat]
 			var newnode = input_handler.DuplicateContainerTemplate($StatsModule/StatsContainer)
 			if i.baseicon is String:
-				newnode.get_node("icon").texture = load(images.icons[i.baseicon])
+				newnode.get_node("icon").texture = images.get_icon(i.baseicon)
 			else:
 				newnode.get_node("icon").texture = i.baseicon
 			newnode.name = i.code

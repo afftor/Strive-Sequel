@@ -294,7 +294,7 @@ func predict_preg_time():
 
 func get_class_icon():
 	if get_stat('slave_class') in ['master', 'heir', 'spouse', 'servant', 'servant_notax']:
-		return images.icons[ResourceScripts.descriptions.bodypartsdata.slave_class[get_stat('slave_class')].icon]
+		return images.get_icon(ResourceScripts.descriptions.bodypartsdata.slave_class[get_stat('slave_class')].icon)
 #	elif get_stat('slave_spec') != null:
 #		var upgrade_data = Traitdata.slave_profs[get_stat('slave_spec')]
 #		if upgrade_data.icon_small is String:
@@ -309,7 +309,7 @@ func get_class_icon():
 		else:
 			return upgrade_data.icon_small
 	else:
-		return images.icons[ResourceScripts.descriptions.bodypartsdata.slave_class[get_stat('slave_class')].icon]
+		return images.get_icon(ResourceScripts.descriptions.bodypartsdata.slave_class[get_stat('slave_class')].icon)
 #end to add
 
 func generate_ea_character(gendata, desired_class):
@@ -1892,6 +1892,6 @@ func update_prt():
 		prt_name = "%s_%s_prt" % [get_stat("unique"), variation]
 	
 	if images.portraits.keys().has(prt_name):
-		set_stat('icon_image',images.portraits[prt_name])
+		set_stat('icon_image', images.portraits[prt_name])
 #	else:
 #		print_debug("Failed to find a %s portrait" % prt_name)

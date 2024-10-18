@@ -142,7 +142,7 @@ func initiate(tempperson):
 	$end.visible = false
 	$textfield/RichTextLabel.clear()
 	location_changed = false
-	$background.texture = images.backgrounds.mansion
+	$background.texture = images.get_background('mansion')
 
 
 

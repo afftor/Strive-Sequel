@@ -434,7 +434,7 @@ func build_info(loc = null):
 	elif location.has('background'):
 		icon = location.background
 	if icon != null:
-		icon = images.backgrounds[icon]
+		icon = images.get_background(icon)
 	$InfoPanel/InfoFrame/icon.texture = icon
 	$InfoPanel/InfoFrame/name.text = tr(location.name)
 	#build res
@@ -555,13 +555,13 @@ func make_panel_for_location(panel, loc):
 		var icon
 		match loc.type:
 			'settlement':
-				icon = images.icons.travel_village
+				icon = images.get_icon('travel_village')
 			'dungeon':
-				icon = images.icons.travel_dungeon
+				icon = images.get_icon('travel_dungeon')
 			'capital':
-				icon = images.icons.travel_city
+				icon = images.get_icon('travel_city')
 			'quest_location', 'encounter':
-				icon = images.icons.travel_event
+				icon = images.get_icon('travel_event')
 		if panel.has_node('icon'):
 			panel.get_node("icon").texture = icon
 

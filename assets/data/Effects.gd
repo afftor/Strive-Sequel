@@ -3067,6 +3067,22 @@ var effect_table = {
 		atomic = [{type = 'stat_add_p', stat = 'armor', value = -0.5}],
 		buffs = ['b_shred'],
 	},
+	e_s_shred2 = {
+		type = 'temp_global',
+		tags = ['duration_turns', 'affliction'],
+		target = 'target',
+		name = 'shred',
+		stack = 2,
+		timers = [
+			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 2}, #2 turns duration
+			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
+			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
+		],
+		args = [],
+		sub_effects = [],
+		atomic = [{type = 'stat_add_p', stat = 'armor', value = -0.5}],
+		buffs = ['b_shred'],
+	},
 	e_s_shatter = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions
 		type = 'temp_global',
 		tags = ['duration_turns', 'affliction'],

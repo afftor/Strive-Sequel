@@ -431,7 +431,7 @@ func update_button(newbutton):
 	newbutton.get_node("name").text = person.get_short_name()
 	if person.is_master() or person.is_unique():
 		newbutton.get_node("name").set("custom_colors/font_color", variables.hexcolordict.unique)
-	newbutton.get_node("sex").texture = images.icons[person.get_stat('sex')]
+	newbutton.get_node("sex").texture = images.get_icon(person.get_stat('sex'))
 
 	newbutton.get_node("stats/hp").max_value = person.get_stat('hpmax')
 	newbutton.get_node("stats/hp").value = person.hp
@@ -498,13 +498,13 @@ func update_button(newbutton):
 			newbutton.get_node('loctext').text = ploc.name
 			match ploc.type:
 				'settlement':
-					newbutton.get_node('LocIcon').texture = images.icons.travel_village
+					newbutton.get_node('LocIcon').texture = images.get_icon('travel_village')
 				'dungeon':
-					newbutton.get_node('LocIcon').texture = images.icons.travel_dungeon
+					newbutton.get_node('LocIcon').texture = images.get_icon('travel_dungeon')
 				'capital':
-					newbutton.get_node('LocIcon').texture = images.icons.travel_city
+					newbutton.get_node('LocIcon').texture = images.get_icon('travel_city')
 				'quest_location', 'encounter':
-					newbutton.get_node('LocIcon').texture = images.icons.travel_event
+					newbutton.get_node('LocIcon').texture = images.get_icon('travel_event')
 			newbutton.get_node('LocIcon').hint_tooltip = tr(ploc.name)
 			#newbutton.get_node('Location').text = tr(ploc.name)
 	#job

@@ -83,10 +83,10 @@ func build_gallery(page):
 #			node.get_node("SceneName").text = "Scene Name"
 		else:
 			if state == "scenes":
-				node.get_node("Image").texture = images.backgrounds[Gallery.get_image_for_seq(src[i])]
+				node.get_node("Image").texture = images.get_background(Gallery.get_image_for_seq(src[i]))
 				node.connect("pressed", Gallery, "play_scene", [src[i]])
 			else:
-				node.get_node("Image").texture = images.backgrounds[src[i]]
+				node.get_node("Image").texture = images.get_background(src[i])
 				node.connect("pressed", self, "show_fullscreen", [src[i]])
 
 
@@ -126,7 +126,7 @@ func show_fullscreen(image): # image:string
 	$FullScreenImage.show()
 	Collection = image
 #	$FullScreenImage.texture = load(image)
-	$FullScreenImage.texture = images.backgrounds[image]
+	$FullScreenImage.texture = images.get_background(image)
 	ResourceScripts.core_animations.UnfadeAnimation($FullScreenImage)
 	if !gui_controller.windows_opened.has($FullScreenImage):
 		gui_controller.windows_opened.append($FullScreenImage)
@@ -187,7 +187,7 @@ func FindNextImagesInPlayer():
 		Collection = newimagename
 		return
 	#
-	$FullScreenImage.texture = images.backgrounds[newimagename]
+	$FullScreenImage.texture = images.get_background(newimagename)
 	Collection = newimagename
 
 

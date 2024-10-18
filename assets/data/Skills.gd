@@ -2881,7 +2881,8 @@ var Skilllist = {
 		tags = ['damage','ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_shred_old', duration = 3})], #if change to new version - Effectdata.rebuild_template_globals({effect = 'e_s_shred'})
+#		effects = [Effectdata.rebuild_template({effect = 'e_s_shred_old', duration = 3})], #if change to new version - Effectdata.rebuild_template_globals({effect = 'e_s_shred2'})
+		effects = [Effectdata.rebuild_template_globals({effect = 'e_s_shred2'})], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
