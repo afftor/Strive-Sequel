@@ -118,7 +118,7 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 			pos = Vector2(pos.x - rect_size.x - node.rect_size.x - 10, pos.y)
 			self.set_global_position(pos)
 		else:
-			pos = Vector2(pos.x - screen.size.x + get_global_rect().end.x, pos.y)
+			pos = Vector2(pos.x + screen.size.x - get_global_rect().end.x, pos.y)
 			self.set_global_position(pos)
 	
 #	if get_global_rect().end.y > screen.size.y:
@@ -129,6 +129,7 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 		self.set_global_position(pos)
 		
 	set_process(true)
+
 
 
 func material_tooltip(data, workers_data = {}):

@@ -132,11 +132,15 @@ func show_resources_info():
 					var tmp = ch.get_progress_task(task.code, task.product)
 					text += "%s: + %.1f\n" % [ch.get_short_name(), tmp]
 					progress += tmp
-				newtask.get_node("ProgressBar").visible = false
-				newtask.get_node("progress").visible = true
-				newtask.get_node("progress").text = "%d + (%d - %d) / %d" % [ResourceScripts.game_res.craftinglists[task_name][0].workunits, progress, progress * 2, ResourceScripts.game_res.craftinglists[task_name][0].workunits_needed]
-#				newtask.get_node("ProgressBar").max_value = ResourceScripts.game_res.craftinglists[task_name][0].workunits_needed
-#				newtask.get_node("ProgressBar").value = ResourceScripts.game_res.craftinglists[task_name][0].workunits
+				if task_name == 'cooking':
+					newtask.get_node("ProgressBar").visible = true
+					newtask.get_node("progress").visible = false
+					newtask.get_node("ProgressBar").max_value = ResourceScripts.game_res.craftinglists[task_name][0].workunits_needed
+					newtask.get_node("ProgressBar").value = ResourceScripts.game_res.craftinglists[task_name][0].workunits
+				else:
+					newtask.get_node("ProgressBar").visible = false
+					newtask.get_node("progress").visible = true
+					newtask.get_node("progress").text = "%d + (%d - %d) / %d" % [ResourceScripts.game_res.craftinglists[task_name][0].workunits, progress, progress * 2, ResourceScripts.game_res.craftinglists[task_name][0].workunits_needed]
 				var recipe = Items.recipes[ResourceScripts.game_res.craftinglists[task_name][0].code]
 				var item
 				if recipe.resultitemtype == 'item':
