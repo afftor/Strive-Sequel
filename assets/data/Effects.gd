@@ -4301,7 +4301,7 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'owner',
 				args = [],
-				condition = [{code = 'stat', stat = 'lust', operant = 'lte', value = 0}],
+				conditions = [{code = 'stat', stat = 'lust', operant = 'lte', value = 0}],
 				atomic = [
 					{type = 'remove_effect', value = 'euphoria'},
 					],
