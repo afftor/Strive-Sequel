@@ -6671,6 +6671,7 @@ internal_vertex_count = 142
 [node name="Tits_zero" type="Bone2D" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["tits"]]
 visible = false
 position = Vector2( -53, 10.0002 )
+z_index = 5
 rest = Transform2D( 1, 0, 0, 1, -53, 10.0002 )
 default_length = 100.0
 
