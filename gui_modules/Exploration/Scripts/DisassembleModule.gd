@@ -92,7 +92,7 @@ func build_list():
 		newbutton.get_node("Amount").text = amount
 		newbutton.get_node("Cost").text = str(i.calculateprice())
 		newbutton.set_meta("item", i)
-		newbutton.connect("pressed", self, "show_item_info", [i, int(amount)])
+		newbutton.connect("pressed", self, "show_item_info", [i, int(i.amount)])
 		var data = {text = i.tooltiptext(), icon = input_handler.loadimage(i.icon, 'icons'), item = i, price = str(i.calculateprice())}
 		newbutton.connect('mouse_entered', self, 'showup', [newbutton, data, "gear"])
 
