@@ -4858,6 +4858,7 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', attr = 'z_index', value = 1},
 		],
 		underwear = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4872,6 +4873,7 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', attr = 'z_index', value = 1},
 		],
 		lacy_underwear = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4886,6 +4888,7 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', attr = 'z_index', value = 1},
 		],
 		seethrough_underwear = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4900,6 +4903,7 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', attr = 'z_index', value = 1},
 		],
 		servant = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4914,6 +4918,7 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', attr = 'z_index', value = 1},
 		],
 		jacket = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4928,6 +4933,7 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', attr = 'z_index', value = 1},
 		],
 		latex_suit = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4942,6 +4948,7 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', attr = 'z_index', value = 1},
 		],
 		worker_outfit = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4956,6 +4963,7 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', attr = 'z_index', value = 1},
 		],
 		service_suit  = [ #same as top
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4970,6 +4978,7 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', attr = 'z_index', value = 1},
 		],
 		craftsman_suit = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4982,8 +4991,9 @@ var transforms = {
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', texture = "res://Character_generator/images/110_armory_set_smith_female/LegR_armor_smith.png"},
 			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', texture = "res://Character_generator/images/110_armory_set_smith_female/taz_armor_smith.png"},
 			
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 0},
-			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', attr = 'z_index', value = 6},
 		],
 		tentacle_suit = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -4998,6 +5008,7 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 0},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 0},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', attr = 'z_index', value = 1},
 		],
 		legs_base_cloth = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -5012,6 +5023,7 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', attr = 'z_index', value = 1},
 		],
 		legs_adv_cloth = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -5026,6 +5038,7 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', attr = 'z_index', value = 1},
 		],
 		legs_base_leather = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -5040,6 +5053,7 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', attr = 'z_index', value = 1},
 		],
 		legs_adv_leather = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -5054,6 +5068,7 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', attr = 'z_index', value = 1},
 		],
 		legs_base_metal = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -5068,6 +5083,7 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', attr = 'z_index', value = 1},
 		],
 		legs_adv_metal = [
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Taz/Dick', attr = 'visible', value = false},
@@ -5082,6 +5098,7 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegL/LegL_armor', attr = 'z_index', value = 1},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/LegR/LegR_armor', attr = 'z_index', value = 1},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Taz/Taz_armor', attr = 'z_index', value = 1},
 		],
 	},
 	armor_collar = {
