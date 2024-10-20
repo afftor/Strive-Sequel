@@ -29,6 +29,7 @@ func open_diet_window():
 				newbutton.get_node("filter").set("custom_colors/font_color", Color(variables.hexcolordict[categorycolors[k]]))
 				break
 		newbutton.connect("pressed", self, "change_food_category", [i.code])
+		newbutton.set_meta('exploration', true)
 
 func change_food_category(foodcode):
 	var current_category

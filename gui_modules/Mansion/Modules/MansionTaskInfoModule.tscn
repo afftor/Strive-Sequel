@@ -131,9 +131,9 @@ align = 1
 
 [node name="progress" type="Label" parent="TaskList/ScrollContainer/VBoxContainer/Button"]
 margin_left = 1.41422
-margin_top = 38.0
+margin_top = 32.0
 margin_right = 245.414
-margin_bottom = 54.0
+margin_bottom = 48.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "+10(20)/100"
@@ -141,9 +141,9 @@ align = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="TaskList/ScrollContainer/VBoxContainer/Button"]
 margin_left = 1.41422
-margin_top = 38.0
+margin_top = 32.0
 margin_right = 245.414
-margin_bottom = 54.0
+margin_bottom = 48.0
 custom_styles/fg = ExtResource( 4 )
 custom_styles/bg = ExtResource( 5 )
 value = 50.0
