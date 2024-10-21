@@ -157,8 +157,8 @@ func fix_serialize():
 					if id.begins_with('t_'):
 						parent.get_ref().remove_trait(id.trim_prefix('t_'))
 					else:
-						parent.get_ref().unlearn_c_skill(id.trim_prefix('t_'))
-						parent.get_ref().unlearn_skill(id.trim_prefix('t_'))
+						parent.get_ref().unlearn_c_skill(id.trim_prefix('s_'))
+						parent.get_ref().unlearn_skill(id.trim_prefix('s_'))
 		if prof == 'healer':
 			newprofs.push_back('acolyte') 
 	for prof in newprofs:
