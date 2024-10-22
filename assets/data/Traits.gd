@@ -78,7 +78,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],
-		tags = ['tr_obedience', 'relation', 'sexservice', 'sexservice_adv', 'trained', 'worker', 'combatant'],
+		tags = ['tr_obedience', 'trained'],
 		bonusstats = {mod_collect = -0.2, mod_farm = -0.2, mod_fish = -0.2}
 	},
 	servant = {#servant class trait, taxing is hardcoded

@@ -79,7 +79,7 @@ func update():
 #		setup_tab()
 		if !loyalty_mode:
 			swap_mode()
-	elif person.get_stat('slave_class') in ['slave', 'slave_trained', 'servant', 'servant_notax']:
+	elif person.get_stat('slave_class') in ['slave', 'slave_trained', 'servant', 'servant_notax', 'heir']:
 		$change_button.visible = true
 		loyalty_panel.visible = true
 		loyalty_panel_master.get_parent().visible = false
