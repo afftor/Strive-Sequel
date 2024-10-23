@@ -156,10 +156,10 @@ align = 1
 valign = 1
 
 [node name="loading_finished_label" type="Label" parent="."]
-margin_left = 323.986
-margin_top = 891.673
-margin_right = 680.988
-margin_bottom = 937.673
+margin_left = 324.0
+margin_top = 892.0
+margin_right = 747.0
+margin_bottom = 938.0
 custom_colors/font_color = Color( 0.337255, 0.858824, 0.796078, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 5 )
