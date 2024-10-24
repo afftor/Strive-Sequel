@@ -1073,6 +1073,12 @@ func add_stat_bonuses(ls:Dictionary):
 			if (rec as String).ends_with('mod') && !(rec in ['critmod', 'exp_gain_mod']) :
 				add_bonus(rec.replace('mod','_mul'), ls[rec])
 				continue
+			if (rec as String).begins_with('enable_mastery_'):
+				parent.get_ref().set_stat(rec, ls[rec])
+				continue
+			if (rec as String).begins_with('mastery_'):
+				parent.get_ref().add_stat(rec, ls[rec])
+				continue
 			if (rec as String).ends_with('_add') and !statdata.statdata.has(rec):
 				add_bonus(rec, ls[rec])
 				continue
