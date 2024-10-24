@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://assets/images/iconsclasses/Master.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/panel_simpleclass.png" type="Texture" id=2]
@@ -62,6 +62,8 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_skillbook_pressed.png" type="Texture" id=60]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_skillbook_hover.png" type="Texture" id=61]
 [ext_resource path="res://gui_modules/Universal/Modules/SkillBook.tscn" type="PackedScene" id=62]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/icon_class.png" type="Texture" id=63]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/NOTO_SANS_Bold_24px.tres" type="DynamicFont" id=64]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 19 )
@@ -669,6 +671,413 @@ __meta__ = {
 }
 
 [node name="SkillBookButton" type="TextureButton" parent="SkillPanel"]
+margin_left = 9.42102
+margin_top = 835.546
+margin_right = 87.42
+margin_bottom = 913.546
+hint_tooltip = "Set Abilitites for combat"
+texture_normal = ExtResource( 59 )
+texture_pressed = ExtResource( 60 )
+texture_hover = ExtResource( 61 )
+texture_disabled = ExtResource( 58 )
+expand = true
+stretch_mode = 5
+
+[node name="MasteryPanel" type="Panel" parent="."]
+visible = false
+margin_left = 970.0
+margin_right = 1670.0
+margin_bottom = 920.0
+custom_styles/panel = ExtResource( 24 )
+
+[node name="Panel" type="Panel" parent="MasteryPanel"]
+margin_left = 13.6696
+margin_top = 93.6967
+margin_right = 683.67
+margin_bottom = 812.697
+
+[node name="Panel2" type="Panel" parent="MasteryPanel"]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 18.0
+margin_top = 106.0
+margin_right = 673.0
+margin_bottom = 170.0
+
+[node name="Panel3" type="Panel" parent="MasteryPanel"]
+self_modulate = Color( 0.85098, 0, 1, 1 )
+margin_left = 18.0
+margin_top = 199.0
+margin_right = 673.0
+margin_bottom = 792.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MasteryPanel/Panel3"]
+margin_right = 651.0
+margin_bottom = 597.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MasteryPanel/Panel3/ScrollContainer"]
+margin_right = 651.0
+margin_bottom = 431.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
+margin_right = 651.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_left = 288.0
+margin_right = 363.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 63 )
+expand = true
+stretch_mode = 6
+
+[node name="HSeparator" type="HSeparator" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
+margin_top = 79.0
+margin_right = 651.0
+margin_bottom = 83.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
+margin_top = 87.0
+margin_right = 651.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 288.0
+margin_right = 363.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 63 )
+expand = true
+stretch_mode = 6
+
+[node name="HSeparator2" type="HSeparator" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
+margin_top = 166.0
+margin_right = 651.0
+margin_bottom = 170.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
+margin_top = 174.0
+margin_right = 651.0
+margin_bottom = 249.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 288.0
+margin_right = 363.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 63 )
+expand = true
+stretch_mode = 6
+
+[node name="HSeparator3" type="HSeparator" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
+margin_top = 253.0
+margin_right = 651.0
+margin_bottom = 257.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
+margin_top = 261.0
+margin_right = 651.0
+margin_bottom = 336.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer/HBoxContainer4"]
+margin_left = 288.0
+margin_right = 363.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 63 )
+expand = true
+stretch_mode = 6
+
+[node name="HSeparator4" type="HSeparator" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
+margin_top = 340.0
+margin_right = 651.0
+margin_bottom = 344.0
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
+margin_top = 348.0
+margin_right = 651.0
+margin_bottom = 423.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer/HBoxContainer5"]
+margin_left = 288.0
+margin_right = 363.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 63 )
+expand = true
+stretch_mode = 6
+
+[node name="HSeparator5" type="HSeparator" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
+margin_top = 427.0
+margin_right = 651.0
+margin_bottom = 431.0
+
+[node name="Categories" type="HBoxContainer" parent="MasteryPanel"]
+margin_left = 25.0
+margin_top = 35.0
+margin_right = 164.0
+margin_bottom = 89.0
+
+[node name="combat" type="TextureButton" parent="MasteryPanel/Categories"]
+self_modulate = Color( 1, 1, 1, 0.635294 )
+light_mask = 0
+margin_right = 54.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+texture_normal = ExtResource( 39 )
+texture_pressed = ExtResource( 29 )
+texture_hover = ExtResource( 25 )
+expand = true
+
+[node name="spells" type="TextureButton" parent="MasteryPanel/Categories"]
+self_modulate = Color( 1, 1, 1, 0.635294 )
+light_mask = 0
+margin_left = 58.0
+margin_right = 112.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+texture_normal = ExtResource( 35 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 42 )
+expand = true
+
+[node name="Categories3" type="HBoxContainer" parent="MasteryPanel"]
+margin_left = 124.995
+margin_top = 841.683
+margin_right = 586.995
+margin_bottom = 895.683
+custom_constants/separation = 150
+
+[node name="combat" type="TextureButton" parent="MasteryPanel/Categories3"]
+self_modulate = Color( 1, 1, 1, 0.635294 )
+light_mask = 0
+margin_right = 54.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+texture_normal = ExtResource( 63 )
+texture_pressed = ExtResource( 29 )
+texture_hover = ExtResource( 25 )
+expand = true
+
+[node name="Label" type="Label" parent="MasteryPanel/Categories3/combat"]
+margin_left = 67.1736
+margin_top = 7.13599
+margin_right = 187.174
+margin_bottom = 51.136
+custom_fonts/font = ExtResource( 64 )
+text = "9 Points"
+
+[node name="combat2" type="TextureButton" parent="MasteryPanel/Categories3"]
+self_modulate = Color( 1, 1, 1, 0.635294 )
+light_mask = 0
+margin_left = 204.0
+margin_right = 258.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+texture_normal = ExtResource( 63 )
+texture_pressed = ExtResource( 29 )
+texture_hover = ExtResource( 25 )
+expand = true
+
+[node name="Label" type="Label" parent="MasteryPanel/Categories3/combat2"]
+margin_left = 67.1736
+margin_top = 7.13599
+margin_right = 187.174
+margin_bottom = 51.136
+custom_fonts/font = ExtResource( 64 )
+text = "9 Points"
+
+[node name="combat3" type="TextureButton" parent="MasteryPanel/Categories3"]
+self_modulate = Color( 1, 1, 1, 0.635294 )
+light_mask = 0
+margin_left = 408.0
+margin_right = 462.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+texture_normal = ExtResource( 63 )
+texture_pressed = ExtResource( 29 )
+texture_hover = ExtResource( 25 )
+expand = true
+
+[node name="Label" type="Label" parent="MasteryPanel/Categories3/combat3"]
+margin_left = 67.1736
+margin_top = 7.13599
+margin_right = 187.174
+margin_bottom = 51.136
+custom_fonts/font = ExtResource( 64 )
+text = "9 Points"
+
+[node name="Categories2" type="HBoxContainer" parent="MasteryPanel"]
+margin_left = 25.0
+margin_top = 107.0
+margin_right = 432.0
+margin_bottom = 161.0
+
+[node name="combat" type="TextureButton" parent="MasteryPanel/Categories2"]
+self_modulate = Color( 1, 1, 1, 0.635294 )
+light_mask = 0
+margin_right = 54.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+texture_normal = ExtResource( 39 )
+texture_pressed = ExtResource( 29 )
+texture_hover = ExtResource( 25 )
+expand = true
+
+[node name="spells" type="TextureButton" parent="MasteryPanel/Categories2"]
+self_modulate = Color( 1, 1, 1, 0.635294 )
+light_mask = 0
+margin_left = 58.0
+margin_right = 112.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+texture_normal = ExtResource( 35 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 42 )
+expand = true
+
+[node name="spells2" type="TextureButton" parent="MasteryPanel/Categories2"]
+self_modulate = Color( 1, 1, 1, 0.635294 )
+light_mask = 0
+margin_left = 116.0
+margin_right = 170.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+texture_normal = ExtResource( 35 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 42 )
+expand = true
+
+[node name="spells3" type="TextureButton" parent="MasteryPanel/Categories2"]
+self_modulate = Color( 1, 1, 1, 0.635294 )
+light_mask = 0
+margin_left = 174.0
+margin_right = 228.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+texture_normal = ExtResource( 35 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 42 )
+expand = true
+
+[node name="spells4" type="TextureButton" parent="MasteryPanel/Categories2"]
+self_modulate = Color( 1, 1, 1, 0.635294 )
+light_mask = 0
+margin_left = 232.0
+margin_right = 286.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+texture_normal = ExtResource( 35 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 42 )
+expand = true
+
+[node name="spells5" type="TextureButton" parent="MasteryPanel/Categories2"]
+self_modulate = Color( 1, 1, 1, 0.635294 )
+light_mask = 0
+margin_left = 290.0
+margin_right = 344.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+texture_normal = ExtResource( 35 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 42 )
+expand = true
+
+[node name="Label" type="Label" parent="MasteryPanel"]
+light_mask = 0
+margin_top = 28.0181
+margin_right = 700.0
+margin_bottom = 72.0181
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 23 )
+text = "Masteries"
+align = 1
+valign = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MasteryPanel"]
+visible = false
+light_mask = 0
+margin_left = 95.0
+margin_top = 62.0
+margin_right = 684.0
+margin_bottom = 798.0
+rect_min_size = Vector2( 0, 500 )
+theme = ExtResource( 11 )
+scroll_horizontal_enabled = false
+
+[node name="GridContainer" type="GridContainer" parent="MasteryPanel/ScrollContainer"]
+light_mask = 0
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 5
+
+[node name="Button" type="TextureButton" parent="MasteryPanel/ScrollContainer/GridContainer"]
+visible = false
+light_mask = 0
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+toggle_mode = true
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 12 )
+texture_disabled = ExtResource( 56 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="MasteryPanel/ScrollContainer/GridContainer/Button"]
+show_behind_parent = true
+light_mask = 0
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 41 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="MasteryPanel/ScrollContainer/GridContainer/Button"]
+light_mask = 0
+margin_left = 6.0
+margin_top = 8.0
+margin_right = 94.0
+margin_bottom = 90.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 45 )
+align = 1
+valign = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkillBookButton" type="TextureButton" parent="MasteryPanel"]
 margin_left = 9.42102
 margin_top = 835.546
 margin_right = 87.42

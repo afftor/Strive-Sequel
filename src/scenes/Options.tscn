@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_Options_Panel.tres" type="Theme" id=1]
 [ext_resource path="res://src/scenes/Options.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=20]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=21]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_24.tres" type="DynamicFont" id=22]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Medium.otf" type="DynamicFontData" id=23]
 
 [sub_resource type="DynamicFont" id=1]
 size = 19
@@ -29,7 +30,7 @@ font_data = ExtResource( 20 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 33
-font_data = ExtResource( 20 )
+font_data = ExtResource( 23 )
 
 [node name="Options" type="Panel"]
 margin_left = 602.0
@@ -617,10 +618,10 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="ReloadGameLanguage"]
-margin_left = 215.149
+margin_left = 215.0
 margin_top = 623.0
-margin_right = 415.149
-margin_bottom = 673.0
+margin_right = 415.0
+margin_bottom = 686.251
 rect_pivot_offset = Vector2( 100, 25 )
 custom_fonts/font = SubResource( 2 )
 text = "OPTOK"

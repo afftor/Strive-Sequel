@@ -1,3 +1,13 @@
+0.10.0b
+Optimized resource loading to make images less taxing on the memory
+Fixed some ragdoll issues
+Fixed some enemy buffs having incorrect descriptions
+Fixed Daisy's quest training progress 
+Fixed certain options in act 1 questline
+Added quality color to equiped items to character list
+Fixed broken anastasia not featuring her unique sprites
+Fixed some paperdoll behavior regarding unique characters
+Fixed some minor gui issues
 0.10.0a
 Fixed alcohol items not working and giving wrong personality changes
 Lowered training costs for servants

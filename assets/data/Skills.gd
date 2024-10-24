@@ -2105,11 +2105,11 @@ var Skilllist = {
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.8,
 	},
-	dark_atk = {
-		code = 'dark_atk',
+	void_barrage = {
+		code = 'void_barrage',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/windblade.png"),
+		icon = load("res://assets/images/iconsskills/barrage.png"),
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage','ads'],
@@ -2129,10 +2129,10 @@ var Skilllist = {
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.8,
-		follow_up = 'dark_atk_1'
+		follow_up = 'void_barrage_1'
 	},
-	dark_atk_1 = {
-		code = 'dark_atk_1',
+	void_barrage_1 = {
+		code = 'void_barrage_1',
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
@@ -3478,7 +3478,7 @@ var Skilllist = {
 		icon = null,
 		tags = ['dialogue_skill'],
 		dialogue_text = '',
-		dialogue_image = null,
+		dialogue_image = 'slave_drink2',
 		dialogue_options = [
 			{code = "alco_default", reqs = [], text = 'Get wasted'},
 			{code = "alco_bold", reqs = [], text = 'Shift personality (Bold)'},
@@ -3499,7 +3499,7 @@ var Skilllist = {
 		icon = null,
 		tags = ['dialogue_skill'],
 		dialogue_text = '',
-		dialogue_image = null,
+		dialogue_image = 'slave_drink',
 		dialogue_options = [
 			{code = "alco_default", reqs = [], text = 'Get wasted'},
 			{code = "alco_kind", reqs = [], text = 'Shift personality (Kind)'},
@@ -3520,7 +3520,7 @@ var Skilllist = {
 		icon = null,
 		tags = ['dialogue_skill'],
 		dialogue_text = '',
-		dialogue_image = null,
+		dialogue_image = 'slave_drink',
 		dialogue_options = [
 			{code = "alco_default", reqs = [], text = 'Get wasted'},
 			{code = "alco_shy", reqs = [], text = 'Shift personality (Shy)'},
@@ -3541,7 +3541,7 @@ var Skilllist = {
 		icon = null,
 		tags = ['dialogue_skill'],
 		dialogue_text = '',
-		dialogue_image = null,
+		dialogue_image = 'slave_drink2',
 		dialogue_options = [
 			{code = "alco_default", reqs = [], text = 'Get wasted'},
 			{code = "alco_serious", reqs = [], text = 'Shift personality (Serious)'},
@@ -3595,7 +3595,7 @@ var Skilllist = {
 		damage_type = 'weapon',
 		dialogue_report = '',
 		dialogue_show_repeat = false,
-		dialogue_image = 'slave_drink',
+		dialogue_image = 'slave_drink2',
 		sfx = [], 
 		sound = [],
 		value = [['25']],
@@ -3679,7 +3679,7 @@ var Skilllist = {
 		damage_type = 'weapon',
 		dialogue_report = '',
 		dialogue_show_repeat = false,
-		dialogue_image = 'slave_drink',
+		dialogue_image = 'slave_drink2',
 		sfx = [], 
 		sound = [],
 		value = [['-25']],
@@ -4476,7 +4476,7 @@ var training_actions = {
 		bonus_changes = [],
 		reqs = [],
 		reqs_trainer = [],
-		showup_reqs = [{code = 'unique', value = 'amelia'}],
+		showup_reqs = [],
 		disposition_affects = ['positive','humiliation'],
 		cost = {},
 	},
@@ -4493,7 +4493,7 @@ var training_actions = {
 			{type = 'disposition', check = ['kink'], effect = {loyalty_add = [5, 6]}},
 		],
 		reqs = [],
-		reqs_trainer = [],
+		reqs_trainer = [{code = 'unique', value = 'amelia'}],
 		cost = {},
 	},
 	publicuse = {
@@ -4686,3 +4686,124 @@ func _ready():
 		var tmp = training_categories[s]
 		if tmp.name == '':
 			tmp.name = 'ACTIONTYPE' + s.to_upper()
+
+
+var masteries = {
+
+warfare = {
+type = 'combat',
+passive = {atk = 1, armor = 2},
+level1 = {combat_skills = ["draw_blood"]},
+level2 = {combat_skills = ["sunder"]},
+level3 = {combat_skills = ["cleave"]},
+level4 = {combat_skills = ["strike_through"]},
+level5 = {combat_skills = ["execution"]},
+},
+protection = {
+type = 'combat',
+passive = {hpmax = 3, armor = 3},
+level1 = {combat_skills = ["taunt"]},
+level2 = {combat_skills = ["disarm_enemy"]},
+level3 = {combat_skills = ["provocation"]},
+level4 = {combat_skills = ["stonewall"]},
+level5 = {combat_skills = ["last_stand"]},
+},
+stealth = {
+type = 'combat',
+passive = {evasion = 5},
+level1 = {combat_skills = ["hide"]},
+level2 = {combat_skills = ["dip_poison"]},
+level3 = {combat_skills = ["backkick"]},
+level4 = {combat_skills = ["assassinate"]},
+level5 = {combat_skills = ["devastation"]},
+},
+marksmanship = {
+type = 'combat',
+passive = {atk = 1, hitrate = 5},
+level1 = {combat_skills = ["strafe"]},
+level2 = {combat_skills = ["trap"]},
+level3 = {combat_skills = ["backkick"]},
+level4 = {combat_skills = ["assassinate"]},
+level5 = {combat_skills = ["devastation"]},
+},
+leadership = {
+type = 'combat',
+passive = {hpmax = 3, mpmax = 3},
+level1 = {combat_skills = ["first_aid"]},
+level2 = {combat_skills = ["inspire","leadersmark"]},#sic, change name to huntersmark
+level3 = {explor_skill = ["intimidating_presence"]},
+level4 = {trait = ["stun_immunity"]},
+level5 = {combat_skills = ["rally"]},
+},
+
+fire = {
+type = 'spell',
+passive = {atk = 1, fire_dmg = 5},
+level1 = {combat_skills = ["firearr"]},
+level2 = {combat_skills = ["bloodboil"]},
+level3 = {combat_skills = ["flame_sphere"]},
+level4 = {combat_skills = ["fire_shield"]},
+level5 = {combat_skills = ["magma_blast"]},
+level6 = {combat_skills = ["inferno"]},
+},
+water = {
+type = 'spell',
+passive = {mdef = 2, water_dmg = 4, healing = 4},
+level1 = {combat_skills = ["rejuvenation"]},
+level2 = {combat_skills = ["water_edge"]},
+level3 = {combat_skills = ["water_shield"]},
+level4 = {combat_skills = ["frost_prison","clarity"]},
+level5 = {combat_skills = ["blizzard"]},
+level6 = {combat_skills = ["hailstorm"]},
+},
+earth = {
+type = 'spell',
+passive = {def = 3, earth_dmg = 4},
+level1 = {combat_skills = ["earth_shield"]},
+level2 = {combat_skills = ["acid_bomb"]},
+level3 = {explor_skills = ["natures_gift"]},
+level4 = {combat_skills = ["overgrowth"]},
+level5 = {combat_skills = ["earthquake"], explor_skills = ['teleport']},
+level6 = {combat_skills = ["disintegrate"]},
+},
+air = {
+type = 'spell',
+passive = {evasion = 3, air_dmg = 5, critchance = 0.06},
+level1 = {combat_skills = ["windblade"]},
+level2 = {combat_skills = ["lightning"]},
+level3 = {combat_skills = ["haste"], explor_skills = ["windwhispers"]},
+level4 = {combat_skills = ["chain_lightning"]},
+level5 = {combat_skills = ["air_shield"]},
+level6 = {combat_skills = ["tempest","eyeofthestorm"]},
+},
+light = {
+type = 'spell',
+passive = {healing = 5, light_dmg = 5},
+level1 = {combat_skills = ["healing"]},
+level2 = {combat_skills = ["blessing"]},
+level3 = {combat_skills = ["resurrection","elemental_protection"]},
+level4 = {combat_skills = ["pacify"]},
+level5 = {combat_skills = ["radiance"]},
+level6 = {combat_skills = ["mass_resurrection"]},
+},
+dark = {
+type = 'spell',
+passive = {matk = 2, dark_dmg = 5},
+level1 = {combat_skills = ["darkness"]},
+level2 = {combat_skills = ["black_tendrils"]},
+level3 = {combat_skills = ["malediction"]},
+level4 = {combat_skills = ["devour_magic"]},
+level5 = {combat_skills = ["veil"]},
+level6 = {combat_skills = ["void"]},
+},
+mind = {
+type = 'spell',
+passive = {manamax = 3, mind_dmg = 5},
+level1 = {action = ["mindread"]},
+level2 = {action = ["influence"], combat_skills = ["mindblast"]},
+level3 = {combat_skills = ["invigorate"]},
+level4 = {action = ["stronginfluence"]},
+level5 = {combat_skills = ["mindshatter"]},
+level6 = {action = ["domination"]},
+},
+}
