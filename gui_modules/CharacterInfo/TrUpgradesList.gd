@@ -57,7 +57,7 @@ func gather_data():
 
 func match_state():
 	hide_all()
-	if person.get_stat('slave_class') in ['servant', 'servant_notax']:
+	if person.get_stat('slave_class') in ['servant', 'servant_notax', 'heir']:
 		build_training_servant()
 	elif person.training.enable:
 		if person.get_trainer() != null:

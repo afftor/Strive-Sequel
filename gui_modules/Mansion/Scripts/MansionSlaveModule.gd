@@ -36,7 +36,8 @@ func show_slave_info():
 	else:
 		person = input_handler.interacted_character
 	if person != null:
-		$Panel.visible = !person.has_profession('master')
+#		$Panel.visible = !person.has_profession('master')
+		$Panel.visible = false
 		#globals.connecttexttooltip($RichTextLabel, person.show_race_description())
 		$exp.text = str(floor(person.get_stat('base_exp')))
 		$productivity/Label.text = str(person.get_stat('productivity')) + "%"

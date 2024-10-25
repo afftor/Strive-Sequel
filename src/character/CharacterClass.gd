@@ -496,6 +496,8 @@ func unlearn_skill(skill):
 
 func unlearn_c_skill(skill):
 	skills.unlearn_c_skill(skill)
+	if selectedskill == skill:
+		selectedskill = get_skill_by_tag('default')
 
 func cooldown_tick():
 	skills.cooldown_tick()
