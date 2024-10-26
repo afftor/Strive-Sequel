@@ -5339,7 +5339,7 @@ The miniature girl reacted to your appearance unexpectedly nonchalantly.
 
 — Zephyra.
 
-Zephyra briefly bowed down to you after you spoke her name.""",
+Zephyra briefly bowed down to you after she spoke her name.""",
 	DIVINE_SYMBOL_24 = """— Before I forget... Here, an acquaintance gift.
 
 She passes you a roll of paper she took from the pile on a small table. As you unfold it you see a rough but somewhat talented sketch of a [man]'s portrait. On a second look you notice how this person vaguely resembles you. Seeing the look on your face, Zephyra shines with excitement.

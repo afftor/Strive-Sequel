@@ -1,7 +1,7 @@
 [gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/icon_charinfo_details.png" type="Texture" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/portraits/cali_collar_prt.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp_pressed.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/icon_charinfo_siblings.png" type="Texture" id=5]
