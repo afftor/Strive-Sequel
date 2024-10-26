@@ -333,7 +333,7 @@ func moveto(newloc):
 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	$panel/categories/Affection.emit_signal("pressed")
-	$background.texture = images.backgrounds[locationdicts[newloc].background]
+	$background.texture = images.get_background(locationdicts[newloc].background)
 	self.showntext = tr('DATING_MOVE_TO_TEXT') + locationdicts[location].name + '[/color]. '
 
 
