@@ -8,6 +8,32 @@ var statdata = {
 		baseicon = 'stat_exp',
 		type = 'misc',
 	},
+	
+	mastery_point_magic = {
+		code = 'mastery_point_magic',
+		name = '',
+		descript = '',
+		baseicon = 'stat_exp',
+		type = 'misc',
+		skip_process = true
+	},
+	mastery_point_universal = {
+		code = 'mastery_point_universal',
+		name = '',
+		descript = '',
+		baseicon = 'stat_exp',
+		type = 'misc',
+		skip_process = true
+	},
+	mastery_point_combat = {
+		code = 'mastery_point_combat',
+		name = '',
+		descript = '',
+		baseicon = 'stat_exp',
+		type = 'misc',
+		skip_process = true
+	},
+	
 	growth_factor = {
 		code = 'growth_factor',
 		name = '',
@@ -882,7 +908,18 @@ func _ready():
 				code = "damage_mod_"+i,
 				percent = true,
 			}
-
+	for i in Skilldata.masteries:
+		statdata['mastery_'+i] = {
+				code = "mastery_"+i,
+				skip_process = true
+			}
+		statdata['enable_mastery_'+i] = {
+				code = "enable_mastery_"+i,
+				default_bonus = 'set',
+				skip_process = true
+			}
+	
+	
 	for val in statdata.values():
 		if !val.has('percent'): val.percent = false
 		if !val.has('default_bonus'): val.default_bonus = 'add'

@@ -5,6 +5,14 @@ var professions = []
 var prof_links = {}
 var abil_exp = 0
 
+var mastery_point_magic = 0
+var mastery_point_universal = 0
+var mastery_point_combat = 0
+
+var mastery_levels = {
+#	warfare = {learned = 0, passive = 0, enable = true},
+}
+
 var sleep = ''
 var work = ''
 var previous_work = ''
@@ -48,6 +56,7 @@ var quest_time_init = 0
 
 func _init():
 	fix_rules()
+	fix_masteries()
 
 
 func fix_rules():
@@ -61,7 +70,159 @@ func fix_rules():
 		if !farming_rules.has(rule):
 			farming_rules[rule] = false
 
+#masteries
+func fix_masteries():
+	for mastery in Skilldata.masteries:
+		mastery_levels[mastery] = {learned = 0, passive = 0, enable = true}
 
+
+func add_mastery_bonus(school, level):
+	var data = Skilldata.masteries[school]
+	if data.has('passive'):
+		parent.get_ref().add_stat_bonuses(data.passive)
+	var lid = 'level%d' % level
+	if data.has(lid):
+		var ldata = data[lid] 
+		if ldata.has('social_skills'):
+			for i in ldata.social_skills:
+				if prof_links.has('s_'+i):
+					prof_links['s_'+ i].push_back(school+lid)
+				else:
+					prof_links['s_'+ i] = [school+lid]
+					parent.get_ref().learn_skill(i, true)
+		if ldata.has('explore_skills'):
+			for i in ldata.explore_skills:
+				if prof_links.has('s_'+i):
+					prof_links['s_'+ i].push_back(school+lid)
+				else:
+					prof_links['s_'+ i] = [school+lid]
+					parent.get_ref().learn_skill(i, true) #fix later to learn_e_skill
+		if ldata.has('combat_skills'):
+			for i in ldata.combat_skills:
+				if prof_links.has('s_'+i):
+					prof_links['s_'+ i].push_back(school+lid)
+				else:
+					prof_links['s_'+ i] = [school+lid]
+					parent.get_ref().learn_c_skill(i, true)
+		if ldata.has('traits'):
+			for i in ldata.traits:
+				if prof_links.has('t_'+i):
+					prof_links['t_'+ i].push_back(school+lid)
+				else:
+					prof_links['t_'+ i] = [school+lid]
+					parent.get_ref().add_trait(i)
+
+
+func enable_mastery(school):
+	if mastery_levels[school].enable:
+		return
+	mastery_levels[school].enable = true
+	for i in range(mastery_levels[school].trained + mastery_levels[school].passive):
+		add_mastery_bonus(school, i + 1)
+
+
+func disable_mastery(school):
+	if mastery_levels[school].enable:
+		mastery_levels[school].enable = false
+		for i in range(mastery_levels[school].trained + mastery_levels[school].passive, 0, -1):
+			remove_mastery_bonus(school, i)
+
+
+func reset_mastery(school):
+	for i in range(mastery_levels[school].trained + mastery_levels[school].passive, mastery_levels[school].passive, -1):
+		remove_mastery_bonus(school, i)
+	mastery_levels[school].trained = 0
+
+
+func remove_mastery_bonus(school, level):
+	var data = Skilldata.masteries[school]
+	if data.has('passive'):
+		parent.get_ref().remove_stat_bonuses(data.passive)
+	var lid = 'level%d' % level
+	if data.has(lid):
+		var ldata = data[lid] 
+		if ldata.has('social_skills'):
+			for i in ldata.social_skills:
+				if prof_links['s_' + i].has(school+lid):
+					prof_links['s_' + i].erase(school+lid)
+					if prof_links['s_' + i].empty():
+						parent.get_ref().unlearn_skill(i)
+						prof_links.erase('s_' + i)
+				else:
+					print('WARNING! error in prof dependancy')
+		if ldata.has('explore_skills'):
+			for i in ldata.explore_skills:
+				if prof_links['s_' + i].has(school+lid):
+					prof_links['s_' + i].erase(school+lid)
+					if prof_links['s_' + i].empty():
+						parent.get_ref().unlearn_skill(i) #fix late
+						prof_links.erase('s_' + i)
+				else:
+					print('WARNING! error in prof dependancy')
+		if ldata.has('combat_skills'):
+			for i in ldata.combat_skills:
+				if prof_links['s_' + i].has(school+lid):
+					prof_links['s_' + i].erase(school+lid)
+					if prof_links['s_' + i].empty():
+						parent.get_ref().unlearn_c_skill(i)
+						prof_links.erase('s_' + i)
+				else:
+					print('WARNING! error in prof dependancy')
+		if ldata.has('traits'):
+			for i in ldata.traits:
+				if prof_links['t_' + i].has(school+lid):
+					prof_links['t_' + i].erase(school+lid)
+					if prof_links['t_' + i].empty():
+						parent.get_ref().remove_trait(i)
+						prof_links.erase('t_' + i)
+				else:
+					print('WARNING! error in prof dependancy')
+
+
+func can_upgrade_mastery(school):
+	var data = Skilldata.masteries[school]
+	if !mastery_levels[school].enable:
+		return false
+	if mastery_point_universal > 0:
+		return true
+	match data.type:
+		'combat':
+			return mastery_point_combat > 0
+		'spell':
+			return mastery_point_magic > 0
+
+
+func upgrade_mastery(school):
+	var data = Skilldata.masteries[school]
+	match data.type:
+		'combat':
+			if mastery_point_combat > 0:
+				mastery_point_combat -= 1
+			else:
+				mastery_point_universal -= 1
+		'spell':
+			if mastery_point_magic > 0:
+				mastery_point_magic -= 1
+			else:
+				mastery_point_universal -= 1
+	mastery_levels[school].trained += 1
+	add_mastery_bonus(school, mastery_levels[school].trained + mastery_levels[school].passive)
+
+
+func add_mastery_point_passive(school, value):
+	if mastery_levels[school].enable:
+		for i in range(mastery_levels[school].trained + mastery_levels[school].passive, mastery_levels[school].trained + mastery_levels[school].passive + value):
+			add_mastery_bonus(school, i + 1)
+	mastery_levels[school].passive += value
+
+
+func get_mastery_level(school): #external check, for the sake of condition sanity
+	if mastery_levels[school].enable:
+		return mastery_levels[school].passive + mastery_levels[school].trained
+	else:
+		return 0 
+
+#works
 func check_work_rule(rule):
 	if !variables.work_rules.has(rule):
 		return false

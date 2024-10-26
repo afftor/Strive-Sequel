@@ -84,6 +84,10 @@ func swap_alternate_exterior():
 func get_stat(statname, ref = false):
 	if statname in ['hp', 'mp', 'shield', 'taunt']:
 		return get(statname)
+	if statname in ['mastery_point_magic', 'mastery_point_universal', 'mastery_point_combat']:
+		return xp_module.get(statname)
+	if statname.begins_with('mastery_'):
+		return xp_module.get_mastery_level(statname.trim_prefix('mastery_'))
 	if statname == 'base_exp':
 		return xp_module.base_exp
 	if statname == 'pose':
@@ -193,6 +197,12 @@ func set_stat(stat, value):
 	if stat == 'base_exp':
 		xp_module.base_exp = value
 		return
+	if stat.begins_with('enable_mastery_'):
+		if value:
+			xp_module.enable_mastery(stat.trim_prefix('enable_mastery_'))
+		else:
+			xp_module.disable_mastery(stat.trim_prefix('enable_mastery_'))
+		return
 	if stat.begins_with('food_') and !(stat in ['food_consumption']):
 		food.set(stat, value)
 		return
@@ -214,6 +224,10 @@ func add_bonus(b_rec:String, value, revert = false):
 func add_stat(statname, value, revert = false):
 	if statname in ['hp', 'mp', 'shield']:
 		set(statname, get(statname) + value)
+	if statname in ['mastery_point_magic', 'mastery_point_universal', 'mastery_point_combat']:
+		xp_module.set(statname, xp_module.get(statname) + value)
+	elif statname.begins_with('mastery_'):
+		xp_module.add_mastery_point_passive(statname.trim_prefix('mastery_'), value)
 	elif statname == 'base_exp':
 		if value > 0:
 			xp_module.base_exp += value * get_stat('exp_gain_mod')
@@ -221,7 +235,7 @@ func add_stat(statname, value, revert = false):
 			xp_module.base_exp += value
 	elif statname == 'base_exp_direct':
 			xp_module.base_exp += value
-	elif statname == 'abil_exp':
+	elif statname == 'abil_exp': #obsolete
 		if value > 0:
 			var mod = get_stat('exp_gain_mod')
 			if has_status('intelligence'):
@@ -443,6 +457,11 @@ func unequip_all(hard = true):
 	set_stat('portrait_update', true)
 	equipment.clear_equip(hard)
 
+func upgrade_mastery(school):
+	xp_module.upgrade_mastery(school)
+
+func can_upgrade_mastery(school):
+	return xp_module.can_upgrade_mastery(school)
 
 func unlock_class(prof, satisfy_progress_reqs = false):
 	xp_module.unlock_class(prof, satisfy_progress_reqs)
