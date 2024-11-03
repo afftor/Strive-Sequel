@@ -1,3 +1,4 @@
+extends Reference
 # Quest Data
 var data = {
 	fighters_introduction1 = {

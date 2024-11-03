@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	cali_act1_1 = {
 		image = null, tags = ['dialogue_scene'],

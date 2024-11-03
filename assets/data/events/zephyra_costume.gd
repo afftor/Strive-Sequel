@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	zephyra_costume_1 = { 
 		variations = [ {

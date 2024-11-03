@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	generic_lose_scene = {
 		image = null, tags = [],

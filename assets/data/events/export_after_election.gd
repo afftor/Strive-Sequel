@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	after_election_line1 = {
 		image = null,

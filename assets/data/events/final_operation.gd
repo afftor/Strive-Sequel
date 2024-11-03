@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 
 	final_operation_message = {

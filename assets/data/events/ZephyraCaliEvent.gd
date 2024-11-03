@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	ZCEvent_1 = {
 		image = null, tags = ['dialogue_scene','master_translate'],

@@ -1,3 +1,4 @@
+extends Reference
 #decisions:
 #mindbreak_completed
 #persuade_1_completed

@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	gryphon_aire_start = {
 		image = null, tags = ['dialogue_scene'],

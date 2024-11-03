@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	zephyra_painting_1 = {
 		image = 'zephyra_painting', tags = ['dialogue_scene'],

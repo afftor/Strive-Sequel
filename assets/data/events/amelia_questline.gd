@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	amelia_silk_start = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'amelia',

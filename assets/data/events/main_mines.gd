@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	help_sigmund_start = {
 		image = null, character = "sigmund", tags = ['dialogue_scene'],

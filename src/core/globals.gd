@@ -94,8 +94,9 @@ func _ready():
 	modding_core.load_mods()
 	
 	
-	update_localization_file("ru")
-	update_localization_file("cn")
+	if OS.has_feature('editor'):
+		update_localization_file("ru")
+		update_localization_file("cn")
 
 
 #not used
@@ -2663,6 +2664,7 @@ func check_shop_record(item, code, dict):
 		return false
 	return true
 
+#MIND! This func writes file to "res://", so it wouldn't (and shouldn't) work in exported version
 func update_localization_file(update_loc: String, primary_loc = "en"):
 	# find all main.gd files
 	var TranslationData = {}

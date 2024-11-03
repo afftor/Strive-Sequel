@@ -1,4 +1,4 @@
-
+extends Reference
 var data = {
 	mages_introduction1 = {
 		image = null,

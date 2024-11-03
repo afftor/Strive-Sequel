@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	betrayal_confirmed_advance = {
 		image = 'battlefield', tags = ['dialogue_scene'],

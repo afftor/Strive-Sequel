@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	amelia_intro = {
 		image = 'letter',

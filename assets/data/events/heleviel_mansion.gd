@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	
 	heleviel_mansion_1 = {

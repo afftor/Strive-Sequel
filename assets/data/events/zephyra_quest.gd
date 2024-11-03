@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	zephyra_quest_1 = {
 		image = null, tags = ['dialogue_scene'],

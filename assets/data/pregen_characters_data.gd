@@ -1,4 +1,4 @@
-extends Node
+extends Reference
 
 var pregen_characters = {
 	Daisy = {

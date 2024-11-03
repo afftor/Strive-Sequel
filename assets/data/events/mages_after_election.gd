@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	mages_after_election = {
 		image = null,

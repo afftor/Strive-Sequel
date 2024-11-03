@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	initiate_hideout_attack = {
 		variations = [
