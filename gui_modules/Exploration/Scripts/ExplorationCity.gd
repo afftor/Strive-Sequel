@@ -431,7 +431,7 @@ func faction_guild_shop(pressed, pressed_button, guild):
 			temptext += "\n" + tr("COMBAT_SKILLS") + " - "
 			for skill in classesdata.professions[cls].combatskills:
 				combat_skills += Skilldata.Skilllist[skill].name + ", "
-			combat_skills = combat_skills.substr(0, combat_skills.length() - 2)
+			combat_skills = combat_skills.trim_suffix(', ')
 		temptext += combat_skills
 		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
 		globals.connecttexttooltip(newbutton, temptext, true)
@@ -677,7 +677,9 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 		return
 	if pressed:
 		unfade($SlaveMarket, 0.3)
+		$JournalButton.disabled = true
 	else:
+		$JournalButton.disabled = false
 		input_handler.get_spec_node(input_handler.NODE_SLAVETOOLTIP).hide()
 		fade($SlaveMarket, 0.3)
 
