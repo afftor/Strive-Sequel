@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	capture_wrapup_start = {
 		variations = [

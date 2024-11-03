@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	leon_encounter_start = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],

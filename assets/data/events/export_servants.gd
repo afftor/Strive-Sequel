@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	servants_join = {
 		image = null,

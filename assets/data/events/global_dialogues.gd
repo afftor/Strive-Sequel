@@ -1,4 +1,4 @@
-
+extends Reference
 var data = {
 	fighters_introduction2 = {
 		image = null,
