@@ -29,7 +29,6 @@ custom_styles/panel = ExtResource( 10 )
 script = ExtResource( 8 )
 
 [node name="Body" type="TextureRect" parent="."]
-show_behind_parent = true
 light_mask = 4
 margin_left = -158.852
 margin_right = 841.148
@@ -38,12 +37,8 @@ mouse_filter = 2
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ragdoll" parent="." instance=ExtResource( 17 )]
-show_behind_parent = true
 position = Vector2( 340, 450 )
 scale = Vector2( 0.8, 0.8 )
 
