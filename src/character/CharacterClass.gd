@@ -368,7 +368,7 @@ func generate_simple_fighter(tempname, setup_ai = true):
 		else:
 			#need check for hard difficulty
 			fill_ai(data.ai)
-		ai.app_obj = self
+		ai.set_obj(self)
 	else:
 		skills.fill_combatskills()
 	if data.has('tags') and data.tags.has('boss'):

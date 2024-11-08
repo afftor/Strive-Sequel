@@ -1,6 +1,6 @@
 extends Reference
 
-var parent
+var parent_ref
 var template
 var value
 var dmgf
@@ -11,7 +11,7 @@ var is_drain
 var cap
 
 func _init(caller, tmp):
-	parent = caller
+	set_parent(caller)
 	template = tmp.duplicate()
 	dmgf = template.dmgf
 	receiver = template.receiver
@@ -19,6 +19,12 @@ func _init(caller, tmp):
 	damage_type = template.source
 	is_drain = template.is_drain
 	cap = template.cap
+
+func set_parent(caller):
+	parent_ref = weakref(caller)
+
+func get_parent():
+	return parent_ref.get_ref()
 
 func clone():
 	var tmp = template.duplicate()
@@ -58,6 +64,7 @@ func apply_atomic(tmp):
 			value = tmp.value
 
 func resolve_value(check_m):
+	var parent = get_parent()
 	var dmgmod = parent.caster.get_damage_mod(parent.template) * parent.caster.get_value_damage_mod(template)
 	var endvalue
 	var atk
@@ -102,6 +109,7 @@ func apply_random():
 	value *= val_mul
 
 func calculate_dmg():
+	var parent = get_parent()
 	apply_random()
 	#crit modification
 	if parent.hit_res == variables.RES_CRIT and !template.nocrit and !template.nomod:
@@ -156,6 +164,7 @@ func calculate_dmg():
 	value = round(value)
 
 func check_conditions():
+	var parent = get_parent()
 	var res = true
 	if template.has('caster_reqs'): res = res and parent.caster.checkreqs(template.caster_reqs)
 	if template.has('target_reqs'): res = res and parent.target.checkreqs(template.target_reqs)
@@ -163,4 +172,4 @@ func check_conditions():
 
 func setup_weapon_element():
 	if damage_type == 'weapon':
-		damage_type = parent.caster.get_weapon_element()
+		damage_type = get_parent().caster.get_weapon_element()

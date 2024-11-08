@@ -16,4 +16,4 @@ func change_type(newtype):
 func clean_service_log():
 	for ch in $ServiceLog/VBoxContainer.get_children():
 		if ch.visible:
-			$ServiceLog/VBoxContainer.remove_child(ch)
+			ch.queue_free()

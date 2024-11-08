@@ -28,24 +28,27 @@ func open(classcode, person):
 	text = input_handler.text_cut_excessive_lines(text)
 	$bonus.bbcode_text = text
 	for i in tempclass.traits:
-		var newicon = input_handler.DuplicateContainerTemplate($ReqIcons, "Icon")
+		var tex
+		var tooltip_str
 		if i == "basic_spells":
-			newicon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_spells.png")
-			globals.connecttexttooltip(newicon, tr("TRAITBASIC_SPELLS"))
-		if i == "advanced_spells":
-			newicon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_spells.png")
-			globals.connecttexttooltip(newicon, tr("TRAITADVANCED_SPELLS"))
-		if i == "basic_combat":
-			newicon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png")
-			globals.connecttexttooltip(newicon, tr("TRAITBASIC_COMBAT"))
-		if i == "advanced_combat":
-			newicon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png")
-			globals.connecttexttooltip(newicon, tr("TRAITADVANCED_COMBAT"))
-		if i == "trainer":
-			newicon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png") #2fix
-			globals.connecttexttooltip(newicon, tr("TRAITTRAINER"))
-		if newicon.texture == null:
-			$ReqIcons.remove_child(newicon)
+			tex = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_spells.png")
+			tooltip_str = tr("TRAITBASIC_SPELLS")
+		elif i == "advanced_spells":
+			tex = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_spells.png")
+			tooltip_str = tr("TRAITADVANCED_SPELLS")
+		elif i == "basic_combat":
+			tex = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png")
+			tooltip_str = tr("TRAITBASIC_COMBAT")
+		elif i == "advanced_combat":
+			tex = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png")
+			tooltip_str = tr("TRAITADVANCED_COMBAT")
+		elif i == "trainer":
+			tex = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png") #2fix
+			tooltip_str = tr("TRAITTRAINER")
+		if tex != null:
+			var newicon = input_handler.DuplicateContainerTemplate($ReqIcons, "Icon")
+			newicon.texture = tex
+			globals.connecttexttooltip(newicon, tooltip_str)
 	
 	text = tr('CLASSREQS')+":\n"
 	if tempclass.reqs.size() > 0 && tempclass.reqs[0].code != 'disabled':
