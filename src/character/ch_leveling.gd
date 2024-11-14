@@ -10,7 +10,7 @@ var mastery_point_universal = 0
 var mastery_point_combat = 0
 
 var mastery_levels = {
-#	warfare = {learned = 0, passive = 0, enable = true},
+#	warfare = {trained = 0, passive = 0, enable = true},
 }
 
 var sleep = ''
@@ -73,7 +73,7 @@ func fix_rules():
 #masteries
 func fix_masteries():
 	for mastery in Skilldata.masteries:
-		mastery_levels[mastery] = {learned = 0, passive = 0, enable = true}
+		mastery_levels[mastery] = {trained = 0, passive = 0, enable = true}
 
 
 func add_mastery_bonus(school, level):
@@ -96,7 +96,7 @@ func add_mastery_bonus(school, level):
 					prof_links['s_'+ i].push_back(school+lid)
 				else:
 					prof_links['s_'+ i] = [school+lid]
-					parent.get_ref().learn_skill(i, true) #fix later to learn_e_skill
+					parent.get_ref().learn_c_skill(i, true) #fix later to learn_e_skill
 		if ldata.has('combat_skills'):
 			for i in ldata.combat_skills:
 				if prof_links.has('s_'+i):
