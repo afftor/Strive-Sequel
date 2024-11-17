@@ -101,7 +101,7 @@ var racelist = {
 			charm_factor = [2,3],
 			wits_factor = [2,4],
 		},
-		race_bonus = {hpfactor = 0.9, hitrate = 10, mastery_ranged = 1, price = 150},
+		race_bonus = {hpfactor = 0.9, hitrate = 10, mastery_marksmanship = 1, price = 150},
 		personality = {kind = 0.3, bold = 0.2, shy = 0.5, serious = 1},
 		diet_love = {vege = 1, meat = 0.2, fish = 0.3, grain = 1},
 		diet_hate = {vege = 0, meat = 75, fish = 25, grain = 10},

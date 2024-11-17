@@ -9322,15 +9322,19 @@ You notice how Cali slightly lowered her voice, her hands slipping behind her ba
 	CALI_SEX_6 = """You hand Cali the money and after a few moments she returns with a tray of dumplings. The smell is exactly as she mentioned. Passing them out to the other servants, she soon is sitting beside you after handing you one as well. 
 
 The two of you eat in silence as you mull over the treat. Warm, soft, and expertly cooked you muse for a few moments about going outside yourself and seeing if you and the merchant can come to an agreement about deliveries of these treats.""",
-	CALI_SEX_7 = """Cali finishes her treat soon after you. She would look up, peering around the main hall. She notices that the two of you are alone. Taking the wrapper from your treats, she looks up at you now with a grateful, excited look.
+	CALI_SEX_7 = """Cali finishes her treat soon after you. She looks up, peering around the main hall. She notices that the two of you are alone. Taking the wrapper from your treats, she looks up at you now with a grateful, excited look.
 
 — Thanks, [Master]. It was tasty. 
 
-The girl's face reddens a bit as she again looks around the room, she looks nervous before she speaks.
+The girl's face reddens a bit as she again looks around the room. She looks nervous before she speaks.
 
-— Amelia has been giving me tips and I was thinking about doing something for you in turn...""",
+— Amelia has been giving me tips and I was thinking about doing something for you in turn...
+
+Cali takes one more nervous look around before she looks back up to you mischievously. Saying nothing more, for now, the girl soon slips down to her knees in front of you. Taking a steadying breath, she moves to your trousers, undoing them easily, hand finding and wrapping around your shaft as she pulls it free.""",
 	CALI_SEX_8 = "Cali takes one more nervous look around before she looks back up to you with a mischievous look. Saying nothing more for now the girl soon slipped down to her knees in front of you. Taking a steadying breath she'd move to your trousers as she undid them easily, hand finding and wrapping around your shaft as she pulled it free.",
-	CALI_SEX_9 = """Cali stares up at you with a smile on her lips as she starts to gently squeeze your shaft. Her hand was unsure at first, before she'd start to intently pump your shaft. 
+	
+	
+	CALI_SEX_9 = """Cali stares up at you with a smile on her lips as she starts to gently squeeze your shaft. Her hand is unsure at first, then she starts to intently pump your shaft.
 
 — Wow, I've never seen one this close before... It's warm.
 
@@ -9338,16 +9342,17 @@ The girl continues to stroke your member, obviously having greatly benefited fro
 
 — You seem to like this...
 
-The girl would slowly pick up the speed she stroked you, until finally she leaned down, her mouth enveloping the head of your shaft.""",
-	CALI_SEX_10 = """Cali leaned down doing her best to take in your member, the girl only getting a few inches inside of her small mouth before she'd have to back off, looking up at you with a blush.
+The girl slowly picks up speed as she strokes you, until finally she leans down, her mouth enveloping the head of your shaft.""",
+	
+	CALI_SEX_10 = """Cali leans down doing her best to take in your member, the girl only getting a few inches inside of her small mouth before she has to back off, looking up at you with a blush.
 
-— Huh, it's really big, jeez. I wonder if I can...
+— Huh, it's really big, hmmm. I wonder if I can...
 
-Cali would now start to envelope the head of your shaft again, this time using her hand to still pump the base as she sucked on the head, occasionally pumping her mouth just a bit deeper. It was an amazing feeling as you just laid there, calming yourself as you put a mental note to thank Amelia for this.""",
-	CALI_SEX_11 = "Working without complaint, and making the most sensual noises you'd heard come from the girl, you did your best to hold on. Fighting the building urge of release before finally hitching your breath as you start to cum.",
-	CALI_SEX_12 = """To her credit even without much warning Cali keeps her lips sealed tightly around the head of your shaft. Her eyes surprised but her grip firm as you nearly came out of the seat. Soon panting in your position, you look down at the girl; her mouth slowly pulling off the head of your shaft as she keeps the cum there in her mouth. 
+Cali now starts to envelop the head of your shaft again, this time using her hand to still pump the base as she sucks on the head, occasionally sliding her mouth just a bit deeper. It is an amazing feeling as you just lay there, calming yourself as you make a mental note to thank Amelia for this.""",
+	CALI_SEX_11 = "Working without complaint, and making the most sensual noises you've heard come from the girl, you do your best to hold on. Fighting the building urge of release before finally hitching your breath as you start to come.",
+	CALI_SEX_12 = """To her credit, even without much warning, Cali keeps her lips sealed tightly around the head of your shaft. Her eyes surprised, but her grip firm, as you nearly come out of the seat. Soon panting in your position, you look down at the girl; her mouth slowly pulling off of the head of your shaft as she keeps all of the cum inside her mouth.
 
-She looks up into your eyes a bit surprised now, the girl soon resolving herself and swallowing it all, letting out a little sigh before quickly returning a smile back at you.""",
+She looks up into your eyes, a bit surprised now, soon resolving herself and swallowing it all, letting out a little contented sigh before quickly returning a smile back at you.""",
 	CALI_SEX_13 = """— W-well, hope that pleased you, [Master].
 
 As she confirms your reaction she quickly retreats from sight to her duties. """,
