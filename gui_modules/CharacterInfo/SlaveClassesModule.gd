@@ -222,6 +222,7 @@ func build_mastery_cat():
 			button.set_meta('mastery', mas)
 			button.connect('pressed', self, 'change_mastery', [mas])
 			button.get_node('icon').texture = images.get_icon(masdata.icon)
+			globals.connecttexttooltip(button, masdata.name)
 			#add mastery tooltip
 		else:
 			if mas == selected_mastery:
@@ -239,6 +240,7 @@ func change_mastery(mas):
 			node.pressed = (node.get_meta('mastery') == selected_mastery)
 	input_handler.ClearContainer($MasteryPanel/mastery/ScrollContainer/VBoxContainer, ['HSeparator', 'container'])
 	var masdata = Skilldata.masteries[mas]
+	$MasteryPanel/mastery/Label.text = masdata.name
 	$MasteryPanel/mastery.texture = images.get_background(masdata.background, true)
 	var lv = person.get_stat('mastery_' + mas)
 	for lv_tmp in range(1, masdata.maxlevel + 1):
@@ -255,7 +257,7 @@ func change_mastery(mas):
 		var lvdata = masdata[key]
 		for s_id in lvdata.combat_skills:
 			var sdata = Skilldata.get_template(s_id, person)
-			var skill_icon = input_handler.DuplicateContainerTemplate(panel, 'skill')
+			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
 			if lv_tmp == lv + 1:
 				skill_icon.texture = images.get_icon('frame_skill_1')
 			else:
@@ -264,7 +266,7 @@ func change_mastery(mas):
 			globals.connectskilltooltip(skill_icon, s_id, person)
 		for s_id in lvdata.explore_skills:
 			var sdata = Skilldata.get_template(s_id, person)
-			var skill_icon = input_handler.DuplicateContainerTemplate(panel, 'skill')
+			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
 			if lv_tmp == lv + 1:
 				skill_icon.texture = images.get_icon('frame_explore_1')
 			else:
@@ -273,7 +275,7 @@ func change_mastery(mas):
 			globals.connectskilltooltip(skill_icon, s_id, person)
 		for tr_id in lvdata.traits:
 			var trdata = Traitdata.traits[tr_id]
-			var skill_icon = input_handler.DuplicateContainerTemplate(panel, 'skill')
+			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
 			if lv_tmp == lv + 1:
 				skill_icon.texture = images.get_icon('frame_trait_1')
 			else:
@@ -282,7 +284,7 @@ func change_mastery(mas):
 			globals.connecttexttooltip(skill_icon, trdata.descript)
 		for s_id in lvdata.action:
 			var sdata = Skilldata.training_actions[s_id]
-			var skill_icon = input_handler.DuplicateContainerTemplate(panel, 'skill')
+			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
 			if lv_tmp == lv + 1:
 				skill_icon.texture = images.get_icon('frame_train_1')
 			else:

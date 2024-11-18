@@ -132,6 +132,7 @@ func _get_weight_for_skill(s_name):
 #	#check if skill is in cooldown
 #	if app_obj.skills.combat_cooldowns.has(s_name): return res
 #	#checks if skill can be used
+	var app_obj = get_obj()
 	var data = Skilldata.get_template(s_name, app_obj)
 #	if data.ability_type == 'skill' and app_obj.has_status('disarm') and !data.tags.has('default'): return 0
 #	if data.ability_type == 'spell' and app_obj.has_status('silence') and !data.tags.has('default'): return 0
