@@ -510,6 +510,9 @@ func learn_skill(skill, free = false):
 func learn_c_skill(skill, free = false):
 	skills.learn_c_skill(skill, free)
 
+func learn_e_skill(skill, free = false):
+	skills.learn_e_skill(skill, free)
+
 func unlearn_skill(skill):
 	skills.unlearn_skill(skill)
 
@@ -517,6 +520,9 @@ func unlearn_c_skill(skill):
 	skills.unlearn_c_skill(skill)
 	if selectedskill == skill:
 		selectedskill = get_skill_by_tag('default')
+
+func unlearn_e_skill(skill):
+	skills.unlearn_e_skill(skill)
 
 func cooldown_tick():
 	skills.cooldown_tick()
@@ -790,8 +796,7 @@ func add_rare_trait():
 	#tutorial part here
 	#input_handler.ActivateTutorial('rares')
 
-func can_be_damaged(s_name):
-	var skill = Skilldata.Skilllist[s_name]
+func can_be_damaged(skill):
 	match skill.ability_type:
 		'skill': return !has_status('banish')
 		'spell': return !has_status('void')
@@ -1077,6 +1082,8 @@ func hp_set(value):
 			hp = value
 			return
 	hp = min(value, get_stat('hpmax'))
+	if has_status('last_stand') and hp < 0.1 * get_stat('hpmax'):
+		hp = int(ceil(0.1 * get_stat('hpmax')))
 	if displaynode != null:
 		displaynode.update_hp()
 	if hp <= 0:
@@ -1338,6 +1345,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			return check_work_rule(i.value) == i.check
 		'check_stored':
 			return training.check_stored_reqs(i.value)
+		'is_immune':
+			return effects.check_status_immunity(i.status) == i.check
 	return check
 
 func decipher_reqs(reqs, colorcode = false, purestat = false):
@@ -1631,7 +1640,10 @@ func apply_atomic(template):
 			if input_handler.combat_node == null: return
 			if skills.combat_cooldowns.has(template.skill): return
 #			input_handler.combat_node.use_skill(template.skill, self, template.target)
-			input_handler.combat_node.q_skills.push_back({skill = template.skill, caster = self, target = template.target})
+			if template.has('target'):
+				input_handler.combat_node.q_skills.push_back({skill = template.skill, caster = self, target = template.target})
+			else:
+				input_handler.combat_node.q_skills.push_back({skill = template.skill, caster = self, target = self})
 		'use_social_skill':
 			if !check_location('mansion'): return
 			#use_social_skill(template.value, null)
@@ -1652,7 +1664,27 @@ func apply_atomic(template):
 			play_sfx(template.value)
 		'disable':
 			xp_module.make_unavaliable()
-			
+		'make_status_effect':
+			#currently this feature has several restrictions. use on your own risk
+			#1. those effects will have custom parent setup - so be sure to pass proper parent attribute
+			#2. they are not removed by parent (cause they are not their sub_effects) - so must be some type of temp
+			effects.make_status_effect(template.duplicate(true))
+		'reset_cooldowns':
+			skills.reset_cooldowns()
+		'dungeon_effect':
+			if gui_controller.exploration_dungeon != null:
+				match template.value:
+					'reveal_map':
+						gui_controller.exploration_dungeon.reveal_map()
+					
+					'set_intimidate':
+						gui_controller.exploration_dungeon.set_intimidate()
+		'location_effect':
+			match template.value:
+				'set_teleport':
+					ResourceScripts.game_world.setup_teleporter(get_location())
+				'gather_res':
+					ResourceScripts.game_world.gather_res(get_location(), get_stat('matk') * 25)
 
 
 func remove_atomic(template):
@@ -1729,7 +1761,7 @@ func deal_damage(value, source = 'normal'):
 	var tmp = hp
 	if ResourceScripts.game_party.characters.has(self.id) && ResourceScripts.game_globals.invincible_player:
 		return 0
-	value *= (1.0 - get_stat('resists')['all']/100.0)
+	value *= (1.0 - get_stat('damage_reduction')/100.0)
 	if source != 'true':
 		value *= (1.0 - get_stat('resists')[source]/100.0)
 	value = int(value);
@@ -1810,13 +1842,13 @@ func check_cost(cost):
 func check_skill_availability(s_code, target):
 	var check = true
 
-	var template = Skilldata.Skilllist[s_code]
+	var template = Skilldata.get_template(s_code, self)
 	var descript = ''
 
 	if !check_cost(template.cost):
 		descript = get_short_name() + ": " + tr("CANT_PAY_COSTS_LABEL") + "'"
 		check = false
-	if skills.social_skills_charges.has(s_code) && skills.social_skills_charges[s_code] >= Skilldata.get_charges(template, self):
+	if skills.social_skills_charges.has(s_code) && skills.social_skills_charges[s_code] >= template.charges:
 		descript = get_short_name() + ": " + template.name + " - " + tr("NO_CHARGES_LEFT_LABEL") + "."
 		check = false
 	if template.has('globallimit') && ResourceScripts.game_party.global_skills_used.has(s_code) && ResourceScripts.game_party.global_skills_used[s_code] >= template.globallimit:

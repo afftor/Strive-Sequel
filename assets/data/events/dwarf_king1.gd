@@ -2724,7 +2724,8 @@ var data = {
 		character = "kuro",
 		character2 = "zephyra",
 		tags = [
-			"dialogue_scene"
+			"dialogue_scene",
+			"master_translate"
 		],
 		text = [
 			{

@@ -76,7 +76,7 @@ func show_slave_info():
 				temptext += "\n" + tr("COMBAT_SKILLS") + " - "
 				for skill in classesdata.professions[i].combatskills:
 					combat_skills += Skilldata.Skilllist[skill].name + ", "
-				combat_skills = combat_skills.substr(0, combat_skills.length() - 2)
+				combat_skills = combat_skills.trim_suffix(', ')
 			temptext += combat_skills
 			temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
 			globals.connecttexttooltip(newnode, temptext)

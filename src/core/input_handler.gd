@@ -368,6 +368,20 @@ func _ready():
 	connect("UpgradeUnlocked", self, "upgrade_unlocked")
 	connect("animation_finished", self, "animation_queue_start_force")
 
+
+func gather_skills_effects():
+	for i in dir_contents(variables.SkilldataFolder):
+		var tlib = load(i).new()
+		for id in tlib.skills:
+			Skilldata.Skilllist[id] = tlib.skills[id].duplicate(true)
+		for id in tlib.effects:
+			Effectdata.effect_table[id] = tlib.effects[id].duplicate(true)
+		for id in tlib.atomic_effects:
+			Effectdata.atomic[id] = tlib.atomic_effects[id].duplicate(true)
+		for id in tlib.buffs:
+			Effectdata.buffs[id] = tlib.buffs[id].duplicate(true)
+
+
 #func _unhandled_input(event):
 func _input(event):
 	if event.is_echo() == true && !event.is_action_type():

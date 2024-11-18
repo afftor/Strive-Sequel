@@ -301,7 +301,7 @@ func build_locations_list():
 		if !cdata.has(id): 
 			continue #should add here currently nonexisted marking location link to delete
 		
-		var temp = {id = id, area = tdata.area, type = cdata[id].type, heroes = [], quest = false}
+		var temp = {id = id, area = tdata.area, type = cdata[id].type, heroes = [], quest = false, teleporter = cdata[id].teleporter}
 		if temp.type == "capital":
 			if adata.has("capital_code"):
 				if adata.capital_code == "elf_capital":
@@ -539,6 +539,8 @@ func make_panel_for_location(panel, loc):
 			panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.yellow)
 		if  data.has('active') and data.active == false:
 			text += "(!)"
+		if data.has('teleporter') and data.teleporter:
+			text += "(T)"
 		set_loc_text(panel, text)
 #		panel.get_node("Label").text = text
 		if loc.has('captured'):
@@ -907,11 +909,12 @@ func confirm_travel():
 		return
 	var locdata = ResourceScripts.game_world.location_links[to_loc]
 	var travel_cost = globals.calculate_travel_time(from_loc, to_loc)
+	var flocdata = ResourceScripts.world_gen.get_location_from_code(from_loc)
 	for chid in selected_chars:
 		var person = characters_pool.get_char_by_id(chid)
 		person.remove_from_task()
 		person.process_event(variables.TR_MOVE)
-		if ResourceScripts.game_globals.instant_travel == false:
+		if ResourceScripts.game_globals.instant_travel == false and !flocdata.teleporter :
 			person.previous_location = person.travel.location
 			person.set_work('travel')
 			person.travel.location = 'travel'
@@ -922,6 +925,7 @@ func confirm_travel():
 #			person.set_work('') #not needed after remove from task
 			person.travel.location = to_loc
 			person.travel.area  = locdata.area
+	flocdata.teleporter = false
 	input_handler.PlaySound("ding")
 	globals.emit_signal("slave_departed")
 	selected_chars.clear()

@@ -155,6 +155,8 @@ func advance_hour():
 				j.stamina += 25
 				if j.stamina > 100:
 					j.stamina = 100
+			j.intimidate = false
+			j.teleporter = false
 
 
 func quest_kill_receiver(enemycode):
@@ -379,3 +381,35 @@ func remove_location(loc_id):
 			remove_dungeon(d_id)
 	area[location_links[loc_id].category].erase(loc_id)
 	location_links.erase(loc_id)
+
+
+func setup_teleporter(loc_id):
+	var location = ResourceScripts.world_gen.get_location_from_code(loc_id)
+	location.teleporter = true
+
+
+func gather_res(loc_id, amount):
+	var location = ResourceScripts.world_gen.get_location_from_code(loc_id)
+	match location.type:
+		'settlement':
+			var res = input_handler.random_from_array(location.gather_resources.keys())
+			var resdata = Items.materiallist[res]
+			var gather_amount = int(amount / resdata.price)
+			ResourceScripts.game_res.materials[res] += gather_amount
+		'dungeon':
+			var pool = location.gather_limit_resources.keys().duplicate()
+			while amount > 0:
+				if pool.empty():
+					break
+				var res = input_handler.random_from_array(pool)
+				var resdata = Items.materiallist[res]
+				var gather_amount = int(amount / resdata.price)
+				if gather_amount >= location.gather_limit_resources[res]:
+					gather_amount = location.gather_limit_resources[res]
+					pool.erase(res)
+				if gather_amount <= 0:
+					pool.erase(res)
+				location.gather_limit_resources[res] -= gather_amount
+				ResourceScripts.game_res.materials[res] += gather_amount
+				amount -= resdata.price * gather_amount
+			gui_controller.exploration_dungeon.res_container.update()
