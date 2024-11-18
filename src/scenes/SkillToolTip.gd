@@ -15,7 +15,7 @@ func _init():
 	set_process(false)
 
 func showup(node, skillcode):
-	var skill = Skilldata.Skilllist[skillcode]
+	var skill = Skilldata.get_template(skillcode, character)
 	parentnode = node
 	if shutoff == true && prevnode == parentnode:
 		return
@@ -23,7 +23,7 @@ func showup(node, skillcode):
 	set_process(true)
 	var text = '[center]'+skill.name+'[/center]\n' + skill.descript
 	
-	var charges = Skilldata.get_charges(skill, character)
+	var charges = skill.charges
 	if charges > 0 and skill.cooldown > 0:
 		text += tr("\n\n" + tr("MAX_CHARGES") + ": {color=yellow|") + str(charges) + "}. " + tr("TOOLTIP_COOLDOWN") + ": " + str(skill.cooldown) + " " + tr("TOOLTIP_DAY_S")
 	if skill.has('combatcooldown') && skill.combatcooldown > 0:

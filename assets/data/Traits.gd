@@ -10,57 +10,150 @@ var traits = {
 		icon = null,
 		effects = ['e_phy6', 'e_wit6', 'e_charm6', 'e_sex6', 'e_timid6', 'e_tame6', 'e_mag6', 'e_virgin', 'e_person_bold', 'e_person_shy', 'e_person_kind', 'e_person_serious'],#'e_atkpass'],
 	},
-	absorb_atk_trait = {
-		code = 'absorb_atk_trait',
+	trainer = {#allows training
+		code = 'trainer',
 		name = '',
 		descript = '',
 		visible = false,
-		icon = null,
-		effects = ['e_tr_curseatk'],
+		icon = "res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png", #2fix
+		effects = [],
+		tags = ['simple_icon', 'trainer', 'show_in_header']
 	},
-	fireshield_trait = {
-		code = 'fireshield_trait',
+	undead = {
+		code = 'undead',
 		name = '',
 		descript = '',
-		visible = false,
-		icon = null,
-		effects = ['e_tr_fireshield'],
+		icon = "res://assets/images/iconsskills/trait_undead.png",
+		visible = true,
+		effects = [],
+		tags = ['neutral', 'permanent']
 	},
-	atkpass_trait = {
-		code = 'atkpass_trait',
+	#body upgrades
+	upgrade_thick_skin = {
 		name = '',
 		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = [],
+		bonusstats = {mdef = 10}, 
+		reqs = [],  
 		visible = false,
-		icon = null,
-		effects = ['e_atkpass'],
+		tags = ['body_upgrade']
 	},
-
-	'master' : {#150% effect from social skills
+	upgrade_thick_coverage = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = [],
+		bonusstats = {armor = 10}, 
+		reqs = [],  
+		visible = false,
+		tags = ['body_upgrade']
+	},
+	upgrade_nipples = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = [],
+		bonusstats = {mod_pros = 0.1}, 
+		reqs = [],  
+		visible = false,
+		tags = ['body_upgrade']
+	},
+	upgrade_tongue = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = [],
+		bonusstats = {mod_pros = 0.1}, 
+		reqs = [],  
+		visible = false,
+		tags = ['body_upgrade']
+	},
+	upgrade_eggs = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = [],
+		reqs = [], 
+		visible = false, 
+		tags = ['body_upgrade', 'oviposition']
+	},
+	upgrade_silk = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = [],
+		reqs = [],  
+		visible = false,
+		tags = ['body_upgrade', 'silksecretion']
+	},
+	upgrade_strongarm = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/hand.png",
+		effects = [],
+		reqs = [],  
+		visible = false,
+		tags = ['body_upgrade', 'strongarm']
+	},
+	upgrade_resist = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = ['e_tr_resist'], #25% miss spells with damage, but all enemy spells have damage
+		reqs = [],  
+		visible = false,
+		tags = ['body_upgrade']
+	},
+	upgrade_thickblood = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = [], 
+		bonusstats = {resist_bleed = 200, resist_poison = 200}, 
+		reqs = [],  
+		visible = false,
+		tags = ['body_upgrade']
+	},
+	#racial
+	racial_oviposition = {
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = [],
+		reqs = [],  
+		tags = ['oviposition']
+	},
+	racial_silksecretion = {
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = [],
+		reqs = [],  
+		tags = ['silksecretion']
+	},
+	#main characters
+	#slave class
+	'master' : {
 		code = 'master',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
 		tags = ['exhibit', 'tr_obedience', 'relation', 'sexservice', 'sexservice_adv', 'trained', 'worker', 'combatant'],
-		effects = []#,'test_recast'],
+		effects = []
 	},
-	'spouse' : {#130% effect from social skills
+	'spouse' : {
 		code = 'spouse',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = [],#,'test_recast'],
+		effects = [],
 		tags = ['tr_obedience', 'relation', 'sexservice', 'sexservice_adv', 'trained', 'worker', 'combatant'],
 		bonusstats = {}
-	},
-	'director' : {#150% effect from social skills
-		code = 'director',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = []#,'test_recast'],
 	},
 	'slave' : {#slave class trait, obsolete
 		code = 'slave',
@@ -121,6 +214,15 @@ var traits = {
 		bonusstats = {},
 		tags = ['trained', 'worker', 'combatant']
 	},
+	#classes
+	'director' : {
+		code = 'director',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = []
+	},
 	worker = {
 		code = 'worker',
 		name = '',
@@ -140,15 +242,6 @@ var traits = {
 		effects = [],#'e_tr_foreman'],
 		show_in_parent_stats = true,
 		bonusstats = {mod_collect = 0.33}
-	},
-	hunter= {#obsolete, not remove
-		code = 'hunter',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = [],#'e_tr_hunter'],
-		bonusstats = {mod_hunt = 0.5, mod_fish = 0.5}
 	},
 	hunter_damage = {
 		code = 'hunter_damage',
@@ -216,7 +309,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = [],#'e_tr_smith'],
+		effects = [],
 		show_in_parent_stats = true,
 		bonusstats = {mod_smith = 1.0, mod_tailor = 1.0}
 	},
@@ -227,7 +320,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		show_in_parent_stats = true,
-		effects = [],#'e_tr_engi'],
+		effects = [],
 		bonusstats = {mod_build = 1.0}
 	},
 	chef = {
@@ -237,7 +330,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		show_in_parent_stats = true,
-		effects = [],#'e_tr_chef'],
+		effects = [],
 		bonusstats = {mod_cook = 1.0}
 	},
 	attendant = {#item usage in combat takes no turn
@@ -290,8 +383,8 @@ var traits = {
 		visible = false,
 		icon = null,
 		show_in_parent_stats = true,
-		effects = ['e_tr_healer'],
-		bonusstats = {}
+		effects = [],
+		bonusstats = {damage_mod_heal = 0.25}
 	},
 	healer2 = {#+25% heal spells efficiency
 		code = 'healer2',
@@ -300,16 +393,8 @@ var traits = {
 		visible = false,
 		icon = null,
 		show_in_parent_stats = true,
-		effects = ['e_tr_healer'], #static effects and triggers are infinite stackable - so the same as in healer
-		bonusstats = {}
-	},
-	witcrit = {#+crit
-		code = 'witcrit',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = ['e_tr_witcrit'],
+		effects = [], 
+		bonusstats = {damage_mod_heal = 0.25}
 	},
 	valkyrie_spear = {
 		code = 'valkyrie_spear',
@@ -406,7 +491,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		show_in_parent_stats = true,
-		effects = [],#'e_tr_cattle'],
+		effects = [],
 		bonusstats = {mod_farm = 0.5}
 	},
 	harlot = {#+50% gold from prostitution
@@ -416,7 +501,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		show_in_parent_stats = true,
-		effects = [],#'e_tr_harlot'],
+		effects = [],
 		bonusstats = {mod_pros = 0.5}
 	},
 	broken_royalty = {#
@@ -445,162 +530,18 @@ var traits = {
 		icon = null,
 		effects = ['succubus_passive'],
 	}, 
-	pet = {#+25% gold from prostitution
-		code = 'pet',
+	#masteries
+	stun_immunity = {
+		code = 'stun_immunity',
 		name = '',
 		descript = '',
-		visible = false,
-		icon = null,
-		effects = [],#'e_tr_pet'],
+		visible = true,
+		icon = "res://assets/images/iconsskills/Authority.png",
 		show_in_parent_stats = true,
-		bonusstats = {mod_pros = 0.2} 
-	}, #not used
-	sextoy = {#+50% gold from prostitution
-		code = 'sextoy',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = [],#'e_tr_harlot'],
-		show_in_parent_stats = true,
-		bonusstats = {mod_pros = 0.5}
-	},
-	
-	#skill related traits
-	
-	basic_combat = {#allows learning basic combat skills
-		code = 'basic_combat',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png"),
 		effects = [],
-		tags = ['simple_icon']
+		tags = ['simple_icon', 'positive'],
+		bonusstats = {resist_stun = 200}
 	},
-	advanced_combat = {#allows learning advanced (aoe) combat skills
-		code = 'advanced_combat',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png"),
-		effects = [],
-		tags = ['simple_icon']
-	},
-	basic_spells = {#allows learning basic combat spells
-		code = 'basic_spells',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_spells.png"),
-		effects = [],
-		tags = ['simple_icon']
-	},
-	advanced_spells = {#allows learning advanced (aoe) combat spells
-		code = 'advanced_spells',
-		name = '',
-		descript = '',
-		visible = true,
-		icon = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_spells.png"),
-		effects = [],
-		tags = ['simple_icon']
-	},
-	trainer = {#allows training
-		code = 'trainer',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png"), #2fix
-		effects = [],
-		tags = ['simple_icon', 'trainer']
-	},
-	#example of catalysts ignoring
-	test_cat_ignore = {
-		code = 'test_cat_ignore',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		tags = ['ignore_catalysts_for_firebomb'],
-		effects = [],
-	},
-	
-	#exploration related traits
-	#needs to hardcode most of traits
-	medium_armor = {#removes penalty from medium armor
-		code = 'medium_armor',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = [],
-	},
-	heavy_armor = {#removes penalty from heavy armor
-		code = 'heavy_armor',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = [],
-	},
-	lockpicking = { #allows to pick locks on random events
-		code = 'lockpicking',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = [],
-	},
-	trap_detection = { #allows to detect traps on random events
-		code = 'trap_detection',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = [],
-	},
-	trap_analyze = { #allows to detect traps on random events
-		code = 'trap_analyze',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = [],
-	},
-#	magic_tools = {
-#		code = 'magic_tools',
-#		name = '',
-#		descript = '',
-#		visible = false,
-#		icon = null,
-#		effects = [],
-#	}, #allows to equip magic rods and staves
-#	weapon_mastery = {#allows to equip combat weapons
-#		code = 'weapon_mastery',
-#		name = '',
-#		descript = '',
-#		visible = false,
-#		icon = null,
-#		effects = [],
-#	},
-#	ranged_weapon_mastery = {#allows to equip ranged combat weapons
-#		code = 'ranged_weapon_mastery',
-#		name = '',
-#		descript = '',
-#		visible = false,
-#		icon = null,
-#		effects = [],
-#	},
-	undead = {
-		code = 'undead',
-		name = '',
-		descript = '',
-		icon = "res://assets/images/iconsskills/trait_undead.png",
-		visible = true,
-		effects = [],
-		tags = ['neutral', 'permanent']
-	},
-	
-	#new ones
 	#positive
 	prodigy = {
 		code = 'prodigy',
@@ -1405,123 +1346,31 @@ var traits = {
 		bonusstats = {pricemod = -0.25, exp_gain_mod = -0.2, chg_wisdom_max = -10, chg_persuasion_max = -10}, 
 		tags = ['training_final', 'training_fail']
 	},
-	#loyalty
-#	loyalty_interbreed = {
-#		name = '',
-#		descript = '',
-#		icon = "res://assets/images/iconstraits/l_pregnancy.png",
-#		effects = [],
-#		bonusstats = {price = 37}, 
-#		reqs = [{code = 'trait', trait = 'loyalty_sex_adv', check = true}],  
-#		l_cost = 75,  
-#		tree_position = {tab = 2, x = 7, y = 4},
-#		tags = ['loyalty', 'breeder']
-#	},
-	#body upgrades
-	upgrade_thick_skin = {
+	
+	#monsters
+	absorb_atk_trait = {
+		code = 'absorb_atk_trait',
 		name = '',
 		descript = '',
-		icon = "res://assets/images/iconstraits/l_pregnancy.png",
-		effects = [],
-		bonusstats = {mdef = 10}, 
-		reqs = [],  
 		visible = false,
-		tags = ['body_upgrade']
-	},
-	upgrade_thick_coverage = {
-		name = '',
-		descript = '',
-		icon = "res://assets/images/iconstraits/l_pregnancy.png",
-		effects = [],
-		bonusstats = {armor = 10}, 
-		reqs = [],  
-		visible = false,
-		tags = ['body_upgrade']
-	},
-	upgrade_nipples = {
-		name = '',
-		descript = '',
-		icon = "res://assets/images/iconstraits/l_pregnancy.png",
-		effects = [],
-		bonusstats = {mod_pros = 0.1}, 
-		reqs = [],  
-		visible = false,
-		tags = ['body_upgrade']
-	},
-	upgrade_tongue = {
-		name = '',
-		descript = '',
-		icon = "res://assets/images/iconstraits/l_pregnancy.png",
-		effects = [],
-		bonusstats = {mod_pros = 0.1}, 
-		reqs = [],  
-		visible = false,
-		tags = ['body_upgrade']
-	},
-	upgrade_eggs = {
-		name = '',
-		descript = '',
-		icon = "res://assets/images/iconstraits/l_pregnancy.png",
-		effects = [],
-		reqs = [], 
-		visible = false, 
-		tags = ['body_upgrade', 'oviposition']
-	},
-	upgrade_silk = {
-		name = '',
-		descript = '',
-		icon = "res://assets/images/iconstraits/l_pregnancy.png",
-		effects = [],
-		reqs = [],  
-		visible = false,
-		tags = ['body_upgrade', 'silksecretion']
-	},
-	upgrade_strongarm = {
-		name = '',
-		descript = '',
-		icon = "res://assets/images/iconstraits/hand.png",
-		effects = [],
-		reqs = [],  
-		visible = false,
-		tags = ['body_upgrade', 'strongarm']
-	},
-	upgrade_resist = {
-		name = '',
-		descript = '',
-		icon = "res://assets/images/iconstraits/l_pregnancy.png",
-		effects = ['e_tr_resist'], #25% miss spells with damage, but all enemy spells have damage
-		reqs = [],  
-		visible = false,
-		tags = ['body_upgrade']
-	},
-	upgrade_thickblood = {
-		name = '',
-		descript = '',
-		icon = "res://assets/images/iconstraits/l_pregnancy.png",
-		effects = [], 
-		bonusstats = {resist_bleed = 200, resist_poison = 200}, 
-		reqs = [],  
-		visible = false,
-		tags = ['body_upgrade']
-	},
-	#racial
-	racial_oviposition = {
-		name = '',
-		descript = '',
 		icon = null,
-		visible = false,
-		effects = [],
-		reqs = [],  
-		tags = ['oviposition']
+		effects = ['e_tr_curseatk'],
 	},
-	racial_silksecretion = {
+	fireshield_trait = {
+		code = 'fireshield_trait',
 		name = '',
 		descript = '',
-		icon = null,
 		visible = false,
-		effects = [],
-		reqs = [],  
-		tags = ['silksecretion']
+		icon = null,
+		effects = ['e_tr_fireshield'],
+	},
+	atkpass_trait = {
+		code = 'atkpass_trait',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_atkpass'],
 	},
 	#rare opps
 	rare_sturdy = {
@@ -1572,6 +1421,175 @@ var traits = {
 		visible = false,
 		effects = ['e_miniboss'],
 	},
+	
+	#exploration related traits
+	#needs to hardcode most of traits
+	medium_armor = {#removes penalty from medium armor
+		code = 'medium_armor',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+	},
+	heavy_armor = {#removes penalty from heavy armor
+		code = 'heavy_armor',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+	},
+	lockpicking = { #allows to pick locks on random events
+		code = 'lockpicking',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+	},
+	trap_detection = { #allows to detect traps on random events
+		code = 'trap_detection',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+	},
+	trap_analyze = { #allows to detect traps on random events
+		code = 'trap_analyze',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+	},
+#	magic_tools = {
+#		code = 'magic_tools',
+#		name = '',
+#		descript = '',
+#		visible = false,
+#		icon = null,
+#		effects = [],
+#	}, #allows to equip magic rods and staves
+#	weapon_mastery = {#allows to equip combat weapons
+#		code = 'weapon_mastery',
+#		name = '',
+#		descript = '',
+#		visible = false,
+#		icon = null,
+#		effects = [],
+#	},
+#	ranged_weapon_mastery = {#allows to equip ranged combat weapons
+#		code = 'ranged_weapon_mastery',
+#		name = '',
+#		descript = '',
+#		visible = false,
+#		icon = null,
+#		effects = [],
+#	},
+	
+	#examples
+	#example of catalysts ignoring
+	test_cat_ignore = {
+		code = 'test_cat_ignore',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		tags = ['ignore_catalysts_for_firebomb'],
+		effects = [],
+	},
+	
+	#unused or obsolete
+	pet = {#+25% gold from prostitution
+		code = 'pet',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],#'e_tr_pet'],
+		show_in_parent_stats = true,
+		bonusstats = {mod_pros = 0.2} 
+	}, #not used
+	sextoy = {#+50% gold from prostitution
+		code = 'sextoy',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],#'e_tr_harlot'],
+		show_in_parent_stats = true,
+		bonusstats = {mod_pros = 0.5}
+	},
+	witcrit = {#+crit
+		code = 'witcrit',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_witcrit'],
+	},
+	hunter = {#obsolete, not remove
+		code = 'hunter',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],#'e_tr_hunter'],
+		bonusstats = {mod_hunt = 0.5, mod_fish = 0.5}
+	},
+	
+	#skill related traits, obsolete
+	basic_combat = {#allows learning basic combat skills
+		code = 'basic_combat',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png"),
+		effects = [],
+		tags = ['simple_icon']
+	},
+	advanced_combat = {#allows learning advanced (aoe) combat skills
+		code = 'advanced_combat',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png"),
+		effects = [],
+		tags = ['simple_icon']
+	},
+	basic_spells = {#allows learning basic combat spells
+		code = 'basic_spells',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_spells.png"),
+		effects = [],
+		tags = ['simple_icon']
+	},
+	advanced_spells = {#allows learning advanced (aoe) combat spells
+		code = 'advanced_spells',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_spells.png"),
+		effects = [],
+		tags = ['simple_icon']
+	},
+	
+	#loyalty
+#	loyalty_interbreed = {
+#		name = '',
+#		descript = '',
+#		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+#		effects = [],
+#		bonusstats = {price = 37}, 
+#		reqs = [{code = 'trait', trait = 'loyalty_sex_adv', check = true}],  
+#		l_cost = 75,  
+#		tree_position = {tab = 2, x = 7, y = 4},
+#		tags = ['loyalty', 'breeder']
+#	},
 }
 
 

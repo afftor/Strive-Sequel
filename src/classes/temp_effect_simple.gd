@@ -31,33 +31,37 @@ func createfromtemplate(tmp):
 			rem_event.push_back(template.rem_event)
 	template_name = template.name
 
+func calculate_duration():
+	if typeof(template.duration) == TYPE_STRING:
+		match template.duration:
+			'parent':
+				var par
+				if typeof(parent) == TYPE_STRING:
+					par = effects_pool.get_effect_by_id(parent)
+				else:
+					par = parent
+				if par != null:
+					template.duration = int(par.template.duration)
+				else:
+					print('error in template %s' % template_name)
+					template.duration = -1
+			'parent_arg':
+				var par
+				if typeof(parent) == TYPE_STRING:
+					par = effects_pool.get_effect_by_id(parent)
+				else:
+					par = parent
+				if par != null:
+					template.duration = int(par.self_args['duration'])
+				else:
+					print('error in template %s' % template_name)
+					template.duration = -1
+
+
 func apply():
 	.apply()
-	if template.has('duration'): 
-		if typeof(template.duration) == TYPE_STRING:
-			match template.duration:
-				'parent':
-					var par
-					if typeof(parent) == TYPE_STRING:
-						par = effects_pool.get_effect_by_id(parent)
-					else:
-						par = parent
-					if par != null:
-						template.duration = int(par.template.duration)
-					else:
-						print('error in template %s' % template_name)
-						template.duration = -1
-				'parent_arg':
-					var par
-					if typeof(parent) == TYPE_STRING:
-						par = effects_pool.get_effect_by_id(parent)
-					else:
-						par = parent
-					if par != null:
-						template.duration = int(par.self_args['duration'])
-					else:
-						print('error in template %s' % template_name)
-						template.duration = -1
+	if template.has('duration'):
+		calculate_duration()
 		remains = template.duration
 	var obj = get_applied_obj()
 	for eff in sub_effects:
@@ -83,6 +87,18 @@ func reset_duration():
 	if template.has('duration'): remains = template.duration
 #	soft_remove()
 #	apply()
+
+func add_duration(t_eff):
+	if t_eff.template.has('duration'):
+		t_eff.calculate_duration()
+		remains += t_eff.template.duration
+
+
+func merge_duration(t_eff):
+	if t_eff.template.has('duration'):
+		t_eff.calculate_duration()
+		remains = int(max(t_eff.template.duration, remains))
+
 
 func serialize():
 	var tmp = .serialize()

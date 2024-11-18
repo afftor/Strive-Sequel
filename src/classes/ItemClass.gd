@@ -584,7 +584,7 @@ func calculateprice():
 
 func use_explore(character, caller = null):
 	var itemskill = Items.itemlist[itembase].explor_effect
-	var skill = Skilldata.Skilllist[itemskill]
+	var skill = Skilldata.get_template(itemskill, character)
 	if skill.tags.has('use_as_combat') and caller!= null:
 		caller.use_e_combat_skill(character, character, skill)
 	else:

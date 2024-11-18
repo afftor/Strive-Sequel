@@ -35,6 +35,9 @@ var random_factor
 var random_factor_p
 var tempdur
 
+var keep_target = variables.TARGET_FORCED
+var next_target = variables.NT_MELEE
+
 func _init():
 	caster = null
 	target = null
@@ -60,9 +63,10 @@ func get_from_template(attr, val_rel = false):
 		for i in range(long_value.size()): tres.push_back(get(attr))
 		set(attr, tres)
 
-func createfromskill(s_code):
-	template = Skilldata.Skilllist[s_code]
-	code = s_code
+
+func createfromskill(temp):
+	template = temp.duplicate(true)
+	code = template.code
 	type = template.type
 	ability_type = template.ability_type
 	tags = template.tags.duplicate()
@@ -70,7 +74,9 @@ func createfromskill(s_code):
 	get_from_template('target_range')
 	get_from_template('target_number')
 	get_from_template('damage_type')
-
+	
+	get_from_template('keep_target')
+	get_from_template('next_target')
 	
 	if typeof(template.value) == TYPE_ARRAY: 
 		if typeof(template.value[0]) != TYPE_STRING:
@@ -158,6 +164,8 @@ func convert_to_new_template():
 	if template.has('catalysts'): res_res.catalysts = template.catalysts.duplicate()
 	else: res_res.catalysts = {}
 	res_res.code = template.code
+	res_res.keep_target = keep_target
+	res_res.next_target = next_target
 	if template.has('name'): res_res.name = template.name
 	else: res_res.name = ""
 	if template.has('descript'): res_res.descript = template.descript
@@ -193,7 +201,11 @@ func convert_to_new_template():
 	if template.has('process_no_stat'): res_res.process_no_stat = template.process_no_stat
 	if template.has('follow_up'): res_res.follow_up = template.follow_up
 	if template.has('social_skill_stats'): res_res.social_skill_stats = template.social_skill_stats
-	if template.has('number_rnd_targets'): res_res.number_rnd_targets = template.number_rnd_targets
+	if template.has('number_rnd_targets'): 
+		if template.number_rnd_targets is Array:
+			res_res.number_rnd_targets = template.number_rnd_targets.duplicate()
+		else:
+			res_res.number_rnd_targets = template.number_rnd_targets
 	res_res.tags = tags.duplicate()
 	if tags.has('damage') and !tags.has(damage_type) and damage_type != 'weapon':
 		res_res.tags.push_back(damage_type)

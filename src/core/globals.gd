@@ -1066,6 +1066,8 @@ func calculate_travel_time(location1, location2): #2remade to new mechanic
 		time += adata1.travel_time + adata2.travel_time
 	
 	time = max(1, time - variables.stable_boost_per_level * ResourceScripts.game_res.upgrades.stables)
+	if ldata1.teleporter:
+		time = 0
 	return {time = time}
 
 func check_recipe_resources(temprecipe):
@@ -1387,6 +1389,8 @@ func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
 			combat_data[arg] = data[arg]
 	if input_handler.combat_node == null:
 		input_handler.combat_node = input_handler.get_combat_node()
+	if data.has('intimidate') and data.intimidate:
+		combat_data.instawin = true
 	input_handler.combat_node.encountercode = enemydata
 	input_handler.combat_node.set_norun_mode(false)
 	input_handler.combat_node.start_combat(gui_controller.exploration_dungeon.active_location.group, enemies, 'background', music, combat_data)
@@ -1445,7 +1449,7 @@ func makerandomgroup(enemygroup, quest = false):
 					if aiposition == 'any':
 						temparray.append(j)
 
-				if temparray.size() <= 0:
+				if temparray.empty():
 					for j in combatparty:
 						if combatparty[j] == null:
 							temparray.append(j)

@@ -25,6 +25,10 @@ func calculate_property(prop): #updated version. copy this to displaced
 				var value = par.get(prop[1])
 				prop.pop_front()
 				prop[0] = value
+			'self_id':
+				prop[0] = parent
+			'parent_id':
+				prop[0] = par.parent
 			'parent_args':
 				var value = par.get_arg(prop[1])
 				prop.pop_front()

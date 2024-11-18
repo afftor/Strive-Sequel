@@ -48,7 +48,7 @@ func calculate_target_list(hide_ignore = false): #utility checks and targets cal
 	#works worser for skills with repeat and random targets
 	var app_obj = get_obj()
 	for s_n in app_obj.skills.combat_skills:
-		var t_skill = Skilldata.Skilllist[s_n]
+		var t_skill = Skilldata.get_template(s_n, app_obj)
 		var target_array = []
 		match t_skill.target:
 			'self':
@@ -132,7 +132,7 @@ func _get_weight_for_skill(s_name):
 #	#check if skill is in cooldown
 #	if app_obj.skills.combat_cooldowns.has(s_name): return res
 #	#checks if skill can be used
-	var data = Skilldata.Skilllist[s_name]
+	var data = Skilldata.get_template(s_name, app_obj)
 #	if data.ability_type == 'skill' and app_obj.has_status('disarm') and !data.tags.has('default'): return 0
 #	if data.ability_type == 'spell' and app_obj.has_status('silence') and !data.tags.has('default'): return 0
 	if !get_obj().can_use_skill(data): return 0
@@ -142,9 +142,8 @@ func _get_weight_for_skill(s_name):
 	if ai_data[current_state].choices.size() == 0:
 		return 1.0
 	#calculate base weight for current state
-	var t_skill = Skilldata.Skilllist[s_name]
 	for tag in ai_data[current_state].choices:
-		if t_skill.tags.has(tag): res += ai_data[current_state].choices[tag]
+		if data.tags.has(tag): res += ai_data[current_state].choices[tag]
 	#correct weight for skills with only bad-quality targets
 	var tmp  = 0.0
 	for target in skill_targets[s_name]: tmp = max(target.quality, tmp)

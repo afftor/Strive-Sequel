@@ -12,6 +12,7 @@ var value = []
 var cost
 var target_range
 var target_number
+var number_rnd_targets = 0
 #var damagesrc
 var repeat
 
@@ -33,6 +34,8 @@ var tempdur
 
 var sskill_value = ResourceScripts.scriptdict.class_sskill_value 
 
+var keep_target = variables.TARGET_FORCED
+var next_target = variables.NT_MELEE
 
 func _init():
 	caster = null
@@ -64,15 +67,21 @@ func get_from_template(attr):
 			return
 		set(attr, template[attr])
 
-func createfromskill(s_code):
-	template = Skilldata.Skilllist[s_code]
-	code = s_code
+func createfromskill(temp):
+	template = temp.duplicate(true)
+	code = template.code
 	type = template.type
 	ability_type = template.ability_type
 	tags = template.tags.duplicate()
 	cost = template.cost.duplicate()
 	get_from_template('target_range')
 	get_from_template('target_number')
+	get_from_template('number_rnd_targets')
+	if number_rnd_targets is Array:
+		number_rnd_targets = globals.rng.randi_range(number_rnd_targets[0], number_rnd_targets[1])
+	
+	get_from_template('keep_target')
+	get_from_template('next_target')
 	
 	for e in template.effects:
 		var eff = effects_pool.e_createfromtemplate(e, self)
@@ -152,9 +161,12 @@ func hit_roll():#not implemented various chance stat rolls due to not having for
 		hit_res = variables.RES_HIT
 		return
 	var prop = chance - evade
-	if (!target.can_evade()): prop = 100 #target can not evade
-	if (caster != null) and (caster.combatgroup == target.combatgroup): prop = 100 #targeting ally
-	if prop < 5: prop = 5
+	if (!target.can_evade()): 
+		prop = 100 #target can not evade
+	if (caster != null) and (caster.combatgroup == target.combatgroup): 
+		prop = 100 #targeting ally
+	if prop < 5: 
+		prop = 5
 	if prop < randf()*100:
 		hit_res = variables.RES_MISS
 	elif critchance < randf()*100:

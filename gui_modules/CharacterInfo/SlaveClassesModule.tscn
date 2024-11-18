@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://assets/images/iconsclasses/Master.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/panel_simpleclass.png" type="Texture" id=2]
@@ -64,6 +64,24 @@
 [ext_resource path="res://gui_modules/Universal/Modules/SkillBook.tscn" type="PackedScene" id=62]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/icon_class.png" type="Texture" id=63]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/NOTO_SANS_Bold_24px.tres" type="DynamicFont" id=64]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_polygon.png" type="Texture" id=65]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/masteries_icons/magic.png" type="Texture" id=66]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/masteries_icons/universe.png" type="Texture" id=67]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/masteries_icons/combat.png" type="Texture" id=68]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_42.tres" type="DynamicFont" id=69]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Panels/lvl_glow.png" type="Texture" id=70]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Panels/divider_1.png" type="Texture" id=71]
+[ext_resource path="res://assets/Textures_v2/craft/buttons/button_back_default.png" type="Texture" id=72]
+[ext_resource path="res://assets/Textures_v2/craft/buttons/button_back_pressed.png" type="Texture" id=73]
+[ext_resource path="res://assets/Textures_v2/craft/buttons/button_back_hover.png" type="Texture" id=74]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttonsquare.png" type="Texture" id=75]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttonsquare_hover.png" type="Texture" id=76]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttonsquare_pressed.png" type="Texture" id=77]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/masteries_icons/air.png" type="Texture" id=78]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Panels/divider_2.png" type="Texture" id=79]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Panels/panel_masteries.png" type="Texture" id=80]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Panels/panel_skills.png" type="Texture" id=81]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/back_masteri/back_marks2.png" type="Texture" id=82]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 19 )
@@ -76,6 +94,10 @@ region_rect = Rect2( 0, 0, 1920, 1080 )
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 14 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 71 )
+region_rect = Rect2( 0, 0, 659, 4 )
 
 [node name="SlaveDetailsModule" type="Panel"]
 light_mask = 0
@@ -492,6 +514,7 @@ custom_fonts/font = ExtResource( 7 )
 text = "Experience: "
 
 [node name="SkillPanel" type="Panel" parent="."]
+visible = false
 margin_left = 970.0
 margin_right = 1670.0
 margin_bottom = 920.0
@@ -684,154 +707,112 @@ expand = true
 stretch_mode = 5
 
 [node name="MasteryPanel" type="Panel" parent="."]
-visible = false
 margin_left = 970.0
+margin_top = -133.0
 margin_right = 1670.0
 margin_bottom = 920.0
 custom_styles/panel = ExtResource( 24 )
 
-[node name="Panel" type="Panel" parent="MasteryPanel"]
-margin_left = 13.6696
-margin_top = 93.6967
-margin_right = 683.67
-margin_bottom = 812.697
+[node name="mastery" type="TextureRect" parent="MasteryPanel"]
+self_modulate = Color( 1, 1, 1, 0.196078 )
+margin_left = 5.0
+margin_top = 229.0
+margin_right = 695.0
+margin_bottom = 849.0
+texture = ExtResource( 82 )
+expand = true
 
-[node name="Panel2" type="Panel" parent="MasteryPanel"]
-modulate = Color( 1, 0, 0, 1 )
-margin_left = 18.0
-margin_top = 106.0
-margin_right = 673.0
-margin_bottom = 170.0
-
-[node name="Panel3" type="Panel" parent="MasteryPanel"]
-self_modulate = Color( 0.85098, 0, 1, 1 )
-margin_left = 18.0
-margin_top = 199.0
-margin_right = 673.0
-margin_bottom = 792.0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MasteryPanel/Panel3"]
-margin_right = 651.0
-margin_bottom = 597.0
+[node name="ScrollContainer" type="ScrollContainer" parent="MasteryPanel/mastery"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.0
+margin_top = 9.0
+margin_right = -9.0
+margin_bottom = -9.0
+theme = ExtResource( 11 )
 scroll_horizontal_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MasteryPanel/Panel3/ScrollContainer"]
-margin_right = 651.0
-margin_bottom = 431.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MasteryPanel/mastery/ScrollContainer"]
+margin_right = 672.0
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
-margin_right = 651.0
-margin_bottom = 75.0
+[node name="container" type="HBoxContainer" parent="MasteryPanel/mastery/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 672.0
+margin_bottom = 100.0
 size_flags_horizontal = 3
-alignment = 1
+custom_constants/separation = 20
 
-[node name="TextureRect" type="TextureRect" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer/HBoxContainer"]
-margin_left = 288.0
-margin_right = 363.0
-margin_bottom = 75.0
+[node name="frame" type="TextureRect" parent="MasteryPanel/mastery/ScrollContainer/VBoxContainer/container"]
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 70 )
+expand = true
+stretch_mode = 6
+
+[node name="lvl" type="Label" parent="MasteryPanel/mastery/ScrollContainer/VBoxContainer/container/frame"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+custom_fonts/font = ExtResource( 69 )
+text = "IV"
+align = 1
+valign = 1
+
+[node name="separator" type="TextureRect" parent="MasteryPanel/mastery/ScrollContainer/VBoxContainer/container"]
+margin_left = 120.0
+margin_right = 170.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 50, 75 )
+expand = true
+stretch_mode = 6
+
+[node name="skill" type="TextureRect" parent="MasteryPanel/mastery/ScrollContainer/VBoxContainer/container"]
+visible = false
+margin_left = 190.0
+margin_right = 290.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 65 )
+expand = true
+stretch_mode = 6
+
+[node name="icon" type="TextureRect" parent="MasteryPanel/mastery/ScrollContainer/VBoxContainer/container/skill"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 63 )
 expand = true
 stretch_mode = 6
 
-[node name="HSeparator" type="HSeparator" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
-margin_top = 79.0
-margin_right = 651.0
-margin_bottom = 83.0
+[node name="HSeparator" type="HSeparator" parent="MasteryPanel/mastery/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 672.0
+margin_bottom = 4.0
+custom_styles/separator = SubResource( 4 )
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
-margin_top = 87.0
-margin_right = 651.0
-margin_bottom = 162.0
-size_flags_horizontal = 3
-alignment = 1
+[node name="TextureRect" type="TextureRect" parent="MasteryPanel"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 80 )
 
-[node name="TextureRect" type="TextureRect" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 288.0
-margin_right = 363.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 75, 75 )
-texture = ExtResource( 63 )
-expand = true
-stretch_mode = 6
-
-[node name="HSeparator2" type="HSeparator" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
-margin_top = 166.0
-margin_right = 651.0
-margin_bottom = 170.0
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
-margin_top = 174.0
-margin_right = 651.0
-margin_bottom = 249.0
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer/HBoxContainer3"]
-margin_left = 288.0
-margin_right = 363.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 75, 75 )
-texture = ExtResource( 63 )
-expand = true
-stretch_mode = 6
-
-[node name="HSeparator3" type="HSeparator" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
-margin_top = 253.0
-margin_right = 651.0
-margin_bottom = 257.0
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
-margin_top = 261.0
-margin_right = 651.0
-margin_bottom = 336.0
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer/HBoxContainer4"]
-margin_left = 288.0
-margin_right = 363.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 75, 75 )
-texture = ExtResource( 63 )
-expand = true
-stretch_mode = 6
-
-[node name="HSeparator4" type="HSeparator" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
-margin_top = 340.0
-margin_right = 651.0
-margin_bottom = 344.0
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
-margin_top = 348.0
-margin_right = 651.0
-margin_bottom = 423.0
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer/HBoxContainer5"]
-margin_left = 288.0
-margin_right = 363.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 75, 75 )
-texture = ExtResource( 63 )
-expand = true
-stretch_mode = 6
-
-[node name="HSeparator5" type="HSeparator" parent="MasteryPanel/Panel3/ScrollContainer/VBoxContainer"]
-margin_top = 427.0
-margin_right = 651.0
-margin_bottom = 431.0
+[node name="TextureRect2" type="TextureRect" parent="MasteryPanel"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -920.0
+mouse_filter = 2
+texture = ExtResource( 81 )
 
 [node name="Categories" type="HBoxContainer" parent="MasteryPanel"]
-margin_left = 25.0
-margin_top = 35.0
-margin_right = 164.0
-margin_bottom = 89.0
+margin_left = 293.0
+margin_top = 63.0
+margin_right = 432.0
+margin_bottom = 117.0
 
 [node name="combat" type="TextureButton" parent="MasteryPanel/Categories"]
-self_modulate = Color( 1, 1, 1, 0.635294 )
 light_mask = 0
 margin_right = 54.0
 margin_bottom = 54.0
@@ -842,8 +823,7 @@ texture_pressed = ExtResource( 29 )
 texture_hover = ExtResource( 25 )
 expand = true
 
-[node name="spells" type="TextureButton" parent="MasteryPanel/Categories"]
-self_modulate = Color( 1, 1, 1, 0.635294 )
+[node name="spell" type="TextureButton" parent="MasteryPanel/Categories"]
 light_mask = 0
 margin_left = 58.0
 margin_right = 112.0
@@ -855,23 +835,108 @@ texture_pressed = ExtResource( 30 )
 texture_hover = ExtResource( 42 )
 expand = true
 
+[node name="Categories2" type="HBoxContainer" parent="MasteryPanel"]
+margin_left = 57.0
+margin_top = 155.0
+margin_right = 644.0
+margin_bottom = 213.0
+custom_constants/separation = 10
+alignment = 1
+
+[node name="button" type="TextureButton" parent="MasteryPanel/Categories2"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.635294 )
+light_mask = 0
+margin_left = 264.0
+margin_right = 322.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 54, 54 )
+toggle_mode = true
+texture_normal = ExtResource( 75 )
+texture_pressed = ExtResource( 77 )
+texture_hover = ExtResource( 76 )
+texture_disabled = ExtResource( 77 )
+
+[node name="icon" type="TextureRect" parent="MasteryPanel/Categories2/button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = -7.0
+margin_bottom = -7.0
+texture = ExtResource( 78 )
+expand = true
+
+[node name="Label" type="Label" parent="MasteryPanel"]
+light_mask = 0
+anchor_right = 1.0
+margin_top = 10.0
+margin_bottom = 54.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 23 )
+text = "Masteries"
+align = 1
+valign = 1
+
+[node name="TextureRect3" type="TextureRect" parent="MasteryPanel"]
+margin_left = 3.0
+margin_top = 224.0
+margin_right = 696.0
+margin_bottom = 230.0
+texture = ExtResource( 79 )
+
+[node name="TextureRect4" type="TextureRect" parent="MasteryPanel"]
+margin_left = 3.0
+margin_top = 847.0
+margin_right = 696.0
+margin_bottom = 853.0
+texture = ExtResource( 79 )
+
+[node name="AddPoint" type="TextureButton" parent="MasteryPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -110.0
+margin_top = -188.0
+margin_right = 110.0
+margin_bottom = -130.0
+texture_normal = ExtResource( 72 )
+texture_pressed = ExtResource( 73 )
+texture_hover = ExtResource( 74 )
+texture_disabled = ExtResource( 73 )
+
+[node name="Label" type="Label" parent="MasteryPanel/AddPoint"]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 23 )
+text = "Add Point"
+align = 1
+valign = 1
+
+[node name="TextureRect5" type="TextureRect" parent="MasteryPanel"]
+margin_left = 3.0
+margin_top = 935.0
+margin_right = 696.0
+margin_bottom = 941.0
+texture = ExtResource( 79 )
+
 [node name="Categories3" type="HBoxContainer" parent="MasteryPanel"]
-margin_left = 124.995
-margin_top = 841.683
-margin_right = 586.995
-margin_bottom = 895.683
+margin_left = 109.0
+margin_top = 967.0
+margin_right = 571.0
+margin_bottom = 1021.0
 custom_constants/separation = 150
 
-[node name="combat" type="TextureButton" parent="MasteryPanel/Categories3"]
+[node name="combat" type="TextureRect" parent="MasteryPanel/Categories3"]
 self_modulate = Color( 1, 1, 1, 0.635294 )
 light_mask = 0
 margin_right = 54.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 54, 54 )
-toggle_mode = true
-texture_normal = ExtResource( 63 )
-texture_pressed = ExtResource( 29 )
-texture_hover = ExtResource( 25 )
+texture = ExtResource( 68 )
 expand = true
 
 [node name="Label" type="Label" parent="MasteryPanel/Categories3/combat"]
@@ -882,20 +947,17 @@ margin_bottom = 51.136
 custom_fonts/font = ExtResource( 64 )
 text = "9 Points"
 
-[node name="combat2" type="TextureButton" parent="MasteryPanel/Categories3"]
+[node name="magic" type="TextureRect" parent="MasteryPanel/Categories3"]
 self_modulate = Color( 1, 1, 1, 0.635294 )
 light_mask = 0
 margin_left = 204.0
 margin_right = 258.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 54, 54 )
-toggle_mode = true
-texture_normal = ExtResource( 63 )
-texture_pressed = ExtResource( 29 )
-texture_hover = ExtResource( 25 )
+texture = ExtResource( 66 )
 expand = true
 
-[node name="Label" type="Label" parent="MasteryPanel/Categories3/combat2"]
+[node name="Label" type="Label" parent="MasteryPanel/Categories3/magic"]
 margin_left = 67.1736
 margin_top = 7.13599
 margin_right = 187.174
@@ -903,20 +965,17 @@ margin_bottom = 51.136
 custom_fonts/font = ExtResource( 64 )
 text = "9 Points"
 
-[node name="combat3" type="TextureButton" parent="MasteryPanel/Categories3"]
+[node name="universal" type="TextureRect" parent="MasteryPanel/Categories3"]
 self_modulate = Color( 1, 1, 1, 0.635294 )
 light_mask = 0
 margin_left = 408.0
 margin_right = 462.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 54, 54 )
-toggle_mode = true
-texture_normal = ExtResource( 63 )
-texture_pressed = ExtResource( 29 )
-texture_hover = ExtResource( 25 )
+texture = ExtResource( 67 )
 expand = true
 
-[node name="Label" type="Label" parent="MasteryPanel/Categories3/combat3"]
+[node name="Label" type="Label" parent="MasteryPanel/Categories3/universal"]
 margin_left = 67.1736
 margin_top = 7.13599
 margin_right = 187.174
@@ -924,99 +983,20 @@ margin_bottom = 51.136
 custom_fonts/font = ExtResource( 64 )
 text = "9 Points"
 
-[node name="Categories2" type="HBoxContainer" parent="MasteryPanel"]
-margin_left = 25.0
-margin_top = 107.0
-margin_right = 432.0
-margin_bottom = 161.0
-
-[node name="combat" type="TextureButton" parent="MasteryPanel/Categories2"]
-self_modulate = Color( 1, 1, 1, 0.635294 )
-light_mask = 0
-margin_right = 54.0
-margin_bottom = 54.0
-rect_min_size = Vector2( 54, 54 )
-toggle_mode = true
-texture_normal = ExtResource( 39 )
-texture_pressed = ExtResource( 29 )
-texture_hover = ExtResource( 25 )
+[node name="SkillBookButton" type="TextureButton" parent="MasteryPanel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 19.0
+margin_top = -99.0
+margin_right = 99.0
+margin_bottom = -19.0
+hint_tooltip = "Set Abilitites for combat"
+texture_normal = ExtResource( 59 )
+texture_pressed = ExtResource( 60 )
+texture_hover = ExtResource( 61 )
+texture_disabled = ExtResource( 58 )
 expand = true
-
-[node name="spells" type="TextureButton" parent="MasteryPanel/Categories2"]
-self_modulate = Color( 1, 1, 1, 0.635294 )
-light_mask = 0
-margin_left = 58.0
-margin_right = 112.0
-margin_bottom = 54.0
-rect_min_size = Vector2( 54, 54 )
-toggle_mode = true
-texture_normal = ExtResource( 35 )
-texture_pressed = ExtResource( 30 )
-texture_hover = ExtResource( 42 )
-expand = true
-
-[node name="spells2" type="TextureButton" parent="MasteryPanel/Categories2"]
-self_modulate = Color( 1, 1, 1, 0.635294 )
-light_mask = 0
-margin_left = 116.0
-margin_right = 170.0
-margin_bottom = 54.0
-rect_min_size = Vector2( 54, 54 )
-toggle_mode = true
-texture_normal = ExtResource( 35 )
-texture_pressed = ExtResource( 30 )
-texture_hover = ExtResource( 42 )
-expand = true
-
-[node name="spells3" type="TextureButton" parent="MasteryPanel/Categories2"]
-self_modulate = Color( 1, 1, 1, 0.635294 )
-light_mask = 0
-margin_left = 174.0
-margin_right = 228.0
-margin_bottom = 54.0
-rect_min_size = Vector2( 54, 54 )
-toggle_mode = true
-texture_normal = ExtResource( 35 )
-texture_pressed = ExtResource( 30 )
-texture_hover = ExtResource( 42 )
-expand = true
-
-[node name="spells4" type="TextureButton" parent="MasteryPanel/Categories2"]
-self_modulate = Color( 1, 1, 1, 0.635294 )
-light_mask = 0
-margin_left = 232.0
-margin_right = 286.0
-margin_bottom = 54.0
-rect_min_size = Vector2( 54, 54 )
-toggle_mode = true
-texture_normal = ExtResource( 35 )
-texture_pressed = ExtResource( 30 )
-texture_hover = ExtResource( 42 )
-expand = true
-
-[node name="spells5" type="TextureButton" parent="MasteryPanel/Categories2"]
-self_modulate = Color( 1, 1, 1, 0.635294 )
-light_mask = 0
-margin_left = 290.0
-margin_right = 344.0
-margin_bottom = 54.0
-rect_min_size = Vector2( 54, 54 )
-toggle_mode = true
-texture_normal = ExtResource( 35 )
-texture_pressed = ExtResource( 30 )
-texture_hover = ExtResource( 42 )
-expand = true
-
-[node name="Label" type="Label" parent="MasteryPanel"]
-light_mask = 0
-margin_top = 28.0181
-margin_right = 700.0
-margin_bottom = 72.0181
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 23 )
-text = "Masteries"
-align = 1
-valign = 1
+stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MasteryPanel"]
 visible = false
@@ -1076,19 +1056,6 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="SkillBookButton" type="TextureButton" parent="MasteryPanel"]
-margin_left = 9.42102
-margin_top = 835.546
-margin_right = 87.42
-margin_bottom = 913.546
-hint_tooltip = "Set Abilitites for combat"
-texture_normal = ExtResource( 59 )
-texture_pressed = ExtResource( 60 )
-texture_hover = ExtResource( 61 )
-texture_disabled = ExtResource( 58 )
-expand = true
-stretch_mode = 5
 
 [node name="Tooltip" type="Panel" parent="."]
 visible = false
@@ -1187,9 +1154,6 @@ custom_colors/font_color = Color( 0.976471, 0.890196, 0.501961, 1 )
 custom_fonts/font = ExtResource( 9 )
 text = "0 SP"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="req" type="Label" parent="SkillTooltip"]
 margin_left = 67.8728

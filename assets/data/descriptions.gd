@@ -657,12 +657,12 @@ func get_class_details(newperson, classdata, showreqs = true, showskills = false
 		if classdata.skills.size() > 0:
 			text += "\n{color=yellow|"+tr("CLASSDETAILSKILLS")+": "
 			for i in classdata.skills:
-				text += Skilldata.Skilllist[i].name + ", "
+				text += Skilldata.get_template(i, person).name + ", "
 			text = text.substr(0, text.length() - 2) + "}"
 		if classdata.combatskills.size() > 0:
 			text += "\n{color=yellow|"+tr("CLASSDETAILCOMBATSKILLS")+": "
 			for i in classdata.combatskills:
-				text += Skilldata.Skilllist[i].name + ", "
+				text += Skilldata.get_template(i, person).name + ", "
 			text = text.substr(0, text.length() - 2) + "}"
 
 	return globals.TextEncoder(text)
@@ -678,6 +678,8 @@ func get_class_bonuses(newperson, classdata): #maybe there should be used the sa
 	for i in classdata.statchanges:
 		var data = statdata.statdata[i]
 		var value = classdata.statchanges[i]
+		if value is bool:
+			continue #temp stub
 		if data.percent: 
 			value *= 100
 		text += data.name + ": "

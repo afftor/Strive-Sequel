@@ -5,6 +5,7 @@ var social_skills = []
 var social_cooldowns = {}
 var social_skills_charges = {}
 var combat_skills = []
+var explore_skills = []
 var combat_skill_charges = {}
 var combat_cooldowns = {}
 var daily_cooldowns = {}
@@ -41,7 +42,7 @@ func get_damage_mod(skill:Dictionary):
 	if skill.ability_type == 'skill' and damage_mods.has('skill'): res *= damage_mods['skill']
 	if skill.ability_type == 'spell' and damage_mods.has('spell'): res *= damage_mods['spell']
 	if skill.tags.has('aoe') and damage_mods.has('aoe'): res *= damage_mods['aoe'] 
-	if skill.tags.has('heal') and damage_mods.has('heal'): res *= damage_mods['heal'] 
+	if skill.tags.has('heal') and skill.ability_type != 'item' and damage_mods.has('heal'): res *= damage_mods['heal'] 
 	
 	return res
 
@@ -88,6 +89,17 @@ func learn_c_skill(skill, free = false):
 			parent.get_ref().add_stat('abil_exp', skilldata.learn_cost)
 
 
+func learn_e_skill(skill, free = false):
+	var skilldata = Skilldata.Skilllist[skill]
+	if !explore_skills.has(skill):
+		if skilldata.has('learn_cost') and !free:
+			parent.get_ref().add_stat('abil_exp', -skilldata.learn_cost)
+		explore_skills.append(skill)
+	else:
+		if skilldata.has('learn_cost') and free:
+			parent.get_ref().add_stat('abil_exp', skilldata.learn_cost)
+
+
 func unlearn_skill(skill):
 	if !parent.get_ref().xp_module.check_skill_prof(skill):
 		social_skills.erase(skill)
@@ -106,6 +118,12 @@ func unlearn_c_skill(skill):
 #		combat_skills_charges.erase(skill)
 		for i in range(1,22):
 			if combat_skill_panel.has(i) and combat_skill_panel[i] == skill: combat_skill_panel.erase(i)
+
+func unlearn_e_skill(skill):
+	if !parent.get_ref().xp_module.check_skill_prof(skill):
+		explore_skills.erase(skill)
+		daily_cooldowns.erase(skill)
+#		combat_skills_charges.erase(skill)
 
 
 func cooldown_tick():
@@ -134,15 +152,23 @@ func cooldown_tick():
 	for i in cleararray:
 		daily_cooldowns.erase(i)
 
+
+func reset_cooldowns():
+	for skill in combat_cooldowns.keys().duplicate():
+		if skill == 'rally':
+			continue
+		combat_cooldowns.erase(skill)
+
+
 func skill_tooltip(skillcode): #??
 	var text = ''
-	var skill = Skilldata.Skilllist[skillcode]
+	var skill = Skilldata.get_template(skillcode, parent.get_ref())
 	text += "[center]" + skill.name + "[/center]\n" + skill.descript
 	return text
 
 func get_skill_by_tag(tg):
 	for s in combat_skills:
-		var s_f = Skilldata.Skilllist[s]
+		var s_f = Skilldata.get_template(s, parent.get_ref())
 		if s_f.tags.has(tg): return s
 	return null
 
@@ -161,7 +187,7 @@ func restore_skill_charge(code):
 
 
 func use_social_skill(s_code, target, item):
-	var template = Skilldata.Skilllist[s_code]
+	var template = Skilldata.get_template(s_code, parent.get_ref())
 	if template.has('special'):
 		item = Items.itemlist[item.itembase]
 		if s_code == 'map':
@@ -186,8 +212,8 @@ func use_social_skill(s_code, target, item):
 		text = target.translate(text.replace("[target", "["))
 		data.text = text
 		
-		var charges = Skilldata.get_charges(template, parent.get_ref())
-		if charges > 0 && ResourceScripts.game_globals.social_skill_unlimited_charges == false && !template.has('custom_used_charges'):
+		var charges = template.charges
+		if charges > 0 && ResourceScripts.game_globals.social_skill_unlimited_charges == false:
 			if social_skills_charges.has(s_code):
 				social_skills_charges[s_code] += 1
 			else:
@@ -237,7 +263,7 @@ func use_social_skill(s_code, target, item):
 		targ_all.push_back(ResourceScripts.game_party.characters[h_id])
 	#create s_skill and process triggers
 	var s_skill = ResourceScripts.scriptdict.class_sskill.new()
-	s_skill.createfromskill(s_code)
+	s_skill.createfromskill(template)
 	s_skill.setup_caster(parent.get_ref())
 	s_skill.setup_target(target)
 	s_skill.process_event(variables.TR_CAST)
