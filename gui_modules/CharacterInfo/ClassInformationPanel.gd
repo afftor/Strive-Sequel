@@ -29,16 +29,17 @@ func open(classcode, person):
 	$bonus.bbcode_text = text
 	for i in tempclass.traits:
 		var trdata = Traitdata.traits[i]
-		if !i.tags.has('show_in_header'):
+		if !trdata.tags.has('show_in_header'):
 			continue
 		var newicon = input_handler.DuplicateContainerTemplate($ReqIcons, "Icon")
-		newicon.texture = load(trdata.icon)
+		newicon.texture = trdata.icon
+#		newicon.texture = load(trdata.icon)
 	for i in tempclass.statchanges:
 		var stdata = statdata.statdata[i]
-		if !i.show_in_header:
+		if !stdata.show_in_header:
 			continue
 		var newicon = input_handler.DuplicateContainerTemplate($ReqIcons, "Icon")
-		newicon.texture = images.get_icon(stdata.icon)
+		newicon.texture = images.get_icon(i)
 	
 	text = tr('CLASSREQS')+":\n"
 	if tempclass.reqs.size() > 0 && tempclass.reqs[0].code != 'disabled':
@@ -53,14 +54,14 @@ func open(classcode, person):
 	$reqs.bbcode_text = text
 	$descript.bbcode_text = person.translate(tempclass.descript)
 	for i in tempclass.skills:
-		var skill = Skilldata.Skilllist[i]
+		var skill = Skilldata.get_template(i, person)
 		var newnode = input_handler.DuplicateContainerTemplate($SocialSkills/HBoxContainer)
 		newnode.texture = skill.icon
 		globals.connectskilltooltip(newnode, skill.code, person)
 		if skill.icon == null:
 			newnode.texture = load("res://assets/images/gui/panels/noimage.png")
 	for i in tempclass.combatskills:
-		var skill = Skilldata.Skilllist[i]
+		var skill = Skilldata.get_template(i, person)
 		var newnode = input_handler.DuplicateContainerTemplate($CombatSkills/HBoxContainer)
 		newnode.texture = skill.icon
 		if skill.icon == null:
