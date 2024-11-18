@@ -149,7 +149,7 @@ func OrgasmDenialCum():
 		text += '_female'
 	else:
 		text += '_male'
-	if OrgasmDenyVictim.lastaction.scene.category == 'fucking':
+	if OrgasmDenyVictim.get_lastaction_ref_scene().category == 'fucking':
 		text += '_fucking'
 	else:
 		text += '_petting'
@@ -908,7 +908,7 @@ func checkrequest(member):
 
 	var conditionsatisfied = false
 
-	var lastaction = member.lastaction
+	var lastaction = member.get_lastaction_ref_dict()
 
 	match member.request:
 		'pet':
@@ -1237,34 +1237,35 @@ func startscene(scenescript, cont = false, pretext = ''):
 			for i in takers:
 				i.person.set_stat('penis_virgin', false)
 
+	var id_dict = make_id_dict(dict)
 	for i in givers:
 		if scenescript.giverpart != '':
-			if i[scenescript.giverpart] != null:
-				stopongoingaction(i[scenescript.giverpart])
-			i[scenescript.giverpart] = dict
+			if i.get_part_id_dict(scenescript.giverpart) != null:
+				stopongoingaction(i.get_part_ref_dict(scenescript.giverpart))
+			i.set_part(scenescript.giverpart, id_dict)
 
 	for i in takers:
 		if scenescript.takerpart != '':
-			if i[scenescript.takerpart] != null:
-				stopongoingaction(i[scenescript.takerpart])
-			i[scenescript.takerpart] = dict
+			if i.get_part_id_dict(scenescript.takerpart) != null:
+				stopongoingaction(i.get_part_ref_dict(scenescript.takerpart))
+			i.set_part(scenescript.takerpart, id_dict)
 
 	if scenescript.get('takerpart2'):
-		givers[1][scenescript.giverpart] = dict
+		givers[1].set_part(scenescript.giverpart, id_dict)
 		for i in takers:
-			if i[scenescript.takerpart2] != null:
-				stopongoingaction(i[scenescript.takerpart2])
-			i[scenescript.takerpart2] = dict
+			if i.get_part_id_dict(scenescript.takerpart2) != null:
+				stopongoingaction(i.get_part_ref_dict(scenescript.takerpart2))
+			i.set_part(scenescript.takerpart2, id_dict)
 
 	for i in givers:
 		if scenescript.has_method('givereffect'):
 			effects = scenescript.givereffect(i)
-			i.actioneffect(effects, dict)
+			i.actioneffect(effects, id_dict)
 
 	for i in takers:
 		if scenescript.has_method('takereffect'):
 			effects = scenescript.takereffect(i)
-			i.actioneffect(effects, dict)
+			i.actioneffect(effects, id_dict)
 
 	if scenescript.code in ['rope', 'subdue']:
 		cont = true
@@ -1302,10 +1303,10 @@ func startscene(scenescript, cont = false, pretext = ''):
 		for i in takers:
 			var cleararray = []
 			for k in i.activeactions:
-				if k.scene.code == 'subdue':
+				if k.scene_code == 'subdue':
 					cleararray.append(k)
 			for k in cleararray:
-				stopongoingaction(k)
+				stopongoingaction(make_ref_dict(k))
 	if scenescript.code == 'deny_orgasm':
 		OrgasmDenyInitiate(givers[0], takers[0])
 	if scenescript.code == 'cum_select':
@@ -1340,34 +1341,36 @@ func startscene(scenescript, cont = false, pretext = ''):
 					k.person_sexexp.seenactions[i.scene.code] += 1
 				else:
 					k.person_sexexp.seenactions[i.scene.code] = 1
+		var i_ids = make_id_dict(i)
 		if i.scene.has_method("givereffect"):
 			for member in i.givers:
 				effects = i.scene.givereffect(member)
 				for effect in effects:
 					if effect in ['sens','horny']:
 						effects[effect] = effects[effect]/2
-				member.actioneffect(effects, i)
+				member.actioneffect(effects, i_ids)
 		if i.scene.has_method("takereffect"):
 			for member in i.takers:
 				effects = i.scene.takereffect(member)
 				for effect in effects:
 					if effect in ['sens','horny']:
 						effects[effect] = effects[effect]/2
-				member.actioneffect(effects, i)
+				member.actioneffect(effects, i_ids)
 
 	var request
 
+	id_dict = make_id_dict(dict)#update just in case
 	for i in participants:
 		if i in givers+takers:
 			if !scenescript.code == 'deny_orgasm':
-				i.lastaction = dict
+				i.set_lastaction(id_dict)
 			request = checkrequest(i)
 			if request == true:
 				textdict.orgasms += decoder("[color=aqua]Desire fullfiled! [name1] grows lewder and more sensitive. [/color]\n", [i], [i])
 		else:
 			for j in ongoingactions:
 				if i in j.givers + j.takers:
-					i.lastaction = j
+					i.set_lastaction(make_id_dict(j))
 #		if not i.lastaction in ongoingactions:
 #			i.lastaction = null
 		for k in i.sex_traits:
@@ -1379,14 +1382,14 @@ func startscene(scenescript, cont = false, pretext = ''):
 	if cont == true && sceneexists == false:
 		ongoingactions.append(dict)
 		for i in givers + takers:
-			i.activeactions.append(dict)
+			i.activeactions.append(id_dict)
 	else:
 		for i in givers:
 			if scenescript.giverpart != '':
-				i[scenescript.giverpart] = null
+				i.set_part(scenescript.giverpart, null)
 		for i in takers:
 			if scenescript.takerpart != '':
-				i[scenescript.takerpart] = null
+				i.set_part(scenescript.takerpart, null)
 
 	var x = (givers.size()+takers.size())/2
 
@@ -1638,23 +1641,25 @@ func output(scenescript, valid_lines, givers, takers):
 	}
 
 	#link with ongoingactions
-	if givers[0][giverpart] != null:
-		if givers[0][giverpart].scene.code in links:
-			link = givers[0][giverpart].scene
+	var givers0_part_dict = givers[0].get_part_id_dict(giverpart)
+	if givers0_part_dict != null:
+		if givers0_part_dict.scene_code in links:
+			link = givers[0].get_part_ref_scene(giverpart)
 			for i in givers:
-				if i[giverpart] != givers[0][giverpart]:
+				if !is_id_dicts_equal(i.get_part_id_dict(giverpart), givers0_part_dict):
 					link = null
 					break
 			for i in takers:
-				if i[takerpart] != givers[0][giverpart]:
+				if !is_id_dicts_equal(i.get_part_id_dict(takerpart), givers0_part_dict):
 					link = null
 					break
 	#link with lastaction if ongoing fails
-	if link == null && givers[0].lastaction != null:
-		if givers[0].lastaction.scene.code in links:
-			link = givers[0].lastaction.scene
+	var givers0_lastaction = givers[0].get_lastaction_id_dict()
+	if link == null && givers0_lastaction != null:
+		if givers0_lastaction.scene_code in links:
+			link = givers[0].get_lastaction_ref_scene()
 			for i in givers+takers:
-				if i.lastaction != givers[0].lastaction:
+				if !is_id_dicts_equal(i.get_lastaction_id_dict(), givers0_lastaction):
 					link = null
 					break
 	#gather orifice info from link
@@ -1773,12 +1778,12 @@ func stopongoingaction(meta, rebuild = false):
 		action = meta
 	for i in action.givers:
 		if action.scene.giverpart != '':
-			i[action.scene.giverpart] = null
+			i.set_part(action.scene.giverpart, null)
 	for i in action.takers:
 		if action.scene.takerpart != '':
-			i[action.scene.takerpart] = null
+			i.set_part(action.scene.takerpart, null)
 		if action.scene.get("takerpart2"):
-			i[action.scene.takerpart2] = null
+			i.set_part(action.scene.takerpart2, null)
 	if action.scene.code == 'rope':
 		for i in action.takers:
 			i.effects.erase('tied')
@@ -1790,8 +1795,11 @@ func stopongoingaction(meta, rebuild = false):
 				erasearray.append(giver)
 			for giver in erasearray:
 				taker.subduedby.erase(giver)
+	var action_ids = make_id_dict(action)
 	for i in action.givers + action.takers:
-		i.activeactions.erase(action)
+		for act_num in range(i.activeactions.size()-1, -1, -1):
+			if is_id_dicts_equal(i.activeactions[act_num], action_ids):
+				i.activeactions.remove(act_num)
 	ongoingactions.erase(action)
 	if rebuild == true:
 		rebuildparticipantslist()
@@ -2451,3 +2459,38 @@ func has_master():
 			return true
 
 	return false
+
+func get_participant(id):
+	for member in participants:
+		if member.id == id:
+			return member
+	assert(false, "no such participant! (%s)" % id)
+	print("no such participant! (%s)" % id)
+	return null
+
+func make_id_dict(ref_dict):
+	var id_dict = {scene_code = ref_dict.scene.code,
+		takers_ids = [],
+		givers_ids = [],
+		consents = ref_dict.consents}
+	for taker in ref_dict.takers:
+		id_dict.takers_ids.append(taker.id)
+	for giver in ref_dict.givers:
+		id_dict.givers_ids.append(giver.id)
+	return id_dict
+
+func make_ref_dict(id_dict):
+	var ref_dict = {
+		scene = globals.get_sex_action(id_dict.scene_code),
+		takers = [], givers = [],
+		consents = id_dict.consents}
+	for member_id in id_dict.takers_ids:
+		ref_dict.takers.append(get_participant(member_id))
+	for member_id in id_dict.givers_ids:
+		ref_dict.givers.append(get_participant(member_id))
+	return ref_dict
+
+func is_id_dicts_equal(dist1, dist2):
+	return (dist1.scene_code == dist2.scene_code
+		and dist1.takers_ids == dist2.takers_ids
+		and dist1.givers_ids == dist2.givers_ids)
