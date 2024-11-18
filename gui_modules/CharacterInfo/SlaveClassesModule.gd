@@ -262,6 +262,7 @@ func change_mastery(mas):
 #				skill_icon.texture = images.get_icon('frame_skill')
 			skill_icon.texture = images.get_icon('frame_skill')
 			skill_icon.get_node('icon').texture = sdata.icon
+			skill_icon.set_meta('display_only', true)
 			globals.connectskilltooltip(skill_icon, s_id, person)
 		for s_id in lvdata.explore_skills:
 			var sdata = Skilldata.get_template(s_id, person)
@@ -272,6 +273,7 @@ func change_mastery(mas):
 #				skill_icon.texture = images.get_icon('frame_explore')
 			skill_icon.texture = images.get_icon('frame_explore')
 			skill_icon.get_node('icon').texture = sdata.icon
+			skill_icon.set_meta('display_only', true)
 			globals.connectskilltooltip(skill_icon, s_id, person)
 		for tr_id in lvdata.traits:
 			var trdata = Traitdata.traits[tr_id]
