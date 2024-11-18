@@ -226,6 +226,11 @@ func custom_stats_get(stat):
 		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 5
 		if bonuses.has('mpmax_mul'): tres *= bonuses.mpmax_mul
 		return tres
+	if stat == 'damage_reduction':
+		var tres = statlist.damage_reduction
+		if bonuses.has('damage_reduction_add'): tres += bonuses.damage_reduction_add
+		if bonuses.has('damage_reduction_mul'): tres *= bonuses.damage_reduction_mul
+		return min(tres, 100)
 	if stat == 'upgrade_points_total':
 		var tres = custom_stats_get('growth_factor') * 25
 		if bonuses.has('upgrade_points_total_add'): tres += bonuses.upgrade_points_total_add

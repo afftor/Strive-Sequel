@@ -11,10 +11,10 @@ func open(character, category, triggernode, triggerfunction):
 	var skillarray = []
 	if category == variables.PANEL_SOC:
 		for i in person.skills.social_skills:
-			skillarray.append(Skilldata.Skilllist[i])
+			skillarray.append(Skilldata.get_template(i, person))
 	else:
 		for i in person.skills.combat_skills:
-			skillarray.append(Skilldata.Skilllist[i])
+			skillarray.append(Skilldata.get_template(i, person))
 	
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)

@@ -70,7 +70,7 @@ func RebuildSkillBook():
 	input_handler.ClearContainer($ScrollContainer/GridContainer)
 	for i in activecharacter.skills.combat_skills:
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/GridContainer)
-		var skill = Skilldata.Skilllist[i]
+		var skill = Skilldata.get_template(i, activecharacter)
 		newbutton.dragdata = {skill = i}
 		newbutton.target_node = self
 		newbutton.set_meta('skill', skill)
@@ -87,7 +87,7 @@ func RebuildSkillBook():
 		newbutton.target_node = self
 		newbutton.dragdata = {position = i}
 		if src.has(i):
-			var skill = Skilldata.Skilllist[activecharacter.skills.combat_skill_panel[i]]
+			var skill = Skilldata.get_template(activecharacter.skills.combat_skill_panel[i], activecharacter)
 			newbutton.get_node("Icon").texture = skill.icon
 			newbutton.set_meta('skill', skill)
 			newbutton.connect("mouse_entered", self, "update_skillinfo", [skill])

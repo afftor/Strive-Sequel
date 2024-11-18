@@ -15,7 +15,8 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_exp',
 		type = 'misc',
-		skip_process = true
+		skip_process = true,
+		show_in_header = true
 	},
 	mastery_point_universal = {
 		code = 'mastery_point_universal',
@@ -23,7 +24,8 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_exp',
 		type = 'misc',
-		skip_process = true
+		skip_process = true,
+		show_in_header = true
 	},
 	mastery_point_combat = {
 		code = 'mastery_point_combat',
@@ -31,7 +33,8 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_exp',
 		type = 'misc',
-		skip_process = true
+		skip_process = true,
+		show_in_header = true
 	},
 	
 	growth_factor = {
@@ -463,6 +466,14 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+	},
+	damage_reduction = {
+		code = 'damage_reduction',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		type = 'misc',
+		custom_get = true
 	},
 	armorpenetration = {
 		code = 'armorpenetration',
@@ -911,7 +922,8 @@ func _ready():
 	for i in Skilldata.masteries:
 		statdata['mastery_'+i] = {
 				code = "mastery_"+i,
-				skip_process = true
+				skip_process = true,
+				show_in_header = true
 			}
 		statdata['enable_mastery_'+i] = {
 				code = "enable_mastery_"+i,
@@ -928,6 +940,7 @@ func _ready():
 		if !val.has('skip_process'): val.skip_process = false
 		if !val.has('is_negative'): val.is_negative = false
 		if !val.has('hidden'): val.hidden = false
+		if !val.has('show_in_header'): val.show_in_header = false
 
 #	for st in statdata:
 #		print("'%s':" % st)

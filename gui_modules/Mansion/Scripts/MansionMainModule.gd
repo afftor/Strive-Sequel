@@ -602,7 +602,8 @@ func test_mode():
 		# character.travel.location = 'L4'
 		character.travel.area = 'plains'
 		character.add_stat('resist_normal', 50)
-		character.add_stat('resist_all', 50)
+		character.add_stat('damage_reduction', 50)
+		character.add_stat('mastery_point_universal', 90)
 		character.set_stat('personality_kind', 100)
 		character.set_stat('personality_bold', 50)
 		#variables.dungeon_encounter_chance = 1
@@ -940,7 +941,7 @@ func test_mode():
 
 		ResourceScripts.game_progress.completed_quests.append("princess_search")
 		ResourceScripts.game_progress.completed_quests.append("sword_artifact_quest")
-		#input_handler.interactive_message('unlock_infinite_dungeon', '', {})
+#		input_handler.interactive_message('divine_symbol_26', '', {})
 
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		

@@ -23,9 +23,14 @@ func add_stored_char(id, ch):
 
 
 func get_char_by_id(id):
-	if ResourceScripts.game_party.characters.has(id): return ResourceScripts.game_party.characters[id]
-	if ResourceScripts.game_party.babies.has(id): return ResourceScripts.game_party.babies[id]
-	if characters.has(id): return characters[id]
+	if id == null:
+		return null
+	if ResourceScripts.game_party.characters.has(id): 
+		return ResourceScripts.game_party.characters[id]
+	if ResourceScripts.game_party.babies.has(id): 
+		return ResourceScripts.game_party.babies[id]
+	if characters.has(id): 
+		return characters[id]
 	return null
 
 

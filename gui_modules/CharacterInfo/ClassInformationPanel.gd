@@ -28,24 +28,17 @@ func open(classcode, person):
 	text = input_handler.text_cut_excessive_lines(text)
 	$bonus.bbcode_text = text
 	for i in tempclass.traits:
+		var trdata = Traitdata.traits[i]
+		if !i.tags.has('show_in_header'):
+			continue
 		var newicon = input_handler.DuplicateContainerTemplate($ReqIcons, "Icon")
-		if i == "basic_spells":
-			newicon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_spells.png")
-			globals.connecttexttooltip(newicon, tr("TRAITBASIC_SPELLS"))
-		if i == "advanced_spells":
-			newicon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_spells.png")
-			globals.connecttexttooltip(newicon, tr("TRAITADVANCED_SPELLS"))
-		if i == "basic_combat":
-			newicon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png")
-			globals.connecttexttooltip(newicon, tr("TRAITBASIC_COMBAT"))
-		if i == "advanced_combat":
-			newicon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png")
-			globals.connecttexttooltip(newicon, tr("TRAITADVANCED_COMBAT"))
-		if i == "trainer":
-			newicon.texture = load("res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_advanced_combat.png") #2fix
-			globals.connecttexttooltip(newicon, tr("TRAITTRAINER"))
-		if newicon.texture == null:
-			$ReqIcons.remove_child(newicon)
+		newicon.texture = load(trdata.icon)
+	for i in tempclass.statchanges:
+		var stdata = statdata.statdata[i]
+		if !i.show_in_header:
+			continue
+		var newicon = input_handler.DuplicateContainerTemplate($ReqIcons, "Icon")
+		newicon.texture = images.get_icon(stdata.icon)
 	
 	text = tr('CLASSREQS')+":\n"
 	if tempclass.reqs.size() > 0 && tempclass.reqs[0].code != 'disabled':

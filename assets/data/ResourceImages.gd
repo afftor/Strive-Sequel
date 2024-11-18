@@ -290,19 +290,34 @@ var backgrounds = {
 	
 	kuro_book_0 = "res://assets/images/fullscreen scenes/kuro_book_0.png",
 	
+	#masteries
+	mastery_air = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_air.png",
+	mastery_stealth = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_rogue.png",
+	mastery_dark = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_darkness.png",
+	mastery_leadership = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_leader.png",
+	mastery_light = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_light.png",
+	mastery_mind = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_mind.png",
+	mastery_fire = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_pyro.png",
+	mastery_marksmanship = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_marks2.png",
+	mastery_earth = "res://assets/Textures_v2/CLASS_INFO/back_masteri/earth.png",
+	mastery_water = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_water.png",
+	mastery_protection = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_defence.png",
+	mastery_warfare = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_warrior.png",
+	
 	#technical screens
 	whitescreen = "res://assets/sfx/white.png",
 	blackscreen = "res://assets/sfx/black.png",
 
 	}
 
-func get_background(id):
+func get_background(id, cash = false):
 	if !backgrounds.has(id):
 		return null
 	var res = backgrounds[id]
 	if res is String:
 		res = load(res)
-#		backgrounds[id] = res
+		if cash:
+			backgrounds[id] = res
 	return res
 
 
@@ -765,6 +780,30 @@ var icons = {
 	shrine = "res://assets/Textures_v2/DUNGEON/Icons/altar.png",
 	exclaim = "res://assets/Textures_v2/DUNGEON/Icons/exclaim.png",
 	question = "res://assets/Textures_v2/DUNGEON/Icons/question.png",
+	
+	#masteries gui
+	frame_skill = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_square.png",
+	frame_skill_1 = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_square.png",
+	frame_explore = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_polygon.png",
+	frame_explore_1 = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_polygon.png",
+	frame_train = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_rhomb.png",
+	frame_train_1 = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_rhomb.png",
+	frame_trait = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_ellipse.png",
+	frame_trait_1 = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_ellipse.png",
+	
+	#masteries
+	mastery_air = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/air.png",
+	mastery_stealth = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/assassination.png",
+	mastery_dark = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/darkness.png",
+	mastery_leadership = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/leader.png",
+	mastery_light = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/light.png",
+	mastery_mind = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/mind.png",
+	mastery_fire = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/pyro.png",
+	mastery_marksmanship = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/shooting.png",
+	mastery_earth = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/soil.png",
+	mastery_water = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/water.png",
+	mastery_protection = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/defence.png",
+	mastery_warfare = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/weapon.png",
 	
 #	TO COMPLETE AND USE IN DATA TABLES
 #	NEED TO GET RID OF ALL LOAD FUNCTIONS

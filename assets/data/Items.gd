@@ -4901,7 +4901,7 @@ var enchantments = {
 		],
 		levels = {
 			1:{
-				effects = ['enchant_nostun'],
+				effects = ['e_s_nostun'],
 				weight = 100,
 				cap_cost = 50,
 				gold_cost = 500

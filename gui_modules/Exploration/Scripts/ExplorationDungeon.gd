@@ -346,7 +346,7 @@ func use_e_combat_skill(caster, target, skill):
 			caster.skills.combat_skill_charges[skill.code] = 1
 		caster.skills.daily_cooldowns[skill.code] = skill.cooldown
 	var s_skill1 = ResourceScripts.scriptdict.class_sskill.new()
-	s_skill1.createfromskill(skill.code)
+	s_skill1.createfromskill(skill)
 	s_skill1.setup_caster(caster)
 	#s_skill1.setup_target(target)
 	s_skill1.process_event(variables.TR_CAST)
@@ -844,8 +844,8 @@ func build_spell_panel():
 	for id in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[id]
 		if person.check_location(active_location.id, true):
-			for i in person.skills.combat_skills:
-				var skill = Skilldata.Skilllist[i]
+			for i in person.skills.combat_skills + person.skills.explore_skills:
+				var skill = Skilldata.get_template(i, person)
 				if skill.tags.has('exploration') == false:
 					continue
 				var newnode = input_handler.DuplicateContainerTemplate(
@@ -887,7 +887,7 @@ func build_spell_panel():
 				if person.has_status('no_obed_gain'):
 					disabled = true
 				if skill.charges > 0:
-					var leftcharges = Skilldata.get_charges(skill, person)
+					var leftcharges = skill.charges
 					if person.skills.combat_skill_charges.has(skill.code):
 						leftcharges -= person.skills.combat_skill_charges[skill.code]
 #						newbutton.get_node("charge").visible = true
@@ -993,8 +993,8 @@ func can_enter_room(room_id):
 		 return true
 	if data.type in ['ladder_up']:
 		return true
-	if data.status == 'scouted' and data.type in ['ladder_down', 'ladder_down_survival']:
-			return true
+#	if data.status == 'scouted' and data.type in ['ladder_down', 'ladder_down_survival']:
+#		return true
 	for i in data.neighbours.values():
 		if i == null:
 			continue
@@ -1067,6 +1067,8 @@ func scout_room(room_id, s_range, stay = false):
 				globals.start_fixed_event(data.challenge)
 #			input_handler.combat_advance = false
 			else:
+				data.intimidate = active_location.intimidate
+				active_location.intimidate = false
 				StartCombat(data)
 		'combat_boss':
 			selected_room = room_id
@@ -1310,3 +1312,21 @@ func deny_combat():
 func reset_active_location(arg = null):
 	if input_handler.active_location.id != active_location.id:
 		input_handler.active_location = active_location
+
+
+func reveal_map():
+	var dungeon
+	if !active_location.tags.has('infinite'):
+		dungeon = active_location.dungeon[active_location.current_level]
+	else:
+		dungeon = active_location.dungeon[0]
+	var data = ResourceScripts.game_world.dungeons[dungeon]
+	for room_id in data.rooms:
+		var rdata = ResourceScripts.game_world.rooms[room_id]
+		if rdata.status in ['obscured', 'hidden']:
+			rdata.status = 'scouted'
+	update_map()
+
+
+func set_intimidate():
+	active_location.intimidate = true

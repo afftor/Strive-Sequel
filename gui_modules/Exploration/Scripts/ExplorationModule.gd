@@ -237,7 +237,7 @@ func use_e_combat_skill(caster, target, skill):
 			caster.skills.combat_skill_charges[skill.code] = 1
 		caster.skills.daily_cooldowns[skill.code] = skill.cooldown
 	var s_skill1 = ResourceScripts.scriptdict.class_sskill.new()
-	s_skill1.createfromskill(skill.code)
+	s_skill1.createfromskill(skill)
 	s_skill1.setup_caster(caster)
 	#s_skill1.setup_target(target)
 	s_skill1.process_event(variables.TR_CAST)
@@ -630,8 +630,8 @@ func build_spell_panel():
 	for id in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[id]
 		if person.check_location(active_location.id, true):
-			for i in person.skills.combat_skills:
-				var skill = Skilldata.Skilllist[i]
+			for i in person.skills.combat_skills + person.skills.explore_skills:
+				var skill = Skilldata.get_template(i, person)
 				if skill.tags.has('exploration') == false:
 					continue
 				var newnode = input_handler.DuplicateContainerTemplate(
@@ -673,7 +673,7 @@ func build_spell_panel():
 				if person.has_status('no_obed_gain'):
 					disabled = true
 				if skill.charges > 0:
-					var leftcharges = Skilldata.get_charges(skill, person)
+					var leftcharges = skill.charges
 					if person.skills.combat_skill_charges.has(skill.code):
 						leftcharges -= person.skills.combat_skill_charges[skill.code]
 #						newbutton.get_node("charge").visible = true

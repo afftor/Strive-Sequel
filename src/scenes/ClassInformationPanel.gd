@@ -32,14 +32,14 @@ func open(classcode, person):
 	$reqs.bbcode_text = text
 	$descript.bbcode_text = person.translate(tempclass.descript)
 	for i in tempclass.skills:
-		var skill = Skilldata.Skilllist[i]
+		var skill = Skilldata.get_template(i, person)
 		var newnode = input_handler.DuplicateContainerTemplate($SocialSkills/HBoxContainer)
 		newnode.texture = skill.icon
 		globals.connectskilltooltip(newnode, skill.code, person)
 		if skill.icon == null:
 			newnode.texture = load("res://assets/images/gui/panels/noimage.png")
 	for i in tempclass.combatskills:
-		var skill = Skilldata.Skilllist[i]
+		var skill = Skilldata.get_template(i, person)
 		var newnode = input_handler.DuplicateContainerTemplate($CombatSkills/HBoxContainer)
 		newnode.texture = skill.icon
 		if skill.icon == null:

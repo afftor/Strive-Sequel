@@ -27,7 +27,7 @@ func build_skill_panel():
 		var text = ''
 		var newbutton = input_handler.DuplicateContainerTemplate($SkillPanel)
 		if src.has(i):
-			var skill = Skilldata.Skilllist[src[i]]
+			var skill = Skilldata.get_template(src[i], person)
 			newbutton.get_node("icon").texture = skill.icon
 			if skill.icon == null:
 				newbutton.get_node("icon").texture = load("res://assets/images/gui/panels/noimage.png")
@@ -38,15 +38,10 @@ func build_skill_panel():
 			if !person.check_cost(skill.cost):
 				newbutton.disabled = true
 				newbutton.get_node("icon").material = load("res://assets/sfx/bw_shader.tres")
-			var charges = Skilldata.get_charges(skill, person)
+			var charges = skill.charges
 			var used_charges = 0
 			if person.skills.social_skills_charges.has(skill.code):
 				used_charges = person.skills.social_skills_charges[skill.code]
-			if skill.has('custom_used_charges'):
-				#stub - for i'm haiting to use injections and functors this way
-				#additional functional can be added here
-				if skill.custom_used_charges[0] == 'call':
-					used_charges = person.call(skill.custom_used_charges[1], skill.custom_used_charges[2])
 			text = str(charges - used_charges) + "/" + str(charges)
 
 			if (person.checkreqs(skill.reqs) == false) or (person.has_status('no_social_skills') and person.skills.active_panel == variables.PANEL_SOC) or person.get_work() == 'disabled':
@@ -78,7 +73,7 @@ func build_skill_panel():
 func select_skill_target(skillcode):
 	input_handler.ActivateTutorial('TUTORIALLIST7')
 	active_skill = skillcode
-	var template = Skilldata.Skilllist[skillcode]
+	var template = Skilldata.get_template(skillcode, person)
 	if template.tags.has('no_target'):
 		use_skill(person)
 		return

@@ -55,6 +55,7 @@ func make_area(code):
 			areadata.capital[areadata.capital_code].id = areadata.capital_code
 		else:
 			areadata.capital[areadata.capital_code] = {name = areadata.capital_name, area = areadata.code, type = 'capital', travel_time = 0, category = 'capital', id = areadata.capital_code, group = {}, tags = []}
+			areadata.capital[areadata.capital_code].teleporter = false
 	for i in areadata.guilds:
 		make_guild(i, areadata)
 	areadata.erase('guilds')
@@ -298,6 +299,7 @@ func make_quest_for_guild(guilddatatemplate, difficulty):
 func make_settlement(code, area):
 	var settlement = worlddata.locations[code].duplicate(true)
 	settlement.travel_time = globals.rng.randi_range(settlement.travel_time[0],settlement.travel_time[1])
+	settlement.teleporter = false
 	var text = ''
 	#print(settlement.code, settlement.name)
 	if worlddata.locationnames.has(settlement.code) && settlement.name == null:
@@ -332,6 +334,8 @@ func make_location(code, area):
 	var location = DungeonData.dungeons[code].duplicate(true)
 	location.stamina = 100
 	location.active = true
+	location.teleporter = false
+	location.intimidate = false
 	var text = tr(location.name)
 	if worlddata.locationnames.has(location.name+'_adjs'):
 		text = tr("LOCATIONTHE") + tr(worlddata.locationnames[location.name+"_adjs"][randi() % worlddata.locationnames[location.name + "_adjs"].size()]) + " " + tr(worlddata.locationnames[location.name+"_nouns"][randi() % worlddata.locationnames[location.name + "_nouns"].size()])

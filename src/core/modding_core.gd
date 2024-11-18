@@ -50,6 +50,7 @@ func load_mods():
 	#load .gd modules (_init + _ready)
 	process_modules_mods()
 	#run load_translation on .gd modules
+	input_handler.gather_skills_effects()
 	modding_core.process_translation_mods()
 	#load CEScripts, extend scripts in ResourceScripts.scriptdict
 	process_script_extensions_mods()
@@ -478,19 +479,11 @@ func fix_main_data():
 			i.dialogue_text = tr("DIALOGUE" +i.code.to_upper() + "TEXT")
 		if i.has('dialogue_report'):
 			i.dialogue_report = tr("DIALOGUE" + i.code.to_upper() + "REPORT")
-		if typeof(i.icon) == TYPE_STRING:
-			i.icon = input_handler.loadimage(i.icon, 'icons')
-		#type fix
-		if i.has('charges') and typeof(i.charges) == TYPE_REAL: i.charges = int(i.charges)
-		
-	#fix skills format
-	for s in Skilldata.Skilllist:
-		var tmp = Skilldata.Skilllist[s]
-		if tmp.has('new_syntax') and tmp.new_syntax == true: continue
-		var ss = ResourceScripts.scriptdict.class_sskill_legacy.new()
-		ss.createfromskill(s)
-		Skilldata.Skilllist[s] = ss.convert_to_new_template()
-
+#		if typeof(i.icon) == TYPE_STRING:
+#			i.icon = input_handler.loadimage(i.icon, 'icons')
+#		#type fix
+#		if i.has('charges') and typeof(i.charges) == TYPE_REAL: i.charges = int(i.charges)
+	
 	#load proffessions
 	for i in classesdata.professions.values():
 		i.name = tr("PROF" + i.code.to_upper())
@@ -945,4 +938,5 @@ func tmp_save_script(script):
 	f.store_string(old_text)
 	f.close()
 	return tmp_file_path
-	
+
+

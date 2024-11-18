@@ -96,7 +96,7 @@ func add_mastery_bonus(school, level):
 					prof_links['s_'+ i].push_back(school+lid)
 				else:
 					prof_links['s_'+ i] = [school+lid]
-					parent.get_ref().learn_c_skill(i, true) #fix later to learn_e_skill
+					parent.get_ref().learn_e_skill(i, true)
 		if ldata.has('combat_skills'):
 			for i in ldata.combat_skills:
 				if prof_links.has('s_'+i):
@@ -155,7 +155,7 @@ func remove_mastery_bonus(school, level):
 				if prof_links['s_' + i].has(school+lid):
 					prof_links['s_' + i].erase(school+lid)
 					if prof_links['s_' + i].empty():
-						parent.get_ref().unlearn_skill(i) #fix late
+						parent.get_ref().unlearn_e_skill(i) 
 						prof_links.erase('s_' + i)
 				else:
 					print('WARNING! error in prof dependancy')

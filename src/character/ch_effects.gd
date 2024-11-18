@@ -60,6 +60,7 @@ func find_eff_by_item(item_id):
 				res.push_back(e)
 	return res
 
+
 func check_status_resist(eff):
 	var tres = parent.get_ref().get_stat('status_resists')
 	for s in variables.status_list:
@@ -69,10 +70,20 @@ func check_status_resist(eff):
 		if roll < res: return true
 	return false
 
-func apply_temp_effect(eff_id):
+
+func check_status_immunity(eff_n):
+	var tres = parent.get_ref().get_stat('status_resists')
+	if !tres.has(eff_n):
+		print ("error - no resist for %s status" % eff_n)
+		return false
+	else:
+		return tres[eff_n] >= 100
+
+
+func apply_temp_effect(eff_id, noresist = false):
 	var eff = effects_pool.get_effect_by_id(eff_id)
 	var eff_n = eff.template.name
-	if check_status_resist(eff):
+	if !noresist and check_status_resist(eff):
 		if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_n):
 			input_handler.combat_node.combatlogadd("\n%s resists %s." % [parent.get_ref().get_short_name(), eff_n])
 			parent.get_ref().play_sfx('resist')
@@ -89,7 +100,12 @@ func apply_temp_effect(eff_id):
 		var eff_a = effects_pool.get_effect_by_id(temp_effects[tmp.index])
 		match eff_a.template.type:
 			'temp_s':
-				eff_a.reset_duration()
+				if eff.tags.has('reset_duration'):
+					eff_a.reset_duration()
+				elif eff.tags.has('merge_duration'):
+					eff_a.merge_duration(eff)
+				else:
+					eff_a.add_duration(eff)
 				eff.remove()
 			'temp_toggle':
 				eff_a.remove()
@@ -111,6 +127,41 @@ func recheck_effect_tag(tg):
 	for e in e_list:
 		var tmp = effects_pool.get_effect_by_id(e)
 		tmp.recheck()
+
+
+func make_status_effect(template):
+	var effect = template.effect
+	#add custom template making
+	match effect:
+		'e_s_freeze1':
+			effect = Effectdata.effect_table[effect].duplicate(true)
+			effect.duration = template.duration
+			if has_status('wet'):
+				template.chance = 2.0
+		'e_s_shock':
+			if has_status('shock') and globals.rng.randf() < 0.2:
+				effect = Effectdata.effect_table['e_s_stun1'].duplicate(true)
+				effect.duration = 1
+			else:
+				effect = Effectdata.effect_table[effect].duplicate(true)
+				effect.duration = template.duration
+		_:
+			effect = Effectdata.effect_table[effect].duplicate(true)
+			effect.duration = template.duration
+	var eff = effects_pool.e_createfromtemplate(effect, template.parent)
+	var eff_id = effects_pool.add_effect(eff)
+	var eff_n = eff.template.name
+	if parent.get_ref().is_koed() and !eff.tags.has('on_dead'): return
+	if check_status_immunity(eff_n):
+		if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_n):
+			input_handler.combat_node.combatlogadd("\n%s resists %s." % [parent.get_ref().get_short_name(), eff_n])
+			parent.get_ref().play_sfx('resist')
+		return
+	if template.chance > 1.0:
+		apply_temp_effect(eff_id, true)
+	elif globals.rng.randf() <= template.chance:
+		apply_temp_effect(eff_id)
+
 
 func apply_effect(eff_id):
 	var obj = effects_pool.get_effect_by_id(eff_id)
