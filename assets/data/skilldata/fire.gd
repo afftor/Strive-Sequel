@@ -25,12 +25,17 @@ var skills = {
 		value = 1.0,
 		variations = [
 			{
-				reqs = [{code = 'stat', stat = 'mastery_fire', value = 3, operant = 'gte'}],
-				set = {effects = [Effectdata.rebuild_template({effect = 'e_s_burn_new', chance = 0.6, push_characters = true, duration = 2})]}
+				reqs = [
+					{code = 'stat', stat = 'mastery_fire', value = 3, operant = 'gte'},
+					{code = 'stat', stat = 'mastery_fire', value = 5, operant = 'lt'},
+				],
+				set = {effects = [Effectdata.rebuild_template({effect = 'e_s_burn_new', chance = 0.6, push_characters = true, duration = 2})]},
+				add = {descript = '_1'}
 			},
 			{
 				reqs = [{code = 'stat', stat = 'mastery_fire', value = 5, operant = 'gte'}],
-				set = {effects = [Effectdata.rebuild_template({effect = 'e_s_burn_new', push_characters = true, duration = 2})]}
+				set = {effects = [Effectdata.rebuild_template({effect = 'e_s_burn_new', push_characters = true, duration = 2})]},
+				add = {descript = '_2'}
 			},
 		]
 	},
@@ -83,12 +88,16 @@ var skills = {
 		damagestat = ['no_stat'],
 		variations = [
 			{
-				reqs = [{code = 'stat', stat = 'mastery_fire', value = 5, operant = 'gte'}],
-				set = {target_number = 'line'}
+				reqs = [
+					{code = 'stat', stat = 'mastery_fire', value = 5, operant = 'eq'},
+					],
+				set = {target_number = 'line'},
+				add = {descript = '_1'}
 			},
 			{
 				reqs = [{code = 'stat', stat = 'mastery_fire', value = 6, operant = 'gte'}],
-				set = {target_number = 'all'}
+				set = {target_number = 'all'},
+				add = {descript = '_2'}
 			},
 		]
 	},

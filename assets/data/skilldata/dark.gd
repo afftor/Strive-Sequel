@@ -26,7 +26,8 @@ var skills = {
 		variations = [
 			{
 				reqs = [{code = 'stat', stat = 'mastery_dark', value = 3, operant = 'gte'}],
-				set = {effects = [Effectdata.rebuild_template({effect = 'e_s_blind', duration = 2})]}
+				set = {effects = [Effectdata.rebuild_template({effect = 'e_s_blind', duration = 2})]},
+				add = {descript = '_1'}
 			},
 		]
 	},

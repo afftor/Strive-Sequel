@@ -27,7 +27,8 @@ var skills = {
 		variations = [
 			{
 				reqs = [{code = 'stat', stat = 'mastery_earth', value = 3, operant = 'gte'}],
-				set = {effects = ['e_s_earthshield_1']}
+				set = {effects = ['e_s_earthshield_1']},
+				add = {descript = '_1'}
 			}
 		]
 	},

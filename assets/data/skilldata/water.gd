@@ -27,7 +27,8 @@ var skills = {
 		variations = [
 			{
 				reqs = [{code = 'stat', stat = 'mastery_water', value = 4, operant = 'gte'}],
-				set = {target_number = 'row'}
+				set = {target_number = 'row'},
+				add = {descript = '_2'}
 			}
 		]
 	},
@@ -80,12 +81,14 @@ var skills = {
 		damagestat = ['no_stat'],
 		variations = [
 			{
-				reqs = [{code = 'stat', stat = 'mastery_fire', value = 4, operant = 'gte'}],
-				set = {target_number = 'line'}
+				reqs = [{code = 'stat', stat = 'mastery_fire', value = 4, operant = 'eq'}],
+				set = {target_number = 'line'},
+				add = {descript = '_1'}
 			},
 			{
 				reqs = [{code = 'stat', stat = 'mastery_fire', value = 5, operant = 'gte'}],
-				set = {target_number = 'all'}
+				set = {target_number = 'all'},
+				add = {descript = '_2'}
 			},
 		]
 	},

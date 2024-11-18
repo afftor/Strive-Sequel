@@ -256,37 +256,41 @@ func change_mastery(mas):
 		for s_id in lvdata.combat_skills:
 			var sdata = Skilldata.get_template(s_id, person)
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel, 'skill')
-			if lv_tmp == lv + 1:
-				skill_icon.texture = images.get_icon('frame_skill_1')
-			else:
-				skill_icon.texture = images.get_icon('frame_skill')
+#			if lv_tmp == lv + 1:
+#				skill_icon.texture = images.get_icon('frame_skill_1')
+#			else:
+#				skill_icon.texture = images.get_icon('frame_skill')
+			skill_icon.texture = images.get_icon('frame_skill')
 			skill_icon.get_node('icon').texture = sdata.icon
 			globals.connectskilltooltip(skill_icon, s_id, person)
 		for s_id in lvdata.explore_skills:
 			var sdata = Skilldata.get_template(s_id, person)
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel, 'skill')
-			if lv_tmp == lv + 1:
-				skill_icon.texture = images.get_icon('frame_explore_1')
-			else:
-				skill_icon.texture = images.get_icon('frame_explore')
+#			if lv_tmp == lv + 1:
+#				skill_icon.texture = images.get_icon('frame_explore_1')
+#			else:
+#				skill_icon.texture = images.get_icon('frame_explore')
+			skill_icon.texture = images.get_icon('frame_explore')
 			skill_icon.get_node('icon').texture = sdata.icon
 			globals.connectskilltooltip(skill_icon, s_id, person)
 		for tr_id in lvdata.traits:
 			var trdata = Traitdata.traits[tr_id]
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel, 'skill')
-			if lv_tmp == lv + 1:
-				skill_icon.texture = images.get_icon('frame_trait_1')
-			else:
-				skill_icon.texture = images.get_icon('frame_trait')
+#			if lv_tmp == lv + 1:
+#				skill_icon.texture = images.get_icon('frame_trait_1')
+#			else:
+#				skill_icon.texture = images.get_icon('frame_trait')
+			skill_icon.texture = images.get_icon('frame_trait')
 			skill_icon.get_node('icon').texture = trdata.icon
 			globals.connecttexttooltip(skill_icon, trdata.descript)
 		for s_id in lvdata.action:
 			var sdata = Skilldata.training_actions[s_id]
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel, 'skill')
-			if lv_tmp == lv + 1:
-				skill_icon.texture = images.get_icon('frame_train_1')
-			else:
-				skill_icon.texture = images.get_icon('frame_train')
+#			if lv_tmp == lv + 1:
+#				skill_icon.texture = images.get_icon('frame_train_1')
+#			else:
+#				skill_icon.texture = images.get_icon('frame_train')
+			skill_icon.texture = images.get_icon('frame_train')
 			skill_icon.get_node('icon').texture = load(Skilldata.training_categories[sdata.type].icon)
 			globals.connecttexttooltip(skill_icon, sdata.descript)
 	$MasteryPanel/AddPoint.disabled = !person.can_upgrade_mastery(mas)
