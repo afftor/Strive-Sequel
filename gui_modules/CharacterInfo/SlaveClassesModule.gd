@@ -215,6 +215,7 @@ func build_mastery_cat():
 	var change_mastery = false
 	for mas in Skilldata.masteries:
 		var masdata = Skilldata.masteries[mas]
+		var text = ""
 		if masdata.type == mastery_category:
 			if tmp == null:
 				tmp = mas
@@ -223,6 +224,11 @@ func build_mastery_cat():
 			button.connect('pressed', self, 'change_mastery', [mas])
 			button.get_node('icon').texture = images.get_icon(masdata.icon)
 			#add mastery tooltip
+			text += tr(mas) + '\n'
+#			text += tr(masdata.descript) + '\n'
+			text += globals.build_desc_for_bonusstats(masdata.passive) + '\n'
+			text += tr('CURRENTLVL') + str(person.get_stat('mastery_' + mas))
+			globals.connecttexttooltip(button, text)
 		else:
 			if mas == selected_mastery:
 				change_mastery = true
