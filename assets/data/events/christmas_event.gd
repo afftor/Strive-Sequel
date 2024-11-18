@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	christmas_pre_start = {
 		image = null, tags = ['dialogue_scene', "blackscreen_transition_slow",'master_translate'],

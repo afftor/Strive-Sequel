@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	 goblin_quest_0 = {
 		image = 'letter', tags = ['dialogue_scene', 'master_translate'],

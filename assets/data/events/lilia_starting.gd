@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	lilia_search_start = {
 		image = null, tags = ['dialogue_scene'],

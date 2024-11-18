@@ -288,6 +288,7 @@ func FinishCombat(victory = true):
 	input_handler.combat_node = null
 	gui_controller.current_screen = gui_controller.previous_screen
 	gui_controller.combat = null
+	characters_pool.cleanup()
 
 
 func select_actor():
@@ -973,12 +974,12 @@ func make_fighter_panel(fighter, spot):
 	panel.connect("signal_RMB", self, "ShowFighterStats")
 	# panel.connect("signal_RMB_release", self, 'HideFighterStats')
 	panel.connect("signal_LMB", self, 'FighterPress')
-	panel.connect("mouse_entered", self, 'FighterMouseOver', [fighter])
-	panel.connect("mouse_exited", self, 'FighterMouseOverFinish', [fighter])
+	panel.connect("mouse_entered", self, 'FighterMouseOver', [fighter.id])
+	panel.connect("mouse_exited", self, 'FighterMouseOverFinish', [fighter.id])
 	if variables.CombatAllyHpAlwaysVisible && fighter.combatgroup == 'ally':
 		panel.get_node("hplabel").show()
 		panel.get_node("mplabel").show()
-	panel.set_meta('character',fighter)
+#	panel.set_meta('character',fighter)
 	panel.get_node("Icon").texture = fighter.get_icon()
 	panel.get_node('Icon').material = load("res://assets/sfx/bw_shader.tres").duplicate()
 	panel.turn_overlay(false)
@@ -1015,7 +1016,8 @@ func FighterShowStats(fighter):
 	$StatsPanelLeft.fill(fighter)
 	$StatsPanelRight.fill(fighter)
 
-func FighterMouseOver(fighter, no_press = false):
+func FighterMouseOver(id, no_press = false):
+	var fighter = characters_pool.get_char_by_id(id)
 	FighterShowStats(fighter)
 	$StatsPanelLeft.visible = fighter.combatgroup != 'enemy'
 	$StatsPanelRight.visible = fighter.combatgroup == 'enemy'
@@ -1036,7 +1038,8 @@ func FighterMouseOver(fighter, no_press = false):
 		Target_Glow(fighter.position)
 
 
-func FighterMouseOverFinish(fighter):
+func FighterMouseOverFinish(id):
+	var fighter = characters_pool.get_char_by_id(id)
 	var panel = fighter.displaynode
 	fighterhighlighted = false
 	$StatsPanelRight.visible = false
@@ -1052,7 +1055,8 @@ func FighterMouseOverFinish(fighter):
 	for f in allowedtargets.ally:
 		Target_Glow(f)
 
-func ShowFighterStats(fighter):
+func ShowFighterStats(id):
+	var fighter = characters_pool.get_char_by_id(id)
 	$ItemPanel.hide()
 	$Menu/Items.pressed = false
 	if fightover == true:
@@ -1545,7 +1549,7 @@ func use_skill(skill_code, caster, target):
 
 	caster.displaynode.rebuildbuffs()
 	if fighterhighlighted == true:
-		FighterMouseOver(target)
+		FighterMouseOver(target.id)
 	#print(caster.name + ' finished attacking')
 	if endturn or caster.hp <= 0 or !caster.can_act():
 		#on end turn triggers
@@ -2166,8 +2170,8 @@ func update_queue(queue, current): #don't call in asynchroned state
 			tmp.get_node('icon').texture = icon
 		tmp.get_node('hpbar').max_value = person.get_stat('hpmax')
 		tmp.get_node('hpbar').value = person.hp
-		tmp.connect("mouse_entered", self, 'FighterMouseOver', [person, true])
-		tmp.connect("mouse_exited", self, 'FighterMouseOverFinish', [person])
+		tmp.connect("mouse_entered", self, 'FighterMouseOver', [person.id, true])
+		tmp.connect("mouse_exited", self, 'FighterMouseOverFinish', [person.id])
 
 
 var active_position

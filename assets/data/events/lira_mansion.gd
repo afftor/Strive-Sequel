@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	
 	lira_mansion_1 = {

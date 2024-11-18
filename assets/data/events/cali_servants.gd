@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	cali_sidequest_4 = {
 		image = null, tags = ['dialogue_scene'], 

@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	
 	cali_heirloom_1 = {

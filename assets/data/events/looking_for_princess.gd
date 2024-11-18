@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	looking_for_princess_1 = {
 		variations = [ {

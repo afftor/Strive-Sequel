@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	fred_return_to_myr_1 = {
 		variations = [

@@ -1,4 +1,5 @@
-	var data = {
+extends Reference
+var data = {
 	ginny_visit = {
 		image = null,
 		character = 'ginny',

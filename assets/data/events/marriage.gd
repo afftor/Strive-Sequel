@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	marriage_church_1 = {
 		variations = [

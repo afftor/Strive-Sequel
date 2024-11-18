@@ -1,3 +1,4 @@
+extends Reference
 #decisions:
 #search_advice_1 - duncan -> amelia
 #search_advice_2 - amelia -> duncan

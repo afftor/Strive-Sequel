@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	daisy_wedding_1 = {
 		image = null, tags = ['dialogue_scene'],

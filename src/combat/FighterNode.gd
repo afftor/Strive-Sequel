@@ -58,7 +58,7 @@ func _on_Button_gui_input(event):
 				emit_signal("signal_LMB", position)
 			BUTTON_RIGHT:
 				emit_signal("signal_RMB_release")
-				emit_signal("signal_RMB", fighter)
+				emit_signal("signal_RMB", fighter.id)
 
 
 func get_attack_vector():

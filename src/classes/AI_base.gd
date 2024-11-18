@@ -1,7 +1,7 @@
 extends Reference
 #class_name ai_base
 
-var app_obj  #applied character
+var app_obj_ref  #applied character
 
 var ai_data = {}
 var skill_targets = {} #s_name:[targets]
@@ -12,6 +12,12 @@ var next_state
 func _init():
 	current_state = 0
 	next_state = 0
+
+func set_obj(app_obj):
+	app_obj_ref = weakref(app_obj)
+
+func get_obj():
+	return app_obj_ref.get_ref()
 
 func _ready():
 	pass # Replace with function body.
@@ -33,13 +39,14 @@ func _set_next_state():
 		return
 	# controlled_object_state-based state change 
 	for line in ai_data[current_state].transmissions:
-		if app_obj.process_check(line.check):
+		if get_obj().process_check(line.check):
 			current_state = line.next_state
 			return
 
 func calculate_target_list(hide_ignore = false): #utility checks and targets calculating 
 	#for most of the cases reimplementing this function in inherited classes is not reqired
 	#works worser for skills with repeat and random targets
+	var app_obj = get_obj()
 	for s_n in app_obj.skills.combat_skills:
 		var t_skill = Skilldata.get_template(s_n, app_obj)
 		var target_array = []
@@ -128,7 +135,7 @@ func _get_weight_for_skill(s_name):
 	var data = Skilldata.get_template(s_name, app_obj)
 #	if data.ability_type == 'skill' and app_obj.has_status('disarm') and !data.tags.has('default'): return 0
 #	if data.ability_type == 'spell' and app_obj.has_status('silence') and !data.tags.has('default'): return 0
-	if !app_obj.can_use_skill(data): return 0
+	if !get_obj().can_use_skill(data): return 0
 	#no targets check
 	if skill_targets[s_name].size() == 0: return res
 	#empty ai_data check
@@ -145,6 +152,7 @@ func _get_weight_for_skill(s_name):
 	return res
 
 func _get_action(hide_ignore = false):
+	var app_obj = get_obj()
 	calculate_target_list(hide_ignore)
 	if !hide_ignore: _set_next_state()
 	var actions = []

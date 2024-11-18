@@ -57,7 +57,7 @@ func clone():
 	for v in value:
 		res.value.push_back(v.clone())
 	for v in res.value: 
-		v.parent = res
+		v.set_parent(res)
 	return res
 
 func get_from_template(attr):

@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	final_boss_start = {
 		variations = [

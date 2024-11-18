@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	after_mines_sigmund_start = {
 		variations = [ {

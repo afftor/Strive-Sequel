@@ -1,3 +1,4 @@
+extends Reference
 var data = {
 	daisy_training_new_leader_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],

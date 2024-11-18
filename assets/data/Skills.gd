@@ -1288,4 +1288,3 @@ func _ready():
 		if tmp.name == '':
 			tmp.name = 'ACTIONTYPE' + s.to_upper()
 
-
