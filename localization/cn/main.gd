@@ -1157,6 +1157,8 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	SKILLEARTH_ATKDESCRIPT = "Deals 125% of ATK as Earth damage. Has 30% chance to Stun target for 1 turn.\n造成 125% 的攻击力的地伤害。有 30% 的几率眩晕目标1回合。",
 	SKILLWIND_ATK = "Wind Flurry 风乱舞",
 	SKILLWIND_ATKDESCRIPT = "Deals 80% of ATK as Air damage to one target and random enemy.\n对一个目标和随机敌人造成 80% 的攻击力的风伤害。",
+	SKILLWATER_EDGE = """Water Blade""", # MISSING TRANSLATION
+	SKILLWATER_EDGEDESCRIPT = """Deals 100% of ATK as {color=yellow|Water} damage. Applies Wet status.""", # MISSING TRANSLATION
 	SKILLWATER_ATK = "Water Blade 水刀",
 	SKILLWATER_ATKDESCRIPT = "Deals 110% of ATK as Water damage. Causes target to bleed for 2 turns, dealing damage (30% of ATK) every turn.\n造成 110% 的攻击力的水伤害。使目标流血 2 回合，每回合造成 30% 的攻击力的伤害。",
 	SKILLHOLY_ATK = "Holy Attack 神圣打击",
@@ -1184,6 +1186,8 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	SKILLSHADOWSTRIKEDESCRIPT = "Deals 130% of ATK as Dark damage to a target. Reduces target's ATK and MATK by 20 for 2 turns.\n对目标造成 130% 的攻击力的黑暗伤害。减少目标的攻击力和魔法攻击 20 ，持续 2 回合。",
 	SKILLFIREARR = "Fire Arrow 火箭",
 	SKILLFIREARRDESCRIPT = "Deals 120% of MATK as Fire damage. Has 50% chance to burn target for 2 turns, dealing damage (20% of MATK) every turn.\n造成 120% 的魔法攻击的火焰伤害。有 50% 的机会燃烧目标2回合，每回合造成 20% 的魔法攻击的伤害。",
+	SKILLFIREARR_1DESCRIPT = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 60% chance to apply Burn for 2 turns. Chance increases at higher Fire Mastery level.""", # MISSING TRANSLATION
+	SKILLFIREARR_2DESCRIPT = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 100% chance to apply Burn for 2 turns.""", # MISSING TRANSLATION
 	SKILLLIGHTNING = "Lightning 闪电",
 	SKILLLIGHTNINGDESCRIPT = "Deals 125% of MATK as Air damage to a target. Stuns target for 1 turn.\n对目标造成 125% 的魔法攻击的风伤害。眩晕目标1回合。",
 	SKILLMINDBLAST = "Mind Blast 心灵冲击",
@@ -1269,6 +1273,8 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	SKILLCAMOUFLAGEDESCRIPT = "Buffs All Allies: +20 Evasion for 2 turns.\n增益所有盟友：+20 躲避 2 回合。",
 	SKILLREINCARNATE = "Reincarnate 转世",
 	SKILLREINCARNATEDESCRIPT = "Reinforces Spirit of an Ally. When HP reach zero, restore it to full.\n强化盟友精神。当健康值为零时，将其恢复为满。",
+	SKILLLEADERSMARK = """Leader's Mark""", # MISSING TRANSLATION
+	SKILLLEADERSMARKDESCRIPT = """Strike enemy for 70% ATK and Mark for 3 turns. Marked enemy takes 15% more damage.""", # MISSING TRANSLATION
 	SKILLHUNTERSMARK = "Hunter's Mark 猎人标记",
 	SKILLHUNTERSMARKDESCRIPT = "Marked enemy takes 15% more damage for 3 turns.\n被标记的敌人在 3 回合内受到 15% 的额外伤害。",
 	SKILLBARD1 = "Hymn 赞美诗",
@@ -2404,6 +2410,7 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	TRAITEFFECTRESISTSTATE = "Resist state: Can't gain obedience from positive abilities. Can't use exploration skills. Positive actions during dates less effective.",
 	TRAITEFFECTISPREGNANT = "Is pregnant: -10 Speed, -20 Physics",
 	TRAITEFFECTISPREGNANT2 = "Is heavily pregnant: -20 Speed, -40 Physics",
+	TRAITSTUNIMMUNITYDESCRIPT = """Can't be stunned in combat.""", # MISSING TRANSLATION
 	EUPHORIABUFF = """Damage Increased""", # MISSING TRANSLATION
 	BUFFDESCRIPTSHACKLES = "Shackles",
 	BUFFDESCRIPTGREATSHACKLES = "Great Shackles",
