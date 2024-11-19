@@ -32,8 +32,12 @@ func _ready():
 	if !get_parent().name == "CheatsModule":
 		$CheckBox.connect("pressed", self, "checkbox_locked")
 	input_handler.AddPanelOpenCloseAnimation($ClassPanel)
-	$MasteryPanel/AddPoint.connect("pressed", self, 'add_mastery')
+	$MasteryPanel/AddPoint.connect("pressed", self, 'add_mastery_prompt')
 	$MasteryPanel/SkillBookButton.connect("pressed", self, "SkillBookButtonPress")
+	for i in ['combat', 'magic', 'universal']:
+		var st = 'mastery_point_' + i
+		var stdata = statdata.statdata[st]
+		globals.connecttexttooltip(get_node('MasteryPanel/Categories3/' + i), tr(stdata.name))
 
 
 func SkillBookButtonPress():
@@ -215,6 +219,7 @@ func build_mastery_cat():
 	var change_mastery = false
 	for mas in Skilldata.masteries:
 		var masdata = Skilldata.masteries[mas]
+		var text = ""
 		if masdata.type == mastery_category:
 			if tmp == null:
 				tmp = mas
@@ -224,6 +229,11 @@ func build_mastery_cat():
 			button.get_node('icon').texture = images.get_icon(masdata.icon)
 			globals.connecttexttooltip(button, masdata.name)
 			#add mastery tooltip
+			text += tr(mas) + '\n'
+#			text += tr(masdata.descript) + '\n'
+			text += globals.build_desc_for_bonusstats(masdata.passive) + '\n'
+			text += tr('CURRENTLVL') + str(person.get_stat('mastery_' + mas))
+			globals.connecttexttooltip(button, text)
 		else:
 			if mas == selected_mastery:
 				change_mastery = true
@@ -232,7 +242,7 @@ func build_mastery_cat():
 		selected_mastery = tmp
 	change_mastery(selected_mastery)
 
-
+var text
 func change_mastery(mas):
 	selected_mastery = mas
 	for node in $MasteryPanel/Categories2.get_children():
@@ -243,6 +253,8 @@ func change_mastery(mas):
 	$MasteryPanel/mastery/Label.text = masdata.name
 	$MasteryPanel/mastery.texture = images.get_background(masdata.background, true)
 	var lv = person.get_stat('mastery_' + mas)
+	text = tr('ADD_MASTERY_CONFIRM') + '\n'
+	text += globals.build_desc_for_bonusstats(masdata.passive)
 	for lv_tmp in range(1, masdata.maxlevel + 1):
 		if lv_tmp > 1:
 			input_handler.DuplicateContainerTemplate($MasteryPanel/mastery/ScrollContainer/VBoxContainer, 'HSeparator')
@@ -255,46 +267,74 @@ func change_mastery(mas):
 		if !masdata.has(key):
 			continue
 		var lvdata = masdata[key]
+		var f = false
+		if lv_tmp == lv + 1:
+			f = true
 		for s_id in lvdata.combat_skills:
 			var sdata = Skilldata.get_template(s_id, person)
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
-			if lv_tmp == lv + 1:
-				skill_icon.texture = images.get_icon('frame_skill_1')
-			else:
-				skill_icon.texture = images.get_icon('frame_skill')
+#			if lv_tmp == lv + 1:
+#				skill_icon.texture = images.get_icon('frame_skill_1')
+#			else:
+#				skill_icon.texture = images.get_icon('frame_skill')
+			skill_icon.texture = images.get_icon('frame_skill')
 			skill_icon.get_node('icon').texture = sdata.icon
+			skill_icon.set_meta('display_only', true)
 			globals.connectskilltooltip(skill_icon, s_id, person)
+			if f:
+				text += tr('SKILLLEARN') + tr(sdata.name) + '\n'
 		for s_id in lvdata.explore_skills:
 			var sdata = Skilldata.get_template(s_id, person)
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
-			if lv_tmp == lv + 1:
-				skill_icon.texture = images.get_icon('frame_explore_1')
-			else:
-				skill_icon.texture = images.get_icon('frame_explore')
+#			if lv_tmp == lv + 1:
+#				skill_icon.texture = images.get_icon('frame_explore_1')
+#			else:
+#				skill_icon.texture = images.get_icon('frame_explore')
+			skill_icon.texture = images.get_icon('frame_explore')
 			skill_icon.get_node('icon').texture = sdata.icon
+			skill_icon.set_meta('display_only', true)
 			globals.connectskilltooltip(skill_icon, s_id, person)
+			if f:
+				text += tr('SKILLLEARN') + tr(sdata.name) + '\n'
 		for tr_id in lvdata.traits:
 			var trdata = Traitdata.traits[tr_id]
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
-			if lv_tmp == lv + 1:
-				skill_icon.texture = images.get_icon('frame_trait_1')
-			else:
-				skill_icon.texture = images.get_icon('frame_trait')
+#			if lv_tmp == lv + 1:
+#				skill_icon.texture = images.get_icon('frame_trait_1')
+#			else:
+#				skill_icon.texture = images.get_icon('frame_trait')
+			skill_icon.texture = images.get_icon('frame_trait')
 			skill_icon.get_node('icon').texture = trdata.icon
 			globals.connecttexttooltip(skill_icon, trdata.descript)
+			if f:
+				text += tr('TRAITLEARN') + tr(trdata.name) + '\n'
 		for s_id in lvdata.action:
 			var sdata = Skilldata.training_actions[s_id]
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
-			if lv_tmp == lv + 1:
-				skill_icon.texture = images.get_icon('frame_train_1')
-			else:
-				skill_icon.texture = images.get_icon('frame_train')
+#			if lv_tmp == lv + 1:
+#				skill_icon.texture = images.get_icon('frame_train_1')
+#			else:
+#				skill_icon.texture = images.get_icon('frame_train')
+			skill_icon.texture = images.get_icon('frame_train')
 			skill_icon.get_node('icon').texture = load(Skilldata.training_categories[sdata.type].icon)
 			globals.connecttexttooltip(skill_icon, sdata.descript)
+			if f:
+				text += tr('TRAININGLEARN') + tr(sdata.name) + '\n'
 	$MasteryPanel/AddPoint.disabled = !person.can_upgrade_mastery(mas)
 	$MasteryPanel/Categories3/combat/Label.text = "%d Points" % person.get_stat('mastery_point_combat')
 	$MasteryPanel/Categories3/magic/Label.text = "%d Points" % person.get_stat('mastery_point_magic')
 	$MasteryPanel/Categories3/universal/Label.text = "%d Points" % person.get_stat('mastery_point_universal')
+	
+	text += tr('FOR')
+	var cost = person.upgrade_mastery_cost(mas) 
+	for point in cost:
+		var stdata = statdata.statdata[point]
+		if cost[point] > 0:
+			text += "%s : %d \n" % [tr(stdata.name), cost[point]]
+
+
+func add_mastery_prompt():
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'add_mastery', text])
 
 
 func add_mastery():

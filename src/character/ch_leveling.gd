@@ -179,6 +179,28 @@ func remove_mastery_bonus(school, level):
 					print('WARNING! error in prof dependancy')
 
 
+func upgrade_mastery_cost(school):
+	var res = {
+		mastery_point_combat = 0,
+		mastery_point_magic = 0,
+		mastery_point_universal = 0,
+	}
+	var data = Skilldata.masteries[school]
+	match data.type:
+		'combat':
+			if mastery_point_combat > 0:
+				res.mastery_point_combat = 1
+			else:
+				res.mastery_point_universal = 1
+		'spell':
+			if mastery_point_magic > 0:
+				res.mastery_point_magic = 1
+			else:
+				res.mastery_point_universal = 1
+	return res
+	
+
+
 func can_upgrade_mastery(school):
 	var data = Skilldata.masteries[school]
 	if !mastery_levels[school].enable:

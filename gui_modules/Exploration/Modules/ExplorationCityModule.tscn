@@ -427,9 +427,6 @@ margin_top = 137.0
 margin_right = 1519.0
 margin_bottom = 937.0
 custom_styles/panel = ExtResource( 37 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HireBG1" type="Panel" parent="SlaveMarket"]
 self_modulate = Color( 0, 0, 0, 0.705882 )
@@ -913,7 +910,7 @@ text = "25"
 
 [node name="timid_factor" type="Label" parent="SlaveMarket/factors" groups=["hide_master"]]
 margin_top = 231.0
-margin_right = 54.0
+margin_right = 51.0
 margin_bottom = 266.0
 rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
@@ -921,7 +918,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "TMD"
+text = "ATH"
 
 [node name="Label" type="Label" parent="SlaveMarket/factors/timid_factor"]
 margin_left = 69.2385

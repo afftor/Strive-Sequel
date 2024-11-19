@@ -100,7 +100,8 @@ var skills = {
 		variations = [
 			{
 				reqs = [{code = 'has_status', status = 'hide', check = true}],
-				set = {value = 3.5}
+				set = {value = 3.5},
+				add = {descript = '_1'}
 			}
 		]
 	},

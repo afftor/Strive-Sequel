@@ -225,10 +225,7 @@ var Skilllist = {
 		icon = load("res://assets/images/iconsskills/firebolt.png"),
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage','aoe','learnable'],
-#		new_syntax = true,
-		learn_reqs = [{code = 'trait', trait = 'advanced_spells', check = true}],
-		learn_cost = 850,
+		tags = ['damage','aoe'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_fireburst', duration = 3})], 
@@ -1269,6 +1266,7 @@ func get_template(id, caster):
 	#load icon
 	if tres.icon is String:
 		tres.icon = input_handler.loadimage(tres.icon, 'icons') #not get_icon or load for the sake of user: pathes
+	tres.descript = tr(tres.descript)
 	return tres
 
 

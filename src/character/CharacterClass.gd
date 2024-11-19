@@ -463,6 +463,9 @@ func upgrade_mastery(school):
 func can_upgrade_mastery(school):
 	return xp_module.can_upgrade_mastery(school)
 
+func upgrade_mastery_cost(school):
+	return xp_module.upgrade_mastery_cost(school)
+
 func unlock_class(prof, satisfy_progress_reqs = false):
 	xp_module.unlock_class(prof, satisfy_progress_reqs)
 

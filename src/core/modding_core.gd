@@ -474,7 +474,7 @@ func fix_main_data():
 	for i in Skilldata.Skilllist.values():
 		if !i.has('name'):
 			i.name = tr("SKILL" + i.code.to_upper())
-		i.descript = tr("SKILL" + i.code.to_upper()+"DESCRIPT")
+		i.descript = "SKILL" + i.code.to_upper()+"DESCRIPT"
 		if i.has('dialogue_text'):
 			i.dialogue_text = tr("DIALOGUE" +i.code.to_upper() + "TEXT")
 		if i.has('dialogue_report'):
