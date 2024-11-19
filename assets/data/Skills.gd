@@ -1075,6 +1075,7 @@ var training_categories = {
 var masteries = {
 	warfare = {
 		type = 'combat',
+		name = 'Warfare',
 		icon = 'mastery_warfare',
 		background = 'mastery_warfare',
 		maxlevel = 5,
@@ -1087,6 +1088,7 @@ var masteries = {
 	},
 	protection = {
 		type = 'combat',
+		name = 'Protection',
 		icon = 'mastery_protection',
 		background = 'mastery_protection',
 		maxlevel = 5,
@@ -1099,6 +1101,7 @@ var masteries = {
 	},
 	stealth = {
 		type = 'combat',
+		name = 'Stealth',
 		icon = 'mastery_stealth',
 		background = 'mastery_stealth',
 		maxlevel = 5,
@@ -1111,6 +1114,7 @@ var masteries = {
 	},
 	marksmanship = {
 		type = 'combat',
+		name = 'Marksmanship',
 		icon = 'mastery_marksmanship',
 		background = 'mastery_marksmanship',
 		maxlevel = 5,
@@ -1123,6 +1127,7 @@ var masteries = {
 	},
 	leadership = {
 		type = 'combat',
+		name = 'Leadership',
 		icon = 'mastery_leadership',
 		background = 'mastery_leadership',
 		maxlevel = 5,
@@ -1136,6 +1141,7 @@ var masteries = {
 
 	fire = {
 		type = 'spell',
+		name = 'Fire',
 		icon = 'mastery_fire',
 		background = 'mastery_fire',
 		maxlevel = 6,
@@ -1149,6 +1155,7 @@ var masteries = {
 	},
 	water = {
 		type = 'spell',
+		name = 'Water',
 		icon = 'mastery_water',
 		background = 'mastery_water',
 		maxlevel = 6,
@@ -1162,6 +1169,7 @@ var masteries = {
 	},
 	earth = {
 		type = 'spell',
+		name = 'Earth',
 		icon = 'mastery_earth',
 		background = 'mastery_earth',
 		maxlevel = 6,
@@ -1175,6 +1183,7 @@ var masteries = {
 	},
 	air = {
 		type = 'spell',
+		name = 'Air',
 		icon = 'mastery_air',
 		background = 'mastery_air',
 		maxlevel = 6,
@@ -1188,6 +1197,7 @@ var masteries = {
 	},
 	light = {
 		type = 'spell',
+		name = 'Light',
 		icon = 'mastery_light',
 		background = 'mastery_light',
 		maxlevel = 6,
@@ -1201,6 +1211,7 @@ var masteries = {
 	},
 	dark = {
 		type = 'spell',
+		name = 'Dark',
 		icon = 'mastery_dark',
 		background = 'mastery_dark',
 		maxlevel = 6,
@@ -1214,6 +1225,7 @@ var masteries = {
 	},
 	mind = {
 		type = 'spell',
+		name = 'Mind',
 		icon = 'mastery_mind',
 		background = 'mastery_mind',
 		maxlevel = 6,

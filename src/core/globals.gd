@@ -2788,3 +2788,7 @@ func copy_stats(base_ch, unique_ch):
 			base_ch_statlist.traits.append(trait)
 	
 	base_ch.statlist.statlist = base_ch_statlist
+
+func get_sex_action(code):
+	assert(sex_actions_dict.has(code), "no such sex_action! (%s)" % code)
+	return sex_actions_dict[code]

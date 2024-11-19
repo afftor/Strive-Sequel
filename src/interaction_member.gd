@@ -11,7 +11,7 @@ var lewdmod = 1.0
 var role
 var sex
 var orgasms = 0
-var lastaction
+var lastaction_ids
 var request
 var requestsdone = 0
 var consent = 0
@@ -139,6 +139,7 @@ func lust_set(value):
 	lust = min(value, 1000)
 
 func sens_set(value):
+	var lastaction = get_lastaction_ref_dict()
 	var change = value - sens
 	sens += change*sensmod
 	if sens >= 1000:
@@ -253,6 +254,7 @@ func orgasm(custom_text = null):
 	var text = ''
 	orgasm = true
 	sens = 0
+	var lastaction = get_lastaction_ref_dict()
 	if lastaction == null:
 		lastaction = {scene = load("res://src/actions/100caress.gd").new(), givers = [], takers = [self]}
 	if person_sexexp.orgasms.has(lastaction.scene.code):
@@ -286,7 +288,7 @@ func orgasm(custom_text = null):
 #		person.add_stat('loyalty', rand_range(1,2))
 	#anus in use, find scene
 	if anus != null:
-		scene = anus
+		scene = form_action_ref_dict(anus)
 		for i in scene.givers:
 			globals.addrelations(person, i.person, rand_range(30,50))
 		#anus in giver slot
@@ -316,7 +318,7 @@ func orgasm(custom_text = null):
 	if person.get_stat('vagina') != 'none':
 		#vagina in use, find scene
 		if vagina != null:
-			scene = vagina
+			scene = form_action_ref_dict(vagina)
 			for i in scene.givers:
 				globals.addrelations(person, i.person, rand_range(30,50))
 			#vagina in giver slot
@@ -346,7 +348,7 @@ func orgasm(custom_text = null):
 	if person.get_stat('penis_size') != '':
 		#penis in use, find scene
 		if penis != null:
-			scene = penis
+			scene = form_action_ref_dict(penis)
 			for i in scene.takers:
 				globals.addrelations(person, i.person, rand_range(30,50))
 			#penis in giver slot
@@ -447,13 +449,14 @@ func orgasm(custom_text = null):
 	sceneref.get_node("Panel/sceneeffects").bbcode_text += "[color=#ff5df8]" + text + "[/color]\n"
 
 
-func actioneffect(values, scenedict):
+func actioneffect(values, scenedict_ids):
 	var sensinput = 0
 	var hornyinput = 0
 	var sens_mod = 1.0
 	var horny_mod = 1.0
+	var scenedict = form_action_ref_dict(scenedict_ids)
 	if scenedict.scene.code != 'deny_orgasm':
-		lastaction = scenedict
+		set_lastaction(scenedict_ids)
 		
 	if values.has('sens'):
 		sensinput = values.sens
@@ -613,3 +616,36 @@ func valuecheck(dict, group, scene):
 					break
 			return check
 
+func form_action_ref_dict(id_dict):
+	return gui_controller.sex_panel.make_ref_dict(id_dict)
+
+func get_lastaction_ref_dict():
+	if lastaction_ids == null: return null
+	return form_action_ref_dict(lastaction_ids)
+
+func get_lastaction_id_dict():
+	return lastaction_ids
+
+func get_lastaction_ref_scene():
+	return globals.get_sex_action(lastaction_ids.scene_code)
+
+func set_lastaction(action_ids):
+	lastaction_ids = action_ids
+
+func get_part_id_dict(part_name):
+	return get(part_name)
+
+func get_part_ref_dict(part_name):
+	var id_dict = get_part_id_dict(part_name)
+	if id_dict != null:
+		return form_action_ref_dict(id_dict)
+	return null
+
+func get_part_ref_scene(part_name):
+	var id_dict = get_part_id_dict(part_name)
+	if id_dict != null:
+		return globals.get_sex_action(id_dict.scene_code)
+	return null
+
+func set_part(part_name, action_ids):
+	set(part_name, action_ids)
