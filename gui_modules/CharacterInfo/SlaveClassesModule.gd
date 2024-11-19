@@ -34,6 +34,10 @@ func _ready():
 	input_handler.AddPanelOpenCloseAnimation($ClassPanel)
 	$MasteryPanel/AddPoint.connect("pressed", self, 'add_mastery_prompt')
 	$MasteryPanel/SkillBookButton.connect("pressed", self, "SkillBookButtonPress")
+	for i in ['combat', 'magic', 'universal']:
+		var st = 'mastery_point_' + i
+		var stdata = statdata.statdata[st]
+		globals.connecttexttooltip(get_node('MasteryPanel/Categories3/' + i), tr(stdata.name))
 
 
 func SkillBookButtonPress():
