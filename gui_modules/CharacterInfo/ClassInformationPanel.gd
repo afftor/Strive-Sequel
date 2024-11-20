@@ -21,7 +21,7 @@ func open(classcode, person):
 	$SocialLabel.visible = $SocialSkills.visible
 	$CombatSkills.visible = tempclass.combatskills.size() > 0
 	$CombatLabel.visible = $CombatLabel.visible
-	var text = ResourceScripts.descriptions.get_class_bonuses(person, tempclass) 
+	var text = ResourceScripts.descriptions.get_class_bonuses_short(person, tempclass) 
 	if text != '':
 		text += '\n' 
 	text += ResourceScripts.descriptions.get_class_traits_no_icons(person, tempclass)
@@ -40,6 +40,8 @@ func open(classcode, person):
 			continue
 		var newicon = input_handler.DuplicateContainerTemplate($ReqIcons, "Icon")
 		newicon.texture = images.get_icon(i)
+		newicon.get_node('Label').text = str(tempclass.statchanges[i])
+		globals.connecttexttooltip(newicon, tr(stdata.name))
 	
 	text = tr('CLASSREQS')+":\n"
 	if tempclass.reqs.size() > 0 && tempclass.reqs[0].code != 'disabled':

@@ -217,9 +217,12 @@ func build_mastery_cat():
 	input_handler.ClearContainer($MasteryPanel/Categories2, ['button'])
 	var tmp = null
 	var change_mastery = false
+	var lv_sum = {combat = 0, spell = 0}
 	for mas in Skilldata.masteries:
 		var masdata = Skilldata.masteries[mas]
 		var text = ""
+		var lv = person.get_stat('mastery_' + mas)
+		lv_sum[masdata.type] += lv
 		if masdata.type == mastery_category:
 			if tmp == null:
 				tmp = mas
@@ -227,12 +230,13 @@ func build_mastery_cat():
 			button.set_meta('mastery', mas)
 			button.connect('pressed', self, 'change_mastery', [mas])
 			button.get_node('icon').texture = images.get_icon(masdata.icon)
+			button.get_node('icon/Label').text = str(lv)
 			globals.connecttexttooltip(button, masdata.name)
 			#add mastery tooltip
 			text += tr(mas) + '\n'
 #			text += tr(masdata.descript) + '\n'
 			text += globals.build_desc_for_bonusstats(masdata.passive) + '\n'
-			text += tr('CURRENTLVL') + str(person.get_stat('mastery_' + mas))
+			text += tr('CURRENTLVL') + str(lv)
 			globals.connecttexttooltip(button, text)
 		else:
 			if mas == selected_mastery:
@@ -241,13 +245,18 @@ func build_mastery_cat():
 	if change_mastery:
 		selected_mastery = tmp
 	change_mastery(selected_mastery)
+	for i in $MasteryPanel/Categories.get_children():
+		i.get_node('Label').text = str(lv_sum[i.name])
+
 
 var text
 func change_mastery(mas):
 	selected_mastery = mas
 	for node in $MasteryPanel/Categories2.get_children():
 		if node.has_meta('mastery'):
-			node.pressed = (node.get_meta('mastery') == selected_mastery)
+			var cmastery = node.get_meta('mastery')
+			node.pressed = (cmastery == selected_mastery)
+#			node.get_node('icon/Label').text = str(person.get_stat('mastery_' + cmastery))
 	input_handler.ClearContainer($MasteryPanel/mastery/ScrollContainer/VBoxContainer, ['HSeparator', 'container'])
 	var masdata = Skilldata.masteries[mas]
 	$MasteryPanel/mastery/Label.text = masdata.name
@@ -339,7 +348,8 @@ func add_mastery_prompt():
 
 func add_mastery():
 	person.upgrade_mastery(selected_mastery)
-	change_mastery(selected_mastery)
+	build_mastery_cat()
+#	change_mastery(selected_mastery)
 
 
 # func play_animation():
