@@ -15,9 +15,9 @@ var traits = {
 		name = '',
 		descript = '',
 		visible = false,
-		icon = "res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png", #2fix
+		icon = "res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_basic_combat.png",
 		effects = [],
-		tags = ['simple_icon', 'trainer', 'show_in_header']
+		tags = ['simple_icon', 'trainer']
 	},
 	undead = {
 		code = 'undead',
