@@ -107,7 +107,7 @@ var skills = {
 	veil = {
 		code = 'veil',
 		descript = '',
-		icon = load("res://assets/images/iconsskills/rejuvenation.png"),
+		icon = "res://assets/images/iconsskills/skill_veil.png",
 		type = 'combat', 
 		ability_type = 'spell',
 		tags = ['support', 'buff'],
@@ -131,7 +131,7 @@ var skills = {
 	skill_void = {
 		code = 'skill_void',
 		descript = '',
-		icon = load("res://assets/images/iconsskills/defaultattack.png"),
+		icon = "res://assets/images/iconsskills/skill_void.png",
 		type = 'combat', 
 		ability_type = 'spell',
 		tags = ['damage', 'aoe', 'debuff'],
@@ -188,7 +188,7 @@ var effects = {
 			],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsclasses/Knight.png",
+				icon = "res://assets/images/iconsskills/skill_veil.png",
 				description = "TRAITEFFECTVEIL",
 				limit = 1,
 				t_name = 'veil'

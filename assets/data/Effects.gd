@@ -2476,13 +2476,13 @@ var buffs = {
 		t_name = 'regen'
 	},
 	b_stonewall = {
-		icon = "res://assets/images/iconsskills/Sedate.png",
+		icon = "res://assets/images/iconsskills/icon_endure.png",
 		description = "BUFFDESCRIPTSTONEWALL",
 		t_name = 'stonewall',
 		combat_only = true
 	},
 	b_laststand = {
-		icon = "res://assets/images/iconsskills/Sedate.png",
+		icon = "res://assets/images/iconsskills/skill_last_stand.png",
 		description = "BUFFDESCRIPTLASTSTAND",
 		t_name = 'laststand',
 		combat_only = true

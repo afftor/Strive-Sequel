@@ -191,7 +191,7 @@ var effects = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/traits/speeddebuf.png",
+				icon = "res://assets/images/iconsskills/tackle.png",
 				description = "TRAITEFFECTHASTE",
 				limit = 1,
 				t_name = 'haste'
@@ -236,7 +236,7 @@ var effects = {
 		atomic = [],
 		buffs = [
 			{
-				icon = "res://assets/images/traits/speeddebuf.png",
+				icon = "res://assets/images/iconsskills/Innervate.png",
 				description = "TRAITEFFECTEYEOFTHESTORM",
 				limit = 1,
 				t_name = 'eyeofthestorm'

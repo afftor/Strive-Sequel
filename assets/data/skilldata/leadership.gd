@@ -76,7 +76,7 @@ var skills = {
 	rally = {
 		code = 'rally',
 		descript = '',
-		icon = load("res://assets/images/iconsskills/HealBandage.png"),
+		icon = "res://assets/images/iconsskills/skill_rally.png",
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['heal', 'noreduce', 'noevade','support'],
@@ -116,7 +116,7 @@ var effects = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Praise.png",
+				icon = "res://assets/images/iconsskills/Inspire.png",
 				description = "TRAITEFFECTINSPIRED",
 				limit = 1,
 				t_name = 'inspire'
@@ -136,7 +136,7 @@ var effects = {
 		atomic = [],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Discipline.png",
+				icon = "res://assets/images/iconsskills/Command.png",
 				description = "TRAITEFFECTHMARK",
 				limit = 1,
 				t_name = 'huntersmark',
