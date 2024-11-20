@@ -1253,7 +1253,7 @@ var masteries = {
 		passive = {mpmax = 3, damage_mod_mind = 5},
 		level1 = {combat_skills = [], explore_skills = [], traits = [], action = ["mindread"]},
 		level2 = {combat_skills = ["mindblast"], explore_skills = [], traits = [], action = ["influence"], },
-		level3 = {combat_skills = ["invigorate"], explore_skills = [], traits = [], action = []},
+		level3 = {combat_skills = [], explore_skills = ["invigorate"], traits = [], action = []},
 		level4 = {combat_skills = [], explore_skills = [], traits = [], action = ["stronginfluence"]},
 		level5 = {combat_skills = ["mindshatter"], explore_skills = [], traits = [], action = []},
 		level6 = {combat_skills = [], explore_skills = [], traits = [], action = ["mindcontrol"]},
