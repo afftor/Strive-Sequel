@@ -316,7 +316,7 @@ func change_mastery(mas):
 #			else:
 #				skill_icon.texture = images.get_icon('frame_train')
 			skill_icon.texture = images.get_icon('frame_train')
-			skill_icon.get_node('icon').texture = load(Skilldata.training_categories[sdata.type].icon)
+			skill_icon.get_node('icon').texture = load(sdata.icon)
 			globals.connecttexttooltip(skill_icon, sdata.descript)
 			if f:
 				text += tr('TRAININGLEARN') + tr(sdata.name) + '\n'
