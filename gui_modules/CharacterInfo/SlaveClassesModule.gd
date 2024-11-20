@@ -317,7 +317,7 @@ func change_mastery(mas):
 #				skill_icon.texture = images.get_icon('frame_train')
 			skill_icon.texture = images.get_icon('frame_train')
 			skill_icon.get_node('icon').texture = load(sdata.icon)
-			globals.connecttexttooltip(skill_icon, sdata.descript)
+			globals.connecttexttooltip(skill_icon, tr(sdata.descript_mastery))
 			if f:
 				text += tr('TRAININGLEARN') + tr(sdata.name) + '\n'
 	$MasteryPanel/AddPoint.disabled = !person.can_upgrade_mastery(mas)

@@ -950,6 +950,7 @@ var training_actions = {
 		name = '',
 		icon = "res://assets/images/iconsskills/Mindread.png",
 		descript = '',
+		descript_mastery = '',
 		scene_image = 'mindread',
 		scene_text = '',
 		result_text = {},
@@ -964,6 +965,7 @@ var training_actions = {
 		name = '',
 		icon = "res://assets/images/iconsskills/Warn.png",
 		descript = '',
+		descript_mastery = '',
 		scene_image = 'sedation',
 		scene_text = '',
 		result_text = {},
@@ -979,6 +981,7 @@ var training_actions = {
 		name = '',
 		icon = "res://assets/images/iconsskills/Charm.png",
 		descript = '',
+		descript_mastery = '',
 		scene_image = 'sedation',
 		scene_text = '',
 		result_text = {},
@@ -993,6 +996,7 @@ var training_actions = {
 		name = '',
 		icon = "res://assets/images/iconsskills/Mind_Control.png",
 		descript = '',
+		descript_mastery = '',
 		scene_image = 'mindcontrol',
 		scene_text = '',
 		result_text = {},
@@ -1312,6 +1316,8 @@ func _ready():
 			tmp.name = 'ACTION' + s.to_upper()
 		if tmp.descript == '':
 			tmp.descript = 'ACTION' + s.to_upper() + 'DESCRIPT'
+		if tmp.has('descript_mastery') and tmp.descript_mastery == '':
+			tmp.descript_mastery = 'ACTION' + s.to_upper() + 'DESCRIPTMASTERY'
 		if tmp.scene_text == '':
 			tmp.scene_text = 'ACTION' + s.to_upper() + 'SCENETEXT'
 	for s in training_categories:
