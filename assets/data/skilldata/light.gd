@@ -199,7 +199,7 @@ var skills = {
 		code = 'mass_resurrect_1',
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsskills/firestorm.png"),
+		icon = "res://assets/images/iconsskills/light_spell_aoe.png",
 		type = 'combat', 
 		ability_type = 'spell',
 		tags = ['resurrect', 'noevade','noreduce','support', 'aoe', 'not_final'],
@@ -255,7 +255,7 @@ var effects = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/traits/speeddebuf.png",
+				icon = "res://assets/images/iconsskills/icon_light.png",
 				description = "TRAITEFFECTBLESSING",
 				limit = 1,
 				t_name = 'blessing'
@@ -280,7 +280,7 @@ var effects = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Discipline.png",
+				icon = "res://assets/images/iconsskills/icon_elemental_protection.png",
 				description = "TRAITEFFECTELEMENTALPROTECT",
 				limit = 1,
 				t_name = 'elweak',
