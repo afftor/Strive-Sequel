@@ -3,7 +3,6 @@ extends Reference
 var skills = {
 	strafe = {
 		code = 'strafe',
-		name = '',
 		descript = '',
 		icon = "res://assets/images/iconsskills/heavyshot.png",
 		type = 'combat', 
