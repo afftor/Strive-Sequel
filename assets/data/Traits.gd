@@ -215,34 +215,6 @@ var traits = {
 		tags = ['trained', 'worker', 'combatant']
 	},
 	#classes
-	'director' : {
-		code = 'director',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = []
-	},
-	worker = {
-		code = 'worker',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = [],#'e_tr_worker'],
-		show_in_parent_stats = true,
-		bonusstats = {mod_collect = 0.5}
-	},
-	foreman = {
-		code = 'foreman',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = [],#'e_tr_foreman'],
-		show_in_parent_stats = true,
-		bonusstats = {mod_collect = 0.33}
-	},
 	hunter_damage = {
 		code = 'hunter_damage',
 		name = '',
@@ -303,36 +275,6 @@ var traits = {
 		effects = ['e_tr_bishop', 'e_tr_bishop2'],
 		bonusstats = {}
 	},
-	smith = {
-		code = 'smith',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = [],
-		show_in_parent_stats = true,
-		bonusstats = {mod_smith = 1.0, mod_tailor = 1.0}
-	},
-	engineer = {
-		code = 'engineer',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		show_in_parent_stats = true,
-		effects = [],
-		bonusstats = {mod_build = 1.0}
-	},
-	chef = {
-		code = 'chef',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		show_in_parent_stats = true,
-		effects = [],
-		bonusstats = {mod_cook = 1.0}
-	},
 	attendant = {#item usage in combat takes no turn
 		code = 'attendant',
 		name = '',
@@ -375,26 +317,6 @@ var traits = {
 		effects = [#'e_tr_alchemist',
 			'e_tr_potion'],
 		bonusstats = {}
-	},
-	healer1 = {#+25% heal spells efficiency
-		code = 'healer1',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		show_in_parent_stats = true,
-		effects = [],
-		bonusstats = {damage_mod_heal = 0.25}
-	},
-	healer2 = {#+25% heal spells efficiency
-		code = 'healer2',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		show_in_parent_stats = true,
-		effects = [], 
-		bonusstats = {damage_mod_heal = 0.25}
 	},
 	valkyrie_spear = {
 		code = 'valkyrie_spear',
@@ -483,36 +405,6 @@ var traits = {
 		icon = null,
 		effects = [],
 		tags = ['summon_dog']
-	},
-	farmer = {#+50% farm production
-		code = 'farmer',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		show_in_parent_stats = true,
-		effects = [],
-		bonusstats = {mod_farm = 0.5}
-	},
-	harlot = {#+50% gold from prostitution
-		code = 'harlot',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		show_in_parent_stats = true,
-		effects = [],
-		bonusstats = {mod_pros = 0.5}
-	},
-	broken_royalty = {#
-		code = 'broken_royalty',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = [],
-		show_in_parent_stats = true,
-		bonusstats = {mod_pros = 1.5}
 	},
 	succubus = {#+100% exp from prostitution
 		code = 'succubus',
@@ -1502,6 +1394,74 @@ var traits = {
 	},
 	
 	#unused or obsolete
+	'director' : {
+		code = 'director',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = []
+	},
+	worker = {
+		code = 'worker',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],#'e_tr_worker'],
+		show_in_parent_stats = true,
+		bonusstats = {mod_collect = 0.5}
+	},
+	foreman = {
+		code = 'foreman',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],#'e_tr_foreman'],
+		show_in_parent_stats = true,
+		bonusstats = {mod_collect = 0.33}
+	},
+	smith = {
+		code = 'smith',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		show_in_parent_stats = true,
+		bonusstats = {mod_smith = 1.0, mod_tailor = 1.0}
+	},
+	engineer = {
+		code = 'engineer',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		show_in_parent_stats = true,
+		effects = [],
+		bonusstats = {mod_build = 1.0}
+	},
+	chef = {
+		code = 'chef',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		show_in_parent_stats = true,
+		effects = [],
+		bonusstats = {mod_cook = 1.0}
+	},
+	farmer = {#+50% farm production
+		code = 'farmer',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		show_in_parent_stats = true,
+		effects = [],
+		bonusstats = {mod_farm = 0.5}
+	},
 	pet = {#+25% gold from prostitution
 		code = 'pet',
 		name = '',
@@ -1540,6 +1500,46 @@ var traits = {
 		bonusstats = {mod_hunt = 0.5, mod_fish = 0.5}
 	},
 	
+	harlot = {#+50% gold from prostitution
+		code = 'harlot',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		show_in_parent_stats = true,
+		effects = [],
+		bonusstats = {mod_pros = 0.5}
+	},
+	broken_royalty = {#
+		code = 'broken_royalty',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		show_in_parent_stats = true,
+		bonusstats = {mod_pros = 1.5}
+	},
+	healer1 = {#+25% heal spells efficiency
+		code = 'healer1',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		show_in_parent_stats = true,
+		effects = [],
+		bonusstats = {damage_mod_heal = 0.25}
+	},
+	healer2 = {#+25% heal spells efficiency
+		code = 'healer2',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		show_in_parent_stats = true,
+		effects = [], 
+		bonusstats = {damage_mod_heal = 0.25}
+	},
 	#skill related traits, obsolete
 	basic_combat = {#allows learning basic combat skills
 		code = 'basic_combat',
