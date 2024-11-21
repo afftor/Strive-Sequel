@@ -1372,12 +1372,16 @@ Hotkey: 3""",
 	ACTIONPUBLICUSEDESCRIPT = """Поместить [имя] в кандалы, разрешив окружающим делать с [him] телом, что захочется.""",
 	ACTIONMINDREAD = """Чтение мыслей""",
 	ACTIONMINDREADDESCRIPT = """Наложите на [name] заклинание 'Чтение разума', потенциально узнав его сильные и слабые стороны.""",
+	ACTIONMINDREADDESCRIPTMASTERY = """Training Action: Allows to cast Mind Read on trainee, potentially learning their strong and weak spots..""", # MISSING TRANSLATION
 	ACTIONINFLUENCE = """Влияние""",
 	ACTIONINFLUENCEDESCRIPT = """Использовать магию, чтобы повлиять на разум [name], заставив [him] принять [his] роль раба.""",
+	ACTIONINFLUENCEDESCRIPTMASTERY = """Training Action: Magic influence aiming to improve target's obedience.""", # MISSING TRANSLATION
 	ACTIONSTRONGINFLUENCE = """Сильное влияние""",
 	ACTIONSTRONGINFLUENCEDESCRIPT = """Использовать сильную магию, чтобы подчинить разум [name].""",
+	ACTIONSTRONGINFLUENCEDESCRIPTMASTERY = """Training Action: Magic influence aiming to improve target's obedience. Stronger than Influence.""", # MISSING TRANSLATION
 	ACTIONMINDCONTROL = """Гипноз""",
 	ACTIONMINDCONTROLDESCRIPTDESCRIPT = """Самый сильный вариант контроля сильно помутит большинство умов.""",
+	ACTIONMINDCONTROLDESCRIPTMASTERY = """Training Action: Magic influence aiming to improve target's obedience. Stronger than Influence.""", # MISSING TRANSLATION
 	ACTIONTYPEPOSITIVE = """Позитивный.""",
 	ACTIONTYPEPHYSICAL = """Физичный.""",
 	ACTIONTYPEHUMILIATION = """Униженнный""",
