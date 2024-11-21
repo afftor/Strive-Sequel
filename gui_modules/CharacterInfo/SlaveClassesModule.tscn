@@ -652,11 +652,15 @@ expand = true
 [node name="Label" type="Label" parent="MasteryPanel/Categories/combat"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 26.0
-margin_top = 29.0
-custom_colors/font_color = Color( 0.0313726, 0.980392, 0.0235294, 1 )
+margin_left = 14.0
+margin_top = 25.0
+margin_right = -2.0
+margin_bottom = 6.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
 text = "3"
+align = 2
 
 [node name="spell" type="TextureButton" parent="MasteryPanel/Categories"]
 light_mask = 0
@@ -673,11 +677,15 @@ expand = true
 [node name="Label" type="Label" parent="MasteryPanel/Categories/spell"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 26.0
-margin_top = 29.0
-custom_colors/font_color = Color( 0.0313726, 0.980392, 0.0235294, 1 )
+margin_left = 14.0
+margin_top = 25.0
+margin_right = -2.0
+margin_bottom = 6.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
 text = "3"
+align = 2
 
 [node name="Categories2" type="HBoxContainer" parent="MasteryPanel"]
 margin_left = 57.0
@@ -693,7 +701,7 @@ self_modulate = Color( 1, 1, 1, 0.635294 )
 light_mask = 0
 margin_left = 258.0
 margin_right = 328.0
-margin_bottom = 70.0
+margin_bottom = 72.0
 rect_min_size = Vector2( 70, 70 )
 toggle_mode = true
 texture_normal = ExtResource( 75 )
@@ -716,11 +724,15 @@ stretch_mode = 6
 [node name="Label" type="Label" parent="MasteryPanel/Categories2/button/icon"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 26.0
-margin_top = 29.0
-custom_colors/font_color = Color( 0.0313726, 0.980392, 0.0235294, 1 )
+margin_left = 24.1237
+margin_top = 37.0115
+margin_right = -2.87634
+margin_bottom = 2.01147
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
 text = "3"
+align = 2
 
 [node name="Label" type="Label" parent="MasteryPanel"]
 light_mask = 0
@@ -752,9 +764,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -110.0
+margin_left = -228.0
 margin_top = -188.0
-margin_right = 110.0
+margin_right = -8.0
 margin_bottom = -130.0
 texture_normal = ExtResource( 72 )
 texture_pressed = ExtResource( 73 )
@@ -765,20 +777,30 @@ texture_disabled = ExtResource( 74 )
 light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 19.0
+margin_right = -72.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 23 )
-text = "Add Point"
-align = 1
+text = "Upgrade"
 valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="MasteryPanel/AddPoint"]
+margin_left = 156.23
+margin_top = 10.0793
+margin_right = 196.23
+margin_bottom = 50.0793
+texture = ExtResource( 68 )
+expand = true
+stretch_mode = 6
 
 [node name="AddPoint2" type="TextureButton" parent="MasteryPanel"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 116.0
+margin_left = 17.0
 margin_top = -188.0
-margin_right = 336.0
+margin_right = 237.0
 margin_bottom = -130.0
 texture_normal = ExtResource( 72 )
 texture_pressed = ExtResource( 73 )
@@ -789,11 +811,24 @@ texture_disabled = ExtResource( 74 )
 light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 19.0
+margin_right = -75.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 23 )
-text = "Add Point (U)"
-align = 1
+text = "Upgrade"
 valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="MasteryPanel/AddPoint2"]
+margin_left = 156.23
+margin_top = 10.0793
+margin_right = 196.23
+margin_bottom = 50.0793
+texture = ExtResource( 67 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="TextureRect5" type="TextureRect" parent="MasteryPanel"]
 margin_left = 3.0
