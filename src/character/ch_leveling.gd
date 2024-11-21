@@ -239,9 +239,12 @@ func add_mastery_point_passive(school, value):
 	mastery_levels[school].passive += value
 
 
-func get_mastery_level(school): #external check, for the sake of condition sanity
+func get_mastery_level(school, passive = false): #external check, for the sake of condition sanity
 	if mastery_levels[school].enable:
-		return mastery_levels[school].passive + mastery_levels[school].trained
+		var res = mastery_levels[school].passive
+		if !passive:
+			res += mastery_levels[school].trained
+		return  res
 	else:
 		return 0 
 
