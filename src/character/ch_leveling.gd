@@ -179,7 +179,7 @@ func remove_mastery_bonus(school, level):
 					print('WARNING! error in prof dependancy')
 
 
-func upgrade_mastery_cost(school):
+func upgrade_mastery_cost(school, force_universal = false):
 	var res = {
 		mastery_point_combat = 0,
 		mastery_point_magic = 0,
@@ -188,12 +188,12 @@ func upgrade_mastery_cost(school):
 	var data = Skilldata.masteries[school]
 	match data.type:
 		'combat':
-			if mastery_point_combat > 0:
+			if mastery_point_combat > 0 and !force_universal:
 				res.mastery_point_combat = 1
 			else:
 				res.mastery_point_universal = 1
 		'spell':
-			if mastery_point_magic > 0:
+			if mastery_point_magic > 0 and !force_universal:
 				res.mastery_point_magic = 1
 			else:
 				res.mastery_point_universal = 1
@@ -201,29 +201,31 @@ func upgrade_mastery_cost(school):
 	
 
 
-func can_upgrade_mastery(school):
+func can_upgrade_mastery(school, force_universal = false):
 	var data = Skilldata.masteries[school]
 	if !mastery_levels[school].enable:
 		return false
 	if mastery_point_universal > 0:
 		return true
-	match data.type:
-		'combat':
-			return mastery_point_combat > 0
-		'spell':
-			return mastery_point_magic > 0
+	if !force_universal:
+		match data.type:
+			'combat':
+				return mastery_point_combat > 0
+			'spell':
+				return mastery_point_magic > 0
+	return false
 
 
-func upgrade_mastery(school):
+func upgrade_mastery(school, force_universal = false):
 	var data = Skilldata.masteries[school]
 	match data.type:
 		'combat':
-			if mastery_point_combat > 0:
+			if mastery_point_combat > 0 and !force_universal:
 				mastery_point_combat -= 1
 			else:
 				mastery_point_universal -= 1
 		'spell':
-			if mastery_point_magic > 0:
+			if mastery_point_magic > 0 and !force_universal:
 				mastery_point_magic -= 1
 			else:
 				mastery_point_universal -= 1

@@ -771,6 +771,30 @@ text = "Add Point"
 align = 1
 valign = 1
 
+[node name="AddPoint2" type="TextureButton" parent="MasteryPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 116.0
+margin_top = -188.0
+margin_right = 336.0
+margin_bottom = -130.0
+texture_normal = ExtResource( 72 )
+texture_pressed = ExtResource( 73 )
+texture_hover = ExtResource( 84 )
+texture_disabled = ExtResource( 74 )
+
+[node name="Label" type="Label" parent="MasteryPanel/AddPoint2"]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 23 )
+text = "Add Point (U)"
+align = 1
+valign = 1
+
 [node name="TextureRect5" type="TextureRect" parent="MasteryPanel"]
 margin_left = 3.0
 margin_top = 935.0

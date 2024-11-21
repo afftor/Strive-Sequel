@@ -33,6 +33,7 @@ func _ready():
 		$CheckBox.connect("pressed", self, "checkbox_locked")
 	input_handler.AddPanelOpenCloseAnimation($ClassPanel)
 	$MasteryPanel/AddPoint.connect("pressed", self, 'add_mastery_prompt')
+	$MasteryPanel/AddPoint2.connect("pressed", self, 'add_mastery_prompt_1')
 	$MasteryPanel/SkillBookButton.connect("pressed", self, "SkillBookButtonPress")
 	for i in ['combat', 'magic', 'universal']:
 		var st = 'mastery_point_' + i
@@ -250,6 +251,7 @@ func build_mastery_cat():
 
 
 var text
+var text_1
 func change_mastery(mas):
 	selected_mastery = mas
 	for node in $MasteryPanel/Categories2.get_children():
@@ -330,16 +332,23 @@ func change_mastery(mas):
 			if f:
 				text += tr('TRAININGLEARN') + tr(sdata.name) + '\n'
 	$MasteryPanel/AddPoint.disabled = !person.can_upgrade_mastery(mas)
+	$MasteryPanel/AddPoint2.disabled = !person.can_upgrade_mastery(mas, true)
 	$MasteryPanel/Categories3/combat/Label.text = "%d Points" % person.get_stat('mastery_point_combat')
 	$MasteryPanel/Categories3/magic/Label.text = "%d Points" % person.get_stat('mastery_point_magic')
 	$MasteryPanel/Categories3/universal/Label.text = "%d Points" % person.get_stat('mastery_point_universal')
 	
 	text += tr('FOR')
+	text_1 = text
 	var cost = person.upgrade_mastery_cost(mas) 
 	for point in cost:
 		var stdata = statdata.statdata[point]
 		if cost[point] > 0:
 			text += "%s : %d \n" % [tr(stdata.name), cost[point]]
+	cost = person.upgrade_mastery_cost(mas, true) 
+	for point in cost:
+		var stdata = statdata.statdata[point]
+		if cost[point] > 0:
+			text_1 += "%s : %d \n" % [tr(stdata.name), cost[point]]
 
 
 func add_mastery_prompt():
@@ -350,6 +359,15 @@ func add_mastery():
 	person.upgrade_mastery(selected_mastery)
 	build_mastery_cat()
 #	change_mastery(selected_mastery)
+
+
+func add_mastery_prompt_1():
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'add_mastery_1', text_1])
+
+
+func add_mastery_1():
+	person.upgrade_mastery(selected_mastery, true)
+	build_mastery_cat()
 
 
 # func play_animation():
