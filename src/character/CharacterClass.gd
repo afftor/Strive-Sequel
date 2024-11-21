@@ -457,14 +457,14 @@ func unequip_all(hard = true):
 	set_stat('portrait_update', true)
 	equipment.clear_equip(hard)
 
-func upgrade_mastery(school):
-	xp_module.upgrade_mastery(school)
+func upgrade_mastery(school, force_universal = false):
+	xp_module.upgrade_mastery(school, force_universal)
 
-func can_upgrade_mastery(school):
-	return xp_module.can_upgrade_mastery(school)
+func can_upgrade_mastery(school, force_universal = false):
+	return xp_module.can_upgrade_mastery(school, force_universal)
 
-func upgrade_mastery_cost(school):
-	return xp_module.upgrade_mastery_cost(school)
+func upgrade_mastery_cost(school, force_universal = false):
+	return xp_module.upgrade_mastery_cost(school, force_universal)
 
 func unlock_class(prof, satisfy_progress_reqs = false):
 	xp_module.unlock_class(prof, satisfy_progress_reqs)

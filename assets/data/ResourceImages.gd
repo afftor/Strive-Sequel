@@ -805,6 +805,9 @@ var icons = {
 	mastery_protection = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/defence.png",
 	mastery_warfare = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/weapon.png",
 	
+	mastery_point_combat = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/combat.png",
+	mastery_point_magic = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/magic.png",
+	mastery_point_universal = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/universe.png",
 #	TO COMPLETE AND USE IN DATA TABLES
 #	NEED TO GET RID OF ALL LOAD FUNCTIONS
 #	skill_abuse = "res://assets/images/iconsskills/abuse.png",

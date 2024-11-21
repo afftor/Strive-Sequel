@@ -3,7 +3,6 @@ extends Reference
 var skills = {
 	wind_blade = {
 		code = 'wind_blade',
-		name = '',
 		descript = '',
 		icon = "res://assets/images/iconsskills/windblade.png",
 		type = 'combat', 
@@ -78,7 +77,6 @@ var skills = {
 	},
 	chain_lightning = {
 		code = 'chain_lightning',
-		name = '',
 		descript = '',
 		icon = "res://assets/images/iconsskills/Drain.png",
 		type = 'combat', 

@@ -950,6 +950,7 @@ var training_actions = {
 		name = '',
 		icon = "res://assets/images/iconsskills/Mindread.png",
 		descript = '',
+		descript_mastery = '',
 		scene_image = 'mindread',
 		scene_text = '',
 		result_text = {},
@@ -964,6 +965,7 @@ var training_actions = {
 		name = '',
 		icon = "res://assets/images/iconsskills/Warn.png",
 		descript = '',
+		descript_mastery = '',
 		scene_image = 'sedation',
 		scene_text = '',
 		result_text = {},
@@ -979,6 +981,7 @@ var training_actions = {
 		name = '',
 		icon = "res://assets/images/iconsskills/Charm.png",
 		descript = '',
+		descript_mastery = '',
 		scene_image = 'sedation',
 		scene_text = '',
 		result_text = {},
@@ -993,6 +996,7 @@ var training_actions = {
 		name = '',
 		icon = "res://assets/images/iconsskills/Mind_Control.png",
 		descript = '',
+		descript_mastery = '',
 		scene_image = 'mindcontrol',
 		scene_text = '',
 		result_text = {},
@@ -1222,7 +1226,7 @@ var masteries = {
 		icon = 'mastery_light',
 		background = 'mastery_light',
 		maxlevel = 6,
-		passive = {damage_mod_heal = 0.05, damage_mod_light = 5},
+		passive = {damage_mod_heal = 0.05, damage_mod_light = 0.05},
 		level1 = {combat_skills = ["healing"], explore_skills = [], traits = [], action = []},
 		level2 = {combat_skills = ["blessing"], explore_skills = [], traits = [], action = []},
 		level3 = {combat_skills = ["resurrect","elemental_protection"], explore_skills = [], traits = [], action = []},
@@ -1236,7 +1240,7 @@ var masteries = {
 		icon = 'mastery_dark',
 		background = 'mastery_dark',
 		maxlevel = 6,
-		passive = {matk = 2, damage_mod_dark = 5},
+		passive = {matk = 2, damage_mod_dark = 0.05},
 		level1 = {combat_skills = ["darkness"], explore_skills = [], traits = [], action = []},
 		level2 = {combat_skills = ["black_tendrils"], explore_skills = [], traits = [], action = []},
 		level3 = {combat_skills = ["malediction"], explore_skills = [], traits = [], action = []},
@@ -1250,7 +1254,7 @@ var masteries = {
 		icon = 'mastery_mind',
 		background = 'mastery_mind',
 		maxlevel = 6,
-		passive = {mpmax = 3, damage_mod_mind = 5},
+		passive = {mpmax = 3, damage_mod_mind = 0.05},
 		level1 = {combat_skills = [], explore_skills = [], traits = [], action = ["mindread"]},
 		level2 = {combat_skills = ["mindblast"], explore_skills = [], traits = [], action = ["influence"], },
 		level3 = {combat_skills = [], explore_skills = ["invigorate"], traits = [], action = []},
@@ -1312,6 +1316,8 @@ func _ready():
 			tmp.name = 'ACTION' + s.to_upper()
 		if tmp.descript == '':
 			tmp.descript = 'ACTION' + s.to_upper() + 'DESCRIPT'
+		if tmp.has('descript_mastery') and tmp.descript_mastery == '':
+			tmp.descript_mastery = 'ACTION' + s.to_upper() + 'DESCRIPTMASTERY'
 		if tmp.scene_text == '':
 			tmp.scene_text = 'ACTION' + s.to_upper() + 'SCENETEXT'
 	for s in training_categories:

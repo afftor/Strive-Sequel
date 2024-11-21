@@ -42,7 +42,7 @@ func Show(TargetNode : Object, Text : String, \
 func OnLeftButton() -> void:
 		hide()
 		if left_fn != '':
-				targetnode.call(left_fn)
+			targetnode.call(left_fn)
 
 func OnRightButton() -> void:
 		hide()

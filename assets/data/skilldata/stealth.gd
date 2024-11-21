@@ -107,7 +107,6 @@ var skills = {
 	},
 	devastation = {
 		code = 'devastation',
-		name = '',
 		descript = '',
 		icon = "res://assets/images/iconsskills/windblade.png",
 		type = 'combat', 

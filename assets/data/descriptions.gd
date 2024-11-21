@@ -710,6 +710,47 @@ func get_class_bonuses(newperson, classdata): #maybe there should be used the sa
 		text = newperson.translate(text)
 	return text
 
+
+func get_class_bonuses_short(newperson, classdata): #maybe there should be used the same generation of stat changes description as in loyalty traits and items 
+	var text = ''
+	for i in classdata.statchanges:
+		var data = statdata.statdata[i]
+		var value = classdata.statchanges[i]
+		if data.show_in_header:
+			continue
+		if value is bool:
+			continue #temp stub
+		if data.percent: 
+			value *= 100
+		text += data.name + ": "
+		if value  > 0:
+			text += "+"
+		text += str(value)
+		if data.percent:
+			text += "%"
+		text += "\n"
+	for i in classdata.traits:
+		var trait = Traitdata.traits[i]
+		if trait.has('show_in_parent_stats') and trait.show_in_parent_stats:
+			text += globals.TextEncoder(trait.descript) + "\n"
+			if !trait.has('bonusstats'): continue
+			for j in trait.bonusstats:
+				var data = statdata.statdata[j]
+				var value = trait.bonusstats[j]
+				if data.percent: 
+					value *= 100
+				text += data.name + ": "
+				if value  > 0:
+					text += "+"
+				text += str(value)
+				if data.percent:
+					text += "%"
+				text += "\n" 
+	if newperson != null:
+		text = newperson.translate(text)
+	return text
+
+
 func get_class_traits(newperson, classdata):
 	var text = ''
 	for i in classdata.traits:
