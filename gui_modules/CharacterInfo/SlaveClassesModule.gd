@@ -263,6 +263,11 @@ func change_mastery(mas):
 	var masdata = Skilldata.masteries[mas]
 	$MasteryPanel/mastery/Label.text = masdata.name
 	$MasteryPanel/mastery.texture = images.get_background(masdata.background, true)
+	match masdata.type:
+		'combat':
+			$MasteryPanel/AddPoint/TextureRect.texture = images.get_icon('mastery_point_combat')
+		'spell':
+			$MasteryPanel/AddPoint/TextureRect.texture = images.get_icon('mastery_point_magic')
 	var lv = person.get_stat('mastery_' + mas)
 	text = tr('ADD_MASTERY_CONFIRM') + '\n'
 	text += globals.build_desc_for_bonusstats(masdata.passive)
