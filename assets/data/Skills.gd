@@ -956,7 +956,7 @@ var training_actions = {
 		result_text = {},
 		bonus_changes = [{type = 'always', effect = {loyalty_mul = 0, spirit_mul = 0}},],
 		reqs = [],
-		reqs_trainer = [{code = 'stst', stat = 'mastery_mind', operant = 'gte', value = 1}],
+		reqs_trainer = [{code = 'stat', stat = 'mastery_mind', operant = 'gte', value = 1}],
 		cost = {mana = 3},
 	},
 	influence = {
@@ -971,7 +971,7 @@ var training_actions = {
 		result_text = {},
 		bonus_changes = [],
 		reqs = [],
-		reqs_trainer = [{code = 'stst', stat = 'mastery_mind', operant = 'gte', value = 2}],
+		reqs_trainer = [{code = 'stat', stat = 'mastery_mind', operant = 'gte', value = 2}],
 		cost = {mana = 5},
 		disposition_affects = [['positive', 'physical', 'humiliation', 'social', 'sexual']]
 	},
@@ -987,7 +987,7 @@ var training_actions = {
 		result_text = {},
 		bonus_changes = [{type = 'always', chance = {success_mul = 2}},],
 		reqs = [],
-		reqs_trainer = [{code = 'stst', stat = 'mastery_mind', operant = 'gte', value = 4}],
+		reqs_trainer = [{code = 'stat', stat = 'mastery_mind', operant = 'gte', value = 4}],
 		cost = {mana = 10},
 	},
 	mindcontrol = {
@@ -1002,7 +1002,7 @@ var training_actions = {
 		result_text = {},
 		bonus_changes = [{type = 'always', effect = {loyalty_mul = 2, spirit_mul = 2}},],
 		reqs = [],
-		reqs_trainer = [{code = 'stst', stat = 'mastery_mind', operant = 'gte', value = 6}],
+		reqs_trainer = [{code = 'stat', stat = 'mastery_mind', operant = 'gte', value = 6}],
 		cost = {mana = 25},
 	},
 	
