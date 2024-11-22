@@ -1766,6 +1766,7 @@ Hotkey: 3""",
 	STATMODMELEE = """Урон в ближ. бою.""",
 	STATMODRANGED = """Урон в дальн. бою.""",
 	STATDAMAGE_MOD_SKILL = """Физический урон""",
+	STATDAMAGE_MOD_HEAL = """Healing Bonus""", # MISSING TRANSLATION
 
 
 	STATFATIGUE = """Усталость""",
@@ -2527,6 +2528,7 @@ Hotkey: 3""",
 	TRAITMENIALDESCRIPT = """Шанс крита поручения установлен на 0.""",
 	TRAITSTURDYDESCRIPT = """+10 ЗАЩИТЫ""",
 	TRAITFRAILDESCRIPT = """-10 ЗАЩИТЫ.""",
+	TRAITSTUN_IMMUNITYDESCRIPT = """Makes user immune to Stun.""", # MISSING TRANSLATION
 	TRAITLOYALTY_BASIC_SERVITUDE = """Базовое служение""",
 	TRAITLOYALTY_BASIC_SERVITUDEDESCRIPT = """{color=green|Позволяет назначать профессии}
 

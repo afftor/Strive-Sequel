@@ -1665,6 +1665,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	STATMODMELEE = "Melee Dam. 近战伤害",
 	STATMODRANGED = "Ranged Dam. 远程伤害",
 	STATDAMAGE_MOD_SKILL = "Physical Damage 物理伤害",
+	STATDAMAGE_MOD_HEAL = """Healing Bonus""", # MISSING TRANSLATION
 
 
 	STATFATIGUE = "Fatigue",
@@ -2267,6 +2268,7 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	TRAITMENIALDESCRIPT = "Task Crit chance is set to 0.\n任务暴击机会设置为0",
 	TRAITSTURDYDESCRIPT = "+10 DEF.\n+10防御力",
 	TRAITFRAILDESCRIPT = "-10 DEF.\n-10防御力",
+	TRAITSTUN_IMMUNITYDESCRIPT = """Makes user immune to Stun.""", # MISSING TRANSLATION
 	TRAITLOYALTY_BASIC_SERVITUDE = "Basic Servitude",
 	TRAITLOYALTY_BASIC_SERVITUDEDESCRIPT = "{color=green|Allows to assign to occupations}\n\nComplete control starts with the smallest of steps. Mannerisms, protocol, and etiquette must be established to reap their rewards. ",
 	TRAITLOYALTY_DATING = "Dating",

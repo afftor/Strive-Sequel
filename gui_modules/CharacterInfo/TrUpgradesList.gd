@@ -25,6 +25,8 @@ func _ready():
 	globals.connecttexttooltip($training/trainer_frame, tr("CLICKTOCHANGE"))
 	$finish/header.bbcode_text = tr("TRAINFINISHTEXT")
 	
+	globals.connecttexttooltip($finished/reset_button, tr("RESETTRAINREQ"))
+	
 
 
 func hide_all():
