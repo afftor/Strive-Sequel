@@ -784,12 +784,16 @@ var icons = {
 	#masteries gui
 	frame_skill = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_square.png",
 	frame_skill_1 = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_square.png",
+	frame_skill_mask = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_square_mask.png",
 	frame_explore = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_polygon.png",
 	frame_explore_1 = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_polygon.png",
+	frame_explore_mask = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_polygon_mask.png",
 	frame_train = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_rhomb.png",
 	frame_train_1 = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_rhomb.png",
+	frame_train_mask = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_rhomb_mask.png",
 	frame_trait = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_ellipse.png",
 	frame_trait_1 = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_gold_ellipse.png",
+	frame_trait_mask = "res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_ellipse_mask.png",
 	
 	#masteries
 	mastery_air = "res://assets/Textures_v2/CLASS_INFO/masteries_icons/air.png",

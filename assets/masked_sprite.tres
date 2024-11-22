@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/skill_frames/skill_frame_grey_polygon_mask.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform sampler2D mask;
+
+void fragment(){
+	vec4 color = texture(TEXTURE, UV);
+	color.a = texture(mask, UV).a;
+	COLOR = color;
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/mask = ExtResource( 1 )

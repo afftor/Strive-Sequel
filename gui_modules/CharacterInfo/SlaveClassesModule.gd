@@ -263,7 +263,13 @@ func change_mastery(mas):
 	var masdata = Skilldata.masteries[mas]
 	$MasteryPanel/mastery/Label.text = masdata.name
 	$MasteryPanel/mastery.texture = images.get_background(masdata.background, true)
+	match masdata.type:
+		'combat':
+			$MasteryPanel/AddPoint/TextureRect.texture = images.get_icon('mastery_point_combat')
+		'spell':
+			$MasteryPanel/AddPoint/TextureRect.texture = images.get_icon('mastery_point_magic')
 	var lv = person.get_stat('mastery_' + mas)
+	var lv_pas = person.xp_module.get_mastery_level(mas, true)
 	text = tr('ADD_MASTERY_CONFIRM') + '\n'
 	text += globals.build_desc_for_bonusstats(masdata.passive)
 	for lv_tmp in range(1, masdata.maxlevel + 1):
@@ -284,12 +290,14 @@ func change_mastery(mas):
 		for s_id in lvdata.combat_skills:
 			var sdata = Skilldata.get_template(s_id, person)
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
-#			if lv_tmp == lv + 1:
-#				skill_icon.texture = images.get_icon('frame_skill_1')
-#			else:
-#				skill_icon.texture = images.get_icon('frame_skill')
-			skill_icon.texture = images.get_icon('frame_skill')
+			skill_icon.get_node('icon').material = load("res://assets/masked_sprite.tres").duplicate(true)
+			if lv_tmp <= lv_pas:
+				skill_icon.texture = images.get_icon('frame_skill_1')
+			else:
+				skill_icon.texture = images.get_icon('frame_skill')
+#			skill_icon.texture = images.get_icon('frame_skill')
 			skill_icon.get_node('icon').texture = sdata.icon
+			skill_icon.get_node('icon').material.set_shader_param('mask', images.get_icon('frame_skill_mask'))
 			skill_icon.set_meta('display_only', true)
 			globals.connectskilltooltip(skill_icon, s_id, person)
 			if f:
@@ -297,12 +305,14 @@ func change_mastery(mas):
 		for s_id in lvdata.explore_skills:
 			var sdata = Skilldata.get_template(s_id, person)
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
-#			if lv_tmp == lv + 1:
-#				skill_icon.texture = images.get_icon('frame_explore_1')
-#			else:
-#				skill_icon.texture = images.get_icon('frame_explore')
-			skill_icon.texture = images.get_icon('frame_explore')
+			skill_icon.get_node('icon').material = load("res://assets/masked_sprite.tres").duplicate(true)
+			if lv_tmp <= lv_pas:
+				skill_icon.texture = images.get_icon('frame_explore_1')
+			else:
+				skill_icon.texture = images.get_icon('frame_explore')
+#			skill_icon.texture = images.get_icon('frame_explore')
 			skill_icon.get_node('icon').texture = sdata.icon
+			skill_icon.get_node('icon').material.set_shader_param('mask', images.get_icon('frame_explore_mask'))
 			skill_icon.set_meta('display_only', true)
 			globals.connectskilltooltip(skill_icon, s_id, person)
 			if f:
@@ -310,25 +320,29 @@ func change_mastery(mas):
 		for tr_id in lvdata.traits:
 			var trdata = Traitdata.traits[tr_id]
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
-#			if lv_tmp == lv + 1:
-#				skill_icon.texture = images.get_icon('frame_trait_1')
-#			else:
-#				skill_icon.texture = images.get_icon('frame_trait')
-			skill_icon.texture = images.get_icon('frame_trait')
+			skill_icon.get_node('icon').material = load("res://assets/masked_sprite.tres").duplicate(true)
+			if lv_tmp <= lv_pas:
+				skill_icon.texture = images.get_icon('frame_trait_1')
+			else:
+				skill_icon.texture = images.get_icon('frame_trait')
+#			skill_icon.texture = images.get_icon('frame_trait')
 			skill_icon.get_node('icon').texture = trdata.icon
+			skill_icon.get_node('icon').material.set_shader_param('mask', images.get_icon('frame_trait_mask'))
 			globals.connecttexttooltip(skill_icon, trdata.descript)
 			if f:
 				text += tr('TRAITLEARN') + tr(trdata.name) + '\n'
 		for s_id in lvdata.action:
 			var sdata = Skilldata.training_actions[s_id]
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
-#			if lv_tmp == lv + 1:
-#				skill_icon.texture = images.get_icon('frame_train_1')
-#			else:
-#				skill_icon.texture = images.get_icon('frame_train')
-			skill_icon.texture = images.get_icon('frame_train')
+			skill_icon.get_node('icon').material = load("res://assets/masked_sprite.tres").duplicate(true)
+			if lv_tmp <= lv_pas:
+				skill_icon.texture = images.get_icon('frame_train_1')
+			else:
+				skill_icon.texture = images.get_icon('frame_train')
+#			skill_icon.texture = images.get_icon('frame_train')
 			skill_icon.get_node('icon').texture = load(sdata.icon)
-			globals.connecttexttooltip(skill_icon, tr(sdata.descript_mastery))
+			skill_icon.get_node('icon').material.set_shader_param('mask', images.get_icon('frame_train_mask'))
+			globals.connecttexttooltip(skill_icon, '[center]' + tr(sdata.name) + '[/center]\n' + tr(sdata.descript_mastery))
 			if f:
 				text += tr('TRAININGLEARN') + tr(sdata.name) + '\n'
 	$MasteryPanel/AddPoint.disabled = !person.can_upgrade_mastery(mas)
