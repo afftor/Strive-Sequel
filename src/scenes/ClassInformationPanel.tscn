@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_class_rmb.png" type="Texture" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/ClassInformationPanel.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=9]
 [ext_resource path="res://assets/Fonts_v2/Noto_Serif/NotoSerif-Italic.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_24.tres" type="DynamicFont" id=11]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
@@ -114,9 +115,6 @@ margin_top = 266.0
 margin_right = 232.0
 margin_bottom = 324.0
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Icon" type="TextureRect" parent="ReqIcons"]
 visible = false
@@ -129,6 +127,14 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="ReqIcons/Icon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 26.0
+margin_top = 29.0
+custom_colors/font_color = Color( 0.0313726, 0.980392, 0.0235294, 1 )
+custom_fonts/font = ExtResource( 11 )
 
 [node name="reqs" type="RichTextLabel" parent="."]
 margin_left = 20.0
