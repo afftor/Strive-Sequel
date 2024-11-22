@@ -291,7 +291,7 @@ func change_mastery(mas):
 			var sdata = Skilldata.get_template(s_id, person)
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
 			skill_icon.get_node('icon').material = load("res://assets/masked_sprite.tres").duplicate(true)
-			if lv_tmp <= lv_pas:
+			if lv_tmp <= lv:
 				skill_icon.texture = images.get_icon('frame_skill_1')
 			else:
 				skill_icon.texture = images.get_icon('frame_skill')
@@ -306,7 +306,7 @@ func change_mastery(mas):
 			var sdata = Skilldata.get_template(s_id, person)
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
 			skill_icon.get_node('icon').material = load("res://assets/masked_sprite.tres").duplicate(true)
-			if lv_tmp <= lv_pas:
+			if lv_tmp <= lv:
 				skill_icon.texture = images.get_icon('frame_explore_1')
 			else:
 				skill_icon.texture = images.get_icon('frame_explore')
@@ -321,7 +321,7 @@ func change_mastery(mas):
 			var trdata = Traitdata.traits[tr_id]
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
 			skill_icon.get_node('icon').material = load("res://assets/masked_sprite.tres").duplicate(true)
-			if lv_tmp <= lv_pas:
+			if lv_tmp <= lv:
 				skill_icon.texture = images.get_icon('frame_trait_1')
 			else:
 				skill_icon.texture = images.get_icon('frame_trait')
@@ -335,7 +335,7 @@ func change_mastery(mas):
 			var sdata = Skilldata.training_actions[s_id]
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
 			skill_icon.get_node('icon').material = load("res://assets/masked_sprite.tres").duplicate(true)
-			if lv_tmp <= lv_pas:
+			if lv_tmp <= lv:
 				skill_icon.texture = images.get_icon('frame_train_1')
 			else:
 				skill_icon.texture = images.get_icon('frame_train')
