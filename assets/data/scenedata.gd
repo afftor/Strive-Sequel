@@ -1917,6 +1917,27 @@ var dialogue_inits = {
 		{
 			code = 'default',
 			name = tr("DIALOGUEMEETLEADER"),
+			reqs = [{type = 'active_quest_stage', value = 'kuro_tome_quest', stage = 'library'}],
+			target = 'kuro_lib_start',
+			target_option = 9,
+		},
+		{
+			code = 'default',
+			name = tr("DIALOGUEMEETLEADER"),
+			reqs = [{type = 'active_quest_stage', value = 'kuro_tome_quest', stage = 'money'}],
+			target = 'kuro_lib_return',
+			target_option = 9,
+		},
+		{
+			code = 'default',
+			name = tr("DIALOGUEMEETLEADER"),
+			reqs = [{type = 'active_quest_stage', value = 'kuro_tome_quest', stage = 'back'}],
+			target = 'kuro_lib_whiskey',
+			target_option = 9,
+		},
+		{
+			code = 'default',
+			name = tr("DIALOGUEMEETLEADER"),
 			reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage1'}],
 			target = 'mages_after_election',
 			target_option = 1,
@@ -2501,6 +2522,26 @@ var quests = {
 		summary = "JEAN_FREE_QUEST_SUMMARY",
 		stages = {
 			price = {code = 'price', name = 'JEAN_FREE_QUEST_NAME', descript = 'JEAN_FREE_QUEST_PRICE'},
+		},
+	},
+	kuro_tome_quest = {
+		code = 'kuro_tome_quest',
+		summary = "KURO_TOME_QUEST_SUMMARY",
+		stages = {
+			library = {code = 'library', name = 'KURO_TOME_QUEST_NAME', descript = 'KURO_TOME_QUEST_LIBRARY'},
+			money = {code = 'money', name = 'KURO_TOME_QUEST_NAME', descript = 'KURO_TOME_QUEST_MONEY'},
+			capital = {code = 'capital', name = 'KURO_TOME_QUEST_NAME', descript = 'KURO_TOME_QUEST_CAPITAL'},
+			carriage = {code = 'carriage', name = 'KURO_TOME_QUEST_NAME', descript = 'KURO_TOME_QUEST_CARRIAGE'},
+			bottle = {code = 'bottle', name = 'KURO_TOME_QUEST_NAME', descript = 'KURO_TOME_QUEST_BOTTLE'},
+			back = {code = 'back', name = 'KURO_TOME_QUEST_NAME', descript = 'KURO_TOME_QUEST_BACK'},
+			talk = {code = 'talk', name = 'KURO_TOME_QUEST_NAME', descript = 'KURO_TOME_QUEST_TALK'},
+		},
+	},
+	lira_lost_quest = {
+		code = 'lira_lost_quest',
+		summary = "LIRA_LOST_QUEST_SUMMARY",
+		stages = {
+			capital = {code = 'capital', name = 'LIRA_LOST_QUEST_NAME', descript = 'LIRA_LOST_QUEST_CAPITAL'},
 		},
 	},
 }

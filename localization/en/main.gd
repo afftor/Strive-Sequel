@@ -4065,6 +4065,13 @@ If you screw over their training you can reset it by feeding them Oblivion Potio
 
 — Hey, you brought the wine?""",
 	MAGESINTRODUCTION1REPLY = "No...",
+	MAGESINTRODUCTION1REPLY2 = "I have it here... But that's not exactly my goal (pass the dry wine)",
+	MAGESINTRODUCTION1REPLY3 = "I have it here... But that's not exactly my goal (pass the sweet wine)",
+	MAGESINTRODUCTION1_2 = """You pass the wine bottle to the elven woman who looks at it skeptically.
+
+— That's not the one I prefer but this will do. Fine, what do you want?
+
+You explain yourself being the new landowner to her.""",
 	MAGESINTRODUCTION2 = "— Gods, why are you so useless... Whatever. What do you want?",
 	MAGESINTRODUCTION2REPLY = "I'm a new landowner.",
 	MAGESINTRODUCTION3_1 = "— Huh? I thought you were another initiate candidate. Well, that's funny, I had no idea they allow just about anyone to become landowners now. Don't take that personally, I accept that not everyone is born rich. Name is Myr by the way.",
@@ -14866,6 +14873,195 @@ Kuro makes a pause taking in your answer after which she closes her eyes. The da
 
 — It's your win. Fine, I can join you if that's what you want.""",
 	KURO_RECRUIT_END = "You unshackle Kuro allowing her begrudgingly join your cause.",
+	KURO_TOME_START = """You sit in your office working with papers when suddenly you feel a familiar presence in the room. The door is locked but Kuro cares little about it as she materializes in front of you.
+
+— Greetings. It's been about two weeks. Isn't it about a time you could make yourself useful for me?""",
+	KURO_TOME_OPT_RUDE = "That's a rather rude way to ask a favor",
+	KURO_TOME_OPT_QUEEN = "Of course my queen, how can I be at your service?",
+	KURO_TOME_REPLY_RUDE = """— My apologies.
+
+Kuro's tone was anything but apologetic.""",
+	KURO_TOME_REPLY_QUEEN = "— Your attempt at sarcasm amuses me, really.",
+	KURO_TOME_WANT = """
+
+— Anyway, it's nothing major for someone of your status. I want access to Aliron's library, I believe it's simple for someone closely tied with the Mages guild.""",
+	KURO_TOME_OPT_WHYDO = "I don't see why I'd do it",
+	KURO_TOME_OPT_WHATIN = "What's in it for me?",
+	KURO_TOME_OFFER = """— Right, all business fitting such a capable [Master]. I'm not gonna beat around the bush, I don't have much to offer, so will I be satisfied by gaining access to my body?""",
+	KURO_TOME_OPT_SCOPE = "That seems a bit out of scope for such a task...",
+	KURO_TOME_OPT_FORSURE = "For sure",
+	KURO_TOME_OPT_FREE = "I can help with this for free",
+	KURO_TOME_REPLY_SCOPE = "— I'm pleased with your consideration for my worth but don't fret over it. I'm not offering deals which I don't consider worthy to me.",
+	KURO_TOME_REPLY_FORSURE = "— Glad we have an agreement then.",
+	KURO_TOME_REPLY_FREE = "— Well, suit yourself then, as long as I get what I need.",
+	KURO_TOME_HANDSHAKE = """
+
+For a moment you thought Kuro would present you her hand for a handshake but she only turned around and left the room normally. Looks like it's time to pay another visit to the Mages guild.""",
+	KURO_LIB_OPT_ACCESS = "I'd like to have a library access for a friend...",
+	KURO_LIB_START = """Before you can finish your question Myr interrupts you.
+
+Myr: — No. We aren't letting anyone into our libraries, especially filthy shedding animals.
+
+Despite the degrading remark Kuro remains unflinching.""",
+	KURO_LIB_OPT_AGREE = "Can't we reach some agreement?",
+	KURO_LIB_OPT_RACIST = "You shall not make racist remarks towards my people",
+	KURO_LIB_OPT_VOUCH = "I can vouch she's well trained",
+	KURO_LIB_REPLY_AGREE = "Myr: — I don't believe so, I don't favor sharing my collection, especially with outsiders.",
+	KURO_LIB_REPLY_RACIST = "Myr: — why, I think I shall. Thanks to my status I can do exactly that.",
+	KURO_LIB_REPLY_VOUCH = """Kuro gives you a short annoying look.
+
+Kuro: — Very funny.""",
+	KURO_LIB_MYARAN = """
+
+Kuro: — I'd expect Ar'Myaran to be more willing to share her knowledge.
+
+Myr stops and closely inspect Kuro for the next few seconds, who remains completely calm.
+
+Myr: — Firstly, many things have changed since those days. Secondly, you better not repeat that name outside of this room. 
+
+The dark elf takes another pause before continuing with resistance in her voice.
+
+Myr: — Very well. You gotta pay for the access though since you are not a member of the guild. Five hundred gold should not make a problem for our crafty mayor I presume.""",
+	KURO_LIB_OPT_GOTMONEY = "I've got the money",
+	KURO_LIB_OPT_LATER = "I'll return later",
+	KURO_LIB_OPT_BROUGHTMONEY = "I've brought the money for Kuro...",
+	KURO_LIB_ACCESS = """Myr: — Alright. You aren't allowed to take more than one book at a time and you'll have to return it in 30 days in flawless condition or...
+
+Kuro: — Let's save a bit of time for each other, I need Chronicles of Al'Hazred. I believe you have one.
+
+Myr: — That one is out of question. I'm not allowing ancient tomes like that to anyone I don't personally know.""",
+	KURO_LIB_ACCESS2 = """Kuro: — *Sigh* How do I earn your trust in this case?
+
+Myr: — I don't want to trust you in the first place. Well, since you've paid for the access, I can consider lending it to you. Bring me a bottle of Gilded Grasp whiskey. That is, if you manage to find one. From my knowledge, its export has long stopped from the dwarven lands.""",
+	KURO_LIB_ACCESS3 = """As you leave Myr's office, Kuro turns to you in her usual collected manner.
+
+Kuro: — Well, you better not waste any time then.""",
+	KURO_LIB_OPT_WHAT = "What's in that book that you want anyway?",
+	KURO_LIB_OPT_FREETIME = "Maybe once I have a free time",
+	KURO_LIB_OPT_CAPITAL = "Dwarven Capital it is...",
+	KURO_LIB_REPLY_WHAT = "Kuro: — All sorts of sex techniques to please a buffoon like you. What do you think? Let's not waste the time for pointless talks.",
+	KURO_WHISKEY_MARKET = """After asking through several local merchants you finally manage to find one specialized in beverages. 
+
+— Gilded Grasp? Ya in no luck, the last delivery should'a been a week ago but it crashed on da way. The next harvest is in 'bout 9 months so drop by that time.""",
+	KURO_WHISKEY_MARKET2 = "Kuro: — Let's go, I've learned where the carriage was last seen. It's halfway to the farm.",
+	KURO_WHISKEY_OPT_WASTE = "You don't waste any time",
+	KURO_WHISKEY_OPT_SPECIAL = "Any idea why that whisky is so special?",
+	KURO_WHISKEY_OPT_FINE = "Fine...",
+	KURO_WHISKEY_REPLY_WASTE = "Kuro: — Naturally. The quicker we deal with it, the quicker I can get the tome to study it in peace and comfort. Or do you think I enjoy running errands for that dark elf hag?",
+	KURO_WHISKEY_REPLY_SPECIAL = "Kuro: — You really don't know anything, do you? It's made from a rare wheat grown underground. As wheat doesn't generally grow underground, it's a dwarven secret technology at work. I presume it's likely using bioluminescent plants or mushrooms as a weak substitute or even soils rich with mana. Either way cave grown wheat is as much different from normal one as it is a nuisance to obtain.",
+	KURO_WHISKEY_CRASH = """As you move through the trade road, soon you notice a part of a fence broken down, leading to a steep ramp. 
+
+— Looks like this is it. Go on, check what's at the bottom.""",
+	KURO_WHISKEY_CRASH2 = """You get down closely followed by Kuro. At the large drop in the darkness you see the crashed cart mostly salvaged by previous owners or cave dwellers. With a torch in hand you start rummaging through the leftovers of wood and iron. Among them you spot the insignia of the brand's owner.
+
+— Looks like the driver got drunk and crashed it into a hole. Try searching under the rocks, something might have stuck deeper.""",
+	KURO_WHISKEY_OPT_HAND = "I could use a hand here.",
+	KURO_WHISKEY_OPT_MEAN = "I mean it, get down and start digging. (charm challenge)",
+	KURO_WHISKEY_OPT_FEELWASTE = "I feel like this is a waste of time...",
+	KURO_WHISKEY_REPLY_HAND = "— My skills can't be applied to digging so you'll have to figure this out yourself. You don't want to make a frail girl get dirty now, do you?",
+	KURO_WHISKEY_REPLY_MEAN = """Kuro glances at you with poorly hidden irritation until finally succumbing to your order.
+
+— ...I'll remember that.""",
+	KURO_WHISKEY_REPLY_FEELWASTE = "— That's the best we have now. Or you wanna go all the way back without making sure there's nothing left?",
+	KURO_WHISKEY_DIG = """After a few minutes you manage to move the debris to the side as Kuro watches over you disinterestedly. To your surprise you spot a seemingly untouched bottle buried below. 
+
+— Huh, I didn't expect it would work. Praise yourself for the success.""",
+	KURO_WHISKEY_DIG2 = """Before you are able to reach for the desired bottle, you are suddenly called out. As you look up you notice a group of bandits at the spot you've descended from.
+
+Boss: — Looks like we are in luck today.
+
+Small Bandit: — See? I told you we should follow them. These guys are not from here so they were up to something.
+
+Boss: — You better surrender whatever riches you have there, pal.
+
+Fat Bandit: — Yeah, we have a high ground over you.""",
+	KURO_WHISKEY_DIG3 = """Boss: — What are you waiting for? If you aren't surrendering now we will be forced to...
+
+Kuro: — For being a mutt of your worth you are so insolent.
+
+In the darkness of the cave neither you nor bandits could spot Kuro's shadow extension getting near them. 
+
+Kuro: — Perhaps I shall teach you your place.""",
+	KURO_WHISKEY_DIG4 = """Kuro's shadow struck from behind, taking the bandits completely off—guard.
+
+Boss: — Gah!.. What—the...
+
+The force of the blow was enough to cause men to panic and slip up from the slope.
+
+Small Bandit: — Darn it, don't drag me with you.""",
+	KURO_WHISKEY_DIG5 = """The group of bandits has tumbled down the slope right in the direction of the cart's debris. The smug look from Kuro's face quickly shifted when she realized what's about to happen. 
+
+*Crash*
+
+Kuro: — ...Fuck.
+
+As the bandits lay knocked out between the debris, all that was left previously intact has been damaged beyond hope.""",
+	KURO_WHISKEY_OPT_BLAME = "Can't blame you, I'd have done the same",
+	KURO_WHISKEY_OPT_RUINED = "Now you've ruined it",
+	KURO_WHISKEY_OPT_IDEAS = "Any ideas on what we do now?",
+	KURO_WHISKEY_REPLY_BLAME = """Kuro: — Don't put me on your level, I should've known better.
+
+""",
+	KURO_WHISKEY_REPLY_RUINED = """Kuro silently receives your scolding observing the trio of unfortunate bandits.
+
+""",
+	KURO_WHISKEY_REPLY_IDEAS = """Black foxgirl scoops one empty yet intact bottle from the leftovers before turning back to you.
+
+Kuro: — Not much is left for us to do now. Let's visit the capital again.""",
+	KURO_WHISKEY_HOMEBREW = """You follow Kuro through the stalls of cheap homebrew alcohol. Finally after some discussion she passes the empty bottle to the sleaziest looking dwarf who returns it back full in a few minutes. 
+
+Kuro: — That's the best we could do. Let's go back to the elf hag.""",
+	KURO_WHISKEY_OPT_AUTHENTIC = "Is it authentic?",
+	KURO_WHISKEY_OPT_POISON = "I'm not taking responsibility if Myr gets poisoned by it.",
+	KURO_WHISKEY_REPLY_AUTHENTIC = "Kuro: — Are you an idiot? Of course not. It was a huge problem to find a guy who would agree just to pour his stuff into a luxurious brand bottle like this. In case you didn't know, it is highly illegal to counterfeit alcohol here. There's no way it's authentic to the original.",
+	KURO_WHISKEY_REPLY_POISON = "Kuro: — Don't fret over it. Dwarves know their craft to be safe for what it is.",
+	KURO_LIB_OPT_WHISKEY = "We've brought the alcohol you've asked for...",
+	KURO_LIB_WHISKEY2 = """Kuro passes the counterfeited bottle to Myr who slightly raises her brow. As she pours it into a glass Kuro gives off the impression of a complete assurance in her action.
+
+Myr: — You aren't all talk after all... I guess I'll have to keep my part of the deal now.
+
+Myr takes the sip out of the glass, her face displays mild irritation as she sighs.
+
+Myr: — Ahh... This is even better than how I remember it.""",
+	KURO_LIB_WHISKEY3 = """Kuro: — The tome, please.
+
+Myr scoops an extremely ancient looking book from under the desk and passes it to Kuro.
+
+Myr: — You have a week. And you better not let anyone else know I lend it to you.
+
+Kuro: — I can keep secrets.""",
+	KURO_LIB_WHISKEY4 = """As you leave Myr's office Kuro lets out a tired sigh.
+
+Kuro: — Finally, this is over. You played your part well too, I suppose.""",
+	KURO_LIB_OPT_WORK = "How did you know it would work?",
+	KURO_LIB_OPT_HOME = "It's time for us to go home.",
+	KURO_LIB_REPLY_WORK = "Kuro: — Dwarven brews are so strong you can't taste much of it. Besides, drunkards don't really care about the taste.",
+	KURO_TOME_SEX = """You go to Kuro's room to find her already at the freshly obtained book completely focused on it. 
+
+— You've come for your part of the deal, haven't you? Well, serve yourself.""",
+	KURO_TOME_OPT_MEANING = "What is the meaning of this?",
+	KURO_TOME_OPT_DO = "*Do as told*",
+	KURO_TOME_OPT_LEAVE = "*Leave quietly*",
+	KURO_TOME_REPLY_MEANING = "— I promised you my body in reward, haven't I? I never said I'm going to do anything beyond that. As you can see I'm conducting important research so it will be appreciated if you make it quick and not overly rough.",
+	LIRA_LOST_START = "As you get through the woods, you suddenly hear a woman's voice calling for help. You cautiously move towards it...",
+	LIRA_LOST_START2 = "— Stranger! What a relief this isn't animals or monsters... I've come here to gather some herbs but It seems I've got lost. My name is Lira, I hope it won't trouble you to get me to the elven capital.",
+	LIRA_LOST_OPT_SURE = "Sure, you can stick around",
+	LIRA_LOST_OPT_PRICE = "My help can only come at a price",
+	LIRA_LOST_REPLY_SURE = "— Bless you, once we get out of this groove I'll show you the way.",
+	LIRA_LOST_REPLY_PRICE = "— T—that's... I don't have any money on me.",
+	LIRA_LOST_OPT_FREE = "Nevermind, I'll help for free",
+	LIRA_LOST_OPT_SOMETHING = "I'm sure you have something of value...",
+	LIRA_LOST_REPLY_SOMETHING = """The elf girl pauses for a moment before begrudgingly accepts to your demand and gives anything she had on herself spare her clothes. 
+
+— Here, now, please, I hope for your help.""",
+	LIRA_LOST_IDLE = "You come across a small camp which seems like it was abandoned some time ago. With nothing else to do here you decide to move on.",
+	LIRA_LOST_CAPITAL = """You are led by Lira to the deeper parts of the forest until what looked like nothing but trees and plants revealed to be a wall of a city.
+
+Guard: — Holt there!
+
+Lira: — I'm Freya's acolyte, please, this [man] has helped me when I was lost in the woods.
+
+Despite Lira's looks, the guards have relaxed upon hearing her. As you moved inside she thanked you and parted on her way to one of the more prestigious structures.""",
 	MAIN_QUEST_LOAN_NAME = "The Loan",
 	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find enough money to pay off the bank or you'll be thrown out of your newly acquired home. Or, perhaps find some other way to deal with it...",
 	MAIN_QUEST_LOAN_STAGE0 = "You must have over {custom_text_function=GetLoanSum#0|} gold by {custom_text_function=GetLoanDayDetailed#0|}.",
@@ -15147,6 +15343,18 @@ Kuro makes a pause taking in your answer after which she closes her eyes. The da
 	JEAN_FREE_QUEST_NAME = "Free Jean",
 	JEAN_FREE_QUEST_SUMMARY = "Buy out Jean from dwarven King's prison",
 	JEAN_FREE_QUEST_PRICE = "Dwarven King wants a blond elf slave girl instead of Jean, or there is a price of 1000 gold for here.",
+	KURO_TOME_QUEST_NAME = "Book for Kuro",
+	KURO_TOME_QUEST_SUMMARY = "Help Kuro to get access to Aliron's library",
+	KURO_TOME_QUEST_LIBRARY = "Visit Mages guild",
+	KURO_TOME_QUEST_MONEY = "Bring 500 gold to Myr of Mages guild",
+	KURO_TOME_QUEST_CAPITAL = "Search for Gilded Grasp whiskey in Dwarven Capital",
+	KURO_TOME_QUEST_CARRIAGE = "Investigate the whisky carriage's last known location",
+	KURO_TOME_QUEST_BOTTLE = "Visit Dwarven Capital",
+	KURO_TOME_QUEST_BACK = "Bring whisky to Myr of Mages guild",
+	KURO_TOME_QUEST_TALK = "Talk to Kuro",
+	LIRA_LOST_QUEST_NAME = "Lost Lira",
+	LIRA_LOST_QUEST_SUMMARY = "Help Lira out of groove",
+	LIRA_LOST_QUEST_CAPITAL = "Get to the elven capital",
 	DIALOGUEANAINITIATELP = """Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.
 
 — H-hello, [Master]... How was your day?""",
@@ -16357,6 +16565,8 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_OLD_GODS_TEMPLE_DESC = "",
 	QUEST_MOLTEN_GROUNDS_TEXT = "Molten Grounds",
 	QUEST_MOLTEN_GROUNDS_DESC = "",
+	QUEST_WHISKY_CRASH_TEXT = "Carriage's location",
+	QUEST_WHISKY_CRASH_DESC = "",
 	ALIRON1 = "Check the streets",
 	ALIRON2 = "Search for Reim",
 	ALIRON3 = "Visit Fred's Dormitory",
@@ -16402,6 +16612,8 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	DWARF_CAPITAL_SEARCH = "Search for tracks",
 	DWARF_CAPITAL_SHIMORE = "Search for Ore",
 	DWARF_CAPITAL_JEAN = "Search for Jean",
+	DWARF_CAPITAL_WHISKEY = "Check the market",
+	DWARF_CAPITAL_WHISKEY2 = "Visit market",
 	INFINITEDUNGEONUNLOCK = "Dark Alley",
 	BEASTKIN_CAPITAL1 = "Find Chieftain",
 	BEASTKIN_CAPITAL2 = "Visit Shaman's Lodge",
@@ -16461,6 +16673,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_MOUNTAIN_PASS_LOCATION = "Find Jean",
 	QUEST_HOLLOW_PASSAGE_LOCATION = "Search for rebel tracks",
 	QUEST_OLD_GODS_TEMPLE_LOCATION = "Approach",
+	QUEST_WHISKY_CRASH_LOCATION = "Search around",
 	CURRENT_PREFERRED_FOOD_CONSUMPTION = "Current Preferred Food Consumption",
 	TOOLTIP_CLOCK1 = """Advance Time
 Hotkey: 1""",
