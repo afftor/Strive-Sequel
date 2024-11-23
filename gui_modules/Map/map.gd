@@ -304,29 +304,8 @@ func build_locations_list():
 		var temp = {id = id, area = tdata.area, type = cdata[id].type, heroes = [], quest = false, teleporter = cdata[id].teleporter}
 		if temp.type == "capital":
 			if adata.has("capital_code"):
-				if adata.capital_code == "elf_capital":
-					var closed = true
-					if ResourceScripts.game_progress.completed_quests.has("princess_search"):
-						closed = false
-					for k in ResourceScripts.game_progress.active_quests:
-						if k.code == "princess_search" and (k.stage == "stage3" or k.stage == "stage4" or k.stage == "stage5"): 
-							closed = false
-					if closed:
-						continue
-				if adata.capital_code == "beastkin_capital":
-					var closed = true
-					if ResourceScripts.game_progress.completed_quests.has("sword_artifact_quest"):
-						closed = false
-					for k in ResourceScripts.game_progress.active_quests: 
-						if k.code == "sword_artifact_quest" and k.stage.lstrip("stage").to_int() > 2:
-							closed = false
-					if closed:
-						continue
-				if adata.capital_code == "dwarf_capital":
-					if !(globals.valuecheck({type = "quest_completed", name = "visit_dwarfs_quest", check = true})
-						or globals.valuecheck({type = "has_active_quest", name = "visit_dwarfs_quest", check = true})
-						):#closed that is
-						continue
+				if globals.is_capital_closed(adata.capital_code):
+					continue
 		if cdata[id].has("tags") and cdata[id].tags.has('quest'):
 			temp.quest = true
 		if tdata.category == "questlocations":
