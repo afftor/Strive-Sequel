@@ -5442,6 +5442,8 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'z_index', value = -2},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'z_index', value = -2},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Animal_body', attr = 'z_index', value = -4},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_back', attr = 'z_index', value = -4},
 			
 			{type = 'node_group_select', group = 'hand_l', select = 'HandL'},
 			{type = 'node_group_select', group = 'hand_r', select = 'HandR'},
@@ -5480,6 +5482,8 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'z_index', value = -2},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'z_index', value = -2},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Animal_body', attr = 'z_index', value = -4},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_back', attr = 'z_index', value = -4},
 			
 			{type = 'node_group_select', group = 'hand_l', select = 'HandL'},
 			{type = 'node_group_select', group = 'hand_r', select = 'HandR'},
@@ -5518,6 +5522,8 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'z_index', value = -2},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'z_index', value = -2},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Animal_body', attr = 'z_index', value = -4},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_back', attr = 'z_index', value = -4},
 			
 			{type = 'node_group_select', group = 'hand_l', select = 'HandL3'},
 			{type = 'node_group_select', group = 'hand_r', select = 'HandR3'},
@@ -5556,6 +5562,8 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'z_index', value = 14},
 			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'z_index', value = 6},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Animal_body', attr = 'z_index', value = -2},
+			{type = 'node_attr', node = 'Female_pose/HumanF1/Spine/Weapon_back', attr = 'z_index', value = -2},
 			
 			{type = 'node_group_select', group = 'hand_l', select = 'HandL2'},
 			{type = 'node_group_select', group = 'hand_r', select = 'HandR3'},
@@ -5590,6 +5598,8 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'z_index', value = -2},
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'z_index', value = -2},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Animal_body', attr = 'z_index', value = -4},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_back', attr = 'z_index', value = -4},
 			{type = 'node_group_select', group = 'hand_l', select = 'HandL'},
 			{type = 'node_group_select', group = 'hand_r', select = 'HandR'},
 			
@@ -5624,6 +5634,8 @@ var transforms = {
 			
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderL/ArmL', attr = 'z_index', value = -2},
 			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/ShoulderR/ArmR', attr = 'z_index', value = -2},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Animal_body', attr = 'z_index', value = -4},
+			{type = 'node_attr', node = 'male_pose/HumanF1/Spine/Weapon_back', attr = 'z_index', value = -4},
 			{type = 'node_group_select', group = 'hand_l', select = 'HandL'},
 			{type = 'node_group_select', group = 'hand_r', select = 'HandR2'},
 			
