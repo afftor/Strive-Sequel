@@ -1006,7 +1006,15 @@ var dungeons = {
 					['event_blocked_path',1],
 					['event_fallen_bridge',1],
 				],
-			}
+			},
+			lira_lost_event = {
+				limit = 1,
+				weight = 57,#75% chance
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['lira_lost_start'],
+				possible_challenges = [],
+			},
 		},
 		
 		event_room_number = [3,4],
@@ -2743,6 +2751,24 @@ var dungeons = {
 		travel_time = [1,1],
 		scripteventdata = [
 			{trigger = 'dungeon_complete', args = 'capacitor_molten_start', reqs = [{code = 'active_quest_stage', value = 'hara_scales_quest', stage = 'get_cap'}]}]
+	},
+	quest_whisky_crash = {
+		code = 'quest_whisky_crash',
+		type = 'encounter',
+		name = tr("QUEST_WHISKY_CRASH_TEXT"),
+		classname = '',
+		descript = tr("QUEST_WHISKY_CRASH_DESC"),
+		difficulty = 'easy',
+		background = 'cave_1',
+		enemyarray =  [],
+		eventarray = [],
+		levels = [1,1],
+		resources = [],
+		stages_per_level = [1,1],
+		events = [],
+		tags = [],
+		area = 'mountains',
+		travel_time = [1,1],
 	},
 	quest_lilia_ancient_jungle_location = {
 		code = 'quest_lilia_ancient_jungle_location',

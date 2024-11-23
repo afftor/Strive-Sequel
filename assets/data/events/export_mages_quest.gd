@@ -9,6 +9,29 @@ var data = {
 		],
 		options = [
 		{code = 'mages_introduction2', text = "MAGESINTRODUCTION1REPLY", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'mages_introduction1_2', text = "MAGESINTRODUCTION1REPLY2",
+			reqs = [{type = 'has_items', operant = 'gte', value = 1, name = 'wine'}],
+			bonus_effects = [
+				{code = 'remove_item', name = 'wine', number = 1},
+				{code = 'reputation', name = 'mages', operant = '+', value = 100}],
+			dialogue_argument = 9, type = 'next_dialogue'},
+		{code = 'mages_introduction1_2', text = "MAGESINTRODUCTION1REPLY3",
+			reqs = [{type = 'has_items', operant = 'gte', value = 1, name = 'wine2'}],
+			bonus_effects = [
+				{code = 'remove_item', name = 'wine2', number = 1},
+				{code = 'reputation', name = 'mages', operant = '+', value = 100}],
+			dialogue_argument = 9, type = 'next_dialogue'},
+		],
+	},
+	mages_introduction1_2 = {
+		image = null,
+		character = 'myr',
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "MAGESINTRODUCTION1_2", reqs = []},
+		],
+		options = [
+		{code = 'mages_introduction3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
 		],
 	},
 	mages_introduction2 = {

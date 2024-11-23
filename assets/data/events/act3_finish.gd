@@ -2887,6 +2887,17 @@ var data = {
 					},
 					{
 						code = "update_city"
+					},
+					{
+						code = 'add_timed_event',
+						value = "kuro_tome_start",
+						args = [
+							{
+								type = 'add_to_date',
+								date = [7,8],
+								hour = 1
+							}
+						]
 					}
 				]
 			}
@@ -3245,6 +3256,17 @@ var data = {
 					},
 					{
 						code = "update_city"
+					},
+					{
+						code = 'add_timed_event',
+						value = "kuro_tome_start",
+						args = [
+							{
+								type = 'add_to_date',
+								date = [7,8],
+								hour = 1
+							}
+						]
 					}
 				]
 			}
