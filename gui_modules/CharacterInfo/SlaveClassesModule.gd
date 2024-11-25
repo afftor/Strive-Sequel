@@ -234,10 +234,10 @@ func build_mastery_cat():
 			button.get_node('icon/Label').text = str(lv)
 			globals.connecttexttooltip(button, masdata.name)
 			#add mastery tooltip
-			text += tr(mas) + '\n'
+			text += "[center]"+tr("MASTERY"+mas.to_upper()) + '[/center]\nBonus per point:\n'
 #			text += tr(masdata.descript) + '\n'
 			text += globals.build_desc_for_bonusstats(masdata.passive) + '\n'
-			text += tr('CURRENTLVL') + str(lv)
+#			text += tr('CURRENTLVL') + str(lv)
 			globals.connecttexttooltip(button, text)
 		else:
 			if mas == selected_mastery:
@@ -270,8 +270,9 @@ func change_mastery(mas):
 			$MasteryPanel/AddPoint/TextureRect.texture = images.get_icon('mastery_point_magic')
 	var lv = person.get_stat('mastery_' + mas)
 	var lv_pas = person.xp_module.get_mastery_level(mas, true)
-	text = tr('ADD_MASTERY_CONFIRM') + '\n'
-	text += globals.build_desc_for_bonusstats(masdata.passive)
+	text = tr('ADD_MASTERY_CONFIRM')
+	text_1 = tr("ADD_MASTERY_CONFIRM_UNIVERSAL")
+#	text += globals.build_desc_for_bonusstats(masdata.passive)
 	for lv_tmp in range(1, masdata.maxlevel + 1):
 		if lv_tmp > 1:
 			input_handler.DuplicateContainerTemplate($MasteryPanel/mastery/ScrollContainer/VBoxContainer, 'HSeparator')
@@ -300,8 +301,8 @@ func change_mastery(mas):
 			skill_icon.get_node('icon').material.set_shader_param('mask', images.get_icon('frame_skill_mask'))
 			skill_icon.set_meta('display_only', true)
 			globals.connectskilltooltip(skill_icon, s_id, person)
-			if f:
-				text += tr('SKILLLEARN') + tr(sdata.name) + '\n'
+#			if f:
+#				text += tr('SKILLLEARN') + tr(sdata.name) + '\n'
 		for s_id in lvdata.explore_skills:
 			var sdata = Skilldata.get_template(s_id, person)
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
@@ -315,8 +316,8 @@ func change_mastery(mas):
 			skill_icon.get_node('icon').material.set_shader_param('mask', images.get_icon('frame_explore_mask'))
 			skill_icon.set_meta('display_only', true)
 			globals.connectskilltooltip(skill_icon, s_id, person)
-			if f:
-				text += tr('SKILLLEARN') + tr(sdata.name) + '\n'
+#			if f:
+#				text += tr('SKILLLEARN') + tr(sdata.name) + '\n'
 		for tr_id in lvdata.traits:
 			var trdata = Traitdata.traits[tr_id]
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
@@ -329,8 +330,8 @@ func change_mastery(mas):
 			skill_icon.get_node('icon').texture = trdata.icon
 			skill_icon.get_node('icon').material.set_shader_param('mask', images.get_icon('frame_trait_mask'))
 			globals.connecttexttooltip(skill_icon, trdata.descript)
-			if f:
-				text += tr('TRAITLEARN') + tr(trdata.name) + '\n'
+#			if f:
+#				text += tr('TRAITLEARN') + tr(trdata.name) + '\n'
 		for s_id in lvdata.action:
 			var sdata = Skilldata.training_actions[s_id]
 			var skill_icon = input_handler.DuplicateContainerTemplate(panel.get_node('container'), 'skill')
@@ -343,26 +344,27 @@ func change_mastery(mas):
 			skill_icon.get_node('icon').texture = load(sdata.icon)
 			skill_icon.get_node('icon').material.set_shader_param('mask', images.get_icon('frame_train_mask'))
 			globals.connecttexttooltip(skill_icon, '[center]' + tr(sdata.name) + '[/center]\n' + tr(sdata.descript_mastery))
-			if f:
-				text += tr('TRAININGLEARN') + tr(sdata.name) + '\n'
+#			if f:
+#				text += tr('TRAININGLEARN') + tr(sdata.name) + '\n'
 	$MasteryPanel/AddPoint.disabled = !person.can_upgrade_mastery(mas)
 	$MasteryPanel/AddPoint2.disabled = !person.can_upgrade_mastery(mas, true)
 	$MasteryPanel/Categories3/combat/Label.text = "%d Points" % person.get_stat('mastery_point_combat')
 	$MasteryPanel/Categories3/magic/Label.text = "%d Points" % person.get_stat('mastery_point_magic')
 	$MasteryPanel/Categories3/universal/Label.text = "%d Points" % person.get_stat('mastery_point_universal')
 	
-	text += tr('FOR')
-	text_1 = text
-	var cost = person.upgrade_mastery_cost(mas) 
-	for point in cost:
-		var stdata = statdata.statdata['mastery_point_' + point]
-		if cost[point] > 0:
-			text += "%s : %d \n" % [tr(stdata.name), cost[point]]
-	cost = person.upgrade_mastery_cost(mas, true) 
-	for point in cost:
-		var stdata = statdata.statdata['mastery_point_' + point]
-		if cost[point] > 0:
-			text_1 += "%s : %d \n" % [tr(stdata.name), cost[point]]
+
+#	text += tr('FOR')
+#	text_1 = text
+#	var cost = person.upgrade_mastery_cost(mas) 
+#	for point in cost:
+#		var stdata = statdata.statdata[point]
+#		if cost[point] > 0:
+#			text += "%s : %d \n" % [tr(stdata.name), cost[point]]
+#	cost = person.upgrade_mastery_cost(mas, true) 
+#	for point in cost:
+#		var stdata = statdata.statdata[point]
+#		if cost[point] > 0:
+#			text_1 += "%s : %d \n" % [tr(stdata.name), cost[point]]
 
 
 func add_mastery_prompt():

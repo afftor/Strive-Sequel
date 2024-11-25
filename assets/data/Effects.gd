@@ -2493,12 +2493,12 @@ var buffs = {
 		t_name = 'burn'
 	},
 	b_poison = {
-		icon = "res://assets/images/iconsskills/Heal.png",
+		icon = "res://assets/images/iconsskills/skill_dip_poison.png",
 		description = "BUFFDESCRIPTPOISON",
 		t_name = 'poison'
 	},
 	b_bleed = {
-		icon = "res://assets/images/iconsskills/Debilitate.png",
+		icon = "res://assets/images/iconsskills/icon_blood_explosion.png",
 		description = "BUFFDESCRIPTBLEEDING",
 		t_name = 'bleed'
 	},
@@ -2514,13 +2514,13 @@ var buffs = {
 		combat_only = true
 	},
 	b_shred = {
-		icon = "res://assets/images/iconsskills/Sedate.png",
+		icon = "res://assets/images/iconsskills/Acid-spit.png",
 		description = "BUFFDESCRIPTSHRED",
 		t_name = 'shred',
 		combat_only = true
 	},
 	b_shatter = {
-		icon = "res://assets/images/iconsskills/Sedate.png",
+		icon = "res://assets/images/iconsskills/icon_elemental_protection.png",
 		description = "BUFFDESCRIPTSHATTER",
 		t_name = 'shatter',
 		combat_only = true
@@ -2533,26 +2533,26 @@ var buffs = {
 		combat_only = true
 	},
 	b_blind = {
-		icon = "res://assets/images/iconsskills/Sedate.png", #fix
-		description = "BUFFDESCRIPTSHRED",
+		icon = "res://assets/images/iconsskills/Sedate.png",
+		description = "BUFFDESCRIPTBLIND",
 		t_name = 'blind',
 		combat_only = true
 	},
 	b_fear = {
-		icon = "res://assets/images/iconsskills/Sedate.png", #fix
+		icon = "res://assets/images/iconsskills/Fear.png",
 		description = "BUFFDESCRIPTFEAR",
 		t_name = 'fear',
 		combat_only = true
 	},
 	b_shock = {
-		icon = "res://assets/images/iconsskills/Sedate.png", #fix
+		icon = "res://assets/images/iconsskills/Innervate.png",
 		description = "BUFFDESCRIPTSHOCK",
 		t_name = 'shock',
 		combat_only = true
 	},
 	b_ensnare = {
-		icon = "res://assets/images/iconsskills/Sedate.png", #fix
-		description = "BUFFDESCRIPTSHRED",
+		icon = "res://assets/images/iconsskills/skill_ensnare.png",
+		description = "BUFFDESCRIPTENSNARE",
 		t_name = 'ensnare',
 		combat_only = true
 	},

@@ -102,7 +102,15 @@ var unique_dict = { #shows available talk characters. Scenes go in order from hi
 			{code = 'amelia_sex_1', reqs = [{type = 'dialogue_seen', check = false, value = 'AMELIA_SEX_1'},{type = 'quest_completed', name = 'amelia_main_quest', check = true}]}, 
 			{code = 'amelia_dialogue_start', reqs = []}, #needs adding  
 		]
-	}
+	},
+	
+	kuro = {
+		code = 'kuro',
+		scenes = [
+			{code = 'kuro_tome_sex', reqs = [{type = "active_quest_stage", value = "kuro_tome_quest", stage = "talk"}]},
+#			{code = 'kuro_dialogue_start', reqs = []}
+		]
+	},
 }
 
 

@@ -289,6 +289,11 @@ var backgrounds = {
 	lilith_wedding_5 = "res://assets/images/fullscreen scenes/LilithCG010.png",
 	
 	kuro_book_0 = "res://assets/images/fullscreen scenes/kuro_book_0.png",
+	kuro_book_0_1 = "res://assets/images/fullscreen scenes/kuro_book_0_1.png",
+	kuro_book_0_2 = "res://assets/images/fullscreen scenes/kuro_book_0_2.png",
+	kuro_book_0_3 = "res://assets/images/fullscreen scenes/kuro_book_0_3.png",
+	kuro_book_0_4 = "res://assets/images/fullscreen scenes/kuro_book_0_4.png",
+	kuro_book_0_5 = "res://assets/images/fullscreen scenes/kuro_book_0_5.png",
 	
 	#masteries
 	mastery_air = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_air.png",

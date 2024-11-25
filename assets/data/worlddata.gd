@@ -1149,6 +1149,14 @@ var fixed_location_options = { #override serialized data
 				{type = 'event_seen', check = false, value = 'dwarf_search'}
 			],
 			args = [{code = 'start_event', data = 'dwarf_search', args = []}]
+		},{
+			text = tr("DWARF_CAPITAL_WHISKEY"),
+			reqs = [{type = 'active_quest_stage', value = 'kuro_tome_quest', stage = 'capital'}],
+			args = [{code = 'start_event', data = 'kuro_whiskey_market', args = []}]
+		},{
+			text = tr("DWARF_CAPITAL_WHISKEY2"),
+			reqs = [{type = 'active_quest_stage', value = 'kuro_tome_quest', stage = 'bottle'}],
+			args = [{code = 'start_event', data = 'kuro_whiskey_homebrew', args = []}]
 		}
 	],
 	beastkin_capital = [
@@ -1549,6 +1557,13 @@ var fixed_location_options = { #override serialized data
 			text = tr("QUEST_HOLLOW_PASSAGE_LOCATION"), 
 			reqs = [{type = 'active_quest_stage', value = 'dking_hara_quest', stage = 'tracks'}], 
 			args = [{code = 'start_event', data = 'hollow_pass_start', args = []}]
+		}
+	],
+	quest_whisky_crash = [
+		{
+			text = tr("QUEST_WHISKY_CRASH_LOCATION"),
+			reqs = [{type = 'active_quest_stage', value = 'kuro_tome_quest', stage = 'carriage'}],
+			args = [{code = 'start_event', data = 'kuro_whiskey_crash', args = []}]
 		}
 	],
 }

@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.10.0b'
+const gameversion = '0.10.1 experimental'
 
 #time
 signal hour_tick
@@ -2592,6 +2592,8 @@ func valuecheck(dict):
 			return input_handler.operate(dict.operant,input_handler.active_location.captured_characters.size(), dict.value)
 		'difficulty':
 			return input_handler.operate(dict.operant, ResourceScripts.game_globals.difficulty, dict.value)
+		'capital_closed':
+			return is_capital_closed(dict.name) == dict.check
 
 
 func apply_starting_preset():
@@ -2792,3 +2794,30 @@ func copy_stats(base_ch, unique_ch):
 func get_sex_action(code):
 	assert(sex_actions_dict.has(code), "no such sex_action! (%s)" % code)
 	return sex_actions_dict[code]
+
+#probably should be moved somewhere
+func is_capital_closed(capital):
+	if capital == "elf_capital":
+		if ResourceScripts.game_progress.completed_quests.has("princess_search"):
+			return false
+		for k in ResourceScripts.game_progress.active_quests:
+			if k.code == "princess_search" and (k.stage == "stage3" or k.stage == "stage4" or k.stage == "stage5"): 
+				return false
+		if (valuecheck({type = "quest_completed", name = "lira_lost_quest", check = true})
+				or valuecheck({type = "has_active_quest", name = "lira_lost_quest", check = true})
+				):
+			return false
+		return true
+	if capital == "beastkin_capital":
+		if ResourceScripts.game_progress.completed_quests.has("sword_artifact_quest"):
+			return false
+		for k in ResourceScripts.game_progress.active_quests:
+			if k.code == "sword_artifact_quest" and k.stage.lstrip("stage").to_int() > 2:
+				return false
+		return true
+	if capital == "dwarf_capital":
+		if (valuecheck({type = "quest_completed", name = "visit_dwarfs_quest", check = true})
+				or valuecheck({type = "has_active_quest", name = "visit_dwarfs_quest", check = true})
+				):
+			return false
+		return true

@@ -1,3 +1,7 @@
+0.10.1
+Revamped skill acquirement system
+Fixed some memory leaks which should make game more stable on longer sessions
+Fixed multiple minor paperdoll issues
 0.10.0b
 Optimized resource loading to make images less taxing on the memory
 Fixed some ragdoll issues

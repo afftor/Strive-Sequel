@@ -1158,6 +1158,8 @@ Hotkey: 3""",
 	SKILLSHADOWSTRIKEDESCRIPT = """Наносит цели 130% от ATK в виде урона {color=yellow|Тьмой}. Снижает ATK и MATK цели на 20 на 2 хода.""",
 	SKILLFIREARR = """Огненная стрела""",
 	SKILLFIREARRDESCRIPT = """Наносит 120% от МATK от ATK в виде урона {color=yellow|Огнем}. С вероятностью 50% сжигает цель на 2 хода, нанося урон (20% от MATK) каждый ход.""",
+	SKILLFIREARR_1DESCRIPT = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 60% chance to apply Burn for 2 turns. Chance increases at higher Fire Mastery level.""", # MISSING TRANSLATION
+	SKILLFIREARR_2DESCRIPT = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 100% chance to apply Burn for 2 turns.""", # MISSING TRANSLATION
 	SKILLLIGHTNING = """Молния""",
 	SKILLLIGHTNINGDESCRIPT = """Наносит цели 125% от МАТК в виде урона {color=yellow|Воздухом}. Оглушает цель на 1 ход.""",
 	SKILLMINDBLAST = """Взрыв разума""",
@@ -1243,6 +1245,8 @@ Hotkey: 3""",
 	SKILLCAMOUFLAGEDESCRIPT = """Бафф для всех союзников: +20 Уворот на 2 хода.""",
 	SKILLREINCARNATE = """Реинкарнация""",
 	SKILLREINCARNATEDESCRIPT = """Укрепляет дух союзника. Когда HP достигает нуля, восстановите его до полного.""",
+	SKILLLEADERSMARK = """Leader's Mark""", # MISSING TRANSLATION
+	SKILLLEADERSMARKDESCRIPT = """Strike enemy for 70% ATK and Mark for 3 turns. Marked enemy takes 15% more damage.""", # MISSING TRANSLATION
 	SKILLHUNTERSMARK = """Метка охотника""",
 	SKILLHUNTERSMARKDESCRIPT = """Отмеченный враг получает на 15% больше урона на 3 хода.""",
 	SKILLBARD1 = """Гимн""",
@@ -1762,6 +1766,7 @@ Hotkey: 3""",
 	STATMODMELEE = """Урон в ближ. бою.""",
 	STATMODRANGED = """Урон в дальн. бою.""",
 	STATDAMAGE_MOD_SKILL = """Физический урон""",
+	STATDAMAGE_MOD_HEAL = """Healing Bonus""", # MISSING TRANSLATION
 
 
 	STATFATIGUE = """Усталость""",
@@ -2523,6 +2528,7 @@ Hotkey: 3""",
 	TRAITMENIALDESCRIPT = """Шанс крита поручения установлен на 0.""",
 	TRAITSTURDYDESCRIPT = """+10 ЗАЩИТЫ""",
 	TRAITFRAILDESCRIPT = """-10 ЗАЩИТЫ.""",
+	TRAITSTUN_IMMUNITYDESCRIPT = """Makes user immune to Stun.""", # MISSING TRANSLATION
 	TRAITLOYALTY_BASIC_SERVITUDE = """Базовое служение""",
 	TRAITLOYALTY_BASIC_SERVITUDEDESCRIPT = """{color=green|Позволяет назначать профессии}
 
@@ -2778,6 +2784,7 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTRESISTSTATE = """Состояние сопротивления: Не может получить повиновение от положительных способностей. Не может использовать разведывательные навыки. Позитивные действия во время свиданий менее эффективны.""",
 	TRAITEFFECTISPREGNANT = """Беременна: -10 Скорости, -20 физ. возможностей.""",
 	TRAITEFFECTISPREGNANT2 = """Глубоко беременна: -20 Скорость, -40 физ. возможностей.""",
+	TRAITSTUNIMMUNITYDESCRIPT = """Can't be stunned in combat.""", # MISSING TRANSLATION
 	EUPHORIABUFF = """Урон увеличен""",
 	BUFFDESCRIPTSHACKLES = """Оковы""",
 	BUFFDESCRIPTGREATSHACKLES = """Великие оковы""",
