@@ -1044,6 +1044,9 @@ func get_stat(statname, ref = false):
 		var tmp = statlist.slave_class
 		if tmp == 'slave1':
 			tmp = 'slave'
+		if tmp == '':
+			tmp = 'slave'
+			set_slave_category('slave1')
 		return tmp
 	if !statlist.has(statname): 
 		print("no stat - %s" % statname)
@@ -1117,6 +1120,9 @@ func remove_stat_bonuses(ls:Dictionary):
 		for rec in ls:
 			if (rec as String).ends_with('mod') && !(rec in ['critmod', 'exp_gain_mod']) :
 				add_bonus(rec.replace('mod','_mul'), ls[rec], true)
+				continue
+			if (rec as String).begins_with('mastery_'):
+				parent.get_ref().add_stat(rec, ls[rec], true)
 				continue
 			if !statdata.statdata.has(rec):
 				print('debug warning - lost stat %s' % rec)

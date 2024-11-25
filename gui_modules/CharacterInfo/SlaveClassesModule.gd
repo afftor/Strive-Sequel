@@ -355,12 +355,12 @@ func change_mastery(mas):
 	text_1 = text
 	var cost = person.upgrade_mastery_cost(mas) 
 	for point in cost:
-		var stdata = statdata.statdata[point]
+		var stdata = statdata.statdata['mastery_point_' + point]
 		if cost[point] > 0:
 			text += "%s : %d \n" % [tr(stdata.name), cost[point]]
 	cost = person.upgrade_mastery_cost(mas, true) 
 	for point in cost:
-		var stdata = statdata.statdata[point]
+		var stdata = statdata.statdata['mastery_point_' + point]
 		if cost[point] > 0:
 			text_1 += "%s : %d \n" % [tr(stdata.name), cost[point]]
 

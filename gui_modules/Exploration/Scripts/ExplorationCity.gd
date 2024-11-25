@@ -71,6 +71,7 @@ func test():
 
 func enslave_select():
 	var character = person_to_hire
+	character.reset_mastery()
 	character.set_slave_category("slave")
 	input_handler.active_character = character
 	var changes = [{code = 'money_change', operant = '-', value = variables.enslavement_price}]
