@@ -5,12 +5,13 @@ var professions = []
 var prof_links = {}
 var abil_exp = 0
 
-var mastery_point_magic = 0
-var mastery_point_universal = 0
-var mastery_point_combat = 0
+var mastery_points = {
+	magic = 0,
+	universal = 0,
+	combat = 0}
 
 var mastery_levels = {
-#	warfare = {trained = 0, passive = 0, enable = true},
+#	warfare = {magic = 0, combat = 0, universal = 0, passive = 0, enable = true},
 }
 
 var sleep = ''
@@ -73,7 +74,7 @@ func fix_rules():
 #masteries
 func fix_masteries():
 	for mastery in Skilldata.masteries:
-		mastery_levels[mastery] = {trained = 0, passive = 0, enable = true}
+		mastery_levels[mastery] = {magic = 0, combat = 0, universal = 0, passive = 0, enable = true}
 
 
 func add_mastery_bonus(school, level):
@@ -117,21 +118,26 @@ func enable_mastery(school):
 	if mastery_levels[school].enable:
 		return
 	mastery_levels[school].enable = true
-	for i in range(mastery_levels[school].trained + mastery_levels[school].passive):
+	for i in range(mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive):
 		add_mastery_bonus(school, i + 1)
 
 
 func disable_mastery(school):
 	if mastery_levels[school].enable:
 		mastery_levels[school].enable = false
-		for i in range(mastery_levels[school].trained + mastery_levels[school].passive, 0, -1):
+		for i in range(mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive, 0, -1):
 			remove_mastery_bonus(school, i)
 
 
-func reset_mastery(school):
-	for i in range(mastery_levels[school].trained + mastery_levels[school].passive, mastery_levels[school].passive, -1):
-		remove_mastery_bonus(school, i)
-	mastery_levels[school].trained = 0
+func reset_mastery():
+	for school in mastery_levels:
+		for i in range(mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive, mastery_levels[school].passive, -1):
+			remove_mastery_bonus(school, i)
+		
+		for i in ['combat', 'universal', 'magic']:
+			mastery_points[i] += mastery_levels[school][i]
+			mastery_levels[school][i] = 0
+
 
 
 func remove_mastery_bonus(school, level):
@@ -181,22 +187,22 @@ func remove_mastery_bonus(school, level):
 #those are extremally bad - but those are not my decisions
 func upgrade_mastery_cost(school, force_universal = false):
 	var res = {
-		mastery_point_combat = 0,
-		mastery_point_magic = 0,
-		mastery_point_universal = 0,
+		combat = 0,
+		magic = 0,
+		universal = 0,
 	}
 	var data = Skilldata.masteries[school]
 	match data.type:
 		'combat':
-			if force_universal:
-				res.mastery_point_universal = 1
+			if mastery_points.combat > 0 and !force_universal:
+				res.combat = 1
 			else:
-				res.mastery_point_combat = 1
+				res.universal = 1
 		'spell':
-			if force_universal:
-				res.mastery_point_universal = 1
+			if mastery_points.magic > 0 and !force_universal:
+				res.magic = 1
 			else:
-				res.mastery_point_magic = 1
+				res.universal = 1
 	return res
 	
 
@@ -205,46 +211,39 @@ func can_upgrade_mastery(school, force_universal = false):
 	var data = Skilldata.masteries[school]
 	if !mastery_levels[school].enable:
 		return false
-	if force_universal:
-		return mastery_point_universal > 0
-	else:
-		match data.type:
-			'combat':
-				return mastery_point_combat > 0
-			'spell':
-				return mastery_point_magic > 0
+	var cost = upgrade_mastery_cost(school, force_universal)
+	for c in cost:
+		if cost[c] > parent.get_ref().get_stat('mastery_point_' + c): #not direct check cause of gp bonus
+			return false
+	return true
 
 
 func upgrade_mastery(school, force_universal = false):
 	var data = Skilldata.masteries[school]
-	match data.type:
-		'combat':
-			if force_universal:
-				mastery_point_universal -= 1
-			else:
-				mastery_point_combat -= 1
-		'spell':
-			if force_universal:
-				mastery_point_universal -= 1
-			else:
-				mastery_point_magic -= 1
-	mastery_levels[school].trained += 1
-	add_mastery_bonus(school, mastery_levels[school].trained + mastery_levels[school].passive)
+	var cost = upgrade_mastery_cost(school, force_universal)
+	for c in cost:
+		mastery_points[c] -= cost[c]
+		mastery_levels[school].combat += cost[c]
+	
+	add_mastery_bonus(school, mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive)
 
 
 func add_mastery_point_passive(school, value):
 	if mastery_levels[school].enable:
-		for i in range(mastery_levels[school].trained + mastery_levels[school].passive, mastery_levels[school].trained + mastery_levels[school].passive + value):
+		for i in range(mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive, mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive + value):
 			add_mastery_bonus(school, i + 1)
 	mastery_levels[school].passive += value
 
 
-func get_mastery_level(school, passive = false): #external check, for the sake of condition sanity
+func remove_mastery_point_passive(school, value):
 	if mastery_levels[school].enable:
-		var res = mastery_levels[school].passive
-		if !passive:
-			res += mastery_levels[school].trained
-		return  res
+		for i in range(mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive, mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive - value, -1):
+			remove_mastery_bonus(school, i)
+	mastery_levels[school].passive -= value
+
+func get_mastery_level(school): #external check, for the sake of condition sanity
+	if mastery_levels[school].enable:
+		return mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive
 	else:
 		return 0 
 
@@ -350,6 +349,12 @@ func fix_serialize():
 			newprofs.push_back('acolyte') 
 	for prof in newprofs:
 		unlock_class(prof)
+	
+	#mastery fix - bad way
+	for school in mastery_levels:
+		var tmp = mastery_levels[school]
+		if tmp.has('trained'): #old data structure
+			mastery_levels[school] = {magic = 0, combat = 0, universal = tmp.trained, passive = tmp.passive, enable = tmp.enable}
 
 
 func fix_import():

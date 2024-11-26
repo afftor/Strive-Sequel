@@ -85,7 +85,12 @@ func get_stat(statname, ref = false):
 	if statname in ['hp', 'mp', 'shield', 'taunt']:
 		return get(statname)
 	if statname in ['mastery_point_magic', 'mastery_point_universal', 'mastery_point_combat']:
-		return xp_module.get(statname)
+		var st = statname.trim_prefix('mastery_point_')
+		var tres = xp_module.mastery_points[st]
+		if st == 'universal':
+			if !has_status('slave'):
+				tres += get_stat('growth_factor')
+		return tres
 	if statname.begins_with('mastery_'):
 		return xp_module.get_mastery_level(statname.trim_prefix('mastery_'))
 	if statname == 'base_exp':
@@ -225,9 +230,19 @@ func add_stat(statname, value, revert = false):
 	if statname in ['hp', 'mp', 'shield']:
 		set(statname, get(statname) + value)
 	if statname in ['mastery_point_magic', 'mastery_point_universal', 'mastery_point_combat']:
-		xp_module.set(statname, xp_module.get(statname) + value)
+		var st = statname.trim_prefix('mastery_point_')
+		if revert:
+			xp_module.mastery_points[st] -= value
+			if xp_module.mastery_points[st] < 0 and st != 'universal':
+				xp_module.mastery_points.universal += xp_module.mastery_points[st]
+				xp_module.mastery_points[st] = 0
+		else:
+			xp_module.mastery_points[st] += value
 	elif statname.begins_with('mastery_'):
-		xp_module.add_mastery_point_passive(statname.trim_prefix('mastery_'), value)
+		if revert:
+			xp_module.remove_mastery_point_passive(statname.trim_prefix('mastery_'), value)
+		else:
+			xp_module.add_mastery_point_passive(statname.trim_prefix('mastery_'), value)
 	elif statname == 'base_exp':
 		if value > 0:
 			xp_module.base_exp += value * get_stat('exp_gain_mod')
@@ -474,6 +489,9 @@ func remove_class(prof):
 
 func remove_all_classes():
 	xp_module.remove_all_classes()
+
+func reset_mastery():
+	xp_module.reset_mastery()
 
 func add_trait(tr_code):
 	statlist.add_trait(tr_code)

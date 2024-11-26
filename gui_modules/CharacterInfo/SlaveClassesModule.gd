@@ -352,6 +352,7 @@ func change_mastery(mas):
 	$MasteryPanel/Categories3/magic/Label.text = "%d Points" % person.get_stat('mastery_point_magic')
 	$MasteryPanel/Categories3/universal/Label.text = "%d Points" % person.get_stat('mastery_point_universal')
 	
+
 #	text += tr('FOR')
 #	text_1 = text
 #	var cost = person.upgrade_mastery_cost(mas) 

@@ -202,7 +202,7 @@ var traits = {
 		icon = null,
 		effects = [],
 		bonusstats = {},
-		tags = []
+		tags = ['slave']
 	},
 	slave_trained = {
 		code = 'slave_trained',
@@ -212,7 +212,7 @@ var traits = {
 		icon = null,
 		effects = [],
 		bonusstats = {},
-		tags = ['trained', 'worker', 'combatant']
+		tags = ['trained', 'worker', 'combatant', 'slave']
 	},
 	#classes
 	hunter_damage = {
