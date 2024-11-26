@@ -54,8 +54,14 @@ var backgrounds = {
 	fire_depths2 = "res://assets/images/backgrounds/fire_depths2.png",
 	fire_depths3 = "res://assets/images/backgrounds/fire_depths3.png",
 	fire_depths4 = "res://assets/images/backgrounds/fire_depths4.png",
-
-
+	
+	combat_cave = "res://assets/images/combat_back/combat_cave.png",
+	combat_crypt = "res://assets/images/combat_back/combat_crypt.png",
+	combat_forest = "res://assets/images/combat_back/combat_forest.png",
+	combat_fort = "res://assets/images/combat_back/combat_fort.png",
+	combat_jungle = "res://assets/images/combat_back/combat_jungle.png",
+	combat_volcano = "res://assets/images/combat_back/combat_volcano.png",
+	
 	fighters_guild = "res://assets/images/backgrounds/fighters_guild.png",
 	mages_guild = "res://assets/images/backgrounds/mage_guild.png",
 	servants_guild = "res://assets/images/backgrounds/servants_guild.png",
