@@ -103,7 +103,7 @@ var skills = {
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = Effectdata.rebuild_make_status({effect = 'e_s_freeze1', chance = 0.5, duration = 1})})], 
-		cost = {},
+		cost = {mp = 6},
 		charges = 0,
 		combatcooldown = 0,
 		cooldown = 0,

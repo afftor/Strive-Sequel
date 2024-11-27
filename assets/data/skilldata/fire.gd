@@ -115,7 +115,7 @@ var skills = {
 		charges = 0,
 		combatcooldown = 0,
 		cooldown = 0,
-		catalysts = {},
+		catalysts = {mp = 8},
 		target = 'enemy',
 		target_number = 'all',
 		target_range = 'any',

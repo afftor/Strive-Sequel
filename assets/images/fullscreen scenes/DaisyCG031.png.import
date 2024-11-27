@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/daisy_minet2_9.png-5083f36b7100855fc2f23a516e83b5b8.stex"
+path="res://.import/DaisyCG031.png-8567323f453a2433f9ae902e290d938c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/fullscreen scenes/daisy_minet2_9.png"
-dest_files=[ "res://.import/daisy_minet2_9.png-5083f36b7100855fc2f23a516e83b5b8.stex" ]
+source_file="res://assets/images/fullscreen scenes/DaisyCG031.png"
+dest_files=[ "res://.import/DaisyCG031.png-8567323f453a2433f9ae902e290d938c.stex" ]
 
 [params]
 

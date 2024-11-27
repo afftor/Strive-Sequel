@@ -89,7 +89,7 @@ var skills = {
 		reqs = [],
 		targetreqs = [],
 		effects = [], 
-		cost = {},
+		cost = {mp = 16},
 		charges = 0,
 		combatcooldown = 0,
 		cooldown = 0,

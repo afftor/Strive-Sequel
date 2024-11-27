@@ -83,7 +83,7 @@ var skills = {
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_elprotect', duration = 3})], 
-		cost = {},
+		cost = {mp = 7},
 		charges = 0,
 		combatcooldown = 0,
 		cooldown = 0,

@@ -87,13 +87,29 @@ var backgrounds = {
 	xari_encounter8 = "res://assets/images/fullscreen scenes/XariCG001.png",
 	daisy_discipline = "res://assets/images/fullscreen scenes/DaisyCG001.png",
 
-	daisy_bj1 = "res://assets/images/fullscreen scenes/DaisyCG002.png",
-	daisy_bj2 = "res://assets/images/fullscreen scenes/DaisyCG003.png",
-	daisy_bj3 = "res://assets/images/fullscreen scenes/DaisyCG004.png",
-	daisy_bj4 = "res://assets/images/fullscreen scenes/DaisyCG005.png",
-	daisy_bj5 = "res://assets/images/fullscreen scenes/DaisyCG006.png",
-	daisy_bj6 = "res://assets/images/fullscreen scenes/DaisyCG007.png",
-
+	daisy_bj1_old = "res://assets/images/fullscreen scenes/DaisyCG002.png",
+	daisy_bj2_old= "res://assets/images/fullscreen scenes/DaisyCG003.png",
+	daisy_bj3_old = "res://assets/images/fullscreen scenes/DaisyCG004.png",
+	daisy_bj4_old = "res://assets/images/fullscreen scenes/DaisyCG005.png",
+	daisy_bj5_old = "res://assets/images/fullscreen scenes/DaisyCG006.png",
+	daisy_bj6_old = "res://assets/images/fullscreen scenes/DaisyCG007.png",
+	
+	daisy_bj1 = "res://assets/images/fullscreen scenes/DaisyCG029.png",
+	daisy_bj2 = "res://assets/images/fullscreen scenes/DaisyCG030.png",
+	daisy_bj3 = "res://assets/images/fullscreen scenes/DaisyCG031.png",
+	daisy_bj4 = "res://assets/images/fullscreen scenes/DaisyCG032.png",
+	daisy_bj5 = "res://assets/images/fullscreen scenes/DaisyCG033.png",
+	daisy_bj6 = "res://assets/images/fullscreen scenes/DaisyCG034.png",
+	daisy_bj7 = "res://assets/images/fullscreen scenes/DaisyCG035.png",
+	daisy_bj8 = "res://assets/images/fullscreen scenes/DaisyCG036.png",
+	daisy_bj9 = "res://assets/images/fullscreen scenes/DaisyCG037.png",
+	daisy_bj10 = "res://assets/images/fullscreen scenes/DaisyCG038.png",
+	daisy_bj11 = "res://assets/images/fullscreen scenes/DaisyCG039.png",
+	daisy_bj12 = "res://assets/images/fullscreen scenes/DaisyCG040.png",
+	
+	
+	
+	
 	daisy_training1 = "res://assets/images/fullscreen scenes/DaisyCG008.png",
 	daisy_training2 = "res://assets/images/fullscreen scenes/DaisyCG009.png",
 	daisy_training3 = "res://assets/images/fullscreen scenes/DaisyCG010.png",
@@ -300,6 +316,8 @@ var backgrounds = {
 	kuro_book_0_3 = "res://assets/images/fullscreen scenes/kuro_book_0_3.png",
 	kuro_book_0_4 = "res://assets/images/fullscreen scenes/kuro_book_0_4.png",
 	kuro_book_0_5 = "res://assets/images/fullscreen scenes/kuro_book_0_5.png",
+	
+	
 	
 	#masteries
 	mastery_air = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_air.png",
