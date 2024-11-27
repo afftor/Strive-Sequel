@@ -644,19 +644,19 @@ Turns character Horny during sex interactions. """,
 	ITEMALCOHOL = "Whiskey",
 	ITEMALCOHOLDESCRIPT = """A simple strong beverage produced from various grains. 
 
-When consumed normally can apply "Drunk" status, or shift personality towards "Serious". Improves horniness and sensitivity during sex interactions but can be rejected by a weaker body.""",
+When consumed normally can apply \"Drunk\" status, or shift personality towards \"Serious\". Improves horniness and sensitivity during sex interactions but can be rejected by a weaker body.""",
 	ITEMBEER = "Beer",
 	ITEMBEERDESCRIPT = """A nectar of the gods. 
 
-When consumed normally can apply "Drunk" status, or shift personality towards "Bold". Improves horniness and sensitivity during sex interactions.""",
+When consumed normally can apply \"Drunk\" status, or shift personality towards \"Bold\". Improves horniness and sensitivity during sex interactions.""",
 	ITEMWINE = "Dry Wine",
 	ITEMWINEDESCRIPT = """A sour fruit bevearage. 
 
-When consumed normally can apply "Drunk" status, or shift personality towards "Kind". Improves horniness and sensitivity during sex interactions.""",
+When consumed normally can apply \"Drunk\" status, or shift personality towards \"Kind\". Improves horniness and sensitivity during sex interactions.""",
 	ITEMWINE2 = "Sweet Wine",
 	ITEMWINE2DESCRIPT = """A sweet fruit bevarage. 
 
-When consumed normally can apply "Drunk" status, or shift personality towards "Shy". Improves horniness and sensitivity during sex interactions.""",
+When consumed normally can apply \"Drunk\" status, or shift personality towards \"Shy\". Improves horniness and sensitivity during sex interactions.""",
 	ITEMTAMEDRUG = "Tame Drug",
 	ITEMTAMEDRUGDESCRIPT = "Tame Factor +1-2. Authority Factor +1-2. Wits Factor -1.",
 	ITEMRAGEDRUG = "Rage Drug",
@@ -1168,8 +1168,6 @@ Hotkey: 3""",
 	SKILLMIMIC_ATTACK = "Sticky Grab",
 	SKILLVOID_BARRAGE = "Void Barrage",
 	SKILLVOID_BARRAGEDESCRIPT = "Deals 80% of MATK as {color=yellow|Dark} damage 5 times to random targets.",
-	
-	
 	SKILLDRAW_BLOOD = "Draw Blood",
 	SKILLDRAW_BLOODDESCRIPT = "Strike single target for 110% of ATK and cause it to Bleed for 2 turns.",
 	SKILLSUNDER = "Sunder",
@@ -1290,7 +1288,6 @@ Hotkey: 3""",
 	SKILLMASS_RESURRECTDESCRIPT = "Resurrect all downed allies and heal 80% of maximum health to all allies.",
 	SKILLINVIGORATE = "Invigorate",
 	SKILLINVIGORATEDESCRIPT = "Restore 1 of each Challenge Charge for selected ally.",
-	
 	MASTERYWARFARE = "Warfare",
 	MASTERYPROTECTION = "Protection",
 	MASTERYSTEALTH = "Stealth",
@@ -1303,7 +1300,6 @@ Hotkey: 3""",
 	MASTERYLIGHT = "Light",
 	MASTERYDARK = "Dark",
 	MASTERYMIND = "Mind",
-	
 	STATMASTERY_WARFARE = "Mastery: Warfare",
 	STATMASTERY_PROTECTION = "Mastery: Protection",
 	STATMASTERY_STEALTH = "Mastery: Stealth",
@@ -1316,17 +1312,11 @@ Hotkey: 3""",
 	STATMASTERY_LIGHT = "Mastery: Light",
 	STATMASTERY_DARK = "Mastery: Dark",
 	STATMASTERY_MIND = "Mastery: Mind",
-	
 	ADD_MASTERY_CONFIRM = "Spend [color=yellow]specialized[/color] mastery point for upgrade?",
 	ADD_MASTERY_CONFIRM_UNIVERSAL = "Spend [color=yellow]universal[/color] mastery point to upgrade?",
-	
-	
 	STATMASTERY_POINT_MAGIC = "Magic Mastery Point",
 	STATMASTERY_POINT_COMBAT = "Combat Mastery Point",
 	STATMASTERY_POINT_UNIVERSAL = "Universal Mastery Point",
-	
-	
-	
 	ACTIONPRAISE = "Praise",
 	ACTIONPRAISEDESCRIPT = "Show sympathy and praise [name].",
 	ACTIONREWARD = "Reward",
@@ -1522,7 +1512,7 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	DATETOOLTIPSHORT = "Character can be dated today",
 	SEXTOOLTIPSHORT = "Character can be assigned to sexual interaction today",
 	TRAINTOOLTIP = "Character can be trained today",
-	TOOLTIPLOYALTYOBEDIENCE = """Loyalty points are gained every turn based on Tame Factor. You can unlock new actions and passives with it. """,
+	TOOLTIPLOYALTYOBEDIENCE = "Loyalty points are gained every turn based on Tame Factor. You can unlock new actions and passives with it. ",
 	TOOLTIPVALUE = "Character's value means their market price. It's based on their Growth Factor, Race, Training and certain features. Higher value characters will earn more money when providing services and prostitution.",
 	SERVICEREST = "[name] will rest. Uncheck [color=aqua]Rest[/color] to switch to work state.",
 	SERVICESEXUALPENETRATIVE = "[name] will entertain clients by serving and sleeping with them if they find [him] appealing.",
@@ -2265,7 +2255,8 @@ Can't be used on Unique Characters.""",
 	CONSENT4 = "Lusty",
 	CONSENT5 = "Kinky",
 	CONSENT6 = "Deviant",
-	TRAITMASTERDESCRIPT = "Can train servants. Will not resist any assignments or actions.\nTraining has higher chance of success.",
+	TRAITMASTERDESCRIPT = """Can train servants. Will not resist any assignments or actions.
+Training has higher chance of success.""",
 	TRAITWORKERDESCRIPT = "Woodcutting and Mining are 50% more efficient.",
 	TRAITFOREMANDESCRIPT = "Woodcutting and Mining are 33% more efficient",
 	TRAITHUNTERDESCRIPT = "Fishing and Hunting are 50% more efficient.",
@@ -2280,7 +2271,8 @@ Pregnancy Debuffs are weaker
 Offspring will inherit only this parent's stats.""",
 	TRAITHARLOTDESCRIPT = "Prostitution is 50% more efficient.",
 	TRAITSUCCUBUSDESCRIPT = """Sex activities provide 50% more experience.
-Can infallibly recruit random characters by using Lust.\nSexual Training actions have lower chance to fail.""",
+Can infallibly recruit random characters by using Lust.
+Sexual Training actions have lower chance to fail.""",
 	TRAITPETDESCRIPT = "Prostitution is 25% more efficient.",
 	TRAITSEXTOYDESCRIPT = "Prostitution is 50% more efficient.",
 	TRAITWITCRITDESCRIPT = "Increases critical strike chance by 3% per Wits Factor.",
@@ -2315,7 +2307,8 @@ Can infallibly recruit random characters by using Lust.\nSexual Training actions
 	TRAITRANGERDESCRIPT = "{color=brown|Animal Companion}: Passive Summon: Trained Dog",
 	TRAITALIOSDESCRIPT = "{color=brown|Unbound}: When only character is alive in party: gain +50 evasion, +20 speed until end of battle.",
 	TRAITMIXX_CHAMPIONDESCRIPT = "{color=brown|Seething Blackness}: Dark Element attacks ignore all DEF/MDEF and have +30 hit rating.",
-	TRAITSADISTDESCRIPT = "{color=brown|Open Vein}: Melee physical attacks have 25% chance to cause Bleeding for 2 turns.\nPhysical and Sexual training actions are 25% more impactful.",
+	TRAITSADISTDESCRIPT = """{color=brown|Open Vein}: Melee physical attacks have 25% chance to cause Bleeding for 2 turns.
+Physical and Sexual training actions are 25% more impactful.""",
 	TRAITHEALER1 = "Healer:Novice",
 	TRAITHEALER1DESCRIPT = "Healing spells are 25% more effective.",
 	TRAITHEALER2 = "Healer:Expert",
@@ -2521,11 +2514,11 @@ Unlocks Dating option and removes consent penalty in sex.""",
 	TRAITTRAINING_SEXSERVICE = "Sex Service",
 	TRAITTRAINING_SEXSERVICEDESCRIPT = """Since [name]'s body belong to you, it makes sense to make [him] use it for your prosperity.
 Unlocks sex service tasks and Nudity rule.
-Requires consent "Curious" or above.""",
+Requires consent \"Curious\" or above.""",
 	TRAITTRAINING_SEXSERVICE_ADV = "Advanced Sex Service",
 	TRAITTRAINING_SEXSERVICE_ADVDESCRIPT = """With all well and done, its a logical step to push [name] further into depravity.
 Unlocks advanced sex service options.
-Requires consent "Willing" or above.""",
+Requires consent \"Willing\" or above.""",
 	TRAITTRAINING_S_COMBAT = "Combat",
 	TRAITTRAINING_S_COMBATDESCRIPT = """[name] will allow to be drafted into combat scenarios. Perhaps not everyone is willing to combat for you with no concerns.
 Unlocks sending [name] into combat.""",
@@ -2538,11 +2531,11 @@ Unlocks Dating and Sex options.""",
 	TRAITTRAINING_S_SEXSERVICE = "Sex Service",
 	TRAITTRAINING_S_SEXSERVICEDESCRIPT = """Not everyone is willing to get into selling their body for your benefit. But with some persuasion...
 Unlock sex service tasks. 
-Requires consent "Curious" or above.""",
+Requires consent \"Curious\" or above.""",
 	TRAITTRAINING_S_SEXSERVICE_ADV = "Advanced Sex Service",
 	TRAITTRAINING_S_SEXSERVICE_ADVDESCRIPT = """If [name] is already willing to perform sex services for your profits, why stop there?..
 Unlock advanced sex service options. 
-Requires consent "Willing" or above.""",
+Requires consent \"Willing\" or above.""",
 	TRAITMASTER_HARLOTRY = "Harlotry",
 	TRAITMASTER_HARLOTRYDESCRIPT = "While in service you still receive Rest benefits.",
 	TRAITMASTER_PROGENECY = "Progenecy",
@@ -2689,18 +2682,20 @@ Social skills effect: +10%.""",
 	BUFFDESCRIPTENCHANT = "",
 	BUFFDESCRIPTMENTOR = "Experience Gain increased",
 	BUFFDESCRIPTBISHOP = "Target receive 20%% more Light and Dark damage",
-	
-	BUFFDESCRIPTWET = "Wet\nNext Fire damage is reduced by 50%%\nNext Air damage is increased by 50%%\nNext application of Freeze is guaranteed.",
-	BUFFDESCRIPTFROZEN = "Frozen\nNext attack deals 125%% damage. Air attacks deal 200%% and Fire attacks deal 50%% of damage instead.",
+	BUFFDESCRIPTWET = """Wet
+Next Fire damage is reduced by 50%%
+Next Air damage is increased by 50%%
+Next application of Freeze is guaranteed.""",
+	BUFFDESCRIPTFROZEN = """Frozen
+Next attack deals 125%% damage. Air attacks deal 200%% and Fire attacks deal 50%% of damage instead.""",
 	BUFFDESCRIPTSTONEWALL = "Take 25%% less damage.",
 	BUFFDESCRIPTLASTSTAND = "Health can't be reduced below 10%.",
 	BUFFDESCRIPTBLIND = "Hit chance is reduced",
 	BUFFDESCRIPTFEAR = "Damage is reduced by 25%%.",
-	BUFFDESCRIPTSHOCK = "Shocked\nAll damage received is increased by 15%%, additional shock has a chance to stun.",
+	BUFFDESCRIPTSHOCK = """Shocked
+All damage received is increased by 15%%, additional shock has a chance to stun.""",
 	BUFFDESCRIPTENSNARE = "Evasion is reduced",
-	
 	RESETTRAINREQ = "Reset training to step 0 and restore Spirit. Requires Oblivion potion.",
-	
 	CHALLENGESTRENGTH = "Strength Challenge",
 	CHALLENGEDEXTERITY = "Dexterity Challenge",
 	CHALLENGEPERSUASION = "Persuasion Challenge",
@@ -2718,7 +2713,8 @@ Social skills effect: +10%.""",
 	PROFWATCHDOGDESCRIPT = "The servants who've proven their loyalty to their [Master] are allowed to act in his name to ensure obedience and fear in others.",
 	PROFHEADGIRL = "Headgirl",
 	PROFHEADGIRLALT = "Butler",
-	PROFHEADGIRLDESCRIPT = "A servant with higher authority that is allowed to direct multiple lower servants at once.\nPositive, Social, Physical and Humilation actions provide more loyalty.",
+	PROFHEADGIRLDESCRIPT = """A servant with higher authority that is allowed to direct multiple lower servants at once.
+Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	PROFTRAINER = "Trainer",
 	PROFTRAINERDESCRIPT = "Trainers can dramatically change the attitude of a very rebellious slave. ",
 	PROFWORKER = "Worker",
@@ -3654,7 +3650,6 @@ As the [boy] is made your slave, [he] can be a very useful addition to your roos
 	DIALOGUEEVENTREBELSBEASTINTIMIDATEFAILURE = """[center]{color=red|Failure!}[/center]
 [name] hasn't managed to intimidate the rebels and they are preparing to attack you. """,
 	DIALOGUEINTIMIDATE = "Intimidate",
-	
 	DIALOGUEALCOHOL_1TEXT = "Use this beverage to get drunk or shift personality?",
 	DIALOGUEALCOHOL_2TEXT = "Use this beverage to get drunk or shift personality?",
 	DIALOGUEALCOHOL_3TEXT = "Use this beverage to get drunk or shift personality?",
@@ -3664,16 +3659,15 @@ As the [boy] is made your slave, [he] can be a very useful addition to your roos
 	DIALOGUEALCO_SHYREPORT = "[name] feels more soft after digesting the wine.",
 	DIALOGUEALCO_BOLDREPORT = "[name] feels more brave with the help of beer.",
 	DIALOGUEALCO_SERIOUSREPORT = "[name] becomes more cautious of [his] surroundings after ingesting whiskey.",
-	DIALOGUEUNLOCKINFINITEDUNGEON = """You walk through one of city's streets as you notice a faint glow emitting from one of the dead ends. Nobody besides you apparently notice it despite being clearly unusual occurrence. As you get closer to it something changes in the surrounding air. The darkness of an alley surrounds you until it suddenly is gone, revealing a mesmerizing view. """,
-DIALOGUEUNLOCKINFINITEDUNGEON1 = """A gigantic tower stands before you, completely unsuited for the underground caves you are in. Its top is concealed by the darkness of underground and its base feels like it stretch for a good mile. Apparently you still are able to traverse towards it.""",
-DIALOGUEUNLOCKINFINITEDUNGEON2 = """After uncertain amount of time you stand right before the giant doors. Just as you try to approach them you feel a presence behind your back. As you turn around, you see a beautiful woman floating in the air. 
+	DIALOGUEUNLOCKINFINITEDUNGEON = "You walk through one of city's streets as you notice a faint glow emitting from one of the dead ends. Nobody besides you apparently notice it despite being clearly unusual occurrence. As you get closer to it something changes in the surrounding air. The darkness of an alley surrounds you until it suddenly is gone, revealing a mesmerizing view. ",
+	DIALOGUEUNLOCKINFINITEDUNGEON1 = "A gigantic tower stands before you, completely unsuited for the underground caves you are in. Its top is concealed by the darkness of underground and its base feels like it stretch for a good mile. Apparently you still are able to traverse towards it.",
+	DIALOGUEUNLOCKINFINITEDUNGEON2 = """After uncertain amount of time you stand right before the giant doors. Just as you try to approach them you feel a presence behind your back. As you turn around, you see a beautiful woman floating in the air. 
 
 — Welcome to Tower of Dreams stranger. It's rare to see mortals come here consciously. This place exists behind the real world, hosting the dreams of many. While other get stuck in here, you might be able to take what's inside to yourself. 
 
 — We'll meet later if you decide to stay around here. For now, I beg your excuse.
 
 The woman disappears as quickly as she appeared before you, leaving you in front of the monstrous structure.""",
-	
 	LOCAL_SHOP = "Shop",
 	LOCAL_EVENTS_SEARCH = "Search",
 	RETURNTOMANSIONBUTTON = "Send character back to the Mansion",
@@ -9513,8 +9507,6 @@ The girl's face reddens a bit as she again looks around the room. She looks nerv
 
 Cali takes one more nervous look around before she looks back up to you mischievously. Saying nothing more, for now, the girl soon slips down to her knees in front of you. Taking a steadying breath, she moves to your trousers, undoing them easily, hand finding and wrapping around your shaft as she pulls it free.""",
 	CALI_SEX_8 = "Cali takes one more nervous look around before she looks back up to you with a mischievous look. Saying nothing more for now the girl soon slipped down to her knees in front of you. Taking a steadying breath she'd move to your trousers as she undid them easily, hand finding and wrapping around your shaft as she pulled it free.",
-	
-	
 	CALI_SEX_9 = """Cali stares up at you with a smile on her lips as she starts to gently squeeze your shaft. Her hand is unsure at first, then she starts to intently pump your shaft.
 
 — Wow, I've never seen one this close before... It's warm.
@@ -9524,7 +9516,6 @@ The girl continues to stroke your member, obviously having greatly benefited fro
 — You seem to like this...
 
 The girl slowly picks up speed as she strokes you, until finally she leans down, her mouth enveloping the head of your shaft.""",
-	
 	CALI_SEX_10 = """Cali leans down doing her best to take in your member, the girl only getting a few inches inside of her small mouth before she has to back off, looking up at you with a blush.
 
 — Huh, it's really big, hmmm. I wonder if I can...
@@ -14938,7 +14929,7 @@ Kuro's tone was anything but apologetic.""",
 — Anyway, it's nothing major for someone of your status. I want access to Aliron's library, I believe it's simple for someone closely tied with the Mages guild.""",
 	KURO_TOME_OPT_WHYDO = "I don't see why I'd do it",
 	KURO_TOME_OPT_WHATIN = "What's in it for me?",
-	KURO_TOME_OFFER = """— Right, all business fitting such a capable [Master]. I'm not gonna beat around the bush, I don't have much to offer, so will I be satisfied by gaining access to my body?""",
+	KURO_TOME_OFFER = "— Right, all business fitting such a capable [Master]. I'm not gonna beat around the bush, I don't have much to offer, so will I be satisfied by gaining access to my body?",
 	KURO_TOME_OPT_SCOPE = "That seems a bit out of scope for such a task...",
 	KURO_TOME_OPT_FORSURE = "For sure",
 	KURO_TOME_OPT_FREE = "I can help with this for free",

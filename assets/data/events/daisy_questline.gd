@@ -700,7 +700,6 @@ var data = {
 		]
 	},
 	daisy_dress_acquired_normal_1 = {
-		image = null,
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common",
@@ -713,14 +712,7 @@ var data = {
 
 		],
 		character = "daisy_maid",
-		text = [
-			{
-				text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_0",
-				reqs = [
-
-				]
-			}
-		],
+		text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_0",
 		common_effects = [
 			{
 				code = "unique_character_changes",
@@ -1021,21 +1013,13 @@ var data = {
 		]
 	},
 	daisy_dress_acquired_normal_4_2 = {
-		image = null,
-		custom_background = "daisy_bj1",
+		custom_background = "daisy_bj2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = [
 			"dialogue_scene"
 		],
-		text = [
-			{
-				text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_2",
-				reqs = [
-
-				]
-			}
-		],
+		text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_2",
 		options = [
 			{
 				code = "daisy_dress_acquired_normal_4_3",
@@ -1049,21 +1033,13 @@ var data = {
 		]
 	},
 	daisy_dress_acquired_normal_4_3 = {
-		image = null,
-		custom_background = "daisy_bj1",
+		custom_background = "daisy_bj2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = [
 			"dialogue_scene"
 		],
-		text = [
-			{
-				text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_3",
-				reqs = [
-
-				]
-			}
-		],
+		text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_3",
 		options = [
 			{
 				code = "daisy_dress_acquired_normal_4_4",
@@ -1077,21 +1053,13 @@ var data = {
 		]
 	},
 	daisy_dress_acquired_normal_4_4 = {
-		image = null,
-		custom_background = "daisy_bj1",
+		custom_background = "daisy_bj2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = [
 			"dialogue_scene"
 		],
-		text = [
-			{
-				text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_4",
-				reqs = [
-
-				]
-			}
-		],
+		text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_4",
 		options = [
 			{
 				code = "daisy_dress_acquired_normal_4_5",
@@ -1105,7 +1073,6 @@ var data = {
 		]
 	},
 	daisy_dress_acquired_normal_4_5 = {
-		image = null,
 		custom_background = "daisy_bj3",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
@@ -1113,14 +1080,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		text = [
-			{
-				text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_5",
-				reqs = [
-
-				]
-			}
-		],
+		text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_5",
 		options = [
 			{
 				code = "close",
@@ -1128,10 +1088,7 @@ var data = {
 				reqs = [
 
 				],
-				dialogue_argument = 1,
-				bonus_effects = [
-
-				]
+				dialogue_argument = 1
 			}
 		]
 	},
@@ -1340,7 +1297,7 @@ var data = {
 		]
 	},
 	daisy_dress_acquired_lewd_4_1 = {
-		custom_background = "daisy_bj4",
+		custom_background = "daisy_bj5",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = [
@@ -1373,21 +1330,13 @@ var data = {
 		]
 	},
 	daisy_dress_acquired_lewd_4_2 = {
-		image = null,
-		custom_background = "daisy_bj4",
+		custom_background = "daisy_bj6",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = [
 			"dialogue_scene"
 		],
-		text = [
-			{
-				text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_2",
-				reqs = [
-
-				]
-			}
-		],
+		text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_2",
 		options = [
 			{
 				code = "daisy_dress_acquired_lewd_4_3",
@@ -1400,22 +1349,14 @@ var data = {
 		]
 	},
 	daisy_dress_acquired_lewd_4_3 = {
-		image = null,
-		custom_background = "daisy_bj4",
+		custom_background = "daisy_bj6",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = [
 			"dialogue_scene",
 			"master_translate"
 		],
-		text = [
-			{
-				text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_3",
-				reqs = [
-
-				]
-			}
-		],
+		text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_3",
 		options = [
 			{
 				code = "daisy_dress_acquired_lewd_4_4",
@@ -1428,21 +1369,13 @@ var data = {
 		]
 	},
 	daisy_dress_acquired_lewd_4_4 = {
-		image = null,
-		custom_background = "daisy_bj4",
+		custom_background = "daisy_bj6",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = [
 			"dialogue_scene"
 		],
-		text = [
-			{
-				text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_4",
-				reqs = [
-
-				]
-			}
-		],
+		text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_4",
 		options = [
 			{
 				code = "daisy_dress_acquired_lewd_4_5",
@@ -1455,21 +1388,13 @@ var data = {
 		]
 	},
 	daisy_dress_acquired_lewd_4_5 = {
-		image = null,
-		custom_background = "daisy_bj4",
+		custom_background = "daisy_bj6",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = [
 			"dialogue_scene"
 		],
-		text = [
-			{
-				text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_5",
-				reqs = [
-
-				]
-			}
-		],
+		text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_5",
 		options = [
 			{
 				code = "daisy_dress_acquired_lewd_4_6",
@@ -1482,22 +1407,14 @@ var data = {
 		]
 	},
 	daisy_dress_acquired_lewd_4_6 = {
-		image = null,
-		custom_background = "daisy_bj6",
+		custom_background = "daisy_bj8",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		tags = [
 			"dialogue_scene",
 			"master_translate"
 		],
-		text = [
-			{
-				text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_6",
-				reqs = [
-
-				]
-			}
-		],
+		text = "DAISY_DRESS_ACQUIRED_LEWD_REPLY_1_2_6",
 		common_effects = [
 			{
 				code = "unique_character_changes",
@@ -1518,10 +1435,7 @@ var data = {
 				reqs = [
 
 				],
-				dialogue_argument = 1,
-				bonus_effects = [
-
-				]
+				dialogue_argument = 1
 			}
 		]
 	},
@@ -2378,7 +2292,7 @@ var data = {
 					{
 						code = "decision",
 						value = "DaisyTrainingFinished"
-					},
+					}
 				]
 			}
 		]
@@ -2575,11 +2489,10 @@ var data = {
 						code = "complete_quest",
 						value = "daisy_training"
 					},
-					
 					{
 						code = "decision",
 						value = "DaisyTrainingFinished"
-					},
+					}
 				]
 			}
 		]
@@ -2792,11 +2705,10 @@ var data = {
 						code = "complete_quest",
 						value = "daisy_training"
 					},
-					
 					{
 						code = "decision",
 						value = "DaisyTrainingFinished"
-					},
+					}
 				],
 				type = "next_dialogue"
 			}
@@ -2931,11 +2843,10 @@ var data = {
 						code = "complete_quest",
 						value = "daisy_training"
 					},
-					
 					{
 						code = "decision",
 						value = "DaisyTrainingFinished"
-					},
+					}
 				],
 				type = "next_dialogue"
 			}
@@ -3082,11 +2993,10 @@ var data = {
 						code = "complete_quest",
 						value = "daisy_training"
 					},
-					
 					{
 						code = "decision",
 						value = "DaisyTrainingFinished"
-					},
+					}
 				],
 				type = "next_dialogue"
 			}
@@ -4217,7 +4127,9 @@ var data = {
 				],
 				dialogue_argument = 1,
 				type = "next_dialogue",
-				bonus_effects = []
+				bonus_effects = [
+
+				]
 			},
 			{
 				code = "close",

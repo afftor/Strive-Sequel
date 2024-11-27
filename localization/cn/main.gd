@@ -1449,6 +1449,31 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	
 	
 	TASKMAINSTAT = "主要特征",
+	TRAININGCOSTGOLD = "Trait unlock: %d gold",
+	TRAINNOTRAINER = """[name] has no trainer""", # MISSING TRANSLATION
+	TRAINNOWORKTRAIT = """[name] lacks Trait: Worker""", # MISSING TRANSLATION
+	NOTRAINSLOTS = """No free training slots""", # MISSING TRANSLATION
+	ALREADYTRAINER = """Current trainer""", # MISSING TRANSLATION
+	SPIRITLOSSNO = """Spirit has been unaffected""", # MISSING TRANSLATION
+	SPIRITLOSSSMALL = """The training has mildly impacted [name]'s Spirit.""", # MISSING TRANSLATION
+	SPIRITLOSSGREAT = """The training has greatly impacted [name]'s Spirit""", # MISSING TRANSLATION
+	NOTAVAILABLE = """[color=red]Not available[/color]
+""", # MISSING TRANSLATION
+	TRIANINGREQUIRES = """Must do training categories: """, # MISSING TRANSLATION
+	DISPOSITIONCHANGE = """Disposition to %s is changed""", # MISSING TRANSLATION
+	DISPOSITIONSETRESIST = """Disposition to %s is now resist
+""", # MISSING TRANSLATION
+	DISPOSITIONSETNEUTRAL = """Disposition to %s is now neutral
+""", # MISSING TRANSLATION
+	DISPOSITIONSETWEAK = """Disposition to %s is now weak
+""", # MISSING TRANSLATION
+	DISPOSITIONSETKINK = """Disposition to %s is now kink
+""", # MISSING TRANSLATION
+	SPIRITTOOLTIP = """Spirit represents character's leftover will. If it drops too low they will become broken on training completion and suffer considerable penalties. """, # MISSING TRANSLATION
+	LOYALTYTOOLTIP = """Loylaty is used to unlock character's actions and is obtained from doing training once a day.""", # MISSING TRANSLATION
+	CLICKTOCHANGE = """Click to change""", # MISSING TRANSLATION
+	WITSREVEALDISPOSITION = """Disposition figured out:""", # MISSING TRANSLATION
+	MINDREADREVEALDISPOSITION = """Dispositions revealed:""", # MISSING TRANSLATION
 	
 	JOBPROSTITUTEGOLDDESCRIPT = "通过卖淫赚取金币",
 	JOBCOOKINGCRAFTDESCRIPT = "在厨房烹饪食物",
@@ -2427,6 +2452,18 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	BUFFDESCRIPTDISTRACT = "Distracted: -30 Hit Rate and Evasion",
 	BUFFDESCRIPTSILENCE = "Silenced",
 	BUFFDESCRIPTFROZEN = "Frozen: Cannot act, receives 100%% more Air damage",
+	BUFFDESCRIPTSTONEWALL = """Take 25%% less damage.""", # MISSING TRANSLATION
+	BUFFDESCRIPTLASTSTAND = """Health can't be reduced below 10%.""", # MISSING TRANSLATION
+	BUFFDESCRIPTBLIND = """Hit chance is reduced""", # MISSING TRANSLATION
+	BUFFDESCRIPTFEAR = """Damage is reduced by 25%%.""", # MISSING TRANSLATION
+	BUFFDESCRIPTSHOCK = """Shocked
+All damage received is increased by 15%%, additional shock has a chance to stun.""", # MISSING TRANSLATION
+	BUFFDESCRIPTENSNARE = """Evasion is reduced""", # MISSING TRANSLATION
+	RESETTRAINREQ = """Reset training to step 0 and restore Spirit. Requires Oblivion potion.""", # MISSING TRANSLATION
+	CHALLENGESTRENGTH = """Strength Challenge""", # MISSING TRANSLATION
+	CHALLENGEDEXTERITY = """Dexterity Challenge""", # MISSING TRANSLATION
+	CHALLENGEPERSUASION = """Persuasion Challenge""", # MISSING TRANSLATION
+	CHALLENGEWISDOM = """Wisdom Challenge""", # MISSING TRANSLATION
 	BUFFDESCRIPTDISARM = "Disarmed: Can't use Skill type abilities",
 	BUFFDESCRIPTBANISH = "Banish",
 	BUFFDESCRIPTVOID = "Void",
@@ -3805,6 +3842,13 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 
 	MAGESINTRODUCTION1 = "你发现了一个黑暗精灵，她似乎情绪紧张。\n\n--嘿，你带了酒？ ",
 	MAGESINTRODUCTION1REPLY = "没...",
+	MAGESINTRODUCTION1REPLY2 = """I have it here... But that's not exactly my goal (pass the dry wine)""", # MISSING TRANSLATION
+	MAGESINTRODUCTION1REPLY3 = """I have it here... But that's not exactly my goal (pass the sweet wine)""", # MISSING TRANSLATION
+	MAGESINTRODUCTION1_2 = """You pass the wine bottle to the elven woman who looks at it skeptically.
+
+— That's not the one I prefer but this will do. Fine, what do you want?
+
+You explain yourself being the new landowner to her.""", # MISSING TRANSLATION
 	MAGESINTRODUCTION2 = "— 上帝，你为什么这么没用……不管怎样。你想要什么？",
 	MAGESINTRODUCTION2REPLY = "我是新的土地所有者",
 	MAGESINTRODUCTION3_1 = "— 嗯？我以为你是另一个入会候选人。好吧，这很有趣，我不知道他们现在允许几乎任何人成为土地所有者。不要把这当成个人问题，我承认不是每个人都生来富有。顺便说一句，名字叫梅尔。",

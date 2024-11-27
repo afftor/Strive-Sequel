@@ -65,7 +65,7 @@ var data = {
 				reqs = [
 
 				]
-			},
+			}
 		],
 		options = [
 			{
@@ -169,7 +169,7 @@ var data = {
 				text = "KURO_TOME_HANDSHAKE",
 				reqs = [
 
-				],
+				]
 			}
 		],
 		options = [
@@ -205,8 +205,8 @@ var data = {
 				text = "MAGESINTRODUCTION3_2",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		],
 		options = [
 			{
@@ -216,7 +216,7 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			}
 		]
 	},
@@ -234,8 +234,8 @@ var data = {
 				text = "KURO_LIB_START",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		],
 		options = [
 			{
@@ -245,7 +245,7 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			},
 			{
 				code = "kuro_lib_myaran",
@@ -254,7 +254,7 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			},
 			{
 				code = "kuro_lib_myaran",
@@ -263,7 +263,7 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			}
 		]
 	},
@@ -324,7 +324,7 @@ var data = {
 						operant = "-",
 						value = 500
 					}
-				],
+				]
 			},
 			{
 				code = "close",
@@ -361,8 +361,8 @@ var data = {
 				text = "MAGESINTRODUCTION3_2",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		],
 		options = [
 			{
@@ -383,7 +383,7 @@ var data = {
 						operant = "-",
 						value = 500
 					}
-				],
+				]
 			},
 			{
 				code = "close",
@@ -392,7 +392,7 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			}
 		]
 	},
@@ -410,8 +410,8 @@ var data = {
 				text = "KURO_LIB_ACCESS",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		],
 		options = [
 			{
@@ -439,8 +439,8 @@ var data = {
 				text = "KURO_LIB_ACCESS2",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		],
 		options = [
 			{
@@ -476,7 +476,7 @@ var data = {
 
 				],
 				previous_dialogue_option = 1
-			},
+			}
 		],
 		options = [
 			{
@@ -539,7 +539,7 @@ var data = {
 				text = "KURO_WHISKEY_MARKET",
 				reqs = [
 
-				],
+				]
 			}
 		],
 		options = [
@@ -551,7 +551,7 @@ var data = {
 				reqs = [
 
 				]
-			},
+			}
 		]
 	},
 	kuro_whiskey_market2 = {
@@ -700,14 +700,7 @@ var data = {
 			"dialogue_scene"
 		],
 		character = "kuro",
-		text = [
-			{
-				text = "KURO_WHISKEY_REPLY_HAND",
-				reqs = [
-
-				]
-			}
-		],
+		text = "KURO_WHISKEY_REPLY_HAND",
 		options = [
 			{
 				code = "kuro_whiskey_reply_hand",
@@ -753,7 +746,7 @@ var data = {
 				text = "KURO_WHISKEY_REPLY_MEAN",
 				reqs = [
 
-				],
+				]
 			}
 		],
 		options = [
@@ -833,7 +826,7 @@ var data = {
 			"dialogue_scene"
 		],
 		character = "kuro",
-		character2 = 'bandits',
+		character2 = "bandits",
 		text = [
 			{
 				text = "KURO_WHISKEY_DIG2",
@@ -862,7 +855,7 @@ var data = {
 			"dialogue_scene"
 		],
 		character = "kuro",
-		character2 = 'bandits',
+		character2 = "bandits",
 		text = [
 			{
 				text = "KURO_WHISKEY_DIG3",
@@ -891,7 +884,7 @@ var data = {
 			"dialogue_scene"
 		],
 		character = "kuro",
-		character2 = 'bandits',
+		character2 = "bandits",
 		text = [
 			{
 				text = "KURO_WHISKEY_DIG4",
@@ -1038,8 +1031,7 @@ var data = {
 				reqs = [
 
 				]
-			},
-			
+			}
 		],
 		options = [
 			{
@@ -1048,7 +1040,7 @@ var data = {
 				dialogue_argument = 9,
 				reqs = [
 
-				],
+				]
 			},
 			{
 				code = "kuro_whiskey_reply_poison",
@@ -1057,7 +1049,7 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			}
 		]
 	},
@@ -1075,8 +1067,7 @@ var data = {
 				reqs = [
 
 				]
-			},
-			
+			}
 		],
 		options = [
 			{
@@ -1085,7 +1076,7 @@ var data = {
 				dialogue_argument = 9,
 				reqs = [
 
-				],
+				]
 			},
 			{
 				code = "kuro_whiskey_reply_poison",
@@ -1094,7 +1085,7 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			}
 		]
 	},
@@ -1112,8 +1103,7 @@ var data = {
 				reqs = [
 
 				]
-			},
-			
+			}
 		],
 		options = [
 			{
@@ -1151,8 +1141,8 @@ var data = {
 				text = "MAGESINTRODUCTION3_2",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		],
 		options = [
 			{
@@ -1162,7 +1152,7 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			}
 		]
 	},
@@ -1180,8 +1170,8 @@ var data = {
 				text = "KURO_LIB_WHISKEY2",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		],
 		options = [
 			{
@@ -1191,7 +1181,7 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			}
 		]
 	},
@@ -1209,8 +1199,8 @@ var data = {
 				text = "KURO_LIB_WHISKEY3",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		],
 		options = [
 			{
@@ -1220,7 +1210,7 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			}
 		]
 	},
@@ -1238,8 +1228,8 @@ var data = {
 				text = "KURO_LIB_WHISKEY4",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		],
 		options = [
 			{
@@ -1248,7 +1238,7 @@ var data = {
 				dialogue_argument = 9,
 				reqs = [
 
-				],
+				]
 			},
 			{
 				code = "close",
@@ -1284,8 +1274,8 @@ var data = {
 				text = "KURO_LIB_REPLY_WORK",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		],
 		options = [
 			{
@@ -1294,7 +1284,7 @@ var data = {
 				dialogue_argument = 9,
 				reqs = [
 
-				],
+				]
 			},
 			{
 				code = "close",
@@ -1317,7 +1307,6 @@ var data = {
 			}
 		]
 	},
-	
 	kuro_tome_sex = {
 		reqs = [
 
@@ -1334,8 +1323,8 @@ var data = {
 				text = "KURO_TOME_SEX",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		],
 		options = [
 			{
@@ -1344,7 +1333,7 @@ var data = {
 				dialogue_argument = 9,
 				reqs = [
 
-				],
+				]
 			},
 			{
 				code = "kuro_tome_sex2",
@@ -1353,7 +1342,7 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			},
 			{
 				code = "close",
@@ -1386,8 +1375,8 @@ var data = {
 				text = "KURO_TOME_REPLY_MEANING",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		],
 		options = [
 			{
@@ -1396,7 +1385,7 @@ var data = {
 				dialogue_argument = 9,
 				reqs = [
 
-				],
+				]
 			},
 			{
 				code = "kuro_tome_sex2",
@@ -1405,7 +1394,7 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			},
 			{
 				code = "",
@@ -1439,8 +1428,8 @@ var data = {
 				text = "",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		],
 		options = [
 			{
@@ -1450,7 +1439,7 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			}
 		]
 	},
@@ -1469,8 +1458,8 @@ var data = {
 				text = "",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		],
 		options = [
 			{
@@ -1480,7 +1469,7 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			}
 		]
 	},
@@ -1499,8 +1488,8 @@ var data = {
 				text = "",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		],
 		options = [
 			{
@@ -1510,7 +1499,7 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
+				]
 			}
 		]
 	},
@@ -1529,8 +1518,8 @@ var data = {
 				text = "",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		],
 		options = [
 			{
@@ -1549,5 +1538,5 @@ var data = {
 				]
 			}
 		]
-	},
+	}
 }

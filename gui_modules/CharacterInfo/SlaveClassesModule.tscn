@@ -542,9 +542,9 @@ align = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 9.0
-margin_top = 65.0
+margin_top = 48.0
 margin_right = -9.0
-margin_bottom = -9.0
+margin_bottom = -2.0
 theme = ExtResource( 11 )
 scroll_horizontal_enabled = false
 

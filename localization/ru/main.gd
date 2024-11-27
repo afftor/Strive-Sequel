@@ -1109,15 +1109,6 @@ Hotkey: 3""",
 	SKILLSERRATED_SHOTDESCRIPT = """Наносит 90% ATK {color=yellow|Физического} урона. Вызывает у цели кровотечение на 3 хода, нанося урон (90% от ATK) каждый ход.""",
 	SKILLMASS_LESSER_HEAL = """Массовое малое исцеление""",
 	SKILLMASS_LESSER_HEALDESCRIPT = """Лечит колонну на 100% от MATK.""",
-	SKILLBLIZZARD = """Метель""",
-	SKILLBLIZZARDDESCRIPT = """Наносит всем противникам 45% от МАТК в виде урона {color=yellow|Водой}. С вероятностью 30% снижает скорость цели на 20. С вероятностью 50% замораживает цель на 2 хода.""",
-	SKILLHAILSTORM = """Hailstorm""", # MISSING TRANSLATION
-	SKILLHAILSTORMDESCRIPT = """Deals high Water damage to all enemies. Wet and Frozen targets take increased damage. Applies Wet.""", # MISSING TRANSLATION
-	SKILLEARTH_SHIELD = """Earth Shield""", # MISSING TRANSLATION
-	SKILLEARTH_SHIELDDESCRIPT = """Applies defensive crust to an ally, increasing their DEF based on caster's MATK. Also removes Shred and Shatter. Effect is upgraded with Earth Mastery.""", # MISSING TRANSLATION
-	SKILLEARTH_SHIEL_1DDESCRIPT = """Applies defensive crust to an ally, increasing their DEF and MDEF based on caster's MATK. Also removes Shred and Shatter. Effect is upgraded with Earth Mastery.""", # MISSING TRANSLATION
-	SKILLACID_BOMB = """Acid Bomb""", # MISSING TRANSLATION
-	SKILLACID_BOMBDESCRIPT = """Deals Earth damage and apply Shred to target.""", # MISSING TRANSLATION
 	SKILLBLESS = """Благословление""",
 	SKILLBLESSDESCRIPT = """Увеличивает АТК цели на 25% на 3 хода.""",
 	SKILLMENTAL_BLESS = """Ментальное благословение""",
@@ -1126,13 +1117,12 @@ Hotkey: 3""",
 	SKILLBLOOD_MAGICDESCRIPT = """Жертва 10% здоровья для преобразования его в ману.""",
 	SKILLBLOOD_EXPLOSION = """Взрыв крови""",
 	SKILLBLOOD_EXPLOSIONDESCRIPT = """Наносит урон цели на 300% от MATK, наносит урон другим врагам на 50% от MATK.""",
-
 	SKILLEARTH_ATK = """Удар Земли""",
 	SKILLEARTH_ATKDESCRIPT = """Наносит 125% от ATK как урон {color=yellow|Землей}. С вероятностью 30% оглушает цель на 1 ход.""",
 	SKILLWIND_ATK = """Порыв ветра""",
 	SKILLWIND_ATKDESCRIPT = """Наносит 80% АТК в виде урона {color=yellow|Воздухом} одной цели и случайному противнику.""",
-	SKILLWATER_ATK = """Водяной клинок""",
-	SKILLWATER_ATKDESCRIPT = """Наносит 110% АТК урона {color=yellow|Водой}. Вызывает у цели кровотечение на 2 хода, нанося урон (30% от ATK) каждый ход.""",
+	SKILLWATER_EDGE = """Водяной клинок""",
+	SKILLWATER_EDGEDESCRIPT = """Наносит 100% АТК урона {color=yellow|Водой}. Наносит цели статус 'Влажность'.""",
 	SKILLHOLY_ATK = """Святая атака""",
 	SKILLHOLY_ATKDESCRIPT = """Наносит 120% АТК урона {color=yellow|Светом}. С вероятностью 20% сбивает цель с толку.""",
 	SKILLFIRE_CLEAVE = """Огненное рассечение""",
@@ -1157,9 +1147,9 @@ Hotkey: 3""",
 	SKILLSHADOWSTRIKE = """Теневой удар""",
 	SKILLSHADOWSTRIKEDESCRIPT = """Наносит цели 130% от ATK в виде урона {color=yellow|Тьмой}. Снижает ATK и MATK цели на 20 на 2 хода.""",
 	SKILLFIREARR = """Огненная стрела""",
-	SKILLFIREARRDESCRIPT = """Наносит 120% от МATK от ATK в виде урона {color=yellow|Огнем}. С вероятностью 50% сжигает цель на 2 хода, нанося урон (20% от MATK) каждый ход.""",
-	SKILLFIREARR_1DESCRIPT = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 60% chance to apply Burn for 2 turns. Chance increases at higher Fire Mastery level.""", # MISSING TRANSLATION
-	SKILLFIREARR_2DESCRIPT = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 100% chance to apply Burn for 2 turns.""", # MISSING TRANSLATION
+	SKILLFIREARRDESCRIPT = """Наносит 100% от МATK от ATK в виде урона {color=yellow|Огнем}. С вероятностью 20% накладывает статус 'Горение' на цель на 2 хода. Шанс увеличивается при повышении уровня мастерства огня.""",
+	SKILLFIREARR_1DESCRIPT = """Наносит 100% от МATK от ATK в виде урона {color=yellow|Огнем}. С вероятностью 60% накладывает статус 'Горение' на цель на 2 хода. Шанс увеличивается при повышении уровня мастерства огня.""",
+	SKILLFIREARR_2DESCRIPT = """Наносит 100% от МATK от ATK в виде урона {color=yellow|Огнем}. С вероятностью 100% накладывает статус 'Горение' на цель на 2 хода.""",
 	SKILLLIGHTNING = """Молния""",
 	SKILLLIGHTNINGDESCRIPT = """Наносит цели 125% от МАТК в виде урона {color=yellow|Воздухом}. Оглушает цель на 1 ход.""",
 	SKILLMINDBLAST = """Взрыв разума""",
@@ -1170,57 +1160,12 @@ Hotkey: 3""",
 	SKILLRESURRECTDESCRIPT = """Воскрешает союзника-цель на 40% от максимального здоровья.""",
 	SKILLDECAY = """Разложение""",
 	SKILLDECAYDESCRIPT = """Наносит 65% от MATK в виде урона {color=yellow|Тьмой} всем врагам.""",
-	SKILLOVERGROWTH = """Зарастание""",
-	SKILLOVERGROWTHDESCRIPT = """Наносит всем врагам 45% от MATK в виде урона {color=yellow|Землей}.""",
-	SKILLDISINTEGRATE = """Disintegrate""", # MISSING TRANSLATION
-	SKILLDISINTEGRATEDESCRIPT = """Deals high Earth damage to single target and Stun them for 3 turns. If target can't be stunned, apply Shred instead.""", # MISSING TRANSLATION
-	SKILLWIND_BLADE = """Wind Blade""", # MISSING TRANSLATION
-	SKILLWIND_BLADEDESCRIPT = """Strikes target with Air damage twice.""", # MISSING TRANSLATION
-	SKILLIGHTNING = """Lightning""", # MISSING TRANSLATION
-	SKILLIGHTNINGDESCRIPT = """Strikes target with Air damage. Has 50% chance to apply Shock.""", # MISSING TRANSLATION
-	SKILLHASTE = """Haste""", # MISSING TRANSLATION
-	SKILLHASTEDESCRIPT = """Increases Speed of ally by 25 for 4 turns.""", # MISSING TRANSLATION
-	SKILLCHAIN_LIGHTNING = """Hits 4 to 6 targets	with Air damage.""", # MISSING TRANSLATION
-	SKILLAIR_SHIELD = """Air Shield""", # MISSING TRANSLATION
-	SKILLAIR_SHIELDDESCRIPT = """Target ally receive 40 Fire Resist. Increases number of targets with Fire Mastery.""", # MISSING TRANSLATION
-	SKILLAIR_SHIELD_1DESCRIPT = """Target ally row receive 40 Fire Resist. Increases number of targets with Fire Mastery.""", # MISSING TRANSLATION
-	SKILLAIR_SHIELD_2DESCRIPT = """All allies receive 40 Fire Resist.""", # MISSING TRANSLATION
-	SKILLTEMPEST = """Tempest""", # MISSING TRANSLATION
-	SKILLTEMPESTDESCRIPT = """Deal Air damage to all enemies. Apply Shock to all.""", # MISSING TRANSLATION
-	SKILLEYEOFTHESTORM = """Eye Of The Storm""", # MISSING TRANSLATION
-	SKILLEYEOFTHESTORMDESCRIPT = """Apply buff to ally: for 6 turns deal additional 35% of MATK as Air damage on every hit. Casts instantly.""", # MISSING TRANSLATION
-	SKILLHEALING = """Healing Light""", # MISSING TRANSLATION
-	SKILLHEALINGDESCRIPT = """""", # MISSING TRANSLATION
-	SKILLBLESSING = """Blessing""", # MISSING TRANSLATION
-	SKILLBLESSINGDESCRIPT = """Removes Fear, Ensnared, Blind and Cursed. Apply buff: Increases Hit chance and Evasion by 35% for 6 turns.""", # MISSING TRANSLATION
-	SKILLPACIFY = """Pacify""", # MISSING TRANSLATION
-	SKILLPACIFYDESCRIPT = """Deal Light damage to single target and apply Disarm for 2 turns.""", # MISSING TRANSLATION
-	SKILLRADIANCE = """Radiance""", # MISSING TRANSLATION
-	SKILLRADIANCEDESCRIPT = """Deal Light damage to all enemies. Apply Shatter for 3 turns.""", # MISSING TRANSLATION
-	SKILLE_RES = """Mass Resurrection""", # MISSING TRANSLATION
-	SKILLE_RESDESCRIPT = """Resurrect every ally except undead and heal them by 80%. """, # MISSING TRANSLATION
-	SKILLDARKNESS = """Darkness""", # MISSING TRANSLATION
-	SKILLDARKNESSDESCRIPT = """Deal 75% Dark damage to target and apply Blind for 1 turn. Duration improves with Dark Mastery""", # MISSING TRANSLATION
-	SKILLDARKNESS_1DESCRIPT = """Deal 75% Dark damage to target and apply Blind for 2 turns.""", # MISSING TRANSLATION
-	SKILLDARK_TENDRILS = """Black Tendrils""", # MISSING TRANSLATION
-	SKILLDARK_TENDRILSDESCRIPT = """Hit all enemies with low Dark damage and apply Ensnared for 1 turn.""", # MISSING TRANSLATION
-	SKILLMALEDICTION = """Malediction""", # MISSING TRANSLATION
-	SKILLMALEDICTIONDESCRIPT = """Deals low Dark damage and apply Cursed for 5 turns.""", # MISSING TRANSLATION
-	SKILLDEVOURMAGIC = """Devour Magic""", # MISSING TRANSLATION
-	SKILLDEVOURMAGICDESCRIPT = """Remove all positive buffs from a single enemy. Apply Silence for 3 turns.""", # MISSING TRANSLATION
-	SKILLVEIL = """Shadow Veil""", # MISSING TRANSLATION
-	SKILLVEILDESCRIPT = """Apply buff to an ally row: Increase Light, Dark resists by 30, Increases MDEF based on MATK.""", # MISSING TRANSLATION
-	SKILLVOID = """Void""", # MISSING TRANSLATION
-	SKILLVOIDDESCRIPT = """Deals Dark damage to all enemies. Enemies hit receive randomly Silence, Blind or Disarm. """, # MISSING TRANSLATION
-	SKILLMINDSHATTER = """Mind Shatter""", # MISSING TRANSLATION
-	SKILLMINDSHATTERDESCRIPT = """Strikes target with 160% Mind damage. Stun for 4 turns.""", # MISSING TRANSLATION
 	SKILLFIRST_AID = """Первая помощь""",
 	SKILLFIRST_AIDDESCRIPT = """Исцеляет союзника на 30% от максимального здоровья. Для использования требуется 1 бинт.""",
 	SKILLLIGHT_SPELL = """Святой свет""",
 	SKILLLIGHT_SPELLDESCRIPT = """Наносит цели 100% от MATK в виде урона {color=yellow|Светом}""",
 	SKILLLIGHT_SPELL_AOE = """Божественное сияние""",
 	SKILLLIGHT_SPELL_AOEDESCRIPT = """Наносит 30% от MATK в виде урона {color=yellow|Светом} всем врагам. Снижает MЗАЩ на 20 на 3 хода.""",
-
 	SKILLENDURE = """Выносливость""",
 	SKILLENDUREDESCRIPT = """Увеличивает все сопротивления на 20% на 2 хода.""",
 	SKILLMIRROR_IMAGE = """Зеркальное отражение""",
@@ -1247,8 +1192,8 @@ Hotkey: 3""",
 	SKILLREINCARNATEDESCRIPT = """Укрепляет дух союзника. Когда HP достигает нуля, восстановите его до полного.""",
 	SKILLLEADERSMARK = """Leader's Mark""", # MISSING TRANSLATION
 	SKILLLEADERSMARKDESCRIPT = """Strike enemy for 70% ATK and Mark for 3 turns. Marked enemy takes 15% more damage.""", # MISSING TRANSLATION
-	SKILLHUNTERSMARK = """Метка охотника""",
-	SKILLHUNTERSMARKDESCRIPT = """Отмеченный враг получает на 15% больше урона на 3 хода.""",
+	SKILLHUNTERSMARK = """Метка лидера""",
+	SKILLHUNTERSMARKDESCRIPT = """Нанесит цели удар на 70% ATK и помечает его на 3 хода. Отмеченный противник получает на 15% больше урона.""",
 	SKILLBARD1 = """Гимн""",
 	SKILLBARD1DESCRIPT = """Бафф ряда союзников: Увеличивает Урон, Уклонение и Скорость на 20 на 4 хода. Отменяет другие эффекты песен.""",
 	SKILLBARD2 = """Успокоение""",
@@ -1283,57 +1228,161 @@ Hotkey: 3""",
 	SKILLASSASSINATEEN = """Ликвидация""",
 	SKILLMIMIC_ATTACK = """Липкий захват""",
 	SKILLVOID_BARRAGE = """Пустотная волна""",
-	SKILLVOID_BARRAGEDESCRIPT = """Наносит 80% МАТК в виде урона {color=yellow|Тьмой} урона 5 раз случайным целям.""",
-	SKILLDRAW_BLOOD = """Draw Blood""", # MISSING TRANSLATION
-	SKILLDRAW_BLOODDESCRIPT = """Strike single target and cause it to bleed""", # MISSING TRANSLATION
-	SKILLSUNDER = """Sunder""", # MISSING TRANSLATION
-	SKILLSUNDERDESCRIPT = """Strike target and reduce its armor for 5 turns""", # MISSING TRANSLATION
-	SKILLCLEAVE = """Cleave""", # MISSING TRANSLATION
-	SKILLCLEAVEDESCRIPT = """Strike target row.""", # MISSING TRANSLATION
-	SKILLSTRIKE_THROUGH = """Strike Through""", # MISSING TRANSLATION
-	SKILLSTRIKE_THROUGHDESCRIPT = """Strike target line.""", # MISSING TRANSLATION
-	SKILLEXECUTION = """Execution""", # MISSING TRANSLATION
-	SKILLEXECUTIONDESCRIPT = """Deal very high damage to a single target. If it dies, apply Fear to all enemies for 1 turn.""", # MISSING TRANSLATION
-	SKILLDISARM_ENEMY = """Disarm""", # MISSING TRANSLATION
-	SKILLDISARM_ENEMYDESCRIPT = """Strike single enemy and apply Disarm for 3 turns""", # MISSING TRANSLATION
-	SKILLPROVOCATION = """Provocation""", # MISSING TRANSLATION
-	SKILLPROVOCATIONDESCRIPT = """Strike single enemy and apply Provoke for 2 turns.""", # MISSING TRANSLATION
-	SKILLSTONEWALL = """Stonewall""", # MISSING TRANSLATION
-	SKILLSTONEWALLDESCRIPT = """Restore some health and apply Fortified""", # MISSING TRANSLATION
-	SKILLDIP_POISON = """Dip Poison""", # MISSING TRANSLATION
-	SKILLDIP_POISONDESCRIPT = """Strike target and apply Poison for 4 turns.""", # MISSING TRANSLATION
-	SKILLBACKKICK = """Back Kick""", # MISSING TRANSLATION
-	SKILLBACKKICKDESCRIPT = """Strike target in melee and apply Silence for 4 turns.""", # MISSING TRANSLATION
-	SKILLDEVASTATION = """Devastation""", # MISSING TRANSLATION
-	SKILLDEVASTATIONDESCRIPT = """Strike target 6 times. If target dies, leftover strikes go to random targets.""", # MISSING TRANSLATION
-	SKILLSTRAFE = """Strafe""", # MISSING TRANSLATION
-	SKILLSTRAFEDESCRIPT = """Shoot at target 3 times. If target dies, leftover shots go to random targets.""", # MISSING TRANSLATION
-	SKILLENSNARE = """Ensnare""", # MISSING TRANSLATION
-	SKILLENSNAREDESCRIPT = """Strike target row for 50%. Apply Ensnare.""", # MISSING TRANSLATION
-	SKILLBOLTTRAP = """Bolt Trap""", # MISSING TRANSLATION
-	SKILLBOLTTRAPDESCRIPT = """Set up a trap under 3 targets. If they use physical skill, they take 150% damage.""", # MISSING TRANSLATION
-	SKILLARROWHAIL = """Arrow Hail""", # MISSING TRANSLATION
-	SKILLARROWHAILDESCRIPT = """Shoot all targets for 120% damage.""", # MISSING TRANSLATION
-	SKILLRALLY = """Rally""", # MISSING TRANSLATION
-	SKILLRALLYDESCRIPT = """Reset all cooldowns (except Rally) and restore 50% of mana to selected ally.""", # MISSING TRANSLATION
-	SKILLBLOODBOIL = """Blood Boil""", # MISSING TRANSLATION
-	SKILLBLOODBOILDESCRIPT = """Apply buff: Increase ATK by 25%, gain immunity to Stun, Wet and Fear for 4 turns.""", # MISSING TRANSLATION
-	SKILLFIRE_SHIELD = """Fire Shield""", # MISSING TRANSLATION
-	SKILLFIRE_SHIELDDESCRIPT = """Target ally receive 40 Water Resist. Increases number of targets with Fire Mastery.""", # MISSING TRANSLATION
-	SKILLFIRE_SHIELD_1DESCRIPT = """Target ally row receive 40 Water Resist. Increases number of targets with Fire Mastery.""", # MISSING TRANSLATION
-	SKILLFIRE_SHIELD_2DESCRIPT = """All allies receive 40 Water Resist.""", # MISSING TRANSLATION
-	SKILLMAGMA_BLAST = """Magma Blast""", # MISSING TRANSLATION
-	SKILLMAGMA_BLASTDESCRIPT = """Deal high Fire damage to an enemy and apply Shatter for 5 turns.""", # MISSING TRANSLATION
-	SKILLWATER_EDGE = """""", # MISSING TRANSLATION
-	SKILLWATER_EDGEDESCRIPT = """""", # MISSING TRANSLATION
-	SKILLWATER_SHIELD = """Water Shield""", # MISSING TRANSLATION
-	SKILLWATER_SHIELDDESCRIPT = """Target ally receive 40 Fire Resist. Increases number of targets with Fire Mastery.""", # MISSING TRANSLATION
-	SKILLWATER_SHIELD_1DESCRIPT = """Target ally row receive 40 Fire Resist. Increases number of targets with Fire Mastery.""", # MISSING TRANSLATION
-	SKILLWATER_SHIELD_2DESCRIPT = """All allies receive 40 Fire Resist.""", # MISSING TRANSLATION
-	SKILLFROST_PRISON = """Frost Prison""", # MISSING TRANSLATION
-	SKILLFROST_PRISONDESCRIPT = """Deal 130% Water Damage and has 50% chance to apply Freeze.""", # MISSING TRANSLATION
-	SKILLCLARITY = """Clarity""", # MISSING TRANSLATION
-	SKILLCLARITYDESCRIPT = """Apply buff: Increase MATK by 25%, gain immunity to Blind, Sleep and Charm for 4 turns.""", # MISSING TRANSLATION
+	SKILLVOID_BARRAGEDESCRIPT = """Наносит 80% МАТК в виде урона {color=yellow|Тьмой} урона 5 раз случайным целям.""",	
+	
+	SKILLDRAW_BLOOD = """Пустить кровь""",
+	SKILLDRAW_BLOODDESCRIPT = """Поражает одиночную цель на 110% ATK и вызывает кровотечение на 2 хода.""",
+	SKILLSUNDER = """Раскол""",
+	SKILLSUNDERDESCRIPT = """Нанести цели 85% урона от ATK и уменьшить ее броню на 5 ходов.""",
+	SKILLCLEAVE = """Размах""",
+	SKILLCLEAVEDESCRIPT = """Нанести целевой колонне удар на 90% от ATK.""",
+	SKILLSTRIKE_THROUGH = """Сквозной удар""",
+	SKILLSTRIKE_THROUGHDESCRIPT = """Нанести удар по целевой строке на 110 % ATK""",
+	SKILLEXECUTION = """Устранение""",
+	SKILLEXECUTIONDESCRIPT = """Нанести 275% ATK одной цели. Если она погибнет, наложить на всех врагов эффект страха на 1 ход.""",
+	SKILLDISARM_ENEMY = """Обезвреживание""",
+	SKILLDISARM_ENEMYDESCRIPT = """Поражает одного врага на 130% от ATK и наложить 'Обезвреживание' на 3 хода.""",
+	SKILLPROVOCATION = """Провокация""",
+	SKILLPROVOCATIONDESCRIPT = """Поразить одного врага на 70% от ATK и наложить 'Провокацию' на 2 хода.""",
+	SKILLSTONEWALL = """Каменная стена""",
+	SKILLSTONEWALLDESCRIPT = """Восстановить немного здоровья и наложить 'Укрепление' на 5 ходов.""",
+	SKILLDIP_POISON = """Поразить ядом""",
+	SKILLDIP_POISONDESCRIPT = """Поразить цель на 100% от ATK и наложить 'Яд' на 4 хода""",
+	SKILLBACKKICK = """Удар в спину""",
+	SKILLBACKKICKDESCRIPT = """Наносит цели 130% ATK в ближнем бою и применяет 'Безмолвие' на 4 хода.""",
+	SKILLDEVASTATION = """Опустошение""",
+	SKILLDEVASTATIONDESCRIPT = """Нанести цели 6 ударов на 75% от ATK. Если цель умирает, оставшиеся удары наносятся по случайным целям.""",
+	SKILLSTRAFE = """Атака в движении""",
+	SKILLSTRAFEDESCRIPT = """Выстрелить по цели 3 раза, нанося 45 % ATK. Если цель погибнет, оставшиеся выстрелы попадают в случайные цели.""",
+	SKILLENSNARE = """Захват""",
+	SKILLENSNAREDESCRIPT = """Нанести ряд ударов по цели на 50%. Наложить 'Захват'.""",
+	SKILLBOLT_TRAP = """Болтовая ловушка""",
+	SKILLBOLT_TRAPDESCRIPT = """Установите ловушку под 3 целями. Если они используют физическое умение, то получат 150% урона.""",
+	SKILLARROW_HAIL = """Град стрел""",
+	SKILLARROW_HAILDESCRIPT = """Подстрелить всех врагов на 120 % урона.""",
+	SKILLRALLY = """Рывок""",
+	SKILLRALLYDESCRIPT = """Сбросить все кулдауны (кроме Рывка) и восстановить 50% маны выбранному союзнику.""",
+	SKILLBLOODBOIL = """Кипение крови""",
+	SKILLBLOODBOILDESCRIPT = """Наложить бафф: Увеличивает ATK на 25%,  иммунитет к оглушению, влажности и страху на 4 хода.""",
+	SKILLFIRE_SHIELD = """Огненный щит""",
+	SKILLFIRE_SHIELDDESCRIPT = """Целевой союзник получает 40  сопротивления воде. Увеличивает количество целей с мастерством огня.""",
+	SKILLFIRE_SHIELD_1DESCRIPT = """Целевой ряд союзников получает 40 сопротивления воде. Увеличивает количество целей с мастерством огня.""",
+	SKILLFIRE_SHIELD_2DESCRIPT = """Все союзники получают 40 сопротивления воде.""",
+	SKILLMAGMA_BLAST = """Взрыв магмы""",
+	SKILLMAGMA_BLASTDESCRIPT = """Нанесит противнику высокий урон огнем и накладывает 'Раскалывание на 5 ходов""",
+	SKILLWATER_SHIELD = """Водяной щит""",
+	SKILLWATER_SHIELDDESCRIPT = """Целевой союзник получает 40 сопротивления огню. Увеличивает количество целей с Мастерством воды.""",
+	SKILLWATER_SHIELD_1DESCRIPT = """Целевой ряд союзников получает 40 сопротивления огню. Увеличивает количество целей с Мастерством воды.""",
+	SKILLWATER_SHIELD_2DESCRIPT = """Все союзники получают 40 сопротивления огню.""",
+	SKILLFROST_PRISON = """Морозная тюрьма""",
+	SKILLFROST_PRISONDESCRIPT = """Наносит 130 % урона водой и с 50 % шансом накладывает 'Заморозка'""",
+	SKILLCLARITY = """Ясность""",
+	SKILLCLARITYDESCRIPT = """Накладывает бафф: Увеличивает MATK на 25%, иммунитет к Слепоте, Сну и Очарованию на 4 хода.""",
+	SKILLBLIZZARD = """Метель""",
+	SKILLBLIZZARDDESCRIPT = """Послать сосульки, летящие во врагов, нанося случайный урон водой и с низким шансом наложить 'Заморозка'. Мокрые и замороженные цели всегда попадают в цель""",
+	SKILLHAILSTORM = """Град""",
+	SKILLHAILSTORMDESCRIPT = """Наносит большой урон водой всем врагам. Мокрые и замороженные цели получают повышенный урон. Накладывает 'Влажность'""",
+	SKILLEARTH_SHIELD = """Щит земли""",
+	SKILLEARTH_SHIELDDESCRIPT = """Накладывает защитный панцирь на союзника, увеличивая его ЗАЩ на основе MATK кастера. Также снимает 'Разрыв' и 'Раскол'. Эффект улучшается c мастерством земли.""",
+	SKILLEARTH_SHIEL_1DDESCRIPT = """Накладывает защитный панцирь на союзника, увеличивая его ЗАЩ и MЗАЩ на основе MATK кастера. Также снимает 'Разрыв' и 'Раскол'. Эффект улучшается c мастерством земли.""",
+	SKILLACID_BOMB = """Кислотная бомба""",
+	SKILLACID_BOMBDESCRIPT = """Наносит урон землей и применяет 'Разрыв' к цели.""",
+	SKILLOVERGROWTH = """Зарастание""",
+	SKILLOVERGROWTHDESCRIPT = """Наносит низкий урон землей всем врагам и накладывает 'Захват' на 2 хода с вероятностью 50%.""",
+	SKILLDISINTEGRATE = """Дезинтеграция""",
+	SKILLDISINTEGRATEDESCRIPT = """Наносит высокий урон землей одной цели и оглушает ее на 3 хода. Если цель не может быть оглушена, вместо этого накладывает 'Разрыв'""",
+	SKILLWIND_BLADE = """Лезвие ветра""",
+	SKILLWIND_BLADEDESCRIPT = """Дважды наносит цели урон воздухом.""",
+	SKILLIGHTNING = """Молния""",
+	SKILLIGHTNINGDESCRIPT = """Наносит цели урон воздухом. Имеет 50% шанс нанести 'Шок'.""",
+	SKILLHASTE = """Спешка""",
+	SKILLHASTEDESCRIPT = """Увеличивает скорость союзника на 25 на 4 хода.""",
+	SKILLCHAIN_LIGHTNING = """Цепная молния""",
+	SKILLCHAIN_LIGHTNINGDESCRIPT = """Наносит от 4 до 6 целям урон воздухом""",
+	SKILLAIR_SHIELD = """Воздушный щит""",
+	SKILLAIR_SHIELDDESCRIPT = """Целевой союзник получает 40 сопротивления огню. Увеличивает количество целей с мастерством воздуха.""",
+	SKILLAIR_SHIELD_1DESCRIPT = """Целевой ряд союзников получает 40 сопротивления огню. Увеличивает количество целей с мастерством воздуха.""",
+	SKILLAIR_SHIELD_2DESCRIPT = """Все союзники получают 40 сопротивления огню.""",
+	SKILLTEMPEST = """Буря""",
+	SKILLTEMPESTDESCRIPT = """Нанести всем врагам урон воздухом. Накладывает 'Шок' на всех.""",
+	SKILLEYEOFTHESTORM = """Око бури""",
+	SKILLEYEOFTHESTORMDESCRIPT = """Накладывает бафф на союзника: в течение 6 ходов наносит дополнительные 35% от МАТК в виде урона воздухом при каждом попадании. Кастуется мгновенно""",
+	SKILLHEALING = """Исцеляющий свет""",
+	SKILLHEALINGDESCRIPT = """Восстанавливает здоровье союзника на основе MATK.""",
+	SKILLBLESSING = """Благословение""",
+	SKILLBLESSINGDESCRIPT = """Снимает 'Страх', 'Захват', 'Слепоту' и 'Проклятие'. Накладывает бафф: Увеличивает шанс попадания и уклонение на 35% на 6 ходов.""",
+	SKILLPACIFY = """Умиротворение""",
+	SKILLPACIFYDESCRIPT = """Наносит легкий урон одиночной цели и накладывает 'Обезвреживание' на 2 хода""",
+	SKILLRADIANCE = """Сияние""",
+	SKILLRADIANCEDESCRIPT = """Нанести легкий урон всем врагам. Накладывает 'Раскол' на 3 хода.""",
+	SKILLE_RES = """Массовое воскрешение""",
+	SKILLE_RESDESCRIPT = """Воскресить всех союзников, кроме нежити, и вылечить их на 80%. """,
+	SKILLDARKNESS = """Тьма""",
+	SKILLDARKNESSDESCRIPT = """Наносит цели 75 % урона тьмой и накладывает 'Слепота' на 1 ход. Длительность улучшается с помощью мастерства тьмы.""",
+	SKILLDARKNESS_1DESCRIPT = """Наносит цели 75 % урона тьмой и накладывает 'Слепота' на 2 хода.""",
+	SKILLBLACK_TENDRILS = """Темные отростки""",
+	SKILLBLACK_TENDRILSDESCRIPT = """Наносит всем врагам низкий урон Тьмой и применяет 'Захват' на 1 ход.""",
+	SKILLMALEDICTION = """Злорадство""",
+	SKILLMALEDICTIONDESCRIPT = """Наносит низкий урон тьмой и накладывает 'Проклятие' на 5 ходов.""",
+	SKILLDEVOUR_MAGIC = """Пожирание магии""",
+	SKILLDEVOUR_MAGICDESCRIPT = """Снимает все положительные баффы с одного противника. Накладывает 'Безмолвие' на 3 хода""",
+	SKILLVEIL = """Теневая вуаль""",
+	SKILLVEILDESCRIPT = """Наложить бафф на ряд союзников: Увеличивает сопротивление свету и тьме на 30, увеличивает МЗАЩ на основе MATK.""",
+	SKILLSKILL_VOID = """Пустота""",
+	SKILLSKILL_VOIDDESCRIPT = """Наносит урон тьмой всем врагам. Враги, попавшие под удар, получают случайным образом 'Безмолвие', 'Слепоту' или 'Обезвреживание'. """,
+	SKILLMINDSHATTER = """Сокрушение разума""",
+	SKILLMINDSHATTERDESCRIPT = """Наносит цели 160% урона разуму. Оглушает на 4 хода""",
+	SKILLLAST_STAND = """Стоять до конца.""",
+	SKILLLAST_STANDDESCRIPT = """HP не может быть снижено ниже 10 % в течение 1 хода. Не требует хода для применения.""",
+	SKILLINTIMIDATING_PRESENCE = """Запугивающее присутствие""",
+	SKILLINTIMIDATING_PRESENCEDESCRIPT = """Убрать обычных врагов из целевой позиции.""",
+	SKILLFLAME_SPHERE = """Сфера пламени""",
+	SKILLFLAME_SPHEREDESCRIPT = """Наложить бафф на себя: в следующем начале боя вы запускаете во врагов огненную сферу, наносящую 25% от их максимального здоровья в виде урона огнем.""",
+	SKILLINFERNO = """Инферно""",
+	SKILLINFERNODESCRIPT = """Наносит 160% от МАТК урона огнем всем врагам. Накладывает Ожог на 3 хода.""",
+	SKILLNATURES_GIFT = """Дар природы""",
+	SKILLNATURES_GIFTDESCRIPT = """Мгновенно извлекает имеющиеся ресурсы из локации на основе MATK. """,
+	SKILLTELEPORT = """Телепорт""",
+	SKILLTELEPORTDESCRIPT = """Следующее путешествие становится мгновенным, включая вашу группу.""",
+	SKILLWIND_WHISPERS = """Шепот ветра""",
+	SKILLWIND_WHISPERSDESCRIPT = """Раскрыть текущий план этажа подземелья.""",
+	SKILLMASS_RESURRECT = """Массовое воскрешение""",
+	SKILLMASS_RESURRECTDESCRIPT = """Воскресить всех поверженных союзников и исцелить 80% максимального здоровья всех союзников.""",
+	SKILLINVIGORATE = """Бодрость""",
+	SKILLINVIGORATEDESCRIPT = """Восстановить 1 заряд каждого вызова для выбранного союзника""",
+	
+	MASTERYWARFARE = """Бой""",
+	MASTERYPROTECTION = """Защита""",
+	MASTERYSTEALTH = """Скрытность""",
+	MASTERYMARKSMANSHIP = """Стрельба""",
+	MASTERYLEADERSHIP = """Лидерство""",
+	MASTERYFIRE = """Огонь""",
+	MASTERYWATER = """Вода""",
+	MASTERYAIR = """Воздух""",
+	MASTERYEARTH = """Земля""",
+	MASTERYLIGHT = """Свет""",
+	MASTERYDARK = """Тьма""",
+	MASTERYMIND = """Разум""",
+	
+	STATMASTERY_WARFARE = """Мастерство: Бой""",
+	STATMASTERY_PROTECTION = """Мастерство: Защита""",
+	STATMASTERY_STEALTH = """Мастерство: Скрытность""",
+	STATMASTERY_MARKSMANSHIP = """Мастерство: Стрельба""",
+	STATMASTERY_LEADERSHIP = """Мастерство: Лидерство""",
+	STATMASTERY_FIRE = """Мастерство: Огонь""",
+	STATMASTERY_WATER = """Мастерство: Вода""",
+	STATMASTERY_AIR = """Мастерство: Воздух""",
+	STATMASTERY_EARTH = """Мастерство: Земля""",
+	STATMASTERY_LIGHT = """Мастерство: Свет""",
+	STATMASTERY_DARK = """Мастерство: Тьма""",
+	STATMASTERY_MIND = """Мастерство: Разум""",
+	
+	ADD_MASTERY_CONFIRM = """Потратить [color=yellow]специализированное[/color] очко мастерства на апгрейд?""",
+	ADD_MASTERY_CONFIRM_UNIVERSAL = """Потратить [color=yellow]универсальное[/color] очко мастерства на повышение уровня?""",
+		
+	STATMASTERY_POINT_MAGIC = """Очко магического мастерства""",
+	STATMASTERY_POINT_COMBAT = """Очко боевого мастерства""",
+	STATMASTERY_POINT_UNIVERSAL = """Универсальное очко мастерства""",
 
 	ACTIONPRAISE = """Похвалить""",
 	ACTIONPRAISEDESCRIPT = """Проявить сочувствие и похвалить [name].""",
@@ -1371,17 +1420,18 @@ Hotkey: 3""",
 	ACTIONPUBLICUSE = """Общ. пользование""",
 	ACTIONPUBLICUSEDESCRIPT = """Поместить [имя] в кандалы, разрешив окружающим делать с [him] телом, что захочется.""",
 	ACTIONMINDREAD = """Чтение мыслей""",
-	ACTIONMINDREADDESCRIPT = """Наложите на [name] заклинание 'Чтение разума', потенциально узнав его сильные и слабые стороны.""",
-	ACTIONMINDREADDESCRIPTMASTERY = """Training Action: Allows to cast Mind Read on trainee, potentially learning their strong and weak spots..""", # MISSING TRANSLATION
+	ACTIONMINDREADDESCRIPT = """Наложите на [name] заклинание 'Чтение разума', потенциально узнав его сильные и слабые стороны. Тратит 5 маны. """,
+	ACTIONMINDREADDESCRIPTMASTERY = "Тренировочное действие: Позволяет наложить на обучаемого заклинание «Чтение разума», потенциально узнавая его сильные и слабые стороны.",
 	ACTIONINFLUENCE = """Влияние""",
-	ACTIONINFLUENCEDESCRIPT = """Использовать магию, чтобы повлиять на разум [name], заставив [him] принять [his] роль раба.""",
-	ACTIONINFLUENCEDESCRIPTMASTERY = """Training Action: Magic influence aiming to improve target's obedience.""", # MISSING TRANSLATION
+	ACTIONINFLUENCEDESCRIPT = """Использовать магию, чтобы повлиять на разум [name], заставив [him] принять [his] роль раба.
+Улучшает предрасположенность к {color=yellow|Случайному} действию. Тратит 5 маны.""",
+	ACTIONINFLUENCEDESCRIPTMASTERY = "Тренировочное действие: Магическое воздействие, направленное на улучшение повиновения цели.",
 	ACTIONSTRONGINFLUENCE = """Сильное влияние""",
-	ACTIONSTRONGINFLUENCEDESCRIPT = """Использовать сильную магию, чтобы подчинить разум [name].""",
-	ACTIONSTRONGINFLUENCEDESCRIPTMASTERY = """Training Action: Magic influence aiming to improve target's obedience. Stronger than Influence.""", # MISSING TRANSLATION
+	ACTIONSTRONGINFLUENCEDESCRIPT = """Использовать сильную магию, чтобы подчинить разум [name].Тратит 10 маны.""",
+	ACTIONSTRONGINFLUENCEDESCRIPTMASTERY = "Тренировочное действие: Магическое воздействие, направленное на улучшение повиновеня цели. Сильнее, чем обычное Влияние.",
 	ACTIONMINDCONTROL = """Гипноз""",
-	ACTIONMINDCONTROLDESCRIPTDESCRIPT = """Самый сильный вариант контроля сильно помутит большинство умов.""",
-	ACTIONMINDCONTROLDESCRIPTMASTERY = """Training Action: Magic influence aiming to improve target's obedience. Stronger than Influence.""", # MISSING TRANSLATION
+	ACTIONMINDCONTROLDESCRIPTDESCRIPT = """Самый сильный вариант контроля сильно помутит большинство умов. Тратит 25 маны. Требуется класс Доминатор.""",
+	ACTIONMINDCONTROLDESCRIPTMASTERY = "Тренировочное действие: Магическое воздействие, направленное на улучшение повиновеня цели. Сильнее, чем обычное Влияние.",
 	ACTIONTYPEPOSITIVE = """Позитивный.""",
 	ACTIONTYPEPHYSICAL = """Физичный.""",
 	ACTIONTYPEHUMILIATION = """Униженнный""",
@@ -1766,8 +1816,7 @@ Hotkey: 3""",
 	STATMODMELEE = """Урон в ближ. бою.""",
 	STATMODRANGED = """Урон в дальн. бою.""",
 	STATDAMAGE_MOD_SKILL = """Физический урон""",
-	STATDAMAGE_MOD_HEAL = """Healing Bonus""", # MISSING TRANSLATION
-
+	STATDAMAGE_MOD_HEAL = "Бонус к лечению",
 
 	STATFATIGUE = """Усталость""",
 	STATEXHAUSTION = """Истощение""",
@@ -2526,9 +2575,9 @@ Hotkey: 3""",
 	TRAITFORAGERDESCRIPT = """30% шанс не потребить пищу в конце дня""",
 	TRAITTALENTEDDESCRIPT = """Шанс крита задания +15%.""",
 	TRAITMENIALDESCRIPT = """Шанс крита поручения установлен на 0.""",
-	TRAITSTURDYDESCRIPT = """+10 ЗАЩИТЫ""",
-	TRAITFRAILDESCRIPT = """-10 ЗАЩИТЫ.""",
-	TRAITSTUN_IMMUNITYDESCRIPT = """Makes user immune to Stun.""", # MISSING TRANSLATION
+	TRAITSTURDYDESCRIPT = """+10 ЗАЩ""",
+	TRAITFRAILDESCRIPT = """-10 ЗАЩ.""",
+	TRAITSTUN_IMMUNITYDESCRIPT = "Невозможно оглушить.",
 	TRAITLOYALTY_BASIC_SERVITUDE = """Базовое служение""",
 	TRAITLOYALTY_BASIC_SERVITUDEDESCRIPT = """{color=green|Позволяет назначать профессии}
 
@@ -2784,7 +2833,7 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTRESISTSTATE = """Состояние сопротивления: Не может получить повиновение от положительных способностей. Не может использовать разведывательные навыки. Позитивные действия во время свиданий менее эффективны.""",
 	TRAITEFFECTISPREGNANT = """Беременна: -10 Скорости, -20 физ. возможностей.""",
 	TRAITEFFECTISPREGNANT2 = """Глубоко беременна: -20 Скорость, -40 физ. возможностей.""",
-	TRAITSTUNIMMUNITYDESCRIPT = """Can't be stunned in combat.""", # MISSING TRANSLATION
+	TRAITSTUNIMMUNITYDESCRIPT = "Невозмлжно оглушить в бою.",
 	EUPHORIABUFF = """Урон увеличен""",
 	BUFFDESCRIPTSHACKLES = """Оковы""",
 	BUFFDESCRIPTGREATSHACKLES = """Великие оковы""",
@@ -2798,7 +2847,6 @@ Requires: Базовый рабский труд""",
 	BUFFDESCRIPTTAUNT = """Насмешка""",
 	BUFFDESCRIPTDISTRACT = """Отвлечен: -30 скорости попадания и уклонения""",
 	BUFFDESCRIPTSILENCE = """Заглушен""",
-	BUFFDESCRIPTFROZEN = """Заморожен: Не может действовать, получает на 100%% больше урона от воздуха""",
 	BUFFDESCRIPTDISARM = """Обезоружен: Не может использовать способности Умений""",
 	BUFFDESCRIPTBANISH = """Изгнание""",
 	BUFFDESCRIPTVOID = """Пустота""",
@@ -2823,6 +2871,19 @@ Requires: Базовый рабский труд""",
 	BUFFDESCRIPTENCHANT = """ """,
 	BUFFDESCRIPTMENTOR = """Прирост опыта увеличен""",	
 	BUFFDESCRIPTBISHOP = """Цель получает на 20% больше урона от света и тьмы""",
+	
+	BUFFDESCRIPTWET = "Влажность\nСледующий урон от огня уменьшен на 50%%\nСледующий урон от воздуха увеличен на 50%%\nСледующее применение замораживания гарантировано.",
+	BUFFDESCRIPTFROZEN = "Заморожен\nСледующая атака наносит 125% урона. Воздушные атаки наносят 200%%, а огненные - 50%% урона.",
+	BUFFDESCRIPTSTONEWALL = "Получает на 25%% меньше урона.",
+	BUFFDESCRIPTLASTSTAND = "Здоровье не может быть снижено ниже 10%.",
+	BUFFDESCRIPTBLIND = "Точность уменьшена.",
+	BUFFDESCRIPTFEAR = "Урон снижен на 25%%.",
+	BUFFDESCRIPTSHOCK = "Шок\nВесь получаемый урон увеличивается на 15%, дополнительный шок имеет шанс оглушить.",
+	BUFFDESCRIPTENSNARE = "Уворот уменьшен",
+	
+	RESETTRAINREQ = "Сбросить обучение на 0-й шаг и восстановить дух. Требуется зелье Забвения.",
+	
+
 	
 	CHALLENGESTRENGTH = """Испытание на силу""",
 	CHALLENGEDEXTERITY = """Испытание на ловкость""",
@@ -4414,6 +4475,13 @@ DIALOGUEUNLOCKINFINITEDUNGEON2 = """Спустя неопределенное к
 
 - Эй, ты у нас тут с вином?""",
 	MAGESINTRODUCTION1REPLY = """Нет...""",
+	MAGESINTRODUCTION1REPLY2 = """I have it here... But that's not exactly my goal (pass the dry wine)""", # MISSING TRANSLATION
+	MAGESINTRODUCTION1REPLY3 = """I have it here... But that's not exactly my goal (pass the sweet wine)""", # MISSING TRANSLATION
+	MAGESINTRODUCTION1_2 = """You pass the wine bottle to the elven woman who looks at it skeptically.
+
+— That's not the one I prefer but this will do. Fine, what do you want?
+
+You explain yourself being the new landowner to her.""", # MISSING TRANSLATION
 	MAGESINTRODUCTION2 = """- Боги, почему ты такая бесполезность... Неважно. Чего ты хочешь?""",
 	MAGESINTRODUCTION2REPLY = """Я новый землевладелец.""",
 	MAGESINTRODUCTION3_1 = """А? Я думала, что ты еще один кандидат на посвящение. Забавно, я и не знала, что теперь землевладельцами могут стать практически все. Не принимай это на свой счет, я согласна, что не все рождаются богатыми. Кстати, меня зовут Майра""",
@@ -6003,7 +6071,7 @@ AFTER_MINES_CONVOY_15 = """В нескольких сотнях футов от 
 
 - Зефира.
 
-Зефира коротко поклонилась вам после того, как вы произнесли ее имя.""",
+Зефира коротко поклонилась вам после того, как она произнесла свое имя.""",
 	DIVINE_SYMBOL_24 = """- Пока не забыла... Вот, подарок для знакомства.
 
 Она передает вам рулон бумаги, который взяла из стопки на маленьком столике. Развернув его, вы видите грубый, но несколько талантливый набросок портрета [man]. При повторном взгляде вы замечаете, что этот человек смутно напоминает вас. Увидев выражение вашего лица, Зефира сияет от восторга.
@@ -10170,13 +10238,13 @@ Cali:Обаяние +10}""",
 Девушка медленно увеличивала скорость поглаживания, пока, наконец, не наклонилась вниз, ее рот обхватил головку твоего ствола.""",
 	CALI_SEX_10 = """Кали наклонилась вниз, изо всех сил стараясь принять твой член, девушка смогла просунуть в свой маленький ротик всего несколько дюймов, прежде чем ей пришлось отступить, глядя на тебя с румянцем.
 
-- Он очень большой, боже. Интересно, смогу ли я...
+- Он очень большой, хм. Интересно, смогу ли я...
 
-Теперь Кали снова начала обхватывать головку твоего ствола, на этот раз используя руку для накачивания основания, пока она сосала головку, периодически погружая рот чуть глубже. Это было удивительное ощущение, когда вы просто лежали, успокаивая себя, мысленно поблагодарив Амелию за это. """,
-	CALI_SEX_11 = """Работая без жалоб и издавая самые чувственные звуки, которые вы слышали от девушки, вы изо всех сил старались держаться. Борясь с нарастающим желанием освободиться, и наконец, затаив дыхание, вы начали кончать.""",
+Теперь Кали снова начала обхватывать головку твоего ствола, на этот раз используя руку для поглаживания основания, пока она сосала головку, периодически погружая рот чуть глубже. Это было удивительное ощущение, когда вы просто лежали, успокаивая себя, мысленно поблагодаря Амелию за это. """,
+	CALI_SEX_11 = """Работая без жалоб и издавая самые чувственные звуки, которые вы слышали от девушки, вы изо всех сил старались держаться. Борясь с нарастающим желанием, и затаив дыхание, вы начали кончать.""",
 	CALI_SEX_12 = """К ее чести, даже без особого предупреждения Кали продолжает плотно сжимать губы вокруг головки твоего ствола. Ее глаза удивлены, но хватка крепкая, когда вы почти выскочили из кресла. Задыхаясь, вы смотрите вниз на девушку; ее рот медленно отрывается от головки вашего вала, пока она удерживает сперму во рту. 
 
-Она смотрит в ваши глаза немного удивленно, девушка вскоре решается и проглатывает все, выпуская небольшой вздох, прежде чем быстро улыбнуться вам.""",
+Она смотрит в ваши глаза немного удивленно, и вскоре решается и проглатывает все, выпуская небольшой вздох, прежде чем быстро улыбнуться вам.""",
 	CALI_SEX_13 = """- Что ж, надеюсь, это вас порадовало, [Master].
 
 Подтвердив вашу реакцию, она быстро скрывается из виду, чтобы заняться своими обязанностями. """,
@@ -15771,6 +15839,195 @@ KURO_RECRUIT_OPT_CRYPTIC = """Ты можешь быть менее загадо
 
 - Победа за тобой. Хорошо, я могу присоединиться к вам, если вы этого хотите.""",
 	KURO_RECRUIT_END = """Вы освобождаете Куро от оков, позволяя ей нехотя присоединиться к вашей компании.""",
+	KURO_TOME_START = """You sit in your office working with papers when suddenly you feel a familiar presence in the room. The door is locked but Kuro cares little about it as she materializes in front of you.
+
+— Greetings. It's been about two weeks. Isn't it about a time you could make yourself useful for me?""", # MISSING TRANSLATION
+	KURO_TOME_OPT_RUDE = """That's a rather rude way to ask a favor""", # MISSING TRANSLATION
+	KURO_TOME_OPT_QUEEN = """Of course my queen, how can I be at your service?""", # MISSING TRANSLATION
+	KURO_TOME_REPLY_RUDE = """— My apologies.
+
+Kuro's tone was anything but apologetic.""", # MISSING TRANSLATION
+	KURO_TOME_REPLY_QUEEN = """— Your attempt at sarcasm amuses me, really.""", # MISSING TRANSLATION
+	KURO_TOME_WANT = """
+
+— Anyway, it's nothing major for someone of your status. I want access to Aliron's library, I believe it's simple for someone closely tied with the Mages guild.""", # MISSING TRANSLATION
+	KURO_TOME_OPT_WHYDO = """I don't see why I'd do it""", # MISSING TRANSLATION
+	KURO_TOME_OPT_WHATIN = """What's in it for me?""", # MISSING TRANSLATION
+	KURO_TOME_OFFER = """— Right, all business fitting such a capable [Master]. I'm not gonna beat around the bush, I don't have much to offer, so will I be satisfied by gaining access to my body?""", # MISSING TRANSLATION
+	KURO_TOME_OPT_SCOPE = """That seems a bit out of scope for such a task...""", # MISSING TRANSLATION
+	KURO_TOME_OPT_FORSURE = """For sure""", # MISSING TRANSLATION
+	KURO_TOME_OPT_FREE = """I can help with this for free""", # MISSING TRANSLATION
+	KURO_TOME_REPLY_SCOPE = """— I'm pleased with your consideration for my worth but don't fret over it. I'm not offering deals which I don't consider worthy to me.""", # MISSING TRANSLATION
+	KURO_TOME_REPLY_FORSURE = """— Glad we have an agreement then.""", # MISSING TRANSLATION
+	KURO_TOME_REPLY_FREE = """— Well, suit yourself then, as long as I get what I need.""", # MISSING TRANSLATION
+	KURO_TOME_HANDSHAKE = """
+
+For a moment you thought Kuro would present you her hand for a handshake but she only turned around and left the room normally. Looks like it's time to pay another visit to the Mages guild.""", # MISSING TRANSLATION
+	KURO_LIB_OPT_ACCESS = """I'd like to have a library access for a friend...""", # MISSING TRANSLATION
+	KURO_LIB_START = """Before you can finish your question Myr interrupts you.
+
+Myr: — No. We aren't letting anyone into our libraries, especially filthy shedding animals.
+
+Despite the degrading remark Kuro remains unflinching.""", # MISSING TRANSLATION
+	KURO_LIB_OPT_AGREE = """Can't we reach some agreement?""", # MISSING TRANSLATION
+	KURO_LIB_OPT_RACIST = """You shall not make racist remarks towards my people""", # MISSING TRANSLATION
+	KURO_LIB_OPT_VOUCH = """I can vouch she's well trained""", # MISSING TRANSLATION
+	KURO_LIB_REPLY_AGREE = """Myr: — I don't believe so, I don't favor sharing my collection, especially with outsiders.""", # MISSING TRANSLATION
+	KURO_LIB_REPLY_RACIST = """Myr: — why, I think I shall. Thanks to my status I can do exactly that.""", # MISSING TRANSLATION
+	KURO_LIB_REPLY_VOUCH = """Kuro gives you a short annoying look.
+
+Kuro: — Very funny.""", # MISSING TRANSLATION
+	KURO_LIB_MYARAN = """
+
+Kuro: — I'd expect Ar'Myaran to be more willing to share her knowledge.
+
+Myr stops and closely inspect Kuro for the next few seconds, who remains completely calm.
+
+Myr: — Firstly, many things have changed since those days. Secondly, you better not repeat that name outside of this room. 
+
+The dark elf takes another pause before continuing with resistance in her voice.
+
+Myr: — Very well. You gotta pay for the access though since you are not a member of the guild. Five hundred gold should not make a problem for our crafty mayor I presume.""", # MISSING TRANSLATION
+	KURO_LIB_OPT_GOTMONEY = """I've got the money""", # MISSING TRANSLATION
+	KURO_LIB_OPT_LATER = """I'll return later""", # MISSING TRANSLATION
+	KURO_LIB_OPT_BROUGHTMONEY = """I've brought the money for Kuro...""", # MISSING TRANSLATION
+	KURO_LIB_ACCESS = """Myr: — Alright. You aren't allowed to take more than one book at a time and you'll have to return it in 30 days in flawless condition or...
+
+Kuro: — Let's save a bit of time for each other, I need Chronicles of Al'Hazred. I believe you have one.
+
+Myr: — That one is out of question. I'm not allowing ancient tomes like that to anyone I don't personally know.""", # MISSING TRANSLATION
+	KURO_LIB_ACCESS2 = """Kuro: — *Sigh* How do I earn your trust in this case?
+
+Myr: — I don't want to trust you in the first place. Well, since you've paid for the access, I can consider lending it to you. Bring me a bottle of Gilded Grasp whiskey. That is, if you manage to find one. From my knowledge, its export has long stopped from the dwarven lands.""", # MISSING TRANSLATION
+	KURO_LIB_ACCESS3 = """As you leave Myr's office, Kuro turns to you in her usual collected manner.
+
+Kuro: — Well, you better not waste any time then.""", # MISSING TRANSLATION
+	KURO_LIB_OPT_WHAT = """What's in that book that you want anyway?""", # MISSING TRANSLATION
+	KURO_LIB_OPT_FREETIME = """Maybe once I have a free time""", # MISSING TRANSLATION
+	KURO_LIB_OPT_CAPITAL = """Dwarven Capital it is...""", # MISSING TRANSLATION
+	KURO_LIB_REPLY_WHAT = """Kuro: — All sorts of sex techniques to please a buffoon like you. What do you think? Let's not waste the time for pointless talks.""", # MISSING TRANSLATION
+	KURO_WHISKEY_MARKET = """After asking through several local merchants you finally manage to find one specialized in beverages. 
+
+— Gilded Grasp? Ya in no luck, the last delivery should'a been a week ago but it crashed on da way. The next harvest is in 'bout 9 months so drop by that time.""", # MISSING TRANSLATION
+	KURO_WHISKEY_MARKET2 = """Kuro: — Let's go, I've learned where the carriage was last seen. It's halfway to the farm.""", # MISSING TRANSLATION
+	KURO_WHISKEY_OPT_WASTE = """You don't waste any time""", # MISSING TRANSLATION
+	KURO_WHISKEY_OPT_SPECIAL = """Any idea why that whisky is so special?""", # MISSING TRANSLATION
+	KURO_WHISKEY_OPT_FINE = """Fine...""", # MISSING TRANSLATION
+	KURO_WHISKEY_REPLY_WASTE = """Kuro: — Naturally. The quicker we deal with it, the quicker I can get the tome to study it in peace and comfort. Or do you think I enjoy running errands for that dark elf hag?""", # MISSING TRANSLATION
+	KURO_WHISKEY_REPLY_SPECIAL = """Kuro: — You really don't know anything, do you? It's made from a rare wheat grown underground. As wheat doesn't generally grow underground, it's a dwarven secret technology at work. I presume it's likely using bioluminescent plants or mushrooms as a weak substitute or even soils rich with mana. Either way cave grown wheat is as much different from normal one as it is a nuisance to obtain.""", # MISSING TRANSLATION
+	KURO_WHISKEY_CRASH = """As you move through the trade road, soon you notice a part of a fence broken down, leading to a steep ramp. 
+
+— Looks like this is it. Go on, check what's at the bottom.""", # MISSING TRANSLATION
+	KURO_WHISKEY_CRASH2 = """You get down closely followed by Kuro. At the large drop in the darkness you see the crashed cart mostly salvaged by previous owners or cave dwellers. With a torch in hand you start rummaging through the leftovers of wood and iron. Among them you spot the insignia of the brand's owner.
+
+— Looks like the driver got drunk and crashed it into a hole. Try searching under the rocks, something might have stuck deeper.""", # MISSING TRANSLATION
+	KURO_WHISKEY_OPT_HAND = """I could use a hand here.""", # MISSING TRANSLATION
+	KURO_WHISKEY_OPT_MEAN = """I mean it, get down and start digging. (charm challenge)""", # MISSING TRANSLATION
+	KURO_WHISKEY_OPT_FEELWASTE = """I feel like this is a waste of time...""", # MISSING TRANSLATION
+	KURO_WHISKEY_REPLY_HAND = """— My skills can't be applied to digging so you'll have to figure this out yourself. You don't want to make a frail girl get dirty now, do you?""", # MISSING TRANSLATION
+	KURO_WHISKEY_REPLY_MEAN = """Kuro glances at you with poorly hidden irritation until finally succumbing to your order.
+
+— ...I'll remember that.""", # MISSING TRANSLATION
+	KURO_WHISKEY_REPLY_FEELWASTE = """— That's the best we have now. Or you wanna go all the way back without making sure there's nothing left?""", # MISSING TRANSLATION
+	KURO_WHISKEY_DIG = """After a few minutes you manage to move the debris to the side as Kuro watches over you disinterestedly. To your surprise you spot a seemingly untouched bottle buried below. 
+
+— Huh, I didn't expect it would work. Praise yourself for the success.""", # MISSING TRANSLATION
+	KURO_WHISKEY_DIG2 = """Before you are able to reach for the desired bottle, you are suddenly called out. As you look up you notice a group of bandits at the spot you've descended from.
+
+Boss: — Looks like we are in luck today.
+
+Small Bandit: — See? I told you we should follow them. These guys are not from here so they were up to something.
+
+Boss: — You better surrender whatever riches you have there, pal.
+
+Fat Bandit: — Yeah, we have a high ground over you.""", # MISSING TRANSLATION
+	KURO_WHISKEY_DIG3 = """Boss: — What are you waiting for? If you aren't surrendering now we will be forced to...
+
+Kuro: — For being a mutt of your worth you are so insolent.
+
+In the darkness of the cave neither you nor bandits could spot Kuro's shadow extension getting near them. 
+
+Kuro: — Perhaps I shall teach you your place.""", # MISSING TRANSLATION
+	KURO_WHISKEY_DIG4 = """Kuro's shadow struck from behind, taking the bandits completely off—guard.
+
+Boss: — Gah!.. What—the...
+
+The force of the blow was enough to cause men to panic and slip up from the slope.
+
+Small Bandit: — Darn it, don't drag me with you.""", # MISSING TRANSLATION
+	KURO_WHISKEY_DIG5 = """The group of bandits has tumbled down the slope right in the direction of the cart's debris. The smug look from Kuro's face quickly shifted when she realized what's about to happen. 
+
+*Crash*
+
+Kuro: — ...Fuck.
+
+As the bandits lay knocked out between the debris, all that was left previously intact has been damaged beyond hope.""", # MISSING TRANSLATION
+	KURO_WHISKEY_OPT_BLAME = """Can't blame you, I'd have done the same""", # MISSING TRANSLATION
+	KURO_WHISKEY_OPT_RUINED = """Now you've ruined it""", # MISSING TRANSLATION
+	KURO_WHISKEY_OPT_IDEAS = """Any ideas on what we do now?""", # MISSING TRANSLATION
+	KURO_WHISKEY_REPLY_BLAME = """Kuro: — Don't put me on your level, I should've known better.
+
+""", # MISSING TRANSLATION
+	KURO_WHISKEY_REPLY_RUINED = """Kuro silently receives your scolding observing the trio of unfortunate bandits.
+
+""", # MISSING TRANSLATION
+	KURO_WHISKEY_REPLY_IDEAS = """Black foxgirl scoops one empty yet intact bottle from the leftovers before turning back to you.
+
+Kuro: — Not much is left for us to do now. Let's visit the capital again.""", # MISSING TRANSLATION
+	KURO_WHISKEY_HOMEBREW = """You follow Kuro through the stalls of cheap homebrew alcohol. Finally after some discussion she passes the empty bottle to the sleaziest looking dwarf who returns it back full in a few minutes. 
+
+Kuro: — That's the best we could do. Let's go back to the elf hag.""", # MISSING TRANSLATION
+	KURO_WHISKEY_OPT_AUTHENTIC = """Is it authentic?""", # MISSING TRANSLATION
+	KURO_WHISKEY_OPT_POISON = """I'm not taking responsibility if Myr gets poisoned by it.""", # MISSING TRANSLATION
+	KURO_WHISKEY_REPLY_AUTHENTIC = """Kuro: — Are you an idiot? Of course not. It was a huge problem to find a guy who would agree just to pour his stuff into a luxurious brand bottle like this. In case you didn't know, it is highly illegal to counterfeit alcohol here. There's no way it's authentic to the original.""", # MISSING TRANSLATION
+	KURO_WHISKEY_REPLY_POISON = """Kuro: — Don't fret over it. Dwarves know their craft to be safe for what it is.""", # MISSING TRANSLATION
+	KURO_LIB_OPT_WHISKEY = """We've brought the alcohol you've asked for...""", # MISSING TRANSLATION
+	KURO_LIB_WHISKEY2 = """Kuro passes the counterfeited bottle to Myr who slightly raises her brow. As she pours it into a glass Kuro gives off the impression of a complete assurance in her action.
+
+Myr: — You aren't all talk after all... I guess I'll have to keep my part of the deal now.
+
+Myr takes the sip out of the glass, her face displays mild irritation as she sighs.
+
+Myr: — Ahh... This is even better than how I remember it.""", # MISSING TRANSLATION
+	KURO_LIB_WHISKEY3 = """Kuro: — The tome, please.
+
+Myr scoops an extremely ancient looking book from under the desk and passes it to Kuro.
+
+Myr: — You have a week. And you better not let anyone else know I lend it to you.
+
+Kuro: — I can keep secrets.""", # MISSING TRANSLATION
+	KURO_LIB_WHISKEY4 = """As you leave Myr's office Kuro lets out a tired sigh.
+
+Kuro: — Finally, this is over. You played your part well too, I suppose.""", # MISSING TRANSLATION
+	KURO_LIB_OPT_WORK = """How did you know it would work?""", # MISSING TRANSLATION
+	KURO_LIB_OPT_HOME = """It's time for us to go home.""", # MISSING TRANSLATION
+	KURO_LIB_REPLY_WORK = """Kuro: — Dwarven brews are so strong you can't taste much of it. Besides, drunkards don't really care about the taste.""", # MISSING TRANSLATION
+	KURO_TOME_SEX = """You go to Kuro's room to find her already at the freshly obtained book completely focused on it. 
+
+— You've come for your part of the deal, haven't you? Well, serve yourself.""", # MISSING TRANSLATION
+	KURO_TOME_OPT_MEANING = """What is the meaning of this?""", # MISSING TRANSLATION
+	KURO_TOME_OPT_DO = """*Do as told*""", # MISSING TRANSLATION
+	KURO_TOME_OPT_LEAVE = """*Leave quietly*""", # MISSING TRANSLATION
+	KURO_TOME_REPLY_MEANING = """— I promised you my body in reward, haven't I? I never said I'm going to do anything beyond that. As you can see I'm conducting important research so it will be appreciated if you make it quick and not overly rough.""", # MISSING TRANSLATION
+	LIRA_LOST_START = """As you get through the woods, you suddenly hear a woman's voice calling for help. You cautiously move towards it...""", # MISSING TRANSLATION
+	LIRA_LOST_START2 = """— Stranger! What a relief this isn't animals or monsters... I've come here to gather some herbs but It seems I've got lost. My name is Lira, I hope it won't trouble you to get me to the elven capital.""", # MISSING TRANSLATION
+	LIRA_LOST_OPT_SURE = """Sure, you can stick around""", # MISSING TRANSLATION
+	LIRA_LOST_OPT_PRICE = """My help can only come at a price""", # MISSING TRANSLATION
+	LIRA_LOST_REPLY_SURE = """— Bless you, once we get out of this groove I'll show you the way.""", # MISSING TRANSLATION
+	LIRA_LOST_REPLY_PRICE = """— T—that's... I don't have any money on me.""", # MISSING TRANSLATION
+	LIRA_LOST_OPT_FREE = """Nevermind, I'll help for free""", # MISSING TRANSLATION
+	LIRA_LOST_OPT_SOMETHING = """I'm sure you have something of value...""", # MISSING TRANSLATION
+	LIRA_LOST_REPLY_SOMETHING = """The elf girl pauses for a moment before begrudgingly accepts to your demand and gives anything she had on herself spare her clothes. 
+
+— Here, now, please, I hope for your help.""", # MISSING TRANSLATION
+	LIRA_LOST_IDLE = """You come across a small camp which seems like it was abandoned some time ago. With nothing else to do here you decide to move on.""", # MISSING TRANSLATION
+	LIRA_LOST_CAPITAL = """You are led by Lira to the deeper parts of the forest until what looked like nothing but trees and plants revealed to be a wall of a city.
+
+Guard: — Holt there!
+
+Lira: — I'm Freya's acolyte, please, this [man] has helped me when I was lost in the woods.
+
+Despite Lira's looks, the guards have relaxed upon hearing her. As you moved inside she thanked you and parted on her way to one of the more prestigious structures.""", # MISSING TRANSLATION
 	
 	#   QUESTS   #
 	MAIN_QUEST_LOAN_NAME = """Кредит""",
@@ -16089,6 +16346,18 @@ KURO_RECRUIT_OPT_CRYPTIC = """Ты можешь быть менее загадо
 	JEAN_FREE_QUEST_NAME = """Освободите Жанну»""",
 	JEAN_FREE_QUEST_SUMMARY = """Выкупить Жанну из тюрьмы гномьего короля»""",
 	JEAN_FREE_QUEST_PRICE = """Дварфийский король хочет получить вместо Жана белокурую эльфийку-рабыню, иначе за нее придется заплатить 1000 золотых»""",
+	KURO_TOME_QUEST_NAME = """Book for Kuro""", # MISSING TRANSLATION
+	KURO_TOME_QUEST_SUMMARY = """Help Kuro to get access to Aliron's library""", # MISSING TRANSLATION
+	KURO_TOME_QUEST_LIBRARY = """Visit Mages guild""", # MISSING TRANSLATION
+	KURO_TOME_QUEST_MONEY = """Bring 500 gold to Myr of Mages guild""", # MISSING TRANSLATION
+	KURO_TOME_QUEST_CAPITAL = """Search for Gilded Grasp whiskey in Dwarven Capital""", # MISSING TRANSLATION
+	KURO_TOME_QUEST_CARRIAGE = """Investigate the whisky carriage's last known location""", # MISSING TRANSLATION
+	KURO_TOME_QUEST_BOTTLE = """Visit Dwarven Capital""", # MISSING TRANSLATION
+	KURO_TOME_QUEST_BACK = """Bring whisky to Myr of Mages guild""", # MISSING TRANSLATION
+	KURO_TOME_QUEST_TALK = """Talk to Kuro""", # MISSING TRANSLATION
+	LIRA_LOST_QUEST_NAME = """Lost Lira""", # MISSING TRANSLATION
+	LIRA_LOST_QUEST_SUMMARY = """Help Lira out of groove""", # MISSING TRANSLATION
+	LIRA_LOST_QUEST_CAPITAL = """Get to the elven capital""", # MISSING TRANSLATION
 	
 	DIALOGUEANAINITIATELP = """Анастасия приветствует вас с застенчивым лицом. Похоже, она еще не совсем привыкла к этой новой роли.
 
@@ -17487,6 +17756,8 @@ KURO_RECRUIT_OPT_CRYPTIC = """Ты можешь быть менее загадо
 	QUEST_OLD_GODS_TEMPLE_DESC = """ """,
 	QUEST_MOLTEN_GROUNDS_TEXT = """Раскаленнные земли""",
 	QUEST_MOLTEN_GROUNDS_DESC = """ """,
+	QUEST_WHISKY_CRASH_TEXT = """Carriage's location""", # MISSING TRANSLATION
+	QUEST_WHISKY_CRASH_DESC = """""", # MISSING TRANSLATION
 	
 	#fixed_location_options
 	
@@ -17536,6 +17807,8 @@ KURO_RECRUIT_OPT_CRYPTIC = """Ты можешь быть менее загадо
 	DWARF_CAPITAL_SEARCH = """Искать следы""",
 	DWARF_CAPITAL_SHIMORE = """Искать руду""",
 	DWARF_CAPITAL_JEAN = """Искать Жанну""",
+	DWARF_CAPITAL_WHISKEY = """Check the market""", # MISSING TRANSLATION
+	DWARF_CAPITAL_WHISKEY2 = """Visit market""", # MISSING TRANSLATION
 	INFINITEDUNGEONUNLOCK = """Темный переулок""",
 	
 	BEASTKIN_CAPITAL1 = """Найти вождя""",
@@ -17617,6 +17890,7 @@ KURO_RECRUIT_OPT_CRYPTIC = """Ты можешь быть менее загадо
 	QUEST_MOUNTAIN_PASS_LOCATION = """Искать Жанну""",
 	QUEST_HOLLOW_PASSAGE_LOCATION = """Искать следы повстанцев""",
 	QUEST_OLD_GODS_TEMPLE_LOCATION = """Подойти""",
+	QUEST_WHISKY_CRASH_LOCATION = """Search around""", # MISSING TRANSLATION
 	
 	# Missing keys
 	CURRENT_PREFERRED_FOOD_CONSUMPTION = """Текущее предпочтительное потребление продуктов питания""",
