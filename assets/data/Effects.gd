@@ -1261,7 +1261,7 @@ var effect_table = {
 		buffs = ['b_ensnare'],
 		sub_effects = [],
 	},
-	e_s_ensnare2 = { #5turn duration, can't pass duration onto global temps, so clone it for different duartions
+	e_s_ensnare2 = { #2turn duration, can't pass duration onto global temps, so clone it for different duartions
 		type = 'temp_global',
 		tags = ['duration_turns', 'affliction', 'ensnare'],
 		target = 'target',

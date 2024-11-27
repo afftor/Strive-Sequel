@@ -40,7 +40,7 @@ var skills = {
 		tags = ['damage', 'aoe', 'debuff'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_ensnare'})], 
+		effects = [Effectdata.rebuild_template_globals({effect = 'e_s_ensnare'})], 
 		cost = {mp = 5},
 		charges = 0,
 		combatcooldown = 1,

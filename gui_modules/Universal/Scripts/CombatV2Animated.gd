@@ -177,7 +177,10 @@ func reset_combat_data():
 
 
 func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', t_combat_data = {}):
-	#$Background.texture = images.backgrounds[background]
+	if images.backgrounds.has(background):
+		$Background.texture = images.get_background(background)
+	else:
+		$Background.texture = images.get_background('dungeon')
 	if music == "default":
 		music = 'battle1'
 	hide()

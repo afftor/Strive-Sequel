@@ -1340,6 +1340,10 @@ func StartAreaCombat(): #rnd all and always
 	var enemygroup = {}
 	var enemies = []
 	var music = 'combattheme'
+	var background = 'background'
+	
+	if input_handler.active_location.has('custom_background'):
+		background = input_handler.active_location.custom_background
 	
 	if enemydata == null:
 		enemydata = input_handler.active_location.enemies
@@ -1352,7 +1356,7 @@ func StartAreaCombat(): #rnd all and always
 		input_handler.combat_node = input_handler.get_combat_node()
 	input_handler.combat_node.encountercode = enemydata
 	input_handler.combat_node.set_norun_mode(false)
-	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, 'background', music, data)
+	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, background, music, data)
 
 
 func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
@@ -1362,6 +1366,10 @@ func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
 	var enemygroup = {}
 	var enemies = []
 	var music = 'combattheme'
+	var background = 'background'
+	
+	if gui_controller.exploration_dungeon.active_location.has('custom_background'):
+		background = gui_controller.exploration_dungeon.active_location.custom_background
 	
 	enemydata = data.enemy_code
 	enemies = data.enemies.duplicate(true)
@@ -1393,7 +1401,7 @@ func StartFixedAreaCombat(data): #non-rnd, 2test, 2fix
 		combat_data.instawin = true
 	input_handler.combat_node.encountercode = enemydata
 	input_handler.combat_node.set_norun_mode(false)
-	input_handler.combat_node.start_combat(gui_controller.exploration_dungeon.active_location.group, enemies, 'background', music, combat_data)
+	input_handler.combat_node.start_combat(gui_controller.exploration_dungeon.active_location.group, enemies, background, music, combat_data)
 
 
 func make_enemies(enemydata, quest = false):
