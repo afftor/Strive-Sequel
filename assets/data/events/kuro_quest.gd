@@ -198,16 +198,8 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "myr",
-		character2 = "kuro",
-		text = [
-			{
-				text = "MAGESINTRODUCTION3_2",
-				reqs = [
-
-				]
-			}
-		],
+		character2 = "myr",
+		text = "MAGESINTRODUCTION3_2",
 		options = [
 			{
 				code = "kuro_lib_start2",
@@ -218,7 +210,8 @@ var data = {
 
 				]
 			}
-		]
+		],
+		character = "kuro"
 	},
 	kuro_lib_start2 = {
 		reqs = [
@@ -227,16 +220,8 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "myr",
-		character2 = "kuro",
-		text = [
-			{
-				text = "KURO_LIB_START",
-				reqs = [
-
-				]
-			}
-		],
+		character = "kuro",
+		text = "KURO_LIB_START",
 		options = [
 			{
 				code = "kuro_lib_myaran",
@@ -265,7 +250,8 @@ var data = {
 
 				]
 			}
-		]
+		],
+		character2 = "myr"
 	},
 	kuro_lib_myaran = {
 		reqs = [
@@ -274,8 +260,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "myr",
-		character2 = "kuro",
+		character = "kuro",
 		text = [
 			{
 				text = "KURO_LIB_REPLY_AGREE",
@@ -345,7 +330,8 @@ var data = {
 					}
 				]
 			}
-		]
+		],
+		character2 = "myr"
 	},
 	kuro_lib_return = {
 		reqs = [
@@ -354,16 +340,9 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "myr",
-		character2 = "kuro",
-		text = [
-			{
-				text = "MAGESINTRODUCTION3_2",
-				reqs = [
-
-				]
-			}
-		],
+		character = "kuro",
+		character2 = "myr",
+		text = "MAGESINTRODUCTION3_2",
 		options = [
 			{
 				code = "kuro_lib_access",
@@ -403,16 +382,9 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "myr",
-		character2 = "kuro",
-		text = [
-			{
-				text = "KURO_LIB_ACCESS",
-				reqs = [
-
-				]
-			}
-		],
+		character = "kuro",
+		character2 = "myr",
+		text = "KURO_LIB_ACCESS",
 		options = [
 			{
 				code = "kuro_lib_access2",
@@ -432,16 +404,8 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "myr",
-		character2 = "kuro",
-		text = [
-			{
-				text = "KURO_LIB_ACCESS2",
-				reqs = [
-
-				]
-			}
-		],
+		character = "kuro",
+		text = "KURO_LIB_ACCESS2",
 		options = [
 			{
 				code = "kuro_lib_access3",
@@ -452,7 +416,8 @@ var data = {
 
 				]
 			}
-		]
+		],
+		character2 = "myr"
 	},
 	kuro_lib_access3 = {
 		reqs = [
@@ -461,7 +426,6 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character2 = "kuro",
 		text = [
 			{
 				text = "KURO_LIB_ACCESS3",
@@ -525,7 +489,8 @@ var data = {
 					}
 				]
 			}
-		]
+		],
+		character = "kuro"
 	},
 	kuro_whiskey_market = {
 		reqs = [
@@ -1134,16 +1099,9 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "myr",
-		character2 = "kuro",
-		text = [
-			{
-				text = "MAGESINTRODUCTION3_2",
-				reqs = [
-
-				]
-			}
-		],
+		character = "kuro",
+		character2 = "myr",
+		text = "MAGESINTRODUCTION3_2",
 		options = [
 			{
 				code = "kuro_lib_whiskey2",
@@ -1163,16 +1121,9 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "myr",
-		character2 = "kuro",
-		text = [
-			{
-				text = "KURO_LIB_WHISKEY2",
-				reqs = [
-
-				]
-			}
-		],
+		character = "kuro",
+		character2 = "myr",
+		text = "KURO_LIB_WHISKEY2",
 		options = [
 			{
 				code = "kuro_lib_whiskey3",
@@ -1192,16 +1143,9 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "myr",
-		character2 = "kuro",
-		text = [
-			{
-				text = "KURO_LIB_WHISKEY3",
-				reqs = [
-
-				]
-			}
-		],
+		character = "kuro",
+		character2 = "myr",
+		text = "KURO_LIB_WHISKEY3",
 		options = [
 			{
 				code = "kuro_lib_whiskey4",
@@ -1318,14 +1262,7 @@ var data = {
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		dialogue_type = 2,
-		text = [
-			{
-				text = "KURO_TOME_SEX",
-				reqs = [
-
-				]
-			}
-		],
+		text = "KURO_TOME_SEX",
 		options = [
 			{
 				code = "kuro_tome_reply_meaning",
