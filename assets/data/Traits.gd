@@ -1020,7 +1020,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_intelligence.png",
 		effects = [],
-		bonusstats = {exp_gain_mod = 0.1},
+		bonusstats = {exp_gain_mod = 0.15},
 		reqs = [],
 		l_cost = 1,
 		tree_position = {tab = 3, x = 1, y = 6}, #fix

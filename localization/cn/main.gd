@@ -1186,6 +1186,8 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	SKILLSHADOWSTRIKEDESCRIPT = "Deals 130% of ATK as Dark damage to a target. Reduces target's ATK and MATK by 20 for 2 turns.\n对目标造成 130% 的攻击力的黑暗伤害。减少目标的攻击力和魔法攻击 20 ，持续 2 回合。",
 	SKILLFIREARR = "Fire Arrow 火箭",
 	SKILLFIREARRDESCRIPT = "Deals 120% of MATK as Fire damage. Has 50% chance to burn target for 2 turns, dealing damage (20% of MATK) every turn.\n造成 120% 的魔法攻击的火焰伤害。有 50% 的机会燃烧目标2回合，每回合造成 20% 的魔法攻击的伤害。",
+	SKILLFIREARRDESCRIPT_1 = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 60% chance to apply Burn for 2 turns. Chance increases at higher Fire Mastery level.""", # MISSING TRANSLATION
+	SKILLFIREARRDESCRIPT_2 = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 100% chance to apply Burn for 2 turns.""", # MISSING TRANSLATION
 	SKILLFIREARR_1DESCRIPT = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 60% chance to apply Burn for 2 turns. Chance increases at higher Fire Mastery level.""", # MISSING TRANSLATION
 	SKILLFIREARR_2DESCRIPT = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 100% chance to apply Burn for 2 turns.""", # MISSING TRANSLATION
 	SKILLLIGHTNING = "Lightning 闪电",

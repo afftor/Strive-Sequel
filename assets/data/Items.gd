@@ -5481,18 +5481,54 @@ var curses = {
 
 
 var fixed_quality_stats = {
-	cali_heirloom_test = { #example of data format
+	cali_heirloom_active = { #example of data format
 		"" : {},
 		poor = {},
 		average = {},
 		good = {},
 		epic = {},
 		legendary = {
-			bonusstats = {atk = 35, critchance = 20, hitrate = 20, armorpenetration = 15, enchant_capacity = 400}, #not basestats
-			icon = "res://assets/images/iconsitems/holy_sword.png", #not load!
-			effects = ['e_rare_deadly'] #not displayed in tooltip, but may be visible after equip
+			bonusstats = {atk = 55, critchance = 20, hitrate = 25, armorpenetration = 20, enchant_capacity = 500},
+			icon = "res://assets/images/iconsitems/cali_heirloom.png",
+			effects = [] #not displayed in tooltip, but may be visible after equip
 		}
-	}
+	},
+	holy_sword = {
+		"" : {},
+		poor = {},
+		average = {},
+		good = {},
+		epic = {},
+		legendary = {
+			bonusstats = {atk = 70, hitrate = 60, critmod = 0.33, damage_mod_light = 0.5, enchant_capacity = 550},
+			icon = "res://assets/images/iconsitems/cali_heirloom.png",
+			effects = [] 
+		}
+	},
+	holy_lance = { 
+		"" : {},
+		poor = {},
+		average = {},
+		good = {},
+		epic = {},
+		legendary = {
+			bonusstats = {atk = 60, hitrate = 40, damage_mod_air = 0.20, armor = 25, enchant_capacity = 550},
+			icon = "res://assets/images/iconsitems/cali_heirloom.png",
+			effects = [] 
+		}
+	},
+	aire_bow = { 
+		"" : {},
+		poor = {},
+		average = {},
+		good = {},
+		epic = {},
+		legendary = {
+			bonusstats = {atk = 55, critchance = 12, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 400},
+			icon = "res://assets/images/iconsitems/cali_heirloom.png",
+			effects = [] 
+		}
+	},
 }
 
 

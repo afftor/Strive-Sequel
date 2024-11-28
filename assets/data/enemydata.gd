@@ -192,15 +192,15 @@ var enemygroups = {
 	firedepths_boss1 = {reqs = [], units = {magma_beast = [1,1], salamander = [1,1]}},
 	firedepths_boss2 = {reqs = [], units = {erebus_stone = [2,2]}},
 
-	hector_boss_fight = {reqs = [], units = {bandit_melee = [2,2], hector_boss = [1,1], bandit_archer = [2,2], bandit_mage = [1,1]}}, #cali boss fight !!! copied from above, needs fixing
+	hector_boss_fight = {reqs = [], units = {bandit_melee = [2,2], hector_boss = [1,1], bandit_archer = [2,2], bandit_mage = [1,1]}}, 
 
-	dwarf_tavern_patrons = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}}, #dummy
-	vault_golem = {reqs = [], units = {guardian_golem = [1,1]}}, #dummy
-	coalition_base_kuro = {reqs = [], units = {bandit_melee = [2,2]}}, #dummy
-	dwarf_ceremony_cult = {reqs = [], units = {bandit_melee = [2,2]}}, #dummy
-	dwarf_ceremony_guards = {reqs = [], units = {bandit_melee = [2,2]}}, #dummy
-	dwarf_ceremony_coal = {reqs = [], units = {bandit_melee = [2,2]}}, #dummy
-	dwarf_ceremony_cult2 = {reqs = [], units = {bandit_melee = [2,2]}}, #dummy
+	dwarf_tavern_patrons = {reqs = [], units = {dwarf_fighter = [3,3]}}, 
+	vault_golem = {reqs = [], units = {guardian_golem = [1,1], dwarf_fighter = [1,1], dwarf_ranged = [1,1]}}, 
+	coalition_base_kuro = {reqs = [], units = {kuro = [1,1], dwarf_fighter = [2,2], dwarf_ranged = [2,2]}}, 
+	dwarf_ceremony_cult = {reqs = [], units = {dwarf_fighter = [2,2]}}, 
+	dwarf_ceremony_guards = {reqs = [], units = {dwarf_fighter = [3,3], dwarf_ranged = [3,3]}},
+	dwarf_ceremony_coal = {reqs = [], units = {dwarf_fighter = [2,2]}},
+	dwarf_ceremony_cult2 = {reqs = [], units = {dwarf_fighter = [2,2]}}, 
 }
 
 #Ai patterns: basic - basic attack/ranged attack or pass (if exist), ads - advanced single target skill, aoe - aoe skill, buff - buffing skill
@@ -380,7 +380,7 @@ var enemies = {
 		code = 'rebel_recruit',
 		name = '',
 		descript = '',
-		hpmax = 125,
+		hpmax = 150,
 		armor = 5,
 		mdef = 5,
 		hitrate = 85,
@@ -1569,6 +1569,63 @@ var enemies = {
 		ai_position = ['ranged'],
 		xpreward = 50,
 	},
+	
+	dwarf_fighter = {
+		code = 'dwarf_fighter',
+		name = '',
+		descript = '',
+		hpmax = 300,
+		armor = 20,
+		mdef = 10,
+		hitrate = 95,
+		evasion = 10,
+		armorpenetration = 0,
+		atk = 41,
+		matk = 5,
+		speed = 45,
+		resists = {},
+		status_resists = {},
+		race = 'humanoid',
+		loot = 'bandit_loot',
+		icon = "res://assets/images/enemies/dwarf fighter.png",
+		body = null,
+		skills = ['attack','sunder'],
+		traits = [],
+		tags = ['human'],
+		is_character = false,
+		gear = [],
+		ai = [['basic', 66], ['ads', 33]],
+		ai_hard = [['basic', 50], ['ads', 50]],
+		ai_position = ['melee'],
+		xpreward = 15,
+	},
+	dwarf_ranged = {
+		code = 'dwarf_ranged',
+		name = '',
+		descript = '',
+		hpmax = 200,
+		armor = 15,
+		mdef = 20,
+		hitrate = 100,
+		evasion = 10,
+		armorpenetration = 0,
+		atk = 68,
+		matk = 5,
+		speed = 40,
+		resists = {},
+		race = 'humanoid',
+		loot = 'bandit_loot',
+		icon = "res://assets/images/enemies/dwarf crossbow.png",
+		body = null,
+		skills = ['ranged_attack','arrow_hail'],
+		traits = [],
+		tags = ['human'],
+		is_character = false,
+		gear = [],
+		ai = [['basic', 100]],
+		ai_position = ['ranged'],
+		xpreward = 10,
+	},
 
 	#quest enemies
 
@@ -1650,7 +1707,7 @@ var enemies = {
 		body = null,
 		skills = ['shadowstrike','decay','voidslam'],
 		traits = [],
-		tags = ['human','boss'],
+		tags = ['human','demon','boss'],
 		is_character = false,
 		gear = [],
 		ai = [['ads', 33],['aoe',33], ['basic', 33]],
@@ -1770,6 +1827,35 @@ var enemies = {
 		ai = [['ads', 66],['basic', 33]],
 		ai_position = ['melee'],
 		xpreward = 100,
+	},
+	
+	kuro = {
+		code = 'kuro',
+		name = '',
+		descript = '',
+		hpmax = 750,
+		armor = 15,
+		mdef = 90,
+		hitrate = 120,
+		evasion = 50,
+		armorpenetration = 30,
+		atk = 40,
+		matk = 115,
+		speed = 55,
+		resists = {light = -50},
+		status_resists = {stun = 100, freeze = 100},
+		race = 'humanoid',
+		loot = 'bandit_loot',
+		icon = "res://assets/images/enemies/kuro.png",
+		body = null,
+		skills = ['shadowstrike','void','void_barrage'],
+		traits = [],
+		tags = ['human','boss'],
+		is_character = false,
+		gear = [],
+		ai = [['ads', 33],['aoe',33], ['basic', 33]],
+		ai_position = ['ranged'],
+		xpreward = 50,
 	},
 	
 	white_stag = {

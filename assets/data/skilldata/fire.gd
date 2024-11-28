@@ -117,7 +117,7 @@ var skills = {
 		cooldown = 0,
 		catalysts = {},
 		target = 'enemy',
-		target_number = 'all',
+		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'fire',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 

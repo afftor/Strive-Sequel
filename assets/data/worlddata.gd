@@ -126,7 +126,7 @@ var lands = {
 		capital_code = 'dwarf_capital',
 		capital_dynamic_background = 'dwarfs_city',
 #		capital_background_noise = '',
-#		capital_background_music = '',
+		capital_background_music = 'dwarf_cap',
 	},
 	steppe = {
 		code = 'steppe',
@@ -194,7 +194,7 @@ var lands = {
 		capital_code = 'beastkin_capital',
 		capital_dynamic_background = 'beastkin_capital',
 		capital_background_noise = 'elf_noise',
-		capital_background_music = 'frostford',
+		capital_background_music = 'beastkin_village',
 	},
 }
 
