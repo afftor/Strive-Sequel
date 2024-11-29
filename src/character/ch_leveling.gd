@@ -194,12 +194,12 @@ func upgrade_mastery_cost(school, force_universal = false):
 	var data = Skilldata.masteries[school]
 	match data.type:
 		'combat':
-			if mastery_points.combat > 0 and !force_universal:
+			if !force_universal:
 				res.combat = 1
 			else:
 				res.universal = 1
 		'spell':
-			if mastery_points.magic > 0 and !force_universal:
+			if !force_universal:
 				res.magic = 1
 			else:
 				res.universal = 1

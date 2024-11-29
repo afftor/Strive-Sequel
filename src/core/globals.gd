@@ -155,9 +155,11 @@ func get_duplicate_id_if_exist(item):
 	return null
 
 
-func CreateGearItem(item, parts, newname = null): #obsolete for modular
+func CreateGearItem(item, parts, newname = null, quality = ""): #obsolete for modular
 	var newitem = Item.new()
 	newitem.CreateGear(item, parts, {no_enchant = true})
+	if quality != "":
+		newitem.set_quality_level(quality)
 	if newname != null:
 		newitem.name = newname
 	return newitem
@@ -644,9 +646,9 @@ func ItemSelect(targetscript, type, function, requirements = null):
 		get_tree().get_root().add_child(node)
 		input_handler.AddPanelOpenCloseAnimation(node)
 		node.name = 'ItemSelect'
-
+	
 	node.show()
-
+	
 	input_handler.ClearContainer(node.get_node("ScrollContainer/GridContainer"))
 	var array = []
 	if type == 'gear':
@@ -673,7 +675,7 @@ func ItemSelect(targetscript, type, function, requirements = null):
 		for i in ResourceScripts.game_res.materials:
 			if ResourceScripts.game_res.materials[i] > 0:
 				array.append(i)
-
+	
 	for i in array:
 		var newnode = input_handler.DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))
 		match type:
@@ -2213,7 +2215,10 @@ func common_effects(effects):
 				elif item.type == 'gear':
 					while counter > 0:
 						counter -= 1
-						AddItemToInventory(CreateGearItem(item.code, {})) #no parts, so no enchants
+						if i.has('quality'):
+							AddItemToInventory(CreateGearItem(item.code, {}, null, i.quality)) #no parts, so no enchants
+						else:
+							AddItemToInventory(CreateGearItem(item.code, {})) #no parts, so no enchants
 			'remove_item':
 				ResourceScripts.game_res.remove_item(i.name, i.number)
 			'unlock_asset':
