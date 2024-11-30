@@ -31,10 +31,10 @@ func update():
 				get_node(i).visible = false
 			else:
 				get_node(i).visible = true
-				if data.status == 'cleared' or data.type in ['ladder_up', 'ladder_up_survival'] or (data.status == 'scouted' and data.type in ['ladder_down', 'ladder_down_survival']):
+				if data.status == 'cleared' or data.type in ['ladder_up', 'ladder_up_survival'] or (data.status == 'scouted' and data.type in ['ladder_down', 'ladder_down_survival'] and ResourceScripts.game_world.can_enter_room(room_id)):
 					get_node(i).modulate = Color(variables.hexcolordict.green)
 					continue
-				if tdata.status == 'cleared' or tdata.type in ['ladder_up', 'ladder_up_survival'] or (tdata.status == 'scouted' and tdata.type in ['ladder_down', 'ladder_down_survival']):
+				if tdata.status == 'cleared' or tdata.type in ['ladder_up', 'ladder_up_survival'] or (tdata.status == 'scouted' and tdata.type in ['ladder_down', 'ladder_down_survival'] and ResourceScripts.game_world.can_enter_room(data.neighbours[i])):
 					get_node(i).modulate = Color(variables.hexcolordict.green)
 					continue
 				get_node(i).modulate = Color(variables.hexcolordict.red)

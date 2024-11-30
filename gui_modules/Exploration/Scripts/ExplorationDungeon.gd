@@ -912,34 +912,13 @@ func get_scouting_range():
 	return 1
 
 
-func can_enter_room(room_id):
-	var data = ResourceScripts.game_world.rooms[room_id]
-	if data.status == 'cleared' :
-		 return true
-	if data.type in ['ladder_up']:
-		return true
-#	if data.status == 'scouted' and data.type in ['ladder_down', 'ladder_down_survival']:
-#		return true
-	for i in data.neighbours.values():
-		if i == null:
-			continue
-		var t_data = ResourceScripts.game_world.rooms[i]
-		if t_data.status == 'cleared' :
-		 return true
-		if t_data.type in ['ladder_up']:
-			return true
-		if t_data.status == 'scouted' and t_data.type in ['ladder_down', 'ladder_down_survival']:
-			return true
-	return false
-
-
 func room_pressed(room_id):
 	if selected_room != null and active_subroom == null:
 		return
 	if globals.check_location_group() == false:
 		input_handler.SystemMessage("Select at least 1 character before advancing. ")
 		return
-	if !can_enter_room(room_id):
+	if !ResourceScripts.game_world.can_enter_room(room_id):
 		return
 	globals.reset_roll_data()
 	globals.char_roll_data.diff = active_location.difficulty
@@ -1240,6 +1219,7 @@ func reset_active_location(arg = null):
 
 
 func reveal_map():
+#	globals.common_effects([{code = "reveal_active_dungeon"}])
 	var dungeon
 	if !active_location.tags.has('infinite'):
 		dungeon = active_location.dungeon[active_location.current_level]
