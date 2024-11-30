@@ -383,19 +383,48 @@ func remove_location(loc_id):
 	location_links.erase(loc_id)
 
 
+func can_enter_room(room_id):
+	var data = rooms[room_id]
+	if data.status == 'cleared' :
+		 return true
+	if data.type in ['ladder_up']:
+		return true
+#	if data.status == 'scouted' and data.type in ['ladder_down', 'ladder_down_survival']:
+#		return true
+	for i in data.neighbours.values():
+		if i == null:
+			continue
+		var t_data = ResourceScripts.game_world.rooms[i]
+		if t_data.status == 'cleared' :
+		 return true
+		if t_data.type in ['ladder_up']:
+			return true
+		if t_data.status == 'scouted' and t_data.type in ['ladder_down', 'ladder_down_survival'] and can_enter_room(i):
+			return true
+	return false
+
+
 func setup_teleporter(loc_id):
+	globals.start_fixed_event('dungeon_teleporter')
 	var location = ResourceScripts.world_gen.get_location_from_code(loc_id)
 	location.teleporter = true
 
 
 func gather_res(loc_id, amount):
 	var location = ResourceScripts.world_gen.get_location_from_code(loc_id)
+	var data = {
+		text = tr('RESOURCEGATHERED' + '\n'), 
+		image = 'chest',
+		tags = ['skill_report_event'], 
+		options = []
+	}
 	match location.type:
 		'settlement':
 			var res = input_handler.random_from_array(location.gather_resources.keys())
 			var resdata = Items.materiallist[res]
 			var gather_amount = int(amount / resdata.price)
 			ResourceScripts.game_res.materials[res] += gather_amount
+			data.text += "%s - %d" % [tr(resdata.name), gather_amount]
 		'dungeon':
 			var pool = location.gather_limit_resources.keys().duplicate()
 			while amount > 0:
@@ -409,7 +438,12 @@ func gather_res(loc_id, amount):
 					pool.erase(res)
 				if gather_amount <= 0:
 					pool.erase(res)
+				else:
+					data.text += "%s - %d\n" % [tr(resdata.name), gather_amount]
 				location.gather_limit_resources[res] -= gather_amount
 				ResourceScripts.game_res.materials[res] += gather_amount
 				amount -= resdata.price * gather_amount
 			gui_controller.exploration_dungeon.res_container.update()
+	
+	data.options.append({code = 'close', text = tr("DIALOGUECLOSE"), reqs = []})
+	input_handler.interactive_message_custom(data)

@@ -519,82 +519,7 @@ func execute_skill(s_skill2):  #to update to exploration version
 			else:
 				print('error in damagestat %s' % i.damagestat)  #obsolete in new format
 
-#obsolete
-#func area_advance(mode): #advance request
-#	globals.reset_roll_data()
-#	globals.char_roll_data.diff = input_handler.active_location.difficulty
-#	if globals.check_location_group() == false:
-#		input_handler.SystemMessage("Select at least 1 character before advancing. ")
-#		return
-##	current_stage = active_location.progress.stage
-#	globals.char_roll_data.lvl = input_handler.active_location.progress.level
-#	for ch_id in input_handler.active_location.group.values():
-#		globals.char_roll_data.mf += characters_pool.get_char_by_id(ch_id).get_stat('magic_find')
-#
-#	if check_events(mode) == true:
-#		yield(input_handler, 'EventFinished')
-#	input_handler.combat_explore = true
-#	var rand_event = false
-#	if (randf() <= variables.dungeon_unique_encounter_chance and !check_staged_enemies()):
-#		rand_event = globals.start_unique_event()
-#		if rand_event != false:
-#			input_handler.combat_advance = true
-##			advance()
-#	if ( !rand_event and
-#		input_handler.active_location.has('randomevents') and
-#		randf() <= variables.dungeon_encounter_chance and
-#		!check_staged_enemies() 
-#	):
-#		rand_event = globals.start_random_event()
-#		if rand_event != false:
-#			input_handler.combat_advance = true
-##			advance()
-#	if rand_event == false:
-#		input_handler.combat_advance = false
-#		StartCombat()
-#
-#	action_type = mode
-#
-#
-#func check_staged_enemies():
-#	var result = false
-#	var progress = input_handler.active_location.progress
-#	for i in input_handler.active_location.stagedenemies:
-#		if i.stage == progress.stage && i.level == progress.level:
-#			result = true
-#			break
-#	return result
-#
-#
-#func advance():
-#	input_handler.combat_explore = false
-#	build_location_group()
-#	if check_dungeon_end() == false:
-#		input_handler.active_location.progress.stage += 1
-##		current_stage = active_location.progress.stage
-#		if input_handler.active_location.progress.stage > input_handler.active_location.levels["L" + str(input_handler.active_location.progress.level)].stages:
-#			input_handler.active_location.progress.stage = 0
-#			input_handler.active_location.progress.level += 1
-##			current_stage = active_location.progress.stage
-##			current_level = active_location.progress.level
-##		globals.current_level = current_level
-#		if check_dungeon_end():
-#			if input_handler.active_location.completed == false:
-#				input_handler.active_location.completed = true
-#				globals.common_effects([{code = "complete_active_location_quests"}])
-#				check_events("dungeon_complete")
-#			# $LocationGui/Resources/Forget.visible = true
-#			$LocationGui/Resources/SelectWorkers.visible = true
-#			$LocationGui/Resources/Forget.visible = true
-#			$LocationGui/Resources/Materials.update()
-#		enter_dungeon()
-#	elif action_type == 'location_finish':
-#		Navigation.build_accessible_locations()
-#		Navigation.select_location("aliron")
-#	else:
-#		enter_dungeon()
-#
-#
+
 func StartCombat(data): 
 	input_handler.play_animation("fight")
 	yield(get_tree().create_timer(1), "timeout")
@@ -987,34 +912,13 @@ func get_scouting_range():
 	return 1
 
 
-func can_enter_room(room_id):
-	var data = ResourceScripts.game_world.rooms[room_id]
-	if data.status == 'cleared' :
-		 return true
-	if data.type in ['ladder_up']:
-		return true
-#	if data.status == 'scouted' and data.type in ['ladder_down', 'ladder_down_survival']:
-#		return true
-	for i in data.neighbours.values():
-		if i == null:
-			continue
-		var t_data = ResourceScripts.game_world.rooms[i]
-		if t_data.status == 'cleared' :
-		 return true
-		if t_data.type in ['ladder_up']:
-			return true
-		if t_data.status == 'scouted' and t_data.type in ['ladder_down', 'ladder_down_survival']:
-			return true
-	return false
-
-
 func room_pressed(room_id):
 	if selected_room != null and active_subroom == null:
 		return
 	if globals.check_location_group() == false:
 		input_handler.SystemMessage("Select at least 1 character before advancing. ")
 		return
-	if !can_enter_room(room_id):
+	if !ResourceScripts.game_world.can_enter_room(room_id):
 		return
 	globals.reset_roll_data()
 	globals.char_roll_data.diff = active_location.difficulty
@@ -1315,6 +1219,7 @@ func reset_active_location(arg = null):
 
 
 func reveal_map():
+#	globals.common_effects([{code = "reveal_active_dungeon"}])
 	var dungeon
 	if !active_location.tags.has('infinite'):
 		dungeon = active_location.dungeon[active_location.current_level]
@@ -1325,8 +1230,10 @@ func reveal_map():
 		var rdata = ResourceScripts.game_world.rooms[room_id]
 		if rdata.status in ['obscured', 'hidden']:
 			rdata.status = 'scouted'
+	globals.start_fixed_event('reveal_map')
 	update_map()
 
 
 func set_intimidate():
+	globals.start_fixed_event('dungeon_intimidate')
 	active_location.intimidate = true
