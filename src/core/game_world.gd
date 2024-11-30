@@ -391,12 +391,19 @@ func setup_teleporter(loc_id):
 
 func gather_res(loc_id, amount):
 	var location = ResourceScripts.world_gen.get_location_from_code(loc_id)
+	var data = {
+		text = tr('RESOURCEGATHERED' + '\n'), 
+		image = 'chest',
+		tags = ['skill_report_event'], 
+		options = []
+	}
 	match location.type:
 		'settlement':
 			var res = input_handler.random_from_array(location.gather_resources.keys())
 			var resdata = Items.materiallist[res]
 			var gather_amount = int(amount / resdata.price)
 			ResourceScripts.game_res.materials[res] += gather_amount
+			data.text += "%s - %d" % [tr(resdata.name), gather_amount]
 		'dungeon':
 			var pool = location.gather_limit_resources.keys().duplicate()
 			while amount > 0:
@@ -410,7 +417,12 @@ func gather_res(loc_id, amount):
 					pool.erase(res)
 				if gather_amount <= 0:
 					pool.erase(res)
+				else:
+					data.text += "%s - %d\n" % [tr(resdata.name), gather_amount]
 				location.gather_limit_resources[res] -= gather_amount
 				ResourceScripts.game_res.materials[res] += gather_amount
 				amount -= resdata.price * gather_amount
 			gui_controller.exploration_dungeon.res_container.update()
+	
+	data.options.append({code = 'close', text = tr("DIALOGUECLOSE"), reqs = []})
+	input_handler.interactive_message_custom(data)
