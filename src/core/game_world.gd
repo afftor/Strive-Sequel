@@ -384,6 +384,7 @@ func remove_location(loc_id):
 
 
 func setup_teleporter(loc_id):
+	globals.start_fixed_event('dungeon_teleporter')
 	var location = ResourceScripts.world_gen.get_location_from_code(loc_id)
 	location.teleporter = true
 
