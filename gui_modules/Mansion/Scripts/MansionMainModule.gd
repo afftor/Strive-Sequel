@@ -928,7 +928,7 @@ func test_mode():
 		ResourceScripts.game_progress.decisions.append("bracelet_found")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
-#		input_handler.interactive_message('leon_encounter_start', '', {})
+		input_handler.interactive_message('unlock_infinite_dungeon', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)

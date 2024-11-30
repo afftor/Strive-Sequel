@@ -231,7 +231,7 @@ func open_location(data): #2fix
 #	if input_handler.active_location.has('background'):
 #		$LocationGui/Image/TextureRect.texture = images.backgrounds[input_handler.active_location.background]
 	if active_location.has('bgm'):
-		input_handler.SetMusic(active_location.bgm)
+		input_handler.SetMusic(active_location.bgm, true)
 #
 	#check if anyone is present
 	build_location_group()

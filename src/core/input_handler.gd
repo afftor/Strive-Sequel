@@ -81,6 +81,7 @@ var ghost_items = []
 
 var encounter_win_script = null
 var encounter_lose_script = null
+var explore_sound = 'exploration'
 
 var musicfading = false
 var musicraising = false
@@ -652,14 +653,17 @@ func SetMusicRandom(category):
 	track = track[randi()%track.size()]
 	SetMusic(track)
 
-func SetMusic(name, delay = 0):
-	if audio.music.has(name) == false: return
+func SetMusic(name, store = false, delay = 0):
+	if !audio.music.has(name):
+		 return
 	yield(get_tree().create_timer(delay), 'timeout')
 	musicraising = true
 	var musicnode = get_spec_node(self.NODE_MUSIC) #GetMusicNode()
 	if musicnode.stream == audio.music[name]:
 		return
 	musicnode.stream = audio.music[name]
+	if store:
+		explore_sound = name
 	musicnode.play(0)
 
 func StopMusic(instant = false):
@@ -1228,7 +1232,7 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 
 func finish_combat():
 	emit_signal("CombatEnded", combat_node.encountercode)
-	SetMusic("exploration")
+	SetMusic(explore_sound, true)
 	
 	if encounter_win_script != null and !encounter_win_script.empty():
 		globals.common_effects(encounter_win_script.duplicate(true))

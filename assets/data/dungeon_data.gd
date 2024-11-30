@@ -374,7 +374,7 @@ var dungeons = {
 		
 		#do not remove next ones - for they a used in generation
 		resources = ['cloth','leather','iron','wood','clothsilk'],
-		bgm = "dungeon",
+		bgm = "tower",
 		purchase_price = 100,
 		affiliation = 'local', #defines character races and events
 		events = [],
