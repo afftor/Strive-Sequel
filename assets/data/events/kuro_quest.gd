@@ -198,6 +198,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
+		character = "kuro",
 		character2 = "myr",
 		text = "MAGESINTRODUCTION3_2",
 		options = [
@@ -210,8 +211,7 @@ var data = {
 
 				]
 			}
-		],
-		character = "kuro"
+		]
 	},
 	kuro_lib_start2 = {
 		reqs = [
@@ -221,6 +221,7 @@ var data = {
 			"dialogue_scene"
 		],
 		character = "kuro",
+		character2 = "myr",
 		text = "KURO_LIB_START",
 		options = [
 			{
@@ -250,8 +251,7 @@ var data = {
 
 				]
 			}
-		],
-		character2 = "myr"
+		]
 	},
 	kuro_lib_myaran = {
 		reqs = [
@@ -261,6 +261,7 @@ var data = {
 			"dialogue_scene"
 		],
 		character = "kuro",
+		character2 = "myr",
 		text = [
 			{
 				text = "KURO_LIB_REPLY_AGREE",
@@ -330,8 +331,7 @@ var data = {
 					}
 				]
 			}
-		],
-		character2 = "myr"
+		]
 	},
 	kuro_lib_return = {
 		reqs = [
@@ -405,6 +405,7 @@ var data = {
 			"dialogue_scene"
 		],
 		character = "kuro",
+		character2 = "myr",
 		text = "KURO_LIB_ACCESS2",
 		options = [
 			{
@@ -416,8 +417,7 @@ var data = {
 
 				]
 			}
-		],
-		character2 = "myr"
+		]
 	},
 	kuro_lib_access3 = {
 		reqs = [
@@ -426,6 +426,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
+		character = "kuro",
 		text = [
 			{
 				text = "KURO_LIB_ACCESS3",
@@ -489,8 +490,7 @@ var data = {
 					}
 				]
 			}
-		],
-		character = "kuro"
+		]
 	},
 	kuro_whiskey_market = {
 		reqs = [
@@ -1258,16 +1258,32 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		custom_background = "kuro_book_0",
+		custom_background = "kuro_book_0_0",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		dialogue_type = 2,
-		text = "KURO_TOME_SEX",
+		start_dialogue_option = 9,
+		text = [
+			{
+				text = "KURO_TOME_SEX",
+				reqs = [
+
+				],
+				previous_dialogue_option = 9
+			},
+			{
+				text = "KURO_TOME_REPLY_MEANING",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+		],
 		options = [
 			{
-				code = "kuro_tome_reply_meaning",
+				code = "kuro_tome_sex",
 				text = "KURO_TOME_OPT_MEANING",
-				dialogue_argument = 9,
+				dialogue_argument = 1,
 				reqs = [
 
 				]
@@ -1291,60 +1307,34 @@ var data = {
 				],
 				bonus_effects = [
 					{
-						code = "complete_quest",
-						value = "kuro_tome_quest"
-					}
-				]
-			}
-		]
-	},
-	kuro_tome_reply_meaning = {
-		reqs = [
-
-		],
-		tags = [
-			"dialogue_scene"
-		],
-		custom_background = "kuro_book_0",
-		scene_type = "ero_scene",
-		text = [
-			{
-				text = "KURO_TOME_REPLY_MEANING",
-				reqs = [
-
-				]
-			}
-		],
-		options = [
-			{
-				code = "kuro_tome_reply_meaning",
-				text = "KURO_TOME_OPT_MEANING",
-				dialogue_argument = 9,
-				reqs = [
-
-				]
-			},
-			{
-				code = "kuro_tome_sex2",
-				text = "KURO_TOME_OPT_DO",
-				dialogue_argument = 9,
-				type = "next_dialogue",
-				reqs = [
-
-				]
-			},
-			{
-				code = "",
-				text = "KURO_TOME_OPT_LEAVE",
-				dialogue_argument = 9,
-				type = "next_dialogue",
-				reqs = [
-
-				],
-				bonus_effects = [
+						code = "decision",
+						value = "KuroSkippedSex"
+					},
 					{
 						code = "complete_quest",
 						value = "kuro_tome_quest"
+					},
+					{
+						code = 'add_timed_event',
+						value = "kuro_church_start",
+						args = [
+							{
+								type = 'add_to_date',
+								date = [14,15],
+								hour = 1
+							}
+						]
+					},
+					{
+						code = 'add_timed_event',
+						value = "kuro_zeph_start",
+						args = [
+							{
+								type = 'add_to_date',
+								date = [7,8],
+								hour = 1
+							}
+						]
 					}
 				]
 			}
@@ -1357,16 +1347,16 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		custom_background = "kuro_book_0_1",
-		scene_type = "ero_scene",
+		custom_background = "kuro_book_0_0",
 		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "kuro_tome",
 		text = [
 			{
-				text = "",
+				text = "KURO_TOME_SEX2",
 				reqs = [
 
 				]
-			}
+			},
 		],
 		options = [
 			{
@@ -1387,12 +1377,12 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		custom_background = "kuro_book_0_2",
+		custom_background = "kuro_book_0_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		text = [
 			{
-				text = "",
+				text = "KURO_TOME_SEX3",
 				reqs = [
 
 				]
@@ -1417,12 +1407,12 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		custom_background = "kuro_book_0_4",
+		custom_background = "kuro_book_0_2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		text = [
 			{
-				text = "",
+				text = "KURO_TOME_SEX4",
 				reqs = [
 
 				]
@@ -1447,12 +1437,72 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
+		custom_background = "kuro_book_0_3",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{
+				text = "KURO_TOME_SEX5",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "kuro_tome_sex6",
+				text = "DIALOGUECONTINUE",
+				dialogue_argument = 9,
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			}
+		]
+	},
+	kuro_tome_sex6 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		custom_background = "kuro_book_0_4",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		text = [
+			{
+				text = "KURO_TOME_SEX6",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "kuro_tome_sex7",
+				text = "DIALOGUECONTINUE",
+				dialogue_argument = 9,
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			}
+		]
+	},
+	kuro_tome_sex7 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
 		custom_background = "kuro_book_0_5",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
 		text = [
 			{
-				text = "",
+				text = "KURO_TOME_SEX7",
 				reqs = [
 
 				]
@@ -1471,6 +1521,28 @@ var data = {
 					{
 						code = "complete_quest",
 						value = "kuro_tome_quest"
+					},
+					{
+						code = 'add_timed_event',
+						value = "kuro_church_start",
+						args = [
+							{
+								type = 'add_to_date',
+								date = [14,15],
+								hour = 1
+							}
+						]
+					},
+					{
+						code = 'add_timed_event',
+						value = "kuro_zeph_start",
+						args = [
+							{
+								type = 'add_to_date',
+								date = [7,8],
+								hour = 1
+							}
+						]
 					}
 				]
 			}
