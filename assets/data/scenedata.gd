@@ -1658,7 +1658,33 @@ var scenedict = {
 	]
 	},
 	
-	
+	reveal_map = {
+		text = tr("REVEAL_MAP"),
+		tags = [],
+		image = 'dungeon_magic_barrier',
+		bonus_effects = [],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
+		],
+	},
+	dungeon_intimidate = {
+		text = tr("DUNGEON_INTIMIDATE"),
+		tags = [],
+		image = 'dungeon_magic_barrier',
+		bonus_effects = [],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
+		],
+	},
+	dungeon_teleporter = {
+		text = tr("DUNGEON_TELEPORTER"),
+		tags = [],
+		image = 'dungeon_magic_barrier',
+		bonus_effects = [],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
+		],
+	},
 	
 #	activate_trap_easy = {
 #		variations = [

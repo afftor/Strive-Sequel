@@ -126,7 +126,7 @@ var lands = {
 		capital_code = 'dwarf_capital',
 		capital_dynamic_background = 'dwarfs_city',
 #		capital_background_noise = '',
-#		capital_background_music = '',
+		capital_background_music = 'dwarf_cap',
 	},
 	steppe = {
 		code = 'steppe',
@@ -194,7 +194,7 @@ var lands = {
 		capital_code = 'beastkin_capital',
 		capital_dynamic_background = 'beastkin_capital',
 		capital_background_noise = 'elf_noise',
-		capital_background_music = 'frostford',
+		capital_background_music = 'beastkin_village',
 	},
 }
 
@@ -729,7 +729,7 @@ var dungeonnoun = [tr("DUNGEONNOUN1"),tr("DUNGEONNOUN2"),tr("DUNGEONNOUN3"),tr("
 var dungeonadj = [tr("DUNGEONADJ1"),tr("DUNGEONADJ2"),tr("DUNGEONADJ3"),tr("DUNGEONADJ4"),tr("DUNGEONADJ5"),tr("DUNGEONADJ6"),tr("DUNGEONADJ7"),tr("DUNGEONADJ8"),tr("DUNGEONADJ9"),tr("DUNGEONADJ10"),tr("DUNGEONADJ11"),tr("DUNGEONADJ12"),tr("DUNGEONADJ13"),tr("DUNGEONADJ14"),tr("DUNGEONADJ15"),tr("DUNGEONADJ16")]
 
 
-var eventscrits = {
+var eventscrits = { #not used
 
 	bandits_threat_quest = {
 		reqs = [],

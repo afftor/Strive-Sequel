@@ -875,6 +875,7 @@ var effect_table = {
 			}
 		],
 	},
+	e_tr_sorcerer = rebuild_stat_bonus('matk', 0.35, null, 'stat_add_p'),
 	#curses and enchantments
 	e_s_nostun = rebuild_stat_bonus('resist_stun', 200),
 	#statuses 

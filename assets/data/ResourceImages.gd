@@ -107,9 +107,6 @@ var backgrounds = {
 	daisy_bj11 = "res://assets/images/fullscreen scenes/DaisyCG039.png",
 	daisy_bj12 = "res://assets/images/fullscreen scenes/DaisyCG040.png",
 	
-	
-	
-	
 	daisy_training1 = "res://assets/images/fullscreen scenes/DaisyCG008.png",
 	daisy_training2 = "res://assets/images/fullscreen scenes/DaisyCG009.png",
 	daisy_training3 = "res://assets/images/fullscreen scenes/DaisyCG010.png",

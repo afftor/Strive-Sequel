@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tribal_village.ogg-d22ebf521c825f5205f1227160c6c9fc.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/tribal_village.ogg"
+dest_files=[ "res://.import/tribal_village.ogg-d22ebf521c825f5205f1227160c6c9fc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

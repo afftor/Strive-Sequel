@@ -23,6 +23,10 @@ var music = {
 
 	intro = load("res://assets/sounds/music/ending.ogg"),
 	intimate = load("res://assets/sounds/music/intimate.ogg"),
+	
+	dwarf_cap = load("res://assets/sounds/music/dwarf_capital.ogg"),
+	tower = load("res://assets/sounds/music/tower_of_dreams.ogg"),
+	beastkin_village = load("res://assets/sounds/music/tribal_village.ogg"),
 
 
 }
@@ -35,6 +39,7 @@ var background_noise = {
 	aliron_noise = load("res://assets/sounds/sounds/aliron_background.ogg"),
 	elf_noise = null,
 	battle_noise = load("res://assets/sounds/sounds/ambient-battle-noise-swords-and-shouting.ogg"),
+	
 }
 
 var sounds = {

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/Themes_v2/SimpleBgPanel.tres" type="StyleBox" id=1]
 [ext_resource path="res://src/scenes/TextTooltipPanel.gd" type="Script" id=2]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -33,6 +33,3 @@ margin_bottom = 317.0
 custom_colors/default_color = Color( 0.972549, 0.972549, 0.972549, 1 )
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-__meta__ = {
-"_edit_use_anchors_": false
-}

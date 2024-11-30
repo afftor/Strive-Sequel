@@ -351,7 +351,7 @@ func checkdeaths():
 			#turnorder.erase(battlefield[i])
 			if summons.has(i):
 #				tchar.displaynode.queue_free()
-				tchar.displaynode = null
+#				tchar.displaynode = null
 				tchar.is_active = false
 				battlefield[i] = null
 				if tchar.combatgroup == 'enemy':
@@ -1270,10 +1270,12 @@ func summon(montype, limit, combatgroup): #reworked
 			tchar.combatgroup = 'ally'
 			playergroup[sum_pos] = characters_pool.add_char(tchar)
 			battlefield[sum_pos] = playergroup[sum_pos]
+			tchar.selectedskill = tchar.get_skill_by_tag('default')
 	tchar.position = sum_pos
 	tchar.hp = tchar.get_stat("hpmax")
 	tchar.mp = tchar.get_stat("mpmax")
 	tchar.add_trait('core_trait')
+	
 	
 	make_fighter_panel(tchar, sum_pos);
 
