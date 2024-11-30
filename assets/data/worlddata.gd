@@ -965,6 +965,13 @@ var fixed_location_options = { #override serialized data
 			], 
 			args = [{code = 'start_event', data = 'amelia_slave3_1', args = []}]
 		},
+		{
+			text = tr("ALIRON_KURO_CHURCH"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'kuro_errand_quest', stage = 'church'}
+			], 
+			args = [{code = 'start_event', data = 'kuro_church_note', args = []}]
+		},
 	],
 	elf_capital = [
 		{
@@ -1564,6 +1571,13 @@ var fixed_location_options = { #override serialized data
 			text = tr("QUEST_WHISKY_CRASH_LOCATION"),
 			reqs = [{type = 'active_quest_stage', value = 'kuro_tome_quest', stage = 'carriage'}],
 			args = [{code = 'start_event', data = 'kuro_whiskey_crash', args = []}]
+		}
+	],
+	quest_cult_hideout = [
+		{
+			text = tr("QUEST_CULT_HIDEOUT_LOCATION"),
+			reqs = [{type = 'active_quest_stage', value = 'kuro_errand_quest', stage = 'invite'}],
+			args = [{code = 'start_event', data = 'kuro_hideout_start', args = {}}]
 		}
 	],
 }

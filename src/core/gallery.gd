@@ -45,8 +45,10 @@ var scenes = {
 	lilith_ride = ['lilith_ride_1', 'lilith_ride_2', 'lilith_ride_3', 'lilith_ride_4'],
 	lilia_wedding = ['lilia_wedding_2', 'lilia_wedding_3', 'lilia_wedding_4', 'lilia_wedding_5', 'lilia_wedding_6', 'lilia_wedding_7'],
 	lilith_wedding = ['lilith_wedding_1', 'lilith_wedding_2', 'lilith_wedding_3', 'lilith_wedding_4', 'lilith_wedding_5', 'lilith_wedding_6'],
-
-	
+	kuro_tome = ['kuro_tome_sex', 'kuro_tome_sex2', 'kuro_tome_sex3', 'kuro_tome_sex4', 'kuro_tome_sex5', 'kuro_tome_sex6', 'kuro_tome_sex7'],
+	kuro_hideout = ['kuro_hideout_sex2', 'kuro_hideout_sex3', 'kuro_hideout_sex4', 'kuro_hideout_sex5', 'kuro_hideout_sex6'],
+	kuro_zeph_tailjob = ['kuro_zeph_tailjob3', 'kuro_zeph_tailjob4', 'kuro_zeph_tailjob5', 'kuro_zeph_tailjob6', 'kuro_zeph_tailjob7', 'kuro_zeph_tailjob8'],
+	kuro_wedding_pussy = ['kuro_wedding_1', 'kuro_wedding_2', 'kuro_wedding_pussy', 'kuro_wedding_pussy2']
 }
 #was forced to add a id to scene lists for unlock purpose
 var scenes_order = [
@@ -56,6 +58,7 @@ var scenes_order = [
 	"daisy_dress_acquired_normal","cali_bj_happy","cali_riding","heleviel","lilia_sex","christmas",
 	"heleviel_mansion","lira_mansion", "cali_zephyra","cali_act5_pet","cali_act6_naked","pre_ritual_blow",
 	"zephyra_lilia", 'amelia_sex', 'zephyra_disappearance_sex', 'zephyra_disappearance_guards', 'daisy_wedding', 'cali_wedding', 'amelia_wedding', 'lilia_transform_t', 'lilia_transform_mc', 'lilith_blow', 'lilith_ride', 'lilia_wedding', 'lilith_wedding',
+	'kuro_tome', 'kuro_hideout', 'kuro_zeph_tailjob', 'kuro_wedding_pussy'
 	]
 var story_scenes = ['anastasia_event_alive', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
 var ero_scenes = [
@@ -105,6 +108,10 @@ var ero_scenes = [
 'lilith_ride_1',
 'lilia_wedding_1',
 'lilith_wedding_1',
+'kuro_book_0_0',
+'kuro_top_1',
+'kuro_zephyra_1',
+'kuro_wedding_1'
 ] 
 
 var ero_scenes_collection = {
@@ -151,7 +158,11 @@ var ero_scenes_collection = {
 	'lilith_blow_' : ['lilith_blow_1','lilith_blow_2','lilith_blow_3','lilith_blow_4','lilith_blow_5'],
 	'lilith_ride_' : ['lilith_ride_1', 'lilith_ride_2', 'lilith_ride_3', 'lilith_ride_4'],
 	'lilia_wedding_' : ['lilia_wedding_1', 'lilia_wedding_2', 'lilia_wedding_3', 'lilia_wedding_4', 'lilia_wedding_5', 'lilia_wedding_6', 'lilia_wedding_7', ],
-	'lilith_wedding_' : ['lilith_wedding_1', 'lilith_wedding_2', 'lilith_wedding_3', 'lilith_wedding_4', 'lilith_wedding_5', 'lilith_wedding_6', ],
+	'lilith_wedding_' : ['lilith_wedding_1', 'lilith_wedding_2', 'lilith_wedding_3', 'lilith_wedding_4', 'lilith_wedding_5',],
+	'kuro_book_0_' : ['kuro_book_0_0', 'kuro_book_0_1', 'kuro_book_0_2', 'kuro_book_0_3', 'kuro_book_0_4', 'kuro_book_0_5'],
+	'kuro_top_' : ['kuro_top_1', 'kuro_top_2', 'kuro_top_3', 'kuro_top_4', 'kuro_top_5'],
+	'kuro_zephyra_' : ['kuro_zephyra_1', 'kuro_zephyra_2', 'kuro_zephyra_3', 'kuro_zephyra_4', 'kuro_zephyra_5'],
+	'kuro_wedding_' : ['kuro_wedding_1', 'kuro_wedding_2', 'kuro_wedding_3', 'kuro_wedding_4', 'kuro_wedding_5', 'kuro_wedding_6'],
 }
 #so these arrays are needed for storing order 
 
@@ -205,6 +216,10 @@ var scene_tooltips = {
 	lilith_ride_1 = "LILITH_RIDE_SS",
 	lilia_wedding_1 = "LILIA_WEDDING_SS",
 	lilith_wedding_1 = "LILITH_WEDDING_SS",
+	kuro_book_0_0 = "KURO_BOOK_SS",
+	kuro_top_1 = "KURO_TOP_SS",
+	kuro_zephyra_1 = "KURO_ZEPHYRA_SS",
+	kuro_wedding_1 = "KURO_WEDDING_SS",
 }
 
 

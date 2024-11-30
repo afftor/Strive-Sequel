@@ -393,4 +393,78 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
 		}, ]
 	},
+	
+	kuro_wedding_1 = {
+		custom_background = "kuro_wedding_1",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "kuro_wedding_pussy",
+		dialogue_type = 2,
+		tags = ['dialogue_scene', 'master_translate'], reqs = [],
+		text = [{text = "KURO_WEDDING_1", reqs = []}],
+		options = [{
+			code = 'kuro_wedding_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 9, type = 'next_dialogue',
+		}]
+	},
+	kuro_wedding_2 = {
+		custom_background = "kuro_wedding_2",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene'], reqs = [],
+		text = [{text = "KURO_WEDDING_2", reqs = []}],
+		options = [
+			{code = 'kuro_wedding_pussy', text = "KURO_WEDDING_OPT_PUSSY", reqs = [], dialogue_argument = 9, type = 'next_dialogue'},
+			{code = 'kuro_wedding_ass', text = "KURO_WEDDING_OPT_ASS", reqs = [], dialogue_argument = 9, type = 'next_dialogue'}
+		]
+	},
+	kuro_wedding_pussy = {
+		custom_background = "kuro_wedding_3",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene'], reqs = [],
+		text = [
+			{text = "KURO_WEDDING_PUSSY", reqs = []},
+			{text = "KURO_WEDDING_3", reqs = []},
+		],
+		options = [
+			{code = 'kuro_wedding_pussy2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 9, type = 'next_dialogue'},
+		]
+	},
+	kuro_wedding_pussy2 = {
+		custom_background = "kuro_wedding_4",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene'], reqs = [],
+		text = [
+			{text = "KURO_WEDDING_PUSSY2", reqs = []}
+		],
+		options = [
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 9, type = 'next_dialogue'},
+		]
+	},
+	kuro_wedding_ass = {
+		custom_background = "kuro_wedding_5",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene'], reqs = [],
+		text = [
+			{text = "KURO_WEDDING_ASS", reqs = []},
+			{text = "KURO_WEDDING_3", reqs = []},
+		],
+		options = [
+			{code = 'kuro_wedding_ass2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 9, type = 'next_dialogue'},
+		]
+	},
+	kuro_wedding_ass2 = {
+		custom_background = "kuro_wedding_6",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene'], reqs = [],
+		text = [
+			{text = "KURO_WEDDING_ASS2", reqs = []}
+		],
+		options = [
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 9, type = 'next_dialogue'},
+		]
+	},
 }

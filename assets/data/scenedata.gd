@@ -2544,5 +2544,15 @@ var quests = {
 			capital = {code = 'capital', name = 'LIRA_LOST_QUEST_NAME', descript = 'LIRA_LOST_QUEST_CAPITAL'},
 		},
 	},
+	kuro_errand_quest = {
+		code = 'kuro_errand_quest',
+		summary = "KURO_ERRAND_QUEST_SUMMARY",
+		stages = {
+			church = {code = 'church', name = 'KURO_ERRAND_QUEST_NAME', descript = 'KURO_ERRAND_QUEST_CHURCH'},
+			invite = {code = 'invite', name = 'KURO_ERRAND_QUEST_NAME', descript = 'KURO_ERRAND_QUEST_INVITE'},
+			search = {code = 'search', name = 'KURO_ERRAND_QUEST_NAME', descript = 'KURO_ERRAND_QUEST_SEARCH'},
+			base = {code = 'base', name = 'KURO_ERRAND_QUEST_NAME', descript = 'KURO_ERRAND_QUEST_BASE'},
+		},
+	},
 }
 
