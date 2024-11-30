@@ -913,6 +913,20 @@ var unique_marry_rules = {
 			agrees = false
 		},
 	},
+	kuro = {
+		kuro_quest_finished = {
+			reqs = [{type = "quest_completed", name = "kuro_tome_quest", check = true}],
+			text = "KURO_QUEST_FINISHED_TEXT",
+			description = "KURO_QUEST_FINISHED_DESCRIPTION",
+			agrees = true
+		},
+#		kuro_quest_unfinished = {
+#			reqs = [{type = "quest_completed", name = "daisy_lost", check = false}],
+#			text = "DAISY_QUEST_UNFINISHED_TEXT",
+#			description = "DAISY_QUEST_UNFINISHED_DESCRIPTION",
+#			agrees = false
+#		},
+	},
 	cali = {
 		cali_quest_finished = {
 			reqs = [{type = "quest_completed", name = "cali_heirloom_quest", check = true}],

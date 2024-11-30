@@ -835,7 +835,7 @@ When casting a spell has 25% chance to cast it an additional time.
 	TOOLTIPMDEF = "Reduces spell damage taken by this percent",
 	TOOLTIPCRIT = """Percent chance to crit for extra damage. 
 First value is a chance. Second value is a modifier.""",
-	TOOLTIPHITRATE = """Percent chance to hit target. 
+	TOOLTIPHITRATE = """Percent chance to hit target with physical skills. 
 Reduced by enemy's evasion""",
 	TOOLTIPARMORPEN = "Reduces enemy armor by this value",
 	TOOLTIPEVASION = "Reduces enemy hit chance by this value",
@@ -2547,7 +2547,7 @@ Requires consent \"Willing\" or above.""",
 	TRAITMASTER_FORTUNE = "Fortune",
 	TRAITMASTER_FORTUNEDESCRIPT = "Critical chance is increased by 25%. Slightly increases Magic Find.",
 	TRAITMASTER_INT = "Intelligence",
-	TRAITMASTER_INTDESCRIPT = "",
+	TRAITMASTER_INTDESCRIPT = "\b",
 	TRAITMASTER_FORTITUDE = "Fortitude",
 	TRAITMASTER_FORTITUDEDESCRIPT = "Grave Injury from being defeated only last 2 turns.",
 	TRAITMASTER_SORCERY = "Sorcery",
@@ -3779,6 +3779,12 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYWHITE_STAG_HUMAN = "Mysterious Person",
 	ENEMYELF_SPECTER = "Elf Specter",
 	ENEMYELF_SOLDIER = "Elven Soldier",
+	ENEMYDWARF_FIGHTER = "Dwarf Fighter",
+	ENEMYDWARF_FIGHTER_ELITE = "Elite Dwarf Soldier",
+	ENEMYDWARF_RANGED = "Dwarf Crossbowman",
+	ENEMYKURO = "Kuro",
+	
+	
 	FOODFILTERHIGH = "High",
 	FOODFILTERMED = "Med",
 	FOODFILTERLOW = "Low",
@@ -15783,6 +15789,8 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	LILITH_QUEST_UNFINISHED_DESCRIPTION = "Lilith gives you a doubtful look, feeling more distant from you.",
 	AMELIA_PROPOSAL_TEXT = "Oh my, I didn't expect you to make me blush after all of that. Of course, this is an ultimate honor.",
 	AMELIA_PROPOSAL_DESCRIPT = "Amelia looks at you with a reserved satisfaction, betrayed by her slight visible shaking.",
+	KURO_QUEST_FINISHED_TEXT = "That's one proposal you might seriously regret. That's why I'm going to make you keep it. ",
+	KURO_QUEST_FINISHED_DESCRIPTION = "Kuro looks at you unlike you have always saw her. Her expression is almost dreamlike...",
 	HIRE_LINE1 = "...Pleased to meet you, [Master].",
 	HIRE_LINE2 = "Please, take care of me, [Master].",
 	HIRE_LINE3 = "So you are my new [Master]! Pleased to meet you!",

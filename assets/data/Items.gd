@@ -5483,10 +5483,11 @@ var curses = {
 var fixed_quality_stats = {
 	cali_heirloom_active = { #example of data format
 		"" : {},
-		poor = {},
-		average = {},
-		good = {},
-		epic = {},
+		good = {
+			bonusstats = {atk = 40, critchance = 10, hitrate = 15, armorpenetration = 10, enchant_capacity = 200},},
+		epic = {
+			bonusstats = {atk = 45, critchance = 15, hitrate = 20, armorpenetration = 10, enchant_capacity = 300},
+		},
 		legendary = {
 			bonusstats = {atk = 55, critchance = 20, hitrate = 25, armorpenetration = 20, enchant_capacity = 500},
 			icon = "res://assets/images/iconsitems/cali_heirloom.png",
@@ -5495,38 +5496,32 @@ var fixed_quality_stats = {
 	},
 	holy_sword = {
 		"" : {},
-		poor = {},
-		average = {},
-		good = {},
-		epic = {},
+		epic = {
+			bonusstats = {atk = 60, hitrate = 45, critmod = 0.33, damage_mod_light = 0.3, enchant_capacity = 450},
+			},
 		legendary = {
 			bonusstats = {atk = 70, hitrate = 60, critmod = 0.33, damage_mod_light = 0.5, enchant_capacity = 550},
-			icon = "res://assets/images/iconsitems/cali_heirloom.png",
-			effects = [] 
 		}
 	},
 	holy_lance = { 
 		"" : {},
-		poor = {},
-		average = {},
-		good = {},
-		epic = {},
+		epic = {
+			bonusstats = {atk = 50, hitrate = 30, damage_mod_air = 0.20, armor = 15, enchant_capacity = 400},
+			},
 		legendary = {
 			bonusstats = {atk = 60, hitrate = 40, damage_mod_air = 0.20, armor = 25, enchant_capacity = 550},
-			icon = "res://assets/images/iconsitems/cali_heirloom.png",
-			effects = [] 
 		}
 	},
 	aire_bow = { 
 		"" : {},
-		poor = {},
-		average = {},
-		good = {},
-		epic = {},
+		good = {
+			bonusstats = {atk = 40, critchance = 8, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 250},
+			},
+		epic = {
+			bonusstats = {atk = 45, critchance = 10, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 350},
+			},
 		legendary = {
 			bonusstats = {atk = 55, critchance = 12, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 400},
-			icon = "res://assets/images/iconsitems/cali_heirloom.png",
-			effects = [] 
 		}
 	},
 }
@@ -5542,8 +5537,8 @@ var amount_to_improve = { #core
 var amount_to_improve_unique = { #unique
 	average = 1,
 	good = 1,
-	epic = 2,
-	legendary = 2
+	epic = 1,
+	legendary = 1
 }
 
 var next_quality = {

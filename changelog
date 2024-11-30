@@ -1,5 +1,8 @@
 0.10.1
 Revamped skill acquirement system
+Filled enemy event groups in act 3
+Added new sidequests and scenes for Kuro 
+Made some of unique weapons ugpradeable and revamped its stats
 Fixed some memory leaks which should make game more stable on longer sessions
 Fixed multiple minor paperdoll issues
 0.10.0b

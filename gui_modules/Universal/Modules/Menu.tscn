@@ -677,7 +677,14 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 33 )
 bbcode_enabled = true
-bbcode_text = "0.10.0b
+bbcode_text = "0.10.1
+Revamped skill acquirement system
+Filled enemy event groups in act 3
+Added new sidequests and scenes for Kuro 
+Made some of unique weapons ugpradeable and revamped its stats
+Fixed some memory leaks which should make game more stable on longer sessions
+Fixed multiple minor paperdoll issues
+0.10.0b
 Optimized resource loading to make images less taxing on the memory
 Fixed some ragdoll issues
 Fixed some enemy buffs having incorrect descriptions
@@ -1754,7 +1761,14 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.10.0b
+text = "0.10.1
+Revamped skill acquirement system
+Filled enemy event groups in act 3
+Added new sidequests and scenes for Kuro 
+Made some of unique weapons ugpradeable and revamped its stats
+Fixed some memory leaks which should make game more stable on longer sessions
+Fixed multiple minor paperdoll issues
+0.10.0b
 Optimized resource loading to make images less taxing on the memory
 Fixed some ragdoll issues
 Fixed some enemy buffs having incorrect descriptions

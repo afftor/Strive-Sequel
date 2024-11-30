@@ -3575,6 +3575,10 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	ENEMYWHITE_STAG_HUMAN = "神秘人",
 	ENEMYELF_SPECTER = "精灵幽魂",
 	ENEMYELF_SOLDIER = "精灵战士",
+	ENEMYDWARF_FIGHTER = """Dwarf Fighter""", # MISSING TRANSLATION
+	ENEMYDWARF_FIGHTER_ELITE = """Elite Dwarf Soldier""", # MISSING TRANSLATION
+	ENEMYDWARF_RANGED = """Dwarf Crossbowman""", # MISSING TRANSLATION
+	ENEMYKURO = """Kuro""", # MISSING TRANSLATION
 
 	FOODFILTERHIGH = "高优先级",
 	FOODFILTERMED = "中优先级",
@@ -14518,6 +14522,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	ALIRON21 = "寻找西菲拉",
 	ALIRON22 = "与凯奇会面",
 	ALIRON23 = "检查阿米莉亚的信息",
+	ALIRON_KURO_CHURCH = """Aliron Church""", # MISSING TRANSLATION
 	
 	ELF_CAPITAL1 = "见女祭司",
 	ELF_CAPITAL2 = "寻找走私者",
