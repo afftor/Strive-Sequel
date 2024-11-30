@@ -614,7 +614,9 @@ var data = {
 		}, { 
 			code = 'zephyra_disappearance_sex_4', text = "ZEPHYRA_DISAPPEARANCE_SEX_3_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
 		}, { 
-			code = 'zephyra_disappearance_sex_4', text = "ZEPHYRA_DISAPPEARANCE_SEX_3_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue', 
+			code = 'zephyra_disappearance_sex_4', text = "ZEPHYRA_DISAPPEARANCE_SEX_3_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue',
+			bonus_effects = [{code = "decision", value = "ZephTailGrabbed"},
+				{code = 'add_timed_event', value = "kuro_zeph_tailjob", args = [{type = 'add_to_date', date = [7,8], hour = 1}]}]
 		}, ]
 	},
 	

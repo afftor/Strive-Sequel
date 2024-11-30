@@ -68,6 +68,7 @@ var encounters = {
 	dwarf_ceremony_guards = {unittype = 'randomgroup', unitcode = 'dwarf_ceremony_guards', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'dwarf_ceremony_kuro', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	dwarf_ceremony_coal = {unittype = 'randomgroup', unitcode = 'dwarf_ceremony_coal', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'kuro_resolution_intro', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	dwarf_ceremony_cult2 = {unittype = 'randomgroup', unitcode = 'dwarf_ceremony_cult2', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'kuro_resolution_intro', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	kuro_cult_hideout = {unittype = 'randomgroup', unitcode = 'kuro_cult_hideout', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'kuro_hideout_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 }
 
 var enemygroups = {
@@ -200,7 +201,8 @@ var enemygroups = {
 	dwarf_ceremony_cult = {reqs = [], units = {dwarf_fighter = [2,2]}}, 
 	dwarf_ceremony_guards = {reqs = [], units = {dwarf_fighter = [3,3], dwarf_ranged = [3,3]}},
 	dwarf_ceremony_coal = {reqs = [], units = {dwarf_fighter = [2,2]}},
-	dwarf_ceremony_cult2 = {reqs = [], units = {dwarf_fighter = [2,2]}}, 
+	dwarf_ceremony_cult2 = {reqs = [], units = {dwarf_fighter = [2,2]}},
+	kuro_cult_hideout = {reqs = [], units = {bandit_melee = [2,2]}}, #dummy
 }
 
 #Ai patterns: basic - basic attack/ranged attack or pass (if exist), ads - advanced single target skill, aoe - aoe skill, buff - buffing skill

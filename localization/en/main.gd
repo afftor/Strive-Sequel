@@ -15085,6 +15085,20 @@ Kuro: — Finally, this is over. You played your part well too, I suppose.""",
 	KURO_TOME_OPT_DO = "*Do as told*",
 	KURO_TOME_OPT_LEAVE = "*Leave quietly*",
 	KURO_TOME_REPLY_MEANING = "— I promised you my body in reward, haven't I? I never said I'm going to do anything beyond that. As you can see I'm conducting important research so it will be appreciated if you make it quick and not overly rough.",
+	KURO_TOME_SEX2 = "Kuro lies in bed, her attention already grasped by the letters on the page she opened up. Her tail is kept to one side, giving you a view of her curvature showing underneath her dress. You begin drawing your hands across her soft body, kneading her thighs and ass while she turns the page. Despite her cold attitude, her body is much warmer and more receptive to you, letting your fingers sink deep into it as you play with her lower half.",
+	KURO_TOME_SEX3 = "Peeling her dress to the side, her butt is fully revealed, and her covered pussy along with it. You gently press your finger to it, gliding from her clit upward and back again until her panties become damp. Kuro traces lines on the page with her finger, keeping excellent focus as you slide her panties down her legs.",
+	KURO_TOME_SEX4 = "Her pussy now fully exposed, you play with her lower lips. The folds part for your fingers as you tease an insertion that never comes to pass. The subtle stream of her juices starts staining the sheets and your fingers, but Kuro remains unenthused as her eyes scan each sentence on the page. Even circling her asshole with her own fluids doesn't faze her as they seep back into her body through a different orifice. No matter the method, Kuro only stares at the yellowed pages that she takes careful consideration not to damage. Pulling out your shaft, you prepare to insert yourself into the situation by angling yourself for clean penetration.",
+	KURO_TOME_SEX5 = """— Nngh...
+
+You force yourself past Kuro's folds, tearing through her hymen to take what you've been offered. Kuro exhales a sharp breath as she peeks behind to see your dick being shoved into her. A primal heat surrounds your cock as you push further into her, blood washing past as you break her body in for your dick to use. Her pussy tightens as her body panics, feeling a throbbing heat inside her which it has never experienced. Once you reach the end of your length, your thrusts begin.""",
+	KURO_TOME_SEX6 = """Kuro crinkles the page as she tries to keep herself steady, her body heating up as you slide in and out of her pussy. Her inner walls clamp tight to the shape of your cock as her body now secretes even more nectar from within, the extra fluids helping you slip inside faster and faster. 
+
+Back and forth, her tail flits around, belying her excitement as she tries to keep a steady hand and flip to the next page. Within a few minutes, Kuro is anything but calm, her breathing is less steady, the rising heat inside your shaft about to burst and ruin any facade she has leftover.""",
+	KURO_TOME_SEX7 = """A torrent of seed floods Kuro's tight pussy as her cold demeanor melts in an instant. Her body is honest with you, clinging to your cock as it throbs and spurts more cum for her to devour. You fill the hole she so graciously offered you, watching her body shiver and relax as she gives in to your semen flooding through her. Even as you pull away, her pussy closes to keep your load packed tight inside...
+
+— N-now... If you let me, I want to finish this...
+
+You decide to leave her alone for now.""",
 	LIRA_LOST_START = "As you get through the woods, you suddenly hear a woman's voice calling for help. You cautiously move towards it...",
 	LIRA_LOST_START2 = "— Stranger! What a relief this isn't animals or monsters... I've come here to gather some herbs but It seems I've got lost. My name is Lira, I hope it won't trouble you to get me to the elven capital.",
 	LIRA_LOST_OPT_SURE = "Sure, you can stick around",
@@ -15104,6 +15118,234 @@ Guard: — Holt there!
 Lira: — I'm Freya's acolyte, please, this [man] has helped me when I was lost in the woods.
 
 Despite Lira's looks, the guards have relaxed upon hearing her. As you moved inside she thanked you and parted on her way to one of the more prestigious structures.""",
+	KURO_CHURCH_START = "In the morning you receive a letter from the church. Ginny requests you to visit her at her temple. Judging from how it's written it seems to be urgent.",
+	KURO_CHURCH_NOTE = """As you enter the church and find Ginny, she looks genuinely worried as she leads you to the more isolated part of the building.
+
+— Mayor [name], I've received a very worrying message which I believe you need to see.
+
+She passes you a small folded note. As you read through it you notice that handwriting is rather clean and elegant. 
+
+"Aliron's Mayor must be warned that there's a traitor among his servants..."
+
+The ominous message does not give any distinct clues to who has written it, however it ends on the invitation to visit one of nearby districts just out of city walls, promising to give more information on the subject.""",
+	KURO_CHURCH_NOTE2 = """Ginny looks at you worryingly as you read the message before finally speaking up. 
+
+— This was left at the church's donations but I haven't seen anyone new or suspicious who could've planted it... Please be cautious with it.""",
+	KURO_CHURCH_OPT_WARNING = "Thanks for the warning",
+	KURO_CHURCH_OPT_PRANK = "It's probably just a prank",
+	KURO_CHURCH_NOTE3 = "Ginny nods before leaving back to her job. You put the note into your pocket and leave wondering how to approach this invitation.",
+	KURO_HIDEOUT_START = """After asking around for a bit you find the building described in the note. It resembles a large, slightly weathered storehouse. It does not seem to have anyone outside of the doors but as you prepare to approach it, you have Kuro interrupting you, who seemingly appeared from nowhere.
+
+— This place resembles the cult's hideout. You don't mind me accompanying you?""",
+	KURO_HIDEOUT_OPT_WHYHERE = "Why are you here?",
+	KURO_HIDEOUT_OPT_SURE = "Sure",
+	KURO_HIDEOUT_OPT_NOT = "Not this time",
+	KURO_HIDEOUT_REPLY_WHYHERE = "— Only been watching over you and it seems you've found something worthy of my attention. What's so unusual about it?",
+	KURO_HIDEOUT_REPLY_SURE = "— Good. I'm right behind you then. Looks like there are foes ahead.",
+	KURO_HIDEOUT_REPLY_NOT = """Kuro frowns her brows but quickly shrugs and turns away without arguing.
+
+— You better be ready for the fight in there.""",
+	KURO_HIDEOUT_START3 = """You make it inside the storehouse. There's nothing unusual about it and there does not seem to be any signs of people hiding inside. However as you search through it, you find a hidden cellar door at its floor. You quietly lift it up and can spot light from some torch underneath.
+
+As you make your way through it, soon you realize there are indeed some people hiding in here. However, as nobody is approaching you, you realize that the message's author is unlikely to be here.
+
+Finally you are spotted by one of the cultist figures who yells in warning for his partners and grabs the weapon preparing for attack.""",
+	KURO_HIDEOUT_FINISH = "As you finish off the last cultist, you take a look over their hideout which was seemingly occupied only recently. It makes you wonder just how many such spots across the lands could possibly be established as without the letter you would have nearly no chance to find it.",
+	KURO_HIDEOUT_FINISH_KURO = """
+
+Your thoughts are interrupted by Kuro who did not waste time and went through one of the shelves. As she spots you looking at her she shows you her findings.
+
+— Look here, this key seems quite important.
+
+She shows off a delicate key likely belonging to some small box as if tempting you to take it.""",
+	KURO_HIDEOUT_OPT_BEHIND = "[Wisdom challenge] What's that behind your back?",
+	KURO_HIDEOUT_OPT_KEY = "*Take key*",
+	KURO_HIDEOUT_REPLY_BEHIND = """You spot how Kuro is trying to hide something behind her back by positioning awkwardly. As she notices the way you are looking at her, she grins back.
+
+— Heh, you aren't easily fooled after all.
+
+Before you are able to stop her, she snatches a piece of paper from the table and dashes to the darker corner of the room. In another moment there's no presence of her anymore making you wonder what it all was about.""",
+	KURO_HIDEOUT_CLUES = """
+
+It seems the only thing left to do now is to search through the hideout for clues...""",
+	KURO_HIDEOUT_REPLY_KEY = "You take the key from Kuro's hands and investigate it closely. As you try to find the place which could use it you fail to notice how Kuro is no longer in the room. Your attempt to find her does not bear any fruit and the only thing you are left with is to search through the hideout for clues...",
+	KUROHIDEOUTTASKNAME = "*Search the hideout*",
+	KUROHIDEOUTTASKDESCRIPT = "*Search through the hideout for clues about other such spots*",
+	KURO_HIDEOUT_SEARCH = "After throughly searching through the hideout you manage to make sense of the scribbling notes and from them you are able to deduce the location of another parent base not too far away from the city. It seems you might be able to find Kuro at it as well.",
+	KURO_HIDEOUT_MEDIUM = """You hide through the shadows as you make it deeper through the cave. Soon you realize that walls are often decorated by mystic religious symbols. Finally you come across a bigger room which seems to be lit inside. A familiar shape appears to be alone in it.
+
+You manage to sneak behind the doorway being able to eavesdrop on Kuro who stands before the large chunk of thick glowing glass.
+
+Voice: — ...your infiltration was unexpected but not without a benefit. As you've gotten close to that [man], I shall entrust you with another task as my champion.
+
+Kuro: — And how can I be of service at this current state?""",
+	KURO_HIDEOUT_MEDIUM2 = """Voice: — It seems the recent cult base has been compromised, but it is acceptable to us. Your mission will be to kill this [man], now it is certain that [he]'s very dangerous for the plans. 
+
+Kuro: — ...Understood. Any other orders for me?
+
+Voice: — Our agreement persists, wield my powers with our mutual goal in mind and I will settle your little quarrel with Mhyrana.
+
+Kuro: — If that's it, I will destroy the medium now. Anyone can come across it and become suspicious after all.""",
+	KURO_HIDEOUT_MEDIUM3 = """The voice from the glass takes a pause.
+
+Voice: — ...Do as you seem fit.
+
+With a simple gesture Kuro cuts the previously glowing glass slab to pieces with the dark energy of the voice who she has just been talking to. Her shoulders drop a bit before she turns towards the entrance.
+
+Kuro: — Now, onto our more... pressing matters.""",
+	KURO_HIDEOUT_MEDIUM4 = """Before you can make a move you realize that your presence has not been left undetected. The darkness you were hiding in has concealed slim dark cords extending from Kuro's shadow and they have firmly wrapped around you constricting your movement and blocking your mouth from speaking.
+
+Kuro: — Isn't it nice that I'm able to complete my mission right now? And punish an eavesdropper on the spot.
+
+A nefarious grin has appeared on Kuro's face as she's effortlessly dragged you across the hallway.
+
+Kuro: — Must be thinking what a mistake it was to get involved with me now, aren't you?""",
+	KURO_HIDEOUT_SEX = """As your legs and arms are held by Kuro's dark energy she has no issues stripping down to her underwear and mounting over your body with a mood of a predator playing with its prey.
+
+""",
+	KURO_HIDEOUT_SEX_SKIP = "Kuro: — You know, something about you irritatingly attracts me. Something that strongly tickles my curiosity which never really deem other lesser people worthy of attention.",
+	KURO_HIDEOUT_SEX_NOSKIP = "Kuro: — I have a confession to make. After the time you had your way with me, something stirring has become apparent inside of me. Something I haven't felt before. It's all your fault.",
+	KURO_HIDEOUT_OPT_STRUG = "*Struggle*",
+	KURO_HIDEOUT_OPT_GIVEIN = "*Give in*",
+	KURO_HIDEOUT_REPLY_STRUG = """Feeling you struggling under her weight Kuro frowns, her smile weakens and her tone changes to a more annoyed one.
+
+Kuro: — Do you really not want to give in to this little occurrence? This might be your only chance, you know.""",
+	KURO_HIDEOUT_OPT_STRUG2 = "*Keep struggling*",
+	KURO_HIDEOUT_REFUSE = """Without saying a word Kuro lifts up from you and fixes her clothes releasing you from her binds. Despite any lack of hostility from her you can feel her disappointment filling the air.
+
+Kuro: — ...Let's go, I don't wanna stay here any longer.""",
+	KURO_HIDEOUT_SEX2 = """Kuro's bindings keep you restrained, but don't bite into your skin like a wild dog as you thought they would. The fox just smiles down at you as you settle into your new position under her control, her tendrils sliding around your body, feeling your skin shiver from the unusual touch.
+
+The warmth from her lower body straddling you is the only thing that keeps you relaxed as her cold bindings only complete their job in restricting your movements. It's time for you to contribute to her enjoyment. That's what her smile seems to say to you as you watch her remove her undergarments over you.""",
+	KURO_HIDEOUT_SEX3 = """Everything seems different from your new perspective, her expression, her body, and her intentions... You can already feel her body getting excited at the prospect of taking you inside, a trickle of juices running down your groin. Her chest rises and falls with her excitement, puffing out her modest breasts as she strokes your body with her fingertips. Raising up, she aligns you with her hole and lowers herself down.
+
+— I've heard that men don't always get aroused when being taken against their will, but maybe you are just a horny monkey like that.""",
+	KURO_HIDEOUT_SEX4 = """— Aa-ah...
+
+Shoving you inside all the way, Kuro is shocked from the pleasure striking her body. Her pussy clings to you tighter than your bindings, sucking you as deep inside as it can hold. Even her uniform expression breaks character as she tries to handle the sensations running through her body.""",
+	KURO_HIDEOUT_SEX5 = """As she reaches the limits of her hole, her face softens and the warmth runs through you both. Passionate throbs radiate through her as you twitch inside, waiting for her to start moving. Her body responds by lifting up and falling down, finding a slow rhythm that picks up speed the more you throb inside her.
+
+The inner walls of her pussy wrap around tightly, tugging at you inside for the fruits of her labor. It's not long before you feel the urge to give in to that familiar feeling, having no way to give a warning wrapped in your bindings as you are.
+
+— This is... too addictive...""",
+	KURO_HIDEOUT_SEX6 = """You burst inside of Kuro as her pussy clamps down you, squirting her own fluids out in tandem with your own. A wave of her cum mixes with yours and creates a concoction of lust fills her tight hole. Kuro's machinations halt for a moment as ecstasy fills her mind, her body sinking into your heat as she leaves the two of you interlocked together for a moment, enjoying the hazy wave of pleasure. It takes her a moment to recuperate and pull away, but her familiar cold smile reassures you that her aloof personality hasn't gone anywhere during this detour...
+
+— Fufu, it seems you have a really strong reason for me not to kill you after all. Come on, how long are you planning to lay down like that?""",
+	KURO_HIDEOUT_SEX7 = """Visibly satisfied and content, Kuro lifts up from you and releases you from her binds as if nothing has happened. 
+
+Kuro: — Let's go. I wanna get into the bath before the night.""",
+	KURO_MANSION_ARRIVE = "After you arrive at home Kuro does not seem to explain herself but looks visibly prepared for your questioning.",
+	KURO_MANSION_OPT_EXPLAIN = "You aren't going to explain what it was all about?",
+	KURO_MANSION_OPT_NOASK = "*Ask nothing*",
+	KURO_MANSION_EXPLAIN = "Kuro: — It's nothing much really. A minor errand I had to take care of. You don't need to know about it just yet... Unless you are worried that I can actually kill you?",
+	KURO_MANSION_OPT_WORRY = "That does sound worrying",
+	KURO_MANSION_OPT_UNDERSTAND = "I just want to understand you better",
+	KURO_MANSION_NOTKILL = "Kuro: — I didn't kill you when I had a chance, did I? I have made my mind about you and as I am not some mentally unstable lunatic I should reasonably present no threat.",
+	KURO_MANSION_OPT_SENSE = "That makes sense",
+	KURO_MANSION_OPT_HUMANE = "You could probably act more humane",
+	KURO_MANSION_REPLY_HUMANE = """Kuro: — I could not. Now, if you excuse me.
+
+Demonstrating that she is not willing to give you any more information, Kuro leaves to the direction of the bath.""",
+	KURO_MANSION_REPLY_UNDERSTAND = """Kuro: — Do you now? *Chuckle* Pardon, I just find it funny. In that case you better try harder to understand me, then things might eventually start making sense, or they might not.
+
+Demonstrating that she is not willing to give you any more information, Kuro leaves to the direction of the bath.""",
+	KURO_MANSION_QUIET = "As you stay quiet, Kuro simply moves to the direction of the bath leaving you alone for today.",
+	KURO_ZEPH_START = """Zephyra: — I've heard you've finally got intimate with our dear [Master].
+
+Kuro's face showed a rare smirk on it.
+
+Kuro: — Feeling jealous, sis? 
+
+Zephyra: — Of course not, as long as it was [Master]'s will. I'm happy you grew out of your reclusive lifestyle.""",
+	KURO_ZEPH_START2 = """Kuro: — Is that so? And if I said [he] has forced [him]self on me?
+
+Zephyra: — Surely it's not a big deal then, you seem alive and well.
+
+Kuro took a long pause clearly puzzled by her sister's apparently sincere response.""",
+	KURO_ZEPH_START3 = """Kuro: — You aren't making a fool of me? I have noticed it before but you don't seem quite sane when it's related to [name]. 
+
+Zephyra: — That sounds like you are being jealous instead. [name] is my chosen person and I don't mind to appear unreasonable at times if it's in [his] favor.
+
+Kuro: — Huh, is there any limit to that though? What if [he] would ask you to be [his] personal restroom? 
+
+Zephyra: — Please, Kuro. If I had to answer such a question that would make me appear quite unladylike. 
+
+Kuro took a long look after Zephyra's response after which decided to stay silent.""",
+	KURO_ZEPH_TAILJOB = """In the afternoon the two foxgirls find themselves at the same spot with the white one deciding to strike an unusual conversation. 
+
+Zephyra: — Say, Kuro, it's been a while since you've become [Master]'s partner. I was curious to ask. Has [he]... paid any unusual interest to your, uhm, fluffy appendage?
+
+Kuro: — What nonsense are you talking about?
+
+Zephyra: — Your tail. I think [he] might be unusually enthusiastic about it, [he] grabbed me by it during our private time even.
+
+Kuro: — ...Now that you mention, I remember he did appear to be interested in mine in the way [he] was looking at it.""",
+	KURO_ZEPH_TAILJOB2 = """Zephyra: — What a distasteful perverted attitude, don't you find?
+
+Despite a scolding comment, Zephyra's voice hinted a small mischief in it, however it wasn't picked up by the black foxgirl.
+
+Kuro: — Not really. The tails of our kin are rather sensitive, presumably often used in flirting and physical bonding. Besides, we both pay great attention to their tidiness and appearance, it's even a compliment for me to have [name] also being charmed by it.
+
+Even though Kuro's answer could be deemed mildly controversial, Zephyra's tone has shifted even more as if she has just found a best new friend.
+
+Zephyra: — If you really think so... You see, I have one thing on my mind we can please our [Master] with...""",
+	KURO_ZEPH_TAILJOB3 = """Both Kuro and Zephyra cuddle up to you in bed, a mischievous smile on both of them. For Zephyra, it's a common occurrence, but Kuro? Their delicate hands seem to glide across your body as their gentle touch starts to get you riled up. Both of them are nude, with their perky nipples pressing into your sides and causing your shaft to perk up in response.
+
+Zephyra: — Mornin' [Master], you looksurprised?
+
+Kuro: — Can't believe I let you talk me into this...
+
+Despite Kuro's comment her voice has been hiding a mild hint of excitement.""",
+	KURO_ZEPH_TAILJOB4 = """Predicting your unspoken question, Zephyra has spoken in a mischievous tone.
+
+Zephyra: — Just lay down and relax, this is a little service from us.
+
+The plan hidden by their smiles comes to the forefront as both the foxes' tails wrap around your cock, a fluffy trap of softness that both tickles and soothes your body. Two sets of clever eyes look into yours, their smiles unwavering as their tails caress your dick back and forth, plush fur sliding along your skin in a way you can't help but move into. Their petite chests pressing into you at the same time make the whole experience comfortably uncomfortable as your hips push up into nothing but more ticklish fur.""",
+	KURO_ZEPH_TAILJOB5 = """Zephyra peers over at your cock, drawing the tip of her tail over your sensitive head. The gentle stimulation makes you throb in your fluffy prison, precum leaking out and matting their soft fur. Each little tuft of fur slides along your head like a quill, impossibly soft and tempting you to burst at every possible moment.
+
+Zephyra: — Hehe, this is so naughty, don't you find?""",
+	KURO_ZEPH_TAILJOB6 = """Kuro: — Only a big pervert like [name] would be excited over something like this.
+
+Kuro takes a peek at your dick, wrapping her tail further around your shaft, almost suffocating it with the plush softness of her fur. Any precum that Zephyra's tail misses is swept up by Kuro's, both making sure your shaft is clean and comfortable. Kuro's tail squeezes your cock, locking it tight in a jail of fur while Zephyra teases you further.""",
+	KURO_ZEPH_TAILJOB7 = """With the two of them wrapped around your shaft, you find it hard to focus on anything else other than the tornado of fur led by two forces that move independent of each other. One teases while the other restrains, keeping you locked in a battle of resistance to the subtle and gentle movements of both that have the same goal of making you cum for them.
+
+Zephyra: — I can feel that [Master] is close. Can you tell?
+
+Kuro: — That's because you start squeezing tighter...""",
+	KURO_ZEPH_TAILJOB8 = """Before you can even form a coherent thought to stave off the urge any longer, your body gives in for you, letting loose a fountain of cum that covers their tails in white. Both foxes smile as their aim has been accomplished, loose strands of cum decorating their hair and fur as they continue to stroke all the semen out of your throbbing cock. 
+
+Kuro: — A-ah, crap... it's so hot...
+
+Zephyra: — Yes, come for us, stain my tail.
+
+The soft heaven constantly assaulting your sensitive shaft invites you to keep cumming forever, but you're saved by the limitations of your body putting an end to the continuous stream of seed. As you lie there still wrapped in their tails, your mind finally recovers with a break to form thoughts again...""",
+	KURO_WEDDING_1 = """As soon as the ceremony finishes, Kuro leads you to the bedroom. By this time you can already spot the excitement boiling in her despite her facade of calmness.
+
+— Well, dear [husband], are you going to patiently tease me now?
+
+Kuro stares at you, expecting you to take the lead. Her bright dress highlights her dark hair and glowing eyes shining through her glasses, her tail swishing to the side to frame her rear. Her breasts rest inside the top half of her dress, nipples pointing out from behind the fabric in anticipation of your touch. If Kuro had ever been this open before now, you'd be surprised.""",
+	KURO_WEDDING_2 = """You waste no time in being appreciative of her welcoming demeanor, sliding the unnecessary parts of her dress to the side for the proper view of her body. Her chest falls out now that its support is gone, her nipples pointing to the air and ready to be played with. Careful movements of her tail put it in place to keep her ass visible and open for you to ogle, everything on display for your eyes only.
+
+—  Ah... To think we are going to do it as a married couple now...""",
+	KURO_WEDDING_OPT_PUSSY = "*Take pussy*",
+	KURO_WEDDING_OPT_ASS = "*Take ass*",
+	KURO_WEDDING_PUSSY = "Slipping into her pussy, you watch her expression slip into pleasure instead of her usual calm gaze. Her body knows the feel of your cock and it knows to give in to it, no matter how intransigent her mind may be. Juices flow around your shaft right away, coating it in a sheen of lust that only gets brighter the more you thrust inside. Lewd noises resound through the room as your bodies make contact, the wet accentuation from her nectar making Kuro blush.",
+	KURO_WEDDING_ASS = """Sliding into her asshole, Kuro's surprise is subdued in mere moments when the pleasure rolls into her brain. Your cock stretches her out as her body tries to tighten the ring around your girth in a futile effort. 
+
+— H-how perverted, to go for my butt...
+
+Despite the foreign entry, her body melts into yours all the same, letting you slide as deep as you want inside her, throbbing and depositing precum into her ass. Her soft cheeks do their best to accommodate you, pushing back against your crotch with every thrust as your balls become wet with her fluids leaking from her pussy.""",
+	KURO_WEDDING_3 = """
+
+You grab her breasts as you continue to thrust into her, holding her body to you for leverage. Her tail swings around behind you, tickling your skin as she fails to keep the excitement within her body. Every movement, both inside and out, is a subtle sign of her acceptance of your cock, everything working together to keep you inside and tease your shaft. The constant throbs begin to reach a point, all the pleasure culminating together until you can hold on no longer.
+
+— Come... Let's come together!... Aah!..""",
+	KURO_WEDDING_PUSSY2 = "Cum floods Kuro's pussy as a wave of her juices rushes past your shaft. Her body sucks you in tighter, milking out spurt after spurt of semen that her body drinks like water. Every tug from her pussy makes you involuntarily thrust into her as the pleasure wracks your body and weakens your balance. Pulling her tighter to your chest, you squeeze her chest as you unload the last of your seed inside her. The first of many sets the mood as Kuro's pussy twitches in anticipation of another round, your cock all too happy to harden again for more to come...",
+	KURO_WEDDING_ASS2 = """A burst of cum shoots into Kuro's ass as the first rope struggles to enter past her sphincter. Each spurt rubs against her tightening ring, lightly stretching it with each batch of semen that pushes against it. Kuro seems to pull on your cock with her ass, encouraging more and more cum to unload into her as her juices run down her legs. 
+
+You squeeze her breasts as you feel the rest of her body, pulsing cum into her ass while you tease her from the outside. Her tail whisks around your legs as her ass tightens around your shaft again, her heavy breathing not stopping her from asking for another round with her hungry eyes. As you ready yourself for another load, you pull her even closer, making sure she can't back out till you're both exhausted...
+
+— Hah... These stupid carnal pleasures got the best out of me... But I also feel... Happy at your side.""",
 	MAIN_QUEST_LOAN_NAME = "The Loan",
 	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find enough money to pay off the bank or you'll be thrown out of your newly acquired home. Or, perhaps find some other way to deal with it...",
 	MAIN_QUEST_LOAN_STAGE0 = "You must have over {custom_text_function=GetLoanSum#0|} gold by {custom_text_function=GetLoanDayDetailed#0|}.",
@@ -15397,6 +15639,12 @@ Despite Lira's looks, the guards have relaxed upon hearing her. As you moved ins
 	LIRA_LOST_QUEST_NAME = "Lost Lira",
 	LIRA_LOST_QUEST_SUMMARY = "Help Lira out of groove",
 	LIRA_LOST_QUEST_CAPITAL = "Get to the elven capital",
+	KURO_ERRAND_QUEST_NAME = "Kuro's minor errand",
+	KURO_ERRAND_QUEST_SUMMARY = "Follow the mysterious trail",
+	KURO_ERRAND_QUEST_CHURCH = "Visit Ginny at her temple",
+	KURO_ERRAND_QUEST_INVITE = "Visit Aliron's outer district, you've been invited to",
+	KURO_ERRAND_QUEST_SEARCH = "Search through the hideout for clues about other such spots",
+	KURO_ERRAND_QUEST_BASE = "Clear out cult's parent base",
 	DIALOGUEANAINITIATELP = """Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.
 
 — H-hello, [Master]... How was your day?""",
@@ -16609,6 +16857,10 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_MOLTEN_GROUNDS_DESC = "",
 	QUEST_WHISKY_CRASH_TEXT = "Carriage's location",
 	QUEST_WHISKY_CRASH_DESC = "",
+	QUEST_CULT_HIDEOUT_TEXT = "Outer district",
+	QUEST_CULT_HIDEOUT_DESC = "",
+	QUEST_CULT_PARENTBASE_TEXT = "Cult's Parent Base",
+	QUEST_CULT_PARENTBASE_DESC = "",
 	ALIRON1 = "Check the streets",
 	ALIRON2 = "Search for Reim",
 	ALIRON3 = "Visit Fred's Dormitory",
@@ -16632,6 +16884,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	ALIRON21 = "Search for Zephyra",
 	ALIRON22 = "Meet with Ketch",
 	ALIRON23 = "Check information on Amelia",
+	ALIRON_KURO_CHURCH = "Aliron Church",
 	ELF_CAPITAL1 = "Meet Priestess",
 	ELF_CAPITAL2 = "Look For Smuggler",
 	ELF_CAPITAL3 = "Look For Smuggler",
@@ -16716,6 +16969,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_HOLLOW_PASSAGE_LOCATION = "Search for rebel tracks",
 	QUEST_OLD_GODS_TEMPLE_LOCATION = "Approach",
 	QUEST_WHISKY_CRASH_LOCATION = "Search around",
+	QUEST_CULT_HIDEOUT_LOCATION = "Search for the building",
 	CURRENT_PREFERRED_FOOD_CONSUMPTION = "Current Preferred Food Consumption",
 	TOOLTIP_CLOCK1 = """Advance Time
 Hotkey: 1""",
@@ -17328,5 +17582,9 @@ After a few minutes nothing still happened and [name] decides to move on.""",
 	LILITH_BLOW_SS = "Progress Lilith's story",
 	LILITH_RIDE_SS = "Progress Lilith's story",
 	LILIA_WEDDING_SS = "Keep Fairy forever with you",
-	LILITH_WEDDING_SS = "Devote your soul to the little imp"
+	LILITH_WEDDING_SS = "Devote your soul to the little imp",
+	KURO_BOOK_SS = "Progress Kuro's story",
+	KURO_TOP_SS = "Progress Kuro's story",
+	KURO_ZEPHYRA_SS = "Have both Kuro and Zephyra and progress their quests, grab Zephyra's tail",
+	KURO_WEDDING_SS = "Make Kuro your lifelong partner",
 }

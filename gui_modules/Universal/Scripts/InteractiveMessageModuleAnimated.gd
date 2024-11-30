@@ -70,6 +70,12 @@ func open(scene):
 		globals.common_effects(scene.common_effects)
 	if typeof(scene.text) == TYPE_STRING:
 		scene.text = [{text = scene.text, reqs = []}]
+	#MIND! From current code's point of view starting dialogue_option is 0, so
+	#"previous_dialogue_option = 0" in event dict should be enough, BUT there is
+	#standalone event editor, which kills all dialogue_option 0-params outright,
+	#so start_dialogue_option had been added to bypass this.
+	if scene.has('start_dialogue_option') and previous_dialogue_option == 0:
+		previous_dialogue_option = scene.start_dialogue_option
 	
 	if wait_for != 0:
 		ResourceScripts.core_animations.OpenAnimation(self, wait_for, Tween.TRANS_EXPO, Tween.EASE_IN)

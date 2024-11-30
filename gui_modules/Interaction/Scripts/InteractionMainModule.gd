@@ -33,6 +33,7 @@ var secondactorcounter = {}
 
 var submodules = []
 
+var last_action_dict_id = 0
 
 
 #not used
@@ -1070,7 +1071,12 @@ func startscene(scenescript, cont = false, pretext = ''):
 	scenescript.takers = takers
 	turns -= 1
 	
-	var dict = {scene = scenescript, takers = [] + takers, givers = [] + givers, consents = {}}
+	var dict = {
+		id = get_action_dict_id(),
+		scene = scenescript,
+		takers = [] + takers,
+		givers = [] + givers,
+		consents = {}}
 	var resists = []
 	
 	
@@ -1800,7 +1806,9 @@ func stopongoingaction(meta, rebuild = false):
 		for act_num in range(i.activeactions.size()-1, -1, -1):
 			if is_id_dicts_equal(i.activeactions[act_num], action_ids):
 				i.activeactions.remove(act_num)
-	ongoingactions.erase(action)
+	for act in ongoingactions:
+		if act.id == action.id:
+			ongoingactions.erase(act)
 	if rebuild == true:
 		rebuildparticipantslist()
 
@@ -2147,6 +2155,7 @@ func _on_finishbutton_pressed():
 	if gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.current_screen.mansion_state_set("default")
 		gui_controller.clock.raise()
+	last_action_dict_id = 0
 	hide()
 	# input_handler.update_slave_list()
 
@@ -2469,7 +2478,9 @@ func get_participant(id):
 	return null
 
 func make_id_dict(ref_dict):
-	var id_dict = {scene_code = ref_dict.scene.code,
+	var id_dict = {
+		id = ref_dict.id,
+		scene_code = ref_dict.scene.code,
 		takers_ids = [],
 		givers_ids = [],
 		consents = ref_dict.consents}
@@ -2481,6 +2492,7 @@ func make_id_dict(ref_dict):
 
 func make_ref_dict(id_dict):
 	var ref_dict = {
+		id = id_dict.id,
 		scene = globals.get_sex_action(id_dict.scene_code),
 		takers = [], givers = [],
 		consents = id_dict.consents}
@@ -2491,6 +2503,10 @@ func make_ref_dict(id_dict):
 	return ref_dict
 
 func is_id_dicts_equal(dist1, dist2):
-	return (dist1.scene_code == dist2.scene_code
-		and dist1.takers_ids == dist2.takers_ids
-		and dist1.givers_ids == dist2.givers_ids)
+	if dist1 == null or dist2 == null:
+		return false
+	return dist1.id == dist2.id
+
+func get_action_dict_id():
+	last_action_dict_id += 1
+	return last_action_dict_id

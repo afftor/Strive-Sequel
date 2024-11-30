@@ -307,13 +307,32 @@ var backgrounds = {
 	lilith_wedding_4 = "res://assets/images/fullscreen scenes/LilithCG009.png",
 	lilith_wedding_5 = "res://assets/images/fullscreen scenes/LilithCG010.png",
 	
-	kuro_book_0 = "res://assets/images/fullscreen scenes/kuro_book_0.png",
+	kuro_book_0_0 = "res://assets/images/fullscreen scenes/kuro_book_0.png",
 	kuro_book_0_1 = "res://assets/images/fullscreen scenes/kuro_book_0_1.png",
 	kuro_book_0_2 = "res://assets/images/fullscreen scenes/kuro_book_0_2.png",
 	kuro_book_0_3 = "res://assets/images/fullscreen scenes/kuro_book_0_3.png",
 	kuro_book_0_4 = "res://assets/images/fullscreen scenes/kuro_book_0_4.png",
 	kuro_book_0_5 = "res://assets/images/fullscreen scenes/kuro_book_0_5.png",
 	
+	kuro_top_0 = "res://assets/images/fullscreen scenes/kuro_0.png",
+	kuro_top_1 = "res://assets/images/fullscreen scenes/kuro_1.png",
+	kuro_top_2 = "res://assets/images/fullscreen scenes/kuro_2.png",
+	kuro_top_3 = "res://assets/images/fullscreen scenes/kuro_3.png",
+	kuro_top_4 = "res://assets/images/fullscreen scenes/kuro_4.png",
+	kuro_top_5 = "res://assets/images/fullscreen scenes/kuro_5.png",
+	
+	kuro_zephyra_1 = "res://assets/images/fullscreen scenes/Kuro_zephyra1.png",
+	kuro_zephyra_2 = "res://assets/images/fullscreen scenes/Kuro_zephyra2.png",
+	kuro_zephyra_3 = "res://assets/images/fullscreen scenes/Kuro_zephyra3.png",
+	kuro_zephyra_4 = "res://assets/images/fullscreen scenes/Kuro_zephyra4.png",
+	kuro_zephyra_5 = "res://assets/images/fullscreen scenes/Kuro_zephyra5.png",
+	
+	kuro_wedding_1 = "res://assets/images/fullscreen scenes/Kuro_wed1.png",
+	kuro_wedding_2 = "res://assets/images/fullscreen scenes/Kuro_wed2.png",
+	kuro_wedding_3 = "res://assets/images/fullscreen scenes/Kuro_wed3.png",
+	kuro_wedding_4 = "res://assets/images/fullscreen scenes/Kuro_wed4.png",
+	kuro_wedding_5 = "res://assets/images/fullscreen scenes/Kuro_wed5.png",
+	kuro_wedding_6 = "res://assets/images/fullscreen scenes/Kuro_wed6.png",
 	
 	
 	#masteries
