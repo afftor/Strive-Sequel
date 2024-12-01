@@ -1211,6 +1211,13 @@ var unique_sprites = {
 			face_path = "kuro_nude",
 			unlock_reqs = []
 			},
+		wed = {
+			name = "Wed",
+			descript = "",
+			path = "kuro_wed_body",
+			face_path = "kuro_wed",
+			unlock_reqs = []
+			},
 	},
 	
 	
