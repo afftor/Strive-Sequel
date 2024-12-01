@@ -89,7 +89,7 @@ func get_stat(statname, ref = false):
 		var tres = xp_module.mastery_points[st]
 		if st == 'universal':
 			if !has_status('slave'):
-				tres += get_stat('growth_factor')
+				tres += min(get_stat('growth_factor') - 1, get_prof_number())
 		return tres
 	if statname.begins_with('mastery_'):
 		return xp_module.get_mastery_level(statname.trim_prefix('mastery_'))

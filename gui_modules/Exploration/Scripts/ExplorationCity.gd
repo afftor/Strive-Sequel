@@ -116,7 +116,7 @@ func open_city(city = null):
 	if selected_area.has('capital_background_noise'):
 		input_handler.PlayBackgroundSound(selected_area.capital_background_noise)
 	if selected_area.has('capital_background_music'):
-		input_handler.SetMusic(selected_area.capital_background_music)
+		input_handler.SetMusic(selected_area.capital_background_music, true)
 	if selected_area.has("capital_dynamic_background"):
 		get_node("VideoPlayer").open(selected_area.capital_dynamic_background)
 	previous_guild = ''

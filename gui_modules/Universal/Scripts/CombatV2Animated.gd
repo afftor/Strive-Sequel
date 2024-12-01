@@ -662,8 +662,7 @@ func defeat(runaway = false): #runaway is a temporary variable until run() metho
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	fightover = true
 	FinishCombat(false)
-	if input_handler.active_location.has('bgm'):
-		input_handler.SetMusic(input_handler.active_location.bgm)
+	input_handler.SetMusic(input_handler.explore_sound, true)
 
 func player_turn(pos):
 	# battlefieldpositions[pos].get_node("Character/Active").show()

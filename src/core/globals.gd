@@ -2359,7 +2359,7 @@ func common_effects(effects):
 						rdata.hpmod = 1.0 - i.reduce_hp
 					if i.has('xp_mod'):
 						rdata.xp_mod = i.xp_mod
-			'unlock_uprade':
+			'unlock_upgrade':
 				ResourceScripts.game_res.unlock_upgrade(i.upgrade, i.level)
 
 func after_wedding_event(character):

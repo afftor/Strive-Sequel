@@ -631,6 +631,30 @@ var Skilllist = {
 		value = ['0'],
 		damagestat = 'no_stat'
 	},
+	lesser_heal = { #enemy version
+		code = 'lesser_heal',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/Heal.png"),
+		type = 'combat', 
+		ability_type = 'spell',
+		tags = ['heal', 'noreduce', 'noevade','support'],
+		reqs = [],
+		targetreqs = [],
+		effects = [], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 2,
+		cooldown = 0,
+		catalysts = {},
+		target = 'ally',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'light',
+		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
+		value = [['caster.matk', '*1.3']],
+		damagestat = ['-damage_hp']
+	},
 	#items
 	zephyra_underwear = {
 		new_syntax = true,
