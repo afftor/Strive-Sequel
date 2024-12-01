@@ -128,7 +128,7 @@ var skills = {
 		icon =  "res://assets/images/iconsskills/skill_execute.png",
 		type = 'auto', 
 		ability_type = 'skill',
-		tags = ['aoe', 'debuff', 'ads'],
+		tags = ['aoe', 'debuff', 'ads', 'instant'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_fear', duration = 1})], 
