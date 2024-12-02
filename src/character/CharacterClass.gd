@@ -82,7 +82,7 @@ func swap_alternate_exterior():
 
 
 func get_stat(statname, ref = false):
-	if statname in ['hp', 'mp', 'shield', 'taunt']:
+	if statname in ['hp', 'mp', 'shield', 'taunt', 'combatgroup']:
 		return get(statname)
 	if statname in ['mastery_point_magic', 'mastery_point_universal', 'mastery_point_combat']:
 		var st = statname.trim_prefix('mastery_point_')
