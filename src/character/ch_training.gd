@@ -192,6 +192,10 @@ func finish_training(internal = false):
 	if internal:
 		enable = false
 		parent.get_ref().remove_trait('untrained')
+		if trainer != null:
+			var tchar = characters_pool.get_char_by_id(trainer)
+			tchar.get_trainees().erase(parent.get_ref().id)
+			trainer = null
 	else:
 		if !parent.get_ref().has_status('callmaster'):
 			return
