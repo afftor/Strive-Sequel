@@ -117,19 +117,21 @@ func return_to_mansion():
 #	parent.get_ref().set_work('travel')
 	var active_area
 	var active_location
+	var tp = false
 	if location == 'travel':
 		active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[travel_target.location].area]
 		active_location = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[travel_target.location].area][ResourceScripts.game_world.location_links[travel_target.location].category][travel_target.location]
 	else:
 		active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area]
 		active_location = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area][ResourceScripts.game_world.location_links[location].category][location]
+		tp = active_location.teleporter
 	
 	if active_location.has("group"):
 		for i in active_location.group:
 			if active_location.group[i] == parent.get_ref().id:
 				active_location.group.erase(i)
 				break
-	if ResourceScripts.game_globals.instant_travel == false and parent.get_ref().get_work() != 'disabled':
+	if ResourceScripts.game_globals.instant_travel == false and parent.get_ref().get_work() != 'disabled' and !tp:
 		location = 'travel'
 		parent.get_ref().set_work('travel')
 		travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
