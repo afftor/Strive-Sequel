@@ -146,6 +146,8 @@ func custom_stats_set(st, value):
 	if st.ends_with('_factor'):
 #		if value.has(st+'_factor'):
 		statlist[st] = clamp(statlist[st], variables.minimum_factor_value, variables.maximum_factor_value)
+	if st.begins_with('chg_'):
+		statlist[st] = int(max(0, statlist[st]))
 	if st == 'lust':
 		statlist.lust = clamp(value, 0, get_stat('lustmax'))
 	if st == 'name':
@@ -197,6 +199,8 @@ func custom_stats_set(st, value):
 		set_stat('portrait_update', true)
 		var partname = st.trim_prefix('armor_color_')
 		statlist.armor_color[partname] = value
+	
+		
 
 
 func custom_stats_get(stat):

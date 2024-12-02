@@ -679,6 +679,7 @@ func get_class_bonuses(newperson, classdata): #maybe there should be used the sa
 		var data = statdata.statdata[i]
 		var value = classdata.statchanges[i]
 		if value is bool:
+			text += tr(data.name + '_' + str(value).to_upper()) + "\n" 
 			continue #temp stub
 		if data.percent: 
 			value *= 100
@@ -719,6 +720,7 @@ func get_class_bonuses_short(newperson, classdata): #maybe there should be used 
 		if data.show_in_header:
 			continue
 		if value is bool:
+			text += tr(data.name + '_' + str(value).to_upper()) + "\n" 
 			continue #temp stub
 		if data.percent: 
 			value *= 100

@@ -1492,13 +1492,13 @@ func show_race_description():
 		elif race.find("Halfkin") >= 0:
 			text += tr("RACEHALFKINDESCRIPT") + "\n\n"
 	text += temprace.descript
-	text += "\n\n" + tr("RACE_BONUSES") + ": "
-	for i in temprace.race_bonus:
-		if statdata.statdata[i].percent == true:
-			text += statdata.statdata[i].name + ": " + str(temprace.race_bonus[i]*100) + '%, '
-		else:
-			text += statdata.statdata[i].name + ": " + str(temprace.race_bonus[i]) + ', '
-	text = text.substr(0, text.length() - 2) + "."
+	text += "\n\n" + tr("RACE_BONUSES") + ": " + globals.build_desc_for_bonusstats(temprace.race_bonus)
+#	for i in temprace.race_bonus:
+#		if statdata.statdata[i].percent == true:
+#			text += statdata.statdata[i].name + ": " + str(temprace.race_bonus[i]*100) + '%, '
+#		else:
+#			text += statdata.statdata[i].name + ": " + str(temprace.race_bonus[i]) + ', '
+#	text = text.substr(0, text.length() - 2) + "."
 	if temprace.has("combat_skills"):
 		text += "\n" + tr("COMBAT_ABILS_LABEL") + ": "
 		for i in temprace.combat_skills:

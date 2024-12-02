@@ -71,10 +71,10 @@ var skills = {
 		damage_type = 'mind',
 		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
-		value = [['1'],['1'],['1'],['1']],
+		value = [['-1'],['-1'],['-1'],['-1']],
 		damagestat = ['chg_strength','chg_dexterity','chg_wisdom','chg_persuasion'],
 	},
-	wind_whispers = { #sure need to rework to proper scene report
+	wind_whispers = { 
 		code = 'wind_whispers',
 		descript = '',
 		icon = "res://assets/images/iconsskills/meditate.png",
@@ -98,7 +98,7 @@ var skills = {
 		value = [['0']],
 		damagestat = ['no_stat'],
 	},
-	intimidating_presence = { #sure need to rework to proper scene report
+	intimidating_presence = { 
 		code = 'intimidating_presence',
 		descript = '',
 		icon = "res://assets/images/iconsskills/Fear.png",
@@ -122,7 +122,7 @@ var skills = {
 		value = [['0']],
 		damagestat = ['no_stat'],
 	},
-	natures_gift = { #sure need to rework to proper scene report
+	natures_gift = { 
 		code = 'natures_gift',
 		descript = '',
 		icon = "res://assets/images/iconsskills/skill_natures_gift.png",
@@ -146,7 +146,7 @@ var skills = {
 		value = [['0']],
 		damagestat = ['no_stat'],
 	},
-	teleport = { #sure need to rework to proper scene report
+	teleport = { 
 		code = 'teleport',
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Heal.png"),

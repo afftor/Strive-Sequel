@@ -533,14 +533,16 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 	for i in bonusstats:
 		if i  in ['enchant_capacity', 'enchant_capacity_mod', ]: 
 			continue
-		if bonusstats[i] != 0:
-			var value = bonusstats[i] * mul
+		if bonusstats[i] is bool or bonusstats[i] != 0:
+			var value = bonusstats[i]
+			if !(value is bool):
+				value *= mul
 			var data = statdata.statdata[i]
 			if data.hidden: continue
 			var change = ''
-			text += data.name + ': {color='
 			match data.default_bonus:
 				"add":
+					text += data.name + ': {color='
 					if data.percent:
 						value = value*100
 					if value > 0:
@@ -552,7 +554,9 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 					value = str(value)
 					if data.percent:
 						value = value + '%'
+					text += value + '}\n'
 				"add_part":
+					text += data.name + ': {color='
 					value = value*100
 					if value > 0:
 						change = '+'
@@ -562,7 +566,9 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 						text += 'red|' + change
 					value = str(value)
 					value = value + '%'
+					text += value + '}\n'
 				"mul":
+					text += data.name + ': {color='
 					value = value - 1.0
 					value = value*100
 					if value > 0:
@@ -573,7 +579,13 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 						text += 'red|' + change
 					value = str(value)
 					value = value + '%'
-			text += value + '}\n'
+					text += value + '}\n'
+				'set':
+					if value:
+						text = '{color=green|' + tr(data.name + '_TRUE') + '}\n'
+					else:
+						text = '{color=red|' + tr(data.name + '_FALSE') + '}\n'
+			
 	return text
 
 func TextEncoder(text, node = null):

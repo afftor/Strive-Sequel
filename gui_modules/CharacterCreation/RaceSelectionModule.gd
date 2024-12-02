@@ -43,16 +43,17 @@ func show_race_info(temprace):
 	var image
 	var text = race.descript
 	
-	text += "\n\n{color=yellow|" + tr("RACE_BONUSES") + ": "
-	for i in race.race_bonus:
-		if (i as String).begins_with('resist'):
-			text += i.replace("resist_","").capitalize() + " Resist: " + str(race.race_bonus[i]) + "%, "
-			continue
-		if statdata.statdata[i].percent == true:
-			text += statdata.statdata[i].name + ": " + str(race.race_bonus[i]*100) + '%, '
-		else:
-			text += statdata.statdata[i].name + ": " + str(race.race_bonus[i]) + ', '
-	text = text.substr(0, text.length() - 2) + ".}"
+#	text += "\n\n{color=yellow|" + tr("RACE_BONUSES") + ": " + globals.build_desc_for_bonusstats(race.race_bonus)
+	text += "\n\n" + tr("RACE_BONUSES") + ": " + globals.build_desc_for_bonusstats(race.race_bonus)
+#	for i in race.race_bonus:
+#		if (i as String).begins_with('resist'):
+#			text += i.replace("resist_","").capitalize() + " Resist: " + str(race.race_bonus[i]) + "%, "
+#			continue
+#		if statdata.statdata[i].percent == true:
+#			text += statdata.statdata[i].name + ": " + str(race.race_bonus[i]*100) + '%, '
+#		else:
+#			text += statdata.statdata[i].name + ": " + str(race.race_bonus[i]) + ', '
+#	text = text.substr(0, text.length() - 2) + ".}"
 	
 	$RaceSelection/RichTextLabel.bbcode_text = globals.TextEncoder(text)
 	text = race.code.to_lower().replace('halfkin','beastkin')
