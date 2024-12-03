@@ -1,6 +1,7 @@
 extends Reference
 
 var skills = {
+
 	healing = {
 		code = 'healing',
 		descript = '',
@@ -9,21 +10,29 @@ var skills = {
 		ability_type = 'spell',
 		tags = ['heal', 'noreduce', 'noevade','support', 'exploration'],
 		reqs = [],
-		targetreqs = [],
+		targetreqs = [
+			{code = 'stat', stat = 'combatgroup', operant = 'eq', value = 'enemy'},
+			{code = 'stat', stat = 'racegroup', operant = 'eq', value = 'undead'},
+			{orflag = true, code = 'stat', stat = 'combatgroup', operant = 'eq', value = 'ally'},
+		],
 		effects = [], 
 		cost = {mp = 6},
 		charges = 0,
 		combatcooldown = 2,
 		cooldown = 0,
 		catalysts = {},
-		target = 'ally',
+		target = 'all',
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'light',
 		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
-		value = 1.3,
-		damagestat = ['-damage_hp']
+		value = [1.3, 1.3],
+		damagestat = ['-damage_hp', 'damage_hp'],
+		value_target_reqs = {
+			0:[{code = 'stat', stat = 'racegroup', value = 'undead', operant = 'neq'}],
+			1:[{code = 'stat', stat = 'racegroup', value = 'undead', operant = 'eq'}],
+			},
 	},
 	blessing = {
 		code = 'blessing',

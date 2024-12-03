@@ -706,6 +706,7 @@ func return_character(character):
 func return_character_confirm():
 	selectedperson.remove_from_task()
 	selectedperson.return_to_mansion()
+	active_location.teleporter = false
 	build_location_group()
 
 func return_all_to_mansion():
@@ -721,6 +722,7 @@ func return_all_to_mansion_confirm():
 	for person in presented_characters:
 		person.remove_from_task()
 		person.return_to_mansion()
+	active_location.teleporter = false
 	nav.return_to_mansion("default")
 
 

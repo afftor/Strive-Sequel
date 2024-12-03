@@ -739,14 +739,14 @@ func UpdateSkillTargets(caster, glow_skip = false):
 	allowedtargets = {ally = [], enemy = []}
 
 	#assuming no player skills are battlefield-scale
-	if targetgroups == 'enemy':
+	if targetgroups == 'enemy' or targetgroups == 'all':
 		var t_targets
 		if rangetype == 'any': t_targets = get_enemy_targets_all(fighter)
 		if rangetype == 'melee': t_targets = get_enemy_targets_melee(fighter)
 		for t in t_targets:
 			if skill.has('targetreqs') and !t.checkreqs(skill.targetreqs): continue
 			allowedtargets.enemy.push_back(t.position)
-	if targetgroups == 'ally':
+	if targetgroups == 'ally' or targetgroups == 'all':
 		var t_targets = get_allied_targets(fighter)
 		if rangetype == 'dead':
 			t_targets.clear()
