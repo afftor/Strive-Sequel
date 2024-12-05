@@ -57,6 +57,7 @@ func apply():
 
 func process_event(ev, obj = null):
 	if !is_applied: return
+	var check_main = false
 	for timer in timers:
 		if !timer.events.has(ev): continue
 		if timer.objects is Array:
@@ -77,10 +78,11 @@ func process_event(ev, obj = null):
 					#mb 2add relative tags
 			if check:
 				timer.timer -= 1
+				check_main = true
 		if timer.timer <= 0:
 			remove()
 			break
-	if get_applied_obj().displaynode != null:
+	if get_applied_obj().displaynode != null and check_main:
 		get_applied_obj().displaynode.rebuildbuffs()
 
 
