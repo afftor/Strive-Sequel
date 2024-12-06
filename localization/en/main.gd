@@ -15335,21 +15335,21 @@ Kuro stares at you, expecting you to take the lead. Her bright dress highlights 
 —  Ah... To think we are going to do it as a married couple now...""",
 	KURO_WEDDING_OPT_PUSSY = "*Take pussy*",
 	KURO_WEDDING_OPT_ASS = "*Take ass*",
-	KURO_WEDDING_PUSSY = "Slipping into her pussy, you watch her expression slip into pleasure instead of her usual calm gaze. Her body knows the feel of your cock and it knows to give in to it, no matter how intransigent her mind may be. Juices flow around your shaft right away, coating it in a sheen of lust that only gets brighter the more you thrust inside. Lewd noises resound through the room as your bodies make contact, the wet accentuation from her nectar making Kuro blush.",
+	KURO_WEDDING_PUSSY = """Slipping into her pussy, you watch her expression slip into pleasure instead of her usual calm gaze. Her body knows the feel of your cock and it knows to give in to it, no matter how intransigent her mind may be. Juices flow around your shaft right away, coating it in a sheen of lust that only gets brighter the more you thrust inside. Lewd noises resound through the room as your bodies make contact, the wet accentuation from her nectar making Kuro blush.
+
+You grab her breasts as you continue to thrust into her, holding her body to you for leverage. Her tail swings around behind you, tickling your skin as she fails to keep the excitement within her body. Every movement, both inside and out, is a subtle sign of her acceptance of your cock, everything working together to keep you inside and tease your shaft. The constant throbs begin to reach a point, all the pleasure culminating together until you can hold on no longer.
+
+— Come... Let's come together!... Aah!..""",
 	KURO_WEDDING_ASS = """Sliding into her asshole, Kuro's surprise is subdued in mere moments when the pleasure rolls into her brain. Your cock stretches her out as her body tries to tighten the ring around your girth in a futile effort. 
 
 — H-how perverted, to go for my butt...
 
 Despite the foreign entry, her body melts into yours all the same, letting you slide as deep as you want inside her, throbbing and depositing precum into her ass. Her soft cheeks do their best to accommodate you, pushing back against your crotch with every thrust as your balls become wet with her fluids leaking from her pussy.""",
-	KURO_WEDDING_3 = """
-
-You grab her breasts as you continue to thrust into her, holding her body to you for leverage. Her tail swings around behind you, tickling your skin as she fails to keep the excitement within her body. Every movement, both inside and out, is a subtle sign of her acceptance of your cock, everything working together to keep you inside and tease your shaft. The constant throbs begin to reach a point, all the pleasure culminating together until you can hold on no longer.
-
-— Come... Let's come together!... Aah!..""",
 	KURO_WEDDING_PUSSY2 = "Cum floods Kuro's pussy as a wave of her juices rushes past your shaft. Her body sucks you in tighter, milking out spurt after spurt of semen that her body drinks like water. Every tug from her pussy makes you involuntarily thrust into her as the pleasure wracks your body and weakens your balance. Pulling her tighter to your chest, you squeeze her chest as you unload the last of your seed inside her. The first of many sets the mood as Kuro's pussy twitches in anticipation of another round, your cock all too happy to harden again for more to come...",
 	KURO_WEDDING_ASS2 = """A burst of cum shoots into Kuro's ass as the first rope struggles to enter past her sphincter. Each spurt rubs against her tightening ring, lightly stretching it with each batch of semen that pushes against it. Kuro seems to pull on your cock with her ass, encouraging more and more cum to unload into her as her juices run down her legs. 
 
-You squeeze her breasts as you feel the rest of her body, pulsing cum into her ass while you tease her from the outside. Her tail whisks around your legs as her ass tightens around your shaft again, her heavy breathing not stopping her from asking for another round with her hungry eyes. As you ready yourself for another load, you pull her even closer, making sure she can't back out till you're both exhausted...
+You squeeze her breasts as you feel the rest of her body, pulsing cum into her ass while you tease her from the outside. Her tail whisks around your legs as her ass tightens around your shaft again, her heavy breathing not stopping her from asking for another round with her hungry eyes. As you ready yourself for another load, you pull her even closer, making sure she can't back out till you're both exhausted...""",
+	KURO_WEDDING_3 = """
 
 — Hah... These stupid carnal pleasures got the best out of me... But I also feel... Happy at your side.""",
 	MAIN_QUEST_LOAN_NAME = "The Loan",
