@@ -650,7 +650,7 @@ func test_mode():
 		character.get_stat('pregnancy', true).duration = 2
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
-		character.create('Elf', 'male', 'random')
+		character.create('Centaur', 'male', 'random')
 		character.fill_boosters()
 		character.set_stat('height', 'tiny')
 		character.set_stat('skin', 'grey')
@@ -928,7 +928,7 @@ func test_mode():
 		ResourceScripts.game_progress.decisions.append("bracelet_found")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
-		input_handler.interactive_message('unlock_infinite_dungeon', '', {})
+#		input_handler.interactive_message('unlock_infinite_dungeon', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)

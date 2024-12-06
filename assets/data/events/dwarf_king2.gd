@@ -1843,15 +1843,8 @@ var data = {
 		reqs = [
 
 		],
-		custom_background = "kuro_book_0",
-		text = [
-			{
-				text = "DKING2TASK_KURO_1",
-				reqs = [
-
-				]
-			}
-		],
+		custom_background = "kuro_book_0_0",
+		text = "DKING2TASK_KURO_1",
 		options = [
 			{
 				code = "dking2task_kuro_2",
@@ -1880,7 +1873,7 @@ var data = {
 		reqs = [
 
 		],
-		custom_background = "kuro_book_0",
+		custom_background = "kuro_book_0_0",
 		text = [
 			{
 				text = "DKING2TASK_KURO_2_REPLY1",
@@ -1919,7 +1912,6 @@ var data = {
 				reqs = [
 
 				],
-				dialogue_argument = 0,
 				type = "next_dialogue"
 			}
 		]
@@ -1931,15 +1923,8 @@ var data = {
 		reqs = [
 
 		],
-		custom_background = "kuro_book_0",
-		text = [
-			{
-				text = "DKING2TASK_KURO_3",
-				reqs = [
-
-				]
-			}
-		],
+		custom_background = "kuro_book_0_0",
+		text = "DKING2TASK_KURO_3",
 		options = [
 			{
 				code = "dwarf_workshop",
@@ -1959,7 +1944,7 @@ var data = {
 		reqs = [
 
 		],
-		custom_background = "kuro_book_0",
+		custom_background = "kuro_book_0_0",
 		text = [
 			{
 				text = "KURO_QUESTIONS_REPLAY_SIDE",
