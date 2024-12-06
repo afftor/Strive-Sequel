@@ -98,7 +98,11 @@ func _ready():
 		newgame_node.start()
 		input_handler.GameStartNode = newgame_node
 		yield(input_handler, "StartingSequenceComplete")
+		var got_back = input_handler.GameStartNode.got_back
 		input_handler.GameStartNode.queue_free()
+		
+		if got_back: return
+		
 		show()
 		input_handler.ActivateTutorial("TUTORIALLIST1")
 		globals.apply_starting_preset()

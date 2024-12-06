@@ -1,6 +1,7 @@
 extends Node
 
 var slave_number = 0
+var got_back = false
 
 func start():
 	if ResourceScripts.game_globals.starting_preset == '' || starting_presets.preset_data.has(ResourceScripts.game_globals.starting_preset) == false:
@@ -25,6 +26,9 @@ func start():
 	
 	gui_controller.char_creation = input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['master'])
 	yield(input_handler, 'CharacterCreated')
+	if got_back:
+		finish()
+		return
 	yield(globals.get_tree(), 'idle_frame')
 #	if data.code != 'default':
 	while slave_number > 0:
