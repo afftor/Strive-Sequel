@@ -329,6 +329,7 @@ var data = {
 		custom_background = "daisy_bj4",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		additionally_open = ["daisy_bj_old_3"],
 		text = [
 			{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_1", reqs = []},
 		], 
@@ -378,6 +379,7 @@ var data = {
 		custom_background = "daisy_bj6",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		additionally_open = ["daisy_bj_old_4"],
 		text = [
 			{text = "DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_2_5", reqs = []},
 		], 

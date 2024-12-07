@@ -698,6 +698,9 @@ func Exit():
 
 
 func MainMenu():
+	#GameStartNode should be not null here, otherwise need another solution
+	input_handler.GameStartNode.got_back = true
+	input_handler.emit_signal("CharacterCreated")#for GameStartNode
 	globals.return_to_main_menu()
 
 

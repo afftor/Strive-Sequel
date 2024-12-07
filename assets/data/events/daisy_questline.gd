@@ -1016,6 +1016,7 @@ var data = {
 		custom_background = "daisy_bj2",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		additionally_open = ["daisy_bj_old_1"],
 		tags = [
 			"dialogue_scene"
 		],
@@ -1076,6 +1077,7 @@ var data = {
 		custom_background = "daisy_bj3",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		additionally_open = ["daisy_bj_old_2"],
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1333,6 +1335,7 @@ var data = {
 		custom_background = "daisy_bj6",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		additionally_open = ["daisy_bj_old_4"],
 		tags = [
 			"dialogue_scene"
 		],
@@ -1410,6 +1413,7 @@ var data = {
 		custom_background = "daisy_bj8",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		additionally_open = ["daisy_bj_old_6"],
 		tags = [
 			"dialogue_scene",
 			"master_translate"

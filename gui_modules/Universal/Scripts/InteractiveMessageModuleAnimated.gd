@@ -689,10 +689,16 @@ func save_scene_to_gallery(scene):
 #i still can add an option to unlock a sequences per scene
 #but it will still force us to make a changes into scenes to correctly pass data (scenes ids)
 	if scene.has("scene_type"):
+		var progress_field
 		if scene.scene_type == "story_scene":
-			input_handler.update_progress_data("story_scenes", scene.custom_background)
+			progress_field = "story_scenes"
 		elif scene.scene_type == "ero_scene":
-			input_handler.update_progress_data("ero_scenes", scene.custom_background)
+			progress_field = "ero_scenes"
+		if progress_field != null:
+			input_handler.update_progress_data(progress_field, scene.custom_background)
+			if scene.has("additionally_open"):
+				for addition in scene.additionally_open:
+					input_handler.update_progress_data(progress_field, addition)
 
 
 func select_scene_variation_based_on_data(scene):

@@ -423,8 +423,7 @@ var data = {
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene'], reqs = [],
 		text = [
-			{text = "KURO_WEDDING_PUSSY", reqs = []},
-			{text = "KURO_WEDDING_3", reqs = []},
+			{text = "KURO_WEDDING_PUSSY", reqs = []}
 		],
 		options = [
 			{code = 'kuro_wedding_pussy2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 9, type = 'next_dialogue'},
@@ -436,7 +435,8 @@ var data = {
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene'], reqs = [],
 		text = [
-			{text = "KURO_WEDDING_PUSSY2", reqs = []}
+			{text = "KURO_WEDDING_PUSSY2", reqs = []},
+			{text = "KURO_WEDDING_3", reqs = []},
 		],
 		options = [
 			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 9, type = 'next_dialogue'},
@@ -448,8 +448,7 @@ var data = {
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene'], reqs = [],
 		text = [
-			{text = "KURO_WEDDING_ASS", reqs = []},
-			{text = "KURO_WEDDING_3", reqs = []},
+			{text = "KURO_WEDDING_ASS", reqs = []}
 		],
 		options = [
 			{code = 'kuro_wedding_ass2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 9, type = 'next_dialogue'},
@@ -461,7 +460,8 @@ var data = {
 		save_scene_to_gallery = true,
 		tags = ['dialogue_scene'], reqs = [],
 		text = [
-			{text = "KURO_WEDDING_ASS2", reqs = []}
+			{text = "KURO_WEDDING_ASS2", reqs = []},
+			{text = "KURO_WEDDING_3", reqs = []},
 		],
 		options = [
 			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 9, type = 'next_dialogue'},
