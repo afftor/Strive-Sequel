@@ -160,7 +160,7 @@ func show_resources_info():
 				
 				else:
 					newtask.get_node("Task/TaskIcon").texture = Items.itemlist[recipe.resultitem].icon
-
+			newtask.get_node("Task").text = task_name.capitalize()
 		elif task.product in ['recruiting']:
 			var progress = 0
 			for worker in task.workers:
@@ -179,6 +179,7 @@ func show_resources_info():
 			newtask.get_node("ProgressBar").visible = true
 			newtask.get_node("progress").visible = false
 			task_name = "recruiting"
+			newtask.get_node("Task").text = task_name.capitalize()
 		elif task.product in ['special']:
 			var progress = 0
 			for worker in task.workers:
@@ -196,6 +197,7 @@ func show_resources_info():
 			newtask.get_node("ProgressBar").max_value = task.threshold
 			newtask.get_node("ProgressBar").value = task.progress
 			task_name = tr(task.name)
+			newtask.get_node("Task").text = task_name.capitalize()
 		elif task.product in ['gold']:
 			var progress = 0
 			for worker in task.workers:
@@ -206,6 +208,7 @@ func show_resources_info():
 			newtask.get_node("ProgressBar").visible = false
 			newtask.get_node("progress").visible = false
 			newtask.get_node("Task/TaskIcon").texture = tasks.tasklist[task_name].production_icon
+			newtask.get_node("Task").text = task_name.capitalize()
 #			newtask.get_node("ProgressBar").max_value = task.threshold
 #			newtask.get_node("ProgressBar").value = task.progress
 		else:
@@ -223,6 +226,7 @@ func show_resources_info():
 				newtask.get_node("ProgressBar").visible = false
 				newtask.get_node("progress").visible = true
 				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[task.code].icon
+				newtask.get_node("Task").text = tr(Items.materiallist[task.code].name)
 #				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[task.code])
 				globals.connectmaterialtooltip(newtask.get_node("Task/TaskIcon"), Items.materiallist[task.code])
 			elif task.code == 'produce':
@@ -239,6 +243,7 @@ func show_resources_info():
 				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[task.product].icon
 #				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[task.product])
 				globals.connectmaterialtooltip(newtask.get_node("Task/TaskIcon"), Items.materiallist[task.product])
+				newtask.get_node("Task").text = task_name.capitalize()
 			else:
 				var progress = 0
 				for worker in task.workers:
@@ -255,11 +260,11 @@ func show_resources_info():
 				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[tasks.tasklist[task_name].production_item].icon
 #				newtask.get_node("Task/TaskIcon/Label").text =  ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[tasks.tasklist[task_name].production_item])
 				globals.connectmaterialtooltip(newtask.get_node("Task/TaskIcon"), Items.materiallist[tasks.tasklist[task_name].production_item])
+				newtask.get_node("Task").text = task_name.capitalize()
 #			newtask.get_node("ProgressBar").max_value = task.threshold
 #			newtask.get_node("ProgressBar").value = task.progress
 			newtask.get_node("Task").show()
 			
-		newtask.get_node("Task").text = task_name.capitalize()
 		globals.connecttexttooltip(newtask, text)
 		
 	for ch in ResourceScripts.game_party.characters.values():
