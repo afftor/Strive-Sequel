@@ -316,6 +316,7 @@ func execute_skill(s_skill2):  #to update to exploration version
 		text += "[color=yellow]Critical!![/color] "
 		#s_skill2.target.displaynode.process_critical()
 	for i in s_skill2.value:
+		if !i.check_conditions(): continue
 		if i.damagestat == 'no_stat':
 			continue  #for skill values that directly process into effects
 		if i.damagestat == 'damage_hp' and i.dmgf == 0:  #drain, damage, damage no log, drain no log
