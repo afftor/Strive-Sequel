@@ -133,7 +133,7 @@ var skills = {
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'setup_gather', trigger = variables.TR_EXPLORE_POSTDAMAGE})], 
 		cost = {mp = 10},
-		charges = 0,
+		charges = ['caster.mastery_earth', '0.66'],
 		combatcooldown = 0,
 		cooldown = 1,
 		catalysts = {},
