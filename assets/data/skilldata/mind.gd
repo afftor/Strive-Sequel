@@ -12,7 +12,7 @@ var skills = {
 		reqs = [],
 		targetreqs = [],
 		effects = [], #Effectdata.rebuild_template({effect = 'e_s_confuse'})
-		cost = {},
+		cost = {mp = 5},
 		charges = 0,
 		combatcooldown = 1,
 		cooldown = 0,

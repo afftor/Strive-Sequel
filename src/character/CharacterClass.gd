@@ -1705,7 +1705,7 @@ func apply_atomic(template):
 				'set_teleport':
 					ResourceScripts.game_world.setup_teleporter(get_location())
 				'gather_res':
-					ResourceScripts.game_world.gather_res(get_location(), get_stat('matk') * 25)
+					ResourceScripts.game_world.gather_res(get_location(), get_stat('matk') * 10)
 
 
 func remove_atomic(template):

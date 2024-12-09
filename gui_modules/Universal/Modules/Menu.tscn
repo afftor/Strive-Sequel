@@ -677,7 +677,12 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 33 )
 bbcode_enabled = true
-bbcode_text = "0.10.1
+bbcode_text = "0.10.1a
+Healing Light can now be used to deal damage to Undead enemies
+Fixed multiple skill issues
+Fixed some gallery unlocks
+Fixed some minor character event issues
+0.10.1
 Revamped skill acquirement system
 Filled enemy event groups in act 3
 Added new sidequests and scenes for Kuro 
@@ -1761,7 +1766,12 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.10.1
+text = "0.10.1a
+Healing Light can now be used to deal damage to Undead enemies
+Fixed multiple skill issues
+Fixed some gallery unlocks
+Fixed some minor character event issues
+0.10.1
 Revamped skill acquirement system
 Filled enemy event groups in act 3
 Added new sidequests and scenes for Kuro 
