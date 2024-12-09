@@ -223,7 +223,7 @@ func upgrade_mastery(school, force_universal = false):
 	var cost = upgrade_mastery_cost(school, force_universal)
 	for c in cost:
 		mastery_points[c] -= cost[c]
-		mastery_levels[school].combat += cost[c]
+		mastery_levels[school][c] += cost[c]
 	
 	add_mastery_bonus(school, mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive)
 
