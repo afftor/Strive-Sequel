@@ -273,10 +273,9 @@ func displaymetrics():
 	var person = active_person
 	if person.is_players_character:
 		if person.is_master():
-			text += tr("METRICS_BASE_YOU")
+			text += tr("METRICS_BASE_YOU") % ResourceScripts.game_globals.get_week_and_day_custom(ResourceScripts.game_globals.date - person.get_stat('metrics_ownership'))
 		else:
-			text += tr("METRICS_BASE")
-			text = text % ResourceScripts.game_globals.get_week_and_day_custom(ResourceScripts.game_globals.date - person.get_stat('metrics_ownership'))
+			text += tr("METRICS_BASE") % ResourceScripts.game_globals.get_week_and_day_custom(ResourceScripts.game_globals.date - person.get_stat('metrics_ownership'))
 	if person.is_master() == true:
 		text += "\n\n" + tr("METRICS_DATES_MASTER") % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')] + " "
 	else:
