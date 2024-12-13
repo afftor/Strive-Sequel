@@ -29,6 +29,7 @@ var timeforinteraction = 20
 
 var debug_mode = false
 var no_obedience_drain = false
+var use_log_alert = true
 
 #var hour_turn_limit = 8
 
