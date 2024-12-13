@@ -995,7 +995,7 @@ var dungeons = {
 				limit = 1,
 				weight = 3,
 				floor_range = [0,0],
-				icon = 'person',
+				icon = 'man',
 				events = ['event_fairy_friendly'],
 				possible_challenges = [
 					['event_blocked_path',1],
@@ -1103,7 +1103,7 @@ var dungeons = {
 				limit = 1,
 				weight = 1,
 				floor_range = [0,0],
-				icon = 'person',
+				icon = 'man',
 				events = ['event_tribal_elves'],
 				possible_challenges = [
 					['event_blocked_path',1],
@@ -1945,7 +1945,7 @@ var dungeons = {
 				limit = 1,
 				weight = 1,
 				floor_range = [0,0],
-				icon = 'person',
+				icon = 'man',
 				events = ['event_tribal_elves'],
 				possible_challenges = [
 					['event_blocked_path',1],
@@ -2901,7 +2901,7 @@ var dungeons = {
 				limit = 1,
 				weight = 1,
 				floor_range = [0,0],
-				icon = 'person',
+				icon = 'man',
 				events = ['event_tribal_elves'],
 				possible_challenges = [
 					['event_blocked_path',1],
