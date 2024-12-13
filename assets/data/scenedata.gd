@@ -1592,7 +1592,7 @@ var scenedict = {
 		image = 'tribal_elves',
 		set_enemy = 'tribal_elves',
 		options = [
-		{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},
+		{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION"), bonus_effects = [{code = 'clear_subroom'}]},
 		]
 	},
 	tribal_elves_win = {text = tr("TRIBALELVES_WIN"),
