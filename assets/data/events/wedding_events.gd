@@ -326,6 +326,7 @@ var data = {
 		text = [{text = "LILIA_WEDDING_7", reqs = [], }],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = 'complete_quest', value = 'marriage_quest_main'}, {code = 'complete_wedding'} ]
 		}, ]
 	},
 	
@@ -391,6 +392,7 @@ var data = {
 		text = [{text = "LILITH_WEDDING_6", reqs = [], }],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [{code = 'complete_quest', value = 'marriage_quest_main'}, {code = 'complete_wedding'} ]
 		}, ]
 	},
 	
@@ -439,7 +441,9 @@ var data = {
 			{text = "KURO_WEDDING_3", reqs = []},
 		],
 		options = [
-			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 9, type = 'next_dialogue'},
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 9, type = 'next_dialogue',
+				bonus_effects = [{code = 'complete_quest', value = 'marriage_quest_main'}, {code = 'complete_wedding'} ]
+			},
 		]
 	},
 	kuro_wedding_ass = {
@@ -464,7 +468,9 @@ var data = {
 			{text = "KURO_WEDDING_3", reqs = []},
 		],
 		options = [
-			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 9, type = 'next_dialogue'},
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 9, type = 'next_dialogue',
+				bonus_effects = [{code = 'complete_quest', value = 'marriage_quest_main'}, {code = 'complete_wedding'} ]
+			},
 		]
 	},
 }

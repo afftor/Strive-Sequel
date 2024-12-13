@@ -257,9 +257,7 @@ var data = {
 	marriage_final_6 = {
 		variations = [ { # Unique after wedding scene
 			# we check if our spouse has unique event from wedding_events
-			reqs = [{type = 'spouse_check', value = {code = 'stat', stat = 'unique', operant = 'eq', value = 'daisy'}}, 
-			{type = 'spouse_check', value = {code = 'stat', stat = 'unique', operant = 'eq', value = 'amelia'}, orflag = true}, 
-			{type = 'spouse_check', value = {code = 'stat', stat = 'unique', operant = 'eq', value = 'cali'}, orflag = true}], 
+			reqs = [{type = 'spouse_has_event'}],
 			image = null,
 			tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
 			text = [{text = "MARRIAGE_FINAL_6", reqs = []}],
@@ -291,9 +289,7 @@ var data = {
 	marriage_final_8 = {
 		variations = [ { # Unique after wedding scene
 			# we check if our spouse has unique event from wedding_events
-			reqs = [{type = 'spouse_check', value = {code = 'stat', stat = 'unique', operant = 'eq', value = 'daisy'}}, 
-			{type = 'spouse_check', value = {code = 'stat', stat = 'unique', operant = 'eq', value = 'amelia'}, orflag = true}, 
-			{type = 'spouse_check', value = {code = 'stat', stat = 'unique', operant = 'eq', value = 'cali'}, orflag = true}], 
+			reqs = [{type = 'spouse_has_event'}],
 			image = null,
 			tags = ['dialogue_scene', 'master_translate'],
 			text = [{text = "MARRIAGE_FINAL_8_1", reqs = [], previous_dialogue_option = 1},

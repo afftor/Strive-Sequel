@@ -2493,6 +2493,12 @@ func valuecheck(dict):
 			var spouse_char = characters_pool.get_char_by_id(spid)
 			if spouse_char == null: return false
 			return spouse_char.checkreqs(dict.value)
+		'spouse_has_event':
+			if ResourceScripts.game_progress.spouse == null: return false
+			var spouse_char = ResourceScripts.game_party.get_spouse()
+			if spouse_char == null: return false
+			var event_name = spouse_char.get_stat('unique')+"_wedding_1"
+			return scenedata.scenedict.has(event_name)
 		'active_character_checks':
 			var character = input_handler.active_character
 			if character == null:return false
