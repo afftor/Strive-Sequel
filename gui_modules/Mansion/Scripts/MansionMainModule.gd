@@ -551,7 +551,7 @@ func test_mode():
 		ResourceScripts.game_progress.seen_dialogues.append("PRIESTESS_SWORD_TALK_1_1")
 		ResourceScripts.game_progress.seen_dialogues.append("ALIRONCHURCHFIRSTCOME")
 		var character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
-		character.create('BeastkinFox', 'male', 'random')
+		character.create('Nereid', 'male', 'random')
 		character.fill_boosters()
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
