@@ -681,6 +681,15 @@ func get_class_bonuses(newperson, classdata): #maybe there should be used the sa
 		if value is bool:
 			text += tr(data.name + '_' + str(value).to_upper()) + "\n" 
 			continue #temp stub
+		if value is Array:
+			text += tr(data.name) + ": "
+			for st in value:
+				match data.array_type:
+					'mastery':
+						text += "%s, " % tr(Skilldata.masteries[st].name)
+			text = text.trim_suffix(', ')
+			text += "\n"
+			continue#temp stub
 		if data.percent: 
 			value *= 100
 		text += data.name + ": "
@@ -722,6 +731,15 @@ func get_class_bonuses_short(newperson, classdata): #maybe there should be used 
 		if value is bool:
 			text += tr(data.name + '_' + str(value).to_upper()) + "\n" 
 			continue #temp stub
+		if value is Array:
+			text += tr(data.name) + ": "
+			for st in value:
+				match data.array_type:
+					'mastery':
+						text += "%s, " % tr(Skilldata.masteries[st].name)
+			text = text.trim_suffix(', ')
+			text += "\n"
+			continue#temp stub
 		if data.percent: 
 			value *= 100
 		text += data.name + ": "

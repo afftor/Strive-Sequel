@@ -202,12 +202,12 @@ func set_stat(stat, value):
 	if stat == 'base_exp':
 		xp_module.base_exp = value
 		return
-	if stat.begins_with('enable_mastery_'):
-		if value:
-			xp_module.enable_mastery(stat.trim_prefix('enable_mastery_'))
-		else:
-			xp_module.disable_mastery(stat.trim_prefix('enable_mastery_'))
-		return
+	if stat == 'disabled_masteries':
+		for st in value:
+			xp_module.disable_mastery(st)
+	if stat == 'enabled_masteries':
+		for st in value:
+			xp_module.enable_mastery(st)
 	if stat.begins_with('food_') and !(stat in ['food_consumption']):
 		food.set(stat, value)
 		return

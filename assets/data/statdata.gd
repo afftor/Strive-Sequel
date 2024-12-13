@@ -761,6 +761,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		percent = true,
+		default_bonus = 'mul'
 	},
 	bleed_mod = {
 		code = 'bleed_mod',
@@ -768,6 +769,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		percent = true,
+		default_bonus = 'mul'
 	},
 	poison_mod = {
 		code = 'poison_mod',
@@ -775,6 +777,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		percent = true,
+		default_bonus = 'mul'
 	},
 	burn_damage = {
 		code = 'burn_damage',
@@ -873,6 +876,23 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 	},
+	enabled_masteries = {
+		code = 'enabled_masteries',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		default_bonus = 'array',
+		array_type = 'mastery'
+	},
+	disabled_masteries = {
+		code = 'disabled_masteries',
+		name = '',
+		descript = '',
+		is_negative = true,
+		baseicon = 'food_love',
+		default_bonus = 'array',
+		array_type = 'mastery'
+	},
 }
 
 #var slave_class_names = {
@@ -925,11 +945,11 @@ func _ready():
 				skip_process = true,
 				show_in_header = true
 			}
-		statdata['enable_mastery_'+i] = {
-				code = "enable_mastery_"+i,
-				default_bonus = 'set',
-				skip_process = true
-			}
+#		statdata['enable_mastery_'+i] = {
+#				code = "enable_mastery_"+i,
+#				default_bonus = 'set',
+#				skip_process = true
+#			}
 	
 	
 	for val in statdata.values():

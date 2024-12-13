@@ -533,12 +533,12 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 	for i in bonusstats:
 		if i  in ['enchant_capacity', 'enchant_capacity_mod', ]: 
 			continue
-		if bonusstats[i] is bool or bonusstats[i] != 0:
-			var value = bonusstats[i]
-			if !(value is bool):
-				value *= mul
+		if bonusstats[i] is bool or bonusstats[i] is Array or bonusstats[i] != 0:
 			var data = statdata.statdata[i]
 			if data.hidden: continue
+			var value = bonusstats[i]
+			if !(value is bool or value is Array):
+				value *= mul
 			var change = ''
 			match data.default_bonus:
 				"add":
@@ -585,6 +585,18 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 						text = '{color=green|' + tr(data.name + '_TRUE') + '}\n'
 					else:
 						text = '{color=red|' + tr(data.name + '_FALSE') + '}\n'
+				'array':
+					text += data.name + ': {color='
+					if data.is_negative:
+						text += 'red|'
+					else:
+						text += 'green|'
+					for st in value:
+						match data.array_type:
+							'mastery':
+								text += "%s, " % tr(Skilldata.masteries[st].name)
+					text = text.trim_suffix(', ')
+					text += '}\n'
 			
 	return text
 
