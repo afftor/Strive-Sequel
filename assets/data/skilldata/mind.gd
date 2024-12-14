@@ -36,7 +36,7 @@ var skills = {
 #		new_syntax = true,
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_stun1', duration = 4})],
+		effects = [Effectdata.rebuild_template({effect = Effectdata.rebuild_make_status({effect = 'e_s_stun1', duration = 4})})],
 		cost = {mp = 10},
 		charges = 0,
 		combatcooldown = 2,
