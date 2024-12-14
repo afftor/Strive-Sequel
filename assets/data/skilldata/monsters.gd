@@ -200,9 +200,9 @@ var effects = {
 	e_boss = {
 		type = 'static',
 		atomic = [
-			{type = 'stat_mul', stat = 'bleed_mod', value = 0.33},
-			{type = 'stat_mul', stat = 'poison_mod', value = 0.33},
-			{type = 'stat_mul', stat = 'burn_mod', value = 0.33},
+			{type = 'stat_mul', stat = 'bleed_damage', value = 0.33},
+			{type = 'stat_mul', stat = 'poison_damage', value = 0.33},
+			{type = 'stat_mul', stat = 'burn_damage', value = 0.33},
 		],
 		buffs = [
 			{

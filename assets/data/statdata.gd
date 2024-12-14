@@ -761,7 +761,6 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		percent = true,
-		default_bonus = 'mul'
 	},
 	bleed_mod = {
 		code = 'bleed_mod',
@@ -769,7 +768,6 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		percent = true,
-		default_bonus = 'mul'
 	},
 	poison_mod = {
 		code = 'poison_mod',
@@ -777,7 +775,6 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		percent = true,
-		default_bonus = 'mul'
 	},
 	burn_damage = {
 		code = 'burn_damage',
@@ -785,7 +782,8 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		percent = true,
-		negative = true
+		negative = true,
+		default_bonus = 'mul'
 	},
 	bleed_damage = {
 		code = 'bleed_damage',
@@ -793,7 +791,8 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		percent = true,
-		negative = true
+		negative = true,
+		default_bonus = 'mul'
 	},
 	poison_damage = {
 		code = 'poison_damage',
@@ -801,7 +800,8 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		percent = true,
-		negative = true
+		negative = true,
+		default_bonus = 'mul'
 	},
 	enchant_capacity_mod = {
 		code = 'enchant_capacity_mod',
