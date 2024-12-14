@@ -197,6 +197,23 @@ var effects = {
 		],
 		sub_effects = [],
 	},
+	e_boss = {
+		type = 'static',
+		atomic = [
+			{type = 'stat_mul', stat = 'bleed_mod', value = 0.33},
+			{type = 'stat_mul', stat = 'poison_mod', value = 0.33},
+			{type = 'stat_mul', stat = 'burn_mod', value = 0.33},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/hitrate.png",#fix
+				description = "boss", #2fix
+				limit = 1,
+				t_name = 'boss'
+			}
+		],
+		sub_effects = [],
+	},
 	#centipede
 	e_tr_curseatk = {
 		type = 'trigger',

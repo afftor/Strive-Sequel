@@ -64,8 +64,11 @@ func find_eff_by_item(item_id):
 func check_status_resist(eff):
 	var tres = parent.get_ref().get_stat('status_resists')
 	for s in variables.status_list:
-		if !eff.tags.has(s): continue
+		if !eff.tags.has(s): 
+			continue
 		var res = tres[s]
+		if parent.get_ref().has_status('boss_resists') and s in ['stun', 'freeze']:
+			res = max(res, 90)
 		var roll = globals.rng.randi_range(0, 99)
 		if roll < res: return true
 	return false
@@ -137,7 +140,9 @@ func make_status_effect(template):
 			effect = Effectdata.effect_table[effect].duplicate(true)
 			effect.duration = template.duration
 			if has_status('wet'):
-				template.chance = 2.0
+				template.chance = 1.0
+			if parent.get_ref().has_status('boss_resists'):
+				effect.duration = 1
 		'e_s_shock':
 			if has_status('shock') and globals.rng.randf() < 0.2:
 				effect = Effectdata.effect_table['e_s_stun1'].duplicate(true)
@@ -145,6 +150,11 @@ func make_status_effect(template):
 			else:
 				effect = Effectdata.effect_table[effect].duplicate(true)
 				effect.duration = template.duration
+		'e_s_stun1':
+			effect = Effectdata.effect_table[effect].duplicate(true)
+			effect.duration = template.duration
+			if parent.get_ref().has_status('boss_resists'):
+				effect.duration = 1
 		_:
 			effect = Effectdata.effect_table[effect].duplicate(true)
 			effect.duration = template.duration

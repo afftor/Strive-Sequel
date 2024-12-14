@@ -1313,6 +1313,18 @@ var traits = {
 		visible = false,
 		effects = ['e_miniboss'],
 	},
+	boss_resists = {
+		code = 'boss_resists',
+		name = '',
+		descript = '',
+		icon = null, 
+		visible = false,
+		effects = ['e_boss'],
+		tags = ['boss_resists'],
+#		bonusstats = {bleed_mod = 0.33, poison_mod = 0.33, burn_mod = 0.33}
+#cause we still neeg an effect to make icon for monster trait - stats were moved to effect
+	},
+	
 	
 	#exploration related traits
 	#needs to hardcode most of traits

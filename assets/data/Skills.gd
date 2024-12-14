@@ -541,7 +541,7 @@ var Skilllist = {
 		tags = ['damage','ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_stun1', duration = 1})], 
+		effects = [Effectdata.rebuild_template({effect = Effectdata.rebuild_make_status({effect = 'e_s_stun1', duration = 1})})], 
 		cost = {},
 		repeat = 2,
 		random_target = true,

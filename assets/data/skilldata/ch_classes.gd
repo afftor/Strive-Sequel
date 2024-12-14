@@ -472,7 +472,7 @@ var skills = {
 		tags = ['damage','ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_stun1', duration = 2})], 
+		effects = [Effectdata.rebuild_template({effect = Effectdata.rebuild_make_status({effect = 'e_s_stun1', duration = 2})})], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 1,
@@ -846,7 +846,7 @@ var effects = {
 		duration = 1,
 		args = [{obj = 'parent', param = 'target'}, {obj = 'parent', param = 'caster'}],
 		sub_effects = [],
-		modal_sub_effects = ['e_s_burn_new', 'e_s_poison_new', 'e_s_bleed_new', 'e_s_blind', 'e_s_stun1', 'e_s_confuse', 'e_s_sleep_compartibility'],
+		modal_sub_effects = ['e_s_burn_new', 'e_s_poison_new', 'e_s_bleed_new', 'e_s_blind', Effectdata.rebuild_make_status({effect = 'e_s_stun1', duration = 1}), 'e_s_confuse', 'e_s_sleep_compartibility'],
 		buffs = []
 	},
 	e_tr_witch2 = {

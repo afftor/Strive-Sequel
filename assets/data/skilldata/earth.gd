@@ -273,7 +273,7 @@ var effects = {
 		duration = 3,
 		req_skill = true,
 		args = [],
-		sub_effects = ['e_s_stun1'],
+		sub_effects = [Effectdata.rebuild_make_status({effect = 'e_s_stun1', duration = 3})],
 		buffs = []
 	},
 }
