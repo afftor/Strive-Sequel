@@ -147,6 +147,63 @@ var skills = {
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.6,
 	},
+	
+	meteor = {
+		code = 'meteor',
+		descript = '',
+		icon = "res://assets/images/iconsskills/firebolt.png", #fix
+		type = 'combat', 
+		ability_type = 'spell',
+		tags = ['damage','ads','fire'],
+		reqs = [
+			{code = 'stat', stat = 'mastery_fire', value = 4, operant = 'gte'},
+			{code = 'stat', stat = 'mastery_earth', value = 5, operant = 'gte'},
+		],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_s_burn_new', push_characters = true, duration = 4})], 
+		cost = {mp = 25},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 5,
+		catalysts = {},
+		target = 'enemy',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'fire',
+		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
+		value = 2.0,
+	},
+	
+	dark_flame = {
+		code = 'dark_flame',
+		descript = '',
+		icon = "res://assets/images/iconsskills/FireBomb.png",
+		type = 'combat', 
+		ability_type = 'spell',
+		tags = ['ads','aoe'],
+		reqs = [
+			{code = 'stat', stat = 'mastery_fire', value = 5, operant = 'gte'},
+			{code = 'stat', stat = 'mastery_dark', value = 3, operant = 'gte'},
+		],
+		targetreqs = [
+			{code = 'has_status', status = 'burn', check = true},
+		],
+		effects = [Effectdata.rebuild_template({effect = 'e_s_darkflame', push_characters = true, duration = 4})], 
+		cost = {mp = 10},
+		charges = 0,
+		combatcooldown = 3,
+		cooldown = 0,
+		catalysts = {},
+		target = 'enemy',
+		target_number = 'all_allowed',
+		target_range = 'any',
+		damage_type = 'fire',
+		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
+		value = [['0']],
+		damagestat = ['no_stat'],
+	},
 }
 var effects = {
 	e_s_bloodboil = {

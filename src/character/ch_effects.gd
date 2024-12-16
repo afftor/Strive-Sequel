@@ -216,6 +216,9 @@ func remove_effect(eff_id):
 		'static','c_static': static_effects.erase(eff_id)
 		'trigger': triggered_effects.erase(eff_id)
 		'temp_s','temp_p','temp_u', 'temp_global', 'temp_toggle': temp_effects.erase(eff_id)
+	var nd = parent.get_ref().displaynode
+	if nd != null:
+		nd.rebuildbuffs()
 #		'area': remove_area_effect(eff_id)
 
 func clean_broken_effects():

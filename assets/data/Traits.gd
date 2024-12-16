@@ -434,6 +434,28 @@ var traits = {
 		tags = ['simple_icon', 'positive'],
 		bonusstats = {resist_stun = 200}
 	},
+	vigor = {
+		code = 'vigor',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = "res://assets/images/iconsskills/Authority.png",#fix
+		show_in_parent_stats = true,
+		effects = [],
+		tags = ['simple_icon', 'positive'],
+		bonusstats = {hp_reg_mod = 0.33}
+	},
+	meditation = {
+		code = 'meditation',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = "res://assets/images/iconsskills/Authority.png",#fix
+		show_in_parent_stats = true,
+		effects = [],
+		tags = ['simple_icon', 'positive'],
+		bonusstats = {mp_reg_mod = 0.33}
+	},
 	#positive
 	prodigy = {
 		code = 'prodigy',

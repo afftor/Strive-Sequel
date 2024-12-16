@@ -243,29 +243,6 @@ var skills = {
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.2
 	},
-	holy_lance = { #valkyrie
-		code = 'holy_lance',
-		descript = '',
-		icon = load("res://assets/images/iconsskills/holylance.png"),
-		type = 'combat', 
-		ability_type = 'skill',
-		tags = ['damage','aoe'],
-		reqs = [],
-		targetreqs = [],
-		effects = [], 
-		cost = {},
-		charges = 0,
-		combatcooldown = 0,
-		cooldown = 0,
-		catalysts = {},
-		target = 'enemy',
-		target_number = 'row',
-		target_range = 'any',
-		damage_type = 'light',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 1.0
-	},
 	#learnable before rework
 	purge = { 
 		code = 'purge',

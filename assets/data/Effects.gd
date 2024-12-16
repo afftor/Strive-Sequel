@@ -1052,6 +1052,37 @@ var effect_table = {
 			}
 		]
 	},
+	e_s_darkflame = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'darkflame',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'parent',
+		tags = ['affliction', 'tick_after_trigger', 'darkflame'],
+		args = [{obj = 'parent_arg_get', index = 1, param = 'burn_mod'}], #or darkflame_mod
+		sub_effects = [
+			rebuild_remove_effect('burn', 'owner'),
+			'e_darkflame'
+			],
+		atomic = [],
+		buffs = ['b_darkflame'],
+	},
+	e_darkflame = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_F],
+		req_skill = false,
+		conditions = [],
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = [{
+				type = 'oneshot',
+				target = 'owner',
+				args = [{obj = 'app_obj', param = 'hpmax'}, {obj = 'app_obj', param = 'darkflame_damage'}, {obj = 'parent_args', param = 0}],
+				atomic = ['a_darkflame'],
+			}
+		]
+	},
 	e_s_shred = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions
 		type = 'temp_global',
 		tags = ['duration_turns', 'affliction', 'shred'],
@@ -1240,7 +1271,7 @@ var effect_table = {
 		duration = 'parent',
 		tags = ['affliction', 'shock'],
 		args = [],
-		sub_effects = [rebuild_remove_effect('fear')],
+		sub_effects = [rebuild_remove_effect('fear', 'owner')],
 		atomic = [{type = 'stat_add', stat = 'damage_reduction', value = -15}],
 		buffs = ['b_shock'],
 	},
@@ -1338,7 +1369,7 @@ var effect_table = {
 		disable = true,
 		tags = ['debuff', 'stun'],
 		buffs = ['b_stun'],
-		sub_effects = [rebuild_remove_effect('shock')],
+		sub_effects = [rebuild_remove_effect('shock', 'owner')],
 	},
 	e_s_stun1 = {#duration version
 		type = 'temp_s',
@@ -1351,7 +1382,7 @@ var effect_table = {
 		disable = true,
 		tags = ['debuff', 'stun'],
 		buffs = ['b_stun'],
-		sub_effects = [rebuild_remove_effect('shock')],
+		sub_effects = [rebuild_remove_effect('shock', 'owner')],
 	},
 	e_s_stun2 = {#parent_arg duration
 		type = 'temp_s',
@@ -1364,7 +1395,7 @@ var effect_table = {
 		disable = true,
 		tags = ['debuff', 'stun'],
 		buffs = ['b_stun'],
-		sub_effects = [rebuild_remove_effect('shock')],
+		sub_effects = [rebuild_remove_effect('shock', 'owner')],
 	},
 	e_s_charm = {#parent duration
 		type = 'temp_s',
@@ -1389,7 +1420,7 @@ var effect_table = {
 		tags = ['debuff', 'wet'],
 		buffs = ['b_wet'],
 		sub_effects = [
-			rebuild_remove_effect('burn'),
+			rebuild_remove_effect('burn', 'owner'),
 			'e_t_wet']
 	},
 	e_t_wet = {
@@ -1433,8 +1464,8 @@ var effect_table = {
 		tags = ['debuff', 'freeze'],
 		buffs = ['b_freeze'],
 		sub_effects = [
-			rebuild_remove_effect('wet'),
-			rebuild_remove_effect('burn'),
+			rebuild_remove_effect('wet', 'owner'),
+			rebuild_remove_effect('burn', 'owner'),
 			'e_t_freeze']
 	},
 	e_t_freeze = {
@@ -2382,6 +2413,7 @@ var atomic = {
 	a_res = {type = 'resurrect', value = ['parent_args', 0]},
 	
 	a_burn_new = {type = 'damage', source = 'fire', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
+	a_darkflame = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
 	a_poison_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
 	a_bleed_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
 	
@@ -2492,6 +2524,11 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/firebolt.png",
 		description = "BUFFDESCRIPTBURNING",
 		t_name = 'burn'
+	},
+	b_darkflame = {
+		icon = "res://assets/images/iconsskills/firebolt.png",#fix
+		description = "BUFFDESCRIPTDARKFLAME",
+		t_name = 'darkflame'
 	},
 	b_poison = {
 		icon = "res://assets/images/iconsskills/skill_dip_poison.png",
@@ -2901,10 +2938,10 @@ func rebuild_oneshot_addstat(stat, value, target = 'owner'):
 	return template
 
 
-func rebuild_remove_effect(eff):
+func rebuild_remove_effect(eff, target = 'target'):
 	var template = {
 		type = 'oneshot',
-		target = 'target',
+		target = target,
 		args = [],
 		atomic = [{type = 'remove_all_effects', value = eff}],
 	}
