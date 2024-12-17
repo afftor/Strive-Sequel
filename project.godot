@@ -181,7 +181,7 @@ GeneratorData="*res://Character_generator/generator_data.gd"
 tasks="*res://assets/data/tasks.gd"
 DungeonGen="*res://src/core/dungeon_gen.gd"
 DungeonData="*res://assets/data/dungeon_data.gd"
-log_alert="*res://gui_modules/log_alert/log_alert_singleton.gd"
+log_alert="*res://src/core/log_alert_singleton.gd"
 
 [debug]
 
