@@ -4892,6 +4892,46 @@ var enchantments = {
 			
 		}
 	},
+	penetrator = {
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsenchants/spellmaster_mono_100.png"), #fix
+		reqs = [
+			{code = 'stat', stat = 'geartype', operant = 'eq', value = 'bow', check = true},
+			{code = 'stat', stat = 'geartype', operant = 'eq', value = 'spear', check = true, orflag = true}
+		],
+		levels = {
+			1:{
+				effects = [],
+				statmods = {armorpenetration_add = 10, speed_add = 3},
+				weight = 100,
+				cap_cost = 50,
+				gold_cost = 500
+			},
+			2:{
+				effects = [],
+				statmods = {armorpenetration_add = 15, speed_add = 6},
+				weight = 100,
+				cap_cost = 100,
+				gold_cost = 1000
+			},
+			3:{
+				effects = [],
+				statmods = {armorpenetration_add = 20, speed_add = 9},
+				weight = 100,
+				cap_cost = 150,
+				gold_cost = 2000
+			},
+			4:{
+				effects = [],
+				statmods = {armorpenetration_add = 25, speed_add = 12},
+				weight = 100,
+				cap_cost = 200,
+				gold_cost = 3000
+			},
+			
+		}
+	},
 	stun_immune = {
 		name = '',
 		descript = '',

@@ -147,6 +147,33 @@ var skills = {
 		damagestat = ['no_stat'],
 		not_final = true
 	},
+	holy_lance = { #ex valkyrie
+		code = 'holy_lance',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/holylance.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['damage','aoe'],
+		reqs = [
+			{code = 'gear_equiped', param = 'geartype', value = 'spear', check = true},
+			{code = 'stat', stat = 'mastery_warfare', value = 4, operant = 'gte'},
+			{code = 'stat', stat = 'mastery_light', value = 3, operant = 'gte'},
+		],
+		targetreqs = [],
+		effects = [], 
+		cost = {mp = 5},
+		charges = 0,
+		combatcooldown = 2,
+		cooldown = 0,
+		catalysts = {},
+		target = 'enemy',
+		target_number = 'row',
+		target_range = 'any',
+		damage_type = 'light',
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
+		value = 1.0
+	},
 }
 var effects = {
 	e_kill_execute = {

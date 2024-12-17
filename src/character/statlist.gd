@@ -80,6 +80,7 @@ var template = {
 	damage_mods = {},
 	burn_mod = 1.0,
 	burn_damage = 0.07,
+	darkflame_damage = 0.1,
 	poison_mod = 1.0,
 	poison_damage = 0.1,
 	bleed_mod = 1.0,

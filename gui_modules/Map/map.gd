@@ -530,7 +530,7 @@ func make_panel_for_location(panel, loc):
 #				globals.return_characters_from_location(loc.id)
 		if loc.has('locked'):
 			if loc.locked:
-				panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.red)
+				panel.get_node("Label").set("custom_colors/font_color", variables.hexcolordict.yellow)
 #				globals.connecttexttooltip(panel, "Location Unavailable")
 #				globals.return_characters_from_location(loc.id)
 		var icon

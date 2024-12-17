@@ -203,6 +203,7 @@ var effects = {
 			{type = 'stat_mul', stat = 'bleed_damage', value = 0.33},
 			{type = 'stat_mul', stat = 'poison_damage', value = 0.33},
 			{type = 'stat_mul', stat = 'burn_damage', value = 0.33},
+			{type = 'stat_mul', stat = 'darkflame_damage', value = 0.33},
 		],
 		buffs = [
 			{
