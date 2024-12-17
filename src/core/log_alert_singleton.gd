@@ -4,7 +4,6 @@ var file
 var path
 var last_pos = 0
 var last_time = 0
-var alert_pack
 var alert_node
 
 func _ready():
@@ -12,7 +11,6 @@ func _ready():
 		queue_free()
 		return
 	
-	alert_pack = load("res://gui_modules/log_alert/log_alert.tscn")
 	wait_time = 1.0
 	path = ProjectSettings.get_setting("logging/file_logging/log_path")
 	file = File.new()
@@ -36,9 +34,14 @@ func check_log():
 	file.close()
 
 func show_string(input_str :String):
-	var root = get_tree().get_root()
-	if alert_node == null or !is_instance_valid(alert_node):
-		alert_node = alert_pack.instance()
-		root.add_child(alert_node)
-	alert_node.raise()
-	alert_node.show_string(input_str)
+	alert_node.open()
+	alert_node.add_text(input_str + "\n")
+
+func set_alert_node(new_node):
+	alert_node = new_node
+
+func stop_check_log():
+	stop()
+
+func resume_check_log():
+	start()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveListModule.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSkillsModule.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/core/Console.gd" type="Script" id=7]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=8]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionLeftMenuModule.tscn" type="PackedScene" id=9]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionLogModule.tscn" type="PackedScene" id=10]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveModule.tscn" type="PackedScene" id=11]
@@ -303,6 +304,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -60.402
 custom_fonts/normal_font = SubResource( 2 )
+scroll_following = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -318,6 +320,33 @@ placeholder_alpha = 0.27
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="log_alert_panel" type="Panel" parent="Console"]
+visible = false
+modulate = Color( 1, 1, 1, 0.862745 )
+margin_left = 40.0
+margin_top = 555.0
+margin_right = 1213.0
+margin_bottom = 651.0
+
+[node name="close" type="Button" parent="Console/log_alert_panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -150.0
+margin_top = 25.0
+margin_right = -22.0
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 3 )
+text = "Close"
+
+[node name="CheckBox" type="CheckBox" parent="Console/log_alert_panel"]
+margin_left = 17.0
+margin_top = 17.0
+margin_right = 346.0
+margin_bottom = 61.0
+theme = ExtResource( 8 )
+custom_fonts/font = SubResource( 3 )
+text = "Hide errors"
 
 [node name="map_test" type="Button" parent="." groups=["test_obsolete"]]
 visible = false
