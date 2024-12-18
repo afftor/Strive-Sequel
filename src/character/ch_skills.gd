@@ -61,6 +61,10 @@ func fill_combatskills():
 		combat_skill_panel[i + 1] = combat_skills[i]
 
 
+func has_skill(id):
+	return social_skills.has(id) or combat_skills.has(id) or explore_skills.has(id)
+
+
 func learn_skill(skill, free = false):
 	var skilldata = Skilldata.Skilllist[skill]
 	if !social_skills.has(skill):
@@ -192,6 +196,8 @@ func use_social_skill(s_code, target, item):
 		item = Items.itemlist[item.itembase]
 		if s_code == 'map':
 			ResourceScripts.custom_effects.call(template.special, item.map)
+		elif s_code == 'skill_granting':
+			ResourceScripts.custom_effects.call(template.special, parent.get_ref(), item.skill)
 		else:
 			ResourceScripts.custom_effects.call(template.special, parent.get_ref())
 		return
