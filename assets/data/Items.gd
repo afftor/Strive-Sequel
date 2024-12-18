@@ -3321,6 +3321,28 @@ var itemlist = {
 		map = 'dungeon_fire_depths',
 		mansion_effect = 'map',
 	},
+	skillbook_hyperborea = {
+		code = 'skillbook_hyperborea',
+		name = "",
+		descript = "",
+		type = 'usable',
+		itemtype = 'potion',
+		crafttype = 'basic',
+		slots = [],
+		price = 100,
+		icon = load("res://assets/images/iconsitems/scroll1.png"),
+		tier = 'skillbook',
+		reqs = [
+			{code = 'has_skill', skill = 'hyperborea', check = false},
+			{code = 'stat', stat = 'mastery_water', value = 4, operant = 'gte'},
+			{code = 'stat', stat = 'mastery_light', value = 4, operant = 'gte'},
+		],
+		reqs_fail_message = "Masteries levels not matched or already know this skill",
+		effects = [],
+		tags = ['skill_tooltip'],
+		skill = 'hyperborea',
+		mansion_effect = 'skill_granting',
+	},
 
 
 	worker_gloves = {

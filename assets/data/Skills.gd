@@ -1286,7 +1286,7 @@ func get_template(id, caster):
 		ss.createfromskill(tres)
 		tres = ss.convert_to_new_template()
 	#process charges
-	if tres.has('charges') and tres.charges != 0:
+	if tres.has('charges') and !(tres.charges is int and tres.charges == 0):
 		tres.charges = get_charges(tres, caster)
 	#load icon
 	if tres.icon is String:

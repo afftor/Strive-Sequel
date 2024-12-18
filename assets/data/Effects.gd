@@ -2938,6 +2938,21 @@ func rebuild_oneshot_addstat(stat, value, target = 'owner'):
 	return template
 
 
+func rebuild_oneshot_addskill(skill, target = 'caster'):
+	var template = {
+		type = 'oneshot',
+		args = [],
+		atomic = [],
+		buffs = [],
+		sub_effects = []
+	}
+	template.target = target
+	var a_template = {type = 'add_combat_skill', skill = skill}
+	template.atomic.push_back(a_template)
+	
+	return template
+
+
 func rebuild_remove_effect(eff, target = 'target'):
 	var template = {
 		type = 'oneshot',

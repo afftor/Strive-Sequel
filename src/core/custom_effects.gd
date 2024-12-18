@@ -199,3 +199,7 @@ func map(dungeon_code):
 		input_handler.interactive_message(
 			'purchase_dungeon_location', 'location_purchase_event', {}
 		)
+
+
+func skill_grant(character, skill):
+	character.learn_c_skill(skill)

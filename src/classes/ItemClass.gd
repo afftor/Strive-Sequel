@@ -94,6 +94,7 @@ func CreateUsable(ItemName = '', number = 1):
 	stackable = true
 	amount = number
 	var itemtemplate = Items.itemlist[ItemName]
+	tags = itemtemplate.tags.duplicate()
 	if itemtemplate.icon != null:
 		icon = itemtemplate.icon.get_path()
 	name = itemtemplate.name

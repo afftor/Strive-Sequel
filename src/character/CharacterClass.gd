@@ -1285,6 +1285,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			for k in i.value:
 				if has_profession(k):
 					check = true
+		'has_skill':
+			return skills.has_skill(i.value) == i.check
 		'race_is_beast':
 			check = races.racelist[get_stat('race')].tags.has('beast') == i.check
 		'is_shortstack':
