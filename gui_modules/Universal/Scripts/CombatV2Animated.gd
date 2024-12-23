@@ -415,6 +415,7 @@ func select_actor():
 			ActionQueue.invoke()
 		yield(ActionQueue, 'queue_empty')
 	
+	ActionQueue.reinit()
 	ClearSkillTargets()
 	ClearSkillPanel()
 	ClearItemPanel()
