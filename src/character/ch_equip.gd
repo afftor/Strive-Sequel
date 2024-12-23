@@ -153,6 +153,17 @@ func get_weapon_animation():
 	return res
 
 
+func get_weapon_sound():
+	var item = gear.rhand
+	if ResourceScripts.game_res.items.has(item):
+		item = ResourceScripts.game_res.items[item]
+	else:
+		item = null
+	if item == null:
+		return 'dodge'
+	else:
+		return item.hitsound
+
 func recheck_equip():
 	#check hands for conflict
 	if gear.rhand != null:
@@ -162,3 +173,5 @@ func recheck_equip():
 				var item2 = ResourceScripts.game_res.items[gear.lhand]
 				unequip(item2)
 				gear.lhand = gear.rhand
+
+

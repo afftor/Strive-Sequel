@@ -32,7 +32,7 @@ var skills = {
 		icon = load("res://assets/images/iconsskills/icon_earthquake.png"),
 		type = 'auto', 
 		ability_type = 'spell',
-		tags = ['instant'],
+		tags = ['instant', 'passive'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template_globals({effect = 'e_s_commander', push_value = true})], 

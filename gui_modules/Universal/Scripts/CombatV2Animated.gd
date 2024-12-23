@@ -16,6 +16,8 @@ var instantanimation = null
 var shotanimationarray = [] #supposedanimation = {code = 'code', runnext = false, delayuntilnext = 0}
 
 var CombatAnimations = ResourceScripts.scriptdict.combat_animation.new()
+var ActionQueue
+var queue_script = preload("res://src/combat/action_queue.gd")
 
 var debug = false
 
@@ -29,8 +31,6 @@ var fightover = false
 var playergroup = {} #pos:hid
 var enemygroup = {}
 var currentactor
-
-var endturn
 
 var summons = [] #pos
 
@@ -54,7 +54,6 @@ var playerpaneltextures = {
 	target = null,
 	disabled = null,
 }
-var q_skills = []
 var battlefield = [] #hid/null
 onready var battlefieldpositions = {1 : $Panel/PlayerGroup/Front/left, 2 : $Panel/PlayerGroup/Front/mid, 3 : $Panel/PlayerGroup/Front/right,
 4 : $Panel/PlayerGroup/Back/left, 5 : $Panel/PlayerGroup/Back/mid, 6 : $Panel/PlayerGroup/Back/right,
@@ -67,15 +66,6 @@ var dummy = {
 }
 
 signal skill_use_finshed
-var eot = true
-
-var skill_callback_args = null #{value, skill, cater, target}
-enum {COPY_SET, COPY_DENY, COPY_ENABLED, COPY_EXECUTED}
-
-func set_copy_skill():
-	if skill_callback_args == null or skill_callback_args.value != COPY_ENABLED:
-		return
-	skill_callback_args.value = COPY_SET
 
 
 func _ready():
@@ -108,6 +98,7 @@ func on_skillbook_click():
 	$SkillBook.toggle()
 	RebuildSkillPanel()
 
+
 func _input(event):
 	#simple version based on legacy code and without proper keybinding
 	if !allowaction: return
@@ -125,7 +116,6 @@ func _input(event):
 				if ResourceScripts.game_res.materials[i] < skill_data.catalysts[i]: return
 		if skill_data.charges > 0 and activecharacter.skills.combat_skill_charges.has(skill) and activecharacter.skills.combat_skill_charges[skill] >= skill_data.charges: return
 		SelectSkill(skill)
-
 
 
 func run():
@@ -149,25 +139,6 @@ func cheatvictory():
 #		tchar.hp = 0
 	#checkwinlose()
 
-func play_animation(anim):
-	var anim_scene
-	if anim == "defeat":
-		anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_DEFEAT)
-		anim_scene.get_node("AnimationPlayer").play("defeated")
-		yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
-		yield(get_tree().create_timer(1), 'timeout')
-		ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
-		yield(get_tree().create_timer(0.5), 'timeout')
-	if anim == "runaway":
-		anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_RUNAWAY)
-		anim_scene.get_node("AnimationPlayer").play("runaway")
-		# yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
-		yield(get_tree().create_timer(3), 'timeout')
-		ResourceScripts.core_animations.FadeAnimation(anim_scene, 1)
-		yield(get_tree().create_timer(1), 'timeout')
-
-	anim_scene.queue_free()
-
 
 func reset_combat_data():
 	combat_data.instawin = false
@@ -184,6 +155,11 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	if music == "default":
 		music = 'battle1'
 	hide()
+	
+	ActionQueue = queue_script.new()
+	ActionQueue.combatnode = self
+	ActionQueue.animationnode = CombatAnimations
+	
 	$ItemPanel/debugvictory.visible = debug
 	# if variables.combat_tests == false:
 	# 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
@@ -230,112 +206,153 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 		for i in playergroup.values() + enemygroup.values():
 			var tchar = characters_pool.get_char_by_id(i)
 			tchar.process_event(variables.TR_COMBAT_S)
-			tchar.displaynode.rebuildbuffs()
+			ActionQueue.add_rebuildbuffs(tchar.displaynode)
 		set_process_input(true)
-		select_actor()
+		ActionQueue.add_start_combat()
+		ActionQueue.invoke_resume()
 
 
-func FinishCombat(victory = true):
-	victory_seq_run = false
-	HideFighterStats()
-	set_process_input(false)
-	if is_instance_valid(gui_controller.dialogue) && gui_controller.dialogue.is_visible():
-		gui_controller.dialogue.close() #for test
-	autoskill_dummy.is_active = false
-	for i in playergroup.values() + enemygroup.values():
-		var tchar = characters_pool.get_char_by_id(i)
-		tchar.skills.combat_cooldowns.clear()
+
+func buildenemygroup(enemygroup):
+	for i in range(1,7):
+		if enemygroup[i] != null:
+			enemygroup[i+6] = enemygroup[i]
+		enemygroup.erase(i)
 	
-	for p in playergroup.values():
-		var ch = characters_pool.get_char_by_id(p)
-		if ch.hp <=0:
-			if ResourceScripts.game_globals.difficulty != 'hard':
-				ch.hp = 1
-				ch.is_active = true
-				ch.defeated = false
-				ch.combat_position = 0
-				var eff
-				if ch.has_status('fastheal'):
-					eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury_alt)
-				else:
-					eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
-				ch.apply_effect(effects_pool.add_effect(eff))
-			else:
-				ch.killed()
-		ch.process_event(variables.TR_COMBAT_F)
-		ch.recheck_effect_tag('recheck_combat')
-	effects_pool.process_event(variables.TR_COMBAT_F)
-		#add permadeath check here
+	for i in enemygroup:
+		if enemygroup[i] == 'boss':
+			continue
+		if enemygroup[i] == null:
+			continue
+		var tempname = enemygroup[i]
+		var rare = false
+		var mboss = false
+		if tempname.ends_with('_rare'):
+			tempname = tempname.trim_suffix('_rare')
+			rare = true
+		if tempname.ends_with('_miniboss'):
+			tempname = tempname.trim_suffix('_miniboss')
+			mboss = true
+		var tchar = ResourceScripts.scriptdict.class_slave.new("combat_enemy")
+		enemygroup[i] = characters_pool.add_char(tchar)
+		tchar.generate_simple_fighter(tempname)
+		tchar.combatgroup = 'enemy'
+		tchar.position = i
+		if rare:
+			tchar.add_rare_trait()
+		if mboss:
+			tchar.tags.push_back("miniboss")
+			tchar.add_trait('miniboss')
+		
+		for stat in ['hpmax', 'xpreward']:
+			tchar.mul_stat(stat, combat_data.enemy_stats_mod)
+		for stat in ['atk', 'matk', 'armor']:
+			tchar.mul_stat(stat, min(combat_data.enemy_stats_mod, variables.survival_cap_main))
+		for stat in ['hitrate', 'evasion']:
+			tchar.mul_stat(stat, min(combat_data.enemy_stats_mod, variables.survival_cap_secondary))
+		tchar.hp = tchar.get_stat("hpmax") * combat_data.hpmod
+		tchar.mp = tchar.get_stat("mpmax")
+		tchar.add_trait('core_trait')
+		battlefield[int(i)] = enemygroup[i]
+		make_fighter_panel(tchar, i)
+
+
+
+func buildplayergroup(group):
+	#to remake getting data from state
+	#operating this data was remade
+	var newgroup = {}
+	for i in group:
+		if int(i) > 6: break
+		if group[i] == null:
+			continue
+		playergroupcounter += 1
+		var fighter = ResourceScripts.game_party.characters[group[i]]
+		fighter.combatgroup = 'ally'
+		battlefield[int(i)] = fighter.id
+		make_fighter_panel(fighter, i)
+		newgroup[int(i)] = fighter.id #only change
 	
-	for i in range(battlefield.size()):
-		if battlefield[i] != null:
-			var tchar = get_char_by_pos(i)
-			tchar.displaynode.queue_free()
-			tchar.displaynode = null
-			battlefield[i] = null
-	for i in enemygroup.values():
-		#mark enemy characters for clearing
-		#mb to change this part when dealing with captured enemies
-		var tchar = characters_pool.get_char_by_id(i)
-		tchar.is_active = false
-	if victory:
-		CombatAnimations.force_end()
-		ResourceScripts.core_animations.BlackScreenTransition(0.5)
-		yield(get_tree().create_timer(0.5), 'timeout')
-		hide()
-		input_handler.finish_combat()
+	playergroup = newgroup
+	fill_summons()
+
+
+func fill_summons(): 
+	for i in [4, 5, 6, 1, 2, 3]:
+		if battlefield[i] == null: 
+			continue
+		var tchar = get_char_by_pos(i)
+		for summon in Enemydata.summons:
+			if tchar.has_status(summon):
+				var data = Enemydata.summons[summon]
+				var amount = 0.0
+				for rec in data.amount:
+					if rec is Dictionary:
+						amount += tchar.get_stat(rec.stat) * rec.mod
+					else:
+						amount += rec
+				amount = int(ceil(amount))
+				for ii in range(amount):
+					summon(data.summon, 6, 'ally')
+
+
+func make_fighter_panel(fighter, spot):
+	spot = int(spot)
+	var container = battlefieldpositions[int(spot)]
+	var panel = $Panel/PlayerGroup/Back/left/Template.duplicate()
+	panel.visible = true
+	panel.material = load("res://assets/sfx/BarrierShader.tres").duplicate()
+	#panel.material = $Panel/PlayerGroup/Back/left/Template.material.duplicate()
+	panel.get_node('border').material = $Panel/PlayerGroup/Back/left/Template.get_node('border').material.duplicate()
+	fighter.displaynode = panel
+	panel.name = 'Character'
+	panel.set_script(ResourceScripts.scriptdict.fighternode)
+	panel.position = int(spot)
+	panel.animation_node = CombatAnimations
+	CombatAnimations.connect('alleffectsfinished', panel, 'check_active')
+	fighter.position = int(spot)
+	panel.fighter = fighter
+	panel.hp = fighter.hp
+	panel.mp = fighter.mp
+	panel.connect("signal_RMB", self, "ShowFighterStats")
+	# panel.connect("signal_RMB_release", self, 'HideFighterStats')
+	panel.connect("signal_LMB", self, 'FighterPress')
+	panel.connect("mouse_entered", self, 'FighterMouseOver', [fighter.id])
+	panel.connect("mouse_exited", self, 'FighterMouseOverFinish', [fighter.id])
+	if variables.CombatAllyHpAlwaysVisible && fighter.combatgroup == 'ally':
+		panel.get_node("hplabel").show()
+		panel.get_node("mplabel").show()
+#	panel.set_meta('character',fighter)
+	panel.get_node("Icon").texture = fighter.get_icon()
+	panel.get_node('Icon').material = load("res://assets/sfx/bw_shader.tres").duplicate()
+	panel.turn_overlay(false)
+	panel.get_node("HP").value = input_handler.calculatepercent(fighter.hp, fighter.get_stat('hpmax'))
+	panel.get_node("MP").value = input_handler.calculatepercent(fighter.mp, fighter.get_stat('mpmax'))
+	panel.hp = fighter.hp
+	panel.update_hp_label(fighter.hp, 100.0)
+	panel.update_mp_label(fighter.mp, 100.0)
+	if fighter.get_stat('mpmax') == 0:
+		panel.get_node("MP").value = 0
+	panel.get_node("Label").text = fighter.get_short_name()
+	if fighter.get_short_name().length() > 10:
+		panel.get_node('Label').set("custom_fonts/font",load("res://MainFont_Small.tres"))
+	container.add_child(panel)
+	panel.rect_position = Vector2(0,0)
+	#setuping target glowing
+	var g_color;
+	if spot < 7:
+		g_color = Color(0.0, 1.0, 0.0, 0.0);
 	else:
-		hide()
-		input_handler.combat_defeat()
-	
-	input_handler.combat_node = null
-	gui_controller.current_screen = gui_controller.previous_screen
-	gui_controller.combat = null
-	characters_pool.cleanup()
+		g_color = Color(1.0, 0.0, 0.0, 0.0);
+	panel.material.set_shader_param('modulate', g_color);
+	panel.turn_overlay(false)
+	panel.noq_rebuildbuffs()
 
-
-func select_actor():
-	ClearSkillTargets()
-	ClearSkillPanel()
-	ClearItemPanel()
-	checkdeaths()
-	if checkwinlose() == true:
-		return
-	if turnorder.empty():
-		#to test, maybe this is wrong decision
-		calculateorder()
-		newturn()
-	currentactor = turnorder[0].pos
-	turnorder.remove(0)
-	update_queue_asynch()
-	#currentactor.update_timers()
-	if currentactor <= 0:
-		env_turn()
-	elif currentactor < 7:
-		player_turn(currentactor)
-	else:
-		enemy_turn(currentactor)
-
-func newturn():
-	effects_pool.process_event(variables.TR_TURN_S)
-	for i in playergroup.values() + enemygroup.values():
-		var tchar = characters_pool.get_char_by_id(i)
-		tchar.process_event(variables.TR_TURN_S)
-		tchar.recheck_effect_tag('recheck_combat')
-		tchar.displaynode.rebuildbuffs()
-		#not sure about keeping all beyond - dis part, mb needs reworking
-		var cooldowncleararray = []
-		for k in tchar.skills.combat_cooldowns:
-			if tchar.skills.combat_cooldowns[k] < 0: continue
-			tchar.skills.combat_cooldowns[k] -= 1
-			if tchar.skills.combat_cooldowns[k] <= 0:
-				cooldowncleararray.append(k)
-		for k in cooldowncleararray:
-			tchar.skills.combat_cooldowns.erase(k)
 
 func checkdeaths():
 	for i in range(battlefield.size()):
-		if battlefield[i] == null: continue
+		if battlefield[i] == null: 
+			continue
 		var tchar = get_char_by_pos(i)
 		if tchar.defeated != true && tchar.hp <= 0:
 			#tchar.displaynode.defeat()
@@ -377,10 +394,10 @@ func checkwinlose():
 		else:
 			enemygroupcounter += 1
 	if playergroupcounter <= 0:
-		defeat()
+		ActionQueue.add_end_combat(false)
 		return true
 	elif enemygroupcounter <= 0:
-		victory()
+		ActionQueue.add_end_combat(true)
 		return true
 	for i in range(battlefield.size()):
 		if battlefield[i] == null:
@@ -391,280 +408,82 @@ func checkwinlose():
 			get_char_by_pos(i).recheck_effect_tag('recheck_death')
 	return false
 
-var rewardsdict
 
-#to check next functions
-var victory_seq_run = false
-func victory():
-	if victory_seq_run:
+func select_actor():
+	if !ActionQueue.is_empty():
+		if !ActionQueue.is_active:
+			ActionQueue.invoke()
+		yield(ActionQueue, 'queue_empty')
+	
+	ClearSkillTargets()
+	ClearSkillPanel()
+	ClearItemPanel()
+	checkdeaths()
+	if checkwinlose() == true:
 		return
-	victory_seq_run = true
-	get_tree().get_root().set_disable_input(true)
-
-	autoskill_dummy.is_active = false
-	CombatAnimations.check_start()
-	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	Input.set_custom_mouse_cursor(images.cursors.default)
-	yield(get_tree().create_timer(0.5), 'timeout')
-	fightover = true
-	$Rewards/CloseButton.disabled = true
-	input_handler.StopMusic()
-	#on combat ends triggers
-	for p in range(1, 7):
-		if battlefield[p] == null:
-			continue
-#	for p in playergroup.values():
-#		var t_p = characters_pool.get_char_by_id(p)
-		var t_p = get_char_by_pos(p)
-		if summons.has(p):
-			t_p.is_active = false
-			playergroup.erase(p)
-			summons.erase(p)
-		else:
-			t_p.process_event(variables.TR_COMBAT_F)
-	effects_pool.process_event(variables.TR_COMBAT_F)
-	#add permadeath check here
-	
-#	var tween = input_handler.GetTweenNode($Rewards/victorylabel)
-#	tween.interpolate_property($Rewards/victorylabel,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-#	tween.start()
-	
-	input_handler.PlaySound("battle_victory")
-	
-	rewardsdict = {gold = 0, materials = {}, items = [], xp = 0}
-	for i in enemygroup.values():
-		if i == null: #not sure why was this check added
-			continue
-		var tchar = characters_pool.get_char_by_id(i)
-		tchar.is_active = false
-		var count = 1
-		if tchar.tags.has('rare'):
-			count = 2
-			rewardsdict.xp += 3 * tchar.get_stat('xpreward')
-		elif tchar.tags.has('miniboss'):
-#			count = 2
-			rewardsdict.xp += 2 * tchar.get_stat('xpreward')
-		else:
-			rewardsdict.xp += tchar.get_stat('xpreward')
-		for q in range(count):
-			var loot = {}
-			for item in Enemydata.loottables[tchar.get_stat('loottable')]:
-				if item[0] == 'gold':
-					if tchar.tags.has('miniboss'):
-						rewardsdict.gold += 2 * round(rand_range(item[1], item[2]))
-					else:
-						rewardsdict.gold += round(rand_range(item[1], item[2]))
-				elif Items.materiallist.has(item[0]):
-					var counter = 1
-					if item.size() > 2:
-						counter = item[2]
-					if tchar.tags.has('miniboss'):
-						counter *= 2 #not sure about this implementation but looks better than simple doubling of values
-					while counter > 0:
-						if randf() <= item[1]:
-							input_handler.AddOrIncrementDict(loot, {item[0] : 1})
-						counter -= 1
-					input_handler.AddOrIncrementDict(rewardsdict.materials, loot)
-					loot.clear()
-				elif Items.itemlist.has(item[0]):
-					var itemtemp = Items.itemlist[item[0]]
-					var counter = 1
-					if item.size() > 2:
-						counter = item[2]
-					if tchar.tags.has('miniboss'):
-						counter *= 2 #not sure about this implementation but looks better than simple doubling of values
-					while counter > 0:
-						if randf() <= item[1]:
-							if itemtemp.type == 'usable':
-								var itemfound = false
-								for k in rewardsdict.items:
-									if k.itembase == item[0]:
-										k.amount += 1
-										itemfound = true
-										break
-								if itemfound == false:
-									var newitem = globals.CreateUsableItem(item[0])
-									rewardsdict.items.append(newitem)
-							if itemtemp.type == 'gear': #not used currently
-								var newitem = globals.CreateGearItemLoot(item[0], item[3]) #item[3] for parts, mb add randomization here
-								rewardsdict.items.append(newitem)
-						counter -= 1
-
-#		if Enemydata.loottables[tchar.loottable].has('materials'):
-#			for j in Enemydata.loottables[tchar.loottable].materials:
-#				if randf()*100 <= j.chance:
-#					loot[j.code] = round(rand_range(j.min, j.max))
-#			globals.AddOrIncrementDict(rewardsdict.materials, loot)
-#		if Enemydata.loottables[tchar.loottable].has('usables'):
-#			for j in Enemydata.loottables[tchar.loottable].usables:
-#				if randf()*100 <= j.chance:
-#					var newitem = globals.CreateUsableItem(j.code, round(rand_range(j.min, j.max)))
-#					rewardsdict.items.append(newitem)
-
-	input_handler.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
-	input_handler.ClearContainer($Rewards/ScrollContainer2/HBoxContainer)
-	rewardsdict.xp *= combat_data.xp_mod
-	var exp_per_character = rewardsdict.xp/playergroup.size()
-	for i in playergroup.values():
-		var tchar = characters_pool.get_char_by_id(i)
-		var gained_exp = exp_per_character# * tchar.get_stat('exp_gain_mod')
-		tchar.add_stat('base_exp', gained_exp)
-		tchar.add_stat('abil_exp', gained_exp)
-		tchar.add_stat('metrics_win', 1)
-		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer2/HBoxContainer)
-		newbutton.hide()
-		newbutton.modulate.a = 0
-		newbutton.show()
-		newbutton.get_node("Icon").texture = tchar.get_icon()
-		newbutton.get_node("name").text = tchar.get_short_name()
-		if gained_exp > 0:
-			gained_exp *= tchar.get_stat('exp_gain_mod')
-		gained_exp = int(gained_exp)
-		newbutton.get_node("amount").text = str(gained_exp)
-#		if tchar.hp <= 0:
-#			tchar.hp = 1
-#			tchar.defeated = false
-#			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
-#			tchar.apply_effect(effects_pool.add_effect(eff))
-			#add permadeath check here
-
-#		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/HBoxContainer/first)
-#		if $Rewards/HBoxContainer/first.get_children().size() >= 5:
-#			$Rewards/HBoxContainer/first.remove_child(newbutton)
-#			$Rewards/HBoxContainer/second.add_child(newbutton)
-#		#newbutton.get_node('icon').texture = tchar.portrait_circle()
-#		newbutton.get_node("xpbar").value = tchar.base_exp
-		#var level = tchar.level
-#		var subtween = input_handler.GetTweenNode(newbutton)
-#		if tchar.level > level:
-#			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, 100, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
-#			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
-#			subtween.interpolate_callback(input_handler, 1, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("LEVELUP")+ ': ' + str(tchar.level) + "!")
-#			subtween.interpolate_callback(input_handler, 1, 'PlaySound', "levelup")
-#		elif i.level == level && i.baseexp == 100 :
-#			newbutton.get_node("xpbar").value = 100
-#			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT)
-#			subtween.interpolate_callback(input_handler, 0, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("MAXLEVEL"))
-#		else:
-#			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, tchar.baseexp, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
-#			subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(ceil(rewardsdict.xp*tchar.xpmod)))
-#		subtween.start()
-	#$Rewards/ScrollContainer/HBoxContainer.move_child($Rewards/ScrollContainer/HBoxContainer/Button, $Rewards/ScrollContainer/HBoxContainer.get_children().size())
-
-	# $Rewards.visible = true
-	# $Rewards.modulate.a = 0
-	# ResourceScripts.core_animations.UnfadeAnimation($Rewards)
-	var rewardchars = globals.roll_characters()
-	for id in rewardchars:
-		var tchar = characters_pool.get_char_by_id(id)
-		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
-		newbutton.hide()
-		newbutton.modulate.a = 0
-		newbutton.show()
-		var ttex = tchar.get_icon_small()
-		if ttex != null: 
-			newbutton.get_node('Icon').texture = ttex
-		else:
-			newbutton.get_node('Icon').texture = load("res://assets/images/gui/explore/Captured Characters/icons/icon_hero.png")
-		newbutton.get_node('name').text = tr("COMBAT_CHARACTER_CAPTURED") + ": " + tchar.get_full_name()
-		newbutton.get_node('name').set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(tchar.get_stat('growth_factor')))])
-		newbutton.get_node("amount").text = ""
-		globals.connectslavetooltip(newbutton, tchar)
-	if input_handler.exploration_node != null:
-		input_handler.exploration_node.add_rolled_chars(rewardchars)
-	for i in rewardsdict.materials:
-		var item = Items.materiallist[i]
-		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
-		newbutton.hide()
-		newbutton.modulate.a = 0
-		newbutton.show()
-		newbutton.get_node("Icon").texture = item.icon
-		newbutton.get_node("name").text = item.name
-		newbutton.get_node("amount").text = str(rewardsdict.materials[i])
-		ResourceScripts.game_res.materials[i] += rewardsdict.materials[i]
-		globals.connectmaterialtooltip(newbutton, item)
-	for i in rewardsdict.items:
-		var newnode = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
-		newnode.hide()
-		newnode.modulate.a = 0
-		newnode.show()
-		newnode.get_node("Icon").texture = input_handler.loadimage(i.icon, 'icons')
-		globals.AddItemToInventory(i)
-		newnode.get_node("name").text = i.name
-		globals.connectitemtooltip_v2(newnode, ResourceScripts.game_res.items[globals.get_item_id_by_code(i.itembase)])
-		if i.amount == null || i.amount == 0:
-			newnode.get_node("amount").visible = false
-		else:
-			newnode.get_node("amount").text = str(i.amount)
-	
-	#yield(get_tree().create_timer(1.7), 'timeout')
-
-#	for i in $Rewards/ScrollContainer/HBoxContainer.get_children():
-#		if i.name == 'Button':
-#			continue
-#		tween = input_handler.GetTweenNode(i)
-#		yield(get_tree().create_timer(1), 'timeout')
-#		i.show()
-#		input_handler.PlaySound("itemget")
-#		tween.interpolate_property(i,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-#		tween.start()
-
-	#yield(get_tree().create_timer(1), 'timeout')
-	$Rewards/CloseButton.disabled = false
-	var array = []
-	for i in playergroup.values():
-		array.append(i)
-	input_handler.get_person_for_chat(array, 'combat_won')
-	# yield($Rewards/AnimationPlayer, "animation_finished")
-	$Rewards/gold/Label.text = '+0'
-	$Rewards.set_meta("result", 'victory')
-	$Rewards/gold/Label.text = str("+") + str(rewardsdict.gold)
-	ResourceScripts.game_res.money += rewardsdict.gold
-	$Rewards.show()
-	$Rewards.modulate.a = 0
-	$Rewards/AnimationPlayer.play("Victory")
-	$Rewards.modulate.a = 1
-	yield(get_tree().create_timer(1.5), "timeout")
-	$Rewards/ScrollContainer/HBoxContainer.hide()
-	$Rewards/ScrollContainer2/HBoxContainer.hide()
-	$Rewards/ScrollContainer/HBoxContainer.show()
-	$Rewards/ScrollContainer2/HBoxContainer.show()
-	show_buttons($Rewards/ScrollContainer/HBoxContainer)
-	show_buttons($Rewards/ScrollContainer2/HBoxContainer)
-	get_tree().get_root().set_disable_input(false)
-	$Rewards/CloseButton.grab_click_focus()
+	if turnorder.empty():
+		#to test, maybe this is wrong decision
+		calculateorder()
+		newturn()
+	currentactor = turnorder[0].pos
+	turnorder.remove(0)
+	update_queue_asynch()
+	#currentactor.update_timers()
+	current_turn()
 
 
-func show_buttons(container):
-	for button in container.get_children():
-		if button.name == "Button":
-			continue
-		ResourceScripts.core_animations.UnfadeAnimation(button, 0.3)
-		yield(get_tree().create_timer(0.3), "timeout")
-		button.set("modulate", Color(1, 1, 1, 1))
-
-func defeat(runaway = false): #runaway is a temporary variable until run() method not fully implemented
-	input_handler.PlaySound("combat_defeat")
-	if runaway:
-		play_animation("runaway")
-		yield(get_tree().create_timer(3), 'timeout')
-		ResourceScripts.core_animations.BlackScreenTransition(1.5)
-		yield(get_tree().create_timer(1.5), 'timeout')
+func current_turn():
+	if currentactor <= 0:
+		env_turn()
+	elif currentactor < 7:
+		player_turn()
 	else:
-		play_animation("defeat")
-		yield(get_tree().create_timer(3), 'timeout')
-		ResourceScripts.core_animations.BlackScreenTransition(1.5)
-		yield(get_tree().create_timer(1.5), 'timeout')
+		enemy_turn()
 
-	# CombatAnimations.check_start()
-	# if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	CombatAnimations.force_end()
-	Input.set_custom_mouse_cursor(images.cursors.default)
-	fightover = true
-	FinishCombat(false)
-	input_handler.SetMusic(input_handler.explore_sound, true)
 
-func player_turn(pos):
+func newturn():
+	effects_pool.process_event(variables.TR_TURN_S)
+	for i in playergroup.values() + enemygroup.values():
+		var tchar = characters_pool.get_char_by_id(i)
+		tchar.process_event(variables.TR_TURN_S)
+		tchar.recheck_effect_tag('recheck_combat')
+		tchar.displaynode.rebuildbuffs()
+		#not sure about keeping all beyond - dis part, mb needs reworking
+		var cooldowncleararray = []
+		for k in tchar.skills.combat_cooldowns:
+			if tchar.skills.combat_cooldowns[k] < 0: continue
+			tchar.skills.combat_cooldowns[k] -= 1
+			if tchar.skills.combat_cooldowns[k] <= 0:
+				cooldowncleararray.append(k)
+		for k in cooldowncleararray:
+			tchar.skills.combat_cooldowns.erase(k)
+
+
+func calculateorder():
+	turnorder.clear()
+	if autoskill != null:
+		turnorder.append({pos = 0, speed = 100})
+	for pos in playergroup:
+		var tchar = get_char_by_pos(pos)
+		if tchar.defeated == true:
+			continue
+		turnorder.append({speed = tchar.get_stat('speed') + randf() * 5, pos = pos})
+	for pos in enemygroup:
+		var tchar = get_char_by_pos(pos)
+		if tchar.defeated == true:
+			continue
+		turnorder.append({speed = tchar.get_stat('speed') + randf() * 5, pos = pos})
+	
+	turnorder.sort_custom(self, 'speedsort')
+#	update_queue_asynch()
+
+
+func speedsort(first, second):
+	return first.speed > second.speed
+
+
+func player_turn():
+	var pos = currentactor
 	# battlefieldpositions[pos].get_node("Character/Active").show()
 	for position in battlefieldpositions.values():
 		if position.get_node_or_null("Character"):
@@ -679,13 +498,9 @@ func player_turn(pos):
 	CombatAnimations.check_start()
 #	$Panel3.texture = load("res://assets/Textures_v2/BATTLE/Panels/panel_battle_nameturn_l.png")
 #	$Panel3/Label.text = selected_character.get_short_name()
-	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	if CombatAnimations.is_busy: 
+		yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
-	while !q_skills.empty():
-		var tdata = q_skills.pop_front()
-		var tstate = use_skill(tdata.skill, tdata.caster, tdata.target)
-		if typeof(tstate) == TYPE_OBJECT:
-			yield(tstate, 'completed')
 	if !selected_character.can_act():
 		#combatlogadd("%s cannot act" % selected_character.name)
 		selected_character.process_event(variables.TR_TURN_F)
@@ -695,22 +510,22 @@ func player_turn(pos):
 		return
 	if selected_character.has_status('confuse'):
 		activeaction = selected_character.get_skill_by_tag('default')
-		UpdateSkillTargets(selected_character, true)
+		var activeaction_data = Skilldata.get_template_combat(activeaction, selected_character)
+		UpdateSkillTargets(selected_character, activeaction_data, true)
 		var targ = get_random_target()
-		endturn = true
-		use_skill(selected_character.get_skill_by_tag('default'), selected_character, targ)
+		use_skill(activeaction, selected_character, targ)
 		return
 	if selected_character.has_status('taunt_hard'):
 		var tchar = characters_pool.get_char_by_id(selected_character.taunt)
 #		selected_character.taunt = null
 		if can_be_taunted(selected_character, tchar):
-			endturn = true
 			use_skill(selected_character.get_skill_by_tag('default'), selected_character, tchar)
 			return
 		else:
 			selected_character.process_event(variables.TR_TAUNT_FAIL)
 	CombatAnimations.check_start()
-	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	if CombatAnimations.is_busy: 
+		yield(CombatAnimations, 'alleffectsfinished')
 	$Panel3.visible = true
 	$Menu/Run.disabled = norun_mode
 	#allowaction = true
@@ -719,10 +534,89 @@ func player_turn(pos):
 	SelectSkill(selected_character.selectedskill)
 
 
+
+func enemy_turn():
+	var pos = currentactor
+	for position in battlefieldpositions.values():
+		if position.get_node_or_null("Character"):
+			position.get_node("Character/Active").visible = battlefieldpositions[pos] == position
+	$Menu/Run.disabled = true
+	turns += 1
+	var fighter = get_char_by_pos(pos)
+	$Panel3.visible = false
+#	$Panel3.texture = load("res://assets/Textures_v2/BATTLE/Panels/panel_battle_nameturn_r.png")
+#	$Panel3/Label.text = fighter.get_short_name()
+	#fighter.update_timers()
+	fighter.process_event(variables.TR_TURN_GET)
+	effects_pool.process_event(variables.TR_TURN_GET, fighter)
+	fighter.displaynode.rebuildbuffs()
+	CombatAnimations.check_start()
+	if CombatAnimations.is_busy: 
+		yield(CombatAnimations, 'alleffectsfinished')
+	if !fighter.can_act():
+		#combatlogadd("%s cannot act" % fighter.name)
+		fighter.process_event(variables.TR_TURN_F)
+		effects_pool.process_event(variables.TR_TURN_F, fighter)
+		fighter.displaynode.rebuildbuffs() #I got error here once @SphinxKingStone
+		call_deferred('select_actor')
+		return
+	#Selecting active skill
+	
+	Highlight(pos, 'enemy')
+	
+	turns += 1
+	var castskill = fighter.ai._get_action()
+	var target = fighter.ai._get_target(castskill)
+	if target == null:
+		castskill = fighter.ai._get_action(true)
+		target = fighter.ai._get_target(castskill)
+	if target == null:
+		checkwinlose()
+		return
+	target = get_char_by_pos(target)
+
+	if fighter.has_status('confuse'):
+		castskill = fighter.get_skill_by_tag('default')
+		activeaction = castskill
+		var activeaction_data = Skilldata.get_template_combat(activeaction, fighter)
+		UpdateSkillTargets(fighter, activeaction_data, true)
+		target = get_random_target()
+	if fighter.has_status('taunt_hard'):
+		var targ = characters_pool.get_char_by_id(fighter.taunt)
+#		fighter.taunt = null
+		if can_be_taunted(fighter, targ):
+			target = targ;
+			castskill = fighter.get_skill_by_tag('default')
+		else:
+			fighter.process_event(variables.TR_TAUNT_FAIL)
+	if target == null:
+		print(fighter.get_short_name(), ' no target found')
+		return
+	use_skill(castskill, fighter, target)
+
+
+
+func env_turn():
+	if autoskill == null: return
+	if autoskill_delay_rem <= 0:
+		autoskill_delay_rem = autoskill_delay
+		turns += 1
+		activecharacter = autoskill_dummy
+		autoskill_times -= 1
+		use_skill(autoskill, autoskill_dummy, get_proper_target_for_autoskill(), variables.SKILL_AUTO)
+		if autoskill_times == 0: 
+			autoskill = null
+		CombatAnimations.check_start()
+		if CombatAnimations.is_busy: 
+			yield(CombatAnimations, 'alleffectsfinished')
+	else:
+		autoskill_delay_rem -= 1
+
+
 #rangetypes melee, any, backmelee
 
-func UpdateSkillTargets(caster, glow_skip = false):
-	var skill = Skilldata.get_template(activeaction, caster)
+func UpdateSkillTargets(caster, skill, glow_skip = false):
+#	var skill = Skilldata.get_template(activeaction, caster)
 	var fighter = caster
 	var targetgroups = skill.target
 	var rangetype = skill.target_range
@@ -825,85 +719,8 @@ func can_be_taunted(caster, target):
 	return (skill.target_range == 'any')
 
 
-func enemy_turn(pos):
-	for position in battlefieldpositions.values():
-		if position.get_node_or_null("Character"):
-			position.get_node("Character/Active").visible = battlefieldpositions[pos] == position
-	$Menu/Run.disabled = true
-	turns += 1
-	var fighter = get_char_by_pos(pos)
-	$Panel3.visible = false
-#	$Panel3.texture = load("res://assets/Textures_v2/BATTLE/Panels/panel_battle_nameturn_r.png")
-#	$Panel3/Label.text = fighter.get_short_name()
-	#fighter.update_timers()
-	fighter.process_event(variables.TR_TURN_GET)
-	effects_pool.process_event(variables.TR_TURN_GET, fighter)
-	fighter.displaynode.rebuildbuffs()
-	CombatAnimations.check_start()
-	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	if !fighter.can_act():
-		#combatlogadd("%s cannot act" % fighter.name)
-		fighter.process_event(variables.TR_TURN_F)
-		effects_pool.process_event(variables.TR_TURN_F, fighter)
-		fighter.displaynode.rebuildbuffs() #I got error here once @SphinxKingStone
-		call_deferred('select_actor')
-		return
-	#Selecting active skill
 
-	Highlight(pos, 'enemy')
-
-	turns += 1
-	var castskill = fighter.ai._get_action()
-	var target = fighter.ai._get_target(castskill)
-	if target == null:
-		castskill = fighter.ai._get_action(true)
-		target = fighter.ai._get_target(castskill)
-	if target == null:
-		checkwinlose()
-		return
-	target = get_char_by_pos(target)
-
-	if fighter.has_status('confuse'):
-		castskill = fighter.get_skill_by_tag('default')
-		activeaction = castskill
-		UpdateSkillTargets(fighter, true)
-		target = get_random_target()
-	if fighter.has_status('taunt_hard'):
-		var targ = characters_pool.get_char_by_id(fighter.taunt)
-#		fighter.taunt = null
-		if can_be_taunted(fighter, targ):
-			target = targ;
-			castskill = fighter.get_skill_by_tag('default')
-		else:
-			fighter.process_event(variables.TR_TAUNT_FAIL)
-	if target == null:
-		print(fighter.get_short_name(), ' no target found')
-		return
-	skill_callback_args = {}
-	skill_callback_args.skill = castskill
-	skill_callback_args.caster = fighter
-	skill_callback_args.target = target
-	skill_callback_args.value = COPY_ENABLED
-	endturn = true
-	use_skill(castskill, fighter, target)
-	CombatAnimations.check_start()
-	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	#yield(self, "skill_use_finshed")
-	while eot:
-		turns += 1
-		castskill = fighter.ai._get_action()
-		target = get_char_by_pos(fighter.ai._get_target(castskill))
-		skill_callback_args = {}
-		skill_callback_args.skill = castskill
-		skill_callback_args.caster = fighter
-		skill_callback_args.target = target
-		skill_callback_args.value = COPY_ENABLED
-		endturn = true
-		use_skill(castskill, fighter, target)
-		CombatAnimations.check_start()
-		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-
-func setup_autoskill(data):
+func setup_autoskill(data, person):
 	autoskill = data.skill
 	if data.has('delay'):
 		autoskill_delay = data.delay
@@ -914,102 +731,12 @@ func setup_autoskill(data):
 		autoskill_times = data.number
 	else:
 		autoskill_times = -1
-
-
-func env_turn():
-	if autoskill == null: return
-	if autoskill_delay_rem <= 0:
-		autoskill_delay_rem = autoskill_delay
-		turns += 1
-		activecharacter = autoskill_dummy
-		autoskill_times -= 1
-		endturn = true
-		use_skill(autoskill, autoskill_dummy, get_proper_target_for_autoskill())
-		if autoskill_times == 0: autoskill = null
-		CombatAnimations.check_start()
-		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	else:
-		autoskill_delay_rem -= 1
-
-
-func calculateorder():
-	turnorder.clear()
-	if autoskill != null:
-		turnorder.append({pos = 0, speed = 100})
-	for pos in playergroup:
-		var tchar = get_char_by_pos(pos)
-		if tchar.defeated == true:
-			continue
-		turnorder.append({speed = tchar.get_stat('speed') + randf() * 5, pos = pos})
-	for pos in enemygroup:
-		var tchar = get_char_by_pos(pos)
-		if tchar.defeated == true:
-			continue
-		turnorder.append({speed = tchar.get_stat('speed') + randf() * 5, pos = pos})
-	
-	turnorder.sort_custom(self, 'speedsort')
-#	update_queue_asynch()
-
-
-func speedsort(first, second):
-	return first.speed > second.speed
-
-
-func make_fighter_panel(fighter, spot):
-	spot = int(spot)
-	var container = battlefieldpositions[int(spot)]
-	var panel = $Panel/PlayerGroup/Back/left/Template.duplicate()
-	panel.visible = true
-	panel.material = load("res://assets/sfx/BarrierShader.tres").duplicate()
-	#panel.material = $Panel/PlayerGroup/Back/left/Template.material.duplicate()
-	panel.get_node('border').material = $Panel/PlayerGroup/Back/left/Template.get_node('border').material.duplicate()
-	fighter.displaynode = panel
-	panel.name = 'Character'
-	panel.set_script(ResourceScripts.scriptdict.fighternode)
-	panel.position = int(spot)
-	panel.animation_node = CombatAnimations
-	CombatAnimations.connect('alleffectsfinished', panel, 'check_active')
-	fighter.position = int(spot)
-	panel.fighter = fighter
-	panel.hp = fighter.hp
-	panel.mp = fighter.mp
-	panel.connect("signal_RMB", self, "ShowFighterStats")
-	# panel.connect("signal_RMB_release", self, 'HideFighterStats')
-	panel.connect("signal_LMB", self, 'FighterPress')
-	panel.connect("mouse_entered", self, 'FighterMouseOver', [fighter.id])
-	panel.connect("mouse_exited", self, 'FighterMouseOverFinish', [fighter.id])
-	if variables.CombatAllyHpAlwaysVisible && fighter.combatgroup == 'ally':
-		panel.get_node("hplabel").show()
-		panel.get_node("mplabel").show()
-#	panel.set_meta('character',fighter)
-	panel.get_node("Icon").texture = fighter.get_icon()
-	panel.get_node('Icon').material = load("res://assets/sfx/bw_shader.tres").duplicate()
-	panel.turn_overlay(false)
-	panel.get_node("HP").value = input_handler.calculatepercent(fighter.hp, fighter.get_stat('hpmax'))
-	panel.get_node("MP").value = input_handler.calculatepercent(fighter.mp, fighter.get_stat('mpmax'))
-	panel.hp = fighter.hp
-	panel.update_hp_label(fighter.hp, 100.0)
-	panel.update_mp_label(fighter.mp, 100.0)
-	if fighter.get_stat('mpmax') == 0:
-		panel.get_node("MP").value = 0
-	panel.get_node("Label").text = fighter.get_short_name()
-	if fighter.get_short_name().length() > 10:
-		panel.get_node('Label').set("custom_fonts/font",load("res://MainFont_Small.tres"))
-	container.add_child(panel)
-	panel.rect_position = Vector2(0,0)
-	#setuping target glowing
-	var g_color;
-	if spot < 7:
-		g_color = Color(0.0, 1.0, 0.0, 0.0);
-	else:
-		g_color = Color(1.0, 0.0, 0.0, 0.0);
-	panel.material.set_shader_param('modulate', g_color);
-	panel.turn_overlay(false)
-	panel.noq_rebuildbuffs(fighter.get_combat_buffs())
+	autoskill_dummy.combatgroup = "_" + person.combatgroup
+	autoskill_dummy.set_stat('atk', person.get_stat('atk'))
+	autoskill_dummy.set_stat('matk', person.get_stat('matk'))
 
 
 var fighterhighlighted = false
-
 func FighterShowStats(fighter):
 	var panel = fighter.displaynode
 	panel.get_node("hplabel").show()
@@ -1017,6 +744,7 @@ func FighterShowStats(fighter):
 	
 	$StatsPanelLeft.fill(fighter)
 	$StatsPanelRight.fill(fighter)
+
 
 func FighterMouseOver(id, no_press = false):
 	var fighter = characters_pool.get_char_by_id(id)
@@ -1057,6 +785,7 @@ func FighterMouseOverFinish(id):
 	for f in allowedtargets.ally:
 		Target_Glow(f)
 
+
 func ShowFighterStats(id):
 	var fighter = characters_pool.get_char_by_id(id)
 	$ItemPanel.hide()
@@ -1077,133 +806,7 @@ func FighterPress(pos):
 	ClearSkillTargets()
 	ClearItemPanel()
 	ClearSkillPanel()
-	skill_callback_args = {}
-	skill_callback_args.skill = activeaction
-	skill_callback_args.caster = activecharacter
-	skill_callback_args.target = get_char_by_pos(pos)
-	skill_callback_args.value = COPY_ENABLED
-	endturn = true
 	use_skill(activeaction, activecharacter, get_char_by_pos(pos))
-
-
-func buildenemygroup(enemygroup):
-	for i in range(1,7):
-		if enemygroup[i] != null:
-			enemygroup[i+6] = enemygroup[i]
-		enemygroup.erase(i)
-	
-	for i in enemygroup:
-		if enemygroup[i] == 'boss':
-			continue
-		if enemygroup[i] == null:
-			continue
-		var tempname = enemygroup[i]
-		var rare = false
-		var mboss = false
-		if tempname.ends_with('_rare'):
-			tempname = tempname.trim_suffix('_rare')
-			rare = true
-		if tempname.ends_with('_miniboss'):
-			tempname = tempname.trim_suffix('_miniboss')
-			mboss = true
-		var tchar = ResourceScripts.scriptdict.class_slave.new("combat_enemy")
-		enemygroup[i] = characters_pool.add_char(tchar)
-		tchar.generate_simple_fighter(tempname)
-		tchar.combatgroup = 'enemy'
-		tchar.position = i
-		if rare:
-			tchar.add_rare_trait()
-		if mboss:
-			tchar.tags.push_back("miniboss")
-			tchar.add_trait('miniboss')
-		
-		for stat in ['hpmax', 'xpreward']:
-			tchar.mul_stat(stat, combat_data.enemy_stats_mod)
-		for stat in ['atk', 'matk', 'armor']:
-			tchar.mul_stat(stat, min(combat_data.enemy_stats_mod, variables.survival_cap_main))
-		for stat in ['hitrate', 'evasion']:
-			tchar.mul_stat(stat, min(combat_data.enemy_stats_mod, variables.survival_cap_secondary))
-		tchar.hp = tchar.get_stat("hpmax") * combat_data.hpmod
-		tchar.mp = tchar.get_stat("mpmax")
-		tchar.add_trait('core_trait')
-		battlefield[int(i)] = enemygroup[i]
-		make_fighter_panel(tchar, i)
-#func buildenemygroup(enemygroup, enemy_stats_mod):
-#	for i in range(1,7):
-#		if enemygroup[i] != null:
-#			enemygroup[i+6] = enemygroup[i]
-#		enemygroup.erase(i)
-#
-#	for i in enemygroup:
-#		if enemygroup[i] == 'boss':
-#			continue
-#		if enemygroup[i] == null:
-#			continue
-#		var tempname = enemygroup[i]
-#		var tchar = ResourceScripts.scriptdict.class_slave.new()
-#		tchar.generate_simple_fighter(tempname)
-#		tchar.combatgroup = 'enemy'
-#		tchar.position = i
-#
-#		for stat in ['hpmax', 'atk', 'matk', 'hitrate', 'armor', 'xpreward']:
-#			tchar.mul_stat(stat, enemy_stats_mod)
-#		tchar.hp = tchar.get_stat("hpmax")
-#		enemygroup[i] = characters_pool.add_char(tchar)
-#		tchar.add_trait('core_trait')
-#		battlefield[int(i)] = enemygroup[i]
-#		make_fighter_panel(tchar, i)
-
-func buildplayergroup(group):
-	#to remake getting data from state
-	#operating this data was remade
-	var newgroup = {}
-	for i in group:
-		if int(i) > 6: break
-		if group[i] == null:
-			continue
-		playergroupcounter += 1
-		var fighter = ResourceScripts.game_party.characters[group[i]]
-		fighter.combatgroup = 'ally'
-		battlefield[int(i)] = fighter.id
-		make_fighter_panel(fighter, i)
-		newgroup[int(i)] = fighter.id #only change
-	
-	playergroup = newgroup
-	fill_summons()
-
-
-func fill_summons(): 
-	for i in [4, 5, 6, 1, 2, 3]:
-		if battlefield[i] == null: 
-			continue
-		var tchar = get_char_by_pos(i)
-		for summon in Enemydata.summons:
-			if tchar.has_status(summon):
-				var data = Enemydata.summons[summon]
-				var amount = 0.0
-				for rec in data.amount:
-					if rec is Dictionary:
-						amount += tchar.get_stat(rec.stat) * rec.mod
-					else:
-						amount += rec
-				amount = int(ceil(amount))
-				for ii in range(amount):
-					summon(data.summon, 6, 'ally')
-
-#	var num = 0
-##	num = 1 #test
-#	for i in playergroup:
-#		if int(i) > 6: break
-#		if playergroup[i] == null:
-#			continue
-#		var tchar = characters_pool.get_char_by_id(playergroup[i])
-#		if tchar.has_status('summoner'):
-#			num += ceil(tchar.get_stat('magic_factor') / 2)
-#
-#	for i in range(num):
-##		summon('rat', 6, 'ally')
-#		summon(['skeleton_melee', 'skeleton_archer'], 6, 'ally')
-##		summon(['skeleton_melee', null], 6, 'ally')
 
 
 func summon(montype, limit, combatgroup): #reworked
@@ -1275,323 +878,30 @@ func summon(montype, limit, combatgroup): #reworked
 	tchar.mp = tchar.get_stat("mpmax")
 	tchar.add_trait('core_trait')
 	
-	
 	make_fighter_panel(tchar, sum_pos);
 
 
-func refine_target(skill, caster, ttarget): #s_skill, caster, target
-	var target = ttarget.position
-	var change = false
-	#var skill = Skillsdata.skilllist[s_code]
-	if skill.keep_target == variables.TARGET_FORCED: 
-		change = false #intentional target lock
-	elif ttarget == null: 
-		change = true #forced change
-	elif ttarget.defeated or ttarget.hp <= 0: 
-		change = true #forced change. or not. nvn error
-	elif skill.keep_target == variables.TARGET_NOKEEP: 
-		change = true #intentional change
-	elif skill.keep_target == variables.TARGET_KEEPFIRST: 
-		skill.keep_target = variables.TARGET_NOKEEP
-	elif skill.keep_target == variables.TARGET_MOVEFIRST:
-		skill.keep_target = variables.TARGET_KEEP
-		change = true
-	if !change: 
-		return ttarget
-	#fing new target
-	match skill.next_target:
-		variables.NT_ANY:
-			var avtargets = get_enemy_targets_all(caster)
-			if avtargets.empty(): return null
-			return input_handler.random_from_array(avtargets)
-		variables.NT_ANY_NOREPEAT:
-			var avtargets = get_enemy_targets_all(caster)
-			if avtargets.empty(): return null
-			avtargets.erase(target)
-			return input_handler.random_from_array(avtargets)
-		variables.NT_MELEE:
-			var avtargets = get_enemy_targets_melee(caster)
-			if avtargets.empty(): return null
-			return input_handler.random_from_array(avtargets)
-		variables.NT_WEAK:
-			var avtargets = get_enemy_targets_all(caster)
-			if avtargets.empty(): return null
-			var t = 0
-			for i in range(avtargets.size()):
-				if avtargets[i].hp < avtargets[t].hp: t = i
-			return avtargets[t]
-		variables.NT_WEAK_MELEE:
-			var avtargets = get_enemy_targets_melee(caster)
-			if avtargets.empty(): return null
-			var t = 0
-			for i in range(avtargets.size()):
-				if avtargets[i].hp < avtargets[t].hp: t = i
-			return avtargets[t]
-		variables.NT_BACK:
-			if FindFighterRow(ttarget) == 'backrow': 
-				return null
-			else: 
-				return get_char_by_pos(target + 3)
-		variables.NT_CASTER:
-			return caster
 
-
-func use_skill(skill_code, caster, target):
+func use_skill(skill_code, caster, target, mode = variables.SKILL_BASE):
+	if !ActionQueue.is_empty():
+		print('error - activating skill on non-empty queue')
+		return
 	$ItemPanel.hide()
 	$Menu/Items.pressed = false
 	if activeaction != skill_code:
 		activeaction = skill_code
-	#to add code for different costs
-	#and various limits and cooldowns
 	allowaction = false
 	$Button.disabled = true
-
-	var skill = Skilldata.get_template(skill_code, caster)
-	var fa = true
-	if skill_callback_args != null and skill_callback_args.value != COPY_EXECUTED:
-		if caster != null && skill.name != "":
-			if activeitem:
-				combatlogadd("\n" + caster.get_short_name() + ' uses ' + activeitem.name + ". ")
-			else:
-				if caster.position == 0:
-					combatlogadd("\n" + skill.name + "! ")
-				else:
-					combatlogadd("\n" + caster.get_short_name() + ' uses ' + skill.name + ". ")
-
-			caster.pay_cost(skill.cost)
-
-			if skill.combatcooldown != 0:
-				caster.skills.combat_cooldowns[skill_code] = skill.combatcooldown
-
-		if caster.combatgroup == 'ally':
-			if !caster.has_status('ignore_catalysts_for_%s' % skill_code):
-				for i in skill.catalysts:
-					ResourceScripts.game_res.materials[i] -= skill.catalysts[i]
-			if skill.charges > 0:
-				if caster.skills.combat_skill_charges.has(skill.code):
-					caster.skills.combat_skill_charges[skill.code] += 1
-				else:
-					caster.skills.combat_skill_charges[skill.code] = 1
-				caster.skills.daily_cooldowns[skill_code] = skill.cooldown
-			if skill.ability_type == 'skill' && skill.name != "":
-				caster.add_stat('physics', rand_range(0.1,0.3))
-			elif skill.ability_type == 'spell' && skill.name != "":
-				caster.add_stat('wits', rand_range(0.1,0.3))
-				caster.add_stat('metrics_spellused', 1)
-			if skill.tags.has('heal'):
-				caster.add_stat('metrics_healused', 1)
-	if skill_callback_args != null and skill_callback_args.value == COPY_EXECUTED:
-		combatlogadd("\n" + caster.get_short_name() + ' copied ' + skill.name + ". ")
-	#caster part of setup
-	var s_skill1 = ResourceScripts.scriptdict.class_sskill.new()
-	s_skill1.createfromskill(skill)
-	s_skill1.setup_caster(caster)
-	#s_skill1.setup_target(target)
-	s_skill1.process_event(variables.TR_CAST)
-
-	if caster == null: caster = dummy
-
-	if typeof(caster) != TYPE_DICTIONARY: 
-		caster.process_event(variables.TR_CAST, s_skill1)
-		effects_pool.process_event(variables.TR_CAST, caster)
-	if skill_callback_args != null and skill_callback_args.value == COPY_ENABLED:
-		skill_callback_args.value = COPY_DENY
-	turns += 1
-	#preparing animations
-	var animations = skill.sfx.duplicate(true)
-	var animationdict = {windup = [], predamage = [], postdamage = []}
-	#sort animations
-	for i in animations:
-		if i.code == 'weapon':
-			i.code = caster.get_weapon_animation()
-		animationdict[i.period].append(i)
-	#casteranimations
-	#for sure at windup there should not be real_target-related animations
-	if skill.has('sounddata') and !skill.sounddata.empty() and skill.sounddata.initiate != null:
-		caster.displaynode.process_sound(skill.sounddata.initiate)
-	for i in animationdict.windup:
-		var sfxtarget = ProcessSfxTarget(i.target, caster, target)
-		sfxtarget.process_sfx(i.code)
-	#skill's repeat cycle of predamage-damage-postdamage
-	var targets
-#	var endturn = !s_skill1.tags.has('instant');
-	for n in range(s_skill1.repeat):
-		#get all affected targets
-		if target != null and !(s_skill1.target_number in ['nontarget', 'nontarget_group', 'single_nontarget']) and target.hp <= 0 :
-			if checkwinlose():
-				eot = false
-				return
-			UpdateSkillTargets(caster, true);
-			target = refine_target(s_skill1, caster, target)
-			#here should be event and functionality that handles forced target-based retargeting
-		targets = CalculateTargets(s_skill1, target, true)
-		#preparing real_target processing, predamage animations
-		var s_skill2_list = []
-		for i in animationdict.predamage:
-			if i.target in ['target_frame']:
-				target.displaynode.process_sfx(i.code)
-#				if caster.combatgroup == 'ally':
-#					input_handler.gfx_sprite($Panel2, i.code)
-#				else:
-#					input_handler.gfx_sprite($Panel, i.code)
-		for i in targets:
-			if skill.has('sounddata') and !skill.sounddata.empty() and skill.sounddata.strike != null:
-				if skill.sounddata.strike == 'weapon':
-					caster.displaynode.process_sound(get_weapon_sound(caster))
-				else:
-					caster.displaynode.process_sound(skill.sounddata.strike)
-			for j in animationdict.predamage:
-				if j.target in ['caster','target']:
-					var sfxtarget = ProcessSfxTarget(j.target, caster, i)
-					sfxtarget.process_sfx(j.code)
-			#special results
-			if skill.has('damage_type') and skill.damage_type == 'summon':
-				summon(skill.value[0], skill.value[1], caster.combatgroup);
-			elif skill.has('damage_type') and skill.damage_type == 'resurrect':
-				i.resurrect(input_handler.calculate_number_from_string_array(skill.value[0], caster, target)) #not sure
-			if skill.has('damage_type') and skill.damage_type == 'setup_global':
-				autoskill_dummy.combatgroup = "_" + caster.combatgroup
-				autoskill_dummy.set_stat('atk', caster.get_stat('atk'))
-				autoskill_dummy.set_stat('matk', caster.get_stat('matk'))
-				setup_autoskill(skill.value)
-			else:
-				#default skill result
-				#execute_skill(s_skill1, caster, i)
-				var s_skill2 = s_skill1.clone()
-				s_skill2.setup_target(i)
-				s_skill2.setup_final()
-				#place for non-existing another trigger
-				s_skill2.process_event(variables.TR_PREHIT)
-				if typeof(caster) != TYPE_DICTIONARY: 
-					s_skill2.caster.process_event(variables.TR_PREHIT, s_skill2)
-					effects_pool.process_event(variables.TR_PREHIT, s_skill2.caster)
-				s_skill2.target.process_event(variables.TR_PREDEF, s_skill2)
-				effects_pool.process_event(variables.TR_PREDEF, s_skill2.target)
-				
-				s_skill2.hit_roll()
-				s_skill2.resolve_value(CheckMeleeRange(caster.combatgroup))
-				s_skill2_list.push_back(s_skill2)
-		turns += 1
-		#predamage triggers
-		for s_skill2 in s_skill2_list:
-			s_skill2.process_event(variables.TR_HIT)
-			if typeof(caster) != TYPE_DICTIONARY: 
-				s_skill2.caster.process_event(variables.TR_HIT, s_skill2)
-				effects_pool.process_event(variables.TR_HIT, s_skill2.caster)
-			s_skill2.target.process_event(variables.TR_DEF, s_skill2)
-			effects_pool.process_event(variables.TR_DEF, s_skill2.target)
-			s_skill2.setup_effects_final()
-		turns += 1
-		#damage
-		for s_skill2 in s_skill2_list:
-			#check miss
-			if s_skill2.hit_res == variables.RES_MISS:
-				s_skill2.target.play_sfx('miss')
-				combatlogadd(target.get_short_name() + " evades the damage.")
-				Off_Target_Glow()
-				if s_skill2.tags.has('no_fa_miss'):
-					fa = false
-			else:
-				#hit landed animation
-				if skill.has('sounddata') and !skill.sounddata.empty() and skill.sounddata.hit != null:
-					if skill.sounddata.hittype == 'absolute':
-						s_skill2.target.displaynode.process_sound(skill.sounddata.hit)
-					elif skill.sounddata.hittype == 'bodyarmor':
-						s_skill2.target.displaynode.process_sound(calculate_hit_sound(skill, caster, s_skill2.target))
-				for j in animationdict.postdamage:
-					var sfxtarget = ProcessSfxTarget(j.target, caster, s_skill2.target)
-					sfxtarget.process_sfx(j.code)
-				#applying resists
-				s_skill2.calculate_dmg()
-				#logging result & dealing damage
-				execute_skill(s_skill2)
-		turns += 1
-		#postdamage triggers and cleanup real_target s_skills
-		for s_skill2 in s_skill2_list:
-			s_skill2.process_event(variables.TR_POSTDAMAGE)
-			if typeof(caster) != TYPE_DICTIONARY: 
-				s_skill2.caster.process_event(variables.TR_POSTDAMAGE, s_skill2)
-				effects_pool.process_event(variables.TR_POSTDAMAGE, s_skill2.caster)
-			if s_skill2.target.hp <= 0:
-#				s_skill2.process_event(variables.TR_KILL)
-				s_skill1.process_event(variables.TR_KILL)
-				if typeof(caster) != TYPE_DICTIONARY: 
-#					caster.process_event(variables.TR_KILL, s_skill2)
-					caster.process_event(variables.TR_KILL, s_skill1)
-					effects_pool.process_event(variables.TR_KILL, caster)
-				if typeof(caster) != TYPE_DICTIONARY: caster.add_stat('metrics_kills', 1)
-			else:
-				s_skill2.target.process_event(variables.TR_POST_TARG, s_skill2)
-				effects_pool.process_event(variables.TR_POST_TARG, s_skill2.target)
-#			s_skill2.target.displaynode.rebuildbuffs()
-			checkdeaths()
-			if s_skill2.target.displaynode != null:
-				s_skill2.target.displaynode.rebuildbuffs()
-			Off_Target_Glow();
-			s_skill2.remove_effects()
-	turns += 1
-	s_skill1.process_event(variables.TR_SKILL_FINISH)
-	if typeof(caster) != TYPE_DICTIONARY: 
-		caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
-		effects_pool.process_event(variables.TR_SKILL_FINISH, caster)
-	s_skill1.remove_effects()
-	endturn = endturn and !s_skill1.tags.has('instant')
-	#follow-up
-	if skill.has('follow_up') and fa:
-		var tstate = use_skill(skill.follow_up, caster, target)
-		if typeof(tstate) == TYPE_OBJECT:
-			yield (tstate, 'compleated')
-	if skill.tags.has('not_final'): 
-		return
-
-	#final
-	turns += 1
-	if activeitem != null:
-		activeitem.amount -= 1
-		activeitem = null
-		SelectSkill(caster.get_skill_by_tag('default'))
-
-	caster.displaynode.rebuildbuffs()
-	if fighterhighlighted == true:
-		FighterMouseOver(target.id)
-	#print(caster.name + ' finished attacking')
-	if endturn or caster.hp <= 0 or !caster.can_act():
-		#on end turn triggers
-		caster.process_event(variables.TR_TURN_F)
-		effects_pool.process_event(variables.TR_TURN_F, caster)
-		caster.displaynode.rebuildbuffs()
-		#use queued skills
-		while !q_skills.empty():
-			var tdata = q_skills.pop_front()
-			var tstate = use_skill(tdata.skill, tdata.caster, tdata.target)
-			if typeof(tstate) == TYPE_OBJECT:
-				yield(tstate, 'completed')
-		if skill_callback_args != null and skill_callback_args.value == COPY_SET:
-			skill_callback_args.value = COPY_EXECUTED
-			use_skill(skill_callback_args.skill, skill_callback_args.caster, skill_callback_args.target)
-		else:
-			skill_callback_args = null
-			call_deferred('select_actor')
-			eot = false
-	else:
-		if caster.combatgroup == 'ally':
-			CombatAnimations.check_start()
-			if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-		#allowaction = true
-		skill_callback_args = null
-		#instant skills cannot be copied in current realisation, but for now this is not a problem - for only item skills can be instants 
-		RebuildSkillPanel()
-		RebuildItemPanel()
-		SelectSkill(skill_code, false)
-		eot = true
-	#emit_signal("skill_use_finshed")
-
-func ProcessSfxTarget(sfxtarget, caster, target):
-	match sfxtarget:
-		'caster':
-			return caster.displaynode
-		'target':
-			return target.displaynode
+	var template = Skilldata.get_template_combat(skill_code, caster)
+	if template.ability_type == 'item':
+		mode = variables.SKILL_ITEM
+	var tmp_handler = ActionQueue.add_skill_callback()
+	tmp_handler.mode = mode
+	tmp_handler.parent = self
+	tmp_handler.createfromskill(template)
+	tmp_handler.setup_caster(caster)
+	tmp_handler.setup_target(target)
+	ActionQueue.invoke()
 
 
 func get_char_by_pos(pos):
@@ -1626,6 +936,7 @@ func get_proper_target_for_autoskill():
 		return temp[globals.rng.randi_range(0, temp.size()-1)]
 	else: return null
 
+
 func get_allied_targets(fighter):
 	var res = []
 	if fighter.position in range(1, 7):
@@ -1635,6 +946,7 @@ func get_allied_targets(fighter):
 		for p in enemygroup.values():
 			if !characters_pool.get_char_by_id(p).defeated: res.push_back(characters_pool.get_char_by_id(p))
 	return res
+
 
 func get_enemy_targets_all(fighter, hide_ignore = false):
 	var res = []
@@ -1651,6 +963,7 @@ func get_enemy_targets_all(fighter, hide_ignore = false):
 			if tchar.has_status('hide') and !hide_ignore: continue
 			res.push_back(tchar)
 	return res
+
 
 func get_enemy_targets_melee(fighter, hide_ignore = false):
 	var res = []
@@ -1834,79 +1147,6 @@ func get_random_target():
 	return input_handler.random_from_array(tmparr)
 
 
-func execute_skill(s_skill2):
-	var text = ''
-	if s_skill2.hit_res == variables.RES_CRIT:
-		text += "[color=yellow]Critical!![/color] "
-		s_skill2.target.displaynode.process_critical()
-	#new section applying conception of multi-value skills
-	#TO POLISH & REMAKE
-	for i in s_skill2.value:
-		if !i.check_conditions(): continue
-		if i.damagestat == 'no_stat': continue #for skill values that directly process into effects
-		if i.damagestat == 'damage_hp' and i.dmgf == 0: #drain, damage, damage no log, drain no log
-			if i.is_drain > 0.0 && s_skill2.tags.has('no_log'):
-				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
-				var rval2 = s_skill2.caster.heal(rval * i.is_drain)
-			elif i.is_drain > 0.0:
-				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
-				var rval2 = s_skill2.caster.heal(rval * i.is_drain)
-				text += "%s drained %d health from %s and gained %d health." %[s_skill2.caster.get_short_name(), rval, s_skill2.target.get_short_name(), rval2]
-			elif s_skill2.tags.has('no_log') && i.is_drain <= 0.0:
-				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
-			else:
-				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
-				text += "%s is hit for %d damage. " %[s_skill2.target.get_short_name(), rval]#, s_skill2.value[i]]
-		elif i.damagestat == 'damage_hp' and i.dmgf == 1: #heal, heal no log
-			if s_skill2.tags.has('no_log'):
-				var rval = s_skill2.target.heal(i.value)
-			else:
-				var rval = s_skill2.target.heal(i.value)
-				text += "%s is healed for %d health." %[s_skill2.target.get_short_name(), rval]
-		elif i.damagestat == 'restore_mana' and i.dmgf == 0: #heal, heal no log
-			if !s_skill2.tags.has('no log'):
-				var rval = s_skill2.target.mana_update(i.value)
-				text += "%s restored %d mana." %[s_skill2.target.get_short_name(), rval]
-			else:
-				s_skill2.target.mana_update(i.value)
-		elif i.damagestat == 'restore_mana' and i.dmgf == 1: #drain, damage, damage no log, drain no log
-			var rval = s_skill2.target.mana_update(-i.value)
-			if i.is_drain > 0.0:
-				var rval2 = s_skill2.caster.mana_update(rval * i.is_drain)
-				if !s_skill2.tags.has('no log'):
-					text += "%s drained %d mana from %s and gained %d mana." %[s_skill2.caster.get_short_name(), rval, s_skill2.target.get_short_name(), rval2]
-			if !s_skill2.tags.has('no log'):
-				text += "%s lost %d mana." %[s_skill2.target.get_short_name(), rval]
-		else:
-			var mod = i.dmgf
-			var stat = i.damagestat
-			if mod == 0:
-				var rval = s_skill2.target.stat_update(stat, i.value)
-				if !s_skill2.tags.has('no log'):
-					text += "%s restored %d %s." %[s_skill2.target.get_short_name(), rval, tr(stat)]
-			elif mod == 1:
-				var rval = s_skill2.target.stat_update(stat, -i.value)
-				if i.is_drain > 0.0:
-					var rval2 = s_skill2.caster.stat_update(stat, -rval * i.is_drain)
-					if !s_skill2.tags.has('no log'):
-						text += "%s drained %d %s from %s." %[s_skill2.caster.get_short_name(), i.value, tr(stat),  s_skill2.target.get_short_name()]
-				elif !s_skill2.tags.has('no log'):
-					text += "%s loses %d %s." %[s_skill2.target.get_short_name(), -rval, tr(stat)]
-			elif mod == 2:
-				var rval = s_skill2.target.stat_update(stat, i.value, true)
-				if i.is_drain > 0.0:# use this on your own risk
-					var rval2 = s_skill2.caster.stat_update(stat, -rval * i.is_drain)
-					if !s_skill2.tags.has('no log'):
-						text += "%s drained %d %s from %s." %[s_skill2.caster.get_short_name(), i.value, tr(stat),  s_skill2.target.get_short_name()]
-				elif !s_skill2.tags.has('no log'):
-					text += "%s's %s is now %d." %[s_skill2.target.get_short_name(), tr(stat), i.value]
-			else: print('error in damagestat %s' % i.damagestat) #obsolete in new format
-	combatlogadd(text)
-	for i in ['ice']: #add other custom death overlays here
-		if s_skill2.tags.has("kill_animation_%s" % i):
-			s_skill2.target.displaynode.setup_overlay(i)
-
-
 func Highlight(pos, type):
 	var node = battlefieldpositions[pos].get_node("Character")
 #	match type:
@@ -1919,17 +1159,20 @@ func Highlight(pos, type):
 #		'enemy':
 #			input_handler.TargetEnemyTurn(node)
 
+
 func StopHighlight(pos):
 	var node = battlefieldpositions[pos].get_node("Character")
 	input_handler.StopTweenRepeat(node)
+
 
 func Target_eff_Glow (pos):
 	var node = battlefieldpositions[pos].get_node("Character");
 	if node == null: return;
 	var temp
-
+	
 	temp = Color(1.0,0.0,1.0,1.0);
 	node.get_node('border').material.set_shader_param('modulate', temp);
+
 
 func Target_Glow (pos):
 	var node = battlefieldpositions[pos].get_node("Character");
@@ -1942,6 +1185,7 @@ func Target_Glow (pos):
 	node.get_node('border').visible = true;
 	node.get_node('border').material.set_shader_param('modulate', temp);
 
+
 func Stop_Target_Glow ():
 	for pos in range(1,13):
 		var p_node = battlefieldpositions[pos];
@@ -1952,6 +1196,7 @@ func Stop_Target_Glow ():
 		var temp = node.get_node('border').material.get_shader_param('modulate');
 		temp.a = 0.0;
 		node.get_node('border').material.set_shader_param('modulate', temp);
+
 
 func Off_Target_Glow ():
 	for pos in range(1,13):
@@ -1964,8 +1209,10 @@ func Off_Target_Glow ():
 		#temp.a = 0.0;
 		node.get_node('border').visible = false;
 
+
 func ClearSkillPanel():
 	input_handler.ClearContainer($SkillPanel)
+
 
 func RebuildSkillPanel():
 	if activecharacter == null: return
@@ -2036,6 +1283,7 @@ func RebuildSkillPanel():
 		else:
 			newbutton.connect('signal_RMB_release',self,'select_skill_for_position', [i])
 
+
 func SelectSkill(skill, user_act = true):
 	if activecharacter == null: return
 	
@@ -2060,7 +1308,7 @@ func SelectSkill(skill, user_act = true):
 		return
 	activecharacter.selectedskill = skill.code
 	activeaction = skill.code
-	UpdateSkillTargets(activecharacter)
+	UpdateSkillTargets(activecharacter, skill)
 	allowaction = true
 	$Button.disabled = false
 	if allowedtargets.ally.size() == 0 and allowedtargets.enemy.size() == 0:
@@ -2073,23 +1321,19 @@ func SelectSkill(skill, user_act = true):
 			return
 		globals.closeskilltooltip()
 		activecharacter.selectedskill = activecharacter.get_skill_by_tag('default')
-		skill_callback_args = {}
-		skill_callback_args.skill = activeaction
-		skill_callback_args.caster = activecharacter
-		skill_callback_args.target = activecharacter
-		skill_callback_args.value = COPY_ENABLED
-		endturn = true
+		
 		call_deferred('use_skill', activeaction, activecharacter, activecharacter)
+
 
 func RebuildItemPanel():
 	var array = []
-
+	
 	ClearItemPanel()
-
+	
 	for i in ResourceScripts.game_res.items.values():
 		if i.itemtype == 'usable' && Items.itemlist[i.itembase].has('combat_effect'):
 			array.append(i)
-
+	
 	for i in array:
 		var newbutton = input_handler.DuplicateContainerTemplate($ItemPanel/ScrollContainer/GridContainer)
 		newbutton.get_node("Icon").texture = input_handler.loadimage(i.icon, 'icons')
@@ -2099,8 +1343,10 @@ func RebuildItemPanel():
 		newbutton.connect('pressed', self, 'ActivateItem', [i])
 		globals.connectitemtooltip_v2(newbutton, i)
 
+
 func ClearItemPanel():
 	input_handler.ClearContainer($ItemPanel/ScrollContainer/GridContainer)
+
 
 func ActivateItem(item):
 	for button in $ItemPanel/ScrollContainer/GridContainer.get_children():
@@ -2111,43 +1357,11 @@ func ActivateItem(item):
 	SelectSkill(activeaction)
 	#UpdateSkillTargets()
 
-func get_weapon_sound(caster):
-	var item = caster.equipment.gear.rhand
-	if ResourceScripts.game_res.items.has(item):
-		item = ResourceScripts.game_res.items[item]
-	else:
-		item = null
-	if item == null:
-		return 'dodge'
-	else:
-		return item.hitsound
-
-func calculate_hit_sound(skill, caster, target):
-	var rval
-	var hitsound
-	if skill.sounddata.strike == 'weapon':
-		hitsound = get_weapon_sound(caster)
-	else:
-		hitsound = skill.sounddata.strike
-
-	match hitsound:
-		'dodge':
-			match target.bodyhitsound:
-				'flesh':pass
-				'wood':pass
-				'stone':pass
-		'blade':
-			match target.bodyhitsound:
-				'flesh':pass
-				'wood':pass
-				'stone':pass
-	rval = 'fleshhit'
-
-	return rval
 
 func combatlogadd(text):
 	var data = {node = self, time = turns, type = 'c_log', slot = 'c_log', params = {text = text}}
 	CombatAnimations.add_new_data(data)
+
 
 func combatlogadd_q(text):
 	$Combatlog/RichTextLabel.append_bbcode(text)
@@ -2195,3 +1409,266 @@ func skill_selected(skill):
 	else:
 		person.skills.combat_skill_panel[active_position] = skill
 	RebuildSkillPanel()
+
+
+func FinishCombat(victory = true):
+	victory_seq_run = false
+	HideFighterStats()
+	set_process_input(false)
+	if is_instance_valid(gui_controller.dialogue) && gui_controller.dialogue.is_visible():
+		gui_controller.dialogue.close() #for test
+	autoskill_dummy.is_active = false
+	for i in playergroup.values() + enemygroup.values():
+		var tchar = characters_pool.get_char_by_id(i)
+		tchar.skills.combat_cooldowns.clear()
+	
+	for p in playergroup.values():
+		var ch = characters_pool.get_char_by_id(p)
+		if ch.hp <=0:
+			if ResourceScripts.game_globals.difficulty != 'hard':
+				ch.hp = 1
+				ch.is_active = true
+				ch.defeated = false
+				ch.combat_position = 0
+				var eff
+				if ch.has_status('fastheal'):
+					eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury_alt)
+				else:
+					eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
+				ch.apply_effect(effects_pool.add_effect(eff))
+			else:
+				ch.killed()
+		ch.process_event(variables.TR_COMBAT_F)
+		ch.recheck_effect_tag('recheck_combat')
+	effects_pool.process_event(variables.TR_COMBAT_F)
+		#add permadeath check here
+	
+	for i in range(battlefield.size()):
+		if battlefield[i] != null:
+			var tchar = get_char_by_pos(i)
+			tchar.displaynode.queue_free()
+			tchar.displaynode = null
+			battlefield[i] = null
+	for i in enemygroup.values():
+		#mark enemy characters for clearing
+		#mb to change this part when dealing with captured enemies
+		var tchar = characters_pool.get_char_by_id(i)
+		tchar.is_active = false
+	if victory:
+		CombatAnimations.force_end()
+		ResourceScripts.core_animations.BlackScreenTransition(0.5)
+		yield(get_tree().create_timer(0.5), 'timeout')
+		hide()
+		input_handler.finish_combat()
+	else:
+		hide()
+		input_handler.combat_defeat()
+	
+	input_handler.combat_node = null
+	ActionQueue.force_clean()
+	ActionQueue = null
+	gui_controller.current_screen = gui_controller.previous_screen
+	gui_controller.combat = null
+	characters_pool.cleanup()
+
+
+var rewardsdict
+
+#to check next functions
+var victory_seq_run = false
+func victory():
+	if victory_seq_run:
+		return
+	victory_seq_run = true
+	get_tree().get_root().set_disable_input(true)
+	
+	autoskill_dummy.is_active = false
+	CombatAnimations.check_start()
+	if CombatAnimations.is_busy: 
+		yield(CombatAnimations, 'alleffectsfinished')
+	Input.set_custom_mouse_cursor(images.cursors.default)
+	yield(get_tree().create_timer(0.5), 'timeout')
+	fightover = true
+	$Rewards/CloseButton.disabled = true
+	input_handler.StopMusic()
+	#on combat ends triggers
+	for p in range(1, 7):
+		if battlefield[p] == null:
+			continue
+		var t_p = get_char_by_pos(p)
+		if summons.has(p):
+			t_p.is_active = false
+			playergroup.erase(p)
+			summons.erase(p)
+		else:
+			t_p.process_event(variables.TR_COMBAT_F)
+	effects_pool.process_event(variables.TR_COMBAT_F)
+	#add permadeath check here
+	
+	input_handler.PlaySound("battle_victory")
+	
+	rewardsdict = {gold = 0, materials = {}, items = [], xp = 0}
+	for i in enemygroup.values():
+		if i == null: #not sure why was this check added
+			continue
+		var tchar = characters_pool.get_char_by_id(i)
+		tchar.is_active = false
+		var count = 1
+		if tchar.tags.has('rare'):
+			count = 2
+			rewardsdict.xp += 3 * tchar.get_stat('xpreward')
+		elif tchar.tags.has('miniboss'):
+#			count = 2
+			rewardsdict.xp += 2 * tchar.get_stat('xpreward')
+		else:
+			rewardsdict.xp += tchar.get_stat('xpreward')
+		for q in range(count):
+			var loot = {}
+			for item in Enemydata.loottables[tchar.get_stat('loottable')]:
+				if item[0] == 'gold':
+					if tchar.tags.has('miniboss'):
+						rewardsdict.gold += 2 * round(rand_range(item[1], item[2]))
+					else:
+						rewardsdict.gold += round(rand_range(item[1], item[2]))
+				elif Items.materiallist.has(item[0]):
+					var counter = 1
+					if item.size() > 2:
+						counter = item[2]
+					if tchar.tags.has('miniboss'):
+						counter *= 2 #not sure about this implementation but looks better than simple doubling of values
+					while counter > 0:
+						if randf() <= item[1]:
+							input_handler.AddOrIncrementDict(loot, {item[0] : 1})
+						counter -= 1
+					input_handler.AddOrIncrementDict(rewardsdict.materials, loot)
+					loot.clear()
+				elif Items.itemlist.has(item[0]):
+					var itemtemp = Items.itemlist[item[0]]
+					var counter = 1
+					if item.size() > 2:
+						counter = item[2]
+					if tchar.tags.has('miniboss'):
+						counter *= 2 #not sure about this implementation but looks better than simple doubling of values
+					while counter > 0:
+						if randf() <= item[1]:
+							if itemtemp.type == 'usable':
+								var itemfound = false
+								for k in rewardsdict.items:
+									if k.itembase == item[0]:
+										k.amount += 1
+										itemfound = true
+										break
+								if itemfound == false:
+									var newitem = globals.CreateUsableItem(item[0])
+									rewardsdict.items.append(newitem)
+							if itemtemp.type == 'gear': #not used currently
+								var newitem = globals.CreateGearItemLoot(item[0], item[3]) #item[3] for parts, mb add randomization here
+								rewardsdict.items.append(newitem)
+						counter -= 1
+	
+	input_handler.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
+	input_handler.ClearContainer($Rewards/ScrollContainer2/HBoxContainer)
+	rewardsdict.xp *= combat_data.xp_mod
+	var exp_per_character = rewardsdict.xp/playergroup.size()
+	for i in playergroup.values():
+		var tchar = characters_pool.get_char_by_id(i)
+		var gained_exp = exp_per_character# * tchar.get_stat('exp_gain_mod')
+		tchar.add_stat('base_exp', gained_exp)
+		tchar.add_stat('abil_exp', gained_exp)
+		tchar.add_stat('metrics_win', 1)
+		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer2/HBoxContainer)
+		newbutton.hide()
+		newbutton.modulate.a = 0
+		newbutton.show()
+		newbutton.get_node("Icon").texture = tchar.get_icon()
+		newbutton.get_node("name").text = tchar.get_short_name()
+		if gained_exp > 0:
+			gained_exp *= tchar.get_stat('exp_gain_mod')
+		gained_exp = int(gained_exp)
+		newbutton.get_node("amount").text = str(gained_exp)
+	
+	var rewardchars = globals.roll_characters()
+	for id in rewardchars:
+		var tchar = characters_pool.get_char_by_id(id)
+		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newbutton.hide()
+		newbutton.modulate.a = 0
+		newbutton.show()
+		var ttex = tchar.get_icon_small()
+		if ttex != null: 
+			newbutton.get_node('Icon').texture = ttex
+		else:
+			newbutton.get_node('Icon').texture = load("res://assets/images/gui/explore/Captured Characters/icons/icon_hero.png")
+		newbutton.get_node('name').text = tr("COMBAT_CHARACTER_CAPTURED") + ": " + tchar.get_full_name()
+		newbutton.get_node('name').set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(tchar.get_stat('growth_factor')))])
+		newbutton.get_node("amount").text = ""
+		globals.connectslavetooltip(newbutton, tchar)
+	if input_handler.exploration_node != null:
+		input_handler.exploration_node.add_rolled_chars(rewardchars)
+	for i in rewardsdict.materials:
+		var item = Items.materiallist[i]
+		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newbutton.hide()
+		newbutton.modulate.a = 0
+		newbutton.show()
+		newbutton.get_node("Icon").texture = item.icon
+		newbutton.get_node("name").text = item.name
+		newbutton.get_node("amount").text = str(rewardsdict.materials[i])
+		ResourceScripts.game_res.materials[i] += rewardsdict.materials[i]
+		globals.connectmaterialtooltip(newbutton, item)
+	for i in rewardsdict.items:
+		var newnode = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newnode.hide()
+		newnode.modulate.a = 0
+		newnode.show()
+		newnode.get_node("Icon").texture = input_handler.loadimage(i.icon, 'icons')
+		globals.AddItemToInventory(i)
+		newnode.get_node("name").text = i.name
+		globals.connectitemtooltip_v2(newnode, ResourceScripts.game_res.items[globals.get_item_id_by_code(i.itembase)])
+		if i.amount == null || i.amount == 0:
+			newnode.get_node("amount").visible = false
+		else:
+			newnode.get_node("amount").text = str(i.amount)
+	
+	$Rewards/CloseButton.disabled = false
+	var array = []
+	for i in playergroup.values():
+		array.append(i)
+	input_handler.get_person_for_chat(array, 'combat_won')
+	# yield($Rewards/AnimationPlayer, "animation_finished")
+	$Rewards/gold/Label.text = '+0'
+	$Rewards.set_meta("result", 'victory')
+	$Rewards/gold/Label.text = str("+") + str(rewardsdict.gold)
+	ResourceScripts.game_res.money += rewardsdict.gold
+	$Rewards.show()
+	$Rewards.modulate.a = 0
+	$Rewards/AnimationPlayer.play("Victory")
+	$Rewards.modulate.a = 1
+	yield(get_tree().create_timer(1.5), "timeout")
+	$Rewards/ScrollContainer/HBoxContainer.hide()
+	$Rewards/ScrollContainer2/HBoxContainer.hide()
+	$Rewards/ScrollContainer/HBoxContainer.show()
+	$Rewards/ScrollContainer2/HBoxContainer.show()
+	globals.show_buttons($Rewards/ScrollContainer/HBoxContainer)
+	globals.show_buttons($Rewards/ScrollContainer2/HBoxContainer)
+	get_tree().get_root().set_disable_input(false)
+	$Rewards/CloseButton.grab_click_focus()
+
+
+func defeat(runaway = false): #runaway is a temporary variable until run() method not fully implemented
+	if runaway:
+		input_handler.play_animation_noq("runaway")
+		yield(get_tree().create_timer(3), 'timeout')
+		ResourceScripts.core_animations.BlackScreenTransition(1.5)
+		yield(get_tree().create_timer(1.5), 'timeout')
+	else:
+		input_handler.play_animation_noq("defeat")
+		yield(get_tree().create_timer(3), 'timeout')
+		ResourceScripts.core_animations.BlackScreenTransition(1.5)
+		yield(get_tree().create_timer(1.5), 'timeout')
+	
+	CombatAnimations.force_end()
+	Input.set_custom_mouse_cursor(images.cursors.default)
+	fightover = true
+	FinishCombat(false)
+	input_handler.SetMusic(input_handler.explore_sound, true)

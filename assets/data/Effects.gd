@@ -9,6 +9,19 @@ var effect_nolog = ['commander']
 #any other - for additional customisation
 
 var effect_table = {
+	e_remove_fa = {
+		type = 'trigger',
+		trigger = [variables.TR_HIT],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_MISS]}],
+		req_skill = true,
+		args = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'skill',
+			atomic = [{type = 'stat_set', stat = 'follow_up', value = null}]
+		}],
+		buffs = []
+	},
 #	e_test_global = {
 #		type = 'temp_global',
 #		tags = ['negative', 'duration_turns'],
@@ -288,8 +301,8 @@ var effect_table = {
 		sub_effects = [
 			{
 				type = 'oneshot',
-				target = 'caster',
-				atomic = [{type = 'copy_skill'}],
+				target = 'skill',
+				atomic = [{type = 'clone'}],
 				buffs = [],
 				sub_effects = []
 			}
@@ -309,8 +322,8 @@ var effect_table = {
 		sub_effects = [
 			{
 				type = 'oneshot',
-				target = 'caster',
-				atomic = [{type = 'copy_skill'}],
+				target = 'skill',
+				atomic = [{type = 'clone'}],
 				buffs = [],
 				sub_effects = []
 			}
@@ -674,22 +687,6 @@ var effect_table = {
 			}
 		],
 	},
-	e_s_ragestrike = {
-		type = 'trigger',
-		conditions = [],
-		trigger = [variables.TR_CAST],
-		req_skill = true,
-		args = [{obj = 'parent', param = 'caster'}],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				args = [{obj = 'parent_arg_get', index = 0, param = 'hp'},{obj = 'parent_arg_get', index = 0, param = 'hpmax'}],
-				atomic = [{type = 'stat_mul', stat = 'value', value = [['parent_args', 0],'/',['parent_args', 1],'*',-2,'+',3.5]}],
-			},
-		],
-		buffs = []
-	},
 	e_t_disruption = {
 		type = 'temp_s',
 		target = 'target',
@@ -702,40 +699,6 @@ var effect_table = {
 		sub_effects = [],
 		atomic = ['a_remove_buff', 'a_silence'],
 		buffs = ['b_silence'],
-	},
-	#not final but working as always
-	e_s_barrier = {
-		type = 'trigger',
-		trigger = [variables.TR_HIT],
-		req_skill = true,
-		conditions = [],
-		sub_effects = [
-			{
-				type = 'temp_s',
-				target = 'target',
-				tick_event = variables.TR_TURN_GET,
-				rem_event = [variables.TR_SHIELD_DOWN,variables.TR_COMBAT_F, variables.TR_DEATH],
-				duration = 3,
-				stack = 1,
-				name = 'shield',
-				tags = ['buff', 'shield'],
-				atomic = [
-					{type = 'stat_set_revert', stat = 'shield', value = 100},
-					{type = 'stat_set_revert', stat = 'shieldtype', value = variables.S_FULL} #not sure about s_full
-					],
-				args = [{obj = 'app_obj', param = 'shield', dynamic = true}],
-				buffs = [
-					{
-						icon = "res://assets/images/traits/armor.png",
-						description = "TRAITEFFECTBARRIER",
-						args = [{obj = 'parent_args', param = 0}],
-						t_name = 'shield'
-					}
-				],
-				sub_effects = [],
-			}
-		],
-		buffs = []
 	},
 	e_t_blizz = {
 		type = 'temp_s',
@@ -2356,15 +2319,13 @@ var atomic = {
 	a_stat_add = {type = 'stat_add', stat = ['parent_args', 0], value = ['parent_args', 1]},
 	a_stat_add_p = {type = 'stat_add_p', stat = ['parent_args', 0], value = ['parent_args', 1]},
 	a_stat_mul = {type = 'stat_mul', stat = ['parent_args', 0], value = ['parent_args', 1]},
-	a_poison_arg025 = {type = 'damage', source = variables.S_PHYS, value = [['parent_args', 0],'*',0.25]},#bugged
+	
 	a_remove_buff = {type = 'remove_effect', value = 'buff'},
 	a_self_kill = {type = 'kill'},
 	a_fire_custom = {type = 'event', value = variables.TR_CUSTOM},
 	a_fire_custom1 = {type = 'event', value = variables.TR_CUSTOM1},
 
 	a_caster_heal = {type = 'heal', value = [['parent_arg_get', 0, 'process_value'], '*', 0.5]},
-	a_firefist = {type = 'damage', value = [['parent_arg_get', 0, 'process_value'], '*', 0.2], source = variables.S_FIRE},#bugged
-	a_gobmet_blade = {type = 'damage', source = variables.S_EARTH, value = ['parent_args', 0]},#bugged
 	a_elvenwood_rod = {type = 'mana', value = [['parent_args', 0], '*', 0.1]},
 	#not used new part (allows to setup stat changing with effect's template)
 

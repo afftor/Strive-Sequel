@@ -56,7 +56,7 @@ func add_new_data(data):
 		animations_queue[data.time][data.node] = []
 	if can_add_data(data): 
 		animations_queue[data.time][data.node].back().append(data)
-	else:
+	elif data.slot != 'buffs' or animations_queue[data.time][data.node].empty():
 		animations_queue[data.time][data.node].push_back([])
 		animations_queue[data.time][data.node].back().append(data)
 
@@ -309,7 +309,7 @@ func buffs(node, args):
 	buffs_update_delays.erase(node)
 	var delaytime = 0.01
 	var tween = input_handler.GetTweenNode(node)
-	tween.interpolate_callback(node, delay, 'noq_rebuildbuffs', args)
+	tween.interpolate_callback(node, delay, 'noq_rebuildbuffs')
 	tween.start()
 	return delaytime + delay
 

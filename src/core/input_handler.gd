@@ -1657,7 +1657,13 @@ func play_animation_noq(animation, args = {}):
 				anim_scene.get_node("TopLabel").text = tr("MASTERPOINTTOP")
 				anim_scene.get_node("BottomLabel").text = tr("MASTERPOINTBOTTOM") % master_points
 			anim_scene.play("master_point")
-			
+		"defeat":
+			anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_DEFEAT)
+			anim_scene.play("defeated")
+		"runaway":
+			anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_RUNAWAY)
+			anim_scene.play("runaway")
+
 
 
 

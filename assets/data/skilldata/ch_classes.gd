@@ -203,10 +203,10 @@ var skills = {
 		icon = load("res://assets/images/iconsskills/icon_blood_explosion.png"),
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage','ads', 'aoe', 'no_fa_miss'],
+		tags = ['damage','ads', 'aoe'],
 		reqs = [],
 		targetreqs = [{code = 'stat', stat = 'racegroup', operant = 'neq', value = 'undead'},{code = 'stat', stat = 'racegroup', operant = 'neq', value = 'mech'}],
-		effects = [],
+		effects = ['e_remove_fa'],
 		cost = {mp = 25},
 		charges = 0,
 		combatcooldown = 0,
@@ -606,7 +606,7 @@ var effects = {
 			{
 				type = 'oneshot',
 				target = 'skill',
-				atomic = [{type = 'add_tag', value = 'instant'}],
+				atomic = [{type = 'setup_instant'}],
 				buffs = [],
 				sub_effects = []
 			}
@@ -679,7 +679,7 @@ var effects = {
 			{
 				type = 'oneshot',
 				target = 'skill',
-				atomic = [{type = 'add_tag', value = 'instant'}],
+				atomic = [{type = 'setup_instant'}],
 				buffs = [],
 				sub_effects = []
 			}

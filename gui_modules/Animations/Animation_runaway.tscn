@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/RunAway/flag_runaway.png" type="Texture" id=1]
+[ext_resource path="res://gui_modules/Animations/animation.gd" type="Script" id=2]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/RunAway/ground2_runaway.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/RunAway/ground1_runaway.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/RunAway/type_runaway.png" type="Texture" id=5]
@@ -160,9 +161,9 @@ tracks/11/keys = {
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource( 2 )
+fade_delay = 4.0
+sound = "combat_defeat"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/runaway = SubResource( 1 )

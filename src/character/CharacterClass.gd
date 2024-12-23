@@ -281,6 +281,9 @@ func get_weapon_range():
 func get_weapon_animation():
 	return equipment.get_weapon_animation()
 
+func get_weapon_sound():
+	return equipment.get_weapon_sound()
+
 func get_damage_mod(skill:Dictionary):
 	return skills.get_damage_mod(skill)
 
@@ -1608,7 +1611,15 @@ func calculate_price(shopflag = false):
 	value = value * variables.growth_factor_cost_mod[get_stat('growth_factor')]
 	return max(50,round(value))
 
+
 func apply_atomic(template):
+	if input_handler.combat_node != null:
+		input_handler.combat_node.ActionQueue.add_atomic(template, id)
+	else:
+		apply_atomic_noqueue(template)
+
+
+func apply_atomic_noqueue(template):
 	match template.type:
 		'damage':
 			var tval = deal_damage(template.value, template.source)
@@ -1658,19 +1669,27 @@ func apply_atomic(template):
 		'kill':
 			killed()
 		'use_combat_skill':
-			if input_handler.combat_node == null: return
-			if skills.combat_cooldowns.has(template.skill): return
+			if input_handler.combat_node == null: 
+				return
+			if skills.combat_cooldowns.has(template.skill): 
+				return
 #			input_handler.combat_node.use_skill(template.skill, self, template.target)
+			var skill = Skilldata.get_template_combat(template.skill, self)
+			var tmp_handler = input_handler.combat_node.ActionQueue.add_skill_callback()
+			tmp_handler.mode = variables.SKILL_EFFECT
+			tmp_handler.setup_caster(self)
+			tmp_handler.createfromskill(skill)
 			if template.has('target'):
-				input_handler.combat_node.q_skills.push_back({skill = template.skill, caster = self, target = template.target})
+				tmp_handler.setup_target(template.target)
 			else:
-				input_handler.combat_node.q_skills.push_back({skill = template.skill, caster = self, target = self})
+				tmp_handler.setup_target(self)
+				tmp_handler.setup_target(self)
 		'use_social_skill':
 			if !check_location('mansion'): return
 			#use_social_skill(template.value, null)
 			skills.prepared_act.push_back(template.skill)
-		'copy_skill':
-			input_handler.combat_node.set_copy_skill()
+#		'copy_skill':
+#			input_handler.combat_node.set_copy_skill()
 		'add_counter':
 			if effects.counters.size() <= template.index + 1:
 				effects.counters.resize(template.index + 1)
