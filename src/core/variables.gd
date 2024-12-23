@@ -37,7 +37,8 @@ enum {PANEL_SOC, PANEL_COM}
 
 enum {RES_MISS = 1, RES_HIT = 2, RES_CRIT = 4, RES_HITCRIT = 6};
 enum {TR_CAST,TR_CAST_TARGET, TR_PREHIT, TR_PREDEF, TR_HIT, TR_DEF, TR_TURN_S, TR_TURN_GET, TR_TURN_F, TR_DEATH, TR_KILL, TR_DMG, TR_POSTDAMAGE, TR_POST_TARG, TR_SKILL_FINISH, TR_HEAL, TR_COMBAT_S, TR_COMBAT_F, TR_SHIELD_DOWN, TR_TAUNT_FAIL, TR_DAY, TR_S_CAST, TR_S_TARGET, TR_SHACKLES_OFF, TR_TICK, TR_RES, TR_SOC_SPEC, TR_MOVE, TR_REMOVE, TR_CUSTOM, TR_CUSTOM1, TR_EXPLORE_POSTDAMAGE, TR_NONE};
-enum {S_PHYS = 1, S_FIRE = 2, S_WATER = 4, S_AIR = 8, S_EARTH = 16, S_MAG = 30, S_FULL = 31}
+enum {SKILL_BASE, SKILL_ITEM, SKILL_COPY, SKILL_FA, SKILL_AUTO, SKILL_EFFECT}
+
 enum {TARGET_FORCED, TARGET_KEEP, TARGET_KEEPFIRST, TARGET_NOKEEP, TARGET_MOVEFIRST};
 enum {NT_MELEE, NT_ANY, NT_ANY_NOREPEAT, NT_WEAK, NT_WEAK_MELEE, NT_BACK, NT_CASTER};
 
@@ -56,6 +57,10 @@ var resists_list = ['normal','fire','earth','air','water','light','dark','mind']
 var resists_damage_list = ['melee', 'ranged', 'aoe', 'heal']
 var status_list = ['stun','freeze','disarm','silence','burn','confuse','bleed','poison', 'wet', 'shock', 'fear', 'cursed']
 var fighter_stats_list = ['hpmax','mpmax','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed', 'critchance','critmod']
+
+var skill_args_checking_list_1 = ['target_range', 'target_number', 'ability_type', 'damage_type', 'tags']
+var skill_args_checking_list_2 = ['damage_type']
+var skill_args_checking_list_3 = ['chance', 'evade', 'critchance', 'armor_p', 'hit_res', 'damage_type']
 
 
 var enemy_rarechance = 0.1

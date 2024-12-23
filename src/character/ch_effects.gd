@@ -259,9 +259,6 @@ func clean_effects():#clean effects before deleting character
 		if eff != null: eff.remove()
 
 func process_event(ev, skill = null):
-	if skill != null and skill.tags.has('passive'):
-		if ev in [variables.TR_CAST, variables.TR_HIT, variables.TR_POSTDAMAGE, variables.TR_SKILL_FINISH]:
-			return
 	for e in temp_effects.duplicate():
 		var eff = effects_pool.get_effect_by_id(e)
 		if eff is temp_e_global:

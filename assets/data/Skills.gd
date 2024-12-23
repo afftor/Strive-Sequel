@@ -1295,6 +1295,36 @@ func get_template(id, caster):
 	return tres
 
 
+func get_template_combat(id, caster):
+	var tres = Skilllist[id].duplicate(true)
+	#process variations
+	if tres.has('variations'):
+		for line in tres.variations:
+			if caster.checkreqs(line.reqs):
+				if line.has('replace'): #total replacement
+					tres = get_template(line.replace, caster)
+					break
+				if line.has('add'):
+					for arg in line.add:
+						tres[arg] = tres[arg] + line.add[arg]
+				if line.has('set'):
+					for arg in line.set:
+						tres[arg] = line.set[arg]
+	#process type_change
+	if !(tres.has('new_syntax') and tres.new_syntax == true): 
+		var ss = ResourceScripts.scriptdict.class_sskill_legacy.new()
+		ss.createfromskill(tres)
+		tres = ss.convert_to_new_template_combat()
+	#process charges
+	if tres.has('charges') and tres.charges != 0:
+		tres.charges = get_charges(tres, caster)
+	#load icon
+	if tres.icon is String:
+		tres.icon = input_handler.loadimage(tres.icon, 'icons') #not get_icon or load for the sake of user: pathes
+	tres.descript = tr(tres.descript)
+	return tres
+
+
 func get_charges(skill, caster):#template, object
 	var res = 0
 	if skill.has('charges'): 

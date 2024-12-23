@@ -145,9 +145,10 @@ func process_critical():
 	animation_node.add_new_data(data)
 
 #control visuals
-func noq_rebuildbuffs(newbuffs):
+func noq_rebuildbuffs():
 	if !visible: return
 	var oldbuff = 0
+	var newbuffs = fighter.get_combat_buffs()
 	for b in newbuffs:
 		if buffs.has(b.template_name): oldbuff += 1
 #	if oldbuff == buffs.size():

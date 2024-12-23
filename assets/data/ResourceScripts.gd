@@ -37,6 +37,7 @@ var scriptdict = {
 	class_sskill = "res://src/classes/short_skill_new.gd",
 	class_sskill_legacy = "res://src/classes/short_skill.gd",
 	class_sskill_value = "res://src/classes/short_skill_value.gd",
+	class_sskill_value_combat = "res://src/combat/short_skill_value_combat.gd",
 	class_ai_base = "res://src/classes/AI_base.gd",
 	world_gen = "res://src/core/world_gen.gd",
 	custom_text = "res://src/core/custom_text.gd",

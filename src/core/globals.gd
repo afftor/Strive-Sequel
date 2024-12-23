@@ -2864,3 +2864,44 @@ func is_capital_closed(capital):
 				):
 			return false
 		return true
+
+
+func ProcessSfxTarget(sfxtarget, caster, target):
+	match sfxtarget:
+		'caster':
+			return caster.displaynode
+		'target':
+			return target.displaynode
+
+
+func calculate_hit_sound(skill, caster, target):
+	var rval
+	var hitsound
+	if skill.sounddata.strike == 'weapon':
+		hitsound = caster.get_weapon_sound()
+	else:
+		hitsound = skill.sounddata.strike
+	
+	match hitsound:
+		'dodge':
+			match target.bodyhitsound:
+				'flesh':pass
+				'wood':pass
+				'stone':pass
+		'blade':
+			match target.bodyhitsound:
+				'flesh':pass
+				'wood':pass
+				'stone':pass
+	rval = 'fleshhit'
+	
+	return rval
+
+
+func show_buttons(container):
+	for button in container.get_children():
+		if button.name == "Button":
+			continue
+		ResourceScripts.core_animations.UnfadeAnimation(button, 0.3)
+		yield(get_tree().create_timer(0.3), "timeout")
+		button.set("modulate", Color(1, 1, 1, 1))
