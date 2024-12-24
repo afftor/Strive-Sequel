@@ -811,3 +811,14 @@ func set_quality_level(val): #this method can change quality of any item, use wi
 	
 	if towner != null:
 		characters_pool.get_char_by_id(towner).equip(self)
+
+
+func autoassign_quality():
+	if !Items.fixed_quality_stats.has(itembase):
+		return
+	var newdata = Items.fixed_quality_stats[itembase]
+	for lv in newdata:
+		if newdata[lv].empty():
+			continue
+		set_quality_level(lv)
+		break
