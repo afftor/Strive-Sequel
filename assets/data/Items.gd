@@ -1708,7 +1708,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
-		tags = ['no_random', 'bladed','enchantable'],
+		tags = ['no_random', 'bladed','enchantable', 'fixed_stats'], #to correctly set stats with fixed levels
 		basestats = {atk = 35, critchance = 20, hitrate = 20, armorpenetration = 15, enchant_capacity = 400},
 	},
 	

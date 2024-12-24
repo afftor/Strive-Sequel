@@ -160,6 +160,8 @@ func CreateGearItem(item, parts, newname = null, quality = ""): #obsolete for mo
 	newitem.CreateGear(item, parts, {no_enchant = true})
 	if quality != "":
 		newitem.set_quality_level(quality)
+	else:
+		newitem.autoassign_quality()
 	if newname != null:
 		newitem.name = newname
 	return newitem
