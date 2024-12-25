@@ -97,7 +97,7 @@ func buildinventory():
 		var type = get_item_category(i)
 		if type == "tattoo":
 			continue
-		if i.tags.has('skill_tooltip'):
+		if false: #i.tags.has('skill_tooltip'):
 			var itemtemplate = Items.itemlist[i.itembase]
 			newnode.set_meta('display_only', true)
 			globals.connectskilltooltip(newnode, itemtemplate.skill, input_handler.interacted_character)
