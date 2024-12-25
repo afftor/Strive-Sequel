@@ -605,6 +605,10 @@ Otherwise: +3 Physics""",
 	ITEMSLOTRHAND = "Right Hand",
 	ITEMSLOTNECK = "Neck",
 	ITEMSLOTTOOL = "Tool",
+	
+	ITEMREQNONUNIQUE = "Can only be applied to non-unique slaves",
+	ITEMREQSMASTERY = "Masteries levels not matched or already know this skill",
+	
 	ITEMLEATHER_COLLAR = "Leather Collar",
 	ITEMLEATHER_COLLARDESCRIPT = "A simple leather collar that signifies ownership.",
 	ITEMELEGANT_CHOKER = "Elegant Choker",
