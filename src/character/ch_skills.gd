@@ -458,7 +458,7 @@ func use_mansion_item(item):
 	var itembase = Items.itemlist[item.itembase]
 	var skill = itembase.mansion_effect
 	if parent.get_ref().checkreqs(itembase.reqs) == false:
-		input_handler.SystemMessage(itembase.reqs_fail_message)
+		input_handler.SystemMessage(tr(itembase.reqs_fail_message))
 		return
 	if itembase.has("uses_per_target") && items_used_global.has(itembase.code) && items_used_global[itembase.code] >= itembase.uses_per_target:
 		input_handler.SystemMessage(parent.get_ref().translate("[name] can't use this item anymore."))

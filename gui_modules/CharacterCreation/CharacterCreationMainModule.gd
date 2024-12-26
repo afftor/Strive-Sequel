@@ -743,6 +743,8 @@ func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 
 func open_freemode(char_to_open, flag = false):
 	person = char_to_open
+	if person.get_upgrade_points() < 0:
+		flag = true
 	upgrades_removal = flag
 	preservedsettings.clear()
 	show()
@@ -1287,6 +1289,8 @@ func build_upgrades(): #check confirmation at the same time
 		else:
 			newnode.pressed = false
 			newnode.connect('pressed', self, 'toggle_upgrade', [upg])
+			if person.statlist.body_upgrades.has(upg): #ipgrades_removal on, id was removed
+				upgradecost -= upgdata.cost
 			if !person.checkreqs(upgdata.reqs):
 				newnode.disabled = true
 	$UpgradesPanel/HBoxContainer/Label2.text = "%d/%d" % [upgradecost, person.get_upgrade_points()]
