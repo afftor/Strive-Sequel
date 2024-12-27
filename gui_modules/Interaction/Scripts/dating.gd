@@ -963,22 +963,22 @@ var unique_marry_rules = {
 		},
 		lilia_quest_unfinished = {
 			reqs = [{type = "quest_completed", name = "lilia_finale_quest", check = false}],
-			text = "LILIA_QUEST_FINISHED_TEXT",
-			description = "LILIA_QUEST_FINISHED_DESCRIPTION",
+			text = "LILIA_QUEST_UNFINISHED_TEXT",
+			description = "LILIA_QUEST_UNFINISHED_DESCRIPTION",
 			agrees = false
 		},
 	},
 	lilith = {
 		lilith_quest_finished = {
 			reqs = [{type = "quest_completed", name = "lilith_patron_quest", check = true}],
-			text = "LILIA_QUEST_FINISHED_TEXT",
-			description = "LILIA_QUEST_FINISHED_DESCRIPTION",
+			text = "LILITH_QUEST_FINISHED_TEXT",
+			description = "LILITH_QUEST_FINISHED_DESCRIPTION",
 			agrees = true
 		},
 		lilith_quest_unfinished = {
 			reqs = [{type = "quest_completed", name = "lilith_patron_quest", check = false}],
-			text = "LILIA_QUEST_FINISHED_TEXT",
-			description = "LILIA_QUEST_FINISHED_DESCRIPTION",
+			text = "LILITH_QUEST_UNFINISHED_TEXT",
+			description = "LILITH_QUEST_UNFINISHED_DESCRIPTION",
 			agrees = false
 		},
 	},

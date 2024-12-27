@@ -109,7 +109,7 @@ var skills = {
 		reqs = [],
 		targetreqs = [],
 		effects = ['e_kill_execute'], 
-		cost = {},
+		cost = {mp = 8},
 		charges = 0,
 		combatcooldown = 4,
 		cooldown = 0,

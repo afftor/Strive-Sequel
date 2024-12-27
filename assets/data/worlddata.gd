@@ -270,7 +270,7 @@ var factiondata = {
 		background = "fighters_guild",
 		reputation_shop = {
 			classes = {knight = 500, paladin = 500, sniper = 750, assassin = 1000, ninja = 750},
-			items = {bandage = [1,10], bonedragon = [1,500]},
+			items = {bandage = [1,10], skillbook_holy_lance = [1,1000]},
 		},
 		hireable_characters = [
 			{code = 'type1',
@@ -306,7 +306,7 @@ var factiondata = {
 		background = "mages_guild",
 		reputation_shop = {
 			classes = {caster = 500, archmage = 1000, dominator = 1500, witch = 750, warlock = 750},
-			items = {oblivion_potion = [1,300],unstable_concoction = [10,100], energygem = [1, 75]},
+			items = {oblivion_potion = [1,300],unstable_concoction = [10,100], energygem = [1, 75], skillbook_hyperborea = [1,1500], skillbook_dark_flame = [1,1000]},
 		},
 		hireable_characters = [
 			{code = 'type1',
@@ -354,7 +354,7 @@ var factiondata = {
 		background = "workers_guild",
 		reputation_shop = {
 			classes = {smith = 500, foreman = 500, engineer = 750, alchemist = 750},
-			items = {leatherdragon = [1,500], obsidian = [1,60]},
+			items = {leatherdragon = [1,500], obsidian = [1,60], skillbook_poison_vapors = [1,500], skillbook_meteor = [1,1250]},
 		},
 		hireable_characters = [
 			{code = 'type1',
@@ -390,7 +390,7 @@ var factiondata = {
 		background = "servants_guild",
 		reputation_shop = {
 			classes = {headgirl = 500, director = 1000, sextoy = 750},
-			items = {writ_of_exemption = [1,300]},
+			items = {writ_of_exemption = [1,300], skillbook_abyss_gaze = [1,1500]},
 		},
 		hireable_characters = [
 			{code = 'type1',

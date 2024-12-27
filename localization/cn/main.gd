@@ -630,6 +630,8 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	ITEMSLOTRHAND = "右手",
 	ITEMSLOTNECK = "颈部",
 	ITEMSLOTTOOL = "工具",
+	ITEMREQNONUNIQUE = """Can only be applied to non-unique slaves""", # MISSING TRANSLATION
+	ITEMREQSMASTERY = """Masteries levels not matched or already know this skill""", # MISSING TRANSLATION
 
 	ITEMLEATHER_COLLAR = "皮圈",
 	ITEMLEATHER_COLLARDESCRIPT = "一个简单的皮革项圈，象征所有权。",
@@ -827,6 +829,12 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	ITEMLEGS_BASE_CLOTHDESCRIPT = "一种轻便的腿甲，任何人都可以穿。提供合理的保护抵抗法术类型的伤害。",
 	ITEMLEGS_BASE_LEATHERDESCRIPT = "由骨头或皮革组装而成的腿甲，需要经过一些训练才能舒适地使用。",
 	ITEMLEGS_BASE_METALDESCRIPT = "一种通常由金属制成的较重的腿甲。提供强大的技能伤害保护。",
+	ITEMSKILLBOOK_HYPERBOREA = """Magic Tome: Winds of Hyperborea""", # MISSING TRANSLATION
+	ITEMSKILLBOOK_HOLYLANCE = """Magic Tome: Holy Lance""", # MISSING TRANSLATION
+	ITEMSKILLBOOK_POISON_VAPORS = """Magic Tome: Poison Vapors""", # MISSING TRANSLATION
+	ITEMSKILLBOOK_METEOR = """Magic Tome: Meteor""", # MISSING TRANSLATION
+	ITEMSKILLBOOK_ABYSS_GAZE = """Magic Tome: Abyss Gaze""", # MISSING TRANSLATION
+	ITEMSKILLBOOK_DARK_FLAME = """Magic Tome: Dark Flames""", # MISSING TRANSLATION
 
 	#gearclasses
 	GEARSWORD = "剑",
@@ -2472,6 +2480,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	BUFFDESCRIPTDEFEND = "Defend",
 	BUFFDESCRIPTREGEN = "健康再生",
 	BUFFDESCRIPTBURNING = "燃烧",
+	BUFFDESCRIPTDARKFLAME = """Dark Flame: Take 10%% of Maximum HP as neutral damage per turn""", # MISSING TRANSLATION
 	BUFFDESCRIPTPOISON = "中毒",
 	BUFFDESCRIPTBLEEDING = "流血",
 	BUFFDESCRIPTCONFUSE = "Confusion",

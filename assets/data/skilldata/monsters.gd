@@ -207,8 +207,8 @@ var effects = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/traits/hitrate.png",#fix
-				description = "boss", #2fix
+				icon = "res://assets/images/iconsskills/Authority.png",#fix
+				description = "More resistant to Damage over time and Control effects",
 				limit = 1,
 				t_name = 'boss'
 			}

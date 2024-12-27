@@ -839,7 +839,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("sexswap_potion", 10))
 		globals.AddItemToInventory(globals.CreateUsableItem("oblivion_potion", 10))
-		globals.AddItemToInventory(globals.CreateUsableItem("hairdye", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("skillbook_hyperborea", 3))
 		globals.AddItemToInventory(
 			globals.CreateGearItemShop("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 		)

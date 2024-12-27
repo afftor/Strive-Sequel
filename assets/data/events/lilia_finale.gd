@@ -1308,7 +1308,8 @@ var data = {
 	},
 	lilith_good_route_village_6 = {
 		tags = [
-			"dialogue_scene"
+			"dialogue_scene",
+			"master_translate"
 		],
 		reqs = [
 
@@ -1975,7 +1976,8 @@ var data = {
 	lilith_bad_route_2 = {
 		image = null,
 		tags = [
-			"dialogue_scene"
+			"dialogue_scene",
+			"master_translate"
 		],
 		reqs = [
 

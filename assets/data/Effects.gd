@@ -2487,7 +2487,7 @@ var buffs = {
 		t_name = 'burn'
 	},
 	b_darkflame = {
-		icon = "res://assets/images/iconsskills/firebolt.png",#fix
+		icon = "res://assets/images/iconsskills/dark flame.png",
 		description = "BUFFDESCRIPTDARKFLAME",
 		t_name = 'darkflame'
 	},

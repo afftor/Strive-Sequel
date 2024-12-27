@@ -1,4 +1,12 @@
+0.10.2
+Added new error log system which should warn players right in the process of playing. Console be reopened with F2
+Revamped combat system to have a singular action sequence. Likely extremely buggy but should in future help deal with phantom enemies, missing actions and other various issues caused by multiple actions performed together.
+Added 6 new hybrid skills, for now can be purchased at the guilds
+Added new boss effect: bosses are now more resistant to DoTs and control effects. Also some bosses has had their HP increased
 Nerfed Nature's gift to return fewer resources
+Nerfed Berserker by disabling Stealth and Protection
+Added new enchantment for spears and bows
+Many small typos and various fixes
 0.10.1a
 Healing Light can now be used to deal damage to Undead enemies
 Fixed multiple skill issues

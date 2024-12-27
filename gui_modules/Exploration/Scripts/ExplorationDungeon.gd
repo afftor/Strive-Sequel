@@ -1008,7 +1008,7 @@ func scout_room(room_id, s_range, stay = false):
 #			input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 		'ladder_down_survival':
 			move_to_room(room_id) #or not
-			input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'advance_survival', "EXPLOREADVANCEINFINIT"])
+			input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'advance_survival', "EXPLOREADVANCEINFINITE"])
 
 
 func advance_survival(lv = null):

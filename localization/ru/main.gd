@@ -614,6 +614,8 @@ var TranslationDict = {
 	ITEMSLOTRHAND = """Правая рука""",
 	ITEMSLOTNECK = """Шея""",
 	ITEMSLOTTOOL = """Инструмент""",
+	ITEMREQNONUNIQUE = """Can only be applied to non-unique slaves""", # MISSING TRANSLATION
+	ITEMREQSMASTERY = """Masteries levels not matched or already know this skill""", # MISSING TRANSLATION
 	ITEMLEATHER_COLLAR = """Кожаный ошейник""",
 	ITEMLEATHER_COLLARDESCRIPT = """Простой кожаный ошейник, обозначающий собственность.""",
 	ITEMELEGANT_CHOKER = """Изящный чокер""",
@@ -819,6 +821,12 @@ var TranslationDict = {
 	ITEMLEGS_BASE_CLOTHDESCRIPT = """Легкая нижняя броня, которую может носить любой. Обеспечивает разумную защиту от урона, наносимого заклинаниями.""",
 	ITEMLEGS_BASE_LEATHERDESCRIPT = """Нижняя броня, собранная из костей или кожи, требует некоторого обучения для комфортного использования.""",
 	ITEMLEGS_BASE_METALDESCRIPT = """Тяжелая нижняя броня, обычно сделанная из металла. Обеспечивает отличную защиту от урона, наносимого умениями.""",
+	ITEMSKILLBOOK_HYPERBOREA = """Magic Tome: Winds of Hyperborea""", # MISSING TRANSLATION
+	ITEMSKILLBOOK_HOLYLANCE = """Magic Tome: Holy Lance""", # MISSING TRANSLATION
+	ITEMSKILLBOOK_POISON_VAPORS = """Magic Tome: Poison Vapors""", # MISSING TRANSLATION
+	ITEMSKILLBOOK_METEOR = """Magic Tome: Meteor""", # MISSING TRANSLATION
+	ITEMSKILLBOOK_ABYSS_GAZE = """Magic Tome: Abyss Gaze""", # MISSING TRANSLATION
+	ITEMSKILLBOOK_DARK_FLAME = """Magic Tome: Dark Flames""", # MISSING TRANSLATION
 
 	#gearclasses
 	GEARSWORD = """Мечи""",
@@ -1359,6 +1367,16 @@ Hotkey: 3""",
 	SKILLMASS_RESURRECTDESCRIPT = """Воскресить всех поверженных союзников и исцелить 80% максимального здоровья всех союзников.""",
 	SKILLINVIGORATE = """Бодрость""",
 	SKILLINVIGORATEDESCRIPT = """Восстановить 1 заряд каждого вызова для выбранного союзника.""",	
+	SKILLHYPERBOREA = """Winds of Hyperborea""", # MISSING TRANSLATION
+	SKILLHYPERBOREADESCRIPT = """Deals 300% of MATK as {color=yellow|Water} damage to all enemies. Applies Clarity to all allies for 3 turns.""", # MISSING TRANSLATION
+	SKILLPOISON_VAPORS = """Poison Vapors""", # MISSING TRANSLATION
+	SKILLPOISON_VAPORSDESCRIPT = """Deals 25% of MATK as {color=yellow|Water} damage to enemy column. Applies Poison for 3 turns.""", # MISSING TRANSLATION
+	SKILLMETEOR = """Meteor""", # MISSING TRANSLATION
+	SKILLMETEORDESCRIPT = """Deals 200% of MATK as {color=yellow|Fire} damage and apply Burn on target for 4 turns.""", # MISSING TRANSLATION
+	SKILLABYSS_GAZE = """Gaze of the Abyss""", # MISSING TRANSLATION
+	SKILLABYSS_GAZEDESCRIPT = """Deals 125% of MATK as {color=yellow|Mind} damage to all enemies. Stuns for 2 turns.""", # MISSING TRANSLATION
+	SKILLDARK_FLAME = """Dark Flames""", # MISSING TRANSLATION
+	SKILLDARK_FLAMEDESCRIPT = """Converts all Burn effects on enemies into Dark Flame effects. They deal true damage, can't be extinguished by Water damage and last for 4 turns.""", # MISSING TRANSLATION
 	MASTERYWARFARE = """Бой""",
 	MASTERYPROTECTION = """Защита""",
 	MASTERYSTEALTH = """Скрытность""",
@@ -1388,6 +1406,7 @@ Hotkey: 3""",
 	STATMASTERY_POINT_MAGIC = """Очко магического мастерства""",
 	STATMASTERY_POINT_COMBAT = """Очко боевого мастерства""",
 	STATMASTERY_POINT_UNIVERSAL = """Универсальное очко мастерства""",
+	STATDISABLED_MASTERIES = """Restricted Masteries""", # MISSING TRANSLATION
 	ACTIONPRAISE = """Похвалить""",
 	ACTIONPRAISEDESCRIPT = """Проявить сочувствие и похвалить [name].""",
 	ACTIONREWARD = """Наградить""",
@@ -2856,6 +2875,7 @@ Requires: Базовый рабский труд""",
 	BUFFDESCRIPTDEFEND = """Защита""",
 	BUFFDESCRIPTREGEN = """Регенерация здоровья""",
 	BUFFDESCRIPTBURNING = """Получает 8%% огненного урона от максимального HP за ход""",
+	BUFFDESCRIPTDARKFLAME = """Dark Flame: Take 10%% of Maximum HP as neutral damage per turn""", # MISSING TRANSLATION
 	BUFFDESCRIPTPOISON = """Получает 5%% физического урона от максимального HP за ход""",
 	BUFFDESCRIPTBLEEDING = """Получает 5%% физического урона от максимального HP за ход""",
 	BUFFDESCRIPTCONFUSE = """Замешательство""",
