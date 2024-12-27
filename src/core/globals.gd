@@ -553,7 +553,7 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 						text += 'green|' + change
 					else:
 						text += 'red|' + change
-					value = str(value)
+					value = str(stepify(value, 0.01))
 					if data.percent:
 						value = value + '%'
 					text += value + '}\n'
@@ -566,7 +566,7 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 						text += 'green|' + change
 					else:
 						text += 'red|' + change
-					value = str(value)
+					value = str(stepify(value, 0.01))
 					value = value + '%'
 					text += value + '}\n'
 				"mul":
@@ -579,7 +579,7 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 						text += 'green|' + change
 					else:
 						text += 'red|' + change
-					value = str(value)
+					value = str(stepify(value, 0.01))
 					value = value + '%'
 					text += value + '}\n'
 				'set':
