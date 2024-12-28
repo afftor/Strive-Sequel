@@ -14,6 +14,7 @@ var cheat_dict = {
 	"unlock_all_sex_traits": "Unlock all sex traits",
 	"unlock_classes": "Unlock classes",
 	"change_race": "Change Race",
+	'add_mastery': "Add mastery points",
 }
 
 var cheats = [
@@ -152,6 +153,12 @@ func max_sex_skills():
 	for skill in selected_person.statlist.statlist.sex_skills:
 		selected_person.statlist.statlist.sex_skills[skill] = 100
 	input_handler.SystemMessage("All sex skills set to maximum")
+	gui_controller.mansion.SlaveModule.show_slave_info()
+
+
+func add_mastery():
+	selected_person.add_stat('mastery_point_universal', 100)
+	input_handler.SystemMessage("100 mastery points added")
 	gui_controller.mansion.SlaveModule.show_slave_info()
 
 
