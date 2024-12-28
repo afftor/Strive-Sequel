@@ -6,8 +6,10 @@ var data = {
 		unlocked_gallery_seq = "christmas",
 		save_scene_to_gallery = true,
 		character = 'zephyra',
-		reqs = [{type = 'unique_character_checks', name = 'daisy', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'},
-		{type = 'quest_completed', name = 'sword_artifact_quest', check = true}],
+		reqs = [
+			{type = 'unique_character_checks', name = 'daisy', value = [{code = 'is_free', check = true}], negative = 'repeat_next_day'},
+			{type = 'quest_completed', name = 'sword_artifact_quest', check = true, negative = 'repeat_next_day'}
+			],
 		text = [ {text = "CHRISTMAS_EVENT_PRE_INTRO", reqs = []} ],
 		options = [ {
 			code = 'christmas_start', reqs = [], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 0
