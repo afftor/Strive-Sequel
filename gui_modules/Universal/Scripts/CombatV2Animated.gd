@@ -156,10 +156,6 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 		music = 'battle1'
 	hide()
 	
-	ActionQueue = queue_script.new()
-	ActionQueue.combatnode = self
-	ActionQueue.animationnode = CombatAnimations
-	
 	$ItemPanel/debugvictory.visible = debug
 	# if variables.combat_tests == false:
 	# 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
@@ -203,6 +199,9 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	if combat_data.instawin:
 		victory()
 	else:
+		ActionQueue = queue_script.new()
+		ActionQueue.combatnode = self
+		ActionQueue.animationnode = CombatAnimations
 		for i in playergroup.values() + enemygroup.values():
 			var tchar = characters_pool.get_char_by_id(i)
 			tchar.process_event(variables.TR_COMBAT_S)
@@ -395,6 +394,7 @@ func checkwinlose():
 			enemygroupcounter += 1
 	if playergroupcounter <= 0:
 		ActionQueue.add_end_combat(false)
+		
 		return true
 	elif enemygroupcounter <= 0:
 		ActionQueue.add_end_combat(true)

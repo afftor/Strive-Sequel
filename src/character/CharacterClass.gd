@@ -1615,7 +1615,7 @@ func calculate_price(shopflag = false):
 
 
 func apply_atomic(template):
-	if input_handler.combat_node != null:
+	if input_handler.combat_node != null and input_handler.combat_node.ActionQueue != null:
 		input_handler.combat_node.ActionQueue.add_atomic(template, id)
 	else:
 		apply_atomic_noqueue(template)
