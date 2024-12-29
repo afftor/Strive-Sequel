@@ -47,12 +47,15 @@ func update():
 			match data.subrooms[i].type:
 				'empty':
 					get_node("subroom%d/icon"%(i + 1)).texture = null
+					get_node("subroom%d"%(i + 1)).disabled = true
 					sb_text += "Subroom - empty"
 				'event', 'unique_event', 'onetime_event':
+					get_node("subroom%d"%(i + 1)).disabled = false
 					var icon = data.subrooms[i].icon
 					get_node("subroom%d/icon"%(i + 1)).texture = images.get_icon(icon)
 					sb_text += "Subroom - event\nCost- %d" % data.subrooms[i].stamina_cost
 				'resource', 'resource_survival':
+					get_node("subroom%d"%(i + 1)).disabled = false
 					get_node("subroom%d/icon"%(i + 1)).texture = load("res://assets/Textures_v2/Universal/Icons/icon_resources_pressed.png")
 					sb_text += "Subroom - resource\nCost - %d" % data.subrooms[i].stamina_cost
 			globals.connecttexttooltip(get_node("subroom%d"%(i + 1)), sb_text)
