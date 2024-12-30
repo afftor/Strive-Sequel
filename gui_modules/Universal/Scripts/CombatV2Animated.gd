@@ -394,10 +394,13 @@ func checkwinlose():
 			enemygroupcounter += 1
 	if playergroupcounter <= 0:
 		ActionQueue.add_end_combat(false)
-		
+		if !ActionQueue.is_active:
+			ActionQueue.invoke()
 		return true
 	elif enemygroupcounter <= 0:
 		ActionQueue.add_end_combat(true)
+		if !ActionQueue.is_active:
+			ActionQueue.invoke()
 		return true
 	for i in range(battlefield.size()):
 		if battlefield[i] == null:
@@ -434,6 +437,8 @@ func select_actor():
 
 
 func current_turn():
+	if checkwinlose() == true:
+		return
 	if currentactor <= 0:
 		env_turn()
 	elif currentactor < 7:
