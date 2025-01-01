@@ -2945,7 +2945,7 @@ var itemlist = {
 		price = 100,
 		icon = load("res://assets/images/iconsitems/icon_scroll1.png"),
 		tier = 'hard',
-		reqs = [{code = 'slave_type', operant = 'eq', value = 'slave'}, {code = 'unique', value = null}],
+		reqs = [{code = 'has_status', status = 'slave', check = true}, {code = 'unique', value = null}],
 		reqs_fail_message = "ITEMREQNONUNIQUE",
 		effects = [],
 		tags = ['save_on_use'], #saved on use in case of cancel, consumed during scene
