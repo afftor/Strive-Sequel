@@ -20,10 +20,11 @@ func invoke():
 
 
 func invoke_triggers():
-	combatnode.turns += 1
-	template.person.process_event(variables.TR_TURN_F)
-	effects_pool.process_event(variables.TR_TURN_F, template.person)
-	queuenode.add_rebuildbuffs(template.person.displaynode)
+	if !template.not_eot:
+		combatnode.turns += 1
+		template.person.process_event(variables.TR_TURN_F)
+		effects_pool.process_event(variables.TR_TURN_F, template.person)
+		queuenode.add_rebuildbuffs(template.person.displaynode)
 	step += 1
 	queuenode.call_deferred('invoke_resume')
 
