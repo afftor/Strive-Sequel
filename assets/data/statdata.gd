@@ -803,6 +803,15 @@ var statdata = {
 		negative = true,
 		default_bonus = 'mul'
 	},
+	darkflame_damage = {
+		code = 'darkflame_damage',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		percent = true,
+		negative = true,
+		default_bonus = 'mul'
+	},
 	enchant_capacity_mod = {
 		code = 'enchant_capacity_mod',
 		name = '',
