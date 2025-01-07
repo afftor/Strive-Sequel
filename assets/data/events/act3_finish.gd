@@ -578,57 +578,16 @@ var data = {
 			{
 				reqs = [
 					{
-						type = "has_hero",
-						name = "zephyra",
-						check = false
-					}
-				],
-				tags = [
-					"dialogue_scene"
-				],
-				character = "kuro",
-				character2 = "ketch",
-				text = [
-					{
-						text = "KURORES_FINALE_KUROHIT",
+						type = "location_has_specific_slaves",
+						check = true,
+						value = 1,
+						location = 'dwarf_capital',
 						reqs = [
-
-						]
-					}
-				],
-				options = [
-					{
-						code = "kurores_finale_helpkuro",
-						dialogue_argument = 0,
-						text = "KURORES_FINALE_OPT_HELPKURO",
-						reqs = [
-
-						],
-						type = "next_dialogue"
-					},
-					{
-						code = "kurores_finale_chase",
-						dialogue_argument = 0,
-						text = "KURORES_FINALE_OPT_CHASE",
-						reqs = [
-
-						],
-						type = "next_dialogue",
-						bonus_effects = [
 							{
-								code = "decision",
-								value = "KuroDead"
+								code = 'unique',
+								value = 'zephyra'
 							}
 						]
-					}
-				]
-			},
-			{
-				reqs = [
-					{
-						type = "has_hero",
-						name = "zephyra",
-						check = true
 					}
 				],
 				tags = [
@@ -671,6 +630,50 @@ var data = {
 										code = "remove_character"
 									}
 								]
+							}
+						]
+					}
+				]
+			},
+			{
+				reqs = [
+
+				],
+				tags = [
+					"dialogue_scene"
+				],
+				character = "kuro",
+				character2 = "ketch",
+				text = [
+					{
+						text = "KURORES_FINALE_KUROHIT",
+						reqs = [
+
+						]
+					}
+				],
+				options = [
+					{
+						code = "kurores_finale_helpkuro",
+						dialogue_argument = 0,
+						text = "KURORES_FINALE_OPT_HELPKURO",
+						reqs = [
+
+						],
+						type = "next_dialogue"
+					},
+					{
+						code = "kurores_finale_chase",
+						dialogue_argument = 0,
+						text = "KURORES_FINALE_OPT_CHASE",
+						reqs = [
+
+						],
+						type = "next_dialogue",
+						bonus_effects = [
+							{
+								code = "decision",
+								value = "KuroDead"
 							}
 						]
 					}
@@ -2560,9 +2563,16 @@ var data = {
 			{
 				reqs = [
 					{
-						type = "has_hero",
-						name = "zephyra",
-						check = true
+						type = "location_has_specific_slaves",
+						check = true,
+						value = 1,
+						location = 'dwarf_capital',
+						reqs = [
+							{
+								code = 'unique',
+								value = 'zephyra'
+							}
+						]
 					},
 					{
 						type = "decision",
