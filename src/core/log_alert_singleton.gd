@@ -15,7 +15,10 @@ func _ready():
 	path = ProjectSettings.get_setting("logging/file_logging/log_path")
 	file = File.new()
 	connect("timeout", self, "check_log")
-	start()
+	if input_handler.globalsettings.stop_log_alert:
+		stop()
+	else:
+		start()
 
 
 func check_log():
@@ -41,7 +44,9 @@ func set_alert_node(new_node):
 	alert_node = new_node
 
 func stop_check_log():
+	input_handler.globalsettings.stop_log_alert = true
 	stop()
 
 func resume_check_log():
+	input_handler.globalsettings.stop_log_alert = false
 	start()
