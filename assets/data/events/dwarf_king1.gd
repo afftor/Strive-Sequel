@@ -2659,9 +2659,16 @@ var data = {
 				text = "COALBASE_ATTACK_OPT_ZEPHYRA",
 				reqs = [
 					{
-						type = "has_hero",
-						name = "zephyra",
-						check = true
+						type = "location_has_specific_slaves",
+						check = true,
+						value = 1,
+						location = 'dwarf_capital',
+						reqs = [
+							{
+								code = 'unique',
+								value = 'zephyra'
+							}
+						]
 					}
 				],
 				bonus_effects = [
