@@ -1170,7 +1170,7 @@ func fill_task_mods(task):
 	if parent.get_ref().has_status('no_task_crit'):
 		task_mods.crit = 0
 	
-	if ResourceScripts.game_globals.difficulty == 'easy':
+	if ResourceScripts.game_globals.diff_bonus_taskmod:
 		task_mods.diff *= 1.5
 	task_mods.diff = int(task_mods.diff)
 

@@ -7,6 +7,20 @@ var skip_prologue = false
 var original_version = globals.gameversion
 var newgame = false
 var difficulty = 'medium'
+#diff
+var diff_gf_only_upg = false
+var diff_permadeath = false
+var diff_bonus_taskmod = false
+var diff_bonus_loot = false
+var diff_stop_loan = true
+var diff_small_loan = false
+var diff_solo = false
+var diff_free_upgrade = true
+
+var diff_money = 'easy'
+var diff_materials = 'easy'
+var diff_free_chars = 0
+
 
 var seed_salt = randi()
 
