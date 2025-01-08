@@ -181,7 +181,7 @@ func invoke_init():
 		target.process_event(variables.TR_CAST_TARGET, self)
 		effects_pool.process_event(variables.TR_CAST_TARGET, target)
 	
-	affected_targets = combatnode.CalculateTargets(template, target, true)
+	affected_targets = combatnode.CalculateTargets(self, target, true)
 	
 	combatnode.turns += 1
 	step += 1

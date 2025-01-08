@@ -1001,8 +1001,8 @@ func CalculateTargets(skill, target, finale = false):
 		targetgroup = 'player'
 	else:
 		targetgroup = 'enemy'
-	if skill.target == 'full':
-		targetgroup = 'full'
+#	if skill.target == 'full':
+#		targetgroup = 'full'
 	
 	match skill.target_number:
 		'single':
