@@ -16,14 +16,14 @@ func _ready():
 	$TabContainer/Visuals/fullscreen.connect("pressed",self,"togglefullscreen")
 	$CloseButton.connect("pressed",self,'close')
 	$TabContainer/Visuals/fullscreen.pressed = input_handler.globalsettings.fullscreen
-	$TabContainer/Gameplay/VBoxContainer/malerate.connect("value_changed", self, 'male_rate_change')
-	$TabContainer/Gameplay/VBoxContainer/futarate.connect("value_changed", self, "futa_rate_change")
-	$TabContainer/Gameplay/VBoxContainer2/autosave_amount.min_value = variables.autosave_number_min
-	$TabContainer/Gameplay/VBoxContainer2/autosave_amount.max_value = variables.autosave_number_max
-	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency.min_value = variables.autosave_frequency_min
-	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency.max_value = variables.autosave_frequency_max
-	$TabContainer/Gameplay/VBoxContainer2/autosave_amount/.connect("value_changed", self, "autosave_amount_change")
-	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency/.connect("value_changed", self, "autosave_frequency_change")
+	$TabContainer/Gameplay/Scroll/Box/VBoxContainer/malerate.connect("value_changed", self, 'male_rate_change')
+	$TabContainer/Gameplay/Scroll/Box/VBoxContainer/futarate.connect("value_changed", self, "futa_rate_change")
+	$TabContainer/Gameplay/Scroll/Box/VBoxContainer2/autosave_amount.min_value = variables.autosave_number_min
+	$TabContainer/Gameplay/Scroll/Box/VBoxContainer2/autosave_amount.max_value = variables.autosave_number_max
+	$TabContainer/Gameplay/Scroll/Box/VBoxContainer2/autosave_frequency.min_value = variables.autosave_frequency_min
+	$TabContainer/Gameplay/Scroll/Box/VBoxContainer2/autosave_frequency.max_value = variables.autosave_frequency_max
+	$TabContainer/Gameplay/Scroll/Box/VBoxContainer2/autosave_amount/.connect("value_changed", self, "autosave_amount_change")
+	$TabContainer/Gameplay/Scroll/Box/VBoxContainer2/autosave_frequency/.connect("value_changed", self, "autosave_frequency_change")
 	$TabContainer/Visuals/DisableAnimations.connect("toggled",self,"disable_animations_backgrounds")
 	ReloadPanel = $ReloadGameLanguage
 	SwitchLanguage = $TabContainer/Visuals/SwitchLanguage
@@ -34,13 +34,16 @@ func _ready():
 
 
 	for i in ['furry','furry_multiple_nipples', 'futa_balls', 'show_full_consent']:
-		get_node("TabContainer/Gameplay/" + i).connect("pressed", self, "gameplay_rule", ['Gameplay', i])
-		get_node("TabContainer/Gameplay/" + i).pressed = input_handler.globalsettings[i]
+		get_node("TabContainer/Gameplay/Scroll/Box/" + i).connect("pressed", self, "gameplay_rule", ['Gameplay/Scroll/Box', i])
+		get_node("TabContainer/Gameplay/Scroll/Box/" + i).pressed = input_handler.globalsettings[i]
+	for i in ['diff_gf_only_upg','diff_permadeath', 'diff_bonus_taskmod', 'diff_bonus_loot', 'diff_stop_loan', 'diff_small_loan']:
+		get_node("TabContainer/Gameplay/Scroll/Box/" + i).connect("pressed", self, "gamestate_rule",  [i])
+		get_node("TabContainer/Gameplay/Scroll/Box/" + i).pressed = ResourceScripts.game_globals.get(i)
 	for i in ['generate_portraits', 'factors_as_words', 'disable_paperdoll']:
 		get_node("TabContainer/Visuals/" + i).connect("pressed", self, "gameplay_rule", ['Visuals', i])
 		get_node("TabContainer/Visuals/" + i).pressed = input_handler.globalsettings[i]
 
-	$TabContainer/Gameplay/enable_tutorials.connect("toggled", self, "enable_tutorials")
+	$TabContainer/Gameplay/Scroll/Box/enable_tutorials.connect("toggled", self, "enable_tutorials")
 
 
 	$TabContainer/Cheats/EnterCodeMenu/GetCode.connect("pressed", self, "get_code")
@@ -84,7 +87,7 @@ func go_for_code():
 
 
 func open():
-	$TabContainer/Gameplay/enable_tutorials.pressed = ResourceScripts.game_progress.show_tutorial
+	$TabContainer/Gameplay/Scroll/Box/enable_tutorials.pressed = ResourceScripts.game_progress.show_tutorial
 	# $TabContainer/Cheats/EnterCodeMenu/Activate.disabled = true
 	$TabContainer/Cheats/EnterCodeMenu.visible = !ResourceScripts.game_globals.cheats_active
 	$TabContainer/Cheats/OpenCheatsMenu.visible = ResourceScripts.game_globals.cheats_active
@@ -142,31 +145,31 @@ func disable_animations_backgrounds(value):
 	input_handler.globalsettings["animatedbackground"] = value
 
 func male_rate_change(value):
-	$TabContainer/Gameplay/VBoxContainer/malerate.value = value
+	$TabContainer/Gameplay/Scroll/Box/VBoxContainer/malerate.value = value
 	input_handler.globalsettings.malechance = value
 	var text = tr('OPTGAMEPLAYMALERATE') + ": " +  str(value) + "%"
-	$TabContainer/Gameplay/VBoxContainer/malerate/Label.text = text
+	$TabContainer/Gameplay/Scroll/Box/VBoxContainer/Label.text = text
 
 func futa_rate_change(value):
-	$TabContainer/Gameplay/VBoxContainer/futarate.value = value
+	$TabContainer/Gameplay/Scroll/Box/VBoxContainer/futarate.value = value
 	input_handler.globalsettings.futachance = value
 	var text = tr('OPTGAMEPLAYFUTARATE') + ": " + str(value) + "%"
-	$TabContainer/Gameplay/VBoxContainer/futarate/Label.text = text
+	$TabContainer/Gameplay/Scroll/Box/VBoxContainer/Label2.text = text
 
 
 func autosave_amount_change(value):
-	$TabContainer/Gameplay/VBoxContainer2/autosave_amount.value = value
+	$TabContainer/Gameplay/Scroll/Box/VBoxContainer2/autosave_amount.value = value
 	input_handler.globalsettings.autosave_number = int(value)
 	var text = tr('OPTFAMEPLAYAUTOSAVEAMOUNT') + ": " + str(value)
-	$TabContainer/Gameplay/VBoxContainer2/autosave_amount/Label.text = text
-	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency.visible = (int(value) != 0)
+	$TabContainer/Gameplay/Scroll/Box/VBoxContainer2/Label.text = text
+	$TabContainer/Gameplay/Scroll/Box/VBoxContainer2/autosave_frequency.visible = (int(value) != 0)
 
 
 func autosave_frequency_change(value):
-	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency.value = value
+	$TabContainer/Gameplay/Scroll/Box/VBoxContainer2/autosave_frequency.value = value
 	input_handler.globalsettings.autosave_frequency = int(value)
 	var text = tr('OPTGAMEPLAYAUTOSAVETIME') + ": " + str(value)
-	$TabContainer/Gameplay/VBoxContainer2/autosave_frequency/Label.text = text
+	$TabContainer/Gameplay/Scroll/Box/VBoxContainer2/Label2.text = text
 
 
 func gameplay_rule(tab, rule):
@@ -175,6 +178,9 @@ func gameplay_rule(tab, rule):
 		if gui_controller.clock != null:
 			gui_controller.clock.set_time_buttons()
 
+
+func gamestate_rule(rule):
+	input_handler.globalsettings[rule] = get_node("TabContainer/Gameplay/Scroll/Box/%s" % rule).pressed
 
 
 func language_restart():

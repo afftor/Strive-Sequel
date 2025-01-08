@@ -1144,7 +1144,7 @@ func death():
 			affect_char({type = 'effect', value = 'e_g_injury_delay'})
 		#in this case check for permadeath is not here but in various finish combat methods
 	else:
-		if ResourceScripts.game_globals.difficulty != 'hard':
+		if ResourceScripts.game_globals.diff_permadeath:
 			if has_status('fastheal'):
 				affect_char({type = 'effect', value = 'e_grave_injury_alt'})
 			else:

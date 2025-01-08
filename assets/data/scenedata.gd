@@ -1205,8 +1205,8 @@ var scenedict = {
 			{code = 'progress_quest', value = 'guilds_introduction', stage = 'start'},
 			],
 		options = [
-		{code = 'close', reqs = [{type = 'difficulty', operant = 'eq', value = 'hard'}], text = tr("DIALOGUECLOSE"), type = 'next_dialogue'},
-		{code = 'starting_bonus_upgrade', reqs = [{type = 'difficulty', operant = 'neq', value = 'hard'}], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 1},
+		{code = 'close', reqs = [{type = 'difficulty', check = false, value = 'diff_free_upgrade'}], text = tr("DIALOGUECLOSE"), type = 'next_dialogue'},
+		{code = 'starting_bonus_upgrade', reqs = [{type = 'difficulty', check = true, value = 'diff_free_upgrade'}], text = tr("DIALOGUECONTINUE"), type = 'next_dialogue', dialogue_argument = 1},
 		],
 	},
 	starting_bonus_upgrade = {

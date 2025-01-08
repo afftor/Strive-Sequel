@@ -1431,7 +1431,7 @@ func FinishCombat(victory = true):
 	for p in playergroup.values():
 		var ch = characters_pool.get_char_by_id(p)
 		if ch.hp <=0:
-			if ResourceScripts.game_globals.difficulty != 'hard':
+			if !ResourceScripts.game_globals.diff_permadeath:
 				ch.hp = 1
 				ch.is_active = true
 				ch.defeated = false

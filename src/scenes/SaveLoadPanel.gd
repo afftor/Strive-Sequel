@@ -237,11 +237,10 @@ func show_save_details(save):
 	else:
 		$DetailsPanel.hide()
 		return
-	# var text = 'Mode: ' + starting_presets.preset_data[save.preset].name + "\nMaster: " + save.master_name + "\tVersion: " + save.version + "\tGold: " + str(save.gold) + "\nDay: " + str(save.day) + " Hour: " + str(save.hour) + "\t" + get_date_time(save) + "\tPopulation: " + str(save.population)
 	var text
 	var text2 = ""
-	if starting_presets.preset_data.has(save.preset):
-		text2 += tr("LSPMODE") + ": " + tr(starting_presets.preset_data[save.preset].name)
+#	if starting_presets.preset_data.has(save.preset):
+#		text2 += tr("LSPMODE") + ": " + tr(starting_presets.preset_data[save.preset].name)
 	text2 +=  "\n" +tr("LSPVER") + ": " + save.version 
 	# text += "\n\n\nVersion: " + save.version
 	if !globals.compare_version(save.version, '0.5.5b'):

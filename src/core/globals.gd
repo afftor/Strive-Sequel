@@ -227,7 +227,7 @@ func CreateGearItemLoot(item, parts, newname = null):
 		'hard':
 			diffdata.boost = 6
 	diffdata.boost += 2 + 0.4 * char_roll_data.lvl + char_roll_data.mf
-	if ResourceScripts.game_globals.difficulty == 'easy':
+	if ResourceScripts.game_globals.diff_bonus_loot:
 		diffdata.boost *= 1.5
 	diffdata.boost = int(diffdata.boost)
 	
@@ -2002,8 +2002,7 @@ func common_effects(effects):
 				input_handler.exploration_node.open_city(i.city)
 			'create_character':
 				#temporal solution
-				var preset = starting_presets.preset_data[ResourceScripts.game_globals.starting_preset]
-				if preset.has('tags') and preset.tags.has('solo'):
+				if ResourceScripts.game_globals.diff_solo:
 					continue
 				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave', i.type])
 			'progress_quest':
@@ -2331,7 +2330,7 @@ func common_effects(effects):
 			'pay_loan':
 				ResourceScripts.game_res.update_money('-', get_loan_sum(i.stage - 1))
 			'election_finish':
-				if ResourceScripts.game_globals.difficulty != 'hard':
+				if ResourceScripts.game_globals.diff_stop_loan:
 					common_effects([{code = 'complete_quest', value = 'main_quest_loan'}, {code = 'remove_timed_events', value = ['loan_event1','loan_event2','loan_event3','loan_event4']}]) #stub, do not want recursion here
 			'plan_loan_event':
 				var newevent = {reqs = [], code = 'loan_event' + str(i.stage)}
@@ -2636,42 +2635,49 @@ func valuecheck(dict):
 		'captured_number':
 			return input_handler.operate(dict.operant,input_handler.active_location.captured_characters.size(), dict.value)
 		'difficulty':
-			return input_handler.operate(dict.operant, ResourceScripts.game_globals.difficulty, dict.value)
+			return ResourceScripts.game_globals.get(dict.value) == dict.check
 		'capital_closed':
 			return is_capital_closed(dict.name) == dict.check
 
 
 func apply_starting_preset():
-	var preset =  starting_presets.preset_data[ResourceScripts.game_globals.starting_preset]
-	if preset.has('difficulty'):
-		ResourceScripts.game_globals.difficulty = preset.difficulty
-	if ResourceScripts.game_globals.skip_prologue:
-		preset = starting_presets.preset_data['advanced']
-	
-	ResourceScripts.game_res.money = preset.gold
-	for res in preset.materials:
-		ResourceScripts.game_res.materials[res] = preset.materials[res]
-	
-	ResourceScripts.game_progress.decisions = preset.decisions.duplicate()
-	ResourceScripts.game_progress.active_quests = preset.active_quests.duplicate()
-	ResourceScripts.game_progress.completed_quests = preset.completed_quests.duplicate()
-	if preset.has('seen_dialogues'):
-		ResourceScripts.game_progress.seen_dialogues = preset.seen_dialogues.duplicate()
-	if preset.has("unlocked_classes"):
-		ResourceScripts.game_progress.unlocked_classes = preset.unlocked_classes.duplicate()
-	
-	if preset.has("total_reputation"):
-		for i in ['fighters','workers','servants','mages']:
-			common_effects([{code = 'reputation', name = i, operant = '+', value = preset.total_reputation}])
-	
-	if preset.start in ['default','default_solo']:
-		input_handler.interactive_message('intro', '', {})
-	elif preset.start in ['skip_prologue']:
-		input_handler.interactive_message('servants_election_finish6')
 	common_effects([{code = 'add_timed_event', value = 'aliron_exotic_trader', args = [{type = 'fixed_date', date = 7, hour = 1}]}])
-	if preset.completed_quests.has("aliron_church_quest"):
-		ResourceScripts.game_progress.unlocked_classes.append('acolyte')
+	if ResourceScripts.game_globals.skip_prologue:
+		var preset = starting_presets.advanced_preset
+		ResourceScripts.game_res.money = preset.gold
+		for res in preset.materials:
+			ResourceScripts.game_res.materials[res] = preset.materials[res]
+		
+		ResourceScripts.game_progress.decisions = preset.decisions.duplicate()
+		ResourceScripts.game_progress.active_quests = preset.active_quests.duplicate()
+		ResourceScripts.game_progress.completed_quests = preset.completed_quests.duplicate()
+		if preset.has('seen_dialogues'):
+			ResourceScripts.game_progress.seen_dialogues = preset.seen_dialogues.duplicate()
+		if preset.has("unlocked_classes"):
+			ResourceScripts.game_progress.unlocked_classes = preset.unlocked_classes.duplicate()
+		
+		if preset.has("total_reputation"):
+			for i in ['fighters','workers','servants','mages']:
+				common_effects([{code = 'reputation', name = i, operant = '+', value = preset.total_reputation}])
+		if preset.completed_quests.has("aliron_church_quest"):
+			ResourceScripts.game_progress.unlocked_classes.append('acolyte')
+		for i in preset.items:
+			if Items.itemlist[i].type == 'usable':
+				AddItemToInventory(CreateUsableItem(i, preset.items[i]))
+			elif Items.itemlist[i].type == 'gear':
+				for j in range(preset.items[i]):
+					AddItemToInventory(CreateGearItem(i, {}))
+		for i in preset.upgrades:
+			ResourceScripts.game_res.upgrades[i] = preset.upgrades[i]
+		input_handler.interactive_message('servants_election_finish6')
 	else:
+		var preset = starting_presets.preset_data[ResourceScripts.game_globals.diff_money]
+		ResourceScripts.game_res.money = preset.gold
+		preset = starting_presets.preset_data[ResourceScripts.game_globals.diff_materials]
+		for res in preset.materials:
+			ResourceScripts.game_res.materials[res] = preset.materials[res]
+		
+		input_handler.interactive_message('intro', '', {})
 		common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 1}]}])
 
 
@@ -2684,9 +2690,8 @@ func equip_char(ch, type, args, quality = 'poor'):
 
 func get_loan_sum(n):
 	var res = variables.base_loan_sum[n]
-	match ResourceScripts.game_globals.difficulty:
-		'easy':
-			res *= 0.25
+	if ResourceScripts.game_globals.diff_small_loan:
+		res *= 0.25
 	
 	return res
 
