@@ -155,19 +155,57 @@ func newgame(pressed, pressed_button):
 	gui_controller.win_btn_connections_handler(pressed, $NewGamePanel, pressed_button)
 	self.current_pressed_btn = pressed_button
 	$NewGamePanel.visible = pressed
-	start_preset_update()
+	$NewGamePanel/PresetContainer.visible = true
+	$NewGamePanel/RichTextLabel.visible = true
+	$NewGamePanel/SettingsLabel.visible = false
+	$NewGamePanel/ScrollContainer.visible = false
+	$NewGamePanel/Settings3.visible = false
+	
+	input_handler.ClearContainerForced($NewGamePanel/PresetContainer/VBoxContainer)
+	for id in starting_presets.preset_data:
+		var newbutton = input_handler.DuplicateContainerTemplate($NewGamePanel/PresetContainer/VBoxContainer)
+		newbutton.text = tr(starting_presets.preset_data[id].name)
+		newbutton.connect('pressed', self, 'select_preset', [id])
+		newbutton.name = id
+	var newbutton = input_handler.DuplicateContainerTemplate($NewGamePanel/PresetContainer/VBoxContainer)
+	newbutton.text = tr('PRESETDATADEBUGCUSTOMNAME')
+	newbutton.connect('pressed', self, 'select_preset', ['custom'])
+	newbutton.name = 'custom'
+	
+	select_preset('easy')
+#	start_preset_update()
 #	$NewGamePanel/PresetContainer/VBoxContainer.get_child(0).emit_signal('pressed')
 #	ResourceScripts.game_globals.skip_prologue = $NewGamePanel/SkipP.pressed
 
+func select_preset(val):
+	if val == 'custom':
+		$NewGamePanel/PresetContainer.visible = false
+		$NewGamePanel/RichTextLabel.visible = false
+		$NewGamePanel/SettingsLabel.visible = true
+		$NewGamePanel/ScrollContainer.visible = true
+		$NewGamePanel/Settings3.visible = true
+		return
+	
+	for nd in $NewGamePanel/PresetContainer/VBoxContainer.get_children():
+		nd.pressed = (nd.name == val)
+	
+	var data = starting_presets.preset_data[val]
+	
+	$NewGamePanel/RichTextLabel.bbcode_text = tr(data.descript)
+	for arg in data.args:
+		ResourceScripts.game_globals.set(arg, data.args[arg])
+	
+	start_preset_update()
+
 
 func start_preset_update():
-	
 	input_handler.ClearContainer($NewGamePanel/Settings)
 	for i in settingarray:
 		var newbutton = input_handler.DuplicateContainerTemplate($NewGamePanel/Settings)
 		newbutton.get_node("Label").text = tr("NEWGAMESETTING"+i.to_upper())
 		newbutton.pressed = input_handler.globalsettings[i]
 		globals.connecttexttooltip(newbutton, tr("SETTING"+i.to_upper() + '_DESCRIPT'))
+#		globals.connecttexttooltip(newbutton.get_node("Label"), tr("SETTING"+i.to_upper() + '_DESCRIPT'))
 		newbutton.connect('pressed', self, 'session_setting', [i])
 	input_handler.ClearContainer($NewGamePanel/ScrollContainer/Settings2)
 	for i in settingarray2:
@@ -175,6 +213,7 @@ func start_preset_update():
 		newbutton.get_node("Label").text = tr("NEWGAMESETTING"+i.trim_prefix('diff_').to_upper())
 		newbutton.pressed = ResourceScripts.game_globals.get(i)
 		globals.connecttexttooltip(newbutton, tr("SETTING"+i.trim_prefix('diff_').to_upper() + '_DESCRIPT'))
+#		globals.connecttexttooltip(newbutton.get_node("Label"), tr("SETTING"+i.trim_prefix('diff_').to_upper() + '_DESCRIPT'))
 		newbutton.connect('pressed', self, 'gameplay_setting', [i])
 	input_handler.ClearContainer($NewGamePanel/Settings3, ['label', 'button'])
 	for i in settingarray3:

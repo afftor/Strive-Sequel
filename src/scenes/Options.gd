@@ -8,8 +8,9 @@ var SwitchLanguage
 func _ready():
 	$TabContainer.set_tab_title(0, tr("OPTNAME1"))
 	$TabContainer.set_tab_title(1, tr("OPTNAME2"))
-	$TabContainer.set_tab_title(2, tr("OPTNAME3"))
-	$TabContainer.set_tab_title(3, tr("OPTNAME4"))
+	$TabContainer.set_tab_title(2, tr("OPTNAME5"))
+	$TabContainer.set_tab_title(3, tr("OPTNAME3"))
+	$TabContainer.set_tab_title(4, tr("OPTNAME4"))
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.connect("value_changed", self, 'soundsliderchange',[i.name])
 		i.get_node("CheckBox").connect('pressed', self, 'mutepressed', [i.get_node("CheckBox")])
@@ -37,8 +38,9 @@ func _ready():
 		get_node("TabContainer/Gameplay/Scroll/Box/" + i).connect("pressed", self, "gameplay_rule", ['Gameplay/Scroll/Box', i])
 		get_node("TabContainer/Gameplay/Scroll/Box/" + i).pressed = input_handler.globalsettings[i]
 	for i in ['diff_gf_only_upg','diff_permadeath', 'diff_bonus_taskmod', 'diff_bonus_loot', 'diff_stop_loan', 'diff_small_loan']:
-		get_node("TabContainer/Gameplay/Scroll/Box/" + i).connect("pressed", self, "gamestate_rule",  [i])
-		get_node("TabContainer/Gameplay/Scroll/Box/" + i).pressed = ResourceScripts.game_globals.get(i)
+		get_node("TabContainer/Gameplay2/Scroll/Box/" + i).connect("pressed", self, "gamestate_rule",  [i])
+		get_node("TabContainer/Gameplay2/Scroll/Box/" + i).pressed = ResourceScripts.game_globals.get(i)
+		globals.connecttexttooltip(get_node("TabContainer/Gameplay2/Scroll/Box/" + i), tr("SETTING"+i.trim_prefix('diff_').to_upper() + '_DESCRIPT'))
 	for i in ['generate_portraits', 'factors_as_words', 'disable_paperdoll']:
 		get_node("TabContainer/Visuals/" + i).connect("pressed", self, "gameplay_rule", ['Visuals', i])
 		get_node("TabContainer/Visuals/" + i).pressed = input_handler.globalsettings[i]
@@ -97,12 +99,12 @@ func open():
 	autosave_amount_change(input_handler.globalsettings.autosave_number)
 	autosave_frequency_change(input_handler.globalsettings.autosave_frequency)
 	$TabContainer/Visuals/DisableAnimations.pressed = input_handler.globalsettings.animatedbackground
-
-
+	
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.value = input_handler.globalsettings[i.name+'vol']
 		i.get_node("CheckBox").pressed = input_handler.globalsettings[i.name+'mute']
 		i.editable = !i.get_node("CheckBox").pressed
+
 
 func togglefullscreen():
 	input_handler.globalsettings.fullscreen = $TabContainer/Visuals/fullscreen.pressed
@@ -180,7 +182,7 @@ func gameplay_rule(tab, rule):
 
 
 func gamestate_rule(rule):
-	input_handler.globalsettings[rule] = get_node("TabContainer/Gameplay/Scroll/Box/%s" % rule).pressed
+	ResourceScripts.game_globals.set(rule, get_node("TabContainer/Gameplay2/Scroll/Box/%s" % rule).pressed)
 
 
 func language_restart():

@@ -34,9 +34,9 @@ size = 33
 font_data = ExtResource( 23 )
 
 [node name="Options" type="Panel"]
-margin_left = 602.0
+margin_left = 536.0
 margin_top = 138.0
-margin_right = 1251.0
+margin_right = 1317.0
 margin_bottom = 926.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
@@ -44,14 +44,13 @@ script = ExtResource( 2 )
 [node name="TabContainer" type="TabContainer" parent="."]
 margin_left = 29.0
 margin_top = 99.0
-margin_right = 616.0
+margin_right = 722.0
 margin_bottom = 668.0
 custom_colors/font_color_bg = Color( 1, 1, 1, 1 )
 custom_colors/font_color_fg = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
 
 [node name="Visuals" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 45.0
@@ -138,6 +137,7 @@ custom_fonts/font = ExtResource( 4 )
 text = "OPTDISABLEPAPERDOLL"
 
 [node name="Gameplay" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 45.0
@@ -146,16 +146,17 @@ margin_top = 45.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 47.0
+margin_top = 26.0
 margin_right = -40.0
 theme = ExtResource( 24 )
 scroll_horizontal_enabled = false
 
 [node name="Box" type="VBoxContainer" parent="TabContainer/Gameplay/Scroll"]
-margin_right = 465.0
-margin_bottom = 786.0
+margin_right = 420.0
+margin_bottom = 522.0
 
 [node name="furry" type="CheckBox" parent="TabContainer/Gameplay/Scroll/Box"]
-margin_right = 465.0
+margin_right = 420.0
 margin_bottom = 40.0
 theme = ExtResource( 3 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -169,7 +170,7 @@ __meta__ = {
 
 [node name="furry_multiple_nipples" type="CheckBox" parent="TabContainer/Gameplay/Scroll/Box"]
 margin_top = 44.0
-margin_right = 465.0
+margin_right = 420.0
 margin_bottom = 84.0
 theme = ExtResource( 3 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -183,7 +184,7 @@ __meta__ = {
 
 [node name="futa_balls" type="CheckBox" parent="TabContainer/Gameplay/Scroll/Box"]
 margin_top = 88.0
-margin_right = 465.0
+margin_right = 420.0
 margin_bottom = 128.0
 theme = ExtResource( 3 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -208,7 +209,7 @@ text = "Turn Based Time Flow"
 
 [node name="show_full_consent" type="CheckBox" parent="TabContainer/Gameplay/Scroll/Box"]
 margin_top = 132.0
-margin_right = 465.0
+margin_right = 420.0
 margin_bottom = 172.0
 theme = ExtResource( 3 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -222,7 +223,7 @@ __meta__ = {
 
 [node name="enable_tutorials" type="CheckBox" parent="TabContainer/Gameplay/Scroll/Box"]
 margin_top = 176.0
-margin_right = 465.0
+margin_right = 420.0
 margin_bottom = 216.0
 rect_pivot_offset = Vector2( -462.269, -82 )
 theme = ExtResource( 3 )
@@ -235,10 +236,106 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="diff_gf_only_upg" type="CheckBox" parent="TabContainer/Gameplay/Scroll/Box"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Gameplay/Scroll/Box"]
 margin_top = 220.0
+margin_right = 420.0
+margin_bottom = 369.0
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer"]
+margin_right = 420.0
+margin_bottom = 35.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "OPTGAMEPLAYMALERATE"
+align = 1
+
+[node name="malerate" type="HSlider" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer"]
+margin_top = 40.0
+margin_right = 420.0
+margin_bottom = 72.0
+value = 30.0
+ticks_on_borders = true
+
+[node name="Label2" type="Label" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer"]
+margin_top = 77.0
+margin_right = 420.0
+margin_bottom = 112.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "OPTGAMEPLAYFUTARATE"
+align = 1
+
+[node name="futarate" type="HSlider" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer"]
+margin_top = 117.0
+margin_right = 420.0
+margin_bottom = 149.0
+ticks_on_borders = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/Gameplay/Scroll/Box"]
+margin_top = 373.0
+margin_right = 420.0
+margin_bottom = 522.0
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer2"]
+margin_right = 420.0
+margin_bottom = 35.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "OPTFAMEPLAYAUTOSAVEAMOUNT"
+align = 1
+
+[node name="autosave_amount" type="HSlider" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer2"]
+margin_top = 40.0
+margin_right = 420.0
+margin_bottom = 72.0
+value = 30.0
+ticks_on_borders = true
+
+[node name="Label2" type="Label" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer2"]
+margin_top = 77.0
+margin_right = 420.0
+margin_bottom = 112.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "OPTGAMEPLAYAUTOSAVETIME"
+align = 1
+
+[node name="autosave_frequency" type="HSlider" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer2"]
+margin_top = 117.0
+margin_right = 420.0
+margin_bottom = 149.0
+ticks_on_borders = true
+
+[node name="Gameplay2" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 45.0
+
+[node name="Scroll" type="ScrollContainer" parent="TabContainer/Gameplay2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 47.0
+margin_top = 26.0
+margin_right = -40.0
+theme = ExtResource( 24 )
+scroll_horizontal_enabled = false
+
+[node name="Box" type="VBoxContainer" parent="TabContainer/Gameplay2/Scroll"]
 margin_right = 465.0
 margin_bottom = 260.0
+
+[node name="diff_gf_only_upg" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
+margin_right = 465.0
+margin_bottom = 40.0
 rect_pivot_offset = Vector2( -462.269, -82 )
 theme = ExtResource( 3 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -250,10 +347,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="diff_permadeath" type="CheckBox" parent="TabContainer/Gameplay/Scroll/Box"]
-margin_top = 264.0
+[node name="diff_permadeath" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
+margin_top = 44.0
 margin_right = 465.0
-margin_bottom = 304.0
+margin_bottom = 84.0
 rect_pivot_offset = Vector2( -462.269, -82 )
 theme = ExtResource( 3 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -265,10 +362,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="diff_bonus_taskmod" type="CheckBox" parent="TabContainer/Gameplay/Scroll/Box"]
-margin_top = 308.0
+[node name="diff_bonus_taskmod" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
+margin_top = 88.0
 margin_right = 465.0
-margin_bottom = 348.0
+margin_bottom = 128.0
 rect_pivot_offset = Vector2( -462.269, -82 )
 theme = ExtResource( 3 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -280,10 +377,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="diff_bonus_loot" type="CheckBox" parent="TabContainer/Gameplay/Scroll/Box"]
-margin_top = 352.0
+[node name="diff_bonus_loot" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
+margin_top = 132.0
 margin_right = 465.0
-margin_bottom = 392.0
+margin_bottom = 172.0
 rect_pivot_offset = Vector2( -462.269, -82 )
 theme = ExtResource( 3 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -295,10 +392,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="diff_stop_loan" type="CheckBox" parent="TabContainer/Gameplay/Scroll/Box"]
-margin_top = 396.0
+[node name="diff_stop_loan" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
+margin_top = 176.0
 margin_right = 465.0
-margin_bottom = 436.0
+margin_bottom = 216.0
 rect_pivot_offset = Vector2( -462.269, -82 )
 theme = ExtResource( 3 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -310,10 +407,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="diff_small_loan" type="CheckBox" parent="TabContainer/Gameplay/Scroll/Box"]
-margin_top = 440.0
+[node name="diff_small_loan" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
+margin_top = 220.0
 margin_right = 465.0
-margin_bottom = 480.0
+margin_bottom = 260.0
 rect_pivot_offset = Vector2( -462.269, -82 )
 theme = ExtResource( 3 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -324,84 +421,6 @@ text = "NEWGAMESETTINGSMALL_LOAN"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Gameplay/Scroll/Box"]
-margin_top = 484.0
-margin_right = 465.0
-margin_bottom = 633.0
-custom_constants/separation = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer"]
-margin_right = 465.0
-margin_bottom = 35.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "OPTGAMEPLAYMALERATE"
-align = 1
-
-[node name="malerate" type="HSlider" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer"]
-margin_top = 40.0
-margin_right = 465.0
-margin_bottom = 72.0
-value = 30.0
-ticks_on_borders = true
-
-[node name="Label2" type="Label" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer"]
-margin_top = 77.0
-margin_right = 465.0
-margin_bottom = 112.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "OPTGAMEPLAYFUTARATE"
-align = 1
-
-[node name="futarate" type="HSlider" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer"]
-margin_top = 117.0
-margin_right = 465.0
-margin_bottom = 149.0
-ticks_on_borders = true
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/Gameplay/Scroll/Box"]
-margin_top = 637.0
-margin_right = 465.0
-margin_bottom = 786.0
-custom_constants/separation = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer2"]
-margin_right = 465.0
-margin_bottom = 35.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "OPTFAMEPLAYAUTOSAVEAMOUNT"
-align = 1
-
-[node name="autosave_amount" type="HSlider" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer2"]
-margin_top = 40.0
-margin_right = 465.0
-margin_bottom = 72.0
-value = 30.0
-ticks_on_borders = true
-
-[node name="Label2" type="Label" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer2"]
-margin_top = 77.0
-margin_right = 465.0
-margin_bottom = 112.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "OPTGAMEPLAYAUTOSAVETIME"
-align = 1
-
-[node name="autosave_frequency" type="HSlider" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer2"]
-margin_top = 117.0
-margin_right = 465.0
-margin_bottom = 149.0
-ticks_on_borders = true
 
 [node name="Audio" type="Tabs" parent="TabContainer"]
 visible = false
@@ -680,7 +699,7 @@ text = "OPTCLOSE"
 align = 1
 
 [node name="Label" type="Label" parent="."]
-margin_right = 649.0
+margin_right = 773.0
 margin_bottom = 83.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 5 )
