@@ -9,9 +9,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/ButtVioletPressed.tres" type="StyleBox" id=7]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/ButtVioletNormal.tres" type="StyleBox" id=8]
 
-[node name="GameMenuPanel" type="Panel" groups=[
-"pauseprocess",
-]]
+[node name="GameMenuPanel" type="Panel" groups=["pauseprocess"]]
 self_modulate = Color( 1, 1, 1, 0.705882 )
 margin_left = 730.0
 margin_top = 265.0
@@ -19,9 +17,6 @@ margin_right = 1190.0
 margin_bottom = 815.0
 custom_styles/panel = ExtResource( 6 )
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Background" type="Panel" parent="."]
 self_modulate = Color( 0, 0, 0, 0.823529 )
@@ -60,8 +55,8 @@ custom_styles/normal = ExtResource( 8 )
 [node name="Label" type="Label" parent="VBoxContainer/Save"]
 margin_right = 400.0
 margin_bottom = 73.0
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "PAUSEMENUSAVE"
 align = 1
 valign = 1
@@ -81,8 +76,8 @@ custom_styles/normal = ExtResource( 8 )
 [node name="Label" type="Label" parent="VBoxContainer/Load"]
 margin_right = 400.0
 margin_bottom = 73.0
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "PAUSEMENULOAD"
 align = 1
 valign = 1
@@ -102,8 +97,8 @@ custom_styles/normal = ExtResource( 8 )
 [node name="Label" type="Label" parent="VBoxContainer/Options"]
 margin_right = 400.0
 margin_bottom = 69.0
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "PAUSEMENUOPT"
 align = 1
 valign = 1
@@ -127,8 +122,8 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 61.5, 22 )
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "PAUSEMENUGALLERY"
 align = 1
 valign = 1
@@ -145,8 +140,8 @@ custom_styles/normal = ExtResource( 8 )
 [node name="Label" type="Label" parent="VBoxContainer/Exit"]
 margin_right = 400.0
 margin_bottom = 69.0
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "PAUSEMENUEXIT"
 align = 1
 valign = 1
@@ -161,7 +156,7 @@ margin_right = 586.74
 
 [node name="Options" parent="." instance=ExtResource( 3 )]
 visible = false
-margin_left = -40.42
-margin_top = -78.0
-margin_right = 608.58
-margin_bottom = 710.0
+margin_left = -171.0
+margin_top = -129.0
+margin_right = 610.0
+margin_bottom = 659.0

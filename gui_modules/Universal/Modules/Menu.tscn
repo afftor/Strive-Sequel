@@ -472,6 +472,7 @@ __meta__ = {
 }
 
 [node name="SettingsLabel" type="Label" parent="NewGamePanel"]
+visible = false
 margin_left = 6.0
 margin_top = 93.097
 margin_right = 294.0
@@ -483,7 +484,6 @@ align = 1
 valign = 1
 
 [node name="PresetContainer" type="ScrollContainer" parent="NewGamePanel"]
-visible = false
 margin_left = 40.0
 margin_top = 111.0
 margin_right = 266.0
@@ -535,6 +535,8 @@ theme = ExtResource( 3 )
 scroll_horizontal_enabled = false
 
 [node name="Settings2" type="VBoxContainer" parent="NewGamePanel/ScrollContainer"]
+margin_right = 344.0
+size_flags_horizontal = 3
 theme = ExtResource( 12 )
 
 [node name="Button" type="CheckBox" parent="NewGamePanel/ScrollContainer/Settings2"]
@@ -550,7 +552,17 @@ margin_bottom = 41.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 7 )
 
+[node name="RichTextLabel" type="RichTextLabel" parent="NewGamePanel"]
+margin_left = 328.0
+margin_top = 115.0
+margin_right = 672.0
+margin_bottom = 451.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 33 )
+
 [node name="Settings3" type="VBoxContainer" parent="NewGamePanel"]
+visible = false
 margin_left = 24.0
 margin_top = 167.0
 margin_right = 280.0

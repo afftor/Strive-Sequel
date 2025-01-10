@@ -3,6 +3,12 @@ extends Node
 
 var preset_data = {
 	easy = {
+		code = 'easy',
+		name = 'PRESETDATADEBUGEASYNAME',
+		mc = 'custom',
+		start = 'default',
+		free_slave_number = 1,
+		descript = "PRESETDATADEBUGEASYDIS",
 		gold = 750,
 		materials = {meat = 50,fish = 50,bread = 50,vegetables = 50},
 		items = {},
@@ -10,8 +16,28 @@ var preset_data = {
 		decisions = [],
 		active_quests = [],
 		completed_quests = [],
+		args = {
+			skip_prologue = false,
+			diff_gf_only_upg = false,
+			diff_permadeath = false,
+			diff_bonus_taskmod = true,
+			diff_bonus_loot = true,
+			diff_stop_loan = true,
+			diff_small_loan = true,
+			diff_solo = false,
+			diff_free_upgrade = true,
+			
+			diff_money = 'easy',
+			diff_materials = 'easy'
+		}
 	},
 	normal = {
+		code = 'normal',
+		name = 'PRESETDATADEBUGNORMALNAME',
+		mc = 'custom',
+		start = 'default',
+		free_slave_number = 1,
+		descript = "PRESETDATADEBUGNORMALDIS",
 		gold = 500,
 		materials = {meat = 25,fish = 25,bread = 25,vegetables = 25},
 		items = {},
@@ -19,8 +45,28 @@ var preset_data = {
 		decisions = [],
 		active_quests = [],
 		completed_quests = [],
+		args = {
+			skip_prologue = false,
+			diff_gf_only_upg = false,
+			diff_permadeath = false,
+			diff_bonus_taskmod = false,
+			diff_bonus_loot = false,
+			diff_stop_loan = true,
+			diff_small_loan = false,
+			diff_solo = false,
+			diff_free_upgrade = true,
+			
+			diff_money = 'normal',
+			diff_materials = 'normal'
+		}
 	},
 	hard = {
+		code = 'hard',
+		name = 'PRESETDATADEBUGHARDNAME',
+		mc = 'custom',
+		start = 'default',
+		free_slave_number = 1,
+		descript = "PRESETDATADEBUGHARDDIS",
 		gold = 500,
 		materials = {meat = 20,fish = 20,bread = 20, vegetables = 20},
 		items = {},
@@ -28,6 +74,20 @@ var preset_data = {
 		decisions = [],
 		active_quests = [],
 		completed_quests = [],
+		args = {
+			skip_prologue = false,
+			diff_gf_only_upg = true,
+			diff_permadeath = true,
+			diff_bonus_taskmod = false,
+			diff_bonus_loot = false,
+			diff_stop_loan = false,
+			diff_small_loan = false,
+			diff_solo = false,
+			diff_free_upgrade = false,
+			
+			diff_money = 'hard',
+			diff_materials = 'hard'
+		}
 	},
 }
 var import_preset = { #don't remove, for import purpose
