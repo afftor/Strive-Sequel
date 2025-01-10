@@ -366,8 +366,8 @@ func checkdeaths():
 					break
 			#turnorder.erase(battlefield[i])
 			if summons.has(i):
-#				tchar.displaynode.queue_free()
-#				tchar.displaynode = null
+				tchar.displaynode.queue_free()
+				tchar.displaynode = null
 				tchar.is_active = false
 				battlefield[i] = null
 				if tchar.combatgroup == 'enemy':

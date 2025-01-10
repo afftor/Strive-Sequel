@@ -234,13 +234,15 @@ func update_mp_label(newmp, newmpp):
 		$mplabel.text = str(floor(newmpp)) + '%%'
 
 func noq_defeat():
-	if !visible: return
+	if !visible: 
+		return
 	if fighter.is_active:
 		turn_overlay(true)
 #		$Icon.material = load("res://assets/sfx/bw_shader.tres")
 	else:
 		fighter = null
 		is_active = false
+#		queue_free()
 #	set_process_input(false)
 
 func resurrect():
