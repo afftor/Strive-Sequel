@@ -15396,12 +15396,12 @@ Zephyra: — Yes, come for us, stain my tail.
 The soft heaven constantly assaulting your sensitive shaft invites you to keep cumming forever, but you're saved by the limitations of your body putting an end to the continuous stream of seed. As you lie there still wrapped in their tails, your mind finally recovers with a break to form thoughts again...""",
 	KURO_WEDDING_1 = """As soon as the ceremony finishes, Kuro leads you to the bedroom. By this time you can already spot the excitement boiling in her despite her facade of calmness.
 
-— Well, dear [husband], are you going to patiently tease me now?
+— Well, dear [husband], you've shown dedication taking things this far. Now I should fully entrust you with my body.
 
 Kuro stares at you, expecting you to take the lead. Her bright dress highlights her dark hair and glowing eyes shining through her glasses, her tail swishing to the side to frame her rear. Her breasts rest inside the top half of her dress, nipples pointing out from behind the fabric in anticipation of your touch. If Kuro had ever been this open before now, you'd be surprised.""",
 	KURO_WEDDING_2 = """You waste no time in being appreciative of her welcoming demeanor, sliding the unnecessary parts of her dress to the side for the proper view of her body. Her chest falls out now that its support is gone, her nipples pointing to the air and ready to be played with. Careful movements of her tail put it in place to keep her ass visible and open for you to ogle, everything on display for your eyes only.
 
-—  Ah... To think we are going to do it as a married couple now...""",
+—  Ah... My body has became too responsive... To you...""",
 	KURO_WEDDING_OPT_PUSSY = "*Take pussy*",
 	KURO_WEDDING_OPT_ASS = "*Take ass*",
 	KURO_WEDDING_PUSSY = """Slipping into her pussy, you watch her expression slip into pleasure instead of her usual calm gaze. Her body knows the feel of your cock and it knows to give in to it, no matter how intransigent her mind may be. Juices flow around your shaft right away, coating it in a sheen of lust that only gets brighter the more you thrust inside. Lewd noises resound through the room as your bodies make contact, the wet accentuation from her nectar making Kuro blush.

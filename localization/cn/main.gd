@@ -69,6 +69,7 @@ var TranslationDict = {
 	OPTNAME2 = "游戏性",
 	OPTNAME3 = "声音",
 	OPTNAME4 = "作弊",
+	OPTNAME5 = """Difficulty""", # MISSING TRANSLATION
 	
 	OPTOPT = "设置",
 	OPTCLOSE = "关闭",
@@ -218,6 +219,7 @@ var TranslationDict = {
 	NEWGAMESETTING = "设置",
 	NEWGAMESKIPPROL = "Skip prologue",
 	NEWGAMESTART = "开始游戏",
+	PRESETDATADEBUGCUSTOMNAME = """custom""", # MISSING TRANSLATION
 	
 	PRESETDATADEBUGEASYNAME = "容易",
 	PRESETDATADEBUGEASYDIS = "难度越容易，你就从更多的金币和资源开始。顺从的流失减少了。贷款支付减少",
@@ -1647,6 +1649,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	DESCRIPTCLASSSERVANT = "[name] 是你的仆人，必须听从你的命令。",
 	DESCRIPTCLASSMERC = "[name] 被你雇佣，花费你金币。",
 	DESCRIPTCLASSHEIR = "[name] 是你的继承人",
+	DESCRIPTCLASSSLAVE_TRAINED = """[name] is your trained slave and does not require any monitoring.""", # MISSING TRANSLATION
 	
 	CLASSDETAILSKILLS = "技能",
 	CLASSDETAILCOMBATSKILLS = "战斗技能",
@@ -2151,6 +2154,8 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	SKILLMAKE_UNDEADDESCRIPT = "Makes selected charcter into Undead. Undead's charm is reduced by 100, food consumption is set to 0. Undead can't impregnate or get pregnant. Undead have increased Dark resist and reduced Light resist. \n\nCan't be used on Unique Characters.",
 	
 	DIALOGUEPET_LUST_SKILLTEXT = "在接近[targetname]之前，您应该决定[name]累积的欲望将用于什么。\n\n1。完全恢复服从并获得一些忠诚度\n2。将其转化为经验\n3。恢复健康值和魔力",
+	RESOURCEATHERED = """After casting the spell a large pile of local resources is produced on the ground.""", # MISSING TRANSLATION
+	EXPLOREADVANCEINFINITE = """Advance to the next floor? All the unexplored rooms here will be lost.""", # MISSING TRANSLATION
 	CONSENT0 = """Innocent""", # MISSING TRANSLATION
 	CONSENT1 = """Curious""", # MISSING TRANSLATION
 	CONSENT2 = """Developing""", # MISSING TRANSLATION
@@ -2230,6 +2235,7 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	TRAITMAGIC_TOOLSDESCRIPT = "Allows the use of magic tools such as staves. 允许使用诸如棍子之类的魔法工具",
 	
 	TRAITUNDEADDESCRIPT = "[name] is no longer a living being. Food consumption is set to 0; Charm is reduced by 100; Light Resist -50; Dark Resist +50; Dark Damage +20%%; Can't impregnate or get pregnant.\n[name]不再是生物。食物消耗设置为0；魅力减少100；光抗性-50；暗抗性+50；暗伤害+20%%；不能怀孕或使人怀孕。",
+	TRAITNIXX_CHAMPIONDESCRIPT = """Dark element abilities have +30 Hit rate and ignore target's DEF and MDEF""", # MISSING TRANSLATION
 	TRAITSPOUSE = "Spouse 配偶",
 	TRAITSPOUSEDESCRIPT = "Future children between Master and Spouse recieve Heir status instead of Slave or Peon. \n主人和配偶之间的未来子女获得继承人身份，而不是奴隶或雇工。",
 	

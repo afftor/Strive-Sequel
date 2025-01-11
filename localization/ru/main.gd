@@ -61,6 +61,7 @@ var TranslationDict = {
 	OPTNAME2 = """Геймплей""",
 	OPTNAME3 = """Аудио""",
 	OPTNAME4 = """Читы""",
+	OPTNAME5 = """Difficulty""", # MISSING TRANSLATION
 	OPTOPT = """Опции""",
 	OPTCLOSE = """ЗАКРЫТЬ""",
 	OPTGAMEPLAYFURRIES = """Фурри""",
@@ -195,6 +196,7 @@ var TranslationDict = {
 	NEWGAMESETTING = """Настройки""",
 	NEWGAMESKIPPROL = """Пропустить пролог""",
 	NEWGAMESTART = """Начать игру""",
+	PRESETDATADEBUGCUSTOMNAME = """custom""", # MISSING TRANSLATION
 	PRESETDATADEBUGEASYNAME = """легко""",
 	PRESETDATADEBUGEASYDIS = """Более легкая сложность, вы начинаете с большим количеством золота и ресурсов. (WIP) Уменьшаются выплаты по кредитам""",
 	PRESETDATADEBUGNORMALNAME = """нормально""",
@@ -209,6 +211,31 @@ var TranslationDict = {
 	NEWGAMESETTINGFUTA = """фута""",
 	NEWGAMESETTINGFURRY = """фурри""",
 	NEWGAMESETTINGEASYTRAIN = """Легкое обучение""",
+	NEWGAMESETTINGSKIP_PROLOGUE = """Skip prologue""", # MISSING TRANSLATION
+	NEWGAMESETTINGGF_ONLY_UPG = """No factors upgrade""", # MISSING TRANSLATION
+	NEWGAMESETTINGPERMADEATH = """Permadeath""", # MISSING TRANSLATION
+	NEWGAMESETTINGBONUS_TASKMOD = """Crafting bonus""", # MISSING TRANSLATION
+	NEWGAMESETTINGBONUS_LOOT = """Loot bonus""", # MISSING TRANSLATION
+	NEWGAMESETTINGSTOP_LOAN = """Fast loan payment""", # MISSING TRANSLATION
+	NEWGAMESETTINGSMALL_LOAN = """Small loan""", # MISSING TRANSLATION
+	NEWGAMESETTINGSOLO = """Solo""", # MISSING TRANSLATION
+	NEWGAMESETTINGFREE_UPGRADE = """Free upgrade""", # MISSING TRANSLATION
+	NEWGAMESETTINGMATERIALS = """Starting materials""", # MISSING TRANSLATION
+	NEWGAMESETTINGMONEY = """Starting gold""", # MISSING TRANSLATION
+	SETTINGSKIP_PROLOGUE_DESCRIPT = """Skip prologue""", # MISSING TRANSLATION
+	SETTINGGF_ONLY_UPG_DESCRIPT = """Only Growth Factor can be upgraded""", # MISSING TRANSLATION
+	SETTINGPERMADEATH_DESCRIPT = """Permadeath""", # MISSING TRANSLATION
+	SETTINGBONUS_TASKMOD_DESCRIPT = """Crafted gear has better quqlity""", # MISSING TRANSLATION
+	SETTINGBONUS_LOOT_DESCRIPT = """Looted gear has better quality""", # MISSING TRANSLATION
+	SETTINGSTOP_LOAN_DESCRIPT = """Stop loan payments after election""", # MISSING TRANSLATION
+	SETTINGSMALL_LOAN_DESCRIPT = """4 times lesser loan sum""", # MISSING TRANSLATION
+	SETTINGSOLO_DESCRIPT = """No free characters""", # MISSING TRANSLATION
+	SETTINGFREE_UPGRADE_DESCRIPT = """Free upgrade""", # MISSING TRANSLATION
+	SETTINGMATERIALS_DESCRIPT = """Starting materials""", # MISSING TRANSLATION
+	SETTINGMONEY_DESCRIPT = """Starting gold""", # MISSING TRANSLATION
+	DIFF_EASY = """easy""", # MISSING TRANSLATION
+	DIFF_NORMAL = """normal""", # MISSING TRANSLATION
+	DIFF_HARD = """hard""", # MISSING TRANSLATION
 	#TutorialInfo
 	TUTORIALINFONAME = """Введение""",
 	TUTORIALINFOQUESTION = """Вы впервые играете в Strive: Conquest?""",
@@ -299,7 +326,7 @@ var TranslationDict = {
 	CHARTYPESLAVE_TRAINEDF = """Обученная рабыня""",
 	CHARTYPEMASTERDESCRIPT = """[Master] особняка не имеет ограничений на тип действий, которые он может выполнять.""",
 	CHARTYPESLAVEDESCRIPT = """Рабы считаются собственностью. Их жизнь принадлежит только хозяину, однако за выполнением заданий должен следить тренер.""",
-	CHARTYPESERVANTDESCRIPT = """Подчиненные - это свободные люди, которые решили служить под вашим началом. По сравнению с рабами у них быстрее растет лояльность, ниже утечка повиновения, но их нельзя продать или отдать за квесты. Кроме того, каждую неделю они получают плату в виде доли от своей стоимости.""",
+	CHARTYPESERVANTDESCRIPT = """Подчиненные - это свободные люди, которые решили служить под вашим началом. По сравнению с рабами у них быстрее растет лояльность, получают дополнительные очки мастерства, основанные на факторе роста, но их нельзя продать или отдать за квесты. Кроме того, каждую неделю они получают плату в виде доли от своей стоимости.""",
 	CHARTYPEHEIRDESCRIPT = """Наследники особняка - это дети, рожденные от [Master]а и его супруги.
 
 [color=aqua]У наследника Повиновение истощается на 50% медленнее, а Лояльность растет на 50% быстрее. Наследник имеет 20% штраф к заданиям сбора, земледелия и рыбалки.[/color]""",
@@ -614,8 +641,10 @@ var TranslationDict = {
 	ITEMSLOTRHAND = """Правая рука""",
 	ITEMSLOTNECK = """Шея""",
 	ITEMSLOTTOOL = """Инструмент""",
-	ITEMREQNONUNIQUE = """Can only be applied to non-unique slaves""", # MISSING TRANSLATION
-	ITEMREQSMASTERY = """Masteries levels not matched or already know this skill""", # MISSING TRANSLATION
+	
+	ITEMREQNONUNIQUE = "Может быть применено только к неуникальным рабам",
+	ITEMREQSMASTERY = "Уровень мастерства не совпадает или уже известно",
+	
 	ITEMLEATHER_COLLAR = """Кожаный ошейник""",
 	ITEMLEATHER_COLLARDESCRIPT = """Простой кожаный ошейник, обозначающий собственность.""",
 	ITEMELEGANT_CHOKER = """Изящный чокер""",
@@ -821,12 +850,20 @@ var TranslationDict = {
 	ITEMLEGS_BASE_CLOTHDESCRIPT = """Легкая нижняя броня, которую может носить любой. Обеспечивает разумную защиту от урона, наносимого заклинаниями.""",
 	ITEMLEGS_BASE_LEATHERDESCRIPT = """Нижняя броня, собранная из костей или кожи, требует некоторого обучения для комфортного использования.""",
 	ITEMLEGS_BASE_METALDESCRIPT = """Тяжелая нижняя броня, обычно сделанная из металла. Обеспечивает отличную защиту от урона, наносимого умениями.""",
-	ITEMSKILLBOOK_HYPERBOREA = """Magic Tome: Winds of Hyperborea""", # MISSING TRANSLATION
-	ITEMSKILLBOOK_HOLYLANCE = """Magic Tome: Holy Lance""", # MISSING TRANSLATION
-	ITEMSKILLBOOK_POISON_VAPORS = """Magic Tome: Poison Vapors""", # MISSING TRANSLATION
-	ITEMSKILLBOOK_METEOR = """Magic Tome: Meteor""", # MISSING TRANSLATION
-	ITEMSKILLBOOK_ABYSS_GAZE = """Magic Tome: Abyss Gaze""", # MISSING TRANSLATION
-	ITEMSKILLBOOK_DARK_FLAME = """Magic Tome: Dark Flames""", # MISSING TRANSLATION
+
+	
+	ITEMSKILLBOOK_HYPERBOREA = """Магический том: Ветра Гипербореи""",
+	ITEMSKILLBOOK_HYPERBOREADESCRIPT = """Обучает навыку: Ветра Гипербореи. Требования: Мастерство воды - 4, Мастерство света - 4""",
+	ITEMSKILLBOOK_HOLYLANCE = """Магический том: Святое Копье""",
+	ITEMSKILLBOOK_HOLYLANCEDESCRIPT = """Обучает навыку: Святое Копье. Требования: Военное дело - 4, Мастерство Света - 3""",
+	ITEMSKILLBOOK_POISON_VAPORS = """Магический том: Ядовитые Испарения""",
+	ITEMSKILLBOOK_POISON_VAPORSDESCRIPT = """Обучает навыку: Ядовитые Испарения. Требования: Мастерство Земли - 3, Мастерство Воды - 1""",
+	ITEMSKILLBOOK_METEOR = """Магический фолиант: Метеор""",
+	ITEMSKILLBOOK_METEORDESCRIPT = """Обучает навыку: Метеор. Требования: Мастерство огня - 4, Мастерство земли - 5""",
+	ITEMSKILLBOOK_ABYSS_GAZE = """Магический том: Взгляд Бездны""",
+	ITEMSKILLBOOK_ABYSS_GAZEDESCRIPT = """Обучает навыку: Взгляд Бездны. Требования: Мастерство разума - 6, Мастерство тьмы - 4""",
+	ITEMSKILLBOOK_DARK_FLAME = """Магический том: Темное пламя""",
+	ITEMSKILLBOOK_DARK_FLAMEDESCRIPT = """Обучает навыку: Темное пламя. Требования: Мастерство огня - 5, Мастерство тьмы - 3""",
 
 	#gearclasses
 	GEARSWORD = """Мечи""",
@@ -871,7 +908,7 @@ var TranslationDict = {
 	TOOLTIPMDEF = """Уменьшает получаемый урон от заклинаний на этот процент""",
 	TOOLTIPCRIT = """Процентный шанс крита для нанесения дополнительного урона. 
 Первое значение - шанс. Второе значение - модификатор.""",
-	TOOLTIPHITRATE = """Процентный шанс попасть в цель. 
+	TOOLTIPHITRATE = """Процентный шанс попасть в цель физическими атаками. 
 Уменьшается уклонением противника""",
 	TOOLTIPARMORPEN = """Уменьшает броню противника на это значение""",
 	TOOLTIPEVASION = """Уменьшает шанс попадания противника на это значение""",
@@ -1086,7 +1123,7 @@ Hotkey: 3""",
 	SKILLRESTORATION = """Восстановление""",
 	SKILLRESTORATIONDESCRIPT = """Исцеляет цель на 250% от MATK. Снижает получаемый урон на 20% на 2 хода.""",
 	SKILLREJUVENATION = """Омоложение""",
-	SKILLREJUVENATIONDESCRIPT = """Исцеляет ряд на 100% МАТК. Регенерирует 60% от MATK каждый ход в течение 2 ходов.""",
+	SKILLREJUVENATIONDESCRIPT = """Исцеляет союзника на 100% МАТК. Регенерирует 60% от MATK каждый ход в течение 2 ходов.""",
 	SKILLSANCTUARY = """Святилище""",
 	SKILLSANCTUARYDESCRIPT = """Исцеляет всех союзников на 80% от MATK. Регенерирует 120% от MATK каждый ход в течение 3 ходов.""",
 	SKILLTRAP = """Ловушка""",
@@ -1094,9 +1131,9 @@ Hotkey: 3""",
 	SKILLWEAPON_REFINE = """Заточка оружия""",
 	SKILLWEAPON_REFINEDESCRIPT = """Увеличивает АТК цели на 30% до конца боя.""",
 	SKILLACIDBOMB = """Кислотная бомба""",
-	SKILLACIDBOMBDESCRIPT = """Бросает в цель кислотную бомбу, нанося 250% от MATK в виде урона {color=yellow|Водой} и снижая броню цели на 25 на 4 хода. Требуется 1 нестабильная смесь.""",
+	SKILLACIDBOMBDESCRIPT = """Бросает в цель кислотную бомбу, нанося 250% от MATK в виде урона {color=yellow|Водой} и снижая броню цели на 25 на 4 хода.""",
 	SKILLFIREBOMB = """Огненная бомба""",
-	SKILLFIREBOMBDESCRIPT = """Бросает огненную бомбу в колонну, нанося 200% от MATK как урон {color=yellow|Огнем}. Поджигает цели в течение 2 ходов, нанося урон (50% от MATK) каждый ход. Требуется 1 нестабильная смесь.""",
+	SKILLFIREBOMBDESCRIPT = """Бросает огненную бомбу в колонну, нанося 200% от MATK как урон {color=yellow|Огнем}. Поджигает цели в течение 2 ходов, нанося урон (50% от MATK) каждый ход.""",
 	SKILLDISTRACT = """Отвлечь""",
 	SKILLDISTRACTDESCRIPT = """Уменьшает Урон и Уклонение цели на 30 на 2 хода.""",
 	SKILLATTRACT = """Привлечь""",
@@ -1108,10 +1145,10 @@ Hotkey: 3""",
 	SKILLDRAGONMIGHT = """Могущество дракона""",
 	SKILLDRAGONMIGHTDESCRIPT = """Увеличивает урон и защиту на 25% до конца боя.""",
 	SKILLLESSER_HEAL = """Малое исцеление""",
-	SKILLLESSER_HEALDESCRIPT = """Исцеляет цель на 130% от MATK.""",
+	SKILLLESSER_HEALDESCRIPT = """Исцеляет союзника на 130% от MATK.""",
 	SKILLFAIRY_HEAL = """Грация феи""",
-	SKILLFAIRY_HEALDESCRIPT = """Исцеляет цель на 50% от ее максимального здоровья.""",
-	SKILLENTANGLE = """Запутать""",
+	SKILLFAIRY_HEALDESCRIPT = """Исцеляет союзника на 50% от ее максимального здоровья.""",
+	SKILLENTANGLE = """Путы""",
 	SKILLENTANGLEDESCRIPT = """Наносит 130% от MATK как урон {color=yellow|Землей} и оглушает цель на 1 ход.""",
 	SKILLSERRATED_SHOT = """Зазубренный выстрел""",
 	SKILLSERRATED_SHOTDESCRIPT = """Наносит 90% ATK {color=yellow|Физического} урона. Вызывает у цели кровотечение на 3 хода, нанося урон (90% от ATK) каждый ход.""",
@@ -1130,7 +1167,7 @@ Hotkey: 3""",
 	SKILLWIND_ATK = """Порыв ветра""",
 	SKILLWIND_ATKDESCRIPT = """Наносит 80% АТК в виде урона {color=yellow|Воздухом} одной цели и случайному противнику.""",
 	SKILLWATER_EDGE = """Водяной клинок""",
-	SKILLWATER_EDGEDESCRIPT = """Наносит 100% АТК урона {color=yellow|Водой}. Наносит цели статус 'Влажность'.""",
+	SKILLWATER_EDGEDESCRIPT = """Наносит 100% АТК урона {color=yellow|Водой}. Наносит цели статус 'Влажность'. \n\nВлажность: Следующий урон от огня уменьшается на 50%, следующий урон от воздуха увеличивается на 50%, следующее применение заморозки гарантировано.""",
 	SKILLHOLY_ATK = """Святая атака""",
 	SKILLHOLY_ATKDESCRIPT = """Наносит 120% АТК урона {color=yellow|Светом}. С вероятностью 20% сбивает цель с толку.""",
 	SKILLFIRE_CLEAVE = """Огненное рассечение""",
@@ -1155,23 +1192,21 @@ Hotkey: 3""",
 	SKILLSHADOWSTRIKE = """Теневой удар""",
 	SKILLSHADOWSTRIKEDESCRIPT = """Наносит цели 130% от ATK в виде урона {color=yellow|Тьмой}. Снижает ATK и MATK цели на 20 на 2 хода.""",
 	SKILLFIREARR = """Огненная стрела""",
-	SKILLFIREARRDESCRIPT = """Наносит 100% от МATK от ATK в виде урона {color=yellow|Огнем}. С вероятностью 20% накладывает статус 'Горение' на цель на 2 хода. Шанс увеличивается при повышении уровня мастерства огня.""",
-	SKILLFIREARRDESCRIPT_1 = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 60% chance to apply Burn for 2 turns. Chance increases at higher Fire Mastery level.""", # MISSING TRANSLATION
-	SKILLFIREARRDESCRIPT_2 = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 100% chance to apply Burn for 2 turns.""", # MISSING TRANSLATION
-	SKILLFIREARR_1DESCRIPT = """Наносит 100% от МATK от ATK в виде урона {color=yellow|Огнем}. С вероятностью 60% накладывает статус 'Горение' на цель на 2 хода. Шанс увеличивается при повышении уровня мастерства огня.""",
-	SKILLFIREARR_2DESCRIPT = """Наносит 100% от МATK от ATK в виде урона {color=yellow|Огнем}. С вероятностью 100% накладывает статус 'Горение' на цель на 2 хода.""",
+	SKILLFIREARRDESCRIPT = """Наносит 100% от МATK от ATK в виде урона {color=yellow|Огнем}. С вероятностью 20% накладывает статус 'Горение' на цель на 2 хода. Шанс увеличивается при повышении уровня мастерства огня. \n\nГорение: Теряет 8% от максимального HP за ход в виде огненного урона.""",
+	SKILLFIREARRDESCRIPT_1 = """Наносит 100% от МATK от ATK в виде урона {color=yellow|Огнем}. С вероятностью 60% накладывает статус 'Горение' на цель на 2 хода. Шанс увеличивается при повышении уровня мастерства огня. \n\nГорение: Теряет 8% от максимального HP за ход в виде огненного урона.""",
+	SKILLFIREARRDESCRIPT_2 = """Наносит 100% от МATK от ATK в виде урона {color=yellow|Огнем}. С вероятностью 100% накладывает статус 'Горение' на цель на 2 хода. \n\nГорение: Теряет 8% от максимального HP за ход в виде огненного урона.""",
 	SKILLLIGHTNING = """Молния""",
-	SKILLLIGHTNINGDESCRIPT = """Наносит цели 125% от МАТК в виде урона {color=yellow|Воздухом}. Оглушает цель на 1 ход.""",
+	SKILLLIGHTNINGDESCRIPT = """Наносит 125% от МАТК в виде урона {color=yellow|Воздухом}. Оглушает цель на 1 ход.""",
 	SKILLMINDBLAST = """Взрыв разума""",
-	SKILLMINDBLASTDESCRIPT = """Наносит цели 120% от MATK в качестве урона {color=yellow|Разуму}.""",
+	SKILLMINDBLASTDESCRIPT = """Наносит 120% от MATK в качестве урона {color=yellow|Разуму}.""",
 	SKILLPSYCHICBLAST = """Психический взрыв""",
 	SKILLPSYCHICBLASTDESCRIPT = """Наносит 65% от MATK как урон {color=yellow|Разуму} колонне.""",
 	SKILLRESURRECT = """Воскресить""",
-	SKILLRESURRECTDESCRIPT = """Воскрешает союзника-цель на 40% от максимального здоровья.""",
+	SKILLRESURRECTDESCRIPT = """Воскрешает союзника на 40% от максимального здоровья.""",
 	SKILLDECAY = """Разложение""",
 	SKILLDECAYDESCRIPT = """Наносит 65% от MATK в виде урона {color=yellow|Тьмой} всем врагам.""",
 	SKILLFIRST_AID = """Первая помощь""",
-	SKILLFIRST_AIDDESCRIPT = """Исцеляет союзника на 30% от максимального здоровья. Для использования требуется 1 бинт.""",
+	SKILLFIRST_AIDDESCRIPT = """Исцеляет союзника на 30% от максимального здоровья.""",
 	SKILLLIGHT_SPELL = """Святой свет""",
 	SKILLLIGHT_SPELLDESCRIPT = """Наносит цели 100% от MATK в виде урона {color=yellow|Светом}""",
 	SKILLLIGHT_SPELL_AOE = """Божественное сияние""",
@@ -1189,19 +1224,19 @@ Hotkey: 3""",
 	SKILLPURGE = """Очищение""",
 	SKILLPURGEDESCRIPT = """Снимает с цели все негативные баффы.""",
 	SKILLRIGHTEOUS_FIRE = """Праведный огонь""",
-	SKILLRIGHTEOUS_FIREDESCRIPT = """Наносит 75% от MATK как урон {color=yellow|Огнем}. Накладывает немоту на цель на 2 хода""",
+	SKILLRIGHTEOUS_FIREDESCRIPT = """Наносит 75% от MATK как урон {color=yellow|Огнем}. Накладывает немоту на цель на 2 хода.  \n\nНемота: Не может использовать  заклинания».""",
 	SKILLELEMENTAL_WEAKNESS = """Элементная слабость""",
 	SKILLELEMENTAL_WEAKNESSDESCRIPT = """Уменьшает сопротивление огня, воздуха, земли и воды цели на 40 единиц на 3 хода.""",
 	SKILLELEMENTAL_PROTECTION = """Элементная защита""",
-	SKILLELEMENTAL_PROTECTIONDESCRIPT = """Увеличивает сопротивление огня, воздуха, земли и воды цели на 25 на 3 хода.""",
+	SKILLELEMENTAL_PROTECTIONDESCRIPT = """Увеличивает сопротивление огня, воздуха, земли и воды цели на 20 на 3 хода.""",
 	SKILLTAUNT = """Насмешка""",
-	SKILLTAUNTDESCRIPT = """Заставляет всех врагов сосредоточиться на заклинателе.""",
+	SKILLTAUNTDESCRIPT = """Заставляет всех врагов сосредоточиться на заклинателе на 2 хода	.""",
 	SKILLCAMOUFLAGE = """Камуфляж""",
 	SKILLCAMOUFLAGEDESCRIPT = """Бафф для всех союзников: +20 Уворот на 2 хода.""",
 	SKILLREINCARNATE = """Реинкарнация""",
 	SKILLREINCARNATEDESCRIPT = """Укрепляет дух союзника. Когда HP достигает нуля, восстановите его до полного.""",
 	SKILLLEADERSMARK = """Leader's Mark""", # MISSING TRANSLATION
-	SKILLLEADERSMARKDESCRIPT = """Strike enemy for 70% ATK and Mark for 3 turns. Marked enemy takes 15% more damage.""", # MISSING TRANSLATION
+	SKILLLEADERSMARKDESCRIPT = """Strike enemy for 70% ATK and mark it for 3 turns. Marked enemy takes 15% more damage.""", # MISSING TRANSLATION
 	SKILLHUNTERSMARK = """Метка лидера""",
 	SKILLHUNTERSMARKDESCRIPT = """Нанесит цели удар на 70% ATK и помечает его на 3 хода. Отмеченный противник получает на 15% больше урона.""",
 	SKILLBARD1 = """Гимн""",
@@ -1240,123 +1275,115 @@ Hotkey: 3""",
 	SKILLVOID_BARRAGE = """Пустотная волна""",
 	SKILLVOID_BARRAGEDESCRIPT = """Наносит 80% МАТК в виде урона {color=yellow|Тьмой} урона 5 раз случайным целям.""",		
 	SKILLDRAW_BLOOD = """Пустить кровь""",
-	SKILLDRAW_BLOODDESCRIPT = """Поражает одиночную цель на 110% ATK и вызывает кровотечение на 2 хода.""",
+	SKILLDRAW_BLOODDESCRIPT = """Нанести цели 110% ATK урона и вызывает кровотечение на 2 хода. \n\nКровотечение: Теряет 5% от максимального HP за ход в виде нейтрального урона.""",
 	SKILLSUNDER = """Раскол""",
-	SKILLSUNDERDESCRIPT = """Нанести цели 85% урона от ATK и уменьшить ее броню на 5 ходов.""",
+	SKILLSUNDERDESCRIPT = """Нанести цели 85% урона от ATK и уменьшить ее ЗАЩ на 5 ходов.""",
 	SKILLCLEAVE = """Размах""",
 	SKILLCLEAVEDESCRIPT = """Нанести целевой колонне удар на 90% от ATK.""",
 	SKILLSTRIKE_THROUGH = """Сквозной удар""",
-	SKILLSTRIKE_THROUGHDESCRIPT = """Нанести удар по целевой строке на 110 % ATK""",
+	SKILLSTRIKE_THROUGHDESCRIPT = """Нанести удар по целевому ряду на 110 % ATK.""",
 	SKILLEXECUTION = """Устранение""",
-	SKILLEXECUTIONDESCRIPT = """Нанести 275% ATK одной цели. Если она погибнет, наложить на всех врагов эффект страха на 1 ход.""",
+	SKILLEXECUTIONDESCRIPT = """Нанести 275% ATK цели. Если она погибнет, наложить на всех врагов эффект страха на 1 ход. \n\nСтрах: урон снижается на 25%.""",
 	SKILLDISARM_ENEMY = """Обезвреживание""",
-	SKILLDISARM_ENEMYDESCRIPT = """Поражает одного врага на 130% от ATK и наложить 'Обезвреживание' на 3 хода.""",
+	SKILLDISARM_ENEMYDESCRIPT = """Поразить врага на 130% от ATK и наложить 'Обезвреживание' на 3 хода. \n\nОбезвреживание: Не может использовать способности.""",
 	SKILLPROVOCATION = """Провокация""",
-	SKILLPROVOCATIONDESCRIPT = """Поразить одного врага на 70% от ATK и наложить 'Провокацию' на 2 хода.""",
+	SKILLPROVOCATIONDESCRIPT = """Поразить одного врага на 70% от ATK и наложить 'Провокацию' на 2 хода. \n\nПровокация: Сосредоточен на кастере, не может использовать способности по области.""",
 	SKILLSTONEWALL = """Каменная стена""",
-	SKILLSTONEWALLDESCRIPT = """Восстановить немного здоровья и наложить 'Укрепление' на 5 ходов.""",
+	SKILLSTONEWALLDESCRIPT = """Восстановить немного здоровья и наложить 'Укрепление' на 5 ходов. \n\nУкрепление: Входящий урон снижается на 25%.""",
 	SKILLDIP_POISON = """Поразить ядом""",
-	SKILLDIP_POISONDESCRIPT = """Поразить цель на 100% от ATK и наложить 'Яд' на 4 хода""",
+	SKILLDIP_POISONDESCRIPT = """Поразить цель на 100% от ATK и наложить 'Отравление' на 4 хода\n\nОтравление: Теряет 5% от максимального HP за ход в виде нейтрального урона.""",
 	SKILLBACKKICK = """Удар в спину""",
-	SKILLBACKKICKDESCRIPT = """Наносит цели 130% ATK в ближнем бою и применяет 'Безмолвие' на 4 хода.""",
+	SKILLBACKKICKDESCRIPT = """Наносит цели 130% ATK в ближнем бою и накладывает 'Немота' на 4 хода. \n\nНемота: Не может использовать заклинания.""",
 	SKILLDEVASTATION = """Опустошение""",
-	SKILLDEVASTATIONDESCRIPT = """Нанести цели 6 ударов на 75% от ATK. Если цель умирает, оставшиеся удары наносятся по случайным целям.""",
+	SKILLDEVASTATIONDESCRIPT = """Нанести цели 75% от ATK 6 раз. Если цель умирает, оставшиеся удары наносятся по случайным целям.""",
 	SKILLSTRAFE = """Атака в движении""",
-	SKILLSTRAFEDESCRIPT = """Выстрелить по цели 3 раза, нанося 45 % ATK. Если цель погибнет, оставшиеся выстрелы попадают в случайные цели.""",
+	SKILLSTRAFEDESCRIPT = """Выстрелить по цели нанося 45 % ATK 3 раза. Если цель погибнет, оставшиеся выстрелы попадают в случайные цели.""",
 	SKILLENSNARE = """Захват""",
-	SKILLENSNAREDESCRIPT = """Нанести ряд ударов по цели на 50%. Наложить 'Захват'.""",
+	SKILLENSNAREDESCRIPT = """Нанести ударов по колонне на 50% АТК. Наложить 'Захват'. \n\nЗахват: Уворот снижен на 75.""",
 	SKILLBOLT_TRAP = """Болтовая ловушка""",
-	SKILLBOLT_TRAPDESCRIPT = """Установите ловушку под 3 целями. Если они используют физическое умение, то получат 150% урона.""",
+	SKILLBOLT_TRAPDESCRIPT = """Установите ловушку под колонной врагов. Если они используют физическое умение, то получат 150% урона от АТК.""",
 	SKILLARROW_HAIL = """Град стрел""",
-	SKILLARROW_HAILDESCRIPT = """Подстрелить всех врагов на 120 % урона.""",
+	SKILLARROW_HAILDESCRIPT = """Подстрелить всех врагов на 120 % урона от АТК.""",
 	SKILLRALLY = """Рывок""",
 	SKILLRALLYDESCRIPT = """Сбросить все кулдауны (кроме Рывка) и восстановить 50% маны выбранному союзнику.""",
 	SKILLBLOODBOIL = """Кипение крови""",
-	SKILLBLOODBOILDESCRIPT = """Наложить бафф: Увеличивает ATK на 25%,  иммунитет к оглушению, влажности и страху на 4 хода.""",
+	SKILLBLOODBOILDESCRIPT = """Наложить бафф: Увеличивает ATK на 25%, снять оглушение, влажность и страх и получить иммунитет к ним на 4 хода.""",
 	SKILLFIRE_SHIELD = """Огненный щит""",
-	SKILLFIRE_SHIELDDESCRIPT = """Целевой союзник получает 40  сопротивления воде. Увеличивает количество целей с мастерством огня.""",
-	SKILLFIRE_SHIELDDESCRIPT_1 = """Target ally row receive 40 Water Resist. Increases number of targets with Fire Mastery.""", # MISSING TRANSLATION
-	SKILLFIRE_SHIELDDESCRIPT_2 = """All allies receive 40 Water Resist.""", # MISSING TRANSLATION
-	SKILLFIRE_SHIELD_1DESCRIPT = """Целевой ряд союзников получает 40 сопротивления воде. Увеличивает количество целей с мастерством огня.""",
-	SKILLFIRE_SHIELD_2DESCRIPT = """Все союзники получают 40 сопротивления воде.""",
+	SKILLFIRE_SHIELDDESCRIPT = """Целевой союзник получает 40  сопротивления воде на 5 ходов. Увеличивает количество целей с мастерством огня.""",
+	SKILLFIRE_SHIELDDESCRIPT_1 = """Целевой ряд союзников получает 40 сопротивления воде на 5 ходов. Увеличивает количество целей с мастерством огня.""",
+	SKILLFIRE_SHIELDDESCRIPT_2 = """Все союзники получают 40 сопротивления воде на 5 ходов.""",
 	SKILLMAGMA_BLAST = """Взрыв магмы""",
-	SKILLMAGMA_BLASTDESCRIPT = """Нанесит противнику высокий урон огнем и накладывает 'Раскалывание на 5 ходов""",
+	SKILLMAGMA_BLASTDESCRIPT = """Нанесит противнику 150% от MATK как урон {color=yellow|Огнем} и накладывает 'Раскалывание' на 5 ходов. \n\nРаскалывание: МЗАЩ уменьшается на 50%.""",
 	SKILLWATER_SHIELD = """Водяной щит""",
-	SKILLWATER_SHIELDDESCRIPT = """Целевой союзник получает 40 сопротивления огню. Увеличивает количество целей с Мастерством воды.""",
-	SKILLWATER_SHIELDDESCRIPT_1 = """Target ally row receive 40 Fire Resist. Increases number of targets with Water Mastery.""", # MISSING TRANSLATION
-	SKILLWATER_SHIELDDESCRIPT_2 = """All allies receive 40 Fire Resist.""", # MISSING TRANSLATION
-	SKILLWATER_SHIELD_1DESCRIPT = """Целевой ряд союзников получает 40 сопротивления огню. Увеличивает количество целей с Мастерством воды.""",
-	SKILLWATER_SHIELD_2DESCRIPT = """Все союзники получают 40 сопротивления огню.""",
+	SKILLWATER_SHIELDDESCRIPT = """Союзник получает 40 сопротивления огню на 5 ходов. Увеличивает количество целей с Мастерством воды.""",
+	SKILLWATER_SHIELDDESCRIPT_1 = """Ряд союзников получает 40 сопротивления огню на 5 ходов. Увеличивает количество целей с Мастерством воды.""",
+	SKILLWATER_SHIELDDESCRIPT_2 = """Все союзники получают 40 сопротивления огню на 5 ходов.""",
 	SKILLFROST_PRISON = """Морозная тюрьма""",
-	SKILLFROST_PRISONDESCRIPT = """Наносит 130 % урона водой и с 50 % шансом накладывает 'Заморозка'""",
+	SKILLFROST_PRISONDESCRIPT = """Наносит 130% от MATK как урон {color=yellow|Водой} и с 50 % шансом накладывает 'Заморозка' на 1 ход. \n\nЗаморозка: Следующая атака наносит 125% урона. Атаки воздухом наносят 200%, а атаки огнем - 50% урона.""",
 	SKILLCLARITY = """Ясность""",
-	SKILLCLARITYDESCRIPT = """Накладывает бафф: Увеличивает MATK на 25%, иммунитет к Слепоте, Сну и Очарованию на 4 хода.""",
+	SKILLCLARITYDESCRIPT = """Накладывает бафф: Увеличивает MATK на 25%, снимает  Слепоту, Сон и Очарование м дает иммунитет к ним на 4 хода.""",
 	SKILLBLIZZARD = """Метель""",
-	SKILLBLIZZARDDESCRIPT = """Послать сосульки, летящие во врагов, нанося случайный урон водой и с низким шансом наложить 'Заморозка'. Мокрые и замороженные цели всегда попадают в цель""",
+	SKILLBLIZZARDDESCRIPT = """Послать сосульки, летящие во врагов, с шансом 60% нанося 90% от MATK как урон {color=yellow|Водой} и с низким шансом наложить 'Заморозка' на 1 ход. \n\nЗаморозка: Следующая атака наносит 125% урона. Атаки воздухом наносят 200%, а атаки огнем - 50% урона. Не промахивается по мокрым и замороженным целям.""",
 	SKILLHAILSTORM = """Град""",
-	SKILLHAILSTORMDESCRIPT = """Наносит большой урон водой всем врагам. Мокрые и замороженные цели получают повышенный урон. Накладывает 'Влажность'""",
+	SKILLHAILSTORMDESCRIPT = """Наносит 150% от MATK как урон {color=yellow|Водой} всем врагам. Мокрые и замороженные цели получают повышенный урон. Накладывает 'Влажность'.  \n\nВлажность: Следующий урон от огня уменьшается на 50%, следующий урон от воздуха увеличивается на 50%, следующее применение заморозки гарантировано.""",
 	SKILLEARTH_SHIELD = """Щит земли""",
-	SKILLEARTH_SHIELDDESCRIPT = """Накладывает защитный панцирь на союзника, увеличивая его ЗАЩ на основе MATK кастера. Также снимает 'Разрыв' и 'Раскол'. Эффект улучшается c мастерством земли.""",
-	SKILLEARTH_SHIELDDESCRIPT_1 = """Applies defensive crust to an ally, increasing their DEF and MDEF based on caster's MATK. Also removes Shred and Shatter. Effect is upgraded with Earth Mastery.""", # MISSING TRANSLATION
-	SKILLEARTH_SHIEL_1DDESCRIPT = """Накладывает защитный панцирь на союзника, увеличивая его ЗАЩ и MЗАЩ на основе MATK кастера. Также снимает 'Разрыв' и 'Раскол'. Эффект улучшается c мастерством земли.""",
+	SKILLEARTH_SHIELDDESCRIPT = """Накладывает защитный панцирь на союзника на 5 ходов, увеличивая его ЗАЩ на основе MATK кастера. Также снимает 'Разрыв' и 'Раскол'. Эффект улучшается c мастерством земли.""",
+	SKILLEARTH_SHIELDDESCRIPT_1 = """Накладывает защитный панцирь на союзника на 5 ходов, увеличивая его ЗАЩ и MЗАЩ на основе MATK кастера. Также снимает 'Разрыв' и 'Раскол'. Эффект улучшается c мастерством земли.""",
 	SKILLACID_BOMB = """Кислотная бомба""",
-	SKILLACID_BOMBDESCRIPT = """Наносит урон землей и применяет 'Разрыв' к цели.""",
+	SKILLACID_BOMBDESCRIPT = """Наносит 250% от MATK как урон {color=yellow|Землей} и применяет 'Разрыв' к цели. \n\nРазрыв: ЗАЩ уменьшена на 50%.""",
 	SKILLOVERGROWTH = """Зарастание""",
-	SKILLOVERGROWTHDESCRIPT = """Наносит низкий урон землей всем врагам и накладывает 'Захват' на 2 хода с вероятностью 50%.""",
+	SKILLOVERGROWTHDESCRIPT = """Наносит 50% от MATK как урон {color=yellow|Землей} всем врагам и накладывает 'Захват' на 2 хода с вероятностью 50%. \n\nЗахват: Уворот уменьшен на 75.""",
 	SKILLDISINTEGRATE = """Дезинтеграция""",
-	SKILLDISINTEGRATEDESCRIPT = """Наносит высокий урон землей одной цели и оглушает ее на 3 хода. Если цель не может быть оглушена, вместо этого накладывает 'Разрыв'""",
+	SKILLDISINTEGRATEDESCRIPT = """Наносит 250% от MATK как урон {color=yellow|Землей} одной цели и оглушает ее на 3 хода. Если цель не может быть оглушена, вместо этого накладывает 'Разрыв'. \n\nРазрыв: ЗАЩ уменьшена на 50%.""",
 	SKILLWIND_BLADE = """Лезвие ветра""",
-	SKILLWIND_BLADEDESCRIPT = """Дважды наносит цели урон воздухом.""",
+	SKILLWIND_BLADEDESCRIPT = """Наносит цели и другой случайной цели 60% от MATK как урон {color=yellow|Воздухом}.""",
 	SKILLIGHTNING = """Молния""",
-	SKILLIGHTNINGDESCRIPT = """Наносит цели урон воздухом. Имеет 50% шанс нанести 'Шок'.""",
+	SKILLIGHTNINGDESCRIPT = """Наносит цели 250% от MATK как урон {color=yellow|Воздухом}. Имеет 50% шанс нанести 'Шок' на 2 хода.\n\nШок: Урон уменьшен на 15%.""",
 	SKILLHASTE = """Спешка""",
 	SKILLHASTEDESCRIPT = """Увеличивает скорость союзника на 25 на 4 хода.""",
 	SKILLCHAIN_LIGHTNING = """Цепная молния""",
-	SKILLCHAIN_LIGHTNINGDESCRIPT = """Наносит от 4 до 6 целям урон воздухом""",
+	SKILLCHAIN_LIGHTNINGDESCRIPT = """Наносит от 4 до 6 целям 80% от MATK как урон {color=yellow|Воздухом}.""",
 	SKILLAIR_SHIELD = """Воздушный щит""",
-	SKILLAIR_SHIELDDESCRIPT = """Целевой союзник получает 40 сопротивления огню. Увеличивает количество целей с мастерством воздуха.""",
-	SKILLAIR_SHIELDDESCRIPT_1 = """Target ally row receive 40 Fire Resist. Increases number of targets with Air Mastery.""", # MISSING TRANSLATION
-	SKILLAIR_SHIELDDESCRIPT_2 = """All allies receive 40 Fire Resist.""", # MISSING TRANSLATION
-	SKILLAIR_SHIELD_1DESCRIPT = """Целевой ряд союзников получает 40 сопротивления огню. Увеличивает количество целей с мастерством воздуха.""",
-	SKILLAIR_SHIELD_2DESCRIPT = """Все союзники получают 40 сопротивления огню.""",
+	SKILLAIR_SHIELDDESCRIPT = """Целевой союзник получает 40 сопротивления огню на 5 ходов. Увеличивает количество целей с мастерством воздуха.""",
+	SKILLAIR_SHIELDDESCRIPT_1 = """Целевой ряд союзников получает 40 сопротивления огню на 5 ходов. Увеличивает количество целей с мастерством воздуха.""",
+	SKILLAIR_SHIELDDESCRIPT_2 = """Все союзники получают 40 сопротивления огню на 5 ходов.""",
 	SKILLTEMPEST = """Буря""",
-	SKILLTEMPESTDESCRIPT = """Нанести всем врагам урон воздухом. Накладывает 'Шок' на всех.""",
+	SKILLTEMPESTDESCRIPT = """Нанести всем врагам 120% от MATK как урон {color=yellow|Воздухом}. Накладывает 'Шок' на всех. \n\nШок: Урон уменьшен на 15%.""",
 	SKILLEYEOFTHESTORM = """Око бури""",
 	SKILLEYEOFTHESTORMDESCRIPT = """Накладывает бафф на союзника: в течение 6 ходов наносит дополнительные 35% от МАТК в виде урона воздухом при каждом попадании. Кастуется мгновенно""",
 	SKILLHEALING = """Исцеляющий свет""",
-	SKILLHEALINGDESCRIPT = """Восстанавливает здоровье союзника на основе MATK.""",
+	SKILLHEALINGDESCRIPT = """Восстанавливает здоровье союзника на 130% от MATK.""",
 	SKILLBLESSING = """Благословение""",
-	SKILLBLESSINGDESCRIPT = """Снимает 'Страх', 'Захват', 'Слепоту' и 'Проклятие'. Накладывает бафф: Увеличивает шанс попадания и уклонение на 35% на 6 ходов.""",
+	SKILLBLESSINGDESCRIPT = """Снимает 'Страх', 'Захват', 'Слепоту' и 'Проклятие'. Увеличивает шанс попадания и уклонение на 35% на 6 ходов.""",
 	SKILLPACIFY = """Умиротворение""",
-	SKILLPACIFYDESCRIPT = """Наносит легкий урон одиночной цели и накладывает 'Обезвреживание' на 2 хода""",
+	SKILLPACIFYDESCRIPT = """Наносит 120% от MATK как урон {color=yellow|Светом} одиночной цели и накладывает 'Обезвреживание' на 2 хода.  \n\nОбезвреживание: Не может использовать способности.""",
 	SKILLRADIANCE = """Сияние""",
-	SKILLRADIANCEDESCRIPT = """Нанести легкий урон всем врагам. Накладывает 'Раскол' на 3 хода.""",
+	SKILLRADIANCEDESCRIPT = """Наносит 80% от MATK как урон {color=yellow|Светом} всем врагам. Накладывает 'Раскол' на 3 хода. \n\nРаскол: МЗАЩ уменьшена на 50%""",
 	SKILLE_RES = """Массовое воскрешение""",
-	SKILLE_RESDESCRIPT = """Воскресить всех союзников, кроме нежити, и вылечить их на 80%. """,
+	SKILLE_RESDESCRIPT = """Воскресить всех союзников, кроме нежити, и вылечить их на 80% от их HP.""",
 	SKILLDARKNESS = """Тьма""",
-	SKILLDARKNESSDESCRIPT = """Наносит цели 75 % урона тьмой и накладывает 'Слепота' на 1 ход. Длительность улучшается с помощью мастерства тьмы.""",
-	SKILLDARKNESSDESCRIPT_1 = """Deal 75% Dark damage to target and apply Blind for 2 turns.""", # MISSING TRANSLATION
-	SKILLDARKNESS_1DESCRIPT = """Наносит цели 75 % урона тьмой и накладывает 'Слепота' на 2 хода.""",
+	SKILLDARKNESSDESCRIPT = """Наносит цели 75% от MATK как урон {color=yellow|Тьмой} и накладывает 'Слепота' на 1 ход. Длительность улучшается с помощью мастерства тьмы. \n\nСлепота: Точность уменьшена на 50.""",
+	SKILLDARKNESSDESCRIPT_1 = """Наносит цели 75% от MATK как урон {color=yellow|Тьмой} и накладывает 'Слепота' на 2 хода. \n\nСлепота: Точность уменьшена на 50.""",
 	SKILLBLACK_TENDRILS = """Темные отростки""",
-	SKILLBLACK_TENDRILSDESCRIPT = """Наносит всем врагам низкий урон Тьмой и применяет 'Захват' на 1 ход.""",
+	SKILLBLACK_TENDRILSDESCRIPT = """Наносит 30% от MATK как урон {color=yellow|Тьмой} всем врагам и накладвает 'Захват' на 1 ход.  \n\nЗахват: Уворот уменьшен на 75.""",
 	SKILLMALEDICTION = """Злорадство""",
-	SKILLMALEDICTIONDESCRIPT = """Наносит низкий урон тьмой и накладывает 'Проклятие' на 5 ходов.""",
+	SKILLMALEDICTIONDESCRIPT = """Наносит 60% от MATK как урон {color=yellow|Тьмой} и накладывает 'Проклятие' на 5 ходов. \n\nПроклятие: Все сопротивления снижены на 40.""",
 	SKILLDEVOUR_MAGIC = """Пожирание магии""",
-	SKILLDEVOUR_MAGICDESCRIPT = """Снимает все положительные баффы с одного противника. Накладывает 'Безмолвие' на 3 хода""",
+	SKILLDEVOUR_MAGICDESCRIPT = """Снимает все положительные баффы с одного противника. Накладывает 'Немота' на 3 хода.  \n\nНемота: Не может использовать заклинания.""",
 	SKILLVEIL = """Теневая вуаль""",
-	SKILLVEILDESCRIPT = """Наложить бафф на ряд союзников: Увеличивает сопротивление свету и тьме на 30, увеличивает МЗАЩ на основе MATK.""",
-	SKILLSKILL_VOID = """Пустота""",
-	SKILLSKILL_VOIDDESCRIPT = """Наносит урон тьмой всем врагам. Враги, попавшие под удар, получают случайным образом 'Безмолвие', 'Слепоту' или 'Обезвреживание'. """,
+	SKILLVEILDESCRIPT = """Наложить бафф на колонну союзников: Увеличивает сопротивление свету и тьме на 30, увеличивает МЗАЩ на основе MATK.""",
+	SKILLSKILL_VOID = """Чистая тьма""",
+	SKILLSKILL_VOIDDESCRIPT = """Наносит 200% от MATK как урон {color=yellow|Тьмой} всем врагам. Враги, попавшие под удар, получают случайным образом 'Безмолвие', 'Слепоту' или 'Обезвреживание'.""",
 	SKILLMINDSHATTER = """Сокрушение разума""",
-	SKILLMINDSHATTERDESCRIPT = """Наносит цели 160% урона разуму. Оглушает на 4 хода""",
+	SKILLMINDSHATTERDESCRIPT = """Наносит цели 160% от MATK как урон {color=yellow|Разуму} и оглушает на 4 хода""",
 	SKILLLAST_STAND = """Стоять до конца.""",
 	SKILLLAST_STANDDESCRIPT = """HP не может быть снижено ниже 10 % в течение 1 хода. Не требует хода для применения.""",
 	SKILLINTIMIDATING_PRESENCE = """Запугивающее присутствие""",
 	SKILLINTIMIDATING_PRESENCEDESCRIPT = """Убрать обычных врагов из целевой позиции.""",
 	SKILLFLAME_SPHERE = """Сфера пламени""",
-	SKILLFLAME_SPHEREDESCRIPT = """Наложить бафф на себя: в следующем начале боя вы запускаете во врагов огненную сферу, наносящую 25% от их максимального здоровья в виде урона огнем.""",
+	SKILLFLAME_SPHEREDESCRIPT = """Накладывает бафф на себя: в следующем начале боя вы запускаете во врагов огненную сферу, наносящую 25% от их максимального здоровья в виде урона огнем.""",
 	SKILLINFERNO = """Инферно""",
-	SKILLINFERNODESCRIPT = """Наносит 160% от МАТК урона огнем всем врагам. Накладывает Ожог на 3 хода.""",
+	SKILLINFERNODESCRIPT = """Наносит 160% от MATK как урон {color=yellow|Огнем} всем врагам. Накладывает Ожог на 3 хода.""",
 	SKILLNATURES_GIFT = """Дар природы""",
 	SKILLNATURES_GIFTDESCRIPT = """Мгновенно извлекает имеющиеся ресурсы из локации на основе MATK. """,
 	SKILLTELEPORT = """Телепорт""",
@@ -1364,19 +1391,24 @@ Hotkey: 3""",
 	SKILLWIND_WHISPERS = """Шепот ветра""",
 	SKILLWIND_WHISPERSDESCRIPT = """Раскрыть текущий план этажа подземелья.""",
 	SKILLMASS_RESURRECT = """Массовое воскрешение""",
-	SKILLMASS_RESURRECTDESCRIPT = """Воскресить всех поверженных союзников и исцелить 80% максимального здоровья всех союзников.""",
+	SKILLMASS_RESURRECTDESCRIPT = """Воскрешает всех поверженных союзников и исцелить 80% максимального здоровья всех союзников.""",
 	SKILLINVIGORATE = """Бодрость""",
-	SKILLINVIGORATEDESCRIPT = """Восстановить 1 заряд каждого вызова для выбранного союзника.""",	
-	SKILLHYPERBOREA = """Winds of Hyperborea""", # MISSING TRANSLATION
-	SKILLHYPERBOREADESCRIPT = """Deals 300% of MATK as {color=yellow|Water} damage to all enemies. Applies Clarity to all allies for 3 turns.""", # MISSING TRANSLATION
-	SKILLPOISON_VAPORS = """Poison Vapors""", # MISSING TRANSLATION
-	SKILLPOISON_VAPORSDESCRIPT = """Deals 25% of MATK as {color=yellow|Water} damage to enemy column. Applies Poison for 3 turns.""", # MISSING TRANSLATION
-	SKILLMETEOR = """Meteor""", # MISSING TRANSLATION
-	SKILLMETEORDESCRIPT = """Deals 200% of MATK as {color=yellow|Fire} damage and apply Burn on target for 4 turns.""", # MISSING TRANSLATION
-	SKILLABYSS_GAZE = """Gaze of the Abyss""", # MISSING TRANSLATION
-	SKILLABYSS_GAZEDESCRIPT = """Deals 125% of MATK as {color=yellow|Mind} damage to all enemies. Stuns for 2 turns.""", # MISSING TRANSLATION
-	SKILLDARK_FLAME = """Dark Flames""", # MISSING TRANSLATION
-	SKILLDARK_FLAMEDESCRIPT = """Converts all Burn effects on enemies into Dark Flame effects. They deal true damage, can't be extinguished by Water damage and last for 4 turns.""", # MISSING TRANSLATION
+	SKILLINVIGORATEDESCRIPT = """Восстановляет 1 заряд каждого вызова для выбранного союзника.""",	
+
+	SKILLHYPERBOREA = """Ветра Гипербореи""",
+	SKILLHYPERBOREADESCRIPT = """Наносит 300% от МАТК в виде урона от {color=yellow|Воды} всем врагам. Накладывает Ясность на всех союзников на 3 хода.""",
+	SKILLPOISON_VAPORS = """Ядовитые испарения""",
+	SKILLPOISON_VAPORSDESCRIPT = """Наносит 25% от МАТК в виде  урона от {color=yellow|Воды} вражеской колонне. Накладывает Отравление на 3 хода""",
+	SKILLMETEOR = """Метеор""",
+	SKILLMETEORDESCRIPT = """Наносит 200% MATK в виде  урона от {color=yellow|Огня} и применяет Горение на цель в течение 4 ходов.""",
+	SKILLABYSS_GAZE = """Взгляд Бездны""",
+	SKILLABYSS_GAZEDESCRIPT = """Наносит 125% от MATK в виде  урона {color=yellow|Разуму} урона всем врагам. Оглушает на 2 хода""",
+	SKILLDARK_FLAME = """Темное пламя""",
+	SKILLDARK_FLAMEDESCRIPT = """Преобразует все эффекты горения на врагах в эффекты темного пламени. Они наносят истинный урон, не могут быть погашены уроном от воды и действуют в течение 4 ходов.""",
+	
+	TRAITVIGORDESCRIPT = """Увеличивает регенерацию здоровья на 30%.""",
+	TRAITMEDITATIONDESCRIPT = """Увеличивает регенерацию маны на 30%.""",
+
 	MASTERYWARFARE = """Бой""",
 	MASTERYPROTECTION = """Защита""",
 	MASTERYSTEALTH = """Скрытность""",
@@ -1406,7 +1438,7 @@ Hotkey: 3""",
 	STATMASTERY_POINT_MAGIC = """Очко магического мастерства""",
 	STATMASTERY_POINT_COMBAT = """Очко боевого мастерства""",
 	STATMASTERY_POINT_UNIVERSAL = """Универсальное очко мастерства""",
-	STATDISABLED_MASTERIES = """Restricted Masteries""", # MISSING TRANSLATION
+	STATDISABLED_MASTERIES = "Ограниченные мастерства",
 	ACTIONPRAISE = """Похвалить""",
 	ACTIONPRAISEDESCRIPT = """Проявить сочувствие и похвалить [name].""",
 	ACTIONREWARD = """Наградить""",
@@ -1497,10 +1529,8 @@ Hotkey: 3""",
 	TRAININGLABELLOYALTY = """%.0f""",
 	TRAININGCOST = """Разблокировка черты: %d лояльности""",
 	TRAININGCOSTGOLD = """Разблокировка черты: %d золота""",
-	TRAINNOTRAINER = """[name] has no trainer""", # MISSING TRANSLATION
-	TRAINNOWORKTRAIT = """[name] lacks Trait: Worker""", # MISSING TRANSLATION
-	TRAINNNOTRAINER = """[name] не имеет тренера""",
-	TRAINNNOWORKTRAIT = """[name] не имеет черты: Рабочий""",
+	TRAINNOTRAINER = """[name] не имеет тренера""",
+	TRAINNOWORKTRAIT = """[name] не имеет черты: Рабочий""",
 	NOTRAINSLOTS = """Нет свободных тренировочных слотов""",
 	ALREADYTRAINER = """Текущий тренер""",
 	SPIRITLOSSNO = """Дух не пострадал""",
@@ -1782,10 +1812,11 @@ Hotkey: 3""",
 	
 	SLAVECLASSSLAVE = """Раб""",
 	SLAVECLASSSERVANT = """Подчиненный""",	
-	DESCRIPTCLASSSLAVE = """[name] является вашим рабом и должен подчиняться вашим приказам по закону.""",
+	DESCRIPTCLASSSLAVE = """[name] является вашим рабом и к нему должен быть приставлен тренер.""",
 	DESCRIPTCLASSSERVANT = """[name] - ваш слуга и должен выполнять ваши приказы""",
 	DESCRIPTCLASSMERC = """[name] было нанят/а вами и стоит вам золота.""",
 	DESCRIPTCLASSHEIR = """[name] ваш наследник.""",
+	DESCRIPTCLASSSLAVE_TRAINED = "[name] является вашим обученным рабом и не нуждается в контроле.",
 	
 	CLASSDETAILSKILLS = """Навыки""",
 	CLASSDETAILCOMBATSKILLS = """Боевые навыки""",
@@ -2046,7 +2077,7 @@ Hotkey: 3""",
 
 	INFOHOLDSHIFT = """Удерживайте shift для получения подробной информации""",
 	
-	STATGROWTH_FACTORDESCRIPT = """Рост - это стремление персонажа становиться сильнее. По мере приобретения персонажем новых классов все его характеристики увеличиваются. Каждое очко роста увеличивает количество классов, которые повышают его характеристики. Это также сильно влияет на ценность персонажа. 
+	STATGROWTH_FACTORDESCRIPT = """Рост - это стремление персонажа становиться сильнее. По мере приобретения персонажем новых классов все его характеристики увеличиваются. Персонажи, не являющиеся рабами, также получают универсальные очки мастерства. Каждое очко роста увеличивает количество классов, которые повышают его характеристики. Это также сильно влияет на ценность персонажа. 
 
 {color=green|Влияют следующие статы: Производительность, Физ. возмож., Ум, Обаяние, Макс. здоровье, Макс. мана, Скорость, Удар, Уворот, ATK, MATK, ЗАЩ, МЗАЩ.}""",
 	STATPHYSICS_FACTORDESCRIPT = """Физический фактор представляет собой физический потенциал персонажа. Он увеличивает [color=aqua]физический[/color] рост и влияет на ближний бой.
@@ -2073,7 +2104,7 @@ Hotkey: 3""",
 	
 	PHYSICS_FACTORBONUSDESCRIPT = """Физический фактор: Регенерация здоровья: x2""",
 	WITS_FACTORBONUSDESCRIPT = """Фактор мудрости: Получение опыта: +20%%""",
-	CHARM_FACTORBONUSDESCRIPT = """Фактор обаяния: Эффективность социальных навыков +20%%""",
+	CHARM_FACTORBONUSDESCRIPT = """Фактор обаяния: Эффективность социальных навыков: +20%%""",
 	SEXUALS_FACTORBONUSDESCRIPT = """Секс-фактор: Скорость: +10""",
 	MAGIC_FACTORBONUSDESCRIPT = """Магический фактор: MATK: +10%%""",
 	TAME_FACTORBONUSDESCRIPT = """Фактор приручения: Повышение верности: +25%%""",
@@ -2327,7 +2358,7 @@ Hotkey: 3""",
 	SKILLBARRIER = """Барьер""",
 	SKILLBARRIERDESCRIPT = """Создает магический щит, поглощающий 100 ед. урона. Щит действует 3 хода.""",
 	SKILLASSASSINATE = """Устранение""",
-	SKILLASSASSINATEDESCRIPT = """Наносит 200% от ATK. Если кастер скрыт, вместо этого наносит 350% урона.""",
+	SKILLASSASSINATEDESCRIPT = """Наносит 200% от ATK. Если кастер скрыт, урон увеличивается до 350%.""",
 	SKILLPROTECT = """Защита""",
 	SKILLPROTECTDESCRIPT = """Перенаправляет урон от союзника на 2 хода.""",
 	SKILLSHAREDTOY = """Общая игрушка""",
@@ -2440,7 +2471,8 @@ Hotkey: 3""",
 2. Конвертировать в Опыт
 3. Восстановить здоровье и ману""",
 	
-	
+	RESOURCEATHERED = """После произнесения заклинания на земле образуется большая куча местных ресурсов""",
+	EXPLOREADVANCEINFINITE = """Продвинуться на следующий этаж? Все неисследованные комнаты здесь будут потеряны.""",	
 	CONSENT0 = """Невинный""",
 	CONSENT1 = """Любопытный""",
 	CONSENT2 = """Развивающийся""",
@@ -2473,7 +2505,7 @@ Hotkey: 3""",
 	TRAITDIRECTORDESCRIPT = """Социальные навыки на 50% эффективнее.""",
 	TRAITVALKYRIE_SPEARDESCRIPT = """+10 скорости при использовании копья""",
 	TRAITAUTOHIDE = """Скрытность""",
-	TRAITAUTOHIDEDESCRIPT = """Начинает бой в укрытии, если не надета тяжелая или средняя броня""",
+	TRAITAUTOHIDEDESCRIPT = """Начинает бой в скрытности, если не надета тяжелая или средняя броня""",
 	TRAITDEATHKNIGHTDESCRIPT = """Dealing a killing blow increases Loyalty.""",
 	TRAITNINJADESCRIPT = """Получает уклонение, основанное на МЗАЩ. Минимальный шанс уклониться от удара снижен до 5%""",
 	TRAITWITCHDESCRIPT = """Ваши критические удары заклинаниями накладывают случайный дебафф. Лечебные заклинания имеют шанс наложить исцеление с течением времени.""",
@@ -2524,8 +2556,9 @@ Hotkey: 3""",
 	TRAITWEAPON_MASTERYDESCRIPT = """Позволяет использовать оружие ближнего боя""",
 	TRAITRANGED_WEAPON_MASTERYDESCRIPT = """Позволяет использовать дальнобойное оружие.""",
 	TRAITMAGIC_TOOLSDESCRIPT = """Позволяет использовать магические инструменты, такие как посохи.""",
-	
+	TRAITNIXX_CHAMPIONDESCRIPT = "Способности тьмы имеют +30 к точности и игнорируют ЗАЩ и MЗАЩ цели.",	
 	TRAITUNDEADDESCRIPT = """[name] больше не является живым существом. Потребление пищи установлено на 0; Обаяние снижено на 100; Светлое сопротивление -50; Темное сопротивление +50; Темный урон +20%; Не может оплодотворить или забеременеть.""",
+
 	TRAITSPOUSE = """Супруг""",
 	TRAITSPOUSEDESCRIPT = """Будущие дети между хозяином и супругой получают статус наследника вместо раба или слуги.""",
 	
@@ -2754,7 +2787,7 @@ Requires: Базовый рабский труд""",
 	TRAITMASTER_FORTUNE = """Удача""",
 	TRAITMASTER_FORTUNEDESCRIPT = """Шанс критического удара увеличен на 25%. Слегка увеличивает магический поиск""",
 	TRAITMASTER_INT = """Интеллект""",
-	TRAITMASTER_INTDESCRIPT = """---""",
+	TRAITMASTER_INTDESCRIPT = """\b""",
 	TRAITMASTER_FORTITUDE = """Стойкость""",
 	TRAITMASTER_FORTITUDEDESCRIPT = """Травма от поражения длится только 2 хода""",
 	TRAITMASTER_SORCERY = """Колдовство""",
@@ -2806,7 +2839,7 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTBLESSED = """Благословенный: +25%% ATK.""",
 	TRAITEFFECTMENTALBLESS = """Ментально благословенный: +25%% MATK.""",
 	TRAITEFFECTFLY = """Полет: +65 уворота.""",
-	TRAITEFFECTSHATTERED = """Раскол: -25 уворота""",
+	TRAITEFFECTSHATTERED = """Раскол: -25 МЗАЩ.""",
 	TRAITEFFECTFIREBURST = """Огненный взрыв: -20 точности""",
 	TRAITEFFECTSWIPE = """Разрез: -20 ЗАЩ.""",
 	TRAITEFFECTARROWRAIN = """Дождь из стрел: -20 MЗАЩ""",
@@ -2823,7 +2856,7 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTSPIRIT1 = """Дух - Заяц: +30 скорости, +25 уворота""",
 	TRAITEFFECTSPIRIT2 = """Дух - Черепаха: -25%% получаемого урона от умений, -15%% получаемого урона от заклинаний""",
 	TRAITEFFECTSPIRIT3 = """Дух - Орел: +20%% урона от умений, +30 Точности""",
-	TRAITEFFECTHIDE = """Скрытый""",
+	TRAITEFFECTHIDE = """Скрытый: Не может быть выбран как цель""",
 	TRAITEFFECTREINCARNATE = """Возродится после смерти""",
 	TRAITEFFECTHOLY = """Божественное сияние: -20 MЗАЩ""",
 	TRAITEFFECTPOSITIONTAKEN = """Занятая позиция: +50 бронепробиваемость; +20%% урона""",
@@ -2856,7 +2889,7 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTISPREGNANT = """Беременна: -10 Скорости, -20 физ. возможностей.""",
 	TRAITEFFECTISPREGNANT2 = """Глубоко беременна: -20 Скорость, -40 физ. возможностей.""",
 	TRAITSTUNIMMUNITYDESCRIPT = "Невозмлжно оглушить в бою.",
-	EUPHORIABUFF = """Урон увеличен""",
+	EUPHORIABUFF = """Эйфория: Урон увеличен""",
 	BUFFDESCRIPTSHACKLES = """Оковы""",
 	BUFFDESCRIPTGREATSHACKLES = """Великие оковы""",
 	BUFFDESCRIPTCHARM = """Зачарован. Осталось %d ходов""",
@@ -2866,21 +2899,21 @@ Requires: Базовый рабский труд""",
 	BUFFDESCRIPTMIRROR = """Зеркальное отражение: Шанс уклониться от урона, наносимого умениями""",
 	BUFFDESCRIPTFIELD = """Энергетическое поле: Шанс нанести атакующему урон от стихии воздуха""",
 	BUFFDESCRIPTSHELL = """Защитная оболочка: Входящий урон снижен на 35%%""",
-	BUFFDESCRIPTTAUNT = """Насмешка""",
+	BUFFDESCRIPTTAUNT = """Насмешка: Сфокусирован на кастере""",
 	BUFFDESCRIPTDISTRACT = """Отвлечен: -30 скорости попадания и уклонения""",
-	BUFFDESCRIPTSILENCE = """Заглушен""",
+	BUFFDESCRIPTSILENCE = """Немота: Неможет использовать заклинания""",
 	BUFFDESCRIPTDISARM = """Обезоружен: Не может использовать способности Умений""",
 	BUFFDESCRIPTBANISH = """Изгнание""",
 	BUFFDESCRIPTVOID = """Пустота""",
 	BUFFDESCRIPTDEFEND = """Защита""",
 	BUFFDESCRIPTREGEN = """Регенерация здоровья""",
-	BUFFDESCRIPTBURNING = """Получает 8%% огненного урона от максимального HP за ход""",
-	BUFFDESCRIPTDARKFLAME = """Dark Flame: Take 10%% of Maximum HP as neutral damage per turn""", # MISSING TRANSLATION
-	BUFFDESCRIPTPOISON = """Получает 5%% физического урона от максимального HP за ход""",
-	BUFFDESCRIPTBLEEDING = """Получает 5%% физического урона от максимального HP за ход""",
+	BUFFDESCRIPTBURNING = """Горение: Получает 8%% огненного урона от максимального HP за ход""",
+	BUFFDESCRIPTDARKFLAME = "Темное пламя: Получает 8%% нейтрального урона от максимального HP за ход",
+	BUFFDESCRIPTPOISON = """Отравление: Получает 5%% физического урона от максимального HP за ход""",
+	BUFFDESCRIPTBLEEDING = """Кровотечение: Получает 5%% физического урона от максимального HP за ход""",
 	BUFFDESCRIPTCONFUSE = """Замешательство""",
 	BUFFDESCRIPTFREEUSE = """Позволяет использовать предмет, не делая хода""",
-	BUFFDESCRIPTSHRED = """ЗАЩ снижена на 50%%""",
+	BUFFDESCRIPTSHRED = """Разрыв: ЗАЩ снижена на 50%%""",
 	BUFFDESCRIPTGROWL = """Скорость и уворот уменьшены""",
 	BUFFDESCRIPTCURSEATTACK = """Атака снижена""",
 	BUFFDESRIPTCURSEATTACKTR = """Атака этой цели приводит к снижению ATK""",
@@ -2901,13 +2934,13 @@ Requires: Базовый рабский труд""",
 Следующее применение замораживания гарантировано.""",
 	BUFFDESCRIPTFROZEN = """Заморожен
 Следующая атака наносит 125% урона. Воздушные атаки наносят 200%%, а огненные - 50%% урона.""",
-	BUFFDESCRIPTSTONEWALL = """Получает на 25%% меньше урона.""",
-	BUFFDESCRIPTLASTSTAND = """Здоровье не может быть снижено ниже 10%.""",
-	BUFFDESCRIPTBLIND = """Точность уменьшена.""",
-	BUFFDESCRIPTFEAR = """Урон снижен на 25%%.""",
+	BUFFDESCRIPTSTONEWALL = """Укрепление: Получает на 25%% меньше урона.""",
+	BUFFDESCRIPTLASTSTAND = """Стоять до конца: Здоровье не может быть снижено ниже 10%.""",
+	BUFFDESCRIPTBLIND = """Слепота: Точность уменьшена.""",
+	BUFFDESCRIPTFEAR = """Страх: Урон снижен на 25%%.""",
 	BUFFDESCRIPTSHOCK = """Шок
 Весь получаемый урон увеличивается на 15%, дополнительный шок имеет шанс оглушить.""",
-	BUFFDESCRIPTENSNARE = """Уворот уменьшен""",	
+	BUFFDESCRIPTENSNARE = """Захват: Уворот уменьшен на 75""",	
 	RESETTRAINREQ = """Сбросить обучение на 0-й шаг и восстановить дух. Требуется зелье Забвения.""",
 	CHALLENGESTRENGTH = """Испытание на силу""",
 	CHALLENGEDEXTERITY = """Испытание на ловкость""",
@@ -4125,11 +4158,12 @@ Requires: Базовый рабский труд""",
 	ENEMYWHITE_STAG_HUMAN = """Таинственная личность""",
 	ENEMYELF_SPECTER = """Эльф-наблюдатель""",
 	ENEMYELF_SOLDIER = """Эльфийский солдат""",
-	ENEMYDWARF_FIGHTER = """Dwarf Fighter""", # MISSING TRANSLATION
-	ENEMYDWARF_FIGHTER_ELITE = """Elite Dwarf Soldier""", # MISSING TRANSLATION
-	ENEMYDWARF_RANGED = """Dwarf Crossbowman""", # MISSING TRANSLATION
-	ENEMYKURO = """Kuro""", # MISSING TRANSLATION
-
+	ENEMYDWARF_FIGHTER = "Дворф-воин",
+	ENEMYDWARF_FIGHTER_ELITE = "Элитный дворф-воин",
+	ENEMYDWARF_RANGED = "Дворф-арбалетчик",
+	ENEMYKURO = "Куро",
+	
+	
 	FOODFILTERHIGH = """Высокий""",
 	FOODFILTERMED = """Средний""",
 	FOODFILTERLOW = """Низкий""",
@@ -14968,9 +15002,9 @@ DKING_FIRST_REPLY_JEAN = """- Ваш спутник, я полагаю? Я не 
 Охранник: - Он в вашем распоряжении. Только помните, никаких необратимых повреждений без разрешения короля.
 
 Дверь камеры с лязгом захлопывается за вами, оставляя вас наедине с избитым повстанцем. В воздухе стоит густой запах пота и крови.""",
-	DWARF_PRISON_OPT_PHYSICS = """Отлично, мне стало скучно от того, что я так долго не причинял боли (физический фактор)""",
-	DWARF_PRISON_OPT_MAGIC = """Из тебя получится отличная мишень для магической практики (фактор магии)""",
-	DWARF_PRISON_OPT_CHARM = """Еще не поздно заключить сделку, знаешь ли (фактор очарования)""",
+	DWARF_PRISON_OPT_PHYSICS = """[Физический фактор]Отлично, мне стало скучно от того, что я так долго не причинял боли""",
+	DWARF_PRISON_OPT_MAGIC = """[Фактор магии] Из тебя получится отличная мишень для магической практики""",
+	DWARF_PRISON_OPT_CHARM = """[Фактор очарования]Еще не поздно заключить сделку, знаешь ли""",
 	DWARF_PRISON_PHYSICS = """По мере приближения к заключенному вы можете заметить, как растет напряжение в его теле. Он пытается прижаться к стене, но цепи не дают ему продвинуться далеко. Его единственный зоркий глаз метался между вами и дверью, словно оценивая шансы на побег.""",
 	DWARF_PRISON_PHYSICS2 = """Вы замечаете несколько орудий, оставленных предыдущими дознавателями: деревянную дубинку, прислоненную к стене, ведро с грязной водой в углу и несколько обтрепанных веревок, намотанных на крюк. Вид этих инструментов, похоже, заставляет заключенного волноваться еще больше.""",
 	DWARF_PRISON_PHYSICS3 = """Заключенный: - О-отойдите! Я ничего вам не скажу, что бы вы со мной ни сделали!
@@ -15204,8 +15238,8 @@ OLD_TEMPLE_OPT_FINE = """Ладно, сделаю, что смогу""",
 	COALBASE_ATTACK_ITCHING = """Куро слегка приподнимает бровь, услышав это.
 
 Куро: - Я знаю об этом, но вы все еще здесь, не так ли? В моих интересах позаботиться о тебе навсегда. И даже если бы это было не так, королевские войска уже давно жаждут битвы""",
-	COALBASE_ATTACK_OPT_HARMED = """Если вы заставите нас сражаться, Хара может пострадать в процессе. (фактор мудрости)""",
-	COALBASE_ATTACK_OPT_ZEPHYRA = """* Попросить Зефиру о помощи*""",
+	COALBASE_ATTACK_OPT_HARMED = """[Фактор мудрости]Если вы заставите нас сражаться, Хара может пострадать в процессе.""",
+	COALBASE_ATTACK_OPT_ZEPHYRA = """*Попросить Зефиру о помощи*""",
 	COALBASE_ATTACK_OPT_FIGHT = """Бросать мне вызов - ошибка.""",
 	COALBASE_ATTACK_REPLY_HARMED_SUC = """{color=green|Успех}
 
@@ -16037,20 +16071,20 @@ KURO_WHISKEY_DIG3 = """Босс: - Чего вы ждете? Если вы не 
 	KURO_TOME_OPT_DO = """*Сделать, как сказано*""",
 	KURO_TOME_OPT_LEAVE = """*Тихо уйти*""",
 	KURO_TOME_REPLY_MEANING = """- Я же обещала тебе свое тело в награду, не так ли? Я никогда не говорила, что собираюсь делать что-то сверх этого. Как видишь, я провожу важное исследование, так что буду признателена, если ты сделаешь это быстро и без излишней грубости.""",
-	KURO_TOME_SEX2 = """Kuro lies in bed, her attention already grasped by the letters on the page she opened up. Her tail is kept to one side, giving you a view of her curvature showing underneath her dress. You begin drawing your hands across her soft body, kneading her thighs and ass while she turns the page. Despite her cold attitude, her body is much warmer and more receptive to you, letting your fingers sink deep into it as you play with her lower half.""", # MISSING TRANSLATION
-	KURO_TOME_SEX3 = """Peeling her dress to the side, her butt is fully revealed, and her covered pussy along with it. You gently press your finger to it, gliding from her clit upward and back again until her panties become damp. Kuro traces lines on the page with her finger, keeping excellent focus as you slide her panties down her legs.""", # MISSING TRANSLATION
-	KURO_TOME_SEX4 = """Her pussy now fully exposed, you play with her lower lips. The folds part for your fingers as you tease an insertion that never comes to pass. The subtle stream of her juices starts staining the sheets and your fingers, but Kuro remains unenthused as her eyes scan each sentence on the page. Even circling her asshole with her own fluids doesn't faze her as they seep back into her body through a different orifice. No matter the method, Kuro only stares at the yellowed pages that she takes careful consideration not to damage. Pulling out your shaft, you prepare to insert yourself into the situation by angling yourself for clean penetration.""", # MISSING TRANSLATION
-	KURO_TOME_SEX5 = """— Nngh...
+	KURO_TOME_SEX2 = """Куро лежит в постели, ее внимание уже приковано к буквам на открытой странице. Ее хвост откинут в сторону, открывая вам вид на ее изгибы, виднеющиеся под платьем. Вы начинаете водить руками по ее мягкому телу, разминая бедра и попку, пока она перелистывает страницу. Несмотря на ее холодное отношение, ее тело гораздо теплее и восприимчивее к вам, позволяя вашим пальцам глубоко погружаться в него, пока вы играете с ее нижней половиной.""",
+	KURO_TOME_SEX3 = """Раздвинув платье в стороны, вы полностью обнажаете ее попку, а вместе с ней и прикрытую киску. Вы нежно прижимаете к ней палец, скользя от клитора вверх и обратно, пока ее трусики не становятся влажными. Куро рисует пальцем линии на странице, сохраняя отличную концентрацию, пока вы спускаете трусики с ее ног.""",
+	KURO_TOME_SEX4 = """Теперь ее киска полностью обнажена, вы играете с ее нижними губами. Складки расступаются перед вашими пальцами, когда вы дразните ее, чтобы ввести в нее то, что никогда не произойдет. Тонкая струйка ее соков начинает пачкать простыни и ваши пальцы, но Куро остается невозмутимой, ее глаза сканируют каждое предложение на странице. Даже обведение ее задницы ее собственными жидкостями не смущает ее, поскольку они просачиваются обратно в ее тело через другое отверстие. Независимо от способа, Куро лишь смотрит на пожелтевшие страницы, которые она старается не повредить. Вытащив свой стержень, вы готовитесь ввести себя в позицию, наклоняясь для точного проникновения.""",
+	KURO_TOME_SEX5 = """— Ннгх...
 
-You force yourself past Kuro's folds, tearing through her hymen to take what you've been offered. Kuro exhales a sharp breath as she peeks behind to see your dick being shoved into her. A primal heat surrounds your cock as you push further into her, blood washing past as you break her body in for your dick to use. Her pussy tightens as her body panics, feeling a throbbing heat inside her which it has never experienced. Once you reach the end of your length, your thrusts begin.""", # MISSING TRANSLATION
-	KURO_TOME_SEX6 = """Kuro crinkles the page as she tries to keep herself steady, her body heating up as you slide in and out of her pussy. Her inner walls clamp tight to the shape of your cock as her body now secretes even more nectar from within, the extra fluids helping you slip inside faster and faster. 
+Вы проталкиваете себя через складки Куро, разрывая ее девственную плеву, чтобы взять то, что вам предложено. Куро резко выдыхает, заглядывая сзади, чтобы увидеть, как в нее вставляют ваш член. Первобытный жар окружает ваш член, когда вы проталкиваетесь в нее все дальше, кровь течет мимо, пока вы разрываете ее тело, чтобы задействовать ваш член. Ее киска сжимается, а тело паникует, ощущая внутри себя пульсирующий жар, которого никогда не испытывало. Как только вы достигаете конца своей длины, начинаются толчки.""",
+	KURO_TOME_SEX6 = """Куро сжимает страницу, пытаясь удержаться на месте, ее тело нагревается, пока вы входите и выходите из ее киски. Ее внутренние стенки плотно прижимаются к форме вашего члена, а ее тело выделяет еще больше нектара изнутри, и дополнительные жидкости помогают вам проникать внутрь все быстрее и быстрее. 
 
-Back and forth, her tail flits around, belying her excitement as she tries to keep a steady hand and flip to the next page. Within a few minutes, Kuro is anything but calm, her breathing is less steady, the rising heat inside your shaft about to burst and ruin any facade she has leftover.""", # MISSING TRANSLATION
-	KURO_TOME_SEX7 = """A torrent of seed floods Kuro's tight pussy as her cold demeanor melts in an instant. Her body is honest with you, clinging to your cock as it throbs and spurts more cum for her to devour. You fill the hole she so graciously offered you, watching her body shiver and relax as she gives in to your semen flooding through her. Even as you pull away, her pussy closes to keep your load packed tight inside...
+Взад-вперед, ее хвост порхает вокруг, скрывая ее возбуждение, пока она пытается держать руку твердо и перелистывать следующую страницу. Через несколько минут Куро перестает быть невозмутимой, ее дыхание становится все менее ровным, а нарастающий жар внутри вашего ствола вот-вот вырвется наружу и разрушит весь оставшийся у нее фасад.""",
+	KURO_TOME_SEX7 = """Поток семени заливает тугую киску Куро, а ее холодное выражение лица мгновенно тает. Ее тело откровенно с вами, прижимаясь к вашему члену, пока он пульсирует и извергает все больше спермы, чтобы она могла ее поглотить. Вы заполняете отверстие, которое она так любезно предложила вам, наблюдая, как дрожит и расслабляется ее тело, отдаваясь вашей сперме, заливающей ее. Даже когда вы отстраняетесь, ее киска закрывается, чтобы удержать ваш груз внутри...
 
-— N-now... If you let me, I want to finish this...
+- Т-теперь... Если ты позволишь мне, я хочу закончить это...
 
-You decide to leave her alone for now.""", # MISSING TRANSLATION
+Вы решаете пока оставить ее в покое.""",
 	LIRA_LOST_START = """Пробираясь через лес, вы вдруг слышите женский голос, зовущий на помощь. Вы осторожно движетесь к нему...""",
 	LIRA_LOST_START2 = """- Незнакомец! Какое облегчение, что это не животные или монстры... Я пришла сюда, чтобы собрать немного трав, но, кажется, я заблудилась. Меня зовут Лира, надеюсь, вам не составит труда доставить меня в эльфийскую столицу""",
 	LIRA_LOST_OPT_SURE = """Конечно, вы можете задержаться здесь""",
@@ -16067,237 +16101,239 @@ You decide to leave her alone for now.""", # MISSING TRANSLATION
 
 Стражник: - Стоять!
 
-Лира: - Я аколит Фрейи, пожалуйста, этот [man] помог мне, когда я заблудилась в лесу.
+Лира: - Я послушник Фрейи, пожалуйста, этот [man] помог мне, когда я заблудилась в лесу.
 
 Несмотря на вид Лиры, стражники расслабились, услышав ее. Когда вы прошли внутрь, она поблагодарила вас и удалилась, направляясь в одно из престижных строений.""",
-	KURO_CHURCH_START = """In the morning you receive a letter from the church. Ginny requests you to visit her at her temple. Judging from how it's written it seems to be urgent.""", # MISSING TRANSLATION
-	KURO_CHURCH_NOTE = """As you enter the church and find Ginny, she looks genuinely worried as she leads you to the more isolated part of the building.
+	KURO_CHURCH_START = """Утром вы получаете письмо из церкви. Джинни просит вас навестить ее в ее храме. Судя по тому, как оно написано, оно кажется срочным""",
+	KURO_CHURCH_NOTE = """Когда вы входите в церковь и находите Джинни, она выглядит искренне обеспокоенной, пока ведет вас в более уединенную часть здания.
 
-— Mayor [name], I've received a very worrying message which I believe you need to see.
+- Мэр [name], я получила очень тревожное сообщение, с которым, как мне кажется, вы должны ознакомиться.
 
-She passes you a small folded note. As you read through it you notice that handwriting is rather clean and elegant. 
+Она передает вам небольшую сложенную записку. Прочитав ее, вы замечаете, что почерк довольно чистый и элегантный. 
 
-"Aliron's Mayor must be warned that there's a traitor among his servants..."
+'Мэр Алирона должен быть предупрежден о том, что среди его слуг есть предатель...'
 
-The ominous message does not give any distinct clues to who has written it, however it ends on the invitation to visit one of nearby districts just out of city walls, promising to give more information on the subject.""", # MISSING TRANSLATION
-	KURO_CHURCH_NOTE2 = """Ginny looks at you worryingly as you read the message before finally speaking up. 
+Зловещее послание не дает никаких явных подсказок о том, кто его написал, однако заканчивается приглашением посетить один из близлежащих районов за городскими стенами, обещая дать больше информации по этому вопросу.""",
+KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на вас, пока вы читаете послание, прежде чем наконец начинает говорить. 
 
-— This was left at the church's donations but I haven't seen anyone new or suspicious who could've planted it... Please be cautious with it.""", # MISSING TRANSLATION
-	KURO_CHURCH_OPT_WARNING = """Thanks for the warning""", # MISSING TRANSLATION
-	KURO_CHURCH_OPT_PRANK = """It's probably just a prank""", # MISSING TRANSLATION
-	KURO_CHURCH_NOTE3 = """Ginny nods before leaving back to her job. You put the note into your pocket and leave wondering how to approach this invitation.""", # MISSING TRANSLATION
-	KURO_HIDEOUT_START = """After asking around for a bit you find the building described in the note. It resembles a large, slightly weathered storehouse. It does not seem to have anyone outside of the doors but as you prepare to approach it, you have Kuro interrupting you, who seemingly appeared from nowhere.
+- Это было оставлено на пожертвованиях в церкви, но я не видела никого нового или подозрительного, кто мог бы это подложить... Пожалуйста, будьте осторожны с этим.""",
+	KURO_CHURCH_OPT_WARNING = """Спасибо за предупреждение""",
+	KURO_CHURCH_OPT_PRANK = """Возможно, это просто розыгрыш""",
+	KURO_CHURCH_NOTE3 = """Джинни кивает, прежде чем уйти по своим делам. Вы кладете записку в карман и уходите, размышляя, как отнестись к этому приглашению""",
+	KURO_HIDEOUT_START = """Немного поспрашивав вокруг, вы находите здание, описанное в записке. Оно напоминает большой, слегка обветренный склад. За дверями, похоже, никого нет, но когда вы готовитесь подойти к нему, вас прерывает Куро, появившийся, казалось бы, из ниоткуда.
 
-— This place resembles the cult's hideout. You don't mind me accompanying you?""", # MISSING TRANSLATION
-	KURO_HIDEOUT_OPT_WHYHERE = """Why are you here?""", # MISSING TRANSLATION
-	KURO_HIDEOUT_OPT_SURE = """Sure""", # MISSING TRANSLATION
-	KURO_HIDEOUT_OPT_NOT = """Not this time""", # MISSING TRANSLATION
-	KURO_HIDEOUT_REPLY_WHYHERE = """— Only been watching over you and it seems you've found something worthy of my attention. What's so unusual about it?""", # MISSING TRANSLATION
-	KURO_HIDEOUT_REPLY_SURE = """— Good. I'm right behind you then. Looks like there are foes ahead.""", # MISSING TRANSLATION
-	KURO_HIDEOUT_REPLY_NOT = """Kuro frowns her brows but quickly shrugs and turns away without arguing.
+- Это место напоминает убежище секты.Не против, если я тебя сопровожу?""",
+	KURO_HIDEOUT_OPT_WHYHERE = """Почему ты здесь?""",
+	KURO_HIDEOUT_OPT_SURE = """Конечно""",
+	KURO_HIDEOUT_OPT_NOT = """Не в этот раз""",
+	KURO_HIDEOUT_REPLY_WHYHERE = """- Я только наблюдала за вами, и, кажется, вы нашли что-то достойное моего внимания. Что в этом необычного?""",
+	KURO_HIDEOUT_REPLY_SURE = """- Хорошо. Тогда я иду прямо за вами. Похоже, впереди враги""",
+	KURO_HIDEOUT_REPLY_NOT = """Куро хмурит брови, но быстро пожимает плечами и отворачивается, не споря.
 
-— You better be ready for the fight in there.""", # MISSING TRANSLATION
-	KURO_HIDEOUT_START3 = """You make it inside the storehouse. There's nothing unusual about it and there does not seem to be any signs of people hiding inside. However as you search through it, you find a hidden cellar door at its floor. You quietly lift it up and can spot light from some torch underneath.
+- Тебе лучше быть готовым к бою там.""",
+	KURO_HIDEOUT_START3 = """Вы попадаете внутрь склада. В нем нет ничего необычного, и нет никаких признаков того, что внутри прячутся люди. Однако, порывшись в нем, вы обнаруживаете скрытую дверь в подвал. Вы тихонько приподнимаете ее и видите под ней свет от какого-то факела.
 
-As you make your way through it, soon you realize there are indeed some people hiding in here. However, as nobody is approaching you, you realize that the message's author is unlikely to be here.
+Пробираясь через нее, вы вскоре понимаете, что здесь действительно прячутся какие-то люди. Однако, поскольку к вам никто не приближается, вы понимаете, что автор послания вряд ли находится здесь.
 
-Finally you are spotted by one of the cultist figures who yells in warning for his partners and grabs the weapon preparing for attack.""", # MISSING TRANSLATION
-	KURO_HIDEOUT_FINISH = """As you finish off the last cultist, you take a look over their hideout which was seemingly occupied only recently. It makes you wonder just how many such spots across the lands could possibly be established as without the letter you would have nearly no chance to find it.""", # MISSING TRANSLATION
+Наконец вас замечает один из культистов, который предупреждающе кричит своим напарникам и выхватывает оружие, готовясь к атаке.""",
+	KURO_HIDEOUT_FINISH = """Прикончив последнего культиста, вы осматриваете их убежище, которое, похоже, было занято совсем недавно. Это заставляет задуматься о том, сколько таких мест по всей земле может быть создано, ведь без письма у вас почти не было бы шансов найти его.""",
 	KURO_HIDEOUT_FINISH_KURO = """
 
-Your thoughts are interrupted by Kuro who did not waste time and went through one of the shelves. As she spots you looking at her she shows you her findings.
+Ваши размышления прерывает Куро, которая не теряет времени даром и обшаривает одну из полок. Заметив, что вы смотрите на нее, она показывает вам свои находки.
 
-— Look here, this key seems quite important.
+- Посмотрите, этот ключ кажется очень важным.
 
-She shows off a delicate key likely belonging to some small box as if tempting you to take it.""", # MISSING TRANSLATION
-	KURO_HIDEOUT_OPT_BEHIND = """[Wisdom challenge] What's that behind your back?""", # MISSING TRANSLATION
-	KURO_HIDEOUT_OPT_KEY = """*Take key*""", # MISSING TRANSLATION
-	KURO_HIDEOUT_REPLY_BEHIND = """You spot how Kuro is trying to hide something behind her back by positioning awkwardly. As she notices the way you are looking at her, she grins back.
+Она показывает изящный ключ, вероятно, принадлежащий к какой-то маленькой шкатулке, как бы соблазняя вас взять его.""",
+	KURO_HIDEOUT_OPT_BEHIND = """[Проверка мудрости] Что это у тебя за спиной?""",
+	KURO_HIDEOUT_OPT_KEY = """*Взять ключ*""",
+	KURO_HIDEOUT_REPLY_BEHIND = """Вы замечаете, как Куро пытается спрятать что-то за спиной, неловко расположившись. Заметив, как вы на нее смотрите, она ухмыляется в ответ.
 
-— Heh, you aren't easily fooled after all.
+- Хех, все-таки вас не так-то легко обмануть.
 
-Before you are able to stop her, she snatches a piece of paper from the table and dashes to the darker corner of the room. In another moment there's no presence of her anymore making you wonder what it all was about.""", # MISSING TRANSLATION
+Прежде чем вы успеваете остановить ее, она хватает со стола лист бумаги и бросается в темный угол комнаты. Через мгновение ее уже не видно, и вы задаетесь вопросом, что же это было.""",
 	KURO_HIDEOUT_CLUES = """
 
-It seems the only thing left to do now is to search through the hideout for clues...""", # MISSING TRANSLATION
-	KURO_HIDEOUT_REPLY_KEY = """You take the key from Kuro's hands and investigate it closely. As you try to find the place which could use it you fail to notice how Kuro is no longer in the room. Your attempt to find her does not bear any fruit and the only thing you are left with is to search through the hideout for clues...""", # MISSING TRANSLATION
-	KUROHIDEOUTTASKNAME = """*Search the hideout*""", # MISSING TRANSLATION
-	KUROHIDEOUTTASKDESCRIPT = """*Search through the hideout for clues about other such spots*""", # MISSING TRANSLATION
-	KURO_HIDEOUT_SEARCH = """After throughly searching through the hideout you manage to make sense of the scribbling notes and from them you are able to deduce the location of another parent base not too far away from the city. It seems you might be able to find Kuro at it as well.""", # MISSING TRANSLATION
-	KURO_HIDEOUT_MEDIUM = """You hide through the shadows as you make it deeper through the cave. Soon you realize that walls are often decorated by mystic religious symbols. Finally you come across a bigger room which seems to be lit inside. A familiar shape appears to be alone in it.
+Похоже, единственное, что осталось сделать, это обыскать убежище в поисках улик...""",
+	KURO_HIDEOUT_REPLY_KEY = """Вы берете ключ из рук Куро и внимательно его исследуете. Пытаясь найти место, где он мог бы пригодиться, вы не замечаете, что Куро больше нет в комнате. Ваши попытки найти ее не приносят никаких плодов, и единственное, что вам остается, - обыскать убежище в поисках подсказок...""",
+	KUROHIDEOUTTASKNAME = """*Обыскать укрытие*""",
+	KUROHIDEOUTTASKDESCRIPT = """*Искать в укрытии подсказки о других подобных местах*""",
+	KURO_HIDEOUT_SEARCH = """После тщательного обыска тайника вам удается разобраться в записях, и из них вы можете сделать вывод о местонахождении другой родительской базы, расположенной не так далеко от города. Похоже, вы сможете найти Куро и на ней""",
+	KURO_HIDEOUT_MEDIUM = """Вы прячетесь в тени, пробираясь все глубже в пещеру. Вскоре вы понимаете, что стены часто украшены мистическими религиозными символами. Наконец вы наткнулись на большую комнату, которая, кажется, освещена изнутри. В нем одиноко стоит знакомая фигура.
 
-You manage to sneak behind the doorway being able to eavesdrop on Kuro who stands before the large chunk of thick glowing glass.
+Вам удается пробраться за дверной проем и подслушать Куро, который стоит перед большим куском толстого светящегося стекла.
 
-Voice: — ...your infiltration was unexpected but not without a benefit. As you've gotten close to that [man], I shall entrust you with another task as my champion.
+Голос: - ...ваше проникновение было неожиданным, но не без пользы. Поскольку вы сблизились с этим [man], я поручаю вам еще одно задание как своему чемпиону.
 
-Kuro: — And how can I be of service at this current state?""", # MISSING TRANSLATION
-	KURO_HIDEOUT_MEDIUM2 = """Voice: — It seems the recent cult base has been compromised, but it is acceptable to us. Your mission will be to kill this [man], now it is certain that [he]'s very dangerous for the plans. 
+Куро: - И чем же я могу быть полезна в данном состоянии?""",
+	KURO_HIDEOUT_MEDIUM2 = """ Голос: - Похоже, что недавняя база культа была взломана, но это приемлемо для нас. Вашей миссия - [man] должен быть убит, теперь точно известно, что [he] очень опасен для планов. 
 
-Kuro: — ...Understood. Any other orders for me?
+Куро: - ...Принято. Еще какие-нибудь приказы для меня?
 
-Voice: — Our agreement persists, wield my powers with our mutual goal in mind and I will settle your little quarrel with Mhyrana.
+Голос: - Наше соглашение остается в силе, используй мои силы с учетом нашей общей цели, и я улажу твою маленькую ссору с Миранной.
 
-Kuro: — If that's it, I will destroy the medium now. Anyone can come across it and become suspicious after all.""", # MISSING TRANSLATION
-	KURO_HIDEOUT_MEDIUM3 = """The voice from the glass takes a pause.
+Куро: - Если это все, то я уничтожу медиум прямо сейчас. В конце концов, любой может наткнуться на него и что-то заподозрить.""",
+	KURO_HIDEOUT_MEDIUM3 = """Голос из стакана делает паузу.
 
-Voice: — ...Do as you seem fit.
+Голос: - ...Поступай так, как считаешь нужным.
 
-With a simple gesture Kuro cuts the previously glowing glass slab to pieces with the dark energy of the voice who she has just been talking to. Her shoulders drop a bit before she turns towards the entrance.
+Простым жестом Куро разрезает светящуюся стеклянную плиту на куски темной энергией голоса, с которым она только что разговаривала. Ее плечи немного опускаются, прежде чем она поворачивается к входу.
 
-Kuro: — Now, onto our more... pressing matters.""", # MISSING TRANSLATION
-	KURO_HIDEOUT_MEDIUM4 = """Before you can make a move you realize that your presence has not been left undetected. The darkness you were hiding in has concealed slim dark cords extending from Kuro's shadow and they have firmly wrapped around you constricting your movement and blocking your mouth from speaking.
+Куро: - А теперь перейдем к более... насущным делам.""",
+	KURO_HIDEOUT_MEDIUM4 = """Прежде чем вы успели сделать шаг, вы поняли, что ваше присутствие не осталось незамеченным. Темнота, в которой вы прятались, скрыла тонкие темные нити, тянущиеся от тени Куро, и они крепко обвились вокруг вас, сковывая движения и мешая говорить.
 
-Kuro: — Isn't it nice that I'm able to complete my mission right now? And punish an eavesdropper on the spot.
+Куро: - Разве не здорово, что я могу выполнить свою миссию прямо сейчас? И наказать подслушивающего на месте.
 
-A nefarious grin has appeared on Kuro's face as she's effortlessly dragged you across the hallway.
+На лице Куро появляется гнусная ухмылка, когда она без труда тащит вас по коридору.
 
-Kuro: — Must be thinking what a mistake it was to get involved with me now, aren't you?""", # MISSING TRANSLATION
-	KURO_HIDEOUT_SEX = """As your legs and arms are held by Kuro's dark energy she has no issues stripping down to her underwear and mounting over your body with a mood of a predator playing with its prey.
+Куро: - Должно быть, сейчас ты думаешь, какой ошибкой было связываться со мной, не так ли?""",
+	KURO_HIDEOUT_SEX = """Пока ваши ноги и руки удерживаются темной энергией Куро, она без проблем раздевается до нижнего белья и устраивается на вашем теле с настроением хищника, играющего со своей жертвой.
 
-""", # MISSING TRANSLATION
-	KURO_HIDEOUT_SEX_SKIP = """Kuro: — You know, something about you irritatingly attracts me. Something that strongly tickles my curiosity which never really deem other lesser people worthy of attention.""", # MISSING TRANSLATION
-	KURO_HIDEOUT_SEX_NOSKIP = """Kuro: — I have a confession to make. After the time you had your way with me, something stirring has become apparent inside of me. Something I haven't felt before. It's all your fault.""", # MISSING TRANSLATION
-	KURO_HIDEOUT_OPT_STRUG = """*Struggle*""", # MISSING TRANSLATION
-	KURO_HIDEOUT_OPT_GIVEIN = """*Give in*""", # MISSING TRANSLATION
-	KURO_HIDEOUT_REPLY_STRUG = """Feeling you struggling under her weight Kuro frowns, her smile weakens and her tone changes to a more annoyed one.
+""",
+	KURO_HIDEOUT_SEX_SKIP = """Куро: - Знаешь, что-то в тебе раздражающе притягивает меня. Что-то, что сильно щекочет мое любопытство, которое никогда не считало других низших людей достойными внимания.""",
+	KURO_HIDEOUT_SEX_NOSKIP = """Куро: - Я должна признаться. После того, как ты со мной пообщался, во мне что-то зашевелилось. Что-то, чего я раньше не чувствовала. Это все твоя вина""",
+	KURO_HIDEOUT_OPT_STRUG = """*Бороться*""",
+	KURO_HIDEOUT_OPT_GIVEIN = """*Сдаться*""",
+	KURO_HIDEOUT_REPLY_STRUG = """Чувствуя, как ты сопротивляешься под ее весом, Куро хмурится, ее улыбка слабеет, а тон меняется на более раздраженный.
 
-Kuro: — Do you really not want to give in to this little occurrence? This might be your only chance, you know.""", # MISSING TRANSLATION
-	KURO_HIDEOUT_OPT_STRUG2 = """*Keep struggling*""", # MISSING TRANSLATION
-	KURO_HIDEOUT_REFUSE = """Without saying a word Kuro lifts up from you and fixes her clothes releasing you from her binds. Despite any lack of hostility from her you can feel her disappointment filling the air.
+Куро: - Ты действительно не хочешь уступить этому маленькому инциденту? Это может быть твой единственный шанс, знаешь ли.""",
+	KURO_HIDEOUT_OPT_STRUG2 = """*Продолжать бороться*""",
+	KURO_HIDEOUT_REFUSE = """Не говоря ни слова, Куро поднимается и поправляет одежду, освобождая вас от своих уз. Несмотря на отсутствие враждебности с ее стороны, вы можете почувствовать ее разочарование, наполняющее воздух.
 
-Kuro: — ...Let's go, I don't wanna stay here any longer.""", # MISSING TRANSLATION
-	KURO_HIDEOUT_SEX2 = """Kuro's bindings keep you restrained, but don't bite into your skin like a wild dog as you thought they would. The fox just smiles down at you as you settle into your new position under her control, her tendrils sliding around your body, feeling your skin shiver from the unusual touch.
+Куро: - ...Пойдем, я не хочу здесь больше оставаться.""",
+	KURO_HIDEOUT_SEX2 = """Связки Куро держат вас в напряжении, но не вгрызаются в кожу, как дикая собака, как вы думали. Лиса просто улыбается, глядя на то, как вы устраиваетесь в новом положении под ее контролем, а ее нити скользят по вашему телу, заставляя кожу дрожать от необычных прикосновений.
 
-The warmth from her lower body straddling you is the only thing that keeps you relaxed as her cold bindings only complete their job in restricting your movements. It's time for you to contribute to her enjoyment. That's what her smile seems to say to you as you watch her remove her undergarments over you.""", # MISSING TRANSLATION
-	KURO_HIDEOUT_SEX3 = """Everything seems different from your new perspective, her expression, her body, and her intentions... You can already feel her body getting excited at the prospect of taking you inside, a trickle of juices running down your groin. Her chest rises and falls with her excitement, puffing out her modest breasts as she strokes your body with her fingertips. Raising up, she aligns you with her hole and lowers herself down.
+Тепло ее нижней части тела - единственное, что помогает вам расслабиться, ведь холодные путы лишь ограничивают ваши движения. Пришло время и вам внести свой вклад в ее удовольствие. Именно об этом говорит вам ее улыбка, когда вы наблюдаете, как она снимает с себя нижнее белье.""",
+	KURO_HIDEOUT_SEX3 = """Все кажется другим с вашей новой точки зрения, ее выражение лица, ее тело и ее намерения... Вы уже чувствуете, как ее тело возбуждается от перспективы принять вас внутрь, как струйки соков стекают по вашему паху. Ее грудь вздымается и опускается от возбуждения, надувая свои скромные груди, пока она гладит ваше тело кончиками пальцев. Приподнявшись, она совмещает тебя со своим отверстием и опускается вниз.
 
-— I've heard that men don't always get aroused when being taken against their will, but maybe you are just a horny monkey like that.""", # MISSING TRANSLATION
-	KURO_HIDEOUT_SEX4 = """— Aa-ah...
+- Я слышала, что мужчины не всегда возбуждаются, когда их берут против их воли, но, может быть, ты просто такая возбужденная обезьянка?""",
+	KURO_HIDEOUT_SEX4 = """- А-а-ах...
 
-Shoving you inside all the way, Kuro is shocked from the pleasure striking her body. Her pussy clings to you tighter than your bindings, sucking you as deep inside as it can hold. Even her uniform expression breaks character as she tries to handle the sensations running through her body.""", # MISSING TRANSLATION
-	KURO_HIDEOUT_SEX5 = """As she reaches the limits of her hole, her face softens and the warmth runs through you both. Passionate throbs radiate through her as you twitch inside, waiting for her to start moving. Her body responds by lifting up and falling down, finding a slow rhythm that picks up speed the more you throb inside her.
+Запихивая тебя внутрь до упора, Куро замирает от удовольствия, охватившего ее тело. Ее киска прижимается к вам крепче, чем ваши путы, засасывая вас так глубоко внутрь, как только может. Даже ее однообразное выражение лица меняется, когда она пытается справиться с ощущениями, проходящими через ее тело.""",
+	KURO_HIDEOUT_SEX5 = """Когда она достигает пределов своего тела, ее лицо смягчается, и тепло пробегает через вас обоих. Страстные мурашки проникают в нее, а вы дергаетесь внутри, ожидая, когда она начнет двигаться. Ее тело откликается, поднимаясь и опускаясь, обретая медленный ритм, который набирает скорость, чем сильнее вы пульсируете внутри нее.
 
-The inner walls of her pussy wrap around tightly, tugging at you inside for the fruits of her labor. It's not long before you feel the urge to give in to that familiar feeling, having no way to give a warning wrapped in your bindings as you are.
+Внутренние стенки ее киски плотно обхватывают вас, втягивая внутрь плоды своего труда. Вскоре вы ощущаете желание поддаться этому знакомому чувству, но не имеете возможности предупредить об этом, запутавшись в своих путах.
 
-— This is... too addictive...""", # MISSING TRANSLATION
-	KURO_HIDEOUT_SEX6 = """You burst inside of Kuro as her pussy clamps down you, squirting her own fluids out in tandem with your own. A wave of her cum mixes with yours and creates a concoction of lust fills her tight hole. Kuro's machinations halt for a moment as ecstasy fills her mind, her body sinking into your heat as she leaves the two of you interlocked together for a moment, enjoying the hazy wave of pleasure. It takes her a moment to recuperate and pull away, but her familiar cold smile reassures you that her aloof personality hasn't gone anywhere during this detour...
+- Это... слишком увлекательно...""",
+	KURO_HIDEOUT_SEX6 = """Вы врываетесь внутрь Куро, когда ее киска сжимает вас, выплескивая ее собственную жидкость в тандеме с вашей. Волна ее спермы смешивается с вашей и создает консистенцию похоти, заполняющую ее тугую дырочку. Движения Куро на мгновение прекращаются, когда экстаз заполняет ее разум, ее тело погружается в ваш жар, и вы остаетесь вдвоем, на мгновение прижавшись друг к другу, наслаждаясь туманной волной удовольствия. Ей требуется мгновение, чтобы прийти в себя и отстраниться, но ее знакомая холодная улыбка убеждает вас в том, что ее отстраненный характер никуда не делся за время этого путешествия...
 
-— Fufu, it seems you have a really strong reason for me not to kill you after all. Come on, how long are you planning to lay down like that?""", # MISSING TRANSLATION
-	KURO_HIDEOUT_SEX7 = """Visibly satisfied and content, Kuro lifts up from you and releases you from her binds as if nothing has happened. 
+- Фуфу, похоже, у меня есть веская причина не убивать тебя. Ну же, как долго ты собираешься так лежать?""",
+	KURO_HIDEOUT_SEX7 = """Заметно довольная и удовлетворенная, Куро поднимается и освобождает вас от своих уз, как будто ничего не произошло. 
 
-Kuro: — Let's go. I wanna get into the bath before the night.""", # MISSING TRANSLATION
-	KURO_MANSION_ARRIVE = """After you arrive at home Kuro does not seem to explain herself but looks visibly prepared for your questioning.""", # MISSING TRANSLATION
-	KURO_MANSION_OPT_EXPLAIN = """You aren't going to explain what it was all about?""", # MISSING TRANSLATION
-	KURO_MANSION_OPT_NOASK = """*Ask nothing*""", # MISSING TRANSLATION
-	KURO_MANSION_EXPLAIN = """Kuro: — It's nothing much really. A minor errand I had to take care of. You don't need to know about it just yet... Unless you are worried that I can actually kill you?""", # MISSING TRANSLATION
-	KURO_MANSION_OPT_WORRY = """That does sound worrying""", # MISSING TRANSLATION
-	KURO_MANSION_OPT_UNDERSTAND = """I just want to understand you better""", # MISSING TRANSLATION
-	KURO_MANSION_NOTKILL = """Kuro: — I didn't kill you when I had a chance, did I? I have made my mind about you and as I am not some mentally unstable lunatic I should reasonably present no threat.""", # MISSING TRANSLATION
-	KURO_MANSION_OPT_SENSE = """That makes sense""", # MISSING TRANSLATION
-	KURO_MANSION_OPT_HUMANE = """You could probably act more humane""", # MISSING TRANSLATION
-	KURO_MANSION_REPLY_HUMANE = """Kuro: — I could not. Now, if you excuse me.
+Куро: - Пойдемте. Я хочу принять ванну до вечера.""",
+	KURO_MANSION_ARRIVE = """После вашего прибытия домой Куро, похоже, не собирается объясняться, но выглядит явно готовой к вашему допросу.""",
+	KURO_MANSION_OPT_EXPLAIN = """Не собираешься объясниться, что это было?""",
+	KURO_MANSION_OPT_NOASK = """*Ничего не спрашивать*""",
+	KURO_MANSION_EXPLAIN = """Куро: - Ничего особенного. Небольшое поручение, о котором я должен была позаботиться. Тебе пока не стоит об этом знать... Если только ты не боишься, что я действительно могу тебя убить?""",
+	KURO_MANSION_OPT_WORRY = """Звучит тревожно""",
+	KURO_MANSION_OPT_UNDERSTAND = """Я просто хочу лучше понять тебя""",
+	KURO_MANSION_NOTKILL = """Куро: - Я не убила тебя, когда у меня был шанс, не так ли? Я составила свое мнение о тебе, и поскольку я не какая-то психически неуравновешенная, то не должна представлять угрозы.""",
+	KURO_MANSION_OPT_SENSE = """В этом есть смысл""",
+	KURO_MANSION_OPT_HUMANE = """Вероятно, ты могла бы вести себя более человечно""",
+	KURO_MANSION_REPLY_HUMANE = """Куро: - Не могу. Теперь, если вы не против.
 
-Demonstrating that she is not willing to give you any more information, Kuro leaves to the direction of the bath.""", # MISSING TRANSLATION
-	KURO_MANSION_REPLY_UNDERSTAND = """Kuro: — Do you now? *Chuckle* Pardon, I just find it funny. In that case you better try harder to understand me, then things might eventually start making sense, or they might not.
+Демонстрируя, что она не желает давать вам больше информации, Куро уходит в сторону ванной.""",
+	KURO_MANSION_REPLY_UNDERSTAND = """Куро: - И ты туда же? *Смешок* Извините, я просто считаю это забавным. В таком случае тебе лучше постараться понять меня, тогда все может обрести смысл, а может и нет.
 
-Demonstrating that she is not willing to give you any more information, Kuro leaves to the direction of the bath.""", # MISSING TRANSLATION
-	KURO_MANSION_QUIET = """As you stay quiet, Kuro simply moves to the direction of the bath leaving you alone for today.""", # MISSING TRANSLATION
-	KURO_ZEPH_START = """Zephyra: — I've heard you've finally got intimate with our dear [Master].
+Демонстрируя, что больше не желает давать вам никакой информации, Куро уходит в сторону ванной.""",
+	KURO_MANSION_QUIET = """Поскольку вы молчите, Куро просто уходит в сторону ванны, оставляя вас на сегодня в покое.""",
+	KURO_ZEPH_START = """Зефира: - Я слышала, что ты наконец-то вступил в интимную связь с нашим дорогим [Master]ом.
 
-Kuro's face showed a rare smirk on it.
+На лице Куро появилась едва заметная ухмылка.
 
-Kuro: — Feeling jealous, sis? 
+Куро: - Чувствуешь ревность, сестренка? 
 
-Zephyra: — Of course not, as long as it was [Master]'s will. I'm happy you grew out of your reclusive lifestyle.""", # MISSING TRANSLATION
-	KURO_ZEPH_START2 = """Kuro: — Is that so? And if I said [he] has forced [him]self on me?
+Зефира: - Конечно, нет, раз уж на то была воля [Master]а. Я рада, что ты выросла из своего затворнического образа жизни""",
+	KURO_ZEPH_START2 = """Куро: - Неужели? А если я скажу, что [he] навязался мне?
 
-Zephyra: — Surely it's not a big deal then, you seem alive and well.
+Зефира: - Тогда, конечно, ничего страшного, ты же вроде жива и здорова.
 
-Kuro took a long pause clearly puzzled by her sister's apparently sincere response.""", # MISSING TRANSLATION
-	KURO_ZEPH_START3 = """Kuro: — You aren't making a fool of me? I have noticed it before but you don't seem quite sane when it's related to [name]. 
+Куро выдержала долгую паузу, явно озадаченная явно искренним ответом сестры.""",
+	KURO_ZEPH_START3 = """Куро: - Ты не дурачишься? Я и раньше это замечала, но ты выглядишь не совсем вменяемой, когда это связано с [name]. 
 
-Zephyra: — That sounds like you are being jealous instead. [name] is my chosen person and I don't mind to appear unreasonable at times if it's in [his] favor.
+Зефира: - Это звучит так, будто ты ревнуешь. [name] - мой избранник, и я не против иногда показаться неразумной, если это идет [his] на пользу.
 
-Kuro: — Huh, is there any limit to that though? What if [he] would ask you to be [his] personal restroom? 
+Куро: - А есть ли в этом какой-то предел? Что, если [he] попросит тебя стать его личным туалетом? 
 
-Zephyra: — Please, Kuro. If I had to answer such a question that would make me appear quite unladylike. 
+Зефира: - Перестань, Куро. Если бы мне пришлось отвечать на такой вопрос, я бы выглядела совсем не по-женски. 
 
-Kuro took a long look after Zephyra's response after which decided to stay silent.""", # MISSING TRANSLATION
-	KURO_ZEPH_TAILJOB = """In the afternoon the two foxgirls find themselves at the same spot with the white one deciding to strike an unusual conversation. 
+Куро долго смотрела на Зефиру, после чего решила промолчать.""",
+	KURO_ZEPH_TAILJOB = """После обеда две девушки-лисицы оказываются в одном и том же месте, и белая решает завязать необычный разговор. 
 
-Zephyra: — Say, Kuro, it's been a while since you've become [Master]'s partner. I was curious to ask. Has [he]... paid any unusual interest to your, uhm, fluffy appendage?
+Зефира: - Скажи, Куро, прошло много времени с тех пор, как ты стала партнером [Master]а. Мне любопытно спросить. А он... проявлял какой-нибудь необычный интерес к твоему... э-э-э... пушистому придатку?
 
-Kuro: — What nonsense are you talking about?
+Куро: - О какой ерунде ты говоришь?
 
-Zephyra: — Your tail. I think [he] might be unusually enthusiastic about it, [he] grabbed me by it during our private time even.
+Зефира: - Твой хвост. Я думаю, что он может быть необычно увлечен им, он даже схватил меня за него во время нашего уединения.
 
-Kuro: — ...Now that you mention, I remember he did appear to be interested in mine in the way [he] was looking at it.""", # MISSING TRANSLATION
-	KURO_ZEPH_TAILJOB2 = """Zephyra: — What a distasteful perverted attitude, don't you find?
+Куро: - ...раз уж ты заговорила, я помню, что он, кажется, заинтересовался моим, когда смотрел на него.""",
+	KURO_ZEPH_TAILJOB2 = """Зефира: - Какое отвратительное извращенное отношение, не находишь?
 
-Despite a scolding comment, Zephyra's voice hinted a small mischief in it, however it wasn't picked up by the black foxgirl.
+Несмотря на ругательный комментарий, в голосе Зефиры прозвучал намек на небольшое озорство, однако чернокожая лисица его не уловила.
 
-Kuro: — Not really. The tails of our kin are rather sensitive, presumably often used in flirting and physical bonding. Besides, we both pay great attention to their tidiness and appearance, it's even a compliment for me to have [name] also being charmed by it.
+Куро: - Не совсем. Хвосты наших сородичей довольно чувствительны, и, предположительно, часто используются для флирта и физической близости. Кроме того, мы оба уделяем большое внимание их опрятности и внешнему виду, и для меня даже комплимент, что [name] поддался очарованию.
 
-Even though Kuro's answer could be deemed mildly controversial, Zephyra's tone has shifted even more as if she has just found a best new friend.
+Несмотря на то что ответ Куро можно было бы считать слегка противоречивым, тон Зефиры изменился еще больше, как будто она только что нашла нового лучшего друга.
 
-Zephyra: — If you really think so... You see, I have one thing on my mind we can please our [Master] with...""", # MISSING TRANSLATION
-	KURO_ZEPH_TAILJOB3 = """Both Kuro and Zephyra cuddle up to you in bed, a mischievous smile on both of them. For Zephyra, it's a common occurrence, but Kuro? Their delicate hands seem to glide across your body as their gentle touch starts to get you riled up. Both of them are nude, with their perky nipples pressing into your sides and causing your shaft to perk up in response.
+Зефира: - Если ты действительно так думаешь... Видишь ли, у меня на уме есть одна вещь, которой мы можем порадовать нашего [Master]а...""",
+	KURO_ZEPH_TAILJOB3 = """И Куро, и Зефира прижимаются к вам в постели, озорно улыбаясь. Для Зефиры это обычное явление, но Куро? Их нежные руки словно скользят по вашему телу, а их ласковые прикосновения начинают вас возбуждать. Они обе обнажены, их соски упираются в ваши бока и заставляют ваш член вздрагивать в ответ.
 
-Zephyra: — Mornin' [Master], you looksurprised?
+Зефира: - Утречка, хозяин, ты выглядишь удивленным?
 
-Kuro: — Can't believe I let you talk me into this...
+Куро: - Не могу поверить, что позволила тебе уговорить меня на это...
 
-Despite Kuro's comment her voice has been hiding a mild hint of excitement.""", # MISSING TRANSLATION
-	KURO_ZEPH_TAILJOB4 = """Predicting your unspoken question, Zephyra has spoken in a mischievous tone.
+Несмотря на комментарий Куро, ее голос скрывал легкий намек на волнение.""",
+	KURO_ZEPH_TAILJOB4 = """Предвидя ваш невысказанный вопрос, Зефира заговорила озорным тоном.
 
-Zephyra: — Just lay down and relax, this is a little service from us.
+Зефира: - Просто лягте и расслабьтесь, это небольшая любезность с нашей стороны.
 
-The plan hidden by their smiles comes to the forefront as both the foxes' tails wrap around your cock, a fluffy trap of softness that both tickles and soothes your body. Two sets of clever eyes look into yours, their smiles unwavering as their tails caress your dick back and forth, plush fur sliding along your skin in a way you can't help but move into. Their petite chests pressing into you at the same time make the whole experience comfortably uncomfortable as your hips push up into nothing but more ticklish fur.""", # MISSING TRANSLATION
-	KURO_ZEPH_TAILJOB5 = """Zephyra peers over at your cock, drawing the tip of her tail over your sensitive head. The gentle stimulation makes you throb in your fluffy prison, precum leaking out and matting their soft fur. Each little tuft of fur slides along your head like a quill, impossibly soft and tempting you to burst at every possible moment.
+Замысел, скрытый под их улыбками, выходит на первый план, когда хвосты обеих лисиц обхватывают ваш член, пушистый капкан мягкости, который одновременно щекочет и успокаивает ваше тело. Две пары хитрых глаз смотрят в ваши, их улыбки непоколебимы, пока их хвосты ласкают ваш член взад-вперед, мягкий мех скользит по вашей коже так, что вы не можете не двигаться. Их маленькие груди, вдавливающиеся в вас одновременно, делают весь опыт комфортно неудобным, когда ваши бедра толкаются в еще более щекочущий мех.""",
+	KURO_ZEPH_TAILJOB5 = """Зефира смотрит на ваш член, проводя кончиком своего хвоста по вашей чувствительной головке. От нежной стимуляции ты пульсируешь в этой пушистой тюрьме, сперма вытекает наружу и покрывает ее мягкий мех. Каждый маленький пушок скользит по головке, как перо, невероятно мягкий и искушающий тебя кончить в любой момент.
 
-Zephyra: — Hehe, this is so naughty, don't you find?""", # MISSING TRANSLATION
-	KURO_ZEPH_TAILJOB6 = """Kuro: — Only a big pervert like [name] would be excited over something like this.
+Зефира: - Хехе, это так шаловливо, ты не находишь?""",
+	KURO_ZEPH_TAILJOB6 = """Куро: - Только такой большой извращенец, как [name], будет возбуждаться от подобного.
 
-Kuro takes a peek at your dick, wrapping her tail further around your shaft, almost suffocating it with the plush softness of her fur. Any precum that Zephyra's tail misses is swept up by Kuro's, both making sure your shaft is clean and comfortable. Kuro's tail squeezes your cock, locking it tight in a jail of fur while Zephyra teases you further.""", # MISSING TRANSLATION
-	KURO_ZEPH_TAILJOB7 = """With the two of them wrapped around your shaft, you find it hard to focus on anything else other than the tornado of fur led by two forces that move independent of each other. One teases while the other restrains, keeping you locked in a battle of resistance to the subtle and gentle movements of both that have the same goal of making you cum for them.
+Куро бросает взгляд на ваш член и обхватывает хвостом ваш ствол, почти задушив его мягкостью своего меха. Хвост Зефиры подхватывает всю сперму, которую пропускает хвост Куро, и они оба заботятся о чистоте и комфорте вашего ствола. Хвост Куро сжимает ваш член, плотно фиксируя его в меховой тюрьме, пока Зефира дразнит вас дальше.""",
+	KURO_ZEPH_TAILJOB7 = """Когда они вдвоем обхватывают ваш член, вам трудно сосредоточиться на чем-то другом, кроме мехового торнадо, возглавляемого двумя силами, которые движутся независимо друг от друга. Одна дразнит, а другая сдерживает, заставляя вас сопротивляться тонким и нежным движениям обеих, цель которых одна - заставить вас кончить для них.
 
-Zephyra: — I can feel that [Master] is close. Can you tell?
+Зефира: - Я чувствую, что [Master] близок. Не замечаешь?
 
-Kuro: — That's because you start squeezing tighter...""", # MISSING TRANSLATION
-	KURO_ZEPH_TAILJOB8 = """Before you can even form a coherent thought to stave off the urge any longer, your body gives in for you, letting loose a fountain of cum that covers their tails in white. Both foxes smile as their aim has been accomplished, loose strands of cum decorating their hair and fur as they continue to stroke all the semen out of your throbbing cock. 
+Куро: - Это потому, что ты начинаешь сжимать сильнее...""",
+	KURO_ZEPH_TAILJOB8 = """Прежде чем вы успеваете сформировать связную мысль, чтобы сдержать желание, ваше тело поддается вам, выпуская фонтан спермы, который покрывает их хвосты белым цветом. Обе лисицы улыбаются, видя, что их цель достигнута, и свободные пряди спермы украшают их шерсть и мех, пока они продолжают сглаживать всю сперму из вашего пульсирующего члена. 
 
-Kuro: — A-ah, crap... it's so hot...
+Куро: - А-а-а, черт... это так горячо...
 
-Zephyra: — Yes, come for us, stain my tail.
+Зефира: - Да, кончи для нас, испачкай мой хвост.
 
-The soft heaven constantly assaulting your sensitive shaft invites you to keep cumming forever, but you're saved by the limitations of your body putting an end to the continuous stream of seed. As you lie there still wrapped in their tails, your mind finally recovers with a break to form thoughts again...""", # MISSING TRANSLATION
-	KURO_WEDDING_1 = """As soon as the ceremony finishes, Kuro leads you to the bedroom. By this time you can already spot the excitement boiling in her despite her facade of calmness.
+Мягкий рай, постоянно атакующий ваш чувствительный ствол, призывает вас кончать вечно, но вас спасают ограничения вашего тела, прекращающие непрерывный поток семени. Пока вы лежите, все еще обвитый их хвостами, ваш разум, наконец, восстанавливается, чтобы снова сформировать мысли...""",
+	KURO_WEDDING_1 = """Как только церемония заканчивается, Куро ведет вас в спальню. К этому времени вы уже можете заметить, как в ней кипит волнение, несмотря на ее спокойный вид.
 
-— Well, dear [husband], are you going to patiently tease me now?
+- Ну что, дорогой [husband], теперь ты будешь терпеливо дразнить меня?
 
-Kuro stares at you, expecting you to take the lead. Her bright dress highlights her dark hair and glowing eyes shining through her glasses, her tail swishing to the side to frame her rear. Her breasts rest inside the top half of her dress, nipples pointing out from behind the fabric in anticipation of your touch. If Kuro had ever been this open before now, you'd be surprised.""", # MISSING TRANSLATION
-	KURO_WEDDING_2 = """You waste no time in being appreciative of her welcoming demeanor, sliding the unnecessary parts of her dress to the side for the proper view of her body. Her chest falls out now that its support is gone, her nipples pointing to the air and ready to be played with. Careful movements of her tail put it in place to keep her ass visible and open for you to ogle, everything on display for your eyes only.
+Куро смотрит на вас, ожидая, что вы возьмете инициативу в свои руки. Яркое платье подчеркивает ее темные волосы и сияющие глаза, сверкающие сквозь очки, а хвост разлетается в стороны, обрамляя ее зад. Ее грудь покоится в верхней половине платья, соски выглядывают из-за ткани в предвкушении вашего прикосновения. Если бы Куро до сих пор была бы такой открытой, вы бы удивились.""",
+	KURO_WEDDING_2 = """Вы не тратите время на то, чтобы оценить ее гостеприимство, сдвигая ненужные части платья в сторону, чтобы как следует рассмотреть ее тело. Грудь вываливается наружу, когда опоры больше нет, а соски устремлены в воздух и готовы к игре. Осторожные движения хвостом делают так, чтобы ее попка была видна и открыта для вашего обозрения, все выставлено только для ваших глаз.
 
-—  Ah... To think we are going to do it as a married couple now...""", # MISSING TRANSLATION
-	KURO_WEDDING_OPT_PUSSY = """*Take pussy*""", # MISSING TRANSLATION
-	KURO_WEDDING_OPT_ASS = """*Take ass*""", # MISSING TRANSLATION
-	KURO_WEDDING_PUSSY = """Slipping into her pussy, you watch her expression slip into pleasure instead of her usual calm gaze. Her body knows the feel of your cock and it knows to give in to it, no matter how intransigent her mind may be. Juices flow around your shaft right away, coating it in a sheen of lust that only gets brighter the more you thrust inside. Lewd noises resound through the room as your bodies make contact, the wet accentuation from her nectar making Kuro blush.""", # MISSING TRANSLATION
-	KURO_WEDDING_ASS = """Sliding into her asshole, Kuro's surprise is subdued in mere moments when the pleasure rolls into her brain. Your cock stretches her out as her body tries to tighten the ring around your girth in a futile effort. 
+- Ах... Подумать только, теперь мы будем делать это как супружеская пара...""",
+	KURO_WEDDING_OPT_PUSSY = """*Заняться киской*""",
+	KURO_WEDDING_OPT_ASS = """*Заняться попкой*""",
+	KURO_WEDDING_PUSSY = """Проникая в ее киску, вы наблюдаете, как вместо привычного спокойного взгляда выражение ее лица переходит в удовольствие. Ее тело знает, как ощущается ваш член, и оно знает, что нужно отдаться ему, независимо от того, насколько непримиримым может быть ее разум. Соки сразу же стекают по вашему стволу, покрывая его блеском вожделения, который становится все ярче, чем сильнее вы в него погружаетесь. Развратные звуки разносятся по комнате, когда ваши тела соприкасаются, а влажный запах ее нектара заставляет Куро краснеть.
 
-— H-how perverted, to go for my butt...
+Вы хватаете ее за грудь, продолжая входить в нее, прижимая ее тело к себе для опоры. Ее хвост мечется у вас за спиной, щекоча вашу кожу, поскольку она не может сдержать возбуждение в своем теле. Каждое движение, как внутри, так и снаружи, - это тонкий знак того, что она принимает ваш член, все работает вместе, чтобы удержать вас внутри и дразнить ваш ствол. Постоянные толчки достигают точки, и все удовольствие сливается воедино, пока вы не можете больше сдерживаться.
 
-Despite the foreign entry, her body melts into yours all the same, letting you slide as deep as you want inside her, throbbing and depositing precum into her ass. Her soft cheeks do their best to accommodate you, pushing back against your crotch with every thrust as your balls become wet with her fluids leaking from her pussy.""", # MISSING TRANSLATION
+- Давай... Давай кончим вместе!... Аааах!...""",
+	KURO_WEDDING_ASS = """Скользнув в ее задницу, Куро удивленно замирает на мгновение, когда наслаждение проникает в ее мозг. Твой член растягивает ее, а ее тело пытается сжать кольцо вокруг твоего обхвата в тщетной попытке. 
+
+- Как извращенно, взять меня в задницу...
+
+Несмотря на чужеродное проникновение, ее тело все равно тает в твоем, позволяя тебе скользить в ней так глубоко, как ты хочешь, пульсируя и выделяя сперму в ее задницу. Ее мягкие щеки изо всех сил стараются прижаться к тебе, отталкиваясь от твоей промежности с каждым толчком, а твои яйца становятся влажными от ее жидкости, вытекающей из ее киски.""",
+	KURO_WEDDING_PUSSY2 = """Сперма заливает киску Куро, когда волна ее соков устремляется к твоему стволу. Ее тело втягивает вас все плотнее, высасывая струйку за струйкой сперму, которую ее тело пьет как воду. Каждый толчок ее киски заставляет вас непроизвольно входить в нее, так как удовольствие сотрясает ваше тело и лишает равновесия. Прижав ее к себе, вы сжимаете ее грудь, выплескивая в нее последние капли своего семени. Первый из многих задает настроение: киска Куро дергается в предвкушении очередного раунда, а ваш член с радостью снова твердеет для того, чтобы в него попало еще больше...""",
+	KURO_WEDDING_ASS2 = """Всплеск спермы выстреливает в попку Куро, когда первая струя с трудом входит в нее через сфинктер. Каждая струйка трется о ее стягивающееся кольцо, слегка растягивая его с каждой порцией спермы, которая толкается в него. Куро словно натягивает ваш член своей попкой, побуждая все больше и больше спермы выливаться в нее, пока ее соки стекают по ногам. 
+
+Вы сжимаете ее груди, ощущая все остальное тело, пульсируя спермой в ее попке, пока вы дразните ее снаружи. Ее хвост виляет вокруг ваших ног, а ее попка снова сжимается вокруг вашего ствола, ее тяжелое дыхание не мешает ей просить еще одну порцию своими голодными глазами. Приготовившись к очередному приему, вы притягиваете ее еще ближе, чтобы она не смогла отстраниться, пока вы оба не выдохнетесь...""",
+
 	KURO_WEDDING_3 = """
 
-You grab her breasts as you continue to thrust into her, holding her body to you for leverage. Her tail swings around behind you, tickling your skin as she fails to keep the excitement within her body. Every movement, both inside and out, is a subtle sign of her acceptance of your cock, everything working together to keep you inside and tease your shaft. The constant throbs begin to reach a point, all the pleasure culminating together until you can hold on no longer.
+- Хах... Эти глупые плотские утехи выбили из меня все силы... Но я также чувствую себя... счастливой рядом с тобой.""",
 
-— Come... Let's come together!... Aah!..""", # MISSING TRANSLATION
-	KURO_WEDDING_PUSSY2 = """Cum floods Kuro's pussy as a wave of her juices rushes past your shaft. Her body sucks you in tighter, milking out spurt after spurt of semen that her body drinks like water. Every tug from her pussy makes you involuntarily thrust into her as the pleasure wracks your body and weakens your balance. Pulling her tighter to your chest, you squeeze her chest as you unload the last of your seed inside her. The first of many sets the mood as Kuro's pussy twitches in anticipation of another round, your cock all too happy to harden again for more to come...""", # MISSING TRANSLATION
-	KURO_WEDDING_ASS2 = """A burst of cum shoots into Kuro's ass as the first rope struggles to enter past her sphincter. Each spurt rubs against her tightening ring, lightly stretching it with each batch of semen that pushes against it. Kuro seems to pull on your cock with her ass, encouraging more and more cum to unload into her as her juices run down her legs. 
-
-You squeeze her breasts as you feel the rest of her body, pulsing cum into her ass while you tease her from the outside. Her tail whisks around your legs as her ass tightens around your shaft again, her heavy breathing not stopping her from asking for another round with her hungry eyes. As you ready yourself for another load, you pull her even closer, making sure she can't back out till you're both exhausted...
-
-— Hah... These stupid carnal pleasures got the best out of me... But I also feel... Happy at your side.""", # MISSING TRANSLATION
 
 	
 	#   QUESTS   #
@@ -16616,25 +16652,27 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	DKING_HARA_QUEST_VISIT = """Вернитесь к королю""",
 	JEAN_FREE_QUEST_NAME = """Освободите Жанну""",
 	JEAN_FREE_QUEST_SUMMARY = """Выкупить Жанну из тюрьмы гномьего короля""",
-	JEAN_FREE_QUEST_PRICE = """Дварфийский король хочет получить вместо Жана белокурую эльфийку-рабыню, иначе за нее придется заплатить 1000 золотых""",
+	JEAN_FREE_QUEST_PRICE = """Дварфийский король хочет получить вместо Жанны белокурую эльфийку-рабыню, иначе за нее придется заплатить 1000 золотых""",
 	KURO_TOME_QUEST_NAME = """Книга для Куро""",
 	KURO_TOME_QUEST_SUMMARY = """Помогите Куро получить доступ к библиотеке Алирона""",
 	KURO_TOME_QUEST_LIBRARY = """Посетите гильдию магов""",
 	KURO_TOME_QUEST_MONEY = """Принесите 500 золотых Майре в гильдию магов""",
 	KURO_TOME_QUEST_CAPITAL = """Найдите виски сорта 'Позолоченная хватка' в гномьей столице""",
 	KURO_TOME_QUEST_CARRIAGE = """Исследуйте последнее известное местонахождение повозки с виски.""",
-	KURO_TOME_QUEST_BOTTLE = """Посетите гномью столицу""",
-	KURO_TOME_QUEST_BACK = """Принесите виски Майре в гильдию магов""",
+	KURO_TOME_QUEST_BOTTLE = """Посетите гномью столицу",
+	KURO_TOME_QUEST_BACK = """Bring whisky to Myr of Mages guild""", # MISSING TRANSLATION
+	KURO_TOME_QUEST_BACK = "Принесите виски Майре в гильдию магов""",
 	KURO_TOME_QUEST_TALK = """Поговорите с Куро""",
 	LIRA_LOST_QUEST_NAME = """Потерявшаяся Лира""",
 	LIRA_LOST_QUEST_SUMMARY = """Помогите Лире выбраться из трясины""",
 	LIRA_LOST_QUEST_CAPITAL = """Доберитесь до эльфийской столицы""",
-	KURO_ERRAND_QUEST_NAME = """Kuro's minor errand""", # MISSING TRANSLATION
-	KURO_ERRAND_QUEST_SUMMARY = """Follow the mysterious trail""", # MISSING TRANSLATION
-	KURO_ERRAND_QUEST_CHURCH = """Visit Ginny at her temple""", # MISSING TRANSLATION
-	KURO_ERRAND_QUEST_INVITE = """Visit Aliron's outer district, you've been invited to""", # MISSING TRANSLATION
-	KURO_ERRAND_QUEST_SEARCH = """Search through the hideout for clues about other such spots""", # MISSING TRANSLATION
-	KURO_ERRAND_QUEST_BASE = """Clear out cult's parent base""", # MISSING TRANSLATION
+	KURO_ERRAND_QUEST_NAME = "Мелкое поручение Куро",
+	KURO_ERRAND_QUEST_SUMMARY = "Идти по таинственному следу",
+	KURO_ERRAND_QUEST_CHURCH = "Посетить Джинни в храме",
+	KURO_ERRAND_QUEST_INVITE = "Посетить внешний район Алирона, вы получили приглашение",
+	KURO_ERRAND_QUEST_SEARCH = "Поищите в тайнике подсказки о других подобных местах",
+	KURO_ERRAND_QUEST_BASE = "Зачистить основную базу культа",
+
 	DIALOGUEANAINITIATELP = """Анастасия приветствует вас с застенчивым лицом. Похоже, она еще не совсем привыкла к этой новой роли.
 
 - Здравствуйте, [Master]... Как прошел день?""",
@@ -18036,10 +18074,10 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	QUEST_MOLTEN_GROUNDS_DESC = """ """,
 	QUEST_WHISKY_CRASH_TEXT = """Место повозки""",
 	QUEST_WHISKY_CRASH_DESC = """ """,
-	QUEST_CULT_HIDEOUT_TEXT = """Outer district""", # MISSING TRANSLATION
-	QUEST_CULT_HIDEOUT_DESC = """""", # MISSING TRANSLATION
-	QUEST_CULT_PARENTBASE_TEXT = """Cult's Parent Base""", # MISSING TRANSLATION
-	QUEST_CULT_PARENTBASE_DESC = """""", # MISSING TRANSLATION
+	QUEST_CULT_HIDEOUT_TEXT = "Внешний район",
+	QUEST_CULT_HIDEOUT_DESC = " ",
+	QUEST_CULT_PARENTBASE_TEXT = "Основная база культа",
+	QUEST_CULT_PARENTBASE_DESC = " ",
 	#fixed_location_options
 	
 	ALIRON1 = """Осмотреть улицы""",
@@ -18065,8 +18103,7 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	ALIRON21 = """Поиск Зефиры""",
 	ALIRON22 = """Встретиться с Кетчем""",
 	ALIRON23 = """Проверить информацию об Амелии""",
-	ALIRON_KURO_CHURCH = """Aliron Church""", # MISSING TRANSLATION
-	
+	ALIRON_KURO_CHURCH = "Церковь Алирона",
 	ELF_CAPITAL1 = """Встретиться с Жрицей""",
 	ELF_CAPITAL2 = """Найти контрабандиста""",
 	ELF_CAPITAL3 = """Найти контрабандиста""",
@@ -18173,7 +18210,7 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	QUEST_HOLLOW_PASSAGE_LOCATION = """Искать следы повстанцев""",
 	QUEST_OLD_GODS_TEMPLE_LOCATION = """Подойти""",
 	QUEST_WHISKY_CRASH_LOCATION = "Искать вокруг",
-	QUEST_CULT_HIDEOUT_LOCATION = """Search for the building""", # MISSING TRANSLATION
+	QUEST_CULT_HIDEOUT_LOCATION = "Искать нужное здание",
 	# Missing keys
 	CURRENT_PREFERRED_FOOD_CONSUMPTION = """Текущее предпочтительное потребление продуктов питания""",
 	TOOLTIP_CLOCK1 = """Продвинуть время
@@ -18762,7 +18799,7 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	LICH_AIRE_TALK4_SS = """Разблокируется во время задания Процедура отбора""",
 	XARI_ENCOUNTER8_SS = """Успешно убедить Ксари во время первой встречи""",
 	DAISY_DISCIPLINE_SS = """Разблокируется через неделю после окончания обучения Дейзи""", 
-	DAISY_BJ1_SS = """Разблокируетсяь во время обучения Дейзи""",
+	DAISY_BJ1_SS = """Разблокируется во время обучения Дейзи""",
 	DAISY_TRAINING1_SS = """Подвергнуть Дейзи суровому обучению""",
 	DAISY_PUBLIC1_SS = """Дальнейший эксперимент с Дейзи после сурового обучения""",
 	DAISY_BENT1_SS = """Спасти Дейзи, чтобы она поблагодарила вас""",
@@ -18770,7 +18807,7 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	ANASTASIA_RAPE_1_SS = """Плохая сцена конца акта Анастасии""",
 	AIRE_AMELIA1_SS = """Дать Амелии допросить Эйру о местонахождении принцессы""",
 	AMELIA_TITJOB1_SS = """Дать Амелии наградить вас после своего первого побочного задания""",
-	AMELIA_BONDAGE1_SS = """Дать Амелит вознаградить вас после второго побочного задания""",
+	AMELIA_BONDAGE1_SS = """Дать Амелии вознаградить вас после второго побочного задания""",
 	ANASTASIA_AIRE1_SS = """Награда за выполнение побочного квеста Эйры после вербовки Анастасии""",
 	AIRE_ANA1_SS = """Разблокируется после завершения \"Эйра: Доказательство силы\" квеста в диалоге Эйры""",
 	AIRE_ANA4_SS = """Разблокируется после завершения \"Эйра: Доказательство силы\" квеста в диалоге Эйры""",
@@ -18792,7 +18829,7 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	ZEPHYRA_BATH_1_SS = """Помочь Зефире в церкви""",
 	STAG_SEX_1_SS = """Разблокируется во время выполнения задания в поселении зверолюдей""",
 	ZEPHYRA_LILIA_1_SS = """Иметь Зефиру и Лилию и выполнять их квесты""",
-	AMELIA_SEX_1_SS = """Завершить побочное задание Амелии и поговорить с ней в поместе""",
+	AMELIA_SEX_1_SS = """Завершить побочное задание Амелии и поговорить с ней в поместье""",
 	ZEPHYRA_DISAPPEARANCE_SEX_1_SS = """Завершить второй побочное задание Зефиры""",
 	ZEPHYRA_DISAPPEARANCE_GUARDS_1_SS = """Подсмотреть фальшивую историю Зефиры во время ее второго побочного задания""",
 	DAISY_WEDDING_SS = """Возьмите Дейзи в жены (рабыни)""",
@@ -18807,10 +18844,10 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	LILITH_RIDE_SS = """Продвинуть историю Лилит""",
 	LILIA_WEDDING_SS = """Связать жизнь Феи навеки с своей""",
 	LILITH_WEDDING_SS = """Посвятить свою душу маленькому импу""",
-	KURO_BOOK_SS = """Progress Kuro's story""", # MISSING TRANSLATION
-	KURO_TOP_SS = """Progress Kuro's story""", # MISSING TRANSLATION
-	KURO_ZEPHYRA_SS = """Have both Kuro and Zephyra and progress their quests, grab Zephyra's tail""", # MISSING TRANSLATION
-	KURO_WEDDING_SS = """Make Kuro your lifelong partner""", # MISSING TRANSLATION
+	KURO_BOOK_SS = "Продвинуть историю Куро",
+	KURO_TOP_SS = "Продвинуть историю Куро",
+	KURO_ZEPHYRA_SS = "Иметь Куро и Зефиру, выполнить их квесты, схватить хвост Зефиры",
+	KURO_WEDDING_SS = "Сделать Куро своим пожизненным партнером",
 
 }
 
