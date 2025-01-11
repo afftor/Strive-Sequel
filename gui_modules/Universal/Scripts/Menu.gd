@@ -19,6 +19,7 @@ func _ready():
 		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
 	$VBoxContainer/quitbutton.connect("pressed", self, "quit")
 	$VBoxContainer/gallery.connect("pressed", self, "gallery")
+	$NewGamePanel/BackButton.connect("pressed", self, "open_newgame")
 	#$char_sprite.texture = images.sprites[images.sprites.keys()[randi() %images.sprites.keys().size()]]
 	#$char_sprite.texture = images.sprites[input_handler.progress_data.characters[randi()%input_handler.progress_data.characters.size()]]
 	$DemoPanel/Button.connect("pressed", self, "CloseDemoWarn")
@@ -155,11 +156,15 @@ func newgame(pressed, pressed_button):
 	gui_controller.win_btn_connections_handler(pressed, $NewGamePanel, pressed_button)
 	self.current_pressed_btn = pressed_button
 	$NewGamePanel.visible = pressed
+	open_newgame()
+
+func open_newgame():
 	$NewGamePanel/PresetContainer.visible = true
 	$NewGamePanel/RichTextLabel.visible = true
 	$NewGamePanel/SettingsLabel.visible = false
 	$NewGamePanel/ScrollContainer.visible = false
 	$NewGamePanel/Settings3.visible = false
+	$NewGamePanel/BackButton.visible = false
 	
 	input_handler.ClearContainerForced($NewGamePanel/PresetContainer/VBoxContainer)
 	for id in starting_presets.preset_data:
@@ -184,6 +189,7 @@ func select_preset(val):
 		$NewGamePanel/SettingsLabel.visible = true
 		$NewGamePanel/ScrollContainer.visible = true
 		$NewGamePanel/Settings3.visible = true
+		$NewGamePanel/BackButton.visible = true
 		return
 	
 	for nd in $NewGamePanel/PresetContainer/VBoxContainer.get_children():

@@ -472,11 +472,10 @@ __meta__ = {
 }
 
 [node name="SettingsLabel" type="Label" parent="NewGamePanel"]
-visible = false
 margin_left = 6.0
-margin_top = 93.097
+margin_top = 187.0
 margin_right = 294.0
-margin_bottom = 178.097
+margin_bottom = 234.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "NEWGAMESETTING"
@@ -562,11 +561,10 @@ size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 33 )
 
 [node name="Settings3" type="VBoxContainer" parent="NewGamePanel"]
-visible = false
 margin_left = 24.0
-margin_top = 167.0
+margin_top = 251.0
 margin_right = 280.0
-margin_bottom = 454.0
+margin_bottom = 460.0
 theme = ExtResource( 12 )
 
 [node name="label" type="Label" parent="NewGamePanel/Settings3"]
@@ -666,6 +664,20 @@ custom_styles/pressed = SubResource( 9 )
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = SubResource( 10 )
 text = "NEWGAMESTART"
+
+[node name="BackButton" type="Button" parent="NewGamePanel"]
+margin_left = 49.0
+margin_top = 106.097
+margin_right = 250.0
+margin_bottom = 169.097
+theme = ExtResource( 13 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = SubResource( 10 )
+text = "BACKTOPRESETS"
 
 [node name="Gold" type="TextureRect" parent="NewGamePanel"]
 margin_left = 407.71
