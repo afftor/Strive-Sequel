@@ -85,6 +85,8 @@ func fix_serialization():
 				print("removed dialogue: " + line)
 				selected_dialogues.erase(line)
 	
+	fix_event_duplicate("lilia_finale_1")
+	
 	while planned_mansion_events.has("ZCEvent_1"): # fixes multiple ZCEvent_1 events
 		planned_mansion_events.erase("ZCEvent_1")
 	if !seen_events.has("ZCEvent_1") && !planned_mansion_events.has("ZCEvent_1") && (completed_quests.has('cali_heirloom_quest') || completed_quests.has('cali_taming_quest')):
@@ -93,6 +95,8 @@ func fix_serialization():
 		globals.common_effects([{code = 'add_timed_event', value = "goblin_quest_0", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
 	if !seen_events.has("zephyra_lilia_1") && !timed_event_exists("zephyra_lilia_1") && completed_quests.has('zephyra_bath_quest'):
 		globals.common_effects([{code = 'add_timed_event', value = "zephyra_lilia_1", args = [{type = 'add_to_date', date = [5,10], hour = 2}]}])
+	if !timed_event_exists("lilia_finale_1") and !seen_events.has("lilia_finale_1") and completed_quests.has("sick_lilia_quest") and ResourceScripts.game_party.get_unique_slave("lilia") != null:
+		globals.common_effects([{code = 'add_timed_event', value = "lilia_finale_1", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
 	if !seen_events.has("zephyra_painting_1") && !timed_event_exists("zephyra_painting_1") && completed_quests.has('zephyra_bath_quest') && completed_quests.has('getting_lira_quest'):
 		globals.common_effects([{code = 'add_timed_event', value = "zephyra_painting_1", args = [{type = 'add_to_date', date = [2,5], hour = 1}]}])
 	#2add amelia questline here. idk how cause herbs quest can be failed - so need correct condition
@@ -199,6 +203,36 @@ func check_timed_events():
 				deleting_events.append(i)
 	for i in deleting_events:
 		stored_events.timed_events.erase(i)
+
+
+func fix_event_duplicate(code):
+	var tres = null
+	var tmp = []
+	for i in stored_events.timed_events:
+		if i.has('action'):
+			continue
+		if i.has("code") and i.code == code:
+			if tres == null:
+				tres = i
+			else:
+				var f = true
+				for req in range(i.reqs.size()):
+					var req1 = i.reqs[req]
+					var req2 = tres.reqs[req]
+					if req1.value > req2.value:
+						tmp.push_back(tres)
+						tres = i
+						f = false
+						break
+					elif req1.value < req2.value:
+						tmp.push_back(i)
+						f = false
+						break
+				if f:
+					tmp.push_back(i)
+	for ev in tmp:
+		stored_events.timed_events.erase(ev)
+
 
 func timed_event_exists(event):
 	for i in stored_events.timed_events:
