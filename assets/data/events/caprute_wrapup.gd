@@ -139,7 +139,7 @@ var data = {
 	},
 	
 	guilds_meeting_8 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan', character2 = 'amelia',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'duncan', character2 = 'amelia',
 		text = [{text = "PRE_ANASTASIA_EXECUTION_21", reqs = []}],
 		options = [ {
 			code = 'guilds_meeting_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'

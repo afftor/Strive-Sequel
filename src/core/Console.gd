@@ -10,6 +10,7 @@ func _ready():
 		log_alert.set_alert_node(self)
 		$log_alert_panel.show()
 		$log_alert_panel/CheckBox.connect("toggled", self, "on_hide_errors_toggled")
+		$log_alert_panel/CheckBox.pressed = input_handler.globalsettings.stop_log_alert
 		$log_alert_panel/close.connect("pressed", self, "close")
 
 func _input(event):

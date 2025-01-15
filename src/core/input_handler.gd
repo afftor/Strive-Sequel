@@ -201,6 +201,7 @@ var globalsettings = {
 	
 	generate_portraits = true,
 	
+	stop_log_alert = false
 
 } setget settings_save
 

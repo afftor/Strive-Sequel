@@ -1518,9 +1518,16 @@ var data = {
 				text = "CAPACITOR_MOLTEN_START_OPT1",
 				reqs = [
 					{
-						type = "has_hero",
-						name = "zephyra",
-						check = true
+						type = "location_has_specific_slaves",
+						check = true,
+						value = 1,
+						location = 'quest_molten_grounds',
+						reqs = [
+							{
+								code = 'unique',
+								value = 'zephyra'
+							}
+						]
 					}
 				],
 				dialogue_argument = 0,
