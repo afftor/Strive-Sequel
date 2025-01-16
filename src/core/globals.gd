@@ -1925,7 +1925,10 @@ func common_effects(effects):
 						newcharacter.is_active = false
 						input_handler.active_character = newcharacter
 						input_handler.scene_characters.append(newcharacter)
-
+						if i.has('add_to_captives') and i.add_to_captives:
+							if !input_handler.active_location.has('captured_characters'):
+								input_handler.active_location.captured_characters = []
+							input_handler.active_location.captured_characters.push_back(newcharacter.id)
 						number -= 1
 			'update_guild':
 				if gui_controller.exploration_city == null:

@@ -1477,6 +1477,7 @@ var data = {
 		common_effects = [
 			{
 				code = "make_scene_character",
+				add_to_captives = true,
 				value = [
 					{
 						type = "function",
@@ -1659,6 +1660,7 @@ var data = {
 			},
 			{
 				code = "make_scene_character",
+				add_to_captives = true,
 				value = [
 					{
 						type = "function",
@@ -2267,6 +2269,7 @@ var data = {
 		common_effects = [
 			{
 				code = "make_scene_character",
+				add_to_captives = true,
 				value = [
 					{
 						type = "function",
