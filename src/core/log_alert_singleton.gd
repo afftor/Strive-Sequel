@@ -37,6 +37,9 @@ func check_log():
 	file.close()
 
 func show_string(input_str :String):
+	if alert_node == null:
+		push_error("No alert_node in log_alert")
+		return
 	alert_node.open()
 	alert_node.add_text(input_str + "\n")
 
