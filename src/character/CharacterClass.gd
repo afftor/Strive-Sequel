@@ -1676,7 +1676,10 @@ func apply_atomic_noqueue(template):
 			if skills.combat_cooldowns.has(template.skill): 
 				return
 #			input_handler.combat_node.use_skill(template.skill, self, template.target)
-			var skill = Skilldata.get_template_combat(template.skill, self)
+			var s_id = template.skill
+			if s_id is Array:
+				s_id = input_handler.random_from_array(s_id)
+			var skill = Skilldata.get_template_combat(s_id, self)
 			var tmp_handler = input_handler.combat_node.ActionQueue.add_skill_callback()
 			tmp_handler.mode = variables.SKILL_EFFECT
 			tmp_handler.setup_caster(self)
@@ -1684,7 +1687,6 @@ func apply_atomic_noqueue(template):
 			if template.has('target'):
 				tmp_handler.setup_target(template.target)
 			else:
-				tmp_handler.setup_target(self)
 				tmp_handler.setup_target(self)
 		'use_social_skill':
 			if !check_location('mansion'): return
