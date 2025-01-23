@@ -644,7 +644,7 @@ var effects = {
 			],
 		atomic = [],
 		buffs = [],#'b_power_pot'],
-		args = [{obj = 'skill', param = 'caster'}, {obj = 'skill', param = 'target'}],
+		args = [{obj = 'skill', param = 'caster', dynamic = true}, {obj = 'skill', param = 'target', dynamic = true}],
 		sub_effects = ['e_s_bishop']
 	},
 	e_s_bishop = {
@@ -844,7 +844,7 @@ var effects = {
 		trigger = [variables.TR_POSTDAMAGE],
 		req_skill = true,
 		duration = 1,
-		args = [{obj = 'parent', param = 'target'}, {obj = 'parent', param = 'caster'}],
+		args = [{obj = 'skill', param = 'target', dynamic = true}, {obj = 'skill', param = 'caster', dynamic = true}],
 		sub_effects = [],
 		modal_sub_effects = ['e_s_burn_new', 'e_s_poison_new', 'e_s_bleed_new', 'e_s_blind', Effectdata.rebuild_make_status({effect = 'e_s_stun1', duration = 1}), 'e_s_confuse', 'e_s_sleep_compartibility'],
 		buffs = []
@@ -859,7 +859,7 @@ var effects = {
 		trigger = [variables.TR_POSTDAMAGE],
 		req_skill = true,
 		duration = 2,
-		args = [{obj = 'parent', param = 'target'}, {obj = 'parent', param = 'caster'}],
+		args = [{obj = 'skill', param = 'target', dynamic = true}, {obj = 'skill', param = 'caster', dynamic = true}],
 		sub_effects = [],
 		modal_sub_effects = ['e_s_rejuvenation', 'e_s_mward2'],
 		buffs = []
