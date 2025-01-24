@@ -1,3 +1,5 @@
+0.10.2a
+Some minor translation and quest fixes
 0.10.2
 Added new error log system which should warn players right in the process of playing. Console be reopened with F2
 Revamped combat system to have a singular action sequence. Likely extremely buggy but should in future help deal with phantom enemies, missing actions and other various issues caused by multiple actions performed together.

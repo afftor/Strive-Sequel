@@ -228,7 +228,7 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	SETTINGSKIP_PROLOGUE_DESCRIPT = "Skip prologue",
 	SETTINGGF_ONLY_UPG_DESCRIPT = "Only Growth Factor can be upgraded",
 	SETTINGPERMADEATH_DESCRIPT = "Permadeath",
-	SETTINGBONUS_TASKMOD_DESCRIPT = "Crafted gear has better quqlity",
+	SETTINGBONUS_TASKMOD_DESCRIPT = "Crafted gear has better quality",
 	SETTINGBONUS_LOOT_DESCRIPT = "Looted gear has better quality",
 	SETTINGSTOP_LOAN_DESCRIPT = "Stop loan payments after election",
 	SETTINGSMALL_LOAN_DESCRIPT = "4 times lesser loan sum",
@@ -847,6 +847,8 @@ When casting a spell has 25% chance to cast it an additional time.
 	ITEMSKILLBOOK_ABYSS_GAZEDESCRIPT = "Teaches Skill: Abyss Gaze. Requirements: Mind Mastery - 6, Dark Mastery - 4",
 	ITEMSKILLBOOK_DARK_FLAME = "Magic Tome: Dark Flames",
 	ITEMSKILLBOOK_DARK_FLAMEDESCRIPT = "Teaches Skill: Dark Flames. Requirements: Fire Mastery - 5, Dark Mastery - 3",
+	ITEMSKILLBOOK_HOLY_LANCE = "Magic Tome: Holy Lance",
+	ITEMSKILLBOOK_HOLY_LANCEDESCRIPT = "Teaches Skill: Holy Lance. Requirements: Warfare 4. Light Mastery - 3.",
 	
 	GEARSWORD = "Swords",
 	GEARAXE = "Axes",
@@ -2446,7 +2448,7 @@ Physical and Sexual training actions are 25% more impactful.""",
 	TRAITHIDDENPOWERSDESCRIPT = "MATK +10%.",
 	TRAITHEALTHYDESCRIPT = "+10 Max Health.",
 	TRAITDIMDESCRIPT = "Gain 25% less EXP points.",
-	TRAITREBELDESCRIPT = "Loyatly Gain -2.",
+	TRAITREBELDESCRIPT = "Loyalty Gain -2.",
 	TRAITSLOWDESCRIPT = "Speed is reduced by 10.",
 	TRAITCLUMSYDESCRIPT = "Collection modifier -80%.",
 	TRAITINEPTDESCRIPT = "Craft modifier -80%.",
@@ -5249,7 +5251,7 @@ The demon turns to Kurdan who was quietly observing what's been going on so far.
 — Don't you agree with me, orc?""",
 	PRE_FINAL_BOSS_3 = """— Please, I'm shaking all over here.
 	
-— I presume you've come here to restore the mine's to production, and you've been unfortunate enough to find me here. However, I have an offer for you. I do not wish to fight yet so if you let me take the miners we kept as prisoners I'll leave in peace so you can do with the rest of these rebels however you want.
+— I presume you've come here to restore the mine's production, and you've been unfortunate enough to find me here. However, I have an offer for you. I do not wish to fight yet so if you let me take the miners we kept as prisoners I'll leave in peace so you can do with the rest of these rebels however you want.
 
 {color=aqua|Rebel: — Hey, you traitorous bit-}
 
@@ -7045,6 +7047,8 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	ITEMHOLY_SWORDDESCRIPT = "A holy sword obtained from the stone. Required titanic strength to obtain.",
 	ITEMHOLY_SPEAR = "Vel",
 	ITEMHOLY_SPEARDESCRIPT = "A divine spear imbued with an element of wind. Received from a forest spirit.",
+	
+	
 	SCENEWIP = "Sorry! This scene is currently WIP. ",
 	AMELIASCENEOPTION = "I wonder if you could repay me for my work...",
 	UNIQUE_CLASS = "Can't be learned normally",
@@ -13055,9 +13059,9 @@ She falls into your embrace, making you feel her body trembling in the afterglow
 — I... have been acting weird in the last few days after all. I have this feeling that I want to go somewhere I've never been before. Like it's reaching to me, but I'm scared. Can you come with me? I think this has something to do with me being so horny.""",
 	LILIA_FLIRTING_3_OPTION_1 = "It's better if we investigate it",
 	LILIA_FLIRTING_3_OPTION_2 = "Maybe once I have some time off",
-	LILIA_FINISH_DUNGEON_1 = """You enter a medium sized stone walled room dimly lit with candles. In the center of the room you can see a platform clearly arranged to drag your attention to it. A robbed person comes out of the dark to greet you.
+	LILIA_FINISH_DUNGEON_1 = """You enter a medium sized stone walled room dimly lit with candles. In the center of the room you can see a platform clearly arranged to drag your attention to it. A robed person comes out of the dark to greet you.
 
-— Ah, the destined Chosen have finally come to us. It's an honor to finally meet you.
+— Ah, the destined Chosen has finally come to us. It's an honor to finally meet you.
 
 As he removes his hood, you recognize the man that escaped the place where you found the crystal.""",
 	LILIA_FINISH_DUNGEON_1_OPTION_1 = "Who are you?",
@@ -15246,7 +15250,7 @@ Before you are able to stop her, she snatches a piece of paper from the table an
 It seems the only thing left to do now is to search through the hideout for clues...""",
 	KURO_HIDEOUT_REPLY_KEY = "You take the key from Kuro's hands and investigate it closely. As you try to find the place which could use it you fail to notice how Kuro is no longer in the room. Your attempt to find her does not bear any fruit and the only thing you are left with is to search through the hideout for clues...",
 	KUROHIDEOUTTASKNAME = "*Search the hideout*",
-	KUROHIDEOUTTASKDESCRIPT = "*Search through the hideout for clues about other such spots*",
+	KUROHIDEOUTTASKDESCRIPT = "*Complete search through the hideout for clues about other suspicious locations*",
 	KURO_HIDEOUT_SEARCH = "After throughly searching through the hideout you manage to make sense of the scribbling notes and from them you are able to deduce the location of another parent base not too far away from the city. It seems you might be able to find Kuro at it as well.",
 	KURO_HIDEOUT_MEDIUM = """You hide through the shadows as you make it deeper through the cave. Soon you realize that walls are often decorated by mystic religious symbols. Finally you come across a bigger room which seems to be lit inside. A familiar shape appears to be alone in it.
 
@@ -17554,6 +17558,8 @@ After a few minutes nothing still happened and [name] decides to move on.""",
 	ENCHSHARPNESSDESCRIPT = "Increases Attack by 10%*level and Hit Rate by 5+5*level of bladed weapons.",
 	ENCHSPELL_MASTERY = "Spell Mastery",
 	ENCHSPELL_MASTERYDESCRIPT = "Increases Spell Damage and Healing effects by 5%+5%*level. Does not stack.",
+	ENCHPENETRATOR = "Penetrator",
+	ENCHPENETRATORDESCRIPT = "Increases Armor Penetration by 5%+5%*level and Speed by 3*Level.",
 	ENCHSTUN_IMMUNE = "Stun Immunity",
 	ENCHSTUN_IMMUNEDESCRIPT = "Wearer can't be stunned.",
 	ENCHTHORNS = "Thorns",

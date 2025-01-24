@@ -2395,6 +2395,32 @@ var loot_variants_data = {
 	zephyra_bribe_2 = [
 		{code = 'defined', name = 'zephyra_underwear', min = 1, max = 1},
 	],
+	
+	ramont_axe_reward = [
+		{code = 'defined', name = 'ramont_axe', min = 1, max = 1},
+	],
+	hector_armor_reward = [
+		{code = 'defined', name = 'hector_armor', min = 1, max = 1},
+	],
+	erlen_sword_reward = [
+		{code = 'defined', name = 'erlen_sword', min = 1, max = 1},
+	],
+	ayneris_rapier_reward = [
+		{code = 'defined', name = 'ayneris_rapier', min = 1, max = 1},
+	],
+	garb_of_forest_reward = [
+		{code = 'defined', name = 'garb_of_forest', min = 1, max = 1},
+	],
+	chloe_goggles_reward = [
+		{code = 'defined', name = 'chloe_goggles', min = 1, max = 1},
+	],
+	priestess_tiara_reward = [
+		{code = 'defined', name = 'priestess_tiara', min = 1, max = 1},
+	],
+	xari_amulet_reward = [
+		{code = 'defined', name = 'xari_amulet', min = 1, max = 1},
+	],
+	
 }
 
 

@@ -662,7 +662,7 @@ func test_mode():
 		characters_pool.move_to_state(character.id)
 		character.process_training_metrics({physical = 10, magic = 5, positive = 20}) #example of testing
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
-		character.create('Elf', 'female', 'random')
+		character.create('Orc', 'female', 'random')
 		character.fill_boosters()
 		character.set_stat('height', 'petite')
 		characters_pool.move_to_state(character.id)
