@@ -501,7 +501,7 @@ var data = {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [
 				{code = 'set_completed_active_location'},
-				{code = 'progress_quest', value = 'amelia_main_quest', stage = 'stage8'},
+				{code = 'progress_quest', value = 'amelia_main_quest', stage = 'stage8'},{code = "make_loot", pool = [["amelia_dress_reward",1]]},{code = "open_loot"},
 #				{code = "update_city"}
 			]
 		}

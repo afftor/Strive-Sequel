@@ -946,7 +946,21 @@ var data = {
 					args = [
 						{code = 'create_and_equip', item = "cali_heirloom_active", parts = {}}
 						],
-			},]
+			},
+					{
+						code = "make_loot",
+						pool = [
+							[
+								"hector_armor_reward",
+								1
+							]
+						]
+					},
+					{
+						code = "open_loot"
+					}
+			
+			]
 		} ],
 	},
 	cali_grat_sex_1 = {

@@ -1,3 +1,7 @@
+0.10.2b
+Added multiple unique items as quest rewards and added more distinct display when receiving certain quest items
+Added error log to main menu which should prevent some issues and provide feedback on load
+Fixed multiple crashing and text issues
 0.10.2a
 Some minor translation and quest fixes
 0.10.2

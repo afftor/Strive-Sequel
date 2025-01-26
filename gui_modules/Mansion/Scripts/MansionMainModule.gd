@@ -597,10 +597,10 @@ func test_mode():
 		character.xp_module.base_exp = 1500
 		character.add_stat('abil_exp', 1500)
 		# character.unlock_class("ruler")
-		# character.unlock_class("watchdog")
+		# character.unlock_claiss("watchdog")
 		# character.unlock_class("director")
 		# character.unlock_class("trainer")
-		# character.unlock_class("thief")
+		# character.unlock_class("thief") 
 		# character.unlock_class("engineer")
 		# character.unlock_class("scholar")
 		# character.travel.location = 'L4'
@@ -813,7 +813,7 @@ func test_mode():
 			ResourceScripts.game_res.materials[i] = 1899
 		globals.AddItemToInventory(globals.CreateGearItem("anastasia_bracelet", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("daisy_dress", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("daisy_dress_lewd", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("service_suit", {}))
@@ -932,7 +932,7 @@ func test_mode():
 		ResourceScripts.game_progress.decisions.append("bracelet_found")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
-#		input_handler.interactive_message('unlock_infinite_dungeon', '', {})
+#		input_handler.interactive_message('white_stag_encounter_12', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)

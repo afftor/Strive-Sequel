@@ -247,7 +247,7 @@ var data = {
 			code = 'white_stag_encounter_14', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
 			bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'beastkin_capital', code = 'beastkin_capital', area = 'beastkin_tribe'}},
 			{code = 'remove_quest_location', value = 'quest_white_stag_location'}, 
-			{code = 'open_location', location = "beastkin_capital", area = "beastkin_tribe"}]
+			{code = 'open_location', location = "beastkin_capital", area = "beastkin_tribe"}, {code = "make_loot", pool = [["garb_of_forest_reward",1]]},{code = "open_loot"},]
 			
 		} ]
 	},
@@ -946,7 +946,7 @@ var data = {
 		scene_type = "story_scene",
 		save_scene_to_gallery = true,
 		common_effects = [ {code = 'play_sound', value = 'doorsmash'} ,
-			{code = 'screen_shake', strength = 3, length = 0.3},{code = 'add_item', item = 'sacred_bowl', number = 1}],
+			{code = 'screen_shake', strength = 3, length = 0.3}],
 		text = [{text = 'CEREMONY_2', reqs = []},],
 		options = [ {
 			code = 'ceremony_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', 
@@ -1037,14 +1037,18 @@ var data = {
 			{code = 'add_master_points', value = 1},
 			{code = 'add_timed_event', value = "act3_intro",
 				args = [{type = 'add_to_date', date = [7,8], hour = 1}]},
-			{code = 'update_city'}]
+			{code = 'update_city'},
+			{code = "make_loot", pool = [["erlen_sword_reward",1]]},{code = "open_loot"}]
 		}, {
 			code = 'close', text = "CEREMONY_HELEVIEL_4_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue', 
 			bonus_effects = [{code = 'complete_quest', value = 'getting_lira_quest'}, 
 			{code = 'add_master_points', value = 1},
 			{code = 'add_timed_event', value = "act3_intro",
 				args = [{type = 'add_to_date', date = [7,8], hour = 1}]},
-			{code = 'update_city'}]
+			{code = 'update_city'},
+			{code = "make_loot", pool = [["erlen_sword_reward",1]]},{code = "open_loot"}
+			
+			]
 		}, ]
 	},
 	
@@ -1112,7 +1116,8 @@ var data = {
 			{code = 'add_master_points', value = 1},
 			{code = 'add_timed_event', value = "act3_intro",
 				args = [{type = 'add_to_date', date = [7,8], hour = 1}]},
-			{code = 'update_city'}]
+			{code = 'update_city'},
+			{code = "make_loot", pool = [["priestess_tiara_reward",1]]},{code = "open_loot"}]
 		}, ]
 	},
 	

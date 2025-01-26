@@ -6877,6 +6877,24 @@ ANASTASIA_DECLARATION_4MC = """当阿纳斯塔西娅大声朗读演讲的其余�
 	ITEMHOLY_SWORDDESCRIPT = "从石头中获得的圣剑。需要巨大的力量才能获得。",
 	ITEMHOLY_SPEAR = "疾风",
 	ITEMHOLY_SPEARDESCRIPT = "一支充满风元素的神矛。来自森林精灵。",
+	ITEMRAMONT_AXE = """Ramont's Axe""", # MISSING TRANSLATION
+	ITEMRAMONT_AXEDESCRIPT = """A large battle axe carried by Ramont. Its size makes it somewhat cumbersome.""", # MISSING TRANSLATION
+	ITEMERLEN_SWORD = """Erlen's Sword""", # MISSING TRANSLATION
+	ITEMERLEN_SWORDDESCRIPT = """A large elven sword usually wielded by a military captain.""", # MISSING TRANSLATION
+	ITEMAYNERIS_RAPIER = """Ayneris' Rapier""", # MISSING TRANSLATION
+	ITEMAYNERIS_RAPIERDESCRIPT = """An elven made rapier once belonging to a noble but unfortunate maiden.""", # MISSING TRANSLATION
+	ITEMHECTOR_ARMOR = """Hector's Breastplate""", # MISSING TRANSLATION
+	ITEMHECTOR_ARMORDESCRIPT = """An armor piece of a wealthy noble.""", # MISSING TRANSLATION
+	ITEMGARB_OF_FOREST = """Garb of the Forest""", # MISSING TRANSLATION
+	ITEMGARB_OF_FORESTDESCRIPT = """A medium leather armor which does not seem to be made by either men or elves. It gives an ancient feeling to it.""", # MISSING TRANSLATION
+	ITEMCHLOE_GOGGLES = """Chloe's Goggles""", # MISSING TRANSLATION
+	ITEMCHLOE_GOGGLESDESCRIPT = """A pair of gnome goggles suited for inventors and scientists.""", # MISSING TRANSLATION
+	ITEMPRIESTESS_TIARA = """Prestess' Tiara""", # MISSING TRANSLATION
+	ITEMPRIESTESS_TIARADESCRIPT = """A ritual elven headpiece of the head priestess.""", # MISSING TRANSLATION
+	ITEMXARI_AMULET = """Xari's Amulet""", # MISSING TRANSLATION
+	ITEMXARI_AMULETDESCRIPT = """Personal work of Xari gifted to you for your help. It shines with imbued power of its maker.""", # MISSING TRANSLATION
+	ITEMAMELIA_DRESS = """Amelia's servant Dress""", # MISSING TRANSLATION
+	ITEMAMELIA_DRESSDESCRIPT = """Old dress beloning to one of Servant's leaders. Its exceptional craftsmanwork does not show any sign of weariness.""", # MISSING TRANSLATION
 	
 	SCENEWIP = "对不起！此场景当前为WIP状态。 ",
 
@@ -8514,6 +8532,7 @@ Zephyra leaves to her room before you get a chance to react. It seems she will t
 	LEON_VISIT_START = """你进入酋长的小屋，但莱昂不见了。你决定找到萨夫拉，看看他去了哪里。""",
 	LEON_VISIT_1_1 = """— 莱昂失踪了？那不像他。我从昨天晚上就没见过他，但也许你应该四处打听一下。""",
 	LEON_VISIT_1_2 = """你应该去找莱昂，因为他好像失踪了。""",
+	RITUAL_ASK_AROUND = """You ask a few watchmen if they've seen Leon, and one of them says that he saw Leon leave slightly before the sunrise. After learning the direction he supposedly went to, you mark the location on your map.""", # MISSING TRANSLATION
 	ASK_AROUND = """你问几个值班人员是否见过莱昂，其中一人说他看到莱昂在日出前离开。在知道他应该去的方向后，你在地图上标记位置。""",
 	LEON_FIGHT_1 = """当你在该地区搜索时，你发现一些新的踪迹。喊出一声后，你发现前方有一些动静。当你靠近灌木丛时，莱昂跳到你身上，就好像你是他的猎物一样。事发突然，你几乎没能用武器挡住他的攻击。""",
 	LEON_FIGHT_1_OPTION_1 = "*大喊*",

@@ -7688,6 +7688,24 @@ AFTER_ELECTION_PRINCESS_MINDBREAK_7 = """Вы чувствуете, как де�
 	ITEMHOLY_SWORDDESCRIPT = """Священный меч, полученный из камня. Для получения требуется титаническая сила""",
 	ITEMHOLY_SPEAR = """Вел""",
 	ITEMHOLY_SPEARDESCRIPT = """Божественное копье, пропитанное элементом ветра. Получено от лесного духа""",
+	ITEMRAMONT_AXE = """Ramont's Axe""", # MISSING TRANSLATION
+	ITEMRAMONT_AXEDESCRIPT = """A large battle axe carried by Ramont. Its size makes it somewhat cumbersome.""", # MISSING TRANSLATION
+	ITEMERLEN_SWORD = """Erlen's Sword""", # MISSING TRANSLATION
+	ITEMERLEN_SWORDDESCRIPT = """A large elven sword usually wielded by a military captain.""", # MISSING TRANSLATION
+	ITEMAYNERIS_RAPIER = """Ayneris' Rapier""", # MISSING TRANSLATION
+	ITEMAYNERIS_RAPIERDESCRIPT = """An elven made rapier once belonging to a noble but unfortunate maiden.""", # MISSING TRANSLATION
+	ITEMHECTOR_ARMOR = """Hector's Breastplate""", # MISSING TRANSLATION
+	ITEMHECTOR_ARMORDESCRIPT = """An armor piece of a wealthy noble.""", # MISSING TRANSLATION
+	ITEMGARB_OF_FOREST = """Garb of the Forest""", # MISSING TRANSLATION
+	ITEMGARB_OF_FORESTDESCRIPT = """A medium leather armor which does not seem to be made by either men or elves. It gives an ancient feeling to it.""", # MISSING TRANSLATION
+	ITEMCHLOE_GOGGLES = """Chloe's Goggles""", # MISSING TRANSLATION
+	ITEMCHLOE_GOGGLESDESCRIPT = """A pair of gnome goggles suited for inventors and scientists.""", # MISSING TRANSLATION
+	ITEMPRIESTESS_TIARA = """Prestess' Tiara""", # MISSING TRANSLATION
+	ITEMPRIESTESS_TIARADESCRIPT = """A ritual elven headpiece of the head priestess.""", # MISSING TRANSLATION
+	ITEMXARI_AMULET = """Xari's Amulet""", # MISSING TRANSLATION
+	ITEMXARI_AMULETDESCRIPT = """Personal work of Xari gifted to you for your help. It shines with imbued power of its maker.""", # MISSING TRANSLATION
+	ITEMAMELIA_DRESS = """Amelia's servant Dress""", # MISSING TRANSLATION
+	ITEMAMELIA_DRESSDESCRIPT = """Old dress beloning to one of Servant's leaders. Its exceptional craftsmanwork does not show any sign of weariness.""", # MISSING TRANSLATION
 	
 	SCENEWIP = """Извините! Эта сцена находится в стадии разработки.""",
 
@@ -9332,6 +9350,7 @@ AFTER_RITUAL_GOOD_2_1_2 = """{color=aqua|Савра: - Нет, все в пор�
 	LEON_VISIT_START = """Вы входите в хижину вождя, но Леона нигде нет. Вы решаете найти Савру, чтобы выяснить, куда он делся.""",
 	LEON_VISIT_1_1 = """- Леон пропал? Это на него не похоже. Я не видела его со вчерашнего вечера, но, возможно, вам стоит поспрашивать. """,
 	LEON_VISIT_1_2 = """Вам следует поискать Леона, похоже, он пропал.""",
+	RITUAL_ASK_AROUND = """You ask a few watchmen if they've seen Leon, and one of them says that he saw Leon leave slightly before the sunrise. After learning the direction he supposedly went to, you mark the location on your map.""", # MISSING TRANSLATION
 	ASK_AROUND = """Вы спрашиваете нескольких сторожей, не видели ли они Леона, и один из них говорит, что видел, как Леон уходил чуть раньше восхода солнца. Узнав, в каком направлении он предположительно ушел, вы отмечаете это место на своей карте.""",
 	LEON_FIGHT_1 = """Прочесывая местность, вы натыкаетесь на свежие следы. После оклика вы обнаруживаете какое-то движение прямо перед собой. Когда вы приближаетесь к кустам, Леон прыгает на вас, как на добычу. В мгновение ока вы едва успеваете блокировать его атаку своим оружием.""",
 	LEON_FIGHT_1_OPTION_1 = """*Крикнуть на него*""",

@@ -1905,7 +1905,7 @@ var enemies = {
 		resists = {air = 50},
 		status_resists = {stun = 100, freeze = 100},
 		race = 'beast',
-		loot = 'bandit_loot',
+		loot = 'white_stag_loot',
 		icon = "res://assets/images/enemies/white_stag.png",
 		body = null,
 		skills = ['attack'],
@@ -2388,6 +2388,15 @@ var loot_variants_data = {
 	],
 	
 	
+	hold_sword_reward = [
+		{code = 'defined', name = 'holy_sword', min = 1, max = 1},
+	],
+	hold_spear_reward = [
+		{code = 'defined', name = 'holy_spear', min = 1, max = 1},
+	],
+	sacred_scales_reward = [
+		{code = 'defined', name = 'sacred_scales', min = 1, max = 1},
+	],
 	
 	zephyra_bribe_1 = [
 		{code = 'gold', min = 500, max = 500},
@@ -2404,6 +2413,7 @@ var loot_variants_data = {
 	],
 	erlen_sword_reward = [
 		{code = 'defined', name = 'erlen_sword', min = 1, max = 1},
+		{code = 'defined', name = 'sacred_bowl', min = 1, max = 1},
 	],
 	ayneris_rapier_reward = [
 		{code = 'defined', name = 'ayneris_rapier', min = 1, max = 1},
@@ -2416,9 +2426,16 @@ var loot_variants_data = {
 	],
 	priestess_tiara_reward = [
 		{code = 'defined', name = 'priestess_tiara', min = 1, max = 1},
+		{code = 'defined', name = 'sacred_bowl', min = 1, max = 1},
 	],
 	xari_amulet_reward = [
 		{code = 'defined', name = 'xari_amulet', min = 1, max = 1},
+	],
+	amelia_dress_reward = [
+		{code = 'defined', name = 'amelia_dress', min = 1, max = 1},
+	],
+	zephyra_brush_reward = [
+		{code = 'defined', name = 'zephyra_brush', min = 1, max = 1},
 	],
 	
 }
@@ -2482,6 +2499,7 @@ var loottables = {
 	anthropoid_loot = [['crystalized_ether', 0.5, 2]],
 	magma_beast_loot = [['lizard_skin', 0.8, 5], ['obsidian', 0.8, 6], ['fire_ruby', 0.2, 1], ['lifegem', 0.5, 2]],
 	erebus_stone_loot = [['obsidian', 0.8, 5],['ice_crystal', 0.05, 1], ['fire_ruby', 0.05, 1], ['crystalized_ether', 0.05, 1], ['earth_shard', 0.3, 1], ['energygem',0.5, 1]],
+	white_stag_loot = [['energyshard', 0.7]],
 }
 
 

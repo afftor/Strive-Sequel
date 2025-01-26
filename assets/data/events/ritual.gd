@@ -1469,7 +1469,7 @@ var data = {
 			}
 		]
 	},
-	ask_around = {
+	ritual_ask_around = {
 		image = null,
 		tags = [
 			"dialogue_scene",
@@ -1480,7 +1480,7 @@ var data = {
 		],
 		text = [
 			{
-				text = "ASK_AROUND",
+				text = "RITUAL_ASK_AROUND",
 				reqs = [
 
 				]
