@@ -2387,8 +2387,7 @@ var loot_variants_data = {
 		{code = 'defined', name = 'mithril', min = 10, max = 10},
 	],
 	
-	
-	hold_sword_reward = [
+	holy_sword_reward = [
 		{code = 'defined', name = 'holy_sword', min = 1, max = 1},
 	],
 	hold_spear_reward = [
