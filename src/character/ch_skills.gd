@@ -263,9 +263,12 @@ func use_social_skill(s_code, target, item):
 	var targ_cast = [parent.get_ref()]
 	var targ_all = []
 	for h_id in ResourceScripts.game_party.characters:
-		if parent.get_ref().id == h_id || target != null and target.id == h_id: continue
-		if ResourceScripts.game_party.characters[h_id].get_work() == 'travel':continue
-		if !parent.get_ref().same_location_with(ResourceScripts.game_party.characters[h_id]): continue
+		if parent.get_ref().id == h_id or (target != null and target.id == h_id): 
+			continue
+		if ResourceScripts.game_party.characters[h_id].get_work() == 'travel':
+			continue
+		if !parent.get_ref().same_location_with(ResourceScripts.game_party.characters[h_id]):
+			continue
 		targ_all.push_back(ResourceScripts.game_party.characters[h_id])
 	#create s_skill and process triggers
 	var s_skill = ResourceScripts.scriptdict.class_sskill.new()
@@ -296,7 +299,8 @@ func use_social_skill(s_code, target, item):
 			'area': 
 				targ_fin = targ_all.duplicate()
 				targ_fin.push_back(parent.get_ref())
-				if target != null: targ_fin.push_back(target)
+				if target != null and target != parent.get_ref():
+					targ_fin.push_back(target)
 		if i.damagestat == 'no_stat':
 			if template.has('process_no_stat'):
 				for h in targ_fin:
