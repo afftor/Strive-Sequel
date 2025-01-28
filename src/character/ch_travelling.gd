@@ -78,14 +78,12 @@ func tick():
 			location = travel_target.location
 			globals.emit_signal("slave_arrived", parent.get_ref())
 			input_handler.PlaySound("ding")
+			parent.get_ref().remove_from_task(true)
+			input_handler.update_slave_list()
 			if location == ResourceScripts.game_world.mansion_location:
 				# parent.get_ref().return_to_task()
-				parent.get_ref().remove_from_task()
-				input_handler.update_slave_list()
 				globals.text_log_add(tr("TRAVEL_LABEL"), parent.get_ref().get_short_name() + " " + tr("RETURNED_TO_MANSION_LABEL") + ". ")
 			else:
-				parent.get_ref().remove_from_task()
-				input_handler.update_slave_list()
 #					if state.capitals.has(location):
 #						state.text_log_add("travel", get_short_name() + " arrived at location: " + state.areas[state.capitals[location].area].capital_name)
 #					else:
