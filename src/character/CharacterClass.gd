@@ -1694,6 +1694,14 @@ func apply_atomic_noqueue(template):
 			skills.prepared_act.push_back(template.skill)
 #		'copy_skill':
 #			input_handler.combat_node.set_copy_skill()
+		'end_turn':
+			if input_handler.combat_node == null: 
+				return
+			input_handler.combat_node.ActionQueue.add_end_turn()
+		'transform_into':
+			if input_handler.combat_node == null: 
+				return
+			input_handler.combat_node.transform_unit(position, template.unit)
 		'add_counter':
 			if effects.counters.size() <= template.index + 1:
 				effects.counters.resize(template.index + 1)

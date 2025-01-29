@@ -412,6 +412,12 @@ func checkwinlose():
 	return false
 
 
+func force_newturn():
+	calculateorder()
+	newturn()
+	select_actor()
+
+
 func select_actor():
 	if !ActionQueue.is_empty():
 		if !ActionQueue.is_active:
@@ -815,6 +821,51 @@ func FighterPress(pos):
 	use_skill(activeaction, activecharacter, get_char_by_pos(pos))
 
 
+func transform_unit(position, id):
+	var combatgroup = 'enemy'
+	if position < 7:
+		print('warning - transforming player character, may be error')
+		combatgroup = 'ally'
+	var ch_id = battlefield[position]
+	if ch_id == null:
+		print('error - transforming wrong position')
+		return
+	
+	var tchar = characters_pool.get_char_by_id(ch_id)
+	tchar.displaynode.name = 'temp'
+	tchar.displaynode.queue_free()
+	tchar.displaynode = null
+	tchar.is_active = false
+	battlefield[position] = null
+	if tchar.combatgroup == 'enemy':
+		enemygroup.erase(position)
+	else:
+		playergroup.erase(position)
+	
+	tchar = ResourceScripts.scriptdict.class_slave.new("combat_transform");
+#	tchar.createfromenemy(montype);
+	match combatgroup:
+		'enemy':
+			tchar.generate_simple_fighter(id)
+			tchar.combatgroup = 'enemy'
+			enemygroup[position] = characters_pool.add_char(tchar)
+			battlefield[position] = enemygroup[position]
+		'ally':
+			tchar.generate_simple_fighter(id, false)
+			tchar.combatgroup = 'ally'
+			playergroup[position] = characters_pool.add_char(tchar)
+			battlefield[position] = playergroup[position]
+			tchar.selectedskill = tchar.get_skill_by_tag('default')
+	tchar.position = position
+	tchar.hp = tchar.get_stat("hpmax")
+	tchar.mp = tchar.get_stat("mpmax")
+	tchar.add_trait('core_trait')
+	
+	make_fighter_panel(tchar, position)
+	tchar.process_event(variables.TR_COMBAT_S)
+	ActionQueue.add_rebuildbuffs(tchar.displaynode)
+
+
 func summon(montype, limit, combatgroup): #reworked
 	if summons.size() >= limit: return
 	#find empty slot in group
@@ -884,7 +935,9 @@ func summon(montype, limit, combatgroup): #reworked
 	tchar.mp = tchar.get_stat("mpmax")
 	tchar.add_trait('core_trait')
 	
-	make_fighter_panel(tchar, sum_pos);
+	make_fighter_panel(tchar, sum_pos)
+	tchar.process_event(variables.TR_COMBAT_S)
+	ActionQueue.add_rebuildbuffs(tchar.displaynode)
 
 
 

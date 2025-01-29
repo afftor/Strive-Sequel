@@ -15,6 +15,7 @@ var cashed_handlers = []
 const end_combat_handler = preload("res://src/combat/end_combat_handler.gd")
 const start_combat_handler = preload("res://src/combat/start_combat_handler.gd")
 const end_action_handler = preload("res://src/combat/end_action_handler.gd")
+const end_turn_handler = preload("res://src/combat/end_turn_handler.gd")
 const atomic_handler = preload("res://src/combat/atomic_effect_handler.gd")
 const animation_handler = preload("res://src/combat/animation_handler.gd")
 const skill_iteration_handler = preload("res://src/combat/combat_skill_iteration_handler.gd")
@@ -132,10 +133,23 @@ func add_end_combat(value):
 	add_handler_tail(handler)
 
 
+func add_end_turn():
+	if !is_empty():
+		var tmp = main_queue[tail - 1]
+		if tmp is end_combat_handler or tmp is end_turn_handler:
+			return
+	var template = {code = 'end_turn'}
+	var handler = end_turn_handler.new()
+	handler.template = template.duplicate()
+	handler.combatnode = combatnode
+	handler.queuenode = self
+	add_handler_tail(handler)
+
+
 func add_end_action(character, not_eot = false):
 	if !is_empty():
 		var tmp = main_queue[tail - 1]
-		if tmp is end_action_handler or tmp is end_combat_handler:
+		if tmp is end_action_handler or tmp is end_combat_handler or tmp is end_turn_handler:
 			return
 	var template = {code = 'end_action', person = character, not_eot = not_eot}
 	var handler = end_action_handler.new()
@@ -208,7 +222,7 @@ func add_skill_callback(add_to_tail = false):
 	handler.queuenode = self
 	if add_to_tail:
 		var tmp = main_queue[tail - 1]
-		if !(tmp is end_action_handler or tmp is end_combat_handler):
+		if !(tmp is end_action_handler or tmp is end_combat_handler or tmp is end_turn_handler):
 			add_handler_tail(handler)
 	else:
 		add_handler_head(handler)
