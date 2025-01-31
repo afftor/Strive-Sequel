@@ -2694,22 +2694,28 @@ func rebuild_template_globals(args):
 		sub_effects = [],
 		args = [{obj = 'parent', param = 'caster'}, {obj = 'parent', param = 'target'}]
 	}
+	var targetcondition = {type = 'target', value = []}
 	if args.has('trigger'): res.trigger.push_back(args.trigger) #for simplicity only one trigger type can be passed
 	else: res.trigger.push_back(variables.TR_POSTDAMAGE)
 
 	if args.has('res_condition'): res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', args.res_condition]})
 	else: res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]})
-
+	
+	if args.has('target_status'):
+		var tmp = targetcondition.duplicate(true)
+		tmp.value.push_back({code = 'has_status', check = true, status = args.target_status})
+		res.conditions.push_back(tmp)
+	
 	if args.has('checkres'):
 		res.conditions.push_back({type = 'checkres', value = args.chance, resist = args.checkres})
 	elif args.has('chance'):
 		res.conditions.push_back({type = 'random', value = args.chance})
-
+	
 	if args.has('push_value'):
 		res.args.push_back({obj = 'parent', param = 'process_value'})
-
+	
 	res.sub_effects.push_back(args.effect)
-
+	
 	return res
 
 
@@ -2960,3 +2966,27 @@ func rebuild_make_status(args):
 		atomic.chance = 1.0
 	template.atomic.push_back(atomic)
 	return template
+
+
+func rebuild_autocast(args):
+	var template = {
+		type = 'trigger',
+		trigger = [],
+		req_skill = false,
+		conditions = [],
+		args = [],
+		sub_effects = []
+		}
+	var oneshot = {
+		type = 'oneshot',
+		target = 'owner',
+		args = [{obj = 'app_obj'}],
+		atomic = [],
+		}
+	var atomic = {type = 'use_combat_skill', skill = '', target = ['parent_args', 0]}
+	atomic.skill = args.skill
+	oneshot.atomic.push_back(atomic)
+	template.trigger = args.trigger.duplicate()
+	template.sub_effects.push_back(oneshot)
+	return template
+	

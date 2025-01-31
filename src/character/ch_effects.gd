@@ -175,6 +175,9 @@ func make_status_effect(template):
 
 func apply_effect(eff_id):
 	var obj = effects_pool.get_effect_by_id(eff_id)
+	for tg in ['negative', 'debuff', 'affliction']:
+		if obj.tags.has(tg) and (parent.get_ref().has_status('d_warded') or parent.get_ref().has_status('d_warded_' + 'tg')):
+			return
 	match obj.template.type:
 		'static', 'c_static', 'dynamic':
 			if parent.get_ref().is_koed() and !obj.tags.has('on_dead'): return
@@ -189,7 +192,8 @@ func apply_effect(eff_id):
 			obj.applied_char = parent.get_ref().id
 			obj.apply()
 		'temp_s','temp_p','temp_u', 'temp_global', 'temp_toggle':
-			if parent.get_ref().is_koed() and !obj.tags.has('on_dead'): return
+			if parent.get_ref().is_koed() and !obj.tags.has('on_dead'): 
+				return
 			apply_temp_effect(eff_id)
 #		'area':
 #			if parent.is_coed(): return

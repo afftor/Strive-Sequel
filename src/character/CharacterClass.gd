@@ -821,6 +821,9 @@ func add_rare_trait():
 	#input_handler.ActivateTutorial('rares')
 
 func can_be_damaged(skill):
+	if skill.tags.has('damage'):
+		if has_status('warded') and !has_status('ward'):
+			return false
 	match skill.ability_type:
 		'skill': return !has_status('banish')
 		'spell': return !has_status('void')
@@ -1694,6 +1697,14 @@ func apply_atomic_noqueue(template):
 			skills.prepared_act.push_back(template.skill)
 #		'copy_skill':
 #			input_handler.combat_node.set_copy_skill()
+		'end_turn':
+			if input_handler.combat_node == null: 
+				return
+			input_handler.combat_node.ActionQueue.add_end_turn()
+		'transform_into':
+			if input_handler.combat_node == null: 
+				return
+			input_handler.combat_node.transform_unit(position, template.unit)
 		'add_counter':
 			if effects.counters.size() <= template.index + 1:
 				effects.counters.resize(template.index + 1)
@@ -1802,6 +1813,8 @@ func set_shield(value):
 
 func deal_damage(value, source = 'normal'):
 	if npc_reference == 'combat_global': return null
+	if has_status('warded') and !has_status('ward'):
+		return 0
 	var tmp = hp
 	if ResourceScripts.game_party.characters.has(self.id) && ResourceScripts.game_globals.invincible_player:
 		return 0

@@ -215,6 +215,38 @@ var effects = {
 		],
 		sub_effects = [],
 	},
+	e_s_lasstand_passive = {
+		type = 'static',
+		tags = ['last_stand'],
+		args = [],
+		sub_effects = [],
+		atomic = [],
+		buffs = [],
+	},
+	e_transform_test = {
+		type = 'static',
+		tags = [],
+		args = [],
+		sub_effects = [
+			{
+				type = 'trigger',
+				conditions = [{type = 'owner', value = [{code = 'stat', stat = 'hp', value = 20, operant = 'lte'}] }],
+				trigger = [variables.TR_POST_TARG],
+				req_skill = false,
+				sub_effects = [
+					{
+						type = 'oneshot',
+						target = 'owner',
+						args = [],
+						atomic = [{type = 'end_turn'}, {type = 'transform_into', unit = 'trained_dog'}]
+					}
+				],
+				buffs = []
+			},
+		],
+		atomic = [],
+		buffs = ['b_fireshield'],
+	},
 	#centipede
 	e_tr_curseatk = {
 		type = 'trigger',
