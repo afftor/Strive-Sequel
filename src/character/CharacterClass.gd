@@ -821,6 +821,9 @@ func add_rare_trait():
 	#input_handler.ActivateTutorial('rares')
 
 func can_be_damaged(skill):
+	if skill.tags.has('damage'):
+		if has_status('warded') and !has_status('ward'):
+			return false
 	match skill.ability_type:
 		'skill': return !has_status('banish')
 		'spell': return !has_status('void')
@@ -1810,6 +1813,8 @@ func set_shield(value):
 
 func deal_damage(value, source = 'normal'):
 	if npc_reference == 'combat_global': return null
+	if has_status('warded') and !has_status('ward'):
+		return 0
 	var tmp = hp
 	if ResourceScripts.game_party.characters.has(self.id) && ResourceScripts.game_globals.invincible_player:
 		return 0
