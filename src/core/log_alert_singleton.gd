@@ -42,6 +42,8 @@ func show_string(input_str :String):
 		alert_node.open()
 		alert_node.add_text(input_str + "\n")
 	else:
+		push_error("No alert_node in log_alert")
+		#In normal case (after console withdraw) cash_str shouldn't be in use, but I'm keeping it for reinsurance
 		cash_str += input_str + "\n"
 
 func set_alert_node(new_node):

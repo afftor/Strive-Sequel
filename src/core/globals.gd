@@ -97,6 +97,10 @@ func _ready():
 	if OS.has_feature('editor'):
 		update_localization_file("ru")
 		update_localization_file("cn")
+	
+	#console
+	var console = load("res://gui_modules/Console/console.tscn").instance()
+	get_tree().root.call_deferred("add_child", console)
 
 
 #not used

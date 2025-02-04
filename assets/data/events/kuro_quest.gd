@@ -1547,5 +1547,126 @@ var data = {
 				]
 			}
 		]
-	}
+	},
+	kuro_after_tome = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		character = "kuro",
+		start_dialogue_option = 9,
+		text = [
+			{
+				text = "KURO_AFTER_TOME",
+				reqs = [
+
+				],
+				previous_dialogue_option = 9
+			},
+			{
+				text = "KURO_AFTER_REPLY_BOOK",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+			{
+				text = "",
+				reqs = [
+
+				],
+				previous_dialogue_option = 2
+			},
+		],
+		options = [
+			{
+				code = "kuro_after_tome",
+				text = "KURO_AFTER_OPT_BOOK",
+				dialogue_argument = 1,
+				reqs = [
+
+				]
+			},
+			{
+				code = "kuro_after_tome2",
+				text = "KURO_AFTER_OPT_CAPABLE",
+				dialogue_argument = 9,
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			}
+		]
+	},
+	kuro_after_tome2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		character = "kuro",
+		text = [
+			{
+				text = "KURO_AFTER_TOME2",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "kuro_after_tome3",
+				text = "KURO_AFTER_OPT_UNHAPPY",
+				dialogue_argument = 9,
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			},
+			{
+				code = "kuro_after_tome",
+				text = "KURO_AFTER_OPT_ELSE",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = [
+					{
+						type = 'dialogue_seen',
+						check = false,
+						value = 'KURO_AFTER_REPLY_BOOK'
+					}
+				]
+			}
+		]
+	},
+	kuro_after_tome3 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		character = "kuro",
+		text = [
+			{
+				text = "KURO_AFTER_TOME3",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				dialogue_argument = 9,
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			}
+		]
+	},
 }

@@ -783,7 +783,7 @@ var data = {
 		],
 		options = [
 			{
-				code = "kuro_mansion_arrive",
+				code = "kuro_back_start",
 				text = "DIALOGUECONTINUE",
 				dialogue_argument = 9,
 				type = "next_dialogue",
@@ -963,7 +963,7 @@ var data = {
 		],
 		options = [
 			{
-				code = "kuro_mansion_arrive",
+				code = "kuro_back_start",
 				text = "DIALOGUECONTINUE",
 				dialogue_argument = 9,
 				type = "next_dialogue",
@@ -973,6 +973,271 @@ var data = {
 			}
 		]
 	},
+	kuro_back_start = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"blackscreen_transition_common"
+		],
+		common_effects = [
+			{
+				code = "return_to_mansion"
+			},
+			{
+				code = "remove_quest_location",
+				value = "quest_cult_parentbase"
+			},
+			{
+				code = 'affect_unique_character',
+				name = 'kuro',
+				type = 'set_availability',
+				value = true
+			}
+		],
+		character = "kuro",
+		dialogue_type = 1,
+		text = [
+			{
+				text = "KURO_BACK_START",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "kuro_back_start2",
+				text = "KURO_BACK_OPT_WHAT",
+				dialogue_argument = 9,
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			},
+			{
+				code = "kuro_back_start2",
+				text = "KURO_BACK_OPT_DESERVE",
+				dialogue_argument = 9,
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			},
+			{
+				code = "close",
+				text = "KURO_BACK_OPT_SILENT",
+				dialogue_argument = 9,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "complete_quest",
+						value = "kuro_errand_quest"
+					}
+				]
+			},
+		]
+	},
+	kuro_back_start2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		character = "kuro",
+		text = [
+			{
+				text = "KURO_BACK_START2",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "kuro_back_start3",
+				text = "DIALOGUECONTINUE",
+				dialogue_argument = 9,
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			}
+		]
+	},
+	kuro_back_start3 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		character = "kuro",
+		text = [
+			{
+				text = "KURO_BACK_START3",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "kuro_back_start4",
+				text = "DIALOGUECONTINUE",
+				dialogue_argument = 9,
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			}
+		]
+	},
+	kuro_back_start4 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		character = "kuro",
+		text = [
+			{
+				text = "KURO_BACK_START4",
+				reqs = [
+
+				],
+				previous_dialogue_option = 9
+			},
+			{
+				text = "KURO_BACK_REPLY_STRONG",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+			{
+				text = "KURO_BACK_REPLY_USEFUL",
+				reqs = [
+
+				],
+				previous_dialogue_option = 2
+			},
+			{
+				text = "KURO_BACK_REPLY_LIKE",
+				reqs = [
+
+				],
+				previous_dialogue_option = 3
+			},
+		],
+		options = [
+			{
+				code = "kuro_back_start4",
+				text = "KURO_BACK_OPT_STRONG",
+				dialogue_argument = 1,
+				reqs = [
+
+				]
+			},
+			{
+				code = "kuro_back_start4",
+				text = "KURO_BACK_OPT_USEFUL",
+				dialogue_argument = 2,
+				reqs = [
+
+				]
+			},
+			{
+				code = "kuro_back_start4",
+				text = "KURO_BACK_OPT_LIKE",
+				dialogue_argument = 3,
+				reqs = [
+
+				]
+			},
+			{
+				code = "kuro_back_end",
+				text = "KURO_BACK_OPT_ALL",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [
+					{
+						type = 'dialogue_seen',
+						check = true,
+						value = 'KURO_BACK_REPLY_STRONG'
+					},
+					{
+						type = 'dialogue_seen',
+						check = true,
+						value = 'KURO_BACK_REPLY_USEFUL'
+					},
+					{
+						type = 'dialogue_seen',
+						check = true,
+						value = 'KURO_BACK_REPLY_LIKE'
+					}
+				]
+			},
+			{
+				code = "kuro_back_end",
+				text = "KURO_BACK_OPT_NO_IDEA",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = [
+
+				]
+			},
+		]
+	},
+	kuro_back_end = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene"
+		],
+		character = "kuro",
+		text = [
+			{
+				text = "KURO_BACK_REPLY_ALL",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+			{
+				text = "KURO_BACK_REPLY_NO_IDEA",
+				reqs = [
+
+				],
+				previous_dialogue_option = 2
+			}
+		],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				dialogue_argument = 9,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "complete_quest",
+						value = "kuro_errand_quest"
+					}
+				]
+			}
+		]
+	},
+	#kuro_mansion events not in use! Obsolete. Replaced with kuro_back events.
 	kuro_mansion_arrive = {
 		reqs = [
 
