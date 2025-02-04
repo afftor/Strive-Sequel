@@ -336,34 +336,8 @@ var effects = {
 		]
 	},
 	
-	enchant_commander_1 = {
-		type = 'trigger',
-		trigger = [variables.TR_TURN_GET, variables.TR_COMBAT_S],
-		req_skill = false,
-		conditions = [],
-		args = [],
-		sub_effects = [{
-				type = 'oneshot',
-				target = 'owner',
-				args = [{obj = 'app_obj'}],
-				atomic = [{type = 'use_combat_skill', skill = 'pas_commander_1', target = ['parent_args', 0]}],
-			}
-		]
-	},
-	enchant_commander_2 = {
-		type = 'trigger',
-		trigger = [variables.TR_TURN_GET, variables.TR_COMBAT_S],
-		req_skill = false,
-		conditions = [],
-		args = [],
-		sub_effects = [{
-				type = 'oneshot',
-				target = 'owner',
-				args = [{obj = 'app_obj'}],
-				atomic = [{type = 'use_combat_skill', skill = 'pas_commander_2', target = ['parent_args', 0]}],
-			}
-		]
-	},
+	enchant_commander_1 = Effectdata.rebuild_autocast({skill = 'pas_commander_1', trigger = [variables.TR_TURN_GET, variables.TR_COMBAT_S]}),
+	enchant_commander_2 = Effectdata.rebuild_autocast({skill = 'pas_commander_2', trigger = [variables.TR_TURN_GET, variables.TR_COMBAT_S]}),
 	e_s_commander = {
 		type = 'temp_global',
 		tags = ['duration_none'],

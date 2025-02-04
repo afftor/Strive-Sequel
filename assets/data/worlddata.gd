@@ -1214,7 +1214,7 @@ var fixed_location_options = { #override serialized data
 		{
 			text = tr("BEASTKIN_CAPITAL8"), 
 			reqs = [{type = 'active_quest_stage', value = 'sword_artifact_quest', stage = 'stage9', state = true}], 
-			args = [{code = 'start_event', data = 'ask_around', args = []}]
+			args = [{code = 'start_event', data = 'ritual_ask_around', args = []}]
 		},
 		{
 			text = tr("BEASTKIN_CAPITAL9"), 

@@ -73,6 +73,14 @@ func process_event(ev):
 					'owner':
 						var obj = get_applied_obj()
 						res = res and obj.process_check(cond.value)
+					'arg': #use with caution
+						if args.size() == 0: 
+							continue
+						var obj = args[0]
+						if obj == null or !(obj is ResourceScripts.scriptdict.class_slave):
+							print('template error: arg0 is not character') 
+						else:
+							res = res and obj.process_check(cond.value)
 			if res:
 				ready = false
 				.clear_buffs()

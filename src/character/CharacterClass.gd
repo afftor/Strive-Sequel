@@ -576,8 +576,8 @@ func assign_to_task(taskcode, taskproduct):
 func assign_to_special_task(worktask):
 	xp_module.assign_to_special_task(worktask)
 
-func remove_from_task():
-	xp_module.remove_from_task()
+func remove_from_task(travel = false):
+	xp_module.remove_from_task(travel)
 
 func return_to_task():
 	xp_module.return_to_task()
@@ -821,6 +821,9 @@ func add_rare_trait():
 	#input_handler.ActivateTutorial('rares')
 
 func can_be_damaged(skill):
+	if skill.tags.has('damage'):
+		if has_status('warded') and !has_status('ward'):
+			return false
 	match skill.ability_type:
 		'skill': return !has_status('banish')
 		'spell': return !has_status('void')
@@ -1676,7 +1679,10 @@ func apply_atomic_noqueue(template):
 			if skills.combat_cooldowns.has(template.skill): 
 				return
 #			input_handler.combat_node.use_skill(template.skill, self, template.target)
-			var skill = Skilldata.get_template_combat(template.skill, self)
+			var s_id = template.skill
+			if s_id is Array:
+				s_id = input_handler.random_from_array(s_id)
+			var skill = Skilldata.get_template_combat(s_id, self)
 			var tmp_handler = input_handler.combat_node.ActionQueue.add_skill_callback()
 			tmp_handler.mode = variables.SKILL_EFFECT
 			tmp_handler.setup_caster(self)
@@ -1685,13 +1691,20 @@ func apply_atomic_noqueue(template):
 				tmp_handler.setup_target(template.target)
 			else:
 				tmp_handler.setup_target(self)
-				tmp_handler.setup_target(self)
 		'use_social_skill':
 			if !check_location('mansion'): return
 			#use_social_skill(template.value, null)
 			skills.prepared_act.push_back(template.skill)
 #		'copy_skill':
 #			input_handler.combat_node.set_copy_skill()
+		'end_turn':
+			if input_handler.combat_node == null: 
+				return
+			input_handler.combat_node.ActionQueue.add_end_turn()
+		'transform_into':
+			if input_handler.combat_node == null: 
+				return
+			input_handler.combat_node.transform_unit(position, template.unit)
 		'add_counter':
 			if effects.counters.size() <= template.index + 1:
 				effects.counters.resize(template.index + 1)
@@ -1800,6 +1813,8 @@ func set_shield(value):
 
 func deal_damage(value, source = 'normal'):
 	if npc_reference == 'combat_global': return null
+	if has_status('warded') and !has_status('ward'):
+		return 0
 	var tmp = hp
 	if ResourceScripts.game_party.characters.has(self.id) && ResourceScripts.game_globals.invincible_player:
 		return 0

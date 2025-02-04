@@ -1212,7 +1212,7 @@ var masteries = {
 		icon = 'mastery_air',
 		background = 'mastery_air',
 		maxlevel = 6,
-		passive = {evasion = 3, damage_mod_air = 0.05, critchance = 0.06},
+		passive = {evasion = 3, damage_mod_air = 0.05, critchance = 0.6},
 		level1 = {combat_skills = ["wind_blade"], explore_skills = [], traits = [], action = []},
 		level2 = {combat_skills = ["lightning"], explore_skills = [], traits = [], action = []},
 		level3 = {combat_skills = ["haste"], explore_skills = ["wind_whispers"], traits = [], action = []},

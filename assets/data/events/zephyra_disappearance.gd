@@ -994,9 +994,23 @@ var data = {
 		reqs = [], character = 'zephyra',
 		text = [{text = "ZEPHYRA_BRUSH_16_3", reqs = []},
 		],
-		common_effects = [{code = 'add_item', item = 'zephyra_brush', number = 1}],
+		common_effects = [],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [
+					{
+						code = "make_loot",
+						pool = [
+							[
+								"zephyra_brush_reward",
+								1
+							]
+						]
+					},
+					{
+						code = "open_loot"
+					}
+					],
+					 type = 'next_dialogue',
 		} ]
 	},
 	
@@ -1015,9 +1029,23 @@ var data = {
 		reqs = [], 
 		text = [{text = "ZEPHYRA_BRUSH_17", reqs = []},
 		],
-		common_effects = [{code = 'add_item', item = 'zephyra_brush', number = 1}],
+		common_effects = [],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'screen_black_transition', value = 1}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			bonus_effects = [
+					{
+						code = "make_loot",
+						pool = [
+							[
+								"zephyra_brush_reward",
+								1
+							]
+						]
+					},
+					{
+						code = "open_loot"
+					},{code = 'screen_black_transition', value = 1}
+					],
 		} ]
 	},
 	
@@ -1026,9 +1054,23 @@ var data = {
 		reqs = [], character = 'zephyra',
 		text = [{text = "ZEPHYRA_BRUSH_18", reqs = []},
 		],
-		common_effects = [{code = 'add_item', item = 'zephyra_brush', number = 1}],
+		common_effects = [],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [
+					{
+						code = "make_loot",
+						pool = [
+							[
+								"zephyra_brush_reward",
+								1
+							]
+						]
+					},
+					{
+						code = "open_loot"
+					},
+					],
+			
 		} ]
 	},
 	

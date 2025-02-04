@@ -201,7 +201,8 @@ func invoke_animations_2():
 		for j in animationdict.predamage:
 			if j.target in ['caster','target']:
 				var sfxtarget = globals.ProcessSfxTarget(j.target, caster, i)
-				queuenode.add_sfx(sfxtarget, j.code)
+				if sfxtarget != null:
+					queuenode.add_sfx(sfxtarget, j.code)
 	
 	combatnode.turns += 1
 	step += 1

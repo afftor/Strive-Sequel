@@ -369,6 +369,7 @@ var data = {
 				{code = 'progress_quest', value = 'sick_lilia_quest', stage = 'stage5'},
 				{code = 'plan_mansion_event', value = 'lilia_mansion_1'},
 				{code = 'update_location'},
+				{code = "make_loot", pool = [["xari_amulet_reward",1]]},{code = "open_loot"},
 			]
 		}, ]
 	},
@@ -445,7 +446,8 @@ var data = {
 				{code = 'progress_quest', value = 'sick_lilia_quest', stage = 'stage5'},
 				{code = 'plan_mansion_event', value = 'lilia_mansion_1'},
 				{code = 'update_location'},
-				{code = 'remove_quest_location', value = 'quest_troll_cave_location'}
+				{code = 'remove_quest_location', value = 'quest_troll_cave_location'},
+				{code = "make_loot", pool = [["xari_amulet_reward",1]]},{code = "open_loot"},
 			]
 		}, ]
 	},

@@ -470,10 +470,10 @@ var data = {
 	excalibur_quest_good = {
 		image = 'stone_sword2', tags = ['dialogue_scene'], reqs = [], 
 		text = [{text = "EXCALIBUR_QUEST_GOOD", reqs = []}], 
-		common_effects = [{code = "decision", value = "got_excalibur"}, {code = 'add_item', item = 'holy_sword', number = 1}],
+		common_effects = [{code = "decision", value = "got_excalibur"}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [ {code = 'update_city'} ]
+			bonus_effects = [ {code = 'update_city'}, {code = "make_loot", pool = [["holy_sword_reward",1]]},{code = "open_loot"} ]
 		}, ],
 	},
 	

@@ -5,6 +5,7 @@ var path
 var last_pos = 0
 var last_time = 0
 var alert_node
+var cash_str = ""
 
 func _ready():
 	if !variables.use_log_alert:
@@ -37,14 +38,19 @@ func check_log():
 	file.close()
 
 func show_string(input_str :String):
-	if alert_node == null:
+	if alert_node != null:
+		alert_node.open()
+		alert_node.add_text(input_str + "\n")
+	else:
 		push_error("No alert_node in log_alert")
-		return
-	alert_node.open()
-	alert_node.add_text(input_str + "\n")
+		#In normal case (after console withdraw) cash_str shouldn't be in use, but I'm keeping it for reinsurance
+		cash_str += input_str + "\n"
 
 func set_alert_node(new_node):
 	alert_node = new_node
+	if new_node != null and !cash_str.empty():
+		alert_node.add_text(cash_str)
+		cash_str = ""
 
 func stop_check_log():
 	input_handler.globalsettings.stop_log_alert = true

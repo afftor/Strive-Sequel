@@ -928,12 +928,7 @@ var data = {
 
 				],
 				type = "next_dialogue",
-				bonus_effects = [
-					{
-						code = "add_item",
-						item = "sacred_scales",
-						number = 1
-					}
+				bonus_effects = [{code = "make_loot", pool = [["sacred_scales_reward",1]]},{code = "open_loot"}
 				]
 			}
 		]

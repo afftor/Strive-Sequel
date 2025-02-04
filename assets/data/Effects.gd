@@ -247,6 +247,9 @@ var effect_table = {
 		buffs = [],
 		sub_effects = []
 	},
+	e_tr_sorcerer = rebuild_stat_bonus('matk', 0.35, null, 'stat_add_p'),
+	#curses and enchantments
+	e_s_nostun = rebuild_stat_bonus('resist_stun', 200),
 	# i think we need to display those statuses as buffs
 	
 	work_rule_luxury = {
@@ -329,6 +332,55 @@ var effect_table = {
 			}
 		]
 	},
+	test_recast = {
+		type = 'trigger',
+		trigger = [variables.TR_TICK],
+		req_skill = false,
+		conditions = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'owner',
+			atomic = [{type = 'use_social_skill', skill = 'test_recast'}]
+		}],
+		buffs = ['b_stun']
+	},
+	test_recast1 = {
+		type = 'temp_s',
+		target = 'receiver',
+		name = 'test',
+		buffs = ['b_freeze'],
+		stack = 0,
+		rem_event = variables.TR_TICK,
+	},
+	test_combat_start = {
+		type = 'trigger',
+		trigger = [variables.TR_COMBAT_S],
+		req_skill = false,
+		conditions = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'owner',
+			atomic = [{type = 'sfx', value = 'test_combat_start'}]
+		}],
+	},
+	test_counterattack = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST_TARGET],
+		reset = [variables.TR_TURN_GET],
+		req_skill = true,
+		conditions = [{type = 'skill', value = ['tags', 'has', 'damage']}],
+		atomic = [],
+		buffs = ['b_free_use'],#buff for indicating free counteratk
+		args = [{obj = 'skill', param = 'caster', dynamic = true}],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = [{obj = 'parent_args', param = 0, comment = 'couneratk_target'}],
+				atomic = [{type = 'use_combat_skill', skill = 'attack', target = ['parent_args', 0]}]
+			},
+		],
+	},
 #	e_tr_witcrit = {
 #		type = 'trigger',
 #		trigger = [variables.TR_CAST],
@@ -361,66 +413,6 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [{type = 'disable'}],
 		buffs = ['b_dayoff'],
-	},
-	
-	#skills
-	e_target_kill = {
-		type = 'trigger',
-		req_skill = true,
-		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'target',
-				atomic = ['a_self_kill'],
-				buffs = [],
-				sub_effects = []
-			}
-		],
-		buffs = []
-	},
-#	e_t_charm = { #not used
-#		type = 'temp_s',
-#		target = 'target',
-#		name = 'charm',
-#		tick_event = variables.TR_TICK,
-#		duration = 'parent',
-#		stack = 1,
-#		tags = ['magic', 's_dur_add'],
-#		sub_effects = [],
-#		atomic = [
-#			{type = 'stat_add_p', stat = 'lusttick', value = 0.25},
-#		],
-#		buffs = ['b_charm'],
-#	},
-	e_s_regen = {
-		type = 'temp_s',
-		target = 'target',
-		name = 'regen',
-		stack = 1,
-		tick_event = [variables.TR_TURN_F],
-		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		duration = 'parent',
-		tags = ['positive'],
-		args = [{obj = 'parent_args', param = 0}],
-		sub_effects = ['e_t_regen'],
-		atomic = [],
-		buffs = ['b_regen'], 
-	},
-	e_t_regen = {
-		type = 'trigger',
-		trigger = [variables.TR_TURN_GET],
-		req_skill = false,
-		conditions = [],
-		args = [{obj = 'parent_args', param = 0}],
-		sub_effects = [{
-				type = 'oneshot',
-				target = 'owner',
-				args = [{obj = 'parent_args', param = 0}],
-				atomic = ['a_sanctuary_heal'],
-			}
-		]
 	},
 	e_food_like = {
 		type = 'temp_s',
@@ -620,6 +612,65 @@ var effect_table = {
 				atomic = [{type = 'add_trait', trait = 'undead'}],
 				buffs = [],
 				sub_effects = []
+			}
+		]
+	},
+	#skills
+	e_target_kill = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'target',
+				atomic = ['a_self_kill'],
+				buffs = [],
+				sub_effects = []
+			}
+		],
+		buffs = []
+	},
+#	e_t_charm = { #not used
+#		type = 'temp_s',
+#		target = 'target',
+#		name = 'charm',
+#		tick_event = variables.TR_TICK,
+#		duration = 'parent',
+#		stack = 1,
+#		tags = ['magic', 's_dur_add'],
+#		sub_effects = [],
+#		atomic = [
+#			{type = 'stat_add_p', stat = 'lusttick', value = 0.25},
+#		],
+#		buffs = ['b_charm'],
+#	},
+	e_s_regen = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'regen',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'parent',
+		tags = ['positive'],
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = ['e_t_regen'],
+		atomic = [],
+		buffs = ['b_regen'], 
+	},
+	e_t_regen = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_GET],
+		req_skill = false,
+		conditions = [],
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = [{
+				type = 'oneshot',
+				target = 'owner',
+				args = [{obj = 'parent_args', param = 0}],
+				atomic = ['a_sanctuary_heal'],
 			}
 		]
 	},
@@ -838,9 +889,6 @@ var effect_table = {
 			}
 		],
 	},
-	e_tr_sorcerer = rebuild_stat_bonus('matk', 0.35, null, 'stat_add_p'),
-	#curses and enchantments
-	e_s_nostun = rebuild_stat_bonus('resist_stun', 200),
 	#statuses 
 	e_t_provoke = {
 		type = 'trigger',
@@ -2092,37 +2140,7 @@ var effect_table = {
 		],
 	},
 	
-	test_recast = {
-		type = 'trigger',
-		trigger = [variables.TR_TICK],
-		req_skill = false,
-		conditions = [],
-		sub_effects = [{
-			type = 'oneshot',
-			target = 'owner',
-			atomic = [{type = 'use_social_skill', skill = 'test_recast'}]
-		}],
-		buffs = ['b_stun']
-	},
-	test_recast1 = {
-		type = 'temp_s',
-		target = 'receiver',
-		name = 'test',
-		buffs = ['b_freeze'],
-		stack = 0,
-		rem_event = variables.TR_TICK,
-	},
-	test_combat_start = {
-		type = 'trigger',
-		trigger = [variables.TR_COMBAT_S],
-		req_skill = false,
-		conditions = [],
-		sub_effects = [{
-			type = 'oneshot',
-			target = 'owner',
-			atomic = [{type = 'sfx', value = 'test_combat_start'}]
-		}],
-	},
+	
 	
 	celena_bless = {
 		type = 'temp_s',
@@ -2253,8 +2271,6 @@ var effect_table = {
 #			mansion_only = true,
 #		}]
 #	},
-
-	
 
 	e_pregnancy = {
 		type = 'temp_u',
@@ -2678,22 +2694,28 @@ func rebuild_template_globals(args):
 		sub_effects = [],
 		args = [{obj = 'parent', param = 'caster'}, {obj = 'parent', param = 'target'}]
 	}
+	var targetcondition = {type = 'target', value = []}
 	if args.has('trigger'): res.trigger.push_back(args.trigger) #for simplicity only one trigger type can be passed
 	else: res.trigger.push_back(variables.TR_POSTDAMAGE)
 
 	if args.has('res_condition'): res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', args.res_condition]})
 	else: res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]})
-
+	
+	if args.has('target_status'):
+		var tmp = targetcondition.duplicate(true)
+		tmp.value.push_back({code = 'has_status', check = true, status = args.target_status})
+		res.conditions.push_back(tmp)
+	
 	if args.has('checkres'):
 		res.conditions.push_back({type = 'checkres', value = args.chance, resist = args.checkres})
 	elif args.has('chance'):
 		res.conditions.push_back({type = 'random', value = args.chance})
-
+	
 	if args.has('push_value'):
 		res.args.push_back({obj = 'parent', param = 'process_value'})
-
+	
 	res.sub_effects.push_back(args.effect)
-
+	
 	return res
 
 
@@ -2944,3 +2966,27 @@ func rebuild_make_status(args):
 		atomic.chance = 1.0
 	template.atomic.push_back(atomic)
 	return template
+
+
+func rebuild_autocast(args):
+	var template = {
+		type = 'trigger',
+		trigger = [],
+		req_skill = false,
+		conditions = [],
+		args = [],
+		sub_effects = []
+		}
+	var oneshot = {
+		type = 'oneshot',
+		target = 'owner',
+		args = [{obj = 'app_obj'}],
+		atomic = [],
+		}
+	var atomic = {type = 'use_combat_skill', skill = '', target = ['parent_args', 0]}
+	atomic.skill = args.skill
+	oneshot.atomic.push_back(atomic)
+	template.trigger = args.trigger.duplicate()
+	template.sub_effects.push_back(oneshot)
+	return template
+	

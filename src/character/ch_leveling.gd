@@ -625,9 +625,12 @@ func remove_from_farm(res):
 		print("error - %s is not farming %s" % [parent.get_ref().id, res])
 
 
-func remove_from_task():
+func remove_from_task(travel = false):
 	if work == 'disabled':
 		print("There is a critical error - attempting to enable character a wrong way. Please try to remember and report chain of actions that can be its cause. All saves after this may (or may not) be broken.")
+		return
+	if work == 'travel' and !travel:
+		print("There is a critical error - attempting to stop travelling a wrong way. Please try to remember and report chain of actions that can be its cause. All saves after this may (or may not) be broken.")
 		return
 	if work == 'produce':
 		for res in farming_rules:
@@ -674,10 +677,10 @@ func make_unavaliable():
 			input_handler.SystemMessage(tr(parent.get_ref().get_short_name() + " removed from quest."))
 			var quest_taken = ResourceScripts.game_world.get_quest_by_id(quest_id)
 			quest_taken.taken = false
-		remove_from_task()
-
+		
 		parent.get_ref().remove_from_travel()
 		parent.get_ref().reset_location()
+		remove_from_task()
 		is_on_quest = true
 		work = "disabled"
 		quest_time_remains = -1
@@ -693,6 +696,8 @@ func make_avaliable():
 
 
 func assign_to_quest_and_make_unavalible(quest, work_time):
+	parent.get_ref().remove_from_travel()
+	parent.get_ref().reset_location()
 	remove_from_task()
 	is_on_quest = true
 	quest_time_remains = int(work_time)

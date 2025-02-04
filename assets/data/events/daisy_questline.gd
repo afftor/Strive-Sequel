@@ -4026,6 +4026,18 @@ var data = {
 					{
 						code = "remove_quest_location",
 						value = "quest_daisy_admirer_location"
+					},
+					{
+						code = "make_loot",
+						pool = [
+							[
+								"ramont_axe_reward",
+								1
+							]
+						]
+					},
+					{
+						code = "open_loot"
 					}
 				]
 			}
@@ -4070,6 +4082,18 @@ var data = {
 					{
 						code = "decision",
 						value = "DaisyQuestlineFinished"
+					},
+					{
+						code = "make_loot",
+						pool = [
+							[
+								"ramont_axe_reward",
+								1
+							]
+						]
+					},
+					{
+						code = "open_loot"
 					}
 				]
 			}

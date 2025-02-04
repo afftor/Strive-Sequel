@@ -213,7 +213,7 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', previous_dialogue_option = 1, bonus_effects = [{code = 'money_change', operant = '+', value = 5000}, {code = 'complete_quest', value = 'goblin_quest'}, {code = 'remove_quest_location', value = 'quest_goblin_location'}]
 		}, {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', previous_dialogue_option = 2, bonus_effects = [{code = 'add_item', item = 'holy_spear', number = 1}, {code = 'complete_quest', value = 'goblin_quest'}, {code = 'remove_quest_location', value = 'quest_goblin_location'}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', previous_dialogue_option = 2, bonus_effects = [{code = "make_loot", pool = [["holy_spear_reward",1]]},{code = "open_loot"}, {code = 'complete_quest', value = 'goblin_quest'}, {code = 'remove_quest_location', value = 'quest_goblin_location'}]
 		}, { 
 			code = 'goblin_quest_sex_1', text = "GOBLIN_QUEST_15_3_OPTION_1", reqs = [], dialogue_argument = 2, type = 'next_dialogue', previous_dialogue_option = 3, change_dialogue_type = 2 
 		}, { 
