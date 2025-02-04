@@ -353,7 +353,7 @@ func enter_guild(guild):
 		$GuildBG.texture = images.get_background(guild.background)
 	if get_tree().get_root().get_node_or_null("dialogue") && ! get_tree().get_root().get_node("dialogue").is_visible():
 		unfade($GuildBG)
-	if gui_controller.is_dialogue_just_started:
+	if gui_controller.is_dialogue_just_started():
 		unfade($GuildBG)
 
 

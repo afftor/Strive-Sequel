@@ -28,10 +28,6 @@ var previous_screen #reference to the just-closed scene (Mansion, Exploration, e
 var windows_opened = [] #an array of references to opened sub-modules (MansionJournal, GameMenu, etc.)
 var window_button_connections = {} #a dictionary that contains pairs of sub-modules and corresponding buttons. A depth explanation can be found below.
 
-var is_dialogue_just_started = true #a helper member which helps to handle InteractiveMessage module rendering.
-var dialogue_window_type = 1 #holds an InteractiveMessage module type. (There are two different scenes for the that InteractiveMessageModuleAnimated.tscn and QuestDialogue.tscn)
-var dialogue_txt = '' #holding text from previous dialogue scene type in case this type needs to be changed while dialogue still not finished.
-
 signal screen_changed # You can call this if you need to force mudules update
 
 # Visibility of submodules of main scenes with a lot of submodules (Mansion, Inventory, etc.) is handled by corresponding main modules.
@@ -68,9 +64,9 @@ func revert_scenes_data():
 	previous_screen = null
 	windows_opened.clear()
 	window_button_connections.clear()
-	is_dialogue_just_started = true
-	dialogue_window_type = 1
-	dialogue_txt = ""
+	if dialogue and is_instance_valid(dialogue):
+		dialogue.dialogue_window_type = 1
+		dialogue.is_just_started = true
 	input_handler.CloseableWindowsArray.clear() #maybe obsolete, but for safety reason
 	input_handler.CurrentScene = null # the same as prev
 	input_handler.slave_list_node = null
@@ -309,3 +305,8 @@ func win_btn_connections_handler(pressed, window, button = null):
 		windows_opened.erase(window)
 	if pressed && !windows_opened.has(window):
 		windows_opened.append(window)
+
+func is_dialogue_just_started():
+	if dialogue and is_instance_valid(dialogue):
+		return dialogue.is_just_started
+	return true
