@@ -317,3 +317,7 @@ func try_planned_loc_event(loc):
 		planned_loc_events[loc].erase(rem)
 	if planned_loc_events[loc].empty():
 		planned_loc_events.erase(loc)
+
+
+func get_default_materials(): #stub
+	return 't1'

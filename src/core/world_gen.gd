@@ -108,9 +108,7 @@ func update_area_shop(area):
 								tiers.append([tier, area.material_tiers[tier]])
 							var materialtier = input_handler.weightedrandom(tiers)
 							var materialarray = []
-							for k in Items.materials_by_tiers[materialtier]:
-								if Items.materiallist[k].has('parts') && Items.materiallist[k].parts.has(i):
-									materialarray.append(k)
+							#2add tiers part
 							if materialarray.size() == 0:
 								for k in Items.materiallist.values():
 									if k.has('parts') && k.parts.has(part):
@@ -625,9 +623,9 @@ func make_quest(questcode):
 			'material':
 				reward.code = 'material'
 				reward.item = i.name[randi()%i.name.size()]
-				if reward.item in ['low','medium','high']:
-					reward.item = Items.get_materials_by_grade(reward.item)
-					reward.item = reward.item[randi()%reward.item.size()]
+				if reward.item in Items.material_tiers:
+					reward.item = Items.material_tiers[reward.item]
+					reward.item = input_handler.weightedrandom_dict(reward.item)
 				reward.value = round(rand_range(i.value[0], i.value[1]))
 			'usable':
 				reward.code = 'usable'
@@ -723,14 +721,18 @@ func make_chest_loot(chest):
 								dict.items.append(globals.CreateGearItem(tempitem, {}))
 			'material':
 				var tempdict
-				if i.grade[0] == 'location':
-					tempdict = {location.resources[randi()%location.resources.size()] : round(rand_range(i.min,i.max))}
+				if i.grade == 'location':
+					if location.resources is Array:
+						tempdict = {input_handler.random_from_array(location.resources) : round(rand_range(i.min,i.max))}
+					else:
+						tempdict = {input_handler.weightedrandom_dict(Items.material_tiers[location.resources]) : round(rand_range(i.min,i.max))}
 				else:
-					var array = []
-					for k in Items.materiallist.values():
-						if k.type != 'food' && i.grade.has(k.tier) && !k.tags.has('no_random'):
-							array.append(k.code)
-					tempdict = {array[randi()%array.size()] : round(rand_range(i.min, i.max))}
+					tempdict = {input_handler.weightedrandom_dict(Items.material_tiers[i.grade]) : round(rand_range(i.min,i.max))}
+#					var array = []
+#					for k in Items.materiallist.values():
+#						if k.type != 'food' && i.grade.has(k.tier) && !k.tags.has('no_random'):
+#							array.append(k.code)
+#					tempdict = {array[randi()%array.size()] : round(rand_range(i.min, i.max))}
 				input_handler.AddOrIncrementDict(dict.materials, tempdict)
 			'material_selected':
 				var tempdict
@@ -774,7 +776,7 @@ func make_chest_loot(chest):
 					if i.grade.has(k.tier) && k.has('geartype') && k.geartype == 'costume' && !k.tags.has('no_random'):
 						array.append(k.code)
 				while number > 0:
-					dict.items.append(globals.CreateGearItem(array[randi()%array.size()],{}))
+					dict.items.append(globals.CreateGearItem(input_handler.random_from_array(array),{}))
 					number -= 1
 			'gear':
 				var number = round(rand_range(i.min, i.max))
@@ -783,15 +785,15 @@ func make_chest_loot(chest):
 					if i.grade.has(k.tier) && k.type == 'gear' && k.itemtype in ['weapon', 'armor'] && k.geartype != 'costume' && !k.tags.has('no_random'):
 						array.append(k.code)
 				while number > 0:
-					var itemdict = {}
-					itemdict.item = array[randi()%array.size()]
-					itemdict.grade = i.grade[randi()%i.grade.size()]
+					var mat_grade = ResourceScripts.game_progress.get_default_materials()
 					if i.has('material_grade'):
-						itemdict.locationmaterials = location.resources
-						itemdict.material_grade = i.material_grade
-					var item = generate_random_gear(itemdict)
-					item = globals.CreateGearItemLoot(item.code, item.itemparts)
-
+						mat_grade = i.material_grade
+						if mat_grade is Array:
+							mat_grade = input_handler.weightedrandom(mat_grade)
+						if mat_grade == 'location':
+							mat_grade = location.resources
+					
+					var item = globals.CreateGearItemLoot(input_handler.random_from_array(array), mat_grade)
 					dict.items.append(item)
 					number -= 1
 			'weapon':
@@ -801,15 +803,15 @@ func make_chest_loot(chest):
 					if i.grade.has(k.tier) && k.type == 'gear' && k.itemtype in ['weapon'] && k.geartype != 'costume' && !k.tags.has('no_random'):
 						array.append(k.code)
 				while number > 0:
-					var itemdict = {}
-					itemdict.item = array[randi()%array.size()]
-					itemdict.grade = i.grade[randi()%i.grade.size()]
+					var mat_grade = ResourceScripts.game_progress.get_default_materials()
 					if i.has('material_grade'):
-						itemdict.locationmaterials = location.resources
-						itemdict.material_grade = i.material_grade
-					var item = generate_random_gear(itemdict)
-					item = globals.CreateGearItemLoot(item.code, item.itemparts)
-
+						mat_grade = i.material_grade
+						if mat_grade is Array:
+							mat_grade = input_handler.weightedrandom(mat_grade)
+						if mat_grade == 'location':
+							mat_grade = location.resources
+					
+					var item = globals.CreateGearItemLoot(input_handler.random_from_array(array), mat_grade)
 					dict.items.append(item)
 					number -= 1
 			'armor':
@@ -819,15 +821,15 @@ func make_chest_loot(chest):
 					if i.grade.has(k.tier) && k.type == 'gear' && k.itemtype in ['armor'] && k.geartype != 'costume' && !k.tags.has('no_random'):
 						array.append(k.code)
 				while number > 0:
-					var itemdict = {}
-					itemdict.item = array[randi()%array.size()]
-					itemdict.grade = i.grade[randi()%i.grade.size()]
+					var mat_grade = ResourceScripts.game_progress.get_default_materials()
 					if i.has('material_grade'):
-						itemdict.locationmaterials = location.resources
-						itemdict.material_grade = i.material_grade
-					var item = generate_random_gear(itemdict)
-					item = globals.CreateGearItemLoot(item.code, item.itemparts)
-
+						mat_grade = i.material_grade
+						if mat_grade is Array:
+							mat_grade = input_handler.weightedrandom(mat_grade)
+						if mat_grade == 'location':
+							mat_grade = location.resources
+					
+					var item = globals.CreateGearItemLoot(input_handler.random_from_array(array), mat_grade)
 					dict.items.append(item)
 					number -= 1
 			'gold':

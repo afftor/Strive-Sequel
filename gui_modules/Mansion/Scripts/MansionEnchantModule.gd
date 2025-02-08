@@ -43,7 +43,7 @@ func build_item_list():
 	input_handler.ClearContainer($ItemList/ItemScroll/Items, ['Button'])
 	for id in ResourceScripts.game_res.items:
 		var item = ResourceScripts.game_res.items[id]
-		if !item.tags.has('enchantable'):
+		if item.get_e_capacity_max() <= 0:
 			continue
 		if item.curse != null or !item.enchants.empty():
 			continue
