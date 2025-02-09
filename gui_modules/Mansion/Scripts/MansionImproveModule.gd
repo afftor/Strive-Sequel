@@ -44,7 +44,9 @@ func build_item_list():
 		var item = ResourceScripts.game_res.items[id]
 		if item.type != 'gear':
 			continue
-		if !item.tags.has('upgradable'):
+		if item.tags.has('recipe'):
+			continue
+		if !Items.fixed_quality_stats.has(item.itembase):
 			continue
 		if item.quality == 'legendary':
 			continue
@@ -111,7 +113,7 @@ func build_item():
 		$EnchantPanel.visible = true
 		var item = ResourceScripts.game_res.items[selected_item]
 		#setup filter
-		if item.tags.has('upgradable'):
+		if Items.fixed_quality_stats.has(item.itembase):
 			req_itembase = null
 			var tmp = item.quality
 			req_quality = Items.next_quality[tmp]

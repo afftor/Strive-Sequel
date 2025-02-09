@@ -4,11 +4,6 @@ func _init():
 	for i in partmaterials:
 		for k in partmaterials[i]:
 			materiallist[k].parts[i] = partmaterials[i][k].duplicate()
-	for i in materiallist.values():
-		if i.has('tier') && i.tier != '':
-			materials_by_tiers[i.tier].append(i.code)
-
-var materials_by_tiers = {easy = [], medium = [], hard = []}
 
 var stats = {
 	atk = tr('DAMAGE'),
@@ -47,17 +42,6 @@ var stats = {
 	mod_cook = "",
 }
 
-#func applyeffect(effect, caster, target):
-#
-#	var value = effect.value
-#
-#	if effect.has('casterreq'):
-#		if globals.evaluate(effect.casterreq) == false:
-#			return
-#	if effect.has('targetreq'):
-#		if globals.evaluate(effect.targetreq) == false:
-#			return
-#
 
 var Parts = {
 	ToolHandle = {name = tr("TOOLHANDLE"), code = 'ToolHandle', icon = load("res://assets/images/iconsitems/parts/handle.png")},
@@ -1153,9 +1137,6 @@ var materiallist = {
 
 
 var itemlist = {
-	#gear
-	#2add trait reqs for items
-	#2add proper data for enchanting
 	leather_collar = {
 		code = 'leather_collar',
 		name = "",
@@ -5059,39 +5040,26 @@ var tattoolist = {
 
 var color_presets = ['default', 'default_underwear', 'default_leather', 'default_metal']
 
-#obsolote
-#var armor_colors = { 
-#		underwear = ['default_underwear'],
-#		lacy_1 = ['default_underwear'],
-#		lacy_2 = ['default_underwear'],
-#		servant = ['default'],
-#		base_cloth = ['default'],
-#		adv_cloth = ['default'],
-#		base_leather = ['default_leather'],
-#		adv_leather = ['default_leather'],
-#		base_metal = ['default_metal'],
-#		adv_metal = ['default_metal'],
-#		weapon = ['default_metal'],
-##		chest_base_cloth = ['default'],
-##		chest_adv_cloth = ['default'],
-##		chest_base_leather = ['default'],
-##		chest_adv_leather = ['default'],
-##		chest_base_metal = ['default'],
-##		chest_adv_metal = ['default'],
-##		legs_base_cloth = ['default'],
-##		legs_adv_cloth = ['default'],
-##		legs_base_leather = ['default'],
-##		legs_adv_leather = ['default'],
-##		legs_base_metal = ['default'],
-##		legs_adv_metal = ['default'],
-#}
 
+var material_tiers = {
+	t1 = {stone = 1, wood = 1, iron = 1, leather = 1},
+}
 
-func get_materials_by_grade(grade):
-	var array = []
-	for i in materiallist.values():
-		array.append(i.code)
-	return array
+func get_materials_by_grade(grade, item_id):
+	var res = {}
+	var template = itemlist[item_id]
+	if template.has('parts'):
+		for part in template.parts:
+			var possible_res = {}
+			for mat in material_tiers[grade]:
+				if partmaterials[part].has(mat):
+					possible_res[mat] = material_tiers[grade][mat]
+			if possible_res.empty():
+				print('error in material tiers data - no mat in %s for %s' %[grade, part])
+				return({})
+			else:
+				res[part] = input_handler.weightedrandom_dict(possible_res)
+	return res
 
 
 func get_item_by_tooltype(t_type):

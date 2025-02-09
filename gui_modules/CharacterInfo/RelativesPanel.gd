@@ -55,7 +55,8 @@ func build_panel(panel, tnewdata, tchar):
 	if tchar != null:
 		panel.get_node('Icon').texture = tchar.get_icon()
 		if tchar.is_players_character: #if not sold or dead
-			panel.get_node('name').connect('pressed', self, 'change_slave', [tchar])
+			if !tchar.is_on_quest():
+				panel.get_node('name').connect('pressed', self, 'change_slave', [tchar])
 			globals.connectslavetooltip(panel.get_node('name'), tchar)
 		else:
 			globals.connecttexttooltip(panel.get_node('name'), build_tooltip_text(tnewdata))

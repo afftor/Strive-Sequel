@@ -160,6 +160,8 @@ func get_duplicate_id_if_exist(item):
 
 
 func CreateGearItem(item, parts, newname = null, quality = ""): #obsolete for modular
+	if parts is String:
+		parts = Items.get_materials_by_grade(parts, item)
 	var newitem = Item.new()
 	newitem.CreateGear(item, parts, {no_enchant = true})
 	if quality != "":
@@ -172,6 +174,8 @@ func CreateGearItem(item, parts, newname = null, quality = ""): #obsolete for mo
 
 
 func CreateGearItemQuality(item, parts, quality, no_enchant = true, newname = null): 
+	if parts is String:
+		parts = Items.get_materials_by_grade(parts, item)
 	var newitem = Item.new()
 	newitem.CreateGear(item, parts, {no_enchant = no_enchant})
 	newitem.quality = quality
@@ -181,6 +185,8 @@ func CreateGearItemQuality(item, parts, quality, no_enchant = true, newname = nu
 
 
 func CreateGearItemData(item, parts, diffdata,  newname = null): 
+	if parts is String:
+		parts = Items.get_materials_by_grade(parts, item)
 	var newitem = Item.new()
 	newitem.CreateGear(item, parts, diffdata)
 	if newname != null:
@@ -197,6 +203,9 @@ func CreateGearItemQuest(item, parts, quest, newname = null):
 			diffdata.boost = 4
 		'hard':
 			diffdata.boost = 6
+	
+	if parts is String:
+		parts = Items.get_materials_by_grade(parts, item)
 	
 	var newitem = Item.new()
 	newitem.CreateGear(item, parts, diffdata)
@@ -235,6 +244,9 @@ func CreateGearItemLoot(item, parts, newname = null):
 		diffdata.boost *= 1.5
 	diffdata.boost = int(diffdata.boost)
 	
+	if parts is String:
+		parts = Items.get_materials_by_grade(parts, item)
+	
 	var newitem = Item.new()
 	newitem.CreateGear(item, parts, diffdata)
 	if newname != null:
@@ -244,6 +256,9 @@ func CreateGearItemLoot(item, parts, newname = null):
 
 func CreateGearItemShop(item, parts, newname = null):
 	var diffdata = {boost = 0, shop = true, no_enchant = true}
+	if parts is String:
+		parts = Items.get_materials_by_grade(parts, item)
+	
 	var newitem = Item.new()
 	newitem.CreateGear(item, parts, diffdata)
 	if newname != null:

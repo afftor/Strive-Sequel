@@ -101,7 +101,7 @@ var skills = {
 			{
 				reqs = [{code = 'has_status', status = 'hide', check = true}],
 				set = {value = 3.5},
-				add = {descript = '_1'}
+#				add = {descript = '_1'}
 			}
 		]
 	},

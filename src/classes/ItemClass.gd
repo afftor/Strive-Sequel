@@ -268,7 +268,7 @@ func CreateGear(ItemName = '', dictparts = {}, diffdata = {boost = 0, prof = fal
 			name = itemtemplate.name
 		#name = itemtemplate.partmaterialname
 	
-	if tags.has('enchantable') and (!diffdata.has('no_enchant') or !diffdata.no_enchant):
+	if get_e_capacity_max() > 0 and (!diffdata.has('no_enchant') or !diffdata.no_enchant):
 		roll_enchants()
 
 
@@ -348,9 +348,6 @@ func fix_gear():
 		enchants[id] = int(enchants[id])
 	if !bonusstats.has('enchant_capacity') and template.basestats.has('enchant_capacity'):
 		bonusstats['enchant_capacity'] = template.basestats['enchant_capacity']
-	if !tags.has('enchantable') and template.tags.has('enchantable'):
-		tags.push_back('enchantable')
-	
 
 
 func substractitemcost():

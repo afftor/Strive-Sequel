@@ -620,10 +620,6 @@ func fix_main_data():
 		i.name = tr("MATERIAL" + i.code.to_upper())
 		i.descript = tr("MATERIAL" + i.code.to_upper()+"DESCRIPT")
 		i.adjective = tr("MATERIAL" + i.code.to_upper() + "ADJ")
-		#fix item tiers, to make sure mod items work properly
-		if i.has('tier') && i.tier != '':
-			if !(i.code in Items.materials_by_tiers[i.tier]):
-				Items.materials_by_tiers[i.tier].append(i.code)
 
 	#fix statdata
 	for i in statdata.statdata.values():

@@ -1577,53 +1577,11 @@ func victory():
 			count = 2
 			rewardsdict.xp += 3 * tchar.get_stat('xpreward')
 		elif tchar.tags.has('miniboss'):
-#			count = 2
+			count = 2
 			rewardsdict.xp += 2 * tchar.get_stat('xpreward')
 		else:
 			rewardsdict.xp += tchar.get_stat('xpreward')
-		for q in range(count):
-			var loot = {}
-			for item in Enemydata.loottables[tchar.get_stat('loottable')]:
-				if item[0] == 'gold':
-					if tchar.tags.has('miniboss'):
-						rewardsdict.gold += 2 * round(rand_range(item[1], item[2]))
-					else:
-						rewardsdict.gold += round(rand_range(item[1], item[2]))
-				elif Items.materiallist.has(item[0]):
-					var counter = 1
-					if item.size() > 2:
-						counter = item[2]
-					if tchar.tags.has('miniboss'):
-						counter *= 2 #not sure about this implementation but looks better than simple doubling of values
-					while counter > 0:
-						if randf() <= item[1]:
-							input_handler.AddOrIncrementDict(loot, {item[0] : 1})
-						counter -= 1
-					input_handler.AddOrIncrementDict(rewardsdict.materials, loot)
-					loot.clear()
-				elif Items.itemlist.has(item[0]):
-					var itemtemp = Items.itemlist[item[0]]
-					var counter = 1
-					if item.size() > 2:
-						counter = item[2]
-					if tchar.tags.has('miniboss'):
-						counter *= 2 #not sure about this implementation but looks better than simple doubling of values
-					while counter > 0:
-						if randf() <= item[1]:
-							if itemtemp.type == 'usable':
-								var itemfound = false
-								for k in rewardsdict.items:
-									if k.itembase == item[0]:
-										k.amount += 1
-										itemfound = true
-										break
-								if itemfound == false:
-									var newitem = globals.CreateUsableItem(item[0])
-									rewardsdict.items.append(newitem)
-							if itemtemp.type == 'gear': #not used currently
-								var newitem = globals.CreateGearItemLoot(item[0], item[3]) #item[3] for parts, mb add randomization here
-								rewardsdict.items.append(newitem)
-						counter -= 1
+		Enemydata.process_loottable(tchar.get_stat('loottable'), rewardsdict, count)
 	
 	input_handler.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
 	input_handler.ClearContainer($Rewards/ScrollContainer2/HBoxContainer)
@@ -1680,10 +1638,12 @@ func victory():
 		newnode.hide()
 		newnode.modulate.a = 0
 		newnode.show()
-		newnode.get_node("Icon").texture = input_handler.loadimage(i.icon, 'icons')
+		i.set_icon(newnode.get_node("Icon"))
+#		newnode.get_node("Icon").texture = input_handler.loadimage(i.icon, 'icons')
 		globals.AddItemToInventory(i)
 		newnode.get_node("name").text = i.name
-		globals.connectitemtooltip_v2(newnode, ResourceScripts.game_res.items[globals.get_item_id_by_code(i.itembase)])
+#		globals.connectitemtooltip_v2(newnode, ResourceScripts.game_res.items[globals.get_item_id_by_code(i.itembase)])
+		globals.connectitemtooltip_v2(newnode, i)
 		if i.amount == null || i.amount == 0:
 			newnode.get_node("amount").visible = false
 		else:
