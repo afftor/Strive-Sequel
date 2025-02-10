@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 var previousscene
 var dialogue_enemy
@@ -9,33 +9,38 @@ var previous_text = ''
 var base_text_size
 var base_text_position
 var doing_transition = false
-var wait_for = 0
+const type_trans_time_default = 0.5
+var type_trans_time = type_trans_time_default
+var next_dialogue_type = 1
+var dialogue_window_type = 1
+var is_just_started = true
 
-signal TransitionFinished
+onready var bg_T1 = $BackgroundT1
+onready var bg_T2 = $BackgroundT2
+onready var text_label_T1 = $BackgroundT1/RichTextLabel
+onready var text_label_T2 = $BackgroundT2/RichTextLabel
+var cur_text_label
+onready var opt_cont_T1 = $BackgroundT1/ScrollContainer/VBoxContainer
+onready var opt_cont_T2 = $BackgroundT2/ScrollContainer/VBoxContainer
+var cur_opt_cont
 
 func _ready():
-	if get_node_or_null("BackgroundT2/HideButton"):
-		get_node("BackgroundT2/HideButton").connect("pressed", self, "hide_dialogue")
-		get_node("ShowPanel/ShowButton").connect("pressed", self, "hide_dialogue", ["show"])
+	$BackgroundT2/BackgroundT2/HideButton.connect("pressed", self, "hide_dialogue")
+	$ShowPanel/ShowButton.connect("pressed", self, "hide_dialogue", ["show"])
 	$CharacterImage.material = load("res://assets/silouette_shader.tres").duplicate()
 	if get_node_or_null("CharacterImage2") != null:
 		$CharacterImage2.material = load("res://assets/silouette_shader.tres").duplicate()
-	base_text_size = $RichTextLabel.rect_size
-	base_text_position = $RichTextLabel.rect_position
+	base_text_size = text_label_T1.rect_size
+	base_text_position = text_label_T1.rect_position
+	cur_text_label = text_label_T1
+	cur_opt_cont = opt_cont_T1
 	#$BackgroundT2/UnhideButton.connect('pressed', self, 'hide_dialogue', ['unhide'])
 	
 
-
+#should be used only at dialogue_window_type==2
 func hide_dialogue(action = "hide"):
-	for node in self.get_children():
-		if node.get_class() == "Tween":
-			continue
-		if !node.name in ["ShowPanel", "CustomBackground", "ShowPanelBackground"]:
-			node.visible = action != "hide"
-			
-	var tnode = get_node("ShowPanel")
-	if tnode != null:
-		tnode.visible = action == "hide"
+	$BackgroundT2.visible = action != "hide"
+	$ShowPanel.visible = action == "hide"
 
 func open(scene):
 	if gui_controller.dialogue == null:
@@ -43,8 +48,10 @@ func open(scene):
 #	if get_tree().get_root().get_node_or_null("ANIMLoot") && get_tree().get_root().get_node("ANIMLoot").is_visible():
 #		get_tree().get_root().get_node("ANIMLoot").raise()
 	input_handler.PlaySound("speech")
-	if gui_controller.is_dialogue_just_started:
-		$RichTextLabel.bbcode_text = ''
+	if is_just_started:
+		cur_text_label.bbcode_text = ''
+		previous_text = ''
+		hide()
 	
 	get_tree().get_root().set_disable_input(true)
 	if scene.has("save_scene_to_gallery") && scene.save_scene_to_gallery:
@@ -55,9 +62,29 @@ func open(scene):
 		get_tree().get_root().set_disable_input(false)
 		return
 	
-	if scene.has("dialogue_type") && gui_controller.dialogue_window_type != scene.dialogue_type:
-		set_dialogue_window_type(scene)
-		return
+	if scene.has("dialogue_type"):
+		next_dialogue_type = scene.dialogue_type
+	
+	var new_text_label
+	var new_background
+	var old_background
+	var is_type_changing = (dialogue_window_type != next_dialogue_type)
+	if is_type_changing:
+		dialogue_window_type = next_dialogue_type
+		match dialogue_window_type:
+			1:
+				old_background = $BackgroundT2
+				new_text_label = text_label_T1
+				new_background = $BackgroundT1
+				cur_opt_cont = opt_cont_T1
+			2:
+				old_background = $BackgroundT1
+				new_text_label = text_label_T2
+				new_background = $BackgroundT2
+				cur_opt_cont = opt_cont_T2
+		if cur_text_label != new_text_label:#should probably always be true
+			new_text_label.bbcode_text = cur_text_label.bbcode_text
+			cur_text_label = new_text_label
 	
 	if input_handler.CurrentScreen != 'scene': previousscene = input_handler.CurrentScreen
 	input_handler.CurrentScreen = 'scene'
@@ -77,19 +104,53 @@ func open(scene):
 	if scene.has('start_dialogue_option') and previous_dialogue_option == 0:
 		previous_dialogue_option = scene.start_dialogue_option
 	
-	if wait_for != 0:
-		ResourceScripts.core_animations.OpenAnimation(self, wait_for, Tween.TRANS_EXPO, Tween.EASE_IN)
-		wait_for = 0
+	#handle transition
+	var opt_scroll = cur_opt_cont.get_parent()
+	if is_just_started:
+		cur_text_label.modulate.a = 0
+		opt_scroll.modulate.a = 0
+	else:
+		cur_text_label.modulate.a = 1
+		opt_scroll.modulate.a = 1
+	var no_screen_transition = false
+	if scene.tags.has("blackscreen_transition_common"):
+		ResourceScripts.core_animations.BlackScreenTransition(1)
+		doing_transition = true
+		yield(get_tree().create_timer(1), "timeout")
+	elif scene.tags.has("whitescreen_transition_common"):
+		ResourceScripts.core_animations.WhiteScreenTransition(1)
+		doing_transition = true
+		yield(get_tree().create_timer(1), "timeout")
+	elif scene.tags.has("blackscreen_transition_slow"):
+		ResourceScripts.core_animations.BlackScreenTransition(2)
+		doing_transition = true
+		yield(get_tree().create_timer(2), "timeout")
+	else:
+		no_screen_transition = true
+	if is_type_changing:
+		if no_screen_transition:
+			ResourceScripts.core_animations.FadeAnimation(old_background, type_trans_time)
+			try_hide_scene_backgrounds(scene, type_trans_time)
+			yield(get_tree().create_timer(type_trans_time), "timeout")
+		else:
+			try_hide_scene_backgrounds(scene, 0.0)
+		old_background.hide()
+	if !is_visible():
+		show()
+		ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
+#		yield(get_tree().create_timer(0.2), "timeout")#preparations should undergo befor Unfade
+	doing_transition = false
 	
-	handle_scene_transition_fx(scene)
-	if doing_transition:
-#		print_debug("waiting")
-		yield(self, "TransitionFinished")
-#		print_debug("finished WAIT")
-		doing_transition = false
-#	print(self.visible)
+	#prepare screen while (if) in dark
+	if is_type_changing:
+		new_background.show()
+		if no_screen_transition:
+			new_background.modulate.a = 0
+			ResourceScripts.core_animations.UnfadeAnimation(new_background, type_trans_time)
+		else:
+			new_background.modulate.a = 1
 	clear_character_images()
-	$ImagePanel.hide()
+	$BackgroundT1/ImagePanel.hide()
 	handle_scene_backgrounds(scene)
 	handle_characters_sprites(scene)
 	handle_loots(scene)
@@ -102,10 +163,9 @@ func open(scene):
 	if ResourceScripts.core_animations.BeingAnimated.has(self):
 		ResourceScripts.core_animations.BeingAnimated.erase(self)
 	hold_selection = false
-#	input_handler.print_order()
-#	get_tree().get_root().print_tree_pretty()
 	show_buttons()
-	gui_controller.is_dialogue_just_started = false
+	is_just_started = false
+	type_trans_time = type_trans_time_default
 	if get_tree().get_root().get_node_or_null("lootwindow") && get_tree().get_root().get_node("lootwindow").is_visible():
 		get_tree().get_root().get_node("lootwindow").raise()
 	if get_tree().get_root().get_node_or_null("ANIMTaskAquared") && get_tree().get_root().get_node("ANIMTaskAquared").is_visible():
@@ -116,7 +176,7 @@ func open(scene):
 
 func show_buttons():
 	get_tree().get_root().set_disable_input(true)
-	for button in $ScrollContainer/VBoxContainer.get_children():
+	for button in cur_opt_cont.get_children():
 		if button.name == "Button":
 			continue
 		ResourceScripts.core_animations.UnfadeAnimation(button, 0.3)
@@ -165,12 +225,6 @@ var stored_scene
 func dialogue_next(code, argument, args = {}):
 	hold_selection = true
 	previous_dialogue_option = argument
-	if args.has("changed_window_type"): # transfering prev option on scene change
-		match gui_controller.dialogue_window_type:
-			1:
-				input_handler.get_spec_node(input_handler.NODE_DIALOGUE).previous_dialogue_option = argument
-			2:
-				 input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2).previous_dialogue_option = argument
 	input_handler.interactive_message_follow(code, '', args)
 
 
@@ -518,11 +572,9 @@ func close(args = {}):
 	ch1 = null
 	ch2 = null
 	previous_dialogue_option = 0
-	if gui_controller.dialogue_window_type == 2:
-		previous_text = ""
-		input_handler.get_spec_node(input_handler.NODE_DIALOGUE).hide()
-		input_handler.get_spec_node(input_handler.NODE_DIALOGUE).previous_dialogue_option = 0
-		gui_controller.dialogue_window_type = 1
+	if dialogue_window_type == 2:
+#		previous_text = ""
+		dialogue_window_type = 1
 		var screen_duration = 1.0
 		if args.has('screen_duration'):
 			screen_duration = args.screen_duration
@@ -536,7 +588,7 @@ func close(args = {}):
 			ResourceScripts.core_animations.FadeAnimation(self, transition_duration, screen_duration * 0.25)
 			ResourceScripts.core_animations.BlackScreenTransition(screen_duration * 0.5)
 			yield(get_tree().create_timer(transition_duration + screen_duration * 0.25), "timeout")
-		$RichTextLabel.bbcode_text = ''
+		cur_text_label.bbcode_text = ''
 	else:
 		if !args.has("hold_scene"):
 			ResourceScripts.core_animations.FadeAnimation(self, 0.2)
@@ -549,7 +601,7 @@ func close(args = {}):
 	input_handler.CurrentScreen = previousscene
 	if args.finish_scene: input_handler.emit_signal("EventFinished")
 	input_handler.event_finished()
-	gui_controller.is_dialogue_just_started = true
+	is_just_started = true
 
 
 func cancel_skill_usage():
@@ -586,7 +638,7 @@ func create_location_recruit(args):
 	var newchar = ResourceScripts.scriptdict.class_slave.new("location_recruit")
 	input_handler.active_character = newchar
 	newchar.generate_random_character_from_data(input_handler.active_location.races)
-	$RichTextLabel.bbcode_text = newchar.translate($RichTextLabel.bbcode_text)
+	cur_text_label.bbcode_text = newchar.translate(cur_text_label.bbcode_text)
 
 func execute():
 	close()
@@ -707,68 +759,33 @@ func select_scene_variation_based_on_data(scene):
 			open(i)
 			break
 
-
-func set_dialogue_window_type(scene):
-	gui_controller.dialogue_window_type = scene.dialogue_type
-#	gui_controller.dialogue_txt = gui_controller.dialogue.get_node("RichTextLabel").bbcode_text
-	gui_controller.dialogue_txt = $RichTextLabel.bbcode_text
-	match gui_controller.dialogue_window_type:
-		1:
-			input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2).hide()
-			gui_controller.dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE)
-			input_handler.get_spec_node(input_handler.NODE_DIALOGUE).previous_dialogue_option = input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2).previous_dialogue_option
-		2:
-			input_handler.get_spec_node(input_handler.NODE_DIALOGUE).hide()
-			gui_controller.dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2)
-			input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2).previous_dialogue_option = input_handler.get_spec_node(input_handler.NODE_DIALOGUE).previous_dialogue_option
-	gui_controller.dialogue.get_node("RichTextLabel").bbcode_text = gui_controller.dialogue_txt
-	gui_controller.dialogue.open(scene)
-
-
-func handle_scene_transition_fx(scene):
-	if gui_controller.is_dialogue_just_started:
-		$RichTextLabel.modulate.a = 0
-		$ScrollContainer.modulate.a = 0
-	else:
-		$RichTextLabel.modulate.a = 1
-		$ScrollContainer.modulate.a = 1
-	if scene.tags.has("blackscreen_transition_common"):
-		ResourceScripts.core_animations.BlackScreenTransition(1)
-		doing_transition = true
-		yield(get_tree().create_timer(1), "timeout")
-	elif scene.tags.has("whitescreen_transition_common"):
-		ResourceScripts.core_animations.WhiteScreenTransition(1)
-		doing_transition = true
-		yield(get_tree().create_timer(1), "timeout")
-	elif scene.tags.has("blackscreen_transition_slow"):
-		ResourceScripts.core_animations.BlackScreenTransition(2)
-		doing_transition = true
-		yield(get_tree().create_timer(2), "timeout")
-	if self.visible == false:
-		self.visible = true
-		ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
-#		$RichTextLabel.bbcode_text = ''
-		previous_text = ''
-		yield(get_tree().create_timer(0.2), "timeout")
-	emit_signal("TransitionFinished")
-
 func clear_character_images():
 	$CharacterImage.hide()
-	if get_node_or_null("CharacterImage2") != null:
-		$CharacterImage2.hide()
+	$CharacterImage2.hide()
 
 func handle_scene_backgrounds(scene):
 	var node = $CustomBackground
 	if scene.has("custom_background"):
 		var newtexture = images.get_background(scene.custom_background)
-		if node.visible == false:
+		if !node.visible:
+			node.texture = newtexture
+			node.modulate.a = 0
 			node.show()
-			ResourceScripts.core_animations.UnfadeAnimation(node, 0.5)
-		if node.texture != newtexture:
+			ResourceScripts.core_animations.UnfadeAnimation(node, type_trans_time)
+		elif node.texture != newtexture:
 			ResourceScripts.core_animations.SmoothTextureChange(node, newtexture, 1)
-	elif !scene.has("custom_background") && gui_controller.dialogue_window_type == 1:
-		node.hide()
+	try_hide_scene_backgrounds(scene, type_trans_time)
 
+func try_hide_scene_backgrounds(scene, time):
+	var node = $CustomBackground
+	if !node.visible or node.get_meta("fading"): return
+	if !scene.has("custom_background") && dialogue_window_type == 1:
+		if time > 0:
+			ResourceScripts.core_animations.FadeAnimation(node, time)
+			node.set_meta("fading", true)
+			yield(get_tree().create_timer(time), "timeout")
+			node.set_meta("fading", false)
+		node.hide()
 
 var ch1 = null
 var ch2 = null
@@ -792,22 +809,23 @@ func handle_characters_sprites(scene):
 	#reworked with additional functional
 	var scene_char = null
 	var char_shade = false
+	var image_panel = $BackgroundT1/ImagePanel
 	
 	if !scene.has("character") and !scene.has("character2"):
-		$ImagePanel.show()
-		if self.name == "dialogue":
-			hide_long_text()
-			$CharacterImage2.hide()
+		$CharacterImage2.hide()
 		$CharacterImage.hide()
 		if scene.has('image') && scene.image != '' && scene.image != null:
-			$ImagePanel/SceneImage.texture = images.get_scene(scene.image)
+			image_panel.show()
+			image_panel.get_node("SceneImage").texture = images.get_scene(scene.image)
+			if dialogue_window_type == 1:
+				hide_long_text()
 		else:
-			$ImagePanel.hide()
-			if self.name == "dialogue":
+			image_panel.hide()
+			if dialogue_window_type == 1:
 				show_long_text()
 	else:
-		$ImagePanel.hide()
-		if self.name == "dialogue":
+		image_panel.hide()
+		if dialogue_window_type == 1:
 			show_long_text()
 
 		if scene.has("character"):
@@ -830,7 +848,7 @@ func handle_characters_sprites(scene):
 					unique_name_ch1 = ch1.left(ch1.find('_'))
 					unique_name_char = scene_char.left(scene_char.find('_'))
 				if not unique_name_char == unique_name_ch1:
-					ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, 0.5)
+					ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, type_trans_time)
 				
 				$CharacterImage.texture = images.get_sprite(scene_char)
 				if char_shade:
@@ -843,8 +861,8 @@ func handle_characters_sprites(scene):
 				$CharacterImage.show()
 			elif scene_char != null:
 				if char_shade != ch1_shade:
-					if char_shade: ResourceScripts.core_animations.ShadeAnimation($CharacterImage, 0.5)
-					else: ResourceScripts.core_animations.UnshadeAnimation($CharacterImage, 0.5)
+					if char_shade: ResourceScripts.core_animations.ShadeAnimation($CharacterImage, type_trans_time)
+					else: ResourceScripts.core_animations.UnshadeAnimation($CharacterImage, type_trans_time)
 					ch1_shade = char_shade
 				$CharacterImage.show()
 			else:
@@ -863,7 +881,7 @@ func handle_characters_sprites(scene):
 					input_handler.progress_data.characters.append(scene_char)
 					input_handler.save_progress_data(input_handler.progress_data)
 			if scene_char != null and ch2 != scene_char:
-				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2, 0.5)
+				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2, type_trans_time)
 				$CharacterImage2.texture = images.get_sprite(scene_char)
 				if char_shade:
 					$CharacterImage2.material.set_shader_param('opacity', 1.0)
@@ -875,8 +893,8 @@ func handle_characters_sprites(scene):
 				$CharacterImage2.show()
 			elif scene_char != null:
 				if char_shade != ch2_shade:
-					if char_shade: ResourceScripts.core_animations.ShadeAnimation($CharacterImage2, 0.5)
-					else: ResourceScripts.core_animations.UnshadeAnimation($CharacterImage2, 0.5)
+					if char_shade: ResourceScripts.core_animations.ShadeAnimation($CharacterImage2, type_trans_time)
+					else: ResourceScripts.core_animations.UnshadeAnimation($CharacterImage2, type_trans_time)
 					ch2_shade = char_shade
 				$CharacterImage2.show()
 			else:
@@ -942,7 +960,7 @@ func handle_characters_sprites(scene):
 				var non_body = person.statlist.statlist.body_image.replace("_body", "")
 				var image = input_handler.loadimage(images.sprites[non_body], 'shades') #needs testing, idk if this is still in use
 				if $CharacterImage.texture != image:
-					ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, 0.5)
+					ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, type_trans_time)
 				if images.sprites.has(non_body):
 					$CharacterImage.texture = image
 				else:
@@ -959,7 +977,7 @@ func handle_characters_sprites(scene):
 				var non_body = person.statlist.statlist.body_image.replace("_body", "")
 				var image = input_handler.loadimage(images.sprites[non_body], 'shades') #the same as above
 				if $CharacterImage2.texture != image:
-					ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2, 0.5)
+					ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2, type_trans_time)
 				if images.sprites.has(non_body):
 					$CharacterImage2.texture = image
 				else:
@@ -998,21 +1016,28 @@ func handle_characters_sprites(scene):
 #		$CharacterImage2.texture = images.sprites[scene.character2]
 #		$CharacterImage2.show()
 
+#long_text needed only for dialogue_window_type==1
 func show_long_text():
-	self.get_stylebox("panel", "").modulate_color.a = 0
-	$LongFrame.show()
-	$DialogueBG.rect_size.y = $LongFrame.rect_size.y - $OptionsBackground.rect_size.y
-	$DialogueBG.rect_position.y = $LongFrame.rect_position.y
-	$RichTextLabel.rect_size.y = $LongFrame.rect_size.y - 249 - 50
-	$RichTextLabel.rect_position.y = $LongFrame.rect_position.y + 46#($ScrollContainer.rect_size.y * 0.5)
+	var options_background = $BackgroundT1/OptionsBackground
+	var dialogue_BG = $BackgroundT1/DialogueBG
+	var long_frame = $BackgroundT1/LongFrame
+	bg_T1.get_stylebox("panel", "").modulate_color.a = 0
+	long_frame.show()
+	dialogue_BG.rect_size.y = long_frame.rect_size.y - options_background.rect_size.y
+	dialogue_BG.rect_position.y = long_frame.rect_position.y
+	cur_text_label.rect_size.y = long_frame.rect_size.y - 249 - 50
+	cur_text_label.rect_position.y = long_frame.rect_position.y + 46#($ScrollContainer.rect_size.y * 0.5)
 
 func hide_long_text():
-	self.get_stylebox("panel", "").modulate_color.a = 255
-	$LongFrame.hide()
-	$DialogueBG.rect_size.y = self.rect_size.y - $OptionsBackground.rect_size.y
-	$DialogueBG.rect_position.y = 0
-	$RichTextLabel.rect_size = base_text_size
-	$RichTextLabel.rect_position = base_text_position
+	var options_background = $BackgroundT1/OptionsBackground
+	var dialogue_BG = $BackgroundT1/DialogueBG
+	var long_frame = $BackgroundT1/LongFrame
+	bg_T1.get_stylebox("panel", "").modulate_color.a = 255
+	long_frame.hide()
+	dialogue_BG.rect_size.y = self.rect_size.y - options_background.rect_size.y
+	dialogue_BG.rect_position.y = 0
+	cur_text_label.rect_size = base_text_size
+	cur_text_label.rect_position = base_text_position
 
 
 func handle_loots(scene):
@@ -1064,10 +1089,10 @@ func generate_scene_text(scene):
 		scenetext = input_handler.scene_characters[0].translate(scenetext.replace("[scnchar","["))
 	if scene.tags.has("location_resource_info"):
 		scenetext = add_location_resource_info()
-	if gui_controller.is_dialogue_just_started:
-		ResourceScripts.core_animations.UnfadeAnimation($RichTextLabel,1)
-		ResourceScripts.core_animations.UnfadeAnimation($ScrollContainer,1)
-	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
+	if is_just_started:
+		ResourceScripts.core_animations.UnfadeAnimation(cur_text_label,1)
+		ResourceScripts.core_animations.UnfadeAnimation(cur_opt_cont.get_parent(),1)
+	input_handler.ClearContainer(cur_opt_cont)
 	if scene.tags.has("scene_characters_sell"):#
 		var counter = 0
 		var text = ''
@@ -1077,10 +1102,10 @@ func generate_scene_text(scene):
 			counter += 1
 		scenetext += "\n\n" + text
 
-	if $RichTextLabel.bbcode_text != '':
-		$RichTextLabel.bbcode_text += "\n\n[color=yellow]"+previous_text+"[/color]\n\n" + globals.TextEncoder(scenetext)
+	if cur_text_label.bbcode_text != '':
+		cur_text_label.bbcode_text += "\n\n[color=yellow]"+previous_text+"[/color]\n\n" + globals.TextEncoder(scenetext)
 	else:
-		$RichTextLabel.bbcode_text = globals.TextEncoder(scenetext)
+		cur_text_label.bbcode_text = globals.TextEncoder(scenetext)
 
 
 func set_enemy(scene):
@@ -1115,7 +1140,7 @@ func handle_scene_options():
 			if cont:
 				continue
 		
-		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate(cur_opt_cont)
 		newbutton.set_meta("id", id)
 		newbutton.set("modulate", Color(1, 1, 1, 0))
 		i.text_key = i.text
@@ -1149,8 +1174,8 @@ func handle_scene_options():
 
 
 func select_option(number):
-#	if $ScrollContainer/VBoxContainer.get_children().size() >= number && hold_selection == false:
-#		var button = $ScrollContainer/VBoxContainer.get_child(number-1)
+#	if cur_opt_cont.get_children().size() >= number && hold_selection == false:
+#		var button = cur_opt_cont.get_child(number-1)
 #		if button.disabled == false && button.visible == true:
 #			button.toggle_mode = true
 #			button.pressed = true
@@ -1159,8 +1184,8 @@ func select_option(number):
 #			button.emit_signal("pressed")
 	if hold_selection: 
 		return
-	if $ScrollContainer/VBoxContainer.get_child_count() <= number: return
-	var button = $ScrollContainer/VBoxContainer.get_child(number)
+	if cur_opt_cont.get_child_count() <= number: return
+	var button = cur_opt_cont.get_child(number)
 	if button.disabled or !button.visible: 
 		return
 	button.toggle_mode = true
@@ -1181,7 +1206,22 @@ func select_option(number):
 				last_activation = ResourceScripts.game_globals.date
 			})
 	
-	input_handler.dialogue_option_selected(option) #need to remove this at next rework
+	if option.has("change_dialogue_type"):
+		next_dialogue_type = option.change_dialogue_type
+		#MIND! that all close_speed mechanics needed for normal work of blackscreen transition.
+		#Since last refactor transitions works correctly without close_speed, so it's useless now.
+		#I am leaving this mechanics just in case, if standalone editor would use it or for some
+		#other legecy problems.
+		if option.has("close_speed"):
+			type_trans_time = option.close_speed
+	
+	if option.has('active_char_translate'):
+		previous_text = input_handler.active_character.translate(tr(option.text))
+	else:
+		previous_text = tr(option.text)
+	if !ResourceScripts.game_progress.selected_dialogues.has(option.text_key):
+		ResourceScripts.game_progress.selected_dialogues.append(option.text_key)
+	
 	if option.has('bonus_effects'):
 		globals.common_effects(option.bonus_effects)
 	
@@ -1213,10 +1253,7 @@ func select_option(number):
 		hold_selection = true
 		if option.has('dialogue_argument') == false:
 			option.dialogue_argument = 0
-		if option.has('change_dialogue_type'):
-			dialogue_next(code, option.dialogue_argument, {changed_window_type = true})
-		else:
-			dialogue_next(code, option.dialogue_argument)
+		dialogue_next(code, option.dialogue_argument)
 	else:
 		var args
 		if option.has('args'): args = option.args
@@ -1224,5 +1261,3 @@ func select_option(number):
 			call(code, args)
 		else:
 			call(code)
-
-

@@ -95,7 +95,7 @@ enum {
 	NODE_TUTORIAL,
 	NODE_LOOTTABLE,
 	NODE_DIALOGUE,
-	NODE_DIALOGUE_T2,
+#	NODE_DIALOGUE_T2,
 	NODE_INVENTORY,
 	NODE_POPUP,
 	NODE_ALERT_PANEL,
@@ -941,46 +941,6 @@ func calculate_number_from_string_array(arr, caster, target):
 		firstrun = false
 	return endvalue
 
-func dialogue_option_selected(option): 
-	if gui_controller.dialogue == null:
-		gui_controller.dialogue = get_spec_node(NODE_DIALOGUE)
-	if option.has("change_dialogue_type"):
-		gui_controller.dialogue_window_type = option.change_dialogue_type
-		gui_controller.dialogue_txt = gui_controller.dialogue.get_node("RichTextLabel").bbcode_text
-		match gui_controller.dialogue_window_type:
-			1:
-				get_spec_node(self.NODE_DIALOGUE).hide()
-#				gui_controller.dialogue_txt = ""
-				gui_controller.dialogue_txt = get_spec_node(self.NODE_DIALOGUE_T2).get_node("RichTextLabel").bbcode_text
-				if option.has("close_speed"):
-					get_spec_node(self.NODE_DIALOGUE).wait_for = option.close_speed
-					ResourceScripts.core_animations.CloseAnimation(get_spec_node(self.NODE_DIALOGUE_T2), option.close_speed)
-					get_tree().create_timer(option.close_speed/2).connect("timeout", get_spec_node(self.NODE_DIALOGUE), "clear_character_images") # fixes bug when we can see old sprites for a moment at the start of transition
-					get_spec_node(self.NODE_DIALOGUE).hide()
-				else:
-					ResourceScripts.core_animations.CloseAnimation(get_spec_node(self.NODE_DIALOGUE_T2))
-				#get_spec_node(self.NODE_DIALOGUE_T2).hide()
-				#gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE)
-			2:
-				#get_spec_node(self.NODE_DIALOGUE).hide()
-				gui_controller.dialogue_txt = get_spec_node(self.NODE_DIALOGUE).get_node("RichTextLabel").bbcode_text
-				if option.has("open_speed"):
-					get_spec_node(self.NODE_DIALOGUE).wait_for = option.open_speed
-					ResourceScripts.core_animations.OpenAnimation(get_spec_node(self.NODE_DIALOGUE_T2), option.open_speed)
-				else:
-					ResourceScripts.core_animations.OpenAnimation(get_spec_node(self.NODE_DIALOGUE_T2), 1.0)
-				#get_spec_node(self.NODE_DIALOGUE_T2).hide()
-				gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE_T2)
-				# gui_controller.dialogue.get_node("Background").show()
-		gui_controller.dialogue.get_node("RichTextLabel").bbcode_text = gui_controller.dialogue_txt
-	else:
-		gui_controller.dialogue_txt = ''
-	if option.has('active_char_translate'):
-		gui_controller.dialogue.previous_text = active_character.translate(tr(option.text))
-	else:
-		gui_controller.dialogue.previous_text = tr(option.text)
-	if !ResourceScripts.game_progress.selected_dialogues.has(option.text_key):
-		ResourceScripts.game_progress.selected_dialogues.append(option.text_key)
 
 var dialogue_array = []
 var event_is_active = false
@@ -1019,13 +979,7 @@ func start_event(code, type, args):
 		data = scenedata.scenedict[code].duplicate(true)
 		if !ResourceScripts.game_progress.seen_events.has(code):
 			ResourceScripts.game_progress.seen_events.push_back(code)
-	var scene
-	match gui_controller.dialogue_window_type:
-		1:
-			scene = get_spec_node(self.NODE_DIALOGUE)
-		2:
-			scene = get_spec_node(self.NODE_DIALOGUE_T2)
-	gui_controller.dialogue = scene
+	gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE)
 #	if data.has('opp_characters'):
 #		for i in data.opp_characters:
 #			match i.type:
@@ -1070,7 +1024,7 @@ func start_event(code, type, args):
 			data.text = tr(data.text)
 			data.text = data.text.replace("[areaname]", tr(selected_area.name)).replace('[locationname]', tr(selected_location.name)).replace('[locationdescript]',tr(selected_location.descript)).replace("[locationtypename]", tr(selected_location.classname))
 
-	scene.open(data)
+	gui_controller.dialogue.open(data)
 
 
 func interactive_message_custom(data): #not safe

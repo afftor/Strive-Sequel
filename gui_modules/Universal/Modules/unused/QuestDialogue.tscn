@@ -15,15 +15,15 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=13]
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=14]
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=8]
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=9]
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=10]
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=11]
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=12]
 
 [node name="QuestDialogue" type="Panel"]
 anchor_right = 1.0
@@ -44,9 +44,6 @@ self_modulate = Color( 1, 1, 1, 0.705882 )
 margin_left = 1450.0
 margin_right = 1490.0
 margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CharacterImage2" type="TextureRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0.705882 )
@@ -54,9 +51,6 @@ margin_left = -100.0
 margin_right = -60.0
 margin_bottom = 40.0
 flip_h = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="OptionsBackground" type="Panel" parent="."]
 self_modulate = Color( 0.223529, 0.0313726, 0.337255, 0.901961 )
@@ -64,9 +58,6 @@ margin_left = 431.0
 margin_top = 713.0
 margin_right = 1489.0
 margin_bottom = 1049.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BackgroundT2" type="TextureRect" parent="."]
 margin_left = 430.0
@@ -124,9 +115,6 @@ visible = false
 margin_left = -634.418
 margin_right = -594.418
 margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EventCharacters"]
 margin_right = 40.0
@@ -140,9 +128,6 @@ margin_bottom = 20.0
 margin_left = -634.418
 margin_right = -594.418
 margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PlayerCharacters"]
 margin_right = 40.0
@@ -168,9 +153,6 @@ theme = ExtResource( 11 )
 custom_fonts/normal_font = ExtResource( 13 )
 bbcode_enabled = true
 scroll_following = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 477.0
@@ -195,11 +177,11 @@ visible = false
 margin_top = 205.0
 margin_right = 970.0
 margin_bottom = 219.0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/disabled = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 script = ExtResource( 2 )
 
 [node name="hotkey" type="Label" parent="ScrollContainer/VBoxContainer/Button"]

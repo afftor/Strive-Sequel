@@ -4,8 +4,6 @@ var IsActive = false
 onready var _RichTextLabel = get_node("Console/RichTextLabel")
 
 func _ready():
-	get_tree().root.get_node("MansionMainModule").call_deferred("remove_child",self)
-	get_tree().root.call_deferred("add_child",self)
 	if log_alert != null and is_instance_valid(log_alert):
 		log_alert.set_alert_node(self)
 		$log_alert_panel.show()

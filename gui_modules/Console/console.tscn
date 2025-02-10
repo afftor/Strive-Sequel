@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://src/core/Console.gd" type="Script" id=2]
+[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 36
+font_data = ExtResource( 3 )
+
+[node name="Console" type="Control" groups=["pauseprocess"]]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Console" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0.862745 )
+anchor_right = 1.0
+anchor_bottom = 0.495
+margin_left = 40.0
+margin_top = 33.0
+margin_right = -707.0
+margin_bottom = -4.59998
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Console"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -60.402
+custom_fonts/normal_font = SubResource( 2 )
+scroll_following = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit" type="LineEdit" parent="Console"]
+anchor_top = 0.879
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.265045
+custom_fonts/font = SubResource( 3 )
+placeholder_text = "Example: /do {\"code\":\"money_change\",\"operant\":\"+\",\"value\":1000}"
+placeholder_alpha = 0.27
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="log_alert_panel" type="Panel" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.862745 )
+margin_left = 40.0
+margin_top = 555.0
+margin_right = 1213.0
+margin_bottom = 651.0
+
+[node name="close" type="Button" parent="log_alert_panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -150.0
+margin_top = 25.0
+margin_right = -22.0
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 3 )
+text = "Close"
+
+[node name="CheckBox" type="CheckBox" parent="log_alert_panel"]
+margin_left = 17.0
+margin_top = 17.0
+margin_right = 346.0
+margin_bottom = 61.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Hide errors"
+
+[connection signal="text_entered" from="Console/TextEdit" to="." method="_on_TextEdit_text_entered"]

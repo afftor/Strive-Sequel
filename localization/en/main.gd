@@ -15197,6 +15197,24 @@ Back and forth, her tail flits around, belying her excitement as she tries to ke
 — N-now... If you let me, I want to finish this...
 
 You decide to leave her alone for now.""",
+	KURO_AFTER_TOME = """You find Kuro in a secluded side of your mansion, it seems she prefers to stay away from more crowded areas.
+
+- It's you. Do you have some business with me?""",
+	KURO_AFTER_OPT_BOOK = "So what was that book that you wanted?",
+	KURO_AFTER_OPT_CAPABLE = "You've proved to be quite capable dealing with Myr and the dwarves",
+	KURO_AFTER_REPLY_BOOK = "- Chronicles of Al'Hazred. Have you begin having a memory or hearing issues at your age? That would be disappointing. Don't worry about it, I'm not going to explain what's the content of the book. Too bad you can't read ancient languages.",
+	KURO_AFTER_TOME2 = """- Uh huh.
+
+Kuro seemingly dismisses your praise and looks away.
+
+- If you are done for today I shall see myself to my business.""",
+	KURO_AFTER_OPT_UNHAPPY = "Why don't you seem happy to be complimented?",
+	KURO_AFTER_OPT_ELSE = "Actually, I have something else I wanted to talk about...",
+	KURO_AFTER_TOME3 = """Hearing your question Kuro stays silent for a moment considering something, before replying in the most condescending motherly voice yet.
+
+- While it would be more appropriate for me to leave at this point, I suppose I shall give you something for being what you are. So, here's the question for you. How happy would you feel to be praised for doing something mundane like walking or breathing? - Kuro pauses with a small smirk - Ah, of course, you don't have to answer that.
+
+In the next moment she's gone in her usual manner.""",
 	LIRA_LOST_START = "As you get through the woods, you suddenly hear a woman's voice calling for help. You cautiously move towards it...",
 	LIRA_LOST_START2 = "— Stranger! What a relief this isn't animals or monsters... I've come here to gather some herbs but It seems I've got lost. My name is Lira, I hope it won't trouble you to get me to the elven capital.",
 	LIRA_LOST_OPT_SURE = "Sure, you can stick around",
@@ -15332,6 +15350,35 @@ The inner walls of her pussy wrap around tightly, tugging at you inside for the 
 	KURO_HIDEOUT_SEX7 = """Visibly satisfied and content, Kuro lifts up from you and releases you from her binds as if nothing has happened. 
 
 Kuro: — Let's go. I wanna get into the bath before the night.""",
+	KURO_BACK_START = "As you finish and leave the hideout with Kuro the numerous questions keep lingering on your mind.",
+	KURO_BACK_OPT_WHAT = "What the hell was that?",
+	KURO_BACK_OPT_DESERVE = "I think I deserve some answers",
+	KURO_BACK_OPT_SILENT = "*Keep silent* (close)",
+	KURO_BACK_START2 = """- Men really like their silly questions, aren't they? It doesn't really matter now...
+
+Kuro takes a pause before continuing with seemingly unrelated narration.
+
+- I was born in a merchant family, nothing fancy, but at the age of five I've realized that my peers aren't particularly smart. While not surprising, neither were my parents. Things grew worse with time but fairly quickly I've learned to mask my intelligence from others. The less you stand out, the fewer unwanted attention you gather.""",
+	KURO_BACK_START3 = """- At the age of eleven I've staged my disappearance. Thankfully, I've had access to enough information to survive on my own. But the world is tough place, especially for a young girl. I've discovered an ancient deity, the one which I now share powers with. That's the gist of how I have been living to this day.""",
+	KURO_BACK_START4 = """- Heh, I've skipped over something, haven't I? The cult.
+
+Kuro takes a pause, apparently choosing her next words.
+
+- I was a part of our deal, but I would lie if I said that there was no connection between me and the cult whatsoever. No, not of the personal kind. Now I'm on this side and you can be wondering why I've chosen you over both the cult and Nixx all you want.""",
+	KURO_BACK_OPT_STRONG = "I'm the stronger side?",
+	KURO_BACK_OPT_USEFUL = "You must think I'm useful to you",
+	KURO_BACK_OPT_LIKE = "Because you like me",
+	KURO_BACK_OPT_ALL = "It's all of that",
+	KURO_BACK_OPT_NO_IDEA = "I have no idea and I don't think you gonna tell me anyway",
+	KURO_BACK_REPLY_STRONG = "- Ha-ha, I don't know that, really. You've just been overpowered by me alone. You might have more chances in the long run with all factors given.",
+	KURO_BACK_REPLY_USEFUL = """Kuro shrugs in dismissal.
+
+- You are useful, but I could manage most of the stuff as is.""",
+	KURO_BACK_REPLY_LIKE = "- That's very cute of you, and while I can't say you are completely wrong, it's too ridiculous to think that mere emotional sympathy would make me turn on my supposed allies.",
+	KURO_BACK_REPLY_ALL = """- No.
+
+Kuro's answer is straight and simple, emotionless even. She boldly refuses your presumption and indicates that this discussion is over as you travel back in silence.""",
+	KURO_BACK_REPLY_NO_IDEA = "- That's not a bad line of thought. Besides, one thing people miss all the time is that there's a correct answer for the wrong question. However, I hope you will demonstrate adequate interest when the time is right.",
 	KURO_MANSION_ARRIVE = "After you arrive at home Kuro does not seem to explain herself but looks visibly prepared for your questioning.",
 	KURO_MANSION_OPT_EXPLAIN = "You aren't going to explain what it was all about?",
 	KURO_MANSION_OPT_NOASK = "*Ask nothing*",

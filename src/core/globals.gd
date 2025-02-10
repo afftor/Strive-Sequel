@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.10.2b'
+const gameversion = '0.10.2c'
 
 #time
 signal hour_tick
@@ -97,6 +97,10 @@ func _ready():
 	if OS.has_feature('editor'):
 		update_localization_file("ru")
 		update_localization_file("cn")
+	
+	#console
+	var console = load("res://gui_modules/Console/console.tscn").instance()
+	get_tree().root.call_deferred("add_child", console)
 
 
 #not used
