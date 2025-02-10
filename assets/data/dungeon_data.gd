@@ -400,7 +400,7 @@ var dungeons = {
 		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
 		custom_background = 'combat_cave',
 		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
-		final_enemy = [['bandits_easy_boss',1], ['bandits_easy_boss2',1],['bandits_easy_boss',3]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+		final_enemy = [['bandits_easy_boss',1], ['bandits_easy_boss2',1],['bandits_easy_boss3',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 		
 		event_data = {
 			dungeon_find_chest_easy = {

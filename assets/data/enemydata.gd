@@ -2379,7 +2379,7 @@ var loot_variants_data = {
 	holy_sword_reward = [
 		{code = 'defined', name = 'holy_sword', min = 1, max = 1},
 	],
-	hold_spear_reward = [
+	holy_spear_reward = [
 		{code = 'defined', name = 'holy_spear', min = 1, max = 1},
 	],
 	sacred_scales_reward = [
