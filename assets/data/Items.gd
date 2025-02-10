@@ -5042,8 +5042,8 @@ var color_presets = ['default', 'default_underwear', 'default_leather', 'default
 
 
 var material_tiers = {
-	t1 = {stone = 1, wood = 1, leather = 1, bone = 1},
-	t2 = {iron = 1, cloth = 1},
+	t1 = {stone = 1, wood = 1, leather = 1, bone = 1, cloth = 1},
+	t2 = {iron = 1},
 	t3 = {woodmagic = 1, leatherthick = 1, spider_silk = 1, insect_chitin = 1},
 	t4 = {silk = 1, steel = 1, obsidian = 1, woodiron = 1, lizard_skin = 1},
 	t5 = {mithril = 1, clothmagic = 1, leathermythic = 1, boneancient = 1},
