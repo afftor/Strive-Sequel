@@ -321,3 +321,10 @@ func try_planned_loc_event(loc):
 
 func get_default_materials(): #stub
 	return 't1'
+
+
+func get_materials_from_conds(data):
+	for tier in data:
+		if globals.checkreqs(data[tier]):
+			return tier
+	return get_default_materials()

@@ -5042,7 +5042,7 @@ var color_presets = ['default', 'default_underwear', 'default_leather', 'default
 
 
 var material_tiers = {
-	t1 = {stone = 1, wood = 1, iron = 1, leather = 1},
+	t1 = {stone = 1, wood = 1, iron = 1, leather = 1, cloth = 1},
 }
 
 func get_materials_by_grade(grade, item_id):
