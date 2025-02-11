@@ -1,14 +1,6 @@
 extends Reference
 var data = {
 	act3_intro = {
-		reqs = [
-			{
-				type = "has_active_quest",
-				name = "zephyra_disappearance_quest",
-				check = false,
-				negative = "repeat_next_day"
-			}
-		],
 		variations = [
 			{
 				image = "letter",
@@ -43,6 +35,12 @@ var data = {
 						tags = [
 							"blackscreen_transition_slow"
 						]
+					}
+				],
+				common_effects = [
+					{
+						code = "decision",
+						value = "act3_start"
 					}
 				]
 			},

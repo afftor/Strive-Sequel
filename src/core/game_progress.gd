@@ -320,7 +320,13 @@ func try_planned_loc_event(loc):
 
 
 func get_default_materials(): #stub
-	return 't1'
+	return 't1' #any
+	return 't2' #act1_start
+	return 't3' #act1_start
+	return 't4' #act1_start
+	return 't5' #act1_start
+	return 't6' #act1_start
+
 
 
 func get_materials_from_conds(data):

@@ -113,14 +113,14 @@ var partmaterials = {
 		clothethereal = {task_efficiency_tool = 0.45},
 	},
 	Blade = {
-		stone = {damagemod = -0.5, enchant_capacity_mod = 0.0},
+		stone = {damagemod = -0.5, enchant_capacity_mod = 0.0, weapon_element = 'earth'},
 		obsidian = {atk = 10, armorpenetration = 10, enchant_capacity_mod = 0.2},
 		iron = {atk = 8, enchant_capacity_mod = 0.0},
 		steel = {atk = 13, enchant_capacity_mod = 0.0},
 		mithril = {atk = 18, enchant_capacity_mod = 0.3},
 		adamantine = {atk = 25, enchant_capacity_mod = 0.4},
 		bone = {atk = 7, matk = 4, enchant_capacity_mod = 0.1},
-		boneancient = {atk = 15, matk = 8, enchant_capacity_mod = 0.25},
+		boneancient = {atk = 16, matk = 8, enchant_capacity_mod = 0.25},
 		bonedragon = {atk = 22, matk = 15, enchant_capacity_mod = 0.5},
 	},
 	WeaponMace = {
@@ -243,7 +243,7 @@ var partmaterials = {
 		fire_ruby = {damage_mod_melee = 0.15, resist_fire = 20},
 	},
 	WeaponEnc = {
-		stone = {hitrate = -5},
+		stone = {hitrate = -5, weapon_element = 'earth'},
 		obsidian = {matk = 5, damage_mod_dark = 0.2},
 		ice_crystal = {critchance = 10, critmod = 0.2, damage_mod_water = 0.2},
 		crystalized_ether = {speed = 15, hitrate = 20, damage_mod_air = 0.2},
@@ -5042,12 +5042,39 @@ var color_presets = ['default', 'default_underwear', 'default_leather', 'default
 
 
 var material_tiers = {
-	t1 = {stone = 1, wood = 1, leather = 1, bone = 1, cloth = 1},
-	t2 = {iron = 1},
-	t3 = {woodmagic = 1, leatherthick = 1, spider_silk = 1, insect_chitin = 1},
-	t4 = {silk = 1, steel = 1, obsidian = 1, woodiron = 1, lizard_skin = 1},
-	t5 = {mithril = 1, clothmagic = 1, leathermythic = 1, boneancient = 1},
-	t6 = {adamantine = 1, woodancient = 1, clothethereal = 1, leatherdragon = 1, bonedragon = 1},
+	t1 = {#prologue level
+		stone = 1, wood = 1, leather = 1, bone = 1
+		},
+	t2 = {#act 1 start
+		iron = 1, cloth = 1,
+		stone = 1, wood = 1, leather = 1, bone = 1
+		},
+	t3 = {#enchants unlock; act 2 start
+		woodmagic = 1, leatherthick = 1, spider_silk = 1, insect_chitin = 1,
+		iron = 1, cloth = 1,
+		stone = 1, wood = 1, leather = 1, bone = 1
+		},
+	t4 = {#farm unlock
+		silk = 2, steel = 2, obsidian = 2, woodiron = 2, lizard_skin = 2,
+		woodmagic = 2, leatherthick = 2, spider_silk = 2, insect_chitin = 2,
+		iron = 2, cloth = 2,
+		stone = 1, wood = 1, leather = 1, bone = 1,
+		},
+	t5 = {#body upgrades, act 3
+		mithril = 3, clothmagic = 3, leathermythic = 3, boneancient = 3,
+		silk = 3, steel = 3, obsidian = 3, woodiron = 3, lizard_skin = 3,
+		woodmagic = 3, leatherthick = 3, spider_silk = 3, insect_chitin = 3,
+		iron = 2, cloth = 2,
+		stone = 1, wood = 1, leather = 1, bone = 1
+		},
+	t6 = {#act 4+
+		adamantine = 1, woodancient = 1, clothethereal = 1, leatherdragon = 1, bonedragon = 1,
+		mithril = 4, clothmagic = 4, leathermythic = 4, boneancient = 4,
+		silk = 3, steel = 3, obsidian = 3, woodiron = 3, lizard_skin = 3,
+		woodmagic = 2, leatherthick = 2, spider_silk = 2, insect_chitin = 2,
+		iron = 1, cloth = 1,
+		stone = 1, wood = 1, leather = 1, bone = 1
+		},
 }
 
 func get_materials_by_grade(grade, item_id):
