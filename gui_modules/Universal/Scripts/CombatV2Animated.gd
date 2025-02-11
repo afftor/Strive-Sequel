@@ -69,7 +69,8 @@ signal skill_use_finshed
 
 
 func _ready():
-	debug = gui_controller.mansion.test_mode
+	if gui_controller.mansion != null:
+		debug = gui_controller.mansion.test_mode
 	autoskill_dummy = ResourceScripts.scriptdict.class_slave.new("combat_dummy")
 	autoskill_dummy.position = 0
 	autoskill_dummy.displaynode = ResourceScripts.scriptdict.fighternode.new()
@@ -866,7 +867,7 @@ func transform_unit(position, id):
 	ActionQueue.add_rebuildbuffs(tchar.displaynode)
 
 
-func summon(montype, limit, combatgroup): #reworked
+func summon(montype, limit, combatgroup, incombat = false): #reworked
 	if summons.size() >= limit: return
 	#find empty slot in group
 	if montype is String:
@@ -936,8 +937,9 @@ func summon(montype, limit, combatgroup): #reworked
 	tchar.add_trait('core_trait')
 	
 	make_fighter_panel(tchar, sum_pos)
-	tchar.process_event(variables.TR_COMBAT_S)
-	ActionQueue.add_rebuildbuffs(tchar.displaynode)
+	if incombat:
+		tchar.process_event(variables.TR_COMBAT_S)
+		ActionQueue.add_rebuildbuffs(tchar.displaynode)
 
 
 

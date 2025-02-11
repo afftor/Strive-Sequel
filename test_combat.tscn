@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_24.tres" type="DynamicFont" id=1]
+[ext_resource path="res://test_combat.gd" type="Script" id=2]
+
+[node name="Control" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="selector" type="OptionButton" parent="."]
+margin_left = 67.0
+margin_top = 40.0
+margin_right = 420.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 1 )
+text = "select combat"
+
+[node name="test" type="Button" parent="."]
+margin_left = 68.0
+margin_top = 266.0
+margin_right = 303.0
+margin_bottom = 307.0
+custom_fonts/font = ExtResource( 1 )
+text = "start"
