@@ -79,42 +79,33 @@ func update_area_shop(area):
 	area.shop.clear()
 	var resource_array = []
 	for i in area.area_shop_items:
-		if randf() >= area.area_shop_items[i].chance:
-			continue
+		var record = area.area_shop_items[i]
+		if record.has('condition'):
+			if !globals.checkreqs(record.condition):
+				continue
+		if record.has('chance'):
+			if randf() >= record.chance:
+				continue
 		if Items.materiallist.has(i):
 			resource_array.append(i)
-			var amount = round(rand_range(area.area_shop_items[i].min, area.area_shop_items[i].max))
+			var amount = round(rand_range(record.min, record.max))
 			area.shop[i] = amount
 		elif Items.itemlist.has(i):
 			var itemtemplate = Items.itemlist[i]
 			match itemtemplate.type:
 				'gear':
 					if !itemtemplate.tags.has('recipe'): #either shouldn't happen yet
-						area.shop[i] = round(rand_range(area.area_shop_items[i].min, area.area_shop_items[i].max))
+						area.shop[i] = round(rand_range(record.min, record.max))
 				'usable':
-					area.shop[i] = round(rand_range(area.area_shop_items[i].min, area.area_shop_items[i].max))
+					area.shop[i] = round(rand_range(record.min, record.max))
 		else:
-			if area.area_shop_items[i].has('items'):
-				var data = area.area_shop_items[i]
-				var amount = round(rand_range(data.min, data.max))
+			if record.has('items'):
+				var amount = round(rand_range(record.min, record.max))
 				while amount > 0:
 					amount -= 1
-					var item = Items.itemlist[data.items[randi()%data.items.size()]]
+					var item = Items.itemlist[input_handler.random_from_array(record.items)]
 					if item.has('parts'):
-						var parts = {}
-						for part in item.parts:
-							var tiers = []
-							for tier in area.material_tiers:
-								tiers.append([tier, area.material_tiers[tier]])
-							var materialtier = input_handler.weightedrandom(tiers)
-							var materialarray = []
-							#2add tiers part
-							if materialarray.size() == 0:
-								for k in Items.materiallist.values():
-									if k.has('parts') && k.parts.has(part):
-										materialarray.append([k.code, 1.0/k.price])
-								materialarray = [input_handler.weightedrandom(materialarray)]
-							parts[part] = materialarray[randi()%materialarray.size()]
+						var parts = Items.get_materials_by_grade(ResourceScripts.game_progress.get_materials_from_conds(area.material_tiers), item.code)
 						area.shop[item.code] = parts
 					else:
 						if area.shop.has(item.code):

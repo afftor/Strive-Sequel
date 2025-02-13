@@ -581,11 +581,11 @@ var data = {
 						type = "location_has_specific_slaves",
 						check = true,
 						value = 1,
-						location = 'dwarf_capital',
+						location = "dwarf_capital",
 						reqs = [
 							{
-								code = 'unique',
-								value = 'zephyra'
+								code = "unique",
+								value = "zephyra"
 							}
 						]
 					}
@@ -928,7 +928,19 @@ var data = {
 
 				],
 				type = "next_dialogue",
-				bonus_effects = [{code = "make_loot", pool = [["sacred_scales_reward",1]]},{code = "open_loot"}
+				bonus_effects = [
+					{
+						code = "make_loot",
+						pool = [
+							[
+								"sacred_scales_reward",
+								1
+							]
+						]
+					},
+					{
+						code = "open_loot"
+					}
 				]
 			}
 		]
@@ -974,6 +986,12 @@ var data = {
 
 						],
 						type = "next_dialogue"
+					}
+				],
+				common_effects = [
+					{
+						code = "decision",
+						value = "act3_finish"
 					}
 				]
 			},
@@ -1347,6 +1365,12 @@ var data = {
 							}
 						]
 					}
+				],
+				common_effects = [
+					{
+						code = "decision",
+						value = "act3_finish"
+					}
 				]
 			}
 		]
@@ -1432,18 +1456,10 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		text = [
-			{
-				text = "DWARF_AFTERMATCH_REPLY_C_KURO",
-				reqs = [
-
-				]
-			}
-		],
+		text = "DWARF_AFTERMATCH_REPLY_C_KURO",
 		options = [
 			{
 				code = "dwarf_aftermatch_reply_take",
-				dialogue_argument = 0,
 				text = "DWARF_AFTERMATCH_OPT_TAKE",
 				reqs = [
 
@@ -1459,7 +1475,8 @@ var data = {
 				],
 				type = "next_dialogue"
 			}
-		]
+		],
+		character = "bolthar"
 	},
 	dwarf_aftermatch_reply_take = {
 		reqs = [
@@ -1468,14 +1485,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		text = [
-			{
-				text = "DWARF_AFTERMATCH_REPLY_TAKE",
-				reqs = [
-
-				]
-			}
-		],
+		text = "DWARF_AFTERMATCH_REPLY_TAKE",
 		options = [
 			{
 				code = "dwarf_aftermatch_start",
@@ -1495,7 +1505,8 @@ var data = {
 					}
 				]
 			}
-		]
+		],
+		character = "bolthar"
 	},
 	dwarf_aftermatch_reply_k_jean = {
 		variations = [
@@ -2561,11 +2572,11 @@ var data = {
 						type = "location_has_specific_slaves",
 						check = true,
 						value = 1,
-						location = 'dwarf_capital',
+						location = "dwarf_capital",
 						reqs = [
 							{
-								code = 'unique',
-								value = 'zephyra'
+								code = "unique",
+								value = "zephyra"
 							}
 						]
 					},
@@ -2894,12 +2905,15 @@ var data = {
 						code = "update_city"
 					},
 					{
-						code = 'add_timed_event',
+						code = "add_timed_event",
 						value = "kuro_tome_start",
 						args = [
 							{
-								type = 'add_to_date',
-								date = [7,8],
+								type = "add_to_date",
+								date = [
+									7,
+									8
+								],
 								hour = 1
 							}
 						]
@@ -3263,12 +3277,15 @@ var data = {
 						code = "update_city"
 					},
 					{
-						code = 'add_timed_event',
+						code = "add_timed_event",
 						value = "kuro_tome_start",
 						args = [
 							{
-								type = 'add_to_date',
-								date = [7,8],
+								type = "add_to_date",
+								date = [
+									7,
+									8
+								],
 								hour = 1
 							}
 						]

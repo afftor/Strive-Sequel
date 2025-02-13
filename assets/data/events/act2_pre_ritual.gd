@@ -962,7 +962,6 @@ var data = {
 		]
 	},
 	priestess_sword_talk_1 = {
-		image = null,
 		tags = [
 			"dialogue_scene",
 			"master_translate",
@@ -977,8 +976,7 @@ var data = {
 				text = "PRIESTESS_SWORD_TALK_1_1",
 				reqs = [
 
-				],
-				previous_dialogue_option = 0
+				]
 			},
 			{
 				text = "PRIESTESS_SWORD_TALK_1_2",

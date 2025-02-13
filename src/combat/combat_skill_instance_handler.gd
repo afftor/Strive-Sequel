@@ -16,6 +16,8 @@ var value = []
 var target_range
 var ability_type
 
+var tags setget _callerror, get_tags
+
 var chance
 var evade
 var critchance
@@ -79,6 +81,10 @@ func process_check(check:Array): #2remake
 	else:
 		print ("error in matching skill arg check: %s" % str(check))
 		return false
+
+
+func _callerror(value):
+	print('error - wrong tags set')
 
 
 func get_tags():

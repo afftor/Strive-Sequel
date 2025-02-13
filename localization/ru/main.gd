@@ -16110,6 +16110,24 @@ KURO_WHISKEY_DIG3 = """Босс: - Чего вы ждете? Если вы не 
 - Т-теперь... Если ты позволишь мне, я хочу закончить это...
 
 Вы решаете пока оставить ее в покое.""",
+	KURO_AFTER_TOME = """You find Kuro in a secluded side of your mansion, it seems she prefers to stay away from more crowded areas.
+
+- It's you. Do you have some business with me?""", # MISSING TRANSLATION
+	KURO_AFTER_OPT_BOOK = """So what was that book that you wanted?""", # MISSING TRANSLATION
+	KURO_AFTER_OPT_CAPABLE = """You've proved to be quite capable dealing with Myr and the dwarves""", # MISSING TRANSLATION
+	KURO_AFTER_REPLY_BOOK = """- Chronicles of Al'Hazred. Have you begin having a memory or hearing issues at your age? That would be disappointing. Don't worry about it, I'm not going to explain what's the content of the book. Too bad you can't read ancient languages.""", # MISSING TRANSLATION
+	KURO_AFTER_TOME2 = """- Uh huh.
+
+Kuro seemingly dismisses your praise and looks away.
+
+- If you are done for today I shall see myself to my business.""", # MISSING TRANSLATION
+	KURO_AFTER_OPT_UNHAPPY = """Why don't you seem happy to be complimented?""", # MISSING TRANSLATION
+	KURO_AFTER_OPT_ELSE = """Actually, I have something else I wanted to talk about...""", # MISSING TRANSLATION
+	KURO_AFTER_TOME3 = """Hearing your question Kuro stays silent for a moment considering something, before replying in the most condescending motherly voice yet.
+
+- While it would be more appropriate for me to leave at this point, I suppose I shall give you something for being what you are. So, here's the question for you. How happy would you feel to be praised for doing something mundane like walking or breathing? - Kuro pauses with a small smirk - Ah, of course, you don't have to answer that.
+
+In the next moment she's gone in her usual manner.""", # MISSING TRANSLATION
 	LIRA_LOST_START = """Пробираясь через лес, вы вдруг слышите женский голос, зовущий на помощь. Вы осторожно движетесь к нему...""",
 	LIRA_LOST_START2 = """- Незнакомец! Какое облегчение, что это не животные или монстры... Я пришла сюда, чтобы собрать немного трав, но, кажется, я заблудилась. Меня зовут Лира, надеюсь, вам не составит труда доставить меня в эльфийскую столицу""",
 	LIRA_LOST_OPT_SURE = """Конечно, вы можете задержаться здесь""",
@@ -16245,6 +16263,35 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	KURO_HIDEOUT_SEX7 = """Заметно довольная и удовлетворенная, Куро поднимается и освобождает вас от своих уз, как будто ничего не произошло. 
 
 Куро: - Пойдемте. Я хочу принять ванну до вечера.""",
+	KURO_BACK_START = """As you finish and leave the hideout with Kuro the numerous questions keep lingering on your mind.""", # MISSING TRANSLATION
+	KURO_BACK_OPT_WHAT = """What the hell was that?""", # MISSING TRANSLATION
+	KURO_BACK_OPT_DESERVE = """I think I deserve some answers""", # MISSING TRANSLATION
+	KURO_BACK_OPT_SILENT = """*Keep silent* (close)""", # MISSING TRANSLATION
+	KURO_BACK_START2 = """- Men really like their silly questions, aren't they? It doesn't really matter now...
+
+Kuro takes a pause before continuing with seemingly unrelated narration.
+
+- I was born in a merchant family, nothing fancy, but at the age of five I've realized that my peers aren't particularly smart. While not surprising, neither were my parents. Things grew worse with time but fairly quickly I've learned to mask my intelligence from others. The less you stand out, the fewer unwanted attention you gather.""", # MISSING TRANSLATION
+	KURO_BACK_START3 = """- At the age of eleven I've staged my disappearance. Thankfully, I've had access to enough information to survive on my own. But the world is tough place, especially for a young girl. I've discovered an ancient deity, the one which I now share powers with. That's the gist of how I have been living to this day.""", # MISSING TRANSLATION
+	KURO_BACK_START4 = """- Heh, I've skipped over something, haven't I? The cult.
+
+Kuro takes a pause, apparently choosing her next words.
+
+- I was a part of our deal, but I would lie if I said that there was no connection between me and the cult whatsoever. No, not of the personal kind. Now I'm on this side and you can be wondering why I've chosen you over both the cult and Nixx all you want.""", # MISSING TRANSLATION
+	KURO_BACK_OPT_STRONG = """I'm the stronger side?""", # MISSING TRANSLATION
+	KURO_BACK_OPT_USEFUL = """You must think I'm useful to you""", # MISSING TRANSLATION
+	KURO_BACK_OPT_LIKE = """Because you like me""", # MISSING TRANSLATION
+	KURO_BACK_OPT_ALL = """It's all of that""", # MISSING TRANSLATION
+	KURO_BACK_OPT_NO_IDEA = """I have no idea and I don't think you gonna tell me anyway""", # MISSING TRANSLATION
+	KURO_BACK_REPLY_STRONG = """- Ha-ha, I don't know that, really. You've just been overpowered by me alone. You might have more chances in the long run with all factors given.""", # MISSING TRANSLATION
+	KURO_BACK_REPLY_USEFUL = """Kuro shrugs in dismissal.
+
+- You are useful, but I could manage most of the stuff as is.""", # MISSING TRANSLATION
+	KURO_BACK_REPLY_LIKE = """- That's very cute of you, and while I can't say you are completely wrong, it's too ridiculous to think that mere emotional sympathy would make me turn on my supposed allies.""", # MISSING TRANSLATION
+	KURO_BACK_REPLY_ALL = """- No.
+
+Kuro's answer is straight and simple, emotionless even. She boldly refuses your presumption and indicates that this discussion is over as you travel back in silence.""", # MISSING TRANSLATION
+	KURO_BACK_REPLY_NO_IDEA = """- That's not a bad line of thought. Besides, one thing people miss all the time is that there's a correct answer for the wrong question. However, I hope you will demonstrate adequate interest when the time is right.""", # MISSING TRANSLATION
 	KURO_MANSION_ARRIVE = """После вашего прибытия домой Куро, похоже, не собирается объясняться, но выглядит явно готовой к вашему допросу.""",
 	KURO_MANSION_OPT_EXPLAIN = """Не собираешься объясниться, что это было?""",
 	KURO_MANSION_OPT_NOASK = """*Ничего не спрашивать*""",

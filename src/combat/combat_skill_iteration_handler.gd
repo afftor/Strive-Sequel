@@ -17,6 +17,8 @@ var number_rnd_targets = 0
 #var damagesrc
 var animationdict
 
+var tags setget _callerror, get_tags
+
 var effects = []
 var queued_effects = []
 var queued_atomics = []
@@ -36,6 +38,9 @@ var state_map = [
 ]
 
 
+func _callerror(value):
+	print('error - wrong tags set')
+
 func _init():
 	caster = null
 	target = null
@@ -50,6 +55,9 @@ func get_from_template(attr):
 			return
 		set(attr, template[attr])
 
+
+func get_tags():
+	return parent.tags
 
 func createfromskill():
 	ability_type = template.ability_type
@@ -213,7 +221,7 @@ func invoke_instancing():
 	for i in affected_targets:
 		#special results
 		if template.has('damage_type') and template.damage_type == 'summon':
-			combatnode.summon(template.value[0], template.value[1], caster.combatgroup);
+			combatnode.summon(template.value[0], template.value[1], caster.combatgroup, true);
 		elif template.has('damage_type') and template.damage_type == 'resurrect':
 			i.resurrect(input_handler.calculate_number_from_string_array(template.value[0], caster, target)) #not sure
 		if template.has('damage_type') and template.damage_type == 'setup_global':

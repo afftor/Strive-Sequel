@@ -107,20 +107,20 @@ var partmaterials = {
 	},
 	ToolClothwork = {
 		cloth = {task_efficiency_tool = 0.20},
-		clothsilk = {task_efficiency_tool = 0.25},
-		spider_silk = {task_efficiency_tool = 0.30},
+		spider_silk = {task_efficiency_tool = 0.25},
+		clothsilk = {task_efficiency_tool = 0.30},
 		clothmagic = {task_efficiency_tool = 0.35},
 		clothethereal = {task_efficiency_tool = 0.45},
 	},
 	Blade = {
-		stone = {damagemod = -0.5, enchant_capacity_mod = 0.0},
+		stone = {damagemod = -0.5, enchant_capacity_mod = 0.0, weapon_element = 'earth'},
 		obsidian = {atk = 10, armorpenetration = 10, enchant_capacity_mod = 0.2},
 		iron = {atk = 8, enchant_capacity_mod = 0.0},
 		steel = {atk = 13, enchant_capacity_mod = 0.0},
 		mithril = {atk = 18, enchant_capacity_mod = 0.3},
 		adamantine = {atk = 25, enchant_capacity_mod = 0.4},
 		bone = {atk = 7, matk = 4, enchant_capacity_mod = 0.1},
-		boneancient = {atk = 15, matk = 8, enchant_capacity_mod = 0.25},
+		boneancient = {atk = 16, matk = 8, enchant_capacity_mod = 0.25},
 		bonedragon = {atk = 22, matk = 15, enchant_capacity_mod = 0.5},
 	},
 	WeaponMace = {
@@ -189,9 +189,9 @@ var partmaterials = {
 	},
 	ArmorBaseCloth = {
 		cloth = {armor = 5, mdef = 20, enchant_capacity_mod = 0.2},
-		clothsilk = {armor = 10, mdef = 35, enchant_capacity_mod = 0.3},
-		spider_silk = {armor = 15, mdef = 30, enchant_capacity_mod = 0.3},
-		clothmagic = {armor = 17, mdef = 50, enchant_capacity_mod = 0.4},
+		spider_silk = {armor = 10, mdef = 35, enchant_capacity_mod = 0.3},
+		clothsilk = {armor = 15, mdef = 30, enchant_capacity_mod = 0.35},
+		clothmagic = {armor = 20, mdef = 45, enchant_capacity_mod = 0.4},
 		clothethereal = {armor = 25, mdef = 75, enchant_capacity_mod = 0.5},
 	},
 	ArmorBaseMed = {
@@ -222,10 +222,10 @@ var partmaterials = {
 		boneancient = {atk = 5, resist_dark = 10},
 		bonedragon = {atk = 7, resist_light = 10, resist_dark = 10},
 		cloth = {mdef = 3, resist_air = 15},
-		clothsilk = {mdef = 5, resist_earth = 10},
-		spider_silk = {mdef = 6, resist_earth = 15},
-		clothmagic = {mdef = 5, matk = 4, resist_water = 10, enchant_capacity_mod = 0.1},
-		clothethereal = {mdef = 8, resist_mind = 10},
+		spider_silk = {mdef = 4, resist_earth = 10},
+		clothsilk = {mdef = 6, resist_earth = 15},
+		clothmagic = {mdef = 8, matk = 3, resist_water = 10, enchant_capacity_mod = 0.1},
+		clothethereal = {mdef = 10, resist_mind = 10},
 		iron = {armor = 4, resist_earth = 10},
 		steel = {armor = 6, resist_fire = 10, resist_earth = 10},
 		mithril = {armor = 10, resist_earth = 15, resist_dark = 10, enchant_capacity_mod = 0.1},
@@ -243,7 +243,7 @@ var partmaterials = {
 		fire_ruby = {damage_mod_melee = 0.15, resist_fire = 20},
 	},
 	WeaponEnc = {
-		stone = {hitrate = -5},
+		stone = {hitrate = -5, weapon_element = 'earth'},
 		obsidian = {matk = 5, damage_mod_dark = 0.2},
 		ice_crystal = {critchance = 10, critmod = 0.2, damage_mod_water = 0.2},
 		crystalized_ether = {speed = 15, hitrate = 20, damage_mod_air = 0.2},
@@ -679,7 +679,7 @@ var materiallist = {
 		descript = '',
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/item_clothmagic.png"),
-		price = 50,
+		price = 60,
 		type = 'cloth',
 		tier = 'medium',
 		tags = [],
@@ -1689,7 +1689,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
-		tags = ['no_random', 'bladed','enchantable', 'fixed_stats'], #to correctly set stats with fixed levels
+		tags = ['no_random', 'bladed','enchantable', 'fixed_stats', 'upgradable'], #to correctly set stats with fixed levels
 		basestats = {atk = 35, critchance = 20, hitrate = 20, armorpenetration = 15, enchant_capacity = 400},
 	},
 	
@@ -1708,7 +1708,7 @@ var itemlist = {
 		tier = 'hard',
 		reqs = [],
 		effects = [],
-		tags = ['no_random', 'bladed','enchantable'],
+		tags = ['no_random', 'bladed','enchantable', 'upgradable'],
 		basestats = {atk = 50, hitrate = 50, critmod = 0.33, damage_mod_light = 0.5, enchant_capacity = 500},
 	},
 	holy_spear = {
@@ -1726,7 +1726,7 @@ var itemlist = {
 		tier = 'hard',
 		reqs = [],
 		effects = [],
-		tags = ['no_random','enchantable'],
+		tags = ['no_random','enchantable', 'upgradable'],
 		basestats = {atk = 45, hitrate = 25, damage_mod_air = 0.20, armor = 20, enchant_capacity = 500},
 	},
 	
@@ -1744,7 +1744,7 @@ var itemlist = {
 		geartype = 'bow',
 		weaponrange = 'any',
 		reqs = [{code = 'unique', value = 'aire'}],
-		tags = ['no_random','enchantable'],
+		tags = ['no_random','enchantable', 'upgradable'],
 		slots = ['rhand','lhand'],
 		hitsound = 'arrow',
 		effects = [],
@@ -1868,7 +1868,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [],
 		effects = [],
-		tags = ['no_random'],
+		tags = ['no_random','enchantable', 'upgradable'],
 		basestats = {atk = 38, speed = -10, critchance = 3, enchant_capacity = 200},
 	},
 	erlen_sword = {
@@ -1885,7 +1885,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [],
 		effects = [],
-		tags = ['no_random'],
+		tags = ['no_random','enchantable', 'upgradable'],
 		basestats = {atk = 50, speed = 5, evasion = 15, enchant_capacity = 400},
 	},
 	ayneris_rapier = {
@@ -1902,7 +1902,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [],
 		effects = [],
-		tags = ['no_random'],
+		tags = ['no_random','enchantable', 'upgradable'],
 		basestats = {atk = 37, speed = 15, evasion = 5, enchant_capacity = 350},
 	},
 	hector_armor = {
@@ -1919,7 +1919,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsitems/hectorarmor.png"),
 		tier = 'hard',
 		effects = [],
-		tags = ['no_random'],
+		tags = ['no_random','enchantable', 'upgradable'],
 		basestats = {armor = 40, mdef = 15, enchant_capacity = 200},
 	},
 	garb_of_forest = {
@@ -1936,7 +1936,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsitems/garb.png"),
 		tier = 'hard',
 		effects = [],
-		tags = ['no_random'],
+		tags = ['no_random','enchantable', 'upgradable'],
 		basestats = {armor = 60, mdef = 30, evasion = 25, enchant_capacity = 300},
 	},
 	chloe_goggles = {
@@ -4792,7 +4792,7 @@ var recipes = {
 	},
 	seethrough_underwear = {
 		code = 'seethrough_underwear',
-		materials = {clothsilk = 5, clothmagic = 10},
+		materials = {clothsilk = 5, clothmagic = 5},
 		items = {},
 		unlockreqs = [{type = "has_upgrade", name = 'tailor', value = 3}],
 		crafttype = 'basic',
@@ -4891,7 +4891,7 @@ var recipes = {
 	},
 	witch_hat = {
 		code = 'witch_hat',
-		materials = {clothmagic = 15, clothsilk = 10},
+		materials = {clothmagic = 5, clothsilk = 10},
 		items = {},
 		unlockreqs = [{type = "has_upgrade", name = 'tailor', value = 3}],
 		crafttype = 'basic',
@@ -5042,7 +5042,39 @@ var color_presets = ['default', 'default_underwear', 'default_leather', 'default
 
 
 var material_tiers = {
-	t1 = {stone = 1, wood = 1, iron = 1, leather = 1},
+	t1 = {#prologue level
+		stone = 1, wood = 1, leather = 1, bone = 1
+		},
+	t2 = {#act 1 start
+		iron = 1, cloth = 1,
+		stone = 1, wood = 1, leather = 1, bone = 1
+		},
+	t3 = {#enchants unlock; act 2 start
+		woodmagic = 1, leatherthick = 1, spider_silk = 1, insect_chitin = 1,
+		iron = 1, cloth = 1,
+		stone = 1, wood = 1, leather = 1, bone = 1
+		},
+	t4 = {#farm unlock
+		silk = 2, steel = 2, obsidian = 2, woodiron = 2, lizard_skin = 2,
+		woodmagic = 2, leatherthick = 2, spider_silk = 2, insect_chitin = 2,
+		iron = 2, cloth = 2,
+		stone = 1, wood = 1, leather = 1, bone = 1,
+		},
+	t5 = {#body upgrades, act 3
+		mithril = 3, clothmagic = 3, leathermythic = 3, boneancient = 3,
+		silk = 3, steel = 3, obsidian = 3, woodiron = 3, lizard_skin = 3,
+		woodmagic = 3, leatherthick = 3, spider_silk = 3, insect_chitin = 3,
+		iron = 2, cloth = 2,
+		stone = 1, wood = 1, leather = 1, bone = 1
+		},
+	t6 = {#act 4+
+		adamantine = 1, woodancient = 1, clothethereal = 1, leatherdragon = 1, bonedragon = 1,
+		mithril = 4, clothmagic = 4, leathermythic = 4, boneancient = 4,
+		silk = 3, steel = 3, obsidian = 3, woodiron = 3, lizard_skin = 3,
+		woodmagic = 2, leatherthick = 2, spider_silk = 2, insect_chitin = 2,
+		iron = 1, cloth = 1,
+		stone = 1, wood = 1, leather = 1, bone = 1
+		},
 }
 
 func get_materials_by_grade(grade, item_id):

@@ -214,7 +214,6 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	NEWGAMESETTINGFUTA = "Futa",
 	NEWGAMESETTINGFURRY = "Furry",
 	NEWGAMESETTINGEASYTRAIN = "Easy Training",
-	#new ones, 2fix
 	NEWGAMESETTINGSKIP_PROLOGUE = "Skip prologue",
 	NEWGAMESETTINGGF_ONLY_UPG = "No factors upgrade",
 	NEWGAMESETTINGPERMADEATH = "Permadeath",
@@ -226,7 +225,6 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	NEWGAMESETTINGFREE_UPGRADE = "Free upgrade",
 	NEWGAMESETTINGMATERIALS = "Starting materials",
 	NEWGAMESETTINGMONEY = "Starting gold",
-	
 	SETTINGSKIP_PROLOGUE_DESCRIPT = "Skip prologue",
 	SETTINGGF_ONLY_UPG_DESCRIPT = "Only Growth Factor can be upgraded",
 	SETTINGPERMADEATH_DESCRIPT = "Permadeath",
@@ -238,11 +236,9 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	SETTINGFREE_UPGRADE_DESCRIPT = "Free upgrade",
 	SETTINGMATERIALS_DESCRIPT = "Starting materials",
 	SETTINGMONEY_DESCRIPT = "Starting gold",
-	
 	DIFF_EASY = "easy",
 	DIFF_NORMAL = "normal",
 	DIFF_HARD = "hard",
-	#
 	TUTORIALINFONAME = "Introduction",
 	TUTORIALINFOQUESTION = "Is it your first time playing Strive: Conquest?",
 	TUTORIALINFOEXPLANATION = """You can open tutorial any time you wish,
@@ -639,10 +635,8 @@ Otherwise: +3 Physics""",
 	ITEMSLOTRHAND = "Right Hand",
 	ITEMSLOTNECK = "Neck",
 	ITEMSLOTTOOL = "Tool",
-	
 	ITEMREQNONUNIQUE = "Can only be applied to non-unique slaves",
 	ITEMREQSMASTERY = "Masteries levels not matched or already know this skill",
-	
 	ITEMLEATHER_COLLAR = "Leather Collar",
 	ITEMLEATHER_COLLARDESCRIPT = "A simple leather collar that signifies ownership.",
 	ITEMELEGANT_CHOKER = "Elegant Choker",
@@ -836,7 +830,6 @@ When casting a spell has 25% chance to cast it an additional time.
 	ITEMLEGS_BASE_CLOTHDESCRIPT = "A light lower armor which can be worn by anyone. Provides reasonable protection from spell type damage.",
 	ITEMLEGS_BASE_LEATHERDESCRIPT = "A lower armor assembled from bones or leather, requires some training for comfortable usage.",
 	ITEMLEGS_BASE_METALDESCRIPT = "A heavy lower armor generally made of metal. Provides great protection from skill type damage.",
-	
 	ITEMSKILLBOOK_HYPERBOREA = "Magic Tome: Winds of Hyperborea",
 	ITEMSKILLBOOK_HYPERBOREADESCRIPT = "Teaches Skill: Winds of Hyperborea. Requirements: Water Mastery - 4, Light Mastery - 4",
 	ITEMSKILLBOOK_HOLYLANCE = "Magic Tome: Holy Lance",
@@ -851,7 +844,6 @@ When casting a spell has 25% chance to cast it an additional time.
 	ITEMSKILLBOOK_DARK_FLAMEDESCRIPT = "Teaches Skill: Dark Flames. Requirements: Fire Mastery - 5, Dark Mastery - 3",
 	ITEMSKILLBOOK_HOLY_LANCE = "Magic Tome: Holy Lance",
 	ITEMSKILLBOOK_HOLY_LANCEDESCRIPT = "Teaches Skill: Holy Lance. Requirements: Warfare 4. Light Mastery - 3.",
-	
 	GEARSWORD = "Swords",
 	GEARAXE = "Axes",
 	GEARSTAFF = "Staves",
@@ -1118,7 +1110,9 @@ Hotkey: 3""",
 	SKILLWIND_ATK = "Wind Flurry",
 	SKILLWIND_ATKDESCRIPT = "Deals 80% of ATK as {color=yellow|Air} damage to one target and random enemy.",
 	SKILLWATER_EDGE = "Water Blade",
-	SKILLWATER_EDGEDESCRIPT = "Deals 100% of MATK as {color=yellow|Water} damage. Applies Wet status. \n\nWet: Next Fire damage is reduced by 50%, next Air damage is increased by 50%, next application of Freeze is guaranteed.",
+	SKILLWATER_EDGEDESCRIPT = """Deals 100% of MATK as {color=yellow|Water} damage. Applies Wet status. 
+
+Wet: Next Fire damage is reduced by 50%, next Air damage is increased by 50%, next application of Freeze is guaranteed.""",
 	SKILLHOLY_ATK = "Holy Attack",
 	SKILLHOLY_ATKDESCRIPT = "Deals 120% of ATK as {color=yellow|Light} damage. Has 20% chance to Confuse target.",
 	SKILLFIRE_CLEAVE = "Fire Cleave",
@@ -1143,9 +1137,15 @@ Hotkey: 3""",
 	SKILLSHADOWSTRIKE = "Shadow Strike",
 	SKILLSHADOWSTRIKEDESCRIPT = "Deals 130% of ATK as {color=yellow|Dark} damage to a target. Reduces target's ATK and MATK by 20 for 2 turns.",
 	SKILLFIREARR = "Fire Arrow",
-	SKILLFIREARRDESCRIPT = "Deals 100% of MATK as {color=yellow|Fire} damage. Has 20% chance to apply Burn for 2 turns. Chance increases at higher Fire Mastery level. \n\nBurning: Take 8% of Maximum HP as Fire damage per turn.",
-	SKILLFIREARRDESCRIPT_1 = "Deals 100% of MATK as {color=yellow|Fire} damage. Has 60% chance to apply Burn for 2 turns. Chance increases at higher Fire Mastery level. \n\nBurning: Take 8% of Maximum HP as Fire damage per turn.",
-	SKILLFIREARRDESCRIPT_2 = "Deals 100% of MATK as {color=yellow|Fire} damage. Has 100% chance to apply Burn for 2 turns. \n\nBurning: Take 8% of Maximum HP as Fire damage per turn.",
+	SKILLFIREARRDESCRIPT = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 20% chance to apply Burn for 2 turns. Chance increases at higher Fire Mastery level. 
+
+Burning: Take 8% of Maximum HP as Fire damage per turn.""",
+	SKILLFIREARRDESCRIPT_1 = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 60% chance to apply Burn for 2 turns. Chance increases at higher Fire Mastery level. 
+
+Burning: Take 8% of Maximum HP as Fire damage per turn.""",
+	SKILLFIREARRDESCRIPT_2 = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 100% chance to apply Burn for 2 turns. 
+
+Burning: Take 8% of Maximum HP as Fire damage per turn.""",
 	SKILLLIGHTNING = "Lightning",
 	SKILLLIGHTNINGDESCRIPT = "Deals 125% of MATK as {color=yellow|Air} damage. Stuns target for 1 turn.",
 	SKILLMINDBLAST = "Mind Blast",
@@ -1175,7 +1175,9 @@ Hotkey: 3""",
 	SKILLPURGE = "Purge",
 	SKILLPURGEDESCRIPT = "Removes all negative buffs from target.",
 	SKILLRIGHTEOUS_FIRE = "Righteous Fire",
-	SKILLRIGHTEOUS_FIREDESCRIPT = "Deals 75% of MATK as {color=yellow|Fire} damage. Silences target for 2 turns. \n\nSilenced: Can't use Spell type abilities.",
+	SKILLRIGHTEOUS_FIREDESCRIPT = """Deals 75% of MATK as {color=yellow|Fire} damage. Silences target for 2 turns. 
+
+Silenced: Can't use Spell type abilities.""",
 	SKILLELEMENTAL_WEAKNESS = "Elemental Weakness",
 	SKILLELEMENTAL_WEAKNESSDESCRIPT = "Reduces target's Fire, Air, Earth and Water resists by 40 for 3 turns.",
 	SKILLELEMENTAL_PROTECTION = "Elemental Protection",
@@ -1223,7 +1225,9 @@ Hotkey: 3""",
 	SKILLVOID_BARRAGE = "Void Barrage",
 	SKILLVOID_BARRAGEDESCRIPT = "Deals 80% of MATK as {color=yellow|Dark} damage 5 times to random targets.",
 	SKILLDRAW_BLOOD = "Draw Blood",
-	SKILLDRAW_BLOODDESCRIPT = "Strike target for 110% of ATK and cause it to Bleed for 2 turns. \n\nBleeding: Take 5% of Maximum HP as neutral damage per turn.",
+	SKILLDRAW_BLOODDESCRIPT = """Strike target for 110% of ATK and cause it to Bleed for 2 turns. 
+
+Bleeding: Take 5% of Maximum HP as neutral damage per turn.""",
 	SKILLSUNDER = "Sunder",
 	SKILLSUNDERDESCRIPT = "Strike target for 85% of ATK and reduce its DEF by 50% for 5 turns.",
 	SKILLCLEAVE = "Cleave",
@@ -1231,23 +1235,37 @@ Hotkey: 3""",
 	SKILLSTRIKE_THROUGH = "Strike Through",
 	SKILLSTRIKE_THROUGHDESCRIPT = "Strike target row for 110% of ATK.",
 	SKILLEXECUTION = "Execution",
-	SKILLEXECUTIONDESCRIPT = "Strike target for 275% of ATK. If it dies, apply Fear to all enemies for 1 turn. \n\nFear: Damage is reduced by 25%.",
+	SKILLEXECUTIONDESCRIPT = """Strike target for 275% of ATK. If it dies, apply Fear to all enemies for 1 turn. 
+
+Fear: Damage is reduced by 25%.""",
 	SKILLDISARM_ENEMY = "Disarm",
-	SKILLDISARM_ENEMYDESCRIPT = "Strike target for 130% of ATK and Disarm it for 3 turns. \n\nDisarmed: Can't use Skill type abilities.",
+	SKILLDISARM_ENEMYDESCRIPT = """Strike target for 130% of ATK and Disarm it for 3 turns. 
+
+Disarmed: Can't use Skill type abilities.""",
 	SKILLPROVOCATION = "Provocation",
-	SKILLPROVOCATIONDESCRIPT = "Strike target for 70% of ATK and Provoke it for 2 turns. \n\nProvoked: Focused on caster, can use only single-target abilities.",
+	SKILLPROVOCATIONDESCRIPT = """Strike target for 70% of ATK and Provoke it for 2 turns. 
+
+Provoked: Focused on caster, can use only single-target abilities.""",
 	SKILLSTONEWALL = "Stonewall",
-	SKILLSTONEWALLDESCRIPT = "Restore 15% of Maximum HP and apply Fortified for 5 turns. \n\nFortified: Incoming Damage is reduced by 25%.",
+	SKILLSTONEWALLDESCRIPT = """Restore 15% of Maximum HP and apply Fortified for 5 turns. 
+
+Fortified: Incoming Damage is reduced by 25%.""",
 	SKILLDIP_POISON = "Dip Poison",
-	SKILLDIP_POISONDESCRIPT = "Strike target for 100% of ATK and Poison it for 4 turns. \n\nPoisoned: Take 5% of Maximum HP as neutral damage per turn.",
+	SKILLDIP_POISONDESCRIPT = """Strike target for 100% of ATK and Poison it for 4 turns. 
+
+Poisoned: Take 5% of Maximum HP as neutral damage per turn.""",
 	SKILLBACKKICK = "Back Kick",
-	SKILLBACKKICKDESCRIPT = "Strike target for 130% of ATK in melee and apply Silence for 4 turns. \n\nSilenced: Can't use Spell type abilities.",
+	SKILLBACKKICKDESCRIPT = """Strike target for 130% of ATK in melee and apply Silence for 4 turns. 
+
+Silenced: Can't use Spell type abilities.""",
 	SKILLDEVASTATION = "Devastation",
 	SKILLDEVASTATIONDESCRIPT = "Strike target for 75% of ATK 6 times. If target dies, leftover strikes go to random targets.",
 	SKILLSTRAFE = "Strafe",
 	SKILLSTRAFEDESCRIPT = "Shoot target for 45% of ATK 3 times. If target dies, leftover shots go to random targets.",
 	SKILLENSNARE = "Ensnare",
-	SKILLENSNAREDESCRIPT = "Strike target column for 50% of ATK and Ensnare them. \n\nEnsnared: Evasion is reduced by 75.",
+	SKILLENSNAREDESCRIPT = """Strike target column for 50% of ATK and Ensnare them. 
+
+Ensnared: Evasion is reduced by 75.""",
 	SKILLBOLT_TRAP = "Bolt Trap",
 	SKILLBOLT_TRAPDESCRIPT = "Set up a trap under enemy column. If they use a skill, they take damage as 150% of ATK.",
 	SKILLARROW_HAIL = "Arrow Hail",
@@ -1261,13 +1279,17 @@ Hotkey: 3""",
 	SKILLFIRE_SHIELDDESCRIPT_1 = "Target ally row receive 40 Water Resist for 5 turns. Increases number of targets with Fire Mastery.",
 	SKILLFIRE_SHIELDDESCRIPT_2 = "All allies receive 40 Water Resist for 5 turns.",
 	SKILLMAGMA_BLAST = "Magma Blast",
-	SKILLMAGMA_BLASTDESCRIPT = "Deals 150% of MATK as {color=yellow|Fire} damage and Shatter target for 5 turns. \n\nShattered: MDEF is reduced by 50%.",
+	SKILLMAGMA_BLASTDESCRIPT = """Deals 150% of MATK as {color=yellow|Fire} damage and Shatter target for 5 turns. 
+
+Shattered: MDEF is reduced by 50%.""",
 	SKILLWATER_SHIELD = "Water Shield",
 	SKILLWATER_SHIELDDESCRIPT = "Target ally receives 40 Fire Resist for 5 turns. Increases number of targets with Water Mastery.",
 	SKILLWATER_SHIELDDESCRIPT_1 = "Target ally row receive 40 Fire Resist for 5 turns. Increases number of targets with Water Mastery.",
 	SKILLWATER_SHIELDDESCRIPT_2 = "All allies receive 40 Fire Resist for 5 turns.",
 	SKILLFROST_PRISON = "Frost Prison",
-	SKILLFROST_PRISONDESCRIPT = "Deals 130% of MATK as {color=yellow|Water} damage. Has 50% chance to Freeze target for 1 turn. \n\nFrozen: Next attack deals 125% damage. Air attacks deal 200%% and Fire attacks deal 50%% of damage instead.",
+	SKILLFROST_PRISONDESCRIPT = """Deals 130% of MATK as {color=yellow|Water} damage. Has 50% chance to Freeze target for 1 turn. 
+
+Frozen: Next attack deals 125% damage. Air attacks deal 200%% and Fire attacks deal 50%% of damage instead.""",
 	SKILLCLARITY = "Clarity",
 	SKILLCLARITYDESCRIPT = "Increase MATK by 25%, remove Blind, Sleep and Charm, gain immunity to them for 4 turns.",
 	SKILLBLIZZARD = "Blizzard",
@@ -1278,15 +1300,21 @@ Hotkey: 3""",
 	SKILLEARTH_SHIELDDESCRIPT = "Applies defensive crust to an ally for 5 turns, increasing their DEF based on caster's MATK. Also removes Shredded and Shattered statuses. Effect is upgraded with Earth Mastery.",
 	SKILLEARTH_SHIELDDESCRIPT_1 = "Applies defensive crust to an ally for 5 turns, increasing their DEF and MDEF based on caster's MATK. Also removes Shredded and Shattered statuses.",
 	SKILLACID_BOMB = "Acid Bomb",
-	SKILLACID_BOMBDESCRIPT = "Deals 250% of MATK as {color=yellow|Earth} damage and applies Shredded to target for 3 turns. \n\nShredded: DEF is reduced by 50%.",
+	SKILLACID_BOMBDESCRIPT = """Deals 250% of MATK as {color=yellow|Earth} damage and applies Shredded to target for 3 turns. 
+
+Shredded: DEF is reduced by 50%.""",
 	SKILLOVERGROWTH = "Overgrowth",
-	SKILLOVERGROWTHDESCRIPT = "Deals 50% of MATK as {color=yellow|Earth} damage to all enemies and Ensnares them for 2 turns with 50% chance. \n\nEnsnared: Evasion is reduced by 75.",
+	SKILLOVERGROWTHDESCRIPT = """Deals 50% of MATK as {color=yellow|Earth} damage to all enemies and Ensnares them for 2 turns with 50% chance. 
+
+Ensnared: Evasion is reduced by 75.""",
 	SKILLDISINTEGRATE = "Disintegrate",
 	SKILLDISINTEGRATEDESCRIPT = "Deals 250% of MATK as {color=yellow|Earth} damage to single target and Stun it for 3 turns. If target can't be stunned, applies Shredded instead.",
 	SKILLWIND_BLADE = "Wind Blade",
 	SKILLWIND_BLADEDESCRIPT = "Deals 60% of MATK as {color=yellow|Air} damage to one target and random enemy.",
 	SKILLIGHTNING = "Lightning",
-	SKILLIGHTNINGDESCRIPT = "Deals 125% of MATK as {color=yellow|Air} damage. Has 50% chance to apply Shock for 2 turns. \n\nShocked: Damage is reduced by 15%.",
+	SKILLIGHTNINGDESCRIPT = """Deals 125% of MATK as {color=yellow|Air} damage. Has 50% chance to apply Shock for 2 turns. 
+
+Shocked: Damage is reduced by 15%.""",
 	SKILLHASTE = "Haste",
 	SKILLHASTEDESCRIPT = "Increases Speed of ally by 25 for 4 turns.",
 	SKILLCHAIN_LIGHTNING = "Chain Lightning",
@@ -1304,20 +1332,34 @@ Hotkey: 3""",
 	SKILLBLESSING = "Blessing",
 	SKILLBLESSINGDESCRIPT = "Removes Fear, Ensnared, Blind and Cursed. Increases Hit chance and Evasion by 35% for 6 turns.",
 	SKILLPACIFY = "Pacify",
-	SKILLPACIFYDESCRIPT = "Deals 130% of MATK as {color=yellow|Light} damage and apply Disarmed for 2 turns. \n\nDisarmed: Can't use Skill type abilities.",
+	SKILLPACIFYDESCRIPT = """Deals 130% of MATK as {color=yellow|Light} damage and apply Disarmed for 2 turns. 
+
+Disarmed: Can't use Skill type abilities.""",
 	SKILLRADIANCE = "Radiance",
-	SKILLRADIANCEDESCRIPT = "Deals 80% of MATK as {color=yellow|Light} damage to all enemies and Shatter them for 3 turns. \n\nShattered: MDEF is reduced by 50%.",
+	SKILLRADIANCEDESCRIPT = """Deals 80% of MATK as {color=yellow|Light} damage to all enemies and Shatter them for 3 turns. 
+
+Shattered: MDEF is reduced by 50%.""",
 	SKILLE_RES = "Mass Resurrection",
 	SKILLE_RESDESCRIPT = "Resurrect every ally (except undead) with 80% of their Maximum HP.",
 	SKILLDARKNESS = "Darkness",
-	SKILLDARKNESSDESCRIPT = "Deals 75% of MATK as {color=yellow|Dark} damage and applies Blind for 1 turn. Duration improves with Dark Mastery. \n\nBlind: Hit chance is reduced by 50.",
-	SKILLDARKNESSDESCRIPT_1 = "Deals 75% of MATK as {color=yellow|Dark} damage and applies Blind for 2 turns. \n\nBlind: Hit chance is reduced by 50.",
+	SKILLDARKNESSDESCRIPT = """Deals 75% of MATK as {color=yellow|Dark} damage and applies Blind for 1 turn. Duration improves with Dark Mastery. 
+
+Blind: Hit chance is reduced by 50.""",
+	SKILLDARKNESSDESCRIPT_1 = """Deals 75% of MATK as {color=yellow|Dark} damage and applies Blind for 2 turns. 
+
+Blind: Hit chance is reduced by 50.""",
 	SKILLBLACK_TENDRILS = "Black Tendrils",
-	SKILLBLACK_TENDRILSDESCRIPT = "Deals 30% of MATK as {color=yellow|Dark} damage to all enemies and applies Ensnared for 1 turn. \n\nEnsnared: Evasion is reduced by 75.",
+	SKILLBLACK_TENDRILSDESCRIPT = """Deals 30% of MATK as {color=yellow|Dark} damage to all enemies and applies Ensnared for 1 turn. 
+
+Ensnared: Evasion is reduced by 75.""",
 	SKILLMALEDICTION = "Malediction",
-	SKILLMALEDICTIONDESCRIPT = "Deals 60% of MATK as {color=yellow|Dark} damage and Curses target for 5 turns. \n\nCursed: All resists are lowered by 40.",
+	SKILLMALEDICTIONDESCRIPT = """Deals 60% of MATK as {color=yellow|Dark} damage and Curses target for 5 turns. 
+
+Cursed: All resists are lowered by 40.""",
 	SKILLDEVOUR_MAGIC = "Devour Magic",
-	SKILLDEVOUR_MAGICDESCRIPT = "Remove all positive buffs from a single enemy. Apply Silence for 3 turns. \n\nSilenced: Can't use Spell type abilities.",
+	SKILLDEVOUR_MAGICDESCRIPT = """Remove all positive buffs from a single enemy. Apply Silence for 3 turns. 
+
+Silenced: Can't use Spell type abilities.""",
 	SKILLVEIL = "Shadow Veil",
 	SKILLVEILDESCRIPT = "Buff ally column for 5 turns: Light and Dark resists are increased by 30, MDEF is increased based on caster's MATK.",
 	SKILLSKILL_VOID = "Void",
@@ -1352,10 +1394,8 @@ Hotkey: 3""",
 	SKILLABYSS_GAZEDESCRIPT = "Deals 125% of MATK as {color=yellow|Mind} damage to all enemies. Stuns for 2 turns.",
 	SKILLDARK_FLAME = "Dark Flames",
 	SKILLDARK_FLAMEDESCRIPT = "Converts all Burn effects on enemies into Dark Flame effects. They deal true damage, can't be extinguished by Water damage and last for 4 turns.",
-	
 	TRAITVIGORDESCRIPT = "Increases Health Regeneration by 30%.",
 	TRAITMEDITATIONDESCRIPT = "Increases Mana Regeneration by 30%.",
-	
 	MASTERYWARFARE = "Warfare",
 	MASTERYPROTECTION = "Protection",
 	MASTERYSTEALTH = "Stealth",
@@ -3857,8 +3897,6 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYDWARF_FIGHTER_ELITE = "Elite Dwarf Soldier",
 	ENEMYDWARF_RANGED = "Dwarf Crossbowman",
 	ENEMYKURO = "Kuro",
-	
-	
 	FOODFILTERHIGH = "High",
 	FOODFILTERMED = "Med",
 	FOODFILTERLOW = "Low",
@@ -7067,8 +7105,6 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	ITEMXARI_AMULETDESCRIPT = "Personal work of Xari gifted to you for your help. It shines with imbued power of its maker.",
 	ITEMAMELIA_DRESS = "Amelia's servant Dress",
 	ITEMAMELIA_DRESSDESCRIPT = "Old dress beloning to one of Servant's leaders. Its exceptional craftsmanwork does not show any sign of weariness.",
-	
-	
 	SCENEWIP = "Sorry! This scene is currently WIP. ",
 	AMELIASCENEOPTION = "I wonder if you could repay me for my work...",
 	UNIQUE_CLASS = "Can't be learned normally",
@@ -15243,7 +15279,7 @@ Despite Lira's looks, the guards have relaxed upon hearing her. As you moved ins
 
 She passes you a small folded note. As you read through it you notice that handwriting is rather clean and elegant. 
 
-"Aliron's Mayor must be warned that there's a traitor among his servants..."
+\"Aliron's Mayor must be warned that there's a traitor among his servants...\"
 
 The ominous message does not give any distinct clues to who has written it, however it ends on the invitation to visit one of nearby districts just out of city walls, promising to give more information on the subject.""",
 	KURO_CHURCH_NOTE2 = """Ginny looks at you worryingly as you read the message before finally speaking up. 
@@ -15361,7 +15397,7 @@ Kuro: — Let's go. I wanna get into the bath before the night.""",
 Kuro takes a pause before continuing with seemingly unrelated narration.
 
 - I was born in a merchant family, nothing fancy, but at the age of five I've realized that my peers aren't particularly smart. While not surprising, neither were my parents. Things grew worse with time but fairly quickly I've learned to mask my intelligence from others. The less you stand out, the fewer unwanted attention you gather.""",
-	KURO_BACK_START3 = """- At the age of eleven I've staged my disappearance. Thankfully, I've had access to enough information to survive on my own. But the world is tough place, especially for a young girl. I've discovered an ancient deity, the one which I now share powers with. That's the gist of how I have been living to this day.""",
+	KURO_BACK_START3 = "- At the age of eleven I've staged my disappearance. Thankfully, I've had access to enough information to survive on my own. But the world is tough place, especially for a young girl. I've discovered an ancient deity, the one which I now share powers with. That's the gist of how I have been living to this day.",
 	KURO_BACK_START4 = """- Heh, I've skipped over something, haven't I? The cult.
 
 Kuro takes a pause, apparently choosing her next words.
@@ -17737,5 +17773,5 @@ After a few minutes nothing still happened and [name] decides to move on.""",
 	KURO_BOOK_SS = "Progress Kuro's story",
 	KURO_TOP_SS = "Progress Kuro's story",
 	KURO_ZEPHYRA_SS = "Have both Kuro and Zephyra and progress their quests, grab Zephyra's tail",
-	KURO_WEDDING_SS = "Make Kuro your lifelong partner",
+	KURO_WEDDING_SS = "Make Kuro your lifelong partner"
 }

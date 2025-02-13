@@ -1653,6 +1653,7 @@ func generate_simple_fighter(data):
 	statlist.xpreward = data.xpreward
 	statlist.loottable = data.loot
 	statlist.name = data.name
+	statlist.race = ""
 	statlist.racegroup = data.race
 	for i in variables.resists_list:
 #		statlist.resists[i] = 0

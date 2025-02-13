@@ -24,7 +24,11 @@ var lands = {
 		events = [],
 		tags = [],
 		capital_options = ['quest_board'],#,'location_purchase'],
-		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
+		material_tiers = {
+			t1 = [{type = 'quest_completed', name = 'princess_persuasion', check = false},],
+			t2 = [{type = 'quest_completed', name = 'princess_persuasion', check = true},{type = 'quest_completed', name = 'getting_lira_quest', check = false}],
+			t3 = [{type = 'quest_completed', name = 'getting_lira_quest', check = true},],
+		},
 		area_shop_items = {
 			meat = {min = 40, max = 80, chance = 1},
 			fish = {min = 40, max = 80, chance = 0.9},
@@ -52,7 +56,7 @@ var lands = {
 			itempool3 = {items = ['leather_collar','animal_ears','animal_gloves','maid_dress','worker_outfit','lacy_underwear','handcuffs','strapon','anal_beads'], min = 3, max = 6, chance = 0.8},
 			itempool4 = {items = ['beer', 'wine','wine2','alcohol','aphrodisiac','hairdye'], min = 4, max = 8, chance = 0.8},
 			itempool5 = {items = ['map_goblin_cave','map_bandit_den'], min = 1, max = 2, chance = 1},
-			itempool6 = {items = ['map_bandit_fort','map_undead_crypt','map_fire_depths','map_rebel_redoubt'], min = 1, max = 1, chance = 1},
+			itempool6 = {items = ['map_bandit_fort','map_undead_crypt','map_fire_depths','map_rebel_redoubt'], min = 1, max = 1, chance = 1,},# condition = [{type = 'quest_completed', name = 'getting_lira_quest', check = true},]},
 
 			},
 		capital_background = 'aliron',
@@ -78,7 +82,11 @@ var lands = {
 		events = [],
 		tags = [],
 		capital_options = [],
-		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
+		material_tiers = {
+			t1 = [{type = 'quest_completed', name = 'princess_persuasion', check = false},],
+			t2 = [{type = 'quest_completed', name = 'princess_persuasion', check = true},{type = 'quest_completed', name = 'getting_lira_quest', check = false}],
+			t3 = [{type = 'quest_completed', name = 'getting_lira_quest', check = true},],
+		},
 		area_shop_items = {
 			vegetables = {min = 40, max = 80, chance = 1},
 			grain = {min = 60, max = 150, chance = 1},
@@ -119,7 +127,11 @@ var lands = {
 		guilds = [],
 		tags = [],
 		capital_options = [],
-		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
+		material_tiers = {
+			t1 = [{type = 'quest_completed', name = 'princess_persuasion', check = false},],
+			t2 = [{type = 'quest_completed', name = 'princess_persuasion', check = true},{type = 'quest_completed', name = 'getting_lira_quest', check = false}],
+			t3 = [{type = 'quest_completed', name = 'getting_lira_quest', check = true},],
+		},
 		area_shop_items = {},
 		capital_background = 'dwarfs_city',
 		capital_name = "Dwarven Capital",
@@ -142,7 +154,11 @@ var lands = {
 		locations = {},
 		locationpool = ['dungeon_goblin_cave'],
 		guilds = [],
-		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
+		material_tiers = {
+			t1 = [{type = 'quest_completed', name = 'princess_persuasion', check = false},],
+			t2 = [{type = 'quest_completed', name = 'princess_persuasion', check = true},{type = 'quest_completed', name = 'getting_lira_quest', check = false}],
+			t3 = [{type = 'quest_completed', name = 'getting_lira_quest', check = true},],
+		},
 		area_shop_items = {},
 	},
 	seas = {
@@ -159,7 +175,11 @@ var lands = {
 		locations = {},
 		locationpool = ['dungeon_bandit_den'],
 		guilds = [],
-		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
+		material_tiers = {
+			t1 = [{type = 'quest_completed', name = 'princess_persuasion', check = false},],
+			t2 = [{type = 'quest_completed', name = 'princess_persuasion', check = true},{type = 'quest_completed', name = 'getting_lira_quest', check = false}],
+			t3 = [{type = 'quest_completed', name = 'getting_lira_quest', check = true},],
+		},
 		area_shop_items = {
 			},
 	},
@@ -178,7 +198,11 @@ var lands = {
 		guilds = ['beastkin_slave_trader'],
 		events = [],
 		capital_options = [],
-		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
+		material_tiers = {
+			t1 = [{type = 'quest_completed', name = 'princess_persuasion', check = false},],
+			t2 = [{type = 'quest_completed', name = 'princess_persuasion', check = true},{type = 'quest_completed', name = 'getting_lira_quest', check = false}],
+			t3 = [{type = 'quest_completed', name = 'getting_lira_quest', check = true},],
+		},
 		area_shop_items = {
 			meat = {min = 40, max = 80, chance = 1},
 			leather = {min = 25, max = 35, chance = 0.7},
@@ -591,7 +615,11 @@ var locations = {
 		actions = ['local_shop'],
 		tags = ['recruit_easy'],
 		event_pool = [['event_good_recruit', 0.5], ['event_good_loot_small', 1], ['event_nothing_found', 2],['exotic_slave_trader',0.5], ['event_good_slavers_woods',1], ['event_good_rebels_beastkin',1]],
-		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
+		material_tiers = {
+			t1 = [{type = 'quest_completed', name = 'princess_persuasion', check = false},],
+			t2 = [{type = 'quest_completed', name = 'princess_persuasion', check = true},{type = 'quest_completed', name = 'getting_lira_quest', check = false}],
+			t3 = [{type = 'quest_completed', name = 'getting_lira_quest', check = true},],
+		},
 		background_pool = ['village1'],
 		bgm = 'exploration',
 		travel_time = [1,1],
@@ -631,7 +659,11 @@ var locations = {
 		actions = ['local_shop'],
 		tags = ['recruit_easy'],
 		event_pool = [],
-		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
+		material_tiers = {
+			t1 = [{type = 'quest_completed', name = 'princess_persuasion', check = false},],
+			t2 = [{type = 'quest_completed', name = 'princess_persuasion', check = true},{type = 'quest_completed', name = 'getting_lira_quest', check = false}],
+			t3 = [{type = 'quest_completed', name = 'getting_lira_quest', check = true},],
+		},
 		background_pool = ['village2'],
 		bgm = 'exploration',
 		travel_time = [1,1],
@@ -667,7 +699,11 @@ var locations = {
 		actions = [],
 		tags = ['recruit_hard'],
 		event_pool = [],
-		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
+		material_tiers = {
+			t1 = [{type = 'quest_completed', name = 'princess_persuasion', check = false},],
+			t2 = [{type = 'quest_completed', name = 'princess_persuasion', check = true},{type = 'quest_completed', name = 'getting_lira_quest', check = false}],
+			t3 = [{type = 'quest_completed', name = 'getting_lira_quest', check = true},],
+		},
 		background_pool = ['forest1'],
 		bgm = 'exploration',
 		travel_time = [1,1],
@@ -686,7 +722,11 @@ var locations = {
 		tags = ['recruit_hard'],
 		actions = [],
 		event_pool = [],
-		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
+		material_tiers = {
+			t1 = [{type = 'quest_completed', name = 'princess_persuasion', check = false},],
+			t2 = [{type = 'quest_completed', name = 'princess_persuasion', check = true},{type = 'quest_completed', name = 'getting_lira_quest', check = false}],
+			t3 = [{type = 'quest_completed', name = 'getting_lira_quest', check = true},],
+		},
 		background_pool = ['cave_3'],
 		bgm = 'exploration',
 		travel_time = [1,1],
