@@ -1483,7 +1483,8 @@ var data = {
 	},
 	act3_scene = {
 		tags = [
-			"dialogue_scene"
+			"dialogue_scene",
+			"blackscreen_transition_slow"
 		],
 		custom_background = "act3_art",
 		scene_type = "story_scene",
