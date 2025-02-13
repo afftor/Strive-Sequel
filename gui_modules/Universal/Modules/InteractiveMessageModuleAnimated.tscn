@@ -202,9 +202,6 @@ bbcode_enabled = true
 bbcode_text = "[color=#72a887]Test Text[/color]"
 text = "Test Text"
 fit_content_height = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="hotkey" type="Label" parent="BackgroundT1/ScrollContainer/VBoxContainer/Button"]
 visible = false
@@ -329,9 +326,6 @@ custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[color=#72a887]Test Text[/color]"
 text = "Test Text"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="hotkey" type="Label" parent="BackgroundT2/ScrollContainer/VBoxContainer/Button"]
 visible = false
@@ -353,6 +347,7 @@ __meta__ = {
 visible = false
 
 [node name="EventCharacters" type="ScrollContainer" parent="."]
+visible = false
 margin_left = 399.0
 margin_top = 101.0
 margin_right = 562.0
@@ -408,6 +403,7 @@ __meta__ = {
 }
 
 [node name="PlayerCharacters" type="ScrollContainer" parent="."]
+visible = false
 margin_left = 1357.0
 margin_top = 101.0
 margin_right = 1520.0

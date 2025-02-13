@@ -1986,7 +1986,7 @@ func get_body_image():
 			return images.get_shade(text)
 		else:
 			return null
-	return load(statlist.body_image)
+	return load(statlist.body_image)#can't be returned?
 
 func get_all_sex_traits():
 	var return_traits = {}
