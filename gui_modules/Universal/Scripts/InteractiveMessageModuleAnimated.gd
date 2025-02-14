@@ -45,22 +45,25 @@ func hide_dialogue(action = "hide"):
 func open(scene):
 	if gui_controller.dialogue == null:
 		gui_controller.dialogue = self
+	if scene.has("variations"):
+		select_scene_variation_based_on_data(scene)
+		return
 #	if get_tree().get_root().get_node_or_null("ANIMLoot") && get_tree().get_root().get_node("ANIMLoot").is_visible():
 #		get_tree().get_root().get_node("ANIMLoot").raise()
 	input_handler.PlaySound("speech")
 	if is_just_started:
+		hide()
+		var preset_type = 1
+		if scene.has("dialogue_type"):
+			preset_type = scene.dialogue_type
+		preset_dialogue_type(preset_type)
+		next_dialogue_type = preset_type
 		cur_text_label.bbcode_text = ''
 		previous_text = ''
-		hide()
 	
 	get_tree().get_root().set_disable_input(true)
 	if scene.has("save_scene_to_gallery") && scene.save_scene_to_gallery:
 		save_scene_to_gallery(scene)
-	
-	if scene.has("variations"):
-		select_scene_variation_based_on_data(scene)
-		get_tree().get_root().set_disable_input(false)
-		return
 	
 	if scene.has("dialogue_type"):
 		next_dialogue_type = scene.dialogue_type
@@ -93,8 +96,7 @@ func open(scene):
 	raise()
 	if get_tree().get_root().get_node_or_null("ANIMLoot") && get_tree().get_root().get_node("ANIMLoot").is_visible():
 		get_tree().get_root().get_node("ANIMLoot").raise()
-	if scene.has("common_effects"):
-		globals.common_effects(scene.common_effects)
+	#common_effects was here
 	if typeof(scene.text) == TYPE_STRING:
 		scene.text = [{text = scene.text, reqs = []}]
 	#MIND! From current code's point of view starting dialogue_option is 0, so
@@ -149,6 +151,8 @@ func open(scene):
 			ResourceScripts.core_animations.UnfadeAnimation(new_background, type_trans_time)
 		else:
 			new_background.modulate.a = 1
+	if scene.has("common_effects"):
+		globals.common_effects(scene.common_effects)
 	clear_character_images()
 	$BackgroundT1/ImagePanel.hide()
 	handle_scene_backgrounds(scene)
@@ -172,6 +176,24 @@ func open(scene):
 		get_tree().get_root().get_node("ANIMTaskAquared").raise()
 	
 	show()
+
+func preset_dialogue_type(new_type):
+	var old_background
+	var new_background
+	if new_type == 1:
+		old_background = $BackgroundT2
+		cur_text_label = text_label_T1
+		new_background = $BackgroundT1
+		cur_opt_cont = opt_cont_T1
+	elif new_type == 2:
+		old_background = $BackgroundT1
+		cur_text_label = text_label_T2
+		new_background = $BackgroundT2
+		cur_opt_cont = opt_cont_T2
+	old_background.hide()
+	new_background.modulate.a = 1
+	new_background.show()
+	$CustomBackground.hide()#if new_type == 2, BG will be switched on in handle_scene_backgrounds()
 
 
 func show_buttons():
@@ -810,6 +832,8 @@ func handle_characters_sprites(scene):
 	var scene_char = null
 	var char_shade = false
 	var image_panel = $BackgroundT1/ImagePanel
+	var for_gallery
+	var for_gallery2
 	
 	if !scene.has("character") and !scene.has("character2"):
 		$CharacterImage2.hide()
@@ -817,6 +841,7 @@ func handle_characters_sprites(scene):
 		if scene.has('image') && scene.image != '' && scene.image != null:
 			image_panel.show()
 			image_panel.get_node("SceneImage").texture = images.get_scene(scene.image)
+			input_handler.update_progress_data("monochrome", scene.image)
 			if dialogue_window_type == 1:
 				hide_long_text()
 		else:
@@ -837,9 +862,6 @@ func handle_characters_sprites(scene):
 				char_shade = false
 				if scene_char == 'spouse':
 					scene_char = get_spouse_sprite()
-				if scene_char != null and !input_handler.progress_data.characters.has(scene_char):
-					input_handler.progress_data.characters.append(scene_char)
-					input_handler.save_progress_data(input_handler.progress_data)
 			if scene_char != null and ch1 != scene_char:
 				# test if it's a different char and not just a variation
 				var unique_name_char: String = "unique_char"
@@ -851,6 +873,7 @@ func handle_characters_sprites(scene):
 					ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, type_trans_time)
 				
 				$CharacterImage.texture = images.get_sprite(scene_char)
+				for_gallery = scene_char
 				if char_shade:
 					$CharacterImage.material.set_shader_param('opacity', 1.0)
 					ch1_shade = true
@@ -877,12 +900,10 @@ func handle_characters_sprites(scene):
 				char_shade = false
 				if scene_char == 'spouse':
 					scene_char = get_spouse_sprite()
-				if scene_char != null and !input_handler.progress_data.characters.has(scene_char):
-					input_handler.progress_data.characters.append(scene_char)
-					input_handler.save_progress_data(input_handler.progress_data)
 			if scene_char != null and ch2 != scene_char:
 				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2, type_trans_time)
 				$CharacterImage2.texture = images.get_sprite(scene_char)
+				for_gallery2 = scene_char
 				if char_shade:
 					$CharacterImage2.material.set_shader_param('opacity', 1.0)
 					ch2_shade = true
@@ -921,6 +942,7 @@ func handle_characters_sprites(scene):
 				var image = images.get_sprite(non_body)
 				if image != null:
 					$CharacterImage.texture = image
+					for_gallery = non_body
 				else:
 					$CharacterImage.texture = person.get_body_image()
 				ch1 = person.get_stat("unique").to_lower()
@@ -935,6 +957,7 @@ func handle_characters_sprites(scene):
 				var image = images.get_sprite(non_body)
 				if image != null:
 					$CharacterImage2.texture = image
+					for_gallery2 = non_body
 				else:
 					$CharacterImage2.texture = person.get_body_image()
 				ch1 = person.get_stat("unique").to_lower()
@@ -947,8 +970,9 @@ func handle_characters_sprites(scene):
 			var spouse_person = characters_pool.get_char_by_id(ResourceScripts.game_progress.spouse)
 			var spouse_unique_name = spouse_person.get_stat('unique')
 			if scene_char == spouse_unique_name and worlddata.pregen_character_sprites[scene_char].has("wed"):
-				var image = images.get_sprite(worlddata.pregen_character_sprites[scene_char].wed.path)
-				$CharacterImage.texture = image
+				var image_name = worlddata.pregen_character_sprites[scene_char].wed.path
+				$CharacterImage.texture = images.get_sprite(image_name)
+				for_gallery = image_name
 	
 	
 	#handle unique character script
@@ -986,6 +1010,11 @@ func handle_characters_sprites(scene):
 				ch2_shade = false
 				ch2 = person.get_stat("unique")
 				return
+	
+	if for_gallery != null:
+		input_handler.update_progress_data("characters", for_gallery)
+	if for_gallery2 != null:
+		input_handler.update_progress_data("characters", for_gallery2)
 #	if !scene.has("character"):
 #		$ImagePanel.show()
 #		$CharacterImage.hide()
@@ -1034,7 +1063,7 @@ func hide_long_text():
 	var long_frame = $BackgroundT1/LongFrame
 	bg_T1.get_stylebox("panel", "").modulate_color.a = 255
 	long_frame.hide()
-	dialogue_BG.rect_size.y = self.rect_size.y - options_background.rect_size.y
+	dialogue_BG.rect_size.y = bg_T1.rect_size.y - options_background.rect_size.y
 	dialogue_BG.rect_position.y = 0
 	cur_text_label.rect_size = base_text_size
 	cur_text_label.rect_position = base_text_position

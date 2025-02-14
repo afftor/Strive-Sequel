@@ -26,6 +26,10 @@ func _ready():
 	$EroButton.set_meta("type", "ero")
 	$SceneButton.connect("pressed", self, "set_state", ["scenes"])
 	$SceneButton.set_meta("type", "scenes")
+	$MonoButton.connect("pressed", self, "set_state", ["mono"])
+	$MonoButton.set_meta("type", "mono")
+	$CharButton.connect("pressed", self, "set_state", ["char"])
+	$CharButton.set_meta("type", "char")
 	$CloseButton.connect("pressed", self, "close_gallery")
 	set_state("story")
 	
@@ -57,6 +61,12 @@ func build_gallery(page):
 		"scenes":
 			src = Gallery.scenes_order
 			src_unlock = input_handler.progress_data.gallery_seq
+		"mono":
+			src = Gallery.mono_scenes
+			src_unlock = input_handler.progress_data.monochrome
+		"char":
+			src = Gallery.char_scenes
+			src_unlock = input_handler.progress_data.characters
 	
 	#building pages buttons
 	input_handler.ClearContainer($Pagination)
@@ -82,13 +92,21 @@ func build_gallery(page):
 				globals.connectgallerytooltip(node.get_node("QuestionMark"), Gallery.scene_tooltips[src[i]])
 #			node.get_node("SceneName").text = "Scene Name"
 		else:
+			node.get_node("Image").texture = get_texture_by_name(src[i])
 			if state == "scenes":
-				node.get_node("Image").texture = images.get_background(Gallery.get_image_for_seq(src[i]))
 				node.connect("pressed", Gallery, "play_scene", [src[i]])
 			else:
-				node.get_node("Image").texture = images.get_background(src[i])
 				node.connect("pressed", self, "show_fullscreen", [src[i]])
 
+func get_texture_by_name(image_name):
+	if state == "scenes":
+		return images.get_background(Gallery.get_image_for_seq(image_name))
+	elif state == "ero" or state == "story":
+		return images.get_background(image_name)
+	elif state == "mono":
+		return images.get_scene(image_name)
+	elif state == "char":
+		return images.get_sprite(image_name)
 
 #possibly obsolete
 func load_images(scene_type):
@@ -112,24 +130,29 @@ func load_images(scene_type):
 	return image_list
 
 #possibly obsolete
-func show_scene_images():
-	var images = load_images(state)
-	input_handler.ClearContainer($ImageContainer)
-	if images != null:
-		for image in images:
-			var newbutton = input_handler.DuplicateContainerTemplate($ImageContainer)
-			newbutton.get_node("Image").texture = load(image)
-			newbutton.connect("pressed", self, "show_fullscreen", [image])
+#func show_scene_images():
+#	var images = load_images(state)
+#	input_handler.ClearContainer($ImageContainer)
+#	if images != null:
+#		for image in images:
+#			var newbutton = input_handler.DuplicateContainerTemplate($ImageContainer)
+#			newbutton.get_node("Image").texture = load(image)
+#			newbutton.connect("pressed", self, "show_fullscreen", [image])
 
 
 func show_fullscreen(image): # image:string 
-	$FullScreenImage.show()
+	var FS_node = $FullScreenImage
+	FS_node.show()
 	Collection = image
-#	$FullScreenImage.texture = load(image)
-	$FullScreenImage.texture = images.get_background(image)
-	ResourceScripts.core_animations.UnfadeAnimation($FullScreenImage)
-	if !gui_controller.windows_opened.has($FullScreenImage):
-		gui_controller.windows_opened.append($FullScreenImage)
+#	FS_node.texture = load(image)
+	if state == "char":
+		FS_node.stretch_mode = FS_node.STRETCH_KEEP_ASPECT_CENTERED
+	else:
+		FS_node.stretch_mode = FS_node.STRETCH_KEEP_ASPECT_COVERED
+	FS_node.texture = get_texture_by_name(image)
+	ResourceScripts.core_animations.UnfadeAnimation(FS_node)
+	if !gui_controller.windows_opened.has(FS_node):
+		gui_controller.windows_opened.append(FS_node)
 
 
 func open_gallery():

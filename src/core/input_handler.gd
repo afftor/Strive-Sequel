@@ -210,7 +210,8 @@ var progress_data = {
 	story_scenes = [],
 	ero_scenes = [],
 	gallery_seq = [],
-	characters = ['amelia','duncan','sigmund','myr'],
+	characters = [],#'amelia','duncan','sigmund','myr'
+	monochrome = []
 } setget save_progress_data
 
 #var combat_advance = false #if any result in combat cause advance
@@ -269,10 +270,11 @@ func update_progress_data(field, value):
 	if !progress_data.has(field):
 		print("Warning: progress data has no '", str(field), "' field.")
 		return
-	if typeof(value) == TYPE_STRING:
-		if progress_data[field].has(value):
-			return
-		progress_data[field].push_back(value)
+	if typeof(value) != TYPE_STRING:
+		return
+	if progress_data[field].has(value):
+		return
+	progress_data[field].push_back(value)
 	store_progress()
 
 

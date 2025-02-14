@@ -32,9 +32,6 @@ var data = {
 						dialogue_argument = 1,
 						type = "next_dialogue",
 						change_dialogue_type = 2,
-						tags = [
-							"blackscreen_transition_slow"
-						]
 					}
 				],
 				common_effects = [
@@ -75,9 +72,6 @@ var data = {
 						dialogue_argument = 1,
 						type = "next_dialogue",
 						change_dialogue_type = 2,
-						tags = [
-							"blackscreen_transition_slow"
-						]
 					}
 				]
 			}

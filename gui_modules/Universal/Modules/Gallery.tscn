@@ -72,9 +72,6 @@ toggle_mode = true
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="StoryButton"]
 margin_right = 196.0
@@ -82,6 +79,28 @@ margin_bottom = 50.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "GALLERYSTORY"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MonoButton" type="TextureButton" parent="."]
+margin_left = 545.751
+margin_top = 84.0
+margin_right = 741.751
+margin_bottom = 134.0
+toggle_mode = true
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="MonoButton"]
+margin_right = 196.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "GALLERYMONO"
 align = 1
 valign = 1
 __meta__ = {
@@ -97,9 +116,6 @@ toggle_mode = true
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="EroButton"]
 margin_right = 196.0
@@ -107,6 +123,25 @@ margin_bottom = 50.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "GALLERYERO"
+align = 1
+valign = 1
+
+[node name="CharButton" type="TextureButton" parent="."]
+margin_left = 1182.47
+margin_top = 84.0
+margin_right = 1378.47
+margin_bottom = 134.0
+toggle_mode = true
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="CharButton"]
+margin_right = 196.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "GALLERYCHAR"
 align = 1
 valign = 1
 
