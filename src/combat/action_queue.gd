@@ -169,7 +169,7 @@ func add_start_combat():
 
 func add_atomic(template, character):
 	var handler = atomic_handler.new()
-	handler.template = template.duplicate(true)
+	handler.template = template
 	handler.combatnode = combatnode
 	handler.queuenode = self
 	handler.character = character
