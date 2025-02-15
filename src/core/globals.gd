@@ -184,6 +184,18 @@ func CreateGearItemQuality(item, parts, quality, no_enchant = true, newname = nu
 	return newitem
 
 
+func CreateGearItemQualityEnchants(item, parts, quality, newname = null): 
+	if parts is String:
+		parts = Items.get_materials_by_grade(parts, item)
+	var newitem = Item.new()
+	newitem.CreateGear(item, parts, {})
+	newitem.quality = quality
+	newitem.fill_enchants()
+	if newname != null:
+		newitem.name = newname
+	return newitem
+
+
 func CreateGearItemData(item, parts, diffdata,  newname = null): 
 	if parts is String:
 		parts = Items.get_materials_by_grade(parts, item)
@@ -1348,12 +1360,17 @@ func StartCombat(encounter = null):
 	if input_handler.combat_node == null:
 		input_handler.combat_node = input_handler.get_combat_node()
 	var data
+	var args = {}
 	if encounter != null:
 		data = Enemydata.encounters[encounter]
 #		if data.has('no_rnd_captured') and data.no_rnd_captured:
 #			char_roll_data.no_roll = true
 		input_handler.encounter_win_script = Enemydata.encounters[encounter].win_effects
 		input_handler.encounter_lose_script = Enemydata.encounters[encounter].lose_effects
+		if data.has('enemy_stats_mod'):
+			args.enemy_stats_mod = data.enemy_stats_mod
+		if data.has('hpmod'):
+			args.hpmod = data.hpmod
 	
 	if ResourceScripts.game_globals.skip_combat == true:
 		input_handler.finish_combat()
@@ -1372,7 +1389,7 @@ func StartCombat(encounter = null):
 	
 	input_handler.combat_node.encountercode = data.unitcode
 	input_handler.combat_node.set_norun_mode(true)
-	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, data.bg, data.bgm)
+	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, data.bg, data.bgm, args)
 
 func StartQuestCombat(encounter):
 	pass
