@@ -76,11 +76,11 @@ func setup_player_test():
 
 
 func run_test():
-	setup_player()
 	input_handler.active_location = {
 		group = {},
 		id = 'aliron',
 		}
+	setup_player()
 	globals.char_roll_data.no_roll = true
 	var enc_template = {unittype = 'randomgroup', unitcode = combatlist[$selector.selected], bg = 'default', bgm = 'default', win_effects = [], lose_effects = [], enemy_stats_mod = float($mod1.text)}
 	Enemydata.encounters.combat_test = enc_template
@@ -113,7 +113,7 @@ func make_item(id, level):
 	return item
 
 
-func make_hero(type, level, first = false):
+func make_hero(type, level, position = 1, first = false):
 	var character = ResourceScripts.scriptdict.class_slave.new("test_combat")
 	character.create(input_handler.random_from_array(races.racelist.keys()), input_handler.random_from_array(['male', 'female']), 'random')
 	character.fill_boosters()
@@ -223,16 +223,32 @@ func make_hero(type, level, first = false):
 					nm += '_' + roll
 			if level > 2:
 				nm += '_maxed'
-			
+			#, ['dagger', 'bow', 'bowadv', 'crossbow', 'crossbowadv']
 			match level:
 				1:
-					e_list = ['chest_base_leather', 'legs_base_leather', ['dagger', 'bow', 'crossbow']]
+					e_list = ['chest_base_leather', 'legs_base_leather']
+					if position < 4:
+						e_list.push_back('dagger')
+					else:
+						e_list.push_back(['bow', 'crossbow'])
 				2:
-					e_list = ['chest_base_leather', 'legs_base_leather', ['dagger', 'bow', 'crossbow']]
+					e_list = ['chest_base_leather', 'legs_base_leather']
+					if position < 4:
+						e_list.push_back('dagger')
+					else:
+						e_list.push_back(['bow', 'crossbow'])
 				3:
-					e_list = [['chest_base_leather', 'chest_adv_leather'], ['legs_base_leather', 'legs_adv_leather'], ['dagger', 'bow', 'bowadv', 'crossbow', 'crossbowadv']]
+					e_list = [['chest_base_leather', 'chest_adv_leather'], ['legs_base_leather', 'legs_adv_leather']]
+					if position < 4:
+						e_list.push_back('dagger')
+					else:
+						e_list.push_back(['bow', 'bowadv', 'crossbow', 'crossbowadv'])
 				4:
-					e_list = ['chest_adv_leather', 'legs_adv_leather', ['bowadv', 'crossbowadv']]
+					e_list = ['chest_adv_leather', 'legs_adv_leather']
+					if position < 4:
+						e_list.push_back('dagger')
+					else:
+						e_list.push_back(['bowadv', 'crossbowadv'])
 			
 		'support':
 			character.set_stat('physics_factor', 3)
@@ -388,6 +404,7 @@ func make_hero(type, level, first = false):
 				4:
 					e_list = ['chest_adv_cloth', 'legs_adv_cloth', 'staffadv']
 	character.set_stat('name', nm)
+	input_handler.active_location.group['pos' + str(position)] = character.id
 	
 	for id in e_list:
 		var i_id = id
@@ -404,19 +421,19 @@ func make_hero(type, level, first = false):
 func setup_player():
 	ResourceScripts.game_party.clear_heroes()
 	var level = $selector2.selected + 1
-	make_hero('fighter', level, true)
+	make_hero('fighter', level, 1, true)
 	match level:
 		1:
-			make_hero('rogue', level)
-			make_hero(input_handler.random_from_array(['support', 'caster']), level)
+			make_hero('rogue', level, 2)
+			make_hero(input_handler.random_from_array(['support', 'caster']), level, 4)
 		2:
-			make_hero('rogue', level)
-			make_hero('support', level)
-			make_hero(input_handler.random_from_array(['rogue', 'caster']), level)
+			make_hero('rogue', level, 3)
+			make_hero('support', level, 4)
+			make_hero(input_handler.random_from_array(['rogue', 'caster']), level, 5)
 		3, 4:
-			make_hero('fighter', level)
-			make_hero('rogue', level)
-			make_hero('rogue', level)
-			make_hero('support', level)
-			make_hero('caster', level)
+			make_hero('fighter', level, 2)
+			make_hero('rogue', level, 3)
+			make_hero('rogue', level, 4)
+			make_hero('support', level, 5)
+			make_hero('caster', level, 6)
 	
