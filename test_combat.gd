@@ -76,6 +76,9 @@ func setup_player_test():
 
 
 func run_test():
+	ResourceScripts.game_res.materials.trap = 50
+	ResourceScripts.game_res.materials.bandage = 50
+	ResourceScripts.game_res.materials.unstable_concoction = 50
 	input_handler.active_location = {
 		group = {},
 		id = 'aliron',

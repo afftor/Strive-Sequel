@@ -186,7 +186,7 @@ var effects = {
 		buffs = [],
 		sub_effects = [{
 			type = 'oneshot',
-			target = 'caster',
+			target = 'owner',
 			args = [{obj = 'parent_args', param = 0}],
 			atomic = [
 				{type = 'sfx', value = 'targetattack'},
