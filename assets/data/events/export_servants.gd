@@ -53,11 +53,6 @@ var data = {
 						stage = "stage1"
 					},
 					{
-						code = "progress_quest",
-						value = "guilds_introduction",
-						stage = "stage1"
-					},
-					{
 						code = "update_guild"
 					}
 				]

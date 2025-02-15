@@ -1006,6 +1006,12 @@ var data = {
 				tags = [
 					"dialogue_scene"
 				],
+				common_effects = [
+					{
+						code = "decision",
+						value = "act3_finish"
+					}
+				],
 				character = "dwarf_king",
 				text = [
 					{
@@ -1081,6 +1087,7 @@ var data = {
 						code = "dwarf_aftermatch_reply_k_kuro",
 						dialogue_argument = 0,
 						text = "DWARF_AFTERMATCH_OPT_KURO",
+						type = "next_dialogue",
 						reqs = [
 							{
 								type = "decision",
@@ -1185,6 +1192,7 @@ var data = {
 					"dialogue_scene",
 					"master_translate"
 				],
+				character = "bolthar",
 				text = [
 					{
 						text = "DWARF_AFTERMATCH_COAL",
@@ -1248,7 +1256,6 @@ var data = {
 						reqs = [
 
 						],
-						type = "next_dialogue",
 						bonus_effects = [
 							{
 								code = "decision",
@@ -1267,7 +1274,6 @@ var data = {
 						reqs = [
 
 						],
-						type = "next_dialogue",
 						bonus_effects = [
 							{
 								code = "decision",

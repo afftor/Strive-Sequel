@@ -114,6 +114,9 @@ var ero_scenes = [
 'kuro_zephyra_1',
 'kuro_wedding_1'
 ] 
+#fill next 2 arrays manually, if needed certain list
+var mono_scenes
+var char_scenes
 
 var ero_scenes_collection = {
 	"anastasia_execution":["anastasia_execution1","anastasia_execution2","anastasia_execution3"],
@@ -244,6 +247,10 @@ var continue_template = {
 func _ready():
 	for list in scenes.values():
 		process_scene_seq(list)
+	if mono_scenes == null:
+		mono_scenes = images.scenes.keys()
+	if char_scenes == null:
+		char_scenes = images.sprites.keys()
 
 
 func process_scene_seq(scene_list):
