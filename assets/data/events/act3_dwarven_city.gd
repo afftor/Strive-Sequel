@@ -39,6 +39,12 @@ var data = {
 						code = "decision",
 						value = "act3_start"
 					}
+				],
+				common_effects = [
+					{
+						code = "decision",
+						value = "act3_start"
+					}
 				]
 			},
 			{

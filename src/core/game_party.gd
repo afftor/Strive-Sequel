@@ -110,6 +110,12 @@ func remove_slave(tempslave, permanent = false):
 	gui_controller.mansion.set_active_person(ResourceScripts.game_party.get_master())
 
 
+func clear_heroes():
+	for p in characters:
+		characters[p].is_active = false
+	characters_pool.cleanup()
+
+
 func subtract_taxes():
 	var tax = 0
 	for ch in characters.values():

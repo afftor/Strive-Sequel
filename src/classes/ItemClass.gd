@@ -256,13 +256,12 @@ func CreateGear(ItemName = '', dictparts = {}, diffdata = {boost = 0, prof = fal
 	if bonusstats.has('atk') && get_bonusstats().has('damagemod'):
 		bonusstats.atk = ceil(bonusstats.atk + (bonusstats.atk * get_bonusstats().damagemod))
 		bonusstats.erase('damagemod')
-
+	
 	if mode == 'simple':
 		name = itemtemplate.name
 		description = itemtemplate.descript
 	else:
 		if parts.has(itemtemplate.partmaterialname):
-
 			name = Items.materiallist[parts[itemtemplate.partmaterialname]].adjective + " " +itemtemplate.name
 		else:
 			name = itemtemplate.name
@@ -288,6 +287,12 @@ func roll_enchants():
 	apply_random_enchantment(used_points, 1)
 
 
+func fill_enchants(): #for testmode
+	clear_enchants()
+	var used_points = get_e_capacity_max()
+	apply_random_enchantment(used_points, 1, true)
+
+
 func apply_random_curse(mode = 'any'):
 	var pool = []
 	for id in Items.curses:
@@ -300,16 +305,16 @@ func apply_random_curse(mode = 'any'):
 	add_curse(input_handler.random_from_array(pool))
 
 
-func apply_random_enchantment(limit, number):
-	if number > 3:
+func apply_random_enchantment(limit, number, fill = false):
+	if number > 3 and !fill:
 		return
-	if number == 3 and randf() > variables.enchantment_chance_3:
+	if number == 3 and randf() > variables.enchantment_chance_3 and !fill:
 		return
-	if number == 2 and randf() > variables.enchantment_chance_2:
+	if number == 2 and randf() > variables.enchantment_chance_2 and !fill:
 		return
 	var pool = build_possible_enchants(limit)
 	if pool.empty():
-		if number > 1:
+		if number > 1 or fill:
 			return
 		pool = build_possible_enchants(get_e_capacity_max())
 		if pool.empty():
@@ -319,7 +324,7 @@ func apply_random_enchantment(limit, number):
 	var tmp = input_handler.weightedrandom(pool)
 	var enchdata = Items.enchantments[tmp[0]].levels[tmp[1]]
 	add_enchant(tmp[0], tmp[1], true)
-	apply_random_enchantment(limit - enchdata.cap_cost, number + 1)
+	apply_random_enchantment(limit - enchdata.cap_cost, number + 1, fill)
 
 
 func build_possible_enchants(limit):
@@ -620,6 +625,8 @@ func get_bonusstats():
 	if tags.has('fixed_stats'):
 		mul = 1.0
 	for st in res:
+		if st == 'weapon_element':
+			continue #stub
 		if res[st] > 0: #or more complex behavior in case there are stats negative by default
 			res[st] *= mul
 	if curse != null:

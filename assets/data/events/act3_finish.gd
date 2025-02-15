@@ -987,6 +987,12 @@ var data = {
 						],
 						type = "next_dialogue"
 					}
+				],
+				common_effects = [
+					{
+						code = "decision",
+						value = "act3_finish"
+					}
 				]
 			},
 			{
