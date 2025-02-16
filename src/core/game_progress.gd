@@ -319,13 +319,19 @@ func try_planned_loc_event(loc):
 		planned_loc_events.erase(loc)
 
 
-func get_default_materials(): #stub
+func get_default_materials(): 
+	if decisions.has('act3_finish'):
+		return 't6'
+	if decisions.has('act2_finish'):
+		return 't5'
+	if decisions.has('act1_finish') and true:
+		return 't4'
+	if decisions.has('act1_finish'):
+		return 't3'
+	if decisions.has('act1_start'):
+		return 't2'
 	return 't1' #any
-	return 't2' #act1_start
-	return 't3' #act1_start
-	return 't4' #act1_start
-	return 't5' #act1_start
-	return 't6' #act1_start
+
 
 
 
