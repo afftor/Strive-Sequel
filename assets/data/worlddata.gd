@@ -819,6 +819,7 @@ var random_dungeon_events = {
 		event = 'cali_intro',
 		reqs = [{type = 'dialogue_seen', check = false, value = 'CALI_INTRO'}],
 		dungeons = ["dungeon_bandit_fort"],
+		chance = 0.01
 	},
 #	event1 = {
 #		event = 'eventname',#event code to launch
