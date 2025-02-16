@@ -980,7 +980,7 @@ var professions = {
 		traits = ['deathknight'],
 		skills = [],
 		combatskills = [],
-		conflict_classes = ['paladin','bishop'],
+		conflict_classes = ['paladin','bishop','templar'],
 	},
 	warlock = {
 		code = 'warlock',

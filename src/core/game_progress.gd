@@ -322,10 +322,10 @@ func try_planned_loc_event(loc):
 func get_default_materials(): #stub
 	return 't1' #any
 	return 't2' #act1_start
-	return 't3' #act1_start
-	return 't4' #act1_start
-	return 't5' #act1_start
-	return 't6' #act1_start
+	return 't3' #act2_start
+	return 't4' #act2_start
+	return 't5' #act3_start
+	return 't6' #act3_finish
 
 
 

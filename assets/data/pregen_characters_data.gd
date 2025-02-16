@@ -98,7 +98,7 @@ var pregen_characters = {
 		personality_bold = 20,
 		food_like = 'meat',
 		food_hate = ['vege'],
-		classes = ['scholar','shaman'],
+		classes = ['scholar'],
 		traits = ['gifted','training_s_combat','training_s_working'],
 		tags = [],
 		sex_skills = {petting = 2, penetration = 15, oral = 4, anal = 0},

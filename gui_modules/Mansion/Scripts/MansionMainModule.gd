@@ -643,7 +643,7 @@ func test_mode():
 		character.set_stat('lactation', true)
 		#character.unlock_class("worker")
 		character.unlock_class("necromancer")
-		character.hp = 1
+		#character.hp = 1
 	#		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:
 			if Skilldata.Skilllist[i].type != 'social':
