@@ -387,23 +387,19 @@ func make_location(code, area):
 				build_floor_first_pass(location, i)
 			location.current_level = 0
 			var ev_pool = build_subrooms_pool(location)
-			if globals.rng.randf() < variables.dungeon_unique_encounter_chance:
-				var pool = []
-				for ev_rec in worlddata.random_dungeon_events.values():
-					if ResourceScripts.game_world.dungeon_events_assigned.has(ev_rec.event):
-						continue
-					if !ev_rec.dungeons.has(code):
-						continue
-					if !globals.checkreqs(ev_rec.reqs):
-						continue
-					pool.push_back(ev_rec)
-				if !pool.empty():
-					var rec = input_handler.random_from_array(pool)
+			for ev_rec in worlddata.random_dungeon_events.values():
+				if ResourceScripts.game_world.dungeon_events_assigned.has(ev_rec.event):
+					continue
+				if !ev_rec.dungeons.has(code):
+					continue
+				if !globals.checkreqs(ev_rec.reqs):
+					continue
+				if globals.rng.randf() < ev_rec.chance:
 					var lv = globals.rng.randi_range(0, levelnumber - 1)
-					if rec.has('levels'):
-						lv = input_handler.random_from_array(rec.levels)
-					ev_pool[lv].push_back(rec.event)
-					ResourceScripts.game_world.dungeon_events_assigned[rec.event] = location.id
+					if ev_rec.has('levels'):
+						lv = input_handler.random_from_array(ev_rec.levels)
+					ev_pool[lv].push_back(ev_rec.event)
+					ResourceScripts.game_world.dungeon_events_assigned[ev_rec.event] = location.id
 			for i in range(levelnumber):
 				finalize_subrooms(location, ev_pool, i)
 			location.stagedevents = {
