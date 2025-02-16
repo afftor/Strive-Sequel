@@ -423,6 +423,8 @@ func tooltiptext():
 		text += "\n"
 		var t_bonusstats = get_bonusstats()
 		for i in t_bonusstats:
+			if i == 'weapon_element':
+				continue
 			if t_bonusstats[i] != 0:
 				var value = t_bonusstats[i]
 				var change = ''
