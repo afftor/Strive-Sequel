@@ -52,6 +52,8 @@ func fix_serialization():
 		if task.has('threshhold'):
 			task.threshold = task.threshhold
 			task.erase('threshhold')
+		if task.messages.has('noresources'):
+			task.messages.erase('noresources')
 	for task in active_tasks.duplicate():
 		if task.product == 'rest':
 			active_tasks.erase(task)
