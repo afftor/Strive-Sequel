@@ -800,7 +800,7 @@ func handle_scene_backgrounds(scene):
 
 func try_hide_scene_backgrounds(scene, time):
 	var node = $CustomBackground
-	if !node.visible or node.get_meta("fading"): return
+	if !node.visible or node.get_meta("fading", false): return
 	if !scene.has("custom_background") && dialogue_window_type == 1:
 		if time > 0:
 			ResourceScripts.core_animations.FadeAnimation(node, time)
