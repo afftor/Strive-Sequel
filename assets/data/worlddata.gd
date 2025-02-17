@@ -773,7 +773,7 @@ var random_dungeon_events = {
 	},
 	lira_elven_capital = {
 		event = 'lira_lost_start',
-		reqs = [{type = 'dialogue_seen', check = false, value = 'LIRA_LOST_START'}],
+		reqs = [{type = 'event_seen', check = false, value = 'lira_lost_start'}],#probably not necessary
 		dungeons = ["dungeon_grove"],
 		chance = 0.75
 	},
