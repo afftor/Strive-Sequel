@@ -564,7 +564,7 @@ func build_desc_for_effect(effect_desc, mul = 1): #stub as it is
 func build_desc_for_bonusstats(bonusstats, mul = 1):
 	var text = ""
 	for i in bonusstats:
-		if i  in ['enchant_capacity', 'enchant_capacity_mod', ]: 
+		if i  in ['enchant_capacity', 'enchant_capacity_mod', 'weapon_element']: 
 			continue
 		if bonusstats[i] is bool or bonusstats[i] is Array or bonusstats[i] != 0:
 			var data = statdata.statdata[i]
