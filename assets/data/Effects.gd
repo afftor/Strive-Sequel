@@ -2523,7 +2523,7 @@ var buffs = {
 		t_name = 'confuse'
 	},
 	b_command = {
-		icon = "res://assets/images/iconsclasses/Attendant.png", #fix
+		icon = "res://assets/images/iconsskills/Authority.png", 
 		description = "BUFFDESCRIPTCOMMANDBONUS",
 		t_name = 'command',
 		combat_only = true

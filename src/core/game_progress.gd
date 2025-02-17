@@ -334,7 +334,6 @@ func get_default_materials():
 
 
 
-
 func get_materials_from_conds(data):
 	for tier in data:
 		if globals.checkreqs(data[tier]):

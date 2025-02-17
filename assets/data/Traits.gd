@@ -1343,8 +1343,15 @@ var traits = {
 		visible = false,
 		effects = ['e_boss'],
 		tags = ['boss_resists'],
-#		bonusstats = {bleed_mod = 0.33, poison_mod = 0.33, burn_mod = 0.33}
-#cause we still neeg an effect to make icon for monster trait - stats were moved to effect
+	},
+	enemy_defender = {
+		code = 'enemy_defender',
+		name = '',
+		descript = '',
+		icon = null, 
+		visible = false,
+		effects = ['setup_retarget_default'],
+		tags = ['defender'],
 	},
 	
 	

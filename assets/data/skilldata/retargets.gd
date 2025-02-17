@@ -62,7 +62,7 @@ var effects = {
 		args = [{obj = 'parent_args', param = 0}],
 		sub_effects = ['defend_retarget', 'defend_reduce'],
 		atomic = [],
-		buffs = ['b_defended'],
+		buffs = [],
 	},
 	defend_retarget = {
 		type = 'trigger',
@@ -107,7 +107,7 @@ var effects = {
 		buffs = []
 	},
 	
-	setup_retarget_test = Effectdata.rebuild_autocast({skill = 'mass_defend', trigger = [variables.TR_COMBAT_S]}),
+	setup_retarget_default = Effectdata.rebuild_autocast({skill = 'mass_defend', trigger = [variables.TR_COMBAT_S]}),
 }
 var atomic_effects = {}
 var buffs = {

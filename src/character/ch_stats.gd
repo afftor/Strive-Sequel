@@ -1644,7 +1644,7 @@ func generate_simple_fighter(data):
 		else:
 			statlist[i] = data[i]
 	statlist.icon_image = data.icon
-	statlist.body_image = data.body
+#	statlist.body_image = data.body
 #	statlist.combat_skills = data.skills
 #	if !data.skills.has("ranged_attack"):
 #		combat_skills += ['attack']

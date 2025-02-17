@@ -534,7 +534,7 @@ var upgradelist = {
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEALCHEMYBONUS1"),
 				taskprogress = 25,
-				cost = {wood = 25, stone = 50, iron = 30},
+				cost = {wood = 20, stone = 30, iron = 15},
 				tax = 10
 			},
 			2:{
@@ -625,7 +625,7 @@ var upgradelist = {
 				unlockreqs = [],
 				bonusdescript = tr("UPGRADEROOMSBONUS1"),
 				taskprogress = 15,
-				cost = {wood = 50, cloth = 25},
+				cost = {wood = 30, stone = 20},
 				tax = 10
 			},
 			2:{

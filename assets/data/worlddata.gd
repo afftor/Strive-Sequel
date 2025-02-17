@@ -768,8 +768,14 @@ var random_dungeon_events = {
 	cali_intro_event = {
 		event = 'cali_intro',
 		reqs = [{type = 'dialogue_seen', check = false, value = 'CALI_INTRO'}],
-		dungeons = ["dungeon_bandit_fort"],
-		chance = 0.01
+		dungeons = ["duneon_bandit_den"],
+		chance = 0.75
+	},
+	lira_elven_capital = {
+		event = 'lira_lost_start',
+		reqs = [{type = 'dialogue_seen', check = false, value = 'LIRA_LOST_START'}],
+		dungeons = ["dungeon_grove"],
+		chance = 0.75
 	},
 #	event1 = {
 #		event = 'eventname',#event code to launch

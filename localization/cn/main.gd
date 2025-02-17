@@ -24,6 +24,8 @@ var TranslationDict = {
 	GALLERYSTORY = "Story",
 	GALLERYERO = "Ero",
 	GALLERYSCENES = "Scenes",
+	GALLERYMONO = """Images""", # MISSING TRANSLATION
+	GALLERYCHAR = """Characters""", # MISSING TRANSLATION
 	GALLERYRETURN = "返回",
 	GALLERYTOOLTIPTOP = """Scene Condition:""", # MISSING TRANSLATION
 	GALLERYRESETBUTTON = """Reset""", # MISSING TRANSLATION
@@ -3503,6 +3505,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	LOCATIONNAMEDUNGEON_BANDIT_FORT = "Bandit Fort 土匪堡",
 	LOCATIONNAMEDUNGEON_REBEL_REDOUBT = """Rebel Redoubt""", # MISSING TRANSLATION
 	LOCATIONNAMEDUNGEON_GROVE = "Grove 树林",
+	LOCATIONNAMEDUNGEON_SPIDER_LAIR = """Spider Lair""", # MISSING TRANSLATION
 	LOCATIONNAMEDUNGEON_GOBLIN_CAVE = "Goblin Cave 哥布林巢穴",
 	LOCATIONNAMEDUNGEON_UNDEAD_CRYPT = "Crypt 地穴",
 	LOCATIONNAMEDUNGEON_MOUNTAINS = "Mountain Cave 山洞",
@@ -3564,6 +3567,8 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	ENEMYWOLF = "狼",
 	ENEMYRAT = "老鼠",
 	ENEMYSPIDER = "蜘蛛",
+	ENEMYSPIDER_RANGED = """Web Spitter""", # MISSING TRANSLATION
+	ENEMYSPIDER_AOE = """Venomous Sentry""", # MISSING TRANSLATION
 	ENEMYTRAINED_DOG = "训练有素的狗",
 	ENEMYTRAINED_BEAR = "训练有素的熊",
 	ENEMYTRAINED_RAPTOR = "训练有素的猛禽",
@@ -3571,6 +3576,8 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	ENEMYZOMBIE = "僵尸",
 	ENEMYSKELETON_MELEE = "骷髅",
 	ENEMYSKELETON_ARCHER = "骷髅射手",
+	ENEMYSKELETON_ARCHER_QUEST = """Skeleton Archer""", # MISSING TRANSLATION
+	ENEMYSKELETON_SHIELD_MELEE = """Skeleton Defender""", # MISSING TRANSLATION
 	ENEMYLICH_QUEST = "巫妖",
 	ENEMYUNDEAD_LICH = "巫妖",
 	ENEMYMIMIC = "拟态",
@@ -14443,6 +14450,8 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	DUNGEON_GROVE_TEXT = "树丛",
 	DUNGEON_GROVE_DESC = "",
+	DUNGEON_SPIDER_LAIR_TEXT = """spider_lair""", # MISSING TRANSLATION
+	DUNGEON_SPIDER_LAIR_DESC = """""", # MISSING TRANSLATION
 	
 	DUNGEON_ANCIENT_JUNGLES_TEXT = "古老_丛林",
 	DUNGEON_ANCIENT_JUNGLES_DESC = "",
@@ -14503,6 +14512,8 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	
 	QUEST_DUNGEON_GROVE_TEXT = "树林",
 	QUEST_DUNGEON_GROVE_DESC = "",
+	QUEST_DUNGEON_SPIDER_LAIR_TEXT = """Spider Lair""", # MISSING TRANSLATION
+	QUEST_DUNGEON_SPIDER_LAIR_DESC = """""", # MISSING TRANSLATION
 	
 	QUEST_AMELIA_BANDITS_LOCATION_TEXT = "不显眼的洞穴",
 	QUEST_AMELIA_BANDITS_LOCATION_DESC = "",

@@ -18,6 +18,8 @@ var TranslationDict = {
 	GALLERYSTORY = """Сюжет""",
 	GALLERYERO = """Эро""",
 	GALLERYSCENES = """Сцены""",
+	GALLERYMONO = """Images""", # MISSING TRANSLATION
+	GALLERYCHAR = """Characters""", # MISSING TRANSLATION
 	GALLERYRETURN = """Назад""",
 	GALLERYTOOLTIPTOP = """Условия сцены:""",
 	GALLERYRESETBUTTON = """Сброс""",
@@ -2948,6 +2950,7 @@ Requires: Базовый рабский труд""",
 Весь получаемый урон увеличивается на 15%, дополнительный шок имеет шанс оглушить.""",
 	BUFFDESCRIPTENSNARE = """Захват: Уворот уменьшен на 75""",	
 	RESETTRAINREQ = """Сбросить обучение на 0-й шаг и восстановить дух. Требуется зелье Забвения.""",
+	BUFFDESCRIPTDEFENDER = """Defender: Will shield allies from attacks unless stunned.""", # MISSING TRANSLATION
 	CHALLENGESTRENGTH = """Испытание на силу""",
 	CHALLENGEDEXTERITY = """Испытание на ловкость""",
 	CHALLENGEPERSUASION = """Испытание на убеждение""",
@@ -4055,6 +4058,7 @@ Requires: Базовый рабский труд""",
 	ITEMMAP_BANDIT_DEN = """Карта: Бандитское логово""",
 	ITEMMAP_BANDIT_FORT = """Карта: Разбойничий форт""",
 	ITEMMAP_GROVE = """Карта: Роща""",
+	ITEMMAP_SPIDER_LAIR = """Map: Spider Lair""", # MISSING TRANSLATION
 	ITEMMAP_GOBLIN_CAVE = """Карта: Пещера гоблинов""",
 	ITEMMAP_UNDEAD_CRYPT = """Карта: Склеп""",
 	ITEMMAP_ANCIENT_JUNGLE = """Карта: Древние джунгли""",
@@ -4063,6 +4067,7 @@ Requires: Базовый рабский труд""",
 	ITEMMAP_BANDIT_DENDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
 	ITEMMAP_BANDIT_FORTDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
 	ITEMMAP_GROVEDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
+	ITEMMAP_SPIDER_LAIRDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
 	ITEMMAP_GOBLIN_CAVEDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
 	ITEMMAP_UNDEAD_CRYPTDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
 	ITEMMAP_ANCIENT_JUNGLEDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
@@ -4076,6 +4081,7 @@ Requires: Базовый рабский труд""",
 	LOCATIONNAMEDUNGEON_BANDIT_FORT = """Бандитский форт""",
 	LOCATIONNAMEDUNGEON_REBEL_REDOUBT = """Карта: Форт повстанцев""",
 	LOCATIONNAMEDUNGEON_GROVE = """Роща""",
+	LOCATIONNAMEDUNGEON_SPIDER_LAIR = """Spider Lair""", # MISSING TRANSLATION
 	LOCATIONNAMEDUNGEON_GOBLIN_CAVE = """Пещера гоблинов""",
 	LOCATIONNAMEDUNGEON_UNDEAD_CRYPT = """Склеп""",
 	LOCATIONNAMEDUNGEON_MOUNTAINS = """Горная пещера""",
@@ -4137,6 +4143,8 @@ Requires: Базовый рабский труд""",
 	ENEMYWOLF = """Волк""",
 	ENEMYRAT = """Крыса""",
 	ENEMYSPIDER = """Паук""",
+	ENEMYSPIDER_RANGED = """Web Spitter""", # MISSING TRANSLATION
+	ENEMYSPIDER_AOE = """Venomous Sentry""", # MISSING TRANSLATION
 	ENEMYTRAINED_DOG = """Дрессированная собака""",
 	ENEMYTRAINED_BEAR = """Дрессированный медведь""",
 	ENEMYTRAINED_RAPTOR = """Обученный раптор""",
@@ -4144,6 +4152,8 @@ Requires: Базовый рабский труд""",
 	ENEMYZOMBIE = """Зомби""",
 	ENEMYSKELETON_MELEE = """Скелет""",
 	ENEMYSKELETON_ARCHER = """Скелет-лучник""",
+	ENEMYSKELETON_ARCHER_QUEST = """Skeleton Archer""", # MISSING TRANSLATION
+	ENEMYSKELETON_SHIELD_MELEE = """Skeleton Defender""", # MISSING TRANSLATION
 	ENEMYLICH_QUEST = """Лич""",
 	ENEMYUNDEAD_LICH = """Лич""",
 	ENEMYMIMIC = """Мимик""",
@@ -18055,6 +18065,8 @@ Kuro's answer is straight and simple, emotionless even. She boldly refuses your 
 	
 	DUNGEON_GROVE_TEXT = """Роща""",
 	DUNGEON_GROVE_DESC = """ """,
+	DUNGEON_SPIDER_LAIR_TEXT = """spider_lair""", # MISSING TRANSLATION
+	DUNGEON_SPIDER_LAIR_DESC = """""", # MISSING TRANSLATION
 	
 	DUNGEON_ANCIENT_JUNGLES_TEXT = """Древние джунгли""",
 	DUNGEON_ANCIENT_JUNGLES_DESC = """ """,
@@ -18115,6 +18127,8 @@ Kuro's answer is straight and simple, emotionless even. She boldly refuses your 
 	
 	QUEST_DUNGEON_GROVE_TEXT = """Роща""",
 	QUEST_DUNGEON_GROVE_DESC = """ """,
+	QUEST_DUNGEON_SPIDER_LAIR_TEXT = """Spider Lair""", # MISSING TRANSLATION
+	QUEST_DUNGEON_SPIDER_LAIR_DESC = """""", # MISSING TRANSLATION
 	
 	QUEST_AMELIA_BANDITS_LOCATION_TEXT = """Незаметная пещера""",
 	QUEST_AMELIA_BANDITS_LOCATION_DESC = """ """,

@@ -1013,13 +1013,110 @@ var dungeons = {
 					['event_fallen_bridge',1],
 				],
 			},
-			lira_lost_event = {
-				limit = 1,
-				weight = 57,#75% chance
+#			lira_lost_event = {
+#				limit = 1,
+#				weight = 57,#75% chance
+#				floor_range = [0,0],
+#				icon = 'man',
+#				events = ['lira_lost_start'],
+#				possible_challenges = [],
+#			},
+		},
+		
+		event_room_number = [3,4],
+		material_room_number = [4,5],
+		
+		main_route_length = [5,6],
+		bonus_rooms = [2,3],
+		levels = [2,2], 
+		base_room_stamina_cost = [5,11], 
+		
+		resources = ['cloth','leather','woodmagic','wood','woodiron'],
+		gatherable_resources = {
+			meat = {
+				amount = [90,120],
+				weight = 6,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			wood = {
+				amount = [60,90],
+				weight = 8,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},  
+			woodmagic = {
+				amount = [15,25],
+				weight = 3,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			woodiron = {
+				amount = [15,25],
+				weight = 1,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				}, 
+			},
+		gather_mod = [2,2.5],
+		difficulty = 'easy',
+		purchase_price = 100,
+		affiliation = 'local',
+		events = [],
+		tags = [],
+	},
+	
+	dungeon_spider_lair = {
+		code = 'dungeon_spider_lair',
+		type = 'dungeon',
+		name = 'spider_lair',
+		classname = '',
+		descript = tr("DUNGEON_GROVE_DESC"),
+		character_data = {
+			chance_mod = 0.5,
+			races = [["common", 2], ['local', 4],['uncommon',1]]
+		},
+		purchase_area = 'forests',
+		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
+		custom_background = 'combat_forest',
+		bgm = "dungeon",
+		enemyarray = [["rats_easy", 0.5],['wolves_easy1', 1],['wolves_easy2', 1],['spiders', 1]],
+		final_enemy = [['grove_easy_boss',1]], final_enemy_type = 'monster',
+		
+		
+		event_data = {
+			dungeon_find_chest_easy = {
+				limit = 0,
+				weight = 10,
 				floor_range = [0,0],
-				icon = 'man',
-				events = ['lira_lost_start'],
-				possible_challenges = [],
+				icon = 'chest',
+				events = ['dungeon_find_chest_easy'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+				],
+			},
+			grove_find_leather = {
+				limit = 0,
+				weight = 2,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['grove_find_leather'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+				],
+			},
+			celena_shrine_find = {
+				limit = 1,
+				weight = 4,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = [['celena_shrine_find',0.1],['erebus_shrine_find',0.2],['freya_shrine_find',0.2],['hybris_shrine_find',0.5]],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+				],
 			},
 		},
 		
@@ -1065,6 +1162,7 @@ var dungeons = {
 		events = [],
 		tags = [],
 	},
+	
 	
 	dungeon_ancient_jungles = {
 		code = 'dungeon_ancient_jungles',
