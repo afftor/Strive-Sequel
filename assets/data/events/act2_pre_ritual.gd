@@ -970,7 +970,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		text = [
 			{
 				text = "PRIESTESS_SWORD_TALK_1_1",
@@ -1015,7 +1015,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		text = [
 			{
 				text = "PRIESTESS_SWORD_TALK_2",
@@ -1072,7 +1072,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		text = [
 			{
 				text = "PRIESTESS_SWORD_TALK_3_123",

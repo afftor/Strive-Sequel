@@ -289,7 +289,7 @@ var data = {
 	},
 	
 	amelia_herbs_elf_quest2_2 = {
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'elf_priestess',
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'heleviel',
 		text = [{text = "AMELIA_HERBS_ELFQUEST2_START_2", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 

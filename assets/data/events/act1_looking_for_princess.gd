@@ -262,7 +262,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_2 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'heleviel',
 		text = [{text = "LOOKING_FOR_PRINCESS_24", reqs = []}],
 		options = [ {
 			code = 'looking_for_princess_elven_3', text = "LOOKING_FOR_PRINCESS_OPTION_20", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -274,7 +274,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_3 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'elf_priestess',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'heleviel',
 		text = [{text = "LOOKING_FOR_PRINCESS_25", reqs = [], previous_dialogue_option = 1},
 		{text = "LOOKING_FOR_PRINCESS_26", reqs = [], previous_dialogue_option = 2},
 		{text = "LOOKING_FOR_PRINCESS_27", reqs = [], previous_dialogue_option = 3}, ],
@@ -288,7 +288,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_4 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'heleviel',
 		text = [{text = "LOOKING_FOR_PRINCESS_28", reqs = []}],
 		options = [ {
 			code = 'looking_for_princess_elven_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -296,7 +296,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_5 = {
-		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'elf_priestess', character2 = 'anastasia',
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'heleviel', character2 = 'anastasia',
 		text = [{text = "LOOKING_FOR_PRINCESS_29", reqs = []}],
 		options = [ {
 			code = 'looking_for_princess_elven_6', text = "LOOKING_FOR_PRINCESS_OPTION_26", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -308,7 +308,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_6 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess', character2 = 'anastasia',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'heleviel', character2 = 'anastasia',
 		text = [{text = "LOOKING_FOR_PRINCESS_30", reqs = []}],
 		options = [ {
 			code = 'looking_for_princess_elven_7_1', text = "LOOKING_FOR_PRINCESS_OPTION_29", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -323,7 +323,7 @@ var data = {
 		variations = [
 			{
 				reqs = [{type = 'master_check', value = {code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5}}],
-				image = null, tags = ['dialogue_scene'], character = 'elf_priestess', character2 = 'anastasia',
+				image = null, tags = ['dialogue_scene'], character = 'heleviel', character2 = 'anastasia',
 				text = [{text = "LOOKING_FOR_PRINCESS_31", reqs = []}],
 				common_effects = [{code = 'play_sound', value = 'slap'}, {code = 'decision', value = 'PrincessObtained'}, #Anastasia is captured alive
 		{code = 'progress_quest', value = 'princess_search', stage = 'stage5'}],
@@ -331,7 +331,7 @@ var data = {
 					code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'update_city'}]
 				} ],
 			}, {
-				reqs = [{type = 'master_check', value = {code = 'stat', stat = 'physics_factor', operant = 'lt', value = 5}}], character = 'elf_priestess', character2 = 'anastasia',
+				reqs = [{type = 'master_check', value = {code = 'stat', stat = 'physics_factor', operant = 'lt', value = 5}}], character = 'heleviel', character2 = 'anastasia',
 				image = null, tags = ['dialogue_scene'], common_effects = [{code = 'play_sound', value = 'slap'}],
 				text = [{text = "LOOKING_FOR_PRINCESS_32_f", reqs = [], previous_dialogue_option = 2},
 				{text = "LOOKING_FOR_PRINCESS_32", reqs = []}],
@@ -347,7 +347,7 @@ var data = {
 	},
 	looking_for_princess_elven_7_1 = {
 
-		character = 'elf_priestess', character2 = 'anastasia',
+		character = 'heleviel', character2 = 'anastasia',
 		image = null, tags = ['dialogue_scene'],
 		text = [
 		{text = "LOOKING_FOR_PRINCESS_32", reqs = []}],
@@ -362,7 +362,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_8 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'elf_priestess', character2 = 'anastasia',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'heleviel', character2 = 'anastasia',
 		text = [{text = "LOOKING_FOR_PRINCESS_33", reqs = [], previous_dialogue_option = 1},
 		{text = "LOOKING_FOR_PRINCESS_34", reqs = []}],
 		options = [ {
@@ -371,7 +371,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_9 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess', character2 = 'anastasia',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'heleviel', character2 = 'anastasia',
 		text = [{text = "LOOKING_FOR_PRINCESS_35", reqs = []}],
 		options = [ {
 			code = 'looking_for_princess_elven_10', text = "LOOKING_FOR_PRINCESS_OPTION_35", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -382,7 +382,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_10 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess', character2 = 'anastasia',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'heleviel', character2 = 'anastasia',
 		text = [{text = "LOOKING_FOR_PRINCESS_36", reqs = []}],
 		options = [ {
 			code = 'looking_for_princess_elven_11', text = "LOOKING_FOR_PRINCESS_OPTION_37", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -394,7 +394,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_11 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'elf_priestess', character2 = 'anastasia',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'heleviel', character2 = 'anastasia',
 		text = [{text = "LOOKING_FOR_PRINCESS_37", reqs = [], previous_dialogue_option = 1},
 		{text = "LOOKING_FOR_PRINCESS_38", reqs = [], previous_dialogue_option = 2},
 		{text = "LOOKING_FOR_PRINCESS_39", reqs = [], previous_dialogue_option = 3},
@@ -414,7 +414,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_12 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess', character2 = 'anastasia',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'heleviel', character2 = 'anastasia',
 		text = [{text = "LOOKING_FOR_PRINCESS_41", reqs = []}],
 		options = [ {
 			code = 'looking_for_princess_elven_13', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -422,7 +422,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_13 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess', character2 = 'anastasia',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'heleviel', character2 = 'anastasia',
 		text = [{text = "LOOKING_FOR_PRINCESS_42", reqs = []}],
 		options = [ {
 			# *Accept* do sacrifice
@@ -435,7 +435,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_14 = {
-		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], character = 'elf_priestess',
+		image = null, tags = ['dialogue_scene', 'active_character_translate'], reqs = [], character = 'heleviel',
 		text = [{text = "LOOKING_FOR_PRINCESS_43", reqs = []}], common_effects = [{code = 'decision', value = 'PrincessObtained'}, #Anastasia is captured alive
 		{code = 'progress_quest', value = 'princess_search', stage = 'stage5'}],
 		options = [ {
@@ -444,7 +444,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_15 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'zephyra', character2 = 'elf_priestess',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'zephyra', character2 = 'heleviel',
 		text = [{text = "LOOKING_FOR_PRINCESS_45", reqs = []}],
 		options = [ {
 			code = 'looking_for_princess_elven_16', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -452,7 +452,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_16 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'zephyra', character2 = 'elf_priestess',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'zephyra', character2 = 'heleviel',
 		text = [{text = "LOOKING_FOR_PRINCESS_46", reqs = []}],
 		options = [ {
 			code = 'looking_for_princess_elven_17', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -460,7 +460,7 @@ var data = {
 	},
 
 	looking_for_princess_elven_17 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'zephyra', character2 = 'elf_priestess',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'zephyra', character2 = 'heleviel',
 		text = [{text = "LOOKING_FOR_PRINCESS_47", reqs = []}], common_effects = [{code = 'decision', value = 'PrincessObtained'}, #Anastasia is captured alive
 		{code = 'progress_quest', value = 'princess_search', stage = 'stage5'}],
 		options = [ {

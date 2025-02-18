@@ -21,7 +21,7 @@ var skills = {
 		target_range = 'weapon',
 		damage_type = 'weapon',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = 'fleshhit', hit = null},
 		value = 1.1,
 	},
 	sunder = {
@@ -43,7 +43,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'weapon',
-		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.85,
 	},

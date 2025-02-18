@@ -2057,7 +2057,6 @@ var data = {
 		]
 	},
 	savra_talk_6 = {
-		image = null,
 		tags = [
 			"dialogue_scene",
 			"active_character_translate",
@@ -2072,8 +2071,7 @@ var data = {
 				text = "SAVRA_TALK_6",
 				reqs = [
 
-				],
-				previous_dialogue_option = 0
+				]
 			},
 			{
 				text = "SAVRA_TALK_7_1",
@@ -2135,7 +2133,6 @@ var data = {
 		]
 	},
 	savra_talk_6_1 = {
-		image = null,
 		tags = [
 			"dialogue_scene",
 			"active_character_translate"
@@ -2149,8 +2146,7 @@ var data = {
 				text = "SAVRA_TALK_6",
 				reqs = [
 
-				],
-				previous_dialogue_option = 0
+				]
 			},
 			{
 				text = "SAVRA_TALK_7_1",
@@ -2203,7 +2199,6 @@ var data = {
 		]
 	},
 	savra_talk_6_2 = {
-		image = null,
 		tags = [
 			"dialogue_scene",
 			"active_character_translate"
@@ -2217,8 +2212,7 @@ var data = {
 				text = "SAVRA_TALK_6",
 				reqs = [
 
-				],
-				previous_dialogue_option = 0
+				]
 			},
 			{
 				text = "SAVRA_TALK_7_1",

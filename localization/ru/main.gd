@@ -1278,6 +1278,7 @@ Hotkey: 3""",
 	SKILLEUPHORIA_REMOVE = """Эйфория""",
 	SKILLEUPHORIA_REMOVEDESCRIPT = """Отключить Эйфорию""",
 	SKILLENEMY_SLASH = """Разрез""",
+	SKILLASSASSINATE_EN = """Assassinate""", # MISSING TRANSLATION
 	SKILLASSASSINATEEN = """Ликвидация""",
 	SKILLMIMIC_ATTACK = """Липкий захват""",
 	SKILLVOID_BARRAGE = """Пустотная волна""",
@@ -2955,6 +2956,12 @@ Requires: Базовый рабский труд""",
 	CHALLENGEDEXTERITY = """Испытание на ловкость""",
 	CHALLENGEPERSUASION = """Испытание на убеждение""",
 	CHALLENGEWISDOM = """Испытание на мудрость""",	
+	DATEMOOD = """[center]Mood[/center]
+A high mood increases likeliness of positive outcome of intimate actions and provides Loyalty based on Authority Factor after session is finished.
+Mood grows from positive interactions and decreases from negative interactions.""", # MISSING TRANSLATION
+	DATEFEAR = """[center]Fear[/center]
+Fear improves Loyalty based on Timid Factor once date is over. 
+Fear grows from punishing actions, but when pushed too high will make partner breakdown and stop interaction. """, # MISSING TRANSLATION
 	PROFMASTER = """Мастер""",
 	PROFMASTERALT = """Госпожа""",
 	PROFMASTERDESCRIPT = """Единственный хозяин владения. [His] власть вызывает страх и уважение не только у новичков, но даже у опытных слуг.""",
@@ -18935,6 +18942,9 @@ Kuro's answer is straight and simple, emotionless even. She boldly refuses your 
 	KURO_TOP_SS = "Продвинуть историю Куро",
 	KURO_ZEPHYRA_SS = "Иметь Куро и Зефиру, выполнить их квесты, схватить хвост Зефиры",
 	KURO_WEDDING_SS = "Сделать Куро своим пожизненным партнером",
+	ZEPHYRA_BATH_1_O_0 = """*Stand up and leave*""", # MISSING TRANSLATION
+	HELEVIEL_MANSION_1_O_0 = """*Just keep her as slave for now*""", # MISSING TRANSLATION
+	HELEVIEL_MANSION_1_O_1 = """*Give her a lesson of "Obedience"*""", # MISSING TRANSLATION
 
 }
 

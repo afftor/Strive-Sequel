@@ -1033,7 +1033,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		text = [
 			{
 				text = "PRIESTESS_TALK_1",
@@ -1073,7 +1073,6 @@ var data = {
 		]
 	},
 	priestess_talk_2 = {
-		image = null,
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1081,7 +1080,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		text = [
 			{
 				text = "PRIESTESS_TALK_2_1",
@@ -1151,7 +1150,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		text = [
 			{
 				text = "PRIESTESS_TALK_3_2",
@@ -1226,14 +1225,7 @@ var data = {
 		reqs = [
 
 		],
-		text = [
-			{
-				text = "TEMPLE_START",
-				reqs = [
-
-				]
-			}
-		],
+		text = "TEMPLE_START",
 		options = [
 			{
 				code = "temple_1",
@@ -1889,7 +1881,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		text = [
 			{
 				text = "AFTER_TEMPLE_PRIESTESS_1",
@@ -1918,7 +1910,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		text = [
 			{
 				text = "AFTER_TEMPLE_PRIESTESS_2",
@@ -1948,7 +1940,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		text = [
 			{
 				text = "AFTER_TEMPLE_PRIESTESS_3",
@@ -1993,7 +1985,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		text = [
 			{
 				text = "AFTER_TEMPLE_PRIESTESS_4",
@@ -2052,7 +2044,7 @@ var data = {
 						]
 					}
 				],
-				character = "elf_priestess",
+				character = "heleviel",
 				text = [
 					{
 						text = "AFTER_TEMPLE_PRIESTESS_5_1_1_BAD",
@@ -2091,7 +2083,7 @@ var data = {
 				reqs = [
 
 				],
-				character = "elf_priestess",
+				character = "heleviel",
 				text = [
 					{
 						text = "AFTER_TEMPLE_PRIESTESS_5_1_1",
@@ -2123,7 +2115,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		text = [
 			{
 				text = "AFTER_TEMPLE_PRIESTESS_5_1_2",
@@ -3597,7 +3589,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		text = [
 			{
 				text = "CEREMONY_1",
@@ -3672,7 +3664,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		character_alpha = 180,
 		character2 = "lira",
 		character2_alpha = 180,
@@ -3731,7 +3723,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "elf_priestess",
+		character2 = "heleviel",
 		text = "CEREMONY_HELEVIEL_1",
 		options = [
 			{
@@ -3761,7 +3753,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "elf_priestess",
+		character2 = "heleviel",
 		text = [
 			{
 				text = "CEREMONY_HELEVIEL_2",
@@ -3801,7 +3793,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "elf_priestess",
+		character2 = "heleviel",
 		text = [
 			{
 				text = "CEREMONY_HELEVIEL_3_1",
@@ -3850,7 +3842,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "elf_priestess",
+		character2 = "heleviel",
 		text = [
 			{
 				text = "CEREMONY_HELEVIEL_3_1_1",
@@ -3931,7 +3923,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		text = [
 			{
 				text = "CEREMONY_HELEVIEL_4",
@@ -4074,7 +4066,7 @@ var data = {
 
 		],
 		character = "erlen",
-		character2 = "elf_priestess",
+		character2 = "heleviel",
 		text = "CEREMONY_LIRA_1",
 		options = [
 			{
@@ -4348,7 +4340,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		character2 = "demon_female",
 		text = [
 			{
@@ -4378,7 +4370,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		character2 = "demon_female",
 		text = [
 			{
@@ -4408,7 +4400,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		text = [
 			{
 				text = "DEMON_PRIESTESS_3",

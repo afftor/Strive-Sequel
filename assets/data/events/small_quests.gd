@@ -681,7 +681,6 @@ var data = {
 		]
 	},
 	cali_intro_2 = {
-		image = null,
 		tags = [
 			"dialogue_scene"
 		],
@@ -751,7 +750,6 @@ var data = {
 		]
 	},
 	cali_intro_3 = {
-		image = null,
 		tags = [
 			"dialogue_scene",
 			"master_translate"
@@ -1286,7 +1284,6 @@ var data = {
 		]
 	},
 	got_cali_2_2 = {
-		image = null,
 		tags = [
 			"dialogue_scene"
 		],

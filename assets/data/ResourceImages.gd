@@ -545,7 +545,7 @@ var sprites = {
 	ketch_body = load("res://assets/images/sprites/ketch.png"),
 	demon_female = load("res://assets/images/sprites/demon_female.png"),
 	greg = load("res://assets/images/sprites/greg.png"),
-	elf_priestess = load("res://assets/images/sprites/heleviel.png"),
+	heleviel = load("res://assets/images/sprites/heleviel.png"),
 	zephyra = load("res://assets/images/sprites/zephyra.png"),
 	zephyra_body = load("res://assets/images/sprites/zephyra_body.png"),
 	zephyra_mad = load("res://assets/images/sprites/zephyra_neko.png"),
@@ -650,6 +650,7 @@ var sprites = {
 #	zephyras_sister_nude_body = load("res://assets/images/sprites/zephyrasister_nude_body.png"),
 	bolthar = load("res://assets/images/sprites/gnome.png"),
 	keeper = load("res://assets/images/sprites/keeper.png"),
+	alise = load("res://assets/images/sprites/alise.png"),
 	}
 
 func get_sprite(id):

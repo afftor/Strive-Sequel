@@ -11,7 +11,11 @@ func _ready():
 #	setup_player()
 	for id in Enemydata.enemygroups:
 		combatlist.push_back(id)
-		$selector.add_item(id)
+	
+	combatlist.sort()
+	
+	for i in combatlist:
+		$selector.add_item(i)
 
 
 func setup_player_test():

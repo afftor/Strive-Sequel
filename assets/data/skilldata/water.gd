@@ -52,8 +52,8 @@ var skills = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'water',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
-		sound = [],
+		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.0,
 	},
 	water_shield = {

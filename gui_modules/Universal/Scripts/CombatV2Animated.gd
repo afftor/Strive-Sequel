@@ -1297,7 +1297,7 @@ func RebuildSkillPanel():
 				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 				newbutton.get_node("cooldown").visible = true
 				newbutton.get_node("cooldown").text = str(activecharacter.skills.combat_cooldowns[skill.code])
-				newbutton.get_node("cooldown").set("custom_colors/font_color", variables.hexcolordict.yellow)
+				newbutton.get_node("cooldown").set("custom_colors/font_color", variables.hexcolordict.magenta)
 			if skill.charges > 0:
 				var leftcharges = skill.charges
 				if activecharacter.skills.combat_skill_charges.has(skill.code):

@@ -916,7 +916,6 @@ Reduced by enemy's evasion""",
 	LOAD = "Load",
 	OPTIONS = "Options",
 	QUIT = "Quit",
-	CLOSE = "Close",
 	PROCEED = "Proceed",
 	SELECTHERO = "Select Hero",
 	SOUND = "Sound",
@@ -1220,7 +1219,7 @@ Silenced: Can't use Spell type abilities.""",
 	SKILLEUPHORIA_REMOVE = "Euphoria",
 	SKILLEUPHORIA_REMOVEDESCRIPT = "Disable Euphoria",
 	SKILLENEMY_SLASH = "Slash",
-	SKILLASSASSINATEEN = "Assassinate",
+	SKILLASSASSINATE_EN = "Assassinate",
 	SKILLMIMIC_ATTACK = "Sticky Grab",
 	SKILLVOID_BARRAGE = "Void Barrage",
 	SKILLVOID_BARRAGEDESCRIPT = "Deals 80% of MATK as {color=yellow|Dark} damage 5 times to random targets.",
@@ -2817,10 +2816,12 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	CHALLENGEDEXTERITY = "Dexterity Challenge",
 	CHALLENGEPERSUASION = "Persuasion Challenge",
 	CHALLENGEWISDOM = "Wisdom Challenge",
-	
-	DATEMOOD = '[center]Mood[/center]\nA high mood increases likeliness of positive outcome of intimate actions and provides Loyalty based on Authority Factor after session is finished.\nMood grows from positive interactions and decreases from negative interactions.',
-	DATEFEAR = '[center]Fear[/center]\nFear improves Loyalty based on Timid Factor once date is over. \nFear grows from punishing actions, but when pushed too high will make partner breakdown and stop interaction. ',
-	
+	DATEMOOD = """[center]Mood[/center]
+A high mood increases likeliness of positive outcome of intimate actions and provides Loyalty based on Authority Factor after session is finished.
+Mood grows from positive interactions and decreases from negative interactions.""",
+	DATEFEAR = """[center]Fear[/center]
+Fear improves Loyalty based on Timid Factor once date is over. 
+Fear grows from punishing actions, but when pushed too high will make partner breakdown and stop interaction. """,
 	PROFMASTER = "Master",
 	PROFMASTERALT = "Mistress",
 	PROFMASTERDESCRIPT = "The sole ruler of a domain. [His] power strikes fear and respect not only in newcomers, but even in seasoned servants.",
@@ -7233,8 +7234,8 @@ Daisy bows to you with all the respect she's able to demonstrate. You make a not
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_REFUSE = "Refuse.",
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_2_2 = "— Then you've come to the right place. We can make a servant dress which will appear normal, but will allow easy access to the servant's more private areas. Moreover, the fabric will subtly stimulating the servant's erogenous zones, so they will become and remain aroused while at work. This would be more to your liking? I'll only ask you 250 gold for it.",
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_OPTION_2_2_1 = "Deal. (250 gold)",
-	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_3_150 = "You pass 150 gold to Amelia and arrange Daisy's meeting with the tailor, after which you make your way out.",
-	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_3_250 = "You pass 250 gold to Amelia and arrange Daisy's meeting with the tailor, after which you make your way out.",
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_3_150 = "You pass 150 gold to Alise and arrange Daisy's meeting with the tailor, after which you make your way out.",
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_3_250 = "You pass 250 gold to Alise and arrange Daisy's meeting with the tailor, after which you make your way out.",
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_0 = """Daisy stands before you in her new dress, shining with happiness. Her clothes can't be compared to her old rags and she has begun to feel even more dedicated to you.
 
 — You've really done it, [Master]. I never imagined this dress would be so nice.
@@ -12620,7 +12621,7 @@ Norlan leaves without saying anything more.""",
 — I-I suppose this is possible if that's your wish... After all, we haven't selected a proper new leader yet, so she can be restored to her position, if that's what you want.""",
 	AMELIA_RETURN_1_OPTION_1 = "Yes, I want it.",
 	AMELIA_RETURN_1_OPTION_2 = "Maybe not, after all.",
-	AMELIA_RETURN_2_1 = "— Very well, we'll restore her to her position as a guild leader. She might actually become more famous after all of this.",
+	AMELIA_RETURN_2_1 = "— Very well, we'll restore her to her position as a guild leader. Frankly, she might become more famous after all of this.",
 	AMELIA_GREETING_AFTER_RETURN = "— [name]... That was a surprise you've given up on me just like that. But I'm not angry. After all, I'm used to disappointments. Anyway, what can I help you with?",
 	AMELIA_FINAL_1 = "— At last, the savior of the day makes [his] appearance. How does it feel to so dashingly come to the rescue of the maiden in need, Mayor [name]?",
 	AMELIA_FINAL_1_OPTION_1 = "It's not the first time, remember? You better not get used to it, though.",
@@ -12719,7 +12720,7 @@ You are not ready to let her go yet, however. You grab her, — one hand wrapped
 	AMELIATASKNAME = "*Search for Amelia*",
 	AMELIATASKDESCRIPT = "*Send searching group to find any clues about Amelia's whereabouts*",
 	SERVANTSNOAMELIA = "As Amelia is no longer the leader of the Servants, this place is currently vacant.",
-	SERVANTS_INTRODUCTION_NEW_LEADER_1 = "",
+	SERVANTS_INTRODUCTION_NEW_LEADER_1 = "— Hello. Don't be surprised, I've been requested to take the leader's role after you've taken previous leader to yourself. Before you ask, no, I'm not available for recruiting, like, at all. Otherwise I look forward helping you with other guild related issues.",
 	DAISY_TRAINING_NEW_LEADER_REPLY_1 = """You explain how you think Daisy could benefit from training to become more professional.
 
 — Of course we have training which would improve her performance, depending on what you'd like.""",
@@ -12814,7 +12815,7 @@ Not waiting for your reply she disappears from sight as nonchalantly as she appe
 
 {color=green|Cali: Charm Factor +1
 Cali: Charm +10}""",
-	SERVANTS_NEW_LEADER_CLOSE = "",
+	SERVANTS_NEW_LEADER_CLOSE = "SERVANTSCLOSE2",
 	ZEPHYRA_COSTUME_1_OPTION_1 = "Check elven houses",
 	ZEPHYRA_COSTUME_1_1 = """As you walk through the settlement, you come across an agitated elf woman.
 
@@ -17790,6 +17791,13 @@ After a few minutes nothing still happened and [name] decides to move on.""",
 	LILITH_WEDDING_SS = "Devote your soul to the little imp",
 	KURO_BOOK_SS = "Progress Kuro's story",
 	KURO_TOP_SS = "Progress Kuro's story",
-	KURO_ZEPHYRA_SS = "Have both Kuro and Zephyra and progress their quests, grab Zephyra's tail",
-	KURO_WEDDING_SS = "Make Kuro your lifelong partner"
+	KURO_ZEPHYRA_SS = "Pay special attention to two smaller foxgirls and their tails",
+	KURO_WEDDING_SS = "Put a dark fox into a white dress",
+	ZEPHYRA_BATH_1_O_0 = "*Stand up and leave*",
+	HELEVIEL_MANSION_1_O_0 = "*Just keep her as slave for now*",
+	HELEVIEL_MANSION_1_O_1 = "*Give her a lesson of \"Obedience\"*",
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """You explain to Alise that one of your slaves needs a change of clothes.
+
+— Why, yes, proper servants' attire is one of our specialties. You know, the right clothes make a big difference even for less ideal bodies, naturally we have tailors who can adjust for any required body type. But what are you looking for, anyway?""",
+	SERVANTS_INTRODUCTION_NEW_LEADER_T_0 = "— Hello [name]. How can I help you today?"
 }

@@ -594,7 +594,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		reqs = [
 
 		],
@@ -623,7 +623,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		reqs = [
 
 		],
@@ -667,7 +667,7 @@ var data = {
 		tags = [
 			"dialogue_scene"
 		],
-		character = "elf_priestess",
+		character = "heleviel",
 		reqs = [
 
 		],
@@ -1065,7 +1065,7 @@ var data = {
 			"master_translate"
 		],
 		custom_background = "elf_capital",
-		character = "elf_priestess",
+		character = "heleviel",
 		reqs = [
 
 		],
