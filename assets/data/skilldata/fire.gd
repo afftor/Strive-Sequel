@@ -121,7 +121,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'fire',
 		sfx = [{code = 'flame', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		value = 1.5
 	},
 	inferno = {
@@ -144,7 +144,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'fire',
 		sfx = [{code = 'flame', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		value = 1.6,
 	},
 	
@@ -171,7 +171,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'fire',
 		sfx = [{code = 'flame', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		value = 2.0,
 	},
 	
@@ -200,7 +200,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'fire',
 		sfx = [{code = 'flame', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		value = [['0']],
 		damagestat = ['no_stat'],
 	},
