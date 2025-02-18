@@ -1816,7 +1816,7 @@ func set_shield(value):
 	shield = max(0, value)
 
 func deal_damage(value, source = 'normal'):
-	print(source)
+#	print(source)
 	if npc_reference == 'combat_global': return null
 	if has_status('warded') and !has_status('ward'):
 		return 0
