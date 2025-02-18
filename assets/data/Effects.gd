@@ -2990,3 +2990,7 @@ func rebuild_autocast(args):
 	template.sub_effects.push_back(oneshot)
 	return template
 	
+
+
+func rebuild_we_atomic(src):
+	return {type = 'stat_set_revert', stat = 'damagetype', value = src}

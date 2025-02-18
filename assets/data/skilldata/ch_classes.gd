@@ -1487,6 +1487,29 @@ var effects = {
 			t_name = 'windwall',
 		}]
 	},
+	
+	e_we_test = {
+		type = 'temp_s',
+		duration = 4,
+		stack = 1,
+		name = 'e_s_windwall',
+		target = 'target',
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		args = [],
+		atomic = [
+			Effectdata.rebuild_we_atomic('water')
+		],
+		sub_effects = [],
+		tags = ['e_damage_buff'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/windwall.png",
+			description = "TRAITEFFECTWINDWALL",
+			args = [],
+			limit = 1,
+			t_name = 'test',
+		}]
+	}
 }
 var atomic_effects = {}
 var buffs = {

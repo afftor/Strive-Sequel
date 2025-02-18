@@ -71,7 +71,9 @@ var template = {
 
 	atk = variables.basic_character_atk,
 	matk = variables.basic_character_matk,
-
+	
+	damagetype = 'normal',
+	
 	hitrate = 100,
 	evasion = 0,
 	resists = {},

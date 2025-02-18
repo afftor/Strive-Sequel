@@ -683,8 +683,12 @@ func setup_as_heir():
 
 
 func get_weapon_element():
-	#for testing
-	return equipment.get_weapon_element()
+	if has_status('e_damage_buff'):
+		return get_stat('damagetype')
+	var tmp = equipment.get_weapon_element()
+	if tmp != 'normal':
+		return tmp
+	return get_stat('damagetype')
 
 func has_temp_effect(temp_name):
 	return effects.has_temp_effect(temp_name)
@@ -1812,6 +1816,7 @@ func set_shield(value):
 	shield = max(0, value)
 
 func deal_damage(value, source = 'normal'):
+	print(source)
 	if npc_reference == 'combat_global': return null
 	if has_status('warded') and !has_status('ward'):
 		return 0
