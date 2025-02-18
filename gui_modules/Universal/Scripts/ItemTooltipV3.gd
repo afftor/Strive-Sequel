@@ -214,6 +214,9 @@ func gear_detailed_tooltip(data, item = null):
 		var material = Items.materiallist[item.parts[i]]
 		text += tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}"
 		for k in material.parts[i]:
+			if k == 'weapon_element':
+				text += tr("WEAPONELEMENTBASE") + material.parts[i][k] + "\n"
+				continue
 			if material.parts[i][k] != 0:
 				var value = material.parts[i][k]
 				var change = ''
