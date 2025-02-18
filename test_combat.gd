@@ -187,7 +187,9 @@ func make_hero(type, level, position = 1, first = false):
 						nm += '_' + roll
 			if level > 2:
 				nm += '_maxed'
-			
+			for mas in pool3:
+				for i in range(pool3[mas]):
+					character.upgrade_mastery(mas, true)
 			match level:
 				1:
 					e_list = ['chest_base_metal', 'legs_base_metal', 'shield', ['sword', 'mace', 'battleaxe', 'club', 'spear']]
@@ -203,7 +205,7 @@ func make_hero(type, level, position = 1, first = false):
 			nm = 'rogue'
 			var pool1 := ['rogue', 'archer']
 			var pool2 := []
-			var pool3 := {warfare = 0, stealth = 0, archery = 0}
+			var pool3 := {warfare = 0, stealth = 0, marksmanship = 0}
 			for mas in pool3:
 				pool3[mas] = globals.rng.randi_range(2, 3)
 			if level > 1:
@@ -227,6 +229,9 @@ func make_hero(type, level, position = 1, first = false):
 			if level > 2:
 				nm += '_maxed'
 			#, ['dagger', 'bow', 'bowadv', 'crossbow', 'crossbowadv']
+			for mas in pool3:
+				for i in range(pool3[mas]):
+					character.upgrade_mastery(mas, true)
 			match level:
 				1:
 					e_list = ['chest_base_leather', 'legs_base_leather']
@@ -282,7 +287,9 @@ func make_hero(type, level, position = 1, first = false):
 				nm += '_' + roll
 			if level > 2:
 				nm += '_maxed'
-			
+			for mas in pool3:
+				for i in range(pool3[mas]):
+					character.upgrade_mastery(mas, true)
 			match level:
 				1:
 					e_list = ['chest_base_cloth', 'legs_base_cloth', 'staff']
@@ -396,7 +403,9 @@ func make_hero(type, level, position = 1, first = false):
 							nm += '_' + prof
 			if level == 4:
 				nm += '_maxed'
-			
+			for mas in pool3:
+				for i in range(pool3[mas]):
+					character.upgrade_mastery(mas, true)
 			match level:
 				1:
 					e_list = ['chest_base_cloth', 'legs_base_cloth', 'staff']
@@ -406,6 +415,7 @@ func make_hero(type, level, position = 1, first = false):
 					e_list = [['chest_base_cloth', 'chest_adv_cloth'], ['legs_base_cloth', 'legs_adv_cloth'], ['staff']]
 				4:
 					e_list = ['chest_adv_cloth', 'legs_adv_cloth', 'staffadv']
+	
 	character.set_stat('name', nm)
 	input_handler.active_location.group['pos' + str(position)] = character.id
 	
