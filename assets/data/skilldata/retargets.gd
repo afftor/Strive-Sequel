@@ -78,6 +78,12 @@ var effects = {
 		sub_effects = [
 			{
 				type = 'oneshot',
+				target = 'arg',
+				args = [{obj = 'parent_args', param = 0}],
+				atomic = [{type = 'sfx', value = 'targetattack'}],
+			},
+			{
+				type = 'oneshot',
 				target = 'skill',
 				args = [{obj = 'parent_args', param = 0}],
 				atomic = [{type = 'stat_set', stat = 'target', value = ['parent_args', 0]}],
