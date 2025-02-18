@@ -8,13 +8,10 @@
 margin_left = 1027.0
 margin_top = 283.0
 margin_right = 1463.0
-margin_bottom = 528.0
+margin_bottom = 550.0
 mouse_filter = 2
 custom_styles/panel = ExtResource( 1 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="descript" type="RichTextLabel" parent="."]
 margin_left = 11.0
@@ -22,8 +19,8 @@ margin_top = 11.0
 margin_right = 423.0
 margin_bottom = 202.0
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 4 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
 bbcode_text = "Skill Description"
 text = "Skill Description"
@@ -38,10 +35,9 @@ margin_left = 11.0
 margin_top = -55.0
 margin_right = 421.0
 margin_bottom = -23.0
-custom_fonts/font = ExtResource( 4 )
+grow_vertical = 0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Cost"
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+autowrap = true
