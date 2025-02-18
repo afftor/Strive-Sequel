@@ -5104,8 +5104,9 @@ func get_materials_by_grade(grade, item_id):
 				if partmaterials[part].has(mat):
 					possible_res[mat] = material_tiers[grade][mat]
 			if possible_res.empty():
-				print('error in material tiers data - no mat in %s for %s' %[grade, part])
-				return({})
+				print('warning: material tiers data - no mat in %s for %s' %[grade, part])
+#				return({})
+				res[part] = partmaterials[part].keys()[0]
 			else:
 				res[part] = input_handler.weightedrandom_dict(possible_res)
 	return res

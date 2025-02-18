@@ -136,7 +136,9 @@ func clear_equip(hard = true):
 
 
 func get_weapon_element():
-	#for testing
+	if gear.rhand != null:
+		var item = ResourceScripts.game_res.items[gear.rhand] 
+		return item.get_weapon_element()
 	return 'normal'
 
 

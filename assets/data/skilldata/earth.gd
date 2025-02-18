@@ -216,7 +216,7 @@ var effects = {
 		tags = ['buff'],
 		args = [{obj = 'parent_args', param = 0}],
 		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'def', value = [['parent_args', 0], '*', 0.5]}],
+		atomic = [{type = 'stat_add', stat = 'armor', value = [['parent_args', 0], '*', 0.5]}],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Knight.png",
@@ -238,7 +238,7 @@ var effects = {
 		args = [{obj = 'parent_args', param = 0}],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add', stat = 'def', value = [['parent_args', 0], '*', 0.5]},
+			{type = 'stat_add', stat = 'armor', value = [['parent_args', 0], '*', 0.5]},
 			{type = 'stat_add', stat = 'mdef', value = [['parent_args', 0], '*', 0.4]}
 			],
 		buffs = [

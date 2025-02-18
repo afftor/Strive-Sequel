@@ -455,6 +455,13 @@ var statdata = {
 		baseicon = 'food_love',
 		custom_get = true
 	},
+	damagetype = {
+		code = 'damagetype',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		default_bonus = 'set'
+	},
 	armor = {
 		code = 'armor',
 		name = '',

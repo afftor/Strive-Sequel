@@ -59,7 +59,7 @@ func showup(node, skillcode):
 	
 	yield(get_tree(), 'idle_frame')
 	
-	rect_size.y = max(270, $descript.get_v_scroll().get_max() + 90)
+	rect_size.y = max(270, $descript.get_v_scroll().get_max() + 55 + $cost.rect_size.y)
 	$descript.rect_size.y = rect_size.y - 80
 	
 	

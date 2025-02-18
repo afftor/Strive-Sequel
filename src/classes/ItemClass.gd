@@ -424,6 +424,10 @@ func tooltiptext():
 		var t_bonusstats = get_bonusstats()
 		for i in t_bonusstats:
 			if i == 'weapon_element':
+				text += tr("WEAPONELEMENTBASE") + t_bonusstats[i] + "\n"
+				continue
+			if i == 'weapon_element_ench':
+				text += tr("WEAPONELEMENENCHANT") + t_bonusstats[i] + "\n"
 				continue
 			if t_bonusstats[i] != 0:
 				var value = t_bonusstats[i]
@@ -596,6 +600,14 @@ func use_explore(character, caller = null):
 		character.use_social_skill(itemskill, character)
 
 
+func get_weapon_element():
+	if bonusstats.has('weapon_element_ench'):
+		return bonusstats.weapon_element_ench
+	if bonusstats.has('weapon_element'):
+		return bonusstats.weapon_element
+	return 'normal'
+
+
 func get_e_capacity_max():
 #	var res = 0
 #	var template = Items.itemlist[itembase]
@@ -627,7 +639,7 @@ func get_bonusstats():
 	if tags.has('fixed_stats'):
 		mul = 1.0
 	for st in res:
-		if st == 'weapon_element':
+		if st in ['weapon_element', 'weapon_element_ench']:
 			continue #stub
 		if res[st] > 0: #or more complex behavior in case there are stats negative by default
 			res[st] *= mul

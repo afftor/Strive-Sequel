@@ -1082,6 +1082,8 @@ func add_stat_bonuses(ls:Dictionary):
 			add_bonus(rec, ls[rec])
 	else:
 		for rec in ls:
+			if rec in ['weapon_element', 'weapon_element_ench']:
+				continue
 			if (rec as String).ends_with('mod') && !(rec in ['critmod', 'exp_gain_mod']) :
 				add_bonus(rec.replace('mod','_mul'), ls[rec])
 				continue
@@ -1122,6 +1124,8 @@ func remove_stat_bonuses(ls:Dictionary):
 			add_bonus(rec, ls[rec], true)
 	else:
 		for rec in ls:
+			if rec in ['weapon_element', 'weapon_element_ench']:
+				continue
 			if (rec as String).ends_with('mod') && !(rec in ['critmod', 'exp_gain_mod']) :
 				add_bonus(rec.replace('mod','_mul'), ls[rec], true)
 				continue
