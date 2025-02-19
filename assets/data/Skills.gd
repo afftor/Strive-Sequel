@@ -1341,6 +1341,8 @@ func get_template(id, caster):
 	if tres.icon is String:
 		tres.icon = input_handler.loadimage(tres.icon, 'icons') #not get_icon or load for the sake of user: pathes
 	tres.descript = tr(tres.descript)
+	if tres.cost.has('mp'):
+		tres.cost.mp = caster.get_manacost_for_skill(tres)
 	return tres
 
 
@@ -1371,6 +1373,8 @@ func get_template_combat(id, caster):
 	if tres.icon is String:
 		tres.icon = input_handler.loadimage(tres.icon, 'icons') #not get_icon or load for the sake of user: pathes
 	tres.descript = tr(tres.descript)
+	if tres.cost.has('mp'):
+		tres.cost.mp = caster.get_manacost_for_skill(tres)
 	return tres
 
 

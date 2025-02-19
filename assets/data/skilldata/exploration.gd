@@ -8,7 +8,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/firestorm.png",
 		type = 'exploration', 
 		ability_type = 'spell',
-		tags = ['support', 'exploration'],
+		tags = ['support', 'exploration', 'fire'],
 		reqs = [],
 		targetreqs = [],
 		effects =  [Effectdata.rebuild_template({effect = 'e_tr_flamesphere', trigger = variables.TR_EXPLORE_POSTDAMAGE})], 

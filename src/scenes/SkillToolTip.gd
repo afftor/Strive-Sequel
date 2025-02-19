@@ -36,10 +36,7 @@ func showup(node, skillcode):
 	
 	text = tr("USAGE_COST") + ": "
 	for st in skill.cost:
-		if st == 'mp':
-			text += "%s: %d. " % [statdata.statdata[st].name ,int(skill.cost[st] * character.get_stat('manacost_mod'))]
-		else:
-			text += "%s: %d. " % [statdata.statdata[st].name ,int(skill.cost[st])]
+		text += "%s: %d. " % [statdata.statdata[st].name ,int(skill.cost[st])]
 	if skill.has('catalysts') && skill.catalysts.size() > 0:
 		for i in skill.catalysts:
 			text += Items.materiallist[i].name + " - " + str(skill.catalysts[i]) + ", "

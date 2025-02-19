@@ -1036,7 +1036,7 @@ var professions = {
 		categories = ['combat','magic'],
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 4}],
-		statchanges = {matk = 6, damage_mod_fire = 0.25, mastery_fire = 1, resist_fire = 50, disabled_masteries = ['water','air','light','dark','mind']},
+		statchanges = {matk = 6, damage_mod_fire = 0.25, manacost_mod_fire = -0.66,  mastery_fire = 1, resist_fire = 50, disabled_masteries = ['water','air','light','dark','mind']},
 		traits = [],
 		skills = [],
 		combatskills = [],
