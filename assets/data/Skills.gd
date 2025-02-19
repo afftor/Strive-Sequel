@@ -303,7 +303,7 @@ var Skilllist = {
 		effects = [], 
 		cost = {},
 		charges = 0,
-		combatcooldown = 0,
+		combatcooldown = 2,
 		cooldown = 0,
 		catalysts = {},
 		target = 'enemy',
@@ -357,7 +357,7 @@ var Skilllist = {
 		target_number = 'single',#?
 		target_range = 'any',
 		damage_type = 'earth',
-		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}],#? 
+		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}],#? 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1
 	},
@@ -383,8 +383,7 @@ var Skilllist = {
 		damage_type = 'water',
 		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = [0.05, 1.0], #second value is questionable
-		damagestat = ['no_stat', '+damage_hp']
+		value = 1.0, 
 	},
 	poison_bite = {
 		code = 'poison_bite',
@@ -408,8 +407,58 @@ var Skilllist = {
 		damage_type = 'dark',
 		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = [0.4, 1.5],
-		damagestat = ['no_stat', '+damage_hp']
+		value = 1.5,
+	},
+	spider_aoe = {
+		code = 'spider_aoe',
+		
+		descript = '',
+		icon = load("res://assets/images/iconsskills/Attack.png"),
+		type = 'combat', 
+		ability_type = 'spell',
+		tags = ['damage','ads'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_s_poison_new', push_characters = true, duration = 2})],
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'enemy',
+		target_number = 'all',
+		target_range = 'any',
+		damage_type = 'water',
+		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
+		value = 0.2, 
+	},
+	spider_ranged = {
+		code = 'spider_ranged',
+		
+		descript = '',
+		icon = load("res://assets/images/iconsskills/Attack.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['damage','ads'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template_globals({effect = 'e_s_ensnare'})],
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		repeat = 2,
+		keep_target = variables.TARGET_NOKEEP,
+		next_target = variables.NT_ANY,
+		catalysts = {},
+		target = 'enemy',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'earth',
+		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
+		value = 0.4,
 	},
 	bleeding_strike = {#applies debuff: deal 25% bonus damage every turn for 4 turns
 		code = 'bleeding_strike',
