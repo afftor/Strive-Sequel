@@ -698,7 +698,7 @@ var professions = {
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 4},{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 3}],
 		statchanges = {wits_bonus = 5, hpmax = 10, resist_mind = 15, damage_mod_light = 0.2, mastery_light = 1, mastery_fire = 1},
-		traits = [],
+		traits = ['templar'],
 		skills = [],
 		combatskills = ['righteous_fire'],
 		conflict_classes = [],

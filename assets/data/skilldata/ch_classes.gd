@@ -55,7 +55,7 @@ var skills = {
 		icon = load("res://assets/images/iconsskills/FireBomb.png"),
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage','ads'],
+		tags = ['damage','ads', 'fire'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_burn_new', push_characters = true, duration = 2})],
@@ -914,6 +914,54 @@ var effects = {
 		]
 	},
 	
+	e_tr_templar = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		req_skill = true,
+		conditions = [
+			{type = 'skill', value = ['tags', 'has', 'taunt']},
+		],
+		atomic = [],
+		buffs = [],
+		args = [],
+		sub_effects = ['e_s_templar']
+	},
+	e_s_templar = {
+		type = 'temp_s',
+		tags = ['buff'],
+		target = 'owner',
+		name = 'templar_prot',
+		stack = 1,
+		req_skill = false,
+		duration = 3,
+		tick_event = variables.TR_TURN_GET,
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		args = [{obj = 'app_obj', param = 'armor'}],
+		sub_effects = ['e_tr_templar_heal'],
+		atomic = [
+			{type = 'stat_add', stat = 'mdef', value = [['parent_args', 0], '*', 0.5]},
+			],
+		buffs = ['b_templar'],
+	},
+	e_tr_templar_heal = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_GET],
+		req_skill = false,
+		conditions = [],
+		args = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				args = [{obj = 'app_obj', param = 'hpmax'}],
+				atomic = [
+					{type = 'heal', value = [['parent_args', 0], '*', 0.1]},
+					],
+				buffs = [],
+				sub_effects = []
+			},
+		]
+	},
 	#skill-based
 	e_t_command = {
 		type = 'temp_s',
@@ -1523,6 +1571,12 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/Sedate.png",
 		description = "BUFFDESCRIPTBISHOP",
 		t_name = 'bishop_debuff',
+		combat_only = true
+	},
+	b_templar = {
+		icon = "res://assets/images/iconsskills/Sedate.png",
+		description = "BUFFDESCRIPTTEMPLAR",
+		t_name = 'templar_buff',
 		combat_only = true
 	},
 	b_free_use = {
