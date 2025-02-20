@@ -146,12 +146,12 @@ func make_hero(type, level, position = 1, first = false):
 		'fighter':
 			character.set_stat('physics_factor', 3)
 			character.set_stat('wits_factor', 3)
-			nm = 'fighter'
+			nm = 'melee'
 			var pool1 := ['fighter']
 			var pool2 := ['rogue', 'archer']
 			var pool3 := {warfare = 0, protection = 0, leadership = 0}
 			for mas in pool3:
-				pool3[mas] = globals.rng.randi_range(2, 3)
+				pool3[mas] = globals.rng.randi_range(1, 2)
 			match character.get_stat('race'):
 				'Orc':
 					pool2.push_back('berserker')
@@ -165,7 +165,7 @@ func make_hero(type, level, position = 1, first = false):
 				pool1.append_array(pool2)
 				pool2 = ['knight', 'paladin']
 				for mas in pool3:
-					pool3[mas] = globals.rng.randi_range(4, 5)
+					pool3[mas] = globals.rng.randi_range(3, 4)
 			if level > 2:
 				pool2 = [['knight', 'deathknight'], ['paladin','templar']]
 				for mas in pool3:
@@ -207,13 +207,13 @@ func make_hero(type, level, position = 1, first = false):
 			var pool2 := []
 			var pool3 := {warfare = 0, stealth = 0, marksmanship = 0}
 			for mas in pool3:
-				pool3[mas] = globals.rng.randi_range(2, 3)
+				pool3[mas] = globals.rng.randi_range(1, 2)
 			if level > 1:
 				character.set_stat('physics_factor', 4)
 				character.set_stat('wits_factor', 4)
 				pool2 = ['assassin', 'ninja', 'sniper', 'ranger']
 				for mas in pool3:
-					pool3[mas] = globals.rng.randi_range(4, 5)
+					pool3[mas] = globals.rng.randi_range(3, 4)
 			if level > 2:
 				pool1.append_array(pool2)
 				pool2 = []
@@ -266,14 +266,14 @@ func make_hero(type, level, position = 1, first = false):
 			var pool2 := ['priest', 'monk']
 			var pool3 := {light = 0, water = 0, leadership = 0}
 			for mas in pool3:
-				pool3[mas] = globals.rng.randi_range(2, 3)
+				pool3[mas] = globals.rng.randi_range(1, 2)
 			if level > 1:
 				character.set_stat('charm_factor', 4)
 				character.set_stat('wits_factor', 4)
 				pool1 = ['acolyte', 'priest']
 				pool2 = ['bishop', 'monk', 'shaman', 'bard']
 				for mas in pool3:
-					pool3[mas] = globals.rng.randi_range(4, 5)
+					pool3[mas] = globals.rng.randi_range(3, 4)
 			if level > 2:
 				pool1 = ['acolyte', 'priest', 'bishop', 'monk', 'shaman', 'bard']
 				pool2 = []
@@ -320,7 +320,7 @@ func make_hero(type, level, position = 1, first = false):
 					pool2.back().push_back('shaman')
 			var pool3 := {fire = 0, water = 0, earth = 0, air = 0, dark = 0, mind = 0}
 			for mas in pool3:
-				pool3[mas] = globals.rng.randi_range(1, 3)
+				pool3[mas] = globals.rng.randi_range(1, 2)
 			if character.get_stat('race') in ['Elf', 'Dryad', 'Fairy', 'DarkElf', 'TribalElf']:
 				for arr in pool1:
 					if !arr.has('druid'):
@@ -344,7 +344,7 @@ func make_hero(type, level, position = 1, first = false):
 						pool2.push_back(arr.duplicate())
 						pool2.back().push_back('scholar')
 				for mas in pool3:
-					pool3[mas] = globals.rng.randi_range(3, 5)
+					pool3[mas] = globals.rng.randi_range(2, 4)
 			if level > 2:
 				var tmp = pool2.duplicate(true)
 				pool2 = []
