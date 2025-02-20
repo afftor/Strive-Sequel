@@ -144,7 +144,7 @@ func update_skillinfo(skill):
 	$SkillInfo/name.text = tr("SKILL" + skill.code.to_upper())
 	$SkillInfo/desc.text = tr("SKILL" + skill.code.to_upper() + "DESCRIPT")
 	if skill.cost.has("mp"):
-		$SkillInfo/Cost.text = str(int(skill.cost.mp * activecharacter.get_stat('manacost_mod')))
+		$SkillInfo/Cost.text = str(int(skill.cost.mp))
 	else:
 		$SkillInfo/Cost.text = "0"
 	$SkillInfo/Cooldown.text = str(skill.cooldown)

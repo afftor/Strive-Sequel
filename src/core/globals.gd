@@ -456,8 +456,7 @@ func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
 func build_traitlist_for_char(person, node):
 	input_handler.ClearContainer(node, ['Button', 'Button2'])
 	for b in person.get_all_buffs():
-		if !b.template.has('show_in_traits'): continue
-		if !b.template.show_in_traits: continue
+		if !b.tags.has('show_in_traits'): continue
 		var button = input_handler.DuplicateContainerTemplate(node, 'Button2')
 		button.texture = b.icon
 		button.get_node("Label").hide()
@@ -524,11 +523,13 @@ func build_buffs_for_char(person, node, mode):
 		'combat': list = person.get_combat_buffs()
 		'all': list = person.get_all_buffs()
 	for i in list:
-		if i.template.has('show_in_traits') and i.template.show_in_traits: continue
+		if i.tags.has('show_in_traits'): continue
 		var newnode = input_handler.DuplicateContainerTemplate(node, 'Button')
 		newnode.texture = i.icon
 		var tmp = i.get_duration()
-		if tmp != null:
+		if i.tags.has('show_amount'):
+			newnode.get_node("Label").text = str(i.amount)
+		elif tmp != null:
 			newnode.get_node("Label").text = str(tmp.count)
 		else:
 			newnode.get_node("Label").hide()

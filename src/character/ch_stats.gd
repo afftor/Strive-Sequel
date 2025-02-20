@@ -22,6 +22,7 @@ func _init():
 		statlist.status_resists[i] = 0
 	for i in variables.damage_mods_list:
 		statlist.damage_mods[i] = 1.0
+		statlist.manacost_mods[i] = 1.0
 
 
 func deserialize(savedict):
@@ -324,6 +325,13 @@ func custom_stats_get(stat):
 			if !tres.has(r): tres[r] = 1.0
 			if bonuses.has('damage_mod_' + r + '_add'): tres[r] += bonuses['damage_mod_' + r + '_add']
 			if bonuses.has('damage_mod_' + r + '_mul'): tres[r] *= bonuses['damage_mod_' + r + '_mul']
+		return tres
+	if stat == 'manacost_mods':
+		var tres = statlist.manacost_mods.duplicate()
+		for r in variables.damage_mods_list:
+			if !tres.has(r): tres[r] = 1.0
+			if bonuses.has('manacost_mod_' + r + '_add'): tres[r] += bonuses['manacost_mod_' + r + '_add']
+			if bonuses.has('manacost_mod_' + r + '_mul'): tres[r] *= bonuses['manacost_mod_' + r + '_mul']
 		return tres
 	return statlist[stat]
 

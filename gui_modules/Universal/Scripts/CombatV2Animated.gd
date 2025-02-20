@@ -1286,7 +1286,7 @@ func RebuildSkillPanel():
 			var skill = Skilldata.get_template(activecharacter.skills.combat_skill_panel[i], activecharacter)
 			newbutton.get_node("Icon").texture = skill.icon
 			if skill.cost.has('mp'):
-				newbutton.get_node("manacost").text = str(int(skill.cost.mp * activecharacter.get_stat('manacost_mod')))
+				newbutton.get_node("manacost").text = str(int(skill.cost.mp))
 				newbutton.get_node("manacost").visible = true
 			if !activecharacter.check_cost(skill.cost):
 	#			newbutton.get_node("Icon").modulate = Color(0,0,1)

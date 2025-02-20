@@ -1880,12 +1880,15 @@ func resurrect(hp_per):
 		displaynode.update_hp()
 	process_event(variables.TR_RES)
 
+func get_manacost_for_skill(skill):
+	return skills.get_manacost_for_skill(skill)
+
 func pay_cost(cost):
 	for st in cost:
 		if st == 'money':
 			 ResourceScripts.game_party.money -= cost.money
 		elif st == 'mp':
-			mp -= int(cost.mp * get_stat('manacost_mod'))
+			mp -= int(cost.mp)
 			if displaynode != null:
 				displaynode.update_mana()
 		else: 
@@ -1895,7 +1898,7 @@ func check_cost(cost):
 	for st in cost:
 		if st == 'money' and ResourceScripts.game_party.money < cost[st]:
 			return false
-		elif st == 'mp' and mp < int(cost[st] * get_stat('manacost_mod')): 
+		elif st == 'mp' and mp < int(cost[st]): 
 			return false
 		elif get_stat(st) < cost[st]: 
 			return false

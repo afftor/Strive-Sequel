@@ -178,7 +178,11 @@ func add_buff(i):
 				newbuff.get_node("Label").text = str(fighter.get_stat('lust'))
 	newbuff.hint_tooltip = text
 	var tmp = i.get_duration()
-	if tmp != null:
+	if i.tags.has('show_amount'):
+		newbuff.get_node("Label").text = str(i.amount)
+		newbuff.get_node("Label").set("custom_colors/font_color",Color(1,1,0))
+		newbuff.get_node("Label").show()
+	elif tmp != null:
 		newbuff.get_node("Label").text = str(tmp.count)
 		match tmp.event:
 			'hours':

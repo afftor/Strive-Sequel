@@ -44,6 +44,7 @@ var template = {
 	mp_reg_add = 0.0,
 	exp_gain_mod = 1.0,
 	manacost_mod = 1.0,
+	manacost_mods = {},
 	damage_reduction = 0,
 	
 	magic_find = 0,

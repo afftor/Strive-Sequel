@@ -46,6 +46,18 @@ func get_damage_mod(skill:Dictionary):
 	
 	return res
 
+func get_manacost_for_skill(skill):
+	var res = 0
+	if skill.has('cost') and skill.cost.has('mp'):
+		res = skill.cost.mp
+	res *= parent.get_ref().get_stat('manacost_mod')
+	var dict = parent.get_ref().get_stat('manacost_mods')
+	for st in variables.damage_mods_list:
+		if skill.tags.has(st):
+			res *= dict[st]
+	return res
+
+
 func get_value_damage_mod(skill_val:Dictionary):
 	#stub. needs filling
 	var damage_mods = parent.get_ref().get_stat('damage_mods')

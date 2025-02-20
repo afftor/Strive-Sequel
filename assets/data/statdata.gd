@@ -955,6 +955,10 @@ func _ready():
 				code = "damage_mod_"+i,
 				percent = true,
 			}
+		statdata['manacost_mod_'+i] = {
+				code = "manacost_mod_"+i,
+				percent = true,
+			}
 	for i in Skilldata.masteries:
 		statdata['mastery_'+i] = {
 				code = "mastery_"+i,
