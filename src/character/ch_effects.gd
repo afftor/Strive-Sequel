@@ -13,9 +13,12 @@ func find_temp_effect(eff_code):
 	var res = -1
 	var tres = 9999999
 	var nm = 0
+	var pool = []
 	for i in range(temp_effects.size()):
 		var eff = effects_pool.get_effect_by_id(temp_effects[i])
-		if eff.template.name != eff_code:continue
+		if eff.template.name != eff_code:
+			continue
+		pool.push_back(eff)
 		nm += 1
 		if eff.remains < tres:
 			tres = eff.remains
@@ -94,7 +97,13 @@ func apply_temp_effect(eff_id, noresist = false):
 	if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_n):
 		input_handler.combat_node.combatlogadd("\n%s is affected by %s." % [parent.get_ref().get_short_name(), eff_n])
 	var tmp = find_temp_effect(eff_n)
-	if (tmp.num < eff.template.stack) or (eff.template.stack == 0):
+	if eff.template.type == 'temp_inc':
+		for e in tmp.pool:
+			e.process_event(variables.TR_STACK)
+		temp_effects.push_back(eff_id)
+		eff.applied_char = parent.get_ref().id
+		eff.apply()
+	elif (tmp.num < eff.template.stack) or (eff.template.stack == 0):
 		temp_effects.push_back(eff_id)
 		#eff.applied_pos = position
 		eff.applied_char = parent.get_ref().id
@@ -191,7 +200,7 @@ func apply_effect(eff_id):
 			#obj.applied_pos = position
 			obj.applied_char = parent.get_ref().id
 			obj.apply()
-		'temp_s','temp_p','temp_u', 'temp_global', 'temp_toggle':
+		'temp_s','temp_p','temp_u', 'temp_global', 'temp_toggle', 'temp_inc':
 			if parent.get_ref().is_koed() and !obj.tags.has('on_dead'): 
 				return
 			apply_temp_effect(eff_id)
@@ -219,7 +228,7 @@ func remove_effect(eff_id):
 	match obj.template.type:
 		'static','c_static': static_effects.erase(eff_id)
 		'trigger': triggered_effects.erase(eff_id)
-		'temp_s','temp_p','temp_u', 'temp_global', 'temp_toggle': temp_effects.erase(eff_id)
+		'temp_s', 'temp_inc', 'temp_p', 'temp_u', 'temp_global', 'temp_toggle': temp_effects.erase(eff_id)
 	var nd = parent.get_ref().displaynode
 	if nd != null:
 		nd.rebuildbuffs()
