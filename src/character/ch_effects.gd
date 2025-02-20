@@ -322,8 +322,13 @@ func get_all_buffs():
 				if !(b.template.has('limit') and b.template.limit == 0):
 					res[b.template_name] = []
 					res[b.template_name].push_back(b)
+					b.amount = 1
 			elif (!b.template.has('limit')) or (res[b.template_name].size() < b.template.limit):
 				res[b.template_name].push_back(b)
+				b.amount = 1
+			else:
+				for tmp in res[b.template_name]:
+					tmp.amount += 1
 #	for e in area_effects:
 #		var eff:area_effect = effects_pool.get_effect_by_id(e)
 #		if !eff.is_applied_to_pos(position) :

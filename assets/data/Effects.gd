@@ -120,7 +120,7 @@ var effect_table = {
 			limit = 1,
 			t_name = 'b_virgin',
 			mansion_only = true,
-			show_in_traits = true
+			tags = ['show_in_traits']
 		},],
 		sub_effects = [],
 	},
@@ -2611,7 +2611,7 @@ var buffs = {
 		limit = 1,
 		t_name = 'b_factor_maxed',
 		mansion_only = true,
-		show_in_traits = true
+		tags = ['show_in_traits']
 	},
 	b_curse = {#stub for default curse icon
 		icon = "res://assets/images/iconsenchants/curse_mono_100.png",

@@ -9,6 +9,8 @@ var args: = []
 var self_args := []
 var template_name
 var name = "" setget ,get_name
+var amount = 1
+var tags = []
 
 func _init(caller):
 	parent = caller
@@ -23,6 +25,7 @@ func createfromtemplate(buff_t):
 	icon = template.icon
 	template_name = template.t_name
 	if template.has('name'): name = template.name
+	if template.has('tags'): tags = template.tags.duplicate(true)
 	else: name = template_name
 
 func get_tooltip():
