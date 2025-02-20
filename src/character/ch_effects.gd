@@ -23,7 +23,7 @@ func find_temp_effect(eff_code):
 		if eff.remains < tres:
 			tres = eff.remains
 			res = i
-	return {num = nm, index = res}
+	return {num = nm, index = res, pool = pool}
 
 func has_temp_effect(temp_name):
 	return find_temp_effect(temp_name).num > 0
