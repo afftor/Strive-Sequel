@@ -894,10 +894,17 @@ func use_mansion_item(item):
 	skills.use_mansion_item(item)
 
 func get_icon(path = false):
-	if path: return statlist.get_icon_path()
-	else: return statlist.get_icon()
+	if path: 
+		return statlist.get_icon_path()
+	else: 
+		var res = statlist.get_icon()
+		if res == null:
+			res = races.racelist[get_stat('race')].icon
+			if res is String:
+				res = load(res)
+		return res
 
-func get_icon_small():
+func get_icon_small(): #obsolete
 	var res = get_icon()
 	if res == null:
 		res = races.racelist[get_stat('race')].icon
