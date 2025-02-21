@@ -1265,6 +1265,23 @@ var effects = {
 #		],
 #		buffs = []
 #	},
+#	e_tr_deathknight = {
+#		type = 'trigger',
+#		trigger = [variables.TR_KILL],
+#		req_skill = false,
+#		conditions = [{type = 'random', value = 0.3}],
+#		atomic = [],
+#		buffs = [],
+#		args = [],
+#		sub_effects = [],
+#		modal_sub_effects = [
+#			Effectdata.rebuild_oneshot_addstat('atk', 1),
+#			Effectdata.rebuild_oneshot_addstat('matk', 1),
+#			Effectdata.rebuild_oneshot_addstat('mpmax', 1),
+#			Effectdata.rebuild_oneshot_addstat('hpmax', 1),
+#			Effectdata.rebuild_oneshot_addstat('hitrate', 1),
+#		]
+#	},
 }
 var atomic_effects = {
 #	a_poison_arg025 = {type = 'damage', source = variables.S_PHYS, value = [['parent_args', 0],'*',0.25]},#bugged

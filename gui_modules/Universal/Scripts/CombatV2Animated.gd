@@ -1562,8 +1562,8 @@ func victory():
 			playergroup.erase(p)
 			summons.erase(p)
 		else:
-			t_p.process_event(variables.TR_COMBAT_F)
-	effects_pool.process_event(variables.TR_COMBAT_F)
+			t_p.process_event(variables.TR_VICTORY)
+	effects_pool.process_event(variables.TR_VICTORY)
 	#add permadeath check here
 	
 	input_handler.PlaySound("battle_victory")
