@@ -100,9 +100,10 @@ func apply_temp_effect(eff_id, noresist = false):
 	if eff.template.type == 'temp_inc':
 		for e in tmp.pool:
 			e.process_event(variables.TR_STACK)
-		temp_effects.push_back(eff_id)
-		eff.applied_char = parent.get_ref().id
-		eff.apply()
+		if (tmp.num < eff.template.stack) or (eff.template.stack == 0):
+			temp_effects.push_back(eff_id)
+			eff.applied_char = parent.get_ref().id
+			eff.apply()
 	elif (tmp.num < eff.template.stack) or (eff.template.stack == 0):
 		temp_effects.push_back(eff_id)
 		#eff.applied_pos = position
