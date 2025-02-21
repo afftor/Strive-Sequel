@@ -792,20 +792,32 @@ var effects = {
 	
 	e_tr_deathknight = {
 		type = 'trigger',
-		trigger = [variables.TR_KILL],
+		trigger = [variables.TR_VICTORY],
 		req_skill = false,
-		conditions = [{type = 'random', value = 0.3}],
+		conditions = [],
 		atomic = [],
 		buffs = [],
 		args = [],
+		sub_effects = ['e_s_deathknight'],
+	},
+	e_s_deathknight = {
+		type = 'temp_inc',
+		tags = ['buff'],
+		target = 'owner',
+		name = 'deathknighth_b',
+		stack = 5,
+		req_skill = false,
+		duration = 3,
+		tick_event = variables.TR_TICK,
+		rem_event = [variables.TR_DEATH],
+		args = [],
 		sub_effects = [],
-		modal_sub_effects = [
-			Effectdata.rebuild_oneshot_addstat('atk', 1),
-			Effectdata.rebuild_oneshot_addstat('matk', 1),
-			Effectdata.rebuild_oneshot_addstat('mpmax', 1),
-			Effectdata.rebuild_oneshot_addstat('hpmax', 1),
-			Effectdata.rebuild_oneshot_addstat('hitrate', 1),
-		]
+		atomic = [
+			{type = 'stat_add', stat = 'atk', value = 4},
+			{type = 'stat_add', stat = 'hitrate', value = 5},
+			{type = 'stat_add', stat = 'resist_normal', value = 2},
+		],
+		buffs = ['b_deathknight'],
 	},
 	
 	e_tr_nixx = {
@@ -1578,6 +1590,13 @@ var buffs = {
 		description = "BUFFDESCRIPTTEMPLAR",
 		t_name = 'templar_buff',
 		combat_only = true
+	},
+	b_deathknight = {
+		icon = "res://assets/images/iconsskills/Sedate.png",
+		description = "BUFFDESCRIPTDEATHKNIGHT",
+		t_name = 'deathknight_buff',
+		limit = 1,
+		tags = ['show_amount']
 	},
 	b_free_use = {
 		icon = "res://assets/images/iconsclasses/Attendant.png",
