@@ -51,7 +51,7 @@ var lands = {
 			itempool3 = {items = ['leather_collar','animal_ears','animal_gloves','maid_dress','worker_outfit','lacy_underwear','handcuffs','strapon','anal_beads'], min = 3, max = 6, chance = 0.8},
 			itempool4 = {items = ['beer', 'wine','wine2','alcohol','aphrodisiac','hairdye'], min = 4, max = 8, chance = 0.8},
 			itempool5 = {items = ['map_goblin_cave','map_bandit_den'], min = 1, max = 2, chance = 1},
-			itempool6 = {items = ['map_bandit_fort','map_undead_crypt','map_fire_depths','map_rebel_redoubt'], min = 1, max = 1, chance = 1,},# condition = [{type = 'quest_completed', name = 'getting_lira_quest', check = true},]},
+			itempool6 = {items = ['map_spider_lair','map_bandit_fort','map_undead_crypt','map_fire_depths','map_rebel_redoubt'], min = 1, max = 1, chance = 1,},# condition = [{type = 'quest_completed', name = 'getting_lira_quest', check = true},]},
 
 			},
 		capital_background = 'aliron',
@@ -91,7 +91,7 @@ var lands = {
 			itempool1 = {items = ['sword','bow','battleaxe','dagger','spear','staff','shield'], min = 2, max = 4, chance = 0.8},
 			itempool2 = {items = ['chest_base_cloth','chest_base_leather','legs_base_cloth','legs_base_leather'], min = 1, max = 2, chance = 0.8},
 			soul_stone = {min = 1, max = 1, chance = 0.1},
-			itempool3 = {items = ['map_ancient_jungle','map_grove'], min = 1, max = 1, chance = 1},
+			itempool3 = {items = ['map_ancient_jungle','map_grove','map_spider_lair'], min = 1, max = 1, chance = 1},
 			},
 		capital_background = 'elf_capital',
 		capital_name = "Elven Capital",

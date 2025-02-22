@@ -1119,6 +1119,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	SKILLRESTORATIONDESCRIPT = "Heals a target for 250% of MATK. Reduces damage taken by 20% for 2 turns.\n以 250% 的魔法攻击治疗目标。在 2 回合内减少 20% 的伤害。",
 	SKILLREJUVENATION = "Rejuvination 复兴",
 	SKILLREJUVENATIONDESCRIPT = "Heals a row for 100% of MATK. Regenerates 60% of MATK each turn for 2 turns.\n以 100% 的魔法攻击治疗一行。每回合以 60% 的魔法攻击恢复健康，持续2回合。",
+	SKILLREJUVENATIONDESCRIPT_2 = """Heals a row for 100% of MATK. Regenerates 60% of MATK each turn for 2 turns.""", # MISSING TRANSLATION
 	SKILLSANCTUARY = "Sanctuary 避难所",
 	SKILLSANCTUARYDESCRIPT = "Heals all allies for 80% of MATK. Regenerates 120% of MATK each turn for 3 turns.\n以 80% 的魔法攻击治疗所有盟友。每回合以 120% 的魔法攻击恢复健康，持续 3 回合。",
 	SKILLTRAP = "Trap 陷阱",
@@ -2465,6 +2466,7 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	BUFFDESCRIPTSTUN = "Stunned: Cannot act",
 	BUFFDESCRIPTCHARM2 = "Charmed: Cannot act",
 	BUFFDESCRIPTTRAP = "Trapped: Cannot act",
+	BUFFDESCRIPTBOLTTRAP = """Bolt Trap: will take damage on using skill""", # MISSING TRANSLATION
 	BUFFDESCRIPTMIRROR = "Mirror Image: Chance to evade damage from skills",
 	BUFFDESCRIPTFIELD = "Energy Field: Chance to deal Air Spell damage to attacker",
 	BUFFDESCRIPTSHELL = "Protective Shell: Incoming damage reduced by 35%%",
@@ -2625,6 +2627,8 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	PROFBATTLESMITHDESCRIPT = "Dwarven smiths are able to reach the level of craftsmanship to utilize their skills right on the battlefield. \n矮人铁匠能够达到在战场上使用技能的工艺水平",
 	PROFTECHNOMANCER = "Technomancer 机械巫师",
 	PROFTECHNOMANCERDESCRIPT = "By merging magic and technology these specialists are capable of producing very unique results.\n通过将魔法和技术相结合，这些专家能够产生非常独特的结果",
+	PROFPYROMANCER = """Pyromancer""", # MISSING TRANSLATION
+	PROFPROFPYROMANCERDESCRIPT = """Devoting their powers to the way of fire, certain individuals are capable of truly mastering it at the cost of abandoning most other magich schools.""", # MISSING TRANSLATION
 
 	PROFALIOS_CHAMPION = "Champion of Alios 阿利奥斯的神眷者",
 	PROFALIOS_CHAMPIONDESCRIPT = "A lone girl with mysterious powers and the past. One thing is clear, her divine affiliation is real. \n一个拥有神秘力量和过去的孤独女孩。有一点很清楚，她的神眷者身份是真实的。",
@@ -4865,6 +4869,7 @@ You explain yourself being the new landowner to her.""", # MISSING TRANSLATION
 	ENEMYMAGMA_BEAST = "熔岩兽",
 	ENEMYEREBUS_STONE = "埃雷布斯石",
 	ENEMYWILD_RAPTOR = "猛禽",
+	ENEMYWILLOWISP = """Will-o-wisp""", # MISSING TRANSLATION
 	NO_FIGHT_LOW_OBED = "[name] 拒绝参加战斗。（必须解锁战斗人员）",
 	CHAR_NO_COMBAT = "[name] 受重伤，无法参加战斗。",
 	SENDCHARTOQUESTCONFIRM = "是否将此角色应用于任务?",

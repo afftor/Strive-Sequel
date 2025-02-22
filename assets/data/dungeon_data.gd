@@ -869,7 +869,7 @@ var dungeons = {
 		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5'],
 		custom_background = 'combat_cave',
 		bgm = "dungeon",
-		enemyarray =  [["rats_easy", 0.5],['spiders', 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
+		enemyarray =  [["rats_easy", 0.5],['spiders', 0.2],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
 		final_enemy = [['goblins_easy_boss1',1],['goblins_easy_boss2',1]], final_enemy_type = 'monster',
 		
 		eventarray = [['dungeon_find_chest_easy', 1],['event_goblin_friendly',0.3],['celena_shrine_find',0.5],['erebus_shrine_find',1],['freya_shrine_find',0.2]],
@@ -964,7 +964,7 @@ var dungeons = {
 		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
 		custom_background = 'combat_forest',
 		bgm = "dungeon",
-		enemyarray = [["rats_easy", 0.5],['wolves_easy1', 1],['wolves_easy2', 1],['spiders', 1]],
+		enemyarray = [["rats_easy", 0.3],['wolves_easy1', 1],['grove_1', 1],['grove_2', 1],['spiders', 0.5]],
 		final_enemy = [['grove_easy_boss',1]], final_enemy_type = 'monster',
 		
 		
@@ -1077,10 +1077,10 @@ var dungeons = {
 			races = [["common", 2], ['local', 4],['uncommon',1]]
 		},
 		purchase_area = 'forests',
-		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
+		background_pool = ['spider_lair1','spider_lair2', 'spider_lair3', 'spider_lair4'],
 		custom_background = 'combat_forest',
 		bgm = "dungeon",
-		enemyarray = [["rats_easy", 0.5],['wolves_easy1', 1],['wolves_easy2', 1],['spiders', 1]],
+		enemyarray = [['spiders', 1]],
 		final_enemy = [['grove_easy_boss',1]], final_enemy_type = 'monster',
 		
 		
@@ -1091,17 +1091,6 @@ var dungeons = {
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [
-					['event_blocked_path',1],
-					['event_fallen_bridge',1],
-				],
-			},
-			grove_find_leather = {
-				limit = 0,
-				weight = 2,
-				floor_range = [0,0],
-				icon = 'chest',
-				events = ['grove_find_leather'],
 				possible_challenges = [
 					['event_blocked_path',1],
 					['event_fallen_bridge',1],
@@ -1163,6 +1152,87 @@ var dungeons = {
 		tags = [],
 	},
 	
+	dungeon_rebel_camp = {
+		code = 'dungeon_rebel_camp',
+		type = 'dungeon',
+		name = 'rebel_camp',
+		classname = '',
+		descript = tr("DUNGEON_REBEL_CAMP_DESC"),
+		character_data = {
+			chance_mod = 1,
+			races = [['local', 3], ['common',3], ['uncommon',4], ['rare',1]]
+		},
+		difficulty = 'medium',
+		background_pool = ['cave_1','cave_2','cave_3','cave_4','cave_5'],
+		custom_background = 'combat_cave',
+		enemyarray = [['rebels_small', 0.5]],
+		final_enemy = [['final_boss_start',1]], final_enemy_type = 'event',
+		event_data = {
+			dungeon_find_chest_easy = {
+				limit = 0,
+				weight = 10,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['dungeon_find_chest_easy'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
+			},
+			event_dungeon_prisoner = {
+				limit = 1,
+				weight = 5,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['event_dungeon_prisoner'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+				],
+			},
+		},
+		
+		event_room_number = [3,4],
+		material_room_number = [4,5],
+		
+		main_route_length = [5,6],
+		bonus_rooms = [2,3],
+		levels = [2,2], 
+		base_room_stamina_cost = [5,11], 
+		
+		resources = ['cloth','leather','woodmagic','wood','woodiron'],
+		gatherable_resources = {
+			stone = {
+				amount = [25,40],
+				weight = 6,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},  
+			iron = {
+				amount = [15,25],
+				weight = 2,
+				gather_mod = [2,2.5],
+				stamina = [5,10],
+				},
+			}, 
+		gather_mod = [2.5,4], 
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local',
+		events = [],
+		tags = ['quest'],
+
+		area = 'plains',
+		travel_time = [1,1],
+		scripteventdata = [
+		]
+	},
 	
 	dungeon_ancient_jungles = {
 		code = 'dungeon_ancient_jungles',

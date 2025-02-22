@@ -25,8 +25,8 @@ var skills = {
 		damage_type = 'weapon',
 		random_target = true,
 		not_final = true,
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [{code = 'weapon', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'bow', hit = null},
 		value = 0.45,
 		random_factor_p = 0.1,
 	},
@@ -74,8 +74,8 @@ var skills = {
 		target_number = 'line',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [{code = 'weapon', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'bow', hit = null},
 		value = 0.5,
 	},
 	bolt_trap = {
@@ -127,7 +127,7 @@ var skills = {
 		value = 1.2,
 		random_factor_p = 0.1,
 		sfx = [{code = 'weapon', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = 'bow', hit = null},
 	},
 }
 var effects = {

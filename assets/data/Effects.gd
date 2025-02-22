@@ -1348,10 +1348,9 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'parent',
 		stack = 1,
-		tags = ['debuff', 'cursed'],
+		tags = ['debuff', 'cursed', 'reset_duration'],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add', stat = 'resist_normal', value = -40},
 			{type = 'stat_add', stat = 'resist_fire', value = -40},
 			{type = 'stat_add', stat = 'resist_earth', value = -40},
 			{type = 'stat_add', stat = 'resist_water', value = -40},
@@ -1362,7 +1361,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Authority.png",
+				icon = "res://assets/images/iconsskills/icon_elementa_weakness.png",
 				description = "TRAITEFFECTCURSE",
 				limit = 1,
 				t_name = 'curse',

@@ -219,7 +219,7 @@ func make_hero(type, level, position = 1, first = false):
 				for mas in pool3:
 					pool3[mas] = globals.rng.randi_range(3, 4)
 			if level > 2:
-				pool1.append_array(pool2)
+				pool1.append_array(pool2)	
 				pool2 = []
 				for mas in pool3:
 					pool3[mas] = 6

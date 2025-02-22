@@ -1132,6 +1132,7 @@ Hotkey: 3""",
 	SKILLRESTORATIONDESCRIPT = """Исцеляет цель на 250% от MATK. Снижает получаемый урон на 20% на 2 хода.""",
 	SKILLREJUVENATION = """Омоложение""",
 	SKILLREJUVENATIONDESCRIPT = """Исцеляет союзника на 100% МАТК. Регенерирует 60% от MATK каждый ход в течение 2 ходов.""",
+	SKILLREJUVENATIONDESCRIPT_2 = """Heals a row for 100% of MATK. Regenerates 60% of MATK each turn for 2 turns.""", # MISSING TRANSLATION
 	SKILLSANCTUARY = """Святилище""",
 	SKILLSANCTUARYDESCRIPT = """Исцеляет всех союзников на 80% от MATK. Регенерирует 120% от MATK каждый ход в течение 3 ходов.""",
 	SKILLTRAP = """Ловушка""",
@@ -2898,6 +2899,8 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTISPREGNANT = """Беременна: -10 Скорости, -20 физ. возможностей.""",
 	TRAITEFFECTISPREGNANT2 = """Глубоко беременна: -20 Скорость, -40 физ. возможностей.""",
 	TRAITSTUNIMMUNITYDESCRIPT = "Невозмлжно оглушить в бою.",
+	TRAITEFFECTCURSE = """All resists are reduced""", # MISSING TRANSLATION
+	TRAITEFFECTHASTE = """Speed is Increased""", # MISSING TRANSLATION
 	EUPHORIABUFF = """Эйфория: Урон увеличен""",
 	BUFFDESCRIPTSHACKLES = """Оковы""",
 	BUFFDESCRIPTGREATSHACKLES = """Великие оковы""",
@@ -2905,6 +2908,7 @@ Requires: Базовый рабский труд""",
 	BUFFDESCRIPTSTUN = """Оглушен: Не может действовать""",
 	BUFFDESCRIPTCHARM2 = """Зачарован: Не может действовать""",
 	BUFFDESCRIPTTRAP = """В ловушке: Не может действовать""",
+	BUFFDESCRIPTBOLTTRAP = """Bolt Trap: will take damage on using skill""", # MISSING TRANSLATION
 	BUFFDESCRIPTMIRROR = """Зеркальное отражение: Шанс уклониться от урона, наносимого умениями""",
 	BUFFDESCRIPTFIELD = """Энергетическое поле: Шанс нанести атакующему урон от стихии воздуха""",
 	BUFFDESCRIPTSHELL = """Защитная оболочка: Входящий урон снижен на 35%%""",
@@ -3073,6 +3077,8 @@ Fear grows from punishing actions, but when pushed too high will make partner br
 	PROFBATTLESMITHDESCRIPT = """Дварфийские кузнецы способны достичь уровня мастерства, чтобы использовать свои навыки прямо на поле боя.""",
 	PROFTECHNOMANCER = """Техномансер""",
 	PROFTECHNOMANCERDESCRIPT = """Благодаря слиянию магии и технологии эти специалисты способны добиваться уникальных результатов.""",
+	PROFPYROMANCER = """Pyromancer""", # MISSING TRANSLATION
+	PROFPROFPYROMANCERDESCRIPT = """Devoting their powers to the way of fire, certain individuals are capable of truly mastering it at the cost of abandoning most other magich schools.""", # MISSING TRANSLATION
 
 	PROFALIOS_CHAMPION = """Чемпион Алиоса""",
 	PROFALIOS_CHAMPIONDESCRIPT = """Одинокая девушка с загадочными способностями и прошлым. Ясно одно - ее божественная принадлежность реальна.""",
@@ -5644,6 +5650,7 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	ENEMYMAGMA_BEAST = """Магматический зверь""",
 	ENEMYEREBUS_STONE = """Камень Эребуса""",
 	ENEMYWILD_RAPTOR = """Раптор""",
+	ENEMYWILLOWISP = """Will-o-wisp""", # MISSING TRANSLATION
 	NO_FIGHT_LOW_OBED = """[name] отказывается участвовать в бою. ('Боец' должен быть разблокирован)""",
 	CHAR_NO_COMBAT = """[name] получило тяжелую травму и не может участвовать в боях.""",
 	SENDCHARTOQUESTCONFIRM = """Отправить этого персонажа на квест?""",

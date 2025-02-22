@@ -34,6 +34,11 @@ var backgrounds = {
 	forest2 = "res://assets/images/backgrounds/forest2.png",
 	forest3 = "res://assets/images/backgrounds/forest3.png",
 	forest4 = "res://assets/images/backgrounds/forest4.png",
+	
+	spider_lair1 = "res://assets/images/backgrounds/spider_lair1.png",
+	spider_lair2 = "res://assets/images/backgrounds/spider_lair2.png",
+	spider_lair3 = "res://assets/images/backgrounds/spider_lair3.png",
+	spider_lair4 = "res://assets/images/backgrounds/spider_lair4.png",
 
 	crypt1 = "res://assets/images/backgrounds/crypt1.png",
 	crypt2 = "res://assets/images/backgrounds/crypt2.png",
