@@ -2884,6 +2884,23 @@ func copy_stats(base_ch, unique_ch):
 	
 	base_ch.statlist.statlist = base_ch_statlist
 
+
+func special_check (ch1, ch2):
+	if ch1.is_on_quest() or ch2.is_on_quest():
+		return false
+	if ch1.get_location() != ch2.get_location():
+		return false
+	if ch1.get_location() == ResourceScripts.game_world.mansion_location:
+		if ch1.xp_module.work == ch2.xp_module.work:
+			if ch1.xp_module.work == 'brothel':
+				return true
+			return ch1.xp_module.workproduct == ch2.xp_module.workproduct
+		else:
+			return false
+	else:
+		return true
+
+
 func get_sex_action(code):
 	assert(sex_actions_dict.has(code), "no such sex_action! (%s)" % code)
 	return sex_actions_dict[code]
