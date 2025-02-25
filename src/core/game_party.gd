@@ -16,19 +16,21 @@ var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} #
 
 var character_order = []
 
+
 func _get_key(char1, char2):
 	var pair = [char1, char2]
 	pair.sort()
 	return pair[0] + "_" + pair[1]
+
 
 func _get_key_from_dict(data):
 	for i in relationship_data.keys():
 		if relationship_data[i] == data:
 			return i
 
+
 func _get_data(char1, char2):
 	return relationship_data[_get_key(char1, char2)]
-
 
 
 func add_relationship_value(char1, char2, value):
@@ -38,8 +40,6 @@ func add_relationship_value(char1, char2, value):
 		if relationship_data[key].status in ['friends', 'lovers', 'freelovers'] && value < 0:
 			value *= 0.5 #makes established relationship reduce slower
 	
-	
-	
 	if relationship_data.has(key):
 		relationship_data[key].value += value
 	else:
@@ -47,6 +47,7 @@ func add_relationship_value(char1, char2, value):
 		relationship_data[key].value = variables.relationship_base + value
 	relationship_data[key].value = clamp(relationship_data[key].value, 0, 100)
 	update_relationship_status(relationship_data[key], char1, char2)
+
 
 func update_relationship_status(data, char1, char2):
 	var value = data.value
@@ -67,6 +68,7 @@ func update_relationship_status(data, char1, char2):
 			change_relationship_status(char1, char2, 'acquintances')
 	#print(data)
 
+
 func attempt_romance(char1, char2):
 	var relationship = _get_data(char1, char2)
 	var lovers_chance = 0
@@ -86,9 +88,9 @@ func attempt_romance(char1, char2):
 		lovers_chance = 0
 	print("attempting romance")
 	if randf() * 100 <= freelovers_chance:
-		input_handler.interactive_message('character_freelovers','story_event',{char1 = char1, char2 = char2})
+		input_handler.interactive_message('character_freelovers','multichar_event',{char1 = char1, char2 = char2})
 	elif randf() * 100 <= lovers_chance:
-		input_handler.interactive_message('character_lovers','story_event',{char1 = char1, char2 = char2})
+		input_handler.interactive_message('character_lovers','multichar_event',{char1 = char1, char2 = char2})
 
 
 func _in_same_location(char1, char2):
@@ -107,6 +109,7 @@ func _in_same_location(char1, char2):
 			return false
 	else:
 		return true
+
 
 func relation_daily_change_same_loc(char1, char2):
 	var value = 0
@@ -137,6 +140,7 @@ func relation_daily_change_same_loc(char1, char2):
 	
 	add_relationship_value(char1, char2, value)
 
+
 func relationship_decay():
 	for key in relationship_data.keys():
 		var chars = key.split("_")
@@ -149,14 +153,11 @@ func relationship_decay():
 			add_relationship_value(chars[0],chars[1], value)
 
 
-
 func check_lover_possibility(data, char1, char2):
-	
 	var person1 = characters_pool.get_char_by_id(char1)
 	var person2 = characters_pool.get_char_by_id(char2)
 	
 	var endvalue = false
-	
 	
 	if person1.get_stat('sex') == person2.get_stat('sex') && (!person1.check_trait("bisexual") || !person2.check_trait("bisexual")): 
 		endvalue = false
@@ -173,6 +174,7 @@ func check_lover_possibility(data, char1, char2):
 	print(endvalue)
 	return endvalue
 
+
 func has_love_status(char1):
 	for key in relationship_data.keys():
 		if char1 in key.split("_"):
@@ -180,6 +182,7 @@ func has_love_status(char1):
 			if "lovers" in relation or "freelovers" in relation:
 				return true
 	return false
+
 
 func change_relationship_status(char1, char2, new_status):
 	_get_data(char1, char2).status = new_status
