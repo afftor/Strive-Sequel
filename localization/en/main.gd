@@ -3775,6 +3775,12 @@ As the [boy] is made your slave, [he] can be a very useful addition to your roos
 	DIALOGUE_SPRING_NO_LOOT = "You search around but weren't able to find anything useful.",
 	TRIBALELVES = "You find yourself surrounded by a group of local tribal elves. It seems they consider you an intruder on their territory and preparing for attack...",
 	TRIBALELVES_WIN = "As you defeat the attackers, they hastily retreat, yet one of them was left behind and your party manages to subdue them.",
+	
+	CHARLOVERS = "[name] and [scncharname] have approached you and asked to let them become lovers.",
+	CHARFREELOVERS = "[name] and [scncharname] have approached you and asked to let them become paramour.",
+	CHARLOVERSALLOW = "*Allow*",
+	CHARFREELOVERSALLOW = "*Allow*",
+	
 	DIALOGUEEVENTGOODREBELSBEAST = "You come across a small group of rebels, who have caught a [race] [male] that likely strayed from their homelands. Given the rebels' attitude towards [him] it's easy to see they are up to no good...",
 	DIALOGUEEVENTREBELSBEASTINTIMIDATESUCCES = """[center]{color=green|Success!}[/center]
 [name] has successfully intimidated a group of rebels into fleeing, leaving their victim behind.""",

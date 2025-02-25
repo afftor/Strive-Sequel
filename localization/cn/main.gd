@@ -3468,6 +3468,10 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	DIALOGUE_SPRING_NO_LOOT = "您四处搜索，但找不到任何有用的东西.",
 	TRIBALELVES = "你发现自己被一群当地部落精灵包围。他们似乎认为你是他们领土上的入侵者，正在准备攻击...",
 	TRIBALELVES_WIN = "当你击败攻击者时，他们匆忙撤退，但其中一人被落在了后面，你的团队成功制服了他们.",
+	CHARLOVERS = """[name] and [scncharname] have approached you and asked to let them become lovers.""", # MISSING TRANSLATION
+	CHARFREELOVERS = """[name] and [scncharname] have approached you and asked to let them become paramour.""", # MISSING TRANSLATION
+	CHARLOVERSALLOW = """*Allow*""", # MISSING TRANSLATION
+	CHARFREELOVERSALLOW = """*Allow*""", # MISSING TRANSLATION
 
 
 	DIALOGUEEVENTGOODREBELSBEAST = "你遇到了一小群反叛分子，他们抓住了一个可能远离家乡的 [race] [male] 考虑到反叛分子对[him]的态度，很容易看出他们做了坏事...",

@@ -323,7 +323,6 @@ func swap_mode():
 		$UpgradesPanel.visible = true
 		$RelativesPanel.visible = false
 		$change_button/Label.text = tr("SIBLINGMODULERELATIVES")
-		$RelationsButton/Label.text = tr("SIBLINGMODULERELATIONS")
 
 
 func swap_tab(tab): #obsolete
@@ -368,3 +367,13 @@ func build_personality():
 	$personality/PersonalityLabel.text = tr("PERSONALITYCURRENT") +"\n" + tr("PERSONALITYNAME"+person.get_stat('personality').to_upper())
 	#2add
 	#$personality/desc.bbcode_text = ""
+
+
+func build_relations():
+	var text = ''
+	
+	var array = ResourceScripts.game_party.find_all_relationship(person.id)
+	for i in array:
+		var character = characters_pool.get_char_by_id(i['char'])
+		text += character.get_full_name() + ": " + i.relationship + "\n"
+	$UpgradesPanel/Relations.bbcode_text = text
