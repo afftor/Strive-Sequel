@@ -86,7 +86,6 @@ func attempt_romance(char1, char2):
 	if relationship.status == 'lovers':
 		freelovers_chance = 0
 		lovers_chance = 0
-	print("attempting romance")
 	if randf() * 100 <= freelovers_chance:
 		input_handler.interactive_message('character_freelovers','multichar_event',{char1 = char1, char2 = char2})
 	elif randf() * 100 <= lovers_chance:
@@ -161,7 +160,6 @@ func check_lover_possibility(data, char1, char2):
 	
 	if person1.get_stat('sex') == person2.get_stat('sex') && (!person1.check_trait("bisexual") || !person2.check_trait("bisexual")): 
 		endvalue = false
-		print('checking lover possibility: false, same sex and no bisexual')
 	elif person1.get_stat('sex') == person2.get_stat('sex') && person1.check_trait("bisexual") && person2.check_trait("bisexual"): 
 		endvalue = true
 	elif person1.get_stat('sex') != person2.get_stat('sex'):
@@ -170,8 +168,6 @@ func check_lover_possibility(data, char1, char2):
 	if endvalue == true:
 		if person1.check_trait("monogamous") && has_love_status(char1) || person2.check_trait("monogamous") && has_love_status(char2) :
 			endvalue = false
-			print('checking lover possibility: false, is monogamous and in relationship ')
-	print(endvalue)
 	return endvalue
 
 
@@ -186,6 +182,21 @@ func has_love_status(char1):
 
 func change_relationship_status(char1, char2, new_status):
 	_get_data(char1, char2).status = new_status
+
+func find_all_relationship(char1):
+	var array = []
+	for key in relationship_data.keys():
+		if char1 in key.split("_"):
+			var chars = key.split("_")
+			var dict = {relationship = relationship_data[key].status}
+			if char1 == chars[0]:
+				dict.char = chars[1]
+			else:
+				dict.char = chars[0]
+			
+			array.append(dict)
+	
+	return array
 
 #func pos_set(value):
 #	combatparty = value

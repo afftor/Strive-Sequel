@@ -4035,6 +4035,10 @@ Fear grows from punishing actions, but when pushed too high will make partner br
 	DIALOGUE_SPRING_NO_LOOT = """Вы обыскали все вокруг, но не смогли найти ничего полезного""",
 	TRIBALELVES = """Вы обнаружили, что окружены группой местных племенных эльфов. Похоже, они считают вас нарушителем на своей территории и готовятся к нападению...""",
 	TRIBALELVES_WIN = """Когда вы побеждаете нападающих, они поспешно отступают, но один из них остался позади, и вашей партии удается их одолеть.""",
+	CHARLOVERS = """[name] and [scncharname] have approached you and asked to let them become lovers.""", # MISSING TRANSLATION
+	CHARFREELOVERS = """[name] and [scncharname] have approached you and asked to let them become paramour.""", # MISSING TRANSLATION
+	CHARLOVERSALLOW = """*Allow*""", # MISSING TRANSLATION
+	CHARFREELOVERSALLOW = """*Allow*""", # MISSING TRANSLATION
 
 
 	DIALOGUEEVENTGOODREBELSBEAST = """Вы наткнулись на небольшую группу повстанцев, которые поймали [race] [male], который, вероятно, сбежал с их родных земель. Учитывая отношение повстанцев к [him], легко понять, что они замышляют недоброе...""",
