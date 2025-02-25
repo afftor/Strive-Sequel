@@ -2429,6 +2429,11 @@ func common_effects(effects):
 						rdata.xp_mod = i.xp_mod
 			'unlock_upgrade':
 				ResourceScripts.game_res.unlock_upgrade(i.upgrade, i.level)
+			'change_relationship':
+				if input_handler.scene_characters.size() == 2:
+					ResourceScripts.game_party.change_relationship_status(input_handler.scene_characters[0].id, input_handler.scene_characters[1].id, i.value)
+				else:
+					print("wrong change relationship setup")
 
 func after_wedding_event(character):
 	if character == null:

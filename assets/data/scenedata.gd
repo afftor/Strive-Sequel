@@ -1685,42 +1685,43 @@ var scenedict = {
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
 		],
 	},
+	
 	character_lovers = {
 		text = tr("CHARLOVERS"),
-		tags = ['dialogue_scene'],
+		tags = ['dialogue_scene', 'active_character_translate', 'scene_character_translate'],
 		image = 'spring',
 		options = [
 			{code = 'character_lovers_allow', reqs = [], text = tr("CHARLOVERSALLOW"), dialogue_argument = 1},
-			{code = 'character_lovers_forbid', reqs = [], text = tr("CHARLOVERSFORBID"), dialogue_argument = 2},
+			{code = 'leave', reqs = [], text = tr("CHARLOVERSFORBID"), dialogue_argument = 2},
 		]
 	},
 	
 	character_lovers_allow = {
 		text = tr("FOUNTAIN_STAMINA"),
-		tags = [],
+		tags = ['active_character_translate', 'scene_character_translate'],
 		image = 'spring',
 		bonus_effects = [],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'change_relationship', value = 'lovers'}]}
 		],
 	},
 	character_freelovers = {
 		text = tr("CHARLOVERS"),
-		tags = ['dialogue_scene'],
+		tags = ['dialogue_scene', 'active_character_translate', 'scene_character_translate'],
 		image = 'spring',
 		options = [
 			{code = 'character_freelovers_allow', reqs = [], text = tr("CHARLOVERSALLOW"), dialogue_argument = 1},
-			{code = 'character_freelovers_forbid', reqs = [], text = tr("CHARLOVERSFORBID"), dialogue_argument = 2},
+			{code = 'leave', reqs = [], text = tr("CHARLOVERSFORBID"), dialogue_argument = 2},
 		]
 	},
 	
 	character_freelovers_allow = {
 		text = tr("FOUNTAIN_STAMINA"),
-		tags = [],
+		tags = ['active_character_translate', 'scene_character_translate'],
 		image = 'spring',
 		bonus_effects = [],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'change_relationship', value = 'freelovers'}]}
 		],
 	},
 	
