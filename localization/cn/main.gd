@@ -176,6 +176,7 @@ var TranslationDict = {
 	SIBLINGMODULERULES = "规则和条件",
 	SIBLINGMODULESEXTRAITS = "性特征",
 	SIBLINGMODULERELATIVES = "Relatives",
+	SIBLINGMODULERELATIONS = """Social""", # MISSING TRANSLATION
 	SIBLINGMODULETRAININGS = "Trainings",
 	SIBLINGMODULETRAININGSSERVANTS = """Servant Training""", # MISSING TRANSLATION
 	SIBLINGMODULETRAININGSMASTER = """Master Training""", # MISSING TRANSLATION
@@ -3151,6 +3152,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	SEXTRAITLIKES_SHORTSTACKS = "矮小体型爱好者",
 	SEXTRAITLIKES_BEASTS = "兽人爱好者",
 	SEXTRAITBISEXUAL = "双性恋",
+	SEXTRAITMONOGAMOUS = """Monogamous""", # MISSING TRANSLATION
 	SEXTRAITOPEN_MINDED = "思想开放",
 	SEXTRAITDEVIANT = "离经叛道",
 	SEXTRAITGROUP = "群交爱好者",
@@ -3215,6 +3217,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 
 
 	SEXTRAITBISEXUALDESCRIPT = "[name] does not mind having sex with people of [his] gender. Removes consent penalty from same-sex partners.",
+	SEXTRAITMONOGAMOUSDESCRIPT = """[name] only is interested in relationship with a single partner. Boosts consent and effects of the actions from [his] selected person. Prevents [name] from accepting more than one romantic partner.""", # MISSING TRANSLATION
 	SEXTRAITOPEN_MINDEDDESCRIPT = "[name] is rather accepting of [his] partners, having no issues with them having different body structures. Removes consent penalty from different body shape partners.",
 	SEXTRAITDEVIANTDESCRIPT = "[name] has some deviant tastes, having no problem from engaging in lewd actions with animals and even undead. Removes consent penalty from animal and undead partners.",
 	SEXTRAITGROUPDESCRIPT = "[name] accepts having multiple partners at once as a natural thing. Removes consent penalty from group actions.",

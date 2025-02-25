@@ -157,6 +157,7 @@ var TranslationDict = {
 	SIBLINGMODULERULES = """Правила и условия""",
 	SIBLINGMODULESEXTRAITS = """Сексуальные черты""",
 	SIBLINGMODULERELATIVES = """Родственники""",
+	SIBLINGMODULERELATIONS = """Social""", # MISSING TRANSLATION
 	SIBLINGMODULETRAININGS = """Тренировка рабов""",
 	SIBLINGMODULETRAININGSSERVANTS = """Тренировка слуги""",
 	SIBLINGMODULETRAININGSMASTER = """Тренировка мастера""",
@@ -3603,6 +3604,7 @@ Fear grows from punishing actions, but when pushed too high will make partner br
 	SEXTRAITLIKES_SHORTSTACKS = """Любитель малоросликов""",
 	SEXTRAITLIKES_BEASTS = """Любитель зверюшек""",
 	SEXTRAITBISEXUAL = """Бисексуальность""",
+	SEXTRAITMONOGAMOUS = """Monogamous""", # MISSING TRANSLATION
 	SEXTRAITOPEN_MINDED = """Открыто мыслящий""",
 	SEXTRAITDEVIANT = """Девиантность""",
 	SEXTRAITGROUP = """Любитель компании""",
@@ -3670,6 +3672,7 @@ Fear grows from punishing actions, but when pushed too high will make partner br
 
 
 	SEXTRAITBISEXUALDESCRIPT = """[name] не против секса с людьми своего пола. Снимает штраф за согласие с однополых партнеров""",
+	SEXTRAITMONOGAMOUSDESCRIPT = """[name] only is interested in relationship with a single partner. Boosts consent and effects of the actions from [his] selected person. Prevents [name] from accepting more than one romantic partner.""", # MISSING TRANSLATION
 	SEXTRAITOPEN_MINDEDDESCRIPT = """[name] скорее принимает [his] партнеров, не возражая против того, что у них разное строение тела. Снимает штраф за согласие с партнерами с разным телосложением""",
 	SEXTRAITDEVIANTDESCRIPT = """[name] имеет некоторые девиантные вкусы, без проблем участвуя в развратных действиях с животными и даже нежитью. Снимает штраф за согласие с партнеров-животных и нежити.""",
 	SEXTRAITGROUPDESCRIPT = """[name] принимает наличие нескольких партнеров одновременно как естественное явление. Снимает штраф за согласие на групповые действия.""",

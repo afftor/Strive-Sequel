@@ -323,6 +323,7 @@ func swap_mode():
 		$UpgradesPanel.visible = true
 		$RelativesPanel.visible = false
 		$change_button/Label.text = tr("SIBLINGMODULERELATIVES")
+		$RelationsButton/Label.text = tr("SIBLINGMODULERELATIONS")
 
 
 func swap_tab(tab): #obsolete
@@ -364,6 +365,6 @@ func build_personality():
 	
 	$personality/current.rect_position = Vector2($personality.rect_size.x * (0.5 + tmp.x),  $personality.rect_size.y * (0.5 + tmp.y)) - $personality/current.rect_size * 0.5
 	
-	$personality/PersonalityLabel.text = tr("PERSONALITYCURRENT") + tr("PERSONALITYNAME"+person.get_stat('personality').to_upper())
+	$personality/PersonalityLabel.text = tr("PERSONALITYCURRENT") +"\n" + tr("PERSONALITYNAME"+person.get_stat('personality').to_upper())
 	#2add
 	#$personality/desc.bbcode_text = ""

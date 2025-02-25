@@ -1077,7 +1077,7 @@ var dungeons = {
 			races = [["common", 2], ['local', 4],['uncommon',1]]
 		},
 		purchase_area = 'forests',
-		background_pool = ['spider_lair1','spider_lair2', 'spider_lair3', 'spider_lair4'],
+		background_pool = ['spider_lair1', 'spider_lair2', 'spider_lair3', 'spider_lair4'],
 		custom_background = 'combat_forest',
 		bgm = "dungeon",
 		enemyarray = [['spiders', 1]],

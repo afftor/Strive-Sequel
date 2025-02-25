@@ -1685,6 +1685,44 @@ var scenedict = {
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
 		],
 	},
+	character_lovers = {
+		text = tr("CHARLOVERS"),
+		tags = ['dialogue_scene'],
+		image = 'spring',
+		options = [
+			{code = 'character_lovers_allow', reqs = [], text = tr("CHARLOVERSALLOW"), dialogue_argument = 1},
+			{code = 'character_lovers_forbid', reqs = [], text = tr("CHARLOVERSFORBID"), dialogue_argument = 2},
+		]
+	},
+	
+	character_lovers_allow = {
+		text = tr("FOUNTAIN_STAMINA"),
+		tags = [],
+		image = 'spring',
+		bonus_effects = [],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
+		],
+	},
+	character_freelovers = {
+		text = tr("CHARLOVERS"),
+		tags = ['dialogue_scene'],
+		image = 'spring',
+		options = [
+			{code = 'character_freelovers_allow', reqs = [], text = tr("CHARLOVERSALLOW"), dialogue_argument = 1},
+			{code = 'character_freelovers_forbid', reqs = [], text = tr("CHARLOVERSFORBID"), dialogue_argument = 2},
+		]
+	},
+	
+	character_freelovers_allow = {
+		text = tr("FOUNTAIN_STAMINA"),
+		tags = [],
+		image = 'spring',
+		bonus_effects = [],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = []}
+		],
+	},
 	
 #	activate_trap_easy = {
 #		variations = [

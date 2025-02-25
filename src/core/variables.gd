@@ -26,6 +26,7 @@ var CombatAllyHpAlwaysVisible = true
 
 var timeforinteraction = 20
 
+var relationship_base = 50
 
 var debug_mode = false
 var no_obedience_drain = false

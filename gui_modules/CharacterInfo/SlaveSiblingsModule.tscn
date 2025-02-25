@@ -625,9 +625,6 @@ custom_fonts/font = ExtResource( 22 )
 text = "SIBLINGMODULERELATIVES"
 align = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Relatives" type="HBoxContainer" parent="RelativesPanel"]
 margin_left = 825.0
@@ -911,9 +908,9 @@ __meta__ = {
 }
 
 [node name="PersonalityLabel" type="Label" parent="personality"]
-margin_left = -69.0
+margin_left = -74.0
 margin_top = 354.0
-margin_right = 274.0
+margin_right = 212.0
 margin_bottom = 448.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
@@ -952,9 +949,9 @@ stretch_mode = 6
 
 [node name="change_button" type="TextureButton" parent="."]
 margin_left = 617.0
-margin_top = 834.0
+margin_top = 854.0
 margin_right = 807.0
-margin_bottom = 891.0
+margin_bottom = 911.0
 texture_normal = ExtResource( 48 )
 texture_pressed = ExtResource( 50 )
 texture_hover = ExtResource( 49 )
@@ -965,8 +962,30 @@ __meta__ = {
 [node name="Label" type="Label" parent="change_button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "SIBLINGMODULERELATIVES"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="RelationsButton" type="TextureButton" parent="."]
+margin_left = 617.0
+margin_top = 797.0
+margin_right = 807.0
+margin_bottom = 854.0
+texture_normal = ExtResource( 48 )
+texture_pressed = ExtResource( 50 )
+texture_hover = ExtResource( 49 )
+
+[node name="Label" type="Label" parent="RelationsButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "SIBLINGMODULERELATIONS"
 align = 1
 valign = 1
 clip_text = true
