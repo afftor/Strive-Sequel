@@ -1059,3 +1059,10 @@ text = "Food Filter"
 align = 1
 valign = 1
 clip_text = true
+
+[node name="Relations" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 838.0
+margin_top = 88.0
+margin_right = 1642.0
+margin_bottom = 824.0

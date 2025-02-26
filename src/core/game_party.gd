@@ -34,6 +34,10 @@ func _get_data(char1, char2):
 
 
 func add_relationship_value(char1, char2, value):
+	if characters[char1].is_master(): 
+		return 
+	if characters[char2].is_master(): 
+		return 
 	var key = _get_key(char1, char2)
 	
 	if relationship_data.has(key):
@@ -50,6 +54,10 @@ func add_relationship_value(char1, char2, value):
 
 
 func update_relationship_status(data, char1, char2):
+	if characters[char1].is_master(): 
+		return 
+	if characters[char2].is_master(): 
+		return 
 	var value = data.value
 	var status = data.status
 	if value <= 25:
@@ -70,6 +78,10 @@ func update_relationship_status(data, char1, char2):
 
 
 func attempt_romance(char1, char2):
+	if characters[char1].is_master(): 
+		return 
+	if characters[char2].is_master(): 
+		return 
 	var relationship = _get_data(char1, char2)
 	var lovers_chance = 0
 	var freelovers_chance = 0
@@ -111,6 +123,10 @@ func _in_same_location(char1, char2):
 
 
 func relation_daily_change_same_loc(char1, char2):
+	if characters[char1].is_master(): 
+		return 
+	if characters[char2].is_master(): 
+		return 
 	var value = 0
 	if relationship_data.has(_get_key(char1,char2)) == false:
 		relationship_data[_get_key(char1,char2)] = {value = 50, status = 'acquintances'}
