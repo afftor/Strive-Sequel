@@ -348,6 +348,7 @@ func swap_rel_mode():
 			$RelationsButton/Label.text = tr("SIBLINGMODULERELATIVES")
 
 
+
 func swap_tab(tab): #obsolete
 	if loyalty_tab != tab:
 		loyalty_tab = tab
