@@ -841,13 +841,6 @@ margin_top = 88.0
 margin_right = 1644.0
 margin_bottom = 889.0
 
-[node name="Relations" type="RichTextLabel" parent="UpgradesPanel"]
-visible = false
-margin_left = 838.0
-margin_top = 88.0
-margin_right = 1642.0
-margin_bottom = 824.0
-
 [node name="personality" type="TextureRect" parent="."]
 margin_left = 398.0
 margin_top = 449.0
@@ -1059,3 +1052,10 @@ text = "Food Filter"
 align = 1
 valign = 1
 clip_text = true
+
+[node name="Relations" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 838.0
+margin_top = 88.0
+margin_right = 1642.0
+margin_bottom = 824.0

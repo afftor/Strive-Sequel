@@ -9,6 +9,7 @@ var universal_skills = ['oral','anal','petting']
 onready var loyalty_panel = $UpgradesPanel/UpgradesList
 onready var loyalty_panel_master = $UpgradesPanel/ScrollContainer2/UpgradesList2
 var loyalty_mode = true
+var relations_mode = true
 var loyalty_tab = 3
 
 func _ready():
@@ -31,6 +32,7 @@ func _ready():
 	$work_rules/ration.connect("button_down", self, "update")
 	$work_rules/ration.connect("button_up", self, "update")
 	$change_button.connect("pressed", self, 'swap_mode')
+	$RelationsButton.connect("pressed", self, 'swap_rel_mode')
 #	$change_button2.connect("pressed", self, 'swap_tab', [1])
 #	$change_button3.connect("pressed", self, 'swap_tab', [2])
 	$FF.connect("pressed", self, 'show_food_filter')
@@ -69,6 +71,7 @@ func update():
 	hide_food_filter()
 	#relatives
 	$RelativesPanel.build_relatives()
+	build_relations()
 	if person.is_master():
 		$change_button.visible = true
 		loyalty_tab = 3
@@ -316,13 +319,33 @@ func swap_mode():
 	if loyalty_mode:
 		loyalty_mode = false
 		$UpgradesPanel.visible = false
-		$RelativesPanel.visible = true
+		relations_mode = false
+		swap_rel_mode()
+#		$RelativesPanel.visible = true
 		$change_button/Label.text = tr("SIBLINGMODULETRAININGS")
 	else:
 		loyalty_mode = true
 		$UpgradesPanel.visible = true
 		$RelativesPanel.visible = false
+		$Relations.visible = false
 		$change_button/Label.text = tr("SIBLINGMODULERELATIVES")
+
+
+func swap_rel_mode():
+	if relations_mode:
+		relations_mode = false
+		$Relations.visible = false
+		$RelativesPanel.visible = true
+		$RelationsButton/Label.text = tr("SIBLINGMODULERELATIONS")
+	else:
+		if person.is_master():
+			$RelationsButton.visible = false
+		else:
+			$RelationsButton.visible = true
+			relations_mode = true
+			$Relations.visible = true
+			$RelativesPanel.visible = false
+			$RelationsButton/Label.text = tr("SIBLINGMODULERELATIVES")
 
 
 func swap_tab(tab): #obsolete
@@ -376,4 +399,4 @@ func build_relations():
 	for i in array:
 		var character = characters_pool.get_char_by_id(i['char'])
 		text += character.get_full_name() + ": " + i.relationship + "\n"
-	$UpgradesPanel/Relations.bbcode_text = text
+	$Relations.bbcode_text = text
