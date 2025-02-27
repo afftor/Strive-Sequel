@@ -368,7 +368,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_deathknight'],
+		effects = ['e_tr_deathknight', 'e_we_dark_static'],
 		tags = []
 	},
 	nixx_champion = {
