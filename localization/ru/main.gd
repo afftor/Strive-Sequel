@@ -2955,6 +2955,12 @@ Requires: Базовый рабский труд""",
 	CHALLENGEDEXTERITY = """Испытание на ловкость""",
 	CHALLENGEPERSUASION = """Испытание на убеждение""",
 	CHALLENGEWISDOM = """Испытание на мудрость""",	
+	DATEMOOD = """[center]Mood[/center]
+A high mood increases likeliness of positive outcome of intimate actions and provides Loyalty based on Authority Factor after session is finished.
+Mood grows from positive interactions and decreases from negative interactions.""", # MISSING TRANSLATION
+	DATEFEAR = """[center]Fear[/center]
+Fear improves Loyalty based on Timid Factor once date is over. 
+Fear grows from punishing actions, but when pushed too high will make partner breakdown and stop interaction. """, # MISSING TRANSLATION
 	PROFMASTER = """Мастер""",
 	PROFMASTERALT = """Госпожа""",
 	PROFMASTERDESCRIPT = """Единственный хозяин владения. [His] власть вызывает страх и уважение не только у новичков, но даже у опытных слуг.""",
@@ -3066,6 +3072,8 @@ Requires: Базовый рабский труд""",
 	PROFBATTLESMITHDESCRIPT = """Дварфийские кузнецы способны достичь уровня мастерства, чтобы использовать свои навыки прямо на поле боя.""",
 	PROFTECHNOMANCER = """Техномансер""",
 	PROFTECHNOMANCERDESCRIPT = """Благодаря слиянию магии и технологии эти специалисты способны добиваться уникальных результатов.""",
+	PROFPYROMANCER = """Pyromancer""", # MISSING TRANSLATION
+	PROFPROFPYROMANCERDESCRIPT = """Devoting their powers to the way of fire, certain individuals are capable of truly mastering it at the cost of abandoning most other magich schools.""", # MISSING TRANSLATION
 
 	PROFALIOS_CHAMPION = """Чемпион Алиоса""",
 	PROFALIOS_CHAMPIONDESCRIPT = """Одинокая девушка с загадочными способностями и прошлым. Ясно одно - ее божественная принадлежность реальна.""",

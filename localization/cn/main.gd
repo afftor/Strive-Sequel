@@ -2624,6 +2624,8 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	PROFBATTLESMITHDESCRIPT = "Dwarven smiths are able to reach the level of craftsmanship to utilize their skills right on the battlefield. \n矮人铁匠能够达到在战场上使用技能的工艺水平",
 	PROFTECHNOMANCER = "Technomancer 机械巫师",
 	PROFTECHNOMANCERDESCRIPT = "By merging magic and technology these specialists are capable of producing very unique results.\n通过将魔法和技术相结合，这些专家能够产生非常独特的结果",
+	PROFPYROMANCER = """Pyromancer""", # MISSING TRANSLATION
+	PROFPROFPYROMANCERDESCRIPT = """Devoting their powers to the way of fire, certain individuals are capable of truly mastering it at the cost of abandoning most other magich schools.""", # MISSING TRANSLATION
 
 	PROFALIOS_CHAMPION = "Champion of Alios 阿利奥斯的神眷者",
 	PROFALIOS_CHAMPIONDESCRIPT = "A lone girl with mysterious powers and the past. One thing is clear, her divine affiliation is real. \n一个拥有神秘力量和过去的孤独女孩。有一点很清楚，她的神眷者身份是真实的。",
