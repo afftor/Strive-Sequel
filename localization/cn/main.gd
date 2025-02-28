@@ -1725,6 +1725,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	STATWITS = "Wits",
 	STATCHARM = "Charm",
 	STATSEXUALS = "Sexual Proficiency",
+	STATMANACOST_MOD_FIRE = """Fire Spell Cost""", # MISSING TRANSLATION
 
 	STATPHYSICSDESCRIPT = "Physical representation of character's muscles and reflexes. The higher it is, the more effective the character is at combat and manual labor tasks. Grows with physical labor and by using Skill type abilities in combat.",
 	STATWITSDESCRIPT = "Wits represent character's quickness of mind and intelligence. High Wits is mandatory for stronger Mage classes and crafters. Grows with some crafting labors and by using Spell type abilities in combat.",
@@ -2190,6 +2191,8 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	TRAITVALKYRIE_SPEARDESCRIPT = "+10 Speed while equipped with Spear.\n装备长矛时速度+10",
 	TRAITAUTOHIDE = "Conceal.\n概念",
 	TRAITAUTOHIDEDESCRIPT = "Starts combat in Hide if no Heavy or Medium Armor is equipped.\n如果没有装备重型或中型装甲，则在隐藏状态下开始战斗",
+	TRAITDEATHKNIGHT_TRAITDESCRIPT = """Winning a fight increases ATK, Hit Rate and Neutral resist per fight. Maximum 5 stacks. Stacks dissipate with time. """, # MISSING TRANSLATION
+	TRAITTEMPLAR_TRAITDESCRIPT = """After using a Taunt or Provoke recover some health and gain increased MDEF for 3 turns.""", # MISSING TRANSLATION
 	TRAITDEATHKNIGHTDESCRIPT = """Dealing a killing blow increases Loyalty.""", # MISSING TRANSLATION
 	TRAITNINJADESCRIPT = """Gain evasion based on your MDEF. Minimal chance for evading hit is reduced to 5%.""", # MISSING TRANSLATION
 	TRAITWITCHDESCRIPT = """Your critical hits with spells apply random debuff. Healing spells have chance to apply healing over time.""", # MISSING TRANSLATION

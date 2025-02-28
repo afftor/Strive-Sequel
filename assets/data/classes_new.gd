@@ -1027,6 +1027,21 @@ var professions = {
 		combatskills = [],
 		conflict_classes = [],
 	},
+	pyromancer = {
+		code = 'pyromancer',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/Pyromaniac.png"),
+		tags = [],
+		categories = ['combat','magic'],
+		showupreqs = [],
+		reqs = [{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 4}],
+		statchanges = {matk = 6, damage_mod_fire = 0.25, manacost_mod_fire = -0.66,  mastery_fire = 1, resist_fire = 50, disabled_masteries = ['water','air','light','dark','mind']},
+		traits = [],
+		skills = [],
+		combatskills = [],
+		conflict_classes = [],
+	},
 	
 	nixx_champion = {
 		code = 'nixx_champion',

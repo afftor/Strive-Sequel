@@ -1066,7 +1066,7 @@ Hotkey: 3""",
 	SKILLRESTORATION = "Restoration",
 	SKILLRESTORATIONDESCRIPT = "Heals a target for 250% of MATK. Reduces damage taken by 20% for 2 turns.",
 	SKILLREJUVENATION = "Rejuvination",
-	SKILLREJUVENATIONDESCRIPT = "Heals ally for 100% of MATK. Regenerates 60% of MATK each turn for 2 turns.",
+	SKILLREJUVENATIONDESCRIPT = "Heals ally for 100% of MATK. Regenerates 60% of MATK each turn for 2 turns. Removes Burn and Poison.",
 	SKILLREJUVENATIONDESCRIPT_2 = "Heals a row for 100% of MATK. Regenerates 60% of MATK each turn for 2 turns.",
 	SKILLSANCTUARY = "Sanctuary",
 	SKILLSANCTUARYDESCRIPT = "Heals all allies for 80% of MATK. Regenerates 120% of MATK each turn for 3 turns.",
@@ -1158,7 +1158,7 @@ Burning: Take 8% of Maximum HP as Fire damage per turn.""",
 	SKILLDECAY = "Decay",
 	SKILLDECAYDESCRIPT = "Deals 65% of MATK as {color=yellow|Dark} damage to all enemies.",
 	SKILLFIRST_AID = "First Aid",
-	SKILLFIRST_AIDDESCRIPT = "Heals ally for 30% of Maximum HP.",
+	SKILLFIRST_AIDDESCRIPT = "Heals ally for 30% of Maximum HP. Removes Bleed and Poison.",
 	SKILLLIGHT_SPELL = "Holy Light",
 	SKILLLIGHT_SPELLDESCRIPT = "Deals 100% of MATK as {color=yellow|Light} damage to a target",
 	SKILLLIGHT_SPELL_AOE = "Divine Radiance",
@@ -1825,10 +1825,11 @@ Service is a global modifier for this assignment.""",
 	STATWITS = "Wits",
 	STATCHARM = "Charm",
 	STATSEXUALS = "Sexual Proficiency",
-	STATPHYSICSDESCRIPT = "Physical representation of character's muscles and reflexes. The higher it is, the more effective the character is at combat and manual labor tasks. Grows with physical labor and by using Skill type abilities in combat.",
-	STATWITSDESCRIPT = "Wits represent character's quickness of mind and intelligence. High Wits is mandatory for stronger Mage classes and crafters. Grows with some crafting labors and by using Spell type abilities in combat.",
-	STATCHARMDESCRIPT = "Charm represents character's appeal and appearance. High Charm makes social oriented works and skills a lot more effective. Grows from using social abilities.",
-	STATSEXUALSDESCRIPT = "Sexual Proficiency represents character's skills in body pleasures. It is calculated by sum of 3 highest sexual skills and affects certain tasks and abilities.",
+	STATMANACOST_MOD_FIRE = "Fire Spell Cost",
+	STATPHYSICSDESCRIPT = "{color=yellow|Physical} representation of character's muscles and reflexes. The higher it is, the more effective the character is at combat and manual labor tasks. Grows with physical labor and by using Skill type abilities in combat.",
+	STATWITSDESCRIPT = "{color=yellow|Wits} represent character's quickness of mind and intelligence. High Wits is mandatory for stronger Mage classes and crafters. Grows with some crafting labors and by using Spell type abilities in combat.",
+	STATCHARMDESCRIPT = "{color=yellow|Charm} represents character's appeal and appearance. High Charm makes social oriented works and skills a lot more effective. Grows from using social abilities.",
+	STATSEXUALSDESCRIPT = "{color=yellow|Sexual} proficiency represents character's skills in body pleasures. It is calculated by sum of 3 highest sexual skills and affects certain tasks and abilities.",
 	STATGROWTH_FACTOR = "Growth",
 	STATMAGIC_FACTOR = "Magic Affinity",
 	STATPHYSICS_FACTOR = "Physics Factor",
@@ -1996,24 +1997,24 @@ Consent represents character's general acceptance of various sexual actions, but
 	STATGROWTH_FACTORDESCRIPT = """Growth is character's affinity to getting stronger. As character acquire more classes all their stats increase. Non-slave characters will also gain Universal Mastery Points. Every point of growth increases the number of classes which will increase its stats. It also greatly affects character's Value. 
 
 {color=green|Affected stats are: Productivity, Physics, Wits, Charm, Max Health, Max Mana, Speed, Hitrate, Evasion, ATK, MATK, DEF, MDEF.} """,
-	STATPHYSICS_FACTORDESCRIPT = """Physics factor represents physical potential of the character. It increases [color=aqua]Physical[/color] growth and influences melee combat.
+	STATPHYSICS_FACTORDESCRIPT = """{color=yellow|Physics factor} represents physical potential of the character. It increases [color=aqua]Physical[/color] growth and influences melee combat.
 
 {color=green|Maxed Physics Factor increases natural Health Regeneration.}""",
-	STATMAGIC_FACTORDESCRIPT = """Magic factor represents character's magic affinity. The higher it is, the more mana you have and the stronger magic classes you can unlock. Also affects mana regeneration.
+	STATMAGIC_FACTORDESCRIPT = """{color=yellow|Magic Factor} represents character's magic affinity. The higher it is, the more mana you have and the stronger magic classes you can unlock. Also affects mana regeneration.
 {color=green|Maxed Magic Factor provides MATK bonus.}""",
-	STATTAME_FACTORDESCRIPT = """Tame factor represents how easy it is to befriend the character. The higher it is, the more Loyalty character will gain passively and from Gracious and Lewd social skills. It will also make personality changes more stable on Kind axis.
+	STATTAME_FACTORDESCRIPT = """{color=yellow|Tame Factor} represents how easy it is to befriend the character. It reduces the price of unlocking loyalty traits for subordinates.
 
 {color=green|Maxed Tame Factor increases Loyalty Gain.}""",
-	STATTIMID_FACTORDESCRIPT = """Authority Factor represents capability of inflict character's authority over others. The higher it is the more efficient is character's training and more trainees are available to them.
+	STATTIMID_FACTORDESCRIPT = """{color=yellow|Authority Factor} represents capability of inflict character's authority over others. The higher it is the more efficient is character's training and more trainees are available to them.
 
 {color=green|Maxed Authority Factor reduces Damage Taken.}""",
-	STATWITS_FACTORDESCRIPT = """Wits factor represents the character's mind potential. It increases [color=aqua]Wits[/color] growth.
+	STATWITS_FACTORDESCRIPT = """{color=yellow|Wits Factor} represents the character's mind potential. It increases [color=aqua]Wits[/color] growth.
 
 {color=green|Maxed Wits Factor increases experience gain.}""",
-	STATCHARM_FACTORDESCRIPT = """Charm factor represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. [Master]'s charm also increases gold and reputation rewards from repeatable quests and number of dates per week.
+	STATCHARM_FACTORDESCRIPT = """{color=yellow|Charm Factor} represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. [Master]'s charm also increases gold and reputation rewards from repeatable quests and number of dates per week.
 
 {color=green|Maxed Charm Factor furtherly increases social skill efficiency.}""",
-	STATSEXUALS_FACTORDESCRIPT = """Sex factor represents character's sex development potential. It speeds sexual skills acquirement, makes Consent easier to progress and occasionally boosts sexual options in events. [Master]'s Sex factor also increases number of sex interactions per week.
+	STATSEXUALS_FACTORDESCRIPT = """{color=yellow|Sex Factor} represents character's sex development potential. It speeds sexual skills acquirement, makes Consent easier to progress and occasionally boosts sexual options in events. [Master]'s Sex factor also increases number of sex interactions per week.
 
 {color=green|Maxed Sex Factor provides Speed bonus}.""",
 	PHYSICS_FACTORBONUSDESCRIPT = "Physics Factor: Health Regeneration: x2",
@@ -2393,7 +2394,8 @@ Sexual Training actions have lower chance to fail.""",
 	TRAITVALKYRIE_SPEARDESCRIPT = "+10 Speed while equipped with Spear.",
 	TRAITAUTOHIDE = "Conceal",
 	TRAITAUTOHIDEDESCRIPT = "Starts combat Hidden if no Heavy or Medium Armor is equipped.",
-	TRAITDEATHKNIGHTDESCRIPT = "Dealing a killing blow increases random stat.",
+	TRAITDEATHKNIGHT_TRAITDESCRIPT = "Winning a fight increases ATK, Hit Rate and Neutral resist per fight. Maximum 5 stacks. Stacks dissipate with time.\nSkill attacks possess Dark element.",
+	TRAITTEMPLAR_TRAITDESCRIPT = "After using a Taunt or Provoke recover some health and gain increased MDEF for 3 turns.",
 	TRAITNINJADESCRIPT = "Gain evasion based on your MDEF. Minimal chance for evading hit is reduced to 5%.",
 	TRAITWITCHDESCRIPT = "Your critical hits with spells apply random debuff. Healing spells have chance to apply healing over time.",
 	TRAITWARLOCKDESCRIPT = "Single target spells gain 25% increased critical chance and deal 75% bonus critical damage.",
@@ -4088,6 +4090,8 @@ Boosts Productivity by 25%. Character won't gain Experience or Work Stats (Physi
 	WORKRULENUDITYDESCRIPT = "Forces [name] to stay naked while at mansion (if has corresponding sprite). This effect is cosmetic.",
 	WORKRULEPERSONALITY_LOCK = "Lock Personality",
 	WORKRULEPERSONALITY_LOCKDESCRIPT = "[name] will no longer have [his] personality affected by social actions.",
+	WORKRULERELATIONSHIP = "Allow Romance",
+	WORKRULERELATIONSHIPDESCRIPT = "[name] will be allowed to establish romantic relationship with other characters besides [master].",
 	WORKRULEMASTURBATION = "Forbid Masturbation",
 	WORKRULEMASTURBATIONDESCRIPT = "[name] will not be allowed to relieve [him]self, leading to increased stress but higher libido. Obedience Drain +2, Lust Growth +15%.",
 	WORKRULELOCK = "Lock Character",

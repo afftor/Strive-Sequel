@@ -5060,7 +5060,7 @@ var color_presets = ['default', 'default_underwear', 'default_leather', 'default
 
 var material_tiers = {
 	t1 = {#prologue level
-		stone = 1, wood = 1, leather = 1, bone = 1
+		stone = 1, wood = 1, leather = 1, bone = 1, cloth = 0.3, iron = 0.3
 		},
 	t2 = {#act 1 start
 		iron = 1, cloth = 1,

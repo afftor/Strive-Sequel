@@ -1896,6 +1896,7 @@ Hotkey: 3""",
 	STATWITS = """Мудрость""",
 	STATCHARM = """Обаяние""",
 	STATSEXUALS = """Сексуальное мастерство""",
+	STATMANACOST_MOD_FIRE = """Fire Spell Cost""", # MISSING TRANSLATION
 
 	STATPHYSICSDESCRIPT = """Физическое представление мышц и рефлексов персонажа. Чем он выше, тем эффективнее персонаж в бою и при выполнении задач ручного труда. Растет при физическом труде и использовании навыков физического типа в бою.""",
 	STATWITSDESCRIPT = """Мудрость представляет собой быстроту ума и сообразительность персонажа. Высокий уровень Мудрости обязателен для более сильных классов магов и ремесленников. Повышается при некоторых ремесленных работах и при использовании способностей типа заклинаний в бою.""",
@@ -2517,6 +2518,8 @@ Hotkey: 3""",
 	TRAITVALKYRIE_SPEARDESCRIPT = """+10 скорости при использовании копья""",
 	TRAITAUTOHIDE = """Скрытность""",
 	TRAITAUTOHIDEDESCRIPT = """Начинает бой в скрытности, если не надета тяжелая или средняя броня""",
+	TRAITDEATHKNIGHT_TRAITDESCRIPT = """Winning a fight increases ATK, Hit Rate and Neutral resist per fight. Maximum 5 stacks. Stacks dissipate with time. """, # MISSING TRANSLATION
+	TRAITTEMPLAR_TRAITDESCRIPT = """After using a Taunt or Provoke recover some health and gain increased MDEF for 3 turns.""", # MISSING TRANSLATION
 	TRAITDEATHKNIGHTDESCRIPT = """Dealing a killing blow increases Loyalty.""",
 	TRAITNINJADESCRIPT = """Получает уклонение, основанное на МЗАЩ. Минимальный шанс уклониться от удара снижен до 5%""",
 	TRAITWITCHDESCRIPT = """Ваши критические удары заклинаниями накладывают случайный дебафф. Лечебные заклинания имеют шанс наложить исцеление с течением времени.""",
@@ -2940,7 +2943,7 @@ Requires: Базовый рабский труд""",
 	BUFFDESCRIPTCURSE = """ """,
 	BUFFDESCRIPTENCHANT = """ """,
 	BUFFDESCRIPTMENTOR = """Прирост опыта увеличен""",	
-	BUFFDESCRIPTBISHOP = """Цель получает на 20% больше урона от света и тьмы""",
+	BUFFDESCRIPTBISHOP = """Цель получает на 20%% больше урона от света и тьмы""",
 	
 	BUFFDESCRIPTWET = """Влажность
 Следующий урон от огня уменьшен на 50%%
@@ -2953,7 +2956,7 @@ Requires: Базовый рабский труд""",
 	BUFFDESCRIPTBLIND = """Слепота: Точность уменьшена.""",
 	BUFFDESCRIPTFEAR = """Страх: Урон снижен на 25%%.""",
 	BUFFDESCRIPTSHOCK = """Шок
-Весь получаемый урон увеличивается на 15%, дополнительный шок имеет шанс оглушить.""",
+Весь получаемый урон увеличивается на 15%%, дополнительный шок имеет шанс оглушить.""",
 	BUFFDESCRIPTENSNARE = """Захват: Уворот уменьшен на 75""",	
 	RESETTRAINREQ = """Сбросить обучение на 0-й шаг и восстановить дух. Требуется зелье Забвения.""",
 	BUFFDESCRIPTDEFENDER = """Defender: Will shield allies from attacks unless stunned.""", # MISSING TRANSLATION
@@ -4389,6 +4392,8 @@ Fear grows from punishing actions, but when pushed too high will make partner br
 	
 	WORKRULEPERSONALITY_LOCK = """Блок личности""",
 	WORKRULEPERSONALITY_LOCKDESCRIPT = """[name] больше не будет изменять [his] личность благодаря социальным действиям.""",
+	WORKRULERELATIONSHIP = """Allow Romance""", # MISSING TRANSLATION
+	WORKRULERELATIONSHIPDESCRIPT = """[name] will be allowed to establish romantic relationship with other characters besides [master].""", # MISSING TRANSLATION
 
 	WORKRULEMASTURBATION = """Запретить мастурбацию""",
 	WORKRULEMASTURBATIONDESCRIPT = """[name] не будет иметь возможности развлечь себя, что приведет к повышенному стрессу, но увеличит либидо. Утечка повиновения +2, рост похоти +15%""",

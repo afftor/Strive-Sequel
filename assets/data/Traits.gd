@@ -245,8 +245,8 @@ var traits = {
 		effects = ['e_tr_druid'],
 		bonusstats = {}
 	},
-	templar = {
-		code = 'templar',
+	templar_trait = {
+		code = 'templar_trait',
 		name = '',
 		descript = '',
 		visible = false,
@@ -362,13 +362,13 @@ var traits = {
 		effects = [],
 		tags = ['ninja']
 	},
-	deathknight = {
-		code = 'deathknight',
+	deathknight_trait = {
+		code = 'deathknight_trait',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_deathknight'],
+		effects = ['e_tr_deathknight', 'e_we_dark_static'],
 		tags = []
 	},
 	nixx_champion = {
