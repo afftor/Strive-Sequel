@@ -778,9 +778,9 @@ func can_evade():
 	return res
 
 func can_use_skill(skill):
-	if !check_cost(skill.cost): return false
+	if is_players_character and !check_cost(skill.cost): return false
 	if skill.type == 'auto': return false
-	if skill.has('reqs') and !checkreqs(skill.reqs): return false
+	if is_players_character and skill.has('reqs') and !checkreqs(skill.reqs): return false
 	if skills.combat_cooldowns.has(skill.code): return false
 	if has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'): return false
 	if has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'): return false

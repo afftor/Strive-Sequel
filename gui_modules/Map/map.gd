@@ -459,29 +459,35 @@ func build_info(loc = null):
 		if gatherable_resources.empty():
 			info_res_node.hide()
 			$InfoPanel/VBoxContainer/Label3.hide()
+		var current_res_data = Items.material_tiers[ResourceScripts.game_progress.get_default_materials()]
 		for i in gatherable_resources:
 			var item = Items.materiallist[i]
 			var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
-			newbutton.get_node("Icon").texture = Items.materiallist[i].icon
-			newbutton.set_meta("exploration", true)
-			if dungeon:
-				if !hidden:
-					newbutton.get_node("amount").text = str(gatherable_resources[i])
-					newbutton.set_meta("gather_mod", round(location.gatherable_resources[i].gather_mod * 100))
-					globals.connectmaterialtooltip(newbutton, item)
+			if current_res_data.has(i):
+				newbutton.get_node("Icon").texture = Items.materiallist[i].icon
+				newbutton.set_meta("exploration", true)
+				if dungeon:
+					if !hidden:
+						newbutton.get_node("amount").text = str(gatherable_resources[i])
+						newbutton.set_meta("gather_mod", round(location.gatherable_resources[i].gather_mod * 100))
+						globals.connectmaterialtooltip(newbutton, item)
+					else:
+						newbutton.get_node("Icon").texture = load("res://assets/Textures_v2/Travel/placer_travel_question.png")
 				else:
-					newbutton.get_node("Icon").texture = load("res://assets/Textures_v2/Travel/placer_travel_question.png")
+					var max_workers_count = gatherable_resources[i]
+					var current_workers_count = 0
+					var active_tasks = ResourceScripts.game_party.active_tasks
+					for task in active_tasks:
+						if (task.code == i) && (task.task_location == loc):
+							current_workers_count = task.workers.size()
+					newbutton.get_node("amount").text = str(max_workers_count - current_workers_count) + "/" + str(max_workers_count)
+					newbutton.set_meta("max_workers", max_workers_count)
+					newbutton.set_meta("current_workers", current_workers_count)
+					globals.connectmaterialtooltip(newbutton, item)
 			else:
-				var max_workers_count = gatherable_resources[i]
-				var current_workers_count = 0
-				var active_tasks = ResourceScripts.game_party.active_tasks
-				for task in active_tasks:
-					if (task.code == i) && (task.task_location == loc):
-						current_workers_count = task.workers.size()
-				newbutton.get_node("amount").text = str(max_workers_count - current_workers_count) + "/" + str(max_workers_count)
-				newbutton.set_meta("max_workers", max_workers_count)
-				newbutton.set_meta("current_workers", current_workers_count)
-				globals.connectmaterialtooltip(newbutton, item)
+				newbutton.get_node("Icon").texture = load("res://assets/Textures_v2/Travel/placer_travel_question.png")
+				newbutton.set_meta("exploration", true)
+				newbutton.get_node("amount").text = ""
 	#build chars
 	input_handler.ClearContainer($InfoPanel/VBoxContainer/CharScroll/Characters)
 	var f = false
