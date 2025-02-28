@@ -410,7 +410,7 @@ text = "WORKRULELOCK"
 
 [node name="ration" type="CheckBox" parent="work_rules"]
 margin_left = 372.0
-margin_right = 783.0
+margin_right = 719.0
 margin_bottom = 48.0
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -443,7 +443,7 @@ text = "WORKRULESHIFTS"
 [node name="luxury" type="CheckBox" parent="work_rules"]
 margin_left = 372.0
 margin_top = 52.0
-margin_right = 783.0
+margin_right = 719.0
 margin_bottom = 100.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -474,6 +474,7 @@ custom_styles/focus = SubResource( 9 )
 text = "WORKRULECONTRACEPTIVE"
 
 [node name="personality_lock" type="CheckBox" parent="work_rules"]
+visible = false
 margin_left = 372.0
 margin_top = 104.0
 margin_right = 783.0
@@ -491,6 +492,27 @@ custom_styles/focus = SubResource( 9 )
 text = "WORKRULEPERSONALITY_LOCK"
 
 [node name="nudity" type="CheckBox" parent="work_rules"]
+margin_left = 372.0
+margin_top = 104.0
+margin_right = 719.0
+margin_bottom = 152.0
+custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
+custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
+custom_icons/radio_checked_disabled = ExtResource( 17 )
+custom_icons/radio_checked = ExtResource( 17 )
+custom_icons/checked_disabled = ExtResource( 9 )
+custom_icons/radio_unchecked_disabled = ExtResource( 9 )
+custom_icons/checked = ExtResource( 17 )
+custom_icons/radio_unchecked = ExtResource( 9 )
+custom_icons/unchecked_disabled = ExtResource( 9 )
+custom_icons/unchecked = ExtResource( 9 )
+text = "WORKRULENUDITY"
+
+[node name="relationship" type="CheckBox" parent="work_rules"]
 margin_top = 156.0
 margin_right = 368.0
 margin_bottom = 204.0
@@ -508,7 +530,7 @@ custom_icons/checked = ExtResource( 17 )
 custom_icons/radio_unchecked = ExtResource( 9 )
 custom_icons/unchecked_disabled = ExtResource( 9 )
 custom_icons/unchecked = ExtResource( 9 )
-text = "WORKRULENUDITY"
+text = "WORKRULERELATIONSHIP"
 
 [node name="masturbation" type="CheckBox" parent="work_rules"]
 visible = false
@@ -565,7 +587,6 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SexTraitsPanel/ScrollContainer"]
 light_mask = 0
-margin_right = 230.0
 size_flags_horizontal = 3
 custom_constants/separation = 5
 
@@ -840,13 +861,6 @@ margin_left = 844.0
 margin_top = 88.0
 margin_right = 1644.0
 margin_bottom = 889.0
-
-[node name="Relations" type="RichTextLabel" parent="UpgradesPanel"]
-visible = false
-margin_left = 838.0
-margin_top = 88.0
-margin_right = 1642.0
-margin_bottom = 824.0
 
 [node name="personality" type="TextureRect" parent="."]
 margin_left = 398.0

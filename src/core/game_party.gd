@@ -149,7 +149,7 @@ func relation_daily_change_same_loc(char1, char2):
 	
 	var outcome = input_handler.weightedrandom(weights)
 	if outcome == 'positive':
-		value = int(rand_range(30,77))
+		value = int(rand_range(3,7))
 	else:
 		value = int(rand_range(-3,-7))
 	
@@ -174,6 +174,9 @@ func check_lover_possibility(data, char1, char2):
 	
 	var endvalue = false
 	
+	if person1.check_work_rule("relationship") == false || person2.check_work_rule("relationship") == false:
+		return endvalue
+	
 	if person1.get_stat('sex') == person2.get_stat('sex') && (!person1.check_trait("bisexual") || !person2.check_trait("bisexual")): 
 		endvalue = false
 	elif person1.get_stat('sex') == person2.get_stat('sex') && person1.check_trait("bisexual") && person2.check_trait("bisexual"): 
@@ -182,7 +185,7 @@ func check_lover_possibility(data, char1, char2):
 		endvalue = true
 	
 	if endvalue == true:
-		if person1.check_trait("monogamous") && has_love_status(char1) || person2.check_trait("monogamous") && has_love_status(char2) :
+		if person1.check_trait("monogamous") && (has_love_status(char1) || person1.has_profession("spouse")) || person2.check_trait("monogamous") && (has_love_status(char2) || person2.has_profession("spouse") ) :
 			endvalue = false
 	return endvalue
 
@@ -227,13 +230,11 @@ func advance_day():
 		i.process_event(variables.TR_DAY)
 		i.quest_day_tick()
 	relationship_decay()
-	var counter = 0
 	for i in range(character_order.size() - 1):
-		counter += 1
+		if characters[character_order[i]].is_master() == true:
+			continue
 		for j in range(i + 1, character_order.size()):
-			counter += 1
 			if _in_same_location(character_order[i],character_order[j]): relation_daily_change_same_loc(character_order[i],character_order[j])
-	#print(counter)
 
 func serialize():
 	var res = inst2dict(self)
