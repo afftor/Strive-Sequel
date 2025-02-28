@@ -928,6 +928,7 @@ func summon(montype, limit, combatgroup, incombat = false): #reworked
 		'ally':
 			tchar.generate_simple_fighter(montype[slot], false)
 			tchar.combatgroup = 'ally'
+			tchar.is_players_character = true
 			playergroup[sum_pos] = characters_pool.add_char(tchar)
 			battlefield[sum_pos] = playergroup[sum_pos]
 			tchar.selectedskill = tchar.get_skill_by_tag('default')
