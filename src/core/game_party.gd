@@ -138,14 +138,14 @@ func relation_daily_change_same_loc(char1, char2):
 		if base_value > 65:
 			weights[1][1] = 1
 		else:
-			weights[1][1] = 33 - int(32 * (value - 50) / 15)
+			weights[1][1] = 33 - int(32 * (base_value - 50) / 15)
 	
 	elif base_value < 50:
 		# Reduce positive weight proportionally down to 1 when value is 35
 		if base_value < 35:
 			weights[0][1] = 1
 		else:
-			weights[0][1] = 66 - int(65 * (50 - value) / 15)
+			weights[0][1] = 66 - int(65 * (50 - base_value) / 15)
 	
 	var outcome = input_handler.weightedrandom(weights)
 	if outcome == 'positive':
