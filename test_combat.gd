@@ -80,7 +80,7 @@ var chardata = {
 			stats = {physics_factor = 3, wits_factor = 3, growth_factor = 3},
 			classes1 = ['fighter', 'berserker'],
 			classes2 = [],
-			optional_classes_amount = 1,
+			optional_classes_amount = 0,
 			mastery_levels = [1,2],
 			items = ['chest_base_metal', 'legs_base_metal', 'shield', ['sword', 'mace', 'battleaxe', 'club', 'spear']]
 		},
@@ -117,7 +117,7 @@ var chardata = {
 			stats = {physics_factor = 3, wits_factor = 3, growth_factor = 3},
 			classes1 = ['fighter', 'dragonknight'],
 			classes2 = [],
-			optional_classes_amount = 1,
+			optional_classes_amount = 0,
 			mastery_levels = [1,2],
 			items = ['chest_base_metal', 'legs_base_metal', 'shield', ['sword', 'mace', 'battleaxe', 'club', 'spear']]
 		},
@@ -154,7 +154,7 @@ var chardata = {
 			stats = {physics_factor = 3, wits_factor = 3, growth_factor = 3},
 			classes1 = ['fighter', 'valkyrie'],
 			classes2 = [],
-			optional_classes_amount = 1,
+			optional_classes_amount = 0,
 			mastery_levels = [1,2],
 			items = ['chest_base_metal', 'legs_base_metal', 'shield', ['sword', 'mace', 'battleaxe', 'club', 'spear']]
 		},
