@@ -333,7 +333,11 @@ func subtract_taxes():
 			continue
 		if !ch.get_stat('slave_class') == 'servant':
 			continue
-		tax += ch.calculate_price() * (1.0 - 0.05 * ch.get_stat('tame_factor'))
+		var tres = ch.calculate_price()
+		tres *= 1.0 - 0.05 * ch.get_stat('tame_factor')
+		if ch.get_stat('personality') == 'shy':
+			tres *= 0.9
+		tax += tres
 	ResourceScripts.game_res.money -= int (3 * tax / 100)
 
 #arguable here

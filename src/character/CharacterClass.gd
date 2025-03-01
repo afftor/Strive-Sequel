@@ -1387,6 +1387,14 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			return training.check_stored_reqs(i.value)
 		'is_immune':
 			return effects.check_status_immunity(i.status) == i.check
+		'has_relationship':
+			var tmp = ResourceScripts.game_party.find_all_relationship(id)
+			var tres = false
+			for rec in tmp:
+				if rec.relationship == i.value:
+					tres = true
+					break
+			return tres == i.check
 	return check
 
 func decipher_reqs(reqs, colorcode = false, purestat = false):

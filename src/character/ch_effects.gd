@@ -151,6 +151,8 @@ func make_status_effect(template):
 			effect.duration = template.duration
 			if has_status('wet'):
 				template.chance = 1.0
+			if parent.get_ref().get_stat('personality') == 'bold' and effect.duration > 1:
+				effect.duration -= 1
 			if parent.get_ref().has_status('boss_resists'):
 				effect.duration = 1
 		'e_s_shock':
@@ -160,12 +162,18 @@ func make_status_effect(template):
 			else:
 				effect = Effectdata.effect_table[effect].duplicate(true)
 				effect.duration = template.duration
+				if parent.get_ref().get_stat('personality') == 'bold' and effect.duration > 1:
+					effect.duration -= 1
 		'e_s_stun1':
 			effect = Effectdata.effect_table[effect].duplicate(true)
 			effect.duration = template.duration
+			if parent.get_ref().get_stat('personality') == 'bold' and effect.duration > 1:
+				effect.duration -= 1
 			if parent.get_ref().has_status('boss_resists'):
 				effect.duration = 1
 		_:
+			if parent.get_ref().get_stat('personality') == 'bold' and effect.duration > 1 and effect.tags.has('negative'):
+				effect.duration -= 1
 			effect = Effectdata.effect_table[effect].duplicate(true)
 			effect.duration = template.duration
 	var eff = effects_pool.e_createfromtemplate(effect, template.parent)
