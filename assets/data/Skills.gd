@@ -1070,6 +1070,7 @@ var training_categories = {
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
 			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
+			{type = 'stat', stat = 'personality', operant = 'eq', check = 'shy', effect = {loyalty_mul = 1.15}},
 		]
 	},
 	physical = {
@@ -1085,6 +1086,7 @@ var training_categories = {
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
 			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
+			{type = 'stat', stat = 'personality', operant = 'eq', check = 'shy', effect = {loyalty_mul = 1.15}},
 			]
 	},
 	humiliation = {
@@ -1099,6 +1101,7 @@ var training_categories = {
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
 			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
+			{type = 'stat', stat = 'personality', operant = 'eq', check = 'shy', effect = {loyalty_mul = 1.15}},
 		]
 	},
 	social = {
@@ -1113,6 +1116,7 @@ var training_categories = {
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
 			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
+			{type = 'stat', stat = 'personality', operant = 'eq', check = 'shy', effect = {loyalty_mul = 1.15}},
 			]
 	},
 	sexual = {
@@ -1129,6 +1133,7 @@ var training_categories = {
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
 			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
+			{type = 'stat', stat = 'personality', operant = 'eq', check = 'shy', effect = {loyalty_mul = 1.15}},
 			]
 	},
 	magic = {
@@ -1142,6 +1147,7 @@ var training_categories = {
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
 			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
+			{type = 'stat', stat = 'personality', operant = 'eq', check = 'shy', effect = {loyalty_mul = 1.15}},
 			]
 	},
 }
@@ -1375,6 +1381,8 @@ func get_template_combat(id, caster):
 	tres.descript = tr(tres.descript)
 	if tres.cost.has('mp'):
 		tres.cost.mp = caster.get_manacost_for_skill(tres)
+	if tres.has('combatcooldown') and tres.combatcooldown > 1 and caster.get_stat('personality') == 'serious':
+		tres.combatcooldown -= 1
 	return tres
 
 
