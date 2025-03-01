@@ -40,7 +40,7 @@ var chardata = {
 		name = "melee",
 		masteries = ['warfare', 'protection', 'leadership'],
 		1 : {
-			stats = {physics_factor = 3, wits_factor = 3, growth_factor = 3},
+			stats = {physics_factor = 3, wits_factor = 3, growth_factor = 3, physics = 20, wits = 20},
 			classes1 = ['fighter'],
 			classes2 = ['rogue', 'archer'],
 			optional_classes_amount = 1,
@@ -48,7 +48,7 @@ var chardata = {
 			items = ['chest_base_metal', 'legs_base_metal', 'shield', ['sword', 'mace', 'battleaxe', 'club', 'spear']]
 		},
 		2 : {
-			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 4},
+			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 4, physics = 60, wits = 60},
 			classes1 = ['fighter', 'rogue', 'archer'],
 			classes2 = ['knight', 'paladin'],
 			optional_classes_amount = 1,
@@ -56,7 +56,7 @@ var chardata = {
 			items = ['chest_base_metal', 'legs_base_metal', 'shield', ['sword', 'mace', 'battleaxe', 'club', 'spear']]
 		},
 		3 : {
-			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5},
+			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['fighter', 'rogue', 'archer'],
 			classes2 = [['knight', 'deathknight'], ['paladin','templar']],
 			optional_classes_amount = 1,
@@ -64,7 +64,7 @@ var chardata = {
 			items = [['chest_base_metal', 'chest_adv_metal'], ['legs_base_metal', 'legs_adv_metal'], 'shield', ['sword', 'mace', 'battleaxe', 'swordadv', 'spearadv', 'maceadv', 'battleaxeadv', 'club', 'spear']]
 		},
 		4 : {
-			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5},
+			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['fighter', 'rogue', 'archer'],
 			classes2 = [['knight', 'deathknight'], ['paladin','templar']],
 			optional_classes_amount = 1,
@@ -77,7 +77,7 @@ var chardata = {
 		masteries = ['warfare', 'protection', 'leadership'],
 		race = 'Orc',
 		1 : {
-			stats = {physics_factor = 3, wits_factor = 3, growth_factor = 3},
+			stats = {physics_factor = 3, wits_factor = 3, growth_factor = 3, physics = 20, wits = 20},
 			classes1 = ['fighter', 'berserker'],
 			classes2 = [],
 			optional_classes_amount = 0,
@@ -85,7 +85,7 @@ var chardata = {
 			items = ['chest_base_metal', 'legs_base_metal', 'shield', ['sword', 'mace', 'battleaxe', 'club', 'spear']]
 		},
 		2 : {
-			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 4},
+			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 4, physics = 60, wits = 60},
 			classes1 = ['fighter', 'berserker'],
 			classes2 = ['knight', 'paladin'],
 			optional_classes_amount = 1,
@@ -93,7 +93,7 @@ var chardata = {
 			items = ['chest_base_metal', 'legs_base_metal', 'shield', ['sword', 'mace', 'battleaxe', 'club', 'spear']]
 		},
 		3 : {
-			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5},
+			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['fighter', 'berserker'],
 			classes2 = [['knight', 'deathknight'], ['paladin','templar']],
 			optional_classes_amount = 1,
@@ -101,7 +101,7 @@ var chardata = {
 			items = [['chest_base_metal', 'chest_adv_metal'], ['legs_base_metal', 'legs_adv_metal'], 'shield', ['sword', 'mace', 'battleaxe', 'swordadv', 'spearadv', 'maceadv', 'battleaxeadv', 'club', 'spear']]
 		},
 		4 : {
-			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5},
+			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['fighter', 'berserker', 'rogue', 'archer'],
 			classes2 = [['knight', 'deathknight'], ['paladin','templar']],
 			optional_classes_amount = 1,
@@ -114,7 +114,7 @@ var chardata = {
 		masteries = ['warfare', 'protection', 'leadership'],
 		race = 'Dragonkin',
 		1 : {
-			stats = {physics_factor = 3, wits_factor = 3, growth_factor = 3},
+			stats = {physics_factor = 3, wits_factor = 3, growth_factor = 3, physics = 20, wits = 20},
 			classes1 = ['fighter', 'dragonknight'],
 			classes2 = [],
 			optional_classes_amount = 0,
@@ -122,7 +122,7 @@ var chardata = {
 			items = ['chest_base_metal', 'legs_base_metal', 'shield', ['sword', 'mace', 'battleaxe', 'club', 'spear']]
 		},
 		2 : {
-			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 4},
+			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 4, physics = 60, wits = 60},
 			classes1 = ['fighter', 'dragonknight'],
 			classes2 = ['knight', 'paladin'],
 			optional_classes_amount = 1,
@@ -130,7 +130,7 @@ var chardata = {
 			items = ['chest_base_metal', 'legs_base_metal', 'shield', ['sword', 'mace', 'battleaxe', 'club', 'spear']]
 		},
 		3 : {
-			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5},
+			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['fighter', 'dragonknight'],
 			classes2 = [['knight', 'deathknight'], ['paladin','templar']],
 			optional_classes_amount = 1,
@@ -138,7 +138,7 @@ var chardata = {
 			items = [['chest_base_metal', 'chest_adv_metal'], ['legs_base_metal', 'legs_adv_metal'], 'shield', ['sword', 'mace', 'battleaxe', 'swordadv', 'spearadv', 'maceadv', 'battleaxeadv', 'club', 'spear']]
 		},
 		4 : {
-			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5},
+			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['fighter', 'dragonknight', 'rogue', 'archer'],
 			classes2 = [['knight', 'deathknight'], ['paladin','templar']],
 			optional_classes_amount = 1,
@@ -151,7 +151,7 @@ var chardata = {
 		masteries = ['warfare', 'protection', 'leadership'],
 		race = 'Seraph',
 		1 : {
-			stats = {physics_factor = 3, wits_factor = 3, growth_factor = 3},
+			stats = {physics_factor = 3, wits_factor = 3, growth_factor = 3, physics = 20, wits = 20},
 			classes1 = ['fighter', 'valkyrie'],
 			classes2 = [],
 			optional_classes_amount = 0,
@@ -159,7 +159,7 @@ var chardata = {
 			items = ['chest_base_metal', 'legs_base_metal', 'shield', ['sword', 'mace', 'battleaxe', 'club', 'spear']]
 		},
 		2 : {
-			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 4},
+			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 4, physics = 60, wits = 60},
 			classes1 = ['fighter', 'valkyrie'],
 			classes2 = ['knight', 'paladin'],
 			optional_classes_amount = 1,
@@ -167,7 +167,7 @@ var chardata = {
 			items = ['chest_base_metal', 'legs_base_metal', 'shield', ['sword', 'mace', 'battleaxe', 'club', 'spear']]
 		},
 		3 : {
-			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5},
+			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['fighter', 'valkyrie'],
 			classes2 = [['knight', 'deathknight'], ['paladin','templar']],
 			optional_classes_amount = 1,
@@ -175,7 +175,7 @@ var chardata = {
 			items = [['chest_base_metal', 'chest_adv_metal'], ['legs_base_metal', 'legs_adv_metal'], 'shield', ['sword', 'mace', 'battleaxe', 'swordadv', 'spearadv', 'maceadv', 'battleaxeadv', 'club', 'spear']]
 		},
 		4 : {
-			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5},
+			stats = {physics_factor = 5, wits_factor = 3, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['fighter', 'valkyrie', 'rogue', 'archer'],
 			classes2 = [['knight', 'deathknight'], ['paladin','templar']],
 			optional_classes_amount = 1,
@@ -187,7 +187,7 @@ var chardata = {
 		name = "rogue",
 		masteries = ['warfare', 'stealth', 'marksmanship'],
 		1 : {
-			stats = {physics_factor = 3, wits_factor = 3, growth_factor = 3},
+			stats = {physics_factor = 3, wits_factor = 3, growth_factor = 3, physics = 20, wits = 20},
 			classes1 = ['rogue'],
 			classes2 = [],
 			optional_classes_amount = 0,
@@ -195,7 +195,7 @@ var chardata = {
 			items = ['chest_base_leather', 'legs_base_leather', ['sword', 'dagger']]
 		},
 		2 : {
-			stats = {physics_factor = 4, wits_factor = 4, growth_factor = 4},
+			stats = {physics_factor = 4, wits_factor = 4, growth_factor = 4, physics = 60, wits = 60},
 			classes1 = ['rogue'],
 			classes2 = ['assassin', 'ninja'],
 			optional_classes_amount = 1,
@@ -203,7 +203,7 @@ var chardata = {
 			items = ['chest_base_leather', 'legs_base_leather', ['sword', 'dagger']]
 		},
 		3 : {
-			stats = {physics_factor = 4, wits_factor = 4, growth_factor = 5},
+			stats = {physics_factor = 4, wits_factor = 4, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['rogue', 'assassin', 'ninja'],
 			classes2 = [],
 			optional_classes_amount = 0,
@@ -211,7 +211,7 @@ var chardata = {
 			items = [['chest_base_leather', 'chest_adv_leather'], ['legs_base_leather', 'legs_adv_leather'], ['sword', 'dagger', 'swordadv']]
 		},
 		4 : {
-			stats = {physics_factor = 4, wits_factor = 4, growth_factor = 5},
+			stats = {physics_factor = 4, wits_factor = 4, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['rogue', 'assassin', 'ninja'],
 			classes2 = [],
 			optional_classes_amount = 0,
@@ -223,7 +223,7 @@ var chardata = {
 		name = "archer",
 		masteries = ['warfare', 'stealth', 'marksmanship'],
 		1 : {
-			stats = {physics_factor = 3, wits_factor = 3, growth_factor = 3},
+			stats = {physics_factor = 3, wits_factor = 3, growth_factor = 3, physics = 20, wits = 20},
 			classes1 = ['archer'],
 			classes2 = [],
 			optional_classes_amount = 0,
@@ -231,7 +231,7 @@ var chardata = {
 			items = ['chest_base_leather', 'legs_base_leather', ['bow', 'crossbow']]
 		},
 		2 : {
-			stats = {physics_factor = 4, wits_factor = 4, growth_factor = 4},
+			stats = {physics_factor = 4, wits_factor = 4, growth_factor = 4, physics = 60, wits = 60},
 			classes1 = ['archer'],
 			classes2 = ['sniper', 'ranger'],
 			optional_classes_amount = 1,
@@ -239,7 +239,7 @@ var chardata = {
 			items = ['chest_base_leather', 'legs_base_leather', ['bow', 'crossbow']]
 		},
 		3 : {
-			stats = {physics_factor = 4, wits_factor = 4, growth_factor = 5},
+			stats = {physics_factor = 4, wits_factor = 4, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['archer', 'sniper', 'ranger'],
 			classes2 = [],
 			optional_classes_amount = 0,
@@ -247,7 +247,7 @@ var chardata = {
 			items = [['chest_base_leather', 'chest_adv_leather'], ['legs_base_leather', 'legs_adv_leather'], ['bow', 'bowadv', 'crossbow', 'crossbowadv']]
 		},
 		4 : {
-			stats = {physics_factor = 4, wits_factor = 4, growth_factor = 5},
+			stats = {physics_factor = 4, wits_factor = 4, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['archer', 'sniper', 'ranger'],
 			classes2 = [],
 			optional_classes_amount = 0,
@@ -259,7 +259,7 @@ var chardata = {
 		name = "support",
 		masteries = ['light', 'water', 'leadership'],
 		1 : {
-			stats = {physics_factor = 3, wits_factor = 3, growth_factor = 3},
+			stats = {physics_factor = 3, wits_factor = 3, growth_factor = 3, physics = 20, wits = 20},
 			classes1 = ['acolyte'],
 			classes2 = ['priest', 'monk'],
 			optional_classes_amount = 1,
@@ -267,7 +267,7 @@ var chardata = {
 			items = ['chest_base_cloth', 'legs_base_cloth', 'staff' ]
 		},
 		2 : {
-			stats = {physics_factor = 3, wits_factor = 4, charm_factor = 4, growth_factor = 4},
+			stats = {physics_factor = 3, wits_factor = 4, charm_factor = 4, growth_factor = 4, physics = 60, wits = 60},
 			classes1 = ['acolyte', 'priest'],
 			classes2 = ['monk', 'bishop', 'shaman', 'bard'],
 			optional_classes_amount = 2,
@@ -275,7 +275,7 @@ var chardata = {
 			items = ['chest_base_cloth', 'legs_base_cloth', 'staff']
 		},
 		3 : {
-			stats = {physics_factor = 3, wits_factor = 4, charm_factor = 4, growth_factor = 5},
+			stats = {physics_factor = 3, wits_factor = 4, charm_factor = 4, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['acolyte', 'priest','monk'],
 			classes2 = ['shaman', 'bard', 'bishop'],
 			optional_classes_amount = 2,
@@ -283,7 +283,7 @@ var chardata = {
 			items = [['chest_base_cloth', 'chest_adv_cloth'], ['legs_base_cloth', 'legs_adv_cloth'], ['staff', 'staffadv']]
 		},
 		4 : {
-			stats = {physics_factor = 3, wits_factor = 4, charm_factor = 4, growth_factor = 5},
+			stats = {physics_factor = 3, wits_factor = 4, charm_factor = 4, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['acolyte', 'priest', 'bishop', 'monk', 'shaman', 'bard'],
 			classes2 = [],
 			optional_classes_amount = 0,
@@ -295,7 +295,7 @@ var chardata = {
 		name = "caster_bloodmage",
 		masteries = ['fire', 'water', 'earth', 'air', 'dark', 'mind'], #adjust properly
 		1 : {
-			stats = {physics_factor = 3, wits_factor = 3, magic_factor = 2, growth_factor = 3},
+			stats = {physics_factor = 3, wits_factor = 3, magic_factor = 2, growth_factor = 3, physics = 20, wits = 20},
 			classes1 = [],
 			classes2 = ['apprentice', 'caster', 'scholar'], #i can't add all proper combinations for caster classes into data - so they are simplified A LOT. a proper data is about 10 times larger
 			optional_classes_amount = 2,
@@ -303,7 +303,7 @@ var chardata = {
 			items = ['chest_base_cloth', 'legs_base_cloth', 'staff' ]
 		},
 		2 : {
-			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 3, charm_factor = 4, growth_factor = 4},
+			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 3, charm_factor = 4, growth_factor = 4, physics = 60, wits = 60},
 			classes1 = ['caster'],
 			classes2 = [['apprentice', 'scholar', 'archmage'], ['apprentice', 'shaman'], ['scholar', 'shaman']],
 			optional_classes_amount = 1,
@@ -311,7 +311,7 @@ var chardata = {
 			items = ['chest_base_cloth', 'legs_base_cloth', 'staff']
 		},
 		3 : {
-			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 4, charm_factor = 4, growth_factor = 5},
+			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 4, charm_factor = 4, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['caster','bloodmage'],
 			classes2 = ['apprentice', 'scholar', 'archmage', 'shaman'],
 			optional_classes_amount = 3,
@@ -319,7 +319,7 @@ var chardata = {
 			items = [['chest_base_cloth', 'chest_adv_cloth'], ['legs_base_cloth', 'legs_adv_cloth'], ['staff', 'staffadv']]
 		},
 		4 : {
-			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 4, charm_factor = 4, growth_factor = 5},
+			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 4, charm_factor = 4, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['caster','bloodmage', 'apprentice', 'scholar', 'archmage', 'shaman'],
 			classes2 = [],
 			optional_classes_amount = 0,
@@ -332,7 +332,7 @@ var chardata = {
 		sex = 'female',
 		masteries = ['fire', 'water', 'earth', 'air', 'dark', 'mind'], #adjust properly
 		1 : {
-			stats = {physics_factor = 3, wits_factor = 3, magic_factor = 2, growth_factor = 3},
+			stats = {physics_factor = 3, wits_factor = 3, magic_factor = 2, growth_factor = 3, physics = 20, wits = 20},
 			classes1 = ['apprentice', 'witch'],
 			classes2 = ['caster', 'scholar'], 
 			optional_classes_amount = 1,
@@ -340,7 +340,7 @@ var chardata = {
 			items = ['chest_base_cloth', 'legs_base_cloth', 'staff' ]
 		},
 		2 : {
-			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 3, charm_factor = 4, growth_factor = 4},
+			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 3, charm_factor = 4, growth_factor = 4, physics = 60, wits = 60},
 			classes1 = ['apprentice', 'witch', 'caster'],
 			classes2 = ['scholar', 'shaman'],
 			optional_classes_amount = 1,
@@ -348,7 +348,7 @@ var chardata = {
 			items = ['chest_base_cloth', 'legs_base_cloth', 'staff']
 		},
 		3 : {
-			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 4, charm_factor = 4, growth_factor = 5},
+			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 4, charm_factor = 4, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['apprentice', 'witch', 'caster'],
 			classes2 = [['scholar', 'archmage'], ['scholar', 'shaman']],
 			optional_classes_amount = 1,
@@ -356,7 +356,7 @@ var chardata = {
 			items = [['chest_base_cloth', 'chest_adv_cloth'], ['legs_base_cloth', 'legs_adv_cloth'], ['staff', 'staffadv']]
 		},
 		4 : {
-			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 4, charm_factor = 4, growth_factor = 5},
+			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 4, charm_factor = 4, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['apprentice', 'witch', 'caster', 'scholar', 'archmage', 'shaman'],
 			classes2 = ['bloodmage', 'necromancer'],
 			optional_classes_amount = 1,
@@ -369,7 +369,7 @@ var chardata = {
 		race = ['Elf', 'Dryad', 'Fairy', 'DarkElf', 'TribalElf'],
 		masteries = ['fire', 'water', 'earth', 'air', 'dark', 'mind'], #adjust properly
 		1 : {
-			stats = {physics_factor = 3, wits_factor = 3, magic_factor = 2, growth_factor = 3},
+			stats = {physics_factor = 3, wits_factor = 3, magic_factor = 2, growth_factor = 3, physics = 20, wits = 20},
 			classes1 = ['druid'],
 			classes2 = ['scholar', 'apprentice'], 
 			optional_classes_amount = 1,
@@ -377,7 +377,7 @@ var chardata = {
 			items = ['chest_base_cloth', 'legs_base_cloth', 'staff' ]
 		},
 		2 : {
-			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 3, charm_factor = 4, growth_factor = 4},
+			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 3, charm_factor = 4, growth_factor = 4, physics = 60, wits = 60},
 			classes1 = ['druid', 'caster'],
 			classes2 = ['scholar', 'shaman', 'apprentice'],
 			optional_classes_amount = 2,
@@ -385,7 +385,7 @@ var chardata = {
 			items = ['chest_base_cloth', 'legs_base_cloth', 'staff']
 		},
 		3 : {
-			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 4, charm_factor = 4, growth_factor = 5},
+			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 4, charm_factor = 4, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['druid', 'caster'],
 			classes2 = [['scholar', 'archmage', 'apprentice'], ['scholar', 'shaman'], ['apprentice', 'shaman']],
 			optional_classes_amount = 1,
@@ -393,7 +393,7 @@ var chardata = {
 			items = [['chest_base_cloth', 'chest_adv_cloth'], ['legs_base_cloth', 'legs_adv_cloth'], ['staff', 'staffadv']]
 		},
 		4 : {
-			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 4, charm_factor = 4, growth_factor = 5},
+			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 4, charm_factor = 4, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['apprentice', 'druid', 'caster', 'scholar', 'archmage', 'shaman'],
 			classes2 = ['bloodmage', 'necromancer'],
 			optional_classes_amount = 1,
@@ -406,7 +406,7 @@ var chardata = {
 		sex = 'male',
 		masteries = ['fire', 'water', 'earth', 'air', 'dark', 'mind'], #adjust properly
 		1 : {
-			stats = {physics_factor = 3, wits_factor = 3, magic_factor = 2, growth_factor = 3},
+			stats = {physics_factor = 3, wits_factor = 3, magic_factor = 2, growth_factor = 3, physics = 20, wits = 20},
 			classes1 = [],
 			classes2 = ['apprentice', 'caster', 'scholar'], #i can't add all proper combinations for caster classes into data - so they are simplified A LOT. a proper data is about 10 times larger
 			optional_classes_amount = 2,
@@ -414,7 +414,7 @@ var chardata = {
 			items = ['chest_base_cloth', 'legs_base_cloth', 'staff' ]
 		},
 		2 : {
-			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 3, charm_factor = 4, growth_factor = 4},
+			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 3, charm_factor = 4, growth_factor = 4, physics = 60, wits = 60},
 			classes1 = ['caster'],
 			classes2 = [['apprentice', 'scholar', 'archmage'], ['apprentice', 'shaman'], ['scholar', 'shaman']],
 			optional_classes_amount = 1,
@@ -422,7 +422,7 @@ var chardata = {
 			items = ['chest_base_cloth', 'legs_base_cloth', 'staff']
 		},
 		3 : {
-			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 4, charm_factor = 4, growth_factor = 5},
+			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 4, charm_factor = 4, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['caster','warlock'],
 			classes2 = ['apprentice', 'scholar', 'archmage', 'shaman'],
 			optional_classes_amount = 3,
@@ -430,7 +430,7 @@ var chardata = {
 			items = [['chest_base_cloth', 'chest_adv_cloth'], ['legs_base_cloth', 'legs_adv_cloth'], ['staff', 'staffadv']]
 		},
 		4 : {
-			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 4, charm_factor = 4, growth_factor = 5},
+			stats = {physics_factor = 3, wits_factor = 4, magic_factor = 4, charm_factor = 4, growth_factor = 5, physics = 100, wits = 100},
 			classes1 = ['caster','warlock', 'apprentice', 'scholar', 'archmage', 'shaman'],
 			classes2 = [],
 			optional_classes_amount = 0,
