@@ -117,6 +117,7 @@ var effect_table = {
 			icon = "res://assets/images/iconstraits/lotus.png",
 			description = "TRAITEFFECTLOVERS",
 			limit = 1,
+			mansion_only = true,
 			t_name = 'b_lovers',
 			tags = ['show_in_traits']
 		}
@@ -134,6 +135,7 @@ var effect_table = {
 			icon = "res://assets/images/iconstraits/lotus.png",
 			description = "TRAITEFFECTFRIENDS",
 			limit = 1,
+			mansion_only = true,
 			t_name = 'b_friends',
 			tags = ['show_in_traits']
 		}
@@ -145,12 +147,13 @@ var effect_table = {
 		descript = '',
 		conditions = [{code = 'has_relationship',  value = 'rivals', check = true}],
 		tags = ['recheck_tick'],
-		atomic = [{type = 'stat_add', stat = 'productivity', value = 0.05}],
+		atomic = [{type = 'stat_add_p', stat = 'productivity', value = 0.05}],
 		buffs = [ #fix
 			{
 			icon = "res://assets/images/iconstraits/lotus.png",
 			description = "TRAITEFFECTRIVAL",
 			limit = 1,
+			mansion_only = true,
 			t_name = 'b_rival',
 			tags = ['show_in_traits']
 		}
@@ -184,7 +187,7 @@ var effect_table = {
 		conditions = [{code = 'stat', stat = 'personality', operant = 'eq', value = 'bold'}],
 		tags = ['recheck_stats'],
 		atomic = [
-			{type = 'stat_add', stat = 'productivity', value = 0.05}
+			{type = 'stat_add_p', stat = 'productivity', value = 0.05}
 		],
 		buffs = [],
 		sub_effects = [],
@@ -311,7 +314,7 @@ var effect_table = {
 		type = 'static',
 		atomic = [
 			{type = 'stat_add', stat = 'exp_gain_mod', value = 0.05},
-			{type = 'stat_add', stat = 'productivity', value = 0.05},
+			{type = 'stat_add_p', stat = 'productivity', value = 0.05},
 		],
 		buffs = [],
 		sub_effects = [rebuild_simple_dot(['loyalty'], [0.5], variables.TR_DAY),],
