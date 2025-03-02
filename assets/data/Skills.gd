@@ -361,9 +361,54 @@ var Skilllist = {
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1
 	},
+	entangle_sa = {
+		code = 'entangle_sa',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/AcidBomb.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['ads'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_s_disarm3', duration = 1})], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'enemy',
+		target_number = 'single',#?
+		target_range = 'any',
+		damage_type = 'earth',
+		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}],#? 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
+		value = 1
+	},
+		disarm_enemy_sq = {
+		code = 'disarm_enemy_sq',
+		descript = '',
+		icon = "res://assets/images/iconsskills/skill_disarm.png",
+		type = 'combat', 
+		ability_type = 'spell',
+		tags = ['damage', 'ads'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_s_disarm3', duration = 1})], 
+		cost = {mp = 4},
+		charges = 0,
+		combatcooldown = 2,
+		cooldown = 0,
+		catalysts = {},
+		target = 'enemy',
+		target_number = 'single',
+		target_range = 'melee',
+		damage_type = 'weapon',
+		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}],#? 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
+		value = 0.5
+	},
 	poison_spray = {
 		code = 'poison_spray',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 
@@ -387,7 +432,6 @@ var Skilllist = {
 	},
 	poison_bite = {
 		code = 'poison_bite',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 
@@ -409,9 +453,31 @@ var Skilllist = {
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.5,
 	},
-	spider_aoe = {
+		poison_bite_s = {
+		code = 'poison_bite_s',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/Attack.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['damage','ads'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_s_poison_new', push_characters = true, duration = 5})],
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'enemy',
+		target_number = 'single',
+		target_range = 'melee',
+		damage_type = 'dark',
+		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
+		value = 1.2,
+	},
+		spider_aoe = {
 		code = 'spider_aoe',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 
@@ -433,9 +499,35 @@ var Skilllist = {
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.2, 
 	},
+		sticky_web = {
+		code = 'sticky_web',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/Attack.png"),
+		type = 'combat', 
+		ability_type = 'spell',
+		tags = ['damage','ads'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template_globals({effect = 'e_s_ensnare'})],
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		repeat = 2,
+		keep_target = variables.TARGET_NOKEEP,
+		next_target = variables.NT_ANY,
+		catalysts = {},
+		target = 'enemy',
+		target_number = 'x_random',
+		number_rnd_targets = 3,
+		target_range = 'any',
+		damage_type = 'earth',
+		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
+		value = 0.4,
+	},
 	spider_ranged = {
 		code = 'spider_ranged',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 
@@ -1070,7 +1162,6 @@ var training_categories = {
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
 			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
-			{type = 'stat', stat = 'personality', operant = 'eq', check = 'shy', effect = {loyalty_mul = 1.15}},
 		]
 	},
 	physical = {
@@ -1086,7 +1177,6 @@ var training_categories = {
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
 			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
-			{type = 'stat', stat = 'personality', operant = 'eq', check = 'shy', effect = {loyalty_mul = 1.15}},
 			]
 	},
 	humiliation = {
@@ -1101,7 +1191,6 @@ var training_categories = {
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
 			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
-			{type = 'stat', stat = 'personality', operant = 'eq', check = 'shy', effect = {loyalty_mul = 1.15}},
 		]
 	},
 	social = {
@@ -1116,7 +1205,6 @@ var training_categories = {
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
 			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
-			{type = 'stat', stat = 'personality', operant = 'eq', check = 'shy', effect = {loyalty_mul = 1.15}},
 			]
 	},
 	sexual = {
@@ -1133,7 +1221,6 @@ var training_categories = {
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
 			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
-			{type = 'stat', stat = 'personality', operant = 'eq', check = 'shy', effect = {loyalty_mul = 1.15}},
 			]
 	},
 	magic = {
@@ -1147,7 +1234,6 @@ var training_categories = {
 			{type = 'trainer_class', check = 'trainer', result = ['success', 'crit_success'], effect = {loyalty_add = 3}},
 			{type = 'trainer_status', check = 'mentor', result = ['success', 'crit_success'], effect = {spirit_add = 3}},
 			{type = 'stat', stat = 'tame_factor', operant = 'gte', check = 6, effect = {spirit_mul = 0.5}},
-			{type = 'stat', stat = 'personality', operant = 'eq', check = 'shy', effect = {loyalty_mul = 1.15}},
 			]
 	},
 }
@@ -1381,8 +1467,6 @@ func get_template_combat(id, caster):
 	tres.descript = tr(tres.descript)
 	if tres.cost.has('mp'):
 		tres.cost.mp = caster.get_manacost_for_skill(tres)
-	if tres.has('combatcooldown') and tres.combatcooldown > 1 and caster.get_stat('personality') == 'serious':
-		tres.combatcooldown -= 1
 	return tres
 
 
