@@ -1,8 +1,11 @@
 0.10.3
 Added gallery section for sprites and monochrome events
+Updated dwarven capital art to be more in line with other settlement backgrounds in the game
 Added new class: Pyromancer
 Revamped multiple balance aspects related to combat, enemies and some masteries. Combat gets harder with progress now, bosses are more dangerous. Also added new dungeon, enemies and mechanics
 Rebalanced some materials and their unlock progress is more tied towards overall story progress
+Revamped Personality bonuses, added minor non-combat bonuses
+Added some basic relationship system between characters
 Fixed some minor event and consistency issues
 Added an option to avoid some previously unavoidable sex scenes
 0.10.2c

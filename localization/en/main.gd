@@ -1364,7 +1364,7 @@ Silenced: Can't use Spell type abilities.""",
 	SKILLVEIL = "Shadow Veil",
 	SKILLVEILDESCRIPT = "Buff ally column for 5 turns: Light and Dark resists are increased by 30, MDEF is increased based on caster's MATK.",
 	SKILLSKILL_VOID = "Void",
-	SKILLSKILL_VOIDDESCRIPT = "Deals 200% of MATK as {color=yellow|Dark} damage to all enemies. Enemies hit receive randomly Silence, Blind or Disarm. ",
+	SKILLSKILL_VOIDDESCRIPT = "Deals 150% of MATK as {color=yellow|Dark} damage to all enemies. Enemies hit receive randomly Silence, Blind or Disarm. ",
 	SKILLMINDSHATTER = "Mind Shatter",
 	SKILLMINDSHATTERDESCRIPT = "Deals 160% of MATK as {color=yellow|Mind} damage and Stuns target for 4 turns.",
 	SKILLLAST_STAND = "Last Stand",
@@ -1386,7 +1386,7 @@ Silenced: Can't use Spell type abilities.""",
 	SKILLINVIGORATE = "Invigorate",
 	SKILLINVIGORATEDESCRIPT = "Restore 1 of each Challenge Charge for selected ally.",
 	SKILLHYPERBOREA = "Winds of Hyperborea",
-	SKILLHYPERBOREADESCRIPT = "Deals 300% of MATK as {color=yellow|Water} damage to all enemies. Applies Clarity to all allies for 3 turns.",
+	SKILLHYPERBOREADESCRIPT = "Deals 210% of MATK as {color=yellow|Water} damage to all enemies. Applies Clarity to all allies for 3 turns.",
 	SKILLPOISON_VAPORS = "Poison Vapors",
 	SKILLPOISON_VAPORSDESCRIPT = "Deals 25% of MATK as {color=yellow|Water} damage to enemy column. Applies Poison for 3 turns.",
 	SKILLMETEOR = "Meteor",
@@ -1940,13 +1940,13 @@ Consent represents character's general acceptance of various sexual actions, but
 	INFORULES_CONDS = "Conditions and rules can be toggled on character, affecting some of their stats and behavior.",
 	INFOPERSONALITY = "Character's personality will affect thier banter and provide access to certain traits and bonuses. Personality will be affected by social skills used on character.",
 	INFOPERSONALITYBOLD = """Bold
-+15% Skill Damage""",
+Incoming negative effects last 1 turn less\n+5% Productivity""",
 	INFOPERSONALITYKIND = """Kind
-+50% Healing Spell Efficiency""",
+Outcoming positive buffs last 1 turn more\n+10% Service""",
 	INFOPERSONALITYSERIOUS = """Serious
-+20% Damage Reduction""",
+Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax""",
 	INFOPERSONALITYSHY = """Shy
-+15% MATK""",
+Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)""",
 	INFOSLAVE_CLASS = "Character type will define its options and behavior. Slaves can be forced into sexual services without consent and have higher tolerance for lack of consent in sex. Subordinates become loyal faster but can't be sold or given away.",
 	INFOCONSENT = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. Consent will affect prostitution related jobs.",
 	INFOCONSENTMASTER = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. {color=green|[Master] has no Consent requirements for any actions.}",
@@ -2671,6 +2671,9 @@ Requires consent \"Willing\" or above.""",
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Virginity}[/center]
 As [name] has a observable virginity, this makes [him] more desirable for certain individuals. 
 {color=yellow|Sell price is increased by 25%%}""",
+	TRAITEFFECTRIVAL = """Rival Present: +5% Productivity""",
+	TRAITEFFECTFRIEND = """Friend Present: +10% Health Regeneration""",
+	TRAITEFFECTLOVER = """Lover Present: +10% Mana Regeneration""",
 	TRAITEFFECTRARESTURDY = """Rare: Sturdy
 Increased Health and Armor Penetration""",
 	TRAITEFFECTRARENIMBLE = """Rare: Nimble

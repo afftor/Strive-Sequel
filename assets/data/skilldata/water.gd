@@ -220,7 +220,7 @@ var skills = {
 		damage_type = 'water',
 		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
 		sound = [],
-		value = 3,
+		value = 2.1,
 		follow_up = 'hyperborea_1' 
 	},
 	hyperborea_1 = {
