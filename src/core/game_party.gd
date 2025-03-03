@@ -201,6 +201,12 @@ func has_love_status(char1):
 
 func change_relationship_status(char1, char2, new_status):
 	_get_data(char1, char2).status = new_status
+	if new_status in ['friends', 'rivals']:
+		var ch1 = characters[char1]
+		var ch2 = characters[char2]
+		globals.text_log_add('char', "%s ans %s has become %s" % [ch1.get_short_name(), ch2.get_short_name(), new_status])
+
+
 
 func find_all_relationship(char1):
 	var array = []
