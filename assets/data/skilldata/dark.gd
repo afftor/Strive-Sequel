@@ -149,7 +149,7 @@ var skills = {
 		damage_type = 'dark',
 		aipatterns = ['attack'],
 		allowedtargets = ['enemy'],
-		value = 2.0,
+		value = 1.5,
 		random_factor_p = 0.1,
 		sfx = [{code = 'weapon', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},

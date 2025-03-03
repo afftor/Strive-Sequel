@@ -1080,8 +1080,8 @@ var dungeons = {
 		background_pool = ['spider_lair1', 'spider_lair2', 'spider_lair3', 'spider_lair4'],
 		custom_background = 'combat_forest',
 		bgm = "dungeon",
-		enemyarray = [['spiders', 1]],
-		final_enemy = [['grove_easy_boss',1]], final_enemy_type = 'monster',
+		enemyarray = [['spiders2', 1],['spiders3', 0.8],['spiders_many', 0.4],['spiders_many2', 0.5]],
+		final_enemy = [['spiders_alfa_boss',1], ['spiders_queen_boss',1]], final_enemy_type = 'monster',
 		
 		
 		event_data = {

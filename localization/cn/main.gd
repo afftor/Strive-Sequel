@@ -2381,6 +2381,9 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	
 	
 	TRAITEFFECTVIRGIN = "[center]{color=yellow|Virginity}[/center]\nAs [name] has a observable virginity, this makes [him] more desirable for certain tasks and individuals. \n{color=yellow|Value is increased by 25%%}",
+	TRAITEFFECTRIVAL = """Rival Present: +5% Productivity""", # MISSING TRANSLATION
+	TRAITEFFECTFRIEND = """Friend Present: +10% Health Regeneration""", # MISSING TRANSLATION
+	TRAITEFFECTLOVER = """Lover Present: +10% Mana Regeneration""", # MISSING TRANSLATION
 	TRAITEFFECTRARESTURDY = "Rare: Sturdy\nIncreased Health and Armor Penetration",
 	TRAITEFFECTRARENIMBLE = "Rare: Nimble\nIncreased Evasion and Speed",
 	TRAITEFFECTRARESTRONG = "Rare: Strong\nIncreased Damage and Maximum Health",
@@ -3581,6 +3584,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	ENEMYELDER_GRYPHON_BOSS = "老鹰头狮",
 	ENEMYWOLF = "狼",
 	ENEMYRAT = "老鼠",
+	ENEMYSPIDER_WEAK = """Crawler""", # MISSING TRANSLATION
 	ENEMYSPIDER = "蜘蛛",
 	ENEMYSPIDER_RANGED = """Web Spitter""", # MISSING TRANSLATION
 	ENEMYSPIDER_AOE = """Venomous Sentry""", # MISSING TRANSLATION
@@ -4788,6 +4792,7 @@ You explain yourself being the new landowner to her.""", # MISSING TRANSLATION
 
 	ARMORENC = "外壳",
 	WEAPONENC = "外壳",
+	WEAPONELEMENTBASE = """Element""", # MISSING TRANSLATION
 
 	ITEMLATEX_SUIT = "乳胶套装",
 	ITEMLATEX_SUITDESCRIPT = "紧身衣凸显身体曲线.",
@@ -4885,7 +4890,14 @@ You explain yourself being the new landowner to her.""", # MISSING TRANSLATION
 	SENDCHARTOQUESTCONFIRM = "是否将此角色应用于任务?",
 
 	SKILLPOISON_BITE = "毒咬",
+	SKILLPOISON_BITE_S = """Poison Bite""", # MISSING TRANSLATION
+	SKILLENTANGLE_SA = """Entangle""", # MISSING TRANSLATION
 	SKILLENTANGLE_ENEMY = "纠缠",
+	SKILLDISARM_ENEMY_SQ = """Disarm Enemy""", # MISSING TRANSLATION
+	SKILLSPIDER_AOE = """Spraying Poison""", # MISSING TRANSLATION
+	SKILLSPIDER_RANGED = """Web Spit""", # MISSING TRANSLATION
+	SKILLSTICKY_WEB = """Sticky Web""", # MISSING TRANSLATION
+	SKILLPOISON_SPRAY = """Poison Spray""", # MISSING TRANSLATION
 	SKILLSHRED = "切碎",
 
 
