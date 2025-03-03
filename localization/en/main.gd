@@ -8782,7 +8782,7 @@ Savra passes you a small parchment with the ingredients.
 	LEON_ENCOUNTER_2_OPTION_2 = "Is there anything I can help with?",
 	LEON_ENCOUNTER_3 = "— We are going to hunt the Stag and kill it, like we always did in the past. It's a dangerous activity, but that's what we do. I can't ask for your help, but this issue must be taken care of.",
 	LEON_ENCOUNTER_3_OPTION_1 = "What are you planning?",
-	LEON_ENCOUNTER_3_OPTION_2 = "I'll let you a hand.",
+	LEON_ENCOUNTER_3_OPTION_2 = "I'll lend you a hand.",
 	LEON_ENCOUNTER_3_OPTION_3 = "This sounds like it could be fun.",
 	LEON_ENCOUNTER_4_1 = "— We'll set up a hunting party with the most experienced hunters and warriors to track and defeat the Stag. It's not my first time hunting it, though it did slow us down. It's painful to admit I was taken by its curse.",
 	LEON_ENCOUNTER_4_2 = """— It'll be an honor to have your help. You must understand that this is not a normal skirmish or hunt. The White Stag is a beast unlike any other. Not only is it able to induce madness by its mere presence, it possesses other fearsome powers. You can ask Savra about them, she could explain it better than me.
@@ -13871,7 +13871,7 @@ She pauses, turns and points in the direction of the palace.
 	DTAVERN_JEAN_REPLY_PLAN = "— Straight to business then.",
 	DTAVERN_JEAN_THING = """
 
-— I've been tracking down a certain thing across the lands and I've information it is currently stored in the Dwarven Palace Treasury. I have a way inside the treasury, but I need a... bodyguard. In case things get complicated.""",
+— I've been tracking down a certain thing across the lands and I've got information it is currently stored in the Dwarven Palace Treasury. I have a way inside the treasury, but I need a... bodyguard. In case things get complicated.""",
 	DTAVERN_JEAN_OPT_TRUST = "Aren't you too trusting of a person you've just met?",
 	DTAVERN_JEAN_OPT_ALONE = "Or you could just tell me how to get in and I'll get what you want on my own.",
 	DTAVERN_JEAN_OPT_NODEAL = "No deal. I don't know you, I can't trust you.",

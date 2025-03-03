@@ -3864,7 +3864,7 @@ var recipes = {
 	
 	divine_symbol = {
 		code = 'divine_symbol',
-		materials = {mithril = 5},
+		materials = {steel = 10},
 		items = {},
 		unlockreqs = [{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage2'},
 		{type = 'has_material', operant = 'lt', value = 1, material = 'divine_symbol'}],
