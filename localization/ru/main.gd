@@ -4168,6 +4168,7 @@ Fear grows from punishing actions, but when pushed too high will make partner br
 	ENEMYELDER_GRYPHON_BOSS = """Старший грифон""",
 	ENEMYWOLF = """Волк""",
 	ENEMYRAT = """Крыса""",
+	ENEMYSPIDER_WEAK = """Crawler""", # MISSING TRANSLATION
 	ENEMYSPIDER = """Паук""",
 	ENEMYSPIDER_RANGED = """Web Spitter""", # MISSING TRANSLATION
 	ENEMYSPIDER_AOE = """Venomous Sentry""", # MISSING TRANSLATION
@@ -5573,6 +5574,7 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 
 	ARMORENC = """Инкрустация""",
 	WEAPONENC = """Инкрустация""",
+	WEAPONELEMENTBASE = """Element""", # MISSING TRANSLATION
 
 	ITEMLATEX_SUIT = """Латексный костюм""",
 	ITEMLATEX_SUITDESCRIPT = """Облегающая одежда, подчеркивающая изгибы тела""",

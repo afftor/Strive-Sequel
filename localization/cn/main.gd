@@ -3584,6 +3584,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	ENEMYELDER_GRYPHON_BOSS = "老鹰头狮",
 	ENEMYWOLF = "狼",
 	ENEMYRAT = "老鼠",
+	ENEMYSPIDER_WEAK = """Crawler""", # MISSING TRANSLATION
 	ENEMYSPIDER = "蜘蛛",
 	ENEMYSPIDER_RANGED = """Web Spitter""", # MISSING TRANSLATION
 	ENEMYSPIDER_AOE = """Venomous Sentry""", # MISSING TRANSLATION
@@ -4791,6 +4792,7 @@ You explain yourself being the new landowner to her.""", # MISSING TRANSLATION
 
 	ARMORENC = "外壳",
 	WEAPONENC = "外壳",
+	WEAPONELEMENTBASE = """Element""", # MISSING TRANSLATION
 
 	ITEMLATEX_SUIT = "乳胶套装",
 	ITEMLATEX_SUITDESCRIPT = "紧身衣凸显身体曲线.",

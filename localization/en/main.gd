@@ -2672,8 +2672,8 @@ Requires consent \"Willing\" or above.""",
 As [name] has a observable virginity, this makes [him] more desirable for certain individuals. 
 {color=yellow|Sell price is increased by 25%%}""",
 	TRAITEFFECTRIVAL = """Rival Present: +5% Productivity""",
-	TRAITEFFECTFRIEND = """Friend Present: +10% Health Regeneration""",
-	TRAITEFFECTLOVER = """Lover Present: +10% Mana Regeneration""",
+	TRAITEFFECTFRIENDS = """Friend Present: +10% Health Regeneration""",
+	TRAITEFFECTLOVERS = """Lover Present: +10% Mana Regeneration""",
 	TRAITEFFECTRARESTURDY = """Rare: Sturdy
 Increased Health and Armor Penetration""",
 	TRAITEFFECTRARENIMBLE = """Rare: Nimble
@@ -3898,6 +3898,7 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYELDER_GRYPHON_BOSS = "Elder Gryphon",
 	ENEMYWOLF = "Wolf",
 	ENEMYRAT = "Rat",
+	ENEMYSPIDER_WEAK = "Crawler",
 	ENEMYSPIDER = "Fanged Stalker",
 	ENEMYSPIDER_RANGED = "Web Spitter",
 	ENEMYSPIDER_AOE = "Venomous Sentry",

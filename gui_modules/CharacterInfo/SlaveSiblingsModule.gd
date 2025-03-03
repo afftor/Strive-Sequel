@@ -130,6 +130,7 @@ func update():
 	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.check_work_rule("luxury")
 
 	$work_rules/luxury.visible = !person.is_master()
+	$work_rules/relationship.visible = !person.is_master()
 	$work_rules/nudity.disabled = !person.has_status('sexservice') #or another
 	if person != null:
 		for i in $work_rules.get_children():
