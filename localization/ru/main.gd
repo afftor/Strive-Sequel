@@ -2813,6 +2813,9 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Девственность}[/center]
 Поскольку [name] обладает наблюдаемой девственностью, это делает [him] более желанным для определенных людей. 
 {color=yellow|Цена продажи увеличена на 25%%}""",
+	TRAITEFFECTRIVAL = """Rival Present: +5% Productivity""", # MISSING TRANSLATION
+	TRAITEFFECTFRIEND = """Friend Present: +10% Health Regeneration""", # MISSING TRANSLATION
+	TRAITEFFECTLOVER = """Lover Present: +10% Mana Regeneration""", # MISSING TRANSLATION
 	TRAITEFFECTRARESTURDY = """Особый: Твердый
 Увеличение здоровья и бронепробиваемости""",
 	TRAITEFFECTRARENIMBLE = """Особый: Ловкий
@@ -5668,7 +5671,14 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	SENDCHARTOQUESTCONFIRM = """Отправить этого персонажа на квест?""",
 
 	SKILLPOISON_BITE = """Ядовитый укус""",
+	SKILLPOISON_BITE_S = """Poison Bite""", # MISSING TRANSLATION
+	SKILLENTANGLE_SA = """Entangle""", # MISSING TRANSLATION
 	SKILLENTANGLE_ENEMY = """Опутать""",
+	SKILLDISARM_ENEMY_SQ = """Disarm Enemy""", # MISSING TRANSLATION
+	SKILLSPIDER_AOE = """Spraying Poison""", # MISSING TRANSLATION
+	SKILLSPIDER_RANGED = """Web Spit""", # MISSING TRANSLATION
+	SKILLSTICKY_WEB = """Sticky Web""", # MISSING TRANSLATION
+	SKILLPOISON_SPRAY = """Poison Spray""", # MISSING TRANSLATION
 	SKILLSHRED = """Измельчить""",
 
 

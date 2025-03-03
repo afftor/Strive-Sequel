@@ -179,7 +179,7 @@ var enemygroups = {
 	quest_lich_normal = {reqs = [], units = {lich_quest = [1,1], skeleton_shield_melee = [2,2], skeleton_archer_quest = [2,2]}},
 
 
-	ramont_boss_fight = {reqs = [], units = {guardian_golem = [2,2], ramont_boss = [1,1], bandit_assassin = [2,2]}},
+	ramont_boss_fight = {reqs = [], units = {guardian_golem = [2,2], ramont_boss = [1,1], bandit_assassin = [1,1]}},
 
 	mimic = {reqs = [], units = {mimic = [1,1]}},
 	
@@ -269,13 +269,13 @@ var enemies = {
 		code = 'bandit_assassin',
 		name = '',
 		descript = '',
-		hpmax = 120,
+		hpmax = 500,
 		armor = 10,
 		mdef = 5,
-		hitrate = 95,
+		hitrate = 130,
 		evasion = 0,
 		armorpenetration = 10,
-		atk = 30,
+		atk = 110,
 		matk = 10,
 		speed = 50,
 		resists = {},
@@ -544,13 +544,13 @@ var enemies = {
 		code = 'guardian_golem',
 		name = '',
 		descript = '',
-		hpmax = 350,
+		hpmax = 650,
 		armor = 45,
 		mdef = 0,
 		hitrate = 80,
 		evasion = 0,
 		armorpenetration = 0,
-		atk = 65,
+		atk = 90,
 		matk = 25,
 		speed = 30,
 		resists = {mind = -50, fire = 50},
@@ -569,7 +569,7 @@ var enemies = {
 		code = 'ballista',
 		name = '',
 		descript = '',
-		hpmax = 400,
+		hpmax = 500,
 		armor = 25,
 		mdef = 10,
 		hitrate = 90,
@@ -594,20 +594,20 @@ var enemies = {
 		code = 'bandit_mage',
 		name = '',
 		descript = '',
-		hpmax = 70,
+		hpmax = 350,
 		armor = 0,
-		mdef = 10,
+		mdef = 30,
 		hitrate = 85,
 		evasion = 0,
 		armorpenetration = 0,
 		atk = 10,
-		matk = 24,
+		matk = 65,
 		speed = 30,
 		resists = {},
 		race = 'humanoid',
 		loot = 'bandit_loot',
 		icon = "res://assets/images/enemies/bandit_mage.png", 
-		skills = ['firearr', 'mindblast'],
+		skills = ['firearr', 'mindblast','wind_blade'],
 		traits = [],
 		tags = ['human','bandit'], 
 		ai = [['ads', 45], ['aoe', 45], ['support', 10]], #add healing on self when hp < 50 with 75% chance
@@ -2167,7 +2167,7 @@ var loot_variants_data = {
 	],
 	medium_chest_map = [
 		{code = 'material', min = 4, max = 8, grade = 'location'},
-		{code = 'map', min = 1, max = 1, maps = ['map_bandit_fort','map_ancient_jungle','map_undead_crypt','map_fire_depths']}
+		{code = 'map', min = 1, max = 1, maps = ['map_bandit_fort','map_ancient_jungle','map_undead_crypt','map_fire_depths','map_spider_lair']}
 	],
 	easy_armory_weapon = [
 		{code = 'weapon', min = 1, max = 1, grade = ['easy'], material_grade = [['t1',10], ['t1', 3], ['t1',1]]},
@@ -2207,7 +2207,7 @@ var loot_variants_data = {
 		{code = 'defined', name = 'exp_scroll', min = 2, max = 4},
 		{code = 'defined', name = 'soul_stone', min = 0, max = 1},
 		{code = 'gold', min = 400, max = 600},
-		{code = 'map', min = 1, max = 1, maps = ['map_bandit_fort','map_ancient_jungle','map_undead_crypt','map_fire_depths']}
+		{code = 'map', min = 1, max = 1, maps = ['map_bandit_fort','map_ancient_jungle','map_undead_crypt','map_fire_depths','map_spider_lair']}
 	],
 	grove_wood_reward = [
 		{code = 'material_selected', 

@@ -476,7 +476,7 @@ func get_mat_bonuses(material, part):
 				endvalue = material.parts[part][k]*float(Items.itemlist[itemtemplate].basemods[k])
 			if Items.itemlist[itemtemplate].itemtype == 'armor':
 				endvalue = float(endvalue) / 2
-			if endvalue != 0:
+			if int(endvalue) != 0:
 				text += '\n' + statdata.statdata[k].name + ': ' + str(endvalue)
 		else:
 			for j in material.parts[part][k]:
@@ -560,7 +560,7 @@ func selectmaterial(material, part, cost):
 				endvalue = material.parts[part][i]*float(Items.itemlist[itemtemplate].basemods[i])
 			if Items.itemlist[itemtemplate].itemtype == 'armor':
 				endvalue = float(endvalue) / 2
-			if endvalue != 0:
+			if int(endvalue) != 0:
 				if  statdata.statdata[i].percent:
 					endvalue *= 100
 				text += '\n' + statdata.statdata[i].name + ': ' + str(endvalue)

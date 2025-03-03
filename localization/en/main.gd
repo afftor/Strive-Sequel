@@ -5109,6 +5109,7 @@ The princess notices Aire tensing up in response to the question.
 	ITEMBOWADVDESCRIPT = "A masterful weapon forged with inclusion of additional materials.",
 	ARMORENC = "Encrustment",
 	WEAPONENC = "Encrustment",
+	WEAPONELEMENTBASE = "Element",
 	ITEMLATEX_SUIT = "Latex Suit",
 	ITEMLATEX_SUITDESCRIPT = "A tight clothing accentuating curves of the body.",
 	ITEMSERVICE_SUIT = "Bunny Costume",
