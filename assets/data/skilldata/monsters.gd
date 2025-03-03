@@ -378,7 +378,9 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/Sedate.png",
 		description = "BUFFDESCRIPTCURSEATTACK",
 		t_name = 'curseatk',
-		combat_only = true
+		combat_only = true,
+		limit = 1,
+		tags = ['show_amount']
 	},
 	tr_curseatk = {
 		icon = "res://assets/images/iconsskills/icon_turtle.png",
