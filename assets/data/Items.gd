@@ -206,7 +206,7 @@ var partmaterials = {
 		insect_chitin = {armor = 35, mdef = 40, enchant_capacity_mod = 0.1},
 	},
 	ArmorBaseHeavy = {
-		stone = {armor = 50, mdef = 5, hitrate = -25, resist_earth = 20, enchant_capacity_mod = 0.0},
+		stone = {armor = 50, mdef = 5, hitrate = -40, resist_earth = 20, enchant_capacity_mod = 0.0},
 		obsidian = {armor = 40, mdef = 20, resist_earth = 40, enchant_capacity_mod = 0.15},
 		iron = {armor = 35, mdef = 5, enchant_capacity_mod = 0.0},
 		steel = {armor = 50, mdef = 10, enchant_capacity_mod = 0.1},
@@ -3864,7 +3864,7 @@ var recipes = {
 	
 	divine_symbol = {
 		code = 'divine_symbol',
-		materials = {mithril = 5},
+		materials = {steel = 10},
 		items = {},
 		unlockreqs = [{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage2'},
 		{type = 'has_material', operant = 'lt', value = 1, material = 'divine_symbol'}],

@@ -114,7 +114,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add_p', stat = 'mp_reg_mod', value = 0.1}],
 		buffs = [ #fix
 			{
-			icon = "res://assets/images/iconstraits/lotus.png",
+			icon = "res://assets/images/iconstraits/trait_lovers.png",
 			description = "TRAITEFFECTLOVERS",
 			limit = 1,
 			mansion_only = true,
@@ -132,7 +132,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add_p', stat = 'hp_reg_mod', value = 0.1}],
 		buffs = [ #fix
 			{
-			icon = "res://assets/images/iconstraits/lotus.png",
+			icon = "res://assets/images/iconstraits/trait_friends.png",
 			description = "TRAITEFFECTFRIENDS",
 			limit = 1,
 			mansion_only = true,
@@ -150,7 +150,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add_p', stat = 'productivity', value = 0.05}],
 		buffs = [ #fix
 			{
-			icon = "res://assets/images/iconstraits/lotus.png",
+			icon = "res://assets/images/iconstraits/trait_rivals.png",
 			description = "TRAITEFFECTRIVAL",
 			limit = 1,
 			mansion_only = true,

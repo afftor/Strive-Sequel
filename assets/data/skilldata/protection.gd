@@ -12,6 +12,8 @@ var skills = {
 		reqs = [],
 		targetreqs = [],
 		effects = ['e_t_taunt'], 
+		evade = 0,
+		critchance = 0,
 		cost = {mp = 4},
 		charges = 0,
 		combatcooldown = 2,
