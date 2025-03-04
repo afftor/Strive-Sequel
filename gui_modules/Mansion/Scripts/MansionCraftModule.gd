@@ -469,19 +469,24 @@ func make_material_list(container):
 
 func get_mat_bonuses(material, part):
 	var text = ''
+	var itemdata = Items.itemlist[itemtemplate]
 	for k in material.parts[part]:
-		if typeof(material.parts[part][k]) != TYPE_ARRAY:
-			var endvalue = material.parts[part][k]
-			if Items.itemlist[itemtemplate].basemods.has(k):
-				endvalue = material.parts[part][k]*float(Items.itemlist[itemtemplate].basemods[k])
-			if Items.itemlist[itemtemplate].itemtype == 'armor':
-				endvalue = float(endvalue) / 2
-			if int(endvalue) != 0:
-				text += '\n' + statdata.statdata[k].name + ': ' + str(endvalue)
-		else:
-			for j in material.parts[part][k]:
+		var endvalue = material.parts[part][k]
+		if endvalue is Array:
+			for j in endvalue:
 				text += '\n' + Effectdata.effects[j].descript
+		elif endvalue is String:
+			text += '\n' + statdata.statdata[k].name + ': ' + endvalue
+		else:
+			if itemdata.basemods.has(k):
+				endvalue = endvalue * float(itemdata.basemods[k])
+			if itemdata.itemtype == 'armor':
+				endvalue = float(endvalue) / 2
+			if endvalue != 0:
+				text += '\n' + statdata.statdata[k].name + ': ' + str(endvalue)
+			
 	return text
+
 
 func choosematerial(button):
 	if !get_parent().submodules.has($MaterialSelect):
@@ -553,12 +558,18 @@ func selectmaterial(material, part, cost):
 				i.get_node("PartDescript").text = temptext 
 	
 	checkcreatingitem(itemtemplate)
+	var itemdata = Items.itemlist[itemtemplate]
 	for i in material.parts[part]:
-		if typeof(material.parts[part][i]) != TYPE_ARRAY:
-			var endvalue = material.parts[part][i]
-			if Items.itemlist[itemtemplate].basemods.has(i):
-				endvalue = material.parts[part][i]*float(Items.itemlist[itemtemplate].basemods[i])
-			if Items.itemlist[itemtemplate].itemtype == 'armor':
+		var endvalue = material.parts[part][i]
+		if endvalue is Array:
+			for k in endvalue:
+				text += '\n' + Effectdata.effects[k].descript
+		elif endvalue is String:
+			text += '\n' + statdata.statdata[i].name + ': ' + endvalue
+		else:
+			if itemdata.basemods.has(i):
+				endvalue = endvalue * float(itemdata.basemods[i])
+			if itemdata.itemtype == 'armor':
 				endvalue = float(endvalue) / 2
 			if int(endvalue) != 0:
 				if  statdata.statdata[i].percent:
@@ -566,9 +577,7 @@ func selectmaterial(material, part, cost):
 				text += '\n' + statdata.statdata[i].name + ': ' + str(endvalue)
 				if  statdata.statdata[i].percent:
 					text += '%'
-		else:
-			for k in material.parts[part][i]:
-				text += '\n' + Effectdata.effects[k].descript
+			
 #	get_node("MaterialSetupPanel/ModularSetup/" + chosenpartbutton.name + 'Descript').bbcode_text = text
 
 var enditem
