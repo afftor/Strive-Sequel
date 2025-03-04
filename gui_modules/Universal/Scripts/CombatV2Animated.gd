@@ -1584,7 +1584,10 @@ func victory():
 			rewardsdict.xp += 2 * tchar.get_stat('xpreward')
 		else:
 			rewardsdict.xp += tchar.get_stat('xpreward')
-		Enemydata.process_loottable(tchar.get_stat('loottable'), rewardsdict, count)
+		var loot_processor = Items.get_loot()
+		var rewards = loot_processor.get_reward(tchar.get_stat('loottable'), count)
+		loot_processor.merge_reward_dict(rewardsdict, rewards)
+	
 	
 	input_handler.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
 	input_handler.ClearContainer($Rewards/ScrollContainer2/HBoxContainer)
