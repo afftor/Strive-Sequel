@@ -2079,6 +2079,490 @@ var summons = {
 }
 
 
+
+var loot_variants_data = {
+	easy_chest_usable = [
+		{code = 'material', min = 3, max = 8, grade = 't1'},
+		{code = 'material', min = 3, max = 10, grade = 'location'},
+		{code = 'usable', min = 2, max = 4, grade = ['easy']},
+	],
+	easy_chest_gear = [
+		{code = 'material', min = 4, max = 10, grade = 'location'},
+		{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = [['t1',10], ['t1', 3]]},
+	],
+	easy_chest_cosmetics = [
+		{code = 'material', min = 4, max = 10, grade = 'location'},
+		{code = 'static_gear', min = 1, max = 1, grade = ['easy']}
+	],
+	easy_chest_map = [
+		{code = 'material', min = 4, max = 10, grade = 'location'},
+		{code = 'map', min = 1, max = 1, maps = ['map_bandit_den','map_goblin_cave','map_bandit_fort','map_grove','map_ancient_jungle','map_undead_crypt','map_spider_lair']}
+	],
+
+	medium_chest_usable = [
+		{code = 'material', min = 3, max = 5, grade = 't1'},
+		{code = 'material', min = 3, max = 5, grade = 'location'},
+		{code = 'usable', min = 2, max = 4, grade = ['easy','medium']},
+		{code = 'usable', min = 0, max = 1, grade = ['easy','medium']},
+	],
+	medium_chest_gear = [
+		{code = 'material', min = 4, max = 8, grade = 'location'},
+		{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = [['t1',3], ['t1', 10], ['t1',1]]},
+	],
+	medium_chest_cosmetics = [
+		{code = 'material', min = 4, max = 8, grade = 'location'},
+		{code = 'static_gear', min = 1, max = 1, grade = ['easy','medium']}
+	],
+	medium_chest_map = [
+		{code = 'material', min = 4, max = 8, grade = 'location'},
+		{code = 'map', min = 1, max = 1, maps = ['map_bandit_fort','map_ancient_jungle','map_undead_crypt','map_fire_depths']}
+	],
+	easy_armory_weapon = [
+		{code = 'weapon', min = 1, max = 1, grade = ['easy'], material_grade = [['t1',10], ['t1', 3], ['t1',1]]},
+	],
+	easy_armory_armor = [
+		{code = 'armor', min = 1, max = 1, grade = ['easy'], material_grade = [['t1',10], ['t1', 3], ['t1',1]]},
+	],
+	medium_armory_weapon = [
+		{code = 'weapon', min = 1, max = 1, grade = ['easy'], material_grade = [['t1',2], ['t1', 10], ['t1',3]]},
+	],
+	medium_armory_armor = [
+		{code = 'armor', min = 1, max = 1, grade = ['easy'], material_grade = [['t1',2], ['t1', 10], ['t1',3]]},
+	],
+
+	easy_prisoner_reward_item = [
+		{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = [['t1',10], ['t1', 5]]},
+	],
+	easy_prisoner_reward_resource = [
+		{code = 'material', min = 5, max = 10, grade = 't1'},
+		{code = 'material', min = 3, max = 6, grade = 'location'},
+	],
+	easy_boss_chest = [
+		{code = 'static_gear', min = 1, max = 1, grade = ['easy']},
+		{code = 'gear', min = 1, max = 2, grade = ['easy'], material_grade = [['t1',10], ['t1', 4]]},
+		{code = 'defined', name = 'exp_scroll', min = 1, max = 2},
+		{code = 'gold', min = 150, max = 200}
+	],
+	medium_boss_chest = [
+		{code = 'static_gear', min = 1, max = 1, grade = ['easy','medium']},
+		{code = 'gear', min = 1, max = 2, grade = ['easy','medium'], material_grade = [['t1',4], ['t1', 10],['t1',1]]},
+		{code = 'defined', name = 'exp_scroll', min = 1, max = 3},
+		{code = 'gold', min = 250, max = 400}
+	],
+	hard_boss_chest = [
+		{code = 'static_gear', min = 1, max = 2, grade = ['easy','medium','hard']},
+		{code = 'gear', min = 1, max = 2, grade = ['medium','hard'], material_grade = [['t1', 5],['t1',5]]},
+		{code = 'defined', name = 'exp_scroll', min = 2, max = 4},
+		{code = 'defined', name = 'soul_stone', min = 0, max = 1},
+		{code = 'gold', min = 400, max = 600},
+		{code = 'map', min = 1, max = 1, maps = ['map_bandit_fort','map_ancient_jungle','map_undead_crypt','map_fire_depths']}
+	],
+	grove_wood_reward = [
+		{code = 'material_selected', 
+		options = [
+			{code = 'wood', weight = 1, amount = [15,30]},
+			{code = 'woodmagic', weight = 0.7, amount = [10,15]},
+			{code = 'woodancient', weight = 0.2, amount = [1,3]},
+		]
+		},
+	],
+	grove_leather_reward = [
+		{code = 'material_selected', options = [
+			{code = 'leather', weight = 1, amount = [15,30]},
+			{code = 'leatherthick', weight = 1, amount = [10,15]},
+			{code = 'leathermythic', weight = 0.7, amount = [5,10]},
+			{code = 'leatherdragon', weight = 0.2, amount = [1,3]},
+		]
+		}
+	],
+	crypt_bone_reward = [
+		{code = 'material_selected', options = [
+			{code = 'bone', weight = 1, amount = [15,25]},
+			{code = 'boneancient', weight = 0.5, amount = [5,10]},
+			{code = 'bonedragon', weight = 0.3, amount = [1,3]},
+	]
+	}
+	],
+
+	test_chest_mimic = [],
+	fighters_join_reward = [
+		{code = 'defined', name = 'sword', min = 1, max = 1, parts = {WeaponHandle = 'wood', Blade = 'iron'}},
+		{code = 'defined', name = 'chest_base_leather', min = 1, max = 1, parts = {ArmorBaseMed = 'leather', ArmorTrim = 'wood'}},
+	],
+	workers_join_reward = [
+		{code = 'defined', name = 'axe', min = 1, max = 1, parts = {ToolHandle = 'wood', ToolBlade = 'iron'}},
+		{code = 'defined', name = 'worker_outfit', min = 1, max = 1},
+	],
+	servants_join_reward = [
+		{code = 'defined', name = 'elegant_choker', min = 1, max = 1},
+		{code = 'defined', name = 'maid_dress', min = 1, max = 1},
+		{code = 'defined', name = 'beer', min = 4, max = 4}
+	],
+	mages_join_reward = [
+		{code = 'defined', name = 'staff', min = 1, max = 1, parts = {WeaponHandle = 'wood', Rod = 'woodmagic'}},
+		{code = 'defined', name = 'lifeshard', min = 3, max = 3},
+		{code = 'defined', name = 'energyshard', min = 2, max = 2},
+	],
+	servants_election_bonus = [
+		{code = 'defined', name = 'amulet_of_recognition', min = 1, max = 1},
+	],
+	fighters_lich_bonus_loot = [
+		{code = 'defined', name = 'energyshard', min = 3, max = 4},
+		{code = 'defined', name = 'lifegem', min = 3, max = 4},
+		{code = 'defined', name = 'boneancient', min = 5, max = 5},
+	],
+	aliron_church_bonus = [
+		{code = 'defined', name = 'lifeshard', min = 5, max = 5},
+	],
+	blessed_divine_symbol = [
+		{code = 'defined', name = 'blessed_divine_symbol', min = 1, max = 1},
+	],
+	celena_reward = [
+		{code = 'defined', name = 'lifeshard', min = 3, max = 5},
+	],
+	celena_reward2 = [
+		{code = 'defined', name = 'lifegem', min = 2, max = 4},
+	],
+	celena_reward3 = [
+		{code = 'defined', name = 'blessed_divine_symbol', min = 1, max = 1},
+	],
+	celena_reward4 = [
+		{code = 'defined', name = 'oblivion_potion', min = 1, max = 1},
+	],
+	celena_reward5 = [
+		{code = 'defined', name = 'soul_stone', min = 1, max = 1},
+	],
+	celena_destroy_shrine1 = [
+		{code = 'defined', name = 'iron', min = 5, max = 10},
+		{code = 'defined', name = 'steel', min = 1, max = 3},
+	],
+	celena_destroy_shrine2 = [
+		{code = 'defined', name = 'steel', min = 2, max = 5},
+		{code = 'defined', name = 'mithril', min = 1, max = 2},
+	],
+	erebus_reward = [
+		{code = 'defined', name = 'energyshard', min = 3, max = 5},
+	],
+	erebus_reward2 = [
+		{code = 'defined', name = 'energygem', min = 2, max = 4},
+	],
+	erebus_reward3 = [
+		{code = 'defined', name = 'ice_crystal', min = 2, max = 3},
+	],
+	erebus_reward4 = [
+		{code = 'defined', name = 'crystalized_ether', min = 2, max = 3},
+	],
+	freya_reward1 = [
+		{code = 'defined', name = 'woodancient', min = 3, max = 5},
+	],
+	hybris_reward1 = [
+		{code = 'defined', name = 'bone', min = 4, max = 5},
+	],
+	hybris_reward2 = [
+		{code = 'defined', name = 'boneancient', min = 2, max = 3},
+	],
+	hybris_reward3 = [
+		{code = 'defined', name = 'boneancient', min = 4, max = 5},
+	],
+	hybris_reward4 = [
+		{code = 'defined', name = 'bonedragon', min = 3, max = 5},
+	],
+	hybris_reward5 = [
+		{code = 'material_selected', options = [
+			{code = 'leather', weight = 1, amount = [4,8]},
+			{code = 'leatherthick', weight = 0.5, amount = [2,5]},
+			{code = 'leathermythic', weight = 0.3, amount = [1,3]},
+			{code = 'leatherdragon', weight = 0.1, amount = [1,2]},
+			]
+		}
+	],
+	hybris_destroy_shrine = [
+		{code = 'defined', name = 'wood', min = 3, max = 6},
+		{code = 'defined', name = 'stone', min = 4, max = 9},
+		{code = 'defined', name = 'steel', min = 2, max = 4},
+		
+	],
+	erebus_destroy_shrine = [
+		{code = 'defined', name = 'stone', min = 10, max = 20},
+		{code = 'defined', name = 'obsidian', min = 1, max = 4},
+	],
+	freya_destroy_shrine = [
+		{code = 'defined', name = 'wood', min = 5, max = 15},
+		{code = 'defined', name = 'woodmagic', min = 2, max = 5},
+		{code = 'defined', name = 'woodancient', min = 0, max = 1},
+	],
+	rebels_ore_reward = [
+		{code = 'defined', name = 'steel', min = 25, max = 25},
+		{code = 'defined', name = 'mithril', min = 10, max = 10},
+	],
+	holy_sword_reward = [
+		{code = 'defined', name = 'holy_sword', min = 1, max = 1},
+	],
+	holy_spear_reward = [
+		{code = 'defined', name = 'holy_spear', min = 1, max = 1},
+	],
+	sacred_scales_reward = [
+		{code = 'defined', name = 'sacred_scales', min = 1, max = 1},
+	],
+	zephyra_bribe_1 = [
+		{code = 'gold', min = 500, max = 500},
+	],
+	zephyra_bribe_2 = [
+		{code = 'defined', name = 'zephyra_underwear', min = 1, max = 1},
+	],
+	ramont_axe_reward = [
+		{code = 'defined', name = 'ramont_axe', min = 1, max = 1},
+	],
+	hector_armor_reward = [
+		{code = 'defined', name = 'hector_armor', min = 1, max = 1},
+	],
+	erlen_sword_reward = [
+		{code = 'defined', name = 'erlen_sword', min = 1, max = 1},
+		{code = 'defined', name = 'sacred_bowl', min = 1, max = 1},
+	],
+	ayneris_rapier_reward = [
+		{code = 'defined', name = 'ayneris_rapier', min = 1, max = 1},
+	],
+	garb_of_forest_reward = [
+		{code = 'defined', name = 'garb_of_forest', min = 1, max = 1},
+	],
+	chloe_goggles_reward = [
+		{code = 'defined', name = 'chloe_goggles', min = 1, max = 1},
+	],
+	priestess_tiara_reward = [
+		{code = 'defined', name = 'priestess_tiara', min = 1, max = 1},
+		{code = 'defined', name = 'sacred_bowl', min = 1, max = 1},
+	],
+	xari_amulet_reward = [
+		{code = 'defined', name = 'xari_amulet', min = 1, max = 1},
+	],
+	amelia_dress_reward = [
+		{code = 'defined', name = 'amelia_dress', min = 1, max = 1},
+	],
+	zephyra_brush_reward = [
+		{code = 'defined', name = 'zephyra_brush', min = 1, max = 1},
+	],
+	
+}
+
+
+var locks_data = { #makes locks to lockpick for related chests
+	easy_chest_usable = {locks = [['normal', 1],['none', 5],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
+	easy_chest_gear = {locks = [['normal', 1], ['none', 4],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [10,25]},
+	easy_chest_cosmetics = {locks = [['normal', 1],['none', 4],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
+	easy_chest_map = {locks = [['normal', 1],['none', 4],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
+	easy_boss_chest = {locks = [['normal', 1],['none',4]], difficulty = [10,25]},
+
+	easy_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [15,25]},
+	easy_armory_armor = {locks = [['normal', 1], ['alarm', 1]], difficulty = [15,25]},
+
+	medium_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
+	medium_armory_armor = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
+
+	medium_chest_usable = {locks = [['normal', 1],['none', 3],['bomb',1],['gas',1],['mimic',0.3],['mimic_erotic',0.3]], difficulty = [15,40]},
+	medium_chest_gear = {locks = [['normal', 1],['mimic',1],['mimic_erotic',0.2]], difficulty = [25,55]},
+	medium_chest_cosmetics = {locks = [['normal', 1],['none', 1],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [20,50]},
+	medium_chest_map = {locks = [['normal', 1],['none', 3],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [20,50]},
+	medium_boss_chest = {locks = [['normal', 1],['none',2]], difficulty = [20,55]},
+
+	hard_boss_chest = {locks = [['normal', 1],['none',2]], difficulty = [45,80]},
+	test_chest_mimic = {locks = [['mimic_erotic', 1]], difficulty = [1,1]},
+	}
+
+#loot part
+var loottables = {
+	rat_loot = [['leather', 0.1], ['lifeshard', 0.05]],
+	willowisp_loot = [['lifeshard', 0.3], ['energyshard',0.2]],
+	spider_loot = [['clothsilk', 0.5, 2],['lifeshard', 0.1],['insect_chitin',0.1,1]],
+	bandit_loot = [['cloth', 0.4, 2], ['lifeshard', 0.1], ['energyshard', 0.03], ['gold', 1, 3],],# ['axe', 't1', 1.0, 2], {'sword':1, ['bow', 't1', 1.0, 3]:1}],
+	bandit_boss_loot = [['clothsilk', 0.8, 4], ['lifeshard', 0.3], ['gold', 15, 30]],
+	wolf_loot = [['leather', 0.2, 2], ['bone', 0.2]],
+	gryphon_loot = [['leathermythic', 1, 5], ['leathermythic', 0.5, 3]],
+	goblin_loot = [['stone', 0.2, 1], ['gold', 0, 2]],
+	bear_loot = [['leatherthick', 0.5, 3]],
+	dog_loot = [['leather', 0.1, 2]],
+	ballista_loot = [['woodiron', 0.5, 3], ['wood', 0.25, 5]],
+	assassin_loot = [['gold', 5, 10],['energyshard', 0.2]],
+	guardian_golem_loot = [['stone',0.9,5]],
+	raptor_loot = [['leatherthick', 0.5, 2]],
+	skeleton_melee_loot = [['bone', 0.5, 3],['lifeshard', 0.1]],
+	skeleton_archer_loot = [['bone', 0.5, 2]],
+	quest_lich_loot = [['boneancient', 0.5, 2], ['lich_skull', 1, 1], ['energygem', 0.5]],
+	lich_loot = [['boneancient', 0.5, 2], ['energygem', 0.5]],
+	zombie_loot = [['cloth', 0.5, 2], ['gold',1, 3]],
+	mimic_loot = [['woodiron', 0.8, 8], ['lifegem', 0.75, 3], ['gold', 20, 30]],
+
+	troll_loot = [['troll_blood', 1, 1],['gold', 10, 15]],
+	ogre_loot = [['ogre_teeth', 0.6, 1], ['gold', 5, 10], ['lifegem', 0.05, 1],['earth_shard', 0.01, 1]],
+	maneater_loot = [['blue_moss', 0.3, 1], ['gold',3,10]],
+	centipede_loot = [['insect_chitin', 0.7, 1]],
+	rockthrower_loot = [['stone', 0.6, 5], ['lifegem', 0.1, 1]],
+	salamander_loot = [['lizard_skin', 0.4, 1]],
+	ant_loot = [['insect_chitin', 0.4, 1]],
+	great_viper_loot = [['lizard_skin', 0.8, 6], ['leathermythic', 0.8, 5],['ice_crystal', 0.1, 1], ['fire_ruby', 0.1, 1], ['crystalized_ether', 0.1, 1],['earth_shard', 0.1, 1]],
+	ogre_alpha_loot = [['ogre_teeth', 1, 2], ['gold', 30, 50],['ice_crystal', 0.1, 1], ['fire_ruby', 0.1, 1], ['crystalized_ether', 0.1, 1],['earth_shard', 0.1, 1]],
+	ifrit_loot = [['obsidian', 0.5, 1], ['fire_ruby', 0.3, 1], ['lifegem', 0.1, 1],['energygem',0.2, 1]],
+	anthropoid_loot = [['crystalized_ether', 0.5, 2]],
+	magma_beast_loot = [['lizard_skin', 0.8, 5], ['obsidian', 0.8, 6], ['fire_ruby', 0.2, 1], ['lifegem', 0.5, 2]],
+	erebus_stone_loot = [['obsidian', 0.8, 5],['ice_crystal', 0.05, 1], ['fire_ruby', 0.05, 1], ['crystalized_ether', 0.05, 1], ['earth_shard', 0.3, 1], ['energygem',0.5, 1]],
+	white_stag_loot = [['energyshard', 0.7]],
+}
+
+func process_loottable(table, rewarddict, amount_mul = 1):
+	if table is String:
+		if !loottables.has(table):
+			print('error: wrong loottable %s' % table)
+			return
+		table = loottables[table]
+	
+	if !(table is Array):
+		print ('error in loottable')
+		print(table)
+	
+	if !(table.back() is Array or table.back() is Dictionary):
+		process_loottable_record(table, rewarddict, amount_mul)
+		return
+	
+	for rec in table:
+		if rec is String:
+			process_loottable(rec, rewarddict, amount_mul)
+		elif rec is Dictionary:
+			process_loottable_item_selector(rec, rewarddict, amount_mul)
+		elif rec is Array:
+			process_loottable_record(rec, rewarddict, amount_mul)
+		else:
+			print ('error in loottable record')
+			print(table)
+
+
+func process_loottable_record(record, rewarddict, amount_mul = 1):
+	var trecord = record.duplicate(true)
+	if trecord[0] is Array:
+		if trecord[0][0] is Dictionary and trecord[0][0].has('type'):
+			if !globals.checkreqs(trecord[0]):
+				return
+			else:
+				trecord.remove(0)
+	var temp = trecord[0]
+	if temp is String:
+		if temp == 'gold':
+			rewarddict.gold += amount_mul * globals.rng.randi_range(trecord[1], trecord[2])
+			return
+	var amount
+	if trecord.back() is int:
+		amount = trecord.back() * amount_mul
+		trecord.pop_back()
+	else:
+		amount = amount_mul
+	for i in range(amount):
+		var chance = trecord.back()
+		if randf() < chance:
+			process_loottable_item(trecord, rewarddict, amount_mul)
+
+
+
+func process_loottable_item(record, rewarddict, amount_mul = 1):
+	var data = record.duplicate(true)
+	data.pop_back()
+	var reward = data[0]
+	if reward is Array:
+		process_loottable(reward, rewarddict, amount_mul)
+	elif reward is Dictionary:
+		process_loottable_item_selector(reward, rewarddict, amount_mul)
+	elif loottables.has(reward):
+		process_loottable(reward, rewarddict, amount_mul)
+	elif Items.materiallist.has(reward):
+		if rewarddict.materials.has(reward):
+			rewarddict.materials[reward] += 1
+		else:
+			rewarddict.materials[reward] = 1
+	elif Items.itemlist.has(reward):
+		var i_template = Items.itemlist[reward]
+		if i_template.type == 'usable':
+			var itemfound = false
+			for i in rewarddict.items:
+				if i.itembase == reward:
+					i.amount += 1
+					itemfound = true
+					break
+			if !itemfound:
+				var newitem = globals.CreateUsableItem(reward)
+				rewarddict.items.push_back(newitem)
+		elif i_template.type == 'gear':
+			if i_template.crafttype == 'basic':
+				var newitem = globals.CreateGearItemLoot(reward, {})
+				rewarddict.items.push_back(newitem)
+			elif data.size() == 2:
+				var newitem = globals.CreateGearItemLoot(reward, data[1])
+				rewarddict.items.push_back(newitem)
+			else: #shortcut - modular gear from defaut materials
+				var newitem = globals.CreateGearItemLoot(reward, ResourceScripts.game_progress.get_default_materials())
+				rewarddict.items.push_back(newitem)
+		else:
+			print('error: wrong itemtype at %s' % reward)
+
+
+func process_loottable_item_selector (record, rewarddict, amount_mul = 1):
+	var pool = {}
+	for key in record:
+		if key is String:
+			pool[key] = record[key]
+		if key is Array: #key is unnamed lootatble or loottable record
+			if key[0] is Array: #key[0] is condition or unnamed lootatble or loottable record
+				if key[0][0] is Dictionary: #key[0] is condition and key is record or key[0] is loottable record with item selector and key is loottable
+					if key[0][0].has('type'): #key[0] is condition
+						if globals.checkreqs(key[0]):
+							var newkey = key.duplicate(true)
+							newkey.remove(0)
+							pool[newkey] = record[key]
+					else: #key[0] is selector, key is record
+						pool[key] = record[key]
+				else: #key[0] is not condition by condition syntax
+					pool[key] = record[key]
+			else: #key[0] is not condition by definition
+				pool[key] = record[key]
+		else: #key is id or selector (highly undesired)
+			pool[key] = record[key]
+	if pool.empty():
+		return
+	var res = input_handler.weightedrandom_dict(pool)
+	if res is String:
+		if loottables.has(res):
+			process_loottable(res, rewarddict)
+		elif Items.materiallist.has(res):
+			if rewarddict.materials.has(res):
+				rewarddict.materials[res] += 1
+			else:
+				rewarddict.materials[res] = 1
+		elif Items.itemlist.has(res):
+			var i_template = Items.itemlist[res]
+			if i_template.type == 'usable':
+				var itemfound = false
+				for i in rewarddict.items:
+					if i.itembase == res:
+						i.amount += 1
+						itemfound = true
+						break
+				if !itemfound:
+					var newitem = globals.CreateUsableItem(res)
+					rewarddict.items.push_back(newitem)
+			elif i_template.type == 'gear':
+				if i_template.crafttype == 'basic':
+					var newitem = globals.CreateGearItemLoot(res, {})
+					rewarddict.items.push_back(newitem)
+				else: #shortcut - modular gear from defaut materials
+					var newitem = globals.CreateGearItemLoot(res, ResourceScripts.game_progress.get_default_materials())
+					rewarddict.items.push_back(newitem)
+			else:
+				print('error: wrong itemtype at %s' % res)
+		else:
+			print('error: wrong item selected %s' % res)
+	elif res is Dictionary: #bad case - nested selector
+		process_loottable_item_selector(res, rewarddict)
+	elif res is Array:
+		process_loottable(res, rewarddict)
+
+
 #shrines part
 var shrines = {
 	celena = {
