@@ -101,6 +101,9 @@ func _ready():
 	#console
 	var console = load("res://gui_modules/Console/console.tscn").instance()
 	get_tree().root.call_deferred("add_child", console)
+	
+	if log_alert != null and is_instance_valid(log_alert):
+		log_alert.fix_cur_log_position()#should miss starting irrelevant strings in log by this time in game load
 
 
 #not used
