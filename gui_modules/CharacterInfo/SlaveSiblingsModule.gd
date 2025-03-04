@@ -9,6 +9,7 @@ var universal_skills = ['oral','anal','petting']
 onready var loyalty_panel = $UpgradesPanel/UpgradesList
 onready var loyalty_panel_master = $UpgradesPanel/ScrollContainer2/UpgradesList2
 var loyalty_mode = true
+var relations_mode = true
 var loyalty_tab = 3
 
 func _ready():
@@ -31,6 +32,7 @@ func _ready():
 	$work_rules/ration.connect("button_down", self, "update")
 	$work_rules/ration.connect("button_up", self, "update")
 	$change_button.connect("pressed", self, 'swap_mode')
+	$RelationsButton.connect("pressed", self, 'swap_rel_mode')
 #	$change_button2.connect("pressed", self, 'swap_tab', [1])
 #	$change_button3.connect("pressed", self, 'swap_tab', [2])
 	$FF.connect("pressed", self, 'show_food_filter')
@@ -69,6 +71,7 @@ func update():
 	hide_food_filter()
 	#relatives
 	$RelativesPanel.build_relatives()
+	build_relations()
 	if person.is_master():
 		$change_button.visible = true
 		loyalty_tab = 3
@@ -127,6 +130,7 @@ func update():
 	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.check_work_rule("luxury")
 
 	$work_rules/luxury.visible = !person.is_master()
+	$work_rules/relationship.visible = !person.is_master()
 	$work_rules/nudity.disabled = !person.has_status('sexservice') #or another
 	if person != null:
 		for i in $work_rules.get_children():
@@ -316,13 +320,34 @@ func swap_mode():
 	if loyalty_mode:
 		loyalty_mode = false
 		$UpgradesPanel.visible = false
-		$RelativesPanel.visible = true
+		relations_mode = false
+		swap_rel_mode()
+#		$RelativesPanel.visible = true
 		$change_button/Label.text = tr("SIBLINGMODULETRAININGS")
 	else:
 		loyalty_mode = true
 		$UpgradesPanel.visible = true
 		$RelativesPanel.visible = false
+		$Relations.visible = false
 		$change_button/Label.text = tr("SIBLINGMODULERELATIVES")
+
+
+func swap_rel_mode():
+	if relations_mode:
+		relations_mode = false
+		$Relations.visible = false
+		$RelativesPanel.visible = true
+		$RelationsButton/Label.text = tr("SIBLINGMODULERELATIONS")
+	else:
+		if person.is_master():
+			$RelationsButton.visible = false
+		else:
+			$RelationsButton.visible = true
+			relations_mode = true
+			$Relations.visible = true
+			$RelativesPanel.visible = false
+			$RelationsButton/Label.text = tr("SIBLINGMODULERELATIVES")
+
 
 
 func swap_tab(tab): #obsolete
@@ -364,6 +389,16 @@ func build_personality():
 	
 	$personality/current.rect_position = Vector2($personality.rect_size.x * (0.5 + tmp.x),  $personality.rect_size.y * (0.5 + tmp.y)) - $personality/current.rect_size * 0.5
 	
-	$personality/PersonalityLabel.text = tr("PERSONALITYCURRENT") + tr("PERSONALITYNAME"+person.get_stat('personality').to_upper())
+	$personality/PersonalityLabel.text = tr("PERSONALITYCURRENT") +"\n" + tr("PERSONALITYNAME"+person.get_stat('personality').to_upper())
 	#2add
 	#$personality/desc.bbcode_text = ""
+
+
+func build_relations():
+	var text = ''
+	
+	var array = ResourceScripts.game_party.find_all_relationship(person.id)
+	for i in array:
+		var character = characters_pool.get_char_by_id(i['char'])
+		text += character.get_full_name() + ": " + i.relationship + "\n"
+	$Relations.bbcode_text = text

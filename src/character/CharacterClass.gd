@@ -778,9 +778,9 @@ func can_evade():
 	return res
 
 func can_use_skill(skill):
-	if !check_cost(skill.cost): return false
+	if is_players_character and !check_cost(skill.cost): return false
 	if skill.type == 'auto': return false
-	if skill.has('reqs') and !checkreqs(skill.reqs): return false
+	if is_players_character and skill.has('reqs') and !checkreqs(skill.reqs): return false
 	if skills.combat_cooldowns.has(skill.code): return false
 	if has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'): return false
 	if has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'): return false
@@ -1387,6 +1387,14 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			return training.check_stored_reqs(i.value)
 		'is_immune':
 			return effects.check_status_immunity(i.status) == i.check
+		'has_relationship':
+			var tmp = ResourceScripts.game_party.find_all_relationship(id)
+			var tres = false
+			for rec in tmp:
+				if rec.relationship == i.value:
+					tres = true
+					break
+			return tres == i.check
 	return check
 
 func decipher_reqs(reqs, colorcode = false, purestat = false):

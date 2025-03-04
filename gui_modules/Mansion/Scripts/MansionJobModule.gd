@@ -427,7 +427,10 @@ func update_resources():
 					if (task.code == i.code) && (task.task_location == person_location):
 						current_workers_count = task.workers.size()
 				newbutton.get_node("Label").text = str(current_workers_count)
+	var current_res_data = Items.material_tiers[ResourceScripts.game_progress.get_default_materials()]
 	for resource in gatherable_resources:
+		if !current_res_data.has(resource):
+			continue
 		var text = ""
 		var max_workers_count = 0
 		var current_workers_count = 0

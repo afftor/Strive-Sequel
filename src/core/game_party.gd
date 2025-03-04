@@ -9,11 +9,219 @@ var active_tasks = []
 var farming_slots = {}
 
 var relativesdata = {}
+var relationship_data = {}
 var global_skills_used = {}
 
 var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} #setget pos_set
 
 var character_order = []
+
+
+func _get_key(char1, char2):
+	var pair = [char1, char2]
+	pair.sort()
+	return pair[0] + "_" + pair[1]
+
+
+func _get_key_from_dict(data):
+	for i in relationship_data.keys():
+		if relationship_data[i] == data:
+			return i
+
+
+func _get_data(char1, char2):
+	return relationship_data[_get_key(char1, char2)]
+
+
+func add_relationship_value(char1, char2, value):
+	if characters[char1].is_master(): 
+		return 
+	if characters[char2].is_master(): 
+		return 
+	var key = _get_key(char1, char2)
+	
+	if relationship_data.has(key):
+		if relationship_data[key].status in ['friends', 'lovers', 'freelovers'] && value < 0:
+			value *= 0.5 #makes established relationship reduce slower
+	
+	if relationship_data.has(key):
+		relationship_data[key].value += value
+	else:
+		relationship_data[key] = {value = 50, status = 'acquintances'}
+		relationship_data[key].value = variables.relationship_base + value
+	relationship_data[key].value = clamp(relationship_data[key].value, 0, 100)
+	update_relationship_status(relationship_data[key], char1, char2)
+
+
+func update_relationship_status(data, char1, char2):
+	if characters[char1].is_master(): 
+		return 
+	if characters[char2].is_master(): 
+		return 
+	var value = data.value
+	var status = data.status
+	if value <= 25:
+		change_relationship_status(char1, char2, 'rivals')
+	elif value >= 75:
+		
+		if !['friends','lovers','freelovers'].has(status):
+			data.status = 'friends'
+		else:
+			if randf() >= 0.2 && check_lover_possibility(data, char1, char2) && _in_same_location(char1, char2):
+				attempt_romance(char1, char2)
+	else:
+		if status in ['friends','lovers','freelovers'] && value >= 60:
+			pass
+		else:
+			change_relationship_status(char1, char2, 'acquintances')
+	#print(data)
+
+
+func attempt_romance(char1, char2):
+	if characters[char1].is_master(): 
+		return 
+	if characters[char2].is_master(): 
+		return 
+	var relationship = _get_data(char1, char2)
+	var lovers_chance = 0
+	var freelovers_chance = 0
+	
+	if relationship.value >= 75:
+		freelovers_chance += 15
+	if relationship.value >= 90:
+		lovers_chance += 10
+		if relationship.status == 'freelovers':
+			lovers_chance += 10
+	
+	if relationship.status == 'freelovers':
+		freelovers_chance = 0
+	if relationship.status == 'lovers':
+		freelovers_chance = 0
+		lovers_chance = 0
+	if randf() * 100 <= freelovers_chance:
+		input_handler.interactive_message('character_freelovers','multichar_event',{char1 = char1, char2 = char2})
+	elif randf() * 100 <= lovers_chance:
+		input_handler.interactive_message('character_lovers','multichar_event',{char1 = char1, char2 = char2})
+
+
+func _in_same_location(char1, char2):
+	var person1 = characters_pool.get_char_by_id(char1)
+	var person2 = characters_pool.get_char_by_id(char2)
+	if person1.is_on_quest() or person2.is_on_quest():
+		return false
+	if person1.get_location() != person2.get_location():
+		return false
+	if person1.get_location() == ResourceScripts.game_world.mansion_location:
+		if person1.xp_module.work == person2.xp_module.work:
+			if person1.xp_module.work == 'brothel' or person1.xp_module.work == '':
+				return true
+			return person1.xp_module.workproduct == person2.xp_module.workproduct
+		else:
+			return false
+	else:
+		return true
+
+
+func relation_daily_change_same_loc(char1, char2):
+	if characters[char1].is_master(): 
+		return 
+	if characters[char2].is_master(): 
+		return 
+	var value = 0
+	if relationship_data.has(_get_key(char1,char2)) == false:
+		relationship_data[_get_key(char1,char2)] = {value = 50, status = 'acquintances'}
+	var base_value = relationship_data[_get_key(char1, char2)].value
+	var weights = [['positive', 66], ['negative', 33]]
+	
+	if base_value >= 50:
+		# Reduce negative weight proportionally down to 1 when value is 65
+		if base_value > 65:
+			weights[1][1] = 1
+		else:
+			weights[1][1] = 33 - int(32 * (base_value - 50) / 15)
+	
+	elif base_value < 50:
+		# Reduce positive weight proportionally down to 1 when value is 35
+		if base_value < 35:
+			weights[0][1] = 1
+		else:
+			weights[0][1] = 66 - int(65 * (50 - base_value) / 15)
+	
+	var outcome = input_handler.weightedrandom(weights)
+	if outcome == 'positive':
+		value = int(rand_range(3,7))
+	else:
+		value = int(rand_range(-3,-7))
+	
+	add_relationship_value(char1, char2, value)
+
+
+func relationship_decay():
+	for key in relationship_data.keys():
+		var chars = key.split("_")
+		if _in_same_location(chars[0],chars[1]) == false:
+			var value
+			if relationship_data[key].value > 51:
+				value = -4
+			elif relationship_data[key].value < 50:
+				value = 4
+			add_relationship_value(chars[0],chars[1], value)
+
+
+func check_lover_possibility(data, char1, char2):
+	var person1 = characters_pool.get_char_by_id(char1)
+	var person2 = characters_pool.get_char_by_id(char2)
+	
+	var endvalue = false
+	
+	if person1.check_work_rule("relationship") == false || person2.check_work_rule("relationship") == false:
+		return endvalue
+	
+	if person1.get_stat('sex') == person2.get_stat('sex') && (!person1.check_trait("bisexual") || !person2.check_trait("bisexual")): 
+		endvalue = false
+	elif person1.get_stat('sex') == person2.get_stat('sex') && person1.check_trait("bisexual") && person2.check_trait("bisexual"): 
+		endvalue = true
+	elif person1.get_stat('sex') != person2.get_stat('sex'):
+		endvalue = true
+	
+	if endvalue == true:
+		if person1.check_trait("monogamous") && (has_love_status(char1) || person1.has_profession("spouse")) || person2.check_trait("monogamous") && (has_love_status(char2) || person2.has_profession("spouse") ) :
+			endvalue = false
+	return endvalue
+
+
+func has_love_status(char1):
+	for key in relationship_data.keys():
+		if char1 in key.split("_"):
+			var relation = relationship_data[key].status
+			if "lovers" in relation or "freelovers" in relation:
+				return true
+	return false
+
+
+func change_relationship_status(char1, char2, new_status):
+	_get_data(char1, char2).status = new_status
+	if new_status in ['friends', 'rivals']:
+		var ch1 = characters[char1]
+		var ch2 = characters[char2]
+		globals.text_log_add('char', "%s ans %s has become %s" % [ch1.get_short_name(), ch2.get_short_name(), new_status])
+
+
+
+func find_all_relationship(char1):
+	var array = []
+	for key in relationship_data.keys():
+		if char1 in key.split("_"):
+			var chars = key.split("_")
+			var dict = {relationship = relationship_data[key].status}
+			if char1 == chars[0]:
+				dict.char = chars[1]
+			else:
+				dict.char = chars[0]
+			
+			array.append(dict)
+	
+	return array
 
 #func pos_set(value):
 #	combatparty = value
@@ -27,6 +235,12 @@ func advance_day():
 		i.cooldown_tick()
 		i.process_event(variables.TR_DAY)
 		i.quest_day_tick()
+	relationship_decay()
+	for i in range(character_order.size() - 1):
+		if characters[character_order[i]].is_master() == true:
+			continue
+		for j in range(i + 1, character_order.size()):
+			if _in_same_location(character_order[i],character_order[j]): relation_daily_change_same_loc(character_order[i],character_order[j])
 
 func serialize():
 	var res = inst2dict(self)
@@ -125,7 +339,11 @@ func subtract_taxes():
 			continue
 		if !ch.get_stat('slave_class') == 'servant':
 			continue
-		tax += ch.calculate_price() * (1.0 - 0.05 * ch.get_stat('tame_factor'))
+		var tres = ch.calculate_price()
+		tres *= 1.0 - 0.05 * ch.get_stat('tame_factor')
+		if ch.get_stat('personality') == 'shy':
+			tres *= 0.9
+		tax += tres
 	ResourceScripts.game_res.money -= int (3 * tax / 100)
 
 #arguable here

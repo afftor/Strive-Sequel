@@ -105,6 +105,62 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
+	
+	e_love = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'has_relationship',  value = 'lovers', check = true}],
+		tags = ['recheck_tick'],
+		atomic = [{type = 'stat_add_p', stat = 'mp_reg_mod', value = 0.1}],
+		buffs = [ #fix
+			{
+			icon = "res://assets/images/iconstraits/trait_lovers.png",
+			description = "TRAITEFFECTLOVERS",
+			limit = 1,
+			mansion_only = true,
+			t_name = 'b_lovers',
+			tags = ['show_in_traits']
+		}
+		],
+		sub_effects = [],
+	},
+	e_friend = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'has_relationship',  value = 'friends', check = true}],
+		tags = ['recheck_tick'],
+		atomic = [{type = 'stat_add_p', stat = 'hp_reg_mod', value = 0.1}],
+		buffs = [ #fix
+			{
+			icon = "res://assets/images/iconstraits/trait_friends.png",
+			description = "TRAITEFFECTFRIENDS",
+			limit = 1,
+			mansion_only = true,
+			t_name = 'b_friends',
+			tags = ['show_in_traits']
+		}
+		],
+		sub_effects = [],
+	},
+	e_rival = {
+		type = 'c_static',
+		descript = '',
+		conditions = [{code = 'has_relationship',  value = 'rivals', check = true}],
+		tags = ['recheck_tick'],
+		atomic = [{type = 'stat_add_p', stat = 'productivity', value = 0.05}],
+		buffs = [ #fix
+			{
+			icon = "res://assets/images/iconstraits/trait_rivals.png",
+			description = "TRAITEFFECTRIVAL",
+			limit = 1,
+			mansion_only = true,
+			t_name = 'b_rival',
+			tags = ['show_in_traits']
+		}
+		],
+		sub_effects = [],
+	},
+	
 	e_virgin = {
 		type = 'c_static',
 		descript = '',
@@ -131,10 +187,10 @@ var effect_table = {
 		conditions = [{code = 'stat', stat = 'personality', operant = 'eq', value = 'bold'}],
 		tags = ['recheck_stats'],
 		atomic = [
-			#{type = 'stat_add_p', stat = 'matk', value = -0.25}
+			{type = 'stat_add_p', stat = 'productivity', value = 0.05}
 		],
 		buffs = [],
-		sub_effects = [rebuild_skillvalue_template({skilltype = 'skill', value = 1.15})],
+		sub_effects = [],
 	},
 	e_person_shy = {
 		type = 'c_static',
@@ -142,8 +198,7 @@ var effect_table = {
 		conditions = [{code = 'stat', stat = 'personality', operant = 'eq', value = 'shy'}],
 		tags = ['recheck_stats'],
 		atomic = [
-			{type = 'stat_add_p', stat = 'matk', value = 0.15},
-			#{type = 'stat_add_p', stat = 'atk', value = -0.2}
+			{type = 'stat_mul', stat = 'manacost_mod', value = 0.85}
 		],
 		buffs = [],
 		sub_effects = [],
@@ -153,9 +208,11 @@ var effect_table = {
 		descript = '',
 		conditions = [{code = 'stat', stat = 'personality', operant = 'eq', value = 'kind'}],
 		tags = ['recheck_stats'],
-		atomic = [],
+		atomic = [
+			{type = 'stat_add', stat = 'mod_service', value = 0.1}
+		],
 		buffs = [],
-		sub_effects = [rebuild_skillvalue_template({tag = 'heal', value = 1.5}),],
+		sub_effects = [],
 	},
 	e_person_serious = {
 		type = 'c_static',
@@ -163,7 +220,7 @@ var effect_table = {
 		conditions = [{code = 'stat', stat = 'personality', operant = 'eq', value = 'serious'}],
 		tags = ['recheck_stats'],
 		atomic = [
-			{type = 'stat_add', stat = 'damage_reduction', value = 20},
+			{type = 'stat_add', stat = 'base_task_crit_chance', value = 0.03},
 		],
 		buffs = [],
 		sub_effects = [],
@@ -257,7 +314,7 @@ var effect_table = {
 		type = 'static',
 		atomic = [
 			{type = 'stat_add', stat = 'exp_gain_mod', value = 0.05},
-			{type = 'stat_add', stat = 'productivity', value = 0.05},
+			{type = 'stat_add_p', stat = 'productivity', value = 0.05},
 		],
 		buffs = [],
 		sub_effects = [rebuild_simple_dot(['loyalty'], [0.5], variables.TR_DAY),],

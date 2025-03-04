@@ -893,7 +893,7 @@ func test_mode():
 #				{code = 'open_loot'}
 #			]
 #		)
-
+		ResourceScripts.game_party.add_relationship_value(ResourceScripts.game_party.get_unique_slave("cali").id,ResourceScripts.game_party.get_unique_slave("zephyra").id, 100)
 		character.mp = 10
 		character.add_trait('talented')
 		var tmp = {}

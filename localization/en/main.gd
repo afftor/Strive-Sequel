@@ -158,6 +158,7 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	SIBLINGMODULERULES = "Rules and Conditions",
 	SIBLINGMODULESEXTRAITS = "Sex Traits",
 	SIBLINGMODULERELATIVES = "Relatives",
+	SIBLINGMODULERELATIONS = "Social",
 	SIBLINGMODULETRAININGS = "Slave Training",
 	SIBLINGMODULETRAININGSSERVANTS = "Subordinate Unlocks",
 	SIBLINGMODULETRAININGSMASTER = "Master Training",
@@ -1065,7 +1066,7 @@ Hotkey: 3""",
 	SKILLRESTORATION = "Restoration",
 	SKILLRESTORATIONDESCRIPT = "Heals a target for 250% of MATK. Reduces damage taken by 20% for 2 turns.",
 	SKILLREJUVENATION = "Rejuvination",
-	SKILLREJUVENATIONDESCRIPT = "Heals ally for 100% of MATK. Regenerates 60% of MATK each turn for 2 turns.",
+	SKILLREJUVENATIONDESCRIPT = "Heals ally for 100% of MATK. Regenerates 60% of MATK each turn for 2 turns. Removes Burn and Poison.",
 	SKILLREJUVENATIONDESCRIPT_2 = "Heals a row for 100% of MATK. Regenerates 60% of MATK each turn for 2 turns.",
 	SKILLSANCTUARY = "Sanctuary",
 	SKILLSANCTUARYDESCRIPT = "Heals all allies for 80% of MATK. Regenerates 120% of MATK each turn for 3 turns.",
@@ -1157,7 +1158,7 @@ Burning: Take 8% of Maximum HP as Fire damage per turn.""",
 	SKILLDECAY = "Decay",
 	SKILLDECAYDESCRIPT = "Deals 65% of MATK as {color=yellow|Dark} damage to all enemies.",
 	SKILLFIRST_AID = "First Aid",
-	SKILLFIRST_AIDDESCRIPT = "Heals ally for 30% of Maximum HP.",
+	SKILLFIRST_AIDDESCRIPT = "Heals ally for 30% of Maximum HP. Removes Bleed and Poison.",
 	SKILLLIGHT_SPELL = "Holy Light",
 	SKILLLIGHT_SPELLDESCRIPT = "Deals 100% of MATK as {color=yellow|Light} damage to a target",
 	SKILLLIGHT_SPELL_AOE = "Divine Radiance",
@@ -1363,7 +1364,7 @@ Silenced: Can't use Spell type abilities.""",
 	SKILLVEIL = "Shadow Veil",
 	SKILLVEILDESCRIPT = "Buff ally column for 5 turns: Light and Dark resists are increased by 30, MDEF is increased based on caster's MATK.",
 	SKILLSKILL_VOID = "Void",
-	SKILLSKILL_VOIDDESCRIPT = "Deals 200% of MATK as {color=yellow|Dark} damage to all enemies. Enemies hit receive randomly Silence, Blind or Disarm. ",
+	SKILLSKILL_VOIDDESCRIPT = "Deals 150% of MATK as {color=yellow|Dark} damage to all enemies. Enemies hit receive randomly Silence, Blind or Disarm. ",
 	SKILLMINDSHATTER = "Mind Shatter",
 	SKILLMINDSHATTERDESCRIPT = "Deals 160% of MATK as {color=yellow|Mind} damage and Stuns target for 4 turns.",
 	SKILLLAST_STAND = "Last Stand",
@@ -1385,7 +1386,7 @@ Silenced: Can't use Spell type abilities.""",
 	SKILLINVIGORATE = "Invigorate",
 	SKILLINVIGORATEDESCRIPT = "Restore 1 of each Challenge Charge for selected ally.",
 	SKILLHYPERBOREA = "Winds of Hyperborea",
-	SKILLHYPERBOREADESCRIPT = "Deals 300% of MATK as {color=yellow|Water} damage to all enemies. Applies Clarity to all allies for 3 turns.",
+	SKILLHYPERBOREADESCRIPT = "Deals 210% of MATK as {color=yellow|Water} damage to all enemies. Applies Clarity to all allies for 3 turns.",
 	SKILLPOISON_VAPORS = "Poison Vapors",
 	SKILLPOISON_VAPORSDESCRIPT = "Deals 25% of MATK as {color=yellow|Water} damage to enemy column. Applies Poison for 3 turns.",
 	SKILLMETEOR = "Meteor",
@@ -1824,10 +1825,11 @@ Service is a global modifier for this assignment.""",
 	STATWITS = "Wits",
 	STATCHARM = "Charm",
 	STATSEXUALS = "Sexual Proficiency",
-	STATPHYSICSDESCRIPT = "Physical representation of character's muscles and reflexes. The higher it is, the more effective the character is at combat and manual labor tasks. Grows with physical labor and by using Skill type abilities in combat.",
-	STATWITSDESCRIPT = "Wits represent character's quickness of mind and intelligence. High Wits is mandatory for stronger Mage classes and crafters. Grows with some crafting labors and by using Spell type abilities in combat.",
-	STATCHARMDESCRIPT = "Charm represents character's appeal and appearance. High Charm makes social oriented works and skills a lot more effective. Grows from using social abilities.",
-	STATSEXUALSDESCRIPT = "Sexual Proficiency represents character's skills in body pleasures. It is calculated by sum of 3 highest sexual skills and affects certain tasks and abilities.",
+	STATMANACOST_MOD_FIRE = "Fire Spell Cost",
+	STATPHYSICSDESCRIPT = "{color=yellow|Physical} representation of character's muscles and reflexes. The higher it is, the more effective the character is at combat and manual labor tasks. Grows with physical labor and by using Skill type abilities in combat.",
+	STATWITSDESCRIPT = "{color=yellow|Wits} represent character's quickness of mind and intelligence. High Wits is mandatory for stronger Mage classes and crafters. Grows with some crafting labors and by using Spell type abilities in combat.",
+	STATCHARMDESCRIPT = "{color=yellow|Charm} represents character's appeal and appearance. High Charm makes social oriented works and skills a lot more effective. Grows from using social abilities.",
+	STATSEXUALSDESCRIPT = "{color=yellow|Sexual} proficiency represents character's skills in body pleasures. It is calculated by sum of 3 highest sexual skills and affects certain tasks and abilities.",
 	STATGROWTH_FACTOR = "Growth",
 	STATMAGIC_FACTOR = "Magic Affinity",
 	STATPHYSICS_FACTOR = "Physics Factor",
@@ -1938,13 +1940,13 @@ Consent represents character's general acceptance of various sexual actions, but
 	INFORULES_CONDS = "Conditions and rules can be toggled on character, affecting some of their stats and behavior.",
 	INFOPERSONALITY = "Character's personality will affect thier banter and provide access to certain traits and bonuses. Personality will be affected by social skills used on character.",
 	INFOPERSONALITYBOLD = """Bold
-+15% Skill Damage""",
+Incoming negative effects last 1 turn less\n+5% Productivity""",
 	INFOPERSONALITYKIND = """Kind
-+50% Healing Spell Efficiency""",
+Outcoming positive buffs last 1 turn more\n+10% Service""",
 	INFOPERSONALITYSERIOUS = """Serious
-+20% Damage Reduction""",
+Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax""",
 	INFOPERSONALITYSHY = """Shy
-+15% MATK""",
+Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)""",
 	INFOSLAVE_CLASS = "Character type will define its options and behavior. Slaves can be forced into sexual services without consent and have higher tolerance for lack of consent in sex. Subordinates become loyal faster but can't be sold or given away.",
 	INFOCONSENT = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. Consent will affect prostitution related jobs.",
 	INFOCONSENTMASTER = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. {color=green|[Master] has no Consent requirements for any actions.}",
@@ -1995,24 +1997,24 @@ Consent represents character's general acceptance of various sexual actions, but
 	STATGROWTH_FACTORDESCRIPT = """Growth is character's affinity to getting stronger. As character acquire more classes all their stats increase. Non-slave characters will also gain Universal Mastery Points. Every point of growth increases the number of classes which will increase its stats. It also greatly affects character's Value. 
 
 {color=green|Affected stats are: Productivity, Physics, Wits, Charm, Max Health, Max Mana, Speed, Hitrate, Evasion, ATK, MATK, DEF, MDEF.} """,
-	STATPHYSICS_FACTORDESCRIPT = """Physics factor represents physical potential of the character. It increases [color=aqua]Physical[/color] growth and influences melee combat.
+	STATPHYSICS_FACTORDESCRIPT = """{color=yellow|Physics factor} represents physical potential of the character. It increases [color=aqua]Physical[/color] growth and influences melee combat.
 
 {color=green|Maxed Physics Factor increases natural Health Regeneration.}""",
-	STATMAGIC_FACTORDESCRIPT = """Magic factor represents character's magic affinity. The higher it is, the more mana you have and the stronger magic classes you can unlock. Also affects mana regeneration.
+	STATMAGIC_FACTORDESCRIPT = """{color=yellow|Magic Factor} represents character's magic affinity. The higher it is, the more mana you have and the stronger magic classes you can unlock. Also affects mana regeneration.
 {color=green|Maxed Magic Factor provides MATK bonus.}""",
-	STATTAME_FACTORDESCRIPT = """Tame factor represents how easy it is to befriend the character. The higher it is, the more Loyalty character will gain passively and from Gracious and Lewd social skills. It will also make personality changes more stable on Kind axis.
+	STATTAME_FACTORDESCRIPT = """{color=yellow|Tame Factor} represents how easy it is to befriend the character. It reduces the price of unlocking loyalty traits for subordinates.
 
 {color=green|Maxed Tame Factor increases Loyalty Gain.}""",
-	STATTIMID_FACTORDESCRIPT = """Authority Factor represents capability of inflict character's authority over others. The higher it is the more efficient is character's training and more trainees are available to them.
+	STATTIMID_FACTORDESCRIPT = """{color=yellow|Authority Factor} represents capability of inflict character's authority over others. The higher it is the more efficient is character's training and more trainees are available to them.
 
 {color=green|Maxed Authority Factor reduces Damage Taken.}""",
-	STATWITS_FACTORDESCRIPT = """Wits factor represents the character's mind potential. It increases [color=aqua]Wits[/color] growth.
+	STATWITS_FACTORDESCRIPT = """{color=yellow|Wits Factor} represents the character's mind potential. It increases [color=aqua]Wits[/color] growth.
 
 {color=green|Maxed Wits Factor increases experience gain.}""",
-	STATCHARM_FACTORDESCRIPT = """Charm factor represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. [Master]'s charm also increases gold and reputation rewards from repeatable quests and number of dates per week.
+	STATCHARM_FACTORDESCRIPT = """{color=yellow|Charm Factor} represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. [Master]'s charm also increases gold and reputation rewards from repeatable quests and number of dates per week.
 
 {color=green|Maxed Charm Factor furtherly increases social skill efficiency.}""",
-	STATSEXUALS_FACTORDESCRIPT = """Sex factor represents character's sex development potential. It speeds sexual skills acquirement, makes Consent easier to progress and occasionally boosts sexual options in events. [Master]'s Sex factor also increases number of sex interactions per week.
+	STATSEXUALS_FACTORDESCRIPT = """{color=yellow|Sex Factor} represents character's sex development potential. It speeds sexual skills acquirement, makes Consent easier to progress and occasionally boosts sexual options in events. [Master]'s Sex factor also increases number of sex interactions per week.
 
 {color=green|Maxed Sex Factor provides Speed bonus}.""",
 	PHYSICS_FACTORBONUSDESCRIPT = "Physics Factor: Health Regeneration: x2",
@@ -2392,7 +2394,8 @@ Sexual Training actions have lower chance to fail.""",
 	TRAITVALKYRIE_SPEARDESCRIPT = "+10 Speed while equipped with Spear.",
 	TRAITAUTOHIDE = "Conceal",
 	TRAITAUTOHIDEDESCRIPT = "Starts combat Hidden if no Heavy or Medium Armor is equipped.",
-	TRAITDEATHKNIGHTDESCRIPT = "Dealing a killing blow increases random stat.",
+	TRAITDEATHKNIGHT_TRAITDESCRIPT = "Winning a fight increases ATK, Hit Rate and Neutral resist per fight. Maximum 5 stacks. Stacks dissipate with time.\nSkill attacks possess Dark element.",
+	TRAITTEMPLAR_TRAITDESCRIPT = "After using a Taunt or Provoke recover some health and gain increased MDEF for 3 turns.",
 	TRAITNINJADESCRIPT = "Gain evasion based on your MDEF. Minimal chance for evading hit is reduced to 5%.",
 	TRAITWITCHDESCRIPT = "Your critical hits with spells apply random debuff. Healing spells have chance to apply healing over time.",
 	TRAITWARLOCKDESCRIPT = "Single target spells gain 25% increased critical chance and deal 75% bonus critical damage.",
@@ -2668,6 +2671,9 @@ Requires consent \"Willing\" or above.""",
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Virginity}[/center]
 As [name] has a observable virginity, this makes [him] more desirable for certain individuals. 
 {color=yellow|Sell price is increased by 25%%}""",
+	TRAITEFFECTRIVAL = """Rival Present: +5% Productivity""",
+	TRAITEFFECTFRIENDS = """Friend Present: +10% Health Regeneration""",
+	TRAITEFFECTLOVERS = """Lover Present: +10% Mana Regeneration""",
 	TRAITEFFECTRARESTURDY = """Rare: Sturdy
 Increased Health and Armor Penetration""",
 	TRAITEFFECTRARENIMBLE = """Rare: Nimble
@@ -3406,6 +3412,7 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	SEXTRAITLIKES_SHORTSTACKS = "Shortstack Enthusiast",
 	SEXTRAITLIKES_BEASTS = "Likes them beasty",
 	SEXTRAITBISEXUAL = "Bisexual",
+	SEXTRAITMONOGAMOUS = "Monogamous",
 	SEXTRAITOPEN_MINDED = "Open-minded",
 	SEXTRAITDEVIANT = "Deviant",
 	SEXTRAITGROUP = "Company Lover",
@@ -3465,7 +3472,8 @@ Sex skills are increased when performing related action and their growth is depe
 	SEXTRAITDISLIKE_GROUPDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
 	SEXTRAITDISLIKE_BDSMDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
 	SEXTRAITDISLIKE_TAILDESCRIPT = "[name] expresses dislike for certain lewd actions. [His] consent and the effect of received actions are lowered for [him]. ",
-	SEXTRAITBISEXUALDESCRIPT = "[name] does not mind having sex with people of [his] gender. Removes consent penalty from same-sex partners.",
+	SEXTRAITBISEXUALDESCRIPT = "[name] does not mind having sex with people of [his] gender. Removes consent penalty from same-sex partners. Allows romance with residents of same sex.",
+	SEXTRAITMONOGAMOUSDESCRIPT = "[name] only is interested in relationship with a single partner. Boosts consent and effects of the actions from [his] selected person. Prevents [name] from accepting more than one romantic partner.",
 	SEXTRAITOPEN_MINDEDDESCRIPT = "[name] is rather accepting of [his] partners, having no issues with them having different body structures. Removes consent penalty from different body shape partners.",
 	SEXTRAITDEVIANTDESCRIPT = "[name] has some deviant tastes, having no problem from engaging in lewd actions with animals and even undead. Removes consent penalty from animal and undead partners.",
 	SEXTRAITGROUPDESCRIPT = "[name] accepts having multiple partners at once as a natural thing. Removes consent penalty from group actions.",
@@ -3772,6 +3780,12 @@ As the [boy] is made your slave, [he] can be a very useful addition to your roos
 	DIALOGUE_SPRING_NO_LOOT = "You search around but weren't able to find anything useful.",
 	TRIBALELVES = "You find yourself surrounded by a group of local tribal elves. It seems they consider you an intruder on their territory and preparing for attack...",
 	TRIBALELVES_WIN = "As you defeat the attackers, they hastily retreat, yet one of them was left behind and your party manages to subdue them.",
+	
+	CHARLOVERS = "[name] and [scncharname] have approached you and asked to let them become lovers.",
+	CHARFREELOVERS = "[name] and [scncharname] have approached you and asked to let them become paramour.",
+	CHARLOVERSALLOW = "*Allow*",
+	CHARFREELOVERSALLOW = "*Allow*",
+	
 	DIALOGUEEVENTGOODREBELSBEAST = "You come across a small group of rebels, who have caught a [race] [male] that likely strayed from their homelands. Given the rebels' attitude towards [him] it's easy to see they are up to no good...",
 	DIALOGUEEVENTREBELSBEASTINTIMIDATESUCCES = """[center]{color=green|Success!}[/center]
 [name] has successfully intimidated a group of rebels into fleeing, leaving their victim behind.""",
@@ -3884,9 +3898,12 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYELDER_GRYPHON_BOSS = "Elder Gryphon",
 	ENEMYWOLF = "Wolf",
 	ENEMYRAT = "Rat",
+	ENEMYSPIDER_WEAK = "Crawler",
 	ENEMYSPIDER = "Fanged Stalker",
 	ENEMYSPIDER_RANGED = "Web Spitter",
 	ENEMYSPIDER_AOE = "Venomous Sentry",
+	ENEMYSPIDER_ALFA_BOSS = "Spider Alpha",
+	ENEMYSPIDER_QUEEN_BOSS = "Spider Queen",
 	ENEMYTRAINED_DOG = "Trained Dog",
 	ENEMYTRAINED_BEAR = "Trained Bear",
 	ENEMYTRAINED_RAPTOR = "Trained Raptor",
@@ -4079,6 +4096,8 @@ Boosts Productivity by 25%. Character won't gain Experience or Work Stats (Physi
 	WORKRULENUDITYDESCRIPT = "Forces [name] to stay naked while at mansion (if has corresponding sprite). This effect is cosmetic.",
 	WORKRULEPERSONALITY_LOCK = "Lock Personality",
 	WORKRULEPERSONALITY_LOCKDESCRIPT = "[name] will no longer have [his] personality affected by social actions.",
+	WORKRULERELATIONSHIP = "Allow Romance",
+	WORKRULERELATIONSHIPDESCRIPT = "[name] will be allowed to establish romantic relationship with other characters besides [master].",
 	WORKRULEMASTURBATION = "Forbid Masturbation",
 	WORKRULEMASTURBATIONDESCRIPT = "[name] will not be allowed to relieve [him]self, leading to increased stress but higher libido. Obedience Drain +2, Lust Growth +15%.",
 	WORKRULELOCK = "Lock Character",
@@ -5091,6 +5110,7 @@ The princess notices Aire tensing up in response to the question.
 	ITEMBOWADVDESCRIPT = "A masterful weapon forged with inclusion of additional materials.",
 	ARMORENC = "Encrustment",
 	WEAPONENC = "Encrustment",
+	WEAPONELEMENTBASE = "Element",
 	ITEMLATEX_SUIT = "Latex Suit",
 	ITEMLATEX_SUITDESCRIPT = "A tight clothing accentuating curves of the body.",
 	ITEMSERVICE_SUIT = "Bunny Costume",
@@ -5177,7 +5197,14 @@ The princess notices Aire tensing up in response to the question.
 	CHAR_NO_COMBAT = "[name] has sustained a grave injury and is unable to participate in fights.",
 	SENDCHARTOQUESTCONFIRM = "Send this character to quest?",
 	SKILLPOISON_BITE = "Poison Bite",
+	SKILLPOISON_BITE_S = "Poison Bite",
+	SKILLENTANGLE_SA = "Entangle",
 	SKILLENTANGLE_ENEMY = "Entangle",
+	SKILLDISARM_ENEMY_SQ = "Disarm Enemy",
+	SKILLSPIDER_AOE = "Spraying Poison",
+	SKILLSPIDER_RANGED = "Web Spit",
+	SKILLSTICKY_WEB = "Sticky Web",
+	SKILLPOISON_SPRAY = "Poison Spray",
 	SKILLSHRED = "Shred",
 	AIRE_AMELIA1 = """
 Amelia entered Aire's cell with a neat black satchel and a smile on her face.
@@ -8755,7 +8782,7 @@ Savra passes you a small parchment with the ingredients.
 	LEON_ENCOUNTER_2_OPTION_2 = "Is there anything I can help with?",
 	LEON_ENCOUNTER_3 = "— We are going to hunt the Stag and kill it, like we always did in the past. It's a dangerous activity, but that's what we do. I can't ask for your help, but this issue must be taken care of.",
 	LEON_ENCOUNTER_3_OPTION_1 = "What are you planning?",
-	LEON_ENCOUNTER_3_OPTION_2 = "I'll let you a hand.",
+	LEON_ENCOUNTER_3_OPTION_2 = "I'll lend you a hand.",
 	LEON_ENCOUNTER_3_OPTION_3 = "This sounds like it could be fun.",
 	LEON_ENCOUNTER_4_1 = "— We'll set up a hunting party with the most experienced hunters and warriors to track and defeat the Stag. It's not my first time hunting it, though it did slow us down. It's painful to admit I was taken by its curse.",
 	LEON_ENCOUNTER_4_2 = """— It'll be an honor to have your help. You must understand that this is not a normal skirmish or hunt. The White Stag is a beast unlike any other. Not only is it able to induce madness by its mere presence, it possesses other fearsome powers. You can ask Savra about them, she could explain it better than me.
@@ -13844,7 +13871,7 @@ She pauses, turns and points in the direction of the palace.
 	DTAVERN_JEAN_REPLY_PLAN = "— Straight to business then.",
 	DTAVERN_JEAN_THING = """
 
-— I've been tracking down a certain thing across the lands and I've information it is currently stored in the Dwarven Palace Treasury. I have a way inside the treasury, but I need a... bodyguard. In case things get complicated.""",
+— I've been tracking down a certain thing across the lands and I've got information it is currently stored in the Dwarven Palace Treasury. I have a way inside the treasury, but I need a... bodyguard. In case things get complicated.""",
 	DTAVERN_JEAN_OPT_TRUST = "Aren't you too trusting of a person you've just met?",
 	DTAVERN_JEAN_OPT_ALONE = "Or you could just tell me how to get in and I'll get what you want on my own.",
 	DTAVERN_JEAN_OPT_NODEAL = "No deal. I don't know you, I can't trust you.",
@@ -15819,10 +15846,10 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	VISIT_DWARFS_QUEST_SEARCH = "Search a nearby mountain for an entrance to dwarven kingdom.",
 	VISIT_DWARFS_QUEST_AUDIENCE = "Get audience with king.",
 	VISIT_DWARFS_QUEST_TAVERN = "Find a way to attract king's attention. Visit a tavern for a start.",
-	VISIT_DWARFS_QUEST_JEAN = "Help Jean, meet here at Mountain Pass marked on here map, or... You can turn here in. King could be pleased with such revelation.",
+	VISIT_DWARFS_QUEST_JEAN = "Help Jean, meet her at Mountain Pass marked on her map, or... You can turn her in. King could be pleased with such revelation.",
 	DKING_HARA_QUEST_NAME = "Rescue Hara",
 	DKING_HARA_QUEST_SUMMARY = "Find and free Hara from Coalition",
-	DKING_HARA_QUEST_INFO = "You need to get information out of Coalition's agent in prison, whether by bringing gnome-decoy (Charm >= 50; Tame Factor >= 4) or by direct torture.",
+	DKING_HARA_QUEST_INFO = "You need to get information out of Coalition's agent in prison, whether by bringing gnome-decoy (Charm at least 50; Tame Factor at least 4) or by direct torture.",
 	DKING_HARA_QUEST_TRACKS = "You'll have to search for tracks of rebel attackers.",
 	DKING_HARA_QUEST_TEMPLE = "Find and help Coalition's group at Temple of the Old Gods to win a favor with Bolthar.",
 	DKING_HARA_QUEST_WAIT = "In 3 days Coalition's agent will show up in dwarven capital's tavern.",
@@ -17714,7 +17741,7 @@ After a few minutes nothing still happened and [name] decides to move on.""",
 	ENCHDRAGONSLAYER = "Dragon Slayer",
 	ENCHDRAGONSLAYERDESCRIPT = "Increases damage versus dragon type enemies by 10%+10%*level.",
 	ENCHMANASIPHON = "Mana Siphon",
-	ENCHMANASIPHONDESCRIPT = "Skill attacks restore 1*level mana per use",
+	ENCHMANASIPHONDESCRIPT = "Physical Skill attacks restore 1*level mana per use",
 	ENCHNIMBLE = "Nimbleness",
 	ENCHNIMBLEDESCRIPT = "Increases evasion by 5*level.",
 	ENCHKNOWLEDGE = "Knowledge",

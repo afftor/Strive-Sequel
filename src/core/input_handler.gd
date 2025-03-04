@@ -1003,6 +1003,11 @@ func start_event(code, type, args):
 		'scene_character_event':
 			for i in range(0, scene_characters.size()):
 				data.text = scene_characters[i].translate(data.text)
+		'multichar_event':
+			scene_characters.clear()
+			scene_characters.push_back(characters_pool.get_char_by_id(args.char1))
+			scene_characters.push_back(characters_pool.get_char_by_id(args.char2))
+			active_character = characters_pool.get_char_by_id(args.char2)
 		'quest_finish_event':
 			data.text = data.text.replace("[dungeonname]", args.locationname)
 		'childbirth':

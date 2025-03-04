@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.10.3'
+const gameversion = '0.10.3a'
 
 #time
 signal hour_tick
@@ -2434,6 +2434,11 @@ func common_effects(effects):
 						rdata.xp_mod = i.xp_mod
 			'unlock_upgrade':
 				ResourceScripts.game_res.unlock_upgrade(i.upgrade, i.level)
+			'change_relationship':
+				if input_handler.scene_characters.size() == 2:
+					ResourceScripts.game_party.change_relationship_status(input_handler.scene_characters[0].id, input_handler.scene_characters[1].id, i.value)
+				else:
+					print("wrong change relationship setup")
 
 func after_wedding_event(character):
 	if character == null:
@@ -2890,20 +2895,6 @@ func copy_stats(base_ch, unique_ch):
 	base_ch.statlist.statlist = base_ch_statlist
 
 
-func special_check (ch1, ch2):
-	if ch1.is_on_quest() or ch2.is_on_quest():
-		return false
-	if ch1.get_location() != ch2.get_location():
-		return false
-	if ch1.get_location() == ResourceScripts.game_world.mansion_location:
-		if ch1.xp_module.work == ch2.xp_module.work:
-			if ch1.xp_module.work == 'brothel':
-				return true
-			return ch1.xp_module.workproduct == ch2.xp_module.workproduct
-		else:
-			return false
-	else:
-		return true
 
 
 func get_sex_action(code):

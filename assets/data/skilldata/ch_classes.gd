@@ -1548,6 +1548,22 @@ var effects = {
 		}]
 	},
 	
+	e_we_dark_static = {
+		args = [],
+		atomic = [
+			Effectdata.rebuild_we_atomic('dark')
+		],
+		sub_effects = [],
+		tags = [],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/windwall.png", #fix
+			description = "TRAITEFFECTWINDWALL", #fix
+			args = [],
+			limit = 1,
+			t_name = 'we_dark',
+		}]
+	},
+	
 	e_we_test = {
 		type = 'temp_s',
 		duration = 4,

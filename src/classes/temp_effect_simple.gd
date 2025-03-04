@@ -32,6 +32,7 @@ func createfromtemplate(tmp):
 	template_name = template.name
 
 func calculate_duration():
+	var skill = null
 	if typeof(template.duration) == TYPE_STRING:
 		match template.duration:
 			'parent':
@@ -42,6 +43,8 @@ func calculate_duration():
 					par = parent
 				if par != null:
 					template.duration = int(par.template.duration)
+					if par.self_args.has('skill'):
+						skill = par.self_args.skill
 				else:
 					print('error in template %s' % template_name)
 					template.duration = -1
@@ -53,9 +56,16 @@ func calculate_duration():
 					par = parent
 				if par != null:
 					template.duration = int(par.self_args['duration'])
+					if par.self_args.has('skill'):
+						skill = par.self_args.skill
 				else:
 					print('error in template %s' % template_name)
 					template.duration = -1
+	if skill != null:
+		if tags.has('negative') and skill.target.get_stat('personality') == 'bold' and template.duration > 1:
+			template.duration -= 1
+		if tags.has('positive') and skill.caster.get_stat('personality') == 'kind' and template.duration > 0:
+			template.duration += 1
 
 
 func apply():

@@ -10,7 +10,7 @@ var skills = {
 		tags = ['heal', 'noreduce', 'noevade','support', 'exploration'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_regen', push_value = true, duration = 2})], 
+		effects = [Effectdata.rebuild_template({effect = 'e_s_regen', push_value = true, duration = 2}),Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('poison_new')}),Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('burn_new')})], 
 		cost = {mp = 10},
 		charges = 0,
 		combatcooldown = 0,
@@ -220,7 +220,7 @@ var skills = {
 		damage_type = 'water',
 		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
 		sound = [],
-		value = 3,
+		value = 2.1,
 		follow_up = 'hyperborea_1' 
 	},
 	hyperborea_1 = {
@@ -250,7 +250,7 @@ var skills = {
 		damagestat = 'no_stat',
 		not_final = true
 	},
-	poison_vapors = {
+		poison_vapors = {
 		code = 'poison_vapors',
 		descript = '',
 		icon = "res://assets/images/iconsskills/skill_vapors.png",

@@ -410,7 +410,7 @@ text = "WORKRULELOCK"
 
 [node name="ration" type="CheckBox" parent="work_rules"]
 margin_left = 372.0
-margin_right = 783.0
+margin_right = 719.0
 margin_bottom = 48.0
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -443,7 +443,7 @@ text = "WORKRULESHIFTS"
 [node name="luxury" type="CheckBox" parent="work_rules"]
 margin_left = 372.0
 margin_top = 52.0
-margin_right = 783.0
+margin_right = 719.0
 margin_bottom = 100.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -474,6 +474,7 @@ custom_styles/focus = SubResource( 9 )
 text = "WORKRULECONTRACEPTIVE"
 
 [node name="personality_lock" type="CheckBox" parent="work_rules"]
+visible = false
 margin_left = 372.0
 margin_top = 104.0
 margin_right = 783.0
@@ -491,6 +492,27 @@ custom_styles/focus = SubResource( 9 )
 text = "WORKRULEPERSONALITY_LOCK"
 
 [node name="nudity" type="CheckBox" parent="work_rules"]
+margin_left = 372.0
+margin_top = 104.0
+margin_right = 719.0
+margin_bottom = 152.0
+custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
+custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 20 )
+custom_icons/radio_checked_disabled = ExtResource( 17 )
+custom_icons/radio_checked = ExtResource( 17 )
+custom_icons/checked_disabled = ExtResource( 9 )
+custom_icons/radio_unchecked_disabled = ExtResource( 9 )
+custom_icons/checked = ExtResource( 17 )
+custom_icons/radio_unchecked = ExtResource( 9 )
+custom_icons/unchecked_disabled = ExtResource( 9 )
+custom_icons/unchecked = ExtResource( 9 )
+text = "WORKRULENUDITY"
+
+[node name="relationship" type="CheckBox" parent="work_rules"]
 margin_top = 156.0
 margin_right = 368.0
 margin_bottom = 204.0
@@ -508,7 +530,7 @@ custom_icons/checked = ExtResource( 17 )
 custom_icons/radio_unchecked = ExtResource( 9 )
 custom_icons/unchecked_disabled = ExtResource( 9 )
 custom_icons/unchecked = ExtResource( 9 )
-text = "WORKRULENUDITY"
+text = "WORKRULERELATIONSHIP"
 
 [node name="masturbation" type="CheckBox" parent="work_rules"]
 visible = false
@@ -539,9 +561,6 @@ margin_top = 363.0
 margin_right = 280.0
 margin_bottom = 818.0
 custom_styles/panel = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="SexTraitsPanel"]
 light_mask = 0
@@ -625,9 +644,6 @@ custom_fonts/font = ExtResource( 22 )
 text = "SIBLINGMODULERELATIVES"
 align = 1
 clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Relatives" type="HBoxContainer" parent="RelativesPanel"]
 margin_left = 825.0
@@ -775,6 +791,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RelationsButton" type="TextureButton" parent="."]
+margin_left = 838.0
+margin_top = 848.0
+margin_right = 1028.0
+margin_bottom = 905.0
+texture_normal = ExtResource( 48 )
+texture_pressed = ExtResource( 50 )
+texture_hover = ExtResource( 49 )
+
+[node name="Label" type="Label" parent="RelationsButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "SIBLINGMODULERELATIONS"
+align = 1
+valign = 1
+clip_text = true
+
 [node name="UpgradesPanel" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -911,9 +947,9 @@ __meta__ = {
 }
 
 [node name="PersonalityLabel" type="Label" parent="personality"]
-margin_left = -69.0
+margin_left = -74.0
 margin_top = 354.0
-margin_right = 274.0
+margin_right = 212.0
 margin_bottom = 448.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
@@ -952,9 +988,9 @@ stretch_mode = 6
 
 [node name="change_button" type="TextureButton" parent="."]
 margin_left = 617.0
-margin_top = 834.0
+margin_top = 854.0
 margin_right = 807.0
-margin_bottom = 891.0
+margin_bottom = 911.0
 texture_normal = ExtResource( 48 )
 texture_pressed = ExtResource( 50 )
 texture_hover = ExtResource( 49 )
@@ -965,6 +1001,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="change_button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "SIBLINGMODULERELATIVES"
 align = 1
@@ -1036,3 +1074,10 @@ text = "Food Filter"
 align = 1
 valign = 1
 clip_text = true
+
+[node name="Relations" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 838.0
+margin_top = 88.0
+margin_right = 1642.0
+margin_bottom = 824.0

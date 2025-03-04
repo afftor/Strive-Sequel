@@ -8,7 +8,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_phy6', 'e_wit6', 'e_charm6', 'e_sex6', 'e_timid6', 'e_tame6', 'e_mag6', 'e_virgin', 'e_person_bold', 'e_person_shy', 'e_person_kind', 'e_person_serious'],#'e_atkpass'],
+		effects = ['e_phy6', 'e_wit6', 'e_charm6', 'e_sex6', 'e_timid6', 'e_tame6', 'e_mag6', 'e_virgin', 'e_person_bold', 'e_person_shy', 'e_person_kind', 'e_person_serious', 'e_love', 'e_friend', 'e_rival'],#'e_atkpass'],
 	},
 	trainer = {#allows training
 		code = 'trainer',
@@ -245,8 +245,8 @@ var traits = {
 		effects = ['e_tr_druid'],
 		bonusstats = {}
 	},
-	templar = {
-		code = 'templar',
+	templar_trait = {
+		code = 'templar_trait',
 		name = '',
 		descript = '',
 		visible = false,
@@ -362,13 +362,13 @@ var traits = {
 		effects = [],
 		tags = ['ninja']
 	},
-	deathknight = {
-		code = 'deathknight',
+	deathknight_trait = {
+		code = 'deathknight_trait',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_deathknight'],
+		effects = ['e_tr_deathknight', 'e_we_dark_static'],
 		tags = []
 	},
 	nixx_champion = {
@@ -1861,6 +1861,17 @@ var sex_traits = { #only for interaction tab
 		random_generation = true,
 		negative = false,
 		acquire_reqs = [{code = "same_sex_orgasms", operant = "gte", value = 2}],
+		reqs = [],
+		effects = [],
+	},
+	monogamous = {
+		code = "monogamous",
+		name = "",
+		descript = "",
+		starting = true,
+		random_generation = true,
+		negative = false,
+		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "satisfied_partners", operant = "eq", value = 1},{code = "stat", type = "orgasm_partners", operant = "eq", value = 1}]}],
 		reqs = [],
 		effects = [],
 	},

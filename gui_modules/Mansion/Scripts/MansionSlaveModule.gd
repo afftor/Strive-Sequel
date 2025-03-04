@@ -40,7 +40,7 @@ func show_slave_info():
 		$Panel.visible = false
 		#globals.connecttexttooltip($RichTextLabel, person.show_race_description())
 		$exp.text = str(floor(person.get_stat('base_exp')))
-		$productivity/Label.text = str(person.get_stat('productivity')) + "%"
+		$productivity/Label.text = str(round(person.get_stat('productivity'))) + "%"
 		var text = "[center]" + person.get_full_name() + "[/center]"# + person.translate(" [race] [age]")
 		input_handler.ClearContainer($TextureRect/ScrollContainer/professions)
 		if person.xp_module.professions.size() > 5:

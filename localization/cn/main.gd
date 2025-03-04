@@ -176,6 +176,7 @@ var TranslationDict = {
 	SIBLINGMODULERULES = "规则和条件",
 	SIBLINGMODULESEXTRAITS = "性特征",
 	SIBLINGMODULERELATIVES = "Relatives",
+	SIBLINGMODULERELATIONS = """Social""", # MISSING TRANSLATION
 	SIBLINGMODULETRAININGS = "Trainings",
 	SIBLINGMODULETRAININGSSERVANTS = """Servant Training""", # MISSING TRANSLATION
 	SIBLINGMODULETRAININGSMASTER = """Master Training""", # MISSING TRANSLATION
@@ -1724,6 +1725,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	STATWITS = "Wits",
 	STATCHARM = "Charm",
 	STATSEXUALS = "Sexual Proficiency",
+	STATMANACOST_MOD_FIRE = """Fire Spell Cost""", # MISSING TRANSLATION
 
 	STATPHYSICSDESCRIPT = "Physical representation of character's muscles and reflexes. The higher it is, the more effective the character is at combat and manual labor tasks. Grows with physical labor and by using Skill type abilities in combat.",
 	STATWITSDESCRIPT = "Wits represent character's quickness of mind and intelligence. High Wits is mandatory for stronger Mage classes and crafters. Grows with some crafting labors and by using Spell type abilities in combat.",
@@ -2189,6 +2191,8 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	TRAITVALKYRIE_SPEARDESCRIPT = "+10 Speed while equipped with Spear.\n装备长矛时速度+10",
 	TRAITAUTOHIDE = "Conceal.\n概念",
 	TRAITAUTOHIDEDESCRIPT = "Starts combat in Hide if no Heavy or Medium Armor is equipped.\n如果没有装备重型或中型装甲，则在隐藏状态下开始战斗",
+	TRAITDEATHKNIGHT_TRAITDESCRIPT = """Winning a fight increases ATK, Hit Rate and Neutral resist per fight. Maximum 5 stacks. Stacks dissipate with time. """, # MISSING TRANSLATION
+	TRAITTEMPLAR_TRAITDESCRIPT = """After using a Taunt or Provoke recover some health and gain increased MDEF for 3 turns.""", # MISSING TRANSLATION
 	TRAITDEATHKNIGHTDESCRIPT = """Dealing a killing blow increases Loyalty.""", # MISSING TRANSLATION
 	TRAITNINJADESCRIPT = """Gain evasion based on your MDEF. Minimal chance for evading hit is reduced to 5%.""", # MISSING TRANSLATION
 	TRAITWITCHDESCRIPT = """Your critical hits with spells apply random debuff. Healing spells have chance to apply healing over time.""", # MISSING TRANSLATION
@@ -2377,6 +2381,9 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	
 	
 	TRAITEFFECTVIRGIN = "[center]{color=yellow|Virginity}[/center]\nAs [name] has a observable virginity, this makes [him] more desirable for certain tasks and individuals. \n{color=yellow|Value is increased by 25%%}",
+	TRAITEFFECTRIVAL = """Rival Present: +5% Productivity""", # MISSING TRANSLATION
+	TRAITEFFECTFRIEND = """Friend Present: +10% Health Regeneration""", # MISSING TRANSLATION
+	TRAITEFFECTLOVER = """Lover Present: +10% Mana Regeneration""", # MISSING TRANSLATION
 	TRAITEFFECTRARESTURDY = "Rare: Sturdy\nIncreased Health and Armor Penetration",
 	TRAITEFFECTRARENIMBLE = "Rare: Nimble\nIncreased Evasion and Speed",
 	TRAITEFFECTRARESTRONG = "Rare: Strong\nIncreased Damage and Maximum Health",
@@ -3151,6 +3158,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	SEXTRAITLIKES_SHORTSTACKS = "矮小体型爱好者",
 	SEXTRAITLIKES_BEASTS = "兽人爱好者",
 	SEXTRAITBISEXUAL = "双性恋",
+	SEXTRAITMONOGAMOUS = """Monogamous""", # MISSING TRANSLATION
 	SEXTRAITOPEN_MINDED = "思想开放",
 	SEXTRAITDEVIANT = "离经叛道",
 	SEXTRAITGROUP = "群交爱好者",
@@ -3215,6 +3223,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 
 
 	SEXTRAITBISEXUALDESCRIPT = "[name] does not mind having sex with people of [his] gender. Removes consent penalty from same-sex partners.",
+	SEXTRAITMONOGAMOUSDESCRIPT = """[name] only is interested in relationship with a single partner. Boosts consent and effects of the actions from [his] selected person. Prevents [name] from accepting more than one romantic partner.""", # MISSING TRANSLATION
 	SEXTRAITOPEN_MINDEDDESCRIPT = "[name] is rather accepting of [his] partners, having no issues with them having different body structures. Removes consent penalty from different body shape partners.",
 	SEXTRAITDEVIANTDESCRIPT = "[name] has some deviant tastes, having no problem from engaging in lewd actions with animals and even undead. Removes consent penalty from animal and undead partners.",
 	SEXTRAITGROUPDESCRIPT = "[name] accepts having multiple partners at once as a natural thing. Removes consent penalty from group actions.",
@@ -3465,6 +3474,10 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	DIALOGUE_SPRING_NO_LOOT = "您四处搜索，但找不到任何有用的东西.",
 	TRIBALELVES = "你发现自己被一群当地部落精灵包围。他们似乎认为你是他们领土上的入侵者，正在准备攻击...",
 	TRIBALELVES_WIN = "当你击败攻击者时，他们匆忙撤退，但其中一人被落在了后面，你的团队成功制服了他们.",
+	CHARLOVERS = """[name] and [scncharname] have approached you and asked to let them become lovers.""", # MISSING TRANSLATION
+	CHARFREELOVERS = """[name] and [scncharname] have approached you and asked to let them become paramour.""", # MISSING TRANSLATION
+	CHARLOVERSALLOW = """*Allow*""", # MISSING TRANSLATION
+	CHARFREELOVERSALLOW = """*Allow*""", # MISSING TRANSLATION
 
 
 	DIALOGUEEVENTGOODREBELSBEAST = "你遇到了一小群反叛分子，他们抓住了一个可能远离家乡的 [race] [male] 考虑到反叛分子对[him]的态度，很容易看出他们做了坏事...",
@@ -3571,6 +3584,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	ENEMYELDER_GRYPHON_BOSS = "老鹰头狮",
 	ENEMYWOLF = "狼",
 	ENEMYRAT = "老鼠",
+	ENEMYSPIDER_WEAK = """Crawler""", # MISSING TRANSLATION
 	ENEMYSPIDER = "蜘蛛",
 	ENEMYSPIDER_RANGED = """Web Spitter""", # MISSING TRANSLATION
 	ENEMYSPIDER_AOE = """Venomous Sentry""", # MISSING TRANSLATION
@@ -4778,6 +4792,7 @@ You explain yourself being the new landowner to her.""", # MISSING TRANSLATION
 
 	ARMORENC = "外壳",
 	WEAPONENC = "外壳",
+	WEAPONELEMENTBASE = """Element""", # MISSING TRANSLATION
 
 	ITEMLATEX_SUIT = "乳胶套装",
 	ITEMLATEX_SUITDESCRIPT = "紧身衣凸显身体曲线.",
@@ -4875,7 +4890,14 @@ You explain yourself being the new landowner to her.""", # MISSING TRANSLATION
 	SENDCHARTOQUESTCONFIRM = "是否将此角色应用于任务?",
 
 	SKILLPOISON_BITE = "毒咬",
+	SKILLPOISON_BITE_S = """Poison Bite""", # MISSING TRANSLATION
+	SKILLENTANGLE_SA = """Entangle""", # MISSING TRANSLATION
 	SKILLENTANGLE_ENEMY = "纠缠",
+	SKILLDISARM_ENEMY_SQ = """Disarm Enemy""", # MISSING TRANSLATION
+	SKILLSPIDER_AOE = """Spraying Poison""", # MISSING TRANSLATION
+	SKILLSPIDER_RANGED = """Web Spit""", # MISSING TRANSLATION
+	SKILLSTICKY_WEB = """Sticky Web""", # MISSING TRANSLATION
+	SKILLPOISON_SPRAY = """Poison Spray""", # MISSING TRANSLATION
 	SKILLSHRED = "切碎",
 
 
