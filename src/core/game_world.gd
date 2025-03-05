@@ -420,13 +420,20 @@ func gather_res(loc_id, amount):
 	}
 	match location.type:
 		'settlement':
-			var res = input_handler.random_from_array(location.gather_resources.keys())
+			var pool = []
+			for id in location.gather_resources.keys():
+				if ResourceScripts.game_progress.can_gather_item(id):
+					pool.push_back(id)
+			var res = input_handler.random_from_array(pool)
 			var resdata = Items.materiallist[res]
 			var gather_amount = int(amount / resdata.price)
 			ResourceScripts.game_res.materials[res] += gather_amount
 			data.text += "%s - %d" % [tr(resdata.name), gather_amount]
 		'dungeon':
-			var pool = location.gather_limit_resources.keys().duplicate()
+			var pool = []
+			for id in location.gather_limit_resources.keys():
+				if ResourceScripts.game_progress.can_gather_item(id):
+					pool.push_back(id)
 			while amount > 0:
 				if pool.empty():
 					break

@@ -339,3 +339,11 @@ func get_materials_from_conds(data):
 		if globals.checkreqs(data[tier]):
 			return tier
 	return get_default_materials()
+
+
+func can_gather_item(mat_id):
+	var tmp = Items.material_tiers[get_default_materials()]
+	var matdata = Items.materiallist[mat_id]
+	if matdata.type in ['food']:
+		return true
+	return tmp.has(mat_id)
