@@ -72,7 +72,6 @@ expand = true
 
 [node name="CharacterImage" type="TextureRect" parent="."]
 visible = false
-show_behind_parent = true
 margin_left = 1030.0
 margin_top = -2.0
 margin_right = 2187.0
@@ -85,7 +84,6 @@ __meta__ = {
 
 [node name="CharacterImage2" type="TextureRect" parent="."]
 visible = false
-show_behind_parent = true
 margin_left = -265.68
 margin_top = -2.0
 margin_right = 891.32
