@@ -1527,8 +1527,6 @@ func FinishCombat(victory = true):
 		input_handler.combat_defeat()
 	
 	input_handler.combat_node = null
-	ActionQueue.force_clean()
-	ActionQueue = null
 	gui_controller.current_screen = gui_controller.previous_screen
 	gui_controller.combat = null
 	characters_pool.cleanup()
@@ -1548,6 +1546,8 @@ func victory():
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: 
 		yield(CombatAnimations, 'alleffectsfinished')
+	ActionQueue.force_clean()
+	ActionQueue = null
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	fightover = true
@@ -1692,5 +1692,7 @@ func defeat(runaway = false): #runaway is a temporary variable until run() metho
 	CombatAnimations.force_end()
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	fightover = true
+	ActionQueue.force_clean()
+	ActionQueue = null
 	FinishCombat(false)
 	input_handler.SetMusic(input_handler.explore_sound, true)
