@@ -2671,9 +2671,9 @@ Requires consent \"Willing\" or above.""",
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Virginity}[/center]
 As [name] has a observable virginity, this makes [him] more desirable for certain individuals. 
 {color=yellow|Sell price is increased by 25%%}""",
-	TRAITEFFECTRIVAL = """Rival Present: +5% Productivity""",
-	TRAITEFFECTFRIENDS = """Friend Present: +10% Health Regeneration""",
-	TRAITEFFECTLOVERS = """Lover Present: +10% Mana Regeneration""",
+	TRAITEFFECTRIVAL = """Rival Present: +5%% Productivity""",
+	TRAITEFFECTFRIENDS = """Friend Present: +10%% Health Regeneration""",
+	TRAITEFFECTLOVERS = """Lover Present: +10%% Mana Regeneration""",
 	TRAITEFFECTRARESTURDY = """Rare: Sturdy
 Increased Health and Armor Penetration""",
 	TRAITEFFECTRARENIMBLE = """Rare: Nimble

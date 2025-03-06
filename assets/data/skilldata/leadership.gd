@@ -95,8 +95,8 @@ var skills = {
 		damage_type = 'light',
 		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
-		value = [['target.hpmax','*0.30']],
-		damagestat = ['-damage_hp']
+		value = [['target.mpmax','*0.50']],
+		damagestat = ['restore_mana']
 	},
 }
 var effects = {

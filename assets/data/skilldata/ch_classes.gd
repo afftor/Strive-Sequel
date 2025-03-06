@@ -1549,6 +1549,7 @@ var effects = {
 	},
 	
 	e_we_dark_static = {
+		type = 'static',
 		args = [],
 		atomic = [
 			Effectdata.rebuild_we_atomic('dark')
