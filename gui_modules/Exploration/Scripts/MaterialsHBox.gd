@@ -51,7 +51,7 @@ func update():
 		for i in gatherable_resources:
 			var item = Items.materiallist[i]
 			var newbutton = input_handler.DuplicateContainerTemplate(self)
-			if ResourceScripts.game_progress.can_gather_item(i):
+			if ResourceScripts.game_progress.can_gather_item(i) or dungeon:
 				newbutton.get_node("TextureRect").texture = Items.materiallist[i].icon
 				newbutton.set_meta("exploration", true)
 				if dungeon:

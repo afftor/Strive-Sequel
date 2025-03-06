@@ -432,8 +432,8 @@ func gather_res(loc_id, amount):
 		'dungeon':
 			var pool = []
 			for id in location.gather_limit_resources.keys():
-				if ResourceScripts.game_progress.can_gather_item(id):
-					pool.push_back(id)
+#				if ResourceScripts.game_progress.can_gather_item(id):
+				pool.push_back(id)
 			while amount > 0:
 				if pool.empty():
 					break

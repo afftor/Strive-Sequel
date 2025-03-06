@@ -428,7 +428,7 @@ func update_resources():
 						current_workers_count = task.workers.size()
 				newbutton.get_node("Label").text = str(current_workers_count)
 	for resource in gatherable_resources:
-		if !ResourceScripts.game_progress.can_gather_item(resource):
+		if !ResourceScripts.game_progress.can_gather_item(resource) and location_type != "dungeon":
 			continue
 		var text = ""
 		var max_workers_count = 0
