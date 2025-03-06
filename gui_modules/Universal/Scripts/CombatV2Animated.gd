@@ -1546,8 +1546,9 @@ func victory():
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: 
 		yield(CombatAnimations, 'alleffectsfinished')
-	ActionQueue.force_clean()
-	ActionQueue = null
+	if ActionQueue != null:
+		ActionQueue.force_clean()
+		ActionQueue = null
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	fightover = true
