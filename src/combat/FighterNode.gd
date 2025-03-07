@@ -226,16 +226,16 @@ func update_buff(i):
 func update_hp_label(newhp, newhpp):
 	if !visible: return
 	if fighter.combatgroup == 'ally' || ResourceScripts.game_globals.show_enemy_hp:
-		$hplabel.text = str(ceil(newhp)) + '/' + str(ceil(fighter.get_stat('hpmax')))
+		$bars/HP/hplabel.text = str(ceil(newhp)) + '/' + str(ceil(fighter.get_stat('hpmax')))
 	else:
-		$hplabel.text = str(ceil(newhpp)) + '%%'
+		$bars/HP/hplabel.text = str(ceil(newhpp)) + '%%'
 
 func update_mp_label(newmp, newmpp):
 	if !visible: return
 	if fighter.combatgroup == 'ally' || ResourceScripts.game_globals.show_enemy_hp:
-		$mplabel.text = str(floor(newmp)) + '/' + str(floor(fighter.get_stat('mpmax')))
+		$bars/MP/mplabel.text = str(floor(newmp)) + '/' + str(floor(fighter.get_stat('mpmax')))
 	else:
-		$mplabel.text = str(floor(newmpp)) + '%%'
+		$bars/MP/mplabel.text = str(floor(newmpp)) + '%%'
 
 func noq_defeat():
 	if !visible: 
