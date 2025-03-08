@@ -373,7 +373,7 @@ var dungeons = {
 		
 		
 		#do not remove next ones - for they a used in generation
-		resources = 'local1',
+		resources = ['cloth','leather','iron','wood','clothsilk'],
 		bgm = "tower",
 		purchase_price = 100,
 		affiliation = 'local', #defines character races and events
@@ -467,7 +467,7 @@ var dungeons = {
 		
 		
 		#do not remove next ones - for they a used in generation
-		resources = 'local1',
+		resources = ['cloth','leather','iron','wood','clothsilk'],
 		gatherable_resources = {
 			wood = {
 				amount = [25,40],
@@ -586,7 +586,7 @@ var dungeons = {
 		base_room_stamina_cost = [7,10], 
 		
 		
-		resources = 'local2',
+		resources = ['woodiron','leatherthick','iron','steel','clothsilk','mithril'],
 		gatherable_resources = {
 			wood = {
 				amount = [45,60],
@@ -712,7 +712,7 @@ var dungeons = {
 		base_room_stamina_cost = [7,10], 
 		
 		
-		resources = 'local2',
+		resources = ['woodiron','leatherthick','iron','steel','clothsilk','mithril'],
 		gatherable_resources = {
 			wood = {
 				amount = [45,60],
@@ -828,7 +828,7 @@ var dungeons = {
 		levels = [2,3], 
 		base_room_stamina_cost = [7,10], 
 		
-		resources = 'local3',
+		resources = ['bone','leather','boneancient','woodmagic','clothsilk','iron','mithril','bonedragon','leathermythic'],
 		gatherable_resources = {
 			stone = {
 				amount = [45,60],
@@ -921,7 +921,7 @@ var dungeons = {
 		levels = [2,2], 
 		base_room_stamina_cost = [6,9], 
 		
-		resources = 'local4',
+		resources = ['bone','leather','stone','wood'],
 		gatherable_resources = {
 			stone = {
 				amount = [45,60],
@@ -1031,7 +1031,7 @@ var dungeons = {
 		levels = [2,2], 
 		base_room_stamina_cost = [5,11], 
 		
-		resources = 'local5',
+		resources = ['cloth','leather','woodmagic','wood','woodiron'],
 		gatherable_resources = {
 			meat = {
 				amount = [90,120],
@@ -1117,7 +1117,7 @@ var dungeons = {
 		levels = [2,2], 
 		base_room_stamina_cost = [5,11], 
 		
-		resources = 'local5',
+		resources = ['cloth','leather','woodmagic','wood','woodiron'],
 		gatherable_resources = {
 			meat = {
 				amount = [90,120],
@@ -1206,7 +1206,7 @@ var dungeons = {
 		levels = [2,2], 
 		base_room_stamina_cost = [5,11], 
 		
-		resources = 'local5',
+		resources = ['cloth','leather','woodmagic','wood','woodiron'],
 		gatherable_resources = {
 			stone = {
 				amount = [25,40],
@@ -1319,7 +1319,7 @@ var dungeons = {
 		levels = [3,4], 
 		base_room_stamina_cost = [7,11], 
 		
-		resources = 'local6',
+		resources = ['woodmagic','woodiron','leatherthick','leathermythic','insect_chitin','iron'],
 		gatherable_resources = {
 			woodmagic = {
 				amount = [25,45],
@@ -1430,7 +1430,7 @@ var dungeons = {
 		base_room_stamina_cost = [7,11], 
 		
 		
-		resources = 'local7',
+		resources = ['steel','mithril','obsidian','leatherthick','leather'],
 		gatherable_resources = {
 			iron = {
 				amount = [40,70],
@@ -1524,7 +1524,7 @@ var dungeons = {
 		levels = [1,1], 
 		base_room_stamina_cost = [5,8],
 		
-		resources = 'local1',
+		resources = ['cloth','leather','iron','wood','clothsilk'],
 		gatherable_resources = {
 			wood = {
 				amount = [25,40],
@@ -1611,7 +1611,7 @@ var dungeons = {
 		levels = [1,1], 
 		base_room_stamina_cost = [5,8],
 		
-		resources = 'local1',
+		resources = ['cloth','leather','iron','wood','clothsilk'],
 		gatherable_resources = {
 			stone = {
 				amount = [25,40],
@@ -1697,7 +1697,7 @@ var dungeons = {
 		levels = [1,1], 
 		base_room_stamina_cost = [3,5],
 		
-		resources = 'local1',
+		resources = ['cloth','leather','iron','wood','clothsilk'],
 		gatherable_resources = {
 			stone = {
 				amount = [25,40],
@@ -1795,7 +1795,7 @@ var dungeons = {
 		levels = [1,1], 
 		base_room_stamina_cost = [3,5],
 		
-		resources = 'local8',
+		resources = ['clothmagic','leatherthick','iron','wood','clothsilk'],
 		gatherable_resources = {
 			wood = {
 				amount = [25,40],
@@ -1956,7 +1956,7 @@ var dungeons = {
 		levels = [1,1], 
 		base_room_stamina_cost = [5,8],
 		
-		resources = 'local1',
+		resources = ['cloth','leather','iron','wood','clothsilk'],
 		gatherable_resources = {
 			iron = {
 				amount = [15,25],
@@ -2037,7 +2037,7 @@ var dungeons = {
 		levels = [1,1], 
 		base_room_stamina_cost = [5,8],
 		
-		resources = 'local5',
+		resources = ['cloth','leather','woodmagic','wood','woodiron'],
 		gatherable_resources = {
 			meat = {
 				amount = [90,120],
@@ -2161,7 +2161,7 @@ var dungeons = {
 		levels = [2,2], 
 		base_room_stamina_cost = [7,11], 
 		
-		resources = 'local6',
+		resources = ['woodmagic','woodiron','leatherthick','leathermythic','insect_chitin','iron'],
 		gatherable_resources = {
 			woodmagic = {
 				amount = [25,45],
@@ -2220,7 +2220,7 @@ var dungeons = {
 #		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
 #		eventarray = [],
 #		levels = [1,1],
-#		resources = '',
+#		resources = [],
 #		#gatherable_resources = {},
 #		#gather_mod = [],
 #		gatherable_resources = {number = [0,0], pool = {}}, #temp items for the game to work
@@ -2251,7 +2251,7 @@ var dungeons = {
 #		final_enemy = [['grove_easy_boss',1]], final_enemy_type = 'monster',
 #		eventarray = [['dungeon_find_chest_easy', 1],['grove_find_wood',1],['grove_find_leather',0.5],['event_fairy_friendly', 0.5],['celena_shrine_find',0.1],['erebus_shrine_find',0.2],['freya_shrine_find',1]],
 #		levels = [2,4],
-#		resources = 'local5',
+#		resources = ['cloth','leather','woodmagic','wood','woodiron'],
 #		gatherable_resources = {number = [2,3], pool = {meat = [150,250], wood = [50,100], woodmagic = [15,25], woodiron = [15,25]}},
 #		gather_mod = [2,2.5],
 #		stages_per_level = [3,5],
@@ -2283,7 +2283,7 @@ var dungeons = {
 #		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
 #		eventarray = [],
 #		levels = [1,1],
-#		resources = '',
+#		resources = [],
 #		#gatherable_resources = {},
 #		#gather_mod = [],
 #		gatherable_resources = {number = [0,0], pool = {}}, #temp items for the game to work
@@ -2339,7 +2339,7 @@ var dungeons = {
 		levels = [1,1], 
 		base_room_stamina_cost = [5,5],
 		
-		resources = 'local1',
+		resources = ['cloth','leather','iron','wood','clothsilk'],
 		gatherable_resources = {
 			stone = {
 				amount = [15,25],
@@ -2373,7 +2373,7 @@ var dungeons = {
 #		enemyarray =  [],
 #		eventarray = [],
 #		levels = [1,1],
-#		resources = '',
+#		resources = [],
 #		stages_per_level = [1,1],
 #		events = [],
 #		travel_time = [1,1],#[2,2],
@@ -2390,7 +2390,7 @@ var dungeons = {
 		enemyarray =  [],
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		stages_per_level = [1,1],
 		travel_time = [1,1], #[3,3],
 		events = [],
@@ -2409,7 +2409,7 @@ var dungeons = {
 		enemyarray =  [],
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		stages_per_level = [1,1],
 		travel_time = [1,1], #[3,3],
 		events = [],
@@ -2429,7 +2429,7 @@ var dungeons = {
 		enemyarray =  [],
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		stages_per_level = [1,1],
 		travel_time = [1,1], #[3,3],
 		events = [],
@@ -2448,7 +2448,7 @@ var dungeons = {
 		enemyarray =  [],
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		stages_per_level = [1,1],
 		travel_time = [1,1],#[2,2],
 		events = [],
@@ -2467,7 +2467,7 @@ var dungeons = {
 		enemyarray =  [],
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		stages_per_level = [1,1],
 		events = [],
 		tags = [],
@@ -2484,7 +2484,7 @@ var dungeons = {
 		enemyarray =  [],
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		stages_per_level = [1,1],
 		events = [],
 		tags = [],
@@ -2501,7 +2501,7 @@ var dungeons = {
 		enemyarray =  [],
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		stages_per_level = [1,1],
 		events = [],
 		tags = [],
@@ -2518,7 +2518,7 @@ var dungeons = {
 		enemyarray =  [],
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		stages_per_level = [1,1],
 		events = [],
 		tags = [],
@@ -2535,7 +2535,7 @@ var dungeons = {
 		enemyarray =  [],
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		stages_per_level = [1,1],
 		events = [],
 		tags = [],
@@ -2551,7 +2551,7 @@ var dungeons = {
 		enemyarray =  [],
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		stages_per_level = [1,1],
 		events = [],
 		tags = [],
@@ -2570,7 +2570,7 @@ var dungeons = {
 		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		stages_per_level = [10,10],
 		character_data = {
 			chance_mod = 1.5,
@@ -2602,7 +2602,7 @@ var dungeons = {
 		final_enemy = [['elder_gryphon_boss',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		gather_mod = [2.5,4], #temp mod for the game to work
 		stages_per_level = [10,10],
 		bgm = "dungeon",
@@ -2631,7 +2631,7 @@ var dungeons = {
 		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		gather_mod = [2.5,4], #temp mod for the game to work
 		stages_per_level = [10,10],
 		bgm = "dungeon",
@@ -2656,7 +2656,7 @@ var dungeons = {
 		final_enemy = [['bandit_boss',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		gather_mod = [2.5,4], 
 		stages_per_level = [10,10],
 		bgm = "dungeon",
@@ -2681,7 +2681,7 @@ var dungeons = {
 		final_enemy = [['elder_gryphon_boss',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		gather_mod = [2.5,4], 
 		stages_per_level = [10,10],
 		bgm = "dungeon",
@@ -2706,7 +2706,7 @@ var dungeons = {
 		final_enemy = [['elder_gryphon_boss',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		gather_mod = [2.5,4], 
 		stages_per_level = [10,10],
 		bgm = "dungeon",
@@ -2731,7 +2731,7 @@ var dungeons = {
 		final_enemy = [['elder_gryphon_boss',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		gather_mod = [2.5,4], 
 		stages_per_level = [10,10],
 		bgm = "dungeon",
@@ -2756,7 +2756,7 @@ var dungeons = {
 		final_enemy = [['elder_gryphon_boss',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		gather_mod = [2.5,4], 
 		stages_per_level = [10,10],
 		bgm = "dungeon",
@@ -2780,7 +2780,7 @@ var dungeons = {
 		final_enemy = [['bandits_medium_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		gather_mod = [2.5,4], 
 		stages_per_level = [10,10],
 		bgm = "dungeon",
@@ -2805,7 +2805,7 @@ var dungeons = {
 		final_enemy = [['elder_gryphon_boss',1]], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		gather_mod = [2.5,4], 
 		stages_per_level = [10,10],
 		bgm = "dungeon",
@@ -2830,7 +2830,7 @@ var dungeons = {
 		final_enemy = [], final_enemy_type = 'monster',
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		gather_mod = [2.5,4], 
 		stages_per_level = [10,10],
 		bgm = "dungeon",
@@ -2853,7 +2853,7 @@ var dungeons = {
 		enemyarray =  [],
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		stages_per_level = [1,1],
 		events = [],
 		tags = [],
@@ -2871,7 +2871,7 @@ var dungeons = {
 		enemyarray =  [],
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		stages_per_level = [1,1],
 		events = [],
 		tags = [],
@@ -2902,7 +2902,7 @@ var dungeons = {
 		levels = [1,1], 
 		base_room_stamina_cost = [5,8],
 		
-		resources = '',
+		resources = [],
 		gatherable_resources = {},
 		gather_mod = [2,2.5],
 		bgm = "dungeon",
@@ -2941,7 +2941,7 @@ var dungeons = {
 		levels = [1,1], 
 		base_room_stamina_cost = [5,8],
 		
-		resources = '',
+		resources = [],
 		gatherable_resources = {},
 		gather_mod = [2,2.5],
 		bgm = "dungeon",
@@ -2967,7 +2967,7 @@ var dungeons = {
 		enemyarray =  [],
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		stages_per_level = [1,1],
 		events = [],
 		tags = [],
@@ -2986,7 +2986,7 @@ var dungeons = {
 		enemyarray =  [],
 		eventarray = [],
 		levels = [1,1],
-		resources = '',
+		resources = [],
 		stages_per_level = [1,1],
 		events = [],
 		tags = [],
@@ -3017,7 +3017,7 @@ var dungeons = {
 		levels = [1,1], 
 		base_room_stamina_cost = [5,8],
 		
-		resources = '',
+		resources = [],
 		gatherable_resources = {},
 		gather_mod = [2,2.5],
 		bgm = "dungeon",
@@ -3117,7 +3117,7 @@ var dungeons = {
 		levels = [1,2], 
 		base_room_stamina_cost = [7,11], 
 		
-		resources = 'local6',
+		resources = ['woodmagic','woodiron','leatherthick','leathermythic','insect_chitin','iron'],
 		gatherable_resources = {
 			woodmagic = {
 				amount = [25,45],
@@ -3188,7 +3188,7 @@ var dungeons = {
 		levels = [1,1], 
 		base_room_stamina_cost = [5,5],
 		
-		resources = 'local1',
+		resources = ['cloth','leather','iron','wood','clothsilk'],
 		gatherable_resources = {
 			stone = {
 				amount = [15,25],
@@ -3246,7 +3246,7 @@ var dungeons = {
 		levels = [1,1], 
 		base_room_stamina_cost = [5,5],
 		
-		resources = 'local1',
+		resources = ['cloth','leather','iron','wood','clothsilk'],
 		gatherable_resources = {
 			stone = {
 				amount = [15,25],
