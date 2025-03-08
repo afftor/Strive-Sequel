@@ -2191,7 +2191,7 @@ var loot_variants_data = {
 	],
 	medium_chest_map = [
 		{code = 'material', min = 4, max = 8, grade = 'location'},
-		{code = 'map', min = 1, max = 1, maps = ['map_bandit_fort','map_ancient_jungle','map_undead_crypt','map_fire_depths']}
+		{code = 'map', min = 1, max = 1, maps = ['map_bandit_fort','map_ancient_jungle','map_undead_crypt','map_fire_depths','map_spider_lair']}
 	],
 	easy_armory_weapon = [
 		{code = 'weapon', min = 1, max = 1, grade = ['easy'], material_grade = [['t1',10], ['t1', 3], ['t1',1]]},
@@ -2231,7 +2231,7 @@ var loot_variants_data = {
 		{code = 'defined', name = 'exp_scroll', min = 2, max = 4},
 		{code = 'defined', name = 'soul_stone', min = 0, max = 1},
 		{code = 'gold', min = 400, max = 600},
-		{code = 'map', min = 1, max = 1, maps = ['map_bandit_fort','map_ancient_jungle','map_undead_crypt','map_fire_depths']}
+		{code = 'map', min = 1, max = 1, maps = ['map_bandit_fort','map_ancient_jungle','map_undead_crypt','map_fire_depths','map_spider_lair']}
 	],
 	grove_wood_reward = [
 		{code = 'material_selected', 
