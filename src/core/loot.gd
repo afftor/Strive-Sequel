@@ -35,7 +35,7 @@ func merge_shop_dict(shopdict, add):
 	for key in shopdict:
 		if add.has(key):
 			if shopdict[key] is Dictionary:
-				print("warning: shop list rewrites part's record for %s!" % key)
+				push_warning("shop list rewrites part's record for %s!" % key)
 				if !(add[key] is Dictionary):
 					assert(false, "and doing so with no Dict!")
 					push_error("and doing so with no Dict!")
@@ -49,9 +49,6 @@ func merge_shop_dict(shopdict, add):
 func is_record_restricted(record) -> bool:
 	return (record.has('reqs') and !globals.checkreqs(record.reqs))
 
-func is_record_unlucky(record) -> bool:
-	return (record.has('chance') and randf() > record.chance)
-
 func process_loottable(table_name, output_type, mul) -> Dictionary:
 	if !(table_name is String):
 		assert(false, "process_loottable() error: All incoming loot params should be string from now on!")
@@ -59,7 +56,7 @@ func process_loottable(table_name, output_type, mul) -> Dictionary:
 		return {}
 	
 	if table_name.empty():
-#		print('warning: empty loottable')
+		print('warning: empty loottable')
 		return {}
 	
 	if !loot_tables.has(table_name):
@@ -68,6 +65,21 @@ func process_loottable(table_name, output_type, mul) -> Dictionary:
 	
 	return process_loottable_record(loot_tables[table_name], output_type, mul)
 
+
+#	if !(table.back() is Array or table.back() is Dictionary):
+#		process_loottable_record(table, rewarddict, amount_mul)
+#		return
+#
+#	for rec in table:
+#		if rec is String:
+#			process_loottable(rec, rewarddict, amount_mul)
+#		elif rec is Dictionary:
+#			process_loottable_item_selector(rec, rewarddict, amount_mul)
+#		elif rec is Array:
+#			process_loottable_record(rec, rewarddict, amount_mul)
+#		else:
+#			print ('error in loottable record')
+#			print(table)
 
 func process_loottable_record(record, output_type, mul) -> Dictionary:
 	var output
@@ -86,7 +98,7 @@ func process_loottable_record(record, output_type, mul) -> Dictionary:
 	if is_record_restricted(record):
 		return output
 	
-	if is_record_unlucky(record):
+	if record.has('chance') and randf() > record.chance:
 		return output
 	
 	#recursive rules (amount-ignorant)
@@ -123,8 +135,6 @@ func process_loottable_record(record, output_type, mul) -> Dictionary:
 		for num in range(record.selector.size()):
 			var subrecord = record.selector[num]
 			if is_record_restricted(subrecord):
-				continue
-			if is_record_unlucky(subrecord):
 				continue
 			var weight = 1
 			if subrecord.has('weight'):
@@ -194,9 +204,11 @@ func generate_reward(record, amount) -> Dictionary:
 			elif record.has('tier'):
 				tier = record.tier
 			else:
+				assert(false, "random material should have tier!")
+				push_error("random material should have tier!")
 				tier = ResourceScripts.game_progress.get_default_materials()
 			if !Items.material_tiers.has(tier):
-				print("warning: insufficient tier '%s' in '%s'" % [tier, record])
+				push_warning("insufficient tier '%s' in '%s'" % [tier, record])
 				tier = ResourceScripts.game_progress.get_default_materials()
 			var material_name = input_handler.weightedrandom_dict(Items.material_tiers[tier])
 			output.materials[material_name] = amount
@@ -239,7 +251,7 @@ func generate_reward(record, amount) -> Dictionary:
 				var mat_grade
 				if record.has('material_tiers'):
 					mat_grade = input_handler.weightedrandom(record.material_tiers)
-				elif record.has('from_location'):
+				elif record.has('get_tier') and record.get_tier == 'location':
 					mat_grade = input_handler.active_location.resources
 				else:
 					mat_grade = ResourceScripts.game_progress.get_default_materials()
@@ -255,7 +267,7 @@ func generate_shop(record, amount) -> Dictionary:
 		var i_template = Items.itemlist[record.item]
 		if i_template.has('parts'):
 			if amount > 1:
-				print("warning: shop list must creat more then one item with parts for %s!" % record.item)
+				push_warning("shop list must creat more then one item with parts for %s!" % record.item)
 			var materials = ResourceScripts.game_progress.get_default_materials()
 			var parts = Items.get_materials_by_grade(materials, i_template.code)
 			output[i_template.code] = parts

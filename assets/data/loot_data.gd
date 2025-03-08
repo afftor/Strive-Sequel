@@ -1,47 +1,9 @@
 extends Reference
 
-#Loot tables consists of records. Each record is a dictionary.
-#common params (any record can have them):
-#* reqs - common array suitable for globals.checkreqs(). If reqs not met, record ignored
-#* chance - float chance to process record (1.0 = 100%). If not lucky, record ignored.
-#	No chance param means 100%
-#* amount - precise amount of generated stuff. Quantity of generated material, for example
-#* min and max - generate random amount within those boundaries.
-#* chance_per_unit - (specific rule for old enemies' loot_tables) Like normal chance,
-#	but it rolls separately for each unit in amount. For example, {amount = 4, chance_per_unit = 0.5}
-#	will make 4 rolls. With only 2 successful, true amount becomes 2 instead of 4.
-#specific params:
-#* list - array of records, each will be processed by common rules. The record with list param itself
-#	ignores amount params and all other specific params
-#* loot_table - string with name of another record in loot_tables, which should be processed.
-#	The record with loot_table param itself ignores amount params and all other specific params
-#* selector - array of records. For each unit in amount one random record from array will be processed.
-#	Records in selector respects reqs and chance rules, but also can have "weight" param,
-#	which determines there probability of being selected. No weight param equals to 1.0.
-#	The record with selector param itself ignores all other specific params
-#* gold - bool flag, gives gold
-#* material - string, gives designated material
-#* item - string, gives designated item. If it's of gear type, there is 2 legacy ways of generating item:
-#	bool param "by_quality" generates item "like it was in chests". If params "quality" and "parts"
-#	are provided, item will be generated with designated quality.
-#	With no by_quality flag item generated "like it was in enemies' loot".
-#	In any case param "parts" can be provided (string or dict).
-#* random - string, determines type of randomly generated loot. Can be:
-#	* material - randomly generated material from tear lists provided by string param "tier" or bool
-#		param "from_location". In last case tier taken from location. If no tier param provided,
-#		default will be used.
-#	* usable - random usable item from all possible within tier array provaided in param "tiers".
-#	* static_gear - same as usable, but for items with "costume" geartype
-#	* gear - same as usable, but for items of "gear" type with "weapon" or "armor" itemtype.
-#		Can also have "material_tiers" array param or "from_location" bool param to randomly select
-#		material for generation.
-#	* weapon - same as gear, but only for "weapon" itemtype.
-#	* armor - same as gear, but only for "armor" itemtype.
-
 
 var loot_tables = {
 	#enemy's loot
-	#MIND! in old enemies' loot tables second param became "chance_per_unit" if there was third param (amount)
+	#MIND! in old enemies' loot second param is "chance_per_unit" if there is third param (amount)
 	rat_loot = {list = [
 		{material = 'leather', chance = 0.1},
 		{item = 'lifeshard', chance = 0.05}]},
@@ -150,7 +112,7 @@ var loot_tables = {
 		{gold = true, max = 3, min = 1}]},
 	
 	#chest loot
-	#mind! Tiers are different for materials and items!
+	#mind! that tiers are different for materials and items!
 	easy_chest_usable = {list = [
 		{random = 'material', min = 3, max = 8, tier = 't1'},
 		{random = 'material', min = 3, max = 10, from_location = true},
