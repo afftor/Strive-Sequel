@@ -397,8 +397,8 @@ func process_json_data_file(filepath : String, tablename : String):
 	process_dir(tablename, 'enemy_events', Enemydata.encounters)
 	process_dir(tablename, 'enemies', Enemydata.enemies)
 	process_dir(tablename, 'enemy_randomgroups', Enemydata.enemygroups)
-	process_dir(tablename, 'loot_chests', Items.get_loot().loot_tables)
-	process_dir(tablename, 'loot_enemy', Items.get_loot().loot_tables)
+	process_dir(tablename, 'loot_chests', Enemydata.loot_variants_data)
+	process_dir(tablename, 'loot_enemy', Enemydata.loottables)
 	process_dir(tablename, 'enemy_groups', Enemydata.predeterminatedgroups)
 	#tasks are not moddable through data because they are linked to functors
 	process_dir(tablename, 'races', races.racelist) #
