@@ -2839,6 +2839,8 @@ Requires: Базовый рабский труд""",
 Поскольку [name] обладает наблюдаемой девственностью, это делает [him] более желанным для определенных людей. 
 {color=yellow|Цена продажи увеличена на 25%%}""",
 	TRAITEFFECTRIVAL = """Присутствует соперник: +5% производительности""",
+	TRAITEFFECTFRIENDS = """Friend Present: +10%% Health Regeneration""", # MISSING TRANSLATION
+	TRAITEFFECTLOVERS = """Lover Present: +10%% Mana Regeneration""", # MISSING TRANSLATION
 	TRAITEFFECTFRIEND = """Присутствует друг: +10% регенерации здоровья""",
 	TRAITEFFECTLOVER = """Присутствует любовник/ца: +10% регенерации маны""",
 	TRAITEFFECTRARESTURDY = """Особый: Твердый
@@ -4072,6 +4074,8 @@ Requires: Базовый рабский труд""",
 	CHARFREELOVERS = """[name] и [scncharname] обратились к вам и попросили разрешить им стать любовниками.""",
 	CHARLOVERSALLOW = """*Разрешить*""",
 	CHARFREELOVERSALLOW = """*Разрешить*""",
+	CHARLOVERSFORBID = """*Forbid*""", # MISSING TRANSLATION
+	CHARFREELOVERSFORBID = """*Forbid*""", # MISSING TRANSLATION
 
 
 	DIALOGUEEVENTGOODREBELSBEAST = """Вы наткнулись на небольшую группу повстанцев, которые поймали [race] [male], который, вероятно, сбежал с их родных земель. Учитывая отношение повстанцев к [him], легко понять, что они замышляют недоброе...""",

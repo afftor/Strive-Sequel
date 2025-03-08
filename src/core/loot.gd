@@ -35,7 +35,7 @@ func merge_shop_dict(shopdict, add):
 	for key in shopdict:
 		if add.has(key):
 			if shopdict[key] is Dictionary:
-				print("warning: shop list rewrites part's record for %s!" % key)
+				#print("warning: shop list rewrites part's record for %s!" % key)
 				if !(add[key] is Dictionary):
 					assert(false, "and doing so with no Dict!")
 					push_error("and doing so with no Dict!")

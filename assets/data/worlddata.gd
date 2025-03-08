@@ -680,7 +680,7 @@ var random_dungeon_events = {
 	cali_intro_event = {
 		event = 'cali_intro',
 		reqs = [{type = 'dialogue_seen', check = false, value = 'CALI_INTRO'}],
-		dungeons = ["duneon_bandit_den"],
+		dungeons = ["dungeon_bandit_den"],
 		chance = 0.75
 	},
 	lira_elven_capital = {

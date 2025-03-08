@@ -1272,7 +1272,7 @@ Ensnared: Evasion is reduced by 75.""",
 	SKILLARROW_HAIL = "Arrow Hail",
 	SKILLARROW_HAILDESCRIPT = "Shoot all enemies for 120% of ATK.",
 	SKILLRALLY = "Rally",
-	SKILLRALLYDESCRIPT = "Reset all cooldowns (except Rally) and restore 50% of mana to selected ally.",
+	SKILLRALLYDESCRIPT = "Reset all cooldowns (except Rally) and restore 30% of health to selected ally.",
 	SKILLBLOODBOIL = "Blood Boil",
 	SKILLBLOODBOILDESCRIPT = "Increase ATK by 25%, remove Stun, Wet and Fear, gain immunity to them for 4 turns.",
 	SKILLFIRE_SHIELD = "Fire Shield",
@@ -3785,6 +3785,8 @@ As the [boy] is made your slave, [he] can be a very useful addition to your roos
 	CHARFREELOVERS = "[name] and [scncharname] have approached you and asked to let them become paramour.",
 	CHARLOVERSALLOW = "*Allow*",
 	CHARFREELOVERSALLOW = "*Allow*",
+	CHARLOVERSFORBID = "*Forbid*",
+	CHARFREELOVERSFORBID = "*Forbid*",
 	
 	DIALOGUEEVENTGOODREBELSBEAST = "You come across a small group of rebels, who have caught a [race] [male] that likely strayed from their homelands. Given the rebels' attitude towards [him] it's easy to see they are up to no good...",
 	DIALOGUEEVENTREBELSBEASTINTIMIDATESUCCES = """[center]{color=green|Success!}[/center]
