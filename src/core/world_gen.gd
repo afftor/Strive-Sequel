@@ -76,8 +76,52 @@ func get_faction_from_code(code):
 	return ResourceScripts.game_world.factions[code]
 
 func update_area_shop(area):
-	area.shop = Items.get_loot().get_shop_list(area.area_shop_items)
+	if area.area_shop_items is String:
+		area.shop = Items.get_loot().get_shop_list(area.area_shop_items)
+	else:
+		update_area_shop_old(area)
 
+#--------------old loot system!----------------------
+func update_area_shop_old(area):
+	if area.shop == null:#that shouldn't be possible, but it is in some saves for some reason
+		area.shop = {}
+	area.shop.clear()
+	var resource_array = []
+	for i in area.area_shop_items:
+		var record = area.area_shop_items[i]
+		if record.has('condition'):
+			if !globals.checkreqs(record.condition):
+				continue
+		if record.has('chance'):
+			if randf() >= record.chance:
+				continue
+		if Items.materiallist.has(i):
+			resource_array.append(i)
+			var amount = round(rand_range(record.min, record.max))
+			area.shop[i] = amount
+		elif Items.itemlist.has(i):
+			var itemtemplate = Items.itemlist[i]
+			match itemtemplate.type:
+				'gear':
+					if !itemtemplate.tags.has('recipe'): #either shouldn't happen yet
+						area.shop[i] = round(rand_range(record.min, record.max))
+				'usable':
+					area.shop[i] = round(rand_range(record.min, record.max))
+		else:
+			if record.has('items'):
+				var amount = round(rand_range(record.min, record.max))
+				while amount > 0:
+					amount -= 1
+					var item = Items.itemlist[input_handler.random_from_array(record.items)]
+					if item.has('parts'):
+						var parts = Items.get_materials_by_grade(ResourceScripts.game_progress.get_default_materials(), item.code)
+						area.shop[item.code] = parts
+					else:
+						if area.shop.has(item.code):
+							area.shop[item.code] += 1
+						else:
+							area.shop[item.code] = 1
+#-------------------------
 
 func make_guild(code, area):
 	var data = worlddata.factiondata[code].duplicate(true)

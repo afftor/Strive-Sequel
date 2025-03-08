@@ -180,25 +180,25 @@ func generate_reward(record, amount) -> Dictionary:
 			print('error: wrong itemtype at %s' % record.item)
 	elif record.has('random'):
 		if record.random == 'material':
-#			#TODO: move arrays from location to loot module, or replace them all with tier grades
-#			#and then remove this part
-#			if record.has('get_tier') and record.get_tier == 'location':
-#				var location = input_handler.active_location
-#				if location.resources is Array:
-#					material_name = input_handler.random_from_array(location.resources)
-#			#---------------
-#			if material_name == null:
-			var tier
+			var material_name
+			#-----old loot system
 			if record.has('from_location'):
-				tier = input_handler.active_location.resources
-			elif record.has('tier'):
-				tier = record.tier
-			else:
-				tier = ResourceScripts.game_progress.get_default_materials()
-			if !Items.material_tiers.has(tier):
-				print("warning: insufficient tier '%s' in '%s'" % [tier, record])
-				tier = ResourceScripts.game_progress.get_default_materials()
-			var material_name = input_handler.weightedrandom_dict(Items.material_tiers[tier])
+				var loc_res = input_handler.active_location.resources
+				if loc_res is Array:
+					material_name = input_handler.random_from_array(loc_res)
+#			#---------------
+			if material_name == null:
+				var tier
+				if record.has('from_location'):
+					tier = input_handler.active_location.resources
+				elif record.has('tier'):
+					tier = record.tier
+				else:
+					tier = ResourceScripts.game_progress.get_default_materials()
+				if !Items.material_tiers.has(tier):
+					print("warning: insufficient tier '%s' in '%s'" % [tier, record])
+					tier = ResourceScripts.game_progress.get_default_materials()
+				material_name = input_handler.weightedrandom_dict(Items.material_tiers[tier])
 			output.materials[material_name] = amount
 		elif record.random == 'usable':
 			var array = []
