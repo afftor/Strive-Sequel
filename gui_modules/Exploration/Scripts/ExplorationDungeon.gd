@@ -916,6 +916,7 @@ func get_scouting_range():
 
 
 func room_pressed(room_id):
+	reset_active_location()
 	if selected_room != null and active_subroom == null:
 		return
 	if globals.check_location_group() == false:
@@ -1089,6 +1090,7 @@ func move_to_room(room_id = null):
 
 
 func subroom_pressed(room_id, subroom_id):
+	reset_active_location()
 	if globals.check_location_group() == false:
 		input_handler.SystemMessage("Select at least 1 character before advancing. ")
 		return
