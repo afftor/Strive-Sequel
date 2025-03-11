@@ -555,7 +555,8 @@ func build_location_resources():
 			if dungeon:
 				if !hidden:
 					newbutton.get_node("Label").text = str(gatherable_resources[i])
-					newbutton.set_meta("gather_mod", round(location.gatherable_resources[i].gather_mod * 100))
+					var gather_mod = Items.get_loot().get_gather_mod_from_loc(location, i)
+					newbutton.set_meta("gather_mod", round(gather_mod * 100))
 					globals.connectmaterialtooltip(newbutton, item)
 				else:
 					newbutton.get_node("TextureRect").texture = load("res://assets/Textures_v2/Travel/placer_travel_question.png")

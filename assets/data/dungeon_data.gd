@@ -12,26 +12,8 @@ var biomes = {
 		main_route_length = [5,6], 
 		bonus_rooms = [2,3],
 		base_room_stamina_cost = [7,10],
-		gatherable_resources = {
-			wood = {
-				amount = [25,40],
-				weight = 10,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			stone = {
-				amount = [25,40],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			iron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			},
+		gather_settings = 'base',
+		gatherable_resources = 'biome_bandit_den_res',
 	},
 	biome_bandit_fort = {
 		background_pool = ['fort1', 'fort2', 'fort3'],
@@ -46,33 +28,8 @@ var biomes = {
 		main_route_length = [6,7],
 		bonus_rooms = [2,3],
 		base_room_stamina_cost = [7,10], 
-		
-		gatherable_resources = {
-			wood = {
-				amount = [45,60],
-				weight = 10,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			stone = {
-				amount = [35,50],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			iron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			woodiron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			},
+		gather_settings = 'base',
+		gatherable_resources = 'biome_bandit_fort_res'
 	},
 	biome_rebel_redoubt = {
 		background_pool = ['fort1', 'fort2', 'fort3'],
@@ -86,32 +43,8 @@ var biomes = {
 		main_route_length = [6,7],
 		bonus_rooms = [2,3], 
 		base_room_stamina_cost = [7,10], 
-		gatherable_resources = {
-			wood = {
-				amount = [45,60],
-				weight = 10,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			stone = {
-				amount = [35,50],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			iron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			woodiron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			},
+		gather_settings = 'base',
+		gatherable_resources = 'biome_bandit_fort_res',
 	},
 	biome_undead_crypt = {
 		background_pool = ['crypt1', 'crypt2', 'crypt3', 'crypt4', 'crypt5'],
@@ -125,26 +58,8 @@ var biomes = {
 		main_route_length = [6,7],
 		bonus_rooms = [2,3],
 		base_room_stamina_cost = [7,10], 
-		gatherable_resources = {
-			stone = {
-				amount = [45,60],
-				weight = 10,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			bone = {
-				amount = [35,50],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			boneancient = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			},
+		gather_settings = 'base',
+		gatherable_resources = 'biome_undead_crypt_res',
 	},
 	biome_goblin_cave = {
 		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5'],
@@ -158,26 +73,8 @@ var biomes = {
 		main_route_length = [5,6],
 		bonus_rooms = [2,3],
 		base_room_stamina_cost = [6,9],
-		gatherable_resources = {
-			stone = {
-				amount = [45,60],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			bone = {
-				amount = [35,50],
-				weight = 3,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			leather = {
-				amount = [15,25],
-				weight = 4,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			},
+		gather_settings = 'base',
+		gatherable_resources = 'biome_goblin_cave_res',
 	},
 	biome_grove = {
 		background_pool = ['forest1','forest2', 'forest3', 'forest4'],
@@ -191,32 +88,8 @@ var biomes = {
 		main_route_length = [5,6],
 		bonus_rooms = [2,3],
 		base_room_stamina_cost = [5,11], 
-		gatherable_resources = {
-			meat = {
-				amount = [90,120],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			wood = {
-				amount = [60,90],
-				weight = 8,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			woodmagic = {
-				amount = [15,25],
-				weight = 3,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			woodiron = {
-				amount = [15,25],
-				weight = 1,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			},
+		gather_settings = 'base',
+		gatherable_resources = 'biome_grove_res',
 	},
 	biome_ancient_jungles = {
 		background_pool = ['jungle1','jungle2','jungle3','jungle4'],
@@ -228,34 +101,10 @@ var biomes = {
 		event_room_number = [3,4],
 		material_room_number = [4,5],
 		main_route_length = [6,7],
-		bonus_rooms = [2,4], 
-		base_room_stamina_cost = [7,11], 
-		gatherable_resources = {
-			woodmagic = {
-				amount = [25,45],
-				weight = 5,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			woodiron = {
-				amount = [30,45],
-				weight = 8,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			leatherthick = {
-				amount = [20,35],
-				weight = 4,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			leathermythic = {
-				amount = [10,15],
-				weight = 1,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},
-			}, 
+		bonus_rooms = [2,4],
+		base_room_stamina_cost = [7,11],
+		gather_settings = 'base',
+		gatherable_resources = 'biome_ancient_jungles_res',
 	},
 	biome_fire_depths = {
 		background_pool = ['fire_depths1', 'fire_depths2', 'fire_depths3', 'fire_depths4'],
@@ -268,27 +117,9 @@ var biomes = {
 		material_room_number = [4,5],
 		main_route_length = [6,8],
 		bonus_rooms = [3,4],
-		base_room_stamina_cost = [7,11], 
-		gatherable_resources = {
-			iron = {
-				amount = [40,70],
-				weight = 8,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			mithril = {
-				amount = [25,40],
-				weight = 4,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			adamantine = {
-				amount = [10,20],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			},
+		base_room_stamina_cost = [7,11],
+		gather_settings = 'base',
+		gatherable_resources = 'biome_fire_depths_res',
 	},
 }
 var dungeons = {
@@ -468,26 +299,8 @@ var dungeons = {
 		
 		#do not remove next ones - for they a used in generation
 		resources = 'local1',
-		gatherable_resources = {
-			wood = {
-				amount = [25,40],
-				weight = 10,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			stone = {
-				amount = [25,40],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			iron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			},
+		gather_settings = 'base',
+		gatherable_resources = 'biome_bandit_den_res',
 		bgm = "dungeon",
 		purchase_price = 100,
 		affiliation = 'local', #defines character races and events
@@ -587,33 +400,9 @@ var dungeons = {
 		
 		
 		resources = 'local2',
-		gatherable_resources = {
-			wood = {
-				amount = [45,60],
-				weight = 10,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			stone = {
-				amount = [35,50],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			iron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			woodiron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			},
-			
+		gather_settings = 'base',
+		gatherable_resources = 'biome_bandit_fort_res',
+		
 		bgm = "dungeon",
 		gather_mod = [2,2.5],
 		purchase_price = 200,
@@ -713,33 +502,9 @@ var dungeons = {
 		
 		
 		resources = 'local2',
-		gatherable_resources = {
-			wood = {
-				amount = [45,60],
-				weight = 10,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			stone = {
-				amount = [35,50],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			iron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			woodiron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			},
-			
+		gather_settings = 'base',
+		gatherable_resources = 'biome_bandit_fort_res',
+		
 		bgm = "dungeon",
 		gather_mod = [2,2.5],
 		purchase_price = 200,
@@ -829,26 +594,8 @@ var dungeons = {
 		base_room_stamina_cost = [7,10], 
 		
 		resources = 'local3',
-		gatherable_resources = {
-			stone = {
-				amount = [45,60],
-				weight = 10,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			bone = {
-				amount = [35,50],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			boneancient = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			},
+		gather_settings = 'base',
+		gatherable_resources = 'biome_undead_crypt_res',
 		bgm = "dungeon",
 		purchase_price = 200,
 		affiliation = 'local',
@@ -922,26 +669,8 @@ var dungeons = {
 		base_room_stamina_cost = [6,9], 
 		
 		resources = 'local4',
-		gatherable_resources = {
-			stone = {
-				amount = [45,60],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			bone = {
-				amount = [35,50],
-				weight = 3,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			leather = {
-				amount = [15,25],
-				weight = 4,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			},
+		gather_settings = 'base',
+		gatherable_resources = 'biome_goblin_cave_res',
 		gather_mod = [2,2.5],
 		difficulty = 'easy',
 		purchase_price = 100,
@@ -1032,32 +761,9 @@ var dungeons = {
 		base_room_stamina_cost = [5,11], 
 		
 		resources = 'local5',
-		gatherable_resources = {
-			meat = {
-				amount = [90,120],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			wood = {
-				amount = [60,90],
-				weight = 8,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			woodmagic = {
-				amount = [15,25],
-				weight = 3,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			woodiron = {
-				amount = [15,25],
-				weight = 1,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			},
+		gather_settings = 'base',
+		gatherable_resources = 'biome_grove_res',
+		
 		gather_mod = [2,2.5],
 		difficulty = 'easy',
 		purchase_price = 100,
@@ -1118,32 +824,9 @@ var dungeons = {
 		base_room_stamina_cost = [5,11], 
 		
 		resources = 'local5',
-		gatherable_resources = {
-			meat = {
-				amount = [90,120],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			wood = {
-				amount = [60,90],
-				weight = 8,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			woodmagic = {
-				amount = [15,25],
-				weight = 3,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			woodiron = {
-				amount = [15,25],
-				weight = 1,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			},
+		gather_settings = 'base',
+		gatherable_resources = 'biome_grove_res',
+		
 		gather_mod = [2,2.5],
 		difficulty = 'easy',
 		purchase_price = 100,
@@ -1207,20 +890,9 @@ var dungeons = {
 		base_room_stamina_cost = [5,11], 
 		
 		resources = 'local5',
-		gatherable_resources = {
-			stone = {
-				amount = [25,40],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			iron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},
-			}, 
+		gather_settings = 'base',
+		gatherable_resources = 'dungeon_rebel_camp_res',
+		
 		gather_mod = [2.5,4], 
 		bgm = "dungeon",
 		purchase_price = 0,
@@ -1320,33 +992,8 @@ var dungeons = {
 		base_room_stamina_cost = [7,11], 
 		
 		resources = 'local6',
-		gatherable_resources = {
-			woodmagic = {
-				amount = [25,45],
-				weight = 5,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			woodiron = {
-				amount = [30,45],
-				weight = 8,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			leatherthick = {
-				amount = [20,35],
-				weight = 4,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			leathermythic = {
-				amount = [10,15],
-				weight = 1,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},
-			}, 
-		
+		gather_settings = 'base',
+		gatherable_resources = 'biome_ancient_jungles_res',
 		
 		gather_mod = [2.5,3.5],
 		difficulty = 'medium',
@@ -1431,26 +1078,9 @@ var dungeons = {
 		
 		
 		resources = 'local7',
-		gatherable_resources = {
-			iron = {
-				amount = [40,70],
-				weight = 8,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			mithril = {
-				amount = [25,40],
-				weight = 4,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			adamantine = {
-				amount = [10,20],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			},
+		gather_settings = 'base',
+		gatherable_resources = 'biome_fire_depths_res',
+		
 		gather_mod = [2.5,4],
 		difficulty = 'hard',
 		purchase_price = 500,
@@ -1525,26 +1155,9 @@ var dungeons = {
 		base_room_stamina_cost = [5,8],
 		
 		resources = 'local1',
-		gatherable_resources = {
-			wood = {
-				amount = [25,40],
-				weight = 10,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			stone = {
-				amount = [25,40],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			iron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			}, 
+		gather_settings = 'base',
+		gatherable_resources = 'biome_bandit_den_res',
+		
 		gather_mod = [2,2.5],
 		bgm = "dungeon",
 		purchase_price = 0,
@@ -1612,20 +1225,9 @@ var dungeons = {
 		base_room_stamina_cost = [5,8],
 		
 		resources = 'local1',
-		gatherable_resources = {
-			stone = {
-				amount = [25,40],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			iron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},
-			}, 
+		gather_settings = 'base',
+		gatherable_resources = 'dungeon_rebel_camp_res',
+		
 		gather_mod = [2.5,4],
 		bgm = "dungeon",
 		purchase_price = 0,
@@ -1698,20 +1300,9 @@ var dungeons = {
 		base_room_stamina_cost = [3,5],
 		
 		resources = 'local1',
-		gatherable_resources = {
-			stone = {
-				amount = [25,40],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			iron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},
-			}, 
+		gather_settings = 'base',
+		gatherable_resources = 'dungeon_rebel_camp_res',
+		
 		gather_mod = [2.5,4], 
 		bgm = "dungeon",
 		purchase_price = 0,
@@ -1796,20 +1387,9 @@ var dungeons = {
 		base_room_stamina_cost = [3,5],
 		
 		resources = 'local8',
-		gatherable_resources = {
-			wood = {
-				amount = [25,40],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			leather = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},
-			},
+		gather_settings = 'base',
+		gatherable_resources = 'quest_gryphon_forest_res',
+		
 		gather_mod = [2.5,4], 
 		bgm = "exploration",
 		purchase_price = 0,
@@ -1957,14 +1537,9 @@ var dungeons = {
 		base_room_stamina_cost = [5,8],
 		
 		resources = 'local1',
-		gatherable_resources = {
-			iron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			}, 
+		gather_settings = 'base',
+		gatherable_resources = 'quest_amelia_bandits_res',
+		
 		gather_mod = [2,2.5],
 		bgm = "dungeon",
 		purchase_price = 0,
@@ -2038,32 +1613,8 @@ var dungeons = {
 		base_room_stamina_cost = [5,8],
 		
 		resources = 'local5',
-		gatherable_resources = {
-			meat = {
-				amount = [90,120],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			wood = {
-				amount = [60,90],
-				weight = 8,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			woodmagic = {
-				amount = [15,25],
-				weight = 3,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			woodiron = {
-				amount = [15,25],
-				weight = 1,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			}, 
+		gather_settings = 'base',
+		gatherable_resources = 'biome_grove_res',
 		
 		gather_mod = [2,2.5],
 		stages_per_level = [3,5],
@@ -2162,32 +1713,8 @@ var dungeons = {
 		base_room_stamina_cost = [7,11], 
 		
 		resources = 'local6',
-		gatherable_resources = {
-			woodmagic = {
-				amount = [25,45],
-				weight = 5,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			woodiron = {
-				amount = [30,45],
-				weight = 8,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			leatherthick = {
-				amount = [20,35],
-				weight = 4,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			leathermythic = {
-				amount = [10,15],
-				weight = 1,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},
-			}, 
+		gather_settings = 'base',
+		gatherable_resources = 'biome_ancient_jungles_res',
 		
 		gather_mod = [2.5,4], 
 		stages_per_level = [10,10],
@@ -2340,14 +1867,9 @@ var dungeons = {
 		base_room_stamina_cost = [5,5],
 		
 		resources = 'local1',
-		gatherable_resources = {
-			stone = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			}, 
+		gather_settings = 'base',
+		gatherable_resources = 'quest_fighters_lich_res',
+		
 		gather_mod = [2,2.5],
 		bgm = "dungeon",
 		purchase_price = 0,
@@ -2903,7 +2425,8 @@ var dungeons = {
 		base_room_stamina_cost = [5,8],
 		
 		resources = '',
-		gatherable_resources = {},
+		gather_settings = 'base',
+		gatherable_resources = '',
 		gather_mod = [2,2.5],
 		bgm = "dungeon",
 		purchase_price = 0,
@@ -2942,7 +2465,8 @@ var dungeons = {
 		base_room_stamina_cost = [5,8],
 		
 		resources = '',
-		gatherable_resources = {},
+		gather_settings = 'base',
+		gatherable_resources = '',
 		gather_mod = [2,2.5],
 		bgm = "dungeon",
 		purchase_price = 0,
@@ -3018,7 +2542,8 @@ var dungeons = {
 		base_room_stamina_cost = [5,8],
 		
 		resources = '',
-		gatherable_resources = {},
+		gather_settings = 'base',
+		gatherable_resources = '',
 		gather_mod = [2,2.5],
 		bgm = "dungeon",
 		purchase_price = 0,
@@ -3118,32 +2643,8 @@ var dungeons = {
 		base_room_stamina_cost = [7,11], 
 		
 		resources = 'local6',
-		gatherable_resources = {
-			woodmagic = {
-				amount = [25,45],
-				weight = 5,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			woodiron = {
-				amount = [30,45],
-				weight = 8,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			leatherthick = {
-				amount = [20,35],
-				weight = 4,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			leathermythic = {
-				amount = [10,15],
-				weight = 1,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},
-			}, 
+		gather_settings = 'base',
+		gatherable_resources = 'biome_ancient_jungles_res',
 		
 		tags = ['quest'],
 		options = [],
@@ -3189,14 +2690,9 @@ var dungeons = {
 		base_room_stamina_cost = [5,5],
 		
 		resources = 'local1',
-		gatherable_resources = {
-			stone = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			}, 
+		gather_settings = 'base',
+		gatherable_resources = 'quest_fighters_lich_res',
+		
 		gather_mod = [2,2.5],
 		bgm = "dungeon",
 		purchase_price = 0,
@@ -3247,14 +2743,9 @@ var dungeons = {
 		base_room_stamina_cost = [5,5],
 		
 		resources = 'local1',
-		gatherable_resources = {
-			stone = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			}, 
+		gather_settings = 'base',
+		gatherable_resources = 'quest_fighters_lich_res',
+		
 		gather_mod = [2,2.5],
 		bgm = "dungeon",
 		purchase_price = 0,

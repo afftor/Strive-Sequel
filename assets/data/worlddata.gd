@@ -19,7 +19,6 @@ var lands = {
 		locations = {}, #array to fill up with settlements and dungeons
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'], #array of allowed locations to generate
 		starting_locations = ['dungeon_bandit_den','dungeon_goblin_cave'],# 'dungeon_infinite_example'],#['dungeon_bandit_fort'],
-		gatherable_resources = [],
 		guilds = ['workers','servants','fighters','mages','slavemarket','exotic_slave_trader'],
 		events = [],
 		tags = [],
@@ -534,7 +533,7 @@ var locations = {
 		background_pool = ['village1'],
 		bgm = 'exploration',
 		travel_time = [1,1],
-		gather_resources = {wood = [2,3], stone = [2,3], grain = [2,3], iron = [1,1]}, #Number of allowed slaves per task at no upgrades
+		gather_resources = 'settlement_plains1_res', #Number of allowed slaves per task at no upgrades
 		area_shop_items = 'settlement_plains1_shop'
 	},
 	settlement_plains2 = {
@@ -555,7 +554,7 @@ var locations = {
 		background_pool = ['village2'],
 		bgm = 'exploration',
 		travel_time = [1,1],
-		gather_resources = {vegetables = [2,3], leather = [2,3], cloth = [2,3], clothsilk = [1,1]},
+		gather_resources = 'settlement_plains2_res',
 		area_shop_items = 'settlement_plains2_shop',
 	},
 	settlement_forest1 = {
@@ -576,7 +575,7 @@ var locations = {
 		background_pool = ['forest1'],
 		bgm = 'exploration',
 		travel_time = [1,1],
-		gather_resources = {wood = [2,3], woodmagic = [3,3], woodiron = [2,2], leatherthick = [1,1]},
+		gather_resources = 'settlement_forest1_res',
 		area_shop_items = '',
 	},
 	settlement_mountains1 = {
@@ -593,7 +592,7 @@ var locations = {
 		background_pool = ['cave_3'],
 		bgm = 'exploration',
 		travel_time = [1,1],
-		gather_resources = {iron = [1,2], mithril = [1,1], boneancient = [1,1]},
+		gather_resources = 'settlement_mountains1_res',
 		area_shop_items = '',
 	},
 }
