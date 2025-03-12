@@ -56,7 +56,8 @@ func update():
 				newbutton.set_meta("exploration", true)
 				if dungeon:
 					newbutton.get_node("Label").text = str(gatherable_resources[i])
-					newbutton.set_meta("gather_mod", round(selected_location.gatherable_resources[i].gather_mod * 100))
+					var gather_mod = Items.get_loot().get_gather_mod_from_loc(selected_location, i)
+					newbutton.set_meta("gather_mod", round(gather_mod * 100))
 				else:
 					var max_workers_count = gatherable_resources[i]
 					var current_workers_count = 0
