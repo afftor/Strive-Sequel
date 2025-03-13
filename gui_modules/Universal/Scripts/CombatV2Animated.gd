@@ -1662,7 +1662,10 @@ func victory():
 	var array = []
 	for i in playergroup.values():
 		array.append(i)
-	input_handler.get_person_for_chat(array, 'combat_won')
+	if turns < 3:
+		input_handler.get_person_for_chat(array, 'combat_won_fast')
+	else:
+		input_handler.get_person_for_chat(array, 'combat_won_slow')
 	# yield($Rewards/AnimationPlayer, "animation_finished")
 	$Rewards/gold/Label.text = '+0'
 	$Rewards.set_meta("result", 'victory')

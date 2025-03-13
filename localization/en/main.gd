@@ -3420,6 +3420,7 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	SEXTRAITLIKES_BEASTS = "Likes them beasty",
 	SEXTRAITBISEXUAL = "Bisexual",
 	SEXTRAITMONOGAMOUS = "Monogamous",
+	SEXTRAITFAMILY_FIRST = "Family First",
 	SEXTRAITOPEN_MINDED = "Open-minded",
 	SEXTRAITDEVIANT = "Deviant",
 	SEXTRAITGROUP = "Company Lover",
@@ -3481,6 +3482,7 @@ Sex skills are increased when performing related action and their growth is depe
 	SEXTRAITDISLIKE_TAILDESCRIPT = "[name] expresses dislike for certain lewd actions. [His] consent and the effect of received actions are lowered for [him]. ",
 	SEXTRAITBISEXUALDESCRIPT = "[name] does not mind having sex with people of [his] gender. Removes consent penalty from same-sex partners. Allows romance with residents of same sex.",
 	SEXTRAITMONOGAMOUSDESCRIPT = "[name] only is interested in relationship with a single partner. Boosts consent and effects of the actions from [his] selected person. Prevents [name] from accepting more than one romantic partner.",
+	SEXTRAITFAMILY_FIRSTDESCRIPT = "[name] does not mind engaging into relationship with [his] relatives. Removes consent penalty from sexual interactions with relatives. Allows [name] to accept relatives as romantic partners.",
 	SEXTRAITOPEN_MINDEDDESCRIPT = "[name] is rather accepting of [his] partners, having no issues with them having different body structures. Removes consent penalty from different body shape partners.",
 	SEXTRAITDEVIANTDESCRIPT = "[name] has some deviant tastes, having no problem from engaging in lewd actions with animals and even undead. Removes consent penalty from animal and undead partners.",
 	SEXTRAITGROUPDESCRIPT = "[name] accepts having multiple partners at once as a natural thing. Removes consent penalty from group actions.",
@@ -5571,7 +5573,7 @@ She patiently observed the battlefield, as the guilds' troops advanced toward th
 As more groups were approaching Duncan he and his unit dwindled as it grew fatigued.""",
 	BETRAYAL_CONFIRMED_7 = """{color=aqua|Greg: — It was your mistake to rush in, even more so to lead the charge personally.}
 
-{color=yellow|Duncan: — Who else would it do?}
+{color=yellow|Duncan: — Who else would do it?}
 
 {color=aqua|Greg: — Perhaps it's time for you to surrender.}
 
@@ -12901,20 +12903,20 @@ Zephyra: — I wish I could lie about it, but my agreement requires me to confir
 
 Zephyra: — Uh, huh, a long time ago then...
 
-Wirenth: — I know you are a fairly recently became his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
+Wirenth: — I know you have fairly recently become his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
 
-Zephyra: — You've done well flattering me, might I ask what can I do for your dutious worship?""",
+Zephyra: — You've done well flattering me, might I ask what can I do for your dutiful worship?""",
 	ZEPHYRA_COSTUME_3_2 = """Elf: — I knew it! My name is Wirenth, I've been a devoted Alios follower since the times he was in our lands.
 
 Zephyra: — Uh, huh, a long time ago then...
 
-Wirenth: — I know you are a fairly recently became his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
+Wirenth: — I know you have fairly recently become his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
 
 Zephyra: — ...Former High Priestess.
 
 Wirenth: — Gah, this is less important than meeting a herald of Alios herself.
 
-Zephyra: — You've done well flattering me, might I ask what can I do for your dutious worship?""",
+Zephyra: — You've done well flattering me, might I ask what can I do for your dutiful worship?""",
 	ZEPHYRA_COSTUME_3_3 = """Zephyra: — Well, this is a shame, but I'm afraid because of my selfish [Master] I won't be able to help you out. 
 
 Wirenth: — Oh... Uh, alright... I wish you the best on your journey... 
@@ -16151,7 +16153,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	COMBAT_WIN_LINE1 = "Phew, we did it, [Master]...",
 	COMBAT_WIN_LINE2 = "Hah, piece of cake. Who's next?",
 	COMBAT_WIN_LINE3 = "Well fought. Lets move on, [Master]. ",
-	COMBAT_WIN_LINE4 = "I'm glad we won, but let's stay cautious. ",
+	COMBAT_WIN_LINE4 = "It was easy, but let's stay cautious. ",
 	COMBAT_WIN_LINE5 = "Hah, I didn't even break a sweat.",
 	COMBAT_WIN_LINE6 = "That was really scary. I hope these were the last of them...",
 	COMBAT_WIN_LINE7 = "I... Can't believe we won...",
@@ -16167,10 +16169,10 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	COMBAT_WIN_LINE17 = "Shouldn't have challenged me!",
 	COMBAT_WIN_LINE18 = "Done already!?",
 	COMBAT_WIN_LINE19 = "Damn! I wanted to fight some more.",
-	COMBAT_WIN_LINE20 = "Pathetic. Why even bother attacking?",
+	COMBAT_WIN_LINE20 = "Pathetic. Why even bother challenging us?",
 	COMBAT_WIN_LINE21 = "I hope they're okay...",
 	COMBAT_WIN_LINE22 = "Is everyone alright?",
-	COMBAT_WIN_LINE23 = "Why did we have to fight?",
+	COMBAT_WIN_LINE23 = "Did we have to fight?..",
 	COMBAT_WIN_LINE24 = "We couldn't talk this out...?",
 	COMBAT_WIN_LINE25 = "Let's hope we don't have to fight again...",
 	SEX_START_LINE1 = "Um... you really want me to do this? I'm not sure I'm ready...",
