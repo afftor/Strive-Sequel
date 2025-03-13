@@ -83,25 +83,34 @@ func attempt_romance(char1, char2):
 	if characters[char2].is_master(): 
 		return 
 	var relationship = _get_data(char1, char2)
-	var lovers_chance = 0
-	var freelovers_chance = 0
+	var chance = 0
 	
 	if relationship.value >= 75:
-		freelovers_chance += 15
-	if relationship.value >= 90:
-		lovers_chance += 10
-		if relationship.status == 'freelovers':
-			lovers_chance += 10
+		chance += 15
+#	if relationship.value >= 90:
+#		chance += 10
+#		if relationship.status == 'freelovers':
+#			chance += 10
 	
 	if relationship.status == 'freelovers':
-		freelovers_chance = 0
+		chance = 0
 	if relationship.status == 'lovers':
-		freelovers_chance = 0
-		lovers_chance = 0
-	if randf() * 100 <= freelovers_chance:
-		input_handler.interactive_message('character_freelovers','multichar_event',{char1 = char1, char2 = char2})
-	elif randf() * 100 <= lovers_chance:
-		input_handler.interactive_message('character_lovers','multichar_event',{char1 = char1, char2 = char2})
+		chance = 0
+	if checkifrelatives(char1, char2):
+		if !characters[char1].check_trait('family_first'):
+			chance = 0
+		if !characters[char2].check_trait('family_first'):
+			chance = 0
+	if randf() * 100 <= chance:
+		var chance2 = 0
+		if characters[char1].check_trait('open_minded'):
+			chance2 += 50
+		if characters[char2].check_trait('open_minded'):
+			chance2 += 50
+		if randf() * 100 <= chance2:
+			input_handler.interactive_message('character_freelovers','multichar_event',{char1 = char1, char2 = char2})
+		else:
+			input_handler.interactive_message('character_lovers','multichar_event',{char1 = char1, char2 = char2})
 
 
 func _in_same_location(char1, char2):
