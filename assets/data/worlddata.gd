@@ -336,7 +336,7 @@ var factiondata = {
 			},
 		],
 		events = [
-			'workers_init',
+			'workers_init', 'workers_limnrov'
 			],
 		quests_easy = ["workers_craft_tools_easy",'workers_task_easy','workers_slave_easy'],
 		quests_medium = ['workers_resources_medium','workers_food_medium','workers_craft_tools_medium','workers_task_medium','workers_slave_medium'],
