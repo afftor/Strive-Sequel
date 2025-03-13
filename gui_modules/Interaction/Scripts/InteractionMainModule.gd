@@ -732,7 +732,28 @@ func count_action_consent(action, giver, taker):
 #	if taker.horny >= 100:
 #		taker_consent += 1
 #		taker_text += "{color=green|Horny}\n"
-
+	
+	if givers.size() > 0 && takers.size() > 0:
+		var relationship = ResourceScripts.game_party._get_data(giver.id, taker.id).status
+		match relationship:
+			'rivals':
+				giver_consent -= 1
+				taker_consent -= 1
+				giver_text += "{color=red|Is a Rival}\n"
+				taker_text += "{color=red|Is a Rival}\n"
+			'freelovers':
+				giver_consent += 1
+				taker_consent += 1
+				giver_text += "{color=green|Is a Paramour}\n"
+				taker_text += "{color=green|Is a Paramour}\n"
+			'lovers':
+				giver_consent += 2
+				taker_consent += 2
+				giver_text += "{color=green|Is a Lover}\n"
+				taker_text += "{color=green|Is a Lover}\n"
+			
+		
+	
 	if giver.person_relations.has(taker.id):
 		var rel_value = giver.person_relations[taker.id]
 		if rel_value >= 350:

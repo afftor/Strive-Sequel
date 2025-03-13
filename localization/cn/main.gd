@@ -2514,6 +2514,8 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	BUFFDESCRIPTATKPAS = "Damage increased",
 	BUFFDESCRIPTATTACKPASSSRC = "Increases ATK and MATK of allies by 10 every other turn. Clears when defeated.",
 	BUFFDESCRIPTRESTO = "Resting: physical resist increased by 20%%",
+	BUFFDESCRIPTDEATHKNIGHT = """Hit Rate, Attack and Neutral Resists are increased""", # MISSING TRANSLATION
+	BUFFDESCRIPTTEMPLAR = """MDEF Increaased""", # MISSING TRANSLATION
 	BUFFDESCRIPTCURSE = """""", # MISSING TRANSLATION
 	BUFFDESCRIPTENCHANT = """""", # MISSING TRANSLATION
 	BUFFDESCRIPTMENTOR = """Experience Gain increased""", # MISSING TRANSLATION

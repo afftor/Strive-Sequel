@@ -30,7 +30,10 @@ func _get_key_from_dict(data):
 
 
 func _get_data(char1, char2):
-	return relationship_data[_get_key(char1, char2)]
+	var key = _get_key(char1, char2)
+	if relationship_data.has(key) == false:
+		add_relationship_value(char1, char2, 0)
+	return relationship_data[key]
 
 
 func add_relationship_value(char1, char2, value):
@@ -579,7 +582,8 @@ func connectrelatives_old(person1, person2, way):
 		entry = ResourceScripts.game_party.relativesdata[person2.id]
 		entry[way] = person1.id
 		if typeof(person1) != TYPE_DICTIONARY && typeof(person2) != TYPE_DICTIONARY:
-			globals.addrelations(person1, person2, 200)
+			add_relationship_value(person1.id, person2.id, 25)
+			#globals.addrelations(person1, person2, 200)
 	elif way == 'sibling':
 		var entry = ResourceScripts.game_party.relativesdata[person1.id]
 		var entry2 = ResourceScripts.game_party.relativesdata[person2.id]
@@ -596,7 +600,8 @@ func connectrelatives_old(person1, person2, way):
 				entry2.siblings.append(i)
 
 		if typeof(person1) != TYPE_DICTIONARY && typeof(person2) != TYPE_DICTIONARY:
-			globals.addrelations(person1, person2, 0)
+			add_relationship_value(person1.id, person2.id, 5)
+			#globals.addrelations(person1, person2, 0)
 
 
 func connectrelatives(id1, id2, way): #id1 - child, 'main' char in this construction
@@ -618,11 +623,13 @@ func connectrelatives(id1, id2, way): #id1 - child, 'main' char in this construc
 		'mother', 'father':
 			data1[way] = id2
 			connect_parent(id1, id2)
-			globals.addrelations(characters_pool.get_char_by_id(id1), characters_pool.get_char_by_id(id2), 200)
+			add_relationship_value(id1, id2, 25)
+			#globals.addrelations(characters_pool.get_char_by_id(id1), characters_pool.get_char_by_id(id2), 200)
 		'sibling':
 			data1.siblings.push_back(id2)
 			connect_siblings(id1, id2)
-			globals.addrelations(characters_pool.get_char_by_id(id1), characters_pool.get_char_by_id(id2), 0)
+			add_relationship_value(id1, id2, 5)
+			#globals.addrelations(characters_pool.get_char_by_id(id1), characters_pool.get_char_by_id(id2), 0)
 
 func connect_parent(id1, id2): #id1 - child, 'main' char in this construction, so data1 should be configured partially properly at the point of callback
 	var data1 = relativesdata[id1]

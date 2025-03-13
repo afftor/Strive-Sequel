@@ -1147,8 +1147,6 @@ Burning: Take 8% of Maximum HP as Fire damage per turn.""",
 	SKILLFIREARRDESCRIPT_2 = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 100% chance to apply Burn for 2 turns. 
 
 Burning: Take 8% of Maximum HP as Fire damage per turn.""",
-	SKILLLIGHTNING = "Lightning",
-	SKILLLIGHTNINGDESCRIPT = "Deals 125% of MATK as {color=yellow|Air} damage. Stuns target for 1 turn.",
 	SKILLMINDBLAST = "Mind Blast",
 	SKILLMINDBLASTDESCRIPT = "Deals 120% of MATK as {color=yellow|Mind} damage.",
 	SKILLPSYCHICBLAST = "Psychic Blast",
@@ -1312,8 +1310,8 @@ Ensnared: Evasion is reduced by 75.""",
 	SKILLDISINTEGRATEDESCRIPT = "Deals 250% of MATK as {color=yellow|Earth} damage to single target and Stun it for 3 turns. If target can't be stunned, applies Shredded instead.",
 	SKILLWIND_BLADE = "Wind Blade",
 	SKILLWIND_BLADEDESCRIPT = "Deals 60% of MATK as {color=yellow|Air} damage to one target and random enemy.",
-	SKILLIGHTNING = "Lightning",
-	SKILLIGHTNINGDESCRIPT = """Deals 125% of MATK as {color=yellow|Air} damage. Has 50% chance to apply Shock for 2 turns. 
+	SKILLLIGHTNING = "Lightning",
+	SKILLLIGHTNINGDESCRIPT = """Deals 125% of MATK as {color=yellow|Air} damage. Has 50% chance to apply Shock for 2 turns. 
 
 Shocked: Damage is reduced by 15%.""",
 	SKILLHASTE = "Haste",
@@ -1938,15 +1936,22 @@ Damage +15%, Health +20.""",
 Consent represents character's general acceptance of various sexual actions, but it is also heavily affected by partners and situtation.""",
 	INFOSEX_TRAITS = "Sex Traits provide additional effects during sexual interaction. They can be learned, activated and deactivated. Maximum number of activatale traits is based on Sex Factor.",
 	INFORULES_CONDS = "Conditions and rules can be toggled on character, affecting some of their stats and behavior.",
-	INFOPERSONALITY = "Character's personality will affect thier banter and provide access to certain traits and bonuses. Personality will be affected by social skills used on character.",
+	INFOPERSONALITY = """Character's personality will affect their banter and provide access to certain traits and bonuses.
+	Neutral: No bonuses
+	Bold: Incoming negative effects last 1 turn less, +5% Productivity
+	Kind: Outcoming positive buffs last 1 turn more, +10% Service
+	Serious: Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)\nTask Crit Chance +3%
+	Shy: Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax
+	""",
+	
 	INFOPERSONALITYBOLD = """Bold
 Incoming negative effects last 1 turn less\n+5% Productivity""",
 	INFOPERSONALITYKIND = """Kind
 Outcoming positive buffs last 1 turn more\n+10% Service""",
 	INFOPERSONALITYSERIOUS = """Serious
-Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax""",
+Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)\nTask Crit Chance +3%""",
 	INFOPERSONALITYSHY = """Shy
-Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)""",
+Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax""",
 	INFOSLAVE_CLASS = "Character type will define its options and behavior. Slaves can be forced into sexual services without consent and have higher tolerance for lack of consent in sex. Subordinates become loyal faster but can't be sold or given away.",
 	INFOCONSENT = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. Consent will affect prostitution related jobs.",
 	INFOCONSENTMASTER = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. {color=green|[Master] has no Consent requirements for any actions.}",
@@ -2801,6 +2806,8 @@ Social skills effect: +10%.""",
 	BUFFDESCRIPTATKPAS = "Damage increased",
 	BUFFDESCRIPTATTACKPASSSRC = "Increases ATK and MATK of allies by 10 every other turn. Clears when defeated.",
 	BUFFDESCRIPTRESTO = "Resting: physical resist increased by 20%%",
+	BUFFDESCRIPTDEATHKNIGHT = "Hit Rate, Attack and Neutral Resists are increased",
+	BUFFDESCRIPTTEMPLAR = "MDEF Increaased",
 	BUFFDESCRIPTCURSE = "",
 	BUFFDESCRIPTENCHANT = "",
 	BUFFDESCRIPTMENTOR = "Experience Gain increased",
@@ -2943,7 +2950,7 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	PROFTECHNOMANCER = "Technomancer",
 	PROFTECHNOMANCERDESCRIPT = "By merging magic and technology these specialists are capable of producing very unique results.",
 	PROFPYROMANCER = "Pyromancer",
-	PROFPROFPYROMANCERDESCRIPT = "Devoting their powers to the way of fire, certain individuals are capable of truly mastering it at the cost of abandoning most other magich schools.",
+	PROFPYROMANCERDESCRIPT = "Devoting their powers to the way of fire, certain individuals are capable of truly mastering it at the cost of abandoning most other magich schools.",
 	PROFALIOS_CHAMPION = "Champion of Alios",
 	PROFALIOS_CHAMPIONDESCRIPT = "A lone girl with mysterious powers and the past. One thing is clear, her divine affiliation is real. ",
 	PROFNIXX_CHAMPION = "Champion of Nixx",
@@ -3679,7 +3686,7 @@ If you have enough cash...""",
 	DIALOGUEENEMYSTRSCARE = "The group of enemies ahead seems hesitating sensing your approach. You might be able to scare them off and avoid the fight by displaying your power...",
 	DIALOGUEENEMYSTRSCARESELECT = "[Strength Challenge] Select Character",
 	DIALOGUEENEMYSTRSCAREPASS = "[name] scares the hostiles away from the path, letting the rest of the group to pass free.",
-	DIALOGUEENEMYDEXSNEAK = "The group of enemies head are unaware of your pressence. Sneaking past them might be possible ",
+	DIALOGUEENEMYDEXSNEAK = "The group of enemies head are unaware of your pressence. Sneaking past them might be possible. ",
 	DIALOGUEENEMYDEXSNEAKSELECT = "[Dexterity Challenge] Select Character",
 	DIALOGUEENEMYDEXSNEAKPASS = "[name] manages to get on the other side of the pass and distracts the group of enemies who leave in other direction.",
 	DIALOGUEEVENTENEMYDISTRACT = "The group of enemies ahead seem rather unfocused and unwilling to fight. Perhaps surrendering one of your captives to them will persuade them to let you pass.",

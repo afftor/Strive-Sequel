@@ -2970,6 +2970,8 @@ Requires: Базовый рабский труд""",
 	BUFFDESCRIPTATKPAS = """Урон увеличен""",
 	BUFFDESCRIPTATTACKPASSSRC = """Увеличивает ATK и MATK союзников на 10 каждый второй ход. Снимается при поражении""",
 	BUFFDESCRIPTRESTO = """Отдых: физическое сопротивление увеличено на 20%%""",
+	BUFFDESCRIPTDEATHKNIGHT = """Hit Rate, Attack and Neutral Resists are increased""", # MISSING TRANSLATION
+	BUFFDESCRIPTTEMPLAR = """MDEF Increaased""", # MISSING TRANSLATION
 	BUFFDESCRIPTCURSE = """ """,
 	BUFFDESCRIPTENCHANT = """ """,
 	BUFFDESCRIPTMENTOR = """Прирост опыта увеличен""",	
@@ -3114,6 +3116,7 @@ Requires: Базовый рабский труд""",
 	PROFTECHNOMANCER = """Техномансер""",
 	PROFTECHNOMANCERDESCRIPT = """Благодаря слиянию магии и технологии эти специалисты способны добиваться уникальных результатов.""",
 	PROFPYROMANCER = """Пиромант""",
+	PROFPYROMANCERDESCRIPT = """Devoting their powers to the way of fire, certain individuals are capable of truly mastering it at the cost of abandoning most other magich schools.""", # MISSING TRANSLATION
 	PROFPROFPYROMANCERDESCRIPT = """Посвятив свои силы огненному пути, некоторые люди способны по-настоящему овладеть им ценой отказа от большинства других магических школ.""",
 
 	PROFALIOS_CHAMPION = """Чемпион Алиоса""",
