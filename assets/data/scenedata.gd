@@ -1518,7 +1518,7 @@ var scenedict = {
 		text = tr("HYBRIS_ALTAR_CHAR_RESULT2"),
 		tags = ['active_character_translate'],
 		image = 'mindcontrol',
-		common_effects = [{code = 'change_type_scene_characters', type = 'all', value = 'slave'}],
+		common_effects = [{code = 'change_type_scene_characters', type = 'all', value = 'slave'}, {code = 'clear_subroom'}],
 		options = [
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},

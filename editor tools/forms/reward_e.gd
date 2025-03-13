@@ -12,8 +12,8 @@ func _init():
 			stat = 'value',
 			container = 0,
 			groups = [],
-			rlist = Enemydata.loot_variants_data.keys(),
-			dlist = Enemydata.loot_variants_data.keys(),
+			rlist = Items.get_loot().loot_tables.keys(),
+			dlist = Items.get_loot().loot_tables.keys(),
 		},
 		{
 			type = editor_core.PANEL_NUML,

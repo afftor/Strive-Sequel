@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.10.3'
+const gameversion = '0.10.3b'
 
 #time
 signal hour_tick
@@ -101,6 +101,9 @@ func _ready():
 	#console
 	var console = load("res://gui_modules/Console/console.tscn").instance()
 	get_tree().root.call_deferred("add_child", console)
+	
+	if log_alert != null and is_instance_valid(log_alert):
+		log_alert.fix_cur_log_position()#should miss starting irrelevant strings in log by this time in game load
 
 
 #not used
@@ -173,6 +176,7 @@ func CreateGearItem(item, parts, newname = null, quality = ""): #obsolete for mo
 	return newitem
 
 
+#is it works correctly? It doesn't use set_quality_level() for quality assigning
 func CreateGearItemQuality(item, parts, quality, no_enchant = true, newname = null): 
 	if parts is String:
 		parts = Items.get_materials_by_grade(parts, item)
@@ -1942,7 +1946,11 @@ func common_effects(effects):
 			'affect_active_character':
 				input_handler.active_character.affect_char(i)
 			'make_loot':
-				input_handler.scene_loot = ResourceScripts.world_gen.make_chest_loot(input_handler.weightedrandom(i.pool))
+				#in most cases "pool" array is redundant, as there is only one position,
+				#but i'm keeping it "as is" so CqEditor couldn't hurt an event
+				var loot_name = input_handler.weightedrandom(i.pool)
+				#mind, that "chest" can be lockless, therefore just loot
+				input_handler.scene_loot = ResourceScripts.world_gen.make_chest_loot(loot_name)
 			'open_loot':
 				# input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(input_handler.scene_loot, '[center]Acquired Items:[/center]')
 					var loot_win = input_handler.get_spec_node(input_handler.ANIM_LOOT)

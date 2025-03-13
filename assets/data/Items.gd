@@ -1,9 +1,14 @@
 extends Node
 
+var loot = preload("res://src/core/loot.gd").new()
+
 func _init():
 	for i in partmaterials:
 		for k in partmaterials[i]:
 			materiallist[k].parts[i] = partmaterials[i][k].duplicate()
+
+#func _ready():
+#	loot.data.make_loottable()
 
 var stats = {
 	atk = tr('DAMAGE'),
@@ -206,7 +211,7 @@ var partmaterials = {
 		insect_chitin = {armor = 35, mdef = 40, enchant_capacity_mod = 0.1},
 	},
 	ArmorBaseHeavy = {
-		stone = {armor = 50, mdef = 5, hitrate = -25, resist_earth = 20, enchant_capacity_mod = 0.0},
+		stone = {armor = 50, mdef = 5, hitrate = -40, resist_earth = 20, enchant_capacity_mod = 0.0},
 		obsidian = {armor = 40, mdef = 20, resist_earth = 40, enchant_capacity_mod = 0.15},
 		iron = {armor = 35, mdef = 5, enchant_capacity_mod = 0.0},
 		steel = {armor = 50, mdef = 10, enchant_capacity_mod = 0.1},
@@ -3864,7 +3869,7 @@ var recipes = {
 	
 	divine_symbol = {
 		code = 'divine_symbol',
-		materials = {mithril = 5},
+		materials = {steel = 10},
 		items = {},
 		unlockreqs = [{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage2'},
 		{type = 'has_material', operant = 'lt', value = 1, material = 'divine_symbol'}],
@@ -5057,7 +5062,7 @@ var tattoolist = {
 
 var color_presets = ['default', 'default_underwear', 'default_leather', 'default_metal']
 
-
+#TODO: rename that. It is not tiers, this are weightedrandom's dicts per tier
 var material_tiers = {
 	t1 = {#prologue level
 		stone = 1, wood = 1, leather = 1, bone = 1, cloth = 0.3, iron = 0.3
@@ -5092,6 +5097,17 @@ var material_tiers = {
 		iron = 1, cloth = 1,
 		stone = 1, wood = 1, leather = 1, bone = 1
 		},
+	
+	#not quite a tiers, but I'll keep it here for a while
+	local1 = {cloth = 1, leather = 1, iron = 1, wood = 1, clothsilk = 1},
+	local2 = {woodiron = 1, leatherthick = 1, iron = 1, steel = 1, clothsilk = 1, mithril = 1},
+	local3 = {bone = 1, leather = 1, boneancient = 1, woodmagic = 1, clothsilk = 1, iron = 1,
+		mithril = 1, bonedragon = 1, leathermythic = 1},
+	local4 = {bone = 1, leather = 1, stone = 1, wood = 1},
+	local5 = {cloth = 1, leather = 1, woodmagic = 1, wood = 1, woodiron = 1},
+	local6 = {woodmagic = 1, woodiron = 1, leatherthick = 1, leathermythic = 1, insect_chitin = 1, iron = 1},
+	local7 = {steel = 1, mithril = 1, obsidian = 1, leatherthick = 1, leather = 1},
+	local8 = {clothmagic = 1, leatherthick = 1, iron = 1, wood = 1, clothsilk = 1},
 }
 
 func get_materials_by_grade(grade, item_id):
@@ -5104,7 +5120,7 @@ func get_materials_by_grade(grade, item_id):
 				if partmaterials[part].has(mat):
 					possible_res[mat] = material_tiers[grade][mat]
 			if possible_res.empty():
-				print('warning: material tiers data - no mat in %s for %s' %[grade, part])
+				print('warning: material tiers data - no mat in %s for %s in %s' %[grade, part, item_id])
 #				return({})
 				res[part] = partmaterials[part].keys()[0]
 			else:
@@ -5893,3 +5909,6 @@ var next_quality = {
 	good = 'epic',
 	epic = 'legendary',
 }
+
+func get_loot():
+	return loot

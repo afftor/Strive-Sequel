@@ -462,6 +462,13 @@ var statdata = {
 		baseicon = 'food_love',
 		default_bonus = 'set'
 	},
+	weapon_element = {
+		code = 'weapon_element',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		default_bonus = 'set'
+	},
 	armor = {
 		code = 'armor',
 		name = '',

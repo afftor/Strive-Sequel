@@ -298,7 +298,7 @@ var data = {
 	default_event_type = "trap",
 	image = 'dungeon_enemies',
 	options = [
-	{code = 'close', reqs = [], bonus_effects = [{code = 'pay_stamina', value = 3},{code = 'alter_combat', victory = true, xp_mod = 0.5}, {code = 'unlock_combat'}], text = tr("DIALOGUECLOSE")},
+	{code = 'close', reqs = [], bonus_effects = [{code = 'pay_stamina', value = 0.3},{code = 'alter_combat', victory = true, xp_mod = 0.5}, {code = 'unlock_combat'}], text = tr("DIALOGUECLOSE")},
 	]
 	},
 }

@@ -343,7 +343,7 @@ func hp_update(node, args):
 	
 	var delaytime = 0.2
 	var tween = input_handler.GetTweenNode(node)
-	var hpnode = node.get_node("HP")
+	var hpnode = node.get_node("bars/HP")
 	#float damage
 	if args.damage_float:
 		if crit_display.has(node):
@@ -365,7 +365,7 @@ func hp_update(node, args):
 func mp_update(node, args):
 	var delaytime = 0.1
 	var tween = input_handler.GetTweenNode(node)
-	var mpnode = node.get_node("MP")
+	var mpnode = node.get_node("bars/MP")
 	#update mp bar
 	tween.interpolate_property(mpnode, 'value', mpnode.value, args.newmpp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	#update mp label

@@ -320,19 +320,21 @@ func make_fighter_panel(fighter, spot):
 	panel.connect("mouse_entered", self, 'FighterMouseOver', [fighter.id])
 	panel.connect("mouse_exited", self, 'FighterMouseOverFinish', [fighter.id])
 	if variables.CombatAllyHpAlwaysVisible && fighter.combatgroup == 'ally':
-		panel.get_node("hplabel").show()
-		panel.get_node("mplabel").show()
+		panel.get_node("bars/HP/hplabel").show()
+		panel.get_node("bars/MP/mplabel").show()
+	if fighter.combatgroup != 'ally':
+		panel.get_node("bars/MP").visible = false
 #	panel.set_meta('character',fighter)
 	panel.get_node("Icon").texture = fighter.get_icon()
 	panel.get_node('Icon').material = load("res://assets/sfx/bw_shader.tres").duplicate()
 	panel.turn_overlay(false)
-	panel.get_node("HP").value = input_handler.calculatepercent(fighter.hp, fighter.get_stat('hpmax'))
-	panel.get_node("MP").value = input_handler.calculatepercent(fighter.mp, fighter.get_stat('mpmax'))
+	panel.get_node("bars/HP").value = input_handler.calculatepercent(fighter.hp, fighter.get_stat('hpmax'))
+	panel.get_node("bars/MP").value = input_handler.calculatepercent(fighter.mp, fighter.get_stat('mpmax'))
 	panel.hp = fighter.hp
 	panel.update_hp_label(fighter.hp, 100.0)
 	panel.update_mp_label(fighter.mp, 100.0)
 	if fighter.get_stat('mpmax') == 0:
-		panel.get_node("MP").value = 0
+		panel.get_node("bars/MP").value = 0
 	panel.get_node("Label").text = fighter.get_short_name()
 	if fighter.get_short_name().length() > 10:
 		panel.get_node('Label').set("custom_fonts/font",load("res://MainFont_Small.tres"))
@@ -752,8 +754,8 @@ func setup_autoskill(data, person):
 var fighterhighlighted = false
 func FighterShowStats(fighter):
 	var panel = fighter.displaynode
-	panel.get_node("hplabel").show()
-	panel.get_node("mplabel").show()
+	panel.get_node("bars/HP/hplabel").show()
+	panel.get_node("bars/MP/mplabel").show()
 	
 	$StatsPanelLeft.fill(fighter)
 	$StatsPanelRight.fill(fighter)
@@ -788,8 +790,8 @@ func FighterMouseOverFinish(id):
 	$StatsPanelRight.visible = false
 	$StatsPanelLeft.visible = false
 	if variables.CombatAllyHpAlwaysVisible == false || fighter.combatgroup == 'enemy':
-		panel.get_node("hplabel").hide()
-		panel.get_node("mplabel").hide()
+		panel.get_node("bars/HP/hplabel").hide()
+		panel.get_node("bars/MP/mplabel").hide()
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	if !allowaction: return
 	Stop_Target_Glow()
@@ -1527,8 +1529,6 @@ func FinishCombat(victory = true):
 		input_handler.combat_defeat()
 	
 	input_handler.combat_node = null
-	ActionQueue.force_clean()
-	ActionQueue = null
 	gui_controller.current_screen = gui_controller.previous_screen
 	gui_controller.combat = null
 	characters_pool.cleanup()
@@ -1548,6 +1548,9 @@ func victory():
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: 
 		yield(CombatAnimations, 'alleffectsfinished')
+	if ActionQueue != null:
+		ActionQueue.force_clean()
+		ActionQueue = null
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	fightover = true
@@ -1584,7 +1587,10 @@ func victory():
 			rewardsdict.xp += 2 * tchar.get_stat('xpreward')
 		else:
 			rewardsdict.xp += tchar.get_stat('xpreward')
-		Enemydata.process_loottable(tchar.get_stat('loottable'), rewardsdict, count)
+		var loot_processor = Items.get_loot()
+		var rewards = loot_processor.get_reward(tchar.get_stat('loottable'), count)
+		loot_processor.merge_reward_dict(rewardsdict, rewards)
+	
 	
 	input_handler.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
 	input_handler.ClearContainer($Rewards/ScrollContainer2/HBoxContainer)
@@ -1692,5 +1698,7 @@ func defeat(runaway = false): #runaway is a temporary variable until run() metho
 	CombatAnimations.force_end()
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	fightover = true
+	ActionQueue.force_clean()
+	ActionQueue = null
 	FinishCombat(false)
 	input_handler.SetMusic(input_handler.explore_sound, true)

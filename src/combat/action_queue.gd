@@ -196,7 +196,8 @@ func add_sfx(node, code):
 
 func add_crit(node):
 	var template = {node = node, time = combatnode.turns, type = 'critical', slot = 'crit', params = {}}
-	add_animation(template)
+	animationnode.add_new_data(template)
+#	add_animation(template)
 
 
 func add_rebuildbuffs(node): #test version

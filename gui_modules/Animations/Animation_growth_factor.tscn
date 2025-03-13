@@ -253,7 +253,6 @@ margin_right = 1.89075
 margin_bottom = -2.05054
 script = ExtResource( 10 )
 fade_delay = 0.5
-lock_input = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Animation_growth_factor = SubResource( 1 )

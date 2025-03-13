@@ -113,7 +113,7 @@ func _in_same_location(char1, char2):
 		return false
 	if person1.get_location() == ResourceScripts.game_world.mansion_location:
 		if person1.xp_module.work == person2.xp_module.work:
-			if person1.xp_module.work == 'brothel' or person1.xp_module.work == '':
+			if person1.xp_module.work in ['', 'produce', 'brothel']:
 				return true
 			return person1.xp_module.workproduct == person2.xp_module.workproduct
 		else:
@@ -157,15 +157,21 @@ func relation_daily_change_same_loc(char1, char2):
 
 
 func relationship_decay():
+	var cleanup = []
 	for key in relationship_data.keys():
 		var chars = key.split("_")
+		if characters_pool.get_char_by_id(chars[0]) == null or characters_pool.get_char_by_id(chars[1]) == null:
+			cleanup.push_back(key)
+			continue
 		if _in_same_location(chars[0],chars[1]) == false:
-			var value
+			var value = 0
 			if relationship_data[key].value > 51:
 				value = -4
 			elif relationship_data[key].value < 50:
 				value = 4
 			add_relationship_value(chars[0],chars[1], value)
+	for id in cleanup:
+		relationship_data.erase(id)
 
 
 func check_lover_possibility(data, char1, char2):
@@ -201,12 +207,22 @@ func has_love_status(char1):
 
 func change_relationship_status(char1, char2, new_status):
 	_get_data(char1, char2).status = new_status
+	if new_status in ['friends', 'rivals']:
+		var ch1 = characters[char1]
+		var ch2 = characters[char2]
+		globals.text_log_add('char', "%s ans %s has become %s" % [ch1.get_short_name(), ch2.get_short_name(), new_status])
+
+
 
 func find_all_relationship(char1):
 	var array = []
+	var cleanup = []
 	for key in relationship_data.keys():
 		if char1 in key.split("_"):
 			var chars = key.split("_")
+			if characters_pool.get_char_by_id(chars[0]) == null or characters_pool.get_char_by_id(chars[1]) == null:
+				cleanup.push_back(key)
+				continue
 			var dict = {relationship = relationship_data[key].status}
 			if char1 == chars[0]:
 				dict.char = chars[1]
@@ -214,6 +230,9 @@ func find_all_relationship(char1):
 				dict.char = chars[0]
 			
 			array.append(dict)
+	
+	for id in cleanup:
+		relationship_data.erase(id)
 	
 	return array
 

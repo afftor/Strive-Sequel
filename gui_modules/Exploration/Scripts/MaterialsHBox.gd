@@ -47,17 +47,17 @@ func update():
 			gatherable_resources = selected_location.gather_resources
 		self.visible = true
 	
-	var current_res_data = Items.material_tiers[ResourceScripts.game_progress.get_default_materials()]
 	if gatherable_resources != null:
 		for i in gatherable_resources:
 			var item = Items.materiallist[i]
 			var newbutton = input_handler.DuplicateContainerTemplate(self)
-			if current_res_data.has(i):
+			if ResourceScripts.game_progress.can_gather_item(i) or dungeon:
 				newbutton.get_node("TextureRect").texture = Items.materiallist[i].icon
 				newbutton.set_meta("exploration", true)
 				if dungeon:
 					newbutton.get_node("Label").text = str(gatherable_resources[i])
-					newbutton.set_meta("gather_mod", round(selected_location.gatherable_resources[i].gather_mod * 100))
+					var gather_mod = Items.get_loot().get_gather_mod_from_loc(selected_location, i)
+					newbutton.set_meta("gather_mod", round(gather_mod * 100))
 				else:
 					var max_workers_count = gatherable_resources[i]
 					var current_workers_count = 0
