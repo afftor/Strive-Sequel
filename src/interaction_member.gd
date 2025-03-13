@@ -106,7 +106,6 @@ var id
 var person_sexexp
 var person_sexskills
 var person_metrics
-var person_relations
 var person_mods
 
 func setup_person(ch, no_loyal = false):
@@ -115,7 +114,6 @@ func setup_person(ch, no_loyal = false):
 	person_sexexp = person.get_stat('sexexp', true)
 	person_sexskills = person.get_stat('sex_skills', true)
 	person_metrics = person.get_stat('metrics', true)
-	person_relations = person.get_stat('relations', true)
 	person_mods = person.get_stat('mods', true)
 	sex = ch.get_stat('sex')
 	lust = ch.get_stat('lust')*10
@@ -289,8 +287,6 @@ func orgasm(custom_text = null):
 	#anus in use, find scene
 	if anus != null:
 		scene = form_action_ref_dict(anus)
-		for i in scene.givers:
-			globals.addrelations(person, i.person, rand_range(30,50))
 		#anus in giver slot
 		if scene.givers.find(self) >= 0:
 			if randf() < 0.4:
@@ -319,8 +315,6 @@ func orgasm(custom_text = null):
 		#vagina in use, find scene
 		if vagina != null:
 			scene = form_action_ref_dict(vagina)
-			for i in scene.givers:
-				globals.addrelations(person, i.person, rand_range(30,50))
 			#vagina in giver slot
 			if scene.givers.find(self) >= 0:
 				if randf() < 0.4:
@@ -349,8 +343,6 @@ func orgasm(custom_text = null):
 		#penis in use, find scene
 		if penis != null:
 			scene = form_action_ref_dict(penis)
-			for i in scene.takers:
-				globals.addrelations(person, i.person, rand_range(30,50))
 			#penis in giver slot
 			if scene.givers.find(self) >= 0:
 				if randf() < 0.4:
@@ -546,8 +538,6 @@ func actioneffect(values, scenedict_ids):
 	if values.has('tags'):
 		if values.tags.has('punish'):
 			if (!person.check_trait('Masochist') && !person.check_trait('Likes it rough') && !person.check_trait('Sex-crazed')):
-				for i in scenedict.givers:
-					globals.addrelations(person, i.person, -rand_range(5,10))
 #				person.add_stat('obedience', values.obed)
 #					person.stress += values.stress
 				if effects.has("captured") && randf() >= values.obed/2:
