@@ -509,7 +509,7 @@ var dungeons = {
 		background_pool = ['fort1', 'fort2', 'fort3'],
 		custom_background = 'combat_fort',
 		enemyarray =  [["bandits_assassin", 1],['bandits_medium', 1],['bandits_medium2', 1],['bandits_golem', 0.5],['bandits_ballista', 0.5]],
-		final_enemy = [['bandits_medium_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+		final_enemy = [['bandits_jarl_boss',0.7], ['bandits_hunter_boss',1], ['bandits_warlock_boss',0.5]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 		
 		event_data = {
 			dungeon_find_chest_medium = {
@@ -635,7 +635,7 @@ var dungeons = {
 		background_pool = ['fort1', 'fort2', 'fort3'],
 		custom_background = 'combat_fort',
 		enemyarray =  [['event_rebels_1', 1],['event_rebels_2', 1],['rebels_small', 0.5]],
-		final_enemy = [['rebels_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+		final_enemy = [['rebels_boss',1], ['rebels_sergeant_boss',1], ['rebels_castellan_boss',0.5]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 		
 		event_data = {
 			dungeon_find_chest_medium = {
@@ -965,7 +965,7 @@ var dungeons = {
 		custom_background = 'combat_forest',
 		bgm = "dungeon",
 		enemyarray = [["rats_easy", 0.3],['wolves_easy1', 1],['grove_1', 1],['grove_2', 1],['spiders', 0.5]],
-		final_enemy = [['grove_easy_boss',1]], final_enemy_type = 'monster',
+		final_enemy = [['grove_easy_boss',1], ['grove_wolf_boss',1]], final_enemy_type = 'monster',
 		
 		
 		event_data = {
