@@ -725,14 +725,32 @@ func count_action_consent(action, giver, taker):
 		taker_consent += 2
 		taker_text += "{color=green|Drunk}\n"
 
-
 #	if giver.horny >= 100:
 #		giver_consent += 1
 #		giver_text += "{color=green|Horny}\n"
 #	if taker.horny >= 100:
 #		taker_consent += 1
 #		taker_text += "{color=green|Horny}\n"
-
+	
+	if givers.size() > 0 && takers.size() > 0:
+		var relationship = ResourceScripts.game_party._get_data(giver.id, taker.id).status
+		match relationship:
+			'rivals':
+				giver_consent -= 1
+				taker_consent -= 1
+				giver_text += "{color=red|Is a Rival}\n"
+				taker_text += "{color=red|Is a Rival}\n"
+			'freelovers':
+				giver_consent += 1
+				taker_consent += 1
+				giver_text += "{color=green|Is a Paramour}\n"
+				taker_text += "{color=green|Is a Paramour}\n"
+			'lovers':
+				giver_consent += 2
+				taker_consent += 2
+				giver_text += "{color=green|Is a Lover}\n"
+				taker_text += "{color=green|Is a Lover}\n"
+			
 #	if giver.person_relations.has(taker.id):
 #		var rel_value = giver.person_relations[taker.id]
 #		if rel_value >= 350:
@@ -799,7 +817,6 @@ func count_action_consent(action, giver, taker):
 		taker_consent = 25
 		taker_text = "Subdue: Receiver's consent ignored. "
 
-	
 	if giver_value == 0:
 		giver_consent = 0
 		giver_text = "{color=green|Action does not require consent}"
@@ -807,7 +824,6 @@ func count_action_consent(action, giver, taker):
 		taker_consent = 0
 		taker_text = "{color=green|Action does not require consent}"
 	
-
 	return {giver_consent = giver_consent, taker_consent = taker_consent, giver_text = giver_text, taker_text = taker_text}
 #	var dict = {value = action.consent, giver_consent = giver.consent, taker_consent = taker.consent}
 #	return dict

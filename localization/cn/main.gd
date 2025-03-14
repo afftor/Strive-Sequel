@@ -2514,6 +2514,8 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	BUFFDESCRIPTATKPAS = "Damage increased",
 	BUFFDESCRIPTATTACKPASSSRC = "Increases ATK and MATK of allies by 10 every other turn. Clears when defeated.",
 	BUFFDESCRIPTRESTO = "Resting: physical resist increased by 20%%",
+	BUFFDESCRIPTDEATHKNIGHT = """Hit Rate, Attack and Neutral Resists are increased""", # MISSING TRANSLATION
+	BUFFDESCRIPTTEMPLAR = """MDEF Increaased""", # MISSING TRANSLATION
 	BUFFDESCRIPTCURSE = """""", # MISSING TRANSLATION
 	BUFFDESCRIPTENCHANT = """""", # MISSING TRANSLATION
 	BUFFDESCRIPTMENTOR = """Experience Gain increased""", # MISSING TRANSLATION
@@ -3603,6 +3605,12 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	ENEMYBALLISTA = "巴利斯塔",
 	ENEMYTROLL = "巨魔",
 	ENEMYBANDIT_ASSASSIN = "土匪刺客",
+	ENEMYPACKLEADER_BOSS = """Leader Of The Pack""", # MISSING TRANSLATION
+	ENEMYSERGANT_BOSS = """Sergant""", # MISSING TRANSLATION
+	ENEMYCASTELLAN_BOSS = """Castellan""", # MISSING TRANSLATION
+	ENEMYJARL_BOSS = """Jarl""", # MISSING TRANSLATION
+	ENEMYBOUNTY_HUNTER_BOSS = """Bounty Hunter""", # MISSING TRANSLATION
+	ENEMYWARLOCK_BOSS = """Warlock""", # MISSING TRANSLATION
 	ENEMYSUMMON_DOG = """Trained Dog""", # MISSING TRANSLATION
 	ENEMYSUMMON_SKELETON_MELEE = """Skeleton Warrior""", # MISSING TRANSLATION
 	ENEMYSUMMON_SKELETON_ARCHER = """Skeleton Archer""", # MISSING TRANSLATION

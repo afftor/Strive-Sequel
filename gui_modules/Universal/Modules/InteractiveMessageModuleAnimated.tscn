@@ -72,7 +72,6 @@ expand = true
 
 [node name="CharacterImage" type="TextureRect" parent="."]
 visible = false
-show_behind_parent = true
 margin_left = 1030.0
 margin_top = -2.0
 margin_right = 2187.0
@@ -85,7 +84,6 @@ __meta__ = {
 
 [node name="CharacterImage2" type="TextureRect" parent="."]
 visible = false
-show_behind_parent = true
 margin_left = -265.68
 margin_top = -2.0
 margin_right = 891.32
@@ -96,6 +94,90 @@ flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="EventCharacters" type="ScrollContainer" parent="."]
+margin_left = 399.0
+margin_top = 101.0
+margin_right = 562.0
+margin_bottom = 957.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EventCharacters"]
+margin_bottom = 856.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Button" type="TextureButton" parent="EventCharacters/VBoxContainer"]
+visible = false
+margin_top = 345.0
+margin_right = 166.0
+margin_bottom = 511.0
+rect_min_size = Vector2( 166, 166 )
+texture_normal = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 16 )
+
+[node name="icon" type="TextureRect" parent="EventCharacters/VBoxContainer/Button"]
+margin_left = 9.0
+margin_top = 9.0
+margin_right = 154.0
+margin_bottom = 158.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="EventCharacters/VBoxContainer/Button"]
+margin_left = 8.0
+margin_top = 7.0
+margin_right = 154.0
+margin_bottom = 37.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Elf"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="EventCharacters/VBoxContainer/Button"]
+show_behind_parent = true
+margin_right = 164.0
+margin_bottom = 165.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerCharacters" type="ScrollContainer" parent="."]
+visible = false
+margin_left = 1357.0
+margin_top = 101.0
+margin_right = 1520.0
+margin_bottom = 957.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerCharacters"]
+margin_bottom = 856.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Button" type="TextureButton" parent="PlayerCharacters/VBoxContainer"]
+visible = false
+margin_top = 345.0
+margin_right = 163.0
+margin_bottom = 511.0
+texture_normal = ExtResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="PlayerCharacters/VBoxContainer/Button"]
+margin_left = 9.0
+margin_top = 9.0
+margin_right = 154.0
+margin_bottom = 158.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
 
 [node name="BackgroundT1" type="Panel" parent="."]
 anchor_left = 0.5
@@ -345,88 +427,3 @@ __meta__ = {
 
 [node name="ShowPanel" parent="." instance=ExtResource( 24 )]
 visible = false
-
-[node name="EventCharacters" type="ScrollContainer" parent="."]
-visible = false
-margin_left = 399.0
-margin_top = 101.0
-margin_right = 562.0
-margin_bottom = 957.0
-scroll_horizontal_enabled = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="EventCharacters"]
-margin_bottom = 856.0
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="TextureButton" parent="EventCharacters/VBoxContainer"]
-visible = false
-margin_top = 345.0
-margin_right = 166.0
-margin_bottom = 511.0
-rect_min_size = Vector2( 166, 166 )
-texture_normal = ExtResource( 7 )
-expand = true
-stretch_mode = 5
-script = ExtResource( 16 )
-
-[node name="icon" type="TextureRect" parent="EventCharacters/VBoxContainer/Button"]
-margin_left = 9.0
-margin_top = 9.0
-margin_right = 154.0
-margin_bottom = 158.0
-mouse_filter = 2
-expand = true
-stretch_mode = 6
-
-[node name="Label" type="Label" parent="EventCharacters/VBoxContainer/Button"]
-margin_left = 8.0
-margin_top = 7.0
-margin_right = 154.0
-margin_bottom = 37.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "Elf"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel" type="Panel" parent="EventCharacters/VBoxContainer/Button"]
-show_behind_parent = true
-margin_right = 164.0
-margin_bottom = 165.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PlayerCharacters" type="ScrollContainer" parent="."]
-visible = false
-margin_left = 1357.0
-margin_top = 101.0
-margin_right = 1520.0
-margin_bottom = 957.0
-scroll_horizontal_enabled = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerCharacters"]
-margin_bottom = 856.0
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="TextureButton" parent="PlayerCharacters/VBoxContainer"]
-visible = false
-margin_top = 345.0
-margin_right = 163.0
-margin_bottom = 511.0
-texture_normal = ExtResource( 5 )
-
-[node name="TextureRect" type="TextureRect" parent="PlayerCharacters/VBoxContainer/Button"]
-margin_left = 9.0
-margin_top = 9.0
-margin_right = 154.0
-margin_bottom = 158.0
-texture = ExtResource( 1 )
-expand = true
-stretch_mode = 6

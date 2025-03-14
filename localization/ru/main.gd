@@ -2839,6 +2839,8 @@ Requires: Базовый рабский труд""",
 Поскольку [name] обладает наблюдаемой девственностью, это делает [him] более желанным для определенных людей. 
 {color=yellow|Цена продажи увеличена на 25%%}""",
 	TRAITEFFECTRIVAL = """Присутствует соперник: +5% производительности""",
+	TRAITEFFECTFRIENDS = """Friend Present: +10%% Health Regeneration""", # MISSING TRANSLATION
+	TRAITEFFECTLOVERS = """Lover Present: +10%% Mana Regeneration""", # MISSING TRANSLATION
 	TRAITEFFECTFRIEND = """Присутствует друг: +10% регенерации здоровья""",
 	TRAITEFFECTLOVER = """Присутствует любовник/ца: +10% регенерации маны""",
 	TRAITEFFECTRARESTURDY = """Особый: Твердый
@@ -2968,6 +2970,8 @@ Requires: Базовый рабский труд""",
 	BUFFDESCRIPTATKPAS = """Урон увеличен""",
 	BUFFDESCRIPTATTACKPASSSRC = """Увеличивает ATK и MATK союзников на 10 каждый второй ход. Снимается при поражении""",
 	BUFFDESCRIPTRESTO = """Отдых: физическое сопротивление увеличено на 20%%""",
+	BUFFDESCRIPTDEATHKNIGHT = """Hit Rate, Attack and Neutral Resists are increased""", # MISSING TRANSLATION
+	BUFFDESCRIPTTEMPLAR = """MDEF Increaased""", # MISSING TRANSLATION
 	BUFFDESCRIPTCURSE = """ """,
 	BUFFDESCRIPTENCHANT = """ """,
 	BUFFDESCRIPTMENTOR = """Прирост опыта увеличен""",	
@@ -3112,6 +3116,7 @@ Requires: Базовый рабский труд""",
 	PROFTECHNOMANCER = """Техномансер""",
 	PROFTECHNOMANCERDESCRIPT = """Благодаря слиянию магии и технологии эти специалисты способны добиваться уникальных результатов.""",
 	PROFPYROMANCER = """Пиромант""",
+	PROFPYROMANCERDESCRIPT = """Devoting their powers to the way of fire, certain individuals are capable of truly mastering it at the cost of abandoning most other magich schools.""", # MISSING TRANSLATION
 	PROFPROFPYROMANCERDESCRIPT = """Посвятив свои силы огненному пути, некоторые люди способны по-настоящему овладеть им ценой отказа от большинства других магических школ.""",
 
 	PROFALIOS_CHAMPION = """Чемпион Алиоса""",
@@ -4072,6 +4077,8 @@ Requires: Базовый рабский труд""",
 	CHARFREELOVERS = """[name] и [scncharname] обратились к вам и попросили разрешить им стать любовниками.""",
 	CHARLOVERSALLOW = """*Разрешить*""",
 	CHARFREELOVERSALLOW = """*Разрешить*""",
+	CHARLOVERSFORBID = """*Forbid*""", # MISSING TRANSLATION
+	CHARFREELOVERSFORBID = """*Forbid*""", # MISSING TRANSLATION
 
 
 	DIALOGUEEVENTGOODREBELSBEAST = """Вы наткнулись на небольшую группу повстанцев, которые поймали [race] [male], который, вероятно, сбежал с их родных земель. Учитывая отношение повстанцев к [him], легко понять, что они замышляют недоброе...""",

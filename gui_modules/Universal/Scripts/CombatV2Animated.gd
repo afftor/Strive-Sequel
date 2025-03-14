@@ -1587,7 +1587,10 @@ func victory():
 			rewardsdict.xp += 2 * tchar.get_stat('xpreward')
 		else:
 			rewardsdict.xp += tchar.get_stat('xpreward')
-		Enemydata.process_loottable(tchar.get_stat('loottable'), rewardsdict, count)
+		var loot_processor = Items.get_loot()
+		var rewards = loot_processor.get_reward(tchar.get_stat('loottable'), count)
+		loot_processor.merge_reward_dict(rewardsdict, rewards)
+	
 	
 	input_handler.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
 	input_handler.ClearContainer($Rewards/ScrollContainer2/HBoxContainer)
@@ -1659,7 +1662,10 @@ func victory():
 	var array = []
 	for i in playergroup.values():
 		array.append(i)
-	input_handler.get_person_for_chat(array, 'combat_won')
+	if turns < 3:
+		input_handler.get_person_for_chat(array, 'combat_won_fast')
+	else:
+		input_handler.get_person_for_chat(array, 'combat_won_slow')
 	# yield($Rewards/AnimationPlayer, "animation_finished")
 	$Rewards/gold/Label.text = '+0'
 	$Rewards.set_meta("result", 'victory')

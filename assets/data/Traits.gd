@@ -1875,6 +1875,17 @@ var sex_traits = { #only for interaction tab
 		reqs = [],
 		effects = [],
 	},
+	family_first = {
+		code = "family_first",
+		name = "",
+		descript = "",
+		starting = true,
+		random_generation = true,
+		negative = false,
+		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "satisfied_partners", operant = "eq", value = 1}]}],
+		reqs = [],
+		effects = [],
+	},
 	open_minded = {
 		code = "open_minded",
 		name = "",

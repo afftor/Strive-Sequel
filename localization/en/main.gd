@@ -1147,8 +1147,6 @@ Burning: Take 8% of Maximum HP as Fire damage per turn.""",
 	SKILLFIREARRDESCRIPT_2 = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 100% chance to apply Burn for 2 turns. 
 
 Burning: Take 8% of Maximum HP as Fire damage per turn.""",
-	SKILLLIGHTNING = "Lightning",
-	SKILLLIGHTNINGDESCRIPT = "Deals 125% of MATK as {color=yellow|Air} damage. Stuns target for 1 turn.",
 	SKILLMINDBLAST = "Mind Blast",
 	SKILLMINDBLASTDESCRIPT = "Deals 120% of MATK as {color=yellow|Mind} damage.",
 	SKILLPSYCHICBLAST = "Psychic Blast",
@@ -1272,7 +1270,7 @@ Ensnared: Evasion is reduced by 75.""",
 	SKILLARROW_HAIL = "Arrow Hail",
 	SKILLARROW_HAILDESCRIPT = "Shoot all enemies for 120% of ATK.",
 	SKILLRALLY = "Rally",
-	SKILLRALLYDESCRIPT = "Reset all cooldowns (except Rally) and restore 50% of mana to selected ally.",
+	SKILLRALLYDESCRIPT = "Reset all cooldowns (except Rally) and restore 30% of health to selected ally.",
 	SKILLBLOODBOIL = "Blood Boil",
 	SKILLBLOODBOILDESCRIPT = "Increase ATK by 25%, remove Stun, Wet and Fear, gain immunity to them for 4 turns.",
 	SKILLFIRE_SHIELD = "Fire Shield",
@@ -1312,8 +1310,8 @@ Ensnared: Evasion is reduced by 75.""",
 	SKILLDISINTEGRATEDESCRIPT = "Deals 250% of MATK as {color=yellow|Earth} damage to single target and Stun it for 3 turns. If target can't be stunned, applies Shredded instead.",
 	SKILLWIND_BLADE = "Wind Blade",
 	SKILLWIND_BLADEDESCRIPT = "Deals 60% of MATK as {color=yellow|Air} damage to one target and random enemy.",
-	SKILLIGHTNING = "Lightning",
-	SKILLIGHTNINGDESCRIPT = """Deals 125% of MATK as {color=yellow|Air} damage. Has 50% chance to apply Shock for 2 turns. 
+	SKILLLIGHTNING = "Lightning",
+	SKILLLIGHTNINGDESCRIPT = """Deals 125% of MATK as {color=yellow|Air} damage. Has 50% chance to apply Shock for 2 turns. 
 
 Shocked: Damage is reduced by 15%.""",
 	SKILLHASTE = "Haste",
@@ -1938,15 +1936,22 @@ Damage +15%, Health +20.""",
 Consent represents character's general acceptance of various sexual actions, but it is also heavily affected by partners and situtation.""",
 	INFOSEX_TRAITS = "Sex Traits provide additional effects during sexual interaction. They can be learned, activated and deactivated. Maximum number of activatale traits is based on Sex Factor.",
 	INFORULES_CONDS = "Conditions and rules can be toggled on character, affecting some of their stats and behavior.",
-	INFOPERSONALITY = "Character's personality will affect thier banter and provide access to certain traits and bonuses. Personality will be affected by social skills used on character.",
+	INFOPERSONALITY = """Character's personality will affect their banter and provide access to certain traits and bonuses.
+	Neutral: No bonuses
+	Bold: Incoming negative effects last 1 turn less, +5% Productivity
+	Kind: Outcoming positive buffs last 1 turn more, +10% Service
+	Serious: Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)\nTask Crit Chance +3%
+	Shy: Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax
+	""",
+	
 	INFOPERSONALITYBOLD = """Bold
 Incoming negative effects last 1 turn less\n+5% Productivity""",
 	INFOPERSONALITYKIND = """Kind
 Outcoming positive buffs last 1 turn more\n+10% Service""",
 	INFOPERSONALITYSERIOUS = """Serious
-Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax""",
+Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)\nTask Crit Chance +3%""",
 	INFOPERSONALITYSHY = """Shy
-Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)""",
+Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax""",
 	INFOSLAVE_CLASS = "Character type will define its options and behavior. Slaves can be forced into sexual services without consent and have higher tolerance for lack of consent in sex. Subordinates become loyal faster but can't be sold or given away.",
 	INFOCONSENT = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. Consent will affect prostitution related jobs.",
 	INFOCONSENTMASTER = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. {color=green|[Master] has no Consent requirements for any actions.}",
@@ -2801,6 +2806,8 @@ Social skills effect: +10%.""",
 	BUFFDESCRIPTATKPAS = "Damage increased",
 	BUFFDESCRIPTATTACKPASSSRC = "Increases ATK and MATK of allies by 10 every other turn. Clears when defeated.",
 	BUFFDESCRIPTRESTO = "Resting: physical resist increased by 20%%",
+	BUFFDESCRIPTDEATHKNIGHT = "Hit Rate, Attack and Neutral Resists are increased",
+	BUFFDESCRIPTTEMPLAR = "MDEF Increaased",
 	BUFFDESCRIPTCURSE = "",
 	BUFFDESCRIPTENCHANT = "",
 	BUFFDESCRIPTMENTOR = "Experience Gain increased",
@@ -2943,7 +2950,7 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	PROFTECHNOMANCER = "Technomancer",
 	PROFTECHNOMANCERDESCRIPT = "By merging magic and technology these specialists are capable of producing very unique results.",
 	PROFPYROMANCER = "Pyromancer",
-	PROFPROFPYROMANCERDESCRIPT = "Devoting their powers to the way of fire, certain individuals are capable of truly mastering it at the cost of abandoning most other magich schools.",
+	PROFPYROMANCERDESCRIPT = "Devoting their powers to the way of fire, certain individuals are capable of truly mastering it at the cost of abandoning most other magich schools.",
 	PROFALIOS_CHAMPION = "Champion of Alios",
 	PROFALIOS_CHAMPIONDESCRIPT = "A lone girl with mysterious powers and the past. One thing is clear, her divine affiliation is real. ",
 	PROFNIXX_CHAMPION = "Champion of Nixx",
@@ -3413,6 +3420,7 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	SEXTRAITLIKES_BEASTS = "Likes them beasty",
 	SEXTRAITBISEXUAL = "Bisexual",
 	SEXTRAITMONOGAMOUS = "Monogamous",
+	SEXTRAITFAMILY_FIRST = "Family First",
 	SEXTRAITOPEN_MINDED = "Open-minded",
 	SEXTRAITDEVIANT = "Deviant",
 	SEXTRAITGROUP = "Company Lover",
@@ -3474,6 +3482,7 @@ Sex skills are increased when performing related action and their growth is depe
 	SEXTRAITDISLIKE_TAILDESCRIPT = "[name] expresses dislike for certain lewd actions. [His] consent and the effect of received actions are lowered for [him]. ",
 	SEXTRAITBISEXUALDESCRIPT = "[name] does not mind having sex with people of [his] gender. Removes consent penalty from same-sex partners. Allows romance with residents of same sex.",
 	SEXTRAITMONOGAMOUSDESCRIPT = "[name] only is interested in relationship with a single partner. Boosts consent and effects of the actions from [his] selected person. Prevents [name] from accepting more than one romantic partner.",
+	SEXTRAITFAMILY_FIRSTDESCRIPT = "[name] does not mind engaging into relationship with [his] relatives. Removes consent penalty from sexual interactions with relatives. Allows [name] to accept relatives as romantic partners.",
 	SEXTRAITOPEN_MINDEDDESCRIPT = "[name] is rather accepting of [his] partners, having no issues with them having different body structures. Removes consent penalty from different body shape partners.",
 	SEXTRAITDEVIANTDESCRIPT = "[name] has some deviant tastes, having no problem from engaging in lewd actions with animals and even undead. Removes consent penalty from animal and undead partners.",
 	SEXTRAITGROUPDESCRIPT = "[name] accepts having multiple partners at once as a natural thing. Removes consent penalty from group actions.",
@@ -3679,7 +3688,7 @@ If you have enough cash...""",
 	DIALOGUEENEMYSTRSCARE = "The group of enemies ahead seems hesitating sensing your approach. You might be able to scare them off and avoid the fight by displaying your power...",
 	DIALOGUEENEMYSTRSCARESELECT = "[Strength Challenge] Select Character",
 	DIALOGUEENEMYSTRSCAREPASS = "[name] scares the hostiles away from the path, letting the rest of the group to pass free.",
-	DIALOGUEENEMYDEXSNEAK = "The group of enemies head are unaware of your pressence. Sneaking past them might be possible ",
+	DIALOGUEENEMYDEXSNEAK = "The group of enemies head are unaware of your pressence. Sneaking past them might be possible. ",
 	DIALOGUEENEMYDEXSNEAKSELECT = "[Dexterity Challenge] Select Character",
 	DIALOGUEENEMYDEXSNEAKPASS = "[name] manages to get on the other side of the pass and distracts the group of enemies who leave in other direction.",
 	DIALOGUEEVENTENEMYDISTRACT = "The group of enemies ahead seem rather unfocused and unwilling to fight. Perhaps surrendering one of your captives to them will persuade them to let you pass.",
@@ -3785,6 +3794,8 @@ As the [boy] is made your slave, [he] can be a very useful addition to your roos
 	CHARFREELOVERS = "[name] and [scncharname] have approached you and asked to let them become paramour.",
 	CHARLOVERSALLOW = "*Allow*",
 	CHARFREELOVERSALLOW = "*Allow*",
+	CHARLOVERSFORBID = "*Forbid*",
+	CHARFREELOVERSFORBID = "*Forbid*",
 	
 	DIALOGUEEVENTGOODREBELSBEAST = "You come across a small group of rebels, who have caught a [race] [male] that likely strayed from their homelands. Given the rebels' attitude towards [him] it's easy to see they are up to no good...",
 	DIALOGUEEVENTREBELSBEASTINTIMIDATESUCCES = """[center]{color=green|Success!}[/center]
@@ -3919,6 +3930,12 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYBALLISTA = "Ballista",
 	ENEMYTROLL = "Troll",
 	ENEMYBANDIT_ASSASSIN = "Bandit Assassin",
+	ENEMYPACKLEADER_BOSS = "Leader Of The Pack",
+	ENEMYSERGANT_BOSS = "Sergant",
+	ENEMYCASTELLAN_BOSS = "Castellan",
+	ENEMYJARL_BOSS = "Jarl",
+	ENEMYBOUNTY_HUNTER_BOSS = "Bounty Hunter",
+	ENEMYWARLOCK_BOSS = "Warlock",
 	ENEMYSUMMON_DOG = "Trained Dog",
 	ENEMYSUMMON_SKELETON_MELEE = "Skeleton Warrior",
 	ENEMYSUMMON_SKELETON_ARCHER = "Skeleton Archer",
@@ -5205,6 +5222,23 @@ The princess notices Aire tensing up in response to the question.
 	SKILLSPIDER_RANGED = "Web Spit",
 	SKILLSTICKY_WEB = "Sticky Web",
 	SKILLPOISON_SPRAY = "Poison Spray",
+	SKILLCLEAVE_W = "Cleave",
+	SKILLCRIPPLING_BITE = "Criplling Bite",
+	SKILLFRIGHTENING_HOWL = "Frightening Howl",
+	SKILLLEADERSMARK_S = "Leader's Mark",
+	SKILLFIRE_LUNG = "Fire Lung",
+	SKILLBLINDING_HEAT = "Blinding Heat",
+	SKILLPURIFICATION_BY_FIRE = "Purification By Fire",
+	SKILLHOT_METAL = "Hot Metal",
+	SKILLSCORCHED_EARTH = "Scorched Earth",
+	SKILLGLACIATION = "Glaciation",
+	SKILLNORTH_WIND = "North Wind",
+	SKILLCRUELTY = "Cruelty",
+	SKILLHUTERS_MARK = "Hunter's Mark",
+	SKILLSHRILL_WHISTLE = "Shrill Whisle",
+	SKILLHUNTING = "Hunting",
+	SKILLENCHANTING_WHISPER = "Enchanting Whisper",
+	SKILLCURSE_OF_DESPAIR = "Curse Of Despair",
 	SKILLSHRED = "Shred",
 	AIRE_AMELIA1 = """
 Amelia entered Aire's cell with a neat black satchel and a smile on her face.
@@ -5539,7 +5573,7 @@ She patiently observed the battlefield, as the guilds' troops advanced toward th
 As more groups were approaching Duncan he and his unit dwindled as it grew fatigued.""",
 	BETRAYAL_CONFIRMED_7 = """{color=aqua|Greg: — It was your mistake to rush in, even more so to lead the charge personally.}
 
-{color=yellow|Duncan: — Who else would it do?}
+{color=yellow|Duncan: — Who else would do it?}
 
 {color=aqua|Greg: — Perhaps it's time for you to surrender.}
 
@@ -12869,20 +12903,20 @@ Zephyra: — I wish I could lie about it, but my agreement requires me to confir
 
 Zephyra: — Uh, huh, a long time ago then...
 
-Wirenth: — I know you are a fairly recently became his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
+Wirenth: — I know you have fairly recently become his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
 
-Zephyra: — You've done well flattering me, might I ask what can I do for your dutious worship?""",
+Zephyra: — You've done well flattering me, might I ask what can I do for your dutiful worship?""",
 	ZEPHYRA_COSTUME_3_2 = """Elf: — I knew it! My name is Wirenth, I've been a devoted Alios follower since the times he was in our lands.
 
 Zephyra: — Uh, huh, a long time ago then...
 
-Wirenth: — I know you are a fairly recently became his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
+Wirenth: — I know you have fairly recently become his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
 
 Zephyra: — ...Former High Priestess.
 
 Wirenth: — Gah, this is less important than meeting a herald of Alios herself.
 
-Zephyra: — You've done well flattering me, might I ask what can I do for your dutious worship?""",
+Zephyra: — You've done well flattering me, might I ask what can I do for your dutiful worship?""",
 	ZEPHYRA_COSTUME_3_3 = """Zephyra: — Well, this is a shame, but I'm afraid because of my selfish [Master] I won't be able to help you out. 
 
 Wirenth: — Oh... Uh, alright... I wish you the best on your journey... 
@@ -16119,7 +16153,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	COMBAT_WIN_LINE1 = "Phew, we did it, [Master]...",
 	COMBAT_WIN_LINE2 = "Hah, piece of cake. Who's next?",
 	COMBAT_WIN_LINE3 = "Well fought. Lets move on, [Master]. ",
-	COMBAT_WIN_LINE4 = "I'm glad we won, but let's stay cautious. ",
+	COMBAT_WIN_LINE4 = "It was easy, but let's stay cautious. ",
 	COMBAT_WIN_LINE5 = "Hah, I didn't even break a sweat.",
 	COMBAT_WIN_LINE6 = "That was really scary. I hope these were the last of them...",
 	COMBAT_WIN_LINE7 = "I... Can't believe we won...",
@@ -16135,10 +16169,10 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	COMBAT_WIN_LINE17 = "Shouldn't have challenged me!",
 	COMBAT_WIN_LINE18 = "Done already!?",
 	COMBAT_WIN_LINE19 = "Damn! I wanted to fight some more.",
-	COMBAT_WIN_LINE20 = "Pathetic. Why even bother attacking?",
+	COMBAT_WIN_LINE20 = "Pathetic. Why even bother challenging us?",
 	COMBAT_WIN_LINE21 = "I hope they're okay...",
 	COMBAT_WIN_LINE22 = "Is everyone alright?",
-	COMBAT_WIN_LINE23 = "Why did we have to fight?",
+	COMBAT_WIN_LINE23 = "Did we have to fight?..",
 	COMBAT_WIN_LINE24 = "We couldn't talk this out...?",
 	COMBAT_WIN_LINE25 = "Let's hope we don't have to fight again...",
 	SEX_START_LINE1 = "Um... you really want me to do this? I'm not sure I'm ready...",

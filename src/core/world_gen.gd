@@ -76,6 +76,15 @@ func get_faction_from_code(code):
 	return ResourceScripts.game_world.factions[code]
 
 func update_area_shop(area):
+	if area.area_shop_items is String:
+		area.shop = Items.get_loot().get_shop_list(area.area_shop_items)
+	else:
+		update_area_shop_old(area)
+
+#--------------old loot system!----------------------
+func update_area_shop_old(area):
+	if area.shop == null:#that shouldn't be possible, but it is in some saves for some reason
+		area.shop = {}
 	area.shop.clear()
 	var resource_array = []
 	for i in area.area_shop_items:
@@ -106,13 +115,15 @@ func update_area_shop(area):
 					var item = Items.itemlist[input_handler.random_from_array(record.items)]
 					if item.has('parts'):
 						var parts = Items.get_materials_by_grade(ResourceScripts.game_progress.get_default_materials(), item.code)
-						area.shop[item.code] = parts
+						if !area.shop.has(item.code):
+							area.shop[item.code] = []
+						area.shop[item.code].append(parts)
 					else:
 						if area.shop.has(item.code):
 							area.shop[item.code] += 1
 						else:
 							area.shop[item.code] = 1
-
+#-------------------------
 
 func make_guild(code, area):
 	var data = worlddata.factiondata[code].duplicate(true)
@@ -311,8 +322,15 @@ func make_settlement(code, area):
 	update_area_shop(settlement)
 
 	if settlement.has('gather_resources'):
-		for i in settlement.gather_resources.keys():
-			settlement.gather_resources[i] = round(rand_range(settlement.gather_resources[i][0],settlement.gather_resources[i][1]))
+		#---old loot system--------
+#		if settlement.gather_resources is Dictionary:
+#			for i in settlement.gather_resources.keys():
+#				settlement.gather_resources[i] = round(rand_range(settlement.gather_resources[i][0],settlement.gather_resources[i][1]))
+#		else:#is String
+		#---------------
+		var loot_processor = Items.get_loot()
+		var reward_dict = loot_processor.get_reward(settlement.gather_resources)
+		settlement.gather_resources = reward_dict.materials
 
 	area.locations[settlement.id] = settlement
 	ResourceScripts.game_world.location_links[settlement.id] = {area = area.code, category = 'locations'}
@@ -363,9 +381,14 @@ func make_location(code, area):
 		if location.has('gatherable_resources'):
 			location.gather_limit_resources = {}
 			location.tasks.append("gather")
-			for res in location.gatherable_resources:
-				if location.gatherable_resources[res].gather_mod is Array:
-					location.gatherable_resources[res].gather_mod = globals.rng.randf_range(location.gatherable_resources[res].gather_mod[0], location.gatherable_resources[res].gather_mod[1])
+			#---old loot system---------
+#			if location.gatherable_resources is Dictionary:
+#				for res in location.gatherable_resources:
+#					if location.gatherable_resources[res].gather_mod is Array:
+#						location.gatherable_resources[res].gather_mod = globals.rng.randf_range(location.gatherable_resources[res].gather_mod[0], location.gatherable_resources[res].gather_mod[1])
+#			else:
+			#---------------
+			location.gather_mods = {}
 #		location.gather_mod = rand_range(location.gather_mod[0],location.gather_mod[1])
 #	location.erase('gatherable_resources')
 		if location.has('background_pool'):
@@ -674,154 +697,21 @@ func make_repeatable_quest_location(quest,area,req):
 
 
 func make_chest_loot(chest):
-	var data
-	if typeof(chest) == TYPE_STRING:
-		data = Enemydata.loot_variants_data[chest]
+	if typeof(chest) != TYPE_STRING:
+		assert(false, "make_chest_loot(): chest must be string! %s" % chest)
+		push_error("make_chest_loot(): chest must be string! %s" % chest)
 	var dict = {materials = {}, items = [], gold = 0, lock = {difficulty = 0, type = 'none'}}
-	var location = input_handler.active_location
+	var loot_processor =  Items.get_loot()
 
-	if Enemydata.locks_data.has(chest):
-		dict.lock.type = input_handler.weightedrandom(Enemydata.locks_data[chest].locks)
+	var locks_data = loot_processor.locks_data
+	if locks_data.has(chest):
+		dict.lock.type = input_handler.weightedrandom(locks_data[chest].locks)
 		if dict.lock.type != 'none':
-			dict.lock.difficulty = rand_range(Enemydata.locks_data[chest].difficulty[0], Enemydata.locks_data[chest].difficulty[1])
+			dict.lock.difficulty = rand_range(locks_data[chest].difficulty[0], locks_data[chest].difficulty[1])
 
-	for i in data:
-		match i.code:
-			'defined':
-				var tempitem = i.name
-				var amount = round(rand_range(i.min, i.max))
-				if amount <= 0 : continue
-				if Items.materiallist.has(tempitem):
-					input_handler.AddOrIncrementDict(dict.materials, {tempitem : amount})
-				if Items.itemlist.has(tempitem):
-					var item = Items.itemlist[tempitem]
-					match item.type:
-						'usable':
-							dict.items.append(globals.CreateUsableItem(tempitem, amount))
-						'gear':
-							if i.has('parts'):
-								if i.has('quality'):
-									dict.items.append(globals.CreateGearItemQuality(tempitem, i.parts, i.quality))
-								else:
-									dict.items.append(globals.CreateGearItemQuality(tempitem, i.parts, 'poor'))
-							else:
-								dict.items.append(globals.CreateGearItem(tempitem, {}))
-			'material':
-				var tempdict
-				if i.grade == 'location':
-					if location.resources is Array:
-						tempdict = {input_handler.random_from_array(location.resources) : round(rand_range(i.min,i.max))}
-					else:
-						tempdict = {input_handler.weightedrandom_dict(Items.material_tiers[location.resources]) : round(rand_range(i.min,i.max))}
-				else:
-					tempdict = {input_handler.weightedrandom_dict(Items.material_tiers[i.grade]) : round(rand_range(i.min,i.max))}
-#					var array = []
-#					for k in Items.materiallist.values():
-#						if k.type != 'food' && i.grade.has(k.tier) && !k.tags.has('no_random'):
-#							array.append(k.code)
-#					tempdict = {array[randi()%array.size()] : round(rand_range(i.min, i.max))}
-				input_handler.AddOrIncrementDict(dict.materials, tempdict)
-			'material_selected':
-				var tempdict
-				var mat = 'wood'# = input_handler.weightedrandom(i.options)
-				var number = 1
-				var array = []
-				for k in i.options:
-					array.append([k.code,k.weight])
-				array = input_handler.weightedrandom(array)
-				for k in i.options:
-					if k.code == array:
-						mat = array
-						number = round(rand_range(k.amount[0],k.amount[1]))
-						break
-				#var value = rand_range(i.value[0], i.value[1])
-				#var number = ceil(value/Items.materiallist[mat].price)
-				tempdict = {mat : number}
-				input_handler.AddOrIncrementDict(dict.materials, tempdict)
-			'usable':
-				var array = []
-				var amount = round(rand_range(i.min, i.max))
-				if amount <= 0:
-					continue
-				for k in Items.itemlist.values():
-					if i.grade.has(k.tier) && k.type == 'usable' && !k.tags.has('no_random'):
-						array.append(k.code)
-				dict.items.append(globals.CreateUsableItem(array[randi()%array.size()], amount))
-			'map':
-				var array = []
-				var amount = round(rand_range(i.min, i.max))
-				if amount <= 0:
-					continue
-				for k in Items.itemlist.values():
-					if i.maps.has(k.code) && k.tier == 'map' && !k.tags.has('no_random'):
-						array.append(k.code)
-				dict.items.append(globals.CreateUsableItem(array[randi()%array.size()], amount))
-			'static_gear':
-				var number = round(rand_range(i.min, i.max))
-				var array = []
-				for k in Items.itemlist.values():
-					if i.grade.has(k.tier) && k.has('geartype') && k.geartype == 'costume' && !k.tags.has('no_random'):
-						array.append(k.code)
-				while number > 0:
-					dict.items.append(globals.CreateGearItem(input_handler.random_from_array(array),{}))
-					number -= 1
-			'gear':
-				var number = round(rand_range(i.min, i.max))
-				var array = []
-				for k in Items.itemlist.values():
-					if i.grade.has(k.tier) && k.type == 'gear' && k.itemtype in ['weapon', 'armor'] && k.geartype != 'costume' && !k.tags.has('no_random'):
-						array.append(k.code)
-				while number > 0:
-					var mat_grade = ResourceScripts.game_progress.get_default_materials()
-					if i.has('material_grade'):
-						mat_grade = i.material_grade
-						if mat_grade is Array:
-							mat_grade = input_handler.weightedrandom(mat_grade)
-						if mat_grade == 'location':
-							mat_grade = location.resources
-					
-					var item = globals.CreateGearItemLoot(input_handler.random_from_array(array), mat_grade)
-					dict.items.append(item)
-					number -= 1
-			'weapon':
-				var number = round(rand_range(i.min, i.max))
-				var array = []
-				for k in Items.itemlist.values():
-					if i.grade.has(k.tier) && k.type == 'gear' && k.itemtype in ['weapon'] && k.geartype != 'costume' && !k.tags.has('no_random'):
-						array.append(k.code)
-				while number > 0:
-					var mat_grade = ResourceScripts.game_progress.get_default_materials()
-					if i.has('material_grade'):
-						mat_grade = i.material_grade
-						if mat_grade is Array:
-							mat_grade = input_handler.weightedrandom(mat_grade)
-						if mat_grade == 'location':
-							mat_grade = location.resources
-					
-					var item = globals.CreateGearItemLoot(input_handler.random_from_array(array), mat_grade)
-					dict.items.append(item)
-					number -= 1
-			'armor':
-				var number = round(rand_range(i.min, i.max))
-				var array = []
-				for k in Items.itemlist.values():
-					if i.grade.has(k.tier) && k.type == 'gear' && k.itemtype in ['armor'] && k.geartype != 'costume' && !k.tags.has('no_random'):
-						array.append(k.code)
-				while number > 0:
-					var mat_grade = ResourceScripts.game_progress.get_default_materials()
-					if i.has('material_grade'):
-						mat_grade = i.material_grade
-						if mat_grade is Array:
-							mat_grade = input_handler.weightedrandom(mat_grade)
-						if mat_grade == 'location':
-							mat_grade = location.resources
-					
-					var item = globals.CreateGearItemLoot(input_handler.random_from_array(array), mat_grade)
-					dict.items.append(item)
-					number -= 1
-			'gold':
-				var number = round(rand_range(i.min, i.max))
-				dict.gold += number
+	var rewards = loot_processor.get_reward(chest)
+	loot_processor.merge_reward_dict(dict, rewards)
+	
 	return dict
 
 func generate_random_gear(dict):#
@@ -911,27 +801,10 @@ var dungeon_template = { #sample dungeon data
 		
 		
 		#do not remove next ones - for they a used in generation
-		resources = ['cloth','leather','iron','wood','clothsilk'],
-		gatherable_resources = {
-			wood = {
-				amount = [25,40],
-				weight = 10,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			stone = {
-				amount = [25,40],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			iron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			},
+		resources = 'local1',
+		gather_settings = 'base',
+		gatherable_resources = 'biome_bandit_den_res',
+		
 		bgm = "dungeon",
 		purchase_price = 100,
 		affiliation = 'local', #defines character races and events
@@ -1220,16 +1093,31 @@ func finalize_subrooms(locdata, subrooms, level):
 						tmp.type = 'resource_survival'
 					else:
 						tmp.type = 'resource'
-					var pool = []
-					for res in locdata.gatherable_resources:
-						pool.push_back([res, locdata.gatherable_resources[res].weight])
-					var roll = input_handler.weightedrandom(pool)
-					var resdata = locdata.gatherable_resources[roll]
-					tmp.resource = roll
-					for arg in ['amount', 'stamina']:
-						tmp[arg] = resdata[arg]
-						if tmp[arg] is Array:
-							tmp[arg] = globals.rng.randi_range(tmp[arg][0], tmp[arg][1])
+					#---old loot system------
+#					if locdata.gatherable_resources is Dictionary:
+#						var pool = []
+#						for res in locdata.gatherable_resources:
+#							pool.push_back([res, locdata.gatherable_resources[res].weight])
+#						var roll = input_handler.weightedrandom(pool)
+#						var resdata = locdata.gatherable_resources[roll]
+#						tmp.resource = roll
+#						for arg in ['amount', 'stamina']:
+#							tmp[arg] = resdata[arg]
+#							if tmp[arg] is Array:
+#								tmp[arg] = globals.rng.randi_range(tmp[arg][0], tmp[arg][1])
+#					else:
+					#--------------
+					
+					var loot_processor = Items.get_loot()
+					var reward_dict = loot_processor.get_reward(locdata.gatherable_resources)
+					var resdata = reward_dict.materials
+					var material = resdata.keys()[0]
+					tmp.resource = material
+					tmp.amount = resdata[material]
+					tmp.stamina = loot_processor.get_gather_stamina(locdata.gather_settings, material)
+					if !locdata.gather_mods.has(material):
+						locdata.gather_mods[material] = loot_processor.get_gather_mod(locdata.gather_settings, material)
+					
 					tmp.stamina_cost = tmp.stamina
 				_:
 					tmp.type = 'onetime_event'
@@ -1258,10 +1146,18 @@ func set_level_infinite(location, level):
 	#setup biome attributes
 	var biome_data = DungeonData.biomes[location.biome]
 	location.background = input_handler.random_from_array(biome_data.background_pool)
-	location.gatherable_resources = biome_data.gatherable_resources.duplicate(true)
-	for res in location.gatherable_resources:
-		if location.gatherable_resources[res].gather_mod is Array:
-			location.gatherable_resources[res].gather_mod = globals.rng.randf_range(location.gatherable_resources[res].gather_mod[0], location.gatherable_resources[res].gather_mod[1])
+	#----old loot system-----
+#	if biome_data.gatherable_resources is Dictionary:
+#		location.gatherable_resources = biome_data.gatherable_resources.duplicate(true)
+#		for res in location.gatherable_resources:
+#			if location.gatherable_resources[res].gather_mod is Array:
+#				location.gatherable_resources[res].gather_mod = globals.rng.randf_range(location.gatherable_resources[res].gather_mod[0], location.gatherable_resources[res].gather_mod[1])
+#	else:
+	#---------
+	location.gatherable_resources = biome_data.gatherable_resources
+	location.gather_settings = biome_data.gather_settings
+	location.gather_mods = {}
+	
 	location.enemies = biome_data.enemyarray.duplicate(true)
 	for st in ['event_room_number', 'material_room_number', 'main_route_length', 'bonus_rooms', 'base_room_stamina_cost', 'character_data']:
 		location[st] = biome_data[st].duplicate(true)

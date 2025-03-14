@@ -13,14 +13,25 @@ func _ready():
 		return
 	
 	wait_time = 1.0
-	path = ProjectSettings.get_setting("logging/file_logging/log_path")
-	file = File.new()
+	set_log_file()
 	connect("timeout", self, "check_log")
 	if input_handler.globalsettings.stop_log_alert:
 		stop()
 	else:
 		start()
 
+func set_log_file():
+	if path != null:
+		return
+	path = ProjectSettings.get_setting("logging/file_logging/log_path")
+	file = File.new()
+
+#can be called befor _ready()
+func fix_cur_log_position():
+	set_log_file()
+	file.open(path, File.READ)
+	last_pos = file.get_len()
+	file.close()
 
 func check_log():
 	var new_time = file.get_modified_time(path)
@@ -32,8 +43,8 @@ func check_log():
 	file.seek(last_pos)
 	while file.get_position() < file.get_len():
 		var line = file.get_line()
-		if line.findn("error") != -1:
-			show_string(line)
+#		if line.findn("error") != -1:
+		show_string(line)
 	last_pos = file.get_position()
 	file.close()
 
