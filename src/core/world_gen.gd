@@ -115,7 +115,9 @@ func update_area_shop_old(area):
 					var item = Items.itemlist[input_handler.random_from_array(record.items)]
 					if item.has('parts'):
 						var parts = Items.get_materials_by_grade(ResourceScripts.game_progress.get_default_materials(), item.code)
-						area.shop[item.code] = parts
+						if !area.shop.has(item.code):
+							area.shop[item.code] = []
+						area.shop[item.code].append(parts)
 					else:
 						if area.shop.has(item.code):
 							area.shop[item.code] += 1
