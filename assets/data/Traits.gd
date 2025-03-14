@@ -1951,6 +1951,7 @@ var sex_traits = { #only for interaction tab
 		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "mazo_actions", operant = "gte", value = 10}]}],
 		reqs = [{code = "action_tag", value = "punish"}],
 		effects = [{effect = 'sens_bonus', operant = "+", value = 0.5, trigger = 'action_self'}],
+		tags = ['likes_training']
 	},
 	sadist = {
 		code = "sadist",
@@ -1984,6 +1985,7 @@ var sex_traits = { #only for interaction tab
 		negative = false,
 		reqs = [{code = "action_tag", value = "sub"}],
 		effects = [{effect = 'sens_bonus', operant = "+", value = 0.2, trigger = 'action_self'}],
+		tags = ['likes_training']
 	},
 	nymphomania = {
 		code = "nymphomania",
@@ -2061,6 +2063,7 @@ var sex_traits = { #only for interaction tab
 		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "unconsented_orgasm", operant = "gte", value = 2}]}],
 		reqs = [],
 		effects = [],#{effect = 'consent_gain', operant = '*', value = 1.5, trigger = 'encounter_end'}],
+		tags = ['likes_training']
 	},
 	
 	teacher = {
