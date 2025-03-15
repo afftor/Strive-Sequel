@@ -725,7 +725,6 @@ func count_action_consent(action, giver, taker):
 		taker_consent += 2
 		taker_text += "{color=green|Drunk}\n"
 
-
 #	if giver.horny >= 100:
 #		giver_consent += 1
 #		giver_text += "{color=green|Horny}\n"
@@ -752,37 +751,35 @@ func count_action_consent(action, giver, taker):
 				giver_text += "{color=green|Is a Lover}\n"
 				taker_text += "{color=green|Is a Lover}\n"
 			
-		
-	
-	if giver.person_relations.has(taker.id):
-		var rel_value = giver.person_relations[taker.id]
-		if rel_value >= 350:
-			giver_consent += 1
-			giver_text += "{color=green|Likes partner}\n"
-		elif rel_value >= 800:
-			giver_consent += 2
-			giver_text += "{color=green|Loves partner}\n"
-		elif rel_value <= -800:
-			giver_consent -= 2
-			giver_text += "{color=red|Dislikes partner}\n"
-		elif rel_value <= -350:
-			giver_consent -= 1
-			giver_text += "{color=red|Hates partner}\n"
+#	if giver.person_relations.has(taker.id):
+#		var rel_value = giver.person_relations[taker.id]
+#		if rel_value >= 350:
+#			giver_consent += 1
+#			giver_text += "{color=green|Likes partner}\n"
+#		elif rel_value >= 800:
+#			giver_consent += 2
+#			giver_text += "{color=green|Loves partner}\n"
+#		elif rel_value <= -800:
+#			giver_consent -= 2
+#			giver_text += "{color=red|Dislikes partner}\n"
+#		elif rel_value <= -350:
+#			giver_consent -= 1
+#			giver_text += "{color=red|Hates partner}\n"
 
-	if taker.person_relations.has(giver.id):
-		var rel_value = taker.person_relations[giver.id]
-		if rel_value >= 350:
-			taker_consent += 1
-			taker_text += "{color=green|Likes partner}\n"
-		elif rel_value >= 800:
-			taker_consent += 2
-			taker_text += "{color=green|Loves partner}\n"
-		elif rel_value <= -800:
-			taker_consent -= 2
-			taker_text += "{color=red|Dislikes partner}\n"
-		elif rel_value <= -350:
-			taker_consent -= 1
-			taker_text += "{color=red|Hates partner}\n"
+#	if taker.person_relations.has(giver.id):
+#		var rel_value = taker.person_relations[giver.id]
+#		if rel_value >= 350:
+#			taker_consent += 1
+#			taker_text += "{color=green|Likes partner}\n"
+#		elif rel_value >= 800:
+#			taker_consent += 2
+#			taker_text += "{color=green|Loves partner}\n"
+#		elif rel_value <= -800:
+#			taker_consent -= 2
+#			taker_text += "{color=red|Dislikes partner}\n"
+#		elif rel_value <= -350:
+#			taker_consent -= 1
+#			taker_text += "{color=red|Hates partner}\n"
 
 	if giver.person.get_stat('body_shape') != taker.person.get_stat('body_shape') && !action.code in ['subdue','rope','orgasm_denial']:
 		if !giver.sex_traits.has("open_minded"):
@@ -820,7 +817,6 @@ func count_action_consent(action, giver, taker):
 		taker_consent = 25
 		taker_text = "Subdue: Receiver's consent ignored. "
 
-	
 	if giver_value == 0:
 		giver_consent = 0
 		giver_text = "{color=green|Action does not require consent}"
@@ -828,7 +824,6 @@ func count_action_consent(action, giver, taker):
 		taker_consent = 0
 		taker_text = "{color=green|Action does not require consent}"
 	
-
 	return {giver_consent = giver_consent, taker_consent = taker_consent, giver_text = giver_text, taker_text = taker_text}
 #	var dict = {value = action.consent, giver_consent = giver.consent, taker_consent = taker.consent}
 #	return dict
