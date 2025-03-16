@@ -751,7 +751,6 @@ func count_action_consent(action, giver, taker):
 				giver_text += "{color=green|Is a Lover}\n"
 				taker_text += "{color=green|Is a Lover}\n"
 		
-		
 		var relatives = ResourceScripts.game_party.checkifrelatives(giver.id, taker.id)
 		if relatives == true:
 			if giver.sex_traits.has("family_first"):
@@ -766,7 +765,6 @@ func count_action_consent(action, giver, taker):
 			else:
 				taker_consent -= 1
 				taker_text += "{color=red|Partner is related}\n"
-		
 #	if taker.person_relations.has(giver.id):
 #		var rel_value = taker.person_relations[giver.id]
 #		if rel_value >= 350:
