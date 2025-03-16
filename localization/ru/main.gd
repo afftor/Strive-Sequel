@@ -3643,6 +3643,7 @@ Requires: Базовый рабский труд""",
 	SEXTRAITLIKES_BEASTS = """Любитель зверюшек""",
 	SEXTRAITBISEXUAL = """Бисексуальность""",
 	SEXTRAITMONOGAMOUS = """Моногамность""",
+	SEXTRAITFAMILY_FIRST = """Family First""", # MISSING TRANSLATION
 	SEXTRAITOPEN_MINDED = """Открыто мыслящий""",
 	SEXTRAITDEVIANT = """Девиантность""",
 	SEXTRAITGROUP = """Любитель компании""",
@@ -3711,6 +3712,7 @@ Requires: Базовый рабский труд""",
 
 	SEXTRAITBISEXUALDESCRIPT = """[name] не против секса с людьми своего пола. Снимает штраф за согласие с однополых партнеров""",
 	SEXTRAITMONOGAMOUSDESCRIPT = """[name] интересуется только отношениями с одним партнером. Усиливает согласие и эффект от действий с [his] выбранным персонажем. Предотвращает [name] принимать более одного романтического партнера.""",
+	SEXTRAITFAMILY_FIRSTDESCRIPT = """[name] does not mind engaging into relationship with [his] relatives. Removes consent penalty from sexual interactions with relatives. Allows [name] to accept relatives as romantic partners.""", # MISSING TRANSLATION
 	SEXTRAITOPEN_MINDEDDESCRIPT = """[name] скорее принимает [his] партнеров, не возражая против того, что у них разное строение тела. Снимает штраф за согласие с партнерами с разным телосложением""",
 	SEXTRAITDEVIANTDESCRIPT = """[name] имеет некоторые девиантные вкусы, без проблем участвуя в развратных действиях с животными и даже нежитью. Снимает штраф за согласие с партнеров-животных и нежити.""",
 	SEXTRAITGROUPDESCRIPT = """[name] принимает наличие нескольких партнеров одновременно как естественное явление. Снимает штраф за согласие на групповые действия.""",
@@ -4223,6 +4225,12 @@ Requires: Базовый рабский труд""",
 	ENEMYBALLISTA = """Баллиста""",
 	ENEMYTROLL = """Тролль""",
 	ENEMYBANDIT_ASSASSIN = """Бандит-ассасин""",
+	ENEMYPACKLEADER_BOSS = """Leader Of The Pack""", # MISSING TRANSLATION
+	ENEMYSERGANT_BOSS = """Sergant""", # MISSING TRANSLATION
+	ENEMYCASTELLAN_BOSS = """Castellan""", # MISSING TRANSLATION
+	ENEMYJARL_BOSS = """Jarl""", # MISSING TRANSLATION
+	ENEMYBOUNTY_HUNTER_BOSS = """Bounty Hunter""", # MISSING TRANSLATION
+	ENEMYWARLOCK_BOSS = """Warlock""", # MISSING TRANSLATION
 	ENEMYSUMMON_DOG = """Тренированный пес""",
 	ENEMYSUMMON_SKELETON_MELEE = """Скелет-воин""",
 	ENEMYSUMMON_SKELETON_ARCHER = """Скелет-лучник""",
@@ -5717,6 +5725,23 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	SKILLSPIDER_RANGED = """Плевок паутиной""",
 	SKILLSTICKY_WEB = """Липкая паутина""",
 	SKILLPOISON_SPRAY = """Плевок ядом""",
+	SKILLCLEAVE_W = """Cleave""", # MISSING TRANSLATION
+	SKILLCRIPPLING_BITE = """Criplling Bite""", # MISSING TRANSLATION
+	SKILLFRIGHTENING_HOWL = """Frightening Howl""", # MISSING TRANSLATION
+	SKILLLEADERSMARK_S = """Leader's Mark""", # MISSING TRANSLATION
+	SKILLFIRE_LUNG = """Fire Lung""", # MISSING TRANSLATION
+	SKILLBLINDING_HEAT = """Blinding Heat""", # MISSING TRANSLATION
+	SKILLPURIFICATION_BY_FIRE = """Purification By Fire""", # MISSING TRANSLATION
+	SKILLHOT_METAL = """Hot Metal""", # MISSING TRANSLATION
+	SKILLSCORCHED_EARTH = """Scorched Earth""", # MISSING TRANSLATION
+	SKILLGLACIATION = """Glaciation""", # MISSING TRANSLATION
+	SKILLNORTH_WIND = """North Wind""", # MISSING TRANSLATION
+	SKILLCRUELTY = """Cruelty""", # MISSING TRANSLATION
+	SKILLHUTERS_MARK = """Hunter's Mark""", # MISSING TRANSLATION
+	SKILLSHRILL_WHISTLE = """Shrill Whisle""", # MISSING TRANSLATION
+	SKILLHUNTING = """Hunting""", # MISSING TRANSLATION
+	SKILLENCHANTING_WHISPER = """Enchanting Whisper""", # MISSING TRANSLATION
+	SKILLCURSE_OF_DESPAIR = """Curse Of Despair""", # MISSING TRANSLATION
 	SKILLSHRED = """Измельчить""",
 
 
