@@ -24,9 +24,13 @@ func createfromtemplate(buff_t):
 	description = tr(template.description)
 	icon = template.icon
 	template_name = template.t_name
-	if template.has('name'): name = template.name
-	if template.has('tags'): tags = template.tags.duplicate(true)
-	else: name = template_name
+	if template.has('name'): 
+		name = template.name
+	else: 
+		name = template_name
+	if template.has('tags'):
+		tags = template.tags.duplicate(true)
+	
 
 func get_tooltip():
 	calculate_args()
@@ -78,8 +82,12 @@ func deserialize(tmp):
 	description = tr(template.description)
 	icon = template.icon
 	template_name = template.t_name
-	if template.has('name'): name = template.name
-	else: name = template_name
+	if template.has('name'): 
+		name = template.name
+	else: 
+		name = template_name
+	if template.has('tags'):
+		tags = template.tags.duplicate(true)
 
 func set_limit(val):
 	template.limit = val
