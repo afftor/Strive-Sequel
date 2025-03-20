@@ -1106,4 +1106,4 @@ func reset_active_location(arg = null):
 
 
 func update_gold():
-	$AreaShop/Label2.text = str(ResourceScripts.game_res.money)
+	$AreaShop/Label2.text = str(int(ResourceScripts.game_res.money))
