@@ -180,7 +180,7 @@ func get_training_cost_gold():
 		cost = val * 0.66
 	if tr_a > 1:
 		cost = val
-	return cost * (1.0 - 0.07 * parent.get_ref().get_stat('tame_factor'))
+	return int(cost * (1.0 - 0.07 * parent.get_ref().get_stat('tame_factor')))
 
 
 func add_training(id):
