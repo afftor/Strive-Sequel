@@ -1223,7 +1223,7 @@ func reset_active_location(arg = null):
 		input_handler.active_location = active_location
 
 
-func reveal_map():
+func reveal_map(caster):
 #	globals.common_effects([{code = "reveal_active_dungeon"}])
 	var dungeon
 	if !active_location.tags.has('infinite'):
@@ -1235,6 +1235,7 @@ func reveal_map():
 		var rdata = ResourceScripts.game_world.rooms[room_id]
 		if rdata.status in ['obscured', 'hidden']:
 			rdata.status = 'scouted'
+	input_handler.active_character = caster
 	globals.start_fixed_event('reveal_map')
 	update_map()
 

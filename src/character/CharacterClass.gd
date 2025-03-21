@@ -1749,7 +1749,7 @@ func apply_atomic_noqueue(template):
 			if gui_controller.exploration_dungeon != null:
 				match template.value:
 					'reveal_map':
-						gui_controller.exploration_dungeon.reveal_map()
+						gui_controller.exploration_dungeon.reveal_map(self)
 					
 					'set_intimidate':
 						gui_controller.exploration_dungeon.set_intimidate()
