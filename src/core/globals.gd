@@ -850,6 +850,7 @@ func LoadGame(filename):
 	characters_pool.cleanup()
 	effects_pool.cleanup()
 	ResourceScripts.game_party.fix_serialization_postload()
+	characters_pool.fix_serialization_postload()
 	ResourceScripts.game_party.force_update_portraits()
 	
 	if is_instance_valid(gui_controller.mansion):
@@ -1331,20 +1332,23 @@ func check_event_reqs(reqs):
 			break
 	return check
 
-func check_location_group():
+func check_group(group):
 	var counter = 0
 	var cleararray = []
-	for i in input_handler.active_location.group:
-		if ResourceScripts.game_party.characters.has(input_handler.active_location.group[i]):
+	for i in group:
+		if ResourceScripts.game_party.characters.has(group[i]):
 			counter += 1
 		else:
 			cleararray.append(i)
 	for i in cleararray:
-		input_handler.active_location.group.erase(i)
+		group.erase(i)
 	if counter == 0:
 		return false
 	else:
 		return true
+
+func check_location_group():
+	return check_group(input_handler.active_location.group)
 
 func StartCombat(encounter = null):
 	if input_handler.combat_node == null:
