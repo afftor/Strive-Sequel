@@ -471,6 +471,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	MATERIALCATEGORYPLANT = "Plant",
 	MATERIALCATEGORYBONE = "Bone",
 	MATERIALCATEGORYCOMPONENT = "Consumable",
+	TOOLTIPHIDDENRESOURCE = "Unknown resource. Progress main story to reveal it",
 	MATERIALMEAT = "Meat",
 	MATERIALMEATDESCRIPT = "A rich source of nutrients. Acquired from hunting. ",
 	MATERIALFISH = "Fish",

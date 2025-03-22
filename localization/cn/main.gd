@@ -497,6 +497,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	MATERIALCATEGORYPLANT = "植物",
 	MATERIALCATEGORYBONE = "骨骼",
 	MATERIALCATEGORYCOMPONENT = "消耗品",
+	TOOLTIPHIDDENRESOURCE = """Unknown resource. Progress main story to reveal it""", # MISSING TRANSLATION
 
 	MATERIALMEAT = "肉类",
 	MATERIALMEATDESCRIPT = "营养丰富。狩猎所得。 ",

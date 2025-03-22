@@ -36,6 +36,12 @@ var Skilllist = {
 		random_factor_p = 0.1,
 		sfx = [{code = 'weapon', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
+		variations = [
+			{
+				reqs = [{code = 'gear_equiped', param = 'geartype', value = 'bow', check = true}],
+				set = {icon = load("res://assets/images/iconsskills/heavyshot.png")}, #2fix
+			},
+		]
 	},
 	ranged_attack = {
 		code = 'ranged_attack',

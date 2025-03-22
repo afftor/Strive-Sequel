@@ -461,8 +461,18 @@ func build_info(loc = null):
 			$InfoPanel/VBoxContainer/Label3.hide()
 		for i in gatherable_resources:
 			var item = Items.materiallist[i]
-			var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
 			if ResourceScripts.game_progress.can_gather_item(i) or dungeon:
+				continue
+			else:
+				var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
+				newbutton.get_node("Icon").texture = load("res://assets/Textures_v2/Travel/placer_travel_question.png")
+				newbutton.set_meta("exploration", true)
+				newbutton.get_node("amount").text = ""
+				globals.connecttexttooltip(newbutton, tr('TOOLTIPHIDDENRESOURCE'))
+		for i in gatherable_resources:
+			var item = Items.materiallist[i]
+			if ResourceScripts.game_progress.can_gather_item(i) or dungeon:
+				var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
 				newbutton.get_node("Icon").texture = Items.materiallist[i].icon
 				newbutton.set_meta("exploration", true)
 				if dungeon:
@@ -485,9 +495,7 @@ func build_info(loc = null):
 					newbutton.set_meta("current_workers", current_workers_count)
 					globals.connectmaterialtooltip(newbutton, item)
 			else:
-				newbutton.get_node("Icon").texture = load("res://assets/Textures_v2/Travel/placer_travel_question.png")
-				newbutton.set_meta("exploration", true)
-				newbutton.get_node("amount").text = ""
+				continue
 	#build chars
 	input_handler.ClearContainer($InfoPanel/VBoxContainer/CharScroll/Characters)
 	var f = false

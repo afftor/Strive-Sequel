@@ -1660,7 +1660,7 @@ var scenedict = {
 	
 	reveal_map = {
 		text = tr("REVEAL_MAP"),
-		tags = [],
+		tags = ['active_character_translate'],
 		image = 'dungeon_magic_barrier',
 		bonus_effects = [],
 		options = [
