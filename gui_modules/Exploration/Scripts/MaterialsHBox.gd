@@ -50,8 +50,17 @@ func update():
 	if gatherable_resources != null:
 		for i in gatherable_resources:
 			var item = Items.materiallist[i]
-			var newbutton = input_handler.DuplicateContainerTemplate(self)
 			if ResourceScripts.game_progress.can_gather_item(i) or dungeon:
+				continue
+			else:
+				var newbutton = input_handler.DuplicateContainerTemplate(self)
+				newbutton.get_node("TextureRect").texture = load("res://assets/Textures_v2/Travel/placer_travel_question.png")
+				newbutton.get_node("Label").text = ""
+				globals.connecttexttooltip(newbutton, tr('TOOLTIPHIDDENRESOURCE'))
+		for i in gatherable_resources:
+			var item = Items.materiallist[i]
+			if ResourceScripts.game_progress.can_gather_item(i) or dungeon:
+				var newbutton = input_handler.DuplicateContainerTemplate(self)
 				newbutton.get_node("TextureRect").texture = Items.materiallist[i].icon
 				newbutton.set_meta("exploration", true)
 				if dungeon:
@@ -70,5 +79,4 @@ func update():
 					newbutton.get_node("Label").text = str(max_workers_count - current_workers_count) + "/" + str(max_workers_count)
 				globals.connectmaterialtooltip(newbutton, item)
 			else:
-				newbutton.get_node("TextureRect").texture = load("res://assets/Textures_v2/Travel/placer_travel_question.png")
-				newbutton.get_node("Label").text = ""
+				continue
