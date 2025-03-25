@@ -283,9 +283,9 @@ func build_location_description():
 
 
 func slave_position_selected(pos, character):
-	pos = 'pos' + str(pos)
+	var str_pos = 'pos' + str(pos)
 	if character == null:
-		active_location.group.erase(pos)
+		active_location.group.erase(str_pos)
 		build_location_group()
 		return
 	if character.has_status('no_combat'):
@@ -294,27 +294,15 @@ func slave_position_selected(pos, character):
 	elif !character.is_combatant():
 		input_handler.SystemMessage(character.translate(tr("NO_FIGHT_LOW_OBED")))
 		return
-	character = character.id
-	var positiontaken = false
-	var oldheroposition = null
-	if (
-		active_location.group.has(pos)
-		&& ResourceScripts.game_party.characters[active_location.group[pos]].check_location(
-			active_location.id, true
-		)
-	):
-		positiontaken = true
-	
-	for i in active_location.group:
-		if active_location.group[i] == character:
-			oldheroposition = i
-			active_location.group.erase(i)
-	var INTEGER_VALUE_FROM_POS_INDEX = 3
-	if oldheroposition != null && positiontaken == true && oldheroposition != pos:
-		active_location.group[oldheroposition] = active_location.group[pos]
-		var CHARACTER_UID = active_location.group[oldheroposition]
-		ResourceScripts.game_party.characters[CHARACTER_UID].combat_position = int(oldheroposition[INTEGER_VALUE_FROM_POS_INDEX])
-	active_location.group[pos] = character
+	var ch_id = character.id
+	if active_location.group.has(str_pos):
+		var oldchar =  ResourceScripts.game_party.characters[active_location.group[str_pos]]
+		if oldchar.check_location(active_location.id, true): #should always be
+			if character.combat_position != pos:
+				oldchar.combat_position = character.combat_position
+			else:
+				oldchar.combat_position = 0
+	character.combat_position = pos
 	build_location_group()
 
 
@@ -322,6 +310,7 @@ func slave_position_deselect(character):
 	for i in active_location.group:
 		if active_location.group[i] == character.id:
 			active_location.group.erase(i)
+			character.combat_position = 0
 			break
 	build_location_group()
 
