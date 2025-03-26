@@ -121,6 +121,21 @@ var biomes = {
 		gather_settings = 'base',
 		gatherable_resources = 'biome_fire_depths_res',
 	},
+	biome_goblin_stronghold = {
+		background_pool = ['cave1', 'cave4', 'cave5'],
+		enemyarray =  [["goblin_stronghold_easy", 1],['goblin_stronghold_easy1', 1],['goblin_stronghold_tormentor', 0.5],['goblin_stronghold_tormentor1', 0.5],['goblin_stronghold_vulture', 0.5]],
+		character_data = {
+			chance_mod = 1.4,
+			races = [['local', 3], ['common',4], ['uncommon',2]]
+		},
+		event_room_number = [2,4],
+		material_room_number = [4,5],
+		main_route_length = [6,7],
+		bonus_rooms = [3,4],
+		base_room_stamina_cost = [7,10], 
+		gather_settings = 'base',
+		gatherable_resources = 'biome_bandit_fort_res'
+	},
 }
 var dungeons = {
 	infinite_aliron = {
@@ -1084,6 +1099,97 @@ var dungeons = {
 		gather_mod = [2.5,4],
 		difficulty = 'hard',
 		purchase_price = 500,
+		affiliation = 'local',
+		events = [],
+		tags = [],
+	},
+	
+	dungeon_goblin_stronghold = {
+		code = 'dungeon_goblin_stronghold',
+		type = 'dungeon',
+		name = 'goblin_stronghold',
+		classname = '',
+		descript = tr("DUNGEON_GOBLIN_STRONHOLD_DESC"),
+		character_data = {
+			chance_mod = 1.4,
+			races = [['local', 3], ['common',4], ['uncommon',2]]
+		},
+		difficulty = 'medium',
+		background_pool = ['cave1', 'cave4', 'cave5'],
+		custom_background = 'combat_fort',
+		enemyarray =  [["goblin_stronghold_easy", 1],['goblin_stronghold_easy1', 1],['goblin_stronghold_tormentor', 0.5],['goblin_stronghold_tormentor1', 0.5],['goblin_stronghold_vulture', 0.5]],
+		final_enemy = [['goblin_stronghold_warloed_boss',1], ['goblin_stronghold_alchemist_boss',0.7], ['goblin_stronghold_battle_troll_boss',0.5]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+		
+		event_data = {
+			dungeon_find_chest_medium = {
+				limit = 0,
+				weight = 4,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['dungeon_find_chest_medium'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.1],
+					['event_small_crack',1]
+				],
+			},
+			dungeon_find_armory_easy = {
+				limit = 1,
+				weight = 2,
+				floor_range = [2,0],
+				icon = 'chest',
+				events = ['dungeon_find_armory_easy'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.2],
+					['event_small_crack',1],
+				],
+			},
+			event_dungeon_prisoner = {
+				limit = 2,
+				weight = 6,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['event_dungeon_prisoner'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.2],
+					['event_small_crack',1],
+				],
+			},
+			event_goblin_friendly = {
+				limit = 1,
+				weight = 2,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['event_goblin_friendly'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1],
+				],
+			},
+		},
+		
+		event_room_number = [2,4],
+		material_room_number = [4,5],
+		
+		main_route_length = [6,7],
+		bonus_rooms = [3,4],
+		levels = [2,3], 
+		base_room_stamina_cost = [7,10], 
+		
+		
+		resources = 'local2',
+		gather_settings = 'base',
+		gatherable_resources = 'biome_bandit_fort_res',
+		
+		bgm = "dungeon",
+		gather_mod = [2,2.5],
+		purchase_price = 200,
 		affiliation = 'local',
 		events = [],
 		tags = [],

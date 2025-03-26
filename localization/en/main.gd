@@ -1227,7 +1227,7 @@ Silenced: Can't use Spell type abilities.""",
 	SKILLDRAW_BLOOD = "Draw Blood",
 	SKILLDRAW_BLOODDESCRIPT = """Strike target for 110% of ATK and cause it to Bleed for 2 turns. 
 
-Bleeding: Take 5% of Maximum HP as neutral damage per turn.""",
+Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	SKILLSUNDER = "Sunder",
 	SKILLSUNDERDESCRIPT = "Strike target for 85% of ATK and reduce its DEF by 50% for 5 turns.",
 	SKILLCLEAVE = "Cleave",
@@ -1253,7 +1253,7 @@ Fortified: Incoming Damage is reduced by 25%.""",
 	SKILLDIP_POISON = "Dip Poison",
 	SKILLDIP_POISONDESCRIPT = """Strike target for 100% of ATK and Poison it for 4 turns. 
 
-Poisoned: Take 5% of Maximum HP as neutral damage per turn.""",
+Poisoned: Take 10% of Maximum HP as neutral damage per turn.""",
 	SKILLBACKKICK = "Back Kick",
 	SKILLBACKKICKDESCRIPT = """Strike target for 130% of ATK in melee and apply Silence for 4 turns. 
 
@@ -2741,7 +2741,7 @@ Increased Health, DEF and MDEF""",
 	TRAITEFFECTREINCARNATE = "Will be reborn on death",
 	TRAITEFFECTHOLY = "Divine Radiance: -20 MDEF",
 	TRAITEFFECTPOSITIONTAKEN = "Position Taken: +50 Armor Penetration; +20%% Damage",
-	TRAITEFFECTWINDWALL = "Wind Wall: -50%% Randged Damage",
+	TRAITEFFECTWINDWALL = "Wind Wall: -50%% Ranged Damage",
 	TRAITEFFECTPETSUIT = """When wearer has Pet class:
 Charm: +10
 Social skills effect: +10%.""",
@@ -2791,10 +2791,10 @@ Social skills effect: +10%.""",
 	BUFFDESCRIPTVOID = "Void",
 	BUFFDESCRIPTDEFEND = "Defend",
 	BUFFDESCRIPTREGEN = "Health regeneration",
-	BUFFDESCRIPTBURNING = "Burning: Take 8%% of Maximum HP as Fire damage per turn",
+	BUFFDESCRIPTBURNING = "Burning: Take 7%% of Maximum HP as Fire damage per turn",
 	BUFFDESCRIPTDARKFLAME = "Dark Flame: Take 10%% of Maximum HP as neutral damage per turn",
-	BUFFDESCRIPTPOISON = "Poisoned: Take 5%% of Maximum HP as neutral damage per turn",
-	BUFFDESCRIPTBLEEDING = "Bleeding: Take 5%% of Maximum HP as neutral damage per turn",
+	BUFFDESCRIPTPOISON = "Poisoned: Take 10%% of Maximum HP as neutral damage per turn",
+	BUFFDESCRIPTBLEEDING = "Bleeding: Take 10%% of Maximum HP as neutral damage per turn",
 	BUFFDESCRIPTCONFUSE = "Confusion",
 	BUFFDESCRIPTFREEUSE = "Allows to use an item without taking a turn",
 	BUFFDESCRIPTSHRED = "Shredded: DEF is reduced by 50%%",
@@ -5211,6 +5211,14 @@ The princess notices Aire tensing up in response to the question.
 	ENEMYEREBUS_STONE = "Erebus Stone",
 	ENEMYWILD_RAPTOR = "Raptor",
 	ENEMYWILLOWISP = "Will-o-wisp",
+	ENEMYHOBGOBLIN_THUG = "Hobgoblin Thug",
+	ENEMYHOBGOBLIN_CROSSBOWMAN = "Hobgoblin Crossbowman",
+	ENEMYHOBGOBLIN_TORMENTOR = "Hobgoblin Tormentor",
+	ENEMYVARG = "Varg",
+	ENEMYVULTURE = "Vulture",
+	ENEMYWARLORD = "Warlord",
+	ENEMYALCHEMIST = "Alchemist",
+	ENEMYBATTLE_TROLL = "Battle Troll",
 	NO_FIGHT_LOW_OBED = "[name] refuses to participate in a fight. (Combatant must be unlocked)",
 	CHAR_NO_COMBAT = "[name] has sustained a grave injury and is unable to participate in fights.",
 	SENDCHARTOQUESTCONFIRM = "Send this character to quest?",
@@ -5241,6 +5249,18 @@ The princess notices Aire tensing up in response to the question.
 	SKILLENCHANTING_WHISPER = "Enchanting Whisper",
 	SKILLCURSE_OF_DESPAIR = "Curse Of Despair",
 	SKILLSHRED = "Shred",
+	SKILLSNEAK_SHOT = "Sneak Shot",
+	SKILLCRACK_OF_THE_WHIP = "Crack Of The Whip",
+	SKILLTORTURE = "Torture",
+	SKILLRUSTY_TRAP = "Rusty Trap",
+	SKILLSNEAKY_TRICK = "Sneaky Trick",
+	SKILLHEROKILLER = "Herokiller",
+	SKILLFLASH_STONE = "Flash Stone",
+	SKILLSPIKED_BOMB = "Spiked Bomb",
+	SKILLSHOCK_CHARGE = "Shock Charge",
+	SKILLMONSTROUS_SWING = "Monstrous Swing",
+	SKILLMONSTROUS_GRIP = "Monstrous Grip",
+	SKILLBILE_CORROSIVE = "Bile Corrosive",
 	AIRE_AMELIA1 = """
 Amelia entered Aire's cell with a neat black satchel and a smile on her face.
 
@@ -5770,7 +5790,7 @@ She passes you a roll of paper she took from the pile on a small table. As you u
 — Well, here you go. Let us meet again, then.""",
 	DIVINE_SYMBOL_43 = """
 
-— Here we go. Happy? Hey, do you mind giving me a piggyback ride? My brains really hurt after all this work, you know.""",
+— Here we go. Happy? Hey, do you mind giving me a piggyback ride? My head really hurts after all this work, you know.""",
 	DIVINE_SYMBOL_44 = "As the barrier fell, Duncan ordered an immediate attack. Many of the rebel troops were caught off guard resting and unable to rally a quick response. As the guilds' army slowly advanced into town no one took much notice of your small group, allowing you to escape easily.",
 	DIVINE_SYMBOL_45 = """{color=aqua|Greg: — What the hell... Shit, what happened to the barrier!?}
 
