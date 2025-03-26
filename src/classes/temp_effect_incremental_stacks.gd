@@ -97,12 +97,6 @@ func add_duration(t_eff):
 		remains += t_eff.template.duration
 
 
-func merge_duration(t_eff):
-	if t_eff.template.has('duration'):
-		t_eff.calculate_duration()
-		remains = int(max(t_eff.template.duration, remains))
-
-
 func serialize():
 	var tmp = .serialize()
 	tmp['type'] = 'temp_inc'

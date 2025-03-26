@@ -109,6 +109,13 @@ func apply_temp_effect(eff_id, noresist = false):
 		#eff.applied_pos = position
 		eff.applied_char = parent.get_ref().id
 		eff.apply()
+		if eff.tags.has('merge_duration'):
+			var t_duration = eff.remains
+			for e in tmp.pool:
+				t_duration = max(t_duration, e.remains)
+			eff.remains = t_duration
+			for e in tmp.pool:
+				e.remains = t_duration
 	else:
 		var eff_a = effects_pool.get_effect_by_id(temp_effects[tmp.index])
 		match eff_a.template.type:
@@ -116,7 +123,9 @@ func apply_temp_effect(eff_id, noresist = false):
 				if eff.tags.has('reset_duration'):
 					eff_a.reset_duration()
 				elif eff.tags.has('merge_duration'):
-					eff_a.merge_duration(eff)
+					eff.calculate_duration()
+					for e in tmp.pool:
+						e.merge_duration(eff.template.duration)
 				else:
 					eff_a.add_duration(eff)
 				eff.remove()

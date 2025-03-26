@@ -110,7 +110,7 @@ var skills = {
 		tags = ['damage','ads','fire'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template_globals({effect = 'e_s_shatter5'})], 
+		effects = [Effectdata.rebuild_template({effect = 'e_s_shatter', duration = 5})], 
 		cost = {mp = 8},
 		charges = 0,
 		combatcooldown = 0,
