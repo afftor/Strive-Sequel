@@ -1151,113 +1151,29 @@ var effect_table = {
 			}
 		]
 	},
-	e_s_shred = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions
-		type = 'temp_global',
-		tags = ['duration_turns', 'affliction', 'shred'],
+	e_s_shred = {
+		type = 'temp_s',
+		tags = ['affliction', 'shred'],
 		target = 'target',
 		name = 'shred',
 		stack = 2,
-		timers = [
-			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 1}, #1 turn duration
-			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
-			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
-		],
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'parent',
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_add_p', stat = 'armor', value = -0.5}],
 		buffs = ['b_shred'],
 	},
-	e_s_shred2 = {
-		type = 'temp_global',
-		tags = ['duration_turns', 'affliction', 'shred'],
-		target = 'target',
-		name = 'shred',
-		stack = 2,
-		timers = [
-			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 2}, #2 turns duration
-			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
-			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
-		],
-		args = [],
-		sub_effects = [],
-		atomic = [{type = 'stat_add_p', stat = 'armor', value = -0.5}],
-		buffs = ['b_shred'],
-	},
-	e_s_shred3 = {
-		type = 'temp_global',
-		tags = ['duration_turns', 'affliction', 'shred'],
-		target = 'target',
-		name = 'shred',
-		stack = 2,
-		timers = [
-			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 3}, #3 turns duration
-			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
-			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
-		],
-		args = [],
-		sub_effects = [],
-		atomic = [{type = 'stat_add_p', stat = 'armor', value = -0.5}],
-		buffs = ['b_shred'],
-	},
-	e_s_shred5 = {
-		type = 'temp_global',
-		tags = ['duration_turns', 'affliction', 'shred'],
-		target = 'target',
-		name = 'shred',
-		stack = 2,
-		timers = [
-			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 5}, #2 turns duration
-			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
-			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
-		],
-		args = [],
-		sub_effects = [],
-		atomic = [{type = 'stat_add_p', stat = 'armor', value = -0.5}],
-		buffs = ['b_shred'],
-	},
-	e_s_shatter = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions
-		type = 'temp_global',
-		tags = ['duration_turns', 'affliction', 'shatter'],
+	e_s_shatter = {
+		type = 'temp_s',
+		tags = ['affliction', 'shatter'],
 		target = 'target',
 		name = 'shatter',
 		stack = 2,
-		timers = [
-			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 1}, #1 turn duration
-			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
-			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
-		],
-		args = [],
-		sub_effects = [],
-		atomic = [{type = 'stat_add_p', stat = 'mdef', value = -0.5}],
-		buffs = ['b_shatter'],
-	},
-	e_s_shatter3 = {#3turn duration, can't pass duration onto global temps, so clone it for different duartions
-		type = 'temp_global',
-		tags = ['duration_turns', 'affliction', 'shatter'],
-		target = 'target',
-		name = 'shatter',
-		stack = 2,
-		timers = [
-			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 3}, #3 turn duration
-			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
-			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
-		],
-		args = [],
-		sub_effects = [],
-		atomic = [{type = 'stat_add_p', stat = 'mdef', value = -0.5}],
-		buffs = ['b_shatter'],
-	},
-	e_s_shatter5 = {#5turn duration, can't pass duration onto global temps, so clone it for different duartions
-		type = 'temp_global',
-		tags = ['duration_turns', 'affliction', 'shatter'],
-		target = 'target',
-		name = 'shatter',
-		stack = 2,
-		timers = [
-			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 5}, #5 turn duration
-			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
-			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
-		],
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'parent',
 		args = [],
 		sub_effects = [],
 		atomic = [{type = 'stat_add_p', stat = 'mdef', value = -0.5}],
@@ -2588,12 +2504,14 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/Acid-spit.png",
 		description = "BUFFDESCRIPTSHRED",
 		t_name = 'shred',
+		limit = 1,
 		combat_only = true
 	},
 	b_shatter = {
 		icon = "res://assets/images/iconsskills/icon_elemental_protection.png",
 		description = "BUFFDESCRIPTSHATTER",
 		t_name = 'shatter',
+		limit = 1, 
 		combat_only = true
 	},
 	
