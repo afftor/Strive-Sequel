@@ -653,7 +653,10 @@ func UpdateSkillTargets(caster, skill, glow_skip = false):
 		if rangetype == 'any': t_targets = get_enemy_targets_all(fighter)
 		if rangetype == 'melee': t_targets = get_enemy_targets_melee(fighter)
 		for t in t_targets:
-			if skill.has('targetreqs') and !t.checkreqs(skill.targetreqs): continue
+			if skill.has('targetreqs') and !t.checkreqs(skill.targetreqs):
+				continue
+#			if !t.can_be_damaged(skill): 
+#				continue
 			allowedtargets.enemy.push_back(t.position)
 	if targetgroups == 'ally' or targetgroups == 'all':
 		var t_targets = get_allied_targets(fighter)
@@ -923,15 +926,15 @@ func summon(montype, limit, combatgroup, incombat = false): #reworked
 #	tchar.createfromenemy(montype);
 	match combatgroup:
 		'enemy':
+			enemygroup[sum_pos] = characters_pool.add_char(tchar)
 			tchar.generate_simple_fighter(montype[slot])
 			tchar.combatgroup = 'enemy'
-			enemygroup[sum_pos] = characters_pool.add_char(tchar)
 			battlefield[sum_pos] = enemygroup[sum_pos]
 		'ally':
+			playergroup[sum_pos] = characters_pool.add_char(tchar)
 			tchar.generate_simple_fighter(montype[slot], false)
 			tchar.combatgroup = 'ally'
 			tchar.is_players_character = true
-			playergroup[sum_pos] = characters_pool.add_char(tchar)
 			battlefield[sum_pos] = playergroup[sum_pos]
 			tchar.selectedskill = tchar.get_skill_by_tag('default')
 	tchar.position = sum_pos
@@ -1012,38 +1015,42 @@ func get_allied_targets(fighter):
 	return res
 
 
-func get_enemy_targets_all(fighter, hide_ignore = false):
+func get_enemy_targets_all(fighter, ignore_immune = false):
 	var res = []
 	if fighter.position in range(1, 7):
 		for p in enemygroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
 			if tchar.defeated: continue
-			if tchar.has_status('hide') and !hide_ignore: continue
+			if tchar.has_status('hide') and !ignore_immune: continue
+			if tchar.has_status('warded') and !ignore_immune: continue
 			res.push_back(tchar)
 	else:
 		for p in playergroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
 			if tchar.defeated: continue
-			if tchar.has_status('hide') and !hide_ignore: continue
+			if tchar.has_status('hide') and !ignore_immune: continue
+			if tchar.has_status('warded') and !ignore_immune: continue
 			res.push_back(tchar)
 	return res
 
 
-func get_enemy_targets_melee(fighter, hide_ignore = false):
+func get_enemy_targets_melee(fighter, ignore_immune = false):
 	var res = []
 	if fighter.position in range(1, 7):
 		for p in enemygroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
 			if tchar.defeated: continue
-			if tchar.has_status('hide') and !hide_ignore: continue
-			if CheckMeleeRange('enemy', hide_ignore) and tchar.position > 9: continue
+			if tchar.has_status('hide') and !ignore_immune: continue
+			if CheckMeleeRange('enemy', ignore_immune) and tchar.position > 9: continue
+			if tchar.has_status('warded') and !ignore_immune: continue
 			res.push_back(tchar)
 	else:
 		for p in playergroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
 			if tchar.defeated: continue
-			if tchar.has_status('hide') and !hide_ignore: continue
-			if CheckMeleeRange('ally', hide_ignore) and tchar.position > 3: continue
+			if tchar.has_status('hide') and !ignore_immune: continue
+			if CheckMeleeRange('ally', ignore_immune) and tchar.position > 3: continue
+			if tchar.has_status('warded') and !ignore_immune: continue
 			res.push_back(tchar)
 	return res
 
