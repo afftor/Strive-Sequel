@@ -27,7 +27,7 @@ var shield = 0 setget set_shield
 var defeated = false
 var combatgroup = ''
 var position = 0 # Not sure it's used or not. Make new field just in case
-var combat_position = 0 setget set_combat_position, get_combat_positon
+var combat_position = 2 setget , get_combat_positon
 var taunt = null
 var selectedskill = 'attack'
 
@@ -44,9 +44,6 @@ func _init(source = null):
 	src = source
 	rebuild_parents()
 
-
-func set_combat_position(pos):
-	combat_position = pos
 
 func get_combat_positon():
 	return int(combat_position)
@@ -1749,7 +1746,7 @@ func apply_atomic_noqueue(template):
 			if gui_controller.exploration_dungeon != null:
 				match template.value:
 					'reveal_map':
-						gui_controller.exploration_dungeon.reveal_map()
+						gui_controller.exploration_dungeon.reveal_map(self)
 					
 					'set_intimidate':
 						gui_controller.exploration_dungeon.set_intimidate()

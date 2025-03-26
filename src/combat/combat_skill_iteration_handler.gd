@@ -224,7 +224,7 @@ func invoke_instancing():
 			combatnode.summon(template.value[0], template.value[1], caster.combatgroup, true);
 		elif template.has('damage_type') and template.damage_type == 'resurrect':
 			i.resurrect(input_handler.calculate_number_from_string_array(template.value[0], caster, target)) #not sure
-		if template.has('damage_type') and template.damage_type == 'setup_global':
+		elif template.has('damage_type') and template.damage_type == 'setup_global':
 			combatnode.setup_autoskill(template.value, caster)
 		else:
 			#default skill result

@@ -336,6 +336,7 @@ func add_slave(person, child = false):
 
 
 func remove_slave(tempslave, permanent = false):
+	tempslave.remove_from_travel()
 	tempslave.remove_from_task()
 	tempslave.unequip_all()
 	tempslave.clear_training()

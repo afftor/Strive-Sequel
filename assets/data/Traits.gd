@@ -28,6 +28,16 @@ var traits = {
 		effects = [],
 		tags = ['neutral', 'permanent']
 	},
+	stag_buff = {
+		code = 'stag_buff',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png", #fix
+		effects = [],
+		tags = [],
+		bonusstats = {mod_hunt = 0.25, physics = 15, chg_dexterity_max = 1, mastery_stealth = 1}
+	},
 	#body upgrades
 	upgrade_thick_skin = {
 		name = '',
@@ -1362,6 +1372,24 @@ var traits = {
 		visible = false,
 		effects = ['setup_retarget_default'],
 		tags = ['defender'],
+	},
+	ward_anchor = {
+		code = 'ward_anchor',
+		name = '',
+		descript = '',
+		icon = null, 
+		visible = false,
+		effects = [],
+		tags = ['ward_anchor'],
+	},
+	ward_etb = {
+		code = 'ward_etb',
+		name = '',
+		descript = '',
+		icon = null, 
+		visible = false,
+		effects = ['setup_ward_test'],
+		tags = [],
 	},
 	
 	
