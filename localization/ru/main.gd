@@ -484,6 +484,7 @@ var TranslationDict = {
 	MATERIALCATEGORYPLANT = """Растения""",
 	MATERIALCATEGORYBONE = """Кость""",
 	MATERIALCATEGORYCOMPONENT = """Расходуемое""",
+	TOOLTIPHIDDENRESOURCE = """Unknown resource. Progress main story to reveal it""", # MISSING TRANSLATION
 
 	MATERIALMEAT = """Мясо""",
 	MATERIALMEATDESCRIPT = """Богатый источник питательных веществ. Добывается на охоте.""",
@@ -1521,6 +1522,7 @@ Hotkey: 3""",
 	ACTIONSTRONGINFLUENCEDESCRIPT = """Использовать сильную магию, чтобы подчинить разум [name].Тратит 10 маны.""",
 	ACTIONSTRONGINFLUENCEDESCRIPTMASTERY = "Тренировочное действие: Магическое воздействие, направленное на улучшение повиновеня цели. Сильнее, чем обычное Влияние.",
 	ACTIONMINDCONTROL = """Гипноз""",
+	ACTIONMINDCONTROLDESCRIPT = """The stongest control option will greatly bend most minds. Costs 25 mana. Requires Dominator class.""", # MISSING TRANSLATION
 	ACTIONMINDCONTROLDESCRIPTDESCRIPT = """Самый сильный вариант контроля сильно помутит большинство умов. Тратит 25 маны. Требуется класс Доминатор.""",
 	ACTIONMINDCONTROLDESCRIPTMASTERY = "Тренировочное действие: Магическое воздействие, направленное на улучшение повиновеня цели. Сильнее, чем обычное Влияние.",
 	ACTIONTYPEPOSITIVE = """Позитивный.""",
@@ -4077,6 +4079,7 @@ Requires: Базовый рабский труд""",
 	TRIBALELVES_WIN = """Когда вы побеждаете нападающих, они поспешно отступают, но один из них остался позади, и вашей партии удается их одолеть.""",
 	CHARLOVERS = """[name] и [scncharname] обратились к вам и попросили позволить им стать больше чем любовниками.""",
 	CHARFREELOVERS = """[name] и [scncharname] обратились к вам и попросили разрешить им стать любовниками.""",
+	REVEAL_MAP = """[name] casts Wind Whispers, grasping the layout of surrounding areas. """, # MISSING TRANSLATION
 	CHARLOVERSALLOW = """*Разрешить*""",
 	CHARFREELOVERSALLOW = """*Разрешить*""",
 	CHARLOVERSFORBID = """*Forbid*""", # MISSING TRANSLATION

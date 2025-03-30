@@ -732,7 +732,7 @@ func count_action_consent(action, giver, taker):
 #		taker_consent += 1
 #		taker_text += "{color=green|Horny}\n"
 	
-	if givers.size() > 0 && takers.size() > 0:
+	if givers.size() > 0 && takers.size() > 0 && !givers[0].person.has_profession('master') && !takers[0].person.has_profession('master'):
 		var relationship = ResourceScripts.game_party._get_data(giver.id, taker.id).status
 		match relationship:
 			'rivals':

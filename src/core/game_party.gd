@@ -222,7 +222,7 @@ func change_relationship_status(char1, char2, new_status):
 	if new_status in ['friends', 'rivals']:
 		var ch1 = characters[char1]
 		var ch2 = characters[char2]
-		globals.text_log_add('char', "%s ans %s has become %s" % [ch1.get_short_name(), ch2.get_short_name(), new_status])
+		globals.text_log_add('char', "%s and %s have become %s" % [ch1.get_short_name(), ch2.get_short_name(), new_status])
 
 
 

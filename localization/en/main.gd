@@ -1481,7 +1481,7 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	ACTIONSTRONGINFLUENCEDESCRIPT = "Use strong magic to put [name]'s mind into submission. Costs 10 mana.",
 	ACTIONSTRONGINFLUENCEDESCRIPTMASTERY = "Training Action: Magic influence aiming to improve target's obedience. Stronger than Influence.",
 	ACTIONMINDCONTROL = "Hypnosis",
-	ACTIONMINDCONTROLDESCRIPTDESCRIPT = "The stongest control option will greatly bend most minds. Costs 25 mana. Requires Dominator class.",
+	ACTIONMINDCONTROLDESCRIPT = "The stongest control option will greatly bend most minds. Costs 25 mana. Requires Dominator class.",
 	ACTIONMINDCONTROLDESCRIPTMASTERY = "Training Action: Magic influence aiming to improve target's obedience. Stronger than Influence.",
 	ACTIONTYPEPOSITIVE = "Positive",
 	ACTIONTYPEPHYSICAL = "Physical",
@@ -2019,7 +2019,7 @@ Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax""
 {color=green|Maxed Wits Factor increases experience gain.}""",
 	STATCHARM_FACTORDESCRIPT = """{color=yellow|Charm Factor} represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. [Master]'s charm also increases gold and reputation rewards from repeatable quests and number of dates per week.
 
-{color=green|Maxed Charm Factor furtherly increases social skill efficiency.}""",
+{color=green|Maxed Charm Factor increases Service Productivity and grants additional Charm Check.}""",
 	STATSEXUALS_FACTORDESCRIPT = """{color=yellow|Sex Factor} represents character's sex development potential. It speeds sexual skills acquirement, makes Consent easier to progress and occasionally boosts sexual options in events. [Master]'s Sex factor also increases number of sex interactions per week.
 
 {color=green|Maxed Sex Factor provides Speed bonus}.""",
@@ -2828,7 +2828,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	BUFFDESCRIPTENSNARE = "Ensnared: Evasion is reduced by 75",
 	RESETTRAINREQ = "Reset training to step 0 and restore Spirit. Requires Oblivion potion.",
 	BUFFDESCRIPTDEFENDER = "Defender: Will shield allies from attacks unless stunned.",
-	BUFFDESCRIPTCOMMANDBONUS = "Increased Damage Dealth and reduce Damage Received.",
+	BUFFDESCRIPTCOMMANDBONUS = "Increased Damage Dealt and reduce Damage Received.",
 	TRAITEFFECTBLESSING = "Hit rate and Evasion increased.",
 	CHALLENGESTRENGTH = "Strength Challenge",
 	CHALLENGEDEXTERITY = "Dexterity Challenge",
@@ -3793,6 +3793,7 @@ As the [boy] is made your slave, [he] can be a very useful addition to your roos
 	
 	CHARLOVERS = "[name] and [scncharname] have approached you and asked to let them become lovers.",
 	CHARFREELOVERS = "[name] and [scncharname] have approached you and asked to let them become paramour.",
+	REVEAL_MAP = "[name] casts Wind Whispers, grasping the layout of surrounding areas. ",
 	CHARLOVERSALLOW = "*Allow*",
 	CHARFREELOVERSALLOW = "*Allow*",
 	CHARLOVERSFORBID = "*Forbid*",
@@ -7203,7 +7204,7 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	ITEMGARB_OF_FORESTDESCRIPT = "A medium leather armor which does not seem to be made by either men or elves. It gives an ancient feeling to it.",
 	ITEMCHLOE_GOGGLES = "Chloe's Goggles",
 	ITEMCHLOE_GOGGLESDESCRIPT = "A pair of gnome goggles suited for inventors and scientists.",
-	ITEMPRIESTESS_TIARA = "Prestess' Tiara",
+	ITEMPRIESTESS_TIARA = "Priestess' Tiara",
 	ITEMPRIESTESS_TIARADESCRIPT = "A ritual elven headpiece of the head priestess.",
 	ITEMXARI_AMULET = "Xari's Amulet",
 	ITEMXARI_AMULETDESCRIPT = "Personal work of Xari gifted to you for your help. It shines with imbued power of its maker.",
@@ -9343,7 +9344,7 @@ You give Jean the directions to your mansion and leave her to it.""",
 	LILIA_INTRO_2_OPTION_2 = "*Refuse*",
 	LILIA_INTRO_3_1 = "— Thanks! Looking forward to living at your place.",
 	LILIA_INTRO_3_2 = "— Aww... Let me know if you change your mind!",
-	CALI_INTRO = "As you make your way through the fort, you find a short note from some slavers who seem to be in contact with local bandits. It identifies a small cave at a nearby location which is used as a safe house and describes how the slavers are forced to stay there for now. You write this information down and move on.",
+	CALI_INTRO = "As you make your way through the cave, you find a short note from some slavers who seem to be in contact with local bandits. It identifies a small cave at a nearby location which is used as a safe house and describes how the slavers are forced to stay there for now. You write this information down and move on.",
 	CALI_INTRO_1 = """You come across a small group of slavers who greet you.
 
 {color=aqua|Slaver: — Hey, it seems we have a guest. We don't wanna fight. Actually, we wanna get rid of some leftover merchandise and get on with it. You seem like a respectable gentleman.}
@@ -9599,7 +9600,7 @@ You see Cali lying on the bed with bare bottom and her legs spread as she meekly
 As she turns to you, she realizes you've been looking at her for some time. Her face is rich with blush and she's unsure how to react.
 
 — [Master]?! This is...""",
-	CALI_SEX_1_OPTION_1 = "This feels good isn't it?",
+	CALI_SEX_1_OPTION_1 = "This feels good doesn't it?",
 	CALI_SEX_1_OPTION_2 = "You should lock the door next time.",
 	CALI_SEX_1_OPTION_3 = "*Leave quietly*",
 	CALI_SEX_2_3 = "You decide to ignore it and close the door...",
@@ -17615,7 +17616,7 @@ While this was an unpleasant expirience for [name], it will certainly teach [him
 {color=green|It seems [name] does not mind to continue this encounter...}""",
 	DATING_CHAT_DESC_1 = "Have a friendly chat. Will boost Mood slightly.",
 	DATING_CHAT_1 = "Chat",
-	DATING_FLIRT_DESC_1 = "Flirt with [name]. Will slightly improve Consent if Mood is high. Slightly increases Consent if mood is above low.",
+	DATING_FLIRT_DESC_1 = "Flirt with [name].",
 	DATING_FLIRT_1 = "Flirt",
 	DATING_INTIMATE_DESC_1 = "Have an intimate talk in attempt to learn more about [name]'s preferences. Can only be used once.",
 	DATING_INTIMATE_1 = "Intimate Talk",

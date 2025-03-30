@@ -5864,7 +5864,7 @@ var fixed_quality_stats = {
 			bonusstats = {atk = 70, hitrate = 60, critmod = 0.33, damage_mod_light = 0.5, enchant_capacity = 550},
 		}
 	},
-	holy_lance = { 
+	holy_spear = { 
 		"" : {},
 		epic = {
 			bonusstats = {atk = 50, hitrate = 30, damage_mod_air = 0.20, armor = 15, enchant_capacity = 400},
