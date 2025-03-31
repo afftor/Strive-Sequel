@@ -270,6 +270,7 @@ var effects = {
 				target = 'target',
 				atomic = ['a_eye_animation', 'a_eye'],
 				buffs = [],
+				args = [{obj = 'parent_args', param = 0}],
 				sub_effects = []
 			}
 		],

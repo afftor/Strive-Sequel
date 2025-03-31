@@ -1676,7 +1676,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
-		tags = ['no_random', 'bladed', 'fixed_stats', 'upgradable'], #3 - for using clear bonusstats wihout muliplyer, 4 - for gui filter 
+		tags = ['no_random', 'bladed', 'upgradable'], #3 - for using clear bonusstats wihout muliplyer, 4 - for gui filter 
 		basestats = {atk = 3},
 	},
 	cali_heirloom_active = {
@@ -1694,7 +1694,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
-		tags = ['no_random', 'bladed','enchantable', 'fixed_stats', 'upgradable'], #to correctly set stats with fixed levels
+		tags = ['no_random', 'bladed','enchantable', 'upgradable'], #to correctly set stats with fixed levels
 		basestats = {atk = 35, critchance = 20, hitrate = 20, armorpenetration = 15, enchant_capacity = 400},
 	},
 	
