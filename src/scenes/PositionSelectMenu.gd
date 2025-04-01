@@ -11,7 +11,8 @@ var positiondict = {
 	6 : "HBoxContainer/backrow/6",
 }
 
-var group#dict: key - position, value - char's id
+var pos_int
+var group#dict: key - position (string), value - char's id
 var confirm_call# = {target, method}
 var allow_remote = false
 var limit = 0
@@ -39,10 +40,10 @@ func open_defined(new_group, con_target = null, con_method = null):
 			method = con_method
 		}
 
-var pos
+
 
 func selectfighter(position):
-	pos = 'pos'+str(position)
+	pos_int = position
 	var reqs
 	if allow_remote:
 		reqs = []
@@ -51,12 +52,15 @@ func selectfighter(position):
 	input_handler.ShowSlaveSelectPanel(self, 'slave_position_selected', reqs, true)
 
 func slave_position_selected(character):
+	var pos = 'pos'+str(pos_int)
 	if character == null:
-		if group.has(pos) and group_fixed:
-			input_handler.SystemMessage(tr('PARTY_FIXED'))
-			return
-		group.erase(pos)
-		build_location_group()
+		if group.has(pos):#removing old char
+			if group_fixed:
+				input_handler.SystemMessage(tr('PARTY_FIXED'))
+				return
+			ResourceScripts.game_party.characters[group[pos]].combat_position = 0
+			group.erase(pos)
+			build_location_group()
 		return
 	if character.has_status('no_combat'):
 		input_handler.SystemMessage(character.translate(tr('CHAR_NO_COMBAT')))
@@ -65,29 +69,32 @@ func slave_position_selected(character):
 		input_handler.SystemMessage(character.translate(tr('NO_FIGHT_LOW_OBED2'))) #2fix
 		return
 	var char_id = character.id
-	var positiontaken = false
+	var positiontakenby = null
 	var oldheroposition = null
 	if group.has(pos):
-		if allow_remote or ResourceScripts.game_party.characters[group[pos]].check_location(input_handler.active_location.id, true):
-			positiontaken = true
+		var cur_char = ResourceScripts.game_party.characters[group[pos]]
+		if allow_remote or cur_char.check_location(input_handler.active_location.id, true):
+			positiontakenby = cur_char
 	for i in group:
 		if group[i] == char_id:
+			if oldheroposition != null:
+				print("error. Char double in PositionSelectMenu.gd")
 			oldheroposition = i
 	
 	if oldheroposition == null:#adding new char to group
 		if group_fixed:
 			input_handler.SystemMessage(tr('PARTY_FIXED'))
 			return
-		#positiontaken == true means we switching new char with old one
-		#false means we are increasing group size by adding new char
-		if !positiontaken and limit != 0 and group.size() >= limit:
+		if positiontakenby != null:#switching chars, old one goes out
+			positiontakenby.combat_position = 0
+		elif limit != 0 and group.size() >= limit:#increasing group size by adding new char
 			input_handler.SystemMessage(tr('PARTY_LIMIT'))
 			return
-	else:
-		if positiontaken and oldheroposition != pos:
-			group[oldheroposition] = group[pos]#switching chars in group
-		else:
-			group.erase(oldheroposition)#move char to another position
+	else:#no new char in group
+		if positiontakenby != null and oldheroposition != pos:#switching chars in group
+			group[oldheroposition] = group[pos]
+		else:#move char to another position
+			group.erase(oldheroposition)
 	
 	group[pos] = char_id
 	build_location_group()
@@ -100,6 +107,7 @@ func build_location_group():
 		var free_pos = false
 		if group.has(position):
 			character = ResourceScripts.game_party.characters[group[position]]
+			character.combat_position = i
 			if character != null:
 				if !character.has_status('no_combat'):
 					get_node(positiondict[i]+"/Image").texture = character.get_icon()
