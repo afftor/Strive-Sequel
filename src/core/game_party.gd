@@ -304,6 +304,8 @@ func fix_serialization_postload():
 		characters[p].fix_serialization_postload()
 	for p in babies:
 		babies[p].fix_serialization_postload()
+	for p in characters_pool.characters:
+		characters_pool.characters[p].fix_serialization_postload()
 
 
 func fix_import():

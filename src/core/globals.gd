@@ -849,8 +849,8 @@ func LoadGame(filename):
 	effects_pool.deserialize(savedict.effpool)
 	characters_pool.cleanup()
 	effects_pool.cleanup()
+	#mind! that characters_pool's fix_serialization_postload is inside game_party's
 	ResourceScripts.game_party.fix_serialization_postload()
-	characters_pool.fix_serialization_postload()
 	ResourceScripts.game_party.force_update_portraits()
 	
 	if is_instance_valid(gui_controller.mansion):

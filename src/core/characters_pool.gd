@@ -112,9 +112,6 @@ func deserialize(tmp):
 		characters[hid] = dict2inst(tmp[hid])
 		characters[hid].fix_serialization()
 
-func fix_serialization_postload():
-	for p in characters:
-		characters[p].fix_serialization_postload()
 
 func clean_broken_effects():
 	for ch in ResourceScripts.game_party.characters.values() + characters.values():
