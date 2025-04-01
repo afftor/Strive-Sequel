@@ -14,6 +14,8 @@ var positiondict = {
 var group#dict: key - position, value - char's id
 var confirm_call# = {target, method}
 var allow_remote = false
+var limit = 0
+var group_fixed = false
 
 func _ready():
 	$ConfirmButton.connect("pressed", self, "on_confirm")
@@ -24,9 +26,10 @@ func _ready():
 func open():#for default use
 	open_defined(input_handler.active_location.group)
 
-func open_defined(new_group = null, con_target = null, con_method = null, new_remote = false):
+func open_defined(new_group, con_target = null, con_method = null):
 	group = new_group
-	allow_remote = (new_remote or variables.allow_remote_intereaction)
+	set_remote(variables.allow_remote_intereaction)
+	set_limit(0)
 	show()
 	build_location_group()
 	confirm_call = null
@@ -49,29 +52,42 @@ func selectfighter(position):
 
 func slave_position_selected(character):
 	if character == null:
+		if group.has(pos) and group_fixed:
+			input_handler.SystemMessage(tr('PARTY_FIXED'))
+			return
 		group.erase(pos)
 		build_location_group()
 		return
 	if character.has_status('no_combat'):
-		input_handler.SystemMessage(character.translate("[name] has sustained a grave injury and is unable to participate in fights."))
+		input_handler.SystemMessage(character.translate(tr('CHAR_NO_COMBAT')))
 		return
 	elif !character.is_combatant():
-		input_handler.SystemMessage(character.translate("[name] refuses to participate in a fight (low obedience).")) #2fix
+		input_handler.SystemMessage(character.translate(tr('NO_FIGHT_LOW_OBED2'))) #2fix
 		return
 	var char_id = character.id
 	var positiontaken = false
 	var oldheroposition = null
 	if group.has(pos):
-		if allow_remote || ResourceScripts.game_party.characters[group[pos]].check_location(input_handler.active_location.id, true):
+		if allow_remote or ResourceScripts.game_party.characters[group[pos]].check_location(input_handler.active_location.id, true):
 			positiontaken = true
-	
 	for i in group:
 		if group[i] == char_id:
 			oldheroposition = i
-			group.erase(i)
 	
-	if oldheroposition != null && positiontaken == true && oldheroposition != pos:
-		group[oldheroposition] = group[pos]
+	if oldheroposition == null:#adding new char to group
+		if group_fixed:
+			input_handler.SystemMessage(tr('PARTY_FIXED'))
+			return
+		#positiontaken == true means we switching new char with old one
+		#false means we are increasing group size by adding new char
+		if !positiontaken and limit != 0 and group.size() >= limit:
+			input_handler.SystemMessage(tr('PARTY_LIMIT'))
+			return
+	else:
+		if positiontaken and oldheroposition != pos:
+			group[oldheroposition] = group[pos]#switching chars in group
+		else:
+			group.erase(oldheroposition)#move char to another position
 	
 	group[pos] = char_id
 	build_location_group()
@@ -80,13 +96,25 @@ func slave_position_selected(character):
 func build_location_group():
 	for i in positiondict:
 		var position = 'pos'+str(i)
-		if group.has(position) && ResourceScripts.game_party.characters[group[position]] != null:
-			var character = ResourceScripts.game_party.characters[group[position]]
-			get_node(positiondict[i]+"/Image").texture = character.get_icon()
-			get_node(positiondict[i]+"/Image").show()
-			get_node(positiondict[i]+"/Image/hp").text = str(ceil(character.hp)) + '/' + str(ceil(character.get_stat('hpmax')))
-			get_node(positiondict[i]+"/Image/mp").text = str(floor(character.mp)) + '/' + str(floor(character.get_stat('mpmax')))
+		var character
+		var free_pos = false
+		if group.has(position):
+			character = ResourceScripts.game_party.characters[group[position]]
+			if character != null:
+				if !character.has_status('no_combat'):
+					get_node(positiondict[i]+"/Image").texture = character.get_icon()
+					get_node(positiondict[i]+"/Image").show()
+					get_node(positiondict[i]+"/Image/hp").text = str(ceil(character.hp)) + '/' + str(ceil(character.get_stat('hpmax')))
+					get_node(positiondict[i]+"/Image/mp").text = str(floor(character.mp)) + '/' + str(floor(character.get_stat('mpmax')))
+				else:
+					group.erase(position)
+					free_pos = true
+			else:
+				free_pos = true
 		else:
+			free_pos = true
+		
+		if free_pos:
 			get_node(positiondict[i]+"/Image").texture = null
 			get_node(positiondict[i]+"/Image").hide()
 
@@ -108,3 +136,20 @@ func start_event_combat():
 		globals.StartAreaCombat()
 	else:
 		globals.StartCombat(globals.current_enemy_group)
+
+#for external tuneup, use after open_defined()
+func strip_buttons():
+	closebutton.queue_free()
+	$ConfirmButton.queue_free()
+
+func fix_group():
+	group_fixed = true
+
+func unfix_group():
+	group_fixed = false
+
+func set_remote(value):
+	allow_remote = (value or variables.allow_remote_intereaction)
+
+func set_limit(new_limit):
+	limit = new_limit

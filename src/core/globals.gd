@@ -2425,6 +2425,8 @@ func common_effects(effects):
 					ResourceScripts.game_party.change_relationship_status(input_handler.scene_characters[0].id, input_handler.scene_characters[1].id, i.value)
 				else:
 					print("wrong change relationship setup")
+			'open_arena':
+				input_handler.get_spec_node(input_handler.NODE_ARENA)
 
 func after_wedding_event(character):
 	if character == null:

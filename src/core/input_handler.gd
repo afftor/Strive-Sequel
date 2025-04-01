@@ -133,6 +133,7 @@ enum {
 	NODE_DATE,
 	NODE_TUTORIAL_PANEL,
 	NODE_TRAIREM_PANEL,
+	NODE_ARENA,
 	#Animations
 	ANIM_TASK_AQUARED,
 	ANIM_BATTLE_START,
@@ -1193,7 +1194,7 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 
 
 func finish_combat():
-	emit_signal("CombatEnded", combat_node.encountercode)
+	emit_signal("CombatEnded", combat_node.encountercode, true)
 	SetMusic(explore_sound, true)
 	
 	if encounter_win_script != null and !encounter_win_script.empty():
@@ -1245,6 +1246,7 @@ func combat_defeat():
 #			ResourceScripts.game_party.characters[active_location.group[i]].apply_effect(effects_pool.add_effect(eff))
 			#i totally disagree with the same code placed here and in combat.victory() (and in old exploration too)
 			#add permadeath check here
+	emit_signal("CombatEnded", combat_node.encountercode, false)
 	if encounter_lose_script != null and !encounter_lose_script.empty():
 		globals.common_effects(encounter_lose_script)
 		encounter_lose_script = null

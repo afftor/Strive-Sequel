@@ -1,12 +1,39 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/scenes/PositionSelectMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gui_modules/arena/arena.gd" type="Script" id=2]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_victory.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=7]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesBig.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Background.tres" type="StyleBox" id=9]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=10]
+[ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_char.png" type="Texture" id=11]
+[ext_resource path="res://assets/Themes_v2/EXPLORATION/TravelersPanel.tres" type="StyleBox" id=12]
+[ext_resource path="res://assets/Themes_v2/EXPLORATION/DungeonItemsPanel.tres" type="StyleBox" id=13]
+[ext_resource path="res://assets/images/backgrounds/arena.png" type="Texture" id=14]
 
-[node name="Control" type="Control"]
+[node name="arena" type="Control" groups=["ignore_rightclicks"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
+
+[node name="bg" type="TextureRect" parent="."]
+show_behind_parent = true
+margin_left = 61.0
+margin_top = 32.0
+margin_right = 1848.0
+margin_bottom = 1044.0
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="bg"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = ExtResource( 12 )
 
 [node name="StartMenu" type="Panel" parent="."]
 visible = false
@@ -36,55 +63,365 @@ Resets in: 3 days
 First fight enemies: Wolves (replace)
 First fight reward: 300 gold, 200 silk (replace)"
 
-[node name="PrefightPanel" type="Panel" parent="."]
+[node name="base_panel" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 61.0
+margin_top = 32.0
+margin_right = -70.0
+margin_bottom = -31.0
+
+[node name="unwelcome_label" type="Label" parent="base_panel"]
+margin_left = 221.0
+margin_top = 19.0
+margin_right = 1558.0
+margin_bottom = 81.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = ExtResource( 8 )
+text = "ARENA_UNWELCOME"
+align = 1
+
+[node name="timer_open" type="Position2D" parent="base_panel"]
+position = Vector2( 1126, 148 )
+
+[node name="timer_close" type="Position2D" parent="base_panel"]
+position = Vector2( 827, 232 )
+
+[node name="timer_rect" type="TextureRect" parent="base_panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 231.5
+margin_top = 148.0
+margin_right = 366.5
+margin_bottom = 316.0
+texture = ExtResource( 11 )
+
+[node name="Panel" type="Panel" parent="base_panel/timer_rect"]
+modulate = Color( 1, 1, 1, 0.862745 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = ExtResource( 9 )
+
+[node name="timer_label" type="Label" parent="base_panel/timer_rect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -55.5
+margin_top = 9.0
+margin_right = 51.5
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 4 )
+text = "ARENA_TIMER"
+align = 1
+autowrap = true
+
+[node name="timer" type="Label" parent="base_panel/timer_rect"]
+margin_left = 17.0
+margin_top = 83.0
+margin_right = 118.0
+margin_bottom = 154.0
+custom_fonts/font = ExtResource( 8 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="leave_btn" type="Button" parent="base_panel"]
+margin_left = 986.439
+margin_top = 916.704
+margin_right = 1419.44
+margin_bottom = 987.704
+theme = ExtResource( 10 )
+text = "ARENA_LEAVE_BTN"
+
+[node name="PrefightPanel" type="Control" parent="."]
 margin_left = 61.0
 margin_top = 32.0
 margin_right = 1850.0
 margin_bottom = 1049.0
+mouse_filter = 2
+
+[node name="welcome_label" type="Label" parent="PrefightPanel"]
+margin_left = 739.0
+margin_top = 19.0
+margin_right = 1676.0
+margin_bottom = 81.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = ExtResource( 8 )
+text = "ARENA_WELCOME"
+align = 1
 
 [node name="Positions" parent="PrefightPanel" instance=ExtResource( 1 )]
 margin_left = 6.18768
-margin_top = 19.3607
+margin_top = 9.3607
 margin_right = 673.188
-margin_bottom = 1016.36
+margin_bottom = 1006.36
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PrefightPanel"]
-margin_left = 768.243
-margin_top = 243.522
-margin_right = 1641.24
-margin_bottom = 712.522
-text = "Current rewards:
-
-
-
-
-
-
-
-
-
-
-Next Fight:
-
-
-
-
-
-
-
-
-Next Fight Rewards"
-
-[node name="Button" type="Button" parent="PrefightPanel"]
-margin_left = 962.439
+[node name="start_btn" type="Button" parent="PrefightPanel"]
+margin_left = 986.439
 margin_top = 820.704
-margin_right = 1395.44
+margin_right = 1419.44
 margin_bottom = 891.704
-text = "Fight"
+theme = ExtResource( 10 )
+text = "ARENA_START_BTN"
 
-[node name="Button2" type="Button" parent="PrefightPanel"]
-margin_left = 962.439
-margin_top = 916.704
-margin_right = 1395.44
-margin_bottom = 987.704
-text = "Retreat"
+[node name="reset_btn" type="Button" parent="PrefightPanel"]
+visible = false
+margin_left = 1608.0
+margin_top = 917.0
+margin_right = 1763.0
+margin_bottom = 988.0
+text = "Reset"
+
+[node name="gold" type="TextureRect" parent="PrefightPanel"]
+visible = false
+margin_left = 873.382
+margin_top = 181.073
+margin_right = 955.382
+margin_bottom = 285.073
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="PrefightPanel/gold"]
+margin_left = 78.85
+margin_top = 38.7952
+margin_right = 121.85
+margin_bottom = 70.7952
+custom_fonts/font = ExtResource( 4 )
+text = "+50"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cur_reward_panel" type="Panel" parent="PrefightPanel"]
+margin_left = 696.0
+margin_top = 118.0
+margin_right = 1116.0
+margin_bottom = 768.0
+custom_styles/panel = ExtResource( 13 )
+
+[node name="Panel" type="Panel" parent="PrefightPanel/cur_reward_panel"]
+modulate = Color( 1, 1, 1, 0.862745 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = ExtResource( 9 )
+
+[node name="cur_reward_label" type="Label" parent="PrefightPanel/cur_reward_panel"]
+margin_left = 17.0
+margin_top = 9.0
+margin_right = 262.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 4 )
+text = "ARENA_CUR_REWARD"
+
+[node name="CurRewardCont" type="ScrollContainer" parent="PrefightPanel/cur_reward_panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 11.0
+margin_top = 57.0
+margin_right = -6.0
+margin_bottom = -10.0
+theme = ExtResource( 3 )
+scroll_vertical_enabled = false
+
+[node name="BoxContainer" type="VBoxContainer" parent="PrefightPanel/cur_reward_panel/CurRewardCont"]
+custom_constants/separation = 6
+
+[node name="Button" type="TextureRect" parent="PrefightPanel/cur_reward_panel/CurRewardCont/BoxContainer"]
+visible = false
+margin_right = 396.0
+margin_bottom = 52.0
+texture = ExtResource( 6 )
+
+[node name="Icon" type="TextureRect" parent="PrefightPanel/cur_reward_panel/CurRewardCont/BoxContainer/Button"]
+margin_left = 7.47552
+margin_top = 7.14685
+margin_right = 45.4755
+margin_bottom = 46.1469
+rect_pivot_offset = Vector2( 37.5, 37.5 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="amount" type="Label" parent="PrefightPanel/cur_reward_panel/CurRewardCont/BoxContainer/Button"]
+margin_left = 307.027
+margin_top = 9.0
+margin_right = 377.027
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "1"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="PrefightPanel/cur_reward_panel/CurRewardCont/BoxContainer/Button"]
+margin_left = 56.05
+margin_top = 10.0
+margin_right = 124.05
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 4 )
+text = "Wood"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="next_reward_panel" type="Panel" parent="PrefightPanel"]
+margin_left = 1272.0
+margin_top = 118.0
+margin_right = 1692.0
+margin_bottom = 768.0
+custom_styles/panel = ExtResource( 13 )
+
+[node name="Panel" type="Panel" parent="PrefightPanel/next_reward_panel"]
+modulate = Color( 1, 1, 1, 0.862745 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = ExtResource( 9 )
+
+[node name="next_reward_label" type="Label" parent="PrefightPanel/next_reward_panel"]
+margin_left = 17.0
+margin_top = 9.0
+margin_right = 274.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 4 )
+text = "ARENA_NEXT_REWARD"
+
+[node name="NextRewardCont" type="ScrollContainer" parent="PrefightPanel/next_reward_panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 11.0
+margin_top = 57.0
+margin_right = -6.0
+margin_bottom = -10.0
+theme = ExtResource( 3 )
+scroll_vertical_enabled = false
+
+[node name="BoxContainer" type="VBoxContainer" parent="PrefightPanel/next_reward_panel/NextRewardCont"]
+custom_constants/separation = 6
+
+[node name="Button" type="TextureRect" parent="PrefightPanel/next_reward_panel/NextRewardCont/BoxContainer"]
+visible = false
+margin_right = 396.0
+margin_bottom = 52.0
+texture = ExtResource( 6 )
+
+[node name="Icon" type="TextureRect" parent="PrefightPanel/next_reward_panel/NextRewardCont/BoxContainer/Button"]
+margin_left = 7.47552
+margin_top = 7.14685
+margin_right = 45.4755
+margin_bottom = 46.1469
+rect_pivot_offset = Vector2( 37.5, 37.5 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="amount" type="Label" parent="PrefightPanel/next_reward_panel/NextRewardCont/BoxContainer/Button"]
+margin_left = 307.027
+margin_top = 9.0
+margin_right = 377.027
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "1"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="PrefightPanel/next_reward_panel/NextRewardCont/BoxContainer/Button"]
+margin_left = 56.05
+margin_top = 10.0
+margin_right = 124.05
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 4 )
+text = "Wood"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="round_rect" type="TextureRect" parent="PrefightPanel"]
+margin_left = 1522.0
+margin_top = 806.0
+margin_right = 1657.0
+margin_bottom = 974.0
+texture = ExtResource( 11 )
+
+[node name="Panel" type="Panel" parent="PrefightPanel/round_rect"]
+modulate = Color( 1, 1, 1, 0.862745 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = ExtResource( 9 )
+
+[node name="round_label" type="Label" parent="PrefightPanel/round_rect"]
+margin_left = -17.0
+margin_top = 11.0
+margin_right = 155.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 4 )
+text = "ARENA_ROUND"
+align = 1
+
+[node name="round" type="Label" parent="PrefightPanel/round_rect"]
+margin_left = 17.0
+margin_top = 52.0
+margin_right = 118.0
+margin_bottom = 148.0
+custom_fonts/font = ExtResource( 8 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="limit_rect" type="TextureRect" parent="PrefightPanel"]
+margin_left = 754.0
+margin_top = 806.0
+margin_right = 889.0
+margin_bottom = 974.0
+texture = ExtResource( 11 )
+
+[node name="Panel" type="Panel" parent="PrefightPanel/limit_rect"]
+modulate = Color( 1, 1, 1, 0.862745 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = ExtResource( 9 )
+
+[node name="limit_label" type="Label" parent="PrefightPanel/limit_rect"]
+margin_left = -49.0
+margin_top = 11.0
+margin_right = 185.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 4 )
+text = "ARENA_PARTY_LIMIT"
+align = 1
+
+[node name="limit" type="Label" parent="PrefightPanel/limit_rect"]
+margin_left = 17.0
+margin_top = 52.0
+margin_right = 118.0
+margin_bottom = 148.0
+custom_fonts/font = ExtResource( 8 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="block" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
