@@ -882,6 +882,11 @@ var fixed_location_options = { #override serialized data
 			], 
 			args = [{code = 'start_event', data = 'kuro_church_note', args = []}]
 		},
+#		{
+#			text = tr('ARENA_NAME'),
+#			reqs = [],
+#			args = [{code = 'open_arena'}]
+#		},
 	],
 	elf_capital = [
 		{

@@ -849,6 +849,7 @@ func LoadGame(filename):
 	effects_pool.deserialize(savedict.effpool)
 	characters_pool.cleanup()
 	effects_pool.cleanup()
+	#mind! that characters_pool's fix_serialization_postload is inside game_party's
 	ResourceScripts.game_party.fix_serialization_postload()
 	ResourceScripts.game_party.force_update_portraits()
 	
@@ -1331,20 +1332,23 @@ func check_event_reqs(reqs):
 			break
 	return check
 
-func check_location_group():
+func check_group(group):
 	var counter = 0
 	var cleararray = []
-	for i in input_handler.active_location.group:
-		if ResourceScripts.game_party.characters.has(input_handler.active_location.group[i]):
+	for i in group:
+		if ResourceScripts.game_party.characters.has(group[i]):
 			counter += 1
 		else:
 			cleararray.append(i)
 	for i in cleararray:
-		input_handler.active_location.group.erase(i)
+		group.erase(i)
 	if counter == 0:
 		return false
 	else:
 		return true
+
+func check_location_group():
+	return check_group(input_handler.active_location.group)
 
 func StartCombat(encounter = null):
 	if input_handler.combat_node == null:
@@ -2421,6 +2425,8 @@ func common_effects(effects):
 					ResourceScripts.game_party.change_relationship_status(input_handler.scene_characters[0].id, input_handler.scene_characters[1].id, i.value)
 				else:
 					print("wrong change relationship setup")
+			'open_arena':
+				input_handler.get_spec_node(input_handler.NODE_ARENA)
 
 func after_wedding_event(character):
 	if character == null:

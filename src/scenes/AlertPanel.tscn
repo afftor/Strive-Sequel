@@ -14,39 +14,43 @@ margin_top = 331.0
 margin_right = 1245.0
 margin_bottom = 570.0
 theme = ExtResource( 1 )
+popup_exclusive = true
 script = ExtResource( 21 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="Panel" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 53.0
 margin_top = 34.9474
 margin_right = 477.0
 margin_bottom = 138.947
+rect_clip_content = false
 theme = ExtResource( 5 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 bbcode_enabled = true
 bbcode_text = "<bbcode>"
 text = "<bbcode>"
+fit_content_height = true
 
-[node name="ButtonL" type="TextureButton" parent="."]
+[node name="TextureRect" type="Panel" parent="RichTextLabel"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -53.0
+margin_top = -35.0
+margin_right = 47.0
+margin_bottom = 100.0
+
+[node name="ButtonL" type="TextureButton" parent="RichTextLabel/TextureRect"]
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_left = 26.0
-margin_top = 164.0
+margin_top = -74.9474
 margin_right = 236.0
-margin_bottom = 215.0
+margin_bottom = -16.9474
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 
-[node name="Label" type="Label" parent="ButtonL"]
+[node name="Label" type="Label" parent="RichTextLabel/TextureRect/ButtonL"]
 margin_left = 12.0
 margin_right = 202.0
 margin_bottom = 58.0
@@ -55,16 +59,20 @@ text = "<left>"
 align = 1
 valign = 1
 
-[node name="ButtonR" type="TextureButton" parent="."]
-margin_left = 291.0
-margin_top = 164.0
-margin_right = 501.0
-margin_bottom = 215.0
+[node name="ButtonR" type="TextureButton" parent="RichTextLabel/TextureRect"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -233.0
+margin_top = -74.9474
+margin_right = -23.0
+margin_bottom = -16.9474
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 
-[node name="Label" type="Label" parent="ButtonR"]
+[node name="Label" type="Label" parent="RichTextLabel/TextureRect/ButtonR"]
 margin_left = 10.0
 margin_right = 201.0
 margin_bottom = 58.0

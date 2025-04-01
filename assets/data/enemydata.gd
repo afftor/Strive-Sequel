@@ -226,7 +226,11 @@ var enemygroups = {
 	goblin_stronghold_warloed_boss = {reqs = [], units = { warlord = [1,1], hobgoblin_crossbowman= [1,2]}},
 	goblin_stronghold_alchemist_boss = {reqs = [], units = {alchemist = [1,1], hobgoblin_thug = [2,2]}},
 	goblin_stronghold_battle_troll_boss = {maxunits = 2, reqs = [], units = { battle_troll= [1,1], vulture = [2,3]}},
-  
+
+	arena_test1 = {reqs = [], units = {cave_goblin_melee = [2,3]}},
+	arena_test2 = {reqs = [], units = {cave_goblin_melee = [1,3], cave_goblin_archer = [1,2]}},
+	arena_test3 = {reqs = [], units = {cave_goblin_melee = [1,2], cave_goblin_archer = [1,3]}},
+
   _test_boss = {reqs = [], units = {test_boss = [1,1]}}, #test
 	}
 
