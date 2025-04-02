@@ -235,6 +235,8 @@ func defeat():
 
 func clear_group():
 	positions_node.unfix_group()
+	for pos in group:
+		ResourceScripts.game_party.characters[group[pos]].combat_position = 0
 	group.clear()
 	positions_node.build_location_group()
 
