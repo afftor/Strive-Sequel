@@ -4,6 +4,7 @@ extends Panel
 var selectedquest
 var type = "main"
 
+onready var quest_panel = $QuestPanel
 
 func _ready():
 	gui_controller.add_close_button(self)
@@ -17,7 +18,6 @@ func _ready():
 
 
 func change_type(newtype):
-	$RightPanel/QuestDescript.bbcode_text = ""
 	for i in $ScrollContainer/VBoxContainer.get_children():
 		if i.has_meta('quest'):
 			i.pressed = false
@@ -27,13 +27,7 @@ func change_type(newtype):
 	$CancelButton.visible = false
 	$CompleteButton.visible = false
 	$SelectCharacter.visible = false
-	$RightPanel/QuestDescript.clear()
-	$RightPanel/rewards.hide()
-	$RightPanel/reqs.hide()
-	$RightPanel/Label.hide()
-	$RightPanel/Label2.hide()
-	$RightPanel/DiffLabel.hide()
-	$RightPanel/CenterContainer/Time.hide()
+	quest_panel.hide_all()
 	hide_item_selection()
 	show_quests()
 
@@ -51,14 +45,8 @@ func open():
 	$CancelButton.visible = false
 	$CompleteButton.visible = false
 	$SelectCharacter.visible = false
-	$RightPanel/QuestDescript.clear()
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
-	$RightPanel/rewards.hide()
-	$RightPanel/reqs.hide()
-	$RightPanel/Label.hide()
-	$RightPanel/Label2.hide()
-	$RightPanel/DiffLabel.hide()
-	$RightPanel/CenterContainer/Time.hide()
+	quest_panel.hide_all()
 	hide_item_selection()
 	for i in ResourceScripts.game_progress.active_quests:
 		make_active_quest_button(i)
@@ -91,84 +79,19 @@ func make_quest_button(quest):
 	newbutton.hide()
 
 func show_quest_info(quest):
-	$RightPanel/rewards.show()
-	$RightPanel/reqs.show()
-	$RightPanel/Label.show()
-	$RightPanel/Label2.show()
-	$RightPanel/CenterContainer/Time.show()
+	quest_panel.show_info(quest)
 	$CompleteButton.show()
 	$SelectCharacter.hide()
-	input_handler.ClearContainer($RightPanel/reqs)
-	input_handler.ClearContainer($RightPanel/rewards)
 	for i in $ScrollContainer/VBoxContainer.get_children():
 		if i.has_meta('quest'):
 			i.pressed = i.get_meta('quest') == quest
-
 	if !quest.has('stage'):
 		$CancelButton.visible = true
 		$CompleteButton.visible = true
-		$RightPanel/DiffLabel.show()
-		$RightPanel/DiffLabel.text = tr("DUNGEONDIFFICULTY")+": " + tr("DUNGEONDIFFICULTY"+quest.difficulty.to_upper())
-		var quest_descript = quest.descript
 		selectedquest = quest
 		input_handler.selectedquest = quest
 		for i in quest.requirements:
-			var newbutton = input_handler.DuplicateContainerTemplate($RightPanel/reqs)
 			match i.code:
-				'kill_monsters':
-					newbutton.get_node("TextureRect").texture = images.get_icon('quest_enemy')
-					newbutton.get_node("amount").text = str(i.value)
-					newbutton.get_node("amount").show()
-					newbutton.hint_tooltip = tr("QUESTDEFEAT")+": " + tr(variables.enemy_types[i.type]) + " - " + str(i.curvalue) + "/" + str(i.value)
-				'random_item':
-					var itemtemplate = Items.itemlist[i.type]
-					newbutton.get_node("TextureRect").texture = itemtemplate.icon
-					newbutton.hint_tooltip = itemtemplate.name + ": " + str(i.value)
-					newbutton.get_node("amount").text = str(i.value)
-					newbutton.get_node("amount").show()
-					if itemtemplate.has('parts'):
-						#newbutton.material = load("res://src/ItemShader.tres").duplicate()
-						var showcase_item = globals.CreateGearItem(i.type, i.parts)
-						# input_handler.itemshadeimage(newbutton, showcase_item)
-						showcase_item.set_icon(newbutton.get_node("TextureRect"))
-						globals.connectitemtooltip_v2(newbutton, showcase_item)
-						if i.has('parts'):
-							newbutton.hint_tooltip += "\n" + tr("QUESTPARTREQUIREMENTS") + ": "
-							for k in i.parts:
-								newbutton.hint_tooltip += "\n"+ tr(Items.Parts[k].name)  + ": " +str(Items.materiallist[i.parts[k]].name)
-				'complete_location':
-					newbutton.get_node("TextureRect").texture = images.get_icon(i.code)
-					globals.connecttexttooltip(newbutton, tr("QUESTCOMPLETEQUESTLOC")+": " + tr(DungeonData.dungeons[i.type].name))
-				'complete_dungeon':
-					newbutton.get_node("TextureRect").texture = images.get_icon(i.code)
-					globals.connecttexttooltip(newbutton, tr("QUESTCOMPLETEQUESTLOC2") +  " [color=aqua]" + tr(ResourceScripts.game_world.areas[i.area].name) + "[/color]: [color=yellow]" + tr(i.locationname) + "[/color]")
-				'random_material':
-					newbutton.get_node("TextureRect").texture = Items.materiallist[i.type].icon
-					newbutton.get_node("amount").show()
-					newbutton.get_node("amount").text = str(i.value)
-					globals.connectmaterialtooltip(newbutton, Items.materiallist[i.type], '\n\n[color=yellow]' + tr("QUESTREQUIRED") + ': ' + str(i.value) + "[/color]")
-				'slave_delivery':
-					newbutton.get_node("TextureRect").texture = images.get_icon('quest_slave_delivery')
-					newbutton.get_node("amount").show()
-					newbutton.get_node("amount").text = str(i.delivered_slaves) + "/" + str(i.value)
-					var tooltiptext = tr("QUESTSLAVEREQUIRED")+":\n"
-					for k in i.statreqs:
-						if k.code in ['is_master', 'is_free']:
-							continue
-						match k.code:
-							'stat':
-								if k.stat.ends_with('factor') && input_handler.globalsettings.factors_as_words:
-									tooltiptext += statdata.statdata[k.stat].name +": "+ input_handler.operant_translation(k.operant) + " " +  tr(ResourceScripts.descriptions.factor_descripts[int(k.value)]) + " "  + "\n"
-								else:
-									tooltiptext += statdata.statdata[k.stat].name +": "+ input_handler.operant_translation(k.operant) + " " + str(k.value) + " "  + "\n"
-							'sex':
-								tooltiptext += "Sex: " + tr('SLAVESEX'+k.value.to_upper()) + "\n"
-							'one_of_races':
-								tooltiptext += "Race: " 
-								for j in k.value:
-									tooltiptext += tr("RACE" + j.to_upper()) + ", "
-								tooltiptext = tooltiptext.substr(0, tooltiptext.length() - 2) + ".\n"
-					globals.connecttexttooltip(newbutton,tooltiptext)
 				'slave_work':
 					$CompleteButton.hide()
 					$SelectCharacter.show()
@@ -176,120 +99,20 @@ func show_quest_info(quest):
 					if quest.id in ResourceScripts.game_progress.work_quests_finished:
 						$CompleteButton.show()
 						$SelectCharacter.hide()
-					var time = ''
-					var reqs = {}
-					for  req in quest.requirements:
+					for req in quest.requirements:
 						if req.has("statreqs"):
-							reqs = req.statreqs
-							char_reqs = reqs
+							char_reqs = req.statreqs
 						if req.has("work_time"):
-							time = str(req.work_time)
-							work_time_holder = time
-					var sex = ''
-					var prof = ''
-					var stats = {}
-					for r in reqs:
-						if r.code == "sex":
-							sex = r.value
-						if r.code == "stat":
-							stats[r.stat] = r.value
-						if r.code == "has_profession" && r.check:
-							prof = r.profession
-							var profbutton = input_handler.DuplicateContainerTemplate($RightPanel/reqs)
-							var prof_icon = classesdata.professions[prof].icon
-							profbutton.get_node("TextureRect").texture = prof_icon
-							var profname = classesdata.professions[prof].name
-							if classesdata.professions[prof].has('altnamereqs'):
-								for req in classesdata.professions[prof].altnamereqs:
-									if req.code == 'sex':
-										if sex != '':
-											if input_handler.operate(req.operant, req.value, sex):
-												profname = classesdata.professions[prof].altname
-										else:
-											profname += "/" + classesdata.professions[prof].altname
-										break
-							var prof_name = tr("QUESTREQUIREDCLASS")+":\n" + profname
-							globals.connecttexttooltip(profbutton, prof_name)
-					newbutton.get_node("TextureRect").texture = images.get_icon('quest_slave_delivery')
-					var stats_text = "\n"+tr("QUESTSTATS")+":\n"
-					var tooltiptext = tr("QUESTSLAVEREQUIRED")+":\n"
-					tooltiptext += "Sex: " + sex
-					if !stats.empty():
-						for st in stats:
-							stats_text += st.capitalize() + " : " + str(stats[st]) + '\n'
-						tooltiptext += stats_text
-					globals.connecttexttooltip(newbutton, tooltiptext)
-					quest_descript += "\n"+tr("QUESTWORKDURATION")+": " + time + ' '+tr("QUESTDAYS")+'.'
+							work_time_holder = str(req.work_time)
 				'special_task':
 					$CompleteButton.hide()
 					if quest.id in ResourceScripts.game_progress.work_quests_finished:
 						$CompleteButton.show()
-					var t_text = tr("QUESTCOMPLETETASK")
-					if i.has('name'):
-						t_text += ": " + tr(i.name)
-					if i.has('icon'):
-						newbutton.get_node("TextureRect").texture = load(i.icon)
-					quest_descript += t_text
-					globals.connecttexttooltip(newbutton, t_text)
-		
-		for i in quest.rewards:
-			var newbutton = input_handler.DuplicateContainerTemplate($RightPanel/rewards)
-			match i.code:
-				'gear':
-					var item = globals.CreateGearItem(i.item, i.itemparts)
-					item.set_icon(newbutton.get_node("TextureRect"))
-					input_handler.ghost_items.append(item)
-					globals.connectitemtooltip_v2(newbutton, item)
-				'gear_static':
-					newbutton.get_node("TextureRect").texture = Items.itemlist[i.item].icon
-					newbutton.get_node("amount").text = str(i.value)
-					newbutton.get_node("amount").show()
-					globals.connecttempitemtooltip(newbutton, Items.itemlist[i.item], 'geartemplate')
-				'gold':
-					newbutton.get_node("TextureRect").texture = images.get_icon('quest_gold')
-					if i.value is Array:
-						newbutton.get_node("amount").show()
-						newbutton.get_node("amount").text = "x" + str(stepify(i.value[0],0.1))
-						globals.connecttexttooltip(newbutton, "Gold reward will be determined based on end item value.")
-						
-					else:
-						var value = round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-						newbutton.get_node("amount").text = str(value)
-						globals.connecttexttooltip(newbutton, tr("QUESTGOLD")+": " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])) + " ("+tr("QUESTMASTERCHARMBONUS")+")")
-						newbutton.get_node("amount").show()
-				'reputation':
-					var value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-					newbutton.get_node("TextureRect").texture = images.get_icon("guilds_" + quest.source + "_colored")
-					newbutton.get_node("amount").text = str(value)
-					newbutton.get_node("amount").show()
-					globals.connecttexttooltip(newbutton, (tr("QUESTREPUTATION")+" (" + quest.source.capitalize() + "): " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]))+ " ("+tr("QUESTMASTERCHARMBONUS")+")"))
-				'material':
-					var material = Items.materiallist[i.item]
-					newbutton.get_node("TextureRect").texture = material.icon
-					newbutton.get_node("amount").text = str(i.value)
-					newbutton.get_node("amount").show()
-					globals.connectmaterialtooltip(newbutton, material)
-				'usable':
-					var item = Items.itemlist[i.item]
-					newbutton.get_node("TextureRect").texture = item.icon
-					globals.connecttempitemtooltip_v2(newbutton, item, 'geartemplate')
-					newbutton.get_node("amount").text = str(i.value)
-					newbutton.get_node("amount").show()
-
-		$RightPanel/QuestDescript.bbcode_text = '[center]' + quest.name + '[/center]\n' + quest_descript
-		$RightPanel/CenterContainer/Time/Label.text = str(quest.time_limit) + " "+ tr("QUESTDAYSLEFT") + "."
 	else:
-		$RightPanel/rewards.hide()
-		$RightPanel/reqs.hide()
-		$RightPanel/Label.hide()
-		$RightPanel/Label2.hide()
-		$RightPanel/CenterContainer/Time.hide()
 		$CancelButton.visible = false
 		$CompleteButton.visible = false
 		$SelectCharacter.visible = false
-		var quest_stage = scenedata.quests[quest.code].stages[quest.stage]
-		$RightPanel/QuestDescript.bbcode_text = globals.TextEncoder('[center]' + tr(quest_stage.name) + '[/center]\n' + tr(scenedata.quests[quest.code].summary) + "\n\n" + tr(quest_stage.descript))
-
+	
 
 var selectedslave
 
