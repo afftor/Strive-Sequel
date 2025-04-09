@@ -1,10 +1,9 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/Themes_v2/SimpleBgPanel.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
+[ext_resource path="res://src/scenes/QuestPanelV2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/iconsgear/SwordBasic.png" type="Texture" id=4]
-[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=5]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=6]
 [ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=8]
@@ -16,17 +15,8 @@
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats.png" type="Texture" id=14]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats_hover.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats_pressed.png" type="Texture" id=16]
-[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=17]
-[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_pressed.png" type="Texture" id=18]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionJournalModule.gd" type="Script" id=19]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/MansionJournalModule.tres" type="StyleBox" id=20]
-[ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_sandclocks_noticeboard.png" type="Texture" id=21]
-[ext_resource path="res://assets/Textures_v2/CITY/Universal/paper_description.png" type="Texture" id=22]
-[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=23]
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 22 )
-region_rect = Rect2( 0, 0, 500, 740 )
 
 [sub_resource type="ImageTexture" id=2]
 
@@ -57,21 +47,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
-margin_left = 337.821
-margin_top = -5.0
-margin_right = 837.821
-margin_bottom = 735.0
-custom_styles/panel = SubResource( 1 )
-
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 46.0
 margin_top = 169.0
 margin_right = 338.0
 margin_bottom = 694.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 292.0
@@ -86,170 +66,11 @@ theme = ExtResource( 6 )
 toggle_mode = true
 text = "Text Teateya h hasjh"
 
-[node name="RightPanel" type="VBoxContainer" parent="."]
-margin_left = 389.0
-margin_top = 37.0
-margin_right = 786.0
-margin_bottom = 693.0
-
-[node name="QuestDescript" type="RichTextLabel" parent="RightPanel"]
-margin_right = 397.0
-margin_bottom = 469.0
-size_flags_vertical = 3
-theme = ExtResource( 3 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/normal_font = ExtResource( 13 )
-bbcode_enabled = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DiffLabel" type="Label" parent="RightPanel"]
-margin_top = 473.0
-margin_right = 397.0
-margin_bottom = 508.0
-theme = ExtResource( 12 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Difficulty"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="RightPanel"]
-margin_top = 512.0
-margin_right = 397.0
-margin_bottom = 547.0
-theme = ExtResource( 12 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Requirements"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="reqs" type="HBoxContainer" parent="RightPanel"]
-margin_top = 551.0
-margin_right = 397.0
-margin_bottom = 551.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="TextureButton" parent="RightPanel/reqs"]
-visible = false
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 75, 75 )
-size_flags_horizontal = 0
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 18 )
-texture_hover = ExtResource( 17 )
-expand = true
-stretch_mode = 6
-
-[node name="TextureRect" type="TextureRect" parent="RightPanel/reqs/Button"]
-margin_left = 2.0
-margin_top = 3.0
-margin_right = 72.0
-margin_bottom = 72.0
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="amount" type="Label" parent="RightPanel/reqs/Button"]
-visible = false
-margin_left = 32.5641
-margin_top = 48.7934
-margin_right = 72.5641
-margin_bottom = 72.7934
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 23 )
-text = "1"
-align = 2
-
-[node name="Label2" type="Label" parent="RightPanel"]
-margin_top = 555.0
-margin_right = 397.0
-margin_bottom = 590.0
-theme = ExtResource( 12 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Rewards"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="rewards" type="HBoxContainer" parent="RightPanel"]
-margin_top = 594.0
-margin_right = 397.0
-margin_bottom = 594.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="TextureButton" parent="RightPanel/rewards"]
-visible = false
-margin_right = 75.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 75, 75 )
-size_flags_horizontal = 0
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 18 )
-texture_hover = ExtResource( 17 )
-expand = true
-stretch_mode = 6
-
-[node name="TextureRect" type="TextureRect" parent="RightPanel/rewards/Button"]
-margin_left = 2.0
-margin_top = 3.0
-margin_right = 72.0
-margin_bottom = 72.0
-texture = ExtResource( 5 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="amount" type="Label" parent="RightPanel/rewards/Button"]
-visible = false
-margin_left = 30.6155
-margin_top = 46.5347
-margin_right = 70.6155
-margin_bottom = 70.5347
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 23 )
-text = "1"
-align = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="RightPanel"]
-margin_top = 598.0
-margin_right = 397.0
-margin_bottom = 656.0
-
-[node name="Time" type="TextureRect" parent="RightPanel/CenterContainer"]
-margin_left = 182.0
-margin_right = 214.0
-margin_bottom = 58.0
-texture = ExtResource( 21 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="RightPanel/CenterContainer/Time"]
-margin_left = 45.6711
-margin_top = 17.499
-margin_right = 140.671
-margin_bottom = 41.499
-theme = ExtResource( 12 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Time"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="QuestPanel" parent="." instance=ExtResource( 3 )]
+margin_left = 362.0
+margin_top = 10.0
+margin_right = 832.0
+margin_bottom = 720.0
 
 [node name="CompleteButton" type="Button" parent="."]
 margin_left = 382.0
@@ -262,9 +83,6 @@ custom_styles/hover = ExtResource( 10 )
 custom_styles/pressed = ExtResource( 9 )
 custom_styles/normal = ExtResource( 11 )
 text = "Complete"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SelectCharacter" type="Button" parent="."]
 visible = false

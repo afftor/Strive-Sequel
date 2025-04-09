@@ -1,0 +1,202 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=2]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=3]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=4]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_pressed.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_sandclocks_noticeboard.png" type="Texture" id=8]
+[ext_resource path="res://assets/Themes_v2/QuestPanel.tres" type="StyleBox" id=9]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/NOTO_SANS_Bold_30px.tres" type="DynamicFont" id=10]
+[ext_resource path="res://src/scenes/QuestPanelV2.gd" type="Script" id=11]
+
+[node name="QuestPanel" type="Panel"]
+margin_right = 470.0
+margin_bottom = 710.0
+custom_styles/panel = ExtResource( 9 )
+script = ExtResource( 11 )
+
+[node name="RightPanel" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 51.179
+margin_top = 42.0
+margin_right = -51.821
+margin_bottom = -42.0
+
+[node name="name" type="RichTextLabel" parent="RightPanel"]
+margin_right = 367.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 0, 49 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/mono_font = ExtResource( 10 )
+custom_fonts/bold_italics_font = ExtResource( 10 )
+custom_fonts/italics_font = ExtResource( 10 )
+custom_fonts/bold_font = ExtResource( 10 )
+custom_fonts/normal_font = ExtResource( 10 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="QuestDescript" type="RichTextLabel" parent="RightPanel"]
+margin_top = 53.0
+margin_right = 367.0
+margin_bottom = 439.0
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DiffLabel" type="Label" parent="RightPanel"]
+margin_top = 443.0
+margin_right = 367.0
+margin_bottom = 478.0
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Difficulty"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="RightPanel"]
+margin_top = 482.0
+margin_right = 367.0
+margin_bottom = 517.0
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Requirements"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reqs" type="HBoxContainer" parent="RightPanel"]
+margin_top = 521.0
+margin_right = 367.0
+margin_bottom = 521.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="RightPanel/reqs"]
+visible = false
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="RightPanel/reqs/Button"]
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 72.0
+margin_bottom = 72.0
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="amount" type="Label" parent="RightPanel/reqs/Button"]
+visible = false
+margin_left = 32.5641
+margin_top = 48.7934
+margin_right = 72.5641
+margin_bottom = 72.7934
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "1"
+align = 2
+
+[node name="Label2" type="Label" parent="RightPanel"]
+margin_top = 525.0
+margin_right = 367.0
+margin_bottom = 560.0
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Rewards"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rewards" type="HBoxContainer" parent="RightPanel"]
+margin_top = 564.0
+margin_right = 367.0
+margin_bottom = 564.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="RightPanel/rewards"]
+visible = false
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="RightPanel/rewards/Button"]
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 72.0
+margin_bottom = 72.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="amount" type="Label" parent="RightPanel/rewards/Button"]
+visible = false
+margin_left = 30.6155
+margin_top = 46.5347
+margin_right = 70.6155
+margin_bottom = 70.5347
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "1"
+align = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="RightPanel"]
+margin_top = 568.0
+margin_right = 367.0
+margin_bottom = 626.0
+
+[node name="Time" type="TextureRect" parent="RightPanel/CenterContainer"]
+margin_left = 167.0
+margin_right = 199.0
+margin_bottom = 58.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="RightPanel/CenterContainer/Time"]
+margin_left = 45.6711
+margin_top = 17.499
+margin_right = 140.671
+margin_bottom = 41.499
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Time"
+__meta__ = {
+"_edit_use_anchors_": false
+}
