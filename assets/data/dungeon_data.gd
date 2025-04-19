@@ -122,7 +122,7 @@ var biomes = {
 		gatherable_resources = 'biome_fire_depths_res',
 	},
 	biome_goblin_stronghold = {
-		background_pool = ['cave1', 'cave4', 'cave5'],
+		background_pool = ['cave_1', 'cave_4', 'cave_5'],
 		enemyarray =  [["goblin_stronghold_easy", 1],['goblin_stronghold_easy1', 1],['goblin_stronghold_tormentor', 0.5],['goblin_stronghold_tormentor1', 0.5],['goblin_stronghold_vulture', 0.5]],
 		character_data = {
 			chance_mod = 1.4,
@@ -1111,14 +1111,14 @@ var dungeons = {
 		classname = '',
 		descript = tr("DUNGEON_GOBLIN_STRONHOLD_DESC"),
 		character_data = {
-			chance_mod = 1.4,
-			races = [['local', 3], ['common',4], ['uncommon',2]]
+			chance_mod = 1.1,
+			races = [['local', 2], ['common',2], ['uncommon',2], ['rare',1]]
 		},
 		difficulty = 'medium',
-		background_pool = ['cave1', 'cave4', 'cave5'],
+		background_pool = ['goblin_stronghold1', 'goblin_stronghold1', 'goblin_stronghold1'],
 		custom_background = 'combat_fort',
 		enemyarray =  [["goblin_stronghold_easy", 1],['goblin_stronghold_easy1', 1],['goblin_stronghold_tormentor', 0.5],['goblin_stronghold_tormentor1', 0.5],['goblin_stronghold_vulture', 0.5]],
-		final_enemy = [['goblin_stronghold_warloed_boss',1], ['goblin_stronghold_alchemist_boss',0.7], ['goblin_stronghold_battle_troll_boss',0.5]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+		final_enemy = [['goblin_stronghold_warlord_boss',1], ['goblin_stronghold_alchemist_boss',0.7], ['goblin_stronghold_battle_troll_boss',0.5]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 		
 		event_data = {
 			dungeon_find_chest_medium = {
@@ -1160,18 +1160,6 @@ var dungeons = {
 					['event_small_crack',1],
 				],
 			},
-			event_goblin_friendly = {
-				limit = 1,
-				weight = 2,
-				floor_range = [0,0],
-				icon = 'chest',
-				events = ['event_goblin_friendly'],
-				possible_challenges = [
-					['event_locked_door',1],
-					['event_blocked_path',1],
-					['event_small_crack',1],
-				],
-			},
 		},
 		
 		event_room_number = [2,4],
@@ -1185,7 +1173,7 @@ var dungeons = {
 		
 		resources = 'local2',
 		gather_settings = 'base',
-		gatherable_resources = 'biome_bandit_fort_res',
+		gatherable_resources = 'biome_goblin_stronghold_res',
 		
 		bgm = "dungeon",
 		gather_mod = [2,2.5],

@@ -5,6 +5,7 @@ extends Control
 var currentenemies
 var area
 var turns = 0
+var global_turn = 0
 var animationskip = false
 
 var encountercode
@@ -176,6 +177,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	gui_controller.current_screen = self
 	autoskill = null
 	turns = 0
+	global_turn = 0
 	$Combatlog/RichTextLabel.clear()
 	summons.clear()
 	enemygroup.clear()
@@ -464,6 +466,7 @@ func current_turn():
 
 func newturn():
 	effects_pool.process_event(variables.TR_TURN_S)
+	global_turn += 1
 	for i in playergroup.values() + enemygroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.process_event(variables.TR_TURN_S)
@@ -1679,7 +1682,7 @@ func victory():
 	var array = []
 	for i in playergroup.values():
 		array.append(i)
-	if turns < 3:
+	if global_turn < 3:
 		input_handler.get_person_for_chat(array, 'combat_won_fast')
 	else:
 		input_handler.get_person_for_chat(array, 'combat_won_slow')

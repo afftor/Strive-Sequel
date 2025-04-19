@@ -10,6 +10,7 @@ var backgrounds = {
 	elf_capital = "res://assets/images/backgrounds/elf_capital.png",
 	beastkin_capital = "res://assets/images/backgrounds/beastkin_capital.png",
 	dwarfs_city = "res://assets/images/backgrounds/dwarf_city.png",
+	empire = "res://assets/images/backgrounds/empire.png",
 	
 	forest1_menu = "res://assets/images/backgroundmenu/forest1.jpg",
 	mountain1_menu = "res://assets/images/backgroundmenu/mountain1.jpg",
@@ -49,6 +50,11 @@ var backgrounds = {
 	fort1 = "res://assets/images/backgrounds/fort1.png",
 	fort2 = "res://assets/images/backgrounds/fort2.png",
 	fort3 = "res://assets/images/backgrounds/fort3.png",
+	
+	goblin_stronghold1 = "res://assets/images/backgrounds/goblin_stronghold1.png",
+	goblin_stronghold2 = "res://assets/images/backgrounds/goblin_stronghold2.png",
+	goblin_stronghold3 = "res://assets/images/backgrounds/goblin_stronghold3.png",
+	goblin_stronghold4 = "res://assets/images/backgrounds/goblin_stronghold4.png",
 
 	jungle1 = "res://assets/images/backgrounds/jungle1.png",
 	jungle2 = "res://assets/images/backgrounds/jungle2.png",
@@ -466,6 +472,7 @@ var scenes = {
 	lilia_unicorn = "res://assets/images/scenes/lilia_unicorn.png",
 	lilith_angry = "res://assets/images/scenes/lilith_angry.png",
 	
+	dungeon_forest_block = "res://assets/images/scenes/dungeon_forest_block.png",
 	
 	celena_shrine = load("res://assets/images/scenes/celena_shrine.png"),
 	freya_shrine = load("res://assets/images/scenes/freya_shrine.png"),
@@ -672,6 +679,7 @@ var dynamic_backgrounds = {
 	elf_capital = load("res://assets/dynamic_backgrounds/elf_capital.ogv"),
 	beastkin_capital = load("res://assets/dynamic_backgrounds/furry_camp.ogv"),
 	dwarfs_city = load("res://assets/dynamic_backgrounds/dwarfs_city.ogv"),
+	empire = load("res://assets/dynamic_backgrounds/empire_capital.ogv"),
 }
 
 var portraits = {

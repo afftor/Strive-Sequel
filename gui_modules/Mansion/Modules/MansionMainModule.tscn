@@ -200,9 +200,6 @@ margin_top = -6.0
 margin_right = 1450.0
 margin_bottom = 58.0
 scroll_vertical_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AreaSelection" type="HBoxContainer" parent="NavigationModule/NavigationContainer"]
 custom_constants/separation = 14

@@ -4129,6 +4129,7 @@ Requires: Базовый рабский труд""",
 	ITEMMAP_ANCIENT_JUNGLE = """Карта: Древние джунгли""",
 	ITEMMAP_FIRE_DEPTHS = """Карта: Огненные глубины""",
 	ITEMMAP_REBEL_REDOUBT = """Карта: Форт повстанцев""",
+	ITEMMAP_GOBLIN_STRONGHOLD = """Map: Goblin Stronghold""", # MISSING TRANSLATION
 	ITEMMAP_BANDIT_DENDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
 	ITEMMAP_BANDIT_FORTDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
 	ITEMMAP_GROVEDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
@@ -4138,6 +4139,7 @@ Requires: Базовый рабский труд""",
 	ITEMMAP_ANCIENT_JUNGLEDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
 	ITEMMAP_FIRE_DEPTHSDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
 	ITEMMAP_REBEL_REDOUBTDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
+	ITEMMAP_GOBLIN_STRONGHOLDDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
 
 
 	LOCATIONNAMESKIRMISH_BANDIT_CAMP = """Лагерь разбойников""",
@@ -4151,6 +4153,7 @@ Requires: Базовый рабский труд""",
 	LOCATIONNAMEDUNGEON_UNDEAD_CRYPT = """Склеп""",
 	LOCATIONNAMEDUNGEON_MOUNTAINS = """Горная пещера""",
 	LOCATIONNAMEDUNGEON_VOLCANO = """Вулканическая пещера""",
+	LOCATIONNAMEDUNGEON_GOBLIN_STRONGHOLD = """Goblin Stronghold""", # MISSING TRANSLATION
 	LOCATIONNAMEDUNGEON_CITY = """Разрушенный город""",
 	LOCATIONNAMEBASIC_THREAT_WOLVES = """Стычка""",
 	LOCATIONNAMEDUNGEON_ANCIENT_JUNGLES = """Древние джунгли""",
@@ -5724,8 +5727,28 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	ENEMYALCHEMIST = """Alchemist""", # MISSING TRANSLATION
 	ENEMYBATTLE_TROLL = """Battle Troll""", # MISSING TRANSLATION
 	NO_FIGHT_LOW_OBED = """[name] отказывается участвовать в бою. ('Боец' должен быть разблокирован)""",
+	NO_FIGHT_LOW_OBED2 = """[name] refuses to participate in a fight (low obedience).""", # MISSING TRANSLATION
 	CHAR_NO_COMBAT = """[name] получил тяжелую травму и не может участвовать в боях.""",
+	PARTY_LIMIT = """Party limit reached.""", # MISSING TRANSLATION
+	PARTY_FIXED = """Party is fixed! You can only switch positions.""", # MISSING TRANSLATION
 	SENDCHARTOQUESTCONFIRM = """Отправить этого персонажа на квест?""",
+	ARENA_NAME = """Arena""", # MISSING TRANSLATION
+	ARENA_DEFEAT = """You've been defeated! All arena's progress discarded.""", # MISSING TRANSLATION
+	ARENA_START = """You'll have to pay 1000 gold to enter! You also will not be able to add characters to party or leave arena until you finish it. Proceed?""", # MISSING TRANSLATION
+	ARENA_FINISH = """If you leave now, you will receive current accumulated reward, but will not be able to finish arena. Are you sure?""", # MISSING TRANSLATION
+	ARENA_FINISHED = """You already went into the arena. Wait until it is reset.""", # MISSING TRANSLATION
+	ARENA_WELCOME = """Welcome! Arena is opened!""", # MISSING TRANSLATION
+	ARENA_UNWELCOME = """Sorry, folks, no more fights today.""", # MISSING TRANSLATION
+	ARENA_PARTY_LIMIT = """Party limit""", # MISSING TRANSLATION
+	ARENA_CUR_REWARD = """Current rewards:""", # MISSING TRANSLATION
+	ARENA_NEXT_REWARD = """Next fight rewards:""", # MISSING TRANSLATION
+	ARENA_ROUND = """Round""", # MISSING TRANSLATION
+	ARENA_START_BTN = """Fight""", # MISSING TRANSLATION
+	ARENA_RETREAT_BTN = """Retreat""", # MISSING TRANSLATION
+	ARENA_FINISH_BTN = """Acquire reward""", # MISSING TRANSLATION
+	ARENA_LEAVE_BTN = """Leave""", # MISSING TRANSLATION
+	ARENA_TIMER = """Next rival in""", # MISSING TRANSLATION
+	ARENA_FEE = """You must have 1000 gold to enter arena.""", # MISSING TRANSLATION
 
 	SKILLPOISON_BITE = """Ядовитый укус""",
 	SKILLPOISON_BITE_S = """Ядовитый укус""",
@@ -18143,6 +18166,28 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	DUNGEONADJ14 = """Кристалл""",
 	DUNGEONADJ15 = """Смертельный""",
 	DUNGEONADJ16 = """Ревущий""",
+	GOBLIN_STRONGHOLD_NOUNS1 = """Stronghold""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS2 = """Warren""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS3 = """Hold""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS4 = """Bastion""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS5 = """Fortress""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS6 = """Keep""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS7 = """Spire""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS8 = """Crag""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS9 = """Rookery""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS10 = """Hovel""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS1 = """Goblin""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS2 = """Fetid""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS3 = """Squalid""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS4 = """Jagged""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS5 = """Ragged""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS6 = """Crude""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS7 = """Wretched""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS8 = """Savage""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS9 = """Cluttered""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS10 = """Horde""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS11 = """Marauding""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS12 = """Ramshackle""", # MISSING TRANSLATION
 	
 	#dungeons
 	
