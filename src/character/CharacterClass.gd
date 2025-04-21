@@ -27,7 +27,7 @@ var shield = 0 setget set_shield
 var defeated = false
 var combatgroup = ''
 var position = 0 # Not sure it's used or not. Make new field just in case
-var combat_position = 0 setget set_combat_position, get_combat_positon
+var combat_position = 0 setget, get_combat_positon
 var selectedskill = 'attack'
 
 var previous_location
