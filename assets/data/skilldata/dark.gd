@@ -161,37 +161,28 @@ var effects = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
-		args = [],
-		duration = 3,
+		args = {duration = {obj = 'self', func = 'dr', dr = 3},},
 		sub_effects = [
 			Effectdata.rebuild_remove_effect('buff'), #fill proper tags
 			Effectdata.rebuild_remove_effect('positive'),
-			'e_s_silence1'
+			'e_s_silence'
 			],
 		buffs = []
 	},
 	e_s_veil = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'veil',
+		stack = 'veil',
 		tick_event = variables.TR_TURN_S,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		duration = 'parent',
-		stack = 1,
+		duration = 'arg',
 		tags = ['buff'],
-		args = [{obj = 'parent_args', param = 0}],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'mdef', value = ['parent_args', 0]},
-			{type = 'stat_add', stat = 'resist_light', value = 30},
-			{type = 'stat_add', stat = 'resist_dark', value = 30},
-			],
+		args = {value = {obj = 'skill', func = 'get', arg = 'process_value'}},
+		statchanges = {mdef = ['arg', 'value'], resist_light = 30, resist_dark = 30},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/skill_veil.png",
 				description = "TRAITEFFECTVEIL",
-				limit = 1,
-				t_name = 'veil'
 			}
 		],
 	},
@@ -202,12 +193,13 @@ var effects = {
 		],
 		trigger = [variables.TR_POSTDAMAGE],
 		req_skill = true,
-		duration = 1,
-		args = [{obj = 'parent', param = 'target'}, {obj = 'parent', param = 'caster'}],
-		sub_effects = [],
-		modal_sub_effects = ['e_s_blind', 'e_s_disarm1', 'e_s_silence1'],
-		buffs = []
+		args = {duration = {obj = 'self', func = 'dr', dr = 1},},
+		modal_sub_effects = ['e_s_blind', 'e_s_disarm', 'e_s_silence'],
 	},
 }
 var atomic_effects = {}
 var buffs = {}
+
+var stacks = {
+	veil = {} #st 1
+}

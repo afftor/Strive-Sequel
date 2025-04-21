@@ -7,9 +7,6 @@ var parent
 var template
 var args: = []
 var self_args := []
-var template_name
-var name = "" setget ,get_name
-var amount = 1
 var tags = []
 
 func _init(caller):
@@ -23,39 +20,35 @@ func createfromtemplate(buff_t):
 		template = buff_t.duplicate()
 	description = tr(template.description)
 	icon = template.icon
-	template_name = template.t_name
-	if template.has('name'): name = template.name
-	if template.has('tags'): tags = template.tags.duplicate(true)
-	else: name = template_name
+	if template.has('tags'): 
+		tags = template.tags.duplicate(true)
 
 func get_tooltip():
-	calculate_args()
-	return description % args
+	if tags.has('unified_desc') or args.empty():
+		return description
+	else:
+		calculate_args()
+		return description % args
 
 func get_icon():
 	return input_handler.loadimage(icon, 'icons')
 
-func get_name():
-	return tr(name)
 
 func calculate_args():
 	args.clear()
 	if template.has('args'):
 		for arg in template.args:
-			match arg.obj:
-				'self':
-					args.push_back(self_args[arg.param])
-					pass
+			match arg:
 				'parent':
-					var par = effects_pool.get_effect_by_id(parent)
-					args.push_back(par.get(arg.param))
-					pass
+					args.push_back(parent.get(arg.param))
 				'template':
 					args.push_back(template[arg.param])
 				'parent_args':
-					var par
-					par = effects_pool.get_effect_by_id(parent)
-					args.push_back(par.get_arg(int(arg.param)))
+					args.push_back(parent.get_arg(int(arg.param)))
+				'duration':
+					args.push_back(parent.remains)
+				'stacks':
+					args.push_back(parent.get_active_effects().size())
 		pass
 
 func get_duration():
@@ -77,9 +70,6 @@ func deserialize(tmp):
 	self_args = tmp['args'].duplicate()
 	description = tr(template.description)
 	icon = template.icon
-	template_name = template.t_name
-	if template.has('name'): name = template.name
-	else: name = template_name
+	if template.has('tags'): 
+		tags = template.tags.duplicate(true)
 
-func set_limit(val):
-	template.limit = val

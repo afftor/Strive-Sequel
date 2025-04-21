@@ -582,7 +582,6 @@ func test_mode():
 		var item = globals.CreateGearItem("strapon", {})
 		globals.AddItemToInventory(item)
 		character.equip(item)
-	#	character.get_stat('pregnancy', true).duration = 2
 		character.set_stat('charm', 100)
 		character.set_stat('wits', 100)
 	#	character.add_stat('wits', 100)
@@ -595,7 +594,7 @@ func test_mode():
 		character.unlock_class("rogue")
 		character.set_stat('height', 'average')
 		character.xp_module.base_exp = 1500
-		character.add_stat('abil_exp', 1500)
+#		character.add_stat('abil_exp', 1500)
 		# character.unlock_class("ruler")
 		# character.unlock_claiss("watchdog")
 		# character.unlock_class("director")
@@ -605,8 +604,8 @@ func test_mode():
 		# character.unlock_class("scholar")
 		# character.travel.location = 'L4'
 		character.travel.area = 'plains'
-		character.add_stat('resist_normal', 50)
-		character.add_stat('damage_reduction', 50)
+#		character.add_stat('resist_normal', 50)
+#		character.add_stat('damage_reduction', 50)
 		character.add_stat('mastery_point_universal', 90)
 		character.set_stat('personality_kind', 100)
 		character.set_stat('personality_bold', 50)
@@ -642,16 +641,16 @@ func test_mode():
 		character.set_stat('food_hate', ["grain"])
 		character.set_stat('lactation', true)
 		#character.unlock_class("worker")
-		character.unlock_class("necromancer")
-		#character.hp = 1
+#		character.unlock_class("necromancer")
+		character.hp = 1
 	#		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:
 			if Skilldata.Skilllist[i].type != 'social':
 				continue
-			character.skills.social_skills.append(i)
+			character.learn_skill(i)
 		character.is_players_character = true
 #		globals.impregnate(character, character)
-		character.get_stat('pregnancy', true).duration = 2
+		character.set_stat('pregnancy_duration', 2)
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
 		character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
 		character.create('Centaur', 'male', 'random')
@@ -698,10 +697,8 @@ func test_mode():
 		character.unlock_class("apprentice")
 		character.get_random_traits()
 		character.is_players_character = true
-
 		ResourceScripts.game_globals.date = 7
 		ResourceScripts.game_globals.hour = 1
-
 #		character.set_stat('obedience', 50)
 		character.unlock_class("apprentice")
 		#character.fear = 25
@@ -714,18 +711,7 @@ func test_mode():
 		character.set_stat('physics', 100)
 		character.set_stat('wits', 100)
 		character.set_stat('consent', 5)
-		#globals.impregnate(ResourceScripts.game_party.get_master(), character)
-		#character.get_stat('pregnancy', true).duration = 2
 		var text = ''
-#		for i in races.tasklist.values():
-#			for k in i.production.values():
-#				var value = character.get_progress_task(i.code, k.code, true) / k.progress_per_item
-#				if Items.materiallist.has(k.item):
-#					pass
-#
-#				else:
-#					pass
-
 		var base_price = 0
 		var output_price = 0
 		for i in Items.recipes.values():
@@ -764,17 +750,17 @@ func test_mode():
 #		character.add_stat('loyalty', 95)
 		yield(get_tree(),'idle_frame')
 		character.xp_module.base_exp = 1000
-		character.mp = 10
-		character.hp = 95
+#		character.mp = 10
+
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
 		character.add_stat('lust', 100)
 		character.set_stat("tame_factor", 1)
 		#character.unlock_class("dancer")
 		character.is_players_character = true
-		character.statlist.tattoo.face = 'ink_makeup'
+		character.set_stat('tattoo_face', 'ink_makeup')
 #		character.affect_char({type = 'set_availability', value = false})
-		
+
 		#common_effects = [{code = 'affect_unique_character', name = 'daisy', type = 'remove_trait', value = 'coward'},
 		#variables.no_obedience_drain = true
 		globals.common_effects(
@@ -786,7 +772,7 @@ func test_mode():
 					args = [
 #						{code = 'loyalty', value = 150, operant = "+"},
 						{code = 'consent', value = 5, operant = "+"},
-						{code = 'price', value = 3000, operant = "+"},
+#						{code = 'price', value = 3000, operant = "+"},
 						{code = 'sexuals_factor', value = 2, operant = "+"},
 						{code = 'growth_factor', value = 2, operant = "+"},
 						{code = 'sex_skills_oral', operant = "+", value = 100},
@@ -901,16 +887,16 @@ func test_mode():
 		tmp.anal = 90
 		tmp.petting = 100
 		#character.set_stat('sex_skills', tmp)
-#		yield(get_tree(),'idle_frame')
-#		if gui_controller.exploration == null:
-#			gui_controller.exploration = input_handler.get_spec_node(input_handler.NODE_EXPLORATION, null, false, false)
+		yield(get_tree(),'idle_frame')
+		if gui_controller.exploration == null:
+			gui_controller.exploration = input_handler.get_spec_node(input_handler.NODE_EXPLORATION, null, false, false)
 #		gui_controller.open_exploration('beastkin_capital')
 #		gui_controller.mansion.hide()
 #		gui_controller.exploration.open_city('beastkin_capital')
 #		gui_controller.exploration.show()
 #		gui_controller.nav_panel.select_location('beastkin_capital')
 #		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
-#		input_handler.active_area = ResourceScripts.game_world.areas.plains
+		input_handler.active_area = ResourceScripts.game_world.areas.plains
 		#globals.common_effects([{code = 'update_city'},{code = 'make_quest_location', value = 'quest_erlen_location'}, ])
 		#for i in ResourceScripts.game_world.areas['plains'].locations.values():
 			#if i.classname == 'settlement_plains1'.to_upper(): # SETTLEMENT_PLAINS1
@@ -927,12 +913,12 @@ func test_mode():
 #		ResourceScripts.game_res.materials.meat = 0
 #		globals.common_effects([{code = 'progress_quest', value = 'election_global_quest', stage = 'stage1'}])
 
-		
+
 		#globals.common_effects([{code = 'progress_quest', value = 'daisy_clothes', stage = 'stage1'} ])
 		ResourceScripts.game_progress.decisions.append("bracelet_found")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
-		input_handler.interactive_message('heleviel_mansion_1', '', {})
+#		input_handler.interactive_message('heleviel_mansion_1', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)

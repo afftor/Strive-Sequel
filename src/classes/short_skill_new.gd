@@ -200,7 +200,6 @@ func apply_effect(eff):
 	var obj = effects_pool.get_effect_by_id(eff)
 	match obj.template.type:
 		'trigger':
-			obj.set_args('skill', self)
 			effects.push_back(obj.id)
 			obj.apply()
 		'oneshot':
@@ -213,11 +212,10 @@ func remove_effects():
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
 
-func process_event(ev):
+func process_event(ev, data = {}):
 	for e in effects:
 		var eff = effects_pool.get_effect_by_id(e)
-		eff.set_args('skill', self)
-		eff.process_event(ev)
+		eff.process_act(ev, data)
 
 func resolve_value(check_m):
 	for v in value: v.resolve_value(check_m)

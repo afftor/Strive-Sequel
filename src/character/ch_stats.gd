@@ -1,67 +1,74 @@
 extends Reference
 
-var statlist = Statlist_init.template.duplicate(true) setget , default_stats_get
-var bonuses = {}
-var traits = []
+var parent: WeakRef = null
+
+var statlist = Statlist_init.template_direct.duplicate(true) 
+var exterior = Statlist_init.sex_binded_exterior.duplicate(true) 
+var exterior_alt = {}
+var sexexp = Statlist_init.sexexp.duplicate(true)
+var sex_skills = Statlist_init.sex_skills.duplicate(true)
+var metrics = Statlist_init.metrics.duplicate(true)
+var piercing = Statlist_init.piercing.duplicate(true)
+var armor_color = Statlist_init.armor_color.duplicate(true)
 var sex_traits = {}
 var negative_sex_traits = {}
 var unlocked_sex_traits = []
-var body_upgrades = []
-var parent: WeakRef = null
-var reported_pregnancy = false
-
-var alternate_exterior = {}
-
+var pregnancy = Statlist_init.pregnancy.duplicate()
+var tattoo = Statlist_init.tattoo.duplicate()
 
 func _init():
-	for i in variables.resists_list:
-		statlist.resists[i] = 0
-	for i in variables.resists_damage_list:
-		statlist.resist_damage[i] = 0
-	for i in variables.status_list:
-		statlist.status_resists[i] = 0
-	for i in variables.damage_mods_list:
-		statlist.damage_mods[i] = 1.0
-		statlist.manacost_mods[i] = 1.0
+	pass
 
 
 func deserialize(savedict):
-	if savedict.has('bonuses'): bonuses = savedict.bonuses.duplicate()
-	if savedict.has('traits'): traits = savedict.traits.duplicate()
-	if savedict.has('body_upgrades'): body_upgrades = savedict.body_upgrades.duplicate()
-	if savedict.has('sex_traits'): sex_traits = savedict.sex_traits.duplicate()
-	if savedict.has('negative_sex_traits'): negative_sex_traits = savedict.negative_sex_traits.duplicate()
-	if savedict.has('unlocked_sex_traits'): unlocked_sex_traits = savedict.unlocked_sex_traits.duplicate()
-	if savedict.has('reported_pregnancy'): reported_pregnancy = savedict.reported_pregnancy
-	if savedict.has('tattoo'): tattoo = savedict.tattoo.duplicate()
-	if !savedict.has('statlist'): return
+	sex_traits = savedict.sex_traits.duplicate()
+	negative_sex_traits = savedict.negative_sex_traits.duplicate()
+	unlocked_sex_traits = savedict.unlocked_sex_traits.duplicate()
+	pregnancy = savedict.pregnancy.duplicate()
+	tattoo = savedict.tattoo.duplicate()
 	for stat in statlist:
 		if savedict.statlist.has(stat):
 			statlist[stat] = savedict.statlist[stat]
-#			if stat.ends_with("_factor") or stat in ['physics', 'wits', 'charm']:
-#				if statlist[stat] > 6: statlist[stat] = 6
-#				custom_stats_set(stat, statlist[stat])
-	for stat in ['physics_factor', 'magic_factor', 'wits_factor', 'timid_factor', 'tame_factor', 'sexuals_factor', 'charm_factor']:
-		custom_stats_set(stat, statlist[stat])
-	for stat in  ['physics', 'wits', 'charm']:
-		custom_stats_set(stat, statlist[stat])
+	for stat in ['physics_factor', 'magic_factor', 'wits_factor', 'authority_factor', 'tame_factor', 'sexuals_factor', 'charm_factor']:
+		update_stat(stat, statlist[stat], 'set')
+	for stat in exterior:
+		if savedict.exterior.has(stat):
+			exterior[stat] = savedict.exterior[stat]
+		elif savedict.statlist.has(stat):
+			exterior[stat] = savedict.statlist[stat]
+	if !savedict.exterior_alt.empty():
+		exterior_alt = exterior.duplicate(true)
+		for stat in exterior_alt:
+			if savedict.exterior_alt.has(stat):
+				exterior_alt[stat] = savedict.exterior_alt[stat]
+			elif savedict.statlist.has(stat):
+				exterior_alt[stat] = savedict.statlist[stat]
+	for stat in sexexp:
+		if savedict.sexexp.has(stat):
+			sexexp[stat] = savedict.sexexp[stat].duplicate(true)
+	for stat in sex_skills:
+		if savedict.sex_skills.has(stat):
+			sex_skills[stat] = savedict.sex_skills[stat] 
+	for stat in metrics:
+		if savedict.metrics.has(stat):
+			if savedict.metrics[stat] is Array:
+				metrics[stat] = savedict.metrics[stat].duplicate(true)
+			else:
+				metrics[stat] = savedict.metrics[stat] 
+	for stat in piercing:
+		if savedict.piercing.has(stat):
+			piercing[stat] = savedict.piercing[stat]
+	for stat in armor_color:
+		if savedict.armor_color.has(stat):
+			armor_color[stat] = savedict.armor_color[stat]
 
 
 func fix_import():
 	if statlist.unique != null and !ResourceScripts.game_world.easter_egg_characters_acquired.has(statlist.unique):
 		ResourceScripts.game_world.easter_egg_characters_acquired.append(statlist.unique)
-	
 
 
 func fix_serialize():
-	for tr in traits.duplicate():
-		if Traitdata.traits.has(tr): 
-			continue
-		traits.erase(tr)
-		var arr = parent.get_ref().find_eff_by_trait(tr)
-		for e in arr:
-			var eff = effects_pool.get_effect_by_id(e)
-			eff.remove()
 	for tr in sex_traits.duplicate():
 		if Traitdata.sex_traits.has(tr): 
 			continue
@@ -70,277 +77,108 @@ func fix_serialize():
 		if Traitdata.sex_traits.has(tr): 
 			continue
 		unlocked_sex_traits.erase(tr)
-	for metr in Statlist_init.template.metrics:
-		if statlist.metrics.has(metr):
-			continue
-		statlist.metrics[metr] = Statlist_init.template.metrics[metr]
 	for st in ['personality_bold', 'personality_kind',]:
 		statlist[st] = int(statlist[st])
-	if statlist.slave_class in ['slave']:
-		set_slave_category('slave1')
 	statlist.consent = min(get_stat('consent'), 6)
-	bonuses.erase('consent_add')
-	bonuses.erase('consent_mul')
-	for st in ['chg_strength','chg_dexterity','chg_persuasion','chg_wisdom']:
-		bonuses.erase(st + '_add')
 	if parent.get_ref().is_master():
 		statlist.consent = 100
 
 
 func swap_alternate_exterior(): #only on sex change due to current implementation of recreate method
-	var tmp = {}
-	for st in variables.exterior_stats:
-		tmp[st] = statlist[st]
-	if alternate_exterior.empty():
+	var tmp = exterior
+	if exterior_alt.empty():
+		exterior_alt = tmp.duplicate(true)
 		recreate_exterior()
 	else:
-		for st in alternate_exterior:
-			statlist[st] = alternate_exterior[st]
-	alternate_exterior = tmp
+		exterior = exterior_alt
+		exterior_alt = tmp
 
 
 func recreate_exterior(): #only on sex change
 	var sex = statlist.sex
 	var data = ResourceScripts.descriptions.bodypartsdata.sex[sex].bodychanges
 	for line in data:
-		if !line.code in (variables.exterior_stats + variables.exterior_stats_composite):
+		if !line.code in (exterior.keys() + Statlist_init.exterior_stats_composite):
 			continue
 		if !parent.get_ref().checkreqs(line.reqs):
 			continue
 		var value = input_handler.weightedrandom(line.value)
-		if line.code in variables.exterior_stats:
-			statlist[line.code] = value
+		if line.code in exterior:
+			exterior[line.code] = value
 		else:
-			set_stat(line.code, value)
+			update_stat(line.code, value)
 
-
-func default_stats_get():
-	return statlist.duplicate()
-
-
-func custom_stats_set(st, value):
-#	statlist = value.duplicate(true)
-#	if value.has(''):
-#		statlist[''] =
-#	for st in value:
-	if st == 'personality':
-		set_personality(value)
+#getters
+func get_stat(stat):
+	var data = statdata.statdata[stat]
+	if !data.direct:
+		print ("error: wrong stat data - %s is not direct" % stat)
 		return
-	if st in ['hair_base_color_1', 'hair_base_color_2' ]:
-		statlist[st] = value
-		statlist[st.replace('base', 'fringe')] = value
-	if st.begins_with('metrics_'):
-		var stat = st.trim_prefix('metrics_')
-		statlist.metrics[stat] = value
-		return
-	if st.begins_with("sex_skills_"):
-		st = st.trim_prefix("sex_skills_")
-		value = min(value, 100.0)
-		statlist.sex_skills[st] = value
-		return
-	elif st in ['physics', 'wits', 'charm']: #not sure about sexuals since its getter has no reference to original value
-#			if value.has(st):
-#		statlist[st] = min(value, statlist[st + '_factor'] * 20)
-		statlist[st] = min(value, get_stat(st + '_cap'))
-	else: statlist[st] = value
-#	if st in ['physics', 'magic', 'tame', 'timid', 'growth', 'wits', 'charm', 'sexuals']:
-	if st.ends_with('_factor'):
-#		if value.has(st+'_factor'):
-		statlist[st] = clamp(statlist[st], variables.minimum_factor_value, variables.maximum_factor_value)
-	if st.begins_with('chg_'):
-		statlist[st] = int(max(0, statlist[st]))
-	if st == 'lust':
-		statlist.lust = clamp(value, 0, get_stat('lustmax'))
-	if st == 'name':
-		if ResourceScripts.game_party.relativesdata.has(parent.get_ref().id):
-			ResourceScripts.game_party.relativesdata[parent.get_ref().id].name = get_full_name()
-	if st in ['hair_length','hair_style']: #legacy stub
-		statlist[st] = value
-		var tdata = get_hairs_data()
-		for h_stat in ['hair_base', 'hair_assist', 'hair_back', 'hair_fringe', 'hair_base_length', 'hair_fringe_length', 'hair_back_length', 'hair_assist_length',]:
-			statlist[h_stat] = tdata[h_stat]
-	if st in ['hair_color']: #legacy stub
-		statlist[st] = value
-		var tdata = get_hairs_data()
-		for h_stat in ['hair_base_color_1', 'hair_fringe_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 'hair_fringe_color_2', 'hair_back_color_2', 'hair_assist_color_2']:
-			statlist[h_stat] = tdata[h_stat]
-	if st == 'skin':
-		match value: #feel free to change values
-			'pale':
-				statlist.body_color_skin = 'human1'
-			'grey':
-				statlist.body_color_skin = 'grey2'
-			'fair':
-				statlist.body_color_skin = 'human3'
-			'olive':
-				statlist.body_color_skin = 'human4'
-			'tan':
-				statlist.body_color_skin = 'human4'
-			'brown':
-				statlist.body_color_skin = 'human5'
-			'dark':
-				statlist.body_color_skin = 'human5'
-			'slime':
-				statlist.body_color_skin = 'green1'
-			'blue':
-				statlist.body_color_skin = 'blue3'
-			'paleblue':
-				statlist.body_color_skin = 'blue1'
-			'green':
-				statlist.body_color_skin = 'green3'
-			'red':
-				statlist.body_color_skin = 'red3'
-			'purple':
-				statlist.body_color_skin = 'purple3'
-			'teal':
-				statlist.body_color_skin = 'blue2'
-			_:
-				statlist.body_color_skin = 'human2'
-	if st.begins_with('armor_color_'):
-		set_stat('portrait_update', true)
-		var partname = st.trim_prefix('armor_color_')
-		statlist.armor_color[partname] = value
-	
-		
+	var tres
+	if data.tags.has('custom_getter'):
+		tres = call('get_' + stat)
+	elif data.tags.has('obsolete'):
+		tres = get_stat_old(stat)
+	else:
+		var container = statlist
+		if data.has('container'):
+			match data.container:
+				'exterior':
+					container = exterior
+				'sexexp':
+					print ("warning - accessing sexexp the wrong way")
+					container = sexexp
+				'sex_skills':
+					container = sex_skills
+				'metrics':
+					container = metrics
+				'piercing':
+					container = piercing
+				'armor_color':
+					container = armor_color
+				'pregnancy':
+					container = pregnancy
+				'tattoo':
+					container = tattoo
+		if !container.has(stat):
+			print ("error: no %s in container" % stat)
+			return null
+		tres = container[stat]
+	if data.tags.has('cap_up'):
+		var stat_cap
+		if data.cap_up is String:
+			stat_cap = parent.get_ref().get_stat(data.cap_up)
+		else:
+			stat_cap = data.cap_up
+		if tres > stat_cap:
+			tres = stat_cap
+			update_stat(stat, tres)
+	if data.tags.has('cap_low'):
+		var stat_cap
+		if data.cap_low is String:
+			stat_cap = parent.get_ref().get_stat(data.cap_low)
+		else:
+			stat_cap = data.cap_low
+		if tres < stat_cap:
+			tres = stat_cap
+			update_stat(stat, tres)
+	if data.tags.has('integer'):
+		tres = int(tres)
+	return tres
 
 
-func custom_stats_get(stat):
-	if stat == 'sexuals':
-		var array = statlist.sex_skills.values()
-		array.sort()
-		array.invert()
-		return (array[0] + array[1] + array[2])/3
-	if stat == 'hpmax':
-		var tres = statlist.hpmax
-		if statlist.is_person == true:
-			tres = variables.basic_max_hp
-		if bonuses.has('hpmax_add'): tres += bonuses.hpmax_add
-		if statlist.race != '':
-			var race = statlist.race
-			if variables.new_stat_bonuses_syntax == true:
-				if bonuses.has('hpfactor'): tres *= bonuses['hpfactor']
-			else:
-				if races.racelist[race].race_bonus.has('hpfactor'):tres *= races.racelist[race].race_bonus.hpfactor
-		if bonuses.has('hp_flat_bonus'): tres += bonuses.hp_flat_bonus
-		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 5
-		if bonuses.has('hpmax_mul'): tres *= bonuses.hpmax_mul
-		return tres
-	if stat == 'mpmax':
-		var tres = variables.basic_max_mp + variables.max_mp_per_magic_factor * statlist.magic_factor
-		if bonuses.has('mpmax_add'): tres += bonuses.mpmax_add
-		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 5
-		if bonuses.has('mpmax_mul'): tres *= bonuses.mpmax_mul
-		return tres
-	if stat == 'damage_reduction':
-		var tres = statlist.damage_reduction
-		if bonuses.has('damage_reduction_add'): tres += bonuses.damage_reduction_add
-		if bonuses.has('damage_reduction_mul'): tres *= bonuses.damage_reduction_mul
-		return min(tres, 100)
-	if stat == 'upgrade_points_total':
-		var tres = custom_stats_get('growth_factor') * 25
-		if bonuses.has('upgrade_points_total_add'): tres += bonuses.upgrade_points_total_add
-		if bonuses.has('upgrade_points_total_mul'): tres *= bonuses.upgrade_points_total_mul
-		return tres
-	if stat == 'lusttick':
-		var tres = variables.basic_lust_per_tick
-		if bonuses.has('lusttick_add'): tres += bonuses.lusttick_add
-		if bonuses.has('lusttick_mul'): tres *= bonuses.lusttick_mul
-		return tres
-	if stat in ['physics', 'wits', 'charm']:
-		var tres = min(statlist[stat], custom_stats_get(stat + '_cap'))
-		statlist[stat] = tres
-		return tres
-	if stat.ends_with('_cap') and stat.trim_suffix('_cap') in ['physics', 'wits', 'charm']:
-		var tres = variables.basestat_cap
-		if bonuses.has(stat + '_add'): tres += bonuses[stat + '_add']
-		if bonuses.has(stat + '_mul'): tres *= bonuses[stat + '_mul']
-		return tres
-	if stat.ends_with('_bonus'):
-		var tres = statlist[stat]
-		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 5
-		return tres
-	if stat in ['matk', 'atk']:
-		var tres = statlist[stat]
-		if bonuses.has(stat + '_add'): tres += bonuses[stat + '_add']
-		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 3
-		if bonuses.has(stat + '_mul'): tres *= bonuses[stat + '_mul']
-		return max(5.0, tres)
-	if stat in ['armor', 'mdef']:
-		var tres = statlist[stat]
-		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 2
-		return tres
-	if stat in ['speed', 'hitrate', 'evasion']:
-		var tres = statlist[stat]
-		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 4
-		if stat == 'evasion' and has_status('ninja'): #internal versions, mb wrong
-			tres += get_stat('mdef')
-		return tres
-	if stat in ['productivity']:
-		var tres = statlist[stat]
-		tres += min(statlist.growth_factor - 1, parent.get_ref().get_prof_number()) * 5
-		return tres
-	if stat == 'lustmax':
-		var tres = 25 + statlist.sexuals_factor * 25
-		if check_trait('frigid'):
-			tres /= 2
-		return tres
-	if stat == 'lust':
-		var tres = clamp(statlist.lust, 0, custom_stats_get('lustmax'))
-		statlist.lust = tres
-		return tres
-	if stat == 'trainee_amount':
-		var tres = statlist.trainee_amount
-		if bonuses.has('trainee_amount_add'):
-			tres += bonuses.trainee_amount_add
-		tres += int(statlist.timid_factor) / 2
-		return tres
-	if stat == 'resists':
-		var tres = statlist.resists.duplicate()
-		for r in variables.resists_list:
-			if !tres.has(r): tres[r] = 0.0
-			if bonuses.has('resist_' + r + '_add'): tres[r] += bonuses['resist_' + r + '_add']
-			if bonuses.has('resist_' + r + '_mul'): tres[r] *= bonuses['resist_' + r + '_mul']
-		return tres
-	if stat == 'resist_damage':
-		var tres = statlist.resist_damage.duplicate()
-		for r in variables.resists_damage_list:
-			if !tres.has(r): tres[r] = 0.0
-			if bonuses.has('resist_' + r + '_add'): tres[r] += bonuses['resist_' + r + '_add']
-			if bonuses.has('resist_' + r + '_mul'): tres[r] *= bonuses['resist_' + r + '_mul']
-			if bonuses.has('resist_damage_' + r + '_add'): tres[r] += bonuses['resist_damage_' + r + '_add']
-			if bonuses.has('resist_damage_' + r + '_mul'): tres[r] *= bonuses['resist_damage_' + r + '_mul']
-		return tres
-	if stat == 'status_resists':
-		var tres = statlist.status_resists.duplicate()
-		for r in variables.status_list:
-			if !tres.has(r): tres[r] = 0.0
-			if bonuses.has('resist_' + r + '_add'): tres[r] += bonuses['resist_' + r + '_add']
-			if bonuses.has('resist_' + r + '_mul'): tres[r] *= bonuses['resist_' + r + '_mul']
-			if bonuses.has('resist_status_' + r + '_add'): tres[r] += bonuses['resist_status_' + r + '_add']
-			if bonuses.has('resist_status_' + r + '_mul'): tres[r] *= bonuses['resist_status_' + r + '_mul']
-		return tres
-	if stat == 'damage_mods':
-		var tres = statlist.damage_mods.duplicate()
-		for r in variables.damage_mods_list:
-			if !tres.has(r): tres[r] = 1.0
-			if bonuses.has('damage_mod_' + r + '_add'): tres[r] += bonuses['damage_mod_' + r + '_add']
-			if bonuses.has('damage_mod_' + r + '_mul'): tres[r] *= bonuses['damage_mod_' + r + '_mul']
-		return tres
-	if stat == 'manacost_mods':
-		var tres = statlist.manacost_mods.duplicate()
-		for r in variables.damage_mods_list:
-			if !tres.has(r): tres[r] = 1.0
-			if bonuses.has('manacost_mod_' + r + '_add'): tres[r] += bonuses['manacost_mod_' + r + '_add']
-			if bonuses.has('manacost_mod_' + r + '_mul'): tres[r] *= bonuses['manacost_mod_' + r + '_mul']
-		return tres
-	return statlist[stat]
+func get_consent():
+	var res = statlist.consent
+	if parent.get_ref().has_status('alcohol'):
+		res += 1
+	return res
 
 
-func predict_preg_time():
-	if statlist.pregnancy.duration > 0 && statlist.pregnancy.baby != null:
-		return statlist.pregnancy.duration
-	else: 
-		return null
+func get_sexuals():
+	var array = sex_skills.values()
+	array.sort()
+	array.invert()
+	return (array[0] + array[1] + array[2])/3
 
 
 func get_short_name():
@@ -361,11 +199,306 @@ func get_full_name():
 		text += " " + statlist.surname
 	return tr(text)
 
-func set_stat(statname, value): #for direct access only
-#	 self.statlist[stat] = value
-	custom_stats_set(statname, value)
+
+func get_personality():
+	if abs(statlist.personality_bold) <= 30 and abs(statlist.personality_kind) <= 30:
+		return 'neutral'
+	if abs(statlist.personality_bold) > abs(statlist.personality_kind):
+		if statlist.personality_bold > 0:
+			return 'bold'
+		else:
+			return 'shy'
+	else:
+		if statlist.personality_kind > 0:
+			return 'kind'
+		else:
+			return 'serious'
+
+
+func get_pose():
+	var st = get_stat('personality')
+	if st == 'neutral':
+		st = get_stat('old_personality')
+	match st:
+		'shy':
+			match get_stat('sex'):
+				'male':
+					return 'pose5'
+				'female', 'futa':
+					return 'shy'
+		'kind':
+			match get_stat('sex'):
+				'male':
+					return 'pose5'
+				'female', 'futa':
+					return 'kind'
+		'serious':
+			match get_stat('sex'):
+				'male':
+					return 'pose6'
+				'female', 'futa':
+					return 'pose4'
+		'bold':
+			match get_stat('sex'):
+				'male':
+					return 'pose6'
+				'female', 'futa':
+					return 'bold'
+	return 'default' #temporal stub
+
+
+func get_hair_facial_color():
+	if statlist.hair_facial_color != '':
+		return statlist.hair_facial_color
+	else:
+		return get_stat('hair_base_color_1')
+
+
+func get_body_color_ears():
+	match statlist.ears: 
+		'cat', 'fox', 'tanuki', 'wolf', 'mouse', 'bunny', 'bunny_standing', 'bunny_dropping', 'cow':
+			var res = get_hairs_data().hair_base_color_1
+			if statlist.hair_base_color_1 != "":
+				res = statlist.hair_base_color_1
+			res = res.replace('_', '')
+			if statlist.skin_coverage.begins_with('fur'):
+				match statlist.skin_coverage:
+					'fur_orange':
+						return 'orange3'
+					'fur_orange_white':
+						return 'orange2'
+					'fur_striped':
+						return 'orange3'
+					'fur_white':
+						return 'white2'
+					'fur_grey':
+						return 'white3'
+					'fur_brown':
+						return 'brown3'
+					'fur_black':
+						return 'dark3'
+			return res
+		'fish': 
+			return 'blue1'
+		_: 
+			return 'yellow2'
+
+
+func get_body_color_animal(): #2move to bodychanges
+	if statlist.body_color_animal != "":
+		return statlist.body_color_animal
+	match statlist.body_lower: #feel free to change values and stat
+		'horse':
+			return 'red3'
+		'avian':
+			return 'blue1'
+		'snake':
+			return 'green2'
+		'spider':
+			return 'pink3'
+		'tentacle':
+			return 'purple3'
+		'avian':
+			return 'blue3'
+		_:
+			return 'white2'
+
+#setters
+func update_stat(stat, value, operant = 'set'):
+	if !statdata.check_compatibility_operant(stat, operant):
+		print("error: wrong operant %s for %s" % [operant, stat])
+		return
+	var data = statdata.statdata[stat]
+	if !data.direct:
+		print ("error: wrong stat data - %s is not direct" % stat)
+		return
+	parent.get_ref().reset_rebuild()
+	if data.tags.has('custom_setter'):
+		call('update_' + stat, value, operant)
+	elif data.tags.has('obsolete'):
+		set_hair_stat(stat, value)
+	else:
+		var container = statlist
+		if data.has('container'):
+			match data.container:
+				'exterior':
+					container = exterior
+				'sexexp':
+					print ("warning - accessing sexexp the wrong way")
+					container = sexexp
+				'sex_skills':
+					container = sex_skills
+				'metrics':
+					container = metrics
+				'piercing':
+					container = piercing
+				'armor_color':
+					container = armor_color
+				'pregnancy':
+					container = pregnancy
+				'tattoo':
+					container = tattoo
+		if !container.has(stat):
+			print ("error: no %s in container" % stat)
+			return 
+		
+		match operant:
+			'set':
+				if value is Array:
+					container[stat] = value.duplicate(true)
+				elif value is Dictionary:
+					container[stat] = value.duplicate(true)
+				else:
+					container[stat] = value
+			'add':
+				container[stat] += value
+			'mul':
+				container[stat] *= value
+			'add_part':
+				container[stat] *= (1.0 + value)
+			'append':
+				container[stat].push_back(value)
+			'remove':
+				container[stat].erase(value)
+		if data.tags.has('update_portrait'):
+			statlist.portrait_update = true
+		if data.tags.has('cap_up'):
+			var stat_cap
+			if data.cap_up is String:
+				stat_cap = parent.get_ref().get_stat(data.cap_up)
+			else:
+				stat_cap = data.cap_up
+			if value > stat_cap:
+				value = stat_cap
+				container[stat] = value
+		if data.tags.has('cap_low'):
+			var stat_cap
+			if data.cap_low is String:
+				stat_cap = parent.get_ref().get_stat(data.cap_low)
+			else:
+				stat_cap = data.cap_low
+			if value < stat_cap:
+				value = stat_cap
+				container[stat] = value
+	if stat.begins_with('hair_'): #compat
+		set_hair_stat(stat, value)
+	parent.get_ref().reset_rebuild()
+
+
+func update_personality(value):
+	match value:
+		'neutral':
+			statlist.personality_bold = globals.rng.randi_range(-10, 10)
+			statlist.personality_kind = globals.rng.randi_range(-10, 10)
+		'bold':
+			statlist.personality_bold = globals.rng.randi_range(65, 85)
+			statlist.personality_kind = globals.rng.randi_range(-10, 10)
+		'shy':
+			statlist.personality_bold = -globals.rng.randi_range(65, 85)
+			statlist.personality_kind = globals.rng.randi_range(-10, 10)
+		'kind':
+			statlist.personality_bold = globals.rng.randi_range(-10, 10)
+			statlist.personality_kind = globals.rng.randi_range(65, 85)
+		'serious':
+			statlist.personality_bold = globals.rng.randi_range(-10, 10)
+			statlist.personality_kind = -globals.rng.randi_range(65, 85)
+	check_old_personality()
+	parent.get_ref().update_prt()
+	parent.get_ref().reset_rebuild()
+
+
+func update_skin(value, operant = 'set'):
+	match value: #feel free to change values
+		'pale':
+			statlist.body_color_skin = 'human1'
+		'grey':
+			statlist.body_color_skin = 'grey2'
+		'fair':
+			statlist.body_color_skin = 'human3'
+		'olive':
+			statlist.body_color_skin = 'human4'
+		'tan':
+			statlist.body_color_skin = 'human4'
+		'brown':
+			statlist.body_color_skin = 'human5'
+		'dark':
+			statlist.body_color_skin = 'human5'
+		'slime':
+			statlist.body_color_skin = 'green1'
+		'blue':
+			statlist.body_color_skin = 'blue3'
+		'paleblue':
+			statlist.body_color_skin = 'blue1'
+		'green':
+			statlist.body_color_skin = 'green3'
+		'red':
+			statlist.body_color_skin = 'red3'
+		'purple':
+			statlist.body_color_skin = 'purple3'
+		'teal':
+			statlist.body_color_skin = 'blue2'
+		_:
+			statlist.body_color_skin = 'human2'
+
+
+func update_name(value, operant = 'set'):
+	statlist.name = value
+	if ResourceScripts.game_party.relativesdata.has(parent.get_ref().id):
+		ResourceScripts.game_party.relativesdata[parent.get_ref().id].name = get_full_name()
+	parent.get_ref().reset_rebuild()
+
+#other stuff
+func check_old_personality():
+	if get_personality() != 'neutral':
+		statlist.old_personality = get_personality()
+
+
+func predict_preg_time():
+	if pregnancy.pregnancy_duration > 0 && pregnancy.pregnancy_baby != null:
+		return pregnancy.pregnancy_duration
+	else: 
+		return null
+
+
+func get_stat_gain_rate(statname): #basestats only
+	var res = 1
+	if statlist[statname] >= 90: res = 0.25
+	elif statlist[statname] >= 60: res = 0.5
+	elif statlist[statname] >= 40: res = 0.75
+	
+	res *= variables.basestats_factor_mod[get_stat(statname + '_factor')]
+	return res
+
+
+func has_status(status):
+	for tr in sex_traits:
+		var traitdata = Traitdata.sex_traits[tr]
+		if traitdata.has('tags') and traitdata.tags.has(status):
+			return true
+	for tr in negative_sex_traits:
+		var traitdata = Traitdata.sex_traits[tr]
+		if traitdata.has('tags') and traitdata.tags.has(status):
+			return true
+	return false
+
 
 #compat getter - stub
+func set_hair_stat(st, value):
+	if st in ['hair_base_color_1', 'hair_base_color_2' ]:
+		statlist[st] = value
+		statlist[st.replace('base', 'fringe')] = value
+	if st in ['hair_length','hair_style']: #legacy stub
+		statlist[st] = value
+		var tdata = get_hairs_data()
+		for h_stat in ['hair_base', 'hair_assist', 'hair_back', 'hair_fringe', 'hair_base_length', 'hair_fringe_length', 'hair_back_length', 'hair_assist_length',]:
+			statlist[h_stat] = tdata[h_stat]
+	if st in ['hair_color']: #legacy stub
+		statlist[st] = value
+		var tdata = get_hairs_data()
+		for h_stat in ['hair_base_color_1', 'hair_fringe_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 'hair_fringe_color_2', 'hair_back_color_2', 'hair_assist_color_2']:
+			statlist[h_stat] = tdata[h_stat]
+
+
 func get_combined_hairs_data():
 	var res = {
 		hair_color ='',
@@ -379,7 +512,7 @@ func get_combined_hairs_data():
 	#i hate this conversion to older constants, but we are using those - until descriptions are totally rewritten we need this
 		'braids' :
 			res.hair_style = 'multibraids'
-			match statlist.hair_fringe_length:
+			match exterior.hair_fringe_length:
 				'long':
 					length = int(max(length, 1))
 				'middle':
@@ -388,7 +521,7 @@ func get_combined_hairs_data():
 					length = int(max(length, 1))
 		'dopple', 'lion', 'parting', 'default', 'fringe':
 			res.hair_style = 'straight'
-			match statlist.hair_fringe_length:
+			match exterior.hair_fringe_length:
 				'long':
 					length = int(max(length, 2))
 				'middle':
@@ -397,7 +530,7 @@ func get_combined_hairs_data():
 					length = int(max(length, 1))
 		'back':
 			res.hair_style = 'straight'
-			match statlist.hair_fringe_length:
+			match exterior.hair_fringe_length:
 				'long':
 					length = int(max(length, 1))
 				'middle':
@@ -406,7 +539,7 @@ func get_combined_hairs_data():
 					length = int(max(length, 1))
 		'straight' :
 			res.hair_style = 'straight'
-			match statlist.hair_fringe_length:
+			match exterior.hair_fringe_length:
 				'long':
 					length = int(max(length, 3))
 					color_parts.push_back('hair_fringe_color_2')
@@ -417,7 +550,7 @@ func get_combined_hairs_data():
 					length = int(max(length, 2))
 		'irokez':
 			res.hair_style = 'irokez'
-			match statlist.hair_fringe_length:
+			match exterior.hair_fringe_length:
 				'long':
 					length = int(max(length, 1))
 				'middle':
@@ -426,7 +559,7 @@ func get_combined_hairs_data():
 					length = int(max(length, 1))
 		'kare':
 			res.hair_style = 'kare'
-			match statlist.hair_fringe_length:
+			match exterior.hair_fringe_length:
 				'long':
 					length = int(max(length, 2))
 				'middle':
@@ -435,7 +568,7 @@ func get_combined_hairs_data():
 					length = int(max(length, 2))
 		'lamb':
 			res.hair_style = 'curved'
-			match statlist.hair_fringe_length:
+			match exterior.hair_fringe_length:
 				'long':
 					length = int(max(length, 2))
 				'middle':
@@ -444,7 +577,7 @@ func get_combined_hairs_data():
 					length = int(max(length, 2))
 		'slave':
 			res.hair_style = 'shaved'
-			match statlist.hair_fringe_length:
+			match exterior.hair_fringe_length:
 				'long':
 					length = int(max(length, 1))
 				'middle':
@@ -453,7 +586,7 @@ func get_combined_hairs_data():
 					length = int(max(length, 1))
 		'undercut':
 			res.hair_style = 'undercut'
-			match statlist.hair_fringe_length:
+			match exterior.hair_fringe_length:
 				'long':
 					length = int(max(length, 1))
 				'middle':
@@ -464,7 +597,7 @@ func get_combined_hairs_data():
 	match statlist.hair_assist:
 		'braid':
 			res.hair_style = 'braid'
-			match statlist.hair_assist_length:
+			match exterior.hair_assist_length:
 				'long':
 					length = int(max(length, 4))
 					color_parts.push_back('hair_assist_color_2')
@@ -480,7 +613,7 @@ func get_combined_hairs_data():
 		'ponytail': 
 			res.hair_style = 'ponytail'
 			color_parts.push_back('hair_assist_color_2')
-			match statlist.hair_assist_length:
+			match exterior.hair_assist_length:
 				'long':
 					length = int(max(length, 5))
 				'middle':
@@ -491,7 +624,7 @@ func get_combined_hairs_data():
 			res.hair_style = 'ponytail'
 		'twin_tails', 'twin_tails_3':
 			res.hair_style = 'twinbraids'
-			match statlist.hair_assist_length:
+			match exterior.hair_assist_length:
 				'long':
 					length = int(max(length, 3))
 					color_parts.push_back('hair_assist_color_2')
@@ -510,7 +643,7 @@ func get_combined_hairs_data():
 			length = 5
 		'double_tail', 'ponytail_long' :
 			color_parts.push_back('hair_back_color_1')
-			match statlist.hair_back_length:
+			match exterior.hair_back_length:
 				'long':
 					length = int(max(length, 5))
 				'middle':
@@ -519,7 +652,7 @@ func get_combined_hairs_data():
 					length = int(max(length, 3))
 		'twin_braids':
 			color_parts.push_back('hair_back_color_1')
-			match statlist.hair_back_length:
+			match exterior.hair_back_length:
 				'long':
 					length = int(max(length, 3))
 				'middle':
@@ -527,7 +660,7 @@ func get_combined_hairs_data():
 				'short', 'default':
 					length = int(max(length, 2))
 		'spiral', 'straight', 'wave' :
-			match statlist.hair_back_length:
+			match exterior.hair_back_length:
 				'long':
 					length = int(max(length, 3))
 				'middle':
@@ -535,7 +668,7 @@ func get_combined_hairs_data():
 				'short', 'default':
 					length = int(max(length, 2))
 		'dishevel':
-			match statlist.hair_back_length:
+			match exterior.hair_back_length:
 				'long':
 					length = int(max(length, 2))
 				'middle':
@@ -557,7 +690,6 @@ func get_combined_hairs_data():
 	res.hair_length = lenghthes[length]
 	
 	return res
-
 
 
 func get_hairs_data():
@@ -857,490 +989,56 @@ func get_hairs_data():
 func set_hairs(): #temporal solution
 	var data = get_hairs_data()
 	for stat in data:
-		statlist[stat] = data[stat]
+		update_stat(stat, data[stat])
 
 
-#bonus system
-func get_stat(statname, ref = false):
-	if statname in ['nose', 'chin']: #possibly temporal
-		if statlist.race.begins_with('Beastkin'):
-			return 'beastkin'
-	if statname == 'hair_facial_color':
-		if statlist[statname] != "":
-			return statlist[statname]
-		else:
-			return get_stat('hair_base_color_1')
-	if statname.begins_with('hair_'): #compart actions, null values should not be returned
-		if statname in ['hair_color', 'hair_style', 'hair_length']:
-			return get_combined_hairs_data()[statname]
-		if statlist[statname] != "":
-			return statlist[statname]
-		else:
-			return get_hairs_data()[statname]
-	if statname.begins_with('armor_color_'):
-		var partname = statname.trim_prefix('armor_color_')
-		statname = 'armor_color'
-		if statlist[statname] is Dictionary and statlist[statname].has(partname):
-			return statlist[statname][partname]
-		if statlist[statname] is String and statlist[statname] != "":
-			return statlist[statname]
-		return 'default'
-	if statname.begins_with('body_color'): #compart actions, null values should not be returned
-		match statname:
-			'body_color_skin':
-				if statlist[statname] != "":
-					return statlist[statname]
-				match statlist.skin: #feel free to change values
-					'pale':
-						return 'human1'
-					'grey':
-						return 'grey2'
-					'fair':
-						return 'human3'
-					'olive':
-						return 'human4'
-					'tan':
-						return 'human4'
-					'brown':
-						return 'human5'
-					'dark':
-						return 'human5'
-					'slime':
-						return 'green1'
-					'blue':
-						return 'blue3'
-					'paleblue':
-						return 'blue1'
-					'green':
-						return 'green3'
-					'red':
-						return 'red3'
-					'purple':
-						return 'purple3'
-					'teal':
-						return 'blue2'
-					_:
-						return 'human2'
-			'body_color_horns':
-				if statlist[statname] != "":
-					return statlist[statname]
-				return 'yellow3' #any can go, feel free to add stat matching
-			'body_color_wings':
-				if statlist[statname] is Dictionary and statlist[statname].has(statlist.wings):
-					return statlist[statname][statlist.wings]
-				if statlist[statname] is String and statlist[statname] != "":
-					return statlist[statname]
-				match statlist.wings: #feel free to change values and stat
-					'':
-						return 'pink1'
-					'feathered_black':
-						return 'dark2'
-					'seraph':
-						return 'white1'
-					'feathered_brown':
-						return 'dark1'
-					'fairy':
-						return 'blue1'
-					'demon':
-						return 'red3'
-					'dragon':
-						return 'yellow3'
-					'leather_black':
-						return 'dark3'
-					'leather_red':
-						return 'red1'
-					_:
-						return 'pink1'
-			'body_color_ears':
-				match statlist.ears: 
-					'cat', 'fox', 'tanuki', 'wolf', 'mouse', 'bunny', 'bunny_standing', 'bunny_dropping', 'cow':
-						var res = get_hairs_data().hair_base_color_1
-						if statlist.hair_base_color_1 != "":
-							res = statlist.hair_base_color_1
-						res = res.replace('_', '')
-						if statlist.skin_coverage.begins_with('fur'):
-							match statlist.skin_coverage:
-								'fur_orange':
-									return 'orange3'
-								'fur_orange_white':
-									return 'orange2'
-								'fur_striped':
-									return 'orange3'
-								'fur_white':
-									return 'white2'
-								'fur_grey':
-									return 'white3'
-								'fur_brown':
-									return 'brown3'
-								'fur_black':
-									return 'dark3'
-						return res
-					'fish': 
-						return 'blue1'
-					_: 
-						return 'yellow2'
-			'body_color_tail':
-				if statlist[statname] != "":
-					return statlist[statname]
-				match statlist.tail: 
-					'cat', 'fox', 'tanuki', 'wolf':
-						var res = get_hairs_data().hair_base_color_1
-						res = res.replace('_', '')
-						if statlist.skin_coverage.begins_with('fur'):
-							match statlist.skin_coverage:
-								'fur_orange':
-									return 'orange3'
-								'fur_orange_white':
-									return 'orange2'
-								'fur_striped':
-									return 'orange3'
-								'fur_white':
-									return 'white2'
-								'fur_grey':
-									return 'white3'
-								'fur_brown':
-									return 'brown3'
-								'fur_black':
-									return 'dark3'
-						return res
-					'demon':
-						return 'dark2'
-					'dragon':
-						return 'red2'
-					'mouse':
-						return 'white2'
-					'kobold':
-						return 'green2'
-					'nereid':
-						return 'blue2'
-					_: 
-						return 'yellow2'
-			'body_color_animal':
-				if statlist[statname] != "":
-					return statlist[statname]
-				match statlist.body_lower: #feel free to change values and stat
-					'horse':
-						return 'red3'
-					'avian':
-						return 'blue1'
-					'snake':
-						return 'green2'
-					'spider':
-						return 'pink3'
-					'tentacle':
-						return 'purple3'
-					'avian':
-						return 'blue3'
-					_:
-						return 'white2'
-	if statname.begins_with('sex_skills_'):
-		var tmp = statlist.sex_skills
-		var stat = statname.trim_prefix('sex_skills_')
-		if tmp.has(stat):
-			tmp[stat] = min(tmp[stat], 100.0)
-			return tmp[stat]
-		else:
-			print("no stat - %s" % statname)
-			return null
-	if statname.begins_with('metrics_'):
-		var tmp = statlist.metrics
-		var stat = statname.trim_prefix('metrics_')
-		if tmp.has(stat):
-			return tmp[stat]
-		else:
-			print("no stat - %s" % statname)
-			return null
-	if statname == 'personality':
-		return get_personality()
-	if statname == 'slave_class':
-		var tmp = statlist.slave_class
-		if tmp == 'slave1':
-			tmp = 'slave'
-		if tmp == '':
-			tmp = 'slave'
-			set_slave_category('slave1')
-		return tmp
-	if !statlist.has(statname): 
-		print("no stat - %s" % statname)
-		return null
-	var res
-	if ref: res = statlist[statname]
-	else:  res = custom_stats_get(statname)
-	if statdata.statdata.has(statname) and !statdata.statdata[statname].custom_get: #variables.bonuses_stat_list.has(statname):
-		if bonuses.has(statname + '_add'): res += bonuses[statname + '_add']
-		if bonuses.has(statname + '_mul'): res *= bonuses[statname + '_mul']
-	elif statname in ['physics','wits','charm','sexuals']:
-		res += get_stat(statname + '_bonus')
-	if statname.ends_with('_factor'):
-		res = int(res)
-	return res
+#legacy
+func get_stat_old(statname):
+	if statname.begins_with('hair_'): 
+		return get_combined_hairs_data()[statname]
+	if statname.ends_with('virgin'):
+		return (statlist[statname + '_lost'] == null)
 
 
-func get_stat_nobonus(statname, ref = false):
-	if !statlist.has(statname): return null
-	var res
-	if ref: res = statlist[statname]
-	else:  res = custom_stats_get(statname)
-	return res
+func set_stat_old(st, value): #possibly obsolete
+	parent.get_ref().reset_rebuild()
+#	if st in ['physics', 'wits', 'charm']: 
+#		statlist[st] = min(value, get_stat(st + '_cap'))
+#	else: statlist[st] = value
+#	if st.ends_with('_factor'):
+#		statlist[st] = clamp(statlist[st], variables.minimum_factor_value, variables.maximum_factor_value)
+#	if st.begins_with('chg_'):
+#		statlist[st] = int(max(0, statlist[st]))
+#	if st == 'lust':
+#		statlist.lust = clamp(value, 0, get_stat('lustmax'))
+
+#sex stuff
+#can move them to another component - along with sex-related stats
+func access_sexexp(): # I DO NO LIKE TO DO SO - but incapsulating all of them in reasonable time is impassible
+	return sexexp
 
 
-func add_stat_bonuses(ls:Dictionary):
-	if variables.new_stat_bonuses_syntax:
-		for rec in ls:
-			add_bonus(rec, ls[rec])
-	else:
-		for rec in ls:
-			if rec in ['weapon_element', 'weapon_element_ench']:
-				continue
-			if (rec as String).ends_with('mod') && !(rec in ['critmod', 'exp_gain_mod']) :
-				add_bonus(rec.replace('mod','_mul'), ls[rec])
-				continue
-			if rec in ['disabled_masteries', 'enabled_masteries']:
-				parent.get_ref().set_stat(rec, ls[rec])
-				continue
-			if (rec as String).begins_with('mastery_'):
-				parent.get_ref().add_stat(rec, ls[rec])
-				continue
-			if (rec as String).ends_with('_add') and !statdata.statdata.has(rec):
-				add_bonus(rec, ls[rec])
-				continue
-			if !statdata.statdata.has(rec):
-				print('debug warning - lost stat %s' % rec)
-				continue
-			if statdata.statdata[rec].skip_process : continue
-			match statdata.statdata[rec].default_bonus:
-				'add': add_stat(rec, ls[rec])
-				'mul':
-#					print('debug warning + %s' % parent.get_ref().id)
-					mul_stat(rec, ls[rec])
-				'add_part':
-#					print('debug warning + %s' % parent.get_ref().id)
-					add_part_stat(rec, ls[rec])
-#			if (rec as String).begins_with('resist') or (rec as String).begins_with('damage_mod'):
-#				add_bonus(rec + '_add', ls[rec])
-#				continue
-
-#			if !statlist.has(rec):
-			#safe variant
-			#add_bonus(rec, ls[rec])
-#				continue
-#			add_stat(rec, ls[rec])
-
-func remove_stat_bonuses(ls:Dictionary):
-	if variables.new_stat_bonuses_syntax:
-		for rec in ls:
-			add_bonus(rec, ls[rec], true)
-	else:
-		for rec in ls:
-			if rec in ['weapon_element', 'weapon_element_ench']:
-				continue
-			if (rec as String).ends_with('mod') && !(rec in ['critmod', 'exp_gain_mod']) :
-				add_bonus(rec.replace('mod','_mul'), ls[rec], true)
-				continue
-			if (rec as String).begins_with('mastery_'):
-				parent.get_ref().add_stat(rec, ls[rec], true)
-				continue
-			if !statdata.statdata.has(rec):
-				print('debug warning - lost stat %s' % rec)
-				continue
-			if statdata.statdata[rec].skip_process : continue
-			match statdata.statdata[rec].default_bonus:
-				'add': add_stat(rec, ls[rec], true)
-				'mul':
-#					print('debug warning - %s' % parent.get_ref().id)
-					mul_stat(rec, ls[rec], true)
-				'add_part':
-#					print('debug warning - %s' % parent.get_ref().id)
-					add_part_stat(rec, ls[rec], true)
-#			if (rec as String).begins_with('resist') or (rec as String).begins_with('damage_mod'):
-#				add_bonus(rec + '_add', ls[rec], true)
-#				continue
-#			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
-#				add_bonus(rec.replace('mod','_mul'), ls[rec], true)
-#				continue
-#			if !statlist.has(rec): continue
-#			add_stat(rec, ls[rec], true)
-
-func add_bonus(b_rec:String, value, revert = false):
-	if value == 0: return
-	if bonuses.has(b_rec):
-		if revert:
-			bonuses[b_rec] -= value
-			if b_rec.ends_with('_add') and bonuses[b_rec] == 0.0: bonuses.erase(b_rec)
-			if b_rec.ends_with('_mul') and bonuses[b_rec] == 1.0: bonuses.erase(b_rec)
-		else: bonuses[b_rec] += value
-	else:
-		if revert:
-			print('warning bonus not found %s' % b_rec)
-			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 - value
-			else: bonuses[b_rec] = -value
-		else:
-			#if b_rec.ends_with('_add'): bonuses[b_rec] = value
-			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 + value
-			else: bonuses[b_rec] = value
-#	parent.get_ref().recheck_effect_tag('recheck_stats')
+func get_sex_skills(): # I DO NO LIKE TO DO SO - but incapsulating all of them in reasonable time is impassible
+	return sex_skills
 
 
-func get_stat_gain_rate(statname):
-	var res = 1
-	if statlist[statname] >= 90: res = 0.25
-	elif statlist[statname] >= 60: res = 0.5
-	elif statlist[statname] >= 40: res = 0.75
-	
-	if statname in ['physics', 'wits', 'charm']:
-		res *= variables.basestats_factor_mod[int(statlist[statname + '_factor'])]
-	return res
+func get_sex_traits():
+	return sex_traits.keys()
 
 
-func add_stat(statname, value, revert = false):
-	if statname == 'sex_skills': #force custom direct access due to passing into interaction via link
-		for ss in statlist.sex_skills:
-			if revert: statlist.sex_skills[ss] -= value
-			else: statlist.sex_skills[ss] += value
-		return
-	if statname.begins_with('sex_skills_'):
-		statname = statname.trim_prefix('sex_skills_')
-		if revert: statlist.sex_skills[statname] -= value
-		else: statlist.sex_skills[statname] += value
-		statlist.sex_skills[statname] = min(statlist.sex_skills[statname], 100.0)
-		return
-	if statname.begins_with('metrics_'):
-		var tmp = statlist.metrics
-		var stat = statname.trim_prefix('metrics_')
-		if tmp.has(stat):
-			if revert: tmp[stat] -= value
-			else: tmp[stat] += value
-		else:
-			print("no stat - %s" % statname)
-		return
-	if statname.begins_with('personality_'):
-		statlist[statname] += value
-		statlist[statname] = clamp(statlist[statname], -100.0, 100.0)
-		return
-	if statname in ['physics', 'wits', 'charm'] and value > 0:
-		value *= get_stat_gain_rate(statname)
-	if statname.ends_with('_direct'):
-		statname = statname.trim_suffix('_direct')
-	if !statdata.statdata.has(statname): 
-		print("no stat - %s" % statname)
-		return
-	if statdata.statdata[statname].direct:
-		if revert:
-			custom_stats_set(statname, statlist[statname] - value)
-#			self.statlist[statname] = statlist[statname] - value
-		else:
-			custom_stats_set(statname, statlist[statname] + value)
-#			self.statlist[statname] = statlist[statname] + value
-	else:
-		add_bonus(statname+'_add', value, revert)
-
-func mul_stat(statname, value, revert = false):
-	if !statdata.statdata.has(statname): 
-		print("no stat - %s" % statname)
-		return
-	if statdata.statdata[statname].direct:
-		if revert:
-			custom_stats_set(statname, statlist[statname] / value)
-#			self.statlist[statname] = statlist[statname] / value
-		else:
-			custom_stats_set(statname, statlist[statname] * value)
-#			self.statlist[statname] = statlist[statname] * value
-	else:
-		if bonuses.has(statname + '_mul'):
-			if revert:
-				bonuses[statname + '_mul'] /= value
-				if bonuses[statname + '_mul'] == 1:
-					bonuses.erase(statname + '_mul')
-			else: bonuses[statname + '_mul'] *= value
-		else:
-			if revert: 
-				print('warning bonus not found %s' % statname)
-				bonuses[statname + '_mul'] = 1.0 / value
-			else: bonuses[statname + '_mul'] = value
-
-func add_part_stat(statname, value, revert = false):
-	if !statdata.statdata.has(statname): 
-		print("no stat - %s" % statname)
-		return
-	if statdata.statdata[statname].direct:
-		if revert:
-			custom_stats_set(statname, statlist[statname] /(1.0 + value))
-#			self.statlist[statname] = statlist[statname] /(1.0 + value)
-		else:
-			custom_stats_set(statname, statlist[statname] * (1.0 + value))
-#			self.statlist[statname] = statlist[statname] * (1.0 + value)
-	else:
-		add_bonus(statname+'_mul', value, revert)
+func get_negative_sex_traits():
+	return negative_sex_traits
 
 
-func stat_update(stat, value, is_set = false): #for permanent changes
-	var tmp
-	tmp = statlist[stat]
-	value = round(value)
-	if !is_set: add_stat(stat, value)
-	else: set_stat(stat, value)
-	if tmp != null:
-		tmp = get_stat(stat) - tmp
-	else:  tmp = get_stat(stat)
-	return tmp
-
-#traits
-func add_trait(tr_code):
-	if tr_code == null: return
-	if tr_code == 'untrained' and has_status('trained'): return
-	if traits.has(tr_code): return
-	if !Traitdata.traits.has(tr_code): return #temp
-	var trait = Traitdata.traits[tr_code]
-	traits.push_back(tr_code)
-	parent.get_ref().add_stat_bonuses(trait.bonusstats)
-	for e in trait.effects:
-		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
-		parent.get_ref().apply_effect(effects_pool.add_effect(eff))
-		eff.set_args('trait', tr_code)
-	if trait.has('traits'):
-		for id in trait.traits: #for free basic_sevitude and others
-			add_trait(id)
-	if trait.has('disposition_change'):
-		parent.get_ref().process_disposition_data(trait.disposition_change)
-	if tr_code == 'undead':
-		statlist.food_consumption = 0
-		statlist.charm -= 100
-#		statlist.sexuals -= 50
-		statlist.resists['dark'] += 50
-		statlist.resists['light'] -= 50
-		parent.get_ref().food.food_consumption_rations = false
-		if parent.get_ref().get_static_effect_by_code("work_rule_ration") != null:
-			parent.get_ref().remove_static_effect_by_code('work_rule_ration')
-		if parent.get_ref().get_static_effect_by_code("work_rule_contraceptive") != null:
-			parent.get_ref().remove_static_effect_by_code('work_rule_contraceptive')
-		parent.get_ref().set_work_rule("ration", false)
-		parent.get_ref().set_work_rule("contraceptive", false)
-	parent.get_ref().recheck_effect_tag('recheck_trait')
+func get_unlocked_sex_traits():
+	return unlocked_sex_traits
 
 
-func can_add_trait(tr_code):
-	var trait = Traitdata.traits[tr_code]
-	if traits.has(tr_code): return false
-	if !trait.has('conflicts'): return true
-	for tr_conflict in trait.conflicts:
-		if traits.has(tr_conflict): return false
-	return true
-
-
-func remove_trait(tr_code):
-	var trait = Traitdata.traits[tr_code]
-	if !traits.has(tr_code): return
-	traits.erase(tr_code)
-	parent.get_ref().remove_stat_bonuses(trait.bonusstats)
-	var arr = parent.get_ref().find_eff_by_trait(tr_code)
-	for e in arr:
-		var eff = effects_pool.get_effect_by_id(e)
-		eff.remove()
-	parent.get_ref().recheck_effect_tag('recheck_trait')
-
-
-func check_trait(trait):
-	return (traits.has(trait) or sex_traits.has(trait) or negative_sex_traits.has(trait))
+func make_trait_known(trait):
+	if sex_traits.has(trait):
+		sex_traits[trait] = true
+	if negative_sex_traits.has(trait):
+		negative_sex_traits[trait] = true
 
 
 func remove_negative_sex_trait(code):
@@ -1364,7 +1062,8 @@ func add_sex_trait(code, known = false):
 
 
 func remove_sex_trait(code, absolute = true):
-	if absolute: unlocked_sex_traits.erase(code)
+	if absolute: 
+		unlocked_sex_traits.erase(code)
 	sex_traits.erase(code)
 
 
@@ -1384,92 +1083,66 @@ func create_s_trait_select(trait_id):
 	sex_traits[trait_id] = true
 	unlocked_sex_traits.push_back(trait_id)
 
-func add_rare_trait():
-	var n = 1
-	if globals.rng.randf() < variables.enemy_doublerarechance:
-		n = 2
-	var list = variables.rare_enemy_traits.duplicate()
-	for i in range(n):
-		var trait = list[globals.rng.randi_range(0, list.size() - 1)]
-		list.erase(trait)
-		add_trait(trait)
+
+var skill_shortcuts = {
+	vaginal_virgin = 'pussy',
+	anal_virgin = "anal",
+	mouth_virgin = 'oral',
+	penis_virgin = 'penetration',
+}
+
+func get_sex_features():
+	match statlist.sex:
+		'female':
+			if globals.rng.randi_range(0, 100) >= variables.female_vagina_virgin_default_chance:
+				statlist.vaginal_virgin_lost = 'unknown'
+			if globals.rng.randi_range(0, 100) >= variables.female_ass_virgin_default_chance:
+				statlist.anal_virgin_lost = 'unknown'
+		'male':
+			if globals.rng.randi_range(0, 100) >= variables.male_penis_virgin_default_chance:
+				statlist.penis_virgin_lost = 'unknown'
+			if globals.rng.randi_range(0, 100) >= variables.male_ass_virgin_default_chance:
+				statlist.anal_virgin_lost = 'unknown'
+		'futa':
+			if globals.rng.randi_range(0, 100) >= variables.male_penis_virgin_default_chance:
+				statlist.penis_virgin_lost = 'unknown'
+			if globals.rng.randi_range(0, 100) >= variables.female_vagina_virgin_default_chance:
+				statlist.vaginal_virgin_lost = 'unknown'
+			if globals.rng.randi_range(0, 100) >= variables.female_ass_virgin_default_chance:
+				statlist.anal_virgin_lost = 'unknown'
+	
+	if statlist.anal_virgin_lost != null:
+		statlist.mouth_virgin_lost = statlist.anal_virgin_lost
+	if statlist.vaginal_virgin_lost != null:
+		statlist.mouth_virgin_lost = statlist.vaginal_virgin_lost
+	
+	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
+		if statlist[i + '_lost'] != null:
+			sex_skills[skill_shortcuts[i]] = rand_range(1,10)
+	set_virginity_data()
 
 
-func has_status(status):
-	for tr in traits:
-		var traitdata = Traitdata.traits[tr]
-		if traitdata.has('tags') and traitdata.tags.has(status):
-			return true
-	for tr in sex_traits:
-		var traitdata = Traitdata.sex_traits[tr]
-		if traitdata.has('tags') and traitdata.tags.has(status):
-			return true
-	for tr in negative_sex_traits:
-		var traitdata = Traitdata.sex_traits[tr]
-		if traitdata.has('tags') and traitdata.tags.has(status):
-			return true
-	return false
+func set_virginity_data():
+	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
+		if statlist[i+'_lost'] == 'master':
+			statlist[i+'_lost'] = ResourceScripts.game_party.get_master().id
+			metrics.metrics_partners.append(ResourceScripts.game_party.get_master().id)
 
 
-func get_traits_by_tag(tag):
-	var res = []
-	for tr in traits:
-		var traitdata = Traitdata.traits[tr]
-		if traitdata.has('tags') and traitdata.tags.has(tag):
-			res.push_back(tr)
-	return res
+func add_random_sex_skill():
+	var array = ['sex_skills_petting']
+	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
+		if statlist[i + '_lost'] != null:
+			array.append(skill_shortcuts[i])
+	
+	if get_stat('penis_size') != '':
+		array.append('sex_skills_penetration')
+	if get_stat('tail') in variables.longtails:
+		array.append('sex_skills_tail')
+	
+	array = input_handler.random_from_array(array)
+	sex_skills[array] += rand_range(3,8)
 
-
-func get_traits_by_arg(arg, value):
-	var res = []
-	for tr in traits:
-		var traitdata = Traitdata.traits[tr]
-		if traitdata.has(arg) and traitdata[arg] == value:
-			res.push_back(tr)
-	return res
-
-
-func get_random_trait_tag(tag, trait_blacklist = []):
-	var buf = {}
-	for tr in Traitdata.traits:
-		if !can_add_trait(tr): continue
-		if trait_blacklist.has(tr): continue
-		var data = Traitdata.traits[tr]
-		if !data.has('tags'): continue
-		if !data.tags.has(tag): continue
-		if !data.has('weight'): continue # or not
-		buf[tr] = data.weight
-	return input_handler.weightedrandom_dict(buf)
-
-
-func get_random_traits(trait_blacklist = []):
-	add_trait(get_random_trait_tag('positive', trait_blacklist))
-	if randf() < 0.15:
-		add_trait(get_random_trait_tag('positive', trait_blacklist))
-	if randf() < 0.5:
-		add_trait(get_random_trait_tag('negative', trait_blacklist))
-	if randf() < 0.5:
-		add_trait(get_random_trait_tag('negative', trait_blacklist))
-
-
-func get_stat_data():
-	var res = {}
-	res['skill_stat'] = 'physics'
-	res['spell_stat'] = 'wits'
-	res['skill_atk'] = 'atk'
-	res['spell_atk'] = 'matk'
-	#to add trait checks
-	return res
-
-#AI-related stuff
-func need_heal(): #stub. borderlines are subject to tuning
-	if parent.get_ref().has_status('banish'): return -1.0
-	var rate = parent.get_ref().hp * 1.0 / self.statlist.hpmax
-	if rate < 0.2: return 1.0
-	if rate < 0.4: return 0.5
-	if rate < 0.6: return 0.0
-	if rate < 0.8: return -0.5
-	return -1.0
 
 #generating char stuff
 func fill_masternoun():
@@ -1483,34 +1156,25 @@ func fill_masternoun():
 	else:
 		statlist.masternoun = tr('PROFMASTERALT').to_lower()
 
+
 func process_chardata(chardata, unique = false):
-	if unique: statlist.unique = chardata.code
+	if unique:
+		 statlist.unique = chardata.code
 	for i in chardata:
-		if !(i in ['code','class_category', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'hair_color', 'hair_style', 'hair_length', 'training_disposition', 'custom_traits_availability', 'blocked_training_traits', 'skin']):
-			if typeof(chardata[i]) == TYPE_ARRAY or typeof(chardata[i]) == TYPE_DICTIONARY:
-				statlist[i] = chardata[i].duplicate(true)
-			else:
-				statlist[i] = chardata[i]
-		elif i in ['hair_color', 'hair_style', 'hair_length', 'skin']:
-			set_stat(i, chardata[i])
-		elif i == 'training_disposition':
-			parent.get_ref().process_disposition_data(chardata.training_disposition, true)
-		elif i in ['custom_traits_availability', 'blocked_training_traits']:
-			parent.get_ref().process_traits_availability_data(chardata[i])
-	if chardata.has('slave_class'): set_slave_category(chardata.slave_class)
+		if !(i in ['code', 'slave_class', 'tags','sex_traits', 'sex_skills', 'personality', 'training_disposition', 'blocked_training_traits', 'traits', 'food_like', 'food_hate', 'classes', 'skills']):
+			var st_data = statdata.statdata[i]
+			if st_data.direct:
+				update_stat(i, chardata[i], 'set')
 	if chardata.has("sex_traits"):
 		for i in chardata.sex_traits:
 			add_sex_trait(i)
-	if chardata.has("traits"):
-		for i in chardata.traits:
-			add_trait(i)
 	if chardata.has("sex_skills"):
 		for skill in chardata.sex_skills:
-			statlist.sex_skills[skill] = chardata.sex_skills[skill]
+			sex_skills[skill] = chardata.sex_skills[skill]
 	if chardata.has('icon_image'):
 		statlist.dynamic_portrait = false
 	if chardata.has('personality'):
-		set_personality(chardata.personality)
+		update_personality(chardata.personality)
 	set_virginity_data()
 
 
@@ -1520,19 +1184,13 @@ func update_chardata(chardata):
 	for i in chardata:
 		if !(i in variables.personal_stats):
 			continue
-		if !(i in ['hair_color', 'hair_style', 'hair_length']):
-			if typeof(chardata[i]) == TYPE_ARRAY or typeof(chardata[i]) == TYPE_DICTIONARY:
-				statlist[i] = chardata[i].duplicate(true)
-			else:
-				statlist[i] = chardata[i]
-		elif i in ['hair_color', 'hair_style', 'hair_length']: #effectively 'else'
-			set_stat(i, chardata[i])
-	if chardata.has("traits"):
-		for i in chardata.traits:
-			add_trait(i)
+		update_stat(i, chardata[i], 'set')
+#	if chardata.has("traits"):
+#		for i in chardata.traits:
+#			add_trait(i)
 	if chardata.has("sex_skills"):
 		for skill in chardata.sex_skills:
-			statlist.sex_skills[skill] = chardata.sex_skills[skill]
+			sex_skills[skill] = chardata.sex_skills[skill]
 	if chardata.has('icon_image'):
 		statlist.dynamic_portrait = false
 
@@ -1552,61 +1210,56 @@ func roll_growth(diff):
 	else:
 		weight[3] = 60 - (diff - 5) * 25.0/10.0
 	var tmp = input_handler.weightedrandom_dict(weight)
-	set_stat('growth_factor', tmp)
+	update_stat('growth_factor', tmp, 'set')
 
 
-func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0, trait_blacklist = []):
+func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0):
 	adjust_difficulty = min(adjust_difficulty, 15)
 	var gendata = {race = '', sex = 'random', age = 'random'}
 
 	if typeof(races) == TYPE_STRING && races == 'random':
-		gendata.race = get_random_race()
+		gendata.race = races.get_random_race()
 	elif typeof(races) == TYPE_STRING:
 		gendata.race = races
 	else:
-		gendata.race = races[randi()%races.size()]
-	#figuring out the race
-
+		gendata.race = input_handler.random_from_array(races)
 	parent.get_ref().create(gendata.race, gendata.sex, gendata.age)
 	
-#	set_stat('growth_factor', input_handler.weightedrandom_dict(variables.growth_factor))
 	roll_growth(adjust_difficulty)
 	
-#	if randf() <= 0.003:
-#		desired_class = parent.get_ref().generate_ea_character(gendata, desired_class)
 	var slaveclass = desired_class
 	if slaveclass == null:
 		slaveclass = input_handler.weightedrandom([['combat', 1],['magic', 1],['social', 1],['sexual',1], ['labor',1]])
-
+	
 	if slaveclass == 'magic' && statlist.magic_factor == 1: #prevents finding no class as there's no magic base classes which allow magic factor < 2
 		statlist.magic_factor = 2
-
+	
 	var difficulty = int(round(adjust_difficulty))
 	var classcounter = round(rand_range(variables.slave_classes_per_difficulty[difficulty][0], variables.slave_classes_per_difficulty[difficulty][1]))
-
+	
 	#Add extra stats for harder characters
 	var bonus_counter = 0
 	while difficulty > 0 && bonus_counter < 10:
 		var array = []
 		array = ['physics_factor', 'magic_factor', 'wits_factor','sexuals_factor', 'charm_factor']
-		array = array[randi()%array.size()]
+		array = input_handler.random_from_array(array)
 		if randf() >= 0.2:
-			add_stat(array, round(rand_range(0,2)))
+			update_stat(array, round(rand_range(0,2)), 'add')
 		if randf() >= 0.5:
-			add_stat(['tame_factor','timid_factor'][randi()%2], round(rand_range(-1,1)))
+			update_stat(input_handler.random_from_array(['tame_factor','authority_factor']), round(rand_range(-1,1)), 'add')
 		difficulty -= 1
 		bonus_counter += 1
-		
-	difficulty = adjust_difficulty/2
+	
+	difficulty = adjust_difficulty / 2
 	while difficulty > -1:
 		var array = []
 		array = ['physics', 'wits','sexuals', 'charm']
-		array = array[randi()%array.size()]
+		array = input_handler.random_from_array(array)
 		if randf() >= 0.7:
 			if array == 'sexuals':
 				add_random_sex_skill()
 			else:
-				add_stat(array, rand_range(1,15))
+				update_stat(array, rand_range(1,15), 'add')
 		difficulty -= 1
 
 	#assign classes
@@ -1620,20 +1273,19 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 		else:
 			classarray = parent.get_ref().get_class_list(slaveclass, parent.get_ref())
 		if classarray != null && classarray.size() > 0:
-			parent.get_ref().unlock_class(classarray[randi()%classarray.size()].code, true)
+			parent.get_ref().unlock_class(input_handler.random_from_array(classarray).code, true)
 		classcounter -= 1
 
 	var traitarray = []
-	#assign traits
+	#assign sex traits
 	for i in Traitdata.sex_traits.values():
 		if i.negative == true && i.random_generation == true && parent.get_ref().checkreqs(i.acquire_reqs) == true:
 			traitarray.append(i)
 	var rolls = 2
 	while rolls > 0:
-		var number = randi()%traitarray.size()
-		var newtrait = traitarray[number]
-		parent.get_ref().add_sex_trait(newtrait.code)
-		traitarray.remove(number)
+		var newtrait = input_handler.random_from_array(traitarray)
+		add_sex_trait(newtrait.code)
+		traitarray.erase(newtrait)
 		rolls -= 1
 	traitarray.clear()
 	rolls = 1
@@ -1641,100 +1293,21 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 		if i.negative == false && i.random_generation == true && parent.get_ref().checkreqs(i.acquire_reqs) == true:
 			traitarray.append(i)
 	while rolls > 0:
-		var number = randi()%traitarray.size()
-		var newtrait = traitarray[number]
-		parent.get_ref().add_sex_trait(newtrait.code)
-		traitarray.remove(number)
+		var newtrait = input_handler.random_from_array(traitarray)
+		add_sex_trait(newtrait.code)
+		traitarray.erase(newtrait)
 		rolls -= 1
-	get_random_traits(trait_blacklist)
+#	get_random_traits(trait_blacklist)
 
 
 func generate_simple_fighter(data):
-	for i in variables.fighter_stats_list:
-		if data.has(i) == false:
-			statlist[i] = 0
-		else:
-			statlist[i] = data[i]
 	statlist.icon_image = data.icon
-#	statlist.body_image = data.body
-#	statlist.combat_skills = data.skills
-#	if !data.skills.has("ranged_attack"):
-#		combat_skills += ['attack']
-	parent.get_ref().npc_reference = data.code
-	statlist.is_person = false
 	statlist.xpreward = data.xpreward
 	statlist.loottable = data.loot
 	statlist.name = data.name
 	statlist.race = ""
 	statlist.racegroup = data.race
-	for i in variables.resists_list:
-#		statlist.resists[i] = 0
-		if data.resists.has(i):
-			statlist.resists[i] = data.resists[i]
-	for i in variables.status_list:
-#		statlist.status_resists[i] = 0
-		if data.has('status_resists') && data.status_resists.has(i):
-			statlist.status_resists[i] = data.status_resists[i]
-#	for i in variables.mods_list:
-#		statlist.damage_mods[i] = 1.0
-#	if data.has('effects'):
-#		for e in data.effects:
-#			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
-#			apply_effect(effects_pool.add_effect(eff))
-	if data.has('traits'):
-		for tr in data.traits:
-			add_trait(tr)
 
-func setup_baby(mother, father):
-	var temp_race
-	var race1 = mother.get_stat('race')
-	var race2 = father.get_stat('race')
-	if randf() >= 0.5:
-		temp_race = race1
-	else:
-		temp_race = race2
-	var furryfix = false
-	if race2.find('Beastkin') >= 0 && race1.find("Beastkin") < 0:
-		temp_race = race2.replace("Beastkin", "Halfkin")
-		furryfix = true
-	elif race1.find('Beastkin') >= 0 && race2.find("Beastkin") < 0:
-		temp_race = race1.replace("Beastkin", "Halfkin")
-		furryfix = true
-	parent.get_ref().create(temp_race, 'random', 'teen')
-	
-	for i in variables.inheritedstats:
-		if furryfix and i == 'skin_coverage':
-			continue
-		if randf() >= 0.5 || mother.has_profession("breeder"):
-			statlist[i] = mother.statlist.statlist[i]
-		else:
-			statlist[i] = father.statlist.statlist[i]
-	
-	for tr in mother.get_traits_by_tag('positive') + father.get_traits_by_tag('positive'):
-		if randf() <= 0.8 or mother.has_profession("breeder") or father.has_profession("breeder"):
-			add_trait(tr)
-	for tr in mother.get_traits_by_tag('negative') + father.get_traits_by_tag('negative'):
-		if mother.has_profession("breeder") or father.has_profession("breeder"):
-			if randf() <= 0.1:
-				add_trait(tr)
-		elif randf() <= 0.5:
-			add_trait(tr)
-	
-	statlist.relatives.mother = mother.id
-	statlist.relatives.father = father.id
-	baby_transform()
-	var pregdata = {}
-	pregdata.baby = parent.get_ref().id
-	pregdata.duration = variables.pregduration
-	mother.set_stat('pregnancy', pregdata.duplicate())
-	characters_pool.move_to_baby(parent.get_ref().id)
-	ResourceScripts.game_party.connectrelatives(parent.get_ref().id, mother.id, "mother")
-	ResourceScripts.game_party.connectrelatives(parent.get_ref().id, father.id, "father")
-#	ResourceScripts.game_party.babies[parent.get_ref().id] = parent.get_ref()
-#	if mother.get_stat('slave_class') != 'master':
-#		statlist.slave_class = mother.get_stat('slave_class')
-#	else:
-#		statlist.slave_class = 'slave'
 
 func create(temp_race, temp_gender, temp_age):
 	if temp_race == 'halfbreeds':
@@ -1744,59 +1317,33 @@ func create(temp_race, temp_gender, temp_age):
 	statlist.age = temp_age
 	
 	if temp_race == 'random':
-		statlist.race = get_random_race()
+		statlist.race = races.get_random_race()
 	elif races.race_groups.has(temp_race):
-		statlist.race = races.race_groups[temp_race][randi()%races.race_groups[temp_race].size()]
+		statlist.race = input_handler.random_from_array(races.race_groups[temp_race])
 	if temp_gender == 'random':
 		statlist.sex = get_random_sex()
 	if temp_age == 'random':
 		statlist.age = get_random_age()
-	
-#	for i in variables.resists_list:
-#		statlist.resists[i] = 0
-#	for i in variables.status_list:
-#		statlist.status_resists[i] = 0
-#	for i in variables.mods_list:
-#		statlist.damage_mods[i] = 1.0
 	
 	get_sex_features()
 	
 	if input_handler.globalsettings.furry == false && statlist.race.find("Beastkin") >= 0:
 		statlist.race = statlist.race.replace("Beastkin","Halfkin")
 	
+	update_personality(input_handler.random_from_array(variables.personality_array))
+	
 	get_racial_features()
 	get_random_name()
 	get_random_colors()
 	random_icon()
 	
-	statlist.personality = input_handler.random_from_array(variables.personality_array)
-	match statlist.personality:
-		'bold':
-			statlist.personality_bold = rand_range(35,95)
-			statlist.personality_kind = rand_range(30,-30)
-		'shy':
-			statlist.personality_bold = rand_range(-35,-95)
-			statlist.personality_kind = rand_range(30,-30)
-		'kind':
-			statlist.personality_bold = rand_range(30,-30)
-			statlist.personality_kind = rand_range(35,95)
-		'serious':
-			statlist.personality_bold = rand_range(-35,-95)
-			statlist.personality_kind = rand_range(30,-30)
-	
-	
 	for i in ResourceScripts.descriptions.bodypartsdata:
-		if ResourceScripts.descriptions.bodypartsdata[i].has(statlist[i]):
-			if ResourceScripts.descriptions.bodypartsdata[i][statlist[i]].bodychanges.size() > 0:
-				apply_custom_bodychange(i, statlist[i])
-#	add_trait('core_trait')
-#	learn_c_skill('attack')
+		var tval = get_stat(i)
+		if ResourceScripts.descriptions.bodypartsdata[i].has(tval):
+			if ResourceScripts.descriptions.bodypartsdata[i][tval].bodychanges.size() > 0:
+				apply_custom_bodychange(i, tval)
 	set_hairs() #temporal, remove this later!!
-	add_trait('untrained')
-	
-	parent.get_ref().hp = get_stat('hpmax')
-	parent.get_ref().mp = get_stat('mpmax')
-	
+	parent.get_ref().set_slave_category('slave')
 	if input_handler.globalsettings.generate_portraits:
 		make_random_portrait()
 
@@ -1804,22 +1351,21 @@ func create(temp_race, temp_gender, temp_age):
 func get_racial_features():
 	var race_template = races.racelist[statlist.race]
 	for i in race_template.basestats:
-		statlist[i] = round(rand_range(race_template.basestats[i][0], race_template.basestats[i][1])) #1 - terrible, 2 - bad, 3 - average, 4 - good, 5 - great, 6 - superb
+		parent.get_ref().set_stat(i, round(rand_range(race_template.basestats[i][0], race_template.basestats[i][1]))) 
 	parent.get_ref().training.setup_dispositions(statlist.race)
-	add_stat_bonuses(race_template.race_bonus)
 	for i in races.racelist.Human.bodyparts:
 		if races.racelist.Human.bodyparts[i].empty():
 			continue
 		if typeof(races.racelist.Human.bodyparts[i][0]) in [TYPE_STRING, TYPE_BOOL, TYPE_INT]:
-			statlist[i] = input_handler.random_from_array(races.racelist.Human.bodyparts[i])
+			update_stat(i, input_handler.random_from_array(races.racelist.Human.bodyparts[i]), 'set')
 		else:
-			statlist[i] = input_handler.weightedrandom(races.racelist.Human.bodyparts[i])
+			update_stat(i, input_handler.weightedrandom(races.racelist.Human.bodyparts[i]), 'set')
 	if statlist.race != 'Human':
 		for i in race_template.bodyparts:
 			if typeof(race_template.bodyparts[i][0]) in [TYPE_STRING, TYPE_BOOL, TYPE_INT]:
-				statlist[i] = input_handler.random_from_array(race_template.bodyparts[i])
+				update_stat(i, input_handler.random_from_array(race_template.bodyparts[i]), 'set')
 			else:
-				statlist[i] = input_handler.weightedrandom(race_template.bodyparts[i])
+				update_stat(i, input_handler.weightedrandom(race_template.bodyparts[i]), 'set')
 	
 	if race_template.tags.has("multibreasts") && input_handler.globalsettings.furry_multiple_nipples == true:
 		statlist.multiple_tits = variables.furry_multiple_nipples_number
@@ -1834,72 +1380,11 @@ func get_racial_features():
 	if race_template.has('personality'):
 		for i in race_template.personality:
 			array.append([i, race_template.personality[i]])
-		statlist.personality = input_handler.weightedrandom(array)
-	
-	if race_template.has('traits'):
-		for trait in race_template.traits:
-			add_trait(trait)
+		update_personality(input_handler.weightedrandom(array))
 
-
-func get_sex_features():
-	match statlist.sex:
-		'female':
-			if randf()*100 >= variables.female_vagina_virgin_default_chance:
-				statlist.vaginal_virgin = false
-			if randf()*100 >= variables.female_ass_virgin_default_chance:
-				statlist.anal_virgin = false
-		'male':
-			if randf()*100 >= variables.male_penis_virgin_default_chance:
-				statlist.penis_virgin = false
-			if randf()*100 >= variables.male_ass_virgin_default_chance:
-				statlist.anal_virgin = false
-		'futa':
-
-			if randf()*100 >= variables.male_penis_virgin_default_chance:
-				statlist.penis_virgin = false
-			if randf()*100 >= variables.female_vagina_virgin_default_chance:
-				statlist.vaginal_virgin = false
-			if randf()*100 >= variables.female_ass_virgin_default_chance:
-				statlist.anal_virgin = false
-
-	if statlist.vaginal_virgin == false || statlist.anal_virgin == false:
-		statlist.mouth_virgin = false
-	
-	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
-		if statlist[i] == false:
-			statlist.sex_skills[skill_shortcuts[i]] = rand_range(1,10)
-	set_virginity_data()
-
-
-func set_virginity_data():
-	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
-		if statlist[i+'_lost'].source == 'master':
-			statlist[i+'_lost'].source = ResourceScripts.game_party.get_master().id
-			statlist.metrics.partners.append(ResourceScripts.game_party.get_master().id)
-
-func add_random_sex_skill():
-	var array = ['petting']
-	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
-		if statlist[i] == false:
-			array.append(skill_shortcuts[i])
-
-	if get_stat('penis_size') != '':
-		array.append('penetration')
-	if get_stat('tail') in variables.longtails:
-		array.append('tail')
-
-	array = array[randi()%array.size()]
-	statlist.sex_skills[array] += rand_range(3,8)
-
-var skill_shortcuts = {
-	vaginal_virgin = 'pussy',
-	anal_virgin = "anal",
-	mouth_virgin = 'oral',
-	penis_virgin = 'penetration',
-}
 
 func apply_custom_bodychange(target, part):
-	statlist[target] = part
+	update_stat(target, part, 'set')
 	for i in ResourceScripts.descriptions.bodypartsdata[target][part].bodychanges:
 		if parent.get_ref().checkreqs(i.reqs) == true:
 			var newvalue = i.value
@@ -1908,13 +1393,8 @@ func apply_custom_bodychange(target, part):
 					newvalue = input_handler.weightedrandom(newvalue)
 				else:
 					newvalue = input_handler.random_from_array(newvalue)
-			statlist[i.code] = newvalue
+			update_stat(i.code, newvalue, 'set')
 
-func get_random_race():
-	var array = []
-	for i in races.racelist.values():
-		array.append([i.code, i.global_weight])
-	return input_handler.weightedrandom(array)
 
 func get_random_sex():
 	if randf()*100 <= input_handler.globalsettings.malechance:
@@ -1924,11 +1404,13 @@ func get_random_sex():
 	else:
 		return 'female'
 
+
 func get_random_age():
 	var array = []
 	for i in ['teen','adult','mature']:
 		array.append([i, variables.get(i+"_age_weight")])
 	return input_handler.weightedrandom(array)
+
 
 func get_random_name(keep_surname = false):
 	var text = statlist.race.to_lower() + statlist.sex.replace("futa",'female')
@@ -1942,12 +1424,14 @@ func get_random_name(keep_surname = false):
 	elif statlist.race.find("Halfkin") >= 0 || statlist.race.find("Beastkin") >= 0:
 		statlist.surname = Namedata.getRandomFurrySurname()
 
+
 func get_random_colors():
 #	statlist.armor_color = {}
 #	for base in Items.armor_colors:
 #		statlist.armor_color[base] = input_handler.random_from_array(Items.armor_colors[base])
-	for base in statlist.armor_color:
-		statlist.armor_color[base] = input_handler.random_from_array(Items.color_presets)
+	for base in armor_color:
+		armor_color[base] = input_handler.random_from_array(Items.color_presets)
+
 
 func random_icon():
 	var array = []
@@ -1959,7 +1443,7 @@ func random_icon():
 #				array.append(i)
 #				continue
 	if array.size() > 0:
-		statlist.icon_image = array[randi()%array.size()]
+		statlist.icon_image = input_handler.random_from_array(array)
 		statlist.dynamic_portrait = false
 
 func get_icon():
@@ -1970,12 +1454,14 @@ func get_icon():
 	else:
 		return statlist.icon_image
 
+
 func get_icon_path():
 	if typeof(statlist.icon_image) != TYPE_STRING:
 		return null
 	if statlist.icon_image in ['', null]:
 		return ""
 	return statlist.icon_image
+
 
 func get_stored_body_image(): 
 	var tmp 
@@ -1984,6 +1470,7 @@ func get_stored_body_image():
 	else:
 		tmp = input_handler.loadimage(statlist.body_image, 'shades')
 	return tmp
+
 
 func get_body_image(): 
 	var tmp = get_stored_body_image()
@@ -2001,6 +1488,7 @@ func get_body_image():
 			return null
 	return load(statlist.body_image)#can't be returned?
 
+
 func get_all_sex_traits():
 	var return_traits = {}
 	for i in sex_traits:
@@ -2009,75 +1497,42 @@ func get_all_sex_traits():
 		return_traits[i] = negative_sex_traits[i]
 	return return_traits
 
-func get_negative_sex_traits():
-	return negative_sex_traits
 
-func get_unlocked_sex_traits():
-	return unlocked_sex_traits
-
-func make_trait_known(trait):
-	if sex_traits.has(trait):
-		sex_traits[trait] = true
-	if negative_sex_traits.has(trait):
-		negative_sex_traits[trait] = true
-
-
-func get_traits_buffs():
-	var res = []
-	for tr in traits:
-		var tbuff = Traitdata.make_buff_for_trait(tr)
-		if tbuff != null: res.push_back(tbuff)
-	return res
-
-func baby_transform():
-	var mother = characters_pool.get_char_by_id(statlist.relatives.mother) #ResourceScripts.game_party.characters[statlist.relatives.mother]
+func baby_transform(mother):
+#	var mother = characters_pool.get_char_by_id(statlist.relatives.mother) #ResourceScripts.game_party.characters[statlist.relatives.mother]
 	statlist.name = 'Child of ' + mother.get_short_name()
 	statlist.surname = mother.get_stat('surname')
 	if statlist.surname != '':
 		statlist.name += " " + statlist.surname
-	statlist.anal_virgin = true
-	statlist.mouth_virgin = true
-	statlist.penis_virgin = true
-	statlist.vaginal_virgin = true
+	statlist.anal_virgin_lost = null
+	statlist.mouth_virgin_lost = null
+	statlist.penis_virgin_lost = null
+	statlist.vaginal_virgin_lost = null
 
 
-func set_slave_category(new_class):
-	if new_class in ['slave']:
-		new_class = 'slave1'
-	if statlist.slave_class == new_class:
-		return
-	if statlist.slave_class != '':
-		remove_trait(statlist.slave_class.to_lower())
-	add_trait(new_class)
-	statlist.slave_class = new_class
-	if has_status('trained'):
-		parent.get_ref().finish_training(true)
-	else:
-		parent.get_ref().reset_training()
-
-
+#routine
 func tick():
-	add_stat('lust', get_stat('lusttick'))
-	if statlist.pregnancy.duration > 0 && statlist.pregnancy.baby != null:
-		statlist.pregnancy.duration -= 1
-		if statlist.pregnancy.duration * 3 <= variables.pregduration * 2 and !parent.get_ref().has_status('pregnant'):
-			if reported_pregnancy == false:
+	update_stat('lust', parent.get_ref().get_stat('lusttick'), 'add')
+	if pregnancy.pregnancy_duration > 0 && pregnancy.pregnancy_baby != null:
+		var is_breeder = parent.get_ref().check_trait('breeder')
+		pregnancy.pregnancy_duration -= 1
+		if pregnancy.pregnancy_duration * 3 <= variables.pregduration * 2 and !parent.get_ref().has_status('pregnant'):
+			if !pregnancy.pregnancy_reported:
 				var text = tr("LOGREPORTPREGNANCY")
 				if parent.get_ref().has_profession('master'): text = tr('LOGREPORTPREGNANCYMASTER')
-				reported_pregnancy = true
+				pregnancy.pregnancy_reported = true
 				globals.text_log_add('char', translate(text))
-			if !check_trait('breeder'):
-				var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_pregnancy)
-				parent.get_ref().apply_effect(effects_pool.add_effect(eff))
-		if statlist.pregnancy.duration * 3 <= variables.pregduration:
-			if check_trait('breeder') and !parent.get_ref().has_status('pregnant') or !check_trait('breeder') and !parent.get_ref().has_status('heavy_pregnant'):
-				var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_pregnancy)
-				parent.get_ref().apply_effect(effects_pool.add_effect(eff))
-			if parent.get_ref().get_stat('lactation') == false && parent.get_ref().get_stat('tits_size') != 'masculine':
-				parent.get_ref().set_stat('lactation', true)
-		if statlist.pregnancy.duration == 0:
-			reported_pregnancy = false
-			parent.get_ref().remove_all_temp_effects_tag('pregnant')
+#			if !is_breeder:
+#				var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_pregnancy)
+#				parent.get_ref().apply_effect(effects_pool.add_effect(eff))
+		if pregnancy.pregnancy_duration * 3 <= variables.pregduration:
+#			if is_breeder and !parent.get_ref().has_status('pregnant') or !is_breeder and !parent.get_ref().has_status('heavy_pregnant'):
+#				var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_pregnancy)
+#				parent.get_ref().apply_effect(effects_pool.add_effect(eff))
+			if !get_stat('lactation') && get_stat('tits_size') != 'masculine':
+				update_stat('lactation', true, 'set')
+		if pregnancy.pregnancy_duration == 0:
+			pregnancy.pregnancy_reported = false
 			if true: #has_status('relation'): #or another
 				input_handler.interactive_message('childbirth', 'childbirth', {pregchar = parent.get_ref()})
 			else:
@@ -2112,20 +1567,22 @@ func translate(text):
 	text = text.replace("[guy]", globals.fastif(statlist.sex == 'male', tr('PRONOUNGUY'), tr("PRONOUNGUYF")))
 	text = text.replace("[husband]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHUSBAND'), tr("PRONOUNHUSBANDF")))
 	text = text.replace("[groom]", globals.fastif(statlist.sex == 'male', tr('PRONOUNGROOM'), tr("PRONOUNGROOMF")))
-
+	
 #	var masternoun = 'master'
 	var tempmasternoun = statlist.masternoun
 	if parent.get_ref() != null:
 		if tempmasternoun in ['master','mistress']:
-			if input_handler.meowingcondition(parent.get_ref()) == true:tempmasternoun = 'myaster'
+			if input_handler.meowingcondition(parent.get_ref()) == true:
+				tempmasternoun = 'myaster'
 			if ResourceScripts.game_party.get_master() != null && ResourceScripts.game_party.get_master().get_stat('sex') != 'male':
-				if input_handler.meowingcondition(parent.get_ref()) == true:tempmasternoun = 'mewstress'
+				if input_handler.meowingcondition(parent.get_ref()) == true:
+					tempmasternoun = 'mewstress'
 	else:
 		print('error in character %s - no root object' % statlist.name)
-
+	
 	text = text.replace("[master]", tempmasternoun)
 	text = text.replace("[Master]", tempmasternoun.capitalize())
-
+	
 	match statlist.sex:
 		'male':
 			rtext = 'boy'
@@ -2137,45 +1594,6 @@ func translate(text):
 	text = text.replace("[boy]", globals.fastif(statlist.sex == 'male', 'boy', 'girl'))
 	return text
 
-#tatoo functional is here, though it can be moved to separate component
-var tattoo = {face = null, neck = null, arms = null, legs = null, chest = null, crotch = null, waist = null, ass = null}
-
-
-func can_add_tattoo(slot, code):
-	if !Traitdata.get_slot_list_for_tat(code).has(slot): return false
-	var template = Traitdata.tattoodata[code]
-	if tattoo[slot] == code : return false
-	if template.has('conditions'):
-		if !parent.get_ref().checkreqs(template.conditions): return false
-	if ResourceScripts.game_res.if_has_material(template.item, 'lt', 1): return false
-	if !template.can_repeat:
-		for s in tattoo:
-			if tattoo[s] == code: return false
-	return true
-
-
-func add_tattoo(slot, code) -> bool:
-	if !can_add_tattoo(slot, code): return false
-	var template = Traitdata.tattoodata[code]
-	if tattoo[slot] != null: remove_tattoo(slot)
-	for slots in template.effects:
-		if !slots.has(slot): continue
-		for e in template.effects[slots]:
-			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
-			parent.get_ref().apply_effect(effects_pool.add_effect(eff))
-			eff.set_args('tattoo', "%s_%s" % [slot, code])
-	tattoo[slot] = code
-	return true
-
-
-func remove_tattoo(slot):
-	if tattoo[slot] == null: return
-	var arr = parent.get_ref().find_eff_by_tattoo(slot, tattoo[slot])
-	for e in arr:
-		var eff = effects_pool.get_effect_by_id(e)
-		eff.remove()
-	tattoo[slot] = null
-
 
 func make_random_portrait():
 	statlist.icon_image = ResourceScripts.rnd_main.setrandom(statlist) 
@@ -2184,71 +1602,6 @@ func make_random_portrait():
 		var fullImagePath = statlist.icon_image.replacen(input_handler.globalsettings.portrait_folder, input_handler.globalsettings.body_folder)
 		if File.new().file_exists(fullImagePath):
 			statlist.body_image = fullImagePath 
-
-
-#body upgrades
-func get_upgrade_points():
-	var res = get_stat('upgrade_points_total')
-	for upg in body_upgrades:
-		if !Traitdata.body_upgrades.has(upg):
-			print ('unknown body upgrade - %s' % upg)
-			continue
-		var upgrade_data = Traitdata.body_upgrades[upg]
-		res -= upgrade_data.cost 
-	return res
-
-
-func add_upgrade(upg): #unsafe adding
-	if body_upgrades.has(upg):
-		return
-	if !Traitdata.body_upgrades.has(upg):
-		return
-	
-	body_upgrades.push_back(upg)
-	var upgrade_data = Traitdata.body_upgrades[upg]
-	if upgrade_data.has('traits'):
-		for tr in upgrade_data.traits:
-			add_trait(tr) #hope that there be no concurrent traits in upgrades
-
-
-func can_add_upgrade(upg):
-	if body_upgrades.has(upg):
-		return false
-	if !Traitdata.body_upgrades.has(upg):
-		return false
-	
-	var upgrade_data = Traitdata.body_upgrades[upg]
-	
-	if !parent.get_ref().checkreqs(upgrade_data.reqs):
-		return false
-	
-	if get_upgrade_points() < upgrade_data.cost:
-		return false
-	
-	return true
-
-
-func remove_upgrade(upg):
-	if !body_upgrades.has(upg):
-		return
-	body_upgrades.erase(upg)
-	if !Traitdata.body_upgrades.has(upg):
-		return
-	var upgrade_data = Traitdata.body_upgrades[upg]
-	if upgrade_data.has('traits'):
-		for tr in upgrade_data.traits:
-			remove_trait(tr)
-	parent.get_ref().recheck_equip()
-
-
-func recheck_upgrades():
-	for upg in body_upgrades.duplicate():
-		if !Traitdata.body_upgrades.has(upg):
-			body_upgrades.erase(upg)
-		else:
-			var upgrade_data = Traitdata.body_upgrades[upg]
-			if !parent.get_ref().checkreqs(upgrade_data.reqs):
-				remove_upgrade(upg) #hope that there would be no removal chaining
 
 
 func change_personality_stats(stat, init_value, communicative = false):
@@ -2260,7 +1613,7 @@ func change_personality_stats(stat, init_value, communicative = false):
 	if stat == 'bold':
 		primaxis = 'personality_bold'
 		altaxis = 'personality_kind'
-		prim_stat = get_stat("timid_factor")
+		prim_stat = get_stat("authority_factor")
 	else:
 		primaxis = 'personality_kind'
 		altaxis = 'personality_bold'
@@ -2291,52 +1644,66 @@ func change_personality_stats(stat, init_value, communicative = false):
 	
 	statlist[primaxis] += newvalue[0]
 	statlist[altaxis] += newvalue[1]
-	parent.get_ref().recheck_effect_tag('recheck_stats')
 	check_old_personality()
 	
 	parent.get_ref().update_prt()
 	
 	return [newvalue, rebel]
 
-
-func get_personality():
-	if abs(statlist.personality_bold) <= 30 and abs(statlist.personality_kind) <= 30:
-		return 'neutral'
-	if abs(statlist.personality_bold) > abs(statlist.personality_kind):
-		if statlist.personality_bold > 0:
-			return 'bold'
-		else:
-			return 'shy'
-	else:
-		if statlist.personality_kind > 0:
-			return 'kind'
-		else:
-			return 'serious'
-
-
-func set_personality(value):
-	match value:
-		'neutral':
-			statlist.personality_bold = globals.rng.randi_range(-10, 10)
-			statlist.personality_kind = globals.rng.randi_range(-10, 10)
-		'bold':
-			statlist.personality_bold = globals.rng.randi_range(65, 85)
-			statlist.personality_kind = globals.rng.randi_range(-10, 10)
-		'shy':
-			statlist.personality_bold = -globals.rng.randi_range(65, 85)
-			statlist.personality_kind = globals.rng.randi_range(-10, 10)
-		'kind':
-			statlist.personality_bold = globals.rng.randi_range(-10, 10)
-			statlist.personality_kind = globals.rng.randi_range(65, 85)
-		'serious':
-			statlist.personality_bold = globals.rng.randi_range(-10, 10)
-			statlist.personality_kind = -globals.rng.randi_range(65, 85)
-	check_old_personality()
-	parent.get_ref().update_prt()
+#tattoos
+func can_add_tattoo(slot, code):
+	if !Traitdata.get_slot_list_for_tat(code).has(slot): 
+		return false
+	var template = Traitdata.tattoodata[code]
+	if tattoo[slot] == code :
+		return false
+	if template.has('conditions'):
+		if !parent.get_ref().checkreqs(template.conditions): 
+			return false
+	if ResourceScripts.game_res.if_has_material(template.item, 'lt', 1): 
+		return false
+	if !template.can_repeat:
+		for s in tattoo:
+			if tattoo[s] == code: 
+				return false
+	return true
 
 
-func check_old_personality():
-	if get_personality() != 'neutral':
-		statlist.old_personality = get_personality()
+func add_tattoo(slot, code) -> bool:
+	if !can_add_tattoo(slot, code): 
+		return false
+	var template = Traitdata.tattoodata[code]
+	if tattoo[slot] != null: 
+		remove_tattoo(slot)
+	tattoo[slot] = code
+	parent.get_ref().reset_rebuild()
+	return true
 
 
+func remove_tattoo(slot):
+	if tattoo[slot] == null: 
+		return
+	var arr = parent.get_ref().find_eff_by_tattoo(slot, tattoo[slot])
+	for e in arr:
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.remove()
+	tattoo[slot] = null
+	parent.get_ref().reset_rebuild()
+
+
+func get_tattoos():
+	return tattoo.duplicate()
+
+
+func get_tattoo(slot):
+	if tattoo.has(slot):
+		return tattoo[slot]
+	return null
+
+
+func get_filled_tattoos():
+	var res = []
+	for slot in tattoo:
+		if tattoo[slot] != null:
+			res.push_back(slot)
+	return res

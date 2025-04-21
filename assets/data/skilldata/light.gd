@@ -237,7 +237,6 @@ var effects = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
-		args = [], 
 		sub_effects = [
 			Effectdata.rebuild_remove_effect('fear'),
 			Effectdata.rebuild_remove_effect('ensnared'),
@@ -250,55 +249,40 @@ var effects = {
 	e_t_blessing = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'blessing',
+		stack = 'blessing',
 		tick_event = variables.TR_TURN_S,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 5,
-		stack = 1,
-		args = [],
 		tags = ['buff'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'hitrate', value = 35},
-			{type = 'stat_add', stat = 'evasion', value = 35},
-		],
+		statchanges = {hitrate = 35, evasion = 35},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/icon_light.png",
 				description = "TRAITEFFECTBLESSING",
-				limit = 1,
-				t_name = 'blessing'
 			}
 		],
 	},
 	e_s_elprotect = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'elprotect',
+		stack = 'elprotect',
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		duration = 'parent',
-		stack = 1,
+		duration = 'arg',
 		tags = ['buff'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'resist_fire', value = 20},
-			{type = 'stat_add', stat = 'resist_earth', value = 20},
-			{type = 'stat_add', stat = 'resist_water', value = 20},
-			{type = 'stat_add', stat = 'resist_air', value = 20},
-		],
+		statchanges = {resist_fire = 20, resist_earth = 35, resist_water = 20, resist_air = 20},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/icon_elemental_protection.png",
 				description = "TRAITEFFECTELEMENTALPROTECT",
-				limit = 1,
-				t_name = 'elweak',
-				combat_only = true,
 			}
 		],
 	},
 }
-var atomic_effects = {
-	a_sanctuary_heal = {type = 'heal', value = ['parent_args', 0]},
-}
+var atomic_effects = {}
 var buffs = {}
+
+var stacks = {
+	blessing = {}, #st 1
+	elprotect = {}, #st 1
+}

@@ -26,12 +26,12 @@ func add_remove_tattoo(slot: String):
 	var selectedhero = input_handler.interacted_character
 	selected_tattoo = get_parent().get_node("InventoryListModule").selected_tattoo
 	selected_slot = slot
-	if selectedhero.statlist.tattoo[slot] == null && selected_tattoo == "":
+	if selectedhero.get_tattoo(slot) == null && selected_tattoo == "":
 		for i in $TattooSlots.get_children():
 			i.pressed = false
 		return
 
-	if selectedhero.statlist.tattoo[slot] == selected_tattoo:
+	if selectedhero.get_tattoo(slot) == selected_tattoo:
 		input_handler.SystemMessage(tr("SAMETATTOO"))
 		$TattooSlots.get_node(slot).pressed = true
 		return
@@ -41,7 +41,7 @@ func add_remove_tattoo(slot: String):
 		return
 
 	update_tattoo_slots(slot)
-	if selectedhero.statlist.tattoo[slot] != null:
+	if selectedhero.get_tattoo(slot) != null:
 		if selected_tattoo == "":
 			tattoo_action = "remove_tattoo"
 			input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'add_remove_tattoo_action', tr("REMOVETATTOO")])
@@ -83,14 +83,16 @@ func add_remove_tattoo_action():
 
 func show_tattoos():
 	var selectedhero = input_handler.interacted_character
-	for slot in selectedhero.statlist.tattoo:
-		if selectedhero.statlist.tattoo[slot] == null:
+	var tattoos = selectedhero.get_tattoos()
+	for b_slot in tattoos:
+		var slot = b_slot.trim_prefix('tattoo_')
+		if tattoos[b_slot] == null:
 			$TattooSlots.get_node(slot + "/icon").texture = null
 		else:
 			var t_icon
 			for t in Traitdata.tattoodata:
 				var tattoo = Traitdata.tattoodata[t]
-				if t == selectedhero.statlist.tattoo[slot]:
+				if t == tattoos[b_slot]:
 					t_icon = Traitdata.tattoodata[t].icon
 					break
 			$TattooSlots.get_node(slot + "/icon").texture = t_icon
@@ -194,10 +196,10 @@ func show_equip_tooltip(slot):
 
 func show_tattoo_tooltip(slot):
 	var selectedhero = input_handler.interacted_character
-	if selectedhero.statlist.tattoo[slot] == null:
+	if selectedhero.get_tattoo(slot) == null:
 		return
 	else:
-		var tattoo = Traitdata.tattoodata[selectedhero.statlist.tattoo[slot]]
+		var tattoo = Traitdata.tattoodata[selectedhero.get_tattoo(slot)]
 		var desc
 		for key in tattoo.descripts:
 			if key.has(slot):

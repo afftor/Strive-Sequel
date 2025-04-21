@@ -10,7 +10,7 @@ var stats_dict = {
 	"wits_factor": "Wits Factor",
 	"charm_factor": "Charm Factor",
 	"sexuals_factor": "Sexuals Factor",
-	"timid_factor": "Authority Factor",
+	"authority_factor": "Authority Factor",
 	"tame_factor": "Tame Factor",
 	"magic_factor": "Magic Factor",
 }
@@ -94,7 +94,7 @@ func show_stats():
 		# 	continue
 		if stat != 'growth_factor' and ResourceScripts.game_globals.diff_gf_only_upg:
 			continue
-		if person.is_master() && stat in ["timid_factor", "tame_factor"]:
+		if person.is_master() && stat in ["authority_factor", "tame_factor"]:
 			continue
 		else:
 			var newbutton = input_handler.DuplicateContainerTemplate(StatsContainer)
@@ -147,8 +147,8 @@ func show_stat_info(stat):
 		+ "charm_factor"
 		+ str(person.get_stat("charm_factor"))
 		+ "\n"
-		+ "timid_factor"
-		+ str(person.get_stat("timid_factor"))
+		+ "authority_factor"
+		+ str(person.get_stat("authority_factor"))
 		+ "\n"
 		+ "tame_factor"
 		+ str(person.get_stat("tame_factor"))

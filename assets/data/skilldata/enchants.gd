@@ -1,108 +1,48 @@
 extends Reference
 
 var skills = {
-	pas_commander_1 = {
-		code = 'pas_commander_1',
-		descript = '',
-		icon = load("res://assets/images/iconsskills/icon_earthquake.png"),
-		type = 'auto', 
-		ability_type = 'spell',
-		tags = ['instant', 'passive'],
-		reqs = [],
-		targetreqs = [],
-		effects = [Effectdata.rebuild_template_globals({effect = 'e_s_commander', push_value = true})], 
-		cost = {},
-		charges = 0,
-		combatcooldown = 0,
-		cooldown = 0,
-		catalysts = {},
-		target = 'self',
-		target_number = 'all',
-		target_range = 'any',
-		damage_type = 'light',
-		sfx = [], 
-		sounddata = {initiate = null, strike = null, hit = null, hittype = 'bodyarmor'},
-		value = ['0.03'],
-		damagestat = 'no_stat',
-		not_final = true
-	},
-	pas_commander_2 = {
-		code = 'pas_commander_2',
-		descript = '',
-		icon = load("res://assets/images/iconsskills/icon_earthquake.png"),
-		type = 'auto', 
-		ability_type = 'spell',
-		tags = ['instant', 'passive'],
-		reqs = [],
-		targetreqs = [],
-		effects = [Effectdata.rebuild_template_globals({effect = 'e_s_commander', push_value = true})], 
-		cost = {},
-		charges = 0,
-		combatcooldown = 0,
-		cooldown = 0,
-		catalysts = {},
-		target = 'self',
-		target_number = 'all',
-		target_range = 'any',
-		damage_type = 'light',
-		sfx = [], 
-		sounddata = {initiate = null, strike = null, hit = null, hittype = 'bodyarmor'},
-		value = ['0.05'],
-		damagestat = 'no_stat',
-		not_final = true
-	},
 }
 var effects = {
 	curse_decline_1 = Effectdata.rebuild_stat_bonus('exp_gain_mod', -0.25),
 	curse_decline_2 = Effectdata.rebuild_stat_bonus('exp_gain_mod', -0.5),
-	curse_fragility_1 = Effectdata.rebuild_stat_bonus('hpmax', -0.2, null, 'stat_add_p'),
-	curse_fragility_2 = Effectdata.rebuild_stat_bonus('hpmax', -0.4, null, 'stat_add_p'),
+	curse_fragility_1 = Effectdata.rebuild_stat_bonus('hpmax_add_part', -0.2),
+	curse_fragility_2 = Effectdata.rebuild_stat_bonus('hpmax_add_part', -0.4),
 	
 	enchant_spellmas_1 = {
-		type = 'static',
-		atomic = [],
-		buffs = [],
+		type = 'base',
+		stack = 'spell_mastery',
 		sub_effects = [
 			Effectdata.rebuild_skillvalue_template({skilltype = 'spell', tag = 'damage', value = 1.1}),
 			Effectdata.rebuild_skillvalue_template({skilltype = 'spell', tag = 'heal', value = 1.1}),
 		],
-		args = []
 	},
 	enchant_spellmas_2 = {
-		type = 'static',
-		atomic = [],
-		buffs = [],
+		type = 'base',
+		stack = 'spell_mastery',
 		sub_effects = [
 			Effectdata.rebuild_skillvalue_template({skilltype = 'spell', tag = 'damage', value = 1.15}),
 			Effectdata.rebuild_skillvalue_template({skilltype = 'spell', tag = 'heal', value = 1.15}),
 		],
-		args = []
 	},
 	enchant_spellmas_3 = {
-		type = 'static',
-		atomic = [],
-		buffs = [],
+		type = 'base',
+		stack = 'spell_mastery',
 		sub_effects = [
 			Effectdata.rebuild_skillvalue_template({skilltype = 'spell', tag = 'damage', value = 1.2}),
 			Effectdata.rebuild_skillvalue_template({skilltype = 'spell', tag = 'heal', value = 1.2}),
 		],
-		args = []
 	},
 	enchant_spellmas_4 = {
-		type = 'static',
-		atomic = [],
-		buffs = [],
+		type = 'base',
+		stack = 'spell_mastery',
 		sub_effects = [
 			Effectdata.rebuild_skillvalue_template({skilltype = 'spell', tag = 'damage', value = 1.25}),
 			Effectdata.rebuild_skillvalue_template({skilltype = 'spell', tag = 'heal', value = 1.25}),
 		],
-		args = []
 	},
 	enchant_thorns_1 = {
-		type = 'static',
-		atomic = [],
-		buffs = [],
-		args = [],
+		type = 'base',
+		stack = 'thorns',
 		sub_effects = [
 			{
 				type = 'trigger',
@@ -113,24 +53,22 @@ var effects = {
 					{type = 'skill', value = ['damage_type', 'eq', 'normal'] },
 				],
 				req_skill = true,
-				args = [{obj = 'self', param = 'skill' }],
 				sub_effects = [{
 					type = 'oneshot',
 					target = 'caster',
-					args = [{obj = 'parent_arg_get', param = 'process_value', index = 0}],
-					atomic = [
-						{type = 'sfx', value = 'targetattack'}, 
-						{type = 'damage', value = [['parent_args', 0], '*', 0.1], source = 'true'}]
-				}],
-				buffs = []
+					args = {
+						damage = {obj = 'skill', func = 'get', arg = 'process_value'},
+						src = {obj = 'self', func = 'src', src = 'true'},
+						mod = {obj = 'self', func = 'src', src = 0.1},
+					},
+					atomic = [{type = 'sfx', value = 'targetattack'}, 'a_damage_new'],
+				}]
 			},
 		]
 	},
 	enchant_thorns_2 = {
-		type = 'static',
-		atomic = [],
-		buffs = [],
-		args = [],
+		type = 'base',
+		stack = 'thorns',
 		sub_effects = [
 			{
 				type = 'trigger',
@@ -141,24 +79,22 @@ var effects = {
 					{type = 'skill', value = ['damage_type', 'eq', 'normal'] },
 				],
 				req_skill = true,
-				args = [{obj = 'self', param = 'skill' }],
 				sub_effects = [{
 					type = 'oneshot',
 					target = 'caster',
-					args = [{obj = 'parent_arg_get', param = 'process_value', index = 0}],
-					atomic = [
-						{type = 'sfx', value = 'targetattack'},
-						{type = 'damage', value = [['parent_args', 0], '*', 0.15], source = 'true'}]
-				}],
-				buffs = []
+					args = {
+						damage = {obj = 'skill', func = 'get', arg = 'process_value'},
+						src = {obj = 'self', func = 'src', src = 'true'},
+						mod = {obj = 'self', func = 'src', src = 0.15},
+					},
+					atomic = [{type = 'sfx', value = 'targetattack'}, 'a_damage_new'],
+				}]
 			},
 		]
 	},
 	enchant_thorns_3 = {
-		type = 'static',
-		atomic = [],
-		buffs = [],
-		args = [],
+		type = 'base',
+		stack = 'thorns',
 		sub_effects = [
 			{
 				type = 'trigger',
@@ -169,24 +105,22 @@ var effects = {
 					{type = 'skill', value = ['damage_type', 'eq', 'normal'] },
 				],
 				req_skill = true,
-				args = [{obj = 'self', param = 'skill' }],
 				sub_effects = [{
 					type = 'oneshot',
 					target = 'caster',
-					args = [{obj = 'parent_arg_get', param = 'process_value', index = 0}],
-					atomic = [
-						{type = 'sfx', value = 'targetattack'},
-						{type = 'damage', value = [['parent_args', 0], '*', 0.2], source = 'true'}]
-				}],
-				buffs = []
+					args = {
+						damage = {obj = 'skill', func = 'get', arg = 'process_value'},
+						src = {obj = 'self', func = 'src', src = 'true'},
+						mod = {obj = 'self', func = 'src', src = 0.2},
+					},
+					atomic = [{type = 'sfx', value = 'targetattack'}, 'a_damage_new'],
+				}]
 			},
 		]
 	},
 	enchant_thorns_4 = {
-		type = 'static',
-		atomic = [],
-		buffs = [],
-		args = [],
+		type = 'base',
+		stack = 'thorns',
 		sub_effects = [
 			{
 				type = 'trigger',
@@ -197,24 +131,22 @@ var effects = {
 					{type = 'skill', value = ['damage_type', 'eq', 'normal'] },
 				],
 				req_skill = true,
-				args = [{obj = 'self', param = 'skill' }],
 				sub_effects = [{
 					type = 'oneshot',
 					target = 'caster',
-					args = [{obj = 'parent_arg_get', param = 'process_value', index = 0}],
-					atomic = [
-						{type = 'sfx', value = 'targetattack'},
-						{type = 'damage', value = [['parent_args', 0], '*', 0.25], source = 'true'}]
-				}],
-				buffs = []
+					args = {
+						damage = {obj = 'skill', func = 'get', arg = 'process_value'},
+						src = {obj = 'self', func = 'src', src = 'true'},
+						mod = {obj = 'self', func = 'src', src = 0.25},
+					},
+					atomic = [{type = 'sfx', value = 'targetattack'}, 'a_damage_new'],
+				}]
 			},
 		]
 	},
 	enchant_vampirism_1 = {
-		type = 'static',
-		atomic = [],
-		buffs = [],
-		args = [],
+		type = 'base',
+		stack = 'vampirism',
 		sub_effects = [
 			{
 				type = 'trigger',
@@ -225,7 +157,6 @@ var effects = {
 					{type = 'skill', value = ['tags', 'has', 'damage'] },
 				],
 				req_skill = true,
-				args = [{obj = 'self', param = 'skill' }],
 				sub_effects = [{
 					type = 'oneshot',
 					target = 'skill',
@@ -236,10 +167,8 @@ var effects = {
 		]
 	},
 	enchant_vampirism_2 = {
-		type = 'static',
-		atomic = [],
-		buffs = [],
-		args = [],
+		type = 'base',
+		stack = 'vampirism',
 		sub_effects = [
 			{
 				type = 'trigger',
@@ -250,7 +179,6 @@ var effects = {
 					{type = 'skill', value = ['tags', 'has', 'damage'] },
 				],
 				req_skill = true,
-				args = [{obj = 'self', param = 'skill' }],
 				sub_effects = [{
 					type = 'oneshot',
 					target = 'skill',
@@ -261,10 +189,8 @@ var effects = {
 		]
 	},
 	enchant_vampirism_3 = {
-		type = 'static',
-		atomic = [],
-		buffs = [],
-		args = [],
+		type = 'base',
+		stack = 'vampirism',
 		sub_effects = [
 			{
 				type = 'trigger',
@@ -275,7 +201,6 @@ var effects = {
 					{type = 'skill', value = ['tags', 'has', 'damage'] },
 				],
 				req_skill = true,
-				args = [{obj = 'self', param = 'skill' }],
 				sub_effects = [{
 					type = 'oneshot',
 					target = 'skill',
@@ -286,10 +211,8 @@ var effects = {
 		]
 	},
 	enchant_vampirism_4 = {
-		type = 'static',
-		atomic = [],
-		buffs = [],
-		args = [],
+		type = 'base',
+		stack = 'vampirism',
 		sub_effects = [
 			{
 				type = 'trigger',
@@ -300,7 +223,6 @@ var effects = {
 					{type = 'skill', value = ['tags', 'has', 'damage'] },
 				],
 				req_skill = true,
-				args = [{obj = 'self', param = 'skill' }],
 				sub_effects = [{
 					type = 'oneshot',
 					target = 'skill',
@@ -311,10 +233,8 @@ var effects = {
 		]
 	},
 	enchant_vampirism_5 = {
-		type = 'static',
-		atomic = [],
-		buffs = [],
-		args = [],
+		type = 'base',
+		stack = 'vampirism',
 		sub_effects = [
 			{
 				type = 'trigger',
@@ -325,7 +245,6 @@ var effects = {
 					{type = 'skill', value = ['tags', 'has', 'damage'] },
 				],
 				req_skill = true,
-				args = [{obj = 'self', param = 'skill' }],
 				sub_effects = [{
 					type = 'oneshot',
 					target = 'skill',
@@ -336,88 +255,66 @@ var effects = {
 		]
 	},
 	
-	enchant_commander_1 = Effectdata.rebuild_autocast({skill = 'pas_commander_1', trigger = [variables.TR_TURN_GET, variables.TR_COMBAT_S]}),
-	enchant_commander_2 = Effectdata.rebuild_autocast({skill = 'pas_commander_2', trigger = [variables.TR_TURN_GET, variables.TR_COMBAT_S]}),
+	enchant_commander_1 = {
+		type = 'base',
+		stack = 'ench_commander',
+		tags = ['area', 'area_allied'],
+		args = {mod = {obj = 'self', func = 'src', src = 0.03}},
+		sub_effects = ['e_s_commander'] 
+	},
+	enchant_commander_2 = {
+		type = 'base',
+		stack = 'ench_commander',
+		tags = ['area', 'area_allied'],
+		args = {mod = {obj = 'self', func = 'src', src = 0.05}},
+		sub_effects = ['e_s_commander']
+	},
 	e_s_commander = {
-		type = 'temp_global',
-		tags = ['duration_none'],
-		target = 'target',
-		name = 'commander',
-		stack = 1,
-		args = [{obj = 'parent_args', param = 2}],
-		timers = [
-			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 2}, 
-			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
-			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
-		],
-		atomic = [
-			{type = 'stat_add_p', stat = 'atk', value = ['parent_args', 0]},
-			{type = 'stat_add_p', stat = 'matk', value = ['parent_args', 0]},
-			{type = 'stat_add', stat = 'damage_reduction', value = [['parent_args', 0], '*', 100]}
-		],
+		type = 'base',
+		tags = [],
+		stack = 'commander',
+		args = {
+			mod = {obj = 'parent', func = 'arg', arg = 'mod'}
+		},
+		statchanges = {atk_add_part = ['arg', 'mod'], matk_add_part = ['arg', 'mod'], damage_reduction = [['arg', 'mod'], '*', 100]},
 		buffs = ['b_command'],
-		sub_effects = [],
 	},
 	
 	enchant_warlock_1 = {
 		type = 'temp_global',
 		tags = ['duration_none'],
-		name = 'enchant_warlock',
-		stack = 1,
-		args = [],
+		stack = 'warlock',
 		timers = [
 			{events = [variables.TR_NONE], objects = 'owner', timer = 2}, #effectively infinite
 		],
-		atomic = [
-			{type = 'stat_add', stat = 'manacost_mod', value = -0.1}
-		],
-		buffs = [],
-		sub_effects = [],
+		statchanges = {manacost_mod = -0.1},
 	},
 	enchant_warlock_2 = {
 		type = 'temp_global',
 		tags = ['duration_none'],
-		name = 'enchant_warlock',
-		stack = 1,
-		args = [],
+		stack = 'warlock',
 		timers = [
 			{events = [variables.TR_NONE], objects = 'owner', timer = 2}, #effectively infinite
 		],
-		atomic = [
-			{type = 'stat_add', stat = 'manacost_mod', value = -0.15}
-		],
-		buffs = [],
-		sub_effects = [],
+		statchanges = {manacost_mod = -0.15},
 	},
 	enchant_warlock_3 = {
 		type = 'temp_global',
 		tags = ['duration_none'],
-		name = 'enchant_warlock',
-		stack = 1,
-		args = [],
+		stack = 'warlock',
 		timers = [
 			{events = [variables.TR_NONE], objects = 'owner', timer = 2}, #effectively infinite
 		],
-		atomic = [
-			{type = 'stat_add', stat = 'manacost_mod', value = -0.2}
-		],
-		buffs = [],
-		sub_effects = [],
+		statchanges = {manacost_mod = -0.2},
 	},
 	enchant_warlock_4 = {
 		type = 'temp_global',
 		tags = ['duration_none'],
-		name = 'enchant_warlock',
-		stack = 1,
-		args = [],
+		stack = 'warlock',
 		timers = [
 			{events = [variables.TR_NONE], objects = 'owner', timer = 2}, #effectively infinite
 		],
-		atomic = [
-			{type = 'stat_add', stat = 'manacost_mod', value = -0.25}
-		],
-		buffs = [],
-		sub_effects = [],
+		statchanges = {manacost_mod = -0.25},
 	},
 	
 	enchant_reaper_1 = Effectdata.rebuild_skillvalue_template({target_race = 'humanoid', tag = 'damage',  value = 1.2}),
@@ -438,15 +335,14 @@ var effects = {
 	
 	enchant_manasiphon_1 = {
 		type = 'trigger',
+		stack = 'manasiphon',
 		trigger = [variables.TR_CAST],
 		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'skill']}],
 		req_skill = true,
-		args = [],
 		sub_effects = [{
 			type = 'oneshot',
 			target = 'owner',
-			args = [{obj = 'template', param = 'amount'}],
-			amount = 1,
+			args = {amount = {obj = 'self', func = 'amount', amount = 1}},
 			atomic = ['a_manasiphon']
 		}],
 		buffs = []
@@ -454,15 +350,14 @@ var effects = {
 	
 	enchant_manasiphon_2 = {
 		type = 'trigger',
+		stack = 'manasiphon',
 		trigger = [variables.TR_CAST],
 		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'skill']}],
 		req_skill = true,
-		args = [],
 		sub_effects = [{
 			type = 'oneshot',
 			target = 'owner',
-			args = [{obj = 'template', param = 'amount'}],
-			amount = 2,
+			args = {amount = {obj = 'self', func = 'amount', amount = 2}},
 			atomic = ['a_manasiphon']
 		}],
 		buffs = []
@@ -470,21 +365,34 @@ var effects = {
 	
 	enchant_manasiphon_3 = {
 		type = 'trigger',
+		stack = 'manasyphon',
 		trigger = [variables.TR_CAST],
 		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'skill']}],
 		req_skill = true,
-		args = [],
 		sub_effects = [{
 			type = 'oneshot',
 			target = 'owner',
-			args = [{obj = 'template', param = 'amount'}],
-			amount = 3,
+			args = {amount = {obj = 'self', func = 'amount', amount = 3}},
 			atomic = ['a_manasiphon']
 		}],
 		buffs = []
 	},
 }
 var atomic_effects = {
-	a_manasiphon = {type = 'mana', value = ['parent_args', 0]},
+	a_manasiphon = {type = 'mana', value = ['parent_args', 'amount']},
 }
 var buffs = {}
+
+var stacks = {
+	spell_mastery = {}, #st1
+	thorns = {
+		type = 'stack',
+	},
+	vampirism = {
+		type = 'stack',
+	},
+	ench_commander = {},
+	commander = {},
+	warlock = {}, #st 1
+	manasiphon = {}, #st 1
+}

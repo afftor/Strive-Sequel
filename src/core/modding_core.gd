@@ -506,11 +506,6 @@ func fix_main_data():
 		if !val.has('percent'): val.percent = false
 		if !val.has('default_bonus'): val.default_bonus = 'add'
 		if !val.has('direct'): val.direct = false
-		if !val.has('custom_get'): val.custom_get = false
-		if !val.has('skip_process'): val.skip_process = false
-		if !val.has('is_negative'): val.is_negative = false
-		if !val.has('hidden'): val.hidden = false
-
 	
 	#fix worlddata, dungeons
 #	for i in worlddata.dungeons.values():

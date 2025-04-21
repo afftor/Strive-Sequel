@@ -126,17 +126,7 @@ func update(person = null, from_dialogue = false):
 # 	return person.get_current_location_desc()
 
 func rebuild_traits():
-#	var person = gui_controller.exploration.person_to_hire
-#	if person == null:
-#		person = current_person
 	input_handler.ClearContainer($ScrollContainer/traits)
-#	for i in person.statlist.traits: #this is counterintuitive - for those are listed under "sex traits" ingame - and there are a lot of them here
-#		var trait = Traitdata.traits[i]
-#		if trait.visible == false:
-#			continue
-#		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/traits)
-#		newnode.text = trait.name
-	
 	var traits = current_person.get_all_sex_traits()
 	
 	for i in traits:

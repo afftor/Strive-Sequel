@@ -243,7 +243,12 @@ func buildenemygroup(enemygroup):
 		if mboss:
 			tchar.tags.push_back("miniboss")
 			tchar.add_trait('miniboss')
-		
+		tchar.add_trait('core_trait')
+	
+	for i in enemygroup:
+		if enemygroup[i] == null:
+			continue
+		var tchar = characters_pool.get_char_by_id(enemygroup[i])
 		for stat in ['hpmax', 'xpreward']:
 			tchar.mul_stat(stat, combat_data.enemy_stats_mod)
 		for stat in ['atk', 'matk', 'armor']:
@@ -252,7 +257,6 @@ func buildenemygroup(enemygroup):
 			tchar.mul_stat(stat, min(combat_data.enemy_stats_mod, variables.survival_cap_secondary))
 		tchar.hp = tchar.get_stat("hpmax") * combat_data.hpmod
 		tchar.mp = tchar.get_stat("mpmax")
-		tchar.add_trait('core_trait')
 		battlefield[int(i)] = enemygroup[i]
 		make_fighter_panel(tchar, i)
 
@@ -261,7 +265,7 @@ func buildenemygroup(enemygroup):
 func buildplayergroup(group):
 	#to remake getting data from state
 	#operating this data was remade
-	var newgroup = {}
+	playergroup = {}
 	for i in group:
 		if int(i) > 6: break
 		if group[i] == null:
@@ -270,10 +274,12 @@ func buildplayergroup(group):
 		var fighter = ResourceScripts.game_party.characters[group[i]]
 		fighter.combatgroup = 'ally'
 		battlefield[int(i)] = fighter.id
-		make_fighter_panel(fighter, i)
-		newgroup[int(i)] = fighter.id #only change
+		playergroup[int(i)] = fighter.id #only change
+		fighter.setup_etb()
 	
-	playergroup = newgroup
+	for i in playergroup:
+		var fighter = characters_pool.get_char_by_id(playergroup[i])
+		make_fighter_panel(fighter, i)
 	fill_summons()
 
 
@@ -361,6 +367,7 @@ func checkdeaths():
 			#tchar.death()
 			tchar.defeated = true
 			tchar.hp = 0
+			input_handler.emit_signal('fighter_changed')
 			combatlogadd("\n" + tchar.get_short_name() + " has been defeated.\n")
 			for j in range(turnorder.size()):
 				if turnorder[j].pos == i:
@@ -410,8 +417,6 @@ func checkwinlose():
 			continue
 		if get_char_by_pos(i).defeated:
 			continue
-		if i in range(1,7):
-			get_char_by_pos(i).recheck_effect_tag('recheck_death')
 	return false
 
 
@@ -461,7 +466,6 @@ func newturn():
 	for i in playergroup.values() + enemygroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.process_event(variables.TR_TURN_S)
-		tchar.recheck_effect_tag('recheck_combat')
 		tchar.displaynode.rebuildbuffs()
 		#not sure about keeping all beyond - dis part, mb needs reworking
 		var cooldowncleararray = []
@@ -531,7 +535,7 @@ func player_turn():
 		use_skill(activeaction, selected_character, targ)
 		return
 	if selected_character.has_status('taunt_hard'):
-		var tchar = characters_pool.get_char_by_id(selected_character.taunt)
+		var tchar = characters_pool.get_char_by_id(selected_character.get_stat('taunt'))
 #		selected_character.taunt = null
 		if can_be_taunted(selected_character, tchar):
 			use_skill(selected_character.get_skill_by_tag('default'), selected_character, tchar)
@@ -597,7 +601,7 @@ func enemy_turn():
 		UpdateSkillTargets(fighter, activeaction_data, true)
 		target = get_random_target()
 	if fighter.has_status('taunt_hard'):
-		var targ = characters_pool.get_char_by_id(fighter.taunt)
+		var targ = characters_pool.get_char_by_id(fighter.get_stat('taunt'))
 #		fighter.taunt = null
 		if can_be_taunted(fighter, targ):
 			target = targ;
@@ -1005,10 +1009,14 @@ func get_allied_targets(fighter):
 	var res = []
 	if fighter.position in range(1, 7):
 		for p in playergroup.values():
-			if !characters_pool.get_char_by_id(p).defeated: res.push_back(characters_pool.get_char_by_id(p))
+			var tchar = characters_pool.get_char_by_id(p)
+			if !tchar.defeated:
+				res.push_back(tchar)
 	else:
 		for p in enemygroup.values():
-			if !characters_pool.get_char_by_id(p).defeated: res.push_back(characters_pool.get_char_by_id(p))
+			var tchar = characters_pool.get_char_by_id(p)
+			if !tchar.defeated:
+				res.push_back(tchar)
 	return res
 
 
@@ -1017,14 +1025,18 @@ func get_enemy_targets_all(fighter, hide_ignore = false):
 	if fighter.position in range(1, 7):
 		for p in enemygroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
-			if tchar.defeated: continue
-			if tchar.has_status('hide') and !hide_ignore: continue
+			if tchar.defeated: 
+				continue
+			if tchar.has_status('hide') and !hide_ignore: 
+				continue
 			res.push_back(tchar)
 	else:
 		for p in playergroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
-			if tchar.defeated: continue
-			if tchar.has_status('hide') and !hide_ignore: continue
+			if tchar.defeated: 
+				continue
+			if tchar.has_status('hide') and !hide_ignore: 
+				continue
 			res.push_back(tchar)
 	return res
 
@@ -1034,16 +1046,22 @@ func get_enemy_targets_melee(fighter, hide_ignore = false):
 	if fighter.position in range(1, 7):
 		for p in enemygroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
-			if tchar.defeated: continue
-			if tchar.has_status('hide') and !hide_ignore: continue
-			if CheckMeleeRange('enemy', hide_ignore) and tchar.position > 9: continue
+			if tchar.defeated: 
+				continue
+			if tchar.has_status('hide') and !hide_ignore: 
+				continue
+			if CheckMeleeRange('enemy', hide_ignore) and tchar.position > 9: 
+				continue
 			res.push_back(tchar)
 	else:
 		for p in playergroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
-			if tchar.defeated: continue
-			if tchar.has_status('hide') and !hide_ignore: continue
-			if CheckMeleeRange('ally', hide_ignore) and tchar.position > 3: continue
+			if tchar.defeated: 
+				continue
+			if tchar.has_status('hide') and !hide_ignore: 
+				continue
+			if CheckMeleeRange('ally', hide_ignore) and tchar.position > 3: 
+				continue
 			res.push_back(tchar)
 	return res
 
@@ -1494,16 +1512,14 @@ func FinishCombat(victory = true):
 				ch.is_active = true
 				ch.defeated = false
 				ch.combat_position = 0
-				var eff
+				var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
 				if ch.has_status('fastheal'):
-					eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury_alt)
+					ch.apply_effect_code('e_grave_injury', {duration = 8})
 				else:
-					eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
-				ch.apply_effect(effects_pool.add_effect(eff))
+					ch.apply_effect_code('e_grave_injury', {duration = 12})
 			else:
 				ch.killed()
 		ch.process_event(variables.TR_COMBAT_F)
-		ch.recheck_effect_tag('recheck_combat')
 	effects_pool.process_event(variables.TR_COMBAT_F)
 		#add permadeath check here
 	
@@ -1600,7 +1616,7 @@ func victory():
 		var tchar = characters_pool.get_char_by_id(i)
 		var gained_exp = exp_per_character# * tchar.get_stat('exp_gain_mod')
 		tchar.add_stat('base_exp', gained_exp)
-		tchar.add_stat('abil_exp', gained_exp)
+#		tchar.add_stat('abil_exp', gained_exp)
 		tchar.add_stat('metrics_win', 1)
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer2/HBoxContainer)
 		newbutton.hide()

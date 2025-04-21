@@ -146,18 +146,17 @@ func calculate_dmg():
 #		value *= (float(100 - reduction)/100.0)
 		
 	#damage resists
-	var mods = parent.target.get_stat('resist_damage')
 	reduction = 0
 	if parent.tags.has('aoe'):
-		reduction = mods.aoe
+		reduction = parent.target.get_stat('resist_aoe')
 	elif parent.target_range == 'any': #or add tags for this
-		reduction = mods.ranged
+		reduction = parent.target.get_stat('resist_ranged')
 	elif parent.target_range == 'melee': #or add tags for this
-		reduction = mods.melee
+		reduction = parent.target.get_stat('resist_melee')
 	if !template.nodef and !template.nomod and !parent.tags.has('nodef'):
 		value *= (float(100 - reduction)/100.0)
 	if parent.tags.has('heal'):
-		reduction = mods.heal
+		reduction = parent.target.get_stat('resist_heal')
 	if !template.nomod: #there may be errors due to damagestat templating
 		value *= (float(100 - reduction)/100.0)
 	

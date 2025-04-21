@@ -157,7 +157,7 @@ func update_characters():
 
 func update_status(newbutton, person):
 	var gatherable = Items.materiallist.has(person.get_work())
-	if person.get_work() == '' or person.get_work() == "Assignment" or person.get_work() == "disabled":
+	if person.get_work() == '' or !person.is_avaliable():
 		if !person.is_on_quest():
 			newbutton.get_node("Status").texture = load("res://assets/images/gui/gui icons/icon_bedlimit.png")
 	elif person.get_work() == 'special':

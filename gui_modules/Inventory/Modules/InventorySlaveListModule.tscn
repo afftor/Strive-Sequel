@@ -180,7 +180,7 @@ custom_fonts/font = ExtResource( 10 )
 text = "25"
 clip_text = true
 
-[node name="timid_factor" type="Label" parent="InventoryFactorsModule/factors1" groups=["hide_master"]]
+[node name="authority_factor" type="Label" parent="InventoryFactorsModule/factors1" groups=["hide_master"]]
 margin_top = 138.0
 margin_right = 60.0
 margin_bottom = 180.0
@@ -192,7 +192,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 16 )
 text = "TMD"
 
-[node name="Label" type="Label" parent="InventoryFactorsModule/factors1/timid_factor"]
+[node name="Label" type="Label" parent="InventoryFactorsModule/factors1/authority_factor"]
 margin_left = 69.2385
 margin_top = 3.0
 margin_right = 165.0

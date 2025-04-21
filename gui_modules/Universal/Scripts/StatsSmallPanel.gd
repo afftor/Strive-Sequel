@@ -35,7 +35,7 @@ func fill(fighter):
 		if res == 'all': continue
 		var res_panel = input_handler.DuplicateContainerTemplate($stats, 'resist')
 		res_panel.get_node('label').text = tr(statdata.statdata['resist_' + res].name).replace(" Resist", "")
-		var val = fighter.get_stat('resists')[res]
+		var val = fighter.get_stat('resist_'+ res)
 		if val == null or val == 0:
 			res_panel.get_node("icon/subicon").visible = false
 			res_panel.get_node("icon").texture = load("res://assets/Textures_v2/BATTLE/Icons/yellow_icon.png")

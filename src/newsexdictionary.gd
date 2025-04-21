@@ -1,5 +1,5 @@
 extends Reference
-
+#I DO THINK THAT CONSENT CONDITIONS HERE ARE ALL WRONG DUE TO STAT BEING INT NOW!!!!!
 #linksets
 const linksets = {
 

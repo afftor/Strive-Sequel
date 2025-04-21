@@ -157,57 +157,18 @@ func gear_tooltip(data, item = null):
 	$InfoText3.hide()
 
 
-func gear_detailed_tooltip(data, item = null):
-	gear_tooltip(data, item)
-	item = data.item
+func gear_detailed_tooltip(data1, item = null):
+	gear_tooltip(data1, item)
+	item = data1.item
 	if item.parts.size() == 0:
 		return
-	$Title.text = data.item.name
+	$Title.text = data1.item.name
 	var text = ''
 	for i in item.parts:
 		var material = Items.materiallist[item.parts[i]]
 		text += tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}"
-		for k in material.parts[i]:
-			if material.parts[i][k] != 0:
-				var value = material.parts[i][k]
-				var change = ''
-				text += '\n' + statdata.statdata[k].name + ': {color='
-				match statdata.statdata[k].default_bonus:
-					"add":
-						if statdata.statdata[k].percent:
-							value = value*100
-						if value > 0:
-							change = '+'
-						if value > 0 and !statdata.statdata[k].is_negative or value < 0 and statdata.statdata[k].is_negative:
-							text += 'green|' + change
-						else:
-							text += 'red|'
-						value = str(value)
-						if statdata.statdata[k].percent:
-							value = value + '%'
-					"add_part":
-						value = value*100
-						if value > 0:
-							change = '+'
-						if value > 0 and !statdata.statdata[k].is_negative or value < 0 and statdata.statdata[k].is_negative:
-							text += 'green|' + change
-						else:
-							text += 'red|'
-						value = str(value)
-						value = value + '%'
-					"mul":
-						value = value - 1.0
-						value = value*100
-						if value > 0:
-							change = '+'
-						if value > 0 and !statdata.statdata[k].is_negative or value < 0 and statdata.statdata[k].is_negative:
-							text += 'green|' + change
-						else:
-							text += 'red|'
-						value = str(value)
-						value = value + '%'
-				text +=  value + '}'
-		text += '\n'
+		text += globals.build_desc_for_bonusstats(material.parts[i])
+		text += '\n\n'
 #		for k in material.parts[i]:
 #			text += "\n" + Items.stats[k] + " " + str(material.parts[i][k])
 	$InfoText3.bbcode_text = globals.TextEncoder(text)
@@ -216,8 +177,8 @@ func gear_detailed_tooltip(data, item = null):
 	$InfoText3.show()
 	get_stylebox("panel", "" ).set_texture(load("res://assets/Textures_v2/DisassembleNewTooltip/panel_tooltip_shift.png"))
 
-func geartemplete_tooltip(data):
-	var item = data.item
+func geartemplete_tooltip(data1):
+	var item = data1.item
 	var text = '[center]' + item.name + '[/center]\n'
 
 	if item.has('geartype'):
@@ -234,53 +195,14 @@ func geartemplete_tooltip(data):
 
 	if item.itemtype in ['armor','weapon','tool']:
 		text += "\n\n"
-		for i in item.basestats:
-			if item.basestats[i] != 0:
-				var value = item.basestats[i]
-				var change = ''
-				text += '\n' + statdata.statdata[i].name + ': {color='
-				match statdata.statdata[i].default_bonus:
-					"add":
-						if statdata.statdata[i].percent:
-							value = value*100
-						if value > 0:
-							change = '+'
-						if value > 0 and !statdata.statdata[i].is_negative or value < 0 and statdata.statdata[i].is_negative:
-							text += 'green|' + change
-						else:
-							text += 'red|'
-						value = str(value)
-						if statdata.statdata[i].percent:
-							value = value + '%'
-					"add_part":
-						value = value*100
-						if value > 0:
-							change = '+'
-						if value > 0 and !statdata.statdata[i].is_negative or value < 0 and statdata.statdata[i].is_negative:
-							text += 'green|' + change
-						else:
-							text += 'red|'
-						value = str(value)
-						value = value + '%'
-					"mul":
-						value = value - 1.0
-						value = value*100
-						if value > 0:
-							change = '+'
-						if value > 0 and !statdata.statdata[i].is_negative or value < 0 and statdata.statdata[i].is_negative:
-							text += 'green|' + change
-						else:
-							text += 'red|'
-						value = str(value)
-						value = value + '%'
-				text +=  value + '}'
+		text += globals.build_desc_for_bonusstats(item.basestats)
 
 
 	for i in item.effects:
 		text += "\n" + tr(Effectdata.effect_table[i].descript)
 	
 	iconnode.texture = item.icon
-	$Cost/Label.text = str(data.price)
+	$Cost/Label.text = str(data1.price)
 
 
 

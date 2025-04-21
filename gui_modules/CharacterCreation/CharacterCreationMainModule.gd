@@ -66,7 +66,7 @@ var freemode_fixed_stats = [
 	"physics_factor",
 	"magic_factor",
 	"tame_factor",
-	"timid_factor",
+	"authority_factor",
 	"growth_factor",
 	"charm_factor",
 	"wits_factor",
@@ -125,7 +125,7 @@ var params_to_save = [ #memo mostly
 	"sexuals_factor",
 	"magic_factor",
 	"tame_factor",
-	"timid_factor",
+	"authority_factor",
 	"professions",
 	#added
 	"skin_coverage",
@@ -274,7 +274,7 @@ func build_possible_val_for_stat(stat):
 		return
 	if stat.ends_with('factor'):
 		possible_vals[stat] = [1, 2, 3, 4, 5, 6]
-		if stat in ['timid_factor','tame_factor'] and mode == 'master':
+		if stat in ['authority_factor','tame_factor'] and mode == 'master':
 			possible_vals[stat] = []
 		return
 	if stat == 'slave_class':
@@ -471,7 +471,7 @@ func build_node_for_stat(stat):
 		node.get_node('button/LArr').visible = (id > 0)
 		node.get_node('button/RArr').visible = (id < possible_vals[stat].size() - 1)
 	
-	if stat in ["physics_factor", "wits_factor", "charm_factor", "sexuals_factor", "magic_factor", "tame_factor", "timid_factor",]:
+	if stat in ["physics_factor", "wits_factor", "charm_factor", "sexuals_factor", "magic_factor", "tame_factor", "authority_factor",]:
 		var id = possible_vals[stat].find(val)
 		node.get_node('button/LArr').disabled = !(id > 0)
 		node.get_node('button/RArr').disabled = !(id < possible_vals[stat].size() - 1)
@@ -579,7 +579,7 @@ func unassigned_points():
 	
 	else:
 		points = variables.slave_starting_stats + 7
-		for st in ['physics_factor','wits_factor','charm_factor','sexuals_factor', 'tame_factor', 'timid_factor', "magic_factor"]:
+		for st in ['physics_factor','wits_factor','charm_factor','sexuals_factor', 'tame_factor', 'authority_factor', "magic_factor"]:
 			points -= int(person.get_stat(st))
 	return points
 
@@ -596,7 +596,7 @@ func update_points(): #visual only
 
 
 func reset_points():
-	for st in ['physics_factor','wits_factor','charm_factor','sexuals_factor', 'tame_factor', 'timid_factor', 'magic_factor']:
+	for st in ['physics_factor','wits_factor','charm_factor','sexuals_factor', 'tame_factor', 'authority_factor', 'magic_factor']:
 		person.set_stat(st, 1)
 		preservedsettings.erase(st)
 
@@ -785,7 +785,7 @@ func rebuild_slave():
 	person = t_person
 	
 	build_possible_vals()
-	for stat in ["physics_factor", "magic_factor", "tame_factor", "timid_factor", "charm_factor", "wits_factor", "sexuals_factor"]:
+	for stat in ["physics_factor", "magic_factor", "tame_factor", "authority_factor", "charm_factor", "wits_factor", "sexuals_factor"]:
 		person.set_stat(stat, 1)
 	apply_preserved_settings()
 	FillStats()
@@ -856,7 +856,7 @@ func finish_character():
 		else:
 			person.set_slave_category('master')
 			person.set_stat('consent', 100)
-			person.set_stat('timid_factor', 5)
+			person.set_stat('authority_factor', 5)
 			globals.equip_char(person, 'chest_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
 			globals.equip_char(person, 'legs_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
 		ResourceScripts.game_party.add_slave(person)
@@ -865,9 +865,8 @@ func finish_character():
 		input_handler.add_random_chat_message(person, 'hire')
 	else:
 		ResourceScripts.game_res.money -= upgradecostgold
-#		person.statlist.body_upgrades = cur_upgrades.duplicate()
 		if upgrades_removal :
-			for upg in person.statlist.body_upgrades.duplicate():
+			for upg in person.get_body_upgrades():
 				if !cur_upgrades.has(upg):
 					person.remove_upgrade(upg)
 		for upg in cur_upgrades:
@@ -1233,7 +1232,6 @@ func confirm_return():
 ##	print(person.get_stat("age"))
 ##	print(person.get_stat("race"))
 ##	print(person.get_full_name())
-#	print("Sex Traits:", person.statlist.sex_traits)
 
 
 func hide_all_dialogues():
@@ -1250,7 +1248,7 @@ var upgrades_removal = false
 func init_upgrades():
 	upgradecost = 0
 	upgradecostgold = 0
-	cur_upgrades = person.statlist.body_upgrades.duplicate()
+	cur_upgrades = person.get_body_upgrades()
 
 
 func build_upgrades(): #check confirmation at the same time
@@ -1270,7 +1268,7 @@ func build_upgrades(): #check confirmation at the same time
 		else:
 			newnode.get_node('icon').texture = upgdata.icon
 		if cur_upgrades.has(upg):
-			if person.statlist.body_upgrades.has(upg):
+			if person.get_body_upgrades().has(upg):
 				if upgrades_removal:
 					newnode.connect('pressed', self, 'toggle_upgrade', [upg])
 				else:
@@ -1289,7 +1287,7 @@ func build_upgrades(): #check confirmation at the same time
 		else:
 			newnode.pressed = false
 			newnode.connect('pressed', self, 'toggle_upgrade', [upg])
-			if person.statlist.body_upgrades.has(upg): #ipgrades_removal on, id was removed
+			if person.has_body_upgrade(upg): 
 				upgradecost -= upgdata.cost
 			if !person.checkreqs(upgdata.reqs):
 				newnode.disabled = true

@@ -269,7 +269,6 @@ func change_mastery(mas):
 		'spell':
 			$MasteryPanel/AddPoint/TextureRect.texture = images.get_icon('mastery_point_magic')
 	var lv = person.get_stat('mastery_' + mas)
-	var lv_pas = person.xp_module.get_mastery_level(mas)
 	text = tr('ADD_MASTERY_CONFIRM')
 	text_1 = tr("ADD_MASTERY_CONFIRM_UNIVERSAL")
 #	text += globals.build_desc_for_bonusstats(masdata.passive)

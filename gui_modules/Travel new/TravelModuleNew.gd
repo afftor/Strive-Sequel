@@ -375,7 +375,7 @@ func make_panel_for_character(panel, ch):
 	newbutton.get_node("stats").hint_tooltip = "HP: " + str(round(ch.hp)) + "/" + str(round(ch.get_stat('hpmax'))) + "\nMP: " + str(round(ch.mp)) + "/" + str(round(ch.get_stat('mpmax')))
 	
 	var gatherable = Items.materiallist.has(ch.get_work())
-	if ch.get_work() == '' or  ch.get_work() == "Assignment" or ch.get_work() == 'disabled':
+	if ch.get_work() == '' or  !ch.is_avaliable():
 		if ch.is_on_quest():
 			panel.disabled = true
 			var time_left = int(ch.get_quest_time_remains())

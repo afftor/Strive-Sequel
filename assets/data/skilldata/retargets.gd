@@ -33,20 +33,15 @@ var effects = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
 		req_skill = true,
-		args = [{obj = 'parent', param = 'caster'}, {obj = 'parent', param = 'target'}],
 		sub_effects = ['defend_temp', 'defend_mark'],
 		buffs = []
 	},
 	defend_mark = {
 		type = 'temp_s',
 		target = 'caster',
-		name = 'defender',
-		stack = 1,
+		stack = 'defender',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		tags = ['defender'],
-		args = [], 
-		sub_effects = [],
-		atomic = [],
 		buffs = ['b_defender'],
 	},
 	defend_temp = {
@@ -54,15 +49,12 @@ var effects = {
 		tags = ['duration_none', 'defended'],
 		target = 'target',
 		name = 'defended',
-		stack = 0,
 		timers = [
 			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
 			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
 		],
-		args = [{obj = 'parent_args', param = 0}],
+		args = {defender = {obj = 'parent', func = 'arg', arg = 'caster'}},
 		sub_effects = ['defend_retarget', 'defend_reduce'],
-		atomic = [],
-		buffs = [],
 	},
 	defend_retarget = {
 		type = 'trigger',
@@ -70,23 +62,22 @@ var effects = {
 			{type = 'skill', value = ['tags', 'has', 'damage']},
 			{type = 'skill', value = ['tags', 'hasno', 'aoe']},
 			{type = 'owner', value = [{code = 'has_status', status = 'defender', check = false}]},
-			{type = 'arg', value = [{code = 'has_status', status = 'disable', check = false}]},
+			{type = 'defender', value = [{code = 'has_status', status = 'disable', check = false}]},
 			],
 		trigger = [variables.TR_DEF],
 		req_skill = true,
-		args = [{obj = 'parent_args', param = 0}],
+		args = {defender = {obj = 'parent', func = 'arg', arg = 'defender'}},
 		sub_effects = [
 			{
 				type = 'oneshot',
-				target = 'arg',
-				args = [{obj = 'parent_args', param = 0}],
+				target = 'defender',
 				atomic = [{type = 'sfx', value = 'targetattack'}],
 			},
 			{
 				type = 'oneshot',
 				target = 'skill',
-				args = [{obj = 'parent_args', param = 0}],
-				atomic = [{type = 'stat_set', stat = 'target', value = ['parent_args', 0]}],
+				args = {defender = {obj = 'parent', func = 'arg', arg = 'defender'}},
+				atomic = [{type = 'stat_set', stat = 'target', value = ['parent_args', 'defender']}],
 			},
 		],
 		buffs = []
@@ -97,16 +88,15 @@ var effects = {
 			{type = 'skill', value = ['tags', 'has', 'damage']},
 			{type = 'skill', value = ['tags', 'has', 'aoe']},
 			{type = 'owner', value = [{code = 'has_status', status = 'defender', check = false}]},
-			{type = 'arg', value = [{code = 'has_status', status = 'disable', check = false}]},
+			{type = 'defender', value = [{code = 'has_status', status = 'disable', check = false}]},
 			],
 		trigger = [variables.TR_DEF],
 		req_skill = true,
-		args = [{obj = 'parent_args', param = 0}],
+		args = {defender = {obj = 'parent', func = 'arg', arg = 'defender'}},
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'skill',
-				args = [{obj = 'parent_args', param = 0}],
 				atomic = [{type = 'stat_mul', stat = 'value', value = 0.25}],
 			},
 		],
@@ -129,4 +119,8 @@ var buffs = {
 		limit = 1,
 		t_name = 'defended'
 	},
+}
+
+var stacks = {
+	defender = {} #st 1
 }

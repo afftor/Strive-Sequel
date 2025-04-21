@@ -349,8 +349,8 @@ func use_e_combat_skill(caster, target, skill):
 	s_skill1.createfromskill(skill)
 	s_skill1.setup_caster(caster)
 	#s_skill1.setup_target(target)
-	s_skill1.process_event(variables.TR_CAST)
-	caster.process_event(variables.TR_CAST, s_skill1)
+	s_skill1.process_event(variables.TR_CAST, {skill = s_skill1, caster = caster, target = target})
+	caster.process_event(variables.TR_CAST, {skill = s_skill1, caster = caster, target = target})
 	var targets
 	for n in range(s_skill1.repeat):
 		match skill.target_number:
@@ -391,9 +391,9 @@ func use_e_combat_skill(caster, target, skill):
 				s_skill2.resolve_value(true)
 				s_skill2_list.push_back(s_skill2)
 		for s_skill2 in s_skill2_list:
-			s_skill2.process_event(variables.TR_HIT)
-			s_skill2.caster.process_event(variables.TR_HIT, s_skill2)
-			s_skill2.target.process_event(variables.TR_DEF, s_skill2)
+			s_skill2.process_event(variables.TR_HIT, {skill = s_skill2, caster = caster, target = target})
+			s_skill2.caster.process_event(variables.TR_HIT, {skill = s_skill2, caster = caster, target = target})
+			s_skill2.target.process_event(variables.TR_DEF, {skill = s_skill2, caster = caster, target = target})
 			s_skill2.setup_effects_final()
 		for s_skill2 in s_skill2_list:
 			if s_skill2.hit_res == variables.RES_MISS:
@@ -401,14 +401,14 @@ func use_e_combat_skill(caster, target, skill):
 			else:
 				execute_skill(s_skill2)
 		for s_skill2 in s_skill2_list:
-			s_skill2.process_event(variables.TR_EXPLORE_POSTDAMAGE)
-			s_skill2.caster.process_event(variables.TR_EXPLORE_POSTDAMAGE, s_skill2)
+			s_skill2.process_event(variables.TR_EXPLORE_POSTDAMAGE, {skill = s_skill2, caster = caster, target = target})
+			s_skill2.caster.process_event(variables.TR_EXPLORE_POSTDAMAGE, {skill = s_skill2, caster = caster, target = target})
 			if s_skill2.target.hp <= 0:
 				s_skill2.process_event(variables.TR_KILL)
-				s_skill2.caster.process_event(variables.TR_KILL, s_skill2)
+				s_skill2.caster.process_event(variables.TR_KILL, {skill = s_skill2, caster = caster, target = target})
 			s_skill2.remove_effects()
-	s_skill1.process_event(variables.TR_SKILL_FINISH)
-	caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
+	s_skill1.process_event(variables.TR_SKILL_FINISH, {skill = s_skill1, caster = caster, target = target})
+	caster.process_event(variables.TR_SKILL_FINISH, {skill = s_skill1, caster = caster, target = target})
 	s_skill1.remove_effects()
 	for i in skill.sounddata.values():
 		if i != null:

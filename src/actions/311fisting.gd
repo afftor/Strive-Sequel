@@ -54,7 +54,7 @@ func initiate():
 		text += "[name1] {^easily:effortlessly} {^get:work:slip:slide}[s/1] [his1] {^hand:fist} into [names2] [pussy2]"
 	else:
 		text += "[name1] {^slowly:carefully} {^get:work:slip:slide}[s/1] [his1] {^hand:fist} into [names2] [pussy2]"
-	if takers[0].person.get_stat('vaginal_virgin') == true:
+	if takers[0].person.get_stat('vaginal_virgin'):
 		text += ", claiming [his2] virginity as it rips through [his2] hymen."
 	else:
 		text += ", {^driving:pumping:pushing} [his1] it in and out."

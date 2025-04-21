@@ -99,6 +99,11 @@ func process_check(check:Array):
 				for val in template.value:
 					if val.source == op2: return false
 				return true
+			elif check[1] == 'in':
+				for val in template.value:
+					if val.source in op2: 
+						return true
+				return false
 		else:
 			op1 = get(op1)
 			return input_handler.operate(check[1], op1, op2)
@@ -143,7 +148,6 @@ func apply_effect(eff):
 	var obj = effects_pool.get_effect_by_id(eff)
 	match obj.template.type:
 		'trigger':
-			obj.set_args('skill', self)
 			effects.push_back(obj.id)
 			obj.apply()
 		'oneshot':
@@ -156,13 +160,12 @@ func remove_effects():
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
 
-func process_event(ev):
+func process_event(ev, data = {}):
 	for e in effects:
 		var eff = effects_pool.get_effect_by_id(e)
-		eff.set_args('skill', self)
-		eff.process_event(ev)
+		eff.process_act(ev, data)
 	for instance in instances:
-		instance.process_event(ev)
+		instance.process_event(ev, data)
 
 
 #real queue part
@@ -186,7 +189,7 @@ func invoke_init():
 	
 	process_event(variables.TR_CAST_TARGET) 
 	if !parent.tags.has('passive'):
-		target.process_event(variables.TR_CAST_TARGET, self)
+		target.process_event(variables.TR_CAST_TARGET, {skill = self, caster = caster, target = target})
 		effects_pool.process_event(variables.TR_CAST_TARGET, target)
 	
 	affected_targets = combatnode.CalculateTargets(self, target, true)
@@ -243,10 +246,10 @@ func invoke_instancing():
 			#place for non-existing another trigger
 			s_skill2.process_event(variables.TR_PREHIT)
 			if parent.mode != variables.SKILL_AUTO and !parent.tags.has('passive'): 
-				s_skill2.caster.process_event(variables.TR_PREHIT, s_skill2)
+				s_skill2.caster.process_event(variables.TR_PREHIT, {skill = s_skill2, caster = caster, target = s_skill2.target})
 				effects_pool.process_event(variables.TR_PREHIT, s_skill2.caster)
 			if !parent.tags.has('passive'):
-				s_skill2.target.process_event(variables.TR_PREDEF, s_skill2)
+				s_skill2.target.process_event(variables.TR_PREDEF, {skill = s_skill2, caster = caster, target = s_skill2.target})
 				effects_pool.process_event(variables.TR_PREDEF, s_skill2.target)
 			
 			s_skill2.hit_roll()
@@ -262,10 +265,10 @@ func invoke_predamage():
 	for s_skill2 in instances:
 		s_skill2.process_event(variables.TR_HIT)
 		if parent.mode != variables.SKILL_AUTO and !parent.tags.has('passive'): 
-			s_skill2.caster.process_event(variables.TR_HIT, s_skill2)
+			s_skill2.caster.process_event(variables.TR_HIT, {skill = s_skill2, caster = caster, target = s_skill2.target})
 			effects_pool.process_event(variables.TR_HIT, s_skill2.caster)
 		if !parent.tags.has('passive'):
-			s_skill2.target.process_event(variables.TR_DEF, s_skill2)
+			s_skill2.target.process_event(variables.TR_DEF, {skill = s_skill2, caster = caster, target = s_skill2.target})
 			effects_pool.process_event(variables.TR_DEF, s_skill2.target)
 		s_skill2.setup_effects_final()
 	combatnode.turns += 1
@@ -303,17 +306,17 @@ func invoke_postdamage():
 	for s_skill2 in instances:
 		s_skill2.process_event(variables.TR_POSTDAMAGE)
 		if parent.mode != variables.SKILL_AUTO and !parent.tags.has('passive'): 
-			s_skill2.caster.process_event(variables.TR_POSTDAMAGE, s_skill2)
+			s_skill2.caster.process_event(variables.TR_POSTDAMAGE, {skill = s_skill2, caster = caster, target = s_skill2.target})
 			effects_pool.process_event(variables.TR_POSTDAMAGE, s_skill2.caster)
 		if s_skill2.target.hp <= 0:
 			process_event(variables.TR_KILL)
 			if parent.mode != variables.SKILL_AUTO and !parent.tags.has('passive'): 
-				caster.process_event(variables.TR_KILL, self)
-				effects_pool.process_event(variables.TR_KILL, caster)
+				caster.process_event(variables.TR_KILL, {skill = self, caster = caster, target = target})
+				effects_pool.process_event(variables.TR_KILL, {skill = self, caster = caster, target = s_skill2.target})
 				caster.add_stat('metrics_kills', 1)
 		else:
 			if !parent.tags.has('passive'):
-				s_skill2.target.process_event(variables.TR_POST_TARG, s_skill2)
+				s_skill2.target.process_event(variables.TR_POST_TARG, {skill = s_skill2, caster = caster, target = s_skill2.target})
 				effects_pool.process_event(variables.TR_POST_TARG, s_skill2.target)
 		if s_skill2.target.displaynode != null:
 			s_skill2.target.displaynode.rebuildbuffs()

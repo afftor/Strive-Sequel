@@ -23,123 +23,128 @@ func setup_skills(data):
 	#attention! counterintuitive naming is for a keeping compartibility with simple fighters templating, where 'skills' are for combat skills
 	if data.has('skills'):
 		for skill in data.skills:
-			learn_c_skill(skill, true)
+			learn_c_skill(skill)
 	if data.has('civ_skills'):
 		for skill in data.civ_skills:
-			learn_skill(skill, true)
+			learn_skill(skill)
 	if !combat_skills.has("ranged_attack") and !combat_skills.has('attack'):
 		combat_skills.push_back('attack')
 
-func get_damage_mod(skill:Dictionary):
+
+func get_damage_mod(skill):
 	#stub. needs filling
-	var damage_mods = parent.get_ref().get_stat('damage_mods')
-	if skill.type == 'social' or damage_mods.empty(): return 1
-	var res = damage_mods['all']
-	if skill.target_range == 'melee' and damage_mods.has('melee'): res *= damage_mods['melee']
-	if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'melee' and damage_mods.has('melee'): res *= damage_mods['melee']
-	if skill.target_range == 'any' and damage_mods.has('ranged'): res *= damage_mods['ranged']
-	if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'any' and damage_mods.has('ranged'): res *= damage_mods['ranged']
-	if skill.ability_type == 'skill' and damage_mods.has('skill'): res *= damage_mods['skill']
-	if skill.ability_type == 'spell' and damage_mods.has('spell'): res *= damage_mods['spell']
-	if skill.tags.has('aoe') and damage_mods.has('aoe'): res *= damage_mods['aoe'] 
-	if skill.tags.has('heal') and skill.ability_type != 'item' and damage_mods.has('heal'): res *= damage_mods['heal'] 
+	if skill.type == 'social': 
+		return 1
+	var res = parent.get_ref().get_stat('damage_mod_all')
+	if skill.target_range == 'melee': 
+		res *= parent.get_ref().get_stat('damage_mod_melee')
+	if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'melee': 
+		res *= parent.get_ref().get_stat('damage_mod_melee')
+	if skill.target_range == 'any': 
+		res *= parent.get_ref().get_stat('damage_mod_ranged')
+	if skill.target_range == 'weapon' and parent.get_ref().get_weapon_range() == 'any':
+		 res *= parent.get_ref().get_stat('damage_mod_ranged')
+	if skill.ability_type == 'skill': 
+		res *= parent.get_ref().get_stat('damage_mod_skill')
+	if skill.ability_type == 'spell': 
+		res *= parent.get_ref().get_stat('damage_mod_spell')
+	if skill.tags.has('aoe'): 
+		res *= parent.get_ref().get_stat('damage_mod_aoe')
+	if skill.tags.has('heal') and skill.ability_type != 'item': 
+		res *= parent.get_ref().get_stat('damage_mod_heal')
 	
 	return res
+
 
 func get_manacost_for_skill(skill):
 	var res = 0
 	if skill.has('cost') and skill.cost.has('mp'):
 		res = skill.cost.mp
 	res *= parent.get_ref().get_stat('manacost_mod')
-	var dict = parent.get_ref().get_stat('manacost_mods')
-	for st in variables.damage_mods_list:
-		if skill.tags.has(st):
-			res *= dict[st]
+	for st in skill.tags:
+		if statdata.statdata.has('manacost_mod_' + st):
+			res *= parent.get_ref().get_stat('manacost_mod_' + st)
 	return res
 
 
-func get_value_damage_mod(skill_val:Dictionary):
+func get_value_damage_mod(skill_val):
 	#stub. needs filling
-	var damage_mods = parent.get_ref().get_stat('damage_mods')
-	var res = 1.0
-	if damage_mods.has(skill_val.source): res *= damage_mods[skill_val.source]
+	var res = parent.get_ref().get_stat('damage_mod_' + skill_val.damage_type)
 	return res
 
-func get_combat_skills():
-	return combat_skills
 
-func fill_combatskills():
-	for i in range(combat_skills.size()):
-		combat_skill_panel[i + 1] = combat_skills[i]
+func get_learned_skills(cat):
+	match cat:
+		'social':
+			return social_skills
+		'combat':
+			return combat_skills
+		'explore':
+			return explore_skills
 
 
-func has_skill(id):
-	return social_skills.has(id) or combat_skills.has(id) or explore_skills.has(id)
+func fix_skillpanels():
+	var list =  parent.get_ref().get_combat_skills()
+	var pos = 1
+	for skill in list:
+		if combat_skill_panel.values().has(skill):
+			continue
+		while combat_skill_panel.has(pos) and list.has(combat_skill_panel[pos]):
+			pos += 1
+		if pos > 21:
+			break
+		combat_skill_panel[pos] = skill
+	list =  parent.get_ref().get_social_skills()
+	pos = 1
+	for skill in list:
+		if social_skill_panel.values().has(skill):
+			continue
+		while social_skill_panel.has(pos) and list.has(social_skill_panel[pos]):
+			pos += 1
+		if pos > 11:
+			break
+		social_skill_panel[pos] = skill
 
 
-func learn_skill(skill, free = false):
+func learn_skill(skill):
 	var skilldata = Skilldata.Skilllist[skill]
 	if !social_skills.has(skill):
-		if skilldata.has('learn_cost') and !free:
-			parent.get_ref().add_stat('abil_exp', -skilldata.learn_cost)
 		social_skills.append(skill)
-		if social_skill_panel.size() < 11:
-			for i in range(1,12):
-				if social_skill_panel.has(i) == false:
-					social_skill_panel[i] = skill
-					break
+	fix_skillpanels()
 
-func learn_c_skill(skill, free = false):
+
+func learn_c_skill(skill):
 	var skilldata = Skilldata.Skilllist[skill]
 	if !combat_skills.has(skill):
-		if skilldata.has('learn_cost') and !free:
-			parent.get_ref().add_stat('abil_exp', -skilldata.learn_cost)
 		combat_skills.append(skill)
-		if combat_skill_panel.size() < 21:
-			for i in range(1,22):
-				if combat_skill_panel.has(i) == false:
-					combat_skill_panel[i] = skill
-					break
-	else:
-		if skilldata.has('learn_cost') and free:
-			parent.get_ref().add_stat('abil_exp', skilldata.learn_cost)
 
 
 func learn_e_skill(skill, free = false):
 	var skilldata = Skilldata.Skilllist[skill]
 	if !explore_skills.has(skill):
-		if skilldata.has('learn_cost') and !free:
-			parent.get_ref().add_stat('abil_exp', -skilldata.learn_cost)
 		explore_skills.append(skill)
-	else:
-		if skilldata.has('learn_cost') and free:
-			parent.get_ref().add_stat('abil_exp', skilldata.learn_cost)
 
 
 func unlearn_skill(skill):
-	if !parent.get_ref().xp_module.check_skill_prof(skill):
-		social_skills.erase(skill)
-		social_cooldowns.erase(skill)
-		daily_cooldowns.erase(skill)
-		social_skills_charges.erase(skill)
-		for i in range(1,12):
-			if social_skill_panel.has(i) and social_skill_panel[i] == skill: social_skill_panel.erase(i)
+	social_skills.erase(skill)
+	social_cooldowns.erase(skill)
+	daily_cooldowns.erase(skill)
+	social_skills_charges.erase(skill)
+	for i in range(1,12):
+		if social_skill_panel.has(i) and social_skill_panel[i] == skill: social_skill_panel.erase(i)
 
 
 func unlearn_c_skill(skill):
-	if !parent.get_ref().xp_module.check_skill_prof(skill):
-		combat_skills.erase(skill)
-		combat_cooldowns.erase(skill)
-		daily_cooldowns.erase(skill)
-#		combat_skills_charges.erase(skill)
-		for i in range(1,22):
-			if combat_skill_panel.has(i) and combat_skill_panel[i] == skill: combat_skill_panel.erase(i)
+	combat_skills.erase(skill)
+	combat_cooldowns.erase(skill)
+	daily_cooldowns.erase(skill)
+	for i in range(1,22):
+		if combat_skill_panel.has(i) and combat_skill_panel[i] == skill: combat_skill_panel.erase(i)
+
 
 func unlearn_e_skill(skill):
-	if !parent.get_ref().xp_module.check_skill_prof(skill):
-		explore_skills.erase(skill)
-		daily_cooldowns.erase(skill)
-#		combat_skills_charges.erase(skill)
+	explore_skills.erase(skill)
+	daily_cooldowns.erase(skill)
 
 
 func cooldown_tick():
@@ -182,11 +187,13 @@ func skill_tooltip(skillcode): #??
 	text += "[center]" + skill.name + "[/center]\n" + skill.descript
 	return text
 
+
 func get_skill_by_tag(tg):
-	for s in combat_skills:
+	for s in parent.get_ref().get_combat_skills():
 		var s_f = Skilldata.get_template(s, parent.get_ref())
 		if s_f.tags.has(tg): return s
 	return null
+
 
 func restore_skill_charge(code):
 	if social_skills_charges.has(code):
@@ -199,7 +206,6 @@ func restore_skill_charge(code):
 		if ResourceScripts.game_party.global_skills_used[code] <= 0:
 			ResourceScripts.game_party.global_skills_used.erase(code)
 	gui_controller.mansion.SkillModule.build_skill_panel()
-
 
 
 func use_social_skill(s_code, target, item):
@@ -287,15 +293,15 @@ func use_social_skill(s_code, target, item):
 	s_skill.createfromskill(template)
 	s_skill.setup_caster(parent.get_ref())
 	s_skill.setup_target(target)
-	s_skill.process_event(variables.TR_CAST)
+	s_skill.process_event(variables.TR_CAST, {skill = s_skill})
 	s_skill.setup_final()
 	s_skill.hit_roll()
 	s_skill.resolve_value(true)
 	s_skill.apply_random()
 	s_skill.setup_effects_final()
-	parent.get_ref().process_event(variables.TR_S_CAST, s_skill)
+	parent.get_ref().process_event(variables.TR_S_CAST, {skill = s_skill, caster = parent.get_ref(), target = target})
 	if target != null:
-		target.process_event(variables.TR_S_TARGET, s_skill)
+		target.process_event(variables.TR_S_TARGET, {skill = s_skill, caster = parent.get_ref(), target = target})
 	#assumption that no social skill will have more than 1 repeat or target_number 
 	#s_skill.calculate_dmg() not really needed
 	#to implement not fully described social chance-to-success system 
@@ -316,11 +322,10 @@ func use_social_skill(s_code, target, item):
 		if i.damagestat == 'no_stat':
 			if template.has('process_no_stat'):
 				for h in targ_fin:
-					for e in s_skill.effects:
-						var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-						eff.set_args('receiver', h)
-						eff.process_event(variables.TR_SOC_SPEC)
-						eff.set_args('receiver', null)
+					s_skill.process_event(variables.TR_SOC_SPEC, {skill = s_skill, caster = parent.get_ref(), target = target, receiver = h})
+#					for e in s_skill.effects:
+#						var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+#						eff.process_act(variables.TR_SOC_SPEC, {skill = s_skill, caster = parent.get_ref(), target = target, receiver = h})
 			continue
 #		var detail_tags = []
 		for h in targ_fin:
@@ -460,12 +465,12 @@ func use_social_skill(s_code, target, item):
 		
 		input_handler.interactive_message_custom(data)
 	#postdamage triggers
-	s_skill.process_event(variables.TR_POSTDAMAGE)
-	parent.get_ref().process_event(variables.TR_POSTDAMAGE, s_skill)
+	s_skill.process_event(variables.TR_POSTDAMAGE, {skill = s_skill, caster = parent.get_ref(), target = target})
+	parent.get_ref().process_event(variables.TR_POSTDAMAGE, {skill = s_skill, caster = parent.get_ref(), target = target})
 	if target != null:
-		target.process_event(variables.TR_POSTDAMAGE, s_skill)
+		target.process_event(variables.TR_POSTDAMAGE, {skill = s_skill, caster = parent.get_ref(), target = target})
 	else:
-		for t in targ_all: t.process_event(variables.TR_POSTDAMAGE, s_skill)
+		for t in targ_all: t.process_event(variables.TR_POSTDAMAGE, {skill = 's_skill', caster = parent.get_ref(), target = target})
 	
 	input_handler.update_slave_list()
 	#input_handler.update_slave_panel()
@@ -488,10 +493,12 @@ func use_mansion_item(item):
 		item.amount -= 1
 	use_social_skill(skill, parent.get_ref(), item)
 
+
 func act_prepared():
 	for prep in prepared_act:
 		use_social_skill(prep, null, null)
 	prepared_act.clear()
+
 
 func repair_skill_panels():
 	var ssp = social_skill_panel.duplicate()

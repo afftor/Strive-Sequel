@@ -39,6 +39,7 @@ var multislots = []
 var slots = []
 var hitsound
 var interaction_use = false
+var timestamp = 0
 
 var enchants = {}
 var curse = null
@@ -422,28 +423,7 @@ func tooltiptext():
 	if itemtype in ['armor','weapon','tool']:
 		text += "\n"
 		var t_bonusstats = get_bonusstats()
-		for i in t_bonusstats:
-			if i == 'weapon_element':
-				text += tr("WEAPONELEMENTBASE") + t_bonusstats[i] + "\n"
-				continue
-			if i == 'weapon_element_ench':
-				text += tr("WEAPONELEMENENCHANT") + t_bonusstats[i] + "\n"
-				continue
-			if t_bonusstats[i] != 0:
-				var value = t_bonusstats[i]
-				var change = ''
-				if statdata.statdata[i].percent:
-					value = value*100
-				text += statdata.statdata[i].name + ': {color='
-				if value > 0:
-					change = '+'
-					text += 'k_green|' + change
-				else:
-					text += 'k_red|'
-				value = str(value)
-				if statdata.statdata[i].percent:
-					value = value + '%'
-				text += value + '}\n'
+		text += globals.build_desc_for_bonusstats(t_bonusstats)
 		text += tooltipeffects()
 	elif itemtype == 'usable':
 		text += '\n' + tr("INPOSESSION") + ': ' + str(amount)
@@ -507,22 +487,7 @@ func tooltiptext_light():
 	if itemtype in ['armor','weapon','tool']:
 		# text += "\n"
 		var t_bonusstats = get_bonusstats()
-		for i in t_bonusstats:
-			if t_bonusstats[i] != 0:
-				var value = t_bonusstats[i]
-				var change = ''
-				if statdata.statdata[i].percent:
-					value = value*100
-				text += statdata.statdata[i].name + ': {color='
-				if value > 0:
-					change = '+'
-					text += 'k_green|' + change
-				else:
-					text += 'k_red|'
-				value = str(value)
-				if statdata.statdata[i].percent:
-					value = value + '%'
-				text += value + '}\n'
+		text += globals.build_desc_for_bonusstats(t_bonusstats)
 		text += tooltipeffects()
 	elif itemtype == 'usable':
 		text += '\n' + tr("INPOSESSION") + ': ' + str(amount)

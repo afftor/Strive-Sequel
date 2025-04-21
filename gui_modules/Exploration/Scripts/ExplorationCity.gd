@@ -767,7 +767,7 @@ func show_slave_info(person):
 	$SlaveMarket/exp.text = "Exp: " + str(floor(person.get_stat('base_exp')))
 	var text = "[center]" + person.get_full_name() + "[/center]"
 	input_handler.ClearContainer($SlaveMarket/TextureRect/professions)
-	if person.xp_module.professions.size() > 5:
+	if person.get_prof_number() > 5:
 		$SlaveMarket/TextureRect/professions.columns = 10
 		$SlaveMarket/TextureRect/professions/Button.rect_min_size = Vector2(45, 45)
 		$SlaveMarket/TextureRect/professions/Button/ProfIcon.rect_size = Vector2(34, 34)
@@ -778,7 +778,7 @@ func show_slave_info(person):
 		$SlaveMarket/TextureRect/professions/Button/ProfIcon.rect_size = Vector2(78, 78)
 		$SlaveMarket/TextureRect/professions/Button/Label.show()
 	
-	for i in person.xp_module.professions:
+	for i in person.get_professions():
 		var newnode = input_handler.DuplicateContainerTemplate($SlaveMarket/TextureRect/professions)
 		var prof = classesdata.professions[i]
 		var name = ResourceScripts.descriptions.get_class_name(prof, person)

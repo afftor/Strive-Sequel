@@ -81,152 +81,91 @@ var skills = {
 var effects = {
 	#universal
 	e_rare_sturdy = {
-		type = 'static',
-		atomic = [
-			{type = 'stat_add_p', stat = 'hpmax', value = 1.5},
-			{type = 'stat_add', stat = 'armorpenetration', value = 30},
-		],
+		type = 'simple',
+		statchanges = {hpmax_add_part = 1.5, armorpenetration = 30},
 		buffs = [
 			{
 				icon = "res://assets/images/traits/hitrate.png",
 				description = "TRAITEFFECTRARESTURDY",
-				limit = 1,
-				t_name = 'rare_sturdy'
 			}
 		],
-		sub_effects = [],
 	},
 	e_rare_nimble = {
-		type = 'static',
-		atomic = [
-			{type = 'stat_add_p', stat = 'evasion', value = 0.15},
-			{type = 'stat_add', stat = 'evasion', value = 30},
-			{type = 'stat_add', stat = 'speed', value = 15},
-		],
+		type = 'simple',
+		statchanges = {evasion_add_part = 0.15, evasion = 30, speed = 15},
 		buffs = [
 			{
 				icon = "res://assets/images/traits/speed.png",
 				description = "TRAITEFFECTRARENIMBLE",
-				limit = 1,
-				t_name = 'rare_nimble'
 			}
 		],
-		sub_effects = [],
 	},
 	e_rare_strong = {
-		type = 'static',
-		atomic = [
-			{type = 'stat_add_p', stat = 'hpmax', value = 0.5},
-			{type = 'stat_add_p', stat = 'damage_mod_all', value = 0.2},
-		],
+		type = 'simple',
+		statchanges = {hpmax_add_part = 0.5, damage_mod_all = 0.2},
 		buffs = [
 			{
 				icon = "res://assets/images/traits/firedamagebonus.png",
 				description = "TRAITEFFECTRARESTRONG",
-				limit = 1,
-				t_name = 'rare_strong'
 			}
 		],
-		sub_effects = [],
 	},
 	e_rare_deadly = {
-		type = 'static',
-		atomic = [
-			{type = 'stat_add_p', stat = 'damage_mod_all', value = 0.35},
-			{type = 'stat_add_p', stat = 'hitrate', value = 0.3},
-		],
+		type = 'simple',
+		statchanges = {hitrate_add_part = 0.3, damage_mod_all = 0.35},
 		buffs = [
 			{
 				icon = "res://assets/images/traits/critrate.png",
 				description = "TRAITEFFECTRAREDEADLY",
-				limit = 1,
-				t_name = 'rare_deadly'
 			}
 		],
-		sub_effects = [],
 	},
 	e_rare_precise = {
-		type = 'static',
-		atomic = [
-			{type = 'stat_add_p', stat = 'hitrate', value = 0.25},
-			{type = 'stat_add', stat = 'evasion', value = 35},
-			{type = 'stat_add', stat = 'mdef', value = 20},
-		],
+		type = 'simple',
+		statchanges = {hitrate = 0.25, evasion = 35, mdef = 20},
 		buffs = [
 			{
 				icon = "res://assets/images/traits/bowextradamage.png",
 				description = "TRAITEFFECTRAREPRECISE",
-				limit = 1,
-				t_name = 'rare_precise'
 			}
 		],
-		sub_effects = [],
 	},
 	e_rare_tough = {
-		type = 'static',
-		atomic = [
-			{type = 'stat_add_p', stat = 'hpmax', value = 0.35},
-			{type = 'stat_add', stat = 'armor', value = 30},
-			{type = 'stat_add', stat = 'mdef', value = 30},
-		],
+		type = 'simple',
+		statchanges = {hpmax_add_part = 0.35, armor = 30, mdef = 30},
 		buffs = [
 			{
 				icon = "res://assets/images/traits/bowextradamage.png",
 				description = "TRAITEFFECTRARETOUGH",
-				limit = 1,
-				t_name = 'rare_tough'
 			}
 		],
-		sub_effects = [],
 	},
 	e_miniboss = {
-		type = 'static',
-		atomic = [
-			{type = 'stat_add_p', stat = 'hpmax', value = 2.0},
-			{type = 'stat_add_p', stat = 'atk', value = 0.25},
-			{type = 'stat_add', stat = 'hitrate', value = 20},
-			{type = 'stat_add', stat = 'evasion', value = 20},
-		],
+		type = 'simple',
+		statchanges = {hpmax_add_part = 2.0, atk_add_part = 0.25, hitrate = 20, evasion = 20},
 		buffs = [
 			{
 				icon = "res://assets/images/traits/hitrate.png",
 				description = "miniboss", #2fix
-				limit = 1,
-				t_name = 'miniboss'
 			}
 		],
-		sub_effects = [],
 	},
 	e_boss = {
-		type = 'static',
-		atomic = [
-			{type = 'stat_mul', stat = 'bleed_damage', value = 0.33},
-			{type = 'stat_mul', stat = 'poison_damage', value = 0.33},
-			{type = 'stat_mul', stat = 'burn_damage', value = 0.33},
-			{type = 'stat_mul', stat = 'darkflame_damage', value = 0.33},
-		],
+		type = 'simple',
+		statchanges = {bleed_damage = 0.33, poison_damage = 0.33, burn_damage = 0.33, darkflame_damage = 0.33},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Authority.png",#fix
 				description = "More resistant to Damage over time and Control effects",
-				limit = 1,
-				t_name = 'boss'
 			}
 		],
-		sub_effects = [],
 	},
 	e_s_lasstand_passive = {
-		type = 'static',
+		type = 'simple',
 		tags = ['last_stand'],
-		args = [],
-		sub_effects = [],
-		atomic = [],
-		buffs = [],
 	},
 	e_transform_test = {
-		type = 'static',
-		tags = [],
-		args = [],
+		type = 'base',
 		sub_effects = [
 			{
 				type = 'trigger',
@@ -237,14 +176,11 @@ var effects = {
 					{
 						type = 'oneshot',
 						target = 'owner',
-						args = [],
 						atomic = [{type = 'end_turn'}, {type = 'transform_into', unit = 'trained_dog'}]
 					}
 				],
-				buffs = []
 			},
 		],
-		atomic = [],
 		buffs = ['b_fireshield'],
 	},
 	#centipede
@@ -264,22 +200,17 @@ var effects = {
 	e_s_curseatk = {
 		type = 'temp_s',
 		target = 'caster',
-		name = 'curseatk',
-		stack = 0,
+		stack = 'curseatk',
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 2,
 		tags = ['affliction', 'negative', 'debuff'],
-		args = [],
-		sub_effects = [],
-		atomic = [{type = 'stat_add_p', stat = 'atk', value = -0.25}],
+		statchanges = {atk_add_part = -0.25},
 		buffs = ['b_curseatk'],
 	},
 	#ifrit
 	e_tr_fireshield = {
-		type = 'static',
-		tags = [],
-		args = [],
+		type = 'base',
 		sub_effects = [
 			{
 				type = 'trigger',
@@ -293,7 +224,6 @@ var effects = {
 						execute = 'remove_parent'
 					}
 				],
-				buffs = []
 			},
 			{
 				type = 'trigger',
@@ -304,8 +234,7 @@ var effects = {
 					{
 						type = 'oneshot',
 						target = 'owner',
-						args = [{obj = 'app_obj'}],
-						atomic = [{type = 'use_combat_skill', skill = 'pas_fireshield', target = ['parent_args', 0]}]
+						atomic = [{type = 'use_combat_skill', skill = 'pas_fireshield'}]
 					}
 				],
 				buffs = []
@@ -323,34 +252,24 @@ var effects = {
 		sub_effects = [{
 			type = 'oneshot',
 			target = 'owner',
-			args = [{obj = 'app_obj'}],
-			atomic = [{type = 'use_combat_skill', skill = 'pas_atkpass_apply', target = ['parent_args', 0]}]
+			atomic = [{type = 'use_combat_skill', skill = 'pas_atkpass_apply'}]
 			}],
 		buffs = ['b_atkpass_src']
 	},
 	e_s_atkpass = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'atkpass',
-		stack = 0,
+		stack = 'atkpass',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		tags = ['positive', 'buff', 'atkpass'],
-		args = [],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add_p', stat = 'atk', value = 0.1},
-			{type = 'stat_add_p', stat = 'matk', value = 0.1},
-			],
+		statchanges = {atk_add_part = 0.1, matk_add_part = 0.1},
 		buffs = ['b_atkpass'],
 	},
 	e_t_atkpass_remove = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'atkpass_remove',
-		stack = 1,
+		stack = 'atkpass_remove',
 		rem_event = [variables.TR_COMBAT_F],
-		tags = [],
-		args = [],
 		sub_effects = ['e_tr_atkpass_remove'],
 	},
 	e_tr_atkpass_remove = {
@@ -361,14 +280,12 @@ var effects = {
 		sub_effects = [{
 			type = 'oneshot',
 			target = 'owner',
-			args = [{obj = 'app_obj'}],
-			atomic = [{type = 'use_combat_skill', skill = 'pas_atkpass_remove', target = ['parent_args', 0]}]
+			atomic = [{type = 'use_combat_skill', skill = 'pas_atkpass_remove'}]
 					}]
 	},
 	e_s_atkpass_remove = {
 		type = 'oneshot',
 		target = 'target',
-		args = [],
 		atomic = [{type = 'remove_all_effects', value = 'atkpass'}],
 	},
 }
@@ -393,4 +310,14 @@ var buffs = {
 		t_name = 'fireshield',
 		combat_only = true
 	},
+}
+
+var stacks = {
+	curseatk = {
+		type = 'stack',
+	}, #st 0
+	atkpass = {
+		type = 'stack',
+	}, #st 0
+	atkpass_remove = {}, #st 1
 }

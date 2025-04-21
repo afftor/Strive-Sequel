@@ -28,13 +28,10 @@ func cooldown_tick():
 		cooldown.mindread -= 1
 
 
-func add_stat(statname, value, revert = false):
+func add_stat(statname, value):
 	if !enable:
 		return
-	var k = 1
-	if revert:
-		k = -1
-	set(statname, get(statname) + k * value)
+	set(statname, get(statname) + value)
 	if spirit < 0:
 		spirit = 0
 
@@ -152,7 +149,7 @@ func reset_training():
 		var trdata = Traitdata.traits[tr].disposition_change
 		process_disposition_data(trdata)
 	#reset slavetype
-	parent.get_ref().set_slave_category('slave1')
+	parent.get_ref().set_slave_category('slave')
 	parent.get_ref().add_trait('untrained')
 
 
@@ -333,8 +330,7 @@ func apply_training(code):
 			result_data.spirit = 0 
 	#other effects
 	if code == 'dayoff':
-		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table['e_s_dayoff'])
-		parent.get_ref().apply_effect(effects_pool.add_effect(eff))
+		parent.get_ref().apply_effect_code('e_s_dayoff')
 	if code in ['rape', 'publicuse']:
 		if parent.get_ref().get_stat('vaginal_virgin'):
 			effect_text += "%s takes virginity of %s" % [ch_trainer.get_short_name(), parent.get_ref().get_short_name()]
@@ -536,3 +532,10 @@ func build_stored_req_desc(id):
 func process_training_metrics(value):
 	for cat in value:
 		training_metrics[cat] = value[cat] 
+
+
+func process_chardata(chardata):
+	if chardata.has('training_disposition'):
+		process_disposition_data(chardata.training_disposition, true)
+	if chardata.has('blocked_training_traits'):
+		process_traits_availability_data(chardata.blocked_training_traits)

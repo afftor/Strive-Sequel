@@ -218,4 +218,4 @@ func farm_light():
 	return (1.0 + 0.1 * parent.get_ref().get_stat('tame_factor'))
 
 func farm_dark():
-	return (2.0 - 0.1 * parent.get_ref().get_stat('timid_factor'))
+	return (2.0 - 0.1 * parent.get_ref().get_stat('authority_factor'))

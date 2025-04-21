@@ -180,12 +180,9 @@ var effects = {
 		type = 'trigger',
 		trigger = [variables.TR_KILL],
 		req_skill = true,
-		conditions = [],
-		args = [],
 		sub_effects = [{
 				type = 'oneshot',
 				target = 'caster',
-				args = [],
 				atomic = [{type = 'use_combat_skill', skill = 'execution_1'}],
 			}
 		]
@@ -193,3 +190,5 @@ var effects = {
 }
 var atomic_effects = {}
 var buffs = {}
+
+var stacks = {}

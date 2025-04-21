@@ -45,6 +45,7 @@ signal PortraitUpdate
 signal update_ragdoll
 signal update_itemlist
 signal survival_advance
+signal fighter_changed
 
 #animations queue
 signal animation_finished
@@ -384,6 +385,8 @@ func gather_skills_effects():
 			Effectdata.atomic[id] = tlib.atomic_effects[id].duplicate(true)
 		for id in tlib.buffs:
 			Effectdata.buffs[id] = tlib.buffs[id].duplicate(true)
+		for id in tlib.stacks:
+			Effectdata.stacks[id] = tlib.stacks[id].duplicate(true)
 
 
 #func _unhandled_input(event):
@@ -1013,7 +1016,7 @@ func start_event(code, type, args):
 		'childbirth':
 			active_character = args.pregchar
 			active_character.set_stat('metrics_birth', active_character.get_stat('metrics_birth') + 1)
-			var baby = ResourceScripts.game_party.babies[active_character.get_stat('pregnancy').baby]
+			var baby = ResourceScripts.game_party.babies[active_character.get_stat('pregnancy_baby')]
 			scene_characters.append(baby)
 		'event_selection':
 			data.location = active_location
@@ -1832,3 +1835,11 @@ func rect2rombus(vec : Vector2):
 	k *= sqrt(2.0)
 	
 	return vec / k
+
+
+func timestamp_sort(a, b):
+	return a[1] < b[1]
+
+
+func timestamp_sort_dict(a, b):
+	return a.timestamp < b.timestamp

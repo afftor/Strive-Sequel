@@ -43,7 +43,7 @@ func _init():
 	target = null
 	target_range = 'any'
 	target_number = 'single'
-	damage_type = 'direct'
+	damage_type = 'true'
 	cost = {}
 	damagestat = '+damage_hp'
 

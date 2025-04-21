@@ -284,23 +284,16 @@ var effects = {
 	e_t_watershield = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'watershield',
+		stack = 'watershield',
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		duration = 'parent',
-		stack = 1,
-		args = [],
+		duration = 'arg',
 		tags = ['buff'],
-		sub_effects = [
-			Effectdata.rebuild_stat_bonus('resist_fire', 40),
-		],
-		atomic = [],
+		statchanges = {resist_fire = 40},
 		buffs = [
 			{
 				icon = "res://assets/images/traits/speeddebuf.png",
 				description = "TRAITEFFECTWATERSHIELD",
-				limit = 1,
-				t_name = 'watershield'
 			}
 		],
 	},
@@ -309,7 +302,6 @@ var effects = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
-		args = [], 
 		sub_effects = [
 			Effectdata.rebuild_remove_effect('blind'),
 			Effectdata.rebuild_remove_effect('sleep'),
@@ -321,26 +313,16 @@ var effects = {
 	e_t_clarity = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'clarity',
+		stack = 'clarity',
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		duration = 'parent_arg',
-		stack = 1,
-		args = [],
+		duration = 4, #'arg',
 		tags = ['buff'],
-		sub_effects = [
-			Effectdata.rebuild_stat_bonus('matk', 0.25, null, 'stat_add_p'),
-			Effectdata.rebuild_stat_bonus('resist_blind', 200),
-			Effectdata.rebuild_stat_bonus('resist_sleep', 200),
-			Effectdata.rebuild_stat_bonus('resist_charm', 200),
-		],
-		atomic = [],
+		statchanges = {matk_add_part = 0.25, resist_blind = 200, resist_sleep = 200, resist_charm  = 200},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Mindread.png",
 				description = "TRAITEFFECTCLARITY",
-				limit = 1,
-				t_name = 'clarity'
 			}
 		],
 	},
@@ -348,18 +330,22 @@ var effects = {
 		type = 'trigger',
 		req_skill = true,
 		trigger = [variables.TR_PREHIT],
-		conditions = [{type = 'target', value = [{code = 'has_status', check = true, status = 'wet'}, {orflag = true, code = 'has_status', check = true, status = 'freeze'}]}],
-		buffs = [],
+		conditions = [
+			{type = 'target', value = [{code = 'has_status', check = true, status = 'wet'}, {orflag = true, code = 'has_status', check = true, status = 'freeze'}]}
+			],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'skill',
 				atomic = [{type = 'stat_set', stat = 'chance', value = 200}],
-				buffs = [],
-				sub_effects = []
 			}
 		]
 	}
 }
 var atomic_effects = {}
 var buffs = {}
+
+var stacks = {
+	watershield = {}, #st 1
+	clarity = {}, #st 1
+}

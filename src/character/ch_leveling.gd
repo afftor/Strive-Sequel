@@ -1,18 +1,6 @@
 extends "res://src/character/ch_jobs.gd"
 
 var base_exp = 0 setget base_exp_set
-var professions = []
-var prof_links = {}
-var abil_exp = 0
-
-var mastery_points = {
-	magic = 0,
-	universal = 0,
-	combat = 0}
-
-var mastery_levels = {
-#	warfare = {magic = 0, combat = 0, universal = 0, passive = 0, enable = true},
-}
 
 var sleep = ''
 var work = ''
@@ -57,7 +45,6 @@ var quest_time_init = 0
 
 func _init():
 	fix_rules()
-	fix_masteries()
 
 
 func fix_rules():
@@ -71,182 +58,6 @@ func fix_rules():
 		if !farming_rules.has(rule):
 			farming_rules[rule] = false
 
-#masteries
-func fix_masteries():
-	for mastery in Skilldata.masteries:
-		mastery_levels[mastery] = {magic = 0, combat = 0, universal = 0, passive = 0, enable = true}
-
-
-func add_mastery_bonus(school, level):
-	var data = Skilldata.masteries[school]
-	if data.has('passive'):
-		parent.get_ref().add_stat_bonuses(data.passive)
-	var lid = 'level%d' % level
-	if data.has(lid):
-		var ldata = data[lid] 
-		if ldata.has('social_skills'):
-			for i in ldata.social_skills:
-				if prof_links.has('s_'+i):
-					prof_links['s_'+ i].push_back(school+lid)
-				else:
-					prof_links['s_'+ i] = [school+lid]
-					parent.get_ref().learn_skill(i, true)
-		if ldata.has('explore_skills'):
-			for i in ldata.explore_skills:
-				if prof_links.has('s_'+i):
-					prof_links['s_'+ i].push_back(school+lid)
-				else:
-					prof_links['s_'+ i] = [school+lid]
-					parent.get_ref().learn_e_skill(i, true)
-		if ldata.has('combat_skills'):
-			for i in ldata.combat_skills:
-				if prof_links.has('s_'+i):
-					prof_links['s_'+ i].push_back(school+lid)
-				else:
-					prof_links['s_'+ i] = [school+lid]
-					parent.get_ref().learn_c_skill(i, true)
-		if ldata.has('traits'):
-			for i in ldata.traits:
-				if prof_links.has('t_'+i):
-					prof_links['t_'+ i].push_back(school+lid)
-				else:
-					prof_links['t_'+ i] = [school+lid]
-					parent.get_ref().add_trait(i)
-
-
-func enable_mastery(school):
-	if mastery_levels[school].enable:
-		return
-	mastery_levels[school].enable = true
-	for i in range(mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive):
-		add_mastery_bonus(school, i + 1)
-
-
-func disable_mastery(school):
-	if mastery_levels[school].enable:
-		mastery_levels[school].enable = false
-		for i in range(mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive, 0, -1):
-			remove_mastery_bonus(school, i)
-
-
-func reset_mastery():
-	for school in mastery_levels:
-		for i in range(mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive, mastery_levels[school].passive, -1):
-			remove_mastery_bonus(school, i)
-		
-		for i in ['combat', 'universal', 'magic']:
-			mastery_points[i] += mastery_levels[school][i]
-			mastery_levels[school][i] = 0
-
-
-
-func remove_mastery_bonus(school, level):
-	var data = Skilldata.masteries[school]
-	if data.has('passive'):
-		parent.get_ref().remove_stat_bonuses(data.passive)
-	var lid = 'level%d' % level
-	if data.has(lid):
-		var ldata = data[lid] 
-		if ldata.has('social_skills'):
-			for i in ldata.social_skills:
-				if prof_links['s_' + i].has(school+lid):
-					prof_links['s_' + i].erase(school+lid)
-					if prof_links['s_' + i].empty():
-						parent.get_ref().unlearn_skill(i)
-						prof_links.erase('s_' + i)
-				else:
-					print('WARNING! error in prof dependancy')
-		if ldata.has('explore_skills'):
-			for i in ldata.explore_skills:
-				if prof_links['s_' + i].has(school+lid):
-					prof_links['s_' + i].erase(school+lid)
-					if prof_links['s_' + i].empty():
-						parent.get_ref().unlearn_e_skill(i) 
-						prof_links.erase('s_' + i)
-				else:
-					print('WARNING! error in prof dependancy')
-		if ldata.has('combat_skills'):
-			for i in ldata.combat_skills:
-				if prof_links['s_' + i].has(school+lid):
-					prof_links['s_' + i].erase(school+lid)
-					if prof_links['s_' + i].empty():
-						parent.get_ref().unlearn_c_skill(i)
-						prof_links.erase('s_' + i)
-				else:
-					print('WARNING! error in prof dependancy')
-		if ldata.has('traits'):
-			for i in ldata.traits:
-				if prof_links['t_' + i].has(school+lid):
-					prof_links['t_' + i].erase(school+lid)
-					if prof_links['t_' + i].empty():
-						parent.get_ref().remove_trait(i)
-						prof_links.erase('t_' + i)
-				else:
-					print('WARNING! error in prof dependancy')
-
-#those are extremally bad - but those are not my decisions
-func upgrade_mastery_cost(school, force_universal = false):
-	var res = {
-		combat = 0,
-		magic = 0,
-		universal = 0,
-	}
-	var data = Skilldata.masteries[school]
-	match data.type:
-		'combat':
-			if !force_universal:
-				res.combat = 1
-			else:
-				res.universal = 1
-		'spell':
-			if !force_universal:
-				res.magic = 1
-			else:
-				res.universal = 1
-	return res
-	
-
-
-func can_upgrade_mastery(school, force_universal = false):
-	var data = Skilldata.masteries[school]
-	if !mastery_levels[school].enable:
-		return false
-	var cost = upgrade_mastery_cost(school, force_universal)
-	for c in cost:
-		if cost[c] > parent.get_ref().get_stat('mastery_point_' + c): #not direct check cause of gp bonus
-			return false
-	return true
-
-
-func upgrade_mastery(school, force_universal = false):
-	var data = Skilldata.masteries[school]
-	var cost = upgrade_mastery_cost(school, force_universal)
-	for c in cost:
-		mastery_points[c] -= cost[c]
-		mastery_levels[school][c] += cost[c]
-	
-	add_mastery_bonus(school, mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive)
-
-
-func add_mastery_point_passive(school, value):
-	if mastery_levels[school].enable:
-		for i in range(mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive, mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive + value):
-			add_mastery_bonus(school, i + 1)
-	mastery_levels[school].passive += value
-
-
-func remove_mastery_point_passive(school, value):
-	if mastery_levels[school].enable:
-		for i in range(mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive, mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive - value, -1):
-			remove_mastery_bonus(school, i)
-	mastery_levels[school].passive -= value
-
-func get_mastery_level(school): #external check, for the sake of condition sanity
-	if mastery_levels[school].enable:
-		return mastery_levels[school].universal + mastery_levels[school].combat + mastery_levels[school].magic + mastery_levels[school].passive
-	else:
-		return 0 
-
 #works
 func check_work_rule(rule):
 	if !variables.work_rules.has(rule):
@@ -258,16 +69,10 @@ func check_work_rule(rule):
 
 
 func set_work_rule(rule, value):
+	parent.get_ref().reset_rebuild()
 	if variables.work_rules.has(rule):
 		work_rules[rule] = value
-	#possibly move those effects to dynamic later
-	if !Effectdata.effect_table.has("work_rule_" + rule): return
-	match value:
-		true:
-			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table["work_rule_" + rule])
-			parent.get_ref().apply_effect(effects_pool.add_effect(eff))
-		false:
-			parent.get_ref().remove_static_effect_by_code("work_rule_" + rule)
+
 
 func check_brothel_rule(rule):
 	if !variables.brothel_rules.has(rule):
@@ -331,63 +136,17 @@ func update_exp(value, is_set):
 func fix_serialize():
 	if parent.get_ref().travel.travel_time <= 0 and work == 'travel':
 		work = ''
-	var newprofs = []
-	for prof in professions.duplicate():
-		if classesdata.professions.has(prof): continue
-		professions.erase(prof)
-		for id in prof_links.keys():
-			if prof_links[id].has(prof):
-				prof_links[id].erase(prof)
-				if prof_links[id].empty():
-					prof_links.erase(id)
-					if id.begins_with('t_'):
-						parent.get_ref().remove_trait(id.trim_prefix('t_'))
-					else:
-						parent.get_ref().unlearn_c_skill(id.trim_prefix('s_'))
-						parent.get_ref().unlearn_skill(id.trim_prefix('s_'))
-		if prof == 'healer':
-			newprofs.push_back('acolyte') 
-	for prof in newprofs:
-		unlock_class(prof)
-	
-	#mastery fix - bad way
-	for school in mastery_levels:
-		var tmp = mastery_levels[school]
-		if tmp.has('trained'): #old data structure
-			mastery_levels[school] = {magic = 0, combat = 0, universal = tmp.trained, passive = tmp.passive, enable = tmp.enable}
 
 
 func fix_import():
-	remove_class('spouse')
 	is_on_quest = false
 	work = ''
 	workproduct = null
 	previous_work = ''
 
-#professions
-func has_status(status):
-	for tr in professions:
-		var profdata = classesdata.professions[tr]
-		if profdata.has('tags') and profdata.tags.has(status):
-			return true
-	return false
-
-
-func process_chardata(data):
-	if data.has('classes'):
-		for prof in data.classes:
-			unlock_class(prof)
-
-
-func get_prof_number():
-	var tres = professions.size()
-	if professions.has("master") or professions.has('spouse'): tres -= 1
-	return tres
-
 
 func get_next_class_exp():
-	var currentclassnumber = professions.size()
-	if professions.has("master") or professions.has('spouse'): currentclassnumber -= 1
+	var currentclassnumber = parent.get_ref().get_prof_number()
 	var exparray = variables.hard_level_reqs
 	var value = 0
 	if exparray.size()-1 < currentclassnumber:
@@ -396,91 +155,6 @@ func get_next_class_exp():
 		value = exparray[currentclassnumber]
 	return value
 
-func get_class_list(category, person):
-	var array = []
-	for i in classesdata.professions.values():
-		if (category != 'any' && i.categories.has(category) == false) || professions.has(i.code) == true:
-			continue
-		if parent.get_ref().checkreqs(i.reqs, true) == true:
-			array.append(i)
-	return array
-
-func unlock_class(prof, satisfy_progress_reqs = false):
-	prof = classesdata.professions[prof]
-	if satisfy_progress_reqs == true:
-		for i in prof.reqs:
-			if i.code == 'stat' && i.stat in ['physics','wits','charm','sexuals']:
-				parent.get_ref().set_stat(i.stat, i.value)
-	if professions.has(prof.code):
-		return "Already has this profession"
-	professions.append(prof.code)
-	parent.get_ref().add_stat_bonuses(prof.statchanges)
-	for i in prof.skills:
-		if prof_links.has('s_'+i):
-			prof_links['s_'+ i].push_back(prof.code)
-		else:
-			prof_links['s_'+ i] = [prof.code]
-			parent.get_ref().learn_skill(i, true)
-	for i in prof.combatskills:
-		if prof_links.has('s_'+i):
-			prof_links['s_'+ i].push_back(prof.code)
-		else:
-			prof_links['s_'+ i] = [prof.code]
-			parent.get_ref().learn_c_skill(i, true)
-	for i in prof.traits:
-		if prof_links.has('t_'+i):
-			prof_links['t_'+ i].push_back(prof.code)
-		else:
-			prof_links['t_'+ i] = [prof.code]
-			parent.get_ref().add_trait(i)
-	parent.get_ref().recheck_effect_tag('recheck_class')
-
-func remove_class(prof):
-	prof = classesdata.professions[prof]
-	if !professions.has(prof.code):
-		return "Nothing to remove"
-	professions.erase(prof.code)
-	parent.get_ref().remove_stat_bonuses(prof.statchanges)
-	for i in prof.skills:
-		if prof_links['s_' + i].size() == 1:
-			if prof_links['s_' + i][0] == prof.code:
-				parent.get_ref().unlearn_skill(i)
-				prof_links.erase('s_' + i)
-			else:
-				print('WARNING! error in prof dependancy')
-		else:
-			prof_links['s_' + i].erase(prof.code)
-	for i in prof.combatskills:
-		if prof_links['s_' + i].size() == 1:
-			if prof_links['s_' + i][0] == prof.code:
-				parent.get_ref().unlearn_c_skill(i)
-				prof_links.erase('s_' + i)
-			else:
-				print('WARNING! error in prof dependancy')
-		else:
-			prof_links['s_' + i].erase(prof.code)
-	for i in prof.traits:
-		if prof_links['t_' + i].size() == 1:
-			if prof_links['t_' + i][0] == prof.code:
-				parent.get_ref().remove_trait(i)
-				prof_links.erase('t_' + i)
-			else:
-				print('WARNING! error in prof dependancy')
-		else:
-			prof_links['t_' + i].erase(prof.code)
-	parent.get_ref().recheck_effect_tag('recheck_class')
-
-func remove_all_classes():
-	for i in classesdata.professions:
-		if !classesdata.professions[i].tags.has('permanent'):
-			remove_class(i)
-
-func check_skill_prof(skill):
-	for i in professions:
-		var tempprof = classesdata.professions[i]
-		if tempprof.skills.has(skill):
-			return true
-	return false
 
 #tasks
 func clean_prev_data():
@@ -773,8 +447,8 @@ func finish_learning():
 				parent.get_ref().add_stat('tame_factor', 1)
 				res_text += "\n%s + 1" % statdata.statdata.tame_factor.name
 			else:
-				parent.get_ref().add_stat('timid_factor', 1)
-				res_text += "\n%s + 1" % statdata.statdata.timid_factor.name
+				parent.get_ref().add_stat('authority_factor', 1)
+				res_text += "\n%s + 1" % statdata.statdata.authority_factor.name
 			parent.get_ref().add_stat('base_exp_direct', 150)
 			res_text += "\n%s + 150" % statdata.statdata.base_exp.name
 		'academy':
@@ -859,9 +533,8 @@ func select_brothel_activity():
 			
 			var penis_check = ((brothel_rules.males || brothel_rules.futa) && brothel_customer_gender in ["male", "futa"])
 			
-			if parent.get_ref().get_stat('vaginal_virgin') && sex_rules.has('pussy') && penis_check:
-				parent.get_ref().set_stat('vaginal_virgin', false)
-				parent.get_ref().set_stat('vaginal_virgin_lost', {source = 'brothel_customer'})
+			if sex_rules.has('pussy') && penis_check:
+				parent.get_ref().take_virginity('vaginal', 'brothel_customer')
 				bonus_gold += parent.get_ref().calculate_price() * 0.01
 			if sex_rules.has('pussy') && penis_check:
 				var tmpchar = ResourceScripts.scriptdict.class_slave.new("test_main")
@@ -869,9 +542,8 @@ func select_brothel_activity():
 				if randf() < variables.brothel_pregnancy_chance:
 					globals.impregnate(tmpchar, parent.get_ref())
 				tmpchar.is_active = false
-			if parent.get_ref().get_stat('anal_virgin') && sex_rules.has('anal') && penis_check:
-				parent.get_ref().set_stat('anal_virgin', false)
-				parent.get_ref().set_stat('anal_virgin_lost', {source = 'brothel_customer'})
+			if sex_rules.has('anal') && penis_check:
+				parent.get_ref().take_virginity('anal', 'brothel_customer')
 			
 			work_tick_values(data.workstats[randi()%data.workstats.size()])
 			
@@ -1043,7 +715,7 @@ func work_tick():
 	
 	var currenttask = find_worktask(parent.get_ref().get_location())
 	
-	if currenttask == null:
+	if currenttask == null or parent.get_ref().has_status('no_job'):
 		work = ''
 		parent.get_ref().rest_tick()
 		return
@@ -1053,9 +725,6 @@ func work_tick():
 			globals.text_log_add('work', parent.get_ref().get_short_name() + ": Refused to work")
 			messages.append("refusedwork")
 		return
-	
-	if parent.get_ref().get_static_effect_by_code("work_rule_ration") != null:
-		parent.get_ref().food.food_consumption_rations = true
 	
 	if currenttask.code == 'brothel':
 		select_brothel_activity()
@@ -1258,6 +927,3 @@ func can_add_farming():
 			n -= 1
 	return (n > 0)
 
-
-func get_ability_experience():
-	return abil_exp
