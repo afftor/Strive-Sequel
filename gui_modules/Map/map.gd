@@ -19,6 +19,7 @@ var area_zoom_data = {
 	plains = {position = Vector2(700, 1700), zoom = 1.5},
 	forests = {position = Vector2(1310, 1890), zoom = 1.5},
 	mountains = {position = Vector2(1000, 1000), zoom = 1.5},
+	empire = {position = Vector2(1000, 1000), zoom = 1.5},
 }
 
 func _unhandled_input(event):

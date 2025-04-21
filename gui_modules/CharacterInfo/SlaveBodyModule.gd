@@ -55,20 +55,20 @@ func update(person = null):
 		$ragdoll.visible = false
 	
 	# nudity check
-	if person != null && person.statlist.statlist.unique != null && person.has_work_rule('nudity'):
-		if worlddata.pregen_character_sprites[person.statlist.statlist.unique].has("nude"):
-			$Body.texture = images.get_sprite(worlddata.pregen_character_sprites[person.statlist.statlist.unique].nude.path)
+	if person != null && person.get_stat('unique') != null && person.has_work_rule('nudity'):
+		if worlddata.pregen_character_sprites[person.get_stat('unique')].has("nude"):
+			$Body.texture = images.get_sprite(worlddata.pregen_character_sprites[person.get_stat('unique')].nude.path)
 	# wed check
-	if person != null && person.statlist.statlist.unique != null:
+	if person != null && person.get_stat('unique') != null:
 		if ResourceScripts.game_progress.spouse != null && globals.valuecheck({type = 'has_spouse', check = true}) && !ResourceScripts.game_progress.marriage_completed:
 			var spouse_person = characters_pool.get_char_by_id(ResourceScripts.game_progress.spouse)
-			if spouse_person.get_stat('unique') == person.get_stat('unique') and worlddata.pregen_character_sprites[person.statlist.statlist.unique].has("wed"):
-				$Body.texture = images.get_sprite(worlddata.pregen_character_sprites[person.statlist.statlist.unique].wed.path)
+			if spouse_person.get_stat('unique') == person.get_stat('unique') and worlddata.pregen_character_sprites[person.get_stat('unique')].has("wed"):
+				$Body.texture = images.get_sprite(worlddata.pregen_character_sprites[person.get_stat('unique')].wed.path)
 	
 	globals.build_buffs_for_char(person, $buffscontainer, 'mansion')
 	
 	input_handler.ClearContainer($ScrollContainer/professions)
-	if person.xp_module.professions.size() > 6:
+	if person.get_prof_number() > 6:
 		$ScrollContainer/professions.columns = 12
 		$ScrollContainer/professions.set("custom_constants/hseparation", 6)
 		$ScrollContainer/professions/Button.rect_min_size = Vector2(50, 50)
@@ -79,7 +79,7 @@ func update(person = null):
 		$ScrollContainer/professions.set("custom_constants/hseparation", 14)
 		$ScrollContainer/professions/Button.rect_min_size = Vector2(100, 100)
 		$ScrollContainer/professions/Button/TextureRect.rect_size = Vector2(84, 84)
-	for i in person.xp_module.professions:
+	for i in person.get_professions():
 		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/professions)
 		var prof = classesdata.professions[i]
 		var name = ResourceScripts.descriptions.get_class_name(prof, person)

@@ -43,7 +43,7 @@ func show_slave_info():
 		$productivity/Label.text = str(round(person.get_stat('productivity'))) + "%"
 		var text = "[center]" + person.get_full_name() + "[/center]"# + person.translate(" [race] [age]")
 		input_handler.ClearContainer($TextureRect/ScrollContainer/professions)
-		if person.xp_module.professions.size() > 5:
+		if person.get_prof_number() > 5:
 			$TextureRect/ScrollContainer/professions.columns = 10 #or 9 - idk what is lesser evil
 			$TextureRect/ScrollContainer/professions.set("custom_constants/hseparation", 1)
 			$TextureRect/ScrollContainer/professions/Button.rect_min_size = Vector2(45,45)
@@ -56,7 +56,7 @@ func show_slave_info():
 			$TextureRect/ScrollContainer/professions/Button/ProfIcon.rect_size = Vector2(78,78)
 #			$TextureRect/professions/Button/Label.show()
 
-		for i in person.xp_module.professions:
+		for i in person.get_professions():
 			var newnode = input_handler.DuplicateContainerTemplate($TextureRect/ScrollContainer/professions)
 			var prof = classesdata.professions[i]
 			var name = ResourceScripts.descriptions.get_class_name(prof, person)

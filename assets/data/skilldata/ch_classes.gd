@@ -472,7 +472,7 @@ var skills = {
 		tags = ['damage','ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = Effectdata.rebuild_make_status({effect = 'e_s_stun1', duration = 2})})], 
+		effects = [Effectdata.rebuild_template({effect = Effectdata.rebuild_make_status({effect = 'e_s_stun', duration = 2})})], 
 		cost = {mp = 8},
 		charges = 0,
 		combatcooldown = 1,
@@ -591,7 +591,6 @@ var skills = {
 var effects = {
 	#trait-based
 	e_tr_hunter1 = Effectdata.rebuild_skillvalue_template({target_race = 'beast', tag = 'damage',  value = 1.15}),
-	
 	e_tr_bers1 = Effectdata.rebuild_skillvalue_template({source = 'fire', skilltype = 'skill', tag = 'damage', value = 1.2}),
 	e_tr_bers2 = Effectdata.rebuild_skillvalue_template({source = 'earth', skilltype = 'skill', tag = 'damage', value = 1.2}),
 	e_tr_berserk = {
@@ -599,35 +598,18 @@ var effects = {
 		trigger = [variables.TR_KILL],
 		reset = [variables.TR_COMBAT_F],
 		req_skill = true,
-		conditions = [],
-		atomic = [],
-		buffs = [],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				atomic = [{type = 'setup_instant'}],
-				buffs = [],
-				sub_effects = []
-			}
-		]
+		sub_effects = ['e_instant']
 	},
 	
 	e_tr_druid = Effectdata.rebuild_skillvalue_template({source = 'earth', skilltype = 'spell', tag = 'damage', value = 1.2}),
-	
 	e_tr_sniper = Effectdata.rebuild_skillvalue_template({num_targets = 'single', skilltype = 'skill', tag = 'damage', value = 1.25}),
 	
 	e_tr_alios = {
-		type = 'c_static',
+		type = 'simple',
 		descript = '',
 		conditions = [{code = 'lone_wolf', check = true}],
-		tags = ['recheck_combat', 'recheck_death'],
-		atomic = [
-			{type = 'stat_add', stat = 'evasion', value = 50},
-			{type = 'stat_add', stat = 'speed', value = 20},
-			],
+		statchanges = {evasion = 50, speed = 20},
 		buffs = ['b_alios'],
-		sub_effects = [],
 	},
 	
 	e_tr_bishop = Effectdata.rebuild_skillvalue_template({source = 'light', skilltype = 'spell', tag = 'damage', value = 1.25}),
@@ -642,9 +624,6 @@ var effects = {
 			{type = 'skill', value = ['tags', 'hasno', 'aoe']},
 			{type = 'skill', value = ['damage_type', 'eq', 'light']},
 			],
-		atomic = [],
-		buffs = [],#'b_power_pot'],
-		args = [{obj = 'skill', param = 'caster', dynamic = true}, {obj = 'skill', param = 'target', dynamic = true}],
 		sub_effects = ['e_s_bishop']
 	},
 	e_s_bishop = {
@@ -658,12 +637,7 @@ var effects = {
 			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
 			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
 		],
-		args = [],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'resist_light', value = -50},
-			{type = 'stat_add', stat = 'resist_dark', value = -50},
-			],
+		statchanges = {resist_light = -50, resist_dark = -50},
 		buffs = ['b_bishop'],
 	},
 	
@@ -675,15 +649,7 @@ var effects = {
 		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'item']}],
 		atomic = [],
 		buffs = ['b_free_use'],#buff for indicating free item use, obviosly not b_stun
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				atomic = [{type = 'setup_instant'}],
-				buffs = [],
-				sub_effects = []
-			}
-		]
+		sub_effects = ['e_instant']
 	},
 	
 	e_tr_paladin_1 = Effectdata.rebuild_skillvalue_template({target_race = 'undead', tag = 'damage',  value = 1.25}),
@@ -699,18 +665,17 @@ var effects = {
 		],
 		trigger = [variables.TR_POSTDAMAGE],
 		req_skill = true,
-		args = [],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'owner',
-				args = [{obj = 'app_obj', param = 'hpmax'}, {obj = 'app_obj', param = 'mpmax'}],
+				args = {
+					hp = {obj = 'owner', func = 'stat', stat = 'hpmax'},
+					mp = {obj = 'owner', func = 'stat', stat = 'mpmax'}},
 				atomic = [
-					{type = 'heal', value = [['parent_args', 0], '*', 0.03]},
-					{type = 'mana', value = [['parent_args', 1], '*', 0.03]},
+					{type = 'heal', value = [['parent_args', 'hp'], '*', 0.03]},
+					{type = 'mana', value = [['parent_args', 'mp'], '*', 0.03]},
 					],
-				buffs = [],
-				sub_effects = []
 			},
 			'e_s_bloodmage'
 		],
@@ -719,14 +684,11 @@ var effects = {
 	e_s_bloodmage = {
 		type = 'temp_s',
 		target = 'caster',
-		name = 'bloodmage_bonus',
-		stack = 0,
+		stack = 'bloodmage_bonus',
 		tick_event = [],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		tags = ['positive', 'buff', 'bloodrage'],
-		args = [],
-		sub_effects = [],
-		atomic = [{type = 'stat_add_p', stat = 'matk', value = 0.05}],
+		statchanges = {matk_add_part = 0.05},
 		buffs = ['b_bloodatk'],
 	},
 	
@@ -742,38 +704,18 @@ var effects = {
 			{type = 'random', value = 0.25}
 			],
 		buffs = [],
-		sub_effects = ['e_s_bleed_new'],
-		args = [{obj = 'app_obj'}, {obj = 'app_obj'}]
+		sub_effects = ['e_s_bleed_new'], #2remake to apply status
+		args = {
+			duration = {obj = 'self', func = 'dr', dr = 2},
+		}
 	},
 	
-	e_tr_potion = {
-		type = 'trigger',
-		trigger = [variables.TR_HIT],
-		reset = [variables.TR_TURN_GET],
-		req_skill = true,
-		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'item']}, {type = 'skill', value = ['tags', 'has', 'heal']}],
-		atomic = [],
-		buffs = [],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				atomic = [{type = 'stat_mul', stat = 'value', value = 1.25}],
-				buffs = [],
-				sub_effects = []
-			}
-		]
-	},
+	e_tr_potion = Effectdata.rebuild_skillvalue_template({reset = [variables.TR_TURN_GET], skilltype = 'item', tag = 'heal', value = 1.25}),
 	
 	valkyrie_spear_bonus = {
-		type = 'c_static',
+		type = 'simple',
 		conditions = [{code = 'gear_equiped', param = 'geartype', value = 'spear', check = true}],
-		tags = ['recheck_item'],
-		atomic = [
-			{type = 'stat_add', stat = 'speed', value = 10},
-		],
-		buffs = [],
-		sub_effects = [],
+		statchanges = {speed = 10},
 	},
 	
 	e_tr_hide = {
@@ -795,28 +737,19 @@ var effects = {
 		trigger = [variables.TR_VICTORY],
 		req_skill = false,
 		conditions = [],
-		atomic = [],
-		buffs = [],
-		args = [],
 		sub_effects = ['e_s_deathknight'],
 	},
 	e_s_deathknight = {
-		type = 'temp_inc',
+		type = 'temp_s',
 		tags = ['buff'],
 		target = 'owner',
-		name = 'deathknighth_b',
-		stack = 5,
+		stack = 'deathknighth',
+#		stack = 5,
 		req_skill = false,
 		duration = 3,
 		tick_event = variables.TR_TICK,
 		rem_event = [variables.TR_DEATH],
-		args = [],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'atk', value = 4},
-			{type = 'stat_add', stat = 'hitrate', value = 5},
-			{type = 'stat_add', stat = 'resist_normal', value = 2},
-		],
+		statchanges = {atk = 4, hitrate = 5, resist_normal = 2},
 		buffs = ['b_deathknight'],
 	},
 	
@@ -828,25 +761,19 @@ var effects = {
 			{type = 'skill', value = ['tags', 'has', 'damage']},
 			{type = 'skill', value = ['damage_type', 'eq', 'dark']}
 		],
-		atomic = [],
-		buffs = [],
-		args = [],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'skill',
-				args = [],
 				atomic = [
 					{type = 'stat_add', stat = 'chance', value = 30},
 					{type = 'add_tag', value = 'nodef'},
 					],
-				buffs = [],
-				sub_effects = []
 			}
 		]
 	},
 	
-	e_tr_witch1 = {
+	e_tr_witch1 = { #2remake properly
 		type = 'trigger',
 		conditions = [
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_CRIT]},
@@ -855,13 +782,13 @@ var effects = {
 		],
 		trigger = [variables.TR_POSTDAMAGE],
 		req_skill = true,
-		duration = 1,
-		args = [{obj = 'skill', param = 'target', dynamic = true}, {obj = 'skill', param = 'caster', dynamic = true}],
+		args = {
+			duration = {obj = 'self', func = 'dr', dr = 1},
+		},
 		sub_effects = [],
-		modal_sub_effects = ['e_s_burn_new', 'e_s_poison_new', 'e_s_bleed_new', 'e_s_blind', Effectdata.rebuild_make_status({effect = 'e_s_stun1', duration = 1}), 'e_s_confuse', 'e_s_sleep_compartibility'],
-		buffs = []
+		modal_sub_effects = ['e_s_burn_new', 'e_s_poison_new', 'e_s_bleed_new', 'e_s_blind', 'e_s_stun', 'e_s_confuse', 'e_s_sleep_compartibility'],
 	},
-	e_tr_witch2 = {
+	e_tr_witch2 = { #2remake properly
 		type = 'trigger',
 		conditions = [
 			{type = 'random', value = 0.5},
@@ -870,11 +797,11 @@ var effects = {
 		],
 		trigger = [variables.TR_POSTDAMAGE],
 		req_skill = true,
-		duration = 2,
-		args = [{obj = 'skill', param = 'target', dynamic = true}, {obj = 'skill', param = 'caster', dynamic = true}],
+		args = {
+			duration = {obj = 'self', func = 'dr', dr = 2},
+		},
 		sub_effects = [],
 		modal_sub_effects = ['e_s_rejuvenation', 'e_s_mward2'],
-		buffs = []
 	},
 	
 	e_tr_warlock = {
@@ -886,20 +813,14 @@ var effects = {
 			{type = 'skill', value = ['tags', 'has', 'damage']},
 			{type = 'skill', value = ['tags', 'hasno', 'aoe']},
 		],
-		atomic = [],
-		buffs = [],
-		args = [],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'skill',
-				args = [],
 				atomic = [
 					{type = 'stat_add', stat = 'critchance', value = 25},
 					{type = 'stat_add', stat = 'critmod', value = 0.75},
 					],
-				buffs = [],
-				sub_effects = []
 			}
 		]
 	},
@@ -909,19 +830,11 @@ var effects = {
 		trigger = [variables.TR_POST_TARG],
 		req_skill = false,
 		conditions = [],
-		atomic = [],
-		buffs = [],
-		args = [],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'owner',
-				args = [],
-				atomic = [
-					{type = 'stat_add', stat = 'lust', value = ['random', 1, 3]},
-					],
-				buffs = [],
-				sub_effects = []
+				atomic = [{type = 'stat_add', stat = 'lust', value = ['random', 1, 3]},],
 			}
 		]
 	},
@@ -933,44 +846,36 @@ var effects = {
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'taunt']},
 		],
-		atomic = [],
-		buffs = [],
-		args = [],
 		sub_effects = ['e_s_templar']
 	},
 	e_s_templar = {
 		type = 'temp_s',
 		tags = ['buff'],
 		target = 'owner',
-		name = 'templar_prot',
-		stack = 1,
+		stack = 'templar_prot',
 		req_skill = false,
-		duration = 3,
 		tick_event = variables.TR_TURN_GET,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		args = [{obj = 'app_obj', param = 'armor'}],
+		args = {
+			armor = {obj = 'owner', func = 'stat', stat = 'armor'},
+			duration = {obj = 'self', dunc = 'dur', dur = 3}
+			},
 		sub_effects = ['e_tr_templar_heal'],
-		atomic = [
-			{type = 'stat_add', stat = 'mdef', value = [['parent_args', 0], '*', 0.5]},
-			],
+		statchange = {mdef = [['arg', 'armor'], '*', 0.5]},
 		buffs = ['b_templar'],
 	},
 	e_tr_templar_heal = {
 		type = 'trigger',
 		trigger = [variables.TR_TURN_GET],
 		req_skill = false,
-		conditions = [],
-		args = [],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'owner',
-				args = [{obj = 'app_obj', param = 'hpmax'}],
+				args = {value = {obj = 'owner', func = 'stat', stat = 'hpmax'}},
 				atomic = [
-					{type = 'heal', value = [['parent_args', 0], '*', 0.1]},
+					{type = 'heal', value = [['parent_args', 'value'], '*', 0.1]},
 					],
-				buffs = [],
-				sub_effects = []
 			},
 		]
 	},
@@ -978,144 +883,95 @@ var effects = {
 	e_t_command = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'command',
+		stack = 'command',
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 3,
-		stack = 1,
 		tags = ['buff'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add_p', stat = 'atk', value = 0.5},
-			{type = 'stat_add_p', stat = 'matk', value = 0.5}
-		],
+		statchanges = {atk_add_part = 0.5, matk_add_part = 0.5},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Trainer.png",
 				description = "TRAITEFFECTCOMMANDED",
-				limit = 1,
-				t_name = 'command'
 			}
 		],
 	},
 	e_t_refine = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'refine',
+		stack = 'refine',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		stack = 1,
 		tags = ['buff'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add_p', stat = 'atk', value = 0.3},
-		],
+		statchanges = {atk_add_part = 0.3},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/WeaponRefine.png",
 				description = "TRAITEFFECTREFINE",
-				limit = 1,
-				t_name = 'refine'
 			}
 		],
 	},
 	succubus_combat_2 = {
-		type = 'temp_toggle',
-		name = 'euphoria',
-		stack = 1,
+		type = 'temp_s',
+		stack = 'euphoria',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		target = 'caster',
 		tags = ['euphoria'],
-		sub_effects = ['e_euphoria_bonus', 'euphoria_passive'],
-		atomic = [],
+		sub_effects = ['euphoria_passive'],
+		args = {lust = {obj = 'owner', dynamic = true, func = 'stat', stat = 'lust'}},
+		statchanges = {
+			atk_add_part = [['arg', 'lust'],'*',0.005],
+			matk_add_part = [['arg', 'lust'],'*',0.005]
+			},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Fighter.png",
 				description = "EUPHORIABUFF", #fix
 				bonuseffect = 'lust',
-				limit = 1,
-				t_name = "Euphoria",
-				combat_only = true,
+				tags = ['combat_only'],
 			}
 		],
-	},
-	e_euphoria_bonus = {
-		type = 'dynamic',
-		tags = ['recheck_stats'],
-		atomic = [
-			{type = 'stat_add_p', stat = 'atk', value = [['parent_args', 0],'*',0.005]},
-			{type = 'stat_add_p', stat = 'matk', value = [['parent_args', 0],'*',0.005]}
-			],
-		buffs = [],
-		args = [{obj = 'app_obj', param = 'lust'}],
-		sub_effects = []
 	},
 	euphoria_passive = {
 		type = 'trigger',
 		trigger = [variables.TR_TURN_F],
 		req_skill = false,
 		conditions = [],
-		atomic = [],
-		buffs = [],
-		args = [],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'owner',
-				args = [],
-				atomic = [
-					{type = 'stat_add', stat = 'lust', value = ['random', -6, -4]},
-					],
-				buffs = [],
-				sub_effects = []
+				atomic = [{type = 'stat_add', stat = 'lust', value = ['random', -6, -4]},],
 			},
 			{
 				type = 'oneshot',
 				target = 'owner',
-				args = [],
 				conditions = [{code = 'stat', stat = 'lust', operant = 'lte', value = 0}],
-				atomic = [
-					{type = 'remove_effect', value = 'euphoria'},
-					],
-				buffs = [],
-				sub_effects = []
+				atomic = [{type = 'remove_effect', value = 'euphoria'},],
 			}
 		]
 	},
 	e_t_distract = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'distract',
+		stack = 'distract',
 		tick_event = variables.TR_TURN_GET,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		stack = 1,
 		duration = 2,
 		tags = ['debuff'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'evasion', value = -30},
-			{type = 'stat_add', stat = 'hitrate', value = -30}
-		],
+		statchanges = {evasion = -30, hitrate = -30},
 		buffs = ['b_distract'],
-		args = [],
 	},
 	e_t_dragonmight = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'dragonmight',
+		stack = 'dragonmight',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		stack = 1,
 		tags = ['buff'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'damage_mod_all', value = 0.25},
-			{type = 'stat_mul', stat = 'armor', value = 1.25},
-		],
+		statchanges = {damage_mod_all = 0.25, armor_mul = 1.25},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Dragon_Knight.png",
 				description = "TRAITEFFECTDRAGONSMIGHT",
-				limit = 1,
-				t_name = 'dragonmight'
 			}
 		],
 	},
@@ -1124,13 +980,15 @@ var effects = {
 		conditions = [],
 		trigger = [variables.TR_HIT],
 		req_skill = true,
-		args = [{obj = 'parent', param = 'caster'}],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'skill',
-				args = [{obj = 'parent_arg_get', index = 0, param = 'hp'},{obj = 'parent_arg_get', index = 0, param = 'hpmax'}],
-				atomic = [{type = 'stat_mul', stat = 'value', value = [['parent_args', 0],'/',['parent_args', 1],'*',-3,'+',4.0]}],
+				args = {
+					hp = {obj = 'caster', func = 'stat', stat = 'hp'},
+					hpmax = {obj = 'caster', func = 'stat', stat = 'hpmax'}
+					},
+				atomic = [{type = 'stat_mul', stat = 'value', value = [['parent_args', 'hp'], '/', ['parent_args', 'hpmax'], '*', -3, '+', 4.0]}],
 			},
 		],
 	},
@@ -1139,16 +997,13 @@ var effects = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
-		args = [{obj = 'parent', param = 'caster'}],
 		sub_effects = ['e_t_devour'],
-		buffs = []
 	},
 	e_t_devour = {
 		type = 'temp_s',
 		tags = ['negative'],
 		target = 'target',
-		name = 'devour',
-		stack = 1,
+		stack = 'devour',
 		rem_event = [variables.TR_COMBAT_F],
 		buffs = [{
 				icon = "res://assets/images/iconsskills/Discipline.png",
@@ -1156,7 +1011,10 @@ var effects = {
 				limit = 1,
 				t_name = 'devour',
 			}],
-		args = [{obj = 'parent_args', param = 0, comment = 'caster'}, {obj = 'parent_arg_get', index = 0, param = 'mpmax', comment = 'casters mpmax' }],
+		args = {
+			caster = {obj = 'caster', func = 'eq'},
+			caster_mpmax = {obj = 'caster', func = 'stat', stat = 'mpmax'}
+		},
 		sub_effects = ['e_tr_devour']
 	},
 	e_tr_devour = {
@@ -1164,239 +1022,163 @@ var effects = {
 		trigger = [variables.TR_DEATH],
 		conditions = [],
 		req_skill = false,
-		args = [{obj = 'parent_args', param = 0, comment = 'caster'}, {obj = 'parent_args', param = 1, comment = 'casters mpmax'}],
-		sub_effects = [{
-			type = 'oneshot',
-			target = 'arg',
-			args = [{obj = 'parent_args', param = 0, comment = 'caster'}, {obj = 'parent_args', param = 1, comment = 'casters mpmax'}],
-			atomic = [
-				{type = 'mana', value = [['parent_args', 1], '*', 0.2]}
-				]
-		}],
-		buffs = []
+		args = {
+			caster = {obj = 'parent', func = 'arg', arg = 'caster'},
+			caster_mpmax = {obj = 'parent', func = 'arg', arg = 'caster_mpmax'}
+		},
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'arg_caster',
+				args = {
+					arg_caster = {obj = 'parent', func = 'arg', arg = 'caster'},
+					caster_mpmax = {obj = 'parent', func = 'arg', arg = 'caster_mpmax'}
+				},
+				atomic = [
+					{type = 'mana', value = [['parent_args', 'caster_mpmax'], '*', 0.2]}
+					]
+			}
+		],
 	},
 	e_s_spirit1 = {
 		type = 'trigger',
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
-		args = [],
-		sub_effects = ['e_clean_spirits','e_t_spirit1'],
-		buffs = []
+		sub_effects = ['e_t_spirit1'],
 	},
 	e_s_spirit2 = {
 		type = 'trigger',
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
-		args = [],
-		sub_effects = ['e_clean_spirits','e_t_spirit2'],
-		buffs = []
+		sub_effects = ['e_t_spirit2'],
 	},
 	e_s_spirit3 = {
 		type = 'trigger',
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
-		args = [],
-		sub_effects = ['e_clean_spirits','e_t_spirit3'],
-		buffs = []
+		sub_effects = ['e_t_spirit3'],
 	},
 	e_t_spirit1 = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'spirit1',
+		stack = 'spirit',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		stack = 1,
 		tags = ['spirit'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'evasion', value = 25},
-			{type = 'stat_add', stat = 'speed', value = 30},
-		],
+		statchanges = {evasion = 25, speed = 30}, 
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png",
 				description = "TRAITEFFECTSPIRIT1",
-				limit = 1,
-				t_name = 'spirit',
-				combat_only = true,
+				tags = ['combat_only'],
 			}
 		],
 	},
 	e_t_spirit3 = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'spirit3',
+		stack = 'spirit',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		stack = 1,
 		tags = ['spirit'],
 		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'hitrate', value = 30},
-			{type = 'stat_add', stat = 'damage_mod_skill', value = 0.2},
-		],
+		statchanges = {damage_mod_skill = 0.2, hitrate = 30}, 
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png",
 				description = "TRAITEFFECTSPIRIT3",
-				limit = 1,
-				t_name = 'spirit',
-				combat_only = true,
+				tags = ['combat_only'],
 			}
 		],
 	},
 	e_t_spirit2 = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'spirit2',
+		stack = 'spirit',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		stack = 1,
 		tags = ['spirit'],
 		sub_effects = ['e_t_turtle1', 'e_t_turtle2'],
-		atomic = [],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png",
 				description = "TRAITEFFECTSPIRIT2",
-				limit = 1,
-				t_name = 'spirit',
-				combat_only = true,
+				tags = ['combat_only'],
 			}
 		],
 	},
-	e_t_turtle1 = {
-		type = 'trigger',
-		trigger = [variables.TR_DEF],
-		conditions = [
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{type = 'skill', value = ['tags', 'has', 'damage'] },
-			{type = 'skill', value = ['ability_type', 'eq', 'skill']}
-		],
-		req_skill = true,
-		args = [],
-		sub_effects = [{
-			type = 'oneshot',
-			target = 'skill',
-			atomic = [{type = 'stat_mul', stat = 'value', value = 0.75}]
-		}],
-		buffs = []
-	},
-	e_t_turtle2 = {
-		type = 'trigger',
-		trigger = [variables.TR_DEF],
-		conditions = [
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{type = 'skill', value = ['tags', 'has', 'damage'] },
-			{type = 'skill', value = ['ability_type', 'eq', 'spell']}
-		],
-		req_skill = true,
-		args = [],
-		sub_effects = [{
-			type = 'oneshot',
-			target = 'skill',
-			atomic = [{type = 'stat_mul',  stat = 'value', value = 0.85}]
-		}],
-		buffs = []
-	},
-	e_clean_spirits = Effectdata.rebuild_remove_effect('spirit'),
+	e_t_turtle1 = Effectdata.rebuild_defvalue_template({tag = 'damage', skilltype = 'skill', value = 0.85}),
+	e_t_turtle2 = Effectdata.rebuild_defvalue_template({tag = 'damage', skilltype = 'spell', value = 0.85}),
 	e_s_bard1 = {
 		type = 'trigger',
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
-		args = [],
-		sub_effects = ['e_clean_bards','e_t_bard1'],
-		buffs = []
+		sub_effects = ['e_t_bard1'],
 	},
 	e_s_bard2 = {
 		type = 'trigger',
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
-		args = [],
-		sub_effects = ['e_clean_bards','e_t_bard2'],
-		buffs = []
+		sub_effects = ['e_t_bard2'],
 	},
 	e_s_bard3 = {
 		type = 'trigger',
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
-		args = [],
-		sub_effects = ['e_clean_bards','e_t_bard3'],
-		buffs = []
+		sub_effects = ['e_t_bard3'],
 	},
 	e_t_bard1 = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'bard1',
+		stack = 'bard',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		tick_event = [variables.TR_TURN_F],
-		stack = 1,
 		duration = 4,
 		tags = ['buff', 'positive', 'bard'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'hitrate', value = 20},
-			{type = 'stat_add', stat = 'evasion', value = 20},
-			{type = 'stat_add', stat = 'speed', value = 20},
-		],
+		statchanges = {speed = 20, hitrate = 20, evasion = 20}, 
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Bard.png",
 				description = "TRAITEFFECTBARD1",
-				limit = 1,
-				t_name = 'bard',
-				combat_only = true,
+				tags = ['combat_only'],
 			}
 		],
 	},
 	e_t_bard3 = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'bard3',
+		stack = 'bard',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		tick_event = [variables.TR_TURN_F],
-		stack = 1,
 		duration = 4,
 		tags = ['buff', 'positive', 'bard'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add_p', stat = 'atk', value = 0.2},
-			{type = 'stat_add_p', stat = 'matk', value = 0.2},
-		],
+		statchanges = {atk_add_part = 0.2, matk_add_part = 0.2}, 
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Bard.png",
 				description = "TRAITEFFECTBARD3",
-				limit = 1,
-				t_name = 'bard',
-				combat_only = true,
+				tags = ['combat_only'],
 			}
 		],
 	},
 	e_t_bard2 = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'bard2',
+		stack = 'bard',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		tick_event = [variables.TR_TURN_F],
-		stack = 1,
 		duration = 4,
 		tags = ['buff', 'positive', 'bard'],
 		sub_effects = ['e_bards_clean'],
-		atomic = [
-			{type = 'stat_add', stat = 'armor', value = 15},
-			{type = 'stat_add', stat = 'mdef', value = 15},
-		],
+		statchanges = {armor = 15, mdef = 15}, 
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Bard.png",
 				description = "TRAITEFFECTBARD2",
-				limit = 1,
-				t_name = 'bard',
-				combat_only = true,
+				tags = ['combat_only'],
 			}
 		],
 	},
@@ -1405,61 +1187,37 @@ var effects = {
 		trigger = [variables.TR_TURN_GET],
 		conditions = [],
 		req_skill = false,
-		args = [],
 		sub_effects = [{
 			type = 'oneshot',
 			target = 'owner',
-			args = [],
 			atomic = [{type = 'remove_effect', value = 'negative'}]
 		}],
-		buffs = [],
 	},
-	e_clean_bards = Effectdata.rebuild_remove_effect('bard'),
 	e_t_shell = {
 		type = 'temp_s',
 		tags = ['buff', 'positive'],
 		target = 'target',
 		duration = 4,
-		name = 'protective_shell',
-		stack = 1,
+		stack = 'protective_shell',
 		tick_event = variables.TR_POST_TARG,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		buffs = ['b_shell'],
-		args = [],
 		sub_effects = ['e_t_shell1']
 	},
-	e_t_shell1 = {
-		type = 'trigger',
-		trigger = [variables.TR_DEF],
-		conditions = [
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{type = 'skill', value = ['tags', 'has', 'damage'] },
-		],
-		req_skill = true,
-		args = [],
-		sub_effects = [{
-			type = 'oneshot',
-			target = 'skill',
-			atomic = [{type = 'stat_mul', stat = 'value', value = 0.65}]
-		}],
-		buffs = []
-	},
+	e_t_shell1 = Effectdata.rebuild_defvalue_template({tag = 'damage', value = 0.65}),
 	e_s_mirror = {
 		type = 'trigger',
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
-		args = [],
-		sub_effects = ['e_clean_reflections','e_t_mirror'],
-		buffs = []
+		sub_effects = ['e_t_mirror'],
 	},
 	e_t_mirror = {
 		type = 'temp_s',
 		tags = ['reflection', 'buff'],
 		target = 'target',
 		duration = 2,
-		name = 'mirror_image',
-		stack = 1,
+		stack = 'reflection',
 		tick_event = variables.TR_TURN_GET,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		buffs = ['b_mirror'],
@@ -1475,34 +1233,29 @@ var effects = {
 			{type = 'random', value = 0.25}
 		],
 		req_skill = true,
-		args = [],
 		sub_effects = [{
 			type = 'oneshot',
 			target = 'skill',
 			atomic = [{type = 'stat_set', stat = 'hit_res', value = variables.RES_MISS}]
 		}],
-		buffs = []
 	},
 	e_s_field = {
 		type = 'trigger',
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
-		args = [{obj = 'parent', param = 'process_value' }],
-		sub_effects = ['e_clean_reflections','e_t_field'],
-		buffs = []
+		sub_effects = ['e_t_field'],
 	},
 	e_t_field = {
 		type = 'temp_s',
 		tags = ['reflection', 'buff'],
 		target = 'target',
 		duration = 2,
-		name = 'energy_field',
-		stack = 1,
+		stack = 'reflection',
 		tick_event = variables.TR_TURN_GET,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		buffs = ['b_field'],
-		args = [{obj = 'parent_args', param = 0}],
+		args = {value = {obj = 'skill', func = 'get', arg = 'process_value'}},
 		sub_effects = ['e_t_field1']
 	},
 	e_t_field1 = {
@@ -1514,135 +1267,109 @@ var effects = {
 			{type = 'random', value = 0.5}
 		],
 		req_skill = true,
-		args = [{obj = 'parent_args', param = 0}],
+		args = {value = {obj = 'parent', func = 'arg', arg = 'value'}},
 		sub_effects = [{
 			type = 'oneshot',
 			target = 'caster',
-			args = [{obj = 'parent_args', param = 0}],
+			args = {
+				damage = {obj = 'parent', func = 'arg', arg = 'value'},
+				src = {obj = 'self', func = 'src', src = 'air'}
+				},
 			atomic = [
 				{type = 'sfx', value = 'targetattack'},
-				{type = 'damage', value = ['parent_args', 0], source = 'air'}]
+				'a_damage_simple']
 		}],
-		buffs = []
 	},
-	e_clean_reflections = Effectdata.rebuild_remove_effect('reflection'),
 	e_s_windwall = {
 		type = 'temp_s',
 		duration = 4,
-		stack = 1,
-		name = 'e_s_windwall',
+		stack = 'windwall',
 		target = 'target',
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		args = [],
-		atomic = [
-			{type = 'stat_add', stat = 'resist_damage_ranged', value = 0.5},
-		],
-		sub_effects = [],
+		statchanges = {resist_damage_ranged = 0.5},
 		buffs = [{
 			icon = "res://assets/images/iconsskills/windwall.png",
 			description = "TRAITEFFECTWINDWALL",
-			args = [],
-			limit = 1,
-			t_name = 'windwall',
 		}]
 	},
 	
 	e_we_dark_static = {
-		type = 'static',
-		args = [],
-		atomic = [
-			Effectdata.rebuild_we_atomic('dark')
-		],
-		sub_effects = [],
-		tags = [],
+		type = 'simple',
+		statchanges = {damagetype = 'dark'},
 		buffs = [{
 			icon = "res://assets/images/iconsclasses/deathknight.png",
-			description = "TRAITDARKWEAPON", #fix
-			args = [],
-			limit = 1,
-			t_name = 'we_dark',
+			description = "TRAITDARKWEAPON",
 		}]
 	},
-	
-	e_we_test = {
-		type = 'temp_s',
-		duration = 4,
-		stack = 1,
-		name = 'e_s_windwall',
-		target = 'target',
-		tick_event = [variables.TR_TURN_F],
-		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		args = [],
-		atomic = [
-			Effectdata.rebuild_we_atomic('water')
-		],
-		sub_effects = [],
-		tags = ['e_damage_buff'],
-		buffs = [{
-			icon = "res://assets/images/iconsskills/windwall.png",
-			description = "TRAITEFFECTWINDWALL",
-			args = [],
-			limit = 1,
-			t_name = 'test',
-		}]
-	}
 }
 var atomic_effects = {}
 var buffs = {
 	b_alios = {
 		icon = "res://assets/images/iconsskills/hitrate.png",
 		description = "BUFFDESCRIPTALIOSACTIVE",
-		t_name = 'alios',
-		combat_only = true
+		tags = ['combat_only'],
 	},
 	b_bishop = {
 		icon = "res://assets/images/iconsclasses/Bishop.png",
 		description = "BUFFDESCRIPTBISHOP",
-		t_name = 'bishop_debuff',
-		combat_only = true
+		tags = ['combat_only'],
 	},
 	b_templar = {
 		icon = "res://assets/images/iconsclasses/Templar.png",
 		description = "BUFFDESCRIPTTEMPLAR",
-		t_name = 'templar_buff',
-		combat_only = true
+		tags = ['combat_only'],
 	},
 	b_deathknight = {
 		icon = "res://assets/images/iconsclasses/deathknight.png",
 		description = "BUFFDESCRIPTDEATHKNIGHT",
-		t_name = 'deathknight_buff',
-		limit = 1,
 		tags = ['show_amount']
 	},
 	b_free_use = {
 		icon = "res://assets/images/iconsclasses/Attendant.png",
 		description = "BUFFDESCRIPTFREEUSE",
-		t_name = 'freuse',
-		combat_only = true
+		tags = ['combat_only'],
 	},
 	b_distract = {
 		icon = "res://assets/images/iconsskills/distract.png",
 		description = "BUFFDESCRIPTDISTRACT",
-		limit = 1,
-		t_name = 'distract'
 	},
 	b_bloodatk = {
 		icon = "res://assets/images/iconsskills/hitrate.png",
 		description = "BUFFDESCRIPTBLOODATTACK",
-		t_name = 'bloodatk',
-		combat_only = true
+		tags = ['combat_only'],
 	},
-	b_field= {
+	b_field = {
 		icon = "res://assets/images/iconsskills/Barrier.png",
 		description = "BUFFDESCRIPTFIELD", 
-		limit = 1,
-		t_name = 'field'
 	},
-	b_shell= {
+	b_shell = {
 		icon = "res://assets/images/traits/hitrate.png",
 		description = "BUFFDESCRIPTSHELL",
-		limit = 1,
-		t_name = 'shell'
 	},
+}
+
+var stacks = {
+	bloodmage_bonus = {
+		type = 'stack',
+	},#st unlim
+	templar_prot = {},#st 1
+	command = {},#st 1
+	refine = {},#st 1
+	distract = {},#st 1
+	dragonmight = {},#st 1
+	windwall = {},#st 1
+	devour = {},#st 1
+	spirit = {},#st 1
+	bard = {},#st 1
+	reflection = {},#st 1
+	protective_shell = {},#st 1
+	deathknight = {
+		type = 'stack_c',
+		stack = 5
+	},#st increment lim 5
+	euphoria = {
+		type = 'stack_t',
+		stack = 1
+	},#toggle
 }

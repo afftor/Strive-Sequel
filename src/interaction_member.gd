@@ -105,16 +105,16 @@ var actionshad = {addtraits = [], removetraits = [], samesex = 0, samesexorgasms
 var id
 var person_sexexp
 var person_sexskills
-var person_metrics
+var person_relations
 var person_mods
 
 func setup_person(ch, no_loyal = false):
 	person = ch
 	id = ch.id
-	person_sexexp = person.get_stat('sexexp', true)
-	person_sexskills = person.get_stat('sex_skills', true)
-	person_metrics = person.get_stat('metrics', true)
-	person_mods = person.get_stat('mods', true)
+	person_sexexp = person.access_sexexp()
+	person_sexskills = person.get_sex_skills()
+	person_relations = person.get_stat('relations', true)
+	person_mods = person.get_stat('body_upgrades', true)
 	sex = ch.get_stat('sex')
 	lust = ch.get_stat('lust')*10
 	sens = 0

@@ -12889,7 +12889,7 @@ Vous serrez Cali contre vous et l'embrassez, passant le reste de la nuit ensembl
 	METRICS_PARTNERS_ONE = "[Il] n'a eu qu'un {color=yellow|single partner} pendant toute cette période. ",
 	METRICS_PARTNERS_NONE = "[Il] n'a pas semblé s'engager dans une activité sexuelle avec qui que ce soit jusqu'à présent...",
 	METRICS_IMPREGS = "[Il] a été fécondé {color=yellow|%d} fois qui ont abouti à la naissance d'un enfant {color=yellow|%d} fois. ",
-	METRICS_PEGNANCIES = "[Il] a été fécondé {color=yellow|%d} fois. ",
+	METRICS_PREGNANCIES = "[Il] a été fécondé {color=yellow|%d} fois. ",
 	METRICS_VIRGINITY_YOU = "[Il] a perdu sa virginité vaginale avec {color=yellow|you}. ",
 	METRICS_VIRGINITY_OTHER = "[Il] a perdu sa virginité vaginale avec {color=yellow|%s}. ",
 	METRICS_ANAL_VIRGINITY_YOU = "[Sa] première expérience de pénétration anale a eu lieu avec {color=yellow|you}. ",

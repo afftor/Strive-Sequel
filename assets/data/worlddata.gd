@@ -18,7 +18,7 @@ var lands = {
 		start_locations_number = 2, #will generate this number of smaller locations like dungeons
 		locations = {}, #array to fill up with settlements and dungeons
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'], #array of allowed locations to generate
-		starting_locations = ['dungeon_bandit_den','dungeon_goblin_cave'],# 'dungeon_infinite_example'],#['dungeon_bandit_fort'],
+		starting_locations = ['dungeon_bandit_den','dungeon_goblin_cave','dungeon_goblin_stronghold'],# 'dungeon_infinite_example'],#['dungeon_bandit_fort'],
 		guilds = ['workers','servants','fighters','mages','slavemarket','exotic_slave_trader'],
 		events = [],
 		tags = [],
@@ -72,7 +72,7 @@ var lands = {
 		guilds = [],
 		tags = [],
 		capital_options = [],
-		area_shop_items = '',
+		area_shop_items = 'mountain_area_shop',
 		capital_background = 'dwarfs_city',
 		capital_name = "Dwarven Capital",
 		capital_code = 'dwarf_capital',
@@ -80,21 +80,27 @@ var lands = {
 #		capital_background_noise = '',
 		capital_background_music = 'dwarf_cap',
 	},
-	steppe = {
-		code = 'steppe',
-		name = tr("AREASTEPPE"),
-		enabled = false,
-		lead_race = 'Orc',
-		secondary_races = ['Goblin','Centaur'],
+	empire = {
+		code = 'empire',
+		name = tr("AREAEMPIRE"),
+		enabled = true,
+		lead_race = 'Human',
+		secondary_races = [],
 		policies = [],
-		travel_time = [3,6],#[15,36],
+		travel_time = [3,3],
 		disposition = 15,
 		start_settlements_number = {},
 		starting_locations = [],
 		locations = {},
-		locationpool = ['dungeon_goblin_cave'],
+		locationpool = [],
 		guilds = [],
 		area_shop_items = '',
+		capital_background = 'empire',
+		capital_name = "Empire Capital",
+		capital_code = 'empire_capital',
+		capital_dynamic_background = 'empire',
+#		capital_background_noise = '',
+		capital_background_music = 'wimborn',
 	},
 	seas = {
 		code = 'seas',
@@ -607,6 +613,8 @@ var locationnames = {
 	bandit_fort_adjs = [tr("BANDIT_FORT_ADJS1"),tr("BANDIT_FORT_ADJS2"),tr("BANDIT_FORT_ADJS3"),tr("BANDIT_FORT_ADJS4"),tr("BANDIT_FORT_ADJS5")],
 	rebel_redoubt_nouns = [tr("BANDIT_FORT_NOUNS1"),tr("BANDIT_FORT_NOUNS2"),tr("BANDIT_FORT_NOUNS3"),tr("BANDIT_FORT_NOUNS4"),tr("BANDIT_FORT_NOUNS5"),tr("BANDIT_FORT_NOUNS6")],
 	rebel_redoubt_adjs = [tr("BANDIT_FORT_ADJS1"),tr("BANDIT_FORT_ADJS2"),tr("BANDIT_FORT_ADJS3"),tr("BANDIT_FORT_ADJS4"),tr("BANDIT_FORT_ADJS5")],
+	goblin_stronghold_nouns = [tr("GOBLIN_STRONGHOLD_NOUNS1"),tr("GOBLIN_STRONGHOLD_NOUNS2"),tr("GOBLIN_STRONGHOLD_NOUNS3"),tr("GOBLIN_STRONGHOLD_NOUNS4"),tr("GOBLIN_STRONGHOLD_NOUNS5"),tr("GOBLIN_STRONGHOLD_NOUNS6"),tr("GOBLIN_STRONGHOLD_NOUNS7"),tr("GOBLIN_STRONGHOLD_NOUNS8"),tr("GOBLIN_STRONGHOLD_NOUNS9"),tr("GOBLIN_STRONGHOLD_NOUNS10")],
+	goblin_stronghold_adjs = [tr("GOBLIN_STRONGHOLD_ADJS1"),tr("GOBLIN_STRONGHOLD_ADJS2"),tr("GOBLIN_STRONGHOLD_ADJS3"),tr("GOBLIN_STRONGHOLD_ADJS4"),tr("GOBLIN_STRONGHOLD_ADJS5"),tr("GOBLIN_STRONGHOLD_ADJS6"),tr("GOBLIN_STRONGHOLD_ADJS7"),tr("GOBLIN_STRONGHOLD_ADJS8"),tr("GOBLIN_STRONGHOLD_ADJS9"),tr("GOBLIN_STRONGHOLD_ADJS10"),tr("GOBLIN_STRONGHOLD_ADJS11"),tr("GOBLIN_STRONGHOLD_ADJS12")],
 	goblin_cave_nouns = [tr("GOBLIN_CAVE_NOUNS1"),tr("GOBLIN_CAVE_NOUNS2"),tr("GOBLIN_CAVE_NOUNS3"),tr("GOBLIN_CAVE_NOUNS4"),tr("GOBLIN_CAVE_NOUNS5")],
 	goblin_cave_adjs = [tr("GOBLIN_CAVE_ADJS1"),tr("GOBLIN_CAVE_ADJS2"),tr("GOBLIN_CAVE_ADJS3"),tr("GOBLIN_CAVE_ADJS4"),tr("GOBLIN_CAVE_ADJS5"),tr("GOBLIN_CAVE_ADJS6"),tr("GOBLIN_CAVE_ADJS7")],
 	spider_lair_nouns = [tr("GOBLIN_CAVE_NOUNS1"),tr("GOBLIN_CAVE_NOUNS2"),tr("GOBLIN_CAVE_NOUNS3"),tr("GOBLIN_CAVE_NOUNS4"),tr("GOBLIN_CAVE_NOUNS5")],
@@ -882,11 +890,11 @@ var fixed_location_options = { #override serialized data
 			], 
 			args = [{code = 'start_event', data = 'kuro_church_note', args = []}]
 		},
-#		{
-#			text = tr('ARENA_NAME'),
-#			reqs = [],
-#			args = [{code = 'open_arena'}]
-#		},
+		{
+			text = tr('ARENA_NAME'),
+			reqs = [],
+			args = [{code = 'open_arena'}]
+		},
 	],
 	elf_capital = [
 		{

@@ -158,11 +158,11 @@ func slave_status():
 
 func pregnancy():
 	var text = ''
-	if person.get_stat('pregnancy').duration > 0 :
-		if variables.pregduration/3 > person.get_stat('pregnancy').duration:
+	if person.get_stat('pregnancy_duration') > 0 :
+		if variables.pregduration/3 > person.get_stat('pregnancy_duration'):
 			text += tr("BODYPARTPREGLINELATE")
 
-		elif variables.pregduration/1.5 > person.get_stat('pregnancy').duration:
+		elif variables.pregduration/1.5 > person.get_stat('pregnancy_duration'):
 			text += tr("BODYPARTPREGLINEEARLY")
 
 
@@ -172,43 +172,42 @@ func pregnancy():
 func piercing(): #currently unused
 	var text = ""
 	#add later
-	var tmp = person.get_stat('piercing')
-	if tmp.earlobes == 'earrings':
+	if person.get_stat('piercing_earlobes') == 'earrings':
 		text += '[His] ears are decorated with a pair of [color=aqua]fancy earrings[/color]. '
-	elif tmp.earlobes == 'stud':
+	elif person.get_stat('piercing_earlobes') == 'stud':
 		text += '[His] ears have a pair of [color=aqua]small studs[/color] in them. '
-	if tmp.eyebrow == 'stud':
+	if person.get_stat('piercing_eyebrow') == 'stud':
 		text += '[His] eyebrow is decorated with a [color=aqua]small stud[/color]. '
-	if tmp.nose == 'ring':
+	if person.get_stat('piercing_nose') == 'ring':
 		text += '[His] nose bears a [color=aqua]large nose ring[/color] in it. '
-	elif tmp.nose == 'stud':
+	elif person.get_stat('piercing_nose') == 'stud':
 		text += '[His] nose has a [color=aqua]small stud[/color] in it. '
-	if tmp.lips == 'ring':
+	if person.get_stat('piercing_lips') == 'ring':
 		text += '[His] lip is pierced with a [color=aqua]small ring[/color]. '
-	elif tmp.lips == 'stud':
+	elif person.get_stat('piercing_lips') == 'stud':
 		text += '[His] lip has a [color=aqua]small stud[/color] in it. '
-	if tmp.tongue == 'stud':
+	if person.get_stat('piercing_tongue') == 'stud':
 		text += '[His] tongue has a shiny [color=aqua]stud[/color], visible when [he] talks. '
-	if tmp.navel == 'stud':
+	if person.get_stat('piercing_navel') == 'stud':
 		text += "[His] navel is pierced with a [color=aqua]small stud[/color]."
 
-	if tmp.nipples == 'stud':
+	if person.get_stat('piercing_nipples') == 'stud':
 		text += '[His] pierced nipples are decorated with [color=aqua]a pair of small studs[/color]. '
-	elif tmp.nipples == 'ring':
+	elif person.get_stat('piercing_nipples') == 'ring':
 		text += '[His] pierced nipples contain a [color=aqua]pair of rings[/color]. '
-	elif tmp.nipples == 'chain':
+	elif person.get_stat('piercing_nipples') == 'chain':
 		text += 'Her pierced nipples are connected by a [color=aqua]small chain[/color]. '
-	if tmp.clit == 'ring':
+	if person.get_stat('piercing_clit') == 'ring':
 		text += '[His] clit is pierced with a [color=aqua]ring[/color]. '
-	elif tmp.clit == 'stud':
+	elif person.get_stat('piercing_clit') == 'stud':
 		text += '[His] clit has a [color=aqua]small stud[/color] in it. '
-	if tmp.labia == 'ring':
+	if person.get_stat('piercing_labia') == 'ring':
 		text += '[His] pierced labia is decorated with [color=aqua]a pair of rings[/color]. '
-	elif tmp.labia == 'stud':
+	elif person.get_stat('piercing_labia') == 'stud':
 		text += '[His] pierced labia is decorated with a [color=aqua]small stud[/color]. '
-	if tmp.penis == 'ring':
+	if person.get_stat('piercing_penis') == 'ring':
 		text += '[His] cock has a considerable [color=aqua]ring[/color] on the tip. '
-	elif tmp.penis == 'stud':
+	elif person.get_stat('piercing_penis') == 'stud':
 		text += '[His] cock has a [color=aqua]stud[/color] in it. '
 
 	if text != '':
@@ -243,9 +242,8 @@ func piercing(): #currently unused
 
 func tattoo():
 	var text = ''
-	for slot in person.statlist.tattoo:
-		if person.statlist.tattoo[slot] != null:
-			text += tr("DESCRIPTTATOO" + (slot + "_" + person.statlist.tattoo[slot].replace("ink_",'')).to_upper()) + " "
+	for slot in person.get_filled_tattoos():
+		text += tr("DESCRIPTTATOO" + (slot + "_" + person.get_tattoo(slot).replace("ink_",'')).to_upper()) + " "
 	if text.length()> 0:
 		return "{color=magenta|" + text + "}"
 	else:
@@ -338,6 +336,7 @@ var bodypartsdata = {
 			{code = 'balls_size', value = [['small', 1], ['average', 5], ['big',1]], reqs = []},
 			{code = 'eye_tex', value = [['eyes1m', 1],['eyes2m', 1],['eyes3m', 1],['eyes4m', 1],['eyes5m', 1],], reqs = []},
 			{code = 'chin', value = [['default', 1],['male', 1],['muscle', 1]], reqs = []},
+			{code = 'chin', value = [['beastkin', 1]], reqs = [{code = 'one_of_races', value = ['BeastkinCat','BeastkinWolf', 'BeastkinFox', 'BeastkinBunny', 'BeastkinTanuki'], check = true}]},
 			{code = 'eyebrows', value = [['style1', 1],['style6', 1],['style7', 1]], reqs = []},
 		]},
 		female = {code = 'female', name = '', chardescript = '', bodychanges = [
@@ -357,6 +356,7 @@ var bodypartsdata = {
 			{code = 'penis_virgin', value = [[false,1]], reqs = []},
 			{code = 'eye_tex', value = [['eyes1', 1],['eyes2', 1],['eyes3', 1],['eyes4', 1],['eyes5', 1],], reqs = []},
 			{code = 'chin', value = [['default', 1],['curve', 1],['small', 1],['skinny', 1]], reqs = []},
+			{code = 'chin', value = [['beastkin', 1]], reqs = [{code = 'one_of_races', value = ['BeastkinCat','BeastkinWolf', 'BeastkinFox', 'BeastkinBunny', 'BeastkinTanuki'], check = true}]},
 			{code = 'eyebrows', value = [['style1', 1],['style2', 1],['style3', 1],['style4', 1],['style5', 1]], reqs = []},
 		]},
 		futa = {code = 'futa', name = '', chardescript = '', bodychanges = [
@@ -374,6 +374,7 @@ var bodypartsdata = {
 			{code = 'beard', value = [['no',1]], reqs = []},
 			{code = 'eye_tex', value = [['eyes1', 1],['eyes2', 1],['eyes3', 1],['eyes4', 1],['eyes5', 1],], reqs = []},
 			{code = 'chin', value = [['default', 1],['curve', 1],['small', 1],['skinny', 1]], reqs = []},
+			{code = 'chin', value = [['beastkin', 1]], reqs = [{code = 'one_of_races', value = ['BeastkinCat','BeastkinWolf', 'BeastkinFox', 'BeastkinBunny', 'BeastkinTanuki'], check = true}]},
 			{code = 'eyebrows', value = [['style1', 1],['style2', 1],['style3', 1],['style4', 1],['style5', 1]], reqs = []},
 		]},
 	},
@@ -494,25 +495,39 @@ var bodypartsdata = {
 		plant = {code = 'plant', name = '', chardescript = '', bodychanges = []},
 		scale = {code = 'scale', name = '', chardescript = '', bodychanges = []},
 		feathers = {code = 'feathers', name = '', chardescript = '', bodychanges = []},
-		fur_white = {code = 'fur_white', name = '', chardescript = '', bodychanges = []},
-		fur_grey = {code = 'fur_grey', name = '', chardescript = '', bodychanges = []},
-		fur_brown = {code = 'fur_brown', name = '', chardescript = '', bodychanges = []},
-		fur_striped = {code = 'fur_striped', name = '', chardescript = '', bodychanges = []},
-		fur_black = {code = 'fur_black', name = '', chardescript = '', bodychanges = []},
-		fur_orange = {code = 'fur_orange', name = '', chardescript = '', bodychanges = []},
-		fur_orange_white = {code = 'fur_orange_white', name = '', chardescript = '', bodychanges = []},
+		fur_white = {code = 'fur_white', name = '', chardescript = '', bodychanges = [
+			{code = 'body_color_tail', value = [['white2', 1]], reqs = []},
+		]},
+		fur_grey = {code = 'fur_grey', name = '', chardescript = '', bodychanges = [
+			{code = 'body_color_tail', value = [['white3', 1]], reqs = []},
+		]},
+		fur_brown = {code = 'fur_brown', name = '', chardescript = '', bodychanges = [
+			{code = 'body_color_tail', value = [['brown3', 1]], reqs = []},
+		]},
+		fur_striped = {code = 'fur_striped', name = '', chardescript = '', bodychanges = [
+			{code = 'body_color_tail', value = [['orange3', 1]], reqs = []},
+		]},
+		fur_black = {code = 'fur_black', name = '', chardescript = '', bodychanges = [
+			{code = 'body_color_tail', value = [['dark3', 1]], reqs = []},
+		]},
+		fur_orange = {code = 'fur_orange', name = '', chardescript = '', bodychanges = [
+			{code = 'body_color_tail', value = [['orange3', 1]], reqs = []},
+		]},
+		fur_orange_white = {code = 'fur_orange_white', name = '', chardescript = '', bodychanges = [
+			{code = 'body_color_tail', value = [['orange2', 1]], reqs = []},
+		]},
 	},
 	wings = {
-		"": {code = "", name = 'NO', chardescript = '', bodychanges = []},
-		null: {code = null, name = 'NO', chardescript = '', bodychanges = []},
-		feathered_black = {code = 'feathered_black', name = '', chardescript = '', bodychanges = []},
-		seraph = {code = 'seraph', name = '', chardescript = '', bodychanges = []},
-		feathered_brown = {code = 'feathered_brown', name = '', chardescript = '', bodychanges = []},
+		"": {code = "", name = 'NO', chardescript = '', bodychanges = [{code = 'body_color_wings', value = [['pink1', 1]], reqs = []},]},
+		null: {code = null, name = 'NO', chardescript = '', bodychanges = [{code = 'body_color_wings', value = [['pink1', 1]], reqs = []},]},
+		feathered_black = {code = 'feathered_black', name = '', chardescript = '', bodychanges = [{code = 'body_color_wings', value = [['dark2', 1]], reqs = []},]},
+		seraph = {code = 'seraph', name = '', chardescript = '', bodychanges = [{code = 'body_color_wings', value = [['white1', 1]], reqs = []},]},
+		feathered_brown = {code = 'feathered_brown', name = '', chardescript = '', bodychanges = [{code = 'body_color_wings', value = [['dark1', 1]], reqs = []},]},
 		fairy = {code = 'fairy', name = '', chardescript = '', bodychanges = []},
-		demon = {code = 'demon', name = '', chardescript = '', bodychanges = []},
-		dragon = {code = 'dragon', name = '', chardescript = '', bodychanges = []},
-		leather_black = {code = 'leather_black', name = '', chardescript = '', bodychanges = []},
-		leather_red = {code = 'leather_red', name = '', chardescript = '', bodychanges = []},
+		demon = {code = 'demon', name = '', chardescript = '', bodychanges = [{code = 'body_color_wings', value = [['red3', 1]], reqs = []},]},
+		dragon = {code = 'dragon', name = '', chardescript = '', bodychanges = [{code = 'body_color_wings', value = [['yellow3', 1]], reqs = []},]},
+		leather_black = {code = 'leather_black', name = '', chardescript = '', bodychanges = [{code = 'body_color_wings', value = [['dark3', 1]], reqs = []},]},
+		leather_red = {code = 'leather_red', name = '', chardescript = '', bodychanges = [{code = 'body_color_wings', value = [['red1', 1]], reqs = []},]},
 	},
 	tail = {
 		"": {code = "", name = 'NO', chardescript = '', bodychanges = []},
@@ -523,10 +538,12 @@ var bodypartsdata = {
 		bunny = {code = 'bunny', name = '', chardescript = '', bodychanges = []},
 		tanuki = {code = 'tanuki', name = '', chardescript = '', bodychanges = []},
 		cow = {code = 'cow', name = '', chardescript = '', bodychanges = []},
-		demon = {code = 'demon', name = '', chardescript = '', bodychanges = []},
-		dragon = {code = 'dragon', name = '', chardescript = '', bodychanges = []},
+		demon = {code = 'demon', name = '', chardescript = '', bodychanges = [{code = 'body_color_tail', value = [['dark2', 1]], reqs = []},]},
+		dragon = {code = 'dragon', name = '', chardescript = '', bodychanges = [{code = 'body_color_tail', value = [['red2', 1]], reqs = []},]},
+		mouse = {code = 'mouse', name = '', chardescript = '', bodychanges = [{code = 'body_color_tail', value = [['white2', 1]], reqs = []},]},
+		kobold = {code = 'kobold', name = '', chardescript = '', bodychanges = [{code = 'body_color_tail', value = [['green2', 1]], reqs = []},]},
 		avian = {code = 'avian', name = '', chardescript = '', bodychanges = []},
-		fish = {code = 'fish', name = '', chardescript = '', bodychanges = []},
+		fish = {code = 'fish', name = '', chardescript = '', bodychanges = [{code = 'body_color_tail', value = [['blue2', 1]], reqs = []},]},
 		snake = {code = 'snake', name = '', chardescript = '', bodychanges = []},
 		tentacles = {code = 'tentacles', name = '', chardescript = '', bodychanges = []},
 		horse = {code = 'horse', name = '', chardescript = '', bodychanges = []},
@@ -726,7 +743,7 @@ func get_class_bonuses_short(newperson, classdata): #maybe there should be used 
 	for i in classdata.statchanges:
 		var data = statdata.statdata[i]
 		var value = classdata.statchanges[i]
-		if data.show_in_header:
+		if data.tags.has('show_in_header'):
 			continue
 		if value is bool:
 			text += tr(data.name + '_' + str(value).to_upper()) + "\n" 

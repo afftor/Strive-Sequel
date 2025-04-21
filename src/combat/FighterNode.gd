@@ -137,7 +137,7 @@ func process_sound(sound):
 func rebuildbuffs():
 	if fighter == null: return
 	if !fighter.is_active: return
-	var data = {node = self, time = input_handler.combat_node.turns, type = 'buffs', slot = 'buffs', params = fighter.get_combat_buffs()}
+	var data = {node = self, time = input_handler.combat_node.turns, type = 'buffs', slot = 'buffs', params = []}#fighter.get_combat_buffs()}
 	animation_node.add_new_data(data)
 
 func process_critical():
@@ -149,25 +149,25 @@ func noq_rebuildbuffs():
 	if !visible: return
 	var oldbuff = 0
 	var newbuffs = fighter.get_combat_buffs()
-	for b in newbuffs:
-		if buffs.has(b.template_name): oldbuff += 1
-#	if oldbuff == buffs.size():
-	if false: #for test purpose
-		for i in newbuffs:
-			if buffs.has(i.template_name): update_buff(i)
-			else: add_buff(i)
-	else:
-		input_handler.ClearContainer($Buffs)
-		buffs.clear()
-		for i in newbuffs:
-			add_buff(i)
+#	for b in newbuffs:
+#		if buffs.has(b.template_name): oldbuff += 1
+##	if oldbuff == buffs.size():
+#	if false: #for test purpose
+#		for i in newbuffs:
+#			if buffs.has(i.template_name): update_buff(i)
+#			else: add_buff(i)
+#	else:
+	input_handler.ClearContainer($Buffs)
+	buffs.clear()
+	for i in newbuffs:
+		add_buff(i)
 
 func add_buff(i):
 	if !visible: return
 	var newbuff = input_handler.DuplicateContainerTemplate($Buffs)
 	var text = i.description
 	newbuff.texture = i.icon
-	buffs.push_back(i.template_name)
+#	buffs.push_back(i.template_name)
 	if i.template.has('bonuseffect'):
 		match i.template.bonuseffect:
 			'barrier':

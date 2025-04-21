@@ -184,7 +184,7 @@ var effects = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
-		args = [{obj = 'parent', param = 'process_value'}], #{obj = 'parent_args', param = 0}
+		args = {value = {obj = 'skill', func = 'get', arg = 'process_value'}},
 		sub_effects = [
 			Effectdata.rebuild_remove_effect('shred'),
 			Effectdata.rebuild_remove_effect('shatter'),
@@ -197,7 +197,7 @@ var effects = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
-		args = [{obj = 'parent', param = 'process_value'}], #{obj = 'parent_args', param = 0}
+		args = {value = {obj = 'skill', func = 'get', arg = 'process_value'}},
 		sub_effects = [
 			Effectdata.rebuild_remove_effect('shred'),
 			Effectdata.rebuild_remove_effect('shatter'),
@@ -208,45 +208,37 @@ var effects = {
 	e_t_earthshield = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'earth_shield',
+		stack = 'earth_shield',
 		tick_event = variables.TR_TURN_S,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 5,
-		stack = 1,
 		tags = ['buff'],
-		args = [{obj = 'parent_args', param = 0}],
-		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'armor', value = [['parent_args', 0], '*', 0.5]}],
+		args = {value = {obj = 'parent', func = 'arg', arg = 'value'}},
+		statchanges = {armor = [['arg', 'value'], '*', 0.5],},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Knight.png",
 				description = "TRAITEFFECTEARTHSHIELD",
-				limit = 1,
-				t_name = 'earthshield'
 			}
 		],
 	},
 	e_t_earthshield_1 = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'earth_shield',
+		stack = 'earth_shield',
 		tick_event = variables.TR_TURN_S,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 5,
-		stack = 1,
 		tags = ['buff'],
-		args = [{obj = 'parent_args', param = 0}],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'armor', value = [['parent_args', 0], '*', 0.5]},
-			{type = 'stat_add', stat = 'mdef', value = [['parent_args', 0], '*', 0.4]}
-			],
+		args = {value = {obj = 'parent', func = 'arg', arg = 'value'}},
+		statchanges = {
+			armor = [['arg', 'value'], '*', 0.5],
+			mdef = [['arg', 'value'], '*', 0.4],
+			},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Knight.png",
 				description = "TRAITEFFECTEARTHSHIELD_1",
-				limit = 1,
-				t_name = 'earthshield'
 			}
 		],
 	},
@@ -257,11 +249,9 @@ var effects = {
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 			{type = 'target', value = [{code = 'is_immune', status = 'stun', check = true}]}
 		],
-		duration = 3,
+		args = {duration = {obj = 'self', func = 'dr', dr = 5},},
 		req_skill = true,
-		args = [],
-		sub_effects = ['e_s_shred3'],
-		buffs = []
+		sub_effects = ['e_s_shred'],
 	},
 	e_t_disintegrate_2 = {
 		type = 'trigger',
@@ -270,12 +260,14 @@ var effects = {
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 			{type = 'target', value = [{code = 'is_immune', status = 'stun', check = false}]}
 		],
-		duration = 3,
+		args = {duration = {obj = 'self', func = 'dr', dr = 3},},
 		req_skill = true,
-		args = [],
-		sub_effects = [Effectdata.rebuild_make_status({effect = 'e_s_stun1', duration = 3})],
-		buffs = []
+		sub_effects = ['e_s_stun'],
 	},
 }
 var atomic_effects = {}
 var buffs = {}
+
+var stacks = {
+	earth_shield = {} #st 1
+}

@@ -2963,7 +2963,7 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	PROFACOLYTE = "Acolyte",
 	PROFACOLYTEDESCRIPT = "Individuals have devoted their life to mending to others. ",
 	PROFPRIEST = "Priest",
-	PROFPRIESTDESCRIPT = "Devoted to their faith and helping others, priests are strong healers capable of meding to serious wounds.",
+	PROFPRIESTDESCRIPT = "Devoted to their faith and helping others, priests are strong healers capable of mending to serious wounds.",
 	PROFMONK = "Monk",
 	PROFMONKDESCRIPT = "Religious fighters who utilize their spiritual training to deal with the enemies.",
 	PROFBISHOP = "Bishop",
@@ -3836,6 +3836,7 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ITEMMAP_ANCIENT_JUNGLE = "Map: Ancient Jungles",
 	ITEMMAP_FIRE_DEPTHS = "Map: Fire Depths",
 	ITEMMAP_REBEL_REDOUBT = "Map: Rebel Redoubt",
+	ITEMMAP_GOBLIN_STRONGHOLD = "Map: Goblin Stronghold",
 	ITEMMAP_BANDIT_DENDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
 	ITEMMAP_BANDIT_FORTDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
 	ITEMMAP_GROVEDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
@@ -3845,6 +3846,7 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ITEMMAP_ANCIENT_JUNGLEDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
 	ITEMMAP_FIRE_DEPTHSDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
 	ITEMMAP_REBEL_REDOUBTDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
+	ITEMMAP_GOBLIN_STRONGHOLDDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
 	LOCATIONNAMESKIRMISH_BANDIT_CAMP = "Bandit Camp",
 	LOCATIONNAMESKIRMISH_FOREST_WOLVES = "Forest",
 	LOCATIONNAMEDUNGEON_BANDIT_DEN = "Bandit Den",
@@ -3856,6 +3858,7 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	LOCATIONNAMEDUNGEON_UNDEAD_CRYPT = "Crypt",
 	LOCATIONNAMEDUNGEON_MOUNTAINS = "Mountain Cave",
 	LOCATIONNAMEDUNGEON_VOLCANO = "Volcanic Cave",
+	LOCATIONNAMEDUNGEON_GOBLIN_STRONGHOLD = "Goblin Stronghold",
 	LOCATIONNAMEDUNGEON_CITY = "Ruined City",
 	LOCATIONNAMEBASIC_THREAT_WOLVES = "Skirmish",
 	LOCATIONNAMEDUNGEON_ANCIENT_JUNGLES = "Ancient Jungles",
@@ -12530,7 +12533,7 @@ Amelia: — Very well. Mayor [name], according to what I have been told, you hav
 	AMELIA_TRIAL_14_OPTION_1 = "I offered my help. Norlan tried to convince me to not get involved.",
 	AMELIA_TRIAL_14_OPTION_2 = "Of course it was my idea. You don't just disappear on your own, Amelia.",
 	AMELIA_TRIAL_15_2 = "Amelia: — I will keep that in mind for the future, [mister] Mayor. Do you remember what was Norlan's reaction to your suggestion?",
-	AMELIA_TRIAL_15 = """Member 2: — I... I wish to add something! I was in the room with them when this conversation happened, and Norlan was rather reluctant to accept the mayor's help. I thought it was strange too. We were in chaos, and there he was, refusing the help the mayor was so kind to offer!
+	AMELIA_TRIAL_15 = """\nMember 2: — I... I wish to add something! I was in the room with them when this conversation happened, and Norlan was rather reluctant to accept the mayor's help. I thought it was strange too. We were in chaos, and there he was, refusing the help the mayor was so kind to offer!
 
 Norlan: — I understand how it might seem that way, but my intention wasn't to dissuade you. I merely wanted to spare you from the troubles we were fully capable of managing on our own. Using the term 'chaos' seems a bit exaggerated.""",
 	AMELIA_TRIAL_15_ = """Amelia: — There you have it, Norlan. Two witnesses. 
@@ -13195,7 +13198,7 @@ Sigmund adds a small mark on your map.""",
 — Good work, Mayor. Here's a bit for yar trouble.
 
 — The crystal? I dunno about dis, maybe ask mages, seems somethin' magical to me.""",
-	LILIA_FINALE_1 = """As you return to your office, you are abrupt by Lilia barging inside. 
+	LILIA_FINALE_1 = """As you return to your office, Lilia abruptly barges inside. 
 
 — [Master], what are you doing? You were away so...
 
@@ -16046,7 +16049,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	METRICS_PARTNERS_ONE = "[He] only had a {color=yellow|single partner} for all this time. ",
 	METRICS_PARTNERS_NONE = "[He] didn't appear to engage into sexual activity with anyone so far... ",
 	METRICS_IMPREGS = "[He] was impregnated {color=yellow|%d} time(s) which ended in child birth {color=yellow|%d} time(s). ",
-	METRICS_PEGNANCIES = "[He] had impregnated {color=yellow|%d} time(s). ",
+	METRICS_PREGNANCIES = "[He] had impregnated {color=yellow|%d} time(s). ",
 	METRICS_VIRGINITY_YOU = "[He] lost [his] vaginal virginity to {color=yellow|you}. ",
 	METRICS_VIRGINITY_OTHER = "[He] lost [his] vaginal virginity to {color=yellow|%s}. ",
 	METRICS_ANAL_VIRGINITY_YOU = "[His] first experience with anal penetration was with {color=yellow|you}. ",
@@ -16748,7 +16751,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	AREAPLAINS = "Plains",
 	AREAFORESTS = "Forests",
 	AREAMOUNTAINS = "Mountains",
-	AREASTEPPE = "Steppe",
+	AREAEMPIRE = "Empire",
 	AREASEAS = "Seas",
 	AREABEASTKIN_TRIBE = "Far Forests",
 	AREACAPITALS = "Capitals",
@@ -17075,6 +17078,29 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	DUNGEONADJ14 = "Crystal",
 	DUNGEONADJ15 = "Deadly",
 	DUNGEONADJ16 = "Roaring",
+	GOBLIN_STRONGHOLD_NOUNS1 = "Stronghold",
+	GOBLIN_STRONGHOLD_NOUNS2 = "Warren",
+	GOBLIN_STRONGHOLD_NOUNS3 = "Hold",
+	GOBLIN_STRONGHOLD_NOUNS4 = "Bastion",
+	GOBLIN_STRONGHOLD_NOUNS5 = "Fortress",
+	GOBLIN_STRONGHOLD_NOUNS6 = "Keep",
+	GOBLIN_STRONGHOLD_NOUNS7 = "Spire",
+	GOBLIN_STRONGHOLD_NOUNS8 = "Crag",
+	GOBLIN_STRONGHOLD_NOUNS9 = "Rookery",
+	GOBLIN_STRONGHOLD_NOUNS10 = "Hovel",
+
+	GOBLIN_STRONGHOLD_ADJS1 = "Goblin",
+	GOBLIN_STRONGHOLD_ADJS2 = "Fetid",
+	GOBLIN_STRONGHOLD_ADJS3 = "Squalid",
+	GOBLIN_STRONGHOLD_ADJS4 = "Jagged",
+	GOBLIN_STRONGHOLD_ADJS5 = "Ragged",
+	GOBLIN_STRONGHOLD_ADJS6 = "Crude",
+	GOBLIN_STRONGHOLD_ADJS7 = "Wretched",
+	GOBLIN_STRONGHOLD_ADJS8 = "Savage",
+	GOBLIN_STRONGHOLD_ADJS9 = "Cluttered",
+	GOBLIN_STRONGHOLD_ADJS10 = "Horde",
+	GOBLIN_STRONGHOLD_ADJS11 = "Marauding",
+	GOBLIN_STRONGHOLD_ADJS12 = "Ramshackle",
 	QUEST_FIGHTERS_LICH_TEXT = "Lich's Hideout",
 	QUEST_FIGHTERS_LICH_DESC = "By following Duncan's instructions, you find a small hideout which has a traces of undead monsters.",
 	QUEST_MAGES_XARI_TEXT = "Xari's Hut",

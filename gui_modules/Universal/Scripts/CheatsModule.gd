@@ -125,7 +125,7 @@ var factors_list = [
 		"physics_factor",
 		"magic_factor",
 		"tame_factor",
-		"timid_factor",
+		"authority_factor",
 		"growth_factor",
 		"charm_factor",
 		"wits_factor",
@@ -150,8 +150,8 @@ func max_stats():
 
 
 func max_sex_skills():
-	for skill in selected_person.statlist.statlist.sex_skills:
-		selected_person.statlist.statlist.sex_skills[skill] = 100
+	for skill in Statlist_init.sex_skills:
+		selected_person.set_stat(skill, 100)
 	input_handler.SystemMessage("All sex skills set to maximum")
 	gui_controller.mansion.SlaveModule.show_slave_info()
 

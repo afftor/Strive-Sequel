@@ -249,7 +249,7 @@ func update_button(newbutton, person):
 	newbutton.get_node("Icon").texture = person.get_icon_small()
 	newbutton.get_node("name").text = person.get_short_name()
 	var gatherable = Items.materiallist.has(person.get_work())
-	if person.get_work() == '' or person.get_work() == "Assignment" or person.get_work() == "disabled":
+	if person.get_work() == '' or !person.is_avaliable():
 		if person.is_on_quest():
 			var time_left = int(person.get_quest_time_remains())
 			if time_left > 0:

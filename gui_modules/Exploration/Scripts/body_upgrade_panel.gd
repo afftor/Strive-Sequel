@@ -76,7 +76,7 @@ func update_buttons():
 		var upg = button.get_meta("upgrade")
 		button.pressed = upg == active_upgrade
 		var data = Traitdata.body_upgrades[upg]
-		if person.checkreqs(data.reqs) or person.statlist.body_upgrades.has(upg):
+		if person.checkreqs(data.reqs) or person.has_body_upgrade(upg):
 			button.disabled = false
 		else:
 			button.disabled = true

@@ -73,6 +73,11 @@ func process_check(check:Array): #2remake
 				for val in value:
 					if val.damage_type == op2: return false
 				return true
+			elif check[1] == 'in':
+				for val in template.value:
+					if val.source in op2: 
+						return true
+				return false
 		elif typeof(op1) == TYPE_STRING: 
 			op1 = get(op1)
 		return input_handler.operate(check[1], op1, op2)
@@ -191,7 +196,6 @@ func apply_effect(eff):
 	var obj = effects_pool.get_effect_by_id(eff)
 	match obj.template.type:
 		'trigger':
-			obj.set_args('skill', self)
 			effects.push_back(obj.id)
 			obj.apply()
 		'oneshot':
@@ -205,11 +209,10 @@ func remove_effects():
 		eff.remove()
 
 
-func process_event(ev):
+func process_event(ev, data = {}):
 	for e in effects:
 		var eff = effects_pool.get_effect_by_id(e)
-		eff.set_args('skill', self)
-		eff.process_event(ev)
+		eff.process_act(ev, data)
 
 
 func resolve_value(check_m):

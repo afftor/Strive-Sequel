@@ -33,15 +33,16 @@ func open(character = ResourceScripts.scriptdict.class_slave.new("temp_char_stat
 			$"base stats".get_node(i).text = str(floor(character.get_stat(i)*100))
 	
 	for i in $resists.get_children():
-		var tmp = character.get_stat('resists')
-		if variables.resists_list.has(i.name):
-			i.text = str(tmp[i.name])
-			if tmp[i.name] > 0:
-				i.set("custom_colors/font_color", variables.hexcolordict.yellow)
-			elif tmp[i.name] < 0:
-				i.set("custom_colors/font_color", variables.hexcolordict.green)
-			else:
-				i.set("custom_colors/font_color", variables.hexcolordict.white)
+		if !statdata.statdata.has('resist_' + i.name):
+			continue
+		var tmp = character.get_stat('resist_' + i.name)
+		i.text = str(tmp)
+		if tmp > 0:
+			i.set("custom_colors/font_color", variables.hexcolordict.yellow)
+		elif tmp < 0:
+			i.set("custom_colors/font_color", variables.hexcolordict.green)
+		else:
+			i.set("custom_colors/font_color", variables.hexcolordict.white)
 	
 	globals.build_buffs_for_char(character, $buffscontainer, 'all')
 

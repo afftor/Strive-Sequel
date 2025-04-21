@@ -142,13 +142,11 @@ func update():
 	#SexSkillsControl part
 	
 	if person != null:
-	
 		input_handler.ClearContainer($ScrollContainer/VBoxContainer)
-		var s_skills = person.get_stat('sex_skills')
+		var s_skills = person.get_sex_skills()
 		for i in s_skills:
-			if s_skills[i] == 0 && universal_skills.find(i) < 0:
+			if s_skills[i] == 0 && universal_skills.has(i):
 				continue
-
 			var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.get_node("Label").text = tr("SEXSKILL"+i.to_upper())
 			newbutton.get_node("ProgressBar").value = s_skills[i]
@@ -227,14 +225,6 @@ func sex_traits_open():
 
 
 func rebuild_traits():
-	#input_handler.ClearContainer($SexTraitsPanel/ScrollContainer/VBoxContainer)
-#	for i in person.statlist.traits:
-#		var trait = Traitdata.traits[i]
-#		if !trait.visible:
-#			continue
-#		var newnode = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
-#		newnode.text = trait.name
-	
 	var traits = person.get_all_sex_traits()
 	var h1 = person.get_unlocked_sex_traits()
 	var all_traits_known = true
@@ -279,12 +269,12 @@ func rebuild_traits():
 
 func update_trait_capacity():
 	person = input_handler.interacted_character
-	var text = tr("SIBLINGMODULECURRENTCAPACITY")+': ' + str(person.statlist.sex_traits.size()) + "/" + str(person.get_stat('sexuals_factor')+1)
+	var text = tr("SIBLINGMODULECURRENTCAPACITY")+': ' + str(person.get_sex_traits().size()) + "/" + str(person.get_stat('sexuals_factor') + 1)
 	$SexTraitsPanel/TraitCapacity.text = text
 	for i in $SexTraitsPanel/ScrollContainer/VBoxContainer.get_children():
 		if i.has_meta("always_disabled") && i.get_meta("always_disabled") == true:
 			continue
-		i.disabled = person.get_stat('sexuals_factor')+1 - person.statlist.sex_traits.size() <= 0 && i.pressed == false
+		i.disabled = person.get_stat('sexuals_factor') + 1 - person.get_sex_traits().size() <= 0 && i.pressed == false
 
 
 func toggle_trait(trait_status, trait):

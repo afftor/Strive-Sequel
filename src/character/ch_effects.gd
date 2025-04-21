@@ -1,395 +1,348 @@
 extends Reference
 
 var parent: WeakRef
+var timestamp = 0
+var etb_timestamp = 0
 
-var static_effects = []
-var temp_effects = []
-var triggered_effects = []
-#var area_effects = []
-#var own_area_effects = []
+
+func get_timestamp():
+	timestamp += 1
+	return timestamp
+
+func setup_etb():
+	etb_timestamp = get_timestamp()
+	rebuild = variables.DYN_STATS_REBUILD
+
+
+var effects_stored = [] #effect records(?) - static and triggers {effect_id, timestamp}
+var effects_temp_stored = {} #effect stacks by id
+var effects_temp_globals = [] #effect records (?)
+
+var effects_real = []
+var effects_temp_real = {} #effect stacks by ref
+var effects_temp_globals_real = [] #effect records 
+
+var rebuild = variables.DYN_STATS_REBUILD
+
 var counters = []
 
-func find_temp_effect(eff_code):
-	var res = -1
-	var tres = 9999999
-	var nm = 0
-	var pool = []
-	for i in range(temp_effects.size()):
-		var eff = effects_pool.get_effect_by_id(temp_effects[i])
-		if eff.template.name != eff_code:
-			continue
-		pool.push_back(eff)
-		nm += 1
-		if eff.remains < tres:
-			tres = eff.remains
-			res = i
-	return {num = nm, index = res, pool = pool}
 
-func has_temp_effect(temp_name):
-	return find_temp_effect(temp_name).num > 0
-
-func find_temp_effect_tag(eff_tag):
-	var res = []
-	for e in temp_effects + static_effects:
-		var eff = effects_pool.get_effect_by_id(e)
-		if eff.tags.has(eff_tag):
-			res.push_back(e)
-	return res
-
-func find_eff_by_trait(trait_code):
-	var res = []
-	for e in (static_effects + triggered_effects + temp_effects):
-		var eff = effects_pool.get_effect_by_id(e)
-		if eff.self_args.has('trait'):
-			if eff.self_args.trait == trait_code:
-				res.push_back(e)
-	return res
-
-func find_eff_by_tattoo(slot, code):
-	var tag = "%s_%s" % [slot, code]
-	var res = []
-	for e in (static_effects + triggered_effects + temp_effects):
-		var eff = effects_pool.get_effect_by_id(e)
-		if eff.self_args.has('tattoo'):
-			if eff.self_args.tattoo == tag:
-				res.push_back(e)
-	return res
-func find_eff_by_item(item_id):
-	var res = []
-	for e in (static_effects + triggered_effects + temp_effects):
-		var eff = effects_pool.get_effect_by_id(e)
-		if eff.self_args.has('item'):
-			if eff.self_args.item == item_id:
-				res.push_back(e)
-	return res
+func reset_rebuild():
+	rebuild = variables.DYN_STATS_REBUILD
 
 
-func check_status_resist(eff):
-	var tres = parent.get_ref().get_stat('status_resists')
-	for s in variables.status_list:
-		if !eff.tags.has(s): 
-			continue
-		var res = tres[s]
-		if parent.get_ref().has_status('boss_resists') and s in ['stun', 'freeze']:
-			res = max(res, 90)
-		var roll = globals.rng.randi_range(0, 99)
-		if roll < res: return true
-	return false
+func deserialize(savedict):
+	timestamp = savedict.timestamp
+	
+	effects_stored = savedict.effects_stored.duplicate()
+	effects_temp_stored = savedict.effects_temp_stored.duplicate()
+	effects_temp_globals = savedict.effects_temp_globals.duplicate()
 
 
-func check_status_immunity(eff_n):
-	var tres = parent.get_ref().get_stat('status_resists')
-	if !tres.has(eff_n):
-		print ("error - no resist for %s status" % eff_n)
-		return false
-	else:
-		return tres[eff_n] >= 100
-
-
-func apply_temp_effect(eff_id, noresist = false):
-	var eff = effects_pool.get_effect_by_id(eff_id)
-	var eff_n = eff.template.name
-	if !noresist and check_status_resist(eff):
-		if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_n):
-			input_handler.combat_node.combatlogadd("\n%s resists %s." % [parent.get_ref().get_short_name(), eff_n])
-			parent.get_ref().play_sfx('resist')
-		return
-	if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_n):
-		input_handler.combat_node.combatlogadd("\n%s is affected by %s." % [parent.get_ref().get_short_name(), eff_n])
-	var tmp = find_temp_effect(eff_n)
-	if eff.template.type == 'temp_inc':
-		for e in tmp.pool:
-			e.process_event(variables.TR_STACK)
-		if (tmp.num < eff.template.stack) or (eff.template.stack == 0):
-			temp_effects.push_back(eff_id)
-			eff.applied_char = parent.get_ref().id
-			eff.apply()
-	elif (tmp.num < eff.template.stack) or (eff.template.stack == 0):
-		temp_effects.push_back(eff_id)
-		#eff.applied_pos = position
-		eff.applied_char = parent.get_ref().id
-		eff.apply()
-		if eff.tags.has('merge_duration'):
-			var t_duration = eff.remains
-			for e in tmp.pool:
-				t_duration = max(t_duration, e.remains)
-			eff.remains = t_duration
-			for e in tmp.pool:
-				e.remains = t_duration
-	else:
-		var eff_a = effects_pool.get_effect_by_id(temp_effects[tmp.index])
-		match eff_a.template.type:
-			'temp_s':
-				if eff.tags.has('reset_duration'):
-					eff_a.reset_duration()
-				elif eff.tags.has('merge_duration'):
-					eff.calculate_duration()
-					for e in tmp.pool:
-						e.merge_duration(eff.template.duration)
-				else:
-					eff_a.add_duration(eff)
-				eff.remove()
-			'temp_toggle':
-				eff_a.remove()
-				eff.remove()
-			'temp_p':
-				eff_a.reset_duration() #i'm not sure if this case should exist or if it should be treated like this
-				eff.remove()
-			'temp_u':
-				eff_a.upgrade() #i'm also not sure about this collision treatement, but for this i'm sure that upgradeable effects should have stack 1
-				eff.remove()
-			'temp_global':
-				remove_temp_effect(temp_effects[tmp.index])
-				temp_effects.push_back(eff_id)
-				eff.applied_char = parent.get_ref().id
-				eff.apply()
-
-func recheck_effect_tag(tg):
-	var e_list = find_temp_effect_tag(tg)
-	for e in e_list:
-		var tmp = effects_pool.get_effect_by_id(e)
-		tmp.recheck()
-
-
-func make_status_effect(template):
-	var effect = template.effect
-	#add custom template making
-	match effect:
-		'e_s_freeze1':
-			effect = Effectdata.effect_table[effect].duplicate(true)
-			effect.duration = template.duration
-			if has_status('wet'):
-				template.chance = 1.0
-			if parent.get_ref().get_stat('personality') == 'bold' and effect.duration > 1:
-				effect.duration -= 1
-			if parent.get_ref().has_status('boss_resists'):
-				effect.duration = 1
-		'e_s_shock':
-			if has_status('shock') and globals.rng.randf() < 0.2:
-				effect = Effectdata.effect_table['e_s_stun1'].duplicate(true)
-				effect.duration = 1
-			else:
-				effect = Effectdata.effect_table[effect].duplicate(true)
-				effect.duration = template.duration
-				if parent.get_ref().get_stat('personality') == 'bold' and effect.duration > 1:
-					effect.duration -= 1
-		'e_s_stun1':
-			effect = Effectdata.effect_table[effect].duplicate(true)
-			effect.duration = template.duration
-			if parent.get_ref().get_stat('personality') == 'bold' and effect.duration > 1:
-				effect.duration -= 1
-			if parent.get_ref().has_status('boss_resists'):
-				effect.duration = 1
-		_:
-			if parent.get_ref().get_stat('personality') == 'bold' and effect.duration > 1 and effect.tags.has('negative'):
-				effect.duration -= 1
-			effect = Effectdata.effect_table[effect].duplicate(true)
-			effect.duration = template.duration
-	var eff = effects_pool.e_createfromtemplate(effect, template.parent)
-	var eff_id = effects_pool.add_effect(eff)
-	var eff_n = eff.template.name
-	if parent.get_ref().is_koed() and !eff.tags.has('on_dead'): return
-	if check_status_immunity(eff_n):
-		if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_n):
-			input_handler.combat_node.combatlogadd("\n%s resists %s." % [parent.get_ref().get_short_name(), eff_n])
-			parent.get_ref().play_sfx('resist')
-		return
-	if template.chance > 1.0:
-		apply_temp_effect(eff_id, true)
-	elif globals.rng.randf() <= template.chance:
-		apply_temp_effect(eff_id)
-
-
-func apply_effect(eff_id):
-	var obj = effects_pool.get_effect_by_id(eff_id)
-	for tg in ['negative', 'debuff', 'affliction']:
-		if obj.tags.has(tg) and (parent.get_ref().has_status('d_warded') or parent.get_ref().has_status('d_warded_' + 'tg')):
-			return
-	match obj.template.type:
-		'static', 'c_static', 'dynamic':
-			if parent.get_ref().is_koed() and !obj.tags.has('on_dead'): return
-			static_effects.push_back(eff_id)
-			#obj.applied_pos = position
-			obj.applied_char = parent.get_ref().id
-			obj.apply()
-		'trigger':
-			if parent.get_ref().is_koed() and !obj.tags.has('on_dead'): return
-			triggered_effects.push_back(eff_id)
-			#obj.applied_pos = position
-			obj.applied_char = parent.get_ref().id
-			obj.apply()
-		'temp_s','temp_p','temp_u', 'temp_global', 'temp_toggle', 'temp_inc':
-			if parent.get_ref().is_koed() and !obj.tags.has('on_dead'): 
-				return
-			apply_temp_effect(eff_id)
-#		'area':
-#			if parent.is_coed(): return
-#			add_area_effect(eff_id)
-		'oneshot':
-			obj.applied_obj = parent.get_ref()
-			obj.apply()
-
-func get_static_effect_by_code(code):
-	for i in static_effects:
-		var eff = effects_pool.get_effect_by_id(i)
-		if eff.template.has('code') == false:
-			continue
-		if eff.template.code == code:
-			return eff
-
-func remove_static_effect_by_code(code):
-	var eff = get_static_effect_by_code(code)
-	eff.remove()
-
-func remove_effect(eff_id):
-	var obj = effects_pool.get_effect_by_id(eff_id)
-	match obj.template.type:
-		'static','c_static': static_effects.erase(eff_id)
-		'trigger': triggered_effects.erase(eff_id)
-		'temp_s', 'temp_inc', 'temp_p', 'temp_u', 'temp_global', 'temp_toggle': temp_effects.erase(eff_id)
-	var nd = parent.get_ref().displaynode
-	if nd != null:
-		nd.rebuildbuffs()
-#		'area': remove_area_effect(eff_id)
-
-func clean_broken_effects():
-	for e in temp_effects + static_effects + triggered_effects:
-		var eff = effects_pool.get_effect_by_id(e)
-		if eff == null:
-			print("broken effect %s is removed" % e)
-			temp_effects.erase(e)
-			static_effects.erase(e)
-			triggered_effects.erase(e)
-
-func remove_temp_effect(eff_id):#warning!! this mathod can remove effect that is not applied to character
-	var eff = effects_pool.get_effect_by_id(eff_id)
-	eff.remove()
-
-func remove_all_temp_effects():
-	for e in temp_effects:
-		var obj = effects_pool.get_effect_by_id(e)
-		obj.call_deferred('remove')
-
-
-func remove_all_temp_effects_tag(eff_tag):
-	var tmp = find_temp_effect_tag(eff_tag)
-	if tmp.size() == 0: return
-	for e in tmp:
-		var obj = effects_pool.get_effect_by_id(e)
-		obj.call_deferred('remove')
-
-func remove_temp_effect_tag(eff_tag):#function for non-direct temps removing, like heal or dispel
-	var tmp = find_temp_effect_tag(eff_tag)
-	if tmp.size() == 0: return
-	var i = globals.rng.randi_range(0, tmp.size()-1)
-	remove_temp_effect(tmp[i])
-
-func clean_effects():#clean effects before deleting character
-	for e in temp_effects + static_effects + triggered_effects:
-		var eff = effects_pool.get_effect_by_id(e)
-		if eff != null: eff.remove()
-
-func process_event(ev, skill = null):
-	for e in temp_effects.duplicate():
-		var eff = effects_pool.get_effect_by_id(e)
-		if eff is temp_e_global:
-			continue
-		if eff.tags.has('tick_after_trigger'): 
-			continue
-		eff.process_event(ev)
-	for e in triggered_effects.duplicate():
-		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-		if skill != null and eff.req_skill:
-			eff.set_args('skill', skill)
-			eff.process_event(ev)
-			eff.set_args('skill', null)
+func add_eff_to_stack(e_id, timestamp = null):
+	var eff = effects_pool.get_effect_by_id(e_id)
+	var template = eff.template
+	var stack_code = 'default'
+	if template.has('stack'):
+		stack_code = template.stack
+	
+	var stack
+	if eff.is_stored:
+		timestamp = get_timestamp()
+		if effects_temp_stored.has(stack_code):
+			stack = effects_pool.get_stack_by_id(effects_temp_stored[stack_code])
 		else:
-			eff.process_event(ev)
-	for e in temp_effects.duplicate():
-		var eff = effects_pool.get_effect_by_id(e)
-		if eff is temp_e_global:
-			continue
-		if !eff.tags.has('tick_after_trigger'): 
-			continue
-		eff.process_event(ev)
-
-#func process_skill_cast_event(s_skill, event):
-#	for e in triggered_effects:
-#		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-#		if eff.req_skill:
-#			eff.set_args('skill', s_skill)
-#			eff.process_event(event)
-#			eff.set_args('skill', null)
-#		else:
-#			eff.process_event(event)
+			stack = effects_pool.make_stack(stack_code)
+			effects_temp_stored[stack_code] = stack.id
+			stack.owner = parent.get_ref().id
+	else:
+		if effects_temp_real.has(stack_code):
+			stack = effects_temp_real[stack_code]
+		else:
+			stack = effects_pool.make_stack(stack_code, false)
+			effects_temp_real[stack_code] = stack
+			stack.owner = parent.get_ref().id
+	stack.add_effect(e_id, timestamp)
 
 
-func get_all_buffs():
-	var res = {}
-	for e in temp_effects + static_effects + triggered_effects:
-		var eff = effects_pool.get_effect_by_id(e)
-		if eff == null:
-			print(parent.get_ref().id)
-			continue
-		if !eff.is_applied: 
-			continue
-		#eff.calculate_args()
-		for b in eff.buffs:
-			b.calculate_args()
-			if !res.has(b.template_name):
-				if !(b.template.has('limit') and b.template.limit == 0):
-					res[b.template_name] = []
-					res[b.template_name].push_back(b)
-					b.amount = 1
-			elif (!b.template.has('limit')) or (res[b.template_name].size() < b.template.limit):
-				res[b.template_name].push_back(b)
-				b.amount = 1
-			else:
-				for tmp in res[b.template_name]:
-					tmp.amount += 1
-#	for e in area_effects:
-#		var eff:area_effect = effects_pool.get_effect_by_id(e)
-#		if !eff.is_applied_to_pos(position) :
-#			continue
-#		#eff.calculate_args()
-#		for b in eff.buffs:
-#			b.calculate_args()
-#			if !res.has(b.template_name):
-#				if !(b.template.has('limit') and b.template.limit == 0):
-#					res[b.template_name] = []
-#					res[b.template_name].push_back(b)
-#			elif (!b.template.has('limit')) or (res[b.template_name].size() < b.template.limit):
-#				res[b.template_name].push_back(b)
-	var tmp = []
+func add_stored_effect(code, dict = {}):
+	var data = Effectdata.effect_table[code]
+	var eff
+	var id
+	match data.type:
+		'simple':
+			effects_stored.push_back({id = code, timestamp = get_timestamp()})
+		'base':
+			eff = effects_pool.e_createfromtemplate(code, parent.get_ref().id)
+			id = effects_pool.add_effect(eff)
+			add_eff_to_stack(id)
+		'trigger':
+			eff = effects_pool.e_createfromtemplate(code, parent.get_ref().id)
+			id = effects_pool.add_effect(eff)
+			add_eff_to_stack(id)
+		'temp_s':
+			eff = effects_pool.e_createfromtemplate(code, parent.get_ref().id)
+			id = effects_pool.add_effect(eff)
+			add_eff_to_stack(id)
+		'temp_global':
+			eff = effects_pool.e_createfromtemplate(code, parent.get_ref().id)
+			id = effects_pool.add_effect(eff)
+			effects_temp_globals.push_back({id = id, timestamp = get_timestamp()})
 	
-	var tbuff = Buff.new(null)
-	var f = false
-	tbuff.createfromtemplate('b_factor_maxed')
-	var tdesc = ""
-	for i in ['physics_factor','wits_factor','charm_factor','sexuals_factor','timid_factor','tame_factor','magic_factor']:
-		if parent.get_ref().get_stat(i) >= 6:
-			if f:
-				tdesc += "\n"
-			f = true
-			tdesc +=  tr(i.to_upper() + "BONUSDESCRIPT")
+	if data.type != 'simple':
+		eff.owner = parent.get_ref().id
+		eff.calculate_args(dict)
+		eff.apply()
 	
-	if f:
-		tbuff.description = tdesc
-		tmp.push_back(tbuff)
+	rebuild = variables.DYN_STATS_REBUILD
+
+
+func process_eid_add(code, timestamp, dict = {}):
+	var template = Effectdata.effect_table[code]
 	
-	for b_a in res.values():
-		for b in b_a: 
-			tmp.push_back(b)
-	return tmp
+	var eff
+	var id
+	match template.type:
+		'simple':
+			effects_real.push_back({id = code, timestamp = timestamp})
+		'base':
+			eff = effects_pool.e_createfromtemplate(code, parent.get_ref().id)
+			id = effects_pool.add_effect(eff)
+			eff.is_stored = false
+			add_eff_to_stack(id, timestamp)
+		'trigger':
+			eff = effects_pool.e_createfromtemplate(code, parent.get_ref().id)
+			id = effects_pool.add_effect(eff)
+			eff.is_stored = false
+			add_eff_to_stack(id, timestamp)
+		'temp_s':
+			eff = effects_pool.e_createfromtemplate(code, parent.get_ref().id)
+			id = effects_pool.add_effect(eff)
+			eff.is_stored = false
+			add_eff_to_stack(id, timestamp)
+		'temp_global':
+			eff = effects_pool.e_createfromtemplate(code, parent.get_ref().id)
+			id = effects_pool.add_effect(eff)
+			eff.is_stored = false
+			effects_temp_globals_real.push_back({id = id, timestamp = timestamp})
+	
+	if template.type != 'simple':
+		eff.owner = parent.get_ref().id
+		eff.calculate_args(dict)
+		eff.apply()
+
+
+func process_effect_add(eff_id, timestamp):
+	var eff = effects_pool.get_effect_by_id(eff_id)
+	if eff is temp_e_global:
+		effects_temp_globals_real.push_back({id = eff_id, timestamp = timestamp})
+	else:
+		add_eff_to_stack(eff_id, timestamp)
+
+
+func process_effects_expand():
+	for rec in effects_temp_globals_real:
+		var eff = effects_pool.get_effect_by_id(rec.id)
+		for eff_id in eff.sub_effects:
+			process_effect_add(eff_id, rec.timestamp)
+	for stack in effects_temp_real:
+		var pool = effects_temp_real[stack].get_active_effects()
+		for eid in pool:
+			var eff = effects_pool.get_effect_by_id(eid)
+			if eff.template.type == 'trigger':
+				continue
+			for eff_id in eff.sub_effects:
+				process_effect_add(eff_id, pool[eid])
+	#areas
+	if input_handler.combat_node != null:
+		var pool = input_handler.combat_node.get_allied_targets(parent.get_ref())
+		for ch in pool:
+			if ch == parent.get_ref():
+				continue
+			for e in ch.find_temp_effect_tag('area_allied') + ch.find_temp_effect_tag('area_full'):
+				var eff = effects_pool.get_effect_by_id(e)
+				for eff_id in eff.sub_effects:
+					process_effect_add(eff_id, etb_timestamp)
+		pool = input_handler.combat_node.get_enemy_targets_all(parent.get_ref(), true)
+		for ch in pool:
+			for e in ch.find_temp_effect_tag('area_enemy') + ch.find_temp_effect_tag('area_full'):
+				var eff = effects_pool.get_effect_by_id(e)
+				for eff_id in eff.sub_effects:
+					process_effect_add(eff_id, etb_timestamp)
 
 
 func has_status(status):
 	var res = false
-	for e in static_effects + temp_effects + triggered_effects:
-		var obj = effects_pool.get_effect_by_id(e)
-		if !(obj is condition_effect) or obj.cond_true:
-			if obj.template.has(status):
-				res = true
-			if obj.tags.has(status):
-				res = true
+	for rec in effects_real:
+		var data = Effectdata.effect_table[rec.id]
+		if data.tags.has(status):
+			return true
+	for id in effects_temp_globals_real:
+		var eff = effects_pool.get_effect_by_id(id)
+		if eff.has_status(status):
+			return true
+	for st in effects_temp_real.values():
+		for id in st.get_active_effects().keys():
+			var eff = effects_pool.get_effect_by_id(id)
+			if eff.has_status(status):
+				return true
+	return false
+
+
+func find_temp_effect_tag(eff_tag):
+	var res = []
+	for e in effects_temp_globals_real:
+		var eff = effects_pool.get_effect_by_id(e)
+		if eff.has_status(eff_tag):
+			res.push_back(effects_temp_globals_real[e])
+	for st in effects_temp_real.values():
+		for id in st.get_active_effects().keys():
+			var eff = effects_pool.get_effect_by_id(id)
+			if eff.has_status(eff_tag):
+				res.push_back(id)
 	return res
+
+
+func resolve_value(val):
+	if val is Array:
+		if val[0] is Array:
+			val[0] = resolve_value(val[0])
+		if val[0] is String:
+			match val[0]:
+				'random':
+					var tmp = globals.rng.randi_range(val[1], val[2])
+					val.pop_front()
+					val.pop_front()
+					val[0] = tmp
+				'stat':
+					var tmp = parent.get_ref().get_stat(val[1])
+					val.pop_front()
+					val[0] = tmp
+		while val.size() > 1:
+			match val[1]:
+				'+':
+					val[2] = val[0] + resolve_value(val[2])
+					pass
+				'-':
+					val[2] = val[0] - resolve_value(val[2])
+					pass
+				'*':
+					val[2] = val[0] * resolve_value(val[2])
+					pass
+				'/':
+					val[2] = val[0] / resolve_value(val[2])
+					pass
+			val.pop_front()
+			val.pop_front()
+		return val[0]
+	else:
+		return val
+
+
+func process_event(ev, data = {}):
+	for st in effects_temp_real.values():
+#		var st = effects_pool.get_stack_by_id(stack)
+		st.process_act(ev, data)
+	for st in effects_temp_real.values():
+#		var st = effects_pool.get_stack_by_id(stack)
+		st.process_tick(ev)
+
+
+func remove_effect(eff_id):
+	rebuild = variables.DYN_STATS_REBUILD
+	var obj = effects_pool.get_effect_by_id(eff_id)
+	if obj is temp_e_global:
+		effects_temp_globals.erase(eff_id)
+	else:
+		var stid = 'default'
+		if obj.template.has('stack'): 
+			stid = obj.template.stack
+		if !effects_temp_stored.has(stid):
+			print('try to remove eff %s from nonexisted stack %s' % [eff_id, stid])
+			return
+		var stack = effects_temp_stored[stid]
+		effects_pool.get_stack_by_id(stack).remove_effect(eff_id)
+	
+	#move to another place
+#	var nd = parent.get_ref().displaynode
+#	if nd != null:
+#		nd.rebuildbuffs()
+#		'area': remove_area_effect(eff_id)
+
+
+func remove_temp_effect_tag(eff_tag):#function for non-direct temps removing, like heal or dispel, probably not used. removes random effect.
+	var tmp = find_temp_effect_tag(eff_tag)
+	if tmp.empty():
+		return
+	var e = input_handler.random_from_array(tmp)
+	var obj = effects_pool.get_effect_by_id(e)
+	obj.call_deferred('remove')
+
+
+func remove_all_temp_effects_tag(eff_tag): #function for non-direct temps removing, like heal or dispel
+	var tmp = find_temp_effect_tag(eff_tag)
+	if tmp.empty():
+		return
+	for e in tmp:
+		var obj = effects_pool.get_effect_by_id(e)
+		obj.call_deferred('remove')
+
+
+func check_status_immunity(eff_n):
+	var tres = parent.get_ref().get_stat('resist_' + eff_n)
+	return tres >= 100
+
+
+func check_status_resist(eff_n):
+	var tres = parent.get_ref().get_stat('resist_' + eff_n)
+	var roll = globals.rng.randi_range(0, 99)
+	if roll < tres: 
+		return true
+	return false
+
+
+func apply_status(data):
+	var eff_id = data.effect
+	match eff_id:
+		'wet':
+			remove_all_temp_effects_tag('burn')
+		'freeze':
+			if has_status('wet'):
+				data.chance = 1.0
+			if parent.get_ref().has_status('boss_resists'):
+				data.duration = 1
+			remove_all_temp_effects_tag('burn')
+			remove_all_temp_effects_tag('wet')
+		'shock':
+			if has_status('shock') and globals.rng.randf() < 0.2:
+				eff_id = 'stun'
+				data.duration = 1
+			else:
+				remove_all_temp_effects_tag('fear')
+		'stun':
+			remove_all_temp_effects_tag('shock')
+			if parent.get_ref().has_status('boss_resists'):
+				data.duration = 1
+#		_:
+#			var effect = Effectdata.effect_table[Effectdata.get_effect_for_status(eff_id)]
+	
+	if check_status_immunity(eff_id):
+		if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_id):
+			input_handler.combat_node.combatlogadd("\n%s is immune to %s." % [parent.get_ref().get_short_name(), eff_id])
+			parent.get_ref().play_sfx('resist')
+		return
+	if data.chance > 1.0:
+		add_stored_effect(Effectdata.get_effect_for_status(eff_id), data)
+		if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_id):
+			input_handler.combat_node.combatlogadd("\n%s is affected by %s." % [parent.get_ref().get_short_name(), eff_id])
+	elif globals.rng.randf() <= data.chance:
+		if check_status_resist(eff_id):
+			if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_id):
+				input_handler.combat_node.combatlogadd("\n%s resists %s." % [parent.get_ref().get_short_name(), eff_id])
+				parent.get_ref().play_sfx('resist')
+			return
+		else:
+			add_stored_effect(Effectdata.get_effect_for_status(eff_id), data)
+			if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_id):
+				input_handler.combat_node.combatlogadd("\n%s is affected by %s." % [parent.get_ref().get_short_name(), eff_id])
+

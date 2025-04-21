@@ -31,7 +31,7 @@ func showup(node, person):
 #		$productivity/Label.text = str(person.get_stat('productivity')) + "%"
 		var text = "[center]" + person.get_full_name() + "[/center]"
 		input_handler.ClearContainer($TextureRect/professions)
-		if person.xp_module.professions.size() > 5:
+		if person.get_prof_number() > 5:
 			$TextureRect/professions.columns = 10
 			$TextureRect/professions/Button.rect_min_size = Vector2(45,45)
 			$TextureRect/professions/Button/ProfIcon.rect_size = Vector2(34,34)
@@ -42,7 +42,7 @@ func showup(node, person):
 			$TextureRect/professions/Button/ProfIcon.rect_size = Vector2(78,78)
 #			$TextureRect/professions/Button/Label.show()
 
-		for i in person.xp_module.professions:
+		for i in person.get_professions():
 			var newnode = input_handler.DuplicateContainerTemplate($TextureRect/professions)
 			var prof = classesdata.professions[i]
 			var name = ResourceScripts.descriptions.get_class_name(prof, person)
@@ -123,7 +123,7 @@ func showup(node, person):
 			rect_global_position.y -= get_rect().end.y+125 - screen.size.y
 		set_process(true)
 	for i in $factors.get_children():
-		if person == ResourceScripts.game_party.get_master() && i.name in ["tame_factor", "timid_factor"]:
+		if person == ResourceScripts.game_party.get_master() && i.name in ["tame_factor", "authority_factor"]:
 			i.hide()
 		else:
 			i.show()

@@ -10,8 +10,8 @@ var req_skill = false
 #var skill :S_Skill
 
 func _init(caller).(caller):
-	is_applied = true
-	pass
+	is_applied = false
+
 
 func createfromtemplate(buff_t):
 	.createfromtemplate(buff_t)
@@ -25,10 +25,13 @@ func createfromtemplate(buff_t):
 	req_skill = template.req_skill
 	if template.has('ready'):
 		ready = template.ready
-	pass
+
+
+func apply():
+	is_applied = true
+
 
 func serialize():
-	self_args.erase('skill')
 	var tmp = .serialize()
 	tmp['type'] = 'trigger'
 	tmp['ready'] = ready
@@ -47,36 +50,34 @@ func deserialize(tmp):
 	ready = tmp['ready']
 	req_skill = template.req_skill
 
-func process_event(ev):
+
+func process_act(ev, data = {}):
 	if !is_applied: return
+	calculate_args(data)
 	if triggered_event.has(ev) and ready:
-		if !req_skill or (self_args.has('skill') and self_args['skill'] != null):
+		if !req_skill or (get_arg('skill') != null):
 			#check conditions
 			var res = true
 			for cond in template.conditions:
 				match cond.type:
 					'random': 
 						res = res and (globals.rng.randf() < cond.value)
-					'checkres':
-						var obj = self_args['skill']
-						var mod = obj.target.get_stat('status_resists')[cond.resist]/100.0
-						res = res and (globals.rng.randf() < cond.value - mod)
 					'skill':
-						var obj = self_args['skill']
+						var obj = get_arg('skill')
 						res = res and obj.process_check(cond.value)
 					'caster':
-						var obj = self_args['skill']
-						res = res and obj.caster.process_check(cond.value)
+						var obj = get_arg('caster')
+						res = res and obj.process_check(cond.value)
 					'target':
-						var obj = self_args['skill']
-						res = res and obj.target.process_check(cond.value)
+						var obj = get_arg('target')
+						res = res and obj.process_check(cond.value)
 					'owner':
 						var obj = get_applied_obj()
 						res = res and obj.process_check(cond.value)
-					'arg': #use with caution
+					_: #use with caution
 						if args.size() == 0: 
 							continue
-						var obj = args[0]
+						var obj = get_arg(cond.type)
 						if obj == null or !(obj is ResourceScripts.scriptdict.class_slave):
 							print('template error: arg0 is not character') 
 						else:
@@ -88,70 +89,80 @@ func process_event(ev):
 				e_apply()
 	if reset_event.has(ev) or reset_event.size() == 0:
 		ready = true
-		.rebuild_buffs()
 	pass
 
-func apply():
-	setup_siblings()
-	calculate_args()
-	if ready: .rebuild_buffs()
-	else: .clear_buffs()
 
-func e_apply():
+func e_apply(): #temporal solution until rework via apply_status
 	sub_effects.clear()
 	for e in template.sub_effects:
-		var tmp = effects_pool.e_createfromtemplate(e, id)
-		#tmp.calculate_args()
-		sub_effects.push_back(effects_pool.add_effect(tmp))
+		sub_effects.push_back(e)
 	
-	if template.has('modal_sub_effects'):
+	if template.has('modal_sub_effects'): #2remove, but currently do not have proper raplacement
 		var temp = input_handler.random_from_array(template.modal_sub_effects)
-		var tmp = effects_pool.e_createfromtemplate(temp, id)
-		#tmp.calculate_args()
-		sub_effects.push_back(effects_pool.add_effect(tmp))
+		sub_effects.push_back(temp)
 	
-	setup_siblings()
 	for e in sub_effects:
-		var eff = effects_pool.get_effect_by_id(e)
-		var t1 = eff.template.target
+		var eff = e
+		if eff is String:
+			eff = Effectdata.effect_table[e] 
+		var t1 = eff.target
 		match t1:
 			'self':
-				match eff.template.execute:
+				match eff.execute:
 					'remove':
 						call_deferred('remove')
 					'remove_parent':
 						var obj = effects_pool.get_effect_by_id(parent)
 						obj.remove()
-					'remove_siblings':
-						var obj = effects_pool.get_effect_by_id(parent)
-						obj.remove_siblings()
-						obj.remove()
 			'skill':
-				var obj = self_args['skill']
-				obj.apply_effect(e)
+				var obj = get_arg('skill')
+				eff = effects_pool.e_createfromtemplate(eff)
+				obj.apply_effect(eff)
 			'caster':
-				var obj = self_args['skill']
-				obj.caster.apply_effect(e)
+				var obj = get_arg('caster')
+				if eff.type == 'oneshot':
+					eff = effects_pool.e_createfromtemplate(eff)
+					eff.applied_obj = obj
+					eff.apply(get_args_resolved())
+				else:
+					obj.apply_effect_code(e, get_args_resolved())
 			'target':
-				var obj = self_args['skill']
-				obj.target.apply_effect(e)
+				var obj = get_arg('target')
+				if eff.type == 'oneshot':
+					eff = effects_pool.e_createfromtemplate(eff)
+					eff.applied_obj = obj
+					eff.apply(get_args_resolved())
+				else:
+					obj.apply_effect_code(e, get_args_resolved())
 			'receiver':
-				var obj = self_args['receiver']
-				obj.apply_effect(e)
+				var obj = get_arg('receiver')
+				if eff.type == 'oneshot':
+					eff = effects_pool.e_createfromtemplate(eff)
+					eff.applied_obj = obj
+					eff.apply(get_args_resolved())
+				else:
+					obj.apply_effect_code(e, get_args_resolved())
 			'owner':
 				var obj = get_applied_obj()
-				obj.apply_effect(e)
-			'parent':
-				var obj = effects_pool.get_effect_by_id(parent).get_applied_obj
-				obj.apply_effect(e)
-			'arg':
-				if args.size() == 0: continue
-				var obj = args[0]
+				if eff.type == 'oneshot':
+					eff = effects_pool.e_createfromtemplate(eff)
+					eff.applied_obj = obj
+					eff.apply(get_args_resolved())
+				else:
+					obj.apply_effect_code(e, get_args_resolved())
+			_:
+				var obj = get_arg(eff.template.target)
 				if obj == null or !(obj is ResourceScripts.scriptdict.class_slave):
-					print('template error: arg0 is not character') 
+					print('template error: arg is not character') 
 					continue
-				obj.apply_effect(e)
+				if eff.type == 'oneshot':
+					eff = effects_pool.e_createfromtemplate(eff)
+					eff.applied_obj = obj
+					eff.apply(get_args_resolved())
+				else:
+					obj.apply_effect_code(e, get_args_resolved())
 	sub_effects.clear()
+
 
 func remove():
 	var obj = get_applied_obj()
@@ -159,4 +170,11 @@ func remove():
 		obj.remove_effect(id)
 	#.remove()
 	is_applied = false
-	pass
+
+
+func has_status(status):
+	return false
+
+
+func rebuild_buffs():
+	return []

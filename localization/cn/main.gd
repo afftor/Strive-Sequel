@@ -3531,6 +3531,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	LOCATIONNAMEDUNGEON_UNDEAD_CRYPT = "Crypt 地穴",
 	LOCATIONNAMEDUNGEON_MOUNTAINS = "Mountain Cave 山洞",
 	LOCATIONNAMEDUNGEON_VOLCANO = "Volcanic Cave 火山山洞",
+	LOCATIONNAMEDUNGEON_GOBLIN_STRONGHOLD = """Goblin Stronghold""", # MISSING TRANSLATION
 	LOCATIONNAMEDUNGEON_CITY = "Ruined City 城市废墟",
 	LOCATIONNAMEBASIC_THREAT_WOLVES = "Skirmish 遭遇战",
 	LOCATIONNAMEDUNGEON_ANCIENT_JUNGLES = "Ancient Jungles 古代丛林",
@@ -4895,8 +4896,28 @@ You explain yourself being the new landowner to her.""", # MISSING TRANSLATION
 	ENEMYWILD_RAPTOR = "猛禽",
 	ENEMYWILLOWISP = """Will-o-wisp""", # MISSING TRANSLATION
 	NO_FIGHT_LOW_OBED = "[name] 拒绝参加战斗。（必须解锁战斗人员）",
+	NO_FIGHT_LOW_OBED2 = """[name] refuses to participate in a fight (low obedience).""", # MISSING TRANSLATION
 	CHAR_NO_COMBAT = "[name] 受重伤，无法参加战斗。",
+	PARTY_LIMIT = """Party limit reached.""", # MISSING TRANSLATION
+	PARTY_FIXED = """Party is fixed! You can only switch positions.""", # MISSING TRANSLATION
 	SENDCHARTOQUESTCONFIRM = "是否将此角色应用于任务?",
+	ARENA_NAME = """Arena""", # MISSING TRANSLATION
+	ARENA_DEFEAT = """You've been defeated! All arena's progress discarded.""", # MISSING TRANSLATION
+	ARENA_START = """You'll have to pay 1000 gold to enter! You also will not be able to add characters to party or leave arena until you finish it. Proceed?""", # MISSING TRANSLATION
+	ARENA_FINISH = """If you leave now, you will receive current accumulated reward, but will not be able to finish arena. Are you sure?""", # MISSING TRANSLATION
+	ARENA_FINISHED = """You already went into the arena. Wait until it is reset.""", # MISSING TRANSLATION
+	ARENA_WELCOME = """Welcome! Arena is opened!""", # MISSING TRANSLATION
+	ARENA_UNWELCOME = """Sorry, folks, no more fights today.""", # MISSING TRANSLATION
+	ARENA_PARTY_LIMIT = """Party limit""", # MISSING TRANSLATION
+	ARENA_CUR_REWARD = """Current rewards:""", # MISSING TRANSLATION
+	ARENA_NEXT_REWARD = """Next fight rewards:""", # MISSING TRANSLATION
+	ARENA_ROUND = """Round""", # MISSING TRANSLATION
+	ARENA_START_BTN = """Fight""", # MISSING TRANSLATION
+	ARENA_RETREAT_BTN = """Retreat""", # MISSING TRANSLATION
+	ARENA_FINISH_BTN = """Acquire reward""", # MISSING TRANSLATION
+	ARENA_LEAVE_BTN = """Leave""", # MISSING TRANSLATION
+	ARENA_TIMER = """Next rival in""", # MISSING TRANSLATION
+	ARENA_FEE = """You must have 1000 gold to enter arena.""", # MISSING TRANSLATION
 
 	SKILLPOISON_BITE = "毒咬",
 	SKILLPOISON_BITE_S = """Poison Bite""", # MISSING TRANSLATION
@@ -13327,7 +13348,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	METRICS_PARTNERS_ONE = "[He] 一直只有一个 {color=yellow|single partner} 。 ",
 	METRICS_PARTNERS_NONE = "到目前为止 [he] 似乎没有与任何人发生性行为... ",
 	METRICS_IMPREGS = "[He] 已怀孕 {color=yellow|%d} 次，最终导致孩子出生 {color=yellow|%d} 次。 ",
-	METRICS_PEGNANCIES = "[He] 使人怀孕 {color=yellow|%d} 次。 ",
+	METRICS_PREGNANCIES = "[He] 使人怀孕 {color=yellow|%d} 次。 ",
 	METRICS_VIRGINITY_YOU = "[He] 因 {color=yellow|you} 失去阴道童贞。 ",
 	METRICS_VIRGINITY_OTHER = "[He] 因 {color=yellow|%s} 失去阴道童贞。 ",
 	METRICS_ANAL_VIRGINITY_YOU = "[His] 初次肛交是与 {color=yellow|you} 进行的。 ",
@@ -14456,6 +14477,28 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	DUNGEONADJ14 = "水晶",
 	DUNGEONADJ15 = "致命",
 	DUNGEONADJ16 = "咆哮",
+	GOBLIN_STRONGHOLD_NOUNS1 = """Stronghold""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS2 = """Warren""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS3 = """Hold""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS4 = """Bastion""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS5 = """Fortress""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS6 = """Keep""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS7 = """Spire""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS8 = """Crag""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS9 = """Rookery""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS10 = """Hovel""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS1 = """Goblin""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS2 = """Fetid""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS3 = """Squalid""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS4 = """Jagged""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS5 = """Ragged""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS6 = """Crude""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS7 = """Wretched""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS8 = """Savage""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS9 = """Cluttered""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS10 = """Horde""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS11 = """Marauding""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS12 = """Ramshackle""", # MISSING TRANSLATION
 	
 	#dungeons
 	

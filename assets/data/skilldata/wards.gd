@@ -139,21 +139,14 @@ var effects = {
 			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
 			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
 		],
-		args = [],
-		sub_effects = [],
-		atomic = [],
 		buffs = ['b_warded'],
 	},
 	ward = {
 		type = 'temp_s',
 		target = 'caster',
-		name = 'ward',
-		stack = 1,
+		stack = 'ward',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		tags = ['ward'],
-		args = [], 
-		sub_effects = [],
-		atomic = [],
 		buffs = ['b_ward'],
 	},
 	d_warded = {
@@ -166,30 +159,20 @@ var effects = {
 			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
 			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
 		],
-		args = [],
-		sub_effects = [],
-		atomic = [],
 		buffs = ['b_warded_d'],
 	},
 	d_ward = {
-		ype = 'temp_s',
+		type = 'temp_s',
 		target = 'caster',
-		name = 'ward_d',
-		stack = 1,
+		stack = 'ward_d',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		tags = ['ward_d'],
-		args = [], 
-		sub_effects = [],
-		atomic = [],
 		buffs = ['b_ward'],
 	},
 	
 	#anchoring template
 	ward_anchor = {
 		type = 'static',
-		atomic = [],
-		buffs = [],
-		sub_effects = [],
 		tags = ['ward_anchor'],
 	},
 	
@@ -216,4 +199,9 @@ var buffs = {
 		limit = 1,
 		t_name = 'd_warded'
 	},
+}
+
+var stacks = {
+	ward = {}, #st 1
+	ward_d = {}, #st 1
 }

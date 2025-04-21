@@ -135,9 +135,7 @@ var effects = {
 		type = 'temp_s',
 		target = 'target',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH, variables.TR_SKILL_FINISH],
-		stack = 1,
-		atomic = [],
-		name = 'trap_debuff',
+		stack = 'trap_debuff',
 		buffs = ['b_trap'],
 		sub_effects = ['e_tr_trap']
 	},
@@ -154,15 +152,11 @@ var effects = {
 	e_trap = { #shoud be actual stun
 		type = 'temp_s',
 		target = 'owner',
-		name = 'trap',
+		name = 'stun',
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 2,
-		stack = 1,
-		disable = true,
-		tags = ['stun'],
-		sub_effects = [],
-		atomic = [],
+		tags = ['stun', 'disable'],
 		buffs = ['b_stun'],
 	},
 	
@@ -170,10 +164,9 @@ var effects = {
 		type = 'temp_s',
 		target = 'target',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH, variables.TR_SKILL_FINISH],
-		stack = 1,
 		atomic = [],
-		args = [{obj = 'parent_args', param = 0}],
-		name = 'bolttrap_debuff',
+		args = {damage = {obj = 'skill', func = 'get', arg = 'process_value'},},
+		stack = 'bolttrap_debuff',
 		buffs = ['b_bolttrap'],
 		sub_effects = ['e_tr_bolttrap']
 	},
@@ -183,16 +176,17 @@ var effects = {
 		trigger = [variables.TR_CAST],
 		req_skill = false,
 		conditions = [{type = 'random', value = 0.5}],
-		args = [{obj = 'parent_args', param = 0}],
+		args = {damage = {obj = 'parent', func = 'arg', arg = 'damage'}},
 		atomic = [],
 		buffs = [],
 		sub_effects = [{
 			type = 'oneshot',
 			target = 'owner',
-			args = [{obj = 'parent_args', param = 0}],
-			atomic = [
-				{type = 'sfx', value = 'targetattack'},
-				{type = 'damage', value = ['parent_args', 0], source = 'normal'}]
+			args = {
+				value = {obj = 'parent', func = 'arg', arg = 'damage'},
+				src = {obj = 'self', func = 'src', src = 'normal'},
+				},
+			atomic = [{type = 'sfx', value = 'targetattack'}, 'a_damage_simple']
 		}],
 	},
 }
@@ -210,4 +204,9 @@ var buffs = {
 		limit = 1,
 		t_name = 'bolt_trap'
 	},
+}
+
+var stacks = {
+	trap_debuff = {}, #st 1
+	bolttrap_debuff = {}, #st 1
 }

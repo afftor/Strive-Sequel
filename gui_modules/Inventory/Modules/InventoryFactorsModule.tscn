@@ -91,7 +91,7 @@ margin_right = 229.239
 margin_bottom = 31.0
 text = "25"
 
-[node name="timid_factor" type="TextureRect" parent="factors1" groups=[
+[node name="authority_factor" type="TextureRect" parent="factors1" groups=[
 "hide_master",
 ]]
 margin_top = 117.0
@@ -105,7 +105,7 @@ texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="factors1/timid_factor"]
+[node name="Label" type="Label" parent="factors1/authority_factor"]
 margin_left = 69.2385
 margin_top = 7.0
 margin_right = 229.239

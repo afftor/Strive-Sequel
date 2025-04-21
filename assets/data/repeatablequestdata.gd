@@ -728,7 +728,7 @@ var questdata = {
 			mandatory_conditions = [],
 			condition_number = [1,2],
 			conditions = [
-			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor','timid_factor'], range = [2,3]},
+			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor','authority_factor'], range = [2,3]},
 			{use_once = true, code = 'race', function = 'range', type = ['Human','Elf','Goblin','HalfkinCat','BeastkinCat','HalfkinWolf','BeastkinWolf'], range = [3,3]},
 			],},
 		],
@@ -750,7 +750,7 @@ var questdata = {
 			mandatory_conditions = [],
 			condition_number = [1,2],
 			conditions = [
-			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor','timid_factor','sexuals_factor'], range = [2,3]},
+			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor','authority_factor','sexuals_factor'], range = [2,3]},
 			{use_once = true, code = 'race', function = 'range', type = ['Human','Elf','TribalElf','Goblin','Orc','Dwarf','Fairy','HalfkinFox','BeastkinFox','HalfkinTanuki','BeastkinTanuki'], range = [2,3]},
 			],},
 		],
@@ -772,7 +772,7 @@ var questdata = {
 			mandatory_conditions = [],
 			condition_number = [1,2],
 			conditions = [
-			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor','timid_factor','sexuals_factor'], range = [3,4]},
+			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor','authority_factor','sexuals_factor'], range = [3,4]},
 			{use_once = true, code = 'race', function = 'range', type = ['Human','Elf','TribalElf','Goblin','Orc','Dwarf','Gnome','Kobold','Dryad','Fairy','HalfkinFox','BeastkinFox'], range = [2,3]},
 			],},
 		],
@@ -973,7 +973,7 @@ var questdata = {
 #
 #				{use_once = true, code = 'class', function = 'range', range = [1,1], type = ['harlot','maid','dancer','pet','petbeast','thief']},
 #
-#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'timid_factor'], range = [2,3]},
+#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'authority_factor'], range = [2,3]},
 #
 #				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['charm','sexuals'], range = [20,40]},
 #			],
@@ -1002,7 +1002,7 @@ var questdata = {
 #
 #				{use_once = true, code = 'class', function = 'range', range = [1,2], type = ['harlot','maid','dancer','bard','sextoy','succubus']},
 #
-#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'timid_factor'], range = [2,4]},
+#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'authority_factor'], range = [2,4]},
 #
 #				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['charm','sexuals'], range = [30,60]},
 #			],
@@ -1035,7 +1035,7 @@ var questdata = {
 #
 #				{use_once = true, code = 'class', function = 'range', range = [2,3], type = ['harlot','maid','geisha','pet','petbeast','dancer','bard','sextoy','succubus']},
 #
-#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'timid_factor'], range = [4,5]},
+#				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'authority_factor'], range = [4,5]},
 #
 #				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['charm','sexuals'], range = [50,80]},
 #			],

@@ -12,7 +12,7 @@ var stats_dict = {
 	"charm_factor": "Charm Factor",
 	"sexuals_factor": "Sexuals Factor",
 	"tame_factor": "Tame Factor",
-	"timid_factor": "Timid Factor",
+	"authority_factor": "authority factor",
 #	"growth_factor": "Growth Factor"
 }
 
@@ -71,7 +71,7 @@ func show_stats():
 	for stat in stats_dict:
 		# if character.get_stat(stat) == 6:
 		# 	continue
-		if person.is_master() && stat in ["timid_factor", "tame_factor"]:
+		if person.is_master() && stat in ["authority_factor", "tame_factor"]:
 			continue
 		else:
 			var newbutton = input_handler.DuplicateContainerTemplate(StatsContainer)
@@ -115,8 +115,8 @@ func show_stat_info(stat):
 		+ "charm_factor"
 		+ str(person.get_stat("charm_factor"))
 		+ "\n"
-		+ "timid_factor"
-		+ str(person.get_stat("timid_factor"))
+		+ "authority_factor"
+		+ str(person.get_stat("authority_factor"))
 		+ "\n"
 		+ "tame_factor"
 		+ str(person.get_stat("tame_factor"))
