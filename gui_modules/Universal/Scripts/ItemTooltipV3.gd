@@ -213,49 +213,7 @@ func gear_detailed_tooltip(data, item = null):
 	for i in item.parts:
 		var material = Items.materiallist[item.parts[i]]
 		text += tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}"
-		for k in material.parts[i]:
-			if k == 'weapon_element':
-				text += tr("WEAPONELEMENTBASE") + material.parts[i][k] + "\n"
-				continue
-			if material.parts[i][k] != 0:
-				var value = material.parts[i][k]
-				var change = ''
-				text += '\n' + statdata.statdata[k].name + ': {color='
-				match statdata.statdata[k].default_bonus:
-					"add":
-						if statdata.statdata[k].percent:
-							value = value*100
-						if value > 0:
-							change = '+'
-						if value > 0 and !statdata.statdata[k].is_negative or value < 0 and statdata.statdata[k].is_negative:
-							text += 'green|' + change
-						else:
-							text += 'red|'
-						value = str(value)
-						if statdata.statdata[k].percent:
-							value = value + '%'
-					"add_part":
-						value = value*100
-						if value > 0:
-							change = '+'
-						if value > 0 and !statdata.statdata[k].is_negative or value < 0 and statdata.statdata[k].is_negative:
-							text += 'green|' + change
-						else:
-							text += 'red|'
-						value = str(value)
-						value = value + '%'
-					"mul":
-						value = value - 1.0
-						value = value*100
-						if value > 0:
-							change = '+'
-						if value > 0 and !statdata.statdata[k].is_negative or value < 0 and statdata.statdata[k].is_negative:
-							text += 'green|' + change
-						else:
-							text += 'red|'
-						value = str(value)
-						value = value + '%'
-				text +=  value + '}'
+		text += globals.build_desc_for_bonusstats(material.parts[i])
 		text += '\n\n'
 	for i in item.enchants:
 		text += "{color=yellow|%s}: %s\n" % [tr(Items.enchantments[i].name), tr(Items.enchantments[i].descript)]
@@ -294,46 +252,7 @@ func geartemplete_tooltip(data):
 
 	if item.itemtype in ['armor','weapon','tool']:
 		text += "\n\n"
-		for i in item.basestats:
-			if item.basestats[i] != 0:
-				var value = item.basestats[i]
-				var change = ''
-				text += '\n' + statdata.statdata[i].name + ': {color='
-				match statdata.statdata[i].default_bonus:
-					"add":
-						if statdata.statdata[i].percent:
-							value = value*100
-						if value > 0:
-							change = '+'
-						if value > 0 and !statdata.statdata[i].is_negative or value < 0 and statdata.statdata[i].is_negative:
-							text += 'green|' + change
-						else:
-							text += 'red|'
-						value = str(value)
-						if statdata.statdata[i].percent:
-							value = value + '%'
-					"add_part":
-						value = value*100
-						if value > 0:
-							change = '+'
-						if value > 0 and !statdata.statdata[i].is_negative or value < 0 and statdata.statdata[i].is_negative:
-							text += 'green|' + change
-						else:
-							text += 'red|'
-						value = str(value)
-						value = value + '%'
-					"mul":
-						value = value - 1.0
-						value = value*100
-						if value > 0:
-							change = '+'
-						if value > 0 and !statdata.statdata[i].is_negative or value < 0 and statdata.statdata[i].is_negative:
-							text += 'green|' + change
-						else:
-							text += 'red|'
-						value = str(value)
-						value = value + '%'
-				text +=  value + '}'
+		text += globals.build_desc_for_bonusstats(item.basestats)
 
 	for i in item.effects:
 		if Effectdata.effect_table[i].has('descript'):

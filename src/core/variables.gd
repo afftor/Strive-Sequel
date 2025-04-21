@@ -44,13 +44,15 @@ enum {TARGET_FORCED, TARGET_KEEP, TARGET_KEEPFIRST, TARGET_NOKEEP, TARGET_MOVEFI
 enum {NT_MELEE, NT_ANY, NT_ANY_NOREPEAT, NT_WEAK, NT_WEAK_MELEE, NT_BACK, NT_CASTER};
 
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_DGRADE, TE_RES_REMOVE}
-#list for values modified by crits, effects etc
+enum {DYN_STATS_REBUILD, DYN_STATS_PREAREA, DYN_STATS_FULL}
 
+
+#list for values modified by crits, effects etc
 var dmg_mod_list = ['+damage_hp', "+hp", '+restore_mana', '+lust', '+consent', '-damage_hp', "-hp", '-restore_mana', '-lust','no_stat'] #not sure about these
 #list for values modified by random_mod
 var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust']
 #list for values with relative values
-var dmg_rel_list = ['hp', 'mp', 'lust', 'consent', 'base_exp','physics_factor','wits_factor','charm_factor','sexuals_factor','tame_factor','timid_factor','brave_factor','growth_factor']
+var dmg_rel_list = ['hp', 'mp', 'lust', 'consent', 'base_exp','physics_factor','wits_factor','charm_factor','sexuals_factor','tame_factor','authority_factor','brave_factor','growth_factor']
 #list for various types of damage mods
 var damage_mods_list = ['all','melee','ranged','normal','fire','earth','air','water','light','dark','mind','physic','spell', 'skill', 'aoe', 'true', 'heal']
 
@@ -91,8 +93,7 @@ var farming_rules = ['milk', 'pheromones', 'seed', 'eggs', 'magic_dust', 'reptil
 
 var skin_coverage_false = ['scale','fur_white','fur_grey','fur_brown','fur_stripped','fur_black','fur_orange','fur_orange_white'] #list of skincoverage blocking skin desription
 
-var exterior_stats = ['beard', 'ass_size', 'tits_size', 'penis_size', 'balls_size', 'eye_tex', 'chin', 'eyebrows', 'hair_base_length', 'hair_assist_length', 'hair_back_length', 'hair_fringe_length', 'has_pussy', 'has_womb'] #stats that a backuped on sex change, sure colors should not be here
-var exterior_stats_composite = ['hair_length'] #stats that are NOT backuped but used in regeneration procedure
+
 var personal_stats = ['hair_color', 'hair_style', 'hair_length', 'name', "nickname", 'race', 'sex', 'age', 'height', 'eye_color', "eye_shape", 'ears', 'skin', "horns", "wings","tail", "body_lower", "body_shape", "penis_size", "penis_type", "balls_size", "tits_size", "ass_size", "multiple_tits", "multiple_tits_developed","skin_coverage", 'eyeshape', 'eye_tex', 'eyebrows', 'lips', 'chin', 'nose', 'body_color_skin', 'body_color_wings', 'body_color_tail', 'body_color_horns', 'body_color_animal', 'hair_base', 'hair_base_length', 'hair_fringe', 'hair_fringe_length', 'hair_assist', 'hair_assist_length', 'hair_back', 'hair_back_length', 'hair_back_color_1', 'hair_back_color_2', 'hair_assist_color_1', 'hair_assist_color_2', 'hair_base_color_1', 'hair_base_color_2', 'beard', 'hair_facial_color', 'icon_image', 'body_image', ] #stats used to fully change identity
 
 var booster_tiers = {
@@ -459,7 +460,7 @@ var effectdesc = ['oneshot', 'static', 'trigger','temp_s','temp_p','temp_u','c_s
 var argtypes = ['self','parent','template','app_obj','parent_args','parent_arg_get']
 var argtypesdesc = ['outside assigned argument of effect instance',"parameter of effect's parent",'argument defined in effect template','parameter of object effect applied to','runtime argument of parent effect','parameter of runtime argument of parent effect']
 var receiver_list = ['target', 'caster', 'all']
-var bodypart_list = ['skin', 'height', 'hair_length', 'hair_color', 'hair_style', 'ears', 'eye_color', 'eye_shape', 'horns', 'wings', 'tail', 'arms', 'legs', 'body_lower', 'body_shape', 'skin_coverage', 'fur', 'facial_hair', 'penis_size', 'penis_type', 'balls_size', 'tits_size', 'vagina', 'ass_size', 'has_pussy', 'multiple_tits', 'multiple_tits_developed', 'has_womb','lactation', 'penis_virgin', 'vaginal_virgin', 'anal_virgin', 'mouth_virgin']
+var bodypart_list = ['skin', 'height', 'hair_length', 'hair_color', 'hair_style', 'ears', 'eye_color', 'eye_shape', 'horns', 'wings', 'tail', 'arms', 'legs', 'body_lower', 'body_shape', 'skin_coverage', 'fur', 'facial_hair', 'penis_size', 'penis_type', 'balls_size', 'tits_size', 'vagina', 'ass_size', 'has_pussy', 'multiple_tits', 'multiple_tits_developed', 'has_womb','lactation', 'penis_virgin_lost', 'vaginal_virgin_lost', 'anal_virgin_lost', 'mouth_virgin']
 var slots = ["chest","underwear", "legs", "hands", "rhand", "lhand", "neck", "head", "ass", "croach"]
 var interactioneffs = ['alcohol','aphrodisiac','sensitivity_pot']
 

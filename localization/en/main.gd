@@ -16049,7 +16049,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	METRICS_PARTNERS_ONE = "[He] only had a {color=yellow|single partner} for all this time. ",
 	METRICS_PARTNERS_NONE = "[He] didn't appear to engage into sexual activity with anyone so far... ",
 	METRICS_IMPREGS = "[He] was impregnated {color=yellow|%d} time(s) which ended in child birth {color=yellow|%d} time(s). ",
-	METRICS_PEGNANCIES = "[He] had impregnated {color=yellow|%d} time(s). ",
+	METRICS_PREGNANCIES = "[He] had impregnated {color=yellow|%d} time(s). ",
 	METRICS_VIRGINITY_YOU = "[He] lost [his] vaginal virginity to {color=yellow|you}. ",
 	METRICS_VIRGINITY_OTHER = "[He] lost [his] vaginal virginity to {color=yellow|%s}. ",
 	METRICS_ANAL_VIRGINITY_YOU = "[His] first experience with anal penetration was with {color=yellow|you}. ",

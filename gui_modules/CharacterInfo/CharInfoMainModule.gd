@@ -267,6 +267,7 @@ var sources = {
 	brothel_customer = tr("METRICS_SOURCE_BROTHEL_CUSTOMER"),
 	guild_trainer = tr("METRICS_SOURCE_GUILD_TRAINER") ,
 	william = tr("METRICS_SOURCE_WILLIAM"),
+	unknown = tr("METRICS_SOURCE_UNKNOWN"),
 }
 
 func displaymetrics():
@@ -299,32 +300,32 @@ func displaymetrics():
 		if person.get_stat('has_womb') == true:
 			text += tr("METRICS_IMPREGS") % [person.get_stat('metrics_pregnancy'), person.get_stat('metrics_birth')]
 		if person.get_stat('penis_size') != '':
-			text += tr("METRICS_PEGNANCIES") % [person.get_stat('metrics_impregnation')]
+			text += tr("METRICS_PREGNANCIES") % [person.get_stat('metrics_impregnation')]
 	
 	
 		
 		
-		if person.get_stat('vaginal_virgin_lost').source != null:
-			if person.get_stat('vaginal_virgin_lost').source.begins_with('hid'):
-				var source = ResourceScripts.game_party.relativesdata[person.get_stat('vaginal_virgin_lost').source]
+		if person.get_stat('vaginal_virgin_lost') != null:
+			if person.get_stat('vaginal_virgin_lost').begins_with('hid'):
+				var source = ResourceScripts.game_party.relativesdata[person.get_stat('vaginal_virgin_lost')]
 				
 				if source.id == ResourceScripts.game_party.get_master().id:
 					text += "\n" + tr("METRICS_VIRGINITY_YOU")
 				else:
 					text += "\n" +  tr("METRICS_VIRGINITY_OTHER") % source.name# + source.name + "}. "
 			else:
-				text += "\n" + tr("METRICS_VIRGINITY_OTHER") % sources[person.get_stat('vaginal_virgin_lost').source]
+				text += "\n" + tr("METRICS_VIRGINITY_OTHER") % sources[person.get_stat('vaginal_virgin_lost')]
 		
-		if person.get_stat('anal_virgin_lost').source != null:
-			if person.get_stat('anal_virgin_lost').source.begins_with('hid'):
-				var source = ResourceScripts.game_party.relativesdata[person.get_stat('anal_virgin_lost').source]
+		if person.get_stat('anal_virgin_lost') != null:
+			if person.get_stat('anal_virgin_lost').begins_with('hid'):
+				var source = ResourceScripts.game_party.relativesdata[person.get_stat('anal_virgin_lost')]
 				
 				if source.id == ResourceScripts.game_party.get_master().id:
 					text += "\n" + tr("METRICS_ANAL_VIRGINITY_YOU")
 				else:
 					text += "\n" + tr("METRICS_ANAL_VIRGINITY_OTHER") % source.name 
 			else:
-				text += "\n"+ tr("METRICS_ANAL_VIRGINITY_OTHER") % sources[person.get_stat('anal_virgin_lost').source] 
+				text += "\n"+ tr("METRICS_ANAL_VIRGINITY_OTHER") % sources[person.get_stat('anal_virgin_lost')] 
 	
 	
 	text += '\n\n' + tr("METRICS_EARNED") % [person.get_stat("metrics_goldearn"), person.get_stat("metrics_foodearn"),person.get_stat("metrics_materialearn")]
@@ -334,7 +335,5 @@ func displaymetrics():
 	text = person.translate(globals.TextEncoder(text))
 	
 	$SlaveBodyModule/StatsPanel/RichTextLabel.bbcode_text = text
-#	if person.get_stat('anal_virgin_lost').source != null:
-#		text += "\n[He] lost his anal virginity to " + person.get_stat('anal_virgin_lost').source
 
 

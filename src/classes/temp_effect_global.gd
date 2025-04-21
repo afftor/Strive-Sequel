@@ -22,7 +22,6 @@ func _init(caller).(caller):
 func createfromtemplate(tmp):
 	.createfromtemplate(tmp)
 	template_name = template.name
-	#2add
 	timers = template.timers.duplicate(true)
 	for timer in timers:
 		if !timer.events is Array:
@@ -51,8 +50,7 @@ func apply():
 					timer.objects = [effects_pool.get_effect_by_id(parent).get_arg(0).id]
 				'target':
 					timer.objects = [effects_pool.get_effect_by_id(parent).get_arg(1).id]
-	for eff in sub_effects:
-		obj.apply_effect(eff)
+
 
 
 func process_event(ev, obj = null):
@@ -143,13 +141,13 @@ func get_duration():
 	#2fix
 	res.count = timers[0].timer
 	res.event = 'null'
-	if tags.has('duration_turns'):
+	if template.tags.has('duration_turns'):
 		res.event = 'turns'
-	if tags.has('duration_combat'):
+	if template.tags.has('duration_combat'):
 		res.event = 'combats'
-	if tags.has('duration_ticks'):
+	if template.template.tags.has('duration_ticks'):
 		res.event = 'ticks'
-	if tags.has('duration_none'):
+	if template.tags.has('duration_none'):
 		res = null
 	return res
 

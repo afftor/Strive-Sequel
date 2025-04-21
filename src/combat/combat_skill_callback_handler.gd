@@ -116,6 +116,11 @@ func process_check(check:Array):
 				for val in template.value:
 					if val.source == op2: return false
 				return true
+			elif check[1] == 'in':
+				for val in template.value:
+					if val.source in op2: 
+						return true
+				return false
 		else:
 			op1 = get(op1)
 			return input_handler.operate(check[1], op1, op2)
@@ -185,7 +190,6 @@ func apply_effect(eff):
 	var obj = effects_pool.get_effect_by_id(eff)
 	match obj.template.type:
 		'trigger':
-			obj.set_args('skill', self)
 			effects.push_back(obj.id)
 			obj.apply()
 		'oneshot':
@@ -199,13 +203,12 @@ func remove_effects():
 		eff.remove()
 
 
-func process_event(ev):
+func process_event(ev, data = {}):
 	for e in effects:
 		var eff = effects_pool.get_effect_by_id(e)
-		eff.set_args('skill', self)
-		eff.process_event(ev)
+		eff.process_act(ev, data)
 	if active_instance != null:
-		active_instance.process_event(ev)
+		active_instance.process_event(ev, data)
 
 
 
@@ -320,8 +323,8 @@ func invoke_init():
 			queuenode.add_combatlog("\n" + caster.get_short_name() + ' copied ' + template.name + ". ")
 	
 	if mode != variables.SKILL_AUTO and !tags.has('passive'):
-		process_event(variables.TR_CAST) 
-		caster.process_event(variables.TR_CAST, self)
+		process_event(variables.TR_CAST, {skill = self, caster = caster}) 
+		caster.process_event(variables.TR_CAST, {skill = self, caster = caster})
 		effects_pool.process_event(variables.TR_CAST, caster)
 	combatnode.turns += 1
 	step += 1
@@ -377,8 +380,8 @@ func invoke_instancing():
 
 func invoke_skillfinish():
 	if mode != variables.SKILL_AUTO and !tags.has('passive'):
-		process_event(variables.TR_SKILL_FINISH)
-		caster.process_event(variables.TR_SKILL_FINISH, self)
+		process_event(variables.TR_SKILL_FINISH, {skill = self})
+		caster.process_event(variables.TR_SKILL_FINISH, {skill = self})
 		effects_pool.process_event(variables.TR_SKILL_FINISH, caster)
 	
 	if follow_up != null:

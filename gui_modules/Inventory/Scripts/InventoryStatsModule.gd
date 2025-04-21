@@ -45,15 +45,16 @@ func open_resists():
 	$ResistsButton.pressed = true
 	var character = input_handler.interacted_character
 	for i in $resists.get_children():
-		var tmp = character.get_stat('resists')
-		if variables.resists_list.has(i.name):
-			i.text = str(tmp[i.name])
-			if tmp[i.name] > 0:
-				i.set("custom_colors/font_color", variables.hexcolordict.yellow)
-			elif tmp[i.name] < 0:
-				i.set("custom_colors/font_color", variables.hexcolordict.green)
-			else:
-				i.set("custom_colors/font_color", variables.hexcolordict.white)
+		if !statdata.statdata.has('resist_' + i.name):
+			continue
+		var tmp = character.get_stat('resist_' + i.name)
+		i.text = str(tmp[i.name])
+		if tmp[i.name] > 0:
+			i.set("custom_colors/font_color", variables.hexcolordict.yellow)
+		elif tmp[i.name] < 0:
+			i.set("custom_colors/font_color", variables.hexcolordict.green)
+		else:
+			i.set("custom_colors/font_color", variables.hexcolordict.white)
 
 
 func switch_stats():

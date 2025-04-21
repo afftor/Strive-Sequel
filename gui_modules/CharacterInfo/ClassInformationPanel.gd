@@ -36,7 +36,7 @@ func open(classcode, person):
 #		newicon.texture = load(trdata.icon)
 	for i in tempclass.statchanges:
 		var stdata = statdata.statdata[i]
-		if !stdata.show_in_header:
+		if !stdata.tags.has('show_in_header'):
 			continue
 		var newicon = input_handler.DuplicateContainerTemplate($ReqIcons, "Icon")
 		newicon.texture = images.get_icon(i)

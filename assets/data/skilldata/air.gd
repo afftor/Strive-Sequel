@@ -190,68 +190,50 @@ var effects = {
 	e_t_haste = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'haste',
+		stack = 'haste',
 		tick_event = variables.TR_TURN_S,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		duration = 'parent',
-		stack = 1,
-		args = [],
+		duration = 'arg',
 		tags = ['buff'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'speed', value = 25},
-		],
+		statchanges = {speed = 25},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/tackle.png",
 				description = "TRAITEFFECTHASTE",
-				limit = 1,
-				t_name = 'haste'
 			}
 		],
 	},
 	e_t_airshield = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'airshield',
+		stack = 'airshield',
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		duration = 'parent',
-		stack = 1,
-		args = [],
+		duration = 'arg',
 		tags = ['buff'],
-		sub_effects = [
-			Effectdata.rebuild_stat_bonus('resist_earth', 40),
-			Effectdata.rebuild_stat_bonus('resist_damage_ranged', 0.1),
-		],
-		atomic = [],
+		statchanges = {resist_earth = 40, resist_ranged = 0.1},
 		buffs = [
 			{
 				icon = "res://assets/images/traits/speeddebuf.png",
 				description = "TRAITEFFECTAIRSHIELD",
-				limit = 1,
-				t_name = 'airshield'
 			}
 		],
 	},
 	e_s_eye = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'eyeofthestorm',
+		stack = 'eyeofthestorm',
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		duration = 'parent',
-		stack = 1,
+		duration = 'arg',
 		tags = ['buff'],
-		args = [{obj = 'parent_args', param = 0}],
+		args = {damage = {obj = 'value', func = 'eq'}},
 		sub_effects = ['e_tr_eye'],
 		atomic = [],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Innervate.png",
 				description = "TRAITEFFECTEYEOFTHESTORM",
-				limit = 1,
-				t_name = 'eyeofthestorm'
 			}
 		],
 	},
@@ -263,15 +245,16 @@ var effects = {
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 			{type = 'skill', value = ['tags', 'has', 'damage'] },
 		],
-		args = [{obj = 'parent_args', param = 0}],
+		args = {damage = {obj = 'parent', func = 'arg', arg = 'damage'}},
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'target',
-				atomic = ['a_eye_animation', 'a_eye'],
-				buffs = [],
-				args = [{obj = 'parent_args', param = 0}],
-				sub_effects = []
+				args = {
+					damage = {obj = 'parent', func = 'arg', arg = 'damage'},
+					src = {obj = 'self', func = 'src', src = 'air'}
+					},
+				atomic = ['a_eye_animation', 'a_damage_simple'],
 			}
 		],
 		buffs = []
@@ -279,6 +262,11 @@ var effects = {
 }
 var atomic_effects = {
 	a_eye_animation = {type = 'sfx', value = 'targetattack'}, #2add and change animation
-	a_eye = {type = 'damage', source = 'air', value = ['parent_args', 0]},
 }
 var buffs = {}
+
+var stacks = {
+	haste = {}, #stack 1
+	airshield = {}, #stack 1
+	eyeofthestorm = {}, #stack 1
+}

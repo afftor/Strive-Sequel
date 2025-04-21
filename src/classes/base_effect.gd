@@ -2,276 +2,251 @@ extends Reference
 class_name base_effect
 
 var parent = null
+var owner = null
 var id
 var template
-var args : = []
-var self_args := {}
+var template_id = null
+var args  = {}
 var sub_effects := []
-var tags := []
-var buffs := []
-var atomic := []
+var buffs = []
 var is_applied
-var applied_pos = null
-var applied_char = null
+var is_stored = true
 
 func _init(caller):
 	parent = caller
 	is_applied = false
 
 func apply():
-	var obj = get_applied_obj()
 	is_applied = true
-	atomic.clear()
-	calculate_args()
-	for a in template.atomic:
-		var tmp := atomic_effect.new(a, id)
-		tmp.resolve_template()
-		#tmp.apply_template(obj)
-		obj.apply_atomic(tmp.template)
-		atomic.push_back(tmp.template)
 	sub_effects.clear()
 	for e in template.sub_effects:
 		var tmp = effects_pool.e_createfromtemplate(e, id)
-		#tmp.calculate_args()
-		sub_effects.push_back(effects_pool.add_effect(tmp))
-		pass
-	setup_siblings()
-	rebuild_buffs()
+		tmp.is_applied = true
+		tmp.owner = owner
+		if tmp.template.type == 'oneshot':
+			tmp.applied_obj = owner
+			tmp.apply(get_args_resolved())
+		else:
+			tmp.is_stored = false
+			sub_effects.push_back(effects_pool.add_effect(tmp))
+			tmp.calculate_args(get_args_resolved())
 
-func reapply():
-	var obj = get_applied_obj()
-	for a in atomic:
-		obj.remove_atomic(a)
-	atomic.clear()
-	for a in template.atomic:
-		var tmp := atomic_effect.new(a, id)
-		tmp.resolve_template()
-		obj.apply_atomic(tmp.template)
-		atomic.push_back(tmp.template)
-	for e in sub_effects:
-		var t = effects_pool.get_effect_by_id(e)
-		t.remove()
-	sub_effects.clear()
-	for e in template.sub_effects:
-		var tmp = effects_pool.e_createfromtemplate(e, id)
-		sub_effects.push_back(effects_pool.add_effect(tmp))
-		pass
-	setup_siblings()
-	rebuild_buffs()
-
-
-func setup_siblings():
-	if sub_effects.size() < 2:
-		return
-	for se in sub_effects:
-		var eff = effects_pool.get_effect_by_id(se)
-		eff.self_args['siblings'] = sub_effects.duplicate()
-		eff.self_args['siblings'].erase(se)
-
-func remove_siblings():
-	if !self_args.has('siblings'):return
-	for se in self_args['siblings']:
-		var eff = effects_pool.get_effect_by_id(se)
-		eff.remove()
-
-func recheck(): #overriden in condition_static effect, have no meaning in other cases
-	pass
 
 func remove():
-	if !is_applied: return
+	if !is_applied: 
+		return
+	for e in sub_effects:
+		var tmp = effects_pool.get_effect_by_id(e)
+		tmp.is_applied = false
 	var obj = get_applied_obj()
-	if obj != null:
+	if obj != null and is_stored:
 		obj.remove_effect(id)
-		for a in atomic:
-			obj.remove_atomic(a)
-	atomic.clear()
-	buffs.clear()
+
 
 func get_applied_obj():
-	if applied_char == null:
-		if applied_pos == null: return null
-		applied_char = ResourceScripts.game_party.combatparty[applied_pos] #to change after final version of parties storing in state
-	return characters_pool.get_char_by_id(applied_char)
+	if owner is String:
+		return characters_pool.get_char_by_id(owner)
+	else:
+		return owner
+
 
 func createfromtemplate(buff_t):
 	if typeof(buff_t) == TYPE_STRING:
+		template_id = buff_t
 		template = Effectdata.effect_table[buff_t].duplicate(true)
 	else:
 		template = buff_t.duplicate(true)
-	if template.has('tags'):
-		tags = template.tags.duplicate()
 	if !template.has('sub_effects'):
 		template['sub_effects'] = []
 	if !template.has('buffs'):
 		template['buffs'] = []
-	if !template.has('atomic'):
-		template['atomic'] = []
+	if !template.has('tags'):
+		template['tags'] = []
+	if !template.has('statchanges'):
+		template['statchanges'] = {}
 
-func calculate_args():
-	args.clear()
+
+func calculate_args(data = {}): #one-time BEFORE apply() with ex in oneshots and triggers
+#	args.clear()
+	
 	if template.has('args'):
-		for arg in template.args:
+		for rec in template.args:
+			var arg = template.args[rec]
+			var obj = null
+			var val
 			match arg.obj:
 				'self':
-					if self_args.has(arg.param):
-						args.push_back(self_args[arg.param])
-					else:
-						args.push_back(null)
-					pass
+					obj = arg
 				'skill':
-					if self_args.has('skill'):
-						var par = self_args.skill
-						args.push_back(par.get(arg.param))
-					else:
-						args.push_back(null)
+					if data.has('skill'):
+						obj = data.skill
+				'caster':
+					if data.has('caster'):
+						obj = data.caster
+				'target':
+					if data.has('target'):
+						obj = data.target
 				'parent':
-					var par
-					if typeof(parent) == TYPE_STRING:
-						par = effects_pool.get_effect_by_id(parent)
+					if parent is String:
+						obj = effects_pool.get_effect_by_id(parent)
 					else:
-						par = parent
-					if par == null:
-						args.push_back(null)
-					else:
-						args.push_back(par.get(arg.param))
-					pass
-				'template':
-					args.push_back(template[arg.param])
-				'parent_args':
-					var par
-					if typeof(parent) == TYPE_STRING:
-						par = effects_pool.get_effect_by_id(parent)
-					else:
-						par = parent
-					if par == null:
-						args.push_back(null)
-					else:
-						args.push_back(par.get_arg(int(arg.param)))
-				'parent_arg_get':
-					var par
-					if typeof(parent) == TYPE_STRING:
-						par = effects_pool.get_effect_by_id(parent)
-					else:
-						par = parent
-					if par == null:
-						args.push_back(null)
-					else:
-						args.push_back(par.get_arg(arg.index).get(arg.param))
-				'app_obj':
-					var par = get_applied_obj()
-					if par == null:
-						args.push_back(null)
-					elif arg.has('param'):
-						args.push_back(par.get_stat(arg.param))
-					else:
-						args.push_back(par)
+						obj = parent
+				'owner':
+					obj = get_applied_obj()
+				_:
+					if data.has(arg.obj):
+						obj = data[arg.obj]
+			if obj == null:
+				if !args.has(rec):
+					args[rec] = null
+				continue
+			if arg.has('dynamic') and arg.dynamic:
+				args[rec] = 'dynamic'
+				continue
+			match arg.func:
+				'get':
+					args[rec] = obj.get(arg.arg)
+				'arg':
+					args[rec] = obj.get_arg(arg.arg)
+				'stat':
+					args[rec] = obj.get_stat(arg.stat)
+				'eq':
+					args[rec] = obj
+				_:
+					args[rec] = obj[arg.func]
 
-func get_arg(index):
-	var arg = template.args[index]
-	if arg.has('dynamic') || args[index] == null:
-		match arg.obj:
-			'self':
-				if self_args.has(arg.param):
-					args[index] = self_args[arg.param]
-				else:
-					args[index] = null
-				pass
-			'skill':
-				if self_args.has('skill'):
-					var par = self_args.skill
-					args[index] = par.get(arg.param)
-				else:
-					args[index] = null
-			'parent':
-				var par
-				if typeof(parent) == TYPE_STRING:
-					par = effects_pool.get_effect_by_id(parent)
-				else:
-					par = parent
-				if par != null:
-					args[index] = par.get(arg.param)
-				pass
-			'parent_args':
-				var par
-				if typeof(parent) == TYPE_STRING:
-					par = effects_pool.get_effect_by_id(parent)
-				else:
-					par = parent
-				if par != null:
-					args[index] = par.get_arg(int(arg.param))
-			'parent_arg_get':
-				var par
-				if typeof(parent) == TYPE_STRING:
-					par = effects_pool.get_effect_by_id(parent)
-				else:
-					par = parent
-				if par != null:
-					var obj = par.get_arg(int(arg.index))
-					if obj is ResourceScripts.scriptdict.class_slave: args[index] = obj.get_stat(arg.param)
-					else: args[index] = obj.get(arg.param)
-			'app_obj':
-				var par = get_applied_obj()
-				if arg.has('param'):
-					args[index] = par.get_stat(arg.param)
-				else:
-					args[index] = par
-	return args[index]
 
-func set_args(arg, value):
-	self_args[arg] = value
-	#calculate_args()
+func get_arg(rec):
+	if !args.has(rec):
+		return null
+	if !(args[rec] is String) or args[rec] != 'dynamic':
+		return args[rec]
+	var arg = template.args[rec]
+	var obj = null
+	var val
+	match arg.obj:
+		'parent':
+			if parent is String:
+				obj = effects_pool.get_effect_by_id(parent)
+			else:
+				obj = parent
+		'owner':
+			obj = get_applied_obj()
+	if obj == null:
+		return null
+	match arg.func:
+		'get':
+			return obj.get(arg.arg)
+		'arg':
+			return obj.get_arg(arg.arg)
+		'stat':
+			return obj.get_stat(arg.stat)
+
+
+func get_args_resolved():
+	var res = {}
+	for arg in args:
+		if args[arg] is String and args[arg] == 'dynamic':
+			res[arg] = get_arg(arg)
+		else:
+			res[arg] = args[arg]
+	return res
+
 
 func serialize():
 	var tmp := {}
 	tmp['is_applied'] = is_applied
-	tmp['template'] = template
-	tmp['args'] = self_args
+	if template_id != null:
+		tmp['template'] = template_id
+	else:
+		tmp['template'] = template
 	tmp['sub_effects'] = sub_effects
 	tmp['type'] = 'base'
-	tmp['atomic'] = atomic
-	tmp['buffs'] = []
-	tmp['app_pos'] = applied_pos
-	tmp['app_char'] = applied_char
-	for b in buffs:
-		tmp['buffs'].push_back(b.serialize())
+	tmp['owner'] = owner
+	tmp['args'] = args.duplicate()
 	return tmp
 
+
 func deserialize(tmp):
-	is_applied = tmp['is_applied']
-	template = tmp['template'].duplicate()
-	if template.has('tags'):
-		tags = template.tags.duplicate()
-	self_args = tmp['args'].duplicate()
-	sub_effects = tmp['sub_effects'].duplicate()
-	atomic = tmp['atomic'].duplicate()
-#warning-ignore:incompatible_ternary
-	applied_pos = null if (tmp['app_pos'] == null) else int(tmp['app_pos'])
-	applied_char = tmp['app_char']
+	is_applied = tmp.is_applied
+	if tmp.template is String:
+		template_id = tmp.template
+		template = Effectdata.effect_table[tmp.template].duplicate()
+	else:
+		template = tmp.template.duplicate()
+	sub_effects = tmp.sub_effects.duplicate()
+	args = tmp.args.duplicate()
+	owner = tmp.owner
 	if get_applied_obj() == null: return
-
-
-func deserialize_postload(tmp):
-	buffs.clear()
-	calculate_args()
-	for b in tmp['buffs']:
-		if !b.has('template') or b.template == null: continue
-		var t = Buff.new(id)
-		t.deserialize(b)
-		buffs.push_back(t)
-	pass
-
 
 
 func rebuild_buffs():
 	buffs.clear()
+	if template.has('conditions'):
+		if !get_applied_obj().checkreqs(template.conditions):
+			return
 	for e in template.buffs:
 		var tmp = Buff.new(id)
 		tmp.createfromtemplate(e)
 		tmp.calculate_args()
 		buffs.push_back(tmp)
 
+
 func clear_buffs():
 	buffs.clear()
 
+
 func get_duration():
 	return null
+
+
+func has_status(status):
+	var act = true
+	if template.has('conditions'):
+		if !get_applied_obj().checkreqs(template.conditions):
+			act = false
+	if act:
+		return template.tags.has(status)
+	else:
+		return false
+
+
+func resolve_value(val):
+	if val is Array:
+		if val[0] is Array:
+			val[0] = resolve_value(val[0])
+		if val[0] is String:
+			match val[0]:
+				'random':
+					var tmp = globals.rng.randi_range(val[1], val[2])
+					val.pop_front()
+					val.pop_front()
+					val[0] = tmp
+				'arg':
+					var tmp = get_arg(val[1])
+					val.pop_front()
+					val[0] = tmp
+				'arg_get':
+					var tmp = get_arg(val[1]).get(val[2])
+					val.pop_front()
+					val.pop_front()
+					val[0] = tmp
+		while val.size() > 1:
+			match val[1]:
+				'+':
+					val[2] = val[0] + resolve_value(val[2])
+					pass
+				'-':
+					val[2] = val[0] - resolve_value(val[2])
+					pass
+				'*':
+					val[2] = val[0] * resolve_value(val[2])
+					pass
+				'/':
+					val[2] = val[0] / resolve_value(val[2])
+					pass
+			val.pop_front()
+			val.pop_front()
+		return val[0]
+	else:
+		return val

@@ -379,7 +379,7 @@ custom_fonts/font = ExtResource( 35 )
 text = "25"
 clip_text = true
 
-[node name="timid_factor" type="TextureRect" parent="factors" groups=["hide_master"]]
+[node name="authority_factor" type="TextureRect" parent="factors" groups=["hide_master"]]
 light_mask = 0
 margin_top = 245.0
 margin_right = 50.0
@@ -392,7 +392,7 @@ texture = ExtResource( 18 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="factors/timid_factor"]
+[node name="Label" type="Label" parent="factors/authority_factor"]
 light_mask = 0
 margin_left = 69.2385
 margin_top = -2.0

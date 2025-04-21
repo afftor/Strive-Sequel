@@ -175,9 +175,6 @@ margin_bottom = 190.544
 custom_constants/vseparation = 1
 custom_constants/hseparation = 14
 columns = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="label_atk" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0

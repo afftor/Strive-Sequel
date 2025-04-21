@@ -52,7 +52,7 @@ func mood_set(value):
 	difference *= rand_range(0.75, 1.25)
 	if difference != 0:
 		if difference > 0:
-			if person.has_temp_effect('resist_state'):
+			if person.has_status('resist_state'):
 				difference /= 3
 			$mood/Label.text = "+"
 			$mood/Label.set("custom_colors/font_color", Color(0,1,0))
@@ -808,10 +808,6 @@ func rape(person, counter):
 	return text
 
 
-
-
-
-
 func propose(person, counter):
 	var text = ''
 
@@ -1059,7 +1055,7 @@ func ask_to_marry(person, counter):
 func praise(person, counter):
 	var text = input_handler.weightedrandom(date_lines.praise_initiate) + "\n\n"
 
-	if person.has_temp_effect('resist_state') == false:
+	if !person.has_status('resist_state'):
 		self.mood += 15
 #		person.add_stat('obedience', 50)
 		text += "{color=green|"
@@ -1076,7 +1072,7 @@ func praise(person, counter):
 func pathead(person, counter):
 	var text = input_handler.weightedrandom(date_lines.pathead_initiate) + "\n\n"
 
-	if person.has_temp_effect('resist_state') == false && 10-counter*1.5 > 2:
+	if !person.has_status('resist_state') && 10 - counter * 1.5 > 2:
 		self.mood += 10 - counter*1.5
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.pathead_accept)
@@ -1092,7 +1088,7 @@ func scold(person, counter):
 	var text = input_handler.weightedrandom(date_lines.scold_initiate) + "\n\n"
 	var value = {mood = -3, fear = 10 - counter, action = 'scold'}
 
-	if person.has_temp_effect('resist_state') == false:
+	if !person.has_status('resist_state') == false:
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.scold_accept)
 		text += "}"
@@ -1109,53 +1105,20 @@ func scold(person, counter):
 
 func rubears(person, counter):
 	var text = input_handler.weightedrandom(date_lines.rubears_initiate) + "\n\n"
-
-#	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty_total') >= 50 && 8 - counter > 3:
-#		self.mood += 8 - counter
-#		text += "{color=green|"
-#		text += input_handler.weightedrandom(date_lines.rubears_accept)
-#		text += "}"
-#		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
-#	else:
-#		self.mood -= 2
-#		text += "{color=red|"
-#		text += input_handler.weightedrandom(date_lines.rubears_resist)
-#		text += "}"
 	return character_description(text)
+
 
 func stroketail(person, counter):
 	var text = input_handler.weightedrandom(date_lines.stroketail_initiate) + "\n\n"
-
-#	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty_total') >= 65 && 11 - counter*1.5 > 2:
-#		self.mood += 11 - counter*1.5
-#		text += "{color=green|"
-#		text += input_handler.weightedrandom(date_lines.stroketail_accept)
-#		text += "}"
-#		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
-#	else:
-#		self.mood -= 3
-#		text += "{color=red|"
-#		text += input_handler.weightedrandom(date_lines.stroketail_resist)
-#		text += "}"
 	return character_description(text)
-#	var text = ''
-#	text += "You gently stroke [name2]'s tail. "
-#
-#	if counter < 5 || randf() >= 0.4:
-#		self.mood += 11
-#		text = text + "[he2] seems happy with your attention, as [his2] tail wags in response."
-#		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
-#	else:
-#		text = text + "[he2] seems to be bored from repeated action. "
-#		self.mood -= 1
-#	return text
+
 
 func pullear(person, counter):
 
 	var text = input_handler.weightedrandom(date_lines.pullear_initiate) + "\n\n"
 	var value = {mood = -7, fear = 14-counter, action = 'pullear'}
 
-	if person.has_temp_effect('resist_state') == false:
+	if !person.has_status('resist_state'):
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.pullear_accept)
 		text += "}"
@@ -1175,7 +1138,7 @@ func pulltail(person, counter):
 	var text = input_handler.weightedrandom(date_lines.pulltail_initiate) + "\n\n"
 	var value = {mood = -5, fear = 15-counter, action = 'pulltail'}
 
-	if person.has_temp_effect('resist_state') == false:
+	if !person.has_status('resist_state'):
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.pulltail_accept)
 		text += "}"
@@ -1331,7 +1294,7 @@ func charm(person, counter):
 func castfear(person, counter):
 	var text = ''
 	var spell = globals.spelldict.fear
-	person.metrics.spell += 1
+	person.metrics.metrics_spell += 1
 	var spellnode = globals.spells
 	spellnode.person = person
 	text = spellnode.call(spell.effect)
@@ -1341,7 +1304,7 @@ func castfear(person, counter):
 func castsedate(person, counter):
 	var text = ''
 	var spell = globals.spelldict.sedation
-	person.metrics.spell += 1
+	person.metrics.metrics_spell += 1
 	var spellnode = globals.spells
 	spellnode.person = person
 	text = spellnode.call(spell.effect)
@@ -1437,7 +1400,7 @@ func usefood(food):
 	ResourceScripts.game_res.set_material(food.code, '-', 1)
 	self.turn -=1
 
-	if person.has_temp_effect('resist_state'):
+	if person.has_status('resist_state'):
 		text += "{color=red|"
 		text += input_handler.weightedrandom(date_lines.food_resist)
 		text += "}"
@@ -1575,7 +1538,7 @@ func calculateresults():
 		person.add_stat("loyalty", loyalty)
 
 	else:
-		loyalty = 6 + master.get_stat('charm_factor') + person.get_stat('timid_factor') 
+		loyalty = 6 + master.get_stat('charm_factor') + person.get_stat('authority_factor') 
 		text += (tr("DATING_FEARFUL_1")
 		+ tr("DATING_OBEDIENCE_1") + str(obedience)
 		+ tr("DATING_AUTHORITY_1") + str(authority) + tr("DATING_PHYSF_BONUS_1") + str(master.get_stat("physics_factor")*4)+")"

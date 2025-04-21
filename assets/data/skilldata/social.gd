@@ -95,7 +95,9 @@ var skills = {
 		icon = load("res://assets/images/iconsskills/Discipline2.png"),
 		tags = ['positive'],
 		value = ['0'],
-		damagestat = 'no_stat'
+		damagestat = 'no_stat',
+		dialogue_report = '',
+		dialogue_show_repeat = false,
 	},
 	consume_soul = {#kills target, gain its experience
 		code = 'consume_soul',
@@ -346,144 +348,93 @@ var effects = {
 	e_mastermentor = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'master_mentor',
-		stack = 1,
+		stack = 'master_mentor',
 		duration = 4,
 		tick_event = [variables.TR_TICK],
 		rem_event = [variables.TR_DEATH],
 		tags = ['positive', 'buff'],
-		args = [],
-		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'exp_gain_mod', value = 1}],
+		statchanges = {exp_gain_mod = 1},
 		buffs = ['b_mastermentor'],
 	},
 	e_t_hardwork = {
 		type = 'temp_s',
 		target = 'receiver',
-		name = 'hardwork',
+		stack = 'hardwork',
 		tick_event = variables.TR_TICK,
-		duration = 'parent',
-		stack = 1,
-		tags = ['s_dur_add'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add_p', stat = 'productivity', value = 0.5},
-		],
+		duration = 'arg',
+		statchanges = {productivity = 0.5},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Worker.png",
 				description = "TRAITEFFECTHARDWORK",
-				limit = 1,
-				t_name = 'hardwork',
-				mansion_only = true,
+				tags = ['mansion_only']
 			}
 		],
 	},
 	e_t_discipline = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'discipline',
+		stack = 'discipline',
 		tick_event = variables.TR_TICK,
-		duration = 'parent',
-		stack = 1,
-		tags = ['s_dur_add'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add_p', stat = 'mod_collect', value = 0.5},
-			{type = 'stat_add_p', stat = 'mod_hunt', value = 0.5},
-			{type = 'stat_add_p', stat = 'mod_fish', value = 0.5},
-			{type = 'stat_add_p', stat = 'mod_cook', value = 0.5},
-			{type = 'stat_add_p', stat = 'mod_smith', value = 0.5},
-			{type = 'stat_add_p', stat = 'mod_alchemy', value = 0.5},
-			{type = 'stat_add_p', stat = 'mod_tailor', value = 0.5},
-			{type = 'stat_add_p', stat = 'mod_farm', value = 0.5},
-		],
+		duration = 'arg',
+		statchanges = {mod_collect = 0.5, mod_hunt = 0.5, mod_fish = 0.5, mod_cook = 0.5, mod_smith = 0.5, mod_alchemy = 0.5, mod_tailor = 0.5, mod_farm = 0.5,},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline2.png",
 				description = "TRAITEFFECTDISCIPLINE",
-				limit = 1,
-				t_name = 'discipline',
-				mansion_only = true,
+				tags = ['mansion_only']
 			}
 		],
 	},
 	e_s_bond = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'soul_bind',
-		stack = 1,
+		stack = 'soul_bind',
 		duration = 4,
 		tick_event = [variables.TR_TICK],
 		rem_event = [variables.TR_DEATH],
-		tags = [],
-		args = [],
-		sub_effects = [],
-		atomic = [{type = 'disable'}],
+		tags = ['no_job', 'no_combat'],
 		buffs = ['b_soulbind'],
 	},
 	master_productivity_1 = {
 		type = 'temp_s',
 		target = 'target',
-		name = "Master's Morale",
 		tick_event = variables.TR_TICK,
 		duration = 12,
-		stack = 1,
-		tags = [],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add_p', stat = 'productivity', value = 0.2},
-		],
+		stack = 'mas_prod',
+		statchanges = {productivity = 0.2},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Worker.png",
 				description = "TRAITEFFECTMASTERPRODUCT",
-				limit = 1,
-				t_name = "Master's Morale",
 			}
 		],
 	},
 	master_combat_1 = {
 		type = 'temp_s',
 		target = 'target',
-		name = "Master's Morale",
+		stack = "mas_combat",
 		tick_event = variables.TR_TICK,
 		duration = 8,
-		stack = 1,
-		tags = [],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add_p', stat = 'atk', value = 0.15},
-			{type = 'stat_add_p', stat = 'matk', value = 0.15},
-		],
+		statchanges = {atk_add_part = 0.15, matk_add_part = 0.15},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Fighter.png",
 				description = "TRAITEFFECTMASTERCOMBAT",
-				limit = 1,
-				t_name = "Master's Morale",
 			}
 		],
 	},
 	succubus_combat_1 = {
 		type = 'temp_s',
 		target = 'caster',
-		name = "Lust Drain",
+		stack = "suc_combat",
 		tick_event = variables.TR_TICK,
 		duration = 8,
-		stack = 1,
-		tags = [],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add_p', stat = 'atk', value = 0.25},
-			{type = 'stat_add_p', stat = 'matk', value = 0.25},
-		],
+		statchanges = {atk_add_part = 0.25, matk_add_part = 0.25},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Fighter.png",
 				description = "TRAITEFFECTSUCCOMBAT",
-				limit = 1,
-				t_name = "Lust Drain",
 			}
 		],
 	},
@@ -512,4 +463,20 @@ var buffs = {
 		description = "",
 		t_name = 'soulbindcaster',
 	},
+}
+
+var stacks = {
+	master_mentor = {}, #st 1
+	soul_bind = {}, #st 1
+	mas_prod = {}, #st 1
+	mas_combat = {}, #st 1
+	suc_combat = {}, #st 1
+	hardwork = {
+		type = 'stack_s',
+		stack = 1
+	}, #st 1 add
+	discipline = {
+		type = 'stack_s',
+		stack = 1
+	}, #st 1 add
 }

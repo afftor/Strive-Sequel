@@ -287,7 +287,7 @@ var skills = {
 		sound = [],
 		value = [['1'], ['1'], ['1']],
 		random_factor = [2,1,0],
-		damagestat = ['tame_factor','timid_factor','-wits_factor']
+		damagestat = ['tame_factor','authority_factor','-wits_factor']
 	},
 	ragedrug = {
 		code = 'ragedrug',
@@ -426,7 +426,7 @@ var skills = {
 	},
 	skill_granting = {
 		new_syntax = true,
-		code = '',
+		code = 'skill_granting',
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -749,20 +749,13 @@ var effects = {
 	e_i_physbuf = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'physbuf',
+		stack = 'physbuf',
 		rem_event = variables.TR_TICK,
-		stack = 1,
-		tags = ['s_dur_add'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'physics_bonus', value = 80},
-		],
+		statchanges = {physics_bonus = 80},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsitems/hairgrowthpot.png",
 				description = "TRAITEFFECTPHYSBUF",
-				limit = 1,
-				t_name = 'physbuf',
 			}
 		],
 	},
@@ -770,14 +763,9 @@ var effects = {
 	e_i_witsbuf = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'physbuf',
+		stack = 'witsbuf',
 		rem_event = variables.TR_TICK,
-		stack = 1,
-		tags = ['s_dur_add'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'wits_bonus', value = 80},
-		],
+		statchanges = {wits_bonus = 80},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsitems/deterrentpot.png",
@@ -791,26 +779,28 @@ var effects = {
 		type = 'temp_s',
 		target = 'caster',
 		duration = 2,
-		stack = 1,
-		name = 'alcohol',
+		stack = 'alcohol',
 		tick_event = [variables.TR_TICK],
-		args = [],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'training_loyalty', value = -1},
-			{type = 'stat_add', stat = 'training_spirit', value = 1},
-			{type = 'stat_add', stat = 'consent', value = 1},
-			{type = 'stat_add', stat = 'productivity', value = -0.15},
-			],
+		statchanges = {training_loyalty = -1, training_spirit = 1, productivity = -0.15},
+		tags = ['alcohol'],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png", #fix
 			description = "TRAITEFFECTALCOHOL",
-			args = [],
-			limit = 1,
-			t_name = 'alcohol',
-			mansion_only = true,
+			tags = ['mansion_only'],
 		}]
 	},
 }
 var atomic_effects = {}
 var buffs = {}
+
+var stacks = {
+	physbuf = {
+		type = 'stack_s',
+		stack = 1,
+	}, #st 1 inc
+	witsbuf = {
+		type = 'stack_s',
+		stack = 1,
+	}, #st 1 inc
+	alcohol = {}, #st 1
+}

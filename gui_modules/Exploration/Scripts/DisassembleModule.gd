@@ -335,22 +335,7 @@ func geartemplete_tooltip(data):
 
 	if item.itemtype in ['armor','weapon','tool']:
 		text += "\n\n"
-		for i in item.basestats:
-			if item.basestats[i] != 0:
-				var value = item.basestats[i]
-				var change = ''
-				if statdata.statdata[i].percent:
-					value = value*100
-				text += statdata.statdata[i].name + ': {color='#" " +Items.stats[i] +
-				if value > 0:
-					change = '+'
-					text += 'green|' + change
-				else:
-					text += 'red|'
-				value = str(value)
-				if statdata.statdata[i].percent:
-					value = value + '%'
-				text += value + '}\n'
+		text += globals.build_desc_for_bonusstats(item.basestats)
 
 
 	for i in item.effects:

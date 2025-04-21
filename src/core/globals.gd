@@ -92,7 +92,7 @@ func _ready():
 	ResourceScripts.recreate_singletons()
 	ResourceScripts.revert_gamestate()
 	modding_core.load_mods()
-	
+	Effectdata.fix_eff_data()
 	
 	if OS.has_feature('editor'):
 		update_localization_file("ru")
@@ -578,20 +578,32 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 			text += tr("WEAPONELEMENENCHANT") + bonusstats[i] + "\n"
 			continue
 		if bonusstats[i] is bool or bonusstats[i] is Array or bonusstats[i] != 0:
-			var data = statdata.statdata[i]
-			if data.hidden: continue
+			var bonus
+			var data
 			var value = bonusstats[i]
 			if !(value is bool or value is Array):
 				value *= mul
 			var change = ''
-			match data.default_bonus:
-				"add":
+			if statdata.statdata.has(i):
+				data = statdata.statdata[i]
+				if data.tags.has('hidden'): 
+					continue
+				bonus = data.default_bonus
+				
+			else:
+				for suffix in ['add', 'add_part', 'add2', 'add_part2', 'mul', 'mul2', 'set', 'append', 'maxcap', 'mincap']:
+					if i.ends_with('_' + suffix):
+						data = statdata.statdata[i.trim_suffix('_' + suffix)]
+						bonus = suffix
+						break
+			match bonus:
+				"add", "add2":
 					text += data.name + ': {color='
 					if data.percent:
 						value = value*100
 					if value > 0:
 						change = '+'
-					if value > 0 and !data.is_negative or value < 0 and data.is_negative:
+					if value > 0 and !data.tags.has('is_negative') or value < 0 and data.tags.has('is_negative'):
 						text += 'green|' + change
 					else:
 						text += 'red|' + change
@@ -599,25 +611,25 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 					if data.percent:
 						value = value + '%'
 					text += value + '}\n'
-				"add_part":
+				"add_part", "add_part2":
 					text += data.name + ': {color='
 					value = value*100
 					if value > 0:
 						change = '+'
-					if value > 0 and !data.is_negative or value < 0 and data.is_negative:
+					if value > 0 and !data.tags.has('is_negative') or value < 0 and data.tags.has('is_negative'):
 						text += 'green|' + change
 					else:
 						text += 'red|' + change
 					value = str(stepify(value, 0.01))
 					value = value + '%'
 					text += value + '}\n'
-				"mul":
+				"mul", "mul2":
 					text += data.name + ': {color='
 					value = value - 1.0
 					value = value*100
 					if value > 0:
 						change = '+'
-					if value > 0 and !data.is_negative or value < 0 and data.is_negative:
+					if value > 0 and !data.tags.has('is_negative') or value < 0 and data.tags.has('is_negative'):
 						text += 'green|' + change
 					else:
 						text += 'red|' + change
@@ -631,7 +643,7 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 						text = '{color=red|' + tr(data.name + '_FALSE') + '}\n'
 				'array':
 					text += data.name + ': {color='
-					if data.is_negative:
+					if data.tags.has('is_negative'):
 						text += 'red|'
 					else:
 						text += 'green|'
@@ -641,7 +653,6 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 								text += "%s, " % tr(Skilldata.masteries[st].name)
 					text = text.trim_suffix(', ')
 					text += '}\n'
-			
 	return text
 
 func TextEncoder(text, node = null):
@@ -836,6 +847,7 @@ func LoadGame(filename):
 			savedict.game_world.areas.plains.factions[faction]["bonus_actions"] = worlddata.factiondata[faction].bonus_actions
 	
 #	state.deserialize(savedict)
+	effects_pool.deserialize(savedict.effpool)
 	characters_pool.deserialize(savedict.charpool)
 	for p in ResourceScripts.gamestate:
 		ResourceScripts.set(p, dict2inst(savedict[p]))
@@ -846,7 +858,6 @@ func LoadGame(filename):
 	ResourceScripts.game_party.fix_serialization()
 	ResourceScripts.game_world.fix_serialization()
 	ResourceScripts.game_progress.fix_serialization()
-	effects_pool.deserialize(savedict.effpool)
 	characters_pool.cleanup()
 	effects_pool.cleanup()
 	#mind! that characters_pool's fix_serialization_postload is inside game_party's
@@ -1080,9 +1091,9 @@ func impregnate_check(father,mother):
 					result.value = false
 					result.compatible = false
 	
-	if mother.get_stat('pregnancy').duration != 0:
+	if mother.get_stat('pregnancy_duration') != 0:
 		result.value = false
-		if variables.pregduration/1.5 > mother.get_stat('pregnancy').duration:
+		if variables.pregduration/1.5 > mother.get_stat('pregnancy_duration'):
 			result.already_preg_visible = true
 	
 	if result.no_womb || result.preg_disabled || result.male_contraceptive || result.female_contraceptive || result.father_undead || result.mother_undead:
@@ -1873,13 +1884,6 @@ func common_effects(effects):
 						character.assign_to_quest_and_make_unavalible(k.quest, k.work_time)
 					elif k.code == 'remove_character':
 						ResourceScripts.game_party.remove_slave(character)
-					elif k.code == 'transform_to_unique_character':
-						# create Lilith
-						var unique = ResourceScripts.scriptdict.class_slave.new("common_story")
-						unique.generate_predescribed_character(worlddata.pregen_characters[k.unique])
-						# copy stats from Lilia to Lilith
-						copy_stats(character, unique)
-						
 					elif k.code == 'add_profession':
 						character.unlock_class(k.profession)
 					elif k.code == 'add_trait':
@@ -1904,10 +1908,6 @@ func common_effects(effects):
 				ResourceScripts.game_res.update_money('-', input_handler.scene_characters[i.value].calculate_price(true))
 #				money -= input_handler.scene_characters[i.value].calculate_price()
 #				text_log_add('money',"Gold used: " + str(input_handler.scene_characters[i.value].calculate_price()))
-			'mod_scene_characters':
-				if i.type == 'all':
-					for k in input_handler.scene_characters:
-						k.add_stat_bonuses(i.value)
 			'bool_scene_characters':
 				if i.type == 'all':
 					for k in input_handler.scene_characters:
@@ -2641,9 +2641,7 @@ func valuecheck(dict):
 				return false
 			else:
 				var r = rng.randi_range(dict.from, dict.to)
-				if !master_char.statlist.statlist.has(dict.factor):
-					return false #wrong factor
-				var stat = dict.value * master_char.statlist.statlist.get(dict.factor)
+				var stat = dict.value * master_char.get_stat(dict.factor)
 				var result = r > stat
 				return result == dict.check
 		'sex_filter': # return true if master.sex == scene_sex
@@ -2653,7 +2651,7 @@ func valuecheck(dict):
 			var master_char = ResourceScripts.game_party.get_master()
 			if master_char == null:
 				return false
-			var master_sex = master_char.statlist.statlist.sex
+			var master_sex = master_char.get_stat('sex')
 			return master_sex == dict.scene_sex
 		'has_stamina':
 			if gui_controller.exploration_dungeon == null:
@@ -2830,59 +2828,6 @@ func update_localization_file(update_loc: String, primary_loc = "en"):
 		var dir = Directory.new()
 		dir.remove(TranslationData[update_loc].data)
 		dir.rename(TranslationData[update_loc].data.replace("main.gd", "main2.gd"), TranslationData[update_loc].data)
-
-# used for lilia -> lilith conversion
-func copy_stats(base_ch, unique_ch):
-	var unique_ch_statlist = unique_ch.statlist.statlist
-	var base_ch_statlist = base_ch.statlist.statlist
-	
-#	base_ch_statlist.code = unique_ch_statlist.code
-	base_ch_statlist.name = unique_ch_statlist.name
-	base_ch_statlist.unique = unique_ch_statlist.unique
-	base_ch_statlist.surname = unique_ch_statlist.surname
-	base_ch_statlist.race = unique_ch_statlist.race
-	base_ch_statlist.sex = unique_ch_statlist.sex
-	base_ch_statlist.age = unique_ch_statlist.age
-	base_ch_statlist.slave_class = unique_ch_statlist.slave_class
-	base_ch_statlist.height = unique_ch_statlist.height
-	base_ch_statlist.hair_color = unique_ch_statlist.hair_color
-	base_ch_statlist.hair_length = unique_ch_statlist.hair_length
-	base_ch_statlist.hair_style = unique_ch_statlist.hair_style
-	base_ch_statlist.eye_color = unique_ch_statlist.eye_color
-	base_ch_statlist.skin = unique_ch_statlist.skin
-	base_ch_statlist.icon_image = unique_ch_statlist.icon_image
-	base_ch_statlist.body_image = unique_ch_statlist.body_image
-	base_ch_statlist.horns = unique_ch_statlist.horns
-	base_ch_statlist.tail = unique_ch_statlist.tail
-	base_ch_statlist.ass_size = unique_ch_statlist.ass_size
-	base_ch_statlist.tits_size = unique_ch_statlist.tits_size
-	base_ch_statlist.sex_traits = []
-#	for trait in unique_ch_statlist.sex_traits:
-#		if not trait in base_ch_statlist.sex_traits:
-#			base_ch_statlist.sex_traits.append(trait)
-	base_ch_statlist.tags = []
-	for tag in unique_ch.tags:
-		if not tag in base_ch.tags:
-			base_ch.tags.append(tag)
-	base_ch_statlist.personality_kind = unique_ch_statlist.personality_kind
-	base_ch_statlist.personality_bold = unique_ch_statlist.personality_bold
-	base_ch_statlist.food_like = unique_ch_statlist.food_like
-#	base_ch_statlist.food_hate = []
-#	for food in unique_ch_statlist.food_hate:
-#		if not food in base_ch_statlist.food_hate:
-#			base_ch_statlist.food_hate.append(food)
-	base_ch_statlist.classes = []
-	for cc in unique_ch_statlist.classes:
-		if not cc in base_ch_statlist.classes:
-			base_ch_statlist.classes.append(cc)
-	base_ch_statlist.traits = []
-	for trait in unique_ch_statlist.traits:
-		if not trait in base_ch_statlist.traits:
-			base_ch_statlist.traits.append(trait)
-	
-	base_ch.statlist.statlist = base_ch_statlist
-
-
 
 
 func get_sex_action(code):

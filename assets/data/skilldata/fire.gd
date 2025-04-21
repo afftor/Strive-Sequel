@@ -211,7 +211,6 @@ var effects = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
-		args = [], 
 		sub_effects = [
 			Effectdata.rebuild_remove_effect('fear'),
 			Effectdata.rebuild_remove_effect('stun'),
@@ -223,52 +222,40 @@ var effects = {
 	e_t_bloodboil = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'bloodboil',
+		stack = 'bloodboil',
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 4,
-		stack = 1,
-		args = [],
 		tags = ['buff'],
-		sub_effects = [
-			Effectdata.rebuild_stat_bonus('atk', 0.25, null, 'stat_add_p'),
-			Effectdata.rebuild_stat_bonus('resist_stun', 200),
-			Effectdata.rebuild_stat_bonus('resist_wet', 200),
-			Effectdata.rebuild_stat_bonus('resist_fear', 200),
-		],
-		atomic = [],
+		statchanges = {atk_add_part = 0.25, resist_stun = 200, resist_wet = 200, resist_fear = 200},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/skill_bloodboil.png",
 				description = "TRAITEFFECTBLOODBOIL",
-				limit = 1,
-				t_name = 'bloodboil'
 			}
 		],
 	},
 	e_t_fireshield = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'fireshield',
+		stack = 'fireshield',
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		duration = 'parent',
-		stack = 1,
-		args = [],
+		duration = 'arg',
 		tags = ['buff'],
-		sub_effects = [
-			Effectdata.rebuild_stat_bonus('resist_water', 40),
-		],
-		atomic = [],
+		statchanges = {resist_water = 40},
 		buffs = [
 			{
 				icon = "res://assets/images/traits/speeddebuf.png",
 				description = "TRAITEFFECTFIRESHIELD",
-				limit = 1,
-				t_name = 'fireshield'
 			}
 		],
 	}
 }
 var atomic_effects = {}
 var buffs = {}
+
+var stacks = {
+	bloodboil = {}, #st1
+	fireshield = {}, #st1
+}

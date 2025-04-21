@@ -765,12 +765,11 @@ func partner(group):
 	for i in group:
 		if i.person.has_profession("master") && group.size() == 1:
 			return "you"
-		var mp = i.person.statlist.statlist
 		array1 = []
 		array2 = []
-		var thick = thickness(mp)
+		var thick = thickness(i.person)
 		#feminity descriptors
-		if mp.tits_size == 'masculine':
+		if i.person.get_stat('tits_size') == 'masculine':
 			array1 += ["muscular","toned"]
 		elif thick < 3:
 			array1 += ["dainty","delicate","slim"]
@@ -781,57 +780,59 @@ func partner(group):
 		else:
 			array1 += ["sensuous","curvaceous","buxom","voluptuous","bombastic","meaty"]
 		#body
-		if mp.pregnancy.duration > 1:
+		if i.person.get_stat('pregnancy_duration') > 1:
 			array1 += ["pregnant","gravid"]
 		#age
-		if mp.age == 'child':
-			array1 += ["young","adolescent"]
-			array2 += ["child"] if group.size() == 1 else ["children"]
-		elif mp.age == 'teen':
-			array1 += ['young']
-			array2 += ["teen"] if group.size() == 1 else ["teens"]
-		else:
-			array1 += ['mature', 'adult']
+		match i.person.get_stat('age'):
+			'child':
+				array1 += ["young","adolescent"]
+				array2 += ["child"] if group.size() == 1 else ["children"]
+			'teen':
+				array1 += ['young']
+				array2 += ["teen"] if group.size() == 1 else ["teens"]
+			_:
+				array1 += ['mature', 'adult']
 		#beauty
-		if mp.charm >= 50:
+		if i.person.get_stat('charm') >= 50:
 			array1 += ['attractive']
-			if mp.sex == 'male':
+			if i.person.get_stat('sex') == 'male':
 				array1 += ['handsome']
-			elif mp.age == 'child':
+			elif i.person.get_stat('age') == 'child':
 				array1 += ['cute','pretty']
-			elif mp.age == 'teen':
+			elif i.person.get_stat('age') == 'teen':
 				array1 += ['cute','pretty','beautiful']
 			else:
 				array1 += ['pretty','beautiful']
 		#size
-		if mp.height in ['petite','shortstack']:
-			array1 += ["tiny","small","little","pint-sized","diminutive"]
-		elif mp.height in ['tall', 'towering']:
-			array1 += ["giant","large","big","tall"]
+		match i.person.get_stat('height'):
+			'petite','shortstack':
+				array1 += ["tiny","small","little","pint-sized","diminutive"]
+			'tall', 'towering':
+				array1 += ["giant","large","big","tall"]
 		#personality
-		if mp.charm > 60:
-			if mp.age in ['child','teen']:
+		if i.person.get_stat('charm') > 60:
+			if i.person.get_stat('age') in ['child','teen']:
 				array1 += ['adorable','cute']
-			if mp.age in ['adult','teen','mature']:
+			if i.person.get_stat('age') in ['adult','teen','mature']:
 				array1 += ['charming','enchanting','captivating']
-		if mp.personality == 'shy':
+		if i.person.get_stat('personality') == 'shy':
 			array1 += ['shy','meek']
-		if mp.wits > 80:
+		if i.person.get_stat('wits') > 80:
 			array1 += ['clever']
-		if mp.personality == 'bold':
+		if i.person.get_stat('personality') == 'bold':
 			array1 += ['brave','haughty']
 		if i.lust > 300:
 			array1 += ['horny', 'excited']
 		#boy/girl
-		if mp.sex == 'male':
-			if mp.age == 'mature':
+		if i.person.get_stat('sex') == 'male':
+			if i.person.get_stat('age') == 'mature':
 				boygirl = 'man' if group.size() == 1 else 'men'
 				if group.size() >= 2:
 					boygirl = 'boy' if group.size() == 1 else 'boys'
 			else:
 				boygirl = 'boy' if group.size() == 1 else 'boys'
 		else:
-			if mp.age == 'mature':
+			if i.person.get_stat('age') == 'mature':
 				boygirl = 'woman' if group.size() == 1 else 'women'
 				if group.size() >= 2:
 					boygirl = 'girl' if group.size() == 1 else 'girls'
@@ -840,7 +841,7 @@ func partner(group):
 		array2 += [boygirl]
 		#race
 		for k in racenames:
-			if k == mp.race:
+			if k == i.person.get_stat('race'):
 				array2 += [racenames[k].single + ' ' + boygirl]
 				if group.size() >= 2:
 					array2 += [racenames[k].plural]
@@ -879,12 +880,11 @@ func partners(group):
 	for i in group:
 		if i.person.has_profession("master") && group.size() == 1:
 			return "your"
-		var mp = i.person.statlist.statlist
 		array1 = []
 		array2 = []
-		var thick = thickness(mp)
+		var thick = thickness(i.person)
 		#feminity descriptors
-		if mp.tits_size == 'masculine':
+		if i.person.get_stat('tits_size') == 'masculine':
 			array1 += ["muscular","toned"]
 		elif thick < 3:
 			array1 += ["dainty","delicate","slim","petite"]
@@ -895,57 +895,57 @@ func partners(group):
 		else:
 			array1 += ["sensuous","curvaceous","buxom","voluptuous","bombastic","meaty"]
 		#body
-		if mp.pregnancy.duration > 1:
+		if i.person.get_stat('pregnancy_duration') > 1:
 			array1 += ["pregnant","gravid"]
 		#age
-		if mp.age == 'child':
+		if i.person.get_stat('age') == 'child':
 			array1 += ["young","adolescent"]
 			array2 += ["child's"] if group.size() == 1 else ["childrens'"]
-		elif mp.age == 'teen':
+		elif i.person.get_stat('age') == 'teen':
 			array1 += ['young']
 			array2 += ["teen's"] if group.size() == 1 else ["teens'"]
 		else:
 			array1 += ['mature', 'adult']
 		#beauty
-		if mp.charm >= 50:
+		if i.person.get_stat('charm') >= 50:
 			array1 += ['attractive']
-			if mp.sex == 'male':
+			if i.person.get_stat('sex') == 'male':
 				array1 += ['handsome']
-			elif mp.age == 'child':
+			elif i.person.get_stat('age') == 'child':
 				array1 += ['cute','pretty']
-			elif mp.age == 'teen':
+			elif i.person.get_stat('age') == 'teen':
 				array1 += ['cute','pretty','beautiful']
 			else:
 				array1 += ['pretty','beautiful']
 		#size
-		if mp.height in ['petite','shortstack']:
+		if i.person.get_stat('height') in ['petite','shortstack']:
 			array1 += ["tiny","small","little","pint-sized","diminutive"]
-		elif mp.height in ['tall', 'towering']:
+		elif i.person.get_stat('height') in ['tall', 'towering']:
 			array1 += ["giant","huge","large","big","tall"]
 		#personality
-		if mp.charm > 60:
-			if mp.age in ['child','teen']:
+		if i.person.get_stat('charm') > 60:
+			if i.person.get_stat('age') in ['child','teen']:
 				array1 += ['adorable','cute']
-			if mp.age in ['adult','teen']:
+			if i.person.get_stat('age') in ['adult','teen']:
 				array1 += ['charming','enchanting','captivating']
 #		if mp.cour < 40:
 #			array1 += ['shy','meek']
-		if mp.wits > 80:
+		if i.person.get_stat('wits') > 80:
 			array1 += ['clever']
 #		if mp.conf > 65:
 #			array1 += ['proud','haughty']
 		if i.lust > 300:
 			array1 += ['horny', 'excited']
 		#boy/girl
-		if mp.sex == 'male':
-			if mp.age == 'adult':
+		if i.person.get_stat('sex') == 'male':
+			if i.person.get_stat('age') == 'adult':
 				boygirl = "man's" if group.size() == 1 else "men's"
 				if group.size() >= 2:
 					boygirl = "boy's" if group.size() == 1 else "boys'"
 			else:
 				boygirl = "boy's" if group.size() == 1 else "boys'"
 		else:
-			if mp.age == 'adult':
+			if i.person.get_stat('age') == 'adult':
 				boygirl = "woman's" if group.size() == 1 else "women's"
 				if group.size() >= 2:
 					boygirl = "girl's" if group.size() == 1 else "girls'"
@@ -954,7 +954,7 @@ func partners(group):
 		array2 += [boygirl]
 		#race
 		for j in racenames:
-			if j == mp.race:
+			if j == i.person.get_stat('race'):
 				array2 += [racenames[j].single + ' ' + boygirl]
 				if group.size() >= 2:
 					array2 += [racenames[j].pluralpos]
@@ -993,10 +993,9 @@ func body(group):
 	for i in group:
 		array1 = []
 		array2 = ["body"] if group.size() == 1 else ["bodies"]
-		var mp = i.person.statlist.statlist
-		var thick = thickness(mp)
+		var thick = thickness(i.person)
 		#feminity
-		if mp.tits_size == 'masculine':
+		if i.person.get_stat('tits_size') == 'masculine':
 			array1 += ["muscular","toned"]
 		elif thick < 3:
 			array1 += ["dainty","delicate","slim","petite"]
@@ -1007,31 +1006,31 @@ func body(group):
 		else:
 			array1 += ["sensuous","curvaceous","buxom","voluptuous","bombastic"]
 		#beauty
-		if mp.charm >= 50:
+		if i.person.get_stat('charm') >= 50:
 			array1 += ['alluring','enticing']
-			if mp.age in ['adult','teen'] && mp.sex != 'male':
+			if i.person.get_stat('age') in ['adult','teen'] && i.person.get_stat('sex') != 'male':
 				array1 += ['ravishing','seductive']
 		#age
-		if mp.age == 'child':
+		if i.person.get_stat('age') == 'child':
 			array1 += ["youthful","immature"]
-		elif mp.age == 'teen':
+		elif i.person.get_stat('age') == 'teen':
 			array1 += ["youthful"]
-		elif mp.age == 'adult':
-			if mp.sex == 'male':
+		elif i.person.get_stat('age') == 'adult':
+			if i.person.get_stat('sex') == 'male':
 				array1 += ["manly"]
 			else:
 				array1 += ["womanly","mature"]
 		#size
-		if mp.height in ['petite','shortstack']:
+		if i.person.get_stat('height') in ['petite','shortstack']:
 			array1 += ["tiny","small","little"]
-		elif mp.height in ['tall','towering']:
+		elif i.person.get_stat('height') in ['tall','towering']:
 			array1 += ["giant","huge","large"]
 		#bodytype
-		if mp.body_shape == 'jelly':
+		if i.person.get_stat('body_shape') == 'jelly':
 			array1 += ["transparent","squishy","gelatinous"]
-		if mp.body_shape == 'halfsnake':
+		if i.person.get_stat('body_shape') == 'halfsnake':
 			array1 += ["long","serpentine"]
-		elif mp.skin_coverage == 'full_body_fur':
+		elif i.person.get_stat('skin_coverage') == 'full_body_fur':
 			array1 += ["furry","fluffy","fur-covered"]
 		#for multiple people, only incude shared
 		if marray1 == null:
@@ -1061,34 +1060,33 @@ func penis(group):
 	for i in group:
 		array1 = []
 		array2 = ['cock','dick','penis','shaft'] if group.size() == 1 else ['cocks','dicks','penises','shafts']
-		var mp = i.person.statlist.statlist
-		#size/age descriptors
-		if mp.penis_size== 'small':
+		if i.person.get_stat('penis_size') == 'small':
 			array1 += ["tiny","small","petite"]
-			if mp.age == 'child':
+			if i.person.get_stat('age') == 'child':
 				array1 += ["immature"]
-		elif mp.penis_size== 'average':
+		elif i.person.get_stat('penis_size')== 'average':
 			array1 += ["average-sized","decently-sized"]
-			if mp.age == 'child':
+			if i.person.get_stat('age') == 'child':
 				array1 += ["well-developed","adult-like"]
-		elif mp.penis_size== 'big':
+		elif  i.person.get_stat('penis_size') == 'big':
 			array1 += ["big","sizeable","thick","girthy","impressively large"]
-			if mp.age == 'child':
+			if i.person.get_stat('age') == 'child':
 				array1 += ["overgrown","surprisingly large"]
 		#penistype descriptors
-		if mp.penis_type == 'feline':
-			array1 += ['barbed']
-		elif mp.penis_type == 'canine':
-			array1 += ['knotted','tapered']
-		elif mp.penis_type == 'equine':
-			array1 += ['flared','long']
-			array2 += ['horse cock','horse dick']
+		match i.person.get_stat('penis_type'):
+			'feline':
+				array1 += ['barbed']
+			'canine':
+				array1 += ['knotted','tapered']
+			'equine':
+				array1 += ['flared','long']
+				array2 += ['horse cock','horse dick']
 		#other descriptors
-		if mp.penis_size == '':
+		if i.person.get_stat('penis_size') == '':
 			array2 = ['strap-on','shaft'] if group.size() == 1 else ['strap-ons','shafts']
-		elif mp.sex == 'male':
+		elif i.person.get_stat('sex') == 'male':
 			array2 += ['manhood'] if group.size() == 1 else ['manhoods']
-		elif mp.sex == 'futanari':
+		elif i.person.get_stat('sex') == 'futanari':
 			array1 += ['futa']
 		#for multiple people, only incude shared
 		if marray1 == null:
@@ -1119,13 +1117,12 @@ func pussy(group):
 	for i in group:
 		array1 = []
 		array2 = ["vagina","pussy","cunt"] if group.size() == 1 else ["vaginas","pussies","cunts"]
-		var mp = i.person.statlist.statlist
 		#body
 		if i.horny >= 100:
 			array1 += ["wet","slick","dripping"]
-		if mp.has_womb == true && mp.pregnancy.duration == 0:
+		if i.person.get_stat('has_womb') && i.person.get_stat('pregnancy_duration') == 0:
 			array1 += ["fertile"]
-		if mp.vaginal_virgin == true:
+		if i.person.get_stat('vaginal_virgin'):
 			array1 += ["virgin","virginal","unused"]
 #		if mp.pubichair == 'clean':
 #			if mp.age == 'child':
@@ -1133,14 +1130,15 @@ func pussy(group):
 #			else:
 #				array1 += ["smoothly shaved","hairless","pubeless","shaved"]
 		#age
-		if mp.age == 'child':
-			array1 += ["childish","immature","girlish","youthful","undeveloped"]
-		elif mp.age == 'teen':
-			array1 += ["girlish","youthful","developing"]
-		else:
-			array1 += ["womanly","mature","developed"]
+		match i.person.get_stat('age'):
+			'child':
+				array1 += ["childish","immature","girlish","youthful","undeveloped"]
+			'teen':
+				array1 += ["girlish","youthful","developing"]
+			_:
+				array1 += ["womanly","mature","developed"]
 		#race
-		if mp.body_shape == 'halfhorse':
+		if i.person.get_stat('body_shape') == 'halfhorse':
 			array1 += ["muscular","horse","horse"]
 		else:
 			array2 += ["slit"] if group.size() == 1 else ["slits"]
@@ -1166,12 +1164,12 @@ func pussy(group):
 func race(group):
 	for i in group:
 		# return i.person.translate('[race_short]')
-		return input_handler.random_from_array(races.short_race_names[races.racelist[i.person.statlist.statlist.race].code]) if i.person.statlist.statlist.race != "" else ""
+		return input_handler.random_from_array(races.short_race_names[races.racelist[i.person.get_stat('race')].code]) if i.person.get_stat('race') != "" else ""
 
 func boy(group):
 	for i in group:
 		# return i.person.translate('[boy]')
-		return globals.fastif(i.person.statlist.statlist.sex == 'male', 'boy', 'girl')
+		return globals.fastif(i.person.get_stat('sex') == 'male', 'boy', 'girl')
 
 func labia(member):
 	var array = ["labia","pussy lips","genitals","folds"]
@@ -1186,57 +1184,56 @@ func ass(group):
 	for i in group:
 		array1 = []
 		array2 = ["ass","butt","backside","rear"] if group.size() == 1 else ["asses","butts","backsides","rears"]
-		var mp = i.person.statlist.statlist
 		#size/age descriptors
 
-		if mp.skin_coverage.find('fur') >= 0:
+		if i.person.get_stat('skin_coverage').find('fur') >= 0:
 			array1 += ['fuzzy','fluffy','furry']
-		if mp.ass_size == 'flat':
-			array1 += ["flat","compact"]
-			if mp.age == 'teen':
-				array1 += ["tiny","developing","childlike"]
-			elif mp.age == 'child':
-				array1 += ["tiny","developing","undeveloped","immature"]
-		elif mp.ass_size == 'small':
-			array1 += ["small","compact"]
-			if mp.age == 'teen':
-				array1 += ["developing"]
-			elif mp.age == 'child':
-				array1 += ["undeveloped","immature"]
-		elif mp.ass_size == 'average':
-			array1 += ["round","well-rounded","shapely"]
-			if mp.age == 'teen':
-				array1 += ["well-developed"]
-			elif mp.age == 'child':
-				array1 += ["well-developed","impressively large"]
-		elif mp.ass_size == 'big':
-			array1 += ["big","sizeable","plump","hefty"]
-			if mp.age == 'teen':
-				array1 += ["well-developed","impressively large"]
-			elif mp.age == 'child':
-				array1 += ["overgrown","surprisingly large"]
-		elif mp.ass_size == 'huge':
-			array1 += ["huge","massive","fat","meaty","gigantic","enormous"]
-			if mp.age == 'teen':
-				array1 += ["well-developed","surprisingly large"]
-			elif mp.age == 'child':
-				array1 += ["overgrown","shockingly large"]
+		match i.person.get_stat('ass_size'):
+			'flat':
+				array1 += ["flat","compact"]
+				if i.person.get_stat('age') == 'teen':
+					array1 += ["tiny","developing","childlike"]
+				elif i.person.get_stat('age') == 'child':
+					array1 += ["tiny","developing","undeveloped","immature"]
+			'small':
+				array1 += ["small","compact"]
+				if i.person.get_stat('age') == 'teen':
+					array1 += ["developing"]
+				elif i.person.get_stat('age') == 'child':
+					array1 += ["undeveloped","immature"]
+			'average':
+				array1 += ["round","well-rounded","shapely"]
+				if i.person.get_stat('age') == 'teen':
+					array1 += ["well-developed"]
+				elif i.person.get_stat('age') == 'child':
+					array1 += ["well-developed","impressively large"]
+			'big':
+				array1 += ["big","sizeable","plump","hefty"]
+				if i.person.get_stat('age') == 'teen':
+					array1 += ["well-developed","impressively large"]
+				elif i.person.get_stat('age') == 'child':
+					array1 += ["overgrown","surprisingly large"]
+			'huge':
+				array1 += ["huge","massive","fat","meaty","gigantic","enormous"]
+				if i.person.get_stat('age') == 'teen':
+					array1 += ["well-developed","surprisingly large"]
+				elif i.person.get_stat('age') == 'child':
+					array1 += ["overgrown","shockingly large"]
 		#bodytype descriptors
-		if mp.body_shape == 'jelly':
-			array1 += ["gelatinous","slimy","gooey"]
-		elif mp.body_shape == 'halfhorse':
-			array1 += ["equine","hairy"]
-			array2 += ["hindquarters"]
-		elif mp.body_shape == 'halfspider':
-			array1 += ["chitinous","spider"]
-			array2 = ["abdomen","butt"] if group.size() == 1 else ["abdomens","butts"]
-		elif mp.skin_coverage == 'full_body_fur':
-			array1 += ["furry","hairy"]
+		match i.person.get_stat('body_shape'):
+			'jelly':
+				array1 += ["gelatinous","slimy","gooey"]
+			'halfhorse':
+				array1 += ["equine","hairy"]
+				array2 += ["hindquarters"]
+			'halfspider':
+				array1 += ["chitinous","spider"]
+				array2 = ["abdomen","butt"] if group.size() == 1 else ["abdomens","butts"]
 		#beauty descriptors
-		if mp.charm >= 50:
-			if mp.age == 'child':
+		if i.person.get_stat('charm') >= 50:
+			if i.person.get_stat('age') == 'child':
 				array1 += ["cute","cute","flawless","perfect"]
-			elif mp.age == 'teen':
+			elif i.person.get_stat('age') == 'teen':
 				array1 += ["cute","beautiful","flawless","perfect"]
 			else:
 				array1 += ["seductive","beautiful","flawless","perfect"]
@@ -1270,41 +1267,40 @@ func hips(group):
 	for i in group:
 		array1 = []
 		array2 = ["hips"]
-		var mp = i.person.statlist.statlist
 		#size/age descriptors
-		if mp.skin_coverage.find('fur') >= 0:
+		if i.person.get_stat('skin_coverage').find('fur') >= 0:
 			array1 += ['fuzzy','fluffy','furry']
-		if mp.sex == 'male' && mp.ass_size in ['flat','small']:
+		if i.person.get_stat('sex') == 'male' && i.person.get_stat('ass_size') in ['flat','small']:
 			array1 += ["trim","slim"]
-		elif mp.ass_size == 'flat':
-			array1 += ["slim","slender","petite","tiny"]
-		elif mp.ass_size == 'small':
-			array1 += ["slim","slender","svelte","small"]
-		elif mp.ass_size == 'average':
-			array1 += ["curved","shapely"]
-			if mp.age == 'teen':
-				array1 += ["well-developed"]
-			elif mp.age == 'child':
-				array1 += ["well-developed","impressively thick"]
-		elif mp.ass_size == 'big':
-			array1 += ["sizeable","ample","wide","thick","curvaceous"]
-			if mp.age == 'teen':
-				array1 += ["well-developed","impressively thick"]
-			elif mp.age == 'child':
-				array1 += ["overgrown","surprisingly thick"]
-		elif mp.ass_size == 'huge':
-			array1 += ["huge","massive","enormous","wide","thick","curvaceous"]
-			if mp.age == 'teen':
-				array1 += ["well-developed","surprisingly thick"]
-			elif mp.age == 'child':
-				array1 += ["overgrown","shockingly thick"]
+		else:
+			match i.person.get_stat('ass_size'):
+				'flat':
+					array1 += ["slim","slender","petite","tiny"]
+				'small':
+					array1 += ["slim","slender","svelte","small"]
+				'average':
+					array1 += ["curved","shapely"]
+					if i.person.get_stat('age') == 'teen':
+						array1 += ["well-developed"]
+					elif i.person.get_stat('age') == 'child':
+						array1 += ["well-developed","impressively thick"]
+				'big':
+					array1 += ["sizeable","ample","wide","thick","curvaceous"]
+					if i.person.get_stat('age') == 'teen':
+						array1 += ["well-developed","impressively thick"]
+					elif i.person.get_stat('age') == 'child':
+						array1 += ["overgrown","surprisingly thick"]
+				'huge':
+					array1 += ["huge","massive","enormous","wide","thick","curvaceous"]
+					if i.person.get_stat('age') == 'teen':
+						array1 += ["well-developed","surprisingly thick"]
+					elif i.person.get_stat('age') == 'child':
+						array1 += ["overgrown","shockingly thick"]
 		#bodytype descriptors
-		if mp.body_shape == 'halfhorse':
+		if i.person.get_stat('body_shape') == 'halfhorse':
 			array1 += ["equine","hairy"]
-		elif mp.body_shape == 'halfsnake':
+		elif i.person.get_stat('body_shape') == 'halfsnake':
 			array1 += ["scaly"]
-		elif mp.skin_coverage == 'full_body_fur':
-			array1 += ["furry","hairy"]
 		#for multiple people, only incude shared
 		if marray1 == null:
 			marray1 = array1
@@ -1333,56 +1329,55 @@ func tits(group):
 	for i in group:
 		array1 = []
 		array2 = ["tits","boobs","breasts","chest"] if group.size() == 1 else ["tits","boobs","breasts","chests"]
-		var mp = i.person.statlist.statlist
 		#size/age descriptors
-		if mp.skin_coverage.find('fur') >= 0:
+		if i.person.get_stat('skin_coverage').find('fur') >= 0:
 			array1 += ['fuzzy','fluffy','furry']
-		if mp.tits_size == 'masculine':
-			array1 += ["muscular","strong","toned"]
-			array2 = ["chest","pecs"] if group.size() == 1 else ["chests","pecs"]
-		elif mp.tits_size == 'flat':
-			array1 += ["flat","small"]
-			if mp.age == 'teen':
-				array1 += ["tiny","developing","childlike"]
-			elif mp.age == 'child':
-				array1 += ["tiny","developing","undeveloped","immature"]
-		elif mp.tits_size == 'small':
-			array1 += ["small","compact"]
-			if mp.age == 'teen':
-				array1 += ["developing"]
-			elif mp.age == 'child':
-				array1 += ["undeveloped","immature"]
-		elif mp.tits_size == 'average':
-			array1 += ["round","well-rounded","shapely"]
-			if mp.age == 'teen':
-				array1 += ["well-developed"]
-			elif mp.age == 'child':
-				array1 += ["well-developed","impressively large"]
-		elif mp.tits_size == 'big':
-			array1 += ["big","sizeable","plump","hefty"]
-			if mp.age == 'teen':
-				array1 += ["well-developed","impressively large"]
-			elif mp.age == 'child':
-				array1 += ["overgrown","surprisingly large"]
-		elif mp.tits_size == 'huge':
-			array1 += ["huge","massive","fat","meaty","gigantic","enormous"]
-			if mp.age == 'teen':
-				array1 += ["well-developed","surprisingly large"]
-			elif mp.age == 'child':
-				array1 += ["overgrown","shockingly large"]
+		match i.person.get_stat('tits_size'):
+			'masculine':
+				array1 += ["muscular","strong","toned"]
+				array2 = ["chest","pecs"] if group.size() == 1 else ["chests","pecs"]
+			'flat':
+				array1 += ["flat","small"]
+				if i.person.get_stat('age') == 'teen':
+					array1 += ["tiny","developing","childlike"]
+				elif i.person.get_stat('age') == 'child':
+					array1 += ["tiny","developing","undeveloped","immature"]
+			'small':
+				array1 += ["small","compact"]
+				if i.person.get_stat('age') == 'teen':
+					array1 += ["developing"]
+				elif i.person.get_stat('age') == 'child':
+					array1 += ["undeveloped","immature"]
+			'average':
+				array1 += ["round","well-rounded","shapely"]
+				if i.person.get_stat('age') == 'teen':
+					array1 += ["well-developed"]
+				elif i.person.get_stat('age') == 'child':
+					array1 += ["well-developed","impressively large"]
+			'big':
+				array1 += ["big","sizeable","plump","hefty"]
+				if i.person.get_stat('age') == 'teen':
+					array1 += ["well-developed","impressively large"]
+				elif i.person.get_stat('age') == 'child':
+					array1 += ["overgrown","surprisingly large"]
+			'huge':
+				array1 += ["huge","massive","fat","meaty","gigantic","enormous"]
+				if i.person.get_stat('age') == 'teen':
+					array1 += ["well-developed","surprisingly large"]
+				elif i.person.get_stat('age') == 'child':
+					array1 += ["overgrown","shockingly large"]
 		#bodytype descriptors
-		if mp.body_shape == 'jelly':
+		if i.person.get_stat('body_shape') == 'jelly':
 			array1 += ["gelatinous","slimy","gooey"]
-		elif mp.skin_coverage == 'full_body_fur':
-			array1 += ["furry","fluffy"]
 		#beauty descriptors
-		if mp.charm >= 50:
-			if mp.age == 'child':
-				array1 += ["cute","cute","flawless","perfect"]
-			elif mp.age == 'teen':
-				array1 += ["cute","beautiful","flawless","perfect"]
-			else:
-				array1 += ["seductive","beautiful","flawless","perfect"]
+		if i.person.get_stat('charm') >= 50:
+			match i.person.get_stat('age'):
+				'child':
+					array1 += ["cute","cute","flawless","perfect"]
+				'teen':
+					array1 += ["cute","beautiful","flawless","perfect"]
+				_:
+					array1 += ["seductive","beautiful","flawless","perfect"]
 		#for multiple people, only incude shared
 		if marray1 == null:
 			marray1 = array1
@@ -1405,7 +1400,7 @@ func tits(group):
 func anus(member):
 	var array = []
 	var array2 = ["anus","asshole","butthole","rectum"]
-	if member.person.get_stat('anal_virgin') == true:
+	if member.person.get_stat('anal_virgin_lost') == null:
 		array += ["virgin","virginal","unused"]
 	if member.person.get_stat('age') != 'adult':
 		array += ["pink","youthful"]
@@ -1414,24 +1409,26 @@ func anus(member):
 	return getrandomfromarray(array) + " " + getrandomfromarray(array2)
 
 #register tickness
-func thickness(mp):
+func thickness(ch):
 	var thick = 0
-	if mp.tits_size == 'small':
-		thick += 1
-	elif mp.tits_size == 'average':
-		thick += 2
-	elif mp.tits_size == 'big':
-		thick += 3
-	elif mp.tits_size == 'huge':
-		thick += 4
-	if mp.ass_size == 'small':
-		thick += 1
-	elif mp.ass_size == 'average':
-		thick += 2
-	elif mp.ass_size == 'big':
-		thick += 3
-	elif mp.ass_size == 'huge':
-		thick += 4
+	match ch.get_size('tits_size'):
+		'small':
+			thick += 1
+		'average':
+			thick += 2
+		'big':
+			thick += 3
+		'huge':
+			thick += 4
+	match ch.get_size('ass_size'):
+		'small':
+			thick += 1
+		'average':
+			thick += 2
+		'big':
+			thick += 3
+		'huge':
+			thick += 4
 	return thick
 
 func getrandomfromarray(array):

@@ -140,19 +140,12 @@ var effects = {
 		type = 'temp_s',
 		target = 'target',
 		rem_event = [variables.TR_HIT, variables.TR_COMBAT_F, variables.TR_DMG],
-		stack = 1,
-		name = 'hide',
+		stack = 'hide',
 		tags = ['buff', 'hide'],
-		atomic = [],
-		buffs = [
-			{
-				icon = "res://assets/images/iconsskills/icon_eyes.png",
-				description = "TRAITEFFECTHIDE",
-				t_name = 'hide'
-			}
-		],
-		sub_effects = [],
+		buffs = ['b_hide'],
 	},
 }
 var atomic_effects = {}
 var buffs = {}
+
+var stacks = {}

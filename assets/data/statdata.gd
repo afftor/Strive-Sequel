@@ -1,199 +1,42 @@
 extends Node
 
 var statdata = {
+	#special - not in any of stats
+	hp = {
+		code = 'hp',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		type = 'misc',
+	},
+	mp = {
+		code = 'mp',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		type = 'misc',
+	},
+	price = { #not a real stat
+		code = 'price',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['numeric'],
+	},
+	slave_class = {
+		code = 'slave_class',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = [],
+		direct = true
+	},
 	base_exp = {
 		code = 'base_exp',
 		name = '',
 		descript = '',
 		baseicon = 'stat_exp',
 		type = 'misc',
-	},
-	
-	mastery_point_magic = {
-		code = 'mastery_point_magic',
-		name = '',
-		descript = '',
-		baseicon = 'stat_exp',
-		type = 'misc',
-		skip_process = true,
-		show_in_header = true
-	},
-	mastery_point_universal = {
-		code = 'mastery_point_universal',
-		name = '',
-		descript = '',
-		baseicon = 'stat_exp',
-		type = 'misc',
-		skip_process = true,
-		show_in_header = true
-	},
-	mastery_point_combat = {
-		code = 'mastery_point_combat',
-		name = '',
-		descript = '',
-		baseicon = 'stat_exp',
-		type = 'misc',
-		skip_process = true,
-		show_in_header = true
-	},
-	
-	growth_factor = {
-		code = 'growth_factor',
-		name = '',
-		descript = '',
-		baseicon = 'stat_gf',
-		type = 'factor',
-		abb = 'GRO',
-		direct = true
-	},
-	physics_factor = {
-		code = 'physics_factor',
-		name = '',
-		descript = '',
-		baseicon = 'stat_pf',
-		type = 'factor',
-		abb = 'PHY',
-		direct = true
-	},
-	wits_factor = {
-		code = 'wits_factor',
-		name = '',
-		descript = '',
-		baseicon = 'stat_wit',
-		type = 'factor',
-		abb = 'WIT',
-		direct = true
-	},
-	charm_factor = {
-		code = 'charm_factor',
-		name = '',
-		descript = '',
-		baseicon = 'stat_charm',
-		type = 'factor',
-		abb = 'CHA',
-		direct = true
-	},
-	physics_cap = {
-		code = 'physics_cap',
-		name = '',
-		descript = '',
-		baseicon = 'stat_pf',
-		type = 'cap',
-		abb = 'PHY',
-		custom_get = true
-	},
-	wits_cap = {
-		code = 'wits_cap',
-		name = '',
-		descript = '',
-		baseicon = 'stat_wit',
-		type = 'cap',
-		abb = 'WIT',
-		custom_get = true
-	},
-	charm_cap = {
-		code = 'charm_cap',
-		name = '',
-		descript = '',
-		baseicon = 'stat_charm',
-		type = 'cap',
-		abb = 'CHA',
-		custom_get = true
-	},
-	sexuals_factor = {
-		code = 'sexuals_factor',
-		name = '',
-		descript = '',
-		baseicon = 'stat_sf',
-		type = 'factor',
-		abb = 'SEX',
-		direct = true
-	},
-
-	magic_factor = {
-		code = 'magic_factor',
-		name = '',
-		descript = '',
-		baseicon = 'stat_mf',
-		type = 'factor',
-		abb = 'MAG',
-		direct = true
-	},
-
-	tame_factor = {
-		code = 'tame_factor',
-		name = '',
-		descript = '',
-		baseicon = 'stat_tf',
-		type = 'factor',
-		abb = 'TAM',
-		direct = true
-	},
-	timid_factor = {
-		code = 'timid_factor',
-		name = '',
-		descript = '',
-		baseicon = 'stat_df',
-		type = 'factor',
-		abb = 'TIM',
-		direct = true
-	},
-	physics = {
-		code = 'physics',
-		name = '',
-		descript = '',
-		baseicon = 'stat_bf',
-		type = 'primal',
-		direct = true,
-		custom_get = true
-	},
-	wits = {
-		code = 'wits',
-		name = '',
-		descript = '',
-		baseicon = 'stat_bf',
-		type = 'primal',
-		direct = true,
-		custom_get = true
-	},
-	charm = {
-		code = 'charm',
-		name = '',
-		descript = '',
-		baseicon = 'stat_bf',
-		type = 'primal',
-		direct = true,
-		custom_get = true
-	},
-	sexuals = {
-		code = 'sexuals',
-		name = '',
-		descript = '',
-		baseicon = 'stat_bf',
-		type = 'primal',
-		custom_get = true
-	},
-	fear = {
-		code = 'fear',
-		name = '',
-		descript = '',
-		baseicon = 'stat_fear',
-		type = 'mental_stat',
-	},
-	lust = {
-		code = 'lust',
-		name = '',
-		descript = '',
-		baseicon = 'stat_cf',
-		type = 'mental_stat',
-		direct = true
-	},
-	loyal = {
-		code = 'loyal',
-		name = '',
-		descript = '',
-		baseicon = 'stat_cf',
-		type = 'mental_stat',
 	},
 	loyalty = {
 		code = 'loyalty',
@@ -209,89 +52,6 @@ var statdata = {
 		baseicon = 'stat_cf',
 		type = 'mental_stat',
 	},
-	training_loyalty = {
-		code = 'training_loyalty',
-		name = '',
-		descript = '',
-		baseicon = 'stat_df',
-		type = '',
-	},
-	training_spirit = {
-		code = 'training_spirit',
-		name = '',
-		descript = '',
-		baseicon = 'stat_df',
-		type = '',
-	},
-	trainee_amount = {
-		code = 'trainee_amount',
-		name = '',
-		descript = '',
-		baseicon = 'stat_df',
-		type = '',
-	},
-	personality_bold = {
-		code = 'personality_bold',
-		name = '',
-		descript = '',
-		baseicon = 'stat_df',
-		type = '',
-	},
-	personality_kind = {
-		code = 'personality_kind',
-		name = '',
-		descript = '',
-		baseicon = 'stat_df',
-		type = '',
-	},
-	personality_shy = {
-		code = 'personality_shy',
-		name = '',
-		descript = '',
-		baseicon = 'stat_df',
-		type = '',
-	},
-	personality_serious = {
-		code = 'personality_serious',
-		name = '',
-		descript = '',
-		baseicon = 'stat_df',
-		type = '',
-	},
-	exp_gain_mod = {
-		code = 'exp_gain_mod',
-		percent = true,
-		name = '',
-		descript = '',
-		baseicon = 'stat_cf',
-		type = 'mental_stat',
-	},
-	manacost_mod = {
-		code = 'manacost_mod',
-		percent = true,
-		name = '',
-		descript = '',
-		baseicon = 'stat_cf',
-		type = 'mental_stat',
-	},
-	lusttick = {
-		code = 'lusttick',
-		name = '',
-		descript = '',
-		baseicon = 'stat_cf',
-		type = 'mental_stat',
-		default_bonus = 'add_part',
-		custom_get = true
-	},
-	food_consumption = {
-		code = 'food_consumption',
-		name = '',
-		descript = '',
-		baseicon = 'stat_food',
-		type = 'misc',
-		direct = true
-	},
-
 	food_hate = {
 		code = 'food_hate',
 		name = '',
@@ -306,14 +66,676 @@ var statdata = {
 		baseicon = 'food_love',
 		type = 'misc',
 	},
-
-	hp = {
-		code = 'hp',
+	#exterior
+	beard = {
+		code = 'beard',
+		tags = [],
+		default_bonus = 'set',
+		container = 'exterior',
+	},
+	balls_size = {
+		code = 'balls_size',
+		tags = [],
+		default_bonus = 'set',
+		container = 'exterior',
+	},
+	tits_size = {
+		code = 'tits_size',
+		tags = [],
+		default_bonus = 'set',
+		container = 'exterior',
+	},
+	ass_size = {
+		code = 'ass_size',
+		tags = [],
+		default_bonus = 'set',
+		container = 'exterior',
+	},
+	chin = {
+		code = 'chin',
+		tags = [],
+		default_bonus = 'set',
+		container = 'exterior',
+	},
+	penis_size = {
+		code = 'penis_size',
+		tags = [],
+		default_bonus = 'set',
+		container = 'exterior',
+	},
+	eye_tex = {
+		code = 'eye_tex',
+		tags = [],
+		default_bonus = 'set',
+		container = 'exterior',
+	},
+	eyebrows = {
+		code = 'eyebrows',
+		tags = [],
+		default_bonus = 'set',
+		container = 'exterior',
+	},
+	hair_base_length = {
+		code = 'hair_base_length',
+		tags = [],
+		default_bonus = 'set',
+		container = 'exterior',
+	},
+	hair_fringe_length = {
+		code = 'hair_fringe_length',
+		tags = [],
+		default_bonus = 'set',
+		container = 'exterior',
+	},
+	hair_back_length = {
+		code = 'hair_back_length',
+		tags = [],
+		default_bonus = 'set',
+		container = 'exterior',
+	},
+	hair_assist_length = {
+		code = 'hair_assist_length',
+		tags = [],
+		default_bonus = 'set',
+		container = 'exterior',
+	},
+	has_pussy = {
+		code = 'has_pussy',
+		tags = ['bool'],
+		default_bonus = 'set',
+		container = 'exterior',
+	},
+	has_womb = {
+		code = 'has_womb',
+		tags = ['bool'],
+		default_bonus = 'set',
+		container = 'exterior',
+	},
+	skin = {
+		code = 'skin',
+		tags = ['custom_setter', 'custom_getter'],
+		default_bonus = 'set',
+	},
+	pose = {
+		code = 'pose',
+		tags = ['custom_getter'],
+		default_bonus = 'set',
+	},
+	hair_length = {
+		code = 'hair_length',
+		tags = ['obsolete'],
+		default_bonus = 'set',
+	},
+	hair_color = {
+		code = 'hair_color',
+		tags = ['obsolete'],
+		default_bonus = 'set',
+	},
+	hair_style = {
+		code = 'hair_style',
+		tags = ['obsolete'],
+		default_bonus = 'set',
+	},
+	height = {
+		code = 'height',
+		tags = [],
+		default_bonus = 'set',
+	},
+	ears = {
+		code = 'ears',
+		tags = [],
+		default_bonus = 'set',
+	},
+	eye_color = {
+		code = 'eye_color',
+		tags = [],
+		default_bonus = 'set',
+	},
+	eye_shape = {
+		code = 'eye_shape',
+		tags = [],
+		default_bonus = 'set',
+	},
+	horns = {
+		code = 'horns',
+		tags = [],
+		default_bonus = 'set',
+	},
+	wings = {
+		code = 'wings',
+		tags = [],
+		default_bonus = 'set',
+	},
+	tail = {
+		code = 'tail',
+		tags = [],
+		default_bonus = 'set',
+	},
+	arms = {
+		code = 'arms',
+		tags = [],
+		default_bonus = 'set',
+	},
+	legs = {
+		code = 'legs',
+		tags = [],
+		default_bonus = 'set',
+	},
+	body_lower = {
+		code = 'body_lower',
+		tags = [],
+		default_bonus = 'set',
+	},
+	body_shape = {
+		code = 'body_shape',
+		tags = [],
+		default_bonus = 'set',
+	},
+	skin_coverage = {
+		code = 'skin_coverage',
+		tags = [],
+		default_bonus = 'set',
+	},
+	facial_hair = {
+		code = 'facial_hair',
+		tags = [],
+		default_bonus = 'set',
+	},
+	eyeshape = {
+		code = 'eyeshape',
+		tags = [],
+		default_bonus = 'set',
+	},
+	nose = {
+		code = 'nose',
+		tags = [],
+		default_bonus = 'set',
+	},
+	lips = {
+		code = 'lips',
+		tags = [],
+		default_bonus = 'set',
+	},
+	body_color_skin = {
+		code = 'body_color_skin',
+		tags = [],
+		default_bonus = 'set',
+	},
+	body_color_wings = {
+		code = 'body_color_wings',
+		tags = [],
+		default_bonus = 'set',
+	},
+	body_color_tail = {
+		code = 'body_color_tail',
+		tags = [],
+		default_bonus = 'set',
+	},
+	body_color_horns = {
+		code = 'body_color_horns',
+		tags = [],
+		default_bonus = 'set',
+	},
+	body_color_animal = {
+		code = 'body_color_animal',
+		tags = ['custom_getter'],
+		default_bonus = 'set',
+	},
+	body_color_ears = {
+		code = 'body_color_ears',
+		tags = ['custom_getter'],
+		default_bonus = 'set',
+	},
+	hair_base = {
+		code = 'hair_base',
+		tags = [],
+		default_bonus = 'set',
+	},
+	hair_assist = {
+		code = 'hair_assist',
+		tags = [],
+		default_bonus = 'set',
+	},
+	hair_back = {
+		code = 'hair_back',
+		tags = [],
+		default_bonus = 'set',
+	},
+	hair_fringe = {
+		code = 'hair_fringe',
+		tags = [],
+		default_bonus = 'set',
+	},
+	hair_base_color_1 = {
+		code = 'hair_base_color_1',
+		tags = [],
+		default_bonus = 'set',
+	},
+	hair_fringe_color_1 = {
+		code = 'hair_fringe_color_1',
+		tags = [],
+		default_bonus = 'set',
+	},
+	hair_back_color_1 = {
+		code = 'hair_back_color_1',
+		tags = [],
+		default_bonus = 'set',
+	},
+	hair_assist_color_1 = {
+		code = 'hair_assist_color_1',
+		tags = [],
+		default_bonus = 'set',
+	},
+	hair_base_color_2 = {
+		code = 'hair_base_color_2',
+		tags = [],
+		default_bonus = 'set',
+	},
+	hair_fringe_color_2 = {
+		code = 'hair_fringe_color_2',
+		tags = [],
+		default_bonus = 'set',
+	},
+	hair_back_color_2 = {
+		code = 'hair_back_color_2',
+		tags = [],
+		default_bonus = 'set',
+	},
+	hair_assist_color_2 = {
+		code = 'hair_assist_color_2',
+		tags = [],
+		default_bonus = 'set',
+	},
+	hair_facial_color = {
+		code = 'hair_facial_color',
+		tags = ['custom_getter'],
+		default_bonus = 'set',
+	},
+	#mastery_points
+	mastery_point_magic = {
+		code = 'mastery_point_magic',
+		name = '',
+		descript = '',
+		baseicon = 'stat_exp',
+		type = 'misc',
+		tags = ['show_in_header', 'integer', 'custom_bonuses'],
+		direct = false,
+	},
+	mastery_point_universal = {
+		code = 'mastery_point_universal',
+		name = '',
+		descript = '',
+		baseicon = 'stat_exp',
+		type = 'misc',
+		tags = ['show_in_header', 'integer', 'custom_bonuses'],
+		direct = false,
+	},
+	mastery_point_combat = {
+		code = 'mastery_point_combat',
+		name = '',
+		descript = '',
+		baseicon = 'stat_exp',
+		type = 'misc',
+		tags = ['show_in_header', 'integer', 'custom_bonuses'],
+		direct = false,
+	},
+	
+	enabled_masteries = {
+		code = 'enabled_masteries',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		default_bonus = 'array',
+		array_type = 'mastery',
+		direct = false,
+		tags = []
+	},
+	disabled_masteries = {
+		code = 'disabled_masteries',
+		name = '',
+		descript = '',
+		is_negative = true,
+		baseicon = 'food_love',
+		default_bonus = 'array',
+		array_type = 'mastery',
+		direct = false,
+		tags = []
+	},
+	#factors
+	growth_factor = {
+		code = 'growth_factor',
+		name = '',
+		descript = '',
+		baseicon = 'stat_gf',
+		type = 'factor',
+		abb = 'GRO',
+		tags = ['integer', 'cap_up', 'cap_low'],
+		cap_up = variables.maximum_factor_value,
+		cap_low = variables.minimum_factor_value,
+	},
+	physics_factor = {
+		code = 'physics_factor',
+		name = '',
+		descript = '',
+		baseicon = 'stat_pf',
+		type = 'factor',
+		abb = 'PHY',
+		tags = ['integer', 'cap_up', 'cap_low'],
+		cap_up = variables.maximum_factor_value,
+		cap_low = variables.minimum_factor_value,
+	},
+	wits_factor = {
+		code = 'wits_factor',
+		name = '',
+		descript = '',
+		baseicon = 'stat_wit',
+		type = 'factor',
+		abb = 'WIT',
+		tags = ['integer', 'cap_up', 'cap_low'],
+		cap_up = variables.maximum_factor_value,
+		cap_low = variables.minimum_factor_value,
+	},
+	charm_factor = {
+		code = 'charm_factor',
+		name = '',
+		descript = '',
+		baseicon = 'stat_charm',
+		type = 'factor',
+		abb = 'CHA',
+		tags = ['integer', 'cap_up', 'cap_low'],
+		cap_up = variables.maximum_factor_value,
+		cap_low = variables.minimum_factor_value,
+	},
+	sexuals_factor = {
+		code = 'sexuals_factor',
+		name = '',
+		descript = '',
+		baseicon = 'stat_sf',
+		type = 'factor',
+		abb = 'SEX',
+		tags = ['integer', 'cap_up', 'cap_low'],
+		cap_up = variables.maximum_factor_value,
+		cap_low = variables.minimum_factor_value,
+	},
+	magic_factor = {
+		code = 'magic_factor',
+		name = '',
+		descript = '',
+		baseicon = 'stat_mf',
+		type = 'factor',
+		abb = 'MAG',
+		tags = ['integer', 'cap_up', 'cap_low'],
+		cap_up = variables.maximum_factor_value,
+		cap_low = variables.minimum_factor_value,
+	},
+	tame_factor = {
+		code = 'tame_factor',
+		name = '',
+		descript = '',
+		baseicon = 'stat_tf',
+		type = 'factor',
+		abb = 'TAM',
+		tags = ['integer', 'cap_up', 'cap_low'],
+		cap_up = variables.maximum_factor_value,
+		cap_low = variables.minimum_factor_value,
+	},
+	authority_factor = {
+		code = 'authority_factor',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = 'factor',
+		abb = 'TIM',
+		tags = ['integer', 'cap_up', 'cap_low'],
+		cap_up = variables.maximum_factor_value,
+		cap_low = variables.minimum_factor_value,
+	},
+	#basestats caps
+	physics_cap = {
+		code = 'physics_cap',
+		name = '',
+		descript = '',
+		baseicon = 'stat_pf',
+		type = 'cap',
+		abb = 'PHY',
+		tags = ['integer'],
+		direct = false
+	},
+	wits_cap = {
+		code = 'wits_cap',
+		name = '',
+		descript = '',
+		baseicon = 'stat_wit',
+		type = 'cap',
+		abb = 'WIT',
+		tags = ['integer'],
+		direct = false
+	},
+	charm_cap = {
+		code = 'charm_cap',
+		name = '',
+		descript = '',
+		baseicon = 'stat_charm',
+		type = 'cap',
+		abb = 'CHA',
+		tags = ['integer'],
+		direct = false
+	},
+	#basestats
+	physics = {
+		code = 'physics',
+		name = '',
+		descript = '',
+		baseicon = 'stat_bf',
+		type = 'primal',
+		tags = ['integer', 'cap_up', 'cap_low'],
+		cap_up = 'physics_cap',
+		cap_low = 0,
+	},
+	wits = {
+		code = 'wits',
+		name = '',
+		descript = '',
+		baseicon = 'stat_bf',
+		type = 'primal',
+		tags = ['integer', 'cap_up', 'cap_low'],
+		cap_up = 'wits_cap',
+		cap_low = 0,
+	},
+	charm = {
+		code = 'charm',
+		name = '',
+		descript = '',
+		baseicon = 'stat_bf',
+		type = 'primal',
+		tags = ['integer', 'cap_up', 'cap_low'],
+		cap_up = 'charm_cap',
+		cap_low = 0,
+	},
+	sexuals = {
+		code = 'sexuals',
+		name = '',
+		descript = '',
+		baseicon = 'stat_bf',
+		type = 'primal',
+		tags = ['integer', 'custom_getter'],
+	},
+	physics_bonus = {
+		code = 'physics_bonus',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		direct = false,
+		tags = ['integer', 'custom_bonuses'],
+	},
+	wits_bonus = {
+		code = 'wits_bonus',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		direct = false,
+		tags = ['integer', 'custom_bonuses'],
+	},
+	charm_bonus = {
+		code = 'charm_bonus',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		direct = false,
+		tags = ['integer', 'custom_bonuses'],
+	},
+	sexuals_bonus = {
+		code = 'sexuals_bonus',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		direct = false,
+		tags = ['integer', 'custom_bonuses'],
+	},
+	#lust
+	lust = {
+		code = 'lust',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		tags = ['integer', 'cap_up', 'cap_low', 'custom_bonuses'],
+		cap_up = 'lustmax',
+		cap_low = 0,
+	},
+	lusttick = {
+		code = 'lusttick',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		default_bonus = 'add_part',
+		direct = false,
+		tags = ['numeric']
+	},
+	lustmax = {
+		code = 'lustmax',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		default_bonus = 'add_part',
+		direct = false,
+		tags = ['numeric', 'custom_bonuses']
+	},
+	#training
+	training_loyalty = {
+		code = 'training_loyalty',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = '',
+		direct = false,
+		tags = ['integer'],
+	},
+	training_spirit = {
+		code = 'training_spirit',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = '',
+		direct = false,
+		tags = ['integer'],
+	},
+	trainee_amount = {
+		code = 'trainee_amount',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = '',
+		direct = false,
+		tags = ['integer', 'custom_bonuses'],
+	},
+	#personality
+	personality_bold = {
+		code = 'personality_bold',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = '',
+		tags = ['integer']
+	},
+	personality_kind = {
+		code = 'personality_kind',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = '',
+		tags = ['integer']
+	},
+	personality_shy = { #virtual
+		code = 'personality_shy',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = '',
+		tags = ['integer']
+	},
+	personality_serious = { #virtual
+		code = 'personality_serious',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = '',
+		tags = ['integer']
+	},
+	old_personality = {
+		code = 'old_personality',
+		tags = [],
+		default_bonus = 'set',
+	},
+	personality = {#virtual
+		code = 'personality',
+		tags = ['custom_getter', 'custom_setter'],
+		default_bonus = 'set',
+	},
+	#mods
+	exp_gain_mod = {
+		code = 'exp_gain_mod',
+		percent = true,
+		direct = false,
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		tags = ['numeric'],
+	},
+	manacost_mod = {
+		code = 'manacost_mod',
+		percent = true,
+		direct = false,
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		tags = ['numeric'],
+	},
+	
+	#food
+	food_consumption = { #2fix
+		code = 'food_consumption',
+		name = '',
+		descript = '',
+		baseicon = 'stat_food',
+		type = 'misc',
+		tags = ['integer'],
+		direct = false,
+	},
+	#combat
+	taunt = {
+		code = 'taunt',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
-		direct = true
+		tags = [],
+		direct = false,
+		default_bonus = 'set'
 	},
 	hpmax = {
 		code = 'hpmax',
@@ -321,31 +743,9 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
-		custom_get = true
-	},
-	hpmaxmod = {
-		code = 'hpmaxmod',
-		name = '',
-		descript = '',
-		percent = true,
-		baseicon = 'food_love',
-		type = 'misc',
-	},
-	hpfactor = {
-		code = 'hpfactor',
-		name = '',
-		descript = '',
-		percent = true,
-		baseicon = 'food_love',
-		type = 'misc',
-	},
-	mp = {
-		code = 'mp',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		type = 'misc',
-		direct = true
+		tags = ['integer', 'custom_bonuses'],
+		direct = false,
+		custom_order = ['add2', 'add_part2', 'mul2', 'add', 'add_part', 'mul']
 	},
 	mpmax = {
 		code = 'mpmax',
@@ -353,60 +753,56 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
-		custom_get = true
+		tags = ['integer', 'custom_bonuses'],
+		direct = false,
+		custom_order = ['add2', 'add_part2', 'mul2', 'add', 'add_part', 'mul']
 	},
-	upgrade_points_total = {
-		code = 'upgrade_points_total',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		type = 'misc',
-		custom_get = true
-	},
-	mpmaxmod = {
-		code = 'mpmaxmod',
+	hp_reg = {
+		code = 'hp_reg',
 		name = '',
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
 		type = 'misc',
+		tags = ['integer'],
+		direct = false,
+		custom_order = ['add_part', 'mul', 'add']
 	},
-	hp_reg_mod = {
-		code = 'hp_reg_mod',
+	mp_reg = {
+		code = 'mp_reg',
 		name = '',
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
 		type = 'misc',
+		tags = ['integer', 'custom_bonuses'],
+		direct = false,
+		custom_order = ['add2','add_part', 'mul', 'add', 'mul2']
 	},
-	mp_reg_mod = {
-		code = 'mp_reg_mod',
-		name = '',
-		descript = '',
-		percent = true,
-		baseicon = 'food_love',
-		type = 'misc',
-	},
-	hp_reg_add = {
-		code = 'hp_reg_add',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		type = 'misc',
-	},
-	mp_reg_add = {
-		code = 'mp_reg_add',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		type = 'misc',
-	},
+#	hpmax_add_part = {
+#		code = 'hpmax_add_part',
+#		name = '',
+#		descript = '',
+#		percent = true,
+#		baseicon = 'food_love',
+#		type = 'misc',
+#	},
+#	hp_mul2 = {
+#		code = 'hp_mul2',
+#		name = '',
+#		descript = '',
+#		percent = true,
+#		baseicon = 'food_love',
+#		type = 'misc',
+#	},
 	hitrate = {
 		code = 'hitrate',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
+		tags = ['integer', 'custom_bonuses'],
+		direct = false,
 	},
 	evasion = {
 		code = 'evasion',
@@ -414,6 +810,8 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
+		tags = ['integer', 'custom_bonuses'],
+		direct = false,
 	},
 	speed = {
 		code = 'speed',
@@ -421,65 +819,58 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
-	},
-	energy = {
-		code = 'energy',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		type = 'misc',
-	},
-	fatigue = {
-		code = 'fatigue',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-	},
-	exhaustion = {
-		code = 'exhaustion',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
+		tags = ['integer', 'custom_bonuses'],
+		direct = false,
 	},
 	atk = {
 		code = 'atk',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
-		custom_get = true
+		tags = ['integer', 'custom_bonuses'],
+		direct = false,
 	},
 	matk = {
 		code = 'matk',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
-		custom_get = true
+		tags = ['integer', 'custom_bonuses'],
+		direct = false,
 	},
 	damagetype = {
 		code = 'damagetype',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
-		default_bonus = 'set'
+		default_bonus = 'set',
+		tags = [],
+		direct = false,
 	},
 	weapon_element = {
 		code = 'weapon_element',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
-		default_bonus = 'set'
+		default_bonus = 'set',
+		tags = [],
+		direct = false,
 	},
 	armor = {
 		code = 'armor',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		tags = ['integer', 'custom_bonuses'],
+		direct = false,
 	},
 	mdef = {
 		code = 'mdef',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		tags = ['integer', 'custom_bonuses'],
+		direct = false,
 	},
 	damage_reduction = {
 		code = 'damage_reduction',
@@ -487,19 +878,24 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
-		custom_get = true
+		tags = ['integer'],
+		direct = false,
 	},
 	armorpenetration = {
 		code = 'armorpenetration',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		tags = ['integer'],
+		direct = false,
 	},
 	critchance = {
 		code = 'critchance',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		tags = ['integer'],
+		direct = false,
 	},
 	critmod = {
 		code = 'critmod',
@@ -507,29 +903,182 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		tags = ['numeric'],
+		direct = false,
 	},
-	price = { #not a real stat
-		code = 'price',
+	#effects
+	burn_mod = {
+		code = 'burn_mod',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
-		hidden = false
+		percent = true,
+		tags = ['numeric'],
+		direct = false,
 	},
-	pricemod = { #not a real stat, stub for generating descriptions
-		code = 'pricemod',
-		name = 'STATPRICE',
+	bleed_mod = {
+		code = 'bleed_mod',
+		name = '',
 		descript = '',
 		baseicon = 'food_love',
 		percent = true,
-		default_bonus = 'add_part',
-		hidden = false
+		tags = ['numeric'],
+		direct = false,
 	},
-	price_add = { #not a real stat, stub for generating descriptions
-		code = 'price_add',
-		name = 'STATPRICE',
+	poison_mod = {
+		code = 'poison_mod',
+		name = '',
 		descript = '',
 		baseicon = 'food_love',
-		hidden = false
+		percent = true,
+		tags = ['numeric'],
+		direct = false,
+	},
+	burn_damage = {
+		code = 'burn_damage',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		percent = true,
+		default_bonus = 'mul',
+		tags = ['numeric', 'is_negative'],
+		direct = false,
+	},
+	bleed_damage = {
+		code = 'bleed_damage',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		percent = true,
+		default_bonus = 'mul',
+		tags = ['numeric', 'is_negative'],
+		direct = false,
+	},
+	poison_damage = {
+		code = 'poison_damage',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		percent = true,
+		default_bonus = 'mul',
+		tags = ['numeric', 'is_negative'],
+		direct = false,
+	},
+	darkflame_damage = {
+		code = 'darkflame_damage',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		percent = true,
+		default_bonus = 'mul',
+		tags = ['numeric', 'is_negative'],
+		direct = false,
+	},
+	#images
+	icon_image = {
+		code = 'icon_image',
+		tags = [],
+		default_bonus = 'set',
+	},
+	body_image = {
+		code = 'body_image',
+		tags = [],
+		default_bonus = 'set',
+	},
+	unique_variation = {
+		code = 'unique_variation',
+		tags = [],
+		default_bonus = 'set',
+	},
+	dynamic_portrait = {
+		code = 'dynamic_portrait',
+		tags = ['bool'],
+		default_bonus = 'set',
+	},
+	portrait_update = {
+		code = 'portrait_update',
+		tags = ['bool'],
+		default_bonus = 'set',
+	},
+	player_selected_icon = {
+		code = 'player_selected_icon',
+		tags = ['bool'],
+		default_bonus = 'set',
+	},
+	player_selected_body = {
+		code = 'player_selected_body',
+		tags = ['bool'],
+		default_bonus = 'set',
+	},
+	#other
+	is_hirable = {
+		code = 'is_hirable',
+		tags = ['bool'],
+		default_bonus = 'set',
+	},
+	hire_scene = {
+		code = 'hire_scene',
+		tags = [],
+		default_bonus = 'set',
+	},
+	unique = {
+		code = 'unique',
+		tags = [],
+		default_bonus = 'set',
+	},
+	surname = {
+		code = 'surname',
+		tags = [],
+		default_bonus = 'set',
+	},
+	nickname = {
+		code = 'nickname',
+		tags = [],
+		default_bonus = 'set',
+	},
+	bonus_description = {
+		code = 'bonus_description',
+		tags = [],
+		default_bonus = 'set',
+	},
+	race = {
+		code = 'race',
+		tags = [],
+		default_bonus = 'set',
+	},
+	racegroup = {
+		code = 'racegroup',
+		tags = [],
+		default_bonus = 'set',
+	},
+	age = {
+		code = 'age',
+		tags = [],
+		default_bonus = 'set',
+	},
+	sex = {
+		code = 'sex',
+		tags = [],
+		default_bonus = 'set',
+	},
+	masternoun = {
+		code = 'masternoun',
+		tags = [],
+		default_bonus = 'set',
+	},
+	name = {
+		code = 'name',
+		tags = ['custom_setter'],
+		default_bonus = 'set',
+	},
+	upgrade_points_total = {
+		code = 'upgrade_points_total',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		type = 'misc',
+		tags = ['integer', 'custom_bonuses'],
+		direct = false,
 	},
 	magic_find = {
 		code = 'magic_find',
@@ -537,43 +1086,72 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
+		tags = ['integer'],
+		direct = false,
+	},
+	consent = {
+		code = 'consent',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer', 'custom_getter'],
+	},
+	lastsexday = {
+		code = 'lastsexday',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer'],
+	},
+	asser = {
+		code = 'asser',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer'],
+	},
+	xpreward = {
+		code = 'xpreward',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer'],
+	},
+	loottable = {
+		code = 'loottable',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = [],
 	},
 	
-	physics_bonus = {
-		code = 'physics_bonus',
-		name = '',
+	pricemod = { #not a real stat, stub for generating descriptions
+		code = 'pricemod',
+		name = 'STATPRICE',
 		descript = '',
 		baseicon = 'food_love',
-		direct = true
+		percent = true,
+		default_bonus = 'add_part',
+		tags = [],
 	},
-	wits_bonus = {
-		code = 'wits_bonus',
-		name = '',
+	price_add = { #not a real stat, stub for generating descriptions
+		code = 'price_add',
+		name = 'STATPRICE',
 		descript = '',
 		baseicon = 'food_love',
-		direct = true
+		tags = [],
 	},
-	charm_bonus = {
-		code = 'charm_bonus',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		direct = true
-	},
-	sexuals_bonus = {
-		code = 'sexuals_bonus',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		direct = true
-	},
+	
+	#prod
 	productivity = {
 		code = 'productivity',
 		name = '',
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
+		tags = ['numeric', 'custom_bonuses'],
+		direct = false,
 	},
 	mod_collect = {
 		code = 'mod_collect',
@@ -581,7 +1159,9 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
+		tags = ['numeric'],
+		direct = false,
 	},
 	mod_build = {
 		code = 'mod_build',
@@ -589,7 +1169,9 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
+		tags = ['numeric'],
+		direct = false,
 	},
 	mod_hunt = {
 		code = 'mod_hunt',
@@ -597,7 +1179,9 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
+		tags = ['numeric'],
+		direct = false,
 	},
 	mod_fish = {
 		code = 'mod_fish',
@@ -605,7 +1189,9 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
+		tags = ['numeric'],
+		direct = false,
 	},
 	mod_cook = {
 		code = 'mod_cook',
@@ -613,7 +1199,9 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
+		tags = ['numeric'],
+		direct = false,
 	},
 	mod_smith = {
 		code = 'mod_smith',
@@ -621,7 +1209,9 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
+		tags = ['numeric'],
+		direct = false,
 	},
 	mod_tailor = {
 		code = 'mod_tailor',
@@ -629,7 +1219,9 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
+		tags = ['numeric'],
+		direct = false,
 	},
 	mod_alchemy = {
 		code = 'mod_alchemy',
@@ -637,7 +1229,9 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
+		tags = ['numeric'],
+		direct = false,
 	},
 	mod_farm = {
 		code = 'mod_farm',
@@ -645,7 +1239,9 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
+		tags = ['numeric'],
+		direct = false,
 	},
 	mod_pros = {
 		code = 'mod_pros',
@@ -653,7 +1249,9 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
+		tags = ['numeric'],
+		direct = false,
 	},
 	mod_service = {
 		code = 'mod_service',
@@ -661,7 +1259,9 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
+		tags = ['numeric'],
+		direct = false,
 	},
 	mod_waitress = {
 		code = 'mod_waitress',
@@ -669,7 +1269,9 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
+		tags = ['numeric'],
+		direct = false,
 	},
 	mod_hostess = {
 		code = 'mod_hostess',
@@ -677,7 +1279,9 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
+		tags = ['numeric'],
+		direct = false,
 	},
 	mod_dancer = {
 		code = 'mod_dancer',
@@ -685,7 +1289,9 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
+		tags = ['numeric'],
+		direct = false,
 	},
 	mod_strip = {
 		code = 'mod_strip',
@@ -693,15 +1299,208 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
+		tags = ['numeric'],
+		direct = false,
 	},
+	
 	base_task_crit_chance = { # for char
 		code = 'base_task_crit_chance',
 		name = '',
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		tags = ['numeric'],
+		direct = false,
 	},
+	#challenges
+	chg_strength = {
+		code = 'chg_strength',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer', 'cap_up'],
+		cap_up = 'chg_strength_max',
+	},
+	chg_strength_max = {
+		code = 'chg_strength_max',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer'],
+		direct = false,
+	},
+	chg_dexterity = {
+		code = 'chg_dexterity',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer', 'cap_up'],
+		cap_up = 'chg_dexterity_max',
+	},
+	chg_dexterity_max = {
+		code = 'chg_dexterity_max',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer'],
+		direct = false,
+	},
+	chg_wisdom = {
+		code = 'chg_wisdom',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer', 'cap_up'],
+		cap_up = 'chg_wisdom_max',
+	},
+	chg_wisdom_max = {
+		code = 'chg_wisdom_max',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer'],
+		direct = false,
+	},
+	chg_persuasion = {
+		code = 'chg_persuasion',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer', 'cap_up'],
+		cap_up = 'chg_persuasion_max',
+	},
+	chg_persuasion_max = {
+		code = 'chg_persuasion_max',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer'],
+		direct = false,
+	},
+	#sex
+	penis_virgin_lost = {
+		code = 'penis_virgin_lost',
+		tags = [],
+		default_bonus = 'set',
+	},
+	vaginal_virgin_lost = {
+		code = 'vaginal_virgin_lost',
+		tags = [],
+		default_bonus = 'set',
+	},
+	anal_virgin_lost = {
+		code = 'anal_virgin_lost',
+		tags = [],
+		default_bonus = 'set',
+	},
+	mouth_virgin_lost = {
+		code = 'mouth_virgin_lost',
+		tags = [],
+		default_bonus = 'set',
+	},
+	penis_virgin = {
+		code = 'penis_virgin',
+		tags = ['obsolete'],
+		default_bonus = 'set',
+	},
+	vaginal_virgin = {
+		code = 'vaginal_virgin_lost',
+		tags = ['obsolete'],
+		default_bonus = 'set',
+	},
+	anal_virgin = {
+		code = 'anal_virgin_lost',
+		tags = ['obsolete'],
+		default_bonus = 'set',
+	},
+	mouth_virgin = {
+		code = 'mouth_virgin_lost',
+		tags = ['obsolete'],
+		default_bonus = 'set',
+	},
+	penis_type = {
+		code = 'penis_type',
+		tags = [],
+		default_bonus = 'set',
+	},
+	vagina = {
+		code = 'vagina',
+		tags = [],
+		default_bonus = 'set',
+	},
+	multiple_tits = {
+		code = 'multiple_tits',
+		tags = ['integer'],
+		default_bonus = 'set',
+	},
+	multiple_tits_developed = {
+		code = 'multiple_tits_developed',
+		tags = ['bool'],
+		default_bonus = 'set',
+	},
+	lactation = {
+		code = 'lactation',
+		tags = ['bool'],
+		default_bonus = 'set',
+	},
+	#pregnancy
+	pregnancy_fertility = {
+		code = 'pregnancy_fertility',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['numeric'],
+		container = 'pregnancy'
+	},
+	pregnancy_duration = {
+		code = 'pregnancy_duration',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer'],
+		container = 'pregnancy'
+	},
+	pregnancy_baby = {
+		code = 'pregnancy_baby',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = [],
+		default_bonus = 'set',
+		container = 'pregnancy'
+	},
+	pregnancy_reported = {
+		code = 'pregnancy_reported',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['bool'],
+		default_bonus = 'set',
+		container = 'pregnancy'
+	},
+	#marriage
+	was_proposed = {
+		code = 'was_proposed',
+		tags = ['bool'],
+		default_bonus = 'set',
+	},
+	had_cons_sex_with_mc = {
+		code = 'had_cons_sex_with_mc',
+		tags = ['bool'],
+		default_bonus = 'set',
+	},
+	had_forced_sex_with_mc = {
+		code = 'had_forced_sex_with_mc',
+		tags = ['bool'],
+		default_bonus = 'set',
+	},
+	agreed_to_marry = {
+		code = 'agreed_to_marry',
+		tags = ['bool'],
+		default_bonus = 'set',
+	},
+	#items
 	task_crit_chance = { # for item desc
 		code = 'task_crit_chance',
 		name = '',
@@ -718,113 +1517,13 @@ var statdata = {
 		baseicon = 'food_love',
 		skip_process = true
 	},
-	consent = {
-		code = 'consent',
-		name = '',
-		descript = '',
-		direct = true,
-		baseicon = 'food_love',
-	},
-	xpreward = {
-		code = 'xpreward',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-	},
-
-	damagemod = { #possibly obsolete
+	damagemod = { #for items
 		code = 'damagemod',
 		name = '',
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
 		skip_process = true
-	},
-	#container stats
-	resists = {
-		code = 'resists',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		custom_get = true
-	},
-	status_resists = {
-		code = 'status_resists',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		custom_get = true
-	},
-	resist_damage = {
-		code = 'resist_damage',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		custom_get = true
-	},
-	damage_mods = {
-		code = 'damage_mods',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		custom_get = true
-	},
-	burn_mod = {
-		code = 'burn_mod',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		percent = true,
-	},
-	bleed_mod = {
-		code = 'bleed_mod',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		percent = true,
-	},
-	poison_mod = {
-		code = 'poison_mod',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		percent = true,
-	},
-	burn_damage = {
-		code = 'burn_damage',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		percent = true,
-		negative = true,
-		default_bonus = 'mul'
-	},
-	bleed_damage = {
-		code = 'bleed_damage',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		percent = true,
-		negative = true,
-		default_bonus = 'mul'
-	},
-	poison_damage = {
-		code = 'poison_damage',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		percent = true,
-		negative = true,
-		default_bonus = 'mul'
-	},
-	darkflame_damage = {
-		code = 'darkflame_damage',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		percent = true,
-		negative = true,
-		default_bonus = 'mul'
 	},
 	enchant_capacity_mod = {
 		code = 'enchant_capacity_mod',
@@ -839,82 +1538,6 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
-	},
-	slave_class = {
-		code = 'slave_class',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-	},
-	
-	chg_strength = {
-		code = 'chg_strength',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		direct = true,
-	},
-	chg_strength_max = {
-		code = 'chg_strength_max',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-	},
-	chg_dexterity = {
-		code = 'chg_dexterity',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		direct = true,
-	},
-	chg_dexterity_max = {
-		code = 'chg_dexterity_max',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-	},
-	chg_wisdom = {
-		code = 'chg_wisdom',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		direct = true,
-	},
-	chg_wisdom_max = {
-		code = 'chg_wisdom_max',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-	},
-	chg_persuasion = {
-		code = 'chg_persuasion',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		direct = true,
-	},
-	chg_persuasion_max = {
-		code = 'chg_persuasion_max',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-	},
-	enabled_masteries = {
-		code = 'enabled_masteries',
-		name = '',
-		descript = '',
-		baseicon = 'food_love',
-		default_bonus = 'array',
-		array_type = 'mastery'
-	},
-	disabled_masteries = {
-		code = 'disabled_masteries',
-		name = '',
-		descript = '',
-		is_negative = true,
-		baseicon = 'food_love',
-		default_bonus = 'array',
-		array_type = 'mastery'
 	},
 }
 
@@ -939,58 +1562,103 @@ var worktoolnames = {
 }
 
 func _ready():
-	for i in variables.resists_list:
-		statdata['resist_'+i] = {
-				code = "resist_"+i,
+	for i in Skilldata.masteries: #this is not technicaly a stat. added for a proper building of descriptions and a proper binding of processing
+		statdata['mastery_' + i] = {
+				code = "mastery_" + i,
+				tags = ['show_in_header', 'integer'],
+				direct = false,
+				container = 'masteries',
 			}
-	for i in variables.status_list:
-		statdata['resist_'+i] = {
-				code = "resist_"+i,
+		statdata['mastery_' + i + '_enable'] = {
+				code = "mastery_" + i + '_enable',
+				tags = ['bool'],
+				direct = false,
+				container = 'masteries',
+				default_bonus = 'set',
 			}
-		statdata['resist_status_'+i] = {
-				code = "resist_status_"+i,
+	for st in Statlist_init.tattoo:
+		statdata[st] = {
+				code = st,
+				tags = [],
+				default_bonus = 'set',
+				container = 'tattoo',
 			}
-	for i in variables.resists_damage_list:
-		statdata['resist_'+i] = {
-				code = "resist_"+i,
+	for st in Statlist_init.armor_color:
+		statdata[st] = {
+				code = st,
+				tags = [],
+				default_bonus = 'set',
+				container = 'armor_color',
 			}
-		statdata['resist_damage_'+i] = {
-				code = "resist_damage_"+i,
+	for st in Statlist_init.piercing:
+		statdata[st] = {
+				code = st,
+				tags = [],
+				default_bonus = 'set',
+				container = 'piercing',
 			}
-	for i in variables.damage_mods_list:
-		statdata['damage_mod_'+i] = {
-				code = "damage_mod_"+i,
-				percent = true,
+	for st in Statlist_init.metrics:
+		statdata[st] = {
+				code = st,
+				tags = ['integer'],
+				container = 'metrics',
 			}
-		statdata['manacost_mod_'+i] = {
-				code = "manacost_mod_"+i,
-				percent = true,
+	statdata.metrics_partners.tags = ['array']
+	statdata.metrics_partners.default_bonus = 'append'
+	for st in Statlist_init.sex_skills:
+		statdata[st] = {
+				code = st,
+				tags = ['integer'],
+				container = 'sex_skills',
 			}
-	for i in Skilldata.masteries:
-		statdata['mastery_'+i] = {
-				code = "mastery_"+i,
-				skip_process = true,
-				show_in_header = true
+	for st in Statlist_init.sexexp: #this is not technicaly a stat - but a messy log. added for a sanity sake
+		statdata[st] = {
+				code = st,
+				tags = [],
+				default_bonus = 'set',
+				container = 'sexexp',
 			}
-#		statdata['enable_mastery_'+i] = {
-#				code = "enable_mastery_"+i,
-#				default_bonus = 'set',
-#				skip_process = true
-#			}
 	
+	for st in Statlist_init.resists:
+		statdata[st] = {
+				code = st,
+				tags = ['integer'],
+				direct = false,
+				container = 'resists',
+			}
+	for st in Statlist_init.damage_mods:
+		statdata[st] = {
+				code = st,
+				tags = ['numeric'],
+				percent = true,
+				direct = false,
+				container = 'damage_mods',
+			}
+	for st in Statlist_init.manacost_mods:
+		statdata[st] = {
+				code = st,
+				tags = ['numeric'],
+				percent = true,
+				direct = false,
+				container = 'manacost_mods',
+			}
 	
 	for val in statdata.values():
-		if !val.has('percent'): val.percent = false
-		if !val.has('default_bonus'): val.default_bonus = 'add'
-		if !val.has('direct'): val.direct = false
-		if !val.has('custom_get'): val.custom_get = false
-		if !val.has('skip_process'): val.skip_process = false
-		if !val.has('is_negative'): val.is_negative = false
-		if !val.has('hidden'): val.hidden = false
-		if !val.has('show_in_header'): val.show_in_header = false
+		if !val.has('percent'): 
+			val.percent = false
+		if !val.has('default_bonus'): 
+			val.default_bonus = 'add'
+		if !val.has('direct'): 
+			val.direct = true
 
-#	for st in statdata:
-#		print("'%s':" % st)
-#		print("\t %s" % statdata[st].default_bonus)
-#		if statdata[st].percent: print("\t percent conversion")
-#	print('\n')
+
+func check_compatibility_operant(stat, operant):
+	match operant:
+		'set':
+			return true
+		'add', 'mul', 'add_part':
+			return statdata[stat].tags.has('integer') or statdata[stat].tags.has('numeric')
+		'append', 'remove':
+			return statdata[stat].tags.has('array')
+		_:
+			return false

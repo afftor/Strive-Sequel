@@ -13348,7 +13348,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	METRICS_PARTNERS_ONE = "[He] 一直只有一个 {color=yellow|single partner} 。 ",
 	METRICS_PARTNERS_NONE = "到目前为止 [he] 似乎没有与任何人发生性行为... ",
 	METRICS_IMPREGS = "[He] 已怀孕 {color=yellow|%d} 次，最终导致孩子出生 {color=yellow|%d} 次。 ",
-	METRICS_PEGNANCIES = "[He] 使人怀孕 {color=yellow|%d} 次。 ",
+	METRICS_PREGNANCIES = "[He] 使人怀孕 {color=yellow|%d} 次。 ",
 	METRICS_VIRGINITY_YOU = "[He] 因 {color=yellow|you} 失去阴道童贞。 ",
 	METRICS_VIRGINITY_OTHER = "[He] 因 {color=yellow|%s} 失去阴道童贞。 ",
 	METRICS_ANAL_VIRGINITY_YOU = "[His] 初次肛交是与 {color=yellow|you} 进行的。 ",

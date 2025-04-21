@@ -483,7 +483,7 @@ func setup_player_test():
 	
 	character.set_stat('height', 'average')
 	character.xp_module.base_exp = 1500
-	character.add_stat('abil_exp', 1500)
+#	character.add_stat('abil_exp', 1500)
 	character.add_stat('resist_normal', 50)
 	character.add_stat('damage_reduction', 50)
 	character.add_stat('mastery_point_universal', 90)

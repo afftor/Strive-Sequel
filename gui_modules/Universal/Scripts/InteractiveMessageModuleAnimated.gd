@@ -669,29 +669,30 @@ func inspect_active_character():
 	input_handler.ShowSlavePanel(input_handler.active_character)
 
 func inspect_character_child():
-	input_handler.ShowSlavePanel(ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby])
+	input_handler.ShowSlavePanel(ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy_baby')])
 
 func keepbaby():
 	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
-	var person = ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby]
-	person.statlist.get_random_name(true)
+	var person = ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy_baby')]
+	person.get_random_name(true)
 #	input_handler.active_character.get_stat('pregnancy', true).baby = null
 	node.open(self, 'set_baby_name', person.get_stat('name'))
 	
 
 func removebaby():
-	ResourceScripts.game_party.add_fate(input_handler.active_character.get_stat('pregnancy').baby, tr("KEEPNOT"))
+	ResourceScripts.game_party.add_fate(input_handler.active_character.get_stat('pregnancy_baby'), tr("KEEPNOT"))
 #	if (int(ResourceScripts.game_globals.date) % input_handler.globalsettings.autosave_frequency == 0) and int(ResourceScripts.game_globals.hour) == 1:
 #		globals.autosave(true)
 	close()
-	ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby].is_active = false
-	ResourceScripts.game_party.babies.erase(input_handler.active_character.get_stat('pregnancy').baby)
-	input_handler.active_character.get_stat('pregnancy', true).baby = null
+	ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy_baby')].is_active = false
+	ResourceScripts.game_party.babies.erase(input_handler.active_character.get_stat('pregnancy_baby'))
+	input_handler.active_character.set_stat('pregnancy_baby', null)
+
 
 func set_baby_name(text):
-	var person = ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby]
+	var person = ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy_baby')]
 #	person.baby_transform()
-	input_handler.active_character.get_stat('pregnancy', true).baby = null
+	input_handler.active_character.set_stat('pregnancy_baby', null)
 	person.set_stat('name', text)
 	person.setup_as_heir()
 	ResourceScripts.game_party.add_slave(person, true)
@@ -936,7 +937,7 @@ func handle_characters_sprites(scene):
 		for i in ResourceScripts.game_party.characters: 
 			var person = ResourceScripts.game_party.characters[i]
 			if scene_char != null && person.get_stat("unique") == scene_char && person.has_work_rule('nudity') && worlddata.pregen_character_sprites[scene_char].has("nude"):
-				var non_body = person.statlist.statlist.body_image.replace("_body", "")
+				var non_body = person.get_stat('body_image').replace("_body", "")
 	#			var image = input_handler.loadimage(images.sprites[non_body], 'shades')
 #				var image = images.get_sprite(worlddata.pregen_character_sprites[scene_char].nude.path.replace("_body", ""))
 				var image = images.get_sprite(non_body)
@@ -951,7 +952,7 @@ func handle_characters_sprites(scene):
 		for i in ResourceScripts.game_party.characters: 
 			var person = ResourceScripts.game_party.characters[i]
 			if scene_char != null && person.get_stat("unique") == scene_char && person.has_work_rule('nudity') && worlddata.pregen_character_sprites[scene_char].has("nude"):
-				var non_body = person.statlist.statlist.body_image.replace("_body", "")
+				var non_body = person.get_stat('body_image').replace("_body", "")
 	#			var image = input_handler.loadimage(images.sprites[non_body], 'shades')
 #				var image = images.sprites[worlddata.pregen_character_sprites[scene_char].nude.path.replace("_body", "")]
 				var image = images.get_sprite(non_body)
@@ -981,7 +982,7 @@ func handle_characters_sprites(scene):
 			var person = ResourceScripts.game_party.characters[i]
 			if person.get_stat("unique") == scene.unique_character:
 				$CharacterImage.show()
-				var non_body = person.statlist.statlist.body_image.replace("_body", "")
+				var non_body = person.get_stat('body_image').replace("_body", "")
 				var image = input_handler.loadimage(images.sprites[non_body], 'shades') #needs testing, idk if this is still in use
 				if $CharacterImage.texture != image:
 					ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, type_trans_time)
@@ -998,7 +999,7 @@ func handle_characters_sprites(scene):
 			var person = ResourceScripts.game_party.characters[i]
 			if person.get_stat("unique") == scene.unique_character2:
 				$CharacterImage2.show()
-				var non_body = person.statlist.statlist.body_image.replace("_body", "")
+				var non_body = person.get_stat('body_image').replace("_body", "")
 				var image = input_handler.loadimage(images.sprites[non_body], 'shades') #the same as above
 				if $CharacterImage2.texture != image:
 					ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2, type_trans_time)

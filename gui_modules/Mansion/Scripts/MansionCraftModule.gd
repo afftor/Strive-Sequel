@@ -559,24 +559,7 @@ func selectmaterial(material, part, cost):
 	
 	checkcreatingitem(itemtemplate)
 	var itemdata = Items.itemlist[itemtemplate]
-	for i in material.parts[part]:
-		var endvalue = material.parts[part][i]
-		if endvalue is Array:
-			for k in endvalue:
-				text += '\n' + Effectdata.effects[k].descript
-		elif endvalue is String:
-			text += '\n' + statdata.statdata[i].name + ': ' + endvalue
-		else:
-			if itemdata.basemods.has(i):
-				endvalue = endvalue * float(itemdata.basemods[i])
-			if itemdata.itemtype == 'armor':
-				endvalue = float(endvalue) / 2
-			if int(endvalue) != 0:
-				if  statdata.statdata[i].percent:
-					endvalue *= 100
-				text += '\n' + statdata.statdata[i].name + ': ' + str(endvalue)
-				if  statdata.statdata[i].percent:
-					text += '%'
+	text += globals.build_desc_for_bonusstats(material.parts[part])
 			
 #	get_node("MaterialSetupPanel/ModularSetup/" + chosenpartbutton.name + 'Descript').bbcode_text = text
 

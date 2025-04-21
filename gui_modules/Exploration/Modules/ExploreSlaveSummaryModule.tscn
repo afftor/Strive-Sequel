@@ -361,7 +361,7 @@ margin_bottom = 32.0
 custom_fonts/font = ExtResource( 3 )
 text = "25"
 
-[node name="timid_factor" type="TextureRect" parent="factors" groups=["hide_master"]]
+[node name="authority_factor" type="TextureRect" parent="factors" groups=["hide_master"]]
 margin_top = 245.0
 margin_right = 50.0
 margin_bottom = 280.0
@@ -373,7 +373,7 @@ texture = ExtResource( 17 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="factors/timid_factor"]
+[node name="Label" type="Label" parent="factors/authority_factor"]
 margin_left = 69.2385
 margin_right = 229.239
 margin_bottom = 32.0

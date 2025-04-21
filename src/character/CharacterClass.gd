@@ -2,19 +2,19 @@ extends Reference
 #class_name Slave
 # warning-ignore-all:return_value_discarded
 
+var dyn_stats = ResourceScripts.scriptdict.ch_statlist_dynamic.new()
 var statlist = ResourceScripts.scriptdict.ch_statlist.new()
 var xp_module = ResourceScripts.scriptdict.ch_leveling.new()
 var equipment = ResourceScripts.scriptdict.ch_equipment.new()
 var skills = ResourceScripts.scriptdict.ch_skills.new()
 var travel = ResourceScripts.scriptdict.ch_travel.new()
-var effects = ResourceScripts.scriptdict.ch_effects.new()
+#var effects = ResourceScripts.scriptdict.ch_effects.new()
 var food = ResourceScripts.scriptdict.ch_food.new()
 var training = ResourceScripts.scriptdict.ch_training.new()
 var displaynode = null
 var ai = null
 
 var id
-#var is_person = true
 var is_active = true
 var is_players_character = false
 var is_known_to_player = false #for purpose of private parts
@@ -27,8 +27,7 @@ var shield = 0 setget set_shield
 var defeated = false
 var combatgroup = ''
 var position = 0 # Not sure it's used or not. Make new field just in case
-var combat_position = 2 setget , get_combat_positon
-var taunt = null
+var combat_position = 0 setget, get_combat_positon
 var selectedskill = 'attack'
 
 var previous_location
@@ -43,6 +42,7 @@ var src = ""
 func _init(source = null):
 	src = source
 	rebuild_parents()
+	input_handler.connect("fighter_changed", self, 'reset_rebuild')
 
 
 func get_combat_positon():
@@ -50,26 +50,33 @@ func get_combat_positon():
 
 func rebuild_parents():
 	statlist.parent = weakref(self)
+	dyn_stats.parent = weakref(self)
 	xp_module.parent = weakref(self)
 	equipment.parent = weakref(self)
 	skills.parent = weakref(self)
 	travel.parent = weakref(self)
-	effects.parent = weakref(self)
+#	effects.parent = weakref(self)
 	food.parent = weakref(self)
 	training.parent = weakref(self)
 
 
-func clean_references():
-	pass
-#	statlist.parent = null
-#	xp_module.parent = null
-#	equipment.parent = null
-#	skills.parent = null
-#	travel.parent = null
-#	effects.parent = null
-#	food.parent = null
-
 #component functions tunneling
+func get_timestamp():
+	return dyn_stats.get_timestamp()
+
+func reset_rebuild():
+#	if (statlist.statlist.unique == 'cali'):
+#		print('+')
+	dyn_stats.reset_rebuild()
+#	dyn_stats.generate_data(variables.DYN_STATS_FULL, true)
+	if displaynode != null:
+		displaynode.rebuildbuffs()
+
+
+func setup_etb():
+	dyn_stats.setup_etb()
+
+
 func base_exp_set(value):
 	xp_module.base_exp = value
 
@@ -78,60 +85,32 @@ func swap_alternate_exterior():
 	statlist.swap_alternate_exterior()
 
 
-func get_stat(statname, ref = false):
-	if statname in ['hp', 'mp', 'shield', 'taunt', 'combatgroup']:
+func get_stat_value_data(statname):
+	var st_data = statdata.statdata[statname]
+	if st_data.direct:
+		var res = {
+			base_value = statlist.get_stat(statname),
+			result = 0,
+			bonuses = {},
+		}
+		res.result = res.base_value
+		return res
+	else:
+		return dyn_stats.get_stat_data(statname)
+
+
+func get_stat(statname):
+	if statname in ['hp', 'mp', 'shield', 'combatgroup']:
 		return get(statname)
-	if statname in ['mastery_point_magic', 'mastery_point_universal', 'mastery_point_combat']:
-		var st = statname.trim_prefix('mastery_point_')
-		var tres = xp_module.mastery_points[st]
-		if st == 'universal':
-			if !has_status('slave'):
-				tres += min(get_stat('growth_factor') - 1, get_prof_number())
-		return tres
-	if statname.begins_with('mastery_'):
-		return xp_module.get_mastery_level(statname.trim_prefix('mastery_'))
+	if statname.begins_with('mastery_') and !statname.begins_with('mastery_point'):
+		return dyn_stats.get_mastery_level(statname.trim_prefix('mastery_'))
 	if statname == 'base_exp':
 		return xp_module.base_exp
-	if statname == 'pose':
-		var st = get_stat('personality')
-		if st == 'neutral':
-			st = get_stat('old_personality')
-		match st:
-			'shy':
-				match get_stat('sex'):
-					'male':
-						return 'pose5'
-					'female', 'futa':
-						return 'shy'
-#				return 'shy'
-			'kind':
-				match get_stat('sex'):
-					'male':
-						return 'pose5'
-					'female', 'futa':
-						return 'kind'
-#				return 'kind'
-			'serious':
-				match get_stat('sex'):
-					'male':
-						return 'pose6'
-					'female', 'futa':
-						return 'pose4'
-#				return 'pose4'
-			'bold':
-				match get_stat('sex'):
-					'male':
-						return 'pose6'
-					'female', 'futa':
-						return 'bold'
-#				return 'bold'
-		
-		return 'default' #temporal stub
 	if statname == 'counters':
-		return effects.counters
+		return dyn_stats.counters
 	if statname == 'price':
 		return calculate_price()
-	if statname.begins_with('food_') and !(statname in ['food_consumption']):
+	if statname.begins_with('food_') and statname != 'food_consumption':
 		return food.get(statname)
 	if statname in ['spirit', 'loyalty']:
 		return training.get(statname)
@@ -177,19 +156,11 @@ func get_stat(statname, ref = false):
 				if !GeneratorData.transforms[statname].has(res):
 					res = null
 				return res
-	return statlist.get_stat(statname, ref)
-
-
-func get_stat_nobonus(statname, ref = false):
-	if statname in ['hp', 'mp', 'shield', 'taunt']:
-		return get(statname)
-	if statname == 'base_exp':
-		return xp_module.base_exp
-	if statname == 'counters':
-		return effects.counters
-	if statname.begins_with('food_') and !(statname in ['food_consumption']):
-		return food.get(statname)
-	return statlist.get_stat_nobonus(statname, ref)
+	var st_data = statdata.statdata[statname]
+	if st_data.direct:
+		return statlist.get_stat(statname)
+	else:
+		return dyn_stats.get_stat(statname)
 
 
 func set_stat(stat, value):
@@ -199,75 +170,64 @@ func set_stat(stat, value):
 	if stat == 'base_exp':
 		xp_module.base_exp = value
 		return
-	if stat == 'disabled_masteries':
-		for st in value:
-			xp_module.disable_mastery(st)
-	if stat == 'enabled_masteries':
-		for st in value:
-			xp_module.enable_mastery(st)
-	if stat.begins_with('food_') and !(stat in ['food_consumption']):
+	if stat.begins_with('food_') and stat != 'food_consumption':
 		food.set(stat, value)
 		return
-	statlist.set_stat(stat, value)
-	recheck_effect_tag('recheck_stats')
+	var st_data = statdata.statdata[stat]
+	if st_data.direct:
+		statlist.update_stat(stat, value, 'set')
+	else:
+#		print ("warning - direct setting of dynamic stat %s" % stat)
+		dyn_stats.set_default_value(stat, value)
+	dyn_stats.reset_rebuild()
+
 
 func add_stat_bonuses(ls:Dictionary):
-	statlist.add_stat_bonuses(ls)
-	recheck_effect_tag('recheck_stats')
+	dyn_stats.add_stat_bonuses(ls)
+	dyn_stats.reset_rebuild()
 
-func remove_stat_bonuses(ls:Dictionary):
-	statlist.remove_stat_bonuses(ls)
-	recheck_effect_tag('recheck_stats')
 
-func add_bonus(b_rec:String, value, revert = false):
-	statlist.add_bonus(b_rec, value, revert)
-	recheck_effect_tag('recheck_stats')
-
-func add_stat(statname, value, revert = false):
+func add_stat(statname, value): #only oneshots
 	if statname in ['hp', 'mp', 'shield']:
 		set(statname, get(statname) + value)
-	if statname in ['mastery_point_magic', 'mastery_point_universal', 'mastery_point_combat']:
-		var st = statname.trim_prefix('mastery_point_')
-		if revert:
-			xp_module.mastery_points[st] -= value
-			if xp_module.mastery_points[st] < 0 and st != 'universal':
-				xp_module.mastery_points.universal += xp_module.mastery_points[st]
-				xp_module.mastery_points[st] = 0
-		else:
-			xp_module.mastery_points[st] += value
-	elif statname.begins_with('mastery_'):
-		if revert:
-			xp_module.remove_mastery_point_passive(statname.trim_prefix('mastery_'), value)
-		else:
-			xp_module.add_mastery_point_passive(statname.trim_prefix('mastery_'), value)
 	elif statname == 'base_exp':
 		if value > 0:
 			xp_module.base_exp += value * get_stat('exp_gain_mod')
 		else: 
 			xp_module.base_exp += value
 	elif statname == 'base_exp_direct':
-			xp_module.base_exp += value
-	elif statname == 'abil_exp': #obsolete
-		if value > 0:
-			var mod = get_stat('exp_gain_mod')
-			if has_status('intelligence'):
-				mod += 0.4
-			xp_module.abil_exp += value * mod
-		else:
-			xp_module.abil_exp += value
-			
+		xp_module.base_exp += value
 	elif statname in ['spirit', 'loyalty']:
-		training.add_stat(statname, value, revert)
-	else: statlist.add_stat(statname, value, revert)
-	recheck_effect_tag('recheck_stats')
+		training.add_stat(statname, value)
+	else: 
+		var st_data = statdata.statdata[statname]
+		if st_data.direct:
+			statlist.update_stat(statname, value, 'add')
+		else:
+#			print ("warning - direct setting of dynamic stat %s" % statname)
+			dyn_stats.add_stat_bonuses({statname + '_add': value})
+	dyn_stats.reset_rebuild()
 
-func mul_stat(statname, value, revert = false):
-	statlist.mul_stat(statname, value, revert)
-	recheck_effect_tag('recheck_stats')
 
-func add_part_stat(statname, value, revert = false):
-	statlist.add_part_stat(statname, value, revert)
-	recheck_effect_tag('recheck_stats')
+func mul_stat(statname, value): #only oneshots
+	var st_data = statdata.statdata[statname]
+	if st_data.direct:
+		statlist.update_stat(statname, value, 'mul')
+	else:
+#		print ("warning - direct setting of dynamic stat %s" % statname)
+		dyn_stats.add_stat_bonuses({statname + '_mul': value})
+	dyn_stats.reset_rebuild()
+
+
+func add_part_stat(statname, value): #only oneshots
+	var st_data = statdata.statdata[statname]
+	if st_data.direct:
+		statlist.update_stat(statname, value, 'mul')
+	else:
+#		print ("warning - direct setting of dynamic stat %s" % statname)
+		dyn_stats.add_stat_bonuses({statname + '_add_part': value})
+	dyn_stats.reset_rebuild()
+
 
 func change_personality_stats(stat, init_value, flag = false):
 	return statlist.change_personality_stats(stat, init_value, flag)
@@ -281,10 +241,10 @@ func get_weapon_animation():
 func get_weapon_sound():
 	return equipment.get_weapon_sound()
 
-func get_damage_mod(skill:Dictionary):
+func get_damage_mod(skill):
 	return skills.get_damage_mod(skill)
 
-func get_value_damage_mod(skill_v:Dictionary):
+func get_value_damage_mod(skill_v):
 	return skills.get_value_damage_mod(skill_v)
 
 func remove_negative_sex_trait(code):
@@ -304,19 +264,31 @@ func create_s_trait_select(trait):
 
 func fill_masternoun():
 	statlist.fill_masternoun()
+
 #questionable
 func is_controllable(): #alias
 	return is_combatant()
 
+func is_avaliable():
+	if has_status('no_job'):
+		return false
+	if get_work() == 'disabled':
+		return false
+	if get_work() == 'Assignment':
+		return false
+	
+	return true
+
 func has_profession(profession):
 	if profession in ['pet','petbeast']:
-		if xp_module.professions.has('pet') || xp_module.professions.has('petbeast'):
+		if dyn_stats.professions.has('pet') || dyn_stats.professions.has('petbeast'):
 			return true
-	return xp_module.professions.has(profession)
+	return dyn_stats.professions.has(profession)
 
 func check_trait(trait):
-	if is_master() and trait.begins_with('loyalty_'): return true
-	return statlist.check_trait(trait)
+	if is_master() and trait.begins_with('loyalty_'): 
+		return true
+	return (dyn_stats.traits_real.has(trait) or statlist.sex_traits.has(trait) or statlist.negative_sex_traits.has(trait))
 
 func predict_preg_time():
 	return statlist.predict_preg_time()
@@ -324,12 +296,6 @@ func predict_preg_time():
 func get_class_icon():
 	if get_stat('slave_class') in ['master', 'heir', 'spouse', 'servant', 'servant_notax']:
 		return images.get_icon(ResourceScripts.descriptions.bodypartsdata.slave_class[get_stat('slave_class')].icon)
-#	elif get_stat('slave_spec') != null:
-#		var upgrade_data = Traitdata.slave_profs[get_stat('slave_spec')]
-#		if upgrade_data.icon_small is String:
-#			return load(upgrade_data.icon_small)
-#		else:
-#			return upgrade_data.icon_small
 	elif has_status('training_success'):
 		var tmp = get_traits_by_tag('training_success')
 		var upgrade_data = Traitdata.traits[tmp[0]]
@@ -340,6 +306,16 @@ func get_class_icon():
 	else:
 		return images.get_icon(ResourceScripts.descriptions.bodypartsdata.slave_class[get_stat('slave_class')].icon)
 #end to add
+func process_chardata(chardata, unique = false):
+	statlist.process_chardata(chardata)
+	dyn_stats.process_chardata(chardata)
+	if chardata.has('slave_class'): 
+		set_slave_category(chardata.slave_class)
+	training.process_chardata(chardata)
+	food.process_chardata(chardata)
+	skills.setup_skills(chardata)
+	tags = chardata.tags.duplicate()
+
 
 func generate_ea_character(gendata, desired_class):
 	var res = desired_class
@@ -347,7 +323,7 @@ func generate_ea_character(gendata, desired_class):
 	for i in worlddata.easter_egg_characters.values():
 		var temprace = gendata.race
 		if races.race_groups.has(temprace):
-			temprace = races.race_groups[temprace][randi()%races.race_groups[temprace].size()]
+			temprace = input_handler.random_from_array(races.race_groups[temprace])
 		if ResourceScripts.game_world.easter_egg_characters_acquired.has(i.name) == false && (temprace == 'random' || gendata.race == i.race):
 			var char_exists = false
 			for k in characters_pool.characters.values():
@@ -356,24 +332,32 @@ func generate_ea_character(gendata, desired_class):
 					break
 			if char_exists == false:
 				array.append(i)
-	if array.size() != 0:
-		var chardata = array[randi()%array.size()]
+	if !array.empty():
+		var chardata = input_handler.random_from_array(array)
 		create(chardata.race, chardata.sex, chardata.age)
-		statlist.process_chardata(chardata, true)
-		tags = chardata.tags.duplicate()
+		process_chardata(chardata, true)
 		res = chardata.class_category
 	return res
 
-func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0, trait_blacklist = []):
-	statlist.generate_random_character_from_data(races, desired_class, adjust_difficulty, trait_blacklist)
+
+func generate_random_character_from_data(races_l, desired_class = null, adjust_difficulty = 0, trait_blacklist = []):
+	statlist.generate_random_character_from_data(races_l, desired_class, adjust_difficulty)
+	dyn_stats.get_random_traits(trait_blacklist)
 	xp_module.set_service_boost()
-	recheck_effect_tag('recheck_stats')
+
 
 func get_class_list(category, person):
-	return xp_module.get_class_list(category, person)
+	return dyn_stats.get_class_list(category, person)
+
 
 func generate_simple_fighter(tempname, setup_ai = true):
 	var data = Enemydata.enemies[tempname]
+	for i in variables.fighter_stats_list:
+		if !data.has(i):
+			set_stat(i, 0)
+		else:
+			set_stat(i, data[i])
+	npc_reference = data.code
 	statlist.generate_simple_fighter(data)
 	skills.setup_skills(data)
 	if setup_ai:
@@ -385,33 +369,29 @@ func generate_simple_fighter(tempname, setup_ai = true):
 			fill_ai(data.ai)
 		ai.set_obj(self)
 	else:
-		skills.fill_combatskills()
+		skills.fix_skillpanels()
 	if data.has('tags') and data.tags.has('boss'):
 		globals.char_roll_data.uniq = true
-	recheck_effect_tag('recheck_stats')
 
 
 func generate_predescribed_character(data):
 	create(data.race, data.sex, data.age)
-	statlist.process_chardata(data, true)
-	food.process_chardata(data)
-	xp_module.process_chardata(data) #for testing
-	tags = data.tags.duplicate()
-	skills.setup_skills(data)
+	process_chardata(data, true)
+	skills.fix_skillpanels()
 	if data.has('service_boosters'):
 		xp_module.set_service_boost(data.service_boosters)
 	else:
 		xp_module.set_service_boost()
-	recheck_effect_tag('recheck_stats')
 
 
 func turn_into_unique(code):
 	var data = worlddata.pregen_characters[code]
 	statlist.update_chardata(data)
+	dyn_stats.process_chardata(data)
 	food.process_chardata(data)
-	xp_module.process_chardata(data) #for testing
 	tags = data.tags.duplicate() #or not
 	skills.setup_skills(data)
+	skills.fix_skillpanels()
 	if data.has('service_boosters'):
 		xp_module.set_service_boost(data.service_boosters)
 	else:
@@ -419,7 +399,6 @@ func turn_into_unique(code):
 	if data.has('training_disposition'):
 		process_disposition_data(data.training_disposition, true)
 	update_prt()
-	recheck_effect_tag('recheck_stats')
 	globals.emit_signal("slave_added")
 
 
@@ -427,10 +406,15 @@ func create(temp_race, temp_gender, temp_age):
 	id = characters_pool.add_char(self)
 	learn_c_skill('attack')
 	statlist.create(temp_race, temp_gender, temp_age)
+	add_trait('core_trait')
+	add_trait('untrained')
+	
+	hp = get_stat('hpmax')
+	mp = get_stat('mpmax')
+	
 	food.create()
 	training.build_stored_reqs()
-	add_trait('core_trait')
-	recheck_effect_tag('recheck_stats')
+
 
 func fill_boosters():
 	xp_module.set_service_boost()
@@ -439,14 +423,51 @@ func make_random_portrait():
 	statlist.make_random_portrait()
 
 func setup_baby(mother, father):
-	statlist.setup_baby(mother, father)
+	var temp_race
+	var race1 = mother.get_stat('race')
+	var race2 = father.get_stat('race')
+	if randf() >= 0.5:
+		temp_race = race1
+	else:
+		temp_race = race2
+	var furryfix = false
+	if race2.find('Beastkin') >= 0 && race1.find("Beastkin") < 0:
+		temp_race = race2.replace("Beastkin", "Halfkin")
+		furryfix = true
+	elif race1.find('Beastkin') >= 0 && race2.find("Beastkin") < 0:
+		temp_race = race1.replace("Beastkin", "Halfkin")
+		furryfix = true
+	create(temp_race, 'random', 'teen')
+	
+	for i in variables.inheritedstats:
+		if furryfix and i == 'skin_coverage':
+			continue
+		if randf() >= 0.5 || mother.has_profession("breeder"):
+			set_stat(i, mother.get_stat(i))
+		else:
+			set_stat(i, father.get_stat(i))
+	
+	for tr in mother.get_traits_by_tag('positive') + father.get_traits_by_tag('positive'):
+		if randf() <= 0.8 or mother.has_profession("breeder") or father.has_profession("breeder"):
+			add_trait(tr)
+	for tr in mother.get_traits_by_tag('negative') + father.get_traits_by_tag('negative'):
+		if mother.has_profession("breeder") or father.has_profession("breeder"):
+			if randf() <= 0.1:
+				add_trait(tr)
+		elif randf() <= 0.5:
+			add_trait(tr)
+	
+	baby_transform(mother)
+	mother.set_stat('pregnancy_baby', id)
+	mother.set_stat('pregnancy_duration', variables.pregduration)
+	characters_pool.move_to_baby(id)
+	ResourceScripts.game_party.connectrelatives(id, mother.id, "mother")
+	ResourceScripts.game_party.connectrelatives(id, father.id, "father")
 	xp_module.set_service_boost()
 
 func get_baby_or_null():
-	var tmp = get_stat('pregnancy')
-	if tmp == null: return null
-	if !tmp.has('baby'): return null
-	return tmp.baby
+	var tmp = get_stat('pregnancy_baby')
+	return tmp
 
 func get_short_name():
 	return statlist.get_short_name()
@@ -472,47 +493,56 @@ func unequip_all(hard = true):
 	set_stat('portrait_update', true)
 	equipment.clear_equip(hard)
 
+
 func upgrade_mastery(school, force_universal = false):
-	xp_module.upgrade_mastery(school, force_universal)
+	dyn_stats.upgrade_mastery(school, force_universal)
 
 func can_upgrade_mastery(school, force_universal = false):
-	return xp_module.can_upgrade_mastery(school, force_universal)
+	return dyn_stats.can_upgrade_mastery(school, force_universal)
 
 func upgrade_mastery_cost(school, force_universal = false):
-	return xp_module.upgrade_mastery_cost(school, force_universal)
+	return dyn_stats.upgrade_mastery_cost(school, force_universal)
 
 func unlock_class(prof, satisfy_progress_reqs = false):
-	xp_module.unlock_class(prof, satisfy_progress_reqs)
+	dyn_stats.unlock_class(prof, satisfy_progress_reqs)
 
 func remove_class(prof):
-	xp_module.remove_class(prof)
+	dyn_stats.remove_class(prof)
 
 func remove_all_classes():
-	xp_module.remove_all_classes()
+	dyn_stats.remove_all_classes()
 
 func reset_mastery():
-	xp_module.reset_mastery()
+	dyn_stats.reset_mastery()
 
 func add_trait(tr_code):
-	statlist.add_trait(tr_code)
+	dyn_stats.add_trait(tr_code)
+
+func can_add_trait(tr_code):
+	return dyn_stats.can_add_trait(tr_code)
 
 func remove_trait(tr_code):
-	statlist.remove_trait(tr_code)
+	dyn_stats.remove_trait(tr_code)
 
 func get_traits_by_tag(tag):
-	return statlist.get_traits_by_tag(tag)
+	return dyn_stats.get_traits_by_tag(tag)
 
 func get_random_trait_tag(tag):
-	return statlist.get_random_trait_tag(tag)
+	return dyn_stats.get_random_trait_tag(tag)
 
 func get_traits_by_arg(arg, value):
-	return statlist.get_traits_by_arg(arg, value)
+	return dyn_stats.get_traits_by_arg(arg, value)
 
 func get_random_traits():
-	statlist.get_random_traits()
+	dyn_stats.get_random_traits()
 
-func get_price_for_trait(tr_id):
-	return statlist.get_price_for_trait(tr_id)
+
+func get_body_upgrades():
+	dyn_stats.get_body_upgrades()
+
+
+func has_body_upgrade(id):
+	return dyn_stats.has_body_upgrade(id)
 
 
 func can_learn_skill(skill_id):
@@ -525,14 +555,14 @@ func can_learn_skill(skill_id):
 		return false
 	return true
 
-func learn_skill(skill, free = false):
-	skills.learn_skill(skill, free)
+func learn_skill(skill):
+	skills.learn_skill(skill)
 
-func learn_c_skill(skill, free = false):
-	skills.learn_c_skill(skill, free)
+func learn_c_skill(skill):
+	skills.learn_c_skill(skill)
 
-func learn_e_skill(skill, free = false):
-	skills.learn_e_skill(skill, free)
+func learn_e_skill(skill):
+	skills.learn_e_skill(skill)
 
 func unlearn_skill(skill):
 	skills.unlearn_skill(skill)
@@ -651,8 +681,8 @@ func get_skill_by_tag(tg):
 	if res == null: print ("ERROR in skill config - no default skill")
 	return res
 
-func baby_transform():
-	statlist.baby_transform()
+func baby_transform(mother):
+	statlist.baby_transform(mother)
 
 
 func setup_as_heir():
@@ -687,91 +717,71 @@ func get_weapon_element():
 		return tmp
 	return get_stat('damagetype')
 
-func has_temp_effect(temp_name):
-	return effects.has_temp_effect(temp_name)
-
-func find_temp_effect(eff_code):
-	return effects.find_temp_effect(eff_code)
-
 func find_temp_effect_tag(eff_tag):
-	return effects.find_temp_effect_tag(eff_tag)
+	if dyn_stats.rebuild < variables.DYN_STATS_PREAREA:
+		dyn_stats.generate_data(variables.DYN_STATS_PREAREA)
+	return dyn_stats.find_temp_effect_tag(eff_tag)
 
-func find_eff_by_trait(trait_code):
-	return effects.find_eff_by_trait(trait_code)
 
-func find_eff_by_tattoo(slot, code):
-	return effects.find_eff_by_tattoo(slot, code)
+func apply_effect_code(eff_code, args = {}):
+	if npc_reference == 'combat_global': 
+		return
+	dyn_stats.add_stored_effect(eff_code, args)
 
-func find_eff_by_item(item_id):
-	return effects.find_eff_by_item(item_id)
 
-func apply_temp_effect(eff_id):
-	effects.apply_temp_effect(eff_id)
+func apply_status(args):
+	if npc_reference == 'combat_global': 
+		return
+	if !args.has('chance'):
+		args.chance = 1.0
+	dyn_stats.apply_status(args)
 
-func recheck_effect_tag(tg):
-	effects.recheck_effect_tag(tg)
-
-func apply_effect(eff_id):
-	if npc_reference == 'combat_global': return
-	effects.apply_effect(eff_id)
-
-func clean_broken_effects():
-	effects.clean_broken_effects()
-
-func get_static_effect_by_code(code):
-	effects.get_static_effect_by_code(code)
-
-func remove_static_effect_by_code(code):
-	effects.remove_static_effect_by_code(code)
 
 func remove_effect(eff_id):
-	effects.remove_effect(eff_id)
+	dyn_stats.remove_effect(eff_id)
 
-func remove_temp_effect(eff_id):#warning!! this mathod can remove effect that is not applied to character
-	effects.remove_temp_effect(eff_id)
-
-func remove_all_temp_effects():
-	effects.remove_all_temp_effects()
 
 func remove_temp_effect_tag(eff_tag):#function for non-direct temps removing, like heal or dispel
-	effects.remove_temp_effect_tag(eff_tag)
+	dyn_stats.remove_temp_effect_tag(eff_tag)
 
 func remove_all_temp_effects_tag(eff_tag):#function for non-direct temps removing, like heal or dispel
-	effects.remove_all_temp_effects_tag(eff_tag)
+	dyn_stats.remove_all_temp_effects_tag(eff_tag)
 
-func clean_effects():#clean effects before deleting character
-	effects.clean_effects()
 
-func process_event(ev, skill = null):
-	effects.process_event(ev, skill)
+func process_event(ev, data = {}):
+	dyn_stats.process_event(ev, data)
 
 func get_all_buffs():
-	return effects.get_all_buffs() #statlist.get_traits_buffs() + effects.get_all_buffs()
+	if dyn_stats.rebuild < variables.DYN_STATS_FULL:
+		dyn_stats.generate_data()
+	return dyn_stats.buffs
 
 func get_combat_buffs():
 	var tres = get_all_buffs()
 	var res = []
 	
 	for b in tres:
-		if b.template.has('mansion_only'): continue
-		res.push_front(b)
+		if b.tags.has('combat_only'): 
+			res.push_front(b)
 	return res
 
 func get_mansion_buffs():
 	var tres = get_all_buffs()
 	var res = []
 	for b in tres:
-		if b.template.has('combat_only'): continue
-		res.push_front(b)
+		if b.tags.has('mansion_only'): 
+			res.push_front(b)
 	return res
 
 func can_act():
-	if is_koed(): return false
+	if is_koed(): 
+		return false
 	return !has_status('disable')
 
 func can_evade():
 	var res = can_act()
-	if has_status('defend'): res = false
+	if has_status('defend'): 
+		res = false
 	return res
 
 func can_use_skill(skill):
@@ -779,12 +789,14 @@ func can_use_skill(skill):
 	if skill.type == 'auto': return false
 	if is_players_character and skill.has('reqs') and !checkreqs(skill.reqs): return false
 	if skills.combat_cooldowns.has(skill.code): return false
-	if has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'): return false
-	if has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'): return false
+	if has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'):
+		 return false
+	if has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'):
+		 return false
 	return true
 
 func has_status(status):
-	var res = effects.has_status(status) or statlist.has_status(status) or xp_module.has_status(status) or tags.has(status)
+	var res = dyn_stats.has_status(status) or statlist.has_status(status) or tags.has(status)
 	return res
 
 func is_combatant():
@@ -817,7 +829,7 @@ func is_unique():
 func add_rare_trait():
 	if ResourceScripts.game_globals.date < 2: return
 	tags.push_back('rare')
-	statlist.add_rare_trait()
+	dyn_stats.add_rare_trait()
 	#tutorial part here
 	#input_handler.ActivateTutorial('rares')
 
@@ -826,14 +838,29 @@ func can_be_damaged(skill):
 		if has_status('warded') and !has_status('ward'):
 			return false
 	match skill.ability_type:
-		'skill': return !has_status('banish')
-		'spell': return !has_status('void')
+		'skill': 
+			return !has_status('banish')
+		'spell': 
+			return !has_status('void')
 
 func restore_skill_charge(code):
 	skills.restore_skill_charge(code)
 
+
 func set_slave_category(new_class):
-	statlist.set_slave_category(new_class)
+	var oldclass = get_stat('slave_class')
+	if oldclass == new_class:
+		return
+	if oldclass != '':
+		remove_trait(oldclass)
+	add_trait(new_class)
+	dyn_stats.generate_data(variables.DYN_STATS_PREAREA)
+	statlist.statlist.slave_class = new_class
+	if has_status('trained'):
+		finish_training(true)
+	else:
+		reset_training()
+
 
 func use_social_skill(s_code, target):
 	skills.use_social_skill(s_code, target, null)
@@ -884,7 +911,10 @@ func quest_day_tick():
 	xp_module.quest_day_tick()
 
 func get_prof_number():
-	return xp_module.get_prof_number()
+	return dyn_stats.get_prof_number()
+
+func get_professions():
+	return dyn_stats.get_professions()
 
 
 func use_mansion_item(item):
@@ -916,10 +946,25 @@ func get_stored_body_image():
 	return statlist.get_stored_body_image()
 
 func get_stat_data():
-	return statlist.get_stat_data()
+	var res = {}
+	res['skill_stat'] = 'physics'
+	res['spell_stat'] = 'wits'
+	res['skill_atk'] = 'atk'
+	res['spell_atk'] = 'matk'
+	#to add trait checks
+	return res
+
+func access_sexexp():
+	return statlist.access_sexexp()
 
 func get_all_sex_traits():
 	return statlist.get_all_sex_traits()
+
+func get_sex_traits():
+	return statlist.get_sex_traits()
+
+func get_sex_skills():
+	return statlist.get_sex_skills()
 
 func get_negative_sex_traits():
 	return statlist.get_negative_sex_traits()
@@ -933,11 +978,20 @@ func make_trait_known(trait):
 func get_gear(slot):
 	return equipment.get_gear(slot)
 
+func get_equiped_items():
+	return equipment.get_equiped_items()
+
 func get_location():
 	return travel.location
 
 func get_tattoo(slot):
-	return statlist.tattoo[slot]
+	return statlist.get_tattoo(slot)
+
+func get_tattoos():
+	return statlist.get_tattoos()
+
+func get_filled_tattoos():
+	return statlist.get_filled_tattoos()
 
 func can_add_tattoo(slot, code):
 	return statlist.can_add_tattoo(slot, code)
@@ -971,23 +1025,23 @@ func act_prepared():
 
 
 func get_upgrade_points():
-	return statlist.get_upgrade_points()
+	return dyn_stats.get_upgrade_points()
 
 
 func add_upgrade(upg): #unsafe adding
-	statlist.add_upgrade(upg)
+	dyn_stats.add_upgrade(upg)
 
 
 func can_add_upgrade(upg):
-	return statlist.can_add_upgrade(upg)
+	return dyn_stats.can_add_upgrade(upg)
 
 
 func remove_upgrade(upg):
-	statlist.remove_upgrade(upg)
+	dyn_stats.remove_upgrade(upg)
 
 
 func recheck_upgrades():
-	statlist.recheck_upgrades()
+	dyn_stats.recheck_upgrades()
 
 
 func recheck_equip():
@@ -1047,20 +1101,16 @@ func process_training_metrics(value):
 func serialize():
 	var res = inst2dict(self)
 	res.statlist = inst2dict(statlist)
+	res.dyn_stats = inst2dict(dyn_stats)
 	res.xp_module = inst2dict(xp_module)
 	res.equipment = inst2dict(equipment)
 	res.skills = inst2dict(skills)
 	res.travel = inst2dict(travel)
-	res.effects = inst2dict(effects)
 	res.food = inst2dict(food)
 	res.training = inst2dict(training)
 	return res
 
 func fix_serialization():
-#	statlist = dict2inst(statlist)
-	var tmp = statlist.duplicate()
-	statlist = ResourceScripts.scriptdict.ch_statlist.new()
-	statlist.deserialize(tmp)
 	if xp_module is Dictionary:
 		xp_module = dict2inst(xp_module)
 	if equipment is Dictionary:
@@ -1069,13 +1119,17 @@ func fix_serialization():
 		skills = dict2inst(skills)
 	if travel is Dictionary:
 		travel = dict2inst(travel)
-	if effects is Dictionary:
-		effects = dict2inst(effects)
 	if food is Dictionary:
 		food = dict2inst(food)
 	if training is Dictionary:
 		training = dict2inst(training)
+	var tmp = statlist.duplicate()
+	statlist = ResourceScripts.scriptdict.ch_statlist.new()
+	var tmp2 = dyn_stats.duplicate()
+	dyn_stats = ResourceScripts.scriptdict.ch_statlist_dynamic.new()
 	rebuild_parents()
+	statlist.deserialize(tmp)
+	dyn_stats.deserialize(tmp2)
 	xp_module.fix_rules()
 	travel.fix_infinite_travel()
 
@@ -1083,6 +1137,7 @@ func fix_serialization():
 
 func fix_serialization_postload():
 	statlist.fix_serialize()
+	dyn_stats.fix_serialize()
 	xp_module.fix_serialize()
 	
 	repair_skill_panels()
@@ -1097,9 +1152,20 @@ func fix_import():
 func repair_skill_panels():
 	skills.repair_skill_panels()
 
-#some AI-related functions
-func need_heal():
-	return statlist.need_heal()
+#AI-related stuff
+func need_heal(): #stub. borderlines are subject to tuning
+	if has_status('banish'): 
+		return -1.0
+	var rate = hp * 1.0 / get_stat('hpmax')
+	if rate < 0.2: 
+		return 1.0
+	if rate < 0.4: 
+		return 0.5
+	if rate < 0.6: 
+		return 0.0
+	if rate < 0.8: 
+		return -0.5
+	return -1.0
 
 #core functions
 func hp_get():
@@ -1109,7 +1175,8 @@ func hp_get():
 
 
 func hp_set(value):
-	if npc_reference == 'combat_global': return
+	if npc_reference == 'combat_global': 
+		return
 	if hp <= 0:
 		if value <= hp:
 			return
@@ -1134,11 +1201,13 @@ func hp_set(value):
 	else:
 		defeated = false
 
+
 func mp_set(value):
 	if npc_reference == 'combat_global': return
 	mp = clamp(value, 0, get_stat('mpmax'))
 	if displaynode != null:
 		displaynode.update_mana()
+
 
 func death():
 	process_event(variables.TR_DEATH)
@@ -1150,16 +1219,16 @@ func death():
 		displaynode.defeat()
 	if input_handler.combat_node != null:
 		if has_status('fastheal'):
-			affect_char({type = 'effect', value = 'e_g_injury_delay_alt'})
+			apply_effect_code('e_g_injury_delay', {duration = 8})
 		else:
-			affect_char({type = 'effect', value = 'e_g_injury_delay'})
+			apply_effect_code('e_g_injury_delay', {duration = 12})
 		#in this case check for permadeath is not here but in various finish combat methods
 	else:
-		if ResourceScripts.game_globals.diff_permadeath:
+		if !ResourceScripts.game_globals.diff_permadeath:
 			if has_status('fastheal'):
-				affect_char({type = 'effect', value = 'e_grave_injury_alt'})
+				apply_effect_code('e_grave_injury', {duration = 8})
 			else:
-				affect_char({type = 'effect', value = 'e_grave_injury'})
+				apply_effect_code('e_grave_injury', {duration = 12})
 		else:
 			killed(false)
 		#add permadeath check here
@@ -1169,8 +1238,10 @@ func death():
 #		print('warning! char died outside combat')
 #		characters_pool.call_deferred('cleanup')
 
+
 func killed(direct_call = true):
-	if direct_call: process_event(variables.TR_DEATH)
+	if direct_call: 
+		process_event(variables.TR_DEATH)
 	equipment.clear_equip()
 	training.clear_training()
 	ResourceScripts.game_party.add_fate(id, tr("DIED"))
@@ -1180,57 +1251,6 @@ func killed(direct_call = true):
 	input_handler.update_slave_list()
 	if is_master():
 		input_handler.interactive_message('generic_lose_scene', '', {})
-
-
-func affect_char(i):
-	match i.type:
-		'damage':
-			deal_damage(i.value)
-		'damage_percent':
-			deal_damage((i.value / 100.0) * get_stat('hpmax'))
-		'damage_mana_percent':
-			mana_update(-i.value * get_stat('mpmax'))
-		'stat', 'stat_add':
-			add_stat(i.stat, i.value)
-		'stat_set':
-			set_stat(i.stat, i.value)
-		'effect':
-			var eff = Effectdata.effect_table[i.value].duplicate()
-			if i.has('override'):
-				for k in i.override:
-					eff[k] = i.override[k]
-			var neweff = effects_pool.e_createfromtemplate(eff)
-			apply_effect(effects_pool.add_effect(neweff))
-		'teleport':
-			teleport(i.value)
-		'set_availability':
-			if i.value:
-				xp_module.make_avaliable()
-			else:
-				xp_module.make_unavaliable()
-		'set_as_spouse':
-			ResourceScripts.game_progress.spouse = id
-		'escape':
-			escape_actions()
-		'remove_trait':
-			remove_trait(i.value)
-		'add_trait':
-			add_trait(i.value)
-		'unlock_trait':
-			training.unlock_trait(i.value)
-		'set_tutelage':
-			xp_module.assign_to_learning(i.value)
-			input_handler.rebuild_slave_list()
-		'quest':
-			assign_to_quest_and_make_unavalible({id = i.id, name = i.name}, i.duration)
-		'slavetype':
-			set_slave_category(i.value)
-		'remove':
-			ResourceScripts.game_party.add_fate(id, tr("REMOVED"))
-			ResourceScripts.game_party.remove_slave(self)
-			input_handler.slave_list_node.rebuild()
-		'turn_into_unique':
-			turn_into_unique(i.value)
 
 
 func teleport(data):
@@ -1256,6 +1276,7 @@ func process_stored_check(check): #compatibility stub
 func process_check(check): #compatibility stub
 	return checkreqs(check)
 
+
 func checkreqs(arg, ignore_npc_stats_gear = false): #additional flag is never used
 	if typeof(arg) == TYPE_ARRAY:
 		var check = true
@@ -1268,6 +1289,7 @@ func checkreqs(arg, ignore_npc_stats_gear = false): #additional flag is never us
 	else:
 		return valuecheck(arg, ignore_npc_stats_gear)
 
+
 func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never used
 	if ch.has('master_check') and ch.master_check and !is_master():
 		return ResourceScripts.game_party.get_master().valuecheck(ch, ignore_npc_stats_gear)
@@ -1277,11 +1299,12 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'false':
 			return false
 		'stat':
-			if i.stat in ['tame_factor','timid_factor'] && is_master():
+			if i.stat in ['tame_factor','authority_factor'] && is_master():
 				return true
 			if typeof(i.value) == TYPE_ARRAY: i.value = calculate_number_from_string_array(i.value)
 			if ignore_npc_stats_gear:
-				check = input_handler.operate(i.operant, get_stat_nobonus(i.stat), i.value)
+#				check = input_handler.operate(i.operant, get_stat_nobonus(i.stat), i.value)
+				check = input_handler.operate(i.operant, get_stat(i.stat), i.value) #idk if alt mode was really needed
 			else:
 				check = input_handler.operate(i.operant, get_stat(i.stat), i.value)
 		'stat_in_set':
@@ -1300,7 +1323,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 				if has_profession(k):
 					check = true
 		'has_skill':
-			return skills.has_skill(i.value) == i.check
+			return dyn_stats.has_skill(i.value) == i.check
 		'race_is_beast':
 			check = races.racelist[get_stat('race')].tags.has('beast') == i.check
 		'is_shortstack':
@@ -1355,7 +1378,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			if typeof(i.value) == TYPE_ARRAY: i.value = calculate_number_from_string_array(i.value)
 			check = globals.rng.randf()*100 <= i.value
 		'virgin':
-			check = get_stat('vaginal_virgin') == i.check
+			check = (get_stat('vaginal_virgin_lost') == null) == i.check
 		'class_unlocked':
 			return ResourceScripts.game_progress.if_class_unlocked(i.class, i.check, i.operant)
 		'has_wooden_gear':
@@ -1365,7 +1388,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'is_unique':
 			check = is_unique() == i.value
 		'body_image':
-			return input_handler.operate(i.operant, statlist.statlist.body_image, i.value)
+			return input_handler.operate(i.operant, get_stat('body_image'), i.value)
 		'in_combat_party':
 			if variables.allow_remote_intereaction == true and i.value: check = true
 			else: check = (combat_position in range(1, 7)) == i.value
@@ -1383,7 +1406,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'check_stored':
 			return training.check_stored_reqs(i.value)
 		'is_immune':
-			return effects.check_status_immunity(i.status) == i.check
+			return dyn_stats.check_status_immunity(i.status) == i.check
 		'has_relationship':
 			var tmp = ResourceScripts.game_party.find_all_relationship(id)
 			var tres = false
@@ -1393,6 +1416,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 					break
 			return tres == i.check
 	return check
+
 
 func decipher_reqs(reqs, colorcode = false, purestat = false):
 	var text = ''
@@ -1487,24 +1511,11 @@ func decipher_single(ch):
 	return text2
 
 
-
-
-#never used
-func assign_gender():
-	if get_stat('has_pussy') == true:
-		if get_stat('penis_size') != '' || get_stat('balls_size') != '':
-			set_stat('sex', 'futa')
-		else:
-			set_stat('sex', 'female')
-	else:
-		set_stat('sex', 'male')
-
 func make_description():
 	input_handler.text_characters.clear()
 	input_handler.text_characters.append(self)
-	#input_handler.active_character = self
-	#print(ResourceScripts.descriptions.create_character_description(self))
 	return globals.TextEncoder(translate(ResourceScripts.descriptions.create_character_description(self)))
+
 
 func show_race_description():
 	var race = get_stat('race')
@@ -1517,18 +1528,11 @@ func show_race_description():
 			text += tr("RACEHALFKINDESCRIPT") + "\n\n"
 	text += temprace.descript
 	text += "\n\n" + tr("RACE_BONUSES") + ": " + globals.build_desc_for_bonusstats(temprace.race_bonus)
-#	for i in temprace.race_bonus:
-#		if statdata.statdata[i].percent == true:
-#			text += statdata.statdata[i].name + ": " + str(temprace.race_bonus[i]*100) + '%, '
-#		else:
-#			text += statdata.statdata[i].name + ": " + str(temprace.race_bonus[i]) + ', '
-#	text = text.substr(0, text.length() - 2) + "."
 	if temprace.has("combat_skills"):
 		text += "\n" + tr("COMBAT_ABILS_LABEL") + ": "
 		for i in temprace.combat_skills:
 			text += Skilldata.Skilllist[i].name + "; "
 		text = text.substr(0, text.length() - 2) + "."
-
 	return text
 
 
@@ -1546,8 +1550,6 @@ func predict_food():
 
 func pretick():
 	process_event(variables.TR_TICK)
-	recheck_effect_tag('recheck_tick')
-
 
 
 func tick():
@@ -1558,12 +1560,8 @@ func tick():
 	if get_work() == '':
 		skip_work = true
 	
-	var treg = variables.basic_hp_regen * get_stat('hp_reg_mod') + get_stat('hp_reg_add')
-	self.hp += max(treg, 0)
-	treg = (variables.basic_mp_regen + get_stat('magic_factor') * variables.mp_regen_per_magic) * get_stat('mp_reg_mod') + get_stat('mp_reg_add')
-	if ResourceScripts.game_res.upgrades.has('resting') and ResourceScripts.game_res.upgrades.resting > 0:
-		treg *= 1.2
-	self.mp += max(treg, 0)
+	self.hp += get_stat('hp_reg')
+	self.mp += get_stat('mp_reg')
 	#loyalty and obedience changes are in sats
 	if ResourceScripts.game_globals.hour == 2:
 		food.get_food()
@@ -1575,13 +1573,11 @@ func tick():
 		return
 	
 	xp_module.work_tick()
-	
-
 
 
 func rest_tick():
-	self.hp += variables.basic_hp_regen * 2 * get_stat('hp_reg_mod')
-	self.mp += (variables.basic_mp_regen + variables.mp_regen_per_magic * get_stat('magic_factor')) * 2 * get_stat('mp_reg_mod')
+	self.hp += get_stat('hp_reg') * 2
+	self.mp += get_stat('mp_reg') * 2
 	for e in find_temp_effect_tag('addition_rest_tick'):
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.process_event(variables.TR_TICK)
@@ -1608,8 +1604,6 @@ func translate(text):
 
 func calculate_price(shopflag = false):
 	var value = 0
-	#value += (get_stat('physics') + get_stat('wits') + get_stat('charm') + get_stat('sexuals'))*2
-	#value += (get_stat('physics_factor') + get_stat('wits_factor') + get_stat('charm_factor') + get_stat('sexuals_factor') + get_stat('tame_factor') + get_stat('timid_factor'))*10 + get_stat('growth_factor') * 75 + get_stat('magic_factor') * 15
 	var tr_mul1 = 0
 	var tr_mul2 = 0
 	var mod_mul = 1.0
@@ -1618,9 +1612,6 @@ func calculate_price(shopflag = false):
 	tr_mul2 = get_traits_by_tag('negative').size()
 	mod_mul += min (tr_mul1 * 0.2, 0.6)
 	mod_mul -= tr_mul2 * 0.2 
-	if statlist.bonuses.has("price_mul"): mod_mul += statlist.bonuses.price_mul - 1.0
-	if statlist.bonuses.has("price_add"): value += statlist.bonuses.price_add
-#	value *= mod_mul
 	if shopflag:
 		if has_status('virgin'):
 			mod_mul2 += 0.25
@@ -1637,48 +1628,34 @@ func apply_atomic(template):
 	if input_handler.combat_node != null and input_handler.combat_node.ActionQueue != null and template.type != 'remove_all_effects':
 		input_handler.combat_node.ActionQueue.add_atomic(template, id)
 	else:
-		apply_atomic_noqueue(template)
+		affect_char(template)
 
 
-func apply_atomic_noqueue(template):
+func affect_char(template):
 	match template.type:
 		'damage':
 			var tval = deal_damage(template.value, template.source)
 			if input_handler.combat_node != null:
 				input_handler.combat_node.combatlogadd("\n%s loses %d hp." % [get_short_name(), int(tval)])
+		'damage_percent':
+			deal_damage((template.value / 100.0) * get_stat('hpmax'))
 		'heal':
 			heal(template.value)
-			pass
 		'mana':
 			mana_update(template.value)
-			pass
-		'stat_set', 'stat_set_revert': #use this on direct-accessed stats
-			template.buffer = get_stat(template.stat, true)
-			set_stat(template.stat, template.value)
-		'stat_add':
+		'damage_mana_percent':
+			mana_update(-template.value * get_stat('mpmax'))
+		'stat', 'stat_add':
 			add_stat(template.stat, template.value)
-		'stat_mul':#do not mix add_p and mul for the sake of logic
-			mul_stat(template.stat, template.value)
+		'stat_set':
+			set_stat(template.stat, template.value)
 		'stat_add_p':
 			add_part_stat(template.stat, template.value)
-		'bonus': #reverting those effect can not clear no-bonus entries, so be careful not to overuse those
-			if statlist.bonuses.has(template.bonusname): statlist.bonuses[template.bonusname] += template.value
-			else: statlist.bonuses[template.bonusname] = template.value
+		'stat_mul':#do not mix add_p and mul for the sake of logic
+			mul_stat(template.stat, template.value)
 		'signal':
 			#stub for signal emitting
 			globals.emit_signal(template.value)
-		'remove_effect':
-			remove_temp_effect_tag(template.value)
-		'remove_all_effects':
-			remove_all_temp_effects_tag(template.value)
-		'add_trait':
-			add_trait(template.trait)
-		'remove_trait': #irrevercible
-			remove_trait(template.trait)
-		'add_sex_trait':
-			add_sex_trait(template.trait, true)
-		'unlock_sex_trait':
-			unlock_sex_trait(template.trait)
 		'event':
 			process_event(template.value)
 		'resurrect':
@@ -1711,8 +1688,6 @@ func apply_atomic_noqueue(template):
 			if !check_location('mansion'): return
 			#use_social_skill(template.value, null)
 			skills.prepared_act.push_back(template.skill)
-#		'copy_skill':
-#			input_handler.combat_node.set_copy_skill()
 		'end_turn':
 			if input_handler.combat_node == null: 
 				return
@@ -1721,25 +1696,62 @@ func apply_atomic_noqueue(template):
 			if input_handler.combat_node == null: 
 				return
 			input_handler.combat_node.transform_unit(position, template.unit)
-		'add_counter':
-			if effects.counters.size() <= template.index + 1:
-				effects.counters.resize(template.index + 1)
-			if effects.counters[template.index] == null: effects.counters[template.index] = template.value
+		'sfx':
+			play_sfx(template.value)
+		'effect':
+			var args = {}
+			if template.has('override'):
+				args = template.override.duplicate()
+			apply_effect_code(template.value, args)
+		'remove_effect':
+			remove_temp_effect_tag(template.value)
+		'remove_all_effects':
+			remove_all_temp_effects_tag(template.value)
+		'teleport':
+			teleport(template.value)
+		'set_availability':
+			if template.value:
+				xp_module.make_avaliable()
 			else:
-				effects.counters[template.index] += template.value
+				xp_module.make_unavaliable()
+		'set_as_spouse':
+			ResourceScripts.game_progress.spouse = id
+		'escape':
+			escape_actions()
+		'remove_trait':
+			remove_trait(template.trait)
+		'add_trait':
+			add_trait(template.trait)
+		'unlock_trait':
+			training.unlock_trait(template.trait)
+		'add_sex_trait':
+			add_sex_trait(template.trait, true)
+		'unlock_sex_trait':
+			unlock_sex_trait(template.trait)
+		'set_tutelage':
+			xp_module.assign_to_learning(template.value)
+			input_handler.rebuild_slave_list()
+		'add_counter':
+			if dyn_stats.counters.size() <= template.index + 1:
+				dyn_stats.counters.resize(template.index + 1)
+			if dyn_stats.counters[template.index] == null: 
+				dyn_stats.counters[template.index] = template.value
+			else:
+				dyn_stats.counters[template.index] += template.value
 		'add_soc_skill':
 			learn_skill(template.skill)
 		'add_combat_skill':
 			learn_c_skill(template.skill)
-		'sfx':
-			play_sfx(template.value)
-		'disable':
-			xp_module.make_unavaliable()
-		'make_status_effect':
-			#currently this feature has several restrictions. use on your own risk
-			#1. those effects will have custom parent setup - so be sure to pass proper parent attribute
-			#2. they are not removed by parent (cause they are not their sub_effects) - so must be some type of temp
-			effects.make_status_effect(template.duplicate(true))
+		'quest':
+			assign_to_quest_and_make_unavalible({id = template.id, name = template.name}, template.duration)
+		'slavetype':
+			set_slave_category(template.value)
+		'remove':
+			ResourceScripts.game_party.add_fate(id, tr("REMOVED"))
+			ResourceScripts.game_party.remove_slave(self)
+			input_handler.slave_list_node.rebuild()
+		'turn_into_unique':
+			turn_into_unique(template.value)
 		'reset_cooldowns':
 			skills.reset_cooldowns()
 		'dungeon_effect':
@@ -1758,32 +1770,9 @@ func apply_atomic_noqueue(template):
 					ResourceScripts.game_world.gather_res(get_location(), get_stat('matk') * 10)
 
 
-func remove_atomic(template):
-	match template.type:
-		'stat_set_revert':
-			set_stat(template.stat, template.buffer)
-		'stat_add':
-			add_stat(template.stat, template.value, true)
-		'stat_mul':
-			mul_stat(template.stat, template.value, true)
-		'stat_add_p':
-			add_part_stat(template.stat, template.value, true)
-		'bonus':
-			if statlist.bonuses.has(template.bonusname): statlist.bonuses[template.bonusname] -= template.value
-			else: print('error bonus not found')
-		'add_soc_skill':
-			unlearn_skill(template.skill)
-		'add_combat_skill':
-			unlearn_c_skill(template.skill)
-		'add_trait':
-			remove_trait(template.trait)
-		'add_sex_trait', 'unlock_sex_trait':
-			remove_sex_trait(template.trait)
-		'disable':
-			xp_module.make_avaliable()
-
 func is_koed():
 	return (hp <= 0) or defeated or !is_active
+
 
 func calculate_number_from_string_array(arr):
 	var array = arr.duplicate()
@@ -1827,6 +1816,7 @@ func set_shield(value):
 	if value <= 0: process_event(variables.TR_SHIELD_DOWN)
 	shield = max(0, value)
 
+
 func deal_damage(value, source = 'normal'):
 #	print(source)
 	if npc_reference == 'combat_global': return null
@@ -1837,7 +1827,7 @@ func deal_damage(value, source = 'normal'):
 		return 0
 	value *= (1.0 - get_stat('damage_reduction')/100.0)
 	if source != 'true':
-		value *= (1.0 - get_stat('resists')[source]/100.0)
+		value *= (1.0 - get_stat('resist_' + source)/100.0)
 	value = int(value);
 	if value > 0:
 		if shield > value:
@@ -1855,16 +1845,16 @@ func deal_damage(value, source = 'normal'):
 	else:
 		return heal(-value)
 
+
 func heal(value):
 	var tmp = hp
-#	if get_stat('resist_damage').has('heal'):
-#		value *= get_stat('resist_damage').heal
 	value = round(value)
 	if value < 0: return deal_damage(-value, 'true')
 	self.hp += value
 	tmp = hp - tmp
 	process_event(variables.TR_HEAL)
 	return tmp
+
 
 func mana_update(value):
 	var tmp = mp
@@ -1875,6 +1865,7 @@ func mana_update(value):
 	#process_event(variables.TR_HEAL)
 	return tmp
 
+
 func stat_update(stat, value, is_set = false): #for permanent changes
 	if stat == 'hp':
 		return heal(value)
@@ -1882,18 +1873,26 @@ func stat_update(stat, value, is_set = false): #for permanent changes
 		return mana_update(value)
 	elif stat == 'base_exp':
 		return xp_module.update_exp(value, is_set)
-	else: return statlist.stat_update(stat, value, is_set)
+	elif is_set:
+		return set_stat(stat, value)
+	else: 
+		return add_stat(stat, value)
+
 
 func resurrect(hp_per):
-	if !defeated: return
+	if !defeated: 
+		return
 	defeated = false
 	hp = int(get_stat('hpmax') * hp_per /100)
 	if displaynode != null:
 		displaynode.update_hp()
 	process_event(variables.TR_RES)
+	input_handler.emit_signal('fighter_changed')
+
 
 func get_manacost_for_skill(skill):
 	return skills.get_manacost_for_skill(skill)
+
 
 func pay_cost(cost):
 	for st in cost:
@@ -1906,6 +1905,7 @@ func pay_cost(cost):
 		else: 
 			add_stat(st, -cost[st])
 
+
 func check_cost(cost):
 	for st in cost:
 		if st == 'money' and ResourceScripts.game_party.money < cost[st]:
@@ -1916,12 +1916,13 @@ func check_cost(cost):
 			return false
 	return true
 
+
 func check_skill_availability(s_code, target):
 	var check = true
-
+	
 	var template = Skilldata.get_template(s_code, self)
 	var descript = ''
-
+	
 	if !check_cost(template.cost):
 		descript = get_short_name() + ": " + tr("CANT_PAY_COSTS_LABEL") + "'"
 		check = false
@@ -1931,15 +1932,15 @@ func check_skill_availability(s_code, target):
 	if template.has('globallimit') && ResourceScripts.game_party.global_skills_used.has(s_code) && ResourceScripts.game_party.global_skills_used[s_code] >= template.globallimit:
 		descript = get_short_name() + ": " + tr("CANT_USE_TODAY_LABEL") + "."
 		check = false
-
+	
 	if !checkreqs(template.reqs):
 		check = false
 		descript = get_short_name() + ": " + tr("REQS_NOT_MET_LABEL") + "."
-
+	
 	if !target.checkreqs(template.targetreqs):
 		check = false
 		descript = target.get_short_name() + ": " + tr("TARGET_REQS_NOT_MET_LABEL") + "."
-
+	
 	return {check = check, descript = descript}
 
 
@@ -1952,8 +1953,9 @@ func lockpick_chance(): #used for chest opening
 	var secondary_chance = get_stat('wits')/5 #0-24
 	if check_trait('lockpicking'):
 		secondary_chance = secondary_chance*4 + (randf()*5+5) #max 101-106
-
+	
 	return base_chance + secondary_chance
+
 
 func fill_ai(data):
 	match variables.ai_setup:
@@ -1967,25 +1969,38 @@ func fill_ai(data):
 				newdata[arr[0]] = arr[1]
 			ai.set_single_state(newdata)
 
+
 func take_virginity(type, partner):
-	if get_stat(type+'_virgin') == true:
-		set_stat(type + "_virgin", false)
-		set_stat(type + "_virgin_lost", {source = partner})
+	if get_stat(type + '_virgin_lost') == null:
+		set_stat(type + "_virgin_lost", partner)
 		if get_stat('metrics_partners').has(partner) == false && partner.begins_with("hid"):
-			get_stat('metrics', true).partners.append(partner)
+			statlist.update_stat('metrics_partners', partner, 'append')
+
 
 func add_partner(partner):
 	if partner == 'master' && get_stat('metrics_partners').has(ResourceScripts.game_party.get_master().id) == false:
 		partner = ResourceScripts.game_party.get_master().id
 	if get_stat('metrics_partners').has(partner) == false && partner.begins_with("hid"):
-		get_stat('metrics', true).partners.append(partner)
+		statlist.update_stat('metrics_partners', partner, 'append')
 
-func get_ability_experience():
-	return xp_module.get_ability_experience()
+
+func get_learned_skills(cat):
+	return skills.get_learned_skills(cat)
 
 func get_combat_skills():
-	return skills.get_combat_skills()
+	return dyn_stats.get_combat_skills()
 
+
+func get_social_skills():
+	return dyn_stats.get_social_skills()
+
+
+func get_explore_skills():
+	return dyn_stats.get_explore_skills()
+
+
+func fix_skillpanels():
+	skills.fix_skillpanels()
 
 func update_portrait(ragdoll): # for ragdolls
 	if !get_stat('dynamic_portrait'):
@@ -1998,16 +2013,17 @@ func update_portrait(ragdoll): # for ragdolls
 	set_stat('icon_image', variables.portraits_folder + path + '.png')
 	ragdoll.save_portrait(path)
 
+
 func update_prt():
-	if get_stat("unique") == null or (statlist.statlist.has("player_selected_icon") and get_stat("player_selected_icon")):
+	if get_stat("unique") == null or get_stat("player_selected_icon"):
 		return
-	if statlist.statlist.has("player_selected_body") and get_stat("player_selected_body"):
+	if get_stat("player_selected_body"):
 		return
 	var prt_name: String
 	var variation = "default"
 	if has_work_rule('nudity'):
 		variation = "nude"
-	if statlist.statlist.has("unique_variation") and get_stat("unique_variation"):
+	if get_stat("unique_variation") != null:
 		variation = get_stat("unique_variation")
 	
 	# check for unique nude portrait for example cali_nude_collar_prt

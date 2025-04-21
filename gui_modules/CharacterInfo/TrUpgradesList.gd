@@ -114,7 +114,7 @@ func build_trainer_list():
 		panel.get_node('name').text = tchar.get_full_name() + " - Slaves Assigned: %d/%d" % [used, amount]
 		panel.connect('pressed', self, 'assign_trainer', [id])
 		var text = ""
-		for prof in tchar.xp_module.professions:
+		for prof in tchar.get_professions():
 			var data = classesdata.professions[prof]
 			if data.traits.has('trainer'):
 				text += "%s, " % tr(data.name)

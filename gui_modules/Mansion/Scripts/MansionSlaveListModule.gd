@@ -446,7 +446,7 @@ func update_button(newbutton):
 	newbutton.get_node("stats").hint_tooltip = "HP: " + str(round(person.hp)) + "/" + str(round(person.get_stat('hpmax'))) + "\nMP: " + str(round(person.mp)) + "/" + str(round(person.get_stat('mpmax')))
 	newbutton.get_node("explabel").text = str(floor(person.get_stat('base_exp')))
 	var gatherable = Items.materiallist.has(person.get_work())
-	if person.get_work() == '' or person.get_work() == "Assignment" or person.get_work() == "disabled":
+	if person.get_work() == '' or !person.is_avaliable():
 		if person.is_on_quest():
 			var time_left = int(person.get_quest_time_remains())
 			if time_left > 0:
@@ -478,7 +478,7 @@ func update_button(newbutton):
 		newbutton.get_node("explabel").set("custom_colors/font_color", Color(1,1,1))
 	# if !person.check_location('Aliron'):
 	#location
-	if person.get_work() == "disabled":
+	if !person.is_avaliable():
 		newbutton.get_node('loctext').text = tr("CHAR_UNAVALIABLE")
 		newbutton.get_node('LocIcon').texture = null
 		person_location = null

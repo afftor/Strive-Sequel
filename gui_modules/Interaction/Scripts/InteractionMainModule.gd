@@ -245,15 +245,13 @@ func createtestdummy(type = 'normal'):
 	var newmember = member.new()
 	newmember.sceneref = self
 	#bad solution. need replacing
-	person.statlist.statlist.vaginal_virgin = true
+	person.set_stat('vaginal_virgin_lost', null)
 	person.is_players_character = true
-	#person.statlist.statlist.mods['hollownipples'] = 'hollownipples'
-	#person.statlist.sex_traits = ['pushover']#'dislike_petting','bottle_fairy','hypersensitive','life_power',
-	person.statlist.statlist.consent = round(rand_range(2,5))
-	for i in person.statlist.statlist.sex_skills:
-		person.statlist.statlist.sex_skills[i] += 100
-	if type == 'resist':
-		person.statlist.consent = false
+	person.set_stat('consent', globals.rng.randi_range(2,5))
+	for i in Statlist_init.sex_skills:
+		person.add_stat(i, 100)
+#	if type == 'resist':
+#		person.set_stat('consent', false)
 		#globals.connectrelatives(participants[0].person, person, 'father')
 
 	newmember.setup_person(person, true)
@@ -1253,10 +1251,10 @@ func startscene(scenescript, cont = false, pretext = ''):
 #					i.person.add_stat('loyalty', 10)
 		if scenescript.giverpart == 'penis':
 			for i in givers:
-				i.person.set_stat('penis_virgin', false)
+				i.person.take_virginity('penis', takers[0].person.id)
 		elif scenescript.takerpart == 'penis':
 			for i in takers:
-				i.person.set_stat('penis_virgin', false)
+				i.person.take_virginity('penis', givers[0].person.id)
 
 	var id_dict = make_id_dict(dict)
 	for i in givers:
@@ -1897,8 +1895,7 @@ func endencounter():
 			var effect = 'satisfaction_1'
 			if i.orgasms >= 3:
 				effect = 'satisfaction_2'
-			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[effect])
-			i.person.apply_effect(effects_pool.add_effect(eff))
+			i.person.apply_effect_code(effect)
 #		var temptext = consenttext[i.id]
 #		consenttext[i.id] = "Total: "
 

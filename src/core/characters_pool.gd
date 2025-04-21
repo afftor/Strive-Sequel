@@ -37,24 +37,20 @@ func get_char_by_id(id):
 func cleanup(on_exit = false):
 	for id in characters.keys():
 		if !characters[id].is_active or characters[id].src == 'test_main' or on_exit:
-			characters[id].clean_effects()
-#			if state.characters.has(id):
-#				state.character_order.erase(id)
-#				input_handler.slave_list_node.rebuild()
-			characters[id].clean_references()
+			effects_pool.clean_effects_for_char(id)
 			remove_id(id)
 	if ResourceScripts.game_party == null: return
 	if ResourceScripts.game_party.characters == null: return
 	for id in ResourceScripts.game_party.characters.keys():
 		if !ResourceScripts.game_party.characters[id].is_active or on_exit:
-			ResourceScripts.game_party.characters[id].clean_effects()
-			ResourceScripts.game_party.characters[id].clean_references()
+			effects_pool.clean_effects_for_char(id)
+#			ResourceScripts.game_party.characters[id].clean_effects()
 			ResourceScripts.game_party.character_order.erase(id)
 			remove_id(id)
 	for id in ResourceScripts.game_party.babies.keys():
 		if !ResourceScripts.game_party.babies[id].is_active or on_exit:
-			ResourceScripts.game_party.babies[id].clean_effects()
-			ResourceScripts.game_party.babies[id].clean_references()
+			effects_pool.clean_effects_for_char(id)
+#			ResourceScripts.game_party.babies[id].clean_effects()
 			ResourceScripts.game_party.babies.erase(id)
 			remove_id(id)
 	if !on_exit and input_handler.slave_list_node != null: 
@@ -111,11 +107,6 @@ func deserialize(tmp):
 	for hid in tmp.keys():
 		characters[hid] = dict2inst(tmp[hid])
 		characters[hid].fix_serialization()
-
-
-func clean_broken_effects():
-	for ch in ResourceScripts.game_party.characters.values() + characters.values():
-		ch.clean_broken_effects()
 
 
 func get_babies_from_data(tmp):

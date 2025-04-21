@@ -16,7 +16,7 @@ func invoke():
 
 func invoke_triggers():
 	var tchar = characters_pool.get_char_by_id(character)
-	tchar.apply_atomic_noqueue(template)
+	tchar.affect_char(template)
 	step += 1
 	queuenode.call_deferred('invoke_resume')
 

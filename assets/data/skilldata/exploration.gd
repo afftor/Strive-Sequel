@@ -175,11 +175,8 @@ var effects = {
 	e_tr_flamesphere = {
 		type = 'temp_s',
 		target = 'caster',
-		name = 'flamesphere',
+		stack = 'flamesphere',
 		rem_event = [variables.TR_TURN_F, variables.TR_DEATH, variables.TR_TICK],
-		stack = 1,
-		tags = [],
-		args = [],
 		sub_effects = [
 			{
 				type = 'trigger',
@@ -190,11 +187,9 @@ var effects = {
 					{
 						type = 'oneshot',
 						target = 'owner',
-						args = [],
 						atomic = [{type = 'use_combat_skill', skill = 'pas_flamesphere'}]
 					}
 				],
-				buffs = []
 			},
 		],
 		atomic = [],
@@ -203,25 +198,21 @@ var effects = {
 	setup_reveal = {
 		type = 'oneshot',
 		target = 'caster',
-		args = [],
 		atomic = [{type = 'dungeon_effect', value = 'reveal_map'}]
 	},
 	setup_gather = {
 		type = 'oneshot',
 		target = 'caster',
-		args = [],
 		atomic = [{type = 'location_effect', value = 'gather_res'}]
 	},
 	setup_intimidate = {
 		type = 'oneshot',
 		target = 'caster',
-		args = [],
 		atomic = [{type = 'dungeon_effect', value = 'set_intimidate'}]
 	},
 	setup_teleport = {
 		type = 'oneshot',
 		target = 'caster',
-		args = [],
 		atomic = [{type = 'location_effect', value = 'set_teleport'}]
 	},
 }
@@ -232,4 +223,8 @@ var buffs = {
 		description = "BUFFDESCRIPTFLAMESPHERE",
 		t_name = 'flamesphere'
 	},
+}
+
+var stacks = {
+	flamesphere = {}, #st1
 }

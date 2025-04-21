@@ -22,6 +22,7 @@ var scriptdict = {
 	game_res = "res://src/core/game_res.gd",
 	game_world = "res://src/core/game_world.gd",
 	ch_statlist = "res://src/character/ch_stats.gd",
+	ch_statlist_dynamic = "res://src/character/ch_dyn_stats.gd",
 	ch_leveling = "res://src/character/ch_leveling.gd",
 	ch_equipment = "res://src/character/ch_equip.gd",
 	ch_skills = "res://src/character/ch_skills.gd",

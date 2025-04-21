@@ -38,7 +38,7 @@ func requirements():
 			if i.person.get_stat('penis_size') == '':
 				valid = false
 		for i in takers:
-			if !i.person_mods.has("hollownipples"):
+			if !i.person_mods.has("upgrade_nipples"):
 				valid = false
 	return valid
 

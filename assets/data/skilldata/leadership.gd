@@ -83,7 +83,7 @@ var skills = {
 #		new_syntax = true,
 		reqs = [],
 		targetreqs = [],
-		effects = [], 
+		effects = [Effectdata.rebuild_template({effect = 'e_t_rally'})], 
 		cost = {mp = 15},
 		charges = 0,
 		combatcooldown = 5,
@@ -103,69 +103,45 @@ var effects = {
 	e_t_inspire = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'inspire',
+		stack = 'inspire',
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		stack = 1,
 		tags = ['buff'],
-		sub_effects = [],
-		atomic = [
-			{type = 'stat_add', stat = 'damage_mod_all', value = 0.2},
-			{type = 'stat_add_p', stat = 'armor', value = 0.2},
-			{type = 'stat_add_p', stat = 'mdef', value = 0.2},
-		],
+		statchanges = {damage_mod_all = 0.2, armor_add_part = 0.2, mdef_add_part = 0.2},
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Inspire.png",
 				description = "TRAITEFFECTINSPIRED",
-				limit = 1,
-				t_name = 'inspire'
 			}
 		],
 	},
 	e_s_hmark = { #has troubles with protect effect
 		type = 'temp_s',
 		target = 'target',
-		name = 'huntersmark',
+		stack = 'huntersmark',
 		tick_event = variables.TR_TURN_F,
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		duration = 'parent',
-		stack = 1,
+		duration = 'arg',
 		tags = ['debuff'],
 		sub_effects = ['e_t_hmark'],
-		atomic = [],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Command.png",
 				description = "TRAITEFFECTHMARK",
-				limit = 1,
-				t_name = 'huntersmark',
-				combat_only = true,
 			}
 		],
 	},
-	e_t_hmark = {
-		type = 'trigger',
-		conditions = [{type = 'skill', value = ['tags', 'has', 'damage']}],
-		trigger = [variables.TR_DEF],
-		req_skill = true,
-		args = [],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'skill',
-				args = [],
-				atomic = [{type = 'stat_mul', stat = 'value', value = 1.15}],
-			},
-		],
-		buffs = []
-	},
+	e_t_hmark = Effectdata.rebuild_defvalue_template({tag = 'damage', value = 1.15}),
 	e_t_rally = {
 		type = 'oneshot',
 		target = 'target',
-		args = [],
 		atomic = [{type = 'reset_cooldowns'}],
 	}
 }
 var atomic_effects = {}
 var buffs = {}
+
+var stacks = {
+	inspire = {},#st 1
+	huntersmark = {},#st 1
+}

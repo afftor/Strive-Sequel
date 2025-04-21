@@ -64,7 +64,7 @@ func change_slave(param):
 	# CharMainModule.DetailsModule.person = selected_person
 	CharMainModule.DetailsModule.custom_description_open()
 	$GridContainer.visible = selected_person.get_work() != "disabled"
-	if selected_person.get_work() == "disabled":
+	if !selected_person.is_avaliable():
 		get_parent().set_state("default")
 		get_parent().get_node("TalkButton").visible = false
 	if selected_person.get_work() == 'learning':
@@ -98,7 +98,7 @@ func show_summary():
 		i.get_node("Label").text = str(floor(i.value)) + "/" + str(floor(i.max_value))
 
 	for i in $factors.get_children():
-		if person.is_master() && i.name in ["tame_factor", "timid_factor"]:
+		if person.is_master() && i.name in ["tame_factor", "authority_factor"]:
 			i.hide()
 		else:
 			i.show()
@@ -123,12 +123,12 @@ func show_summary():
 			var color = set_color(person.get_stat(i+'_bonus'))
 
 			# get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
-			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.statlist.custom_stats_get(i)))  + text
+			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i)))  + text
 			get_node("VBoxContainer2/TextureRect4/" + i + '2').text = str(person.get_stat(i+'_cap') + person.get_stat(i+"_bonus"))
 		else:
 			var color = set_color(person.get_stat(i+'_bonus'))
 			# get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
-			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.statlist.custom_stats_get(i))) + text
+			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i))) + text
 			get_node("VBoxContainer2/TextureRect4/"+ i + '2').text = '100'
 
 

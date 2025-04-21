@@ -129,3 +129,5 @@ var atomic_effects = {}
 var buffs = {
 	
 }
+
+var stacks = {}
