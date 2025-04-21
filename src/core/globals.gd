@@ -91,6 +91,7 @@ func _ready():
 	ResourceScripts.load_scripts()
 	ResourceScripts.recreate_singletons()
 	ResourceScripts.revert_gamestate()
+	ResourceScripts.game_party.supplement_events()
 	modding_core.load_mods()
 	
 	

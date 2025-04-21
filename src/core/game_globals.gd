@@ -116,6 +116,7 @@ func advance_hour():
 	
 	hour += 1
 	ResourceScripts.game_world.advance_hour()
+	ResourceScripts.game_party.advance_hour()
 	if hour > variables.HoursPerDay:
 		advance_day()
 		

@@ -17909,5 +17909,24 @@ After a few minutes nothing still happened and [name] decides to move on.""",
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """You explain to Alise that one of your slaves needs a change of clothes.
 
 — Why, yes, proper servants' attire is one of our specialties. You know, the right clothes make a big difference even for less ideal bodies, naturally we have tailors who can adjust for any required body type. But what are you looking for, anyway?""",
-	SERVANTS_INTRODUCTION_NEW_LEADER_T_0 = "— Hello [name]. How can I help you today?"
+	SERVANTS_INTRODUCTION_NEW_LEADER_T_0 = "— Hello [name]. How can I help you today?",
+	
+	CHARRND_INJURY = """While wandering through the grand halls of the mansion, you hear a sharp cry echo from one of the workrooms. Rushing toward the sound, you find [name] crumpled on the floor, clutching [his] arm. Blood seeps through [his] fingers from a jagged gash, likely caused by a slip with a tool or a broken piece of enchanted equipment. 
+
+The air smells of iron and faint traces of magic as you stand over [him]. The injury looks bad, but not fatal, yet it’s clear [he] won’t be working anytime soon without help.""",
+	CHARRND_INJURY_OPT_HELP = "Help Out (20 gold)",
+	CHARRND_INJURY_OPT_DISC = "Discipline",
+	CHARRND_INJURY_OPT_MANIP = "Manipulate",
+	CHARRND_INJURY_REPLY_HELP = "You kneel beside [name] and call for a healer, digging into your coin pouch to cover the cost. The mansion’s apothecary arrives quickly, stitching the wound with practiced hands and a touch of glowing herbs. [He] mutters a weak thanks, still pale but relieved.",
+	CHARRND_INJURY_REPLY_DISC = "You grab [name] by the collar, ignoring [his] wince, and haul [him] to [his] feet. You call [him] a clumsy fool and shove [him] toward the wall. A quick lash of words, or even a strike if the mood takes you, drives the lesson home.",
+	CHARRND_INJURY_REPLY_MANIP = "You crouch down, keeping your voice low and smooth. You tell [him] this didn’t have to happen, that better listening would have kept [him] safe. [He] blinks, confusion clouding [his] pain as you weave doubt into [his] mind. By the time you finish, [he] half-believes it’s [his] fault, and that you’re the only one who can protect [him].",
+	CHARRND_ASLEEP = "As you pass through the dimly lit corridors of the mansion, you notice a figure slumped over a workbench in one of the cluttered rooms. It’s [name], head resting on [his] arms, fast asleep amidst scattered tools and flickering candlelight. [His] chest rises and falls slowly, oblivious to the world, a half-finished task lying abandoned before [him].",
+	CHARRND_ASLEEP_OPT_WAKE = "Wake Up",
+	CHARRND_ASLEEP_OPT_FEEL = "Feel Up",
+	CHARRND_ASLEEP_OPT_LEAVE = "Leave",
+	CHARRND_ASLEEP_REPLY_WAKE = "You step closer and give [name] a firm shake, startling [him] awake. [He] blinks up at you, dazed but grateful as you point out the unfinished work. [He] scrambles to [his] feet, mumbling thanks for not letting [him] slack off. The spark of trust in [his] eyes grows stronger, binding [him] closer to your will.",
+	CHARRND_ASLEEP_REPLY_FEEL = "You slide a hand along [name]’s shoulder, tracing [his] form while [he] remains lost in sleep. The touch lingers, stirring something subtle in [his] unconscious mind. When [he] finally stirs, there’s a flush on [his] cheeks. You respond to [his] puzzled reaction with a note that it's [his] fault for sleeping in a workplace as you continue on your way.",
+	CHARRND_ASLEEP_REPLY_LEAVE = "You turn away, leaving [name] to [his] slumber without a sound. The choice to avoid entanglement sharpens your focus, and you walk off with a clearer mind. [He] sleeps on, none the wiser, you consider this to be an adequate reaction to a minor slip.",
+	
+	
 }

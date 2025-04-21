@@ -16,6 +16,7 @@ var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} #
 
 var character_order = []
 
+var char_events = load("res://src/core/char_events.gd").new(self)
 
 func _get_key(char1, char2):
 	var pair = [char1, char2]
@@ -266,6 +267,9 @@ func advance_day():
 			continue
 		for j in range(i + 1, character_order.size()):
 			if _in_same_location(character_order[i],character_order[j]): relation_daily_change_same_loc(character_order[i],character_order[j])
+
+func advance_hour():
+	char_events.advance_time()
 
 func serialize():
 	var res = inst2dict(self)
@@ -763,3 +767,6 @@ func force_update_portraits():
 		if person == null: 
 			return
 		person.update_prt()
+
+func supplement_events():
+	char_events.supplement_events()
