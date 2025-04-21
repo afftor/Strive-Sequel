@@ -1518,7 +1518,7 @@ var scenedict = {
 		text = tr("HYBRIS_ALTAR_CHAR_RESULT2"),
 		tags = ['active_character_translate'],
 		image = 'mindcontrol',
-		common_effects = [{code = 'change_type_scene_characters', type = 'all', value = 'slave'}],
+		common_effects = [{code = 'change_type_scene_characters', type = 'all', value = 'slave'}, {code = 'clear_subroom'}],
 		options = [
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},
@@ -1660,7 +1660,7 @@ var scenedict = {
 	
 	reveal_map = {
 		text = tr("REVEAL_MAP"),
-		tags = [],
+		tags = ['active_character_translate'],
 		image = 'dungeon_magic_barrier',
 		bonus_effects = [],
 		options = [
@@ -1944,20 +1944,6 @@ var dialogue_inits = {
 		},
 		{
 			code = 'default',
-			name = tr("LIMNROV_OPTION_GUILD"),
-			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage2'}],
-			target = 'cali_act2_workers_2',
-			target_option = 1,
-		},
-		{
-			code = 'default',
-			name = tr("LIMNROV_OPTION_GUILD"),
-			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage3'}],
-			target = 'cali_act2_limnrov',
-			target_option = 1,
-		},
-		{
-			code = 'default',
 			name = tr("DIALOGUEMEETLEADER"),
 			reqs = [{type = 'active_quest_stage', value = 'lilia_finale_quest', stage = 'stage1'}],
 			target = 'lilia_finale_2',
@@ -1976,6 +1962,22 @@ var dialogue_inits = {
 			reqs = [],
 			target = 'workers_introduction2',
 			target_option = 4,
+		},
+	],
+	workers_limnrov = [
+		{
+			code = 'default',
+			name = tr("LIMNROV_OPTION_GUILD"),
+			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage2'}],
+			target = 'cali_act2_workers_2',
+			target_option = 1,
+		},
+		{
+			code = 'default',
+			name = tr("LIMNROV_OPTION_GUILD"),
+			reqs = [{type = 'active_quest_stage', value = 'cali_taming_quest', stage = 'stage3'}],
+			target = 'cali_act2_limnrov',
+			target_option = 1,
 		},
 	],
 	mages_init = [

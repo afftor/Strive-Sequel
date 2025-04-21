@@ -471,6 +471,7 @@ However, while it might seem that Landowners have nothing but contempt for those
 	MATERIALCATEGORYPLANT = "Plant",
 	MATERIALCATEGORYBONE = "Bone",
 	MATERIALCATEGORYCOMPONENT = "Consumable",
+	TOOLTIPHIDDENRESOURCE = "Unknown resource. Progress main story to reveal it",
 	MATERIALMEAT = "Meat",
 	MATERIALMEATDESCRIPT = "A rich source of nutrients. Acquired from hunting. ",
 	MATERIALFISH = "Fish",
@@ -1147,8 +1148,6 @@ Burning: Take 8% of Maximum HP as Fire damage per turn.""",
 	SKILLFIREARRDESCRIPT_2 = """Deals 100% of MATK as {color=yellow|Fire} damage. Has 100% chance to apply Burn for 2 turns. 
 
 Burning: Take 8% of Maximum HP as Fire damage per turn.""",
-	SKILLLIGHTNING = "Lightning",
-	SKILLLIGHTNINGDESCRIPT = "Deals 125% of MATK as {color=yellow|Air} damage. Stuns target for 1 turn.",
 	SKILLMINDBLAST = "Mind Blast",
 	SKILLMINDBLASTDESCRIPT = "Deals 120% of MATK as {color=yellow|Mind} damage.",
 	SKILLPSYCHICBLAST = "Psychic Blast",
@@ -1228,7 +1227,7 @@ Silenced: Can't use Spell type abilities.""",
 	SKILLDRAW_BLOOD = "Draw Blood",
 	SKILLDRAW_BLOODDESCRIPT = """Strike target for 110% of ATK and cause it to Bleed for 2 turns. 
 
-Bleeding: Take 5% of Maximum HP as neutral damage per turn.""",
+Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	SKILLSUNDER = "Sunder",
 	SKILLSUNDERDESCRIPT = "Strike target for 85% of ATK and reduce its DEF by 50% for 5 turns.",
 	SKILLCLEAVE = "Cleave",
@@ -1254,7 +1253,7 @@ Fortified: Incoming Damage is reduced by 25%.""",
 	SKILLDIP_POISON = "Dip Poison",
 	SKILLDIP_POISONDESCRIPT = """Strike target for 100% of ATK and Poison it for 4 turns. 
 
-Poisoned: Take 5% of Maximum HP as neutral damage per turn.""",
+Poisoned: Take 10% of Maximum HP as neutral damage per turn.""",
 	SKILLBACKKICK = "Back Kick",
 	SKILLBACKKICKDESCRIPT = """Strike target for 130% of ATK in melee and apply Silence for 4 turns. 
 
@@ -1312,8 +1311,8 @@ Ensnared: Evasion is reduced by 75.""",
 	SKILLDISINTEGRATEDESCRIPT = "Deals 250% of MATK as {color=yellow|Earth} damage to single target and Stun it for 3 turns. If target can't be stunned, applies Shredded instead.",
 	SKILLWIND_BLADE = "Wind Blade",
 	SKILLWIND_BLADEDESCRIPT = "Deals 60% of MATK as {color=yellow|Air} damage to one target and random enemy.",
-	SKILLIGHTNING = "Lightning",
-	SKILLIGHTNINGDESCRIPT = """Deals 125% of MATK as {color=yellow|Air} damage. Has 50% chance to apply Shock for 2 turns. 
+	SKILLLIGHTNING = "Lightning",
+	SKILLLIGHTNINGDESCRIPT = """Deals 125% of MATK as {color=yellow|Air} damage. Has 50% chance to apply Shock for 2 turns. 
 
 Shocked: Damage is reduced by 15%.""",
 	SKILLHASTE = "Haste",
@@ -1482,7 +1481,7 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	ACTIONSTRONGINFLUENCEDESCRIPT = "Use strong magic to put [name]'s mind into submission. Costs 10 mana.",
 	ACTIONSTRONGINFLUENCEDESCRIPTMASTERY = "Training Action: Magic influence aiming to improve target's obedience. Stronger than Influence.",
 	ACTIONMINDCONTROL = "Hypnosis",
-	ACTIONMINDCONTROLDESCRIPTDESCRIPT = "The stongest control option will greatly bend most minds. Costs 25 mana. Requires Dominator class.",
+	ACTIONMINDCONTROLDESCRIPT = "The stongest control option will greatly bend most minds. Costs 25 mana. Requires Dominator class.",
 	ACTIONMINDCONTROLDESCRIPTMASTERY = "Training Action: Magic influence aiming to improve target's obedience. Stronger than Influence.",
 	ACTIONTYPEPOSITIVE = "Positive",
 	ACTIONTYPEPHYSICAL = "Physical",
@@ -1938,15 +1937,22 @@ Damage +15%, Health +20.""",
 Consent represents character's general acceptance of various sexual actions, but it is also heavily affected by partners and situtation.""",
 	INFOSEX_TRAITS = "Sex Traits provide additional effects during sexual interaction. They can be learned, activated and deactivated. Maximum number of activatale traits is based on Sex Factor.",
 	INFORULES_CONDS = "Conditions and rules can be toggled on character, affecting some of their stats and behavior.",
-	INFOPERSONALITY = "Character's personality will affect thier banter and provide access to certain traits and bonuses. Personality will be affected by social skills used on character.",
+	INFOPERSONALITY = """Character's personality will affect their banter and provide access to certain traits and bonuses.
+	Neutral: No bonuses
+	Bold: Incoming negative effects last 1 turn less, +5% Productivity
+	Kind: Outcoming positive buffs last 1 turn more, +10% Service
+	Serious: Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)\nTask Crit Chance +3%
+	Shy: Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax
+	""",
+	
 	INFOPERSONALITYBOLD = """Bold
 Incoming negative effects last 1 turn less\n+5% Productivity""",
 	INFOPERSONALITYKIND = """Kind
 Outcoming positive buffs last 1 turn more\n+10% Service""",
 	INFOPERSONALITYSERIOUS = """Serious
-Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax""",
+Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)\nTask Crit Chance +3%""",
 	INFOPERSONALITYSHY = """Shy
-Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)""",
+Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax""",
 	INFOSLAVE_CLASS = "Character type will define its options and behavior. Slaves can be forced into sexual services without consent and have higher tolerance for lack of consent in sex. Subordinates become loyal faster but can't be sold or given away.",
 	INFOCONSENT = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. Consent will affect prostitution related jobs.",
 	INFOCONSENTMASTER = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. {color=green|[Master] has no Consent requirements for any actions.}",
@@ -2013,7 +2019,7 @@ Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)""",
 {color=green|Maxed Wits Factor increases experience gain.}""",
 	STATCHARM_FACTORDESCRIPT = """{color=yellow|Charm Factor} represents character's appeal potential. It increases [color=aqua]Charm[/color] growth. [Master]'s charm also increases gold and reputation rewards from repeatable quests and number of dates per week.
 
-{color=green|Maxed Charm Factor furtherly increases social skill efficiency.}""",
+{color=green|Maxed Charm Factor increases Service Productivity and grants additional Charm Check.}""",
 	STATSEXUALS_FACTORDESCRIPT = """{color=yellow|Sex Factor} represents character's sex development potential. It speeds sexual skills acquirement, makes Consent easier to progress and occasionally boosts sexual options in events. [Master]'s Sex factor also increases number of sex interactions per week.
 
 {color=green|Maxed Sex Factor provides Speed bonus}.""",
@@ -2735,7 +2741,7 @@ Increased Health, DEF and MDEF""",
 	TRAITEFFECTREINCARNATE = "Will be reborn on death",
 	TRAITEFFECTHOLY = "Divine Radiance: -20 MDEF",
 	TRAITEFFECTPOSITIONTAKEN = "Position Taken: +50 Armor Penetration; +20%% Damage",
-	TRAITEFFECTWINDWALL = "Wind Wall: -50%% Randged Damage",
+	TRAITEFFECTWINDWALL = "Wind Wall: -50%% Ranged Damage",
 	TRAITEFFECTPETSUIT = """When wearer has Pet class:
 Charm: +10
 Social skills effect: +10%.""",
@@ -2785,10 +2791,10 @@ Social skills effect: +10%.""",
 	BUFFDESCRIPTVOID = "Void",
 	BUFFDESCRIPTDEFEND = "Defend",
 	BUFFDESCRIPTREGEN = "Health regeneration",
-	BUFFDESCRIPTBURNING = "Burning: Take 8%% of Maximum HP as Fire damage per turn",
+	BUFFDESCRIPTBURNING = "Burning: Take 7%% of Maximum HP as Fire damage per turn",
 	BUFFDESCRIPTDARKFLAME = "Dark Flame: Take 10%% of Maximum HP as neutral damage per turn",
-	BUFFDESCRIPTPOISON = "Poisoned: Take 5%% of Maximum HP as neutral damage per turn",
-	BUFFDESCRIPTBLEEDING = "Bleeding: Take 5%% of Maximum HP as neutral damage per turn",
+	BUFFDESCRIPTPOISON = "Poisoned: Take 10%% of Maximum HP as neutral damage per turn",
+	BUFFDESCRIPTBLEEDING = "Bleeding: Take 10%% of Maximum HP as neutral damage per turn",
 	BUFFDESCRIPTCONFUSE = "Confusion",
 	BUFFDESCRIPTFREEUSE = "Allows to use an item without taking a turn",
 	BUFFDESCRIPTSHRED = "Shredded: DEF is reduced by 50%%",
@@ -2801,6 +2807,8 @@ Social skills effect: +10%.""",
 	BUFFDESCRIPTATKPAS = "Damage increased",
 	BUFFDESCRIPTATTACKPASSSRC = "Increases ATK and MATK of allies by 10 every other turn. Clears when defeated.",
 	BUFFDESCRIPTRESTO = "Resting: physical resist increased by 20%%",
+	BUFFDESCRIPTDEATHKNIGHT = "Hit Rate, Attack and Neutral Resists are increased",
+	BUFFDESCRIPTTEMPLAR = "MDEF Increaased",
 	BUFFDESCRIPTCURSE = "",
 	BUFFDESCRIPTENCHANT = "",
 	BUFFDESCRIPTMENTOR = "Experience Gain increased",
@@ -2820,7 +2828,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	BUFFDESCRIPTENSNARE = "Ensnared: Evasion is reduced by 75",
 	RESETTRAINREQ = "Reset training to step 0 and restore Spirit. Requires Oblivion potion.",
 	BUFFDESCRIPTDEFENDER = "Defender: Will shield allies from attacks unless stunned.",
-	BUFFDESCRIPTCOMMANDBONUS = "Increased Damage Dealth and reduce Damage Received.",
+	BUFFDESCRIPTCOMMANDBONUS = "Increased Damage Dealt and reduce Damage Received.",
 	TRAITEFFECTBLESSING = "Hit rate and Evasion increased.",
 	CHALLENGESTRENGTH = "Strength Challenge",
 	CHALLENGEDEXTERITY = "Dexterity Challenge",
@@ -2943,7 +2951,7 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	PROFTECHNOMANCER = "Technomancer",
 	PROFTECHNOMANCERDESCRIPT = "By merging magic and technology these specialists are capable of producing very unique results.",
 	PROFPYROMANCER = "Pyromancer",
-	PROFPROFPYROMANCERDESCRIPT = "Devoting their powers to the way of fire, certain individuals are capable of truly mastering it at the cost of abandoning most other magich schools.",
+	PROFPYROMANCERDESCRIPT = "Devoting their powers to the way of fire, certain individuals are capable of truly mastering it at the cost of abandoning most other magich schools.",
 	PROFALIOS_CHAMPION = "Champion of Alios",
 	PROFALIOS_CHAMPIONDESCRIPT = "A lone girl with mysterious powers and the past. One thing is clear, her divine affiliation is real. ",
 	PROFNIXX_CHAMPION = "Champion of Nixx",
@@ -2955,7 +2963,7 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	PROFACOLYTE = "Acolyte",
 	PROFACOLYTEDESCRIPT = "Individuals have devoted their life to mending to others. ",
 	PROFPRIEST = "Priest",
-	PROFPRIESTDESCRIPT = "Devoted to their faith and helping others, priests are strong healers capable of meding to serious wounds.",
+	PROFPRIESTDESCRIPT = "Devoted to their faith and helping others, priests are strong healers capable of mending to serious wounds.",
 	PROFMONK = "Monk",
 	PROFMONKDESCRIPT = "Religious fighters who utilize their spiritual training to deal with the enemies.",
 	PROFBISHOP = "Bishop",
@@ -3413,6 +3421,7 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	SEXTRAITLIKES_BEASTS = "Likes them beasty",
 	SEXTRAITBISEXUAL = "Bisexual",
 	SEXTRAITMONOGAMOUS = "Monogamous",
+	SEXTRAITFAMILY_FIRST = "Family First",
 	SEXTRAITOPEN_MINDED = "Open-minded",
 	SEXTRAITDEVIANT = "Deviant",
 	SEXTRAITGROUP = "Company Lover",
@@ -3474,6 +3483,7 @@ Sex skills are increased when performing related action and their growth is depe
 	SEXTRAITDISLIKE_TAILDESCRIPT = "[name] expresses dislike for certain lewd actions. [His] consent and the effect of received actions are lowered for [him]. ",
 	SEXTRAITBISEXUALDESCRIPT = "[name] does not mind having sex with people of [his] gender. Removes consent penalty from same-sex partners. Allows romance with residents of same sex.",
 	SEXTRAITMONOGAMOUSDESCRIPT = "[name] only is interested in relationship with a single partner. Boosts consent and effects of the actions from [his] selected person. Prevents [name] from accepting more than one romantic partner.",
+	SEXTRAITFAMILY_FIRSTDESCRIPT = "[name] does not mind engaging into relationship with [his] relatives. Removes consent penalty from sexual interactions with relatives. Allows [name] to accept relatives as romantic partners.",
 	SEXTRAITOPEN_MINDEDDESCRIPT = "[name] is rather accepting of [his] partners, having no issues with them having different body structures. Removes consent penalty from different body shape partners.",
 	SEXTRAITDEVIANTDESCRIPT = "[name] has some deviant tastes, having no problem from engaging in lewd actions with animals and even undead. Removes consent penalty from animal and undead partners.",
 	SEXTRAITGROUPDESCRIPT = "[name] accepts having multiple partners at once as a natural thing. Removes consent penalty from group actions.",
@@ -3679,7 +3689,7 @@ If you have enough cash...""",
 	DIALOGUEENEMYSTRSCARE = "The group of enemies ahead seems hesitating sensing your approach. You might be able to scare them off and avoid the fight by displaying your power...",
 	DIALOGUEENEMYSTRSCARESELECT = "[Strength Challenge] Select Character",
 	DIALOGUEENEMYSTRSCAREPASS = "[name] scares the hostiles away from the path, letting the rest of the group to pass free.",
-	DIALOGUEENEMYDEXSNEAK = "The group of enemies head are unaware of your pressence. Sneaking past them might be possible ",
+	DIALOGUEENEMYDEXSNEAK = "The group of enemies head are unaware of your pressence. Sneaking past them might be possible. ",
 	DIALOGUEENEMYDEXSNEAKSELECT = "[Dexterity Challenge] Select Character",
 	DIALOGUEENEMYDEXSNEAKPASS = "[name] manages to get on the other side of the pass and distracts the group of enemies who leave in other direction.",
 	DIALOGUEEVENTENEMYDISTRACT = "The group of enemies ahead seem rather unfocused and unwilling to fight. Perhaps surrendering one of your captives to them will persuade them to let you pass.",
@@ -3783,6 +3793,7 @@ As the [boy] is made your slave, [he] can be a very useful addition to your roos
 	
 	CHARLOVERS = "[name] and [scncharname] have approached you and asked to let them become lovers.",
 	CHARFREELOVERS = "[name] and [scncharname] have approached you and asked to let them become paramour.",
+	REVEAL_MAP = "[name] casts Wind Whispers, grasping the layout of surrounding areas. ",
 	CHARLOVERSALLOW = "*Allow*",
 	CHARFREELOVERSALLOW = "*Allow*",
 	CHARLOVERSFORBID = "*Forbid*",
@@ -3825,6 +3836,7 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ITEMMAP_ANCIENT_JUNGLE = "Map: Ancient Jungles",
 	ITEMMAP_FIRE_DEPTHS = "Map: Fire Depths",
 	ITEMMAP_REBEL_REDOUBT = "Map: Rebel Redoubt",
+	ITEMMAP_GOBLIN_STRONGHOLD = "Map: Goblin Stronghold",
 	ITEMMAP_BANDIT_DENDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
 	ITEMMAP_BANDIT_FORTDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
 	ITEMMAP_GROVEDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
@@ -3834,6 +3846,7 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ITEMMAP_ANCIENT_JUNGLEDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
 	ITEMMAP_FIRE_DEPTHSDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
 	ITEMMAP_REBEL_REDOUBTDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
+	ITEMMAP_GOBLIN_STRONGHOLDDESCRIPT = "A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.",
 	LOCATIONNAMESKIRMISH_BANDIT_CAMP = "Bandit Camp",
 	LOCATIONNAMESKIRMISH_FOREST_WOLVES = "Forest",
 	LOCATIONNAMEDUNGEON_BANDIT_DEN = "Bandit Den",
@@ -3845,6 +3858,7 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	LOCATIONNAMEDUNGEON_UNDEAD_CRYPT = "Crypt",
 	LOCATIONNAMEDUNGEON_MOUNTAINS = "Mountain Cave",
 	LOCATIONNAMEDUNGEON_VOLCANO = "Volcanic Cave",
+	LOCATIONNAMEDUNGEON_GOBLIN_STRONGHOLD = "Goblin Stronghold",
 	LOCATIONNAMEDUNGEON_CITY = "Ruined City",
 	LOCATIONNAMEBASIC_THREAT_WOLVES = "Skirmish",
 	LOCATIONNAMEDUNGEON_ANCIENT_JUNGLES = "Ancient Jungles",
@@ -3921,6 +3935,12 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYBALLISTA = "Ballista",
 	ENEMYTROLL = "Troll",
 	ENEMYBANDIT_ASSASSIN = "Bandit Assassin",
+	ENEMYPACKLEADER_BOSS = "Leader Of The Pack",
+	ENEMYSERGANT_BOSS = "Sergant",
+	ENEMYCASTELLAN_BOSS = "Castellan",
+	ENEMYJARL_BOSS = "Jarl",
+	ENEMYBOUNTY_HUNTER_BOSS = "Bounty Hunter",
+	ENEMYWARLOCK_BOSS = "Warlock",
 	ENEMYSUMMON_DOG = "Trained Dog",
 	ENEMYSUMMON_SKELETON_MELEE = "Skeleton Warrior",
 	ENEMYSUMMON_SKELETON_ARCHER = "Skeleton Archer",
@@ -5195,9 +5215,37 @@ The princess notices Aire tensing up in response to the question.
 	ENEMYEREBUS_STONE = "Erebus Stone",
 	ENEMYWILD_RAPTOR = "Raptor",
 	ENEMYWILLOWISP = "Will-o-wisp",
+	ENEMYHOBGOBLIN_THUG = "Hobgoblin Thug",
+	ENEMYHOBGOBLIN_CROSSBOWMAN = "Hobgoblin Crossbowman",
+	ENEMYHOBGOBLIN_TORMENTOR = "Hobgoblin Tormentor",
+	ENEMYVARG = "Varg",
+	ENEMYVULTURE = "Vulture",
+	ENEMYWARLORD = "Warlord",
+	ENEMYALCHEMIST = "Alchemist",
+	ENEMYBATTLE_TROLL = "Battle Troll",
 	NO_FIGHT_LOW_OBED = "[name] refuses to participate in a fight. (Combatant must be unlocked)",
+	NO_FIGHT_LOW_OBED2 = "[name] refuses to participate in a fight (low obedience).",
 	CHAR_NO_COMBAT = "[name] has sustained a grave injury and is unable to participate in fights.",
+	PARTY_LIMIT = "Party limit reached.",
+	PARTY_FIXED = "Party is fixed! You can only switch positions.",
 	SENDCHARTOQUESTCONFIRM = "Send this character to quest?",
+	ARENA_NAME = "Arena",
+	ARENA_DEFEAT = "You've been defeated! All arena's progress discarded.",
+	ARENA_START = "You'll have to pay 1000 gold to enter! You also will not be able to add characters to party or leave arena until you finish it. Proceed?",
+	ARENA_FINISH = "If you leave now, you will receive current accumulated reward, but will not be able to finish arena. Are you sure?",
+	ARENA_FINISHED = "You already went into the arena. Wait until it is reset.",
+	ARENA_WELCOME = "Welcome! Arena is opened!",
+	ARENA_UNWELCOME = "Sorry, folks, no more fights today.",
+	ARENA_PARTY_LIMIT = "Party limit",
+	ARENA_CUR_REWARD = "Current rewards:",
+	ARENA_NEXT_REWARD = "Next fight rewards:",
+	ARENA_ROUND = "Round",
+	ARENA_START_BTN = "Fight",
+	ARENA_RETREAT_BTN = "Retreat",
+	ARENA_FINISH_BTN = "Acquire reward",
+	ARENA_LEAVE_BTN = "Leave",
+	ARENA_TIMER = "Next rival in",
+	ARENA_FEE = "You must have 1000 gold to enter arena.",
 	SKILLPOISON_BITE = "Poison Bite",
 	SKILLPOISON_BITE_S = "Poison Bite",
 	SKILLENTANGLE_SA = "Entangle",
@@ -5207,7 +5255,36 @@ The princess notices Aire tensing up in response to the question.
 	SKILLSPIDER_RANGED = "Web Spit",
 	SKILLSTICKY_WEB = "Sticky Web",
 	SKILLPOISON_SPRAY = "Poison Spray",
+	SKILLCLEAVE_W = "Cleave",
+	SKILLCRIPPLING_BITE = "Criplling Bite",
+	SKILLFRIGHTENING_HOWL = "Frightening Howl",
+	SKILLLEADERSMARK_S = "Leader's Mark",
+	SKILLFIRE_LUNG = "Fire Lung",
+	SKILLBLINDING_HEAT = "Blinding Heat",
+	SKILLPURIFICATION_BY_FIRE = "Purification By Fire",
+	SKILLHOT_METAL = "Hot Metal",
+	SKILLSCORCHED_EARTH = "Scorched Earth",
+	SKILLGLACIATION = "Glaciation",
+	SKILLNORTH_WIND = "North Wind",
+	SKILLCRUELTY = "Cruelty",
+	SKILLHUTERS_MARK = "Hunter's Mark",
+	SKILLSHRILL_WHISTLE = "Shrill Whisle",
+	SKILLHUNTING = "Hunting",
+	SKILLENCHANTING_WHISPER = "Enchanting Whisper",
+	SKILLCURSE_OF_DESPAIR = "Curse Of Despair",
 	SKILLSHRED = "Shred",
+	SKILLSNEAK_SHOT = "Sneak Shot",
+	SKILLCRACK_OF_THE_WHIP = "Crack Of The Whip",
+	SKILLTORTURE = "Torture",
+	SKILLRUSTY_TRAP = "Rusty Trap",
+	SKILLSNEAKY_TRICK = "Sneaky Trick",
+	SKILLHEROKILLER = "Herokiller",
+	SKILLFLASH_STONE = "Flash Stone",
+	SKILLSPIKED_BOMB = "Spiked Bomb",
+	SKILLSHOCK_CHARGE = "Shock Charge",
+	SKILLMONSTROUS_SWING = "Monstrous Swing",
+	SKILLMONSTROUS_GRIP = "Monstrous Grip",
+	SKILLBILE_CORROSIVE = "Bile Corrosive",
 	AIRE_AMELIA1 = """
 Amelia entered Aire's cell with a neat black satchel and a smile on her face.
 
@@ -5541,7 +5618,7 @@ She patiently observed the battlefield, as the guilds' troops advanced toward th
 As more groups were approaching Duncan he and his unit dwindled as it grew fatigued.""",
 	BETRAYAL_CONFIRMED_7 = """{color=aqua|Greg: — It was your mistake to rush in, even more so to lead the charge personally.}
 
-{color=yellow|Duncan: — Who else would it do?}
+{color=yellow|Duncan: — Who else would do it?}
 
 {color=aqua|Greg: — Perhaps it's time for you to surrender.}
 
@@ -5737,7 +5814,7 @@ She passes you a roll of paper she took from the pile on a small table. As you u
 — Well, here you go. Let us meet again, then.""",
 	DIVINE_SYMBOL_43 = """
 
-— Here we go. Happy? Hey, do you mind giving me a piggyback ride? My brains really hurt after all this work, you know.""",
+— Here we go. Happy? Hey, do you mind giving me a piggyback ride? My head really hurts after all this work, you know.""",
 	DIVINE_SYMBOL_44 = "As the barrier fell, Duncan ordered an immediate attack. Many of the rebel troops were caught off guard resting and unable to rally a quick response. As the guilds' army slowly advanced into town no one took much notice of your small group, allowing you to escape easily.",
 	DIVINE_SYMBOL_45 = """{color=aqua|Greg: — What the hell... Shit, what happened to the barrier!?}
 
@@ -7150,7 +7227,7 @@ You push Anastasia to the floor and she spreads her legs wide for you. You mount
 	ITEMGARB_OF_FORESTDESCRIPT = "A medium leather armor which does not seem to be made by either men or elves. It gives an ancient feeling to it.",
 	ITEMCHLOE_GOGGLES = "Chloe's Goggles",
 	ITEMCHLOE_GOGGLESDESCRIPT = "A pair of gnome goggles suited for inventors and scientists.",
-	ITEMPRIESTESS_TIARA = "Prestess' Tiara",
+	ITEMPRIESTESS_TIARA = "Priestess' Tiara",
 	ITEMPRIESTESS_TIARADESCRIPT = "A ritual elven headpiece of the head priestess.",
 	ITEMXARI_AMULET = "Xari's Amulet",
 	ITEMXARI_AMULETDESCRIPT = "Personal work of Xari gifted to you for your help. It shines with imbued power of its maker.",
@@ -9290,7 +9367,7 @@ You give Jean the directions to your mansion and leave her to it.""",
 	LILIA_INTRO_2_OPTION_2 = "*Refuse*",
 	LILIA_INTRO_3_1 = "— Thanks! Looking forward to living at your place.",
 	LILIA_INTRO_3_2 = "— Aww... Let me know if you change your mind!",
-	CALI_INTRO = "As you make your way through the fort, you find a short note from some slavers who seem to be in contact with local bandits. It identifies a small cave at a nearby location which is used as a safe house and describes how the slavers are forced to stay there for now. You write this information down and move on.",
+	CALI_INTRO = "As you make your way through the cave, you find a short note from some slavers who seem to be in contact with local bandits. It identifies a small cave at a nearby location which is used as a safe house and describes how the slavers are forced to stay there for now. You write this information down and move on.",
 	CALI_INTRO_1 = """You come across a small group of slavers who greet you.
 
 {color=aqua|Slaver: — Hey, it seems we have a guest. We don't wanna fight. Actually, we wanna get rid of some leftover merchandise and get on with it. You seem like a respectable gentleman.}
@@ -9546,7 +9623,7 @@ You see Cali lying on the bed with bare bottom and her legs spread as she meekly
 As she turns to you, she realizes you've been looking at her for some time. Her face is rich with blush and she's unsure how to react.
 
 — [Master]?! This is...""",
-	CALI_SEX_1_OPTION_1 = "This feels good isn't it?",
+	CALI_SEX_1_OPTION_1 = "This feels good doesn't it?",
 	CALI_SEX_1_OPTION_2 = "You should lock the door next time.",
 	CALI_SEX_1_OPTION_3 = "*Leave quietly*",
 	CALI_SEX_2_3 = "You decide to ignore it and close the door...",
@@ -12456,7 +12533,7 @@ Amelia: — Very well. Mayor [name], according to what I have been told, you hav
 	AMELIA_TRIAL_14_OPTION_1 = "I offered my help. Norlan tried to convince me to not get involved.",
 	AMELIA_TRIAL_14_OPTION_2 = "Of course it was my idea. You don't just disappear on your own, Amelia.",
 	AMELIA_TRIAL_15_2 = "Amelia: — I will keep that in mind for the future, [mister] Mayor. Do you remember what was Norlan's reaction to your suggestion?",
-	AMELIA_TRIAL_15 = """Member 2: — I... I wish to add something! I was in the room with them when this conversation happened, and Norlan was rather reluctant to accept the mayor's help. I thought it was strange too. We were in chaos, and there he was, refusing the help the mayor was so kind to offer!
+	AMELIA_TRIAL_15 = """\nMember 2: — I... I wish to add something! I was in the room with them when this conversation happened, and Norlan was rather reluctant to accept the mayor's help. I thought it was strange too. We were in chaos, and there he was, refusing the help the mayor was so kind to offer!
 
 Norlan: — I understand how it might seem that way, but my intention wasn't to dissuade you. I merely wanted to spare you from the troubles we were fully capable of managing on our own. Using the term 'chaos' seems a bit exaggerated.""",
 	AMELIA_TRIAL_15_ = """Amelia: — There you have it, Norlan. Two witnesses. 
@@ -12871,20 +12948,20 @@ Zephyra: — I wish I could lie about it, but my agreement requires me to confir
 
 Zephyra: — Uh, huh, a long time ago then...
 
-Wirenth: — I know you are a fairly recently became his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
+Wirenth: — I know you have fairly recently become his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
 
-Zephyra: — You've done well flattering me, might I ask what can I do for your dutious worship?""",
+Zephyra: — You've done well flattering me, might I ask what can I do for your dutiful worship?""",
 	ZEPHYRA_COSTUME_3_2 = """Elf: — I knew it! My name is Wirenth, I've been a devoted Alios follower since the times he was in our lands.
 
 Zephyra: — Uh, huh, a long time ago then...
 
-Wirenth: — I know you are a fairly recently became his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
+Wirenth: — I know you have fairly recently become his Champion, but I knew one day Alios will give us a sign. You even look somewhat similar to our High Priestess with a beautiful face and gorgeous long white hair!
 
 Zephyra: — ...Former High Priestess.
 
 Wirenth: — Gah, this is less important than meeting a herald of Alios herself.
 
-Zephyra: — You've done well flattering me, might I ask what can I do for your dutious worship?""",
+Zephyra: — You've done well flattering me, might I ask what can I do for your dutiful worship?""",
 	ZEPHYRA_COSTUME_3_3 = """Zephyra: — Well, this is a shame, but I'm afraid because of my selfish [Master] I won't be able to help you out. 
 
 Wirenth: — Oh... Uh, alright... I wish you the best on your journey... 
@@ -13121,7 +13198,7 @@ Sigmund adds a small mark on your map.""",
 — Good work, Mayor. Here's a bit for yar trouble.
 
 — The crystal? I dunno about dis, maybe ask mages, seems somethin' magical to me.""",
-	LILIA_FINALE_1 = """As you return to your office, you are abrupt by Lilia barging inside. 
+	LILIA_FINALE_1 = """As you return to your office, Lilia abruptly barges inside. 
 
 — [Master], what are you doing? You were away so...
 
@@ -16121,7 +16198,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	COMBAT_WIN_LINE1 = "Phew, we did it, [Master]...",
 	COMBAT_WIN_LINE2 = "Hah, piece of cake. Who's next?",
 	COMBAT_WIN_LINE3 = "Well fought. Lets move on, [Master]. ",
-	COMBAT_WIN_LINE4 = "I'm glad we won, but let's stay cautious. ",
+	COMBAT_WIN_LINE4 = "It was easy, but let's stay cautious. ",
 	COMBAT_WIN_LINE5 = "Hah, I didn't even break a sweat.",
 	COMBAT_WIN_LINE6 = "That was really scary. I hope these were the last of them...",
 	COMBAT_WIN_LINE7 = "I... Can't believe we won...",
@@ -16137,10 +16214,10 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	COMBAT_WIN_LINE17 = "Shouldn't have challenged me!",
 	COMBAT_WIN_LINE18 = "Done already!?",
 	COMBAT_WIN_LINE19 = "Damn! I wanted to fight some more.",
-	COMBAT_WIN_LINE20 = "Pathetic. Why even bother attacking?",
+	COMBAT_WIN_LINE20 = "Pathetic. Why even bother challenging us?",
 	COMBAT_WIN_LINE21 = "I hope they're okay...",
 	COMBAT_WIN_LINE22 = "Is everyone alright?",
-	COMBAT_WIN_LINE23 = "Why did we have to fight?",
+	COMBAT_WIN_LINE23 = "Did we have to fight?..",
 	COMBAT_WIN_LINE24 = "We couldn't talk this out...?",
 	COMBAT_WIN_LINE25 = "Let's hope we don't have to fight again...",
 	SEX_START_LINE1 = "Um... you really want me to do this? I'm not sure I'm ready...",
@@ -16674,7 +16751,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	AREAPLAINS = "Plains",
 	AREAFORESTS = "Forests",
 	AREAMOUNTAINS = "Mountains",
-	AREASTEPPE = "Steppe",
+	AREAEMPIRE = "Empire",
 	AREASEAS = "Seas",
 	AREABEASTKIN_TRIBE = "Far Forests",
 	AREACAPITALS = "Capitals",
@@ -17001,6 +17078,29 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	DUNGEONADJ14 = "Crystal",
 	DUNGEONADJ15 = "Deadly",
 	DUNGEONADJ16 = "Roaring",
+	GOBLIN_STRONGHOLD_NOUNS1 = "Stronghold",
+	GOBLIN_STRONGHOLD_NOUNS2 = "Warren",
+	GOBLIN_STRONGHOLD_NOUNS3 = "Hold",
+	GOBLIN_STRONGHOLD_NOUNS4 = "Bastion",
+	GOBLIN_STRONGHOLD_NOUNS5 = "Fortress",
+	GOBLIN_STRONGHOLD_NOUNS6 = "Keep",
+	GOBLIN_STRONGHOLD_NOUNS7 = "Spire",
+	GOBLIN_STRONGHOLD_NOUNS8 = "Crag",
+	GOBLIN_STRONGHOLD_NOUNS9 = "Rookery",
+	GOBLIN_STRONGHOLD_NOUNS10 = "Hovel",
+
+	GOBLIN_STRONGHOLD_ADJS1 = "Goblin",
+	GOBLIN_STRONGHOLD_ADJS2 = "Fetid",
+	GOBLIN_STRONGHOLD_ADJS3 = "Squalid",
+	GOBLIN_STRONGHOLD_ADJS4 = "Jagged",
+	GOBLIN_STRONGHOLD_ADJS5 = "Ragged",
+	GOBLIN_STRONGHOLD_ADJS6 = "Crude",
+	GOBLIN_STRONGHOLD_ADJS7 = "Wretched",
+	GOBLIN_STRONGHOLD_ADJS8 = "Savage",
+	GOBLIN_STRONGHOLD_ADJS9 = "Cluttered",
+	GOBLIN_STRONGHOLD_ADJS10 = "Horde",
+	GOBLIN_STRONGHOLD_ADJS11 = "Marauding",
+	GOBLIN_STRONGHOLD_ADJS12 = "Ramshackle",
 	QUEST_FIGHTERS_LICH_TEXT = "Lich's Hideout",
 	QUEST_FIGHTERS_LICH_DESC = "By following Duncan's instructions, you find a small hideout which has a traces of undead monsters.",
 	QUEST_MAGES_XARI_TEXT = "Xari's Hut",
@@ -17562,7 +17662,7 @@ While this was an unpleasant expirience for [name], it will certainly teach [him
 {color=green|It seems [name] does not mind to continue this encounter...}""",
 	DATING_CHAT_DESC_1 = "Have a friendly chat. Will boost Mood slightly.",
 	DATING_CHAT_1 = "Chat",
-	DATING_FLIRT_DESC_1 = "Flirt with [name]. Will slightly improve Consent if Mood is high. Slightly increases Consent if mood is above low.",
+	DATING_FLIRT_DESC_1 = "Flirt with [name].",
 	DATING_FLIRT_1 = "Flirt",
 	DATING_INTIMATE_DESC_1 = "Have an intimate talk in attempt to learn more about [name]'s preferences. Can only be used once.",
 	DATING_INTIMATE_1 = "Intimate Talk",

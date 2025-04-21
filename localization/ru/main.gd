@@ -484,6 +484,7 @@ var TranslationDict = {
 	MATERIALCATEGORYPLANT = """Растения""",
 	MATERIALCATEGORYBONE = """Кость""",
 	MATERIALCATEGORYCOMPONENT = """Расходуемое""",
+	TOOLTIPHIDDENRESOURCE = """Unknown resource. Progress main story to reveal it""", # MISSING TRANSLATION
 
 	MATERIALMEAT = """Мясо""",
 	MATERIALMEATDESCRIPT = """Богатый источник питательных веществ. Добывается на охоте.""",
@@ -1521,6 +1522,7 @@ Hotkey: 3""",
 	ACTIONSTRONGINFLUENCEDESCRIPT = """Использовать сильную магию, чтобы подчинить разум [name].Тратит 10 маны.""",
 	ACTIONSTRONGINFLUENCEDESCRIPTMASTERY = "Тренировочное действие: Магическое воздействие, направленное на улучшение повиновеня цели. Сильнее, чем обычное Влияние.",
 	ACTIONMINDCONTROL = """Гипноз""",
+	ACTIONMINDCONTROLDESCRIPT = """The stongest control option will greatly bend most minds. Costs 25 mana. Requires Dominator class.""", # MISSING TRANSLATION
 	ACTIONMINDCONTROLDESCRIPTDESCRIPT = """Самый сильный вариант контроля сильно помутит большинство умов. Тратит 25 маны. Требуется класс Доминатор.""",
 	ACTIONMINDCONTROLDESCRIPTMASTERY = "Тренировочное действие: Магическое воздействие, направленное на улучшение повиновеня цели. Сильнее, чем обычное Влияние.",
 	ACTIONTYPEPOSITIVE = """Позитивный.""",
@@ -2970,6 +2972,8 @@ Requires: Базовый рабский труд""",
 	BUFFDESCRIPTATKPAS = """Урон увеличен""",
 	BUFFDESCRIPTATTACKPASSSRC = """Увеличивает ATK и MATK союзников на 10 каждый второй ход. Снимается при поражении""",
 	BUFFDESCRIPTRESTO = """Отдых: физическое сопротивление увеличено на 20%%""",
+	BUFFDESCRIPTDEATHKNIGHT = """Hit Rate, Attack and Neutral Resists are increased""", # MISSING TRANSLATION
+	BUFFDESCRIPTTEMPLAR = """MDEF Increaased""", # MISSING TRANSLATION
 	BUFFDESCRIPTCURSE = """ """,
 	BUFFDESCRIPTENCHANT = """ """,
 	BUFFDESCRIPTMENTOR = """Прирост опыта увеличен""",	
@@ -3114,6 +3118,7 @@ Requires: Базовый рабский труд""",
 	PROFTECHNOMANCER = """Техномансер""",
 	PROFTECHNOMANCERDESCRIPT = """Благодаря слиянию магии и технологии эти специалисты способны добиваться уникальных результатов.""",
 	PROFPYROMANCER = """Пиромант""",
+	PROFPYROMANCERDESCRIPT = """Devoting their powers to the way of fire, certain individuals are capable of truly mastering it at the cost of abandoning most other magich schools.""", # MISSING TRANSLATION
 	PROFPROFPYROMANCERDESCRIPT = """Посвятив свои силы огненному пути, некоторые люди способны по-настоящему овладеть им ценой отказа от большинства других магических школ.""",
 
 	PROFALIOS_CHAMPION = """Чемпион Алиоса""",
@@ -3640,6 +3645,7 @@ Requires: Базовый рабский труд""",
 	SEXTRAITLIKES_BEASTS = """Любитель зверюшек""",
 	SEXTRAITBISEXUAL = """Бисексуальность""",
 	SEXTRAITMONOGAMOUS = """Моногамность""",
+	SEXTRAITFAMILY_FIRST = """Family First""", # MISSING TRANSLATION
 	SEXTRAITOPEN_MINDED = """Открыто мыслящий""",
 	SEXTRAITDEVIANT = """Девиантность""",
 	SEXTRAITGROUP = """Любитель компании""",
@@ -3708,6 +3714,7 @@ Requires: Базовый рабский труд""",
 
 	SEXTRAITBISEXUALDESCRIPT = """[name] не против секса с людьми своего пола. Снимает штраф за согласие с однополых партнеров""",
 	SEXTRAITMONOGAMOUSDESCRIPT = """[name] интересуется только отношениями с одним партнером. Усиливает согласие и эффект от действий с [his] выбранным персонажем. Предотвращает [name] принимать более одного романтического партнера.""",
+	SEXTRAITFAMILY_FIRSTDESCRIPT = """[name] does not mind engaging into relationship with [his] relatives. Removes consent penalty from sexual interactions with relatives. Allows [name] to accept relatives as romantic partners.""", # MISSING TRANSLATION
 	SEXTRAITOPEN_MINDEDDESCRIPT = """[name] скорее принимает [his] партнеров, не возражая против того, что у них разное строение тела. Снимает штраф за согласие с партнерами с разным телосложением""",
 	SEXTRAITDEVIANTDESCRIPT = """[name] имеет некоторые девиантные вкусы, без проблем участвуя в развратных действиях с животными и даже нежитью. Снимает штраф за согласие с партнеров-животных и нежити.""",
 	SEXTRAITGROUPDESCRIPT = """[name] принимает наличие нескольких партнеров одновременно как естественное явление. Снимает штраф за согласие на групповые действия.""",
@@ -4072,6 +4079,7 @@ Requires: Базовый рабский труд""",
 	TRIBALELVES_WIN = """Когда вы побеждаете нападающих, они поспешно отступают, но один из них остался позади, и вашей партии удается их одолеть.""",
 	CHARLOVERS = """[name] и [scncharname] обратились к вам и попросили позволить им стать больше чем любовниками.""",
 	CHARFREELOVERS = """[name] и [scncharname] обратились к вам и попросили разрешить им стать любовниками.""",
+	REVEAL_MAP = """[name] casts Wind Whispers, grasping the layout of surrounding areas. """, # MISSING TRANSLATION
 	CHARLOVERSALLOW = """*Разрешить*""",
 	CHARFREELOVERSALLOW = """*Разрешить*""",
 	CHARLOVERSFORBID = """*Forbid*""", # MISSING TRANSLATION
@@ -4121,6 +4129,7 @@ Requires: Базовый рабский труд""",
 	ITEMMAP_ANCIENT_JUNGLE = """Карта: Древние джунгли""",
 	ITEMMAP_FIRE_DEPTHS = """Карта: Огненные глубины""",
 	ITEMMAP_REBEL_REDOUBT = """Карта: Форт повстанцев""",
+	ITEMMAP_GOBLIN_STRONGHOLD = """Map: Goblin Stronghold""", # MISSING TRANSLATION
 	ITEMMAP_BANDIT_DENDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
 	ITEMMAP_BANDIT_FORTDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
 	ITEMMAP_GROVEDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
@@ -4130,6 +4139,7 @@ Requires: Базовый рабский труд""",
 	ITEMMAP_ANCIENT_JUNGLEDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
 	ITEMMAP_FIRE_DEPTHSDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
 	ITEMMAP_REBEL_REDOUBTDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
+	ITEMMAP_GOBLIN_STRONGHOLDDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
 
 
 	LOCATIONNAMESKIRMISH_BANDIT_CAMP = """Лагерь разбойников""",
@@ -4143,6 +4153,7 @@ Requires: Базовый рабский труд""",
 	LOCATIONNAMEDUNGEON_UNDEAD_CRYPT = """Склеп""",
 	LOCATIONNAMEDUNGEON_MOUNTAINS = """Горная пещера""",
 	LOCATIONNAMEDUNGEON_VOLCANO = """Вулканическая пещера""",
+	LOCATIONNAMEDUNGEON_GOBLIN_STRONGHOLD = """Goblin Stronghold""", # MISSING TRANSLATION
 	LOCATIONNAMEDUNGEON_CITY = """Разрушенный город""",
 	LOCATIONNAMEBASIC_THREAT_WOLVES = """Стычка""",
 	LOCATIONNAMEDUNGEON_ANCIENT_JUNGLES = """Древние джунгли""",
@@ -4220,6 +4231,12 @@ Requires: Базовый рабский труд""",
 	ENEMYBALLISTA = """Баллиста""",
 	ENEMYTROLL = """Тролль""",
 	ENEMYBANDIT_ASSASSIN = """Бандит-ассасин""",
+	ENEMYPACKLEADER_BOSS = """Leader Of The Pack""", # MISSING TRANSLATION
+	ENEMYSERGANT_BOSS = """Sergant""", # MISSING TRANSLATION
+	ENEMYCASTELLAN_BOSS = """Castellan""", # MISSING TRANSLATION
+	ENEMYJARL_BOSS = """Jarl""", # MISSING TRANSLATION
+	ENEMYBOUNTY_HUNTER_BOSS = """Bounty Hunter""", # MISSING TRANSLATION
+	ENEMYWARLOCK_BOSS = """Warlock""", # MISSING TRANSLATION
 	ENEMYSUMMON_DOG = """Тренированный пес""",
 	ENEMYSUMMON_SKELETON_MELEE = """Скелет-воин""",
 	ENEMYSUMMON_SKELETON_ARCHER = """Скелет-лучник""",
@@ -5701,9 +5718,37 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	ENEMYEREBUS_STONE = """Камень Эребуса""",
 	ENEMYWILD_RAPTOR = """Раптор""",
 	ENEMYWILLOWISP = """Блуждающий огонек""",
+	ENEMYHOBGOBLIN_THUG = """Hobgoblin Thug""", # MISSING TRANSLATION
+	ENEMYHOBGOBLIN_CROSSBOWMAN = """Hobgoblin Crossbowman""", # MISSING TRANSLATION
+	ENEMYHOBGOBLIN_TORMENTOR = """Hobgoblin Tormentor""", # MISSING TRANSLATION
+	ENEMYVARG = """Varg""", # MISSING TRANSLATION
+	ENEMYVULTURE = """Vulture""", # MISSING TRANSLATION
+	ENEMYWARLORD = """Warlord""", # MISSING TRANSLATION
+	ENEMYALCHEMIST = """Alchemist""", # MISSING TRANSLATION
+	ENEMYBATTLE_TROLL = """Battle Troll""", # MISSING TRANSLATION
 	NO_FIGHT_LOW_OBED = """[name] отказывается участвовать в бою. ('Боец' должен быть разблокирован)""",
+	NO_FIGHT_LOW_OBED2 = """[name] refuses to participate in a fight (low obedience).""", # MISSING TRANSLATION
 	CHAR_NO_COMBAT = """[name] получил тяжелую травму и не может участвовать в боях.""",
+	PARTY_LIMIT = """Party limit reached.""", # MISSING TRANSLATION
+	PARTY_FIXED = """Party is fixed! You can only switch positions.""", # MISSING TRANSLATION
 	SENDCHARTOQUESTCONFIRM = """Отправить этого персонажа на квест?""",
+	ARENA_NAME = """Arena""", # MISSING TRANSLATION
+	ARENA_DEFEAT = """You've been defeated! All arena's progress discarded.""", # MISSING TRANSLATION
+	ARENA_START = """You'll have to pay 1000 gold to enter! You also will not be able to add characters to party or leave arena until you finish it. Proceed?""", # MISSING TRANSLATION
+	ARENA_FINISH = """If you leave now, you will receive current accumulated reward, but will not be able to finish arena. Are you sure?""", # MISSING TRANSLATION
+	ARENA_FINISHED = """You already went into the arena. Wait until it is reset.""", # MISSING TRANSLATION
+	ARENA_WELCOME = """Welcome! Arena is opened!""", # MISSING TRANSLATION
+	ARENA_UNWELCOME = """Sorry, folks, no more fights today.""", # MISSING TRANSLATION
+	ARENA_PARTY_LIMIT = """Party limit""", # MISSING TRANSLATION
+	ARENA_CUR_REWARD = """Current rewards:""", # MISSING TRANSLATION
+	ARENA_NEXT_REWARD = """Next fight rewards:""", # MISSING TRANSLATION
+	ARENA_ROUND = """Round""", # MISSING TRANSLATION
+	ARENA_START_BTN = """Fight""", # MISSING TRANSLATION
+	ARENA_RETREAT_BTN = """Retreat""", # MISSING TRANSLATION
+	ARENA_FINISH_BTN = """Acquire reward""", # MISSING TRANSLATION
+	ARENA_LEAVE_BTN = """Leave""", # MISSING TRANSLATION
+	ARENA_TIMER = """Next rival in""", # MISSING TRANSLATION
+	ARENA_FEE = """You must have 1000 gold to enter arena.""", # MISSING TRANSLATION
 
 	SKILLPOISON_BITE = """Ядовитый укус""",
 	SKILLPOISON_BITE_S = """Ядовитый укус""",
@@ -5714,7 +5759,36 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	SKILLSPIDER_RANGED = """Плевок паутиной""",
 	SKILLSTICKY_WEB = """Липкая паутина""",
 	SKILLPOISON_SPRAY = """Плевок ядом""",
+	SKILLCLEAVE_W = """Cleave""", # MISSING TRANSLATION
+	SKILLCRIPPLING_BITE = """Criplling Bite""", # MISSING TRANSLATION
+	SKILLFRIGHTENING_HOWL = """Frightening Howl""", # MISSING TRANSLATION
+	SKILLLEADERSMARK_S = """Leader's Mark""", # MISSING TRANSLATION
+	SKILLFIRE_LUNG = """Fire Lung""", # MISSING TRANSLATION
+	SKILLBLINDING_HEAT = """Blinding Heat""", # MISSING TRANSLATION
+	SKILLPURIFICATION_BY_FIRE = """Purification By Fire""", # MISSING TRANSLATION
+	SKILLHOT_METAL = """Hot Metal""", # MISSING TRANSLATION
+	SKILLSCORCHED_EARTH = """Scorched Earth""", # MISSING TRANSLATION
+	SKILLGLACIATION = """Glaciation""", # MISSING TRANSLATION
+	SKILLNORTH_WIND = """North Wind""", # MISSING TRANSLATION
+	SKILLCRUELTY = """Cruelty""", # MISSING TRANSLATION
+	SKILLHUTERS_MARK = """Hunter's Mark""", # MISSING TRANSLATION
+	SKILLSHRILL_WHISTLE = """Shrill Whisle""", # MISSING TRANSLATION
+	SKILLHUNTING = """Hunting""", # MISSING TRANSLATION
+	SKILLENCHANTING_WHISPER = """Enchanting Whisper""", # MISSING TRANSLATION
+	SKILLCURSE_OF_DESPAIR = """Curse Of Despair""", # MISSING TRANSLATION
 	SKILLSHRED = """Измельчить""",
+	SKILLSNEAK_SHOT = """Sneak Shot""", # MISSING TRANSLATION
+	SKILLCRACK_OF_THE_WHIP = """Crack Of The Whip""", # MISSING TRANSLATION
+	SKILLTORTURE = """Torture""", # MISSING TRANSLATION
+	SKILLRUSTY_TRAP = """Rusty Trap""", # MISSING TRANSLATION
+	SKILLSNEAKY_TRICK = """Sneaky Trick""", # MISSING TRANSLATION
+	SKILLHEROKILLER = """Herokiller""", # MISSING TRANSLATION
+	SKILLFLASH_STONE = """Flash Stone""", # MISSING TRANSLATION
+	SKILLSPIKED_BOMB = """Spiked Bomb""", # MISSING TRANSLATION
+	SKILLSHOCK_CHARGE = """Shock Charge""", # MISSING TRANSLATION
+	SKILLMONSTROUS_SWING = """Monstrous Swing""", # MISSING TRANSLATION
+	SKILLMONSTROUS_GRIP = """Monstrous Grip""", # MISSING TRANSLATION
+	SKILLBILE_CORROSIVE = """Bile Corrosive""", # MISSING TRANSLATION
 
 
 	AIRE_AMELIA1 = """
@@ -18092,6 +18166,28 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	DUNGEONADJ14 = """Кристалл""",
 	DUNGEONADJ15 = """Смертельный""",
 	DUNGEONADJ16 = """Ревущий""",
+	GOBLIN_STRONGHOLD_NOUNS1 = """Stronghold""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS2 = """Warren""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS3 = """Hold""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS4 = """Bastion""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS5 = """Fortress""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS6 = """Keep""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS7 = """Spire""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS8 = """Crag""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS9 = """Rookery""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_NOUNS10 = """Hovel""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS1 = """Goblin""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS2 = """Fetid""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS3 = """Squalid""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS4 = """Jagged""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS5 = """Ragged""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS6 = """Crude""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS7 = """Wretched""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS8 = """Savage""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS9 = """Cluttered""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS10 = """Horde""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS11 = """Marauding""", # MISSING TRANSLATION
+	GOBLIN_STRONGHOLD_ADJS12 = """Ramshackle""", # MISSING TRANSLATION
 	
 	#dungeons
 	

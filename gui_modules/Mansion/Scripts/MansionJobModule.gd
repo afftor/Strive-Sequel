@@ -375,7 +375,13 @@ func update_resources():
 			if ResourceScripts.world_gen.get_location_from_code(person_location).has("gather_resources"):
 				gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_resources
 	else:
-		gatherable_resources = ResourceScripts.game_world.areas[location.area].gatherable_resources
+		#for this moment no area has gatherable_resources, including plains (for aliron that is)
+		#but I'll keep condition just in case
+		var area_dict = ResourceScripts.game_world.areas[location.area]
+		if area_dict.has('gatherable_resources') and !area_dict.gatherable_resources.empty():
+			print("warning: area %s has gatherable_resources, while it should not" % location.area)
+			gatherable_resources = area_dict.gatherable_resources
+		#------------
 		for i in tasks.tasklist.values():
 			if i.code in ["rest", "brothel", "recruit_easy", "recruit_hard"] or i.tags.has('special'):
 				continue

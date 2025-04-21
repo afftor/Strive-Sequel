@@ -805,6 +805,8 @@ var materiallist = {
 		adjective = '',
 		icon = load("res://assets/images/iconsgear/item_scales.png"),
 		price = 55,
+		progress_per_item = 4,
+		progress_formula = 'hunt_leather_hard',
 		type = 'gem',
 		tier = 'hard',
 		tags = ["no_random"],
@@ -1676,7 +1678,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
-		tags = ['no_random', 'bladed', 'fixed_stats', 'upgradable'], #3 - for using clear bonusstats wihout muliplyer, 4 - for gui filter 
+		tags = ['no_random', 'bladed', 'upgradable'], #3 - for using clear bonusstats wihout muliplyer, 4 - for gui filter 
 		basestats = {atk = 3},
 	},
 	cali_heirloom_active = {
@@ -1694,7 +1696,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
-		tags = ['no_random', 'bladed','enchantable', 'fixed_stats', 'upgradable'], #to correctly set stats with fixed levels
+		tags = ['no_random', 'bladed','enchantable', 'upgradable'], #to correctly set stats with fixed levels
 		basestats = {atk = 35, critchance = 20, hitrate = 20, armorpenetration = 15, enchant_capacity = 400},
 	},
 	
@@ -2335,7 +2337,7 @@ var itemlist = {
 		crafttype = 'modular',
 		type = 'gear',
 		itemtype = 'weapon',
-		geartype = 'spear',
+		geartype = 'club',
 		weaponrange = 'melee',
 		reqs = [],
 		parts = {WeaponMace = 12, WeaponHandle = 8, WeaponEnc = 2},
@@ -2655,7 +2657,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/item_leather_chest_adv.png"),
 		tier = 'hard',
 		price = 0,
-		basestats = {evasion = 20, enchant_capacity = 350},
+		basestats = {evasion = 15, enchant_capacity = 350},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -2795,7 +2797,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/item_leather_pants_adv.png"),
 		tier = 'medium',
 		price = 0,
-		basestats = {evasion = 20, enchant_capacity = 300},
+		basestats = {evasion = 15, enchant_capacity = 300},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -3443,6 +3445,23 @@ var itemlist = {
 		effects = [],
 		tags = [],
 		map = 'dungeon_rebel_redoubt',
+		mansion_effect = 'map',
+	},
+	map_goblin_stronghold = {
+		code = 'map_goblin_stronghold',
+		name = "",
+		descript = "",
+		type = 'usable',
+		itemtype = 'potion',
+		crafttype = 'basic',
+		slots = [],
+		price = 450,
+		icon = load("res://assets/images/iconsitems/scroll2.png"),
+		tier = 'map',
+		reqs = [],
+		effects = [],
+		tags = [],
+		map = 'dungeon_goblin_stronghold',
 		mansion_effect = 'map',
 	},
 	map_ancient_jungle = {
@@ -5864,7 +5883,7 @@ var fixed_quality_stats = {
 			bonusstats = {atk = 70, hitrate = 60, critmod = 0.33, damage_mod_light = 0.5, enchant_capacity = 550},
 		}
 	},
-	holy_lance = { 
+	holy_spear = { 
 		"" : {},
 		epic = {
 			bonusstats = {atk = 50, hitrate = 30, damage_mod_air = 0.20, armor = 15, enchant_capacity = 400},

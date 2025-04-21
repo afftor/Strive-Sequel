@@ -30,6 +30,16 @@ var traits = {
 		tags = ['neutral', 'permanent'],
 		bonusstats = {food_consumption_set = 0, resist_light = -50, resist_dark = 50}
 	},
+	stag_buff = {
+		code = 'stag_buff',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconsskills/trait_undead.png", #fix
+		effects = [],
+		tags = [],
+		bonusstats = {mod_hunt = 0.25, physics = 15, chg_dexterity_max = 1, mastery_stealth = 1}
+	},
 	#body upgrades
 	upgrade_thick_skin = {
 		name = '',
@@ -1356,6 +1366,24 @@ var traits = {
 		effects = ['setup_retarget_default'],
 		tags = ['defender'],
 	},
+	ward_anchor = {
+		code = 'ward_anchor',
+		name = '',
+		descript = '',
+		icon = null, 
+		visible = false,
+		effects = [],
+		tags = ['ward_anchor'],
+	},
+	ward_etb = {
+		code = 'ward_etb',
+		name = '',
+		descript = '',
+		icon = null, 
+		visible = false,
+		effects = ['setup_ward_test'],
+		tags = [],
+	},
 	
 	
 	#exploration related traits
@@ -1673,6 +1701,17 @@ var sex_traits = { #only for interaction tab
 		reqs = [],
 		effects = [],
 	},
+	family_first = {
+		code = "family_first",
+		name = "",
+		descript = "",
+		starting = true,
+		random_generation = true,
+		negative = false,
+		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "satisfied_partners", operant = "eq", value = 1}]}],
+		reqs = [],
+		effects = [],
+	},
 	open_minded = {
 		code = "open_minded",
 		name = "",
@@ -1749,6 +1788,7 @@ var sex_traits = { #only for interaction tab
 		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "mazo_actions", operant = "gte", value = 10}]}],
 		reqs = [{code = "action_tag", value = "punish"}],
 		effects = [{effect = 'sens_bonus', operant = "+", value = 0.5, trigger = 'action_self'}],
+		tags = ['likes_training']
 	},
 	sadist = {
 		code = "sadist",
@@ -1782,6 +1822,7 @@ var sex_traits = { #only for interaction tab
 		negative = false,
 		reqs = [{code = "action_tag", value = "sub"}],
 		effects = [{effect = 'sens_bonus', operant = "+", value = 0.2, trigger = 'action_self'}],
+		tags = ['likes_training']
 	},
 	nymphomania = {
 		code = "nymphomania",
@@ -1859,6 +1900,7 @@ var sex_traits = { #only for interaction tab
 		acquire_reqs = [{code = "actor_check", value = [{code = "stat", type = "unconsented_orgasm", operant = "gte", value = 2}]}],
 		reqs = [],
 		effects = [],#{effect = 'consent_gain', operant = '*', value = 1.5, trigger = 'encounter_end'}],
+		tags = ['likes_training']
 	},
 	
 	teacher = {

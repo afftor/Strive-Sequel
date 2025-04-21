@@ -331,7 +331,7 @@ scroll_horizontal_enabled = false
 
 [node name="Box" type="VBoxContainer" parent="TabContainer/Gameplay2/Scroll"]
 margin_right = 465.0
-margin_bottom = 260.0
+margin_bottom = 216.0
 
 [node name="diff_gf_only_upg" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
 margin_right = 465.0

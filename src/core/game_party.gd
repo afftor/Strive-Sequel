@@ -30,7 +30,10 @@ func _get_key_from_dict(data):
 
 
 func _get_data(char1, char2):
-	return relationship_data[_get_key(char1, char2)]
+	var key = _get_key(char1, char2)
+	if relationship_data.has(key) == false:
+		add_relationship_value(char1, char2, 0)
+	return relationship_data[key]
 
 
 func add_relationship_value(char1, char2, value):
@@ -83,25 +86,34 @@ func attempt_romance(char1, char2):
 	if characters[char2].is_master(): 
 		return 
 	var relationship = _get_data(char1, char2)
-	var lovers_chance = 0
-	var freelovers_chance = 0
+	var chance = 0
 	
 	if relationship.value >= 75:
-		freelovers_chance += 15
-	if relationship.value >= 90:
-		lovers_chance += 10
-		if relationship.status == 'freelovers':
-			lovers_chance += 10
+		chance += 15
+#	if relationship.value >= 90:
+#		chance += 10
+#		if relationship.status == 'freelovers':
+#			chance += 10
 	
 	if relationship.status == 'freelovers':
-		freelovers_chance = 0
+		chance = 0
 	if relationship.status == 'lovers':
-		freelovers_chance = 0
-		lovers_chance = 0
-	if randf() * 100 <= freelovers_chance:
-		input_handler.interactive_message('character_freelovers','multichar_event',{char1 = char1, char2 = char2})
-	elif randf() * 100 <= lovers_chance:
-		input_handler.interactive_message('character_lovers','multichar_event',{char1 = char1, char2 = char2})
+		chance = 0
+	if checkifrelatives(char1, char2):
+		if !characters[char1].check_trait('family_first'):
+			chance = 0
+		if !characters[char2].check_trait('family_first'):
+			chance = 0
+	if randf() * 100 <= chance:
+		var chance2 = 0
+		if characters[char1].check_trait('open_minded'):
+			chance2 += 50
+		if characters[char2].check_trait('open_minded'):
+			chance2 += 50
+		if randf() * 100 <= chance2:
+			input_handler.interactive_message('character_freelovers','multichar_event',{char1 = char1, char2 = char2})
+		else:
+			input_handler.interactive_message('character_lovers','multichar_event',{char1 = char1, char2 = char2})
 
 
 func _in_same_location(char1, char2):
@@ -113,7 +125,7 @@ func _in_same_location(char1, char2):
 		return false
 	if person1.get_location() == ResourceScripts.game_world.mansion_location:
 		if person1.xp_module.work == person2.xp_module.work:
-			if person1.xp_module.work == 'brothel' or person1.xp_module.work == '':
+			if person1.xp_module.work in ['', 'produce', 'brothel']:
 				return true
 			return person1.xp_module.workproduct == person2.xp_module.workproduct
 		else:
@@ -157,15 +169,21 @@ func relation_daily_change_same_loc(char1, char2):
 
 
 func relationship_decay():
+	var cleanup = []
 	for key in relationship_data.keys():
 		var chars = key.split("_")
+		if characters_pool.get_char_by_id(chars[0]) == null or characters_pool.get_char_by_id(chars[1]) == null:
+			cleanup.push_back(key)
+			continue
 		if _in_same_location(chars[0],chars[1]) == false:
-			var value
+			var value = 0
 			if relationship_data[key].value > 51:
 				value = -4
 			elif relationship_data[key].value < 50:
 				value = 4
 			add_relationship_value(chars[0],chars[1], value)
+	for id in cleanup:
+		relationship_data.erase(id)
 
 
 func check_lover_possibility(data, char1, char2):
@@ -204,15 +222,19 @@ func change_relationship_status(char1, char2, new_status):
 	if new_status in ['friends', 'rivals']:
 		var ch1 = characters[char1]
 		var ch2 = characters[char2]
-		globals.text_log_add('char', "%s ans %s has become %s" % [ch1.get_short_name(), ch2.get_short_name(), new_status])
+		globals.text_log_add('char', "%s and %s have become %s" % [ch1.get_short_name(), ch2.get_short_name(), new_status])
 
 
 
 func find_all_relationship(char1):
 	var array = []
+	var cleanup = []
 	for key in relationship_data.keys():
 		if char1 in key.split("_"):
 			var chars = key.split("_")
+			if characters_pool.get_char_by_id(chars[0]) == null or characters_pool.get_char_by_id(chars[1]) == null:
+				cleanup.push_back(key)
+				continue
 			var dict = {relationship = relationship_data[key].status}
 			if char1 == chars[0]:
 				dict.char = chars[1]
@@ -220,6 +242,9 @@ func find_all_relationship(char1):
 				dict.char = chars[0]
 			
 			array.append(dict)
+	
+	for id in cleanup:
+		relationship_data.erase(id)
 	
 	return array
 
@@ -313,6 +338,7 @@ func add_slave(person, child = false):
 
 
 func remove_slave(tempslave, permanent = false):
+	tempslave.remove_from_travel()
 	tempslave.remove_from_task()
 	tempslave.unequip_all()
 	tempslave.clear_training()
@@ -566,7 +592,8 @@ func connectrelatives_old(person1, person2, way):
 		entry = ResourceScripts.game_party.relativesdata[person2.id]
 		entry[way] = person1.id
 		if typeof(person1) != TYPE_DICTIONARY && typeof(person2) != TYPE_DICTIONARY:
-			globals.addrelations(person1, person2, 200)
+			add_relationship_value(person1.id, person2.id, 25)
+			#globals.addrelations(person1, person2, 200)
 	elif way == 'sibling':
 		var entry = ResourceScripts.game_party.relativesdata[person1.id]
 		var entry2 = ResourceScripts.game_party.relativesdata[person2.id]
@@ -583,7 +610,8 @@ func connectrelatives_old(person1, person2, way):
 				entry2.siblings.append(i)
 
 		if typeof(person1) != TYPE_DICTIONARY && typeof(person2) != TYPE_DICTIONARY:
-			globals.addrelations(person1, person2, 0)
+			add_relationship_value(person1.id, person2.id, 5)
+			#globals.addrelations(person1, person2, 0)
 
 
 func connectrelatives(id1, id2, way): #id1 - child, 'main' char in this construction
@@ -605,11 +633,13 @@ func connectrelatives(id1, id2, way): #id1 - child, 'main' char in this construc
 		'mother', 'father':
 			data1[way] = id2
 			connect_parent(id1, id2)
-			globals.addrelations(characters_pool.get_char_by_id(id1), characters_pool.get_char_by_id(id2), 200)
+			add_relationship_value(id1, id2, 25)
+			#globals.addrelations(characters_pool.get_char_by_id(id1), characters_pool.get_char_by_id(id2), 200)
 		'sibling':
 			data1.siblings.push_back(id2)
 			connect_siblings(id1, id2)
-			globals.addrelations(characters_pool.get_char_by_id(id1), characters_pool.get_char_by_id(id2), 0)
+			add_relationship_value(id1, id2, 5)
+			#globals.addrelations(characters_pool.get_char_by_id(id1), characters_pool.get_char_by_id(id2), 0)
 
 func connect_parent(id1, id2): #id1 - child, 'main' char in this construction, so data1 should be configured partially properly at the point of callback
 	var data1 = relativesdata[id1]

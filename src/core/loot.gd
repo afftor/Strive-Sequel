@@ -34,12 +34,10 @@ func merge_reward_dict(rewarddict, add):
 func merge_shop_dict(shopdict, add):
 	for key in shopdict:
 		if add.has(key):
-			if shopdict[key] is Dictionary:
-				#print("warning: shop list rewrites part's record for %s!" % key)
-				if !(add[key] is Dictionary):
-					assert(false, "and doing so with no Dict!")
-					push_error("and doing so with no Dict!")
-				shopdict[key] = add[key]
+			if shopdict[key] is Array:
+				if !(add[key] is Array):
+					push_error("shop list trying to merge parts with no array. Item: %s, adding: %s" % [key, add[key]])
+				shopdict[key].append_array(add[key])
 			else:
 				shopdict[key] += add[key]
 	for key in add:
@@ -254,16 +252,54 @@ func generate_shop(record, amount) -> Dictionary:
 	elif record.has('item'):
 		var i_template = Items.itemlist[record.item]
 		if i_template.has('parts'):
-			if amount > 1:
-				print("warning: shop list must creat more then one item with parts for %s!" % record.item)
-			var materials = ResourceScripts.game_progress.get_default_materials()
-			var parts = Items.get_materials_by_grade(materials, i_template.code)
-			output[i_template.code] = parts
+			output[record.item] = []
+			for i in range(amount):
+				var materials = ResourceScripts.game_progress.get_default_materials()
+				var parts = Items.get_materials_by_grade(materials, i_template.code)
+				output[record.item].append(parts)
 		elif i_template.type == 'gear':
-			if !i_template.tags.has('recipe'): #either shouldn't happen yet
+			if !i_template.tags.has('recipe'):#"either shouldn't happen yet" - was here befor loot refactor
 				output[record.item] = amount
+			else:
+				print("warning: shop list trying to creat item of 'gear' type, but with recipe for %s" % record.item)
 		elif i_template.type == 'usable':
 			output[record.item] = amount
 	return output
+
+func get_gather_mod(gather_set, mat):
+	var res = get_gather_setting(gather_set, mat, 'mod')
+	if res is Array:
+		return globals.rng.randf_range(res[0], res[1])
+	return res
+
+func get_gather_stamina(gather_set, mat):
+	var res = get_gather_setting(gather_set, mat, 'stamina')
+	if res is Array:
+		return globals.rng.randi_range(res[0], res[1])
+	return res
+
+func get_gather_setting(gather_set, mat, setting):
+	if !data.gather_settings.has(gather_set):
+		print("error in loot.gd: no such gather_set as %s" % gather_set)
+		return [0,0]
+	if !data.gather_settings[gather_set].has(mat):
+		return data.gather_settings[gather_set]['_default'][setting]
+	return data.gather_settings[gather_set][mat][setting]
+
+func get_gather_mod_from_loc(loc, mat):
+	#dict check very possibly is redundant
+	if loc.gatherable_resources is Dictionary:#old loot system
+		print("warning: gatherable_resources is Dictionary!")
+		return loc.gatherable_resources[mat].gather_mod
+	else:#(is String)
+		return loc.gather_mods[mat]
+
+#14 march 2025. Making this fix for old save games.
+#In theory, with first update_area_shop() savegame will be fixed for good,
+#thus this func is ought to become useless in few months after corresponding update
+func try_fix_old_shop_parts(shop_dict, key):
+	if shop_dict[key] is Array:
+		return
+	shop_dict[key] = [shop_dict[key]]
 
 

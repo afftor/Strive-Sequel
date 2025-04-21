@@ -77,6 +77,34 @@ var skills = {
 		damagestat = 'no_stat',
 		not_final = true
 	},
+	#test
+	test_summon = {
+		code = 'test_summon',
+		new_syntax = true,
+		descript = '',
+		icon = load("res://assets/images/iconsskills/defaultattack.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['summon'],
+		reqs = [],
+		targetreqs = [],
+		effects = [], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 3,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'weapon',
+		damage_type = 'summon',
+		aipatterns = ['attack'],
+		allowedtargets = ['enemy'],
+		value = ['test_summon', 1],
+		random_factor_p = 0.1,
+		sfx = [{code = 'weapon', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
+	},
 }
 var effects = {
 	#universal

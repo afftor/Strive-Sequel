@@ -115,7 +115,9 @@ func update_area_shop_old(area):
 					var item = Items.itemlist[input_handler.random_from_array(record.items)]
 					if item.has('parts'):
 						var parts = Items.get_materials_by_grade(ResourceScripts.game_progress.get_default_materials(), item.code)
-						area.shop[item.code] = parts
+						if !area.shop.has(item.code):
+							area.shop[item.code] = []
+						area.shop[item.code].append(parts)
 					else:
 						if area.shop.has(item.code):
 							area.shop[item.code] += 1
@@ -320,8 +322,15 @@ func make_settlement(code, area):
 	update_area_shop(settlement)
 
 	if settlement.has('gather_resources'):
-		for i in settlement.gather_resources.keys():
-			settlement.gather_resources[i] = round(rand_range(settlement.gather_resources[i][0],settlement.gather_resources[i][1]))
+		#---old loot system--------
+#		if settlement.gather_resources is Dictionary:
+#			for i in settlement.gather_resources.keys():
+#				settlement.gather_resources[i] = round(rand_range(settlement.gather_resources[i][0],settlement.gather_resources[i][1]))
+#		else:#is String
+		#---------------
+		var loot_processor = Items.get_loot()
+		var reward_dict = loot_processor.get_reward(settlement.gather_resources)
+		settlement.gather_resources = reward_dict.materials
 
 	area.locations[settlement.id] = settlement
 	ResourceScripts.game_world.location_links[settlement.id] = {area = area.code, category = 'locations'}
@@ -372,9 +381,14 @@ func make_location(code, area):
 		if location.has('gatherable_resources'):
 			location.gather_limit_resources = {}
 			location.tasks.append("gather")
-			for res in location.gatherable_resources:
-				if location.gatherable_resources[res].gather_mod is Array:
-					location.gatherable_resources[res].gather_mod = globals.rng.randf_range(location.gatherable_resources[res].gather_mod[0], location.gatherable_resources[res].gather_mod[1])
+			#---old loot system---------
+#			if location.gatherable_resources is Dictionary:
+#				for res in location.gatherable_resources:
+#					if location.gatherable_resources[res].gather_mod is Array:
+#						location.gatherable_resources[res].gather_mod = globals.rng.randf_range(location.gatherable_resources[res].gather_mod[0], location.gatherable_resources[res].gather_mod[1])
+#			else:
+			#---------------
+			location.gather_mods = {}
 #		location.gather_mod = rand_range(location.gather_mod[0],location.gather_mod[1])
 #	location.erase('gatherable_resources')
 		if location.has('background_pool'):
@@ -788,26 +802,9 @@ var dungeon_template = { #sample dungeon data
 		
 		#do not remove next ones - for they a used in generation
 		resources = 'local1',
-		gatherable_resources = {
-			wood = {
-				amount = [25,40],
-				weight = 10,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			stone = {
-				amount = [25,40],
-				weight = 6,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				},  
-			iron = {
-				amount = [15,25],
-				weight = 2,
-				gather_mod = [2,2.5],
-				stamina = [5,10],
-				}, 
-			},
+		gather_settings = 'base',
+		gatherable_resources = 'biome_bandit_den_res',
+		
 		bgm = "dungeon",
 		purchase_price = 100,
 		affiliation = 'local', #defines character races and events
@@ -1096,16 +1093,31 @@ func finalize_subrooms(locdata, subrooms, level):
 						tmp.type = 'resource_survival'
 					else:
 						tmp.type = 'resource'
-					var pool = []
-					for res in locdata.gatherable_resources:
-						pool.push_back([res, locdata.gatherable_resources[res].weight])
-					var roll = input_handler.weightedrandom(pool)
-					var resdata = locdata.gatherable_resources[roll]
-					tmp.resource = roll
-					for arg in ['amount', 'stamina']:
-						tmp[arg] = resdata[arg]
-						if tmp[arg] is Array:
-							tmp[arg] = globals.rng.randi_range(tmp[arg][0], tmp[arg][1])
+					#---old loot system------
+#					if locdata.gatherable_resources is Dictionary:
+#						var pool = []
+#						for res in locdata.gatherable_resources:
+#							pool.push_back([res, locdata.gatherable_resources[res].weight])
+#						var roll = input_handler.weightedrandom(pool)
+#						var resdata = locdata.gatherable_resources[roll]
+#						tmp.resource = roll
+#						for arg in ['amount', 'stamina']:
+#							tmp[arg] = resdata[arg]
+#							if tmp[arg] is Array:
+#								tmp[arg] = globals.rng.randi_range(tmp[arg][0], tmp[arg][1])
+#					else:
+					#--------------
+					
+					var loot_processor = Items.get_loot()
+					var reward_dict = loot_processor.get_reward(locdata.gatherable_resources)
+					var resdata = reward_dict.materials
+					var material = resdata.keys()[0]
+					tmp.resource = material
+					tmp.amount = resdata[material]
+					tmp.stamina = loot_processor.get_gather_stamina(locdata.gather_settings, material)
+					if !locdata.gather_mods.has(material):
+						locdata.gather_mods[material] = loot_processor.get_gather_mod(locdata.gather_settings, material)
+					
 					tmp.stamina_cost = tmp.stamina
 				_:
 					tmp.type = 'onetime_event'
@@ -1134,10 +1146,18 @@ func set_level_infinite(location, level):
 	#setup biome attributes
 	var biome_data = DungeonData.biomes[location.biome]
 	location.background = input_handler.random_from_array(biome_data.background_pool)
-	location.gatherable_resources = biome_data.gatherable_resources.duplicate(true)
-	for res in location.gatherable_resources:
-		if location.gatherable_resources[res].gather_mod is Array:
-			location.gatherable_resources[res].gather_mod = globals.rng.randf_range(location.gatherable_resources[res].gather_mod[0], location.gatherable_resources[res].gather_mod[1])
+	#----old loot system-----
+#	if biome_data.gatherable_resources is Dictionary:
+#		location.gatherable_resources = biome_data.gatherable_resources.duplicate(true)
+#		for res in location.gatherable_resources:
+#			if location.gatherable_resources[res].gather_mod is Array:
+#				location.gatherable_resources[res].gather_mod = globals.rng.randf_range(location.gatherable_resources[res].gather_mod[0], location.gatherable_resources[res].gather_mod[1])
+#	else:
+	#---------
+	location.gatherable_resources = biome_data.gatherable_resources
+	location.gather_settings = biome_data.gather_settings
+	location.gather_mods = {}
+	
 	location.enemies = biome_data.enemyarray.duplicate(true)
 	for st in ['event_room_number', 'material_room_number', 'main_route_length', 'bonus_rooms', 'base_room_stamina_cost', 'character_data']:
 		location[st] = biome_data[st].duplicate(true)

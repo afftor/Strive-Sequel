@@ -288,7 +288,8 @@ func orgasm(custom_text = null):
 	if anus != null:
 		scene = form_action_ref_dict(anus)
 		for i in scene.givers:
-			globals.addrelations(person, i.person, rand_range(30,50))
+			ResourceScripts.game_party.add_relationship_value(person.id, i.person.id, rand_range(1,3))
+			#globals.addrelations(person, i.person, rand_range(30,50))
 		#anus in giver slot
 		if scene.givers.find(self) >= 0:
 			if randf() < 0.4:
@@ -318,7 +319,8 @@ func orgasm(custom_text = null):
 		if vagina != null:
 			scene = form_action_ref_dict(vagina)
 			for i in scene.givers:
-				globals.addrelations(person, i.person, rand_range(30,50))
+				ResourceScripts.game_party.add_relationship_value(person.id, i.person.id, rand_range(1,3))
+				#globals.addrelations(person, i.person, rand_range(30,50))
 			#vagina in giver slot
 			if scene.givers.find(self) >= 0:
 				if randf() < 0.4:
@@ -348,7 +350,8 @@ func orgasm(custom_text = null):
 		if penis != null:
 			scene = form_action_ref_dict(penis)
 			for i in scene.takers:
-				globals.addrelations(person, i.person, rand_range(30,50))
+					ResourceScripts.game_party.add_relationship_value(person.id, i.person.id, rand_range(1,3))
+				#globals.addrelations(person, i.person, rand_range(30,50))
 			#penis in giver slot
 			if scene.givers.find(self) >= 0:
 				if randf() < 0.4:
@@ -545,7 +548,8 @@ func actioneffect(values, scenedict_ids):
 		if values.tags.has('punish'):
 			if (!person.check_trait('Masochist') && !person.check_trait('Likes it rough') && !person.check_trait('Sex-crazed')):
 				for i in scenedict.givers:
-					globals.addrelations(person, i.person, -rand_range(5,10))
+					ResourceScripts.game_party.add_relationship_value(person.id, i.person.id, -1)
+					#globals.addrelations(person, i.person, -rand_range(5,10))
 #				person.add_stat('obedience', values.obed)
 #					person.stress += values.stress
 				if effects.has("captured") && randf() >= values.obed/2:

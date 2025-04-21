@@ -633,7 +633,6 @@ var effect_table = {
 			}
 		]
 	},
-	
 	e_s_shred = {
 		type = 'temp_s',
 		tags = ['affliction', 'shred'],

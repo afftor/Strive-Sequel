@@ -177,7 +177,7 @@ func get_training_cost_gold():
 		cost = val * 0.66
 	if tr_a > 1:
 		cost = val
-	return cost * (1.0 - 0.07 * parent.get_ref().get_stat('tame_factor'))
+	return int(cost * (1.0 - 0.07 * parent.get_ref().get_stat('tame_factor')))
 
 
 func add_training(id):
@@ -359,6 +359,13 @@ func apply_training(code):
 				effect_text += "%s - %s \n" % [dis, dispositions[dis]] 
 	else:
 		cooldown.main = 3
+		if cat == 'positive':
+			ResourceScripts.game_party.add_relationship_value(parent.get_ref().id, trainer, globals.rng.randi_range(1, 2))
+		else:
+			if parent.has_status('likes_training'):
+				ResourceScripts.game_party.add_relationship_value(parent.get_ref().id, trainer, 3)
+			else:
+				ResourceScripts.game_party.add_relationship_value(parent.get_ref().id, trainer, -3)
 	if globals.rng.randf() < 0.1 + 0.15 * ch_trainer.get_stat('wits_factor'):
 		if !dispositions_known[cat]: # and result in ['success', 'crit_success']:
 			effect_text += tr('WITSREVEALDISPOSITION')

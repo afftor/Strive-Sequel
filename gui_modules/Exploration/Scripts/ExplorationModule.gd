@@ -174,9 +174,9 @@ func build_location_description():
 
 
 func slave_position_selected(pos, character):
-	pos = 'pos' + str(pos)
+	var str_pos = 'pos' + str(pos)
 	if character == null:
-		active_location.group.erase(pos)
+		active_location.group.erase(str_pos)
 		build_location_group()
 		return
 	if character.has_status('no_combat'):
@@ -185,27 +185,15 @@ func slave_position_selected(pos, character):
 	elif !character.is_combatant():
 		input_handler.SystemMessage(character.translate(tr("NO_FIGHT_LOW_OBED")))
 		return
-	character = character.id
-	var positiontaken = false
-	var oldheroposition = null
-	if (
-		active_location.group.has(pos)
-		&& ResourceScripts.game_party.characters[active_location.group[pos]].check_location(
-			active_location.id, true
-		)
-	):
-		positiontaken = true
-
-	for i in active_location.group:
-		if active_location.group[i] == character:
-			oldheroposition = i
-			active_location.group.erase(i)
-	var INTEGER_VALUE_FROM_POS_INDEX = 3
-	if oldheroposition != null && positiontaken == true && oldheroposition != pos:
-		active_location.group[oldheroposition] = active_location.group[pos]
-		var CHARACTER_UID = active_location.group[oldheroposition]
-		ResourceScripts.game_party.characters[CHARACTER_UID].combat_position = int(oldheroposition[INTEGER_VALUE_FROM_POS_INDEX])
-	active_location.group[pos] = character
+	var ch_id = character.id
+	if active_location.group.has(str_pos):
+		var oldchar =  ResourceScripts.game_party.characters[active_location.group[str_pos]]
+		if oldchar.check_location(active_location.id, true): #should always be
+			if character.combat_position != pos:
+				oldchar.combat_position = character.combat_position
+			else:
+				oldchar.combat_position = 0
+	character.combat_position = pos
 	build_location_group()
 
 
@@ -213,6 +201,7 @@ func slave_position_deselect(character):
 	for i in active_location.group:
 		if active_location.group[i] == character.id:
 			active_location.group.erase(i)
+			character.combat_position = 0
 			break
 	build_location_group()
 
@@ -770,6 +759,8 @@ func open_shop(pressed, pressed_button, shop):
 		'location':
 			if pressed:
 				active_shop = active_location.shop
+	if !(active_shop is Dictionary):
+		print("warning: active_shop is not a Dictionary!")
 	sell_category = 'all'
 	buy_category = 'all'
 	$AreaShop/SellFilter.get_child(0).pressed = true
@@ -875,9 +866,7 @@ func update_buy_list():
 	for i in active_shop:
 		if Items.materiallist.has(i):
 			var item = Items.materiallist[i]
-			var amount = -1
-			if typeof(active_shop) == TYPE_DICTIONARY:
-				amount = active_shop[i]
+			var amount = active_shop[i]
 			if amount == 0:
 				continue
 			var type = get_item_category(item)
@@ -901,48 +890,60 @@ func update_buy_list():
 				newbutton.get_node("amount").show()
 		elif Items.itemlist.has(i):
 			var item = Items.itemlist[i]
-			var amount = -1
-			if item.has('parts'):
-				amount = 1
+			if item.has('parts'):#means active_shop[i] is array of dicts
+				Items.get_loot().try_fix_old_shop_parts(active_shop, i)#14 march 2025. Remove with time!
+				for record in active_shop[i]:
+					var type = get_item_category(item)
+					var newbutton = input_handler.DuplicateContainerTemplate(
+						$AreaShop/BuyBlock/ScrollContainer/VBoxContainer
+					)
+					newbutton.get_node("icon").texture = item.icon
+					newbutton.set_meta('type', type)
+					newbutton.set_meta('item', item.name)
+					newbutton.set_meta('exploration', true) #while not reqired as it is now
+					newbutton.visible = (
+						(newbutton.get_meta("type") == buy_category)
+						|| buy_category == "all"
+					)
+					var newitem
+					if record.has('quality'):#for now can't come from shop generator
+						var parts = record.duplicate()
+						parts.erase('quality')
+						newitem = globals.CreateGearItemQuality(i, parts, record.quality)
+					else:
+						newitem = globals.CreateGearItemShop(i, record)
+						record.quality = newitem.quality
+					newitem.set_icon(newbutton.get_node('icon'))
+					newbutton.get_node("name").text = newitem.name
+					tempitems.append(newitem)
+					globals.connectitemtooltip_v2(newbutton, newitem)
+					newbutton.get_node("price").text = str(newitem.calculateprice())
+					newbutton.connect('pressed', self, "item_purchase", [newitem, 1])
+					newbutton.get_node("amount").text = "1"
+					newbutton.get_node("amount").show()
 			else:
-				amount = active_shop[i]
+				var amount = active_shop[i]
 				if amount == 0:
 					continue
-			var type = get_item_category(item)
-			var newbutton = input_handler.DuplicateContainerTemplate(
-				$AreaShop/BuyBlock/ScrollContainer/VBoxContainer
-			)
-			newbutton.get_node("name").text = item.name
-			newbutton.get_node("icon").texture = item.icon
-			newbutton.get_node("price").text = str(item.price)
-			newbutton.set_meta('type', type)
-			newbutton.set_meta('item', item.name)
-			newbutton.set_meta('exploration', true) #while not reqired as it is now
-			newbutton.visible = (
-				(newbutton.get_meta("type") == buy_category)
-				|| buy_category == "all"
-			)
-			if item.has('parts'):
-				var newitem
-				if active_shop[i].has('quality'):
-					var parts = active_shop[i].duplicate()
-					parts.erase('quality')
-					newitem = globals.CreateGearItemQuality(i, parts, active_shop[i].quality)
-				else:
-					newitem = globals.CreateGearItemShop(i, active_shop[i])
-					active_shop[i].quality = newitem.quality
-				newitem.set_icon(newbutton.get_node('icon'))
-				newbutton.get_node("name").text = newitem.name
-				tempitems.append(newitem)
-				globals.connectitemtooltip_v2(newbutton, newitem)
-				newbutton.get_node("price").text = str(newitem.calculateprice())
-				newbutton.connect('pressed', self, "item_purchase", [newitem, amount])
-			else:
+				var type = get_item_category(item)
+				var newbutton = input_handler.DuplicateContainerTemplate(
+					$AreaShop/BuyBlock/ScrollContainer/VBoxContainer
+				)
+				newbutton.get_node("name").text = item.name
+				newbutton.get_node("icon").texture = item.icon
+				newbutton.get_node("price").text = str(item.price)
+				newbutton.set_meta('type', type)
+				newbutton.set_meta('item', item.name)
+				newbutton.set_meta('exploration', true) #while not reqired as it is now
+				newbutton.visible = (
+					(newbutton.get_meta("type") == buy_category)
+					|| buy_category == "all"
+				)
 				globals.connecttempitemtooltip(newbutton, item, 'geartemplate')
 				newbutton.connect('pressed', self, "item_purchase", [item, amount])
-			if amount > 0:
-				newbutton.get_node("amount").text = str(amount)
-				newbutton.get_node("amount").show()
+				if amount > 0:
+					newbutton.get_node("amount").text = str(amount)
+					newbutton.get_node("amount").show()
 
 
 var purchase_item
@@ -984,21 +985,27 @@ func item_puchase_confirm(value):
 		ResourceScripts.game_res.money -= purchase_item.calculateprice()
 		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 		for i in active_shop:
-			if globals.check_shop_record(purchase_item, i, active_shop[i]):
+			if !(active_shop[i] is Array):#for only parts-type items are checked here
+				continue
+			var to_erase
+			for j in range(active_shop[i].size()):
+				if globals.check_shop_record(purchase_item, i, active_shop[i][j]):
+					to_erase = j
+					break
+			if to_erase == null:
+				continue
+			active_shop[i].remove(to_erase)
+			if active_shop[i].empty():
 				active_shop.erase(i)
-				break
+			break
 		update_sell_list()
 		update_buy_list()
 	else:
+		ResourceScripts.game_res.money -= purchase_item.price * value
+		active_shop[purchase_item.code] -= value
 		if Items.materiallist.has(purchase_item.code):
 			ResourceScripts.game_res.set_material(purchase_item.code, '+', value)
-			ResourceScripts.game_res.money -= purchase_item.price * value
-			if typeof(active_shop) == TYPE_DICTIONARY:
-				active_shop[purchase_item.code] -= value
 		elif Items.itemlist.has(purchase_item.code):
-			ResourceScripts.game_res.money -= purchase_item.price * value
-			if typeof(active_shop) == TYPE_DICTIONARY:
-				active_shop[purchase_item.code] -= value
 			while value > 0:
 				match purchase_item.type:
 					'usable':
@@ -1088,4 +1095,4 @@ func reset_active_location(arg = null):
 
 
 func update_gold():
-	$AreaShop/Label2.text = str(ResourceScripts.game_res.money)
+	$AreaShop/Label2.text = str(int(ResourceScripts.game_res.money))

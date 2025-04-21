@@ -1,3 +1,10 @@
+0.11.0
+Revamped effect system to be modifiable and support saves 
+	Old saves can't be imported or loaded anymore, from this point the previous save files should be supported automatically
+Added random events for characters
+Nerfed damage scaling from physics/wits for player characters
+Rebalanced more enemies and encounters
+Added italian localization (thanks to Scarichino)
 0.10.3b
 Fixed Cali encounter not spawning
 Fixed sex swapped characters not swapping their child bearing options
@@ -8,6 +15,7 @@ Fixed Death Knight's passive
 Fixed characters not appearing in events with backgrounds
 Fixed character tooltips not appearing in events
 Fixed relationship tooltips not working properly
+Fixed Void Barrage being a skill instead of spell
 0.10.3a
 Fixed divine symbol requiring mithril to craft
 0.10.3

@@ -15,6 +15,6 @@ func invoke():
 	
 	queuenode.call_deferred('invoke_finished')
 	if template.value:
-		combatnode.victory()
+		combatnode.call_deferred('victory')
 	else:
-		combatnode.defeat()
+		combatnode.call_deferred('defeat')

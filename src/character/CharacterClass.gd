@@ -45,9 +45,6 @@ func _init(source = null):
 	input_handler.connect("fighter_changed", self, 'reset_rebuild')
 
 
-func set_combat_position(pos):
-	combat_position = pos
-
 func get_combat_positon():
 	return int(combat_position)
 
@@ -1172,8 +1169,8 @@ func need_heal(): #stub. borderlines are subject to tuning
 
 #core functions
 func hp_get():
-#	if hp > get_stat('hpmax'):
-#		hp = get_stat('hpmax')
+	if hp > get_stat('hpmax'):
+		hp = get_stat('hpmax')
 	return hp
 
 
@@ -1761,7 +1758,7 @@ func affect_char(template):
 			if gui_controller.exploration_dungeon != null:
 				match template.value:
 					'reveal_map':
-						gui_controller.exploration_dungeon.reveal_map()
+						gui_controller.exploration_dungeon.reveal_map(self)
 					
 					'set_intimidate':
 						gui_controller.exploration_dungeon.set_intimidate()

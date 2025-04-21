@@ -190,7 +190,8 @@ var loot_tables = {
 			{item = 'map_ancient_jungle'},
 			{item = 'map_undead_crypt'},
 			{item = 'map_fire_depths'},
-			{item = 'map_spider_lair'}]},
+			{item = 'map_spider_lair'},
+			{item = 'map_goblin_stronghold'}]},
 		]},
 	easy_armory_weapon = {random = 'weapon', amount = 1, material_tiers = [['t1', 10], ['t1', 3], ['t1', 1]], tiers = ['easy']},
 	easy_armory_armor = {random = 'armor', amount = 1, material_tiers = [['t1', 10], ['t1', 3], ['t1', 1]], tiers = ['easy']},
@@ -221,7 +222,8 @@ var loot_tables = {
 			{item = 'map_ancient_jungle'},
 			{item = 'map_undead_crypt'},
 			{item = 'map_fire_depths'},
-			{item = 'map_spider_lair'}]},
+			{item = 'map_spider_lair'},
+			{item = 'map_goblin_stronghold'}]},
 		]},
 	grove_wood_reward = {selector = [
 		{material = 'wood', weight = 1, min = 15, max = 30},
@@ -400,7 +402,7 @@ var loot_tables = {
 		{material = 'bone', min = 5, max = 20, chance = 0.7},
 		{item = 'lifeshard', min = 4, max = 8},
 		{item = 'energyshard', min = 3, max = 5},
-		{material = 'obsidian', min = 3, max = 5, chance = 0.7},
+		{material = 'obsidian', min = 3, max = 5, chance = 0.3},
 		{min = 2, max = 4, chance = 0.8, selector = [
 			{item = 'sword'},
 			{item = 'bow'},
@@ -419,6 +421,41 @@ var loot_tables = {
 			{item = 'map_ancient_jungle'},
 			{item = 'map_grove'},
 			{item = 'map_spider_lair'}]},
+		]},
+	mountain_area_shop = {list = [
+		{material = 'vegetables', min = 40, max = 80},
+		{material = 'grain', min = 60, max = 150},
+		{material = 'bread', min = 30, max = 60},
+		{material = 'clothsilk', min = 10, max = 15, chance = 0.9},
+		{material = 'bone', min = 5, max = 20, chance = 0.7},
+		{item = 'lifeshard', min = 4, max = 8},
+		{material = 'obsidian', min = 3, max = 5, chance = 0.7},
+		{material = 'stone', min = 40, max = 80, chance = 1},
+		{material = 'steel', min = 6, max = 12, chance = 0.9},
+		{material = 'mithril', min = 5, max = 8, chance = 0.8},
+		{min = 2, max = 4, chance = 0.8, selector = [
+			{item = 'sword'},
+			{item = 'crossbow'},
+			{item = 'mace'},
+			{item = 'battleaxe'},
+			{item = 'spear'},
+			{item = 'shield'},
+			{item = 'pickaxe'},
+			{item = 'hammer'},
+			{item = 'shield'}]},
+		{min = 1, max = 2, chance = 0.8, selector = [
+			{item = 'chest_base_metal'},
+			{item = 'chest_base_leather'},
+			{item = 'legs_base_metal'},
+			{item = 'legs_base_leather'}]},
+		{min = 6, max = 12, chance = 0.95, selector = [
+			{item = 'beer'},
+			{item = 'wine'},
+			{item = 'wine2'},
+			{item = 'alcohol'}]},
+		{amount = 1, selector = [
+			{item = 'map_fire_depths'},
+			{item = 'map_goblin_stronghold'}]},
 		]},
 	beastkin_area_shop = {list = [
 		{material = 'meat', min = 40, max = 80},
@@ -489,7 +526,105 @@ var loot_tables = {
 			{item = 'chest_base_cloth'},
 			{item = 'legs_base_cloth'},]},
 	]},
+	
+	#gatherable_resources for dungeons
+	biome_bandit_den_res = {selector = [
+		{material = 'wood', weight = 10, min = 25, max = 40},
+		{material = 'stone', weight = 6, min = 25, max = 40},
+		{material = 'iron', weight = 2, min = 15, max = 25}]},
+	biome_bandit_fort_res = {selector = [
+		{material = 'wood', weight = 10, min = 45, max = 60},
+		{material = 'stone', weight = 6, min = 35, max = 50},
+		{material = 'iron', weight = 2, min = 15, max = 25},
+		{material = 'woodiron', weight = 2, min = 15, max = 25}]},
+	biome_undead_crypt_res = {selector = [
+		{material = 'stone', weight = 10, min = 45, max = 60},
+		{material = 'bone', weight = 6, min = 35, max = 50},
+		{material = 'boneancient', weight = 2, min = 15, max = 25}]},
+	biome_goblin_cave_res = {selector = [
+		{material = 'stone', weight = 6, min = 45, max = 60},
+		{material = 'bone', weight = 3, min = 35, max = 50},
+		{material = 'leather', weight = 4, min = 15, max = 25}]},
+	biome_grove_res = {selector = [
+		{material = 'meat', weight = 6, min = 90, max = 120},
+		{material = 'wood', weight = 8, min = 60, max = 90},
+		{material = 'woodmagic', weight = 3, min = 15, max = 25},
+		{material = 'woodiron', weight = 1, min = 15, max = 25}]},
+	biome_ancient_jungles_res = {selector = [
+		{material = 'woodmagic', weight = 5, min = 25, max = 45},
+		{material = 'woodiron', weight = 8, min = 30, max = 45},
+		{material = 'leatherthick', weight = 4, min = 20, max = 35},
+		{material = 'leathermythic', weight = 1, min = 10, max = 15}]},
+	biome_goblin_stronghold_res = {selector = [
+		{material = 'woodiron', weight = 8, min = 40, max = 55},
+		{material = 'leatherthick', weight = 4, min = 20, max = 35},
+		{material = 'lizard_skin', weight = 4, min = 20, max = 25},
+		]},
+	biome_fire_depths_res = {selector = [
+		{material = 'iron', weight = 6, min = 40, max = 70},
+		{material = 'mithril', weight = 4, min = 25, max = 40},
+		{material = 'adamantine', weight = 2, min = 10, max = 20}]},
+	dungeon_rebel_camp_res = {selector = [
+		{material = 'stone', weight = 6, min = 25, max = 40},
+		{material = 'iron', weight = 2, min = 15, max = 25}]},
+	quest_gryphon_forest_res = {selector = [
+		{material = 'wood', weight = 6, min = 25, max = 40},
+		{material = 'leather', weight = 2, min = 15, max = 25}]},
+	quest_amelia_bandits_res = {selector = [
+		{material = 'iron', weight = 2, min = 15, max = 25}]},
+	quest_fighters_lich_res = {selector = [
+		{material = 'stone', weight = 2, min = 15, max = 25}]},
+
+	#gather_resources for settlements
+	#(Mind, that amount here is number of allowed workers)
+	settlement_plains1_res = {list = [
+		{material = 'wood', min = 2, max = 3},
+		{material = 'stone', min = 2, max = 3},
+		{material = 'grain', min = 2, max = 3},
+		{material = 'iron', amount = 1},]},
+	settlement_plains2_res = {list = [
+		{material = 'vegetables', min = 2, max = 3},
+		{material = 'leather', min = 2, max = 3},
+		{material = 'cloth', min = 2, max = 3},
+		{material = 'clothsilk', amount = 1}]},
+	settlement_forest1_res = {list = [
+		{material = 'wood', min = 2, max = 3},
+		{material = 'woodmagic', amount = 3},
+		{material = 'woodiron', amount = 2},
+		{material = 'leatherthick', amount = 1}]},
+	settlement_mountains1_res = {list = [
+		{material = 'iron', min = 1, max = 2},
+		{material = 'mithril', amount = 1},
+		{material = 'boneancient', amount = 1}]},
 }
+
+
+var gather_settings = {
+	base = {
+		_default = {
+			mod = [2,2.5],
+			stamina = [5,10]},
+		wood = {
+			mod = [2,2.5],
+			stamina = [5,10]},
+		stone = {
+			mod = [2,2.5],
+			stamina = [5,10]},
+		iron = {
+			mod = [2,2.5],
+			stamina = [5,10]},
+		woodiron = {
+			mod = [2,2.5],
+			stamina = [5,10]},
+		bone = {
+			mod = [2,2.5],
+			stamina = [5,10]},
+		boneancient = {
+			mod = [2,2.5],
+			stamina = [5,10]},
+	}
+}
+
 
 #not sure if it should be here, but logical to keep it close to chests' loot tables
 var locks_data = { #makes locks to lockpick for related chests
@@ -658,3 +793,26 @@ var locks_data = { #makes locks to lockpick for related chests
 #	new_table += "}"
 #
 #	return new_table
+
+#func make_loottable():
+#	var new_loottable = '{'
+#	for table_name in temp:
+#		new_loottable += "\n" + table_name + " = "
+#		var table1 = temp[table_name]
+#		if table1[table1.keys()[0]] is Dictionary:
+#			new_loottable += "{selector = [\n"
+#			for record_name in table1:
+#				var record = table1[record_name]
+#				new_loottable += "{material = '%s', weight = %s, min = %s, max = %s},\n" % [record_name, record.weight, record.amount[0], record.amount[1]]
+#		else:
+#			new_loottable += "{list = [\n"
+#			for record_name in table1:
+#				var record = table1[record_name]
+#				new_loottable += "{material = '%s', min = %s, max = %s},\n" % [record_name, record[0], record[1]]
+#
+#		new_loottable += "]},"
+#	new_loottable += '\n}'
+#	var file_handler = File.new()
+#	file_handler.open("user://output.gd", File.WRITE)
+#	file_handler.store_string(new_loottable)
+#	file_handler.close()

@@ -123,6 +123,20 @@ var skills = {
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
+		variations = [
+			{
+				reqs = [
+					{code = 'stat', stat = 'mastery_air', value = 5, operant = 'eq'},
+					],
+				set = {target_number = 'line'},
+				add = {descript = '_1'}
+			},
+			{
+				reqs = [{code = 'stat', stat = 'mastery_air', value = 6, operant = 'gte'}],
+				set = {target_number = 'all'},
+				add = {descript = '_2'}
+			},
+		]
 	},
 	tempest = {
 		code = 'tempest',

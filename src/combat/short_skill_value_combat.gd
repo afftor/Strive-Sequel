@@ -80,7 +80,7 @@ func resolve_value(check_m):
 	var t1 = input_handler.calculate_number_from_string_array(template.value1, parent.caster, parent.target)
 	var t2 = input_handler.calculate_number_from_string_array(template.value2, parent.caster, parent.target)
 	var t3 = input_handler.calculate_number_from_string_array(template.value3, parent.caster, parent.target)
-	endvalue = (t1 * atk + t2) * (1 + stat/100.0) + t3
+	endvalue = (t1 * atk + t2) * (1 + stat/250.0) + t3
 	#modify melee atk from backrow and apply dmgmod
 	if !template.nomod:
 		var rangetype = parent.target_range

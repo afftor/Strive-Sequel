@@ -19,6 +19,7 @@ var area_zoom_data = {
 	plains = {position = Vector2(700, 1700), zoom = 1.5},
 	forests = {position = Vector2(1310, 1890), zoom = 1.5},
 	mountains = {position = Vector2(1000, 1000), zoom = 1.5},
+	empire = {position = Vector2(1000, 1000), zoom = 1.5},
 }
 
 func _unhandled_input(event):
@@ -461,14 +462,25 @@ func build_info(loc = null):
 			$InfoPanel/VBoxContainer/Label3.hide()
 		for i in gatherable_resources:
 			var item = Items.materiallist[i]
-			var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
 			if ResourceScripts.game_progress.can_gather_item(i) or dungeon:
+				continue
+			else:
+				var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
+				newbutton.get_node("Icon").texture = load("res://assets/Textures_v2/Travel/placer_travel_question.png")
+				newbutton.set_meta("exploration", true)
+				newbutton.get_node("amount").text = ""
+				globals.connecttexttooltip(newbutton, tr('TOOLTIPHIDDENRESOURCE'))
+		for i in gatherable_resources:
+			var item = Items.materiallist[i]
+			if ResourceScripts.game_progress.can_gather_item(i) or dungeon:
+				var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
 				newbutton.get_node("Icon").texture = Items.materiallist[i].icon
 				newbutton.set_meta("exploration", true)
 				if dungeon:
 					if !hidden:
 						newbutton.get_node("amount").text = str(gatherable_resources[i])
-						newbutton.set_meta("gather_mod", round(location.gatherable_resources[i].gather_mod * 100))
+						var gather_mod = Items.get_loot().get_gather_mod_from_loc(location, i)
+						newbutton.set_meta("gather_mod", round(gather_mod * 100))
 						globals.connectmaterialtooltip(newbutton, item)
 					else:
 						newbutton.get_node("Icon").texture = load("res://assets/Textures_v2/Travel/placer_travel_question.png")
@@ -484,9 +496,7 @@ func build_info(loc = null):
 					newbutton.set_meta("current_workers", current_workers_count)
 					globals.connectmaterialtooltip(newbutton, item)
 			else:
-				newbutton.get_node("Icon").texture = load("res://assets/Textures_v2/Travel/placer_travel_question.png")
-				newbutton.set_meta("exploration", true)
-				newbutton.get_node("amount").text = ""
+				continue
 	#build chars
 	input_handler.ClearContainer($InfoPanel/VBoxContainer/CharScroll/Characters)
 	var f = false

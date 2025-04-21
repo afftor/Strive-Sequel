@@ -281,7 +281,7 @@ var data = {
 					code = 'unique_character_changes',
 					value = 'master',
 					args = [
-						{code = 'sexuals_factor', operant = '+', value = 1},
+						{code = 'add_trait', trait = 'stag_buff'},
 					]
 				},]
 		}, ]

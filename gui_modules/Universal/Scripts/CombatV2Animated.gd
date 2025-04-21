@@ -5,6 +5,7 @@ extends Control
 var currentenemies
 var area
 var turns = 0
+var global_turn = 0
 var animationskip = false
 
 var encountercode
@@ -60,6 +61,9 @@ onready var battlefieldpositions = {1 : $Panel/PlayerGroup/Front/left, 2 : $Pane
 7 : $Panel2/EnemyGroup/Front/left, 8 : $Panel2/EnemyGroup/Front/mid, 9 : $Panel2/EnemyGroup/Front/right,
 10: $Panel2/EnemyGroup/Back/left, 11 : $Panel2/EnemyGroup/Back/mid, 12 : $Panel2/EnemyGroup/Back/right}
 
+var no_material_reward = false
+var external_reward
+var only_show_mat_reward = false
 
 var dummy = {
 	triggered_effects = []
@@ -155,6 +159,9 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 		$Background.texture = images.get_background('dungeon')
 	if music == "default":
 		music = 'battle1'
+	no_material_reward = false
+	only_show_mat_reward = false
+	external_reward = null
 	hide()
 	
 	$ItemPanel/debugvictory.visible = debug
@@ -170,6 +177,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	gui_controller.current_screen = self
 	autoskill = null
 	turns = 0
+	global_turn = 0
 	$Combatlog/RichTextLabel.clear()
 	summons.clear()
 	enemygroup.clear()
@@ -463,6 +471,7 @@ func current_turn():
 
 func newturn():
 	effects_pool.process_event(variables.TR_TURN_S)
+	global_turn += 1
 	for i in playergroup.values() + enemygroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.process_event(variables.TR_TURN_S)
@@ -657,7 +666,10 @@ func UpdateSkillTargets(caster, skill, glow_skip = false):
 		if rangetype == 'any': t_targets = get_enemy_targets_all(fighter)
 		if rangetype == 'melee': t_targets = get_enemy_targets_melee(fighter)
 		for t in t_targets:
-			if skill.has('targetreqs') and !t.checkreqs(skill.targetreqs): continue
+			if skill.has('targetreqs') and !t.checkreqs(skill.targetreqs):
+				continue
+#			if !t.can_be_damaged(skill): 
+#				continue
 			allowedtargets.enemy.push_back(t.position)
 	if targetgroups == 'ally' or targetgroups == 'all':
 		var t_targets = get_allied_targets(fighter)
@@ -927,15 +939,15 @@ func summon(montype, limit, combatgroup, incombat = false): #reworked
 #	tchar.createfromenemy(montype);
 	match combatgroup:
 		'enemy':
+			enemygroup[sum_pos] = characters_pool.add_char(tchar)
 			tchar.generate_simple_fighter(montype[slot])
 			tchar.combatgroup = 'enemy'
-			enemygroup[sum_pos] = characters_pool.add_char(tchar)
 			battlefield[sum_pos] = enemygroup[sum_pos]
 		'ally':
+			playergroup[sum_pos] = characters_pool.add_char(tchar)
 			tchar.generate_simple_fighter(montype[slot], false)
 			tchar.combatgroup = 'ally'
 			tchar.is_players_character = true
-			playergroup[sum_pos] = characters_pool.add_char(tchar)
 			battlefield[sum_pos] = playergroup[sum_pos]
 			tchar.selectedskill = tchar.get_skill_by_tag('default')
 	tchar.position = sum_pos
@@ -1020,14 +1032,16 @@ func get_allied_targets(fighter):
 	return res
 
 
-func get_enemy_targets_all(fighter, hide_ignore = false):
+func get_enemy_targets_all(fighter, ignore_immune = false):
 	var res = []
 	if fighter.position in range(1, 7):
 		for p in enemygroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
 			if tchar.defeated: 
 				continue
-			if tchar.has_status('hide') and !hide_ignore: 
+			if tchar.has_status('hide') and !ignore_immune: 
+				continue
+			if tchar.has_status('warded') and !ignore_immune: 
 				continue
 			res.push_back(tchar)
 	else:
@@ -1035,22 +1049,25 @@ func get_enemy_targets_all(fighter, hide_ignore = false):
 			var tchar = characters_pool.get_char_by_id(p)
 			if tchar.defeated: 
 				continue
-			if tchar.has_status('hide') and !hide_ignore: 
+			if tchar.has_status('hide') and !ignore_immune: 
+				continue
+			if tchar.has_status('warded') and !ignore_immune: 
 				continue
 			res.push_back(tchar)
 	return res
 
 
-func get_enemy_targets_melee(fighter, hide_ignore = false):
+func get_enemy_targets_melee(fighter, ignore_immune = false):
 	var res = []
 	if fighter.position in range(1, 7):
 		for p in enemygroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
-			if tchar.defeated: 
+			if tchar.defeated: continue
+			if tchar.has_status('hide') and !ignore_immune: 
 				continue
-			if tchar.has_status('hide') and !hide_ignore: 
+			if CheckMeleeRange('enemy', ignore_immune) and tchar.position > 9: 
 				continue
-			if CheckMeleeRange('enemy', hide_ignore) and tchar.position > 9: 
+			if tchar.has_status('warded') and !ignore_immune: 
 				continue
 			res.push_back(tchar)
 	else:
@@ -1058,10 +1075,11 @@ func get_enemy_targets_melee(fighter, hide_ignore = false):
 			var tchar = characters_pool.get_char_by_id(p)
 			if tchar.defeated: 
 				continue
-			if tchar.has_status('hide') and !hide_ignore: 
+			if tchar.has_status('hide') and !ignore_immune: 
 				continue
-			if CheckMeleeRange('ally', hide_ignore) and tchar.position > 3: 
+			if CheckMeleeRange('ally', ignore_immune) and tchar.position > 3: 
 				continue
+			if tchar.has_status('warded') and !ignore_immune: continue
 			res.push_back(tchar)
 	return res
 
@@ -1550,8 +1568,6 @@ func FinishCombat(victory = true):
 	characters_pool.cleanup()
 
 
-var rewardsdict
-
 #to check next functions
 var victory_seq_run = false
 func victory():
@@ -1588,7 +1604,7 @@ func victory():
 	
 	input_handler.PlaySound("battle_victory")
 	
-	rewardsdict = {gold = 0, materials = {}, items = [], xp = 0}
+	var rewardsdict = {gold = 0, materials = {}, items = [], xp = 0}
 	for i in enemygroup.values():
 		if i == null: #not sure why was this check added
 			continue
@@ -1603,10 +1619,14 @@ func victory():
 			rewardsdict.xp += 2 * tchar.get_stat('xpreward')
 		else:
 			rewardsdict.xp += tchar.get_stat('xpreward')
-		var loot_processor = Items.get_loot()
-		var rewards = loot_processor.get_reward(tchar.get_stat('loottable'), count)
-		loot_processor.merge_reward_dict(rewardsdict, rewards)
+		if !no_material_reward and external_reward == null:
+			var loot_processor = Items.get_loot()
+			var rewards = loot_processor.get_reward(tchar.get_stat('loottable'), count)
+			loot_processor.merge_reward_dict(rewardsdict, rewards)
 	
+	if !no_material_reward and external_reward != null:
+		var loot_processor = Items.get_loot()
+		loot_processor.merge_reward_dict(rewardsdict, external_reward)
 	
 	input_handler.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
 	input_handler.ClearContainer($Rewards/ScrollContainer2/HBoxContainer)
@@ -1656,7 +1676,8 @@ func victory():
 		newbutton.get_node("Icon").texture = item.icon
 		newbutton.get_node("name").text = item.name
 		newbutton.get_node("amount").text = str(rewardsdict.materials[i])
-		ResourceScripts.game_res.materials[i] += rewardsdict.materials[i]
+		if !only_show_mat_reward:
+			ResourceScripts.game_res.materials[i] += rewardsdict.materials[i]
 		globals.connectmaterialtooltip(newbutton, item)
 	for i in rewardsdict.items:
 		var newnode = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
@@ -1665,7 +1686,8 @@ func victory():
 		newnode.show()
 		i.set_icon(newnode.get_node("Icon"))
 #		newnode.get_node("Icon").texture = input_handler.loadimage(i.icon, 'icons')
-		globals.AddItemToInventory(i)
+		if !only_show_mat_reward:
+			globals.AddItemToInventory(i)
 		newnode.get_node("name").text = i.name
 #		globals.connectitemtooltip_v2(newnode, ResourceScripts.game_res.items[globals.get_item_id_by_code(i.itembase)])
 		globals.connectitemtooltip_v2(newnode, i)
@@ -1678,12 +1700,16 @@ func victory():
 	var array = []
 	for i in playergroup.values():
 		array.append(i)
-	input_handler.get_person_for_chat(array, 'combat_won')
+	if global_turn < 3:
+		input_handler.get_person_for_chat(array, 'combat_won_fast')
+	else:
+		input_handler.get_person_for_chat(array, 'combat_won_slow')
 	# yield($Rewards/AnimationPlayer, "animation_finished")
 	$Rewards/gold/Label.text = '+0'
 	$Rewards.set_meta("result", 'victory')
 	$Rewards/gold/Label.text = str("+") + str(rewardsdict.gold)
-	ResourceScripts.game_res.money += rewardsdict.gold
+	if !only_show_mat_reward:
+		ResourceScripts.game_res.money += rewardsdict.gold
 	$Rewards.show()
 	$Rewards.modulate.a = 0
 	$Rewards/AnimationPlayer.play("Victory")
@@ -1718,3 +1744,13 @@ func defeat(runaway = false): #runaway is a temporary variable until run() metho
 	ActionQueue = null
 	FinishCombat(false)
 	input_handler.SetMusic(input_handler.explore_sound, true)
+
+#for now it's for extornal use after start_combat()
+func set_no_reward():
+	no_material_reward = true
+
+func set_only_show_reward():
+	only_show_mat_reward = true
+
+func set_external_reward(new_reward):
+	external_reward = new_reward

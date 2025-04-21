@@ -601,7 +601,8 @@ func get_e_capacity():
 func get_bonusstats():
 	var res = bonusstats.duplicate()
 	var mul = variables.itemquality_multiplier[quality]
-	if tags.has('fixed_stats'):
+	if Items.fixed_quality_stats.has(itembase):
+#	if tags.has('fixed_stats'):
 		mul = 1.0
 	for st in res:
 		if st in ['weapon_element', 'weapon_element_ench']:

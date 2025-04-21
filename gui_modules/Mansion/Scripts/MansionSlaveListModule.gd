@@ -69,8 +69,23 @@ func rebuild():
 		var person = ResourceScripts.game_party.characters[i]
 		var newbutton = input_handler.DuplicateContainerTemplate(SlaveContainer)
 		
-		newbutton.disabled = person.is_on_quest()
-		if !person.is_on_quest():
+		newbutton.get_node("rhand").connect("pressed", self, 'OpenInventory', [person])
+		newbutton.get_node("rhand").set_disabled(false)
+		newbutton.get_node("tool").connect("pressed", self, 'OpenInventory', [person])
+		newbutton.get_node("tool").set_disabled(false)
+		newbutton.get_node("chest").connect("pressed", self, 'OpenInventory', [person])
+		newbutton.get_node("chest").set_disabled(false)
+		newbutton.get_node("legs").connect("pressed", self, 'OpenInventory', [person])
+		newbutton.get_node("legs").set_disabled(false)
+		
+		if person.is_on_quest():
+			newbutton.disabled = true
+			newbutton.get_node("rhand").set_disabled(true)
+			newbutton.get_node("tool").set_disabled(true)
+			newbutton.get_node("chest").set_disabled(true)
+			newbutton.get_node("legs").set_disabled(true)
+		else:
+			newbutton.disabled = false
 			newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars.png")
 			newbutton.texture_hover = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_job_chars_hover.png")
 
@@ -92,15 +107,6 @@ func rebuild():
 		newbutton.get_node("job").connect("pressed", self, 'OpenJobModule', [person])
 #		newbutton.get_node("job").set_disabled(false)
 #		newbutton.get_node("job").disabled = person.travel.location == "travel" || person.is_on_quest()
-		
-		newbutton.get_node("rhand").connect("pressed", self, 'OpenInventory', [person])
-		newbutton.get_node("rhand").set_disabled(false)
-		newbutton.get_node("tool").connect("pressed", self, 'OpenInventory', [person])
-		newbutton.get_node("tool").set_disabled(false)
-		newbutton.get_node("chest").connect("pressed", self, 'OpenInventory', [person])
-		newbutton.get_node("chest").set_disabled(false)
-		newbutton.get_node("legs").connect("pressed", self, 'OpenInventory', [person])
-		newbutton.get_node("legs").set_disabled(false)
 		
 		match get_parent().mansion_state:
 			"skill":

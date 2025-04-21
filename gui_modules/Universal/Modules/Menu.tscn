@@ -385,7 +385,8 @@ __meta__ = {
 [node name="Options" parent="." instance=ExtResource( 18 )]
 visible = false
 margin_left = 635.0
-margin_right = 1284.0
+margin_right = 1384.0
+margin_bottom = 920.0
 
 [node name="saveloadpanel" parent="." instance=ExtResource( 17 )]
 visible = false

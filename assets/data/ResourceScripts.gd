@@ -96,6 +96,7 @@ onready var node_data = {
 	input_handler.NODE_DATE : {name = 'date_panel', mode = 'scene', scene = preload("res://gui_modules/Interaction/Modules/date.tscn") },
 	input_handler.NODE_TUTORIAL_PANEL : {name = 'tutorial_panel', mode = 'scene', scene = preload("res://gui_modules/Mansion/Modules/Tutorial.tscn") },
 	input_handler.NODE_TRAIREM_PANEL : {name = 'trait_removal', mode = 'scene', scene = preload("res://gui_modules/Inventory/Modules/TraitRemovePanel.tscn") },
+	input_handler.NODE_ARENA : {name = 'arena', mode = 'scene', scene = preload("res://gui_modules/arena/arena.tscn"), calls = 'open'},
 	#Animations
 	input_handler.ANIM_TASK_AQUARED : {name = 'ANIMTaskAquared', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_task_aquired.tscn") },
 	input_handler.ANIM_BATTLE_START : {name = 'ANIMBattleStart', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_battle_start.tscn") },

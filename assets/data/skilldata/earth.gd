@@ -41,7 +41,7 @@ var skills = {
 		tags = ['damage','ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template_globals({effect = 'e_s_shred3'})], 
+		effects = [Effectdata.rebuild_template({effect = 'e_s_shred', duration = 3})], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,

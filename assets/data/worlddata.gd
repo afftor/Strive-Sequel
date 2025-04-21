@@ -18,8 +18,7 @@ var lands = {
 		start_locations_number = 2, #will generate this number of smaller locations like dungeons
 		locations = {}, #array to fill up with settlements and dungeons
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'], #array of allowed locations to generate
-		starting_locations = ['dungeon_bandit_den','dungeon_goblin_cave'],# 'dungeon_infinite_example'],#['dungeon_bandit_fort'],
-		gatherable_resources = [],
+		starting_locations = ['dungeon_bandit_den','dungeon_goblin_cave','dungeon_goblin_stronghold'],# 'dungeon_infinite_example'],#['dungeon_bandit_fort'],
 		guilds = ['workers','servants','fighters','mages','slavemarket','exotic_slave_trader'],
 		events = [],
 		tags = [],
@@ -73,7 +72,7 @@ var lands = {
 		guilds = [],
 		tags = [],
 		capital_options = [],
-		area_shop_items = '',
+		area_shop_items = 'mountain_area_shop',
 		capital_background = 'dwarfs_city',
 		capital_name = "Dwarven Capital",
 		capital_code = 'dwarf_capital',
@@ -81,21 +80,27 @@ var lands = {
 #		capital_background_noise = '',
 		capital_background_music = 'dwarf_cap',
 	},
-	steppe = {
-		code = 'steppe',
-		name = tr("AREASTEPPE"),
-		enabled = false,
-		lead_race = 'Orc',
-		secondary_races = ['Goblin','Centaur'],
+	empire = {
+		code = 'empire',
+		name = tr("AREAEMPIRE"),
+		enabled = true,
+		lead_race = 'Human',
+		secondary_races = [],
 		policies = [],
-		travel_time = [3,6],#[15,36],
+		travel_time = [3,3],
 		disposition = 15,
 		start_settlements_number = {},
 		starting_locations = [],
 		locations = {},
-		locationpool = ['dungeon_goblin_cave'],
+		locationpool = [],
 		guilds = [],
 		area_shop_items = '',
+		capital_background = 'empire',
+		capital_name = "Empire Capital",
+		capital_code = 'empire_capital',
+		capital_dynamic_background = 'empire',
+#		capital_background_noise = '',
+		capital_background_music = 'wimborn',
 	},
 	seas = {
 		code = 'seas',
@@ -282,7 +287,7 @@ var factiondata = {
 			},
 		],
 		events = [
-			'workers_init',
+			'workers_init', 'workers_limnrov'
 			],
 		quests_easy = ["workers_craft_tools_easy",'workers_task_easy','workers_slave_easy'],
 		quests_medium = ['workers_resources_medium','workers_food_medium','workers_craft_tools_medium','workers_task_medium','workers_slave_medium'],
@@ -534,7 +539,7 @@ var locations = {
 		background_pool = ['village1'],
 		bgm = 'exploration',
 		travel_time = [1,1],
-		gather_resources = {wood = [2,3], stone = [2,3], grain = [2,3], iron = [1,1]}, #Number of allowed slaves per task at no upgrades
+		gather_resources = 'settlement_plains1_res', #Number of allowed slaves per task at no upgrades
 		area_shop_items = 'settlement_plains1_shop'
 	},
 	settlement_plains2 = {
@@ -555,7 +560,7 @@ var locations = {
 		background_pool = ['village2'],
 		bgm = 'exploration',
 		travel_time = [1,1],
-		gather_resources = {vegetables = [2,3], leather = [2,3], cloth = [2,3], clothsilk = [1,1]},
+		gather_resources = 'settlement_plains2_res',
 		area_shop_items = 'settlement_plains2_shop',
 	},
 	settlement_forest1 = {
@@ -576,7 +581,7 @@ var locations = {
 		background_pool = ['forest1'],
 		bgm = 'exploration',
 		travel_time = [1,1],
-		gather_resources = {wood = [2,3], woodmagic = [3,3], woodiron = [2,2], leatherthick = [1,1]},
+		gather_resources = 'settlement_forest1_res',
 		area_shop_items = '',
 	},
 	settlement_mountains1 = {
@@ -593,7 +598,7 @@ var locations = {
 		background_pool = ['cave_3'],
 		bgm = 'exploration',
 		travel_time = [1,1],
-		gather_resources = {iron = [1,2], mithril = [1,1], boneancient = [1,1]},
+		gather_resources = 'settlement_mountains1_res',
 		area_shop_items = '',
 	},
 }
@@ -608,8 +613,12 @@ var locationnames = {
 	bandit_fort_adjs = [tr("BANDIT_FORT_ADJS1"),tr("BANDIT_FORT_ADJS2"),tr("BANDIT_FORT_ADJS3"),tr("BANDIT_FORT_ADJS4"),tr("BANDIT_FORT_ADJS5")],
 	rebel_redoubt_nouns = [tr("BANDIT_FORT_NOUNS1"),tr("BANDIT_FORT_NOUNS2"),tr("BANDIT_FORT_NOUNS3"),tr("BANDIT_FORT_NOUNS4"),tr("BANDIT_FORT_NOUNS5"),tr("BANDIT_FORT_NOUNS6")],
 	rebel_redoubt_adjs = [tr("BANDIT_FORT_ADJS1"),tr("BANDIT_FORT_ADJS2"),tr("BANDIT_FORT_ADJS3"),tr("BANDIT_FORT_ADJS4"),tr("BANDIT_FORT_ADJS5")],
+	goblin_stronghold_nouns = [tr("GOBLIN_STRONGHOLD_NOUNS1"),tr("GOBLIN_STRONGHOLD_NOUNS2"),tr("GOBLIN_STRONGHOLD_NOUNS3"),tr("GOBLIN_STRONGHOLD_NOUNS4"),tr("GOBLIN_STRONGHOLD_NOUNS5"),tr("GOBLIN_STRONGHOLD_NOUNS6"),tr("GOBLIN_STRONGHOLD_NOUNS7"),tr("GOBLIN_STRONGHOLD_NOUNS8"),tr("GOBLIN_STRONGHOLD_NOUNS9"),tr("GOBLIN_STRONGHOLD_NOUNS10")],
+	goblin_stronghold_adjs = [tr("GOBLIN_STRONGHOLD_ADJS1"),tr("GOBLIN_STRONGHOLD_ADJS2"),tr("GOBLIN_STRONGHOLD_ADJS3"),tr("GOBLIN_STRONGHOLD_ADJS4"),tr("GOBLIN_STRONGHOLD_ADJS5"),tr("GOBLIN_STRONGHOLD_ADJS6"),tr("GOBLIN_STRONGHOLD_ADJS7"),tr("GOBLIN_STRONGHOLD_ADJS8"),tr("GOBLIN_STRONGHOLD_ADJS9"),tr("GOBLIN_STRONGHOLD_ADJS10"),tr("GOBLIN_STRONGHOLD_ADJS11"),tr("GOBLIN_STRONGHOLD_ADJS12")],
 	goblin_cave_nouns = [tr("GOBLIN_CAVE_NOUNS1"),tr("GOBLIN_CAVE_NOUNS2"),tr("GOBLIN_CAVE_NOUNS3"),tr("GOBLIN_CAVE_NOUNS4"),tr("GOBLIN_CAVE_NOUNS5")],
 	goblin_cave_adjs = [tr("GOBLIN_CAVE_ADJS1"),tr("GOBLIN_CAVE_ADJS2"),tr("GOBLIN_CAVE_ADJS3"),tr("GOBLIN_CAVE_ADJS4"),tr("GOBLIN_CAVE_ADJS5"),tr("GOBLIN_CAVE_ADJS6"),tr("GOBLIN_CAVE_ADJS7")],
+	spider_lair_nouns = [tr("GOBLIN_CAVE_NOUNS1"),tr("GOBLIN_CAVE_NOUNS2"),tr("GOBLIN_CAVE_NOUNS3"),tr("GOBLIN_CAVE_NOUNS4"),tr("GOBLIN_CAVE_NOUNS5")],
+	spider_lair_adjs = [tr("GOBLIN_CAVE_ADJS1"),tr("GOBLIN_CAVE_ADJS2"),tr("GOBLIN_CAVE_ADJS3"),tr("GOBLIN_CAVE_ADJS4"),tr("GOBLIN_CAVE_ADJS5"),tr("GOBLIN_CAVE_ADJS6"),tr("GOBLIN_CAVE_ADJS7")],
 	bandit_den_nouns = [],
 	bandit_den_adjs = [],
 	grove_nouns = [tr("GROVE_NOUNS1"),tr("GROVE_NOUNS2"),tr("GROVE_NOUNS3"),tr("GROVE_NOUNS4"),tr("GROVE_NOUNS5"),tr("GROVE_NOUNS6"),tr("GROVE_NOUNS7"),tr("GROVE_NOUNS8"),tr("GROVE_NOUNS9"),tr("GROVE_NOUNS10"),tr("GROVE_NOUNS11")],
@@ -880,6 +889,11 @@ var fixed_location_options = { #override serialized data
 				{type = 'active_quest_stage', value = 'kuro_errand_quest', stage = 'church'}
 			], 
 			args = [{code = 'start_event', data = 'kuro_church_note', args = []}]
+		},
+		{
+			text = tr('ARENA_NAME'),
+			reqs = [],
+			args = [{code = 'open_arena'}]
 		},
 	],
 	elf_capital = [

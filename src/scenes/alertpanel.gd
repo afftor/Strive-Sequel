@@ -6,12 +6,18 @@ var targetnode : Object
 # for no-op.
 var left_fn  : String
 var right_fn : String
+onready var left_btn = $RichTextLabel/TextureRect/ButtonL
+onready var left_btn_label = $RichTextLabel/TextureRect/ButtonL/Label
+onready var right_btn = $RichTextLabel/TextureRect/ButtonR
+onready var right_btn_label = $RichTextLabel/TextureRect/ButtonR/Label
+onready var bg_panel = $RichTextLabel/TextureRect
 
 func _ready() -> void:
 #warning-ignore:return_value_discarded
-	$ButtonL.connect('pressed',self, 'OnLeftButton')
+	left_btn.connect('pressed',self, 'OnLeftButton')
 #warning-ignore:return_value_discarded
-	$ButtonR.connect('pressed', self, 'OnRightButton')
+	right_btn.connect('pressed', self, 'OnRightButton')
+	bg_panel.connect('resized', self, 'OnBgResized')
 
 func ShowConfirmCancel(TargetNode : Object, \
 					   ConfirmFunction : String, Text : String) -> void:
@@ -33,11 +39,11 @@ func Show(TargetNode : Object, Text : String, \
 		$RichTextLabel.bbcode_text = "[center]" +  globals.TextEncoder(Text) + "[/center]"
 		targetnode = TargetNode
 		left_fn = LeftFunc
-		$ButtonL/Label.text = LeftLabel
-		$ButtonL.visible = (LeftLabel != '')
+		left_btn_label.text = LeftLabel
+		left_btn.visible = (LeftLabel != '')
 		right_fn = RightFunc
-		$ButtonR/Label.text = RightLabel
-		$ButtonR.visible = (RightLabel != '')
+		right_btn_label.text = RightLabel
+		right_btn.visible = (RightLabel != '')
 
 func OnLeftButton() -> void:
 		hide()
@@ -48,3 +54,6 @@ func OnRightButton() -> void:
 		hide()
 		if right_fn != '':
 				targetnode.call(right_fn)
+
+func OnBgResized() -> void:
+	rect_size.y = bg_panel.rect_size.y
