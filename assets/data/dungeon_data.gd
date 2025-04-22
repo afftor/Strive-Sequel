@@ -1,5 +1,5 @@
 extends Node
-var biomes = {
+var infinite_dungeon_biomes = {
 	biome_bandit_den = {
 		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
 		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
