@@ -344,6 +344,6 @@ func get_materials_from_conds(data):
 func can_gather_item(mat_id):
 	var tmp = Items.material_tiers[get_default_materials()]
 	var matdata = Items.materiallist[mat_id]
-	if matdata.type in ['food']:
+	if matdata.type in ['food'] or ResourceScripts.game_globals.diff_free_gather:
 		return true
 	return tmp.has(mat_id)

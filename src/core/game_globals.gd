@@ -16,6 +16,7 @@ var diff_stop_loan = true
 var diff_small_loan = false
 var diff_solo = false
 var diff_free_upgrade = true
+var diff_free_gather = false
 
 var diff_money = 'easy'
 var diff_materials = 'easy'

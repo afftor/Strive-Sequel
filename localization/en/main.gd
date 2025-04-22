@@ -223,6 +223,7 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	NEWGAMESETTINGSTOP_LOAN = "Fast loan payment",
 	NEWGAMESETTINGSMALL_LOAN = "Small loan",
 	NEWGAMESETTINGSOLO = "Solo",
+	NEWGAMESETTINGFREE_GATHER = "Progress-independent gathering",
 	NEWGAMESETTINGFREE_UPGRADE = "Free upgrade",
 	NEWGAMESETTINGMATERIALS = "Starting materials",
 	NEWGAMESETTINGMONEY = "Starting gold",
