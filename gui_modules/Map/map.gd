@@ -19,7 +19,7 @@ var area_zoom_data = {
 	plains = {position = Vector2(700, 1700), zoom = 1.5},
 	forests = {position = Vector2(1310, 1890), zoom = 1.5},
 	mountains = {position = Vector2(1000, 1000), zoom = 1.5},
-	empire = {position = Vector2(1000, 1000), zoom = 1.5},
+	empire = {position = Vector2(1000, 100), zoom = 1.2},
 }
 
 func _unhandled_input(event):
@@ -166,7 +166,7 @@ var selected_chars = []
 var selected_area
 
 var sorted_locations = []
-var lands_order = ['plains','forests','mountains','steppe','seas']
+var lands_order = ['plains', 'forests', 'mountains', 'empire', 'steppe', 'seas']
 var lands_count = {}
 var locs_order = ['capital', 'settlement', 'quest_location', 'dungeon', 'encounter']
 var locs_count = {}
