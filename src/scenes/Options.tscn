@@ -407,6 +407,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="diff_free_gather" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
+margin_top = 176.0
+margin_right = 465.0
+margin_bottom = 216.0
+rect_pivot_offset = Vector2( -462.269, -82 )
+theme = ExtResource( 3 )
+custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "NEWGAMESETTINGFREE_GATHER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Audio" type="Tabs" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
