@@ -608,7 +608,6 @@ text = "10"
 valign = 1
 
 [node name="Back" type="TextureButton" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
