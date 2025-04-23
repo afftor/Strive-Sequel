@@ -737,6 +737,10 @@ func apply_status(args):
 	dyn_stats.apply_status(args)
 
 
+func remove_effect_stack(id):
+	dyn_stats.remove_effect_stack(id)
+
+
 func remove_effect(eff_id):
 	dyn_stats.remove_effect(eff_id)
 

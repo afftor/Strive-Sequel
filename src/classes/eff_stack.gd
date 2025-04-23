@@ -37,6 +37,15 @@ func get_applied_object():
 	return characters_pool.get_char_by_id(owner)
 
 
+func cleanup():
+	if !effects.empty():
+		print("wrong stack cleanup call")
+		return
+	var obj = get_applied_object()
+	if obj != null:
+		obj.remove_effect_stack(id)
+
+
 func process_event(ev, data = {}):
 	var cash = []
 	for eff in effects:

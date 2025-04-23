@@ -120,6 +120,7 @@ func cleanup():
 			remove_id(id)
 	for id in stacks.keys().duplicate():
 		if stacks[id].effects.empty():
+			stacks[id].cleanup()
 			stacks.erase(id)
 
 

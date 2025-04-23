@@ -270,6 +270,13 @@ func remove_effect(eff_id):
 #		'area': remove_area_effect(eff_id)
 
 
+func remove_effect_stack(rem_id):
+	for id in effects_temp_stored:
+		if effects_temp_stored[id] == rem_id:
+			effects_temp_stored.erase(id)
+			break
+
+
 func remove_temp_effect_tag(eff_tag):#function for non-direct temps removing, like heal or dispel, probably not used. removes random effect.
 	var tmp = find_temp_effect_tag(eff_tag)
 	if tmp.empty():
