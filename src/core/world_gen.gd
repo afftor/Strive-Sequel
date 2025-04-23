@@ -1144,7 +1144,7 @@ func set_level_infinite(location, level):
 			location.biomes.push_back(i)
 	location.biome = location.biomes[level]
 	#setup biome attributes
-	var biome_data = DungeonData.biomes[location.biome]
+	var biome_data = DungeonData.infinite_dungeon_biomes[location.biome]
 	location.background = input_handler.random_from_array(biome_data.background_pool)
 	#----old loot system-----
 #	if biome_data.gatherable_resources is Dictionary:

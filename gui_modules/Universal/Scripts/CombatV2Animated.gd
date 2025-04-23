@@ -1726,6 +1726,14 @@ func victory():
 
 
 func defeat(runaway = false): #runaway is a temporary variable until run() method not fully implemented
+	for p in range(1, 7):
+		if battlefield[p] == null:
+			continue
+		var t_p = get_char_by_pos(p)
+		if summons.has(p):
+			t_p.is_active = false
+			playergroup.erase(p)
+			summons.erase(p)
 	if runaway:
 		input_handler.play_animation_noq("runaway")
 		yield(get_tree().create_timer(3), 'timeout')
