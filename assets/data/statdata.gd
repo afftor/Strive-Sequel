@@ -997,7 +997,7 @@ var statdata = {
 	},
 	portrait_update = {
 		code = 'portrait_update',
-		tags = ['bool'],
+		tags = ['bool', 'custom_getter'],
 		default_bonus = 'set',
 	},
 	player_selected_icon = {
