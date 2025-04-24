@@ -303,6 +303,14 @@ func get_body_color_animal(): #2move to bodychanges
 		_:
 			return 'white2'
 
+
+func get_portrait_update():
+	var res = statlist.portrait_update
+	if !res:
+		return !parent.get_ref().check_portrait()
+	return res
+
+
 #setters
 func update_stat(stat, value, operant = 'set'):
 	if !statdata.check_compatibility_operant(stat, operant):

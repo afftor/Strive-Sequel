@@ -2018,6 +2018,15 @@ func update_portrait(ragdoll): # for ragdolls
 	ragdoll.save_portrait(path)
 
 
+func check_portrait():
+	var path = get_stat('icon_image')
+	if !(path.is_abs_path() or path.is_rel_path()): #portrait is not path - so it must exist
+		return true 
+	if File.new().file_exists(path): 
+		return true
+	return false
+
+
 func update_prt():
 	if get_stat("unique") == null or get_stat("player_selected_icon"):
 		return
