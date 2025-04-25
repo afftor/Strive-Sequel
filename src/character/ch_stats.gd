@@ -1548,58 +1548,65 @@ func tick():
 
 var sex_nouns = {male = tr("PRONOUNSEX"), female = tr("PRONOUNSEXF"), futa = tr("PRONOUNSEXH")}
 
-func translate(text):
-	var rtext = ''
-	text = text.replace("[He]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHE'), tr("PRONOUNHEF"))) # PRONOUNHE = "He", 
-	text = text.replace("[he]", globals.fastif(statlist.sex == 'male',  tr('PRONOUNHEL'), tr("PRONOUNHELF")))
-	text = text.replace("[his]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHISL'), tr("PRONOUNHISLF")))
-	text = text.replace("[him]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHIML'), tr("PRONOUNHIMLF")))
-	text = text.replace("[His]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHIS'), tr("PRONOUNHISF")))
-	text = text.replace("[Sir]", globals.fastif(statlist.sex == 'male', tr('PRONOUNSIR'), tr("PRONOUNSIRF")))
-	text = text.replace("[sir]", globals.fastif(statlist.sex == 'male', tr('PRONOUNSIR'), tr("PRONOUNSIRF")))
-	text = text.replace("[mister]", globals.fastif(statlist.sex == 'male', tr('PRONOUNMISTER'), tr("PRONOUNMISTERF")))
-	text = text.replace("[son]", globals.fastif(statlist.sex == 'male', tr('PRONOUNSON'), tr("PRONOUNSONF")))
-	text = text.replace("[father]", globals.fastif(statlist.sex == 'male', tr('PRONOUNFATHER'), tr("PRONOUNFATHERF")))
-	text = text.replace("[brother]", globals.fastif(statlist.sex == 'male', tr('PRONOUNBROTHER'), tr("PRONOUNBROTHERF")))
-	text = text.replace("[gentleman]", globals.fastif(statlist.sex == 'male', tr('PRONOUNGENTLEMAN'), tr("PRONOUNGENTLEMANF")))
-	text = text.replace("[raceadj]", races.racelist[statlist.race].adjective if statlist.race != "" else "")
-	text = text.replace("[race]", races.racelist[statlist.race].name if statlist.race != "" else "")
-	text = text.replace("[race_short]",input_handler.random_from_array(races.short_race_names[races.racelist[statlist.race].code]) if statlist.race != "" else "")
-	text = text.replace("[name]", get_short_name())
-	text = text.replace("[surname]",globals.fastif(statlist.surname != '', statlist.surname, get_short_name()))
-	text = text.replace("[age]", statlist.age.capitalize())
-	text = text.replace("[male]", sex_nouns[statlist.sex])
-	text = text.replace("[eye_color]", statlist.eye_color)
-	text = text.replace("[hair_color]", tr("HAIRCOLOR_" + get_stat('hair_color').to_upper()))
-	text = text.replace("[man]", globals.fastif(statlist.sex == 'male', tr('PRONOUNMAN'), tr("PRONOUNMANF")))
-	text = text.replace("[guy]", globals.fastif(statlist.sex == 'male', tr('PRONOUNGUY'), tr("PRONOUNGUYF")))
-	text = text.replace("[husband]", globals.fastif(statlist.sex == 'male', tr('PRONOUNHUSBAND'), tr("PRONOUNHUSBANDF")))
-	text = text.replace("[groom]", globals.fastif(statlist.sex == 'male', tr('PRONOUNGROOM'), tr("PRONOUNGROOMF")))
-	
-#	var masternoun = 'master'
-	var tempmasternoun = statlist.masternoun
-	if parent.get_ref() != null:
-		if tempmasternoun in ['master','mistress']:
-			if input_handler.meowingcondition(parent.get_ref()) == true:
-				tempmasternoun = 'myaster'
-			if ResourceScripts.game_party.get_master() != null && ResourceScripts.game_party.get_master().get_stat('sex') != 'male':
-				if input_handler.meowingcondition(parent.get_ref()) == true:
-					tempmasternoun = 'mewstress'
-	else:
-		print('error in character %s - no root object' % statlist.name)
-	
-	text = text.replace("[master]", tempmasternoun)
-	text = text.replace("[Master]", tempmasternoun.capitalize())
-	
-	match statlist.sex:
-		'male':
-			rtext = 'boy'
-		'female':
-			rtext = 'girl'
-		'futa':
-			rtext = 'futanari'
-	text = text.replace("[boygirlfuta]", rtext)
-	text = text.replace("[boy]", globals.fastif(statlist.sex == 'male', 'boy', 'girl'))
+func get_pronoun_value(pronoun):
+	match pronoun:
+		"He": return globals.fastif(statlist.sex == 'male', tr('PRONOUNHE'), tr("PRONOUNHEF")) # PRONOUNHE = "He", 
+		"he": return globals.fastif(statlist.sex == 'male', tr('PRONOUNHEL'), tr("PRONOUNHELF"))
+		"his": return globals.fastif(statlist.sex == 'male', tr('PRONOUNHISL'), tr("PRONOUNHISLF"))
+		"him": return globals.fastif(statlist.sex == 'male', tr('PRONOUNHIML'), tr("PRONOUNHIMLF"))
+		"His": return globals.fastif(statlist.sex == 'male', tr('PRONOUNHIS'), tr("PRONOUNHISF"))
+		"Sir": return globals.fastif(statlist.sex == 'male', tr('PRONOUNSIR'), tr("PRONOUNSIRF"))
+		"sir": return globals.fastif(statlist.sex == 'male', tr('PRONOUNSIR'), tr("PRONOUNSIRF"))
+		"mister": return globals.fastif(statlist.sex == 'male', tr('PRONOUNMISTER'), tr("PRONOUNMISTERF"))
+		"son": return globals.fastif(statlist.sex == 'male', tr('PRONOUNSON'), tr("PRONOUNSONF"))
+		"father": return globals.fastif(statlist.sex == 'male', tr('PRONOUNFATHER'), tr("PRONOUNFATHERF"))
+		"brother": return globals.fastif(statlist.sex == 'male', tr('PRONOUNBROTHER'), tr("PRONOUNBROTHERF"))
+		"gentleman": return globals.fastif(statlist.sex == 'male', tr('PRONOUNGENTLEMAN'), tr("PRONOUNGENTLEMANF"))
+		"raceadj": return races.racelist[statlist.race].adjective if statlist.race != "" else ""
+		"race": return races.racelist[statlist.race].name if statlist.race != "" else ""
+		"race_short": return input_handler.random_from_array(races.short_race_names[races.racelist[statlist.race].code]) if statlist.race != "" else ""
+		"name": return get_short_name()
+		"surname": return globals.fastif(statlist.surname != '', statlist.surname, get_short_name())
+		"age": return statlist.age.capitalize()
+		"male": return sex_nouns[statlist.sex]
+		"eye_color": return statlist.eye_color
+		"hair_color": return tr("HAIRCOLOR_" + get_stat('hair_color').to_upper())
+		"man": return globals.fastif(statlist.sex == 'male', tr('PRONOUNMAN'), tr("PRONOUNMANF"))
+		"guy": return globals.fastif(statlist.sex == 'male', tr('PRONOUNGUY'), tr("PRONOUNGUYF"))
+		"husband": return globals.fastif(statlist.sex == 'male', tr('PRONOUNHUSBAND'), tr("PRONOUNHUSBANDF"))
+		"groom": return globals.fastif(statlist.sex == 'male', tr('PRONOUNGROOM'), tr("PRONOUNGROOMF"))
+		"master", "Master":
+#			var masternoun = 'master'
+			var tempmasternoun = statlist.masternoun
+			if parent.get_ref() != null:
+				if tempmasternoun in ['master','mistress']:
+					if input_handler.meowingcondition(parent.get_ref()) == true:
+						tempmasternoun = 'myaster'
+					if ResourceScripts.game_party.get_master() != null && ResourceScripts.game_party.get_master().get_stat('sex') != 'male':
+						if input_handler.meowingcondition(parent.get_ref()) == true:
+							tempmasternoun = 'mewstress'
+			else:
+				print('error in character %s - no root object' % statlist.name)
+			if pronoun == "Master":
+				return tempmasternoun.capitalize()
+			return tempmasternoun
+		"boygirlfuta":
+			match statlist.sex:
+				'male':
+					return 'boy'
+				'female':
+					return 'girl'
+				'futa':
+					return 'futanari'
+		"boy": return globals.fastif(statlist.sex == 'male', 'boy', 'girl')
+		"himself": return globals.fastif(statlist.sex == 'male', tr('PRONOUNHIMSELFL'), tr("PRONOUNHIMSELFLF"))
+
+func translate(text, number = -1):
+	for pronoun in variables.text_pronouns:
+		var number_str = ""
+		if number > -1:
+			number_str = String(number)
+		text = text.replace("[%s%s]" % [pronoun, number_str], get_pronoun_value(pronoun))
 	return text
 
 

@@ -413,6 +413,7 @@ func apply_training(code):
 	#display
 	var dialogue_data = {text = '', tags = ['skill_report_event'], options = []}
 	var text = tr(data.scene_text)
+	#chars can now translate() text by numbered tags. Refactor advised
 	for tag in variables.dynamic_text_vars:
 		text = text.replace('[%s1]' % tag, ch_trainer.translate('[%s]' % tag))
 		text = text.replace('[%s2]' % tag, parent.get_ref().translate('[%s]' % tag))

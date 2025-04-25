@@ -435,7 +435,9 @@ var autosave_frequency_max = 30
 
 
 var personality_array = ['neutral','kind','bold','shy','serious']
+#dynamic_text_vars probably obsolete, use text_pronouns in new cases
 var dynamic_text_vars = ['name', 'He','he', 'his', 'him', "His", 'raceadj', 'race','age', 'male', 'eye_color','hair_color', 'boy']
+var text_pronouns = ['He', 'he', 'his', 'him', 'His', 'Sir', 'sir', 'mister', 'son', 'father', 'brother', 'gentleman', 'raceadj', 'race', 'race_short', 'name', 'surname', 'age', 'male', 'eye_color', 'hair_color', 'man', 'guy', 'husband', 'groom', 'master', 'Master', 'boygirlfuta', 'boy', 'himself']
 
 #editor data
 var atomic_types = ['kill','damage','heal','mana','stat_set','stat_set_revert','stat_add','stat_mul','stat_add_p','bonus','remove_effect','remove_all_effects','add_trait','add_sex_trait','unlock_sex_trait','resurrect','use_combat_skill','use_social_skill','add_soc_skill','add_combat_skill','sfx', 'add_tag']

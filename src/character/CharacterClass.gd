@@ -1346,6 +1346,9 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'is_at_location':
 			if variables.allow_remote_intereaction == true and i.check: check = true
 			else: check = check_location(i.value, true) == i.check
+		'location_param':
+			var data = ResourceScripts.world_gen.get_location_from_code(get_location())
+			return data.has(i.param) and data[i.param] == i.value
 		'is_id':
 			check = input_handler.operate(i.operant, id, i.value)
 		'long_tail':
@@ -1419,6 +1422,10 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 					tres = true
 					break
 			return tres == i.check
+		'work':
+			if i.has("check"):
+				return (get_work() == i.value) == i.check
+			return get_work() == i.value
 	return check
 
 
@@ -1587,8 +1594,8 @@ func rest_tick():
 		eff.process_event(variables.TR_TICK)
 
 
-func translate(text):
-	text = statlist.translate(text)
+func translate(text, number = -1):
+	text = statlist.translate(text, number)
 	text = text.replace("[price]", str(calculate_price(true))) #need another placeholder for a non-shop value. for now it is not used, but may be handy 
 	if text.find('[spouse') != -1:
 		if !has_profession('master'):
@@ -1602,7 +1609,7 @@ func translate(text):
 			print ("no spouse alive")
 			return text
 		text = text.replace("[spouse", "[")
-		return spouse.translate(text)
+		return spouse.translate(text, number)
 	return text
 
 
@@ -1772,6 +1779,9 @@ func affect_char(template):
 					ResourceScripts.game_world.setup_teleporter(get_location())
 				'gather_res':
 					ResourceScripts.game_world.gather_res(get_location(), get_stat('matk') * 10)
+				'pay_stamina':
+					var data = ResourceScripts.world_gen.get_location_from_code(get_location())
+					data.stamina -= template.cost
 
 
 func is_koed():
