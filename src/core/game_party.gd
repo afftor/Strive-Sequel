@@ -16,7 +16,6 @@ var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} #
 
 var character_order = []
 
-var char_events = load("res://src/core/char_events.gd").new(self)
 
 func _get_key(char1, char2):
 	var pair = [char1, char2]
@@ -79,6 +78,20 @@ func update_relationship_status(data, char1, char2):
 		else:
 			change_relationship_status(char1, char2, 'acquintances')
 	#print(data)
+
+func get_all_possible_love_pairs():
+	var friend_list = []
+	for key in relationship_data:
+		var data = relationship_data[key]
+		if data.status == 'friends':
+			friend_list.append(key)
+	var love_list = []
+	for key in friend_list:
+		var data = relationship_data[key]
+		var chars = key.split("_")
+		if check_lover_possibility(data, chars[0], chars[1]):
+			love_list.append(chars)
+	return love_list
 
 
 func attempt_romance(char1, char2):
@@ -267,9 +280,6 @@ func advance_day():
 			continue
 		for j in range(i + 1, character_order.size()):
 			if _in_same_location(character_order[i],character_order[j]): relation_daily_change_same_loc(character_order[i],character_order[j])
-
-func advance_hour():
-	char_events.advance_time()
 
 func serialize():
 	var res = inst2dict(self)
@@ -767,6 +777,3 @@ func force_update_portraits():
 		if person == null: 
 			return
 		person.update_prt()
-
-func supplement_events():
-	char_events.supplement_events()

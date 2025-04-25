@@ -91,7 +91,7 @@ func _ready():
 	ResourceScripts.load_scripts()
 	ResourceScripts.recreate_singletons()
 	ResourceScripts.revert_gamestate()
-	ResourceScripts.game_party.supplement_events()
+	ResourceScripts.char_events.supplement_events()
 	modding_core.load_mods()
 	Effectdata.fix_eff_data()
 	
@@ -1921,6 +1921,10 @@ func common_effects(effects):
 #				if i.type == 'all':
 				for k in input_handler.scene_characters:
 					k.affect_char(i)
+			'affect_one_scene_character':
+				#char_num is human-readable (begins with 1, not 0)
+				if input_handler.scene_characters.size() >= i.char_num:
+					input_handler.scene_characters[i.char_num - 1].affect_char(i)
 			'change_type_scene_characters':
 				if i.type == 'all':
 					for k in input_handler.scene_characters:
@@ -2424,6 +2428,11 @@ func common_effects(effects):
 			'change_relationship':
 				if input_handler.scene_characters.size() == 2:
 					ResourceScripts.game_party.change_relationship_status(input_handler.scene_characters[0].id, input_handler.scene_characters[1].id, i.value)
+				else:
+					print("wrong change relationship setup")
+			'change_relationship_precise':
+				if input_handler.scene_characters.size() == 2:
+					ResourceScripts.game_party.add_relationship_value(input_handler.scene_characters[0].id, input_handler.scene_characters[1].id, i.value)
 				else:
 					print("wrong change relationship setup")
 			'open_arena':

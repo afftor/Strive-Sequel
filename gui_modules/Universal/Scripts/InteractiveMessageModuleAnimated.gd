@@ -1115,6 +1115,9 @@ func generate_scene_text(scene):
 	if scene.tags.has("active_character_translate"):
 		if input_handler.active_character != null:
 			scenetext = input_handler.active_character.translate(scenetext)
+	if scene.tags.has("few_scene_characters_translate"):
+		for i in range(0, input_handler.scene_characters.size()):
+			scenetext = input_handler.scene_characters[i].translate(scenetext, i+1)
 	if scene.tags.has("scene_character_translate"):
 		scenetext = input_handler.scene_characters[0].translate(scenetext.replace("[scnchar","["))
 	if scene.tags.has("location_resource_info"):
@@ -1174,11 +1177,18 @@ func handle_scene_options():
 		newbutton.set_meta("id", id)
 		newbutton.set("modulate", Color(1, 1, 1, 0))
 		i.text_key = i.text
+		#Not very good idea to rewrite param here. It works correctly only because
+		#of scene duplication in input_handler.start_event(). Refactor advised
 		i.text = tr(i.text)
 		if i.has('active_char_translate'):
 			i.text = input_handler.active_character.translate(tr(i.text))
 		elif i.has('master_translate'):
 			i.text = ResourceScripts.game_party.get_master().translate(i.text)
+		#it's better to check overall scene's tags, then each option's separately.
+		#Refactor params above with time
+		if current_scene.tags.has("few_scene_characters_translate"):
+			for num in range(0, input_handler.scene_characters.size()):
+				i.text = input_handler.scene_characters[num].translate(i.text, num+1)
 		newbutton.get_node("Label").bbcode_text = i.text
 		newbutton.hotkey = option_number
 		yield(get_tree(), 'idle_frame')

@@ -142,6 +142,8 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	PRONOUNGROOMF = "bride",
 	PRONOUNBOY = "boy",
 	PRONOUNBOYF = "girl",
+	PRONOUNHIMSELFL = "himself",
+	PRONOUNHIMSELFLF = "herself",
 	BUTTONMENU = "Menu",
 	FINISHTURNBUTTON = "Finish turn",
 	EXPLORESHOP = "Market",
@@ -17939,20 +17941,141 @@ After a few minutes nothing still happened and [name] decides to move on.""",
 	
 	CHARRND_INJURY = """While wandering through the grand halls of the mansion, you hear a sharp cry echo from one of the workrooms. Rushing toward the sound, you find [name] crumpled on the floor, clutching [his] arm. Blood seeps through [his] fingers from a jagged gash, likely caused by a slip with a tool or a broken piece of enchanted equipment. 
 
-The air smells of iron and faint traces of magic as you stand over [him]. The injury looks bad, but not fatal, yet it’s clear [he] won’t be working anytime soon without help.""",
+The air smells of iron and faint traces of magic as you stand over [him]. The injury looks bad, but not fatal, yet it's clear [he] won't be working anytime soon without help.""",
 	CHARRND_INJURY_OPT_HELP = "Help Out (20 gold)",
 	CHARRND_INJURY_OPT_DISC = "Discipline",
 	CHARRND_INJURY_OPT_MANIP = "Manipulate",
-	CHARRND_INJURY_REPLY_HELP = "You kneel beside [name] and call for a healer, digging into your coin pouch to cover the cost. The mansion’s apothecary arrives quickly, stitching the wound with practiced hands and a touch of glowing herbs. [He] mutters a weak thanks, still pale but relieved.",
+	CHARRND_INJURY_REPLY_HELP = "You kneel beside [name] and call for a healer, digging into your coin pouch to cover the cost. The mansion's apothecary arrives quickly, stitching the wound with practiced hands and a touch of glowing herbs. [He] mutters a weak thanks, still pale but relieved.",
 	CHARRND_INJURY_REPLY_DISC = "You grab [name] by the collar, ignoring [his] wince, and haul [him] to [his] feet. You call [him] a clumsy fool and shove [him] toward the wall. A quick lash of words, or even a strike if the mood takes you, drives the lesson home.",
-	CHARRND_INJURY_REPLY_MANIP = "You crouch down, keeping your voice low and smooth. You tell [him] this didn’t have to happen, that better listening would have kept [him] safe. [He] blinks, confusion clouding [his] pain as you weave doubt into [his] mind. By the time you finish, [he] half-believes it’s [his] fault, and that you’re the only one who can protect [him].",
-	CHARRND_ASLEEP = "As you pass through the dimly lit corridors of the mansion, you notice a figure slumped over a workbench in one of the cluttered rooms. It’s [name], head resting on [his] arms, fast asleep amidst scattered tools and flickering candlelight. [His] chest rises and falls slowly, oblivious to the world, a half-finished task lying abandoned before [him].",
+	CHARRND_INJURY_REPLY_MANIP = "You crouch down, keeping your voice low and smooth. You tell [him] this didn't have to happen, that better listening would have kept [him] safe. [He] blinks, confusion clouding [his] pain as you weave doubt into [his] mind. By the time you finish, [he] half-believes it's [his] fault, and that you're the only one who can protect [him].",
+	CHARRND_ASLEEP = "As you pass through the dimly lit corridors of the mansion, you notice a figure slumped over a workbench in one of the cluttered rooms. It's [name], head resting on [his] arms, fast asleep amidst scattered tools and flickering candlelight. [His] chest rises and falls slowly, oblivious to the world, a half-finished task lying abandoned before [him].",
 	CHARRND_ASLEEP_OPT_WAKE = "Wake Up",
 	CHARRND_ASLEEP_OPT_FEEL = "Feel Up",
 	CHARRND_ASLEEP_OPT_LEAVE = "Leave",
 	CHARRND_ASLEEP_REPLY_WAKE = "You step closer and give [name] a firm shake, startling [him] awake. [He] blinks up at you, dazed but grateful as you point out the unfinished work. [He] scrambles to [his] feet, mumbling thanks for not letting [him] slack off. The spark of trust in [his] eyes grows stronger, binding [him] closer to your will.",
-	CHARRND_ASLEEP_REPLY_FEEL = "You slide a hand along [name]’s shoulder, tracing [his] form while [he] remains lost in sleep. The touch lingers, stirring something subtle in [his] unconscious mind. When [he] finally stirs, there’s a flush on [his] cheeks. You respond to [his] puzzled reaction with a note that it's [his] fault for sleeping in a workplace as you continue on your way.",
+	CHARRND_ASLEEP_REPLY_FEEL = "You slide a hand along [name]'s shoulder, tracing [his] form while [he] remains lost in sleep. The touch lingers, stirring something subtle in [his] unconscious mind. When [he] finally stirs, there's a flush on [his] cheeks. You respond to [his] puzzled reaction with a note that it's [his] fault for sleeping in a workplace as you continue on your way.",
 	CHARRND_ASLEEP_REPLY_LEAVE = "You turn away, leaving [name] to [his] slumber without a sound. The choice to avoid entanglement sharpens your focus, and you walk off with a clearer mind. [He] sleeps on, none the wiser, you consider this to be an adequate reaction to a minor slip.",
+	CHARRND_BULLYING = """You stride into one of the mansion's lavish parlors and catch a tense scene unfolding. [name] stands cornered, shoulders hunched, as a haughty guest looms over [him]. The guest's voice drips with mockery, jabbing at [his] work, [his] clothes, anything to draw a flinch. [His] eyes dart to you briefly, a silent plea flickering before [he] looks away.
+
+The guest doesn't notice you yet, too absorbed in [his] cruel game. The air crackles with tension, and [name] shifts uncomfortably, hands clenched at [his] sides. The moment hangs heavy, pulling you toward a decision: step in, stand back, or pile on.""",
+	CHARRND_BULLYING_OPT_PROTECT = "Protect",
+	CHARRND_BULLYING_OPT_IGNORE = "Ignore",
+	CHARRND_BULLYING_OPT_JOIN = "Join In",
+	CHARRND_BULLYING_REPLY_PROTECT = "You move forward, placing yourself between [name] and the guest. A sharp word sends him retreating, realizing he overstep his boundaries over your property. [name] straightens slightly, relief washing over [his] face as [he] murmurs gratitude.",
+	CHARRND_BULLYING_REPLY_IGNORE = "You linger in the doorway, watching without a word. The guest's taunts continue, and [name] takes it in silence, stealing glances your way that fade to disappointment. Eventually, the guest tires and leaves. [He] slumps, unharmed but distant, and you move on unchanged.",
+	CHARRND_BULLYING_REPLY_JOIN = "You step up beside the guest, adding your own barb to the mix. [name] recoils as your words hit, [his] expression twisting with hurt and confusion. The guest grins at your affirmation of his actions. When it's over, [he] avoids your gaze.",
+	CHARRND_MISBEHAVE = """You sit in the mansion's study when a folded letter slips under the door, sealed with no name. Opening it, you read a sharp account of [name] acting out beyond the walls: loud boasts, petty theft, or some other reckless deed. Later, you confront [him], and [he] shrugs, not denying a word. [His] eyes meet yours, bold and unapologetic, waiting to see what you'll do.
+
+The letter crinkles in your hand as you weigh the tale. [name] stands there, arms crossed, the faint smirk on [his] face daring you to react.""",
+	CHARRND_MISBEHAVE_OPT_PARDON = "Pardon",
+	CHARRND_MISBEHAVE_OPT_PUNISH = "Punish",
+	CHARRND_MISBEHAVE_REPLY_PARDON = "You toss the letter aside and tell [name] it's forgotten. [His] smirk softens into surprise, then a flicker of respect. [He] nods, promising to keep it quieter next time, though you know [he] might not. The tension fades, and [his] loyalty holds steady, maybe even warms.",
+	CHARRND_MISBEHAVE_REPLY_PUNISH = "You grab [name] by the arm and order an exercise punishment. [He] bristles, jaw tight, but takes it without a fight. The smirk vanishes, replaced by a sullen glare. [He] won't forget this.",
+	CHARRND_LOST = """You meet [name] at the mansion gates just as [he] returns from town, hands empty and face grim. [He] admits the cargo, a crate of rare herbs, slipped from the cart somewhere along the muddy road. [His] shoulders slump, but [he] doesn't make excuses, just waits for your reaction. The wind carries the faint scent of the lost herbs, a bitter reminder of the mistake.
+
+The cart sits lopsided behind [him], one wheel caked in dirt. [name] shifts [his] weight, eyes flicking to the ground then back to you. The loss stings, and now you decide: punish the blunder, let it go, or send [him] back out.""",
+	CHARRND_LOST_OPT_PUNISH = "Punish",
+	CHARRND_LOST_OPT_PARDON = "Pardon",
+	CHARRND_LOST_OPT_SEARCH = "Make Them Search",
+	CHARRND_LOST_REPLY_PUNISH = "You snap at [name], voice cold, and order [him] to forfeit a day's pay for the lost herbs. [He] flinches, mouth tightening, but nods in silence. [His] steps grow heavy as [he] walks off, resentment brewing under the surface.",
+	CHARRND_LOST_REPLY_PARDON = "You wave a hand and tell [name] mistakes happen. [His] eyes widen, tension easing from [his] frame. [He] mumbles thanks, relieved, and promises to be more careful. The bond between you holds firm, maybe grows a little, despite the missing crate.",
+	CHARRND_LOST_REPLY_SEARCH = "You point back toward the road and tell [name] to find the lost herbs. [He] hesitates, then trudges off, grumbling under [his] breath. Hours later, [he] returns, muddy and empty-handed, but wiser about the route. [His] respect for you sharpens, tempered by exhaustion.",
+	CHARRND_UNWELL = """You find [name] leaning against a wall in the mansion's kitchen, face pale and brow damp with sweat. [He] presses a hand to [his] stomach, admitting [he] feels unwell, maybe from bad food or a creeping chill. [His] voice is weak, and [he] sways slightly, looking to you for guidance. The fire crackles nearby, but it does little to warm [his] shivering frame.
+
+The room feels stuffy, and [name]'s eyes are heavy, pleading without words. [He] coughs once, then steadies [himself], waiting for your call. The choice sits before you: give [him] a break, ease [his] burden, or push [him] on.""",
+	CHARRND_UNWELL_OPT_REST = "Allow Them to Rest",
+	CHARRND_UNWELL_OPT_COMFORT = "Comfort",
+	CHARRND_UNWELL_OPT_FORCE = "Force Working",
+	CHARRND_UNWELL_REPLY_REST = "You nod and tell [name] to take the day off. [He] exhales, gratitude softening [his] strained features, and shuffles toward [his] quarters. Rest steadies [him], and when [he] returns, [his] trust in you shines brighter.",
+	CHARRND_UNWELL_REPLY_COMFORT = "You step closer, resting a hand on [name]'s shoulder, and speak softly. [He] leans into the unexpected gesture, color creeping back to [his] cheeks as [he] finds some relief. [His] spirits lift, and [he] stays near, bound tighter to you by the small warmth you offer.",
+	CHARRND_UNWELL_REPLY_FORCE = "You straighten and order [name] back to [his] tasks, voice firm. [He] grimaces, but drags [himself] upright, stumbling to obey. The day wears [him] down, and [his] cough worsens, resentment flickering in [his] tired gaze. [He] gets through it, but the cost lingers.",
+	CHARRND_ATTENTION = """You spot [name] near the mansion's courtyard, shifting uncomfortably as a stranger edges closer. The newcomer's voice is loud, words laced with flattery or veiled intent, and [he] tries to brush it off with a tight smile. [His] eyes catch yours, a mix of unease and silent appeal, while the stranger presses on, oblivious or uncaring. The sun beats down, making the air feel thick and tense.
+
+The stranger's hand hovers near [name], testing boundaries. [He] steps back, but the pursuit doesn't falter. You stand at the edge of the scene, the moment pulling you in: back [him] up or step between them.""",
+	CHARRND_ATTENTION_OPT_ENDORSE = "Endorse",
+	CHARRND_ATTENTION_OPT_PROTECT = "Protect",
+	CHARRND_ATTENTION_REPLY_ENDORSE_A = "You catch [name]'s gaze and give a subtle nod, signaling it's fine to play along. [He] hesitates, then relaxes, matching the stranger's tone with a flicker of interest. Later, [he] slips away with them, returning with a faint smirk and a story [he] keeps to [himself].",
+	CHARRND_ATTENTION_REPLY_ENDORSE_B = "You lean in and murmur approval, urging [name] to entertain the stranger. [He] stiffens, displeasure flashing across [his] face, but nods curtly. [He] endures the attention, staying stiff and distant, and comes back stressed.",
+	CHARRND_ATTENTION_REPLY_PROTECT = "You stride forward, cutting between [name] and the stranger with a sharp word. The intruder backs off, muttering, and [name] lets out a shaky breath. [His] shoulders ease, and [he] offers a quiet thanks, eyes warm with relief. Your presence becomes [his] shield, and [he] clings closer to it.",
+	CHARRND_TREASURE = """You come across [name] in one of the mansion's dusty storerooms, hunched over a small pile of coins and a tarnished silver trinket. [He] looks up, startled, and explains [he] found it tucked behind some crates, maybe left from years past. [His] fingers tighten around the treasure briefly, excitement warring with uncertainty as [he] waits for your word.
+
+The stash isn't much, but it's enough to catch your eye. [name] shifts [his] weight, glancing between you and the loot, unsure if it's [his] to claim.""",
+	CHARRND_TREASURE_OPT_TAKE = "Take It Away",
+	CHARRND_TREASURE_OPT_LET = "Let Them Keep It",
+	CHARRND_TREASURE_OPT_OWNER = "Find the Owner",
+	CHARRND_TREASURE_REPLY_TAKE = "You reach out and scoop the coins and trinket into your own hands, telling [name] it's yours now. [He] frowns, shoulders slumping, but doesn't argue. The treasure jingles in your pocket as you walk off, though [his] gaze follows with a hint of bitterness.",
+	CHARRND_TREASURE_REPLY_LET = "You shrug and tell [name] the find is [his] to keep. [His] face lights up, fingers closing around the coins as [he] thanks you with a grin. [He] pockets the treasure, mood lifted, and the gesture binds [him] closer to you.",
+	CHARRND_TREASURE_REPLY_OWNER = "You instruct [name] to help you search for the treasure's owner, suggesting it might belong to one of the recent guests. [He] nods, a bit reluctant, and you both comb through records and ask around. Eventually, it's returned to a surprised owner.",
+	CHARRND_NIGHTMARE = """You hear a muffled gasp from [name]'s quarters late at night and step inside to find [him] sitting up, breathless and wide-eyed. [He] clutches the blanket, admitting a nightmare shook [him] awake, something about shadows or old fears. [His] voice trembles slightly, and [he] looks to you, vulnerable in the flickering candlelight. 
+
+The bed creaks as [name] shifts, still rattled, sweat beading on [his] forehead. [He] wipes [his] face, trying to steady [himself], but the unease lingers.""",
+	CHARRND_NIGHTMARE_OPT_COMFORT = "Comfort",
+	CHARRND_NIGHTMARE_OPT_DISCIP = "Discipline",
+	CHARRND_NIGHTMARE_REPLY_COMFORT = "You sit beside [name] and rest a hand on [his] shoulder, speaking soft words to ease [him]. [He] leans into the touch, breath slowing as the tension melts away. [His] eyes soften with gratitude, and [he] murmurs thanks before drifting back to sleep.",
+	CHARRND_NIGHTMARE_REPLY_DISCIP = "You tell [name] to toughen up, voice sharp, insisting nightmares are no excuse for weakness. [He] flinches, sitting straighter, and nods with a tight jaw. [His] fear hardens into resolve, but a flicker of distance grows in [his] gaze.",
+	CHARRND_HATED_FOOD = """You walk into the mansion's dining hall and spot [name1] and [name2] locked in a heated spat near the table. [name1] gestures sharply, insisting [his1] taste in food is better, while [name2] crosses [his2] arms, firing back that [his2] own preference is the only sensible one. Their voices rise, drawing curious glances from the servants, and the air buzzes with their stubborn clash. 
+
+The argument loops, each digging in deeper, faces flushed with frustration. [name1] jabs a finger at [name2], who scoffs and turns [his2] head away. You stand nearby, the noise pulling you in: calm them down, stir the pot, or let it play out.""",
+	CHARRND_HATED_FOOD_OPT_RECON = "Reconcile Them",
+	CHARRND_HATED_FOOD_OPT_AGITATE = "Agitate Them",
+	CHARRND_HATED_FOOD_OPT_IGNORE = "Ignore It",
+	CHARRND_HATED_FOOD_REPLY_RECON = "You step between [name1] and [name2], urging them to drop it and share the meal anyway. They grumble, but your words smooth the edges, and they sit down together. [name1] offers a bite to [name2], who accepts with a reluctant nod. The tension fades, and they lean closer, united again.",
+	CHARRND_HATED_FOOD_REPLY_AGITATE = "You toss a sly comment into the fray, siding with one just enough to rile the other. [name1]'s voice spikes, and [name2] slams a hand on the table, their argument flaring hotter. They storm off in opposite directions, fuming.",
+	CHARRND_HATED_FOOD_REPLY_IGNORE = "You turn away, leaving [name1] and [name2] to their squabble. Their voices echo behind you, sharp and petty, until they tire themselves out. They sit apart, eating in silence, neither giving in. You feel at peace with yourself ignoring this small nuisance.",
+	CHARRND_QUARREL = """You step into the mansion's courtyard and find [name1] and [name2] facing off, voices raised and fists clenched. [name1] accuses [name2] of slacking, while [name2] snaps back, claiming [name1] takes all the credit. Their words cut sharp, and a small crowd of servants lingers nearby, whispering. The sun beats down, casting harsh shadows as their quarrel grows louder.
+
+The tension crackles between them, [name1] pacing while [name2] stands firm, glaring. They barely notice you at first, too caught in their fury.""",
+	CHARRND_QUARREL_OPT_SUPPORT1 = "Support [name1]",
+	CHARRND_QUARREL_OPT_SUPPORT2 = "Support [name2]",
+	CHARRND_QUARREL_OPT_PUNISH = "Punish Both",
+	CHARRND_QUARREL_REPLY_SUPPORT1 = "You stride over and back [name1], agreeing [he1]'s in the right. [His1] chest puffs out, and [he1] nods gratefully, while [name2] scowls, stepping back. The fight dies down, but [name2]'s resentment festers, and [name1] sticks closer to you.",
+	CHARRND_QUARREL_REPLY_SUPPORT2 = "You move in and side with [name2], calling out [name1]'s faults. [name2] smirks, vindicated, as [name1]'s face darkens with a sharp curse. The argument collapses, though [name1] stalks off, wounded, and [name2] grows bolder in your shadow.",
+	CHARRND_QUARREL_REPLY_PUNISH = "You bark at [name1] and [name2] to stop, ordering them to scrub the stables as punishment. They freeze, then slump, muttering as they shuffle off together. The quarrel ends, but their glares linger, and they share a grudging truce under your firm hand.",
+	CHARRND_LOVE = """You catch [name1] lingering near [name2] in the mansion's garden, eyes soft and hands fidgeting. [He1] stammers when [he2] glances over, a flush creeping up [his1] neck as [he1] tries to hide [his1] obvious crush. [name2] seems oblivious, tending to the plants, while [name1] hovers, caught between hope and nerves.
+
+[name1] steals another look at [name2], then quickly turns away, flustered. [He2] hums to [himself2], unaware of the longing aimed [his2] way. You watch from the path, the moment tugging at you.""",
+	CHARRND_LOVE_OPT_HELP = "Help Them Become Lovers",
+	CHARRND_LOVE_OPT_FLIRT = "Flirt with [name2]",
+	CHARRND_LOVE_OPT_IGNORE = "Ignore Them",
+	CHARRND_LOVE_REPLY_HELP = "You pull [name1] aside and encourage [him1] to speak [his1] heart. [He1] confesses, haltingly, and [name2] blinks, then smiles, touched. They drift closer, hands brushing, and [name1]'s grin lights up as [he2] stays by [his1] side.",
+	CHARRND_LOVE_REPLY_FLIRT = "You sidle up to [name2] and run a hand along [his2] arm, murmuring something low. [He2] laughs, leaning into it, while [name1] watches, jaw tight and eyes dark with envy. [He1] turns away, hurt, and [name2] stays clueless. The air sours, and [name1] pulls back from you both.",
+	CHARRND_LOVE_REPLY_IGNORE = "You walk past, leaving [name1] to [his1] quiet pining and [name2] to [his2] gardening. [He1] keeps stealing glances, but nothing shifts, and [he2] remains blind to it all. The day rolls on, their unspoken dance unchanged, and you stay free of the tangle.",
+	CHARRND_DISCUSTOMER = """You step into the host club's dimly lit lounge, the air thick with perfume and chatter, and spot [name1] and [name2] near the bar, locked in a hushed but fierce argument. [name1] jabs a finger at [name2], insisting [he2] should take the rude customer waiting in the corner, while [name2] shakes [his2] head, claiming [he2] dealt with them last time.
+
+The club hums around them, glasses clinking as other hosts glide past. [name1] crosses [his1] arms, and [name2] mirrors [him1], neither budging.""",
+	CHARRND_DISCUSTOMER_OPT_SERVE1 = "Make [name1] Serve Them",
+	CHARRND_DISCUSTOMER_OPT_SERVE2 = "Make [name2] Serve Them",
+	CHARRND_DISCUSTOMER_OPT_NEITHER = "Let Them Both Not Do It",
+	CHARRND_DISCUSTOMER_OPT_BOTH = "Make Them Both Serve Him",
+	CHARRND_DISCUSTOMER_REPLY_SERVE1 = "You point at [name1] and tell [him1] to handle the customer. [He1] grimaces, muttering under [his1] breath, but straightens [his1] jacket and heads over with a forced smile. [name2] smirks, relieved, and slips back to the bar.",
+	CHARRND_DISCUSTOMER_REPLY_SERVE2 = "You nod at [name2] and say it's [his2] turn. [He2] huffs, shooting [name1] a dark look, but adjusts [his2] collar and strides to the customer with gritted teeth. [name1] relaxes, gratitude flashing in [his1] eyes as [he1] watches [name2] struggle.",
+	CHARRND_DISCUSTOMER_REPLY_NEITHER = "You wave a hand and tell [name1] and [name2] to skip the customer, letting someone else take it. They blink, then share a quick, relieved glance before scattering back to safer tasks.",
+	CHARRND_DISCUSTOMER_REPLY_BOTH = "You tell [name1] and [name2] to deal with the customer together. They groan, exchanging sour looks, but trudge over side by side, plastering on fake smiles. The customer's complaints double, and they stumble through it.",
+	CHARRND_LIKECUSTOMER = """You enter the host club's plush lounge, the murmur of laughter and clinking glasses filling the space, and find [name1] pulling you aside with a scowl. [He1] complains that [name2] keeps cozying up to [his1] rich customer, flashing smiles and lingering too long. Across the room, [name2] chats with the well-dressed patron, oblivious to [name1]'s glare. The chandelier glints overhead, casting light on their brewing rivalry.
+
+[name1] fidgets, waiting for you to back [him1] up, while [name2] laughs at something the customer says, leaning in closer. The tension simmers beneath the club's polished surface, and you feel the pull: reprimand [name2], brush off [name1], or shift the focus.""",
+	CHARRND_LIKECUSTOMER_OPT_SCOLD2 = "Scold [name2]",
+	CHARRND_LIKECUSTOMER_OPT_DISMISS1 = "Dismiss [name1]",
+	CHARRND_LIKECUSTOMER_OPT_SERVEYOU = "Make [name1] Serve you",
+	CHARRND_LIKECUSTOMER_REPLY_SCOLD2 = "You stride over to [name2] and call [him2] out, telling [him2] to stop poaching. [He2] flinches, stepping back from the customer with a tight frown, and mutters an apology. [name1] smirks, satisfied.",
+	CHARRND_LIKECUSTOMER_REPLY_DISMISS1 = "You turn to [name1] and tell [him1] to quit whining, it's just business. [He1] huffs, crossing [his1] arms, and stalks off to another table.",
+	CHARRND_LIKECUSTOMER_REPLY_SERVEYOU = "You pat [name1]'s shoulder and ask [him1] to keep you company instead. [He1] hesitates, then follows, pouring you a drink with a small smile. The rich customer fades from [his1] mind as [he1] chats with you, tension easing.",
+	CHARRND_TRAP = """As your team push deeper into the dungeon's shadowed halls when a click echoes beneath [name]'s step. A trap springs, and [he] cries out as a spiked dart buries itself in [his] leg. [He] stumbles, blood trickling down [his] calf, and leans against the damp stone wall, wincing. 
+
+The path ahead looms, treasures and dangers still out of reach. [name] grips [his] wound, eyes flicking to you, sweat beading on [his] brow.""",
+	CHARRND_TRAP_OPT_HELP = "Help",
+	CHARRND_TRAP_OPT_BACK = "Send Back",
+	CHARRND_TRAP_REPLY_HELP = "You kneel beside [name] and pull the dart free, wrapping [his] leg with cloth from your pack. [He] grits [his] teeth, thanking you through shallow breaths as you steady [him]. The minutes slip away, slowing your trek, but [his] trust in you hardens, and [he] limps on at your side.",
+	CHARRND_TRAP_REPLY_BACK = "You tell [name] to head back to safety, pointing toward the dungeon's entrance. [He] nods, grimacing, and hobbles off alone, leaving you to press forward unburdened. The path clears faster, but [his] absence stings, and [he] carries a quiet grudge when [he] heals.",
+	CHARRND_SKIRMISH = """You trudge through the dungeon's winding tunnels, the clank of armor and distant drips filling the air, when [name] slows beside you. [He] wipes sweat from [his] brow and mutters that the travel and fighting have worn [him] out, asking for a break. [His] shoulders sag, and [he] leans on [his] weapon, eyes heavy as [he] looks to you.
+
+The journey's toll shows in [his] dragging steps, and the next chamber waits just ahead, promising more strain. [name] shifts [his] weight, waiting for your answer, breath ragged.""",
+	CHARRND_SKIRMISH_OPT_AGREE = "Agree",
+	CHARRND_SKIRMISH_OPT_GOLD = "Tip with gold",
+	CHARRND_SKIRMISH_OPT_IGNORE = "Ignore It",
+	CHARRND_SKIRMISH_REPLY_AGREE = "You nod and tell [name] to sit, pointing to a nearby alcove. [He] sinks down with a grateful sigh, stretching out [his] legs as [he] catches [his] breath. The delay costs you progress, but [his] strength returns, and [he] sticks closer to you after, renewed.",
+	CHARRND_SKIRMISH_REPLY_GOLD = "You pull a few coins from your pouch and press them into [name]'s hand, urging [him] to keep going. [His] eyes brighten at the glint of gold, and [he] straightens, pocketing the tip with a nod. [He] pushes through the fatigue, loyalty sparked by the small reward.",
+	CHARRND_SKIRMISH_REPLY_IGNORE = "You turn away and keep walking, leaving [name] to follow or fall behind. [He] grumbles, hauling [himself] along with a scowl, exhaustion dragging at [his] heels.",
 	
 	
 }
