@@ -105,6 +105,7 @@ var TranslationDict = {
 	LSPUPDATESAVEFILE = "Update Save File",
 	LSPOUTDATED = "{color=red| (Outdated - use import mode)}",
 	LSPOUTDATED2 = "{color=red|Outdated}",
+	LSPOUTDATED3 = "{color=red|(CRITICALLY OUTDATED - WON'T BE LOADED BY ANY WAY)}",
 	LSIMPORTTOOLTIP = """When this mode is on, game will recreate the world and reset all game progress on load, 
 but still will keep all your characters, items and inventory. Use this mode to load outdated saves.""",
 	PRONOUNHE = "He",
