@@ -218,3 +218,4 @@ func clean_effects_for_char(id):
 			 continue
 		if e.owner is String and e.owner == id:
 			e.remove()
+			e.is_applied = false

@@ -463,16 +463,6 @@ func build_info(loc = null):
 		for i in gatherable_resources:
 			var item = Items.materiallist[i]
 			if ResourceScripts.game_progress.can_gather_item(i) or dungeon:
-				continue
-			else:
-				var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
-				newbutton.get_node("Icon").texture = load("res://assets/Textures_v2/Travel/placer_travel_question.png")
-				newbutton.set_meta("exploration", true)
-				newbutton.get_node("amount").text = ""
-				globals.connecttexttooltip(newbutton, tr('TOOLTIPHIDDENRESOURCE'))
-		for i in gatherable_resources:
-			var item = Items.materiallist[i]
-			if ResourceScripts.game_progress.can_gather_item(i) or dungeon:
 				var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
 				newbutton.get_node("Icon").texture = Items.materiallist[i].icon
 				newbutton.set_meta("exploration", true)
@@ -497,6 +487,16 @@ func build_info(loc = null):
 					globals.connectmaterialtooltip(newbutton, item)
 			else:
 				continue
+		for i in gatherable_resources:
+			var item = Items.materiallist[i]
+			if ResourceScripts.game_progress.can_gather_item(i) or dungeon:
+				continue
+			else:
+				var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
+				newbutton.get_node("Icon").texture = load("res://assets/Textures_v2/Travel/placer_travel_question.png")
+				newbutton.set_meta("exploration", true)
+				newbutton.get_node("amount").text = ""
+				globals.connecttexttooltip(newbutton, tr('TOOLTIPHIDDENRESOURCE'))
 	#build chars
 	input_handler.ClearContainer($InfoPanel/VBoxContainer/CharScroll/Characters)
 	var f = false
