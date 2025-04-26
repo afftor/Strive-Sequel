@@ -345,6 +345,20 @@ func change_mastery(mas):
 			globals.connecttexttooltip(skill_icon, '[center]' + tr(sdata.name) + '[/center]\n' + tr(sdata.descript_mastery))
 #			if f:
 #				text += tr('TRAININGLEARN') + tr(sdata.name) + '\n'
+	var en_data = person.get_stat_value_data('mastery_%s_enable' % mas)
+	if en_data.result:
+		$MasteryPanel/blocked.visible = false
+	else:
+		$MasteryPanel/blocked.visible = true
+		var src
+		var src_val
+		for rec in en_data.bonuses.set:
+			if !rec.value:
+				src = rec.src_type
+				src_val = rec.src_value
+				break
+		$MasteryPanel/blocked/Label.text = tr('MASTERYBLOCKSRC') % [src, src_val]
+	
 	$MasteryPanel/AddPoint.disabled = !person.can_upgrade_mastery(mas)
 	$MasteryPanel/AddPoint2.disabled = !person.can_upgrade_mastery(mas, true)
 	$MasteryPanel/Categories3/combat/Label.text = "%d Points" % person.get_stat('mastery_point_combat')
