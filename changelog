@@ -5,6 +5,7 @@ Added random events for characters
 Nerfed damage scaling from physics/wits for player characters
 Rebalanced more enemies and encounters
 Added italian localization (thanks to Scarichino)
+Fixed disentegrate being skill instead of spell and not scaling from MATK
 0.10.3b
 Fixed Cali encounter not spawning
 Fixed sex swapped characters not swapping their child bearing options

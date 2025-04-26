@@ -219,8 +219,8 @@ var enemygroups = {
 	kuro_cult_hideout = {reqs = [], units = {dwarf_fighter = [2,2]}}, #dummy
 
 	goblin_stronghold_easy= {reqs = [], units = {hobgoblin_thug = [1,2], hobgoblin_crossbowman= [1,1]}, challenges = [['event_enemy_charm_avoid', 1],['event_enemy_charm_damage',0.8]], challenge_chance = 0.4},
-	goblin_stronghold_easy1 = { reqs = [], units = {varg = [2,2], hobgoblin_crossbowman= [1,2]}, challenges = [['event_enemy_strength_scare', 1],['event_enemy_distract',0.5]], challenge_chance = 0.4},
-	goblin_stronghold_tormentor = {reqs = [], units = {varg = [2,3], hobgoblin_tormentor = [1,1]}, challenges = [['event_enemy_strength_scare', 1],['event_enemy_distract',0.5]], challenge_chance = 0.4},
+	goblin_stronghold_easy1 = { reqs = [], units = {warg = [2,2], hobgoblin_crossbowman= [1,2]}, challenges = [['event_enemy_strength_scare', 1],['event_enemy_distract',0.5]], challenge_chance = 0.4},
+	goblin_stronghold_tormentor = {reqs = [], units = {warg = [2,3], hobgoblin_tormentor = [1,1]}, challenges = [['event_enemy_strength_scare', 1],['event_enemy_distract',0.5]], challenge_chance = 0.4},
 	goblin_stronghold_tormentor1 = {reqs = [], units = {hobgoblin_thug = [2,2], hobgoblin_tormentor = [1,1], hobgoblin_crossbowman= [1,1]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_distract',0.8]], challenge_chance = 0.3},
 	goblin_stronghold_vulture = {reqs = [], units = {hobgoblin_thug = [2,2], vulture = [2,3]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_distract',0.8]], challenge_chance = 0.3},
 	goblin_stronghold_warlord_boss = {reqs = [], units = { warlord = [1,1], hobgoblin_crossbowman= [1,2]}},
@@ -1940,8 +1940,8 @@ var enemies = {
 		ai_position = ['ranged'],
 		xpreward = 15,
 	},
-		varg = {
-		code = 'varg',
+		warg = {
+		code = 'warg',
 		name = '',
 		descript = '',
 		hpmax = 300,
@@ -1980,7 +1980,7 @@ var enemies = {
 		resists = {},
 		race = 'beast',
 		loot = 'bandit_loot',
-		icon = "res://assets/images/enemies/RatFull.png", 
+		icon = "res://assets/images/enemies/vulture.png", 
 		skills = ['pecking'],
 		traits = [],
 		tags = ['beast'], 

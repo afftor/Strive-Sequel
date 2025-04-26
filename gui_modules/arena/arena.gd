@@ -15,7 +15,7 @@ onready var screen_block = $block
 var group = {}
 var randomize_presets = {
 	enemy_test = [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-	rewart_test = [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]]
+	reward_test = [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]]
 }
 #For enemy_groups and rewards dicts: first key's level - is difficulty (group_limit)
 #second key's level - round
@@ -23,12 +23,64 @@ var randomize_presets = {
 #Value is id. First, code will look for this id in randomize_presets. If it is not there, enemy_groups
 #will consider it to be a record from enemydata.gd, and rewards - from loot_data.gd
 var enemy_groups = {
-	"default" : {"default" : "enemy_test", 5 : "enemy_test"},
-	5 : {"default" : "enemy_test"},
+	"default" : {
+		"default" : "enemy_test",
+		5 : "enemy_test"
+		},
+	5 : {
+		"default" : "enemy_test"
+		},
+}
+
+var enemy_groups_example = {
+	"default" : {
+		"default" : "enemy_test",
+		},
+	1 : {
+		1 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		2 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		3 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		4 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		5 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		},
+	2 : {
+		1 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		2 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		3 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		4 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		5 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		},
+	3 : {
+		1 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		2 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		3 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		4 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		5 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		},
+	4 : {
+		1 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		2 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		3 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		4 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		5 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		},
+	5 : {
+		1 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		2 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		3 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		4 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		5 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		},
 }
 var rewards = {
-	"default" : {"default" : "rewart_test", 1 : "rewart_test", 2 : "rewart_test", },
-	2 : {"default" : "rewart_test"},
+	"default" : {
+		"default" : "reward_test",
+		1 : "reward_test", 
+		2 : "reward_test",
+		},
+	2 : {
+		"default" : "reward_test"
+		},
 }
 var group_limit = 0
 var limits = [[1, 1], [2, 2], [3, 2], [4, 2], [5, 1]]

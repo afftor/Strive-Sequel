@@ -14079,6 +14079,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	AREAPLAINS = "Plains",
 	AREAFORESTS = "Forests",
 	AREAMOUNTAINS = "Mountains",
+	AREAEMPIRE = """Empire""", # MISSING TRANSLATION
 	AREASTEPPE = "草原",
 	AREASEAS = "海洋",
 	AREABEASTKIN_TRIBE = "遥远的森林",
