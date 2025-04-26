@@ -13,75 +13,106 @@ onready var timer_pos_open = $base_panel/timer_open.position
 onready var timer_pos_close = $base_panel/timer_close.position
 onready var screen_block = $block
 var group = {}
-var randomize_presets = {
-	enemy_test = [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-	reward_test = [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]]
+
+#if code can't find round and/or difficulty in enemy_groups, it go's here
+var enemy_groups_defaults = {
+	#non determined difficulty and round
+	"default" : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+	#non determined difficulty for determined rounds
+	1 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+	2 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+	3 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+	4 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+	5 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
 }
-#For enemy_groups and rewards dicts: first key's level - is difficulty (group_limit)
-#second key's level - round
-#If there is no current round or limit, it falls back to "default"
-#Value is id. First, code will look for this id in randomize_presets. If it is not there, enemy_groups
-#will consider it to be a record from enemydata.gd, and rewards - from loot_data.gd
+#keys of first level are rounds, second level - difficulty (party limit)
 var enemy_groups = {
-	"default" : {
-		"default" : "enemy_test",
-		5 : "enemy_test"
-		},
-	5 : {
-		"default" : "enemy_test"
-		},
+	1 : {#round 1
+		1 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		2 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		3 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		4 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		5 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+	},
+	2 : {#round 2
+		1 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		2 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		3 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		4 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		5 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+	},
+	3 : {#round 3
+		1 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		2 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		3 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		4 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		5 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+	},
+	4 : {#round 4
+		1 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		2 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		3 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		4 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		5 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+	},
+	5 : {#round 5
+		1 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		2 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		3 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		4 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+		5 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+	},
 }
 
-var enemy_groups_example = {
-	"default" : {
-		"default" : "enemy_test",
-		},
-	1 : {
-		1 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		2 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		3 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		4 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		5 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		},
-	2 : {
-		1 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		2 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		3 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		4 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		5 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		},
-	3 : {
-		1 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		2 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		3 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		4 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		5 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		},
-	4 : {
-		1 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		2 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		3 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		4 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		5 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		},
-	5 : {
-		1 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		2 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		3 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		4 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		5 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
-		},
+#if code can't find round and/or difficulty in rewards, it go's here
+var rewards_defaults = {
+	#non determined difficulty and round
+	"default" : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+	#non determined difficulty for determined rounds
+	1 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+	2 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+	3 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+	4 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+	5 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
 }
 var rewards = {
-	"default" : {
-		"default" : "reward_test",
-		1 : "reward_test", 
-		2 : "reward_test",
-		},
-	2 : {
-		"default" : "reward_test"
-		},
+	1 : {#round 1
+		1 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		2 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		3 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		4 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		5 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+	},
+	2 : {#round 2
+		1 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		2 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		3 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		4 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		5 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+	},
+	3 : {#round 3
+		1 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		2 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		3 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		4 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		5 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+	},
+	4 : {#round 4
+		1 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		2 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		3 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		4 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		5 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+	},
+	5 : {#round 5
+		1 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		2 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		3 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		4 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+		5 : [['bandit_loot', 1], ['goblin_loot', 1], ['easy_prisoner_reward_item', 1]],
+	},
 }
+
 var group_limit = 0
 var limits = [[1, 1], [2, 2], [3, 2], [4, 2], [5, 1]]
 var cur_reward
@@ -310,25 +341,23 @@ func make_next_reward():
 	update_reward(next_reward_cont, next_reward)
 
 func get_enemy_group():
-	var limit = group_limit
-	if !enemy_groups.has(limit):
-		limit = "default"
-	var battle = round_num
-	if !enemy_groups[limit].has(battle):
-		battle = "default"
-	var res = enemy_groups[limit][battle]
-	if randomize_presets.has(res):
-		return input_handler.weightedrandom(randomize_presets[res])
-	return res
+	var res
+	if !enemy_groups.has(round_num):
+		res = enemy_groups_defaults.default
+	else:
+		if !enemy_groups[round_num].has(group_limit):
+			res = enemy_groups_defaults[round_num]
+		else:
+			res = enemy_groups[round_num][group_limit]
+	return input_handler.weightedrandom(res)
 
 func get_reward_loot():
-	var limit = group_limit
-	if !rewards.has(limit):
-		limit = "default"
-	var battle = round_num
-	if !rewards[limit].has(battle):
-		battle = "default"
-	var res = rewards[limit][battle]
-	if randomize_presets.has(res):
-		return input_handler.weightedrandom(randomize_presets[res])
-	return res
+	var res
+	if !rewards.has(round_num):
+		res = rewards_defaults.default
+	else:
+		if !rewards[round_num].has(group_limit):
+			res = rewards_defaults[round_num]
+		else:
+			res = rewards[round_num][group_limit]
+	return input_handler.weightedrandom(res)
