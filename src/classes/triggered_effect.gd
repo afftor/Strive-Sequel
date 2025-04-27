@@ -117,7 +117,8 @@ func e_apply(): #temporal solution until rework via apply_status
 			'skill':
 				var obj = get_arg('skill')
 				eff = effects_pool.e_createfromtemplate(eff)
-				obj.apply_effect(eff)
+				eff.applied_obj = obj
+				obj.apply_effect(effects_pool.add_effect(eff))
 			'caster':
 				var obj = get_arg('caster')
 				if eff.type == 'oneshot':
