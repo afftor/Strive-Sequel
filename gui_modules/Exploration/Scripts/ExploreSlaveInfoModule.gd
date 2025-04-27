@@ -58,15 +58,16 @@ func update(person = null, from_dialogue = false):
 		globals.connecttexttooltip($food_hate,"[center]" +statdata.statdata.food_hate.name + "[/center]\n"+ statdata.statdata.food_hate.descript)
 		
 		for i in $BaseStatsPanel/resists.get_children():
-			var tmp = person.get_stat('resists')
-			if variables.resists_list.has(i.name):
-				i.text = str(tmp[i.name])
-				if tmp[i.name] > 0:
-					i.set("custom_colors/font_color", variables.hexcolordict.yellow)
-				elif tmp[i.name] < 0:
-					i.set("custom_colors/font_color", variables.hexcolordict.green)
-				else:
-					i.set("custom_colors/font_color", variables.hexcolordict.white)
+			if !statdata.statdata.has('resist_' + i.name):
+				continue
+			var tmp = person.get_stat('resist_' + i.name)
+			i.text = str(tmp)
+			if tmp > 0:
+				i.set("custom_colors/font_color", variables.hexcolordict.yellow)
+			elif tmp < 0:
+				i.set("custom_colors/font_color", variables.hexcolordict.green)
+			else:
+				i.set("custom_colors/font_color", variables.hexcolordict.white)
 	
 		for i in variables.fighter_stats_list:
 			if !i in ['hpmax', 'mpmax','critmod']:

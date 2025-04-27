@@ -237,12 +237,12 @@ func invoke_instancing():
 			s_skill2.queuenode = queuenode
 			s_skill2.combatnode = combatnode
 			s_skill2.createfromskill()
-			s_skill2.setup_effects(queued_effects)
-			for atomic in queued_atomics:
-				s_skill2.apply_atomic(atomic)
 			s_skill2.setup_caster(caster)
 			s_skill2.setup_target(i)
 			s_skill2.setup_final()
+			s_skill2.setup_effects(queued_effects)
+			for atomic in queued_atomics:
+				s_skill2.apply_atomic(atomic)
 			#place for non-existing another trigger
 			s_skill2.process_event(variables.TR_PREHIT)
 			if parent.mode != variables.SKILL_AUTO and !parent.tags.has('passive'): 
