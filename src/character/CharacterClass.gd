@@ -760,21 +760,23 @@ func get_all_buffs():
 		dyn_stats.generate_data()
 	return dyn_stats.buffs
 
-func get_combat_buffs():
+func get_mansion_buffs():
 	var tres = get_all_buffs()
 	var res = []
 	
 	for b in tres:
 		if b.tags.has('combat_only'): 
-			res.push_front(b)
+			continue
+		res.push_front(b)
 	return res
 
-func get_mansion_buffs():
+func get_combat_buffs():
 	var tres = get_all_buffs()
 	var res = []
 	for b in tres:
 		if b.tags.has('mansion_only'): 
-			res.push_front(b)
+			continue
+		res.push_front(b)
 	return res
 
 func can_act():
