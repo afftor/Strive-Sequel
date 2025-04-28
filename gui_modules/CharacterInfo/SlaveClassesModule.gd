@@ -387,6 +387,10 @@ func add_mastery_prompt():
 func add_mastery():
 	person.upgrade_mastery(selected_mastery)
 	build_mastery_cat()
+	var args = {}
+	args["mastery"] = selected_mastery
+	args["person"] = person
+	input_handler.play_animation("mastery_aquired", args)
 #	change_mastery(selected_mastery)
 
 
@@ -397,6 +401,10 @@ func add_mastery_prompt_1():
 func add_mastery_1():
 	person.upgrade_mastery(selected_mastery, true)
 	build_mastery_cat()
+	var args = {}
+	args["mastery"] = selected_mastery
+	args["person"] = person
+	input_handler.play_animation("mastery_aquired", args)
 
 
 # func play_animation():

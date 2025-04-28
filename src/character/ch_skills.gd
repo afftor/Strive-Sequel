@@ -76,11 +76,11 @@ func get_value_damage_mod(skill_val):
 func get_learned_skills(cat):
 	match cat:
 		'social':
-			return social_skills
+			return social_skills.duplicate()
 		'combat':
-			return combat_skills
+			return combat_skills.duplicate()
 		'explore':
-			return explore_skills
+			return explore_skills.duplicate()
 
 
 func fix_skillpanels():

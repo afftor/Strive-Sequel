@@ -1583,6 +1583,17 @@ func play_animation_noq(animation, args = {}):
 			anim_scene.get_node("Label2").text = tdata.name
 			anim_scene.get_node("Label3").text = args.person.get_full_name()
 			anim_scene.play("class_achieved")
+		"mastery_aquired":
+			var masdata = Skilldata.masteries[args.mastery]
+			anim_scene = get_spec_node(ANIM_CLASS_ACHIEVED)
+			if masdata.icon is String:
+				anim_scene.get_node("TextureRect").texture = images.get_icon(masdata.icon)
+			else:
+				anim_scene.get_node("TextureRect").texture = masdata.icon
+			anim_scene.get_node("Label").text = "Mastery"
+			anim_scene.get_node("Label2").text = masdata.name
+			anim_scene.get_node("Label3").text = args.person.get_full_name()
+			anim_scene.play("class_achieved")
 		"quest_completed":
 			anim_scene = get_spec_node(ANIM_TASK_COMPLETED)
 			anim_scene.get_node("Label3").text = args.name

@@ -313,8 +313,9 @@ func process_chardata(chardata, unique = false):
 		set_slave_category(chardata.slave_class)
 	training.process_chardata(chardata)
 	food.process_chardata(chardata)
-	skills.setup_skills(chardata)
 	tags = chardata.tags.duplicate()
+	skills.setup_skills(chardata)
+	reset_rebuild()
 
 
 func generate_ea_character(gendata, desired_class):
@@ -760,21 +761,23 @@ func get_all_buffs():
 		dyn_stats.generate_data()
 	return dyn_stats.buffs
 
-func get_combat_buffs():
+func get_mansion_buffs():
 	var tres = get_all_buffs()
 	var res = []
 	
 	for b in tres:
 		if b.tags.has('combat_only'): 
-			res.push_front(b)
+			continue
+		res.push_front(b)
 	return res
 
-func get_mansion_buffs():
+func get_combat_buffs():
 	var tres = get_all_buffs()
 	var res = []
 	for b in tres:
 		if b.tags.has('mansion_only'): 
-			res.push_front(b)
+			continue
+		res.push_front(b)
 	return res
 
 func can_act():
@@ -1136,6 +1139,7 @@ func fix_serialization():
 	dyn_stats.deserialize(tmp2)
 	xp_module.fix_rules()
 	travel.fix_infinite_travel()
+	
 
 
 
@@ -1145,6 +1149,7 @@ func fix_serialization_postload():
 	xp_module.fix_serialize()
 	
 	repair_skill_panels()
+	reset_rebuild()
 
 
 func fix_import():
