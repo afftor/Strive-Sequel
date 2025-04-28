@@ -227,9 +227,97 @@ var enemygroups = {
 	goblin_stronghold_alchemist_boss = {reqs = [], units = {alchemist = [1,1], hobgoblin_thug = [2,2]}},
 	goblin_stronghold_battle_troll_boss = {maxunits = 2, reqs = [], units = { battle_troll= [1,1], vulture = [2,3]}},
 
-	arena_test1 = {reqs = [], units = {cave_goblin_melee = [2,3]}},
-	arena_test2 = {reqs = [], units = {cave_goblin_melee = [1,3], cave_goblin_archer = [1,2]}},
-	arena_test3 = {reqs = [], units = {cave_goblin_melee = [1,2], cave_goblin_archer = [1,3]}},
+	arena_1r_easy_1 = {
+		reqs = [], units = {cave_goblin_melee = [2,3]}
+		},
+	arena_1r_medium_1 = {
+		reqs = [], units = {cave_goblin_melee = [2,3], cave_goblin_archer = [1,1]}
+		},
+	arena_1r_hard_1 = {
+		reqs = [], units = {cave_goblin_melee = [3,3], cave_goblin_archer = [2,2], cave_goblin_mage = [1,1]}
+		},
+	
+	arena_2r_easy_1 = {
+		reqs = [], units = {skeleton_melee = [1,2], skeleton_archer = [1,1]}
+		},
+	arena_2r_easy_2 = {
+		reqs = [], units = {spider = [1,2], willowisp = [1,1]}
+		},
+	arena_2r_medium_1 = {
+		reqs = [], units = {skeleton_melee = [1,2], skeleton_archer = [1,1], zombie = [1,1]}
+		},
+	arena_2r_medium_2 = {
+		reqs = [], units = {spider = [1,2], spider_ranged = [2,2], spider_aoe = [1,1]}
+		},
+	arena_2r_hard_1 = {
+		reqs = [], units = {skeleton_melee = [1,1], skeleton_archer = [1,1], zombie = [2,2]}
+		},
+	arena_2r_hard_2 = {
+		reqs = [], units = {spider = [1,1], spider_ranged = [2,2], spider_aoe = [2,2], zombie = [1,1]}
+		},
+	
+	
+	arena_3r_easy_1 = {
+		reqs = [], units = {rebel_knight = [1,1], rebel_healer = [0,1], rebel_mage = [0,1]}
+		},
+	arena_3r_easy_2 = {
+		reqs = [], units = {trained_bear = [1,1], trained_raptor = [0,1]}
+		},
+	arena_3r_easy_3 = {
+		reqs = [], units = {hobgoblin_thug = [2,2], hobgoblin_crossbowman = [0,1]}
+		},
+	arena_3r_medium_1 = {
+		reqs = [], units = {rebel_knight = [1,2], rebel_healer = [1,1], rebel_mage = [1,1]}
+		},
+	arena_3r_medium_2 = {
+		reqs = [], units = {trained_bear = [2,2], trained_raptor = [1,1]}
+		},
+	arena_3r_medium_3 = {
+		reqs = [], units = {hobgoblin_thug = [3,3], hobgoblin_crossbowman = [1,2]}
+		},
+	arena_3r_hard_1 = {
+		reqs = [], units = {rebel_knight = [2,2], rebel_healer = [2,2], rebel_mage = [2,2]}
+		},
+	arena_3r_hard_2 = {
+		reqs = [], units = {trained_bear = [2,2], trained_raptor = [3,3], guardian_golem = [1,1]}
+		},
+	arena_3r_hard_3 = {
+		reqs = [], units = {hobgoblin_thug = [3,3], hobgoblin_tormentor = [2,2], hobgoblin_crossbowman = [1,1]}
+		},
+	
+	
+	arena_4r_easy_1 = {
+		reqs = [], units = {salamander = [1,2], wild_raptor = [1,2]}
+		},
+	arena_4r_easy_2 = {
+		reqs = [], units = {ifrit = [1,1], dwarf_fighter = [1,2]}
+		},
+	arena_4r_medium_1 = {
+		reqs = [], units = {salamander = [3,3], wild_raptor = [2,3]}
+		},
+	arena_4r_medium_2 = {
+		reqs = [], units = {ifrit = [2,2], dwarf_ranged = [2,3]}
+		},
+	arena_4r_hard_1 = {
+		reqs = [], units = {dwarf_fighter_elite = [2,3], dwarf_ranged = [3,3]}
+		},
+	arena_4r_hard_2 = {
+		reqs = [], units = {battle_troll = [2,2], dwarf_ranged = [2,2]}
+		},
+	
+	
+	arena_5r_easy_1 = {
+		reqs = [], units = {erebus_stone = [2,2]}
+		},
+	arena_5r_medium_1 = {
+		reqs = [], units = {jarl_boss = [1,1], castellan_boss = [1,1]}
+		},
+	arena_5r_medium_2 = {
+		reqs = [], units = {bounty_hunter_boss = [1,1], warlock_boss = [1,1]}
+		},
+	arena_5r_hard_1 = {
+		reqs = [], units = {jarl_boss = [1,1], castellan_boss = [1,1], bounty_hunter_boss = [1,1], warlock_boss = [1,1]}
+		},
 
   _test_boss = {reqs = [], units = {test_boss = [1,1]}}, #test
 	}

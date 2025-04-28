@@ -104,6 +104,7 @@ var TranslationDict = {
 	LSPUPDATESAVEFILE = """Обновление файла сохранения""",
 	LSPOUTDATED = """{color=red| (Устарело - используйте режим импорта)}""",
 	LSPOUTDATED2 = """{color=red|Устарело}""",
+	LSPOUTDATED3 = """{color=red|(CRITICALLY OUTDATED - WON'T BE LOADED BY ANY WAY)}""", # MISSING TRANSLATION
 	LSIMPORTTOOLTIP = """При включении этого режима игра пересоздает мир и сбрасывает весь игровой прогресс при загрузке, 
 но при этом сохраняет всех ваших персонажей, предметы и инвентарь. Используйте этот режим для загрузки устаревших сохранений.""",
 	PRONOUNHE = """Он""",
@@ -141,6 +142,8 @@ var TranslationDict = {
 	PRONOUNGROOMF = """невеста""",
 	PRONOUNBOY = """парень""", 
 	PRONOUNBOYF = """девушка""",	
+	PRONOUNHIMSELFL = """himself""", # MISSING TRANSLATION
+	PRONOUNHIMSELFLF = """herself""", # MISSING TRANSLATION
 	BUTTONMENU = """Меню""",
 	FINISHTURNBUTTON = """Конец хода""",
 	EXPLORESHOP = """Рынок""",
@@ -1446,6 +1449,7 @@ Hotkey: 3""",
 	
 	TRAITVIGORDESCRIPT = """Увеличивает регенерацию здоровья на 30%.""",
 	TRAITMEDITATIONDESCRIPT = """Увеличивает регенерацию маны на 30%.""",
+	MASTERYBLOCKSRC = """Blocked by %s:%s""", # MISSING TRANSLATION
 
 	MASTERYWARFARE = """Бой""",
 	MASTERYPROTECTION = """Защита""",

@@ -119,6 +119,7 @@ var TranslationDict = {
 	LSPUPDATESAVEFILE = "更新保存文件",
 	LSPOUTDATED = "{color=red| (过时-使用导入模式)}",
 	LSPOUTDATED2 = "{color=red|过时}",
+	LSPOUTDATED3 = """{color=red|(CRITICALLY OUTDATED - WON'T BE LOADED BY ANY WAY)}""", # MISSING TRANSLATION
 	LSIMPORTTOOLTIP = "当该模式打开时，游戏将重新创建世界，并在加载时重置所有游戏进度，但仍将保留所有角色、物品和库存。使用此模式可以加载过时的保存。",
 
 	PRONOUNHE = "他",
@@ -156,6 +157,8 @@ var TranslationDict = {
 	PRONOUNGROOMF = "新娘",
 	PRONOUNBOY = "男孩", 
 	PRONOUNBOYF = "女孩",
+	PRONOUNHIMSELFL = """himself""", # MISSING TRANSLATION
+	PRONOUNHIMSELFLF = """herself""", # MISSING TRANSLATION
 	
 	
 	
