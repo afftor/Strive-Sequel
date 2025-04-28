@@ -1589,7 +1589,7 @@ func rest_tick():
 	self.mp += get_stat('mp_reg') * 2
 	for e in find_temp_effect_tag('addition_rest_tick'):
 		var eff = effects_pool.get_effect_by_id(e)
-		eff.process_act(variables.TR_TICK)
+		eff.process_tick(variables.TR_TICK)
 
 
 func translate(text):
