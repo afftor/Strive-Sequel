@@ -11,6 +11,7 @@ var backgrounds = {
 	beastkin_capital = "res://assets/images/backgrounds/beastkin_capital.png",
 	dwarfs_city = "res://assets/images/backgrounds/dwarf_city.png",
 	empire = "res://assets/images/backgrounds/empire.png",
+	arena = "res://assets/images/backgrounds/arena.png",
 	
 	forest1_menu = "res://assets/images/backgroundmenu/forest1.jpg",
 	mountain1_menu = "res://assets/images/backgroundmenu/mountain1.jpg",

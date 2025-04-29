@@ -47,6 +47,12 @@ var char_events = {
 	unplayed_events = []
 }
 
+var arena = {
+	last_reset_date = -1,
+	group_limit = 0,
+	finished = false
+}
+
 func _init():
 	globals.connect("hour_tick", self, 'check_timed_events')
 
