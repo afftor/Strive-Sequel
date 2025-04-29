@@ -585,7 +585,7 @@ var traits = {
 		disposition_change = {
 			magic = [['weak', 50],['kink', 50]]
 		},
-		tags = ['positive', 'can_start', 'disposition_change']
+		tags = ['positive', 'can_start', 'disposition_change', 'mansion_only']
 	},
 	bawdy = {
 		code = 'bawdy',
@@ -2179,14 +2179,20 @@ var b_template = {
 
 func make_buff_for_trait(tr_id):
 	var trdata = traits[tr_id]
-	if trdata.has('visible') and !trdata.visible: return null
-	if !trdata.has('icon'): return null
-	if trdata.icon == null: return null
+	if trdata.has('visible') and !trdata.visible: 
+		return null
+	if !trdata.has('icon'): 
+		return null
+	if trdata.icon == null: 
+		return null
+	if !trdata.tags.has('simple_icon'):
+		return null
 	var template = b_template.duplicate()
 	template.icon = trdata.icon.get_path()
 	template.description = trdata.descript
 	template.t_name = template.t_name % trdata.code
 	template.name = template.t_name
+	template.tags = trdata.tags.duplicate()
 	var res = Buff.new(null)
 	res.createfromtemplate(template)
 	return res
