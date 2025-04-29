@@ -5251,6 +5251,7 @@ The princess notices Aire tensing up in response to the question.
 	ARENA_LEAVE_BTN = "Leave",
 	ARENA_TIMER = "Next rival in",
 	ARENA_FEE = "You must have 1000 gold to enter arena.",
+	ARENA_TOOLTIP = "This is arena.",
 	SKILLPOISON_BITE = "Poison Bite",
 	SKILLPOISON_BITE_S = "Poison Bite",
 	SKILLENTANGLE_SA = "Entangle",
