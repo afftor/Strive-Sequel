@@ -175,6 +175,8 @@ func has_status(status):
 	var res = false
 	for rec in effects_real:
 		var data = Effectdata.effect_table[rec.id]
+		if data.has('conditions') and !parent.get_ref().checkreqs(data.conditions):
+			continue
 		if data.tags.has(status):
 			return true
 	for id in effects_temp_globals_real:

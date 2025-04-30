@@ -556,7 +556,7 @@ func build_attrs_for_char(node, person):
 	node.get_node('race').texture = races.racelist[person.get_stat('race')].icon
 	node.get_node('age').texture = images.ages[person.get_stat('age')]
 	connecttexttooltip(node.get_node('sex'), tr("MSLMSex")+": " + tr("SLAVESEX" + person.get_stat('sex').to_upper()))
-	connecttexttooltip(node.get_node('age'), tr("SLAVEPARTAGE")+": " + tr("SLAVEAGE" + person.get_stat("age").to_upper()))
+	connecttexttooltip(node.get_node('age'), tr("STATAGE")+": " + tr("SLAVEAGE" + person.get_stat("age").to_upper()))
 	connecttexttooltip(node.get_node('race'), "[center]{color=green|"+ races.racelist[person.get_stat('race')].name +"}[/center]\n\n"+ person.show_race_description())
 
 

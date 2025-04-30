@@ -1478,7 +1478,7 @@ func decipher_single(ch):
 		
 		'stat_in_set':
 			if i.stat == 'personality':
-				text2 += tr("SLAVEPARTPERSONALITY") + ": "
+				text2 += tr("STATPERSONALITY") + ": "
 				for k in i.value:
 					text2 += tr("PERSONALITYNAME" + k.to_upper()) + ", "
 				text2 = text2.substr(0, text2.length()-2)

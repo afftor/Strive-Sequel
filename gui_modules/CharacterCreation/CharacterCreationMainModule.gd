@@ -1076,7 +1076,8 @@ func RebuildStatsContainer(): #onready scheme build, not values
 			newnode.name = stat
 			var text = ''
 			if statdata.statdata.has(stat):
-				text = tr(statdata.statdata[stat].name)
+				var data = statdata.statdata[stat]
+				text = tr(data.name)
 			else:
 				text = stat.replace('_', ' ')
 			newnode.get_node('header/Label').text = text
