@@ -1524,7 +1524,8 @@ func animation_queue_start_attempt(): #animation added, onto empty or not empty 
 
 func animation_queue_start_force(): #animtion just ended
 	if animations_queue.empty():
-		print("error - try to start empty animation queue")
+#		print("error - try to start empty animation queue")
+		#as an end animation trigger it is not guaranteed that queue is not empty
 		return
 	yield(get_tree(), 'idle_frame')
 	animations_queue.pop_front()

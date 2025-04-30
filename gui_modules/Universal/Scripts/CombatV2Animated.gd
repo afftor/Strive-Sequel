@@ -1736,7 +1736,7 @@ func defeat(runaway = false): #runaway is a temporary variable until run() metho
 			summons.erase(p)
 	if runaway:
 		input_handler.play_animation_noq("runaway")
-		yield(get_tree().create_timer(3), 'timeout')
+		yield(get_tree().create_timer(4), 'timeout')
 		ResourceScripts.core_animations.BlackScreenTransition(1.5)
 		yield(get_tree().create_timer(1.5), 'timeout')
 	else:
