@@ -1164,17 +1164,17 @@ func startscene(scenescript, cont = false, pretext = ''):
 			i.actionshad.samesex += 1
 		else:
 			i.actionshad.oppositesex += 1
-		if i.person_sexexp.actions.has(scenescript.code):
-			i.person_sexexp.actions[scenescript.code] += 1
+		if i.person_sexexp.sexexp_actions.has(scenescript.code):
+			i.person_sexexp.sexexp_actions[scenescript.code] += 1
 		else:
-			i.person_sexexp.actions[scenescript.code] = 1
+			i.person_sexexp.sexexp_actions[scenescript.code] = 1
 			i.new_action_performed = true
 		for k in givers + takers:
 			if k != i:
-				if i.person_sexexp.partners.has(k.id):
-					i.person_sexexp.partners[k.id] += 1
+				if i.person_sexexp.sexexp_partners.has(k.id):
+					i.person_sexexp.sexexp_partners[k.id] += 1
 				else:
-					i.person_sexexp.partners[k.id] = 1
+					i.person_sexexp.sexexp_partners[k.id] = 1
 					i.person.add_partner(k.id)
 					if resists.find(i.id) < 0:
 						k.new_consented_partners += 1
@@ -1183,10 +1183,10 @@ func startscene(scenescript, cont = false, pretext = ''):
 	for i in participants:
 		i.orgasm = false
 		if !givers.has(i) && !takers.has(i):
-			if i.person_sexexp.seenactions.has(scenescript.code):
-				i.person_sexexp.seenactions[scenescript.code] += 1
+			if i.person_sexexp.sexexp_seenactions.has(scenescript.code):
+				i.person_sexexp.sexexp_seenactions[scenescript.code] += 1
 			else:
-				i.person_sexexp.seenactions[scenescript.code] = 1
+				i.person_sexexp.sexexp_seenactions[scenescript.code] = 1
 
 	#temporary support for scenes converted to centralized output and those not
 	#should be unified in the future
@@ -1347,19 +1347,19 @@ func startscene(scenescript, cont = false, pretext = ''):
 
 	for i in ongoingactions:
 		for k in i.givers + i.takers:
-			k.person_sexexp.actions[i.scene.code] += 1
+			k.person_sexexp.sexexp_actions[i.scene.code] += 1
 			for j in i.givers + i.takers:
 				if j != k:
-					if k.person_sexexp.partners.has(j.id):
-						k.person_sexexp.partners[j.id] += 1
+					if k.person_sexexp.sexexp_partners.has(j.id):
+						k.person_sexexp.sexexp_partners[j.id] += 1
 					else:
-						k.person_sexexp.partners[j.id] = 1
+						k.person_sexexp.sexexp_partners[j.id] = 1
 		for k in participants:
 			if !i.givers.has(k) && !i.takers.has(k):
-				if k.person_sexexp.seenactions.has(i.scene.code):
-					k.person_sexexp.seenactions[i.scene.code] += 1
+				if k.person_sexexp.sexexp_seenactions.has(i.scene.code):
+					k.person_sexexp.sexexp_seenactions[i.scene.code] += 1
 				else:
-					k.person_sexexp.seenactions[i.scene.code] = 1
+					k.person_sexexp.sexexp_seenactions[i.scene.code] = 1
 		var i_ids = make_id_dict(i)
 		if i.scene.has_method("givereffect"):
 			for member in i.givers:
@@ -1983,12 +1983,12 @@ func askslaveforaction(chosen):
 			if i.npc == true && chosen.npc == true:
 				value -= 50
 
-			if chosen.person_sexexp.orgasms.has(i.id):
-				value += chosen.person_sexexp.orgasms[i.id]*4
-			if chosen.person_sexexp.watchers.has(i.id):
-				value += (chosen.person_sexexp.watchers[i.id]-1)*2
-			if chosen.person_sexexp.partners.has(i.id):
-				value += chosen.person_sexexp.partners[i.id]/0.2
+			if chosen.person_sexexp.sexexp_orgasms.has(i.id):
+				value += chosen.person_sexexp.sexexp_orgasms[i.id]*4
+			if chosen.person_sexexp.sexexp_watchers.has(i.id):
+				value += (chosen.person_sexexp.sexexp_watchers[i.id]-1)*2
+			if chosen.person_sexexp.sexexp_partners.has(i.id):
+				value += chosen.person_sexexp.sexexp_partners[i.id]/0.2
 			if isencountersamesex([chosen], [i], chosen) && !chosen.person.check_trait('Bisexual') && !chosen.person.check_trait('Homosexual'):
 				value = max(value/5,1)
 			elif isencountersamesex([chosen], [i], chosen) == false && chosen.person.check_trait('Homosexual'):
@@ -2079,12 +2079,12 @@ func askslaveforaction(chosen):
 			var result = checkaction(j, doubledildocheck())
 			if result[0] == 'allowed':
 				var value = 0
-				if chosen.person_sexexp.actions.has(j.code):
-					value += chosen.person_sexexp.actions[j.code]/2
-				if chosen.person_sexexp.orgasms.has(j.code):
-					value += chosen.person_sexexp.orgasms[j.code]*4
-				if chosen.person_sexexp.seenactions.has(j.code):
-					value += chosen.person_sexexp.seenactions[j.code]/10
+				if chosen.person_sexexp.sexexp_actions.has(j.code):
+					value += chosen.person_sexexp.sexexp_actions[j.code]/2
+				if chosen.person_sexexp.sexexp_orgasms.has(j.code):
+					value += chosen.person_sexexp.sexexp_orgasms[j.code]*4
+				if chosen.person_sexexp.sexexp_seenactions.has(j.code):
+					value += chosen.person_sexexp.sexexp_seenactions[j.code]/10
 
 				if i in ['caress','fucking']:
 					value += 10
@@ -2157,9 +2157,9 @@ func _on_finishbutton_pressed():
 		if i.npc == false:
 			for k in participants:
 				if k.npc == true:
-					i.person_sexexp.watchers.erase(k.id)
-					i.person_sexexp.partners.erase(k.id)
-					i.person_sexexp.orgasms.erase(k.id)
+					i.person_sexexp.sexexp_watchers.erase(k.id)
+					i.person_sexexp.sexexp_partners.erase(k.id)
+					i.person_sexexp.sexexp_orgasms.erase(k.id)
 	selectmode = 'normal'
 	gui_controller.current_screen = gui_controller.previous_screen
 	gui_controller.current_screen.raise()

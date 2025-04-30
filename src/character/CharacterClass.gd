@@ -539,7 +539,7 @@ func get_random_traits():
 
 
 func get_body_upgrades():
-	dyn_stats.get_body_upgrades()
+	return dyn_stats.get_body_upgrades()
 
 
 func has_body_upgrade(id):

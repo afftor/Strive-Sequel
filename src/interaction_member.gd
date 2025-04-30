@@ -105,7 +105,6 @@ var actionshad = {addtraits = [], removetraits = [], samesex = 0, samesexorgasms
 var id
 var person_sexexp
 var person_sexskills
-var person_relations
 var person_mods
 
 func setup_person(ch, no_loyal = false):
@@ -113,8 +112,7 @@ func setup_person(ch, no_loyal = false):
 	id = ch.id
 	person_sexexp = person.access_sexexp()
 	person_sexskills = person.get_sex_skills()
-	person_relations = person.get_stat('relations', true)
-	person_mods = person.get_stat('body_upgrades', true)
+	person_mods = person.get_body_upgrades()
 	sex = ch.get_stat('sex')
 	lust = ch.get_stat('lust')*10
 	sens = 0
@@ -255,16 +253,16 @@ func orgasm(custom_text = null):
 	var lastaction = get_lastaction_ref_dict()
 	if lastaction == null:
 		lastaction = {scene = load("res://src/actions/100caress.gd").new(), givers = [], takers = [self]}
-	if person_sexexp.orgasms.has(lastaction.scene.code):
-		person_sexexp.orgasms[lastaction.scene.code] += 1
+	if person_sexexp.sexexp_orgasms.has(lastaction.scene.code):
+		person_sexexp.sexexp_orgasms[lastaction.scene.code] += 1
 	else:
-		person_sexexp.orgasms[lastaction.scene.code] = 1
+		person_sexexp.sexexp_orgasms[lastaction.scene.code] = 1
 	for k in lastaction.givers + lastaction.takers:
 		if self != k:
-			if person_sexexp.orgasmpartners.has(k.id):
-				person_sexexp.orgasmpartners[k.id] += 1
+			if person_sexexp.sexexp_orgasmpartners.has(k.id):
+				person_sexexp.sexexp_orgasmpartners[k.id] += 1
 			else:
-				person_sexexp.orgasmpartners[k.id] = 1
+				person_sexexp.sexexp_orgasmpartners[k.id] = 1
 	
 	
 	var scene
@@ -508,7 +506,7 @@ func actioneffect(values, scenedict_ids):
 	var partner_skill_counter = 0
 	for i in scenedict[seek_group+'s']:
 		for k in scenedict.scene[seek_group+'_skill']:
-			partner_skill += i.person_sexskills[k]
+			partner_skill += i.person_sexskills['sex_skills_' + k]
 			partner_skill_counter += 1
 			var value = (1.0/scenedict.scene[seek_group+"_skill"].size()) * variables.sex_factor_skill_multiplier[int(i.person.get_stat('sexuals_factor'))]
 			var bonus = 1
@@ -524,7 +522,7 @@ func actioneffect(values, scenedict_ids):
 					if j.trigger == 'skill_exp_gain' && j.effect == 'skill_exp':
 						bonus = input_handler.math(j.operant, bonus, j.value)
 
-			i.person_sexskills[k] = min(100,i.person_sexskills[k] + value * bonus)
+			i.person_sexskills['sex_skills_' + k] = min(100,i.person_sexskills['sex_skills_' + k] + value * bonus)
 #			if i.person.sexuals + i.person.sexuals_bonus > partner_skill:
 #				partner_skill = i.person.sexuals + i.person.sexuals_bonus
 		if i.person.check_trait("undead") && sex_traits.has('omnisexual') == false:
