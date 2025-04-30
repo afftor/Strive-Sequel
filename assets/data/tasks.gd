@@ -585,7 +585,7 @@ var farm_tasks = {
 	seed = {
 		code = 'seed',
 		formula = 'farm_seed',
-		reqs = [{code = 'stat', stat = 'balls_size', operant = 'neq', value = ''}],
+		reqs = [{code = 'stat', stat = 'balls_size', operant = 'neq', value = '', orflag = true}, {code = 'stat', stat = 'penis_size', operant = 'next', value = ''}],
 	},
 	eggs = {
 		code = 'eggs',

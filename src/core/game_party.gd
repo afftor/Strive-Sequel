@@ -79,6 +79,20 @@ func update_relationship_status(data, char1, char2):
 			change_relationship_status(char1, char2, 'acquintances')
 	#print(data)
 
+func get_all_possible_love_pairs():
+	var friend_list = []
+	for key in relationship_data:
+		var data = relationship_data[key]
+		if data.status == 'friends':
+			friend_list.append(key)
+	var love_list = []
+	for key in friend_list:
+		var data = relationship_data[key]
+		var chars = key.split("_")
+		if check_lover_possibility(data, chars[0], chars[1]):
+			love_list.append(chars)
+	return love_list
+
 
 func attempt_romance(char1, char2):
 	if characters[char1].is_master(): 

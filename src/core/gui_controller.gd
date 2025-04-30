@@ -119,12 +119,14 @@ func clock_visibility():
 		clock.visible = current_screen == mansion || current_screen == exploration_city || current_screen == game_menu
 
 
-func add_close_button(scene, position = "snap"):
+func add_close_button(scene, position = "snap", offset = null):
 	var closebuttonoffset = [0, 0]
 	if position == "add_offset":
 		closebuttonoffset = [15, 15]
 	elif position == "bigger_offset":
 		closebuttonoffset = [30, 30]
+	elif position == "custom":
+		closebuttonoffset = offset
 	var pos_in_tree = scene.get_child_count()
 	scene.rect_pivot_offset = Vector2(scene.rect_size.x / 2, scene.rect_size.y / 2)
 	var closebutton = load(ResourceScripts.scenedict.close).instance()
@@ -175,6 +177,9 @@ func close_scene(scene):
 		scene.SummaryModule.selected_person = null
 	if window_button_connections.has(scene) && window_button_connections[scene] != null:
 		window_button_connections[scene].pressed = false
+		return
+	if scene.has_method("_custom_gui_controller_close"):
+		scene._custom_gui_controller_close()
 		return
 	scene.hide()
 	if windows_opened.has(scene):
@@ -248,6 +253,9 @@ func close_top_window():
 		return
 #    elif ResourceScripts.core_animations.BeingAnimated.has(node):
 #        return
+	if node.has_method("_custom_gui_controller_close"):
+		node._custom_gui_controller_close()
+		return
 	if node != null:
 		node.hide()
 	windows_opened.erase(node)

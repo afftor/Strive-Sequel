@@ -18,7 +18,7 @@ var lands = {
 		start_locations_number = 2, #will generate this number of smaller locations like dungeons
 		locations = {}, #array to fill up with settlements and dungeons
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'], #array of allowed locations to generate
-		starting_locations = ['dungeon_bandit_den','dungeon_goblin_cave','dungeon_goblin_stronghold'],# 'dungeon_infinite_example'],#['dungeon_bandit_fort'],
+		starting_locations = ['dungeon_bandit_den','dungeon_goblin_cave'],# 'dungeon_infinite_example'],#['dungeon_bandit_fort'],
 		guilds = ['workers','servants','fighters','mages','slavemarket','exotic_slave_trader'],
 		events = [],
 		tags = [],
@@ -94,13 +94,14 @@ var lands = {
 		locations = {},
 		locationpool = [],
 		guilds = [],
-		area_shop_items = '',
+		area_shop_items = 'empire_area_shop',
+		capital_options = [],
 		capital_background = 'empire',
 		capital_name = "Empire Capital",
 		capital_code = 'empire_capital',
 		capital_dynamic_background = 'empire',
 #		capital_background_noise = '',
-		capital_background_music = 'wimborn',
+		capital_background_music = 'empire_capital',
 	},
 	seas = {
 		code = 'seas',
@@ -709,6 +710,11 @@ var random_dungeon_events = {
 var fixed_location_options = { #override serialized data
 	aliron = [
 		{
+			text = tr('ARENA_NAME'),
+			reqs = [],
+			args = [{code = 'open_arena'}]
+		},
+		{
 			text = tr("ALIRON1"), 
 			reqs = [
 				{code = 'value_check', type = 'event_seen', check = false, value = 'daisy_meet'},
@@ -889,11 +895,6 @@ var fixed_location_options = { #override serialized data
 				{type = 'active_quest_stage', value = 'kuro_errand_quest', stage = 'church'}
 			], 
 			args = [{code = 'start_event', data = 'kuro_church_note', args = []}]
-		},
-		{
-			text = tr('ARENA_NAME'),
-			reqs = [],
-			args = [{code = 'open_arena'}]
 		},
 	],
 	elf_capital = [
@@ -1171,6 +1172,17 @@ var fixed_location_options = { #override serialized data
 			{type = 'active_quest_stage', value = 'goblin_quest', stage = 'stage0', state = true},], 
 			args = [{code = 'start_event', data = 'goblin_quest_1', args = []}]
 		},
+	],
+	
+	empire_capital = [
+		
+		{
+			text = tr('ARENA_NAME'),
+			reqs = [],
+			args = [{code = 'open_arena'}]
+		},
+		
+		
 	],
 	settlement_plains1 = [ 
 		{

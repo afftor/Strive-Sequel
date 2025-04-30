@@ -174,7 +174,7 @@ func farm_seed():
 		'average':
 			balls_size = 2
 		'big':
-			balls_size = 3 
+			balls_size = 3
 	var res = 1.0 + 0.1 * parent.get_ref().get_stat('physics_factor') + 0.3 * balls_size
 	return res
 

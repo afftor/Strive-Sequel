@@ -20,6 +20,7 @@ var music = {
 	wimborn = load("res://assets/sounds/music/wimborn.ogg"),
 	gorn = load("res://assets/sounds/music/gorn.ogg"),
 	frostford = load("res://assets/sounds/music/frostford.ogg"),
+	empire_capital = load("res://assets/sounds/music/capital_ost.ogg"),
 
 	intro = load("res://assets/sounds/music/ending.ogg"),
 	intimate = load("res://assets/sounds/music/intimate.ogg"),

@@ -993,6 +993,7 @@ func start_event(code, type, args):
 #					scene_characters.append(make_story_character(i.value))
 	match type:
 		'social_skill':
+			#chars can now translate() text by numbered tags. Refactor advised
 			for i in variables.dynamic_text_vars:
 				data.text = data.text.replace("[" + i + '1' + ']', "[" + i + "]")
 			data.text = args.name1.translate(data.text)

@@ -18,6 +18,8 @@ var allow_remote = false
 var limit = 0
 var group_fixed = false
 
+signal group_changed
+
 func _ready():
 	$ConfirmButton.connect("pressed", self, "on_confirm")
 	
@@ -61,6 +63,7 @@ func slave_position_selected(character):
 			ResourceScripts.game_party.characters[group[pos]].combat_position = 0
 			group.erase(pos)
 			build_location_group()
+			emit_signal("group_changed")
 		return
 	if character.has_status('no_combat'):
 		input_handler.SystemMessage(character.translate(tr('CHAR_NO_COMBAT')))
@@ -98,6 +101,7 @@ func slave_position_selected(character):
 	
 	group[pos] = char_id
 	build_location_group()
+	emit_signal("group_changed")
 
 
 func build_location_group():
@@ -105,6 +109,8 @@ func build_location_group():
 		var position = 'pos'+str(i)
 		var character
 		var free_pos = false
+		var position_node = get_node(positiondict[i])
+		position_node.modulate.a = 1.0
 		if group.has(position):
 			character = ResourceScripts.game_party.characters[group[position]]
 			character.combat_position = i
@@ -125,6 +131,9 @@ func build_location_group():
 		if free_pos:
 			get_node(positiondict[i]+"/Image").texture = null
 			get_node(positiondict[i]+"/Image").hide()
+			if limit != 0 and group.size() >= limit:
+				position_node.modulate.a = 0.0
+
 
 func on_confirm():
 	if confirm_call != null:

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/capital_ost.ogg-14965c19d04ed1145d480ebaa8746aa4.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/capital_ost.ogg"
+dest_files=[ "res://.import/capital_ost.ogg-14965c19d04ed1145d480ebaa8746aa4.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

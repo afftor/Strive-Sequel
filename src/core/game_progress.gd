@@ -41,6 +41,18 @@ var planned_loc_events = {}
 
 var master_points = 1
 
+var char_events = {
+	interval = -1,
+	hours_past = 0,
+	unplayed_events = []
+}
+
+var arena = {
+	last_reset_date = -1,
+	group_limit = 0,
+	finished = false
+}
+
 func _init():
 	globals.connect("hour_tick", self, 'check_timed_events')
 

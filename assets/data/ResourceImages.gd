@@ -11,6 +11,7 @@ var backgrounds = {
 	beastkin_capital = "res://assets/images/backgrounds/beastkin_capital.png",
 	dwarfs_city = "res://assets/images/backgrounds/dwarf_city.png",
 	empire = "res://assets/images/backgrounds/empire.png",
+	arena = "res://assets/images/backgrounds/arena.png",
 	
 	forest1_menu = "res://assets/images/backgroundmenu/forest1.jpg",
 	mountain1_menu = "res://assets/images/backgroundmenu/mountain1.jpg",
@@ -530,6 +531,22 @@ var scenes = {
 	kobold_temple = "res://assets/images/scenes/kobold_temple.png",
 	dwarf_prisoner = "res://assets/images/scenes/gnome_prisoner.png",
 	dwarf_gates = "res://assets/images/scenes/dwarf_gates.png",
+	
+	#char's random events
+	bulling = "res://assets/images/scenes/bulling.png",
+	cargo_loss = "res://assets/images/scenes/cargo_loss.png",
+	dining_table = "res://assets/images/scenes/dining_table.png",
+	guest_harrasment = "res://assets/images/scenes/guest_harrasment.png",
+	nightmare = "res://assets/images/scenes/nightmare.png",
+	no_reaction = "res://assets/images/scenes/no_reaction.png",
+	quarrel = "res://assets/images/scenes/quarrel.png",
+	rest = "res://assets/images/scenes/rest.png",
+	restoraunt_quarrel = "res://assets/images/scenes/restoraunt_quarrel.png",
+	scarhand = "res://assets/images/scenes/scarhand.png",
+	slave_love = "res://assets/images/scenes/slave_love.png",
+	table_sleep = "res://assets/images/scenes/table_sleep.png",
+	trap_rnd = "res://assets/images/scenes/trap_rnd.png",
+	treasure = "res://assets/images/scenes/treasure.png"
 }
 
 func get_scene(id):
