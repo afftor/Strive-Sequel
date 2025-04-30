@@ -13,9 +13,9 @@ func _ready():
 func build_skill_panel():
 #	person = input_handler.interacted_character
 	person = get_parent().active_person
-	person.fix_skillpanels()
 	if person == null:
 		return
+	person.fix_skillpanels()
 	input_handler.ClearContainer($SkillPanel)
 	var src
 	if person.skills.active_panel == variables.PANEL_SOC:
