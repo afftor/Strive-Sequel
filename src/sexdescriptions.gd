@@ -1411,7 +1411,7 @@ func anus(member):
 #register tickness
 func thickness(ch):
 	var thick = 0
-	match ch.get_size('tits_size'):
+	match ch.get_stat('tits_size'):
 		'small':
 			thick += 1
 		'average':
@@ -1420,7 +1420,7 @@ func thickness(ch):
 			thick += 3
 		'huge':
 			thick += 4
-	match ch.get_size('ass_size'):
+	match ch.get_stat('ass_size'):
 		'small':
 			thick += 1
 		'average':

@@ -1022,11 +1022,11 @@ func set_stat_old(st, value): #possibly obsolete
 
 #sex stuff
 #can move them to another component - along with sex-related stats
-func access_sexexp(): # I DO NO LIKE TO DO SO - but incapsulating all of them in reasonable time is impassible
+func access_sexexp(): # I DO NOT LIKE TO DO SO - but incapsulating all of them in reasonable time is impossible
 	return sexexp
 
 
-func get_sex_skills(): # I DO NO LIKE TO DO SO - but incapsulating all of them in reasonable time is impassible
+func get_sex_skills(): # I DO NOT LIKE TO DO SO - but incapsulating all of them in reasonable time is impossible
 	return sex_skills
 
 
