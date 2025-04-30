@@ -1405,17 +1405,17 @@ var statdata = {
 		default_bonus = 'set',
 	},
 	vaginal_virgin = {
-		code = 'vaginal_virgin_lost',
+		code = 'vaginal_virgin',
 		tags = ['obsolete'],
 		default_bonus = 'set',
 	},
 	anal_virgin = {
-		code = 'anal_virgin_lost',
+		code = 'anal_virgin',
 		tags = ['obsolete'],
 		default_bonus = 'set',
 	},
 	mouth_virgin = {
-		code = 'mouth_virgin_lost',
+		code = 'mouth_virgin',
 		tags = ['obsolete'],
 		default_bonus = 'set',
 	},
@@ -1650,6 +1650,7 @@ func _ready():
 			val.default_bonus = 'add'
 		if !val.has('direct'): 
 			val.direct = true
+#		print("STAT%s = ''," % val.code.to_upper())
 
 
 func check_compatibility_operant(stat, operant):
