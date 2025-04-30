@@ -2,9 +2,12 @@
 Revamped effect system to be modifiable and support saves 
 	Old saves can't be imported or loaded anymore, from this point the previous save files should be supported automatically
 Added random events for characters
+Added empire capital and arena (wip)
+Fixed dwarf capital shop having no items
 Nerfed damage scaling from physics/wits for player characters
 Rebalanced more enemies and encounters
 Added italian localization (thanks to Scarichino)
+Revamped the way loot lists are stored
 Fixed disentegrate being skill instead of spell and not scaling from MATK
 0.10.3b
 Fixed Cali encounter not spawning

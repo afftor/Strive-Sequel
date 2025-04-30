@@ -5262,7 +5262,7 @@ The princess notices Aire tensing up in response to the question.
 	SKILLSTICKY_WEB = "Sticky Web",
 	SKILLPOISON_SPRAY = "Poison Spray",
 	SKILLCLEAVE_W = "Cleave",
-	SKILLCRIPPLING_BITE = "Criplling Bite",
+	SKILLCRIPPLING_BITE = "Crippling Bite",
 	SKILLFRIGHTENING_HOWL = "Frightening Howl",
 	SKILLLEADERSMARK_S = "Leader's Mark",
 	SKILLFIRE_LUNG = "Fire Lung",
