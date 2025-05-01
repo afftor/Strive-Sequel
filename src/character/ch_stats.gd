@@ -393,7 +393,7 @@ func update_stat(stat, value, operant = 'set'):
 	parent.get_ref().reset_rebuild()
 
 
-func update_personality(value):
+func update_personality(value, operant = 'set'):
 	match value:
 		'neutral':
 			statlist.personality_bold = globals.rng.randi_range(-10, 10)
