@@ -178,7 +178,7 @@ margin_right = 433.0
 margin_bottom = 35.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "SLAVEPARTNAME"
+text = "STATNAME"
 align = 1
 
 [node name="name" type="LineEdit" parent="VBoxContainer"]
@@ -196,7 +196,7 @@ margin_right = 433.0
 margin_bottom = 122.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "SLAVEPARTSURNAME"
+text = "STATSURNAME"
 align = 1
 
 [node name="surname" type="LineEdit" parent="VBoxContainer"]
@@ -214,7 +214,7 @@ margin_right = 433.0
 margin_bottom = 209.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "SLAVEPARTNICKNAME"
+text = "STATNICKNAME"
 align = 1
 
 [node name="nickname" type="LineEdit" parent="VBoxContainer"]
@@ -247,7 +247,7 @@ margin_bottom = 35.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "SLAVEPARTSEX"
+text = "STATSEX"
 align = 1
 
 [node name="Tooltip" type="TextureRect" parent="VBoxContainer/HBoxContainer/sex/header"]
@@ -329,7 +329,7 @@ margin_bottom = 35.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "SLAVEPARTAGE"
+text = "STATAGE"
 align = 1
 
 [node name="Tooltip" type="TextureRect" parent="VBoxContainer/HBoxContainer/age/header"]
@@ -734,7 +734,7 @@ margin_bottom = 35.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "SLAVEPARTSEX"
+text = "STATSEX"
 align = 1
 
 [node name="Tooltip" type="TextureRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer/Button/header"]
@@ -819,7 +819,7 @@ margin_bottom = 35.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "SLAVEPARTSEX"
+text = "STATSEX"
 align = 1
 
 [node name="Tooltip" type="TextureRect" parent="VisualsModule/ScrollContainer/VBoxContainer/StatsContainer2/Button/header"]

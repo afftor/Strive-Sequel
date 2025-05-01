@@ -1178,7 +1178,7 @@ func process_chardata(chardata, unique = false):
 			add_sex_trait(i)
 	if chardata.has("sex_skills"):
 		for skill in chardata.sex_skills:
-			sex_skills[skill] = chardata.sex_skills[skill]
+			sex_skills['sex_skills_' + skill] = chardata.sex_skills[skill]
 	if chardata.has('icon_image'):
 		statlist.dynamic_portrait = false
 	if chardata.has('personality'):
