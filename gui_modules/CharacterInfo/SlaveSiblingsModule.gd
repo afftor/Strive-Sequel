@@ -144,14 +144,15 @@ func update():
 	if person != null:
 		input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 		var s_skills = person.get_sex_skills()
-		for i in s_skills:
-			if s_skills[i] == 0 && universal_skills.has(i):
+		for ii in s_skills: #bad way, need to move to using proper statdata (and proper translation keys) instead of stubs
+			var i = ii.trim_prefix('sex_skills_')
+			if s_skills[ii] == 0 && universal_skills.has(i):
 				continue
 			var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.get_node("Label").text = tr("SEXSKILL"+i.to_upper())
-			newbutton.get_node("ProgressBar").value = s_skills[i]
-			newbutton.get_node("ProgressBar/Label").text = str(floor(s_skills[i])) + '/100'
-			globals.connecttexttooltip(newbutton,  person.translate(tr("SEXSKILL"+i.to_upper()+"DESCRIPT")) + "\n" + tr("CUR_LEVEL_LABEL") + ":" + str(floor(s_skills[i])))
+			newbutton.get_node("ProgressBar").value = s_skills[ii]
+			newbutton.get_node("ProgressBar/Label").text = str(floor(s_skills[ii])) + '/100'
+			globals.connecttexttooltip(newbutton,  person.translate(tr("SEXSKILL"+i.to_upper()+"DESCRIPT")) + "\n" + tr("CUR_LEVEL_LABEL") + ":" + str(floor(s_skills[ii])))
 		var text = ''
 		if person.is_master():
 			text = tr("SIBLINGMODULECONSENT") + tr("MASTER")
