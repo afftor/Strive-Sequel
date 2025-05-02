@@ -25,7 +25,7 @@ func apply(data = {}):
 	atomic.clear()
 	calculate_args(data)
 	for a in template.atomic:
-		var tmp := atomic_effect.new(a, id)
+		var tmp := atomic_effect.new(a, self)
 		tmp.resolve_template()
 		applied_obj.apply_atomic(tmp.template)
 		atomic.push_back(tmp.template)

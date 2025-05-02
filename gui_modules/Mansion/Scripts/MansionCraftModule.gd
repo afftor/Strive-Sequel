@@ -483,7 +483,15 @@ func get_mat_bonuses(material, part):
 			if itemdata.itemtype == 'armor':
 				endvalue = float(endvalue) / 2
 			if endvalue != 0:
-				text += '\n' + statdata.statdata[k].name + ': ' + str(endvalue)
+				var data
+				if statdata.statdata.has(k):
+					data = statdata.statdata[k]
+				else:
+					for suffix in ['add', 'add_part', 'add2', 'add_part2', 'mul', 'mul2', 'set', 'append', 'maxcap', 'mincap']:
+						if k.ends_with('_' + suffix):
+							data = statdata.statdata[k.trim_suffix('_' + suffix)]
+							break
+				text += '\n' + data.name + ': ' + str(endvalue)
 			
 	return text
 

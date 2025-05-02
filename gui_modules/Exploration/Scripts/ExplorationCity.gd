@@ -8,7 +8,7 @@ onready var nav = $NavigationModule
 
 #var active_area
 var active_faction
-#var active_location
+var active_location
 
 var selected_location
 var selected_area
@@ -110,6 +110,7 @@ func open_city(city = null):
 	gui_controller.nav_panel.update_buttons()
 	if city != null:
 		selected_location = city
+		active_location = ResourceScripts.world_gen.get_location_from_code(selected_location)
 		selected_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[selected_location].area]
 	self.current_pressed_area_btn = null
 	

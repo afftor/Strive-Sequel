@@ -116,13 +116,13 @@ func e_apply(): #temporal solution until rework via apply_status
 						obj.remove()
 			'skill':
 				var obj = get_arg('skill')
-				eff = effects_pool.e_createfromtemplate(eff)
+				eff = effects_pool.e_createfromtemplate(eff, self)
 				eff.applied_obj = obj
 				obj.apply_effect(effects_pool.add_effect(eff))
 			'caster':
 				var obj = get_arg('caster')
 				if eff.type == 'oneshot':
-					eff = effects_pool.e_createfromtemplate(eff)
+					eff = effects_pool.e_createfromtemplate(eff, self)
 					eff.applied_obj = obj
 					eff.apply(get_args_resolved())
 				else:
@@ -130,7 +130,7 @@ func e_apply(): #temporal solution until rework via apply_status
 			'target':
 				var obj = get_arg('target')
 				if eff.type == 'oneshot':
-					eff = effects_pool.e_createfromtemplate(eff)
+					eff = effects_pool.e_createfromtemplate(eff, self)
 					eff.applied_obj = obj
 					eff.apply(get_args_resolved())
 				else:
@@ -138,7 +138,7 @@ func e_apply(): #temporal solution until rework via apply_status
 			'receiver':
 				var obj = get_arg('receiver')
 				if eff.type == 'oneshot':
-					eff = effects_pool.e_createfromtemplate(eff)
+					eff = effects_pool.e_createfromtemplate(eff, self)
 					eff.applied_obj = obj
 					eff.apply(get_args_resolved())
 				else:
@@ -146,7 +146,7 @@ func e_apply(): #temporal solution until rework via apply_status
 			'owner':
 				var obj = get_applied_obj()
 				if eff.type == 'oneshot':
-					eff = effects_pool.e_createfromtemplate(eff)
+					eff = effects_pool.e_createfromtemplate(eff, self)
 					eff.applied_obj = obj
 					eff.apply(get_args_resolved())
 				else:
@@ -157,7 +157,7 @@ func e_apply(): #temporal solution until rework via apply_status
 					print('template error: arg is not character') 
 					continue
 				if eff.type == 'oneshot':
-					eff = effects_pool.e_createfromtemplate(eff)
+					eff = effects_pool.e_createfromtemplate(eff, self)
 					eff.applied_obj = obj
 					eff.apply(get_args_resolved())
 				else:
