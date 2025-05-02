@@ -362,7 +362,7 @@ func apply_training(code):
 		if cat == 'positive':
 			ResourceScripts.game_party.add_relationship_value(parent.get_ref().id, trainer, globals.rng.randi_range(1, 2))
 		else:
-			if parent.has_status('likes_training'):
+			if parent.get_ref().has_status('likes_training'):
 				ResourceScripts.game_party.add_relationship_value(parent.get_ref().id, trainer, 3)
 			else:
 				ResourceScripts.game_party.add_relationship_value(parent.get_ref().id, trainer, -3)
