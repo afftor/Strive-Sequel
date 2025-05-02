@@ -86,8 +86,18 @@ func show_info(quest):
 					tr(DungeonData.dungeons[i.type].name),
 					tr(DungeonData.dungeons[i.type].descript)])
 			'complete_dungeon':
+				var area
+				if i.has('area'):
+					area = i.area
+				else:
+					area = input_handler.active_area.code
+				var locationname
+				if i.has('locationname'):
+					locationname = i.locationname
+				else:
+					locationname = DungeonData.dungeons[i.type].name
 				newbutton.get_node("TextureRect").texture = images.get_icon(i.code)
-				globals.connecttexttooltip(newbutton, "%s [color=aqua]%s[/color]: [color=yellow]%s[/color]" % [tr("QUESTCOMPLETEQUESTLOC2"), tr(ResourceScripts.game_world.areas[i.area].name), tr(i.locationname)])
+				globals.connecttexttooltip(newbutton, "%s [color=aqua]%s[/color]: [color=yellow]%s[/color]" % [tr("QUESTCOMPLETEQUESTLOC2"), tr(ResourceScripts.game_world.areas[area].name), tr(locationname)])
 				#globals.connecttexttooltip(newbutton, "%s: %s" % [tr("QUESTCOMPLETEQUESTLOC"), tr("LOCATIONNAME" + i.type.to_upper())])#todo add dungeon name 
 			'random_material':
 				newbutton.get_node("TextureRect").texture = Items.materiallist[i.type].icon
