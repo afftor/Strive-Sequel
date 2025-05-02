@@ -1650,6 +1650,8 @@ func _ready():
 			val.default_bonus = 'add'
 		if !val.has('direct'): 
 			val.direct = true
+		if !val.has('tags'): 
+			val.tags = []
 #		print("STAT%s = ''," % val.code.to_upper())
 
 
