@@ -191,6 +191,7 @@ func apply_effect(eff):
 	match obj.template.type:
 		'trigger':
 			effects.push_back(obj.id)
+			obj.calculate_args({skill = self})
 			obj.apply()
 		'oneshot':
 			obj.applied_obj = self

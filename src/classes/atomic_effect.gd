@@ -16,7 +16,9 @@ func calculate_property(prop): #updated version. copy this to displaced
 	if typeof(prop) != TYPE_ARRAY:
 		return prop
 	var res = 0
-	var par = effects_pool.get_effect_by_id(parent)
+	var par = parent
+	if par is String:
+		par = effects_pool.get_effect_by_id(par)
 	if typeof(prop[0]) == TYPE_ARRAY:
 		prop[0] = calculate_property(prop[0])
 	if typeof(prop[0]) == TYPE_STRING:
@@ -66,7 +68,7 @@ func resolve_template():
 	for e in template.keys():
 		if e == 'stats': continue
 		if typeof(template[e]) == TYPE_ARRAY:
-			template[e] = calculate_property(template[e])
+			template[e] = calculate_property(template[e].duplicate(true))
 
 #to move 
 #func apply_template(obj):

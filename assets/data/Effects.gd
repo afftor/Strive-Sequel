@@ -619,6 +619,7 @@ var effect_table = {
 		args = {
 			mod = {obj = 'parent', func = 'arg', arg = 'mod'},
 			src = {obj = 'parent', func = 'arg', arg = 'src'},
+			mod_2 = {obj = 'parent', func = 'arg', arg = 'mod_2'}, 
 		},
 		sub_effects = [{
 				type = 'oneshot',
@@ -627,7 +628,7 @@ var effect_table = {
 					mod = {obj = 'parent', func = 'arg', arg = 'mod'}, 
 					src = {obj = 'parent', func = 'arg', arg = 'src'}, 
 					mod_2 = {obj = 'parent', func = 'arg', arg = 'mod_2'}, 
-					base = {obj = 'owner', func = 'stat', stat = 'hpmax'}, 
+					value = {obj = 'owner', func = 'stat', stat = 'hpmax'}, 
 				},
 				atomic = ['a_dot_new'],
 			}
