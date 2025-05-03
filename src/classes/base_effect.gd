@@ -250,3 +250,10 @@ func resolve_value(val):
 		return val[0]
 	else:
 		return val
+
+
+func get_src():
+	var res = template_id
+	if template.has('stack'):
+		res = template.stack
+	return res
