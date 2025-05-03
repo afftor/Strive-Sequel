@@ -40,13 +40,13 @@ func process_tick(ev):
 	if !is_applied: return
 	var res = variables.TE_RES_NOACT
 	if template.has('tick_event') and template.tick_event.has(ev):
-			res = variables.TE_RES_TICK
-			remains -= 1
-			for b in buffs:
-				b.calculate_args()
-			if remains == 0:
-				remove()
-				res = variables.TE_RES_REMOVE
+		res = variables.TE_RES_TICK
+		remains -= 1
+		for b in buffs:
+			b.calculate_args()
+		if remains == 0:
+			remove()
+			res = variables.TE_RES_REMOVE
 	if template.has('rem_event') and template.rem_event.has(ev):
 		remove()
 		res = variables.TE_RES_REMOVE
@@ -67,6 +67,11 @@ func serialize():
 func deserialize(tmp):
 	.deserialize(tmp)
 	remains = int(tmp.remains)
+	if template_id == null and template.has('tick_event'):
+		var temp = template.tick_event.duplicate()
+		template.tick_event.clear()
+		for ev in temp:
+			template.tick_event.push_back(int(ev))
 
 
 func get_duration():

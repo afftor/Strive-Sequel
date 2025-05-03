@@ -196,7 +196,7 @@ func e_createfromtemplate(buff_t, caller = null):
 		_: 
 			print ('wrong eff type - %s' % template.type)
 			return null
-	tmp.createfromtemplate(template)
+	tmp.createfromtemplate(buff_t)
 	return tmp
 
 
