@@ -280,7 +280,7 @@ var skills = {
 #		new_syntax = true,
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_silence1', duration = 2})], 
+		effects = [Effectdata.rebuild_template({effect = 'e_s_silence', duration = 2})], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
