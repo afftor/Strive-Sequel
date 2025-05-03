@@ -144,7 +144,7 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 				continue
 			var template = eff.template
 			for stat in template.statchanges:
-				process_bonus_record(stat, eff.resolve_value(template.statchanges[stat]), 'effect', template.stack, pool[eid])
+				process_bonus_record(stat, eff.resolve_value(template.statchanges[stat]), 'effect', eff.get_src(), pool[eid])
 		stack.update_buffs()
 		for b in stack.buffs:
 			buffs.push_back(b)

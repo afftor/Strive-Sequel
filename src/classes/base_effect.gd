@@ -56,6 +56,10 @@ func createfromtemplate(buff_t):
 		template = Effectdata.effect_table[buff_t].duplicate(true)
 	else:
 		template = buff_t.duplicate(true)
+	fix_template()
+
+
+func fix_template():
 	if !template.has('sub_effects'):
 		template['sub_effects'] = []
 	if !template.has('buffs'):
@@ -174,6 +178,7 @@ func deserialize(tmp):
 		template = Effectdata.effect_table[tmp.template].duplicate()
 	else:
 		template = tmp.template.duplicate()
+	fix_template()
 	sub_effects = tmp.sub_effects.duplicate()
 	args = tmp.args.duplicate()
 	owner = tmp.owner
@@ -250,3 +255,10 @@ func resolve_value(val):
 		return val[0]
 	else:
 		return val
+
+
+func get_src():
+	var res = template_id
+	if template.has('stack'):
+		res = template.stack
+	return res

@@ -61,7 +61,7 @@ var skills = {
 		tags = ['damage', 'debuff', 'ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_silence1', duration = 4})], 
+		effects = [Effectdata.rebuild_template({effect = 'e_s_silence', duration = 4})], 
 		cost = {mp = 4},
 		charges = 0,
 		combatcooldown = 0,
