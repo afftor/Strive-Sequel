@@ -68,7 +68,7 @@ func update_filter():
 
 func RebuildSkillBook():
 	input_handler.ClearContainer($ScrollContainer/GridContainer)
-	for i in activecharacter.skills.combat_skills:
+	for i in activecharacter.get_combat_skills():
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/GridContainer)
 		var skill = Skilldata.get_template(i, activecharacter)
 		newbutton.dragdata = {skill = i}
