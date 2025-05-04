@@ -761,7 +761,7 @@ func build_spell_panel():
 	for id in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[id]
 		if person.check_location(active_location.id, true):
-			for i in person.skills.combat_skills + person.skills.explore_skills:
+			for i in person.get_combat_skills() + person.get_explore_skills():
 				var skill = Skilldata.get_template(i, person)
 				if skill.tags.has('exploration') == false:
 					continue
