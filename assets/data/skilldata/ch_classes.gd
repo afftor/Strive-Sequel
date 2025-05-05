@@ -1008,8 +1008,6 @@ var effects = {
 		buffs = [{
 				icon = "res://assets/images/iconsskills/Discipline.png",
 				description = "TRAITEFFECTDEVOUR",
-				limit = 1,
-				t_name = 'devour',
 			}],
 		args = {
 			caster = {obj = 'caster', func = 'eq'},
@@ -1023,7 +1021,7 @@ var effects = {
 		conditions = [],
 		req_skill = false,
 		args = {
-			caster = {obj = 'parent', func = 'arg', arg = 'caster'},
+			arg_caster = {obj = 'parent', func = 'arg', arg = 'caster'},
 			caster_mpmax = {obj = 'parent', func = 'arg', arg = 'caster_mpmax'}
 		},
 		sub_effects = [
@@ -1031,7 +1029,6 @@ var effects = {
 				type = 'oneshot',
 				target = 'arg_caster',
 				args = {
-					arg_caster = {obj = 'parent', func = 'arg', arg = 'caster'},
 					caster_mpmax = {obj = 'parent', func = 'arg', arg = 'caster_mpmax'}
 				},
 				atomic = [

@@ -152,7 +152,7 @@ func e_apply(): #temporal solution until rework via apply_status
 				else:
 					obj.apply_effect_code(e, get_args_resolved())
 			_:
-				var obj = get_arg(eff.template.target)
+				var obj = get_arg(eff.target)
 				if obj == null or !(obj is ResourceScripts.scriptdict.class_slave):
 					print('template error: arg is not character') 
 					continue
