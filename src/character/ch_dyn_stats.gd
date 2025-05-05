@@ -70,6 +70,8 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 	#reset
 	traits_real = traits_stored.duplicate()
 	masteries_real = masteries.duplicate(true)
+	var skills_old = skills_real.duplicate()
+	var c_skills_old = c_skills_real.duplicate()
 	skills_real = parent.get_ref().get_learned_skills('social')
 	c_skills_real = parent.get_ref().get_learned_skills('combat')
 	e_skills_real = parent.get_ref().get_learned_skills('explore')
@@ -111,6 +113,8 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 		for eff in item.effects:
 			process_eid_add(eff, item.timestamp)
 	rebuild = variables.DYN_STATS_PREAREA
+	if !forced:
+		parent.get_ref().fix_skillpanels(input_handler.compare_list(skills_real, skills_old), input_handler.compare_list(c_skills_real, c_skills_old))
 	if rebuild >= stop_at and !forced:
 		return
 	#process effects
@@ -150,7 +154,7 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 			buffs.push_back(b)
 	
 	rebuild = variables.DYN_STATS_FULL
-	parent.get_ref().fix_skillpanels()
+
 
 
 func process_race_data(id):

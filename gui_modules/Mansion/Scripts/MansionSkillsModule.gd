@@ -15,7 +15,6 @@ func build_skill_panel():
 	person = get_parent().active_person
 	if person == null:
 		return
-	person.fix_skillpanels()
 	input_handler.ClearContainer($SkillPanel)
 	var src
 	if person.skills.active_panel == variables.PANEL_SOC:

@@ -83,46 +83,46 @@ func get_learned_skills(cat):
 			return explore_skills.duplicate()
 
 
-func fix_skillpanels():
-	var list =  parent.get_ref().get_combat_skills()
+func fix_skillpanels(list_soc, list_combat):
 	var pos = 1
-	for skill in list:
+	for skill in list_combat:
 		if combat_skill_panel.values().has(skill):
 			continue
-		while combat_skill_panel.has(pos) and list.has(combat_skill_panel[pos]):
+		while combat_skill_panel.has(pos):
 			pos += 1
 		if pos > 21:
 			break
 		combat_skill_panel[pos] = skill
-	list =  parent.get_ref().get_social_skills()
 	pos = 1
-	for skill in list:
+	for skill in list_soc:
 		if social_skill_panel.values().has(skill):
 			continue
-		while social_skill_panel.has(pos) and list.has(social_skill_panel[pos]):
+		while social_skill_panel.has(pos):
 			pos += 1
 		if pos > 11:
 			break
 		social_skill_panel[pos] = skill
 
 
+
 func learn_skill(skill):
 	var skilldata = Skilldata.Skilllist[skill]
 	if !social_skills.has(skill):
 		social_skills.append(skill)
-	fix_skillpanels()
 
 
 func learn_c_skill(skill):
 	var skilldata = Skilldata.Skilllist[skill]
 	if !combat_skills.has(skill):
 		combat_skills.append(skill)
+		parent.get_ref().reset_rebuild()
 
 
 func learn_e_skill(skill, free = false):
 	var skilldata = Skilldata.Skilllist[skill]
 	if !explore_skills.has(skill):
 		explore_skills.append(skill)
+		parent.get_ref().reset_rebuild()
 
 
 func unlearn_skill(skill):
@@ -132,6 +132,7 @@ func unlearn_skill(skill):
 	social_skills_charges.erase(skill)
 	for i in range(1,12):
 		if social_skill_panel.has(i) and social_skill_panel[i] == skill: social_skill_panel.erase(i)
+		parent.get_ref().reset_rebuild()
 
 
 func unlearn_c_skill(skill):
@@ -140,11 +141,13 @@ func unlearn_c_skill(skill):
 	daily_cooldowns.erase(skill)
 	for i in range(1,22):
 		if combat_skill_panel.has(i) and combat_skill_panel[i] == skill: combat_skill_panel.erase(i)
+		parent.get_ref().reset_rebuild()
 
 
 func unlearn_e_skill(skill):
 	explore_skills.erase(skill)
 	daily_cooldowns.erase(skill)
+	parent.get_ref().reset_rebuild()
 
 
 func cooldown_tick():
