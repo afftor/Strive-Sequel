@@ -76,6 +76,7 @@ func pay_stamina(value, modified = true):
 	value = int(value)
 	active_location.stamina -= value
 	update_stamina()
+	return value
 
 
 func add_stamina(value):
