@@ -116,7 +116,6 @@ var rewards = {
 var group = {}
 var limits = [[1, 1], [2, 2], [3, 2], [4, 2], [5, 1]]
 var cur_reward = {gold = 0, materials = {}, items = []}
-var next_reward = {}
 var round_num = 1
 var round_max = 5
 var reset_time = 3
@@ -137,16 +136,7 @@ func _ready():
 	if progress.last_reset_date < 0:
 		progress.last_reset_date = -reset_time
 
-#very ugly fix! Need to do something with this
-func temp_save_fix():
-	var progress = ResourceScripts.game_progress.arena
-	progress.last_reset_date = int(progress.last_reset_date)
-	progress.group_limit = int(progress.group_limit)
-	if next_reward.empty():
-		make_next_reward()
-
 func open():
-	temp_save_fix()
 	var progress = ResourceScripts.game_progress.arena
 	if ResourceScripts.game_globals.date >= progress.last_reset_date + reset_time:
 		reset()
@@ -175,7 +165,7 @@ func update_screen():
 	update_round_label()
 	update_limit_label()
 	update_reward(cur_reward_cont, cur_reward)
-	update_reward(next_reward_cont, next_reward)
+	update_reward(next_reward_cont, progress.next_reward)
 
 func update_round_label():
 	$PrefightPanel/round_rect/round.text = String(round_num)
@@ -194,11 +184,19 @@ func close():
 	hide()
 
 func reset():
-	reset_group_limit()
-	make_next_reward()
-	start_btn.disabled = false
+	if !ResourceScripts.game_progress.arena.finished:
+		renew()
 	open_doors()
 	ResourceScripts.game_progress.arena.last_reset_date = ResourceScripts.game_globals.date
+
+func renew():
+	reset_group_limit()
+	next_round(1)
+	start_btn.disabled = false
+	make_next_reward()
+	cur_reward = {gold = 0, materials = {}, items = []}
+	clear_reward(cur_reward_cont)
+	clear_group()
 
 func open_doors():
 	unwelcome_label.hide()
@@ -216,13 +214,6 @@ func close_doors():
 	ResourceScripts.game_progress.arena.finished = true
 	finish_btn.text = tr('ARENA_LEAVE_BTN')
 
-func discard_progress():
-	next_round(1)
-	next_reward = {}
-	cur_reward = {gold = 0, materials = {}, items = []}
-	clear_reward(cur_reward_cont)
-	clear_reward(next_reward_cont)
-	clear_group()
 
 func on_start_btn():
 	if ResourceScripts.game_progress.arena.finished:
@@ -274,8 +265,8 @@ func start_combat():
 	globals.char_roll_data.no_roll = true
 	input_handler.combat_node.start_combat(group, enemies, 'arena')
 	input_handler.combat_node.set_only_show_reward()
-#	var progress = ResourceScripts.game_progress.arena
-	input_handler.combat_node.set_external_reward(next_reward)
+	var progress = ResourceScripts.game_progress.arena
+	input_handler.combat_node.set_external_reward(progress.next_reward)
 
 func start_listen_combat():
 	input_handler.connect("CombatEnded", self, "on_combat_ended")
@@ -288,15 +279,19 @@ func on_combat_ended(encounter_code, victory):
 		print("error: arena listens non arena's combat")
 		return
 	
+	#new dynamic stats system can't put e_grave_injury in time, so we need to wait
+	#need to fix it somehow right
+	yield(get_tree(), 'idle_frame')
+	
 	if !victory:
 		defeat()
 		return
 	
 	positions_node.build_location_group()
 	
-#	var progress = ResourceScripts.game_progress.arena
+	var progress = ResourceScripts.game_progress.arena
 	var loot_processor = Items.get_loot()
-	loot_processor.merge_reward_dict(cur_reward, next_reward)
+	loot_processor.merge_reward_dict(cur_reward, progress.next_reward)
 	update_reward(cur_reward_cont, cur_reward)
 	
 	if round_num >= round_max:
@@ -364,14 +359,14 @@ func finish_arena():
 	
 	yield(close(), 'completed')#for animation
 	
-	discard_progress()
 	close_doors()
+	renew()
 
 func defeat():
+	stop_listen_combat()
 	close_doors()
 	input_handler.get_spec_node(input_handler.NODE_POPUP, [tr('ARENA_DEFEAT')])
-	stop_listen_combat()
-	discard_progress()
+	renew()
 
 func clear_group():
 	positions_node.unfix_group()
@@ -394,11 +389,11 @@ func reset_group_limit():
 	positions_node.set_limit(progress.group_limit)
 
 func make_next_reward():
-#	var progress = ResourceScripts.game_progress.arena
+	var progress = ResourceScripts.game_progress.arena
 	var loot_processor = Items.get_loot()
 	#in fact only first next_reward has to be in game_progress, but for now I'm keeping it simple
-	next_reward = loot_processor.get_reward(get_reward_loot())
-	update_reward(next_reward_cont, next_reward)
+	progress.next_reward = loot_processor.get_reward(get_reward_loot())
+	update_reward(next_reward_cont, progress.next_reward)
 
 func get_enemy_group():
 	var group_limit = ResourceScripts.game_progress.arena.group_limit
@@ -425,4 +420,7 @@ func get_reward_loot():
 	return input_handler.weightedrandom(res)
 
 func _custom_gui_controller_close():
+	#quite rough fix for rmb-close during fight
+	if input_handler.combat_node and input_handler.combat_node.is_visible_in_tree():
+		return
 	on_leave_btn()

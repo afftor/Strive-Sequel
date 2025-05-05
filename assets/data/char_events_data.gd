@@ -194,7 +194,7 @@ var list = {
 			]
 		},
 		vars = {
-			var_skirmish_stamina = -15,
+			var_skirmish_stamina = 15,
 			var_skirmish_charm = 5,
 			var_skirmish_physics = 5,
 			var_skirmish_money = 20,

@@ -113,14 +113,15 @@ func build_location_group():
 		position_node.modulate.a = 1.0
 		if group.has(position):
 			character = ResourceScripts.game_party.characters[group[position]]
-			character.combat_position = i
 			if character != null:
 				if !character.has_status('no_combat'):
+					character.combat_position = i
 					get_node(positiondict[i]+"/Image").texture = character.get_icon()
 					get_node(positiondict[i]+"/Image").show()
 					get_node(positiondict[i]+"/Image/hp").text = str(ceil(character.hp)) + '/' + str(ceil(character.get_stat('hpmax')))
 					get_node(positiondict[i]+"/Image/mp").text = str(floor(character.mp)) + '/' + str(floor(character.get_stat('mpmax')))
 				else:
+					character.combat_position = 0
 					group.erase(position)
 					free_pos = true
 			else:
@@ -131,7 +132,7 @@ func build_location_group():
 		if free_pos:
 			get_node(positiondict[i]+"/Image").texture = null
 			get_node(positiondict[i]+"/Image").hide()
-			if limit != 0 and group.size() >= limit:
+			if (limit != 0 and group.size() >= limit) or group_fixed:
 				position_node.modulate.a = 0.0
 
 

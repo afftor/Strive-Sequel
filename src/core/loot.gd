@@ -132,7 +132,11 @@ func process_loottable_record(record, output_type, mul) -> Dictionary:
 			return output
 		for i in range(amount):
 			var number = input_handler.weightedrandom(array)
-			var add_output = process_loottable_record(record.selector[number], output_type, 1)
+			var subrecord = record.selector[number]
+			if subrecord.has('chance'):
+				subrecord = subrecord.duplicate(true)
+				subrecord.erase('chance')
+			var add_output = process_loottable_record(subrecord, output_type, 1)
 			call(merge_func, output, add_output)
 		return output
 	
