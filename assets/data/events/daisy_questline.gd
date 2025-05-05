@@ -770,7 +770,7 @@ var data = {
 				code = "affect_unique_character",
 				name = "daisy",
 				type = "remove_trait",
-				value = "coward"
+				trait = "coward"
 			},
 			{
 				code = "add_timed_event",
@@ -1170,7 +1170,7 @@ var data = {
 				code = "affect_unique_character",
 				name = "daisy",
 				type = "remove_trait",
-				value = "coward"
+				trait = "coward"
 			},
 			{
 				code = "add_timed_event",
