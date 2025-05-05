@@ -184,11 +184,19 @@ func close():
 	hide()
 
 func reset():
-	reset_group_limit()
-	make_next_reward()
-	start_btn.disabled = false
+	if !ResourceScripts.game_progress.arena.finished:
+		renew()
 	open_doors()
 	ResourceScripts.game_progress.arena.last_reset_date = ResourceScripts.game_globals.date
+
+func renew():
+	reset_group_limit()
+	next_round(1)
+	start_btn.disabled = false
+	make_next_reward()
+	cur_reward = {gold = 0, materials = {}, items = []}
+	clear_reward(cur_reward_cont)
+	clear_group()
 
 func open_doors():
 	unwelcome_label.hide()
@@ -206,13 +214,6 @@ func close_doors():
 	ResourceScripts.game_progress.arena.finished = true
 	finish_btn.text = tr('ARENA_LEAVE_BTN')
 
-func discard_progress():
-	next_round(1)
-	ResourceScripts.game_progress.arena.next_reward = {}
-	cur_reward = {gold = 0, materials = {}, items = []}
-	clear_reward(cur_reward_cont)
-	clear_reward(next_reward_cont)
-	clear_group()
 
 func on_start_btn():
 	if ResourceScripts.game_progress.arena.finished:
@@ -277,6 +278,10 @@ func on_combat_ended(encounter_code, victory):
 	if encounter_code != 'arena':
 		print("error: arena listens non arena's combat")
 		return
+	
+	#new dynamic stats system can't put e_grave_injury in time, so we need to wait
+	#need to fix it somehow right
+	yield(get_tree(), 'idle_frame')
 	
 	if !victory:
 		defeat()
@@ -354,14 +359,14 @@ func finish_arena():
 	
 	yield(close(), 'completed')#for animation
 	
-	discard_progress()
 	close_doors()
+	renew()
 
 func defeat():
+	stop_listen_combat()
 	close_doors()
 	input_handler.get_spec_node(input_handler.NODE_POPUP, [tr('ARENA_DEFEAT')])
-	stop_listen_combat()
-	discard_progress()
+	renew()
 
 func clear_group():
 	positions_node.unfix_group()
@@ -415,4 +420,7 @@ func get_reward_loot():
 	return input_handler.weightedrandom(res)
 
 func _custom_gui_controller_close():
+	#quite rough fix for rmb-close during fight
+	if input_handler.combat_node and input_handler.combat_node.is_visible_in_tree():
+		return
 	on_leave_btn()
