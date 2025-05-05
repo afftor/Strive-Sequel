@@ -369,8 +369,6 @@ func generate_simple_fighter(tempname, setup_ai = true):
 			#need check for hard difficulty
 			fill_ai(data.ai)
 		ai.set_obj(self)
-	else:
-		skills.fix_skillpanels()
 	if data.has('tags') and data.tags.has('boss'):
 		globals.char_roll_data.uniq = true
 
@@ -378,7 +376,6 @@ func generate_simple_fighter(tempname, setup_ai = true):
 func generate_predescribed_character(data):
 	create(data.race, data.sex, data.age)
 	process_chardata(data, true)
-	skills.fix_skillpanels()
 	if data.has('service_boosters'):
 		xp_module.set_service_boost(data.service_boosters)
 	else:
@@ -392,7 +389,6 @@ func turn_into_unique(code):
 	food.process_chardata(data)
 	tags = data.tags.duplicate() #or not
 	skills.setup_skills(data)
-	skills.fix_skillpanels()
 	if data.has('service_boosters'):
 		xp_module.set_service_boost(data.service_boosters)
 	else:
@@ -1124,6 +1120,7 @@ func fix_serialization():
 		equipment = dict2inst(equipment)
 	if skills is Dictionary:
 		skills = dict2inst(skills)
+	skills.repair_skill_panels()
 	if travel is Dictionary:
 		travel = dict2inst(travel)
 	if food is Dictionary:
@@ -1148,7 +1145,6 @@ func fix_serialization_postload():
 	dyn_stats.fix_serialize()
 	xp_module.fix_serialize()
 	
-	repair_skill_panels()
 	reset_rebuild()
 
 
@@ -2018,8 +2014,8 @@ func get_explore_skills():
 	return dyn_stats.get_explore_skills()
 
 
-func fix_skillpanels():
-	skills.fix_skillpanels()
+func fix_skillpanels(list_soc, list_combat):
+	skills.fix_skillpanels(list_soc, list_combat)
 
 func update_portrait(ragdoll): # for ragdolls
 	if !get_stat('dynamic_portrait'):

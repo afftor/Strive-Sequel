@@ -145,7 +145,7 @@ func get_duration():
 		res.event = 'turns'
 	if template.tags.has('duration_combat'):
 		res.event = 'combats'
-	if template.template.tags.has('duration_ticks'):
+	if template.tags.has('duration_ticks'):
 		res.event = 'ticks'
 	if template.tags.has('duration_none'):
 		res = null

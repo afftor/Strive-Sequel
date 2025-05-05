@@ -1858,3 +1858,11 @@ func timestamp_sort(a, b):
 
 func timestamp_sort_dict(a, b):
 	return a.timestamp < b.timestamp
+
+
+func compare_list(list_new, list_old):
+	var res = []
+	for i in list_new:
+		if !list_old.has(i):
+			res.push_back(i)
+	return res
