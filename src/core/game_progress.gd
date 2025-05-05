@@ -50,14 +50,24 @@ var char_events = {
 var arena = {
 	last_reset_date = -1,
 	group_limit = 0,
-	finished = false
+	finished = false,
+	next_reward = {}
 }
 
 func _init():
 	globals.connect("hour_tick", self, 'check_timed_events')
 
 func serialize():
-	return inst2dict(self)
+	var res = inst2dict(self)
+	
+	#arena
+	if arena.next_reward.has("items"):
+		var items = arena.next_reward.items
+		res.arena = arena.duplicate(true)
+		for num in range(0, items.size()):
+			res.arena.next_reward.items[num] = (inst2dict(items[num]))
+	
+	return res
 
 func fix_serialization():
 	days_from_last_church_quest = int(days_from_last_church_quest)
@@ -112,6 +122,20 @@ func fix_serialization():
 	if !seen_events.has("zephyra_painting_1") && !timed_event_exists("zephyra_painting_1") && completed_quests.has('zephyra_bath_quest') && completed_quests.has('getting_lira_quest'):
 		globals.common_effects([{code = 'add_timed_event', value = "zephyra_painting_1", args = [{type = 'add_to_date', date = [2,5], hour = 1}]}])
 	#2add amelia questline here. idk how cause herbs quest can be failed - so need correct condition
+	
+	#char_events
+	char_events.interval = int(char_events.interval)
+	char_events.hours_past = int(char_events.hours_past)
+	
+	#arena
+	arena.last_reset_date = int(arena.last_reset_date)
+	arena.group_limit = int(arena.group_limit)
+	if arena.next_reward.has("items"):
+		var items = arena.next_reward.items
+		for num in range(0, items.size()):
+			items[num] = dict2inst(items[num])
+			if items[num].type == 'gear':
+				items[num].fix_gear()
 
 
 func fix_import():#this is the most questionable fix

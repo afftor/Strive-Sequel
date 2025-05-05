@@ -1642,29 +1642,51 @@ func apply_atomic(template):
 	else:
 		affect_char(template)
 
+func manifest_and_log(text):
+	globals.manifest_and_log("char", "%s: %s" % [get_short_name(), text], self)
 
-func affect_char(template):
+func affect_char(template, manifest = false):
 	match template.type:
 		'damage':
 			var tval = deal_damage(template.value, template.source)
 			if input_handler.combat_node != null:
 				input_handler.combat_node.combatlogadd("\n%s loses %d hp." % [get_short_name(), int(tval)])
+			if manifest: manifest_and_log("loses %d hp." % int(tval))
 		'damage_percent':
-			deal_damage((template.value / 100.0) * get_stat('hpmax'))
+			var tval = deal_damage((template.value / 100.0) * get_stat('hpmax'))
+			if manifest: manifest_and_log("loses %d hp." % int(tval))
 		'heal':
-			heal(template.value)
+			var tval = heal(template.value)
+			if manifest: manifest_and_log("healed for %d hp." % int(tval))
 		'mana':
-			mana_update(template.value)
+			var tval = mana_update(template.value)
+			if manifest: manifest_and_log("mana %d." % int(tval))
 		'damage_mana_percent':
-			mana_update(-template.value * get_stat('mpmax'))
+			var tval = mana_update(-template.value * get_stat('mpmax'))
+			if manifest: manifest_and_log("mana %d." % int(tval))
 		'stat', 'stat_add':
 			add_stat(template.stat, template.value)
+			if manifest:
+				var str_val
+				if template.value > 0: str_val = "+%s" % template.value
+				else: str_val = String(template.value)
+				manifest_and_log("%s %s" % [
+					globals.get_stat_name(template.stat), str_val])
 		'stat_set':
 			set_stat(template.stat, template.value)
+			if manifest:
+				manifest_and_log("%s is %s" % [
+					globals.get_stat_name(template.stat), template.value])
 		'stat_add_p':
 			add_part_stat(template.stat, template.value)
+			if manifest:
+				manifest_and_log("add part of %s to %s" % [
+					template.value, globals.get_stat_name(template.stat)])
 		'stat_mul':#do not mix add_p and mul for the sake of logic
 			mul_stat(template.stat, template.value)
+			if manifest:
+				manifest_and_log("%s * %s" % [
+					globals.get_stat_name(template.stat), template.value])
 		'signal':
 			#stub for signal emitting
 			globals.emit_signal(template.value)
@@ -1783,6 +1805,8 @@ func affect_char(template):
 				'pay_stamina':
 					var data = ResourceScripts.world_gen.get_location_from_code(get_location())
 					data.stamina -= template.cost
+					if manifest:
+						globals.manifest_and_log("dungeon", "%s stamina spent in %s" % [template.cost, data.name])
 
 
 func is_koed():

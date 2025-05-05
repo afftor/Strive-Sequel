@@ -1192,10 +1192,18 @@ func text_log_add(label, text):
 		textfield.rect_size.y = textfield.get_v_scroll().get_max()
 		newfield.rect_min_size.y = textfield.rect_size.y
 
+func manifest(text, person = null):
+	if person == null:
+		person = ResourceScripts.game_party.get_master()
+	var node = input_handler.get_spec_node(input_handler.NODE_CHAT)
+	node.add_new_chatter(person, text)
+
+func manifest_and_log(label, text, person = null):
+	manifest(text, person)
+	text_log_add(label, text)
+
 func character_stat_change(character, data):
-	var text = character.get_short_name() + ": "
-	if statdata.statdata.has(data.code):
-		text += statdata.statdata[data.code].name
+	var text = "%s: %s" % [character.get_short_name(), get_stat_name(data.code)]
 	if data.operant == '+':
 		text += " + "
 		character.add_stat(data.code, data.value)
@@ -1207,6 +1215,7 @@ func character_stat_change(character, data):
 
 	text += str(data.value)
 	text_log_add('char', text)
+	manifest(text, character)
 #	character.set(data.code, input_handler.math(data.operant, character.get(data.code), data.value))
 
 func make_local_recruit(args):
@@ -1812,8 +1821,11 @@ func common_effects(effects):
 		match i.code:
 			'money_change':
 				ResourceScripts.game_res.update_money(i.operant, i.value)
+				manifest("Gold: %s%s " % [i.operant, i.value])
 			'material_change':
 				ResourceScripts.game_res.update_materials(i.operant, i.material, i.value)
+				manifest_and_log("materials", "%s %s %s" % [
+					Items.materiallist[i.material].name, i.operant, i.value])
 			'make_story_character':
 				if ResourceScripts.game_party.get_unique_slave(i.value.to_lower()) != null:
 					continue
@@ -1879,6 +1891,7 @@ func common_effects(effects):
 								if k.value == 'no_sex' and !character.has_status('no_sex'):
 									var text = character.get_short_name() + ": " + "Sex unlocked"
 									text_log_add('char', text)
+									manifest(text, character)
 								
 								#character.stats.tags.erase(k.value)
 					elif k.code == 'assign_to_quest_and_make_unavalible':
@@ -1920,11 +1933,11 @@ func common_effects(effects):
 			'real_affect_scene_characters':
 #				if i.type == 'all':
 				for k in input_handler.scene_characters:
-					k.affect_char(i)
+					k.affect_char(i, true)
 			'affect_one_scene_character':
 				#char_num is human-readable (begins with 1, not 0)
 				if input_handler.scene_characters.size() >= i.char_num:
-					input_handler.scene_characters[i.char_num - 1].affect_char(i)
+					input_handler.scene_characters[i.char_num - 1].affect_char(i, true)
 			'change_type_scene_characters':
 				if i.type == 'all':
 					for k in input_handler.scene_characters:
@@ -1932,7 +1945,7 @@ func common_effects(effects):
 			'active_character_switch':
 				input_handler.active_character = input_handler.scene_characters[i.value]
 			'affect_active_character':
-				input_handler.active_character.affect_char(i)
+				input_handler.active_character.affect_char(i, true)
 			'make_loot':
 				#in most cases "pool" array is redundant, as there is only one position,
 				#but i'm keeping it "as is" so CqEditor couldn't hurt an event
@@ -2152,11 +2165,11 @@ func common_effects(effects):
 							req.completed = true
 			'affect_active_party':
 				for k in input_handler.get_active_party():
-					k.affect_char(i)
+					k.affect_char(i, true)
 			'affect_unique_character':
 				var k = ResourceScripts.game_party.get_unique_slave(i.name.to_lower())
 				if k != null:
-					k.affect_char(i)
+					k.affect_char(i, true)
 			'progress_active_location':
 				gui_controller.exploration.skip_to_boss()
 			'dialogue_counter':
@@ -2381,13 +2394,19 @@ func common_effects(effects):
 				input_handler.play_animation("master_points", {master_points = i.value})
 			'pay_stamina':
 				if gui_controller.exploration_dungeon != null:
+					var res
 					if i.has('modified'):
-						gui_controller.exploration_dungeon.pay_stamina(i.value, i.modified) 
+						res = gui_controller.exploration_dungeon.pay_stamina(i.value, i.modified) 
 					else:
-						gui_controller.exploration_dungeon.pay_stamina(i.value)
+						res = gui_controller.exploration_dungeon.pay_stamina(i.value)
+					manifest_and_log("dungeon", "%s stamina spent in %s" %
+						[res, gui_controller.exploration_dungeon.active_location.name])
 			'add_stamina':
 				if gui_controller.exploration_dungeon != null:
 					gui_controller.exploration_dungeon.add_stamina(i.value)
+					manifest_and_log("dungeon", "%s stamina replenished in %s" %
+						[i.value, gui_controller.exploration_dungeon.active_location.name])
+					
 			'clear_subroom':
 				if gui_controller.exploration_dungeon != null:
 					gui_controller.exploration_dungeon.clear_subroom()
@@ -2432,7 +2451,13 @@ func common_effects(effects):
 					print("wrong change relationship setup")
 			'change_relationship_precise':
 				if input_handler.scene_characters.size() == 2:
-					ResourceScripts.game_party.add_relationship_value(input_handler.scene_characters[0].id, input_handler.scene_characters[1].id, i.value)
+					var char1 = input_handler.scene_characters[0]
+					var char2 = input_handler.scene_characters[1]
+					ResourceScripts.game_party.add_relationship_value(char1.id, char2.id, i.value)
+					manifest_and_log("char",
+						"Relationships of %s and %s changed by %s" % [
+							char1.get_short_name(), char2.get_short_name(), i.value],
+						char1)
 				else:
 					print("wrong change relationship setup")
 			'open_arena':
@@ -2911,3 +2936,8 @@ func show_buttons(container):
 		ResourceScripts.core_animations.UnfadeAnimation(button, 0.3)
 		yield(get_tree().create_timer(0.3), "timeout")
 		button.set("modulate", Color(1, 1, 1, 1))
+
+func get_stat_name(stat):
+	if statdata.statdata.has(stat):
+		return statdata.statdata[stat].name
+	return tr("STAT%s" % stat.to_upper())
