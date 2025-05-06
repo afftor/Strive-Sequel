@@ -92,7 +92,7 @@ func process_act(ev, data = {}):
 	pass
 
 
-func e_apply(): #temporal solution until rework via apply_status
+func e_apply(): #temporal solution until proper rework via apply_status
 	sub_effects.clear()
 	for e in template.sub_effects:
 		sub_effects.push_back(e)
@@ -104,7 +104,8 @@ func e_apply(): #temporal solution until rework via apply_status
 	for e in sub_effects:
 		var eff = e
 		if eff is String:
-			eff = Effectdata.effect_table[e] 
+			eff = Effectdata.get_effect_for_status(eff)
+			eff = Effectdata.effect_table[eff]
 		var t1 = eff.target
 		match t1:
 			'self':
@@ -126,7 +127,7 @@ func e_apply(): #temporal solution until rework via apply_status
 					eff.applied_obj = obj
 					eff.apply(get_args_resolved())
 				else:
-					obj.apply_effect_code(e, get_args_resolved())
+					obj.apply_status(e, get_args_resolved())
 			'target':
 				var obj = get_arg('target')
 				if eff.type == 'oneshot':
@@ -134,7 +135,7 @@ func e_apply(): #temporal solution until rework via apply_status
 					eff.applied_obj = obj
 					eff.apply(get_args_resolved())
 				else:
-					obj.apply_effect_code(e, get_args_resolved())
+					obj.apply_status(e, get_args_resolved())
 			'receiver':
 				var obj = get_arg('receiver')
 				if eff.type == 'oneshot':
@@ -142,7 +143,7 @@ func e_apply(): #temporal solution until rework via apply_status
 					eff.applied_obj = obj
 					eff.apply(get_args_resolved())
 				else:
-					obj.apply_effect_code(e, get_args_resolved())
+					obj.apply_status(e, get_args_resolved())
 			'owner':
 				var obj = get_applied_obj()
 				if eff.type == 'oneshot':
@@ -150,9 +151,9 @@ func e_apply(): #temporal solution until rework via apply_status
 					eff.applied_obj = obj
 					eff.apply(get_args_resolved())
 				else:
-					obj.apply_effect_code(e, get_args_resolved())
+					obj.apply_status(e, get_args_resolved())
 			_:
-				var obj = get_arg(eff.template.target)
+				var obj = get_arg(eff.target)
 				if obj == null or !(obj is ResourceScripts.scriptdict.class_slave):
 					print('template error: arg is not character') 
 					continue
@@ -161,7 +162,7 @@ func e_apply(): #temporal solution until rework via apply_status
 					eff.applied_obj = obj
 					eff.apply(get_args_resolved())
 				else:
-					obj.apply_effect_code(e, get_args_resolved())
+					obj.apply_status(e, get_args_resolved())
 	sub_effects.clear()
 
 

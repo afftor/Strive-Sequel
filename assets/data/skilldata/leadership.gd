@@ -11,7 +11,7 @@ var skills = {
 #		new_syntax = true,
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('bleed')}),Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('poison_new')})], 
+		effects = [Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('bleed')}),Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('poison')})], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,

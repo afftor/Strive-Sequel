@@ -58,7 +58,7 @@ var skills = {
 		tags = ['damage','ads', 'fire'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_burn_new', push_characters = true, duration = 2})],
+		effects = [Effectdata.rebuild_template({effect = 'burn_new', duration = 2})],
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -280,7 +280,7 @@ var skills = {
 #		new_syntax = true,
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_silence', duration = 2})], 
+		effects = [Effectdata.rebuild_template({effect = 'silence', duration = 2})], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -472,7 +472,7 @@ var skills = {
 		tags = ['damage','ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = Effectdata.rebuild_make_status({effect = 'e_s_stun', duration = 2})})], 
+		effects = [Effectdata.rebuild_template({effect = 'stun', duration = 2})], 
 		cost = {mp = 8},
 		charges = 0,
 		combatcooldown = 1,
@@ -1008,8 +1008,6 @@ var effects = {
 		buffs = [{
 				icon = "res://assets/images/iconsskills/Discipline.png",
 				description = "TRAITEFFECTDEVOUR",
-				limit = 1,
-				t_name = 'devour',
 			}],
 		args = {
 			caster = {obj = 'caster', func = 'eq'},
@@ -1023,7 +1021,7 @@ var effects = {
 		conditions = [],
 		req_skill = false,
 		args = {
-			caster = {obj = 'parent', func = 'arg', arg = 'caster'},
+			arg_caster = {obj = 'parent', func = 'arg', arg = 'caster'},
 			caster_mpmax = {obj = 'parent', func = 'arg', arg = 'caster_mpmax'}
 		},
 		sub_effects = [
@@ -1031,7 +1029,6 @@ var effects = {
 				type = 'oneshot',
 				target = 'arg_caster',
 				args = {
-					arg_caster = {obj = 'parent', func = 'arg', arg = 'caster'},
 					caster_mpmax = {obj = 'parent', func = 'arg', arg = 'caster_mpmax'}
 				},
 				atomic = [

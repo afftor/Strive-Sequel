@@ -37,7 +37,7 @@ var skills = {
 		tags = ['damage', 'ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_disarm3', duration = 3})], 
+		effects = [Effectdata.rebuild_template({effect = 'disarm', duration = 3})], 
 		cost = {mp = 4},
 		charges = 0,
 		combatcooldown = 2,

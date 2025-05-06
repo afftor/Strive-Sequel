@@ -29,13 +29,13 @@ var data = {
 					code = "affect_unique_character",
 					name = "cali",
 					type = "add_trait",
-					value = "training_broke_in"
+					trait = "training_broke_in"
 					},
 					{
 					code = "affect_unique_character",
 					name = "cali",
 					type = "add_trait",
-					value = "training_obedience"
+					trait = "training_obedience"
 					},
 				]}
 		],

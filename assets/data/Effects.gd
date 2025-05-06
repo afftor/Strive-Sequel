@@ -774,6 +774,14 @@ var effect_table = {
 			}
 		],
 	},
+	e_s_confuse = {
+		type = 'temp_s',
+		target = 'target',
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH, variables.TR_TURN_F],
+		stack = 'confuse',
+		tags = ['debuff', 'confuse'],
+		buffs = ['b_confuse'],
+	},
 	e_s_stun = {#duration version
 		type = 'temp_s',
 		target = 'target',
@@ -1278,6 +1286,7 @@ var stacks = {
 	silence = {}, #stack 1
 	growl = {}, #stack 1
 	slam = {}, #stack 1
+	confuse = {}, #stack 1
 	cursed = {
 		type = 'stack_a',
 		stack = 1,
@@ -1509,13 +1518,16 @@ func rebuild_template(args):
 	if args.has('trigger'): res.trigger.push_back(args.trigger) #for simplicity only one trigger type can be passed
 	else: res.trigger.push_back(variables.TR_POSTDAMAGE)
 
-	if args.has('res_condition'): res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', args.res_condition]})
-	else: res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]})
+	if args.has('res_condition'): 
+		res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', args.res_condition]})
+	else: 
+		res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]})
 
 	if args.has('checkres'):
 		res.conditions.push_back({type = 'checkres', value = args.chance, resist = args.checkres})
 	elif args.has('chance'):
-		res.conditions.push_back({type = 'random', value = args.chance})
+		res.args.chance = {obj = 'self', func = 'chance', chance = args.chance}
+#		res.conditions.push_back({type = 'random', value = args.chance})
 
 	if args.has('duration'): 
 		res.args.duration = {obj = 'self', func = 'dur', dur = args.duration}
@@ -1809,6 +1821,30 @@ func get_effect_for_status(status):
 	match status:
 		'':
 			return ''
+		'stun':
+			return 'e_s_stun'
+		'freeze':
+			return 'e_s_freeze'
+		'disarm':
+			return 'e_s_disarm'
+		'silence':
+			return 'e_s_silence'
+		'burn':
+			return 'e_s_burn_new'
+		'confuse':
+			return 'e_s_confuse'
+		'bleed':
+			return 'e_s_bleed_new'
+		'poison':
+			return 'e_s_poison_new'
+		'wet':
+			return 'e_s_wet'
+		'shock':
+			return 'e_s_shock'
+		'fear':
+			return 'e_s_fear'
+		'cursed':
+			return 'e_s_cursed'
 		_:
 			return status
 
