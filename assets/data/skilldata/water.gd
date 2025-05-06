@@ -10,7 +10,7 @@ var skills = {
 		tags = ['heal', 'noreduce', 'noevade','support', 'exploration'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_regen', push_value = true, duration = 2}),Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('poison_new')}),Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('burn_new')})], 
+		effects = [Effectdata.rebuild_template({effect = 'e_s_regen', push_value = true, duration = 2}),Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('poison')}),Effectdata.rebuild_template({effect = Effectdata.rebuild_remove_effect('burn')})], 
 		cost = {mp = 10},
 		charges = 0,
 		combatcooldown = 0,
@@ -42,7 +42,7 @@ var skills = {
 #		new_syntax = true,
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_wet'})], 
+		effects = [Effectdata.rebuild_template({effect = 'wet'})], 
 		cost = {mp = 3},
 		charges = 0,
 		combatcooldown = 0,
@@ -102,7 +102,7 @@ var skills = {
 #		new_syntax = true,
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = Effectdata.rebuild_make_status({effect = 'e_s_freeze', chance = 0.5, duration = 1})})], 
+		effects = [Effectdata.rebuild_template({effect = 'freeze', chance = 0.5, duration = 1})], 
 		cost = {mp = 6},
 		charges = 0,
 		combatcooldown = 0,
@@ -152,7 +152,7 @@ var skills = {
 		targetreqs = [],
 		effects = [
 			'e_t_blizzard',
-			Effectdata.rebuild_template({effect = Effectdata.rebuild_make_status({effect = 'e_s_freeze', chance = 0.25, duration = 1})})
+			Effectdata.rebuild_template({effect = 'freeze', chance = 0.25, duration = 1})
 			], 
 		cost = {mp = 10},
 		charges = 0,
@@ -180,7 +180,7 @@ var skills = {
 		effects = [
 			Effectdata.rebuild_skillvalue_template({target_status = 'wet', value = 1.5}),
 			Effectdata.rebuild_skillvalue_template({target_status = 'freeze', value = 2.0/1.25}),
-			Effectdata.rebuild_template({effect = 'e_s_wet'})
+			Effectdata.rebuild_template({effect = 'wet'})
 			], 
 		cost = {mp = 16},
 		charges = 0,
@@ -262,7 +262,7 @@ var skills = {
 			{code = 'stat', stat = 'mastery_earth', value = 3, operant = 'gte'},
 		],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_poison_new', push_characters = true, duration = 3})], 
+		effects = [Effectdata.rebuild_template({effect = 'poison', duration = 3})], 
 		cost = {mp = 7},
 		charges = 0,
 		combatcooldown = 0,

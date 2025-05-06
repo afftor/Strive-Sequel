@@ -83,7 +83,7 @@ var skills = {
 		tags = ['damage','ads'],
 		reqs = [{code = 'gear_equiped', param = 'geartype', value = 'bow', check = true}],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_bleed_new', chance = 1, push_characters = true, checkres = 'bleed', duration = 3})],
+		effects = [Effectdata.rebuild_template({effect = 'bleed', duration = 3})],
 		cost = {},
 		charges = 0,
 		combatcooldown = 3,
@@ -204,7 +204,7 @@ var skills = {
 		tags = ['damage','ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_bleed_new', push_characters = true, duration = 3})], #for OLD bleed, burn, poison etc push_value is mandatory, for others it is often not reqired, for new DOTs mandatry is push_characters
+		effects = [Effectdata.rebuild_template({effect = 'e_s_bleed', duration = 3})], #for OLD bleed, burn, poison etc push_value is mandatory, for others it is often not reqired, for new DOTs mandatry is push_characters
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -229,7 +229,7 @@ var skills = {
 		tags = ['damage','ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_confuse', chance = 0.2})], 
+		effects = [Effectdata.rebuild_template({effect = 'confuse', chance = 0.2})], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -496,7 +496,7 @@ var skills = {
 		tags = ['damage','aoe'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_bleed_new', chance = 0.5, push_characters = true, duration = 2})], 
+		effects = [Effectdata.rebuild_template({effect = 'bleed', chance = 0.5, duration = 2})], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -522,7 +522,7 @@ var skills = {
 		tags = ['damage','aoe', 'not_final', 'random_target'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_bleed_new', chance = 0.5, push_characters = true, duration = 2})], 
+		effects = [Effectdata.rebuild_template({effect = 'bleed', chance = 0.5, duration = 2})], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -1421,15 +1421,6 @@ var effects = {
 #				sub_effects = []
 #			}
 #		]
-#	},
-#	e_s_confuse = {
-#		type = 'temp_s',
-#		target = 'target',
-#		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH, variables.TR_TURN_F],
-#		stack = 1,
-#		name = 'confuse',
-#		tags = ['debuff', 'confuse'],
-#		buffs = ['b_confuse'],
 #	},
 }
 var atomic_effects = {

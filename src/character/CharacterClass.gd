@@ -726,9 +726,10 @@ func apply_effect_code(eff_code, args = {}):
 	dyn_stats.add_stored_effect(eff_code, args)
 
 
-func apply_status(args):
+func apply_status(eff, args = {}):
 	if npc_reference == 'combat_global': 
 		return
+	args.effect = eff
 	if !args.has('chance'):
 		args.chance = 1.0
 	dyn_stats.apply_status(args)

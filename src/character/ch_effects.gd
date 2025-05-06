@@ -298,15 +298,19 @@ func remove_all_temp_effects_tag(eff_tag): #function for non-direct temps removi
 
 
 func check_status_immunity(eff_n):
-	var tres = parent.get_ref().get_stat('resist_' + eff_n)
-	return tres >= 100
+	if Statlist_init.resists.has('resist_' + eff_n):
+		var tres = parent.get_ref().get_stat('resist_' + eff_n)
+		return tres >= 100
+	else:
+		return false
 
 
 func check_status_resist(eff_n):
-	var tres = parent.get_ref().get_stat('resist_' + eff_n)
-	var roll = globals.rng.randi_range(0, 99)
-	if roll < tres: 
-		return true
+	if Statlist_init.resists.has('resist_' + eff_n):
+		var tres = parent.get_ref().get_stat('resist_' + eff_n)
+		var roll = globals.rng.randi_range(0, 99)
+		if roll < tres: 
+			return true
 	return false
 
 

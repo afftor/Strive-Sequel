@@ -10,7 +10,7 @@ var skills = {
 		tags = ['damage','ads','fire'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_burn_new', chance = 0.2, push_characters = true, duration = 2})], 
+		effects = [Effectdata.rebuild_template({effect = 'burn', chance = 0.2, duration = 2})], 
 		cost = {mp = 3},
 		charges = 0,
 		combatcooldown = 0,
@@ -29,12 +29,12 @@ var skills = {
 					{code = 'stat', stat = 'mastery_fire', value = 3, operant = 'gte'},
 					{code = 'stat', stat = 'mastery_fire', value = 5, operant = 'lt'},
 				],
-				set = {effects = [Effectdata.rebuild_template({effect = 'e_s_burn_new', chance = 0.6, push_characters = true, duration = 2})]},
+				set = {effects = [Effectdata.rebuild_template({effect = 'burn', chance = 0.6, duration = 2})]},
 				add = {descript = '_1'}
 			},
 			{
 				reqs = [{code = 'stat', stat = 'mastery_fire', value = 5, operant = 'gte'}],
-				set = {effects = [Effectdata.rebuild_template({effect = 'e_s_burn_new', push_characters = true, duration = 2})]},
+				set = {effects = [Effectdata.rebuild_template({effect = 'burn', duration = 2})]},
 				add = {descript = '_2'}
 			},
 		]
@@ -133,7 +133,7 @@ var skills = {
 		tags = ['damage','ads','fire', 'aoe'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_burn_new', push_characters = true, duration = 3})], 
+		effects = [Effectdata.rebuild_template({effect = 'burn', duration = 3})], 
 		cost = {mp = 15},
 		charges = 0,
 		combatcooldown = 5,
@@ -160,7 +160,7 @@ var skills = {
 			{code = 'stat', stat = 'mastery_earth', value = 5, operant = 'gte'},
 		],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_burn_new', push_characters = true, duration = 4})], 
+		effects = [Effectdata.rebuild_template({effect = 'burn', duration = 4})], 
 		cost = {mp = 25},
 		charges = 0,
 		combatcooldown = 0,
@@ -189,7 +189,7 @@ var skills = {
 		targetreqs = [
 			{code = 'has_status', status = 'burn', check = true},
 		],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_darkflame', push_characters = true, duration = 4})], 
+		effects = [Effectdata.rebuild_template({effect = 'darkflame', duration = 4})], 
 		cost = {mp = 10},
 		charges = 0,
 		combatcooldown = 3,

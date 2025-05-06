@@ -34,7 +34,7 @@ var skills = {
 		tags = ['damage','ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_stun', duration = 1})], 
+		effects = [Effectdata.rebuild_template({effect = 'stun', duration = 1})], 
 		cost = {mp = 5},
 		charges = 2,
 		combatcooldown = 3,
