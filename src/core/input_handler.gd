@@ -17,8 +17,6 @@ var GameStartNode
 var CurrentScene #holds reference to instanced scene
 var combat_node = null
 
-var SystemMessageNode
-
 var text_field_input = false
 
 signal StartingSequenceComplete
@@ -883,13 +881,7 @@ func open_shell(string):
 	OS.shell_open(path)
 
 func SystemMessage(text, time = 4):
-	var basetime = time
-	SystemMessageNode = get_spec_node(self.NODE_SYSMESSAGE)
-	text = '[center]' + tr(text) + '[/center]'
-	SystemMessageNode.get_node('Text').bbcode_text = text
-	SystemMessageNode.show()
-	SystemMessageNode.modulate.a = 1
-	ResourceScripts.core_animations.FadeAnimation(SystemMessageNode, 1, basetime)
+	get_spec_node(self.NODE_SYSMESSAGE).show_message(text, time)
 
 func ShowOutline(node):
 	node.material = load('res://assets/portret_shader.tres').duplicate()
