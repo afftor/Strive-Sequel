@@ -1668,7 +1668,7 @@ func change_personality_stats(stat, init_value, communicative = false):
 
 #tattoos
 func can_add_tattoo(slot, code):
-	if !Traitdata.get_slot_list_for_tat(code).has(slot): 
+	if !Traitdata.get_slot_list_for_tat(code).has(slot.trim_prefix('tattoo_')): 
 		return false
 	var template = Traitdata.tattoodata[code]
 	if tattoo[slot] == code :
