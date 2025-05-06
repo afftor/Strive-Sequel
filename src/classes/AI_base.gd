@@ -47,7 +47,7 @@ func calculate_target_list(hide_ignore = false): #utility checks and targets cal
 	#for most of the cases reimplementing this function in inherited classes is not reqired
 	#works worser for skills with repeat and random targets
 	var app_obj = get_obj()
-	for s_n in app_obj.skills.combat_skills:
+	for s_n in app_obj.get_combat_skills():
 		var t_skill = Skilldata.get_template(s_n, app_obj)
 		var target_array = []
 		match t_skill.target:
@@ -157,7 +157,7 @@ func _get_action(hide_ignore = false):
 	calculate_target_list(hide_ignore)
 	if !hide_ignore: _set_next_state()
 	var actions = []
-	for s_n in app_obj.skills.combat_skills:
+	for s_n in app_obj.get_combat_skills():
 		var curw = _get_weight_for_skill(s_n)
 		if curw > 0: actions.push_back([s_n, curw])
 	if actions.size() == 0:
