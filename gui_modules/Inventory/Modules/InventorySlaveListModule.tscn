@@ -190,7 +190,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 16 )
-text = "TMD"
+text = "ATH"
 
 [node name="Label" type="Label" parent="InventoryFactorsModule/factors1/authority_factor"]
 margin_left = 69.2385

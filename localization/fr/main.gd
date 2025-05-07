@@ -1562,7 +1562,7 @@ Cependant, bien qu'il semble que les propriétaires terriens n'aient que du mép
 	STATCHARM_FACTOR = "Facteur de charme",
 	STATSEXUALS_FACTOR = "Facteur sexe",
 	STATTAME_FACTOR = "Facteur d'apprivoisement",
-	STATTIMID_FACTOR = "Facteur Timide",
+	STATAUTHORITY_FACTOR = "Facteur Timide",
 	STATSLAVE_CLASS = "Type",
 
 	STATPHYSICS_BONUS = "Physique",
@@ -1694,7 +1694,7 @@ Cependant, bien qu'il semble que les propriétaires terriens n'aient que du mép
 	STATPHYSICS_FACTORDESCRIPT = "Le facteur physique représente le potentiel physique du personnage. Il augmente la [color=aqua]croissance physique[/color] et influence le combat de mêlée",
 	STATMAGIC_FACTORDESCRIPT = "Le facteur magique représente l'affinité magique du personnage. Plus il est élevé, plus vous avez de mana et plus vous pouvez débloquer des classes magiques puissantes. Il affecte également la régénération du mana.\n{color=green|Le facteur magique maximum fournit un bonus de MATK.}",
 	STATTAME_FACTORDESCRIPT = "Le facteur d'apprivoisement représente la facilité avec laquelle il est possible de se lier d'amitié avec le personnage. Plus il est élevé, plus le personnage gagnera en Loyauté de manière passive et grâce aux compétences sociales Gracieuses et Léchantes. Il rendra également les changements de personnalité plus stables sur l'axe Kind.\n{color=green|Un facteur d'apprivoisement maximal augmente le gain de loyauté.}",
-	STATTIMID_FACTORDESCRIPT = "Le facteur Timide représente la facilité avec laquelle le personnage peut être influencé par les punitions et les abus. Plus il est élevé, plus les compétences sociales moyennes sont efficaces pour renforcer la loyauté et réduire le drain d'obéissance. Il rendra également les changements de personnalité plus stables sur l'axe Bold.\n{color=green|Le facteur timide maximum réduit les dégâts subis.}",
+	STATAUTHORITY_FACTORDESCRIPT = "Le facteur Timide représente la facilité avec laquelle le personnage peut être influencé par les punitions et les abus. Plus il est élevé, plus les compétences sociales moyennes sont efficaces pour renforcer la loyauté et réduire le drain d'obéissance. Il rendra également les changements de personnalité plus stables sur l'axe Bold.\n{color=green|Le facteur timide maximum réduit les dégâts subis.}",
 	STATWITS_FACTORDESCRIPT = "Le facteur Wits représente le potentiel mental du personnage. Il augmente la croissance de [color=aqua]Wits[/color].}", 
 	STATCHARM_FACTORDESCRIPT = "Le facteur de charme représente le potentiel d'attraction du personnage. Il augmente la croissance du [color=aqua]Charm[/color]. Le charme du [Maître] augmente également les récompenses en or et en réputation des quêtes répétables et le nombre de rendez-vous par semaine",
 	STATSEXUALS_FACTORDESCRIPT = "Le facteur sexe représente le potentiel de développement sexuel du personnage. Il accélère l'acquisition des compétences sexuelles, facilite la progression du consentement et augmente occasionnellement les options sexuelles dans les événements. Le facteur sexuel du [Maître] augmente également le nombre d'interactions sexuelles par semaine.\n{color=green|Le facteur sexuel maximum fournit un bonus de vitesse}.",

@@ -2026,7 +2026,7 @@ Service is a global modifier for this assignment.""",
 	STATCHARM_FACTOR = "Charm Factor",
 	STATSEXUALS_FACTOR = "Sex Factor",
 	STATTAME_FACTOR = "Tame Factor",
-	STATTIMID_FACTOR = "Authority Factor",
+	STATAUTHORITY_FACTOR = "Authority Factor",
 	STATSLAVE_CLASS = "Type",
 	STATPHYSICS_BONUS = "Physics",
 	STATWITS_BONUS = "Wits",
@@ -2201,7 +2201,7 @@ Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax""
 	STATTAME_FACTORDESCRIPT = """{color=yellow|Tame Factor} represents how easy it is to befriend the character. It reduces the price of unlocking loyalty traits for subordinates.
 
 {color=green|Maxed Tame Factor increases Loyalty Gain.}""",
-	STATTIMID_FACTORDESCRIPT = """{color=yellow|Authority Factor} represents capability of inflict character's authority over others. The higher it is the more efficient is character's training and more trainees are available to them.
+	STATAUTHORITY_FACTORDESCRIPT = """{color=yellow|Authority Factor} represents capability of inflict character's authority over others. The higher it is the more efficient is character's training and more trainees are available to them.
 
 {color=green|Maxed Authority Factor reduces Damage Taken.}""",
 	STATWITS_FACTORDESCRIPT = """{color=yellow|Wits Factor} represents the character's mind potential. It increases [color=aqua]Wits[/color] growth.
