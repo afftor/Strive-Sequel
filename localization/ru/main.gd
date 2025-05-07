@@ -2123,7 +2123,6 @@ Hotkey: 3""",
 	STATCHARM_FACTOR = """Фактор обаяния""",
 	STATSEXUALS_FACTOR = """Сексуальный фактор""",
 	STATTAME_FACTOR = """Фактор приручения""",
-	STATAUTHORITY_FACTOR = """Фактор робости""",
 	STATSLAVE_CLASS = """Тип""",
 
 	STATPHYSICS_BONUS = """Физ. возмож.""",

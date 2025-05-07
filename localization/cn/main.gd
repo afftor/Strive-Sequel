@@ -1924,7 +1924,6 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	STATCHARM_FACTOR = "Charm Factor 魅力因素",
 	STATSEXUALS_FACTOR = "性因素",
 	STATTAME_FACTOR = "驯服因素",
-	STATAUTHORITY_FACTOR = "胆怯因素",
 	STATSLAVE_CLASS = """Type""", # MISSING TRANSLATION
 
 	STATPHYSICS_BONUS = "Physics 物理",
