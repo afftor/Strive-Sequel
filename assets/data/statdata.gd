@@ -16,7 +16,7 @@ var statdata = {
 		baseicon = 'food_love',
 		type = 'misc',
 	},
-	price = { #not a real stat
+	price = { 
 		code = 'price',
 		name = '',
 		descript = '',
@@ -1125,8 +1125,8 @@ var statdata = {
 		tags = [],
 	},
 	
-	pricemod = { #not a real stat, stub for generating descriptions
-		code = 'pricemod',
+	price_add_part = { #not a real stat, stub for generating descriptions
+		code = 'price_add_part',
 		name = 'STATPRICE',
 		descript = '',
 		baseicon = 'food_love',

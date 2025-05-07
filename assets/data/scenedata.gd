@@ -647,7 +647,7 @@ var scenedict = {
 			races = [['monster', 1],['rare', 4]],
 			difficulty = [0,2],
 			type = 'slave',
-			bonuses = {pricemod = 0.5},
+			bonuses = {price_add_part = 0.5},
 			is_hirable = true
 			}
 		},
@@ -671,7 +671,7 @@ var scenedict = {
 	common_effects = [
 		{code = 'make_scene_character',
 			value = [
-			{type = 'function', function = 'make_local_recruit', args = {races = [['Elf', 10], ['Fairy', 2], ['Dryad', 1]], difficulty = [0,1], bonuses = {pricemod = -0.3}, type = 'slave'}}],
+			{type = 'function', function = 'make_local_recruit', args = {races = [['Elf', 10], ['Fairy', 2], ['Dryad', 1]], difficulty = [0,1], bonuses = {price_add_part = -0.3}, type = 'slave'}}],
 		}],
 	options = [
 	{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},
