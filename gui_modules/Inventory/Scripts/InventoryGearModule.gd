@@ -25,23 +25,23 @@ var selected_tattoo = ""
 func add_remove_tattoo(slot: String):
 	var selectedhero = input_handler.interacted_character
 	selected_tattoo = get_parent().get_node("InventoryListModule").selected_tattoo
-	selected_slot = slot
-	if selectedhero.get_tattoo(slot) == null && selected_tattoo == "":
+	selected_slot = 'tattoo_' + slot
+	if selectedhero.get_tattoo(selected_slot) == null && selected_tattoo == "":
 		for i in $TattooSlots.get_children():
 			i.pressed = false
 		return
-
-	if selectedhero.get_tattoo(slot) == selected_tattoo:
+	
+	if selectedhero.get_tattoo(selected_slot) == selected_tattoo:
 		input_handler.SystemMessage(tr("SAMETATTOO"))
 		$TattooSlots.get_node(slot).pressed = true
 		return
-
+	
 	if !slot in avalible_slots:
 		$TattooSlots.get_node(slot).pressed = false
 		return
-
+	
 	update_tattoo_slots(slot)
-	if selectedhero.get_tattoo(slot) != null:
+	if selectedhero.get_tattoo(selected_slot) != null:
 		if selected_tattoo == "":
 			tattoo_action = "remove_tattoo"
 			input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'add_remove_tattoo_action', tr("REMOVETATTOO")])
@@ -196,10 +196,10 @@ func show_equip_tooltip(slot):
 
 func show_tattoo_tooltip(slot):
 	var selectedhero = input_handler.interacted_character
-	if selectedhero.get_tattoo(slot) == null:
+	if selectedhero.get_tattoo('tattoo_' + slot) == null:
 		return
 	else:
-		var tattoo = Traitdata.tattoodata[selectedhero.get_tattoo(slot)]
+		var tattoo = Traitdata.tattoodata[selectedhero.get_tattoo('tattoo_' + slot)]
 		var desc
 		for key in tattoo.descripts:
 			if key.has(slot):

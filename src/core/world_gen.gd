@@ -233,8 +233,10 @@ func make_slave_for_guild(slavetype, rare_races_upgrade = 0):
 	var bonus_resolved = {}
 	for i in slavetype.character_bonuses:
 #        newslave.add_stat(i, round(rand_range(guild.charbonus[i][0], guild.charbonus[i][1])))
-		if typeof(slavetype.character_bonuses[i]) == TYPE_ARRAY: bonus_resolved[i] = round(rand_range(slavetype.character_bonuses[i][0], slavetype.character_bonuses[i][1]))
-		else: bonus_resolved[i] = slavetype.character_bonuses[i]
+		if typeof(slavetype.character_bonuses[i]) == TYPE_ARRAY: 
+			bonus_resolved[i] = round(rand_range(slavetype.character_bonuses[i][0], slavetype.character_bonuses[i][1]))
+		else: 
+			bonus_resolved[i] = slavetype.character_bonuses[i]
 	newslave.add_stat_bonuses(bonus_resolved)
 	if slavetype.has('traits'):
 		for i in slavetype.traits:

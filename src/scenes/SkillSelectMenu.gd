@@ -10,10 +10,10 @@ func open(character, category, triggernode, triggerfunction):
 	trigger_function = triggerfunction
 	var skillarray = []
 	if category == variables.PANEL_SOC:
-		for i in person.skills.social_skills:
+		for i in person.get_social_skills():
 			skillarray.append(Skilldata.get_template(i, person))
 	else:
-		for i in person.skills.combat_skills:
+		for i in person.get_combat_skills():
 			skillarray.append(Skilldata.get_template(i, person))
 	
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)

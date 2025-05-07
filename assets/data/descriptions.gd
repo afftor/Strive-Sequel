@@ -243,7 +243,7 @@ func piercing(): #currently unused
 func tattoo():
 	var text = ''
 	for slot in person.get_filled_tattoos():
-		text += tr("DESCRIPTTATOO" + (slot + "_" + person.get_tattoo(slot).replace("ink_",'')).to_upper()) + " "
+		text += tr("DESCRIPTTATOO" + (slot.trim_prefix('tattoo_') + "_" + person.get_tattoo(slot).replace("ink_",'')).to_upper()) + " "
 	if text.length()> 0:
 		return "{color=magenta|" + text + "}"
 	else:

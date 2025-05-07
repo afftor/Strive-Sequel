@@ -1237,7 +1237,7 @@ var traits = {
 		icon = "res://assets/images/iconstraits/l_maidu.png",
 		icon_small = "res://assets/images/iconstraits/l_maidu_prt.png",
 		effects = [],
-		bonusstats = {pricemod = 0.5}, 
+		bonusstats = {price_add_part = 0.5}, 
 		custom_reqs = {humiliation = 1, sexual = 1, social = 1, random = 2},
 		tags = ['training_final', 'training_success', 'simple_icon']
 	},
@@ -1260,7 +1260,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
 		effects = [],
-		bonusstats = {pricemod = -0.15, exp_gain_mod = -0.1}, 
+		bonusstats = {price_add_part = -0.15, exp_gain_mod = -0.1}, 
 		tags = ['training_final', 'training_fail']
 	},
 	training_broken = {
@@ -1270,7 +1270,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
 		effects = [],
-		bonusstats = {pricemod = -0.25, exp_gain_mod = -0.2, chg_wisdom_max = -10, chg_persuasion_max = -10}, 
+		bonusstats = {price_add_part = -0.25, exp_gain_mod = -0.2, chg_wisdom_max = -10, chg_persuasion_max = -10}, 
 		tags = ['training_final', 'training_fail']
 	},
 	

@@ -510,6 +510,12 @@ func add_stat_bonuses(ls):
 		process_bonus_record(stat, ls[stat], 'innate', '', 0)
 
 
+func remove_stat_bonus(stat, op):
+	if bonuses_stored.has(stat):
+		if bonuses_stored[stat].has(op):
+			bonuses_stored[stat].erase(op)
+
+
 func generate_simple_fighter(data):
 	for i in resists:
 		if data.has('resists') and data.resists.has(i):
@@ -582,6 +588,8 @@ func add_rare_trait():
 
 
 func get_traits_by_tag(tag):
+	if rebuild < variables.DYN_STATS_PREAREA:
+		generate_data(variables.DYN_STATS_PREAREA)
 	var res = []
 	for tr in traits_real:
 		var traitdata = Traitdata.traits[tr]
