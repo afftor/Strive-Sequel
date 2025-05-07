@@ -36,3 +36,39 @@ var asssize_weight = 20
 # identical, you'd expect to get that 1 black hair portrait half the time, and one of 
 # the other 20 the other half of the time.
 
+var scanned_stats = [ #free to change 
+	"sex",
+	"age",
+	"race",
+	"traits",
+	"height",
+	"ears",
+	"eye_color",
+	"eye_shape",
+	"horns",
+	"wings",
+	"tail",
+	"body_lower",
+	"body_shape",
+	"penis_size",
+	"penis_type",
+	"balls_size",
+	"tits_size",
+	"ass_size",
+	"multiple_tits",
+	"multiple_tits_developed",
+	"skin_coverage",
+	'eyeshape' , 
+	'eye_tex', 
+	'eyebrows', 
+	'lips' , 
+	'chin', 
+	'nose',
+	#obsolete ones 
+	'skin',
+	'hair_length',
+	'hair_color',
+	'hair_style',
+	'beard',
+	'hair_facial_color'
+]

@@ -1612,7 +1612,7 @@ func translate(text, number = -1):
 
 
 func make_random_portrait():
-	statlist.icon_image = ResourceScripts.rnd_main.setrandom(statlist) 
+	statlist.icon_image = ResourceScripts.rnd_main.setrandom(parent.get_ref()) 
 	if statlist != null && statlist.icon_image != null && !statlist.icon_image.empty(): # this if sets the matching body image
 		statlist.dynamic_portrait = false
 		var fullImagePath = statlist.icon_image.replacen(input_handler.globalsettings.portrait_folder, input_handler.globalsettings.body_folder)

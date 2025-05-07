@@ -18,14 +18,10 @@ var eyeShapes
 var horns
 var heights
 
-onready var statlist = Statlist_init.template.duplicate(true) setget , default_stats_get
-
 #add missing custom races here.
 var portrait_races = ['Human','Elf','TribalElf','DarkElf','Orc','BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'BeastkinBunny','HalfkinCat', 'HalfkinFox', 'HalfkinWolf', 'HalfkinBunny', 'Slime', 'Scylla', 'Nereid', 'Harpy', 'Gnome', 'Goblin', 'Fairy', 'Dragonkin', 'Kobold', 'Dwarf', 'Dryad', 'Demon', 'Seraph', 'Taurus', 'Centaur', 'Lamia', 'Arachna', 'BeastkinTanuki', 'HalfkinTanuki']
 
-func default_stats_get():
-	return statlist.duplicate()
-	
+
 func _init(_file):
 	file = _file
 	# Scan for each attribute.
