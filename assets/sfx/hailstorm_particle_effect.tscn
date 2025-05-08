@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/images/particles/hailstorm3.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/particles/hailstorm2.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/particles/hailstorm.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/particles/hailstorm4.png" type="Texture" id=4]
+
+[sub_resource type="AnimatedTexture" id=13]
+flags = 4
+frames = 4
+frame_0/texture = ExtResource( 3 )
+frame_1/texture = ExtResource( 2 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 1 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 4 )
+frame_3/delay_sec = 0.0
+
+[sub_resource type="Gradient" id=12]
+offsets = PoolRealArray( 0, 0.204778, 0.764505, 0.993174 )
+colors = PoolColorArray( 1, 1, 1, 0.121569, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.878431 )
+
+[node name="hailstorm" type="CPUParticles2D"]
+position = Vector2( 1594, 497 )
+scale = Vector2( 3, 3 )
+amount = 20
+lifetime = 0.65
+preprocess = 4.25
+speed_scale = 2.0
+explosiveness = 0.3
+randomness = 0.5
+lifetime_randomness = 0.1
+texture = SubResource( 13 )
+emission_shape = 3
+emission_points = PoolVector2Array( -60, -100, -30, -100, 0, -100, 30, -100, -60, -70, -60, -40, -60, -10, -60, 30, -60, 60, 0, 30, 30, 30, 0, -30, 30, -30 )
+emission_colors = PoolColorArray(  )
+direction = Vector2( 0, 0 )
+spread = 0.0
+gravity = Vector2( 250, 300 )
+initial_velocity_random = 1.0
+tangential_accel = 100.0
+scale_amount = 25.0
+scale_amount_random = 1.0
+color_ramp = SubResource( 12 )
+__meta__ = {
+"_editor_description_": ""
+}
