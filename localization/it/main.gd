@@ -1837,7 +1837,7 @@ Il servizio è un modificatore globale per questa assegnazione.""",
 	STATCHARM_FACTOR = "Fattore di fascino",
 	STATSEXUALS_FACTOR = "Fattore sesso",
 	STATTAME_FACTOR = "Fattore addomesticato",
-	STATTIMID_FACTOR = "Fattore di autorità",
+	STATAUTHORITY_FACTOR = "Fattore di autorità",
 	STATSLAVE_CLASS = "Digitare",
 	STATPHYSICS_BONUS = "Fisica",
 	STATWITS_BONUS = "Ingegno",
@@ -2005,7 +2005,7 @@ Tempi di recupero delle abilità di combattimento ridotti di 1 turno (non può e
 	STATTAME_FACTORDESCRIPT = """Il {color=yellow|Fattore Addomesticamento} rappresenta quanto sia facile fare amicizia con il personaggio. Riduce il prezzo dello sblocco dei tratti di lealtà per i subordinati.
 
 {color=green|Il fattore addomesticato massimo aumenta il guadagno di fedeltà.}""",
-	STATTIMID_FACTORDESCRIPT = """Il {color=yellow|Fattore Autorità} rappresenta la capacità di infliggere l'autorità del personaggio sugli altri. Più è alto, più efficiente è l'addestramento del personaggio e più apprendisti sono disponibili per loro.
+	STATAUTHORITY_FACTORDESCRIPT = """Il {color=yellow|Fattore Autorità} rappresenta la capacità di infliggere l'autorità del personaggio sugli altri. Più è alto, più efficiente è l'addestramento del personaggio e più apprendisti sono disponibili per loro.
 
 {color=green|Il Fattore Autorità Massimo riduce i danni subiti.}""",
 	STATWITS_FACTORDESCRIPT = """Il {color=yellow|Fattore Ingegno} rappresenta il potenziale mentale del personaggio. Aumenta la crescita [color=aqua]Wits[/color].

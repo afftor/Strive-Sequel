@@ -9,7 +9,14 @@ func _ready():
 	portraitCache = gen()
 
 
-func setrandom(person):
+func scan_stats_for_char(character):
+	var res = {}
+	for stat in rnd_settings.scanned_stats:
+		res[stat] = character.get_stat(stat)
+	return res
+
+
+func setrandom(character):
 	# Weight for portrait selecting criteria is as follows:
 	# Race->Sex->Age->Hair_Colour->Skin_Colour->Natural_Selection
 	if(portraitCache != null):
@@ -21,10 +28,12 @@ func setrandom(person):
 	if(validPortraits.empty()):
 		print("fail")
 		return
+	var person = scan_stats_for_char(character)
 	for p in validPortraits:
 		if p.races.has(person.race):
 			filteringPortraits.append(p)
-	if rnd_settings.debug: print('Filtered on race %s, resulted in %d portraits.' % [person.race, filteringPortraits.size()])
+	if rnd_settings.debug: 
+		print('Filtered on race %s, resulted in %d portraits.' % [person.race, filteringPortraits.size()])
 	if (filteringPortraits.size() < rnd_settings.minMatch):
 		return
 	if !filteringPortraits.empty():
@@ -36,7 +45,8 @@ func setrandom(person):
 	for p in validPortraits:
 		if p.genders.has(person.sex):
 			filteringPortraits.append(p) #Add portrait that has required sex
-	if rnd_settings.debug: print('Filtered on gender %s, resulted in %d portraits.' % [person.sex, filteringPortraits.size()])
+	if rnd_settings.debug: 
+		print('Filtered on gender %s, resulted in %d portraits.' % [person.sex, filteringPortraits.size()])
 	if (filteringPortraits.size() < rnd_settings.minMatch):
 		return
 	if !filteringPortraits.empty():
@@ -75,14 +85,15 @@ func setrandom(person):
 			for p in validPortraits:
 				if p.ages.has('adult'):
 					filteringPortraits.append(p) #Add portrait with the right race
-	if rnd_settings.debug: print('Filtered on age %s, resulted in %d portraits.' % [person.age, filteringPortraits.size()])
+	if rnd_settings.debug: 
+		print('Filtered on age %s, resulted in %d portraits.' % [person.age, filteringPortraits.size()])
 	if (filteringPortraits.size() < rnd_settings.minMatch):
 		# still not enough? abort
 		return
 	if !filteringPortraits.empty():
 		validPortraits.clear()
 		validPortraits = filteringPortraits
-
+	
 	# Weighted filtering for the remainder
 	var totalWeight = 0.0
 	var weightedPortraits = []
@@ -93,7 +104,8 @@ func setrandom(person):
 	elif person.fur != null && !person.fur.empty():
 		haircolor = person.fur
 	
-	if rnd_settings.debug: print('Generating weights for hair: %s, skin: %s, tits: %s, and ass: %s' % [haircolor, person.skin, person.tits_size, person.ass_size])
+	if rnd_settings.debug:
+		 print('Generating weights for hair: %s, skin: %s, tits: %s, and ass: %s' % [haircolor, person.skin, person.tits_size, person.ass_size])
 	for p in validPortraits:
 		var pWeight = rnd_settings.base_weight
 		if !haircolor.empty() && p.hairColors.has(haircolor):
@@ -109,12 +121,12 @@ func setrandom(person):
 			if pWeight <= 0: pWeight = 1.0
 			pWeight *= rnd_settings.asssize_weight
 		if pWeight > 0:
-			if rnd_settings.debug: print('Weight: %8.1f Portrait: %s' % [pWeight, p.file])
+			if rnd_settings.debug: 
+				print('Weight: %8.1f Portrait: %s' % [pWeight, p.file])
 			var wp = {'weight': pWeight, 'file': p.file}
 			weightedPortraits.append(wp)
 			totalWeight += pWeight
-
-
+	
 	if !weightedPortraits.empty():
 		var selection = randf() * totalWeight
 		if rnd_settings.debug: print("%d weighted profiles, total weight: %.1f, selected weight: %f" % [weightedPortraits.size(), totalWeight, selection])
