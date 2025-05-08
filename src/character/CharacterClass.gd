@@ -2097,3 +2097,8 @@ func update_prt():
 		set_stat('icon_image', images.portraits[prt_name])
 #	else:
 #		print_debug("Failed to find a %s portrait" % prt_name)
+
+func is_in_game_party():
+	#almost same as is_players_character, but not quite.
+	#Summons are is_players_character but not is_in_game_party
+	return ResourceScripts.game_party.has_char(id)
