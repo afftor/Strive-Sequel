@@ -1064,7 +1064,7 @@ func add_sex_trait(code, known = false):
 			unlocked_sex_traits.push_back(code)
 		if !sex_traits.has(code):
 			sex_traits[code] = known
-			if parent.get_ref().is_players_character:
+			if parent.get_ref().is_in_game_party():
 				var text = get_short_name() + ": " + "New Sexual Trait Acquired - " + Traitdata.sex_traits[code].name
 				globals.text_log_add('char', text)
 				globals.manifest(text, parent.get_ref())
