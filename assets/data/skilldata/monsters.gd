@@ -234,7 +234,7 @@ var effects = {
 		duration = 2,
 		tags = ['affliction', 'negative', 'debuff'],
 		statchanges = {atk_add_part = -0.25},
-		buffs = ['b_curseatk'],
+		buffs = [],
 	},
 	#ifrit
 	e_tr_fireshield = {
@@ -343,6 +343,7 @@ var buffs = {
 var stacks = {
 	curseatk = {
 		type = 'stack',
+		buff = 'b_curseatk'
 	}, #st 0
 	atkpass = {
 		type = 'stack',

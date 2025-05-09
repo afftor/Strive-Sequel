@@ -3,7 +3,7 @@ class_name Buff
 
 var icon:String setget ,get_icon
 var description:String = "" setget ,get_tooltip
-var parent
+var parent #either effect or stack
 var template
 var args: = []
 var self_args := []
@@ -52,24 +52,30 @@ func calculate_args():
 		pass
 
 func get_duration():
-	if parent == null: return null
-	var par = effects_pool.get_effect_by_id(parent)
-	return par.get_duration()
+	if parent == null: 
+		return null
+	return parent.get_duration()
+
+
+func get_stacks():
+	if parent == null: 
+		return null
+	return parent.get_active_effects().size()
 
 func set_args(arg, value):
 	self_args[arg] = value
 
-func serialize():
-	var tmp:= {}
-	tmp['template'] = template
-	tmp['args'] = self_args
-	return tmp
-
-func deserialize(tmp):
-	template = tmp['template'].duplicate()
-	self_args = tmp['args'].duplicate()
-	description = tr(template.description)
-	icon = template.icon
-	if template.has('tags'): 
-		tags = template.tags.duplicate(true)
+#func serialize():
+#	var tmp:= {}
+#	tmp['template'] = template
+#	tmp['args'] = self_args
+#	return tmp
+#
+#func deserialize(tmp):
+#	template = tmp['template'].duplicate()
+#	self_args = tmp['args'].duplicate()
+#	description = tr(template.description)
+#	icon = template.icon
+#	if template.has('tags'): 
+#		tags = template.tags.duplicate(true)
 

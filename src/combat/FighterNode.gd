@@ -177,50 +177,53 @@ func add_buff(i):
 				newbuff.get_node("Label").show()
 				newbuff.get_node("Label").text = str(fighter.get_stat('lust'))
 	newbuff.hint_tooltip = text
-	var tmp = i.get_duration()
+	
 	if i.tags.has('show_amount'):
-		newbuff.get_node("Label").text = str(i.amount)
+		newbuff.get_node("Label").text = str(i.get_stacks())
 		newbuff.get_node("Label").set("custom_colors/font_color",Color(1,1,0))
 		newbuff.get_node("Label").show()
-	elif tmp != null:
-		newbuff.get_node("Label").text = str(tmp.count)
-		match tmp.event:
-			'hours':
-				newbuff.get_node("Label").set("custom_colors/font_color",Color(0,0,1))
-			'turns':
-				newbuff.get_node("Label").set("custom_colors/font_color",Color(0,1,0))
-			'hits':
-				newbuff.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
-			'attacks':
-				newbuff.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
-		newbuff.get_node("Label").show()
+	else:
+		var tmp = i.get_duration()
+		if tmp != null:
+			newbuff.get_node("Label").text = str(tmp.count)
+			match tmp.event:
+				'hours':
+					newbuff.get_node("Label").set("custom_colors/font_color",Color(0,0,1))
+				'turns':
+					newbuff.get_node("Label").set("custom_colors/font_color",Color(0,1,0))
+				'hits':
+					newbuff.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
+				'attacks':
+					newbuff.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
+			newbuff.get_node("Label").show()
 
-func update_buff(i):
-	if !visible: return
-	var pos = buffs.find(i.template_name)
-	var newbuff = $Buffs.get_child(pos)
-	var text = i.description
-	newbuff.texture = i.icon
-	buffs.push_back(i.template_name)
-	if i.template.has('bonuseffect'):
-		match i.template.bonuseffect:
-			'barrier':
-				newbuff.get_node("Label").show()
-				newbuff.get_node("Label").text = str(fighter.shield)
-	newbuff.hint_tooltip = text
-	var tmp = i.get_duration()
-	if tmp != null:
-		newbuff.get_node("Label").text = str(tmp.count)
-		match tmp.event:
-			'hours':
-				newbuff.get_node("Label").set("custom_colors/font_color",Color(0,0,1))
-			'turns':
-				newbuff.get_node("Label").set("custom_colors/font_color",Color(0,1,0))
-			'hits':
-				newbuff.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
-			'attacks':
-				newbuff.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
-		newbuff.get_node("Label").show()
+#not used
+#func update_buff(i): 
+#	if !visible: return
+#	var pos = buffs.find(i.template_name)
+#	var newbuff = $Buffs.get_child(pos)
+#	var text = i.description
+#	newbuff.texture = i.icon
+#	buffs.push_back(i.template_name)
+#	if i.template.has('bonuseffect'):
+#		match i.template.bonuseffect:
+#			'barrier':
+#				newbuff.get_node("Label").show()
+#				newbuff.get_node("Label").text = str(fighter.shield)
+#	newbuff.hint_tooltip = text
+#	var tmp = i.get_duration()
+#	if tmp != null:
+#		newbuff.get_node("Label").text = str(tmp.count)
+#		match tmp.event:
+#			'hours':
+#				newbuff.get_node("Label").set("custom_colors/font_color",Color(0,0,1))
+#			'turns':
+#				newbuff.get_node("Label").set("custom_colors/font_color",Color(0,1,0))
+#			'hits':
+#				newbuff.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
+#			'attacks':
+#				newbuff.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
+#		newbuff.get_node("Label").show()
 
 
 func update_hp_label(newhp, newhpp):

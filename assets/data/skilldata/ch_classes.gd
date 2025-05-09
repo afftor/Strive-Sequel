@@ -750,7 +750,7 @@ var effects = {
 		tick_event = variables.TR_TICK,
 		rem_event = [variables.TR_DEATH],
 		statchanges = {atk = 4, hitrate = 5, resist_normal = 2},
-		buffs = ['b_deathknight'],
+		buffs = [],
 	},
 	
 	e_tr_nixx = {
@@ -1363,7 +1363,8 @@ var stacks = {
 	protective_shell = {},#st 1
 	deathknight = {
 		type = 'stack_c',
-		stack = 5
+		stack = 5,
+		buff = 'b_deathknight'
 	},#st increment lim 5
 	euphoria = {
 		type = 'stack_t',

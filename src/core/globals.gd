@@ -531,22 +531,23 @@ func build_buffs_for_char(person, node, mode):
 		if i.tags.has('show_in_traits'): continue
 		var newnode = input_handler.DuplicateContainerTemplate(node, 'Button')
 		newnode.texture = i.icon
-		var tmp = i.get_duration()
 		if i.tags.has('show_amount'):
-			newnode.get_node("Label").text = str(i.amount)
-		elif tmp != null:
-			newnode.get_node("Label").text = str(tmp.count)
+			newnode.get_node("Label").text = str(i.get_stacks())
 		else:
-			newnode.get_node("Label").hide()
-#		match tmp.event:
-#			'hours':
-#				newnode.get_node("Label").set("custom_colors/font_color",Color(0,0,1))
-#			'turns':
-#				newnode.get_node("Label").set("custom_colors/font_color",Color(0,1,0))
-#			'hits':
-#				newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
-#			'attacks':
-#				newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
+			var tmp = i.get_duration()
+			if tmp != null:
+				newnode.get_node("Label").text = str(tmp.count)
+			else:
+				newnode.get_node("Label").hide()
+#			match tmp.event:
+#				'hours':
+#					newnode.get_node("Label").set("custom_colors/font_color",Color(0,0,1))
+#				'turns':
+#					newnode.get_node("Label").set("custom_colors/font_color",Color(0,1,0))
+#				'hits':
+#					newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
+#				'attacks':
+#					newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
 		connecttexttooltip(newnode, person.translate(i.description))
 
 

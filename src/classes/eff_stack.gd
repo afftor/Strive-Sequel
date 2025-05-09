@@ -88,6 +88,8 @@ func remove_effect(eff):
 
 
 func update_buffs():
+	if code == 'deathknight':
+		print('+')
 	buffs.clear()
 	if !template.has('buff'):
 		for eid in get_active_effects():
@@ -97,14 +99,16 @@ func update_buffs():
 				buffs.push_back(b)
 	else:
 		var un_desc = ""
+		var f = false
 		for eid in get_active_effects():
+			f = true
 			var eff = effects_pool.get_effect_by_id(eid)
 			eff.rebuild_buffs()
 			for b in eff.buffs:
 				un_desc += tr(b.description) + '\n'
-		if un_desc == "":
+		if !f:
 			return
-		else:
+		if un_desc != "":
 			un_desc = un_desc.trim_suffix('\n')
 		var t_buff = template.buff
 		var buff = Buff.new(self)
