@@ -37,9 +37,9 @@ func _get_data(char1, char2):
 
 
 func add_relationship_value(char1, char2, value):
-	if characters[char1].is_master(): 
+	if characters_pool.get_char_by_id(char1).is_master(): 
 		return 
-	if characters[char2].is_master(): 
+	if characters_pool.get_char_by_id(char2).is_master(): 
 		return 
 	var key = _get_key(char1, char2)
 	

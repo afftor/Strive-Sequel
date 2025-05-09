@@ -187,6 +187,10 @@ func add_stat_bonuses(ls:Dictionary):
 	dyn_stats.reset_rebuild()
 
 
+func remove_stat_bonus(stat, op):
+	dyn_stats.remove_stat_bonus(stat, op)
+
+
 func add_stat(statname, value): #only oneshots
 	if statname in ['hp', 'mp', 'shield']:
 		set(statname, get(statname) + value)
@@ -345,6 +349,10 @@ func generate_random_character_from_data(races_l, desired_class = null, adjust_d
 	statlist.generate_random_character_from_data(races_l, desired_class, adjust_difficulty)
 	dyn_stats.get_random_traits(trait_blacklist)
 	xp_module.set_service_boost()
+
+
+func get_random_name(keep_surname = false):
+	statlist.get_random_name(keep_surname)
 
 
 func get_class_list(category, person):
@@ -1617,10 +1625,20 @@ func translate(text, number = -1):
 
 func calculate_price(shopflag = false):
 	var value = 0
+	var bonus_data = dyn_stats.get_stat_data('price').bonuses
 	var tr_mul1 = 0
 	var tr_mul2 = 0
 	var mod_mul = 1.0
 	var mod_mul2 = 0.0
+	if bonus_data.has('add'):
+		for rec in bonus_data.add:
+			value += rec.value
+	if bonus_data.has('add_part'):
+		for rec in bonus_data.add_part:
+			mod_mul += rec.value
+	if bonus_data.has('add_part2'):
+		for rec in bonus_data.add_part2:
+			mod_mul += rec.value
 	tr_mul1 = get_traits_by_tag('positive').size() 
 	tr_mul2 = get_traits_by_tag('negative').size()
 	mod_mul += min (tr_mul1 * 0.2, 0.6)

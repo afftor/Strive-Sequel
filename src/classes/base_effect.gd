@@ -191,7 +191,7 @@ func rebuild_buffs():
 		if !get_applied_obj().checkreqs(template.conditions):
 			return
 	for e in template.buffs:
-		var tmp = Buff.new(id)
+		var tmp = Buff.new(self)
 		tmp.createfromtemplate(e)
 		tmp.calculate_args()
 		buffs.push_back(tmp)
