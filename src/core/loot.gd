@@ -158,26 +158,43 @@ func generate_reward(record, amount) -> Dictionary:
 			output.items.append(globals.CreateUsableItem(record.item, amount))
 		elif i_template.type == 'gear':
 			for i in range(amount):
-				if record.has('by_quality'):#chests were working like this
-					var newitem
-					var quality = 'poor'
-					if record.has('quality'):
-						quality = record.quality
-					if record.has('parts'):
-						#not quite sure if it works correctly. There is an issue with quality assigning
-						newitem = globals.CreateGearItemQuality(record.item, record.parts, quality)
-					else:
-						newitem = globals.CreateGearItem(record.item, {})
-					output.items.append(newitem)
-				else:#loot from enemies were working like this
-					var parts
-					if i_template.crafttype == 'basic':
-						parts = {}
-					elif record.has('parts'):
-						parts = record.parts
-					else: #shortcut - modular gear from defaut materials
-						parts = ResourceScripts.game_progress.get_default_materials()
-					output.items.append(globals.CreateGearItemLoot(record.item, parts))
+				var parts
+				if i_template.has('crafttype') and i_template.crafttype == 'basic':
+					parts = {}
+				elif record.has('parts'):
+					parts = record.parts
+				else: #shortcut - modular gear from defaut materials
+					parts = ResourceScripts.game_progress.get_default_materials()
+				var newitem
+				if record.has('autoassign_quality'):
+					#probably legacy code for chests
+					#CreateGearItem() uses autoassign_quality() for quality
+					newitem = globals.CreateGearItem(record.item, {})
+				elif record.has('quality'):
+					newitem = globals.CreateGearItemQuality(record.item, parts, record.quality)
+				else:
+					newitem = globals.CreateGearItemLoot(record.item, parts)
+				output.items.append(newitem)
+				#old double logic (record.by_quality for chests, and else for loot)
+#				if record.has('by_quality'):#chests were working like this
+#					var newitem
+#					var quality = 'poor'
+#					if record.has('quality'):
+#						quality = record.quality
+#					if record.has('parts'):
+#						newitem = globals.CreateGearItemQuality(record.item, record.parts, quality)
+#					else:
+#						newitem = globals.CreateGearItem(record.item, {})
+#					output.items.append(newitem)
+#				else:#loot from enemies were working like this
+#					var parts
+#					if i_template.crafttype == 'basic':
+#						parts = {}
+#					elif record.has('parts'):
+#						parts = record.parts
+#					else: #shortcut - modular gear from defaut materials
+#						parts = ResourceScripts.game_progress.get_default_materials()
+#					output.items.append(globals.CreateGearItemLoot(record.item, parts))
 		else:
 			print('error: wrong itemtype at %s' % record.item)
 	elif record.has('random'):

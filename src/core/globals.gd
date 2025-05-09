@@ -177,7 +177,8 @@ func CreateGearItem(item, parts, newname = null, quality = ""): #obsolete for mo
 	return newitem
 
 
-#is it works correctly? It doesn't use set_quality_level() for quality assigning
+#CreateGear() generates quality by itself (CreateGearItemLoot() uses it)
+#here we just overrun it. So it's same as CreateGearItemLoot() except quality
 func CreateGearItemQuality(item, parts, quality, no_enchant = true, newname = null): 
 	if parts is String:
 		parts = Items.get_materials_by_grade(parts, item)
