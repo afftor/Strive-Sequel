@@ -9,7 +9,7 @@ class_name temp_e_global
 #to limit one icon for all instances use corresponding counting methods with one_icon flag
 #ALL TEMP EFFECTS ARE NAMED - their template has to have 'name' field (even if effect has no id in effects table)
 
-var template_name
+#var template_name
 var remains setget ,getremains
 
 var timers = [] # of {events = [], objects = [ids] or group tag, timer: int}
@@ -21,7 +21,7 @@ func _init(caller).(caller):
 
 func createfromtemplate(tmp):
 	.createfromtemplate(tmp)
-	template_name = template.name
+#	template_name = template.name
 	timers = template.timers.duplicate(true)
 	for timer in timers:
 		if !timer.events is Array:
@@ -108,7 +108,7 @@ func deserialize(tmp):
 		else:
 			temp.objects = t_timer.objects.duplicate()
 		timers.push_back(temp)
-	template_name = template.name
+#	template_name = template.name
 	pass
 
 func soft_remove(): #remove without calling app_obj.remove_effect(), useful for recreating effect
