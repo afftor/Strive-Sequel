@@ -659,6 +659,7 @@ var effect_table = {
 	
 	e_s_sleep = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions. until remade properly
 		type = 'temp_global',
+		name = 'sleep',
 		tags = ['duration_turns', 'affliction', 'disable', 'sleep'],
 		target = 'target',
 		timers = [
@@ -672,6 +673,7 @@ var effect_table = {
 	e_s_sleep_compartibility = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions. until remade properly
 		#THIS EFFECT IS STUB, DO NOT COPY, DO NOT EDIT - it uses reversed order of parent trigger args, so it is conterintuitive
 		type = 'temp_global',
+		name = 'sleep',
 		tags = ['duration_turns', 'affliction', 'disable', 'sleep'],
 		target = 'target',
 		timers = [
