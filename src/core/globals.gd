@@ -2942,3 +2942,25 @@ func get_stat_name(stat):
 	if statdata.statdata.has(stat):
 		return statdata.statdata[stat].name
 	return tr("STAT%s" % stat.to_upper())
+
+
+func get_tr_src(src, src_val):
+	match src:
+		'innate':
+			return ["", tr("INNATE")]
+		'race':
+			var data = races.racelist[src_val]
+			return [tr("STATRACE"), data.name]
+		'class':
+			var data = classesdata.professions[src_val]
+			return [tr("CLASS_LABEL"), data.name]
+		'trait':
+			var data = Traitdata.traits[src_val]
+			return [tr("TRAIT"), data.name]
+		'effect':
+			return [tr("EFFECT"), tr("EFFECTNAME_" + src_val.to_upper())]
+		'mastery':
+			var data = Skilldata.masteries[src_val]
+			return [tr("MASTER_POINTS"), data.name]
+		_:
+			return [src, src_val]
