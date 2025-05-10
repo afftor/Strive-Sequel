@@ -261,6 +261,11 @@ var statdata = {
 		tags = [],
 		default_bonus = 'set',
 	},
+	body_color_lips = {
+		code = 'body_color_lips',
+		tags = [],
+		default_bonus = 'set',
+	},
 	body_color_wings = {
 		code = 'body_color_wings',
 		tags = [],

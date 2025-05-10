@@ -4,7 +4,7 @@ var stats_to_look = [
 'pose',
 'sex', 'race',
 'horns', 'eyeshape', 'eye_tex', 'eye_color', 'eyebrows', 'lips', 'wings', 'penis_type', 'chin', 'nose', 'pregnancy_status', 'tits_size', 'multiple_tits_developed',
-'body_color_wings', 'body_color_horns', 'body_color_animal', 'body_color_tail', 'body_color_ears',
+'body_color_wings', 'body_color_horns', 'body_color_animal', 'body_color_tail', 'body_color_ears', 'body_color_lips',
 'hair_base', 'hair_assist', 
 'hair_back', 'hair_fringe',
 'hair_base_color_1', 'hair_fringe_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 'hair_fringe_color_2', 
@@ -740,6 +740,49 @@ var transforms = {
 		black = [
 			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Face/Eyes_tex', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_3.tres", ids = [2]},
 			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Face/Eyes_tex', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_3.tres", ids = [2]},
+		],
+	},
+	
+	body_color_lips = { #maybe there should be ids = [1] in every transform
+		blue = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_blue.tres"},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_blue.tres"},
+		],
+		cyan = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_bluelight.tres"},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_bluelight.tres"},
+		],
+		brown = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_brown.tres"},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_brown.tres"},
+		],
+		green = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_green.tres"},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_green.tres"},
+		],
+		pink = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_pink.tres"},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_pink.tres"},
+		],
+		purple = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_purple.tres"},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_purple.tres"},
+		],
+		red = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_red.tres"},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_red.tres"},
+		],
+		yellow = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_yellow.tres"},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_yellow.tres"},
+		],
+		grey = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_grey.tres"},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_eyes/eyes_grey.tres"},
+		],
+		black = [
+			{type = 'import_recolor', node = 'male_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_3.tres", ids = [2]},
+			{type = 'import_recolor', node = 'Female_pose/HumanF1/Spine/Head/Face/Lips_tex', material = "res://Character_generator/shaders/shaders_color_hairs_ears_tails_horns_wings_animals_beastkins/dark/Hair_dark_3.tres", ids = [2]},
 		],
 	},
 	
