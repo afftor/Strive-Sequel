@@ -136,6 +136,7 @@ var params_to_save = [ #memo mostly
 	'chin', 
 	'nose', 
 	'body_color_skin', 
+	'body_color_lips', 
 	'body_color_wings', 
 	'body_color_tail', 
 	'body_color_horns', 
@@ -297,7 +298,7 @@ func build_possible_val_for_stat(stat):
 		return
 	if stat == 'personality':
 		possible_vals.personality = variables.personality_array.duplicate()
-		possible_vals.personality.erase('neutral')
+#		possible_vals.personality.erase('neutral')
 		return
 	if mode == 'freemode' and !critical_stats.has(stat) or free_stats.has(stat):
 		if GeneratorData.transforms.has(stat):
