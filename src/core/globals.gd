@@ -51,6 +51,8 @@ var sex_actions_dict = {}
 signal scene_changed
 signal scene_change_start
 
+var can_manifest = false
+
 
 func _init():
 	#load sex actions
@@ -105,6 +107,8 @@ func _ready():
 	
 	if log_alert != null and is_instance_valid(log_alert):
 		log_alert.fix_cur_log_position()#should miss starting irrelevant strings in log by this time in game load
+	
+	get_tree().get_root().connect("ready", self, 'free_manifest', [], CONNECT_ONESHOT)
 
 
 #not used
@@ -1194,7 +1198,13 @@ func text_log_add(label, text):
 		textfield.rect_size.y = textfield.get_v_scroll().get_max()
 		newfield.rect_min_size.y = textfield.rect_size.y
 
+#quite ugly method to stop manifest befor main viewport is ready
+#it's probably useful only for test, but still seems "normal" problem for get_spec_node()
+#If there is an another way to check viewport's readiness, change this!
+func free_manifest():
+	can_manifest = true
 func manifest(text, person = null):
+	if !can_manifest: return
 	if person == null:
 		person = ResourceScripts.game_party.get_master()
 	var node = input_handler.get_spec_node(input_handler.NODE_CHAT)
