@@ -1324,8 +1324,9 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
-		tags = ['integer', 'cap_up'],
+		tags = ['integer', 'cap_up', 'cap_low'],
 		cap_up = 'chg_strength_max',
+		cap_low = 0,
 	},
 	chg_strength_max = {
 		code = 'chg_strength_max',
@@ -1340,8 +1341,9 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
-		tags = ['integer', 'cap_up'],
+		tags = ['integer', 'cap_up', 'cap_low'],
 		cap_up = 'chg_dexterity_max',
+		cap_low = 0,
 	},
 	chg_dexterity_max = {
 		code = 'chg_dexterity_max',
@@ -1356,8 +1358,9 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
-		tags = ['integer', 'cap_up'],
+		tags = ['integer', 'cap_up', 'cap_low'],
 		cap_up = 'chg_wisdom_max',
+		cap_low = 0,
 	},
 	chg_wisdom_max = {
 		code = 'chg_wisdom_max',
@@ -1372,8 +1375,9 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
-		tags = ['integer', 'cap_up'],
+		tags = ['integer', 'cap_up', 'cap_low'],
 		cap_up = 'chg_persuasion_max',
+		cap_low = 0,
 	},
 	chg_persuasion_max = {
 		code = 'chg_persuasion_max',

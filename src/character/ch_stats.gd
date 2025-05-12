@@ -376,18 +376,16 @@ func update_stat(stat, value, operant = 'set'):
 				stat_cap = parent.get_ref().get_stat(data.cap_up)
 			else:
 				stat_cap = data.cap_up
-			if value > stat_cap:
-				value = stat_cap
-				container[stat] = value
+			if container[stat] > stat_cap:
+				container[stat] = stat_cap
 		if data.tags.has('cap_low'):
 			var stat_cap
 			if data.cap_low is String:
 				stat_cap = parent.get_ref().get_stat(data.cap_low)
 			else:
 				stat_cap = data.cap_low
-			if value < stat_cap:
-				value = stat_cap
-				container[stat] = value
+			if container[stat] < stat_cap:
+				container[stat] = stat_cap
 	if stat.begins_with('hair_'): #compat
 		set_hair_stat(stat, value)
 	parent.get_ref().reset_rebuild()
