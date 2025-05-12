@@ -1021,6 +1021,8 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 
 	TUTORIAL = "教程",
 	TRAITS = "特征",
+	TRAIT = """trait""", # MISSING TRANSLATION
+	EFFECT = """effect""", # MISSING TRANSLATION
 	CLASSINFO = "课程详情",
 	CLASSSTATCHANGES = "统计变化",
 

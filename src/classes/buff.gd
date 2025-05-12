@@ -24,11 +24,15 @@ func createfromtemplate(buff_t):
 		tags = template.tags.duplicate(true)
 
 func get_tooltip():
+	var res
 	if tags.has('unified_desc') or args.empty():
-		return description
+		res = description
 	else:
 		calculate_args()
-		return description % args
+		res = description % args
+	res = res.replace("%%", "%")
+	return res
+
 
 func get_icon():
 	return input_handler.loadimage(icon, 'icons')

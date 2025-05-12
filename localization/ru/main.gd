@@ -1057,6 +1057,8 @@ var TranslationDict = {
 
 	TUTORIAL = """Обучение""",
 	TRAITS = """Черты характера""",
+	TRAIT = """trait""", # MISSING TRANSLATION
+	EFFECT = """effect""", # MISSING TRANSLATION
 	CLASSINFO = """Подробности о классе""",
 	CLASSSTATCHANGES = """Изменения характеристик""",
 

@@ -357,7 +357,7 @@ func change_mastery(mas):
 				src = rec.src_type
 				src_val = rec.src_value
 				break
-		$MasteryPanel/blocked/Label.text = tr('MASTERYBLOCKSRC') % [src, src_val]
+		$MasteryPanel/blocked/Label.text = tr('MASTERYBLOCKSRC') % globals.get_tr_src(src, src_val)
 	
 	$MasteryPanel/AddPoint.disabled = !person.can_upgrade_mastery(mas)
 	$MasteryPanel/AddPoint2.disabled = !person.can_upgrade_mastery(mas, true)

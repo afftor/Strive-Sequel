@@ -281,39 +281,27 @@ var effects = {
 	},
 	
 	enchant_warlock_1 = {
-		type = 'temp_global',
+		type = 'temp_s',
 		tags = ['duration_none'],
 		stack = 'warlock',
-		timers = [
-			{events = [variables.TR_NONE], objects = 'owner', timer = 2}, #effectively infinite
-		],
 		statchanges = {manacost_mod = -0.1},
 	},
 	enchant_warlock_2 = {
-		type = 'temp_global',
+		type = 'temp_s',
 		tags = ['duration_none'],
 		stack = 'warlock',
-		timers = [
-			{events = [variables.TR_NONE], objects = 'owner', timer = 2}, #effectively infinite
-		],
 		statchanges = {manacost_mod = -0.15},
 	},
 	enchant_warlock_3 = {
-		type = 'temp_global',
+		type = 'temp_s',
 		tags = ['duration_none'],
 		stack = 'warlock',
-		timers = [
-			{events = [variables.TR_NONE], objects = 'owner', timer = 2}, #effectively infinite
-		],
 		statchanges = {manacost_mod = -0.2},
 	},
 	enchant_warlock_4 = {
-		type = 'temp_global',
+		type = 'temp_s',
 		tags = ['duration_none'],
 		stack = 'warlock',
-		timers = [
-			{events = [variables.TR_NONE], objects = 'owner', timer = 2}, #effectively infinite
-		],
 		statchanges = {manacost_mod = -0.25},
 	},
 	
