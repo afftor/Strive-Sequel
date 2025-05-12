@@ -65,8 +65,6 @@ func get_timestamp():
 	return dyn_stats.get_timestamp()
 
 func reset_rebuild():
-#	if (statlist.statlist.unique == 'cali'):
-#		print('+')
 	dyn_stats.reset_rebuild()
 #	dyn_stats.generate_data(variables.DYN_STATS_FULL, true)
 	if displaynode != null:
