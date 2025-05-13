@@ -1229,16 +1229,16 @@ func roll_growth(diff):
 	update_stat('growth_factor', tmp, 'set')
 
 
-func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0):
+func generate_random_character_from_data(desired_races, desired_class = null, adjust_difficulty = 0):
 	adjust_difficulty = min(adjust_difficulty, 15)
 	var gendata = {race = '', sex = 'random', age = 'random'}
 
-	if typeof(races) == TYPE_STRING && races == 'random':
+	if typeof(desired_races) == TYPE_STRING && desired_races == 'random':
 		gendata.race = races.get_random_race()
-	elif typeof(races) == TYPE_STRING:
-		gendata.race = races
+	elif typeof(desired_races) == TYPE_STRING:
+		gendata.race = desired_races
 	else:
-		gendata.race = input_handler.random_from_array(races)
+		gendata.race = input_handler.random_from_array(desired_races)
 	parent.get_ref().create(gendata.race, gendata.sex, gendata.age)
 	
 	roll_growth(adjust_difficulty)
