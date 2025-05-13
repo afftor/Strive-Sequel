@@ -3,6 +3,7 @@ Revamped effect system to be modifiable and support saves
 	Old saves can't be imported or loaded anymore, from this point the previous save files should be supported automatically
 Added random events for characters
 Added empire capital and arena (wip)
+Added stat change description from events
 Fixed dwarf capital shop having no items
 Nerfed damage scaling from physics/wits for player characters
 Rebalanced more enemies and encounters
