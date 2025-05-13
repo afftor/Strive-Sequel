@@ -398,6 +398,7 @@ var effect_table = {
 		buffs = []
 	},
 	e_s_regen = {
+		target = 'target',
 		type = 'temp_s',
 		stack = 'regen',
 		tick_event = [variables.TR_TURN_F],
