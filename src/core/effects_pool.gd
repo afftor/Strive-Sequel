@@ -153,6 +153,8 @@ func serialize():
 	cleanup()
 	var tmp = {}
 	for e in effects.keys():
+		if !effects[e].is_stored:
+			continue
 		tmp[e] = effects[e].serialize()
 	for e in stacks.keys():
 		tmp[e] = stacks[e].serialize()

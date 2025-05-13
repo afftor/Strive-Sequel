@@ -128,4 +128,10 @@ func get_active_effects():
 	return res
 
 
-
+func clear_nonstored_effs():
+	for eid in effects:
+		var eff = effects_pool.get_effect_by_id(eid)
+		if eff.is_stored:
+			continue
+		if eff.parent is String and eff.parent.begins_with('hid'):
+			eff.is_applied = false

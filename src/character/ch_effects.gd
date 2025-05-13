@@ -97,6 +97,17 @@ func add_stored_effect(code, dict = {}):
 	rebuild = variables.DYN_STATS_REBUILD
 
 
+func clear_nonstored_effs():
+	for eid in effects_temp_globals_real:
+		var eff = effects_pool.get_effect_by_id(eid)
+		if eff.is_stored:
+			continue
+		if eff.parent is String and eff.parent.begins_with('hid'):
+			eff.is_applied = false
+	for stack in effects_temp_real.values():
+		stack.clear_nonstored_effs()
+
+
 func process_eid_add(code, timestamp, dict = {}):
 	var template = Effectdata.effect_table[code]
 	
@@ -116,11 +127,13 @@ func process_eid_add(code, timestamp, dict = {}):
 			eff.is_stored = false
 			add_eff_to_stack(id, timestamp)
 		'temp_s':
+			#unlikely but possible in case of non-duration ones
 			eff = effects_pool.e_createfromtemplate(code, parent.get_ref().id)
 			id = effects_pool.add_effect(eff)
 			eff.is_stored = false
 			add_eff_to_stack(id, timestamp)
 		'temp_global':
+			#highly unlikely
 			eff = effects_pool.e_createfromtemplate(code, parent.get_ref().id)
 			id = effects_pool.add_effect(eff)
 			eff.is_stored = false
