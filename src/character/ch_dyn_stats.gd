@@ -154,6 +154,7 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 			buffs.push_back(b)
 	
 	rebuild = variables.DYN_STATS_FULL
+	parent.get_ref().update_capped_stats()
 
 
 

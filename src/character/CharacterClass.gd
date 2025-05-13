@@ -21,7 +21,7 @@ var is_known_to_player = false #for purpose of private parts
 var npc_reference = null
 var tags = []
 #base combat stats
-var hp = 100 setget hp_set, hp_get
+var hp = 100 setget hp_set#, hp_get
 var mp = 50 setget mp_set
 var shield = 0 setget set_shield
 var defeated = false
@@ -65,8 +65,6 @@ func get_timestamp():
 	return dyn_stats.get_timestamp()
 
 func reset_rebuild():
-#	if (statlist.statlist.unique == 'cali'):
-#		print('+')
 	dyn_stats.reset_rebuild()
 #	dyn_stats.generate_data(variables.DYN_STATS_FULL, true)
 	if displaynode != null:
@@ -83,6 +81,10 @@ func base_exp_set(value):
 
 func swap_alternate_exterior():
 	statlist.swap_alternate_exterior()
+
+
+func update_capped_stats():
+	statlist.update_capped_stats()
 
 
 func get_stat_value_data(statname):
@@ -1925,16 +1927,21 @@ func mana_update(value):
 
 
 func stat_update(stat, value, is_set = false): #for permanent changes
+	var tmp = get_stat(stat)
 	if stat == 'hp':
-		return heal(value)
+		heal(value)
 	elif stat == 'mp':
-		return mana_update(value)
+		mana_update(value)
 	elif stat == 'base_exp':
-		return xp_module.update_exp(value, is_set)
+		xp_module.update_exp(value, is_set)
 	elif is_set:
-		return set_stat(stat, value)
+		set_stat(stat, value)
 	else: 
-		return add_stat(stat, value)
+		add_stat(stat, value)
+	if tmp != null:
+		return get_stat(stat) - tmp
+	else:
+		return get_stat(stat)
 
 
 func resurrect(hp_per):
