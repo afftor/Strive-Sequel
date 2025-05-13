@@ -19,13 +19,18 @@ func _init(caller):
 func apply():
 	is_applied = true
 	sub_effects.clear()
+	fill_sub_effects(true)
+
+
+func fill_sub_effects(firsttime = false):
 	for e in template.sub_effects:
 		var tmp = effects_pool.e_createfromtemplate(e, id)
 		tmp.is_applied = true
 		tmp.owner = owner
 		if tmp.template.type == 'oneshot':
-			tmp.applied_obj = owner
-			tmp.apply(get_args_resolved())
+			if firsttime:
+				tmp.applied_obj = owner
+				tmp.apply(get_args_resolved())
 		else:
 			tmp.is_stored = false
 			sub_effects.push_back(effects_pool.add_effect(tmp))
@@ -92,7 +97,7 @@ func calculate_args(data = {}): #one-time BEFORE apply() with ex in oneshots and
 						obj = data.target
 				'parent':
 					if parent is String:
-						obj = effects_pool.get_effect_by_id(parent)
+						obj = effects_pool.get_effect_by_id(parent) #not granted
 					else:
 						obj = parent
 				'owner':
@@ -164,7 +169,7 @@ func serialize():
 		tmp['template'] = template_id
 	else:
 		tmp['template'] = template
-	tmp['sub_effects'] = sub_effects
+#	tmp['sub_effects'] = sub_effects
 	tmp['type'] = 'base'
 	tmp['owner'] = owner
 	tmp['args'] = args.duplicate()
@@ -179,10 +184,11 @@ func deserialize(tmp):
 	else:
 		template = tmp.template.duplicate()
 	fix_template()
-	sub_effects = tmp.sub_effects.duplicate()
 	args = tmp.args.duplicate()
 	owner = tmp.owner
-	if get_applied_obj() == null: return
+	if get_applied_obj() == null: 
+		return
+	fill_sub_effects()
 
 
 func rebuild_buffs():

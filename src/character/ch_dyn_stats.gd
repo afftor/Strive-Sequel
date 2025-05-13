@@ -68,6 +68,7 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 	if rebuild >= stop_at and !forced:
 		return
 	#reset
+	clear_nonstored_effs()
 	traits_real = traits_stored.duplicate()
 	masteries_real = masteries.duplicate(true)
 	var skills_old = skills_real.duplicate()
