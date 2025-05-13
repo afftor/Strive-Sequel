@@ -46,6 +46,7 @@ func remove():
 	var obj = get_applied_obj()
 	if obj != null and is_stored:
 		obj.remove_effect(id)
+	is_applied = false
 
 
 func get_applied_obj():
