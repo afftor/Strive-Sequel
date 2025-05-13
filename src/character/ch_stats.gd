@@ -144,27 +144,32 @@ func get_stat(stat):
 			print ("error: no %s in container" % stat)
 			return null
 		tres = container[stat]
-	if data.tags.has('cap_up'):
-		var stat_cap
-		if data.cap_up is String:
-			stat_cap = parent.get_ref().get_stat(data.cap_up)
-		else:
-			stat_cap = data.cap_up
-		if tres > stat_cap:
-			tres = stat_cap
-			update_stat(stat, tres)
-	if data.tags.has('cap_low'):
-		var stat_cap
-		if data.cap_low is String:
-			stat_cap = parent.get_ref().get_stat(data.cap_low)
-		else:
-			stat_cap = data.cap_low
-		if tres < stat_cap:
-			tres = stat_cap
-			update_stat(stat, tres)
 	if data.tags.has('integer'):
 		tres = int(tres)
 	return tres
+
+
+func update_capped_stats():
+	for stat in statdata.statdata:
+		var data = statdata.statdata[stat]
+		if !data.direct:
+			continue
+		if data.tags.has('cap_up'):
+			var tres = get_stat(stat)
+			var stat_cap
+			if data.cap_up is String:
+				stat_cap = parent.get_ref().get_stat(data.cap_up)
+				if tres > stat_cap:
+					tres = stat_cap
+					update_stat(stat, tres)
+		if data.tags.has('cap_low'):
+			var tres = get_stat(stat)
+			var stat_cap
+			if data.cap_low is String:
+				stat_cap = parent.get_ref().get_stat(data.cap_low)
+				if tres < stat_cap:
+					tres = stat_cap
+					update_stat(stat, tres)
 
 
 func get_consent():
@@ -310,6 +315,10 @@ func get_portrait_update():
 		return !parent.get_ref().check_portrait()
 	return res
 
+
+func get_skin():
+	print("!!!")
+	return ''
 
 #setters
 func update_stat(stat, value, operant = 'set'):
