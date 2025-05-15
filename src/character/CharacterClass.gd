@@ -84,6 +84,8 @@ func swap_alternate_exterior():
 
 
 func update_capped_stats():
+	hp = min(hp, get_stat('hpmax'))
+	mp = min(mp, get_stat('mpmax'))
 	statlist.update_capped_stats()
 
 

@@ -48,12 +48,12 @@ var effects = {
 		type = 'temp_global',
 		tags = ['duration_none', 'defended'],
 		target = 'target',
+		req_skill = true,
 		name = 'defended',
 		timers = [
 			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
 			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
 		],
-		args = {defender = {obj = 'parent', func = 'arg', arg = 'caster'}},
 		sub_effects = ['defend_retarget', 'defend_reduce'],
 	},
 	defend_retarget = {
@@ -66,7 +66,7 @@ var effects = {
 			],
 		trigger = [variables.TR_DEF],
 		req_skill = true,
-		args = {defender = {obj = 'parent', func = 'arg', arg = 'defender'}},
+		args = {defender = {obj = 'parent', func = 'arg', arg = 'caster'}},
 		sub_effects = [
 			{
 				type = 'oneshot',
@@ -92,7 +92,7 @@ var effects = {
 			],
 		trigger = [variables.TR_DEF],
 		req_skill = true,
-		args = {defender = {obj = 'parent', func = 'arg', arg = 'defender'}},
+		args = {defender = {obj = 'parent', func = 'arg', arg = 'caster'}},
 		sub_effects = [
 			{
 				type = 'oneshot',
