@@ -370,6 +370,7 @@ func generate_simple_fighter(tempname, setup_ai = true):
 			set_stat(i, data[i])
 	npc_reference = data.code
 	statlist.generate_simple_fighter(data)
+	dyn_stats.generate_simple_fighter(data)
 	skills.setup_skills(data)
 	if setup_ai:
 		ai = ResourceScripts.scriptdict.class_ai_base.new()
