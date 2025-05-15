@@ -663,6 +663,7 @@ var effect_table = {
 		name = 'sleep',
 		tags = ['duration_turns', 'affliction', 'disable', 'sleep'],
 		target = 'target',
+		req_skill = true,
 		timers = [
 			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 1}, #1 turn duration
 			{events = [variables.TR_DMG], objects = 'owner', timer = 1}, #damage removes
@@ -677,6 +678,7 @@ var effect_table = {
 		name = 'sleep',
 		tags = ['duration_turns', 'affliction', 'disable', 'sleep'],
 		target = 'target',
+		req_skill = true,
 		timers = [
 			{events = [variables.TR_TURN_GET], objects = 'target', timer = 1}, #1 turn duration of CASTER
 			{events = [variables.TR_DMG], objects = 'owner', timer = 1}, #damage removes
@@ -722,6 +724,7 @@ var effect_table = {
 		type = 'temp_global',
 		tags = ['duration_turns', 'affliction', 'ensnare'],
 		target = 'target',
+		req_skill = true,
 		name = 'ensnare',
 		stack = 1,
 		timers = [
@@ -736,6 +739,7 @@ var effect_table = {
 		type = 'temp_global',
 		tags = ['duration_turns', 'affliction', 'ensnare'],
 		target = 'target',
+		req_skill = true,
 		name = 'ensnare',
 		stack = 1,
 		timers = [
@@ -750,6 +754,7 @@ var effect_table = {
 		type = 'temp_global',
 		tags = ['duration_turns', 'affliction', 'ensnare'],
 		target = 'target',
+		req_skill = true,
 		name = 'ensnare',
 		stack = 1,
 		timers = [
@@ -936,7 +941,7 @@ var effect_table = {
 		trigger = [variables.TR_TURN_GET],
 		req_skill = false,
 		conditions = [],
-		args = [],
+		args = {},
 		sub_effects = [
 			{
 				type = 'oneshot',
@@ -1748,7 +1753,7 @@ func rebuild_simple_dot(stat, value, trigger = variables.TR_TURN_F): #for non-da
 			{
 				type = 'oneshot',
 				target = 'owner',
-				args = [],
+				args = {},
 				atomic = [],
 			}
 		]
@@ -1769,7 +1774,7 @@ func rebuild_remove_effect(eff, target = 'target'):
 	var template = {
 		type = 'oneshot',
 		target = target,
-		args = [],
+		args = {},
 		atomic = [{type = 'remove_all_effects', value = eff}],
 	}
 	
@@ -1781,7 +1786,7 @@ func rebuild_make_status(args):
 	var template = {
 		type = 'oneshot',
 		target = 'target',
-		args = [],
+		args = {},
 		atomic = [],
 	}
 	atomic.effect = args.effect
@@ -1803,16 +1808,16 @@ func rebuild_autocast(args):
 		trigger = [],
 		req_skill = false,
 		conditions = [],
-		args = [],
+		args = {},
 		sub_effects = []
 		}
 	var oneshot = {
 		type = 'oneshot',
 		target = 'owner',
-		args = [{obj = 'app_obj'}],
+		args = {},
 		atomic = [],
 		}
-	var atomic = {type = 'use_combat_skill', skill = '', target = ['parent_args', 'skill']}
+	var atomic = {type = 'use_combat_skill'}
 	atomic.skill = args.skill
 	oneshot.atomic.push_back(atomic)
 	template.trigger = args.trigger.duplicate()
@@ -1848,6 +1853,10 @@ func get_effect_for_status(status):
 			return 'e_s_fear'
 		'cursed':
 			return 'e_s_cursed'
+		'taunt':
+			return 'e_s_taunt_new'
+		'provoke':
+			return 'e_s_taunt'
 		_:
 			return status
 

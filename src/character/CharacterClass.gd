@@ -84,6 +84,8 @@ func swap_alternate_exterior():
 
 
 func update_capped_stats():
+	hp = min(hp, get_stat('hpmax'))
+	mp = min(mp, get_stat('mpmax'))
 	statlist.update_capped_stats()
 
 
@@ -370,6 +372,7 @@ func generate_simple_fighter(tempname, setup_ai = true):
 			set_stat(i, data[i])
 	npc_reference = data.code
 	statlist.generate_simple_fighter(data)
+	dyn_stats.generate_simple_fighter(data)
 	skills.setup_skills(data)
 	if setup_ai:
 		ai = ResourceScripts.scriptdict.class_ai_base.new()
