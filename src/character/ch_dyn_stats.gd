@@ -520,10 +520,10 @@ func remove_stat_bonus(stat, op):
 
 func generate_simple_fighter(data):
 	for i in resists:
-		if data.has('resists') and data.resists.has(i):
-			resists['resist_' + i] = data.resists[i]
-		if data.has('status_resists') and data.status_resists.has(i):
-			resists['resist_' + i] = data.status_resists[i]
+		if data.has('resists') and data.resists.has(i.trim_prefix('resist_')):
+			resists[i] = data.resists[i.trim_prefix('resist_')]
+		if data.has('status_resists') and data.status_resists.has(i.trim_prefix('resist_')):
+			resists[i] = data.status_resists[i.trim_prefix('resist_')]
 	if data.has('traits'):
 		for tr in data.traits:
 			add_trait(tr)

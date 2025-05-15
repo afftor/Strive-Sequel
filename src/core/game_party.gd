@@ -23,12 +23,6 @@ func _get_key(char1, char2):
 	return pair[0] + "_" + pair[1]
 
 
-func _get_key_from_dict(data):
-	for i in relationship_data.keys():
-		if relationship_data[i] == data:
-			return i
-
-
 func _get_data(char1, char2):
 	var key = _get_key(char1, char2)
 	if relationship_data.has(key) == false:
