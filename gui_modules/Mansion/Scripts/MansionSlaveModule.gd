@@ -97,10 +97,11 @@ func show_slave_info():
 		$growth.text = tr(ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat('growth_factor')))])
 		$growth.set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat('growth_factor'))))])
 		for i in ['physics','wits','charm']:
-			var color = set_color(person.get_stat(i+"_bonus"))
-			get_node(i).text = str(floor(person.get_stat(i)))
+			var bonus = person.get_stat(i + "_bonus")
+			var color = set_color(bonus)
+			get_node(i).text = str(floor(person.get_stat(i) + bonus))
 			get_node(i).set("custom_colors/font_color", color)
-			get_node(i+'2').text = str(person.get_stat(i+'_cap') + person.get_stat(i+"_bonus"))
+			get_node(i+'2').text = str(person.get_stat(i+'_cap') + bonus)
 			get_node(i+'2').set("custom_colors/font_color", color)
 
 		text = "[center]" + statdata.statdata.productivity.name + "[/center]\n" + statdata.statdata.productivity.descript + "\n"+tr("TOTALPRODUCTIVITY")+": " + str(floor(person.get_stat('productivity')))
