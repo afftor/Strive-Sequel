@@ -1946,11 +1946,9 @@ func stat_update(stat, value, is_set = false): #for permanent changes
 	elif stat == 'base_exp':
 		return xp_module.update_exp(value, is_set)
 	elif is_set:
-		set_stat(stat, value)
-		return value
+		return set_stat(stat, value)
 	else: 
-		add_stat(stat, value)
-		return value
+		return add_stat(stat, value)
 
 
 func resurrect(hp_per):
