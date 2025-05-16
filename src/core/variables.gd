@@ -580,3 +580,9 @@ var spirit_changes = [
 	{max = -0.5, min = -10, desc = 'SPIRITLOSSSMALL'},
 	{max = -10.1, min = -100, desc = 'SPIRITLOSSGREAT'},
 ]
+var training_resistance = {
+	0 : 0,
+	25 : 0.3,
+	50 : 0.75,
+	75 : 1#training blocked
+}

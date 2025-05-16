@@ -116,7 +116,7 @@ func get_stat(statname):
 		return calculate_price()
 	if statname.begins_with('food_') and statname != 'food_consumption':
 		return food.get(statname)
-	if statname in ['spirit', 'loyalty']:
+	if statname in training.stat_list:
 		return training.get(statname)
 	if statname == 'pregnancy_status':
 		if has_status('heavy_pregnant'):
@@ -205,7 +205,7 @@ func add_stat(statname, value): #only oneshots
 			xp_module.base_exp += value
 	elif statname == 'base_exp_direct':
 		xp_module.base_exp += value
-	elif statname in ['spirit', 'loyalty']:
+	elif statname in training.stat_list:
 		training.add_stat(statname, value)
 	else: 
 		var st_data = statdata.statdata[statname]
@@ -1109,11 +1109,23 @@ func apply_training(tr_code):
 func get_training_cost():
 	return training.get_training_cost()
 
-func get_training_cost_gold():
-	return training.get_training_cost_gold()
+func get_servant_training_cost():
+	return training.get_servant_training_cost()
 
 func process_training_metrics(value):
 	training.process_training_metrics(value)
+
+func has_resistance_block():
+	return training.has_resistance_block()
+
+func get_resistance_reduction():
+	return training.get_resistance_reduction()
+
+func get_loyalty_penalty():
+	return training.get_loyalty_penalty()
+
+func get_loyalty_growth():
+	return training.get_loyalty_growth()
 
 func serialize():
 	var res = inst2dict(self)
@@ -1150,7 +1162,7 @@ func fix_serialization():
 	dyn_stats.deserialize(tmp2)
 	xp_module.fix_rules()
 	travel.fix_infinite_travel()
-	
+	training.fix_old_save()
 
 
 
@@ -1589,6 +1601,8 @@ func tick():
 	self.hp += get_stat('hp_reg')
 	self.mp += get_stat('mp_reg')
 	#loyalty and obedience changes are in sats
+	#what is "sats"?
+	training.tick()
 	if ResourceScripts.game_globals.hour == 2:
 		food.get_food()
 	
