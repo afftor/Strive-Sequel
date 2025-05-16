@@ -10,26 +10,55 @@ var dispositions_known = {}
 
 var spirit = 100
 var loyalty = 0
+var resistance = 100
+var stat_list = ['spirit', 'loyalty', 'resistance']
 var training_metrics = {}
 
 var stored_reqs = {}
 
 var enable = true
 var cooldown = {
-	main = 0,
+#	main = 0,
+	positive = 0,
 	mindread = 0,
 }
 
 
 func cooldown_tick():
-	if cooldown.main > 0:
-		cooldown.main -= 1
+#	if cooldown.main > 0:
+#		cooldown.main -= 1
+	if cooldown.positive > 0:
+		cooldown.positive -= 1
 	if cooldown.mindread > 0:
 		cooldown.mindread -= 1
 
+func tick():
+	if (is_slave() and can_be_trained()) or is_servant():
+		set_resistance(resistance - get_resistance_reduction())
+	if is_servant():
+		loyalty += get_loyalty_growth()
+
+func set_resistance(value):
+	resistance = clamp(value, 0, 100)#mind, that clamp() returns float
+
+func rand_resistance():
+	set_resistance(round(rand_range(90, 100)))
+
+func get_resistance_reduction():
+	return 5 * parent.get_ref().get_stat('tame_factor')
+
+func get_loyalty_growth():
+	return 1 - resistance * 0.01
+
+func get_loyalty_penalty():#returns portion: 0.3 means 30% penalty
+	var lvl_list = variables.training_resistance.keys()
+	lvl_list.sort()
+	for i in range(lvl_list.size()-1, -1, -1):
+		if resistance >= lvl_list[i]:
+			return variables.training_resistance[lvl_list[i]]
 
 func add_stat(statname, value):
-	if !enable:
+	if is_slave() and !enable:#not realy sure if it's necessary at all
 		return
 	set(statname, get(statname) + value)
 	if spirit < 0:
@@ -103,8 +132,18 @@ func add_trainee(id): #unsafe - no limit check
 
 
 func can_be_trained():
-	return cooldown.main < 1 and enable and trainer != null
+	return enable and trainer != null#cooldown.main < 1
 
+func has_resistance_block():
+	if !is_slave(): return false
+	return get_loyalty_penalty() == 1
+	
+
+#not sure for the classification, but it corresponds to conditions in SlaveSiblingsModule.gd
+func is_slave():
+	return parent.get_ref().get_stat('slave_class') in ['slave', 'slave_trained']
+func is_servant():
+	return parent.get_ref().get_stat('slave_class') in ['servant', 'servant_notax', 'heir']
 
 func clear_training():
 	if trainer != null:
@@ -122,6 +161,7 @@ func clear_training():
 func reset_training():
 	spirit = 100
 	loyalty = 0
+	rand_resistance()
 	enable = true
 	training_metrics.clear()
 	
@@ -159,29 +199,36 @@ func get_trainings_amount(tag = 'training'):
 	return tmp.size()
 
 
-func get_training_cost():
+func get_training_cost(tag = 'training'):
 	var cost = variables.training_costs[0]
-	var tr_a = get_trainings_amount()
+	var tr_a = get_trainings_amount(tag)
 	if tr_a > 0:
 		cost = variables.training_costs[1]
 	if tr_a > 1:
 		cost = variables.training_costs[2]
 	return cost
 
+func get_servant_training_cost():
+	return get_training_cost('servant_training')
 
-func get_training_cost_gold():
-	var val = parent.get_ref().calculate_price()
-	var cost = val * 0.25
-	var tr_a = get_trainings_amount('servant_training')
-	if tr_a > 0:
-		cost = val * 0.66
-	if tr_a > 1:
-		cost = val
-	return int(cost * (1.0 - 0.07 * parent.get_ref().get_stat('tame_factor')))
+#obsolete
+#func get_training_cost_gold():
+#	var val = parent.get_ref().calculate_price()
+#	var cost = val * 0.25
+#	var tr_a = get_trainings_amount('servant_training')
+#	if tr_a > 0:
+#		cost = val * 0.66
+#	if tr_a > 1:
+#		cost = val
+#	return int(cost * (1.0 - 0.07 * parent.get_ref().get_stat('tame_factor')))
 
 
 func add_training(id):
-	loyalty -= get_training_cost()
+	var cost = get_training_cost()
+	if is_servant():
+		cost = get_servant_training_cost()
+		rand_resistance()
+	loyalty -= cost
 	parent.get_ref().add_trait(id)
 
 
@@ -322,6 +369,8 @@ func apply_training(code):
 					result_data[ch] += tmp
 	if result_data.loyalty != 0:
 		result_data.loyalty += parent.get_ref().get_stat('training_loyalty')
+		if cat != 'positive':
+			result_data.loyalty -= result_data.loyalty * get_loyalty_penalty()
 		if result_data.loyalty < 0:
 			result_data.loyalty = 0 
 	if result_data.spirit != 0:
@@ -329,6 +378,7 @@ func apply_training(code):
 		if result_data.spirit > 0:
 			result_data.spirit = 0 
 	#other effects
+	var resistance_increased = false
 	if code == 'dayoff':
 		parent.get_ref().apply_effect_code('e_s_dayoff')
 	if code in ['rape', 'publicuse']:
@@ -358,10 +408,13 @@ func apply_training(code):
 				dispositions_known[dis] = true  
 				effect_text += "%s - %s \n" % [dis, dispositions[dis]] 
 	else:
-		cooldown.main = 3
+#		cooldown.main = 3
 		if cat == 'positive':
+			cooldown.positive = 1
 			ResourceScripts.game_party.add_relationship_value(parent.get_ref().id, trainer, globals.rng.randi_range(1, 2))
 		else:
+			rand_resistance()
+			resistance_increased = true
 			if parent.get_ref().has_status('likes_training'):
 				ResourceScripts.game_party.add_relationship_value(parent.get_ref().id, trainer, 3)
 			else:
@@ -384,6 +437,8 @@ func apply_training(code):
 		if result_data.spirit >= rec.min and result_data.spirit <= rec.max:
 			effect_text += "{color=yellow|" + parent.get_ref().translate(tr(rec.desc)) + "}\n"
 			break
+	if resistance_increased:
+		effect_text += "{color=yellow|%s}\n" % (tr('TRAININGRESISTANCEINCREASE') % resistance)
 	
 	if data.has('disposition_affects'):
 		for tag in data.disposition_affects:
@@ -547,3 +602,13 @@ func process_chardata(chardata):
 		process_disposition_data(chardata.training_disposition, true)
 	if chardata.has('blocked_training_traits'):
 		process_traits_availability_data(chardata.blocked_training_traits)
+
+#needed only for old saves. Remove with time
+func fix_old_save():
+	if !cooldown.has('positive'):
+		if cooldown.has('main') and cooldown.main > 0:
+			cooldown.positive = 1
+		else:
+			cooldown.positive = 0
+	if cooldown.has('main'):
+		cooldown.erase('main')

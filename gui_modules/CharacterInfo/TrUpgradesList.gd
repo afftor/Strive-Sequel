@@ -223,8 +223,18 @@ func build_training():
 
 func build_training_servant():
 	gather_data()
+	var cost = person.get_servant_training_cost()
 	$training_servant.visible = true
-	$training_servant/cost.text = tr('TRAININGCOSTGOLD') % person.get_training_cost_gold()
+	$training_servant/cost.text = tr('TRAININGCOST') % cost
+	$training_servant/resistance/label.text = tr('TRAININGLABELRESISTANCE') % person.get_stat('resistance')
+	globals.connecttexttooltip($training_servant/resistance, tr("TRAINSERVTOOLTIPRESISTANCE") % [
+		person.get_short_name(), person.get_resistance_reduction()
+	])
+	$training_servant/loyalty/label.text = tr('TRAININGLABELLOYALTY') % floor(person.get_stat('loyalty'))
+	globals.connecttexttooltip($training_servant/loyalty, tr("TRAINSERVTOOLTIPLOYALTY") % [
+		person.get_short_name(), person.get_loyalty_growth()
+	])
+	
 	input_handler.ClearContainer($training_servant/HBoxContainer2, ['Button'])
 	for tr in tr_traits_s:
 		var panel = input_handler.DuplicateContainerTemplate($training_servant/HBoxContainer2, 'Button')
@@ -238,7 +248,7 @@ func build_training_servant():
 			panel.pressed = true
 		else:
 			panel.pressed = false
-			if ResourceScripts.game_res.money >= person.get_training_cost_gold() and person.checkreqs(trdata.reqs) and person.training.check_stored_reqs(tr): 
+			if person.get_stat('loyalty') >= cost and person.checkreqs(trdata.reqs) and person.training.check_stored_reqs(tr):
 				panel.connect('toggled', self, 'press_trait_servant', [tr])
 			else:
 				panel.disabled = true
@@ -252,10 +262,21 @@ func build_training_header():
 	$training/name.text = "Trainer: " + trainer.get_full_name()
 #	$training/spirit.text = tr('TRAININGLABELSPIRIT') % person.get_stat('spirit')
 	$training/spirit.value = person.get_stat('spirit')
+	$training/resistance/label.text = tr('TRAININGLABELRESISTANCE') % person.get_stat('resistance')
+	globals.connecttexttooltip($training/resistance, tr("TRAININGTOOLTIPRESISTANCE") % [
+		person.get_short_name(), person.get_resistance_reduction()
+	])
+	var penalty = person.get_loyalty_penalty()
+	var loyalty_penalty_node = $training/resistance/loyalty
+	if penalty > 0:
+		loyalty_penalty_node.show()
+		$training/resistance/loyalty/penalty.text = "-%d%%" % (penalty * 100)
+	else:
+		loyalty_penalty_node.hide()
 	
-	$training/loyalty.text = tr('TRAININGLABELLOYALTY') % person.get_stat('loyalty')
-	if person.training.cooldown.main >= 1:
-		$training/cd.text = tr ('TRAINCOOLDOWN') % person.training.cooldown.main
+	$training/loyalty.text = tr('TRAININGLABELLOYALTY') % floor(person.get_stat('loyalty'))
+	if person.has_resistance_block():
+		$training/cd.text = tr ('TRAINRESISTANT')
 	else:
 		$training/cd.text = tr ('TRAINREADY')
 
@@ -284,15 +305,16 @@ func build_training_list():
 				text = "{color=red|"+tr('ACTIONTRAINERREQSNOTMET') +"}\n\n"+ text
 				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
 			#avail check
-			elif tr == 'mindread' and person.training.cooldown.mindread > 0:
+			elif ((tr == 'mindread' and person.training.cooldown.mindread > 0)
+					or (category == 'positive' and person.training.cooldown.positive > 0)):
 				panel.disabled = true
 				text = "{color=red|"+tr('ACTIONALREADYDONETODAY') +"}\n\n"+ text
-				globals.connecttexttooltip(panel, 'Has already been trained today')
+				globals.connecttexttooltip(panel, tr('ACTIONALREADYDONETODAY'))
 				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.gray))
-			elif tr != 'mindread' and person.training.cooldown.main > 0:
+			elif category != 'positive' and person.has_resistance_block():
 				panel.disabled = true
-				text = "{color=red|"+tr('ACTIONALREADYDONETODAY') +"}\n\n"+ text
-				globals.connecttexttooltip(panel, 'Has already been trained')
+				text = "{color=red|"+tr('TRAINRESISTANT') +"}\n\n"+ text
+				globals.connecttexttooltip(panel, tr('TRAINRESISTANT'))
 				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.gray))
 			#cost check
 			else:
@@ -372,8 +394,8 @@ func press_trait_servant(value, tr_code):
 	if !person.check_trait(tr_code):
 		selected_id = tr_code
 		var data = Traitdata.traits[tr_code]
-		var text = "Unlock this for {color=green|" + str(person.get_training_cost_gold()) + "} Gold?"
-		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'learn_upgrade_servant_confirmed', tr(text)])
+		var text = "Unlock this for {color=green|%s} Loyalty?" % person.get_servant_training_cost()
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'learn_upgrade_confirmed', tr(text)])
 #		person.add_training(tr_code)
 	build_training_servant()
 
@@ -395,20 +417,6 @@ func learn_upgrade_confirmed():
 	args["current_trait"] = selected_id
 	args["person"] = person
 	person.add_training(selected_id)
-	selected_id = ""
-	root.update()
-	input_handler.play_animation("trait_aquired", args)
-
-
-func learn_upgrade_servant_confirmed():
-	if selected_id == "": 
-		return
-	var data = Traitdata.traits[selected_id]
-	var args = {}
-	args["current_trait"] = selected_id
-	args["person"] = person
-	ResourceScripts.game_res.money -= person.get_training_cost_gold()
-	person.add_trait(selected_id)
 	selected_id = ""
 	root.update()
 	input_handler.play_animation("trait_aquired", args)

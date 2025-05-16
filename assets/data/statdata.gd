@@ -52,6 +52,13 @@ var statdata = {
 		baseicon = 'stat_cf',
 		type = 'mental_stat',
 	},
+	resistance = {
+		code = 'resistance',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+	},
 	food_hate = {
 		code = 'food_hate',
 		name = '',
