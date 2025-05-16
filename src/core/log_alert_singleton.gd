@@ -39,7 +39,9 @@ func check_log():
 		return
 	
 	last_time = new_time
-	file.open(path, File.READ)
+	var err = file.open(path, File.READ)
+	if err != OK:
+		print("log_alert can't open log file! Error code: %s" % err)
 	file.seek(last_pos)
 	while file.get_position() < file.get_len():
 		var line = file.get_line()
