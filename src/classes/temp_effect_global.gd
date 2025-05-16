@@ -39,17 +39,17 @@ func apply():
 					'owner':
 						input_handler.array_replace(timer.objects, t_obj, obj.id)
 					'caster':
-						input_handler.array_replace(timer.objects, t_obj, effects_pool.get_effect_by_id(parent).get_arg(0).id)
+						input_handler.array_replace(timer.objects, t_obj, get_arg('caster').id)
 					'target':
-						input_handler.array_replace(timer.objects, t_obj, effects_pool.get_effect_by_id(parent).get_arg(1).id)
+						input_handler.array_replace(timer.objects, t_obj, get_arg('target').id)
 		else:
 			match timer.objects:
 				'owner':
 					timer.objects = [obj.id]
 				'caster':
-					timer.objects = [effects_pool.get_effect_by_id(parent).get_arg(0).id]
+					timer.objects = [get_arg('caster').id]
 				'target':
-					timer.objects = [effects_pool.get_effect_by_id(parent).get_arg(1).id]
+					timer.objects = [get_arg('target').id]
 
 
 

@@ -97,6 +97,17 @@ func add_stored_effect(code, dict = {}):
 	rebuild = variables.DYN_STATS_REBUILD
 
 
+func clear_nonstored_effs():
+	for rec in effects_temp_globals_real:
+		var eff = effects_pool.get_effect_by_id(rec.id)
+		if eff.is_stored:
+			continue
+		if eff.parent is String and eff.parent.begins_with('hid'):
+			eff.is_applied = false
+	for stack in effects_temp_real.values():
+		stack.clear_nonstored_effs()
+
+
 func process_eid_add(code, timestamp, dict = {}):
 	var template = Effectdata.effect_table[code]
 	
@@ -116,11 +127,13 @@ func process_eid_add(code, timestamp, dict = {}):
 			eff.is_stored = false
 			add_eff_to_stack(id, timestamp)
 		'temp_s':
+			#unlikely but possible in case of non-duration ones
 			eff = effects_pool.e_createfromtemplate(code, parent.get_ref().id)
 			id = effects_pool.add_effect(eff)
 			eff.is_stored = false
 			add_eff_to_stack(id, timestamp)
 		'temp_global':
+			#highly unlikely
 			eff = effects_pool.e_createfromtemplate(code, parent.get_ref().id)
 			id = effects_pool.add_effect(eff)
 			eff.is_stored = false
@@ -179,8 +192,8 @@ func has_status(status):
 			continue
 		if data.tags.has(status):
 			return true
-	for id in effects_temp_globals_real:
-		var eff = effects_pool.get_effect_by_id(id)
+	for rec in effects_temp_globals_real:
+		var eff = effects_pool.get_effect_by_id(rec.id)
 		if eff.has_status(status):
 			return true
 	for st in effects_temp_real.values():
@@ -193,10 +206,10 @@ func has_status(status):
 
 func find_temp_effect_tag(eff_tag):
 	var res = []
-	for e in effects_temp_globals_real:
-		var eff = effects_pool.get_effect_by_id(e)
+	for rec in effects_temp_globals_real:
+		var eff = effects_pool.get_effect_by_id(rec.id)
 		if eff.has_status(eff_tag):
-			res.push_back(effects_temp_globals_real[e])
+			res.push_back(rec.id)
 	for st in effects_temp_real.values():
 		for id in st.get_active_effects().keys():
 			var eff = effects_pool.get_effect_by_id(id)
@@ -250,11 +263,21 @@ func process_event(ev, data = {}):
 		st.process_tick(ev)
 
 
+func remove_t_global(eff_id):
+	var pos = -1
+	for i in range(effects_temp_globals.size()):
+		if effects_temp_globals[i].id == eff_id:
+			pos = i
+			break
+	if pos != -1:
+		effects_temp_globals.remove(pos)
+
+
 func remove_effect(eff_id):
 	rebuild = variables.DYN_STATS_REBUILD
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	if obj is temp_e_global:
-		effects_temp_globals.erase(eff_id)
+		remove_t_global(eff_id)
 	else:
 		var stid = 'default'
 		if obj.template.has('stack'): 

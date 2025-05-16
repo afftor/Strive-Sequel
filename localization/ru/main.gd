@@ -243,6 +243,7 @@ var TranslationDict = {
 	SETTINGFREE_UPGRADE_DESCRIPT = """Бесплатное улучшение""",
 	SETTINGMATERIALS_DESCRIPT = """Стартовые материалы""",
 	SETTINGMONEY_DESCRIPT = """Стартовое золото""",
+	SETTINGFREE_GATHER_DESCRIPT = """Available resources are not locked by story progression""", # MISSING TRANSLATION
 	
 	DIFF_EASY = "Легко",
 	DIFF_NORMAL = "Нормально",

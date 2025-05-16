@@ -144,27 +144,32 @@ func get_stat(stat):
 			print ("error: no %s in container" % stat)
 			return null
 		tres = container[stat]
-	if data.tags.has('cap_up'):
-		var stat_cap
-		if data.cap_up is String:
-			stat_cap = parent.get_ref().get_stat(data.cap_up)
-		else:
-			stat_cap = data.cap_up
-		if tres > stat_cap:
-			tres = stat_cap
-			update_stat(stat, tres)
-	if data.tags.has('cap_low'):
-		var stat_cap
-		if data.cap_low is String:
-			stat_cap = parent.get_ref().get_stat(data.cap_low)
-		else:
-			stat_cap = data.cap_low
-		if tres < stat_cap:
-			tres = stat_cap
-			update_stat(stat, tres)
 	if data.tags.has('integer'):
 		tres = int(tres)
 	return tres
+
+
+func update_capped_stats():
+	for stat in statdata.statdata:
+		var data = statdata.statdata[stat]
+		if !data.direct:
+			continue
+		if data.tags.has('cap_up'):
+			var tres = get_stat(stat)
+			var stat_cap
+			if data.cap_up is String:
+				stat_cap = parent.get_ref().get_stat(data.cap_up)
+				if tres > stat_cap:
+					tres = stat_cap
+					update_stat(stat, tres)
+		if data.tags.has('cap_low'):
+			var tres = get_stat(stat)
+			var stat_cap
+			if data.cap_low is String:
+				stat_cap = parent.get_ref().get_stat(data.cap_low)
+				if tres < stat_cap:
+					tres = stat_cap
+					update_stat(stat, tres)
 
 
 func get_consent():
@@ -310,6 +315,10 @@ func get_portrait_update():
 		return !parent.get_ref().check_portrait()
 	return res
 
+
+func get_skin():
+	print("warning - get skin requested")
+	return ''
 
 #setters
 func update_stat(stat, value, operant = 'set'):
@@ -1220,16 +1229,16 @@ func roll_growth(diff):
 	update_stat('growth_factor', tmp, 'set')
 
 
-func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0):
+func generate_random_character_from_data(desired_races, desired_class = null, adjust_difficulty = 0):
 	adjust_difficulty = min(adjust_difficulty, 15)
 	var gendata = {race = '', sex = 'random', age = 'random'}
 
-	if typeof(races) == TYPE_STRING && races == 'random':
+	if typeof(desired_races) == TYPE_STRING && desired_races == 'random':
 		gendata.race = races.get_random_race()
-	elif typeof(races) == TYPE_STRING:
-		gendata.race = races
+	elif typeof(desired_races) == TYPE_STRING:
+		gendata.race = desired_races
 	else:
-		gendata.race = input_handler.random_from_array(races)
+		gendata.race = input_handler.random_from_array(desired_races)
 	parent.get_ref().create(gendata.race, gendata.sex, gendata.age)
 	
 	roll_growth(adjust_difficulty)

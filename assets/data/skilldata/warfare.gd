@@ -179,6 +179,7 @@ var effects = {
 	e_kill_execute = {
 		type = 'trigger',
 		trigger = [variables.TR_KILL],
+		conditions = [],
 		req_skill = true,
 		sub_effects = [{
 				type = 'oneshot',
