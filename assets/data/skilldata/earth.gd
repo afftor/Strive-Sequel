@@ -184,7 +184,7 @@ var effects = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
-		args = {value = {obj = 'skill', func = 'get', arg = 'process_value'}},
+		args = {},
 		sub_effects = [
 			Effectdata.rebuild_remove_effect('shred'),
 			Effectdata.rebuild_remove_effect('shatter'),
@@ -197,7 +197,7 @@ var effects = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [],
 		req_skill = true,
-		args = {value = {obj = 'skill', func = 'get', arg = 'process_value'}},
+		args = {},
 		sub_effects = [
 			Effectdata.rebuild_remove_effect('shred'),
 			Effectdata.rebuild_remove_effect('shatter'),
@@ -213,7 +213,7 @@ var effects = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 5,
 		tags = ['buff'],
-		args = {value = {obj = 'parent', func = 'arg', arg = 'value'}},
+		args = {value = {obj = 'skill', func = 'get', arg = 'process_value'}},
 		statchanges = {armor = [['arg', 'value'], '*', 0.5],},
 		buffs = [
 			{
@@ -230,7 +230,7 @@ var effects = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 5,
 		tags = ['buff'],
-		args = {value = {obj = 'parent', func = 'arg', arg = 'value'}},
+		args = {value = {obj = 'skill', func = 'get', arg = 'process_value'}},
 		statchanges = {
 			armor = [['arg', 'value'], '*', 0.5],
 			mdef = [['arg', 'value'], '*', 0.4],

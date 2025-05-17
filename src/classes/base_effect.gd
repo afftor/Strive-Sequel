@@ -142,6 +142,8 @@ func get_arg(rec):
 				obj = parent
 		'owner':
 			obj = get_applied_obj()
+		_:
+			obj = get_arg(arg.obj)
 	if obj == null:
 		return null
 	match arg.func:
