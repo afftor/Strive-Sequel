@@ -350,7 +350,18 @@ func generate_ea_character(gendata, desired_class):
 
 
 func generate_random_character_from_data(races_l, desired_class = null, adjust_difficulty = 0, trait_blacklist = []):
-	statlist.generate_random_character_from_data(races_l, desired_class, adjust_difficulty)
+	adjust_difficulty = min(adjust_difficulty, 15)
+	var gendata = {race = '', sex = 'random', age = 'random'}
+
+	if typeof(races_l) == TYPE_STRING && races_l == 'random':
+		gendata.race = races.get_random_race()
+	elif typeof(races_l) == TYPE_STRING:
+		gendata.race = races_l
+	else:
+		gendata.race = input_handler.random_from_array(races_l)
+	create(gendata.race, gendata.sex, gendata.age)
+	statlist.generate_random_character_from_data(adjust_difficulty)
+	dyn_stats.generate_random_character_from_data(desired_class, adjust_difficulty)
 	dyn_stats.get_random_traits(trait_blacklist)
 	xp_module.set_service_boost()
 
@@ -414,6 +425,7 @@ func turn_into_unique(code):
 
 func create(temp_race, temp_gender, temp_age):
 	id = characters_pool.add_char(self)
+	dyn_stats.gather_innate_bonuses()
 	learn_c_skill('attack')
 	statlist.create(temp_race, temp_gender, temp_age)
 	add_trait('core_trait')
@@ -424,6 +436,18 @@ func create(temp_race, temp_gender, temp_age):
 	
 	food.create()
 	training.build_stored_reqs()
+
+
+func get_racial_features(race):
+	var race_template = races.racelist[race]
+	
+	dyn_stats.get_racial_features(race)
+	statlist.get_racial_features(race)
+	training.setup_dispositions(race)
+	if race_template.has("combat_skills"):
+		for i in race_template.combat_skills:
+			learn_c_skill(i)
+	food.get_racial_features(race)
 
 
 func fill_boosters():

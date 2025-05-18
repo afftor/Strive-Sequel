@@ -94,6 +94,9 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 		if upg_data.has('traits'):
 			for tr in upg_data.traits:
 				process_trait_add(tr, body_upgrades[upg])
+	rebuild = variables.DYN_STATS_FACTORS
+	if rebuild >= stop_at and !forced:
+		return
 	update_masteries()
 	for trait in traits_real:
 		process_trait_data(trait, traits_real[trait])
@@ -228,6 +231,14 @@ func add_stat_bonus(stat, value, operant, src_type, src_value, timestamp):
 	if !store[stat].has(operant):
 		store[stat][operant] = []
 	store[stat][operant].push_back({value = value, src_type = src_type, src_value = src_value, timestamp = timestamp})
+
+
+func gather_innate_bonuses():
+	for stat in statdata.statdata:
+		var st_data = statdata.statdata[stat]
+		if st_data.has('innate_bonuses'):
+			for rec in st_data.innate_bonuses:
+				add_stat_bonus(stat, st_data.innate_bonuses[rec], rec, 'innate', '', 0)
 
 
 func process_trait_add(id, timestamp):
@@ -407,7 +418,11 @@ func get_stat_timestamps_data(stat, op = 'add'):
 
 
 func get_stat(stat): #pure value
-	return get_stat_data(stat).result
+	var st_data = statdata.statdata[stat]
+	if st_data.tags.has('factor'):
+		return get_stat_data(stat, variables.DYN_STATS_FACTORS).result
+	else:
+		return get_stat_data(stat).result
 
 
 func get_stat_timestamps(stat): #positive integer _add bonuses only
@@ -426,52 +441,52 @@ func fix_stat_data(stat, data):
 		'hpmax', 'physics_bonus', 'wits_bonus', 'sexuals_bonus', 'charm_bonus', 'productivity':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
-			data.bonuses.add.push_back({value = min(parent.get_ref().get_stat('growth_factor') - 1, get_prof_number()) * 5, src_type = 'factor', src_value = 'growth', timestamp = 0})
+			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 5, src_type = 'factor', src_value = 'growth', timestamp = 0})
 		'speed', 'hitrate':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
-			data.bonuses.add.push_back({value = min(parent.get_ref().get_stat('growth_factor') - 1, get_prof_number()) * 4, src_type = 'factor', src_value = 'growth', timestamp = 0})
+			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 4, src_type = 'factor', src_value = 'growth', timestamp = 0})
 		'evasion':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
-			data.bonuses.add.push_back({value = min(parent.get_ref().get_stat('growth_factor') - 1, get_prof_number()) * 4, src_type = 'factor', src_value = 'growth', timestamp = 0})
+			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 4, src_type = 'factor', src_value = 'growth', timestamp = 0})
 			if has_status('ninja'):
 				data.bonuses.add.push_back({value = get_stat('mdef'), src_type = 'class', src_value = 'ninja', timestamp = 0})
 		'atk', 'matk':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
-			data.bonuses.add.push_back({value = min(parent.get_ref().get_stat('growth_factor') - 1, get_prof_number()) * 3, src_type = 'factor', src_value = 'growth', timestamp = 0})
+			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 3, src_type = 'factor', src_value = 'growth', timestamp = 0})
 		'armor', 'mdef':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
-			data.bonuses.add.push_back({value = min(parent.get_ref().get_stat('growth_factor') - 1, get_prof_number()) * 2, src_type = 'factor', src_value = 'growth', timestamp = 0})
+			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 2, src_type = 'factor', src_value = 'growth', timestamp = 0})
 		'mpmax':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
-			data.base_value = variables.basic_max_mp + variables.max_mp_per_magic_factor * parent.get_ref().get_stat('magic_factor')
-			data.bonuses.add.push_back({value = min(parent.get_ref().get_stat('growth_factor') - 1, get_prof_number()) * 5, src_type = 'factor', src_value = 'growth', timestamp = 0})
+			data.base_value = variables.basic_max_mp + variables.max_mp_per_magic_factor * get_stat('magic_factor')
+			data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()) * 5, src_type = 'factor', src_value = 'growth', timestamp = 0})
 		'mp_reg':
 			if !data.bonuses.has('add2'):
 				data.bonuses.add2 = []
-			data.bonuses.add2.push_back({value = parent.get_ref().get_stat('magic_factor') * variables.mp_regen_per_magic, src_type = 'factor', src_value = 'magic', timestamp = 0})
+			data.bonuses.add2.push_back({value = get_stat('magic_factor') * variables.mp_regen_per_magic, src_type = 'factor', src_value = 'magic', timestamp = 0})
 			if ResourceScripts.game_res.upgrades.has('resting') and ResourceScripts.game_res.upgrades.resting > 0:
 				if !data.bonuses.has('mul2'):
 					data.bonuses.mul2 = []
 				data.bonuses.mul2.push_back({value = 1.2, src_type = 'upgrade', src_value = 'resting', timestamp = 0})
 		'upgrade_points_total':
-			data.base_value = parent.get_ref().get_stat('growth_factor') * 25
+			data.base_value = get_stat('growth_factor') * 25
 		'lustmax':
-			data.base_value = parent.get_ref().get_stat('sexuals_factor') * 25 + 25
+			data.base_value = get_stat('sexuals_factor') * 25 + 25
 		'trainee_amount':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
-			data.bonuses.add.push_back({value = parent.get_ref().get_stat('authority_factor') / 2, src_type = 'factor', src_value = 'authority', timestamp = 0})
+			data.bonuses.add.push_back({value = get_stat('authority_factor') / 2, src_type = 'factor', src_value = 'authority', timestamp = 0})
 		'mastery_point_universal':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
 			data.bonuses.add.push_back({value = -get_used_mastery_points('universal'), src_type = 'used', src_value = '', timestamp = 0})
 			if !has_status('slave'):
-				data.bonuses.add.push_back({value = min(parent.get_ref().get_stat('growth_factor') - 1, get_prof_number()), src_type = 'factor', src_value = 'growth', timestamp = 0})
+				data.bonuses.add.push_back({value = min(get_stat('growth_factor') - 1, get_prof_number()), src_type = 'factor', src_value = 'growth', timestamp = 0})
 		'mastery_point_combat':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
@@ -519,6 +534,7 @@ func remove_stat_bonus(stat, op):
 
 
 func generate_simple_fighter(data):
+	gather_innate_bonuses()
 	for i in resists:
 		if data.has('resists') and data.resists.has(i.trim_prefix('resist_')):
 			resists[i] = data.resists[i.trim_prefix('resist_')]
@@ -553,7 +569,7 @@ func add_trait(tr_code):
 	if tr_code == 'core_trait':
 		for eff in trait.effects:
 			add_stored_effect(eff)
-	if parent.get_ref().is_players_character:
+	if parent.get_ref().is_players_character and trait.visible:
 		globals.manifest_and_log('char', "%s: acquired trait %s" %
 			[parent.get_ref().get_short_name(), trait.name], parent.get_ref())
 
@@ -692,6 +708,71 @@ func remove_all_classes():
 	for i in classesdata.professions:
 		if !classesdata.professions[i].tags.has('permanent'):
 			remove_class(i)
+
+#create
+func roll_growth(diff):
+	var weight = {}
+	weight[1] = 100 - (diff - 1) * 100.0/14.0
+	weight[4] = 5 + (diff - 1) * 10.0/14.0
+	weight[5] = 2 + (diff - 1) * 7.0/14.0
+	weight[6] = 0.7 + (diff - 1) * 4.0/14.0
+	if diff <= 3:
+		weight[2] = 40 + (diff - 1) * 10.0/2.0
+	else:
+		weight[2] = 50 - (diff - 3) * 45.0/12.0
+	if diff <= 5:
+		weight[3] = 25 + (diff - 1) * 35.0/4.0
+	else:
+		weight[3] = 60 - (diff - 5) * 25.0/10.0
+	var tmp = input_handler.weightedrandom_dict(weight)
+	set_default_value('growth_factor', tmp)
+
+
+func generate_random_character_from_data(desired_class = null, adjust_difficulty = 0):
+	roll_growth(adjust_difficulty)
+	
+	var slaveclass = desired_class
+	if slaveclass == null:
+		slaveclass = input_handler.weightedrandom([['combat', 1],['magic', 1],['social', 1],['sexual',1], ['labor',1]])
+	
+	if slaveclass == 'magic' && statlist.magic_factor == 1: #prevents finding no class as there's no magic base classes which allow magic factor < 2
+		statlist.magic_factor = 2
+	
+	var difficulty = int(round(adjust_difficulty))
+	var classcounter = round(rand_range(variables.slave_classes_per_difficulty[difficulty][0], variables.slave_classes_per_difficulty[difficulty][1]))
+	
+	#Add extra stats for harder characters
+	var bonus_counter = 0
+	while difficulty > 0 && bonus_counter < 10:
+		var array = []
+		array = ['physics_factor', 'magic_factor', 'wits_factor','sexuals_factor', 'charm_factor']
+		array = input_handler.random_from_array(array)
+		if randf() >= 0.2:
+			statlist[array] += globals.rng.randi_range(0, 2)
+		if randf() >= 0.5:
+			statlist[array] += globals.rng.randi_range(-1, 1)
+		difficulty -= 1
+		bonus_counter += 1
+	
+	#assign classes
+	while classcounter > 0:
+		if randf() > 0.65:
+			classcounter -= 1
+			continue
+		var classarray = []
+		if randf() >= 0.85:
+			classarray = get_class_list('any', parent.get_ref())
+		else:
+			classarray = get_class_list(slaveclass, parent.get_ref())
+		if classarray != null && classarray.size() > 0:
+			unlock_class(input_handler.random_from_array(classarray).code, true)
+		classcounter -= 1
+
+
+func get_racial_features(race):
+	var race_template = races.racelist[race]
+	for i in race_template.basestats:
+		set_default_value(i, globals.rng.randi_range(race_template.basestats[i][0], race_template.basestats[i][1]))
 
 
 func process_chardata(chardata):
