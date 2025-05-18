@@ -99,7 +99,7 @@ func show_slave_info():
 		for i in ['physics','wits','charm']:
 			var bonus = person.get_stat(i + "_bonus")
 			var color = set_color(bonus)
-			get_node(i).text = str(floor(person.get_stat(i) + bonus))
+			get_node(i).text = str(floor(person.get_stat(i)))
 			get_node(i).set("custom_colors/font_color", color)
 			get_node(i+'2').text = str(person.get_stat(i+'_cap') + bonus)
 			get_node(i+'2').set("custom_colors/font_color", color)

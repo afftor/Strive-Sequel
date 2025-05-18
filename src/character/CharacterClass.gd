@@ -106,6 +106,8 @@ func get_stat_value_data(statname):
 func get_stat(statname):
 	if statname in ['hp', 'mp', 'shield', 'combatgroup']:
 		return get(statname)
+	if statname in ['physics','wits','charm','sexuals']:
+		return statlist.get_stat(statname) + dyn_stats.get_stat(statname + '_bonus')
 	if statname.begins_with('mastery_') and !statname.begins_with('mastery_point'):
 		return dyn_stats.get_mastery_level(statname.trim_prefix('mastery_'))
 	if statname == 'base_exp':
