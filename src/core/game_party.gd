@@ -362,6 +362,10 @@ func remove_slave(tempslave, permanent = false):
 	gui_controller.mansion.set_active_person(ResourceScripts.game_party.get_master())
 
 
+func has_char(id):
+	return (characters.has(id) or babies.has(id))
+
+
 func clear_heroes():
 	for p in characters:
 		characters[p].is_active = false

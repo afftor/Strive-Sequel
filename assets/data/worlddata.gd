@@ -709,11 +709,11 @@ var random_dungeon_events = {
 
 var fixed_location_options = { #override serialized data
 	aliron = [
-		{
-			text = tr('ARENA_NAME'),
-			reqs = [],
-			args = [{code = 'open_arena'}]
-		},
+#		{
+#			text = tr('ARENA_NAME'),
+#			reqs = [],
+#			args = [{code = 'open_arena'}]
+#		},
 		{
 			text = tr("ALIRON1"), 
 			reqs = [

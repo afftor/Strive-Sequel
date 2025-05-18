@@ -21,11 +21,12 @@ extends Reference
 #	The record with selector param itself ignores all other specific params
 #* gold - bool flag, gives gold
 #* material - string, gives designated material
-#* item - string, gives designated item. If it's of gear type, there is 2 legacy ways of generating item:
-#	bool param "by_quality" generates item "like it was in chests". If params "quality" and "parts"
-#	are provided, item will be generated with designated quality.
-#	With no by_quality flag item generated "like it was in enemies' loot".
-#	In any case param "parts" can be provided (string or dict).
+#* item - string, gives designated item. For gear type, if param "quality"
+#	provided, item will be generated with designated quality.
+#	Also "parts" param can be provided (string or dict).
+#	Bool param "autoassign_quality" used for [probably legacy] generating with
+#	autoassigning "quality" and no "parts" (it was in use for chests)
+#	(seems to be useful only for items in Items.fixed_quality_stats).
 #* random - string, determines type of randomly generated loot. Can be:
 #	* material - randomly generated material from tear lists provided by string param "tier" or bool
 #		param "from_location". In last case tier taken from location. If no tier param provided,
@@ -240,20 +241,20 @@ var loot_tables = {
 		{material = 'bonedragon', weight = 0.3, min = 1, max = 3},]},
 	test_chest_mimic = {},
 	fighters_join_reward = {list = [
-		{item = 'sword', by_quality = true, amount = 1, parts = {WeaponHandle = 'wood', Blade = 'iron'}},
-		{item = 'chest_base_leather', by_quality = true, amount = 1, parts = {ArmorBaseMed = 'leather', ArmorTrim = 'wood'}}]},
+		{item = 'sword', quality = 'poor', amount = 1, parts = {WeaponHandle = 'wood', Blade = 'iron'}},
+		{item = 'chest_base_leather', quality = 'poor', amount = 1, parts = {ArmorBaseMed = 'leather', ArmorTrim = 'wood'}}]},
 	workers_join_reward = {list = [
-		{item = 'axe', by_quality = true, amount = 1, parts = {ToolHandle = 'wood', ToolBlade = 'iron'}},
-		{item = 'worker_outfit', by_quality = true, amount = 1}]},
+		{item = 'axe', quality = 'poor', amount = 1, parts = {ToolHandle = 'wood', ToolBlade = 'iron'}},
+		{item = 'worker_outfit', amount = 1}]},#autoassign_quality = true
 	servants_join_reward = {list = [
-		{item = 'elegant_choker', by_quality = true, amount = 1},
-		{item = 'maid_dress', by_quality = true, amount = 1},
+		{item = 'elegant_choker', amount = 1},#autoassign_quality = true
+		{item = 'maid_dress', amount = 1},#autoassign_quality = true
 		{item = 'beer', amount = 4}]},
 	mages_join_reward = {list = [
-		{item = 'staff', by_quality = true, amount = 1, parts = {WeaponHandle = 'wood', Rod = 'woodmagic'}},
+		{item = 'staff', quality = 'poor', amount = 1, parts = {WeaponHandle = 'wood', Rod = 'woodmagic'}},
 		{item = 'lifeshard', amount = 3},
 		{item = 'energyshard', amount = 2}]},
-	servants_election_bonus = {item = 'amulet_of_recognition', by_quality = true, amount = 1},
+	servants_election_bonus = {item = 'amulet_of_recognition', amount = 1},#autoassign_quality = true
 	fighters_lich_bonus_loot = {list = [
 		{item = 'energyshard', min = 3, max = 4},
 		{item = 'lifegem', min = 3, max = 4},
@@ -299,25 +300,25 @@ var loot_tables = {
 	rebels_ore_reward = {list = [
 		{material = 'steel', amount = 25},
 		{material = 'mithril', amount = 10}]},
-	holy_sword_reward = {item = 'holy_sword', by_quality = true, amount = 1},
-	holy_spear_reward = {item = 'holy_spear', by_quality = true, amount = 1},
-	sacred_scales_reward = {item = 'sacred_scales', by_quality = true, amount = 1},
+	holy_sword_reward = {item = 'holy_sword', autoassign_quality = true, amount = 1},
+	holy_spear_reward = {item = 'holy_spear', autoassign_quality = true, amount = 1},
+	sacred_scales_reward = {item = 'sacred_scales', amount = 1},#autoassign_quality = true
 	zephyra_bribe_1 = {gold = true, amount = 500},
 	zephyra_bribe_2 = {item = 'zephyra_underwear', amount = 1},
-	ramont_axe_reward = {item = 'ramont_axe', by_quality = true, amount = 1},
-	hector_armor_reward = {item = 'hector_armor', by_quality = true, amount = 1},
+	ramont_axe_reward = {item = 'ramont_axe', amount = 1},#autoassign_quality = true
+	hector_armor_reward = {item = 'hector_armor', amount = 1},#autoassign_quality = true
 	erlen_sword_reward = {list = [
-		{item = 'erlen_sword', by_quality = true, amount = 1},
-		{item = 'sacred_bowl', by_quality = true, amount = 1}]},
-	ayneris_rapier_reward = {item = 'ayneris_rapier', by_quality = true, amount = 1},
-	garb_of_forest_reward = {item = 'garb_of_forest', by_quality = true, amount = 1},
-	chloe_goggles_reward = {item = 'chloe_goggles', by_quality = true, amount = 1},
+		{item = 'erlen_sword', amount = 1},#autoassign_quality = true
+		{item = 'sacred_bowl', amount = 1}]},#autoassign_quality = true
+	ayneris_rapier_reward = {item = 'ayneris_rapier', amount = 1},#autoassign_quality = true
+	garb_of_forest_reward = {item = 'garb_of_forest', amount = 1},#autoassign_quality = true
+	chloe_goggles_reward = {item = 'chloe_goggles', amount = 1},#autoassign_quality = true
 	priestess_tiara_reward = {list = [
-		{item = 'priestess_tiara', by_quality = true, amount = 1},
-		{item = 'sacred_bowl', by_quality = true, amount = 1}]},
-	xari_amulet_reward = {item = 'xari_amulet', by_quality = true, amount = 1},
-	amelia_dress_reward = {item = 'amelia_dress', by_quality = true, amount = 1},
-	zephyra_brush_reward = {item = 'zephyra_brush', by_quality = true, amount = 1},
+		{item = 'priestess_tiara', amount = 1},#autoassign_quality = true
+		{item = 'sacred_bowl', amount = 1}]},#autoassign_quality = true
+	xari_amulet_reward = {item = 'xari_amulet', amount = 1},#autoassign_quality = true
+	amelia_dress_reward = {item = 'amelia_dress', amount = 1},#autoassign_quality = true
+	zephyra_brush_reward = {item = 'zephyra_brush', amount = 1},#autoassign_quality = true
 	
 	#area_shop_items
 	plains_area_shop = {list = [

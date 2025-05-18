@@ -22,18 +22,17 @@ func _input(event):
 #	pass
 
 func open():
-	if IsActive: return
+	raise()
+#	var place = get_tree().root.get_child_count()
+#	get_tree().root.call_deferred("move_child",self,place)
 	
-	var place = get_tree().root.get_child_count()
-	get_tree().root.call_deferred("move_child",self,place)
+#	if IsActive: return
 	#get_tree().root.set_disable_input(true)
-	
 	IsActive = true
 	visible = true
 
 func close():
-	if !IsActive: return
-	
+#	if !IsActive: return
 	#get_tree().root.set_disable_input(false)
 	visible = false
 	IsActive = false

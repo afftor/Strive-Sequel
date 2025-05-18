@@ -569,7 +569,7 @@ func add_trait(tr_code):
 	if tr_code == 'core_trait':
 		for eff in trait.effects:
 			add_stored_effect(eff)
-	if parent.get_ref().is_players_character and trait.visible:
+	if parent.get_ref().is_in_game_party() and trait.visible:
 		globals.manifest_and_log('char', "%s: acquired trait %s" %
 			[parent.get_ref().get_short_name(), trait.name], parent.get_ref())
 
@@ -691,7 +691,7 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 		return "Already has this profession"
 	professions[prof.code] = get_timestamp()
 	rebuild = variables.DYN_STATS_REBUILD
-	if parent.get_ref().is_players_character:
+	if parent.get_ref().is_in_game_party():
 		globals.manifest_and_log('char', "%s: acquired profession %s" %
 			[parent.get_ref().get_short_name(), prof.name], parent.get_ref())
 

@@ -1788,6 +1788,7 @@ var training_actions = {
 		],
 		reqs = [],
 		reqs_trainer = [{code = 'unique', value = 'amelia'}],
+		showup_reqs = [{code = 'unique', value = 'amelia'}],
 		cost = {},
 	},
 	publicuse = {
