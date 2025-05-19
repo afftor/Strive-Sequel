@@ -63,7 +63,10 @@ func get_loyalty_penalty():#returns portion: 0.3 means 30% penalty
 func add_stat(statname, value):
 	if is_slave() and !enable:#not realy sure if it's necessary at all
 		return
-	set(statname, get(statname) + value)
+	if statname == 'resistance':
+		set_resistance(resistance + value)
+	else:
+		set(statname, get(statname) + value)
 	if spirit < 0:
 		spirit = 0
 
