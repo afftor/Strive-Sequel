@@ -421,9 +421,9 @@ var statdata = {
 		baseicon = 'stat_gf',
 		type = 'factor',
 		abb = 'GRO',
-		tags = ['integer', 'cap_up', 'cap_low'],
-		cap_up = variables.maximum_factor_value,
-		cap_low = variables.minimum_factor_value,
+		tags = ['integer', 'factor'],
+		direct = false,
+		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value}
 	},
 	physics_factor = {
 		code = 'physics_factor',
@@ -432,9 +432,9 @@ var statdata = {
 		baseicon = 'stat_pf',
 		type = 'factor',
 		abb = 'PHY',
-		tags = ['integer', 'cap_up', 'cap_low'],
-		cap_up = variables.maximum_factor_value,
-		cap_low = variables.minimum_factor_value,
+		tags = ['integer', 'factor'],
+		direct = false,
+		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value}
 	},
 	wits_factor = {
 		code = 'wits_factor',
@@ -443,9 +443,9 @@ var statdata = {
 		baseicon = 'stat_wit',
 		type = 'factor',
 		abb = 'WIT',
-		tags = ['integer', 'cap_up', 'cap_low'],
-		cap_up = variables.maximum_factor_value,
-		cap_low = variables.minimum_factor_value,
+		tags = ['integer', 'factor'],
+		direct = false,
+		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value}
 	},
 	charm_factor = {
 		code = 'charm_factor',
@@ -454,9 +454,9 @@ var statdata = {
 		baseicon = 'stat_charm',
 		type = 'factor',
 		abb = 'CHA',
-		tags = ['integer', 'cap_up', 'cap_low'],
-		cap_up = variables.maximum_factor_value,
-		cap_low = variables.minimum_factor_value,
+		tags = ['integer', 'factor'],
+		direct = false,
+		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value}
 	},
 	sexuals_factor = {
 		code = 'sexuals_factor',
@@ -465,9 +465,9 @@ var statdata = {
 		baseicon = 'stat_sf',
 		type = 'factor',
 		abb = 'SEX',
-		tags = ['integer', 'cap_up', 'cap_low'],
-		cap_up = variables.maximum_factor_value,
-		cap_low = variables.minimum_factor_value,
+		tags = ['integer', 'factor'],
+		direct = false,
+		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value}
 	},
 	magic_factor = {
 		code = 'magic_factor',
@@ -476,9 +476,9 @@ var statdata = {
 		baseicon = 'stat_mf',
 		type = 'factor',
 		abb = 'MAG',
-		tags = ['integer', 'cap_up', 'cap_low'],
-		cap_up = variables.maximum_factor_value,
-		cap_low = variables.minimum_factor_value,
+		tags = ['integer', 'factor'],
+		direct = false,
+		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value}
 	},
 	tame_factor = {
 		code = 'tame_factor',
@@ -487,9 +487,9 @@ var statdata = {
 		baseicon = 'stat_tf',
 		type = 'factor',
 		abb = 'TAM',
-		tags = ['integer', 'cap_up', 'cap_low'],
-		cap_up = variables.maximum_factor_value,
-		cap_low = variables.minimum_factor_value,
+		tags = ['integer', 'factor'],
+		direct = false,
+		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value}
 	},
 	authority_factor = {
 		code = 'authority_factor',
@@ -498,9 +498,9 @@ var statdata = {
 		baseicon = 'stat_df',
 		type = 'factor',
 		abb = 'TIM',
-		tags = ['integer', 'cap_up', 'cap_low'],
-		cap_up = variables.maximum_factor_value,
-		cap_low = variables.minimum_factor_value,
+		tags = ['integer', 'factor'],
+		direct = false,
+		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value}
 	},
 	#basestats caps
 	physics_cap = {
@@ -778,6 +778,7 @@ var statdata = {
 		type = 'misc',
 		tags = ['integer'],
 		direct = false,
+		innate_bonuses = {mincap = 0},
 		custom_order = ['add_part', 'mul', 'add']
 	},
 	mp_reg = {
@@ -789,6 +790,7 @@ var statdata = {
 		type = 'misc',
 		tags = ['integer', 'custom_bonuses'],
 		direct = false,
+		innate_bonuses = {mincap = 0},
 		custom_order = ['add2','add_part', 'mul', 'add', 'mul2']
 	},
 #	hpmax_add_part = {
@@ -841,6 +843,7 @@ var statdata = {
 		baseicon = 'food_love',
 		tags = ['integer', 'custom_bonuses'],
 		direct = false,
+		innate_bonuses = {mincap = 5}
 	},
 	matk = {
 		code = 'matk',
@@ -849,6 +852,7 @@ var statdata = {
 		baseicon = 'food_love',
 		tags = ['integer', 'custom_bonuses'],
 		direct = false,
+		innate_bonuses = {mincap = 5}
 	},
 	damagetype = {
 		code = 'damagetype',
@@ -892,6 +896,7 @@ var statdata = {
 		type = 'misc',
 		tags = ['integer'],
 		direct = false,
+		innate_bonuses = {maxcap = 100}
 	},
 	armorpenetration = {
 		code = 'armorpenetration',

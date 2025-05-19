@@ -29,8 +29,6 @@ func deserialize(savedict):
 	for stat in statlist:
 		if savedict.statlist.has(stat):
 			statlist[stat] = savedict.statlist[stat]
-	for stat in ['physics_factor', 'magic_factor', 'wits_factor', 'authority_factor', 'tame_factor', 'sexuals_factor', 'charm_factor']:
-		update_stat(stat, statlist[stat], 'set')
 	for stat in exterior:
 		if savedict.exterior.has(stat):
 			exterior[stat] = savedict.exterior[stat]
@@ -481,7 +479,7 @@ func get_stat_gain_rate(statname): #basestats only
 	elif statlist[statname] >= 60: res = 0.5
 	elif statlist[statname] >= 40: res = 0.75
 	
-	res *= variables.basestats_factor_mod[get_stat(statname + '_factor')]
+	res *= variables.basestats_factor_mod[parent.get_ref().get_stat(statname + '_factor')]
 	return res
 
 
@@ -1015,18 +1013,6 @@ func get_stat_old(statname):
 		return (statlist[statname + '_lost'] == null)
 
 
-func set_stat_old(st, value): #possibly obsolete
-	parent.get_ref().reset_rebuild()
-#	if st in ['physics', 'wits', 'charm']: 
-#		statlist[st] = min(value, get_stat(st + '_cap'))
-#	else: statlist[st] = value
-#	if st.ends_with('_factor'):
-#		statlist[st] = clamp(statlist[st], variables.minimum_factor_value, variables.maximum_factor_value)
-#	if st.begins_with('chg_'):
-#		statlist[st] = int(max(0, statlist[st]))
-#	if st == 'lust':
-#		statlist.lust = clamp(value, 0, get_stat('lustmax'))
-
 #sex stuff
 #can move them to another component - along with sex-related stats
 func access_sexexp(): # I DO NOT LIKE TO DO SO - but incapsulating all of them in reasonable time is impossible
@@ -1211,62 +1197,8 @@ func update_chardata(chardata):
 		statlist.dynamic_portrait = false
 
 
-func roll_growth(diff):
-	var weight = {}
-	weight[1] = 100 - (diff - 1) * 100.0/14.0
-	weight[4] = 5 + (diff - 1) * 10.0/14.0
-	weight[5] = 2 + (diff - 1) * 7.0/14.0
-	weight[6] = 0.7 + (diff - 1) * 4.0/14.0
-	if diff <= 3:
-		weight[2] = 40 + (diff - 1) * 10.0/2.0
-	else:
-		weight[2] = 50 - (diff - 3) * 45.0/12.0
-	if diff <= 5:
-		weight[3] = 25 + (diff - 1) * 35.0/4.0
-	else:
-		weight[3] = 60 - (diff - 5) * 25.0/10.0
-	var tmp = input_handler.weightedrandom_dict(weight)
-	update_stat('growth_factor', tmp, 'set')
-
-
-func generate_random_character_from_data(desired_races, desired_class = null, adjust_difficulty = 0):
-	adjust_difficulty = min(adjust_difficulty, 15)
-	var gendata = {race = '', sex = 'random', age = 'random'}
-
-	if typeof(desired_races) == TYPE_STRING && desired_races == 'random':
-		gendata.race = races.get_random_race()
-	elif typeof(desired_races) == TYPE_STRING:
-		gendata.race = desired_races
-	else:
-		gendata.race = input_handler.random_from_array(desired_races)
-	parent.get_ref().create(gendata.race, gendata.sex, gendata.age)
-	
-	roll_growth(adjust_difficulty)
-	
-	var slaveclass = desired_class
-	if slaveclass == null:
-		slaveclass = input_handler.weightedrandom([['combat', 1],['magic', 1],['social', 1],['sexual',1], ['labor',1]])
-	
-	if slaveclass == 'magic' && statlist.magic_factor == 1: #prevents finding no class as there's no magic base classes which allow magic factor < 2
-		statlist.magic_factor = 2
-	
-	var difficulty = int(round(adjust_difficulty))
-	var classcounter = round(rand_range(variables.slave_classes_per_difficulty[difficulty][0], variables.slave_classes_per_difficulty[difficulty][1]))
-	
-	#Add extra stats for harder characters
-	var bonus_counter = 0
-	while difficulty > 0 && bonus_counter < 10:
-		var array = []
-		array = ['physics_factor', 'magic_factor', 'wits_factor','sexuals_factor', 'charm_factor']
-		array = input_handler.random_from_array(array)
-		if randf() >= 0.2:
-			update_stat(array, round(rand_range(0,2)), 'add')
-		if randf() >= 0.5:
-			update_stat(input_handler.random_from_array(['tame_factor','authority_factor']), round(rand_range(-1,1)), 'add')
-		difficulty -= 1
-		bonus_counter += 1
-	
-	difficulty = adjust_difficulty / 2
+func generate_random_character_from_data(adjust_difficulty = 0):
+	var difficulty = adjust_difficulty / 2
 	while difficulty > -1:
 		var array = []
 		array = ['physics', 'wits','sexuals', 'charm']
@@ -1277,21 +1209,7 @@ func generate_random_character_from_data(desired_races, desired_class = null, ad
 			else:
 				update_stat(array, rand_range(1,15), 'add')
 		difficulty -= 1
-
-	#assign classes
-	while classcounter > 0:
-		if randf() > 0.65:
-			classcounter -= 1
-			continue
-		var classarray = []
-		if randf() >= 0.85:
-			classarray = parent.get_ref().get_class_list('any', parent.get_ref())
-		else:
-			classarray = parent.get_ref().get_class_list(slaveclass, parent.get_ref())
-		if classarray != null && classarray.size() > 0:
-			parent.get_ref().unlock_class(input_handler.random_from_array(classarray).code, true)
-		classcounter -= 1
-
+	
 	var traitarray = []
 	#assign sex traits
 	for i in Traitdata.sex_traits.values():
@@ -1313,7 +1231,6 @@ func generate_random_character_from_data(desired_races, desired_class = null, ad
 		add_sex_trait(newtrait.code)
 		traitarray.erase(newtrait)
 		rolls -= 1
-#	get_random_traits(trait_blacklist)
 
 
 func generate_simple_fighter(data):
@@ -1348,7 +1265,7 @@ func create(temp_race, temp_gender, temp_age):
 	
 	update_personality(input_handler.random_from_array(variables.personality_array))
 	
-	get_racial_features()
+	parent.get_ref().get_racial_features(statlist.race)
 	get_random_name()
 	get_random_colors()
 	random_icon()
@@ -1364,11 +1281,8 @@ func create(temp_race, temp_gender, temp_age):
 		make_random_portrait()
 
 
-func get_racial_features():
-	var race_template = races.racelist[statlist.race]
-	for i in race_template.basestats:
-		parent.get_ref().set_stat(i, round(rand_range(race_template.basestats[i][0], race_template.basestats[i][1]))) 
-	parent.get_ref().training.setup_dispositions(statlist.race)
+func get_racial_features(race):
+	var race_template = races.racelist[race]
 	for i in races.racelist.Human.bodyparts:
 		if races.racelist.Human.bodyparts[i].empty():
 			continue
@@ -1376,7 +1290,7 @@ func get_racial_features():
 			update_stat(i, input_handler.random_from_array(races.racelist.Human.bodyparts[i]), 'set')
 		else:
 			update_stat(i, input_handler.weightedrandom(races.racelist.Human.bodyparts[i]), 'set')
-	if statlist.race != 'Human':
+	if race != 'Human':
 		for i in race_template.bodyparts:
 			if typeof(race_template.bodyparts[i][0]) in [TYPE_STRING, TYPE_BOOL, TYPE_INT]:
 				update_stat(i, input_handler.random_from_array(race_template.bodyparts[i]), 'set')
@@ -1385,12 +1299,6 @@ func get_racial_features():
 	
 	if race_template.tags.has("multibreasts") && input_handler.globalsettings.furry_multiple_nipples == true:
 		statlist.multiple_tits = variables.furry_multiple_nipples_number
-	
-	if race_template.has("combat_skills"):
-		for i in race_template.combat_skills:
-			parent.get_ref().learn_c_skill(i)
-	
-	parent.get_ref().food.get_racial_features(statlist.race)
 	
 	var array = []
 	if race_template.has('personality'):
@@ -1636,11 +1544,11 @@ func change_personality_stats(stat, init_value, communicative = false):
 	if stat == 'bold':
 		primaxis = 'personality_bold'
 		altaxis = 'personality_kind'
-		prim_stat = get_stat("authority_factor")
+		prim_stat = parent.get_ref().get_stat("authority_factor")
 	else:
 		primaxis = 'personality_kind'
 		altaxis = 'personality_bold'
-		prim_stat = get_stat("tame_factor")
+		prim_stat = parent.get_ref().get_stat("tame_factor")
 	
 	var rebel = false
 	
