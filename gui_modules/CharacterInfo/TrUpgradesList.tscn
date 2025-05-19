@@ -338,17 +338,6 @@ texture_over = ExtResource( 33 )
 texture_progress = ExtResource( 22 )
 texture_progress_offset = Vector2( 29, 3 )
 
-[node name="loyalty" type="Label" parent="training"]
-light_mask = 0
-margin_left = 90.5931
-margin_top = 689.019
-margin_right = 384.593
-margin_bottom = 724.019
-custom_fonts/font = ExtResource( 9 )
-text = "character loyalty: 100"
-valign = 1
-clip_text = true
-
 [node name="cd" type="Label" parent="training"]
 light_mask = 0
 margin_left = 180.0
@@ -402,15 +391,6 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
 
-[node name="TextureRect" type="TextureRect" parent="training"]
-margin_left = 16.0
-margin_top = 688.0
-margin_right = 65.0
-margin_bottom = 730.0
-texture = ExtResource( 24 )
-expand = true
-stretch_mode = 6
-
 [node name="TextureRect2" type="TextureRect" parent="training"]
 margin_left = 152.827
 margin_top = 117.939
@@ -418,11 +398,31 @@ margin_right = 193.827
 margin_bottom = 170.939
 texture = ExtResource( 25 )
 
+[node name="TextureRect" type="TextureRect" parent="training"]
+margin_left = 16.0
+margin_top = 693.0
+margin_right = 65.0
+margin_bottom = 735.0
+texture = ExtResource( 24 )
+expand = true
+stretch_mode = 6
+
+[node name="loyalty" type="Label" parent="training"]
+light_mask = 0
+margin_left = 87.0
+margin_top = 694.0
+margin_right = 142.0
+margin_bottom = 729.0
+custom_fonts/font = ExtResource( 9 )
+text = "100"
+valign = 1
+clip_text = true
+
 [node name="resistance" type="Control" parent="training"]
-margin_left = 561.0
-margin_top = 124.0
-margin_right = 657.0
-margin_bottom = 177.0
+margin_left = 166.0
+margin_top = 685.0
+margin_right = 319.0
+margin_bottom = 738.0
 mouse_filter = 1
 
 [node name="resistance" type="TextureRect" parent="training/resistance"]
@@ -436,34 +436,13 @@ stretch_mode = 6
 
 [node name="label" type="Label" parent="training/resistance"]
 light_mask = 0
-margin_left = 46.827
-margin_top = 7.939
-margin_right = 95.827
-margin_bottom = 42.939
+margin_left = 58.0
+margin_top = 8.0
+margin_right = 150.0
+margin_bottom = 43.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
-text = "100"
-valign = 1
-clip_text = true
-
-[node name="loyalty" type="TextureRect" parent="training/resistance"]
-margin_left = 103.827
-margin_top = 3.939
-margin_right = 152.827
-margin_bottom = 45.939
-texture = ExtResource( 24 )
-expand = true
-stretch_mode = 6
-
-[node name="penalty" type="Label" parent="training/resistance/loyalty"]
-light_mask = 0
-margin_left = 55.0
-margin_top = 4.0
-margin_right = 135.0
-margin_bottom = 39.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 9 )
-text = "- 100%"
+text = "100 - 10"
 valign = 1
 clip_text = true
 
@@ -520,7 +499,7 @@ stretch_mode = 6
 [node name="loyalty" type="Control" parent="training_servant"]
 margin_left = 16.0
 margin_top = 320.0
-margin_right = 339.0
+margin_right = 201.0
 margin_bottom = 364.0
 mouse_filter = 1
 
@@ -533,19 +512,19 @@ stretch_mode = 6
 
 [node name="label" type="Label" parent="training_servant/loyalty"]
 light_mask = 0
-margin_left = 74.5931
-margin_top = 1.01898
-margin_right = 368.593
-margin_bottom = 36.019
+margin_left = 69.0
+margin_top = 1.0
+margin_right = 183.0
+margin_bottom = 36.0
 custom_fonts/font = ExtResource( 9 )
-text = "character loyalty: 100"
+text = "100 + 0.25"
 valign = 1
 clip_text = true
 
 [node name="resistance" type="Control" parent="training_servant"]
-margin_left = 373.0
+margin_left = 209.0
 margin_top = 313.0
-margin_right = 469.0
+margin_right = 355.0
 margin_bottom = 366.0
 mouse_filter = 1
 
@@ -560,13 +539,13 @@ stretch_mode = 6
 
 [node name="label" type="Label" parent="training_servant/resistance"]
 light_mask = 0
-margin_left = 46.827
-margin_top = 7.939
-margin_right = 95.827
-margin_bottom = 42.939
+margin_left = 47.0
+margin_top = 8.0
+margin_right = 145.0
+margin_bottom = 43.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
-text = "100"
+text = "100 - 10"
 valign = 1
 clip_text = true
 

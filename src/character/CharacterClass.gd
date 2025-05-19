@@ -1121,8 +1121,8 @@ func has_resistance_block():
 func get_resistance_reduction():
 	return training.get_resistance_reduction()
 
-func get_loyalty_penalty():
-	return training.get_loyalty_penalty()
+func get_loyalty_penalty_data():
+	return training.get_loyalty_penalty_data()
 
 func get_loyalty_growth():
 	return training.get_loyalty_growth()
