@@ -41,13 +41,13 @@ func _on_TextEdit_text_entered(new_text):
 	var splitstring = new_text.split(" ")
 	if splitstring[0] == "/do" :
 		var jsonstring = JSON.parse(splitstring[1])
-		#если не удалось спарсить то пишем почему и выходим из метода
+		
 		if jsonstring.error:
 			add_text(jsonstring.error_string + "\n")
 			return
-		#если все норм, то результат оборачиваем в  массив словарей
+		
 		var command = [jsonstring.result]
-		#и отправляем на выполнение
+		
 		var a = globals.common_effects(command)
 		
 		var output_text = new_text + "\n"

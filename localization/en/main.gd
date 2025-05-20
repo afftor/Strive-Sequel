@@ -1083,7 +1083,9 @@ Hotkey: 3""",
 	SKILLWEAPON_REFINE = "Weapon Refine",
 	SKILLWEAPON_REFINEDESCRIPT = "Increases target's ATK by 30% until end of combat.",
 	SKILLACIDBOMB = "Acid Bomb",
-	SKILLACIDBOMBDESCRIPT = "Throws Acid Bomb at a target, dealing 250% of MATK as {color=yellow|Water} damage and reducing target's armor by 25 for 4 turns.",
+	SKILLACIDBOMBDESCRIPT = """Deals 250% of MATK as {color=yellow|Earth} damage and applies Shredded to target for 3 turns. 
+
+Shredded: DEF is reduced by 50%.""",
 	SKILLFIREBOMB = "Fire Bomb",
 	SKILLFIREBOMBDESCRIPT = "Throws Fire Bomb at a column, dealing 200% of MATK as {color=yellow|Fire} damage. Burns targets for 2 turns.",
 	SKILLDISTRACT = "Distract",
@@ -2159,6 +2161,8 @@ Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax""
 	INFOCONSENT = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. Consent will affect prostitution related jobs.",
 	INFOCONSENTMASTER = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. {color=green|[Master] has no Consent requirements for any actions.}",
 	INFOTRAINING = "Slave type characters will be trained by selected person in various actions. Every slave has different {color=aqua|Dispositions} towards different kind of actions. Properly selected actions will award more Loyalty and drain less spirit but most actions have additional effects.",
+	INFOTRAININGSUBORDINATE = "Subordinate type characters will accomodate loyalty points with time. ",
+	INFORESISTANCE = "Character's Resistance will reduce efficiency of training. Resistance weakens with time and resets on performing training.",
 	INFOSLAVETRAINER = "Assign a Trainer to oversee and train untrained slave. Trainer have a limited number of slaves they can work with. Slaves with nobody overseeing them will not do any work until fully trained.",
 	TRAINREADY = "Ready",
 	TRAINCOOLDOWN = "Cooldown. Days until ready: %d",#obsolete?
@@ -18151,7 +18155,7 @@ The air smells of iron and faint traces of magic as you stand over [him]. The in
 	CHARRND_INJURY_OPT_HELP = "Help Out (20 gold)",
 	CHARRND_INJURY_OPT_DISC = "Discipline",
 	CHARRND_INJURY_OPT_MANIP = "Manipulate",
-	CHARRND_INJURY_REPLY_HELP = "You kneel beside [name] and call for a healer, digging into your coin pouch to cover the cost. The mansion's apothecary arrives quickly, stitching the wound with practiced hands and a touch of glowing herbs. [He] mutters a weak thanks, still pale but relieved.",
+	CHARRND_INJURY_REPLY_HELP = "You kneel beside [name] and call for a healer, digging into your coin pouch to cover the cost. The local apothecary arrives quickly, stitching the wound with practiced hands and a touch of glowing herbs. [He] mutters a weak thanks, still pale but relieved.",
 	CHARRND_INJURY_REPLY_DISC = "You grab [name] by the collar, ignoring [his] wince, and haul [him] to [his] feet. You call [him] a clumsy fool and shove [him] toward the wall. A quick lash of words, or even a strike if the mood takes you, drives the lesson home.",
 	CHARRND_INJURY_REPLY_MANIP = "You crouch down, keeping your voice low and smooth. You tell [him] this didn't have to happen, that better listening would have kept [him] safe. [He] blinks, confusion clouding [his] pain as you weave doubt into [his] mind. By the time you finish, [he] half-believes it's [his] fault, and that you're the only one who can protect [him].",
 	CHARRND_ASLEEP = "As you pass through the dimly lit corridors of the mansion, you notice a figure slumped over a workbench in one of the cluttered rooms. It's [name], head resting on [his] arms, fast asleep amidst scattered tools and flickering candlelight. [His] chest rises and falls slowly, oblivious to the world, a half-finished task lying abandoned before [him].",

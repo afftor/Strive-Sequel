@@ -191,20 +191,20 @@ func FindNextImagesInPlayer():
 	Collection = Collection.rstrip("1234567890")
 	#
 	var content : Array = Gallery.ero_scenes_collection[str(Collection)]
-	var count = content.size() # сколько всего картинок в коллекции
-	var currentCount = 0 # номер текущего изображения в коллеции
+	var count = content.size()
+	var currentCount = 0
 	
-	for i in content:# узнаем номер картинки в коллекции
+	for i in content:
 		if i == imagename:
 			break
 		currentCount += 1
-	if currentCount == content.size() - 1:#если картинка была последняя в коллекции то выходим
+	if currentCount == content.size() - 1:
 		$FullScreenImage.hide()
 		return
 	
 	var progress : Array = input_handler.progress_data.ero_scenes
 	var newimagename = content[currentCount + 1]
-	#Если изображение у игрока не открыто, то показываем другую картинку
+	
 	if !progress.has(content[currentCount + 1]):
 		$FullScreenImage.texture = load("res://assets/Textures_v2/back_charinfo.png")
 		Collection = newimagename

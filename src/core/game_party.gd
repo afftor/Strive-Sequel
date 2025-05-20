@@ -34,7 +34,10 @@ func add_relationship_value(char1, char2, value):
 	if characters_pool.get_char_by_id(char1).is_master(): 
 		return 
 	if characters_pool.get_char_by_id(char2).is_master(): 
-		return 
+		return
+	
+	if char1 == char2: return
+	
 	var key = _get_key(char1, char2)
 	
 	if relationship_data.has(key):
@@ -55,6 +58,8 @@ func update_relationship_status(data, char1, char2):
 		return 
 	if characters[char2].is_master(): 
 		return 
+	if char1 == char2: return
+	
 	var value = data.value
 	var status = data.status
 	if value <= 25:
