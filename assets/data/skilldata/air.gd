@@ -227,7 +227,7 @@ var effects = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
 		tags = ['buff'],
-		args = {damage = {obj = 'value', func = 'eq'}},
+		args = {damage = {obj = 'process_value', func = 'eq'}},
 		sub_effects = ['e_tr_eye'],
 		atomic = [],
 		buffs = [

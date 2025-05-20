@@ -405,7 +405,7 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
 		tags = ['positive'],
-		args = {value = {obj = 'value', func = 'eq'}},
+		args = {value = {obj = 'process_value', func = 'eq'}},
 		sub_effects = ['e_t_regen'],
 		atomic = [],
 		buffs = ['b_regen'], 
@@ -557,7 +557,6 @@ var effect_table = {
 			src = {obj = 'self', func = 'src', src = 'fire'}
 		},
 		sub_effects = ['e_dot_new'],
-		buffs = ['b_burn'],
 	},
 	e_s_poison_new = {
 		type = 'temp_s',
@@ -573,7 +572,6 @@ var effect_table = {
 			src = {obj = 'self', func = 'src', src = 'true'}
 		},
 		sub_effects = ['e_dot_new'],
-		buffs = ['b_poison'],
 	},
 	
 	e_s_bleed_new = {
@@ -590,7 +588,6 @@ var effect_table = {
 			src = {obj = 'self', func = 'src', src = 'true'}
 		},
 		sub_effects = ['e_dot_new'],
-		buffs = ['b_bleed'],
 	},
 	
 	e_s_darkflame = {
@@ -610,7 +607,6 @@ var effect_table = {
 			rebuild_remove_effect('burn', 'owner'),
 			'e_dot_new'
 			],
-		buffs = ['b_darkflame'],
 	},
 	e_dot_new = {
 		type = 'trigger',
@@ -1069,7 +1065,7 @@ var effect_table = {
 	e_res = {
 		type = 'oneshot',
 		target = 'target',
-		args = {mod = {obj = 'value', func = 'eq'}},
+		args = {mod = {obj = 'process_value', func = 'eq'}},
 		atomic = ['a_res'],
 	},
 	#temp items
@@ -1316,18 +1312,22 @@ var stacks = {
 	burn = {
 		type = 'stack_s',
 		stack = 1,
+		buff = 'b_burn'
 	}, #stack 1, add dur
 	bleed = {
 		type = 'stack_s',
 		stack = 1,
+		buff = 'b_bleed'
 	}, #stack 1, add dur
 	poison = {
 		type = 'stack_s',
 		stack = 1,
+		buff = 'b_poison'
 	}, #stack 1, add dur
 	darkflame = {
 		type = 'stack_s',
 		stack = 1,
+		buff = 'b_darkflame'
 	}, #stack 1, add dur
 	shred = {
 		type = 'stack_a',
