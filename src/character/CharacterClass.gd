@@ -619,6 +619,9 @@ func remove_from_task(travel = false):
 func return_to_task():
 	xp_module.return_to_task()
 
+func get_unaval_string():
+	return xp_module.get_unaval_string()
+
 func travel_per_tick():
 	return travel.travel_per_tick()
 
@@ -1785,7 +1788,10 @@ func affect_char(template, manifest = false):
 			if template.value:
 				xp_module.make_avaliable()
 			else:
-				xp_module.make_unavaliable()
+				var duration = -1
+				if template.has('duration'):
+					duration = template.duration
+				xp_module.make_unavaliable(duration)
 		'set_as_spouse':
 			ResourceScripts.game_progress.spouse = id
 		'escape':

@@ -261,7 +261,7 @@ func update_button(newbutton, person):
 					time_left_string = str(time_left) + " d."
 				newbutton.get_node("job/Label").text = "On Quest: " + time_left_string
 			else:
-				newbutton.get_node("job/Label").text = tr("CHAR_UNAVALIABLE")
+				newbutton.get_node("job/Label").text = person.get_unaval_string()
 		else:
 			newbutton.get_node("job/Label").text = tr("TASKREST")
 	else:

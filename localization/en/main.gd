@@ -992,6 +992,8 @@ Reduced by enemy's evasion""",
 	SYSNOWORKERENERGY = "Work canceled: No energy",
 	DIALOGUEREPEATACTION = "Repeat",
 	CHAR_UNAVALIABLE = "Unavailable",
+	CHAR_UNAVALIABLE_TURN = "Unavail: %s t.",
+	CHAR_UNAVALIABLE_DAY = "Unavail: %s d.",
 	NO_FREE_SLOTS = "This task has no available slots left",
 	ANOTHERPROFSELECTED = "Can only select one specialization.",
 	NOMATERIALSFORITEMPART = "You have no suitable materials for this item part",
@@ -18283,7 +18285,7 @@ The path ahead looms, treasures and dangers still out of reach. [name] grips [hi
 
 The journey's toll shows in [his] dragging steps, and the next chamber waits just ahead, promising more strain. [name] shifts [his] weight, waiting for your answer, breath ragged.""",
 	CHARRND_SKIRMISH_OPT_AGREE = "Agree",
-	CHARRND_SKIRMISH_OPT_GOLD = "Tip with gold",
+	CHARRND_SKIRMISH_OPT_GOLD = "Tip with gold (20)",
 	CHARRND_SKIRMISH_OPT_IGNORE = "Ignore It",
 	CHARRND_SKIRMISH_REPLY_AGREE = "You nod and tell [name] to sit, pointing to a nearby alcove. [He] sinks down with a grateful sigh, stretching out [his] legs as [he] catches [his] breath. The delay costs you progress, but [his] strength returns, and [he] sticks closer to you after, renewed.",
 	CHARRND_SKIRMISH_REPLY_GOLD = "You pull a few coins from your pouch and press them into [name]'s hand, urging [him] to keep going. [His] eyes brighten at the glint of gold, and [he] straightens, pocketing the tip with a nod. [He] pushes through the fatigue, loyalty sparked by the small reward.",
@@ -18298,7 +18300,7 @@ The air feels heavy, the amulet glinting faintly in [his] hand. [name] watches y
 	CHARRND_LETTER = """You catch [name] hunched in a dim corner of the mansion, reading a tattered sheet of paper. When [he] spots you, [he] fumbles and drops it. The scrawled words reveal [his] family's desperate plea for aid. [He] stares at you, braced for punishment, eyes wide with dread.
 
 The paper lies crumpled at [his] feet, the air thick with [his] silent worry. [name] shifts, waiting, as you weigh the moment: aid [his] kin, or destroy the letter.""",
-	CHARRND_LETTER_OPT_HELP = "Help the Family",
+	CHARRND_LETTER_OPT_HELP = "Help the Family (20 grain)",
 	CHARRND_LETTER_OPT_BURN = "Burn the Letter",
 	CHARRND_LETTER_REPLY_HELP = "You arrange for a sack of flour and coins to be sent to [name]'s village. A messenger returns with tales of [his] mother's tearful thanks. [name] gazes at you with awe, and even the grumpiest servants mutter that you've got a heart after all.",
 	CHARRND_LETTER_REPLY_BURN = "You snatch the paper and rip it apart, calling it a distraction from [his] duties. [name] stands frozen as the pieces scatter, [his] eyes hollowing out. By morning, [he]'s gone, leaving only footprints fading toward the edge of your lands.",
