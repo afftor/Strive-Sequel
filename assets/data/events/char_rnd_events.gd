@@ -30,6 +30,7 @@ var data = {
 						value = "var_injury_money"
 					}
 				],
+				not_hide = true,
 				bonus_effects = [
 					{
 						code = "money_change",
@@ -1965,9 +1966,9 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'effect',
-						value = 'e_grave_injury',
-						override = {duration = 'var_trap_injury_dur'}
+						type = 'set_availability',
+						value = false,
+						duration = 'var_trap_injury_dur'
 					}
 				],
 			}
@@ -2072,6 +2073,7 @@ var data = {
 						value = "var_skirmish_money"
 					}
 				],
+				not_hide = true,
 				bonus_effects = [
 					{
 						code = "money_change",
@@ -2285,8 +2287,14 @@ var data = {
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				reqs = [
-
+					{
+						type = "has_material",
+						operant = "gte",
+						value = "var_letter_grain",
+						material = "grain"
+					},
 				],
+				not_hide = true,
 				bonus_effects = [
 					{
 						code = 'material_change',
@@ -2414,10 +2422,9 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'effect',
-						#using it while only 1 day of disabling is required
-						#with any other cases, probably would be better to add new mechanic
-						value = "e_s_dayoff"
+						type = 'set_availability',
+						value = false,
+						duration = 'var_brokenvase_duration'
 					},
 					{
 						code = "real_affect_scene_characters",

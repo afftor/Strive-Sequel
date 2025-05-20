@@ -105,6 +105,7 @@ func disposition_change_report(type, value):
 			text += "{color=yellow|" + tr('DISPOSITIONSET' + cval.to_upper()) % tr(data.name) + "}"
 		else:
 			text += "{color=yellow|" +tr('DISPOSITIONCHANGE') % tr(data.name) +  "}"
+		text += "\n"
 		return text
 
 

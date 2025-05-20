@@ -260,7 +260,8 @@ var list = {
 			var_brokenvase_exp_repair = 25,
 			var_brokenvase_exp_replace = 25,
 			var_brokenvase_money = 30,
-			var_brokenvase_exp_punish = 20
+			var_brokenvase_exp_punish = 20,
+			var_brokenvase_duration = 1
 		}
 	},
 	
