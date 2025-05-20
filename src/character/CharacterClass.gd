@@ -179,6 +179,12 @@ func set_stat(stat, value):
 	if stat.begins_with('food_') and stat != 'food_consumption':
 		food.set(stat, value)
 		return
+	if stat.ends_with('_virgin'):
+		if value:
+			set_stat(stat + '_lost', null)
+		else:
+			set_stat(stat + '_lost', 'unknown')
+		return
 	var st_data = statdata.statdata[stat]
 	if st_data.direct:
 		statlist.update_stat(stat, value, 'set')
