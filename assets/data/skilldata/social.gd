@@ -363,13 +363,6 @@ var effects = {
 		tick_event = variables.TR_TICK,
 		duration = 'arg',
 		statchanges = {productivity = 0.5},
-		buffs = [
-			{
-				icon = "res://assets/images/iconsclasses/Worker.png",
-				description = "TRAITEFFECTHARDWORK",
-				tags = ['mansion_only']
-			}
-		],
 	},
 	e_t_discipline = {
 		type = 'temp_s',
@@ -378,13 +371,6 @@ var effects = {
 		tick_event = variables.TR_TICK,
 		duration = 'arg',
 		statchanges = {mod_collect = 0.5, mod_hunt = 0.5, mod_fish = 0.5, mod_cook = 0.5, mod_smith = 0.5, mod_alchemy = 0.5, mod_tailor = 0.5, mod_farm = 0.5,},
-		buffs = [
-			{
-				icon = "res://assets/images/iconsskills/Discipline2.png",
-				description = "TRAITEFFECTDISCIPLINE",
-				tags = ['mansion_only']
-			}
-		],
 	},
 	e_s_bond = {
 		type = 'temp_s',
@@ -463,6 +449,16 @@ var buffs = {
 		description = "",
 		t_name = 'soulbindcaster',
 	},
+	b_hardwork = {
+		icon = "res://assets/images/iconsclasses/Worker.png",
+		description = "TRAITEFFECTHARDWORK",
+		tags = ['mansion_only']
+	},
+	b_discipline = {
+		icon = "res://assets/images/iconsskills/Discipline2.png",
+		description = "TRAITEFFECTDISCIPLINE",
+		tags = ['mansion_only']
+	}
 }
 
 var stacks = {
@@ -473,10 +469,12 @@ var stacks = {
 	suc_combat = {}, #st 1
 	hardwork = {
 		type = 'stack_s',
-		stack = 1
+		stack = 1,
+		buff = 'b_hardwork'
 	}, #st 1 add
 	discipline = {
 		type = 'stack_s',
-		stack = 1
+		stack = 1,
+		buff = 'b_discipline'
 	}, #st 1 add
 }

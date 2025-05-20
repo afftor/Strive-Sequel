@@ -1180,8 +1180,12 @@ func fix_serialization():
 	if training is Dictionary:
 		training = dict2inst(training)
 	var tmp = statlist.duplicate()
-	statlist = ResourceScripts.scriptdict.ch_statlist.new()
 	var tmp2 = dyn_stats.duplicate()
+	for st in ['physics_factor', 'magic_factor', 'tame_factor', 'authority_factor', 'growth_factor', 'charm_factor', 'wits_factor', 'sexuals_factor']:
+		if tmp.statlist.has(st):
+			tmp2.statlist[st] = tmp.statlist[st]
+			tmp.statlist.erase(st)
+	statlist = ResourceScripts.scriptdict.ch_statlist.new()
 	dyn_stats = ResourceScripts.scriptdict.ch_statlist_dynamic.new()
 	rebuild_parents()
 	statlist.deserialize(tmp)

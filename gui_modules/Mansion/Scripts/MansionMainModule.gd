@@ -147,7 +147,7 @@ func add_season_events():
 		# removing all season events from timed_events
 		var to_rem = []
 		for e in ResourceScripts.game_progress.stored_events.timed_events:
-			if e.code == i.event:
+			if e.code is String and e.code == i.event:
 				to_rem.append(e)
 		for r in to_rem:
 			ResourceScripts.game_progress.stored_events.timed_events.erase(r)
@@ -591,7 +591,7 @@ func test_mode():
 		character.unlock_class("worker")
 		character.unlock_class("apprentice")
 #		character.unlock_class("assassin")
-		character.unlock_class("rogue")
+		character.unlock_class("knight")
 		character.set_stat('height', 'average')
 		character.xp_module.base_exp = 1500
 #		character.add_stat('abil_exp', 1500)
@@ -857,7 +857,7 @@ func test_mode():
 			globals.CreateGearItemShop("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'})
 		)
 		globals.AddItemToInventory(
-			globals.CreateGearItemShop("chest_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'})
+			globals.CreateGearItemShop("chest_adv_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood', ArmorEnc = 'stone'})
 		)
 		globals.AddItemToInventory(
 			globals.CreateGearItemShop(
