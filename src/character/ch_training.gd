@@ -50,17 +50,23 @@ func get_resistance_reduction():
 func get_loyalty_growth():
 	return 1 - resistance * 0.01
 
-func get_loyalty_penalty():#returns portion: 0.3 means 30% penalty
+func get_loyalty_penalty_data():
 	var lvl_list = variables.training_resistance.keys()
 	lvl_list.sort()
 	for i in range(lvl_list.size()-1, -1, -1):
 		if resistance >= lvl_list[i]:
-			return variables.training_resistance[lvl_list[i]]
+			return variables.training_resistance[lvl_list[i]].duplicate()#duplicate just for reinsurance
+
+func get_loyalty_penalty():#returns portion: 0.3 means 30% penalty
+	return get_loyalty_penalty_data().penalty
 
 func add_stat(statname, value):
 	if is_slave() and !enable:#not realy sure if it's necessary at all
 		return
-	set(statname, get(statname) + value)
+	if statname == 'resistance':
+		set_resistance(resistance + value)
+	else:
+		set(statname, get(statname) + value)
 	if spirit < 0:
 		spirit = 0
 
@@ -99,6 +105,7 @@ func disposition_change_report(type, value):
 			text += "{color=yellow|" + tr('DISPOSITIONSET' + cval.to_upper()) % tr(data.name) + "}"
 		else:
 			text += "{color=yellow|" +tr('DISPOSITIONCHANGE') % tr(data.name) +  "}"
+		text += "\n"
 		return text
 
 

@@ -40,6 +40,7 @@ var is_on_quest = false
 var quest_id
 var quest_time_remains = 0
 var quest_time_init = 0
+var unaval_time_remains = -1
 #var selected_work_quest = null
 
 
@@ -345,8 +346,8 @@ func get_selected_quest():
 	return quest_id
 
 
-func make_unavaliable():
-	if  work != "disabled":
+func make_unavaliable(days = -1):
+	if work != "disabled":
 		if is_on_quest:
 			input_handler.SystemMessage(tr(parent.get_ref().get_short_name() + " removed from quest."))
 			var quest_taken = ResourceScripts.game_world.get_quest_by_id(quest_id)
@@ -359,7 +360,9 @@ func make_unavaliable():
 		work = "disabled"
 		quest_time_remains = -1
 		quest_time_init = -1
-		parent.get_ref().set_combat_position(0)
+		unaval_time_remains = days
+		parent.get_ref().combat_position = 0
+		gui_controller.mansion.try_rebuild_slave_list()
 
 
 func make_avaliable():
@@ -367,6 +370,7 @@ func make_avaliable():
 		is_on_quest = false
 		work = ''
 		quest_time_remains = 0
+		unaval_time_remains = -1
 
 
 func assign_to_quest_and_make_unavalible(quest, work_time):
@@ -377,7 +381,7 @@ func assign_to_quest_and_make_unavalible(quest, work_time):
 	quest_time_remains = int(work_time)
 	quest_id = quest.id
 	work = quest.name
-	parent.get_ref().set_combat_position(0)
+	parent.get_ref().combat_position = 0
 	# var quest_taken = ResourceScripts.game_world.get_quest_by_id(quest_id)
 	# for  req in quest_taken.requirements:
 	# 	if req.has("work_time"):
@@ -402,6 +406,14 @@ func get_tutelage_type(): #stub, 2add data etc
 func get_quest_time_remains():
 	return int(quest_time_remains)
 
+func get_unaval_string():
+	if unaval_time_remains <= 0:
+		return tr("CHAR_UNAVALIABLE")
+	
+	if unaval_time_remains == 1:
+		return tr("CHAR_UNAVALIABLE_TURN") % (5 - ResourceScripts.game_globals.hour)
+	else:
+		return tr("CHAR_UNAVALIABLE_DAY") % unaval_time_remains
 
 func quest_day_tick():
 	if quest_time_remains > 0:
@@ -412,6 +424,10 @@ func quest_day_tick():
 			remove_from_work_quest()
 		elif quest_time_remains <= 0 and work == 'learning':
 			finish_learning()
+	if unaval_time_remains > 0:
+		unaval_time_remains -= 1
+		if unaval_time_remains <= 0:
+			make_avaliable()
 
 
 

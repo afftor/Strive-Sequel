@@ -340,6 +340,10 @@ func rebuild_mansion():
 	SlaveModule.show_slave_info()
 	$TutorialButton.show()
 
+func try_rebuild_slave_list():
+	if gui_controller.current_screen != self: return
+	SlaveListModule.rebuild()
+
 func rebuild_task_info():
 	var char_on_quest = false
 	for ch in ResourceScripts.game_party.characters.values():
