@@ -375,8 +375,8 @@ func make_avaliable():
 
 func assign_to_quest_and_make_unavalible(quest, work_time):
 	parent.get_ref().remove_from_travel()
-	parent.get_ref().reset_location()
 	remove_from_task()
+	parent.get_ref().reset_location()
 	is_on_quest = true
 	quest_time_remains = int(work_time)
 	quest_id = quest.id
