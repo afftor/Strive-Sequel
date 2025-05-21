@@ -48,10 +48,10 @@ func open_resists():
 		if !statdata.statdata.has('resist_' + i.name):
 			continue
 		var tmp = character.get_stat('resist_' + i.name)
-		i.text = str(tmp[i.name])
-		if tmp[i.name] > 0:
+		i.text = str(tmp)
+		if tmp > 0:
 			i.set("custom_colors/font_color", variables.hexcolordict.yellow)
-		elif tmp[i.name] < 0:
+		elif tmp < 0:
 			i.set("custom_colors/font_color", variables.hexcolordict.green)
 		else:
 			i.set("custom_colors/font_color", variables.hexcolordict.white)

@@ -1259,6 +1259,7 @@ var atomic = {
 #	a_poison_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
 #	a_bleed_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
 	a_sanctuary_heal = {type = 'heal', value = ['parent_args', 'value']},
+	a_res = {type = 'resurrect', value = ['parent_args', 'mod']},
 };
 
 
