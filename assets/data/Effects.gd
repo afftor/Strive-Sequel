@@ -1102,7 +1102,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-				description = "TRAITEFFECTSATISFIED",
+				description = "TRAITEFFECTSATISFIED2",
 				tags = ['mansion_only'],
 			}
 		],

@@ -44,7 +44,7 @@ var professions = {
 		reqs = [{code = 'cant_spawn_naturally'}],
 		#showupreqs = [{code = 'has_profession', profession = 'master', check = false}],
 		#reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 3}],
-		statchanges = {authority_factor = -1, physics_bonus = 10, mastery_point_combat = 1},
+		statchanges = {authority_factor = 1, physics_bonus = 10, mastery_point_combat = 1},
 		traits = [],
 		skills = [],
 		combatskills = [],

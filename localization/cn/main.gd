@@ -1940,6 +1940,8 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	STATOBEDIENCEDESCRIPT = "Obedience is a character's willingness to obey your orders. Obedience is gained by using social skills. When depleted character can escape and will be lost in case that happens. ",
 	STATLOYALTY = "Loyalty",
 	STATLOYALTYDESCRIPT = "Loyalty points allow you to unlock new abilities for your servants. Loyalty is gained passively based on character's Tame Factor but can also be improved on dates and usage of social skills.",
+	STATRESISTANCE = """Resistance""", # MISSING TRANSLATION
+	STATRESISTANCEDESCRIPT = """Resistance DESCRIPT PLACEHOLDER.""", # MISSING TRANSLATION
 	STATSUBMISSION = "Submission",#Obsolete
 	STATSUBMISSIONDESCRIPT = "Submission is built with punishing skills. It will decrease with time unless maxed out. Maxed out Submission will no longer require Obedience for work and stops escapes.",
 	STATAUTHORITY = "Authority",#Obsolete
@@ -2468,6 +2470,9 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	TRAITMENIAL = "Menial 才疏学浅",
 	TRAITSTURDY = "Sturdy 坚固",
 	TRAITFRAIL = "Frail 脆弱",
+	TRAITSLAVE = """Slave""", # MISSING TRANSLATION
+	TRAITSLAVE1 = """Slave""", # MISSING TRANSLATION
+	TRAITSLAVE_TRAINED = """Trained slave""", # MISSING TRANSLATION
 	
 	
 	TRAITPRODIGYDESCRIPT = "Gain 25% more EXP points.\n获得25%额外经验值",

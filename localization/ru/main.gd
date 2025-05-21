@@ -104,7 +104,7 @@ var TranslationDict = {
 	LSPUPDATESAVEFILE = """Обновление файла сохранения""",
 	LSPOUTDATED = """{color=red| (Устарело - используйте режим импорта)}""",
 	LSPOUTDATED2 = """{color=red|Устарело}""",
-	LSPOUTDATED3 = """{color=red|(CRITICALLY OUTDATED - WON'T BE LOADED BY ANY WAY)}""", # MISSING TRANSLATION
+	LSPOUTDATED3 = """{color=red|(Критически устарело - не загрузится в любом случае)}""",
 	LSIMPORTTOOLTIP = """При включении этого режима игра пересоздает мир и сбрасывает весь игровой прогресс при загрузке, 
 но при этом сохраняет всех ваших персонажей, предметы и инвентарь. Используйте этот режим для загрузки устаревших сохранений.""",
 	PRONOUNHE = """Он""",
@@ -141,9 +141,9 @@ var TranslationDict = {
 	PRONOUNGROOM = """жених""",
 	PRONOUNGROOMF = """невеста""",
 	PRONOUNBOY = """парень""", 
-	PRONOUNBOYF = """девушка""",	
-	PRONOUNHIMSELFL = """himself""", # MISSING TRANSLATION
-	PRONOUNHIMSELFLF = """herself""", # MISSING TRANSLATION
+	PRONOUNBOYF = """девушка""",
+	PRONOUNHIMSELFL = """себя""",
+	PRONOUNHIMSELFLF = """себя""",	
 	BUTTONMENU = """Меню""",
 	FINISHTURNBUTTON = """Конец хода""",
 	EXPLORESHOP = """Рынок""",
@@ -227,7 +227,7 @@ var TranslationDict = {
 	NEWGAMESETTINGSTOP_LOAN = """Быстрая выплата кредита""",
 	NEWGAMESETTINGSMALL_LOAN = """Малый кредит""",
 	NEWGAMESETTINGSOLO = """Соло режим""",
-	NEWGAMESETTINGFREE_GATHER = """Progress-independent gathering""", # MISSING TRANSLATION
+	NEWGAMESETTINGFREE_GATHER = """Независимый от прогресса сбор""",
 	NEWGAMESETTINGFREE_UPGRADE = """Бесплатные улучшения""",
 	NEWGAMESETTINGMATERIALS = """Стартовые материалы""",
 	NEWGAMESETTINGMONEY = """Стартовое золото""",
@@ -489,8 +489,7 @@ var TranslationDict = {
 	MATERIALCATEGORYPLANT = """Растения""",
 	MATERIALCATEGORYBONE = """Кость""",
 	MATERIALCATEGORYCOMPONENT = """Расходуемое""",
-	TOOLTIPHIDDENRESOURCE = """Unknown resource. Progress main story to reveal it""", # MISSING TRANSLATION
-
+	TOOLTIPHIDDENRESOURCE = "Неизвестный ресурс.\nПродвиньтесь по сюжету, чтобы открыть.",
 	MATERIALMEAT = """Мясо""",
 	MATERIALMEATDESCRIPT = """Богатый источник питательных веществ. Добывается на охоте.""",
 	MATERIALFISH = """Рыба""",
@@ -1216,8 +1215,6 @@ Hotkey: 3""",
 Горение: Теряет 8% от максимального HP за ход в виде огненного урона.""",
 	SKILLFIREARRDESCRIPT_2 = """Наносит 100% от МATK от ATK в виде урона {color=yellow|Огнем}. С вероятностью 100% накладывает статус 'Горение' на цель на 2 хода.
 Горение: Теряет 8% от максимального HP за ход в виде огненного урона.""",
-	SKILLLIGHTNING = """Молния""",
-	SKILLLIGHTNINGDESCRIPT = """Наносит 125% от МАТК в виде урона {color=yellow|Воздухом}. Оглушает цель на 1 ход.""",
 	SKILLMINDBLAST = """Взрыв разума""",
 	SKILLMINDBLASTDESCRIPT = """Наносит 120% от MATK в качестве урона {color=yellow|Разуму}.""",
 	SKILLPSYCHICBLAST = """Психический взрыв""",
@@ -1296,7 +1293,7 @@ Hotkey: 3""",
 	SKILLVOID_BARRAGEDESCRIPT = """Наносит 80% МАТК в виде урона {color=yellow|Тьмой} урона 5 раз случайным целям.""",		
 	SKILLDRAW_BLOOD = """Пустить кровь""",
 	SKILLDRAW_BLOODDESCRIPT = """Нанести цели 110% ATK урона и вызывает кровотечение на 2 хода.
-Кровотечение: Теряет 5% от максимального HP за ход в виде нейтрального урона.""",
+Кровотечение: Теряет 10% от максимального HP за ход в виде нейтрального урона.""",
 	SKILLSUNDER = """Раскол""",
 	SKILLSUNDERDESCRIPT = """Нанести цели 85% урона от ATK и уменьшить ее ЗАЩ на 5 ходов.""",
 	SKILLCLEAVE = """Размах""",
@@ -1317,7 +1314,7 @@ Hotkey: 3""",
 Укрепление: Входящий урон снижается на 25%.""",
 	SKILLDIP_POISON = """Поразить ядом""",
 	SKILLDIP_POISONDESCRIPT = """Поразить цель на 100% от ATK и наложить 'Отравление' на 4 хода.
-Отравление: Теряет 5% от максимального HP за ход в виде нейтрального урона.""",
+Отравление: Теряет 10% от максимального HP за ход в виде нейтрального урона.""",
 	SKILLBACKKICK = """Удар в спину""",
 	SKILLBACKKICKDESCRIPT = """Наносит цели 130% ATK в ближнем бою и накладывает 'Немота' на 4 хода.
 Немота: Не может использовать заклинания.""",
@@ -1333,7 +1330,7 @@ Hotkey: 3""",
 	SKILLARROW_HAIL = """Град стрел""",
 	SKILLARROW_HAILDESCRIPT = """Подстрелить всех врагов на 120 % урона от АТК.""",
 	SKILLRALLY = """Рывок""",
-	SKILLRALLYDESCRIPT = """Сбросить все кулдауны (кроме Рывка) и восстановить 50% маны выбранному союзнику.""",
+	SKILLRALLYDESCRIPT = """Сбросить все кулдауны (кроме Рывка) и восстановить 30% здоровья выбранному союзнику.""",
 	SKILLBLOODBOIL = """Кипение крови""",
 	SKILLBLOODBOILDESCRIPT = """Наложить бафф: Увеличивает ATK на 25%, снять оглушение, влажность и страх и получить иммунитет к ним на 4 хода.""",
 	SKILLFIRE_SHIELD = """Огненный щит""",
@@ -1372,8 +1369,9 @@ Hotkey: 3""",
 Разрыв: ЗАЩ уменьшена на 50%.""",
 	SKILLWIND_BLADE = """Лезвие ветра""",
 	SKILLWIND_BLADEDESCRIPT = """Наносит цели и другой случайной цели 60% от MATK как урон {color=yellow|Воздухом}.""",
+	SKILLLIGHTNING = """Lightning""", # MISSING TRANSLATION
 	SKILLIGHTNING = """Молния""",
-	SKILLIGHTNINGDESCRIPT = """Наносит цели 250% от MATK как урон {color=yellow|Воздухом}. Имеет 50% шанс нанести 'Шок' на 2 хода.
+	SKILLLIGHTNINGDESCRIPT = """Наносит цели 250% от MATK как урон {color=yellow|Воздухом}. Имеет 50% шанс нанести 'Шок' на 2 хода.
 Шок: Урон уменьшен на 15%.""",
 	SKILLHASTE = """Спешка""",
 	SKILLHASTEDESCRIPT = """Увеличивает скорость союзника на 25 на 4 хода.""",
@@ -1452,8 +1450,7 @@ Hotkey: 3""",
 	
 	TRAITVIGORDESCRIPT = """Увеличивает регенерацию здоровья на 30%.""",
 	TRAITMEDITATIONDESCRIPT = """Увеличивает регенерацию маны на 30%.""",
-	MASTERYBLOCKSRC = """Blocked by %s:%s""", # MISSING TRANSLATION
-
+	MASTERYBLOCKSRC = """Заблокировано %s: %s""",
 	MASTERYWARFARE = """Бой""",
 	MASTERYPROTECTION = """Защита""",
 	MASTERYSTEALTH = """Скрытность""",
@@ -1530,8 +1527,7 @@ Hotkey: 3""",
 	ACTIONSTRONGINFLUENCEDESCRIPT = """Использовать сильную магию, чтобы подчинить разум [name].Тратит 10 маны.""",
 	ACTIONSTRONGINFLUENCEDESCRIPTMASTERY = "Тренировочное действие: Магическое воздействие, направленное на улучшение повиновеня цели. Сильнее, чем обычное Влияние.",
 	ACTIONMINDCONTROL = """Гипноз""",
-	ACTIONMINDCONTROLDESCRIPT = """The stongest control option will greatly bend most minds. Costs 25 mana. Requires Dominator class.""", # MISSING TRANSLATION
-	ACTIONMINDCONTROLDESCRIPTDESCRIPT = """Самый сильный вариант контроля сильно помутит большинство умов. Тратит 25 маны. Требуется класс Доминатор.""",
+	ACTIONMINDCONTROLDESCRIPT = """Самый сильный вариант контроля сильно помутит большинство умов. Тратит 25 маны. Требуется класс Доминатор.""",
 	ACTIONMINDCONTROLDESCRIPTMASTERY = "Тренировочное действие: Магическое воздействие, направленное на улучшение повиновеня цели. Сильнее, чем обычное Влияние.",
 	ACTIONTYPEPOSITIVE = """Позитивный.""",
 	ACTIONTYPEPHYSICAL = """Физичный.""",
@@ -1571,8 +1567,16 @@ Hotkey: 3""",
 	TRAININGSTATUS2 = """Статус духа: Поврежден""",
 	TRAININGSTATUS3 = """Статус духа: Сохраняется""",
 	TRAININGSTATUS4 = """Статус духа: Нормальный""",
+	TRAININGRESISTANCEINCREASE = """Resistance increased to %.0f.""", # MISSING TRANSLATION
 	TRAININGLABELSPIRIT = """Дух персонажа: %.0f""",
 	TRAININGLABELLOYALTY = """%.0f""",
+	TRAININGLABELRESISTANCE = """%.0f""", # MISSING TRANSLATION
+	TRAININGTOOLTIPRESISTANCE = """High resistance reduces training efficiency.
+%s's resistance drops by %.0f per turn.""", # MISSING TRANSLATION
+	TRAINSERVTOOLTIPRESISTANCE = """Resistance reduces loyalty gain.
+%s's resistance drops by %.0f per turn.""", # MISSING TRANSLATION
+	TRAINSERVTOOLTIPLOYALTY = """Loyalty is used to unlock character's actions and is obtained with time.
+%s gain loyalty by %.2f per turn.""", # MISSING TRANSLATION
 	TRAININGCOST = """Разблокировка черты: %d лояльности""",
 	TRAININGCOSTGOLD = """Разблокировка черты: %d золота""",
 	TRAINNOTRAINER = """[name] не имеет тренера""",
@@ -1765,218 +1769,220 @@ Hotkey: 3""",
 	BUTTONGEAR = """Экипировка""",
 	BUTTONCUSTOMIZATION = """Кастомизация""",
 
-	STATNAME = """Имя""",
-	STATSURNAME = """Фамилия""",
-	STATNICKNAME = """Прозвище""",
-	STATRACE = """Раса""",
-	STATAGE = """Возраст""",
-	STATSEX = """Пол""",
-	STATSKIN = """Цвет кожи""",
-	STATHAIR_COLOR = """Цвет волос""",
-	STATHAIR_LENGTH = """Длина волос""",
-	STATHAIR_STYLE = """Прическа""",
-	STATEARS = """Уши""",
-	STATEYE_COLOR = """Цвет глаз""",
-	STATEYE_SHAPE = """Форма глаз""",
-	STATTAIL = """Хвост""",
-	STATHORNS = """Рога""",
-	STATWINGS = """Крылья""",
-	STATHEIGHT = """Высота""",
-	STATARMS = """Руки""",
-	STATLEGS = """Ноги""",
-	STATPENIS_SIZE = """Размер пениса""",
-	STATPENIS_TYPE = """форма пениса""",
-	STATBALLS_SIZE = """Размер мошонки""",
-	STATASS_SIZE = """Размер задницы""",
-	STATTITS_SIZE = """Размер груди""",
-	STATVAGINAL_VIRGIN = """Вагинальная девственность""",
-	STATANAL_VIRGIN = """Анальная девственность""",
-	STATPENIS_VIRGIN = """Девственник""",
-	STATMOUTH_VIRGIN = """Mouth Virgin""", # MISSING TRANSLATION
-	STATSEXTRAIT = """Сексуальная черта""",
-	STATPERSONALITY = """Личность""",
-	STATBEARD = """Beard""", # MISSING TRANSLATION
-	STATCHIN = """Chin""", # MISSING TRANSLATION
-	STATEYE_TEX = """Eye Texture""", # MISSING TRANSLATION
-	STATEYEBROWS = """Brows""", # MISSING TRANSLATION
-	STATHAIR_BASE_LENGTH = """Hair base length""", # MISSING TRANSLATION
-	STATHAIR_FRINGE_LENGTH = """Hair fringe length""", # MISSING TRANSLATION
-	STATHAIR_BACK_LENGTH = """Hair back length""", # MISSING TRANSLATION
-	STATHAIR_ASSIST_LENGTH = """Hair assist length""", # MISSING TRANSLATION
-	STATHAS_PUSSY = """Pussy""", # MISSING TRANSLATION
-	STATHAS_WOMB = """Womb""", # MISSING TRANSLATION
-	STATPOSE = """""", # MISSING TRANSLATION
-	STATBODY_LOWER = """Lower body""", # MISSING TRANSLATION
-	STATBODY_SHAPE = """Body shape""", # MISSING TRANSLATION
-	STATSKIN_COVERAGE = """Skin coverage""", # MISSING TRANSLATION
-	STATFACIAL_HAIR = """Facial hair""", # MISSING TRANSLATION
-	STATEYESHAPE = """Eye shape""", # MISSING TRANSLATION
-	STATNOSE = """Nose""", # MISSING TRANSLATION
-	STATLIPS = """Lips""", # MISSING TRANSLATION
-	STATBODY_COLOR_SKIN = """Skin color""", # MISSING TRANSLATION
-	STATBODY_COLOR_WINGS = """Wings color""", # MISSING TRANSLATION
-	STATBODY_COLOR_TAIL = """Tail color""", # MISSING TRANSLATION
-	STATBODY_COLOR_HORNS = """Horns color""", # MISSING TRANSLATION
-	STATBODY_COLOR_ANIMAL = """Animal parts color""", # MISSING TRANSLATION
-	STATBODY_COLOR_EARS = """""", # MISSING TRANSLATION
-	STATHAIR_BASE = """Base hair""", # MISSING TRANSLATION
-	STATHAIR_ASSIST = """Assist hair""", # MISSING TRANSLATION
-	STATHAIR_BACK = """Back hair""", # MISSING TRANSLATION
-	STATHAIR_FRINGE = """Fringe hair""", # MISSING TRANSLATION
-	STATHAIR_BASE_COLOR_1 = """Base hair color 1""", # MISSING TRANSLATION
-	STATHAIR_FRINGE_COLOR_1 = """Fringe hair color 1""", # MISSING TRANSLATION
-	STATHAIR_BACK_COLOR_1 = """Back hair color 1""", # MISSING TRANSLATION
-	STATHAIR_ASSIST_COLOR_1 = """Assist hair color 1""", # MISSING TRANSLATION
-	STATHAIR_BASE_COLOR_2 = """Base hair color 2""", # MISSING TRANSLATION
-	STATHAIR_FRINGE_COLOR_2 = """Fringe hair color 2""", # MISSING TRANSLATION
-	STATHAIR_BACK_COLOR_2 = """Back hair color 2""", # MISSING TRANSLATION
-	STATHAIR_ASSIST_COLOR_2 = """Assist hair color 2""", # MISSING TRANSLATION
-	STATHAIR_FACIAL_COLOR = """Facial hair color""", # MISSING TRANSLATION
-	STATENABLED_MASTERIES = """""", # MISSING TRANSLATION
-	STATAUTHORITY_FACTOR = """Authority factor""", # MISSING TRANSLATION
-	STATPHYSICS_CAP = """""", # MISSING TRANSLATION
-	STATWITS_CAP = """""", # MISSING TRANSLATION
-	STATCHARM_CAP = """""", # MISSING TRANSLATION
-	STATLUSTMAX = """""", # MISSING TRANSLATION
-	STATPERSONALITY_BOLD = """""", # MISSING TRANSLATION
-	STATPERSONALITY_KIND = """""", # MISSING TRANSLATION
-	STATPERSONALITY_SHY = """""", # MISSING TRANSLATION
-	STATPERSONALITY_SERIOUS = """""", # MISSING TRANSLATION
-	STATOLD_PERSONALITY = """""", # MISSING TRANSLATION
-	STATMANACOST_MOD = """""", # MISSING TRANSLATION
-	STATTAUNT = """""", # MISSING TRANSLATION
-	STATHP_REG = "Health Regeneration", # MISSING TRANSLATION
-	STATMP_REG = "Mana Regeneration", # MISSING TRANSLATION
-	STATDAMAGETYPE = """""", # MISSING TRANSLATION
-	STATWEAPON_ELEMENT = """""", # MISSING TRANSLATION
-	STATDAMAGE_REDUCTION = """""", # MISSING TRANSLATION
-	STATBURN_MOD = """""", # MISSING TRANSLATION
-	STATBLEED_MOD = """""", # MISSING TRANSLATION
-	STATPOISON_MOD = """""", # MISSING TRANSLATION
-	STATBURN_DAMAGE = """""", # MISSING TRANSLATION
-	STATBLEED_DAMAGE = """""", # MISSING TRANSLATION
-	STATPOISON_DAMAGE = """""", # MISSING TRANSLATION
-	STATDARKFLAME_DAMAGE = """""", # MISSING TRANSLATION
-	STATICON_IMAGE = """""", # MISSING TRANSLATION
-	STATBODY_IMAGE = """""", # MISSING TRANSLATION
-	STATUNIQUE_VARIATION = """""", # MISSING TRANSLATION
-	STATDYNAMIC_PORTRAIT = """""", # MISSING TRANSLATION
-	STATPORTRAIT_UPDATE = """""", # MISSING TRANSLATION
-	STATPLAYER_SELECTED_ICON = """""", # MISSING TRANSLATION
-	STATPLAYER_SELECTED_BODY = """""", # MISSING TRANSLATION
-	STATIS_HIRABLE = """""", # MISSING TRANSLATION
-	STATHIRE_SCENE = """""", # MISSING TRANSLATION
-	STATUNIQUE = """""", # MISSING TRANSLATION
-	STATBONUS_DESCRIPTION = """""", # MISSING TRANSLATION
-	STATRACEGROUP = """""", # MISSING TRANSLATION
-	STATMASTERNOUN = """""", # MISSING TRANSLATION
-	STATUPGRADE_POINTS_TOTAL = """""", # MISSING TRANSLATION
-	STATLASTSEXDAY = """""", # MISSING TRANSLATION
-	STATASSER = """""", # MISSING TRANSLATION
-	STATXPREWARD = """""", # MISSING TRANSLATION
-	STATLOOTTABLE = """""", # MISSING TRANSLATION
-	STATPRICE_ADD_PART = """""", # MISSING TRANSLATION
-	STATPRICE_ADD = """""", # MISSING TRANSLATION
-	STATBASE_TASK_CRIT_CHANCE = """""", # MISSING TRANSLATION
-	STATPENIS_VIRGIN_LOST = """""", # MISSING TRANSLATION
-	STATVAGINAL_VIRGIN_LOST = """""", # MISSING TRANSLATION
-	STATANAL_VIRGIN_LOST = """""", # MISSING TRANSLATION
-	STATMOUTH_VIRGIN_LOST = """""", # MISSING TRANSLATION
-	STATVAGINA = """""", # MISSING TRANSLATION
-	STATMULTIPLE_TITS = """Multiple tits""", # MISSING TRANSLATION
-	STATMULTIPLE_TITS_DEVELOPED = """""", # MISSING TRANSLATION
-	STATLACTATION = """""", # MISSING TRANSLATION
-	STATPREGNANCY_FERTILITY = """""", # MISSING TRANSLATION
-	STATPREGNANCY_DURATION = """""", # MISSING TRANSLATION
-	STATPREGNANCY_BABY = """""", # MISSING TRANSLATION
-	STATPREGNANCY_REPORTED = """""", # MISSING TRANSLATION
-	STATWAS_PROPOSED = """""", # MISSING TRANSLATION
-	STATHAD_CONS_SEX_WITH_MC = """""", # MISSING TRANSLATION
-	STATHAD_FORCED_SEX_WITH_MC = """""", # MISSING TRANSLATION
-	STATAGREED_TO_MARRY = """""", # MISSING TRANSLATION
-	STATMASTERY_WARFARE_ENABLE = """""", # MISSING TRANSLATION
-	STATMASTERY_PROTECTION_ENABLE = """""", # MISSING TRANSLATION
-	STATMASTERY_STEALTH_ENABLE = """""", # MISSING TRANSLATION
-	STATMASTERY_MARKSMANSHIP_ENABLE = """""", # MISSING TRANSLATION
-	STATMASTERY_LEADERSHIP_ENABLE = """""", # MISSING TRANSLATION
-	STATMASTERY_FIRE_ENABLE = """""", # MISSING TRANSLATION
-	STATMASTERY_WATER_ENABLE = """""", # MISSING TRANSLATION
-	STATMASTERY_EARTH_ENABLE = """""", # MISSING TRANSLATION
-	STATMASTERY_AIR_ENABLE = """""", # MISSING TRANSLATION
-	STATMASTERY_LIGHT_ENABLE = """""", # MISSING TRANSLATION
-	STATMASTERY_DARK_ENABLE = """""", # MISSING TRANSLATION
-	STATMASTERY_MIND_ENABLE = """""", # MISSING TRANSLATION
-	STATTATTOO_FACE = """""", # MISSING TRANSLATION
-	STATTATTOO_NECK = """""", # MISSING TRANSLATION
-	STATTATTOO_ARMS = """""", # MISSING TRANSLATION
-	STATTATTOO_LEGS = """""", # MISSING TRANSLATION
-	STATTATTOO_CHEST = """""", # MISSING TRANSLATION
-	STATTATTOO_CROTCH = """""", # MISSING TRANSLATION
-	STATTATTOO_WAIST = """""", # MISSING TRANSLATION
-	STATTATTOO_ASS = """""", # MISSING TRANSLATION
-	STATARMOR_COLOR_BASE = """""", # MISSING TRANSLATION
-	STATARMOR_COLOR_LOWER = """""", # MISSING TRANSLATION
-	STATARMOR_COLOR_COLLAR = """""", # MISSING TRANSLATION
-	STATARMOR_COLOR_WEAPON = """""", # MISSING TRANSLATION
-	STATARMOR_COLOR_UNDERWEAR = """""", # MISSING TRANSLATION
-	STATPIERCING_EARLOBES = """""", # MISSING TRANSLATION
-	STATPIERCING_EYEBROW = """""", # MISSING TRANSLATION
-	STATPIERCING_NOSE = """""", # MISSING TRANSLATION
-	STATPIERCING_LIPS = """""", # MISSING TRANSLATION
-	STATPIERCING_TONGUE = """""", # MISSING TRANSLATION
-	STATPIERCING_NAVEL = """""", # MISSING TRANSLATION
-	STATPIERCING_NIPPLES = """""", # MISSING TRANSLATION
-	STATPIERCING_CLIT = """""", # MISSING TRANSLATION
-	STATPIERCING_LABIA = """""", # MISSING TRANSLATION
-	STATPIERCING_PENIS = """""", # MISSING TRANSLATION
-	STATMETRICS_OWNERSHIP = """""", # MISSING TRANSLATION
-	STATMETRICS_SEX = """""", # MISSING TRANSLATION
-	STATMETRICS_DATES = """""", # MISSING TRANSLATION
-	STATMETRICS_PARTNERS = """""", # MISSING TRANSLATION
-	STATMETRICS_RANDOMPARTNERS = """""", # MISSING TRANSLATION
-	STATMETRICS_WIN = """""", # MISSING TRANSLATION
-	STATMETRICS_KILLS = """""", # MISSING TRANSLATION
-	STATMETRICS_GOLDEARN = """""", # MISSING TRANSLATION
-	STATMETRICS_FOODEARN = """""", # MISSING TRANSLATION
-	STATMETRICS_MATERIALEARN = """""", # MISSING TRANSLATION
-	STATMETRICS_SERVICEPERFORMED = """""", # MISSING TRANSLATION
-	STATMETRICS_SOCSKILLUSED = """""", # MISSING TRANSLATION
-	STATMETRICS_SPELLUSED = """""", # MISSING TRANSLATION
-	STATMETRICS_HEALUSED = """""", # MISSING TRANSLATION
-	STATMETRICS_FOODEATEN = """""", # MISSING TRANSLATION
-	STATMETRICS_BIRTH = """""", # MISSING TRANSLATION
-	STATMETRICS_PREGNANCY = """""", # MISSING TRANSLATION
-	STATMETRICS_IMPREGNATION = """""", # MISSING TRANSLATION
-	STATSEX_SKILLS_PETTING = """""", # MISSING TRANSLATION
-	STATSEX_SKILLS_PENETRATION = """""", # MISSING TRANSLATION
-	STATSEX_SKILLS_PUSSY = """""", # MISSING TRANSLATION
-	STATSEX_SKILLS_ORAL = """""", # MISSING TRANSLATION
-	STATSEX_SKILLS_ANAL = """""", # MISSING TRANSLATION
-	STATSEX_SKILLS_TAIL = """""", # MISSING TRANSLATION
-	STATSEXEXP_PARTNERS = """""", # MISSING TRANSLATION
-	STATSEXEXP_WATCHERS = """""", # MISSING TRANSLATION
-	STATSEXEXP_ACTIONS = """""", # MISSING TRANSLATION
-	STATSEXEXP_SEENACTIONS = """""", # MISSING TRANSLATION
-	STATSEXEXP_ORGASMS = """""", # MISSING TRANSLATION
-	STATSEXEXP_ORGASMPARTNERS = """""", # MISSING TRANSLATION
-	STATMANACOST_MOD_ALL = """""", # MISSING TRANSLATION
-	STATMANACOST_MOD_MELEE = """""", # MISSING TRANSLATION
-	STATMANACOST_MOD_RANGED = """""", # MISSING TRANSLATION
-	STATMANACOST_MOD_NORMAL = """""", # MISSING TRANSLATION
-	STATMANACOST_MOD_EARTH = """""", # MISSING TRANSLATION
-	STATMANACOST_MOD_AIR = """""", # MISSING TRANSLATION
-	STATMANACOST_MOD_WATER = """""", # MISSING TRANSLATION
-	STATMANACOST_MOD_LIGHT = """""", # MISSING TRANSLATION
-	STATMANACOST_MOD_DARK = """""", # MISSING TRANSLATION
-	STATMANACOST_MOD_MIND = """""", # MISSING TRANSLATION
-	STATMANACOST_MOD_PHYSIC = """""", # MISSING TRANSLATION
-	STATMANACOST_MOD_SPELL = """""", # MISSING TRANSLATION
-	STATMANACOST_MOD_SKILL = """""", # MISSING TRANSLATION
-	STATMANACOST_MOD_AOE = """""", # MISSING TRANSLATION
-	STATMANACOST_MOD_TRUE = """""", # MISSING TRANSLATION
-	STATMANACOST_MOD_HEAL = """""", # MISSING TRANSLATION
+	STATNAME = "Имя",
+	STATSURNAME = "Фамилия",
+	STATNICKNAME = "Прозвище",
+	STATRACE = "Раса",
+	STATAGE = "Возраст",
+	STATSEX = "Пол",
+	STATSKIN = "Цвет кожи",
+	STATHAIR_COLOR = "Цвет волос",
+	STATHAIR_LENGTH = "Длина волос",
+	STATHAIR_STYLE = "Прическа",
+	STATEARS = "Уши",
+	STATEYE_COLOR = "Цвет глаз",
+	STATEYE_SHAPE = "Форма глаз",
+	STATTAIL = "Хвост",
+	STATHORNS = "Рога",
+	STATWINGS = "Крылья",
+	STATHEIGHT = "Высота",
+	STATARMS = "Руки",
+	STATLEGS = "Ноги",
+	STATPENIS_SIZE = "Размер пениса",
+	STATPENIS_TYPE = "Форма пениса",
+	STATBALLS_SIZE = "Размер мошонки",
+	STATASS_SIZE = "Размер задницы",
+	STATTITS_SIZE = "Размер груди",
+	STATVAGINAL_VIRGIN = "Вагинальная девств.",
+	STATANAL_VIRGIN = "Анальная девств.",
+	STATPENIS_VIRGIN = "Девственник",
+	STATMOUTH_VIRGIN = "Ротовая Девств.",
+	STATSEXTRAIT = "Секс черта",
+	STATPERSONALITY = "Личность",
+	
+	#lost stats
+	STATBEARD = 'Борода',
+	STATCHIN = 'Подбородок',
+	STATEYE_TEX = 'Текстура глаза',
+	STATEYEBROWS = 'Брови',
+	STATHAIR_BASE_LENGTH = 'Длина основания волос',
+	STATHAIR_FRINGE_LENGTH = 'Длина чёлки',
+	STATHAIR_BACK_LENGTH = 'Длина волос сзади',
+	STATHAIR_ASSIST_LENGTH = 'Длина доп. волос',
+	STATHAS_PUSSY = 'Влагалище',
+	STATHAS_WOMB = 'Матка',
+	STATPOSE = '',
+	STATBODY_LOWER = 'Нижняя часть',
+	STATBODY_SHAPE = 'Форма тела',
+	STATSKIN_COVERAGE = 'Кожный покров',
+	STATFACIAL_HAIR = 'Волосы на лице',
+	STATEYESHAPE = 'Форма глаз',
+	STATNOSE = 'Нос',
+	STATLIPS = 'Губы',
+	STATBODY_COLOR_SKIN = 'Цвет кожи',
+	STATBODY_COLOR_LIPS = 'Цвет губ',
+	STATBODY_COLOR_WINGS = 'Цвет крыльев',
+	STATBODY_COLOR_TAIL = 'Цвет хвоста',
+	STATBODY_COLOR_HORNS = 'Цвет рогов',
+	STATBODY_COLOR_ANIMAL = 'Цвет животной части',
+	STATBODY_COLOR_EARS = '',
+	STATHAIR_BASE = 'Основные волосы',
+	STATHAIR_ASSIST = 'Доп. волосы',
+	STATHAIR_BACK = 'Волосы сзади',
+	STATHAIR_FRINGE = 'Челка',
+	STATHAIR_BASE_COLOR_1 = 'Основной цвет волос 1',
+	STATHAIR_FRINGE_COLOR_1 = 'Цвет челки 1',
+	STATHAIR_BACK_COLOR_1 = 'Цвет волос сзади 1',
+	STATHAIR_ASSIST_COLOR_1 = 'Цвет доп. волос 1',
+	STATHAIR_BASE_COLOR_2 = 'Основной цвет волос 2',
+	STATHAIR_FRINGE_COLOR_2 = 'Цвет челки 2',
+	STATHAIR_BACK_COLOR_2 = 'Цвет волос сзади 2',
+	STATHAIR_ASSIST_COLOR_2 = 'Цвет доп. волос 2',
+	STATHAIR_FACIAL_COLOR = 'Цвет волос на лице',
+	STATENABLED_MASTERIES = '',
+	STATPHYSICS_CAP = '',
+	STATWITS_CAP = '',
+	STATCHARM_CAP = '',
+	STATLUSTMAX = '',
+	STATPERSONALITY_BOLD = '',
+	STATPERSONALITY_KIND = '',
+	STATPERSONALITY_SHY = '',
+	STATPERSONALITY_SERIOUS = '',
+	STATOLD_PERSONALITY = '',
+	STATMANACOST_MOD = '',
+	STATTAUNT = '',
+	STATDAMAGETYPE = '',
+	STATWEAPON_ELEMENT = '',
+	STATDAMAGE_REDUCTION = '',
+	STATBURN_MOD = '',
+	STATBLEED_MOD = '',
+	STATPOISON_MOD = '',
+	STATBURN_DAMAGE = '',
+	STATBLEED_DAMAGE = '',
+	STATPOISON_DAMAGE = '',
+	STATDARKFLAME_DAMAGE = '',
+	STATICON_IMAGE = '',
+	STATBODY_IMAGE = '',
+	STATUNIQUE_VARIATION = '',
+	STATDYNAMIC_PORTRAIT = '',
+	STATPORTRAIT_UPDATE = '',
+	STATPLAYER_SELECTED_ICON = '',
+	STATPLAYER_SELECTED_BODY = '',
+	STATIS_HIRABLE = '',
+	STATHIRE_SCENE = '',
+	STATUNIQUE = '',
+	STATBONUS_DESCRIPTION = '',
+	STATRACEGROUP = '',
+	STATMASTERNOUN = '',
+	STATUPGRADE_POINTS_TOTAL = '',
+	STATLASTSEXDAY = '',
+	STATASSER = '',
+	STATXPREWARD = '',
+	STATLOOTTABLE = '',
+	STATPRICE_ADD_PART = '',
+	STATPRICE_ADD = '',
+	STATBASE_TASK_CRIT_CHANCE = '',
+	STATPENIS_VIRGIN_LOST = '',
+	STATVAGINAL_VIRGIN_LOST = '',
+	STATANAL_VIRGIN_LOST = '',
+	STATMOUTH_VIRGIN_LOST = '',
+	STATVAGINA = '',
+	STATMULTIPLE_TITS = 'Множественные груди',
+	STATMULTIPLE_TITS_DEVELOPED = '',
+	STATLACTATION = '',
+	STATPREGNANCY_FERTILITY = '',
+	STATPREGNANCY_DURATION = '',
+	STATPREGNANCY_BABY = '',
+	STATPREGNANCY_REPORTED = '',
+	STATWAS_PROPOSED = '',
+	STATHAD_CONS_SEX_WITH_MC = '',
+	STATHAD_FORCED_SEX_WITH_MC = '',
+	STATAGREED_TO_MARRY = '',
+	STATMASTERY_WARFARE_ENABLE = '',
+	STATMASTERY_PROTECTION_ENABLE = '',
+	STATMASTERY_STEALTH_ENABLE = '',
+	STATMASTERY_MARKSMANSHIP_ENABLE = '',
+	STATMASTERY_LEADERSHIP_ENABLE = '',
+	STATMASTERY_FIRE_ENABLE = '',
+	STATMASTERY_WATER_ENABLE = '',
+	STATMASTERY_EARTH_ENABLE = '',
+	STATMASTERY_AIR_ENABLE = '',
+	STATMASTERY_LIGHT_ENABLE = '',
+	STATMASTERY_DARK_ENABLE = '',
+	STATMASTERY_MIND_ENABLE = '',
+	STATTATTOO_FACE = '',
+	STATTATTOO_NECK = '',
+	STATTATTOO_ARMS = '',
+	STATTATTOO_LEGS = '',
+	STATTATTOO_CHEST = '',
+	STATTATTOO_CROTCH = '',
+	STATTATTOO_WAIST = '',
+	STATTATTOO_ASS = '',
+	STATARMOR_COLOR_BASE = '',
+	STATARMOR_COLOR_LOWER = '',
+	STATARMOR_COLOR_COLLAR = '',
+	STATARMOR_COLOR_WEAPON = '',
+	STATARMOR_COLOR_UNDERWEAR = '',
+	STATPIERCING_EARLOBES = '',
+	STATPIERCING_EYEBROW = '',
+	STATPIERCING_NOSE = '',
+	STATPIERCING_LIPS = '',
+	STATPIERCING_TONGUE = '',
+	STATPIERCING_NAVEL = '',
+	STATPIERCING_NIPPLES = '',
+	STATPIERCING_CLIT = '',
+	STATPIERCING_LABIA = '',
+	STATPIERCING_PENIS = '',
+	STATMETRICS_OWNERSHIP = '',
+	STATMETRICS_SEX = '',
+	STATMETRICS_DATES = '',
+	STATMETRICS_PARTNERS = '',
+	STATMETRICS_RANDOMPARTNERS = '',
+	STATMETRICS_WIN = '',
+	STATMETRICS_KILLS = '',
+	STATMETRICS_GOLDEARN = '',
+	STATMETRICS_FOODEARN = '',
+	STATMETRICS_MATERIALEARN = '',
+	STATMETRICS_SERVICEPERFORMED = '',
+	STATMETRICS_SOCSKILLUSED = '',
+	STATMETRICS_SPELLUSED = '',
+	STATMETRICS_HEALUSED = '',
+	STATMETRICS_FOODEATEN = '',
+	STATMETRICS_BIRTH = '',
+	STATMETRICS_PREGNANCY = '',
+	STATMETRICS_IMPREGNATION = '',
+	STATSEX_SKILLS_PETTING = 'Секс навык ласок',
+	STATSEX_SKILLS_PENETRATION = 'Секс навык проникновения',
+	STATSEX_SKILLS_PUSSY = 'Секс навык вагинального секса',
+	STATSEX_SKILLS_ORAL = 'Секс навык орального секса',
+	STATSEX_SKILLS_ANAL = 'Секс навык анального секса',
+	STATSEX_SKILLS_TAIL = 'Секс навык секса хвостом',
+	STATSEXEXP_PARTNERS = '',
+	STATSEXEXP_WATCHERS = '',
+	STATSEXEXP_ACTIONS = '',
+	STATSEXEXP_SEENACTIONS = '',
+	STATSEXEXP_ORGASMS = '',
+	STATSEXEXP_ORGASMPARTNERS = '',
+	STATMANACOST_MOD_ALL = '',
+	STATMANACOST_MOD_MELEE = '',
+	STATMANACOST_MOD_RANGED = '',
+	STATMANACOST_MOD_NORMAL = '',
+#	STATMANACOST_MOD_FIRE = '',
+	STATMANACOST_MOD_EARTH = '',
+	STATMANACOST_MOD_AIR = '',
+	STATMANACOST_MOD_WATER = '',
+	STATMANACOST_MOD_LIGHT = '',
+	STATMANACOST_MOD_DARK = '',
+	STATMANACOST_MOD_MIND = '',
+	STATMANACOST_MOD_PHYSIC = '',
+	STATMANACOST_MOD_SPELL = '',
+	STATMANACOST_MOD_SKILL = '',
+	STATMANACOST_MOD_AOE = '',
+	STATMANACOST_MOD_TRUE = '',
+	STATMANACOST_MOD_HEAL = '',
+	INNATE = """innate""", # MISSING TRANSLATION
 
-	STATPERSONALITYDESCRIPT = """Личность определяет манеру речи персонажа и не влияет на игровой процесс.""",
+	STATPERSONALITYDESCRIPT= """Личность определяет манеру речи персонажа и не влияет на игровой процесс.""",
 
 	SLAVEDIET = """Предпочтения в еде""",
 	SLAVESTARTINGCLASS = """Стартовый класс""",
@@ -2062,7 +2068,9 @@ Hotkey: 3""",
 	STATHPFACTOR = """Фактор здоровья""",
 	STATHPFACTORDESCRIPT = """Определяет бонусы к здоровью, получаемые большинством способов. Высокий коэффициент здоровья может значительно повысить выживаемость.""",
 	STATHP_REG_MOD = """Фактор исцеления""",
+	STATHP_REG = "Регенерация здоровья",
 	STATMP_REG_ADD = """Регенерация маны""",
+	STATMP_REG = "Регенерация маны",
 
 	STATHPMAXMOD = """Макс. здоровье""",
 
@@ -2125,7 +2133,9 @@ Hotkey: 3""",
 	STATWITS_FACTOR = """Фактор мудрости""",
 	STATCHARM_FACTOR = """Фактор обаяния""",
 	STATSEXUALS_FACTOR = """Сексуальный фактор""",
-	STATTAME_FACTOR = """Фактор приручения""",
+	STATTAME_FACTOR = """Tame Factor""", # MISSING TRANSLATION
+	STATAUTHORITY_FACTOR = """Фактор авторитета""",
+	STATTIMID_FACTOR = """Фактор робости""",
 	STATSLAVE_CLASS = """Тип""",
 
 	STATPHYSICS_BONUS = """Физ. возмож.""",
@@ -2156,6 +2166,8 @@ Hotkey: 3""",
 	STATOBEDIENCEDESCRIPT = """Повиновение - это готовность персонажа подчиняться вашим приказам. Повиновение приобретается с помощью социальных навыков. При истощении персонаж может сбежать и будет потерян, если это произойдет.""",
 	STATLOYALTY = """Верность""",
 	STATLOYALTYDESCRIPT = """Очки верности позволяют открывать новые способности для ваших слуг. Верность приобретается пассивно на основе фактора приручения персонажа, но также может быть улучшена на свиданиях и при использовании социальных навыков.""",
+	STATRESISTANCE = """Resistance""", # MISSING TRANSLATION
+	STATRESISTANCEDESCRIPT = """Resistance DESCRIPT PLACEHOLDER.""", # MISSING TRANSLATION
 	STATSUBMISSION = """Подчинение""",#Obsolete
 	STATSUBMISSIONDESCRIPT = """Подчинение создается с помощью наказывающих умений. Со временем оно будет уменьшаться, пока не достигнет минимума. Максимально развитое Подчинение больше не требует Повиновение для работы и останавливает побег.""",
 	STATAUTHORITY = """Авторитет""",#Obsolete
@@ -2241,22 +2253,31 @@ Hotkey: 3""",
 Согласие представляет собой общее согласие персонажа на различные сексуальные действия, но оно также сильно зависит от партнеров и ситуации.""",
 	INFOSEX_TRAITS = """Сексуальные черты дают дополнительные эффекты во время сексуального взаимодействия. Их можно изучать, активировать и деактивировать. Максимальное количество активируемых признаков зависит от фактора сексуальности.""",
 	INFORULES_CONDS = """Условия и правила можно переключать на персонаже, влияя на некоторые его показатели и поведение.""", 	
-	INFOPERSONALITY = """Личность персонажа влияет на его общение и открывает доступ к определенным чертам и бонусам. На личность влияют социальные навыки, используемые персонажем.""",
+	INFOPERSONALITY = """Личность персонажа влияет на его поведение и открывает доступ к определенным чертам и бонусам.
+	Нейтральный: Без бонусов
+	Решительность: Негативные эффекты действуют на 1 ход меньше\n+5% Производительности
+	Доброта: Положительные эффекты длятся на 1 ход дольше\n+10% Сервис
+	Серьезность: Откат боевых способностей уменьшен на 1 ход (не может быть меньше 1 хода)\nШанс крита поручения +3%
+	Застенчивость: Расход маны на заклинания уменьшен на 15%\n+15% прироста верности, -10% еженедельного налога на подчиненных
+""",
 	INFOPERSONALITYBOLD = """Решительность
 Негативные эффекты действуют на 1 ход меньше\n+5% Производительности""",
 	INFOPERSONALITYKIND = """Доброта
 Положительные эффекты длятся на 1 ход дольше\n+10% Сервис""",
 	INFOPERSONALITYSERIOUS = """Серьезность
-Расход маны на заклинания уменьшен на 15%\n+15% прироста верности, -10% еженедельного налога на подчиненных""",
+Откат боевых способностей уменьшен на 1 ход (не может быть меньше 1 хода)\nШанс крита поручения +3%""",
 	INFOPERSONALITYSHY = """Застенчивость
-Откат боевых способностей уменьшен на 1 ход (не может быть меньше 1 хода)""",
+Расход маны на заклинания уменьшен на 15%\n+15% прироста верности, -10% еженедельного налога на подчиненных""",
 	INFOSLAVE_CLASS = """Тип персонажа определяет его возможности и поведение. Рабы могут быть принуждены к сексуальным услугам без согласия и имеют более высокую терпимость к отсутствию согласия в сексе. Подчиненные быстрее становятся лояльными, но не могут быть проданы или отданы""",
 	INFOCONSENT = """Согласие определяет, какие действия, связанные с сексом, персонаж будет готов совершить. Согласие можно увеличить, подталкивая персонажа к новым практикам в виде свиданий и вариантов в сексе. Согласие влияет на работу, связанную с проституцией.""",
 	INFOCONSENTMASTER = """Согласие определяет, какие действия, связанные с сексом, персонаж будет готов совершить. Согласие можно увеличить, подталкивая персонажа к новым действиям с помощью свиданий и вариантов в сексе. {color=green|[Master] не имеет требований к Согласию для любых действий}.""",
 	INFOTRAINING = """Персонажи рабского типа будут обучены выбранным тренером различным действиям. Каждый раб имеет {color=aqua|Предпочтения} к тем или иным действиям. Правильно подобранные действия дают больше Верности и тратят меньше духа, но большинство действий имеют дополнительные эффекты.""",
+	INFOTRAININGSUBORDINATE = """Subordinate type characters will accomodate loyalty points with time. """, # MISSING TRANSLATION
+	INFORESISTANCE = """Character's Resistance will reduce efficiency of training. Resistance weakens with time and resets on performing training.""", # MISSING TRANSLATION
 	INFOSLAVETRAINER = """Назначьте тренера, который будет следить за необученными рабами и обучать их. У тренера ограниченное количество рабов, с которыми он может работать. Рабы, за которыми никто не наблюдает, не будут выполнять никакой работы, пока не пройдут полное обучение.""",
 	TRAINREADY = "Готово",
-	TRAINCOOLDOWN = "Кулдаун. Дней до готовности: %d",
+	TRAINCOOLDOWN = "Откат. Дней до готовности: %d",
+	TRAINRESISTANT = """Resists training""", # MISSING TRANSLATION
 	CATEGORYKEYWORD = """Категория""",
 	ACTIONCATEGORYPHYSICAL = """Физические""",
 	ACTIONCATEGORYHUMILIATION = """Унижение""",
@@ -2315,15 +2336,15 @@ Hotkey: 3""",
 	STATTAME_FACTORDESCRIPT = """Фактор приручения показывает, насколько легко подружиться с персонажем. Чем он выше, тем больше верности персонаж получит пассивно и от социальных навыков типа 'Милость' и 'Разврат'. Это также сделает изменение личности более стабильным по линии Доброты.
 
 {color=green|Максимальный фактор приручения увеличивает прирост верности.}""",
-	STATAUTHORITY_FACTORDESCRIPT = """Фактор робости показывает, насколько легко персонаж поддается влиянию наказаний и оскорблений. Чем он выше, тем более эффективны социальные навыки для формирования верности и снижения утечки Повиновения. Это также сделает изменение личности более стабильным по линии Решительности
+	STATAUTHORITY_FACTORDESCRIPT = """Фактор авторитета показывает, насколько легко персонаж поддается влиянию наказаний и оскорблений. Чем он выше, тем более эффективны социальные навыки для формирования верности и снижения утечки Повиновения. Это также сделает изменение личности более стабильным по линии Решительности
 
 {color=green|Максимальный фактор робости уменьшает получаемый урон.}""",
 	STATWITS_FACTORDESCRIPT = """Фактор мудрости представляет собой потенциал ума персонажа. Он увеличивает рост [color=aqua]мудрости[/color].
 
 {color=green|Максимальный коэффициент мудрости увеличивает прирост опыта.}""",
-	STATCHARM_FACTORDESCRIPT = """Коэффициент обаяния представляет собой потенциал привлекательности персонажа. Он увеличивает рост [color=aqua]Обаяния[/color]. Обаяние [Master]а также увеличивает золото и репутацию, получаемые за повторяемые квесты, и количество свиданий в неделю.
+	STATCHARM_FACTORDESCRIPT = """Фактор обаяния представляет собой потенциал привлекательности персонажа. Он увеличивает рост [color=aqua]Обаяния[/color]. Обаяние [Master]а также увеличивает золото и репутацию, получаемые за повторяемые квесты, и количество свиданий в неделю.
 
-{color=green|Максимальный фактор обаяния еще больше увеличивает эффективность социальных навыков.}.""",
+{color=green|Максимальный фактор обаяния увеличивает производительность службы и дает дополнительную проверку обаяния.}.""",
 	STATSEXUALS_FACTORDESCRIPT = """Секс-фактор представляет собой потенциал сексуального развития персонажа. Он ускоряет приобретение сексуальных навыков и иногда увеличивает сексуальные возможности в событиях. Секс-фактор [Master]а также увеличивает количество сексуальных контактов в неделю.
 
 {color=green|Максимальный секс-фактор дает бонус к скорости}.""",
@@ -2335,7 +2356,7 @@ Hotkey: 3""",
 	SEXUALS_FACTORBONUSDESCRIPT = """Секс-фактор: Скорость: +10""",
 	MAGIC_FACTORBONUSDESCRIPT = """Магический фактор: MATK: +10%%""",
 	TAME_FACTORBONUSDESCRIPT = """Фактор приручения: Повышение верности: +25%%""",
-	TIMID_FACTORBONUSDESCRIPT = """Фактор робости: Получаемый урон: -15%%""",
+	TIMID_FACTORBONUSDESCRIPT = """Фактор авторитета: Получаемый урон: -15%%""",
 	
 
 	STATFOOD_LOVE = """Любимая еда""",
@@ -2825,6 +2846,9 @@ Hotkey: 3""",
 	TRAITMENIAL = """Прислуга""",
 	TRAITSTURDY = """Крепость""",
 	TRAITFRAIL = """Хрупкость""",
+	TRAITSLAVE = """Slave""", # MISSING TRANSLATION
+	TRAITSLAVE1 = """Slave""", # MISSING TRANSLATION
+	TRAITSLAVE_TRAINED = """Trained slave""", # MISSING TRANSLATION
 	
 	
 	TRAITPRODIGYDESCRIPT = """Получает на 25% больше очков опыта.""",
@@ -3028,11 +3052,11 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Девственность}[/center]
 Поскольку [name] обладает наблюдаемой девственностью, это делает [him] более желанным для определенных людей. 
 {color=yellow|Цена продажи увеличена на 25%%}""",
-	TRAITEFFECTRIVAL = """Присутствует соперник: +5% производительности""",
+	TRAITEFFECTRIVAL = """Присутствует соперник: +5%% производительности""",
 	TRAITEFFECTFRIENDS = """Friend Present: +10%% Health Regeneration""", # MISSING TRANSLATION
 	TRAITEFFECTLOVERS = """Lover Present: +10%% Mana Regeneration""", # MISSING TRANSLATION
-	TRAITEFFECTFRIEND = """Присутствует друг: +10% регенерации здоровья""",
-	TRAITEFFECTLOVER = """Присутствует любовник/ца: +10% регенерации маны""",
+	TRAITEFFECTFRIEND = """Присутствует друг: +10%% регенерации здоровья""",
+	TRAITEFFECTLOVER = """Присутствует любовник/ца: +10%% регенерации маны""",
 	TRAITEFFECTRARESTURDY = """Особый: Твердый
 Увеличение здоровья и бронепробиваемости""",
 	TRAITEFFECTRARENIMBLE = """Особый: Ловкий
@@ -3144,10 +3168,10 @@ Requires: Базовый рабский труд""",
 	BUFFDESCRIPTVOID = """Пустота""",
 	BUFFDESCRIPTDEFEND = """Защита""",
 	BUFFDESCRIPTREGEN = """Регенерация здоровья""",
-	BUFFDESCRIPTBURNING = """Горение: Получает 8%% огненного урона от максимального HP за ход""",
-	BUFFDESCRIPTDARKFLAME = "Темное пламя: Получает 8%% нейтрального урона от максимального HP за ход",
-	BUFFDESCRIPTPOISON = """Отравление: Получает 5%% физического урона от максимального HP за ход""",
-	BUFFDESCRIPTBLEEDING = """Кровотечение: Получает 5%% физического урона от максимального HP за ход""",
+	BUFFDESCRIPTBURNING = """Горение: Получает 7%% огненного урона от максимального HP за ход""",
+	BUFFDESCRIPTDARKFLAME = "Темное пламя: Получает 10%% нейтрального урона от максимального HP за ход",
+	BUFFDESCRIPTPOISON = """Отравление: Получает 10%% физического урона от максимального HP за ход""",
+	BUFFDESCRIPTBLEEDING = """Кровотечение: Получает 10%% физического урона от максимального HP за ход""",
 	BUFFDESCRIPTCONFUSE = """Замешательство""",
 	BUFFDESCRIPTFREEUSE = """Позволяет использовать предмет, не делая хода""",
 	BUFFDESCRIPTSHRED = """Разрыв: ЗАЩ снижена на 50%%""",
@@ -3160,8 +3184,8 @@ Requires: Базовый рабский труд""",
 	BUFFDESCRIPTATKPAS = """Урон увеличен""",
 	BUFFDESCRIPTATTACKPASSSRC = """Увеличивает ATK и MATK союзников на 10 каждый второй ход. Снимается при поражении""",
 	BUFFDESCRIPTRESTO = """Отдых: физическое сопротивление увеличено на 20%%""",
-	BUFFDESCRIPTDEATHKNIGHT = """Hit Rate, Attack and Neutral Resists are increased""", # MISSING TRANSLATION
-	BUFFDESCRIPTTEMPLAR = """MDEF Increaased""", # MISSING TRANSLATION
+	BUFFDESCRIPTDEATHKNIGHT = "Точность, атака и обычное сопротивление увеличены",
+	BUFFDESCRIPTTEMPLAR = "МЗАЩ увеличена",
 	BUFFDESCRIPTCURSE = """ """,
 	BUFFDESCRIPTENCHANT = """ """,
 	BUFFDESCRIPTMENTOR = """Прирост опыта увеличен""",	
@@ -3181,6 +3205,7 @@ Requires: Базовый рабский труд""",
 Весь получаемый урон увеличивается на 15%%, дополнительный шок имеет шанс оглушить.""",
 	BUFFDESCRIPTENSNARE = """Захват: Уворот уменьшен на 75""",	
 	RESETTRAINREQ = """Сбросить обучение на 0-й шаг и восстановить дух. Требуется зелье Забвения.""",
+	RESETTRAINING = """All training progress will be discarded. Are you sure?""", # MISSING TRANSLATION
 	BUFFDESCRIPTDEFENDER = """Защитник: Защищает союзников от атак, если не оглушен.""",
 	BUFFDESCRIPTCOMMANDBONUS = """Увеличивает наносимый урон и снижает получаемый урон.""",
 	TRAITEFFECTBLESSING = """Увеличены скорость попадания и уклонение""",
@@ -3306,8 +3331,7 @@ Requires: Базовый рабский труд""",
 	PROFTECHNOMANCER = """Техномансер""",
 	PROFTECHNOMANCERDESCRIPT = """Благодаря слиянию магии и технологии эти специалисты способны добиваться уникальных результатов.""",
 	PROFPYROMANCER = """Пиромант""",
-	PROFPYROMANCERDESCRIPT = """Devoting their powers to the way of fire, certain individuals are capable of truly mastering it at the cost of abandoning most other magich schools.""", # MISSING TRANSLATION
-	PROFPROFPYROMANCERDESCRIPT = """Посвятив свои силы огненному пути, некоторые люди способны по-настоящему овладеть им ценой отказа от большинства других магических школ.""",
+	PROFPYROMANCERDESCRIPT= """Посвятив свои силы огненному пути, некоторые люди способны по-настоящему овладеть им ценой отказа от большинства других магических школ.""",
 
 	PROFALIOS_CHAMPION = """Чемпион Алиоса""",
 	PROFALIOS_CHAMPIONDESCRIPT = """Одинокая девушка с загадочными способностями и прошлым. Ясно одно - ее божественная принадлежность реальна.""",
@@ -3647,18 +3671,18 @@ Requires: Базовый рабский труд""",
 	BODYPARTANAL_VIRGINTRUEDESCRIPT = """[His] {color=yellow|анальную девственность} еще никто не забрал.""",
 	BODYPARTANAL_VIRGINFALSEDESCRIPT = """[His] задница достаточно подготовлена для проникновения.""",
 
-	BODYPARTPENIS_SIZEHUMAN_SMALLDESCRIPT = """Ниже [his] талии болтается [color=yellow]маленький человеческий{check=active_slave.penis_virgin_lost == null| [color=aqua]девственный[/color]} член[/color], настолько маленький, что его можно назвать симпатичным.""",
-	BODYPARTPENIS_SIZEHUMAN_AVERAGEDESCRIPT ="""[He] имеет [color=yellow]обычный человеческий{check=active_slave.penis_virgin_lost == null| [color=aqua]девственный[/color]} член[/color] ниже [his] талии, более чем достаточный, чтобы большинство мужчин могли им гордиться.""",
-	BODYPARTPENIS_SIZEHUMAN_BIGDESCRIPT = """Огромный [color=yellow]человеческий{check=active_slave.penis_virgin_lost == null| [color=aqua]девственный[/color]} член[/color] сильно выпирает из [his] паха, достаточно большой, чтобы заставить задуматься даже самую опытную шлюху.""",
-	BODYPARTPENIS_SIZECANINE_SMALLDESCRIPT = """Тонкий, заостренный[color=yellow]{check=active_slave.penis_virgin_lost == null| [color=aqua]девственный[/color]}собачий член[/color] свисает ниже [his] талии, такой маленький, что его узел едва заметен.""",
-	BODYPARTPENIS_SIZECANINE_AVERAGEDESCRIPT = """[He] имеет бугристый, красный, [color=yellow]{check=active_slave.penis_virgin_lost == null| [color=aqua]девственный[/color]} собачий член[/color] приличного размера ниже [his] талии, который не выглядел бы неуместным на большой собаке.""",
-	BODYPARTPENIS_SIZECANINE_BIGDESCRIPT = """Из [his] промежности растет [color=yellow]массивный{check=active_slave.penis_virgin_lost == null| [color=aqua]девственный[/color]} собачий член[/color], краснокожий и с толстым узлом у основания.""",
-	BODYPARTPENIS_SIZEFELINE_SMALLDESCRIPT = """Ниже талии болтается [color=yellow]крошечный{check=active_slave.penis_virgin_lost == null| [color=aqua]девственный[/color]} кошачий член[/color], такой маленький, что едва видны колючки.""",
-	BODYPARTPENIS_SIZEFELINE_AVERAGEDESCRIPT = """[He] имеет колючий[color=yellow]{check=active_slave.penis_virgin_lost == null| [color=aqua]девственный[/color]} кошачий член[/color] растет из [his] промежности, достаточно большой, чтобы соперничать с обычным человеком.""",
-	BODYPARTPENIS_SIZEFELINE_BIGDESCRIPT = """Между бедрами висит пугающе [color=yellow]большой{check=active_slave.penis_virgin_lost == null| [color=aqua]девственный[/color]} кошачий член[/color], его огромные колючки делают его несколько пугающим.""",
-	BODYPARTPENIS_SIZEEQUINE_SMALLDESCRIPT = """Ниже [his] талии висит [color=yellow]маленький{check=active_slave.penis_virgin_lost == null| [color=aqua]девственный[/color]} конский член[/color], который все еще приличный по сравнению со средним мужчиной.""",
-	BODYPARTPENIS_SIZEEQUINE_AVERAGEDESCRIPT = """Из [color=yellow][his] паха растет [color=yellow]внушительный{check=active_slave.penis_virgin_lost == null| [color=aqua]девственный[/color]} конский член[/color], который, хотя и мал у лошади, все же толще и тяжелее среднего человеческого инструмента.""",
-	BODYPARTPENIS_SIZEEQUINE_BIGDESCRIPT = """[color=yellow]массивный{check=active_slave.penis_virgin_lost == null| [color=aqua]девственный[/color]} конский член[/color] сильно свисает ниже [his] талии, его пестрая текстура не совсем соответствует остальной [his] коже. Размер комплекта заставляет многих партнеров задуматься""",
+	BODYPARTPENIS_SIZEHUMAN_SMALLDESCRIPT = """Ниже [his] талии болтается [color=yellow]маленький человеческий{check=active_slave.penis_virgin == true| [color=aqua]девственный[/color]} член[/color], настолько маленький, что его можно назвать симпатичным.""",
+	BODYPARTPENIS_SIZEHUMAN_AVERAGEDESCRIPT ="""[He] имеет [color=yellow]обычный человеческий{check=active_slave.penis_virgin == true| [color=aqua]девственный[/color]} член[/color] ниже [his] талии, более чем достаточный, чтобы большинство мужчин могли им гордиться.""",
+	BODYPARTPENIS_SIZEHUMAN_BIGDESCRIPT = """Огромный [color=yellow]человеческий{check=active_slave.penis_virgin == true| [color=aqua]девственный[/color]} член[/color] сильно выпирает из [his] паха, достаточно большой, чтобы заставить задуматься даже самую опытную шлюху.""",
+	BODYPARTPENIS_SIZECANINE_SMALLDESCRIPT = """Тонкий, заостренный[color=yellow]{check=active_slave.penis_virgin == true| [color=aqua]девственный[/color]}собачий член[/color] свисает ниже [his] талии, такой маленький, что его узел едва заметен.""",
+	BODYPARTPENIS_SIZECANINE_AVERAGEDESCRIPT = """[He] имеет бугристый, красный, [color=yellow]{check=active_slave.penis_virgin == true| [color=aqua]девственный[/color]} собачий член[/color] приличного размера ниже [his] талии, который не выглядел бы неуместным на большой собаке.""",
+	BODYPARTPENIS_SIZECANINE_BIGDESCRIPT = """Из [his] промежности растет [color=yellow]массивный{check=active_slave.penis_virgin == true| [color=aqua]девственный[/color]} собачий член[/color], краснокожий и с толстым узлом у основания.""",
+	BODYPARTPENIS_SIZEFELINE_SMALLDESCRIPT = """Ниже талии болтается [color=yellow]крошечный{check=active_slave.penis_virgin == true| [color=aqua]девственный[/color]} кошачий член[/color], такой маленький, что едва видны колючки.""",
+	BODYPARTPENIS_SIZEFELINE_AVERAGEDESCRIPT = """[He] имеет колючий[color=yellow]{check=active_slave.penis_virgin == true| [color=aqua]девственный[/color]} кошачий член[/color] растет из [his] промежности, достаточно большой, чтобы соперничать с обычным человеком.""",
+	BODYPARTPENIS_SIZEFELINE_BIGDESCRIPT = """Между бедрами висит пугающе [color=yellow]большой{check=active_slave.penis_virgin == true| [color=aqua]девственный[/color]} кошачий член[/color], его огромные колючки делают его несколько пугающим.""",
+	BODYPARTPENIS_SIZEEQUINE_SMALLDESCRIPT = """Ниже [his] талии висит [color=yellow]маленький{check=active_slave.penis_virgin == true| [color=aqua]девственный[/color]} конский член[/color], который все еще приличный по сравнению со средним мужчиной.""",
+	BODYPARTPENIS_SIZEEQUINE_AVERAGEDESCRIPT = """Из [color=yellow][his] паха растет [color=yellow]внушительный{check=active_slave.penis_virgin == true| [color=aqua]девственный[/color]} конский член[/color], который, хотя и мал у лошади, все же толще и тяжелее среднего человеческого инструмента.""",
+	BODYPARTPENIS_SIZEEQUINE_BIGDESCRIPT = """[color=yellow]массивный{check=active_slave.penis_virgin == true| [color=aqua]девственный[/color]} конский член[/color] сильно свисает ниже [his] талии, его пестрая текстура не совсем соответствует остальной [his] коже. Размер комплекта заставляет многих партнеров задуматься""",
 
 	BODYPARTAGETEENDESCRIPT = """[He] - [color=aqua]подросток [boygirlfuta][/color] расы [url=race][color=yellow][raceadj][/color][/url]""",
 	BODYPARTAGEADULTDESCRIPT = """[He] - [color=aqua]молодой взрослый [male][/color] из [url=race][color=yellow][raceadj] расы[/color][/url]""",
@@ -3833,7 +3857,7 @@ Requires: Базовый рабский труд""",
 	SEXTRAITLIKES_BEASTS = """Любитель зверюшек""",
 	SEXTRAITBISEXUAL = """Бисексуальность""",
 	SEXTRAITMONOGAMOUS = """Моногамность""",
-	SEXTRAITFAMILY_FIRST = """Family First""", # MISSING TRANSLATION
+	SEXTRAITFAMILY_FIRST = """Семья превыше всего""",
 	SEXTRAITOPEN_MINDED = """Открыто мыслящий""",
 	SEXTRAITDEVIANT = """Девиантность""",
 	SEXTRAITGROUP = """Любитель компании""",
@@ -3902,8 +3926,8 @@ Requires: Базовый рабский труд""",
 
 	SEXTRAITBISEXUALDESCRIPT = """[name] не против секса с людьми своего пола. Снимает штраф за согласие с однополых партнеров""",
 	SEXTRAITMONOGAMOUSDESCRIPT = """[name] интересуется только отношениями с одним партнером. Усиливает согласие и эффект от действий с [his] выбранным персонажем. Предотвращает [name] принимать более одного романтического партнера.""",
-	SEXTRAITFAMILY_FIRSTDESCRIPT = """[name] does not mind engaging into relationship with [his] relatives. Removes consent penalty from sexual interactions with relatives. Allows [name] to accept relatives as romantic partners.""", # MISSING TRANSLATION
-	SEXTRAITOPEN_MINDEDDESCRIPT = """[name] скорее принимает [his] партнеров, не возражая против того, что у них разное строение тела. Снимает штраф за согласие с партнерами с разным телосложением""",
+	SEXTRAITFAMILY_FIRSTDESCRIPT = """[name] не против вступить в отношения с [his] родственниками. Снимает штраф за согласие при сексуальных контактах с родственниками. Позволяет [name] принимать родственников в качестве романтических партнеров.""",
+	SEXTRAITOPEN_MINDEDDESCRIPT = """[name] скорее принимает [his] партнеров, не возражая против того, что у них разное строение тела. Снимает штраф за согласие с партнерами с разным телосложением.""",
 	SEXTRAITDEVIANTDESCRIPT = """[name] имеет некоторые девиантные вкусы, без проблем участвуя в развратных действиях с животными и даже нежитью. Снимает штраф за согласие с партнеров-животных и нежити.""",
 	SEXTRAITGROUPDESCRIPT = """[name] принимает наличие нескольких партнеров одновременно как естественное явление. Снимает штраф за согласие на групповые действия.""",
 	SEXTRAITSHAMELESSDESCRIPT = """[name] не возражает, чтобы за ним наблюдали другие во время секса. Убирает штраф за согласие на то, чтобы за ним наблюдали. Делает интимные действия во время свидания приемлемыми за пределами спальни.""",
@@ -4267,12 +4291,11 @@ Requires: Базовый рабский труд""",
 	TRIBALELVES_WIN = """Когда вы побеждаете нападающих, они поспешно отступают, но один из них остался позади, и вашей партии удается их одолеть.""",
 	CHARLOVERS = """[name] и [scncharname] обратились к вам и попросили позволить им стать больше чем любовниками.""",
 	CHARFREELOVERS = """[name] и [scncharname] обратились к вам и попросили разрешить им стать любовниками.""",
-	REVEAL_MAP = """[name] casts Wind Whispers, grasping the layout of surrounding areas. """, # MISSING TRANSLATION
+	REVEAL_MAP = "[name] накладывает заклинание 'Шепот ветра', улавливая расположение окружающих территорий. ",
 	CHARLOVERSALLOW = """*Разрешить*""",
 	CHARFREELOVERSALLOW = """*Разрешить*""",
-	CHARLOVERSFORBID = """*Forbid*""", # MISSING TRANSLATION
-	CHARFREELOVERSFORBID = """*Forbid*""", # MISSING TRANSLATION
-
+	CHARLOVERSFORBID = "*Запретить*",
+	CHARFREELOVERSFORBID = "*Запретить*",
 
 	DIALOGUEEVENTGOODREBELSBEAST = """Вы наткнулись на небольшую группу повстанцев, которые поймали [race] [male], который, вероятно, сбежал с их родных земель. Учитывая отношение повстанцев к [him], легко понять, что они замышляют недоброе...""",
 	DIALOGUEEVENTREBELSBEASTINTIMIDATESUCCES = """[center]{color=green|Успех!}[/center]
@@ -4317,7 +4340,7 @@ Requires: Базовый рабский труд""",
 	ITEMMAP_ANCIENT_JUNGLE = """Карта: Древние джунгли""",
 	ITEMMAP_FIRE_DEPTHS = """Карта: Огненные глубины""",
 	ITEMMAP_REBEL_REDOUBT = """Карта: Форт повстанцев""",
-	ITEMMAP_GOBLIN_STRONGHOLD = """Map: Goblin Stronghold""", # MISSING TRANSLATION
+	ITEMMAP_GOBLIN_STRONGHOLD = "Карта: Крепость гоблинов",
 	ITEMMAP_BANDIT_DENDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
 	ITEMMAP_BANDIT_FORTDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
 	ITEMMAP_GROVEDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
@@ -4327,7 +4350,7 @@ Requires: Базовый рабский труд""",
 	ITEMMAP_ANCIENT_JUNGLEDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
 	ITEMMAP_FIRE_DEPTHSDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
 	ITEMMAP_REBEL_REDOUBTDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
-	ITEMMAP_GOBLIN_STRONGHOLDDESCRIPT = """A paper filled with clues which can help you locate a hidden location to explore... Or sell to the shop.""", # MISSING TRANSLATION
+	ITEMMAP_GOBLIN_STRONGHOLDDESCRIPT = """Бумага, содержащая подсказки, которые помогут вам найти скрытое место для исследования... Или же можно продать её на рынке.""",
 
 
 	LOCATIONNAMESKIRMISH_BANDIT_CAMP = """Лагерь разбойников""",
@@ -4341,7 +4364,7 @@ Requires: Базовый рабский труд""",
 	LOCATIONNAMEDUNGEON_UNDEAD_CRYPT = """Склеп""",
 	LOCATIONNAMEDUNGEON_MOUNTAINS = """Горная пещера""",
 	LOCATIONNAMEDUNGEON_VOLCANO = """Вулканическая пещера""",
-	LOCATIONNAMEDUNGEON_GOBLIN_STRONGHOLD = """Goblin Stronghold""", # MISSING TRANSLATION
+	LOCATIONNAMEDUNGEON_GOBLIN_STRONGHOLD = "Крепость гоблинов",
 	LOCATIONNAMEDUNGEON_CITY = """Разрушенный город""",
 	LOCATIONNAMEBASIC_THREAT_WOLVES = """Стычка""",
 	LOCATIONNAMEDUNGEON_ANCIENT_JUNGLES = """Древние джунгли""",
@@ -4419,12 +4442,12 @@ Requires: Базовый рабский труд""",
 	ENEMYBALLISTA = """Баллиста""",
 	ENEMYTROLL = """Тролль""",
 	ENEMYBANDIT_ASSASSIN = """Бандит-ассасин""",
-	ENEMYPACKLEADER_BOSS = """Leader Of The Pack""", # MISSING TRANSLATION
-	ENEMYSERGANT_BOSS = """Sergant""", # MISSING TRANSLATION
-	ENEMYCASTELLAN_BOSS = """Castellan""", # MISSING TRANSLATION
-	ENEMYJARL_BOSS = """Jarl""", # MISSING TRANSLATION
-	ENEMYBOUNTY_HUNTER_BOSS = """Bounty Hunter""", # MISSING TRANSLATION
-	ENEMYWARLOCK_BOSS = """Warlock""", # MISSING TRANSLATION
+	ENEMYPACKLEADER_BOSS = "Лидер отряда",
+	ENEMYSERGANT_BOSS = "Сержант",
+	ENEMYCASTELLAN_BOSS = "Кастелян",
+	ENEMYJARL_BOSS = "Ярл",
+	ENEMYBOUNTY_HUNTER_BOSS = "Наемник",
+	ENEMYWARLOCK_BOSS = "Колдун",
 	ENEMYSUMMON_DOG = """Тренированный пес""",
 	ENEMYSUMMON_SKELETON_MELEE = """Скелет-воин""",
 	ENEMYSUMMON_SKELETON_ARCHER = """Скелет-лучник""",
@@ -5906,37 +5929,39 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	ENEMYEREBUS_STONE = """Камень Эребуса""",
 	ENEMYWILD_RAPTOR = """Раптор""",
 	ENEMYWILLOWISP = """Блуждающий огонек""",
-	ENEMYHOBGOBLIN_THUG = """Hobgoblin Thug""", # MISSING TRANSLATION
-	ENEMYHOBGOBLIN_CROSSBOWMAN = """Hobgoblin Crossbowman""", # MISSING TRANSLATION
-	ENEMYHOBGOBLIN_TORMENTOR = """Hobgoblin Tormentor""", # MISSING TRANSLATION
-	ENEMYVARG = """Varg""", # MISSING TRANSLATION
-	ENEMYVULTURE = """Vulture""", # MISSING TRANSLATION
-	ENEMYWARLORD = """Warlord""", # MISSING TRANSLATION
-	ENEMYALCHEMIST = """Alchemist""", # MISSING TRANSLATION
-	ENEMYBATTLE_TROLL = """Battle Troll""", # MISSING TRANSLATION
+	ENEMYHOBGOBLIN_THUG = "Хобггоблин бандит",
+	ENEMYHOBGOBLIN_CROSSBOWMAN = "Хобггоблин стрелок",
+	ENEMYHOBGOBLIN_TORMENTOR = "Мучитель",
+	ENEMYWARG = "Варг",
+	ENEMYVULTURE = "Крылатая бестия",
+	ENEMYWARLORD = "Варлорд",
+	ENEMYALCHEMIST = "Алхимик",
+	ENEMYBATTLE_TROLL = "Боевой тролль",
 	NO_FIGHT_LOW_OBED = """[name] отказывается участвовать в бою. ('Боец' должен быть разблокирован)""",
-	NO_FIGHT_LOW_OBED2 = """[name] refuses to participate in a fight (low obedience).""", # MISSING TRANSLATION
+	NO_FIGHT_LOW_OBED2 = """[name] отказывается участвовать в бою. (Малое повиновение)""",
 	CHAR_NO_COMBAT = """[name] получил тяжелую травму и не может участвовать в боях.""",
-	PARTY_LIMIT = """Party limit reached.""", # MISSING TRANSLATION
-	PARTY_FIXED = """Party is fixed! You can only switch positions.""", # MISSING TRANSLATION
+	PARTY_LIMIT = "Достигнут лимит группы.",
+	PARTY_FIXED = """Группа зафиксирована! Вы можете только менять позиции.""",
+
 	SENDCHARTOQUESTCONFIRM = """Отправить этого персонажа на квест?""",
-	ARENA_NAME = """Arena""", # MISSING TRANSLATION
-	ARENA_DEFEAT = """You've been defeated! All arena's progress discarded.""", # MISSING TRANSLATION
-	ARENA_START = """You'll have to pay 1000 gold to enter! You also will not be able to add characters to party or leave arena until you finish it. Proceed?""", # MISSING TRANSLATION
-	ARENA_FINISH = """If you leave now, you will receive current accumulated reward, but will not be able to finish arena. Are you sure?""", # MISSING TRANSLATION
-	ARENA_FINISHED = """You already went into the arena. Wait until it is reset.""", # MISSING TRANSLATION
-	ARENA_WELCOME = """Welcome! Arena is opened!""", # MISSING TRANSLATION
-	ARENA_UNWELCOME = """Sorry, folks, no more fights today.""", # MISSING TRANSLATION
-	ARENA_PARTY_LIMIT = """Party limit""", # MISSING TRANSLATION
-	ARENA_CUR_REWARD = """Current rewards:""", # MISSING TRANSLATION
-	ARENA_NEXT_REWARD = """Next fight rewards:""", # MISSING TRANSLATION
-	ARENA_ROUND = """Round""", # MISSING TRANSLATION
-	ARENA_START_BTN = """Fight""", # MISSING TRANSLATION
-	ARENA_RETREAT_BTN = """Retreat""", # MISSING TRANSLATION
-	ARENA_FINISH_BTN = """Acquire reward""", # MISSING TRANSLATION
-	ARENA_LEAVE_BTN = """Leave""", # MISSING TRANSLATION
-	ARENA_TIMER = """Next rival in""", # MISSING TRANSLATION
-	ARENA_FEE = """You must have 1000 gold to enter arena.""", # MISSING TRANSLATION
+	ARENA_NAME = "Арена",
+	ARENA_DEFEAT = "Вы потерпели поражение. Вы не сможете участвовать в боях на арене до следующего отрезка времени.",
+	ARENA_START = "Вы также не сможете добавить персонажей в группу или покинуть арену, пока не завершите ее. Единовременная стоимость: 1000 золотых. Согласны?",
+	ARENA_FINISH = "Если вы уйдете сейчас, то получите текущую накопленную награду, но не сможете закончить арену.",
+	ARENA_FINISHED = "В данный период времени турниры пока не проводятся. Дождитесь сброса.",
+	ARENA_WELCOME = "Добро пожаловать! Арена открыта!",
+	ARENA_UNWELCOME = "Извините, друзья, сегодня больше никаких боев.",
+	ARENA_PARTY_LIMIT = "Лимит группы",
+	ARENA_CUR_REWARD = "Текущая награда:",
+	ARENA_NEXT_REWARD = "Награды за следующий бой:",
+	ARENA_ROUND = "Раунд",
+	ARENA_START_BTN = "Бой",
+	ARENA_RETREAT_BTN = "Отступить",
+	ARENA_FINISH_BTN = "Забрать награду",
+	ARENA_LEAVE_BTN = "Уйти",
+	ARENA_TIMER = "Следующий соперник",
+	ARENA_FEE = "Чтобы попасть на арену, у вас должно быть 1000 золотых.",
+	ARENA_TOOLTIP = "Это арена.",
 
 	SKILLPOISON_BITE = """Ядовитый укус""",
 	SKILLPOISON_BITE_S = """Ядовитый укус""",
@@ -5947,37 +5972,36 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	SKILLSPIDER_RANGED = """Плевок паутиной""",
 	SKILLSTICKY_WEB = """Липкая паутина""",
 	SKILLPOISON_SPRAY = """Плевок ядом""",
-	SKILLCLEAVE_W = """Cleave""", # MISSING TRANSLATION
-	SKILLCRIPPLING_BITE = """Criplling Bite""", # MISSING TRANSLATION
-	SKILLFRIGHTENING_HOWL = """Frightening Howl""", # MISSING TRANSLATION
-	SKILLLEADERSMARK_S = """Leader's Mark""", # MISSING TRANSLATION
-	SKILLFIRE_LUNG = """Fire Lung""", # MISSING TRANSLATION
-	SKILLBLINDING_HEAT = """Blinding Heat""", # MISSING TRANSLATION
-	SKILLPURIFICATION_BY_FIRE = """Purification By Fire""", # MISSING TRANSLATION
-	SKILLHOT_METAL = """Hot Metal""", # MISSING TRANSLATION
-	SKILLSCORCHED_EARTH = """Scorched Earth""", # MISSING TRANSLATION
-	SKILLGLACIATION = """Glaciation""", # MISSING TRANSLATION
-	SKILLNORTH_WIND = """North Wind""", # MISSING TRANSLATION
-	SKILLCRUELTY = """Cruelty""", # MISSING TRANSLATION
-	SKILLHUTERS_MARK = """Hunter's Mark""", # MISSING TRANSLATION
-	SKILLSHRILL_WHISTLE = """Shrill Whisle""", # MISSING TRANSLATION
-	SKILLHUNTING = """Hunting""", # MISSING TRANSLATION
-	SKILLENCHANTING_WHISPER = """Enchanting Whisper""", # MISSING TRANSLATION
-	SKILLCURSE_OF_DESPAIR = """Curse Of Despair""", # MISSING TRANSLATION
-	SKILLSHRED = """Измельчить""",
-	SKILLSNEAK_SHOT = """Sneak Shot""", # MISSING TRANSLATION
-	SKILLCRACK_OF_THE_WHIP = """Crack Of The Whip""", # MISSING TRANSLATION
-	SKILLTORTURE = """Torture""", # MISSING TRANSLATION
-	SKILLRUSTY_TRAP = """Rusty Trap""", # MISSING TRANSLATION
-	SKILLSNEAKY_TRICK = """Sneaky Trick""", # MISSING TRANSLATION
-	SKILLHEROKILLER = """Herokiller""", # MISSING TRANSLATION
-	SKILLFLASH_STONE = """Flash Stone""", # MISSING TRANSLATION
-	SKILLSPIKED_BOMB = """Spiked Bomb""", # MISSING TRANSLATION
-	SKILLSHOCK_CHARGE = """Shock Charge""", # MISSING TRANSLATION
-	SKILLMONSTROUS_SWING = """Monstrous Swing""", # MISSING TRANSLATION
-	SKILLMONSTROUS_GRIP = """Monstrous Grip""", # MISSING TRANSLATION
-	SKILLBILE_CORROSIVE = """Bile Corrosive""", # MISSING TRANSLATION
-
+	SKILLCLEAVE_W = "Рассечение",
+	SKILLCRIPPLING_BITE = "Калечащий укус",
+	SKILLFRIGHTENING_HOWL = "Устрашающий вой",
+	SKILLLEADERSMARK_S = "Метка лидера",
+	SKILLFIRE_LUNG = "Огненное дыхание",
+	SKILLBLINDING_HEAT = "Ослепляющий жар",
+	SKILLPURIFICATION_BY_FIRE = "Очищение огнём",
+	SKILLHOT_METAL = "Раскалённый металл",
+	SKILLSCORCHED_EARTH = "Выжженная земля",
+	SKILLGLACIATION = "Оледенение",
+	SKILLNORTH_WIND = "Северный ветер",
+	SKILLCRUELTY = "Жестокость",
+	SKILLHUTERS_MARK = "Метка охотника",
+	SKILLSHRILL_WHISTLE = "Пронзительный свист",
+	SKILLHUNTING = "Охота",
+	SKILLENCHANTING_WHISPER = "Очаровательный шёпот",
+	SKILLCURSE_OF_DESPAIR = "Проклятие отчаяния",
+	SKILLSHRED = "Измельчение",
+	SKILLSNEAK_SHOT = "Скрытный выстрел",
+	SKILLCRACK_OF_THE_WHIP = "Щелчок кнута",
+	SKILLTORTURE = "Пытка",
+	SKILLRUSTY_TRAP = "Ржавая ловушка",
+	SKILLSNEAKY_TRICK = "Подлый трюк",
+	SKILLHEROKILLER = "Убийца героев",
+	SKILLFLASH_STONE = "Светящийся камень",
+	SKILLSPIKED_BOMB = "Шипастая бомба",
+	SKILLSHOCK_CHARGE = "Шоковый заряд",
+	SKILLMONSTROUS_SWING = "Чудовищный взмах",
+	SKILLMONSTROUS_GRIP = "Чудовищная хватка",
+	SKILLBILE_CORROSIVE = "Разъедающая желчь",
 
 	AIRE_AMELIA1 = """
 Амелия вошла в камеру Эйры с аккуратным черным ранцем и улыбкой на лице.
@@ -6536,7 +6560,7 @@ AFTER_MINES_CONVOY_15 = """В нескольких сотнях футов от 
 - Ну, вот и все. Давайте тогда еще увидимся.""",
 	DIVINE_SYMBOL_43 = """
 
-- Ну вот, доволен? Эй, ты не против прокатить меня на спине? У меня мозги болят после всей этой работы, знаешь ли.""",
+- Ну вот, доволен? Эй, ты не против прокатить меня на спине? У меня голова болит после всей этой работы, знаешь ли.""",
 	DIVINE_SYMBOL_44 = """Когда барьер пал, Дункан приказал немедленно атаковать. Многие войска повстанцев были застигнуты врасплох и не смогли быстро ответить. Пока армия гильдии медленно продвигалась в город, никто не обратил внимания на вашу небольшую группу, что позволило вам легко сбежать.""",
 	DIVINE_SYMBOL_45 = """{color=aqua|Грег: - Какого черта... Черт, что случилось с барьером!?}
 
@@ -10253,7 +10277,7 @@ AFTER_RITUAL_GOOD_2_1_2 = """{color=aqua|Савра: - Нет, все в пор�
 	LILIA_INTRO_3_1 = """ - Спасибо! С нетерпением жду возможности пожить у вас""",
 	LILIA_INTRO_3_2 = """ - Оу... Дай мне знать, если передумаешь!""",
 	
-	CALI_INTRO = """Пробираясь через форт, вы нашли короткую записку от каких-то работорговцев, которые, похоже, контактируют с местными бандитами. В ней указана небольшая пещера в соседнем месте, которая используется как убежище, и описано, как рабы вынуждены пока оставаться там. Вы записываете эту информацию и идете дальше.""",
+	CALI_INTRO = """Пробираясь через пещеру, вы нашли короткую записку от каких-то работорговцев, которые, похоже, контактируют с местными бандитами. В ней указана небольшая пещера в соседнем месте, которая используется как убежище, и описано, как рабы вынуждены пока оставаться там. Вы записываете эту информацию и идете дальше.""",
 	CALI_INTRO_1 = """Вы встречаете небольшую группу работорговцев, которые приветствуют вас.
 
 {color=aqua|Работорговец: - Эй, кажется, у нас гость. Мы не хотим драться, вообще-то мы хотим избавиться от остатков товара и заняться делом. Вы выглядите как респектабельный джентльмен. }
@@ -10510,7 +10534,7 @@ CALI_FIGHTERS_3 = """Секретарша перебирала бумаги на
 Когда она поворачивается к вам, она понимает, что вы уже некоторое время смотрите на нее. Ее лицо заливает румянец, и она не знает, как реагировать.
 
 - [Master]?! Это...""",
-	CALI_SEX_1_OPTION_1 = """Это ощущение приятно, не так ли?""",
+	CALI_SEX_1_OPTION_1 = """Приятные ощущения, не так ли?""",
 	CALI_SEX_1_OPTION_2 = """В следующий раз тебе стоит запереть дверь.""",
 	CALI_SEX_1_OPTION_3 = """*Тихо уйти*""",
 	CALI_SEX_2_3 = """Вы решили проигнорировать её и закрыть дверь...""",
@@ -13467,7 +13491,7 @@ ZEPHYRA_BRUSH_6_OPTION_3 = """*Не говорить ничего и взять 
 	AMELIA_TRIAL_14_OPTION_1 = """Я предложил свою помощь. Норлан пытался убедить меня не вмешиваться.""",
 	AMELIA_TRIAL_14_OPTION_2 = """Конечно, это была моя идея. Ты не можешь просто так взять и исчезнуть, Амелия.""",
 	AMELIA_TRIAL_15_2 = """Амелия: - Я буду иметь это в виду на будущее, господин Мэр. Вы помните, какова была реакция Норлана на ваше предложение?""",
-	AMELIA_TRIAL_15 = """Член 2: - Я... Я хочу кое-что добавить! Я был с ними в комнате, когда происходил этот разговор, и Норлан довольно неохотно согласился принять помощь Мэра. Мне тоже показалось это странным. У нас был хаос, а он отказывается от помощи, которую так любезно предложил Мэр!
+	AMELIA_TRIAL_15 = """\nЧлен 2: - Я... Я хочу кое-что добавить! Я был с ними в комнате, когда происходил этот разговор, и Норлан довольно неохотно согласился принять помощь Мэра. Мне тоже показалось это странным. У нас был хаос, а он отказывается от помощи, которую так любезно предложил Мэр!
 
 Норлан: - Я понимаю, как это может показаться, но я не хотел вас отговаривать. Я просто хотел избавить вас от проблем, с которыми мы вполне способны справиться сами. Употребление термина "хаос" кажется несколько преувеличенным""",
 	AMELIA_TRIAL_15_ = """Амелия: - Вот и все, Норлан. Два свидетеля. 
@@ -17351,8 +17375,8 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	COMBAT_WIN_LINE1 = """Фух, мы сделали это, [Master]...""",
 	COMBAT_WIN_LINE2 = """Хах, легче простого. Кто следующий?""",
 	COMBAT_WIN_LINE3 = """Хорошо сражались. Давайте двигаться дальше, [Master].""",
-	COMBAT_WIN_LINE4 = """Хорошо, что мы победили, но давайте будем осторожнее.""",
-	COMBAT_WIN_LINE5 = """Хах, я даже пота не чувствую""",
+	COMBAT_WIN_LINE4 = """Было несложно, но давайте будем оставаться настороже.""",
+	COMBAT_WIN_LINE5 = """Хах, даже пот не выступил""",
 	COMBAT_WIN_LINE6 = """Это было действительно страшно. Надеюсь, их больше не будет...""",
 	COMBAT_WIN_LINE7 = """Я... Не могу поверить, что мы победили...""",
 	COMBAT_WIN_LINE8 = """И-и не возвращайтесь...""",
@@ -17367,10 +17391,10 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	COMBAT_WIN_LINE17 = """Не стоило бросать мне вызов!""",
 	COMBAT_WIN_LINE18 = """Уже закончили!?""",
 	COMBAT_WIN_LINE19 = """Черт! Я бы еще подрался""",
-	COMBAT_WIN_LINE20 = """Жалко. Зачем вообще атаковать?""",
+	COMBAT_WIN_LINE20 = """Жалкое зрелище. Зачем вообще бросать нам вызов?""",
 	COMBAT_WIN_LINE21 = """Надеюсь, они в порядке...""",
 	COMBAT_WIN_LINE22 = """Все в порядке?""",
-	COMBAT_WIN_LINE23 = """Почему мы должны были сражаться?""",
+	COMBAT_WIN_LINE23 = """Стоило ли нам сражаться?""",
 	COMBAT_WIN_LINE24 = """Мы не могли просто переговорить...?""",
 	COMBAT_WIN_LINE25 = """Будем надеяться, что нам больше не придется драться...""",
 	
@@ -17957,8 +17981,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	AREAPLAINS = """Равнины""",
 	AREAFORESTS = """Леса""",
 	AREAMOUNTAINS = """Горы""",
-	AREAEMPIRE = """Empire""", # MISSING TRANSLATION
-	AREASTEPPE = """Степь""",
+	AREAEMPIRE = """Империя""",
 	AREASEAS = """Моря""",
 	AREABEASTKIN_TRIBE = """Дальние леса""",
 	AREACAPITALS = """Столицы""",
@@ -19011,7 +19034,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 {color=green|Похоже, [name] не против продолжить эту встречу...}""",
 	DATING_CHAT_DESC_1 = """Дружеская беседа. Немного поднимет настроение""",
 	DATING_CHAT_1 = """Поболтать""",
-	DATING_FLIRT_DESC_1 = """Флиртовать с [name]. Слегка повысит Согласие, если Настроение высокое. Слегка повысит Согласие, если настроение выше низкого.""",
+	DATING_FLIRT_DESC_1 = """Флиртовать с [name].""",
 	DATING_FLIRT_1 = """Флиртовать""",
 	DATING_INTIMATE_DESC_1 = """Завести интимный разговор в попытке узнать больше о предпочтениях [name]. Может быть использовано только один раз""",
 	DATING_INTIMATE_1 = """Интимная беседа""",
@@ -19294,11 +19317,150 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	ZEPHYRA_BATH_1_O_0 = """*Встать и уйти*""",
 	HELEVIEL_MANSION_1_O_0 = """*Просто оставить её в качестве рабыни.*""",
 	HELEVIEL_MANSION_1_O_1 = """*Преподать ей урок послушания.*""",
-	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """Вы объясняете Ализе, что одному из ваших рабов нужна смена одежды.
+	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """Вы объясняете Алиcе, что одному из ваших рабов нужна смена одежды.
 
 — Да, правильная одежда для слуг - одна из наших специализаций. Правильно подобранная одежда может многое изменить даже для не самых идеальных тел. Естественно, у нас есть портные, которые могут подогнать одежду под любой тип фигуры. Но что вы ищете?""",
-	SERVANTS_INTRODUCTION_NEW_LEADER_T_0 = "— Здравствуйте, [name]. Чем я могу вам помочь сегодня?"
+	SERVANTS_INTRODUCTION_NEW_LEADER_T_0 = "— Здравствуйте, [name]. Чем я могу вам помочь сегодня?",
+	CHARRND_INJURY = """Прогуливаясь по величественным залам особняка, вы услышали резкий крик, донесшийся из одной из рабочих комнат. Бросившись на звук, вы обнаруживаете [name], распростертого на полу и сжимающего [his] руку. Кровь просачивается сквозь пальцы из зазубренной раны, вызванной, скорее всего, падением инструмента или поломкой зачарованного оборудования. 
 
+В воздухе пахнет железом и слабыми следами магии, когда вы стоите над [him]. Травма выглядит серьезной, но не смертельной, однако ясно, что без посторонней помощи он не сможет работать в ближайшее время.""",
+	CHARRND_INJURY_OPT_HELP = """Помочь (20 золотых)""",
+	CHARRND_INJURY_OPT_DISC = """Наказать""",
+	CHARRND_INJURY_OPT_MANIP = """Манипулировать""",
+	CHARRND_INJURY_REPLY_HELP = """Вы опускаетесь на колени рядом с [name] и вызываете целителя, роясь в мешочке с монетами, чтобы покрыть расходы. Аптекарь особняка прибывает быстро, зашивая рану опытными руками и прикладывая к ней светящиеся травы. [He] бормочет слабую благодарность, все еще с бледностью, но с облегчением""",
+	CHARRND_INJURY_REPLY_DISC = """Вы хватаете [name] за воротник, не обращая внимания на [his] вздрагивание, и поднимаете [him] на ноги. Вы называете его неуклюжей бестолочью и отталкиваете к стене. Быстрая словесная перепалка или даже удар, если у вас есть настроение, доводят урок до конца""",
+	CHARRND_INJURY_REPLY_MANIP = """Вы приседаете, сохраняя низкий и ровный голос. Вы говорите [him], что этого не должно было случиться, что лучшее послушание могло бы уберечь [him]. [He] моргает, смятение затуманивает его боль, пока вы вплетаете сомнения в [his] разум. Когда вы заканчиваете, [he] уже наполовину верит, что это [his] вина и что вы единственный, кто может [him] защитить""",
+	CHARRND_ASLEEP = """Проходя по тускло освещенным коридорам особняка, вы замечаете фигуру, склонившуюся над верстаком в одной из захламленных комнат. Это [name], [his] голова покоится на руках, крепко спя среди разбросанных инструментов и мерцающего света свечей. [His] грудь медленно поднимается и опускается, не обращая внимания на окружающий мир, полузаконченное задание покоится перед [him]""",
+	CHARRND_ASLEEP_OPT_WAKE = """Разбудить""",
+	CHARRND_ASLEEP_OPT_FEEL = """Полапать""",
+	CHARRND_ASLEEP_OPT_LEAVE = """Уйти""",
+	CHARRND_ASLEEP_REPLY_WAKE = """Вы подходите ближе и крепко трясете [name], заставляя [him] проснуться. [He] смотрит на вас, ошеломленно, но благодарно, когда вы указываете на незаконченную работу. [He] вскакивает на ноги, бормоча слова благодарности за то, что вы не дали [him] расслабиться. Искра доверия в [his] глазах становится все сильнее, привязывая [him] ближе к вашей воле""",
+	CHARRND_ASLEEP_REPLY_FEEL = """Вы проводите рукой по плечу [name], обводя его фигуру, пока [he] погружается в сон. Прикосновение задерживается, пробуждая что-то неуловимое в [his] бессознательном разуме. Когда [he] наконец приходит в себя, на его щеках появляется румянец. Вы отвечаете на [his] недоуменную реакцию замечанием, что это [his] вина, что [he] спит на рабочем месте, и продолжаете свой путь""",
+	CHARRND_ASLEEP_REPLY_LEAVE = """Вы отворачиваетесь, оставляя [name] дремать без единого звука. Выбор, сделанный во избежание путаницы, помогает вам сосредоточиться, и вы уходите с более ясным умом. [He] спит дальше, ни о чем не подозревая, и вы считаете это адекватной реакцией на незначительную оплошность""",
+	CHARRND_BULLYING = """Вы входите в один из роскошных залов особняка и застаете напряженную сцену, которая разворачивается. [name] стоит в углу, сгорбив плечи, а над [him] нависает надменный гость. В голосе гостя звучат насмешки, он косится на [his] работу, одежду, на все, что угодно, лишь бы заставить нервничать. [His] глаза ненадолго бросают на вас взгляд, в котором мелькает безмолвная мольба, прежде чем [he] отводит глаза.
+
+Гость пока не замечает вас, слишком поглощенный своей жестокой игрой. В воздухе витает напряжение, и [name] неловко сдвигается с места, стискивая руки по бокам. Мгновение повисло тяжким грузом, подталкивая вас к решению: вмешаться, отойти или присоединиться.""",
+	CHARRND_BULLYING_OPT_PROTECT = "Защитить",
+	CHARRND_BULLYING_OPT_IGNORE = "Игнорировать",
+	CHARRND_BULLYING_OPT_JOIN = "Присоединиться",
+	CHARRND_BULLYING_REPLY_PROTECT = "Вы шагаете вперед, вставая между [name] и гостем. Резкое слово заставляет его отступить, осознавшего, что он переступил границы дозволенного на вашей территории. [name] выпрямляется, облегчение разливается по [his] лицу, когда [he] бормочет слова благодарности.",
+	CHARRND_BULLYING_REPLY_IGNORE = "Вы задерживаетесь в дверях, молча наблюдая. Насмешки гостя продолжаются, и [name] принимает их молча, бросая на вас взгляды, в которых разочарование сменяется угасанием надежды. В конце концов гость уходит. [He] поникает, не пострадав физически, но отдалившись, а вы продолжаете заниматься своими делами.",
+	CHARRND_BULLYING_REPLY_JOIN = "Вы подходите к гостю, добавляя свою колкость к его насмешкам. [name] вздрагивает, когда ваши слова достигают цели, [his] лицо искажается от боли и недоумения. Гость ухмыляется, радуясь вашему одобрению его действий. Когда все заканчивается, [he] избегает встречаться с вами взглядом.",
+
+	CHARRND_MISBEHAVE = """Вы сидите в кабинете особняка, когда из-под двери проскальзывает сложенное письмо без имени на печати. Вскрыв его, вы читаете резкий отчет о выходках [name] за стенами поместья: громкие хвастовства, мелкие кражи или другие безрассудные поступки. Позже вы сталкиваетесь с [him], и [he] пожимает плечами, не отрицая ни слова. [His] взгляд встречается с вашим - дерзкий и вызывающий, ожидающий вашей реакции.\n\nПисьмо хрустит в вашей руке, пока вы обдумываете прочитанное. [name] стоит, скрестив руки, с легкой усмешкой, бросая вам вызов.""",
+	CHARRND_MISBEHAVE_OPT_PARDON = "Простить",
+	CHARRND_MISBEHAVE_OPT_PUNISH = "Наказать",
+	CHARRND_MISBEHAVE_REPLY_PARDON = """Вы отбрасываете письмо в сторону и говорите [name], что забудете этот инцидент. [His] усмешка сменяется удивлением, затем проблеском уважения. [He] кивает, обещая в следующий раз вести себя тише, хотя вы знаете, что [he] может и не сдержать слово. Напряжение спадает, и [his] преданность остается непоколебимой, возможно, даже становится сильнее.""",
+	CHARRND_MISBEHAVE_REPLY_PUNISH = """Вы хватаете [name] за руку и назначаете наказание в виде физических работ. [He] напрягается, сжимая челюсти, но принимает это без борьбы. Усмешка исчезает, сменяясь угрюмым взглядом. [He] этого не забудет.""",
+	CHARRND_LOST = """Вы встречаете [name] у ворот поместья, когда [he] возвращается из города с пустыми руками и мрачным лицом. [He] признаётся, что груз - ящик с редкими травами - выпал из телеги где-то на грязной дороге. [His] плечи понуро опущены, но [he] не ищет оправданий, лишь ждёт вашей реакции. Ветер доносит слабый аромат утраченных трав, горькое напоминание об ошибке.\n\nЗа [him] стоит перекошенная телега с колесом, покрытым грязью. [name] переминается с ноги на ногу, взгляд скользит по земле, затем возвращается к вам. Потеря болезненна, и теперь вам решать: наказать за промах, простить или отправить на поиски.""",
+  
+	CHARRND_LOST_OPT_PUNISH = "Наказать",
+	CHARRND_LOST_OPT_PARDON = "Простить", 
+	CHARRND_LOST_OPT_SEARCH = "Отправить на поиски",
+ 
+	CHARRND_LOST_REPLY_PUNISH = """Вы резко отчитываете [name], ваши слова холодны, и приказываете [him] лишиться дневного жалования за утраченные травы. [He] вздрагивает, губы сжимаются, но [he] молча кивает. [His] шаги тяжелеют, когда [he] уходит, недовольство закипает на поверхности.""", 
+	CHARRND_LOST_REPLY_PARDON = """Вы машете рукой и говорите [name], что ошибки случаются. [His] глаза расширяются, напряжение спадает. [He] бормочет слова благодарности, испытывая облегчение, и обещает быть осторожнее. Ваша связь остаётся прочной, возможно, даже крепнет, несмотря на потерянный ящик.""",
+	CHARRND_LOST_REPLY_SEARCH = """Вы указываете на дорогу и приказываете [name] найти утраченные травы. [He] колеблется, затем бредёт обратно, ворча себе под нос. Спустя часы [he] возвращается, перепачканный грязью и с пустыми руками, но лучше узнавший дорогу. [His] уважение к вам растёт, хоть и приправлено усталостью.""",
+	CHARRND_UNWELL = """Ты застаёшь [name] прислонившимся к стене на кухне особняка — [his] лицо бледное, а лоб покрыт испариной. [He] прижимает руку к животу, признаваясь, что плохо себя чувствует: возможно, из-за испорченной еды или начинающейся простуды. [His] голос слаб, а [he] слегка пошатывается, ожидая твоего решения. Рядом потрескивает огонь в камине, но он почти не согревает [his] дрожащее тело.  
+
+В комнате душно, а [name] смотрит на тебя усталым, безмолвно молящим взглядом. [He] кашляет, затем собирается с силами, ожидая твоего приказа. Перед тобой выбор: дать [him] передышку, облегчить [his] состояние или заставить работать дальше.""",  
+	CHARRND_UNWELL_OPT_REST = "Разрешить отдохнуть",  
+	CHARRND_UNWELL_OPT_COMFORT = "Поддержать",  
+	CHARRND_UNWELL_OPT_FORCE = "Заставить работать",  
+	CHARRND_UNWELL_REPLY_REST = "Ты киваешь и разрешаешь [name] отдохнуть сегодня. [He] выдыхает с облегчением, благодарность разглаживает [his] напряжённые черты, и [he] медленно уходит в свою комнату. Отдых идёт [him] на пользу, и, когда [he] возвращается, в [his] глазах заметно больше доверия к тебе.",  
+	CHARRND_UNWELL_REPLY_COMFORT = "Ты подходишь ближе, кладёшь руку на плечо [name] и говоришь ободряющие слова. [He] неожиданно опирается на тебя, румянец постепенно возвращается на [his] щёки, а напряжение спадает. [His] настроение улучшается, и теперь [he] держится рядом, чувствуя себя ближе к тебе из-за этой маленькой поддержки.",  
+	CHARRND_UNWELL_REPLY_FORCE = "Ты выпрямляешься и приказываешь [name] вернуться к работе, не терпя возражений. [He] морщится, но покорно поднимается, спотыкаясь, выполняет приказ. К концу дня [him] совсем выматывается, кашель усиливается, а во взгляде мелькает обида. [He] справляется, но даётся это дорогой ценой.",  
+	CHARRND_ATTENTION = """Ты замечаешь [name] во дворе усадьбы, [he] нервно ёрзает, пока незнакомец подходит слишком близко. Его голос громкий, слова — то льстивые, то с намёком, а [name] отвечает натянутой улыбкой. [His] взгляд ловит твой — в нём тревога и немой вопрос, пока незнакомец продолжает, не замечая или игнорируя дискомфорт. Солнце палит, воздух густеет от напряжения.
+
+Рука незнакомца тянется к [name], проверяя границы. [He] отступает, но преследование не ослабевает. Ты стоишь на грани этого момента, чувствуя, как он втягивает тебя: поддержать [him] или встать между ними.""",  
+
+	CHARRND_ATTENTION_OPT_ENDORSE = "Поощрить",  
+	CHARRND_ATTENTION_OPT_PROTECT = "Защитить",  
+
+	CHARRND_ATTENTION_REPLY_ENDORSE_A = "Ты ловишь взгляд [name] и едва киваешь, давая понять — можно играть по их правилам. [Он] колеблется, но расслабляется, отвечая незнакомцу с проблеском интереса. Позже [он] уходит с ним и возвращается с лёгкой усмешкой, оставляя историю при себе.",  
+	CHARRND_ATTENTION_REPLY_ENDORSE_B = "Ты наклоняешься и шепчешь [name], чтобы [he] развлёк незнакомца. [He] напрягается, на лице мелькает недовольство, но [he] кивает. [He] терпит внимание, оставаясь скованным, и возвращается в стрессе.",  
+	CHARRND_ATTENTION_REPLY_PROTECT = "Ты резко шагаешь вперёд, вставая между [name] и незнакомцем с предупреждением. Тот отступает, бормоча, а [name] выдыхает с дрожью. [His] плечи расслабляются, и [he] тихо благодарит, глядя с тёплотой и облегчением. Ты становишься [his] щитом, и [he] держится ближе к тебе.",  
+	CHARRND_TREASURE = """Вы находите [name] в одной из пыльных кладовых особняка — [he] склонился над небольшой горсткой монет и потускневшей серебряной безделушкой. [He] вздрагивает, заметив вас, и объясняет, что нашел это за ящиками, возможно, реликвию прошлых лет. [His] пальцы на мгновение сжимают добычу, в глазах мечутся восторг и неуверенность, пока [he] ждет вашего решения.  
+
+Сокровище небогатое, но достаточно ценное, чтобы привлечь внимание. [name] переминается с ноги на ногу, бросая взгляды то на вас, то на находку, не зная, вправе ли [he] оставить ее себе.""",  
+	CHARRND_TREASURE_OPT_TAKE = "Забрать себе",  
+	CHARRND_TREASURE_OPT_LET = "Оставить [name]",  
+	CHARRND_TREASURE_OPT_OWNER = "Найти владельца",  
+	CHARRND_TREASURE_REPLY_TAKE = "Вы забираете монеты и безделушку, объявляя их своей добычей. [Name] хмурится, [his] плечи опускаются, но [he] не спорит. Сокровище звенит у вас в кармане, а вслед тянется [his] взгляд, тронутый горечью.",  
+	CHARRND_TREASURE_REPLY_LET = "Вы пожимаете плечами, разрешая [name] оставить находку. [His] лицо  озаряется, и [he] с благодарной улыбкой сжимает монеты. Спрятав сокровище, [he] заметно оживляется, и этот жест укрепляет [his] доверие к вам.",  
+	CHARRND_TREASURE_REPLY_OWNER = "Вы велите [name] помочь найти владельца, предположив, что вещи могли потерять недавние гости. [He] нехотя соглашается, и вместе вы проверяете записи и опрашиваете обитателей. В конце концов, сокровище возвращается удивленному хозяину.",
+	CHARRND_NIGHTMARE = """Ты слышишь приглушенный вскрик из комнаты [name] поздней ночью и заходишь внутрь, чтобы увидеть как [he] сидит, тяжело дыша с широко раскрытыми глазами. [He] сжимает одеяло, признаваясь, что кошмар разбудил [him] — что-то о тенях или старых страхах. [His] голос слегка дрожит, и [he] смотрит на тебя, уязвимый в мерцающем свете свечей.  
+
+Кровать скрипит, когда [name] двигается, в волнении, с каплями пота на [his] лбу. [He] вытирает лицо, пытаясь успокоиться, но тревога не уходит.""",  
+	CHARRND_NIGHTMARE_OPT_COMFORT = "Утешить",  
+	CHARRND_NIGHTMARE_OPT_DISCIP = "Наказать",  
+	CHARRND_NIGHTMARE_REPLY_COMFORT = "Ты садишься рядом с [name] и кладешь руку на [his] плечо, произнося тихие слова, чтобы успокоить [him]. [He] прижимается к вам, дыхание замедляется, а напряжение уходит. [His] взгляд смягчается с благодарностью, и [he] бормочет 'спасибо', прежде чем снова заснуть.",  
+	CHARRND_NIGHTMARE_REPLY_DISCIP = "Ты говоришь [name], чтобы [he] собрался, резко настаивая, что кошмары — не оправдание слабости. [He] вздрагивает, выпрямляется и кивает со сжатыми челюстями. [His] страх сменяется решимостью, но в [his] взгляде появляется отстраненность.",  
+	CHARRND_HATED_FOOD = """Вы заходите в обеденный зал особняка и замечаете [name1] и [name2], горячо спорющих возле стола. [name1] резко жестикулирует, настаивая, что [his1] вкус в еде лучше, а [name2] скрещивает [his2] руки, парируя, что только [his2] предпочтения имеют смысл. Их голоса становятся громче, привлекая любопытные взгляды слуг, а воздух наполняется их упрямым противостоянием.  
+
+Спор зацикливается: каждый глубже укореняется в своей позиции, лица краснеют от раздражения. [name1] тычет пальцем в [name2], тот фыркает и отворачивается. Вы стоите рядом, и шум привлекает ваше внимание: успокоить их, подлить масла в огонь или позволить всему идти своим чередом?""",  
+	CHARRND_HATED_FOOD_OPT_RECON = "Помирить их",  
+	CHARRND_HATED_FOOD_OPT_AGITATE = "Разжечь конфликт",  
+	CHARRND_HATED_FOOD_OPT_IGNORE = "Проигнорировать",  
+	CHARRND_HATED_FOOD_REPLY_RECON = "Вы встаёте между [name1] и [name2], уговаривая их прекратить спор и просто разделить трапезу. Они ворчат, но ваши слова смягчают напряжённость, и они садятся вместе. [name1] предлагает [name2] попробовать блюдо, и тот нехотя соглашается. Напряжение спадает, и они снова сближаются.",  
+	CHARRND_HATED_FOOD_REPLY_AGITATE = "Вы бросаете колкость в самый разгар спора, слегка поддерживая одного, чтобы разозлить другого. [name1] повышает голос, а [name2] хлопает рукой по столу, и их спор разгорается с новой силой. В конце концов они расходятся в разные стороны, кипя от ярости.",  
+	CHARRND_HATED_FOOD_REPLY_IGNORE = "Вы отворачиваетесь, оставляя [name1] и [name2] разбираться самим. Их голоса звучат у вас за спиной — колкие и мелкие, пока они не выдохнутся. Они садятся по разным концам стола и едят в молчании, никто не сдаётся. Вы чувствуете удовлетворение от того, что не стали вмешиваться в эту пустяковую перепалку.",  
+	CHARRND_QUARREL = """Вы заходите во двор особняка и видите, как [name1] и [name2] ругаются на повышенных тонах и сжатыми кулаками. [name1] обвиняет [name2] в лени, а [name2] резко отвечает, утверждая, что [name1] присваивает все заслуги. Их слова ранят, а вокруг уже собралась небольшая толпа слуг, перешёптывающихся между собой. Солнце палит, отбрасывая резкие тени, пока их спор становится всё громче.  
+
+Напряжение между ними накаляется: [name1] нервно бродит, а [name2] стоит неподвижно, сверля взглядом. Сначала они вас даже не замечают, слишком поглощённые своей яростью.""",  
+	CHARRND_QUARREL_OPT_SUPPORT1 = "Поддержать [name1]",  
+	CHARRND_QUARREL_OPT_SUPPORT2 = "Поддержать [name2]",  
+	CHARRND_QUARREL_OPT_PUNISH = "Наказать обоих",  
+	CHARRND_QUARREL_REPLY_SUPPORT1 = "Вы подходите и встаёте на сторону [name1], соглашаясь, что [he1] прав. [His1] грудь гордо выпячивается, и [he1] благодарно кивает, в то время как [name2] хмурится и отступает. Ссора затихает, но обида [name2] остаётся, а [name1] теперь держится ближе к вам.",  
+	CHARRND_QUARREL_REPLY_SUPPORT2 = "Вы вмешиваетесь и поддерживаете [name2], указывая на ошибки [name1]. [name2] самодовольно ухмыляется, чувствуя себя оправданным, а лицо [name1] искажается от злобного шёпота. Спор прекращается, но [name1] уходит в раздражении, а [name2] становится смелее под вашим покровительством.",  
+	CHARRND_QUARREL_REPLY_PUNISH = "Вы резко одёргиваете [name1] и [name2], приказывая им прекратить и отправляя чистить конюшни в наказание. Они замирают, затем неохотно бредут прочь, бормоча под нос. Конфликт исчерпан, но в их взглядах ещё тлеет злость, и теперь они вынуждены соблюдать хрупкое перемирие под вашим строгим надзором.",
+	CHARRND_LOVE = """Вы замечаете, как [name1] задерживается рядом с [name2] в саду особняка, с мягким взглядом, а [his1] руки беспокойно теребят что-то. [He1] запинается, когда [he2] бросает взгляд в [his1] сторону, и румянец заливает [his1] шею — [he1] явно пытается скрыть свою влюбленность. [name2] кажется безучастным, ухаживая за растениями, пока [name1] топчется рядом, разрываясь между надеждой и беспокойностью.
+
+[name1] украдкой снова смотрит на [name2], затем резко отворачивается, смущенный. [He2] напевает [himself2], не замечая направленного на [his2] томления. Вы наблюдаете с дорожки, и эта сцена трогает вас.""",
+	CHARRND_LOVE_OPT_HELP = "Помочь им стать парой",
+	CHARRND_LOVE_OPT_FLIRT = "Флиртовать с [name2]",
+	CHARRND_LOVE_OPT_IGNORE = "Игнорировать их",
+	CHARRND_LOVE_REPLY_HELP = "Вы отводите [name1] в сторону и подбадриваете [him1] высказать [his1] чувства. [He1] признается, запинаясь, и [name2] моргает, а затем улыбается, не без радости. Они сближаются, руки касаются друг друга, а лицо [name1] озаряется улыбкой, когда [he2] остается рядом.",
+	CHARRND_LOVE_REPLY_FLIRT = "Вы подходите к [name2] и проводите рукой по [his2] руке, нашептывая что-то тихое. [He2] смеется, отвечая на флирт, а [name1] наблюдает, сжав челюсть и сверкая глазами от зависти. [He1] отворачивается с обидой, а [name2] так и остается в неведении. Воздух становится тяжелым, и [name1] отдаляется от вас обоих.",
+	CHARRND_LOVE_REPLY_IGNORE = "Вы проходите мимо, оставляя [name1] с [his1] тихими мечтами, а [name2] — с [his2] садоводством. [He1] продолжает бросать взгляды, но ничего не меняется, и [he2] так и не замечает [his1] чувств. День идет своим чередом, их немой танец остается прежним, а вы избегаете этой запутанной истории.",
+	CHARRND_DISCUSTOMER = """Ты входишь в слабо освещённую лаунж-зону хостел-клуба, где воздух густ от парфюма и перешёптываний, и замечаешь [name1] и [name2] у бара, погружённых в напряжённый спор. [name1] тычет пальцем в [name2], настаивая, чтобы [he2] обслужил грубого клиента в углу, а [name2] качает [his2] головой, утверждая, что в прошлый раз это был [his2] черёд.  
+
+Вокруг царит оживление: звенит стекло, другие хосты скользят мимо. [name1] скрещивает [his1] руки, [name2] копирует [his1] жест — никто не сдаётся.""",  
+	CHARRND_DISCUSTOMER_OPT_SERVE1 = "Заставить [name1] обслужить его",  
+	CHARRND_DISCUSTOMER_OPT_SERVE2 = "Заставить [name2] обслужить его",  
+	CHARRND_DISCUSTOMER_OPT_NEITHER = "Пусть оба откажутся",  
+	CHARRND_DISCUSTOMER_OPT_BOTH = "Заставить обоих обслужить его",  
+	CHARRND_DISCUSTOMER_REPLY_SERVE1 = "Ты указываешь на [name1] и приказываешь [him1] заняться клиентом. [He1] кривится, бормочет что-то под нос, но поправляет [his1] пиджак и идёт к столику с натянутой улыбкой. [name2] усмехается, радуясь своему везению, и растворяется у бара.",  
+	CHARRND_DISCUSTOMER_REPLY_SERVE2 = "Ты киваешь [name2] и напоминаешь, что теперь [his2] очередь. [He2] фыркает, бросая [name1] грязный взгляд, но поправляет [his2] воротник и марширует к клиенту, стиснув зубы. [name1] расслабляется, и в [his1] глазах мелькает благодарность, пока [he1] наблюдает за мучениями [name2].",  
+	CHARRND_DISCUSTOMER_REPLY_NEITHER = "Ты машешь рукой и разрешаешь [name1] и [name2] пропустить этого клиента. Они переглядываются, явно довольные, и быстро исчезают, занявшись более приятными делами.",  
+	CHARRND_DISCUSTOMER_REPLY_BOTH = "Ты приказываешь [name1] и [name2] обслужить клиента вместе. Они стонут, обмениваются недовольными взглядами, но идут, напялив фальшивые улыбки. Жалобы клиента только множатся, и они еле справляются.",  
+	CHARRND_LIKECUSTOMER = """Ты входишь в роскошный лаунж хостел-клуба, где воздух наполнен смехом и звоном бокалов, и замечаешь, как [name1] хмуро оттягивает тебя в сторону. [He1] жалуется, что [name2] постоянно крутится возле [his1] богатого клиента — улыбается, задерживается слишком долго. Через зал [name2] оживлённо беседует с элегантным посетителем, не замечая недовольного взгляда [name1]. Люстра сверкает над головой, подсвечивая нарастающее соперничество.  
+
+[name1] нервно переминается, ожидая твоей поддержки, а [name2] смеётся в ответ на слова клиента, наклоняясь ближе. Напряжение витает под гладкой поверхностью клубной атмосферы, и ты чувствуешь выбор: отчитать [name2], отмахнуться от [name1] или переключить внимание.""",  
+	CHARRND_LIKECUSTOMER_OPT_SCOLD2 = "Отругать [name2]",  
+	CHARRND_LIKECUSTOMER_OPT_DISMISS1 = "Игнорировать [name1]",  
+	CHARRND_LIKECUSTOMER_OPT_SERVEYOU = "Пусть [name1] обслуживает тебя",  
+	CHARRND_LIKECUSTOMER_REPLY_SCOLD2 = "Ты подходишь к [name2] и строго говоришь [him2] прекратить переманивать клиентов. [He2] вздрагивает, отстраняясь от посетителя с недовольной гримасой, и бормочет извинение. [name1] самодовольно усмехается.",  
+	CHARRND_LIKECUSTOMER_REPLY_DISMISS1 = "Ты поворачиваешься к [name1] и говоришь [him1], чтобы [he1] прекратил ныть — это просто бизнес. [He1] фыркает, скрещивает [his1] руки и уходит к другому столику.",  
+	CHARRND_LIKECUSTOMER_REPLY_SERVEYOU = "Ты похлопываешь [name1] по плечу и просишь [him1] составить тебе компанию. [He1] колеблется, но соглашается, наливая тебе напиток с лёгкой улыбкой. Богатый клиент быстро забывается, пока [he1] общается с тобой, и напряжение спадает.",  
+	CHARRND_TRAP = """Пока ваш отряд продвигается глубже в затемнённые залы подземелья, под ногой [name] раздаётся щелчок. Ловушка срабатывает, и [he] вскрикивает, когда шипастый дротик вонзается в ногу. [He] спотыкается, кровь стекает по [his] икре, и [he] прислоняется к сырой каменной стене, морщась от боли.  
+
+Впереди маячит путь, сокровища и опасности всё ещё недосягаемы. [name] сжимает [his] рану, взгляд мечется к вам, на [his] лбу выступает пот.""",  
+	CHARRND_TRAP_OPT_HELP = "Помочь",  
+	CHARRND_TRAP_OPT_BACK = "Отослать назад",  
+	CHARRND_TRAP_REPLY_HELP = "Вы опускаетесь рядом с [name] и вытаскиваете дротик, перевязывая [his] ногу тканью из своего рюкзака. [He] стискивает зубы, благодаря вас прерывистым дыханием, пока вы поддерживаете [him]. Минуты ускользают, замедляя ваш путь, но [his] доверие к вам крепнет, и [he] хромает дальше рядом с вами.",  
+	CHARRND_TRAP_REPLY_BACK = "Вы говорите [name] вернуться к входу в подземелье. [He] кивает, гримасничая, и ковыляет прочь один, оставляя вас идти вперёд без помех. Дорога освобождается быстрее, но [his] отсутствие режет по сердцу, а [he] явно затаит тихую обиду, когда поправится.",  
+	CHARRND_SKIRMISH = """Бредя по извилистым туннелям подземелья под звон доспехов и отдалённое капанье, ты замечаешь, как [name] замедляет шаг рядом. [He] вытирает пот со лба и бормочет, что путь и сражения вымотали [him], прося передышки. [His] плечи понуро опущены, [he] опирается на оружие, устало глядя на тебя.  
+
+Усталость от пути читается в [his] волочащихся шагах, а впереди ждёт новый зал, сулящий новые испытания. [name] переминается с ноги на ногу, ожидая твоего ответа, дыхание [his] прерывисто.""",  
+	CHARRND_SKIRMISH_OPT_AGREE = "Согласиться",  
+	CHARRND_SKIRMISH_OPT_GOLD = "Доплатить золотом",  
+	CHARRND_SKIRMISH_OPT_IGNORE = "Проигнорировать",  
+	CHARRND_SKIRMISH_REPLY_AGREE = "Ты киваешь и указываешь [name] на ближайшую нишу, разрешая присесть. [He] с облегчением опускается, потягивая ноги и переводя дух. Задержка замедляет вас, но [his] силы возвращаются, и [he] после держится ближе к тебе, бодрее прежнего.",  
+	CHARRND_SKIRMISH_REPLY_GOLD = "Ты достаёшь из кошеля несколько монет и вручаешь [name], убеждая [him] двигаться дальше. [His] глаза загораются при виде золота, и [he] распрямляется, пряча награду с благодарным кивком. Усталость отступает, сменяясь рвением.",  
+	CHARRND_SKIRMISH_REPLY_IGNORE = "Ты поворачиваешься и продолжаешь идти, оставляя [name] поспевать за тобой или отстать. [He] ворчит, волоча ноги с недовольной гримасой.",  
+	
+	
 }
 
 

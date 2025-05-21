@@ -651,6 +651,9 @@ func remove_from_task(travel = false):
 func return_to_task():
 	xp_module.return_to_task()
 
+func get_unaval_string():
+	return xp_module.get_unaval_string()
+
 func travel_per_tick():
 	return travel.travel_per_tick()
 
@@ -1153,8 +1156,8 @@ func has_resistance_block():
 func get_resistance_reduction():
 	return training.get_resistance_reduction()
 
-func get_loyalty_penalty():
-	return training.get_loyalty_penalty()
+func get_loyalty_penalty_data():
+	return training.get_loyalty_penalty_data()
 
 func get_loyalty_growth():
 	return training.get_loyalty_growth()
@@ -1821,7 +1824,10 @@ func affect_char(template, manifest = false):
 			if template.value:
 				xp_module.make_avaliable()
 			else:
-				xp_module.make_unavaliable()
+				var duration = -1
+				if template.has('duration'):
+					duration = template.duration
+				xp_module.make_unavaliable(duration)
 		'set_as_spouse':
 			ResourceScripts.game_progress.spouse = id
 		'escape':

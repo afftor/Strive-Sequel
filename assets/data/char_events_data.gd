@@ -202,6 +202,69 @@ var list = {
 			var_skirmish_exp = 25
 		}
 	},
+	char_rnd_pray = {
+		special_reqs = {
+			char_reqs = [
+				{
+					code = 'is_unique',
+					value = false
+				},
+				{
+					code = 'slave_type',
+					operant = 'neq',
+					value = 'slave'
+				},
+				{
+					code = 'slave_type',
+					operant = 'neq',
+					value = 'slave_trained'
+				}
+			]
+		},
+		vars = {
+			var_pray_loyalty = 5,
+			var_pray_resistance = -25,
+			var_pray_exp = 25
+		}
+	},
+	char_rnd_letter = {
+		special_reqs = {
+			char_reqs = [
+				{
+					code = 'is_unique',
+					value = false
+				},
+				{
+					code = 'slave_type',
+					operant = 'neq',
+					value = 'slave'
+				},
+				{
+					code = 'slave_type',
+					operant = 'neq',
+					value = 'slave_trained'
+				}
+			]
+		},
+		vars = {
+			var_letter_grain = 20,
+			var_letter_loyalty = 5,
+			var_letter_resistance = -50,
+			var_letter_exp = 35,
+			var_letter_burn_exp = 25
+		}
+	},
+	char_rnd_brokenvase = {
+		vars = {
+			var_brokenvase_loyalty = 5,
+			var_brokenvase_exp_repair = 25,
+			var_brokenvase_exp_replace = 25,
+			var_brokenvase_money = 30,
+			var_brokenvase_exp_punish = 20,
+			var_brokenvase_duration = 1
+		}
+	},
+	
 }
 
 func supplement_events():
