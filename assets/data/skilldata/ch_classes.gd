@@ -1305,7 +1305,7 @@ var effects = {
 var atomic_effects = {}
 var buffs = {
 	b_alios = {
-		icon = "res://assets/images/iconsskills/hitrate.png",
+		icon = "res://assets/images/traits/hitrate.png",
 		description = "BUFFDESCRIPTALIOSACTIVE",
 		tags = ['combat_only'],
 	},
@@ -1334,7 +1334,7 @@ var buffs = {
 		description = "BUFFDESCRIPTDISTRACT",
 	},
 	b_bloodatk = {
-		icon = "res://assets/images/iconsskills/hitrate.png",
+		icon = "res://assets/images/traits/hitrate.png",
 		description = "BUFFDESCRIPTBLOODATTACK",
 		tags = ['combat_only'],
 	},
