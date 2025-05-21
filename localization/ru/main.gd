@@ -1039,6 +1039,8 @@ var TranslationDict = {
 	SYSNOWORKERENERGY = """Работа отменена: Нет энергии""",
 	DIALOGUEREPEATACTION = """Повторить""",
 	CHAR_UNAVALIABLE = """Недоступен""",
+	CHAR_UNAVALIABLE_TURN = """Unavail: %s t.""", # MISSING TRANSLATION
+	CHAR_UNAVALIABLE_DAY = """Unavail: %s d.""", # MISSING TRANSLATION
 	NO_FREE_SLOTS = """Для этой задачи не осталось свободных мест""",
 	ANOTHERPROFSELECTED = """Можно выбрать только одну специализацию.""",
 	NOMATERIALSFORITEMPART = """У вас нет подходящих материалов для этой части.""",
@@ -1570,6 +1572,7 @@ Hotkey: 3""",
 	TRAININGRESISTANCEINCREASE = """Resistance increased to %.0f.""", # MISSING TRANSLATION
 	TRAININGLABELSPIRIT = """Дух персонажа: %.0f""",
 	TRAININGLABELLOYALTY = """%.0f""",
+	TRAININGLABELLOYALTYGROW = """%.0f + %.2f""", # MISSING TRANSLATION
 	TRAININGLABELRESISTANCE = """%.0f""", # MISSING TRANSLATION
 	TRAININGTOOLTIPRESISTANCE = """High resistance reduces training efficiency.
 %s's resistance drops by %.0f per turn.""", # MISSING TRANSLATION
@@ -19459,6 +19462,29 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	CHARRND_SKIRMISH_REPLY_AGREE = "Ты киваешь и указываешь [name] на ближайшую нишу, разрешая присесть. [He] с облегчением опускается, потягивая ноги и переводя дух. Задержка замедляет вас, но [his] силы возвращаются, и [he] после держится ближе к тебе, бодрее прежнего.",  
 	CHARRND_SKIRMISH_REPLY_GOLD = "Ты достаёшь из кошеля несколько монет и вручаешь [name], убеждая [him] двигаться дальше. [His] глаза загораются при виде золота, и [he] распрямляется, пряча награду с благодарным кивком. Усталость отступает, сменяясь рвением.",  
 	CHARRND_SKIRMISH_REPLY_IGNORE = "Ты поворачиваешься и продолжаешь идти, оставляя [name] поспевать за тобой или отстать. [He] ворчит, волоча ноги с недовольной гримасой.",  
+	CHARRND_PRAY = """You find [name] tucked away in a quiet corner of the mansion's garden, murmuring unfamiliar words while gripping a crude, homemade amulet. [He] stiffens at the sound of your steps, turning quickly, [his] eyes flickering with both fear and hope.
+
+The air feels heavy, the amulet glinting faintly in [his] hand. [name] watches you, breath held, as the moment lingers. You sense the choice: let [him] keep [his] ritual or put an end to it.""", # MISSING TRANSLATION
+	CHARRND_PRAY_OPT_ALLOW = """Allow Ritual""", # MISSING TRANSLATION
+	CHARRND_PRAY_OPT_FORBID = """Forbid Ritual""", # MISSING TRANSLATION
+	CHARRND_PRAY_REPLY_ALLOW = """You glance at the amulet but walk on without a word. [name] lets out a shaky breath, fingers tightening around the charm. The next day, you find a woven sash, a local token of fortune, left at your door. [His] eyes seek yours more often, warmed by your silent acceptance.""", # MISSING TRANSLATION
+	CHARRND_PRAY_REPLY_FORBID = """You raise your voice and order [name] to drop the amulet. [He] flinches, letting it fall, and you crush it under your boot. [His] face pales, but [he] stays silent. After that, [he] avoids your gaze, and late at night, you catch whispers from the barracks—sharp words, not of peace, but of resentment.""", # MISSING TRANSLATION
+	CHARRND_LETTER = """You catch [name] hunched in a dim corner of the mansion, reading a tattered sheet of paper. When [he] spots you, [he] fumbles and drops it. The scrawled words reveal [his] family's desperate plea for aid. [He] stares at you, braced for punishment, eyes wide with dread.
+
+The paper lies crumpled at [his] feet, the air thick with [his] silent worry. [name] shifts, waiting, as you weigh the moment: aid [his] kin, or destroy the letter.""", # MISSING TRANSLATION
+	CHARRND_LETTER_OPT_HELP = """Help the Family (20 grain)""", # MISSING TRANSLATION
+	CHARRND_LETTER_OPT_BURN = """Burn the Letter""", # MISSING TRANSLATION
+	CHARRND_LETTER_REPLY_HELP = """You arrange for a sack of flour and coins to be sent to [name]'s village. A messenger returns with tales of [his] mother's tearful thanks. [name] gazes at you with awe, and even the grumpiest servants mutter that you've got a heart after all.""", # MISSING TRANSLATION
+	CHARRND_LETTER_REPLY_BURN = """You snatch the paper and rip it apart, calling it a distraction from [his] duties. [name] stands frozen as the pieces scatter, [his] eyes hollowing out. By morning, [he]'s gone, leaving only footprints fading toward the edge of your lands.""", # MISSING TRANSLATION
+	CHARRND_BROKENVASE = """You enter the mansion's ornate parlor and hear a sharp crash, followed by a stifled gasp. [name] stands frozen, shards of a priceless vase scattered at [his] feet, its delicate patterns now a jagged ruin. [He] kneels, gathering the pieces, and stammers that [he] can glue it back together, though [his] trembling hands suggest a crude fix at best. [His] eyes dart to you, wide with guilt and dread.
+
+The air smells faintly of dust and polish, the broken vase glinting under the chandelier's light. [name] clutches the fragments, waiting for your judgment, the weight of the mishap hanging heavy. You feel the pull: let [him] try, demand better, or turn it against [him].""", # MISSING TRANSLATION
+	CHARRND_BROKENVASE_OPT_REPAIR = """Allow Repair""", # MISSING TRANSLATION
+	CHARRND_BROKENVASE_OPT_REPLACE = """Demand Replacement""", # MISSING TRANSLATION
+	CHARRND_BROKENVASE_OPT_PUNISH = """Punish""", # MISSING TRANSLATION
+	CHARRND_BROKENVASE_REPLY_REPAIR = """You nod and tell [name] to go ahead with [his] repair. [He] exhales, setting to work with clumsy tools and sticky glue, costing [him] a whole day to do it. The vase returns, lumpy and uneven, but [he] beams with relief. [His] gratitude grows, and [he] takes extra care around you after.""", # MISSING TRANSLATION
+	CHARRND_BROKENVASE_REPLY_REPLACE = """You shake your head and order [name] to replace the vase, no excuses. [He] pales, knowing the cost far exceeds [his] means, and promises to save for it. [His] steps grow heavy, shoulders slumped, and a quiet resentment simmers in [his] gaze.""", # MISSING TRANSLATION
+	CHARRND_BROKENVASE_REPLY_PUNISH = """You grab [name]'s arm and berate [him] for [his] carelessness, docking [his] pay to cover the loss. [He] flinches, dropping the shards, and nods in silence. [His] work continues, but [he] avoids you, eyes downcast, the sting of your words lingering.""", # MISSING TRANSLATION
 	
 	
 }

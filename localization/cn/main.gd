@@ -1006,6 +1006,8 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	SYSNOWORKERENERGY = "工作取消：没有能量",
 	DIALOGUEREPEATACTION = "重复",
 	CHAR_UNAVALIABLE = "不可用",
+	CHAR_UNAVALIABLE_TURN = """Unavail: %s t.""", # MISSING TRANSLATION
+	CHAR_UNAVALIABLE_DAY = """Unavail: %s d.""", # MISSING TRANSLATION
 	NO_FREE_SLOTS = "此任务已无可用插槽",
 	ANOTHERPROFSELECTED = """Can only select one specialization.""", # MISSING TRANSLATION
 
