@@ -204,17 +204,23 @@ func has_status(status):
 	return false
 
 
-func find_temp_effect_tag(eff_tag):
+func find_temp_effect_tag(eff_tag, all_flag = false):
 	var res = []
 	for rec in effects_temp_globals_real:
 		var eff = effects_pool.get_effect_by_id(rec.id)
 		if eff.has_status(eff_tag):
 			res.push_back(rec.id)
 	for st in effects_temp_real.values():
-		for id in st.get_active_effects().keys():
-			var eff = effects_pool.get_effect_by_id(id)
-			if eff.has_status(eff_tag):
-				res.push_back(id)
+		if all_flag:
+			for id in st.effects.keys():
+				var eff = effects_pool.get_effect_by_id(id)
+				if eff.has_status(eff_tag):
+					res.push_back(id)
+		else:
+			for id in st.get_active_effects().keys():
+				var eff = effects_pool.get_effect_by_id(id)
+				if eff.has_status(eff_tag):
+					res.push_back(id)
 	return res
 
 
@@ -312,7 +318,7 @@ func remove_temp_effect_tag(eff_tag):#function for non-direct temps removing, li
 
 
 func remove_all_temp_effects_tag(eff_tag): #function for non-direct temps removing, like heal or dispel
-	var tmp = find_temp_effect_tag(eff_tag)
+	var tmp = find_temp_effect_tag(eff_tag, true)
 	if tmp.empty():
 		return
 	for e in tmp:
