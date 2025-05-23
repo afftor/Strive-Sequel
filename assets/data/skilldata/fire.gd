@@ -58,7 +58,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'fire',#not sure but not matters
-		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'blood_boil', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],

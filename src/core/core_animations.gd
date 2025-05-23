@@ -280,6 +280,23 @@ func gfx_particles_infinite(node, effect):
 	x.emitting = true
 
 
+func gfx_video(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = false):
+	if !node.is_inside_tree(): return
+	var x = load(images.GFX_video[effect]).instance()
+	node.add_child(x)
+	var video_size = x.get_video_texture().get_size()
+	x.rect_size = Vector2(node.rect_size.x,
+		video_size.y * (node.rect_size.x / video_size.x))
+	x.rect_position.y = node.rect_size.y * 0.5 - x.rect_size.y * 0.5
+#	if flip == true: x.set_flip_h(true)
+	x.play()
+
+	self.FadeAnimation(x, fadeduration, delayuntilfade)
+	var wr = weakref(x)
+	yield(get_tree().create_timer(delayuntilfade+fadeduration), 'timeout')
+
+	if wr.get_ref(): x.queue_free()
+
 
 func ResourceGetAnimation(node, startpoint, endpoint, time = 0.5, delay = 0.2):
 	if !node.is_inside_tree(): return

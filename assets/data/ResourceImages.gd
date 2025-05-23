@@ -1084,6 +1084,9 @@ var GFX_particles = {
 	sparks = "res://assets/sfx/spark.tscn",
 }
 
+var GFX_video = {
+	blood_boil = "res://assets/sfx/hit_animation/blood_boil.tscn"
+}
 
 
 func loadimages(): 

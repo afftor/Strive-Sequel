@@ -94,7 +94,11 @@ func start_animation(node):
 	var delay = 0
 	for data in f_anim:
 		#print("%d - %d %s"%[OS.get_ticks_msec(),cur_timer, data.type])
-		delay = max(delay, call(data.type, data.node, data.params))
+		var true_type = data.type
+		if images.GFX_video.keys().has(true_type):
+			true_type = 'gfx_video'
+			data.params.video_name = data.type
+		delay = max(delay, call(true_type, data.node, data.params))
 	animation_delays[node] = delay
 
 #not used 
@@ -215,6 +219,15 @@ func earth_spike(node, args = null):
 	
 	return nextanimationtime + aftereffectdelay
 	#aftereffecttimer = nextanimationtime + aftereffectdelay
+
+func gfx_video(node, args):
+	var nextanimationtime = 0.8
+	hp_update_delays[node] = 0.5
+	log_update_delay = max(log_update_delay, 0.5)
+	buffs_update_delays[node] = 0.5
+	ResourceScripts.core_animations.gfx_video(node, args.video_name, 0.7, 2)
+	
+	return nextanimationtime + aftereffectdelay
 
 func targetfire(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
