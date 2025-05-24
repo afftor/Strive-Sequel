@@ -640,7 +640,6 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
 		statchanges = {armor_add_part = -0.5},
-		buffs = ['b_shred'],
 	},
 	e_s_shatter = {
 		type = 'temp_s',
@@ -651,7 +650,6 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
 		statchanges = {mdef_add_part = -0.5},
-		buffs = ['b_shatter'],
 	},
 	
 	e_s_sleep = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions. until remade properly
@@ -977,7 +975,7 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
 		tags = ['negative'],
-		statchanges = {resist_damage_heal = -100},
+		statchanges = {resist_heal = -100},
 		buffs = ['b_slam'],
 	},
 	e_s_takeposition = {
@@ -1333,10 +1331,12 @@ var stacks = {
 	shred = {
 		type = 'stack_a',
 		stack = 2,
+		buff = 'b_shred'
 	}, #stack 2, merge dur
 	shatter = {
 		type = 'stack_a',
 		stack = 2,
+		buff = 'b_shatter'
 	}, #stack 2, merge dur
 }
 
@@ -1661,6 +1661,9 @@ func rebuild_skillvalue_template(args):
 		var tmp = targetcondition.duplicate(true)
 		tmp.value.push_back({code = 'has_status', check = true, status = args.target_status})
 		trigger.conditions.push_back(tmp)
+	
+	if args.has('add_tag'):
+		trigger.tags = args.add_tag.duplicate()
 	
 	return trigger
 

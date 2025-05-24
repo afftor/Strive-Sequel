@@ -599,7 +599,8 @@ var effects = {
 		conditions = [],
 		reset = [variables.TR_COMBAT_F],
 		req_skill = true,
-		sub_effects = ['e_instant']
+		sub_effects = ['e_instant'],
+		tags = ['class_berserker']
 	},
 	
 	e_tr_druid = Effectdata.rebuild_skillvalue_template({source = 'earth', skilltype = 'spell', tag = 'damage', value = 1.2}),
@@ -651,7 +652,8 @@ var effects = {
 		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'item']}],
 		atomic = [],
 		buffs = ['b_free_use'],#buff for indicating free item use, obviosly not b_stun
-		sub_effects = ['e_instant']
+		sub_effects = ['e_instant'],
+		tags = ['class_attendant'],
 	},
 	
 	e_tr_paladin_1 = Effectdata.rebuild_skillvalue_template({target_race = 'undead', tag = 'damage',  value = 1.25}),
@@ -712,7 +714,7 @@ var effects = {
 		}
 	},
 	
-	e_tr_potion = Effectdata.rebuild_skillvalue_template({reset = [variables.TR_TURN_GET], skilltype = 'item', tag = 'heal', value = 1.25}),
+	e_tr_potion = Effectdata.rebuild_skillvalue_template({reset = [variables.TR_TURN_GET], skilltype = 'item', tag = 'heal', value = 1.25, add_tag = ['class_alchemist']}),
 	
 	valkyrie_spear_bonus = {
 		type = 'simple',
@@ -1286,7 +1288,7 @@ var effects = {
 		target = 'target',
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		statchanges = {resist_damage_ranged = 0.5},
+		statchanges = {resist_ranged = 0.5},
 		buffs = [{
 			icon = "res://assets/images/iconsskills/windwall.png",
 			description = "TRAITEFFECTWINDWALL",

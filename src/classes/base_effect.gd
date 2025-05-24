@@ -191,7 +191,6 @@ func deserialize(tmp):
 	owner = tmp.owner
 	if get_applied_obj() == null: 
 		return
-	fill_sub_effects()
 
 
 func rebuild_buffs():

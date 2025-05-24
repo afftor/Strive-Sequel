@@ -807,6 +807,7 @@ var materiallist = {
 		price = 55,
 		progress_per_item = 4,
 		progress_formula = 'hunt_leather_hard',
+		workmod = 'mod_hunt',
 		type = 'gem',
 		tier = 'hard',
 		tags = ["no_random"],
