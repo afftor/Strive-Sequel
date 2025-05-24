@@ -234,7 +234,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		show_in_parent_stats = true,
-		effects = ['e_tr_bers1', 'e_tr_bers2', 'e_tr_berserk'],
+		effects = ['e_tr_bers1', 'e_tr_bers2'],
 		bonusstats = {}
 	},
 	druid = {
@@ -287,14 +287,6 @@ var traits = {
 		effects = ['e_tr_bishop', 'e_tr_bishop2'],
 		bonusstats = {}
 	},
-	attendant = {#item usage in combat takes no turn
-		code = 'attendant',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = ['e_tr_attendant'],
-	},
 	paladin = {
 		code = 'paladin',
 		name = '',
@@ -318,17 +310,6 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = ['e_tr_sadist'],
-	},
-	alchemist = {#+100% alchemy production, potions restore 25% more
-		code = 'alchemist',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		show_in_parent_stats = true,
-		effects = [#'e_tr_alchemist',
-			'e_tr_potion'],
-		bonusstats = {}
 	},
 	valkyrie_spear = {
 		code = 'valkyrie_spear',
