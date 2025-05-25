@@ -104,6 +104,7 @@ var skills = {
 		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['0']],
+		damagestat = 'no_stat'
 	},
 	pacify = {
 		code = 'pacify',
