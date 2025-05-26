@@ -64,7 +64,7 @@ var skills = {
 		tags = ['damage','aoe','earth'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template_globals({effect = 'e_s_ensnare2', chance = 0.5})], 
+		effects = [Effectdata.rebuild_template({effect = 'e_s_ensnare', chance = 0.5, duration = 2})], 
 		cost = {mp = 6},
 		charges = 0,
 		combatcooldown = 0,

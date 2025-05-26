@@ -40,7 +40,7 @@ var skills = {
 		tags = ['damage', 'aoe', 'debuff'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template_globals({effect = 'e_s_ensnare'})], 
+		effects = [Effectdata.rebuild_template({effect = 'e_s_ensnare', duration = 1})], 
 		cost = {mp = 5},
 		charges = 0,
 		combatcooldown = 1,
@@ -194,7 +194,7 @@ var effects = {
 		trigger = [variables.TR_POSTDAMAGE],
 		req_skill = true,
 		args = {duration = {obj = 'self', func = 'dr', dr = 1},},
-		modal_sub_effects = ['e_s_blind', 'e_s_disarm', 'e_s_silence'],
+		modal_sub_effects = ['blind', 'disarm', 'silence'],
 	},
 }
 var atomic_effects = {}

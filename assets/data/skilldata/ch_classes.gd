@@ -625,12 +625,13 @@ var effects = {
 			{type = 'skill', value = ['tags', 'has', 'damage']},
 			{type = 'skill', value = ['tags', 'hasno', 'aoe']},
 			{type = 'skill', value = ['damage_type', 'eq', 'light']},
+			{type = 'target', value = [{code = 'has_status', check = false, status = 'luminance'}]}
 			],
 		sub_effects = ['e_s_bishop']
 	},
 	e_s_bishop = {
 		type = 'temp_global',
-		tags = ['duration_turns', 'affliction'],
+		tags = ['duration_turns', 'affliction', 'luminance'],
 		target = 'target',
 		req_skill = true,
 		name = 'Luminance',
@@ -708,7 +709,7 @@ var effects = {
 			{type = 'random', value = 0.25}
 			],
 		buffs = [],
-		sub_effects = ['e_s_bleed_new'], #2remake to apply status
+		sub_effects = ['bleed'], 
 		args = {
 			duration = {obj = 'self', func = 'dr', dr = 2},
 		}
@@ -790,7 +791,7 @@ var effects = {
 			duration = {obj = 'self', func = 'dr', dr = 1},
 		},
 		sub_effects = [],
-		modal_sub_effects = ['e_s_burn_new', 'e_s_poison_new', 'e_s_bleed_new', 'e_s_blind', 'e_s_stun', 'e_s_confuse', 'e_s_sleep_compartibility'],
+		modal_sub_effects = ['burn', 'poison', 'bleed', 'blind', 'stun', 'confuse', 'sleep'],
 	},
 	e_tr_witch2 = { #2remake properly
 		type = 'trigger',
