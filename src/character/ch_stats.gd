@@ -524,7 +524,7 @@ func get_combined_hairs_data():
 	match statlist.hair_fringe: #adjust as you see fit, length is not reverse-compartible with presets autoset
 	#i hate this conversion to older constants, but we are using those - until descriptions are totally rewritten we need this
 		'braids' :
-			res.hair_style = 'multibraids'
+			res.hair_style = 'twinbraids'
 			match exterior.hair_fringe_length:
 				'long':
 					length = int(max(length, 1))
