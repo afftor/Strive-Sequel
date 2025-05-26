@@ -9,6 +9,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = ['e_phy6', 'e_wit6', 'e_charm6', 'e_sex6', 'e_auth6', 'e_tame6', 'e_mag6', 'e_virgin', 'e_person_bold', 'e_person_shy', 'e_person_kind', 'e_person_serious', 'e_love', 'e_friend', 'e_rival', 'work_rule_luxury', 'work_rule_ration', 'work_rule_shifts', 'work_rule_masturbation', 'e_pregnancy', 'e_pregnancy1', 'e_pregnancy_breeder'],#'e_atkpass'],
+#		tags = ['bleed']
 	},
 	trainer = {#allows training
 		code = 'trainer',
