@@ -54,9 +54,9 @@ func add_relationship_value(char1, char2, value):
 
 
 func update_relationship_status(data, char1, char2):
-	if characters[char1].is_master(): 
+	if characters.has(char1) and characters[char1].is_master(): 
 		return 
-	if characters[char2].is_master(): 
+	if characters.has(char2) and characters[char2].is_master(): 
 		return 
 	if char1 == char2: return
 	
