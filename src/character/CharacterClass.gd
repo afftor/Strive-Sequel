@@ -1734,9 +1734,13 @@ func affect_char(template, manifest = false):
 			if manifest: manifest_and_log("loses %d hp." % int(tval))
 		'heal':
 			var tval = heal(template.value)
+			if input_handler.combat_node != null:
+				input_handler.combat_node.combatlogadd("\n%s get %d hp." % [get_short_name(), int(tval)])
 			if manifest: manifest_and_log("healed for %d hp." % int(tval))
 		'mana':
 			var tval = mana_update(template.value)
+			if input_handler.combat_node != null:
+				input_handler.combat_node.combatlogadd("\n%s get %d mp." % [get_short_name(), int(tval)])
 			if manifest: manifest_and_log("mana %d." % int(tval))
 		'damage_mana_percent':
 			var tval = mana_update(-template.value * get_stat('mpmax'))

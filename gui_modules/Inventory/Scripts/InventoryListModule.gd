@@ -238,15 +238,7 @@ func useitem(item, type):
 	for button in itemcontainer.get_children():
 		button.pressed = false
 	if type == 'gear':
-		var item_prev_id = item.id
-#		var equiped_item = globals.CreateGearItem(item.itembase, item.parts, item.bonusstats, null)
-		var equiped_item = item.clone()
-		globals.AddItemToInventory(equiped_item, false)
-		selectedhero.equip(equiped_item, item_prev_id)
-		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
-		get_parent().emit_signal("item_equipped")
-		item.amount -= 1
-		get_parent().set_active_hero(selectedhero)
+		equip(item)
 	elif type == 'usable':
 		if Items.itemlist[item.itembase].has("mansion_effect"):
 			input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
@@ -254,3 +246,38 @@ func useitem(item, type):
 			get_parent().set_active_hero(selectedhero)
 		else:
 			input_handler.SystemMessage("Can't use this item from here.")
+
+
+var tempitem
+func equip(s_item):
+	var selectedhero = input_handler.interacted_character
+	tempitem = s_item
+	for slot in tempitem.multislots:
+		if selectedhero.get_gear(slot) != null:
+			var item = ResourceScripts.game_res.items[selectedhero.equipment.gear[slot]]
+			if item.curse != null:
+				input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'equip_confirm', tr("CURSEUNEQUIPCONFIRM2")])
+				return
+	for slot in tempitem.slots:
+		if slot == 'lhand' and tempitem.slots.has('rhand'):
+			if selectedhero.has_status('strongarm') and tempitem.geartype != 'bow':
+				continue
+		if selectedhero.get_gear(slot) != null:
+			var item = ResourceScripts.game_res.items[selectedhero.equipment.gear[slot]]
+			if item.curse != null:
+				input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'equip_confirm', tr("CURSEUNEQUIPCONFIRM2")])
+				return
+	equip_confirm()
+
+
+func equip_confirm():
+	var selectedhero = input_handler.interacted_character
+	var item_prev_id = tempitem.id
+#	var equiped_item = globals.CreateGearItem(item.itembase, item.parts, item.bonusstats, null)
+	var equiped_item = tempitem.clone()
+	globals.AddItemToInventory(equiped_item, false)
+	selectedhero.equip(equiped_item, item_prev_id)
+	input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
+	get_parent().emit_signal("item_equipped")
+	tempitem.amount -= 1
+	get_parent().set_active_hero(selectedhero)
