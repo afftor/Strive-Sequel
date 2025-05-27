@@ -35,7 +35,7 @@ var traits = {
 		name = '',
 		descript = '',
 		visible = true,
-		icon = "res://assets/images/iconsskills/trait_undead.png", #fix
+		icon = "res://assets/images/iconsskills/icon_eyes.png", #fix
 		effects = [],
 		tags = [],
 		bonusstats = {mod_hunt = 0.25, physics = 15, chg_dexterity_max = 1, mastery_stealth = 1}

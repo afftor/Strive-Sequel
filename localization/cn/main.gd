@@ -1428,6 +1428,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	TASKRESTSERVICE = "Service",
 	TASKRESTDESCRIPT = "角色将在本地设施提供服务，在必要时切换到休息。",
 	TASKRESTINFO = "Resting will make wounds heal faster and does not make character drain Obedience but they also not gain Loyalty.",
+	NOSERVICECAPITAL = """Can't provide services outside of cities!""", # MISSING TRANSLATION
 	TASKFARMING_VEGES = "种菜",
 	TASKFARMING_VEGESDESCRIPT = "在农场工作，种植蔬菜。蔬菜是许多种族的主食。",
 	TASKFARMING_GRAINS = "种谷物",
