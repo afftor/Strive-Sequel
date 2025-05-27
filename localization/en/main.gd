@@ -1042,6 +1042,7 @@ Reduced by enemy's evasion""",
 	DELETETEMPLATECONFIRM = "Delete this template?",
 	LOADTEMPLATECONFIRM = "Load this template? Current settings will be lost.",
 	CURSEUNEQUIPCONFIRM = "Cursed equipment is destroyed when removed.",
+	CURSEUNEQUIPCONFIRM2 = "This will cause removal and destruction of cursed equipment.",
 	PAUSEBUTTONTOOLTIP = """Pause
 Hotkey: 1""",
 	NORMALBUTTONTOOLTIP = """Normal Speed
