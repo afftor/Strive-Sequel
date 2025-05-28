@@ -58,7 +58,7 @@ var skills = {
 		tags = ['damage','ads', 'fire'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'burn_new', duration = 2})],
+		effects = [Effectdata.rebuild_template({effect = 'burn', duration = 2})],
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
