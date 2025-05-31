@@ -1048,14 +1048,14 @@ var unique_sprites = {
 			name = "Nude",
 			descript = "",
 			path = "lilith_nude_body", 
-			face_path = "lilith", # TODO change
+			face_path = "lilith_nude", # TODO change
 			unlock_reqs = []
 			},
 		wed = {
 			name = "Wed",
 			descript = "",
 			path = "lilith_wed_body", 
-			face_path = "lilith_nude",
+			face_path = "lilith_wed",
 			unlock_reqs = []
 			},
 	},

@@ -572,14 +572,14 @@ func build_stored_req_desc(id):
 		var reqs = stored_reqs[id]
 		if reqs is bool:
 			if !reqs:
-				text += tr('NOTAVAILABLE')
+				text += "\n" + parent.get_ref().translate(tr('TRAININGNOTAVAILABLE'))
 		elif reqs is Array:
 			var f = false
 			for decision in reqs:
 				if ResourceScripts.game_progress.decisions.has(decision):
 					f = true
 			if !f:
-				text += tr('NOTAVAILABLE')
+				text += "\n" + parent.get_ref().translate(tr('TRAININGNOTAVAILABLEUNIQUE'))
 		elif !input_handler.globalsettings.easytrain:
 			text += tr('TRIANINGREQUIRES')
 			for cat in reqs:

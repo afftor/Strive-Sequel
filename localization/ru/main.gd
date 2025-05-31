@@ -227,23 +227,23 @@ var TranslationDict = {
 	NEWGAMESETTINGSTOP_LOAN = """Быстрая выплата кредита""",
 	NEWGAMESETTINGSMALL_LOAN = """Малый кредит""",
 	NEWGAMESETTINGSOLO = """Соло режим""",
-	NEWGAMESETTINGFREE_GATHER = """Независимый от прогресса сбор""",
+	NEWGAMESETTINGFREE_GATHER = """Все ресурсы доступны сразу""",
 	NEWGAMESETTINGFREE_UPGRADE = """Бесплатные улучшения""",
 	NEWGAMESETTINGMATERIALS = """Стартовые материалы""",
 	NEWGAMESETTINGMONEY = """Стартовое золото""",
 	
-	SETTINGSKIP_PROLOGUE_DESCRIPT = """Пропустить пролог""",
-	SETTINGGF_ONLY_UPG_DESCRIPT = """Улучшать можно только фактор роста""",
+	SETTINGSKIP_PROLOGUE_DESCRIPT = """Начните историю с начала первого акта.""",
+	SETTINGGF_ONLY_UPG_DESCRIPT = """Улучшать можно только фактор роста на рынке""",
 	SETTINGPERMADEATH_DESCRIPT = """Пермасмерть""",
-	SETTINGBONUS_TASKMOD_DESCRIPT = """Произведенное снаряение имеет качество лучше""",
+	SETTINGBONUS_TASKMOD_DESCRIPT = """Произведенное снаряжение имеет качество лучше""",
 	SETTINGBONUS_LOOT_DESCRIPT = """У находимого снаряжения качество лучше""",
 	SETTINGSTOP_LOAN_DESCRIPT = """Прекратить выплаты по кредитам после выборов""",
 	SETTINGSMALL_LOAN_DESCRIPT = """В 4 раза меньшая сумма кредита""",
-	SETTINGSOLO_DESCRIPT = """Без бесплатного персонажа""",
-	SETTINGFREE_UPGRADE_DESCRIPT = """Бесплатное улучшение""",
+	SETTINGSOLO_DESCRIPT = """В начале игры вы не получаете никаких дополнительных персонажей, кроме Мастера.""",
+	SETTINGFREE_UPGRADE_DESCRIPT = """Бесплатное улучшение особняка в начале игры.""",
 	SETTINGMATERIALS_DESCRIPT = """Стартовые материалы""",
 	SETTINGMONEY_DESCRIPT = """Стартовое золото""",
-	SETTINGFREE_GATHER_DESCRIPT = """Available resources are not locked by story progression""", # MISSING TRANSLATION
+	SETTINGFREE_GATHER_DESCRIPT = "Доступные ресурсы не блокируются прогрессом сюжета",
 	
 	DIFF_EASY = "Легко",
 	DIFF_NORMAL = "Нормально",
@@ -1039,8 +1039,8 @@ var TranslationDict = {
 	SYSNOWORKERENERGY = """Работа отменена: Нет энергии""",
 	DIALOGUEREPEATACTION = """Повторить""",
 	CHAR_UNAVALIABLE = """Недоступен""",
-	CHAR_UNAVALIABLE_TURN = """Unavail: %s t.""", # MISSING TRANSLATION
-	CHAR_UNAVALIABLE_DAY = """Unavail: %s d.""", # MISSING TRANSLATION
+	CHAR_UNAVALIABLE_TURN = "Отсутствует: %s хд.",
+	CHAR_UNAVALIABLE_DAY = "Отсутствует: %s дн.",
 	NO_FREE_SLOTS = """Для этой задачи не осталось свободных мест""",
 	ANOTHERPROFSELECTED = """Можно выбрать только одну специализацию.""",
 	NOMATERIALSFORITEMPART = """У вас нет подходящих материалов для этой части.""",
@@ -1059,8 +1059,8 @@ var TranslationDict = {
 
 	TUTORIAL = """Обучение""",
 	TRAITS = """Черты характера""",
-	TRAIT = """trait""", # MISSING TRANSLATION
-	EFFECT = """effect""", # MISSING TRANSLATION
+	TRAIT = "черта",
+	EFFECT = "эффект",
 	CLASSINFO = """Подробности о классе""",
 	CLASSSTATCHANGES = """Изменения характеристик""",
 
@@ -1099,6 +1099,7 @@ var TranslationDict = {
 	DELETETEMPLATECONFIRM = """Удалить этот шаблон?""",
 	LOADTEMPLATECONFIRM = """Загрузить этот шаблон? Текущие настройки будут потеряны.""",
 	CURSEUNEQUIPCONFIRM = """Проклятая экипировка уничтожается при снятии.""",
+	CURSEUNEQUIPCONFIRM2 = "Это приведет к удалению и уничтожению проклятого снаряжения.",
 
 	#Inbuilt Tooltips
 	PAUSEBUTTONTOOLTIP = """Пауза
@@ -1149,7 +1150,9 @@ Hotkey: 3""",
 	SKILLWEAPON_REFINE = """Заточка оружия""",
 	SKILLWEAPON_REFINEDESCRIPT = """Увеличивает АТК цели на 30% до конца боя.""",
 	SKILLACIDBOMB = """Кислотная бомба""",
-	SKILLACIDBOMBDESCRIPT = """Бросает в цель кислотную бомбу, нанося 250% от MATK в виде урона {color=yellow|Водой} и снижая броню цели на 25 на 4 хода.""",
+	SKILLACIDBOMBDESCRIPT = """Наносит 250% от МАТК в виде урона{color=yellow|Землей} и наносит цели статус 'Разрыв' к цели на 3 хода. 
+
+Разрыв: ЗАЩ снижается на 50%.""",
 	SKILLFIREBOMB = """Огненная бомба""",
 	SKILLFIREBOMBDESCRIPT = """Бросает огненную бомбу в колонну, нанося 200% от MATK как урон {color=yellow|Огнем}. Поджигает цели в течение 2 ходов, нанося урон (50% от MATK) каждый ход.""",
 	SKILLDISTRACT = """Отвлечь""",
@@ -1569,19 +1572,22 @@ Hotkey: 3""",
 	TRAININGSTATUS2 = """Статус духа: Поврежден""",
 	TRAININGSTATUS3 = """Статус духа: Сохраняется""",
 	TRAININGSTATUS4 = """Статус духа: Нормальный""",
-	TRAININGRESISTANCEINCREASE = """Resistance increased to %.0f.""", # MISSING TRANSLATION
+	TRAININGRESISTANCEINCREASE = "Сопротивление увеличилось до %.0f.",
 	TRAININGLABELSPIRIT = """Дух персонажа: %.0f""",
 	TRAININGLABELLOYALTY = """%.0f""",
-	TRAININGLABELLOYALTYGROW = """%.0f + %.2f""", # MISSING TRANSLATION
-	TRAININGLABELRESISTANCE = """%.0f""", # MISSING TRANSLATION
-	TRAININGTOOLTIPRESISTANCE = """High resistance reduces training efficiency.
-%s's resistance drops by %.0f per turn.""", # MISSING TRANSLATION
-	TRAINSERVTOOLTIPRESISTANCE = """Resistance reduces loyalty gain.
-%s's resistance drops by %.0f per turn.""", # MISSING TRANSLATION
-	TRAINSERVTOOLTIPLOYALTY = """Loyalty is used to unlock character's actions and is obtained with time.
-%s gain loyalty by %.2f per turn.""", # MISSING TRANSLATION
+	TRAININGLABELLOYALTYGROW = "%.0f + %.2f",
+	TRAININGLABELRESISTANCE = "%.0f",
+	TRAININGLABELRESISTANCEDROP = "%.0f - %.0f",
+	TRAININGTOOLTIPRESISTANCE = "Сопротивление раба снижает эффективность тренировок не {color=yellow|Позитивных} действий.\n%s's сопротивление падает на %.0f за ход.",
+	TRAININGTOOLTIPRESISTULT = "Текущее сопротивление слишком велико для тренировки.",
+	TRAININGTOOLTIPRESISTHIGH = "Текущее сопротивление высокое.",
+	TRAININGTOOLTIPRESISTMOD = "Текущее сопротивление среднее.",
+	TRAININGTOOLTIPRESISTLOW = "Текущее сопротивление слабое.",
+	TRAINSERVTOOLTIPRESISTANCE = "Сопротивление подчиненных предотвращает рост лояльности.\n сопротивление %s's падает на %.0f за ход.",
+	TRAINSERVTOOLTIPLOYALTY = "Верность используется для разблокировки действий персонажа и растет со временем.\n%s увеличивает верность на %.2f за ход.",
+
 	TRAININGCOST = """Разблокировка черты: %d лояльности""",
-	TRAININGCOSTGOLD = """Разблокировка черты: %d золота""",
+	TRAININGCOSTGOLD = """Разблокировка черты: %d золота""", #obsolete?
 	TRAINNOTRAINER = """[name] не имеет тренера""",
 	TRAINNOWORKTRAIT = """[name] не имеет черты: Рабочий""",
 	NOTRAINSLOTS = """Нет свободных тренировочных слотов""",
@@ -1589,6 +1595,9 @@ Hotkey: 3""",
 	SPIRITLOSSNO = """Дух не пострадал""",
 	SPIRITLOSSSMALL = """Тренировка слабо повлияла на Дух [name]""",
 	SPIRITLOSSGREAT = """Тренировка сильно повлиял на Дух [name]""",
+	TRAININGNOTAVAILABLE = """[color=red]Requirements aren't met[/color]
+""", # MISSING TRANSLATION
+	TRAININGNOTAVAILABLEUNIQUE = """[color=red]You have to complete [name]'s personal quest(s) first. [/color]""", # MISSING TRANSLATION
 	NOTAVAILABLE = """[color=red]Недоступно[/color]
 """,
 	TRIANINGREQUIRES = """Обязательные категории тренировки: """,
@@ -1650,7 +1659,7 @@ Hotkey: 3""",
 	TASKRESTSERVICE = """Услуги""",
 	TASKRESTDESCRIPT = """Отдых улучшает заживление травм и восстановление здоровья. Не выполняет никакой работы во время отдыха.""",
 	TASKRESTINFO = """Отдых ускоряет заживление ран и не заставляет персонажа терять Повиновение, но также не увеличивает Верность""",
-	NOSERVICECAPITAL = """Can't provide services outside of cities!""", # MISSING TRANSLATION
+	NOSERVICECAPITAL = "Не может предоставлять услуги за пределами городов!",
 	TASKFARMING_VEGES = """Овощи""",
 	TASKFARMING_VEGESDESCRIPT = """Работа на ферме, выращивание овощей. Овощи являются основным продуктом питания для многих рас.""",
 	TASKFARMING_GRAINS = """Злаки""",
@@ -1774,6 +1783,7 @@ Hotkey: 3""",
 	BUTTONCUSTOMIZATION = """Кастомизация""",
 
 	STATNAME = "Имя",
+	SLAVEPARTNAME = "Имя",
 	STATSURNAME = "Фамилия",
 	STATNICKNAME = "Прозвище",
 	STATRACE = "Раса",
@@ -1984,8 +1994,8 @@ Hotkey: 3""",
 	STATMANACOST_MOD_AOE = '',
 	STATMANACOST_MOD_TRUE = '',
 	STATMANACOST_MOD_HEAL = '',
-	INNATE = """innate""", # MISSING TRANSLATION
-
+	#new
+	INNATE = 'начальный',
 	STATPERSONALITYDESCRIPT= """Личность определяет манеру речи персонажа и не влияет на игровой процесс.""",
 
 	SLAVEDIET = """Предпочтения в еде""",
@@ -2170,8 +2180,8 @@ Hotkey: 3""",
 	STATOBEDIENCEDESCRIPT = """Повиновение - это готовность персонажа подчиняться вашим приказам. Повиновение приобретается с помощью социальных навыков. При истощении персонаж может сбежать и будет потерян, если это произойдет.""",
 	STATLOYALTY = """Верность""",
 	STATLOYALTYDESCRIPT = """Очки верности позволяют открывать новые способности для ваших слуг. Верность приобретается пассивно на основе фактора приручения персонажа, но также может быть улучшена на свиданиях и при использовании социальных навыков.""",
-	STATRESISTANCE = """Resistance""", # MISSING TRANSLATION
-	STATRESISTANCEDESCRIPT = """Resistance DESCRIPT PLACEHOLDER.""", # MISSING TRANSLATION
+	STATRESISTANCE = "Сопротивление",
+	STATRESISTANCEDESCRIPT = "Resistance DESCRIPT PLACEHOLDER.",
 	STATSUBMISSION = """Подчинение""",#Obsolete
 	STATSUBMISSIONDESCRIPT = """Подчинение создается с помощью наказывающих умений. Со временем оно будет уменьшаться, пока не достигнет минимума. Максимально развитое Подчинение больше не требует Повиновение для работы и останавливает побег.""",
 	STATAUTHORITY = """Авторитет""",#Obsolete
@@ -2276,12 +2286,12 @@ Hotkey: 3""",
 	INFOCONSENT = """Согласие определяет, какие действия, связанные с сексом, персонаж будет готов совершить. Согласие можно увеличить, подталкивая персонажа к новым практикам в виде свиданий и вариантов в сексе. Согласие влияет на работу, связанную с проституцией.""",
 	INFOCONSENTMASTER = """Согласие определяет, какие действия, связанные с сексом, персонаж будет готов совершить. Согласие можно увеличить, подталкивая персонажа к новым действиям с помощью свиданий и вариантов в сексе. {color=green|[Master] не имеет требований к Согласию для любых действий}.""",
 	INFOTRAINING = """Персонажи рабского типа будут обучены выбранным тренером различным действиям. Каждый раб имеет {color=aqua|Предпочтения} к тем или иным действиям. Правильно подобранные действия дают больше Верности и тратят меньше духа, но большинство действий имеют дополнительные эффекты.""",
-	INFOTRAININGSUBORDINATE = """Subordinate type characters will accomodate loyalty points with time. """, # MISSING TRANSLATION
-	INFORESISTANCE = """Character's Resistance will reduce efficiency of training. Resistance weakens with time and resets on performing training.""", # MISSING TRANSLATION
+	INFOTRAININGSUBORDINATE = "Персонажи с типом подчиненных со временем будут получать очки верности.",
+	INFORESISTANCE = "Сопротивление персонажа снижает эффективность тренировок. Сопротивление ослабевает со временем и сбрасывается при выполнении тренировки.",
 	INFOSLAVETRAINER = """Назначьте тренера, который будет следить за необученными рабами и обучать их. У тренера ограниченное количество рабов, с которыми он может работать. Рабы, за которыми никто не наблюдает, не будут выполнять никакой работы, пока не пройдут полное обучение.""",
 	TRAINREADY = "Готово",
+	TRAINRESISTANT = "Сопротивление тренировке",
 	TRAINCOOLDOWN = "Откат. Дней до готовности: %d",
-	TRAINRESISTANT = """Resists training""", # MISSING TRANSLATION
 	CATEGORYKEYWORD = """Категория""",
 	ACTIONCATEGORYPHYSICAL = """Физические""",
 	ACTIONCATEGORYHUMILIATION = """Унижение""",
@@ -2290,7 +2300,7 @@ Hotkey: 3""",
 	ACTIONCATEGORYSEXUAL = """Сексуальные""",
 	ACTIONCATEGORYMAGIC = """Магические""",
 	ACTIONTRAINERREQSNOTMET = """Тренер не соответствует требованиям для этого действия""",
-	ACTIONALREADYDONETODAY = """Уже был обучен сегодня""",
+	ACTIONALREADYDONETODAY = """Уже было обучение сегодня""",
 	NOTENOUGHGOLDACTION = """Недостаточно золота для этого действия""",
 	NOTENOUGHTRAINERMANA = """У тренера недостаточно маны для этого действия""",
 	PERSONALITYNAMEBOLD = """Решительный""",
@@ -2789,6 +2799,9 @@ Hotkey: 3""",
 	TRAITMIXX_CHAMPIONDESCRIPT = "{color=brown|Бурлящая тьма}: Атаки Тьмой игнорируют всю ЗАЩ/MЗАЩ и имеют +30 к точности.",
 	TRAITSADISTDESCRIPT = """{color=brown|Вскрывающий вены}: Физические атаки ближнего боя с вероятностью 25% вызывают кровотечение на 2 хода.
 Физические и сексуальные тренировки на 25 % эффективнее.""",	
+	TRAITSTAG_BUFF =  "Благословение Леса",
+	TRAITSTAG_BUFFDESCRIPT =  "Физ. возм.: +15; Охота: +25%; Максимальных зарядов ловкости +1; Мастерство скрытности +1",
+	TRAITDARKWEAPON = "Все атаки навыков имеют элемент Тьмы",
 	TRAITHEALER1 = """Целитель:Новичок""",
 	TRAITHEALER1DESCRIPT = """Исцеляющие заклинания на 25% эффективнее.""",
 	TRAITHEALER2 = """Целитель:Эксперт""",
@@ -2850,9 +2863,9 @@ Hotkey: 3""",
 	TRAITMENIAL = """Прислуга""",
 	TRAITSTURDY = """Крепость""",
 	TRAITFRAIL = """Хрупкость""",
-	TRAITSLAVE = """Slave""", # MISSING TRANSLATION
-	TRAITSLAVE1 = """Slave""", # MISSING TRANSLATION
-	TRAITSLAVE_TRAINED = """Trained slave""", # MISSING TRANSLATION
+	TRAITSLAVE = "Раб",
+	TRAITSLAVE1 = "Раб",
+	TRAITSLAVE_TRAINED = "Обученный раб",
 	
 	
 	TRAITPRODIGYDESCRIPT = """Получает на 25% больше очков опыта.""",
@@ -3208,8 +3221,8 @@ Requires: Базовый рабский труд""",
 	BUFFDESCRIPTSHOCK = """Шок
 Весь получаемый урон увеличивается на 15%%, дополнительный шок имеет шанс оглушить.""",
 	BUFFDESCRIPTENSNARE = """Захват: Уворот уменьшен на 75""",	
-	RESETTRAINREQ = """Сбросить обучение на 0-й шаг и восстановить дух. Требуется зелье Забвения.""",
-	RESETTRAINING = """All training progress will be discarded. Are you sure?""", # MISSING TRANSLATION
+	RESETTRAINREQ = """Сбросить обучение на 0-й этап и восстановить дух. Требуется зелье Забвения.""",
+	RESETTRAINING = "Весь прогресс обучения будет сведен на нет. Вы уверены?",
 	BUFFDESCRIPTDEFENDER = """Защитник: Защищает союзников от атак, если не оглушен.""",
 	BUFFDESCRIPTCOMMANDBONUS = """Увеличивает наносимый урон и снижает получаемый урон.""",
 	TRAITEFFECTBLESSING = """Увеличены скорость попадания и уклонение""",
@@ -4446,9 +4459,8 @@ Requires: Базовый рабский труд""",
 	ENEMYBALLISTA = """Баллиста""",
 	ENEMYTROLL = """Тролль""",
 	ENEMYBANDIT_ASSASSIN = """Бандит-ассасин""",
-	ENEMYPACKLEADER_BOSS = "Лидер отряда",
-	ENEMYSERGEANT_BOSS = """Sergeant""", # MISSING TRANSLATION
-	ENEMYSERGANT_BOSS = "Сержант",
+	ENEMYPACK_LEADER_BOSS = "Лидер отряда",
+	ENEMYSERGEANT_BOSS = "Сержант",
 	ENEMYCASTELLAN_BOSS = "Кастелян",
 	ENEMYJARL_BOSS = "Ярл",
 	ENEMYBOUNTY_HUNTER_BOSS = "Наемник",
@@ -17205,6 +17217,11 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 
 Зефира замирает, увидев ваш поступок. Ее лицо предвещает вам гибель. Время останавливается, и вы больше не можете воспринимать окружающий мир, когда последний вздох покидает ваше тело...""",
 	
+	DIALOGUEAMELIAINITIATE = """Ваш исключительный трофей, бывшая лидер Гильдии слуг Амелия, сияет от восторга, когда вы приходите к ней в гости. 
+	
+— [Master], хотите, чтобы вас обслуживали так, как не сможет ни одна таверна? Я могу приготовить незабываемый ужин, наполнить роскошную ванну, или вы предпочитаете... меня?""",
+	
+	
 	
 	
 	
@@ -19332,7 +19349,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	CHARRND_INJURY_OPT_HELP = """Помочь (20 золотых)""",
 	CHARRND_INJURY_OPT_DISC = """Наказать""",
 	CHARRND_INJURY_OPT_MANIP = """Манипулировать""",
-	CHARRND_INJURY_REPLY_HELP = """Вы опускаетесь на колени рядом с [name] и вызываете целителя, роясь в мешочке с монетами, чтобы покрыть расходы. Аптекарь особняка прибывает быстро, зашивая рану опытными руками и прикладывая к ней светящиеся травы. [He] бормочет слабую благодарность, все еще с бледностью, но с облегчением""",
+	CHARRND_INJURY_REPLY_HELP = """Вы опускаетесь на колени рядом с [name] и вызываете целителя, роясь в мешочке с монетами, чтобы покрыть расходы. Местный аптекарь прибывает быстро, зашивая рану опытными руками и прикладывая к ней светящиеся травы. [He] бормочет слабую благодарность, все еще с бледностью, но с облегчением""",
 	CHARRND_INJURY_REPLY_DISC = """Вы хватаете [name] за воротник, не обращая внимания на [his] вздрагивание, и поднимаете [him] на ноги. Вы называете его неуклюжей бестолочью и отталкиваете к стене. Быстрая словесная перепалка или даже удар, если у вас есть настроение, доводят урок до конца""",
 	CHARRND_INJURY_REPLY_MANIP = """Вы приседаете, сохраняя низкий и ровный голос. Вы говорите [him], что этого не должно было случиться, что лучшее послушание могло бы уберечь [him]. [He] моргает, смятение затуманивает его боль, пока вы вплетаете сомнения в [his] разум. Когда вы заканчиваете, [he] уже наполовину верит, что это [his] вина и что вы единственный, кто может [him] защитить""",
 	CHARRND_ASLEEP = """Проходя по тускло освещенным коридорам особняка, вы замечаете фигуру, склонившуюся над верстаком в одной из захламленных комнат. Это [name], [his] голова покоится на руках, крепко спя среди разбросанных инструментов и мерцающего света свечей. [His] грудь медленно поднимается и опускается, не обращая внимания на окружающий мир, полузаконченное задание покоится перед [him]""",
@@ -19459,34 +19476,34 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 
 Усталость от пути читается в [his] волочащихся шагах, а впереди ждёт новый зал, сулящий новые испытания. [name] переминается с ноги на ногу, ожидая твоего ответа, дыхание [his] прерывисто.""",  
 	CHARRND_SKIRMISH_OPT_AGREE = "Согласиться",  
-	CHARRND_SKIRMISH_OPT_GOLD = "Доплатить золотом",  
+	CHARRND_SKIRMISH_OPT_GOLD = "Доплатить золотом(20)",  
 	CHARRND_SKIRMISH_OPT_IGNORE = "Проигнорировать",  
 	CHARRND_SKIRMISH_REPLY_AGREE = "Ты киваешь и указываешь [name] на ближайшую нишу, разрешая присесть. [He] с облегчением опускается, потягивая ноги и переводя дух. Задержка замедляет вас, но [his] силы возвращаются, и [he] после держится ближе к тебе, бодрее прежнего.",  
 	CHARRND_SKIRMISH_REPLY_GOLD = "Ты достаёшь из кошеля несколько монет и вручаешь [name], убеждая [him] двигаться дальше. [His] глаза загораются при виде золота, и [he] распрямляется, пряча награду с благодарным кивком. Усталость отступает, сменяясь рвением.",  
 	CHARRND_SKIRMISH_REPLY_IGNORE = "Ты поворачиваешься и продолжаешь идти, оставляя [name] поспевать за тобой или отстать. [He] ворчит, волоча ноги с недовольной гримасой.",  
-	CHARRND_PRAY = """You find [name] tucked away in a quiet corner of the mansion's garden, murmuring unfamiliar words while gripping a crude, homemade amulet. [He] stiffens at the sound of your steps, turning quickly, [his] eyes flickering with both fear and hope.
+	CHARRND_PRAY = """Вы находите [name] в укромном уголке сада поместья, где [he] шепчет непонятные слова, сжимая самодельный амулет. Услышав ваши шаги, [he] резко оборачивается, во взгляде мелькает страх и надежда.
 
-The air feels heavy, the amulet glinting faintly in [his] hand. [name] watches you, breath held, as the moment lingers. You sense the choice: let [him] keep [his] ritual or put an end to it.""", # MISSING TRANSLATION
-	CHARRND_PRAY_OPT_ALLOW = """Allow Ritual""", # MISSING TRANSLATION
-	CHARRND_PRAY_OPT_FORBID = """Forbid Ritual""", # MISSING TRANSLATION
-	CHARRND_PRAY_REPLY_ALLOW = """You glance at the amulet but walk on without a word. [name] lets out a shaky breath, fingers tightening around the charm. The next day, you find a woven sash, a local token of fortune, left at your door. [His] eyes seek yours more often, warmed by your silent acceptance.""", # MISSING TRANSLATION
-	CHARRND_PRAY_REPLY_FORBID = """You raise your voice and order [name] to drop the amulet. [He] flinches, letting it fall, and you crush it under your boot. [His] face pales, but [he] stays silent. After that, [he] avoids your gaze, and late at night, you catch whispers from the barracks—sharp words, not of peace, but of resentment.""", # MISSING TRANSLATION
-	CHARRND_LETTER = """You catch [name] hunched in a dim corner of the mansion, reading a tattered sheet of paper. When [he] spots you, [he] fumbles and drops it. The scrawled words reveal [his] family's desperate plea for aid. [He] stares at you, braced for punishment, eyes wide with dread.
+Воздух становится тяжелым, амулет слабо мерцает в [his] руке. [name] затаив дыхание ждёт вашей реакции. Вы чувствуете выбор: позволить [him] продолжать ритуал или пресечь его.""",
+	CHARRND_PRAY_OPT_ALLOW = "Разрешить ритуал",
+	CHARRND_PRAY_OPT_FORBID = "Запретить ритуал",
+	CHARRND_PRAY_REPLY_ALLOW = "Вы бросаете взгляд на амулет, но проходите мимо без слов. [name] выдыхает с облегчением, крепче сжимая оберег. На следующий день у вашей двери появляется плетёный пояс - местный символ удачи. [His] взгляд теперь чаще ищет ваш, согретый молчаливым принятием.",
+	CHARRND_PRAY_REPLY_FORBID = "Вы повышаете голос и приказываете [name] бросить амулет. [He] вздрагивает, оберег падает, и вы раздавливаете его сапогом. [His] лицо бледнеет, но [he] молчит. После этого [he] избегает вашего взгляда, а по ночам из казарм доносятся шёпот - не молитвы, а слова обиды.",
+	CHARRND_LETTER = """Вы застаёте [name] в тёмном углу поместья за чтением потрёпанного письма. Увидев вас, [he] роняет его. Кривые строки повествуют об отчаянной просьбе [his] семьи о помощи. [He] замирает в ожидании наказания, глаза полны ужаса.
 
-The paper lies crumpled at [his] feet, the air thick with [his] silent worry. [name] shifts, waiting, as you weigh the moment: aid [his] kin, or destroy the letter.""", # MISSING TRANSLATION
-	CHARRND_LETTER_OPT_HELP = """Help the Family (20 grain)""", # MISSING TRANSLATION
-	CHARRND_LETTER_OPT_BURN = """Burn the Letter""", # MISSING TRANSLATION
-	CHARRND_LETTER_REPLY_HELP = """You arrange for a sack of flour and coins to be sent to [name]'s village. A messenger returns with tales of [his] mother's tearful thanks. [name] gazes at you with awe, and even the grumpiest servants mutter that you've got a heart after all.""", # MISSING TRANSLATION
-	CHARRND_LETTER_REPLY_BURN = """You snatch the paper and rip it apart, calling it a distraction from [his] duties. [name] stands frozen as the pieces scatter, [his] eyes hollowing out. By morning, [he]'s gone, leaving only footprints fading toward the edge of your lands.""", # MISSING TRANSLATION
-	CHARRND_BROKENVASE = """You enter the mansion's ornate parlor and hear a sharp crash, followed by a stifled gasp. [name] stands frozen, shards of a priceless vase scattered at [his] feet, its delicate patterns now a jagged ruin. [He] kneels, gathering the pieces, and stammers that [he] can glue it back together, though [his] trembling hands suggest a crude fix at best. [His] eyes dart to you, wide with guilt and dread.
+Смятый лист лежит у [his] ног, воздух густеет от немой тревоги. [name] нервно переминается, пока вы решаете: помочь [his] родным или уничтожить письмо.""",
+	CHARRND_LETTER_OPT_HELP = "Помочь семье (20 зерна)",
+	CHARRND_LETTER_OPT_BURN = "Сжечь письмо",
+	CHARRND_LETTER_REPLY_HELP = "Вы отправляете в деревню [name] мешок муки и монеты. Гонец возвращается с рассказом о слёзной благодарности [his] матери. [name] смотрит на вас с благоговением, а даже самые угрюмые слуги бормочут, что у вас всё же есть сердце.",
+	CHARRND_LETTER_REPLY_BURN = "Вы хватаете письмо и рвёте его, называя отвлечением от обязанностей. [name] застывает, наблюдая как клочья разлетаются, [his] глаза пустеют.",
+	CHARRND_BROKENVASE = """Войдя в парадную гостиную, вы слышите звон разбитого фарфора. [name] замер посреди осколков бесценной вазы, её изящные узоры теперь видны лишь на груде черепков. [He] опускается на колени, собирая обломки, и лепечет что сможет склеить, хотя [his] дрожащие руки сулят лишь грубую поделку. [His] взгляд полон вины и страха.
 
-The air smells faintly of dust and polish, the broken vase glinting under the chandelier's light. [name] clutches the fragments, waiting for your judgment, the weight of the mishap hanging heavy. You feel the pull: let [him] try, demand better, or turn it against [him].""", # MISSING TRANSLATION
-	CHARRND_BROKENVASE_OPT_REPAIR = """Allow Repair""", # MISSING TRANSLATION
-	CHARRND_BROKENVASE_OPT_REPLACE = """Demand Replacement""", # MISSING TRANSLATION
-	CHARRND_BROKENVASE_OPT_PUNISH = """Punish""", # MISSING TRANSLATION
-	CHARRND_BROKENVASE_REPLY_REPAIR = """You nod and tell [name] to go ahead with [his] repair. [He] exhales, setting to work with clumsy tools and sticky glue, costing [him] a whole day to do it. The vase returns, lumpy and uneven, but [he] beams with relief. [His] gratitude grows, and [he] takes extra care around you after.""", # MISSING TRANSLATION
-	CHARRND_BROKENVASE_REPLY_REPLACE = """You shake your head and order [name] to replace the vase, no excuses. [He] pales, knowing the cost far exceeds [his] means, and promises to save for it. [His] steps grow heavy, shoulders slumped, and a quiet resentment simmers in [his] gaze.""", # MISSING TRANSLATION
-	CHARRND_BROKENVASE_REPLY_PUNISH = """You grab [name]'s arm and berate [him] for [his] carelessness, docking [his] pay to cover the loss. [He] flinches, dropping the shards, and nods in silence. [His] work continues, but [he] avoids you, eyes downcast, the sting of your words lingering.""", # MISSING TRANSLATION
+В воздухе витает запах пыли и полироли, осколки сверкают под люстрой. [name] ждёт вашего вердикта, тяжесть проступка давит на [him]. Вы чувствуете выбор: позволить попытку починки, потребовать замену или наказать.""",
+	CHARRND_BROKENVASE_OPT_REPAIR = "Разрешить починку",
+	CHARRND_BROKENVASE_OPT_REPLACE = "Потребовать замену",
+	CHARRND_BROKENVASE_OPT_PUNISH = "Наказать",
+	CHARRND_BROKENVASE_REPLY_REPAIR = "Вы киваете, разрешая [name] попытаться починить вазу. [He] облегчённо вздыхает и целый день корпит над грубой склейкой. Ваза возвращается на место, кривая и бугристая, но [he] сияет от счастья. [His] благодарность растёт, а впредь [he] проявляет особую осторожность.",
+	CHARRND_BROKENVASE_REPLY_REPLACE = "Вы качаете головой, требуя заменить вазу. [name] бледнеет, зная что стоимость превышает [his] возможности, но обещает накопить. [His] плечи поникают, в глазах закипает тихое негодование.",
+	CHARRND_BROKENVASE_REPLY_PUNISH = "Вы хватаете [name] за руку, вычитывая за беспечность, и удерживаете стоимость из [his] жалования. [He] роняет осколки, молча кивая. Работа продолжается, но [he] избегает вас, потупив взгляд, боль от ваших слов долго не проходит.",
 	
 	
 }

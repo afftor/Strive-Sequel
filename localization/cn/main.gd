@@ -1571,6 +1571,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	BUTTONCUSTOMIZATION = "Customization",
 
 	STATNAME = "名称",
+	SLAVEPARTNAME = """Name""", # MISSING TRANSLATION
 	STATSURNAME = "姓氏",
 	STATNICKNAME = "昵称",
 	STATRACE = "种族",
@@ -3800,6 +3801,8 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	ENEMYBALLISTA = "巴利斯塔",
 	ENEMYTROLL = "巨魔",
 	ENEMYBANDIT_ASSASSIN = "土匪刺客",
+	ENEMYPACK_LEADER_BOSS = """Leader Of The Pack""", # MISSING TRANSLATION
+	ENEMYSERGEANT_BOSS = """Sergeant""", # MISSING TRANSLATION
 	ENEMYPACKLEADER_BOSS = """Leader Of The Pack""", # MISSING TRANSLATION
 	ENEMYSERGANT_BOSS = """Sergant""", # MISSING TRANSLATION
 	ENEMYCASTELLAN_BOSS = """Castellan""", # MISSING TRANSLATION

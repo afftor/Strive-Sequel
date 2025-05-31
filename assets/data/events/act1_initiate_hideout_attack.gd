@@ -11,7 +11,7 @@ var data = {
 				options = [
 					{
 						code = 'initiate_hideout_attack_6',
-						text = "INITIATE_HIDEOUT_ATTACK_OFCOURSE",
+						text = "DIALOGUECONTINUE",
 						reqs = [],
 						type = 'next_dialogue',
 						dialogue_argument = 1
