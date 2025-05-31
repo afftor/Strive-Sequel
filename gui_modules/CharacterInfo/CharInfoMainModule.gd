@@ -24,75 +24,100 @@ func _ready():
 
 var unique_dict = { #shows available talk characters. Scenes go in order from higher priority and reqs to lower. No scenes isn't supported yet
 	kurdan = {
-	code = 'kurdan', 
-	scenes = [
-		{code = 'kurdan_dialogue_start', reqs = []}
+		code = 'kurdan', 
+		scenes = [
+			{code = 'kurdan_dialogue_start', reqs = []}
 		]
 	},
 	
 	zephyra = {
-	code = 'zephyra', 
-	scenes = [
-		{code = 'zephyra_quest_1', reqs = [{type = 'decision', value = 'mayor_election_finished', check = true},
-			{type = 'dialogue_seen', check = false, value = 'ZEPHYRA_QUEST_2'}]},
-		{code = 'zephyra_dialogue_start', reqs = []}
+		code = 'zephyra', 
+		scenes = [
+			{
+				code = 'zephyra_quest_1', 
+				reqs = [
+					{type = 'decision', value = 'mayor_election_finished', check = true},
+					{type = 'dialogue_seen', check = false, value = 'ZEPHYRA_QUEST_2'}
+					]
+			},
+			{code = 'zephyra_dialogue_start', reqs = []}
 		]
 	},
 	
 	anastasia = {
-	code = 'anastasia', 
-	scenes = [
-		{code = 'anastasia_dialogue_start', reqs = []}
-	]
+		code = 'anastasia', 
+		scenes = [
+			{
+				code = 'ana_travel_initiate', 
+				reqs = [
+					{type = "active_quest_stage", value = "anastasia_quest", stage = "stage9"}
+					]
+			},
+			{
+				code = 'anastasia_return_1', 
+				reqs = [
+					{type = "active_quest_stage", value = "anastasia_quest", stage = "stage6"},
+					{type = 'decision', value = 'ana_liora_lie', check = true},
+					]
+			},
+			{
+				code = 'anastasia_return_3', 
+				reqs = [
+					{type = "active_quest_stage", value = "anastasia_quest", stage = "stage6"},
+					{type = 'decision', value = 'ana_liora_lie', check = false},
+					]
+			},
+			{code = 'anastasia_dialogue_start', reqs = []}
+		]
 	},
 	
 	daisy = {
-	code = 'daisy', 
-	scenes = [
-		{code = 'daisy_dialogue_start', reqs = []}
-	]
+		code = 'daisy', 
+		scenes = [
+			{code = 'daisy_dialogue_start', reqs = []}
+		]
 	},
 	
 	
 	aire = {
-	code = 'aire', 
-	scenes = [
-		{code = 'gryphon_aire_start', reqs = [
-				{type = 'decision', value = 'mindbreak_completed', check = false},
-				{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_AIRE_START'},
-				{type = 'unique_character_checks', name = 'anastasia', value = [{code = 'is_dead', check = false}]}
-			]
-		},
-		{code = 'aire_dialogue_start', reqs = []}
-	]
+		code = 'aire', 
+		scenes = [
+			{code = 'gryphon_aire_start', reqs = [
+					{type = 'decision', value = 'mindbreak_completed', check = false},
+					{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GRYPHON_AIRE_START'},
+					{type = 'unique_character_checks', name = 'anastasia', value = [{code = 'is_dead', check = false}]}
+				]
+			},
+			{code = 'aire_dialogue_start', reqs = []}
+		]
 	},
 	cali = {
-	code = 'cali', 
-	scenes = [
-		{code = 'cali_dialogue_start', reqs = []}
-	]
+		code = 'cali', 
+		scenes = [
+			{code = 'cali_dialogue_start', reqs = []}
+		]
 	},
 	
 	lilia = {
-	code = 'lilia', 
-	scenes = [
-		{code = 'lilia_dialogue_start', reqs = []}
-	]
+		code = 'lilia', 
+		scenes = [
+			{code = 'lilia_dialogue_start', reqs = []}
+		]
 	},
 	
 	lilith = {
-	code = 'lilith', 
-	scenes = [
-		{code = 'lilith_dialogue_start', reqs = []}
-	]
+		code = 'lilith', 
+		scenes = [
+			{code = 'lilith_dialogue_start', reqs = []}
+		]
 	},
 	
 	
 	jean = {
-	code = 'jean', 
-	scenes = [
-		{code = 'jean_dialogue_start', reqs = []}
-	]
+		code = 'jean', 
+		scenes = [
+			{code = 'jean_dialogue_start', reqs = []}
+		]
 	},
 	
 	amelia = {

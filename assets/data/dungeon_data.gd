@@ -2852,4 +2852,77 @@ var dungeons = {
 		scripteventdata = [
 		{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilith_finish_new_dungeon', reqs = [{code = 'active_quest_stage', value = 'lilith_patron_quest', stage = 'stage15'}]}]
 	},
+	quest_ashen_ridge = { #2fix
+		code = 'quest_ashen_ridge',
+		type = 'encounter',
+		name = tr("QUEST_ASHEN_RIDGE_TEXT"),
+		classname = '',
+		descript = tr("QUEST_ASHEN_RIDGE_DESC"),
+		difficulty = 'easy',
+		background = 'village1',
+		enemyarray =  [],
+		eventarray = [],
+		levels = [1,1],
+		resources = '',
+		stages_per_level = [1,1],
+		events = [],
+		tags = [],
+		area = 'plains',
+		travel_time = [1,1],
+	},
+	quest_dungeon_ana_fort = { #2fix 
+		code = 'quest_dungeon_ana_fort',
+		type = 'dungeon',
+		name = tr("QUEST_DUNGEON_ANA_FORT_LOCATION_TEXT"),
+		classname = '',
+		descript = tr("QUEST_DUNGEON_ANA_FORT_LOCATION_DESC"),
+		character_data = {
+			chance_mod = 1.5,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
+		difficulty = 'medium',
+		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
+		custom_background = 'combat_cave',
+		enemyarray = [['rebels_small', 1]],
+		final_enemy = [['rebels_small', 1]], 
+		final_enemy_type = 'monster',
+		event_data = {
+			dungeon_find_chest_easy = {
+				limit = 0,
+				weight = 10,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['dungeon_find_chest_easy'],
+				possible_challenges = [
+					['event_locked_door',1],
+				],
+			},
+		},
+		
+		event_room_number = [1,1],
+		material_room_number = [1,1],
+		
+		main_route_length = [3,3],
+		bonus_rooms = [0,0],
+		levels = [1,1], 
+		base_room_stamina_cost = [5,5],
+		
+		resources = 'local1',
+		gather_settings = 'base',
+		gatherable_resources = 'quest_fighters_lich_res',
+		
+		gather_mod = [2,2.5],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local',
+		events = [],
+		tags = ['quest'],
+		options = [],
+		area = 'plains',
+		travel_time = [1,1],
+		scripteventdata = [
+			{trigger = 'enter', event = 'custom_event', args = 'ana_fort_1', reqs = [{code = 'active_quest_stage', value = 'anastasia_quest', stage = 'stage10'}]},
+			{trigger = 'dungeon_complete', event = 'custom_event', args = 'ana_fort_3', reqs = []}
+		]
+	},
 }
