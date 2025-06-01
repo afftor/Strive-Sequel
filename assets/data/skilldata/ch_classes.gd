@@ -694,7 +694,6 @@ var effects = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		tags = ['positive', 'buff', 'bloodrage'],
 		statchanges = {matk_add_part = 0.05},
-		buffs = ['b_bloodatk'],
 	},
 	
 	e_tr_sadist = {
@@ -1339,7 +1338,7 @@ var buffs = {
 	b_bloodatk = {
 		icon = "res://assets/images/traits/hitrate.png",
 		description = "BUFFDESCRIPTBLOODATTACK",
-		tags = ['combat_only'],
+		tags = ['combat_only', 'show_amount'],
 	},
 	b_field = {
 		icon = "res://assets/images/iconsskills/Barrier.png",
@@ -1354,6 +1353,7 @@ var buffs = {
 var stacks = {
 	bloodmage_bonus = {
 		type = 'stack',
+		buff = 'b_bloodatk',
 	},#st unlim
 	templar_prot = {},#st 1
 	command = {},#st 1
