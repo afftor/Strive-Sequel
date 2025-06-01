@@ -2546,7 +2546,7 @@ var dungeons = {
 		},
 		difficulty = 'medium',
 		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
-		custom_background = 'combat_cave',
+		custom_background = 'combat_volcano',
 		enemyarray = [['bandits_easy', 1]],
 		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'monster',
 		event_data = {},
@@ -2852,7 +2852,7 @@ var dungeons = {
 		scripteventdata = [
 		{trigger = 'dungeon_complete', event = 'custom_event', args = 'lilith_finish_new_dungeon', reqs = [{code = 'active_quest_stage', value = 'lilith_patron_quest', stage = 'stage15'}]}]
 	},
-	quest_ashen_ridge = { #2fix
+	quest_ashen_ridge = {
 		code = 'quest_ashen_ridge',
 		type = 'encounter',
 		name = tr("QUEST_ASHEN_RIDGE_TEXT"),
@@ -2870,7 +2870,7 @@ var dungeons = {
 		area = 'plains',
 		travel_time = [1,1],
 	},
-	quest_dungeon_ana_fort = { #2fix 
+	quest_dungeon_ana_fort = { 
 		code = 'quest_dungeon_ana_fort',
 		type = 'dungeon',
 		name = tr("QUEST_DUNGEON_ANA_FORT_LOCATION_TEXT"),
@@ -2881,20 +2881,72 @@ var dungeons = {
 			races = [['local', 3], ['common',5], ['uncommon',1]]
 		},
 		difficulty = 'medium',
-		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
-		custom_background = 'combat_cave',
-		enemyarray = [['rebels_small', 1]],
-		final_enemy = [['rebels_small', 1]], 
-		final_enemy_type = 'monster',
+		background_pool = ['fort3'],
+		custom_background = 'combat_fort',
+		enemyarray =  [['event_rebels_1', 1],['event_rebels_2', 1],['rebels_small', 0.5]],
+		final_enemy = [['rebels_boss',1], ['rebels_sergeant_boss',1], ['rebels_castellan_boss',0.5]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 		event_data = {
-			dungeon_find_chest_easy = {
+			dungeon_find_chest_medium = {
 				limit = 0,
-				weight = 10,
+				weight = 6,
 				floor_range = [0,0],
 				icon = 'chest',
-				events = ['dungeon_find_chest_easy'],
+				events = ['dungeon_find_chest_medium'],
 				possible_challenges = [
 					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.1],
+					['event_small_crack',1]
+				],
+			},
+			dungeon_find_armory_easy = {
+				limit = 1,
+				weight = 2,
+				floor_range = [2,0],
+				icon = 'chest',
+				events = ['dungeon_find_armory_easy'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.2],
+					['event_small_crack',1],
+				],
+			},
+			event_dungeon_prisoner = {
+				limit = 2,
+				weight = 5,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['event_dungeon_prisoner'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.2],
+					['event_small_crack',1],
+				],
+			},
+			celena_shrine_find = {
+				limit = 1,
+				weight = 2,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1]
+				],
+			},
+			fountain = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['fountain'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.8]
 				],
 			},
 		},
@@ -2907,9 +2959,9 @@ var dungeons = {
 		levels = [1,1], 
 		base_room_stamina_cost = [5,5],
 		
-		resources = 'local1',
+		resources = 'local2',
 		gather_settings = 'base',
-		gatherable_resources = 'quest_fighters_lich_res',
+		gatherable_resources = 'biome_bandit_fort_res',
 		
 		gather_mod = [2,2.5],
 		bgm = "dungeon",

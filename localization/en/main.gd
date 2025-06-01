@@ -17413,6 +17413,10 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_LILIA_DUNGEON_GROVE_DESC = "",
 	QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_TEXT = "Hidden Grove Abandonment",
 	QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_DESC = "",
+	QUEST_ASHEN_RIDGE_TEXT = "Ashen Ridge",
+	QUEST_ASHEN_RIDGE_DESC = "",
+	QUEST_DUNGEON_ANA_FORT_LOCATION_TEXT = "Captured Fort",
+	QUEST_DUNGEON_ANA_FORT_LOCATION_DESC = "",
 	BANDITS_THREAT_QUEST_TEXT1 = "You come to the place finding tracks of the bandits.",
 	BANDITS_THREAT_QUEST_TEXT2 = "Fight",
 	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT1 = "You meet a lone adventurer: [name].",
@@ -18507,61 +18511,61 @@ On your way out you think about how to present this to Anastasia.""",
 - I understand, very well, I shall try my best. It's a shame that the war is still ongoing in some regions and I will try my best to stop it.""",
 	ANA_FORT_1 = """As you make your way through the woods, you finally notice the camp of guild's forces Duncan told you about. Few soldiers recognize you with one leading to their leader, a ruff looking middle aged man, more fitting to be a mercenary rather than Fighters' Guild member. 
 
-Reyan: - Mayor [name]? I'm Reyan. Didn't expect you to be the promised reinforcement, and... - he takes a look at Anastasia, faint smirk showing on his face - a former rebel leader herself. 
+Reyan: — Mayor [name]? I'm Reyan. Didn't expect you to be the promised reinforcement, and... - he takes a look at Anastasia, faint smirk showing on his face - a former rebel leader herself. 
 
-Anastasia: - We want to stop this pointless fighting. 
+Anastasia: — We want to stop this pointless fighting. 
 
-Reyan: - Sure, the rebel scum won't give up on their struggles even after they've learned that their side has lost. Maybe you can talk some sense into them.""",
+Reyan: — Sure, the rebel scum won't give up on their struggles even after they've learned that their side has lost. Maybe you can talk some sense into them.""",
 	ANA_FORT_2 = """Anastasia visibly flinched but hasn't spoken up on a rude remark.
 
-Reyan: - You can go ahead and talk them down for the surrender.""",
+Reyan: — You can go ahead and talk them down for the surrender.""",
 	ANA_FORT_2_OPTION_1 = "Sure, we'll do that. Let's go.",
 	ANA_FORT_2_OPTION_2 = "This won't take long.",
 	ANA_FORT_3 = """Despite your fighting efforts the fort defenders seem to be quite fervent in preventing you from advancement. Finally a group of more hardened soldiers raise their hands signaling you their willingness to negotiate. 
 
-Rebel Leader: - Who are you? You are of the Guilds reinforcements but you don't fight along with them?
+Rebel Leader: — Who are you? You are of the Guilds reinforcements but you don't fight along with them?
 
 Anastasia stands out from your group announcing herself.
 
-Anastasia: - I'm the princess Anastasia, your former leader and I ask you to surrender yourself for the best.""",
+Anastasia: — I'm the princess Anastasia, your former leader and I ask you to surrender yourself for the best.""",
 	ANA_FORT_4 = """The men look slightly surprised but their posture does not soften. 
 
-Rebel Leader: - So the rumors were true, Princess. I'm sir Jordan and I've been leading these people into rebellion. It's a shame to know that the rebel forces have lost after all. However, I'm afraid we can't surrender now. 
+Rebel Leader: — So the rumors were true, Princess. I'm sir Jordan and I've been leading these people into rebellion. It's a shame to know that the rebel forces have lost after all. However, I'm afraid we can't surrender now. 
 
-Anastasia: - But why?! This fight will only lead to your demise. 
+Anastasia: — But why?! This fight will only lead to your demise. 
 
-Jordan: - Our honor aside, we don't believe that surrendering now will give us any better end at the hands of the guild forces.""",
+Jordan: — Our honor aside, we don't believe that surrendering now will give us any better end at the hands of the guild forces.""",
 	ANA_FORT_5 = """Anastasia turns to you, her expression is pained and begging.
 
-Anastasia: - N-no, there should be a way to guarantee their safety, right?
+Anastasia: — N-no, there should be a way to guarantee their safety, right?
 
-Jordan: - If my men could be pardoned for this rebellion I'm willing to surrender myself to you, but I don't believe the guilds have been interested in it so far.""",
+Jordan: — If my men could be pardoned for this rebellion I'm willing to surrender myself to you, but I don't believe the guilds have been interested in it so far.""",
 	ANA_FORT_5_OPTION_1 = "I guarantee their safety to stop unnecessary bloodshed",
 	ANA_FORT_5_OPTION_2 = "No, they must answer the law for the treason against the guilds",
 	ANA_FORT_6 = """Anastasia visibly brightens on your announcement.
 
-Anastasia: - Yes, [name] is Aliron's Mayor and [his] word can be trusted, and I as well promise to do everything in my power to earn you a fair treatment, Sir Jordan. 
+Anastasia: — Yes, [name] is Aliron's Mayor and [his] word can be trusted, and I as well promise to do everything in my power to earn you a fair treatment, Sir Jordan. 
 
 As Sir Jordan gives the command for his men to lay down their weapons, the rebel soldiers look tired but relieved. It seems this long battle has indeed worn them out.""",
-	ANA_FORT_7 = """Jordan: - I see. Then, we shall fight to the end.""",
+	ANA_FORT_7 = """Jordan: — I see. Then, we shall fight to the end.""",
 	ANA_FORT_8 = """After the rebel forces have been escorted out of the fort, a few men of Reyan have moved in. 
 
-Reyan: - Nice work, Mayor. Good thing that it's finally over and we can go home soon. However...""",
-	ANA_FORT_9 = """Reyan: - One thing which I couldn't drop from my mind, with princess being within our reach we've decided that we just can't let such opportunity pass. 
+Reyan: — Nice work, Mayor. Good thing that it's finally over and we can go home soon. However...""",
+	ANA_FORT_9 = """Reyan: — One thing which I couldn't drop from my mind, with princess being within our reach we've decided that we just can't let such opportunity pass. 
 
 With these words Reyan has drawn his swords, pointing one of them at Anastasia.
 
-Anastasia: - Huh? I don't get it...
+Anastasia: — Huh? I don't get it...
 
-Reyan: - You've been the cause for all these months of war, and to think that you get to escape any real punishment is really annoying. And this is a great opportunity to get some justice for ourselves now. Don't worry, Mayor, we'll just report that the former princess has been mortally wounded by a stray arrow.""",
+Reyan: — You've been the cause for all these months of war, and to think that you get to escape any real punishment is really annoying. And this is a great opportunity to get some justice for ourselves now. Don't worry, Mayor, we'll just report that the former princess has been mortally wounded by a stray arrow.""",
 	ANA_FORT_9_OPTION_1 = "That's a treason, you bastard",
 	ANA_FORT_9_OPTION_2 = "As if I'd let my woman to be hurt by you",
-	ANA_FORT_10 = """Reyan: - Hmph, so it seems the princess won't be the only casualty of this little skirmish.
+	ANA_FORT_10 = """Reyan: — Hmph, so it seems the princess won't be the only casualty of this little skirmish.
 
 Taking out their weapons the group Reyan prepares to fight.""",
 	ANA_FORT_11 = """Soon after Reyan's defeat most of his close men drop their weapons and escape as more distant guild forces come over the sounds of combat. After a short explanation you walk over Reyan's dead body to Anastasia who's only recovered from sudden danger.
 
-Anastasia: - T-thank you... I'm sorry this came to this, I thought that we could earn peace if I just do my best, but...""",
+Anastasia: — T-thank you... I'm sorry this came to this, I thought that we could earn peace if I just do my best, but...""",
 	ANA_FORT_11_OPTION_1 = "Some people can hold an unreasonable grudge despite your best effort to fix it.",
 	ANA_FORT_11_OPTION_2 = "It's not your fault that he was a traitorous bastard",
 	ANA_FORT_12 = """Anastasia nods slowly, her eyes look sadder, her heart has matured. But there's also a relief and gratitude when her gaze meets yours.
@@ -18571,14 +18575,14 @@ You can feel her warmth as she takes your hand, now more willing and indigent, f
 There's nothing else to do here and you decide to leave.""",
 	ANA_FINAL_1 = """After a long road back you and Anastasia return to the Fighters' Guild to report on the mission. Unexpectedly to you, Duncan himself meets you in the main hall. As he approaches closer you can see his face is even darker than usual, looks like he has received a report before you made it back. Anastasia shivers, moving slightly behind your back at his tall sight.
 
-Duncan: - Mayor [name], Princess...
+Duncan: — Mayor [name], Princess...
 
 Suddenly Duncan bows his head in apology. 
 
-Duncan: - I deeply regret Reyan's betrayal and beg for pardon, especially you, princess. We've broken your trust despite your best will.""",
+Duncan: — I deeply regret Reyan's betrayal and beg for pardon, especially you, princess. We've broken your trust despite your best will.""",
 	ANA_FINAL_2 = """Anastasia seems completely lost at her words however the long life of etiquette practices have brought her back to her senses.
 
-Anastasia: - N-no, this is not your fault, Sir Duncan, I understand things like this can happen... 
+Anastasia: — N-no, this is not your fault, Sir Duncan, I understand things like this can happen... 
 
 Her voice sounds even more bright and relaxed from an unexpected courtesy shown by her old enemy. She takes a step forward, offering her hand to the seasoned warrior.""",
 	ANA_FINAL_2_OPTION_1 = "You should pay greater attention to your employees.",
