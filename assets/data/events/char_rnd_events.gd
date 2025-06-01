@@ -1,5 +1,4 @@
 extends Reference
-
 var data = {
 	char_rnd_injury = {
 		reqs = [
@@ -50,11 +49,11 @@ var data = {
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'base_exp',
+						type = "stat",
+						stat = "base_exp",
 						value = "var_injury_exp"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_injury2",
@@ -78,11 +77,11 @@ var data = {
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'physics',
+						type = "stat",
+						stat = "physics",
 						value = "var_injury_physics"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_injury2",
@@ -138,7 +137,7 @@ var data = {
 
 				],
 				previous_dialogue_option = 3
-			},
+			}
 		],
 		options = [
 			{
@@ -147,8 +146,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_asleep = {
@@ -191,17 +190,17 @@ var data = {
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'base_exp',
+						type = "stat",
+						stat = "base_exp",
 						value = "var_asleep_exp"
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'loyalty',
+						type = "stat",
+						stat = "loyalty",
 						value = "var_asleep_loyalty"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_asleep2",
@@ -210,31 +209,31 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 					{
-						type = 'active_character_checks',
+						type = "active_character_checks",
 						value = [
 							{
-								code = 'stat',
-								stat = 'consent',
-								operant = 'lt',
+								code = "stat",
+								stat = "consent",
+								operant = "lt",
 								value = "var_asleep_consent_req"
-							},
+							}
 						]
 					}
 				],
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'lust',
+						type = "stat",
+						stat = "lust",
 						value = "var_asleep_lust"
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'consent',
+						type = "stat",
+						stat = "consent",
 						value = "var_asleep_consent"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_asleep2",
@@ -243,22 +242,22 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 					{
-						type = 'active_character_checks',
+						type = "active_character_checks",
 						value = [
 							{
-								code = 'stat',
-								stat = 'consent',
-								operant = 'gte',
+								code = "stat",
+								stat = "consent",
+								operant = "gte",
 								value = "var_asleep_consent_req"
-							},
+							}
 						]
 					}
 				],
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'lust',
+						type = "stat",
+						stat = "lust",
 						value = "var_asleep_lust"
 					}
 				]
@@ -317,7 +316,7 @@ var data = {
 
 				],
 				previous_dialogue_option = 3
-			},
+			}
 		],
 		options = [
 			{
@@ -326,8 +325,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_bullying = {
@@ -370,11 +369,11 @@ var data = {
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'loyalty',
+						type = "stat",
+						stat = "loyalty",
 						value = "var_bullying_loyalty"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_bullying2",
@@ -387,11 +386,11 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'base_exp',
+						type = "stat",
+						stat = "base_exp",
 						value = "var_bullying_exp_char"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_bullying2",
@@ -447,7 +446,7 @@ var data = {
 
 				],
 				previous_dialogue_option = 3
-			},
+			}
 		],
 		options = [
 			{
@@ -456,8 +455,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_misbehave = {
@@ -500,11 +499,11 @@ var data = {
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'charm',
+						type = "stat",
+						stat = "charm",
 						value = "var_misbehave_charm"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_misbehave2",
@@ -517,11 +516,11 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'physics',
+						type = "stat",
+						stat = "physics",
 						value = "var_misbehave_physics"
 					}
-				],
+				]
 			}
 		]
 	},
@@ -557,8 +556,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_lost = {
@@ -589,7 +588,7 @@ var data = {
 				],
 				bonus_effects = [
 
-				],
+				]
 			},
 			{
 				code = "char_rnd_lost2",
@@ -607,11 +606,11 @@ var data = {
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'loyalty',
+						type = "stat",
+						stat = "loyalty",
 						value = "var_lost_loyalty"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_lost2",
@@ -635,11 +634,11 @@ var data = {
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'wits',
+						type = "stat",
+						stat = "wits",
 						value = "var_lost_wits"
 					}
-				],
+				]
 			}
 		]
 	},
@@ -682,8 +681,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_unwell = {
@@ -715,11 +714,11 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'base_exp',
+						type = "stat",
+						stat = "base_exp",
 						value = "var_unwell_exp"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_unwell2",
@@ -740,8 +739,8 @@ var data = {
 								operant = "+"
 							}
 						]
-					},
-				],
+					}
+				]
 			},
 			{
 				code = "char_rnd_unwell2",
@@ -754,17 +753,17 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'physics',
+						type = "stat",
+						stat = "physics",
 						value = "var_unwell_physics"
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'hp',
+						type = "stat",
+						stat = "hp",
 						value = "var_unwell_hp"
 					}
-				],
+				]
 			}
 		]
 	},
@@ -807,8 +806,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_attention = {
@@ -836,25 +835,25 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 					{
-						type = 'active_character_checks',
+						type = "active_character_checks",
 						value = [
 							{
-								code = 'stat',
-								stat = 'consent',
-								operant = 'gte',
+								code = "stat",
+								stat = "consent",
+								operant = "gte",
 								value = "var_attention_consent_high"
-							},
+							}
 						]
 					}
 				],
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'charm',
+						type = "stat",
+						stat = "charm",
 						value = "var_attention_charm"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_attention2",
@@ -863,31 +862,31 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 					{
-						type = 'active_character_checks',
+						type = "active_character_checks",
 						value = [
 							{
-								code = 'stat',
-								stat = 'consent',
-								operant = 'lt',
+								code = "stat",
+								stat = "consent",
+								operant = "lt",
 								value = "var_attention_consent_low"
-							},
+							}
 						]
 					}
 				],
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'charm',
+						type = "stat",
+						stat = "charm",
 						value = "var_attention_charm"
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'consent',
+						type = "stat",
+						stat = "consent",
 						value = "var_attention_consent"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_attention2",
@@ -896,36 +895,36 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 					{
-						type = 'active_character_checks',
+						type = "active_character_checks",
 						value = [
 							{
-								code = 'stat',
-								stat = 'consent',
-								operant = 'gte',
+								code = "stat",
+								stat = "consent",
+								operant = "gte",
 								value = "var_attention_consent_low"
-							},
+							}
 						]
 					},
 					{
-						type = 'active_character_checks',
+						type = "active_character_checks",
 						value = [
 							{
-								code = 'stat',
-								stat = 'consent',
-								operant = 'lt',
+								code = "stat",
+								stat = "consent",
+								operant = "lt",
 								value = "var_attention_consent_high"
-							},
+							}
 						]
-					},
+					}
 				],
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'charm',
+						type = "stat",
+						stat = "charm",
 						value = "var_attention_charm"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_attention2",
@@ -938,14 +937,14 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'loyalty',
+						type = "stat",
+						stat = "loyalty",
 						value = "var_attention_loyalty"
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'base_exp',
+						type = "stat",
+						stat = "base_exp",
 						value = "var_attention_exp"
 					},
 					{
@@ -1002,8 +1001,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_treasure = {
@@ -1037,8 +1036,8 @@ var data = {
 						code = "money_change",
 						value = "var_treasure_money",
 						operant = "+"
-					},
-				],
+					}
+				]
 			},
 			{
 				code = "char_rnd_treasure2",
@@ -1062,17 +1061,17 @@ var data = {
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'charm',
+						type = "stat",
+						stat = "charm",
 						value = "var_treasure_charm"
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'loyalty',
+						type = "stat",
+						stat = "loyalty",
 						value = "var_treasure_loyalty"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_treasure2",
@@ -1085,8 +1084,8 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'base_exp',
+						type = "stat",
+						stat = "base_exp",
 						value = "var_treasure_exp"
 					},
 					{
@@ -1143,8 +1142,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_nightmare = {
@@ -1187,11 +1186,11 @@ var data = {
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'loyalty',
+						type = "stat",
+						stat = "loyalty",
 						value = "var_nightmare_loyalty"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_nightmare2",
@@ -1213,7 +1212,7 @@ var data = {
 							}
 						]
 					}
-				],
+				]
 			}
 		]
 	},
@@ -1249,8 +1248,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_hated_food = {
@@ -1282,9 +1281,9 @@ var data = {
 				bonus_effects = [
 					{
 						code = "change_relationship_precise",
-						value = "var_hated_food_relation_up",
+						value = "var_hated_food_relation_up"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_hated_food2",
@@ -1297,9 +1296,9 @@ var data = {
 				bonus_effects = [
 					{
 						code = "change_relationship_precise",
-						value = "var_hated_food_relation_down",
+						value = "var_hated_food_relation_down"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_hated_food2",
@@ -1320,8 +1319,8 @@ var data = {
 								operant = "+"
 							}
 						]
-					},
-				],
+					}
+				]
 			}
 		]
 	},
@@ -1364,8 +1363,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_quarrel = {
@@ -1398,18 +1397,18 @@ var data = {
 					{
 						code = "affect_one_scene_character",
 						char_num = 1,
-						type = 'stat',
-						stat = 'loyalty',
+						type = "stat",
+						stat = "loyalty",
 						value = "var_quarrel_loyalty"
 					},
 					{
 						code = "affect_one_scene_character",
 						char_num = 1,
-						type = 'stat',
-						stat = 'base_exp',
+						type = "stat",
+						stat = "base_exp",
 						value = "var_quarrel_exp"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_quarrel2",
@@ -1423,18 +1422,18 @@ var data = {
 					{
 						code = "affect_one_scene_character",
 						char_num = 2,
-						type = 'stat',
-						stat = 'loyalty',
+						type = "stat",
+						stat = "loyalty",
 						value = "var_quarrel_loyalty"
 					},
 					{
 						code = "affect_one_scene_character",
 						char_num = 2,
-						type = 'stat',
-						stat = 'base_exp',
+						type = "stat",
+						stat = "base_exp",
 						value = "var_quarrel_exp"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_quarrel2",
@@ -1447,11 +1446,11 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'physics',
+						type = "stat",
+						stat = "physics",
 						value = "var_quarrel_physics"
 					}
-				],
+				]
 			}
 		]
 	},
@@ -1494,8 +1493,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_love = {
@@ -1526,10 +1525,10 @@ var data = {
 				],
 				bonus_effects = [
 					{
-						code = 'change_relationship',
-						value = 'lovers'#freelovers?
+						code = "change_relationship",
+						value = "lovers"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_love2",
@@ -1542,13 +1541,13 @@ var data = {
 				bonus_effects = [
 					{
 						code = "change_relationship_precise",
-						value = "var_love_relation",
+						value = "var_love_relation"
 					},
 					{
 						code = "affect_one_scene_character",
 						char_num = 2,
-						type = 'stat',
-						stat = 'charm',
+						type = "stat",
+						stat = "charm",
 						value = "var_love_charm"
 					},
 					{
@@ -1562,7 +1561,7 @@ var data = {
 							}
 						]
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_love2",
@@ -1595,7 +1594,7 @@ var data = {
 							}
 						]
 					}
-				],
+				]
 			}
 		]
 	},
@@ -1638,8 +1637,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_discustomer = {
@@ -1650,15 +1649,8 @@ var data = {
 			"dialogue_scene",
 			"few_scene_characters_translate"
 		],
-		image = "restoraunt_quarrel",
-		text = [
-			{
-				text = "CHARRND_DISCUSTOMER",
-				reqs = [
-
-				]
-			}
-		],
+		image = "bar_quarrel",
+		text = "CHARRND_DISCUSTOMER",
 		options = [
 			{
 				code = "char_rnd_discustomer2",
@@ -1672,15 +1664,15 @@ var data = {
 					{
 						code = "affect_one_scene_character",
 						char_num = 1,
-						type = 'stat',
-						stat = 'charm',
+						type = "stat",
+						stat = "charm",
 						value = "var_discustomer_charm"
 					},
 					{
 						code = "change_relationship_precise",
-						value = "var_discustomer_relation_down",
+						value = "var_discustomer_relation_down"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_discustomer2",
@@ -1694,15 +1686,15 @@ var data = {
 					{
 						code = "affect_one_scene_character",
 						char_num = 2,
-						type = 'stat',
-						stat = 'charm',
+						type = "stat",
+						stat = "charm",
 						value = "var_discustomer_charm"
 					},
 					{
 						code = "change_relationship_precise",
-						value = "var_discustomer_relation_down",
+						value = "var_discustomer_relation_down"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_discustomer2",
@@ -1726,11 +1718,11 @@ var data = {
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'loyalty',
+						type = "stat",
+						stat = "loyalty",
 						value = "var_discustomer_loyalty"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_discustomer2",
@@ -1743,15 +1735,15 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'physics',
+						type = "stat",
+						stat = "physics",
 						value = "var_discustomer_physics"
 					},
 					{
 						code = "change_relationship_precise",
-						value = "var_discustomer_relation_up",
+						value = "var_discustomer_relation_up"
 					}
-				],
+				]
 			}
 		]
 	},
@@ -1763,7 +1755,7 @@ var data = {
 			"dialogue_scene",
 			"few_scene_characters_translate"
 		],
-		image = "restoraunt_quarrel",
+		image = "bar_quarrel",
 		text = [
 			{
 				text = "CHARRND_DISCUSTOMER_REPLY_SERVE1",
@@ -1801,8 +1793,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_likecustomer = {
@@ -1813,15 +1805,8 @@ var data = {
 			"dialogue_scene",
 			"few_scene_characters_translate"
 		],
-		image = "restoraunt_quarrel",
-		text = [
-			{
-				text = "CHARRND_LIKECUSTOMER",
-				reqs = [
-
-				]
-			}
-		],
+		image = "bar_quarrel2",
+		text = "CHARRND_LIKECUSTOMER",
 		options = [
 			{
 				code = "char_rnd_likecustomer2",
@@ -1835,11 +1820,11 @@ var data = {
 					{
 						code = "affect_one_scene_character",
 						char_num = 1,
-						type = 'stat',
-						stat = 'charm',
+						type = "stat",
+						stat = "charm",
 						value = "var_likecustomer_charm"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_likecustomer2",
@@ -1854,8 +1839,8 @@ var data = {
 						code = "money_change",
 						value = "var_likecustomer_money",
 						operant = "+"
-					},
-				],
+					}
+				]
 			},
 			{
 				code = "char_rnd_likecustomer2",
@@ -1869,11 +1854,11 @@ var data = {
 					{
 						code = "affect_one_scene_character",
 						char_num = 1,
-						type = 'stat',
-						stat = 'base_exp',
+						type = "stat",
+						stat = "base_exp",
 						value = "var_likecustomer_exp"
 					}
-				],
+				]
 			}
 		]
 	},
@@ -1885,7 +1870,7 @@ var data = {
 			"dialogue_scene",
 			"few_scene_characters_translate"
 		],
-		image = "restoraunt_quarrel",
+		image = "bar_quarrel2",
 		text = [
 			{
 				text = "CHARRND_LIKECUSTOMER_REPLY_SCOLD2",
@@ -1916,8 +1901,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_trap = {
@@ -1949,11 +1934,11 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'location_effect',
-						value = 'pay_stamina',
-						cost = 'var_trap_stamina'
+						type = "location_effect",
+						value = "pay_stamina",
+						cost = "var_trap_stamina"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_trap2",
@@ -1966,11 +1951,11 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'set_availability',
+						type = "set_availability",
 						value = false,
-						duration = 'var_trap_injury_dur'
+						duration = "var_trap_injury_dur"
 					}
-				],
+				]
 			}
 		]
 	},
@@ -2006,8 +1991,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_skirmish = {
@@ -2039,9 +2024,9 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'location_effect',
-						value = 'pay_stamina',
-						cost = 'var_skirmish_stamina'
+						type = "location_effect",
+						value = "pay_stamina",
+						cost = "var_skirmish_stamina"
 					},
 					{
 						code = "unique_character_changes",
@@ -2056,11 +2041,11 @@ var data = {
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'charm',
+						type = "stat",
+						stat = "charm",
 						value = "var_skirmish_charm"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_skirmish2",
@@ -2082,11 +2067,11 @@ var data = {
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'physics',
+						type = "stat",
+						stat = "physics",
 						value = "var_skirmish_physics"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_skirmish2",
@@ -2099,17 +2084,17 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'hp',
+						type = "stat",
+						stat = "hp",
 						value = "var_skirmish_hp"
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'base_exp',
+						type = "stat",
+						stat = "base_exp",
 						value = "var_skirmish_exp"
 					}
-				],
+				]
 			}
 		]
 	},
@@ -2152,8 +2137,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_pray = {
@@ -2164,7 +2149,6 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-#		image = "",
 		text = [
 			{
 				text = "CHARRND_PRAY",
@@ -2185,17 +2169,17 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'loyalty',
+						type = "stat",
+						stat = "loyalty",
 						value = "var_pray_loyalty"
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'resistance',
+						type = "stat",
+						stat = "resistance",
 						value = "var_pray_resistance"
-					},
-				],
+					}
+				]
 			},
 			{
 				code = "char_rnd_pray2",
@@ -2208,8 +2192,8 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'base_exp',
+						type = "stat",
+						stat = "base_exp",
 						value = "var_pray_exp"
 					},
 					{
@@ -2223,7 +2207,7 @@ var data = {
 							}
 						]
 					}
-				],
+				]
 			}
 		]
 	},
@@ -2235,7 +2219,6 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-#		image = "",
 		text = [
 			{
 				text = "CHARRND_PRAY_REPLY_ALLOW",
@@ -2259,8 +2242,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_letter = {
@@ -2271,7 +2254,6 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-#		image = "",
 		text = [
 			{
 				text = "CHARRND_LETTER",
@@ -2292,26 +2274,26 @@ var data = {
 						operant = "gte",
 						value = "var_letter_grain",
 						material = "grain"
-					},
+					}
 				],
 				not_hide = true,
 				bonus_effects = [
 					{
-						code = 'material_change',
-						operant = '-',
-						material = 'grain',
-						value = 'var_letter_grain'
+						code = "material_change",
+						operant = "-",
+						material = "grain",
+						value = "var_letter_grain"
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'loyalty',
+						type = "stat",
+						stat = "loyalty",
 						value = "var_letter_loyalty"
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'resistance',
+						type = "stat",
+						stat = "resistance",
 						value = "var_letter_resistance"
 					},
 					{
@@ -2325,7 +2307,7 @@ var data = {
 							}
 						]
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_letter2",
@@ -2338,8 +2320,8 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'base_exp',
+						type = "stat",
+						stat = "base_exp",
 						value = "var_letter_burn_exp"
 					},
 					{
@@ -2365,7 +2347,6 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-#		image = "",
 		text = [
 			{
 				text = "CHARRND_LETTER_REPLY_HELP",
@@ -2389,8 +2370,8 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
+				]
+			}
 		]
 	},
 	char_rnd_brokenvase = {
@@ -2401,15 +2382,7 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-#		image = "",
-		text = [
-			{
-				text = "CHARRND_BROKENVASE",
-				reqs = [
-
-				]
-			}
-		],
+		text = "CHARRND_BROKENVASE",
 		options = [
 			{
 				code = "char_rnd_brokenvase2",
@@ -2422,23 +2395,23 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'set_availability',
+						type = "set_availability",
 						value = false,
-						duration = 'var_brokenvase_duration'
+						duration = "var_brokenvase_duration"
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'loyalty',
+						type = "stat",
+						stat = "loyalty",
 						value = "var_brokenvase_loyalty"
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'base_exp',
+						type = "stat",
+						stat = "base_exp",
 						value = "var_brokenvase_exp_repair"
 					}
-				],
+				]
 			},
 			{
 				code = "char_rnd_brokenvase2",
@@ -2464,7 +2437,7 @@ var data = {
 						code = "money_change",
 						value = "var_brokenvase_money",
 						operant = "+"
-					},
+					}
 				]
 			},
 			{
@@ -2489,13 +2462,14 @@ var data = {
 					},
 					{
 						code = "real_affect_scene_characters",
-						type = 'stat',
-						stat = 'base_exp',
+						type = "stat",
+						stat = "base_exp",
 						value = "var_brokenvase_exp_punish"
 					}
 				]
 			}
-		]
+		],
+		image = "daisyevent"
 	},
 	char_rnd_brokenvase2 = {
 		reqs = [
@@ -2505,7 +2479,6 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-#		image = "",
 		text = [
 			{
 				text = "CHARRND_BROKENVASE_REPLY_REPAIR",
@@ -2536,9 +2509,9 @@ var data = {
 				type = "next_dialogue",
 				reqs = [
 
-				],
-			},
-		]
-	},
-	
+				]
+			}
+		],
+		image = "daisyevent"
+	}
 }

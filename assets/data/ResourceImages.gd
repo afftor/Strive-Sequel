@@ -493,6 +493,13 @@ var scenes = {
 	amelia_court = "res://assets/images/scenes/amelia_court.png",
 	amelia_hostage = "res://assets/images/scenes/amelia_hostage.png",
 	
+	ana_mercenary = "res://assets/images/scenes/mercenary.png",
+	ana_mercenary_2 = "res://assets/images/scenes/ana mercenary.png",
+	ana_wounded_soldier = "res://assets/images/scenes/soldier wound.png",
+	ana_battlefield = "res://assets/images/scenes/battlefield 2.png",
+	ana_widow = "res://assets/images/scenes/widow.png",
+	
+	
 	hire = load("res://assets/images/scenes/hire.png"),
 	
 	dungeon_door = load("res://assets/images/scenes/dungeon_door.png"),
@@ -540,13 +547,17 @@ var scenes = {
 	nightmare = "res://assets/images/scenes/nightmare.png",
 	no_reaction = "res://assets/images/scenes/no_reaction.png",
 	quarrel = "res://assets/images/scenes/quarrel.png",
+	bar_quarrel = "res://assets/images/scenes/bar quarrel.png",
+	bar_quarrel2 = "res://assets/images/scenes/bar quarrel 2.png",
 	rest = "res://assets/images/scenes/rest.png",
 	restoraunt_quarrel = "res://assets/images/scenes/restoraunt_quarrel.png",
 	scarhand = "res://assets/images/scenes/scarhand.png",
 	slave_love = "res://assets/images/scenes/slave_love.png",
 	table_sleep = "res://assets/images/scenes/table_sleep.png",
 	trap_rnd = "res://assets/images/scenes/trap_rnd.png",
-	treasure = "res://assets/images/scenes/treasure.png"
+	treasure = "res://assets/images/scenes/treasure.png",
+	
+
 }
 
 func get_scene(id):

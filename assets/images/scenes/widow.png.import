@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/beggar.png-41f80e789ce87cf13f6396b3d6ccfa80.stex"
+path="res://.import/widow.png-333ecc926d6d6f21e00b0977d09d9617.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/beggar.png"
-dest_files=[ "res://.import/beggar.png-41f80e789ce87cf13f6396b3d6ccfa80.stex" ]
+source_file="res://assets/images/scenes/widow.png"
+dest_files=[ "res://.import/widow.png-333ecc926d6d6f21e00b0977d09d9617.stex" ]
 
 [params]
 
