@@ -40,7 +40,6 @@ var scanned_stats = [ #free to change
 	"sex",
 	"age",
 	"race",
-	"traits",
 	"height",
 	"ears",
 	"eye_color",
@@ -65,7 +64,7 @@ var scanned_stats = [ #free to change
 	'chin', 
 	'nose',
 	#obsolete ones 
-	'skin',
+#	'skin',
 	'hair_length',
 	'hair_color',
 	'hair_style',
