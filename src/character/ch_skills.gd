@@ -427,14 +427,14 @@ func use_social_skill(s_code, target, item):
 				var maxstat = 100
 				if i.damagestat.find("factor")>=0:
 					maxstat = 0
-				elif h.get_stat(stat+'max') != null:
+				elif statdata.statdata.has(stat+'max'):
 					maxstat = h.get_stat(stat + "max")
 				
 				var change = '+'
 				if tmp < 0:
 					change = ''
 				effect_text += ": "
-				if maxstat != 0 && !(stat in ['consent', 'lust',]):
+				if maxstat != 0 && !(stat in ['consent', 'lust', 'base_exp']):
 					effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ("(%d)" % cached_value) +  ")"
 				else:
 					effect_text += change + str(floor(tmp)) 

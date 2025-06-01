@@ -101,8 +101,8 @@ func setrandom(character):
 	var haircolor = ''
 	if person.hair_color != null && !person.hair_color.empty():
 		haircolor = person.hair_color
-	elif person.fur != null && !person.fur.empty():
-		haircolor = person.fur
+#	elif person.fur != null && !person.fur.empty(): #bugged, needs reworking
+#		haircolor = person.fur
 	
 	if rnd_settings.debug:
 		 print('Generating weights for hair: %s, skin: %s, tits: %s, and ass: %s' % [haircolor, person.skin, person.tits_size, person.ass_size])
