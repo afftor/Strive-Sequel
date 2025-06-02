@@ -251,7 +251,7 @@ var effects = {
 				type = 'oneshot',
 				target = 'target',
 				args = {
-					damage = {obj = 'parent', func = 'arg', arg = 'damage'},
+					value = {obj = 'parent', func = 'arg', arg = 'damage'},
 					src = {obj = 'self', func = 'src', src = 'air'}
 					},
 				atomic = ['a_eye_animation', 'a_damage_simple'],

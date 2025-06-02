@@ -465,6 +465,12 @@ func finish_learning():
 			else:
 				parent.get_ref().add_stat('authority_factor', 1)
 				res_text += "\n%s + 1" % statdata.statdata.authority_factor.name
+			if parent.get_ref().get_stat('slave_class') == 'slave':
+				parent.get_ref().add_trait('training_broke_in')
+				parent.get_ref().add_trait('training_obedience')
+				parent.get_ref().add_trait('training_relation')
+			else:
+				parent.get_ref().add_trait('training_s_relation')
 			parent.get_ref().add_stat('base_exp_direct', 150)
 			res_text += "\n%s + 150" % statdata.statdata.base_exp.name
 		'academy':

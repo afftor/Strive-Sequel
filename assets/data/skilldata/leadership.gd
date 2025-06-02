@@ -96,7 +96,7 @@ var skills = {
 		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['target.hpmax','*0.30']],
-		damagestat = ['restore_hp']
+		damagestat = ['-damage_hp']
 	},
 }
 var effects = {
