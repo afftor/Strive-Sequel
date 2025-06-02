@@ -748,6 +748,7 @@ func setup_as_heir():
 			set_slave_category('heir')
 		else:
 			set_slave_category('slave')
+			
 	elif mother.is_spouse():
 		if father.is_master():
 			set_slave_category('heir')
