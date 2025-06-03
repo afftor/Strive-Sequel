@@ -111,18 +111,18 @@ func update_characters():
 			globals.connecttexttooltip(newbutton, tr("SELECT_SLOT_FIRST_LABEL"))
 		if !person.is_worker() and !mode_farm:
 			newbutton.disabled = true
-			globals.connecttexttooltip(newbutton, person.translate("[name]" + tr("LACKS_BASIC_SERV_LABEL"))) #change translation
+			globals.connecttexttooltip(newbutton, person.translate("[name]" + " " + tr("LACKS_BASIC_SERV_LABEL"))) #change translation
 		if selected_job != null and selected_job.has("code"):
 			if selected_job.code == "prostitution":
 				if person.has_status('no_sex'):
 					newbutton.disabled = true
-					globals.connecttexttooltip(newbutton, person.translate("[name] " + tr("REFUSE_TO_WHORE_LABEL")))
+					globals.connecttexttooltip(newbutton, person.translate("[name] " + " " + tr("REFUSE_TO_WHORE_LABEL")))
 				if person.has_status('no_whoring'):
 					newbutton.disabled = true
-					globals.connecttexttooltip(newbutton, person.translate("[name] " + tr("REFUSE_THIS_TASK_LABEL")))
+					globals.connecttexttooltip(newbutton, person.translate("[name] " + " " + tr("REFUSE_THIS_TASK_LABEL")))
 				if !person.has_status('sexservice'):  #or mb advanced
 					newbutton.disabled = true
-					globals.connecttexttooltip(newbutton, person.translate("[name] " + tr("LACKS_PROSTITUTUION_LABEL")))
+					globals.connecttexttooltip(newbutton, person.translate("[name] " + " " + tr("LACKS_PROSTITUTUION_LABEL")))
 			if selected_job.code in ['smith','alchemy','tailor','cooking']:
 				if person.has_status('no_craft'): newbutton.disabled = true
 			if selected_job.code == "building":
@@ -740,10 +740,16 @@ func show_brothel_options():
 	$BrothelRules/Label.text = "Service Rules: " + person.get_short_name()
 	input_handler.ClearContainer($BrothelRules/GridContainer)
 	
+	var location = ResourceScripts.world_gen.get_location_from_code(person.get_location())
+	
 	for i in ['rest']:
 		var newbutton = input_handler.DuplicateContainerTemplate($BrothelRules/GridContainer)
 		newbutton.text = tr("TASKREST")
-		globals.connecttexttooltip(newbutton, person.translate(tr("TASKRESTINFO")))
+		var text = person.translate(tr("TASKRESTINFO"))
+		if location.type != 'capital':
+			newbutton.disabled = true
+			text += '\n' + tr('NOSERVICECAPITAL')
+		globals.connecttexttooltip(newbutton, text)
 		newbutton.pressed = person.get_work() == ''
 		if newbutton.pressed:
 			switch_rest(newbutton)

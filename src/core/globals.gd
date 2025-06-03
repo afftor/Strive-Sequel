@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.11.0d'
+const gameversion = '0.11.0e'
 
 #time
 signal hour_tick
@@ -2578,7 +2578,10 @@ func valuecheck(dict):
 			return master_char.checkreqs(dict.value)
 		'spouse_check':
 			var spid = ResourceScripts.game_progress.spouse
-			if spid == null: return false
+			if spid == null: 
+				if dict.has('on_null') and dict.on_null:
+					return true
+				return false
 			var spouse_char = characters_pool.get_char_by_id(spid)
 			if spouse_char == null: return false
 			return spouse_char.checkreqs(dict.value)

@@ -693,17 +693,20 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 	if professions.has(prof.code):
 		return "Already has this profession"
 	professions[prof.code] = get_timestamp()
+	if prof.has('persistent_effects'):
+		for eff in prof.persistent_effects:
+			add_stored_effect(eff)
 	rebuild = variables.DYN_STATS_REBUILD
 	if parent.get_ref().is_in_game_party():
 		globals.manifest_and_log('char', "%s: acquired profession %s" %
 			[parent.get_ref().get_short_name(), prof.name], parent.get_ref())
 
 
-func remove_class(prof):
-	prof = classesdata.professions[prof]
-	if !professions.has(prof.code):
+func remove_class(prof_id):
+	if !professions.has(prof_id):
 		return "Nothing to remove"
-	professions.erase(prof.code)
+	remove_all_temp_effects_tag('class_' + prof_id)
+	professions.erase(prof_id)
 	rebuild = variables.DYN_STATS_REBUILD
 
 

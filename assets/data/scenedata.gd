@@ -1831,6 +1831,26 @@ var dialogue_inits = {
 			target_option = 1,
 		},
 	],
+	fighters_ana = [
+		{
+			code = 'default',
+			name = tr("ANA_DUNCAN_INITIATE"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'anastasia_quest', stage = 'stage8'}
+			],
+			target = 'ana_duncan_1',
+			target_option = 1,
+		},
+		{
+			code = 'default',
+			name = tr("DIALOGUEMEETLEADER"), #fix&
+			reqs = [
+				{type = 'active_quest_stage', value = 'anastasia_quest', stage = 'stage13'}
+			],
+			target = 'ana_final_1',
+			target_option = 1,
+		},
+	],
 	servants_init = [
 		{
 			code = 'default',
@@ -2619,6 +2639,27 @@ var quests = {
 			invite = {code = 'invite', name = 'KURO_ERRAND_QUEST_NAME', descript = 'KURO_ERRAND_QUEST_INVITE'},
 			search = {code = 'search', name = 'KURO_ERRAND_QUEST_NAME', descript = 'KURO_ERRAND_QUEST_SEARCH'},
 			base = {code = 'base', name = 'KURO_ERRAND_QUEST_NAME', descript = 'KURO_ERRAND_QUEST_BASE'},
+		},
+	},
+	
+	anastasia_quest = {
+		code = 'anastasia_quest',
+		summary = "ANASTASIA_QUEST_SUMMARY",
+		stages = {
+			stage0 = {code = 'stage0', name = 'ANASTASIA_QUEST_NAME', descript = 'ANASTASIA_QUEST_STAGE0'},#take letter
+			stage1 = {code = 'stage1', name = 'ANASTASIA_QUEST_NAME', descript = 'ANASTASIA_QUEST_STAGE1'},#letter taken
+			stage2 = {code = 'stage2', name = 'ANASTASIA_QUEST_NAME', descript = 'ANASTASIA_QUEST_STAGE2'},#meet with liora
+			stage3 = {code = 'stage3', name = 'ANASTASIA_QUEST_NAME', descript = 'ANASTASIA_QUEST_STAGE3'},# go to ashen ridge
+			stage4 = {code = 'stage4', name = 'ANASTASIA_QUEST_NAME', descript = 'ANASTASIA_QUEST_STAGE4'},#search cave
+			stage5 = {code = 'stage5', name = 'ANASTASIA_QUEST_NAME', descript = 'ANASTASIA_QUEST_STAGE5'},#return to liora
+			stage6 = {code = 'stage6', name = 'ANASTASIA_QUEST_NAME', descript = 'ANASTASIA_QUEST_STAGE6'},#speak with ana
+			stage7 = {code = 'stage7', name = 'ANASTASIA_QUEST_NAME', descript = 'ANASTASIA_QUEST_STAGE7'}, #wait
+			stage8 = {code = 'stage8', name = 'ANASTASIA_QUEST_NAME', descript = 'ANASTASIA_QUEST_STAGE8'}, #meet with dunkan
+			stage9 = {code = 'stage9', name = 'ANASTASIA_QUEST_NAME', descript = 'ANASTASIA_QUEST_STAGE9'}, #speak with ana
+			stage10 = {code = 'stage10', name = 'ANASTASIA_QUEST_NAME', descript = 'ANASTASIA_QUEST_STAGE10'}, #go to fort
+			stage11 = {code = 'stage11', name = 'ANASTASIA_QUEST_NAME', descript = 'ANASTASIA_QUEST_STAGE11'}, #force defenders
+			stage12 = {code = 'stage12', name = 'ANASTASIA_QUEST_NAME', descript = 'ANASTASIA_QUEST_STAGE12'}, #continue
+			stage13 = {code = 'stage13', name = 'ANASTASIA_QUEST_NAME', descript = 'ANASTASIA_QUEST_STAGE13'}, #return to dunkan
 		},
 	},
 }

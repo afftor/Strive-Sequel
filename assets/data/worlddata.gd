@@ -204,7 +204,7 @@ var factiondata = {
 		actions = ['hire','upgrade', 'guild_shop'],
 		bonus_actions = [],
 		events = [
-			'fighters_init', 'fighters_sap'
+			'fighters_init', 'fighters_sap', 'fighters_ana'
 			],
 		quests_easy = ['fighters_monster_hunt_easy','fighters_dungeon_easy','fighters_threat_easy','fighters_task_easy','fighters_slave_easy'],
 		quests_medium = ['fighters_craft_gear_medium','fighters_threat_medium', 'fighters_dungeon_medium','fighters_monster_hunt_medium','fighters_task_medium', 'fighters_slave_medium'],
@@ -896,6 +896,20 @@ var fixed_location_options = { #override serialized data
 			], 
 			args = [{code = 'start_event', data = 'kuro_church_note', args = []}]
 		},
+		{
+			text = tr("MEET_LIORA"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'anastasia_quest', stage = 'stage2'}
+			], 
+			args = [{code = 'start_event', data = 'liora_1', args = []}]
+		},
+		{
+			text = tr("MEET_LIORA"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'anastasia_quest', stage = 'stage5'}
+			], 
+			args = [{code = 'start_event', data = 'liora_return', args = []}]
+		},
 	],
 	elf_capital = [
 		{
@@ -1513,6 +1527,18 @@ var fixed_location_options = { #override serialized data
 			text = tr("QUEST_CULT_HIDEOUT_LOCATION"),
 			reqs = [{type = 'active_quest_stage', value = 'kuro_errand_quest', stage = 'invite'}],
 			args = [{code = 'start_event', data = 'kuro_hideout_start', args = {}}]
+		}
+	],
+	quest_ashen_ridge  = [
+		{
+			text = tr("QUEST_ASHEN_RIDGE_1"), 
+			reqs = [{type = 'active_quest_stage', value = 'anastasia_quest', stage = 'stage3'}], 
+			args = [{code = 'start_event', data = 'ashen_ridge_1', args = []}]
+		},
+		{
+			text = tr("QUEST_ASHEN_RIDGE_2"), 
+			reqs = [{type = 'active_quest_stage', value = 'anastasia_quest', stage = 'stage4'}], 
+			args = [{code = 'start_event', data = 'ashen_ridge_3', args = []}]
 		}
 	],
 }

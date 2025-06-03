@@ -1428,6 +1428,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	TASKRESTSERVICE = "Service",
 	TASKRESTDESCRIPT = "角色将在本地设施提供服务，在必要时切换到休息。",
 	TASKRESTINFO = "Resting will make wounds heal faster and does not make character drain Obedience but they also not gain Loyalty.",
+	NOSERVICECAPITAL = """Can't provide services outside of cities!""", # MISSING TRANSLATION
 	TASKFARMING_VEGES = "种菜",
 	TASKFARMING_VEGESDESCRIPT = "在农场工作，种植蔬菜。蔬菜是许多种族的主食。",
 	TASKFARMING_GRAINS = "种谷物",
@@ -1570,6 +1571,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	BUTTONCUSTOMIZATION = "Customization",
 
 	STATNAME = "名称",
+	SLAVEPARTNAME = """Name""", # MISSING TRANSLATION
 	STATSURNAME = "姓氏",
 	STATNICKNAME = "昵称",
 	STATRACE = "种族",
@@ -3799,6 +3801,8 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	ENEMYBALLISTA = "巴利斯塔",
 	ENEMYTROLL = "巨魔",
 	ENEMYBANDIT_ASSASSIN = "土匪刺客",
+	ENEMYPACK_LEADER_BOSS = """Leader Of The Pack""", # MISSING TRANSLATION
+	ENEMYSERGEANT_BOSS = """Sergeant""", # MISSING TRANSLATION
 	ENEMYPACKLEADER_BOSS = """Leader Of The Pack""", # MISSING TRANSLATION
 	ENEMYSERGANT_BOSS = """Sergant""", # MISSING TRANSLATION
 	ENEMYCASTELLAN_BOSS = """Castellan""", # MISSING TRANSLATION

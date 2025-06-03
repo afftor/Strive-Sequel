@@ -510,6 +510,12 @@ func set_hair_stat(st, value):
 		var tdata = get_hairs_data()
 		for h_stat in ['hair_base_color_1', 'hair_fringe_color_1', 'hair_back_color_1', 'hair_assist_color_1', 'hair_base_color_2', 'hair_fringe_color_2', 'hair_back_color_2', 'hair_assist_color_2']:
 			statlist[h_stat] = tdata[h_stat]
+	if st.ends_with('virgin'):
+		#tot a hairs but obsolete stats
+		if value:
+			statlist[st + '_lost'] = null
+		else:
+			statlist[st + '_lost'] = 'unknown'
 
 
 func get_combined_hairs_data():
@@ -524,7 +530,7 @@ func get_combined_hairs_data():
 	match statlist.hair_fringe: #adjust as you see fit, length is not reverse-compartible with presets autoset
 	#i hate this conversion to older constants, but we are using those - until descriptions are totally rewritten we need this
 		'braids' :
-			res.hair_style = 'multibraids'
+			res.hair_style = 'twinbraids'
 			match exterior.hair_fringe_length:
 				'long':
 					length = int(max(length, 1))
@@ -1135,7 +1141,7 @@ func add_random_sex_skill():
 	var array = ['sex_skills_petting']
 	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
 		if statlist[i + '_lost'] != null:
-			array.append(skill_shortcuts[i])
+			array.append('sex_skills_' + skill_shortcuts[i])
 	
 	if get_stat('penis_size') != '':
 		array.append('sex_skills_penetration')

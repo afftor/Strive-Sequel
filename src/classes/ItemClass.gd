@@ -659,7 +659,7 @@ func add_curse (c_id):
 #	var tmp = null
 	if owner != null:
 #		tmp = owner
-		characters_pool.get_char_by_id(owner).unequip(self)
+		characters_pool.get_char_by_id(owner).unequip(self, false)
 	
 	curse = c_id
 	var cursetemplate = Items.curses[c_id]

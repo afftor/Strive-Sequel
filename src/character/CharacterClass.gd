@@ -103,11 +103,14 @@ func get_stat_value_data(statname):
 		return dyn_stats.get_stat_data(statname)
 
 
-func get_stat(statname):
+func get_stat(statname, nobonus = false):
 	if statname in ['hp', 'mp', 'shield', 'combatgroup']:
 		return get(statname)
 	if statname in ['physics','wits','charm','sexuals']:
-		return max(statlist.get_stat(statname) + dyn_stats.get_stat(statname + '_bonus'), 0)
+		if nobonus:
+			return statlist.get_stat(statname)
+		else:
+			return max(statlist.get_stat(statname) + dyn_stats.get_stat(statname + '_bonus'), 0)
 	if statname.begins_with('mastery_') and !statname.begins_with('mastery_point'):
 		return dyn_stats.get_mastery_level(statname.trim_prefix('mastery_'))
 	if statname == 'base_exp':
@@ -745,6 +748,7 @@ func setup_as_heir():
 			set_slave_category('heir')
 		else:
 			set_slave_category('slave')
+			
 	elif mother.is_spouse():
 		if father.is_master():
 			set_slave_category('heir')
@@ -1372,10 +1376,11 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'stat':
 			if i.stat in ['tame_factor','authority_factor'] && is_master():
 				return true
-			if typeof(i.value) == TYPE_ARRAY: i.value = calculate_number_from_string_array(i.value)
+			if typeof(i.value) == TYPE_ARRAY and i.operant != 'in': 
+				i.value = calculate_number_from_string_array(i.value)
 			if ignore_npc_stats_gear:
 #				check = input_handler.operate(i.operant, get_stat_nobonus(i.stat), i.value)
-				check = input_handler.operate(i.operant, get_stat(i.stat), i.value) #idk if alt mode was really needed
+				check = input_handler.operate(i.operant, get_stat(i.stat, true), i.value) 
 			else:
 				check = input_handler.operate(i.operant, get_stat(i.stat), i.value)
 		'stat_in_set':
@@ -1737,9 +1742,13 @@ func affect_char(template, manifest = false):
 			if manifest: manifest_and_log("loses %d hp." % int(tval))
 		'heal':
 			var tval = heal(template.value)
+			if input_handler.combat_node != null:
+				input_handler.combat_node.combatlogadd("\n%s get %d hp." % [get_short_name(), int(tval)])
 			if manifest: manifest_and_log("healed for %d hp." % int(tval))
 		'mana':
 			var tval = mana_update(template.value)
+			if input_handler.combat_node != null:
+				input_handler.combat_node.combatlogadd("\n%s get %d mp." % [get_short_name(), int(tval)])
 			if manifest: manifest_and_log("mana %d." % int(tval))
 		'damage_mana_percent':
 			var tval = mana_update(-template.value * get_stat('mpmax'))

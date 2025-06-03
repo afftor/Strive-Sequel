@@ -238,7 +238,7 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	SETTINGSTOP_LOAN_DESCRIPT = "Stop loan payments after election",
 	SETTINGSMALL_LOAN_DESCRIPT = "4 times lesser loan sum",
 	SETTINGSOLO_DESCRIPT = "You don't get any additional characters besides Master at the start of the game",
-	SETTINGFREE_UPGRADE_DESCRIPT = "All mansion upgrades are free",
+	SETTINGFREE_UPGRADE_DESCRIPT = "Receive free mansion upgrade at the start of the game",
 	SETTINGMATERIALS_DESCRIPT = "Starting materials",
 	SETTINGMONEY_DESCRIPT = "Starting gold",
 	SETTINGFREE_GATHER_DESCRIPT = "Available resources are not locked by story progression",
@@ -476,7 +476,8 @@ However, while it might seem that Landowners have nothing but contempt for those
 	MATERIALCATEGORYPLANT = "Plant",
 	MATERIALCATEGORYBONE = "Bone",
 	MATERIALCATEGORYCOMPONENT = "Consumable",
-	TOOLTIPHIDDENRESOURCE = "Unknown resource.\nProgress main story to reveal it.",
+	TOOLTIPHIDDENRESOURCE = """Unknown resource.
+Progress main story to reveal it.""",
 	MATERIALMEAT = "Meat",
 	MATERIALMEATDESCRIPT = "A rich source of nutrients. Acquired from hunting. ",
 	MATERIALFISH = "Fish",
@@ -1042,6 +1043,7 @@ Reduced by enemy's evasion""",
 	DELETETEMPLATECONFIRM = "Delete this template?",
 	LOADTEMPLATECONFIRM = "Load this template? Current settings will be lost.",
 	CURSEUNEQUIPCONFIRM = "Cursed equipment is destroyed when removed.",
+	CURSEUNEQUIPCONFIRM2 = "This will cause removal and destruction of cursed equipment.",
 	PAUSEBUTTONTOOLTIP = """Pause
 Hotkey: 1""",
 	NORMALBUTTONTOOLTIP = """Normal Speed
@@ -1539,15 +1541,18 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	TRAININGLABELLOYALTYGROW = "%.0f + %.2f",
 	TRAININGLABELRESISTANCE = "%.0f",
 	TRAININGLABELRESISTANCEDROP = "%.0f - %.0f",
-	TRAININGTOOLTIPRESISTANCE = "Slave Resistance reduces training efficiency of non-{color=yellow|Positive} actions.\n%s's resistance drops by %.0f per turn.",
+	TRAININGTOOLTIPRESISTANCE = """Slave Resistance reduces training efficiency of non-{color=yellow|Positive} actions.
+%s's resistance drops by %.0f per turn.""",
 	TRAININGTOOLTIPRESISTULT = "Current resistance too high for training.",
 	TRAININGTOOLTIPRESISTHIGH = "Current resistance high.",
 	TRAININGTOOLTIPRESISTMOD = "Current resistance moderate.",
 	TRAININGTOOLTIPRESISTLOW = "Current resistance low.",
-	TRAINSERVTOOLTIPRESISTANCE = "Subordinate Resistance prevents Loyalty build-up.\n%s's resistance drops by %.0f per turn.",
-	TRAINSERVTOOLTIPLOYALTY = "Loyalty is used to unlock character's actions and is obtained with time.\n%s gain loyalty by %.2f per turn.",
+	TRAINSERVTOOLTIPRESISTANCE = """Subordinate Resistance prevents Loyalty build-up.
+%s's resistance drops by %.0f per turn.""",
+	TRAINSERVTOOLTIPLOYALTY = """Loyalty is used to unlock character's actions and is obtained with time.
+%s gain loyalty by %.2f per turn.""",
 	TRAININGCOST = "Trait unlock: %d loyalty",
-	TRAININGCOSTGOLD = "Trait unlock: %d gold",#obsolete?
+	TRAININGCOSTGOLD = "Trait unlock: %d gold",
 	TRAINNOTRAINER = "[name] has no trainer",
 	TRAINNOWORKTRAIT = "[name] lacks Trait: Worker",
 	NOTRAINSLOTS = "No free training slots",
@@ -1555,8 +1560,9 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	SPIRITLOSSNO = "Spirit has been unaffected",
 	SPIRITLOSSSMALL = "The training has mildly impacted [name]'s Spirit.",
 	SPIRITLOSSGREAT = "The training has greatly impacted [name]'s Spirit",
-	NOTAVAILABLE = """[color=red]Not available[/color]
+	TRAININGNOTAVAILABLE = """[color=red]Requirements aren't met[/color]
 """,
+	TRAININGNOTAVAILABLEUNIQUE = "[color=red]You have to complete [name]'s personal quest(s) first. [/color]",
 	TRIANINGREQUIRES = "Must do training categories: ",
 	DISPOSITIONCHANGE = "Disposition to %s is changed",
 	DISPOSITIONSETRESIST = """Disposition to %s is now resist
@@ -1611,6 +1617,7 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	TASKRESTSERVICE = "Service",
 	TASKRESTDESCRIPT = "Select a service the character will provide at local facilities, or switch to rest when necessary.",
 	TASKRESTINFO = "Resting will make wounds heal faster and does not make character drain Obedience but they also not gain Loyalty.",
+	NOSERVICECAPITAL = "Can't provide services outside of cities!",
 	TASKFARMING_VEGES = "Vegetables",
 	TASKFARMING_VEGESDESCRIPT = "Work at farm, raising vegetables. Vegetables are a food staple for many races.",
 	TASKFARMING_GRAINS = "Grains",
@@ -1714,6 +1721,7 @@ Service is a global modifier for this assignment.""",
 	BUTTONGEAR = "Gear",
 	BUTTONCUSTOMIZATION = "Customization",
 	STATNAME = "Name",
+	SLAVEPARTNAME = "Name",
 	STATSURNAME = "Surname",
 	STATNICKNAME = "Nickname",
 	STATRACE = "Race",
@@ -1743,190 +1751,185 @@ Service is a global modifier for this assignment.""",
 	STATMOUTH_VIRGIN = "Mouth Virgin",
 	STATSEXTRAIT = "Sexual Trait",
 	STATPERSONALITY = "Personality",
-	
-	#lost stats
-	STATBEARD = 'Beard',
-	STATCHIN = 'Chin',
-	STATEYE_TEX = 'Eye Texture',
-	STATEYEBROWS = 'Brows',
-	STATHAIR_BASE_LENGTH = 'Hair base length',
-	STATHAIR_FRINGE_LENGTH = 'Hair fringe length',
-	STATHAIR_BACK_LENGTH = 'Hair back length',
-	STATHAIR_ASSIST_LENGTH = 'Hair assist length',
-	STATHAS_PUSSY = 'Pussy',
-	STATHAS_WOMB = 'Womb',
-	STATPOSE = '',
-	STATBODY_LOWER = 'Lower body',
-	STATBODY_SHAPE = 'Body shape',
-	STATSKIN_COVERAGE = 'Skin coverage',
-	STATFACIAL_HAIR = 'Facial hair',
-	STATEYESHAPE = 'Eye shape',
-	STATNOSE = 'Nose',
-	STATLIPS = 'Lips',
-	STATBODY_COLOR_SKIN = 'Skin color',
-	STATBODY_COLOR_LIPS = 'Lips color',
-	STATBODY_COLOR_WINGS = 'Wings color',
-	STATBODY_COLOR_TAIL = 'Tail color',
-	STATBODY_COLOR_HORNS = 'Horns color',
-	STATBODY_COLOR_ANIMAL = 'Animal parts color',
-	STATBODY_COLOR_EARS = '',
-	STATHAIR_BASE = 'Base hair',
-	STATHAIR_ASSIST = 'Assist hair',
-	STATHAIR_BACK = 'Back hair',
-	STATHAIR_FRINGE = 'Fringe hair',
-	STATHAIR_BASE_COLOR_1 = 'Base hair color 1',
-	STATHAIR_FRINGE_COLOR_1 = 'Fringe hair color 1',
-	STATHAIR_BACK_COLOR_1 = 'Back hair color 1',
-	STATHAIR_ASSIST_COLOR_1 = 'Assist hair color 1',
-	STATHAIR_BASE_COLOR_2 = 'Base hair color 2',
-	STATHAIR_FRINGE_COLOR_2 = 'Fringe hair color 2',
-	STATHAIR_BACK_COLOR_2 = 'Back hair color 2',
-	STATHAIR_ASSIST_COLOR_2 = 'Assist hair color 2',
-	STATHAIR_FACIAL_COLOR = 'Facial hair color',
-	STATENABLED_MASTERIES = '',
-	STATPHYSICS_CAP = '',
-	STATWITS_CAP = '',
-	STATCHARM_CAP = '',
-	STATLUSTMAX = '',
-	STATPERSONALITY_BOLD = '',
-	STATPERSONALITY_KIND = '',
-	STATPERSONALITY_SHY = '',
-	STATPERSONALITY_SERIOUS = '',
-	STATOLD_PERSONALITY = '',
-	STATMANACOST_MOD = '',
-	STATTAUNT = '',
-	STATDAMAGETYPE = '',
-	STATWEAPON_ELEMENT = '',
-	STATDAMAGE_REDUCTION = '',
-	STATBURN_MOD = '',
-	STATBLEED_MOD = '',
-	STATPOISON_MOD = '',
-	STATBURN_DAMAGE = '',
-	STATBLEED_DAMAGE = '',
-	STATPOISON_DAMAGE = '',
-	STATDARKFLAME_DAMAGE = '',
-	STATICON_IMAGE = '',
-	STATBODY_IMAGE = '',
-	STATUNIQUE_VARIATION = '',
-	STATDYNAMIC_PORTRAIT = '',
-	STATPORTRAIT_UPDATE = '',
-	STATPLAYER_SELECTED_ICON = '',
-	STATPLAYER_SELECTED_BODY = '',
-	STATIS_HIRABLE = '',
-	STATHIRE_SCENE = '',
-	STATUNIQUE = '',
-	STATBONUS_DESCRIPTION = '',
-	STATRACEGROUP = '',
-	STATMASTERNOUN = '',
-	STATUPGRADE_POINTS_TOTAL = '',
-	STATLASTSEXDAY = '',
-	STATASSER = '',
-	STATXPREWARD = '',
-	STATLOOTTABLE = '',
-	STATPRICE_ADD_PART = '',
-	STATPRICE_ADD = '',
-	STATBASE_TASK_CRIT_CHANCE = '',
-	STATPENIS_VIRGIN_LOST = '',
-	STATVAGINAL_VIRGIN_LOST = '',
-	STATANAL_VIRGIN_LOST = '',
-	STATMOUTH_VIRGIN_LOST = '',
-	STATVAGINA = '',
-	STATMULTIPLE_TITS = 'Multiple tits',
-	STATMULTIPLE_TITS_DEVELOPED = '',
-	STATLACTATION = '',
-	STATPREGNANCY_FERTILITY = '',
-	STATPREGNANCY_DURATION = '',
-	STATPREGNANCY_BABY = '',
-	STATPREGNANCY_REPORTED = '',
-	STATWAS_PROPOSED = '',
-	STATHAD_CONS_SEX_WITH_MC = '',
-	STATHAD_FORCED_SEX_WITH_MC = '',
-	STATAGREED_TO_MARRY = '',
-	STATMASTERY_WARFARE_ENABLE = '',
-	STATMASTERY_PROTECTION_ENABLE = '',
-	STATMASTERY_STEALTH_ENABLE = '',
-	STATMASTERY_MARKSMANSHIP_ENABLE = '',
-	STATMASTERY_LEADERSHIP_ENABLE = '',
-	STATMASTERY_FIRE_ENABLE = '',
-	STATMASTERY_WATER_ENABLE = '',
-	STATMASTERY_EARTH_ENABLE = '',
-	STATMASTERY_AIR_ENABLE = '',
-	STATMASTERY_LIGHT_ENABLE = '',
-	STATMASTERY_DARK_ENABLE = '',
-	STATMASTERY_MIND_ENABLE = '',
-	STATTATTOO_FACE = '',
-	STATTATTOO_NECK = '',
-	STATTATTOO_ARMS = '',
-	STATTATTOO_LEGS = '',
-	STATTATTOO_CHEST = '',
-	STATTATTOO_CROTCH = '',
-	STATTATTOO_WAIST = '',
-	STATTATTOO_ASS = '',
-	STATARMOR_COLOR_BASE = '',
-	STATARMOR_COLOR_LOWER = '',
-	STATARMOR_COLOR_COLLAR = '',
-	STATARMOR_COLOR_WEAPON = '',
-	STATARMOR_COLOR_UNDERWEAR = '',
-	STATPIERCING_EARLOBES = '',
-	STATPIERCING_EYEBROW = '',
-	STATPIERCING_NOSE = '',
-	STATPIERCING_LIPS = '',
-	STATPIERCING_TONGUE = '',
-	STATPIERCING_NAVEL = '',
-	STATPIERCING_NIPPLES = '',
-	STATPIERCING_CLIT = '',
-	STATPIERCING_LABIA = '',
-	STATPIERCING_PENIS = '',
-	STATMETRICS_OWNERSHIP = '',
-	STATMETRICS_SEX = '',
-	STATMETRICS_DATES = '',
-	STATMETRICS_PARTNERS = '',
-	STATMETRICS_RANDOMPARTNERS = '',
-	STATMETRICS_WIN = '',
-	STATMETRICS_KILLS = '',
-	STATMETRICS_GOLDEARN = '',
-	STATMETRICS_FOODEARN = '',
-	STATMETRICS_MATERIALEARN = '',
-	STATMETRICS_SERVICEPERFORMED = '',
-	STATMETRICS_SOCSKILLUSED = '',
-	STATMETRICS_SPELLUSED = '',
-	STATMETRICS_HEALUSED = '',
-	STATMETRICS_FOODEATEN = '',
-	STATMETRICS_BIRTH = '',
-	STATMETRICS_PREGNANCY = '',
-	STATMETRICS_IMPREGNATION = '',
-	STATSEX_SKILLS_PETTING = 'Petting sex skill',
-	STATSEX_SKILLS_PENETRATION = 'Penetration sex skill',
-	STATSEX_SKILLS_PUSSY = 'Pussy sex skill',
-	STATSEX_SKILLS_ORAL = 'Oral sex skill',
-	STATSEX_SKILLS_ANAL = 'Anal sex skill',
-	STATSEX_SKILLS_TAIL = 'Tail sex skill',
-	STATSEXEXP_PARTNERS = '',
-	STATSEXEXP_WATCHERS = '',
-	STATSEXEXP_ACTIONS = '',
-	STATSEXEXP_SEENACTIONS = '',
-	STATSEXEXP_ORGASMS = '',
-	STATSEXEXP_ORGASMPARTNERS = '',
-	STATMANACOST_MOD_ALL = '',
-	STATMANACOST_MOD_MELEE = '',
-	STATMANACOST_MOD_RANGED = '',
-	STATMANACOST_MOD_NORMAL = '',
-#	STATMANACOST_MOD_FIRE = '',
-	STATMANACOST_MOD_EARTH = '',
-	STATMANACOST_MOD_AIR = '',
-	STATMANACOST_MOD_WATER = '',
-	STATMANACOST_MOD_LIGHT = '',
-	STATMANACOST_MOD_DARK = '',
-	STATMANACOST_MOD_MIND = '',
-	STATMANACOST_MOD_PHYSIC = '',
-	STATMANACOST_MOD_SPELL = '',
-	STATMANACOST_MOD_SKILL = '',
-	STATMANACOST_MOD_AOE = '',
-	STATMANACOST_MOD_TRUE = '',
-	STATMANACOST_MOD_HEAL = '',
-	#new
-	INNATE = 'innate',
-	
+	STATBEARD = "Beard",
+	STATCHIN = "Chin",
+	STATEYE_TEX = "Eye Texture",
+	STATEYEBROWS = "Brows",
+	STATHAIR_BASE_LENGTH = "Hair base length",
+	STATHAIR_FRINGE_LENGTH = "Hair fringe length",
+	STATHAIR_BACK_LENGTH = "Hair back length",
+	STATHAIR_ASSIST_LENGTH = "Hair assist length",
+	STATHAS_PUSSY = "Pussy",
+	STATHAS_WOMB = "Womb",
+	STATPOSE = "",
+	STATBODY_LOWER = "Lower body",
+	STATBODY_SHAPE = "Body shape",
+	STATSKIN_COVERAGE = "Skin coverage",
+	STATFACIAL_HAIR = "Facial hair",
+	STATEYESHAPE = "Eye shape",
+	STATNOSE = "Nose",
+	STATLIPS = "Lips",
+	STATBODY_COLOR_SKIN = "Skin color",
+	STATBODY_COLOR_LIPS = "Lips color",
+	STATBODY_COLOR_WINGS = "Wings color",
+	STATBODY_COLOR_TAIL = "Tail color",
+	STATBODY_COLOR_HORNS = "Horns color",
+	STATBODY_COLOR_ANIMAL = "Animal parts color",
+	STATBODY_COLOR_EARS = "",
+	STATHAIR_BASE = "Base hair",
+	STATHAIR_ASSIST = "Assist hair",
+	STATHAIR_BACK = "Back hair",
+	STATHAIR_FRINGE = "Fringe hair",
+	STATHAIR_BASE_COLOR_1 = "Base hair color 1",
+	STATHAIR_FRINGE_COLOR_1 = "Fringe hair color 1",
+	STATHAIR_BACK_COLOR_1 = "Back hair color 1",
+	STATHAIR_ASSIST_COLOR_1 = "Assist hair color 1",
+	STATHAIR_BASE_COLOR_2 = "Base hair color 2",
+	STATHAIR_FRINGE_COLOR_2 = "Fringe hair color 2",
+	STATHAIR_BACK_COLOR_2 = "Back hair color 2",
+	STATHAIR_ASSIST_COLOR_2 = "Assist hair color 2",
+	STATHAIR_FACIAL_COLOR = "Facial hair color",
+	STATENABLED_MASTERIES = "",
+	STATPHYSICS_CAP = "",
+	STATWITS_CAP = "",
+	STATCHARM_CAP = "",
+	STATLUSTMAX = "",
+	STATPERSONALITY_BOLD = "",
+	STATPERSONALITY_KIND = "",
+	STATPERSONALITY_SHY = "",
+	STATPERSONALITY_SERIOUS = "",
+	STATOLD_PERSONALITY = "",
+	STATMANACOST_MOD = "",
+	STATTAUNT = "",
+	STATDAMAGETYPE = "",
+	STATWEAPON_ELEMENT = "",
+	STATDAMAGE_REDUCTION = "",
+	STATBURN_MOD = "",
+	STATBLEED_MOD = "",
+	STATPOISON_MOD = "",
+	STATBURN_DAMAGE = "",
+	STATBLEED_DAMAGE = "",
+	STATPOISON_DAMAGE = "",
+	STATDARKFLAME_DAMAGE = "",
+	STATICON_IMAGE = "",
+	STATBODY_IMAGE = "",
+	STATUNIQUE_VARIATION = "",
+	STATDYNAMIC_PORTRAIT = "",
+	STATPORTRAIT_UPDATE = "",
+	STATPLAYER_SELECTED_ICON = "",
+	STATPLAYER_SELECTED_BODY = "",
+	STATIS_HIRABLE = "",
+	STATHIRE_SCENE = "",
+	STATUNIQUE = "",
+	STATBONUS_DESCRIPTION = "",
+	STATRACEGROUP = "",
+	STATMASTERNOUN = "",
+	STATUPGRADE_POINTS_TOTAL = "",
+	STATLASTSEXDAY = "",
+	STATASSER = "",
+	STATXPREWARD = "",
+	STATLOOTTABLE = "",
+	STATPRICE_ADD_PART = "",
+	STATPRICE_ADD = "",
+	STATBASE_TASK_CRIT_CHANCE = "",
+	STATPENIS_VIRGIN_LOST = "",
+	STATVAGINAL_VIRGIN_LOST = "",
+	STATANAL_VIRGIN_LOST = "",
+	STATMOUTH_VIRGIN_LOST = "",
+	STATVAGINA = "",
+	STATMULTIPLE_TITS = "Multiple tits",
+	STATMULTIPLE_TITS_DEVELOPED = "",
+	STATLACTATION = "",
+	STATPREGNANCY_FERTILITY = "",
+	STATPREGNANCY_DURATION = "",
+	STATPREGNANCY_BABY = "",
+	STATPREGNANCY_REPORTED = "",
+	STATWAS_PROPOSED = "",
+	STATHAD_CONS_SEX_WITH_MC = "",
+	STATHAD_FORCED_SEX_WITH_MC = "",
+	STATAGREED_TO_MARRY = "",
+	STATMASTERY_WARFARE_ENABLE = "",
+	STATMASTERY_PROTECTION_ENABLE = "",
+	STATMASTERY_STEALTH_ENABLE = "",
+	STATMASTERY_MARKSMANSHIP_ENABLE = "",
+	STATMASTERY_LEADERSHIP_ENABLE = "",
+	STATMASTERY_FIRE_ENABLE = "",
+	STATMASTERY_WATER_ENABLE = "",
+	STATMASTERY_EARTH_ENABLE = "",
+	STATMASTERY_AIR_ENABLE = "",
+	STATMASTERY_LIGHT_ENABLE = "",
+	STATMASTERY_DARK_ENABLE = "",
+	STATMASTERY_MIND_ENABLE = "",
+	STATTATTOO_FACE = "",
+	STATTATTOO_NECK = "",
+	STATTATTOO_ARMS = "",
+	STATTATTOO_LEGS = "",
+	STATTATTOO_CHEST = "",
+	STATTATTOO_CROTCH = "",
+	STATTATTOO_WAIST = "",
+	STATTATTOO_ASS = "",
+	STATARMOR_COLOR_BASE = "",
+	STATARMOR_COLOR_LOWER = "",
+	STATARMOR_COLOR_COLLAR = "",
+	STATARMOR_COLOR_WEAPON = "",
+	STATARMOR_COLOR_UNDERWEAR = "",
+	STATPIERCING_EARLOBES = "",
+	STATPIERCING_EYEBROW = "",
+	STATPIERCING_NOSE = "",
+	STATPIERCING_LIPS = "",
+	STATPIERCING_TONGUE = "",
+	STATPIERCING_NAVEL = "",
+	STATPIERCING_NIPPLES = "",
+	STATPIERCING_CLIT = "",
+	STATPIERCING_LABIA = "",
+	STATPIERCING_PENIS = "",
+	STATMETRICS_OWNERSHIP = "",
+	STATMETRICS_SEX = "",
+	STATMETRICS_DATES = "",
+	STATMETRICS_PARTNERS = "",
+	STATMETRICS_RANDOMPARTNERS = "",
+	STATMETRICS_WIN = "",
+	STATMETRICS_KILLS = "",
+	STATMETRICS_GOLDEARN = "",
+	STATMETRICS_FOODEARN = "",
+	STATMETRICS_MATERIALEARN = "",
+	STATMETRICS_SERVICEPERFORMED = "",
+	STATMETRICS_SOCSKILLUSED = "",
+	STATMETRICS_SPELLUSED = "",
+	STATMETRICS_HEALUSED = "",
+	STATMETRICS_FOODEATEN = "",
+	STATMETRICS_BIRTH = "",
+	STATMETRICS_PREGNANCY = "",
+	STATMETRICS_IMPREGNATION = "",
+	STATSEX_SKILLS_PETTING = "Petting sex skill",
+	STATSEX_SKILLS_PENETRATION = "Penetration sex skill",
+	STATSEX_SKILLS_PUSSY = "Pussy sex skill",
+	STATSEX_SKILLS_ORAL = "Oral sex skill",
+	STATSEX_SKILLS_ANAL = "Anal sex skill",
+	STATSEX_SKILLS_TAIL = "Tail sex skill",
+	STATSEXEXP_PARTNERS = "",
+	STATSEXEXP_WATCHERS = "",
+	STATSEXEXP_ACTIONS = "",
+	STATSEXEXP_SEENACTIONS = "",
+	STATSEXEXP_ORGASMS = "",
+	STATSEXEXP_ORGASMPARTNERS = "",
+	STATMANACOST_MOD_ALL = "",
+	STATMANACOST_MOD_MELEE = "",
+	STATMANACOST_MOD_RANGED = "",
+	STATMANACOST_MOD_NORMAL = "",
+	STATMANACOST_MOD_EARTH = "",
+	STATMANACOST_MOD_AIR = "",
+	STATMANACOST_MOD_WATER = "",
+	STATMANACOST_MOD_LIGHT = "",
+	STATMANACOST_MOD_DARK = "",
+	STATMANACOST_MOD_MIND = "",
+	STATMANACOST_MOD_PHYSIC = "",
+	STATMANACOST_MOD_SPELL = "",
+	STATMANACOST_MOD_SKILL = "",
+	STATMANACOST_MOD_AOE = "",
+	STATMANACOST_MOD_TRUE = "",
+	STATMANACOST_MOD_HEAL = "",
+	INNATE = "innate",
 	STATPERSONALITYDESCRIPT = "Personality defines character's speech patterns and provides a minor benefit. Personality can be adjusted later with training.",
 	SLAVEDIET = "Food Preferences",
 	SLAVESTARTINGCLASS = "Starting Class",
@@ -2171,18 +2174,23 @@ Consent represents character's general acceptance of various sexual actions, but
 	Neutral: No bonuses
 	Bold: Incoming negative effects last 1 turn less, +5% Productivity
 	Kind: Outcoming positive buffs last 1 turn more, +10% Service
-	Serious: Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)\nTask Crit Chance +3%
-	Shy: Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax
+	Serious: Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)
+Task Crit Chance +3%
+	Shy: Spell Mana cost reduced by 15%
++15% Loyalty Gain, -10% Subordinate weekly tax
 	""",
-	
 	INFOPERSONALITYBOLD = """Bold
-Incoming negative effects last 1 turn less\n+5% Productivity""",
+Incoming negative effects last 1 turn less
++5% Productivity""",
 	INFOPERSONALITYKIND = """Kind
-Outcoming positive buffs last 1 turn more\n+10% Service""",
+Outcoming positive buffs last 1 turn more
++10% Service""",
 	INFOPERSONALITYSERIOUS = """Serious
-Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)\nTask Crit Chance +3%""",
+Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)
+Task Crit Chance +3%""",
 	INFOPERSONALITYSHY = """Shy
-Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax""",
+Spell Mana cost reduced by 15%
++15% Loyalty Gain, -10% Subordinate weekly tax""",
 	INFOSLAVE_CLASS = "Character type will define its options and behavior. Slaves can be forced into sexual services without consent and have higher tolerance for lack of consent in sex. Subordinates become loyal faster but can't be sold or given away.",
 	INFOCONSENT = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. Consent will affect prostitution related jobs.",
 	INFOCONSENTMASTER = "Consent defines what sexual related actions character will be willing to peform. Consent can be increased by pushing character into new practices by dating and sex options. {color=green|[Master] has no Consent requirements for any actions.}",
@@ -2191,7 +2199,7 @@ Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax""
 	INFORESISTANCE = "Character's Resistance will reduce efficiency of training. Resistance weakens with time and resets on performing training.",
 	INFOSLAVETRAINER = "Assign a Trainer to oversee and train untrained slave. Trainer have a limited number of slaves they can work with. Slaves with nobody overseeing them will not do any work until fully trained.",
 	TRAINREADY = "Ready",
-	TRAINCOOLDOWN = "Cooldown. Days until ready: %d",#obsolete?
+	TRAINCOOLDOWN = "Cooldown. Days until ready: %d",
 	TRAINRESISTANT = "Resists training",
 	CATEGORYKEYWORD = "Category",
 	ACTIONCATEGORYPHYSICAL = "Physical",
@@ -2201,7 +2209,7 @@ Spell Mana cost reduced by 15%\n+15% Loyalty Gain, -10% Subordinate weekly tax""
 	ACTIONCATEGORYSEXUAL = "Sexual",
 	ACTIONCATEGORYMAGIC = "Magic",
 	ACTIONTRAINERREQSNOTMET = "Trainer does not meet requirements for this action",
-	ACTIONALREADYDONETODAY = "Has already been trained today",#'Already was trained today'
+	ACTIONALREADYDONETODAY = "Has already been trained today",
 	NOTENOUGHGOLDACTION = "Not enough gold for this action",
 	NOTENOUGHTRAINERMANA = "Trainer does not have enough mana for this action",
 	PERSONALITYNAMEBOLD = "Bold",
@@ -2633,7 +2641,8 @@ Sexual Training actions have lower chance to fail.""",
 	TRAITVALKYRIE_SPEARDESCRIPT = "+10 Speed while equipped with Spear.",
 	TRAITAUTOHIDE = "Conceal",
 	TRAITAUTOHIDEDESCRIPT = "Starts combat Hidden if no Heavy or Medium Armor is equipped.",
-	TRAITDEATHKNIGHT_TRAITDESCRIPT = "Winning a fight increases ATK, Hit Rate and Neutral resist per fight. Maximum 5 stacks. Stacks dissipate with time.\nSkill attacks possess Dark element.",
+	TRAITDEATHKNIGHT_TRAITDESCRIPT = """Winning a fight increases ATK, Hit Rate and Neutral resist per fight. Maximum 5 stacks. Stacks dissipate with time.
+Skill attacks possess Dark element.""",
 	TRAITTEMPLAR_TRAITDESCRIPT = "After using a Taunt or Provoke recover some health and gain increased MDEF for 3 turns.",
 	TRAITNINJADESCRIPT = "Gain evasion based on your MDEF. Minimal chance for evading hit is reduced to 5%.",
 	TRAITWITCHDESCRIPT = "Your critical hits with spells apply random debuff. Healing spells have chance to apply healing over time.",
@@ -2663,6 +2672,9 @@ Sexual Training actions have lower chance to fail.""",
 	TRAITMIXX_CHAMPIONDESCRIPT = "{color=brown|Seething Blackness}: Dark Element attacks ignore all DEF/MDEF and have +30 hit rating.",
 	TRAITSADISTDESCRIPT = """{color=brown|Open Vein}: Melee physical attacks have 25% chance to cause Bleeding for 2 turns.
 Physical and Sexual training actions are 25% more impactful.""",
+	TRAITSTAG_BUFF = "Blessing of the Forest",
+	TRAITSTAG_BUFFDESCRIPT = "Physics: +15; Hunting: +25%; Max Dexterity Challenge +1; Stealth Mastery +1",
+	TRAITDARKWEAPON = "All skill attacks have Dark element",
 	TRAITHEALER1 = "Healer:Novice",
 	TRAITHEALER1DESCRIPT = "Healing spells are 25% more effective.",
 	TRAITHEALER2 = "Healer:Expert",
@@ -2913,9 +2925,9 @@ Requires consent \"Willing\" or above.""",
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Virginity}[/center]
 As [name] has a observable virginity, this makes [him] more desirable for certain individuals. 
 {color=yellow|Sell price is increased by 25%%}""",
-	TRAITEFFECTRIVAL = """Rival Present: +5%% Productivity""",
-	TRAITEFFECTFRIENDS = """Friend Present: +10%% Health Regeneration""",
-	TRAITEFFECTLOVERS = """Lover Present: +10%% Mana Regeneration""",
+	TRAITEFFECTRIVAL = "Rival Present: +5%% Productivity",
+	TRAITEFFECTFRIENDS = "Friend Present: +10%% Health Regeneration",
+	TRAITEFFECTLOVERS = "Lover Present: +10%% Mana Regeneration",
 	TRAITEFFECTRARESTURDY = """Rare: Sturdy
 Increased Health and Armor Penetration""",
 	TRAITEFFECTRARENIMBLE = """Rare: Nimble
@@ -4027,7 +4039,6 @@ As the [boy] is made your slave, [he] can be a very useful addition to your roos
 	DIALOGUE_SPRING_NO_LOOT = "You search around but weren't able to find anything useful.",
 	TRIBALELVES = "You find yourself surrounded by a group of local tribal elves. It seems they consider you an intruder on their territory and preparing for attack...",
 	TRIBALELVES_WIN = "As you defeat the attackers, they hastily retreat, yet one of them was left behind and your party manages to subdue them.",
-	
 	CHARLOVERS = "[name] and [scncharname] have approached you and asked to let them become lovers.",
 	CHARFREELOVERS = "[name] and [scncharname] have approached you and asked to let them become paramour.",
 	REVEAL_MAP = "[name] casts Wind Whispers, grasping the layout of surrounding areas. ",
@@ -4035,7 +4046,6 @@ As the [boy] is made your slave, [he] can be a very useful addition to your roos
 	CHARFREELOVERSALLOW = "*Allow*",
 	CHARLOVERSFORBID = "*Forbid*",
 	CHARFREELOVERSFORBID = "*Forbid*",
-	
 	DIALOGUEEVENTGOODREBELSBEAST = "You come across a small group of rebels, who have caught a [race] [male] that likely strayed from their homelands. Given the rebels' attitude towards [him] it's easy to see they are up to no good...",
 	DIALOGUEEVENTREBELSBEASTINTIMIDATESUCCES = """[center]{color=green|Success!}[/center]
 [name] has successfully intimidated a group of rebels into fleeing, leaving their victim behind.""",
@@ -4172,8 +4182,8 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYBALLISTA = "Ballista",
 	ENEMYTROLL = "Troll",
 	ENEMYBANDIT_ASSASSIN = "Bandit Assassin",
-	ENEMYPACKLEADER_BOSS = "Leader Of The Pack",
-	ENEMYSERGANT_BOSS = "Sergant",
+	ENEMYPACK_LEADER_BOSS = "Leader Of The Pack",
+	ENEMYSERGEANT_BOSS = "Sergeant",
 	ENEMYCASTELLAN_BOSS = "Castellan",
 	ENEMYJARL_BOSS = "Jarl",
 	ENEMYBOUNTY_HUNTER_BOSS = "Bounty Hunter",
@@ -10005,9 +10015,7 @@ The two of you eat in silence as you mull over the treat. Warm, soft, and expert
 
 The girl's face reddens a bit as she again looks around the room. She looks nervous before she speaks.
 
-— Amelia has been giving me tips and I was thinking about doing something for you in turn...
-
-Cali takes one more nervous look around before she looks back up to you mischievously. Saying nothing more, for now, the girl soon slips down to her knees in front of you. Taking a steadying breath, she moves to your trousers, undoing them easily, hand finding and wrapping around your shaft as she pulls it free.""",
+— Amelia has been giving me tips and I was thinking about doing something for you in turn...""",
 	CALI_SEX_8 = "Cali takes one more nervous look around before she looks back up to you with a mischievous look. Saying nothing more for now the girl soon slipped down to her knees in front of you. Taking a steadying breath she'd move to your trousers as she undid them easily, hand finding and wrapping around your shaft as she pulled it free.",
 	CALI_SEX_9 = """Cali stares up at you with a smile on her lips as she starts to gently squeeze your shaft. Her hand is unsure at first, then she starts to intently pump your shaft.
 
@@ -12771,7 +12779,9 @@ Amelia: — Very well. Mayor [name], according to what I have been told, you hav
 	AMELIA_TRIAL_14_OPTION_1 = "I offered my help. Norlan tried to convince me to not get involved.",
 	AMELIA_TRIAL_14_OPTION_2 = "Of course it was my idea. You don't just disappear on your own, Amelia.",
 	AMELIA_TRIAL_15_2 = "Amelia: — I will keep that in mind for the future, [mister] Mayor. Do you remember what was Norlan's reaction to your suggestion?",
-	AMELIA_TRIAL_15 = """\nMember 2: — I... I wish to add something! I was in the room with them when this conversation happened, and Norlan was rather reluctant to accept the mayor's help. I thought it was strange too. We were in chaos, and there he was, refusing the help the mayor was so kind to offer!
+	AMELIA_TRIAL_15 = """
+
+Member 2: — I... I wish to add something! I was in the room with them when this conversation happened, and Norlan was rather reluctant to accept the mayor's help. I thought it was strange too. We were in chaos, and there he was, refusing the help the mayor was so kind to offer!
 
 Norlan: — I understand how it might seem that way, but my intention wasn't to dissuade you. I merely wanted to spare you from the troubles we were fully capable of managing on our own. Using the term 'chaos' seems a bit exaggerated.""",
 	AMELIA_TRIAL_15_ = """Amelia: — There you have it, Norlan. Two witnesses. 
@@ -13044,7 +13054,7 @@ You give her another slap. Her words are interrupted by another moan. Whatever s
 — This was in one of my dreams...""",
 	AMELIA_SEX_2_2 = """Your hands move down, gliding along the back of her thigh, delicately caressing her smooth, bare skin. Her breath deepens, her lips curve into a subtle, contented smile. She eases her legs apart, offering more space for your hands to explore.
 
-— You are gentler than I would have thought. And after all you went through on my behalf... """,
+— You are gentler than I would have thought. And after all you went through on my behalf...  """,
 	AMELIA_SEX_2 = """Your finger follows the path between her thighs, tracing her crevice. Sweet moisture flows onto your fingertip. As your garments fall to the wayside, you draw your lower body even nearer to hers, repeating the same move as before. Only this time, not with your finger. 
 
 — Don't hold back on me. I'm sturdier than I look...  Not like you don't already know.""",
@@ -14808,7 +14818,7 @@ Hara: — Everyone's gone and I thought you weren't coming back either. Took you
 	DKING_SECOND_TASK_1_REPLY1 = """— That artifact you've come for, it's our ancestral inheritance and it used to make our nation a force to reckon with. Scales of Destiny had the power to always make the correct decision be it diplomacy, trade or even war. It used to lead us to success.
 
 — However a few dozen years ago one of the rebel founders stole and damaged it with some foul ritual. Now they are no longer of any use. But thankfully Lady Kuro has provided us with a way to return its powers. She's a really mysterious and resourceful person despite her looks and origins.""",
-	DKING_SECOND_TASK_1_REPLY2 = "— Are you trying to call me a liar? What your mouth kid. I never said that will get you the artifact. But if you insist, alright, I promise you'll receive it after this.",
+	DKING_SECOND_TASK_1_REPLY2 = "— Are you trying to call me a liar? Watch your mouth kid. I never said that will get you the artifact. But if you insist, alright, I promise you'll receive it after this.",
 	DKING_SECOND_TASK_2 = "— Great. The guards will show you how to get to Hara. Until then I have more important business.",
 	DWARF_WARKSHOP_START = "You enter a palace workshop filled with various engineer tools and gadgets.",
 	DKING2TASK_HARA_START = " Hara seems to be busy with tinkering on one of them similarly to your first encounter.",
@@ -15064,9 +15074,9 @@ Kuro gave a sign to the King after which one of the guards left the room and ret
 	DWARF_CEREMONY_INTRO2_NOVAULT = """
 
 Kuro gave a sign to the King after which one of the guards left the room and returned with the dull looking scales fitting the description of the artifact you needed. However it was clear to you they didn't have any real powers in them, feeling more like a replica.""",
-	DWARF_CEREMONY_INTRO3 = """The scales get inserted into the machine's sliding section after which Hara begins its activation. As she flips some levers following the instruction rest of the room, save for Kuro, observe in awe how mechanical components spring to life. 
+	DWARF_CEREMONY_INTRO3 = """The scales get inserted into the machine's sliding section after which Hara begins its activation. As she flips some levers following the instruction, the rest of the room, save for Kuro, observe in awe how the mechanical components spring to life. 
 
-After a few moments the sliding section starts glowing and deafening humming fills the room. 
+After a few moments the sliding section starts glowing and a deafening humming fills the room. 
 
 The King: — This is it!? It's working! Hah, finally I'll be able to reenact our dynasty's powers and make the dwarven kingdom fearsome power the outsiders will have to consider.""",
 	DWARF_CEREMONY_PEAK_KING = """As the charging reaches its peak a blinding blue flash erupts from the machine leaving everyone dazed as Kuro shields herself with her powers. As she springs into action, she quickly retrieves now restored scales from the machine and makes her way to the exit.
@@ -15091,7 +15101,7 @@ You skillfully push through the chaos following Kuro's steps out of the palace."
 — Rumors didn't lie, you are a skirt chaser after all. Do you mind giving me some space?""",
 	DWARF_CEREMONY_OPT_BETRAYAL = "You've planned this betrayal since the start?",
 	DWARF_CEREMONY_OPT_ARTIFACT = "I won't let you take the artifact just like that",
-	DWARF_CEREMONY_OPT_TALKOVER = "Maybe we could talk it over? What cult offers what I can't?",
+	DWARF_CEREMONY_OPT_TALKOVER = "Maybe we could talk it over? What does the cult offer that I can't?",
 	DWARF_CEREMONY_REPLY_BETRAYAL = """Kuro rubs her forehead and visibly sighs.
 
 — I honestly was hoping we are past asking stupid questions at this point. Yes. This was the cult's goal all along, to restore the artifact's powers and take it away. Why else would I deliver the blueprint for the machine to empower it?""",
@@ -15110,7 +15120,7 @@ Kuro: — Now excuse me, but there's people who have more free time to keep you 
 
 As she turns away, a group of coalition troops laying in the hiding who were just waiting for the king to appear.
 
-The King: — That bitcheven sided with the coalition behind my back! Take them out and get her!""",
+The King: — That bitch even sided with the coalition behind my back! Take them out and get her!""",
 	DWARF_CEREMONY_CAUGHTUP_CULT = """
 
 As she turns away, a group of cultists join the street blocking you from going after her.""",
@@ -16279,6 +16289,9 @@ You feel like she almost has to force herself from hiding from you.""",
 — [Master], can I have a mo...
 
 Zephyra freezes as she sees your deed. Her face spells your doom. The time stops and you can no longer process the world around you, as the last breath leaves your body...""",
+	DIALOGUEAMELIAINITIATE = """Your exceptional trophy, a former Servants Guild Leader Amelia shines with enthusiasm as you visit her. 
+	
+— [Master], do you wish to be served like no tavern wench can compare? I can cook an unforgettable meal, prepare a luxurious bath, or would you rather... prefer Me?""",
 	METRICS_BASE = "[name] has been a part of your household for {color=yellow|%d} weeks and {color=yellow|%d} days.",
 	METRICS_BASE_YOU = "[name] is a [master] and has been in this household for {color=yellow|%d} weeks and {color=yellow|%d} days.",
 	METRICS_DATES_MASTER = "[He] went on dates {color=yellow|%d} time(s) and engaged in sex activities {color=yellow|%d} time(s).",
@@ -17326,7 +17339,6 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	GOBLIN_STRONGHOLD_NOUNS8 = "Crag",
 	GOBLIN_STRONGHOLD_NOUNS9 = "Rookery",
 	GOBLIN_STRONGHOLD_NOUNS10 = "Hovel",
-
 	GOBLIN_STRONGHOLD_ADJS1 = "Goblin",
 	GOBLIN_STRONGHOLD_ADJS2 = "Fetid",
 	GOBLIN_STRONGHOLD_ADJS3 = "Squalid",
@@ -17421,6 +17433,10 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_LILIA_DUNGEON_GROVE_DESC = "",
 	QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_TEXT = "Hidden Grove Abandonment",
 	QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_DESC = "",
+	QUEST_ASHEN_RIDGE_TEXT = "Ashen Ridge",
+	QUEST_ASHEN_RIDGE_DESC = "",
+	QUEST_DUNGEON_ANA_FORT_LOCATION_TEXT = "Captured Fort",
+	QUEST_DUNGEON_ANA_FORT_LOCATION_DESC = "",
 	BANDITS_THREAT_QUEST_TEXT1 = "You come to the place finding tracks of the bandits.",
 	BANDITS_THREAT_QUEST_TEXT2 = "Fight",
 	MEET_ADVENTURER_AT_DUNGEON_EVENT_TEXT1 = "You meet a lone adventurer: [name].",
@@ -18174,7 +18190,6 @@ After a few minutes nothing still happened and [name] decides to move on.""",
 
 — Why, yes, proper servants' attire is one of our specialties. You know, the right clothes make a big difference even for less ideal bodies, naturally we have tailors who can adjust for any required body type. But what are you looking for, anyway?""",
 	SERVANTS_INTRODUCTION_NEW_LEADER_T_0 = "— Hello [name]. How can I help you today?",
-	
 	CHARRND_INJURY = """While wandering through the grand halls of the mansion, you hear a sharp cry echo from one of the workrooms. Rushing toward the sound, you find [name] crumpled on the floor, clutching [his] arm. Blood seeps through [his] fingers from a jagged gash, likely caused by a slip with a tool or a broken piece of enchanted equipment. 
 
 The air smells of iron and faint traces of magic as you stand over [him]. The injury looks bad, but not fatal, yet it's clear [he] won't be working anytime soon without help.""",
@@ -18335,6 +18350,262 @@ The air smells faintly of dust and polish, the broken vase glinting under the ch
 	CHARRND_BROKENVASE_REPLY_REPAIR = "You nod and tell [name] to go ahead with [his] repair. [He] exhales, setting to work with clumsy tools and sticky glue, costing [him] a whole day to do it. The vase returns, lumpy and uneven, but [he] beams with relief. [His] gratitude grows, and [he] takes extra care around you after.",
 	CHARRND_BROKENVASE_REPLY_REPLACE = "You shake your head and order [name] to replace the vase, no excuses. [He] pales, knowing the cost far exceeds [his] means, and promises to save for it. [His] steps grow heavy, shoulders slumped, and a quiet resentment simmers in [his] gaze.",
 	CHARRND_BROKENVASE_REPLY_PUNISH = "You grab [name]'s arm and berate [him] for [his] carelessness, docking [his] pay to cover the loss. [He] flinches, dropping the shards, and nods in silence. [His] work continues, but [he] avoids you, eyes downcast, the sting of your words lingering.",
-	
-	
+	ANA_LETTER_1_1 = """Anastasia approaches you with a hesitant step, her hands clutching a crumpled letter. Her wide eyes shimmer with a mix of determination and uncertainty as she speaks.
+— Master, I received this... a letter from a rebel soldier's wife. She's desperate, begging me to find her husband. He's been lost since the fighting ended. Please, I know I'm in no position to ask favors, but will you take it? Help her look for him? I... I can't bear to ignore her plea. She included her name, Liora, and I'm sure she'd speak to you if you sought her out.""",
+	ANA_LETTER_1_2 = """Anastasia blinks, caught off guard, then steadies herself, her voice trembling but resolute.
+— I... I'll do anything you ask of me, Master. Anything at all. Just please, help her. She's lost everything already.""",
+	ANA_LETTER_1_OPTION_1 = "You're still clinging to your old causes? Fine, hand over the letter, I'll see what I can do.",
+	ANA_LETTER_1_OPTION_2 = "Focus on your duties here, not some sob story. You're my slave now, not a rebel savior, keep that letter to yourself.",
+	ANA_LETTER_1_OPTION_3 = "A missing husband, huh? What's in it for me if I waste my time on this?",
+	ANA_LETTER_1_OPTION_4 = "Anything, you say? Alright, give me the letter, but you'll owe me something big later.",
+	ANA_LETTER_END = """Anastasia flinches at your words, her shoulders slumping slightly, though a flicker of defiance lingers in her gaze.
+— I... I know my place now, Master. I just thought... the common folk still suffer. I'll keep it, as you wish.""",
+	ANA_LETTER_2_1 = """Anastasia's face lights up with tentative relief as she presses the letter into your hands.
+— Thank you, Master! Please, read it, she'll explain everything. I know you'll find her if you try.""",
+	ANA_LETTER_2_2 = """Anastasia nods quickly, a flush creeping up her cheeks as she lowers her gaze and hands you the letter.
+— Yes, Master. Whatever you want, I'll do it. Thank you... truly. Please, read it, she needs you.""",
+	ANA_LETTER_3 = """You unfold the crumpled letter Anastasia gave you, the ink smudged in places from what might have been tears. The handwriting is shaky but legible, and it reads:
+“To Lady Anastasia, I'm Liora, wife of Gavril, one of your Uncle's old rebels. He went to war with your cause and never came back after the battle at Ashen Ridge. I beg you, find him, or just tell me he's gone. I wait every day by the broken fountain in the lower district, praying someone will help. Please, you're my last hope.”
+The words carry a raw, quiet desperation, and the name “Liora” is scrawled at the bottom.""",
+	MEET_LIORA = "Find Liora",
+	LIORA_1_1 = """You find the woman exactly where Anastasia said, huddled near the cracked remains of a fountain in the lower district. Her face is gaunt, etched with worry, and her hands twist nervously as she speaks.
+
+— You're... you're the one the princess sent? My husband went off to fight with the rebels months ago. He never came back after the last battle near the Ashen Ridge. I don't even know if he's alive. Please, can you find him?""",
+	LIORA_1_2 = """The woman nods eagerly, wiping her eyes with a trembling hand.
+
+— He was a tall man, broad shoulders, with a scar across his left cheek. Last I heard, he was with a unit holding the ridge against the guild forces. They say the fighting was brutal, some fled, some were captured. Maybe... maybe he's still out there?""",
+	LIORA_1_OPTION_1 = "Tell me more, where was he last seen, what did he look like? I need details.",
+	LIORA_1_OPTION_2 = "The Ashen Ridge, huh? I'll track him down, don't waste my time with tears.",
+	LIORA_1_OPTION_3 = "Forget searching, I'll make you tell Anastasia I've already brought him back. Lie, and we're done here.",
+	LIORA_2_1 = """The woman stiffens at your tone but nods quickly.
+— Yes, sir. The Ashen Ridge, it's where the rebels made their stand. He was a fighter, strong... I just hope he's still out there. Thank you... thank you for this.""",
+	LIORA_2_2 = "— Thank you... even that means something. I'll be here, hoping.",
+	LIORA_3 = "Lie? To the princess? But... but I, please, no, I can't do that! She'd find out, and—",
+	LIORA_3_OPTION_1 = "You'll do it, or I'll make your life worse than it already is, say he's safe and sound.",
+	LIORA_3_OPTION_2 = "Fine, beg all you want, I'm done here unless you play along.",
+	LIORA_3_OPTION_3 = "Never mind, I'll handle it my way, forget I said anything.",
+	LIORA_4 = """The woman's resolve crumbles, her voice shaking as she nods.
+— Alright... I'll do it. I'll tell her he's back. Just... don't hurt me, please.""",
+	QUEST_ASHEN_RIDGE_1 = "Loor around",
+	QUEST_ASHEN_RIDGE_2 = "Search cave",
+	ASHEN_RIDGE_1 = "You reach the Ashen Ridge, a jagged scar of blackened earth and shattered stone where the rebels once stood their ground. The wind carries the faint stench of decay, but no bodies remain, only marks etched into the dirt, scuffled and chaotic, hinting at a struggle. Boot prints mingle with smaller, clawed tracks leading westward.",
+	ASHEN_RIDGE_1_OPTION_1 = "Let's follow these tracks, something's off here, and I'm not leaving empty-handed.",
+	ASHEN_RIDGE_1_OPTION_2 = "These marks tell a story, time to hunt down whatever left them.",
+	ASHEN_RIDGE_1_OPTION_3 = "Not my problem, whatever happened here, I've seen enough to call it a day.",
+	ASHEN_RIDGE_END = "You turn away from the ridge, the wind swallowing the traces of battle behind you. Whatever fate befell the soldier, it's no longer your concern.",
+	ASHEN_RIDGE_2 = "You pick your way along the trail, the tracks growing fresher as the landscape shifts from barren waste to shadowed cliffs. The clawed prints deepen, joined by drag marks, something heavy was hauled this way. Ahead, a narrow crevice yawns in the rock face, the entrance to a goblin cave. Faint guttural voices echo from within, punctuated by the clink of crude tools.",
+	ASHEN_RIDGE_3 = """The cave's mouth reeks of rot and damp fur as you step inside. Torchlight flickers off rough walls, revealing a warren of tunnels. Goblins skitter in the shadows, small, vicious things armed with jagged blades and rusted spears. They snarl as you advance, forcing you to cut through their ranks. After a messy skirmish, you reach a crude pen in the deepest chamber. There, bound in filthy ropes, lies a man, scarred across his left cheek, haggard but alive. The soldier, Gavril.
+
+=He lifts his head weakly, relief flooding his bruised face as he rasps through cracked lips.
+
+— You... you're no goblin. Thank the gods, those bastards were gonna eat me. Cut me loose, please! I've been here for days, maybe weeks, lost count.""",
+	ASHEN_RIDGE_3_OPTION_1 = "I'll get you out, soldier, Liora's waiting, and I'm not dragging a corpse back.",
+	ASHEN_RIDGE_3_OPTION_2 = "You're a lucky bastard, but I'm not here to play savior, figure your own way out.",
+	ASHEN_RIDGE_3_OPTION_3 = "Sorry, Gavril, loose ends don't suit me. Time to end your misery right here.",
+	ASHEN_RIDGE_4_1 = """You slice through the ropes, hauling Gavril to his feet. He staggers but steadies himself, gratitude shining in his sunken eyes.
+
+— Liora... She's still waiting? I owe you my life, stranger. Let's get out of this hellhole.""",
+	ASHEN_RIDGE_4_2 = """You step back, leaving Gavril tangled in his bonds. His voice cracks with desperation as you turn away.
+
+— Wait, no, please! Don't leave me here! They'll come back—
+
+His pleas fade as you exit the cave, the goblins' chittering rising behind you.""",
+	ASHEN_RIDGE_4_3 = "You draw your blade, and Gavril's eyes widen in terror before going dull as steel meets flesh. His body slumps, blood pooling in the dirt, a quick end to his suffering. The cave falls silent, save for the drip of water somewhere deep within.",
+	LIORA_RETURN_1 = """You arrive back at the broken fountain with Gavril limping at your side, his arm slung over your shoulder. Liora spots him from a distance and sprints forward, tears streaming down her face as she throws herself into his arms.
+
+— Gavril! Oh, gods, you're alive, you're really alive! I thought I'd lost you forever.
+
+She turns to you, voice trembling with gratitude.
+
+— I don't know how you did it, but thank you... thank you from the bottom of my soul.""",
+	LIORA_RETURN_2 = """You find Liora by the fountain, her eyes searching yours as you approach alone. She clutches her shawl, voice fragile with hope.
+
+— Did you... did you find him? Gavril, is he coming?
+
+You shake your head, and her face crumples, a sob escaping her lips.
+
+— No... no, he can't still be out there. You left him? How could you, I begged you!
+
+She collapses to her knees, grief swallowing her words.""",
+	LIORA_RETURN_3 = """You return to the fountain, meeting Liora's expectant gaze. You say nothing, but the weight of your silence speaks volumes. Her hope fades, replaced by a hollow dread.
+
+— Where's Gavril? You found him, didn't you? Please... tell me he's safe.
+
+You tell her he's dead, and her knees buckle, a wail tearing from her throat.
+
+— Dead? You, you killed him? My Gavril... why? Why would you—
+
+She staggers back, staring at you like a monster before turning away, lost in her anguish.""",
+	ANASTASIA_RETURN_1 = """You return to Anastasia, who greets you with a hopeful smile. Before you can speak, she clasps her hands together, her voice bright with relief.
+
+— Master! I spoke to the soldier's wife, she said you found him, brought him back safe! Oh, I knew you'd help her. Thank you... it means more than you know, helping people like this.""",
+	ANASTASIA_RETURN_1_OPTION_1 = "You're welcome, glad to see you smiling over something so small.",
+	ANASTASIA_RETURN_1_OPTION_2 = "Yeah, sure, don't get used to me playing hero for every sad letter you get.",
+	ANASTASIA_RETURN_1_OPTION_3 = "Keep believing that, princess, it's a nice little story, isn't it?",
+	ANASTASIA_RETURN_2_1 = """Anastasia beams, her naive optimism unshaken.
+
+— It's not small to her, or to me. You've given her hope again. I... I'm proud to serve someone who'd do this.""",
+	ANASTASIA_RETURN_2_2 = """Anastasia's smile falters slightly, but she nods.
+— I won't ask too much, Master. I promise. This was enough... Thank you.""",
+	ANASTASIA_RETURN_2_3 = """Anastasia tilts her head, confusion flickering in her eyes, but she doesn't press further.
+
+— A story? Well... as long as it ends happily, I suppose that's what matters. Thank you, Master.""",
+	ANASTASIA_RETURN_3_1 = """You find Anastasia waiting in a quiet corner of the mansion, her face lighting up as you approach.
+
+— I heard from Liora, Master! She said you found Gavril and brought him home safely. I knew you'd help her, even if it was just a small errand for me. Thank you. It means so much to see the people cared for again.  
+
+She hesitates, then steps closer, her voice softening with earnest sincerity.
+
+— Please, let me reward you for this. I want to show you how grateful I am.""",
+	ANASTASIA_RETURN_3_2 = """You find Anastasia waiting in a quiet corner of the mansion, her posture slightly slumped, her eyes tinged with sorrow as you approach. She clasps her hands, managing a faint, bittersweet smile.
+
+— [Master], Liora told me what happened. She said you found Gavril but could not bring him back. I am sad for her, truly, but I know you tried. That means something, even if it did not end as we hoped. Thank you for going out there for her.
+
+She hesitates, then steps closer, her voice softening with earnest gratitude.
+
+— Please, let me reward you for your effort. I want to show you how much I appreciate you trying, even if it was not enough.""",
+	ANASTASIA_RETURN_3_OPTION_1 = "A reward, huh? What exactly are you offering?",
+	ANASTASIA_RETURN_3_OPTION_2 = "Keep your thanks. I'd rather see you marked as mine than hear more of your naive praise.",
+	ANASTASIA_RETURN_4 = """Anastasia blushes, her fingers twisting nervously, but her gaze holds a flicker of determination.
+
+— I thought maybe I could please you, Master. Not just as your servant, but with something more assertive. I could try to be bolder, for you, if that's what you'd like.""",
+	ANASTASIA_RETURN_5 = """Anastasia's smile falters, confusion clouding her eyes as she processes your demand.
+
+— Marked? You mean like a brand, Master? I don't understand, but if it's what you want, I'll do it. To prove I'm yours, always.  
+
+She swallows hard, then straightens, voice trembling but obedient.
+
+— The Artisans' Guild, right? I'll go with you. Just tell me what I need to do.""",
+	ANASTASIA_PT2_1_1 = """A few days later, Anastasia seeks you out in a secluded corner of your quarters, her steps tentative and her hands clutching a folded letter. Her wide eyes flicker with anxiety, but there's a resolve in her posture as she meets your gaze.
+
+— Master, I need to tell you something. I got a letter from Greg. He is in hiding, and he wants me to work against you. Uncle Greg is important to me, but I can't turn on you after all of what you've done. Please, take this letter from me, I don't want to endanger our bond and the cause you are working for.""",
+	ANASTASIA_PT2_1_2 = """Anastasia's fingers tighten around the letter, her voice soft but earnest.
+
+— I got a letter from a delivery boy, he left faster than I could thank him, I swear, that is all I know.""",
+	ANASTASIA_PT2_1_3 = """Anastasia has a tone of sorrow in her voice.
+
+- He was the one who took me away when the coup happened and has been caring for me since that time. He wasn't very kind or anything, but we managed to hide and gather support over these years. I think he still has not given up on this and must be angry.""",
+	ANASTASIA_PT2_1_OPTION_1 = "I never thought he would show up again. How did you get it?",
+	ANASTASIA_PT2_1_OPTION_2 = "What happened back then? Tell me more about him",
+	ANASTASIA_PT2_1_OPTION_3 = "I'll take it, I appreciate your honesty.",
+	ANASTASIA_PT2_2 = """Anastasia nods and passes you the letter.
+
+- Thank you. Just, please, don't put yourself in danger. Uncle is very resourceful and can be cunning in his plans.
+
+As you leave the room, you feel like this issue is better to be brought to Duncan.""",
+	ANA_DUNCAN_INITIATE = "It seems I've found a letter from Greg...",
+	ANA_DUNCAN_1 = """You pass the message obtained from Anastasia to Duncan. He barely frowns upon hearing the news but behaves as stoic as always.
+
+- I see. Shame we didn't get him at that time. Say, has the princess seen it?""",
+	ANA_DUNCAN_1_OPTION_1 = "I got it before her (lie)",
+	ANA_DUNCAN_1_OPTION_2 = "She was the one who exposed it.",
+	ANA_DUNCAN_2_1 = "- Good. We'll investigate it but judging from the way it's worded, Greg has nothing left and is only grasping at straws.",
+	ANA_DUNCAN_2_2 = "- So it might be a trap then. Better not lower your guard. We'll investigate it but judging from the way it's worded, Greg has nothing left and is only grasping at straws.",
+	ANA_DUNCAN_3_1 = """Just as you are about to leave, Duncan suddenly stops you.
+
+- Hold on, there was one issue I could use your help with. There has been a rebel fort standing ever since the announcement. They refuse to surrender so you can take the girl with you and have her negotiate with them. Make her at least useful for something.""",
+	ANA_DUNCAN_3_2 = "- I'm a married man, don't make me hold a grudge against you.",
+	ANA_DUNCAN_3_3 = """Duncan frowns even harder than usual before continuing. 
+
+- My apologies, our past drags the worst out of me.""",
+	ANA_DUNCAN_3_4 = """Duncan pauses before taking a breath for the explanation to deliver.
+
+	- Let me tell you this. People are only content with how things are right now because it's been 12 years since the end of the mad king's tyranny. Soon they will realize that the guilds won't provide them with stability and order, way more interested in their own quarrels. Then people will turn for a true, strong leader who will offer to put everyone in place and provide protection from the Empire. I may not live to that day so consider it to be my warning.""",
+	ANA_DUNCAN_3_5 = """- I promise nobody is to disrupt whatever petty games you have for her in there. 
+
+	Despite the cynical remark, Duncan's words feel like a non-hostile humorous attempt.""",
+	ANA_DUNCAN_3_OPTION_1 = "She's very useful as a bed warmer, you know.",
+	ANA_DUNCAN_3_OPTION_2 = "Not a very nice way to speak of someone's wife",
+	ANA_DUNCAN_3_OPTION_3 = "Why do you hate Anastasia so much, anyway?",
+	ANA_DUNCAN_3_OPTION_4 = "I'll give it a try.",
+	ANA_DUNCAN_4 = "- I don't hate her, I merely think she's a foolish, naive child who ended up in a place where she brings troubles. Your lengthy effort has secured her a safe spot for now and this much we've agreed to tolerate.",
+	ANA_DUNCAN_4_OPTION_1 = "But she could be a good leader figure for the people.",
+	ANA_DUNCAN_4_OPTION_2 = "I promise she won't cause any troubles in future for that matter.",
+	ANA_DUNCAN_5 = """- Do that. There should be a group of our men leading the siege. The leader is Reyan, he'll instruct you in place.
+
+On your way out you think about how to present this to Anastasia.""",
+	ANA_TRAVEL_INITIATE = """You explain to Anastasia the upcoming task to which she agrees after a quick consideration.
+
+- I understand, very well, I shall try my best. It's a shame that the war is still ongoing in some regions and I will try my best to stop it.""",
+	ANA_FORT_1 = """As you make your way through the woods, you finally notice the camp of guild's forces Duncan told you about. Few soldiers recognize you with one leading to their leader, a ruff looking middle aged man, more fitting to be a mercenary rather than Fighters' Guild member. 
+
+Reyan: — Mayor [name]? I'm Reyan. Didn't expect you to be the promised reinforcement, and... - he takes a look at Anastasia, faint smirk showing on his face - a former rebel leader herself. 
+
+Anastasia: — We want to stop this pointless fighting. 
+
+Reyan: — Sure, the rebel scum won't give up on their struggles even after they've learned that their side has lost. Maybe you can talk some sense into them.""",
+	ANA_FORT_2 = """Anastasia visibly flinched but hasn't spoken up on a rude remark.
+
+Reyan: — You can go ahead and talk them down for the surrender.""",
+	ANA_FORT_2_OPTION_1 = "Sure, we'll do that. Let's go.",
+	ANA_FORT_2_OPTION_2 = "This won't take long.",
+	ANA_FORT_3 = """Despite your fighting efforts the fort defenders seem to be quite fervent in preventing you from advancement. Finally a group of more hardened soldiers raise their hands signaling you their willingness to negotiate. 
+
+Rebel Leader: — Who are you? You are of the Guilds reinforcements but you don't fight along with them?
+
+Anastasia stands out from your group announcing herself.
+
+Anastasia: — I'm the princess Anastasia, your former leader and I ask you to surrender yourself for the best.""",
+	ANA_FORT_4 = """The men look slightly surprised but their posture does not soften. 
+
+Rebel Leader: — So the rumors were true, Princess. I'm sir Jordan and I've been leading these people into rebellion. It's a shame to know that the rebel forces have lost after all. However, I'm afraid we can't surrender now. 
+
+Anastasia: — But why?! This fight will only lead to your demise. 
+
+Jordan: — Our honor aside, we don't believe that surrendering now will give us any better end at the hands of the guild forces.""",
+	ANA_FORT_5 = """Anastasia turns to you, her expression is pained and begging.
+
+Anastasia: — N-no, there should be a way to guarantee their safety, right?
+
+Jordan: — If my men could be pardoned for this rebellion I'm willing to surrender myself to you, but I don't believe the guilds have been interested in it so far.""",
+	ANA_FORT_5_OPTION_1 = "I guarantee their safety to stop unnecessary bloodshed",
+	ANA_FORT_5_OPTION_2 = "No, they must answer the law for the treason against the guilds",
+	ANA_FORT_6 = """Anastasia visibly brightens on your announcement.
+
+Anastasia: — Yes, [name] is Aliron's Mayor and [his] word can be trusted, and I as well promise to do everything in my power to earn you a fair treatment, Sir Jordan. 
+
+As Sir Jordan gives the command for his men to lay down their weapons, the rebel soldiers look tired but relieved. It seems this long battle has indeed worn them out.""",
+	ANA_FORT_7 = "Jordan: — I see. Then, we shall fight to the end.",
+	ANA_FORT_8 = """After the rebel forces have been escorted out of the fort, a few men of Reyan have moved in. 
+
+Reyan: — Nice work, Mayor. Good thing that it's finally over and we can go home soon. However...""",
+	ANA_FORT_9 = """Reyan: — One thing which I couldn't drop from my mind, with princess being within our reach we've decided that we just can't let such opportunity pass. 
+
+With these words Reyan has drawn his swords, pointing one of them at Anastasia.
+
+Anastasia: — Huh? I don't get it...
+
+Reyan: — You've been the cause for all these months of war, and to think that you get to escape any real punishment is really annoying. And this is a great opportunity to get some justice for ourselves now. Don't worry, Mayor, we'll just report that the former princess has been mortally wounded by a stray arrow.""",
+	ANA_FORT_9_OPTION_1 = "That's a treason, you bastard",
+	ANA_FORT_9_OPTION_2 = "As if I'd let my woman to be hurt by you",
+	ANA_FORT_10 = """Reyan: — Hmph, so it seems the princess won't be the only casualty of this little skirmish.
+
+Taking out their weapons the group Reyan prepares to fight.""",
+	ANA_FORT_11 = """Soon after Reyan's defeat most of his close men drop their weapons and escape as more distant guild forces come over the sounds of combat. After a short explanation you walk over Reyan's dead body to Anastasia who's only recovered from sudden danger.
+
+Anastasia: — T-thank you... I'm sorry this came to this, I thought that we could earn peace if I just do my best, but...""",
+	ANA_FORT_11_OPTION_1 = "Some people can hold an unreasonable grudge despite your best effort to fix it.",
+	ANA_FORT_11_OPTION_2 = "It's not your fault that he was a traitorous bastard",
+	ANA_FORT_12 = """Anastasia nods slowly, her eyes look sadder, her heart has matured. But there's also a relief and gratitude when her gaze meets yours.
+
+You can feel her warmth as she takes your hand, now more willing and indigent, fueled by the recent danger you've just saved her from. 
+
+There's nothing else to do here and you decide to leave.""",
+	ANA_FINAL_1 = """After a long road back you and Anastasia return to the Fighters' Guild to report on the mission. Unexpectedly to you, Duncan himself meets you in the main hall. As he approaches closer you can see his face is even darker than usual, looks like he has received a report before you made it back. Anastasia shivers, moving slightly behind your back at his tall sight.
+
+Duncan: — Mayor [name], Princess...
+
+Suddenly Duncan bows his head in apology. 
+
+Duncan: — I deeply regret Reyan's betrayal and beg for pardon, especially you, princess. We've broken your trust despite your best will.""",
+	ANA_FINAL_2 = """Anastasia seems completely lost at her words however the long life of etiquette practices have brought her back to her senses.
+
+Anastasia: — N-no, this is not your fault, Sir Duncan, I understand things like this can happen... 
+
+Her voice sounds even more bright and relaxed from an unexpected courtesy shown by her old enemy. She takes a step forward, offering her hand to the seasoned warrior.""",
+	ANA_FINAL_2_OPTION_1 = "You should pay greater attention to your employees.",
+	ANA_FINAL_2_OPTION_2 = "No harm was done... Since I was there.",
+	ANA_FINAL_3 = """After giving a report and finally returning to your mansion, you are left alone with Anastasia. Out of sudden she throws herself at you, hugging tightly. 
+
+- T-thank you... I mean, I must have thanked you for this. For protecting me. I see now that I've made the right choice to... surrender myself to you. """
 }

@@ -173,5 +173,6 @@ func get_equiped_items():
 		if id == null:
 			continue
 		var item = ResourceScripts.game_res.items[id]
-		res.push_back(item)
+		if !res.has(item):
+			res.push_back(item)
 	return res

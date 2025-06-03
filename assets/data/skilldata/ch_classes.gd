@@ -58,7 +58,7 @@ var skills = {
 		tags = ['damage','ads', 'fire'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'burn_new', duration = 2})],
+		effects = [Effectdata.rebuild_template({effect = 'burn', duration = 2})],
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,
@@ -599,7 +599,8 @@ var effects = {
 		conditions = [],
 		reset = [variables.TR_COMBAT_F],
 		req_skill = true,
-		sub_effects = ['e_instant']
+		sub_effects = ['e_instant'],
+		tags = ['class_berserker']
 	},
 	
 	e_tr_druid = Effectdata.rebuild_skillvalue_template({source = 'earth', skilltype = 'spell', tag = 'damage', value = 1.2}),
@@ -624,12 +625,13 @@ var effects = {
 			{type = 'skill', value = ['tags', 'has', 'damage']},
 			{type = 'skill', value = ['tags', 'hasno', 'aoe']},
 			{type = 'skill', value = ['damage_type', 'eq', 'light']},
+			{type = 'target', value = [{code = 'has_status', check = false, status = 'luminance'}]}
 			],
 		sub_effects = ['e_s_bishop']
 	},
 	e_s_bishop = {
 		type = 'temp_global',
-		tags = ['duration_turns', 'affliction'],
+		tags = ['duration_turns', 'affliction', 'luminance'],
 		target = 'target',
 		req_skill = true,
 		name = 'Luminance',
@@ -651,7 +653,8 @@ var effects = {
 		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'item']}],
 		atomic = [],
 		buffs = ['b_free_use'],#buff for indicating free item use, obviosly not b_stun
-		sub_effects = ['e_instant']
+		sub_effects = ['e_instant'],
+		tags = ['class_attendant'],
 	},
 	
 	e_tr_paladin_1 = Effectdata.rebuild_skillvalue_template({target_race = 'undead', tag = 'damage',  value = 1.25}),
@@ -691,7 +694,6 @@ var effects = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		tags = ['positive', 'buff', 'bloodrage'],
 		statchanges = {matk_add_part = 0.05},
-		buffs = ['b_bloodatk'],
 	},
 	
 	e_tr_sadist = {
@@ -706,13 +708,13 @@ var effects = {
 			{type = 'random', value = 0.25}
 			],
 		buffs = [],
-		sub_effects = ['e_s_bleed_new'], #2remake to apply status
+		sub_effects = ['bleed'], 
 		args = {
 			duration = {obj = 'self', func = 'dr', dr = 2},
 		}
 	},
 	
-	e_tr_potion = Effectdata.rebuild_skillvalue_template({reset = [variables.TR_TURN_GET], skilltype = 'item', tag = 'heal', value = 1.25}),
+	e_tr_potion = Effectdata.rebuild_skillvalue_template({reset = [variables.TR_TURN_GET], skilltype = 'item', tag = 'heal', value = 1.25, add_tag = ['class_alchemist']}),
 	
 	valkyrie_spear_bonus = {
 		type = 'simple',
@@ -788,7 +790,7 @@ var effects = {
 			duration = {obj = 'self', func = 'dr', dr = 1},
 		},
 		sub_effects = [],
-		modal_sub_effects = ['e_s_burn_new', 'e_s_poison_new', 'e_s_bleed_new', 'e_s_blind', 'e_s_stun', 'e_s_confuse', 'e_s_sleep_compartibility'],
+		modal_sub_effects = ['burn', 'poison', 'bleed', 'blind', 'stun', 'confuse', 'sleep'],
 	},
 	e_tr_witch2 = { #2remake properly
 		type = 'trigger',
@@ -1286,7 +1288,7 @@ var effects = {
 		target = 'target',
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
-		statchanges = {resist_damage_ranged = 0.5},
+		statchanges = {resist_ranged = 0.5},
 		buffs = [{
 			icon = "res://assets/images/iconsskills/windwall.png",
 			description = "TRAITEFFECTWINDWALL",
@@ -1336,7 +1338,7 @@ var buffs = {
 	b_bloodatk = {
 		icon = "res://assets/images/traits/hitrate.png",
 		description = "BUFFDESCRIPTBLOODATTACK",
-		tags = ['combat_only'],
+		tags = ['combat_only', 'show_amount'],
 	},
 	b_field = {
 		icon = "res://assets/images/iconsskills/Barrier.png",
@@ -1351,6 +1353,7 @@ var buffs = {
 var stacks = {
 	bloodmage_bonus = {
 		type = 'stack',
+		buff = 'b_bloodatk',
 	},#st unlim
 	templar_prot = {},#st 1
 	command = {},#st 1

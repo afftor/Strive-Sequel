@@ -64,7 +64,7 @@ var skills = {
 		tags = ['damage','ads'],
 		reqs = [{code = 'gear_equiped', param = 'geartype', value = 'bow', check = true}],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template_globals({effect = 'e_s_ensnare'})],
+		effects = [Effectdata.rebuild_template({effect = 'e_s_ensnare', duration = 1})],
 		cost = {mp = 6},
 		charges = 0,
 		combatcooldown = 2,
