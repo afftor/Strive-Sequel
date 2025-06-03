@@ -49,6 +49,7 @@ func deserialize(savedict):
 		if savedict.damage_mods.has(stat):
 			damage_mods[stat] = savedict.damage_mods[stat]
 	
+	gather_innate_bonuses()
 	generate_data(variables.DYN_STATS_FULL, true)
 
 
@@ -222,7 +223,7 @@ func process_bonus_record(stat, value, src_type, src_value, timestamp):
 			print("error: bonus stat %s not known" % stat)
 
 
-func add_stat_bonus(stat, value, operant, src_type, src_value, timestamp):
+func add_stat_bonus(stat, value, operant, src_type, src_value, timestamp, check = false):
 	var store = stat_bonuses
 	if src_type == 'innate':
 		store = bonuses_stored
@@ -230,6 +231,17 @@ func add_stat_bonus(stat, value, operant, src_type, src_value, timestamp):
 		store[stat] = {}
 	if !store[stat].has(operant):
 		store[stat][operant] = []
+	if check:
+		for rec in store[stat][operant]:
+			if rec.src_type != src_type:
+				continue
+			if rec.src_value != src_value:
+				continue
+			if rec.timestamp != timestamp:
+				continue
+			if rec.value != value:
+				continue
+			return
 	store[stat][operant].push_back({value = value, src_type = src_type, src_value = src_value, timestamp = timestamp})
 
 
@@ -238,7 +250,7 @@ func gather_innate_bonuses():
 		var st_data = statdata.statdata[stat]
 		if st_data.has('innate_bonuses'):
 			for rec in st_data.innate_bonuses:
-				add_stat_bonus(stat, st_data.innate_bonuses[rec], rec, 'innate', '', 0)
+				add_stat_bonus(stat, st_data.innate_bonuses[rec], rec, 'innate', '', 0, true)
 
 
 func process_trait_add(id, timestamp):
@@ -523,6 +535,31 @@ func set_default_value(stat, value):
 				container[stat] = value.duplicate()
 			else:
 				container[stat] = value
+
+
+func add_stat_stored(stat, value):
+	var data = statdata.statdata[stat]
+	if data.direct:
+		print ("error: wrong stat data - %s is direct" % stat)
+		return
+	if data.tags.has('custom_setter'):
+		call('set_' + stat, get_stat(stat) + value)
+	else:
+		var container = statlist
+		if data.has('container'):
+			match data.container:
+				'manacost_mods':
+					container = manacost_mods
+				'resists':
+					container = resists
+				'damage_mods':
+					container = damage_mods
+		if container.has(stat):
+			if value is Array:
+				container[stat] = container[stat] + value.duplicate()
+			else:
+				container[stat] += value
+
 
 #data processing
 func add_stat_bonuses(ls):
