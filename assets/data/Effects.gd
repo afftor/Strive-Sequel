@@ -296,6 +296,7 @@ var effect_table = {
 		tick_event = variables.TR_TICK,
 		duration = 4,
 		statchanges = {productivity = -0.1},
+		tags = ['food_dislike'],
 		buffs = [
 			{
 				icon = "res://assets/images/gui/gui icons/food_hate.png",

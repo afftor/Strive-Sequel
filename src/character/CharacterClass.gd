@@ -1312,6 +1312,7 @@ func death():
 func killed(direct_call = true):
 	if direct_call: 
 		process_event(variables.TR_DEATH)
+	ResourceScripts.game_party.check_breakdown_on_char_loss(self)
 	equipment.clear_equip()
 	training.clear_training()
 	ResourceScripts.game_party.add_fate(id, tr("DIED"))
@@ -1644,6 +1645,8 @@ func tick():
 	training.tick()
 	if ResourceScripts.game_globals.hour == 2:
 		food.get_food()
+	#yet again workaround for effects, that should already be in action, but they don't
+	call_deferred('deferred_brk_check_food')
 	
 	statlist.tick()
 	if get_work() == 'travel':
@@ -2094,9 +2097,11 @@ func fill_ai(data):
 			ai.set_single_state(newdata)
 
 
-func take_virginity(type, partner):
+func take_virginity(type, partner, breakable = false):
 	if get_stat(type + '_virgin_lost') == null:
 		set_stat(type + "_virgin_lost", partner)
+		if breakable and get_stat('consent') < 2:
+			try_breakdown(variables.BRK_LOSE_VIRGINITY)
 		if get_stat('metrics_partners').has(partner) == false && partner.begins_with("hid"):
 			statlist.update_stat('metrics_partners', partner, 'append')
 
@@ -2186,3 +2191,30 @@ func is_in_game_party():
 	#almost same as is_players_character, but not quite.
 	#Summons are is_players_character but not is_in_game_party
 	return ResourceScripts.game_party.has_char(id)
+
+
+#Breakdown. Maybe should be withdrawn to separate module
+func try_breakdown(event):
+	if xp_module.is_unavaliable(): return
+	
+	var info = variables.breakdown_info[event]
+	if randf() <= get_stat(info.chance):
+		xp_module.make_unavaliable(get_stat('breakdown_time'))
+		manifest_and_log("%s\n%s" % [
+			tr('BREAKDOWN_EVENT'),
+			tr(info.text),
+		])
+
+func try_breakdown_on_char_loss(lost_char):
+	if xp_module.is_unavaliable(): return
+	
+	if ResourceScripts.game_party.check_relationship_status(id, lost_char.id, 'friends'):
+		try_breakdown(variables.BRK_LOSE_FRIEND)
+	elif ResourceScripts.game_party.check_if_relationship_in(id, lost_char.id, ['lovers', 'freelovers']):
+		try_breakdown(variables.BRK_LOSE_LOVER)
+	elif ResourceScripts.game_party.checkifrelatives(id, lost_char.id):
+		try_breakdown(variables.BRK_LOSE_RELATIVE)
+
+func deferred_brk_check_food():
+	if has_status('food_dislike'):
+		try_breakdown(variables.BRK_DISLIKE_FOOD)

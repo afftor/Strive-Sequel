@@ -1554,6 +1554,9 @@ func calculateresults():
 
 	$end/sexbutton.visible = sex_offer && !person.has_status("no_sex")
 
+	if endmood < 20 and endfear >= 20:
+		person.try_breakdown(variables.BRK_TERRIBLE_DATE)
+
 	return globals.TextEncoder(person.translate(text))
 
 func start_sex():

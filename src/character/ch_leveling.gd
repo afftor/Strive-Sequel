@@ -347,7 +347,7 @@ func get_selected_quest():
 
 
 func make_unavaliable(days = -1):
-	if work != "disabled":
+	if !is_unavaliable():
 		if is_on_quest:
 			input_handler.SystemMessage(tr(parent.get_ref().get_short_name() + " removed from quest."))
 			var quest_taken = ResourceScripts.game_world.get_quest_by_id(quest_id)
@@ -366,12 +366,14 @@ func make_unavaliable(days = -1):
 
 
 func make_avaliable():
-	if work == "disabled":
+	if is_unavaliable():
 		is_on_quest = false
 		work = ''
 		quest_time_remains = 0
 		unaval_time_remains = -1
 
+func is_unavaliable():
+	return work == "disabled"
 
 func assign_to_quest_and_make_unavalible(quest, work_time):
 	parent.get_ref().remove_from_travel()

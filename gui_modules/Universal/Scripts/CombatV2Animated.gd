@@ -1524,7 +1524,9 @@ func FinishCombat(victory = true):
 	
 	for p in playergroup.values():
 		var ch = characters_pool.get_char_by_id(p)
+		var alive = true
 		if ch.hp <=0:
+			alive = false
 			if !ResourceScripts.game_globals.diff_permadeath:
 				ch.hp = 1
 				ch.is_active = true
@@ -1535,9 +1537,15 @@ func FinishCombat(victory = true):
 					ch.apply_effect_code('e_grave_injury', {duration = 8})
 				else:
 					ch.apply_effect_code('e_grave_injury', {duration = 12})
+				ResourceScripts.game_party.check_breakdown_on_char_loss(ch)
+				ch.try_breakdown(variables.BRK_GRAVE_INJURY)
 			else:
 				ch.killed()
 		ch.process_event(variables.TR_COMBAT_F)
+		#not sure, if it's safe way to check resurrected chars, and furthermore perilous
+		#as e_g_injury_delay triger must be able to apply e_grave_injury on TR_COMBAT_F in time
+		if alive and ch.has_status('injury'):
+			ch.try_breakdown(variables.BRK_GRAVE_INJURY_RES)
 	effects_pool.process_event(variables.TR_COMBAT_F)
 		#add permadeath check here
 	
