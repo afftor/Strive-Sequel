@@ -94,10 +94,15 @@ func start_animation(node):
 	var delay = 0
 	for data in f_anim:
 		#print("%d - %d %s"%[OS.get_ticks_msec(),cur_timer, data.type])
-		var true_type = data.type
-		if images.GFX_video.keys().has(true_type):
+		var true_type
+		if has_method(data.type):
+			true_type = data.type
+		elif images.GFX_video.keys().has(data.type):
 			true_type = 'gfx_video'
 			data.params.video_name = data.type
+		elif images.GFX_sprites.keys().has(data.type):
+			true_type = 'gfx_animsprite'
+			data.params.sprite_name = data.type
 		delay = max(delay, call(true_type, data.node, data.params))
 	animation_delays[node] = delay
 
@@ -226,6 +231,16 @@ func gfx_video(node, args):
 	log_update_delay = max(log_update_delay, 0.5)
 	buffs_update_delays[node] = 0.5
 	ResourceScripts.core_animations.gfx_video(node, args.video_name, 0.7, 2)
+	
+	return nextanimationtime + aftereffectdelay
+
+func gfx_animsprite(node, args):
+	var duration = ResourceScripts.core_animations.get_gfx_sprite_time(args.sprite_name)
+	var nextanimationtime = duration - 0.1
+	hp_update_delays[node] = 0.5
+	log_update_delay = max(log_update_delay, 0.5)
+	buffs_update_delays[node] = 0.5
+	ResourceScripts.core_animations.gfx_sprite(node, args.sprite_name, 0.5, duration)
 	
 	return nextanimationtime + aftereffectdelay
 

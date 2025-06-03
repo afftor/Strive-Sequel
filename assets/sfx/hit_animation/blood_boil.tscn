@@ -6,4 +6,3 @@
 margin_right = 200.0
 margin_bottom = 200.0
 stream = ExtResource( 1 )
-autoplay = true
