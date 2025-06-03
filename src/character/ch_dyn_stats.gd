@@ -524,6 +524,31 @@ func set_default_value(stat, value):
 			else:
 				container[stat] = value
 
+
+func add_stat_stored(stat, value):
+	var data = statdata.statdata[stat]
+	if data.direct:
+		print ("error: wrong stat data - %s is direct" % stat)
+		return
+	if data.tags.has('custom_setter'):
+		call('set_' + stat, get_stat(stat) + value)
+	else:
+		var container = statlist
+		if data.has('container'):
+			match data.container:
+				'manacost_mods':
+					container = manacost_mods
+				'resists':
+					container = resists
+				'damage_mods':
+					container = damage_mods
+		if container.has(stat):
+			if value is Array:
+				container[stat] = container[stat] + value.duplicate()
+			else:
+				container[stat] += value
+
+
 #data processing
 func add_stat_bonuses(ls):
 	for stat in ls:
