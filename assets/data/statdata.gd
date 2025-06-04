@@ -663,6 +663,15 @@ var statdata = {
 		direct = false,
 		tags = ['integer', 'custom_bonuses'],
 	},
+	resistance_red_mod = {
+		code = 'resistance_red_mod',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = '',
+		direct = false,
+		percent = true
+	},
 	#personality
 	personality_bold = {
 		code = 'personality_bold',
