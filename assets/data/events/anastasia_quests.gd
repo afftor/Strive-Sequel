@@ -910,12 +910,13 @@ var data = {
 		],
 		options = [
 			{
-				code = "close",
+				code = "ana_blow_1",
 				text = "DIALOGUECONTINUE",
 				reqs = [
 
 				],
 				dialogue_argument = 1,
+				 change_dialogue_type = 2,
 				type = "next_dialogue",
 				bonus_effects = [
 					{
@@ -1906,5 +1907,54 @@ var data = {
 				]
 			}
 		]
-	}
+	},
+	
+	ana_blow_1 = { 
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		scene_type = "ero_scene",
+		custom_background = "ana_blow_1",
+		save_scene_to_gallery = true,
+		unlocked_gallery_seq = "ana_blow",
+		reqs = [], 
+		text = [{text = "ANA_BLOW_1", reqs = [], }], 
+		options = [ {code = 'ana_blow_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}, ],
+	},
+	ana_blow_2 = { 
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		scene_type = "ero_scene",
+		custom_background = "ana_blow_2",
+		save_scene_to_gallery = true,
+		reqs = [], 
+		text = [{text = "ANA_BLOW_2", reqs = [], }], 
+		options = [ {code = 'ana_blow_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}, ],
+	},
+	ana_blow_3 = { 
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		scene_type = "ero_scene",
+		custom_background = "ana_blow_3",
+		save_scene_to_gallery = true,
+		reqs = [], 
+		text = [{text = "ANA_BLOW_3", reqs = [], }], 
+		options = [ {code = 'ana_blow_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}, ],
+	},
+	ana_blow_4 = { 
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		scene_type = "ero_scene",
+		custom_background = "ana_blow_4",
+		save_scene_to_gallery = true,
+		reqs = [], 
+		text = [{text = "ANA_BLOW_4", reqs = [], }], 
+		options = [ {code = 'ana_blow_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}, ],
+	},
+	ana_blow_5 = { 
+		image = null, tags = ['dialogue_scene', 'master_translate'],
+		scene_type = "ero_scene",
+		custom_background = "ana_blow_5",
+		save_scene_to_gallery = true,
+		reqs = [], 
+		text = [{text = "ANA_BLOW_5", reqs = [], }], 
+		options = [ {code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}, ],
+	},
+	
+	
 }

@@ -346,6 +346,32 @@ var backgrounds = {
 	kuro_wedding_5 = "res://assets/images/fullscreen scenes/Kuro_wed5.png",
 	kuro_wedding_6 = "res://assets/images/fullscreen scenes/Kuro_wed6.png",
 	
+	ana_blow_1 = "res://assets/images/fullscreen scenes/AnaBJCG001.png",
+	ana_blow_2 = "res://assets/images/fullscreen scenes/AnaBJCG002.png",
+	ana_blow_3 = "res://assets/images/fullscreen scenes/AnaBJCG003.png",
+	ana_blow_4 = "res://assets/images/fullscreen scenes/AnaBJCG004.png",
+	ana_blow_5 = "res://assets/images/fullscreen scenes/AnaBJCG005.png",
+	ana_blow_6 = "res://assets/images/fullscreen scenes/AnaBJCG006.png",
+	ana_blow_7 = "res://assets/images/fullscreen scenes/AnaBJCG007.png",
+	ana_blow_8 = "res://assets/images/fullscreen scenes/AnaBJCG008.png",
+	ana_blow_9 = "res://assets/images/fullscreen scenes/AnaBJCG009.png",
+	ana_blow_10 = "res://assets/images/fullscreen scenes/AnaBJCG010.png",
+	
+	ana_wed_1 = "res://assets/images/fullscreen scenes/AnaWedCG001.png",
+	ana_wed_2 = "res://assets/images/fullscreen scenes/AnaWedCG002.png",
+	ana_wed_3 = "res://assets/images/fullscreen scenes/AnaWedCG003.png",
+	ana_wed_4 = "res://assets/images/fullscreen scenes/AnaWedCG004.png",
+	ana_wed_5 = "res://assets/images/fullscreen scenes/AnaWedCG005.png",
+	ana_wed_6 = "res://assets/images/fullscreen scenes/AnaWedCG006.png",
+	ana_wed_7 = "res://assets/images/fullscreen scenes/AnaWedCG007.png",
+	
+	zephyra_wed_1 = "res://assets/images/fullscreen scenes/ZephyraCG013.png",
+	zephyra_wed_2 = "res://assets/images/fullscreen scenes/ZephyraCG014.png",
+	zephyra_wed_3 = "res://assets/images/fullscreen scenes/ZephyraCG015.png",
+	zephyra_wed_4 = "res://assets/images/fullscreen scenes/ZephyraCG016.png",
+	zephyra_wed_5 = "res://assets/images/fullscreen scenes/ZephyraCG017.png",
+	zephyra_wed_6 = "res://assets/images/fullscreen scenes/ZephyraCG018.png",
+	zephyra_wed_7 = "res://assets/images/fullscreen scenes/ZephyraCG019.png",
 	
 	#masteries
 	mastery_air = "res://assets/Textures_v2/CLASS_INFO/back_masteri/back_air.png",
