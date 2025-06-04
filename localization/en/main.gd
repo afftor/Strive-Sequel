@@ -18608,5 +18608,134 @@ Her voice sounds even more bright and relaxed from an unexpected courtesy shown 
 	ANA_FINAL_2_OPTION_2 = "No harm was done... Since I was there.",
 	ANA_FINAL_3 = """After giving a report and finally returning to your mansion, you are left alone with Anastasia. Out of sudden she throws herself at you, hugging tightly. 
 
-- T-thank you... I mean, I must have thanked you for this. For protecting me. I see now that I've made the right choice to... surrender myself to you. """
+- T-thank you... I mean, I must have thanked you for this. For protecting me. I see now that I've made the right choice to... surrender myself to you. """,
+	ANA_BLOW_1 = """You wait in the dimly lit bedroom of your mansion, the flickering candlelight casting shadows across the furniture. The heavy oak door creaks open, Anastasia slowly making her way inside.
+
+Her long wavy blond hair cascades over her shoulders framing her delicate face. Her eyes meet yours with a mixture of gratitude and nervous anticipation. She's changed from her royal attire into something far more intimate – a semi-transparent nightgown that does little to conceal the shapely body beneath. The silken fabric clings to her large breasts, their outline clearly visible as she steps toward you.
+
+— I-I got this outfit being told you will like something like this...
+
+With graceful movements, Anastasia approaches where you sit. Her inexperience is evident in her hesitant steps, but there's an eagerness in her expression that cannot be denied. Without a word, she sinks to her knees before you.""",
+	ANA_BLOW_2 = """Her slender fingers reach for your trousers, fumbling slightly with the fastenings. The princess bites her lower lip in concentration. As she frees your cock, her eyes widen slightly at the sight, a mixture of awe and determination crossing her features.
+
+Anastasia wraps her delicate fingers around your shaft, the contrast between her soft pale skin and your cock are visually striking. She strokes experimentally, gauging your reaction with each movement. Her touch is tentative, inexperience evident but endearing.
+
+— Sorry, I've never done it before, but I heard this way you please a man...
+
+Leaning forward, she places a gentle kiss on the tip of your cock, her plump lips pressing against your sensitive skin. Her blond hair falls forward, tickling your thighs as she grows bolder, running her tongue along the underside of your shaft. The wet warmth of her mouth sends waves of pleasure through your body.""",
+	ANA_BLOW_3 = """— I never thought you would taste like this, but it's not terrible...
+
+Though clearly new to this act, the princess approaches her task with determination. Her lips stretch around your girth as she attempts to take more of you into her mouth. Occasionally, she pulls back, catching her breath before diving forward again with renewed enthusiasm.
+
+Her large breasts sway gently beneath the transparent fabric as she moves, the nipples visibly hardened against the silken material. One of her hands maintains a steady grip at the base of your cock while the other rests on your thigh for balance.
+
+The princess establishes a rhythm, bobbing her head while looking up to gauge your reactions. Each moan or tensing of your muscles seems to encourage her. Her tongue swirls around the head of your cock when she pulls back, before taking you deep again with increasing confidence.""",
+	ANA_BLOW_4 = """Your hands find their way to her golden hair, fingers tangling in those silky strands. You don't force her movements but guide her gently, showing appreciation for her eager service. The princess responds with a muffled moan, the vibrations sending jolts of pleasure through your cock.
+
+The sight of the beautiful royal on her knees, her lips stretched around your cock, her large breasts swaying with each movement beneath the nearly transparent nightgown, pushes you toward the edge. The contrast between her innocent face and the decidedly un-princess-like act she's performing creates an intoxicating effect.""",
+	ANA_BLOW_5 = """Your muscles tense as the first wave of orgasm approaches. Anastasia feels your cock pulse against her tongue and redoubles her efforts, one hand pumping the base of your shaft while her mouth works the sensitive head. Her other hand gently massages your balls, instinctively knowing how to maximize your pleasure.
+
+Your cock throbs powerfully as you erupt into her waiting mouth. The princess's eyes widen slightly at the first spurt, but she doesn't pull away. Instead, she maintains her position, accepting your seed as it fills her mouth. Some escapes the corners of her lips, trailing down her chin in pearly rivulets that catch the candlelight.
+
+As your orgasm subsides, Anastasia slowly pulls back, her lips giving one final suck to the sensitive head of your cock. She swallows what she's collected, her throat working visibly as she maintains eye contact. A mixture of pride and satisfaction crosses her features – the look of someone who has successfully completed a challenging but rewarding task.
+
+— This isn't much but I hope this pleased you.""",
+	
+	ANA_WED_1 = """The bedroom door closes behind you with a soft click. Anastasia stands before you, her blue eyes wide with anticipation as moonlight streams through the tall windows, casting a silvery glow across the opulent chamber. The wedding celebration has finally ended, and now it's just the two of you.
+
+— To tell the truth, I'm more nervous than ever...
+
+You guide her gently to the massive four-poster bed, its silken sheets turned down invitingly. She sits on the edge, her luxurious nightdress rustling softly as she moves. With trembling fingers, you help her remove her delicate undergarments while leaving the nightdress mostly in place, pushing it aside to reveal her full, perfect breasts.""",
+	ANA_WED_1_OPTON_1 = "Go for the pussy",
+	ANA_WED_1_OPTON_2 = "Go for the butt",
+	ANA_WED_2 = """You position her on her side, her hands raised above her head in surrender, her golden hair splayed across the pillow. Her chest rises and falls with quickened breath, her exposed breasts swaying slightly with each inhale. The nightdress pools around her waist, leaving her lower half bare and vulnerable.
+
+— Ah... By this time it feels like my body has already learned to accept you.
+
+Your hands explore her body, tracing the curves of her waist, the swell of her hips. Her skin is impossibly soft under your touch, warming wherever your fingers trail. You cup one full breast, feeling its weight in your palm, the nipple hardening against your skin. A soft gasp escapes her lips as you lower your mouth to taste her, your tongue circling the sensitive peak.
+
+Her body responds eagerly to your touch, arching slightly toward you. You slide your hand down her stomach, feeling the muscles tense beneath your fingers, until you reach the soft folds between her thighs. She's already wet, her pussy slick with her juices as you gently part her folds.""",
+	ANA_WED_3 = """You position yourself behind her, maintaining her side-lying pose with her hands still raised. The head of your cock presses against her pussy, teasing her. Her body trembles in anticipation as you slowly push forward, entering her tight pussy inch by inch. Her pussy gives way with minimal resistance, a brief moment of discomfort quickly replaced by pleasure.
+
+Her inner walls grip you tightly as you begin to move, setting a gentle rhythm. One arm wraps around her waist while your other hand continues to caress her breast, rolling the nipple between your fingers. Her breathing quickens, small whimpers escaping with each thrust.
+
+— Ahh, you're so deep...
+
+You increase your pace gradually, your hips meeting the curve of her ass with each forward motion. The sensation of her pussy clenching around your cock is exquisite, hot and wet and perfect. Her body moves in counterpoint to yours now, instinctively seeking more pleasure.""",
+	ANA_WED_4 = """The tension builds between you both, a climax approaching rapidly. Her pussy clenches rhythmically around your cock as her pleasure mounts. You can feel your own release building, pressure gathering at the base of your spine as you drive deeper into her.
+
+Anastasia's body suddenly goes rigid, her back arching sharply as her orgasm crashes through her. Her pussy contracts powerfully around your cock, milking it with pulsing waves. The sensation pushes you over the edge, and you thrust deep one final time, holding yourself against her as you empty yourself inside her virgin womb.
+
+You both remain locked together, bodies shuddering through the shared climax. Your arm tightens around her waist, pulling her flush against your chest as the last tremors of pleasure course through you both. Her skin is flushed and dewy with perspiration, her golden hair now a tangled halo around her beautiful face.
+
+— You've truly... became... My husband...
+
+Your new bride, once a princess and now your wife, has been thoroughly claimed. The night is still young, and as you feel her shift against you, pressing her perfect ass more firmly against your groin, you know there will be more pleasure to come before dawn breaks.""",
+	ANA_WED_5 = """You notice her body trembling with anticipation beneath your touch. Her wetness is inviting, but tonight you have other plans. You trail your fingers lower, past her slick entrance to the tight hole of her ass. Her body tenses momentarily at this unexpected touch.
+
+— W-wait... You want it in there? 
+
+You position yourself behind her, your cock hard and throbbing. You apply some oil to your cock, stroking it to ensure it's fully coated. Pressing the head against her tight entrance, you push forward with gentle persistence""",
+	ANA_WED_6 = """— A-ah... This feels so unusual...
+
+The resistance is intense at first, her body fighting the intrusion until suddenly the head of your cock slips past the tight ring. You pause, allowing her to adjust to the new sensation, watching her fingers clutch at the sheets above her head.
+
+Slowly, you press deeper, feeling her body gradually accept you. Her ass grips your cock like a vise, hot and impossibly tight. You slide one hand around to cup her breast, pinching the nipple between your fingers as you begin to move.
+
+Your thrusts start shallow and measured, each one going slightly deeper than the last. Her body rocks with your movements, her ass taking more of your length with each push. The sight of your cock disappearing into her tight hole is intoxicating.""",
+	ANA_WED_7 = """You increase your pace, your hips meeting the soft curve of her ass with each thrust. Your hand slides from her breast down to her pussy, finding her clit swollen and sensitive. You circle it with your fingers in time with your thrusts, feeling her body respond immediately.
+
+Her inner muscles clench around your cock as pleasure builds within her. You can feel your own climax approaching, the tight grip of her ass bringing you closer to the edge with each thrust. Your fingers work faster against her clit as your movements become more urgent.""",
+	ANA_WED_8 = """Together, you reach the peak of pleasure, her body convulsing around your cock as you drive deep one final time, emptying yourself inside her. The intensity of the shared orgasm leaves you both trembling, your bodies locked together in perfect union as waves of pleasure wash over you both.
+
+— Ah... I never thought my butt could feel like this...
+
+You remain joined for several moments, catching your breath as the last aftershocks of pleasure ripple through your bodies. The princess—your wife—has been thoroughly claimed in every way possible on this, your wedding night.""",
+	
+	ZEPHYRA_WED_1 = """The bedroom door closes behind you with a soft click as you carry Zephyra in your arms. The foxgirl's white tail swishes gently against your arm, her blue eyes gazing up at you with a mixture of excitement and anticipation. The moonlight filtering through the curtains catches on her long white hair, making it shimmer like freshly fallen snow.
+
+— Never thought I was gonna end up as your official wife. Says something about yourself, doesn't it? Hehe, sorry, I'm really happy and talk nonsense. 
+
+You place her gently on the luxurious bed, the silken sheets rustling beneath her small frame. Her night dress, an elegant creation of lace and silk, clings to her petite body as she settles against the pillows. With delicate movements, you remove her underwear, pushing it up to reveal her flat chest and the pale skin beneath.
+
+As you position yourself between her legs, her tail brushes against your arm, the fur soft and ticklish. Her small hands reach for you, pulling you closer with surprising strength for someone with such a delicate frame.""",
+	ZEPHYRA_WED_1_OPTON_1 = "Go for the pussy",
+	ZEPHYRA_WED_1_OPTON_2 = "Go for the butt",
+	ZEPHYRA_WED_2 = """— Don't hold back on me, this is a once-in-a-lifetime thing to have our first wedding night.
+
+You enter her slowly, feeling her tight pussy envelop your cock. Her back arches slightly, her small body tensing at the intrusion. Her pussy grips you firmly, wet and hot around your length. The foxgirl's tail twitches and fluffs out as you push deeper, her body accommodating you inch by inch.
+
+You begin to move, establishing a gentle rhythm. Zephyra's small body rocks with each thrust, her white hair splayed across the pillows. Her chest heaves with each breath, nipples standing erect. Her fox ears twitch and flatten against her head as pleasure builds within her.""",
+	ZEPHYRA_WED_3 = """The pace quickens, and you can feel her pussy clenching around your cock, her inner walls pulsating with need. Her tail wraps around your thigh, the soft fur adding an unexpected sensation to the experience. Her small frame trembles beneath you, her blue eyes half-lidded with pleasure.
+
+You drive deeper, feeling the heat of her core. Her pussy tightens further, signaling her approaching climax. Her small body tenses, back arching off the bed as waves of pleasure crash through her. At the same moment, your own release builds to its peak.
+
+— Aah... [Master]... Please, hug me...""",
+	ZEPHYRA_WED_4 = """Together, you reach the height of pleasure, your cock pulsing inside her as her pussy contracts rhythmically around you. Her tail goes rigid, then fluffs out completely as she experiences her orgasm. Your seed fills her, warming her from the inside as her small body shudders with aftershocks.
+
+Spent and satisfied, you carefully lower yourself beside her, mindful of her petite frame. Zephyra's breathing gradually steadies, her fox ears perking back up as she recovers from the intensity of your shared pleasure. 
+
+— This feels like it was my dream... I hope I'll never wake up.""",
+	ZEPHYRA_WED_5 = """You gaze down at Zephyra's small body beneath you, her white tail twitching with anticipation. With gentle but firm hold, you turn her slightly, positioning yourself to access her tight rear entrance instead.
+
+— Huh, feeling adventurous for my butt today, [master]?
+
+Her blue eyes widen slightly as she realizes your intentions. Her fox ears twitch forward with interest as you reach for the oil on the bedside table, warming it between your fingers before applying it to her tight pucker. Her tail swishes against the sheets as you work a finger inside her, preparing her carefully.""",
+	ZEPHYRA_WED_6 = """When you finally position your cock against her tight butt, her tail curls around your wrist as if encouraging you forward. You push in slowly, feeling the incredible tightness as her body accepts you inch by inch. Her small hands grip the sheets as you sink deeper into the virgin territory.
+
+— O-oh... That's so indecent... But I like it...
+
+The sight of her petite body taking your full length is intoxicating. Her night dress bunched around her waist, her flat chest exposed to the cool air, and her face flushed with new sensations. You begin to move, each thrust causing her white fox tail to twitch and curl beside her.
+
+Her tight passage grips you like a vice as you establish a rhythm, her small body moving with each thrust. The feeling of her virgin ass stretching around your cock sends waves of pleasure through you both. Her blue eyes glaze slightly as new sensations overwhelm her body.""",
+	ZEPHYRA_WED_7 = """You increase your pace, watching as her small frame accepts your full length repeatedly. Her tail thrashes against the sheets as pleasure builds within her untouched body. The tightness of her ass provides delicious friction as you drive deeper, claiming this final virginity on your wedding night.
+
+The pressure builds quickly as her incredibly tight passage works your cock. Her small body tenses beneath you as she approaches her climax, her inner muscles clenching around you rhythmically. With a final deep thrust, you both reach your peak simultaneously, your release filling her as her body shudders in ecstasy.
+
+Spent and satisfied, you carefully withdraw from her tight passage, admiring how her small body handled such an intense experience. Her white fox tail now lies limp beside her, her chest rising and falling with deep, satisfied breaths as she recovers from the intense pleasure of her first anal experience.
+
+— Ah... I didn't think you'd actually do it... But I'm not complaining, I might like this show of your affection no less than the other.""",
+	
+	
+	
 }
