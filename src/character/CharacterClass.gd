@@ -206,7 +206,7 @@ func remove_stat_bonus(stat, op):
 	dyn_stats.remove_stat_bonus(stat, op)
 
 
-func add_stat(statname, value): #only oneshots
+func add_stat(statname, value, force_store = false): #only oneshots
 	if statname in ['hp', 'mp', 'shield']:
 		set(statname, get(statname) + value)
 	elif statname == 'base_exp':
@@ -224,7 +224,10 @@ func add_stat(statname, value): #only oneshots
 			statlist.update_stat(statname, value, 'add')
 		else:
 #			print ("warning - direct setting of dynamic stat %s" % statname)
-			dyn_stats.add_stat_bonuses({statname + '_add': value})
+			if force_store:
+				dyn_stats.add_stat_stored(statname, value)
+			else:
+				dyn_stats.add_stat_bonuses({statname + '_add': value})
 	dyn_stats.reset_rebuild()
 
 

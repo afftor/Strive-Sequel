@@ -194,7 +194,7 @@ func upgrade_stat():
 		return
 	ResourceScripts.game_res.money -= substract_gold
 #	if active_stat == 'growth_factor':
-	person.add_stat(active_stat, 1)
+	person.add_stat(active_stat, 1, true)
 #	else:
 #		person.set_stat(active_stat, person2.get_stat(active_stat))
 	ResourceScripts.game_party.add_fate(person2.id, tr("SOLD2STAT"))

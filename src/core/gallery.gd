@@ -48,7 +48,9 @@ var scenes = {
 	kuro_tome = ['kuro_tome_sex', 'kuro_tome_sex2', 'kuro_tome_sex3', 'kuro_tome_sex4', 'kuro_tome_sex5', 'kuro_tome_sex6', 'kuro_tome_sex7'],
 	kuro_hideout = ['kuro_hideout_sex2', 'kuro_hideout_sex3', 'kuro_hideout_sex4', 'kuro_hideout_sex5', 'kuro_hideout_sex6'],
 	kuro_zeph_tailjob = ['kuro_zeph_tailjob3', 'kuro_zeph_tailjob4', 'kuro_zeph_tailjob5', 'kuro_zeph_tailjob6', 'kuro_zeph_tailjob7', 'kuro_zeph_tailjob8'],
-	kuro_wedding_pussy = ['kuro_wedding_1', 'kuro_wedding_2', 'kuro_wedding_pussy', 'kuro_wedding_pussy2']
+	kuro_wedding_pussy = ['kuro_wedding_1', 'kuro_wedding_2', 'kuro_wedding_pussy', 'kuro_wedding_pussy2'],
+	ana_wed = ['anastasia_wedding_1', 'ana_wed_2', 'ana_wed_3', 'ana_wed_4'],
+	zephyra_wed = ['zephyra_wedding_1', 'zephyra_wed_2', 'zephyra_wed_3', 'zephyra_wed_4'],
 }
 #was forced to add a id to scene lists for unlock purpose
 var scenes_order = [
@@ -112,7 +114,9 @@ var ero_scenes = [
 'kuro_book_0_0',
 'kuro_top_1',
 'kuro_zephyra_1',
-'kuro_wedding_1'
+'kuro_wedding_1',
+'ana_wedding_1',
+'zephyra_wedding_1'
 ] 
 #fill next 2 arrays manually, if needed certain list
 var mono_scenes
@@ -168,6 +172,8 @@ var ero_scenes_collection = {
 	'kuro_top_' : ['kuro_top_1', 'kuro_top_2', 'kuro_top_3', 'kuro_top_4', 'kuro_top_5'],
 	'kuro_zephyra_' : ['kuro_zephyra_1', 'kuro_zephyra_2', 'kuro_zephyra_3', 'kuro_zephyra_4', 'kuro_zephyra_5'],
 	'kuro_wedding_' : ['kuro_wedding_1', 'kuro_wedding_2', 'kuro_wedding_3', 'kuro_wedding_4', 'kuro_wedding_5', 'kuro_wedding_6'],
+	'ana_wed_': ['ana_wed_1', 'ana_wed_2', 'ana_wed_3', 'ana_wed_4', 'ana_wed_5', 'ana_wed_6', 'ana_wed_7'],
+	'zephyra_wed_': ['zephyra_wed_1', 'zephyra_wed_2', 'zephyra_wed_3', 'zephyra_wed_4', 'zephyra_wed_5', 'zephyra_wed_6', 'zephyra_wed_7'],
 }
 #so these arrays are needed for storing order 
 
@@ -226,6 +232,8 @@ var scene_tooltips = {
 	kuro_top_1 = "KURO_TOP_SS",
 	kuro_zephyra_1 = "KURO_ZEPHYRA_SS",
 	kuro_wedding_1 = "KURO_WEDDING_SS",
+	anastasia_wedding_1 = "ANASTASIA_WEDDING_SS",
+	zephyra_wedding_1 = "ZEPHYRA_WEDDING_SS",
 }
 
 

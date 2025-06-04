@@ -223,6 +223,20 @@ var data = {
 					{
 						code = "make_story_character",
 						value = "Anastasia"
+					},
+					{
+						code = "add_timed_event",
+						value = "ana_letter_1",
+						args = [
+							{
+								type = "add_to_date",
+								date = [
+									5,
+									5
+								],
+								hour = 1
+							}
+						]
 					}
 				]
 			},
