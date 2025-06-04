@@ -590,12 +590,12 @@ var training_resistance = {
 }
 
 var breakdown_info = {
-	self.BRK_LOSE_FRIEND : {chance = 'brk_lose_friend', text = 'BREAKDOWN_LFRIEND'},
-	self.BRK_LOSE_LOVER : {chance = 'brk_lose_lover', text = 'BREAKDOWN_LLOVER'},
-	self.BRK_LOSE_RELATIVE : {chance = 'brk_lose_relative', text = 'BREAKDOWN_LRELATIVE'},
-	self.BRK_DISLIKE_FOOD : {chance = 'brk_dislike_food', text = 'BREAKDOWN_FOOD'},
-	self.BRK_LOSE_VIRGINITY : {chance = 'brk_lose_virginity', text = 'BREAKDOWN_LVIRGINITY'},
-	self.BRK_GRAVE_INJURY : {chance = 'brk_grave_injury', text = 'BREAKDOWN_GRAVEIN'},
-	self.BRK_GRAVE_INJURY_RES : {chance = 'brk_grave_injury_res', text = 'BREAKDOWN_GRAVEIN'},
-	self.BRK_TERRIBLE_DATE : {chance = 'brk_terrible_date', text = 'BREAKDOWN_DATE'},
+	self.BRK_LOSE_FRIEND : {chance = 0.1, text = 'BREAKDOWN_LFRIEND', mod = 'brk_mod_lose_friend'},
+	self.BRK_LOSE_LOVER : {chance = 0.2, text = 'BREAKDOWN_LLOVER', mod = 'brk_mod_lose_lover'},
+	self.BRK_LOSE_RELATIVE : {chance = 0.25, text = 'BREAKDOWN_LRELATIVE', mod = 'brk_mod_lose_relative'},
+	self.BRK_DISLIKE_FOOD : {chance = 0.005, text = 'BREAKDOWN_FOOD', mod = 'brk_mod_dislike_food'},
+	self.BRK_LOSE_VIRGINITY : {chance = 0.15, text = 'BREAKDOWN_LVIRGINITY', mod = 'brk_mod_lose_virginity'},
+	self.BRK_GRAVE_INJURY : {chance = 0.2, text = 'BREAKDOWN_GRAVEIN', mod = 'brk_mod_grave_injury'},
+	self.BRK_GRAVE_INJURY_RES : {chance = 0.02, text = 'BREAKDOWN_GRAVEIN', mod = 'brk_mod_grave_injury_res'},
+	self.BRK_TERRIBLE_DATE : {chance = 0.1, text = 'BREAKDOWN_DATE', mod = 'brk_mod_terrible_date'},
 }

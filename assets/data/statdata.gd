@@ -1576,61 +1576,69 @@ var statdata = {
 		type = 'misc',
 		direct = false
 	},
-	brk_lose_friend = {
-		code = 'brk_lose_friend',
+	brk_mod_lose_friend = {
+		code = 'brk_mod_lose_friend',
 		name = '',
 		descript = '',
-		type = 'misc',
-		direct = false
+		type = '',
+		direct = false,
+		percent = true
 	},
-	brk_lose_lover = {
-		code = 'brk_lose_lover',
+	brk_mod_lose_lover = {
+		code = 'brk_mod_lose_lover',
 		name = '',
 		descript = '',
-		type = 'misc',
-		direct = false
+		type = '',
+		direct = false,
+		percent = true
 	},
-	brk_lose_relative = {
-		code = 'brk_lose_relative',
+	brk_mod_lose_relative = {
+		code = 'brk_mod_lose_relative',
 		name = '',
 		descript = '',
-		type = 'misc',
-		direct = false
+		type = '',
+		direct = false,
+		percent = true
 	},
-	brk_dislike_food = {
-		code = 'brk_dislike_food',
+	brk_mod_dislike_food = {
+		code = 'brk_mod_dislike_food',
 		name = '',
 		descript = '',
-		type = 'misc',
-		direct = false
+		type = '',
+		direct = false,
+		percent = true
 	},
-	brk_lose_virginity = {
-		code = 'brk_lose_virginity',
+	brk_mod_lose_virginity = {
+		code = 'brk_mod_lose_virginity',
 		name = '',
 		descript = '',
-		type = 'misc',
-		direct = false
+		type = '',
+		direct = false,
+		percent = true
 	},
-	brk_grave_injury = {
-		code = 'brk_grave_injury',
+	brk_mod_grave_injury = {
+		code = 'brk_mod_grave_injury',
 		name = '',
 		descript = '',
-		type = 'misc',
-		direct = false
+		type = '',
+		direct = false,
+		percent = true
 	},
-	brk_grave_injury_res = {
-		code = 'brk_grave_injury_res',
+	brk_mod_grave_injury_res = {
+		code = 'brk_mod_grave_injury_res',
 		name = '',
 		descript = '',
-		type = 'misc',
-		direct = false
+		type = '',
+		direct = false,
+		percent = true
 	},
-	brk_terrible_date = {
-		code = 'brk_terrible_date',
+	brk_mod_terrible_date = {
+		code = 'brk_mod_terrible_date',
 		name = '',
 		descript = '',
-		type = 'misc',
-		direct = false
+		type = '',
+		direct = false,
+		percent = true
 	},
 }
 

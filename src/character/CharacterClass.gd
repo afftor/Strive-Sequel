@@ -2207,7 +2207,8 @@ func try_breakdown(event):
 	if xp_module.is_unavaliable(): return
 	
 	var info = variables.breakdown_info[event]
-	if randf() <= get_stat(info.chance):
+#	print("%s try_breakdown on %s with %s" % [get_short_name(), event, chance])
+	if randf() <= clamp(info.chance + get_stat(info.mod), 0.0, 1.0):
 		xp_module.make_unavaliable(get_stat('breakdown_time'))
 		manifest_and_log("%s\n%s" % [
 			tr('BREAKDOWN_EVENT'),
