@@ -2143,12 +2143,6 @@ var data = {
 		character = "savra",
 		text = [
 			{
-				text = "SAVRA_TALK_6",
-				reqs = [
-
-				]
-			},
-			{
 				text = "SAVRA_TALK_7_1",
 				reqs = [
 
@@ -2208,12 +2202,6 @@ var data = {
 		],
 		character = "savra",
 		text = [
-			{
-				text = "SAVRA_TALK_6",
-				reqs = [
-
-				]
-			},
 			{
 				text = "SAVRA_TALK_7_1",
 				reqs = [

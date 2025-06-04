@@ -2064,6 +2064,7 @@ Hotkey: 3""",
 	DESCRIPTCLASSMERC = """[name] было нанят/а вами и стоит вам золота.""",
 	DESCRIPTCLASSHEIR = """[name] ваш наследник.""",
 	DESCRIPTCLASSSLAVE_TRAINED = "[name] является вашим обученным рабом и не нуждается в контроле.",
+	DESCRPTCLASSSPOUSE = """[name] is your spouse, [his] children will become Heirs.""", # MISSING TRANSLATION
 	
 	CLASSDETAILSKILLS = """Навыки""",
 	CLASSDETAILCOMBATSKILLS = """Боевые навыки""",

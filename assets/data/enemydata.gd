@@ -61,8 +61,8 @@ var encounters = {
 	
 	hector = {unittype = 'randomgroup', unitcode = 'hector_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'cali_finale_1', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	
-	jordan_boss_fight = {unittype = 'randomgroup', unitcode = 'aire_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'ana_fort_8', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #2fix
-	reyan_boss_fight = {unittype = 'randomgroup', unitcode = 'aire_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'ana_fort_11', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #2fix
+	jordan_boss_fight = {unittype = 'randomgroup', unitcode = 'jordan_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'ana_fort_8', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #2fix
+	reyan_boss_fight = {unittype = 'randomgroup', unitcode = 'reyan_boss_fight', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'ana_fort_11', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #2fix
 	
 	dwarf_tavern_patrons = {unittype = 'randomgroup', unitcode = 'dwarf_tavern_patrons', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'dwarf_tavern_bark_after_fight', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	vault_golem = {unittype = 'randomgroup', unitcode = 'vault_golem', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'jean_mountain_guards', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
@@ -184,6 +184,11 @@ var enemygroups = {
 	rebel_group_hideout3 = {reqs = [], units = {rebel_knight = [1,2], rebel_healer = [0,1], rebel_mage = [1,2]}},
 	greg_boss_fight = {reqs = [], units = {greg = [1,1], rebel_knight = [2,2], rebel_healer = [1,1], rebel_mage = [2,2]}},
 	aire_boss_fight = {reqs = [], units = {rebel_knight = [3,3], aire = [1,1], rebel_healer = [2,2]}},
+	
+	jordan_boss_fight = {reqs = [], units = {rebel_knight = [3,3], rebel_mage = [3,3]}},
+	
+	reyan_boss_fight = {reqs = [], units = {bandit_assassin = [2,2], reyan_boss = [1,1], bandit_mage = [2,2]}},
+	
 
 	quest_lich_easy = {reqs = [], units = {lich_quest = [1,1], skeleton_shield_melee = [1,1], skeleton_archer_quest = [1,1]}},
 	quest_lich_normal = {reqs = [], units = {lich_quest = [1,1], skeleton_shield_melee = [2,2], skeleton_archer_quest = [2,2]}},
@@ -2487,7 +2492,7 @@ var enemies = {
 		ai_position = ['melee'],
 		xpreward = 100,
 	},
-	hector_boss = {#cali quest option !!! copied from above, needs fixing
+	hector_boss = {#cali quest option
 		code = 'hector_boss',
 		name = '',
 		descript = '',
@@ -2505,10 +2510,35 @@ var enemies = {
 		race = 'humanoid',
 		loot = 'bandit_loot',
 		icon = "res://assets/images/enemies/bandit_boss.png", 
-		skills = [],
+		skills = ['sunder','cleave'],
 		traits = ['boss_resists'],
 		tags = ['human','boss'], 
-		ai = [['basic', 66], ['ads', 33]],
+		ai = [['basic', 20], ['ads', 40],['aoe', 40]],
+		ai_position = ['melee'],
+		xpreward = 100,
+	},
+	reyan_boss = {#anastasia boss
+		code = 'reyan_boss',
+		name = '',
+		descript = '',
+		hpmax = 2000,
+		armor = 40,
+		mdef = 85,
+		hitrate = 160,
+		evasion = 15,
+		armorpenetration = 25,
+		atk = 160,
+		matk = 20,
+		speed = 55,
+		resists = {},
+		status_resists = {stun = 100, freeze = 90},
+		race = 'humanoid',
+		loot = 'bandit_loot',
+		icon = "res://assets/images/enemies/bandit_boss.png", 
+		skills = ['leadersmark','sunder','ensnare'],
+		traits = ['boss_resists'],
+		tags = ['human','boss'], 
+		ai = [['basic', 33], ['ads', 66]],
 		ai_position = ['melee'],
 		xpreward = 100,
 	},

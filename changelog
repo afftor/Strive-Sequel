@@ -1,3 +1,15 @@
+0.11.1
+Added new Anastasia quest, 1 scene and 1 wedding scene
+Added Zephyra's wedding scene
+Added breakdown mechanic for slaves
+Corrected some quest texts
+Gifted now gives 50% more mana instead of 100%
+Minor adjustments to elf/tribal elf race bonuses
+Fixed Lizard skin gathering issue
+Fixed unique characters not assigning their virginity correctly on spawn
+Fixed Yye of the storm not working correctly
+Fixed Rally not recovering hp 
+0.11.0e
 Slightly reduced Staves MATK bonus and rebalanced ATK bonus
 Archer class now grants some passive ATK
 Added warning to cursed items beingdestroyed on equipping normal item when cursed was already equipped

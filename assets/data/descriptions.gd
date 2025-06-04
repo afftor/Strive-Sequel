@@ -127,7 +127,7 @@ func slave_status():
 	if person.is_players_character == false || person.get_stat('slave_class') == 'master':
 		return ''
 	
-	var text = tr("DESCRIPTCLASS" + person.get_stat("slave_class").to_upper()) 
+	var text = "{color=yellow|" + tr("DESCRIPTCLASS" + person.get_stat("slave_class").to_upper()) + "}"
 #	match person.get_stat("slave_class"):
 #		'slave':
 #			text = tr("DESCRIPTCLASSSLAVE")

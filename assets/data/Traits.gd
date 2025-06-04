@@ -634,7 +634,7 @@ var traits = {
 		visible = true,
 		icon = "res://assets/images/iconstraits/brain.png",
 		effects = [],
-		bonusstats = {mpmax_mul = 2},
+		bonusstats = {mpmax_mul = 1.5},
 		weight = 100,
 		conflicts = ['magicmutt'],
 		disposition_change = {
