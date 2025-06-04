@@ -46,6 +46,8 @@ enum {NT_MELEE, NT_ANY, NT_ANY_NOREPEAT, NT_WEAK, NT_WEAK_MELEE, NT_BACK, NT_CAS
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_DGRADE, TE_RES_REMOVE}
 enum {DYN_STATS_REBUILD, DYN_STATS_FACTORS, DYN_STATS_PREAREA, DYN_STATS_FULL}
 
+enum {BRK_LOSE_FRIEND, BRK_LOSE_LOVER, BRK_LOSE_RELATIVE, BRK_DISLIKE_FOOD, BRK_LOSE_VIRGINITY, BRK_GRAVE_INJURY, BRK_GRAVE_INJURY_RES, BRK_TERRIBLE_DATE}
+
 
 #list for values modified by crits, effects etc
 var dmg_mod_list = ['+damage_hp', "+hp", '+restore_mana', '+lust', '+consent', '-damage_hp', "-hp", '-restore_mana', '-lust','no_stat'] #not sure about these
@@ -585,4 +587,15 @@ var training_resistance = {
 	25 : {penalty = 0.3, text = "TRAININGTOOLTIPRESISTMOD", color = "yellow"},
 	50 : {penalty = 0.75, text = "TRAININGTOOLTIPRESISTHIGH", color = "brown"},
 	75 : {penalty = 1, text = "TRAININGTOOLTIPRESISTULT", color = "red"}#training blocked
+}
+
+var breakdown_info = {
+	self.BRK_LOSE_FRIEND : {chance = 0.1, text = 'BREAKDOWN_LFRIEND', mod = 'brk_mod_lose_friend'},
+	self.BRK_LOSE_LOVER : {chance = 0.2, text = 'BREAKDOWN_LLOVER', mod = 'brk_mod_lose_lover'},
+	self.BRK_LOSE_RELATIVE : {chance = 0.25, text = 'BREAKDOWN_LRELATIVE', mod = 'brk_mod_lose_relative'},
+	self.BRK_DISLIKE_FOOD : {chance = 0.005, text = 'BREAKDOWN_FOOD', mod = 'brk_mod_dislike_food'},
+	self.BRK_LOSE_VIRGINITY : {chance = 0.15, text = 'BREAKDOWN_LVIRGINITY', mod = 'brk_mod_lose_virginity'},
+	self.BRK_GRAVE_INJURY : {chance = 0.2, text = 'BREAKDOWN_GRAVEIN', mod = 'brk_mod_grave_injury'},
+	self.BRK_GRAVE_INJURY_RES : {chance = 0.02, text = 'BREAKDOWN_GRAVEIN', mod = 'brk_mod_grave_injury_res'},
+	self.BRK_TERRIBLE_DATE : {chance = 0.1, text = 'BREAKDOWN_DATE', mod = 'brk_mod_terrible_date'},
 }

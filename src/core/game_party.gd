@@ -25,8 +25,10 @@ func _get_key(char1, char2):
 
 func _get_data(char1, char2):
 	var key = _get_key(char1, char2)
-	if relationship_data.has(key) == false:
+	if !relationship_data.has(key):
 		add_relationship_value(char1, char2, 0)
+		if !relationship_data.has(key):
+			return null#relationships with master
 	return relationship_data[key]
 
 
@@ -239,7 +241,18 @@ func change_relationship_status(char1, char2, new_status):
 		globals.text_log_add('char', log_text)
 		globals.manifest(log_text, ch1)
 
+func check_relationship_status(char1, char2, status):
+	if characters[char1].is_master():
+		return false
+	if characters[char2].is_master():
+		return false
+	return _get_data(char1, char2).status == status
 
+func check_if_relationship_in(char1, char2, status_arr):
+	for status in status_arr:
+		if check_relationship_status(char1, char2, status):
+			return true
+	return false
 
 func find_all_relationship(char1):
 	var array = []
@@ -353,6 +366,7 @@ func add_slave(person, child = false):
 
 
 func remove_slave(tempslave, permanent = false):
+	check_breakdown_on_char_loss(tempslave)#not sure, if it should be done only on permanent=true
 	tempslave.remove_from_travel()
 	tempslave.remove_from_task()
 	tempslave.unequip_all()
@@ -782,3 +796,9 @@ func force_update_portraits():
 		if person == null: 
 			return
 		person.update_prt()
+
+
+func check_breakdown_on_char_loss(lost_char):
+	for ch in characters.values():
+		if ch.id == lost_char.id: continue
+		ch.try_breakdown_on_char_loss(lost_char)

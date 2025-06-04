@@ -45,7 +45,9 @@ func rand_resistance():
 	set_resistance(round(rand_range(90, 100)))
 
 func get_resistance_reduction():
-	return 5 * parent.get_ref().get_stat('tame_factor')
+	var reduction = 5 * parent.get_ref().get_stat('tame_factor')
+	reduction += reduction * parent.get_ref().get_stat('resistance_red_mod')
+	return reduction
 
 func get_loyalty_growth():
 	return 1 - resistance * 0.01

@@ -97,14 +97,14 @@ func get_food():
 							check = true
 					if check == true:
 						if food.tags.size() <= 1:
-							parent.get_ref().apply_effect('e_food_dislike')
+							parent.get_ref().apply_effect_code('e_food_dislike')
 				break
 		if eaten == true:
 			starvation = false
 			break
 	
 	if eaten == false:
-		parent.get_ref().apply_effect('e_starve')
+		parent.get_ref().apply_effect_code('e_starve')
 		starvation = true
 		
 		globals.text_log_add('food', parent.get_ref().get_short_name() + ": not enough food. Authority reduced.") #2remake

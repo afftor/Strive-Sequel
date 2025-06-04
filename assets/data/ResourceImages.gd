@@ -1110,6 +1110,7 @@ var GFX_sprites = {
 	flame = 'res://assets/sfx/hit_animation/flame.tscn',
 	earth_spike = "res://assets/sfx/hit_animation/earth_spike.tscn",
 	decay = "res://assets/sfx/hit_animation/DecayEffect.tscn",
+	fire_shield = "res://assets/sfx/hit_animation/fire_shield.tscn"
 	}
 
 var GFX_particles = {
@@ -1121,6 +1122,9 @@ var GFX_particles = {
 	sparks = "res://assets/sfx/spark.tscn",
 }
 
+var GFX_video = {
+	blood_boil = "res://assets/sfx/hit_animation/blood_boil.tscn"
+}
 
 
 func loadimages(): 

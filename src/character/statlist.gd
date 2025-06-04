@@ -302,10 +302,22 @@ var template_dynamic = {
 	#training
 	training_loyalty = 0,
 	training_spirit = 0,
+	resistance_red_mod = 0,
 	
 	#helpers
 #	upgrade_points_total = 0, 
 #	lustmax = 50,
+	
+	#breakdown
+	breakdown_time = 2,
+	brk_mod_lose_friend = 0,
+	brk_mod_lose_lover = 0,
+	brk_mod_lose_relative = 0,
+	brk_mod_dislike_food = 0,
+	brk_mod_lose_virginity = 0,
+	brk_mod_grave_injury = 0,
+	brk_mod_grave_injury_res = 0,
+	brk_mod_terrible_date = 0,
 }
 var manacost_mods = {
 	manacost_mod_all = 1.0,

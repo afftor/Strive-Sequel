@@ -663,6 +663,15 @@ var statdata = {
 		direct = false,
 		tags = ['integer', 'custom_bonuses'],
 	},
+	resistance_red_mod = {
+		code = 'resistance_red_mod',
+		name = '',
+		descript = '',
+		baseicon = 'stat_df',
+		type = '',
+		direct = false,
+		percent = true
+	},
 	#personality
 	personality_bold = {
 		code = 'personality_bold',
@@ -1559,6 +1568,77 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+	},
+	breakdown_time = {
+		code = 'breakdown_time',
+		name = '',
+		descript = '',
+		type = 'misc',
+		direct = false
+	},
+	brk_mod_lose_friend = {
+		code = 'brk_mod_lose_friend',
+		name = '',
+		descript = '',
+		type = '',
+		direct = false,
+		percent = true
+	},
+	brk_mod_lose_lover = {
+		code = 'brk_mod_lose_lover',
+		name = '',
+		descript = '',
+		type = '',
+		direct = false,
+		percent = true
+	},
+	brk_mod_lose_relative = {
+		code = 'brk_mod_lose_relative',
+		name = '',
+		descript = '',
+		type = '',
+		direct = false,
+		percent = true
+	},
+	brk_mod_dislike_food = {
+		code = 'brk_mod_dislike_food',
+		name = '',
+		descript = '',
+		type = '',
+		direct = false,
+		percent = true
+	},
+	brk_mod_lose_virginity = {
+		code = 'brk_mod_lose_virginity',
+		name = '',
+		descript = '',
+		type = '',
+		direct = false,
+		percent = true
+	},
+	brk_mod_grave_injury = {
+		code = 'brk_mod_grave_injury',
+		name = '',
+		descript = '',
+		type = '',
+		direct = false,
+		percent = true
+	},
+	brk_mod_grave_injury_res = {
+		code = 'brk_mod_grave_injury_res',
+		name = '',
+		descript = '',
+		type = '',
+		direct = false,
+		percent = true
+	},
+	brk_mod_terrible_date = {
+		code = 'brk_mod_terrible_date',
+		name = '',
+		descript = '',
+		type = '',
+		direct = false,
+		percent = true
 	},
 }
 
