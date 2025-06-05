@@ -1,4 +1,4 @@
-extends Node
+extends Reference
 
 var list = {
 	char_rnd_injury = {
