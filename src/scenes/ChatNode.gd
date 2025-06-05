@@ -4,13 +4,12 @@ extends Control
 func _init():
 	build_lines()
 
-func _ready():
-	$Button.connect("mouse_entered", self, "show_log")
-
-func show_log():
-	print(storedlines)
-
-var storedlines = []
+#seemed to be old debug stuff
+#func _ready():
+#	$Button.connect("mouse_entered", self, "show_log")
+#func show_log():
+#	print(storedlines)
+#var storedlines = []
 
 func add_new_chatter(character, line):
 	var newnode = input_handler.DuplicateContainerTemplate($VBoxContainer)
@@ -20,7 +19,7 @@ func add_new_chatter(character, line):
 	newnode.get_node("Name").text = data.name
 	ResourceScripts.core_animations.UnfadeAnimation(newnode,0.3)
 	input_handler.PlaySound("chat_click")
-	storedlines.append(data)
+#	storedlines.append(data)
 	yield(get_tree().create_timer(10),"timeout")
 	ResourceScripts.core_animations.FadeAnimation(newnode, 1)
 	yield(get_tree().create_timer(1),"timeout")

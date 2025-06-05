@@ -1,4 +1,4 @@
-extends Node#Reference
+extends Node
 
 
 var interval_min = 10
