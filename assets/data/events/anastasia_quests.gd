@@ -12,23 +12,13 @@ var data = {
 		text = [
 			{
 				text = "ANA_LETTER_1_1",
-				reqs = [
-
-				],
+				reqs = [],
 				previous_dialogue_option = 0,
-				bonus_effects = [
-					{
-						code = "progress_quest",
-						value = "anastasia_quest",
-						stage = "stage0"
-					}
-				]
+				bonus_effects = []
 			},
 			{
 				text = "ANA_LETTER_1_2",
-				reqs = [
-
-				],
+				reqs = [],
 				previous_dialogue_option = 2
 			}
 		],
@@ -98,12 +88,6 @@ var data = {
 				],
 				dialogue_argument = 1,
 				type = "next_dialogue",
-				bonus_effects = [
-					{
-						code = "complete_quest",
-						value = "anastasia_quest"
-					}
-				]
 			}
 		]
 	},
@@ -142,11 +126,6 @@ var data = {
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				bonus_effects = [
-					{
-						code = "progress_quest",
-						value = "anastasia_quest",
-						stage = "stage1"
-					},
 					{
 						code = "screen_black_transition",
 						value = 1
@@ -816,9 +795,8 @@ var data = {
 				type = "next_dialogue",
 				bonus_effects = [
 					{
-						code = "progress_quest",
+						code = "comlete_quest",
 						value = "anastasia_quest",
-						stage = "stage7"
 					},
 					{
 						code = "add_timed_event",
@@ -924,9 +902,8 @@ var data = {
 						value = "ana_pt1_good"
 					},
 					{
-						code = "progress_quest",
+						code = "complete_quest",
 						value = "anastasia_quest",
-						stage = "stage7"
 					},
 					{
 						code = "add_timed_event",
@@ -1076,7 +1053,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "anastasia_quest",
+						value = "anastasia_quest_2",
 						stage = "stage8"
 					}
 				]
@@ -1326,7 +1303,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "anastasia_quest",
+						value = "anastasia_quest_2",
 						stage = "stage9"
 					},
 					{
@@ -1366,7 +1343,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "anastasia_quest",
+						value = "anastasia_quest_2",
 						stage = "stage10"
 					},
 					{
@@ -1415,7 +1392,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "anastasia_quest",
+						value = "anastasia_quest_2",
 						stage = "stage11"
 					}
 				]
@@ -1627,7 +1604,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "anastasia_quest",
+						value = "anastasia_quest_2",
 						stage = "stage12"
 					}
 				]
@@ -1775,7 +1752,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "anastasia_quest",
+						value = "anastasia_quest_2",
 						stage = "stage13"
 					},
 					{
@@ -1899,7 +1876,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "complete_quest",
-						value = "anastasia_quest"
+						value = "anastasia_quest_2"
 					},
 					{
 						code = "update_guild"
