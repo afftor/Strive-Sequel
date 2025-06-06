@@ -310,14 +310,14 @@ var template_dynamic = {
 	
 	#breakdown
 	breakdown_time = 2,
-	brk_mod_lose_friend = 0,
-	brk_mod_lose_lover = 0,
-	brk_mod_lose_relative = 0,
-	brk_mod_dislike_food = 0,
-	brk_mod_lose_virginity = 0,
-	brk_mod_grave_injury = 0,
-	brk_mod_grave_injury_res = 0,
-	brk_mod_terrible_date = 0,
+	brk_lose_friend = 0.1,
+	brk_lose_lover = 0.2,
+	brk_lose_relative = 0.25,
+	brk_dislike_food = 0.005,
+	brk_lose_virginity = 0.15,
+	brk_grave_injury = 0.2,
+	brk_grave_injury_res = 0.02,
+	brk_terrible_date = 0.1,
 }
 var manacost_mods = {
 	manacost_mod_all = 1.0,
