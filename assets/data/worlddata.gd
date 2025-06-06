@@ -1529,18 +1529,18 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'kuro_hideout_start', args = {}}]
 		}
 	],
-	quest_ashen_ridge  = [
-		{
-			text = tr("QUEST_ASHEN_RIDGE_1"), 
-			reqs = [{type = 'active_quest_stage', value = 'anastasia_quest', stage = 'stage3'}], 
-			args = [{code = 'start_event', data = 'ashen_ridge_1', args = []}]
-		},
-		{
-			text = tr("QUEST_ASHEN_RIDGE_2"), 
-			reqs = [{type = 'active_quest_stage', value = 'anastasia_quest', stage = 'stage4'}], 
-			args = [{code = 'start_event', data = 'ashen_ridge_3', args = []}]
-		}
-	],
+#	quest_ashen_ridge  = [
+#		{
+#			text = tr("QUEST_ASHEN_RIDGE_1"), 
+#			reqs = [{type = 'active_quest_stage', value = 'anastasia_quest', stage = 'stage3'}], 
+#			args = [{code = 'start_event', data = 'ashen_ridge_1', args = []}]
+#		},
+#		{
+#			text = tr("QUEST_ASHEN_RIDGE_2"), 
+#			reqs = [{type = 'active_quest_stage', value = 'anastasia_quest', stage = 'stage4'}], 
+#			args = [{code = 'start_event', data = 'ashen_ridge_3', args = []}]
+#		}
+#	],
 }
 
 var fixed_location_events = {

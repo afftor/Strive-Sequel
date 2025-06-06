@@ -50,7 +50,7 @@ var unique_dict = { #shows available talk characters. Scenes go in order from hi
 			{
 				code = 'ana_travel_initiate', 
 				reqs = [
-					{type = "active_quest_stage", value = "anastasia_quest", stage = "stage9"}
+					{type = "active_quest_stage", value = "anastasia_quest_2", stage = "stage9"}
 					]
 			},
 			{

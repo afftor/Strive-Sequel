@@ -49,6 +49,7 @@ var scenes = {
 	kuro_hideout = ['kuro_hideout_sex2', 'kuro_hideout_sex3', 'kuro_hideout_sex4', 'kuro_hideout_sex5', 'kuro_hideout_sex6'],
 	kuro_zeph_tailjob = ['kuro_zeph_tailjob3', 'kuro_zeph_tailjob4', 'kuro_zeph_tailjob5', 'kuro_zeph_tailjob6', 'kuro_zeph_tailjob7', 'kuro_zeph_tailjob8'],
 	kuro_wedding_pussy = ['kuro_wedding_1', 'kuro_wedding_2', 'kuro_wedding_pussy', 'kuro_wedding_pussy2'],
+	ana_blow = ['ana_blow_1', 'ana_blow_2', 'ana_blow_3', 'ana_blow_4', 'ana_blow_5'],
 	ana_wed = ['anastasia_wedding_1', 'ana_wed_2', 'ana_wed_3', 'ana_wed_4'],
 	zephyra_wed = ['zephyra_wedding_1', 'zephyra_wed_2', 'zephyra_wed_3', 'zephyra_wed_4'],
 }
@@ -60,7 +61,8 @@ var scenes_order = [
 	"daisy_dress_acquired_normal","cali_bj_happy","cali_riding","heleviel","lilia_sex","christmas",
 	"heleviel_mansion","lira_mansion", "cali_zephyra","cali_act5_pet","cali_act6_naked","pre_ritual_blow",
 	"zephyra_lilia", 'amelia_sex', 'zephyra_disappearance_sex', 'zephyra_disappearance_guards', 'daisy_wedding', 'cali_wedding', 'amelia_wedding', 'lilia_transform_t', 'lilia_transform_mc', 'lilith_blow', 'lilith_ride', 'lilia_wedding', 'lilith_wedding',
-	'kuro_tome', 'kuro_hideout', 'kuro_zeph_tailjob', 'kuro_wedding_pussy'
+	'kuro_tome', 'kuro_hideout', 'kuro_zeph_tailjob', 'kuro_wedding_pussy',
+	'ana_blow','ana_wed','zephyra_wed'
 	]
 var story_scenes = ['anastasia_event_alive', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
 var ero_scenes = [
@@ -115,7 +117,8 @@ var ero_scenes = [
 'kuro_top_1',
 'kuro_zephyra_1',
 'kuro_wedding_1',
-'ana_wedding_1',
+'ana_blow_1',
+'anastasia_wedding_1',
 'zephyra_wedding_1'
 ] 
 #fill next 2 arrays manually, if needed certain list
@@ -172,6 +175,7 @@ var ero_scenes_collection = {
 	'kuro_top_' : ['kuro_top_1', 'kuro_top_2', 'kuro_top_3', 'kuro_top_4', 'kuro_top_5'],
 	'kuro_zephyra_' : ['kuro_zephyra_1', 'kuro_zephyra_2', 'kuro_zephyra_3', 'kuro_zephyra_4', 'kuro_zephyra_5'],
 	'kuro_wedding_' : ['kuro_wedding_1', 'kuro_wedding_2', 'kuro_wedding_3', 'kuro_wedding_4', 'kuro_wedding_5', 'kuro_wedding_6'],
+	'ana_blow_': ['ana_blow_1', 'ana_blow_2', 'ana_blow_3', 'ana_blow_4', 'ana_blow_5'],
 	'ana_wed_': ['ana_wed_1', 'ana_wed_2', 'ana_wed_3', 'ana_wed_4', 'ana_wed_5', 'ana_wed_6', 'ana_wed_7'],
 	'zephyra_wed_': ['zephyra_wed_1', 'zephyra_wed_2', 'zephyra_wed_3', 'zephyra_wed_4', 'zephyra_wed_5', 'zephyra_wed_6', 'zephyra_wed_7'],
 }
@@ -232,6 +236,7 @@ var scene_tooltips = {
 	kuro_top_1 = "KURO_TOP_SS",
 	kuro_zephyra_1 = "KURO_ZEPHYRA_SS",
 	kuro_wedding_1 = "KURO_WEDDING_SS",
+	ana_blow_1 = "ANASTASIA_BLOWJOB_SS",
 	anastasia_wedding_1 = "ANASTASIA_WEDDING_SS",
 	zephyra_wedding_1 = "ZEPHYRA_WEDDING_SS",
 }
