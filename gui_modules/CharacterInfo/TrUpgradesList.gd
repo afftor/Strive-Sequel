@@ -228,7 +228,7 @@ func build_training_servant():
 	$training_servant/cost.text = tr('TRAININGCOST') % cost
 	
 	var resistance_value = person.get_stat('resistance')
-	var resistance_reduction = person.get_resistance_reduction()
+	var resistance_reduction = person.get_stat('resistance_red')
 	var resistance_text
 	if resistance_value > 0:
 		resistance_text = tr('TRAININGLABELRESISTANCEDROP') % [
@@ -280,7 +280,7 @@ func build_training_header():
 	$training/spirit.value = person.get_stat('spirit')
 	
 	var resistance_value = person.get_stat('resistance')
-	var resistance_reduction = person.get_resistance_reduction()
+	var resistance_reduction = person.get_stat('resistance_red')
 	var resistance_text
 	if resistance_value > 0:
 		resistance_text = tr('TRAININGLABELRESISTANCEDROP') % [

@@ -1160,9 +1160,6 @@ func process_training_metrics(value):
 func has_resistance_block():
 	return training.has_resistance_block()
 
-func get_resistance_reduction():
-	return training.get_resistance_reduction()
-
 func get_loyalty_penalty_data():
 	return training.get_loyalty_penalty_data()
 
