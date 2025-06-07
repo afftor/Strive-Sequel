@@ -34,7 +34,7 @@ func cooldown_tick():
 
 func tick():
 	if (is_slave() and can_be_trained()) or is_servant():
-		set_resistance(resistance - get_resistance_reduction())
+		set_resistance(resistance - parent.get_ref().get_stat('resistance_red'))
 	if is_servant():
 		loyalty += get_loyalty_growth()
 
@@ -43,11 +43,6 @@ func set_resistance(value):
 
 func rand_resistance():
 	set_resistance(round(rand_range(90, 100)))
-
-func get_resistance_reduction():
-	var reduction = 5 * parent.get_ref().get_stat('tame_factor')
-	reduction += reduction * parent.get_ref().get_stat('resistance_red_mod')
-	return reduction
 
 func get_loyalty_growth():
 	return 1 - resistance * 0.01

@@ -1214,7 +1214,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {resistance_red_mod = 0.2},
+		basestats = {resistance_red = 0.2},
 	},
 	test_collar2 = {
 		code = 'test_collar2',

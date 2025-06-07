@@ -510,6 +510,8 @@ func fix_stat_data(stat, data):
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
 			data.bonuses.add.push_back({value = -get_used_mastery_points('magic'), src_type = 'used', src_value = '', timestamp = 0})
+		'resistance_red':
+			data.base_value = 5 * get_stat('tame_factor')
 
 
 #setters
