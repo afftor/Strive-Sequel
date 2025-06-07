@@ -1113,6 +1113,20 @@ var effect_table = {
 			description = "TRAITEFFECTFREYACURSE",
 		}]
 	},
+	e_coffin_bless = {
+		type = 'temp_s',
+		stack = 'coffin_bless',
+		tick_event = variables.TR_TICK,
+		duration = 2,
+		statchanges = {exp_gain_mod = 0.2},
+		buffs = [
+			{
+				icon = "res://assets/images/gui/gui icons/food_love.png", #fix
+				description = "TRAITEFFECTFAVFOOD", #fix
+				tags = [],
+			}
+		],
+	},
 	e_pregnancy = {
 		type = 'simple',
 		tags = ['pregnant'],
@@ -1221,6 +1235,7 @@ var stacks = {
 	food = {
 		type = 'stack',
 	}, #transparent buffs
+	coffin_bless = {}, #stack 1
 	injury = {}, #stack 1
 	regen = {}, #stack 1
 	fireburst = {}, #stack 1
