@@ -670,7 +670,7 @@ var statdata = {
 		baseicon = 'stat_df',
 		type = '',
 		direct = false,
-		tags = ['custom_base'],
+		tags = ['custom_bonuses'],
 		default_bonus = 'add_part'
 	},
 	#personality

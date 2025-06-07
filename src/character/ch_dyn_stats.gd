@@ -325,9 +325,7 @@ func get_stat_data(stat, stop = variables.DYN_STATS_FULL): #full value
 					container = resists
 				'damage_mods':
 					container = damage_mods
-		if st_data.tags.has('custom_base'):
-			res.base_value = call('get_base_' + stat)
-		elif container.has(stat):
+		if container.has(stat):
 			if container[stat] is Array:
 				res.base_value = container[stat].duplicate()
 			else:
@@ -512,6 +510,8 @@ func fix_stat_data(stat, data):
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
 			data.bonuses.add.push_back({value = -get_used_mastery_points('magic'), src_type = 'used', src_value = '', timestamp = 0})
+		'resistance_red':
+			data.base_value = 5 * get_stat('tame_factor')
 
 
 #setters
@@ -1004,6 +1004,3 @@ func has_skill(id):
 		generate_data()
 	return c_skills_real.has(id) or skills_real.has(id) or e_skills_real.has(id)
 
-#base getters
-func get_base_resistance_red():
-	return 5 * parent.get_ref().get_stat('tame_factor')
