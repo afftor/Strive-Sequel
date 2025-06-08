@@ -2149,14 +2149,7 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-		text = [
-			{
-				text = "CHARRND_PRAY",
-				reqs = [
-
-				]
-			}
-		],
+		text = "CHARRND_PRAY",
 		options = [
 			{
 				code = "char_rnd_pray2",
@@ -2209,7 +2202,8 @@ var data = {
 					}
 				]
 			}
-		]
+		],
+		image = "slave_pray"
 	},
 	char_rnd_pray2 = {
 		reqs = [
@@ -2244,7 +2238,8 @@ var data = {
 
 				]
 			}
-		]
+		],
+		image = "slave_pray"
 	},
 	char_rnd_letter = {
 		reqs = [
@@ -2254,14 +2249,7 @@ var data = {
 			"dialogue_scene",
 			"active_character_translate"
 		],
-		text = [
-			{
-				text = "CHARRND_LETTER",
-				reqs = [
-
-				]
-			}
-		],
+		text = "CHARRND_LETTER",
 		options = [
 			{
 				code = "char_rnd_letter2",
@@ -2337,7 +2325,8 @@ var data = {
 					}
 				]
 			}
-		]
+		],
+		image = "slave_letter"
 	},
 	char_rnd_letter2 = {
 		reqs = [
@@ -2372,7 +2361,8 @@ var data = {
 
 				]
 			}
-		]
+		],
+		image = "slave_letter"
 	},
 	char_rnd_brokenvase = {
 		reqs = [

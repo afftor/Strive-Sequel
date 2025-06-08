@@ -5945,6 +5945,63 @@ var fixed_quality_stats = {
 			bonusstats = {atk = 55, critchance = 12, hitrate = 25, mod_hunt = 0.3, enchant_capacity = 400},
 		}
 	},
+	garb_of_forest = {
+		"" : {},
+		epic = {
+			bonusstats = {armor = 70, mdef = 40, evasion = 30, enchant_capacity = 350},
+			},
+		legendary = {
+			bonusstats = {armor = 80, mdef = 50, evasion = 35, enchant_capacity = 450},
+		}
+	},
+	hector_armor = {
+		"" : {},
+		good = {
+			bonusstats = {armor = 50, mdef = 20, enchant_capacity = 250},
+			},
+		epic = {
+			bonusstats = {armor = 55, mdef = 25, enchant_capacity = 300},
+			},
+		legendary = {
+			bonusstats = {armor = 65, mdef = 30,enchant_capacity = 400},
+		}
+	},
+	ramont_axe = {
+		"" : {},
+		good = {
+			bonusstats = {atk = 42, speed = -10, critchance = 4, enchant_capacity = 220},
+			},
+		epic = {
+			bonusstats = {atk = 47, speed = -10, critchance = 5, enchant_capacity = 250},
+			},
+		legendary = {
+			bonusstats = {atk = 55, speed = -10, critchance = 7, enchant_capacity = 275},
+		}
+		
+	},
+	erlen_sword = {
+		"" : {},
+		epic = {
+			bonusstats = {atk = 60, speed = 7, evasion = 20, enchant_capacity = 425},
+			},
+		legendary = {
+			bonusstats = {atk = 70, speed = 10, evasion = 25, enchant_capacity = 450},
+			}
+	},
+	ayneris_rapier = {
+		"" : {},
+		good = {
+			bonusstats = {atk = 43, speed = 15, evasion = 8, enchant_capacity = 375},
+			},
+		epic = {
+			bonusstats = {atk = 49, speed = 15, evasion = 11, enchant_capacity = 400},
+			},
+		legendary = {
+			bonusstats = {atk = 57, speed = 20, evasion = 15, enchant_capacity = 450},
+			}
+		
+	},
+	
 }
 
 

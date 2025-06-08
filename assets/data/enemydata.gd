@@ -2534,7 +2534,7 @@ var enemies = {
 		status_resists = {stun = 100, freeze = 90},
 		race = 'humanoid',
 		loot = 'bandit_loot',
-		icon = "res://assets/images/enemies/bandit_boss.png", 
+		icon = "res://assets/images/enemies/ana_merc.png", 
 		skills = ['leadersmark','sunder','ensnare'],
 		traits = ['boss_resists'],
 		tags = ['human','boss'], 

@@ -501,6 +501,10 @@ var scenes = {
 	
 	dungeon_forest_block = "res://assets/images/scenes/dungeon_forest_block.png",
 	
+	dungeon_library = "res://assets/images/scenes/library.png",
+	dungeon_tomb = "res://assets/images/scenes/tomb.png",
+	dungeon_cocoon = "res://assets/images/scenes/cocoon.png",
+	
 	celena_shrine = load("res://assets/images/scenes/celena_shrine.png"),
 	freya_shrine = load("res://assets/images/scenes/freya_shrine.png"),
 	erebus_shrine = load("res://assets/images/scenes/erebus_shrine.png"),
@@ -573,8 +577,8 @@ var scenes = {
 	nightmare = "res://assets/images/scenes/nightmare.png",
 	no_reaction = "res://assets/images/scenes/no_reaction.png",
 	quarrel = "res://assets/images/scenes/quarrel.png",
-	bar_quarrel = "res://assets/images/scenes/bar quarrel.png",
-	bar_quarrel2 = "res://assets/images/scenes/bar quarrel 2.png",
+	bar_quarrel = "res://assets/images/scenes/bar_quarrel.png",
+	bar_quarrel2 = "res://assets/images/scenes/bar_quarrel2.png",
 	rest = "res://assets/images/scenes/rest.png",
 	restoraunt_quarrel = "res://assets/images/scenes/restoraunt_quarrel.png",
 	scarhand = "res://assets/images/scenes/scarhand.png",
@@ -582,6 +586,8 @@ var scenes = {
 	table_sleep = "res://assets/images/scenes/table_sleep.png",
 	trap_rnd = "res://assets/images/scenes/trap_rnd.png",
 	treasure = "res://assets/images/scenes/treasure.png",
+	slave_letter = "res://assets/images/scenes/slave_letter.png",
+	slave_pray = "res://assets/images/scenes/slave_pray.png",
 	
 
 }
