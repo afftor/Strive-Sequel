@@ -590,12 +590,12 @@ var training_resistance = {
 }
 
 var breakdown_info = {
-	self.BRK_LOSE_FRIEND : {chance = 'brk_lose_friend', scene = 'brk_lose_friend'},
-	self.BRK_LOSE_LOVER : {chance = 'brk_lose_lover', scene = 'brk_lose_lover'},
-	self.BRK_LOSE_RELATIVE : {chance = 'brk_lose_relative', scene = 'brk_lose_relative'},
-	self.BRK_DISLIKE_FOOD : {chance = 'brk_dislike_food', scene = 'brk_dislike_food'},
-	self.BRK_LOSE_VIRGINITY : {chance = 'brk_lose_virginity', scene = 'brk_lose_virginity'},
-	self.BRK_GRAVE_INJURY : {chance = 'brk_grave_injury', scene = 'brk_grave_injury'},
-	self.BRK_GRAVE_INJURY_RES : {chance = 'brk_grave_injury_res', scene = 'brk_grave_injury_res'},
-	self.BRK_TERRIBLE_DATE : {chance = 'brk_terrible_date', scene = 'brk_terrible_date'},
+	self.BRK_LOSE_FRIEND : {chance = 0.1, text_option = 1},
+	self.BRK_LOSE_LOVER : {chance = 0.2, text_option = 2},
+	self.BRK_LOSE_RELATIVE : {chance = 0.25, text_option = 3},
+	self.BRK_DISLIKE_FOOD : {chance = 0.005, text_option = 4},
+	self.BRK_LOSE_VIRGINITY : {chance = 0.15, text_option = 5},
+	self.BRK_GRAVE_INJURY : {chance = 0.2, text_option = 6},
+	self.BRK_GRAVE_INJURY_RES : {chance = 0.02, text_option = 7},
+	self.BRK_TERRIBLE_DATE : {chance = 0.1, text_option = 8},
 }

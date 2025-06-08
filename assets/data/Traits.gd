@@ -958,6 +958,17 @@ var traits = {
 		},
 		tags = ['negative', 'no_sex_traits', 'disposition_change']
 	},
+	breakdown_test_trait = {
+		code = 'breakdown_test_trait',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconstraits/heart.png",
+		effects = [],
+		bonusstats = {breakdown_chance_mod = 0.5},
+		weight = 100,
+		tags = ['negative']
+	},
 	#master
 	master_mentor = {
 		name = '',

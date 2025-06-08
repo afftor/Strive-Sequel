@@ -2207,12 +2207,13 @@ func try_breakdown(event):
 	if xp_module.is_unavaliable(): return
 	
 	var info = variables.breakdown_info[event]
-#	print("%s try_breakdown on %s with %s" % [get_short_name(), event, get_stat(info.chance)])
-	if randf() <= get_stat(info.chance):
+#	var chance = info.chance * get_stat('breakdown_chance_mod')
+#	print("%s try_breakdown on %s with %s" % [get_short_name(), event, chance])
+	if randf() <= info.chance * get_stat('breakdown_chance_mod'):
 		xp_module.make_unavaliable(get_stat('breakdown_time'))
 		input_handler.active_character = self
 		input_handler.scene_characters.append(self)
-		input_handler.interactive_message(info.scene)
+		input_handler.interactive_message('breakdown_event', '', {start_dialogue_option = info.text_option})
 
 func try_breakdown_on_char_loss(lost_char):
 	if xp_module.is_unavaliable(): return
