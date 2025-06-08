@@ -18761,6 +18761,22 @@ Spent and satisfied, you carefully withdraw from her tight passage, admiring how
 
 — Ah... I didn't think you'd actually do it... But I'm not complaining, I might like this show of your affection no less than the other.""",
 	
-	
+	DIALOGUEEVENTDUNGEONCOCCOON_1 = """As the team navigate the damp, echoing tunnels, your torchlight catches a glimmer of pale webbing ahead. A human-shaped cocoon dangles from the ceiling, swaying slightly as faint movements ripple beneath its silken surface. The cocoon twitches again, a muffled sound escaping it, indicating the rare victim which is still alive.""",
+	DIALOGUEEVENTDUNGEONCOCCOON_OPTION1 = "Free them (10 stamina)",
+	DIALOGUEEVENTDUNGEONCOCCOON_OPTION2 = " [Strength Challenge] Select character (3 stamina)",
+	DIALOGUEEVENTDUNGEONCOCCOON_2 = """You take your time freeing the spiders' victim. Finally they are cut free for you to decide on their future fate.""",
+	DIALOGUEEVENTDUNGEONCOCCOON_3 = """With a grunt, [name] tears through the silk in moments, freeing a shaken stranger who scrambles onto the floor.""",
+	DIALOGUEEVENTDUNGEONCOCCOON_4 = """You leave the hanging victim on its own and move on.""",
+	DIALOGUEEVENTDUNGEONLIBRARY_1 = """The dungeon’s twisting corridors reveal a half-hidden door. It creaks open to reveal a small, abandoned library room, its shelves sagging under dusty tomes and scattered scrolls. The shelves loom, packed with knowledge but fragile with age.""",
+	DIALOGUEEVENTDUNGEONLIBRARY_OPTION1 = "Search Through Slowly (-10 stamina)",
+	DIALOGUEEVENTDUNGEONLIBRARY_OPTION2 = "[Wisdom Challenge] Select Character (-3 stamina)",
+	DIALOGUEEVENTDUNGEONLIBRARY_2 = """After slow searching through the shelves you manage to""",
+	DIALOGUEEVENTDUNGEONLIBRARY_3 = """[name] scans through the room for obvious signs of the most curious and preserved pieces of literature. It only takes a moment for [him] to find something valuable.""",
+	DIALOGUEEVENTDUNGEONLIBRARY_4 = """You decide it's not worth the effort and leave the library room unexamined.""",
+	DIALOGUEEVENTDUNGEONCOFFIN_1 = """The dungeon’s shadowed depths reveal an ancient coffin carved from dark stone, its lid etched with a human-shaped relief. The air grows heavy, thick with dust and a strange stillness, as if the coffin itself watches you.""",
+	DIALOGUEEVENTDUNGEONCOFFIN_OPTION1 = "Open It (-5 stamina)",
+	DIALOGUEEVENTDUNGEONCOFFIN_OPTION2 = "Pay Respects and Leave",
+	DIALOGUEEVENTDUNGEONCOFFIN_2 = """You wedge your blade under the lid and heave it open, revealing a glinting treasure nestled within...""",
+	DIALOGUEEVENTDUNGEONCOFFIN_3 = """You kneel briefly, murmuring respect to the ancient dead, and turn away. You leave empty-handed but unburdened.""",
 	
 }

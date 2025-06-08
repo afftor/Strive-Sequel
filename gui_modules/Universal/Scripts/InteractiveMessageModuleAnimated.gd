@@ -635,6 +635,11 @@ func repeat():
 	input_handler.repeat_social_skill()
 	# input_handler.update_slave_panel()
 
+func add_to_captured(order = 0):
+	input_handler.active_character = input_handler.scene_characters[order]
+	capture()
+
+
 func recruit_from_scene(order = 0):
 	input_handler.active_character = input_handler.scene_characters[order]
 	recruit()
@@ -655,6 +660,13 @@ func recruit(capture = false):
 #		return
 	input_handler.active_character.recruit(capture)
 	close()
+
+
+func capture():
+	hold_selection = true
+	input_handler.active_character.add_to_captured()
+	close()
+
 
 func create_location_recruit(args):
 	var newchar = ResourceScripts.scriptdict.class_slave.new("location_recruit")
