@@ -1,7 +1,7 @@
 extends Reference
 
 var skills = {
-	mentor = {  #fix
+	mentor = { 
 		code = 'mentor',
 		descript = '',
 		type = 'social',
@@ -140,7 +140,7 @@ var skills = {
 		value = [['0']],
 		damagestat = 'no_stat'
 	},
-	soul_bind = { #fix prams
+	soul_bind = {
 		code = 'soul_bind',
 		descript = '',
 		type = 'social',
@@ -149,7 +149,6 @@ var skills = {
 		reqs = [],
 		targetreqs = [{code = 'is_master', check = false}],
 		effects = [
-#			Effectdata.rebuild_template({effect = 'e_s_dominate'}),
 			Effectdata.rebuild_template({effect = 'e_s_bond'}),
 		],
 		cost = {mp = 50},
@@ -434,18 +433,18 @@ var atomic_effects = {
 
 var buffs = {
 	b_mastermentor = {
-		icon = "res://assets/images/iconsskills/Mindread.png",#fix
+		icon = "res://assets/images/iconsskills/Mindread.png",
 		description = "BUFFDESCRIPTMENTOR",
 		t_name = 'master_mentor',
 		mansion_only = true
 	},
 	b_soulbind = {
-		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",
 		description = "",
 		t_name = 'soulbind',
 	},
 	b_soulbindcaster = { #not used
-		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",
 		description = "",
 		t_name = 'soulbindcaster',
 	},

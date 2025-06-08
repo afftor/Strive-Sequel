@@ -5202,7 +5202,7 @@ var enchantments = {
 	sharpness = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/sharpness_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/sharpness_mono_100.png"), 
 		reqs = [
 			{code = 'stat', stat = 'tags',operant = 'has', value = 'bladed', check = true}
 		],
@@ -5241,7 +5241,7 @@ var enchantments = {
 	spell_mastery = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/spellmaster_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/spellmaster_mono_100.png"), 
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
 		],
@@ -5276,7 +5276,7 @@ var enchantments = {
 	penetrator = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/spellmaster_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/penetrator.png"),
 		reqs = [
 			{code = 'stat', stat = 'geartype', operant = 'eq', value = 'bow', check = true},
 			{code = 'stat', stat = 'geartype', operant = 'eq', value = 'spear', check = true, orflag = true}
@@ -5316,7 +5316,7 @@ var enchantments = {
 	stun_immune = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/antistan_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/antistan_mono_100.png"), 
 		reqs = [
 			{code = 'stat', stat = 'geartype', operant = 'eq', value = 'shield', check = true}
 		],
@@ -5332,7 +5332,7 @@ var enchantments = {
 	thorns = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/thorns_color_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/thorns_color_100.png"), 
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
 			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
@@ -5368,7 +5368,7 @@ var enchantments = {
 	carapace = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/carapace_moni_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/carapace_moni_100.png"), 
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
 			{code = 'stat', stat = 'geartype', operant = 'eq', value = 'shield', check = true, orflag = true}
@@ -5415,7 +5415,7 @@ var enchantments = {
 	vampirism = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/vampire_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/vampire_mono_100.png"),
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
 		],
@@ -5455,7 +5455,7 @@ var enchantments = {
 	commander = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/commander_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/commander_mono_100.png"),
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
 			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
@@ -5480,7 +5480,7 @@ var enchantments = {
 	warlock = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/warlock_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/warlock_mono_100.png"),
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
 		],
@@ -5515,7 +5515,7 @@ var enchantments = {
 	treasurehunt = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/Treasure Hunter_150.png"), #fix
+		icon = load("res://assets/images/iconsenchants/Treasure Hunter_150.png"),
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
 			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
@@ -5549,7 +5549,7 @@ var enchantments = {
 	reaper = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/reaper_150.png"), #fix
+		icon = load("res://assets/images/iconsenchants/reaper_150.png"),
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
 		],
@@ -5578,7 +5578,7 @@ var enchantments = {
 	beasthunter = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/Beast Hunter_150.png"), #fix
+		icon = load("res://assets/images/iconsenchants/Beast Hunter_150.png"),
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
 		],
@@ -5607,7 +5607,7 @@ var enchantments = {
 	undeadbane = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/Undead Bane_150.png"), #fix
+		icon = load("res://assets/images/iconsenchants/Undead Bane_150.png"),
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
 		],
@@ -5636,7 +5636,7 @@ var enchantments = {
 	giantslayer = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/Giant Slayer_150.png"), #fix
+		icon = load("res://assets/images/iconsenchants/Giant Slayer_150.png"),
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
 		],
@@ -5665,7 +5665,7 @@ var enchantments = {
 	dragonslayer = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/Dragon Slayer_150.png"), #fix
+		icon = load("res://assets/images/iconsenchants/Dragon Slayer_150.png"),
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
 		],
@@ -5694,7 +5694,7 @@ var enchantments = {
 	manasiphon = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/Mana siphon_150.png"), #fix
+		icon = load("res://assets/images/iconsenchants/Mana siphon_150.png"),
 		reqs = [
 			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'weapon', check = true}
 		],
@@ -5723,7 +5723,7 @@ var enchantments = {
 	nimble = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/Nimbleness_150.png"), #fix
+		icon = load("res://assets/images/iconsenchants/Nimbleness_150.png"),
 		reqs = [
 #			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
 			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
@@ -5757,7 +5757,7 @@ var enchantments = {
 	knowledge = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/Knowledge_150.png"), #fix
+		icon = load("res://assets/images/iconsenchants/Knowledge_150.png"),
 		reqs = [
 #			{code = 'stat', stat = 'itemtype', operant = 'eq', value = 'armor', check = true},
 			{code = 'stat', stat = 'slots', operant = 'has', value = 'chest', check = true},
@@ -5793,13 +5793,13 @@ var curses = {
 	stub_minor = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), 
 		statmods = {enchant_capacity_mul = 1.25}
 	},
 	weakness_minor = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"),
 #		effects = ['curse_weakness_1'],
 #		capacity_multiplyer = 1.25
 		statmods = {enchant_capacity_mul = 1.25, physics_bonus_add = -30}
@@ -5807,7 +5807,7 @@ var curses = {
 	slowwit_minor = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"),
 #		effects = ['curse_slowwit_1'],
 #		capacity_multiplyer = 1.25
 		statmods = {enchant_capacity_mul = 1.25, wits_bonus_add = -30}
@@ -5815,7 +5815,7 @@ var curses = {
 	hideous_minor = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"),
 #		effects = ['curse_hideous_1'],
 #		capacity_multiplyer = 1.25
 		statmods = {enchant_capacity_mul = 1.25, charm_bonus_add = -30}
@@ -5823,7 +5823,7 @@ var curses = {
 	decline_minor = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"),
 		effects = ['curse_decline_1'],
 #		capacity_multiplyer = 1.25
 		statmods = {enchant_capacity_mul = 1.25}
@@ -5831,7 +5831,7 @@ var curses = {
 	fragility_minor = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"),
 		effects = ['curse_fragility_1'],
 #		capacity_multiplyer = 1.25
 		statmods = {enchant_capacity_mul = 1.25}
@@ -5839,7 +5839,7 @@ var curses = {
 #	distrust_minor = {
 #		name = '',
 #		descript = '',
-#		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+#		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), 
 #		effects = ['curse_distrust_1'],
 ##		capacity_multiplyer = 1.25
 #		statmods = {enchant_capacity_mul = 1.25}
@@ -5847,13 +5847,13 @@ var curses = {
 	stub_major = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"),
 		statmods = {enchant_capacity_mul = 1.5}
 	},
 	weakness_major = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), 
 #		effects = ['curse_weakness_2'],
 #		capacity_multiplyer = 1.5
 		statmods = {enchant_capacity_mul = 1.5, physics_bonus_add = -60}
@@ -5861,7 +5861,7 @@ var curses = {
 	slowwit_major = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"),
 #		effects = ['curse_slowwit_2'],
 #		capacity_multiplyer = 1.5
 		statmods = {enchant_capacity_mul = 1.5, wits_bonus_add = -60}
@@ -5869,7 +5869,7 @@ var curses = {
 	hideous_major = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"),
 #		effects = ['curse_hideous_2'],
 #		capacity_multiplyer = 1.5
 		statmods = {enchant_capacity_mul = 1.5, charm_bonus_add = -60}
@@ -5877,7 +5877,7 @@ var curses = {
 	decline_major = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"),
 		effects = ['curse_decline_2'],
 #		capacity_multiplyer = 1.5
 		statmods = {enchant_capacity_mul = 1.5}
@@ -5885,7 +5885,7 @@ var curses = {
 	fragility_major = {
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"),
 		effects = ['curse_fragility_2'],
 #		capacity_multiplyer = 1.5
 		statmods = {enchant_capacity_mul = 1.5}
@@ -5893,7 +5893,7 @@ var curses = {
 #	distrust_major = {
 #		name = '',
 #		descript = '',
-#		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"), #fix
+#		icon = load("res://assets/images/iconsenchants/curse_mono_100.png"),
 #		effects = ['curse_distrust_2'],
 ##		capacity_multiplyer = 1.5
 #		statmods = {enchant_capacity_mul = 1.5}

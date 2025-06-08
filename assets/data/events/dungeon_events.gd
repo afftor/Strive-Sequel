@@ -1344,7 +1344,7 @@ var data = {
 				type = "tableloot",
 				pool = [
 					[
-						"medium_boss_chest",
+						"library_loot",
 						1
 					]
 				]
@@ -1381,7 +1381,7 @@ var data = {
 				type = "tableloot",
 				pool = [
 					[
-						"medium_boss_chest",
+						"library_loot",
 						1
 					]
 				]

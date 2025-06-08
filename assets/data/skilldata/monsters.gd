@@ -183,7 +183,7 @@ var effects = {
 		statchanges = {bleed_damage = 0.33, poison_damage = 0.33, burn_damage = 0.33, darkflame_damage = 0.33},
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Authority.png",#fix
+				icon = "res://assets/images/iconsskills/Authority.png",
 				description = "More resistant to Damage over time and Control effects",
 			}
 		],
