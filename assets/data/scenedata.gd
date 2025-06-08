@@ -253,7 +253,7 @@ var scenedict = {
 		text = tr("DIALOGUEDUNGEONCHEST"),
 		tags = ['locked_chest'],
 		image = 'chest',
-		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5],['easy_chest_map', 0.2]]}],
+		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5],['easy_chest_map', 2000]]}],
 		options = [
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
 		]
@@ -1725,6 +1725,8 @@ var scenedict = {
 		],
 	},
 	
+	
+	
 #	activate_trap_easy = {
 #		variations = [
 #			{reqs = [{type = 'active_character_checks', value = [{code = 'trait', trait = 'trap_detection', check = true}]},
@@ -1843,7 +1845,7 @@ var dialogue_inits = {
 		},
 		{
 			code = 'default',
-			name = tr("DIALOGUEMEETLEADER"), #fix&
+			name = tr("DIALOGUEMEETLEADER"),
 			reqs = [
 				{type = 'active_quest_stage', value = 'anastasia_quest_2', stage = 'stage13'}
 			],

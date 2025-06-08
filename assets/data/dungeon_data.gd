@@ -505,6 +505,18 @@ var dungeons = {
 					['event_magic_barrier',0.8]
 				],
 			},
+			library = {
+				limit = 1,
+				weight = 2,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['event_dungeon_library_1'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.8]
+				],
+			},
 		},
 		
 		event_room_number = [3,4],
@@ -512,7 +524,7 @@ var dungeons = {
 		
 		main_route_length = [6,7],
 		bonus_rooms = [2,3],
-		levels = [2,3], 
+		levels = [3,3], 
 		base_room_stamina_cost = [7,10], 
 		
 		
@@ -522,7 +534,7 @@ var dungeons = {
 		
 		bgm = "dungeon",
 		gather_mod = [2,2.5],
-		purchase_price = 200,
+		purchase_price = 400,
 		affiliation = 'local',
 		events = [],
 		tags = [],
@@ -544,20 +556,6 @@ var dungeons = {
 		enemyarray =  [["skeletons_easy", 1],['skeletons_easy2', 1],['skeletons_zombies', 1],['skeletons_zombies2', 1],['skeletons_lich', 0.5]],
 		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
 		event_data = {
-			dungeon_find_chest_easy = {
-				limit = 0,
-				weight = 10,
-				floor_range = [0,0],
-				icon = 'chest',
-				events = ['dungeon_find_chest_easy'],
-				possible_challenges = [
-					['event_locked_door',1],
-					['event_blocked_path',1],
-					['event_magic_barrier',1],
-					['event_fallen_bridge',1],
-					['event_small_crack',1],
-				],
-			},
 			crypt_find_bones = {
 				limit = 0,
 				weight = 3,
@@ -586,12 +584,24 @@ var dungeons = {
 					['event_small_crack',1]
 				],
 			},
-			fountain = {
+			event_dungeon_coffin_1 = {
+				limit = 1,
+				weight = 4,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['event_dungeon_coffin_1'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.8]
+				],
+			},
+			library = {
 				limit = 1,
 				weight = 2,
 				floor_range = [0,0],
-				icon = 'man',
-				events = ['fountain'],
+				icon = 'chest',
+				events = ['event_dungeon_library_1'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
@@ -817,6 +827,17 @@ var dungeons = {
 					['event_fallen_bridge',1],
 				],
 			},
+			event_dungeon_coccoon = {
+				limit = 0,
+				weight = 6,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['event_dungeon_coccoon_1'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_fallen_bridge',1],
+				],
+			},
 			celena_shrine_find = {
 				limit = 1,
 				weight = 4,
@@ -892,6 +913,18 @@ var dungeons = {
 					['event_magic_barrier',1],
 					['event_fallen_bridge',1],
 					['event_small_crack',1],
+				],
+			},
+			library = {
+				limit = 1,
+				weight = 0.5,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['event_dungeon_library_1'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.8]
 				],
 			},
 		},
@@ -984,7 +1017,7 @@ var dungeons = {
 			},
 			celena_shrine_find = {
 				limit = 1,
-				weight = 4,
+				weight = 1,
 				floor_range = [0,0],
 				icon = 'shrine',
 				events = [['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5],['hybris_shrine_find',0.3]],
@@ -995,7 +1028,22 @@ var dungeons = {
 					['event_small_crack',1],
 					['event_ancient_lock',1]
 				],
-			}
+			},
+			event_dungeon_coffin_1 = {
+				limit = 1,
+				weight = 3,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['event_dungeon_coffin_1'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
+			},
+			
 		},
 		
 		event_room_number = [3,4],
@@ -1068,18 +1116,32 @@ var dungeons = {
 					['event_ancient_lock',1]
 				],
 			},
-			fountain = { #probably replace later
+			library = {
 				limit = 1,
-				weight = 1,
+				weight = 3,
 				floor_range = [0,0],
-				icon = 'man',
-				events = ['fountain'],
+				icon = 'chest',
+				events = ['event_dungeon_library_1'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
 					['event_magic_barrier',0.8]
 				],
-			}
+			},
+			event_dungeon_coffin_1 = {
+				limit = 1,
+				weight = 3,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['event_dungeon_coffin_1'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
+			},
 		},
 		
 		
@@ -1115,7 +1177,7 @@ var dungeons = {
 			races = [['local', 2], ['common',2], ['uncommon',2], ['rare',1]]
 		},
 		difficulty = 'medium',
-		background_pool = ['goblin_stronghold1', 'goblin_stronghold1', 'goblin_stronghold1'],
+		background_pool = ['goblin_stronghold1', 'goblin_stronghold2', 'goblin_stronghold3', 'goblin_stronghold4'],
 		custom_background = 'combat_fort',
 		enemyarray =  [["goblin_stronghold_easy", 1],['goblin_stronghold_easy1', 1],['goblin_stronghold_tormentor', 0.5],['goblin_stronghold_tormentor1', 0.5],['goblin_stronghold_vulture', 0.5]],
 		final_enemy = [['goblin_stronghold_warlord_boss',1], ['goblin_stronghold_alchemist_boss',0.7], ['goblin_stronghold_battle_troll_boss',0.5]], final_enemy_type = 'character', final_enemy_class = ['combat'],

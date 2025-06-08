@@ -2,12 +2,17 @@
 Added new Anastasia quest, 1 scene and 1 wedding scene
 Added Zephyra's wedding scene
 Added breakdown mechanic for slaves
+Added new dungeon events
+Added new dungeon map to loot tables
+Slightly rebalanced some loot and event lists
 Corrected some quest texts
 Gifted now gives 50% more mana instead of 100%
 Minor adjustments to elf/tribal elf race bonuses
+Added upgradeabiltiy to some unique items
+Fixed memory leaks tied to chat banter and random events
 Fixed Lizard skin gathering issue
 Fixed unique characters not assigning their virginity correctly on spawn
-Fixed Yye of the storm not working correctly
+Fixed Eye of the storm not working correctly
 Fixed Rally not recovering hp 
 0.11.0e
 Slightly reduced Staves MATK bonus and rebalanced ATK bonus

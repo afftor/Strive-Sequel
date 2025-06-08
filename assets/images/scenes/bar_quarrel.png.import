@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bar quarrel.png-bd890d9d4fce043a8f80bba9d7325d96.stex"
+path="res://.import/bar_quarrel.png-380e9a34011da6206407e0ee11913fba.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/bar quarrel.png"
-dest_files=[ "res://.import/bar quarrel.png-bd890d9d4fce043a8f80bba9d7325d96.stex" ]
+source_file="res://assets/images/scenes/bar_quarrel.png"
+dest_files=[ "res://.import/bar_quarrel.png-380e9a34011da6206407e0ee11913fba.stex" ]
 
 [params]
 

@@ -682,6 +682,13 @@ func recruit(enslave = false):
 		set_work_rule('bindings', true)
 	ResourceScripts.game_party.add_slave(self)
 
+
+func add_to_captured():
+	is_active = true
+	input_handler.active_location.captured_characters.push_back(id)
+	input_handler.emit_signal("LocationSlavesUpdate")
+
+
 func recruit_and_return():
 	travel.return_recruit()
 	ResourceScripts.game_party.add_slave(self)

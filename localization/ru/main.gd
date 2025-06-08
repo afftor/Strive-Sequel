@@ -2064,6 +2064,7 @@ Hotkey: 3""",
 	DESCRIPTCLASSMERC = """[name] было нанят/а вами и стоит вам золота.""",
 	DESCRIPTCLASSHEIR = """[name] ваш наследник.""",
 	DESCRIPTCLASSSLAVE_TRAINED = "[name] является вашим обученным рабом и не нуждается в контроле.",
+	DESCRIPTCLASSSPOUSE = """[name] is your spouse, [his] children will become Heirs.""", # MISSING TRANSLATION
 	DESCRPTCLASSSPOUSE = """[name] is your spouse, [his] children will become Heirs.""", # MISSING TRANSLATION
 	
 	CLASSDETAILSKILLS = """Навыки""",
@@ -2160,6 +2161,7 @@ Hotkey: 3""",
 	STATTRAINEE_AMOUNT = """Слоты тренировок""",
 	STATTRAINING_LOYALTY = """Лояльность от обучения""",
 	STATTRAINING_SPIRIT = """Дух от обучения""",
+	STATRESISTANCE_RED = """Resistance drop speed""", # MISSING TRANSLATION
 	TRAITTRAINER = """Тренер""",
 	TRAITTRAINERDESCRIPT = """Может наблюдать за рабами""",
 	STATSPIRIT = """Дух""",
@@ -2245,6 +2247,24 @@ Hotkey: 3""",
 	
 	STATFOOD_CONSUMPTION = """Потребление еды""",
 	STATFOOD_CONSUMPTIONDESCRIPT = """Количество продуктов питания, необходимое человеку каждый день. Недостаток пищи приводит к голоду, истощению и в конечном итоге к смерти.""",
+	STATBREAKDOWN_TIME = """Breakdown period""", # MISSING TRANSLATION
+	STATBREAKDOWN_TIMEDESCRIPT = """Period of unavailability after breakdown""", # MISSING TRANSLATION
+	STATBRK_LOSE_FRIEND = """Breakdown chance on losing friend""", # MISSING TRANSLATION
+	STATBRK_LOSE_LOVER = """Breakdown chance on losing lover""", # MISSING TRANSLATION
+	STATBRK_LOSE_RELATIVE = """Breakdown chance on losing relative""", # MISSING TRANSLATION
+	STATBRK_DISLIKE_FOOD = """Breakdown chance on disliked food""", # MISSING TRANSLATION
+	STATBRK_LOSE_VIRGINITY = """Breakdown chance on losing virginity""", # MISSING TRANSLATION
+	STATBRK_GRAVE_INJURY = """Breakdown chance on grave injury""", # MISSING TRANSLATION
+	STATBRK_GRAVE_INJURY_RES = """Breakdown chance on resurrection""", # MISSING TRANSLATION
+	STATBRK_TERRIBLE_DATE = """Breakdown chance on terrible date""", # MISSING TRANSLATION
+	BREAKDOWN_LFRIEND = """[name] had a breakdown due to losing a friend""", # MISSING TRANSLATION
+	BREAKDOWN_LLOVER = """[name] had a breakdown due to losing a lover""", # MISSING TRANSLATION
+	BREAKDOWN_LRELATIVE = """[name] had a breakdown due to losing a relative""", # MISSING TRANSLATION
+	BREAKDOWN_FOOD = """[name] had a breakdown due to being upset about their current food""", # MISSING TRANSLATION
+	BREAKDOWN_LVIRGINITY = """[name] had a breakdown due to losing their virginity""", # MISSING TRANSLATION
+	BREAKDOWN_GRAVEIN = """[name] had a breakdown due to suffering a grave injury""", # MISSING TRANSLATION
+	BREAKDOWN_GRAVEIN_RES = """[name] had a breakdown due to being resurrected and suffering a grave injury""", # MISSING TRANSLATION
+	BREAKDOWN_DATE = """[name] had a breakdown due to a terrible date""", # MISSING TRANSLATION
 	MASTER_POINTS = """Мастерство""",
 
 	TOOLTIPENERGY = """Энергия восстанавливается во время сна и требуется для выполнения задач. Когда персонаж вынужден работать без энергии, его Истощение увеличивается.""",
@@ -3167,6 +3187,7 @@ Requires: Базовый рабский труд""",
 	TRAITSTUNIMMUNITYDESCRIPT = "Невозмлжно оглушить в бою.",
 	TRAITEFFECTCURSE = """Все сопротивления снижены""",
 	TRAITEFFECTHASTE = """Скорость увеличена""",
+	EFFECTCOFFIBLESS = """Increased Experience gain by 20%%""", # MISSING TRANSLATION
 	EUPHORIABUFF = """Эйфория: Урон увеличен""",
 	BUFFDESCRIPTSHACKLES = """Оковы""",
 	BUFFDESCRIPTGREATSHACKLES = """Великие оковы""",
@@ -4422,6 +4443,7 @@ Requires: Базовый рабский труд""",
 	ENEMYBANDIT_BOSS_MAGE = """Разбойный маг""",
 	ENEMYRAMONT_BOSS = """Рамонт""",
 	ENEMYHECTOR_BOSS = """Гектор""",
+	ENEMYREYAN_BOSS = """Reyan""", # MISSING TRANSLATION
 	ENEMYREBEL_RECRUIT = """Рекрут повстанцев""",
 	ENEMYREBEL_KNIGHT = """Рыцарь  повстанцев""",
 	ENEMYREBEL_MAGE = """Маг  повстанцев""",
@@ -17077,6 +17099,24 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	LILITH_PATRON_QUEST_STAGE_13 = """Посетите Ксари""",
 	LILITH_PATRON_QUEST_STAGE_14 = """Попросите Лилит встретиться с ее покровителем""",
 	LILITH_PATRON_QUEST_STAGE_15 = """Исследуйте заброшенную Скрытую рощу""",
+	ANASTASIA_QUEST_NAME = """Anastasia: Virtue by proxy""", # MISSING TRANSLATION
+	ANASTASIA_QUEST_SUMMARY = """Anastasia has received a call for help and just can't sit around waiting. She has tasked you to help out.""", # MISSING TRANSLATION
+	ANASTASIA_QUEST_STAGE0 = """Take letter""", # MISSING TRANSLATION
+	ANASTASIA_QUEST_STAGE1 = """Read letter""", # MISSING TRANSLATION
+	ANASTASIA_QUEST_STAGE2 = """Meet Liora at Aliron""", # MISSING TRANSLATION
+	ANASTASIA_QUEST_STAGE3 = """Travel to Ashen Ridge""", # MISSING TRANSLATION
+	ANASTASIA_QUEST_STAGE4 = """Explore Goblin cave""", # MISSING TRANSLATION
+	ANASTASIA_QUEST_STAGE5 = """Return to Liora in Aliron""", # MISSING TRANSLATION
+	ANASTASIA_QUEST_STAGE6 = """Talk to Anastasia""", # MISSING TRANSLATION
+	ANASTASIA_QUEST_STAGE7 = """""", # MISSING TRANSLATION
+	ANASTASIA_QUEST2_NAME = """Anastasia: Proof of loyalty""", # MISSING TRANSLATION
+	ANASTASIA_QUEST2_SUMMARY = """You have received a task from Duncan... It seems to involve rebels.""", # MISSING TRANSLATION
+	ANASTASIA_QUEST_STAGE8 = """Meet with Duncan""", # MISSING TRANSLATION
+	ANASTASIA_QUEST_STAGE9 = """Talk to Anastasia""", # MISSING TRANSLATION
+	ANASTASIA_QUEST_STAGE10 = """Go to Rebel Fort""", # MISSING TRANSLATION
+	ANASTASIA_QUEST_STAGE11 = """Deal with Fort Defenders.""", # MISSING TRANSLATION
+	ANASTASIA_QUEST_STAGE12 = """Deal with Reyan""", # MISSING TRANSLATION
+	ANASTASIA_QUEST_STAGE13 = """Return to Duncan""", # MISSING TRANSLATION
 	HARA_SCALES_QUEST_NAME = """Хара: починка весов""",
 	HARA_SCALES_QUEST_SUMMARY = """Помогите Харе починить Весы Судьбы для короля""",
 	HARA_SCALES_QUEST_SEE_HARA = """Посетить Хару в мастерской""",

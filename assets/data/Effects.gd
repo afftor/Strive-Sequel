@@ -1113,6 +1113,20 @@ var effect_table = {
 			description = "TRAITEFFECTFREYACURSE",
 		}]
 	},
+	e_coffin_bless = {
+		type = 'temp_s',
+		stack = 'coffin_bless',
+		tick_event = variables.TR_TICK,
+		duration = 2,
+		statchanges = {exp_gain_mod = 0.2},
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/icon_mirror_image.png",
+				description = "EFFECTCOFFIBLESS",
+				tags = [],
+			}
+		],
+	},
 	e_pregnancy = {
 		type = 'simple',
 		tags = ['pregnant'],
@@ -1221,6 +1235,7 @@ var stacks = {
 	food = {
 		type = 'stack',
 	}, #transparent buffs
+	coffin_bless = {}, #stack 1
 	injury = {}, #stack 1
 	regen = {}, #stack 1
 	fireburst = {}, #stack 1
@@ -1440,23 +1455,23 @@ var buffs = {
 		tags = ['show_in_traits', 'mansion_only', 'unified_desc']
 	},
 	b_bold = {
-		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",
 		description = "BUFFDESCRIPTBOLD",
 	},
 	b_kind = {
-		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",
 		description = "BUFFDESCRIPTKIND",
 	},
 	b_shy = {
-		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",
 		description = "BUFFDESCRIPTSHY",
 	},
 	b_serious = {
-		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",
 		description = "BUFFDESCRIPTSERIOUS",
 	},
 	b_dayoff = {
-		icon = "res://assets/images/iconsenchants/curse_mono_100.png",#fix
+		icon = "res://assets/images/iconsenchants/curse_mono_100.png",
 		description = "",
 	},
 	b_hide = {

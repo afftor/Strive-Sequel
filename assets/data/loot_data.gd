@@ -40,6 +40,15 @@ extends Reference
 #	* armor - same as gear, but only for "armor" itemtype.
 
 
+#example = {selector = [
+# {loot_table = 'easy_chest_usable', weight = 1},
+# {loot_table = 'easy_chest_gear', weight = 0.7},
+# {loot_table = 'easy_chest_cosmetics', weight = 0.2},
+# {loot_table = 'easy_chest_map', weight = 0.3},
+#]},
+
+
+
 var loot_tables = {
 	#enemy's loot
 	#MIND! in old enemies' loot tables second param became "chance_per_unit" if there was third param (amount)
@@ -164,14 +173,31 @@ var loot_tables = {
 		{random = 'static_gear', amount = 1, tiers = ['easy']},]},
 	easy_chest_map = {list = [
 		{random = 'material', min = 4, max = 10, from_location = true},
-		{amount = 1, selector = [
+		{selector = [
+			{loot_table = "easy_maps", weight = 5},
+			{loot_table = "medium_maps", weight = 1},
+			]},
+		]},
+	easy_maps = {list = [
+		{selector = [
 			{item = 'map_bandit_den'},
 			{item = 'map_goblin_cave'},
-			{item = 'map_bandit_fort'},
 			{item = 'map_grove'},
-			{item = 'map_ancient_jungle'},
-			{item = 'map_undead_crypt'},
 			{item = 'map_spider_lair'}]}
+		]},
+	medium_maps = {list = [
+		{selector = [
+			{item = 'map_undead_crypt'},
+			{item = 'map_ancient_jungle'},
+			{item = 'map_bandit_fort'},
+			]}
+		]},
+	hard_maps = {list = [
+		{selector = [
+			{item = 'map_fire_depths'},
+			{item = 'map_goblin_stronghold'},
+			{item = 'map_rebel_redoubt'},
+			]}
 		]},
 	medium_chest_usable = {list = [
 		{random = 'material', min = 3, max = 5, tier = 't1'},
@@ -186,13 +212,12 @@ var loot_tables = {
 		{random = 'static_gear', amount = 1, tiers = ['easy', 'medium']}]},
 	medium_chest_map = {list = [
 		{random = 'material', min = 4, max = 8, from_location = true},
-		{amount = 1, selector = [
-			{item = 'map_bandit_fort'},
-			{item = 'map_ancient_jungle'},
-			{item = 'map_undead_crypt'},
-			{item = 'map_fire_depths'},
-			{item = 'map_spider_lair'},
-			{item = 'map_goblin_stronghold'}]},
+		
+		{selector = [
+			{loot_table = "easy_maps", weight = 1},
+			{loot_table = "medium_maps", weight = 4},
+			{loot_table = "hard_maps", weight = 1},
+			]},
 		]},
 	easy_armory_weapon = {random = 'weapon', amount = 1, material_tiers = [['t1', 10], ['t1', 3], ['t1', 1]], tiers = ['easy']},
 	easy_armory_armor = {random = 'armor', amount = 1, material_tiers = [['t1', 10], ['t1', 3], ['t1', 1]], tiers = ['easy']},
@@ -218,13 +243,10 @@ var loot_tables = {
 		{item = 'exp_scroll', min = 2, max = 4},
 		{item = 'soul_stone', min = 0, max = 1},
 		{gold = true, min = 400, max = 600},
-		{amount = 1, selector = [
-			{item = 'map_bandit_fort'},
-			{item = 'map_ancient_jungle'},
-			{item = 'map_undead_crypt'},
-			{item = 'map_fire_depths'},
-			{item = 'map_spider_lair'},
-			{item = 'map_goblin_stronghold'}]},
+		{selector = [
+			{loot_table = "medium_maps", weight = 2},
+			{loot_table = "hard_maps", weight = 3},
+			]},
 		]},
 	grove_wood_reward = {selector = [
 		{material = 'wood', weight = 1, min = 15, max = 30},
@@ -386,12 +408,11 @@ var loot_tables = {
 		{min = 1, max = 2, selector = [
 			{item = 'map_goblin_cave'},
 			{item = 'map_bandit_den'}]},
-		{amount = 1, selector = [
-			{item = 'map_spider_lair'},
-			{item = 'map_bandit_fort'},
-			{item = 'map_undead_crypt'},
-			{item = 'map_fire_depths'},
-			{item = 'map_rebel_redoubt'}]},
+		{selector = [
+			{loot_table = "medium_maps", weight = 10},
+			{loot_table = "hard_maps", weight = 1},
+			{item = 'map_rebel_redoubt', weight = 5},
+			]},
 		]},
 	forests_area_shop = {list = [
 		{material = 'vegetables', min = 40, max = 80},
@@ -418,10 +439,10 @@ var loot_tables = {
 			{item = 'legs_base_cloth'},
 			{item = 'legs_base_leather'}]},
 		{item = 'soul_stone', amount = 1, chance = 0.1},
-		{amount = 1, selector = [
-			{item = 'map_ancient_jungle'},
-			{item = 'map_grove'},
-			{item = 'map_spider_lair'}]},
+		{selector = [
+			{loot_table = "medium_maps", weight = 3},
+			{loot_table = "hard_maps", weight = 1},
+			]},
 		]},
 	mountain_area_shop = {list = [
 		{material = 'vegetables', min = 40, max = 80},
@@ -490,9 +511,10 @@ var loot_tables = {
 			{item = 'legs_adv_metal'},
 			{item = 'legs_adv_leather'},
 			{item = 'legs_adv_cloth'}]},
-		{amount = 1, selector = [
-			{item = 'map_ancient_jungle'},
-			{item = 'map_goblin_stronghold'}]},
+		{amount = 2, selector = [
+			{loot_table = "medium_maps", weight = 1},
+			{loot_table = "hard_maps", weight = 1},
+			]},
 		{amount = 1, chance = 0.7, selector = [
 			{material = 'adamantine', min = 3, max = 6},
 			{material = 'bonedragon', min = 4, max = 8},
@@ -635,10 +657,43 @@ var loot_tables = {
 		{material = 'woodmagic', amount = 3},
 		{material = 'woodiron', amount = 2},
 		{material = 'leatherthick', amount = 1}]},
+	
+	library_loot = {list = [
+		{item = 'exp_scroll', min = 1, max = 2},
+		
+		{selector = [
+			{loot_table = "library_loot_map", weight = 3},
+			{loot_table = "library_loot_book", weight = 1},
+			]},
+		]},
+	
+	library_loot_map = {list = [
+		{selector = [
+			{loot_table = "easy_maps", weight = 3},
+			{loot_table = "medium_maps", weight = 2},
+			{loot_table = "hard_maps", weight = 1},
+			]}
+		]},
+	library_loot_book = {list = [
+		{selector = [
+			{item = "skillbook_hyperborea"},
+			{item = "skillbook_holy_lance"},
+			{item = "skillbook_poison_vapors"},
+			{item = "skillbook_meteor"},
+			{item = "skillbook_abyss_gaze"},
+			{item = "skillbook_dark_flame"},
+			]}
+		]},
+	
 	settlement_mountains1_res = {list = [
 		{material = 'iron', min = 1, max = 2},
 		{material = 'mithril', amount = 1},
 		{material = 'boneancient', amount = 1}]},
+	
+	
+	
+	
+	
 }
 
 
@@ -691,6 +746,8 @@ var locks_data = { #makes locks to lockpick for related chests
 
 	hard_boss_chest = {locks = [['normal', 1],['none',2]], difficulty = [45,80]},
 	test_chest_mimic = {locks = [['mimic_erotic', 1]], difficulty = [1,1]},
+	
+	
 }
 
 

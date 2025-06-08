@@ -2006,6 +2006,24 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	
 	STATFOOD_CONSUMPTION = "Food Consumption",
 	STATFOOD_CONSUMPTIONDESCRIPT = "Amount of food items a person requires every day. Lack of food leads to starvation, exhaustion and eventual death.",
+	STATBREAKDOWN_TIME = """Breakdown period""", # MISSING TRANSLATION
+	STATBREAKDOWN_TIMEDESCRIPT = """Period of unavailability after breakdown""", # MISSING TRANSLATION
+	STATBRK_MOD_LOSE_FRIEND = """Breakdown chance on losing friend""", # MISSING TRANSLATION
+	STATBRK_MOD_LOSE_LOVER = """Breakdown chance on losing lover""", # MISSING TRANSLATION
+	STATBRK_MOD_LOSE_RELATIVE = """Breakdown chance on losing relative""", # MISSING TRANSLATION
+	STATBRK_MOD_DISLIKE_FOOD = """Breakdown chance on disliked food""", # MISSING TRANSLATION
+	STATBRK_MOD_LOSE_VIRGINITY = """Breakdown chance on losing virginity""", # MISSING TRANSLATION
+	STATBRK_MOD_GRAVE_INJURY = """Breakdown chance on grave injury""", # MISSING TRANSLATION
+	STATBRK_MOD_GRAVE_INJURY_RES = """Breakdown chance on resurrection""", # MISSING TRANSLATION
+	STATBRK_MOD_TERRIBLE_DATE = """Breakdown chance on terrible date""", # MISSING TRANSLATION
+	BREAKDOWN_EVENT = """Got broke down!""", # MISSING TRANSLATION
+	BREAKDOWN_LFRIEND = """Lost friend.""", # MISSING TRANSLATION
+	BREAKDOWN_LLOVER = """Lost lover.""", # MISSING TRANSLATION
+	BREAKDOWN_LRELATIVE = """Lost relative.""", # MISSING TRANSLATION
+	BREAKDOWN_FOOD = """Hates food.""", # MISSING TRANSLATION
+	BREAKDOWN_LVIRGINITY = """Lost virginity.""", # MISSING TRANSLATION
+	BREAKDOWN_GRAVEIN = """Took grave injury.""", # MISSING TRANSLATION
+	BREAKDOWN_DATE = """Had a terrible date.""", # MISSING TRANSLATION
 	MASTER_POINTS = """Mastery""", # MISSING TRANSLATION
 
 	TOOLTIPENERGY = "Energy is restored during sleep and is required for tasks. When a character is forced to work with no energy left, their Exhaustion increases. ",
@@ -3765,6 +3783,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	ENEMYBANDIT_BOSS_MAGE = "盗贼魔法师",
 	ENEMYRAMONT_BOSS = "拉蒙特",
 	ENEMYHECTOR_BOSS = "赫克托",
+	ENEMYREYAN_BOSS = """Reyan""", # MISSING TRANSLATION
 	ENEMYREBEL_RECRUIT = "叛军新兵",
 	ENEMYREBEL_KNIGHT = "叛军骑士",
 	ENEMYREBEL_MAGE = "叛军法师",

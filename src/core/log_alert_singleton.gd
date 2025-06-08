@@ -45,7 +45,7 @@ func fix_cur_log_position():
 func check_log():
 	if Time.get_ticks_msec() > last_debug_log_show + debug_log_time:
 		last_debug_log_show = Time.get_ticks_msec()
-		print(debug_log)
+		#print(debug_log)
 	debug_log.check_log_attempts += 1
 	var new_time = file.get_modified_time(path)
 	if last_time == new_time:

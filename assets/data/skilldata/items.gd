@@ -784,7 +784,7 @@ var effects = {
 		statchanges = {training_loyalty = -1, training_spirit = 1, productivity = -0.15},
 		tags = ['alcohol'],
 		buffs = [{
-			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png", #fix
+			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
 			description = "TRAITEFFECTALCOHOL",
 			tags = ['mansion_only'],
 		}]

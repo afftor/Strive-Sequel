@@ -2138,22 +2138,22 @@ Damage +15%, Health +20.""",
 	STATFOOD_CONSUMPTIONDESCRIPT = "Amount of food items a person requires every day. Lack of food leads to starvation, exhaustion and eventual death.",
 	STATBREAKDOWN_TIME = "Breakdown period",
 	STATBREAKDOWN_TIMEDESCRIPT = "Period of unavailability after breakdown",
-	STATBRK_LOSE_FRIEND = 'Breakdown chance on losing friend',
-	STATBRK_LOSE_LOVER = 'Breakdown chance on losing lover',
-	STATBRK_LOSE_RELATIVE = 'Breakdown chance on losing relative',
-	STATBRK_DISLIKE_FOOD = 'Breakdown chance on disliked food',
-	STATBRK_LOSE_VIRGINITY = 'Breakdown chance on losing virginity',
-	STATBRK_GRAVE_INJURY = 'Breakdown chance on grave injury',
-	STATBRK_GRAVE_INJURY_RES = 'Breakdown chance on resurrection',
-	STATBRK_TERRIBLE_DATE = 'Breakdown chance on terrible date',
-	BREAKDOWN_LFRIEND = "[name] got broke down! [He] lost friend.",
-	BREAKDOWN_LLOVER = "[name] got broke down! [He] lost lover.",
-	BREAKDOWN_LRELATIVE = "[name] got broke down! [He] lost relative.",
-	BREAKDOWN_FOOD = "[name] got broke down! [He] hates current food.",
-	BREAKDOWN_LVIRGINITY = "[name] got broke down! [He] lost virginity.",
-	BREAKDOWN_GRAVEIN = "[name] got broke down! [He] took grave injury.",
-	BREAKDOWN_GRAVEIN_RES = "[name] got broke down! [He] was resurrected, but took grave injury.",
-	BREAKDOWN_DATE = "[name] got broke down! Had a terrible date.",
+	STATBRK_LOSE_FRIEND = "Breakdown chance on losing friend",
+	STATBRK_LOSE_LOVER = "Breakdown chance on losing lover",
+	STATBRK_LOSE_RELATIVE = "Breakdown chance on losing relative",
+	STATBRK_DISLIKE_FOOD = "Breakdown chance on disliked food",
+	STATBRK_LOSE_VIRGINITY = "Breakdown chance on losing virginity",
+	STATBRK_GRAVE_INJURY = "Breakdown chance on grave injury",
+	STATBRK_GRAVE_INJURY_RES = "Breakdown chance on resurrection",
+	STATBRK_TERRIBLE_DATE = "Breakdown chance on terrible date",
+	BREAKDOWN_LFRIEND = "[name] had a breakdown due to losing a friend",
+	BREAKDOWN_LLOVER = "[name] had a breakdown due to losing a lover",
+	BREAKDOWN_LRELATIVE = "[name] had a breakdown due to losing a relative",
+	BREAKDOWN_FOOD = "[name] had a breakdown due to being upset about their current food",
+	BREAKDOWN_LVIRGINITY = "[name] had a breakdown due to losing their virginity",
+	BREAKDOWN_GRAVEIN = "[name] had a breakdown due to suffering a grave injury",
+	BREAKDOWN_GRAVEIN_RES = "[name] had a breakdown due to being resurrected and suffering a grave injury",
+	BREAKDOWN_DATE = "[name] had a breakdown due to a terrible date",
 	MASTER_POINTS = "Mastery",
 	TOOLTIPENERGY = "Energy is restored during sleep and is required for tasks. When a character is forced to work with no energy left, their Exhaustion increases. ",
 	TOOLTIPFATIGUE = "Fatigue increases with time and dissipates with entertainment. When unmanaged it may cause a performance penalty.",
@@ -3022,6 +3022,7 @@ Social skills effect: +10%.""",
 	TRAITSTUNIMMUNITYDESCRIPT = "Can't be stunned in combat.",
 	TRAITEFFECTCURSE = "All resists are reduced",
 	TRAITEFFECTHASTE = "Speed is Increased",
+	EFFECTCOFFIBLESS = "Increased Experience gain by 20%%",
 	EUPHORIABUFF = "Euphoria: Damage Increased",
 	BUFFDESCRIPTSHACKLES = "Shackles",
 	BUFFDESCRIPTGREATSHACKLES = "Great Shackles",
@@ -4146,6 +4147,7 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYBANDIT_BOSS_MAGE = "Rogue Sorcerer",
 	ENEMYRAMONT_BOSS = "Ramont",
 	ENEMYHECTOR_BOSS = "Hector",
+	ENEMYREYAN_BOSS = "Reyan",
 	ENEMYREBEL_RECRUIT = "Rebel Recruit",
 	ENEMYREBEL_KNIGHT = "Rebel Knight",
 	ENEMYREBEL_MAGE = "Rebel Mage",
@@ -16164,14 +16166,14 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	ANASTASIA_QUEST_STAGE4 = "Explore Goblin cave",
 	ANASTASIA_QUEST_STAGE5 = "Return to Liora in Aliron",
 	ANASTASIA_QUEST_STAGE6 = "Talk to Anastasia",
-	ANASTASIA_QUEST_STAGE7 = "", #shouldn't exist
+	ANASTASIA_QUEST_STAGE7 = "",
 	ANASTASIA_QUEST2_NAME = "Anastasia: Proof of loyalty",
 	ANASTASIA_QUEST2_SUMMARY = "You have received a task from Duncan... It seems to involve rebels.",
 	ANASTASIA_QUEST_STAGE8 = "Meet with Duncan",
 	ANASTASIA_QUEST_STAGE9 = "Talk to Anastasia",
 	ANASTASIA_QUEST_STAGE10 = "Go to Rebel Fort",
 	ANASTASIA_QUEST_STAGE11 = "Deal with Fort Defenders.",
-	ANASTASIA_QUEST_STAGE12 = "Deal with Reyan", #shouldn't exist
+	ANASTASIA_QUEST_STAGE12 = "Deal with Reyan",
 	ANASTASIA_QUEST_STAGE13 = "Return to Duncan",
 	HARA_SCALES_QUEST_NAME = "Hara: fixing the Scales",
 	HARA_SCALES_QUEST_SUMMARY = "Help Hara to fix Scales of Destiny for the King",
@@ -16224,7 +16226,6 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	KURO_ERRAND_QUEST_INVITE = "Visit Aliron's outer district, you've been invited to",
 	KURO_ERRAND_QUEST_SEARCH = "Search through the hideout for clues about other such spots",
 	KURO_ERRAND_QUEST_BASE = "Clear out cult's parent base",
-	
 	DIALOGUEANAINITIATELP = """Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.
 
 — H-hello, [Master]... How was your day?""",
@@ -18660,7 +18661,6 @@ Your cock throbs powerfully as you erupt into her waiting mouth. The princess's 
 As your orgasm subsides, Anastasia slowly pulls back, her lips giving one final suck to the sensitive head of your cock. She swallows what she's collected, her throat working visibly as she maintains eye contact. A mixture of pride and satisfaction crosses her features – the look of someone who has successfully completed a challenging but rewarding task.
 
 — This isn't much but I hope this pleased you.""",
-	
 	ANA_WED_1 = """The bedroom door closes behind you with a soft click. Anastasia stands before you, her blue eyes wide with anticipation as moonlight streams through the tall windows, casting a silvery glow across the opulent chamber. The wedding celebration has finally ended, and now it's just the two of you.
 
 — To tell the truth, I'm more nervous than ever...
@@ -18711,7 +18711,6 @@ Her inner muscles clench around your cock as pleasure builds within her. You can
 — Ah... I never thought my butt could feel like this...
 
 You remain joined for several moments, catching your breath as the last aftershocks of pleasure ripple through your bodies. The princess—your wife—has been thoroughly claimed in every way possible on this, your wedding night.""",
-	
 	ZEPHYRA_WED_1 = """The bedroom door closes behind you with a soft click as you carry Zephyra in your arms. The foxgirl's white tail swishes gently against your arm, her blue eyes gazing up at you with a mixture of excitement and anticipation. The moonlight filtering through the curtains catches on her long white hair, making it shimmer like freshly fallen snow.
 
 — Never thought I was gonna end up as your official wife. Says something about yourself, doesn't it? Hehe, sorry, I'm really happy and talk nonsense. 
@@ -18756,6 +18755,22 @@ Spent and satisfied, you carefully withdraw from her tight passage, admiring how
 
 — Ah... I didn't think you'd actually do it... But I'm not complaining, I might like this show of your affection no less than the other.""",
 	
-	
+	DIALOGUEEVENTDUNGEONCOCCOON_1 = """As the team navigate the damp, echoing tunnels, your torchlight catches a glimmer of pale webbing ahead. A human-shaped cocoon dangles from the ceiling, swaying slightly as faint movements ripple beneath its silken surface. The cocoon twitches again, a muffled sound escaping it, indicating the rare victim which is still alive.""",
+	DIALOGUEEVENTDUNGEONCOCCOON_OPTION1 = "Free them (10 stamina)",
+	DIALOGUEEVENTDUNGEONCOCCOON_OPTION2 = " [Strength Challenge] Select character (3 stamina)",
+	DIALOGUEEVENTDUNGEONCOCCOON_2 = """You take your time freeing the spiders' victim. Finally they are cut free for you to decide on their future fate.""",
+	DIALOGUEEVENTDUNGEONCOCCOON_3 = """With a grunt, [name] tears through the silk in moments, freeing a shaken stranger who scrambles onto the floor.""",
+	DIALOGUEEVENTDUNGEONCOCCOON_4 = """You leave the hanging victim on its own and move on.""",
+	DIALOGUEEVENTDUNGEONLIBRARY_1 = """The dungeon's twisting corridors reveal a half-hidden door. It creaks open to reveal a small, abandoned library room, its shelves sagging under dusty tomes and scattered scrolls. The shelves loom, packed with knowledge but fragile with age.""",
+	DIALOGUEEVENTDUNGEONLIBRARY_OPTION1 = "Search Through Slowly (-10 stamina)",
+	DIALOGUEEVENTDUNGEONLIBRARY_OPTION2 = "[Wisdom Challenge] Select Character (-3 stamina)",
+	DIALOGUEEVENTDUNGEONLIBRARY_2 = """After slow searching through the shelves you manage to""",
+	DIALOGUEEVENTDUNGEONLIBRARY_3 = """[name] scans through the room for obvious signs of the most curious and preserved pieces of literature. It only takes a moment for [him] to find something valuable.""",
+	DIALOGUEEVENTDUNGEONLIBRARY_4 = """You decide it's not worth the effort and leave the library room unexamined.""",
+	DIALOGUEEVENTDUNGEONCOFFIN_1 = """The dungeon's shadowed depths reveal an ancient coffin carved from dark stone, its lid etched with a human-shaped relief. The air grows heavy, thick with dust and a strange stillness, as if the coffin itself watches you.""",
+	DIALOGUEEVENTDUNGEONCOFFIN_OPTION1 = "Open It (-5 stamina)",
+	DIALOGUEEVENTDUNGEONCOFFIN_OPTION2 = "Pay Respects and Leave",
+	DIALOGUEEVENTDUNGEONCOFFIN_2 = """You wedge your blade under the lid and heave it open, revealing a glinting treasure nestled within...""",
+	DIALOGUEEVENTDUNGEONCOFFIN_3 = """You kneel briefly, murmuring respect to the ancient dead, and turn away. You leave empty-handed but unburdened.""",
 	
 }
