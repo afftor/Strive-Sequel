@@ -977,6 +977,8 @@ func start_event(code, type, args):
 		data = scenedata.scenedict[code].duplicate(true)
 		if !ResourceScripts.game_progress.seen_events.has(code):
 			ResourceScripts.game_progress.seen_events.push_back(code)
+		if args.has('start_dialogue_option'):
+			data.start_dialogue_option = args.start_dialogue_option
 	gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE)
 #	if data.has('opp_characters'):
 #		for i in data.opp_characters:
