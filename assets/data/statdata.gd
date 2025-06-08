@@ -1579,94 +1579,14 @@ var statdata = {
 		tags = ['integer'],
 		default_bonus = 'add_part'
 	},
-	brk_lose_friend = {
-		code = 'brk_lose_friend',
+	breakdown_chance_mod = {
+		code = 'breakdown_chance_mod',
 		name = '',
 		descript = '',
-		type = '',
+		type = 'misc',
 		direct = false,
-		percent = true,
-		tags = ['cap_up', 'cap_low'],
-		cap_up = 1.0,
-		cap_low = 0.0
-	},
-	brk_lose_lover = {
-		code = 'brk_lose_lover',
-		name = '',
-		descript = '',
-		type = '',
-		direct = false,
-		percent = true,
-		tags = ['cap_up', 'cap_low'],
-		cap_up = 1.0,
-		cap_low = 0.0
-	},
-	brk_lose_relative = {
-		code = 'brk_lose_relative',
-		name = '',
-		descript = '',
-		type = '',
-		direct = false,
-		percent = true,
-		tags = ['cap_up', 'cap_low'],
-		cap_up = 1.0,
-		cap_low = 0.0
-	},
-	brk_dislike_food = {
-		code = 'brk_dislike_food',
-		name = '',
-		descript = '',
-		type = '',
-		direct = false,
-		percent = true,
-		tags = ['cap_up', 'cap_low'],
-		cap_up = 1.0,
-		cap_low = 0.0
-	},
-	brk_lose_virginity = {
-		code = 'brk_lose_virginity',
-		name = '',
-		descript = '',
-		type = '',
-		direct = false,
-		percent = true,
-		tags = ['cap_up', 'cap_low'],
-		cap_up = 1.0,
-		cap_low = 0.0
-	},
-	brk_grave_injury = {
-		code = 'brk_grave_injury',
-		name = '',
-		descript = '',
-		type = '',
-		direct = false,
-		percent = true,
-		tags = ['cap_up', 'cap_low'],
-		cap_up = 1.0,
-		cap_low = 0.0
-	},
-	brk_grave_injury_res = {
-		code = 'brk_grave_injury_res',
-		name = '',
-		descript = '',
-		type = '',
-		direct = false,
-		percent = true,
-		tags = ['cap_up', 'cap_low'],
-		cap_up = 1.0,
-		cap_low = 0.0
-	},
-	brk_terrible_date = {
-		code = 'brk_terrible_date',
-		name = '',
-		descript = '',
-		type = '',
-		direct = false,
-		percent = true,
-		tags = ['cap_up', 'cap_low'],
-		cap_up = 1.0,
-		cap_low = 0.0
-	},
+		default_bonus = 'add_part'
+	}
 }
 
 #var slave_class_names = {
