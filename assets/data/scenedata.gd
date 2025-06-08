@@ -1724,6 +1724,22 @@ var scenedict = {
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'change_relationship', value = 'freelovers'}]}
 		],
 	},
+	breakdown_event = {
+		text = [
+			{text = "BREAKDOWN_LFRIEND", previous_dialogue_option = 1, reqs = []},
+			{text = "BREAKDOWN_LLOVER", previous_dialogue_option = 2, reqs = []},
+			{text = "BREAKDOWN_LRELATIVE", previous_dialogue_option = 3, reqs = []},
+			{text = "BREAKDOWN_FOOD", previous_dialogue_option = 4, reqs = []},
+			{text = "BREAKDOWN_LVIRGINITY", previous_dialogue_option = 5, reqs = []},
+			{text = "BREAKDOWN_GRAVEIN", previous_dialogue_option = 6, reqs = []},
+			{text = "BREAKDOWN_GRAVEIN_RES", previous_dialogue_option = 7, reqs = []},
+			{text = "BREAKDOWN_DATE", previous_dialogue_option = 8, reqs = []},
+		],
+		tags = ["dialogue_scene", "active_character_translate"],
+		options = [
+			{code = "close", text = "DIALOGUECLOSE", type = "next_dialogue", reqs = []}
+		]
+	},
 	
 	
 	
