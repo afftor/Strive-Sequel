@@ -24,6 +24,7 @@ func add_new_chatter(character, line):
 	ResourceScripts.core_animations.FadeAnimation(newnode, 1)
 	yield(get_tree().create_timer(1),"timeout")
 	newnode.hide()
+	newnode.queue_free()
 
 
 var personalities = {
