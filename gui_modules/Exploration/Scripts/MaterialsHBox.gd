@@ -24,7 +24,7 @@ func update():
 			var max_workers_count = jobdata.base_workers
 			var current_workers_count = 0
 			for task in ResourceScripts.game_party.active_tasks:
-				if (task.code == r_task) && (task.task_location == selected_location.code):
+				if (task.code == r_task) && (task.task_location == selected_location.id):
 					current_workers_count = task.workers.size()
 			newbutton.get_node("Label").text = str(max_workers_count - current_workers_count) + "/" + str(max_workers_count)
 			globals.connecttexttooltip(newbutton, jobdata.descript)
@@ -63,7 +63,7 @@ func update():
 					var current_workers_count = 0
 					var active_tasks = ResourceScripts.game_party.active_tasks
 					for task in active_tasks:
-						if (task.code == i) && (task.task_location == selected_location.code):
+						if (task.code == i) && (task.task_location == selected_location.id):
 							current_workers_count = task.workers.size()
 					newbutton.set_meta("max_workers", max_workers_count)
 					newbutton.set_meta("current_workers", current_workers_count)

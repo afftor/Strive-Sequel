@@ -42,16 +42,6 @@ var template_direct = {
 	lastsexday = 0,
 	asser = 0, #shuold be removed fo no real use
 	
-	#constant stats
-	physics_factor = 1,
-	magic_factor = 1,
-	tame_factor = 1,
-	authority_factor = 1, #authority factor
-	growth_factor = 1,
-	charm_factor = 1,
-	wits_factor = 1,
-	sexuals_factor = 1,
-	
 	#images
 	icon_image = '', 
 	dynamic_portrait = true,
@@ -227,6 +217,14 @@ var tattoo = {
 
 
 var template_dynamic = {
+	physics_factor = 1,
+	magic_factor = 1,
+	tame_factor = 1,
+	authority_factor = 1,
+	growth_factor = 1,
+	charm_factor = 1,
+	wits_factor = 1,
+	sexuals_factor = 1,
 	#
 	trainee_amount = 0,
 	
@@ -353,6 +351,7 @@ var resists = {
 	resist_shock = 0.0,
 	resist_fear = 0.0,
 	resist_cursed = 0.0,
+	resist_sleep = 0.0,
 }
 var damage_mods = { 
 	damage_mod_all = 1.0,

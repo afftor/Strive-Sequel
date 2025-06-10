@@ -44,7 +44,7 @@ var professions = {
 		reqs = [{code = 'cant_spawn_naturally'}],
 		#showupreqs = [{code = 'has_profession', profession = 'master', check = false}],
 		#reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 3}],
-		statchanges = {authority_factor = -1, physics_bonus = 10, mastery_point_combat = 1},
+		statchanges = {authority_factor = 1, physics_bonus = 10, mastery_point_combat = 1},
 		traits = [],
 		skills = [],
 		combatskills = [],
@@ -197,10 +197,11 @@ var professions = {
 		showupreqs = [],
 		reqs = [],
 		statchanges = {hpmax = 10, physics_bonus = 5, mastery_leadership = 1},
-		traits = ['attendant'],
+		traits = [],
 		skills = [],
 		combatskills = [],
 		conflict_classes = [],
+		persistent_effects = ['e_tr_attendant'],
 	},
 	alchemist = {
 		code = 'alchemist',
@@ -212,10 +213,11 @@ var professions = {
 		showupreqs = [{code = "class_unlocked", class = 'alchemist', operant = 'eq', check = true}],
 		reqs = [{code = 'stat', stat = 'wits_factor', operant = 'gte', value = 3}],
 		statchanges = {wits_bonus = 10, mod_alchemy = 1.0, chg_wisdom_max = 1, mastery_point_magic = 1},
-		traits = ['alchemist'],
+		traits = [],
 		skills = [],
 		combatskills = ['firebomb'],
 		conflict_classes = [],
+		persistent_effects = ['e_tr_potion']
 	},
 	farmer = {
 		code = 'farmer',
@@ -461,6 +463,7 @@ var professions = {
 		skills = [],
 		combatskills = ['revenge'],
 		conflict_classes = [],
+		persistent_effects = ['e_tr_berserk'],
 	},
 	apprentice = {
 		code = 'apprentice',

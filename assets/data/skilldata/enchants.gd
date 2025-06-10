@@ -353,7 +353,7 @@ var effects = {
 	
 	enchant_manasiphon_3 = {
 		type = 'trigger',
-		stack = 'manasyphon',
+		stack = 'manasiphon',
 		trigger = [variables.TR_CAST],
 		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'skill']}],
 		req_skill = true,

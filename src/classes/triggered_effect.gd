@@ -175,7 +175,7 @@ func remove():
 
 
 func has_status(status):
-	return false
+	return template.tags.has(status)
 
 
 func rebuild_buffs():

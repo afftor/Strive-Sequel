@@ -388,7 +388,7 @@ func make_panel_for_character(panel, ch):
 					time_left_string = str(time_left) + " d."
 				newbutton.get_node("job").text = "On quest - %s" % time_left_string
 			else:
-				newbutton.get_node("job").text = tr("CHAR_UNAVALIABLE")
+				newbutton.get_node("job").text = ch.get_unaval_string()
 		else:
 			newbutton.get_node("job").text = tr("TASKREST")
 	elif ch.get_work() == 'travel':

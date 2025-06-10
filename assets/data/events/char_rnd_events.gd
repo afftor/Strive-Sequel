@@ -30,6 +30,7 @@ var data = {
 						value = "var_injury_money"
 					}
 				],
+				not_hide = true,
 				bonus_effects = [
 					{
 						code = "money_change",
@@ -1965,9 +1966,9 @@ var data = {
 				bonus_effects = [
 					{
 						code = "real_affect_scene_characters",
-						type = 'effect',
-						value = 'e_grave_injury',
-						override = {duration = 'var_trap_injury_dur'}
+						type = 'set_availability',
+						value = false,
+						duration = 'var_trap_injury_dur'
 					}
 				],
 			}
@@ -2072,6 +2073,7 @@ var data = {
 						value = "var_skirmish_money"
 					}
 				],
+				not_hide = true,
 				bonus_effects = [
 					{
 						code = "money_change",
@@ -2137,6 +2139,390 @@ var data = {
 			},
 			{
 				text = "CHARRND_SKIRMISH_REPLY_IGNORE",
+				reqs = [
+
+				],
+				previous_dialogue_option = 3
+			}
+		],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				type = "next_dialogue",
+				reqs = [
+
+				],
+			},
+		]
+	},
+	char_rnd_pray = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+#		image = "",
+		text = [
+			{
+				text = "CHARRND_PRAY",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "char_rnd_pray2",
+				text = "CHARRND_PRAY_OPT_ALLOW",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = 'stat',
+						stat = 'loyalty',
+						value = "var_pray_loyalty"
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = 'stat',
+						stat = 'resistance',
+						value = "var_pray_resistance"
+					},
+				],
+			},
+			{
+				code = "char_rnd_pray2",
+				text = "CHARRND_PRAY_OPT_FORBID",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = 'stat',
+						stat = 'base_exp',
+						value = "var_pray_exp"
+					},
+					{
+						code = "unique_character_changes",
+						value = "master",
+						args = [
+							{
+								code = "base_exp",
+								value = "var_pray_exp",
+								operant = "+"
+							}
+						]
+					}
+				],
+			}
+		]
+	},
+	char_rnd_pray2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+#		image = "",
+		text = [
+			{
+				text = "CHARRND_PRAY_REPLY_ALLOW",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+			{
+				text = "CHARRND_PRAY_REPLY_FORBID",
+				reqs = [
+
+				],
+				previous_dialogue_option = 2
+			}
+		],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				type = "next_dialogue",
+				reqs = [
+
+				],
+			},
+		]
+	},
+	char_rnd_letter = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+#		image = "",
+		text = [
+			{
+				text = "CHARRND_LETTER",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "char_rnd_letter2",
+				text = "CHARRND_LETTER_OPT_HELP",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [
+					{
+						type = "has_material",
+						operant = "gte",
+						value = "var_letter_grain",
+						material = "grain"
+					},
+				],
+				not_hide = true,
+				bonus_effects = [
+					{
+						code = 'material_change',
+						operant = '-',
+						material = 'grain',
+						value = 'var_letter_grain'
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = 'stat',
+						stat = 'loyalty',
+						value = "var_letter_loyalty"
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = 'stat',
+						stat = 'resistance',
+						value = "var_letter_resistance"
+					},
+					{
+						code = "unique_character_changes",
+						value = "master",
+						args = [
+							{
+								code = "base_exp",
+								value = "var_letter_exp",
+								operant = "+"
+							}
+						]
+					}
+				],
+			},
+			{
+				code = "char_rnd_letter2",
+				text = "CHARRND_LETTER_OPT_BURN",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = 'stat',
+						stat = 'base_exp',
+						value = "var_letter_burn_exp"
+					},
+					{
+						code = "unique_character_changes",
+						value = "master",
+						args = [
+							{
+								code = "base_exp",
+								value = "var_letter_burn_exp",
+								operant = "+"
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	char_rnd_letter2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+#		image = "",
+		text = [
+			{
+				text = "CHARRND_LETTER_REPLY_HELP",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+			{
+				text = "CHARRND_LETTER_REPLY_BURN",
+				reqs = [
+
+				],
+				previous_dialogue_option = 2
+			}
+		],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				type = "next_dialogue",
+				reqs = [
+
+				],
+			},
+		]
+	},
+	char_rnd_brokenvase = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+#		image = "",
+		text = [
+			{
+				text = "CHARRND_BROKENVASE",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "char_rnd_brokenvase2",
+				text = "CHARRND_BROKENVASE_OPT_REPAIR",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "real_affect_scene_characters",
+						type = 'set_availability',
+						value = false,
+						duration = 'var_brokenvase_duration'
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = 'stat',
+						stat = 'loyalty',
+						value = "var_brokenvase_loyalty"
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = 'stat',
+						stat = 'base_exp',
+						value = "var_brokenvase_exp_repair"
+					}
+				],
+			},
+			{
+				code = "char_rnd_brokenvase2",
+				text = "CHARRND_BROKENVASE_OPT_REPLACE",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "unique_character_changes",
+						value = "master",
+						args = [
+							{
+								code = "base_exp",
+								value = "var_brokenvase_exp_replace",
+								operant = "+"
+							}
+						]
+					},
+					{
+						code = "money_change",
+						value = "var_brokenvase_money",
+						operant = "+"
+					},
+				]
+			},
+			{
+				code = "char_rnd_brokenvase2",
+				text = "CHARRND_BROKENVASE_OPT_PUNISH",
+				dialogue_argument = 3,
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				bonus_effects = [
+					{
+						code = "unique_character_changes",
+						value = "master",
+						args = [
+							{
+								code = "base_exp",
+								value = "var_brokenvase_exp_punish",
+								operant = "+"
+							}
+						]
+					},
+					{
+						code = "real_affect_scene_characters",
+						type = 'stat',
+						stat = 'base_exp',
+						value = "var_brokenvase_exp_punish"
+					}
+				]
+			}
+		]
+	},
+	char_rnd_brokenvase2 = {
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"active_character_translate"
+		],
+#		image = "",
+		text = [
+			{
+				text = "CHARRND_BROKENVASE_REPLY_REPAIR",
+				reqs = [
+
+				],
+				previous_dialogue_option = 1
+			},
+			{
+				text = "CHARRND_BROKENVASE_REPLY_REPLACE",
+				reqs = [
+
+				],
+				previous_dialogue_option = 2
+			},
+			{
+				text = "CHARRND_BROKENVASE_REPLY_PUNISH",
 				reqs = [
 
 				],

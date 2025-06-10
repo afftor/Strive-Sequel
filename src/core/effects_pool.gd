@@ -122,6 +122,9 @@ func cleanup():
 		if stacks[id].effects.empty():
 			stacks[id].cleanup()
 			stacks.erase(id)
+	for eff in effects.values():
+		if eff.template.type != 'trigger':
+			eff.fill_sub_effects()
 
 
 func remove_id(id):

@@ -106,6 +106,8 @@ func get_stat_value_data(statname):
 func get_stat(statname):
 	if statname in ['hp', 'mp', 'shield', 'combatgroup']:
 		return get(statname)
+	if statname in ['physics','wits','charm','sexuals']:
+		return max(statlist.get_stat(statname) + dyn_stats.get_stat(statname + '_bonus'), 0)
 	if statname.begins_with('mastery_') and !statname.begins_with('mastery_point'):
 		return dyn_stats.get_mastery_level(statname.trim_prefix('mastery_'))
 	if statname == 'base_exp':
@@ -176,6 +178,12 @@ func set_stat(stat, value):
 		return
 	if stat.begins_with('food_') and stat != 'food_consumption':
 		food.set(stat, value)
+		return
+	if stat.ends_with('_virgin'):
+		if value:
+			set_stat(stat + '_lost', null)
+		else:
+			set_stat(stat + '_lost', 'unknown')
 		return
 	var st_data = statdata.statdata[stat]
 	if st_data.direct:
@@ -350,7 +358,18 @@ func generate_ea_character(gendata, desired_class):
 
 
 func generate_random_character_from_data(races_l, desired_class = null, adjust_difficulty = 0, trait_blacklist = []):
-	statlist.generate_random_character_from_data(races_l, desired_class, adjust_difficulty)
+	adjust_difficulty = min(adjust_difficulty, 15)
+	var gendata = {race = '', sex = 'random', age = 'random'}
+
+	if typeof(races_l) == TYPE_STRING && races_l == 'random':
+		gendata.race = races.get_random_race()
+	elif typeof(races_l) == TYPE_STRING:
+		gendata.race = races_l
+	else:
+		gendata.race = input_handler.random_from_array(races_l)
+	create(gendata.race, gendata.sex, gendata.age)
+	statlist.generate_random_character_from_data(adjust_difficulty)
+	dyn_stats.generate_random_character_from_data(desired_class, adjust_difficulty)
 	dyn_stats.get_random_traits(trait_blacklist)
 	xp_module.set_service_boost()
 
@@ -414,6 +433,7 @@ func turn_into_unique(code):
 
 func create(temp_race, temp_gender, temp_age):
 	id = characters_pool.add_char(self)
+	dyn_stats.gather_innate_bonuses()
 	learn_c_skill('attack')
 	statlist.create(temp_race, temp_gender, temp_age)
 	add_trait('core_trait')
@@ -424,6 +444,18 @@ func create(temp_race, temp_gender, temp_age):
 	
 	food.create()
 	training.build_stored_reqs()
+
+
+func get_racial_features(race):
+	var race_template = races.racelist[race]
+	
+	dyn_stats.get_racial_features(race)
+	statlist.get_racial_features(race)
+	training.setup_dispositions(race)
+	if race_template.has("combat_skills"):
+		for i in race_template.combat_skills:
+			learn_c_skill(i)
+	food.get_racial_features(race)
 
 
 func fill_boosters():
@@ -618,6 +650,9 @@ func remove_from_task(travel = false):
 
 func return_to_task():
 	xp_module.return_to_task()
+
+func get_unaval_string():
+	return xp_module.get_unaval_string()
 
 func travel_per_tick():
 	return travel.travel_per_tick()
@@ -1121,8 +1156,8 @@ func has_resistance_block():
 func get_resistance_reduction():
 	return training.get_resistance_reduction()
 
-func get_loyalty_penalty():
-	return training.get_loyalty_penalty()
+func get_loyalty_penalty_data():
+	return training.get_loyalty_penalty_data()
 
 func get_loyalty_growth():
 	return training.get_loyalty_growth()
@@ -1154,8 +1189,12 @@ func fix_serialization():
 	if training is Dictionary:
 		training = dict2inst(training)
 	var tmp = statlist.duplicate()
-	statlist = ResourceScripts.scriptdict.ch_statlist.new()
 	var tmp2 = dyn_stats.duplicate()
+	for st in ['physics_factor', 'magic_factor', 'tame_factor', 'authority_factor', 'growth_factor', 'charm_factor', 'wits_factor', 'sexuals_factor']:
+		if tmp.statlist.has(st):
+			tmp2.statlist[st] = tmp.statlist[st]
+			tmp.statlist.erase(st)
+	statlist = ResourceScripts.scriptdict.ch_statlist.new()
 	dyn_stats = ResourceScripts.scriptdict.ch_statlist_dynamic.new()
 	rebuild_parents()
 	statlist.deserialize(tmp)
@@ -1785,7 +1824,10 @@ func affect_char(template, manifest = false):
 			if template.value:
 				xp_module.make_avaliable()
 			else:
-				xp_module.make_unavaliable()
+				var duration = -1
+				if template.has('duration'):
+					duration = template.duration
+				xp_module.make_unavaliable(duration)
 		'set_as_spouse':
 			ResourceScripts.game_progress.spouse = id
 		'escape':

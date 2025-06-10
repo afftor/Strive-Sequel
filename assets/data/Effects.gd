@@ -405,7 +405,7 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
 		tags = ['positive'],
-		args = {value = {obj = 'value', func = 'eq'}},
+		args = {value = {obj = 'process_value', func = 'eq'}},
 		sub_effects = ['e_t_regen'],
 		atomic = [],
 		buffs = ['b_regen'], 
@@ -557,7 +557,6 @@ var effect_table = {
 			src = {obj = 'self', func = 'src', src = 'fire'}
 		},
 		sub_effects = ['e_dot_new'],
-		buffs = ['b_burn'],
 	},
 	e_s_poison_new = {
 		type = 'temp_s',
@@ -573,7 +572,6 @@ var effect_table = {
 			src = {obj = 'self', func = 'src', src = 'true'}
 		},
 		sub_effects = ['e_dot_new'],
-		buffs = ['b_poison'],
 	},
 	
 	e_s_bleed_new = {
@@ -590,7 +588,6 @@ var effect_table = {
 			src = {obj = 'self', func = 'src', src = 'true'}
 		},
 		sub_effects = ['e_dot_new'],
-		buffs = ['b_bleed'],
 	},
 	
 	e_s_darkflame = {
@@ -610,7 +607,6 @@ var effect_table = {
 			rebuild_remove_effect('burn', 'owner'),
 			'e_dot_new'
 			],
-		buffs = ['b_darkflame'],
 	},
 	e_dot_new = {
 		type = 'trigger',
@@ -644,7 +640,6 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
 		statchanges = {armor_add_part = -0.5},
-		buffs = ['b_shred'],
 	},
 	e_s_shatter = {
 		type = 'temp_s',
@@ -655,36 +650,16 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
 		statchanges = {mdef_add_part = -0.5},
-		buffs = ['b_shatter'],
 	},
 	
-	e_s_sleep = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions. until remade properly
-		type = 'temp_global',
-		name = 'sleep',
-		tags = ['duration_turns', 'affliction', 'disable', 'sleep'],
+	e_s_sleep = {
+		type = 'temp_s',
+		stack = 'sleep',
+		tags = ['affliction', 'disable', 'sleep'],
 		target = 'target',
-		req_skill = true,
-		timers = [
-			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 1}, #1 turn duration
-			{events = [variables.TR_DMG], objects = 'owner', timer = 1}, #damage removes
-			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
-			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
-		],
-		buffs = ['b_sleep'],
-	},
-	e_s_sleep_compartibility = {#1turn duration, can't pass duration onto global temps, so clone it for different duartions. until remade properly
-		#THIS EFFECT IS STUB, DO NOT COPY, DO NOT EDIT - it uses reversed order of parent trigger args, so it is conterintuitive
-		type = 'temp_global',
-		name = 'sleep',
-		tags = ['duration_turns', 'affliction', 'disable', 'sleep'],
-		target = 'target',
-		req_skill = true,
-		timers = [
-			{events = [variables.TR_TURN_GET], objects = 'target', timer = 1}, #1 turn duration of CASTER
-			{events = [variables.TR_DMG], objects = 'owner', timer = 1}, #damage removes
-			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
-			{events = variables.TR_DEATH, objects = 'target', timer = 1}, #CASTER
-		],
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'arg',
 		buffs = ['b_sleep'],
 	},
 	e_s_blind = {
@@ -720,48 +695,14 @@ var effect_table = {
 		statchanges = {damage_reduction = -15},
 		buffs = ['b_shock'],
 	},
-	e_s_ensnare = { #1turn duration, can't pass duration onto global temps, so clone it for different duartions. until remade properly
-		type = 'temp_global',
-		tags = ['duration_turns', 'affliction', 'ensnare'],
+	e_s_ensnare = {
+		type = 'temp_s',
+		tags = ['affliction', 'ensnare'],
 		target = 'target',
-		req_skill = true,
-		name = 'ensnare',
-		stack = 1,
-		timers = [
-			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 1}, 
-			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
-			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
-		],
-		statchanges = {evasion = -75},
-		buffs = ['b_ensnare'],
-	},
-	e_s_ensnare2 = { #2turn duration, can't pass duration onto global temps, so clone it for different duartions. until remade properly
-		type = 'temp_global',
-		tags = ['duration_turns', 'affliction', 'ensnare'],
-		target = 'target',
-		req_skill = true,
-		name = 'ensnare',
-		stack = 1,
-		timers = [
-			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 2}, 
-			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
-			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
-		],
-		statchanges = {evasion = -75},
-		buffs = ['b_ensnare'],
-	},
-	e_s_ensnare5 = { #5turn duration, can't pass duration onto global temps, so clone it for different duartions. until remade properly
-		type = 'temp_global',
-		tags = ['duration_turns', 'affliction', 'ensnare'],
-		target = 'target',
-		req_skill = true,
-		name = 'ensnare',
-		stack = 1,
-		timers = [
-			{events = [variables.TR_TURN_GET], objects = 'caster', timer = 5}, 
-			{events = variables.TR_COMBAT_F, objects = [], timer = 1},
-			{events = variables.TR_DEATH, objects = 'caster', timer = 1},
-		],
+		stack = 'ensnare',
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'arg',
 		statchanges = {evasion = -75},
 		buffs = ['b_ensnare'],
 	},
@@ -981,7 +922,7 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
 		tags = ['negative'],
-		statchanges = {resist_damage_heal = -100},
+		statchanges = {resist_heal = -100},
 		buffs = ['b_slam'],
 	},
 	e_s_takeposition = {
@@ -1069,7 +1010,7 @@ var effect_table = {
 	e_res = {
 		type = 'oneshot',
 		target = 'target',
-		args = {mod = {obj = 'value', func = 'eq'}},
+		args = {mod = {obj = 'process_value', func = 'eq'}},
 		atomic = ['a_res'],
 	},
 	#temp items
@@ -1106,7 +1047,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-				description = "TRAITEFFECTSATISFIED",
+				description = "TRAITEFFECTSATISFIED2",
 				tags = ['mansion_only'],
 			}
 		],
@@ -1263,6 +1204,7 @@ var atomic = {
 #	a_poison_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
 #	a_bleed_new = {type = 'damage', source = 'true', value = [['parent_args', 0], '*', ['parent_args', 1], '*', ['parent_args', 2],]},
 	a_sanctuary_heal = {type = 'heal', value = ['parent_args', 'value']},
+	a_res = {type = 'resurrect', value = ['parent_args', 'mod']},
 };
 
 
@@ -1316,27 +1258,41 @@ var stacks = {
 	burn = {
 		type = 'stack_s',
 		stack = 1,
+		buff = 'b_burn'
 	}, #stack 1, add dur
 	bleed = {
 		type = 'stack_s',
 		stack = 1,
+		buff = 'b_bleed'
 	}, #stack 1, add dur
 	poison = {
 		type = 'stack_s',
 		stack = 1,
+		buff = 'b_poison'
 	}, #stack 1, add dur
 	darkflame = {
 		type = 'stack_s',
 		stack = 1,
+		buff = 'b_darkflame'
 	}, #stack 1, add dur
 	shred = {
 		type = 'stack_a',
 		stack = 2,
+		buff = 'b_shred'
 	}, #stack 2, merge dur
 	shatter = {
 		type = 'stack_a',
 		stack = 2,
+		buff = 'b_shatter'
 	}, #stack 2, merge dur
+	sleep = {
+		type = 'stack_a',
+		stack = 1,
+	}, 
+	ensnare = {
+		type = 'stack_a',
+		stack = 1,
+	}, 
 }
 
 #needs filling
@@ -1661,6 +1617,9 @@ func rebuild_skillvalue_template(args):
 		tmp.value.push_back({code = 'has_status', check = true, status = args.target_status})
 		trigger.conditions.push_back(tmp)
 	
+	if args.has('add_tag'):
+		trigger.tags = args.add_tag.duplicate()
+	
 	return trigger
 
 
@@ -1857,6 +1816,8 @@ func get_effect_for_status(status):
 			return 'e_s_taunt_new'
 		'provoke':
 			return 'e_s_taunt'
+		'sleep':
+			return 'e_s_sleep'
 		_:
 			return status
 

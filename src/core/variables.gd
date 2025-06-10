@@ -44,7 +44,7 @@ enum {TARGET_FORCED, TARGET_KEEP, TARGET_KEEPFIRST, TARGET_NOKEEP, TARGET_MOVEFI
 enum {NT_MELEE, NT_ANY, NT_ANY_NOREPEAT, NT_WEAK, NT_WEAK_MELEE, NT_BACK, NT_CASTER};
 
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_DGRADE, TE_RES_REMOVE}
-enum {DYN_STATS_REBUILD, DYN_STATS_PREAREA, DYN_STATS_FULL}
+enum {DYN_STATS_REBUILD, DYN_STATS_FACTORS, DYN_STATS_PREAREA, DYN_STATS_FULL}
 
 
 #list for values modified by crits, effects etc
@@ -581,8 +581,8 @@ var spirit_changes = [
 	{max = -10.1, min = -100, desc = 'SPIRITLOSSGREAT'},
 ]
 var training_resistance = {
-	0 : 0,
-	25 : 0.3,
-	50 : 0.75,
-	75 : 1#training blocked
+	0 : {penalty = 0, text = "TRAININGTOOLTIPRESISTLOW", color = "green"},
+	25 : {penalty = 0.3, text = "TRAININGTOOLTIPRESISTMOD", color = "yellow"},
+	50 : {penalty = 0.75, text = "TRAININGTOOLTIPRESISTHIGH", color = "brown"},
+	75 : {penalty = 1, text = "TRAININGTOOLTIPRESISTULT", color = "red"}#training blocked
 }

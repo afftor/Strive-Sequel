@@ -135,3 +135,7 @@ func clear_nonstored_effs():
 			continue
 		if eff.parent is String and eff.parent.begins_with('hid'):
 			eff.is_applied = false
+
+
+func get_duration():
+	return null

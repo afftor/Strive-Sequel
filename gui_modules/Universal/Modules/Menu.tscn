@@ -775,7 +775,22 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 33 )
 bbcode_enabled = true
-bbcode_text = "0.11.0
+bbcode_text = "0.11.0d
+Fixed events disabling characters
+Fixed a couple issues with stat display
+Fixed resurrection spell
+0.11.0c
+Added 3 new random events
+Added new Resistance stat to slave training, removed 3 day training cooldown, added Loyalty as trait unlock for subordinates
+Watchdog class now improves Authority instead of reducing it
+Fixed Amelia and Aire character obtaining issues
+Fixed an issue with classes improving factors
+Fixed some item and skill issues
+0.11.0b
+Fixed enemy stats and various combat effects not working
+0.11.0a
+Fixed large amount of bugs, errors and performance issues
+0.11.0
 Revamped effect system to be modifiable and support saves 
 	Old saves can't be imported or loaded anymore, from this point the previous save files should be supported automatically
 Added random events for characters
@@ -1919,7 +1934,22 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.11.0
+text = "0.11.0d
+Fixed events disabling characters
+Fixed a couple issues with stat display
+Fixed resurrection spell
+0.11.0c
+Added 3 new random events
+Added new Resistance stat to slave training, removed 3 day training cooldown, added Loyalty as trait unlock for subordinates
+Watchdog class now improves Authority instead of reducing it
+Fixed Amelia and Aire character obtaining issues
+Fixed an issue with classes improving factors
+Fixed some item and skill issues
+0.11.0b
+Fixed enemy stats and various combat effects not working
+0.11.0a
+Fixed large amount of bugs, errors and performance issues
+0.11.0
 Revamped effect system to be modifiable and support saves 
 	Old saves can't be imported or loaded anymore, from this point the previous save files should be supported automatically
 Added random events for characters

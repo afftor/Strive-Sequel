@@ -226,14 +226,30 @@ func build_training_servant():
 	var cost = person.get_servant_training_cost()
 	$training_servant.visible = true
 	$training_servant/cost.text = tr('TRAININGCOST') % cost
-	$training_servant/resistance/label.text = tr('TRAININGLABELRESISTANCE') % person.get_stat('resistance')
+	
+	var resistance_value = person.get_stat('resistance')
+	var resistance_reduction = person.get_resistance_reduction()
+	var resistance_text
+	if resistance_value > 0:
+		resistance_text = tr('TRAININGLABELRESISTANCEDROP') % [
+			resistance_value, resistance_reduction]
+	else:
+		resistance_text = tr('TRAININGLABELRESISTANCE') % resistance_value
+	$training_servant/resistance/label.text = resistance_text
 	globals.connecttexttooltip($training_servant/resistance, tr("TRAINSERVTOOLTIPRESISTANCE") % [
-		person.get_short_name(), person.get_resistance_reduction()
-	])
-	$training_servant/loyalty/label.text = tr('TRAININGLABELLOYALTY') % floor(person.get_stat('loyalty'))
+		person.get_short_name(), resistance_reduction])
+	
+	var loyalty_label = $training_servant/loyalty/label
+	var loyalty_value = person.get_stat('loyalty')
+	var loyalty_growth = person.get_loyalty_growth()
+	loyalty_label.text = tr('TRAININGLABELLOYALTYGROW') % [
+		floor(loyalty_value), loyalty_growth]
+	var loyalty_color = variables.hexcolordict.yellow
+	if loyalty_value >= cost:
+		loyalty_color = variables.hexcolordict.green
+	loyalty_label.set("custom_colors/font_color", Color(loyalty_color))
 	globals.connecttexttooltip($training_servant/loyalty, tr("TRAINSERVTOOLTIPLOYALTY") % [
-		person.get_short_name(), person.get_loyalty_growth()
-	])
+		person.get_short_name(), loyalty_growth])
 	
 	input_handler.ClearContainer($training_servant/HBoxContainer2, ['Button'])
 	for tr in tr_traits_s:
@@ -262,19 +278,32 @@ func build_training_header():
 	$training/name.text = "Trainer: " + trainer.get_full_name()
 #	$training/spirit.text = tr('TRAININGLABELSPIRIT') % person.get_stat('spirit')
 	$training/spirit.value = person.get_stat('spirit')
-	$training/resistance/label.text = tr('TRAININGLABELRESISTANCE') % person.get_stat('resistance')
-	globals.connecttexttooltip($training/resistance, tr("TRAININGTOOLTIPRESISTANCE") % [
-		person.get_short_name(), person.get_resistance_reduction()
-	])
-	var penalty = person.get_loyalty_penalty()
-	var loyalty_penalty_node = $training/resistance/loyalty
-	if penalty > 0:
-		loyalty_penalty_node.show()
-		$training/resistance/loyalty/penalty.text = "-%d%%" % (penalty * 100)
-	else:
-		loyalty_penalty_node.hide()
 	
-	$training/loyalty.text = tr('TRAININGLABELLOYALTY') % floor(person.get_stat('loyalty'))
+	var resistance_value = person.get_stat('resistance')
+	var resistance_reduction = person.get_resistance_reduction()
+	var resistance_text
+	if resistance_value > 0:
+		resistance_text = tr('TRAININGLABELRESISTANCEDROP') % [
+			resistance_value, resistance_reduction]
+	else:
+		resistance_text = tr('TRAININGLABELRESISTANCE') % resistance_value
+	$training/resistance/label.text = resistance_text
+	var penalty_data = person.get_loyalty_penalty_data()
+	globals.connecttexttooltip($training/resistance, "%s\n{color=%s|%s}" % [
+		(tr("TRAININGTOOLTIPRESISTANCE") % [
+			person.get_short_name(), resistance_reduction]
+		),
+		penalty_data.color, tr(penalty_data.text)
+	])
+	
+	var loyalty_label = $training/loyalty
+	var loyalty_value = person.get_stat('loyalty')
+	loyalty_label.text = tr('TRAININGLABELLOYALTY') % floor(loyalty_value)
+	var loyalty_color = variables.hexcolordict.yellow
+	if loyalty_value >= person.get_training_cost():
+		loyalty_color = variables.hexcolordict.green
+	loyalty_label.set("custom_colors/font_color", Color(loyalty_color))
+	
 	if person.has_resistance_block():
 		$training/cd.text = tr ('TRAINRESISTANT')
 	else:
