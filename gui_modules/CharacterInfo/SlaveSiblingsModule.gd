@@ -391,5 +391,9 @@ func build_relations():
 	var array = ResourceScripts.game_party.find_all_relationship(person.id)
 	for i in array:
 		var character = characters_pool.get_char_by_id(i['char'])
+		#stub
+		if character.get_full_name().begins_with('Child of'):
+			continue
+		
 		text += character.get_full_name() + ": " + i.relationship + "\n"
 	$Relations.bbcode_text = text
