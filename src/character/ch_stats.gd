@@ -1093,10 +1093,10 @@ func create_s_trait_select(trait_id):
 
 
 var skill_shortcuts = {
-	vaginal_virgin = 'pussy',
-	anal_virgin = "anal",
-	mouth_virgin = 'oral',
-	penis_virgin = 'penetration',
+	vaginal_virgin = 'sex_skills_pussy',
+	anal_virgin = "sex_skills_anal",
+	mouth_virgin = 'sex_skills_oral',
+	penis_virgin = 'sex_skills_penetration',
 }
 
 func get_sex_features():
@@ -1141,7 +1141,7 @@ func add_random_sex_skill():
 	var array = ['sex_skills_petting']
 	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
 		if statlist[i + '_lost'] != null:
-			array.append('sex_skills_' + skill_shortcuts[i])
+			array.append(skill_shortcuts[i])
 	
 	if get_stat('penis_size') != '':
 		array.append('sex_skills_penetration')
@@ -1198,7 +1198,7 @@ func update_chardata(chardata):
 #			add_trait(i)
 	if chardata.has("sex_skills"):
 		for skill in chardata.sex_skills:
-			sex_skills[skill] = chardata.sex_skills[skill]
+			sex_skills['sex_skills_' + skill] = chardata.sex_skills[skill]
 	if chardata.has('icon_image'):
 		statlist.dynamic_portrait = false
 
