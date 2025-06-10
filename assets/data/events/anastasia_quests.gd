@@ -1785,7 +1785,7 @@ var data = {
 		],
 		options = [
 			{
-				code = "ana_final_1",
+				code = "ana_final_2",
 				text = "DIALOGUECONTINUE",
 				reqs = [
 
