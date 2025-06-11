@@ -70,9 +70,9 @@ func check_work_rule(rule):
 
 
 func set_work_rule(rule, value):
-	parent.get_ref().reset_rebuild()
 	if variables.work_rules.has(rule):
 		work_rules[rule] = value
+		parent.get_ref().reset_rebuild()
 
 
 func check_brothel_rule(rule):
