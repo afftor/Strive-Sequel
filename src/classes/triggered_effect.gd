@@ -179,4 +179,11 @@ func has_status(status):
 
 
 func rebuild_buffs():
-	return []
+	buffs.clear()
+	if !ready:
+		return
+	for e in template.buffs:
+		var tmp = Buff.new(self)
+		tmp.createfromtemplate(e)
+		tmp.calculate_args()
+		buffs.push_back(tmp)

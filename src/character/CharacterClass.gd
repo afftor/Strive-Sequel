@@ -813,6 +813,8 @@ func remove_all_temp_effects_tag(eff_tag):#function for non-direct temps removin
 
 
 func process_event(ev, data = {}):
+	if dyn_stats.rebuild < variables.DYN_STATS_FULL:
+		dyn_stats.generate_data()
 	dyn_stats.process_event(ev, data)
 
 func get_all_buffs():

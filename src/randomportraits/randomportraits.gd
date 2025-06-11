@@ -105,15 +105,15 @@ func setrandom(character):
 #		haircolor = person.fur
 	
 	if rnd_settings.debug:
-		 print('Generating weights for hair: %s, skin: %s, tits: %s, and ass: %s' % [haircolor, person.skin, person.tits_size, person.ass_size])
+		 print('Generating weights for hair: %s, tits: %s, and ass: %s' % [haircolor,  person.tits_size, person.ass_size])
 	for p in validPortraits:
 		var pWeight = rnd_settings.base_weight
 		if !haircolor.empty() && p.hairColors.has(haircolor):
 			if pWeight <= 0: pWeight = 1.0
 			pWeight *= rnd_settings.haircolor_weight
-		if person.skin != null && !person.skin.empty() && p.skinColors.has(person.skin):
-			if pWeight <= 0: pWeight = 1.0
-			pWeight *= rnd_settings.skincolor_weight
+#		if person.skin != null && !person.skin.empty() && p.skinColors.has(person.skin):
+#			if pWeight <= 0: pWeight = 1.0
+#			pWeight *= rnd_settings.skincolor_weight
 		if person.tits_size != null && !person.tits_size.empty() && p.titSizes.has(person.tits_size):
 			if pWeight <= 0: pWeight = 1.0
 			pWeight *= rnd_settings.titsize_weight

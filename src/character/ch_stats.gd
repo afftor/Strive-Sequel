@@ -327,7 +327,6 @@ func update_stat(stat, value, operant = 'set'):
 	if !data.direct:
 		print ("error: wrong stat data - %s is not direct" % stat)
 		return
-	parent.get_ref().reset_rebuild()
 	if data.tags.has('custom_setter'):
 		call('update_' + stat, value, operant)
 	elif data.tags.has('obsolete'):
@@ -417,7 +416,7 @@ func update_personality(value, operant = 'set'):
 			statlist.personality_kind = -globals.rng.randi_range(65, 85)
 	check_old_personality()
 	parent.get_ref().update_prt()
-	parent.get_ref().reset_rebuild()
+#	parent.get_ref().reset_rebuild()
 
 
 func update_skin(value, operant = 'set'):
@@ -458,7 +457,7 @@ func update_name(value, operant = 'set'):
 	statlist.name = value
 	if ResourceScripts.game_party.relativesdata.has(parent.get_ref().id):
 		ResourceScripts.game_party.relativesdata[parent.get_ref().id].name = get_full_name()
-	parent.get_ref().reset_rebuild()
+#	parent.get_ref().reset_rebuild()
 
 #other stuff
 func check_old_personality():

@@ -201,7 +201,7 @@ func apply_effect(eff):
 			obj.apply()
 		'oneshot':
 			obj.applied_obj = self
-			obj.apply()
+			obj.apply({skill = self, caster = caster, target = target})
 
 
 func remove_effects():
