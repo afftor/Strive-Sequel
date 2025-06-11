@@ -1234,6 +1234,7 @@ var data = {
 	event_dungeon_coccoon_2 = {
 		text = "DIALOGUEEVENTDUNGEONCOCCOON_2",
 		image = "dungeon_cocoon",
+		tags = [],
 		options = [
 			{
 				code = "add_to_captured",
@@ -1281,6 +1282,7 @@ var data = {
 	event_dungeon_coccoon_4 = {
 		text = "DIALOGUEEVENTDUNGEONCOCCOON_4",
 		image = "dungeon_cocoon",
+		tags = [],
 		options = [
 			{
 				code = "close",
@@ -1338,6 +1340,7 @@ var data = {
 	event_dungeon_library_2 = {
 		text = "DIALOGUEEVENTDUNGEONLIBRARY_2",
 		image = "dungeon_library",
+		tags = [],
 		common_effects = [
 			{
 				code = "make_loot",
@@ -1409,6 +1412,7 @@ var data = {
 	event_dungeon_library_4 = {
 		text = "DIALOGUEEVENTDUNGEONLIBRARY_4",
 		image = "dungeon_library",
+		tags = [],
 		options = [
 			{
 				code = "close",
@@ -1428,7 +1432,7 @@ var data = {
 		text = "DIALOGUEEVENTDUNGEONCOFFIN_1",
 		tags = [
 			"linked_event"
-		],
+			],
 		default_event_type = "character_event",
 		image = "dungeon_tomb",
 		options = [
@@ -1454,6 +1458,7 @@ var data = {
 	event_dungeon_coffin_2 = {
 		text = "DIALOGUEEVENTDUNGEONCOFFIN_2",
 		image = "dungeon_tomb",
+		tags = [],
 		common_effects = [
 			{
 				code = "make_loot",
@@ -1488,6 +1493,9 @@ var data = {
 	event_dungeon_coffin_3 = {
 		text = "DIALOGUEEVENTDUNGEONCOFFIN_3",
 		image = "dungeon_tomb",
+		tags = [
+			"linked_event"
+		],
 		options = [
 			{
 				code = "close",

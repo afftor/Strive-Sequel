@@ -489,7 +489,8 @@ var TranslationDict = {
 	MATERIALCATEGORYPLANT = """Растения""",
 	MATERIALCATEGORYBONE = """Кость""",
 	MATERIALCATEGORYCOMPONENT = """Расходуемое""",
-	TOOLTIPHIDDENRESOURCE = "Неизвестный ресурс.\nПродвиньтесь по сюжету, чтобы открыть.",
+	TOOLTIPHIDDENRESOURCE = """Неизвестный ресурс.
+Продвиньтесь по сюжету, чтобы открыть.""",
 	MATERIALMEAT = """Мясо""",
 	MATERIALMEATDESCRIPT = """Богатый источник питательных веществ. Добывается на охоте.""",
 	MATERIALFISH = """Рыба""",
@@ -1374,7 +1375,6 @@ Hotkey: 3""",
 Разрыв: ЗАЩ уменьшена на 50%.""",
 	SKILLWIND_BLADE = """Лезвие ветра""",
 	SKILLWIND_BLADEDESCRIPT = """Наносит цели и другой случайной цели 60% от MATK как урон {color=yellow|Воздухом}.""",
-	SKILLLIGHTNING = """Lightning""", # MISSING TRANSLATION
 	SKILLIGHTNING = """Молния""",
 	SKILLLIGHTNINGDESCRIPT = """Наносит цели 250% от MATK как урон {color=yellow|Воздухом}. Имеет 50% шанс нанести 'Шок' на 2 хода.
 Шок: Урон уменьшен на 15%.""",
@@ -1578,28 +1578,29 @@ Hotkey: 3""",
 	TRAININGLABELLOYALTYGROW = "%.0f + %.2f",
 	TRAININGLABELRESISTANCE = "%.0f",
 	TRAININGLABELRESISTANCEDROP = "%.0f - %.0f",
-	TRAININGTOOLTIPRESISTANCE = "Сопротивление раба снижает эффективность тренировок не {color=yellow|Позитивных} действий.\n%s's сопротивление падает на %.0f за ход.",
+	TRAININGTOOLTIPRESISTANCE = """Сопротивление раба снижает эффективность тренировок не {color=yellow|Позитивных} действий.
+%s's сопротивление падает на %.0f за ход.""",
 	TRAININGTOOLTIPRESISTULT = "Текущее сопротивление слишком велико для тренировки.",
 	TRAININGTOOLTIPRESISTHIGH = "Текущее сопротивление высокое.",
 	TRAININGTOOLTIPRESISTMOD = "Текущее сопротивление среднее.",
 	TRAININGTOOLTIPRESISTLOW = "Текущее сопротивление слабое.",
-	TRAINSERVTOOLTIPRESISTANCE = "Сопротивление подчиненных предотвращает рост лояльности.\n сопротивление %s's падает на %.0f за ход.",
-	TRAINSERVTOOLTIPLOYALTY = "Верность используется для разблокировки действий персонажа и растет со временем.\n%s увеличивает верность на %.2f за ход.",
+	TRAINSERVTOOLTIPRESISTANCE = """Сопротивление подчиненных предотвращает рост лояльности.
+Сопротивление %s's падает на %.0f за ход.""",
+	TRAINSERVTOOLTIPLOYALTY = """Верность используется для разблокировки действий персонажа и растет со временем.
+%s увеличивает верность на %.2f за ход.""",
 
 	TRAININGCOST = """Разблокировка черты: %d лояльности""",
-	TRAININGCOSTGOLD = """Разблокировка черты: %d золота""", #obsolete?
+	TRAININGCOSTGOLD = """Разблокировка черты: %d золота""",
 	TRAINNOTRAINER = """[name] не имеет тренера""",
 	TRAINNOWORKTRAIT = """[name] не имеет черты: Рабочий""",
 	NOTRAINSLOTS = """Нет свободных тренировочных слотов""",
 	ALREADYTRAINER = """Текущий тренер""",
 	SPIRITLOSSNO = """Дух не пострадал""",
 	SPIRITLOSSSMALL = """Тренировка слабо повлияла на Дух [name]""",
-	SPIRITLOSSGREAT = """Тренировка сильно повлиял на Дух [name]""",
-	TRAININGNOTAVAILABLE = """[color=red]Requirements aren't met[/color]
-""", # MISSING TRANSLATION
-	TRAININGNOTAVAILABLEUNIQUE = """[color=red]You have to complete [name]'s personal quest(s) first. [/color]""", # MISSING TRANSLATION
-	NOTAVAILABLE = """[color=red]Недоступно[/color]
+	SPIRITLOSSGREAT = """Тренировка сильно повлияла на Дух [name]""",
+	TRAININGNOTAVAILABLE = """[color=red]Требования не соблюдены[/color]
 """,
+	TRAININGNOTAVAILABLEUNIQUE = "[color=red]Сначала необходимо выполнить личные квесты для персонажа [name].[/color]",
 	TRIANINGREQUIRES = """Обязательные категории тренировки: """,
 	DISPOSITIONCHANGE = """Позиция к %s изменена""",
 	DISPOSITIONSETRESIST = """Позиция к %s теперь сопротивляется
@@ -1815,187 +1816,187 @@ Hotkey: 3""",
 	STATPERSONALITY = "Личность",
 	
 	#lost stats
-	STATBEARD = 'Борода',
-	STATCHIN = 'Подбородок',
-	STATEYE_TEX = 'Текстура глаза',
-	STATEYEBROWS = 'Брови',
-	STATHAIR_BASE_LENGTH = 'Длина основания волос',
-	STATHAIR_FRINGE_LENGTH = 'Длина чёлки',
-	STATHAIR_BACK_LENGTH = 'Длина волос сзади',
-	STATHAIR_ASSIST_LENGTH = 'Длина доп. волос',
-	STATHAS_PUSSY = 'Влагалище',
-	STATHAS_WOMB = 'Матка',
-	STATPOSE = '',
-	STATBODY_LOWER = 'Нижняя часть',
-	STATBODY_SHAPE = 'Форма тела',
-	STATSKIN_COVERAGE = 'Кожный покров',
-	STATFACIAL_HAIR = 'Волосы на лице',
-	STATEYESHAPE = 'Форма глаз',
-	STATNOSE = 'Нос',
-	STATLIPS = 'Губы',
-	STATBODY_COLOR_SKIN = 'Цвет кожи',
-	STATBODY_COLOR_LIPS = 'Цвет губ',
-	STATBODY_COLOR_WINGS = 'Цвет крыльев',
-	STATBODY_COLOR_TAIL = 'Цвет хвоста',
-	STATBODY_COLOR_HORNS = 'Цвет рогов',
-	STATBODY_COLOR_ANIMAL = 'Цвет животной части',
-	STATBODY_COLOR_EARS = '',
-	STATHAIR_BASE = 'Основные волосы',
-	STATHAIR_ASSIST = 'Доп. волосы',
-	STATHAIR_BACK = 'Волосы сзади',
-	STATHAIR_FRINGE = 'Челка',
-	STATHAIR_BASE_COLOR_1 = 'Основной цвет волос 1',
-	STATHAIR_FRINGE_COLOR_1 = 'Цвет челки 1',
-	STATHAIR_BACK_COLOR_1 = 'Цвет волос сзади 1',
-	STATHAIR_ASSIST_COLOR_1 = 'Цвет доп. волос 1',
-	STATHAIR_BASE_COLOR_2 = 'Основной цвет волос 2',
-	STATHAIR_FRINGE_COLOR_2 = 'Цвет челки 2',
-	STATHAIR_BACK_COLOR_2 = 'Цвет волос сзади 2',
-	STATHAIR_ASSIST_COLOR_2 = 'Цвет доп. волос 2',
-	STATHAIR_FACIAL_COLOR = 'Цвет волос на лице',
-	STATENABLED_MASTERIES = '',
-	STATPHYSICS_CAP = '',
-	STATWITS_CAP = '',
-	STATCHARM_CAP = '',
-	STATLUSTMAX = '',
-	STATPERSONALITY_BOLD = '',
-	STATPERSONALITY_KIND = '',
-	STATPERSONALITY_SHY = '',
-	STATPERSONALITY_SERIOUS = '',
-	STATOLD_PERSONALITY = '',
-	STATMANACOST_MOD = '',
-	STATTAUNT = '',
-	STATDAMAGETYPE = '',
-	STATWEAPON_ELEMENT = '',
-	STATDAMAGE_REDUCTION = '',
-	STATBURN_MOD = '',
-	STATBLEED_MOD = '',
-	STATPOISON_MOD = '',
-	STATBURN_DAMAGE = '',
-	STATBLEED_DAMAGE = '',
-	STATPOISON_DAMAGE = '',
-	STATDARKFLAME_DAMAGE = '',
-	STATICON_IMAGE = '',
-	STATBODY_IMAGE = '',
-	STATUNIQUE_VARIATION = '',
-	STATDYNAMIC_PORTRAIT = '',
-	STATPORTRAIT_UPDATE = '',
-	STATPLAYER_SELECTED_ICON = '',
-	STATPLAYER_SELECTED_BODY = '',
-	STATIS_HIRABLE = '',
-	STATHIRE_SCENE = '',
-	STATUNIQUE = '',
-	STATBONUS_DESCRIPTION = '',
-	STATRACEGROUP = '',
-	STATMASTERNOUN = '',
-	STATUPGRADE_POINTS_TOTAL = '',
-	STATLASTSEXDAY = '',
-	STATASSER = '',
-	STATXPREWARD = '',
-	STATLOOTTABLE = '',
-	STATPRICE_ADD_PART = '',
-	STATPRICE_ADD = '',
-	STATBASE_TASK_CRIT_CHANCE = '',
-	STATPENIS_VIRGIN_LOST = '',
-	STATVAGINAL_VIRGIN_LOST = '',
-	STATANAL_VIRGIN_LOST = '',
-	STATMOUTH_VIRGIN_LOST = '',
-	STATVAGINA = '',
-	STATMULTIPLE_TITS = 'Множественные груди',
-	STATMULTIPLE_TITS_DEVELOPED = '',
-	STATLACTATION = '',
-	STATPREGNANCY_FERTILITY = '',
-	STATPREGNANCY_DURATION = '',
-	STATPREGNANCY_BABY = '',
-	STATPREGNANCY_REPORTED = '',
-	STATWAS_PROPOSED = '',
-	STATHAD_CONS_SEX_WITH_MC = '',
-	STATHAD_FORCED_SEX_WITH_MC = '',
-	STATAGREED_TO_MARRY = '',
-	STATMASTERY_WARFARE_ENABLE = '',
-	STATMASTERY_PROTECTION_ENABLE = '',
-	STATMASTERY_STEALTH_ENABLE = '',
-	STATMASTERY_MARKSMANSHIP_ENABLE = '',
-	STATMASTERY_LEADERSHIP_ENABLE = '',
-	STATMASTERY_FIRE_ENABLE = '',
-	STATMASTERY_WATER_ENABLE = '',
-	STATMASTERY_EARTH_ENABLE = '',
-	STATMASTERY_AIR_ENABLE = '',
-	STATMASTERY_LIGHT_ENABLE = '',
-	STATMASTERY_DARK_ENABLE = '',
-	STATMASTERY_MIND_ENABLE = '',
-	STATTATTOO_FACE = '',
-	STATTATTOO_NECK = '',
-	STATTATTOO_ARMS = '',
-	STATTATTOO_LEGS = '',
-	STATTATTOO_CHEST = '',
-	STATTATTOO_CROTCH = '',
-	STATTATTOO_WAIST = '',
-	STATTATTOO_ASS = '',
-	STATARMOR_COLOR_BASE = '',
-	STATARMOR_COLOR_LOWER = '',
-	STATARMOR_COLOR_COLLAR = '',
-	STATARMOR_COLOR_WEAPON = '',
-	STATARMOR_COLOR_UNDERWEAR = '',
-	STATPIERCING_EARLOBES = '',
-	STATPIERCING_EYEBROW = '',
-	STATPIERCING_NOSE = '',
-	STATPIERCING_LIPS = '',
-	STATPIERCING_TONGUE = '',
-	STATPIERCING_NAVEL = '',
-	STATPIERCING_NIPPLES = '',
-	STATPIERCING_CLIT = '',
-	STATPIERCING_LABIA = '',
-	STATPIERCING_PENIS = '',
-	STATMETRICS_OWNERSHIP = '',
-	STATMETRICS_SEX = '',
-	STATMETRICS_DATES = '',
-	STATMETRICS_PARTNERS = '',
-	STATMETRICS_RANDOMPARTNERS = '',
-	STATMETRICS_WIN = '',
-	STATMETRICS_KILLS = '',
-	STATMETRICS_GOLDEARN = '',
-	STATMETRICS_FOODEARN = '',
-	STATMETRICS_MATERIALEARN = '',
-	STATMETRICS_SERVICEPERFORMED = '',
-	STATMETRICS_SOCSKILLUSED = '',
-	STATMETRICS_SPELLUSED = '',
-	STATMETRICS_HEALUSED = '',
-	STATMETRICS_FOODEATEN = '',
-	STATMETRICS_BIRTH = '',
-	STATMETRICS_PREGNANCY = '',
-	STATMETRICS_IMPREGNATION = '',
-	STATSEX_SKILLS_PETTING = 'Секс навык ласок',
-	STATSEX_SKILLS_PENETRATION = 'Секс навык проникновения',
-	STATSEX_SKILLS_PUSSY = 'Секс навык вагинального секса',
-	STATSEX_SKILLS_ORAL = 'Секс навык орального секса',
-	STATSEX_SKILLS_ANAL = 'Секс навык анального секса',
-	STATSEX_SKILLS_TAIL = 'Секс навык секса хвостом',
-	STATSEXEXP_PARTNERS = '',
-	STATSEXEXP_WATCHERS = '',
-	STATSEXEXP_ACTIONS = '',
-	STATSEXEXP_SEENACTIONS = '',
-	STATSEXEXP_ORGASMS = '',
-	STATSEXEXP_ORGASMPARTNERS = '',
-	STATMANACOST_MOD_ALL = '',
-	STATMANACOST_MOD_MELEE = '',
-	STATMANACOST_MOD_RANGED = '',
-	STATMANACOST_MOD_NORMAL = '',
-#	STATMANACOST_MOD_FIRE = '',
-	STATMANACOST_MOD_EARTH = '',
-	STATMANACOST_MOD_AIR = '',
-	STATMANACOST_MOD_WATER = '',
-	STATMANACOST_MOD_LIGHT = '',
-	STATMANACOST_MOD_DARK = '',
-	STATMANACOST_MOD_MIND = '',
-	STATMANACOST_MOD_PHYSIC = '',
-	STATMANACOST_MOD_SPELL = '',
-	STATMANACOST_MOD_SKILL = '',
-	STATMANACOST_MOD_AOE = '',
-	STATMANACOST_MOD_TRUE = '',
-	STATMANACOST_MOD_HEAL = '',
+	STATBEARD = "Борода",
+	STATCHIN = "Подбородок",
+	STATEYE_TEX = "Текстура глаза",
+	STATEYEBROWS = "Брови",
+	STATHAIR_BASE_LENGTH = "Длина основания волос",
+	STATHAIR_FRINGE_LENGTH = "Длина чёлки",
+	STATHAIR_BACK_LENGTH = "Длина волос сзади",
+	STATHAIR_ASSIST_LENGTH = "Длина доп. волос",
+	STATHAS_PUSSY = "Влагалище",
+	STATHAS_WOMB = "Матка",
+	STATPOSE = "",
+	STATBODY_LOWER = "Нижняя часть",
+	STATBODY_SHAPE = "Форма тела",
+	STATSKIN_COVERAGE = "Кожный покров",
+	STATFACIAL_HAIR = "Волосы на лице",
+	STATEYESHAPE = "Форма глаз",
+	STATNOSE = "Нос",
+	STATLIPS = "Губы",
+	STATBODY_COLOR_SKIN = "Цвет кожи",
+	STATBODY_COLOR_LIPS = "Цвет губ",
+	STATBODY_COLOR_WINGS = "Цвет крыльев",
+	STATBODY_COLOR_TAIL = "Цвет хвоста",
+	STATBODY_COLOR_HORNS = "Цвет рогов",
+	STATBODY_COLOR_ANIMAL = "Цвет животной части",
+	STATBODY_COLOR_EARS = "",
+	STATHAIR_BASE = "Основные волосы",
+	STATHAIR_ASSIST = "Доп. волосы",
+	STATHAIR_BACK = "Волосы сзади",
+	STATHAIR_FRINGE = "Челка",
+	STATHAIR_BASE_COLOR_1 = "Основной цвет волос 1",
+	STATHAIR_FRINGE_COLOR_1 = "Цвет челки 1",
+	STATHAIR_BACK_COLOR_1 = "Цвет волос сзади 1",
+	STATHAIR_ASSIST_COLOR_1 = "Цвет доп. волос 1",
+	STATHAIR_BASE_COLOR_2 = "Основной цвет волос 2",
+	STATHAIR_FRINGE_COLOR_2 = "Цвет челки 2",
+	STATHAIR_BACK_COLOR_2 = "Цвет волос сзади 2",
+	STATHAIR_ASSIST_COLOR_2 = "Цвет доп. волос 2",
+	STATHAIR_FACIAL_COLOR = "Цвет волос на лице",
+	STATENABLED_MASTERIES = "",
+	STATPHYSICS_CAP = "",
+	STATWITS_CAP = "",
+	STATCHARM_CAP = "",
+	STATLUSTMAX = "",
+	STATPERSONALITY_BOLD = "",
+	STATPERSONALITY_KIND = "",
+	STATPERSONALITY_SHY = "",
+	STATPERSONALITY_SERIOUS = "",
+	STATOLD_PERSONALITY = "",
+	STATMANACOST_MOD = "",
+	STATTAUNT = "",
+	STATDAMAGETYPE = "",
+	STATWEAPON_ELEMENT = "",
+	STATDAMAGE_REDUCTION = "",
+	STATBURN_MOD = "",
+	STATBLEED_MOD = "",
+	STATPOISON_MOD = "",
+	STATBURN_DAMAGE = "",
+	STATBLEED_DAMAGE = "",
+	STATPOISON_DAMAGE = "",
+	STATDARKFLAME_DAMAGE = "",
+	STATICON_IMAGE = "",
+	STATBODY_IMAGE = "",
+	STATUNIQUE_VARIATION = "",
+	STATDYNAMIC_PORTRAIT = "",
+	STATPORTRAIT_UPDATE = "",
+	STATPLAYER_SELECTED_ICON = "",
+	STATPLAYER_SELECTED_BODY = "",
+	STATIS_HIRABLE = "",
+	STATHIRE_SCENE = "",
+	STATUNIQUE = "",
+	STATBONUS_DESCRIPTION = "",
+	STATRACEGROUP = "",
+	STATMASTERNOUN = "",
+	STATUPGRADE_POINTS_TOTAL = "",
+	STATLASTSEXDAY = "",
+	STATASSER = "",
+	STATXPREWARD = "",
+	STATLOOTTABLE = "",
+	STATPRICE_ADD_PART = "",
+	STATPRICE_ADD = "",
+	STATBASE_TASK_CRIT_CHANCE = "",
+	STATPENIS_VIRGIN_LOST = "",
+	STATVAGINAL_VIRGIN_LOST = "",
+	STATANAL_VIRGIN_LOST = "",
+	STATMOUTH_VIRGIN_LOST = "",
+	STATVAGINA = "",
+	STATMULTIPLE_TITS = "Множественные груди",
+	STATMULTIPLE_TITS_DEVELOPED = "",
+	STATLACTATION = "",
+	STATPREGNANCY_FERTILITY = "",
+	STATPREGNANCY_DURATION = "",
+	STATPREGNANCY_BABY = "",
+	STATPREGNANCY_REPORTED = "",
+	STATWAS_PROPOSED = "",
+	STATHAD_CONS_SEX_WITH_MC = "",
+	STATHAD_FORCED_SEX_WITH_MC = "",
+	STATAGREED_TO_MARRY = "",
+	STATMASTERY_WARFARE_ENABLE = "",
+	STATMASTERY_PROTECTION_ENABLE = "",
+	STATMASTERY_STEALTH_ENABLE = "",
+	STATMASTERY_MARKSMANSHIP_ENABLE = "",
+	STATMASTERY_LEADERSHIP_ENABLE = "",
+	STATMASTERY_FIRE_ENABLE = "",
+	STATMASTERY_WATER_ENABLE = "",
+	STATMASTERY_EARTH_ENABLE = "",
+	STATMASTERY_AIR_ENABLE = "",
+	STATMASTERY_LIGHT_ENABLE = "",
+	STATMASTERY_DARK_ENABLE = "",
+	STATMASTERY_MIND_ENABLE = "",
+	STATTATTOO_FACE = "",
+	STATTATTOO_NECK = "",
+	STATTATTOO_ARMS = "",
+	STATTATTOO_LEGS = "",
+	STATTATTOO_CHEST = "",
+	STATTATTOO_CROTCH = "",
+	STATTATTOO_WAIST = "",
+	STATTATTOO_ASS = "",
+	STATARMOR_COLOR_BASE = "",
+	STATARMOR_COLOR_LOWER = "",
+	STATARMOR_COLOR_COLLAR = "",
+	STATARMOR_COLOR_WEAPON = "",
+	STATARMOR_COLOR_UNDERWEAR = "",
+	STATPIERCING_EARLOBES = "",
+	STATPIERCING_EYEBROW = "",
+	STATPIERCING_NOSE = "",
+	STATPIERCING_LIPS = "",
+	STATPIERCING_TONGUE = "",
+	STATPIERCING_NAVEL = "",
+	STATPIERCING_NIPPLES = "",
+	STATPIERCING_CLIT = "",
+	STATPIERCING_LABIA = "",
+	STATPIERCING_PENIS = "",
+	STATMETRICS_OWNERSHIP = "",
+	STATMETRICS_SEX = "",
+	STATMETRICS_DATES = "",
+	STATMETRICS_PARTNERS = "",
+	STATMETRICS_RANDOMPARTNERS = "",
+	STATMETRICS_WIN = "",
+	STATMETRICS_KILLS = "",
+	STATMETRICS_GOLDEARN = "",
+	STATMETRICS_FOODEARN = "",
+	STATMETRICS_MATERIALEARN = "",
+	STATMETRICS_SERVICEPERFORMED = "",
+	STATMETRICS_SOCSKILLUSED = "",
+	STATMETRICS_SPELLUSED = "",
+	STATMETRICS_HEALUSED = "",
+	STATMETRICS_FOODEATEN = "",
+	STATMETRICS_BIRTH = "",
+	STATMETRICS_PREGNANCY = "",
+	STATMETRICS_IMPREGNATION = "",
+	STATSEX_SKILLS_PETTING = "Секс навык ласок",
+	STATSEX_SKILLS_PENETRATION = "Секс навык проникновения",
+	STATSEX_SKILLS_PUSSY = "Секс навык вагинального секса",
+	STATSEX_SKILLS_ORAL = "Секс навык орального секса",
+	STATSEX_SKILLS_ANAL = "Секс навык анального секса",
+	STATSEX_SKILLS_TAIL = "Секс навык секса хвостом",
+	STATSEXEXP_PARTNERS = "",
+	STATSEXEXP_WATCHERS = "",
+	STATSEXEXP_ACTIONS = "",
+	STATSEXEXP_SEENACTIONS = "",
+	STATSEXEXP_ORGASMS = "",
+	STATSEXEXP_ORGASMPARTNERS = "",
+	STATMANACOST_MOD_ALL = "",
+	STATMANACOST_MOD_MELEE = "",
+	STATMANACOST_MOD_RANGED = "",
+	STATMANACOST_MOD_NORMAL = "",
+#	STATMANACOST_MOD_FIRE = "",
+	STATMANACOST_MOD_EARTH = "",
+	STATMANACOST_MOD_AIR = "",
+	STATMANACOST_MOD_WATER = "",
+	STATMANACOST_MOD_LIGHT = "",
+	STATMANACOST_MOD_DARK = "",
+	STATMANACOST_MOD_MIND = "",
+	STATMANACOST_MOD_PHYSIC = "",
+	STATMANACOST_MOD_SPELL = "",
+	STATMANACOST_MOD_SKILL = "",
+	STATMANACOST_MOD_AOE = "",
+	STATMANACOST_MOD_TRUE = "",
+	STATMANACOST_MOD_HEAL = "",
 	#new
-	INNATE = 'начальный',
+	INNATE = "начальный",
 	STATPERSONALITYDESCRIPT= """Личность определяет манеру речи персонажа и не влияет на игровой процесс.""",
 
 	SLAVEDIET = """Предпочтения в еде""",
@@ -2064,9 +2065,7 @@ Hotkey: 3""",
 	DESCRIPTCLASSMERC = """[name] было нанят/а вами и стоит вам золота.""",
 	DESCRIPTCLASSHEIR = """[name] ваш наследник.""",
 	DESCRIPTCLASSSLAVE_TRAINED = "[name] является вашим обученным рабом и не нуждается в контроле.",
-	DESCRIPTCLASSSPOUSE = """[name] is your spouse, [his] children will become Heirs.""", # MISSING TRANSLATION
-	DESCRPTCLASSSPOUSE = """[name] is your spouse, [his] children will become Heirs.""", # MISSING TRANSLATION
-	
+	DESCRIPTCLASSSPOUSE = "[name] ваш супруг/супруга, [his] дети станут наследниками.",	
 	CLASSDETAILSKILLS = """Навыки""",
 	CLASSDETAILCOMBATSKILLS = """Боевые навыки""",
 	CLASSRIGHTCLICKDETAILS = """ПКМ для подробностей""",
@@ -2149,7 +2148,6 @@ Hotkey: 3""",
 	STATWITS_FACTOR = """Фактор мудрости""",
 	STATCHARM_FACTOR = """Фактор обаяния""",
 	STATSEXUALS_FACTOR = """Сексуальный фактор""",
-	STATTAME_FACTOR = """Tame Factor""", # MISSING TRANSLATION
 	STATAUTHORITY_FACTOR = """Фактор авторитета""",
 	STATTIMID_FACTOR = """Фактор робости""",
 	STATSLAVE_CLASS = """Тип""",
@@ -2161,7 +2159,7 @@ Hotkey: 3""",
 	STATTRAINEE_AMOUNT = """Слоты тренировок""",
 	STATTRAINING_LOYALTY = """Лояльность от обучения""",
 	STATTRAINING_SPIRIT = """Дух от обучения""",
-	STATRESISTANCE_RED = """Resistance drop speed""", # MISSING TRANSLATION
+	STATRESISTANCE_RED = "Скорость падения сопротивления",
 	TRAITTRAINER = """Тренер""",
 	TRAITTRAINERDESCRIPT = """Может наблюдать за рабами""",
 	STATSPIRIT = """Дух""",
@@ -2247,37 +2245,26 @@ Hotkey: 3""",
 	
 	STATFOOD_CONSUMPTION = """Потребление еды""",
 	STATFOOD_CONSUMPTIONDESCRIPT = """Количество продуктов питания, необходимое человеку каждый день. Недостаток пищи приводит к голоду, истощению и в конечном итоге к смерти.""",
-	STATBREAKDOWN_TIME = """Breakdown period""", # MISSING TRANSLATION
-	STATBREAKDOWN_TIMEDESCRIPT = """Period of unavailability after breakdown""", # MISSING TRANSLATION
-	STATBRK_LOSE_FRIEND = """Breakdown chance on losing friend""", # MISSING TRANSLATION
-	STATBRK_LOSE_LOVER = """Breakdown chance on losing lover""", # MISSING TRANSLATION
-	STATBRK_LOSE_RELATIVE = """Breakdown chance on losing relative""", # MISSING TRANSLATION
-	STATBRK_DISLIKE_FOOD = """Breakdown chance on disliked food""", # MISSING TRANSLATION
-	STATBRK_LOSE_VIRGINITY = """Breakdown chance on losing virginity""", # MISSING TRANSLATION
-	STATBRK_GRAVE_INJURY = """Breakdown chance on grave injury""", # MISSING TRANSLATION
-	STATBRK_GRAVE_INJURY_RES = """Breakdown chance on resurrection""", # MISSING TRANSLATION
-	STATBRK_TERRIBLE_DATE = """Breakdown chance on terrible date""", # MISSING TRANSLATION
-	BREAKDOWN_LFRIEND = """[name] had a breakdown due to losing a friend""", # MISSING TRANSLATION
-	BREAKDOWN_LLOVER = """[name] had a breakdown due to losing a lover""", # MISSING TRANSLATION
-	BREAKDOWN_LRELATIVE = """[name] had a breakdown due to losing a relative""", # MISSING TRANSLATION
-	BREAKDOWN_FOOD = """[name] had a breakdown due to being upset about their current food""", # MISSING TRANSLATION
-	BREAKDOWN_LVIRGINITY = """[name] had a breakdown due to losing their virginity""", # MISSING TRANSLATION
-	BREAKDOWN_GRAVEIN = """[name] had a breakdown due to suffering a grave injury""", # MISSING TRANSLATION
-	BREAKDOWN_GRAVEIN_RES = """[name] had a breakdown due to being resurrected and suffering a grave injury""", # MISSING TRANSLATION
-	BREAKDOWN_DATE = """[name] had a breakdown due to a terrible date""", # MISSING TRANSLATION
+	STATBREAKDOWN_TIME = "Период восстановления",
+	STATBREAKDOWN_TIMEDESCRIPT = "Период неработоспособности после срыва",
+	STATBREAKDOWN_CHANCE_MOD = "Вероятность срыва",
+	BREAKDOWN_LFRIEND = "[name] переживает срыв из-за потери друга",
+	BREAKDOWN_LLOVER = "[name] переживает срыв из-за потери возлюбленного",
+	BREAKDOWN_LRELATIVE = "[name] переживает срыв из-за потери родственника",
+	BREAKDOWN_FOOD = "[name] переживает срыв из-за недовольства текущей едой",
+	BREAKDOWN_LVIRGINITY = "[name] переживает срыв из-за потери девственности",
+	BREAKDOWN_GRAVEIN = "[name] переживает срыв из-за получения тяжёлой травмы",
+	BREAKDOWN_GRAVEIN_RES = "[name] переживает срыв после воскрешения и получения тяжёлой травмы",
+	BREAKDOWN_DATE = "[name] переживает срыв из-за ужасного свидания",
 	MASTER_POINTS = """Мастерство""",
-
 	TOOLTIPENERGY = """Энергия восстанавливается во время сна и требуется для выполнения задач. Когда персонаж вынужден работать без энергии, его Истощение увеличивается.""",
 	TOOLTIPFATIGUE = """Усталость возрастает со временем и рассеивается при развлечении. Если за ней не следить, она может привести к снижению производительности.""",
 	TOOLTIPEXHAUSTION = """Истощение развивается, когда персонаж вынужден работать без остатка энергии. Истощение вызывает штрафы к максимальному здоровью и производству, и может привести к смерти, если долгое время о нем не заботиться.""",
-
 	TOOLTIPSIMPLEBEHAVIOR = """При активном 'Простом поведении' персонаж будет работать, пока не иссякнет энергия, отдыхать, пока энергия не иссякнет, и искать развлечение, пока не исчезнет усталость. Рекомендуется для начинающих.""",
 	TOOLTIPPBASEPRODUCTIVITY = """Базовая продуктивность. Снижается при усталости и истощении.""",
-
 	TOOLTIPGOLD = """Золото в наличии. Золото используется для покупки рабов и предметов и может быть получено при продаже предметов, выполнении квестов и некоторых заданий.""",
 	TOOLTIPFOOD = """Продукты питания в наличии / количество потребляемой пищи в день. Еда используется каждым персонажем, ее можно получить при выполнении некоторых заданий и увеличить при приготовлении пищи. Недостаток пищи приводит к истощению и возможной смерти.""",
 	TOOLTIPENCHANTSCREEN = """Вы можете наложить на предмет чары и проклятия. Наложение проклятия увеличит способность предмета к зачарованию, но проклятие будет случайным и появится только при экипировке предмета.""",	
-	
 	MASTERPOINTTOP = """Новое очко способностей Мастера""",
 	MASTERPOINTSTOP = """Новые очки способностей Мастера""",
 	MASTERPOINTBOTTOM = """%d очков""",
@@ -2290,19 +2277,27 @@ Hotkey: 3""",
 	INFORULES_CONDS = """Условия и правила можно переключать на персонаже, влияя на некоторые его показатели и поведение.""", 	
 	INFOPERSONALITY = """Личность персонажа влияет на его поведение и открывает доступ к определенным чертам и бонусам.
 	Нейтральный: Без бонусов
-	Решительность: Негативные эффекты действуют на 1 ход меньше\n+5% Производительности
-	Доброта: Положительные эффекты длятся на 1 ход дольше\n+10% Сервис
-	Серьезность: Откат боевых способностей уменьшен на 1 ход (не может быть меньше 1 хода)\nШанс крита поручения +3%
-	Застенчивость: Расход маны на заклинания уменьшен на 15%\n+15% прироста верности, -10% еженедельного налога на подчиненных
+	Решительность: Негативные эффекты действуют на 1 ход меньше
++5% Производительности
+	Доброта: Положительные эффекты длятся на 1 ход дольше
++10% Сервис
+	Серьезность: Откат боевых способностей уменьшен на 1 ход (не может быть меньше 1 хода)
+Шанс крита поручения +3%
+	Застенчивость: Расход маны на заклинания уменьшен на 15%
++15% прироста верности, -10% еженедельного налога на подчиненных
 """,
 	INFOPERSONALITYBOLD = """Решительность
-Негативные эффекты действуют на 1 ход меньше\n+5% Производительности""",
+Негативные эффекты действуют на 1 ход меньше
++5% Производительности""",
 	INFOPERSONALITYKIND = """Доброта
-Положительные эффекты длятся на 1 ход дольше\n+10% Сервис""",
+Положительные эффекты длятся на 1 ход дольше
++10% Сервис""",
 	INFOPERSONALITYSERIOUS = """Серьезность
-Откат боевых способностей уменьшен на 1 ход (не может быть меньше 1 хода)\nШанс крита поручения +3%""",
+Откат боевых способностей уменьшен на 1 ход (не может быть меньше 1 хода)
+Шанс крита поручения +3%""",
 	INFOPERSONALITYSHY = """Застенчивость
-Расход маны на заклинания уменьшен на 15%\n+15% прироста верности, -10% еженедельного налога на подчиненных""",
+Расход маны на заклинания уменьшен на 15%
++15% прироста верности, -10% еженедельного налога на подчиненных""",
 	INFOSLAVE_CLASS = """Тип персонажа определяет его возможности и поведение. Рабы могут быть принуждены к сексуальным услугам без согласия и имеют более высокую терпимость к отсутствию согласия в сексе. Подчиненные быстрее становятся лояльными, но не могут быть проданы или отданы""",
 	INFOCONSENT = """Согласие определяет, какие действия, связанные с сексом, персонаж будет готов совершить. Согласие можно увеличить, подталкивая персонажа к новым практикам в виде свиданий и вариантов в сексе. Согласие влияет на работу, связанную с проституцией.""",
 	INFOCONSENTMASTER = """Согласие определяет, какие действия, связанные с сексом, персонаж будет готов совершить. Согласие можно увеличить, подталкивая персонажа к новым действиям с помощью свиданий и вариантов в сексе. {color=green|[Master] не имеет требований к Согласию для любых действий}.""",
@@ -2789,7 +2784,8 @@ Hotkey: 3""",
 	TRAITVALKYRIE_SPEARDESCRIPT = """+10 скорости при использовании копья""",
 	TRAITAUTOHIDE = """Скрытность""",
 	TRAITAUTOHIDEDESCRIPT = """Начинает бой в скрытности, если не надета тяжелая или средняя броня""",
-	TRAITDEATHKNIGHT_TRAITDESCRIPT = """Победа в бою увеличивает ATK, Точность и обычное сопротивление за бой. Максимум 5 стаков. Стаки рассеиваются со временем. """,
+	TRAITDEATHKNIGHT_TRAITDESCRIPT = """Победа в бою увеличивает ATK, Точность и обычное сопротивление за бой. Максимум 5 стаков. Стаки рассеиваются со временем.
+Навыки обладают элементом Тьмы""",
 	TRAITTEMPLAR_TRAITDESCRIPT = """После использования насмешки или провокации восстанавливает немного здоровья и получает увеличенную МЗАЩ на 3 хода.""",
 	TRAITDEATHKNIGHTDESCRIPT = """Добивание повышает верность.""",
 	TRAITNINJADESCRIPT = """Получает уклонение, основанное на МЗАЩ. Минимальный шанс уклониться от удара снижен до 5%""",
@@ -2820,8 +2816,8 @@ Hotkey: 3""",
 	TRAITMIXX_CHAMPIONDESCRIPT = "{color=brown|Бурлящая тьма}: Атаки Тьмой игнорируют всю ЗАЩ/MЗАЩ и имеют +30 к точности.",
 	TRAITSADISTDESCRIPT = """{color=brown|Вскрывающий вены}: Физические атаки ближнего боя с вероятностью 25% вызывают кровотечение на 2 хода.
 Физические и сексуальные тренировки на 25 % эффективнее.""",	
-	TRAITSTAG_BUFF =  "Благословение Леса",
-	TRAITSTAG_BUFFDESCRIPT =  "Физ. возм.: +15; Охота: +25%; Максимальных зарядов ловкости +1; Мастерство скрытности +1",
+	TRAITSTAG_BUFF = "Благословение Леса",
+	TRAITSTAG_BUFFDESCRIPT = "Физ. возм.: +15; Охота: +25%; Максимальных зарядов ловкости +1; Мастерство скрытности +1",
 	TRAITDARKWEAPON = "Все атаки навыков имеют элемент Тьмы",
 	TRAITHEALER1 = """Целитель:Новичок""",
 	TRAITHEALER1DESCRIPT = """Исцеляющие заклинания на 25% эффективнее.""",
@@ -2897,7 +2893,7 @@ Hotkey: 3""",
 	TRAITDEADLYDESCRIPT = """Шанс крита +9%""",
 	TRAITLIVELYDESCRIPT = """+3 Регенерация здоровья""",
 	TRAITMVORTEXDESCRIPT = """+1 Регенерация маны""",
-	TRAITGIFTEDDESCRIPT = """Максимальное количество маны +100%""",
+	TRAITGIFTEDDESCRIPT = """Максимальное количество маны +50%""",
 	TRAITBELLIGERENTDESCRIPT = """ATK +15%""",
 	TRAITHIDDENPOWERSDESCRIPT = """MATK +10%.""",
 	TRAITHEALTHYDESCRIPT = """+10 Максимальное здоровье.""",
@@ -3091,8 +3087,6 @@ Requires: Базовый рабский труд""",
 Поскольку [name] обладает наблюдаемой девственностью, это делает [him] более желанным для определенных людей. 
 {color=yellow|Цена продажи увеличена на 25%%}""",
 	TRAITEFFECTRIVAL = """Присутствует соперник: +5%% производительности""",
-	TRAITEFFECTFRIENDS = """Friend Present: +10%% Health Regeneration""", # MISSING TRANSLATION
-	TRAITEFFECTLOVERS = """Lover Present: +10%% Mana Regeneration""", # MISSING TRANSLATION
 	TRAITEFFECTFRIEND = """Присутствует друг: +10%% регенерации здоровья""",
 	TRAITEFFECTLOVER = """Присутствует любовник/ца: +10%% регенерации маны""",
 	TRAITEFFECTRARESTURDY = """Особый: Твердый
@@ -3187,7 +3181,7 @@ Requires: Базовый рабский труд""",
 	TRAITSTUNIMMUNITYDESCRIPT = "Невозмлжно оглушить в бою.",
 	TRAITEFFECTCURSE = """Все сопротивления снижены""",
 	TRAITEFFECTHASTE = """Скорость увеличена""",
-	EFFECTCOFFIBLESS = """Increased Experience gain by 20%%""", # MISSING TRANSLATION
+	EFFECTCOFFIBLESS = "Увеличение получаемого опыта на 20%%",
 	EUPHORIABUFF = """Эйфория: Урон увеличен""",
 	BUFFDESCRIPTSHACKLES = """Оковы""",
 	BUFFDESCRIPTGREATSHACKLES = """Великие оковы""",
@@ -4328,6 +4322,7 @@ Requires: Базовый рабский труд""",
 	DIALOGUE_SPRING_NO_LOOT = """Вы обыскали все вокруг, но не смогли найти ничего полезного""",
 	TRIBALELVES = """Вы обнаружили, что окружены группой местных племенных эльфов. Похоже, они считают вас нарушителем на своей территории и готовятся к нападению...""",
 	TRIBALELVES_WIN = """Когда вы побеждаете нападающих, они поспешно отступают, но один из них остался позади, и вашей партии удается их одолеть.""",
+
 	CHARLOVERS = """[name] и [scncharname] обратились к вам и попросили позволить им стать больше чем любовниками.""",
 	CHARFREELOVERS = """[name] и [scncharname] обратились к вам и попросили разрешить им стать любовниками.""",
 	REVEAL_MAP = "[name] накладывает заклинание 'Шепот ветра', улавливая расположение окружающих территорий. ",
@@ -4443,7 +4438,7 @@ Requires: Базовый рабский труд""",
 	ENEMYBANDIT_BOSS_MAGE = """Разбойный маг""",
 	ENEMYRAMONT_BOSS = """Рамонт""",
 	ENEMYHECTOR_BOSS = """Гектор""",
-	ENEMYREYAN_BOSS = """Reyan""", # MISSING TRANSLATION
+	ENEMYREYAN_BOSS = "Рейан",
 	ENEMYREBEL_RECRUIT = """Рекрут повстанцев""",
 	ENEMYREBEL_KNIGHT = """Рыцарь  повстанцев""",
 	ENEMYREBEL_MAGE = """Маг  повстанцев""",
@@ -13531,7 +13526,9 @@ ZEPHYRA_BRUSH_6_OPTION_3 = """*Не говорить ничего и взять 
 	AMELIA_TRIAL_14_OPTION_1 = """Я предложил свою помощь. Норлан пытался убедить меня не вмешиваться.""",
 	AMELIA_TRIAL_14_OPTION_2 = """Конечно, это была моя идея. Ты не можешь просто так взять и исчезнуть, Амелия.""",
 	AMELIA_TRIAL_15_2 = """Амелия: - Я буду иметь это в виду на будущее, господин Мэр. Вы помните, какова была реакция Норлана на ваше предложение?""",
-	AMELIA_TRIAL_15 = """\nЧлен 2: - Я... Я хочу кое-что добавить! Я был с ними в комнате, когда происходил этот разговор, и Норлан довольно неохотно согласился принять помощь Мэра. Мне тоже показалось это странным. У нас был хаос, а он отказывается от помощи, которую так любезно предложил Мэр!
+	AMELIA_TRIAL_15 = """
+
+Член 2: - Я... Я хочу кое-что добавить! Я был с ними в комнате, когда происходил этот разговор, и Норлан довольно неохотно согласился принять помощь Мэра. Мне тоже показалось это странным. У нас был хаос, а он отказывается от помощи, которую так любезно предложил Мэр!
 
 Норлан: - Я понимаю, как это может показаться, но я не хотел вас отговаривать. Я просто хотел избавить вас от проблем, с которыми мы вполне способны справиться сами. Употребление термина "хаос" кажется несколько преувеличенным""",
 	AMELIA_TRIAL_15_ = """Амелия: - Вот и все, Норлан. Два свидетеля. 
@@ -16007,7 +16004,7 @@ CAPACITOR_MOLTEN_START_OPT2 = """Не уверен, кого ты имеешь �
 - Слухи не врали, ты же все-таки охотник за юбками. Не мог бы ты уступить мне немного места?""",
 	DWARF_CEREMONY_OPT_BETRAYAL = """Ты планировала это предательство с самого начала?""",
 	DWARF_CEREMONY_OPT_ARTIFACT = """Я не позволю тебе забрать артефакт просто так""",
-	DWARF_CEREMONY_OPT_TALKOVER = """Может быть, мы могли бы обсудить это? Какой культ может предложить то, чего не могу предложить я?""",
+	DWARF_CEREMONY_OPT_TALKOVER = """Может быть, мы могли бы обсудить это? Что культ может предложить, чего не могу я?""",
 	DWARF_CEREMONY_REPLY_BETRAYAL = """Куро потирает лоб и заметно вздыхает.
 
 - Я, честно говоря, надеялась, что ты уже перестал задавать глупые вопросы. Да. Именно это и было целью культа - восстановить силы артефакта и забрать его себе. Иначе зачем бы я передала чертеж машины, чтобы наделить ее силой?""",
@@ -16966,8 +16963,8 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	SWORD_ARTIFACT_QUEST_STAGE_4 = """Посетить домик в племени зверолюдей""",
 	SWORD_ARTIFACT_QUEST_STAGE_5 = """Принести 2.000 мяса и рыбы Савре""",
 	SWORD_ARTIFACT_QUEST_STAGE_6 = """Вернуться в племя зверолюдей через 1 день""",
-	SWORD_ARTIFACT_QUEST_STAGE_7 = """Посетить племя зверолюдей""",
-	SWORD_ARTIFACT_QUEST_STAGE_77 = """Провести ритуал с Мэй""",
+	SWORD_ARTIFACT_QUEST_STAGE_7 = """Искать Мэй в лесах""",
+	SWORD_ARTIFACT_QUEST_STAGE_77 = """Провести ритуал с Мэй на следующий день""",
 	SWORD_ARTIFACT_QUEST_STAGE_8 = """Найти Леона в племени зверолюдей""",
 	SWORD_ARTIFACT_QUEST_STAGE_9 = """Искать Леона в лесу""",
 	SWORD_ARTIFACT_QUEST_STAGE_10 = """Поговорить с Саврой о снятии безумия Леона""",
@@ -17099,24 +17096,24 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	LILITH_PATRON_QUEST_STAGE_13 = """Посетите Ксари""",
 	LILITH_PATRON_QUEST_STAGE_14 = """Попросите Лилит встретиться с ее покровителем""",
 	LILITH_PATRON_QUEST_STAGE_15 = """Исследуйте заброшенную Скрытую рощу""",
-	ANASTASIA_QUEST_NAME = """Anastasia: Virtue by proxy""", # MISSING TRANSLATION
-	ANASTASIA_QUEST_SUMMARY = """Anastasia has received a call for help and just can't sit around waiting. She has tasked you to help out.""", # MISSING TRANSLATION
-	ANASTASIA_QUEST_STAGE0 = """Take letter""", # MISSING TRANSLATION
-	ANASTASIA_QUEST_STAGE1 = """Read letter""", # MISSING TRANSLATION
-	ANASTASIA_QUEST_STAGE2 = """Meet Liora at Aliron""", # MISSING TRANSLATION
-	ANASTASIA_QUEST_STAGE3 = """Travel to Ashen Ridge""", # MISSING TRANSLATION
-	ANASTASIA_QUEST_STAGE4 = """Explore Goblin cave""", # MISSING TRANSLATION
-	ANASTASIA_QUEST_STAGE5 = """Return to Liora in Aliron""", # MISSING TRANSLATION
-	ANASTASIA_QUEST_STAGE6 = """Talk to Anastasia""", # MISSING TRANSLATION
-	ANASTASIA_QUEST_STAGE7 = """""", # MISSING TRANSLATION
-	ANASTASIA_QUEST2_NAME = """Anastasia: Proof of loyalty""", # MISSING TRANSLATION
-	ANASTASIA_QUEST2_SUMMARY = """You have received a task from Duncan... It seems to involve rebels.""", # MISSING TRANSLATION
-	ANASTASIA_QUEST_STAGE8 = """Meet with Duncan""", # MISSING TRANSLATION
-	ANASTASIA_QUEST_STAGE9 = """Talk to Anastasia""", # MISSING TRANSLATION
-	ANASTASIA_QUEST_STAGE10 = """Go to Rebel Fort""", # MISSING TRANSLATION
-	ANASTASIA_QUEST_STAGE11 = """Deal with Fort Defenders.""", # MISSING TRANSLATION
-	ANASTASIA_QUEST_STAGE12 = """Deal with Reyan""", # MISSING TRANSLATION
-	ANASTASIA_QUEST_STAGE13 = """Return to Duncan""", # MISSING TRANSLATION
+	ANASTASIA_QUEST_NAME = "Анастасия: Добродетель по доверенности",
+	ANASTASIA_QUEST_SUMMARY = "Анастасия получила просьбу о помощи и не может просто сидеть и ждать. Она поручила вам помочь.",
+	ANASTASIA_QUEST_STAGE0 = "Принять письмо",
+	ANASTASIA_QUEST_STAGE1 = "Прочитать письмо",
+	ANASTASIA_QUEST_STAGE2 = "Встретьте Лиору в Алироне",
+	ANASTASIA_QUEST_STAGE3 = "Отправляйтесь в Пепельный хребет",
+	ANASTASIA_QUEST_STAGE4 = "Исследуйте гоблинскую пещеру",
+	ANASTASIA_QUEST_STAGE5 = "Вернитесь к Лиоре в Алироне",
+	ANASTASIA_QUEST_STAGE6 = "Поговорить с Анастасией",
+	ANASTASIA_QUEST_STAGE7 = "",
+	ANASTASIA_QUEST2_NAME = "Анастасия: Доказательство верности",
+	ANASTASIA_QUEST2_SUMMARY = "Вы получили задание от Дункана... Похоже, оно связано с повстанцами.",
+	ANASTASIA_QUEST_STAGE8 = "Встретиться с Дунканом",
+	ANASTASIA_QUEST_STAGE9 = "Поговорить с Анастасией",
+	ANASTASIA_QUEST_STAGE10 = "Отправляйтесь в форт повстанцев",
+	ANASTASIA_QUEST_STAGE11 = "Разберитесь с защитниками форта.",
+	ANASTASIA_QUEST_STAGE12 = "Разберитесь с Рейаном",
+	ANASTASIA_QUEST_STAGE13 = "Вернуться к Дункану",
 	HARA_SCALES_QUEST_NAME = """Хара: починка весов""",
 	HARA_SCALES_QUEST_SUMMARY = """Помогите Харе починить Весы Судьбы для короля""",
 	HARA_SCALES_QUEST_SEE_HARA = """Посетить Хару в мастерской""",
@@ -17257,7 +17254,6 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 - [Master], можно вас на ми...
 
 Зефира замирает, увидев ваш поступок. Ее лицо предвещает вам гибель. Время останавливается, и вы больше не можете воспринимать окружающий мир, когда последний вздох покидает ваше тело...""",
-	
 	DIALOGUEAMELIAINITIATE = """Ваш исключительный трофей, бывшая лидер Гильдии слуг Амелия, сияет от восторга, когда вы приходите к ней в гости. 
 	
 — [Master], хотите, чтобы вас обслуживали так, как не сможет ни одна таверна? Я могу приготовить незабываемый ужин, наполнить роскошную ванну, или вы предпочитаете... меня?""",
@@ -18441,29 +18437,31 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	DUNGEONADJ14 = """Кристалл""",
 	DUNGEONADJ15 = """Смертельный""",
 	DUNGEONADJ16 = """Ревущий""",
-	GOBLIN_STRONGHOLD_NOUNS1 = """Stronghold""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_NOUNS2 = """Warren""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_NOUNS3 = """Hold""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_NOUNS4 = """Bastion""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_NOUNS5 = """Fortress""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_NOUNS6 = """Keep""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_NOUNS7 = """Spire""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_NOUNS8 = """Crag""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_NOUNS9 = """Rookery""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_NOUNS10 = """Hovel""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_ADJS1 = """Goblin""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_ADJS2 = """Fetid""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_ADJS3 = """Squalid""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_ADJS4 = """Jagged""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_ADJS5 = """Ragged""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_ADJS6 = """Crude""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_ADJS7 = """Wretched""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_ADJS8 = """Savage""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_ADJS9 = """Cluttered""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_ADJS10 = """Horde""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_ADJS11 = """Marauding""", # MISSING TRANSLATION
-	GOBLIN_STRONGHOLD_ADJS12 = """Ramshackle""", # MISSING TRANSLATION
 	
+	GOBLIN_STRONGHOLD_NOUNS1 = "Цитадель",
+	GOBLIN_STRONGHOLD_NOUNS2 = "Лабиринт",
+	GOBLIN_STRONGHOLD_NOUNS3 = "Твердыня",
+	GOBLIN_STRONGHOLD_NOUNS4 = "Бастион",
+	GOBLIN_STRONGHOLD_NOUNS5 = "Крепость",
+	GOBLIN_STRONGHOLD_NOUNS6 = "Крепость",
+	GOBLIN_STRONGHOLD_NOUNS7 = "Шпиль",
+	GOBLIN_STRONGHOLD_NOUNS8 = "Утёс",
+	GOBLIN_STRONGHOLD_NOUNS9 = "Гнездовье",
+	GOBLIN_STRONGHOLD_NOUNS10 = "Трущоба",
+
+	GOBLIN_STRONGHOLD_ADJS1 = "Гоблинский",
+	GOBLIN_STRONGHOLD_ADJS2 = "Зловонный",
+	GOBLIN_STRONGHOLD_ADJS3 = "Запущенный",
+	GOBLIN_STRONGHOLD_ADJS4 = "Зубчатый",
+	GOBLIN_STRONGHOLD_ADJS5 = "Обтрёпанный",
+	GOBLIN_STRONGHOLD_ADJS6 = "Грубый",
+	GOBLIN_STRONGHOLD_ADJS7 = "Жалкий",
+	GOBLIN_STRONGHOLD_ADJS8 = "Дикий",
+	GOBLIN_STRONGHOLD_ADJS9 = "Захламлённый",
+	GOBLIN_STRONGHOLD_ADJS10 = "Орды",
+	GOBLIN_STRONGHOLD_ADJS11 = "Мародёрствующий",
+	GOBLIN_STRONGHOLD_ADJS12 = "Ветхий",
+
 	#dungeons
 	
 	QUEST_FIGHTERS_LICH_TEXT = """Укрытие Лича""",
@@ -18583,10 +18581,10 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	QUEST_LILIA_DUNGEON_GROVE_DESC = """ """,
 	QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_TEXT = """Заброшенная роща""",
 	QUEST_PATRON_ANCIENT_JUNGLE_LOCATION_DESC = """ """,
-	QUEST_ASHEN_RIDGE_TEXT = """Ashen Ridge""", # MISSING TRANSLATION
-	QUEST_ASHEN_RIDGE_DESC = """""", # MISSING TRANSLATION
-	QUEST_DUNGEON_ANA_FORT_LOCATION_TEXT = """Captured Fort""", # MISSING TRANSLATION
-	QUEST_DUNGEON_ANA_FORT_LOCATION_DESC = """""", # MISSING TRANSLATION
+	QUEST_ASHEN_RIDGE_TEXT = "Пепельный хребет",
+	QUEST_ASHEN_RIDGE_DESC = "",
+	QUEST_DUNGEON_ANA_FORT_LOCATION_TEXT = "Захваченный форт",
+	QUEST_DUNGEON_ANA_FORT_LOCATION_DESC = "",
 	
 	#eventscrits
 	
@@ -19549,265 +19547,407 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	CHARRND_BROKENVASE_REPLY_REPAIR = "Вы киваете, разрешая [name] попытаться починить вазу. [He] облегчённо вздыхает и целый день корпит над грубой склейкой. Ваза возвращается на место, кривая и бугристая, но [he] сияет от счастья. [His] благодарность растёт, а впредь [he] проявляет особую осторожность.",
 	CHARRND_BROKENVASE_REPLY_REPLACE = "Вы качаете головой, требуя заменить вазу. [name] бледнеет, зная что стоимость превышает [his] возможности, но обещает накопить. [His] плечи поникают, в глазах закипает тихое негодование.",
 	CHARRND_BROKENVASE_REPLY_PUNISH = "Вы хватаете [name] за руку, вычитывая за беспечность, и удерживаете стоимость из [his] жалования. [He] роняет осколки, молча кивая. Работа продолжается, но [he] избегает вас, потупив взгляд, боль от ваших слов долго не проходит.",
-	ANA_LETTER_1_1 = """Anastasia approaches you with a hesitant step, her hands clutching a crumpled letter. Her wide eyes shimmer with a mix of determination and uncertainty as she speaks.
-— Master, I received this... a letter from a rebel soldier's wife. She's desperate, begging me to find her husband. He's been lost since the fighting ended. Please, I know I'm in no position to ask favors, but will you take it? Help her look for him? I... I can't bear to ignore her plea. She included her name, Liora, and I'm sure she'd speak to you if you sought her out.""", # MISSING TRANSLATION
-	ANA_LETTER_1_2 = """Anastasia blinks, caught off guard, then steadies herself, her voice trembling but resolute.
-— I... I'll do anything you ask of me, Master. Anything at all. Just please, help her. She's lost everything already.""", # MISSING TRANSLATION
-	ANA_LETTER_1_OPTION_1 = """You're still clinging to your old causes? Fine, hand over the letter, I'll see what I can do.""", # MISSING TRANSLATION
-	ANA_LETTER_1_OPTION_2 = """Focus on your duties here, not some sob story. You're my slave now, not a rebel savior, keep that letter to yourself.""", # MISSING TRANSLATION
-	ANA_LETTER_1_OPTION_3 = """A missing husband, huh? What's in it for me if I waste my time on this?""", # MISSING TRANSLATION
-	ANA_LETTER_1_OPTION_4 = """Anything, you say? Alright, give me the letter, but you'll owe me something big later.""", # MISSING TRANSLATION
-	ANA_LETTER_END = """Anastasia flinches at your words, her shoulders slumping slightly, though a flicker of defiance lingers in her gaze.
-— I... I know my place now, Master. I just thought... the common folk still suffer. I'll keep it, as you wish.""", # MISSING TRANSLATION
-	ANA_LETTER_2_1 = """Anastasia's face lights up with tentative relief as she presses the letter into your hands.
-— Thank you, Master! Please, read it, she'll explain everything. I know you'll find her if you try.""", # MISSING TRANSLATION
-	ANA_LETTER_2_2 = """Anastasia nods quickly, a flush creeping up her cheeks as she lowers her gaze and hands you the letter.
-— Yes, Master. Whatever you want, I'll do it. Thank you... truly. Please, read it, she needs you.""", # MISSING TRANSLATION
-	ANA_LETTER_3 = """You unfold the crumpled letter Anastasia gave you, the ink smudged in places from what might have been tears. The handwriting is shaky but legible, and it reads:
-“To Lady Anastasia, I'm Liora, wife of Gavril, one of your Uncle's old rebels. He went to war with your cause and never came back after the battle at Ashen Ridge. I beg you, find him, or just tell me he's gone. I wait every day by the broken fountain in the lower district, praying someone will help. Please, you're my last hope.”
-The words carry a raw, quiet desperation, and the name “Liora” is scrawled at the bottom.""", # MISSING TRANSLATION
-	MEET_LIORA = """Find Liora""", # MISSING TRANSLATION
-	LIORA_1_1 = """You find the woman exactly where Anastasia said, huddled near the cracked remains of a fountain in the lower district. Her face is gaunt, etched with worry, and her hands twist nervously as she speaks.
-
-— You're... you're the one the princess sent? My husband went off to fight with the rebels months ago. He never came back after the last battle near the Ashen Ridge. I don't even know if he's alive. Please, can you find him?""", # MISSING TRANSLATION
-	LIORA_1_2 = """The woman nods eagerly, wiping her eyes with a trembling hand.
-
-— He was a tall man, broad shoulders, with a scar across his left cheek. Last I heard, he was with a unit holding the ridge against the guild forces. They say the fighting was brutal, some fled, some were captured. Maybe... maybe he's still out there?""", # MISSING TRANSLATION
-	LIORA_1_OPTION_1 = """Tell me more, where was he last seen, what did he look like? I need details.""", # MISSING TRANSLATION
-	LIORA_1_OPTION_2 = """The Ashen Ridge, huh? I'll track him down, don't waste my time with tears.""", # MISSING TRANSLATION
-	LIORA_1_OPTION_3 = """Forget searching, I'll make you tell Anastasia I've already brought him back. Lie, and we're done here.""", # MISSING TRANSLATION
-	LIORA_2_1 = """The woman stiffens at your tone but nods quickly.
-— Yes, sir. The Ashen Ridge, it's where the rebels made their stand. He was a fighter, strong... I just hope he's still out there. Thank you... thank you for this.""", # MISSING TRANSLATION
-	LIORA_2_2 = """— Thank you... even that means something. I'll be here, hoping.""", # MISSING TRANSLATION
-	LIORA_3 = """Lie? To the princess? But... but I, please, no, I can't do that! She'd find out, and—""", # MISSING TRANSLATION
-	LIORA_3_OPTION_1 = """You'll do it, or I'll make your life worse than it already is, say he's safe and sound.""", # MISSING TRANSLATION
-	LIORA_3_OPTION_2 = """Fine, beg all you want, I'm done here unless you play along.""", # MISSING TRANSLATION
-	LIORA_3_OPTION_3 = """Never mind, I'll handle it my way, forget I said anything.""", # MISSING TRANSLATION
-	LIORA_4 = """The woman's resolve crumbles, her voice shaking as she nods.
-— Alright... I'll do it. I'll tell her he's back. Just... don't hurt me, please.""", # MISSING TRANSLATION
-	QUEST_ASHEN_RIDGE_1 = """Loor around""", # MISSING TRANSLATION
-	QUEST_ASHEN_RIDGE_2 = """Search cave""", # MISSING TRANSLATION
-	ASHEN_RIDGE_1 = """You reach the Ashen Ridge, a jagged scar of blackened earth and shattered stone where the rebels once stood their ground. The wind carries the faint stench of decay, but no bodies remain, only marks etched into the dirt, scuffled and chaotic, hinting at a struggle. Boot prints mingle with smaller, clawed tracks leading westward.""", # MISSING TRANSLATION
-	ASHEN_RIDGE_1_OPTION_1 = """Let's follow these tracks, something's off here, and I'm not leaving empty-handed.""", # MISSING TRANSLATION
-	ASHEN_RIDGE_1_OPTION_2 = """These marks tell a story, time to hunt down whatever left them.""", # MISSING TRANSLATION
-	ASHEN_RIDGE_1_OPTION_3 = """Not my problem, whatever happened here, I've seen enough to call it a day.""", # MISSING TRANSLATION
-	ASHEN_RIDGE_END = """You turn away from the ridge, the wind swallowing the traces of battle behind you. Whatever fate befell the soldier, it's no longer your concern.""", # MISSING TRANSLATION
-	ASHEN_RIDGE_2 = """You pick your way along the trail, the tracks growing fresher as the landscape shifts from barren waste to shadowed cliffs. The clawed prints deepen, joined by drag marks, something heavy was hauled this way. Ahead, a narrow crevice yawns in the rock face, the entrance to a goblin cave. Faint guttural voices echo from within, punctuated by the clink of crude tools.""", # MISSING TRANSLATION
-	ASHEN_RIDGE_3 = """The cave's mouth reeks of rot and damp fur as you step inside. Torchlight flickers off rough walls, revealing a warren of tunnels. Goblins skitter in the shadows, small, vicious things armed with jagged blades and rusted spears. They snarl as you advance, forcing you to cut through their ranks. After a messy skirmish, you reach a crude pen in the deepest chamber. There, bound in filthy ropes, lies a man, scarred across his left cheek, haggard but alive. The soldier, Gavril.
-
-=He lifts his head weakly, relief flooding his bruised face as he rasps through cracked lips.
-
-— You... you're no goblin. Thank the gods, those bastards were gonna eat me. Cut me loose, please! I've been here for days, maybe weeks, lost count.""", # MISSING TRANSLATION
-	ASHEN_RIDGE_3_OPTION_1 = """I'll get you out, soldier, Liora's waiting, and I'm not dragging a corpse back.""", # MISSING TRANSLATION
-	ASHEN_RIDGE_3_OPTION_2 = """You're a lucky bastard, but I'm not here to play savior, figure your own way out.""", # MISSING TRANSLATION
-	ASHEN_RIDGE_3_OPTION_3 = """Sorry, Gavril, loose ends don't suit me. Time to end your misery right here.""", # MISSING TRANSLATION
-	ASHEN_RIDGE_4_1 = """You slice through the ropes, hauling Gavril to his feet. He staggers but steadies himself, gratitude shining in his sunken eyes.
-
-— Liora... She's still waiting? I owe you my life, stranger. Let's get out of this hellhole.""", # MISSING TRANSLATION
-	ASHEN_RIDGE_4_2 = """You step back, leaving Gavril tangled in his bonds. His voice cracks with desperation as you turn away.
-
-— Wait, no, please! Don't leave me here! They'll come back—
-
-His pleas fade as you exit the cave, the goblins' chittering rising behind you.""", # MISSING TRANSLATION
-	ASHEN_RIDGE_4_3 = """You draw your blade, and Gavril's eyes widen in terror before going dull as steel meets flesh. His body slumps, blood pooling in the dirt, a quick end to his suffering. The cave falls silent, save for the drip of water somewhere deep within.""", # MISSING TRANSLATION
-	LIORA_RETURN_1 = """You arrive back at the broken fountain with Gavril limping at your side, his arm slung over your shoulder. Liora spots him from a distance and sprints forward, tears streaming down her face as she throws herself into his arms.
-
-— Gavril! Oh, gods, you're alive, you're really alive! I thought I'd lost you forever.
-
-She turns to you, voice trembling with gratitude.
-
-— I don't know how you did it, but thank you... thank you from the bottom of my soul.""", # MISSING TRANSLATION
-	LIORA_RETURN_2 = """You find Liora by the fountain, her eyes searching yours as you approach alone. She clutches her shawl, voice fragile with hope.
-
-— Did you... did you find him? Gavril, is he coming?
-
-You shake your head, and her face crumples, a sob escaping her lips.
-
-— No... no, he can't still be out there. You left him? How could you, I begged you!
-
-She collapses to her knees, grief swallowing her words.""", # MISSING TRANSLATION
-	LIORA_RETURN_3 = """You return to the fountain, meeting Liora's expectant gaze. You say nothing, but the weight of your silence speaks volumes. Her hope fades, replaced by a hollow dread.
-
-— Where's Gavril? You found him, didn't you? Please... tell me he's safe.
-
-You tell her he's dead, and her knees buckle, a wail tearing from her throat.
-
-— Dead? You, you killed him? My Gavril... why? Why would you—
-
-She staggers back, staring at you like a monster before turning away, lost in her anguish.""", # MISSING TRANSLATION
-	ANASTASIA_RETURN_1 = """You return to Anastasia, who greets you with a hopeful smile. Before you can speak, she clasps her hands together, her voice bright with relief.
-
-— Master! I spoke to the soldier's wife, she said you found him, brought him back safe! Oh, I knew you'd help her. Thank you... it means more than you know, helping people like this.""", # MISSING TRANSLATION
-	ANASTASIA_RETURN_1_OPTION_1 = """You're welcome, glad to see you smiling over something so small.""", # MISSING TRANSLATION
-	ANASTASIA_RETURN_1_OPTION_2 = """Yeah, sure, don't get used to me playing hero for every sad letter you get.""", # MISSING TRANSLATION
-	ANASTASIA_RETURN_1_OPTION_3 = """Keep believing that, princess, it's a nice little story, isn't it?""", # MISSING TRANSLATION
-	ANASTASIA_RETURN_2_1 = """Anastasia beams, her naive optimism unshaken.
-
-— It's not small to her, or to me. You've given her hope again. I... I'm proud to serve someone who'd do this.""", # MISSING TRANSLATION
-	ANASTASIA_RETURN_2_2 = """Anastasia's smile falters slightly, but she nods.
-— I won't ask too much, Master. I promise. This was enough... Thank you.""", # MISSING TRANSLATION
-	ANASTASIA_RETURN_2_3 = """Anastasia tilts her head, confusion flickering in her eyes, but she doesn't press further.
-
-— A story? Well... as long as it ends happily, I suppose that's what matters. Thank you, Master.""", # MISSING TRANSLATION
-	ANASTASIA_RETURN_3_1 = """You find Anastasia waiting in a quiet corner of the mansion, her face lighting up as you approach.
-
-— I heard from Liora, Master! She said you found Gavril and brought him home safely. I knew you'd help her, even if it was just a small errand for me. Thank you. It means so much to see the people cared for again.  
-
-She hesitates, then steps closer, her voice softening with earnest sincerity.
-
-— Please, let me reward you for this. I want to show you how grateful I am.""", # MISSING TRANSLATION
-	ANASTASIA_RETURN_3_2 = """You find Anastasia waiting in a quiet corner of the mansion, her posture slightly slumped, her eyes tinged with sorrow as you approach. She clasps her hands, managing a faint, bittersweet smile.
-
-— [Master], Liora told me what happened. She said you found Gavril but could not bring him back. I am sad for her, truly, but I know you tried. That means something, even if it did not end as we hoped. Thank you for going out there for her.
-
-She hesitates, then steps closer, her voice softening with earnest gratitude.
-
-— Please, let me reward you for your effort. I want to show you how much I appreciate you trying, even if it was not enough.""", # MISSING TRANSLATION
-	ANASTASIA_RETURN_3_OPTION_1 = """A reward, huh? What exactly are you offering?""", # MISSING TRANSLATION
-	ANASTASIA_RETURN_3_OPTION_2 = """Keep your thanks. I'd rather see you marked as mine than hear more of your naive praise.""", # MISSING TRANSLATION
-	ANASTASIA_RETURN_4 = """Anastasia blushes, her fingers twisting nervously, but her gaze holds a flicker of determination.
-
-— I thought maybe I could please you, Master. Not just as your servant, but with something more assertive. I could try to be bolder, for you, if that's what you'd like.""", # MISSING TRANSLATION
-	ANASTASIA_RETURN_5 = """Anastasia's smile falters, confusion clouding her eyes as she processes your demand.
-
-— Marked? You mean like a brand, Master? I don't understand, but if it's what you want, I'll do it. To prove I'm yours, always.  
-
-She swallows hard, then straightens, voice trembling but obedient.
-
-— The Artisans' Guild, right? I'll go with you. Just tell me what I need to do.""", # MISSING TRANSLATION
-	ANASTASIA_PT2_1_1 = """A few days later, Anastasia seeks you out in a secluded corner of your quarters, her steps tentative and her hands clutching a folded letter. Her wide eyes flicker with anxiety, but there's a resolve in her posture as she meets your gaze.
-
-— Master, I need to tell you something. I got a letter from Greg. He is in hiding, and he wants me to work against you. Uncle Greg is important to me, but I can't turn on you after all of what you've done. Please, take this letter from me, I don't want to endanger our bond and the cause you are working for.""", # MISSING TRANSLATION
-	ANASTASIA_PT2_1_2 = """Anastasia's fingers tighten around the letter, her voice soft but earnest.
-
-— I got a letter from a delivery boy, he left faster than I could thank him, I swear, that is all I know.""", # MISSING TRANSLATION
-	ANASTASIA_PT2_1_3 = """Anastasia has a tone of sorrow in her voice.
-
-- He was the one who took me away when the coup happened and has been caring for me since that time. He wasn't very kind or anything, but we managed to hide and gather support over these years. I think he still has not given up on this and must be angry.""", # MISSING TRANSLATION
-	ANASTASIA_PT2_1_OPTION_1 = """I never thought he would show up again. How did you get it?""", # MISSING TRANSLATION
-	ANASTASIA_PT2_1_OPTION_2 = """What happened back then? Tell me more about him""", # MISSING TRANSLATION
-	ANASTASIA_PT2_1_OPTION_3 = """I'll take it, I appreciate your honesty.""", # MISSING TRANSLATION
-	ANASTASIA_PT2_2 = """Anastasia nods and passes you the letter.
-
-- Thank you. Just, please, don't put yourself in danger. Uncle is very resourceful and can be cunning in his plans.
-
-As you leave the room, you feel like this issue is better to be brought to Duncan.""", # MISSING TRANSLATION
-	ANA_DUNCAN_INITIATE = """It seems I've found a letter from Greg...""", # MISSING TRANSLATION
-	ANA_DUNCAN_1 = """You pass the message obtained from Anastasia to Duncan. He barely frowns upon hearing the news but behaves as stoic as always.
-
-- I see. Shame we didn't get him at that time. Say, has the princess seen it?""", # MISSING TRANSLATION
-	ANA_DUNCAN_1_OPTION_1 = """I got it before her (lie)""", # MISSING TRANSLATION
-	ANA_DUNCAN_1_OPTION_2 = """She was the one who exposed it.""", # MISSING TRANSLATION
-	ANA_DUNCAN_2_1 = """- Good. We'll investigate it but judging from the way it's worded, Greg has nothing left and is only grasping at straws.""", # MISSING TRANSLATION
-	ANA_DUNCAN_2_2 = """- So it might be a trap then. Better not lower your guard. We'll investigate it but judging from the way it's worded, Greg has nothing left and is only grasping at straws.""", # MISSING TRANSLATION
-	ANA_DUNCAN_3_1 = """Just as you are about to leave, Duncan suddenly stops you.
-
-- Hold on, there was one issue I could use your help with. There has been a rebel fort standing ever since the announcement. They refuse to surrender so you can take the girl with you and have her negotiate with them. Make her at least useful for something.""", # MISSING TRANSLATION
-	ANA_DUNCAN_3_2 = """- I'm a married man, don't make me hold a grudge against you.""", # MISSING TRANSLATION
-	ANA_DUNCAN_3_3 = """Duncan frowns even harder than usual before continuing. 
-
-- My apologies, our past drags the worst out of me.""", # MISSING TRANSLATION
-	ANA_DUNCAN_3_4 = """Duncan pauses before taking a breath for the explanation to deliver.
-
-	- Let me tell you this. People are only content with how things are right now because it's been 12 years since the end of the mad king's tyranny. Soon they will realize that the guilds won't provide them with stability and order, way more interested in their own quarrels. Then people will turn for a true, strong leader who will offer to put everyone in place and provide protection from the Empire. I may not live to that day so consider it to be my warning.""", # MISSING TRANSLATION
-	ANA_DUNCAN_3_5 = """- I promise nobody is to disrupt whatever petty games you have for her in there. 
-
-	Despite the cynical remark, Duncan's words feel like a non-hostile humorous attempt.""", # MISSING TRANSLATION
-	ANA_DUNCAN_3_OPTION_1 = """She's very useful as a bed warmer, you know.""", # MISSING TRANSLATION
-	ANA_DUNCAN_3_OPTION_2 = """Not a very nice way to speak of someone's wife""", # MISSING TRANSLATION
-	ANA_DUNCAN_3_OPTION_3 = """Why do you hate Anastasia so much, anyway?""", # MISSING TRANSLATION
-	ANA_DUNCAN_3_OPTION_4 = """I'll give it a try.""", # MISSING TRANSLATION
-	ANA_DUNCAN_4 = """- I don't hate her, I merely think she's a foolish, naive child who ended up in a place where she brings troubles. Your lengthy effort has secured her a safe spot for now and this much we've agreed to tolerate.""", # MISSING TRANSLATION
-	ANA_DUNCAN_4_OPTION_1 = """But she could be a good leader figure for the people.""", # MISSING TRANSLATION
-	ANA_DUNCAN_4_OPTION_2 = """I promise she won't cause any troubles in future for that matter.""", # MISSING TRANSLATION
-	ANA_DUNCAN_5 = """- Do that. There should be a group of our men leading the siege. The leader is Reyan, he'll instruct you in place.
-
-On your way out you think about how to present this to Anastasia.""", # MISSING TRANSLATION
-	ANA_TRAVEL_INITIATE = """You explain to Anastasia the upcoming task to which she agrees after a quick consideration.
-
-- I understand, very well, I shall try my best. It's a shame that the war is still ongoing in some regions and I will try my best to stop it.""", # MISSING TRANSLATION
-	ANA_FORT_1 = """As you make your way through the woods, you finally notice the camp of guild's forces Duncan told you about. Few soldiers recognize you with one leading to their leader, a ruff looking middle aged man, more fitting to be a mercenary rather than Fighters' Guild member. 
-
-Reyan: — Mayor [name]? I'm Reyan. Didn't expect you to be the promised reinforcement, and... - he takes a look at Anastasia, faint smirk showing on his face - a former rebel leader herself. 
-
-Anastasia: — We want to stop this pointless fighting. 
-
-Reyan: — Sure, the rebel scum won't give up on their struggles even after they've learned that their side has lost. Maybe you can talk some sense into them.""", # MISSING TRANSLATION
-	ANA_FORT_2 = """Anastasia visibly flinched but hasn't spoken up on a rude remark.
-
-Reyan: — You can go ahead and talk them down for the surrender.""", # MISSING TRANSLATION
-	ANA_FORT_2_OPTION_1 = """Sure, we'll do that. Let's go.""", # MISSING TRANSLATION
-	ANA_FORT_2_OPTION_2 = """This won't take long.""", # MISSING TRANSLATION
-	ANA_FORT_3 = """Despite your fighting efforts the fort defenders seem to be quite fervent in preventing you from advancement. Finally a group of more hardened soldiers raise their hands signaling you their willingness to negotiate. 
-
-Rebel Leader: — Who are you? You are of the Guilds reinforcements but you don't fight along with them?
-
-Anastasia stands out from your group announcing herself.
-
-Anastasia: — I'm the princess Anastasia, your former leader and I ask you to surrender yourself for the best.""", # MISSING TRANSLATION
-	ANA_FORT_4 = """The men look slightly surprised but their posture does not soften. 
-
-Rebel Leader: — So the rumors were true, Princess. I'm sir Jordan and I've been leading these people into rebellion. It's a shame to know that the rebel forces have lost after all. However, I'm afraid we can't surrender now. 
-
-Anastasia: — But why?! This fight will only lead to your demise. 
-
-Jordan: — Our honor aside, we don't believe that surrendering now will give us any better end at the hands of the guild forces.""", # MISSING TRANSLATION
-	ANA_FORT_5 = """Anastasia turns to you, her expression is pained and begging.
-
-Anastasia: — N-no, there should be a way to guarantee their safety, right?
-
-Jordan: — If my men could be pardoned for this rebellion I'm willing to surrender myself to you, but I don't believe the guilds have been interested in it so far.""", # MISSING TRANSLATION
-	ANA_FORT_5_OPTION_1 = """I guarantee their safety to stop unnecessary bloodshed""", # MISSING TRANSLATION
-	ANA_FORT_5_OPTION_2 = """No, they must answer the law for the treason against the guilds""", # MISSING TRANSLATION
-	ANA_FORT_6 = """Anastasia visibly brightens on your announcement.
-
-Anastasia: — Yes, [name] is Aliron's Mayor and [his] word can be trusted, and I as well promise to do everything in my power to earn you a fair treatment, Sir Jordan. 
-
-As Sir Jordan gives the command for his men to lay down their weapons, the rebel soldiers look tired but relieved. It seems this long battle has indeed worn them out.""", # MISSING TRANSLATION
-	ANA_FORT_7 = """Jordan: — I see. Then, we shall fight to the end.""", # MISSING TRANSLATION
-	ANA_FORT_8 = """After the rebel forces have been escorted out of the fort, a few men of Reyan have moved in. 
-
-Reyan: — Nice work, Mayor. Good thing that it's finally over and we can go home soon. However...""", # MISSING TRANSLATION
-	ANA_FORT_9 = """Reyan: — One thing which I couldn't drop from my mind, with princess being within our reach we've decided that we just can't let such opportunity pass. 
-
-With these words Reyan has drawn his swords, pointing one of them at Anastasia.
-
-Anastasia: — Huh? I don't get it...
-
-Reyan: — You've been the cause for all these months of war, and to think that you get to escape any real punishment is really annoying. And this is a great opportunity to get some justice for ourselves now. Don't worry, Mayor, we'll just report that the former princess has been mortally wounded by a stray arrow.""", # MISSING TRANSLATION
-	ANA_FORT_9_OPTION_1 = """That's a treason, you bastard""", # MISSING TRANSLATION
-	ANA_FORT_9_OPTION_2 = """As if I'd let my woman to be hurt by you""", # MISSING TRANSLATION
-	ANA_FORT_10 = """Reyan: — Hmph, so it seems the princess won't be the only casualty of this little skirmish.
-
-Taking out their weapons the group Reyan prepares to fight.""", # MISSING TRANSLATION
-	ANA_FORT_11 = """Soon after Reyan's defeat most of his close men drop their weapons and escape as more distant guild forces come over the sounds of combat. After a short explanation you walk over Reyan's dead body to Anastasia who's only recovered from sudden danger.
-
-Anastasia: — T-thank you... I'm sorry this came to this, I thought that we could earn peace if I just do my best, but...""", # MISSING TRANSLATION
-	ANA_FORT_11_OPTION_1 = """Some people can hold an unreasonable grudge despite your best effort to fix it.""", # MISSING TRANSLATION
-	ANA_FORT_11_OPTION_2 = """It's not your fault that he was a traitorous bastard""", # MISSING TRANSLATION
-	ANA_FORT_12 = """Anastasia nods slowly, her eyes look sadder, her heart has matured. But there's also a relief and gratitude when her gaze meets yours.
-
-You can feel her warmth as she takes your hand, now more willing and indigent, fueled by the recent danger you've just saved her from. 
-
-There's nothing else to do here and you decide to leave.""", # MISSING TRANSLATION
-	ANA_FINAL_1 = """After a long road back you and Anastasia return to the Fighters' Guild to report on the mission. Unexpectedly to you, Duncan himself meets you in the main hall. As he approaches closer you can see his face is even darker than usual, looks like he has received a report before you made it back. Anastasia shivers, moving slightly behind your back at his tall sight.
-
-Duncan: — Mayor [name], Princess...
-
-Suddenly Duncan bows his head in apology. 
-
-Duncan: — I deeply regret Reyan's betrayal and beg for pardon, especially you, princess. We've broken your trust despite your best will.""", # MISSING TRANSLATION
-	ANA_FINAL_2 = """Anastasia seems completely lost at her words however the long life of etiquette practices have brought her back to her senses.
-
-Anastasia: — N-no, this is not your fault, Sir Duncan, I understand things like this can happen... 
-
-Her voice sounds even more bright and relaxed from an unexpected courtesy shown by her old enemy. She takes a step forward, offering her hand to the seasoned warrior.""", # MISSING TRANSLATION
-	ANA_FINAL_2_OPTION_1 = """You should pay greater attention to your employees.""", # MISSING TRANSLATION
-	ANA_FINAL_2_OPTION_2 = """No harm was done... Since I was there.""", # MISSING TRANSLATION
-	ANA_FINAL_3 = """After giving a report and finally returning to your mansion, you are left alone with Anastasia. Out of sudden she throws herself at you, hugging tightly. 
-
-- T-thank you... I mean, I must have thanked you for this. For protecting me. I see now that I've made the right choice to... surrender myself to you. """, # MISSING TRANSLATION
 	
+	ANA_LETTER_1_1 = """Анастасия подходит к вам неуверенной походкой, сжимая в руках помятое письмо. Её широкие глаза блестят от смеси решимости и неуверенности, когда она заговаривает.
+— Мастер, я получила это... письмо от жены солдата-повстанца. Она в отчаянии, умоляет меня найти её мужа. Он пропал без вести после окончания боёв. Пожалуйста, я знаю, что не в положении просить одолжений, но... поможете? Поможете его найти? Я... я не могу просто проигнорировать её мольбу. Она указала своё имя - Лиора, и я уверена, она поговорит с вами, если вы её найдёте.""",
+	ANA_LETTER_1_2 = """Анастасия моргает, застигнутая врасплох, затем собирается с духом, её голос дрожит, но звучит твёрдо.
+— Я... я сделаю всё, что вы попросите, Мастер. Абсолютно всё. Только помогите ей. Она уже потеряла всё.""",
+	ANA_LETTER_1_OPTION_1 = "Всё ещё цепляешься за старые дела? Ладно, дай письмо, посмотрим, что можно сделать.",
+	ANA_LETTER_1_OPTION_2 = "Сосредоточься на своих обязанностях здесь, а не на чьих-то жалобах. Ты теперь моя рабыня, а не спасительница повстанцев, оставь это письмо при себе.",
+	ANA_LETTER_1_OPTION_3 = "Пропавший муж, говоришь? А что я получу, если потрачу на это своё время?",
+	ANA_LETTER_1_OPTION_4 = "Всё что угодно, говоришь? Хорошо, дай письмо, но потом ты мне здорово будешь обязана.",
+	ANA_LETTER_END = """Анастасия вздрагивает от ваших слов, её плечи слегка опускаются, но в глазах остаётся проблеск непокорности.
+— Я... я знаю своё место, Мастер. Я просто подумала... простые люди всё ещё страдают. Я оставлю письмо, как вы велели.""",
+	ANA_LETTER_2_1 = """Лицо Анастасии озаряется робкой надеждой, когда она вручает вам письмо.
+— Спасибо, Хозяин! Пожалуйста, прочтите, она всё объяснит. Я знаю, вы найдёте её, если попытаетесь.""",
+	ANA_LETTER_2_2 = """Анастасия быстро кивает, румянец заливает её щёки, когда она опускает взгляд и передаёт письмо.
+— Да, Мастер. Что бы вы ни пожелали, я сделаю. Спасибо вам... правда. Пожалуйста, прочтите, она нуждается в вас.""",
+	ANA_LETTER_3 = """Вы разворачиваете помятое письмо Анастасии, чернила кое-где размазаны - возможно, от слёз. Почерк неровный, но разборчивый:
+'Леди Анастасия, я - Лиора, жена Гаврила, одного из старых повстанцев вашего дяди. Он ушёл на войну за ваше дело и не вернулся после битвы у Пепельного хребта. Умоляю, найдите его или хотя бы скажите, что его нет. Я жду каждый день у разбитого фонтана в нижнем квартале, молясь о помощи. Вы - моя последняя надежда.'
+Слова несут в себе грубое, тихое отчаяние, а внизу неразборчиво выведено имя 'Лиора'.""",
+	MEET_LIORA = "Найти Лиору",
+	LIORA_1_1 = """Вы находите женщину именно там, где указала Анастасия - у разбитого фонтана в нижнем квартале. Её лицо осунулось от переживаний, руки нервно теребят край платья, как она говорит.
+
+— Вы... вас прислала принцесса? Мой муж ушёл воевать с повстанцами месяцы назад. Он не вернулся после последней битвы у Пепельного хребта. Я даже не знаю, жив ли он. Пожалуйста, не могли бы вы его найти?""",
+	LIORA_1_2 = """Женщина оживлённо кивает, вытирая дрожащей рукой слёзы.
+
+— Он был высоким, широкоплечим, со шрамом на левой щеке. Последнее, что я слышала - он был с отрядом, державшим оборону на хребте против сил гильдии. Говорят, бой был жестоким, кто-то бежал, кого-то взяли в плен. Может... может он ещё там?""",
+	LIORA_1_OPTION_1 = "Расскажите мне больше, где его видели в последний раз, как он выглядел? Мне нужны детали.",
+	LIORA_1_OPTION_2 = "Пепельный Хребет, да? Я найду его, не тратьте мое время на слезы.",
+	LIORA_1_OPTION_3 = "Забудьте о поисках, я заставлю вас сказать Анастасии, что я уже вернул его. Соврёте, и мы закончим на этом.",
+	LIORA_2_1 = """Женщина напрягается от вашего тона, но быстро кивает.
+— Да, сэр. Пепельный хребет, там повстанцы держали оборону. Он был бойцом, сильным... Я просто надеюсь, что он все еще там. Спасибо... спасибо вам за это.""",
+	LIORA_2_2 = "— Спасибо... даже это что-то значит. Я буду здесь, надеясь на лучшее.",
+	LIORA_3 = "Соврать? Принцессе? Но... но я, пожалуйста, нет, я не могу этого сделать! Она узнает, и...",
+	LIORA_3_OPTION_1 = "Вы сделаете это, или я сделаю вашу жизнь хуже, чем она есть, скажите, что он в целости и сохранности.",
+	LIORA_3_OPTION_2 = "Хорошо, умоляйте сколько хотите, я закончил здесь, если вы не будете подыгрывать.",
+	LIORA_3_OPTION_3 = "Неважно, я разберусь, забудьте, что я что-то говорил.",
+	LIORA_4 = """Решимость женщины рушится, ее голос дрожит, когда она кивает.
+— Хорошо... Я сделаю это. Я скажу ей, что он вернулся. Просто... пожалуйста, не причиняйте мне вреда.""",
+	QUEST_ASHEN_RIDGE_1 = "Осмотреться",
+	QUEST_ASHEN_RIDGE_2 = "Обыскать пещеру",
+	ASHEN_RIDGE_1 = "Вы достигаете Пепельного хребта, изрезанного шрама почерневшей земли и разбитого камня, где когда-то стояли повстанцы. Ветер доносит слабый запах разложения, но тел не осталось, только отметины, выгравированные в грязи, перепачканные и хаотичные, намекающие на борьбу. Следы ботинок смешиваются с меньшими, когтистыми следами, ведущими на запад.
+	ASHEN_RIDGE_1_OPTION_1 = "Стоит идти по этим следам, здесь что-то не так, и я не уйду с пустыми руками.",
+	ASHEN_RIDGE_1_OPTION_2 = "Эти отметины таят историю, пора выследить того, кто их оставил.",
+	ASHEN_RIDGE_1_OPTION_3 = "Не моя проблема, что бы здесь ни случилось, я видел достаточно, чтобы закончить на сегодня.",
+	ASHEN_RIDGE_END = "Вы отворачиваетесь от хребта, ветер поглощает следы битвы за вашей спиной. Какая бы судьба ни постигла солдата, это больше не ваша забота.",
+	ASHEN_RIDGE_2 = "Вы пробираетесь по тропе, следы становятся все свежее, а ландшафт меняется от бесплодной пустоши к затененным скалам. Когтистые следы углубляются, к ним добавляются следы волочения, что-то тяжелое тащили по этому пути. Впереди в скале зияет узкая трещина, вход в пещеру гоблинов. Изнутри доносится слабый гортанный голос, перемежающийся звоном грубых инструментов.",
+	ASHEN_RIDGE_3 = """Из пещеры воняет гнилью и сырой шерстью, когда вы входите внутрь. Свет факелов мерцает на грубых стенах, открывая лабиринт туннелей. В тенях снуют гоблины, маленькие, злобные существа, вооруженные зазубренными клинками и ржавыми копьями. Они рычат, когда вы продвигаетесь, заставляя вас прорубаться сквозь их ряды. После грязной сзватки вы достигаете грубого загона в самой глубокой камере. Там, связанный грязными веревками, лежит мужчина со шрамом на левой щеке, изможденный, но живой. Солдат, Гаврил.
+
+Он слабо поднимает голову, облегчение затопляет его окровавленное лицо, когда он хрипит потрескавшимися губами.
+
+— Ты... ты не гоблин. Слава богам, эти ублюдки собирались меня съесть. Освободи меня, пожалуйста! Я здесь уже несколько дней, может быть, недель, потерял счет времени.""",
+	ASHEN_RIDGE_3_OPTION_1 = "Я вытащу тебя отсюда, солдат, Лиора ждет, и я не собираюсь тащить труп обратно.",
+	ASHEN_RIDGE_3_OPTION_2 = "Ты везучий ублюдок, но я здесьне за тем, чтобы играть в спасителя, выберайся сам.",
+	ASHEN_RIDGE_3_OPTION_3 = "Извини, Гаврил, я не люблю оставлять дела незавершенными. Пора положить конец твоим страданиям прямо здесь.",
+	ASHEN_RIDGE_4_1 = """Вы разрезаете веревки, поднимая Гаврила на ноги. Он шатается, но выпрямляется, благодарность сияет в его запавших глазах.
+
+— Лиора... Она все еще ждет? Я обязан тебе жизнью, незнакомец. Давай выбераться из этой дыры.""",
+	ASHEN_RIDGE_4_2 = """Вы отступаете назад, оставляя Гаврила запутанным в своих связях. Его голос срывается от отчаяния, когда вы отворачиваетесь.
+
+— Подождите, нет, пожалуйста! Не оставляйте меня здесь! Они вернутся...
+
+Его мольбы стихают, когда вы покидаете пещеру, и позади вас раздается болтовня гоблинов.""",
+	ASHEN_RIDGE_4_3 = "Вы вынимаете свой клинок, и глаза Гаврила расширяются от ужаса, прежде чем потускнеть, когда сталь встречается с плотью. Его тело обмякает, кровь скапливается в грязи, это быстрая кончина его страданий. В пещере воцаряется тишина, если не считать капель воды где-то глубоко внутри.",
+	LIORA_RETURN_1 = """Вы возвращаетесь к сломанному фонтану с Гаврилом, хромающим рядом с вами, его рука перекинута через ваше плечо. Лиора замечает его издалека и бросается вперед, слезы ручьями текут по ее лицу, когда она бросается в его объятия.
+
+— Гаврил! О, боги, ты жив, ты действительно жив! Я думала, что потеряла тебя навсегда.
+
+Она поворачивается к вам, ее голос дрожит от благодарности.
+
+— Я не знаю, как вы это сделали, но спасибо... спасибо вам от всего сердца.""",
+	LIORA_RETURN_2 = """Вы находите Лиору у фонтана, ее глаза ищут ваши, когда вы приближаетесь в одиночестве. Она сжимает свою шаль, ее голос полон хрупкой надежды.
+
+— Вы... вы нашли его? Гаврил, он идет?
+
+Вы качаете головой, и ее лицо искажается, из ее губ вырывается всхлип.
+
+— Нет... нет, его все еще не может быть там. Вы оставили его? Как вы могли, я умоляла вас!
+
+Она падает на колени, горе поглощает ее слова.""",
+	LIORA_RETURN_3 = """Вы возвращаетесь к фонтану, встречая вопросительный взгляд Лиоры. Вы ничего не говорите, но вес вашего молчания говорит сам за себя. Ее надежда угасает, замененная пугающим ужасом.
+
+— Где Гаврил? Вы нашли его, не так ли? Пожалуйста... скажите мне, что он в безопасности.
+
+Вы говорите ей, что он мертв, и ее колени подгибаются, из горла вырывается вопль.
+
+— Мертв? Вы, вы убили его? Мой Гаврил... почему? Почему вы...
+
+Она отшатывается назад, глядя на вас как на чудовище, прежде чем отвернуться, потерянная в своем горе.""",
+	ANASTASIA_RETURN_1 = """Вы возвращаетесь к Анастасии, которая приветствует вас обнадеживающей улыбкой. Прежде чем вы успеваете заговорить, она складывает руки вместе, ее голос наполнен облегчением.
+
+— Мастер! Я говорила с женой солдата, она сказала, что вы нашли его, вернули в целости и сохранности! О, я знала, что вы ей поможете. Спасибо... это значит больше, чем вы думаете, помогать таким людям.""",
+	ANASTASIA_RETURN_1_OPTION_1 = "Не за что, рад видеть, что ты улыбаешься из-за такой мелочи.",
+	ANASTASIA_RETURN_1_OPTION_2 = "Да, конечно, не привыкай к тому, что я играю роль героя за каждое грустное письмо, которое вы получаешь.",
+	ANASTASIA_RETURN_1_OPTION_3 = "Продолжай в это верить, принцесса, это милая маленькая история, не так ли?",
+	ANASTASIA_RETURN_2_1 = """Анастасия сияет, ее наивный оптимизм непоколебим.
+
+— Это не мелочь для нее или для меня. Вы снова подарили ей надежду. Я... я горжусь тем, что служу тому, кто мог бы это сделать.""",
+	ANASTASIA_RETURN_2_2 = """Улыбка Анастасии слегка колеблется, но она кивает.
+— Я не буду просить слишком много, Мастер. Я обещаю. Этого было достаточно... Спасибо.""",
+	ANASTASIA_RETURN_2_3 = """Анастасия склоняет голову набок, замешательство мелькает в ее глазах, но она не настаивает.
+
+— История? Что ж... пока она заканчивается счастливо, я полагаю, это самое главное. Спасибо, Мастер.""",
+	ANASTASIA_RETURN_3_1 = """Вы находите Анастасию, ждущую в тихом уголке особняка, ее лицо озаряется, когда вы приближаетесь.
+
+— Я слышала от Лиоры, Мастер! Она сказала, что вы нашли Гаврила и благополучно вернули его домой. Я знала, что вы ей поможете, даже если это было всего лишь небольшое поручение для меня. Спасибо. Это много значит видеть, что о людях снова заботятся.
+
+Она колеблется, затем подходит ближе, ее голос смягчается чистой искренностью.
+
+— Пожалуйста, позвольте мне вознаградить вас за это. Я хочу показать вам, насколько я благодарна.""",
+	ANASTASIA_RETURN_3_2 = """Вы находите Анастасию, ждущую в тихом уголке особняка, ее поза слегка сутулится, ее глаза окрашены печалью, когда вы приближаетесь. Она сжимает руки, выдавливая слабую, горько-сладкую улыбку.
+
+— [Master], Лиора рассказала мне, что случилось. Она сказала, что вы нашли Гаврила, но не смогли вернуть его. Мне очень жаль ее, правда, но я знаю, что вы пытались. Это что-то значит, даже если все закончилось не так, как мы надеялись. Спасибо, что пошли туда ради нее.
+
+Она колеблется, затем подходит ближе, ее голос смягчается искренней благодарностью.
+
+— Пожалуйста, позвольте мне вознаградить вас за ваши усилия. Я хочу показать вам, как сильно я ценю то, что вы пытались, даже если этого было недостаточно...""",
+	ANASTASIA_RETURN_3_OPTION_1 = "Награда, да? Что именно ты предлагаешь?",
+	ANASTASIA_RETURN_3_OPTION_2 = "Попридержи свою благодарность. Я бы предпочел, чтобы ты была помечена мной, чем слушать твою наивную похвалу.",
+	ANASTASIA_RETURN_4 = """Анастасия краснеет, ее пальцы нервно перебирают, но в ее взгляде появляется отблеск решимости.
+
+— Я подумала, что, возможно, смогу угодить вам, Мастер. Не только как ваша слуга, но и чем-то более напористым. Я могла бы попытаться быть смелее для вас, если это то, что вы хотели бы.""",
+	ANASTASIA_RETURN_5 = """Улыбка Анастасии колеблется, замешательство омрачает ее глаза, когда она обдумывает ваше требование.
+
+— Помечена? Вы имеете в виду как клеймо, Мастер? Я не понимаю, но если это то, что вы хотите, я сделаю это. Чтобы доказать, что я всегда ваша.
+
+Она с трудом сглатывает, затем выпрямляется, ее голос дрожит, но подчиняется.
+
+— Гильдия рабочих, верно? Я пойду с вами. Просто скажите мне, что мне нужно сделать.""",
+	ANASTASIA_PT2_1_1 = """Несколько дней спустя Анастасия ищет вас в укромном уголке ваших покоев, ее шаги неуверенны, а в руках она сжимает сложенное письмо. Ее широко раскрытые глаза мерцают от беспокойства, но в ее позе есть решимость, когда она встречается с вашим взглядом.
+
+— Мастер, я должна вам кое-что сказать. Я получила письмо от Грега. Он скрывается и хочет, чтобы я работала против вас. Дядя Грег важен для меня, но я не могу восстать против вас после всего, что вы сделали. Пожалуйста, возьмите это письмо, я не хочу ставить под угрозу нашу связь и дело, над которым вы работаете.""",
+	ANASTASIA_PT2_1_2 = """Пальцы Анастасии сжимают письмо, ее голос тихий, но искренний.
+
+— Я получила письмо от мальчика-доставщика, он ушел быстрее, чем я успела его поблагодарить, клянусь, это все, что я знаю.""",
+	ANASTASIA_PT2_1_3 = """В голосе Анастасии слышится печаль.
+
+- Он был тем, кто забрал меня, когда произошел переворот, и с тех пор заботился обо мне. Он не был очень добрым или что-то в этом роде, но нам удалось скрыться и собрать поддержку за эти годы. Я думаю, что он до сих пор не отказался от этого и, должно быть, злится.""",
+	ANASTASIA_PT2_1_OPTION_1 = "Я и не думал, что он снова появится. Как ты его получила?",
+	ANASTASIA_PT2_1_OPTION_2 = "Что произошло тогда? Расскажи мне больше о нем.",
+	ANASTASIA_PT2_1_OPTION_3 = "Я возьму его, ценю твою честность.",
+	ANASTASIA_PT2_2 = """Анастасия кивает и передает вам письмо.
+
+- Спасибо. Просто, пожалуйста, не подвергайте себя опасности. Дядя очень изобретателен и может быть хитрым в своих планах.
+
+Когда вы покидаете комнату, вы чувствуете, что этот вопрос лучше довести до Дункана.""",
+	ANA_DUNCAN_INITIATE = "Похоже, я нашел письмо от Грега...",
+	ANA_DUNCAN_1 = """Вы передаете сообщение, полученное от Анастасии, Дункану. Он едва хмурится, услышав эту новость, но ведет себя стоически, как всегда.
+
+- Принято. Жаль, что мы не добрались до него в то время. Скажите, принцесса видела его?""",
+	ANA_DUNCAN_1_OPTION_1 = "Я получил его до нее (ложь)",
+	ANA_DUNCAN_1_OPTION_2 = "Она была той, кто раскрыла это.",
+	ANA_DUNCAN_2_1 = "- Хорошо. Мы это расследуем, но, судя по тому, как это сформулировано, у Грега ничего не осталось, и он хватается за соломинку.",
+	ANA_DUNCAN_2_2 = "- Значит, это может быть ловушкой. Лучше не терять бдительность. Мы это расследуем, но, судя по тому, как это сформулировано, у Грега ничего не осталось, и он хватается за соломинку.",
+	ANA_DUNCAN_3_1 = """Как только вы собираетесь уйти, Дункан внезапно останавливает вас.
+
+- Постойте, есть один вопрос, в котором мне может понадобиться ваша помощь. Со времен объявления стоит повстанческий форт. Они отказываются сдаваться, поэтому вы можете взять с собой девушку и поручить ей вести с ними переговоры. Сделайте ее хоть в чем-то полезной.""",
+	ANA_DUNCAN_3_2 = "- Я женатый человек, не заставляйте меня затаить на вас обиду.",
+	ANA_DUNCAN_3_3 = """Дункан хмурится еще сильнее, чем обычно, прежде чем продолжить.
+
+- Приношу свои извинения, наше прошлое вытаскивает из меня все худшее.""",
+	ANA_DUNCAN_3_4 = """Дункан делает паузу, прежде чем набрать воздуха для объяснения.
+
+- Позвольте мне сказать вам вот что. Люди довольны тем, как все обстоит сейчас, только потому, что прошло 12 лет с конца тирании безумного короля. Скоро они поймут, что гильдии не обеспечат им стабильность и порядок, поскольку больше заинтересованы в своих собственных ссорах. Тогда люди обратятся к истинному, сильному лидеру, который предложит поставить всех на место и обеспечить защиту от Империи. Я могу и не дожить до этого дня, так что считайте это моим предупреждением.""",
+	ANA_DUNCAN_3_5 = """- Я обещаю, что никто не будет мешать вашим мелким играм с ней.
+
+Несмотря на циничное замечание, слова Дункана кажутся невраждебной юмористической попыткой.""",
+	ANA_DUNCAN_3_OPTION_1 = "Она очень полезна как грелка для постели, знаете ли.",
+	ANA_DUNCAN_3_OPTION_2 = "Не очень приятно говорить о чьей-то жене.",
+	ANA_DUNCAN_3_OPTION_3 = "Почему вы так ненавидите Анастасию?",
+	ANA_DUNCAN_3_OPTION_4 = "Я попробую.",
+	ANA_DUNCAN_4 = "- Я не ненавижу ее, я просто думаю, что она глупый, наивный ребенок, который оказался в месте, где приносит неприятности. Ваши длительные усилия обеспечили ей безопасное место на данный момент, и это то, что мы согласились терпеть.",
+	ANA_DUNCAN_4_OPTION_1 = "Но она могла бы быть хорошим лидером для людей.",
+	ANA_DUNCAN_4_OPTION_2 = "Я обещаю, что в будущем она не доставит никаких проблем.",
+	ANA_DUNCAN_5 = """- Сделайте это. Там должна быть группа наших людей, ведущих осаду. Лидер - Рейан, он проинструктирует вас на месте.
+
+По пути вы думаете о том, как представить это Анастасии.""",
+	ANA_TRAVEL_INITIATE = """Вы объясняете Анастасии предстоящую задачу, на которую она соглашается после быстрого обдумывания.
+
+- Я понимаю, хорошо, я постараюсь сделать все возможное. Очень жаль, что война все еще продолжается в некоторых регионах, и я постараюсь сделать все возможное, чтобы остановить ее.""",
+	ANA_FORT_1 = """Пробираясь через лес, вы, наконец, замечаете лагерь войск гильдии, о котором вам говорил Дункан. Несколько солдат узнают вас, и один из них ведет к их лидеру, грубо выглядящему мужчине средних лет, больше подходящему для наемника, чем для члена Гильдии бойцов.
+
+Рейан: — Мэр [name]? Я Рейан. Не ожидал, что вы будете обещанным подкреплением, и... - он смотрит на Анастасию, и на его лице появляется слабая ухмылка - бывшая лидер повстанцев.
+
+Анастасия: — Мы хотим прекратить эту бессмысленную борьбу.
+
+Рейан: — Конечно, повстанческий сброд не откажется от своей борьбы, даже после того, как они узнали, что их сторона проиграла. Может быть, вы сможете вразумить их.""",
+	ANA_FORT_2 = """Анастасия заметно вздрогнула, но ничего не сказала в ответ на грубое замечание.
+
+Рейан: — Вы можете пойти и уговорить их сдаться.""",
+	ANA_FORT_2_OPTION_1 = "Конечно, мы это сделаем. Пойдем.",
+	ANA_FORT_2_OPTION_2 = "Это не займет много времени.",
+	ANA_FORT_3 = """Несмотря на ваши боевые усилия, защитники форта, похоже, весьма рьяно препятствуют вашему продвижению. Наконец, группа более закаленных солдат поднимает руки, сигнализируя о своей готовности к переговорам.
+
+Лидер повстанцев: — Кто вы? Вы из подкреплений Гильдий, но вы не сражаетесь вместе с ними?
+
+Анастасия выделяется из вашей группы, объявляя о себе.
+
+Анастасия: — Я принцесса Анастасия, ваш бывший лидер, и я прошу вас сдаться ради всеобщего блага.""",
+	ANA_FORT_4 = """Мужчины выглядят слегка удивленными, но их поза не смягчается.
+
+Лидер повстанцев: — Так что слухи оказались правдой, принцесса. Я сэр Джордан, и я руководил этими людьми в восстании. Жаль узнать, что повстанческие силы проиграли в конце концов. Однако, боюсь, мы не можем сдаться сейчас.
+
+Анастасия: — Но почему?! Эта борьба приведет только к вашей гибели.
+
+Джордан: — Помимо нашей чести, мы не верим, что сдача сейчас даст нам лучший конец в руках сил гильдии.""",
+	ANA_FORT_5 = """Анастасия поворачивается к вам, ее выражение лица болезненное и умоляющее.
+
+Анастасия: — Н-нет, должен быть способ гарантировать их безопасность, верно?
+
+Джордан: — Если бы моим людям могли простить это восстание, я готов сдаться вам, но я не верю, что гильдии были в этом заинтересованы до сих пор.""",
+	ANA_FORT_5_OPTION_1 = "Я гарантирую их безопасность, чтобы остановить ненужное кровопролитие",
+	ANA_FORT_5_OPTION_2 = "Нет, они должны ответить по закону за измену гильдиям",
+	ANA_FORT_6 = """Анастасия заметно оживляется от вашего объявления.
+
+Анастасия: — Да, [name] — мэр Алирона, и [his] слову можно доверять, и я также обещаю сделать все, что в моих силах, чтобы обеспечить вам справедливое обращение, сэр Джордан.
+
+Когда сэр Джордан отдает приказ своим людям сложить оружие, повстанцы выглядят уставшими, но облегченными. Похоже, эта долгая битва действительно измотала их""",
+	ANA_FORT_7 = "Джордан: — Я понял. Тогда мы будем сражаться до конца.",
+	ANA_FORT_8 = """После того, как повстанцев вывели из форта, несколько человек Рейана зашли туда.
+
+Рейан: — Хорошая работа, мэр. Хорошо, что все наконец закончилось, и мы скоро сможем вернуться домой. Однако...""",
+	ANA_FORT_9 = """Рейан: — Одна вещь, которую я не мог выбросить из головы, поскольку принцесса находится в пределах нашей досягаемости, мы решили, что просто не можем упустить такую возможность.
+
+С этими словами Рейан вытащил свои мечи, направив один из них на Анастасию.
+
+Анастасия: — Хм? Я не понимаю...
+
+Рейан: — Вы были причиной всех этих месяцев войны, и думать, что вам удастся избежать какого-либо реального наказания, действительно раздражает. И это отличная возможность добиться справедливости для себя сейчас. Не волнуйтесь, мэр, мы просто сообщим, что бывшая принцесса была смертельно ранена шальной стрелой.""",
+	ANA_FORT_9_OPTION_1 = "Это измена, ублюдок",
+	ANA_FORT_9_OPTION_2 = "Как будто я позволил бы моей женщине пострадать от тебя",
+	ANA_FORT_10 = """Рейан: — Хм, так что, похоже, принцесса будет не единственной жертвой этой небольшой стычки.
+
+Доставая свое оружие, группа Рейана готовится к бою.""",
+	ANA_FORT_11 = ""Вскоре после поражения Рейана большинство его приближенных бросают оружие и убегают, поскольку все больше и больше отдаленных сил гильдии приближаются к звукам боя. После короткого объяснения вы подходите к мертвому телу Рейана и направляетесь к Анастасии, которая только оправилась от внезапной опасности.
+
+Анастасия: — С-спасибо... Мне жаль, что все так получилось, я думала, что мы сможем добиться мира, если я просто сделаю все возможное, но...""",
+	ANA_FORT_11_OPTION_1 = "Некоторые люди могут хранить необоснованную обиду, несмотря на все ваши усилия, чтобы исправить это.",
+	ANA_FORT_11_OPTION_2 = "Это не твоя вина, что он был предательским ублюдком",
+	ANA_FORT_12 = """Анастасия медленно кивает, ее глаза выглядят печальнее, ее сердце повзрослело. Но есть также облегчение и благодарность, когда ее взгляд встречается с вашим.
+
+Вы чувствуете ее тепло, когда она берет вашу руку, теперь более охотно и сердито, подпитываемая недавней опасностью, от которой вы ее только что спасли.
+
+Здесь больше нечего делать, и вы решаете уйти.""",
+	ANA_FINAL_1 = """После долгой дороги обратно вы и Анастасия возвращаетесь в Гильдию бойцов, чтобы сообщить о миссии. Неожиданно для вас Дункан сам встречает вас в главном зале. По мере того, как он приближается, вы видите, что его лицо еще темнее, чем обычно, похоже, он получил отчет до того, как вы вернулись. Анастасия вздрагивает, слегка отступая за вашу спину при его высоком виде.
+
+Дункан: — Мэр [name], Принцесса...
+
+Внезапно Дункан склоняет голову в извинении.
+
+Дункан: — Я глубоко сожалею о предательстве Рейана и прошу прощения, особенно у вас, принцесса. Мы нарушили ваше доверие, несмотря на вашу лучшую волю.""",
+	ANA_FINAL_2 = """Анастасия, кажется, совершенно потерялась в ее словах, однако долгая жизнь практики этикета вернула ее в чувства.
+
+Анастасия: — Н-нет, это не ваша вина, сэр Дункан, я понимаю, что подобные вещи могут случиться...
+
+Ее голос звучит еще более светлым и расслабленным от неожиданной вежливости, проявленной ее старым врагом. Она делает шаг вперед, протягивая руку закаленному воину.""",
+	ANA_FINAL_2_OPTION_1 = "Вам следует уделять больше внимания своим сотрудникам.",
+	ANA_FINAL_2_OPTION_2 = "Вреда не было... Поскольку я был там.",
+	ANA_FINAL_3 = """После того, как вы сделали отчет и, наконец, вернулись в свой особняк, вы остаетесь наедине с Анастасией. Внезапно она бросается на вас, крепко обнимая.
+
+— С-спасибо... Я имею в виду, я, должна быть благодарна вам за это. За то, что защищали меня. Теперь я вижу, что сделала правильный выбор, чтобы... подчиниться вам. """,
+	ANA_BLOW_1 = """Вы ждете в слабо освещенной спальне своего особняка, мерцающий свет свечей отбрасывает тени на мебель. Тяжелая дубовая дверь скрипит, открываясь, Анастасия медленно входит внутрь.
+
+Ее длинные волнистые светлые волосы ниспадают на плечи, обрамляя ее нежное лицо. Ее глаза встречаются с вашими, в них читается смесь благодарности и нервного ожидания. Она сменила королевское платье на что-то гораздо более интимное — полупрозрачную ночную рубашку, которая почти не скрывает ее стройное тело. Шелковый материал облегает ее большую грудь, ее очертания ясно видны, когда она подходит к вам.
+
+— Я... я купила это платье, потому что мне сказали, что вам понравится что-то подобное...
+
+Изящными движениями Анастасия подходит к месту, где вы сидите. Ее неопытность очевидна в ее нерешительных шагах, но в ее выражении лица явно читается нетерпение. Без единого слова она опускается на колени перед вами.""",
+	ANA_BLOW_2 = """Ее тонкие пальцы тянутся к твоим брюкам, слегка возится с застежками. Принцесса сосредоточенно кусает нижнюю губу. Когда она освобождает твой член, ее глаза слегка расширяются от увиденного, на ее лице появляется смесь благоговения и решимости.
+
+Анастасия обхватывает твой член своими нежными пальцами, и контраст между ее нежной бледной кожей и твоим членом поражает воображение. Она пробует погладить его, оценивая твою реакцию на каждое движение. Ее прикосновения неуверенные, в них чувствуется неопытность, но это только добавляет ей очарования.
+
+— Прости, я никогда раньше этого не делала, но я слышала, что так можно доставить удовольствие мужчине...
+
+Наклонившись вперед, она нежно целует кончик твоего члена, прижимая свои пухлые губы к твоей чувствительной коже. Ее светлые волосы падают вперед, щекоча твои бедра, а она становится все смелее, проводя языком по нижней части твоего члена. Влажное тепло ее рта пронизывает твое тело волнами удовольствия.""",
+	ANA_BLOW_3 = """— Я никогда не думала, что он будет на вкус таким, но это не так уж и плохо...
+
+Хотя принцесса явно новичок в этом деле, она подходит к своей задаче с решимостью. Ее губы растягиваются вокруг твоего члена, когда она пытается взять его в рот поглубже. Время от времени она отстраняется, чтобы перевести дух, а затем с новым энтузиазмом снова погружается вперед.
+
+Ее большие груди мягко колышутся под прозрачной тканью, когда она двигается, соски заметно твердеют под шелковым материалом. Одной рукой она крепко держится за основание твоего члена, а другой опирается на твое бедро, чтобы удержать равновесие.
+
+Принцесса находит свой ритм, покачивая головой и поднимая глаза, чтобы оценить твою реакцию. Каждый твой стон или напряжение мышц, кажется, воодушевляют ее. Когда она отстраняется, ее язык кружится вокруг головки твоего члена, а затем она снова берет его глубоко в рот с растущей уверенностью.""",
+	ANA_BLOW_4 = """Ваши руки находят путь к ее золотистым волосам, пальцы запутываются в этих шелковистых прядях. Вы не заставляете ее двигаться, а нежно направляете ее, показывая признательность за ее усердную службу. Принцесса отвечает приглушенным стоном, вибрации которого пронзают ваш член волнами удовольствия.
+
+Вид прекрасной королевской особы на коленях, ее губы, обхватившие твой член, ее большие груди, колышущиеся при каждом движении под почти прозрачной ночной рубашкой, доводят тебя до предела. Контраст между ее невинным лицом и явно не принцессоподобным поступком, который она совершает, создает опьяняющий эффект.""",
+	ANA_BLOW_5 = """Ваши мышцы напрягаются, когда приближается первая волна оргазма. Анастасия чувствует, как ваш член пульсирует на ее языке, и удваивает свои усилия, одной рукой поглаживая основание вашего члена, а другой работая ртом над чувствительной головкой. Ее другая рука нежно массирует ваши яички, инстинктивно зная, как максимально увеличить ваше удовольствие.
+
+Твой член сильно пульсирует, когда ты извергаешься в ее ожидающий рот. Глаза принцессы слегка расширяются при первом извержении, но она не отстраняется. Вместо этого она сохраняет свою позицию, принимая твою сперму, которая наполняет ее рот. Часть спермы вытекает из уголков ее губ, стекая по подбородку жемчужными струйками, которые отражают свет свечей.
+
+Когда твой оргазм утихает, Анастасия медленно отстраняется, ее губы в последний раз сосут чувствительную головку твоего члена. Она глотает то, что собрала, ее горло заметно работает, пока она поддерживает зрительный контакт. На ее лице появляется смесь гордости и удовлетворения — взгляд человека, который успешно выполнил сложную, но полезную задачу.
+
+— Это не много, но я надеюсь, что тебе понравилось.""",
+	ANA_WED_1 = """Дверь спальни закрывается за вами с тихим щелчком. Анастасия стоит перед вами, ее голубые глаза широко раскрыты в ожидании, а лунный свет проникает через высокие окна, озаряя роскошную комнату серебристым сиянием. Свадебное торжество наконец закончилось, и теперь вы остались вдвоем.
+
+— По правде говоря, я нервничаю как никогда...
+
+Вы осторожно ведете ее к массивной кровати с балдахином, шелковые простыни которой приглашающе развернуты. Она садится на край кровати, ее роскошная ночная рубашка тихо шелестит при каждом движении. Дрожащими пальцами вы помогаете ей снять тонкое нижнее белье, оставляя ночную рубашку почти на месте, отодвигая ее в сторону, чтобы обнажить ее пышные, совершенные груди.""",
+	ANA_WED_1_OPTON_1 = "Выбрать киску",
+	ANA_WED_1_OPTON_2 = "Выбрать зад",
+	ANA_WED_2 = """Ты укладываешь ее на бок, руки подняты над головой в знак покорности, золотистые волосы рассыпаны по подушке. Ее грудь поднимается и опускается в такт учащенному дыханию, обнаженные груди слегка колышутся при каждом вдохе. Ночная рубашка скользит по талии, оставляя нижнюю часть тела обнаженной и уязвимой.
+
+— Ах... К этому моменту кажется, что мое тело уже научилось принимать тебя.
+
+Твои руки исследуют ее тело, прослеживая изгибы талии, выпуклость бедер. Ее кожа невероятно мягкая под твоим прикосновением, согреваясь там, где проходят твои пальцы. Ты обхватываешь одну упругую грудь, чувствуя ее вес в ладони, сосок, твердеющий от прикосновения к твоей коже. Мягкий вздох вырывается из ее губ, когда ты опускаешь рот, чтобы попробовать ее, твой язык кружит вокруг чувствительной вершины.
+
+Ее тело с нетерпением реагирует на твои прикосновения, слегка выгибаясь в твою сторону. Ты скользишь рукой по ее животу, чувствуя, как мышцы напрягаются под твоими пальцами, пока не достигаешь мягких складок между ее бедрами. Она уже влажная, ее киска скользкая от ее соков, когда ты нежно раздвигаешь ее складки.""",
+	ANA_WED_3 = """Вы становитесь позади нее, поддерживая ее положение на боку с поднятыми руками. Головка члена прижимается к ее киске, дразня ее. Ее тело дрожит в предвкушении, когда вы медленно продвигаетесь вперед, входя в ее тугую киску сантиметр за сантиметром. Ее киска поддается с минимальным сопротивлением, и кратковременное чувство дискомфорта быстро сменяется удовольствием.
+
+Ее внутренние стенки крепко сжимают вас, когда вы начинаете двигаться, устанавливая мягкий ритм. Одна рука обхватывает ее талию, а другая продолжает ласкать ее грудь, катая сосок между пальцами. Ее дыхание учащается, с каждым толчком вырываются небольшие стоны.
+
+— Ах, ты так глубоко...
+
+Ты постепенно увеличиваешь темп, твои бедра встречаются с изгибом ее попки при каждом движении вперед. Ощущение ее киски, сжимающей твой член, восхитительно, горячо, влажно и идеально. Ее тело теперь движется в противовес твоему, инстинктивно ища большего удовольствия.""",
+	ANA_WED_4 = """Напряжение между вами обоими нарастает, кульминация приближается стремительно. Ее киска ритмично сжимается вокруг твоего члена, по мере того как ее удовольствие нарастает. Ты чувствуешь, как нарастает твоя собственная разрядка, давление собирается в основании позвоночника, когда ты проникаешь в нее все глубже.
+
+Тело Анастасии внезапно напрягается, ее спина резко выгибается, когда оргазм пронзает ее. Ее киска мощно сжимается вокруг твоего члена, выжимая его пульсирующими волнами. Это ощущение доводит вас до предела, и вы в последний раз глубоко вонзаетесь в нее, прижимаясь к ней, пока не опустошаетесь в ее девственном лоне.
+
+Вы остаетесь соединенными, ваши тела дрожат от общего кульминационного момента. Ваша рука сжимает ее талию, прижимая ее к своей груди, пока последние волны удовольствия пронизывают вас обоих. Ее кожа покраснела и покрылась росой пота, ее золотистые волосы теперь образуют запутанный ореол вокруг ее красивого лица.
+
+— Ты действительно... стал... моим мужем...
+
+Твоя новая жена, когда-то принцесса, а теперь твоя супруга, полностью принадлежит тебе. Ночь еще молода, и когда ты чувствуешь, как она прижимается к тебе, прижимая свою идеальную попку к твоему паху, ты понимаешь, что до рассвета вас ждет еще много удовольствия.""",
+	ANA_WED_5 = """Ты замечаешь, как ее тело дрожит от предвкушения под твоими прикосновениями. Ее влажность манит, но сегодня у тебя другие планы. Ты опускаешь пальцы ниже, мимо ее гладкого входа к узкому отверстию ее попки. Ее тело на мгновение напрягается от этого неожиданного прикосновения.
+
+— П-подожди... Ты хочешь это туда?
+
+Ты становишься позади нее, твой член твердый и пульсирующий. Ты наносишь немного масла на член, поглаживая его, чтобы он был полностью покрыт. Прижимая головку к ее узкому входу, ты с мягкой настойчивостью продвигаешься вперед.""",
+	ANA_WED_6 = ""— А-ах... Это такое необычное ощущение...
+
+Сначала сопротивление сильное, ее тело сопротивляется вторжению, пока внезапно головка твоего члена не проскальзывает мимо узкого кольца. Ты останавливаешься, позволяя ей привыкнуть к новому ощущению, наблюдая, как ее пальцы сжимают простыню над головой.
+
+Медленно ты проникаешь глубже, чувствуя, как ее тело постепенно принимает тебя. Ее попка сжимает твой член как тиски, горячая и невероятно тугая. Ты скользишь одной рукой, чтобы обхватить ее грудь, зажимая сосок между пальцами, когда начинаешь двигаться.
+
+Твои толчки сначала неглубокие и размеренные, каждый из них становится немного глубже предыдущего. Ее тело качается в такт твоим движениям, ее попка принимает все больше твоего члена с каждым толчком. Вид твоего члена, исчезающего в ее тугой дырочке, опьяняет.""",
+	ANA_WED_7 = """Ты увеличиваешь темп, твои бедра при каждом толчке соприкасаются с мягкой изгибом ее ягодиц. Твоя рука скользит от ее груди к киске, нащупывая ее набухший и чувствительный клитор. Ты кружишь пальцами вокруг него в такт своим толчкам, чувствуя, как ее тело немедленно реагирует.
+
+Ее внутренние мышцы сжимаются вокруг твоего члена, когда удовольствие нарастает в ней. Ты чувствуешь, как приближается твой собственный оргазм, а плотное сжатие ее ягодиц с каждым толчком приближает тебя к кульминации. Твои пальцы работают быстрее над ее клитором, а твои движения становятся все более нетерпеливыми.""",
+	ANA_WED_8 = """Вместе вы достигаете пика наслаждения, ее тело содрогается вокруг вашего члена, когда вы в последний раз глубоко входите в нее, опустошая себя внутри нее. Интенсивность совместного оргазма заставляет вас обоих дрожать, ваши тела сливаются в идеальном союзе, пока волны наслаждения накрывают вас обоих.
+
+— Ах... Я никогда не думала, что моя попка может испытывать такие ощущения...
+
+Вы остаетесь соединенными в течение нескольких мгновений, отдышавшись, пока последние волны удовольствия прокатываются по вашим телам. Принцесса — ваша жена — была полностью захвачена всеми возможными способами в эту вашу брачную ночь.""",
+	ZEPHYRA_WED_1 = """Дверь спальни закрывается за тобой с мягким щелчком, когда ты несешь Зефиру на руках. Белый хвост лисички мягко касается твоей руки, а ее голубые глаза смотрят на тебя с волнением и предвкушением. Лунный свет, проникающий через занавески, отражается от ее длинных белых волос, заставляя их сиять, как свежевыпавший снег.
+
+— Никогда не думала, что стану твоей официальной женой. Это о многом говорит о тебе, не так ли? Хе-хе, прости, я очень счастлива и говорю всякую ерунду.
+
+Ты осторожно укладываешь ее на роскошную кровать, шелковые простыни шелестят под ее маленьким телом. Ее ночное платье, элегантное творение из кружева и шелка, облегает ее миниатюрное тело, когда она устраивается на подушках. Деликатными движениями ты снимаешь с нее нижнее белье, поднимая его, чтобы обнажить ее плоскую грудь и бледную кожу под ней.
+
+Когда ты устраиваешься между ее ног, ее хвост касается твоей руки, мех мягкий и щекочущий. Ее маленькие руки тянутся к тебе, притягивая тебя с удивительной силой для кого-то с таким хрупким телом.""",
+	ZEPHYRA_WED_1_OPTON_1 = "Выбрать киску",
+	ZEPHYRA_WED_1_OPTON_2 = "Выбрать зад",
+	ZEPHYRA_WED_2 = """— Не сдерживайся, ведь наша первая брачная ночь — это событие, которое бывает раз в жизни.
+
+Ты медленно входишь в нее, чувствуя, как ее узкая киска обхватывает твой член. Ее спина слегка выгибается, ее маленькое тело напрягается от вторжения. Ее киска крепко сжимает тебя, влажная и горячая вокруг всего твоего члена. Хвост лисички дергается и распушивается, когда ты проникаешь глубже, ее тело принимает тебя сантиметр за сантиметром.
+
+Ты начинаешь двигаться, устанавливая мягкий ритм. Маленькое тело Зефиры качается при каждом толчке, ее белые волосы рассыпаются по подушкам. Ее грудь поднимается при каждом вздохе, соски встают. Ее лисьи уши дергаются и прижимаются к голове, когда удовольствие нарастает в ней.""",
+	ZEPHYRA_WED_3 = """Темп ускоряется, и ты чувствуешь, как ее киска сжимается вокруг твоего члена, а ее внутренние стенки пульсируют от желания. Ее хвост обхватывает твое бедро, а мягкая шерсть добавляет неожиданные ощущения к этому опыту. Ее маленькое тело дрожит под тобой, а голубые глаза полузакрыты от удовольствия.
+
+Ты проникаешь глубже, чувствуя жар ее нутра. Ее киска сжимается еще сильнее, сигнализируя о приближении кульминации. Ее маленькое тело напрягается, спина выгибается с кровати, когда волны удовольствия пронзают ее. В тот же момент твое собственное возбуждение достигает пика.
+
+— Ааа... [Master]... Пожалуйста, обними меня...""",
+	ZEPHYRA_WED_4 = """Вместе вы достигаете пика наслаждения, ваш член пульсирует внутри нее, а ее киска ритмично сжимается вокруг вас. Ее хвост становится жестким, а затем полностью пушится, когда она испытывает оргазм. Ваша сперма наполняет ее, согревая изнутри, а ее маленькое тело дрожит от последующих толчков.
+
+Изможденный и удовлетворенный, ты осторожно опускаешься рядом с ней, заботясь о ее хрупком теле. Дыхание Зефиры постепенно выравнивается, ее лисьи уши снова поднимаются, когда она приходит в себя после интенсивного совместного удовольствия. 
+
+— Это похоже на сон... Надеюсь, я никогда не проснусь.""",
+	ZEPHYRA_WED_5 = """Ты смотришь на маленькое тело Зефиры под тобой, ее белый хвост дергается в предвкушении. Мягко, но твердо удерживая ее, ты слегка поворачиваешь ее, чтобы получить доступ к ее узкому заднему входу.
+
+— Хм, сегодня хочешь приключений для моей попки, [Master]?
+
+Ее голубые глаза слегка расширяются, когда она понимает твои намерения. Ее лисьи уши с интересом дергаются вперед, когда ты берешь масло с прикроватного столика, согреваешь его между пальцами, а затем наносишь на ее узкую дырочку. Ее хвост шуршит по простыням, пока ты вводишь палец в нее, тщательно подготавливая ее.""",
+	ZEPHYRA_WED_6 = """Когда ты наконец прижимаешь свой член к ее упругой попке, ее хвост обвивается вокруг твоего запястья, как будто подталкивая тебя вперед. Ты медленно проникаешь в нее, чувствуя невероятную плотность, когда ее тело принимает тебя сантиметр за сантиметром. Ее маленькие ручки сжимают простыни, когда ты погружаешься все глубже в девственную территорию.
+
+— О-о... Это так неприлично... Но мне нравится...
+
+Вид ее миниатюрного тела, принимающего всю длину твоего члена, опьяняет. Ее ночная рубашка сбилась вокруг талии, ее плоская грудь обнажилась под прохладным воздухом, а лицо покраснело от новых ощущений. Ты начинаешь двигаться, и каждый толчок заставляет ее белый лисий хвост дергаться и скручиваться рядом с ней.
+
+Ее узкий проход сжимает тебя, как тиски, пока ты набираешь ритм, а ее маленькое тело двигается в такт каждому толчку. Ощущение ее девственной попки, растягивающейся вокруг твоего члена, пронизывает вас обоих волнами удовольствия. Ее голубые глаза слегка затуманиваются, когда новые ощущения захлестывают ее тело.""",
+	ZEPHYRA_WED_7 = """Ты ускоряешь темп, наблюдая, как ее маленькое тело принимает твой член во всю длину снова и снова. Ее хвост бьется о простыни, пока удовольствие нарастает в ее нетронутом теле. Узкая попка создает восхитительное трение, когда ты проникаешь все глубже, забирая последнюю девственность в свою брачную ночь.
+
+Давление быстро нарастает, когда ее невероятно узкий проход обрабатывает твой член. Ее маленькое тело напрягается под тобой, когда она приближается к кульминации, ее внутренние мышцы ритмично сжимаются вокруг тебя. С последним глубоким толчком вы оба достигаете пика одновременно, твое освобождение наполняет ее, а ее тело дрожит в экстазе.
+
+Измотанный и удовлетворенный, ты осторожно выходишь из ее узкого прохода, любуясь тем, как ее маленькое тело справилось с таким интенсивным опытом. Ее белый лисий хвост теперь лежит безжизненно рядом с ней, ее грудь поднимается и опускается от глубоких, удовлетворенных вздохов, пока она приходит в себя после интенсивного удовольствия от своего первого анального опыта.
+
+— Ах... Я не думала, что ты действительно это сделаешь... Но я не жалуюсь, мне нравится это проявление твоей любви не меньше, чем другое.""",
+	
+	DIALOGUEEVENTDUNGEONCOCCOON_1 = """Пока отряд пробирается по сырым, гулким тоннелям, свет факелов выхватывает бледные переливы паутины. Человекообразный кокон свисает с потолка, слегка покачиваясь, когда под его шёлковой поверхностью пробегают слабые движения. Кокон дёргается снова, издавая приглушённый звук - редкий признак того, что жертва ещё жива.""",
+	DIALOGUEEVENTDUNGEONCOCCOON_OPTION1 = "Освободить (10 выносливости)",
+	DIALOGUEEVENTDUNGEONCOCCOON_OPTION2 = " [Испытание силы] Выбрать персонажа (3 выносливости)",
+	DIALOGUEEVENTDUNGEONCOCCOON_2 = """Вы неспешно освобождаете жертву пауков. Наконец, перерезав последние нити, вы получаете возможность решить дальнейшую судьбу пленника.""",
+	DIALOGUEEVENTDUNGEONCOCCOON_3 = """С усилием [name] за несколько мгновений разрывает шёлковые путы, освобождая дрожащую незнакомую фигуру, который падает на пол.""",
+	DIALOGUEEVENTDUNGEONCOCCOON_4 = """Вы оставляете висящую жертву и движетесь дальше.""",
+	DIALOGUEEVENTDUNGEONLIBRARY_1 = """Лабиринт подземелья приводит к полускрытой двери. Со скрипом она открывается, обнажая небольшую заброшенную библиотеку - полки прогибаются под тяжестью пыльных фолиантов и разрозненных свитков. Стеллажи, переполненные знаниями, выглядят хрупкими от времени.""",
+	DIALOGUEEVENTDUNGEONLIBRARY_OPTION1 = "Тщательно обыскать (-10 выносливости)",
+	DIALOGUEEVENTDUNGEONLIBRARY_OPTION2 = "[Испытание мудрости] Выбрать персонажа (-3 выносливости)",
+	DIALOGUEEVENTDUNGEONLIBRARY_2 = """После медленного поиска на полках вам удается найти несколько полезных манускриптов.""",
+	DIALOGUEEVENTDUNGEONLIBRARY_3 = """[name] бегло осматривает комнату в поисках самых любопытных и хорошо сохранившихся фолиантов. Всего через мгновение [he] находит что-то ценное.""",
+	DIALOGUEEVENTDUNGEONLIBRARY_4 = """Вы решаете, что игра не стоит свеч, и покидаете библиотеку неисследованной.""",
+	DIALOGUEEVENTDUNGEONCOFFIN_1 = """Во мраке подземелья перед вами возникает древний гроб из тёмного камня, крышка которого украшена рельефом человеческой фигуры. Воздух становится тяжёлым, наполненным пылью и странной неподвижностью, словно сам гроб наблюдает за вами.""",
+	DIALOGUEEVENTDUNGEONCOFFIN_OPTION1 = "Открыть (-5 выносливости)",
+	DIALOGUEEVENTDUNGEONCOFFIN_OPTION2 = "Отдать почести и уйти",
+	DIALOGUEEVENTDUNGEONCOFFIN_2 = """Вы поддеваете крышку клинком и с усилием открываете её, обнаружив внутри сверкающее сокровище...""",
+	DIALOGUEEVENTDUNGEONCOFFIN_3 = """Вы преклоняете колено, шепча слова уважения древним усопшим, и уходите. С пцстыми руками но чистой совестью.""",
 	
 }
 

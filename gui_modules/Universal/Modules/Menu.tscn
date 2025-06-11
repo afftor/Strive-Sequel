@@ -775,7 +775,24 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 33 )
 bbcode_enabled = true
-bbcode_text = "0.11.0e
+bbcode_text = "0.11.1
+Added new Anastasia quest, 1 scene and 1 wedding scene
+Added Zephyra's wedding scene
+Added breakdown mechanic for characters
+Added new dungeon events
+Added new dungeon map to loot tables
+Slightly rebalanced some loot and event lists
+Corrected some quest texts
+Gifted now gives 50% more mana instead of 100%
+Minor adjustments to elf/tribal elf race bonuses
+Added upgradeabiltiy to some unique items
+Fixed memory leaks tied to chat banter and random events
+Fixed Lizard skin gathering issue
+Fixed unique characters not assigning their virginity correctly on spawn
+Fixed Eye of the storm not working correctly
+Fixed Rally not recovering hp
+Other minor fixes
+0.11.0e
 Slightly reduced Staves MATK bonus and rebalanced ATK bonus
 Archer class now grants some passive ATK
 Added warning to cursed items beingdestroyed on equipping normal item when cursed was already equipped
@@ -1948,7 +1965,24 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.11.0e
+text = "0.11.1
+Added new Anastasia quest, 1 scene and 1 wedding scene
+Added Zephyra's wedding scene
+Added breakdown mechanic for characters
+Added new dungeon events
+Added new dungeon map to loot tables
+Slightly rebalanced some loot and event lists
+Corrected some quest texts
+Gifted now gives 50% more mana instead of 100%
+Minor adjustments to elf/tribal elf race bonuses
+Added upgradeabiltiy to some unique items
+Fixed memory leaks tied to chat banter and random events
+Fixed Lizard skin gathering issue
+Fixed unique characters not assigning their virginity correctly on spawn
+Fixed Eye of the storm not working correctly
+Fixed Rally not recovering hp
+Other minor fixes
+0.11.0e
 Slightly reduced Staves MATK bonus and rebalanced ATK bonus
 Archer class now grants some passive ATK
 Added warning to cursed items beingdestroyed on equipping normal item when cursed was already equipped

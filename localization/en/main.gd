@@ -3934,7 +3934,7 @@ If you have enough cash...""",
 	DIALOGUEENEMYSTRSCARE = "The group of enemies ahead seems hesitating sensing your approach. You might be able to scare them off and avoid the fight by displaying your power...",
 	DIALOGUEENEMYSTRSCARESELECT = "[Strength Challenge] Select Character",
 	DIALOGUEENEMYSTRSCAREPASS = "[name] scares the hostiles away from the path, letting the rest of the group to pass free.",
-	DIALOGUEENEMYDEXSNEAK = "The group of enemies head are unaware of your pressence. Sneaking past them might be possible. ",
+	DIALOGUEENEMYDEXSNEAK = "The group of enemies ahead are unaware of your presence. Sneaking past them might be possible. ",
 	DIALOGUEENEMYDEXSNEAKSELECT = "[Dexterity Challenge] Select Character",
 	DIALOGUEENEMYDEXSNEAKPASS = "[name] manages to get on the other side of the pass and distracts the group of enemies who leave in other direction.",
 	DIALOGUEEVENTENEMYDISTRACT = "The group of enemies ahead seem rather unfocused and unwilling to fight. Perhaps surrendering one of your captives to them will persuade them to let you pass.",
@@ -18411,7 +18411,7 @@ The words carry a raw, quiet desperation, and the name “Liora” is scrawled a
 	ASHEN_RIDGE_2 = "You pick your way along the trail, the tracks growing fresher as the landscape shifts from barren waste to shadowed cliffs. The clawed prints deepen, joined by drag marks, something heavy was hauled this way. Ahead, a narrow crevice yawns in the rock face, the entrance to a goblin cave. Faint guttural voices echo from within, punctuated by the clink of crude tools.",
 	ASHEN_RIDGE_3 = """The cave's mouth reeks of rot and damp fur as you step inside. Torchlight flickers off rough walls, revealing a warren of tunnels. Goblins skitter in the shadows, small, vicious things armed with jagged blades and rusted spears. They snarl as you advance, forcing you to cut through their ranks. After a messy skirmish, you reach a crude pen in the deepest chamber. There, bound in filthy ropes, lies a man, scarred across his left cheek, haggard but alive. The soldier, Gavril.
 
-=He lifts his head weakly, relief flooding his bruised face as he rasps through cracked lips.
+He lifts his head weakly, relief flooding his bruised face as he rasps through cracked lips.
 
 — You... you're no goblin. Thank the gods, those bastards were gonna eat me. Cut me loose, please! I've been here for days, maybe weeks, lost count.""",
 	ASHEN_RIDGE_3_OPTION_1 = "I'll get you out, soldier, Liora's waiting, and I'm not dragging a corpse back.",
@@ -18688,7 +18688,7 @@ Your new bride, once a princess and now your wife, has been thoroughly claimed. 
 
 — W-wait... You want it in there? 
 
-You position yourself behind her, your cock hard and throbbing. You apply some oil to your cock, stroking it to ensure it's fully coated. Pressing the head against her tight entrance, you push forward with gentle persistence""",
+You position yourself behind her, your cock hard and throbbing. You apply some oil to your cock, stroking it to ensure it's fully coated. Pressing the head against her tight entrance, you push forward with gentle persistence.""",
 	ANA_WED_6 = """— A-ah... This feels so unusual...
 
 The resistance is intense at first, her body fighting the intrusion until suddenly the head of your cock slips past the tight ring. You pause, allowing her to adjust to the new sensation, watching her fingers clutch at the sheets above her head.
@@ -18757,7 +18757,7 @@ Spent and satisfied, you carefully withdraw from her tight passage, admiring how
 	DIALOGUEEVENTDUNGEONLIBRARY_1 = """The dungeon's twisting corridors reveal a half-hidden door. It creaks open to reveal a small, abandoned library room, its shelves sagging under dusty tomes and scattered scrolls. The shelves loom, packed with knowledge but fragile with age.""",
 	DIALOGUEEVENTDUNGEONLIBRARY_OPTION1 = "Search Through Slowly (-10 stamina)",
 	DIALOGUEEVENTDUNGEONLIBRARY_OPTION2 = "[Wisdom Challenge] Select Character (-3 stamina)",
-	DIALOGUEEVENTDUNGEONLIBRARY_2 = """After slow searching through the shelves you manage to""",
+	DIALOGUEEVENTDUNGEONLIBRARY_2 = """After slow searching through the shelves you manage to find a few useful manuscripts.""",
 	DIALOGUEEVENTDUNGEONLIBRARY_3 = """[name] scans through the room for obvious signs of the most curious and preserved pieces of literature. It only takes a moment for [him] to find something valuable.""",
 	DIALOGUEEVENTDUNGEONLIBRARY_4 = """You decide it's not worth the effort and leave the library room unexamined.""",
 	DIALOGUEEVENTDUNGEONCOFFIN_1 = """The dungeon's shadowed depths reveal an ancient coffin carved from dark stone, its lid etched with a human-shaped relief. The air grows heavy, thick with dust and a strange stillness, as if the coffin itself watches you.""",

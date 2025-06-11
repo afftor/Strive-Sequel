@@ -1735,6 +1735,7 @@ var scenedict = {
 			{text = "BREAKDOWN_GRAVEIN_RES", previous_dialogue_option = 7, reqs = []},
 			{text = "BREAKDOWN_DATE", previous_dialogue_option = 8, reqs = []},
 		],
+		image = 'abuse',
 		tags = ["dialogue_scene", "active_character_translate"],
 		options = [
 			{code = "close", text = "DIALOGUECLOSE", type = "next_dialogue", reqs = []}
@@ -2673,14 +2674,14 @@ var quests = {
 	},
 	anastasia_quest_2 = {
 		code = 'anastasia_quest_2',
-		summary = "ANASTASIA_QUEST_2_SUMMARY",
+		summary = "ANASTASIA_QUEST2_SUMMARY",
 		stages = {
-			stage8 = {code = 'stage8', name = 'ANASTASIA_QUEST_2_NAME', descript = 'ANASTASIA_QUEST_STAGE8'}, #meet with dunkan
-			stage9 = {code = 'stage9', name = 'ANASTASIA_QUEST_2_NAME', descript = 'ANASTASIA_QUEST_STAGE9'}, #speak with ana
-			stage10 = {code = 'stage10', name = 'ANASTASIA_QUEST_2_NAME', descript = 'ANASTASIA_QUEST_STAGE10'}, #go to fort
-			stage11 = {code = 'stage11', name = 'ANASTASIA_QUEST_2_NAME', descript = 'ANASTASIA_QUEST_STAGE11'}, #force defenders
-			stage12 = {code = 'stage12', name = 'ANASTASIA_QUEST_2_NAME', descript = 'ANASTASIA_QUEST_STAGE12'}, #continue
-			stage13 = {code = 'stage13', name = 'ANASTASIA_QUEST_2_NAME', descript = 'ANASTASIA_QUEST_STAGE13'}, #return to dunkan
+			stage8 = {code = 'stage8', name = 'ANASTASIA_QUEST2_NAME', descript = 'ANASTASIA_QUEST_STAGE8'}, #meet with dunkan
+			stage9 = {code = 'stage9', name = 'ANASTASIA_QUEST2_NAME', descript = 'ANASTASIA_QUEST_STAGE9'}, #speak with ana
+			stage10 = {code = 'stage10', name = 'ANASTASIA_QUEST2_NAME', descript = 'ANASTASIA_QUEST_STAGE10'}, #go to fort
+			stage11 = {code = 'stage11', name = 'ANASTASIA_QUEST2_NAME', descript = 'ANASTASIA_QUEST_STAGE11'}, #force defenders
+			stage12 = {code = 'stage12', name = 'ANASTASIA_QUEST2_NAME', descript = 'ANASTASIA_QUEST_STAGE12'}, #continue
+			stage13 = {code = 'stage13', name = 'ANASTASIA_QUEST2_NAME', descript = 'ANASTASIA_QUEST_STAGE13'}, #return to dunkan
 		},
 	},
 }
