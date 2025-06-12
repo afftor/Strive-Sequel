@@ -20,7 +20,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'earth',#not sure but not matters
-		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'earth_shield', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['caster.matk']],
 		damagestat = ['no_stat'],
@@ -51,7 +51,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'earth', 
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'acid_bomb', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 2.5
 	},
@@ -74,7 +74,7 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'earth',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'overgrowth', target = 'target_group', period = 'windup'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.5
 	},
@@ -98,7 +98,7 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'earth',
-		sfx = [{code = 'earth_spike', target = 'target', period = 'postdamage'}], 
+		sfx = [{code = 'earthquake', target = 'target_group', period = 'windup'}], 
 		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = 0.4,
 		follow_up = 'eq_setup'
@@ -173,7 +173,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'earth',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'disintegrate', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = 2.5,
 	},

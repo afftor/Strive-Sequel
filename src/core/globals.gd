@@ -2913,11 +2913,22 @@ func is_capital_closed(capital):
 
 
 func ProcessSfxTarget(sfxtarget, caster, target):
+	var get_group_for
 	match sfxtarget:
 		'caster':
 			return caster.displaynode
 		'target':
 			return target.displaynode
+		'target_group':
+			get_group_for = target
+		'caster_group':
+			get_group_for = caster
+	
+	if get_group_for != null:
+		if get_group_for.combatgroup == 'ally':
+			return input_handler.combat_node.battlefield_playergroup
+		else:
+			return input_handler.combat_node.battlefield_enemygroup
 
 
 func calculate_hit_sound(skill, caster, target):

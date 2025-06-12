@@ -292,7 +292,8 @@ func invoke_damage():
 					s_skill2.target.displaynode.process_sound(globals.calculate_hit_sound(template, caster, s_skill2.target))
 			for j in animationdict.postdamage:
 				var sfxtarget = globals.ProcessSfxTarget(j.target, caster, s_skill2.target)
-				sfxtarget.process_sfx(j.code)
+				if sfxtarget.has_method("process_sfx"):
+					sfxtarget.process_sfx(j.code)
 			#applying resists
 			s_skill2.calculate_dmg()
 			#logging result & dealing damage

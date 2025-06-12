@@ -21,7 +21,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'mind',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'mind_blast', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.2,
 		random_factor_p = 0.1
@@ -46,7 +46,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'mind',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'mind_shatter', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.6,
 		random_factor_p = 0.1

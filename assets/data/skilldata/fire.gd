@@ -120,7 +120,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'flame', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'magma_blast', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		value = 1.5
 	},
