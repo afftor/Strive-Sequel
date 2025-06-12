@@ -137,7 +137,7 @@ var unique_dict = { #shows available talk characters. Scenes go in order from hi
 				{type = "quest_completed", check = true, name = "kuro_tome_quest"},
 				{type = "event_seen", check = false, value = "kuro_after_tome"}
 			]},
-#			{code = 'kuro_dialogue_start', reqs = []}
+			{code = 'kuro_dialogue_start', reqs = []}
 		]
 	},
 }

@@ -740,5 +740,18 @@ var data = {
 			{code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1}
 		],
 	},
+	
+	kuro_dialogue_start = {
+		tags = ['dialogue_scene'], reqs = [], character = 'kuro',
+		text = [
+			{
+				text = "DIALOGUEKUROINIT",
+				reqs = [],
+			},
+		],
+		options = [
+			{code = 'close', text = "DIALOGUELEAVE", reqs = []},
+		],
+	},
 }
 	

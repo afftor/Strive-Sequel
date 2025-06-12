@@ -3,7 +3,7 @@ extends Timer
 var file
 var path
 var last_pos = 0
-var last_time = 0
+var last_len = 0
 var alert_node
 var cash_str = ""
 
@@ -45,17 +45,18 @@ func fix_cur_log_position():
 func check_log():
 	if Time.get_ticks_msec() > last_debug_log_show + debug_log_time:
 		last_debug_log_show = Time.get_ticks_msec()
-		#print(debug_log)
+#		print(debug_log)
 	debug_log.check_log_attempts += 1
-	var new_time = file.get_modified_time(path)
-	if last_time == new_time:
-		return
-	
-	debug_log.log_modified += 1
-	last_time = new_time
 	var err = file.open(path, File.READ)
 	if err != OK:
 		print("log_alert can't open log file! Error code: %s" % err)
+	var new_len = file.get_len()
+	if last_len == new_len:
+		file.close()
+		return
+	
+	last_len = new_len
+	debug_log.log_modified += 1
 	file.seek(last_pos)
 	var is_show_string_session = false
 	while file.get_position() < file.get_len():

@@ -16307,6 +16307,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	DIALOGUEAMELIAINITIATE = """Your exceptional trophy, a former Servants Guild Leader Amelia shines with enthusiasm as you visit her. 
 	
 — [Master], do you wish to be served like no tavern wench can compare? I can cook an unforgettable meal, prepare a luxurious bath, or would you rather... prefer Me?""",
+	DIALOGUEKUROINIT = "— Yes? What do you want?",
 	METRICS_BASE = "[name] has been a part of your household for {color=yellow|%d} weeks and {color=yellow|%d} days.",
 	METRICS_BASE_YOU = "[name] is a [master] and has been in this household for {color=yellow|%d} weeks and {color=yellow|%d} days.",
 	METRICS_DATES_MASTER = "[He] went on dates {color=yellow|%d} time(s) and engaged in sex activities {color=yellow|%d} time(s).",

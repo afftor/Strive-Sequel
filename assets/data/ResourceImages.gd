@@ -1116,7 +1116,39 @@ var GFX_sprites = {
 	flame = 'res://assets/sfx/hit_animation/flame.tscn',
 	earth_spike = "res://assets/sfx/hit_animation/earth_spike.tscn",
 	decay = "res://assets/sfx/hit_animation/DecayEffect.tscn",
-	fire_shield = "res://assets/sfx/hit_animation/fire_shield.tscn"
+	fire_shield = "res://assets/sfx/hit_animation/fire_shield.tscn",
+	acid_bomb = "res://assets/sfx/hit_animation/acid_bomb.tscn",
+	air_shield = "res://assets/sfx/hit_animation/air_shield.tscn",
+	black_tendrils = "res://assets/sfx/hit_animation/black_tendrils.tscn",
+	blessing = "res://assets/sfx/hit_animation/blessing.tscn",
+	blood_boil = "res://assets/sfx/hit_animation/blood_boil.tscn",
+	chain_lightning = "res://assets/sfx/hit_animation/chain_lightning.tscn",
+	darkness = "res://assets/sfx/hit_animation/darkness.tscn",
+	devour_magic = "res://assets/sfx/hit_animation/devour_magic.tscn",
+	disintegrate = "res://assets/sfx/hit_animation/disintegrate.tscn",
+	earthquake = "res://assets/sfx/hit_animation/earthquake.tscn",
+	earth_shield = "res://assets/sfx/hit_animation/earth_shield.tscn",
+	elemental_protection = "res://assets/sfx/hit_animation/elemental_protection.tscn",
+	eye_of_the_storm = "res://assets/sfx/hit_animation/eye_of_the_storm.tscn",
+	frost_prison = "res://assets/sfx/hit_animation/frost_prison.tscn",
+	haste = "res://assets/sfx/hit_animation/haste.tscn",
+	healing_light = "res://assets/sfx/hit_animation/healing_light.tscn",
+	lightning = "res://assets/sfx/hit_animation/lightning.tscn",
+	magma_blast = "res://assets/sfx/hit_animation/magma_blast.tscn",
+	malediction = "res://assets/sfx/hit_animation/malediction.tscn",
+	mass_resurrection = "res://assets/sfx/hit_animation/mass_resurrection.tscn",
+	mind_blast = "res://assets/sfx/hit_animation/mind_blast.tscn",
+	mind_shatter = "res://assets/sfx/hit_animation/mind_shatter.tscn",
+	overgrowth = "res://assets/sfx/hit_animation/overgrowth.tscn",
+	pacify = "res://assets/sfx/hit_animation/pacify.tscn",
+	radiance = "res://assets/sfx/hit_animation/radiance.tscn",
+	resurrect = "res://assets/sfx/hit_animation/resurrect.tscn",
+	shadow_veil = "res://assets/sfx/hit_animation/shadow_veil.tscn",
+	tempest = "res://assets/sfx/hit_animation/tempest.tscn",
+	skill_void = "res://assets/sfx/hit_animation/void.tscn",
+	water_shield = "res://assets/sfx/hit_animation/water_shield.tscn",
+	wind_blade = "res://assets/sfx/hit_animation/wind_blade.tscn",
+	
 	}
 
 var GFX_particles = {
@@ -1129,7 +1161,7 @@ var GFX_particles = {
 }
 
 var GFX_video = {
-	blood_boil = "res://assets/sfx/hit_animation/blood_boil.tscn"
+#	blood_boil = "res://assets/sfx/hit_animation/blood_boil.tscn"
 }
 
 

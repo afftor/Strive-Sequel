@@ -75,7 +75,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'water',#not sure but not matters
-		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'water_shield', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
@@ -112,7 +112,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'water',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'frost_prison', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = 1.3,
 	},
