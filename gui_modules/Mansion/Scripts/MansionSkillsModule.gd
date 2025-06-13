@@ -126,3 +126,7 @@ func skill_selected(skill):
 		else:
 			person.skills.combat_skill_panel[active_position] = skill
 	build_skill_panel()
+
+
+func update():
+	build_skill_panel()
