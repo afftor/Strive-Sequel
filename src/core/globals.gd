@@ -1220,6 +1220,7 @@ func character_stat_change(character, data):
 		text += " + "
 		character.add_stat(data.code, data.value)
 	elif data.operant == '=':
+		text += " = "
 		character.set_stat(data.code, data.value)
 	else:
 		text += " - "
