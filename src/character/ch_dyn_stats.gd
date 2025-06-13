@@ -119,7 +119,9 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 			process_eid_add(eff, item.timestamp)
 	rebuild = variables.DYN_STATS_PREAREA
 	if !forced:
-		parent.get_ref().fix_skillpanels(input_handler.compare_list(skills_real, skills_old), input_handler.compare_list(c_skills_real, c_skills_old))
+		var l1 = input_handler.compare_list(skills_real, skills_old)
+		var l2 = input_handler.compare_list(c_skills_real, c_skills_old)
+		parent.get_ref().fix_skillpanels(l1.add, l2.add, l1.remove, l2.remove)
 	if rebuild >= stop_at and !forced:
 		return
 	#process effects
