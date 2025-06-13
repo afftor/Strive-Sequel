@@ -83,9 +83,16 @@ func get_learned_skills(cat):
 			return explore_skills.duplicate()
 
 
-func fix_skillpanels(list_soc, list_combat):
+func fix_skillpanels(list_soc_add, list_combat_add, list_soc_remove, list_combat_remove):
+	for pos in combat_skill_panel.keys().duplicate():
+		if combat_skill_panel[pos] in list_combat_remove:
+			combat_skill_panel.erase(pos)
+	for pos in social_skill_panel.keys().duplicate():
+		if social_skill_panel[pos] in list_soc_remove:
+			social_skill_panel.erase(pos)
+
 	var pos = 1
-	for skill in list_combat:
+	for skill in list_combat_add:
 		if combat_skill_panel.values().has(skill):
 			continue
 		while combat_skill_panel.has(pos):
@@ -94,7 +101,7 @@ func fix_skillpanels(list_soc, list_combat):
 			break
 		combat_skill_panel[pos] = skill
 	pos = 1
-	for skill in list_soc:
+	for skill in list_soc_add:
 		if social_skill_panel.values().has(skill):
 			continue
 		while social_skill_panel.has(pos):

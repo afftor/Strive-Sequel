@@ -2149,8 +2149,8 @@ func get_explore_skills():
 	return dyn_stats.get_explore_skills()
 
 
-func fix_skillpanels(list_soc, list_combat):
-	skills.fix_skillpanels(list_soc, list_combat)
+func fix_skillpanels(list_soc_add, list_combat_add, list_soc_remove, list_combat_remove):
+	skills.fix_skillpanels(list_soc_add, list_combat_add, list_soc_remove, list_combat_remove)
 
 func update_portrait(ragdoll): # for ragdolls
 	if !get_stat('dynamic_portrait'):

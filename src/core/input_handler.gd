@@ -1853,8 +1853,12 @@ func timestamp_sort_dict(a, b):
 
 
 func compare_list(list_new, list_old):
-	var res = []
+	var res_add = []
+	var res_remove = []
 	for i in list_new:
 		if !list_old.has(i):
-			res.push_back(i)
-	return res
+			res_add.push_back(i)
+	for i in list_old:
+		if !list_new.has(i):
+			res_remove.push_back(i)
+	return {add = res_add, remove = res_remove}
