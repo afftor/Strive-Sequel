@@ -1744,24 +1744,42 @@ func affect_char(template, manifest = false):
 		'damage':
 			var tval = deal_damage(template.value, template.source)
 			if input_handler.combat_node != null:
-				input_handler.combat_node.combatlogadd("\n%s loses %d hp." % [get_short_name(), int(tval)])
-			if manifest: manifest_and_log("loses %d hp." % int(tval))
+				var log_str
+				if template.value >= 0: log_str = tr('LOG_COMBAT_LOSE_HP')
+				else: log_str = tr('LOG_COMBAT_HEAL')
+				input_handler.combat_node.combatlogadd(log_str % [get_short_name(), int(tval)])
+			if manifest:
+				var log_str
+				if template.value >= 0: log_str = tr('LOG_LOSE_HP')
+				else: log_str = tr('LOG_HEAL')
+				manifest_and_log(log_str % int(tval))
 		'damage_percent':
 			var tval = deal_damage((template.value / 100.0) * get_stat('hpmax'))
-			if manifest: manifest_and_log("loses %d hp." % int(tval))
+			if manifest:
+				var log_str
+				if template.value >= 0: log_str = tr('LOG_LOSE_HP')
+				else: log_str = tr('LOG_HEAL')
+				manifest_and_log(log_str % int(tval))
 		'heal':
 			var tval = heal(template.value)
 			if input_handler.combat_node != null:
-				input_handler.combat_node.combatlogadd("\n%s get %d hp." % [get_short_name(), int(tval)])
-			if manifest: manifest_and_log("healed for %d hp." % int(tval))
+				var log_str
+				if template.value >= 0: log_str = tr('LOG_COMBAT_HEAL')
+				else: log_str = tr('LOG_COMBAT_LOSE_HP')
+				input_handler.combat_node.combatlogadd(log_str % [get_short_name(), int(tval)])
+			if manifest:
+				var log_str
+				if template.value >= 0: log_str = tr('LOG_HEAL')
+				else: log_str = tr('LOG_LOSE_HP')
+				manifest_and_log(log_str % int(tval))
 		'mana':
 			var tval = mana_update(template.value)
 			if input_handler.combat_node != null:
-				input_handler.combat_node.combatlogadd("\n%s get %d mp." % [get_short_name(), int(tval)])
-			if manifest: manifest_and_log("mana %d." % int(tval))
+				input_handler.combat_node.combatlogadd(tr("LOG_COMBAT_MANA") % [get_short_name(), int(tval)])
+			if manifest: manifest_and_log(tr("LOG_MANA") % int(tval))
 		'damage_mana_percent':
 			var tval = mana_update(-template.value * get_stat('mpmax'))
-			if manifest: manifest_and_log("mana %d." % int(tval))
+			if manifest: manifest_and_log(tr("LOG_MANA") % int(tval))
 		'stat', 'stat_add':
 			add_stat(template.stat, template.value)
 			if manifest:
@@ -1773,12 +1791,12 @@ func affect_char(template, manifest = false):
 		'stat_set':
 			set_stat(template.stat, template.value)
 			if manifest:
-				manifest_and_log("%s is %s" % [
+				manifest_and_log(tr("LOG_SET") % [
 					globals.get_stat_name(template.stat), template.value])
 		'stat_add_p':
 			add_part_stat(template.stat, template.value)
 			if manifest:
-				manifest_and_log("add part of %s to %s" % [
+				manifest_and_log(tr("LOG_ADD_PART") % [
 					template.value, globals.get_stat_name(template.stat)])
 		'stat_mul':#do not mix add_p and mul for the sake of logic
 			mul_stat(template.stat, template.value)
