@@ -3225,6 +3225,7 @@ Requires: Базовый рабский труд""",
 	BUFFDESCRIPTTEMPLAR = "МЗАЩ увеличена",
 	BUFFDESCRIPTCURSE = """ """,
 	BUFFDESCRIPTENCHANT = """ """,
+	BUFFDESCRIPTSLEEP = """Sleep: Skip turns until damaged""", # MISSING TRANSLATION
 	BUFFDESCRIPTMENTOR = """Прирост опыта увеличен""",	
 	BUFFDESCRIPTBISHOP = """Цель получает на 20%% больше урона от света и тьмы""",
 	
@@ -4071,6 +4072,17 @@ Requires: Базовый рабский труд""",
 	
 	
 	SPECIAL_ACTION_CLASS = """*Специальное действие* (требует неизвестного класса)""",
+	LOG_LOSE_HP = """loses %d hp.""", # MISSING TRANSLATION
+	LOG_COMBAT_LOSE_HP = """
+%s loses %d hp.""", # MISSING TRANSLATION
+	LOG_HEAL = """healed for %d hp.""", # MISSING TRANSLATION
+	LOG_COMBAT_HEAL = """
+%s get %d hp.""", # MISSING TRANSLATION
+	LOG_MANA = """mana %d.""", # MISSING TRANSLATION
+	LOG_COMBAT_MANA = """
+%s get %d mp.""", # MISSING TRANSLATION
+	LOG_ADD_PART = """add part of %s to %s""", # MISSING TRANSLATION
+	LOG_SET = """%s is %s""", # MISSING TRANSLATION
 	DIALOGUECHARINSPECT = """*Осмотреть*""",
 	DIALOGUERECRUITCHARACTEROPTION = """*Завербовать*""",
 	DIALOGUELEAVE = """Уйти""",
@@ -17261,6 +17273,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	DIALOGUEAMELIAINITIATE = """Ваш исключительный трофей, бывшая лидер Гильдии слуг Амелия, сияет от восторга, когда вы приходите к ней в гости. 
 	
 — [Master], хотите, чтобы вас обслуживали так, как не сможет ни одна таверна? Я могу приготовить незабываемый ужин, наполнить роскошную ванну, или вы предпочитаете... меня?""",
+	DIALOGUEKUROINIT = """— Yes? What do you want?""", # MISSING TRANSLATION
 	
 	
 	
@@ -18819,6 +18832,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	CUSTOM_IMG_LABEL = """Добавить пользовательское изображение""",
 	OPEN_SYS_FOLD_LABEL = """Папка сохранений""",
 	RELOAD_PORT_LABEL = """Перезагрузить портреты""",
+	RELOAD_IMG_LABEL = """Reload images""", # MISSING TRANSLATION
 	RESET_IMG_LABEL = """Сбросить изображение""",
 	REVERS_TO_DEF_LABEL = """Вернуться к значениям по умолчанию""",
 	SELECT_FOLDRS_LABEL = """Выбрать папки""",
@@ -19386,6 +19400,9 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	ZEPHYRA_BATH_1_O_0 = """*Встать и уйти*""",
 	HELEVIEL_MANSION_1_O_0 = """*Просто оставить её в качестве рабыни.*""",
 	HELEVIEL_MANSION_1_O_1 = """*Преподать ей урок послушания.*""",
+	ANASTASIA_BLOWJOB_SS = """Accept Anastasia's "Reward"*""", # MISSING TRANSLATION
+	ANASTASIA_WEDDING_SS = """Marrying an (ex)princess.""", # MISSING TRANSLATION
+	ZEPHYRA_WEDDING_SS = """Wedlock with Zephyra""", # MISSING TRANSLATION
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """Вы объясняете Алиcе, что одному из ваших рабов нужна смена одежды.
 
 — Да, правильная одежда для слуг - одна из наших специализаций. Правильно подобранная одежда может многое изменить даже для не самых идеальных тел. Естественно, у нас есть портные, которые могут подогнать одежду под любой тип фигуры. Но что вы ищете?""",

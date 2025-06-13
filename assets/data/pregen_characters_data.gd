@@ -959,6 +959,13 @@ var unique_sprites = {
 			face_path = "anastasia_nude",
 			unlock_reqs = []
 			},
+		nighgown = {
+			name = "Nighgown",
+			descript = "",
+			path = "anastasia_nude_body", 
+			face_path = "anastasia_night",
+			unlock_reqs = [{type = 'event_seen', check = true, value = 'ana_blow_1'}]
+			},
 		wed = {
 			name = "Wed",
 			descript = "",
@@ -1048,7 +1055,7 @@ var unique_sprites = {
 			name = "Nude",
 			descript = "",
 			path = "lilith_nude_body", 
-			face_path = "lilith_nude", # TODO change
+			face_path = "lilith_nude",
 			unlock_reqs = []
 			},
 		wed = {

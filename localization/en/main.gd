@@ -3055,6 +3055,7 @@ Social skills effect: +10%.""",
 	BUFFDESCRIPTTEMPLAR = "MDEF Increaased",
 	BUFFDESCRIPTCURSE = "",
 	BUFFDESCRIPTENCHANT = "",
+	BUFFDESCRIPTSLEEP = "Sleep: Skip turns until damaged",
 	BUFFDESCRIPTMENTOR = "Experience Gain increased",
 	BUFFDESCRIPTBISHOP = "Target receive 20%% more Light and Dark damage",
 	BUFFDESCRIPTWET = """Wet
@@ -18211,6 +18212,9 @@ After a few minutes nothing still happened and [name] decides to move on.""",
 	ZEPHYRA_BATH_1_O_0 = "*Stand up and leave*",
 	HELEVIEL_MANSION_1_O_0 = "*Just keep her as slave for now*",
 	HELEVIEL_MANSION_1_O_1 = "*Give her a lesson of \"Obedience\"*",
+	ANASTASIA_BLOWJOB_SS = "Accept Anastasia's \"Reward\"*",
+	ANASTASIA_WEDDING_SS = "Marrying an (ex)princess.",
+	ZEPHYRA_WEDDING_SS = "Wedlock with Zephyra",
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """You explain to Alise that one of your slaves needs a change of clothes.
 
 — Why, yes, proper servants' attire is one of our specialties. You know, the right clothes make a big difference even for less ideal bodies, naturally we have tailors who can adjust for any required body type. But what are you looking for, anyway?""",
@@ -18663,7 +18667,9 @@ Your cock throbs powerfully as you erupt into her waiting mouth. The princess's 
 
 As your orgasm subsides, Anastasia slowly pulls back, her lips giving one final suck to the sensitive head of your cock. She swallows what she's collected, her throat working visibly as she maintains eye contact. A mixture of pride and satisfaction crosses her features – the look of someone who has successfully completed a challenging but rewarding task.
 
-— This isn't much but I hope this pleased you.""",
+— This isn't much but I hope this pleased you.
+
+{color=yellow|New portrait for Anastasia has been unlocked}""",
 	ANA_WED_1 = """The bedroom door closes behind you with a soft click. Anastasia stands before you, her blue eyes wide with anticipation as moonlight streams through the tall windows, casting a silvery glow across the opulent chamber. The wedding celebration has finally ended, and now it's just the two of you.
 
 — To tell the truth, I'm more nervous than ever...

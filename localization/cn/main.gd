@@ -3545,6 +3545,17 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 
 	
 	SPECIAL_ACTION_CLASS = "特殊操作（需要未知课程）",
+	LOG_LOSE_HP = """loses %d hp.""", # MISSING TRANSLATION
+	LOG_COMBAT_LOSE_HP = """
+%s loses %d hp.""", # MISSING TRANSLATION
+	LOG_HEAL = """healed for %d hp.""", # MISSING TRANSLATION
+	LOG_COMBAT_HEAL = """
+%s get %d hp.""", # MISSING TRANSLATION
+	LOG_MANA = """mana %d.""", # MISSING TRANSLATION
+	LOG_COMBAT_MANA = """
+%s get %d mp.""", # MISSING TRANSLATION
+	LOG_ADD_PART = """add part of %s to %s""", # MISSING TRANSLATION
+	LOG_SET = """%s is %s""", # MISSING TRANSLATION
 	DIALOGUECHARINSPECT = "检查",
 	DIALOGUERECRUITCHARACTEROPTION = "招聘",
 	DIALOGUELEAVE = "离开",
@@ -15057,6 +15068,7 @@ Hotkey: 3""",
 	CUSTOM_IMG_LABEL = "Add custom image",
 	OPEN_SYS_FOLD_LABEL = "Open system folder",
 	RELOAD_PORT_LABEL = "Reload portraits",
+	RELOAD_IMG_LABEL = """Reload images""", # MISSING TRANSLATION
 	RESET_IMG_LABEL = "Reset the image",
 	REVERS_TO_DEF_LABEL = "Reverse to default",
 	SELECT_FOLDRS_LABEL = "Select Folders",
