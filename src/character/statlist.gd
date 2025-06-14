@@ -357,6 +357,7 @@ var resists = {
 	resist_fear = 0.0,
 	resist_cursed = 0.0,
 	resist_sleep = 0.0,
+	resist_blind = 0.0,
 }
 var damage_mods = { 
 	damage_mod_all = 1.0,

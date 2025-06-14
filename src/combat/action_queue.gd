@@ -32,6 +32,7 @@ func _init():
 
 
 func is_empty():
+	apply_cash()
 #	if !cashed_handlers.empty():
 #		return false
 	return tail == head + 1

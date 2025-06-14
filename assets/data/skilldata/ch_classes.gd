@@ -862,7 +862,7 @@ var effects = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		args = {
 			armor = {obj = 'owner', func = 'stat', stat = 'armor'},
-			duration = {obj = 'self', dunc = 'dur', dur = 3}
+			duration = {obj = 'self', func = 'dur', dur = 3}
 			},
 		sub_effects = ['e_tr_templar_heal'],
 		statchange = {mdef = [['arg', 'armor'], '*', 0.5]},

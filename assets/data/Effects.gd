@@ -1834,6 +1834,8 @@ func get_effect_for_status(status):
 			return 'e_s_taunt'
 		'sleep':
 			return 'e_s_sleep'
+		'blind':
+			return 'e_s_blind'
 		_:
 			return status
 
@@ -1849,6 +1851,9 @@ func fix_eff_data():
 				eff.tags = []
 			if !eff.has('statchanges'):
 				eff.statchanges = {}
+		if eff.type == 'trigger':
+			if !eff.has('conditions'):
+				eff.conditions = []
 		if eff.has('duration'):
 			if eff.duration is String:
 				if !eff.has('args'):
