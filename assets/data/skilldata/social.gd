@@ -435,18 +435,17 @@ var buffs = {
 	b_mastermentor = {
 		icon = "res://assets/images/iconsskills/Mindread.png",
 		description = "BUFFDESCRIPTMENTOR",
-		t_name = 'master_mentor',
-		mansion_only = true
+		tags = ['mansion_only']
 	},
 	b_soulbind = {
 		icon = "res://assets/images/iconsenchants/curse_mono_100.png",
 		description = "",
-		t_name = 'soulbind',
+		tags = ['mansion_only']
 	},
 	b_soulbindcaster = { #not used
 		icon = "res://assets/images/iconsenchants/curse_mono_100.png",
 		description = "",
-		t_name = 'soulbindcaster',
+		tags = ['mansion_only']
 	},
 	b_hardwork = {
 		icon = "res://assets/images/iconsclasses/Worker.png",

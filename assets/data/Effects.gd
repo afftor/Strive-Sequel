@@ -1473,6 +1473,7 @@ var buffs = {
 	b_dayoff = {
 		icon = "res://assets/images/iconsenchants/curse_mono_100.png",
 		description = "",
+		tags = ['mansion_only']
 	},
 	b_hide = {
 		icon = "res://assets/images/iconsskills/icon_eyes.png",
