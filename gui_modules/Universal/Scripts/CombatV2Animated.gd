@@ -525,6 +525,10 @@ func player_turn():
 	selected_character.process_event(variables.TR_TURN_GET)
 	effects_pool.process_event(variables.TR_TURN_GET, selected_character)
 	selected_character.displaynode.rebuildbuffs()
+	if !ActionQueue.is_empty():
+		if !ActionQueue.is_active:
+			ActionQueue.invoke()
+		yield(ActionQueue, 'queue_empty')
 	CombatAnimations.check_start()
 #	$Panel3.texture = load("res://assets/Textures_v2/BATTLE/Panels/panel_battle_nameturn_l.png")
 #	$Panel3/Label.text = selected_character.get_short_name()
@@ -580,6 +584,10 @@ func enemy_turn():
 	fighter.process_event(variables.TR_TURN_GET)
 	effects_pool.process_event(variables.TR_TURN_GET, fighter)
 	fighter.displaynode.rebuildbuffs()
+	if !ActionQueue.is_empty():
+		if !ActionQueue.is_active:
+			ActionQueue.invoke()
+		yield(ActionQueue, 'queue_empty')
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: 
 		yield(CombatAnimations, 'alleffectsfinished')
