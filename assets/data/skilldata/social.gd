@@ -372,14 +372,10 @@ var effects = {
 		statchanges = {mod_collect = 0.5, mod_hunt = 0.5, mod_fish = 0.5, mod_cook = 0.5, mod_smith = 0.5, mod_alchemy = 0.5, mod_tailor = 0.5, mod_farm = 0.5,},
 	},
 	e_s_bond = {
-		type = 'temp_s',
+		type = 'oneshot',
 		target = 'target',
-		stack = 'soul_bind',
-		duration = 4,
-		tick_event = [variables.TR_TICK],
-		rem_event = [variables.TR_DEATH],
-		tags = ['no_job', 'no_combat'],
-		buffs = ['b_soulbind'],
+		tags = [],
+		atomic = [{type = 'set_availability', value = false, duration = 1}]
 	},
 	master_productivity_1 = {
 		type = 'temp_s',
@@ -461,7 +457,7 @@ var buffs = {
 
 var stacks = {
 	master_mentor = {}, #st 1
-	soul_bind = {}, #st 1
+#	soul_bind = {}, #st 1
 	mas_prod = {}, #st 1
 	mas_combat = {}, #st 1
 	suc_combat = {}, #st 1
