@@ -384,7 +384,8 @@ func apply_training(code):
 	#other effects
 	var resistance_increased = false
 	if code == 'dayoff':
-		parent.get_ref().apply_effect_code('e_s_dayoff')
+#		parent.get_ref().apply_effect_code('e_s_dayoff')
+		parent.get_ref().affect_char({type = 'set_availability', value = false, duration = 1})
 	if code in ['rape', 'publicuse']:
 		if parent.get_ref().get_stat('vaginal_virgin'):
 			effect_text += "%s takes virginity of %s" % [ch_trainer.get_short_name(), parent.get_ref().get_short_name()]
