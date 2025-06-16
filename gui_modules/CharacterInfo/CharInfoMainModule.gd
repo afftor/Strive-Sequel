@@ -165,6 +165,8 @@ func remove():
 
 func update():
 	active_person = input_handler.interacted_character
+	if active_person == null:
+		return
 	active_person.update_prt()
 	SummaryModule.show_summary()
 	SlaveInfo.update()
