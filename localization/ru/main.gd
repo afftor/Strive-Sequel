@@ -3212,6 +3212,7 @@ Requires: Базовый рабский труд""",
 	BUFFDESCRIPTCONFUSE = """Замешательство""",
 	BUFFDESCRIPTFREEUSE = """Позволяет использовать предмет, не делая хода""",
 	BUFFDESCRIPTSHRED = """Разрыв: ЗАЩ снижена на 50%%""",
+	BUFFDESCRIPTSHATTER = """Shattered: MDEF is reduced by 50%%""", # MISSING TRANSLATION
 	BUFFDESCRIPTGROWL = """Скорость и уворот уменьшены""",
 	BUFFDESCRIPTCURSEATTACK = """Атака снижена""",
 	BUFFDESRIPTCURSEATTACKTR = """Атака этой цели приводит к снижению ATK""",

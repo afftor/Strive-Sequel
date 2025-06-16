@@ -3042,6 +3042,7 @@ Social skills effect: +10%.""",
 	BUFFDESCRIPTCONFUSE = "Confusion",
 	BUFFDESCRIPTFREEUSE = "Allows to use an item without taking a turn",
 	BUFFDESCRIPTSHRED = "Shredded: DEF is reduced by 50%%",
+	BUFFDESCRIPTSHATTER = "Shattered: MDEF is reduced by 50%%",
 	BUFFDESCRIPTGROWL = "Speed and evasion decreased",
 	BUFFDESCRIPTCURSEATTACK = "Attack decreased",
 	BUFFDESRIPTCURSEATTACKTR = "Attacking this target causes ATK decreased",
@@ -8689,7 +8690,7 @@ Zephyra leaves the church without giving you a second glance.""",
 — Happy now, dear Mayor? This way both you get what you want and I could make some scandalous claims if you do something bad. Now, please excuse me, I don't want to keep around here... or anywhere, being that unprotected. 
 
 Zephyra leaves to her room before you get a chance to react. It seems she will take you reaction as an agreement.""",
-	ZEPHYRA_SWORD_3_4 = "- Now, have I satisfied your curiosity? What is your answer?",
+	ZEPHYRA_SWORD_3_4 = "— Now, have I satisfied your curiosity? What is your answer?",
 	PRIESTESS_SWORD_TALK_1_1 = """After making an appointment, you are able to find an audience with the High Priestess. 
 
 — Just so you know, I'm only receiving you because of your high status. What do you need?""",
@@ -12397,7 +12398,7 @@ Zephyra finished her story and lowered head in submission, nervously waiting for
 She feigns collapse towards you and buries her face into your chest. 
 
 — Have you... Aah... No pity for my young maiden's heart?""",
-	ZEPHYRA_BRUSH_16_3 = """- S-sorry about that... I shouldn't have told you about this, I... Sorry...
+	ZEPHYRA_BRUSH_16_3 = """— S-sorry about that... I shouldn't have told you about this, I... Sorry...
 
 Zephyra runs out of room, leaving you alone, and has not shown herself for the rest of the day.""",
 	ZEPHYRA_BRUSH_17 = """As you open your mouth to respond, Zephyra catches you off guard and instantly seals your lips with hers. Her slow yet desperate kiss finally comes to an end, making you forget whatever you were about to say.
@@ -15619,20 +15620,20 @@ Back and forth, her tail flits around, belying her excitement as she tries to ke
 You decide to leave her alone for now.""",
 	KURO_AFTER_TOME = """You find Kuro in a secluded side of your mansion, it seems she prefers to stay away from more crowded areas.
 
-- It's you. Do you have some business with me?""",
+— It's you. Do you have some business with me?""",
 	KURO_AFTER_OPT_BOOK = "So what was that book that you wanted?",
 	KURO_AFTER_OPT_CAPABLE = "You've proved to be quite capable dealing with Myr and the dwarves",
-	KURO_AFTER_REPLY_BOOK = "- Chronicles of Al'Hazred. Have you begin having a memory or hearing issues at your age? That would be disappointing. Don't worry about it, I'm not going to explain what's the content of the book. Too bad you can't read ancient languages.",
-	KURO_AFTER_TOME2 = """- Uh huh.
+	KURO_AFTER_REPLY_BOOK = "— Chronicles of Al'Hazred. Have you begin having a memory or hearing issues at your age? That would be disappointing. Don't worry about it, I'm not going to explain what's the content of the book. Too bad you can't read ancient languages.",
+	KURO_AFTER_TOME2 = """— Uh huh.
 
 Kuro seemingly dismisses your praise and looks away.
 
-- If you are done for today I shall see myself to my business.""",
+— If you are done for today I shall see myself to my business.""",
 	KURO_AFTER_OPT_UNHAPPY = "Why don't you seem happy to be complimented?",
 	KURO_AFTER_OPT_ELSE = "Actually, I have something else I wanted to talk about...",
 	KURO_AFTER_TOME3 = """Hearing your question Kuro stays silent for a moment considering something, before replying in the most condescending motherly voice yet.
 
-- While it would be more appropriate for me to leave at this point, I suppose I shall give you something for being what you are. So, here's the question for you. How happy would you feel to be praised for doing something mundane like walking or breathing? - Kuro pauses with a small smirk - Ah, of course, you don't have to answer that.
+— While it would be more appropriate for me to leave at this point, I suppose I shall give you something for being what you are. So, here's the question for you. How happy would you feel to be praised for doing something mundane like walking or breathing? - Kuro pauses with a small smirk - Ah, of course, you don't have to answer that.
 
 In the next moment she's gone in her usual manner.""",
 	LIRA_LOST_START = "As you get through the woods, you suddenly hear a woman's voice calling for help. You cautiously move towards it...",
@@ -15774,31 +15775,31 @@ Kuro: — Let's go. I wanna get into the bath before the night.""",
 	KURO_BACK_OPT_WHAT = "What the hell was that?",
 	KURO_BACK_OPT_DESERVE = "I think I deserve some answers",
 	KURO_BACK_OPT_SILENT = "*Keep silent* (close)",
-	KURO_BACK_START2 = """- Men really like their silly questions, aren't they? It doesn't really matter now...
+	KURO_BACK_START2 = """— Men really like their silly questions, aren't they? It doesn't really matter now...
 
 Kuro takes a pause before continuing with seemingly unrelated narration.
 
-- I was born in a merchant family, nothing fancy, but at the age of five I've realized that my peers aren't particularly smart. While not surprising, neither were my parents. Things grew worse with time but fairly quickly I've learned to mask my intelligence from others. The less you stand out, the fewer unwanted attention you gather.""",
-	KURO_BACK_START3 = "- At the age of eleven I've staged my disappearance. Thankfully, I've had access to enough information to survive on my own. But the world is tough place, especially for a young girl. I've discovered an ancient deity, the one which I now share powers with. That's the gist of how I have been living to this day.",
-	KURO_BACK_START4 = """- Heh, I've skipped over something, haven't I? The cult.
+— I was born in a merchant family, nothing fancy, but at the age of five I've realized that my peers aren't particularly smart. While not surprising, neither were my parents. Things grew worse with time but fairly quickly I've learned to mask my intelligence from others. The less you stand out, the fewer unwanted attention you gather.""",
+	KURO_BACK_START3 = "— At the age of eleven I've staged my disappearance. Thankfully, I've had access to enough information to survive on my own. But the world is tough place, especially for a young girl. I've discovered an ancient deity, the one which I now share powers with. That's the gist of how I have been living to this day.",
+	KURO_BACK_START4 = """— Heh, I've skipped over something, haven't I? The cult.
 
 Kuro takes a pause, apparently choosing her next words.
 
-- I was a part of our deal, but I would lie if I said that there was no connection between me and the cult whatsoever. No, not of the personal kind. Now I'm on this side and you can be wondering why I've chosen you over both the cult and Nixx all you want.""",
+— It was a part of our deal, but I would lie if I said that there was no connection between me and the cult whatsoever. No, not of the personal kind. Now I'm on this side and you can be wondering why I've chosen you over both the cult and Nixx all you want.""",
 	KURO_BACK_OPT_STRONG = "I'm the stronger side?",
 	KURO_BACK_OPT_USEFUL = "You must think I'm useful to you",
 	KURO_BACK_OPT_LIKE = "Because you like me",
 	KURO_BACK_OPT_ALL = "It's all of that",
 	KURO_BACK_OPT_NO_IDEA = "I have no idea and I don't think you gonna tell me anyway",
-	KURO_BACK_REPLY_STRONG = "- Ha-ha, I don't know that, really. You've just been overpowered by me alone. You might have more chances in the long run with all factors given.",
+	KURO_BACK_REPLY_STRONG = "— Ha-ha, I don't know that, really. You've just been overpowered by me alone. You might have more chances in the long run with all factors given.",
 	KURO_BACK_REPLY_USEFUL = """Kuro shrugs in dismissal.
 
-- You are useful, but I could manage most of the stuff as is.""",
-	KURO_BACK_REPLY_LIKE = "- That's very cute of you, and while I can't say you are completely wrong, it's too ridiculous to think that mere emotional sympathy would make me turn on my supposed allies.",
-	KURO_BACK_REPLY_ALL = """- No.
+— You are useful, but I could manage most of the stuff as is.""",
+	KURO_BACK_REPLY_LIKE = "— That's very cute of you, and while I can't say you are completely wrong, it's too ridiculous to think that mere emotional sympathy would make me turn on my supposed allies.",
+	KURO_BACK_REPLY_ALL = """— No.
 
 Kuro's answer is straight and simple, emotionless even. She boldly refuses your presumption and indicates that this discussion is over as you travel back in silence.""",
-	KURO_BACK_REPLY_NO_IDEA = "- That's not a bad line of thought. Besides, one thing people miss all the time is that there's a correct answer for the wrong question. However, I hope you will demonstrate adequate interest when the time is right.",
+	KURO_BACK_REPLY_NO_IDEA = "— That's not a bad line of thought. Besides, one thing people miss all the time is that there's a correct answer for the wrong question. However, I hope you will demonstrate adequate interest when the time is right.",
 	KURO_MANSION_ARRIVE = "After you arrive at home Kuro does not seem to explain herself but looks visibly prepared for your questioning.",
 	KURO_MANSION_OPT_EXPLAIN = "You aren't going to explain what it was all about?",
 	KURO_MANSION_OPT_NOASK = "*Ask nothing*",
@@ -18513,52 +18514,52 @@ She swallows hard, then straightens, voice trembling but obedient.
 — I got a letter from a delivery boy, he left faster than I could thank him, I swear, that is all I know.""",
 	ANASTASIA_PT2_1_3 = """Anastasia has a tone of sorrow in her voice.
 
-- He was the one who took me away when the coup happened and has been caring for me since that time. He wasn't very kind or anything, but we managed to hide and gather support over these years. I think he still has not given up on this and must be angry.""",
+— He was the one who took me away when the coup happened and has been caring for me since that time. He wasn't very kind or anything, but we managed to hide and gather support over these years. I think he still has not given up on this and must be angry.""",
 	ANASTASIA_PT2_1_OPTION_1 = "I never thought he would show up again. How did you get it?",
 	ANASTASIA_PT2_1_OPTION_2 = "What happened back then? Tell me more about him",
 	ANASTASIA_PT2_1_OPTION_3 = "I'll take it, I appreciate your honesty.",
 	ANASTASIA_PT2_2 = """Anastasia nods and passes you the letter.
 
-- Thank you. Just, please, don't put yourself in danger. Uncle is very resourceful and can be cunning in his plans.
+— Thank you. Just, please, don't put yourself in danger. Uncle is very resourceful and can be cunning in his plans.
 
 As you leave the room, you feel like this issue is better to be brought to Duncan.""",
 	ANA_DUNCAN_INITIATE = "It seems I've found a letter from Greg...",
 	ANA_DUNCAN_1 = """You pass the message obtained from Anastasia to Duncan. He barely frowns upon hearing the news but behaves as stoic as always.
 
-- I see. Shame we didn't get him at that time. Say, has the princess seen it?""",
+— I see. Shame we didn't get him at that time. Say, has the princess seen it?""",
 	ANA_DUNCAN_1_OPTION_1 = "I got it before her (lie)",
 	ANA_DUNCAN_1_OPTION_2 = "She was the one who exposed it.",
-	ANA_DUNCAN_2_1 = "- Good. We'll investigate it but judging from the way it's worded, Greg has nothing left and is only grasping at straws.",
-	ANA_DUNCAN_2_2 = "- So it might be a trap then. Better not lower your guard. We'll investigate it but judging from the way it's worded, Greg has nothing left and is only grasping at straws.",
+	ANA_DUNCAN_2_1 = "— Good. We'll investigate it but judging from the way it's worded, Greg has nothing left and is only grasping at straws.",
+	ANA_DUNCAN_2_2 = "— So it might be a trap then. Better not lower your guard. We'll investigate it but judging from the way it's worded, Greg has nothing left and is only grasping at straws.",
 	ANA_DUNCAN_3_1 = """Just as you are about to leave, Duncan suddenly stops you.
 
-- Hold on, there was one issue I could use your help with. There has been a rebel fort standing ever since the announcement. They refuse to surrender so you can take the girl with you and have her negotiate with them. Make her at least useful for something.""",
-	ANA_DUNCAN_3_2 = "- I'm a married man, don't make me hold a grudge against you.",
+— Hold on, there was one issue I could use your help with. There has been a rebel fort standing ever since the announcement. They refuse to surrender so you can take the girl with you and have her negotiate with them. Make her at least useful for something.""",
+	ANA_DUNCAN_3_2 = "— I'm a married man, don't make me hold a grudge against you.",
 	ANA_DUNCAN_3_3 = """Duncan frowns even harder than usual before continuing. 
 
-- My apologies, our past drags the worst out of me.""",
+— My apologies, our past drags the worst out of me.""",
 	ANA_DUNCAN_3_4 = """Duncan pauses before taking a breath for the explanation to deliver.
 
-	- Let me tell you this. People are only content with how things are right now because it's been 12 years since the end of the mad king's tyranny. Soon they will realize that the guilds won't provide them with stability and order, way more interested in their own quarrels. Then people will turn for a true, strong leader who will offer to put everyone in place and provide protection from the Empire. I may not live to that day so consider it to be my warning.""",
-	ANA_DUNCAN_3_5 = """- I promise nobody is to disrupt whatever petty games you have for her in there. 
+	— Let me tell you this. People are only content with how things are right now because it's been 12 years since the end of the mad king's tyranny. Soon they will realize that the guilds won't provide them with stability and order, way more interested in their own quarrels. Then people will turn for a true, strong leader who will offer to put everyone in place and provide protection from the Empire. I may not live to that day so consider it to be my warning.""",
+	ANA_DUNCAN_3_5 = """— I promise nobody is to disrupt whatever petty games you have for her in there. 
 
 	Despite the cynical remark, Duncan's words feel like a non-hostile humorous attempt.""",
 	ANA_DUNCAN_3_OPTION_1 = "She's very useful as a bed warmer, you know.",
 	ANA_DUNCAN_3_OPTION_2 = "Not a very nice way to speak of someone's wife",
 	ANA_DUNCAN_3_OPTION_3 = "Why do you hate Anastasia so much, anyway?",
 	ANA_DUNCAN_3_OPTION_4 = "I'll give it a try.",
-	ANA_DUNCAN_4 = "- I don't hate her, I merely think she's a foolish, naive child who ended up in a place where she brings troubles. Your lengthy effort has secured her a safe spot for now and this much we've agreed to tolerate.",
+	ANA_DUNCAN_4 = "— I don't hate her, I merely think she's a foolish, naive child who ended up in a place where she brings troubles. Your lengthy effort has secured her a safe spot for now and this much we've agreed to tolerate.",
 	ANA_DUNCAN_4_OPTION_1 = "But she could be a good leader figure for the people.",
 	ANA_DUNCAN_4_OPTION_2 = "I promise she won't cause any troubles in future for that matter.",
-	ANA_DUNCAN_5 = """- Do that. There should be a group of our men leading the siege. The leader is Reyan, he'll instruct you in place.
+	ANA_DUNCAN_5 = """— Do that. There should be a group of our men leading the siege. The leader is Reyan, he'll instruct you in place.
 
 On your way out you think about how to present this to Anastasia.""",
 	ANA_TRAVEL_INITIATE = """You explain to Anastasia the upcoming task to which she agrees after a quick consideration.
 
-- I understand, very well, I shall try my best. It's a shame that the war is still ongoing in some regions and I will try my best to stop it.""",
+— I understand, very well, I shall try my best. It's a shame that the war is still ongoing in some regions and I will try my best to stop it.""",
 	ANA_FORT_1 = """As you make your way through the woods, you finally notice the camp of guild's forces Duncan told you about. Few soldiers recognize you with one leading to their leader, a ruff looking middle aged man, more fitting to be a mercenary rather than Fighters' Guild member. 
 
-Reyan: — Mayor [name]? I'm Reyan. Didn't expect you to be the promised reinforcement, and... - he takes a look at Anastasia, faint smirk showing on his face - a former rebel leader herself. 
+Reyan: — Mayor [name]? I'm Reyan. Didn't expect you to be the promised reinforcement, and... — he takes a look at Anastasia, faint smirk showing on his face - a former rebel leader herself. 
 
 Anastasia: — We want to stop this pointless fighting. 
 

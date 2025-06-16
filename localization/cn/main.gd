@@ -2718,6 +2718,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	BUFFDESCRIPTCONFUSE = "Confusion",
 	BUFFDESCRIPTFREEUSE = "Allows to use an item without taking a turn",
 	BUFFDESCRIPTSHRED = "Armor reduced",
+	BUFFDESCRIPTSHATTER = """Shattered: MDEF is reduced by 50%%""", # MISSING TRANSLATION
 	BUFFDESCRIPTGROWL = "Speed and evasion decreased",
 	BUFFDESCRIPTCURSEATTACK = "Attack decreased",
 	BUFFDESRIPTCURSEATTACKTR = "Attacking this target causes ATK decreased",

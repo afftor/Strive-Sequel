@@ -973,6 +973,7 @@ var traits = {
 	master_mentor = {
 		name = '',
 		descript = '',
+		visible = false,
 		icon = "res://assets/images/iconstraits/l_mentorship.png",
 		effects = [],
 		bonusstats = {trainee_amount = 2},
@@ -984,6 +985,7 @@ var traits = {
 	master_harlotry = {
 		name = '',
 		descript = '',
+		visible = false,
 		icon = "res://assets/images/iconstraits/l_harlotry.png",
 		effects = [],
 		bonusstats = {mod_pros = 1.2},
@@ -995,6 +997,7 @@ var traits = {
 	master_progenecy = {
 		name = '',
 		descript = '',
+		visible = false,
 		icon = "res://assets/images/iconstraits/l_progenecy.png",
 		effects = [],
 		bonusstats = {},
@@ -1006,6 +1009,7 @@ var traits = {
 	master_communicative = {
 		name = '',
 		descript = '',
+		visible = false,
 		icon = "res://assets/images/iconstraits/l_communicative.png",
 		effects = [],
 		bonusstats = {},
@@ -1017,6 +1021,7 @@ var traits = {
 	master_resilence = {
 		name = '',
 		descript = '',
+		visible = false,
 		icon = "res://assets/images/iconstraits/l_resilence.png",
 		effects = [],
 		bonusstats = {resist_fire = 20,
@@ -1034,6 +1039,7 @@ var traits = {
 	master_fortune = {
 		name = '',
 		descript = '',
+		visible = false,
 		icon = "res://assets/images/iconstraits/l_fortune.png",
 		effects = [],
 		bonusstats = {critchance = 25, magic_find = 1},
@@ -1045,6 +1051,7 @@ var traits = {
 	master_int = {
 		name = '',
 		descript = '',
+		visible = false,
 		icon = "res://assets/images/iconstraits/l_intelligence.png",
 		effects = [],
 		bonusstats = {exp_gain_mod = 0.15, mastery_point_universal = 3},
@@ -1056,6 +1063,7 @@ var traits = {
 	master_fortitude = {
 		name = '',
 		descript = '',
+		visible = false,
 		icon = "res://assets/images/iconstraits/l_fortitude.png",
 		effects = [],
 		bonusstats = {hp_reg_add_part = 3},
@@ -1067,6 +1075,7 @@ var traits = {
 	master_sorcery = {
 		name = '',
 		descript = '',
+		visible = false,
 		icon = "res://assets/images/iconstraits/l_sorcery.png",
 		effects = [],
 		bonusstats = {mp_reg_add = 1.5, matk_add_part = 0.35},
