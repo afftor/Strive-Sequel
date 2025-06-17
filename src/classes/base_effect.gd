@@ -29,7 +29,7 @@ func fill_sub_effects(firsttime = false):
 		tmp.owner = owner
 		if tmp.template.type == 'oneshot':
 			if firsttime:
-				tmp.applied_obj = owner
+				tmp.applied_obj = get_applied_obj()
 				tmp.apply(get_args_resolved())
 		else:
 			tmp.is_stored = false

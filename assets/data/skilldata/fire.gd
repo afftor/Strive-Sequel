@@ -189,7 +189,7 @@ var skills = {
 		targetreqs = [
 			{code = 'has_status', status = 'burn', check = true},
 		],
-		effects = [Effectdata.rebuild_template({effect = 'darkflame', duration = 4})], 
+		effects = [Effectdata.rebuild_template({effect = 'e_s_darkflame', duration = 4})], 
 		cost = {mp = 10},
 		charges = 0,
 		combatcooldown = 3,
