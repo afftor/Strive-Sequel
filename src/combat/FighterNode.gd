@@ -149,6 +149,8 @@ func noq_rebuildbuffs():
 	if !visible: return
 	var oldbuff = 0
 	var newbuffs = fighter.get_combat_buffs()
+	if fighter.hp <= 0:
+		newbuffs.clear()
 #	for b in newbuffs:
 #		if buffs.has(b.template_name): oldbuff += 1
 ##	if oldbuff == buffs.size():
