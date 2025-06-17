@@ -448,7 +448,7 @@ func add_location_resource_info():
 
 
 func lockpick_attempt(person):
-	globals.common_effects([{code = 'clear_subroom'}])
+	globals.common_effects([{code = 'clear_subroom', optional = true}])
 	var lock = input_handler.scene_loot.lock.difficulty
 	var type = input_handler.scene_loot.lock.type
 	var nonlocked = false
