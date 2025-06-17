@@ -214,7 +214,7 @@ size_flags_vertical = 2
 theme = ExtResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "RELOAD_PORT_LABEL"
+text = "RELOAD_IMG_LABEL"
 
 [node name="removeportrait" type="Button" parent="VBoxContainer/IconBlock"]
 light_mask = 0
@@ -401,7 +401,7 @@ rect_min_size = Vector2( 250, 87.5 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 window_title = "Open a File"
-dialog_text = "Select New Portait"
+dialog_text = "Select New Image"
 dialog_hide_on_ok = true
 mode = 0
 access = 2
@@ -439,7 +439,7 @@ margin_bottom = 103.163
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
-text = "PORT_FOLD_LABEL"
+text = "BODY_FOLD_LABEL"
 
 [node name="closefolderselect" type="Button" parent="PopUp/selectfolders"]
 light_mask = 0
