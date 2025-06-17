@@ -38,6 +38,9 @@ margin_bottom = 1057.0
 theme = ExtResource( 11 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Background" type="Panel" parent="."]
 show_behind_parent = true
@@ -57,6 +60,9 @@ margin_right = 379.0
 margin_bottom = 854.0
 rect_min_size = Vector2( 315, 0 )
 custom_constants/separation = 9
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="descript" type="Button" parent="VBoxContainer"]
 light_mask = 0
@@ -142,21 +148,17 @@ text = "USPRITE_BUTTON_TEXT"
 
 [node name="IconBlock" type="VBoxContainer" parent="VBoxContainer"]
 visible = false
+light_mask = 0
 margin_top = 357.0
 margin_right = 315.0
 margin_bottom = 735.0
-
-[node name="MainBlock" type="VBoxContainer" parent="VBoxContainer/IconBlock"]
-light_mask = 0
-margin_right = 315.0
-margin_bottom = 334.0
 rect_min_size = Vector2( 315, 0 )
 
-[node name="cancelportait" type="Button" parent="VBoxContainer/IconBlock/MainBlock"]
+[node name="cancelportait" type="Button" parent="VBoxContainer/IconBlock"]
 visible = false
 light_mask = 0
 margin_right = 315.0
-margin_bottom = 35.0
+margin_bottom = 30.0
 rect_min_size = Vector2( 315, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
@@ -164,7 +166,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "CANCEL"
 
-[node name="search" type="LineEdit" parent="VBoxContainer/IconBlock/MainBlock"]
+[node name="search" type="LineEdit" parent="VBoxContainer/IconBlock"]
 light_mask = 0
 margin_right = 315.0
 margin_bottom = 45.0
@@ -175,7 +177,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 placeholder_text = "Search"
 
-[node name="addcustom" type="Button" parent="VBoxContainer/IconBlock/MainBlock"]
+[node name="addcustom" type="Button" parent="VBoxContainer/IconBlock"]
 light_mask = 0
 margin_top = 49.0
 margin_right = 315.0
@@ -188,7 +190,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "CUSTOM_IMG_LABEL"
 
-[node name="openfolder" type="Button" parent="VBoxContainer/IconBlock/MainBlock"]
+[node name="openfolder" type="Button" parent="VBoxContainer/IconBlock"]
 light_mask = 0
 margin_top = 98.0
 margin_right = 315.0
@@ -201,7 +203,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "OPEN_SYS_FOLD_LABEL"
 
-[node name="reloadlist" type="Button" parent="VBoxContainer/IconBlock/MainBlock"]
+[node name="reloadlist" type="Button" parent="VBoxContainer/IconBlock"]
 light_mask = 0
 margin_top = 147.0
 margin_right = 315.0
@@ -214,7 +216,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "RELOAD_IMG_LABEL"
 
-[node name="removeportrait" type="Button" parent="VBoxContainer/IconBlock/MainBlock"]
+[node name="removeportrait" type="Button" parent="VBoxContainer/IconBlock"]
 light_mask = 0
 margin_top = 196.0
 margin_right = 315.0
@@ -227,12 +229,13 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "RESET_IMG_LABEL"
 
-[node name="reverseportrait" type="Button" parent="VBoxContainer/IconBlock/MainBlock"]
+[node name="reverseportrait" type="Button" parent="VBoxContainer/IconBlock"]
 visible = false
 light_mask = 0
-margin_top = 245.0
-margin_right = 315.0
-margin_bottom = 280.0
+margin_left = 706.0
+margin_top = 286.0
+margin_right = 1036.0
+margin_bottom = 326.0
 rect_min_size = Vector2( 315, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
@@ -240,7 +243,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "REVERS_TO_DEF_LABEL"
 
-[node name="selectfolder" type="Button" parent="VBoxContainer/IconBlock/MainBlock"]
+[node name="selectfolder" type="Button" parent="VBoxContainer/IconBlock"]
 light_mask = 0
 margin_top = 245.0
 margin_right = 315.0
@@ -253,11 +256,25 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "SELECT_FOLDRS_LABEL"
 
-[node name="racelock" type="CheckBox" parent="VBoxContainer/IconBlock/MainBlock"]
+[node name="assignboth" type="CheckBox" parent="VBoxContainer/IconBlock"]
 light_mask = 0
 margin_top = 294.0
 margin_right = 315.0
 margin_bottom = 334.0
+rect_min_size = Vector2( 315, 40 )
+hint_tooltip = "Will attempt to assign both portrait and body image, if same file name exists in both folders"
+theme = ExtResource( 9 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "ASSIGN_BOTH_LABEL"
+
+[node name="racelock" type="CheckBox" parent="VBoxContainer/IconBlock"]
+light_mask = 0
+margin_top = 338.0
+margin_right = 315.0
+margin_bottom = 378.0
 rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
@@ -267,20 +284,6 @@ custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "RACE_LOC_LABEL"
-
-[node name="assignboth" type="CheckBox" parent="VBoxContainer/IconBlock"]
-light_mask = 0
-margin_top = 338.0
-margin_right = 315.0
-margin_bottom = 378.0
-rect_min_size = Vector2( 315, 40 )
-hint_tooltip = "Will attempt to assign both portrait and body image, if same file name exists in both folders"
-theme = ExtResource( 9 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "ASSIGN_BOTH_LABEL"
 
 [node name="TextEdit" type="TextEdit" parent="."]
 light_mask = 0
@@ -295,6 +298,9 @@ custom_styles/focus = ExtResource( 16 )
 custom_styles/normal = ExtResource( 16 )
 text = "Text Edit"
 wrap_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="."]
 light_mask = 0
@@ -527,14 +533,14 @@ text = "DETAILS_LABEL"
 align = 1
 valign = 1
 
-[connection signal="text_changed" from="VBoxContainer/IconBlock/MainBlock/search" to="PopUp" method="_on_search_text_changed"]
-[connection signal="pressed" from="VBoxContainer/IconBlock/MainBlock/addcustom" to="PopUp" method="_on_addcustom_pressed"]
-[connection signal="pressed" from="VBoxContainer/IconBlock/MainBlock/openfolder" to="PopUp" method="_on_openfolder_pressed"]
-[connection signal="pressed" from="VBoxContainer/IconBlock/MainBlock/reloadlist" to="PopUp" method="_on_reloadlist_pressed"]
-[connection signal="pressed" from="VBoxContainer/IconBlock/MainBlock/removeportrait" to="PopUp" method="_on_removeportrait_pressed"]
-[connection signal="pressed" from="VBoxContainer/IconBlock/MainBlock/reverseportrait" to="PopUp" method="_on_reverseportrait_pressed"]
-[connection signal="pressed" from="VBoxContainer/IconBlock/MainBlock/selectfolder" to="PopUp" method="_on_selectfolder_pressed"]
-[connection signal="pressed" from="VBoxContainer/IconBlock/MainBlock/racelock" to="PopUp" method="_on_racelock_pressed"]
+[connection signal="text_changed" from="VBoxContainer/IconBlock/search" to="PopUp" method="_on_search_text_changed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/addcustom" to="PopUp" method="_on_addcustom_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/openfolder" to="PopUp" method="_on_openfolder_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/reloadlist" to="PopUp" method="_on_reloadlist_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/removeportrait" to="PopUp" method="_on_removeportrait_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/reverseportrait" to="PopUp" method="_on_reverseportrait_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/selectfolder" to="PopUp" method="_on_selectfolder_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/racelock" to="PopUp" method="_on_racelock_pressed"]
 [connection signal="file_selected" from="PopUp/FileDialog" to="PopUp" method="_on_FileDialog_file_selected"]
 [connection signal="pressed" from="PopUp/selectfolders/closefolderselect" to="PopUp" method="_on_closefolderselect_pressed"]
 [connection signal="pressed" from="PopUp/selectfolders/chooseportraitolder" to="PopUp" method="_on_chooseportraitolder_pressed"]

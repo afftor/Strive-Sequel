@@ -78,7 +78,6 @@ func custom_icon_open(state):
 	$ConfirmButton.hide()
 	$TextEdit.hide()
 	$VBoxContainer/IconBlock.show()
-	$VBoxContainer/IconBlock/MainBlock.show()
 	$ScrollContainer.show()
 	ImageSelect.mode = state
 	ImageSelect.buildimagelist(state)
@@ -91,11 +90,9 @@ func unique_sprite_choose():
 	$ConfirmButton.hide()
 	$TextEdit.hide()
 	$VBoxContainer/IconBlock.show()
-	$VBoxContainer/IconBlock/MainBlock.hide()
 	$ScrollContainer.show()
-#	ImageSelect.mode = 'unique'
-#	ImageSelect.buildimagelist('unique')
-	ImageSelect.build_unique_sprites()
+	ImageSelect.mode = 'unique'
+	ImageSelect.buildimagelist('unique')
 	details_state = 'unique_sprite'
 	$VBoxContainer/IconBlock.get_node("assignboth").pressed = true
 	
