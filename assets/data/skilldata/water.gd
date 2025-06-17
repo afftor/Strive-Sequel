@@ -250,13 +250,13 @@ var skills = {
 		damagestat = 'no_stat',
 		not_final = true
 	},
-		poison_vapors = {
+	poison_vapors = {
 		code = 'poison_vapors',
 		descript = '',
 		icon = "res://assets/images/iconsskills/skill_vapors.png",
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage', 'aoe', 'ads'],
+		tags = ['damage', 'aoe', 'ads', 'water'],
 		reqs = [
 			{code = 'stat', stat = 'mastery_water', value = 1, operant = 'gte'},
 			{code = 'stat', stat = 'mastery_earth', value = 3, operant = 'gte'},
