@@ -31,9 +31,9 @@ func add_effect(eff, timestamp):
 	if effects.empty():
 		effects[eff] = timestamp
 	else:
-		var tmp = effects_pool.get_effect_by_id(effects[0])
+		var tmp = effects_pool.get_effect_by_id(effects.keys()[0])
 		tmp.remove()
-		eff.is_applied = false
+		effects_pool.get_effect_by_id(eff).is_applied = false
 
 
 func get_active_effects():

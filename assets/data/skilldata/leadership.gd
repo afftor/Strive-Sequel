@@ -56,7 +56,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/Command.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['debuff'],
+		tags = ['debuff', 'damage'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_hmark', duration = 3})], 

@@ -31,7 +31,7 @@ var skills = {
 		icon = load("res://assets/images/iconsskills/icon_plant.png"),
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['damage','ads'],
+		tags = ['damage','ads', 'earth'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'stun', duration = 1})], 
