@@ -2,8 +2,7 @@ extends WindowDialog
 
 var mode = 'portrait' setget mode_set
 var person
-onready var IconBlock = get_parent().get_node("VBoxContainer/IconBlock/MainBlock")
-onready var AssignBoth = get_parent().get_node("VBoxContainer/IconBlock/assignboth")
+onready var IconBlock = get_parent().get_node("VBoxContainer/IconBlock")
 
 #warning-ignore-all:return_value_discarded
 
@@ -32,12 +31,12 @@ func chooseimage(character, tempmod):
 	popup()
 	if portaitsbuilt == false:
 		portaitsbuilt = true
-		buildimagelist()
+		buildimagelist(mode)
 	resort()
 
 
 func _on_reloadlist_pressed():
-	buildimagelist()
+	buildimagelist(mode)
 	_on_scroll(0)
 
 var currentpath
@@ -64,7 +63,7 @@ func build_unique_sprites():
 		newbutton.connect('pressed',self,'select_unique_sprite', [i])
 
 func select_unique_sprite(data):
-	if AssignBoth.pressed:
+	if IconBlock.get_node("assignboth").pressed:
 		person.set_stat('icon_image', data.face_path)
 		person.set_stat('player_selected_icon', true)
 	person.set_stat('body_image', data.path)
@@ -73,9 +72,9 @@ func select_unique_sprite(data):
 	
 
 func buildimagelist(type = mode):
-#	if type == 'unique':
-#		build_unique_sprites()
-#		return
+	if type == 'unique':
+		build_unique_sprites()
+		return
 	var dir = Directory.new()
 	var filecheck = File.new()
 	if type == 'portrait':
@@ -89,7 +88,7 @@ func buildimagelist(type = mode):
 	if dir.dir_exists(currentpath) == false:
 		dir.make_dir(currentpath)
 	for i in input_handler.dir_contents(currentpath):
-		if filecheck.file_exists(i) && (i.get_extension() == 'png' || i.get_extension() == 'jpg'):
+		if filecheck.file_exists(i) && (i.find('.png') >= 0 || i.find('.jpg') >= 0):
 			var node = get_parent().get_node("ScrollContainer/GridContainer/Button").duplicate()
 			get_parent().get_node("ScrollContainer/GridContainer").add_child(node)
 			node.connect('pressed', self, 'setslaveimage', [i])
@@ -150,19 +149,14 @@ func setslaveimage(path):
 	if mode == 'portrait':
 		person.set_stat('icon_image', path)
 		person.set_stat('player_selected_icon', true)
-		if AssignBoth.pressed:
-			var body_path = path.replace(portraitspath, bodypath)
-			if input_handler.loadimage(body_path) != null:
-				person.set_stat('body_image', body_path)
-				person.set_stat('player_selected_body', true)
+		if IconBlock.get_node("assignboth").pressed && input_handler.loadimage(path.replace("portraits", 'bodies')) != null:
+			person.set_stat('body_image', path.replace("portraits",'bodies'))
 	elif mode == 'body':
 		person.set_stat('body_image', path)
 		person.set_stat('player_selected_body', true)
-		if AssignBoth.pressed:
-			var port_path = path.replace(bodypath, portraitspath)
-			if input_handler.loadimage(port_path) != null:
-				person.set_stat('icon_image', port_path)
-				person.set_stat('player_selected_icon', true)
+		if IconBlock.get_node("assignboth").pressed && input_handler.loadimage(path.replace("bodies","portraits")) != null:
+			person.set_stat('icon_image', path.replace('bodies',"portraits"))
+			person.set_stat('player_selected_icon', true)
 	self.visible = false
 	updatepage()
 	# input_handler.update_slave_list()
@@ -217,12 +211,7 @@ func _on_addcustom_pressed():
 func _on_FileDialog_file_selected( path ):
 	var dir = Directory.new()
 	var path2 = path.substr(path.find_last('/'), path.length()-path.find_last('/'))
-	var cont_path
-	if mode == 'portrait':
-		cont_path = portraitspath
-	else:
-		cont_path = bodypath
-	dir.copy(path, cont_path + path2)
+	dir.copy(path, portraitspath + path2)
 	buildimagelist()
 
 func _on_openfolder_pressed():
