@@ -105,7 +105,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/skill_last_stand.png",
 		type = 'combat', 
 		ability_type = 'spell',
-		tags = ['support', 'buf', 'instant'],
+		tags = ['support', 'buff', 'instant'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_lasstand', duration = 1})], 
