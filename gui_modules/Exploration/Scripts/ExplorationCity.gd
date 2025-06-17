@@ -259,8 +259,9 @@ func update_guild_actions(guild):
 	input_handler.ClearContainer(AreaActions)
 	hide_guild_panels()
 	var newbutton
-	if active_faction.has('events'):
-		for i in active_faction.events:
+	var factiondata = worlddata.factiondata[active_faction.code]
+	if factiondata.has('events'):
+		for i in factiondata.events:
 			var events = scenedata.dialogue_inits[i]
 			var event
 			for k in events:
