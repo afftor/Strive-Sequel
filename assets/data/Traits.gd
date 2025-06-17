@@ -1271,7 +1271,7 @@ var traits = {
 		descript = '',
 		icon = "res://assets/images/iconstraits/l_sorcery.png", #2fix
 		effects = [],
-		bonusstats = {price_add_part = -0.25, exp_gain_mod = -0.2, chg_wisdom_max = -10, chg_persuasion_max = -10}, 
+		bonusstats = {price_add_part = -0.25, exp_gain_mod = -0.2, chg_wisdom_max_set = 0, chg_persuasion_max_set = 0}, 
 		tags = ['training_final', 'training_fail']
 	},
 	
