@@ -2422,7 +2422,10 @@ func common_effects(effects):
 					
 			'clear_subroom':
 				if gui_controller.exploration_dungeon != null:
-					gui_controller.exploration_dungeon.clear_subroom()
+					if i.has('optional'):
+						gui_controller.exploration_dungeon.clear_subroom(i.optional)
+					else:
+						gui_controller.exploration_dungeon.clear_subroom()
 			'unlock_subroom':
 				if gui_controller.exploration_dungeon != null:
 					gui_controller.exploration_dungeon.unlock_subroom()

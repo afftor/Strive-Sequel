@@ -1156,9 +1156,10 @@ func add_subroom_res():
 	clear_subroom()
 
 
-func clear_subroom():
+func clear_subroom(optional = false):
 	if active_subroom == null:
-		print('error clearing subroom setup')
+		if !optional:
+			print('error clearing subroom setup')
 		return
 	if selected_room == null:
 		print('error clearing subroom setup')
