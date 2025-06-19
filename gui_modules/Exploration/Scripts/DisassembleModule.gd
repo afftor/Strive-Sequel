@@ -299,22 +299,24 @@ func gear_detailed_tooltip(data, item = null):
 	for i in item.parts:
 		var material = Items.materiallist[item.parts[i]]
 		text += '\n' + tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}"
-		for k in material.parts[i]:
-			if material.parts[i][k] != 0:
-				var value = material.parts[i][k]
-				var change = ''
-				if k in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
-					value = value*100
-				text += '\n' + statdata.statdata[k].name + ': {color='
-				if value > 0:
-					change = '+'
-					text += 'green|' + change
-				else:
-					text += 'red|'
-				value = str(value)
-				if k in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
-					value = value + '%'
-				text += value + '}'
+		text += globals.build_desc_for_bonusstats(material.parts[i])
+		text = text.trim_suffix('\n')
+#		for k in material.parts[i]:
+#			if material.parts[i][k] != 0:
+#				var value = material.parts[i][k]
+#				var change = ''
+#				if k in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
+#					value = value*100
+#				text += '\n' + statdata.statdata[k].name + ': {color='
+#				if value > 0:
+#					change = '+'
+#					text += 'green|' + change
+#				else:
+#					text += 'red|'
+#				value = str(value)
+#				if k in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
+#					value = value + '%'
+#				text += value + '}'
 	textnode3.bbcode_text = globals.TextEncoder(text)
 
 func geartemplete_tooltip(data):
