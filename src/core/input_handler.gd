@@ -1002,6 +1002,8 @@ func start_event(code, type, args):
 		'scene_character_event':
 			for i in range(0, scene_characters.size()):
 				data.text = scene_characters[i].translate(data.text)
+		'char_translate':
+			active_character = args.ch
 		'multichar_event':
 			scene_characters.clear()
 			scene_characters.push_back(characters_pool.get_char_by_id(args.char1))
