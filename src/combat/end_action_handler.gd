@@ -32,6 +32,6 @@ func invoke_triggers():
 func invoke_finish():
 	queuenode.call_deferred('invoke_finished')
 	if template.not_eot:
-		combatnode.call_deferred('current_turn')
+		combatnode.call_deferred('current_turn', false)
 	else:
 		combatnode.call_deferred('select_actor')

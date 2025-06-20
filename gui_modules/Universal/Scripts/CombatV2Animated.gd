@@ -460,15 +460,15 @@ func select_actor():
 	current_turn()
 
 
-func current_turn():
+func current_turn(char_changed = true):
 	if checkwinlose() == true:
 		return
 	if currentactor <= 0:
-		env_turn()
+		env_turn(char_changed)
 	elif currentactor < 7:
-		player_turn()
+		player_turn(char_changed)
 	else:
-		enemy_turn()
+		enemy_turn(char_changed)
 
 
 func newturn():
@@ -512,7 +512,7 @@ func speedsort(first, second):
 	return first.speed > second.speed
 
 
-func player_turn():
+func player_turn(char_changed = true):
 	var pos = currentactor
 	# battlefieldpositions[pos].get_node("Character/Active").show()
 	for position in battlefieldpositions.values():
@@ -522,13 +522,14 @@ func player_turn():
 	var selected_character = get_char_by_pos(pos)
 	activecharacter = selected_character
 	#selected_character.update_timers()
-	selected_character.process_event(variables.TR_TURN_GET)
-	effects_pool.process_event(variables.TR_TURN_GET, selected_character)
-	selected_character.displaynode.rebuildbuffs()
+	if char_changed:
+		selected_character.process_event(variables.TR_TURN_GET)
+		effects_pool.process_event(variables.TR_TURN_GET, selected_character)
 	if !ActionQueue.is_empty():
 		if !ActionQueue.is_active:
 			ActionQueue.invoke()
 		yield(ActionQueue, 'queue_empty')
+	selected_character.displaynode.rebuildbuffs()
 	CombatAnimations.check_start()
 #	$Panel3.texture = load("res://assets/Textures_v2/BATTLE/Panels/panel_battle_nameturn_l.png")
 #	$Panel3/Label.text = selected_character.get_short_name()
@@ -569,7 +570,7 @@ func player_turn():
 
 
 
-func enemy_turn():
+func enemy_turn(char_changed = true):
 	var pos = currentactor
 	for position in battlefieldpositions.values():
 		if position.get_node_or_null("Character"):
@@ -581,13 +582,14 @@ func enemy_turn():
 #	$Panel3.texture = load("res://assets/Textures_v2/BATTLE/Panels/panel_battle_nameturn_r.png")
 #	$Panel3/Label.text = fighter.get_short_name()
 	#fighter.update_timers()
-	fighter.process_event(variables.TR_TURN_GET)
-	effects_pool.process_event(variables.TR_TURN_GET, fighter)
-	fighter.displaynode.rebuildbuffs()
+	if char_changed:
+		fighter.process_event(variables.TR_TURN_GET)
+		effects_pool.process_event(variables.TR_TURN_GET, fighter)
 	if !ActionQueue.is_empty():
 		if !ActionQueue.is_active:
 			ActionQueue.invoke()
 		yield(ActionQueue, 'queue_empty')
+	fighter.displaynode.rebuildbuffs()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: 
 		yield(CombatAnimations, 'alleffectsfinished')
@@ -634,7 +636,7 @@ func enemy_turn():
 
 
 
-func env_turn():
+func env_turn(char_changed = true):
 	if autoskill == null: return
 	if autoskill_delay_rem <= 0:
 		autoskill_delay_rem = autoskill_delay

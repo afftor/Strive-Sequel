@@ -819,6 +819,7 @@ func process_event(ev, data = {}):
 
 func get_all_buffs():
 	if dyn_stats.rebuild < variables.DYN_STATS_FULL:
+#	reset_rebuild()
 		dyn_stats.generate_data()
 	return dyn_stats.buffs
 
