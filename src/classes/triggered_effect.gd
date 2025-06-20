@@ -85,10 +85,16 @@ func process_act(ev, data = {}):
 			if res:
 				ready = false
 				.clear_buffs()
+				var obj = get_applied_obj()
+				if obj is ResourceScripts.scriptdict.class_slave:
+					obj.reset_rebuild()
 				#apply trigger
 				e_apply()
 	if reset_event.has(ev) or reset_event.size() == 0:
 		ready = true
+		var obj = get_applied_obj()
+		if obj is ResourceScripts.scriptdict.class_slave:
+			obj.reset_rebuild()
 	pass
 
 
