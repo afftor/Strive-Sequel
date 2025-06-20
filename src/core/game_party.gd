@@ -64,12 +64,11 @@ func update_relationship_status(data, char1, char2):
 	
 	var value = data.value
 	var status = data.status
-	if value <= 25:
+	if value <= 25 and status != 'rivals':
 		change_relationship_status(char1, char2, 'rivals')
 	elif value >= 75:
-		
 		if !['friends','lovers','freelovers'].has(status):
-			data.status = 'friends'
+			change_relationship_status(char1, char2, 'friends')
 		else:
 			if randf() >= 0.2 && check_lover_possibility(data, char1, char2) && _in_same_location(char1, char2):
 				attempt_romance(char1, char2)
