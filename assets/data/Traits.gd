@@ -967,7 +967,7 @@ var traits = {
 		effects = [],
 		bonusstats = {breakdown_chance_mod = 0.5},
 		weight = 100,
-		tags = ['negative']
+		tags = []
 	},
 	#master
 	master_mentor = {
@@ -979,7 +979,7 @@ var traits = {
 		bonusstats = {trainee_amount = 2},
 		reqs = [],
 		l_cost = 1,
-		tree_position = {tab = 3, x = 1, y = 0.5}, #fix
+		tree_position = {tab = 3, x = 1, y = 0.5},
 		tags = ['loyalty_master', 'mentor'],
 	},
 	master_harlotry = {
@@ -991,7 +991,7 @@ var traits = {
 		bonusstats = {mod_pros = 1.2},
 		reqs = [],
 		l_cost = 1,
-		tree_position = {tab = 3, x = 4, y = 0.5}, #fix
+		tree_position = {tab = 3, x = 4, y = 0.5},
 		tags = ['loyalty_master', 'harlotry'],
 	},
 	master_progenecy = {
@@ -1003,7 +1003,7 @@ var traits = {
 		bonusstats = {},
 		reqs = [],
 		l_cost = 1,
-		tree_position = {tab = 3, x = 7, y = 0.5}, #fix
+		tree_position = {tab = 3, x = 7, y = 0.5},
 		tags = ['loyalty_master', 'breeder'],
 	},
 	master_communicative = {
@@ -1015,7 +1015,7 @@ var traits = {
 		bonusstats = {},
 		reqs = [],
 		l_cost = 1,
-		tree_position = {tab = 3, x = 1, y = 3}, #fix
+		tree_position = {tab = 3, x = 1, y = 3},
 		tags = ['loyalty_master', 'communicative'],
 	},
 	master_resilence = {
@@ -1033,7 +1033,7 @@ var traits = {
 			resist_mind = 20},
 		reqs = [],
 		l_cost = 1,
-		tree_position = {tab = 3, x = 4, y = 3}, #fix
+		tree_position = {tab = 3, x = 4, y = 3},
 		tags = ['loyalty_master'],
 	},
 	master_fortune = {
@@ -1045,7 +1045,7 @@ var traits = {
 		bonusstats = {critchance = 25, magic_find = 1},
 		reqs = [],
 		l_cost = 1,
-		tree_position = {tab = 3, x = 7, y = 3}, #fix
+		tree_position = {tab = 3, x = 7, y = 3},
 		tags = ['loyalty_master'],
 	},
 	master_int = {
@@ -1057,7 +1057,7 @@ var traits = {
 		bonusstats = {exp_gain_mod = 0.15, mastery_point_universal = 3},
 		reqs = [],
 		l_cost = 1,
-		tree_position = {tab = 3, x = 1, y = 6}, #fix
+		tree_position = {tab = 3, x = 1, y = 6},
 		tags = ['loyalty_master', 'intelligence'],
 	},
 	master_fortitude = {
@@ -1069,7 +1069,7 @@ var traits = {
 		bonusstats = {hp_reg_add_part = 3},
 		reqs = [],
 		l_cost = 1,
-		tree_position = {tab = 3, x = 4, y = 6}, #fix
+		tree_position = {tab = 3, x = 4, y = 6},
 		tags = ['loyalty_master', 'fastheal'],
 	},
 	master_sorcery = {
@@ -1081,7 +1081,7 @@ var traits = {
 		bonusstats = {mp_reg_add = 1.5, matk_add_part = 0.35},
 		reqs = [],
 		l_cost = 1,
-		tree_position = {tab = 3, x = 7, y = 6}, #fix
+		tree_position = {tab = 3, x = 7, y = 6},
 		tags = ['loyalty_master'],
 	},
 	#trainings etc

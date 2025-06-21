@@ -170,11 +170,11 @@ var effects = {
 	},
 	e_miniboss = {
 		type = 'simple',
-		statchanges = {hpmax_add_part = 2.0, atk_add_part = 0.25, hitrate = 20, evasion = 20},
+		statchanges = {hpmax_add_part = 1.75, atk_add_part = 0.25, hitrate = 20, evasion = 20},
 		buffs = [
 			{
 				icon = "res://assets/images/traits/hitrate.png",
-				description = "miniboss", #2fix
+				description = "miniboss", 
 			}
 		],
 	},

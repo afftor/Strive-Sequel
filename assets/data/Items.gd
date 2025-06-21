@@ -1213,7 +1213,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [],
 		effects = [],
-		tags = [],
+		tags = ['no_random'],
 		basestats = {resistance_red = 0.2},
 	},
 	test_collar2 = {
@@ -1230,7 +1230,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [],
 		effects = [],
-		tags = [],
+		tags = ['no_random'],
 		basestats = {breakdown_time = 0.6},
 	},
 	amulet_of_recognition = {

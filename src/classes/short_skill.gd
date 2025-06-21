@@ -50,7 +50,7 @@ func _init():
 	receiver = 'target'
 	random_factor = 0
 	random_factor_p = 0.0
-	cap = 10
+	cap = 3
 
 func get_from_template(attr, val_rel = false):
 	if template.has(attr): 

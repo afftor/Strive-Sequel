@@ -1,3 +1,12 @@
+Rebalanced masteries and some classes. Gave extra punch to physical classes and masteries and slightly nerfed magic masteries
+0.11.1c
+Fixed some issues with guild quests from older saves
+Fixed Dark Flame not working correctly
+Fixed issues with certain characters crashing on training attempts
+Fixed resistance scaling with tame factor being way too high
+Reverted changes on custom portrait handling which broken assignments
+Fixed multiple minor combat issues causing error spam
+Fixed dead enemies displaying debuffs
 0.11.1b
 Added combat animation for many spells
 Fixed multiple combat skill issues

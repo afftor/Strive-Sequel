@@ -3311,6 +3311,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	BODYPARTTAILCOWDESCRIPT = '在 [his] 后面你会注意到一条长尾巴被一层薄薄的毛皮覆盖，末端是一把 [color=aqua]邋遢刷子[/color].',
 	BODYPARTTAILDEMONDESCRIPT = '[He] 有一条细长的, [color=aqua]恶魔尾巴[/color] 以尖头结尾.',
 	BODYPARTTAILDRAGONDESCRIPT = '在[his]背部后面有一条 [color=aqua]鳞尾[/color].',
+	BODYPARTTAILKOBOLDDESCRIPT = """Trailing somewhat behind [his] back is a [color=aqua]scaled tail[/color].""", # MISSING TRANSLATION
 	BODYPARTTAILAVIANDESCRIPT = '[He] 有一条 [color=aqua]羽毛状的鸟尾巴[/color] 在 [his] 背部.',
 	BODYPARTTAILFISHDESCRIPT = '[His] 尾部是一条光滑的长 [color=aqua]鱼尾[/color].',
 	BODYPARTTAILSNAKEDESCRIPT = " ",
@@ -5108,6 +5109,7 @@ You explain yourself being the new landowner to her.""", # MISSING TRANSLATION
 	STATDAMAGE_MOD_DARK = "暗伤害",
 	STATDAMAGE_MOD_MIND = "精神伤害",
 	STATDAMAGE_MOD_MELEE = "近战伤害",
+	STATDAMAGE_MOD_RANGED = """Ranged Damage""", # MISSING TRANSLATION
 
 	ENEMYMANEATER_PLANT = "食人兽工厂",
 	ENEMYCENTIPEDE = "蜈蚣",

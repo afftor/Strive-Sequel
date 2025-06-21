@@ -3833,6 +3833,7 @@ Requires: Базовый рабский труд""",
 	BODYPARTTAILCOWDESCRIPT = """За [his] спиной вы замечаете длинный хвост, покрытый тонким слоем меха, который заканчивается [color=aqua]пушистой кисточкой[/color].""",
 	BODYPARTTAILDEMONDESCRIPT = """[He] имеет длинный, тонкий, [color=aqua]демонический хвост[/color], заканчивающийся заостренным кончиком.""",
 	BODYPARTTAILDRAGONDESCRIPT = """За [his] спиной тянется [color=aqua]чешуйчатый хвост[/color].""",
+	BODYPARTTAILKOBOLDDESCRIPT = """Trailing somewhat behind [his] back is a [color=aqua]scaled tail[/color].""", # MISSING TRANSLATION
 	BODYPARTTAILAVIANDESCRIPT = """[He] имеет сзади [color=aqua]пернатый птичий хвост[/color].""",
 	BODYPARTTAILFISHDESCRIPT = """[His] задняя часть заканчивается длинным, гладким [color=aqua]рыбьим хвостом[/color].""",
 	BODYPARTTAILSNAKEDESCRIPT = """ """,
@@ -5967,6 +5968,7 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	STATDAMAGE_MOD_DARK = """Урон тьмой""",
 	STATDAMAGE_MOD_MIND = """Урон разуму""",
 	STATDAMAGE_MOD_MELEE = """Урон в ближнем бою""",
+	STATDAMAGE_MOD_RANGED = """Ranged Damage""", # MISSING TRANSLATION
 
 	ENEMYMANEATER_PLANT = """Растение-людоед""",
 	ENEMYCENTIPEDE = """Сороконожка""",

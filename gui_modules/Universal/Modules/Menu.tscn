@@ -775,7 +775,24 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 33 )
 bbcode_enabled = true
-bbcode_text = "0.11.1
+bbcode_text = "0.11.1c
+Fixed some issues with guild quests from older saves
+Fixed Dark Flame not working correctly
+Fixed issues with certain characters crashing on training attempts
+Fixed resistance scaling with tame factor being way too high
+Reverted changes on custom portrait handling which broken assignments
+Fixed multiple minor combat issues causing error spam
+Fixed dead enemies displaying debuffs
+0.11.1b
+Added combat animation for many spells
+Fixed multiple combat skill issues
+0.11.1a
+Added new Anastasia sprite (unlocked after completing her first quest)
+Fixed missing gallery tooltips
+Fixed another random portrait issue
+Fixed some new event issues
+Fixed Anastasia's quest progress and text issues 
+0.11.1
 Added new Anastasia quest, 1 scene and 1 wedding scene
 Added Zephyra's wedding scene
 Added breakdown mechanic for characters
@@ -1965,7 +1982,24 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.11.1
+text = "0.11.1c
+Fixed some issues with guild quests from older saves
+Fixed Dark Flame not working correctly
+Fixed issues with certain characters crashing on training attempts
+Fixed resistance scaling with tame factor being way too high
+Reverted changes on custom portrait handling which broken assignments
+Fixed multiple minor combat issues causing error spam
+Fixed dead enemies displaying debuffs
+0.11.1b
+Added combat animation for many spells
+Fixed multiple combat skill issues
+0.11.1a
+Added new Anastasia sprite (unlocked after completing her first quest)
+Fixed missing gallery tooltips
+Fixed another random portrait issue
+Fixed some new event issues
+Fixed Anastasia's quest progress and text issues 
+0.11.1
 Added new Anastasia quest, 1 scene and 1 wedding scene
 Added Zephyra's wedding scene
 Added breakdown mechanic for characters
