@@ -90,7 +90,9 @@ func open(tempperson, tempmode = 'normal'):
 
 
 func update():
-	if person == null: return
+	person = input_handler.interacted_character
+	if person == null:
+		 return
 	$ClassPanel.hide()
 	$MasteryPanel.show()
 	change_mastery_category(mastery_category)
