@@ -176,7 +176,7 @@ var effects = {
 		type = 'temp_s',
 		target = 'caster',
 		stack = 'flamesphere',
-		rem_event = [variables.TR_TURN_F, variables.TR_DEATH, variables.TR_TICK],
+		rem_event = [variables.TR_TURN_GET, variables.TR_DEATH, variables.TR_TICK],
 		sub_effects = [
 			{
 				type = 'trigger',

@@ -866,7 +866,9 @@ func LoadGame(filename):
 	ResourceScripts.game_world.fix_serialization()
 	ResourceScripts.game_progress.fix_serialization()
 	characters_pool.cleanup()
+	characters_pool.postload()
 	effects_pool.cleanup()
+	effects_pool.postload()
 	#mind! that characters_pool's fix_serialization_postload is inside game_party's
 	ResourceScripts.game_party.fix_serialization_postload()
 	ResourceScripts.game_party.force_update_portraits()
