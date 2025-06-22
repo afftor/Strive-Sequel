@@ -12,6 +12,7 @@ func remove_from_travel():
 	if travel_time > 0:
 		set_travel_time(0)
 		travel_target = {area = '', location = ''}
+		parent.get_ref().xp_module.work = ''
 
 
 func fix_infinite_travel():
