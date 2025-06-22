@@ -103,8 +103,8 @@ var ero_scenes = [
 'stag_sex_1',
 'zephyra_lilia_1',
 'amelia_sex1',
-'zephyra_disappearance_sex_1',
-'zephyra_disappearance_guards_1',
+'zephyra_back_1',
+'zephyra_facefuck_1',
 'daisy_wedding1',
 'cali_wedding1',
 'amelia_wedding1',
@@ -118,8 +118,8 @@ var ero_scenes = [
 'kuro_zephyra_1',
 'kuro_wedding_1',
 'ana_blow_1',
-'anastasia_wedding_1',
-'zephyra_wedding_1'
+'ana_wed_1',
+'zephyra_wed_1'
 ] 
 #fill next 2 arrays manually, if needed certain list
 var mono_scenes
@@ -218,8 +218,8 @@ var scene_tooltips = {
 	stag_sex_1 = "STAG_SEX_1_SS",
 	zephyra_lilia_1 = "ZEPHYRA_LILIA_1_SS",
 	amelia_sex1 = "AMELIA_SEX_1_SS",
-	zephyra_disappearance_sex_1 = "ZEPHYRA_DISAPPEARANCE_SEX_1_SS",
-	zephyra_disappearance_guards_1 = "ZEPHYRA_DISAPPEARANCE_GUARDS_1_SS",
+	zephyra_back_1 = "ZEPHYRA_DISAPPEARANCE_SEX_1_SS",
+	zephyra_facefuck_1 = "ZEPHYRA_DISAPPEARANCE_GUARDS_1_SS",
 	daisy_wedding1 = "DAISY_WEDDING_SS",
 	cali_wedding1 = "CALI_WEDDING_SS",
 	anastasia_event_alive = "ANASTASIA_EVENT_ALIVE_SS",
@@ -237,8 +237,8 @@ var scene_tooltips = {
 	kuro_zephyra_1 = "KURO_ZEPHYRA_SS",
 	kuro_wedding_1 = "KURO_WEDDING_SS",
 	ana_blow_1 = "ANASTASIA_BLOWJOB_SS",
-	anastasia_wedding_1 = "ANASTASIA_WEDDING_SS",
-	zephyra_wedding_1 = "ZEPHYRA_WEDDING_SS",
+	ana_wed_1 = "ANASTASIA_WEDDING_SS",
+	zephyra_wed_1 = "ZEPHYRA_WEDDING_SS",
 }
 
 
