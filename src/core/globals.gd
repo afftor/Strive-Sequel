@@ -834,6 +834,7 @@ func SaveGame(name):
 
 
 func LoadGame(filename):
+#	print(effects_pool.serialize())
 	if !file.file_exists(variables.userfolder+'saves/'+ filename + '.sav') :
 		print("no file %s" % (variables.userfolder+'saves/'+ filename + '.sav'))
 		return
@@ -854,6 +855,8 @@ func LoadGame(filename):
 			savedict.game_world.areas.plains.factions[faction]["bonus_actions"] = worlddata.factiondata[faction].bonus_actions
 	
 #	state.deserialize(savedict)
+	input_handler.active_character = null
+	input_handler.interacted_character = null
 	effects_pool.deserialize(savedict.effpool)
 	characters_pool.deserialize(savedict.charpool)
 	for p in ResourceScripts.gamestate:
@@ -869,6 +872,7 @@ func LoadGame(filename):
 	characters_pool.postload()
 	effects_pool.cleanup()
 	effects_pool.postload()
+#	print(effects_pool.serialize())
 	#mind! that characters_pool's fix_serialization_postload is inside game_party's
 	ResourceScripts.game_party.fix_serialization_postload()
 	ResourceScripts.game_party.force_update_portraits()
