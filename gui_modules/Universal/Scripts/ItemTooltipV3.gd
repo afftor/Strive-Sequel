@@ -212,9 +212,9 @@ func gear_detailed_tooltip(data, item = null):
 	var text = ''
 	for i in item.parts:
 		var material = Items.materiallist[item.parts[i]]
-		text += tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}"
+		text += tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}\n"
 		text += globals.build_desc_for_bonusstats(material.parts[i])
-		text += '\n\n'
+#		text += '\n\n'
 	for i in item.enchants:
 		text += "{color=yellow|%s}: %s\n" % [tr(Items.enchantments[i].name), tr(Items.enchantments[i].descript)]
 	if item.curse != null:
