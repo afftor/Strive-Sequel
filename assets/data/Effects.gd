@@ -2,7 +2,7 @@ extends Node
 var effects = {
 }
 
-var effect_nolog = ['commander']
+var effect_nolog = ['commander', 'e_s_atkpass', 'e_t_atkpass_remove', 'e_t_hide']
 #to fix EFFECT TAGS TO TEMPLATE
 #'positive'/'negative' - the widest classification (to most global cleaning like bard2 skill effect)
 #'buff'/'debuff' - additional markings for common effect removal effects (like purge) (and maybe add two more for a state effects)

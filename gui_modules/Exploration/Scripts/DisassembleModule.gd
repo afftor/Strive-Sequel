@@ -298,7 +298,7 @@ func gear_detailed_tooltip(data, item = null):
 		text += '\n' + tr("INPOSESSION") + ': ' + str(item.amount)
 	for i in item.parts:
 		var material = Items.materiallist[item.parts[i]]
-		text += '\n' + tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}"
+		text += '\n' + tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}\n"
 		text += globals.build_desc_for_bonusstats(material.parts[i])
 		text = text.trim_suffix('\n')
 #		for k in material.parts[i]:

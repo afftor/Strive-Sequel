@@ -166,9 +166,9 @@ func gear_detailed_tooltip(data1, item = null):
 	var text = ''
 	for i in item.parts:
 		var material = Items.materiallist[item.parts[i]]
-		text += tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}"
+		text += tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}:\n"
 		text += globals.build_desc_for_bonusstats(material.parts[i])
-		text += '\n\n'
+#		text += '\n'
 #		for k in material.parts[i]:
 #			text += "\n" + Items.stats[k] + " " + str(material.parts[i][k])
 	$InfoText3.bbcode_text = globals.TextEncoder(text)

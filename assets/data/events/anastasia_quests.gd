@@ -819,7 +819,7 @@ var data = {
 	anastasia_return_3 = {
 		image = null,
 		tags = [
-			"dialogue_scene"
+			"dialogue_scene", 'master_translate'
 		],
 		reqs = [
 
@@ -1357,7 +1357,7 @@ var data = {
 	ana_fort_1 = {
 		image = "ana_mercenary",
 		tags = [
-			"dialogue_scene"
+			"dialogue_scene", 'master_translate'
 		],
 		reqs = [
 

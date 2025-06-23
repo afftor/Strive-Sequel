@@ -161,7 +161,7 @@ func _get_action(hide_ignore = false):
 		var curw = _get_weight_for_skill(s_n)
 		if curw > 0: actions.push_back([s_n, curw])
 	if actions.size() == 0:
-		print ('ERROR IN AI TEMPLATE')
+#		print ('ERROR IN AI TEMPLATE')
 		return app_obj.get_skill_by_tag('default')
 	var res = input_handler.weightedrandom(actions)
 	return res

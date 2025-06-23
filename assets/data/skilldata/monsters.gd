@@ -291,7 +291,6 @@ var effects = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		tags = ['positive', 'buff', 'atkpass'],
 		statchanges = {atk_add_part = 0.1, matk_add_part = 0.1},
-		buffs = ['b_atkpass'],
 	},
 	e_t_atkpass_remove = {
 		type = 'temp_s',
@@ -338,6 +337,16 @@ var buffs = {
 		t_name = 'fireshield',
 		combat_only = true
 	},
+	b_atkpass = {
+		icon = "res://assets/images/iconsskills/Sedate.png",
+		description = "BUFFDESCRIPTATKPAS",
+		tags = ['combat_only', 'show_amount']
+	},
+	b_atkpass_src = {
+		icon = "res://assets/images/iconsskills/Sedate.png",
+		description = "BUFFDESCRIPTATTACKPASSSRC",
+		tags = ['combat_only']
+	},
 }
 
 var stacks = {
@@ -347,6 +356,7 @@ var stacks = {
 	}, #st 0
 	atkpass = {
 		type = 'stack',
+		buff = 'b_atkpass'
 	}, #st 0
 	atkpass_remove = {}, #st 1
 }
