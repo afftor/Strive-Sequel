@@ -1023,6 +1023,21 @@ var fixed_location_options = { #override serialized data
 			],
 			args = [{code = 'start_event', data = 'sacred_sap_lira_3', args = []}]
 		},
+		{
+			text =  tr("ELF_CAPITAL_DRUIDS_LOUNGE"),
+			reqs = [
+				{type = 'has_active_quest', name = 'meteorite_quest', check = false},
+				{type = 'quest_completed', name = 'meteorite_quest', check = false}
+			],
+			args = [{code = 'start_event', data = 'meteor_lounge_start', args = []}]
+		},
+		{
+			text =  tr("ELF_CAPITAL_DRUIDS_LOUNGE"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'meteorite_quest', stage = 'return_meteor'}
+			],
+			args = [{code = 'start_event', data = 'meteor_lounge_return', args = []}]
+		},
 	],
 	dwarf_capital = [
 		{
@@ -1056,8 +1071,7 @@ var fixed_location_options = { #override serialized data
 		},{
 			text = tr("DWARF_WORKSHOP"),
 			reqs = [
-				{type = "quest_completed", name = "hara_scales_quest", check = false},
-				{type = 'active_quest_stage', value = 'visit_dwarfs_quest', stage = 'search', state = false}
+				{type = "quest_completed", name = "hara_scales_quest", check = false}
 			],
 			args = [{code = 'start_event', data = 'dwarf_workshop', args = []}]
 		},{
@@ -1102,6 +1116,10 @@ var fixed_location_options = { #override serialized data
 			text = tr("DWARF_CAPITAL_WHISKEY2"),
 			reqs = [{type = 'active_quest_stage', value = 'kuro_tome_quest', stage = 'bottle'}],
 			args = [{code = 'start_event', data = 'kuro_whiskey_homebrew', args = []}]
+		},{
+			text = tr("DWARF_CAPITAL_DURIM"),
+			reqs = [{type = 'active_quest_stage', value = 'meteorite_quest', stage = 'search_durim'}],
+			args = [{code = 'start_event', data = 'meteor_durim_start', args = []}]
 		}
 	],
 	beastkin_capital = [
@@ -1529,6 +1547,13 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'kuro_hideout_start', args = {}}]
 		}
 	],
+	quest_star_crater = [
+		{
+			text = tr("QUEST_STAR_CRATER_LOCATION"),
+			reqs = [{type = 'active_quest_stage', value = 'meteorite_quest', stage = 'check_out'}],
+			args = [{code = 'start_event', data = 'meteor_ogres_start', args = {}}]
+		}
+	],
 #	quest_ashen_ridge  = [
 #		{
 #			text = tr("QUEST_ASHEN_RIDGE_1"), 
@@ -1601,3 +1626,4 @@ func update_guilds_data():
 		tempcat.preference = guild.preference.duplicate()
 		tempcat.slavelevel = 0
 		guild.hireable_characters.push_back(tempcat)
+

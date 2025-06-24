@@ -2585,7 +2585,6 @@ var quests = {
 		code = 'visit_dwarfs_quest',
 		summary = "VISIT_DWARFS_QUEST_SUMMARY",
 		stages = {
-			search = {code = 'search', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_SEARCH'},
 			audience = {code = 'audience', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_AUDIENCE'},
 			tavern = {code = 'tavern', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_TAVERN'},
 			jean = {code = 'jean', name = 'VISIT_DWARFS_QUEST_NAME', descript = 'VISIT_DWARFS_QUEST_JEAN'},
@@ -2684,5 +2683,17 @@ var quests = {
 			stage13 = {code = 'stage13', name = 'ANASTASIA_QUEST2_NAME', descript = 'ANASTASIA_QUEST_STAGE13'}, #return to dunkan
 		},
 	},
+	meteorite_quest = {
+		code = 'meteorite_quest',
+		summary = "METEORITE_QUEST_SUMMARY",
+		stages = {
+			check_out = {code = 'check_out', name = 'METEORITE_QUEST_NAME', descript = 'METEORITE_QUEST_CHECK_OUT'},
+			return_meteor = {code = 'return_meteor', name = 'METEORITE_QUEST_NAME', descript = 'METEORITE_QUEST_RETURN_METEOR'},
+			find_use = {code = 'find_use', name = 'METEORITE_QUEST_NAME', descript = 'METEORITE_QUEST_FIND_USE'},
+			get_inside = {code = 'get_inside', name = 'METEORITE_QUEST_NAME', descript = 'METEORITE_QUEST_GET_INSIDE'},
+			search_durim = {code = 'search_durim', name = 'METEORITE_QUEST_NAME', descript = 'METEORITE_QUEST_SEARCH_DURIM'},
+		},
+	},
 }
+
 

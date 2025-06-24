@@ -1501,14 +1501,18 @@ var data = {
 				code = "close",
 				text = "DIALOGUECLOSE",
 				reqs = [
-
+					{
+						type = "capital_closed",
+						name = "dwarf_capital",
+						check = true
+					}
 				],
 				type = "next_dialogue",
 				bonus_effects = [
 					{
 						code = "progress_quest",
 						value = "visit_dwarfs_quest",
-						stage = "search"
+						stage = "audience"
 					},
 					{
 						code = "plan_loc_event",
@@ -1516,7 +1520,26 @@ var data = {
 						event = "enter_city_t_0"
 					}
 				]
-			}
+			},
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [
+					{
+						type = "capital_closed",
+						name = "dwarf_capital",
+						check = false
+					}
+				],
+				type = "next_dialogue",
+				bonus_effects = [
+					{
+						code = "progress_quest",
+						value = "visit_dwarfs_quest",
+						stage = "audience"
+					}
+				]
+			},
 		]
 	},
 	excalibur_quest_1 = {

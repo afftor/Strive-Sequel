@@ -1262,7 +1262,9 @@ func make_local_recruit(args):
 
 
 func check_events(action): #partly obsolete, do not understand always returning false
-	var eventarray = input_handler.active_location.scriptedevents
+	var eventarray = []
+	if input_handler.active_location.has('scriptedevents'):
+		eventarray = input_handler.active_location.scriptedevents
 	var erasearray = []
 	var eventtriggered = false
 	for i in eventarray:
@@ -2911,6 +2913,11 @@ func is_capital_closed(capital):
 	if capital == "dwarf_capital":
 		if (valuecheck({type = "quest_completed", name = "visit_dwarfs_quest", check = true})
 				or valuecheck({type = "has_active_quest", name = "visit_dwarfs_quest", check = true})
+				or valuecheck({type = "quest_completed", name = "meteorite_quest", check = true})
+				or (valuecheck({type = "has_active_quest", name = "meteorite_quest", check = true})
+					and !valuecheck({type = "any_quest_stage", value = "meteorite_quest", stages =
+						['check_out', 'return_meteor', 'find_use', 'get_inside']})
+					)
 				):
 			return false
 		return true
