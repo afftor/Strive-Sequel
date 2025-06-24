@@ -79,6 +79,12 @@ func process_tick(ev):
 			tmp.process_tick(ev)
 
 
+func process_reset(ev):
+	for rec in get_active_effects():
+		var tmp = effects_pool.get_effect_by_id(rec)
+		if tmp.template.type == 'trigger':
+			tmp.process_reset(ev)
+
 func add_effect(eff, timestamp):
 	effects[eff] = timestamp
 

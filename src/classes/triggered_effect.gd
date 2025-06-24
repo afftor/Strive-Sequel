@@ -87,15 +87,17 @@ func process_act(ev, data = {}):
 				.clear_buffs()
 				var obj = get_applied_obj()
 				if obj is ResourceScripts.scriptdict.class_slave:
-					obj.reset_rebuild()
+					obj.reset_rebuild_delay()
 				#apply trigger
 				e_apply()
-	if reset_event.has(ev) or reset_event.size() == 0:
+
+
+func process_reset(ev):
+	if !ready and (reset_event.has(ev) or reset_event.empty()):
 		ready = true
 		var obj = get_applied_obj()
 		if obj is ResourceScripts.scriptdict.class_slave:
-			obj.reset_rebuild()
-	pass
+			obj.reset_rebuild_delay()
 
 
 func e_apply(): #temporal solution until proper rework via apply_status
@@ -193,3 +195,4 @@ func rebuild_buffs():
 		tmp.createfromtemplate(e)
 		tmp.calculate_args()
 		buffs.push_back(tmp)
+
