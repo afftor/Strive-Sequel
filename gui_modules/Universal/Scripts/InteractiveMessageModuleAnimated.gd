@@ -243,6 +243,9 @@ func show_full_info(person):
 
 
 var stored_scene
+#stored_argument added only for select_person_for_next_event() for now, but it should be used anywhere,
+#where event continues not by dialogue_next()
+var stored_argument
 
 func dialogue_next(code, argument, args = {}):
 	hold_selection = true
@@ -540,6 +543,9 @@ func select_person_for_next_event(option): #needs a rework
 #			{code = 'in_combat_party', value = true}
 			]
 	stored_scene = code
+	stored_argument = 0
+	if option.has('dialogue_argument'):
+		stored_argument = option.dialogue_argument
 	var challenge = null
 	if option.has('challenge'):
 		challenge = option.challenge
@@ -581,6 +587,7 @@ func event_person_selected(person):
 	var event_type = 'story_event'
 	if scenedata.scenedict[stored_scene].has('default_event_type'):
 		event_type = scenedata.scenedict[stored_scene].default_event_type
+	previous_dialogue_option = stored_argument
 	input_handler.interactive_message_follow(stored_scene, event_type, {})
 
 
