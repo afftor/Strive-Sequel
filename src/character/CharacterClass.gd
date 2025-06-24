@@ -71,6 +71,10 @@ func reset_rebuild():
 		displaynode.rebuildbuffs()
 
 
+func reset_rebuild_delay():
+	dyn_stats.reset_rebuild_delay()
+
+
 func setup_etb():
 	dyn_stats.setup_etb()
 

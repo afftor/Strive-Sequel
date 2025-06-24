@@ -4,7 +4,6 @@ var parent: WeakRef
 var timestamp = 0
 var etb_timestamp = 0
 
-
 func get_timestamp():
 	timestamp += 1
 	return timestamp
@@ -23,12 +22,18 @@ var effects_temp_real = {} #effect stacks by ref
 var effects_temp_globals_real = [] #effect records 
 
 var rebuild = variables.DYN_STATS_REBUILD
+var delay_rebuild = false
 
 var counters = []
 
 
 func reset_rebuild():
 	rebuild = variables.DYN_STATS_REBUILD
+	delay_rebuild = false
+
+
+func reset_rebuild_delay():
+	delay_rebuild = true
 
 
 func deserialize(savedict):
@@ -267,6 +272,11 @@ func process_event(ev, data = {}):
 	for st in effects_temp_real.values():
 #		var st = effects_pool.get_stack_by_id(stack)
 		st.process_tick(ev)
+	for st in effects_temp_real.values():
+#		var st = effects_pool.get_stack_by_id(stack)
+		st.process_reset(ev)
+	if delay_rebuild:
+		reset_rebuild()
 
 
 func remove_t_global(eff_id):
@@ -285,6 +295,8 @@ func remove_effect(eff_id):
 	if obj is temp_e_global:
 		remove_t_global(eff_id)
 	else:
+		if !obj.is_stored:
+			return
 		var stid = 'default'
 		if obj.template.has('stack'): 
 			stid = obj.template.stack
