@@ -49,11 +49,13 @@ func process_tick(ev):
 		if remains == 0:
 			remove()
 			res = variables.TE_RES_REMOVE
+
+
+func process_remove(ev):
 	if template.has('rem_event') and template.rem_event.has(ev):
+		var obj = get_applied_obj()
 		remove()
-		res = variables.TE_RES_REMOVE
 		obj.reset_rebuild_delay()
-	return res
 
 
 func merge_duration(tvalue):
