@@ -378,6 +378,7 @@ func generate_random_character_from_data(races_l, desired_class = null, adjust_d
 	else:
 		gendata.race = input_handler.random_from_array(races_l)
 	create(gendata.race, gendata.sex, gendata.age)
+	dyn_stats.generate_data()
 	statlist.generate_random_character_from_data(adjust_difficulty)
 	dyn_stats.generate_random_character_from_data(desired_class, adjust_difficulty)
 	dyn_stats.get_random_traits(trait_blacklist)
@@ -1501,6 +1502,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'is_immune':
 			return dyn_stats.check_status_immunity(i.status) == i.check
 		'has_relationship':
+#			return true
 			var tmp = ResourceScripts.game_party.find_all_relationship(id)
 			var tres = false
 			for rec in tmp:

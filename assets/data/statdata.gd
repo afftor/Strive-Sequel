@@ -680,7 +680,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_df',
 		type = '',
-		tags = ['integer']
+		tags = ['integer', 'update_state']
 	},
 	personality_kind = {
 		code = 'personality_kind',
@@ -688,7 +688,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_df',
 		type = '',
-		tags = ['integer']
+		tags = ['integer', 'update_state']
 	},
 	personality_shy = { #virtual
 		code = 'personality_shy',
@@ -696,7 +696,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_df',
 		type = '',
-		tags = ['integer']
+		tags = ['integer', 'update_state']
 	},
 	personality_serious = { #virtual
 		code = 'personality_serious',
@@ -704,7 +704,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_df',
 		type = '',
-		tags = ['integer']
+		tags = ['integer', 'update_state']
 	},
 	old_personality = {
 		code = 'old_personality',
@@ -713,7 +713,7 @@ var statdata = {
 	},
 	personality = {#virtual
 		code = 'personality',
-		tags = ['custom_getter', 'custom_setter'],
+		tags = ['custom_getter', 'custom_setter', 'update_state'],
 		default_bonus = 'set',
 	},
 	#mods
@@ -1085,7 +1085,7 @@ var statdata = {
 	},
 	sex = {
 		code = 'sex',
-		tags = [],
+		tags = ['update_state'],
 		default_bonus = 'set',
 	},
 	masternoun = {
@@ -1412,42 +1412,42 @@ var statdata = {
 	#sex
 	penis_virgin_lost = {
 		code = 'penis_virgin_lost',
-		tags = [],
+		tags = ['update_state'],
 		default_bonus = 'set',
 	},
 	vaginal_virgin_lost = {
 		code = 'vaginal_virgin_lost',
-		tags = [],
+		tags = ['update_state'],
 		default_bonus = 'set',
 	},
 	anal_virgin_lost = {
 		code = 'anal_virgin_lost',
-		tags = [],
+		tags = ['update_state'],
 		default_bonus = 'set',
 	},
 	mouth_virgin_lost = {
 		code = 'mouth_virgin_lost',
-		tags = [],
+		tags = ['update_state'],
 		default_bonus = 'set',
 	},
 	penis_virgin = {
 		code = 'penis_virgin',
-		tags = ['obsolete'],
+		tags = ['obsolete', 'update_state'],
 		default_bonus = 'set',
 	},
 	vaginal_virgin = {
 		code = 'vaginal_virgin',
-		tags = ['obsolete'],
+		tags = ['obsolete', 'update_state'],
 		default_bonus = 'set',
 	},
 	anal_virgin = {
 		code = 'anal_virgin',
-		tags = ['obsolete'],
+		tags = ['obsolete', 'update_state'],
 		default_bonus = 'set',
 	},
 	mouth_virgin = {
 		code = 'mouth_virgin',
-		tags = ['obsolete'],
+		tags = ['obsolete', 'update_state'],
 		default_bonus = 'set',
 	},
 	penis_type = {
@@ -1489,7 +1489,7 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
-		tags = ['integer'],
+		tags = ['integer', 'update_state'],
 		container = 'pregnancy'
 	},
 	pregnancy_baby = {

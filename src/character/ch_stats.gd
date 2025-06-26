@@ -394,7 +394,8 @@ func update_stat(stat, value, operant = 'set'):
 				container[stat] = stat_cap
 	if stat.begins_with('hair_'): #compat
 		set_hair_stat(stat, value)
-	parent.get_ref().reset_rebuild()
+	if data.tags.has('update_state'):
+		parent.get_ref().reset_rebuild()
 
 
 func update_personality(value, operant = 'set'):
@@ -1204,17 +1205,6 @@ func update_chardata(chardata):
 
 func generate_random_character_from_data(adjust_difficulty = 0):
 	var difficulty = adjust_difficulty / 2
-	while difficulty > -1:
-		var array = []
-		array = ['physics', 'wits','sexuals', 'charm']
-		array = input_handler.random_from_array(array)
-		if randf() >= 0.7:
-			if array == 'sexuals':
-				add_random_sex_skill()
-			else:
-				update_stat(array, rand_range(1,15), 'add')
-		difficulty -= 1
-	
 	var traitarray = []
 	#assign sex traits
 	for i in Traitdata.sex_traits.values():
@@ -1236,6 +1226,17 @@ func generate_random_character_from_data(adjust_difficulty = 0):
 		add_sex_trait(newtrait.code)
 		traitarray.erase(newtrait)
 		rolls -= 1
+	
+	while difficulty > -1:
+		var array = []
+		array = ['physics', 'wits','sexuals', 'charm']
+		array = input_handler.random_from_array(array)
+		if randf() >= 0.7:
+			if array == 'sexuals':
+				add_random_sex_skill()
+			else:
+				update_stat(array, globals.rng.randi_range(1,15), 'add')
+		difficulty -= 1
 
 
 func generate_simple_fighter(data):

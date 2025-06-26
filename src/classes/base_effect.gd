@@ -214,14 +214,12 @@ func get_duration():
 
 
 func has_status(status):
-	var act = true
+	if !template.tags.has(status):
+		return false
 	if template.has('conditions'):
 		if !get_applied_obj().checkreqs(template.conditions):
-			act = false
-	if act:
-		return template.tags.has(status)
-	else:
-		return false
+			return false
+	return true
 
 
 func resolve_value(val):

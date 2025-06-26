@@ -300,7 +300,7 @@ func has_status(status):
 #getters
 func get_stat_data(stat, stop = variables.DYN_STATS_FULL): #full value
 	if rebuild < stop:
-		generate_data()
+		generate_data(stop)
 	var res = {
 		base_value = 0,
 		result = 0,
