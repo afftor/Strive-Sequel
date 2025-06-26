@@ -222,15 +222,6 @@ func check_lover_possibility(data, char1, char2):
 	return endvalue
 
 
-func has_love_status(char1):
-	for key in relationship_data.keys():
-		if char1 in key.split("_"):
-			var relation = relationship_data[key].status
-			if "lovers" in relation or "freelovers" in relation:
-				return true
-	return false
-
-
 func change_relationship_status(char1, char2, new_status):
 	_get_data(char1, char2).status = new_status
 	if new_status in ['friends', 'rivals']:
@@ -257,11 +248,11 @@ func find_all_relationship(char1):
 	var array = []
 	var cleanup = []
 	for key in relationship_data.keys():
-		if char1 in key.split("_"):
-			var chars = key.split("_")
-			if characters_pool.get_char_by_id(chars[0]) == null or characters_pool.get_char_by_id(chars[1]) == null:
-				cleanup.push_back(key)
-				continue
+		var chars = key.split("_")
+		if characters_pool.get_char_by_id(chars[0]) == null or characters_pool.get_char_by_id(chars[1]) == null:
+			cleanup.push_back(key)
+			continue
+		if char1 in chars:
 			var dict = {relationship = relationship_data[key].status}
 			if char1 == chars[0]:
 				dict.char = chars[1]
@@ -274,6 +265,41 @@ func find_all_relationship(char1):
 		relationship_data.erase(id)
 	
 	return array
+
+
+func clear_relations(char1):
+	var cleanup = []
+	for key in relationship_data.keys():
+		var chars = key.split("_")
+		if characters_pool.get_char_by_id(chars[0]) == null or characters_pool.get_char_by_id(chars[1]) == null:
+			cleanup.push_back(key)
+			continue
+		if char1 in chars:
+			cleanup.append(key)
+	
+	for id in cleanup:
+		relationship_data.erase(id)
+
+
+func has_love_status(char1):
+	var cleanup = []
+	var res = false
+	for key in relationship_data.keys():
+		var chars = key.split("_")
+		if characters_pool.get_char_by_id(chars[0]) == null or characters_pool.get_char_by_id(chars[1]) == null:
+			cleanup.push_back(key)
+			continue
+		if char1 in chars:
+			var relation = relationship_data[key].status
+			if relation in ["lovers", "freelovers"]:
+				res = true
+				break
+	
+	for id in cleanup:
+		relationship_data.erase(id)
+	
+	return res
+
 
 #func pos_set(value):
 #	combatparty = value
@@ -373,7 +399,9 @@ func remove_slave(tempslave, permanent = false):
 	tempslave.process_event(variables.TR_REMOVE)
 	characters_pool.move_to_pool(tempslave.id)
 	tempslave.is_players_character = false
-	if permanent: tempslave.is_active = false
+	if permanent: 
+		clear_relations(tempslave.id)
+		tempslave.is_active = false
 	character_order.erase(tempslave.id)
 #	input_handler.update_slave_list()
 	input_handler.rebuild_slave_list()
