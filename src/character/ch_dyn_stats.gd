@@ -302,7 +302,7 @@ func get_stat_data(stat, stop = variables.DYN_STATS_FULL): #full value
 	if rebuild < stop:
 		generate_data(stop)
 	var res = {
-		base_value = 0,
+		base_value = null,
 		result = 0,
 		bonuses = {},
 	}
@@ -314,24 +314,26 @@ func get_stat_data(stat, stop = variables.DYN_STATS_FULL): #full value
 	if st_data.tags.has('custom_getter'):
 		call('get_' + stat, res)
 	else:
-		if st_data.tags.has('bool'):
-			res.base_value = true
-		if st_data.tags.has('array'):
-			res.base_value = []
-		var container = statlist
-		if st_data.has('container'):
-			match st_data.container:
-				'manacost_mods':
-					container = manacost_mods
-				'resists':
-					container = resists
-				'damage_mods':
-					container = damage_mods
-		if container.has(stat):
-			if container[stat] is Array:
-				res.base_value = container[stat].duplicate()
-			else:
-				res.base_value = container[stat]
+		if res.base_value == null:
+			res.base_value = 0
+			if st_data.tags.has('bool'):
+				res.base_value = true
+			if st_data.tags.has('array'):
+				res.base_value = []
+			var container = statlist
+			if st_data.has('container'):
+				match st_data.container:
+					'manacost_mods':
+						container = manacost_mods
+					'resists':
+						container = resists
+					'damage_mods':
+						container = damage_mods
+			if container.has(stat):
+				if container[stat] is Array:
+					res.base_value = container[stat].duplicate()
+				else:
+					res.base_value = container[stat]
 		if res.base_value is Array:
 			res.result = res.base_value.duplicate(true)
 		else:
