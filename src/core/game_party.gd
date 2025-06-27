@@ -26,13 +26,13 @@ func _get_key(char1, char2):
 func _get_data(char1, char2):
 	var key = _get_key(char1, char2)
 	if !relationship_data.has(key):
-		add_relationship_value(char1, char2, 0)
+		add_relationship_value(char1, char2)
 		if !relationship_data.has(key):
 			return null#relationships with master
 	return relationship_data[key]
 
 
-func add_relationship_value(char1, char2, value):
+func add_relationship_value(char1, char2, value = 0):
 	if characters_pool.get_char_by_id(char1).is_master(): 
 		return 
 	if characters_pool.get_char_by_id(char2).is_master(): 
@@ -45,12 +45,9 @@ func add_relationship_value(char1, char2, value):
 	if relationship_data.has(key):
 		if relationship_data[key].status in ['friends', 'lovers', 'freelovers'] && value < 0:
 			value *= 0.5 #makes established relationship reduce slower
-	
-	if relationship_data.has(key):
-		relationship_data[key].value += value
 	else:
-		relationship_data[key] = {value = 50, status = 'acquintances'}
-		relationship_data[key].value = variables.relationship_base + value
+		relationship_data[key] = {value = variables.relationship_base.default, status = 'acquintances'}
+	relationship_data[key].value += value
 	relationship_data[key].value = clamp(relationship_data[key].value, 0, 100)
 	update_relationship_status(relationship_data[key], char1, char2)
 
@@ -64,8 +61,9 @@ func update_relationship_status(data, char1, char2):
 	
 	var value = data.value
 	var status = data.status
-	if value <= 25 and status != 'rivals':
-		change_relationship_status(char1, char2, 'rivals')
+	if value <= 25:
+		if status != 'rivals':
+			change_relationship_status(char1, char2, 'rivals')
 	elif value >= 75:
 		if !['friends','lovers','freelovers'].has(status):
 			change_relationship_status(char1, char2, 'friends')
@@ -154,8 +152,8 @@ func relation_daily_change_same_loc(char1, char2):
 	if characters[char2].is_master(): 
 		return 
 	var value = 0
-	if relationship_data.has(_get_key(char1,char2)) == false:
-		relationship_data[_get_key(char1,char2)] = {value = 50, status = 'acquintances'}
+	if !relationship_data.has(_get_key(char1,char2)):
+		add_relationship_value(char1, char2)
 	var base_value = relationship_data[_get_key(char1, char2)].value
 	var weights = [['positive', 66], ['negative', 33]]
 	
@@ -222,9 +220,18 @@ func check_lover_possibility(data, char1, char2):
 	return endvalue
 
 
-func change_relationship_status(char1, char2, new_status):
+func change_relationship_status(char1, char2, new_status, forced = false):
+	var f = true
+	if forced:
+		f = false
+		var old_status = _get_data(char1, char2).status
+		if old_status != new_status:
+			f = true
+			_get_data(char1, char2).value = variables.relationship_base[new_status]
+	
 	_get_data(char1, char2).status = new_status
-	if new_status in ['friends', 'rivals']:
+	
+	if new_status in ['friends', 'rivals'] and f:
 		var ch1 = characters[char1]
 		var ch2 = characters[char2]
 		var log_text = "%s and %s have become %s" % [ch1.get_short_name(), ch2.get_short_name(), new_status]

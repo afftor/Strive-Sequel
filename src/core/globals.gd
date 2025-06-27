@@ -2468,7 +2468,7 @@ func common_effects(effects):
 				ResourceScripts.game_res.unlock_upgrade(i.upgrade, i.level)
 			'change_relationship':
 				if input_handler.scene_characters.size() == 2:
-					ResourceScripts.game_party.change_relationship_status(input_handler.scene_characters[0].id, input_handler.scene_characters[1].id, i.value)
+					ResourceScripts.game_party.change_relationship_status(input_handler.scene_characters[0].id, input_handler.scene_characters[1].id, i.value, true)
 				else:
 					print("wrong change relationship setup")
 			'change_relationship_precise':
