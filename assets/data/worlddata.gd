@@ -2,6 +2,7 @@ extends Node
 
 var pregen_characters = load("res://assets/data/pregen_characters_data.gd").new().pregen_characters
 var pregen_character_sprites = load("res://assets/data/pregen_characters_data.gd").new().unique_sprites
+var fixed_relations = load("res://assets/data/pregen_characters_data.gd").new().fixed_relations
 
 var questdata = load("res://assets/data/repeatablequestdata.gd").new().questdata
 

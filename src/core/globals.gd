@@ -1860,6 +1860,7 @@ func common_effects(effects):
 					newslave.set_slave_category(i.slave_category)
 				#newslave.set_slave_category(newslave.slave_class)
 				ResourceScripts.game_party.add_slave(newslave)
+				ResourceScripts.game_party.build_starting_relations(newslave.id)
 			'add_timed_event':
 				var newevent = {reqs = [], code = i.value}
 				for k in i.args:
