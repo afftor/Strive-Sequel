@@ -1600,7 +1600,7 @@ var data = {
 				reqs = [
 
 				],
-				previous_dialogue_option = 1,
+#				previous_dialogue_option = 1,
 				bonus_effects = [
 					{
 						code = "progress_quest",

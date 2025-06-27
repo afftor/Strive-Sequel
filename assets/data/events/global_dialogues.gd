@@ -318,6 +318,13 @@ var data = {
 				dialogue_argument = 0
 			},
 			{
+				code = "ana_duncan_1",
+				text = "ANA_DUNCAN_INITIATE",
+				reqs = [{type = 'active_quest_stage', value = 'anastasia_quest_2', stage = 'stage8'}],
+				type = "next_dialogue",
+				dialogue_argument = 1
+			},
+			{
 				code = "fighters_leader_close",
 				text = "FIGHTERSINTRODUCTION2REPLY2",
 				reqs = [

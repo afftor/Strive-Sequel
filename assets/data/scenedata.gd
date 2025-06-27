@@ -1825,6 +1825,15 @@ var dialogue_inits = {
 		{
 			code = 'default',
 			name = tr("DIALOGUEMEETLEADER"),
+			reqs = [
+				{type = 'active_quest_stage', value = 'anastasia_quest_2', stage = 'stage13'}
+			],
+			target = 'ana_final_1',
+			target_option = 1,
+		},
+		{
+			code = 'default',
+			name = tr("DIALOGUEMEETLEADER"),
 			reqs = [],
 			target = 'fighters_introduction2',
 			target_option = 5,
@@ -1847,26 +1856,6 @@ var dialogue_inits = {
 				{type = 'active_quest_stage', value = 'hara_scales_quest', stage = 'h_price'}
 			],
 			target = 'sacred_sap_fighters_3',
-			target_option = 1,
-		},
-	],
-	fighters_ana = [
-		{
-			code = 'default',
-			name = tr("ANA_DUNCAN_INITIATE"),
-			reqs = [
-				{type = 'active_quest_stage', value = 'anastasia_quest_2', stage = 'stage8'}
-			],
-			target = 'ana_duncan_1',
-			target_option = 1,
-		},
-		{
-			code = 'default',
-			name = tr("DIALOGUEMEETLEADER"),
-			reqs = [
-				{type = 'active_quest_stage', value = 'anastasia_quest_2', stage = 'stage13'}
-			],
-			target = 'ana_final_1',
 			target_option = 1,
 		},
 	],

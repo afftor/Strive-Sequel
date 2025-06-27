@@ -204,7 +204,7 @@ var factiondata = {
 		actions = ['hire','upgrade', 'guild_shop'],
 		bonus_actions = [],
 		events = [
-			'fighters_init', 'fighters_sap', 'fighters_ana'
+			'fighters_init', 'fighters_sap'
 			],
 		quests_easy = ['fighters_monster_hunt_easy','fighters_dungeon_easy','fighters_threat_easy','fighters_task_easy','fighters_slave_easy'],
 		quests_medium = ['fighters_craft_gear_medium','fighters_threat_medium', 'fighters_dungeon_medium','fighters_monster_hunt_medium','fighters_task_medium', 'fighters_slave_medium'],
