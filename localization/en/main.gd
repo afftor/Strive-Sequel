@@ -1237,6 +1237,7 @@ Silenced: Can't use Spell type abilities.""",
 	SKILLMIMIC_ATTACK = "Sticky Grab",
 	SKILLVOID_BARRAGE = "Void Barrage",
 	SKILLVOID_BARRAGEDESCRIPT = "Deals 80% of MATK as {color=yellow|Dark} damage 5 times to random targets.",
+	SKILLVOIDSLAM = "Void Slam",
 	SKILLDRAW_BLOOD = "Draw Blood",
 	SKILLDRAW_BLOODDESCRIPT = """Strike target for 110% of ATK and cause it to Bleed for 2 turns. 
 
@@ -3030,6 +3031,7 @@ Social skills effect: +10%.""",
 	BUFFDESCRIPTDISTRACT = "Distracted: -30 Hit Rate and Evasion",
 	BUFFDESCRIPTSILENCE = "Silenced: Can't use Spell type abilities",
 	BUFFDESCRIPTDISARM = "Disarmed: Can't use Skill type abilities",
+	BUFFDESCRIPTBLOODATTACK = "Blood Magic: MATK increased",
 	BUFFDESCRIPTBANISH = "Banish",
 	BUFFDESCRIPTVOID = "Void",
 	BUFFDESCRIPTDEFEND = "Defend",
@@ -3891,7 +3893,7 @@ The [race] gives you a desperate look. """,
 	DIALOGUEEVENTEXOTICTRADER = "You find an exotic slave trader with a large group of guards. Exotic race slaves are rare and expensive, so you should consider yourself lucky. After greetings he presents you his belongings.",
 	DIALOGUEALIRONEXOTICTRADER = """This morning you've received a message that today Avermik came to town. An mysterious slave trader which deals with rare and exotic races. They seem to recurringly visit Aliron and might provide a reliable way to seize on an unusual slave. 
 
-If you have enough cash...""",
+If you got the coin for it...""",
 	DIALOGUEPERSONASKTOJOIN = "Offer to join",
 	DIALOGUERECRUITSUCCESS = """[center]{color=green|Success!}[/center]
 [name] was able to convince [scncharname] to join you.""",
@@ -5450,7 +5452,7 @@ The princess notices Aire tensing up in response to the question.
 	TATTOOLEGS = "Legs",
 	STATDAMAGE_MOD_FIRE = "Fire Damage",
 	STATDAMAGE_MOD_WATER = "Water Damage",
-	STATDAMAGE_MOD_AIR = "Airm Damage",
+	STATDAMAGE_MOD_AIR = "Air Damage",
 	STATDAMAGE_MOD_EARTH = "Earth Damage",
 	STATDAMAGE_MOD_LIGHT = "Light Damage",
 	STATDAMAGE_MOD_DARK = "Dark Damage",
@@ -6016,7 +6018,7 @@ The miniature girl reacted to your appearance unexpectedly nonchalantly.
 
 — Zephyra.
 
-Zephyra briefly bowed down to you after she spoke her name.""",
+Zephyra briefly bowed down to you after she introduced herself.""",
 	DIVINE_SYMBOL_24 = """— Before I forget... Here, an acquaintance gift.
 
 She passes you a roll of paper she took from the pile on a small table. As you unfold it you see a rough but somewhat talented sketch of a [man]'s portrait. On a second look you notice how this person vaguely resembles you. Seeing the look on your face, Zephyra shines with excitement.
@@ -9941,7 +9943,7 @@ Making note of your approach the girl immediately walks over to you, her normal 
 	CALI_SIDEQUEST_9_1 = """— You think so..? I guess, I want to. He-he, I've never really been good with stuff like dresses and etiquette. I guess, maybe it's time for me to try it. It may be fun for all we know. 
 
 After thinking about it, you decide it might be a good idea to visit the Servants Guild for some ideas on making Cali more feminine.""",
-	CALI_SIDEQUEST_9_2 = """— Y-you really think so? I mean I guess I'd like to, but I've never really been good with this stuff. Although for you I suppose I could try. 
+	CALI_SIDEQUEST_9_2 = """— Y-you really think so? Still, I'd like to give it a try, after all I've never been good with this stuff and other people gave me such looks...
 
 After thinking about it, you decide it might be a good idea to visit the Servants Guild for some ideas on making Cali more feminine.""",
 	CALI_SIDEQUEST_9_2_alt = """— Hmm, if you say so I'll believe you. I'm not sure where to start, though. Do you have something on your mind? 
@@ -18844,7 +18846,7 @@ The smaller ogres scramble for their weapons, their snarls mixing with the crack
 — You've returned! And with the fallen star, no less.""",
 	METEOR_LOUNGE_RETURN2 = """You recount the ogre encounter, describing the crude camp and the club embedded with the strange stone.
 
-— Ogres, you say? Reckless creatures, but I'm glad you retrieved it. Yet... I confess, I know not what to do with such a thing. I feel some power coming from it but we 
+— Ogres, you say? Reckless creatures, but I'm glad you retrieved it. Yet... I confess, I know not what to do with such a thing. I feel some power coming from it though.
 
 He studies the meteorite, hesitant to touch it, then shakes his head.
 

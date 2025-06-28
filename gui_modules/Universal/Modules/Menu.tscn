@@ -775,7 +775,19 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 33 )
 bbcode_enabled = true
-bbcode_text = "0.11.1c
+bbcode_text = "Improved lategame performance slightly
+Fixed basic mana values being incorrect
+Fixed multiple mistakes in Ana's quest
+Fixed poison effect not disappearing after end of combat
+0.11.1d
+Rebalanced masteries and some classes. Gave extra punch to physical classes and masteries and slightly nerfed magic masteries
+Fixed some tooltip issues
+Fixed a few combat gui issues
+Fixed error related to character travel
+Added missing scenes to gallery
+Fixed some issues related to save/loading
+Other game state fixes
+0.11.1c
 Fixed some issues with guild quests from older saves
 Fixed Dark Flame not working correctly
 Fixed issues with certain characters crashing on training attempts
@@ -1982,7 +1994,19 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.11.1c
+text = "Improved lategame performance slightly
+Fixed basic mana values being incorrect
+Fixed multiple mistakes in Ana's quest
+Fixed poison effect not disappearing after end of combat
+0.11.1d
+Rebalanced masteries and some classes. Gave extra punch to physical classes and masteries and slightly nerfed magic masteries
+Fixed some tooltip issues
+Fixed a few combat gui issues
+Fixed error related to character travel
+Added missing scenes to gallery
+Fixed some issues related to save/loading
+Other game state fixes
+0.11.1c
 Fixed some issues with guild quests from older saves
 Fixed Dark Flame not working correctly
 Fixed issues with certain characters crashing on training attempts

@@ -997,7 +997,7 @@ var unique_sprites = {
 			unlock_reqs = []
 			},
 		costume_7 = {
-			name = "Costume_7",
+			name = "Miko",
 			descript = "",
 			path = "zephyra_costume_7_body", 
 			face_path = "zephyra_costume_7",

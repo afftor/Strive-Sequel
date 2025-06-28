@@ -2707,6 +2707,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	CHALLENGEPERSUASION = """Persuasion Challenge""", # MISSING TRANSLATION
 	CHALLENGEWISDOM = """Wisdom Challenge""", # MISSING TRANSLATION
 	BUFFDESCRIPTDISARM = "Disarmed: Can't use Skill type abilities",
+	BUFFDESCRIPTBLOODATTACK = """Blood Magic: MATK increased""", # MISSING TRANSLATION
 	BUFFDESCRIPTBANISH = "Banish",
 	BUFFDESCRIPTVOID = "Void",
 	BUFFDESCRIPTDEFEND = "Defend",
