@@ -26,7 +26,14 @@ var CombatAllyHpAlwaysVisible = true
 
 var timeforinteraction = 20
 
-var relationship_base = 50
+var relationship_base = {
+	default = 50,
+	acquintances = 50,
+	friends = 60,
+	lovers = 85,
+	freelovers = 85,
+	rivals = 10
+}
 
 var debug_mode = false
 var no_obedience_drain = false

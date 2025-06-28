@@ -1227,3 +1227,23 @@ var unique_sprites = {
 	
 	
 }
+
+
+var fixed_relations = {
+	zephyra = {
+		kuro = [
+			{
+			status = 'rivals',
+			condition = []
+			}
+		]
+	},
+	aire = {
+		anastasia = [
+			{
+			status = 'friends',
+			condition = []
+			}
+		]
+	}
+}

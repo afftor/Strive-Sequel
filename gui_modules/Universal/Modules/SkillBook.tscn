@@ -522,6 +522,7 @@ margin_top = 219.0
 margin_right = 279.0
 margin_bottom = 399.0
 custom_fonts/normal_font = ExtResource( 41 )
+bbcode_enabled = true
 
 [node name="CooldownIcon" type="TextureRect" parent="SkillInfo"]
 margin_left = 91.0
@@ -576,9 +577,6 @@ margin_bottom = 769.0
 texture_normal = ExtResource( 42 )
 texture_pressed = ExtResource( 44 )
 texture_hover = ExtResource( 43 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="TextureButton"]
 anchor_right = 1.0

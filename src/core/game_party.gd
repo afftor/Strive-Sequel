@@ -26,31 +26,86 @@ func _get_key(char1, char2):
 func _get_data(char1, char2):
 	var key = _get_key(char1, char2)
 	if !relationship_data.has(key):
-		add_relationship_value(char1, char2, 0)
+		add_relationship_value(char1, char2)
 		if !relationship_data.has(key):
 			return null#relationships with master
+	check_locked_relationship(char1, char2)
 	return relationship_data[key]
 
 
-func add_relationship_value(char1, char2, value):
+func build_starting_relations(char1):
+	var ch1 = characters_pool.get_char_by_id(char1).get_stat('unique')
+	for ch in characters:
+		if ch == char1:
+			continue
+		var ch2 = characters_pool.get_char_by_id(ch).get_stat('unique')
+		if ch2 == null:
+			continue
+		if worlddata.fixed_relations.has(ch1):
+			if worlddata.fixed_relations[ch1].has(ch2):
+				var reldata = worlddata.fixed_relations[ch1][ch2]
+				for rec in reldata:
+					if globals.valuecheck(rec.condition):
+						relationship_data[_get_key(char1, ch)] = {status = rec.status, value = variables.relationship_base[rec.status]}
+						break
+		if worlddata.fixed_relations.has(ch2):
+			if worlddata.fixed_relations[ch2].has(ch1):
+				var reldata = worlddata.fixed_relations[ch2][ch1]
+				for rec in reldata:
+					if globals.valuecheck(rec.condition):
+						relationship_data[_get_key(char1, ch)] = {status = rec.status, value = variables.relationship_base[rec.status]}
+						break
+
+
+func check_locked_relationship(char1, char2):
+	var ch1 = characters_pool.get_char_by_id(char1).get_stat('unique')
+	var ch2 = characters_pool.get_char_by_id(char2).get_stat('unique')
+	if ch1 == null:
+		return false
+	if ch2 == null:
+		return false
+	var data = relationship_data[_get_key(char1, char2)]
+	if worlddata.fixed_relations.has(ch1):
+		if worlddata.fixed_relations[ch1].has(ch2):
+			var reldata = worlddata.fixed_relations[ch1][ch2]
+			for rec in reldata:
+				if globals.valuecheck(rec.condition):
+					if data.status != rec.status:
+						data.status = rec.status
+						data.value = variables.relationship_base[data.status]
+					return true
+	if worlddata.fixed_relations.has(ch2):
+		if worlddata.fixed_relations[ch2].has(ch1):
+			var reldata = worlddata.fixed_relations[ch2][ch1]
+			for rec in reldata:
+				if globals.valuecheck(rec.condition):
+					if data.status != rec.status:
+						data.status = rec.status
+						data.value = variables.relationship_base[data.status]
+					return true
+	return false
+
+
+func add_relationship_value(char1, char2, value = 0):
 	if characters_pool.get_char_by_id(char1).is_master(): 
 		return 
 	if characters_pool.get_char_by_id(char2).is_master(): 
 		return
 	
-	if char1 == char2: return
+	if char1 == char2: 
+		return
 	
 	var key = _get_key(char1, char2)
 	
 	if relationship_data.has(key):
 		if relationship_data[key].status in ['friends', 'lovers', 'freelovers'] && value < 0:
 			value *= 0.5 #makes established relationship reduce slower
-	
-	if relationship_data.has(key):
-		relationship_data[key].value += value
 	else:
-		relationship_data[key] = {value = 50, status = 'acquintances'}
-		relationship_data[key].value = variables.relationship_base + value
+		relationship_data[key] = {value = variables.relationship_base.default, status = 'acquintances'}
+	
+	if check_locked_relationship(char1, char2):
+		return
+	relationship_data[key].value += value
 	relationship_data[key].value = clamp(relationship_data[key].value, 0, 100)
 	update_relationship_status(relationship_data[key], char1, char2)
 
@@ -64,19 +119,19 @@ func update_relationship_status(data, char1, char2):
 	
 	var value = data.value
 	var status = data.status
-	if value <= 25 and status != 'rivals':
-		change_relationship_status(char1, char2, 'rivals')
+	if value <= 25:
+		if status != 'rivals':
+			change_relationship_status(char1, char2, 'rivals')
 	elif value >= 75:
 		if !['friends','lovers','freelovers'].has(status):
 			change_relationship_status(char1, char2, 'friends')
 		else:
 			if randf() >= 0.2 && check_lover_possibility(data, char1, char2) && _in_same_location(char1, char2):
 				attempt_romance(char1, char2)
-	else:
-		if status in ['friends','lovers','freelovers'] && value >= 60:
+	elif status in ['friends','lovers','freelovers'] && value >= 60:
 			pass
-		else:
-			change_relationship_status(char1, char2, 'acquintances')
+	elif status != 'acquintances':
+		change_relationship_status(char1, char2, 'acquintances')
 	#print(data)
 
 func get_all_possible_love_pairs():
@@ -154,8 +209,8 @@ func relation_daily_change_same_loc(char1, char2):
 	if characters[char2].is_master(): 
 		return 
 	var value = 0
-	if relationship_data.has(_get_key(char1,char2)) == false:
-		relationship_data[_get_key(char1,char2)] = {value = 50, status = 'acquintances'}
+	if !relationship_data.has(_get_key(char1,char2)):
+		add_relationship_value(char1, char2)
 	var base_value = relationship_data[_get_key(char1, char2)].value
 	var weights = [['positive', 66], ['negative', 33]]
 	
@@ -222,9 +277,21 @@ func check_lover_possibility(data, char1, char2):
 	return endvalue
 
 
-func change_relationship_status(char1, char2, new_status):
-	_get_data(char1, char2).status = new_status
-	if new_status in ['friends', 'rivals']:
+func change_relationship_status(char1, char2, new_status, forced = false):
+	if check_locked_relationship(char1, char2):
+		return
+	var f = true
+	var data = _get_data(char1, char2)
+	if forced:
+		f = false
+		var old_status = data.status
+		if old_status != new_status:
+			f = true
+			data.value = variables.relationship_base[new_status]
+	
+	data.status = new_status
+	
+	if new_status in ['friends', 'rivals'] and f:
 		var ch1 = characters[char1]
 		var ch2 = characters[char2]
 		var log_text = "%s and %s have become %s" % [ch1.get_short_name(), ch2.get_short_name(), new_status]

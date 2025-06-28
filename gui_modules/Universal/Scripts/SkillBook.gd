@@ -142,7 +142,7 @@ func update_skillinfo(skill):
 	$SkillInfo/CostIcon.visible = true
 	$SkillInfo/frame/icon.texture = skill.icon
 	$SkillInfo/name.text = tr("SKILL" + skill.code.to_upper())
-	$SkillInfo/desc.text = tr("SKILL" + skill.code.to_upper() + "DESCRIPT")
+	$SkillInfo/desc.bbcode_text = globals.TextEncoder(tr("SKILL" + skill.code.to_upper() + "DESCRIPT"))
 	if skill.cost.has("mp"):
 		$SkillInfo/Cost.text = str(int(skill.cost.mp))
 	else:
