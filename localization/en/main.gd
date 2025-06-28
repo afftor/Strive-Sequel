@@ -13981,7 +13981,8 @@ You can't resist her taunts any longer, finally letting your second load burst i
 You wonder who could be the sender but it's likely someone else standing against the cult. Regardless, it's better not to let it fall into the enemy's hands.""",
 	ENTER_CITY_T_0 = """The subterranean capital looms heavily as you approach, with towering stone gateways creating an imposing presence along the underground trail. A pair of guards stand sentinel at the entrance, and as they notice your approach, one of them dismissively scoffs, adding a contemptuous spit to the ground. Another one addresses you. 
 
-— Halt immediately, outsider. Any step closer will be seen as hostile, warranting elimination.""",
+""",
+	ENTER_CITY_T_0_VISIT = "— Halt immediately, outsider. Any step closer will be seen as hostile, warranting elimination.",
 	ENTER_CITY_T_1 = """The first guard gestures toward the crossbowmen positioned atop the city wall. Engaging in a skirmish would be futile; the archers, with precision akin to a lightning strike, could transform you into a pincushion of bolt in mere moments.
 
 — State your identity.""",
@@ -16179,6 +16180,13 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	ANASTASIA_QUEST_STAGE11 = "Deal with Fort Defenders.",
 	ANASTASIA_QUEST_STAGE12 = "Deal with Reyan",
 	ANASTASIA_QUEST_STAGE13 = "Return to Duncan",
+	METEORITE_QUEST_NAME = "Meteorite Quest",
+	METEORITE_QUEST_SUMMARY = "A star fell not too far from elven forests. Druid Lorien wants you to investigate.",
+	METEORITE_QUEST_CHECK_OUT = "Check out fallen star",
+	METEORITE_QUEST_RETURN_METEOR = "Get back to Lorien",
+	METEORITE_QUEST_FIND_USE = "Find anyone who can figure out a good use for fallen star",
+	METEORITE_QUEST_GET_INSIDE = "Find a way to get inside dwarf lands",
+	METEORITE_QUEST_SEARCH_DURIM = "Search for Durim in dwarf capital",
 	HARA_SCALES_QUEST_NAME = "Hara: fixing the Scales",
 	HARA_SCALES_QUEST_SUMMARY = "Help Hara to fix Scales of Destiny for the King",
 	HARA_SCALES_QUEST_SEE_HARA = "Visit Hara at workshop",
@@ -16196,8 +16204,8 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	HARA_SCALES_QUEST_VISIT = "Visit workshop",
 	VISIT_DWARFS_QUEST_NAME = "Visit dwarven kingdom",
 	VISIT_DWARFS_QUEST_SUMMARY = "Next artifact should be in dwarven kingdom's possession.",
-	VISIT_DWARFS_QUEST_SEARCH = "Search a nearby mountain for an entrance to dwarven kingdom.",
-	VISIT_DWARFS_QUEST_AUDIENCE = "Get audience with king.",
+#	VISIT_DWARFS_QUEST_SEARCH = "Search a nearby mountain for an entrance to dwarven kingdom.",
+	VISIT_DWARFS_QUEST_AUDIENCE = "Search a nearby mountain for an entrance to dwarven kingdom and get audience with king.",
 	VISIT_DWARFS_QUEST_TAVERN = "Find a way to attract king's attention. Visit a tavern for a start.",
 	VISIT_DWARFS_QUEST_JEAN = "Help Jean, meet her at Mountain Pass marked on her map, or... You can turn her in. King could be pleased with such revelation.",
 	DKING_HARA_QUEST_NAME = "Rescue Hara",
@@ -17482,6 +17490,8 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_CULT_HIDEOUT_DESC = "",
 	QUEST_CULT_PARENTBASE_TEXT = "Cult's Parent Base",
 	QUEST_CULT_PARENTBASE_DESC = "",
+	QUEST_STAR_CRATER_TEXT = "Fallen star's spot",
+	QUEST_STAR_CRATER_DESC = "",
 	ALIRON1 = "Check the streets",
 	ALIRON2 = "Search for Reim",
 	ALIRON3 = "Visit Fred's Dormitory",
@@ -17530,6 +17540,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	DWARF_CAPITAL_JEAN = "Search for Jean",
 	DWARF_CAPITAL_WHISKEY = "Check the market",
 	DWARF_CAPITAL_WHISKEY2 = "Visit market",
+	DWARF_CAPITAL_DURIM = "Search for Durim",
 	INFINITEDUNGEONUNLOCK = "Dark Alley",
 	BEASTKIN_CAPITAL1 = "Find Chieftain",
 	BEASTKIN_CAPITAL2 = "Visit Shaman's Lodge",
@@ -17591,6 +17602,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_OLD_GODS_TEMPLE_LOCATION = "Approach",
 	QUEST_WHISKY_CRASH_LOCATION = "Search around",
 	QUEST_CULT_HIDEOUT_LOCATION = "Search for the building",
+	QUEST_STAR_CRATER_LOCATION = "Search around",
 	CURRENT_PREFERRED_FOOD_CONSUMPTION = "Current Preferred Food Consumption",
 	TOOLTIP_CLOCK1 = """Advance Time
 Hotkey: 1""",
@@ -18784,4 +18796,119 @@ Spent and satisfied, you carefully withdraw from her tight passage, admiring how
 	DIALOGUEEVENTDUNGEONCOFFIN_2 = """You wedge your blade under the lid and heave it open, revealing a glinting treasure nestled within...""",
 	DIALOGUEEVENTDUNGEONCOFFIN_3 = """You kneel briefly, murmuring respect to the ancient dead, and turn away. You leave empty-handed but unburdened.""",
 	
+	ELF_CAPITAL_DRUIDS_LOUNGE = "Druids' lounge",
+	METEOR_LOUNGE_START = """Wandering through the serene streets, you stumble upon a secluded druid lounge, its entrance framed by flowering branches. A male elf druid, clad in robes of woven leaves, turns sharply at your entrance, his silver eyes wide with surprise.
+
+— An outsider in our city? I haven't seen you before. I am Lorien, current keeper of this grove's secrets, at least officially so. 
+
+You explain that you've only been exploring surroundings but as you prepare to turn away he stops you.
+
+— Hold on. I have a task for someone like you. Pardon my lack of manners, I'm not familiar with foreign customs.""",
+	METEOR_LOUNGE_REVISIT = """Once again you enter Druid's lounge finding Lorien there.
+
+— You again. Ready to take on the important task I want to entrust to you?""",
+	METEOR_LOUNGE_START_OPT_WHAT = "What is it?",
+	METEOR_LOUNGE_START_OPT_ANOTHER = "Maybe another time",
+	METEOR_LOUNGE_BRIEF = """Lorien offers you a cup of warm herbal tea before he starts explaining.
+
+— The druids are not only spiritual guides but also natural observers. One of my tasks is to watch over the night sky and stars. Three moons ago I saw a star falling not too far from our forests. However as I delivered that information to the High Priestess she found that information... insignificant. 
+
+His voice sounds bitter when he addressed the High Priestess but its clear her authority invokes respect into him.
+
+— We are not allowed to leave the capital and I was denied to investigate it as well. However an outsider like you isn't held back by such rules. I want you to see what happened to it, as my intuition dictates it's not something to overlook.""",
+	METEOR_LOUNGE_BRIEF_OPT_CHECK = "That sounds curious, I'll check it out",
+	METEOR_LOUNGE_BRIEF_OPT_MAYBE = "Maybe, If I have enough time",
+	METEOR_LOUNGE_RESPONSE = "Content with your response, Lorien has marked the spot on your location. It shouldn't take too much time although you wonder if you're gonna find anything at all after this much time has passed.",
+	METEOR_OGRES_START = "As you arrive at the clearing Lorien has pointed out, you spot the place the star has fallen into. The crater has overgrown some time ago but around it you spot multiple large foot tracks. Much larger than humans, they must belong to ogres.",
+	METEOR_OGRES_START_OPT_FOLLOW = "*Follow tracks*",
+	METEOR_OGRES_CAMP = """You manage to follow the poorly preserved tracks for a while but your effort rewards you. You find a makeshift camp belonging to a small group of ogres. It's a crude setup of tattered hides and splintered logs, reeking of charred meat and damp earth. Three ogres huddle around a smoldering fire, their guttural laughter echoing through the clearing. The largest, a brute with a scarred hide, grips a massive club embedded with a jagged, faintly glowing stone—the fallen star, no doubt. His beady eyes scan the surroundings as he grunts to his companions.
+
+— Oi, dis shiny rock's mine! Found it in da hole, fair 'n square. Dis makes me king! Ain't no one takin' it!
+
+His two companions, smaller but no less menacing, nod eagerly, their clubs resting against a nearby boulder. You crouch in the underbrush, weighing your options.""",
+	METEOR_OGRES_CAMP_OPT_FIGHT = "*Fight the ogres*",
+	METEOR_OGRES_CAMP_OPT_CURSED = "[Persuasion Challenge] You better give up on this rock, it's cursed and will make you sick.",
+	METEOR_OGRES_FIGHT = """You leap from the foliage, weapon drawn, catching the ogres off-guard. The leader roars, hefting his club.
+
+— You want dis rock? Come take it, puny thing!
+
+The smaller ogres scramble for their weapons, their snarls mixing with the crackle of the fire. It's three against one, and the leader's club looks like it could crush stone.""",
+	METEOR_OGRES_SECURE = "You secure the large stone piece which feels a lot heavier in your arms. It's time to get back to Lorien.",
+	METEOR_OGRES_TRICKED = """You step boldly into the camp, standing tall and locking eyes with the leader.
+
+— Huuh? Evil thing? It tricked me into thinkin' I'm strong... Take it and go, I don't want it!
+
+""",
+	METEOR_LOUNGE_RETURN = """Lorien stands near a glowing crystal, his silver eyes brightening as you approach, the stone clutched in your hand. Its dark, faintly pulsing surface catches the light, drawing his gaze.
+
+— You've returned! And with the fallen star, no less.""",
+	METEOR_LOUNGE_RETURN2 = """You recount the ogre encounter, describing the crude camp and the club embedded with the strange stone.
+
+— Ogres, you say? Reckless creatures, but I'm glad you retrieved it. Yet... I confess, I know not what to do with such a thing. I feel some power coming from it but we 
+
+He studies the meteorite, hesitant to touch it, then shakes his head.
+
+— Keep it, outsider. You've earned it, and perhaps its purpose will reveal itself to you. And I have one fewer thing to worry about. 
+
+As you take it with you, it makes you wonder if you know anyone who can figure out a good use for it...""",
+	METEOR_SIGMUND_START_OPT_FOUND = "I've found one strange rock which has fallen from the skies...",
+	METEOR_SIGMUND_START_OPT_PAYMENT = "I've got the payment for the pass (200 gold)",
+	METEOR_SIGMUND_START_OPT_ACCESS = "I've gained access to dwarf capital",
+	METEOR_SIGMUND_START = """His eyes, sharp beneath bushy brows, lock onto the meteorite as you present it. The stone's faint glow reflects in his intrigued gaze.
+
+— This ain't no common stone. Fell from da sky, ye say? It's a fine metal, but me 'fraid I'm no help with something like dis. Ya'd need to find someone from dwarf lands. But they don't let strangers inside usually.""",
+	METEOR_SIGMUND_START_OPT_INSIDE = "You know how to get inside?",
+	METEOR_SIGMUND_START_OPT_USE = "I'd like to use it",
+	METEOR_SIGMUND_GOLD = "— Well I've a connection which might get ya inside, but it ain't cheap these days. I'll need two hundred gold for da pass.",
+	METEOR_SIGMUND_GOLD_OPT_PAY = "Pay (200 gold)",
+	METEOR_SIGMUND_GOLD_OPT_ALREADY = "Actually I can get inside already",
+	METEOR_SIGMUND_GOLD_OPT_BACK = "I'll be back later",
+	METEOR_SIGMUND_PAY = """You pass Sigmund the gold he asked for as he takes you away to the backrooms.
+
+— Alright, take dis piece. It'll get ya through guards. Da man you are looking for is called Durim, he works with stuff like this.
+
+""",
+	METEOR_SIGMUND_LEAVE = "Getting all the necessary information you leave preparing to venture to the mountains.",
+	METEOR_SIGMUND_ACCESS = """— Ya did? Great to hear. Da man you are looking for is called Durim, he works with stuff like this.
+
+""",
+	ENTER_CITY_T_0_METEOR = "— Turn around, outsider. The city is closed until king's new order.",
+	METEOR_ENTER_CITY_OPT_PASS = "*Present the pass from Sigmund*",
+	METEOR_ENTER_CITY_OPT_LEAVE = "*Leave*",
+	METEOR_ENTER_CITY2 = "The guard looks around cautiously before giving a gesture to make a quick pass allowing you to get inside. The gates are quickly closed after that but for now you'll be able to get around this place and back.",
+	METEOR_DURIM_START = "After questioning a few tight-lipped locals, you learn Durim runs an alchemy shop. A half-hour's trek through smoky alleys leads you to a sturdy stone building, its flask-shaped banner swaying in the sooty breeze.",
+	METEOR_DURIM_START2 = """The workshop buzzes with chaotic energy, shelves crammed with fizzing potions and shimmering dust. The air stings with sharp, chemical scents. Durim, a scrawny dwarf with scorched hair and wild, darting eyes, hunches over a cluttered bench. When you reveal the meteorite, his head jerks up, and he fixes on the stone with a feverish stare.
+
+— Ooh, you brought it, you did! That stone! Quick, give it to me!
+
+Before you can speak, he tugs at your arm, trying to pry the meteorite free, his breath ragged with desperation.""",
+	METEOR_DURIM_START_OPT_FIGHT = "*Fight back*",
+	METEOR_DURIM_START_OPT_LET = "*Let him have it*",
+	METEOR_DURIM_LET = """You relent, passing the meteorite to Durim. His eyes gleam as he snatches it with a feverish cackle.
+
+""",
+	METEOR_DURIM_FOUNDME = """— Yes, yes! It found me, brought itself by your hands!
+
+He sets to work immediately, pouring sizzling acids and grinding tools over the stone. Sparks fly as he extracts a small, shimmering ingot of pure metal, its surface catching the workshop's dim light. He tosses it to you carelessly, already turning back to his experiments.""",
+	METEOR_DURIM_WIN = """After a fierce struggle, Durim collapses, groaning dramatically, playing dead. As you pause, confused, he springs up with surprising speed, snatching the meteorite from your grip.
+
+— Ha! Fooled ye! Ye fool!
+
+Ignoring your confusion, he's completely focused on the stone.
+
+""",
+	METEOR_DURIM_NOPAYMENT = " Looks like he does not even want any payment.",
+	METEOR_DURIM_HARA = """As you prepare to leave, the workshop door slams open. A busty goblin girl, dressed in grease-stained tunic with tools dangling from her belt, struts in like she owns the place. She nods curtly at Durim, who barely glances up from his bench.
+
+— Oi, Durim, got that elixir ready? she asks, her voice sharp but playful.
+
+The dwarf grunts, pointing to a shelf. She snatches a glowing bottle of liquid, tucking it into her satchel. As she turns, her yellow eyes lock onto you, sizing you up with a smirk.
+
+— New around here, eh? Word of advice, don't linger in this fume-pit too long. Vapors will turn your brain to mush, like this guy here.
+
+She leaves before you can answer but her uncharacteristic appearance makes you think you'll meet her in future.""",
+	
+	
+	
 }
+
