@@ -175,7 +175,12 @@ var skills = {
 		damage_type = 'earth',
 		sfx = [{code = 'disintegrate', target = 'target', period = 'predamage'}], 
 		sound = [],
-		value = 2.5,
+		value = [1.65, 2.75],
+		damagestat = ['damage_hp', 'damage_hp'],
+		value_target_reqs = {
+			0:[{code = 'stat', stat = 'racegroup', value = 'golem', operant = 'neq'}, {code = 'stat', stat = 'racegroup', value = 'mech', operant = 'neq'}],
+			1:[{code = 'stat', stat = 'racegroup', value = ['golem', 'mech'], operant = 'in'}],
+			},
 	},
 }
 var effects = {
