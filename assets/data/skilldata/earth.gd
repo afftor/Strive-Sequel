@@ -32,6 +32,32 @@ var skills = {
 			}
 		]
 	},
+	impale = {
+		code = 'impale',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/AcidBomb.png"), #fix
+		type = 'combat', 
+		ability_type = 'spell',
+		tags = ['damage','ads', 'earth'],
+		reqs = [],
+		targetreqs = [],
+		effects = [
+			Effectdata.rebuild_template({effect = 'bleed', duration = 1, chance = 0.5}),
+			Effectdata.rebuild_template({effect = 'e_impale', duration = 3}),
+		], 
+		cost = {mp = 4},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'enemy',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'earth', 
+		sfx = [{code = 'acid_bomb', target = 'target', period = 'predamage'}], #fix
+		sounddata = {initiate = null, strike = 'blade', hit = null},
+		value = 0.85
+	},
 	acidbomb = {
 		code = 'acidbomb',
 		descript = '',
@@ -269,10 +295,22 @@ var effects = {
 		req_skill = true,
 		sub_effects = ['e_s_stun'],
 	},
+	e_impale = {
+		type = 'temp_s',
+		target = 'target',
+		stack = 'impale',
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'arg',
+		tags = ['negative'],
+		statchanges = {resist_heal = -75},
+		buffs = ['b_slam'],
+	},
 }
 var atomic_effects = {}
 var buffs = {}
 
 var stacks = {
-	earth_shield = {} #st 1
+	earth_shield = {}, #st 1
+	impale = {} #st 1
 }
