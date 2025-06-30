@@ -83,11 +83,12 @@ func process_act(ev, data = {}):
 						else:
 							res = res and obj.process_check(cond.value)
 			if res:
-				ready = false
-				.clear_buffs()
-				var obj = get_applied_obj()
-				if obj is ResourceScripts.scriptdict.class_slave:
-					obj.reset_rebuild_delay()
+				if !reset_event.empty() and !reset_event.has(ev):
+					ready = false
+					.clear_buffs()
+					var obj = get_applied_obj()
+					if obj is ResourceScripts.scriptdict.class_slave:
+						obj.reset_rebuild_delay()
 				#apply trigger
 				e_apply()
 

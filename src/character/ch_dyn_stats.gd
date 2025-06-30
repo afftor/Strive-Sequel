@@ -985,6 +985,11 @@ func has_body_upgrade(id):
 	return body_upgrades.has(id)
 
 #real skills
+func rebuild_skills():
+	if rebuild < variables.DYN_STATS_FULL:
+		generate_data()
+
+
 func get_combat_skills():
 	if rebuild < variables.DYN_STATS_FULL:
 		generate_data()
