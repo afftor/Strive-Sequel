@@ -390,6 +390,11 @@ func apply_training(code):
 		if parent.get_ref().get_stat('vaginal_virgin'):
 			effect_text += "%s takes virginity of %s" % [ch_trainer.get_short_name(), parent.get_ref().get_short_name()]
 			parent.get_ref().take_virginity('vaginal', trainer) #add finetune for bodypart checking
+	if code == 'mindcontrol':
+		for rec in ['positive', 'physical', 'humiliation', 'social', 'sexual']:
+			if !training_metrics.has(rec):
+				training_metrics[rec] = 0
+			training_metrics[rec] += 1
 	if code == 'mindread':
 		cooldown.mindread = 1
 		var pool = []
