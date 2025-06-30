@@ -628,6 +628,11 @@ func unlearn_c_skill(skill):
 func unlearn_e_skill(skill):
 	skills.unlearn_e_skill(skill)
 
+
+func rebuild_skills():
+	dyn_stats.rebuild_skills()
+
+
 func cooldown_tick():
 	skills.cooldown_tick()
 	training.cooldown_tick()

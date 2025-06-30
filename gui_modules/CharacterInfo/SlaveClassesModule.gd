@@ -239,6 +239,9 @@ func build_mastery_cat():
 			text += "[center]"+tr("MASTERY"+mas.to_upper()) + '[/center]\nBonus per point:\n'
 #			text += tr(masdata.descript) + '\n'
 			text += globals.build_desc_for_bonusstats(masdata.passive) + '\n'
+			if lv > 0:
+				text += "[center]Current:[/center]\n"
+				text += globals.build_desc_for_bonusstats(masdata.passive, lv) + '\n'
 #			text += tr('CURRENTLVL') + str(lv)
 			globals.connecttexttooltip(button, text)
 		else:

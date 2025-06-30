@@ -16,6 +16,7 @@ func build_skill_panel():
 	if person == null:
 		return
 	input_handler.ClearContainer($SkillPanel)
+	person.rebuild_skills()
 	var src
 	if person.skills.active_panel == variables.PANEL_SOC:
 		src = person.skills.social_skill_panel

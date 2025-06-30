@@ -116,6 +116,7 @@ func learn_skill(skill):
 	var skilldata = Skilldata.Skilllist[skill]
 	if !social_skills.has(skill):
 		social_skills.append(skill)
+		parent.get_ref().reset_rebuild()
 
 
 func learn_c_skill(skill):

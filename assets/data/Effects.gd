@@ -768,7 +768,7 @@ var effect_table = {
 		req_skill = true,
 		conditions = [
 			{type = 'skill', value = ['tags', 'has', 'damage'] },
-			{type = 'skill', value = ['damage_type', 'in', ['air', 'fire']] },
+			{type = 'skill', value = ['damage_type', 'eq', 'air'] },
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}
 		],
 		sub_effects = [
@@ -780,14 +780,8 @@ var effect_table = {
 			},
 			{
 				type = 'oneshot',
-				target = 'skill',
-				conditions = [['damage_type', 'eq', 'fire']],
-				atomic = [{type = 'stat_mul', stat = 'value', value = 0.5},],
-			},
-			{
-				type = 'oneshot',
 				target = 'owner',
-				conditions = [],
+				conditions = [{type = 'random', value = 0.3}],
 				atomic = [{type = 'remove_all_effects', value = 'wet'}],
 			},
 		]
@@ -923,7 +917,7 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
 		tags = ['negative'],
-		statchanges = {resist_heal = -100},
+		statchanges = {resist_heal = 100},
 		buffs = ['b_slam'],
 	},
 	e_s_takeposition = {
