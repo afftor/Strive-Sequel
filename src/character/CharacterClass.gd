@@ -463,9 +463,9 @@ func get_racial_features(race):
 	dyn_stats.get_racial_features(race)
 	statlist.get_racial_features(race)
 	training.setup_dispositions(race)
-	if race_template.has("combat_skills"):
-		for i in race_template.combat_skills:
-			learn_c_skill(i)
+#	if race_template.has("combat_skills"):
+#		for i in race_template.combat_skills:
+#			learn_c_skill(i)
 	food.get_racial_features(race)
 
 

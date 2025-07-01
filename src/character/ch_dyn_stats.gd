@@ -72,11 +72,13 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 	clear_nonstored_effs()
 	traits_real = traits_stored.duplicate()
 	masteries_real = masteries.duplicate(true)
+	var process_skills = (stop_at == variables.DYN_STATS_FULL)
 	var skills_old = skills_real.duplicate()
 	var c_skills_old = c_skills_real.duplicate()
-	skills_real = parent.get_ref().get_learned_skills('social')
-	c_skills_real = parent.get_ref().get_learned_skills('combat')
-	e_skills_real = parent.get_ref().get_learned_skills('explore')
+	if process_skills:
+		skills_real = parent.get_ref().get_learned_skills('social')
+		c_skills_real = parent.get_ref().get_learned_skills('combat')
+		e_skills_real = parent.get_ref().get_learned_skills('explore')
 	stat_bonuses = bonuses_stored.duplicate(true)
 	buffs.clear()
 	#stored effects_duplicating
@@ -87,9 +89,9 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 	effects_temp_globals_real = effects_temp_globals.duplicate()
 	
 	var race = parent.get_ref().get_stat('race')
-	process_race_data(race)
+	process_race_data(race, process_skills)
 	for prof in professions:
-		process_prof_data(prof, professions[prof])
+		process_prof_data(prof, professions[prof], process_skills)
 	for upg in body_upgrades:
 		var upg_data = Traitdata.body_upgrades[upg]
 		if upg_data.has('traits'):
@@ -98,7 +100,7 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 	rebuild = variables.DYN_STATS_FACTORS
 	if rebuild >= stop_at and !forced:
 		return
-	update_masteries()
+	update_masteries(process_skills)
 	for trait in traits_real:
 		process_trait_data(trait, traits_real[trait])
 	var tattoos = parent.get_ref().get_tattoos()
@@ -165,7 +167,7 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 
 
 
-func process_race_data(id):
+func process_race_data(id, process_skills = true):
 	if id == '':
 		return
 	var data = races.racelist[id]
@@ -174,20 +176,25 @@ func process_race_data(id):
 	if data.has('traits'):
 		for tr in data.traits:
 			process_trait_add(tr, 0)
+	if data.has("combat_skills") and process_skills:
+		for id in data.combat_skills:
+			if !c_skills_real.has(id):
+				c_skills_real.push_back(id)
 
 
-func process_prof_data(id, timestamp):
+func process_prof_data(id, timestamp, process_skills = true):
 	var profdata = classesdata.professions[id]
 	for stat in profdata.statchanges:
 		process_bonus_record(stat, profdata.statchanges[stat], 'class', id, timestamp)
 	for trait in profdata.traits:
 		process_trait_add(trait, timestamp)
-	for id in profdata.skills:
-		if !skills_real.has(id):
-			skills_real.push_back(id)
-	for id in profdata.combatskills:
-		if !c_skills_real.has(id):
-			c_skills_real.push_back(id)
+	if process_skills:
+		for id in profdata.skills:
+			if !skills_real.has(id):
+				skills_real.push_back(id)
+		for id in profdata.combatskills:
+			if !c_skills_real.has(id):
+				c_skills_real.push_back(id)
 
 
 func process_trait_data(id, timestamp):
@@ -262,7 +269,7 @@ func process_trait_add(id, timestamp):
 		traits_real[id] = timestamp
 
 
-func update_masteries():
+func update_masteries(process_skills = true):
 	for mas in masteries_real:
 		masteries_real[mas].passive = masteries_real[mas].passive + get_stat_timestamps('mastery_%s' % mas)
 		masteries_real[mas].enable = get_stat_data('mastery_%s_enable' % mas, variables.DYN_STATS_REBUILD).result
@@ -277,12 +284,13 @@ func update_masteries():
 					var lvdata = mas_data['level%d' % (i + 1)]
 					for trait in lvdata.traits:
 						process_trait_add(trait, mas_full[i])
-					for id in lvdata.explore_skills:
-						if !e_skills_real.has(id):
-							e_skills_real.push_back(id)
-					for id in lvdata.combat_skills:
-						if !c_skills_real.has(id):
-							c_skills_real.push_back(id)
+					if process_skills:
+						for id in lvdata.explore_skills:
+							if !e_skills_real.has(id):
+								e_skills_real.push_back(id)
+						for id in lvdata.combat_skills:
+							if !c_skills_real.has(id):
+								c_skills_real.push_back(id)
 
 
 func has_status(status):
