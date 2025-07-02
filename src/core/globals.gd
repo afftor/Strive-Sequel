@@ -2487,6 +2487,9 @@ func common_effects(effects):
 					print("wrong change relationship setup")
 			'open_arena':
 				input_handler.get_spec_node(input_handler.NODE_ARENA)
+			'try_breakdown_scene_characters':
+				for chara in input_handler.scene_characters:
+					chara.try_breakdown(i.value)
 
 func after_wedding_event(character):
 	if character == null:

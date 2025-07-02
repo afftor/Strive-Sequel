@@ -604,4 +604,8 @@ var breakdown_info = {
 	grave_injury = {chance = 0.2, text = "BREAKDOWN_GRAVEIN"},
 	grave_injury_res = {chance = 0.02, text = "BREAKDOWN_GRAVEIN_RES"},
 	terrible_date = {chance = 0.1, text = "BREAKDOWN_DATE"},
+	training_reset = {chance = 1.0, text = "BREAKDOWN_RESET"},
+	soul_stone = {chance = 0.5, text = "BREAKDOWN_SOUL"},
+	oblivion = {chance = 1.0, text = "BREAKDOWN_OBLIVION"},
+	shrine_enslave = {chance = 1.0, text = "BREAKDOWN_SHRINE"},
 }

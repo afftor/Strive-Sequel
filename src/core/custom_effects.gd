@@ -124,7 +124,8 @@ func oblivionpot(character):
 	character.reset_mastery()
 	character.remove_all_classes()
 	input_handler.active_character = character
-	input_handler.interactive_message("oblivion_potion_use",'custom_effect', character)
+	input_handler.interactive_message("oblivion_potion_use")
+	character.try_breakdown('oblivion')
 
 
 func sex_swap(character):

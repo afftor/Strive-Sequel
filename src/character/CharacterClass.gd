@@ -2250,12 +2250,12 @@ func try_breakdown(event):
 #	print("%s try_breakdown on %s with %s" % [get_short_name(), event, chance])
 	if randf() <= info.chance * get_stat('breakdown_chance_mod'):
 		xp_module.make_unavaliable(get_stat('breakdown_time'))
-		input_handler.active_character = self
-		input_handler.scene_characters.append(self)
 		var scene_data = scenedata.scenedict['breakdown_event'].duplicate(true)
 		scene_data.text = info.text
 		#mind, that direct-type events don't put themselvs to seen_events
-		input_handler.interactive_message(scene_data, 'direct')
+		input_handler.interactive_message(scene_data, 'direct', {
+			scene_characters_add = [id], set_active_character = id
+		})
 
 func try_breakdown_on_char_loss(lost_char):
 	if xp_module.is_unavaliable(): return
