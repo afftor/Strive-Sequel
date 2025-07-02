@@ -1174,6 +1174,13 @@ var unique_sprites = {
 			face_path = "amelia_wed",
 			unlock_reqs = []
 			},
+		halloween = {
+			name = "Halloween",
+			descript = "",
+			path = "amelia_halloween_body", 
+			face_path = "amelia", #2add and fix
+			unlock_reqs = [{type = 'event_seen', check = true, value = 'amelia_infinite_4'}]
+			},
 	},
 	kurdan = {
 		default = {

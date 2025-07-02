@@ -1188,7 +1188,7 @@ func set_level_infinite(location, level):
 			continue
 		if ev_data.min_level > level:
 			continue
-		if ev_data.chance > globals.rng.randf():
+		if ev_data.chance < globals.rng.randf():
 			continue
 		pool.push_back(ev)
 	if !pool.empty():
