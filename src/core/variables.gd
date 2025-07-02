@@ -53,7 +53,6 @@ enum {NT_MELEE, NT_ANY, NT_ANY_NOREPEAT, NT_WEAK, NT_WEAK_MELEE, NT_BACK, NT_CAS
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_DGRADE, TE_RES_REMOVE}
 enum {DYN_STATS_REBUILD, DYN_STATS_FACTORS, DYN_STATS_PREAREA, DYN_STATS_FULL}
 
-enum {BRK_LOSE_FRIEND, BRK_LOSE_LOVER, BRK_LOSE_RELATIVE, BRK_DISLIKE_FOOD, BRK_LOSE_VIRGINITY, BRK_GRAVE_INJURY, BRK_GRAVE_INJURY_RES, BRK_TERRIBLE_DATE}
 
 
 #list for values modified by crits, effects etc
@@ -597,12 +596,12 @@ var training_resistance = {
 }
 
 var breakdown_info = {
-	self.BRK_LOSE_FRIEND : {chance = 0.1, text_option = 1},
-	self.BRK_LOSE_LOVER : {chance = 0.2, text_option = 2},
-	self.BRK_LOSE_RELATIVE : {chance = 0.25, text_option = 3},
-	self.BRK_DISLIKE_FOOD : {chance = 0.005, text_option = 4},
-	self.BRK_LOSE_VIRGINITY : {chance = 0.15, text_option = 5},
-	self.BRK_GRAVE_INJURY : {chance = 0.2, text_option = 6},
-	self.BRK_GRAVE_INJURY_RES : {chance = 0.02, text_option = 7},
-	self.BRK_TERRIBLE_DATE : {chance = 0.1, text_option = 8},
+	lose_friend = {chance = 0.1, text = "BREAKDOWN_LFRIEND"},
+	lose_lover = {chance = 0.2, text = "BREAKDOWN_LLOVER"},
+	lose_relative = {chance = 0.25, text = "BREAKDOWN_LRELATIVE"},
+	dislike_food = {chance = 0.005, text = "BREAKDOWN_FOOD"},
+	lose_virginity = {chance = 0.15, text = "BREAKDOWN_LVIRGINITY"},
+	grave_injury = {chance = 0.2, text = "BREAKDOWN_GRAVEIN"},
+	grave_injury_res = {chance = 0.02, text = "BREAKDOWN_GRAVEIN_RES"},
+	terrible_date = {chance = 0.1, text = "BREAKDOWN_DATE"},
 }
