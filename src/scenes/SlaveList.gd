@@ -67,10 +67,3 @@ func open_slave_tab(character):
 	input_handler.ShowSlavePanel(character)
 
 
-func get_state_texture(tempchar): #not used
-	return
-	var rval = tempchar.last_tick_assignement
-	
-	rval = images.get_icon(rval)
-	return rval
-

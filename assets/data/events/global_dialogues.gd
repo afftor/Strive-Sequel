@@ -624,6 +624,65 @@ var data = {
 				type = "next_dialogue"
 			},
 			{
+				code = "meteor_sigmund_start",
+				text = "METEOR_SIGMUND_START_OPT_FOUND",
+				reqs = [
+					{
+						type = "active_quest_stage",
+						value = "meteorite_quest",
+						stage = "find_use"
+					}
+				],
+				dialogue_argument = 9,
+				type = "next_dialogue"
+			},
+			{
+				code = "meteor_sigmund_access",
+				text = "METEOR_SIGMUND_START_OPT_PAYMENT",
+				reqs = [
+					{
+						type = "active_quest_stage",
+						value = "meteorite_quest",
+						stage = "get_inside"
+					},
+					{
+						type = "has_money",
+						value = 200
+					}
+				],
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				bonus_effects = [
+					{
+						code = "money_change",
+						operant = "-",
+						value = 200
+					},
+					{
+						code = "decision",
+						value = "BoughtSigmundsPass"
+					}
+				]
+			},
+			{
+				code = "meteor_sigmund_access",
+				text = "METEOR_SIGMUND_START_OPT_ACCESS",
+				reqs = [
+					{
+						type = "active_quest_stage",
+						value = "meteorite_quest",
+						stage = "get_inside"
+					},
+					{
+						type = "capital_closed",
+						name = "dwarf_capital",
+						check = false
+					}
+				],
+				dialogue_argument = 2,
+				type = "next_dialogue"
+			},
+			{
 				code = "workers_leader_close",
 				text = "WORKERSINTRODUCTION1REPLY4",
 				reqs = [

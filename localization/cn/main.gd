@@ -2707,6 +2707,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	CHALLENGEPERSUASION = """Persuasion Challenge""", # MISSING TRANSLATION
 	CHALLENGEWISDOM = """Wisdom Challenge""", # MISSING TRANSLATION
 	BUFFDESCRIPTDISARM = "Disarmed: Can't use Skill type abilities",
+	BUFFDESCRIPTBLOODATTACK = """Blood Magic: MATK increased""", # MISSING TRANSLATION
 	BUFFDESCRIPTBANISH = "Banish",
 	BUFFDESCRIPTVOID = "Void",
 	BUFFDESCRIPTDEFEND = "Defend",
@@ -2718,6 +2719,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	BUFFDESCRIPTCONFUSE = "Confusion",
 	BUFFDESCRIPTFREEUSE = "Allows to use an item without taking a turn",
 	BUFFDESCRIPTSHRED = "Armor reduced",
+	BUFFDESCRIPTSHATTER = """Shattered: MDEF is reduced by 50%%""", # MISSING TRANSLATION
 	BUFFDESCRIPTGROWL = "Speed and evasion decreased",
 	BUFFDESCRIPTCURSEATTACK = "Attack decreased",
 	BUFFDESRIPTCURSEATTACKTR = "Attacking this target causes ATK decreased",
@@ -3310,6 +3312,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	BODYPARTTAILCOWDESCRIPT = '在 [his] 后面你会注意到一条长尾巴被一层薄薄的毛皮覆盖，末端是一把 [color=aqua]邋遢刷子[/color].',
 	BODYPARTTAILDEMONDESCRIPT = '[He] 有一条细长的, [color=aqua]恶魔尾巴[/color] 以尖头结尾.',
 	BODYPARTTAILDRAGONDESCRIPT = '在[his]背部后面有一条 [color=aqua]鳞尾[/color].',
+	BODYPARTTAILKOBOLDDESCRIPT = """Trailing somewhat behind [his] back is a [color=aqua]scaled tail[/color].""", # MISSING TRANSLATION
 	BODYPARTTAILAVIANDESCRIPT = '[He] 有一条 [color=aqua]羽毛状的鸟尾巴[/color] 在 [his] 背部.',
 	BODYPARTTAILFISHDESCRIPT = '[His] 尾部是一条光滑的长 [color=aqua]鱼尾[/color].',
 	BODYPARTTAILSNAKEDESCRIPT = " ",
@@ -3545,6 +3548,17 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 
 	
 	SPECIAL_ACTION_CLASS = "特殊操作（需要未知课程）",
+	LOG_LOSE_HP = """loses %d hp.""", # MISSING TRANSLATION
+	LOG_COMBAT_LOSE_HP = """
+%s loses %d hp.""", # MISSING TRANSLATION
+	LOG_HEAL = """healed for %d hp.""", # MISSING TRANSLATION
+	LOG_COMBAT_HEAL = """
+%s get %d hp.""", # MISSING TRANSLATION
+	LOG_MANA = """mana %d.""", # MISSING TRANSLATION
+	LOG_COMBAT_MANA = """
+%s get %d mp.""", # MISSING TRANSLATION
+	LOG_ADD_PART = """add part of %s to %s""", # MISSING TRANSLATION
+	LOG_SET = """%s is %s""", # MISSING TRANSLATION
 	DIALOGUECHARINSPECT = "检查",
 	DIALOGUERECRUITCHARACTEROPTION = "招聘",
 	DIALOGUELEAVE = "离开",
@@ -5096,6 +5110,7 @@ You explain yourself being the new landowner to her.""", # MISSING TRANSLATION
 	STATDAMAGE_MOD_DARK = "暗伤害",
 	STATDAMAGE_MOD_MIND = "精神伤害",
 	STATDAMAGE_MOD_MELEE = "近战伤害",
+	STATDAMAGE_MOD_RANGED = """Ranged Damage""", # MISSING TRANSLATION
 
 	ENEMYMANEATER_PLANT = "食人兽工厂",
 	ENEMYCENTIPEDE = "蜈蚣",
@@ -15057,6 +15072,7 @@ Hotkey: 3""",
 	CUSTOM_IMG_LABEL = "Add custom image",
 	OPEN_SYS_FOLD_LABEL = "Open system folder",
 	RELOAD_PORT_LABEL = "Reload portraits",
+	RELOAD_IMG_LABEL = """Reload images""", # MISSING TRANSLATION
 	RESET_IMG_LABEL = "Reset the image",
 	REVERS_TO_DEF_LABEL = "Reverse to default",
 	SELECT_FOLDRS_LABEL = "Select Folders",

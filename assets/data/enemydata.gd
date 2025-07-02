@@ -72,6 +72,8 @@ var encounters = {
 	dwarf_ceremony_coal = {unittype = 'randomgroup', unitcode = 'dwarf_ceremony_coal', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'kuro_resolution_intro', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	dwarf_ceremony_cult2 = {unittype = 'randomgroup', unitcode = 'dwarf_ceremony_cult2', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'kuro_resolution_intro', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	kuro_cult_hideout = {unittype = 'randomgroup', unitcode = 'kuro_cult_hideout', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'kuro_hideout_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	meteorite_ogres = {unittype = 'randomgroup', unitcode = 'meteorite_ogres', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'meteor_ogres_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	meteorite_durim = {unittype = 'randomgroup', unitcode = 'meteorite_durim', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'meteor_durim_ingot', args = {start_dialogue_option = 2}}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 }
 
 var enemygroups = {
@@ -225,6 +227,8 @@ var enemygroups = {
 	dwarf_ceremony_coal = {reqs = [], units = {dwarf_fighter_elite = [2,2]}},
 	dwarf_ceremony_cult2 = {reqs = [], units = {dwarf_fighter = [2,2]}},
 	kuro_cult_hideout = {reqs = [], units = {dwarf_fighter = [2,2]}}, #dummy
+	meteorite_ogres = {reqs = [], units = {bandit_melee = [2,2]}}, #dummy
+	meteorite_durim = {reqs = [], units = {dwarf_fighter = [1,1]}}, #dummy
 
 	goblin_stronghold_easy= {reqs = [], units = {hobgoblin_thug = [1,2], hobgoblin_crossbowman= [1,1]}, challenges = [['event_enemy_charm_avoid', 1],['event_enemy_charm_damage',0.8]], challenge_chance = 0.4},
 	goblin_stronghold_easy1 = { reqs = [], units = {warg = [2,2], hobgoblin_crossbowman= [1,2]}, challenges = [['event_enemy_strength_scare', 1],['event_enemy_distract',0.5]], challenge_chance = 0.4},

@@ -3128,4 +3128,23 @@ var dungeons = {
 			{trigger = 'dungeon_complete', event = 'custom_event', args = 'ana_fort_3', reqs = []}
 		]
 	},
+	quest_star_crater = {
+		code = 'quest_star_crater',
+		type = 'encounter',
+		name = tr("QUEST_STAR_CRATER_TEXT"),
+		classname = '',
+		descript = tr("QUEST_STAR_CRATER_DESC"),
+		difficulty = 'easy',
+		background = 'forest2',
+		custom_background = 'combat_cave',
+		enemyarray =  [],
+		eventarray = [],
+		levels = [1,1],
+		resources = '',
+		stages_per_level = [1,1],
+		events = [],
+		tags = [],
+		area = 'forests',
+		travel_time = [0,0],
+	},
 }

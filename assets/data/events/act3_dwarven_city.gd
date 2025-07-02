@@ -90,7 +90,27 @@ var data = {
 				reqs = [
 
 				]
-			}
+			},
+			{
+				text = "ENTER_CITY_T_0_VISIT",
+				reqs = [
+					{
+						type = "decision",
+						value = "BoughtSigmundsPass",
+						check = false
+					}
+				]
+			},
+			{
+				text = "ENTER_CITY_T_0_METEOR",
+				reqs = [
+					{
+						type = "decision",
+						value = "BoughtSigmundsPass",
+						check = true
+					}
+				]
+			},
 		],
 		options = [
 			{
@@ -98,10 +118,50 @@ var data = {
 				text = "DIALOGUECONTINUE",
 				type = "next_dialogue",
 				reqs = [
-
+					{
+						type = "decision",
+						value = "BoughtSigmundsPass",
+						check = false
+					}
 				],
 				dialogue_argument = 9
-			}
+			},
+			{
+				code = "meteor_enter_city2",
+				text = "METEOR_ENTER_CITY_OPT_PASS",
+				type = "next_dialogue",
+				reqs = [
+					{
+						type = "decision",
+						value = "BoughtSigmundsPass",
+						check = true
+					}
+				],
+				dialogue_argument = 9
+			},
+			{
+				code = "close",
+				text = "METEOR_ENTER_CITY_OPT_LEAVE",
+				type = "next_dialogue",
+				reqs = [
+					{
+						type = "decision",
+						value = "BoughtSigmundsPass",
+						check = true
+					}
+				],
+				dialogue_argument = 9,
+				bonus_effects = [
+					{
+						code = "return_to_mansion"
+					},
+					{
+						code = "plan_loc_event",
+						loc = "dwarf_capital",
+						event = "enter_city_t_0"
+					}
+				]
+			},
 		],
 		image = "dwarf_gates"
 	},
@@ -298,17 +358,7 @@ var data = {
 				reqs = [
 
 				],
-				type = "next_dialogue",
-				bonus_effects = [
-					{
-						code = "progress_quest",
-						value = "visit_dwarfs_quest",
-						stage = "audience"
-					},
-					{
-						code = "update_city"
-					}
-				]
+				type = "next_dialogue"
 			}
 		],
 		image = "dwarf_gates"

@@ -1336,7 +1336,7 @@ var buffs = {
 		description = "BUFFDESCRIPTDISTRACT",
 	},
 	b_bloodatk = {
-		icon = "res://assets/images/traits/hitrate.png",
+		icon = "res://assets/images/iconsclasses/Blood_Mage.png",
 		description = "BUFFDESCRIPTBLOODATTACK",
 		tags = ['combat_only', 'show_amount'],
 	},

@@ -1237,6 +1237,7 @@ Silenced: Can't use Spell type abilities.""",
 	SKILLMIMIC_ATTACK = "Sticky Grab",
 	SKILLVOID_BARRAGE = "Void Barrage",
 	SKILLVOID_BARRAGEDESCRIPT = "Deals 80% of MATK as {color=yellow|Dark} damage 5 times to random targets.",
+	SKILLVOIDSLAM = "Void Slam",
 	SKILLDRAW_BLOOD = "Draw Blood",
 	SKILLDRAW_BLOODDESCRIPT = """Strike target for 110% of ATK and cause it to Bleed for 2 turns. 
 
@@ -1913,22 +1914,22 @@ Service is a global modifier for this assignment.""",
 	STATSEXEXP_SEENACTIONS = "",
 	STATSEXEXP_ORGASMS = "",
 	STATSEXEXP_ORGASMPARTNERS = "",
-	STATMANACOST_MOD_ALL = "",
-	STATMANACOST_MOD_MELEE = "",
-	STATMANACOST_MOD_RANGED = "",
-	STATMANACOST_MOD_NORMAL = "",
-	STATMANACOST_MOD_EARTH = "",
-	STATMANACOST_MOD_AIR = "",
-	STATMANACOST_MOD_WATER = "",
-	STATMANACOST_MOD_LIGHT = "",
-	STATMANACOST_MOD_DARK = "",
-	STATMANACOST_MOD_MIND = "",
-	STATMANACOST_MOD_PHYSIC = "",
-	STATMANACOST_MOD_SPELL = "",
-	STATMANACOST_MOD_SKILL = "",
-	STATMANACOST_MOD_AOE = "",
+	STATMANACOST_MOD_ALL = "All Mana Cost",
+	STATMANACOST_MOD_MELEE = "Melee Mana Cost",
+	STATMANACOST_MOD_RANGED = "Ranged Mana Cost",
+	STATMANACOST_MOD_NORMAL = "Normal Mana Cost",
+	STATMANACOST_MOD_EARTH = "Earth Mana Cost",
+	STATMANACOST_MOD_AIR = "Air Mana Cost",
+	STATMANACOST_MOD_WATER = "Water Mana Cost",
+	STATMANACOST_MOD_LIGHT = "Light Mana Cost",
+	STATMANACOST_MOD_DARK = "Dark Mana Cost",
+	STATMANACOST_MOD_MIND = "Mind Mana Cost",
+	STATMANACOST_MOD_PHYSIC = "Physic Mana Cost",
+	STATMANACOST_MOD_SPELL = "Spell Mana Cost",
+	STATMANACOST_MOD_SKILL = "Skill Mana Cost",
+	STATMANACOST_MOD_AOE = "AoE Mana Cost",
 	STATMANACOST_MOD_TRUE = "",
-	STATMANACOST_MOD_HEAL = "",
+	STATMANACOST_MOD_HEAL = "Heal Mana Cost",
 	INNATE = "innate",
 	STATPERSONALITYDESCRIPT = "Personality defines character's speech patterns and provides a minor benefit. Personality can be adjusted later with training.",
 	SLAVEDIET = "Food Preferences",
@@ -2038,7 +2039,7 @@ Service is a global modifier for this assignment.""",
 	STATWITS = "Wits",
 	STATCHARM = "Charm",
 	STATSEXUALS = "Sexual Proficiency",
-	STATMANACOST_MOD_FIRE = "Fire Spell Cost",
+	STATMANACOST_MOD_FIRE = "Fire Mana Cost",
 	STATPHYSICSDESCRIPT = "{color=yellow|Physical} representation of character's muscles and reflexes. The higher it is, the more effective the character is at combat and manual labor tasks. Grows with physical labor and by using Skill type abilities in combat.",
 	STATWITSDESCRIPT = "{color=yellow|Wits} represent character's quickness of mind and intelligence. High Wits is mandatory for stronger Mage classes and crafters. Grows with some crafting labors and by using Spell type abilities in combat.",
 	STATCHARMDESCRIPT = "{color=yellow|Charm} represents character's appeal and appearance. High Charm makes social oriented works and skills a lot more effective. Grows from using social abilities.",
@@ -2655,8 +2656,7 @@ Skill attacks possess Dark element.""",
 	TRAITBISHOPDESCRIPT = """Light Magic damage: +25%
 {color=brown|Luminance}: Single target Light abilities make target receive more Light and Dark damage.""",
 	TRAITDRUIDDESCRIPT = "Earth Spell damage: +20%",
-	TRAITBERSERKERDESCRIPT = """Fire and Earth Physical damage: +20%
-{color=brown|Frenzy}: After killing an enemy, gain an extra turn (once per combat).""",
+	TRAITBERSERKERDESCRIPT = """{color=brown|Frenzy}: After killing an enemy, gain an extra turn (once per combat).""",
 	TRAITSNIPERDESCRIPT = "Single Target Physical damage: +25%",
 	TRAITPALADINDESCRIPT = "{color=brown|Smite}: Deal 25% more damage and take 15% less damage from Undead and Demon type enemies.",
 	TRAITASSASSINDESCRIPT = "{color=brown|Stealth Mastery}: Hiding can be activated in Medium Armor.",
@@ -3031,6 +3031,7 @@ Social skills effect: +10%.""",
 	BUFFDESCRIPTDISTRACT = "Distracted: -30 Hit Rate and Evasion",
 	BUFFDESCRIPTSILENCE = "Silenced: Can't use Spell type abilities",
 	BUFFDESCRIPTDISARM = "Disarmed: Can't use Skill type abilities",
+	BUFFDESCRIPTBLOODATTACK = "Blood Magic: MATK increased",
 	BUFFDESCRIPTBANISH = "Banish",
 	BUFFDESCRIPTVOID = "Void",
 	BUFFDESCRIPTDEFEND = "Defend",
@@ -3042,6 +3043,7 @@ Social skills effect: +10%.""",
 	BUFFDESCRIPTCONFUSE = "Confusion",
 	BUFFDESCRIPTFREEUSE = "Allows to use an item without taking a turn",
 	BUFFDESCRIPTSHRED = "Shredded: DEF is reduced by 50%%",
+	BUFFDESCRIPTSHATTER = "Shattered: MDEF is reduced by 50%%",
 	BUFFDESCRIPTGROWL = "Speed and evasion decreased",
 	BUFFDESCRIPTCURSEATTACK = "Attack decreased",
 	BUFFDESRIPTCURSEATTACKTR = "Attacking this target causes ATK decreased",
@@ -3055,6 +3057,7 @@ Social skills effect: +10%.""",
 	BUFFDESCRIPTTEMPLAR = "MDEF Increaased",
 	BUFFDESCRIPTCURSE = "",
 	BUFFDESCRIPTENCHANT = "",
+	BUFFDESCRIPTSLEEP = "Sleep: Skip turns until damaged",
 	BUFFDESCRIPTMENTOR = "Experience Gain increased",
 	BUFFDESCRIPTBISHOP = "Target receive 20%% more Light and Dark damage",
 	BUFFDESCRIPTWET = """Wet
@@ -3890,7 +3893,7 @@ The [race] gives you a desperate look. """,
 	DIALOGUEEVENTEXOTICTRADER = "You find an exotic slave trader with a large group of guards. Exotic race slaves are rare and expensive, so you should consider yourself lucky. After greetings he presents you his belongings.",
 	DIALOGUEALIRONEXOTICTRADER = """This morning you've received a message that today Avermik came to town. An mysterious slave trader which deals with rare and exotic races. They seem to recurringly visit Aliron and might provide a reliable way to seize on an unusual slave. 
 
-If you have enough cash...""",
+If you got the coin for it...""",
 	DIALOGUEPERSONASKTOJOIN = "Offer to join",
 	DIALOGUERECRUITSUCCESS = """[center]{color=green|Success!}[/center]
 [name] was able to convince [scncharname] to join you.""",
@@ -5455,6 +5458,7 @@ The princess notices Aire tensing up in response to the question.
 	STATDAMAGE_MOD_DARK = "Dark Damage",
 	STATDAMAGE_MOD_MIND = "Mind Damage",
 	STATDAMAGE_MOD_MELEE = "Melee Damage",
+	STATDAMAGE_MOD_RANGED = "Ranged Damage",
 	ENEMYMANEATER_PLANT = "Maneater Plant",
 	ENEMYCENTIPEDE = "Centipede",
 	ENEMYOGRE_ALPHA = "Ogre Alpha",
@@ -6014,7 +6018,7 @@ The miniature girl reacted to your appearance unexpectedly nonchalantly.
 
 — Zephyra.
 
-Zephyra briefly bowed down to you after she spoke her name.""",
+Zephyra briefly bowed down to you after she introduced herself.""",
 	DIVINE_SYMBOL_24 = """— Before I forget... Here, an acquaintance gift.
 
 She passes you a roll of paper she took from the pile on a small table. As you unfold it you see a rough but somewhat talented sketch of a [man]'s portrait. On a second look you notice how this person vaguely resembles you. Seeing the look on your face, Zephyra shines with excitement.
@@ -8689,7 +8693,7 @@ Zephyra leaves the church without giving you a second glance.""",
 — Happy now, dear Mayor? This way both you get what you want and I could make some scandalous claims if you do something bad. Now, please excuse me, I don't want to keep around here... or anywhere, being that unprotected. 
 
 Zephyra leaves to her room before you get a chance to react. It seems she will take you reaction as an agreement.""",
-	ZEPHYRA_SWORD_3_4 = "- Now, have I satisfied your curiosity? What is your answer?",
+	ZEPHYRA_SWORD_3_4 = "— Now, have I satisfied your curiosity? What is your answer?",
 	PRIESTESS_SWORD_TALK_1_1 = """After making an appointment, you are able to find an audience with the High Priestess. 
 
 — Just so you know, I'm only receiving you because of your high status. What do you need?""",
@@ -9939,7 +9943,7 @@ Making note of your approach the girl immediately walks over to you, her normal 
 	CALI_SIDEQUEST_9_1 = """— You think so..? I guess, I want to. He-he, I've never really been good with stuff like dresses and etiquette. I guess, maybe it's time for me to try it. It may be fun for all we know. 
 
 After thinking about it, you decide it might be a good idea to visit the Servants Guild for some ideas on making Cali more feminine.""",
-	CALI_SIDEQUEST_9_2 = """— Y-you really think so? I mean I guess I'd like to, but I've never really been good with this stuff. Although for you I suppose I could try. 
+	CALI_SIDEQUEST_9_2 = """— Y-you really think so? Still, I'd like to give it a try, after all I've never been good with this stuff and other people gave me such looks...
 
 After thinking about it, you decide it might be a good idea to visit the Servants Guild for some ideas on making Cali more feminine.""",
 	CALI_SIDEQUEST_9_2_alt = """— Hmm, if you say so I'll believe you. I'm not sure where to start, though. Do you have something on your mind? 
@@ -12397,7 +12401,7 @@ Zephyra finished her story and lowered head in submission, nervously waiting for
 She feigns collapse towards you and buries her face into your chest. 
 
 — Have you... Aah... No pity for my young maiden's heart?""",
-	ZEPHYRA_BRUSH_16_3 = """- S-sorry about that... I shouldn't have told you about this, I... Sorry...
+	ZEPHYRA_BRUSH_16_3 = """— S-sorry about that... I shouldn't have told you about this, I... Sorry...
 
 Zephyra runs out of room, leaving you alone, and has not shown herself for the rest of the day.""",
 	ZEPHYRA_BRUSH_17 = """As you open your mouth to respond, Zephyra catches you off guard and instantly seals your lips with hers. Her slow yet desperate kiss finally comes to an end, making you forget whatever you were about to say.
@@ -13979,7 +13983,8 @@ You can't resist her taunts any longer, finally letting your second load burst i
 You wonder who could be the sender but it's likely someone else standing against the cult. Regardless, it's better not to let it fall into the enemy's hands.""",
 	ENTER_CITY_T_0 = """The subterranean capital looms heavily as you approach, with towering stone gateways creating an imposing presence along the underground trail. A pair of guards stand sentinel at the entrance, and as they notice your approach, one of them dismissively scoffs, adding a contemptuous spit to the ground. Another one addresses you. 
 
-— Halt immediately, outsider. Any step closer will be seen as hostile, warranting elimination.""",
+""",
+	ENTER_CITY_T_0_VISIT = "— Halt immediately, outsider. Any step closer will be seen as hostile, warranting elimination.",
 	ENTER_CITY_T_1 = """The first guard gestures toward the crossbowmen positioned atop the city wall. Engaging in a skirmish would be futile; the archers, with precision akin to a lightning strike, could transform you into a pincushion of bolt in mere moments.
 
 — State your identity.""",
@@ -15619,20 +15624,20 @@ Back and forth, her tail flits around, belying her excitement as she tries to ke
 You decide to leave her alone for now.""",
 	KURO_AFTER_TOME = """You find Kuro in a secluded side of your mansion, it seems she prefers to stay away from more crowded areas.
 
-- It's you. Do you have some business with me?""",
+— It's you. Do you have some business with me?""",
 	KURO_AFTER_OPT_BOOK = "So what was that book that you wanted?",
 	KURO_AFTER_OPT_CAPABLE = "You've proved to be quite capable dealing with Myr and the dwarves",
-	KURO_AFTER_REPLY_BOOK = "- Chronicles of Al'Hazred. Have you begin having a memory or hearing issues at your age? That would be disappointing. Don't worry about it, I'm not going to explain what's the content of the book. Too bad you can't read ancient languages.",
-	KURO_AFTER_TOME2 = """- Uh huh.
+	KURO_AFTER_REPLY_BOOK = "— Chronicles of Al'Hazred. Have you begin having a memory or hearing issues at your age? That would be disappointing. Don't worry about it, I'm not going to explain what's the content of the book. Too bad you can't read ancient languages.",
+	KURO_AFTER_TOME2 = """— Uh huh.
 
 Kuro seemingly dismisses your praise and looks away.
 
-- If you are done for today I shall see myself to my business.""",
+— If you are done for today I shall see myself to my business.""",
 	KURO_AFTER_OPT_UNHAPPY = "Why don't you seem happy to be complimented?",
 	KURO_AFTER_OPT_ELSE = "Actually, I have something else I wanted to talk about...",
 	KURO_AFTER_TOME3 = """Hearing your question Kuro stays silent for a moment considering something, before replying in the most condescending motherly voice yet.
 
-- While it would be more appropriate for me to leave at this point, I suppose I shall give you something for being what you are. So, here's the question for you. How happy would you feel to be praised for doing something mundane like walking or breathing? - Kuro pauses with a small smirk - Ah, of course, you don't have to answer that.
+— While it would be more appropriate for me to leave at this point, I suppose I shall give you something for being what you are. So, here's the question for you. How happy would you feel to be praised for doing something mundane like walking or breathing? - Kuro pauses with a small smirk - Ah, of course, you don't have to answer that.
 
 In the next moment she's gone in her usual manner.""",
 	LIRA_LOST_START = "As you get through the woods, you suddenly hear a woman's voice calling for help. You cautiously move towards it...",
@@ -15774,31 +15779,31 @@ Kuro: — Let's go. I wanna get into the bath before the night.""",
 	KURO_BACK_OPT_WHAT = "What the hell was that?",
 	KURO_BACK_OPT_DESERVE = "I think I deserve some answers",
 	KURO_BACK_OPT_SILENT = "*Keep silent* (close)",
-	KURO_BACK_START2 = """- Men really like their silly questions, aren't they? It doesn't really matter now...
+	KURO_BACK_START2 = """— Men really like their silly questions, aren't they? It doesn't really matter now...
 
 Kuro takes a pause before continuing with seemingly unrelated narration.
 
-- I was born in a merchant family, nothing fancy, but at the age of five I've realized that my peers aren't particularly smart. While not surprising, neither were my parents. Things grew worse with time but fairly quickly I've learned to mask my intelligence from others. The less you stand out, the fewer unwanted attention you gather.""",
-	KURO_BACK_START3 = "- At the age of eleven I've staged my disappearance. Thankfully, I've had access to enough information to survive on my own. But the world is tough place, especially for a young girl. I've discovered an ancient deity, the one which I now share powers with. That's the gist of how I have been living to this day.",
-	KURO_BACK_START4 = """- Heh, I've skipped over something, haven't I? The cult.
+— I was born in a merchant family, nothing fancy, but at the age of five I've realized that my peers aren't particularly smart. While not surprising, neither were my parents. Things grew worse with time but fairly quickly I've learned to mask my intelligence from others. The less you stand out, the fewer unwanted attention you gather.""",
+	KURO_BACK_START3 = "— At the age of eleven I've staged my disappearance. Thankfully, I've had access to enough information to survive on my own. But the world is tough place, especially for a young girl. I've discovered an ancient deity, the one which I now share powers with. That's the gist of how I have been living to this day.",
+	KURO_BACK_START4 = """— Heh, I've skipped over something, haven't I? The cult.
 
 Kuro takes a pause, apparently choosing her next words.
 
-- I was a part of our deal, but I would lie if I said that there was no connection between me and the cult whatsoever. No, not of the personal kind. Now I'm on this side and you can be wondering why I've chosen you over both the cult and Nixx all you want.""",
+— It was a part of our deal, but I would lie if I said that there was no connection between me and the cult whatsoever. No, not of the personal kind. Now I'm on this side and you can be wondering why I've chosen you over both the cult and Nixx all you want.""",
 	KURO_BACK_OPT_STRONG = "I'm the stronger side?",
 	KURO_BACK_OPT_USEFUL = "You must think I'm useful to you",
 	KURO_BACK_OPT_LIKE = "Because you like me",
 	KURO_BACK_OPT_ALL = "It's all of that",
 	KURO_BACK_OPT_NO_IDEA = "I have no idea and I don't think you gonna tell me anyway",
-	KURO_BACK_REPLY_STRONG = "- Ha-ha, I don't know that, really. You've just been overpowered by me alone. You might have more chances in the long run with all factors given.",
+	KURO_BACK_REPLY_STRONG = "— Ha-ha, I don't know that, really. You've just been overpowered by me alone. You might have more chances in the long run with all factors given.",
 	KURO_BACK_REPLY_USEFUL = """Kuro shrugs in dismissal.
 
-- You are useful, but I could manage most of the stuff as is.""",
-	KURO_BACK_REPLY_LIKE = "- That's very cute of you, and while I can't say you are completely wrong, it's too ridiculous to think that mere emotional sympathy would make me turn on my supposed allies.",
-	KURO_BACK_REPLY_ALL = """- No.
+— You are useful, but I could manage most of the stuff as is.""",
+	KURO_BACK_REPLY_LIKE = "— That's very cute of you, and while I can't say you are completely wrong, it's too ridiculous to think that mere emotional sympathy would make me turn on my supposed allies.",
+	KURO_BACK_REPLY_ALL = """— No.
 
 Kuro's answer is straight and simple, emotionless even. She boldly refuses your presumption and indicates that this discussion is over as you travel back in silence.""",
-	KURO_BACK_REPLY_NO_IDEA = "- That's not a bad line of thought. Besides, one thing people miss all the time is that there's a correct answer for the wrong question. However, I hope you will demonstrate adequate interest when the time is right.",
+	KURO_BACK_REPLY_NO_IDEA = "— That's not a bad line of thought. Besides, one thing people miss all the time is that there's a correct answer for the wrong question. However, I hope you will demonstrate adequate interest when the time is right.",
 	KURO_MANSION_ARRIVE = "After you arrive at home Kuro does not seem to explain herself but looks visibly prepared for your questioning.",
 	KURO_MANSION_OPT_EXPLAIN = "You aren't going to explain what it was all about?",
 	KURO_MANSION_OPT_NOASK = "*Ask nothing*",
@@ -16177,6 +16182,13 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	ANASTASIA_QUEST_STAGE11 = "Deal with Fort Defenders.",
 	ANASTASIA_QUEST_STAGE12 = "Deal with Reyan",
 	ANASTASIA_QUEST_STAGE13 = "Return to Duncan",
+	METEORITE_QUEST_NAME = "Meteorite Quest",
+	METEORITE_QUEST_SUMMARY = "A star fell not too far from elven forests. Druid Lorien wants you to investigate.",
+	METEORITE_QUEST_CHECK_OUT = "Check out fallen star",
+	METEORITE_QUEST_RETURN_METEOR = "Get back to Lorien",
+	METEORITE_QUEST_FIND_USE = "Find anyone who can figure out a good use for fallen star",
+	METEORITE_QUEST_GET_INSIDE = "Find a way to get inside dwarf lands",
+	METEORITE_QUEST_SEARCH_DURIM = "Search for Durim in dwarf capital",
 	HARA_SCALES_QUEST_NAME = "Hara: fixing the Scales",
 	HARA_SCALES_QUEST_SUMMARY = "Help Hara to fix Scales of Destiny for the King",
 	HARA_SCALES_QUEST_SEE_HARA = "Visit Hara at workshop",
@@ -16194,8 +16206,8 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	HARA_SCALES_QUEST_VISIT = "Visit workshop",
 	VISIT_DWARFS_QUEST_NAME = "Visit dwarven kingdom",
 	VISIT_DWARFS_QUEST_SUMMARY = "Next artifact should be in dwarven kingdom's possession.",
-	VISIT_DWARFS_QUEST_SEARCH = "Search a nearby mountain for an entrance to dwarven kingdom.",
-	VISIT_DWARFS_QUEST_AUDIENCE = "Get audience with king.",
+#	VISIT_DWARFS_QUEST_SEARCH = "Search a nearby mountain for an entrance to dwarven kingdom.",
+	VISIT_DWARFS_QUEST_AUDIENCE = "Search a nearby mountain for an entrance to dwarven kingdom and get audience with king.",
 	VISIT_DWARFS_QUEST_TAVERN = "Find a way to attract king's attention. Visit a tavern for a start.",
 	VISIT_DWARFS_QUEST_JEAN = "Help Jean, meet her at Mountain Pass marked on her map, or... You can turn her in. King could be pleased with such revelation.",
 	DKING_HARA_QUEST_NAME = "Rescue Hara",
@@ -17480,6 +17492,8 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_CULT_HIDEOUT_DESC = "",
 	QUEST_CULT_PARENTBASE_TEXT = "Cult's Parent Base",
 	QUEST_CULT_PARENTBASE_DESC = "",
+	QUEST_STAR_CRATER_TEXT = "Fallen star's spot",
+	QUEST_STAR_CRATER_DESC = "",
 	ALIRON1 = "Check the streets",
 	ALIRON2 = "Search for Reim",
 	ALIRON3 = "Visit Fred's Dormitory",
@@ -17528,6 +17542,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	DWARF_CAPITAL_JEAN = "Search for Jean",
 	DWARF_CAPITAL_WHISKEY = "Check the market",
 	DWARF_CAPITAL_WHISKEY2 = "Visit market",
+	DWARF_CAPITAL_DURIM = "Search for Durim",
 	INFINITEDUNGEONUNLOCK = "Dark Alley",
 	BEASTKIN_CAPITAL1 = "Find Chieftain",
 	BEASTKIN_CAPITAL2 = "Visit Shaman's Lodge",
@@ -17589,6 +17604,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_OLD_GODS_TEMPLE_LOCATION = "Approach",
 	QUEST_WHISKY_CRASH_LOCATION = "Search around",
 	QUEST_CULT_HIDEOUT_LOCATION = "Search for the building",
+	QUEST_STAR_CRATER_LOCATION = "Search around",
 	CURRENT_PREFERRED_FOOD_CONSUMPTION = "Current Preferred Food Consumption",
 	TOOLTIP_CLOCK1 = """Advance Time
 Hotkey: 1""",
@@ -18212,6 +18228,9 @@ After a few minutes nothing still happened and [name] decides to move on.""",
 	ZEPHYRA_BATH_1_O_0 = "*Stand up and leave*",
 	HELEVIEL_MANSION_1_O_0 = "*Just keep her as slave for now*",
 	HELEVIEL_MANSION_1_O_1 = "*Give her a lesson of \"Obedience\"*",
+	ANASTASIA_BLOWJOB_SS = "Accept Anastasia's \"Reward\"*",
+	ANASTASIA_WEDDING_SS = "Marrying an (ex)princess.",
+	ZEPHYRA_WEDDING_SS = "Wedlock with Zephyra",
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """You explain to Alise that one of your slaves needs a change of clothes.
 
 — Why, yes, proper servants' attire is one of our specialties. You know, the right clothes make a big difference even for less ideal bodies, naturally we have tailors who can adjust for any required body type. But what are you looking for, anyway?""",
@@ -18510,52 +18529,52 @@ She swallows hard, then straightens, voice trembling but obedient.
 — I got a letter from a delivery boy, he left faster than I could thank him, I swear, that is all I know.""",
 	ANASTASIA_PT2_1_3 = """Anastasia has a tone of sorrow in her voice.
 
-- He was the one who took me away when the coup happened and has been caring for me since that time. He wasn't very kind or anything, but we managed to hide and gather support over these years. I think he still has not given up on this and must be angry.""",
+— He was the one who took me away when the coup happened and has been caring for me since that time. He wasn't very kind or anything, but we managed to hide and gather support over these years. I think he still has not given up on this and must be angry.""",
 	ANASTASIA_PT2_1_OPTION_1 = "I never thought he would show up again. How did you get it?",
 	ANASTASIA_PT2_1_OPTION_2 = "What happened back then? Tell me more about him",
 	ANASTASIA_PT2_1_OPTION_3 = "I'll take it, I appreciate your honesty.",
 	ANASTASIA_PT2_2 = """Anastasia nods and passes you the letter.
 
-- Thank you. Just, please, don't put yourself in danger. Uncle is very resourceful and can be cunning in his plans.
+— Thank you. Just, please, don't put yourself in danger. Uncle is very resourceful and can be cunning in his plans.
 
 As you leave the room, you feel like this issue is better to be brought to Duncan.""",
 	ANA_DUNCAN_INITIATE = "It seems I've found a letter from Greg...",
 	ANA_DUNCAN_1 = """You pass the message obtained from Anastasia to Duncan. He barely frowns upon hearing the news but behaves as stoic as always.
 
-- I see. Shame we didn't get him at that time. Say, has the princess seen it?""",
+— I see. Shame we didn't get him at that time. Say, has the princess seen it?""",
 	ANA_DUNCAN_1_OPTION_1 = "I got it before her (lie)",
 	ANA_DUNCAN_1_OPTION_2 = "She was the one who exposed it.",
-	ANA_DUNCAN_2_1 = "- Good. We'll investigate it but judging from the way it's worded, Greg has nothing left and is only grasping at straws.",
-	ANA_DUNCAN_2_2 = "- So it might be a trap then. Better not lower your guard. We'll investigate it but judging from the way it's worded, Greg has nothing left and is only grasping at straws.",
+	ANA_DUNCAN_2_1 = "— Good. We'll investigate it but judging from the way it's worded, Greg has nothing left and is only grasping at straws.",
+	ANA_DUNCAN_2_2 = "— So it might be a trap then. Better not lower your guard. We'll investigate it but judging from the way it's worded, Greg has nothing left and is only grasping at straws.",
 	ANA_DUNCAN_3_1 = """Just as you are about to leave, Duncan suddenly stops you.
 
-- Hold on, there was one issue I could use your help with. There has been a rebel fort standing ever since the announcement. They refuse to surrender so you can take the girl with you and have her negotiate with them. Make her at least useful for something.""",
-	ANA_DUNCAN_3_2 = "- I'm a married man, don't make me hold a grudge against you.",
+— Hold on, there was one issue I could use your help with. There has been a rebel fort standing ever since the announcement. They refuse to surrender so you can take the girl with you and have her negotiate with them. Make her at least useful for something.""",
+	ANA_DUNCAN_3_2 = "— I'm a married man, don't make me hold a grudge against you.",
 	ANA_DUNCAN_3_3 = """Duncan frowns even harder than usual before continuing. 
 
-- My apologies, our past drags the worst out of me.""",
+— My apologies, our past drags the worst out of me.""",
 	ANA_DUNCAN_3_4 = """Duncan pauses before taking a breath for the explanation to deliver.
 
-	- Let me tell you this. People are only content with how things are right now because it's been 12 years since the end of the mad king's tyranny. Soon they will realize that the guilds won't provide them with stability and order, way more interested in their own quarrels. Then people will turn for a true, strong leader who will offer to put everyone in place and provide protection from the Empire. I may not live to that day so consider it to be my warning.""",
-	ANA_DUNCAN_3_5 = """- I promise nobody is to disrupt whatever petty games you have for her in there. 
+	— Let me tell you this. People are only content with how things are right now because it's been 12 years since the end of the mad king's tyranny. Soon they will realize that the guilds won't provide them with stability and order, way more interested in their own quarrels. Then people will turn for a true, strong leader who will offer to put everyone in place and provide protection from the Empire. I may not live to that day so consider it to be my warning.""",
+	ANA_DUNCAN_3_5 = """— I promise nobody is to disrupt whatever petty games you have for her in there. 
 
 	Despite the cynical remark, Duncan's words feel like a non-hostile humorous attempt.""",
 	ANA_DUNCAN_3_OPTION_1 = "She's very useful as a bed warmer, you know.",
 	ANA_DUNCAN_3_OPTION_2 = "Not a very nice way to speak of someone's wife",
 	ANA_DUNCAN_3_OPTION_3 = "Why do you hate Anastasia so much, anyway?",
 	ANA_DUNCAN_3_OPTION_4 = "I'll give it a try.",
-	ANA_DUNCAN_4 = "- I don't hate her, I merely think she's a foolish, naive child who ended up in a place where she brings troubles. Your lengthy effort has secured her a safe spot for now and this much we've agreed to tolerate.",
+	ANA_DUNCAN_4 = "— I don't hate her, I merely think she's a foolish, naive child who ended up in a place where she brings troubles. Your lengthy effort has secured her a safe spot for now and this much we've agreed to tolerate.",
 	ANA_DUNCAN_4_OPTION_1 = "But she could be a good leader figure for the people.",
 	ANA_DUNCAN_4_OPTION_2 = "I promise she won't cause any troubles in future for that matter.",
-	ANA_DUNCAN_5 = """- Do that. There should be a group of our men leading the siege. The leader is Reyan, he'll instruct you in place.
+	ANA_DUNCAN_5 = """— Do that. There should be a group of our men leading the siege. The leader is Reyan, he'll instruct you in place.
 
 On your way out you think about how to present this to Anastasia.""",
 	ANA_TRAVEL_INITIATE = """You explain to Anastasia the upcoming task to which she agrees after a quick consideration.
 
-- I understand, very well, I shall try my best. It's a shame that the war is still ongoing in some regions and I will try my best to stop it.""",
+— I understand, very well, I shall try my best. It's a shame that the war is still ongoing in some regions and I will try my best to stop it.""",
 	ANA_FORT_1 = """As you make your way through the woods, you finally notice the camp of guild's forces Duncan told you about. Few soldiers recognize you with one leading to their leader, a ruff looking middle aged man, more fitting to be a mercenary rather than Fighters' Guild member. 
 
-Reyan: — Mayor [name]? I'm Reyan. Didn't expect you to be the promised reinforcement, and... - he takes a look at Anastasia, faint smirk showing on his face - a former rebel leader herself. 
+Reyan: — Mayor [name]? I'm Reyan. Didn't expect you to be the promised reinforcement, and... — he takes a look at Anastasia, faint smirk showing on his face - a former rebel leader herself. 
 
 Anastasia: — We want to stop this pointless fighting. 
 
@@ -18664,7 +18683,9 @@ Your cock throbs powerfully as you erupt into her waiting mouth. The princess's 
 
 As your orgasm subsides, Anastasia slowly pulls back, her lips giving one final suck to the sensitive head of your cock. She swallows what she's collected, her throat working visibly as she maintains eye contact. A mixture of pride and satisfaction crosses her features – the look of someone who has successfully completed a challenging but rewarding task.
 
-— This isn't much but I hope this pleased you.""",
+— This isn't much but I hope this pleased you.
+
+{color=yellow|New portrait for Anastasia has been unlocked}""",
 	ANA_WED_1 = """The bedroom door closes behind you with a soft click. Anastasia stands before you, her blue eyes wide with anticipation as moonlight streams through the tall windows, casting a silvery glow across the opulent chamber. The wedding celebration has finally ended, and now it's just the two of you.
 
 — To tell the truth, I'm more nervous than ever...
@@ -18816,4 +18837,117 @@ Her taunting words fade into energetic giggles, swallowed by the tower's eerie s
 	AMELIA_BONUS = """- Pink hair? Now that's a random question! I don't think it'd suit me, but if you think I'd pull it off, I might consider it... for you.
 
 She winks, her tail swishing as she makes an eye-catching move.""",
+	ELF_CAPITAL_DRUIDS_LOUNGE = "Druids' lounge",
+	METEOR_LOUNGE_START = """Wandering through the serene streets, you stumble upon a secluded druid lounge, its entrance framed by flowering branches. A male elf druid, clad in robes of woven leaves, turns sharply at your entrance, his silver eyes wide with surprise.
+
+— An outsider in our city? I haven't seen you before. I am Lorien, current keeper of this grove's secrets, at least officially so. 
+
+You explain that you've only been exploring surroundings but as you prepare to turn away he stops you.
+
+— Hold on. I have a task for someone like you. Pardon my lack of manners, I'm not familiar with foreign customs.""",
+	METEOR_LOUNGE_REVISIT = """Once again you enter Druid's lounge finding Lorien there.
+
+— You again. Ready to take on the important task I want to entrust to you?""",
+	METEOR_LOUNGE_START_OPT_WHAT = "What is it?",
+	METEOR_LOUNGE_START_OPT_ANOTHER = "Maybe another time",
+	METEOR_LOUNGE_BRIEF = """Lorien offers you a cup of warm herbal tea before he starts explaining.
+
+— The druids are not only spiritual guides but also natural observers. One of my tasks is to watch over the night sky and stars. Three moons ago I saw a star falling not too far from our forests. However as I delivered that information to the High Priestess she found that information... insignificant. 
+
+His voice sounds bitter when he addressed the High Priestess but its clear her authority invokes respect into him.
+
+— We are not allowed to leave the capital and I was denied to investigate it as well. However an outsider like you isn't held back by such rules. I want you to see what happened to it, as my intuition dictates it's not something to overlook.""",
+	METEOR_LOUNGE_BRIEF_OPT_CHECK = "That sounds curious, I'll check it out",
+	METEOR_LOUNGE_BRIEF_OPT_MAYBE = "Maybe, If I have enough time",
+	METEOR_LOUNGE_RESPONSE = "Content with your response, Lorien has marked the spot on your location. It shouldn't take too much time although you wonder if you're gonna find anything at all after this much time has passed.",
+	METEOR_OGRES_START = "As you arrive at the clearing Lorien has pointed out, you spot the place the star has fallen into. The crater has overgrown some time ago but around it you spot multiple large foot tracks. Much larger than humans, they must belong to ogres.",
+	METEOR_OGRES_START_OPT_FOLLOW = "*Follow tracks*",
+	METEOR_OGRES_CAMP = """You manage to follow the poorly preserved tracks for a while but your effort rewards you. You find a makeshift camp belonging to a small group of ogres. It's a crude setup of tattered hides and splintered logs, reeking of charred meat and damp earth. Three ogres huddle around a smoldering fire, their guttural laughter echoing through the clearing. The largest, a brute with a scarred hide, grips a massive club embedded with a jagged, faintly glowing stone—the fallen star, no doubt. His beady eyes scan the surroundings as he grunts to his companions.
+
+— Oi, dis shiny rock's mine! Found it in da hole, fair 'n square. Dis makes me king! Ain't no one takin' it!
+
+His two companions, smaller but no less menacing, nod eagerly, their clubs resting against a nearby boulder. You crouch in the underbrush, weighing your options.""",
+	METEOR_OGRES_CAMP_OPT_FIGHT = "*Fight the ogres*",
+	METEOR_OGRES_CAMP_OPT_CURSED = "[Persuasion Challenge] You better give up on this rock, it's cursed and will make you sick.",
+	METEOR_OGRES_FIGHT = """You leap from the foliage, weapon drawn, catching the ogres off-guard. The leader roars, hefting his club.
+
+— You want dis rock? Come take it, puny thing!
+
+The smaller ogres scramble for their weapons, their snarls mixing with the crackle of the fire. It's three against one, and the leader's club looks like it could crush stone.""",
+	METEOR_OGRES_SECURE = "You secure the large stone piece which feels a lot heavier in your arms. It's time to get back to Lorien.",
+	METEOR_OGRES_TRICKED = """You step boldly into the camp, standing tall and locking eyes with the leader.
+
+— Huuh? Evil thing? It tricked me into thinkin' I'm strong... Take it and go, I don't want it!
+
+""",
+	METEOR_LOUNGE_RETURN = """Lorien stands near a glowing crystal, his silver eyes brightening as you approach, the stone clutched in your hand. Its dark, faintly pulsing surface catches the light, drawing his gaze.
+
+— You've returned! And with the fallen star, no less.""",
+	METEOR_LOUNGE_RETURN2 = """You recount the ogre encounter, describing the crude camp and the club embedded with the strange stone.
+
+— Ogres, you say? Reckless creatures, but I'm glad you retrieved it. Yet... I confess, I know not what to do with such a thing. I feel some power coming from it though.
+
+He studies the meteorite, hesitant to touch it, then shakes his head.
+
+— Keep it, outsider. You've earned it, and perhaps its purpose will reveal itself to you. And I have one fewer thing to worry about. 
+
+As you take it with you, it makes you wonder if you know anyone who can figure out a good use for it...""",
+	METEOR_SIGMUND_START_OPT_FOUND = "I've found one strange rock which has fallen from the skies...",
+	METEOR_SIGMUND_START_OPT_PAYMENT = "I've got the payment for the pass (200 gold)",
+	METEOR_SIGMUND_START_OPT_ACCESS = "I've gained access to dwarf capital",
+	METEOR_SIGMUND_START = """His eyes, sharp beneath bushy brows, lock onto the meteorite as you present it. The stone's faint glow reflects in his intrigued gaze.
+
+— This ain't no common stone. Fell from da sky, ye say? It's a fine metal, but me 'fraid I'm no help with something like dis. Ya'd need to find someone from dwarf lands. But they don't let strangers inside usually.""",
+	METEOR_SIGMUND_START_OPT_INSIDE = "You know how to get inside?",
+	METEOR_SIGMUND_START_OPT_USE = "I'd like to use it",
+	METEOR_SIGMUND_GOLD = "— Well I've a connection which might get ya inside, but it ain't cheap these days. I'll need two hundred gold for da pass.",
+	METEOR_SIGMUND_GOLD_OPT_PAY = "Pay (200 gold)",
+	METEOR_SIGMUND_GOLD_OPT_ALREADY = "Actually I can get inside already",
+	METEOR_SIGMUND_GOLD_OPT_BACK = "I'll be back later",
+	METEOR_SIGMUND_PAY = """You pass Sigmund the gold he asked for as he takes you away to the backrooms.
+
+— Alright, take dis piece. It'll get ya through guards. Da man you are looking for is called Durim, he works with stuff like this.
+
+""",
+	METEOR_SIGMUND_LEAVE = "Getting all the necessary information you leave preparing to venture to the mountains.",
+	METEOR_SIGMUND_ACCESS = """— Ya did? Great to hear. Da man you are looking for is called Durim, he works with stuff like this.
+
+""",
+	ENTER_CITY_T_0_METEOR = "— Turn around, outsider. The city is closed until king's new order.",
+	METEOR_ENTER_CITY_OPT_PASS = "*Present the pass from Sigmund*",
+	METEOR_ENTER_CITY_OPT_LEAVE = "*Leave*",
+	METEOR_ENTER_CITY2 = "The guard looks around cautiously before giving a gesture to make a quick pass allowing you to get inside. The gates are quickly closed after that but for now you'll be able to get around this place and back.",
+	METEOR_DURIM_START = "After questioning a few tight-lipped locals, you learn Durim runs an alchemy shop. A half-hour's trek through smoky alleys leads you to a sturdy stone building, its flask-shaped banner swaying in the sooty breeze.",
+	METEOR_DURIM_START2 = """The workshop buzzes with chaotic energy, shelves crammed with fizzing potions and shimmering dust. The air stings with sharp, chemical scents. Durim, a scrawny dwarf with scorched hair and wild, darting eyes, hunches over a cluttered bench. When you reveal the meteorite, his head jerks up, and he fixes on the stone with a feverish stare.
+
+— Ooh, you brought it, you did! That stone! Quick, give it to me!
+
+Before you can speak, he tugs at your arm, trying to pry the meteorite free, his breath ragged with desperation.""",
+	METEOR_DURIM_START_OPT_FIGHT = "*Fight back*",
+	METEOR_DURIM_START_OPT_LET = "*Let him have it*",
+	METEOR_DURIM_LET = """You relent, passing the meteorite to Durim. His eyes gleam as he snatches it with a feverish cackle.
+
+""",
+	METEOR_DURIM_FOUNDME = """— Yes, yes! It found me, brought itself by your hands!
+
+He sets to work immediately, pouring sizzling acids and grinding tools over the stone. Sparks fly as he extracts a small, shimmering ingot of pure metal, its surface catching the workshop's dim light. He tosses it to you carelessly, already turning back to his experiments.""",
+	METEOR_DURIM_WIN = """After a fierce struggle, Durim collapses, groaning dramatically, playing dead. As you pause, confused, he springs up with surprising speed, snatching the meteorite from your grip.
+
+— Ha! Fooled ye! Ye fool!
+
+Ignoring your confusion, he's completely focused on the stone.
+
+""",
+	METEOR_DURIM_NOPAYMENT = " Looks like he does not even want any payment.",
+	METEOR_DURIM_HARA = """As you prepare to leave, the workshop door slams open. A busty goblin girl, dressed in grease-stained tunic with tools dangling from her belt, struts in like she owns the place. She nods curtly at Durim, who barely glances up from his bench.
+
+— Oi, Durim, got that elixir ready? she asks, her voice sharp but playful.
+
+The dwarf grunts, pointing to a shelf. She snatches a glowing bottle of liquid, tucking it into her satchel. As she turns, her yellow eyes lock onto you, sizing you up with a smirk.
+
+— New around here, eh? Word of advice, don't linger in this fume-pit too long. Vapors will turn your brain to mush, like this guy here.
+
+She leaves before you can answer but her uncharacteristic appearance makes you think you'll meet her in future.""",
+
 }
+
