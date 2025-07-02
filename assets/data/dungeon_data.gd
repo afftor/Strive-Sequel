@@ -139,7 +139,7 @@ var infinite_dungeon_biomes = {
 }
 var dungeons = {
 	infinite_aliron = {
-		code = 'dungeon_infinite_example',
+		code = 'infinite_aliron',
 		type = 'dungeon',
 		name = tr('INFINITEDUNGEONNAME'),
 		altname = tr('INFINITEDUNGEONNAME'),

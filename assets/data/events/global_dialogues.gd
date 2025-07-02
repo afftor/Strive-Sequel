@@ -1059,6 +1059,16 @@ var data = {
 				dialogue_argument = 0
 			},
 			{
+				code = "amelia_bonus",
+				text = "AMELIA_BONUS_OPTION",
+				reqs = [
+					{type = 'dialogue_seen', check = false, value = 'AMELIA_BONUS'},
+					{type = 'dialogue_seen', check = true, value = 'AMELIA_INFINITE_1'},
+					],
+				type = "next_dialogue",
+				dialogue_argument = 10
+			},
+			{
 				code = "servants_leader_close",
 				text = "SERVANTSINTRODUCTION1REPLY4",
 				reqs = [

@@ -137,7 +137,18 @@ var data = {
 		], 
 		options = [ {
 			code = 'cali_servants_new_leader_6', text = "CALI_SERVANTS_AMELIA_OPTION_1", reqs = [{type = 'decision', value = 'CaliAmeliaBonus', check = true}, {type = 'dialogue_seen', check = false, value = 'CALI_SERVANTS_NEW_LEADER_6'}], dialogue_argument = 4, type = 'next_dialogue'
-		}, {
+		},
+		{
+			code = "amelia_bonus",
+			text = "AMELIA_BONUS_OPTION",
+			reqs = [
+				{type = 'dialogue_seen', check = false, value = 'AMELIA_BONUS'},
+				{type = 'dialogue_seen', check = true, value = 'AMELIA_INFINITE_1'},
+				],
+			type = "next_dialogue",
+			dialogue_argument = 11
+		},
+		{
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 4
 		} ],
 	},

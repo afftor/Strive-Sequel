@@ -1575,6 +1575,14 @@ var fixed_location_events = {
 
 
 var infinite_dungeon_events = {
+	amelia_infinite = {
+		event = 'amelia_infinite_1',
+		reqs = [{type = 'dialogue_seen', check = false, value = 'AMELIA_INFINITE_1'}],
+		dungeons = ["infinite_aliron"],
+		min_level = 0,
+		chance = 0.1,
+		type = 'subroom'
+	},
 #	test_event_1 = {
 #		event = 'cali_intro',
 #		reqs = [], #{type = 'dialogue_seen', check = false, value = 'CALI_INTRO'}],

@@ -18797,7 +18797,46 @@ Spent and satisfied, you carefully withdraw from her tight passage, admiring how
 	DIALOGUEEVENTDUNGEONCOFFIN_OPTION2 = "Pay Respects and Leave",
 	DIALOGUEEVENTDUNGEONCOFFIN_2 = """You wedge your blade under the lid and heave it open, revealing a glinting treasure nestled within...""",
 	DIALOGUEEVENTDUNGEONCOFFIN_3 = """You kneel briefly, murmuring respect to the ancient dead, and turn away. You leave empty-handed but unburdened.""",
-	
+	AMELIA_INFINITE_1 = """The air in the dreamlike tower hums with faint magic, its cracked stone walls glowing softly under shifting, dream-woven light. A familiar figure perches on a floating velvet cushion, her catlike eyes sparkling with mischief. 
+
+- Hey, what's up with you, [name]? Looking a bit grim?""",
+	AMELIA_INFINITE_1_OPTION_1 = "Amelia? What's with that look",
+	AMELIA_INFINITE_1_OPTION_2 = "Didn't expect to see you here.",
+	AMELIA_INFINITE_1_OPTION_3 = "Where's Alise?",
+	AMELIA_INFINITE_2_1 = """- Amelia, huh? That's my name, right? I'm not quite the Amelia you know, though.
+
+She tilts her head, her grin sharp and teasing, tail flicking as if daring you to ask more.""",
+	AMELIA_INFINITE_2_2 = """- Ha, me neither! If I'd known you'd show up, I might've worn something a little flashier.
+
+She twirls a lock of hair, her form blurring slightly at the edges, like a figure caught in a dream""",
+	AMELIA_INFINITE_2_3 = """- Oh, come on, we're not playing that game today. I heard Alise is off at the guild, but why chase her when I'm right here?
+
+She leans closer, her voice laced with playful mockery. Despite your best attempts, the conversation doesn't make sense.""",
+	AMELIA_INFINITE_2 = """- Anyway, I've got a question for you, [name]. Do you think dreams are real?""",
+	AMELIA_INFINITE_2_OPTION_1 = "Of course not, they're just our mind's chaotic hallucinations",
+	AMELIA_INFINITE_2_OPTION_2 = "They must be real, there's a reason we can see them.",
+	AMELIA_INFINITE_2_OPTION_3 = "No way I can tell.",
+	AMELIA_INFINITE_3_1 = """- Oh, really? So sure about that? Just because someone said so, you believe it? I didn't take you for the gullible type.
+
+Her laughter spills out, sharp and teasing, as she leans back, her form faintly wavering.""",
+	AMELIA_INFINITE_3_2 = """- What, you actually think that? You sound like a total lunatic!""",
+	AMELIA_INFINITE_3_3 = """- No opinion? Really? How do you even get by without a take on something so basic?
+
+She rolls her eyes, her body briefly flickering like a candle flame before snapping back into focus.""",
+	AMELIA_INFINITE_3 = """Amelia's mocking laughter echoes through the tower, light and taunting, as she glides closer—far too close. Her hands rest on your shoulders, her face inches from yours, her grin wide and unnervingly playful.
+
+- Want to hear something special? This meeting of ours… it's one of a kind, you know.""",
+	AMELIA_INFINITE_3_OPTION_1 = "*Lean for a kiss*",
+	AMELIA_INFINITE_3_OPTION_2 = "*Push away*",
+	AMELIA_INFINITE_4_1 = """You lean toward her, heart pounding, but just as your lips nearly meet, she dissolves into a wisp of smoke, leaving only her signature laugh echoing in the air.""",
+	AMELIA_INFINITE_4_2 = """You try to ease out of her grasp, but before you can fully pull away, she vanishes into thin air, her form unraveling like a fading dream, followed by that familiar, mocking laugh.""",
+	AMELIA_INFINITE_4 = """- All of this? Not real, you dummy.
+
+Her taunting words fade into energetic giggles, swallowed by the tower's eerie silence.""",
+	AMELIA_BONUS_OPTION = "Have you ever dyed your hair pink?",
+	AMELIA_BONUS = """- Pink hair? Now that's a random question! I don't think it'd suit me, but if you think I'd pull it off, I might consider it... for you.
+
+She winks, her tail swishing as she makes an eye-catching move.""",
 	ELF_CAPITAL_DRUIDS_LOUNGE = "Druids' lounge",
 	METEOR_LOUNGE_START = """Wandering through the serene streets, you stumble upon a secluded druid lounge, its entrance framed by flowering branches. A male elf druid, clad in robes of woven leaves, turns sharply at your entrance, his silver eyes wide with surprise.
 
@@ -18909,8 +18948,6 @@ The dwarf grunts, pointing to a shelf. She snatches a glowing bottle of liquid, 
 — New around here, eh? Word of advice, don't linger in this fume-pit too long. Vapors will turn your brain to mush, like this guy here.
 
 She leaves before you can answer but her uncharacteristic appearance makes you think you'll meet her in future.""",
-	
-	
-	
+
 }
 
