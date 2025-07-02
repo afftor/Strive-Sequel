@@ -143,6 +143,7 @@ func build_gear_panel():
 			$recolor_buttons/lower.visible = true
 			$recolor_buttons/underwear.visible = selectedhero.equipment.gear.underwear != null
 			$recolor_buttons/weapon.visible = selectedhero.equipment.gear.rhand != null
+			$recolor_buttons/collar.visible = selectedhero.equipment.gear.neck != null
 		else:
 			for i in $recolor_buttons.get_children():
 				i.visible = false

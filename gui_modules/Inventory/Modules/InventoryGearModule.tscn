@@ -730,6 +730,17 @@ texture_pressed = ExtResource( 32 )
 texture_hover = ExtResource( 32 )
 expand = true
 
+[node name="collar" type="TextureButton" parent="recolor_buttons"]
+margin_left = 652.0
+margin_top = 220.0
+margin_right = 696.0
+margin_bottom = 264.0
+hint_tooltip = "Change Color"
+texture_normal = ExtResource( 32 )
+texture_pressed = ExtResource( 32 )
+texture_hover = ExtResource( 32 )
+expand = true
+
 [node name="buffscontainer" type="HBoxContainer" parent="."]
 modulate = Color( 1, 1, 1, 0.823529 )
 self_modulate = Color( 1, 1, 1, 0.823529 )
