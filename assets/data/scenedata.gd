@@ -1521,7 +1521,7 @@ var scenedict = {
 		common_effects = [
 			{code = 'change_type_scene_characters', type = 'all', value = 'slave'},
 			{code = 'clear_subroom'},
-			{code = 'try_breakdown_scene_characters', value = 'shrine_enslave'}
+			{code = 'try_breakdown_scene_characters', value = 'brk_shrine_enslave'}
 			],
 		options = [
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]

@@ -596,16 +596,16 @@ var training_resistance = {
 }
 
 var breakdown_info = {
-	lose_friend = {chance = 0.1, text = "BREAKDOWN_LFRIEND"},
-	lose_lover = {chance = 0.2, text = "BREAKDOWN_LLOVER"},
-	lose_relative = {chance = 0.25, text = "BREAKDOWN_LRELATIVE"},
-	dislike_food = {chance = 0.005, text = "BREAKDOWN_FOOD"},
-	lose_virginity = {chance = 0.15, text = "BREAKDOWN_LVIRGINITY"},
-	grave_injury = {chance = 0.2, text = "BREAKDOWN_GRAVEIN"},
-	grave_injury_res = {chance = 0.02, text = "BREAKDOWN_GRAVEIN_RES"},
-	terrible_date = {chance = 0.1, text = "BREAKDOWN_DATE"},
-	training_reset = {chance = 1.0, text = "BREAKDOWN_RESET"},
-	soul_stone = {chance = 0.5, text = "BREAKDOWN_SOUL"},
-	oblivion = {chance = 1.0, text = "BREAKDOWN_OBLIVION"},
-	shrine_enslave = {chance = 1.0, text = "BREAKDOWN_SHRINE"},
+	brk_lose_friend = {chance = 0.1, text = "BREAKDOWN_LFRIEND"},
+	brk_lose_lover = {chance = 0.2, text = "BREAKDOWN_LLOVER"},
+	brk_lose_relative = {chance = 0.25, text = "BREAKDOWN_LRELATIVE"},
+	brk_dislike_food = {chance = 0.005, text = "BREAKDOWN_FOOD"},
+	brk_lose_virginity = {chance = 0.15, text = "BREAKDOWN_LVIRGINITY"},
+	brk_grave_injury = {chance = 0.2, text = "BREAKDOWN_GRAVEIN"},
+	brk_grave_injury_res = {chance = 0.02, text = "BREAKDOWN_GRAVEIN_RES"},
+	brk_terrible_date = {chance = 0.1, text = "BREAKDOWN_DATE"},
+	brk_training_reset = {chance = 1.0, text = "BREAKDOWN_RESET"},
+	brk_soul_stone = {chance = 0.5, text = "BREAKDOWN_SOUL"},
+	brk_oblivion = {chance = 1.0, text = "BREAKDOWN_OBLIVION"},
+	brk_shrine_enslave = {chance = 1.0, text = "BREAKDOWN_SHRINE"},
 }

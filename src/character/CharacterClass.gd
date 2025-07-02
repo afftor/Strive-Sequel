@@ -2149,7 +2149,7 @@ func take_virginity(type, partner, breakable = false):
 	if get_stat(type + '_virgin_lost') == null:
 		set_stat(type + "_virgin_lost", partner)
 		if breakable and get_stat('consent') < 2:
-			try_breakdown('lose_virginity')
+			try_breakdown('brk_lose_virginity')
 		if get_stat('metrics_partners').has(partner) == false && partner.begins_with("hid"):
 			statlist.update_stat('metrics_partners', partner, 'append')
 
@@ -2261,12 +2261,12 @@ func try_breakdown_on_char_loss(lost_char):
 	if xp_module.is_unavaliable(): return
 	
 	if ResourceScripts.game_party.check_relationship_status(id, lost_char.id, 'friends'):
-		try_breakdown('lose_friend')
+		try_breakdown('brk_lose_friend')
 	elif ResourceScripts.game_party.check_if_relationship_in(id, lost_char.id, ['lovers', 'freelovers']):
-		try_breakdown('lose_lover')
+		try_breakdown('brk_lose_lover')
 	elif ResourceScripts.game_party.checkifrelatives(id, lost_char.id):
-		try_breakdown('lose_relative')
+		try_breakdown('brk_lose_relative')
 
 func deferred_brk_check_food():
 	if has_status('food_dislike'):
-		try_breakdown('dislike_food')
+		try_breakdown('brk_dislike_food')

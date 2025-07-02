@@ -204,7 +204,7 @@ func reset_training():
 func reset_training_confirm():
 	ResourceScripts.game_res.remove_item('oblivion_potion', 1)
 	person.reset_training()
-	person.try_breakdown('training_reset')
+	person.try_breakdown('brk_training_reset')
 	match_state()
 
 
