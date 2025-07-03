@@ -195,7 +195,6 @@ func open_location(data): #2fix
 #	active_location = data.id #wrong
 #	var gatherable_resources
 #	$LocationGui/Resources/Forget.visible = true
-#	res_panel.get_node("SelectWorkers").visible = !active_location.gather_limit_resources.empty()
 	gui_controller.clock.hide()
 #	$LocationGui.show()
 	res_container.update()
@@ -203,6 +202,7 @@ func open_location(data): #2fix
 	input_handler.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[data.id].area]
 ##	input_handler.active_area = active_area
 	input_handler.active_location = data
+	res_panel.get_node("SelectWorkers").visible = !active_location.gather_limit_resources.empty()
 	input_handler.emit_signal("LocationSlavesUpdate")
 #	current_level = 0
 	build_level()
