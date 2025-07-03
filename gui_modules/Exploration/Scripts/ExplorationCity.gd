@@ -1167,7 +1167,6 @@ func item_puchase_confirm(value):
 		update_sell_list()
 		update_buy_list()
 	else:
-		ResourceScripts.game_res.money -= purchase_item.price * value
 		active_shop[purchase_item.code] -= value
 		if Items.materiallist.has(purchase_item.code):
 			ResourceScripts.game_res.set_material(purchase_item.code, '+', value)
@@ -1179,6 +1178,7 @@ func item_puchase_confirm(value):
 					'gear':
 						globals.AddItemToInventory(globals.CreateGearItemShop(purchase_item.code, {}))
 				value -= 1
+		ResourceScripts.game_res.money -= purchase_item.price * value
 		update_sell_list()
 		update_buy_list()
 
