@@ -303,7 +303,7 @@ var effects = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
 		tags = ['negative'],
-		statchanges = {resist_heal = -75},
+		statchanges = {resist_heal = 75},
 		buffs = ['b_slam'],
 	},
 }
