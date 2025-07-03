@@ -94,6 +94,7 @@ func update():
 					text += "Ladder down"
 				'ladder_up', 'ladder_up_survival':
 					$main/icon.texture = load("res://assets/Textures_v2/DUNGEON/Icons/steps.png")
+					$main/icon.flip_h = true
 					text += "Ladder up"
 		'obscured':
 			visible = true
