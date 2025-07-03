@@ -5499,6 +5499,7 @@ light_mask = 4
 material = SubResource( 58 )
 position = Vector2( 218.927, -0.34021 )
 rotation = -1.5708
+z_index = 1
 texture = ExtResource( 71 )
 
 [node name="Torso_collar_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["collar"]]
@@ -5510,7 +5511,6 @@ texture = ExtResource( 105 )
 
 [node name="Taz" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["human", "l_body"]]
 position = Vector2( 222.449, -0.19342 )
-z_index = 1
 rest = Transform2D( 1, 0, 0, 1, 222.449, -0.19342 )
 default_length = 100.0
 
@@ -5631,6 +5631,7 @@ texture = ExtResource( 48 )
 position = Vector2( 54.891, 2.05307 )
 rotation = 0.153589
 scale = Vector2( 1, 0.952381 )
+z_index = 1
 rest = Transform2D( 0.988228, 0.152986, -0.145701, 0.94117, 54.891, 2.05307 )
 default_length = 100.0
 
