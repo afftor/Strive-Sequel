@@ -2244,6 +2244,7 @@ func is_in_game_party():
 #Breakdown. Maybe should be withdrawn to separate module
 func try_breakdown(event):
 	if xp_module.is_unavaliable(): return
+	if event in get_stat('breakdown_disabled'): return
 	
 	var info = variables.breakdown_info[event]
 #	var chance = info.chance * get_stat('breakdown_chance_mod')

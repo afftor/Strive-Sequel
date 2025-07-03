@@ -1586,7 +1586,18 @@ var statdata = {
 		type = 'misc',
 		direct = false,
 		default_bonus = 'add_part'
-	}
+	},
+	breakdown_disabled = {
+		code = 'breakdown_disabled',
+		name = '',
+		descript = '',
+		is_negative = true,
+		baseicon = 'food_love',
+		default_bonus = 'append',
+		direct = false,
+		tags = ['array'],
+		custom_order = ['append']
+	},
 }
 
 #var slave_class_names = {
