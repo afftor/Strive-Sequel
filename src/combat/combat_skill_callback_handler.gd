@@ -236,27 +236,44 @@ func refine_target(skill, caster, ttarget): #s_skill, caster, target
 	match skill.next_target:
 		variables.NT_ANY:
 			var avtargets = combatnode.get_enemy_targets_all(caster)
-			if avtargets.empty(): return null
+			if avtargets.empty(): 
+				avtargets = combatnode.get_enemy_targets_all(caster, true)
+				if avtargets.empty():
+					return null
 			return input_handler.random_from_array(avtargets)
 		variables.NT_ANY_NOREPEAT:
 			var avtargets = combatnode.get_enemy_targets_all(caster)
-			if avtargets.empty(): return null
-			avtargets.erase(target)
+			if avtargets.empty(): 
+				avtargets = combatnode.get_enemy_targets_all(caster, true)
+				if avtargets.empty():
+					return null
+			avtargets.erase(ttarget)
+			if avtargets.empty():
+				ttarget
 			return input_handler.random_from_array(avtargets)
 		variables.NT_MELEE:
 			var avtargets = combatnode.get_enemy_targets_melee(caster)
-			if avtargets.empty(): return null
+			if avtargets.empty(): 
+				avtargets = combatnode.get_enemy_targets_melee(caster, true)
+				if avtargets.empty():
+					return null
 			return input_handler.random_from_array(avtargets)
 		variables.NT_WEAK:
 			var avtargets = combatnode.get_enemy_targets_all(caster)
-			if avtargets.empty(): return null
+			if avtargets.empty(): 
+				avtargets = combatnode.get_enemy_targets_all(caster, true)
+				if avtargets.empty():
+					return null
 			var t = 0
 			for i in range(avtargets.size()):
 				if avtargets[i].hp < avtargets[t].hp: t = i
 			return avtargets[t]
 		variables.NT_WEAK_MELEE:
 			var avtargets = combatnode.get_enemy_targets_melee(caster)
-			if avtargets.empty(): return null
+			if avtargets.empty(): 
+				avtargets = combatnode.get_enemy_targets_melee(caster, true)
+				if avtargets.empty():
+					return null
 			var t = 0
 			for i in range(avtargets.size()):
 				if avtargets[i].hp < avtargets[t].hp: t = i

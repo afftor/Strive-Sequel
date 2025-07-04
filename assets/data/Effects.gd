@@ -917,7 +917,7 @@ var effect_table = {
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
 		tags = ['negative'],
-		statchanges = {resist_heal = 100},
+		statchanges = {resist_heal_set = 100},
 		buffs = ['b_slam'],
 	},
 	e_s_takeposition = {
