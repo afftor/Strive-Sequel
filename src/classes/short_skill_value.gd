@@ -65,7 +65,11 @@ func apply_atomic(tmp):
 
 func resolve_value(check_m):
 	var parent = get_parent()
-	var dmgmod = parent.caster.get_damage_mod(parent.template) * parent.caster.get_value_damage_mod(self)
+	var dmgmod = 1
+	if !parent.tags.has('no_caster_bonuses'):
+		dmgmod *= parent.caster.get_damage_mod(parent.template)
+		if !parent.tags.has('heal'):
+			dmgmod *= parent.caster.get_value_damage_mod(self)
 	var endvalue
 	var atk
 	var stat
