@@ -1152,22 +1152,22 @@ var statdata = {
 		tags = [],
 	},
 	
-	price_add_part = { #not a real stat, stub for generating descriptions
-		code = 'price_add_part',
-		name = 'STATPRICE',
-		descript = '',
-		baseicon = 'food_love',
-		percent = true,
-		default_bonus = 'add_part',
-		tags = [],
-	},
-	price_add = { #not a real stat, stub for generating descriptions
-		code = 'price_add',
-		name = 'STATPRICE',
-		descript = '',
-		baseicon = 'food_love',
-		tags = [],
-	},
+#	price_add_part = { #not a real stat, stub for generating descriptions
+#		code = 'price_add_part',
+#		name = 'STATPRICE',
+#		descript = '',
+#		baseicon = 'food_love',
+#		percent = true,
+#		default_bonus = 'add_part',
+#		tags = [],
+#	},
+#	price_add = { #not a real stat, stub for generating descriptions
+#		code = 'price_add',
+#		name = 'STATPRICE',
+#		descript = '',
+#		baseicon = 'food_love',
+#		tags = [],
+#	},
 	
 	#prod
 	productivity = {
