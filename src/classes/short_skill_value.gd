@@ -55,6 +55,8 @@ func apply_atomic(tmp):
 		return
 	if (tmp.has('stats') && !tmp.stats.has(template.damagestat)): return
 	if (tmp.has('statignore') && tmp.statignore.has(template.damagestat)): return
+	if get_parent().tags.has('no_caster_bonuses'):
+		return
 	match tmp.type:
 		'stat_add':
 			value += tmp.value
