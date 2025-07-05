@@ -81,7 +81,7 @@ var skills = {
 		icon = "res://assets/images/iconsskills/icon_endure.png",
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['heal', 'noreduce', 'noevade','support'],
+		tags = ['heal', 'noreduce', 'noevade','support', 'no_caster_bonuses'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_stonewall', duration = 5})], 

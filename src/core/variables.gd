@@ -60,14 +60,8 @@ enum {BRK_LOSE_FRIEND, BRK_LOSE_LOVER, BRK_LOSE_RELATIVE, BRK_DISLIKE_FOOD, BRK_
 var dmg_mod_list = ['+damage_hp', "+hp", '+restore_mana', '+lust', '+consent', '-damage_hp', "-hp", '-restore_mana', '-lust','no_stat'] #not sure about these
 #list for values modified by random_mod
 var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust']
-#list for values with relative values
-var dmg_rel_list = ['hp', 'mp', 'lust', 'consent', 'base_exp','physics_factor','wits_factor','charm_factor','sexuals_factor','tame_factor','authority_factor','brave_factor','growth_factor']
-#list for various types of damage mods
-var damage_mods_list = ['all','melee','ranged','normal','fire','earth','air','water','light','dark','mind','physic','spell', 'skill', 'aoe', 'true', 'heal']
 
-var resists_list = ['normal','fire','earth','air','water','light','dark','mind']
-var resists_damage_list = ['melee', 'ranged', 'aoe', 'heal']
-var status_list = ['stun','freeze','disarm','silence','burn','confuse','bleed','poison', 'wet', 'shock', 'fear', 'cursed']
+var resists_list = ['normal','fire','earth','air','water','light','dark','mind'] 
 var fighter_stats_list = ['hpmax','mpmax','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed', 'critchance','critmod']
 
 var skill_args_checking_list_1 = ['target_range', 'target_number', 'ability_type', 'damage_type', 'tags']
@@ -78,14 +72,6 @@ var skill_args_checking_list_3 = ['chance', 'evade', 'critchance', 'armor_p', 'h
 var enemy_rarechance = 0.1
 var enemy_doublerarechance = 0.1
 var rare_enemy_traits = ['rare_sturdy', 'rare_nimble', 'rare_strong', 'rare_deadly', 'rare_precise']
-
-#list for stats with stored bonuses that use generic getter (not custom getter!!)
-#to add them all :)
-var bonuses_stat_list = ['productivity','mod_collect','speed','hitrate','evasion','armor','mdef','critchance', 'critmod', 'armorpenetration', 'lusttick','mod_build','mod_hunt','mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros', 'hp_reg_mod', 'mp_reg_mod']
-#list for stats that do not uses bonuses system
-#imho must include all of dmg_rel stats
-var direct_access_stat_list = ['hp', 'mp', 'lust', 'physics_bonus', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor','tame_factor','timid_factor', 'sexuals_factor','magic_factor','growth_factor', 'food_consumption', 'consent', 'physics','wits','charm']
-
 
 var productivity_mods = ['mod_build','mod_hunt', 'mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros', 'mod_service']
 

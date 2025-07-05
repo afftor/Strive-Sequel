@@ -53,6 +53,8 @@ func apply_atomic(tmp):
 		return
 	if (tmp.has('stats') && !tmp.stats.has(template.damagestat)): return
 	if (tmp.has('statignore') && tmp.statignore.has(template.damagestat)): return
+	if get_parent().get_tags().has('no_caster_bonuses'):
+		return
 	match tmp.type:
 		'stat_add':
 			value += tmp.value
@@ -63,7 +65,11 @@ func apply_atomic(tmp):
 
 func resolve_value(check_m):
 	var parent = get_parent()
-	var dmgmod = parent.caster.get_damage_mod(parent.template) * parent.caster.get_value_damage_mod(self)
+	var dmgmod = 1
+	if !parent.get_tags().has('no_caster_bonuses'):
+		dmgmod = parent.caster.get_damage_mod(parent.template)
+		if !parent.get_tags().has('heal'):
+			dmgmod *= parent.caster.get_value_damage_mod(self)
 	var endvalue
 	var atk
 	var stat
