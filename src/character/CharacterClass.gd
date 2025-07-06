@@ -1693,7 +1693,8 @@ func rest_tick():
 
 func translate(text, number = -1):
 	text = statlist.translate(text, number)
-	text = text.replace("[price]", str(calculate_price(true))) #need another placeholder for a non-shop value. for now it is not used, but may be handy 
+	if text.find('[price]') != -1:
+		text = text.replace("[price]", str(calculate_price(true))) #need another placeholder for a non-shop value. for now it is not used, but may be handy 
 	if text.find('[spouse') != -1:
 		if !has_profession('master'):
 			print ("active char is not master")
