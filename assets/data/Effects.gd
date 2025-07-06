@@ -640,7 +640,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'arg',
-		statchanges = {armor_add_part = -0.5},
+		statchanges = {armor_add_part = -0.25},
 	},
 	e_s_shatter = {
 		type = 'temp_s',
