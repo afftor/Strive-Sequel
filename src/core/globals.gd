@@ -2934,22 +2934,26 @@ func is_capital_closed(capital):
 
 
 func ProcessSfxTarget(sfxtarget, caster, target):
-	var get_group_for
 	match sfxtarget:
 		'caster':
 			return caster.displaynode
 		'target':
 			return target.displaynode
-		'target_group':
-			get_group_for = target
-		'caster_group':
-			get_group_for = caster
-	
-	if get_group_for != null:
-		if get_group_for.combatgroup == 'ally':
-			return input_handler.combat_node.battlefield_playergroup
-		else:
-			return input_handler.combat_node.battlefield_enemygroup
+	var target_pos
+	var target_type
+	match sfxtarget:
+		'target_group', 'target_line', 'target_row':
+			target_pos = target.position
+		'caster_group', 'caster_line', 'caster_row':
+			target_pos = caster.position
+	match sfxtarget:
+		'target_group', 'caster_group':
+			target_type = 'group'
+		'target_line', 'caster_line':
+			target_type = 'line'
+		'target_row', 'caster_row':
+			target_type = 'row'
+	return input_handler.combat_node.get_target_node(target_pos, target_type)
 
 
 func calculate_hit_sound(skill, caster, target):

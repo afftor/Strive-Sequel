@@ -60,8 +60,20 @@ onready var battlefieldpositions = {1 : $Panel/PlayerGroup/Front/left, 2 : $Pane
 4 : $Panel/PlayerGroup/Back/left, 5 : $Panel/PlayerGroup/Back/mid, 6 : $Panel/PlayerGroup/Back/right,
 7 : $Panel2/EnemyGroup/Front/left, 8 : $Panel2/EnemyGroup/Front/mid, 9 : $Panel2/EnemyGroup/Front/right,
 10: $Panel2/EnemyGroup/Back/left, 11 : $Panel2/EnemyGroup/Back/mid, 12 : $Panel2/EnemyGroup/Back/right}
-onready var battlefield_playergroup = $Panel/PlayerGroup
-onready var battlefield_enemygroup = $Panel2/EnemyGroup
+onready var battlefield_target_groups = {
+	1 : {group = $Panel/PlayerGroup, line = $Panel/PlayerGroup/Front, row = $Panel/row1},
+	2 : {group = $Panel/PlayerGroup, line = $Panel/PlayerGroup/Front, row = $Panel/row2},
+	3 : {group = $Panel/PlayerGroup, line = $Panel/PlayerGroup/Front, row = $Panel/row3},
+	4 : {group = $Panel/PlayerGroup, line = $Panel/PlayerGroup/Back, row = $Panel/row1},
+	5 : {group = $Panel/PlayerGroup, line = $Panel/PlayerGroup/Back, row = $Panel/row2},
+	6 : {group = $Panel/PlayerGroup, line = $Panel/PlayerGroup/Back, row = $Panel/row3},
+	7 : {group = $Panel2/EnemyGroup, line = $Panel2/EnemyGroup/Front, row = $Panel2/row1},
+	8 : {group = $Panel2/EnemyGroup, line = $Panel2/EnemyGroup/Front, row = $Panel2/row2},
+	9 : {group = $Panel2/EnemyGroup, line = $Panel2/EnemyGroup/Front, row = $Panel2/row3},
+	10 : {group = $Panel2/EnemyGroup, line = $Panel2/EnemyGroup/Back, row = $Panel2/row1},
+	11 : {group = $Panel2/EnemyGroup, line = $Panel2/EnemyGroup/Back, row = $Panel2/row2},
+	12 : {group = $Panel2/EnemyGroup, line = $Panel2/EnemyGroup/Back, row = $Panel2/row3},
+}
 
 var no_material_reward = false
 var external_reward
@@ -1782,3 +1794,6 @@ func set_only_show_reward():
 
 func set_external_reward(new_reward):
 	external_reward = new_reward
+
+func get_target_node(pos, type):
+	return battlefield_target_groups[pos][type]
