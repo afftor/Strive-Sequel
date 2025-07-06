@@ -969,6 +969,17 @@ var traits = {
 		weight = 100,
 		tags = []
 	},
+	breakdown_block_test_trait = {
+		code = 'breakdown_block_test_trait',
+		name = '',
+		descript = '',
+		visible = true,
+		icon = "res://assets/images/iconstraits/heart.png",
+		effects = [],
+		bonusstats = {breakdown_disabled = ['brk_dislike_food', 'brk_oblivion']},
+		weight = 100,
+		tags = []
+	},
 	#master
 	master_mentor = {
 		name = '',
