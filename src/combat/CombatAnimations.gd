@@ -103,6 +103,9 @@ func start_animation(node):
 		elif images.GFX_sprites.keys().has(data.type):
 			true_type = 'gfx_animsprite'
 			data.params.sprite_name = data.type
+		elif images.GFX_particles.keys().has(data.type):#those with no own method
+			true_type = 'gfx_particles'
+			data.params.sprite_name = data.type
 		delay = max(delay, call(true_type, data.node, data.params))
 	animation_delays[node] = delay
 
@@ -241,6 +244,17 @@ func gfx_animsprite(node, args):
 	log_update_delay = max(log_update_delay, 0.5)
 	buffs_update_delays[node] = 0.5
 	ResourceScripts.core_animations.gfx_sprite(node, args.sprite_name, 0.5, duration)
+	
+	return nextanimationtime + aftereffectdelay
+
+func gfx_particles(node, args):
+	var tween = input_handler.GetTweenNode(node)
+	var nextanimationtime = 0.5
+	hp_update_delays[node] = 0 #delay for hp updating during this animation
+	log_update_delay = max(log_update_delay, 0)
+	buffs_update_delays[node] = 0.5
+	ResourceScripts.core_animations.gfx_particles(node, args.sprite_name, 1, 1)
+	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
 
