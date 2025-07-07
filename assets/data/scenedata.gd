@@ -1410,7 +1410,7 @@ var scenedict = {
 	image = '',
 	common_effects = [],
 	options = [
-	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUEMEETGOODDEFAULT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'slave'}]},
+	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUEMEETGOODDEFAULT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'}]},
 	]
 	},
 	recruit_meet_success_seduce = {text = tr("DIALOGUEMEETGOODSEDUCE"),
@@ -1418,7 +1418,7 @@ var scenedict = {
 	image = 'mindcontrol',
 	common_effects = [],
 	options = [
-	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUEMEETGOODDEFAULT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'slave'}]},
+	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUEMEETGOODDEFAULT"), bonus_effects = [{code = 'real_affect_scene_characters', type = 'slavetype', value = 'servant'}]},
 	]
 	},
 	recruit_meet_fail = {text = tr("DIALOGUEMEETBAD"),
