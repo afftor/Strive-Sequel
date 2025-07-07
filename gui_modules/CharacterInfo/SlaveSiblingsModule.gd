@@ -146,7 +146,7 @@ func update():
 		var s_skills = person.get_sex_skills()
 		for ii in s_skills: #bad way, need to move to using proper statdata (and proper translation keys) instead of stubs
 			var i = ii.trim_prefix('sex_skills_')
-			if s_skills[ii] == 0 && universal_skills.has(i):
+			if s_skills[ii] <= 0 && !universal_skills.has(i):
 				continue
 			var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.get_node("Label").text = tr("SEXSKILL"+i.to_upper())
