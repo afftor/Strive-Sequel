@@ -30,6 +30,7 @@ func update():
 		newbutton.get_node('Label').set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(tchar.get_stat('growth_factor')))])
 		newbutton.get_node('TakeButton').connect('pressed', self, 'hire_char', [id])
 		newbutton.get_node('SellButton').connect('pressed', self, 'sell_char', [id])
+		newbutton.get_node('EnslaveButton').connect('pressed', self, 'enslave_char', [id])
 		newbutton.connect('pressed', self, 'show_full_info', [tchar])
 		globals.connectslavetooltip(newbutton.get_node('Icon'), tchar)
 		if tchar.src == 'random_combat':
@@ -39,8 +40,11 @@ func update():
 			newbutton.get_node("SellButton/Label").visible = false
 			globals.connecttexttooltip(newbutton.get_node('SellButton'), tr("CAPTUREDISMISSTOOLTIP")) #2change
 			newbutton.get_node("SellButton/TextureRect").texture = load("res://assets/images/gui/explore/Captured Characters/icons/icon_dismiss.png")
-			newbutton.get_node("TakeButton/TextureRect").texture = load("res://assets/images/gui/explore/Captured Characters/icons/icon_recruit.png")
+#			newbutton.get_node("TakeButton/TextureRect").texture = load("res://assets/images/gui/explore/Captured Characters/icons/icon_recruit.png")
+			newbutton.get_node('EnslaveButton').visible = false
+			newbutton.get_node('EnslaveButton').disabled = true
 		globals.connecttexttooltip(newbutton.get_node("TakeButton"), tr("CAPTUREADDTOOLTIP"))
+		globals.connecttexttooltip(newbutton.get_node("EnslaveButton"), tr("CAPTUREENSLAVETOOLTIP"))
 
 
 func sell_all():
@@ -64,6 +68,21 @@ func sell_char(ch_id):
 			input_handler.PlaySound("money_spend")
 		tchar.is_active = false
 		get_parent().get_parent().active_location.captured_characters.erase(ch_id)
+	var slave_tooltip = get_tree().get_root().get_node_or_null("slavetooltip")
+	if slave_tooltip != null:
+		slave_tooltip.hide()
+	input_handler.emit_signal("LocationSlavesUpdate")
+
+
+func enslave_char(ch_id):
+	if get_parent().get_parent().active_location.captured_characters.has(ch_id):
+		var tchar = characters_pool.get_char_by_id(ch_id)
+		if tchar.src == 'random_combat':
+			tchar.set_stat('is_hirable', false)
+			tchar.recruit(true) 
+#			tchar.travel.location = gui_controller.exploration.selected_location
+#			tchar.remove_from_task()
+			get_parent().get_parent().active_location.captured_characters.erase(ch_id)
 	var slave_tooltip = get_tree().get_root().get_node_or_null("slavetooltip")
 	if slave_tooltip != null:
 		slave_tooltip.hide()
@@ -106,3 +125,5 @@ func show_full_info(person = null):
 	FullSlaveInfo.show()
 	FullSlaveInfo.from_dialogue = true
 	FullSlaveInfo.show_summary(person)
+
+
