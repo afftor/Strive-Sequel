@@ -605,7 +605,7 @@ func get_bonusstats():
 #	if tags.has('fixed_stats'):
 		mul = 1.0
 	for st in res:
-		if st in ['weapon_element', 'weapon_element_ench']:
+		if st in ['weapon_element', 'weapon_element_ench', 'breakdown_disabled']:
 			continue #stub
 		if res[st] > 0: #or more complex behavior in case there are stats negative by default
 			res[st] *= mul

@@ -203,7 +203,7 @@ func invoke_init():
 func invoke_animations_2():
 	for i in animationdict.predamage:
 		if i.target in ['target_frame']:
-			queuenode.add_sfx(target.displaynode, i.code)
+			queuenode.add_sfx(target.displaynode, get_true_code(i))
 	for i in affected_targets:
 		if template.has('sounddata') and !template.sounddata.empty() and template.sounddata.strike != null:
 			if template.sounddata.strike == 'weapon':
@@ -214,7 +214,7 @@ func invoke_animations_2():
 			if j.target in ['caster','target']:
 				var sfxtarget = globals.ProcessSfxTarget(j.target, caster, i)
 				if sfxtarget != null:
-					queuenode.add_sfx(sfxtarget, j.code)
+					queuenode.add_sfx(sfxtarget, get_true_code(j))
 	
 	combatnode.turns += 1
 	step += 1
@@ -293,7 +293,7 @@ func invoke_damage():
 			for j in animationdict.postdamage:
 				var sfxtarget = globals.ProcessSfxTarget(j.target, caster, s_skill2.target)
 				if sfxtarget.has_method("process_sfx"):
-					sfxtarget.process_sfx(j.code)
+					sfxtarget.process_sfx(get_true_code(j))
 			#applying resists
 			s_skill2.calculate_dmg()
 			#logging result & dealing damage
@@ -344,3 +344,8 @@ func invoke_cleanup():
 	step += 1
 	queuenode.call_deferred('invoke_finished')
 
+
+func get_true_code(anim_dict):
+	if anim_dict.has('code_repeat') and anim_dict.code_repeat.has(parent.iterations_played):
+		return anim_dict.code_repeat[parent.iterations_played]
+	return anim_dict.code

@@ -332,9 +332,6 @@ margin_top = 80.0
 margin_right = 560.0
 margin_bottom = 840.0
 texture = ExtResource( 22 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PlayerGroup" type="HBoxContainer" parent="Panel"]
 margin_left = 31.0
@@ -342,9 +339,6 @@ margin_top = 115.0
 margin_right = 431.0
 margin_bottom = 743.0
 custom_constants/separation = 36
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Back" type="VBoxContainer" parent="Panel/PlayerGroup"]
 margin_right = 182.0
@@ -615,6 +609,27 @@ texture_hover = ExtResource( 34 )
 expand = true
 stretch_mode = 4
 
+[node name="row1" type="Control" parent="Panel"]
+margin_left = 467.0
+margin_top = 115.0
+margin_right = 467.0
+margin_bottom = 743.0
+mouse_filter = 2
+
+[node name="row2" type="Control" parent="Panel"]
+margin_left = 31.0
+margin_top = 328.0
+margin_right = 431.0
+margin_bottom = 529.0
+mouse_filter = 2
+
+[node name="row3" type="Control" parent="Panel"]
+margin_left = 31.0
+margin_top = 541.0
+margin_right = 431.0
+margin_bottom = 744.0
+mouse_filter = 2
+
 [node name="TextureRect" type="TextureRect" parent="Panel"]
 margin_left = 100.0
 margin_top = 44.5809
@@ -753,6 +768,27 @@ texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 34 )
 expand = true
 stretch_mode = 4
+
+[node name="row1" type="Control" parent="Panel2"]
+margin_left = 31.0
+margin_top = 109.0
+margin_right = 431.0
+margin_bottom = 315.0
+mouse_filter = 2
+
+[node name="row2" type="Control" parent="Panel2"]
+margin_left = 31.0
+margin_top = 323.0
+margin_right = 431.0
+margin_bottom = 529.0
+mouse_filter = 2
+
+[node name="row3" type="Control" parent="Panel2"]
+margin_left = 31.0
+margin_top = 535.0
+margin_right = 431.0
+margin_bottom = 741.0
+mouse_filter = 2
 
 [node name="TextureRect4" type="TextureRect" parent="Panel2"]
 margin_left = 319.007

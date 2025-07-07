@@ -2150,7 +2150,7 @@ func take_virginity(type, partner, breakable = false):
 	if get_stat(type + '_virgin_lost') == null:
 		set_stat(type + "_virgin_lost", partner)
 		if breakable and get_stat('consent') < 2:
-			try_breakdown(variables.BRK_LOSE_VIRGINITY)
+			try_breakdown('brk_lose_virginity')
 		if get_stat('metrics_partners').has(partner) == false && partner.begins_with("hid"):
 			statlist.update_stat('metrics_partners', partner, 'append')
 
@@ -2245,26 +2245,30 @@ func is_in_game_party():
 #Breakdown. Maybe should be withdrawn to separate module
 func try_breakdown(event):
 	if xp_module.is_unavaliable(): return
+	if event in get_stat('breakdown_disabled'): return
 	
 	var info = variables.breakdown_info[event]
 #	var chance = info.chance * get_stat('breakdown_chance_mod')
 #	print("%s try_breakdown on %s with %s" % [get_short_name(), event, chance])
 	if randf() <= info.chance * get_stat('breakdown_chance_mod'):
 		xp_module.make_unavaliable(get_stat('breakdown_time'))
-		input_handler.active_character = self
-		input_handler.scene_characters.append(self)
-		input_handler.interactive_message('breakdown_event', '', {start_dialogue_option = info.text_option})
+		var scene_data = scenedata.scenedict['breakdown_event'].duplicate(true)
+		scene_data.text = info.text
+		#mind, that direct-type events don't put themselvs to seen_events
+		input_handler.interactive_message(scene_data, 'direct', {
+			scene_characters_add = [id], set_active_character = id
+		})
 
 func try_breakdown_on_char_loss(lost_char):
 	if xp_module.is_unavaliable(): return
 	
 	if ResourceScripts.game_party.check_relationship_status(id, lost_char.id, 'friends'):
-		try_breakdown(variables.BRK_LOSE_FRIEND)
+		try_breakdown('brk_lose_friend')
 	elif ResourceScripts.game_party.check_if_relationship_in(id, lost_char.id, ['lovers', 'freelovers']):
-		try_breakdown(variables.BRK_LOSE_LOVER)
+		try_breakdown('brk_lose_lover')
 	elif ResourceScripts.game_party.checkifrelatives(id, lost_char.id):
-		try_breakdown(variables.BRK_LOSE_RELATIVE)
+		try_breakdown('brk_lose_relative')
 
 func deferred_brk_check_food():
 	if has_status('food_dislike'):
-		try_breakdown(variables.BRK_DISLIKE_FOOD)
+		try_breakdown('brk_dislike_food')

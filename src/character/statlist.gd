@@ -310,7 +310,8 @@ var template_dynamic = {
 	
 	#breakdown
 	breakdown_time = 2,
-	breakdown_chance_mod = 1
+	breakdown_chance_mod = 1,
+	breakdown_disabled = []
 }
 var manacost_mods = {
 	manacost_mod_all = 1.0,

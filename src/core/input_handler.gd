@@ -979,6 +979,16 @@ func start_event(code, type, args):
 			ResourceScripts.game_progress.seen_events.push_back(code)
 		if args.has('start_dialogue_option'):
 			data.start_dialogue_option = args.start_dialogue_option
+	#it seems to be a good idea, to set scene_characters and active_character here
+	#instead of setting them manually prior interactive_message()
+	if args.has('scene_characters_add'):
+		for char_id in args.scene_characters_add:
+			var chara = characters_pool.get_char_by_id(char_id)
+			if !scene_characters.has(chara):
+				scene_characters.push_back(chara)
+	if args.has('set_active_character'):
+		active_character = characters_pool.get_char_by_id(args.set_active_character)
+	
 	gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE)
 #	if data.has('opp_characters'):
 #		for i in data.opp_characters:

@@ -21,7 +21,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'first_aid', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['target.hpmax','*0.30']],
 		damagestat = ['-damage_hp']
@@ -45,7 +45,7 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'buff', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'inspire', target = 'target', period = 'predamage'}],
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -69,7 +69,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'leader_mark', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.7,
 	},
@@ -93,7 +93,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'not_caster',
 		damage_type = 'light',
-		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'rally', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['target.hpmax','*0.30']],
 		damagestat = ['-damage_hp']

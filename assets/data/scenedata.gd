@@ -1518,7 +1518,11 @@ var scenedict = {
 		text = tr("HYBRIS_ALTAR_CHAR_RESULT2"),
 		tags = ['active_character_translate'],
 		image = 'mindcontrol',
-		common_effects = [{code = 'change_type_scene_characters', type = 'all', value = 'slave'}, {code = 'clear_subroom'}],
+		common_effects = [
+			{code = 'change_type_scene_characters', type = 'all', value = 'slave'},
+			{code = 'clear_subroom'},
+			{code = 'try_breakdown_scene_characters', value = 'brk_shrine_enslave'}
+			],
 		options = [
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]
 	},
@@ -1725,16 +1729,7 @@ var scenedict = {
 		],
 	},
 	breakdown_event = {
-		text = [
-			{text = "BREAKDOWN_LFRIEND", previous_dialogue_option = 1, reqs = []},
-			{text = "BREAKDOWN_LLOVER", previous_dialogue_option = 2, reqs = []},
-			{text = "BREAKDOWN_LRELATIVE", previous_dialogue_option = 3, reqs = []},
-			{text = "BREAKDOWN_FOOD", previous_dialogue_option = 4, reqs = []},
-			{text = "BREAKDOWN_LVIRGINITY", previous_dialogue_option = 5, reqs = []},
-			{text = "BREAKDOWN_GRAVEIN", previous_dialogue_option = 6, reqs = []},
-			{text = "BREAKDOWN_GRAVEIN_RES", previous_dialogue_option = 7, reqs = []},
-			{text = "BREAKDOWN_DATE", previous_dialogue_option = 8, reqs = []},
-		],
+		text = '',
 		image = 'abuse',
 		tags = ["dialogue_scene", "active_character_translate"],
 		options = [

@@ -23,7 +23,10 @@ var skills = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
+		sfx = [
+			{code = 'tauntwave', target = 'target_group', period = 'windup'},
+			{code = 'taunt', target = 'caster', period = 'windup'}
+		],
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -47,7 +50,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'weapon',
-		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}],#? 
+		sfx = [{code = 'disarm', target = 'target', period = 'predamage'}],#? 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.3
 	},
@@ -71,7 +74,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'weapon',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'provocation', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = 0.7,
 	},
@@ -94,7 +97,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'light',#not sure but not matters
-		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'stonewall', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['caster.hpmax', '*0.15']],
 		damagestat = ['-damage_hp'],
@@ -118,7 +121,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'last_stand', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'

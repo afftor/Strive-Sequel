@@ -41,6 +41,7 @@ func traitpress(tr_id):
 	ResourceScripts.game_res.remove_item("soul_stone", 1)
 	if gui_controller.inventory != null && gui_controller.inventory.is_visible():
 		gui_controller.inventory.set_active_hero(person)
+	person.try_breakdown('brk_soul_stone')
 	hide()
 
 

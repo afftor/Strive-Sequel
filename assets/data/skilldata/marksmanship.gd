@@ -25,7 +25,7 @@ var skills = {
 		damage_type = 'weapon',
 		random_target = true,
 		not_final = true,
-		sfx = [{code = 'weapon', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'strafe', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'bow', hit = null},
 		value = 0.45,
 		random_factor_p = 0.1,
@@ -50,7 +50,7 @@ var skills = {
 		target_number = 'line',
 		target_range = 'melee',
 		damage_type = 'weapon',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'trap_cast', target = 'target', period = 'predamage'}],
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -74,7 +74,7 @@ var skills = {
 		target_number = 'line',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'weapon', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'ensnare', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'bow', hit = null},
 		value = 0.5,
 	},
@@ -98,7 +98,7 @@ var skills = {
 		target_number = 'line',
 		target_range = 'melee',
 		damage_type = 'weapon',
-		sfx = [{code = 'debuff', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'trap_cast', target = 'target', period = 'predamage'}],
 		sound = [],
 		value = [['caster.atk', '*1.5']],
 		damagestat = 'no_stat'
@@ -126,7 +126,7 @@ var skills = {
 		allowedtargets = ['enemy'],
 		value = 1.2,
 		random_factor_p = 0.1,
-		sfx = [{code = 'weapon', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'arrowhail', target = 'target_group', period = 'windup'}], 
 		sounddata = {initiate = null, strike = 'bow', hit = null},
 	},
 }
@@ -147,7 +147,11 @@ var effects = {
 		conditions = [{type = 'random', value = 0.5}],
 		atomic = [],
 		buffs = [],
-		sub_effects = ['e_trap']
+		sub_effects = ['e_trap', {
+			type = 'oneshot',
+			target = 'owner',
+			atomic = [{type = 'sfx', value = 'trap'}]
+		}]
 	},
 	e_trap = { #shoud be actual stun
 		type = 'temp_s',
@@ -186,7 +190,7 @@ var effects = {
 				value = {obj = 'parent', func = 'arg', arg = 'damage'},
 				src = {obj = 'self', func = 'src', src = 'normal'},
 				},
-			atomic = [{type = 'sfx', value = 'targetattack'}, 'a_damage_simple']
+			atomic = [{type = 'sfx', value = 'bolt_trap'}, 'a_damage_simple']
 		}],
 	},
 }
