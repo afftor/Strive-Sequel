@@ -1828,6 +1828,7 @@ func roll_hirelings(loc):
 	var newslave = ResourceScripts.scriptdict.class_slave.new("random_hireling")
 	newslave.generate_random_character_from_data(t_race, null, t_diff)
 	newslave.is_active = true
+	newslave.set_slave_category('servant')
 	
 	if !locdata.has('captured_characters'):
 		locdata.captured_characters = []
