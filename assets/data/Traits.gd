@@ -127,6 +127,17 @@ var traits = {
 		visible = false,
 		tags = ['body_upgrade']
 	},
+	upgrade_breeder = {
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		effects = [], 
+		bonusstats = {}, 
+		reqs = [],  
+		visible = false,
+		tags = ['body_upgrade', 'breeder']
+	},
+	
 	#racial
 	racial_oviposition = {
 		name = '',
@@ -1563,6 +1574,15 @@ var body_upgrades = {
 		cost = 50,
 		goldcost = 15000,
 		traits = ['upgrade_thickblood']
+	},
+	upgrade_breeder = { #2fix parameters
+		name = '',
+		descript = '',
+		icon = "res://assets/images/iconstraits/l_pregnancy.png",
+		reqs = [],
+		cost = 40,
+		goldcost = 10000,
+		traits = ['upgrade_breeder']
 	},
 }
 
