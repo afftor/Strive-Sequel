@@ -419,8 +419,8 @@ func get_unaval_string():
 
 func quest_day_tick():
 	if quest_time_remains > 0:
-		if work != 'learning':
-			parent.get_ref().add_stat("base_exp", 12)
+#		if work != 'learning':
+#			parent.get_ref().add_stat("base_exp", 12)
 		quest_time_remains -= 1
 		if quest_time_remains <= 0 and work != "disabled" and work != 'learning':
 			remove_from_work_quest()
@@ -430,7 +430,6 @@ func quest_day_tick():
 		unaval_time_remains -= 1
 		if unaval_time_remains <= 0:
 			make_avaliable()
-
 
 
 func remove_from_work_quest():
@@ -569,7 +568,7 @@ func select_brothel_activity():
 			if sex_rules.has('anal') && penis_check:
 				parent.get_ref().take_virginity('anal', 'brothel_customer')
 			
-			work_tick_values(data.workstats[randi()%data.workstats.size()])
+			work_tick_values(input_handler.random_from_array(data.workstats))
 			
 			parent.get_ref().add_stat('metrics_randompartners', globals.fastif(sex_rules.has('group'), 2, 1))
 			
@@ -597,7 +596,7 @@ func select_brothel_activity():
 		var highest_value = get_highest_value(non_sex_rules)
 		
 		var data = tasks.gold_tasks_data[highest_value.code]
-		work_tick_values(data.workstats[randi()%data.workstats.size()])
+		work_tick_values(input_handler.random_from_array(data.workstats))
 		
 		var goldearned = highest_value.value * min(4, (1 + 0.001 * parent.get_ref().calculate_price()))
 		
@@ -668,6 +667,13 @@ func get_gold_value(task):
 	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(tasks.gold_tasks_data[task].workmod)/100.0)
 	
 	return value
+
+
+func quest_tick():
+	if !is_on_quest():
+		return
+	if work != 'learning':
+		work_tick_values(input_handler.random_from_array(['physics', 'charm', 'wits']))
 
 
 func recruit_tick(task): #maybe incomplete

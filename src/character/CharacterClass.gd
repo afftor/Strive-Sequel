@@ -690,6 +690,8 @@ func recruit(enslave = false):
 	if enslave == true:
 		set_slave_category('slave')
 		set_work_rule('bindings', true)
+#	else:
+#		set_slave_category('servant')
 	ResourceScripts.game_party.add_slave(self)
 
 
@@ -1658,7 +1660,7 @@ func pretick():
 
 func tick():
 	if is_on_quest():
-		return
+		xp_module.quest_tick()
 	
 	var skip_work = false
 	if get_work() == '':
@@ -1666,8 +1668,7 @@ func tick():
 	
 	self.hp += get_stat('hp_reg')
 	self.mp += get_stat('mp_reg')
-	#loyalty and obedience changes are in sats
-	#what is "sats"?
+	#loyalty and obedience changes are in stats
 	training.tick()
 	if ResourceScripts.game_globals.hour == 2:
 		food.get_food()
