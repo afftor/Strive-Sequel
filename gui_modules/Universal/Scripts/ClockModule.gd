@@ -127,6 +127,8 @@ func advance_turn(amount = 1):
 		else:
 			input_handler.SystemMessage("Population limit reached")
 		return
+	if globals.log_node != null && weakref(globals.log_node).get_ref():
+		globals.log_node.clear_log()
 	#lookforward part
 	var trem = ResourceScripts.game_progress.get_next_event_time()
 	if trem > 0 and trem < amount:

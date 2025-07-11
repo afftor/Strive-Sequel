@@ -615,8 +615,8 @@ func select_brothel_activity():
 
 func update_brothel_log(ch_name, gold, data, customer_gender = ""):
 	if globals.log_node != null && weakref(globals.log_node).get_ref():
-		if ResourceScripts.game_globals.hour == 4:
-			globals.log_node.clean_service_log()
+#		if ResourceScripts.game_globals.hour == 4:
+#			globals.log_node.clean_log()
 		var text = ""
 		if customer_gender != "":
 			text = tr("BROTHELLOGSEX")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper()), customer_gender.capitalize()]
@@ -624,16 +624,17 @@ func update_brothel_log(ch_name, gold, data, customer_gender = ""):
 		else:
 			text = tr("BROTHELLOGNO_SEX")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper())]
 			#text = tr(ch_name) + " earned " + str(gold) + " gold working as " + tr("BROTHEL" + data.code.to_upper())
-		var ServiceLog = globals.log_node.get_node("ServiceLog")
-		var newfield = ServiceLog.get_node("VBoxContainer/field").duplicate()
-		newfield.show()
-		newfield.get_node("text").bbcode_text = text
-		ServiceLog.get_node("VBoxContainer").add_child(newfield)
-		var textfield = newfield.get_node('text')
-		textfield.rect_size.y = textfield.get_content_height()
-		newfield.rect_min_size.y = textfield.rect_size.y
-		yield(globals.get_tree(), 'idle_frame')
-		ServiceLog.scroll_vertical = ServiceLog.get_v_scrollbar().max_value
+		globals.text_log_add('brothel', text)
+#		var ServiceLog = globals.log_node.get_node("ServiceLog")
+#		var newfield = ServiceLog.get_node("VBoxContainer/field").duplicate()
+#		newfield.show()
+#		newfield.get_node("text").bbcode_text = text
+#		ServiceLog.get_node("VBoxContainer").add_child(newfield)
+#		var textfield = newfield.get_node('text')
+#		textfield.rect_size.y = textfield.get_content_height()
+#		newfield.rect_min_size.y = textfield.rect_size.y
+#		yield(globals.get_tree(), 'idle_frame')
+#		ServiceLog.scroll_vertical = ServiceLog.get_v_scrollbar().max_value
 
 func apply_boosters(value):
 	var mul = 1.0
