@@ -1191,18 +1191,10 @@ func text_log_add(label, text):
 		if hour > 4:
 			hour = 1
 			date += 1
-	log_storage.append({type = label, text = text, time = "%d : %d" % [date, hour]})
+	var message = {type = label, text = text, date = date, hour = hour}
+	log_storage.append(message)
 	if log_node != null && weakref(log_node).get_ref():
-		var newfield = log_node.get_node("ScrollContainer/VBoxContainer/field").duplicate()
-		newfield.show()
-		newfield.get_node("label").bbcode_text = label
-		newfield.get_node("text").bbcode_text = text
-		newfield.get_node("date").bbcode_text = "[right]W %d D %d - %s[/right]" % [(date -1) / 7 + 1, (date -1) % 7 + 1, tr(variables.timeword[hour])]
-		log_node.get_node("ScrollContainer/VBoxContainer").add_child(newfield)
-		yield(get_tree(), 'idle_frame')
-		var textfield = newfield.get_node('text')
-		textfield.rect_size.y = textfield.get_v_scroll().get_max()
-		newfield.rect_min_size.y = textfield.rect_size.y
+		log_node.add_log_message(message)
 
 #quite ugly method to stop manifest befor main viewport is ready
 #it's probably useful only for test, but still seems "normal" problem for get_spec_node()
