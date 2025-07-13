@@ -211,6 +211,8 @@ func remove_stat_bonus(stat, op):
 
 
 func add_stat(statname, value, force_store = false): #only oneshots
+	if statname in ['physics', 'wits', 'charm'] and value > 0:
+		value *= statlist.get_stat_gain_rate(statname)
 	if statname in ['hp', 'mp', 'shield']:
 		set(statname, get(statname) + value)
 	elif statname == 'base_exp':
@@ -223,6 +225,8 @@ func add_stat(statname, value, force_store = false): #only oneshots
 	elif statname in training.stat_list:
 		training.add_stat(statname, value)
 	else: 
+		if statname.ends_with('_direct'):
+			statname = statname.trim_suffix('_direct')
 		var st_data = statdata.statdata[statname]
 		if st_data.direct:
 			statlist.update_stat(statname, value, 'add')
