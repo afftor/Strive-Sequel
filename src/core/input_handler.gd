@@ -1813,6 +1813,12 @@ func get_real_global_rect(nd, ignore_vp = false):
 	var res: Rect2
 	res.position = transform.get_origin()
 	res.size = transform.basis_xform(rect.size)
+	if res.size.x < 0:
+		res.position.x += res.size.x
+		res.size.x = -res.size.x
+	if res.size.y < 0:
+		res.position.y += res.size.y
+		res.size.y = -res.size.y
 	return res
 
 
