@@ -1066,7 +1066,7 @@ func add_sex_trait(code, known = false):
 			if parent.get_ref().is_in_game_party():
 				var text = get_short_name() + ": " + "New Sexual Trait Acquired - " + Traitdata.sex_traits[code].name
 				globals.text_log_add('char', text)
-				globals.manifest(text, parent.get_ref())
+#				globals.manifest(text, parent.get_ref())
 
 
 func remove_sex_trait(code, absolute = true):
