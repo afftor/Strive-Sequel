@@ -1838,7 +1838,7 @@ func common_effects(effects):
 				manifest("Gold: %s%s " % [i.operant, i.value])
 			'material_change':
 				ResourceScripts.game_res.update_materials(i.operant, i.material, i.value)
-				manifest_and_log("materials", "%s %s %s" % [
+				text_log_add("materials", "%s %s %s" % [
 					Items.materiallist[i.material].name, i.operant, i.value])
 			'make_story_character':
 				if ResourceScripts.game_party.get_unique_slave(i.value.to_lower()) != null:
@@ -2414,12 +2414,12 @@ func common_effects(effects):
 						res = gui_controller.exploration_dungeon.pay_stamina(i.value, i.modified) 
 					else:
 						res = gui_controller.exploration_dungeon.pay_stamina(i.value)
-					manifest_and_log("dungeon", "%s stamina spent in %s" %
+					text_log_add("dungeon", "%s stamina spent in %s" %
 						[res, gui_controller.exploration_dungeon.active_location.name])
 			'add_stamina':
 				if gui_controller.exploration_dungeon != null:
 					gui_controller.exploration_dungeon.add_stamina(i.value)
-					manifest_and_log("dungeon", "%s stamina replenished in %s" %
+					text_log_add("dungeon", "%s stamina replenished in %s" %
 						[i.value, gui_controller.exploration_dungeon.active_location.name])
 					
 			'clear_subroom':
@@ -2472,10 +2472,9 @@ func common_effects(effects):
 					var char1 = input_handler.scene_characters[0]
 					var char2 = input_handler.scene_characters[1]
 					ResourceScripts.game_party.add_relationship_value(char1.id, char2.id, i.value)
-					manifest_and_log("char",
+					text_log_add("char",
 						"Relationships of %s and %s changed by %s" % [
-							char1.get_short_name(), char2.get_short_name(), i.value],
-						char1)
+							char1.get_short_name(), char2.get_short_name(), i.value])
 				else:
 					print("wrong change relationship setup")
 			'open_arena':
