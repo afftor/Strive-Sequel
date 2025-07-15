@@ -1226,7 +1226,7 @@ func character_stat_change(character, data):
 
 	text += str(data.value)
 	text_log_add('char', text)
-	manifest(text, character)
+#	manifest(text, character)
 #	character.set(data.code, input_handler.math(data.operant, character.get(data.code), data.value))
 
 func make_local_recruit(args):
@@ -1835,7 +1835,7 @@ func common_effects(effects):
 		match i.code:
 			'money_change':
 				ResourceScripts.game_res.update_money(i.operant, i.value)
-				manifest("Gold: %s%s " % [i.operant, i.value])
+				text_log_add('money', "Gold: %s%s " % [i.operant, i.value])
 			'material_change':
 				ResourceScripts.game_res.update_materials(i.operant, i.material, i.value)
 				text_log_add("materials", "%s %s %s" % [
@@ -1906,7 +1906,7 @@ func common_effects(effects):
 								if k.value == 'no_sex' and !character.has_status('no_sex'):
 									var text = character.get_short_name() + ": " + "Sex unlocked"
 									text_log_add('char', text)
-									manifest(text, character)
+#									manifest(text, character)
 								
 								#character.stats.tags.erase(k.value)
 					elif k.code == 'assign_to_quest_and_make_unavalible':
@@ -2414,12 +2414,12 @@ func common_effects(effects):
 						res = gui_controller.exploration_dungeon.pay_stamina(i.value, i.modified) 
 					else:
 						res = gui_controller.exploration_dungeon.pay_stamina(i.value)
-					text_log_add("dungeon", "%s stamina spent in %s" %
+					manifest_and_log("dungeon", "%s stamina spent in %s" %
 						[res, gui_controller.exploration_dungeon.active_location.name])
 			'add_stamina':
 				if gui_controller.exploration_dungeon != null:
 					gui_controller.exploration_dungeon.add_stamina(i.value)
-					text_log_add("dungeon", "%s stamina replenished in %s" %
+					manifest_and_log("dungeon", "%s stamina replenished in %s" %
 						[i.value, gui_controller.exploration_dungeon.active_location.name])
 					
 			'clear_subroom':
