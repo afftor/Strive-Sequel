@@ -373,6 +373,7 @@ func apply_training(code):
 					result_data[ch] += tmp
 	if result_data.loyalty != 0:
 		result_data.loyalty += parent.get_ref().get_stat('training_loyalty')
+		result_data.loyalty += result_data.loyalty * ch_trainer.get_fame_bonus('loyalty_bonus')
 		if cat != 'positive':
 			result_data.loyalty -= result_data.loyalty * get_loyalty_penalty()
 		if result_data.loyalty < 0:

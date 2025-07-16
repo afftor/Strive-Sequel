@@ -1740,6 +1740,7 @@ func calculate_price(shopflag = false):
 			mod_mul -= 0.9
 		value *= mod_mul
 	value = value * variables.growth_factor_cost_mod[get_stat('growth_factor')]
+	value += value * get_fame_bonus('price_bonus')
 	return max(50,round(value))
 
 
@@ -2272,3 +2273,71 @@ func try_breakdown_on_char_loss(lost_char):
 func deferred_brk_check_food():
 	if has_status('food_dislike'):
 		try_breakdown('brk_dislike_food')
+
+#Fame. Maybe should be withdrawn to separate module
+func get_stat_upgrade_price(stat_level):
+	var base_price = variables.base_stat_upg_price
+	var upg_price = base_price
+	for rarity in variables.race_stat_upg_bonus_priority:
+		if races.racelist[get_stat('race')].race_tags.has(rarity):
+			upg_price += base_price * variables.race_stat_upg_bonuses[rarity]
+			break
+	if variables.level_stat_upg_bonuses.has(stat_level):
+		upg_price += base_price * variables.level_stat_upg_bonuses[stat_level]
+	if is_unique():
+		upg_price += upg_price * variables.stat_upg_unique_bonus
+	
+	return upg_price
+
+func get_upkeep():
+	return int(get_fame_bonus('upkeep'))
+
+func get_fame_bonus(bonus_name):
+	var fame_tier = variables.fame_tiers[get_stat('fame')]
+	if !fame_tier.has(bonus_name):
+		return 0.0
+	return fame_tier[bonus_name]
+
+func try_rise_fame(event = null):
+	if has_status('no_fame'):
+		return
+	if is_master() and event and event != 'story':
+		#'story' event not actually used for now,
+		#as master gets his fame though check_masters_story_fame()
+		#but I'll leave this mechanic for clarity
+		return
+	
+	set_stat("fame_degrade_timer", 0)
+	var cur_fame = get_stat("fame")
+	if (event
+			and variables.fame_rise_events.has(event)
+			and cur_fame >= variables.fame_rise_events[event]):
+		return
+	if !variables.fame_tiers.has(cur_fame + 1):
+		return
+	#only service for now has chance-based fame rise,
+	#if it's to be changed, chance mechanics should be unified
+	if event and event == 'service':
+		if randf() > variables.fame_rise_chance_service:
+			return
+	
+	add_stat("fame", 1)
+	manifest_and_log(translate(tr("FAME_RISE_MANIFEST")) % tr(get_fame_bonus('name')))
+
+func fame_degrade_tick():
+	if has_status('stable_fame'):
+		return
+	var cur_fame = get_stat("fame")
+	if !variables.fame_tiers.has(cur_fame + 1):#should mean it is max
+		return
+	if !variables.fame_tiers.has(cur_fame - 1):#should mean it is min
+		return
+	
+	if get_stat("fame_degrade_timer") + 1 < variables.fame_degrade_time:
+		add_stat("fame_degrade_timer", 1)
+		return
+	
+	set_stat("fame_degrade_timer", 0)
+	add_stat("fame", -1)
+	manifest_and_log(translate(tr("FAME_DEGRADE_MANIFEST")) % tr(get_fame_bonus('name')))
+

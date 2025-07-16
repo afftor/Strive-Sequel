@@ -2491,6 +2491,8 @@ func common_effects(effects):
 			'try_breakdown_scene_characters':
 				for chara in input_handler.scene_characters:
 					chara.try_breakdown(i.value)
+			'check_masters_story_fame':
+				ResourceScripts.game_party.check_masters_story_fame()
 
 func after_wedding_event(character):
 	if character == null:

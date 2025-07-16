@@ -992,6 +992,9 @@ var data = {
 					{
 						code = "decision",
 						value = "act3_finish"
+					},
+					{
+						code = "check_masters_story_fame",
 					}
 				]
 			},
@@ -1010,6 +1013,9 @@ var data = {
 					{
 						code = "decision",
 						value = "act3_finish"
+					},
+					{
+						code = "check_masters_story_fame",
 					}
 				],
 				character = "dwarf_king",
@@ -1376,6 +1382,9 @@ var data = {
 					{
 						code = "decision",
 						value = "act3_finish"
+					},
+					{
+						code = "check_masters_story_fame",
 					}
 				]
 			}

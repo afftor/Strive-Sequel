@@ -1598,6 +1598,27 @@ var statdata = {
 		tags = ['array'],
 		custom_order = ['append']
 	},
+	fame = {
+		code = 'fame',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer', 'cap_up', 'cap_low'],
+		cap_up = 6,
+		cap_low = 0,
+	},
+	fame_degrade_timer = {
+		code = 'fame_degrade_timer',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer']
+	},
+	last_arena_win = {
+		code = 'last_arena_win',
+		tags = ['bool'],
+		default_bonus = 'set',
+	},
 }
 
 #var slave_class_names = {

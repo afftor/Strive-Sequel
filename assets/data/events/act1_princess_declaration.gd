@@ -196,6 +196,9 @@ var data = {
 			{
 				code = "decision",
 				value = "act1_finish"
+			},
+			{
+				code = "check_masters_story_fame",
 			}
 		],
 		text = [
