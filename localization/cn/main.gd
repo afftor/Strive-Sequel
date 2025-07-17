@@ -585,6 +585,9 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	MATERIALADAMANTINE = "精金",
 	MATERIALADAMANTINEADJ = "精金",
 	MATERIALADAMANTINEDESCRIPT = "一种非常罕见且坚固的魔法合金。手工制作。 ",
+	MATERIALMETEORITE_IRON = """Meteorite Steel""", # MISSING TRANSLATION
+	MATERIALMETEORITE_IRONADJ = """Star""", # MISSING TRANSLATION
+	MATERIALMETEORITE_IRONDESCRIPT = """A very rare and strong magic alloy. Produced by crafting. """, # MISSING TRANSLATION
 	MATERIALBLUE_MOSS = "蓝苔",
 	MATERIALBLUE_MOSSDESCRIPT = "一种具有神奇特性的稀有植物。",
 	MATERIALSALVIA = "鼠尾草",
@@ -1522,6 +1525,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	CAPTURETOOLTIP = "这些角色已经被你的团队发现，可以被招募到你的豪宅中，也可以像手动出售一样快速变现。如果忘记了位置，所有角色都会自动出售。",
 	CAPTURESELLTOOLTIP = "以 %d 金币快速出售此角色。这相当于向市场出售角色，但不允许您回购。 ",
 	CAPTUREADDTOOLTIP = "将此角色添加到名册中。如果您的角色总数大于可用房间数，您将无法完成回合。 ",
+	CAPTUREENSLAVETOOLTIP = """Add this character to roster as a slave instantly. You won't be able to finish turn if your total number of characters is bigger than available number of rooms. """, # MISSING TRANSLATION
 	CAPTURERECRUITTOOLTIP = "尝试招募此角色。如果您的角色总数大于可用房间数，您将无法完成回合。",
 	CAPTUREDISMISSTOOLTIP = "解散此角色",
 	

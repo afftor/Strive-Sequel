@@ -962,7 +962,7 @@ var unique_sprites = {
 		nighgown = {
 			name = "Nighgown",
 			descript = "",
-			path = "anastasia_nude_body", 
+			path = "anastasia_night_body", 
 			face_path = "anastasia_night",
 			unlock_reqs = [{type = 'event_seen', check = true, value = 'ana_blow_1'}]
 			},
