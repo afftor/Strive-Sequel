@@ -142,6 +142,11 @@ var template_direct = {
 	had_cons_sex_with_mc = false,
 	had_forced_sex_with_mc = false,
 	agreed_to_marry = false,
+	
+	#fame
+	fame = 0,
+	fame_degrade_timer = 0,
+	last_arena_win = false,
 }
 var sexexp = {
 	sexexp_partners = {}, 
@@ -302,6 +307,7 @@ var template_dynamic = {
 	#training
 	training_loyalty = 0,
 	training_spirit = 0,
+	trainer_loyalty_bonus = 0.0,
 #	resistance_red = 0,
 	
 	#helpers

@@ -8,7 +8,7 @@ var professions = {
 		altnamereqs = [{code = 'sex',operant = 'neq', value = 'male'}],
 		descript = '',
 		icon = load("res://assets/images/iconsclasses/Master.png"),
-		tags = ['permanent'],
+		tags = ['permanent', 'stable_fame'],
 		categories = ['social'],
 		showupreqs = [{code = 'global_profession_limit', profession = 'master', value = 1}],
 		reqs = [{code = 'global_profession_limit', profession = 'master', value = 1},{code = 'cant_spawn_naturally'}],

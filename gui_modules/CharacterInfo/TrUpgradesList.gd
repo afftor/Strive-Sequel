@@ -436,6 +436,7 @@ func finish_training():
 
 func finish_training_confirm():
 	person.finish_training()
+	root.update()
 	match_state()
 
 

@@ -558,6 +558,9 @@ var data = {
 				code = "election_finish"
 			},
 			{
+				code = "check_masters_story_fame"
+			},
+			{
 				code = "add_master_points",
 				value = 1
 			}

@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
 [ext_resource path="res://assets/Textures_v2/ClockModule/icon_money_timer.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_reputationshop_reputation.png" type="Texture" id=5]
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/images/gui/obed_good.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/iconstraits/grey.png" type="Texture" id=9]
@@ -121,6 +122,60 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="price_cont" type="VBoxContainer" parent="Panel"]
+margin_left = 6.0
+margin_top = 92.0
+margin_right = 293.0
+margin_bottom = 212.0
+alignment = 1
+
+[node name="price" type="Control" parent="Panel/price_cont" groups=["hide_master"]]
+margin_top = 14.0
+margin_right = 287.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 0, 44 )
+
+[node name="valuelabel" type="Label" parent="Panel/price_cont/price"]
+light_mask = 0
+margin_left = 92.0
+margin_right = 219.0
+margin_bottom = 42.0
+mouse_filter = 1
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Slave"
+valign = 1
+
+[node name="valueicon" type="TextureRect" parent="Panel/price_cont/price"]
+margin_left = 32.869
+margin_right = 76.8691
+margin_bottom = 44.001
+texture = ExtResource( 4 )
+
+[node name="fame" type="Control" parent="Panel/price_cont"]
+margin_top = 62.0
+margin_right = 287.0
+margin_bottom = 106.0
+rect_min_size = Vector2( 0, 44 )
+
+[node name="icon" type="TextureRect" parent="Panel/price_cont/fame"]
+margin_left = 32.869
+margin_right = 76.8691
+margin_bottom = 44.001
+texture = ExtResource( 5 )
+expand = true
+
+[node name="label" type="Label" parent="Panel/price_cont/fame"]
+light_mask = 0
+margin_left = 92.0
+margin_right = 219.0
+margin_bottom = 42.0
+mouse_filter = 1
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Fame"
+valign = 1
+
 [node name="character_class" type="Label" parent="Panel" groups=["hide_master"]]
 light_mask = 0
 margin_left = 9.48987
@@ -133,28 +188,24 @@ custom_fonts/font = ExtResource( 1 )
 text = "SLAVE"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="valuelabel" type="Label" parent="Panel" groups=["hide_master"]]
+[node name="MasterIcon" type="TextureRect" parent="Panel"]
+visible = false
 light_mask = 0
-margin_left = 123.778
-margin_top = 133.127
-margin_right = 250.778
-margin_bottom = 175.127
-mouse_filter = 1
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 1 )
-text = "Slave"
-valign = 1
+margin_left = 193.103
+margin_top = 25.5297
+margin_right = 253.103
+margin_bottom = 65.5297
+texture = ExtResource( 15 )
 
-[node name="valueicon" type="TextureRect" parent="Panel" groups=["hidemaster"]]
-margin_left = 60.8689
-margin_top = 132.066
-margin_right = 104.869
-margin_bottom = 176.067
-texture = ExtResource( 4 )
+[node name="Label" type="Label" parent="Panel/MasterIcon"]
+light_mask = 0
+margin_left = -161.103
+margin_right = -53.1026
+margin_bottom = 42.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Master"
 
 [node name="BaseStatsPanel" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -564,24 +615,6 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="MasterIcon" type="TextureRect" parent="."]
-visible = false
-light_mask = 0
-margin_left = 193.103
-margin_top = 25.5297
-margin_right = 253.103
-margin_bottom = 65.5297
-texture = ExtResource( 15 )
-
-[node name="Label" type="Label" parent="MasterIcon"]
-light_mask = 0
-margin_left = -161.103
-margin_right = -53.1026
-margin_bottom = 42.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "Master"
 
 [node name="HairChange" type="Control" parent="."]
 visible = false

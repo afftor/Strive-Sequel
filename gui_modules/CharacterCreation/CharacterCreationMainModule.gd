@@ -858,6 +858,7 @@ func finish_character():
 			person.set_slave_category('master')
 			person.set_stat('consent', 100)
 			person.set_stat('authority_factor', 5)
+			person.set_stat('fame', 1)
 			globals.equip_char(person, 'chest_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
 			globals.equip_char(person, 'legs_base_cloth', {ArmorBaseCloth = 'cloth', ArmorTrim = 'wood'})
 		ResourceScripts.game_party.add_slave(person)
