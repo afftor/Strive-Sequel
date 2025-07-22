@@ -570,6 +570,7 @@ func select_brothel_activity():
 				parent.get_ref().take_virginity('anal', 'brothel_customer')
 			
 			work_tick_values(data.workstats[randi()%data.workstats.size()])
+			
 			parent.get_ref().try_rise_fame('service')
 			
 			parent.get_ref().add_stat('metrics_randompartners', globals.fastif(sex_rules.has('group'), 2, 1))
@@ -599,6 +600,7 @@ func select_brothel_activity():
 		
 		var data = tasks.gold_tasks_data[highest_value.code]
 		work_tick_values(data.workstats[randi()%data.workstats.size()])
+		
 		parent.get_ref().try_rise_fame('service')
 		
 		var goldearned = highest_value.value * min(4, (1 + 0.001 * parent.get_ref().calculate_price()))
