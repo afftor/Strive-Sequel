@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/aire_default_prt_bold.png-061ef9f0097b425ffb59c96803ec8cc1.stex"
+path="res://.import/sunder.png-e77aeb495373332b29b68e2500a4f9de.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/zephyrasister_prt/airy_prt/aire_default_prt_bold.png"
-dest_files=[ "res://.import/aire_default_prt_bold.png-061ef9f0097b425ffb59c96803ec8cc1.stex" ]
+source_file="res://assets/sfx/sprite_sheets/sunder.png"
+dest_files=[ "res://.import/sunder.png-e77aeb495373332b29b68e2500a4f9de.stex" ]
 
 [params]
 

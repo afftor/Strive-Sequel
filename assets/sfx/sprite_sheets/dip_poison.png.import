@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/footman.png-39245956740803a20472626b9c5ebac7.stex"
+path="res://.import/dip_poison.png-3c4b6a2a8678cbaa8004a08a0e8a2d6f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/footman.png"
-dest_files=[ "res://.import/footman.png-39245956740803a20472626b9c5ebac7.stex" ]
+source_file="res://assets/sfx/sprite_sheets/dip_poison.png"
+dest_files=[ "res://.import/dip_poison.png-3c4b6a2a8678cbaa8004a08a0e8a2d6f.stex" ]
 
 [params]
 

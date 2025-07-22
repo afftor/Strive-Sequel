@@ -289,7 +289,7 @@ var difficulty_per_level_survival = 0.1 #% enemy stat increase
 var survival_cap_main = 4.0 # added base 1 to max + 300%
 var survival_cap_secondary = 2.5 # added base 1 to max + 150%
 
-var slave_class_list = ['slave', 'servant', 'heir', 'master']#incomplete?
+var slave_class_list = ['slave', 'servant', 'heir', 'master']#incomplete? obsolete?
 #sex chances
 
 var teen_age_weight = 1
@@ -390,11 +390,6 @@ var ai_setup = 'old' # 'off' - no setup, 'old' - using data convertion, 'new' - 
 
 var base_work_increment = 0.85
 var stat_work_increment = 1.4
-
-
-
-var new_stat_bonuses_syntax = false
-
 
 var pregenabled = true
 var brothel_pregnancy_chance = 0.1

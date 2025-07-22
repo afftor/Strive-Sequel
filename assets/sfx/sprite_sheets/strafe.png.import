@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/aire_nude_prt_kind.png-6342ef5f3fb09f758822f7e689f8543f.stex"
+path="res://.import/strafe.png-5137837e0259a500698d173054ebc5dd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/zephyrasister_prt/airy_prt/aire_nude_prt_kind.png"
-dest_files=[ "res://.import/aire_nude_prt_kind.png-6342ef5f3fb09f758822f7e689f8543f.stex" ]
+source_file="res://assets/sfx/sprite_sheets/strafe.png"
+dest_files=[ "res://.import/strafe.png-5137837e0259a500698d173054ebc5dd.stex" ]
 
 [params]
 

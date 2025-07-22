@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/aire_nude_prt_bold.png-c7974c926a7df978c2c4d39929f0c99d.stex"
+path="res://.import/taunt.png-c4e760d0860699283bdb5bf28d7ec0b3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/zephyrasister_prt/airy_prt/aire_nude_prt_bold.png"
-dest_files=[ "res://.import/aire_nude_prt_bold.png-c7974c926a7df978c2c4d39929f0c99d.stex" ]
+source_file="res://assets/sfx/sprite_sheets/taunt.png"
+dest_files=[ "res://.import/taunt.png-c4e760d0860699283bdb5bf28d7ec0b3.stex" ]
 
 [params]
 

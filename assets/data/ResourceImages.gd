@@ -724,6 +724,7 @@ var sprites = {
 #	zephyras_sister_body = load("res://assets/images/sprites/zephyrasister_body.png"),
 #	zephyras_sister_nude = load("res://assets/images/sprites/zephyrasister_nude.png"),
 #	zephyras_sister_nude_body = load("res://assets/images/sprites/zephyrasister_nude_body.png"),
+	grotus = load("res://assets/images/sprites/grotus.png"),
 	bolthar = load("res://assets/images/sprites/gnome.png"),
 	keeper = load("res://assets/images/sprites/keeper.png"),
 	alise = load("res://assets/images/sprites/alise.png"),

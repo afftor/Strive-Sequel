@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/aire_default_prt_shy.png-96547b88f08b56a662dc031268788d92.stex"
+path="res://.import/disarm.png-0ccacf700955e5757640dfa6131bed27.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/zephyrasister_prt/airy_prt/aire_default_prt_shy.png"
-dest_files=[ "res://.import/aire_default_prt_shy.png-96547b88f08b56a662dc031268788d92.stex" ]
+source_file="res://assets/sfx/sprite_sheets/disarm.png"
+dest_files=[ "res://.import/disarm.png-0ccacf700955e5757640dfa6131bed27.stex" ]
 
 [params]
 

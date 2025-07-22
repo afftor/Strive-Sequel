@@ -1191,18 +1191,10 @@ func text_log_add(label, text):
 		if hour > 4:
 			hour = 1
 			date += 1
-	log_storage.append({type = label, text = text, time = "%d : %d" % [date, hour]})
+	var message = {type = label, text = text, date = date, hour = hour}
+	log_storage.append(message)
 	if log_node != null && weakref(log_node).get_ref():
-		var newfield = log_node.get_node("ScrollContainer/VBoxContainer/field").duplicate()
-		newfield.show()
-		newfield.get_node("label").bbcode_text = label
-		newfield.get_node("text").bbcode_text = text
-		newfield.get_node("date").bbcode_text = "[right]W %d D %d - %s[/right]" % [(date -1) / 7 + 1, (date -1) % 7 + 1, tr(variables.timeword[hour])]
-		log_node.get_node("ScrollContainer/VBoxContainer").add_child(newfield)
-		yield(get_tree(), 'idle_frame')
-		var textfield = newfield.get_node('text')
-		textfield.rect_size.y = textfield.get_v_scroll().get_max()
-		newfield.rect_min_size.y = textfield.rect_size.y
+		log_node.add_log_message(message)
 
 #quite ugly method to stop manifest befor main viewport is ready
 #it's probably useful only for test, but still seems "normal" problem for get_spec_node()
@@ -1234,7 +1226,7 @@ func character_stat_change(character, data):
 
 	text += str(data.value)
 	text_log_add('char', text)
-	manifest(text, character)
+#	manifest(text, character)
 #	character.set(data.code, input_handler.math(data.operant, character.get(data.code), data.value))
 
 func make_local_recruit(args):
@@ -1843,10 +1835,10 @@ func common_effects(effects):
 		match i.code:
 			'money_change':
 				ResourceScripts.game_res.update_money(i.operant, i.value)
-				manifest("Gold: %s%s " % [i.operant, i.value])
+				text_log_add('money', "Gold: %s%s " % [i.operant, i.value])
 			'material_change':
 				ResourceScripts.game_res.update_materials(i.operant, i.material, i.value)
-				manifest_and_log("materials", "%s %s %s" % [
+				text_log_add("materials", "%s %s %s" % [
 					Items.materiallist[i.material].name, i.operant, i.value])
 			'make_story_character':
 				if ResourceScripts.game_party.get_unique_slave(i.value.to_lower()) != null:
@@ -1914,7 +1906,7 @@ func common_effects(effects):
 								if k.value == 'no_sex' and !character.has_status('no_sex'):
 									var text = character.get_short_name() + ": " + "Sex unlocked"
 									text_log_add('char', text)
-									manifest(text, character)
+#									manifest(text, character)
 								
 								#character.stats.tags.erase(k.value)
 					elif k.code == 'assign_to_quest_and_make_unavalible':
@@ -2480,10 +2472,9 @@ func common_effects(effects):
 					var char1 = input_handler.scene_characters[0]
 					var char2 = input_handler.scene_characters[1]
 					ResourceScripts.game_party.add_relationship_value(char1.id, char2.id, i.value)
-					manifest_and_log("char",
+					text_log_add("char",
 						"Relationships of %s and %s changed by %s" % [
-							char1.get_short_name(), char2.get_short_name(), i.value],
-						char1)
+							char1.get_short_name(), char2.get_short_name(), i.value])
 				else:
 					print("wrong change relationship setup")
 			'open_arena':

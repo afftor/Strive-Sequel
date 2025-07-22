@@ -419,8 +419,8 @@ func get_unaval_string():
 
 func quest_day_tick():
 	if quest_time_remains > 0:
-		if work != 'learning':
-			parent.get_ref().add_stat("base_exp", 12)
+#		if work != 'learning':
+#			parent.get_ref().add_stat("base_exp", 12)
 		quest_time_remains -= 1
 		if quest_time_remains <= 0 and work != "disabled" and work != 'learning':
 			remove_from_work_quest()
@@ -430,7 +430,6 @@ func quest_day_tick():
 		unaval_time_remains -= 1
 		if unaval_time_remains <= 0:
 			make_avaliable()
-
 
 
 func remove_from_work_quest():
@@ -569,7 +568,7 @@ func select_brothel_activity():
 			if sex_rules.has('anal') && penis_check:
 				parent.get_ref().take_virginity('anal', 'brothel_customer')
 			
-			work_tick_values(data.workstats[randi()%data.workstats.size()])
+			work_tick_values(input_handler.random_from_array(data.workstats))
 			
 			parent.get_ref().try_rise_fame('service')
 			
@@ -599,7 +598,7 @@ func select_brothel_activity():
 		var highest_value = get_highest_value(non_sex_rules)
 		
 		var data = tasks.gold_tasks_data[highest_value.code]
-		work_tick_values(data.workstats[randi()%data.workstats.size()])
+		work_tick_values(input_handler.random_from_array(data.workstats))
 		
 		parent.get_ref().try_rise_fame('service')
 		
@@ -620,8 +619,8 @@ func select_brothel_activity():
 
 func update_brothel_log(ch_name, gold, data, customer_gender = ""):
 	if globals.log_node != null && weakref(globals.log_node).get_ref():
-		if ResourceScripts.game_globals.hour == 4:
-			globals.log_node.clean_service_log()
+#		if ResourceScripts.game_globals.hour == 4:
+#			globals.log_node.clean_log()
 		var text = ""
 		if customer_gender != "":
 			text = tr("BROTHELLOGSEX")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper()), customer_gender.capitalize()]
@@ -629,16 +628,17 @@ func update_brothel_log(ch_name, gold, data, customer_gender = ""):
 		else:
 			text = tr("BROTHELLOGNO_SEX")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper())]
 			#text = tr(ch_name) + " earned " + str(gold) + " gold working as " + tr("BROTHEL" + data.code.to_upper())
-		var ServiceLog = globals.log_node.get_node("ServiceLog")
-		var newfield = ServiceLog.get_node("VBoxContainer/field").duplicate()
-		newfield.show()
-		newfield.get_node("text").bbcode_text = text
-		ServiceLog.get_node("VBoxContainer").add_child(newfield)
-		var textfield = newfield.get_node('text')
-		textfield.rect_size.y = textfield.get_content_height()
-		newfield.rect_min_size.y = textfield.rect_size.y
-		yield(globals.get_tree(), 'idle_frame')
-		ServiceLog.scroll_vertical = ServiceLog.get_v_scrollbar().max_value
+		globals.text_log_add('brothel', text)
+#		var ServiceLog = globals.log_node.get_node("ServiceLog")
+#		var newfield = ServiceLog.get_node("VBoxContainer/field").duplicate()
+#		newfield.show()
+#		newfield.get_node("text").bbcode_text = text
+#		ServiceLog.get_node("VBoxContainer").add_child(newfield)
+#		var textfield = newfield.get_node('text')
+#		textfield.rect_size.y = textfield.get_content_height()
+#		newfield.rect_min_size.y = textfield.rect_size.y
+#		yield(globals.get_tree(), 'idle_frame')
+#		ServiceLog.scroll_vertical = ServiceLog.get_v_scrollbar().max_value
 
 func apply_boosters(value):
 	var mul = 1.0
@@ -672,6 +672,13 @@ func get_gold_value(task):
 	value = value * (parent.get_ref().get_stat('productivity') * parent.get_ref().get_stat(tasks.gold_tasks_data[task].workmod)/100.0)
 	
 	return value
+
+
+func quest_tick():
+	if !is_on_quest():
+		return
+	if work != 'learning':
+		work_tick_values(input_handler.random_from_array(['physics', 'charm', 'wits']))
 
 
 func recruit_tick(task): #maybe incomplete

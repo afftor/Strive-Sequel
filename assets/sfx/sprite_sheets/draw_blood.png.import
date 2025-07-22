@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/aire_nude_prt_serious.png-db7e9679d4231bc130b973df2c33cf11.stex"
+path="res://.import/draw_blood.png-252ecadb56c8e1f6a1eef00cdd551000.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/zephyrasister_prt/airy_prt/aire_nude_prt_serious.png"
-dest_files=[ "res://.import/aire_nude_prt_serious.png-db7e9679d4231bc130b973df2c33cf11.stex" ]
+source_file="res://assets/sfx/sprite_sheets/draw_blood.png"
+dest_files=[ "res://.import/draw_blood.png-252ecadb56c8e1f6a1eef00cdd551000.stex" ]
 
 [params]
 

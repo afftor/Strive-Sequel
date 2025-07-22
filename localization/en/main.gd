@@ -568,6 +568,9 @@ Food type: Fish, Vegetables.""",
 	MATERIALADAMANTINE = "Adamantine",
 	MATERIALADAMANTINEADJ = "Adamantine",
 	MATERIALADAMANTINEDESCRIPT = "A very rare and strong magic alloy. Produced by crafting. ",
+	MATERIALMETEORITE_IRON = "Meteorite Steel",
+	MATERIALMETEORITE_IRONADJ = "Star",
+	MATERIALMETEORITE_IRONDESCRIPT = "A very rare and strong magic alloy. Produced by crafting. ",
 	MATERIALBLUE_MOSS = "Blue Moss",
 	MATERIALBLUE_MOSSDESCRIPT = "A rare plant with magical properties.",
 	MATERIALSALVIA = "Salvia",
@@ -1677,6 +1680,8 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	LOGLEFTTTOOLTIP = "Shows main events",
 	LOGRIGHTLABEL = "Service",
 	LOGRIGHTTOOLTIP = "Shows service income",
+	LOGCENTERTLABEL = "Slaves",
+	LOGCENTERTOOLTIP = "Shows character events",
 	BROTHELLOGSEX = "%s earned %s gold performing %s with a %s customer.",
 	BROTHELLOGNO_SEX = "%s earned %s gold working as a %s.",
 	BROTHELTOOLTIP = """You can select which tasks the character will be allowed to perform while working at brothel. By toggling specific tasks only those will be allowed. Client sexes only affect sexual tasks.
@@ -16376,7 +16381,7 @@ You feel like she almost has to force herself from hiding from you.""",
 — [Master], you've been missing Lilia? Let's go to bed already!""",
 	DIALOGUEJEANINITIATEM = "— Yes? Don't just give me that oogling look, if you don't have anything serious I have business to do.",
 	DIALOGUELILITHINIT = "— [Master], you wanna play? I'm always ready to play.",
-	DIALOGUEZEPHYRA_UNDERWEAR = "In your hands you hold a piece of clothing which was surrendered to you by Zephyra. Pondering on what actual benefit it can have, one mind is stuck in your mind... What if you wear it on your head? Surely, this is a terrible idea...",
+	DIALOGUEZEPHYRA_UNDERWEAR = "In your hands you hold a piece of clothing which was surrendered to you by Zephyra. Pondering on what actual benefit it can have, one thought is stuck in your mind... What if you wear it on your head? Surely, this is a terrible idea...",
 	DIALOGUEZEPHYRA_UNDERWEAROPTION = "Do it",
 	DIALOGUEZEPHYRA_UNDERWEAR2 = """Despite your best judgement, you put a girl's underwear onto your head. You feel nothing like you would expect but the sudden revelation is abrupted by the owner entering your room just at this moment. 
 	
@@ -18920,7 +18925,7 @@ His voice sounds bitter when he addressed the High Priestess but its clear her a
 	METEOR_LOUNGE_RESPONSE = "Content with your response, Lorien has marked the spot on your location. It shouldn't take too much time although you wonder if you're gonna find anything at all after this much time has passed.",
 	METEOR_OGRES_START = "As you arrive at the clearing Lorien has pointed out, you spot the place the star has fallen into. The crater has overgrown some time ago but around it you spot multiple large foot tracks. Much larger than humans, they must belong to ogres.",
 	METEOR_OGRES_START_OPT_FOLLOW = "*Follow tracks*",
-	METEOR_OGRES_CAMP = """You manage to follow the poorly preserved tracks for a while but your effort rewards you. You find a makeshift camp belonging to a small group of ogres. It's a crude setup of tattered hides and splintered logs, reeking of charred meat and damp earth. Three ogres huddle around a smoldering fire, their guttural laughter echoing through the clearing. The largest, a brute with a scarred hide, grips a massive club embedded with a jagged, faintly glowing stone—the fallen star, no doubt. His beady eyes scan the surroundings as he grunts to his companions.
+	METEOR_OGRES_CAMP = """You manage to follow the poorly preserved tracks for a while but your effort rewards you. You find a makeshift camp belonging to a small group of ogres. It's a crude setup of tattered hides and splintered logs, reeking of charred meat and damp earth. Three ogres huddle around a smoldering fire, their guttural laughter echoing through the clearing. The largest, a brute with a scarred hide, grips a massive club embedded with a jagged, faintly glowing stone, the one you are looking for. His beady eyes scan the surroundings.
 
 — Oi, dis shiny rock's mine! Found it in da hole, fair 'n square. Dis makes me king! Ain't no one takin' it!
 
@@ -18988,7 +18993,7 @@ Before you can speak, he tugs at your arm, trying to pry the meteorite free, his
 """,
 	METEOR_DURIM_FOUNDME = """— Yes, yes! It found me, brought itself by your hands!
 
-He sets to work immediately, pouring sizzling acids and grinding tools over the stone. Sparks fly as he extracts a small, shimmering ingot of pure metal, its surface catching the workshop's dim light. He tosses it to you carelessly, already turning back to his experiments.""",
+He sets to work immediately, pouring sizzling acids and grinding tools over the stone. Sparks fly as he extracts a small, shimmering piece of pure metal, its surface catching the workshop's dim light. He tosses it to you carelessly, already turning back to his experiments.""",
 	METEOR_DURIM_WIN = """After a fierce struggle, Durim collapses, groaning dramatically, playing dead. As you pause, confused, he springs up with surprising speed, snatching the meteorite from your grip.
 
 — Ha! Fooled ye! Ye fool!
