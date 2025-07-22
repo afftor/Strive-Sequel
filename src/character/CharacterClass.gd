@@ -2341,3 +2341,8 @@ func fame_degrade_tick():
 	add_stat("fame", -1)
 	manifest_and_log(translate(tr("FAME_DEGRADE_MANIFEST")) % tr(get_fame_bonus('name')))
 
+func get_minor_training_max():
+	return 3 + floor(get_stat('growth_factor') * 0.5)
+
+func get_minor_training_count():
+	return get_traits_by_tag('minor_training').size()

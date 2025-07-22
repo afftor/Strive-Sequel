@@ -673,6 +673,15 @@ var statdata = {
 		tags = ['custom_bonuses'],
 		default_bonus = 'add_part'
 	},
+	trainer_loyalty_bonus = {
+		code = 'trainer_loyalty_bonus',
+		percent = true,
+		direct = false,
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		tags = [],
+	},
 	#personality
 	personality_bold = {
 		code = 'personality_bold',

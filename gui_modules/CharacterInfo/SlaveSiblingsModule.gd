@@ -8,9 +8,16 @@ var universal_skills = ['oral','anal','petting']
 
 onready var loyalty_panel = $UpgradesPanel/UpgradesList
 onready var loyalty_panel_master = $UpgradesPanel/ScrollContainer2/UpgradesList2
-var loyalty_mode = true
-var relations_mode = true
-var loyalty_tab = 3
+onready var loyalty_panel_minor = $UpgradesPanel/MinorUpgradesCont/UpgradesList3
+onready var btn_relations = $change_buttons/rel_button
+onready var btn_training = $change_buttons/tr_button
+onready var btn_minor_training = $change_buttons/minor_tr_button
+#var loyalty_mode = true
+#var relations_mode = true
+#var loyalty_tab = 3
+enum tab_nums {all, food, mastery, training, relations, kin, minor}
+var cur_tab
+var last_tab
 
 func _ready():
 	update()
@@ -31,7 +38,9 @@ func _ready():
 		i.connect('pressed', self, 'set_work_rule', [i.name])
 	$work_rules/ration.connect("button_down", self, "update")
 	$work_rules/ration.connect("button_up", self, "update")
-	$change_button.connect("pressed", self, 'swap_mode')
+	btn_training.connect("pressed", self, 'on_btn_training')
+	btn_relations.connect("pressed", self, 'open_tab', [tab_nums.kin])
+	btn_minor_training.connect("pressed", self, 'open_tab', [tab_nums.minor])
 	$RelationsButton.connect("pressed", self, 'swap_rel_mode')
 #	$change_button2.connect("pressed", self, 'swap_tab', [1])
 #	$change_button3.connect("pressed", self, 'swap_tab', [2])
@@ -39,6 +48,7 @@ func _ready():
 	$SlaveDietModule/close.connect("pressed", self, 'hide_food_filter')
 	loyalty_panel.root = get_parent()
 	loyalty_panel_master.root = get_parent()
+	loyalty_panel_minor.root = get_parent()
 	
 
 func set_work_rule(rule):
@@ -61,43 +71,48 @@ func luxury_room():
 func set_color(value):
 	var color = Color(0.98,0.88,0.51,1)
 	if value > 0:
-		color = Color(0.31,0.99,0.51,1)  
+		color = Color(0.31,0.99,0.51,1)
 	elif value < 0:
 		color = Color(0.99,0.31,0.36,1)
-	return color	
+	return color
 
 func update():
 	person = input_handler.interacted_character
-	hide_food_filter()
+	#show and hide here is just to get ready, open_valid_tab() makes it all right
+	$SlaveDietModule.visible = false
+	btn_minor_show()
+	btn_training_show()
 	#relatives
 	$RelativesPanel.build_relatives()
 	build_relations()
-	if person.is_master():
-		$change_button.visible = true
-		loyalty_tab = 3
-		loyalty_panel.visible = false
-		loyalty_panel_master.get_parent().visible = true
-		loyalty_panel_master.update_upgrades_tree()
-		$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGSMASTER')
-#		setup_tab()
-		if !loyalty_mode:
-			swap_mode()
-	elif person.get_stat('slave_class') in ['slave', 'slave_trained', 'servant', 'servant_notax', 'heir']:
-		$change_button.visible = true
-		loyalty_panel.visible = true
-		loyalty_panel_master.get_parent().visible = false
-		loyalty_panel.person = person
-		loyalty_panel.match_state()
-		if person.get_stat('slave_class') in ['slave', 'slave_trained']:
-			$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGS')
-		else:
-			$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGSSERVANTS')
-		if !loyalty_mode:
-			swap_mode()
-	else:
-		$change_button.visible = false
-		if loyalty_mode:
-			swap_mode()
+	#handling tabs
+	open_valid_tab()
+#	if person.is_master():
+#		$change_button.visible = true
+#		loyalty_tab = 3
+#		loyalty_panel.visible = false
+#		loyalty_panel_master.get_parent().visible = true
+#		loyalty_panel_master.update_upgrades_tree()
+#		$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGSMASTER')
+##		setup_tab()
+#		if !loyalty_mode:
+#			swap_mode()
+#	elif person.get_stat('slave_class') in ['slave', 'slave_trained', 'servant', 'servant_notax', 'heir']:
+#		$change_button.visible = true
+#		loyalty_panel.visible = true
+#		loyalty_panel_master.get_parent().visible = false
+#		loyalty_panel.person = person
+#		loyalty_panel.match_state()
+#		if person.get_stat('slave_class') in ['slave', 'slave_trained']:
+#			$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGS')
+#		else:
+#			$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGSSERVANTS')
+#		if !loyalty_mode:
+#			swap_mode()
+#	else:
+#		$change_button.visible = false
+#		if loyalty_mode:
+#			swap_mode()
 #	if person.is_master():
 #		$change_button.visible = false
 #		if loyalty_mode:
@@ -115,11 +130,11 @@ func update():
 		globals.disconnect_text_tooltip(i)
 		globals.connecttexttooltip(i,person.translate(tr("WORKRULE" + i.name.to_upper() + "DESCRIPT")))
 	
-	if person.is_master():
-		$UpgradesPanel/Label.text = tr("MASTER_POINTS") + ": " + str(ResourceScripts.game_progress.master_points)
-	else:
-#		$UpgradesPanel/Label.text = tr("SLAVE_LOYALTY") + ": " + str(floor(person.get_stat("loyalty")))
-		$UpgradesPanel/Label.text = ""
+#	if person.is_master():
+#		$UpgradesPanel/Label.text = tr("MASTER_POINTS") + ": " + str(ResourceScripts.game_progress.master_points)
+#	else:
+##		$UpgradesPanel/Label.text = tr("SLAVE_LOYALTY") + ": " + str(floor(person.get_stat("loyalty")))
+#		$UpgradesPanel/Label.text = ""
 	#globals.connecttexttooltip($UpgradesPanel/Label, "")
 	#work_rules part
 	var luxury_rooms_taken = 0
@@ -291,81 +306,96 @@ func toggle_trait(trait_status, trait):
 
 
 func show_food_filter():
-	$UpgradesPanel.visible = false
-	$RelativesPanel.visible = false
-	$SlaveDietModule.visible = true
+	if cur_tab == tab_nums.food:
+		hide_food_filter()
+		return
 	
-	$change_button.visible = false
-	$change_button2.visible = false
-	$change_button3.visible = false
+	last_tab = cur_tab
+	open_tab(tab_nums.food)
+#	$UpgradesPanel.visible = false
+#	$RelativesPanel.visible = false
+#	$SlaveDietModule.visible = true
+#	$change_button.visible = false
+#	$change_button2.visible = false
+#	$change_button3.visible = false
 
 
 func hide_food_filter():
-	$SlaveDietModule.visible = false
-	$change_button.visible = !person.is_master()
-	loyalty_mode = !loyalty_mode
-	swap_mode()
+	close_tab(tab_nums.food)
+	if last_tab:
+		#be careful with cur_tab outside open_/close_tab()
+		cur_tab = last_tab
+		last_tab = null
+	open_valid_tab()
+#	$SlaveDietModule.visible = false
+#	$change_button.visible = !person.is_master()
+#	loyalty_mode = !loyalty_mode
+#	swap_mode()
 
 
-func swap_mode():
-	if loyalty_mode:
-		loyalty_mode = false
-		$UpgradesPanel.visible = false
-		relations_mode = false
-		swap_rel_mode()
-#		$RelativesPanel.visible = true
-		$change_button/Label.text = tr("SIBLINGMODULETRAININGS")
-	else:
-		loyalty_mode = true
-		$UpgradesPanel.visible = true
-		$RelativesPanel.visible = false
-		$Relations.visible = false
-		$change_button/Label.text = tr("SIBLINGMODULERELATIVES")
+#func swap_mode():
+#	if loyalty_mode:
+#		loyalty_mode = false
+#		$UpgradesPanel.visible = false
+#		relations_mode = false
+#		swap_rel_mode()
+##		$RelativesPanel.visible = true
+#		$change_button/Label.text = tr("SIBLINGMODULETRAININGS")
+#	else:
+#		loyalty_mode = true
+#		$UpgradesPanel.visible = true
+#		$RelativesPanel.visible = false
+#		$Relations.visible = false
+#		$change_button/Label.text = tr("SIBLINGMODULERELATIVES")
 
 
 func swap_rel_mode():
-	if relations_mode:
-		relations_mode = false
-		$Relations.visible = false
-		$RelativesPanel.visible = true
-		$RelationsButton/Label.text = tr("SIBLINGMODULERELATIONS")
-	else:
-		if person.is_master():
-			$RelationsButton.visible = false
-		else:
-			$RelationsButton.visible = true
-			relations_mode = true
-			$Relations.visible = true
-			$RelativesPanel.visible = false
-			$RelationsButton/Label.text = tr("SIBLINGMODULERELATIVES")
+	if cur_tab == tab_nums.kin:
+		open_tab(tab_nums.relations)
+	elif cur_tab == tab_nums.relations:
+		open_tab(tab_nums.kin)
+#	if relations_mode:
+#		relations_mode = false
+#		$Relations.visible = false
+#		$RelativesPanel.visible = true
+#		$RelationsButton/Label.text = tr("SIBLINGMODULERELATIONS")
+#	else:
+#		if person.is_master():
+#			$RelationsButton.visible = false
+#		else:
+#			$RelationsButton.visible = true
+#			relations_mode = true
+#			$Relations.visible = true
+#			$RelativesPanel.visible = false
+#			$RelationsButton/Label.text = tr("SIBLINGMODULERELATIVES")
 
 
 
-func swap_tab(tab): #obsolete
-	if loyalty_tab != tab:
-		loyalty_tab = tab
-		setup_tab(true)
-	else:
-		setup_tab(false)
+#func swap_tab(tab): #obsolete
+#	if loyalty_tab != tab:
+#		loyalty_tab = tab
+#		setup_tab(true)
+#	else:
+#		setup_tab(false)
 
 
-func setup_tab(rebuild = true): #obsolete
-	if loyalty_tab == 3:
-		$change_button2.visible = false
-		$change_button3.visible = false
-		if rebuild:
-			loyalty_panel_master.update_upgrades_tree()
-	else:
-		$change_button2.visible = true
-		$change_button3.visible = true
-		if loyalty_tab == 2:
-			$change_button2.pressed = false
-			$change_button3.pressed = true
-		else:
-			$change_button2.pressed = true
-			$change_button3.pressed = false
-		if rebuild:
-			loyalty_panel.update_upgrades_tree(person, loyalty_tab)
+#func setup_tab(rebuild = true): #obsolete
+#	if loyalty_tab == 3:
+#		$change_button2.visible = false
+#		$change_button3.visible = false
+#		if rebuild:
+#			loyalty_panel_master.update_upgrades_tree()
+#	else:
+#		$change_button2.visible = true
+#		$change_button3.visible = true
+#		if loyalty_tab == 2:
+#			$change_button2.pressed = false
+#			$change_button3.pressed = true
+#		else:
+#			$change_button2.pressed = true
+#			$change_button3.pressed = false
+#		if rebuild:
+#			loyalty_panel.update_upgrades_tree(person, loyalty_tab)
 
 
 func build_personality():
@@ -397,3 +427,125 @@ func build_relations():
 		
 		text += character.get_full_name() + ": " + i.relationship + "\n"
 	$Relations.bbcode_text = text
+
+
+func close_tab(tab):
+	if tab == tab_nums.food or tab == tab_nums.all:
+		$SlaveDietModule.visible = false
+	if tab == tab_nums.mastery or tab == tab_nums.all:
+		$UpgradesPanel.visible = false
+		loyalty_panel_master.get_parent().visible = false
+		$UpgradesPanel/Label.text = ""
+		btn_training_show()
+	if tab == tab_nums.training or tab == tab_nums.all:
+		$UpgradesPanel.visible = false
+		loyalty_panel.visible = false
+		btn_training_show()
+	if tab == tab_nums.relations or tab == tab_nums.all:
+		$Relations.visible = false
+		$RelationsButton.visible = false
+		btn_relations.visible = true
+	if tab == tab_nums.kin or tab == tab_nums.all:
+		$RelativesPanel.visible = false
+		$RelationsButton.visible = false
+		btn_relations.visible = true
+	if tab == tab_nums.minor or tab == tab_nums.all:
+		$UpgradesPanel.visible = false
+		loyalty_panel_minor.get_parent().visible = false
+		$UpgradesPanel/Label.text = ""
+		globals.disconnect_text_tooltip($UpgradesPanel/Label)
+		btn_minor_show()
+	cur_tab = null
+
+func open_tab(tab):
+	if cur_tab:
+		close_tab(cur_tab)
+	else:
+		close_tab(tab_nums.all)
+	cur_tab = tab
+	if tab == tab_nums.food:
+		$SlaveDietModule.visible = true
+	elif tab == tab_nums.mastery:
+		$UpgradesPanel.visible = true
+		loyalty_panel_master.get_parent().visible = true
+		loyalty_panel_master.update_upgrades_tree()
+		$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGSMASTER')
+		$UpgradesPanel/Label.text = tr("MASTER_POINTS") + ": " + str(ResourceScripts.game_progress.master_points)
+		btn_training.visible = false
+	elif tab == tab_nums.training:
+		$UpgradesPanel.visible = true
+		loyalty_panel.visible = true
+		loyalty_panel.person = person
+		loyalty_panel.match_state()
+		if person.get_stat('slave_class') in ['slave', 'slave_trained']:
+			$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGS')
+		else:
+			$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGSSERVANTS')
+		btn_training.visible = false
+	elif tab == tab_nums.relations:
+		$Relations.visible = true
+		$RelationsButton.visible = true
+		$RelationsButton/Label.text = tr("SIBLINGMODULERELATIVES")
+		btn_relations.visible = false
+	elif tab == tab_nums.kin:
+		$RelativesPanel.visible = true
+		$RelationsButton.visible = !person.is_master()
+		$RelationsButton/Label.text = tr("SIBLINGMODULERELATIONS")
+		btn_relations.visible = false
+	elif tab == tab_nums.minor:
+		$UpgradesPanel.visible = true
+		loyalty_panel_minor.set_person(person)
+		loyalty_panel_minor.get_parent().visible = true
+		loyalty_panel_minor.update_upgrades_tree()
+		$UpgradesPanel/Label2.text = tr('SIBLINGMODULEMINORTRAIN')
+		$UpgradesPanel/Label.text = "%s: %d/%d %s: %d" % [
+			tr("SIBLINGMODULEAVAILABLE"),
+			person.get_minor_training_count(), person.get_minor_training_max(),
+			tr("UPGRADELIST_UNLOCK_GOLD"), ResourceScripts.game_res.money
+		]
+		globals.connecttexttooltip($UpgradesPanel/Label, tr("SIBLINGMODULEAVAILABLETOOLTIP"))
+		btn_minor_training.visible = false
+
+func on_btn_training():
+	if person.is_master():
+		open_tab(tab_nums.mastery)
+	else:
+		open_tab(tab_nums.training)
+
+func btn_training_show():
+	btn_training.visible = true
+	if person.is_master():
+		btn_training.get_node('Label').text = tr("SIBLINGMODULETRAININGSMASTER")
+	else:
+		btn_training.get_node('Label').text = tr("SIBLINGMODULETRAININGS")
+
+func btn_minor_show():
+	btn_minor_training.visible = person.get_stat('slave_class') != 'slave'
+
+func open_valid_tab():
+	var training_classes = ['slave', 'slave_trained', 'servant', 'servant_notax', 'heir']
+	if cur_tab:
+		var keep_tab = true
+		#tab restrictions
+		if cur_tab == tab_nums.mastery:
+			keep_tab = person.is_master()
+		elif cur_tab == tab_nums.training:
+			keep_tab = person.get_stat('slave_class') in training_classes
+		elif cur_tab == tab_nums.relations:
+			keep_tab = !person.is_master()
+		elif cur_tab == tab_nums.minor:
+			keep_tab = person.get_stat('slave_class') != 'slave'
+		
+		if keep_tab:
+			open_tab(cur_tab)
+			return
+	
+	#defaults
+	if person.is_master():
+		open_tab(tab_nums.mastery)
+	elif person.get_stat('slave_class') in training_classes:
+		open_tab(tab_nums.training)
+	else:
+		open_tab(tab_nums.relations)
+
+
