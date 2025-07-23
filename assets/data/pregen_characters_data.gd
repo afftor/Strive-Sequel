@@ -143,7 +143,7 @@ var pregen_characters = {
 		food_hate = ['meat'],
 		skills = ['take_position'],
 		classes = ['archer','ranger'],
-		traits = ['nimble','inept','training_broke_in','training_obedience'],
+		traits = ['nimble','inept','training_broke_in','training_obedience','courtly_arms'],
 		sex_skills = {petting = 7, pussy = 17, oral = 12, anal = 2},
 		training_disposition = {
 			humiliation = 'neutral',
@@ -197,7 +197,7 @@ var pregen_characters = {
 		food_like = 'meat',
 		food_hate = ['vege'],
 		classes = ['renown_royalty'],
-		traits = ['frail','training_broke_in','training_obedience'],
+		traits = ['frail','training_broke_in','training_obedience','etiquette','literacy','penmanship','courtly_arms'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 		training_disposition = {
 			humiliation = 'weak',
@@ -250,7 +250,7 @@ var pregen_characters = {
 		food_like = 'meat',
 		food_hate = ['vege'],
 		classes = ['broken_royalty'],
-		traits = ['frail','training_broke_in','training_obedience','training_relation','training_callmaster','training_sexservice'],
+		traits = ['frail','training_broke_in','training_obedience','training_relation','training_callmaster','training_sexservice','etiquette','courtly_arms'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 		training_disposition = {
 			humiliation = 'weak',
@@ -304,7 +304,7 @@ var pregen_characters = {
 		food_hate = ['fish'],
 		skills = [],
 		classes = ['alios_champion'],
-		traits = ['gifted','clumsy','training_broke_in','training_obedience','training_s_combat','training_s_working','training_s_relation'],
+		traits = ['gifted','clumsy','training_broke_in','training_obedience','training_s_combat','training_s_working','training_s_relation','literacy','penmanship'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 		training_disposition = {
 			humiliation = 'resist',
@@ -359,7 +359,7 @@ var pregen_characters = {
 		food_like = 'vege',
 		food_hate = ['fish'],
 		classes = ['apprentice','shaman'],
-		traits = ['lively','whimp','training_s_working','training_s_relation'],
+		traits = ['lively','whimp','training_s_working','training_s_relation','animal_handling'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
 	Lilia = {
@@ -557,7 +557,7 @@ var pregen_characters = {
 		food_like = 'grain',
 		food_hate = ['fish'],
 		classes = ['scholar','caster'],
-		traits = ['prodigy','rebel','training_s_combat','training_s_working'],
+		traits = ['prodigy','rebel','training_s_combat','training_s_working','literacy','penmanship','history'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 	},
 	Hara = {
@@ -602,7 +602,7 @@ var pregen_characters = {
 		food_like = 'meat',
 		food_hate = ['vege'],
 		classes = ['engineer'],
-		traits = ['training_s_combat','training_s_working'],
+		traits = ['training_s_combat','training_s_working','literacy'],
 		sex_skills = {petting = 0, pussy = 15, oral = 12, anal = 0},
 	},
 	
@@ -650,7 +650,7 @@ var pregen_characters = {
 		food_hate = ['meat'],
 		skills = [],
 		classes = ['freyas_priestess'],
-		traits = ['deadly','crude','rebel'],
+		traits = ['deadly','crude','rebel','literacy','penmanship','animal_handling'],
 		sex_skills = {petting = 35, pussy = 15, oral = 27, anal = 0},
 		training_disposition = {
 			humiliation = 'weak',
@@ -706,7 +706,7 @@ var pregen_characters = {
 		food_like = 'vege',
 		food_hate = ['fish'],
 		classes = ['acolyte'],
-		traits = ['quick','whimp'],
+		traits = ['quick','whimp','etiquette'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 		training_disposition = {
 			humiliation = 'neutral',
@@ -761,7 +761,7 @@ var pregen_characters = {
 		food_like = 'fish',
 		food_hate = ['vege'],
 		classes = [],
-		traits = ['bawdy','training_broke_in','training_obedience','training_callmaster','training_sexservice','training_relation'],
+		traits = ['bawdy','training_broke_in','training_obedience','training_callmaster','training_sexservice','training_relation','mentorship','etiquette','table_manners','literacy','foreign_diplomacy'],
 		sex_skills = {petting = 79, pussy = 45, oral = 72, anal = 39, tail = 61},
 		training_disposition = {
 			humiliation = 'neutral',
@@ -814,7 +814,7 @@ var pregen_characters = {
 		food_like = 'meat',
 		food_hate = ['fish'],
 		classes = ['nixx_champion'],
-		traits = ['selfish','training_s_combat'],
+		traits = ['selfish','training_s_combat','literacy','penmanship','history'],
 		sex_skills = {petting = 0, pussy = 0, oral = 0, anal = 0},
 		training_disposition = {
 			humiliation = 'resist',

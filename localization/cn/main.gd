@@ -1090,6 +1090,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	QUESTTASKACQ = "所需任务",
 	REQUIREMENTSARENTMET = "未满足要求",
 	NOTENOUGHLOYALTY = "不够忠诚",
+	NOTENOUGHMASTERPOINTS = """Not enough Master Points""", # MISSING TRANSLATION
 	QUESTCOMPLETEMESSAGE = "任务完成",
 	QUESTDAYSLEFT = "还剩几天",
 	QUESTLOCATION = """Quest Location""", # MISSING TRANSLATION
@@ -1470,6 +1471,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	
 	TOOLTIPLOYALTYOBEDIENCE = "Loyalty points are gained every turn based on Tame Factor. You can unlock new actions and passives with it.\n\nObedience Drain is based on Timid Factor and character training. If Obedience falls to 0 the character will attempt to escape. Unlock new options and use proper gear to reduce Obedience Drain and make it more manageble. ",
 	TOOLTIPVALUE = "Character's value means their market price. It's based on their Growth Factor, Race, Training and certain features. Higher value characters will earn more money when providing services and prostitution.",
+	TOOLTIPFAME = """Fame is charactar's renown among people. It can grow with certain actions, but also degrades with time. Character's value, servant's allowance, training and recruitment efficiency are effected by fame.""", # MISSING TRANSLATION
 	
 	SERVICEREST = "[name] will rest. Toggle [color=aqua]Rest[/color] to disable.",
 	SERVICESEXUALPENETRATIVE = "[name] will entertain clients by serving and sleeping with them if they find [him] appealing.",
@@ -3041,6 +3043,9 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	
 	UPGRADEFARM_SLOTS = "Farm slots",
 	UPGRADEFARM_SLOTSDESCRIPT = "Provides additional slots for farm produce.",
+	UPGRADELIST_UNLOCK = """Unlock this for {color=green|%s} %s?""", # MISSING TRANSLATION
+	UPGRADELIST_UNLOCK_MP = """Master Points""", # MISSING TRANSLATION
+	UPGRADELIST_UNLOCK_GOLD = """Gold""", # MISSING TRANSLATION
 	
 	BODYPARTAGETEEN = "青少年",
 	BODYPARTAGEADULT = "成年",

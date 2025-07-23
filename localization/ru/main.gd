@@ -174,6 +174,10 @@ var TranslationDict = {
 	SIBLINGMODULECHILDDREN = """Дети""",
 	SIBLINGMODULECURRENTCAPACITY = """Текущая емкость""",
 	SIBLINGMODULEPERSONALITY = """Личность""",
+	SIBLINGMODULEMINORTRAIN = """Minor Training""", # MISSING TRANSLATION
+	SIBLINGMODULEAVAILABLE = """Available""", # MISSING TRANSLATION
+	SIBLINGMODULEAVAILABLETOOLTIP = """Number of available minor tranings depends of Growth Factor.""", # MISSING TRANSLATION
+	MINORTRAINMAXREACHED = """Minor training max reached""", # MISSING TRANSLATION
 	SYSMESSAGEATLEAST1CHAR = """Выберите хотя бы 1 персонажа для боя.""",
 	OPERANTATLEAST = """Минимум""",
 	OPERANTATMOST = """Максимум""",
@@ -1131,6 +1135,7 @@ Hotkey: 3""",
 	QUESTTASKACQ = """Задание получено""",
 	REQUIREMENTSARENTMET = """Требования не выполнены""",
 	NOTENOUGHLOYALTY = """Недостаточно верности""",
+	NOTENOUGHMASTERPOINTS = """Not enough Master Points""", # MISSING TRANSLATION
 	QUESTCOMPLETEMESSAGE = """Квест завершен""",
 	QUESTDAYSLEFT = """дней осталось""",
 	QUESTLOCATION = """Локация квеста""",
@@ -1707,6 +1712,7 @@ Hotkey: 3""",
 
 Утечка повиновения основана на факторе робости и обучении персонажа. Если Повиновение упадет до 0, персонаж попытается сбежать. Разблокируйте новые возможности и используйте соответствующее снаряжение, чтобы уменьшить утечку Повиновения и сделать его более управляемым.""",
 	TOOLTIPVALUE = """Стоимость персонажа означает его рыночную цену. Она зависит от фактора роста, расы, обучения и некоторых характеристик. Персонажи с более высокой стоимостью будут зарабатывать больше денег при оказании услуг и проституции.""",
+	TOOLTIPFAME = """Fame is charactar's renown among people. It can grow with certain actions, but also degrades with time. Character's value, servant's allowance, training and recruitment efficiency are effected by fame.""", # MISSING TRANSLATION
 	
 	SERVICEREST = """[name] будет отдыхать. Переключите [color=aqua]Отдых[/color] чтобы переключить на работу.""",
 	SERVICESEXUALPENETRATIVE = """[name] будет развлекать клиентов, обслуживая и ложась с ними спать, если они сочтут [him] привлекательным/ой.""",
@@ -1729,6 +1735,8 @@ Hotkey: 3""",
 	LOGLEFTTTOOLTIP = """Показывает основные события""",
 	LOGRIGHTLABEL = """Сервис""",
 	LOGRIGHTTOOLTIP = """Показывает доходы от услуг""",
+	LOGCENTERTLABEL = """Slaves""", # MISSING TRANSLATION
+	LOGCENTERTOOLTIP = """Shows character events""", # MISSING TRANSLATION
 	BROTHELLOGSEX = """%s заработал/а %s золота, выполняя %s с %s клиентами.""",
 	BROTHELLOGNO_SEX = """%s заработал/а %s золота, работая как %s.""",
 	
@@ -2167,6 +2175,7 @@ Hotkey: 3""",
 	STATTRAINING_LOYALTY = """Лояльность от обучения""",
 	STATTRAINING_SPIRIT = """Дух от обучения""",
 	STATRESISTANCE_RED = "Скорость падения сопротивления",
+	STATTRAINER_LOYALTY_BONUS = """Loyalty for trainee""", # MISSING TRANSLATION
 	TRAITTRAINER = """Тренер""",
 	TRAITTRAINERDESCRIPT = """Может наблюдать за рабами""",
 	STATSPIRIT = """Дух""",
@@ -2932,6 +2941,26 @@ Hotkey: 3""",
 	TRAITSTURDYDESCRIPT = """+10 ЗАЩ""",
 	TRAITFRAILDESCRIPT = """-10 ЗАЩ.""",
 	TRAITSTUN_IMMUNITYDESCRIPT = "Невозможно оглушить.",
+	TRAITETIQUETTE = """Etiquette""", # MISSING TRANSLATION
+	TRAITETIQUETTEDESCRIPT = """Training in courtly etiquette for navigating high society. Characters learn proper decorum for noble gatherings, though some may choose to defy convention.""", # MISSING TRANSLATION
+	TRAITTABLE_MANNERS = """Table Manners""", # MISSING TRANSLATION
+	TRAITTABLE_MANNERSDESCRIPT = """Training in refined dining etiquette, from setting tables to eating with grace. While not always practical, it aligns characters with high-class sensibilities.""", # MISSING TRANSLATION
+	TRAITFOREIGN_DIPLOMACY = """Foreign Diplomacy""", # MISSING TRANSLATION
+	TRAITFOREIGN_DIPLOMACYDESCRIPT = """Training in the customs and traditions of foreign realms, aiding interactions with emissaries or travelers from distant lands.""", # MISSING TRANSLATION
+	TRAITLITERACY = """Literacy""", # MISSING TRANSLATION
+	TRAITLITERACYDESCRIPT = """Training in reading and comprehending texts, a rare and valuable skill that unlocks knowledge from books and scrolls.""", # MISSING TRANSLATION
+	TRAITPENMANSHIP = """Penmanship""", # MISSING TRANSLATION
+	TRAITPENMANSHIPDESCRIPT = """Training in elegant penmanship, from drafting letters to forging documents. A rare skill among commoners, it's essential for noble service.""", # MISSING TRANSLATION
+	TRAITHISTORY = """History""", # MISSING TRANSLATION
+	TRAITHISTORYDESCRIPT = """Training in the histories of noble houses, factions, and rulers, providing valuable insight during courtly intrigues.""", # MISSING TRANSLATION
+	TRAITMENTORSHIP = """Mentorship""", # MISSING TRANSLATION
+	TRAITMENTORSHIPDESCRIPT = """Training in guiding and disciplining subordinates, fostering loyalty and proper conduct. A vital skill for any mentor or overseer.""", # MISSING TRANSLATION
+	TRAITANIMAL_HANDLING = """Animal Handling""", # MISSING TRANSLATION
+	TRAITANIMAL_HANDLINGDESCRIPT = """Training in tending and commanding animals, from mounts to hunting beasts, proving useful in diverse situations.""", # MISSING TRANSLATION
+	TRAITGARDENING = """Gardening""", # MISSING TRANSLATION
+	TRAITGARDENINGDESCRIPT = """Training in cultivating and designing gardens, fostering calmness and meticulous care in both plants and character.""", # MISSING TRANSLATION
+	TRAITCOURTLY_ARMS = """Courtly Arms""", # MISSING TRANSLATION
+	TRAITCOURTLY_ARMSDESCRIPT = """Training in light swordplay and archery, embodying a knight's refined combat style. Though not a soldier's training, it offers an edge in duels and skirmishes.""", # MISSING TRANSLATION
 	TRAITLOYALTY_BASIC_SERVITUDE = """Базовое служение""",
 	TRAITLOYALTY_BASIC_SERVITUDEDESCRIPT = """{color=green|Позволяет назначать профессии}
 
@@ -3568,6 +3597,9 @@ Requires: Базовый рабский труд""",
 	
 	UPGRADEFARM_SLOTS = """Слоты для фермы""",
 	UPGRADEFARM_SLOTSDESCRIPT = """Предоставляет дополнительные места для производства на ферме""",
+	UPGRADELIST_UNLOCK = """Unlock this for {color=green|%s} %s?""", # MISSING TRANSLATION
+	UPGRADELIST_UNLOCK_MP = """Master Points""", # MISSING TRANSLATION
+	UPGRADELIST_UNLOCK_GOLD = """Gold""", # MISSING TRANSLATION
 	
 	BODYPARTAGETEEN = """подросток""",
 	BODYPARTAGEADULT = """взрослый""",
