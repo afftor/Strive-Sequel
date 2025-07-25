@@ -17,7 +17,7 @@ onready var screen_block = $block
 #if code can't find round and/or difficulty in enemy_groups, it go's here
 var enemy_groups_defaults = {
 	#non determined difficulty and round
-	"default" : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
+	"default" : [['arena_1r_easy_1', 1]],
 	#non determined difficulty for determined rounds
 	1 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
 	2 : [['arena_test1', 1], ['arena_test2', 1], ['arena_test3', 1]],
@@ -116,7 +116,12 @@ var rewards = {
 var group = {}
 var limits = [[1, 1], [2, 2], [3, 2], [4, 2], [5, 1]]
 var cur_reward = {gold = 0, materials = {}, items = []}
+#TO FIX: there is "bug" with round_num: it is used as current round_num and next round_num at the same time,
+#which is bad for code readability.
+#round_num_finished added temporaly, to fix actual bug with last round identification,
+#but there is refactor in order!
 var round_num = 1
+var round_num_finished = 0
 var round_max = 5
 var reset_time = 3
 var opened = false
@@ -192,6 +197,7 @@ func reset():
 func renew():
 	reset_group_limit()
 	next_round(1)
+	round_num_finished = 0
 	start_btn.disabled = false
 	make_next_reward()
 	cur_reward = {gold = 0, materials = {}, items = []}
@@ -283,6 +289,7 @@ func on_combat_ended(encounter_code, victory):
 	#need to fix it somehow right
 	yield(get_tree(), 'idle_frame')
 	
+	round_num_finished = round_num
 	if !victory:
 		defeat()
 		return
@@ -344,7 +351,7 @@ func update_reward(list, reward):
 func on_leave_btn():
 	if round_num == 1 or ResourceScripts.game_progress.arena.finished:
 		close()
-	elif round_num == round_max:
+	elif round_num_finished == round_max:
 		finish_arena()
 	else:
 		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'finish_arena', tr('ARENA_FINISH')])
@@ -357,6 +364,22 @@ func finish_arena():
 		globals.AddItemToInventory(i)
 	ResourceScripts.game_res.money += cur_reward.gold
 	
+	#fame
+	if round_num_finished == round_max:
+		for char_id in group.values():
+			#no need to remove master from group, as he can't get fame this way
+			var chara = characters_pool.get_char_by_id(char_id)
+			var fame_event
+			if chara.get_stat('last_arena_win'):
+				fame_event = 'arena_win_inrow'
+			else:
+				fame_event = 'arena_win'
+				chara.set_stat('last_arena_win', true)
+			chara.try_rise_fame(fame_event)
+	else:
+		for char_id in group.values():
+			characters_pool.get_char_by_id(char_id).set_stat('last_arena_win', false)
+	
 	yield(close(), 'completed')#for animation
 	
 	close_doors()
@@ -364,6 +387,8 @@ func finish_arena():
 
 func defeat():
 	stop_listen_combat()
+	for char_id in group.values():
+		characters_pool.get_char_by_id(char_id).set_stat('last_arena_win', false)
 	close_doors()
 	input_handler.get_spec_node(input_handler.NODE_POPUP, [tr('ARENA_DEFEAT')])
 	renew()

@@ -181,7 +181,7 @@ func show_stat_info(stat):
 
 	$StatsPanel/StatInfoCurrentValue.show()
 	$StatsPanel/StatInfoNameValue.show()
-	substract_gold = int (person.calculate_price() * 0.5)
+	substract_gold = int(person.get_stat_upgrade_price(stat_next_level))
 	$StatsPanel/ConfirmButton.disabled = ResourceScripts.game_res.money < substract_gold
 	$StatsPanel/Gold/Label.text = str(substract_gold)
 	active_stat = stat

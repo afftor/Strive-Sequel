@@ -673,6 +673,15 @@ var statdata = {
 		tags = ['custom_bonuses'],
 		default_bonus = 'add_part'
 	},
+	trainer_loyalty_bonus = {
+		code = 'trainer_loyalty_bonus',
+		percent = true,
+		direct = false,
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		tags = [],
+	},
 	#personality
 	personality_bold = {
 		code = 'personality_bold',
@@ -1597,6 +1606,27 @@ var statdata = {
 		direct = false,
 		tags = ['array'],
 		custom_order = ['append']
+	},
+	fame = {
+		code = 'fame',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer', 'cap_up', 'cap_low'],
+		cap_up = 6,
+		cap_low = 0,
+	},
+	fame_degrade_timer = {
+		code = 'fame_degrade_timer',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		tags = ['integer']
+	},
+	last_arena_win = {
+		code = 'last_arena_win',
+		tags = ['bool'],
+		default_bonus = 'set',
 	},
 }
 

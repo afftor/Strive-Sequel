@@ -847,15 +847,28 @@ scroll_horizontal_enabled = false
 
 [node name="UpgradesList2" parent="UpgradesPanel/ScrollContainer2" instance=ExtResource( 47 )]
 
+[node name="MinorUpgradesCont" type="ScrollContainer" parent="UpgradesPanel"]
+visible = false
+margin_left = 890.0
+margin_top = 102.0
+margin_right = 1639.0
+margin_bottom = 826.0
+theme = ExtResource( 15 )
+scroll_horizontal_enabled = false
+
+[node name="UpgradesList3" parent="UpgradesPanel/MinorUpgradesCont" instance=ExtResource( 47 )]
+list_type = 1
+
 [node name="Label" type="Label" parent="UpgradesPanel"]
-margin_left = 1432.0
+margin_left = 1110.0
 margin_top = 848.0
 margin_right = 1601.0
 margin_bottom = 888.0
+mouse_filter = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 31 )
 text = "100"
-align = 1
+align = 2
 
 [node name="UpgradesList" parent="UpgradesPanel" instance=ExtResource( 27 )]
 margin_left = 844.0
@@ -986,25 +999,66 @@ texture = ExtResource( 21 )
 expand = true
 stretch_mode = 6
 
-[node name="change_button" type="TextureButton" parent="."]
-margin_left = 617.0
-margin_top = 854.0
-margin_right = 807.0
-margin_bottom = 911.0
+[node name="change_buttons" type="VBoxContainer" parent="."]
+margin_left = 614.0
+margin_top = 771.0
+margin_right = 805.0
+margin_bottom = 902.0
+grow_vertical = 0
+alignment = 2
+
+[node name="rel_button" type="TextureButton" parent="change_buttons"]
+margin_right = 191.0
+margin_bottom = 57.0
 texture_normal = ExtResource( 48 )
 texture_pressed = ExtResource( 50 )
 texture_hover = ExtResource( 49 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Label" type="Label" parent="change_button"]
+[node name="Label" type="Label" parent="change_buttons/rel_button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 1.0
 margin_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "SIBLINGMODULERELATIVES"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="minor_tr_button" type="TextureButton" parent="change_buttons"]
+margin_top = 61.0
+margin_right = 191.0
+margin_bottom = 118.0
+texture_normal = ExtResource( 48 )
+texture_pressed = ExtResource( 50 )
+texture_hover = ExtResource( 49 )
+
+[node name="Label" type="Label" parent="change_buttons/minor_tr_button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "SIBLINGMODULEMINORTRAIN"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="tr_button" type="TextureButton" parent="change_buttons"]
+margin_top = 122.0
+margin_right = 191.0
+margin_bottom = 179.0
+texture_normal = ExtResource( 48 )
+texture_pressed = ExtResource( 50 )
+texture_hover = ExtResource( 49 )
+
+[node name="Label" type="Label" parent="change_buttons/tr_button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "SIBLINGMODULETRAININGS"
 align = 1
 valign = 1
 clip_text = true

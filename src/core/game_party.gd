@@ -380,6 +380,7 @@ func advance_day():
 		i.cooldown_tick()
 		i.process_event(variables.TR_DAY)
 		i.quest_day_tick()
+		i.fame_degrade_tick()
 	relationship_decay()
 	for i in range(character_order.size() - 1):
 		if characters[character_order[i]].is_master() == true:
@@ -426,6 +427,7 @@ func fix_serialization_postload():
 		babies[p].fix_serialization_postload()
 	for p in characters_pool.characters:
 		characters_pool.characters[p].fix_serialization_postload()
+	check_masters_story_fame(false)#better leave it here till game finished, as story conditions may vary
 
 
 func fix_import():
@@ -492,12 +494,15 @@ func subtract_taxes():
 			continue
 		if !ch.get_stat('slave_class') == 'servant':
 			continue
-		var tres = ch.calculate_price()
-		tres *= 1.0 - 0.05 * ch.get_stat('tame_factor')
-		if ch.get_stat('personality') == 'shy':
-			tres *= 0.9
-		tax += tres
-	ResourceScripts.game_res.money -= int (3 * tax / 100)
+		#old math
+#		var tres = ch.calculate_price()
+#		tres *= 1.0 - 0.05 * ch.get_stat('tame_factor')
+#		if ch.get_stat('personality') == 'shy':
+#			tres *= 0.9
+#		tax += tres
+		tax += ch.get_upkeep()
+#	ResourceScripts.game_res.money -= int (3 * tax / 100)#old math
+	ResourceScripts.game_res.money -= tax
 
 #arguable here
 func update_global_cooldowns():
@@ -896,3 +901,20 @@ func check_breakdown_on_char_loss(lost_char):
 	for ch in characters.values():
 		if ch.id == lost_char.id: continue
 		ch.try_breakdown_on_char_loss(lost_char)
+
+func check_masters_story_fame(manifest = true):
+	var fame = 1
+	if globals.valuecheck({type = 'decision', value = 'act3_finish', check = true}):
+		fame = 5
+	elif globals.valuecheck({type = 'decision', value = 'act1_finish', check = true}):
+		fame = 4
+	elif globals.valuecheck({type = "quest_completed", name = "divine_symbol_quest", check = true}):
+		fame = 3
+	elif globals.valuecheck({type = "quest_completed", name = "election_global_quest", check = true}):
+		fame = 2
+	
+	var chara = get_master()
+	chara.set_stat("fame", fame)
+	if manifest:
+		chara.manifest_and_log(chara.translate(tr("FAME_RISE_MANIFEST")) % tr(chara.get_fame_bonus('name')))
+

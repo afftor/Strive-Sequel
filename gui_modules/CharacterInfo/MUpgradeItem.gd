@@ -4,7 +4,7 @@ var color_dict = {
 	avail = Color(variables.hexcolordict.yellow),
 	lock1 = Color(variables.hexcolordict.red),
 	lock2 = Color(variables.hexcolordict.red),
-	
+	lock3 = Color(variables.hexcolordict.red)
 }
 
 
@@ -21,7 +21,8 @@ func setup_upgrade(upgrade_id):
 		modulate = Color(0,0,0,0)
 		disabled = true
 		return
-	var person = get_parent().person
+	var list = get_parent()
+	var person = list.person
 	set_meta("code", upgrade_id)
 #	var upgrade_data = upgradedata.upgradelist[upgrade_id]
 	var upgrade_data = Traitdata.traits[upgrade_id]
@@ -30,10 +31,9 @@ func setup_upgrade(upgrade_id):
 	else:
 		visible = true
 	$name.text = tr(upgrade_data.name)
-	var text = '[center]'+tr(upgrade_data.name)+'[/center]\n'
-	text += globals.build_desc_for_bonusstats(upgrade_data.bonusstats)
-	text += tr(upgrade_data.descript)
-	globals.connecttexttooltip(self, text)
+	var tooltip_text = '[center]'+tr(upgrade_data.name)+'[/center]\n'
+	tooltip_text += globals.build_desc_for_bonusstats(upgrade_data.bonusstats)
+	tooltip_text += tr(upgrade_data.descript)
 	#setup icon
 	if upgrade_data.icon is String:
 		$Image.texture = load(upgrade_data.icon)
@@ -51,15 +51,28 @@ func setup_upgrade(upgrade_id):
 		disabled = true
 		$bg.modulate = color_dict.lock2
 		set_inactive()
-		hint_tooltip += "\n"+tr("REQUIREMENTSARENTMET")
-	elif ResourceScripts.game_progress.master_points < upgrade_data.l_cost:
+		tooltip_text += "\n\n"+tr("REQUIREMENTSARENTMET")
+	elif ((list.is_list_mastery() and
+			ResourceScripts.game_progress.master_points < upgrade_data.l_cost)
+			or (list.is_list_minor() and
+			ResourceScripts.game_res.money < upgrade_data.l_cost)
+			):
 		disabled = true
 		$bg.modulate = color_dict.lock1
 		set_inactive()
-		hint_tooltip += "\n"+tr("NOTENOUGHLOYALTY")
+		var tooltip_code
+		if list.is_list_mastery(): tooltip_code = "NOTENOUGHMASTERPOINTS"
+		elif list.is_list_minor(): tooltip_code = "NOTENOUGHGOLD"
+		tooltip_text += "\n\n"+tr(tooltip_code)
+	elif list.is_list_minor() and list.minor_training_count >= list.minor_training_max:
+		disabled = true
+		$bg.modulate = color_dict.lock3
+		set_inactive()
+		tooltip_text += "\n\n"+tr("MINORTRAINMAXREACHED")
 	else:
 		$bg.modulate = color_dict.avail
 		set_normal()
+	globals.connecttexttooltip(self, tooltip_text)
 
 
 func set_selected():

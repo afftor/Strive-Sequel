@@ -1004,6 +1004,9 @@ var data = {
 							}
 						]
 					},
+					{
+						code = "check_masters_story_fame",
+					}
 				]
 			},
 			{
@@ -1033,6 +1036,9 @@ var data = {
 							}
 						]
 					},
+					{
+						code = "check_masters_story_fame",
+					}
 				],
 				character = "dwarf_king",
 				text = [
@@ -1410,6 +1416,9 @@ var data = {
 							}
 						]
 					},
+					{
+						code = "check_masters_story_fame",
+					}
 				]
 			}
 		]

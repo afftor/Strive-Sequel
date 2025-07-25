@@ -257,6 +257,8 @@ func make_slave_for_guild(slavetype, rare_races_upgrade = 0):
 			if tdata.has('reqs') and !newslave.checkreqs(tdata.reqs): 
 				continue
 			newslave.add_trait(tr)
+	if slavetype.has('fame'):
+		newslave.set_stat('fame', int(rand_range(slavetype.fame[0], slavetype.fame[1] + 0.99)))
 	
 	newslave.set_stat('is_hirable', true)
 	newslave.set_stat('hire_scene', 'hire')

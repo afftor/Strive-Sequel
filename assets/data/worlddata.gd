@@ -231,6 +231,7 @@ var factiondata = {
 			traits = ['training_s_combat','training_s_working'],
 			slavenumber = [2, 2],
 			no_traits = ['whimp','pacifist','coward'],
+			fame = [0, 2]
 			}
 		],
 	},
@@ -267,6 +268,7 @@ var factiondata = {
 			slavenumber = [2,2],
 			traits = ['training_s_combat','training_s_working'],
 			no_traits = ['whimp','m_inept','coward'],
+			fame = [0, 2]
 			}
 		],
 	},
@@ -315,6 +317,7 @@ var factiondata = {
 			slavenumber = [2,2],
 			traits = ['training_s_combat','training_s_working'],
 			no_traits = ['crude','blundering','inept','clumsy'],
+			fame = [0, 2]
 			}
 		],
 	},
@@ -351,6 +354,7 @@ var factiondata = {
 			slavenumber = [2,3],
 			traits = ['training_s_combat','training_s_working','training_s_sexservice'],
 			no_traits = ['chaste','frigid'],
+			fame = [0, 2]
 			}
 		],
 	},

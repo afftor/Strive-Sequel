@@ -263,10 +263,16 @@ func make_item(temprecipe, character):
 		if item.type == 'usable':
 			globals.AddItemToInventory(globals.CreateUsableItem(item.code))
 		elif item.type == 'gear':
+			var true_item
 			if recipe.crafttype == 'modular':
-				globals.AddItemToInventory(globals.CreateGearItemCraft(item.code, temprecipe.partdict, character))
+				true_item = globals.CreateGearItemCraft(item.code, temprecipe.partdict, character)
 			else:
-				globals.AddItemToInventory(globals.CreateGearItem(item.code, {}))
+				true_item = globals.CreateGearItem(item.code, {})
+			if true_item.quality == 'legendary':
+				character.try_rise_fame('craft_legend')
+			elif true_item.quality == 'epic':
+				character.try_rise_fame('craft_epic')
+			globals.AddItemToInventory(true_item)
 
 
 func make_item_sequence(currenttask, craftingitem, character):
