@@ -107,8 +107,8 @@ margin_top = 11.7839
 margin_bottom = 9.9723
 
 [node name="UpgradesList" type="Control"]
-margin_right = 500.0
-margin_bottom = 724.0
+margin_right = 800.0
+margin_bottom = 801.0
 rect_min_size = Vector2( 700, 724 )
 script = ExtResource( 6 )
 
@@ -127,13 +127,19 @@ custom_fonts/font = ExtResource( 8 )
 text = "Trainees:"
 clip_text = true
 
-[node name="Container" type="VBoxContainer" parent="trainees"]
+[node name="ScrollContainer" type="ScrollContainer" parent="trainees"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 13.0
 margin_top = 66.0
-margin_right = 53.0
-margin_bottom = 106.0
+margin_right = -13.0
+margin_bottom = -13.0
+size_flags_vertical = 3
+theme = ExtResource( 5 )
 
-[node name="Button" type="TextureRect" parent="trainees/Container"]
+[node name="Container" type="VBoxContainer" parent="trainees/ScrollContainer"]
+
+[node name="Button" type="TextureRect" parent="trainees/ScrollContainer/Container"]
 visible = false
 margin_right = 500.0
 margin_bottom = 120.0
@@ -142,13 +148,13 @@ rect_pivot_offset = Vector2( -294, -94 )
 texture = ExtResource( 10 )
 stretch_mode = 3
 
-[node name="icon" type="TextureRect" parent="trainees/Container/Button"]
+[node name="icon" type="TextureRect" parent="trainees/ScrollContainer/Container/Button"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -379.0
 
-[node name="name" type="Label" parent="trainees/Container/Button"]
+[node name="name" type="Label" parent="trainees/ScrollContainer/Container/Button"]
 light_mask = 0
 anchor_left = 1.0
 anchor_top = 0.5
@@ -169,13 +175,15 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 29.0
-margin_right = 29.0
+margin_right = -29.0
 
 [node name="TextureButton" type="TextureButton" parent="no_trainer"]
-margin_left = 126.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -224.0
 margin_top = 190.0
-margin_right = 496.0
-margin_bottom = 104.0
+margin_right = 256.0
+margin_bottom = 270.0
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 13 )
@@ -195,10 +203,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="training"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = -8.0
-margin_top = 202.0
-margin_right = 822.0
-margin_bottom = 574.0
+margin_top = 154.0
+margin_right = -16.0
+margin_bottom = -218.0
 size_flags_vertical = 3
 theme = ExtResource( 5 )
 scroll_horizontal_enabled = false
@@ -237,10 +247,12 @@ valign = 1
 clip_text = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="training"]
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_left = 10.0
-margin_top = 588.0
+margin_top = -213.0
 margin_right = 690.0
-margin_bottom = 688.0
+margin_bottom = -113.0
 custom_constants/separation = 20
 
 [node name="Button" type="TextureButton" parent="training/HBoxContainer2"]
@@ -274,9 +286,9 @@ valign = 1
 
 [node name="trainer_frame" type="TextureButton" parent="training"]
 margin_left = 5.0
-margin_top = 18.0
+margin_top = 13.0
 margin_right = 125.0
-margin_bottom = 138.0
+margin_bottom = 133.0
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 32 )
 texture_hover = ExtResource( 31 )
@@ -293,9 +305,11 @@ expand = true
 stretch_mode = 6
 
 [node name="d_button" type="TextureRect" parent="training"]
-margin_left = 657.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -143.0
 margin_top = 18.0
-margin_right = 703.0
+margin_right = -97.0
 margin_bottom = 64.0
 texture = ExtResource( 23 )
 
@@ -316,9 +330,9 @@ clip_text = true
 [node name="name" type="Label" parent="training"]
 light_mask = 0
 margin_left = 175.414
-margin_top = 14.2111
+margin_top = 5.2111
 margin_right = 573.414
-margin_bottom = 49.2111
+margin_bottom = 40.2111
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
 text = "Reset training"
@@ -328,9 +342,9 @@ clip_text = true
 [node name="spirit" type="TextureProgress" parent="training"]
 light_mask = 0
 margin_left = 217.0
-margin_top = 134.0
+margin_top = 99.0
 margin_right = 477.0
-margin_bottom = 162.0
+margin_bottom = 127.0
 rect_scale = Vector2( 1.25, 1.25 )
 value = 100.0
 texture_under = ExtResource( 33 )
@@ -341,9 +355,9 @@ texture_progress_offset = Vector2( 29, 3 )
 [node name="cd" type="Label" parent="training"]
 light_mask = 0
 margin_left = 180.0
-margin_top = 67.0
+margin_top = 48.0
 margin_right = 474.0
-margin_bottom = 102.0
+margin_bottom = 83.0
 custom_fonts/font = ExtResource( 9 )
 text = "character loyalty: 100"
 valign = 1
@@ -351,10 +365,12 @@ valign = 1
 [node name="cost" type="Label" parent="training"]
 visible = false
 light_mask = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_left = 17.0
-margin_top = 681.0
+margin_top = -120.0
 margin_right = 300.0
-margin_bottom = 716.0
+margin_bottom = -85.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 9 )
 text = "Reset training"
@@ -362,10 +378,14 @@ valign = 1
 clip_text = true
 
 [node name="complete_button" type="TextureButton" parent="training"]
-margin_left = 270.0
-margin_top = 735.0
-margin_right = 520.0
-margin_bottom = 793.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -130.0
+margin_top = -66.0
+margin_right = 120.0
+margin_bottom = -8.0
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 21 )
@@ -383,46 +403,54 @@ valign = 1
 clip_text = true
 
 [node name="Tooltip" type="TextureRect" parent="training"]
-margin_left = 767.591
-margin_top = -73.2341
-margin_right = 817.591
-margin_bottom = -26.2341
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -32.409
+margin_top = -72.2341
+margin_right = 17.591
+margin_bottom = -25.2341
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
 
 [node name="TextureRect2" type="TextureRect" parent="training"]
 margin_left = 152.827
-margin_top = 117.939
+margin_top = 82.939
 margin_right = 193.827
-margin_bottom = 170.939
+margin_bottom = 135.939
 texture = ExtResource( 25 )
 
 [node name="TextureRect" type="TextureRect" parent="training"]
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_left = 16.0
-margin_top = 693.0
+margin_top = -108.0
 margin_right = 65.0
-margin_bottom = 735.0
+margin_bottom = -66.0
 texture = ExtResource( 24 )
 expand = true
 stretch_mode = 6
 
 [node name="loyalty" type="Label" parent="training"]
 light_mask = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_left = 87.0
-margin_top = 694.0
+margin_top = -107.0
 margin_right = 142.0
-margin_bottom = 729.0
+margin_bottom = -72.0
 custom_fonts/font = ExtResource( 9 )
 text = "100"
 valign = 1
 clip_text = true
 
 [node name="resistance" type="Control" parent="training"]
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_left = 166.0
-margin_top = 685.0
+margin_top = -116.0
 margin_right = 319.0
-margin_bottom = 738.0
+margin_bottom = -63.0
 mouse_filter = 1
 
 [node name="resistance" type="TextureRect" parent="training/resistance"]
@@ -488,9 +516,11 @@ valign = 1
 clip_text = true
 
 [node name="Tooltip" type="TextureRect" parent="training_servant"]
-margin_left = 767.591
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -32.409
 margin_top = -73.2341
-margin_right = 817.591
+margin_right = 17.591
 margin_bottom = -26.2341
 texture = ExtResource( 2 )
 expand = true
@@ -553,19 +583,22 @@ clip_text = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 106.0
 
 [node name="tooltip" type="TextureRect" parent="trainer_list"]
-margin_left = 728.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -72.0
 margin_top = 8.0
-margin_right = 773.0
+margin_right = -27.0
 margin_bottom = 54.0
 texture = ExtResource( 12 )
 
 [node name="Label2" type="Label" parent="trainer_list"]
-margin_left = 10.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -390.0
 margin_top = 2.0
-margin_right = 811.0
+margin_right = 411.0
 margin_bottom = 59.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 8 )
@@ -574,10 +607,12 @@ align = 1
 clip_text = true
 
 [node name="Container2" type="ScrollContainer" parent="trainer_list"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 13.0
 margin_top = 66.0
-margin_right = 766.0
-margin_bottom = 715.0
+margin_right = -34.0
+margin_bottom = -86.0
 scroll_horizontal_enabled = false
 
 [node name="Container" type="VBoxContainer" parent="trainer_list/Container2"]
@@ -665,10 +700,12 @@ valign = 1
 clip_text = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="finished"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 51.0
 margin_top = 51.0
-margin_right = 651.0
-margin_bottom = 573.0
+margin_right = -149.0
+margin_bottom = -228.0
 
 [node name="result_frame" type="TextureRect" parent="finished/VBoxContainer"]
 margin_right = 600.0
@@ -732,10 +769,12 @@ texture = ExtResource( 1 )
 expand = true
 
 [node name="status" type="Label" parent="finished"]
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_left = 51.0
-margin_top = 573.0
+margin_top = -228.0
 margin_right = 651.0
-margin_bottom = 626.0
+margin_bottom = -175.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 8 )
 text = "Trainees:"
@@ -743,10 +782,12 @@ clip_text = true
 
 [node name="finish" type="Panel" parent="."]
 visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = -21.0
-margin_top = -84.0
-margin_right = 822.0
-margin_bottom = 821.0
+margin_top = -59.0
+margin_right = 22.0
+margin_bottom = 17.0
 custom_styles/panel = SubResource( 4 )
 
 [node name="header" type="RichTextLabel" parent="finish"]
@@ -761,10 +802,12 @@ bbcode_text = "TRAINFINISHTEXT"
 text = "TRAINFINISHTEXT"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="finish"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 127.0
 margin_top = 112.0
-margin_right = 727.0
-margin_bottom = 715.0
+margin_right = -116.0
+margin_bottom = -190.0
 theme = ExtResource( 5 )
 
 [node name="rewards" type="VBoxContainer" parent="finish/ScrollContainer"]
@@ -867,10 +910,12 @@ margin_bottom = 123.0
 mouse_filter = 2
 
 [node name="confirm" type="TextureButton" parent="finish"]
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_left = 123.408
-margin_top = 788.337
+margin_top = -116.663
 margin_right = 373.408
-margin_bottom = 846.337
+margin_bottom = -58.663
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 21 )
@@ -892,10 +937,14 @@ valign = 1
 clip_text = true
 
 [node name="cancel" type="TextureButton" parent="finish"]
-margin_left = 475.408
-margin_top = 788.337
-margin_right = 725.408
-margin_bottom = 846.337
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -367.592
+margin_top = -116.663
+margin_right = -117.592
+margin_bottom = -58.663
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 19 )
 texture_hover = ExtResource( 21 )

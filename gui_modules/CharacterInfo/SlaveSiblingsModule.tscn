@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.gd" type="Script" id=2]
@@ -51,6 +51,21 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/button_relativies_hover.png" type="Texture" id=49]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/button_relativies_pressed.png" type="Texture" id=50]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/bg.png" type="Texture" id=51]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/relations_hover.png" type="Texture" id=52]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/relations_pressed.png" type="Texture" id=53]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/slave_tr_normal.png" type="Texture" id=54]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/slave_tr_pressed.png" type="Texture" id=55]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/master_tr_normal.png" type="Texture" id=56]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/master_tr_hover.png" type="Texture" id=57]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/minor_normal.png" type="Texture" id=58]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/kin_pressed.png" type="Texture" id=59]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/relations_normal.png" type="Texture" id=60]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/slave_tr_hover.png" type="Texture" id=61]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/minor_hover.png" type="Texture" id=62]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/kin_hover.png" type="Texture" id=63]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/kin_normal.png" type="Texture" id=64]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/minor_pressed.png" type="Texture" id=65]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/master_tr_pressed.png" type="Texture" id=66]
 
 [sub_resource type="DynamicFont" id=3]
 size = 36
@@ -344,9 +359,6 @@ margin_left = -0.979675
 margin_top = 100.991
 margin_right = 276.02
 margin_bottom = 336.991
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VScrollBar" type="VScrollBar" parent="SexSkillsControl"]
 visible = false
@@ -627,18 +639,16 @@ clip_text = true
 
 [node name="RelativesPanel" type="Control" parent="."]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 824.0
+margin_top = 81.0
+margin_right = 1663.0
+margin_bottom = 920.0
+mouse_filter = 2
 script = ExtResource( 25 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="RelativesPanel"]
-margin_left = 824.0
-margin_top = 25.0
-margin_right = 1663.0
-margin_bottom = 100.0
+margin_right = 839.0
+margin_bottom = 75.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 22 )
 text = "SIBLINGMODULERELATIVES"
@@ -646,17 +656,17 @@ align = 1
 clip_text = true
 
 [node name="Relatives" type="HBoxContainer" parent="RelativesPanel"]
-margin_left = 825.0
-margin_top = 84.0
-margin_right = 1660.0
-margin_bottom = 894.0
+margin_left = 1.0
+margin_top = 59.0
+margin_right = 836.0
+margin_bottom = 826.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Parents" type="VBoxContainer" parent="RelativesPanel/Relatives"]
 margin_right = 275.0
-margin_bottom = 810.0
+margin_bottom = 767.0
 size_flags_horizontal = 3
 
 [node name="Head" type="Label" parent="RelativesPanel/Relatives/Parents"]
@@ -698,7 +708,7 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="RelativesPanel/Relatives"]
 margin_left = 279.0
 margin_right = 555.0
-margin_bottom = 810.0
+margin_bottom = 767.0
 size_flags_horizontal = 3
 scroll_horizontal_enabled = false
 
@@ -746,7 +756,7 @@ __meta__ = {
 [node name="ScrollContainer2" type="ScrollContainer" parent="RelativesPanel/Relatives"]
 margin_left = 559.0
 margin_right = 835.0
-margin_bottom = 810.0
+margin_bottom = 767.0
 size_flags_horizontal = 3
 scroll_horizontal_enabled = false
 
@@ -792,6 +802,7 @@ __meta__ = {
 }
 
 [node name="RelationsButton" type="TextureButton" parent="."]
+visible = false
 margin_left = 838.0
 margin_top = 848.0
 margin_right = 1028.0
@@ -828,9 +839,9 @@ texture = ExtResource( 32 )
 
 [node name="Label2" type="Label" parent="UpgradesPanel"]
 margin_left = 995.938
-margin_top = 21.551
+margin_top = 80.551
 margin_right = 1498.94
-margin_bottom = 75.551
+margin_bottom = 134.551
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 22 )
 text = "SIBLINGMODULETRAININGS"
@@ -839,7 +850,7 @@ clip_text = true
 
 [node name="ScrollContainer2" type="ScrollContainer" parent="UpgradesPanel"]
 margin_left = 890.0
-margin_top = 102.0
+margin_top = 142.0
 margin_right = 1639.0
 margin_bottom = 826.0
 theme = ExtResource( 15 )
@@ -850,7 +861,7 @@ scroll_horizontal_enabled = false
 [node name="MinorUpgradesCont" type="ScrollContainer" parent="UpgradesPanel"]
 visible = false
 margin_left = 890.0
-margin_top = 102.0
+margin_top = 142.0
 margin_right = 1639.0
 margin_bottom = 826.0
 theme = ExtResource( 15 )
@@ -872,9 +883,9 @@ align = 2
 
 [node name="UpgradesList" parent="UpgradesPanel" instance=ExtResource( 27 )]
 margin_left = 844.0
-margin_top = 88.0
+margin_top = 144.0
 margin_right = 1644.0
-margin_bottom = 889.0
+margin_bottom = 897.0
 
 [node name="personality" type="TextureRect" parent="."]
 margin_left = 398.0
@@ -999,69 +1010,78 @@ texture = ExtResource( 21 )
 expand = true
 stretch_mode = 6
 
-[node name="change_buttons" type="VBoxContainer" parent="."]
-margin_left = 614.0
-margin_top = 771.0
-margin_right = 805.0
-margin_bottom = 902.0
+[node name="change_buttons" type="HBoxContainer" parent="."]
+margin_left = 841.0
+margin_top = 19.0
+margin_right = 1651.0
+margin_bottom = 76.0
 grow_vertical = 0
-alignment = 2
+alignment = 1
 
 [node name="rel_button" type="TextureButton" parent="change_buttons"]
-margin_right = 191.0
+margin_left = 254.0
+margin_right = 311.0
 margin_bottom = 57.0
-texture_normal = ExtResource( 48 )
-texture_pressed = ExtResource( 50 )
-texture_hover = ExtResource( 49 )
+rect_min_size = Vector2( 57, 57 )
+hint_tooltip = "SIBLINGMODULERELATIVES"
+texture_normal = ExtResource( 60 )
+texture_pressed = ExtResource( 53 )
+texture_hover = ExtResource( 52 )
+texture_disabled = ExtResource( 53 )
+expand = true
+stretch_mode = 4
 
-[node name="Label" type="Label" parent="change_buttons/rel_button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 1.0
-margin_bottom = 1.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "SIBLINGMODULERELATIVES"
-align = 1
-valign = 1
-clip_text = true
+[node name="kin_button" type="TextureButton" parent="change_buttons"]
+margin_left = 315.0
+margin_right = 372.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 57, 57 )
+hint_tooltip = "SIBLINGMODULERELATIONS"
+texture_normal = ExtResource( 64 )
+texture_pressed = ExtResource( 59 )
+texture_hover = ExtResource( 63 )
+texture_disabled = ExtResource( 59 )
+expand = true
+stretch_mode = 4
 
 [node name="minor_tr_button" type="TextureButton" parent="change_buttons"]
-margin_top = 61.0
-margin_right = 191.0
-margin_bottom = 118.0
-texture_normal = ExtResource( 48 )
-texture_pressed = ExtResource( 50 )
-texture_hover = ExtResource( 49 )
-
-[node name="Label" type="Label" parent="change_buttons/minor_tr_button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 1.0
-margin_bottom = 1.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "SIBLINGMODULEMINORTRAIN"
-align = 1
-valign = 1
-clip_text = true
+margin_left = 376.0
+margin_right = 433.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 57, 57 )
+hint_tooltip = "SIBLINGMODULEMINORTRAIN"
+texture_normal = ExtResource( 58 )
+texture_pressed = ExtResource( 65 )
+texture_hover = ExtResource( 62 )
+texture_disabled = ExtResource( 65 )
+expand = true
+stretch_mode = 4
 
 [node name="tr_button" type="TextureButton" parent="change_buttons"]
-margin_top = 122.0
-margin_right = 191.0
-margin_bottom = 179.0
-texture_normal = ExtResource( 48 )
-texture_pressed = ExtResource( 50 )
-texture_hover = ExtResource( 49 )
+margin_left = 437.0
+margin_right = 494.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 57, 57 )
+hint_tooltip = "SIBLINGMODULETRAININGS"
+texture_normal = ExtResource( 54 )
+texture_pressed = ExtResource( 55 )
+texture_hover = ExtResource( 61 )
+texture_disabled = ExtResource( 55 )
+expand = true
+stretch_mode = 4
 
-[node name="Label" type="Label" parent="change_buttons/tr_button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 1.0
-margin_bottom = 1.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "SIBLINGMODULETRAININGS"
-align = 1
-valign = 1
-clip_text = true
+[node name="mtr_button" type="TextureButton" parent="change_buttons"]
+margin_left = 498.0
+margin_right = 555.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 57, 57 )
+hint_tooltip = "SIBLINGMODULETRAININGS"
+texture_normal = ExtResource( 56 )
+texture_pressed = ExtResource( 66 )
+texture_hover = ExtResource( 57 )
+texture_disabled = ExtResource( 66 )
+expand = true
+stretch_mode = 4
 
 [node name="change_button2" type="TextureButton" parent="."]
 visible = false
