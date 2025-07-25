@@ -916,5 +916,5 @@ func check_masters_story_fame(manifest = true):
 	var chara = get_master()
 	chara.set_stat("fame", fame)
 	if manifest:
-		chara.manifest_and_log(chara.translate(tr("FAME_RISE_MANIFEST")) % tr(chara.get_fame_bonus('name')))
+		chara.log_me(chara.translate(tr("FAME_RISE_MANIFEST")) % tr(chara.get_fame_bonus('name')))
 

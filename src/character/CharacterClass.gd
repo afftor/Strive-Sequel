@@ -1759,6 +1759,9 @@ func apply_atomic(template):
 func manifest_and_log(text):
 	globals.manifest_and_log("char", "%s: %s" % [get_short_name(), text], self)
 
+func log_me(text):
+	globals.text_log_add("char", "%s: %s" % [get_short_name(), text])
+
 func affect_char(template, manifest = false):
 	match template.type:
 		'damage':
@@ -2328,7 +2331,7 @@ func try_rise_fame(event = null):
 			return
 	
 	add_stat("fame", 1)
-	manifest_and_log(translate(tr("FAME_RISE_MANIFEST")) % tr(get_fame_bonus('name')))
+	log_me(translate(tr("FAME_RISE_MANIFEST")) % tr(get_fame_bonus('name')))
 
 func fame_degrade_tick():
 	if has_status('stable_fame'):
@@ -2345,7 +2348,7 @@ func fame_degrade_tick():
 	
 	set_stat("fame_degrade_timer", 0)
 	add_stat("fame", -1)
-	manifest_and_log(translate(tr("FAME_DEGRADE_MANIFEST")) % tr(get_fame_bonus('name')))
+	log_me(translate(tr("FAME_DEGRADE_MANIFEST")) % tr(get_fame_bonus('name')))
 
 #Minor training. Maybe should be withdrawn to separate module
 func get_minor_training_max():
