@@ -1716,7 +1716,7 @@ func translate(text, number = -1):
 	return text
 
 
-func calculate_price(shopflag = false):
+func calculate_price(shopflag = false, no_fame = false):
 	var value = 0
 	var bonus_data = dyn_stats.get_stat_data('price').bonuses
 	var tr_mul1 = 0
@@ -1745,7 +1745,8 @@ func calculate_price(shopflag = false):
 			mod_mul -= 0.9
 		value *= mod_mul
 	value = value * variables.growth_factor_cost_mod[get_stat('growth_factor')]
-	value += value * get_fame_bonus('price_bonus')
+	if !no_fame or !has_status('no_fame'):
+		value += value * get_fame_bonus('price_bonus')
 	return max(50,round(value))
 
 
