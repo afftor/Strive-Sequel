@@ -558,7 +558,7 @@ func select_brothel_activity():
 			
 			if sex_rules.has('pussy') && penis_check:
 				parent.get_ref().take_virginity('vaginal', 'brothel_customer')
-				bonus_gold += parent.get_ref().calculate_price() * 0.01
+				bonus_gold += parent.get_ref().calculate_price(false, true) * 0.01
 			if sex_rules.has('pussy') && penis_check:
 				var tmpchar = ResourceScripts.scriptdict.class_slave.new("test_main")
 				tmpchar.create('random', 'male', 'random')
@@ -573,7 +573,7 @@ func select_brothel_activity():
 			
 			parent.get_ref().add_stat('metrics_randompartners', globals.fastif(sex_rules.has('group'), 2, 1))
 			
-			var goldearned = highest_value.value * (1 + (0.1 * sex_rules.size())) * min(5, (1 + 0.01 * parent.get_ref().calculate_price())) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 500%
+			var goldearned = highest_value.value * (1 + (0.1 * sex_rules.size())) * min(5, (1 + 0.01 * parent.get_ref().calculate_price(false, true))) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 500%
 			if parent.get_ref().get_stat('consent') < data.min_consent == true:
 				goldearned = goldearned - goldearned/3
 			
@@ -600,7 +600,7 @@ func select_brothel_activity():
 		work_tick_values(input_handler.random_from_array(data.workstats))
 		parent.get_ref().try_rise_fame('service')
 		
-		var goldearned = highest_value.value * min(4, (1 + 0.001 * parent.get_ref().calculate_price()))
+		var goldearned = highest_value.value * min(4, (1 + 0.001 * parent.get_ref().calculate_price(false, true)))
 		
 		
 		goldearned = apply_boosters(goldearned)

@@ -1716,7 +1716,7 @@ func translate(text, number = -1):
 	return text
 
 
-func calculate_price(shopflag = false):
+func calculate_price(shopflag = false, no_fame = false):
 	var value = 0
 	var bonus_data = dyn_stats.get_stat_data('price').bonuses
 	var tr_mul1 = 0
@@ -1745,7 +1745,8 @@ func calculate_price(shopflag = false):
 			mod_mul -= 0.9
 		value *= mod_mul
 	value = value * variables.growth_factor_cost_mod[get_stat('growth_factor')]
-	value += value * get_fame_bonus('price_bonus')
+	if !no_fame or !has_status('no_fame'):
+		value += value * get_fame_bonus('price_bonus')
 	return max(50,round(value))
 
 
@@ -1757,6 +1758,9 @@ func apply_atomic(template):
 
 func manifest_and_log(text):
 	globals.manifest_and_log("char", "%s: %s" % [get_short_name(), text], self)
+
+func log_me(text):
+	globals.text_log_add("char", "%s: %s" % [get_short_name(), text])
 
 func affect_char(template, manifest = false):
 	match template.type:
@@ -2327,7 +2331,7 @@ func try_rise_fame(event = null):
 			return
 	
 	add_stat("fame", 1)
-	manifest_and_log(translate(tr("FAME_RISE_MANIFEST")) % tr(get_fame_bonus('name')))
+	log_me(translate(tr("FAME_RISE_MANIFEST")) % tr(get_fame_bonus('name')))
 
 func fame_degrade_tick():
 	if has_status('stable_fame'):
@@ -2344,10 +2348,15 @@ func fame_degrade_tick():
 	
 	set_stat("fame_degrade_timer", 0)
 	add_stat("fame", -1)
-	manifest_and_log(translate(tr("FAME_DEGRADE_MANIFEST")) % tr(get_fame_bonus('name')))
+	log_me(translate(tr("FAME_DEGRADE_MANIFEST")) % tr(get_fame_bonus('name')))
 
+#Minor training. Maybe should be withdrawn to separate module
 func get_minor_training_max():
 	return 3 + floor(get_stat('growth_factor') * 0.5)
 
 func get_minor_training_count():
 	return get_traits_by_tag('minor_training').size()
+
+func reset_minor_training():
+	for minor_tr in get_traits_by_tag('minor_training'):
+		remove_trait(minor_tr)

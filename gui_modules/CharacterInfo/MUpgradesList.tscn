@@ -12,8 +12,8 @@
 
 [node name="UpgradesList" type="Control"]
 margin_right = 500.0
-margin_bottom = 750.0
-rect_min_size = Vector2( 500, 750 )
+margin_bottom = 600.0
+rect_min_size = Vector2( 500, 600 )
 script = ExtResource( 7 )
 
 [node name="Button" type="TextureButton" parent="."]

@@ -3599,6 +3599,7 @@ var itemlist = {
 			{code = 'has_skill', value = 'hyperborea', check = false},
 			{code = 'stat', stat = 'mastery_water', value = 4, operant = 'gte'},
 			{code = 'stat', stat = 'mastery_light', value = 4, operant = 'gte'},
+#			{code = 'trait', trait = 'literacy', check = true},
 		],
 		reqs_fail_message = "ITEMREQSMASTERY",
 		effects = [],
