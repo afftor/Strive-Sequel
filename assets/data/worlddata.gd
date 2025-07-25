@@ -30,7 +30,7 @@ var lands = {
 		capital_background_noise = 'aliron_noise',
 		capital_background_music = 'wimborn',
 		capital_name = "Aliron",
-		capital_code = 'aliron'
+		capital_code = 'aliron',
 	},
 	forests = {
 		code = 'forests',
@@ -103,6 +103,7 @@ var lands = {
 		capital_dynamic_background = 'empire',
 #		capital_background_noise = '',
 		capital_background_music = 'empire_capital',
+		preplanned_capital_events = ['emp_city_enter_0']
 	},
 	seas = {
 		code = 'seas',
@@ -1212,10 +1213,24 @@ var fixed_location_options = { #override serialized data
 	],
 	
 	empire_capital = [
-		
+		{
+			text = tr("EMPIRE_CAPITAL1"), 
+			reqs = [{type = 'active_quest_stage', value = 'act_4_capital', stage = 'ceremony', state = true}], 
+			args = [{code = 'start_event', data = 'emp_ceremony_1', args = []}]
+		},
+		{
+			text = tr("EMPIRE_CAPITAL2"), 
+			reqs = [{type = 'event_seen', check = false, value = 'emp_erdyna_intro_1'},], 
+			args = [{code = 'start_event', data = 'emp_erdyna_intro_1', args = []}]
+		},
+		{
+			text = tr("ARENA_NAME"), 
+			reqs = [{type = 'active_quest_stage', value = 'act_4_capital', stage = 'arena', state = true}], 
+			args = [{code = 'start_event', data = 'emp_arena_1', args = []}]
+		},
 		{
 			text = tr('ARENA_NAME'),
-			reqs = [],
+			reqs = [{type = 'quest_completed', name = 'act_4_capital', check = true}],
 			args = [{code = 'open_arena'}]
 		},
 		

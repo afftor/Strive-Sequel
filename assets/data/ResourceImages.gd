@@ -728,6 +728,13 @@ var sprites = {
 	bolthar = load("res://assets/images/sprites/gnome.png"),
 	keeper = load("res://assets/images/sprites/keeper.png"),
 	alise = load("res://assets/images/sprites/alise.png"),
+	
+	emperor = load("res://assets/images/sprites/emperor.png"),
+	chancellor = load("res://assets/images/sprites/advisor.png"),
+	erdyna = load("res://assets/images/sprites/dragongirl_fhd.png"),
+	erdyna_body = load("res://assets/images/sprites/dragongirl_body.png"),
+	erdyna_nude = load("res://assets/images/sprites/dragongirl_nude_fhd.png"),
+	erdyna_nude_body = load("res://assets/images/sprites/dragongirl_nude_body.png"),
 	}
 
 func get_sprite(id):

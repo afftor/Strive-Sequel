@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Imperator.png-0f93d391aa4b61052bd4206a525ad3d4.stex"
+path="res://.import/emperor.png-e8910772585a427777cba042709b2918.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/Imperator.png"
-dest_files=[ "res://.import/Imperator.png-0f93d391aa4b61052bd4206a525ad3d4.stex" ]
+source_file="res://assets/images/sprites/emperor.png"
+dest_files=[ "res://.import/emperor.png-e8910772585a427777cba042709b2918.stex" ]
 
 [params]
 

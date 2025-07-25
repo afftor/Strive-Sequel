@@ -2678,6 +2678,17 @@ var quests = {
 			search_durim = {code = 'search_durim', name = 'METEORITE_QUEST_NAME', descript = 'METEORITE_QUEST_SEARCH_DURIM'},
 		},
 	},
+	act_4_capital = {
+		code = 'act_4_capital',
+		summary = 'ACT_4_CAPITAL_SUMMARY',
+		stages = {
+			enter_capital = {code = 'enter_capital', name = 'ACT_4_CAPITAL_NAME', descript = 'ACT_4_CAPITAL_ENTER'},
+			wait1 = {code = 'wait1', name = 'ACT_4_CAPITAL_NAME', descript = 'ACT_4_CAPITAL_WAIT1'},
+			ceremony = {code = 'ceremony', name = 'ACT_4_CAPITAL_NAME', descript = 'ACT_4_CAPITAL_CEREMONY'},
+			wait2 = {code = 'wait2', name = 'ACT_4_CAPITAL_NAME', descript = 'ACT_4_CAPITAL_WAIT2'},
+			arena = {code = 'arena', name = 'ACT_4_CAPITAL_NAME', descript = 'ACT_4_CAPITAL_ARENA'},
+		}
+	}
 }
 
 

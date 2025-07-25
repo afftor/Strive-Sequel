@@ -56,8 +56,12 @@ func make_area(code):
 		else:
 			areadata.capital[areadata.capital_code] = {name = areadata.capital_name, area = areadata.code, type = 'capital', travel_time = 0, category = 'capital', id = areadata.capital_code, group = {}, tags = []}
 			areadata.capital[areadata.capital_code].teleporter = false
+		if areadata.has('preplanned_capital_events'):
+			for ev in areadata.preplanned_capital_events:
+				ResourceScripts.game_progress.plan_loc_event(areadata.capital_code, ev)
 	for i in areadata.guilds:
 		make_guild(i, areadata)
+	
 	areadata.erase('guilds')
 	#update_guilds(areadata)
 
