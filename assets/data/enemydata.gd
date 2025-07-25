@@ -74,6 +74,10 @@ var encounters = {
 	kuro_cult_hideout = {unittype = 'randomgroup', unitcode = 'kuro_cult_hideout', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'kuro_hideout_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	meteorite_ogres = {unittype = 'randomgroup', unitcode = 'meteorite_ogres', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'meteor_ogres_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	meteorite_durim = {unittype = 'randomgroup', unitcode = 'meteorite_durim', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'meteor_durim_ingot', args = {start_dialogue_option = 2}}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
+	arena_fight = {unittype = 'randomgroup', unitcode = 'greg_boss_fight', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_arena_6', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	greg_arena_fight = {unittype = 'randomgroup', unitcode = 'greg_boss_fight', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_arena_9', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	erdyna_thugs_fight = {unittype = 'randomgroup', unitcode = 'greg_boss_fight', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_erdyna_intro_3', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	erdyna_duel_fight = {unittype = 'randomgroup', unitcode = 'greg_boss_fight', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_erdyna_intro_6', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 }
 
 var enemygroups = {

@@ -992,7 +992,18 @@ var data = {
 					{
 						code = "decision",
 						value = "act3_finish"
-					}
+					},
+					{
+						code = "add_timed_event",
+						value = "emp_city_init ",
+						args = [
+							{
+								type = "add_to_date",
+								date = [5,5],
+								hour = 1
+							}
+						]
+					},
 				]
 			},
 			{
@@ -1010,7 +1021,18 @@ var data = {
 					{
 						code = "decision",
 						value = "act3_finish"
-					}
+					},
+					{
+						code = "add_timed_event",
+						value = "emp_city_init ",
+						args = [
+							{
+								type = "add_to_date",
+								date = [5,5],
+								hour = 1
+							}
+						]
+					},
 				],
 				character = "dwarf_king",
 				text = [
@@ -1376,7 +1398,18 @@ var data = {
 					{
 						code = "decision",
 						value = "act3_finish"
-					}
+					},
+					{
+						code = "add_timed_event",
+						value = "emp_city_init ",
+						args = [
+							{
+								type = "add_to_date",
+								date = [5,5],
+								hour = 1
+							}
+						]
+					},
 				]
 			}
 		]
