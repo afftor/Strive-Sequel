@@ -1018,29 +1018,29 @@ margin_bottom = 76.0
 grow_vertical = 0
 alignment = 1
 
-[node name="rel_button" type="TextureButton" parent="change_buttons"]
+[node name="mtr_button" type="TextureButton" parent="change_buttons"]
 margin_left = 254.0
 margin_right = 311.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
-hint_tooltip = "SIBLINGMODULERELATIVES"
-texture_normal = ExtResource( 60 )
-texture_pressed = ExtResource( 53 )
-texture_hover = ExtResource( 52 )
-texture_disabled = ExtResource( 53 )
+hint_tooltip = "SIBLINGMODULETRAININGS"
+texture_normal = ExtResource( 56 )
+texture_pressed = ExtResource( 66 )
+texture_hover = ExtResource( 57 )
+texture_disabled = ExtResource( 66 )
 expand = true
 stretch_mode = 4
 
-[node name="kin_button" type="TextureButton" parent="change_buttons"]
+[node name="tr_button" type="TextureButton" parent="change_buttons"]
 margin_left = 315.0
 margin_right = 372.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
-hint_tooltip = "SIBLINGMODULERELATIONS"
-texture_normal = ExtResource( 64 )
-texture_pressed = ExtResource( 59 )
-texture_hover = ExtResource( 63 )
-texture_disabled = ExtResource( 59 )
+hint_tooltip = "SIBLINGMODULETRAININGS"
+texture_normal = ExtResource( 54 )
+texture_pressed = ExtResource( 55 )
+texture_hover = ExtResource( 61 )
+texture_disabled = ExtResource( 55 )
 expand = true
 stretch_mode = 4
 
@@ -1057,29 +1057,29 @@ texture_disabled = ExtResource( 65 )
 expand = true
 stretch_mode = 4
 
-[node name="tr_button" type="TextureButton" parent="change_buttons"]
+[node name="rel_button" type="TextureButton" parent="change_buttons"]
 margin_left = 437.0
 margin_right = 494.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
-hint_tooltip = "SIBLINGMODULETRAININGS"
-texture_normal = ExtResource( 54 )
-texture_pressed = ExtResource( 55 )
-texture_hover = ExtResource( 61 )
-texture_disabled = ExtResource( 55 )
+hint_tooltip = "SIBLINGMODULERELATIVES"
+texture_normal = ExtResource( 60 )
+texture_pressed = ExtResource( 53 )
+texture_hover = ExtResource( 52 )
+texture_disabled = ExtResource( 53 )
 expand = true
 stretch_mode = 4
 
-[node name="mtr_button" type="TextureButton" parent="change_buttons"]
+[node name="kin_button" type="TextureButton" parent="change_buttons"]
 margin_left = 498.0
 margin_right = 555.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
-hint_tooltip = "SIBLINGMODULETRAININGS"
-texture_normal = ExtResource( 56 )
-texture_pressed = ExtResource( 66 )
-texture_hover = ExtResource( 57 )
-texture_disabled = ExtResource( 66 )
+hint_tooltip = "SIBLINGMODULERELATIONS"
+texture_normal = ExtResource( 64 )
+texture_pressed = ExtResource( 59 )
+texture_hover = ExtResource( 63 )
+texture_disabled = ExtResource( 59 )
 expand = true
 stretch_mode = 4
 
