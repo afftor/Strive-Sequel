@@ -12,13 +12,14 @@ onready var loyalty_panel_minor = $UpgradesPanel/MinorUpgradesCont/UpgradesList3
 #var loyalty_mode = true
 #var relations_mode = true
 #var loyalty_tab = 3
-enum tab_nums {all, food, mastery, training, relations, kin, minor}
+enum tab_nums {all, food, mastery, training, relations, kin, minor, metrics}
 onready var tab_btns = {
 	tab_nums.mastery : $change_buttons/mtr_button,
 	tab_nums.training : $change_buttons/tr_button,
 	tab_nums.relations : $change_buttons/rel_button,
 	tab_nums.kin : $change_buttons/kin_button,
-	tab_nums.minor : $change_buttons/minor_tr_button
+	tab_nums.minor : $change_buttons/minor_tr_button,
+	tab_nums.metrics : $change_buttons/stats_button
 }
 var cur_tab
 var last_tab
@@ -447,6 +448,8 @@ func close_tab(tab):
 		loyalty_panel_minor.get_parent().visible = false
 		$UpgradesPanel/Label.text = ""
 		globals.disconnect_text_tooltip($UpgradesPanel/Label)
+	if tab == tab_nums.metrics or tab == tab_nums.all:
+		$StatsPanel.visible = false
 	cur_tab = null
 
 func open_tab(tab):
@@ -490,6 +493,9 @@ func open_tab(tab):
 			tr("UPGRADELIST_UNLOCK_GOLD"), ResourceScripts.game_res.money
 		]
 		globals.connecttexttooltip($UpgradesPanel/Label, tr("SIBLINGMODULEAVAILABLETOOLTIP"))
+	elif tab == tab_nums.metrics:
+		make_metrics()
+		$StatsPanel.visible = true
 
 func show_valid_btn():
 	tab_btns[tab_nums.training].visible = !person.is_master()
@@ -522,5 +528,68 @@ func open_valid_tab():
 		open_tab(tab_nums.training)
 	else:
 		open_tab(tab_nums.relations)
+
+var sources = {
+	brothel_customer = tr("METRICS_SOURCE_BROTHEL_CUSTOMER"),
+	guild_trainer = tr("METRICS_SOURCE_GUILD_TRAINER") ,
+	william = tr("METRICS_SOURCE_WILLIAM"),
+	unknown = tr("METRICS_SOURCE_UNKNOWN"),
+}
+
+func make_metrics():
+	var text = ""
+	if person.is_players_character:
+		if person.is_master():
+			text += tr("METRICS_BASE_YOU") % ResourceScripts.game_globals.get_week_and_day_custom(ResourceScripts.game_globals.date - person.get_stat('metrics_ownership'))
+		else:
+			text += tr("METRICS_BASE") % ResourceScripts.game_globals.get_week_and_day_custom(ResourceScripts.game_globals.date - person.get_stat('metrics_ownership'))
+	if person.is_master():
+		text += "\n\n" + tr("METRICS_DATES_MASTER") % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')] + " "
+	else:
+		text += "\n\n" + tr("METRICS_DATES") % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')] + " "
+	var partner_number = person.get_stat('metrics_partners').size() + person.get_stat('metrics_randompartners')
+	var no_sex = false
+	if partner_number == 0:
+		text += tr("METRICS_PARTNERS_NONE")
+		no_sex = true
+	elif partner_number == 1:
+		text += tr("METRICS_PARTNERS_ONE")
+	else:
+		text += tr("METRICS_PARTNERS") % partner_number
+	
+	if no_sex == false:
+		text += "\n"
+		if person.get_stat('has_womb') == true:
+			text += tr("METRICS_IMPREGS") % [person.get_stat('metrics_pregnancy'), person.get_stat('metrics_birth')]
+		if person.get_stat('penis_size') != '':
+			text += tr("METRICS_PREGNANCIES") % [person.get_stat('metrics_impregnation')]
+	
+		if person.get_stat('vaginal_virgin_lost') != null:
+			if person.get_stat('vaginal_virgin_lost').begins_with('hid'):
+				var source = ResourceScripts.game_party.relativesdata[person.get_stat('vaginal_virgin_lost')]
+				
+				if source.id == ResourceScripts.game_party.get_master().id:
+					text += "\n" + tr("METRICS_VIRGINITY_YOU")
+				else:
+					text += "\n" +  tr("METRICS_VIRGINITY_OTHER") % source.name# + source.name + "}. "
+			else:
+				text += "\n" + tr("METRICS_VIRGINITY_OTHER") % sources[person.get_stat('vaginal_virgin_lost')]
+		
+		if person.get_stat('anal_virgin_lost') != null:
+			if person.get_stat('anal_virgin_lost').begins_with('hid'):
+				var source = ResourceScripts.game_party.relativesdata[person.get_stat('anal_virgin_lost')]
+				
+				if source.id == ResourceScripts.game_party.get_master().id:
+					text += "\n" + tr("METRICS_ANAL_VIRGINITY_YOU")
+				else:
+					text += "\n" + tr("METRICS_ANAL_VIRGINITY_OTHER") % source.name 
+			else:
+				text += "\n"+ tr("METRICS_ANAL_VIRGINITY_OTHER") % sources[person.get_stat('anal_virgin_lost')] 
+	
+	text += '\n\n' + tr("METRICS_EARNED") % [person.get_stat("metrics_goldearn"), person.get_stat("metrics_foodearn"),person.get_stat("metrics_materialearn")]
+	text += "\n\n" + tr("METRICS_COMBAT") % [person.get_stat("metrics_win"), person.get_stat("metrics_kills"),]
+	text = person.translate(globals.TextEncoder(text))
+	
+	$StatsPanel/RichTextLabel.bbcode_text = text
 
 
