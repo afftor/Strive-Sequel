@@ -722,7 +722,7 @@ custom_constants/separation = 20
 visible = false
 margin_right = 101.0
 margin_bottom = 100.0
-texture = ExtResource( 17 )
+texture = ExtResource( 16 )
 
 [node name="icon" type="TextureRect" parent="finished/VBoxContainer/HBoxContainer2/Button"]
 show_behind_parent = true
