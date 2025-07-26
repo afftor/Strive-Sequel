@@ -1237,7 +1237,7 @@ func autocomplete_quest(q_id):
 	selectedquest = questdata
 	play_animation("repeatable_quest_completed")
 	globals.Reward(questdata)
-	globals.text_log_add("quest", "Quest Complete: " + questdata.name)
+	globals.text_log_add("quests", "Quest Complete: " + questdata.name)
 	ResourceScripts.game_world.complete_quest(questdata, 'complete')
 	
 

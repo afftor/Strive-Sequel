@@ -626,7 +626,7 @@ func update_brothel_log(ch_name, gold, data, customer_gender = ""):
 		else:
 			text = tr("BROTHELLOGNO_SEX")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper())]
 			#text = tr(ch_name) + " earned " + str(gold) + " gold working as " + tr("BROTHEL" + data.code.to_upper())
-		globals.text_log_add('brothel', text)
+		globals.text_log_add('work', text)
 #		var ServiceLog = globals.log_node.get_node("ServiceLog")
 #		var newfield = ServiceLog.get_node("VBoxContainer/field").duplicate()
 #		newfield.show()
@@ -690,7 +690,7 @@ func recruit_tick(task): #maybe incomplete
 	while task.progress >= task.threshold:
 		task.progress -= task.threshold
 		globals.roll_hirelings(task.task_location)
-		globals.text_log_add('work', tr("HIRELINGFOUND"))
+		globals.text_log_add('mansion', tr("HIRELINGFOUND"))
 		input_handler.PlaySound("ding")
 
 
@@ -706,7 +706,7 @@ func special_tick(task): #maybe incomplete
 		globals.common_effects(task.args)
 		ResourceScripts.game_party.clean_task(task)
 		ResourceScripts.game_party.active_tasks.erase(task)
-		globals.text_log_add('work', tr("SPECTASKCOMPLETED") + " - " + tr(task.name))
+		globals.text_log_add('mansion', tr("SPECTASKCOMPLETED") + " - " + tr(task.name))
 		input_handler.PlaySound("ding")
 
 
@@ -756,7 +756,7 @@ func work_tick():
 	
 	if !parent.get_ref().is_worker():
 		if !messages.has("refusedwork"):
-			globals.text_log_add('work', parent.get_ref().get_short_name() + ": Refused to work")
+			globals.text_log_add('char', parent.get_ref().get_short_name() + ": Refused to work")
 			messages.append("refusedwork")
 		return
 	
@@ -809,7 +809,7 @@ func work_tick():
 						ResourceScripts.game_res.materials[currenttask.code] += 1
 						ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] -= 1
 					if ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] <= 0:
-						globals.text_log_add('work', parent.get_ref().get_short_name() + ": " + "No more resources to gather.")
+						globals.text_log_add('char', parent.get_ref().get_short_name() + ": " + "No more resources to gather.")
 						remove_from_task()
 						if !ResourceScripts.game_party.active_tasks.empty():
 							for task in ResourceScripts.game_party.active_tasks:

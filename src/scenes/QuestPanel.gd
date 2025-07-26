@@ -227,7 +227,7 @@ func CompleteReqs():
 			"random_material":
 				ResourceScripts.game_res.update_materials(i.type, '-', i.value)
 #	selectedquest.state = 'complete'
-	globals.text_log_add("quest", "Quest Complete: " + selectedquest.name)
+	globals.text_log_add("quests", "Quest Complete: " + selectedquest.name)
 	ResourceScripts.game_world.complete_quest(selectedquest, 'complete')
 	globals.Reward(selectedquest)
 	open()

@@ -203,7 +203,7 @@ func unlock_class():
 	person.add_stat('base_exp', -person.get_next_class_exp())
 	person.unlock_class(current_class)
 	yield(get_tree().create_timer(0.2),"timeout")
-	globals.text_log_add("class", person.translate("[name] has acquired new Class: " + classesdata.professions[current_class].name))
+	globals.text_log_add("char", person.translate("[name] has acquired new Class: " + classesdata.professions[current_class].name))
 	get_parent().BodyModule.update()
 	get_parent().set_state("default")
 

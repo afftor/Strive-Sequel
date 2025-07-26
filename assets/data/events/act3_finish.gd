@@ -994,6 +994,17 @@ var data = {
 						value = "act3_finish"
 					},
 					{
+						code = "add_timed_event",
+						value = "emp_city_init ",
+						args = [
+							{
+								type = "add_to_date",
+								date = [5,5],
+								hour = 1
+							}
+						]
+					},
+					{
 						code = "check_masters_story_fame",
 					}
 				]
@@ -1013,6 +1024,17 @@ var data = {
 					{
 						code = "decision",
 						value = "act3_finish"
+					},
+					{
+						code = "add_timed_event",
+						value = "emp_city_init ",
+						args = [
+							{
+								type = "add_to_date",
+								date = [5,5],
+								hour = 1
+							}
+						]
 					},
 					{
 						code = "check_masters_story_fame",
@@ -1382,6 +1404,17 @@ var data = {
 					{
 						code = "decision",
 						value = "act3_finish"
+					},
+					{
+						code = "add_timed_event",
+						value = "emp_city_init ",
+						args = [
+							{
+								type = "add_to_date",
+								date = [5,5],
+								hour = 1
+							}
+						]
 					},
 					{
 						code = "check_masters_story_fame",

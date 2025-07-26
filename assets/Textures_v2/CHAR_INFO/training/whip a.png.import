@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Imperator.png-0f93d391aa4b61052bd4206a525ad3d4.stex"
+path="res://.import/whip a.png-2a007ac889b3fb91fa97957bbdda5918.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/Imperator.png"
-dest_files=[ "res://.import/Imperator.png-0f93d391aa4b61052bd4206a525ad3d4.stex" ]
+source_file="res://assets/Textures_v2/CHAR_INFO/training/whip a.png"
+dest_files=[ "res://.import/whip a.png-2a007ac889b3fb91fa97957bbdda5918.stex" ]
 
 [params]
 
