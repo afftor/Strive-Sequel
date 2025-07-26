@@ -88,7 +88,7 @@ func add_log_message(data):
 	var newfield = $ScrollContainer/VBoxContainer/field.duplicate()
 	newfield.visible = filter.has(data.type)
 	newfield.set_meta('type', data.type)
-	newfield.get_node("label").bbcode_text = (data.type.to_upper() + '_LABEL')
+	newfield.get_node("label").bbcode_text = tr(data.type.to_upper() + '_LABEL')
 	newfield.get_node("text").bbcode_text = data.text
 	newfield.get_node("date").bbcode_text = "[right]W %d D %d - %s[/right]" % [(data.date -1) / 7 + 1, (data.date - 1) % 7 + 1, tr(variables.timeword[data.hour])]
 	$ScrollContainer/VBoxContainer.add_child(newfield)
