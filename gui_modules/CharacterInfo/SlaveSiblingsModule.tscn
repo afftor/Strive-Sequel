@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.gd" type="Script" id=2]
@@ -66,6 +66,9 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/kin_normal.png" type="Texture" id=64]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/minor_pressed.png" type="Texture" id=65]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/master_tr_pressed.png" type="Texture" id=66]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/inform_icon_hover.png" type="Texture" id=67]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/inform_icon_pressed.png" type="Texture" id=68]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/inform_icon.png" type="Texture" id=69]
 
 [sub_resource type="DynamicFont" id=3]
 size = 36
@@ -1010,6 +1013,25 @@ texture = ExtResource( 21 )
 expand = true
 stretch_mode = 6
 
+[node name="StatsPanel" type="Control" parent="."]
+visible = false
+margin_left = 844.0
+margin_top = 91.0
+margin_right = 1653.0
+margin_bottom = 903.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.5569
+margin_top = 66.0137
+margin_right = -37.443
+margin_bottom = -25.986
+custom_fonts/normal_font = ExtResource( 20 )
+bbcode_enabled = true
+bbcode_text = "This is a test text"
+text = "This is a test text"
+
 [node name="change_buttons" type="HBoxContainer" parent="."]
 margin_left = 841.0
 margin_top = 19.0
@@ -1019,8 +1041,8 @@ grow_vertical = 0
 alignment = 1
 
 [node name="rel_button" type="TextureButton" parent="change_buttons"]
-margin_left = 254.0
-margin_right = 311.0
+margin_left = 224.0
+margin_right = 281.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
 hint_tooltip = "SIBLINGMODULERELATIVES"
@@ -1032,8 +1054,8 @@ expand = true
 stretch_mode = 4
 
 [node name="kin_button" type="TextureButton" parent="change_buttons"]
-margin_left = 315.0
-margin_right = 372.0
+margin_left = 285.0
+margin_right = 342.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
 hint_tooltip = "SIBLINGMODULERELATIONS"
@@ -1045,8 +1067,8 @@ expand = true
 stretch_mode = 4
 
 [node name="minor_tr_button" type="TextureButton" parent="change_buttons"]
-margin_left = 376.0
-margin_right = 433.0
+margin_left = 346.0
+margin_right = 403.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
 hint_tooltip = "SIBLINGMODULEMINORTRAIN"
@@ -1058,8 +1080,8 @@ expand = true
 stretch_mode = 4
 
 [node name="tr_button" type="TextureButton" parent="change_buttons"]
-margin_left = 437.0
-margin_right = 494.0
+margin_left = 407.0
+margin_right = 464.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
 hint_tooltip = "SIBLINGMODULETRAININGS"
@@ -1071,8 +1093,8 @@ expand = true
 stretch_mode = 4
 
 [node name="mtr_button" type="TextureButton" parent="change_buttons"]
-margin_left = 498.0
-margin_right = 555.0
+margin_left = 468.0
+margin_right = 525.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
 hint_tooltip = "SIBLINGMODULETRAININGS"
@@ -1082,6 +1104,20 @@ texture_hover = ExtResource( 57 )
 texture_disabled = ExtResource( 66 )
 expand = true
 stretch_mode = 4
+
+[node name="stats_button" type="TextureButton" parent="change_buttons"]
+light_mask = 0
+margin_left = 529.0
+margin_right = 586.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 57, 57 )
+hint_tooltip = "PERSONAL_STAT"
+texture_normal = ExtResource( 69 )
+texture_pressed = ExtResource( 68 )
+texture_hover = ExtResource( 67 )
+texture_disabled = ExtResource( 68 )
+expand = true
+stretch_mode = 5
 
 [node name="change_button2" type="TextureButton" parent="."]
 visible = false
