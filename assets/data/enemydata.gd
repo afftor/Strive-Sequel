@@ -2737,15 +2737,19 @@ var celena_item_dict = {
 
 
 var shrine_item_dict = {
-	stone = "erebus_reward",
-	obsidian = "erebus_reward2",
-	fire_ruby = "erebus_reward3",
-	earth_shard = "erebus_reward4",
-	leather = "hybris_reward1",
-	leatherthick = "hybris_reward2",
-	leathermythic = "hybris_reward3",
-	leatherdragon = "hybris_reward4",
-	meat = "hybris_reward5",
+	erebus = {
+		stone = "erebus_reward",
+		obsidian = "erebus_reward2",
+		fire_ruby = "erebus_reward3",
+		earth_shard = "erebus_reward4",
+	},
+	hybris = {
+		leather = "hybris_reward1",
+		leatherthick = "hybris_reward2",
+		leathermythic = "hybris_reward3",
+		leatherdragon = "hybris_reward4",
+		meat = "hybris_reward5",
+	}
 }
 
 func celena_item(code):
@@ -2906,10 +2910,10 @@ func hybris_destroy(person):
 func erebus_item(code):
 	var dict = {text = tr('ALTAR_ITEM_1'), image = '', options = [], tags = ['active_character_translate']}
 	var item = Items.materiallist[code]
-	if shrine_item_dict.has(item.code):
+	if shrine_item_dict.erebus.has(item.code):
 		globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
 		dict.text += tr('ALTAR_ITEM_GOOD')
-		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [[shrine_item_dict[item.code],3]]}]
+		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [[shrine_item_dict.erebus[item.code],3]]}]
 		dict.tags.append("free_loot")
 	else:
 		dict.text += tr('ALTAR_ITEM_BAD')
@@ -2961,10 +2965,10 @@ func hybris_character_convert():
 func hybris_item(code):
 	var dict = {text = tr('ALTAR_ITEM_1'), image = '', options = [], tags = ['active_character_translate']}
 	var item = Items.materiallist[code]
-	if shrine_item_dict.has(item.code):
+	if shrine_item_dict.hybris.has(item.code):
 		globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
 		dict.text += tr('ALTAR_ITEM_GOOD')
-		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [[shrine_item_dict[item.code],3]]}]
+		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [[shrine_item_dict.hybris[item.code],3]]}]
 		dict.tags.append("free_loot")
 	else:
 		dict.text += tr('ALTAR_ITEM_BAD')
