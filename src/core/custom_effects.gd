@@ -122,6 +122,7 @@ func writ_of_exemption_use(): #possibly rework
 
 func oblivionpot(character):
 	character.reset_mastery()
+	character.reset_minor_training()
 	character.remove_all_classes()
 	input_handler.active_character = character
 	input_handler.interactive_message("oblivion_potion_use")

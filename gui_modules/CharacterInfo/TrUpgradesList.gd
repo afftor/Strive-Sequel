@@ -72,17 +72,18 @@ func match_state():
 
 func build_trainees(): #not used
 	$trainees.visible = true
+	var container = $trainees/ScrollContainer/Container
 	var list = person.get_trainees()
 	var empty = person.get_stat('trainee_amount') - list.size()
-	input_handler.ClearContainer($trainees/Container, ['Button'])
+	input_handler.ClearContainer(container, ['Button'])
 	for id in list:
 		var tchar = characters_pool.get_char_by_id(id)
-		var panel = input_handler.DuplicateContainerTemplate($trainees/Container, 'Button')
+		var panel = input_handler.DuplicateContainerTemplate(container, 'Button')
 		panel.get_node('icon').texture = tchar.get_icon()
 		globals.connectslavetooltip(panel.get_node('icon'), tchar)
 		panel.get_node('name').text = tchar.get_full_name()
 	for i in range(empty):
-		var panel = input_handler.DuplicateContainerTemplate($trainees/Container, 'Button')
+		var panel = input_handler.DuplicateContainerTemplate(container, 'Button')
 		panel.get_node('icon').texture = null
 		panel.get_node('name').text = ""
 

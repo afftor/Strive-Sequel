@@ -455,7 +455,7 @@ func add_slave(person, child = false):
 		ResourceScripts.game_world.easter_egg_characters_acquired.append(person.get_stat('unique'))
 	person.fill_masternoun()
 	person.set_stat('metrics_ownership', ResourceScripts.game_globals.get_date()[0])
-	globals.text_log_add("slaves","New character acquired: " + person.get_short_name() + ". ")
+	globals.text_log_add("char","New character acquired: " + person.get_short_name() + ". ")
 	globals.emit_signal("slave_added")
 
 
@@ -916,5 +916,5 @@ func check_masters_story_fame(manifest = true):
 	var chara = get_master()
 	chara.set_stat("fame", fame)
 	if manifest:
-		chara.manifest_and_log(chara.translate(tr("FAME_RISE_MANIFEST")) % tr(chara.get_fame_bonus('name')))
+		chara.log_me(chara.translate(tr("FAME_RISE_MANIFEST")) % tr(chara.get_fame_bonus('name')))
 

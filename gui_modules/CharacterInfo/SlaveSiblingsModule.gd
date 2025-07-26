@@ -9,13 +9,18 @@ var universal_skills = ['oral','anal','petting']
 onready var loyalty_panel = $UpgradesPanel/UpgradesList
 onready var loyalty_panel_master = $UpgradesPanel/ScrollContainer2/UpgradesList2
 onready var loyalty_panel_minor = $UpgradesPanel/MinorUpgradesCont/UpgradesList3
-onready var btn_relations = $change_buttons/rel_button
-onready var btn_training = $change_buttons/tr_button
-onready var btn_minor_training = $change_buttons/minor_tr_button
 #var loyalty_mode = true
 #var relations_mode = true
 #var loyalty_tab = 3
-enum tab_nums {all, food, mastery, training, relations, kin, minor}
+enum tab_nums {all, food, mastery, training, relations, kin, minor, metrics}
+onready var tab_btns = {
+	tab_nums.mastery : $change_buttons/mtr_button,
+	tab_nums.training : $change_buttons/tr_button,
+	tab_nums.relations : $change_buttons/rel_button,
+	tab_nums.kin : $change_buttons/kin_button,
+	tab_nums.minor : $change_buttons/minor_tr_button,
+	tab_nums.metrics : $change_buttons/stats_button
+}
 var cur_tab
 var last_tab
 
@@ -38,10 +43,8 @@ func _ready():
 		i.connect('pressed', self, 'set_work_rule', [i.name])
 	$work_rules/ration.connect("button_down", self, "update")
 	$work_rules/ration.connect("button_up", self, "update")
-	btn_training.connect("pressed", self, 'on_btn_training')
-	btn_relations.connect("pressed", self, 'open_tab', [tab_nums.kin])
-	btn_minor_training.connect("pressed", self, 'open_tab', [tab_nums.minor])
-	$RelationsButton.connect("pressed", self, 'swap_rel_mode')
+	for btn_id in tab_btns:
+		tab_btns[btn_id].connect("pressed", self, 'open_tab', [btn_id])
 #	$change_button2.connect("pressed", self, 'swap_tab', [1])
 #	$change_button3.connect("pressed", self, 'swap_tab', [2])
 	$FF.connect("pressed", self, 'show_food_filter')
@@ -80,8 +83,7 @@ func update():
 	person = input_handler.interacted_character
 	#show and hide here is just to get ready, open_valid_tab() makes it all right
 	$SlaveDietModule.visible = false
-	btn_minor_show()
-	btn_training_show()
+	show_valid_btn()
 	#relatives
 	$RelativesPanel.build_relatives()
 	build_relations()
@@ -349,11 +351,7 @@ func hide_food_filter():
 #		$change_button/Label.text = tr("SIBLINGMODULERELATIVES")
 
 
-func swap_rel_mode():
-	if cur_tab == tab_nums.kin:
-		open_tab(tab_nums.relations)
-	elif cur_tab == tab_nums.relations:
-		open_tab(tab_nums.kin)
+#func swap_rel_mode():
 #	if relations_mode:
 #		relations_mode = false
 #		$Relations.visible = false
@@ -430,31 +428,28 @@ func build_relations():
 
 
 func close_tab(tab):
+	for btn in tab_btns.values():
+		btn.disabled = false
 	if tab == tab_nums.food or tab == tab_nums.all:
 		$SlaveDietModule.visible = false
 	if tab == tab_nums.mastery or tab == tab_nums.all:
 		$UpgradesPanel.visible = false
 		loyalty_panel_master.get_parent().visible = false
 		$UpgradesPanel/Label.text = ""
-		btn_training_show()
 	if tab == tab_nums.training or tab == tab_nums.all:
 		$UpgradesPanel.visible = false
 		loyalty_panel.visible = false
-		btn_training_show()
 	if tab == tab_nums.relations or tab == tab_nums.all:
 		$Relations.visible = false
-		$RelationsButton.visible = false
-		btn_relations.visible = true
 	if tab == tab_nums.kin or tab == tab_nums.all:
 		$RelativesPanel.visible = false
-		$RelationsButton.visible = false
-		btn_relations.visible = true
 	if tab == tab_nums.minor or tab == tab_nums.all:
 		$UpgradesPanel.visible = false
 		loyalty_panel_minor.get_parent().visible = false
 		$UpgradesPanel/Label.text = ""
 		globals.disconnect_text_tooltip($UpgradesPanel/Label)
-		btn_minor_show()
+	if tab == tab_nums.metrics or tab == tab_nums.all:
+		$StatsPanel.visible = false
 	cur_tab = null
 
 func open_tab(tab):
@@ -463,6 +458,8 @@ func open_tab(tab):
 	else:
 		close_tab(tab_nums.all)
 	cur_tab = tab
+	if tab_btns.has(tab):
+		tab_btns[tab].disabled = true
 	if tab == tab_nums.food:
 		$SlaveDietModule.visible = true
 	elif tab == tab_nums.mastery:
@@ -471,7 +468,6 @@ func open_tab(tab):
 		loyalty_panel_master.update_upgrades_tree()
 		$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGSMASTER')
 		$UpgradesPanel/Label.text = tr("MASTER_POINTS") + ": " + str(ResourceScripts.game_progress.master_points)
-		btn_training.visible = false
 	elif tab == tab_nums.training:
 		$UpgradesPanel.visible = true
 		loyalty_panel.visible = true
@@ -481,17 +477,10 @@ func open_tab(tab):
 			$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGS')
 		else:
 			$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGSSERVANTS')
-		btn_training.visible = false
 	elif tab == tab_nums.relations:
 		$Relations.visible = true
-		$RelationsButton.visible = true
-		$RelationsButton/Label.text = tr("SIBLINGMODULERELATIVES")
-		btn_relations.visible = false
 	elif tab == tab_nums.kin:
 		$RelativesPanel.visible = true
-		$RelationsButton.visible = !person.is_master()
-		$RelationsButton/Label.text = tr("SIBLINGMODULERELATIONS")
-		btn_relations.visible = false
 	elif tab == tab_nums.minor:
 		$UpgradesPanel.visible = true
 		loyalty_panel_minor.set_person(person)
@@ -504,23 +493,15 @@ func open_tab(tab):
 			tr("UPGRADELIST_UNLOCK_GOLD"), ResourceScripts.game_res.money
 		]
 		globals.connecttexttooltip($UpgradesPanel/Label, tr("SIBLINGMODULEAVAILABLETOOLTIP"))
-		btn_minor_training.visible = false
+	elif tab == tab_nums.metrics:
+		make_metrics()
+		$StatsPanel.visible = true
 
-func on_btn_training():
-	if person.is_master():
-		open_tab(tab_nums.mastery)
-	else:
-		open_tab(tab_nums.training)
-
-func btn_training_show():
-	btn_training.visible = true
-	if person.is_master():
-		btn_training.get_node('Label').text = tr("SIBLINGMODULETRAININGSMASTER")
-	else:
-		btn_training.get_node('Label').text = tr("SIBLINGMODULETRAININGS")
-
-func btn_minor_show():
-	btn_minor_training.visible = person.get_stat('slave_class') != 'slave'
+func show_valid_btn():
+	tab_btns[tab_nums.training].visible = !person.is_master()
+	tab_btns[tab_nums.mastery].visible = person.is_master()
+	tab_btns[tab_nums.minor].visible = person.get_stat('slave_class') != 'slave'
+	tab_btns[tab_nums.relations].visible = !person.is_master()
 
 func open_valid_tab():
 	var training_classes = ['slave', 'slave_trained', 'servant', 'servant_notax', 'heir']
@@ -547,5 +528,68 @@ func open_valid_tab():
 		open_tab(tab_nums.training)
 	else:
 		open_tab(tab_nums.relations)
+
+var sources = {
+	brothel_customer = tr("METRICS_SOURCE_BROTHEL_CUSTOMER"),
+	guild_trainer = tr("METRICS_SOURCE_GUILD_TRAINER") ,
+	william = tr("METRICS_SOURCE_WILLIAM"),
+	unknown = tr("METRICS_SOURCE_UNKNOWN"),
+}
+
+func make_metrics():
+	var text = ""
+	if person.is_players_character:
+		if person.is_master():
+			text += tr("METRICS_BASE_YOU") % ResourceScripts.game_globals.get_week_and_day_custom(ResourceScripts.game_globals.date - person.get_stat('metrics_ownership'))
+		else:
+			text += tr("METRICS_BASE") % ResourceScripts.game_globals.get_week_and_day_custom(ResourceScripts.game_globals.date - person.get_stat('metrics_ownership'))
+	if person.is_master():
+		text += "\n\n" + tr("METRICS_DATES_MASTER") % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')] + " "
+	else:
+		text += "\n\n" + tr("METRICS_DATES") % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')] + " "
+	var partner_number = person.get_stat('metrics_partners').size() + person.get_stat('metrics_randompartners')
+	var no_sex = false
+	if partner_number == 0:
+		text += tr("METRICS_PARTNERS_NONE")
+		no_sex = true
+	elif partner_number == 1:
+		text += tr("METRICS_PARTNERS_ONE")
+	else:
+		text += tr("METRICS_PARTNERS") % partner_number
+	
+	if no_sex == false:
+		text += "\n"
+		if person.get_stat('has_womb') == true:
+			text += tr("METRICS_IMPREGS") % [person.get_stat('metrics_pregnancy'), person.get_stat('metrics_birth')]
+		if person.get_stat('penis_size') != '':
+			text += tr("METRICS_PREGNANCIES") % [person.get_stat('metrics_impregnation')]
+	
+		if person.get_stat('vaginal_virgin_lost') != null:
+			if person.get_stat('vaginal_virgin_lost').begins_with('hid'):
+				var source = ResourceScripts.game_party.relativesdata[person.get_stat('vaginal_virgin_lost')]
+				
+				if source.id == ResourceScripts.game_party.get_master().id:
+					text += "\n" + tr("METRICS_VIRGINITY_YOU")
+				else:
+					text += "\n" +  tr("METRICS_VIRGINITY_OTHER") % source.name# + source.name + "}. "
+			else:
+				text += "\n" + tr("METRICS_VIRGINITY_OTHER") % sources[person.get_stat('vaginal_virgin_lost')]
+		
+		if person.get_stat('anal_virgin_lost') != null:
+			if person.get_stat('anal_virgin_lost').begins_with('hid'):
+				var source = ResourceScripts.game_party.relativesdata[person.get_stat('anal_virgin_lost')]
+				
+				if source.id == ResourceScripts.game_party.get_master().id:
+					text += "\n" + tr("METRICS_ANAL_VIRGINITY_YOU")
+				else:
+					text += "\n" + tr("METRICS_ANAL_VIRGINITY_OTHER") % source.name 
+			else:
+				text += "\n"+ tr("METRICS_ANAL_VIRGINITY_OTHER") % sources[person.get_stat('anal_virgin_lost')] 
+	
+	text += '\n\n' + tr("METRICS_EARNED") % [person.get_stat("metrics_goldearn"), person.get_stat("metrics_foodearn"),person.get_stat("metrics_materialearn")]
+	text += "\n\n" + tr("METRICS_COMBAT") % [person.get_stat("metrics_win"), person.get_stat("metrics_kills"),]
+	text = person.translate(globals.TextEncoder(text))
+	
+	$StatsPanel/RichTextLabel.bbcode_text = text
 
 

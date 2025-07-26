@@ -32,8 +32,8 @@ func setup_upgrade(upgrade_id):
 		visible = true
 	$name.text = tr(upgrade_data.name)
 	var tooltip_text = '[center]'+tr(upgrade_data.name)+'[/center]\n'
+	tooltip_text += tr(upgrade_data.descript) + "\n"
 	tooltip_text += globals.build_desc_for_bonusstats(upgrade_data.bonusstats)
-	tooltip_text += tr(upgrade_data.descript)
 	#setup icon
 	if upgrade_data.icon is String:
 		$Image.texture = load(upgrade_data.icon)
@@ -51,7 +51,7 @@ func setup_upgrade(upgrade_id):
 		disabled = true
 		$bg.modulate = color_dict.lock2
 		set_inactive()
-		tooltip_text += "\n\n"+tr("REQUIREMENTSARENTMET")
+		tooltip_text += "\n"+tr("REQUIREMENTSARENTMET")
 	elif ((list.is_list_mastery() and
 			ResourceScripts.game_progress.master_points < upgrade_data.l_cost)
 			or (list.is_list_minor() and
@@ -63,12 +63,12 @@ func setup_upgrade(upgrade_id):
 		var tooltip_code
 		if list.is_list_mastery(): tooltip_code = "NOTENOUGHMASTERPOINTS"
 		elif list.is_list_minor(): tooltip_code = "NOTENOUGHGOLD"
-		tooltip_text += "\n\n"+tr(tooltip_code)
+		tooltip_text += "\n"+tr(tooltip_code)
 	elif list.is_list_minor() and list.minor_training_count >= list.minor_training_max:
 		disabled = true
 		$bg.modulate = color_dict.lock3
 		set_inactive()
-		tooltip_text += "\n\n"+tr("MINORTRAINMAXREACHED")
+		tooltip_text += "\n"+tr("MINORTRAINMAXREACHED")
 	else:
 		$bg.modulate = color_dict.avail
 		set_normal()

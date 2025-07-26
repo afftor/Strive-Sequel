@@ -107,7 +107,7 @@ func get_food():
 		parent.get_ref().apply_effect_code('e_starve')
 		starvation = true
 		
-		globals.text_log_add('food', parent.get_ref().get_short_name() + ": not enough food. Authority reduced.") #2remake
+		globals.text_log_add('char', parent.get_ref().get_short_name() + ": not enough food. Authority reduced.") #2remake
 
 
 func predict_food():

@@ -1488,7 +1488,7 @@ var traits = {
 		tags = ['minor_training'],
 		bonusstats = {wits_bonus = 5},
 		l_cost = 500,
-		tree_position = {tab = 3, x = 1, y = 0},
+		tree_position = {tab = 3, x = 0.5, y = 0},
 	},
 	table_manners = {
 		code = 'table_manners',
@@ -1501,7 +1501,7 @@ var traits = {
 		tags = ['minor_training'],
 		bonusstats = {physics_bonus = 5},
 		l_cost = 500,
-		tree_position = {tab = 3, x = 4, y = 0},
+		tree_position = {tab = 3, x = 2.8, y = 0},
 	},
 	foreign_diplomacy = {
 		code = 'foreign_diplomacy',
@@ -1514,7 +1514,7 @@ var traits = {
 		tags = ['minor_training'],
 		bonusstats = {wits_bonus = 5},
 		l_cost = 500,
-		tree_position = {tab = 3, x = 7, y = 0},
+		tree_position = {tab = 3, x = 5.1, y = 0},
 	},
 	literacy = {
 		code = 'literacy',
@@ -1604,7 +1604,7 @@ var traits = {
 		tags = ['minor_training'],
 		bonusstats = {hitrate = 10},
 		l_cost = 500,
-		tree_position = {tab = 3, x = 1, y = 7.5},
+		tree_position = {tab = 3, x = 7.5, y = 0},
 	},
 	
 	#examples

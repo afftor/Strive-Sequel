@@ -1835,10 +1835,10 @@ func common_effects(effects):
 		match i.code:
 			'money_change':
 				ResourceScripts.game_res.update_money(i.operant, i.value)
-				text_log_add('money', "Gold: %s%s " % [i.operant, i.value])
+				text_log_add('mansion', "Gold: %s%s " % [i.operant, i.value])
 			'material_change':
 				ResourceScripts.game_res.update_materials(i.operant, i.material, i.value)
-				text_log_add("materials", "%s %s %s" % [
+				text_log_add("mansion", "%s %s %s" % [
 					Items.materiallist[i.material].name, i.operant, i.value])
 			'make_story_character':
 				if ResourceScripts.game_party.get_unique_slave(i.value.to_lower()) != null:

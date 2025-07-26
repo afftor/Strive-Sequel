@@ -732,7 +732,10 @@ func get_class_bonuses(newperson, classdata): #maybe there should be used the sa
 				text += str(value)
 				if data.percent:
 					text += "%"
-				text += "\n" 
+				text += "\n"
+	#if there will be new tags, that would need description, refactor this code: make it a system
+	if classdata.has('tags') and classdata.tags.has('stable_fame'):
+		text += tr('TAGSTABLE_FAME') + "\n"
 	if newperson != null:
 		text = newperson.translate(text)
 	return text

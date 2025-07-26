@@ -13,7 +13,6 @@ func _ready():
 	$RichTextLabel.connect("meta_hover_ended", self, "text_url_hover_hide")
 	$HairChange/screen.connect("pressed", self, "close_hairstyle")
 	globals.connecttexttooltip($Panel/price_cont/price, tr("TOOLTIPVALUE"))
-	globals.connecttexttooltip($Panel/price_cont/fame/icon, tr("TOOLTIPFAME"))
 	
 	for i in variables.resists_list:
 		if i == 'all': continue
@@ -45,7 +44,9 @@ func update():
 		var text = ""
 		$Panel/price_cont/price/valuelabel.text = str(person.calculate_price())
 		$Panel/price_cont/fame/label.text = tr(person.get_fame_bonus('name'))
-		globals.connecttexttooltip($Panel/price_cont/fame/label, person.translate(tr(person.get_fame_bonus('desc'))))
+		globals.connecttexttooltip($Panel/price_cont/fame,
+			person.translate(tr(person.get_fame_bonus('desc'))) + "\n\n" +
+			tr("TOOLTIPFAME"))
 #		globals.connecttexttooltip($Panel/loyaltylabel, statdata.statdata.loyalty.descript)
 		#globals.connecttexttooltip($Panel/loyaltylabel, "%.1f" % person.get_stat('loyalty'))
 
