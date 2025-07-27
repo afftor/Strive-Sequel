@@ -462,7 +462,7 @@ var data = {
 				reqs = [],
 				type = "next_dialogue",
 				bonus_effects = [
-					{code = "complete_quest", value = "act_4_capital"},
+					{code = "progress_quest", value = "act_4_capital", stage = "tbc"},
 				]
 			}
 		],
