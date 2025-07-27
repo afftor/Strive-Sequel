@@ -155,7 +155,11 @@ func _ready():
 	input_handler.connect("LocationSlavesUpdate", self, 'build_location_group')
 	input_handler.connect("survival_advance", self, 'build_levels')
 	globals.connecttexttooltip($LocationGui/MapPanel/Stamina, tr("TOOLTIPSTAMINADUNGEON"))
-	
+	input_handler.connect("clear_cashed", self, 'clear_cashed')
+
+
+func clear_cashed():
+	active_location = null
 
 
 func open_journal():

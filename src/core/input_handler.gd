@@ -44,6 +44,7 @@ signal update_ragdoll
 signal update_itemlist
 signal survival_advance
 signal fighter_changed
+signal clear_cashed
 
 #animations queue
 signal animation_finished
