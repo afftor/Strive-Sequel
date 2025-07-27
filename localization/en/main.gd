@@ -19017,6 +19017,7 @@ The dwarf grunts, pointing to a shelf. She snatches a glowing bottle of liquid, 
 She leaves before you can answer but her uncharacteristic appearance makes you think you'll meet her in future.""",
 	
 	#2fix
+	ACT_TBC = "To be continued - story in development",
 	ACT_4_CAPITAL_SUMMARY = "",
 	ACT_4_CAPITAL_NAME = "",
 	ACT_4_CAPITAL_ENTER = "Go to Empire capital",
