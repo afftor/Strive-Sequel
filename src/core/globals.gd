@@ -1400,9 +1400,9 @@ func StartCombat(encounter = null):
 		if data.has('hpmod'):
 			args.hpmod = data.hpmod
 	
-	if ResourceScripts.game_globals.skip_combat == true:
-		input_handler.finish_combat()
-		return
+#	if ResourceScripts.game_globals.skip_combat == true:
+#		input_handler.finish_combat()
+#		return
 	
 	if encounter == null:
 		StartAreaCombat()
