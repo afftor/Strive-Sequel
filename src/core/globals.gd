@@ -1400,9 +1400,9 @@ func StartCombat(encounter = null):
 		if data.has('hpmod'):
 			args.hpmod = data.hpmod
 	
-	if ResourceScripts.game_globals.skip_combat == true:
-		input_handler.finish_combat()
-		return
+#	if ResourceScripts.game_globals.skip_combat == true:
+#		input_handler.finish_combat()
+#		return
 	
 	if encounter == null:
 		StartAreaCombat()
@@ -2078,7 +2078,7 @@ func common_effects(effects):
 					if k.code == i.value:
 						quest_exists = true
 						k.stage = i.stage
-						text_log_add("quests", "Quest Updated: " + tr(scenedata.quests[k.code].stages[k.stage].name) + ". ")
+						text_log_add("quest", "Quest Updated: " + tr(scenedata.quests[k.code].stages[k.stage].name) + ". ")
 						var args = {}
 						args["label"] = "Quest Updated"
 						args["info"] =  tr(scenedata.quests[k.code].stages[k.stage].name)
@@ -2086,7 +2086,7 @@ func common_effects(effects):
 						input_handler.play_animation("quest", args)
 				if quest_exists == false:
 					ResourceScripts.game_progress.active_quests.append({code = i.value, stage = i.stage})
-					text_log_add("quests", "Quest Received: " + tr(scenedata.quests[i.value].stages[i.stage].name) + ". ")
+					text_log_add("quest", "Quest Received: " + tr(scenedata.quests[i.value].stages[i.stage].name) + ". ")
 					var args = {}
 					args["label"] = "Quest Received"
 					args["info"] = tr(scenedata.quests[i.value].stages[i.stage].name)
@@ -2096,7 +2096,7 @@ func common_effects(effects):
 				for k in ResourceScripts.game_progress.active_quests:
 					if k.code == i.value:
 						ResourceScripts.game_progress.active_quests.erase(k)
-						text_log_add("quests","Quest Completed: " + tr(scenedata.quests[k.code].stages[k.stage].name) + ". ")
+						text_log_add("quest","Quest Completed: " + tr(scenedata.quests[k.code].stages[k.stage].name) + ". ")
 						
 						var args = {}
 						args["label"] = "Quest Completed"

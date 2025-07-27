@@ -219,7 +219,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	#victory()
 	#start combat triggers
 	CombatAnimations.force_end()
-	if combat_data.instawin:
+	if combat_data.instawin or ResourceScripts.game_globals.skip_combat:
 		victory()
 	else:
 		ActionQueue = queue_script.new()

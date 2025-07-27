@@ -1,19 +1,14 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MANSION/MansionLogPanel.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Log.tres" type="Theme" id=2]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=4]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=5]
-[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats_hover.png" type="Texture" id=6]
-[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats_pressed.png" type="Texture" id=7]
-[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats.png" type="Texture" id=8]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionLogModule.gd" type="Script" id=9]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_job.png" type="Texture" id=10]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_job_pressed.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_job_hover.png" type="Texture" id=12]
-
-[sub_resource type="ImageTexture" id=1]
 
 [node name="MansionLogModule" type="Panel"]
 margin_right = 470.0
@@ -114,75 +109,89 @@ custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 scroll_active = false
 
-[node name="left" type="TextureButton" parent="."]
+[node name="travel" type="TextureButton" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -55.0
+margin_left = -118.0
 margin_top = 9.0
-margin_right = 73.0
+margin_right = -8.0
 margin_bottom = 51.0
 rect_scale = Vector2( -1, 1 )
 toggle_mode = true
 pressed = true
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 6 )
-texture_focused = SubResource( 1 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 11 )
 
-[node name="Label" type="Label" parent="left"]
+[node name="Label" type="Label" parent="travel"]
 margin_left = 103.0
 margin_right = 206.0
 margin_bottom = 42.0
 rect_scale = Vector2( -1, 1 )
 theme = ExtResource( 5 )
-text = "LOGLEFTLABEL"
+text = "TRAVEL_LABEL"
 align = 1
 clip_text = true
 
-[node name="right" type="TextureButton" parent="."]
+[node name="mansion" type="TextureButton" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 59.0
-margin_top = 9.0
-margin_right = 187.0
-margin_bottom = 51.0
-toggle_mode = true
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 6 )
-texture_focused = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="right"]
-margin_right = 103.0
-margin_bottom = 42.0
-theme = ExtResource( 5 )
-text = "LOGRIGHTLABEL"
-align = 1
-clip_text = true
-
-[node name="center" type="TextureButton" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -52.0
+margin_left = -112.0
 margin_top = 10.0
-margin_right = 58.0
+margin_right = -2.0
 margin_bottom = 50.0
 toggle_mode = true
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 11 )
-texture_focused = SubResource( 1 )
+
+[node name="Label" type="Label" parent="mansion"]
+margin_right = 103.0
+margin_bottom = 42.0
+theme = ExtResource( 5 )
+text = "MANSION_LABEL"
+align = 1
+clip_text = true
+
+[node name="char" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 2.0
+margin_top = 10.0
+margin_right = 112.0
+margin_bottom = 50.0
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="char"]
+margin_right = 103.0
+margin_bottom = 42.0
+theme = ExtResource( 5 )
+text = "CHAR_LABEL"
+align = 1
+clip_text = true
+
+[node name="quest" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 115.0
+margin_top = 9.0
+margin_right = 225.0
+margin_bottom = 51.0
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="center"]
+[node name="Label" type="Label" parent="quest"]
 margin_right = 103.0
 margin_bottom = 42.0
 theme = ExtResource( 5 )
-text = "LOGCENTERTLABEL"
+text = "QUESTS_LABEL"
 align = 1
 clip_text = true

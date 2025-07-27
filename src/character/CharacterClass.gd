@@ -1948,7 +1948,7 @@ func affect_char(template, manifest = false):
 					var data = ResourceScripts.world_gen.get_location_from_code(get_location())
 					data.stamina -= template.cost
 					if manifest:
-						globals.text_log_add("dungeon", "%s stamina spent in %s" % [template.cost, data.name])
+						globals.manifest_and_log("dungeon", "%s stamina spent in %s" % [template.cost, data.name])
 
 
 func is_koed():

@@ -260,9 +260,9 @@ func start_combat():
 	input_handler.encounter_win_script = null
 	input_handler.encounter_lose_script = null
 
-	if ResourceScripts.game_globals.skip_combat == true:
-		input_handler.finish_combat()
-		return
+#	if ResourceScripts.game_globals.skip_combat == true:
+#		input_handler.finish_combat()
+#		return
 
 	var enemies = globals.make_enemies(get_enemy_group(), true)
 
