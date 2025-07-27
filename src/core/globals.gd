@@ -844,6 +844,7 @@ func LoadGame(filename):
 #	input_handler.CloseableWindowsArray.clear()
 	gui_controller.revert_scenes_data()
 	ResourceScripts.revert_gamestate()
+	input_handler.emit_signal("clear_cashed")
 	
 	file.open(variables.userfolder+'saves/'+ filename + '.sav', File.READ)
 	var savedict = parse_json(file.get_as_text())
@@ -855,8 +856,6 @@ func LoadGame(filename):
 			savedict.game_world.areas.plains.factions[faction]["bonus_actions"] = worlddata.factiondata[faction].bonus_actions
 	
 #	state.deserialize(savedict)
-	input_handler.active_character = null
-	input_handler.interacted_character = null
 	effects_pool.deserialize(savedict.effpool)
 	characters_pool.deserialize(savedict.charpool)
 	for p in ResourceScripts.gamestate:
@@ -918,6 +917,7 @@ func ImportGame(filename):
 #	input_handler.CloseableWindowsArray.clear()
 	ResourceScripts.revert_gamestate()
 	gui_controller.revert_scenes_data()
+	input_handler.emit_signal("clear_cashed")
 
 	file.open(variables.userfolder+'saves/'+ filename + '.sav', File.READ)
 	var savedict = parse_json(file.get_as_text())

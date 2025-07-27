@@ -92,17 +92,20 @@ func try_start_event():
 	
 	var rnd_key = input_handler.random_from_array(useable_locs)
 	var list = list_by_loc[rnd_key]
+	var args = {scene_chars = []}
 	for i in range(char_count):
 		var list_id = randi() % list.size()
 		var chara = party.characters[list[list_id]]
 		if i == 0:
-			input_handler.active_character = chara
-		input_handler.scene_characters.append(chara)
+			args.set_active_character = chara.id
+#			input_handler.active_character = chara
+		args.scene_chars.push_back(chara.id)
+#		input_handler.scene_characters.append(chara)
 		list.remove(list_id)
 	
 	if !return_events.empty():
 		progress.unplayed_events.append_array(return_events)
 #		print("return %s" % String(return_events))
 		return_events.clear()
-	input_handler.interactive_message(event_id)
+	input_handler.interactive_message(event_id, 'char_event', args)
 	return true

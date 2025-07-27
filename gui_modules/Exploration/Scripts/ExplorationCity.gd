@@ -62,6 +62,14 @@ func _ready():
 	gui_controller.windows_opened.clear()
 	var closebutton = gui_controller.add_close_button($AreaShop)
 	input_handler.connect("update_itemlist", self, 'update_sell_list')
+	input_handler.connect("clear_cashed", self, 'clear_cashed')
+
+
+func clear_cashed():
+	active_location = null
+	active_faction = null
+#	selected_location = 'aliron'
+#	selected_area = ResourceScripts.game_world.areas.plains
 
 
 func test():
