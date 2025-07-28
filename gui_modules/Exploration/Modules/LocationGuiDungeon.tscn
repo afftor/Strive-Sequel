@@ -1357,6 +1357,11 @@ toggle_mode = true
 text = "Mansion"
 
 [node name="AvailableSlaves" parent="." instance=ExtResource( 41 )]
+visible = false
+margin_left = 1501.0
+margin_top = 167.0
+margin_right = 1869.0
+margin_bottom = 841.0
 
 [node name="Resources" type="Panel" parent="."]
 visible = false
