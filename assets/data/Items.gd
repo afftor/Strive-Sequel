@@ -1191,7 +1191,7 @@ var itemlist = {
 		reqs = [],
 		effects = [], 
 		tags = [],
-		basestats = {training_loyalty = 2, mod_service = 0.1},
+		basestats = {resistance_red = 0.2, mod_service = 0.1},
 	},
 	elegant_choker = {
 		code = 'elegant_choker',
@@ -1208,7 +1208,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {training_loyalty = 1, training_spirit = 1, mod_service = 0.05, sexuals_bonus = 5},
+		basestats = {resistance_red = 0.1, training_spirit = 1, mod_service = 0.05, sexuals_bonus = 5},
 	},
 	steel_collar = {
 		code = 'steel_collar',
@@ -1225,7 +1225,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {training_loyalty = 3, training_spirit = -2, mod_service = 0.05,},
+		basestats = {resistance_red = 0.25, mod_service = 0.05,},
 	},
 	test_collar = {
 		code = 'test_collar',
@@ -1244,40 +1244,6 @@ var itemlist = {
 		tags = ['no_random'],
 		basestats = {resistance_red = 0.2},
 	},
-	test_collar2 = {
-		code = 'test_collar2',
-		name = "",
-		descript = "",
-		type = 'gear',
-		itemtype = 'armor',
-		geartype = 'costume',
-		crafttype = 'basic',
-		slots = ['neck'],
-		price = 150,
-		icon = load("res://assets/images/iconsgear/steelcollar.png"),
-		tier = 'medium',
-		reqs = [],
-		effects = [],
-		tags = ['no_random'],
-		basestats = {breakdown_time = 0.6},
-	},
-	test_collar3 = {
-		code = 'test_collar3',
-		name = "",
-		descript = "",
-		type = 'gear',
-		itemtype = 'armor',
-		geartype = 'costume',
-		crafttype = 'basic',
-		slots = ['neck'],
-		price = 150,
-		icon = load("res://assets/images/iconsgear/steelcollar.png"),
-		tier = 'medium',
-		reqs = [],
-		effects = ['e_no_fame'],
-		tags = ['no_random'],
-		basestats = {},
-	},
 	amulet_of_recognition = {
 		code = 'amulet_of_recognition',
 		name = "",
@@ -1293,7 +1259,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = ['no_random'],
-		basestats = {physics_bonus = 5, wits_bonus = 5, charm_bonus = 5, sexuals_bonus = 5},
+		basestats = {training_loyalty = 2, physics_bonus = 5, wits_bonus = 5, charm_bonus = 5, sexuals_bonus = 5},
 	},
 	animal_ears = {#
 		code = 'animal_ears',
@@ -1637,6 +1603,41 @@ var itemlist = {
 		effects = ['e_anal_trait_counter', 'e_i_anal'],
 		tags = [],
 		basestats = {},
+	},
+	
+	mask = {
+		code = 'mask',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'armor',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['head'],
+		price = 75,
+		icon = load("res://assets/images/iconsitems/mask2.png"),
+		tier = 'easy',
+		reqs = [],
+		effects = ['e_no_fame'],
+		tags = [],
+		basestats = {},
+	},
+	foxmask = {
+		code = 'foxmask',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'armor',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['head'],
+		price = 150,
+		icon = load("res://assets/images/iconsitems/mask1.png"),
+		tier = 'medium',
+		reqs = [],
+		effects = ['e_no_fame'],
+		tags = [],
+		basestats = {atk = 3, matk = 3},
 	},
 
 
@@ -5175,7 +5176,7 @@ var material_tiers = {
 		},
 	t2 = {#act 1 start
 		iron = 1, cloth = 1,
-		stone = 1, wood = 1, leather = 1, bone = 1
+		stone = 1, wood = 1, leather = 1, bone = 1, clothsilk = 0.7,
 		},
 	t3 = {#enchants unlock; act 2 start
 		woodmagic = 1, leatherthick = 1, spider_silk = 1, insect_chitin = 1,
@@ -5183,14 +5184,14 @@ var material_tiers = {
 		stone = 1, wood = 1, leather = 1, bone = 1
 		},
 	t4 = {#farm unlock
-		silk = 2, steel = 2, obsidian = 2, woodiron = 2, lizard_skin = 2,
+		clothsilk = 2, steel = 2, obsidian = 2, woodiron = 2, lizard_skin = 2,
 		woodmagic = 2, leatherthick = 2, spider_silk = 2, insect_chitin = 2,
 		iron = 2, cloth = 2,
-		stone = 1, wood = 1, leather = 1, bone = 1,
+		stone = 1, wood = 1, leather = 1, bone = 1
 		},
 	t5 = {#body upgrades, act 3
 		mithril = 3, clothmagic = 3, leathermythic = 3, boneancient = 3,
-		silk = 3, steel = 3, obsidian = 3, woodiron = 3, lizard_skin = 3,
+		clothsilk = 3, steel = 3, obsidian = 3, woodiron = 3, lizard_skin = 3,
 		woodmagic = 3, leatherthick = 3, spider_silk = 3, insect_chitin = 3,
 		iron = 2, cloth = 2,
 		stone = 1, wood = 1, leather = 1, bone = 1
@@ -5198,7 +5199,7 @@ var material_tiers = {
 	t6 = {#act 4+
 		adamantine = 1, woodancient = 1, clothethereal = 1, leatherdragon = 1, bonedragon = 1,
 		mithril = 4, clothmagic = 4, leathermythic = 4, boneancient = 4,
-		silk = 3, steel = 3, obsidian = 3, woodiron = 3, lizard_skin = 3,
+		clothsilk = 3, steel = 3, obsidian = 3, woodiron = 3, lizard_skin = 3,
 		woodmagic = 2, leatherthick = 2, spider_silk = 2, insect_chitin = 2,
 		iron = 1, cloth = 1,
 		stone = 1, wood = 1, leather = 1, bone = 1

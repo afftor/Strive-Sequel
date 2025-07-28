@@ -74,10 +74,10 @@ var encounters = {
 	kuro_cult_hideout = {unittype = 'randomgroup', unitcode = 'kuro_cult_hideout', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'kuro_hideout_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	meteorite_ogres = {unittype = 'randomgroup', unitcode = 'meteorite_ogres', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'meteor_ogres_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
 	meteorite_durim = {unittype = 'randomgroup', unitcode = 'meteorite_durim', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'meteor_durim_ingot', args = {start_dialogue_option = 2}}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]},
-	arena_fight = {unittype = 'randomgroup', unitcode = 'greg_boss_fight', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_arena_6', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
-	greg_arena_fight = {unittype = 'randomgroup', unitcode = 'greg_boss_fight', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_arena_9', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
-	erdyna_thugs_fight = {unittype = 'randomgroup', unitcode = 'greg_boss_fight', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_erdyna_intro_3', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
-	erdyna_duel_fight = {unittype = 'randomgroup', unitcode = 'greg_boss_fight', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_erdyna_intro_6', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	arena_fight = {unittype = 'randomgroup', unitcode = 'pre_arena_fight', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_arena_6', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	greg_arena_fight = {unittype = 'randomgroup', unitcode = 'greg_arena_fight', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_arena_9', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	erdyna_thugs_fight = {unittype = 'randomgroup', unitcode = 'erdyna_thugs', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_erdyna_intro_3', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	erdyna_duel_fight = {unittype = 'randomgroup', unitcode = 'erdyna_boss', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_erdyna_intro_6', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 }
 
 var enemygroups = {
@@ -189,12 +189,18 @@ var enemygroups = {
 	rebel_group_hideout2 = {reqs = [], units = {rebel_knight = [0,1], rebel_healer = [1,2], rebel_recruit = [1,2]}, challenges = [['event_enemy_dexterity_sneak', 1],['event_enemy_charm_avoid',0.8]], challenge_chance = 0.4},
 	rebel_group_hideout3 = {reqs = [], units = {rebel_knight = [1,2], rebel_healer = [0,1], rebel_mage = [1,2]}},
 	greg_boss_fight = {reqs = [], units = {greg = [1,1], rebel_knight = [2,2], rebel_healer = [1,1], rebel_mage = [2,2]}},
+	erdyna_thugs = {reqs = [], units = {bandit_assassin = [2,2], bandit_boss_melee = [1,1], bandit_mage = [2,2], bandit_boss_archer = [1,1]}},
+	greg_arena_fight = {reqs = [], units = {greg_act4 = [1,1]}},
+	erdyna_boss = {reqs = [], units = {erdyna = [1,1]}},
+	
 	aire_boss_fight = {reqs = [], units = {rebel_knight = [3,3], aire = [1,1], rebel_healer = [2,2]}},
 	
 	jordan_boss_fight = {reqs = [], units = {rebel_knight = [3,3], rebel_mage = [3,3]}},
 	
 	reyan_boss_fight = {reqs = [], units = {bandit_assassin = [2,2], reyan_boss = [1,1], bandit_mage = [2,2]}},
 	
+	
+	pre_arena_fight = {reqs = [], units = {centipede = [3,3], gryphon = [2,2]}},
 
 	quest_lich_easy = {reqs = [], units = {lich_quest = [1,1], skeleton_shield_melee = [1,1], skeleton_archer_quest = [1,1]}},
 	quest_lich_normal = {reqs = [], units = {lich_quest = [1,1], skeleton_shield_melee = [2,2], skeleton_archer_quest = [2,2]}},
@@ -230,9 +236,9 @@ var enemygroups = {
 	dwarf_ceremony_guards = {reqs = [], units = {dwarf_fighter = [2,2], dwarf_fighter_elite = [1,1], dwarf_ranged = [3,3]}},
 	dwarf_ceremony_coal = {reqs = [], units = {dwarf_fighter_elite = [2,2]}},
 	dwarf_ceremony_cult2 = {reqs = [], units = {dwarf_fighter = [2,2]}},
-	kuro_cult_hideout = {reqs = [], units = {dwarf_fighter = [2,2]}}, #dummy
-	meteorite_ogres = {reqs = [], units = {bandit_melee = [2,2]}}, #dummy
-	meteorite_durim = {reqs = [], units = {dwarf_fighter = [1,1]}}, #dummy
+	kuro_cult_hideout = {reqs = [], units = {guardian_golem = [2,2], bandit_mage = [2,2]}}, 
+	meteorite_ogres = {reqs = [], units = {ogre_alpha = [1,1], ogre_melee = [2,2]}}, 
+	meteorite_durim = {reqs = [], units = {dwarf_fighter = [1,1]}},
 
 	goblin_stronghold_easy= {reqs = [], units = {hobgoblin_thug = [1,2], hobgoblin_crossbowman= [1,1]}, challenges = [['event_enemy_charm_avoid', 1],['event_enemy_charm_damage',0.8]], challenge_chance = 0.4},
 	goblin_stronghold_easy1 = { reqs = [], units = {warg = [2,2], hobgoblin_crossbowman= [1,2]}, challenges = [['event_enemy_strength_scare', 1],['event_enemy_distract',0.5]], challenge_chance = 0.4},
@@ -2190,6 +2196,56 @@ var enemies = {
 		traits = ['boss_resists'],
 		tags = ['human','boss'], 
 		ai = [['basic', 66], ['ads', 33]],
+		ai_position = ['melee'],
+		xpreward = 100,
+	},
+	greg_act4 = {
+		code = 'greg_act4',
+		name = '',
+		descript = '',
+		hpmax = 5000,
+		armor = 60,
+		mdef = 80,
+		hitrate = 150,
+		evasion = 20,
+		armorpenetration = 25,
+		atk = 140,
+		matk = 30,
+		speed = 55,
+		resists = {},
+		status_resists = {stun = 100, freeze = 90},
+		race = 'humanoid',
+		loot = 'ayneris_rapier_reward',
+		icon = "res://assets/images/enemies/greg_enemy.png", 
+		skills = ['devastation','cleave','strike_through'],
+		traits = ['boss_resists'],
+		tags = ['human','boss'], 
+		ai = [['ads', 66],['aoe',33]],
+		ai_position = ['melee'],
+		xpreward = 100,
+	},
+	erdyna = {
+		code = 'erdyna',
+		name = '',
+		descript = '',
+		hpmax = 3000,
+		armor = 40,
+		mdef = 120,
+		hitrate = 150,
+		evasion = 60,
+		armorpenetration = 50,
+		atk = 130,
+		matk = 40,
+		speed = 75,
+		resists = {},
+		status_resists = {stun = 85, freeze = 90},
+		race = 'humanoid',
+		loot = 'hard_boss_chest',
+		icon = "res://assets/images/portraits/dragongirl_deafault_prt.png", 
+		skills = ['devastation','backkick','dip_poison'],
+		traits = ['boss_resists'],
+		tags = ['human','boss'], 
+		ai = [['ads', 66],['aoe',33]],
 		ai_position = ['melee'],
 		xpreward = 100,
 	},

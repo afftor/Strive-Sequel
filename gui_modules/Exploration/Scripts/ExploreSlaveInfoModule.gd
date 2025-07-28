@@ -41,8 +41,8 @@ func update(person = null, from_dialogue = false):
 		globals.connecttexttooltip($Panel/personality, tr("INFOPERSONALITY" + person.get_stat('personality').to_upper()))
 		$Panel/fame_cont/fame.text = tr(person.get_fame_bonus('name'))
 		globals.connecttexttooltip($Panel/fame_cont,
-			person.translate(tr(person.get_fame_bonus('desc'))) + "\n\n" +
-			tr("TOOLTIPFAME"))
+			person.translate(person.translate(
+			tr("TOOLTIPFAME") +"\n\n"+"{color=yellow|"+tr(person.get_fame_bonus('desc'))+"}") ))
 		
 #		if from_dialogue:
 #			$Panel/authoritylabel.visible = person.is_known_to_player

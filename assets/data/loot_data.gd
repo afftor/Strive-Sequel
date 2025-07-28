@@ -397,6 +397,7 @@ var loot_tables = {
 			{item = 'lacy_underwear'},
 			{item = 'handcuffs'},
 			{item = 'strapon'},
+			{item = 'mask'},
 			{item = 'anal_beads'}]},
 		{min = 4, max = 8, chance = 0.8, selector = [
 			{item = 'beer'},
@@ -432,7 +433,8 @@ var loot_tables = {
 			{item = 'dagger'},
 			{item = 'spear'},
 			{item = 'staff'},
-			{item = 'shield'}]},
+			{item = 'shield'},
+			{item = 'foxmask'}]},
 		{min = 1, max = 2, chance = 0.8, selector = [
 			{item = 'chest_base_cloth'},
 			{item = 'chest_base_leather'},
@@ -534,7 +536,8 @@ var loot_tables = {
 			{item = 'chest_base_cloth'},
 			{item = 'chest_base_leather'},
 			{item = 'legs_base_cloth'},
-			{item = 'legs_base_leather'}]},
+			{item = 'legs_base_leather'},
+			{item = 'foxmask'}]},
 		]},
 	settlement_plains1_shop = {list = [
 		{material = 'meat', min = 20, max = 30, chance = 0.2},

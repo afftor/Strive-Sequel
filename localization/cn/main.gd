@@ -676,6 +676,10 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	ITEMANAL_PLUGDESCRIPT = "一块塞子形状的木头。专为后部使用而设计。 ",
 	ITEMSTRAPON = "假阳具",
 	ITEMSTRAPONDESCRIPT = "允许女孩冒充男孩，但只能在床上。 ",
+	ITEMMASK = """Mask""", # MISSING TRANSLATION
+	ITEMMASKDESCRIPT = """Hides wearer's identity. The wearer won't be recognized while it is equipped, preventing their Fame from growing. Does not apply to Master.""", # MISSING TRANSLATION
+	ITEMFOXMASK = """Fox Mask""", # MISSING TRANSLATION
+	ITEMFOXMASKDESCRIPT = """A fancier way to hide wearer's identity. The wearer won't be recognized while it is equipped, preventing their Fame from growing. Does not apply to Master.""", # MISSING TRANSLATION
 	ITEMOFFHAND_BOOK = "魔法书",
 	ITEMOFFHAND_BOOKDESCRIPT = "一件稀有而珍贵的魔法物品。它包含强大的魔法和知识，可以极大地帮助任何冒险者进行探索。",
 
@@ -15131,6 +15135,9 @@ Hotkey: 3""",
 	ARRIVED_AT_LOC_LABEL = "arrived at location",
 	RETURNED_TO_MANSION_LABEL = "returned to mansion",
 	TRAVEL_LABEL = "旅行",
+	MANSION_LABEL = """Mansion""", # MISSING TRANSLATION
+	CHAR_LABEL = """Character""", # MISSING TRANSLATION
+	QUESTS_LABEL = """Quest""", # MISSING TRANSLATION
 	RETURN_ALL_MANSION_LABEL = "全部返回豪宅",
 	TRAVELERS_LABEL = "旅行者",
 	BATTLE_GROUP_LABEL = "战斗小队",

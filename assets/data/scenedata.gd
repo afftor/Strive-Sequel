@@ -2687,7 +2687,7 @@ var quests = {
 			ceremony = {code = 'ceremony', name = 'ACT_4_CAPITAL_NAME', descript = 'ACT_4_CAPITAL_CEREMONY'},
 			wait2 = {code = 'wait2', name = 'ACT_4_CAPITAL_NAME', descript = 'ACT_4_CAPITAL_WAIT2'},
 			arena = {code = 'arena', name = 'ACT_4_CAPITAL_NAME', descript = 'ACT_4_CAPITAL_ARENA'},
-			tbc = {code = 'tbc', name = 'ACT_4_CAPITAL_NAME', descript = 'ACT_TBC'}
+			act4_continue = {code = 'act4_continue', name = 'ACT_4_CAPITAL_NAME', descript = 'ACT_4_CONTINUE'}
 		}
 	}
 }
