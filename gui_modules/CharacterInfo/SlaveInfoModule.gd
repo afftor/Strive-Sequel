@@ -12,7 +12,6 @@ func _ready():
 	$RichTextLabel.connect("meta_hover_started", self, 'text_url_hover')
 	$RichTextLabel.connect("meta_hover_ended", self, "text_url_hover_hide")
 	$HairChange/screen.connect("pressed", self, "close_hairstyle")
-	globals.connecttexttooltip($Panel/price_cont/price, tr("TOOLTIPVALUE"))
 	
 	for i in variables.resists_list:
 		if i == 'all': continue
@@ -42,11 +41,15 @@ func update():
 		$Panel/price_cont/price.visible = !person.has_profession("master")
 		$Panel/MasterIcon.visible = person.has_profession("master")
 		var text = ""
-		$Panel/price_cont/price/valuelabel.text = str(person.calculate_price())
+		$Panel/price_cont/price/valuelabel.text = str(person.calculate_price(false, false, true))
+		globals.connecttexttooltip($Panel/price_cont/price,
+			tr("TOOLTIPVALUE") + '\n\n' + person.get_price_composition())
 		$Panel/price_cont/fame/label.text = tr(person.get_fame_bonus('name'))
 		globals.connecttexttooltip($Panel/price_cont/fame,
 			person.translate(
-			tr("TOOLTIPFAME") +"\n\n"+"{color=yellow|"+tr(person.get_fame_bonus('desc'))+"}") )
+			tr("TOOLTIPFAME") +"\n\n"+"{color=yellow|"+tr(person.get_fame_bonus('desc'))+"}")
+			+ "\n" + person.get_fame_bonus_desc()
+			)
 #		globals.connecttexttooltip($Panel/loyaltylabel, statdata.statdata.loyalty.descript)
 		#globals.connecttexttooltip($Panel/loyaltylabel, "%.1f" % person.get_stat('loyalty'))
 

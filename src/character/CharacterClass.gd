@@ -31,6 +31,7 @@ var combat_position = 0 setget, get_combat_positon
 var selectedskill = 'attack'
 
 var previous_location
+var price_compo_text
 #constant stats
 
 #to delegate!
@@ -1716,39 +1717,82 @@ func translate(text, number = -1):
 	return text
 
 
-func calculate_price(shopflag = false, no_fame = false):
+func calculate_price(shopflag = false, no_fame = false, desc_ready = false):
+	var temp_text
+	if desc_ready:
+		price_compo_text = ''
+		temp_text = ''
 	var value = 0
 	var bonus_data = dyn_stats.get_stat_data('price').bonuses
 	var tr_mul1 = 0
 	var tr_mul2 = 0
 	var mod_mul = 1.0
 	var mod_mul2 = 0.0
+	
+	#dyn bonuses
 	if bonus_data.has('add'):
 		for rec in bonus_data.add:
 			value += rec.value
+			if desc_ready:
+				price_compo_text += '%s: {color=green|+%s}\n' % [
+					globals.get_tr_src(rec.src_type, rec.src_value)[1], rec.value]
 	if bonus_data.has('add_part'):
 		for rec in bonus_data.add_part:
 			mod_mul += rec.value
+			if desc_ready:
+				temp_text += '   %s: {color=green|+%s%%}\n' % [
+					globals.get_tr_src(rec.src_type, rec.src_value)[1], rec.value * 100]
 	if bonus_data.has('add_part2'):
 		for rec in bonus_data.add_part2:
 			mod_mul += rec.value
+			if desc_ready:
+				temp_text += '   %s: {color=green|+%s%%}\n' % [
+					globals.get_tr_src(rec.src_type, rec.src_value)[1], rec.value * 100]
+	
+	#traits bonuses
 	tr_mul1 = get_traits_by_tag('positive').size() 
 	tr_mul2 = get_traits_by_tag('negative').size()
-	mod_mul += min (tr_mul1 * 0.2, 0.6)
-	mod_mul -= tr_mul2 * 0.2 
+	var tr_mul1_mul = min(tr_mul1 * 0.2, 0.6)
+	var tr_mul2_mul = tr_mul2 * 0.2
+	mod_mul += tr_mul1_mul - tr_mul2_mul
+	if desc_ready:
+		temp_text += '   %s: %d ({color=green|+%s%%})\n' % [tr('PRICEDESC_TRAITS_POS'), tr_mul1, tr_mul1_mul * 100]
+		temp_text += '   %s: %d ({color=red|-%s%%})\n' % [tr('PRICEDESC_TRAITS_NEG'), tr_mul2, tr_mul2_mul * 100]
 	if shopflag:
 		if has_status('virgin'):
 			mod_mul2 += 0.25
-		value *= mod_mul + mod_mul2
+			if desc_ready:
+				temp_text += '   %s: {color=green|+25%%}\n' % tr('BODYPARTVAGINAL_VIRGINTRUE_TRUE')
+		mod_mul += mod_mul2
 	else:
 		if has_status('soulbind'):
 			mod_mul -= 0.9
-		value *= mod_mul
+			if desc_ready:
+				temp_text += '   %s: {color=red|-90%%}\n' % tr('TRAITLOYALTY_SOULBIND')
+	value *= mod_mul
+	if desc_ready:
+		var pre_text = (tr('PRICEDESC_CUMULATIVE') % '{color=yellow|%s%%}') + '\n%s'
+		price_compo_text += pre_text % [(mod_mul-1) * 100, temp_text]
+	
+	#growth bonuse
 	value = value * variables.growth_factor_cost_mod[get_stat('growth_factor')]
+	if desc_ready:
+		price_compo_text += '%s: {color=green|+%s%%}\n' % [tr('STATGROWTH_FACTOR'),
+			(variables.growth_factor_cost_mod[get_stat('growth_factor')] - 1) * 100]
+	
+	#fame bonuse
 	if !no_fame or !has_status('no_fame'):
 		value += value * get_fame_bonus('price_bonus')
+		if desc_ready:
+			price_compo_text += '%s: {color=green|+%s%%}\n' % [
+				tr('STATFAME'), get_fame_bonus('price_bonus') * 100]
+	
+	if desc_ready and round(value) < 50:
+		price_compo_text += "%s %s." % [tr('PRICEDESC_LESS'), 50]
 	return max(50,round(value))
 
+func get_price_composition():
+	return price_compo_text
 
 func apply_atomic(template):
 	if input_handler.combat_node != null and input_handler.combat_node.ActionQueue != null and template.type != 'remove_all_effects':
@@ -2349,6 +2393,9 @@ func fame_degrade_tick():
 	set_stat("fame_degrade_timer", 0)
 	add_stat("fame", -1)
 	log_me(translate(tr("FAME_DEGRADE_MANIFEST")) % tr(get_fame_bonus('name')))
+
+func get_fame_bonus_desc():
+	return ResourceScripts.descriptions.get_fame_tier_bonus(get_stat("fame"))
 
 #Minor training. Maybe should be withdrawn to separate module
 func get_minor_training_max():
