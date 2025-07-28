@@ -2350,6 +2350,9 @@ func fame_degrade_tick():
 	add_stat("fame", -1)
 	log_me(translate(tr("FAME_DEGRADE_MANIFEST")) % tr(get_fame_bonus('name')))
 
+func get_fame_bonus_desc():
+	return ResourceScripts.descriptions.get_fame_tier_bonus(get_stat("fame"))
+
 #Minor training. Maybe should be withdrawn to separate module
 func get_minor_training_max():
 	return 3 + floor(get_stat('growth_factor') * 0.5)

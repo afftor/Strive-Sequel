@@ -834,3 +834,16 @@ func trim_tag(text, tag, arg = null):
 	for result in regexp.search_all(text):
 		res = res.replace(result.get_string('str1'),result.get_string('str2'))
 	return res
+
+func get_fame_tier_bonus(tier):
+	var text = ''
+	var dict = variables.fame_tiers[tier]
+	if dict.has('price_bonus') and dict.price_bonus > 0.0:
+		text += "%s: {color=green|+%d%%}\n" % [tr('FAMEDESC_PRICE_BONUS'), int(dict.price_bonus * 100)]
+	if dict.has('upkeep'):
+		text += '%s: {color=yellow|%d}\n' % [tr('FAMEDESC_UPKEEP'), dict.upkeep]
+	if dict.has('loyalty_bonus'):
+		text += '%s: {color=green|+%d%%}\n' % [tr('FAMEDESC_LOYALTY_BONUS'), int(dict.loyalty_bonus * 100)]
+	if dict.has('recruit_bonus'):
+		text += '%s: {color=green|+%d%%}\n' % [tr('FAMEDESC_RECRUIT_BONUS'), int(dict.recruit_bonus * 100)]
+	return text

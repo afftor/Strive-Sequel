@@ -46,7 +46,9 @@ func update():
 		$Panel/price_cont/fame/label.text = tr(person.get_fame_bonus('name'))
 		globals.connecttexttooltip($Panel/price_cont/fame,
 			person.translate(
-			tr("TOOLTIPFAME") +"\n\n"+"{color=yellow|"+tr(person.get_fame_bonus('desc'))+"}") )
+			tr("TOOLTIPFAME") +"\n\n"+"{color=yellow|"+tr(person.get_fame_bonus('desc'))+"}")
+			+ "\n" + person.get_fame_bonus_desc()
+			)
 #		globals.connecttexttooltip($Panel/loyaltylabel, statdata.statdata.loyalty.descript)
 		#globals.connecttexttooltip($Panel/loyaltylabel, "%.1f" % person.get_stat('loyalty'))
 
