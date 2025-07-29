@@ -1139,7 +1139,7 @@ var traits = {
 		effects = [],
 		reqs = [{code = 'trait', trait = 'training_broke_in', check = true}],
 		bonusstats = {}, 
-		tags = ['training', 'tr_obedience', 'simple_icon']
+		tags = ['training', 'tr_obedience', 'simple_icon', 'tr_obed_donate']
 	},
 	training_callmaster = {
 		code = 'training_callmaster',

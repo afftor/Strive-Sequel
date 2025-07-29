@@ -992,13 +992,12 @@ func item_puchase_confirm(value):
 		if Items.materiallist.has(purchase_item.code):
 			ResourceScripts.game_res.set_material(purchase_item.code, '+', value)
 		elif Items.itemlist.has(purchase_item.code):
-			while value > 0:
+			for i in range(value):
 				match purchase_item.type:
 					'usable':
 						globals.AddItemToInventory(globals.CreateUsableItem(purchase_item.code))
 					'gear':
 						globals.AddItemToInventory(globals.CreateGearItemShop(purchase_item.code, {}))
-				value -= 1
 		ResourceScripts.game_res.money -= purchase_item.price * value
 		update_sell_list()
 		update_buy_list()

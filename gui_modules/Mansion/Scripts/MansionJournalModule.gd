@@ -158,7 +158,7 @@ func select_character_for_quest(reqs):
 	selected_req = reqs
 	var statreqs = reqs.statreqs.duplicate(true)
 	statreqs.append({code = 'workrule', value = 'lock', check = false})
-	statreqs.append({code = 'has_status', status = 'tr_obedience', check = true})
+	statreqs.append({code = 'has_status', status = 'tr_obed_donate', check = true})
 	input_handler.ShowSlaveSelectPanel(self, 'character_selected', statreqs)
 
 var tchar = null

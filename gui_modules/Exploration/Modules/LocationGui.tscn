@@ -1227,3 +1227,8 @@ margin_bottom = 1023.7
 text = "event"
 
 [node name="AvailableSlaves" parent="." instance=ExtResource( 41 )]
+visible = false
+margin_left = 1496.0
+margin_top = 101.0
+margin_right = 1864.0
+margin_bottom = 775.0
