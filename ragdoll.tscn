@@ -1,4 +1,4 @@
-[gd_scene load_steps=276 format=2]
+[gd_scene load_steps=282 format=2]
 
 [ext_resource path="res://Character_generator/images/03_ears/ears_human.png" type="Texture" id=1]
 [ext_resource path="res://Character_generator/images/00_body_nude/pregnancy_belly_mid.png" type="Texture" id=2]
@@ -423,6 +423,35 @@ shader_param/part3color = Color( 0.894118, 0.615686, 0.615686, 1 )
 shader_param/overlay = 0.999
 shader_param/part3 = ExtResource( 19 )
 
+[sub_resource type="ShaderMaterial" id=202]
+shader = ExtResource( 27 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 1, 0, 0, 1 )
+shader_param/target2color = Color( 1, 0, 0, 1 )
+shader_param/target3color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/overlay = 0.999
+
 [sub_resource type="ShaderMaterial" id=53]
 shader = ExtResource( 103 )
 shader_param/anchor1 = Vector2( 437.574, 570.999 )
@@ -695,6 +724,35 @@ shader_param/part2color = Color( 0.27451, 0.317647, 0.2, 1 )
 shader_param/part3color = Color( 0.894118, 0.615686, 0.615686, 1 )
 shader_param/overlay = 0.999
 shader_param/part3 = ExtResource( 19 )
+
+[sub_resource type="ShaderMaterial" id=203]
+shader = ExtResource( 27 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 1, 0, 0, 1 )
+shader_param/target2color = Color( 1, 0, 0, 1 )
+shader_param/target3color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/overlay = 0.999
 
 [sub_resource type="ShaderMaterial" id=56]
 shader = ExtResource( 103 )
@@ -2207,6 +2265,35 @@ shader_param/part2color = Color( 1, 0, 0, 1 )
 shader_param/part3color = Color( 1, 0, 0, 1 )
 shader_param/overlay = 0.999
 
+[sub_resource type="ShaderMaterial" id=204]
+shader = ExtResource( 27 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 1, 0, 0, 1 )
+shader_param/target2color = Color( 1, 0, 0, 1 )
+shader_param/target3color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/overlay = 0.999
+
 [sub_resource type="ShaderMaterial" id=111]
 shader = ExtResource( 27 )
 shader_param/anchor1 = Vector2( 436, 590 )
@@ -2777,6 +2864,35 @@ shader_param/part3color = Color( 0.894118, 0.615686, 0.615686, 1 )
 shader_param/overlay = 0.999
 shader_param/part3 = ExtResource( 19 )
 
+[sub_resource type="ShaderMaterial" id=205]
+shader = ExtResource( 27 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 1, 0, 0, 1 )
+shader_param/target2color = Color( 1, 0, 0, 1 )
+shader_param/target3color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/overlay = 0.999
+
 [sub_resource type="ShaderMaterial" id=66]
 shader = ExtResource( 103 )
 shader_param/anchor1 = Vector2( 437.574, 570.999 )
@@ -3049,6 +3165,35 @@ shader_param/part2color = Color( 0.27451, 0.317647, 0.2, 1 )
 shader_param/part3color = Color( 0.894118, 0.615686, 0.615686, 1 )
 shader_param/overlay = 0.999
 shader_param/part3 = ExtResource( 19 )
+
+[sub_resource type="ShaderMaterial" id=206]
+shader = ExtResource( 27 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 1, 0, 0, 1 )
+shader_param/target2color = Color( 1, 0, 0, 1 )
+shader_param/target3color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/overlay = 0.999
 
 [sub_resource type="ShaderMaterial" id=69]
 shader = ExtResource( 103 )
@@ -4893,6 +5038,35 @@ shader_param/part3color = Color( 0.654902, 0.380392, 0.266667, 1 )
 shader_param/overlay = 0.999
 shader_param/part3 = ExtResource( 19 )
 
+[sub_resource type="ShaderMaterial" id=207]
+shader = ExtResource( 27 )
+shader_param/anchor1 = Vector2( 437.574, 570.999 )
+shader_param/anchor2 = Vector2( 363.573, 503.999 )
+shader_param/anchor3 = Vector2( 515.573, 503.998 )
+shader_param/anchor4 = Vector2( 0, 0 )
+shader_param/anchor5 = Vector2( 0, 0 )
+shader_param/anchor6 = Vector2( 0, 0 )
+shader_param/move1 = Vector2( 0, 0 )
+shader_param/move2 = Vector2( 0, 0 )
+shader_param/move3 = Vector2( 0, 0 )
+shader_param/move4 = Vector2( 0, 0 )
+shader_param/move5 = Vector2( 0, 0 )
+shader_param/move6 = Vector2( 0, 0 )
+shader_param/range1 = 100.0
+shader_param/range2 = 110.0
+shader_param/range3 = 110.0
+shader_param/range4 = 0
+shader_param/range5 = 0
+shader_param/range6 = 0
+shader_param/power = 1.0
+shader_param/target1color = Color( 1, 0, 0, 1 )
+shader_param/target2color = Color( 1, 0, 0, 1 )
+shader_param/target3color = Color( 1, 0, 0, 1 )
+shader_param/part1color = Color( 1, 0, 0, 1 )
+shader_param/part2color = Color( 1, 0, 0, 1 )
+shader_param/part3color = Color( 1, 0, 0, 1 )
+shader_param/overlay = 0.999
+
 [sub_resource type="ShaderMaterial" id=149]
 shader = ExtResource( 27 )
 shader_param/anchor1 = Vector2( 436, 590 )
@@ -5184,8 +5358,8 @@ render_target_update_mode = 3
 gui_disable_input = true
 
 [node name="male_pose" type="Node2D" parent="VPC/VP" groups=["sex"]]
-visible = false
 light_mask = 4
+position = Vector2( 500, 500 )
 
 [node name="HumanF1" type="Skeleton2D" parent="VPC/VP/male_pose"]
 scale = Vector2( 1.05, 1.05 )
@@ -5202,7 +5376,7 @@ position = Vector2( 175, -22.0006 )
 rotation = -1.5708
 texture = ExtResource( 115 )
 
-[node name="Wings_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["demon", "fairy", "nonhuman"]]
+[node name="Wings_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["demon", "dragon", "fairy", "nonhuman"]]
 light_mask = 4
 material = SubResource( 29 )
 position = Vector2( 174.243, -14.1279 )
@@ -5241,7 +5415,7 @@ use_parent_material = true
 position = Vector2( -1.24982, -0.248962 )
 texture = ExtResource( 29 )
 
-[node name="Tail_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["demon", "kobold", "nonhuman"]]
+[node name="Tail_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["demon", "dragon", "kobold", "nonhuman"]]
 light_mask = 4
 material = SubResource( 30 )
 position = Vector2( 255.454, 2.99905 )
@@ -5317,6 +5491,13 @@ position = Vector2( 86.509, 155.97 )
 rotation = -1.5708
 texture = ExtResource( 79 )
 
+[node name="ArmR_races_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["dragon", "hair_additional", "nonhuman"]]
+light_mask = 4
+material = SubResource( 202 )
+position = Vector2( 86.509, 155.97 )
+rotation = -1.5708
+texture = ExtResource( 79 )
+
 [node name="ArmR_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["cloth", "cloth_top"]]
 light_mask = 4
 material = SubResource( 53 )
@@ -5340,7 +5521,7 @@ position = Vector2( 327, 100.999 )
 rotation = -1.5708
 texture = ExtResource( 42 )
 
-[node name="ShoulderR_races_hair" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR" groups=["dryad", "hair_additional", "nonhuman"]]
+[node name="ShoulderR_races_hair" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR" groups=["dragon", "dryad", "hair_additional", "nonhuman"]]
 visible = false
 light_mask = 4
 material = SubResource( 154 )
@@ -5424,6 +5605,13 @@ position = Vector2( 82.2014, -137.772 )
 rotation = -1.5708
 texture = ExtResource( 65 )
 
+[node name="ArmL_races_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["dragon", "hair_additional", "nonhuman"]]
+light_mask = 4
+material = SubResource( 203 )
+position = Vector2( 82.2014, -137.772 )
+rotation = -1.5708
+texture = ExtResource( 65 )
+
 [node name="ArmL_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["cloth", "cloth_top"]]
 light_mask = 4
 material = SubResource( 56 )
@@ -5447,7 +5635,7 @@ position = Vector2( 318, -105.001 )
 rotation = -1.5708
 texture = ExtResource( 28 )
 
-[node name="ShoulderL_races_hair" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL" groups=["dryad", "hair_additional", "nonhuman"]]
+[node name="ShoulderL_races_hair" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL" groups=["dragon", "dryad", "hair_additional", "nonhuman"]]
 visible = false
 light_mask = 4
 material = SubResource( 157 )
@@ -5478,7 +5666,7 @@ position = Vector2( 222, 1.05865 )
 rotation = -1.5708
 texture = ExtResource( 53 )
 
-[node name="Torso_races_hair" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["dryad", "hair_additional", "nonhuman"]]
+[node name="Torso_races_hair" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["dragon", "dryad", "hair_additional", "nonhuman"]]
 visible = false
 light_mask = 4
 material = SubResource( 159 )
@@ -5543,7 +5731,7 @@ position = Vector2( -102.26, -83.4431 )
 rotation = -1.5708
 texture = ExtResource( 51 )
 
-[node name="LegL_races_hair" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz/LegL" groups=["hair_additional", "nonhuman"]]
+[node name="LegL_races_hair" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz/LegL" groups=["dragon", "hair_additional", "nonhuman"]]
 visible = false
 light_mask = 4
 material = SubResource( 162 )
@@ -5588,7 +5776,7 @@ position = Vector2( -101.986, 42.5403 )
 rotation = -1.5708
 texture = ExtResource( 54 )
 
-[node name="LegR_races_hair" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz/LegR" groups=["dryad", "hair_additional", "nonhuman"]]
+[node name="LegR_races_hair" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz/LegR" groups=["dragon", "dryad", "hair_additional", "nonhuman"]]
 visible = false
 light_mask = 4
 material = SubResource( 165 )
@@ -5619,7 +5807,7 @@ position = Vector2( -1.15967, 0.226257 )
 rotation = -1.5708
 texture = ExtResource( 48 )
 
-[node name="Taz_races_hair" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz" groups=["hair_additional", "nonhuman"]]
+[node name="Taz_races_hair" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Taz" groups=["dragon", "hair_additional", "nonhuman"]]
 visible = false
 light_mask = 4
 material = SubResource( 167 )
@@ -5803,6 +5991,13 @@ material = SubResource( 194 )
 position = Vector2( 499.474, -5.8439 )
 rotation = -1.5708
 
+[node name="Head_races_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["dragon", "hair_additional", "nonhuman"]]
+light_mask = 4
+material = SubResource( 204 )
+position = Vector2( 590, -9.00214 )
+rotation = -1.5708
+texture = ExtResource( 88 )
+
 [node name="Ears_humanoid_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["ears", "fur_mask", "human", "skin_main"]]
 visible = false
 light_mask = 4
@@ -5872,7 +6067,7 @@ material = SubResource( 63 )
 rotation = -1.5708
 z_index = 1
 
-[node name="Horns_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["demon", "kobold", "nonhuman"]]
+[node name="Horns_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/Head" groups=["demon", "dragon", "kobold", "nonhuman"]]
 visible = false
 modulate = Color( 0.901961, 0.901961, 1, 1 )
 light_mask = 4
@@ -5908,6 +6103,7 @@ z_index = 5
 texture = ExtResource( 114 )
 
 [node name="Female_pose" type="Node2D" parent="VPC/VP" groups=["sex"]]
+visible = false
 position = Vector2( 500, 500 )
 
 [node name="HumanF1" type="Skeleton2D" parent="VPC/VP/Female_pose"]
@@ -5923,7 +6119,7 @@ position = Vector2( 175, -22.0006 )
 rotation = -1.5708
 texture = ExtResource( 115 )
 
-[node name="Wings_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["demon", "fairy", "nonhuman"]]
+[node name="Wings_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["demon", "dragon", "fairy", "nonhuman"]]
 light_mask = 4
 material = SubResource( 36 )
 position = Vector2( 174.243, -14.1279 )
@@ -5960,7 +6156,7 @@ use_parent_material = true
 position = Vector2( -1.24982, -0.248962 )
 texture = ExtResource( 29 )
 
-[node name="Tail_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["demon", "kobold", "nonhuman"]]
+[node name="Tail_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["demon", "dragon", "kobold", "nonhuman"]]
 light_mask = 4
 material = SubResource( 33 )
 position = Vector2( 205, 2.99924 )
@@ -6059,6 +6255,13 @@ position = Vector2( 105.579, 111.473 )
 rotation = -1.5708
 texture = ExtResource( 7 )
 
+[node name="ArmR_races_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["dragon", "hair_additional", "nonhuman"]]
+light_mask = 4
+material = SubResource( 205 )
+position = Vector2( 105.579, 111.473 )
+rotation = -1.5708
+texture = ExtResource( 7 )
+
 [node name="ArmR_armor" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["cloth", "cloth_top"]]
 visible = false
 light_mask = 4
@@ -6083,7 +6286,7 @@ position = Vector2( 327, 100.999 )
 rotation = -1.5708
 texture = ExtResource( 42 )
 
-[node name="ShoulderR_races_hair" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR" groups=["dryad", "hair_additional", "nonhuman"]]
+[node name="ShoulderR_races_hair" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR" groups=["dragon", "dryad", "hair_additional", "nonhuman"]]
 visible = false
 light_mask = 4
 material = SubResource( 170 )
@@ -6191,6 +6394,13 @@ position = Vector2( 91.7367, -99.6318 )
 rotation = -1.5708
 texture = ExtResource( 6 )
 
+[node name="ArmL_races_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["dragon", "hair_additional", "nonhuman"]]
+light_mask = 4
+material = SubResource( 206 )
+position = Vector2( 91.7367, -99.6318 )
+rotation = -1.5708
+texture = ExtResource( 6 )
+
 [node name="ArmL_armor" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["cloth", "cloth_top"]]
 visible = false
 light_mask = 4
@@ -6215,7 +6425,7 @@ position = Vector2( 318, -105.001 )
 rotation = -1.5708
 texture = ExtResource( 28 )
 
-[node name="ShoulderL_races_hair" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL" groups=["dryad", "hair_additional", "nonhuman"]]
+[node name="ShoulderL_races_hair" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL" groups=["dragon", "dryad", "hair_additional", "nonhuman"]]
 visible = false
 light_mask = 4
 material = SubResource( 173 )
@@ -6247,7 +6457,7 @@ position = Vector2( 223, 0 )
 rotation = -1.5708
 texture = ExtResource( 53 )
 
-[node name="Torso_races_hair" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["dryad", "hair_additional", "nonhuman"]]
+[node name="Torso_races_hair" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine" groups=["dragon", "dryad", "hair_additional", "nonhuman"]]
 visible = false
 light_mask = 4
 material = SubResource( 175 )
@@ -6372,7 +6582,7 @@ position = Vector2( -1.15967, 0.226257 )
 rotation = -1.5708
 texture = ExtResource( 48 )
 
-[node name="Taz_races_hair" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz" groups=["hair_additional", "nonhuman"]]
+[node name="Taz_races_hair" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Taz" groups=["dragon", "hair_additional", "nonhuman"]]
 visible = false
 light_mask = 4
 material = SubResource( 183 )
@@ -6819,6 +7029,14 @@ material = SubResource( 201 )
 position = Vector2( 499.474, -7.8439 )
 rotation = -1.5708
 texture = ExtResource( 21 )
+
+[node name="Head_races_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head" groups=["dragon", "hair_additional", "nonhuman"]]
+visible = false
+light_mask = 4
+material = SubResource( 207 )
+position = Vector2( 590, -9.00214 )
+rotation = -1.5708
+texture = ExtResource( 26 )
 
 [node name="Ears_humanoid_tex" type="Sprite" parent="VPC/VP/Female_pose/HumanF1/Spine/Head" groups=["ears", "fur_mask", "human", "skin_main"]]
 visible = false

@@ -494,6 +494,8 @@ var bodypartsdata = {
 	skin_coverage = {
 		plant = {code = 'plant', name = '', chardescript = '', bodychanges = []},
 		scale = {code = 'scale', name = '', chardescript = '', bodychanges = []},
+		scale2 = {code = 'scale2', name = '', chardescript = '', bodychanges = []},
+		scale3 = {code = 'scale3', name = '', chardescript = '', bodychanges = []},
 		feathers = {code = 'feathers', name = '', chardescript = '', bodychanges = []},
 		fur_white = {code = 'fur_white', name = '', chardescript = '', bodychanges = [
 			{code = 'body_color_tail', value = [['white2', 1]], reqs = []},
