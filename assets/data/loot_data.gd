@@ -27,6 +27,8 @@ extends Reference
 #	Bool param "autoassign_quality" used for [probably legacy] generating with
 #	autoassigning "quality" and no "parts" (it was in use for chests)
 #	(seems to be useful only for items in Items.fixed_quality_stats).
+#* no_enchant - bool flag, gear-items with "true" will have no enchantments, IF it could otherwise.
+#	"False" will not add enchantments, where it shouldn't be
 #* random - string, determines type of randomly generated loot. Can be:
 #	* material - randomly generated material from tear lists provided by string param "tier" or bool
 #		param "from_location". In last case tier taken from location. If no tier param provided,
@@ -328,12 +330,12 @@ var loot_tables = {
 	zephyra_bribe_1 = {gold = true, amount = 500},
 	zephyra_bribe_2 = {item = 'zephyra_underwear', amount = 1},
 	ramont_axe_reward = {item = 'ramont_axe', amount = 1},#autoassign_quality = true
-	hector_armor_reward = {item = 'hector_armor', amount = 1},#autoassign_quality = true
+	hector_armor_reward = {item = 'hector_armor', amount = 1, no_enchant = true},#autoassign_quality = true
 	erlen_sword_reward = {list = [
 		{item = 'erlen_sword', amount = 1},#autoassign_quality = true
 		{item = 'sacred_bowl', amount = 1}]},#autoassign_quality = true
 	ayneris_rapier_reward = {item = 'ayneris_rapier', amount = 1},#autoassign_quality = true
-	garb_of_forest_reward = {item = 'garb_of_forest', amount = 1},#autoassign_quality = true
+	garb_of_forest_reward = {item = 'garb_of_forest', amount = 1, no_enchant = true},#autoassign_quality = true
 	chloe_goggles_reward = {item = 'chloe_goggles', amount = 1},#autoassign_quality = true
 	priestess_tiara_reward = {list = [
 		{item = 'priestess_tiara', amount = 1},#autoassign_quality = true
