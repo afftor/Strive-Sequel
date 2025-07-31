@@ -1044,8 +1044,9 @@ func start_event(code, type, args):
 					active_area.events.erase(i)
 					break
 		'location_purchase_event':
+			var loc_data = ResourceScripts.world_gen.get_location_from_code(selected_location)
 			data.text = tr(data.text)
-			data.text = data.text.replace("[areaname]", tr(selected_area.name)).replace('[locationname]', tr(selected_location.name)).replace('[locationdescript]',tr(selected_location.descript)).replace("[locationtypename]", tr(selected_location.classname))
+			data.text = data.text.replace("[areaname]", tr(selected_area.name)).replace('[locationname]', tr(loc_data.name)).replace('[locationdescript]',tr(loc_data.descript)).replace("[locationtypename]", tr(loc_data.classname))
 	
 	gui_controller.dialogue.open(data)
 
