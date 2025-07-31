@@ -20,7 +20,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'fairy_grace', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['target.hpmax','*0.5']],
 		damagestat = ['-damage_hp']
@@ -44,7 +44,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'earth',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'entangle', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.3
 	},
