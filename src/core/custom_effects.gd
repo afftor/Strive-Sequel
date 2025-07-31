@@ -191,7 +191,7 @@ func map(dungeon_code):
 		randomlocation = ResourceScripts.world_gen.make_location(
 			dungeon.code, input_handler.selected_area
 		)
-		input_handler.selected_location = randomlocation
+		input_handler.selected_location = randomlocation.id
 #		input_handler.active_area = active_area
 		input_handler.selected_area.locations[randomlocation.id] = randomlocation
 		ResourceScripts.game_world.location_links[randomlocation.id] = {
