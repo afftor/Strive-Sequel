@@ -142,6 +142,7 @@ func load_images(scene_type):
 
 func show_fullscreen(image): # image:string 
 	var FS_node = $FullScreenImage
+	var MS_node = $FullScreenImage/mini_image
 	FS_node.show()
 	Collection = image
 #	FS_node.texture = load(image)
@@ -149,7 +150,12 @@ func show_fullscreen(image): # image:string
 		FS_node.stretch_mode = FS_node.STRETCH_KEEP_ASPECT_CENTERED
 	else:
 		FS_node.stretch_mode = FS_node.STRETCH_KEEP_ASPECT_COVERED
-	FS_node.texture = get_texture_by_name(image)
+	if state == "mono":
+		FS_node.texture = null
+		MS_node.texture = get_texture_by_name(image)
+	else:
+		FS_node.texture = get_texture_by_name(image)
+		MS_node.texture = null
 	ResourceScripts.core_animations.UnfadeAnimation(FS_node)
 	if !gui_controller.windows_opened.has(FS_node):
 		gui_controller.windows_opened.append(FS_node)
