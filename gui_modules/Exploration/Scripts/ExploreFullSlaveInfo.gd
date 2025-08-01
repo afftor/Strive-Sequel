@@ -70,8 +70,9 @@ func show_summary(person = selected_char):
 
 	for i in SummaryModule.get_node("base_stats").get_children():
 		i.max_value = person.get_stat(i.name+'max')
-		if i.name != 'lust': i.value = person.get_stat(i.name)
-		else:i.value = person.get_stat(i.name)
+		if i.name == 'lust': 
+			i.visible = person.check_trait('succubus')
+		i.value = person.get_stat(i.name)
 		i.get_node("Label").text = str(floor(i.value)) + "/" + str(floor(i.max_value))
 	
 	for i in SummaryModule.get_node("factors").get_children():
