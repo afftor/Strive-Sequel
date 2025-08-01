@@ -375,4 +375,10 @@ func unlock_all():
 	for sc in scenes_order:
 		if !input_handler.progress_data.gallery_seq.has(sc):
 			input_handler.progress_data.gallery_seq.push_back(sc)
+	for sc in mono_scenes:
+		if !input_handler.progress_data.monochrome.has(sc):
+			input_handler.progress_data.monochrome.push_back(sc)
+	for sc in char_scenes:
+		if !input_handler.progress_data.characters.has(sc):
+			input_handler.progress_data.characters.push_back(sc)
 	input_handler.store_progress()

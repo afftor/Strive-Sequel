@@ -221,5 +221,7 @@ func reset_gallery_progress():
 	input_handler.progress_data.story_scenes = []
 	input_handler.progress_data.ero_scenes = []
 	input_handler.progress_data.gallery_seq = []
+	input_handler.progress_data.monochrome = []
+	input_handler.progress_data.characters = []
 	input_handler.save_progress_data(input_handler.progress_data)
 	set_state("story")
