@@ -26,6 +26,14 @@ func _get_key(char1, char2):
 func _get_data(char1, char2):
 	var key = _get_key(char1, char2)
 	if !relationship_data.has(key):
+		var ch_1 = characters_pool.get_char_by_id(char1)
+		var ch_2 = characters_pool.get_char_by_id(char2)
+		if ch_1 == null or ch_2 == null:
+			return {status = null, value = -100}
+		if !ch_1.is_active or !ch_2.is_active:
+			return {status = null, value = -100}
+		if !ch_1.is_players_character or !ch_2.is_players_character:
+			return {status = null, value = -100}
 		add_relationship_value(char1, char2)
 		if !relationship_data.has(key):
 			return null#relationships with master
@@ -302,6 +310,9 @@ func check_relationship_status(char1, char2, status):
 	if characters[char1].is_master():
 		return false
 	if characters[char2].is_master():
+		return false
+	var key = _get_key(char1, char2)
+	if !relationship_data.has(key):
 		return false
 	return _get_data(char1, char2).status == status
 
