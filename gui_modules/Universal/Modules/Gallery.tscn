@@ -280,18 +280,6 @@ text = "GALLERYRETURN"
 align = 1
 valign = 1
 
-[node name="FullScreenImage" type="TextureRect" parent="."]
-visible = false
-margin_right = 1920.0
-margin_bottom = 1080.0
-mouse_filter = 0
-expand = true
-stretch_mode = 7
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ResetProgress" type="TextureButton" parent="."]
 margin_left = 1630.0
 margin_top = 1000.0
@@ -310,5 +298,37 @@ custom_fonts/font = SubResource( 3 )
 text = "GALLERYRESETBUTTON"
 align = 1
 clip_text = true
+
+[node name="FullScreenImage" type="TextureRect" parent="."]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 0
+expand = true
+stretch_mode = 7
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="curtain" type="ColorRect" parent="FullScreenImage"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1920, 1080 )
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.631373 )
+
+[node name="mini_image" type="TextureRect" parent="FullScreenImage"]
+margin_left = 303.0
+margin_top = 152.0
+margin_right = 1627.0
+margin_bottom = 897.0
+mouse_filter = 2
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="ResetProgress" to="." method="_on_ResetProgress_pressed"]

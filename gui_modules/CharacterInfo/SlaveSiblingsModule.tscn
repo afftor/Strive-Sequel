@@ -66,9 +66,9 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/kin_normal.png" type="Texture" id=64]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/minor_pressed.png" type="Texture" id=65]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/master_tr_pressed.png" type="Texture" id=66]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/inform_icon_hover.png" type="Texture" id=67]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/inform_icon_pressed.png" type="Texture" id=68]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/inform_icon.png" type="Texture" id=69]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/metric_hover.png" type="Texture" id=67]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/metric_pressed.png" type="Texture" id=68]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/metric_normal.png" type="Texture" id=69]
 
 [sub_resource type="DynamicFont" id=3]
 size = 36

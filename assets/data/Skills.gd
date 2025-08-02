@@ -773,7 +773,7 @@ var Skilllist = {
 		target_range = 'any',
 		damage_type = 'weapon',
 		damage = 0,
-		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'take_position', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = ['0'],
 		damagestat = 'no_stat'

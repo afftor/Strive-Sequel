@@ -573,7 +573,11 @@ func make_metrics():
 				else:
 					text += "\n" +  tr("METRICS_VIRGINITY_OTHER") % source.name# + source.name + "}. "
 			else:
-				text += "\n" + tr("METRICS_VIRGINITY_OTHER") % sources[person.get_stat('vaginal_virgin_lost')]
+				var source_str = person.get_stat('vaginal_virgin_lost')
+				if !sources.has(source_str):
+					push_error("No name for source of vaginal_virgin_lost: %s" % source_str)
+					source_str = 'unknown'
+				text += "\n" + tr("METRICS_VIRGINITY_OTHER") % sources[source_str]
 		
 		if person.get_stat('anal_virgin_lost') != null:
 			if person.get_stat('anal_virgin_lost').begins_with('hid'):
@@ -584,7 +588,11 @@ func make_metrics():
 				else:
 					text += "\n" + tr("METRICS_ANAL_VIRGINITY_OTHER") % source.name 
 			else:
-				text += "\n"+ tr("METRICS_ANAL_VIRGINITY_OTHER") % sources[person.get_stat('anal_virgin_lost')] 
+				var source_str = person.get_stat('anal_virgin_lost')
+				if !sources.has(source_str):
+					push_error("No name for source of anal_virgin_lost: %s" % source_str)
+					source_str = 'unknown'
+				text += "\n"+ tr("METRICS_ANAL_VIRGINITY_OTHER") % sources[source_str]
 	
 	text += '\n\n' + tr("METRICS_EARNED") % [person.get_stat("metrics_goldearn"), person.get_stat("metrics_foodearn"),person.get_stat("metrics_materialearn")]
 	text += "\n\n" + tr("METRICS_COMBAT") % [person.get_stat("metrics_win"), person.get_stat("metrics_kills"),]

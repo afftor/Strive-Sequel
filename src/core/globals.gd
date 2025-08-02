@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.11.1e'
+const gameversion = '0.12.0'
 
 #time
 signal hour_tick
@@ -252,8 +252,8 @@ func CreateGearItemCraft(item, parts, person, newname = null):
 	return newitem
 
 
-func CreateGearItemLoot(item, parts, newname = null):
-	var diffdata = {boost = 0, prof = false}
+func CreateGearItemLoot(item, parts, newname = null, no_enchant = false):
+	var diffdata = {boost = 0, prof = false, no_enchant = no_enchant}
 	match char_roll_data.diff:
 		'easy':
 			diffdata.boost = 2

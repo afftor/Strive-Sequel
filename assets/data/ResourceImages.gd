@@ -1191,6 +1191,21 @@ var GFX_sprites = {
 	tauntwave = "res://assets/sfx/hit_animation/tauntwave.tscn",
 	trap = "res://assets/sfx/hit_animation/trap.tscn",
 	trap_cast = "res://assets/sfx/hit_animation/trap_cast.tscn",
+	blood_explosion = "res://assets/sfx/hit_animation/blood_explosion.tscn",
+	blood_magic = "res://assets/sfx/hit_animation/blood_magic.tscn",
+	command = "res://assets/sfx/hit_animation/command.tscn",
+	devour_spirit = "res://assets/sfx/hit_animation/devour_spirit.tscn",
+	entangle = "res://assets/sfx/hit_animation/entangle.tscn",
+	fairy_grace = "res://assets/sfx/hit_animation/fairy_grace.tscn",
+	hymn = "res://assets/sfx/hit_animation/hymn.tscn",
+	righteous_fire = "res://assets/sfx/hit_animation/righteous_fire.tscn",
+	soothe = "res://assets/sfx/hit_animation/soothe.tscn",
+	spirit_eagle = "res://assets/sfx/hit_animation/spirit_eagle.tscn",
+	spirit_hare = "res://assets/sfx/hit_animation/spirit_hare.tscn",
+	spirit_turtle = "res://assets/sfx/hit_animation/spirit_turtle.tscn",
+	take_position = "res://assets/sfx/hit_animation/take_position.tscn",
+	void_barrage = "res://assets/sfx/hit_animation/void_barrage.tscn",
+	wind_wall = "res://assets/sfx/hit_animation/wind_wall.tscn",
 	
 	}
 
