@@ -570,7 +570,7 @@ func remove_servant(code):
 func remove_selected(person):
 	input_handler.active_character = person
 	ResourceScripts.game_party.add_fate(person.id, tr("LOST"))
-	ResourceScripts.game_party.remove_slave(person)
+	ResourceScripts.game_party.remove_slave(person, true)
 	input_handler.slave_list_node.rebuild()
 
 	var event_type = 'story_event'

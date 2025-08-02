@@ -1969,7 +1969,7 @@ func affect_char(template, manifest = false):
 			set_slave_category(template.value)
 		'remove':
 			ResourceScripts.game_party.add_fate(id, tr("REMOVED"))
-			ResourceScripts.game_party.remove_slave(self)
+			ResourceScripts.game_party.remove_slave(self, true)
 			input_handler.slave_list_node.rebuild()
 		'turn_into_unique':
 			turn_into_unique(template.value)
