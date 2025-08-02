@@ -316,8 +316,16 @@ func find_all_relationship(char1):
 	var cleanup = []
 	for key in relationship_data.keys():
 		var chars = key.split("_")
-		if characters_pool.get_char_by_id(chars[0]) == null or characters_pool.get_char_by_id(chars[1]) == null:
+		var ch_1 = characters_pool.get_char_by_id(chars[0])
+		var ch_2 = characters_pool.get_char_by_id(chars[1])
+		if ch_1 == null or ch_2 == null:
 			cleanup.push_back(key)
+			continue
+		if !ch_1.is_active or !ch_2.is_active:
+			cleanup.push_back(key)
+			continue
+		if !ch_1.is_players_character or !ch_2.is_players_character:
+#			cleanup.push_back(key)
 			continue
 		if char1 in chars:
 			var dict = {relationship = relationship_data[key].status}
