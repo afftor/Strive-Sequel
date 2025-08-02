@@ -722,7 +722,15 @@ func get_prof_number():
 
 
 func get_professions():
-	return professions.keys()
+	var tmp = []
+	for prof in professions:
+		tmp.push_back([prof, professions[prof]])
+	tmp.sort_custom(input_handler, 'timestamp_sort')
+	var res = []
+	for rec in tmp:
+		res.push_back(rec[0])
+	return res
+#	return professions.keys()
 
 
 func get_class_list(category, person):
