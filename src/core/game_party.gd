@@ -26,6 +26,14 @@ func _get_key(char1, char2):
 func _get_data(char1, char2):
 	var key = _get_key(char1, char2)
 	if !relationship_data.has(key):
+		var ch_1 = characters_pool.get_char_by_id(char1)
+		var ch_2 = characters_pool.get_char_by_id(char2)
+		if ch_1 == null or ch_2 == null:
+			return {status = null, value = -100}
+		if !ch_1.is_active or !ch_2.is_active:
+			return {status = null, value = -100}
+		if !ch_1.is_players_character or !ch_2.is_players_character:
+			return {status = null, value = -100}
 		add_relationship_value(char1, char2)
 		if !relationship_data.has(key):
 			return null#relationships with master
@@ -303,6 +311,9 @@ func check_relationship_status(char1, char2, status):
 		return false
 	if characters[char2].is_master():
 		return false
+	var key = _get_key(char1, char2)
+	if !relationship_data.has(key):
+		return false
 	return _get_data(char1, char2).status == status
 
 func check_if_relationship_in(char1, char2, status_arr):
@@ -316,8 +327,16 @@ func find_all_relationship(char1):
 	var cleanup = []
 	for key in relationship_data.keys():
 		var chars = key.split("_")
-		if characters_pool.get_char_by_id(chars[0]) == null or characters_pool.get_char_by_id(chars[1]) == null:
+		var ch_1 = characters_pool.get_char_by_id(chars[0])
+		var ch_2 = characters_pool.get_char_by_id(chars[1])
+		if ch_1 == null or ch_2 == null:
 			cleanup.push_back(key)
+			continue
+		if !ch_1.is_active or !ch_2.is_active:
+			cleanup.push_back(key)
+			continue
+		if !ch_1.is_players_character or !ch_2.is_players_character:
+#			cleanup.push_back(key)
 			continue
 		if char1 in chars:
 			var dict = {relationship = relationship_data[key].status}
