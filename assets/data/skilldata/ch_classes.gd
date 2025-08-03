@@ -601,7 +601,8 @@ var effects = {
 		reset = [variables.TR_COMBAT_F],
 		req_skill = true,
 		sub_effects = ['e_instant'],
-		tags = ['class_berserker']
+		tags = ['class_berserker'],
+#		buffs = ['b_free_use']
 	},
 	
 	e_tr_druid = Effectdata.rebuild_skillvalue_template({source = 'earth', skilltype = 'spell', tag = 'damage', value = 1.2}),

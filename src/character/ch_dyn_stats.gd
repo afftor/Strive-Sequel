@@ -59,9 +59,14 @@ func fix_serialize():
 			continue
 		traits_stored.erase(tr)
 	for prof in professions.keys():
+		remove_all_temp_effects_tag('class_' + prof)
 		if classesdata.professions.has(prof): 
-			continue
-		professions.erase(prof)
+			var data = classesdata.professions[prof]
+			if data.has('persistent_effects'):
+				for eff in data.persistent_effects:
+					add_stored_effect(eff)
+		else:
+			professions.erase(prof)
 
 
 #dyn_bonuses
