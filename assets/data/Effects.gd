@@ -177,6 +177,21 @@ var effect_table = {
 			tags = ['show_in_traits', 'mansion_only']
 		},],
 	},
+	
+	e_thrall = {
+		type = 'simple',
+		descript = '',
+		conditions = [{code = 'stat', stat = 'thrall_master', value = null, operant = 'neq'}],
+		statchanges = {wits_bonus = -10, exp_gain_mod = -0.1},
+		buffs = [ 
+			{
+			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
+			description = "THRALLDESCRIPT",
+			tags = ['show_in_traits', 'mansion_only']
+		}
+		],
+		sub_effects = [],
+	},
 	#personality
 	e_person_bold = {
 		type = 'simple',
