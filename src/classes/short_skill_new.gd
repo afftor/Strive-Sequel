@@ -163,7 +163,7 @@ func setup_final():
 
 
 func hit_roll():#not implemented various chance stat rolls due to not having formulaes
-	if type == 'social':
+	if type == 'social' and !tags.has('can_miss'):
 		hit_res = variables.RES_HIT
 		return
 	var prop = chance - evade
