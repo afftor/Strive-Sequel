@@ -1899,6 +1899,8 @@ func affect_char(template, manifest = false):
 			add_sex_trait(template.trait, true)
 		'unlock_sex_trait':
 			unlock_sex_trait(template.trait)
+		'add_class':
+			unlock_class(template.class)
 		'set_tutelage':
 			xp_module.assign_to_learning(template.value)
 			input_handler.rebuild_slave_list()
