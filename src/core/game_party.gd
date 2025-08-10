@@ -57,7 +57,18 @@ func build_starting_relations(char1):
 						break
 
 
+func check_enthralled_relationship(char1, char2):
+	var ch_m1 = characters_pool.get_char_by_id(char1).get_stat('thrall_master')
+	var ch_m2 = characters_pool.get_char_by_id(char2).get_stat('thrall_master')
+	var data = relationship_data[_get_key(char1, char2)]
+	if ch_m1 == char2 or ch_m2 == char1:
+		data.status = 'lovers'
+		data.value = variables.relationship_base[data.status]
+	return false
+
+
 func check_locked_relationship(char1, char2):
+	check_enthralled_relationship(char1, char2)
 	var ch1 = characters_pool.get_char_by_id(char1).get_stat('unique')
 	var ch2 = characters_pool.get_char_by_id(char2).get_stat('unique')
 	if ch1 == null:
