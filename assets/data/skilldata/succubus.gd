@@ -8,7 +8,7 @@ var skills = {
 		ability_type = 'skill',
 		social_skill_stats = [],
 		chance = [['caster.charm_factor', '*15'], '-', ['target.wits_factor', '*10'], '_10'],
-		reqs = [],
+		reqs = [{code = 'can_add_thrall', check = true}],
 		targetreqs = [
 			{code = 'trait', trait = 'succubus', check = false},
 			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = null}
@@ -33,14 +33,14 @@ var skills = {
 		social_skill_stats = [],
 		reqs = [],
 		targetreqs = [
-			{code = 'stat', stat = 'thrall_master', operant = 'neq', value = null}
+			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}
 			],
 		effects = ['release_thrall'],
 		cost = {},
 		charges = 0,
 		cooldown = 0,
 		icon = load("res://assets/images/iconsskills/Mindread.png"),
-		tags = ['succubus'],
+		tags = ['succubus', 'refine_targetreqs'],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
 		dialogue_image = 'praise',
@@ -55,14 +55,14 @@ var skills = {
 		social_skill_stats = [],
 		reqs = [],
 		targetreqs = [
-			{code = 'stat', stat = 'thrall_master', operant = 'neq', value = null}
+			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}
 			],
 		effects = [],
 		cost = {mp = 6},
 		charges = 0,
 		cooldown = 1,
 		icon = load("res://assets/images/iconsskills/Mindread.png"),
-		tags = ['succubus'],
+		tags = ['succubus', 'refine_targetreqs'],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
 		dialogue_image = 'praise',
@@ -75,7 +75,7 @@ var skills = {
 			}
 		]
 	},
-	allure = { #currently on thrall only version cause of no feedback on chance
+	allure = { 
 		code = 'allure',
 		descript = '',
 		type = 'social',
@@ -83,14 +83,14 @@ var skills = {
 		social_skill_stats = [],
 		reqs = [],
 		targetreqs = [
-			{code = 'stat', stat = 'thrall_master', operant = 'neq', value = null}
+			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}
 			],
 		effects = [],
 		cost = {mp = 10},
 		charges = 0,
 		cooldown = 3,
 		icon = load("res://assets/images/iconsskills/Mindread.png"),
-		tags = ['succubus'],
+		tags = ['succubus', 'refine_targetreqs'],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
 		dialogue_image = 'praise',
@@ -105,7 +105,7 @@ var skills = {
 		social_skill_stats = [],
 		reqs = [],
 		targetreqs = [
-			{code = 'stat', stat = 'thrall_master', operant = 'neq', value = null},
+			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']},
 			{code = 'stat', stat = 'consent', operant = 'gte', value = 5},
 			],
 		effects = ['release_thrall', 'make_succubus'],
@@ -113,7 +113,7 @@ var skills = {
 		charges = 0,
 		cooldown = 7,
 		icon = load("res://assets/images/iconsskills/Mindread.png"),
-		tags = ['succubus'],
+		tags = ['succubus', 'refine_targetreqs'],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
 		dialogue_image = 'praise',
