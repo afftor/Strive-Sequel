@@ -1,6 +1,32 @@
 extends Reference
 
 var skills = {
+	corruptive_essence = {
+		code = 'corruptive_essence',
+		descript = '',
+		icon = null,
+		type = 'social', 
+		ability_type = 'item',
+		tags = ['positive'],
+		reqs = [],
+		targetreqs = [],
+		effects = ['make_succubus'], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		dialogue_report = '',
+		dialogue_show_repeat = false,
+		sfx = [], 
+		sound = [],
+		value = [['0']],
+		damagestat = ['no_stat']
+	},
 	enthrall = { 
 		code = 'enthrall',
 		descript = '',

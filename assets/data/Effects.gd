@@ -182,7 +182,7 @@ var effect_table = {
 		type = 'simple',
 		descript = '',
 		conditions = [{code = 'stat', stat = 'thrall_master', value = null, operant = 'neq'}],
-		statchanges = {wits_bonus = -10, exp_gain_mod = -0.1},
+		statchanges = {wits_bonus = -10, exp_gain_mod = -0.1, price_add_part = -0.75},
 		buffs = [ 
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix

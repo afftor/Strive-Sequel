@@ -300,7 +300,7 @@ var professions = {
 		altnamereqs = [{code = 'sex', operant = 'eq', value = 'male'}],
 		descript = '',
 		icon = load("res://assets/images/iconsclasses/Succubus.png"),
-		tags = [],
+		tags = ['permanent'],
 		categories = ['social', 'sexual'],
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 4},{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 3},{code = 'has_profession', profession = 'harlot', check = true}],
