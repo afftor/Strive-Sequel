@@ -202,6 +202,40 @@ var effects = {
 			}
 		]
 	},
+	demon_form = {
+		type = 'simple',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'alt_form', value = true, operant = 'eq'},
+			{code = 'stat', stat = 'race', value = 'Demon', operant = 'neq'},
+			],
+		statchanges = {wits_bonus = 10, physics_bonus = 10, damage_mod_all = 0.15},
+		buffs = [ 
+			{
+			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
+			description = "THRALLDESCRIPT",
+			tags = ['show_in_traits']
+		}
+		],
+		sub_effects = [],
+	},
+	human_form = {
+		type = 'simple',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'alt_form', value = true, operant = 'eq'},
+			{code = 'stat', stat = 'race', value = 'Demon', operant = 'eq'},
+			],
+		statchanges = {charm_bonus = 20, productivity = 0.25},
+		buffs = [ 
+			{
+			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
+			description = "THRALLDESCRIPT",
+			tags = ['show_in_traits']
+		}
+		],
+		sub_effects = [],
+	},
 }
 var atomic_effects = {}
 var buffs = {}

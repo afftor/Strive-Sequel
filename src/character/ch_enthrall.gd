@@ -2,6 +2,8 @@ extends Reference
 
 var parent: WeakRef
 
+var alt_form = false
+
 var thrall_master = null
 var thralls = []
 
