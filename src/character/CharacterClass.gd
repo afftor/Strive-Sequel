@@ -2319,3 +2319,14 @@ func try_breakdown_on_char_loss(lost_char):
 func deferred_brk_check_food():
 	if has_status('food_dislike'):
 		try_breakdown('brk_dislike_food')
+
+
+func try_breakdown_on_enthrall():
+	if xp_module.is_unavaliable(): return
+	
+	try_breakdown('brk_enthrall')
+
+func try_breakdown_on_release():
+	if xp_module.is_unavaliable(): return
+	
+	try_breakdown('brk_enthrall_release')
