@@ -47,22 +47,27 @@ var skills = {
 		value = [['0']],
 		damagestat = 'no_stat',
 	},
-	corrupt = { #currently on thrall only version cause of no feedback on chance
+	corrupt = { 
 		code = 'corrupt',
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
 		social_skill_stats = [],
 		reqs = [],
+		chance = {
+			condition = [{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}],
+			value = 100,
+			altvalue = ['caster.sexuals_factor', '*15'],
+			},
 		targetreqs = [
-			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}
+#			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}
 			],
 		effects = [],
 		cost = {mp = 6},
 		charges = 0,
 		cooldown = 1,
 		icon = load("res://assets/images/iconsskills/Mindread.png"),
-		tags = ['succubus', 'refine_targetreqs'],
+		tags = ['succubus', 'can_miss', 'refine_chance'],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
 		dialogue_image = 'praise',
