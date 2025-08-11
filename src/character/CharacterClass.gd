@@ -111,7 +111,7 @@ func get_stat_value_data(statname):
 
 
 func get_stat(statname, nobonus = false):
-	if statname in ['hp', 'mp', 'shield', 'combatgroup']:
+	if statname in ['hp', 'mp', 'shield', 'combatgroup', 'id']:
 		return get(statname)
 	if statname in ['physics','wits','charm','sexuals']:
 		if nobonus:
