@@ -903,13 +903,13 @@ func is_combatant():
 	if get_stat('slave_class') != 'slave':
 		return has_status('combatant')
 	else:
-		return training.get_trainer() != null
+		return training.get_trainer() != null or enthrall.get_thrall_master() != null
 
 func is_worker():
 	if get_stat('slave_class') != 'slave':
 		return has_status('worker')
 	else:
-		return training.get_trainer() != null
+		return training.get_trainer() != null or enthrall.get_thrall_master() != null
 
 func has_work_rule(rule):
 	if !variables.work_rules.has(rule): return false
