@@ -40,7 +40,12 @@ func show_info(quest):
 		req_label.hide()
 		reward_label.hide()
 		time_node.hide()
-		var quest_stage = scenedata.quests[quest.code].stages[quest.stage]
+		var quest_stage
+		if scenedata.quests[quest.code].stages.has(quest.stage):
+			quest_stage = scenedata.quests[quest.code].stages[quest.stage]
+		else:
+			quest_stage = scenedata.error_stage.duplicate()
+			quest_stage.descript = quest_stage.descript % [quest.code, quest.stage]
 		name_node.bbcode_text = globals.TextEncoder('[center]%s[/center]' % tr(quest_stage.name))
 		descript_node.bbcode_text = globals.TextEncoder('%s\n\n%s' % [
 			tr(scenedata.quests[quest.code].summary), tr(quest_stage.descript)

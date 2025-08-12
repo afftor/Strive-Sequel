@@ -63,7 +63,10 @@ func open():
 
 func make_active_quest_button(quest):
 	var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-	newbutton.text = scenedata.quests[quest.code].stages[quest.stage].name
+	if scenedata.quests[quest.code].stages.has(quest.stage):
+		newbutton.text = scenedata.quests[quest.code].stages[quest.stage].name
+	else:
+		newbutton.text = scenedata.error_stage.name
 	newbutton.connect("pressed", self, "show_quest_info", [quest])
 	newbutton.set_meta("quest", quest)
 	newbutton.set_meta("type", "main")

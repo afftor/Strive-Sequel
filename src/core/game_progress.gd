@@ -136,6 +136,23 @@ func fix_serialization():
 			items[num] = dict2inst(items[num])
 			if items[num].type == 'gear':
 				items[num].fix_gear()
+	
+	#old quests
+	var clear_quests = []
+	for num in range(active_quests.size()):
+		var quest = active_quests[num]
+		if !scenedata.quests.has(quest.code):
+			clear_quests.append(num)
+			continue
+		if !scenedata.quests[quest.code].stages.has(quest.stage):
+			if (scenedata.old_quest_stages.has(quest.code)
+					and scenedata.old_quest_stages[quest.code].has(quest.stage)):
+				active_quests[num].stage = scenedata.old_quest_stages[quest.code][quest.stage]
+			else:
+				print(scenedata.error_stage.descript % [quest.code, quest.stage])
+	for num in clear_quests:
+		print("Removing old quest %s" % active_quests[num].code)
+		active_quests.remove(num)
 
 
 func fix_import():#this is the most questionable fix
