@@ -7,6 +7,8 @@ var alt_form = false
 var thrall_master = null
 var thralls = []
 
+var all_thralls = []
+var thrall_points = 0
 #warnings are bad here - they are marks of _potentially_ improper rebuilding of dynamic stats
 #can't reset those stats though - cause those can be rised _in_process_ of rebuilding
 #internal
@@ -97,6 +99,9 @@ func add_thrall(chid):
 	if thralls.has(chid):
 		return
 	thralls.push_back(chid)
+	if !all_thralls.has(chid):
+		thrall_points += 1
+		all_thralls.push_back(chid)
 
 
 func cleanup():

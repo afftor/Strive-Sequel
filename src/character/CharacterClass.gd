@@ -126,6 +126,8 @@ func get_stat(statname, nobonus = false):
 		return dyn_stats.counters
 	if statname == 'alt_form':
 		return enthrall.alt_form
+	if statname == 'thrall_points':
+		return enthrall.thrall_points
 	if statname == 'thrall_master':
 		return enthrall.get_thrall_master()
 	if statname == 'thralls':

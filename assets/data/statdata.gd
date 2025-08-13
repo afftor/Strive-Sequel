@@ -92,6 +92,15 @@ var statdata = {
 		tags = ['integer'],
 		default_bonus = 'set' #no setter actually
 	},
+	thrall_points = {
+		code = 'thrall_points',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		tags = ['integer'],
+		default_bonus = 'set' #no setter actually
+	},
 	thralls_amount_max = {
 		code = 'thralls_amount_max',
 		name = '',
