@@ -209,6 +209,7 @@ var effects = {
 			{code = 'stat', stat = 'alt_form', value = true, operant = 'eq'},
 			{code = 'stat', stat = 'race', value = 'Demon', operant = 'neq'},
 			],
+		tags = ['demon_form'],
 		statchanges = {wits_bonus = 10, physics_bonus = 10, damage_mod_all = 0.15},
 		buffs = [ 
 			{
@@ -226,6 +227,7 @@ var effects = {
 			{code = 'stat', stat = 'alt_form', value = true, operant = 'eq'},
 			{code = 'stat', stat = 'race', value = 'Demon', operant = 'eq'},
 			],
+		tags = ['human_form'],
 		statchanges = {charm_bonus = 20, productivity = 0.25},
 		buffs = [ 
 			{
@@ -235,6 +237,55 @@ var effects = {
 		}
 		],
 		sub_effects = [],
+	},
+	magic_atunement = {
+		type = 'simple',
+		descript = '',
+		conditions = [],
+		tags = ['magic_atunement'],
+		statchanges = {matk = 10, mpmax_add = 25},
+		buffs = [ 
+			{
+			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
+			description = "THRALLDESCRIPT",
+			tags = ['show_in_traits']
+		}
+		],
+		sub_effects = [],
+	},
+	combat_atunement_passive = {
+		type = 'simple',
+		descript = '',
+		conditions = [],
+		tags = ['combat_atunement'],
+		statchanges = {hpmax_add_part = 0.2},
+		buffs = [ 
+			{
+			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
+			description = "THRALLDESCRIPT",
+			tags = ['show_in_traits']
+		}
+		],
+		sub_effects = [],
+	},
+	combat_atunement_trigger = {
+		type = 'base',
+		sub_effects = [
+			{
+				type = 'trigger',
+				trigger = [variables.TR_POST_TARG],
+				conditions = [
+					{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+					{type = 'skill', value = ['tags', 'has', 'damage'] },
+				],
+				req_skill = true,
+				sub_effects = [{
+					type = 'oneshot',
+					target = 'target',
+					atomic = [{type = 'stat_add', stat = 'lust', value = 3},],
+				}]
+			},
+		]
 	},
 }
 var atomic_effects = {}
