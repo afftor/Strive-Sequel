@@ -145,16 +145,16 @@ func setup_target(t):
 
 func setup_final():
 	get_from_template('chance')
-	if typeof(chance) == TYPE_ARRAY:
+	if chance is Array or chance is Dictionary:
 		chance = input_handler.calculate_number_from_string_array(chance, caster, target)
 	get_from_template('evade')
-	if typeof(evade) == TYPE_ARRAY:
+	if evade is Array or evade is Dictionary:
 		evade = input_handler.calculate_number_from_string_array(evade, caster, target)
 	get_from_template('armor_p')
-	if typeof(armor_p) == TYPE_ARRAY:
+	if armor_p is Array or armor_p is Dictionary:
 		armor_p = input_handler.calculate_number_from_string_array(armor_p, caster, target)
 	get_from_template('critchance')
-	if typeof(critchance) == TYPE_ARRAY:
+	if critchance is Array or critchance is Dictionary:
 		critchance = input_handler.calculate_number_from_string_array(critchance, caster, target)
 	if target == null or caster.combatgroup == target.combatgroup:
 		critchance = 0

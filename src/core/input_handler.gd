@@ -819,6 +819,7 @@ func string_to_math(value = 0, string = ''):
 		'/':value /= modvalue
 		'_':value = max(value, modvalue)
 		'^':value = min(value, modvalue)
+		_: value = string
 	return value
 
 
