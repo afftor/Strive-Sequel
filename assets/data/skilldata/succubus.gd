@@ -167,7 +167,7 @@ var effects = {
 				type = 'oneshot',
 				target = 'target',
 				args = {value = {obj = 'caster', func = 'get', arg = 'id'}},
-				atomic = [{type = 'set_stat', stat = 'thrall_master', value = ['arg', 'value']}],
+				atomic = [{type = 'stat_set', stat = 'thrall_master', value = ['parent_args', 'value']}],
 			}
 		]
 	},
@@ -184,7 +184,7 @@ var effects = {
 			{
 				type = 'oneshot',
 				target = 'target',
-				atomic = [{type = 'set_stat', stat = 'thrall_master', value = null}],
+				atomic = [{type = 'stat_set', stat = 'thrall_master', value = null}],
 			}
 		]
 	},
