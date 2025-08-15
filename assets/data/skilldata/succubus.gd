@@ -214,7 +214,7 @@ var effects = {
 		buffs = [ 
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "THRALLDESCRIPT",
+			description = "DEMONFORMDESCRIPT",
 			tags = ['show_in_traits']
 		}
 		],
@@ -232,7 +232,7 @@ var effects = {
 		buffs = [ 
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "THRALLDESCRIPT",
+			description = "HUMANFORMDESCRIPT",
 			tags = ['show_in_traits']
 		}
 		],
@@ -247,7 +247,7 @@ var effects = {
 		buffs = [ 
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "THRALLDESCRIPT",
+			description = "MAGATTUNEMENTDESCRIPT",
 			tags = ['show_in_traits']
 		}
 		],
@@ -262,7 +262,7 @@ var effects = {
 		buffs = [ 
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "THRALLDESCRIPT",
+			description = "COMBATATTUNEMENTDESCRIPT",
 			tags = ['show_in_traits']
 		}
 		],
