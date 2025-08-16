@@ -479,6 +479,8 @@ func fix_main_data():
 			i.dialogue_text = tr("DIALOGUE" +i.code.to_upper() + "TEXT")
 		if i.has('dialogue_report'):
 			i.dialogue_report = tr("DIALOGUE" + i.code.to_upper() + "REPORT")
+		if i.has('dialogue_report_failed'):
+			i.dialogue_report_failed = tr("DIALOGUE" + i.code.to_upper() + "REPORT_FAILED")
 #		if typeof(i.icon) == TYPE_STRING:
 #			i.icon = input_handler.loadimage(i.icon, 'icons')
 #		#type fix
