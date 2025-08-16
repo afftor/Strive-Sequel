@@ -326,7 +326,7 @@ func use_social_skill(s_code, target, item):
 		else:
 			data.image = 'noevent'
 		if target != null: text = target.translate(text.replace("[target", "["))
-		
+		data.text = text
 		if template.dialogue_show_repeat == true:
 			data.options.append({code ='repeat', text = tr('DIALOGUEREPEATACTION'), disabled = true, reqs = []})
 			if parent.get_ref().check_skill_availability(s_code, target).check == true:
