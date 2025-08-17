@@ -202,6 +202,10 @@ func set_stat(stat, value):
 		enthrall.set_thrall_master(value)
 		dyn_stats.reset_rebuild()
 		return
+	if stat == 'alt_form':
+		enthrall.set_alt_form(value)
+		dyn_stats.reset_rebuild()
+		return
 	if stat.begins_with('food_') and stat != 'food_consumption':
 		food.set(stat, value)
 		return

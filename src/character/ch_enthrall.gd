@@ -3,6 +3,9 @@ extends Reference
 var parent: WeakRef
 
 var alt_form = false
+var alt_appearance = {}
+var revert_appearance = {}
+
 
 var thrall_master = null
 var thralls = []
@@ -75,6 +78,16 @@ func set_thrall_master(chid): #not totally safe
 	thrall_master = chid #for readability sake, this line can be iside if 
 
 
+func set_alt_form(value):
+	alt_form = value
+	if alt_form:
+		gather_alt_appearance()
+		for stat in alt_appearance:
+			parent.get_ref().set_stat(stat, alt_appearance[stat])
+	else:
+		for stat in revert_appearance:
+			parent.get_ref().set_stat(stat, revert_appearance[stat])
+
 #other
 func can_add_thrall():
 	return get_thrall_count() < get_thrall_max_count()
@@ -107,3 +120,36 @@ func add_thrall(chid):
 func cleanup():
 	release_all_thralls()
 	set_thrall_master(null)
+
+
+func gather_alt_appearance():
+	match parent.get_ref().get_stat('race'):
+		'Demon':
+			revert_appearance.body_color_skin = parent.get_ref().get_stat('body_color_skin')
+			if !alt_appearance.has('body_color_skin'):
+				alt_appearance.body_color_skin = input_handler.random_from_array(['human1', 'grey2', 'human3', 'human4', 'human5'])
+			revert_appearance.horns = parent.get_ref().get_stat('horns')
+			if !alt_appearance.has('horns'):
+				alt_appearance.horns = ''
+			revert_appearance.wings = parent.get_ref().get_stat('wings')
+			if !alt_appearance.has('wings'):
+				alt_appearance.horns = ''
+			revert_appearance.tail = parent.get_ref().get_stat('tail')
+			if !alt_appearance.has('tail'):
+				alt_appearance.tail = ''
+		_:
+			revert_appearance.body_color_skin = parent.get_ref().get_stat('body_color_skin')
+			if !alt_appearance.has('body_color_skin'):
+				alt_appearance.body_color_skin = input_handler.random_from_array(['red1', 'red2', 'red3', 'red4', 'red5'])
+			if parent.get_ref().get_stat('horns') in [null, '']:
+				revert_appearance.horns = ''
+				if !alt_appearance.has('horns'):
+					alt_appearance.horns = input_handler.random_from_array(['curved','straight'])
+			if parent.get_ref().get_stat('wings') in [null, '']:
+				revert_appearance.wings = ''
+				if !alt_appearance.has('wings'):
+					alt_appearance.wings = 'demon'
+			if parent.get_ref().get_stat('tail') in [null, '']:
+				revert_appearance.tail = ''
+				if !alt_appearance.has('tail'):
+					alt_appearance.tail = 'demon'

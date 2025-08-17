@@ -307,7 +307,7 @@ var professions = {
 		combatskills = ['euphoria_apply'],
 		statchanges = {sexuals_bonus = 15, charm_bonus = 5, chg_persuasion_max = 1, trainee_amount = 1, mastery_point_magic = 1},
 		traits = ['succubus', 'trainer'],
-		skills = ['succubus_lust_skill', 'enthrall', 'release_thrall', 'corrupt', 'allure', 'turn_succubus'],#'seduce',
+		skills = ['succubus_lust_skill', 'enthrall', 'release_thrall', 'corrupt', 'allure', 'turn_succubus', 'swap_form'],#'seduce',
 		conflict_classes = [],
 	},
 	succubus_old = {

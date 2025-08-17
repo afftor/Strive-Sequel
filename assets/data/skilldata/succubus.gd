@@ -153,6 +153,31 @@ var skills = {
 		value = [['0']],
 		damagestat = 'no_stat',
 	},
+	swap_form = { 
+		code = 'swap_form',
+		descript = '',
+		type = 'social',
+		ability_type = 'skill',
+		social_skill_stats = [],
+		reqs = [],
+		targetreqs = [],
+		effects = ['swap_form'],
+		cost = {},
+		charges = 1,
+		cooldown = 1,
+		icon = load("res://assets/images/iconsskills/Mindread.png"),
+		tags = ['succubus', 'no_target'],
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		dialogue_report = '',
+		dialogue_report_failed = '',
+		dialogue_show_repeat = false,
+		dialogue_image = 'praise',
+		value = [['0']],
+		damagestat = 'no_stat',
+	},
 }
 var effects = {
 	turn_thrall = {
@@ -239,6 +264,23 @@ var effects = {
 		}
 		],
 		sub_effects = [],
+	},
+	swap_form = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		req_skill = true,
+		conditions = [],
+		args = {
+			caster = {obj = 'caster', func = 'eq'},
+			},
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'caster',
+				args = {value = {obj = 'caster', func = 'stat', stat = 'alt_form'}},
+				atomic = [{type = 'stat_set', stat = 'alt_form', value = ['not', ['parent_args', 'value']]}],
+			}
+		]
 	},
 	magic_atunement = {
 		type = 'simple',
