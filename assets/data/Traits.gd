@@ -239,16 +239,16 @@ var traits = {
 		effects = ['e_tr_hunter1'],
 		bonusstats = {}
 	},
-	berserker = {
-		code = 'berserker',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		show_in_parent_stats = true,
-		effects = ['e_tr_bers1', 'e_tr_bers2'],
-		bonusstats = {}
-	},
+#	berserker = {
+#		code = 'berserker',
+#		name = '',
+#		descript = '',
+#		visible = false,
+#		icon = null,
+#		show_in_parent_stats = true,
+#		effects = ['e_tr_bers1', 'e_tr_bers2'],
+#		bonusstats = {}
+#	},
 	druid = {
 		code = 'druid',
 		name = '',

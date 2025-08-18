@@ -976,7 +976,8 @@ var data = {
 				text = "ANASTASIA_PT2_1_1",
 				reqs = [
 
-				]
+				],
+				previous_dialogue_option = 0
 			},
 			{
 				text = "ANASTASIA_PT2_1_2",

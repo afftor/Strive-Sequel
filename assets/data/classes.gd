@@ -459,10 +459,11 @@ var professions = {
 		showupreqs = [{code = 'race', check = true, race = 'Orc'}],
 		reqs = [{code = 'stat', stat = 'physics', operant = 'gte', value = 50},{code = 'has_profession', profession = 'fighter', check = true},{code = 'race', check = true, race = 'Orc'}],
 		statchanges = {hpmax = 20, physics_bonus = 10, speed = 5, chg_strength_max = 1, mastery_warfare = 2, disabled_masteries = ['stealth','protection']},
-		traits = ['berserker'],
+		traits = [],
 		skills = [],
 		combatskills = ['revenge'],
 		conflict_classes = [],
+		persistent_effects = ['e_tr_berserk'],
 	},
 	apprentice = {
 		code = 'apprentice',
