@@ -173,9 +173,9 @@ func hit_roll():#not implemented various chance stat rolls due to not having for
 		prop = 100 #targeting ally
 	if prop < 5: 
 		prop = 5
-	if prop < randf()*100:
+	if prop < globals.rng.randi_range(0, 100):
 		hit_res = variables.RES_MISS
-	elif critchance < randf()*100:
+	elif critchance < globals.rng.randi_range(0, 100):
 		hit_res = variables.RES_HIT
 	else:
 		hit_res = variables.RES_CRIT
