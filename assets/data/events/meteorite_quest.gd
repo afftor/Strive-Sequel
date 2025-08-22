@@ -624,8 +624,8 @@ var data = {
 			{
 				code = 'material_change',
 				operant = '+',
-				material = 'adamantine',
-				value = 1
+				material = 'meteorite_iron',
+				value = 15
 			},
 			{
 				code = "remove_decision",

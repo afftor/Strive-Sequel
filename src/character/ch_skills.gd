@@ -234,7 +234,7 @@ func use_social_skill(s_code, target, item):
 		var check = parent.get_ref().check_skill_availability(s_code, target)
 		if check.check == false:
 			#input_handler.SystemMessage(check.descript)
-			globals.text_log_add('skill',check.descript)
+			globals.text_log_add('char',check.descript)
 			return
 	parent.get_ref().add_stat('metrics_socskillused', 1)
 	social_cooldowns[s_code] = template.cooldown

@@ -558,7 +558,7 @@ func select_brothel_activity():
 			
 			if sex_rules.has('pussy') && penis_check:
 				parent.get_ref().take_virginity('vaginal', 'brothel_customer')
-				bonus_gold += parent.get_ref().calculate_price() * 0.01
+				bonus_gold += parent.get_ref().calculate_price(false, true) * 0.01
 			if sex_rules.has('pussy') && penis_check:
 				var tmpchar = ResourceScripts.scriptdict.class_slave.new("test_main")
 				tmpchar.create('random', 'male', 'random')
@@ -569,10 +569,11 @@ func select_brothel_activity():
 				parent.get_ref().take_virginity('anal', 'brothel_customer')
 			
 			work_tick_values(input_handler.random_from_array(data.workstats))
+			parent.get_ref().try_rise_fame('service')
 			
 			parent.get_ref().add_stat('metrics_randompartners', globals.fastif(sex_rules.has('group'), 2, 1))
 			
-			var goldearned = highest_value.value * (1 + (0.1 * sex_rules.size())) * min(5, (1 + 0.01 * parent.get_ref().calculate_price())) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 500%
+			var goldearned = highest_value.value * (1 + (0.1 * sex_rules.size())) * min(5, (1 + 0.01 * parent.get_ref().calculate_price(false, true))) + bonus_gold# 10% percent for every toggled sex service + 1% of slave's value up to 500%
 			if parent.get_ref().get_stat('consent') < data.min_consent == true:
 				goldearned = goldearned - goldearned/3
 			
@@ -597,8 +598,9 @@ func select_brothel_activity():
 		
 		var data = tasks.gold_tasks_data[highest_value.code]
 		work_tick_values(input_handler.random_from_array(data.workstats))
+		parent.get_ref().try_rise_fame('service')
 		
-		var goldearned = highest_value.value * min(4, (1 + 0.001 * parent.get_ref().calculate_price()))
+		var goldearned = highest_value.value * min(4, (1 + 0.001 * parent.get_ref().calculate_price(false, true)))
 		
 		
 		goldearned = apply_boosters(goldearned)
@@ -624,7 +626,7 @@ func update_brothel_log(ch_name, gold, data, customer_gender = ""):
 		else:
 			text = tr("BROTHELLOGNO_SEX")  % [tr(ch_name), str(gold), tr("BROTHEL" + data.code.to_upper())]
 			#text = tr(ch_name) + " earned " + str(gold) + " gold working as " + tr("BROTHEL" + data.code.to_upper())
-		globals.text_log_add('brothel', text)
+		globals.text_log_add('work', text)
 #		var ServiceLog = globals.log_node.get_node("ServiceLog")
 #		var newfield = ServiceLog.get_node("VBoxContainer/field").duplicate()
 #		newfield.show()
@@ -682,12 +684,13 @@ func recruit_tick(task): #maybe incomplete
 	var val = 1
 	if taskdata.has('function'):
 		val = call(taskdata.function)
+	val += val * parent.get_ref().get_fame_bonus('recruit_bonus')
 	task.progress += val
 	work_tick_values(taskdata.workstat)
 	while task.progress >= task.threshold:
 		task.progress -= task.threshold
 		globals.roll_hirelings(task.task_location)
-		globals.text_log_add('work', tr("HIRELINGFOUND"))
+		globals.text_log_add('mansion', tr("HIRELINGFOUND"))
 		input_handler.PlaySound("ding")
 
 
@@ -703,7 +706,7 @@ func special_tick(task): #maybe incomplete
 		globals.common_effects(task.args)
 		ResourceScripts.game_party.clean_task(task)
 		ResourceScripts.game_party.active_tasks.erase(task)
-		globals.text_log_add('work', tr("SPECTASKCOMPLETED") + " - " + tr(task.name))
+		globals.text_log_add('mansion', tr("SPECTASKCOMPLETED") + " - " + tr(task.name))
 		input_handler.PlaySound("ding")
 
 
@@ -753,7 +756,7 @@ func work_tick():
 	
 	if !parent.get_ref().is_worker():
 		if !messages.has("refusedwork"):
-			globals.text_log_add('work', parent.get_ref().get_short_name() + ": Refused to work")
+			globals.text_log_add('char', parent.get_ref().get_short_name() + ": Refused to work")
 			messages.append("refusedwork")
 		return
 	
@@ -806,7 +809,7 @@ func work_tick():
 						ResourceScripts.game_res.materials[currenttask.code] += 1
 						ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] -= 1
 					if ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] <= 0:
-						globals.text_log_add('work', parent.get_ref().get_short_name() + ": " + "No more resources to gather.")
+						globals.text_log_add('char', parent.get_ref().get_short_name() + ": " + "No more resources to gather.")
 						remove_from_task()
 						if !ResourceScripts.game_party.active_tasks.empty():
 							for task in ResourceScripts.game_party.active_tasks:

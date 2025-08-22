@@ -155,7 +155,11 @@ func _ready():
 	input_handler.connect("LocationSlavesUpdate", self, 'build_location_group')
 	input_handler.connect("survival_advance", self, 'build_levels')
 	globals.connecttexttooltip($LocationGui/MapPanel/Stamina, tr("TOOLTIPSTAMINADUNGEON"))
-	
+	input_handler.connect("clear_cashed", self, 'clear_cashed')
+
+
+func clear_cashed():
+	active_location = null
 
 
 func open_journal():
@@ -1047,6 +1051,21 @@ func move_to_room(room_id = null):
 		build_location_description()
 		globals.start_fixed_event('event_dungeon_complete_loot_' + active_location.difficulty)
 		globals.check_events('complete_location')
+		#fame
+		var char_group = active_location.group.values()
+		for i in range(char_group.size()):
+			if characters_pool.get_char_by_id(char_group[i]).is_master():
+				char_group.remove(i)
+				break
+		if !char_group.empty():
+			var char_num = 1
+			if char_group.size() > 1 and randf() <= 0.5:
+				char_num = 2
+			for i in range(char_num):
+				var arr_id = randi() % char_group.size()
+				var chara = characters_pool.get_char_by_id(char_group[arr_id])
+				char_group.remove(arr_id)
+				chara.try_rise_fame('dung_boss')
 	if data.type in ['event', 'combat', 'combat_boss']:
 		data.type = 'empty'
 	update_map()

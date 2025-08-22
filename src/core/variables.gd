@@ -592,3 +592,86 @@ var breakdown_info = {
 	brk_enthrall = {chance = 0.1, text = "BREAKDOWN_ENTHRALL"},
 	brk_enthrall_release = {chance = 0.5, text = "BREAKDOWN_ENTHRALLRELEASE"},
 }
+
+const base_stat_upg_price = 100
+const stat_upg_unique_bonus = 0.2
+var race_stat_upg_bonuses = {
+	common = 0.0,
+	uncommon = 0.25,
+	rare = 0.4,
+	monster = 0.5,
+	top = 1.0
+}
+var race_stat_upg_bonus_priority = ['top', 'monster', 'rare', 'uncommon', 'common']
+var level_stat_upg_bonuses = {
+	2 : 0.2,
+	3 : 0.4,
+	4 : 0.6,
+	5 : 0.8,
+	6 : 1.0,
+}
+
+var fame_tiers = {
+	0 : {
+		name = "FAME0_NAME",
+		desc = "FAME0_DESC",
+		price_bonus = 0.0,
+		upkeep = 5
+	},
+	1 : {
+		name = "FAME1_NAME",
+		desc = "FAME1_DESC",
+		price_bonus = 0.15,
+		upkeep = 15
+	},
+	2 : {
+		name = "FAME2_NAME",
+		desc = "FAME2_DESC",
+		price_bonus = 0.25,
+		upkeep = 30,
+		loyalty_bonus = 0.1
+	},
+	3 : {
+		name = "FAME3_NAME",
+		desc = "FAME3_DESC",
+		price_bonus = 0.4,
+		upkeep = 60,
+		loyalty_bonus = 0.2,
+		recruit_bonus = 0.1
+	},
+	4 : {
+		name = "FAME4_NAME",
+		desc = "FAME4_DESC",
+		price_bonus = 0.6,
+		upkeep = 80,
+		loyalty_bonus = 0.3,
+		recruit_bonus = 0.25
+	},
+	5 : {
+		name = "FAME5_NAME",
+		desc = "FAME5_DESC",
+		price_bonus = 0.75,
+		upkeep = 125,
+		loyalty_bonus = 0.4,
+		recruit_bonus = 0.5
+	},
+	6 : {
+		name = "FAME6_NAME",
+		desc = "FAME6_DESC",
+		price_bonus = 0.75,
+		upkeep = 175,
+		loyalty_bonus = 0.5,
+		recruit_bonus = 0.75
+	}
+}
+const fame_degrade_time = 7
+var fame_rise_events = {#and max fame
+	service = 2,
+	dung_boss = 3,
+	craft_epic = 3,
+	craft_legend = 4,
+	arena_win = 4,
+	arena_win_inrow = 5,
+	story = 6
+}
+const fame_rise_chance_service = 0.05

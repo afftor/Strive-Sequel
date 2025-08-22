@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.11.1e'
+const gameversion = '0.12.0'
 
 #time
 signal hour_tick
@@ -252,8 +252,8 @@ func CreateGearItemCraft(item, parts, person, newname = null):
 	return newitem
 
 
-func CreateGearItemLoot(item, parts, newname = null):
-	var diffdata = {boost = 0, prof = false}
+func CreateGearItemLoot(item, parts, newname = null, no_enchant = false):
+	var diffdata = {boost = 0, prof = false, no_enchant = no_enchant}
 	match char_roll_data.diff:
 		'easy':
 			diffdata.boost = 2
@@ -844,6 +844,7 @@ func LoadGame(filename):
 #	input_handler.CloseableWindowsArray.clear()
 	gui_controller.revert_scenes_data()
 	ResourceScripts.revert_gamestate()
+	input_handler.emit_signal("clear_cashed")
 	
 	file.open(variables.userfolder+'saves/'+ filename + '.sav', File.READ)
 	var savedict = parse_json(file.get_as_text())
@@ -855,8 +856,6 @@ func LoadGame(filename):
 			savedict.game_world.areas.plains.factions[faction]["bonus_actions"] = worlddata.factiondata[faction].bonus_actions
 	
 #	state.deserialize(savedict)
-	input_handler.active_character = null
-	input_handler.interacted_character = null
 	effects_pool.deserialize(savedict.effpool)
 	characters_pool.deserialize(savedict.charpool)
 	for p in ResourceScripts.gamestate:
@@ -918,6 +917,7 @@ func ImportGame(filename):
 #	input_handler.CloseableWindowsArray.clear()
 	ResourceScripts.revert_gamestate()
 	gui_controller.revert_scenes_data()
+	input_handler.emit_signal("clear_cashed")
 
 	file.open(variables.userfolder+'saves/'+ filename + '.sav', File.READ)
 	var savedict = parse_json(file.get_as_text())
@@ -1400,9 +1400,9 @@ func StartCombat(encounter = null):
 		if data.has('hpmod'):
 			args.hpmod = data.hpmod
 	
-	if ResourceScripts.game_globals.skip_combat == true:
-		input_handler.finish_combat()
-		return
+#	if ResourceScripts.game_globals.skip_combat == true:
+#		input_handler.finish_combat()
+#		return
 	
 	if encounter == null:
 		StartAreaCombat()
@@ -1835,10 +1835,10 @@ func common_effects(effects):
 		match i.code:
 			'money_change':
 				ResourceScripts.game_res.update_money(i.operant, i.value)
-				text_log_add('money', "Gold: %s%s " % [i.operant, i.value])
+				text_log_add('mansion', "Gold: %s%s " % [i.operant, i.value])
 			'material_change':
 				ResourceScripts.game_res.update_materials(i.operant, i.material, i.value)
-				text_log_add("materials", "%s %s %s" % [
+				text_log_add("mansion", "%s %s %s" % [
 					Items.materiallist[i.material].name, i.operant, i.value])
 			'make_story_character':
 				if ResourceScripts.game_party.get_unique_slave(i.value.to_lower()) != null:
@@ -2078,7 +2078,7 @@ func common_effects(effects):
 					if k.code == i.value:
 						quest_exists = true
 						k.stage = i.stage
-						text_log_add("quests", "Quest Updated: " + tr(scenedata.quests[k.code].stages[k.stage].name) + ". ")
+						text_log_add("quest", "Quest Updated: " + tr(scenedata.quests[k.code].stages[k.stage].name) + ". ")
 						var args = {}
 						args["label"] = "Quest Updated"
 						args["info"] =  tr(scenedata.quests[k.code].stages[k.stage].name)
@@ -2086,7 +2086,7 @@ func common_effects(effects):
 						input_handler.play_animation("quest", args)
 				if quest_exists == false:
 					ResourceScripts.game_progress.active_quests.append({code = i.value, stage = i.stage})
-					text_log_add("quests", "Quest Received: " + tr(scenedata.quests[i.value].stages[i.stage].name) + ". ")
+					text_log_add("quest", "Quest Received: " + tr(scenedata.quests[i.value].stages[i.stage].name) + ". ")
 					var args = {}
 					args["label"] = "Quest Received"
 					args["info"] = tr(scenedata.quests[i.value].stages[i.stage].name)
@@ -2096,7 +2096,7 @@ func common_effects(effects):
 				for k in ResourceScripts.game_progress.active_quests:
 					if k.code == i.value:
 						ResourceScripts.game_progress.active_quests.erase(k)
-						text_log_add("quests","Quest Completed: " + tr(scenedata.quests[k.code].stages[k.stage].name) + ". ")
+						text_log_add("quest","Quest Completed: " + tr(scenedata.quests[k.code].stages[k.stage].name) + ". ")
 						
 						var args = {}
 						args["label"] = "Quest Completed"
@@ -2482,6 +2482,8 @@ func common_effects(effects):
 			'try_breakdown_scene_characters':
 				for chara in input_handler.scene_characters:
 					chara.try_breakdown(i.value)
+			'check_masters_story_fame':
+				ResourceScripts.game_party.check_masters_story_fame()
 
 func after_wedding_event(character):
 	if character == null:

@@ -1,3 +1,34 @@
+0.12.0
+Added Act 4 intro
+Added new Fame stat and system:
+	Characters will earn fame which will affect their wage and performance in certain places
+	Added new items which block Fame growth
+Added new minor trainings
+Added new breakdown event triggers
+Added upgrade to allow race crossbreeding
+Added combat animations for physical skills
+Added new sidequestline to access dwarven capital before act 3
+Added small bonus event to the tower of dreams
+Collars now increase resistance drop speed instead of training bonuses
+UI
+Optimized turn log menu, character changes are also displaced there now
+Optimized character details&training menu
+Added quick enslave option to dungeon recruits
+Added option to recolor collars
+Balance
+Earth magic T2 replaced acid bomb with impale (new spell)
+Percentage heals no longer benefit from heal bonuses
+Skipped fights will play win animation faster
+Disintegrate now deals less damage but deals bonus damage to non-living enemies
+Bugs
+Fixed a mostly cosmetic issue with console errors after reloading the game
+Fixed some sequences not working properly
+Fixed some shrines giving out wrong rewards
+Fixed some combat statuses not working correctly
+Fixed characters recruited in villages having wrong type
+Fixed skillbook not properly saving its setups in some cases
+Fixed silk not being properly unlocked and used for item generation
+0.11.1e
 Improved lategame performance slightly
 Fixed basic mana values being incorrect
 Fixed multiple mistakes in Ana's quest

@@ -796,7 +796,7 @@ func test_mode():
 				{code = 'make_story_character', value = 'Aire'},
 				{code = 'make_story_character', value = 'Jean'},
 				{code = 'make_story_character', value = 'Zephyra'},
-				{code = 'make_story_character', value = 'Anastasia'},
+				{code = 'make_story_character', value = 'Amelia'},
 				{code = 'make_story_character', value = 'Kuro'},
 				{code = 'make_story_character', value = 'Lilia'},
 				{code = 'affect_unique_character', name = 'lilia', type = 'turn_into_unique', value = 'Lilith'},
@@ -811,7 +811,8 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("daisy_dress", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("daisy_dress_lewd", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("mask", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("foxmask", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("service_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("cali_heirloom_active", {})) #base level
 		var titem = globals.CreateGearItem("cali_heirloom_test", {})

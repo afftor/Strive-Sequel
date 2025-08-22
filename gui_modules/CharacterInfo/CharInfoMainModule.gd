@@ -19,7 +19,6 @@ func _ready():
 #	update()
 	$TalkButton.connect("pressed", self, 'talk', [])
 	$RemoveButton.connect('pressed',self,'remove',[])
-	$SlaveBodyModule/StatsButton.connect('pressed', self, 'displaymetrics',[])
 	input_handler.connect('PortraitUpdate', self, 'update')
 
 var unique_dict = { #shows available talk characters. Scenes go in order from higher priority and reqs to lower. No scenes isn't supported yet
@@ -173,7 +172,6 @@ func update():
 	BodyModule.update()
 	ClassesModule.update()
 	SlaveSiblingsModule.update()
-	$SlaveBodyModule/StatsPanel.hide()
 	$TalkButton.visible = unique_dict.has(active_person.get_stat('unique'))
 	$RemoveButton.visible = !active_person.is_master()
 	if char_module_state == "siblings" or char_module_state == "skills":
@@ -211,7 +209,6 @@ func match_state():
 			$TalkButton.show()
 #			$SlaveBodyModule/Body.show()
 			$SlaveBodyModule.body_show(true)
-			$SlaveBodyModule/StatsButton.show()
 			$SlaveBodyModule/buffscontainer.show()
 			$SlaveBodyModule.get_stylebox("panel", "").modulate_color.a = 255
 		"skills":
@@ -225,7 +222,6 @@ func match_state():
 #			ClassesModule.open(active_person)
 #			$SlaveBodyModule/Body.hide()
 			$SlaveBodyModule.body_show(false)
-			$SlaveBodyModule/StatsButton.hide()
 			$SlaveBodyModule/buffscontainer.hide()
 			SummaryModule.get_node("GridContainer/SkillsButton").set_pressed(true)
 			$SlaveBodyModule/buffscontainer.hide()
@@ -242,7 +238,6 @@ func match_state():
 			$TalkButton.show()
 #			$SlaveBodyModule/Body.show()
 			$SlaveBodyModule.body_show(true)
-			$SlaveBodyModule/StatsButton.show()
 			$SlaveBodyModule/buffscontainer.show() #or hide? it's all good @Sphinx
 			$SlaveBodyModule.get_stylebox("panel", "").modulate_color.a = 255
 		"gear":
@@ -257,7 +252,6 @@ func match_state():
 			$SlaveBodyModule/buffscontainer.hide()
 #			$SlaveBodyModule/Body.hide()
 			$SlaveBodyModule.body_show(false)
-			$SlaveBodyModule/StatsButton.hide()
 			$SlaveBodyModule/buffscontainer.hide()
 			$SlaveBodyModule.get_stylebox("panel", "").modulate_color.a = 0
 			SlaveInfo.hide()
@@ -289,78 +283,5 @@ func open_gear():
 	gui_controller.inventory.set_active_hero(active_person)
 	gui_controller.emit_signal("screen_changed")
 
-
-var sources = {
-	brothel_customer = tr("METRICS_SOURCE_BROTHEL_CUSTOMER"),
-	guild_trainer = tr("METRICS_SOURCE_GUILD_TRAINER") ,
-	william = tr("METRICS_SOURCE_WILLIAM"),
-	unknown = tr("METRICS_SOURCE_UNKNOWN"),
-}
-
-func displaymetrics():
-	$SlaveBodyModule/StatsPanel.visible = !$SlaveBodyModule/StatsPanel.visible
-	
-	if !$SlaveBodyModule/StatsPanel.visible: return
-	var text = ""
-	var person = active_person
-	if person.is_players_character:
-		if person.is_master():
-			text += tr("METRICS_BASE_YOU") % ResourceScripts.game_globals.get_week_and_day_custom(ResourceScripts.game_globals.date - person.get_stat('metrics_ownership'))
-		else:
-			text += tr("METRICS_BASE") % ResourceScripts.game_globals.get_week_and_day_custom(ResourceScripts.game_globals.date - person.get_stat('metrics_ownership'))
-	if person.is_master() == true:
-		text += "\n\n" + tr("METRICS_DATES_MASTER") % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')] + " "
-	else:
-		text += "\n\n" + tr("METRICS_DATES") % [person.get_stat('metrics_dates'), person.get_stat('metrics_sex')] + " "
-	var partner_number = person.get_stat('metrics_partners').size() + person.get_stat('metrics_randompartners')
-	var no_sex = false
-	if partner_number == 0:
-		text += tr("METRICS_PARTNERS_NONE")
-		no_sex = true
-	elif partner_number == 1:
-		text += tr("METRICS_PARTNERS_ONE")
-	else:
-		text += tr("METRICS_PARTNERS") % partner_number
-	
-	if no_sex == false:
-		text += "\n"
-		if person.get_stat('has_womb') == true:
-			text += tr("METRICS_IMPREGS") % [person.get_stat('metrics_pregnancy'), person.get_stat('metrics_birth')]
-		if person.get_stat('penis_size') != '':
-			text += tr("METRICS_PREGNANCIES") % [person.get_stat('metrics_impregnation')]
-	
-	
-		
-		
-		if person.get_stat('vaginal_virgin_lost') != null:
-			if person.get_stat('vaginal_virgin_lost').begins_with('hid'):
-				var source = ResourceScripts.game_party.relativesdata[person.get_stat('vaginal_virgin_lost')]
-				
-				if source.id == ResourceScripts.game_party.get_master().id:
-					text += "\n" + tr("METRICS_VIRGINITY_YOU")
-				else:
-					text += "\n" +  tr("METRICS_VIRGINITY_OTHER") % source.name# + source.name + "}. "
-			else:
-				text += "\n" + tr("METRICS_VIRGINITY_OTHER") % sources[person.get_stat('vaginal_virgin_lost')]
-		
-		if person.get_stat('anal_virgin_lost') != null:
-			if person.get_stat('anal_virgin_lost').begins_with('hid'):
-				var source = ResourceScripts.game_party.relativesdata[person.get_stat('anal_virgin_lost')]
-				
-				if source.id == ResourceScripts.game_party.get_master().id:
-					text += "\n" + tr("METRICS_ANAL_VIRGINITY_YOU")
-				else:
-					text += "\n" + tr("METRICS_ANAL_VIRGINITY_OTHER") % source.name 
-			else:
-				text += "\n"+ tr("METRICS_ANAL_VIRGINITY_OTHER") % sources[person.get_stat('anal_virgin_lost')] 
-	
-	
-	text += '\n\n' + tr("METRICS_EARNED") % [person.get_stat("metrics_goldearn"), person.get_stat("metrics_foodearn"),person.get_stat("metrics_materialearn")]
-	
-	text += "\n\n" + tr("METRICS_COMBAT") % [person.get_stat("metrics_win"), person.get_stat("metrics_kills"),]
-	
-	text = person.translate(globals.TextEncoder(text))
-	
-	$SlaveBodyModule/StatsPanel/RichTextLabel.bbcode_text = text
 
 

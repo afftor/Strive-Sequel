@@ -26,6 +26,14 @@ func _get_key(char1, char2):
 func _get_data(char1, char2):
 	var key = _get_key(char1, char2)
 	if !relationship_data.has(key):
+		var ch_1 = characters_pool.get_char_by_id(char1)
+		var ch_2 = characters_pool.get_char_by_id(char2)
+		if ch_1 == null or ch_2 == null:
+			return {status = null, value = -100}
+		if !ch_1.is_active or !ch_2.is_active:
+			return {status = null, value = -100}
+		if !ch_1.is_players_character or !ch_2.is_players_character:
+			return {status = null, value = -100}
 		add_relationship_value(char1, char2)
 		if !relationship_data.has(key):
 			return null#relationships with master
@@ -314,6 +322,9 @@ func check_relationship_status(char1, char2, status):
 		return false
 	if characters[char2].is_master():
 		return false
+	var key = _get_key(char1, char2)
+	if !relationship_data.has(key):
+		return false
 	return _get_data(char1, char2).status == status
 
 func check_if_relationship_in(char1, char2, status_arr):
@@ -327,8 +338,16 @@ func find_all_relationship(char1):
 	var cleanup = []
 	for key in relationship_data.keys():
 		var chars = key.split("_")
-		if characters_pool.get_char_by_id(chars[0]) == null or characters_pool.get_char_by_id(chars[1]) == null:
+		var ch_1 = characters_pool.get_char_by_id(chars[0])
+		var ch_2 = characters_pool.get_char_by_id(chars[1])
+		if ch_1 == null or ch_2 == null:
 			cleanup.push_back(key)
+			continue
+		if !ch_1.is_active or !ch_2.is_active:
+			cleanup.push_back(key)
+			continue
+		if !ch_1.is_players_character or !ch_2.is_players_character:
+#			cleanup.push_back(key)
 			continue
 		if char1 in chars:
 			var dict = {relationship = relationship_data[key].status}
@@ -391,6 +410,7 @@ func advance_day():
 		i.cooldown_tick()
 		i.process_event(variables.TR_DAY)
 		i.quest_day_tick()
+		i.fame_degrade_tick()
 	relationship_decay()
 	for i in range(character_order.size() - 1):
 		if characters[character_order[i]].is_master() == true:
@@ -437,6 +457,7 @@ func fix_serialization_postload():
 		babies[p].fix_serialization_postload()
 	for p in characters_pool.characters:
 		characters_pool.characters[p].fix_serialization_postload()
+	check_masters_story_fame(false)#better leave it here till game finished, as story conditions may vary
 
 
 func fix_import():
@@ -464,7 +485,7 @@ func add_slave(person, child = false):
 		ResourceScripts.game_world.easter_egg_characters_acquired.append(person.get_stat('unique'))
 	person.fill_masternoun()
 	person.set_stat('metrics_ownership', ResourceScripts.game_globals.get_date()[0])
-	globals.text_log_add("slaves","New character acquired: " + person.get_short_name() + ". ")
+	globals.text_log_add("char","New character acquired: " + person.get_short_name() + ". ")
 	globals.emit_signal("slave_added")
 
 
@@ -504,12 +525,15 @@ func subtract_taxes():
 			continue
 		if !ch.get_stat('slave_class') == 'servant':
 			continue
-		var tres = ch.calculate_price()
-		tres *= 1.0 - 0.05 * ch.get_stat('tame_factor')
-		if ch.get_stat('personality') == 'shy':
-			tres *= 0.9
-		tax += tres
-	ResourceScripts.game_res.money -= int (3 * tax / 100)
+		#old math
+#		var tres = ch.calculate_price()
+#		tres *= 1.0 - 0.05 * ch.get_stat('tame_factor')
+#		if ch.get_stat('personality') == 'shy':
+#			tres *= 0.9
+#		tax += tres
+		tax += ch.get_upkeep()
+#	ResourceScripts.game_res.money -= int (3 * tax / 100)#old math
+	ResourceScripts.game_res.money -= tax
 
 #arguable here
 func update_global_cooldowns():
@@ -908,3 +932,20 @@ func check_breakdown_on_char_loss(lost_char):
 	for ch in characters.values():
 		if ch.id == lost_char.id: continue
 		ch.try_breakdown_on_char_loss(lost_char)
+
+func check_masters_story_fame(manifest = true):
+	var fame = 1
+	if globals.valuecheck({type = 'decision', value = 'act3_finish', check = true}):
+		fame = 5
+	elif globals.valuecheck({type = 'decision', value = 'act1_finish', check = true}):
+		fame = 4
+	elif globals.valuecheck({type = "quest_completed", name = "divine_symbol_quest", check = true}):
+		fame = 3
+	elif globals.valuecheck({type = "quest_completed", name = "election_global_quest", check = true}):
+		fame = 2
+	
+	var chara = get_master()
+	chara.set_stat("fame", fame)
+	if manifest:
+		chara.log_me(chara.translate(tr("FAME_RISE_MANIFEST")) % tr(chara.get_fame_bonus('name')))
+

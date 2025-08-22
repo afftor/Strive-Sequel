@@ -1212,7 +1212,12 @@ var effect_table = {
 		type = 'oneshot',
 		target = 'skill',
 		atomic = [{type = 'setup_instant'}],
-	}
+	},
+	
+	e_no_fame = {
+		type = 'simple',
+		tags = ['no_fame'],
+	},
 };
 
 var atomic = {

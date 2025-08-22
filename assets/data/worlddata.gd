@@ -30,7 +30,7 @@ var lands = {
 		capital_background_noise = 'aliron_noise',
 		capital_background_music = 'wimborn',
 		capital_name = "Aliron",
-		capital_code = 'aliron'
+		capital_code = 'aliron',
 	},
 	forests = {
 		code = 'forests',
@@ -103,6 +103,7 @@ var lands = {
 		capital_dynamic_background = 'empire',
 #		capital_background_noise = '',
 		capital_background_music = 'empire_capital',
+		preplanned_capital_events = ['emp_city_enter_0']
 	},
 	seas = {
 		code = 'seas',
@@ -230,6 +231,7 @@ var factiondata = {
 			traits = ['training_s_combat','training_s_working'],
 			slavenumber = [2, 2],
 			no_traits = ['whimp','pacifist','coward'],
+			fame = [0, 2]
 			}
 		],
 	},
@@ -266,6 +268,7 @@ var factiondata = {
 			slavenumber = [2,2],
 			traits = ['training_s_combat','training_s_working'],
 			no_traits = ['whimp','m_inept','coward'],
+			fame = [0, 2]
 			}
 		],
 	},
@@ -314,6 +317,7 @@ var factiondata = {
 			slavenumber = [2,2],
 			traits = ['training_s_combat','training_s_working'],
 			no_traits = ['crude','blundering','inept','clumsy'],
+			fame = [0, 2]
 			}
 		],
 	},
@@ -350,6 +354,7 @@ var factiondata = {
 			slavenumber = [2,3],
 			traits = ['training_s_combat','training_s_working','training_s_sexservice'],
 			no_traits = ['chaste','frigid'],
+			fame = [0, 2]
 			}
 		],
 	},
@@ -1208,10 +1213,24 @@ var fixed_location_options = { #override serialized data
 	],
 	
 	empire_capital = [
-		
+		{
+			text = tr("EMPIRE_CAPITAL1"), 
+			reqs = [{type = 'active_quest_stage', value = 'act_4_capital', stage = 'ceremony', state = true}], 
+			args = [{code = 'start_event', data = 'emp_ceremony_1', args = []}]
+		},
+		{
+			text = tr("EMPIRE_CAPITAL2"), 
+			reqs = [{type = 'event_seen', check = false, value = 'emp_erdyna_intro_1'},], 
+			args = [{code = 'start_event', data = 'emp_erdyna_intro_1', args = []}]
+		},
+		{
+			text = tr("ARENA_NAME"), 
+			reqs = [{type = 'active_quest_stage', value = 'act_4_capital', stage = 'arena', state = true}], 
+			args = [{code = 'start_event', data = 'emp_arena_1', args = []}]
+		},
 		{
 			text = tr('ARENA_NAME'),
-			reqs = [],
+			reqs = [{type = 'quest_completed', name = 'act_4_capital', check = true}],
 			args = [{code = 'open_arena'}]
 		},
 		

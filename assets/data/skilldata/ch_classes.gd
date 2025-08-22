@@ -20,7 +20,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'buff', target = 'target', period = 'predamage'}],
+		sfx = [{code = 'command', target = 'target', period = 'predamage'}],
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -192,7 +192,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [], 
+		sfx = [{code = 'blood_magic', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = [['caster.hp','*0.1'],['caster.hp','*0.3']],
 		damagestat = ['-hp', '+mp']
@@ -216,7 +216,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'normal',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'blood_explosion', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 3,
 		follow_up = 'blood_ex1' 
@@ -241,7 +241,7 @@ var skills = {
 		target_number = 'nontarget',
 		target_range = 'any',
 		damage_type = 'normal',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'blood_explosion', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.5,
 		not_final = true
@@ -265,7 +265,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'normal',
-		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'devour_spirit', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -290,8 +290,9 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'flame', target = 'target', period = 'postdamage'},
-			{code = 'debuff', target = 'target', period = 'predamage'}],
+		sfx = [
+#			{code = 'flame', target = 'target', period = 'postdamage'},
+			{code = 'righteous_fire', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.75,
 	},
@@ -314,7 +315,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'spirit_hare', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -338,7 +339,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'spirit_turtle', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -362,7 +363,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'spirit_eagle', target = 'target', period = 'predamage'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -386,7 +387,7 @@ var skills = {
 		target_number = 'line',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'hymn', target = 'target_line', period = 'windup'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -410,7 +411,7 @@ var skills = {
 		target_number = 'line',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'soothe', target = 'target_line', period = 'windup'}], 
 		sound = [],
 		value = [['0']],
 		damagestat = 'no_stat'
@@ -554,7 +555,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'weapon',
 		damage = 0,
-		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'wind_wall', target = 'target_line', period = 'windup'}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = ['0'],
 		damagestat = 'no_stat'
@@ -583,7 +584,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'dark',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'void_barrage', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.8,
 	},
@@ -600,7 +601,8 @@ var effects = {
 		reset = [variables.TR_COMBAT_F],
 		req_skill = true,
 		sub_effects = ['e_instant'],
-		tags = ['class_berserker']
+		tags = ['class_berserker'],
+#		buffs = ['b_free_use']
 	},
 	
 	e_tr_druid = Effectdata.rebuild_skillvalue_template({source = 'earth', skilltype = 'spell', tag = 'damage', value = 1.2}),

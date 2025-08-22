@@ -494,6 +494,8 @@ var bodypartsdata = {
 	skin_coverage = {
 		plant = {code = 'plant', name = '', chardescript = '', bodychanges = []},
 		scale = {code = 'scale', name = '', chardescript = '', bodychanges = []},
+		scale2 = {code = 'scale2', name = '', chardescript = '', bodychanges = []},
+		scale3 = {code = 'scale3', name = '', chardescript = '', bodychanges = []},
 		feathers = {code = 'feathers', name = '', chardescript = '', bodychanges = []},
 		fur_white = {code = 'fur_white', name = '', chardescript = '', bodychanges = [
 			{code = 'body_color_tail', value = [['white2', 1]], reqs = []},
@@ -732,7 +734,10 @@ func get_class_bonuses(newperson, classdata): #maybe there should be used the sa
 				text += str(value)
 				if data.percent:
 					text += "%"
-				text += "\n" 
+				text += "\n"
+	#if there will be new tags, that would need description, refactor this code: make it a system
+	if classdata.has('tags') and classdata.tags.has('stable_fame'):
+		text += tr('TAGSTABLE_FAME') + "\n"
 	if newperson != null:
 		text = newperson.translate(text)
 	return text
@@ -831,3 +836,16 @@ func trim_tag(text, tag, arg = null):
 	for result in regexp.search_all(text):
 		res = res.replace(result.get_string('str1'),result.get_string('str2'))
 	return res
+
+func get_fame_tier_bonus(tier):
+	var text = ''
+	var dict = variables.fame_tiers[tier]
+	if dict.has('price_bonus') and dict.price_bonus > 0.0:
+		text += "%s: {color=green|+%d%%}\n" % [tr('FAMEDESC_PRICE_BONUS'), int(dict.price_bonus * 100)]
+	if dict.has('upkeep'):
+		text += '%s: {color=yellow|%d}\n' % [tr('FAMEDESC_UPKEEP'), dict.upkeep]
+	if dict.has('loyalty_bonus'):
+		text += '%s: {color=green|+%d%%}\n' % [tr('FAMEDESC_LOYALTY_BONUS'), int(dict.loyalty_bonus * 100)]
+	if dict.has('recruit_bonus'):
+		text += '%s: {color=green|+%d%%}\n' % [tr('FAMEDESC_RECRUIT_BONUS'), int(dict.recruit_bonus * 100)]
+	return text

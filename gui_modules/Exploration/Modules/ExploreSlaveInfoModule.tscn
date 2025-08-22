@@ -155,14 +155,44 @@ align = 1
 valign = 1
 
 [node name="personality" type="Label" parent="Panel"]
-margin_left = 63.0
+margin_left = 12.0
 margin_top = 87.0
-margin_right = 242.0
-margin_bottom = 122.0
+margin_right = 293.0
+margin_bottom = 160.0
 mouse_filter = 0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "Personality:"
+text = "Personality:
+Bold"
+align = 1
+
+[node name="fame_cont" type="HBoxContainer" parent="Panel"]
+margin_left = 14.0
+margin_top = 167.0
+margin_right = 289.0
+margin_bottom = 207.0
+alignment = 1
+
+[node name="label" type="Label" parent="Panel/fame_cont"]
+margin_left = 56.0
+margin_top = 2.0
+margin_right = 125.0
+margin_bottom = 37.0
+mouse_filter = 0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Fame:"
+align = 1
+
+[node name="fame" type="Label" parent="Panel/fame_cont"]
+margin_left = 129.0
+margin_top = 2.0
+margin_right = 219.0
+margin_bottom = 37.0
+mouse_filter = 0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Nobody"
 align = 1
 
 [node name="BaseStatsPanel" type="Panel" parent="."]

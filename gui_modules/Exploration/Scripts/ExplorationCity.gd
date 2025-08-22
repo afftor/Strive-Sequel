@@ -62,6 +62,14 @@ func _ready():
 	gui_controller.windows_opened.clear()
 	var closebutton = gui_controller.add_close_button($AreaShop)
 	input_handler.connect("update_itemlist", self, 'update_sell_list')
+	input_handler.connect("clear_cashed", self, 'clear_cashed')
+
+
+func clear_cashed():
+	active_location = null
+	active_faction = null
+#	selected_location = 'aliron'
+#	selected_area = ResourceScripts.game_world.areas.plains
 
 
 func test():
@@ -1172,13 +1180,12 @@ func item_puchase_confirm(value):
 		if Items.materiallist.has(purchase_item.code):
 			ResourceScripts.game_res.set_material(purchase_item.code, '+', value)
 		elif Items.itemlist.has(purchase_item.code):
-			while value > 0:
+			for i in range(value):
 				match purchase_item.type:
 					'usable':
 						globals.AddItemToInventory(globals.CreateUsableItem(purchase_item.code))
 					'gear':
 						globals.AddItemToInventory(globals.CreateGearItemShop(purchase_item.code, {}))
-				value -= 1
 		ResourceScripts.game_res.money -= purchase_item.price * value
 		update_sell_list()
 		update_buy_list()

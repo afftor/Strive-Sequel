@@ -40,9 +40,9 @@ margin_bottom = 1065.0
 
 [node name="TalkButton" type="TextureButton" parent="."]
 margin_left = 1840.06
-margin_top = 261.204
+margin_top = 213.204
 margin_right = 1891.06
-margin_bottom = 312.204
+margin_bottom = 264.204
 hint_tooltip = "TALK_BUTTON"
 theme = ExtResource( 10 )
 texture_normal = ExtResource( 12 )
@@ -51,9 +51,9 @@ texture_hover = ExtResource( 13 )
 
 [node name="RemoveButton" type="TextureButton" parent="."]
 margin_left = 1840.06
-margin_top = 209.394
+margin_top = 161.394
 margin_right = 1891.06
-margin_bottom = 260.394
+margin_bottom = 212.394
 hint_tooltip = "REMOVE_BUTTON"
 theme = ExtResource( 10 )
 texture_normal = ExtResource( 16 )

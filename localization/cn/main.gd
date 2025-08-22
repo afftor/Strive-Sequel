@@ -585,6 +585,9 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	MATERIALADAMANTINE = "精金",
 	MATERIALADAMANTINEADJ = "精金",
 	MATERIALADAMANTINEDESCRIPT = "一种非常罕见且坚固的魔法合金。手工制作。 ",
+	MATERIALMETEORITE_IRON = """Meteorite Steel""", # MISSING TRANSLATION
+	MATERIALMETEORITE_IRONADJ = """Star""", # MISSING TRANSLATION
+	MATERIALMETEORITE_IRONDESCRIPT = """A very rare and strong magic alloy. Produced by crafting. """, # MISSING TRANSLATION
 	MATERIALBLUE_MOSS = "蓝苔",
 	MATERIALBLUE_MOSSDESCRIPT = "一种具有神奇特性的稀有植物。",
 	MATERIALSALVIA = "鼠尾草",
@@ -673,6 +676,10 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	ITEMANAL_PLUGDESCRIPT = "一块塞子形状的木头。专为后部使用而设计。 ",
 	ITEMSTRAPON = "假阳具",
 	ITEMSTRAPONDESCRIPT = "允许女孩冒充男孩，但只能在床上。 ",
+	ITEMMASK = """Mask""", # MISSING TRANSLATION
+	ITEMMASKDESCRIPT = """Hides wearer's identity. The wearer won't be recognized while it is equipped, preventing their Fame from growing. Does not apply to Master.""", # MISSING TRANSLATION
+	ITEMFOXMASK = """Fox Mask""", # MISSING TRANSLATION
+	ITEMFOXMASKDESCRIPT = """A fancier way to hide wearer's identity. The wearer won't be recognized while it is equipped, preventing their Fame from growing. Does not apply to Master.""", # MISSING TRANSLATION
 	ITEMOFFHAND_BOOK = "魔法书",
 	ITEMOFFHAND_BOOKDESCRIPT = "一件稀有而珍贵的魔法物品。它包含强大的魔法和知识，可以极大地帮助任何冒险者进行探索。",
 
@@ -1087,6 +1094,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	QUESTTASKACQ = "所需任务",
 	REQUIREMENTSARENTMET = "未满足要求",
 	NOTENOUGHLOYALTY = "不够忠诚",
+	NOTENOUGHMASTERPOINTS = """Not enough Master Points""", # MISSING TRANSLATION
 	QUESTCOMPLETEMESSAGE = "任务完成",
 	QUESTDAYSLEFT = "还剩几天",
 	QUESTLOCATION = """Quest Location""", # MISSING TRANSLATION
@@ -1467,6 +1475,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	
 	TOOLTIPLOYALTYOBEDIENCE = "Loyalty points are gained every turn based on Tame Factor. You can unlock new actions and passives with it.\n\nObedience Drain is based on Timid Factor and character training. If Obedience falls to 0 the character will attempt to escape. Unlock new options and use proper gear to reduce Obedience Drain and make it more manageble. ",
 	TOOLTIPVALUE = "Character's value means their market price. It's based on their Growth Factor, Race, Training and certain features. Higher value characters will earn more money when providing services and prostitution.",
+	TOOLTIPFAME = """Fame is charactar's renown among people. It can grow with certain actions, but also degrades with time. Character's value, servant's allowance, training and recruitment efficiency are effected by fame.""", # MISSING TRANSLATION
 	
 	SERVICEREST = "[name] will rest. Toggle [color=aqua]Rest[/color] to disable.",
 	SERVICESEXUALPENETRATIVE = "[name] will entertain clients by serving and sleeping with them if they find [him] appealing.",
@@ -1522,6 +1531,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	CAPTURETOOLTIP = "这些角色已经被你的团队发现，可以被招募到你的豪宅中，也可以像手动出售一样快速变现。如果忘记了位置，所有角色都会自动出售。",
 	CAPTURESELLTOOLTIP = "以 %d 金币快速出售此角色。这相当于向市场出售角色，但不允许您回购。 ",
 	CAPTUREADDTOOLTIP = "将此角色添加到名册中。如果您的角色总数大于可用房间数，您将无法完成回合。 ",
+	CAPTUREENSLAVETOOLTIP = """Add this character to roster as a slave instantly. You won't be able to finish turn if your total number of characters is bigger than available number of rooms. """, # MISSING TRANSLATION
 	CAPTURERECRUITTOOLTIP = "尝试招募此角色。如果您的角色总数大于可用房间数，您将无法完成回合。",
 	CAPTUREDISMISSTOOLTIP = "解散此角色",
 	
@@ -3037,6 +3047,9 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	
 	UPGRADEFARM_SLOTS = "Farm slots",
 	UPGRADEFARM_SLOTSDESCRIPT = "Provides additional slots for farm produce.",
+	UPGRADELIST_UNLOCK = """Unlock this for {color=green|%s} %s?""", # MISSING TRANSLATION
+	UPGRADELIST_UNLOCK_MP = """Master Points""", # MISSING TRANSLATION
+	UPGRADELIST_UNLOCK_GOLD = """Gold""", # MISSING TRANSLATION
 	
 	BODYPARTAGETEEN = "青少年",
 	BODYPARTAGEADULT = "成年",
@@ -15122,6 +15135,9 @@ Hotkey: 3""",
 	ARRIVED_AT_LOC_LABEL = "arrived at location",
 	RETURNED_TO_MANSION_LABEL = "returned to mansion",
 	TRAVEL_LABEL = "旅行",
+	MANSION_LABEL = """Mansion""", # MISSING TRANSLATION
+	CHAR_LABEL = """Character""", # MISSING TRANSLATION
+	QUESTS_LABEL = """Quest""", # MISSING TRANSLATION
 	RETURN_ALL_MANSION_LABEL = "全部返回豪宅",
 	TRAVELERS_LABEL = "旅行者",
 	BATTLE_GROUP_LABEL = "战斗小队",

@@ -773,7 +773,7 @@ var Skilllist = {
 		target_range = 'any',
 		damage_type = 'weapon',
 		damage = 0,
-		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'take_position', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 		value = ['0'],
 		damagestat = 'no_stat'
@@ -2068,7 +2068,7 @@ var masteries = {
 		maxlevel = 6,
 		passive = {armor = 2, hpmax = 3, damage_mod_earth = 0.03},
 		level1 = {combat_skills = ["earth_shield"], explore_skills = [], traits = [], action = []},
-		level2 = {combat_skills = ["acidbomb", "impale"], explore_skills = [], traits = [], action = []},
+		level2 = {combat_skills = ["impale"], explore_skills = [], traits = [], action = []},
 		level3 = {combat_skills = [], explore_skills = ["natures_gift"], traits = [], action = []},
 		level4 = {combat_skills = ["overgrowth"], explore_skills = [], traits = [], action = []},
 		level5 = {combat_skills = ["earthquake"], explore_skills = ['teleport'], traits = [], action = []},

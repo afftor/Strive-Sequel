@@ -174,6 +174,10 @@ var TranslationDict = {
 	SIBLINGMODULECHILDDREN = """Дети""",
 	SIBLINGMODULECURRENTCAPACITY = """Текущая емкость""",
 	SIBLINGMODULEPERSONALITY = """Личность""",
+	SIBLINGMODULEMINORTRAIN = """Minor Training""", # MISSING TRANSLATION
+	SIBLINGMODULEAVAILABLE = """Available""", # MISSING TRANSLATION
+	SIBLINGMODULEAVAILABLETOOLTIP = """Number of available minor tranings depends of Growth Factor.""", # MISSING TRANSLATION
+	MINORTRAINMAXREACHED = """Minor training max reached""", # MISSING TRANSLATION
 	SYSMESSAGEATLEAST1CHAR = """Выберите хотя бы 1 персонажа для боя.""",
 	OPERANTATLEAST = """Минимум""",
 	OPERANTATMOST = """Максимум""",
@@ -577,6 +581,9 @@ var TranslationDict = {
 	MATERIALADAMANTINE = """Адамантин""",
 	MATERIALADAMANTINEADJ = """Из адамантина""",
 	MATERIALADAMANTINEDESCRIPT = """Очень редкий и сильный магический сплав. Производится путем крафта.""",
+	MATERIALMETEORITE_IRON = """Meteorite Steel""", # MISSING TRANSLATION
+	MATERIALMETEORITE_IRONADJ = """Star""", # MISSING TRANSLATION
+	MATERIALMETEORITE_IRONDESCRIPT = """A very rare and strong magic alloy. Produced by crafting. """, # MISSING TRANSLATION
 	MATERIALBLUE_MOSS = """Синий мох""",
 	MATERIALBLUE_MOSSDESCRIPT = """Редкое растение с магическими свойствами.""",
 	MATERIALSALVIA = """Сальвия""",
@@ -687,6 +694,10 @@ var TranslationDict = {
 	ITEMANAL_PLUGDESCRIPT = """Дерево в форме пробки. Предназначен для использования сзади.""",
 	ITEMSTRAPON = """Страпон""",
 	ITEMSTRAPONDESCRIPT = """Позволяет девочкам выдавать себя за мальчиков, но только в постели.""",
+	ITEMMASK = """Mask""", # MISSING TRANSLATION
+	ITEMMASKDESCRIPT = """Hides wearer's identity. The wearer won't be recognized while it is equipped, preventing their Fame from growing. Does not apply to Master.""", # MISSING TRANSLATION
+	ITEMFOXMASK = """Fox Mask""", # MISSING TRANSLATION
+	ITEMFOXMASKDESCRIPT = """A fancier way to hide wearer's identity. The wearer won't be recognized while it is equipped, preventing their Fame from growing. Does not apply to Master.""", # MISSING TRANSLATION
 	ITEMOFFHAND_BOOK = """Магический том""",
 	ITEMOFFHAND_BOOKDESCRIPT = """Редкий и ценный магический предмет. В нем содержатся мощные заклинания и знания, которые могут существенно помочь любому искателю приключений в его путешествии.""",
 
@@ -1128,6 +1139,7 @@ Hotkey: 3""",
 	QUESTTASKACQ = """Задание получено""",
 	REQUIREMENTSARENTMET = """Требования не выполнены""",
 	NOTENOUGHLOYALTY = """Недостаточно верности""",
+	NOTENOUGHMASTERPOINTS = """Not enough Master Points""", # MISSING TRANSLATION
 	QUESTCOMPLETEMESSAGE = """Квест завершен""",
 	QUESTDAYSLEFT = """дней осталось""",
 	QUESTLOCATION = """Локация квеста""",
@@ -1297,6 +1309,7 @@ Hotkey: 3""",
 	SKILLMIMIC_ATTACK = """Липкий захват""",
 	SKILLVOID_BARRAGE = """Пустотная волна""",
 	SKILLVOID_BARRAGEDESCRIPT = """Наносит 80% МАТК в виде урона {color=yellow|Тьмой} урона 5 раз случайным целям.""",		
+	SKILLVOIDSLAM = """Void Slam""", # MISSING TRANSLATION
 	SKILLDRAW_BLOOD = """Пустить кровь""",
 	SKILLDRAW_BLOODDESCRIPT = """Нанести цели 110% ATK урона и вызывает кровотечение на 2 хода.
 Кровотечение: Теряет 10% от максимального HP за ход в виде нейтрального урона.""",
@@ -1375,6 +1388,7 @@ Hotkey: 3""",
 Разрыв: ЗАЩ уменьшена на 50%.""",
 	SKILLWIND_BLADE = """Лезвие ветра""",
 	SKILLWIND_BLADEDESCRIPT = """Наносит цели и другой случайной цели 60% от MATK как урон {color=yellow|Воздухом}.""",
+	SKILLLIGHTNING = """Lightning""", # MISSING TRANSLATION
 	SKILLIGHTNING = """Молния""",
 	SKILLLIGHTNINGDESCRIPT = """Наносит цели 250% от MATK как урон {color=yellow|Воздухом}. Имеет 50% шанс нанести 'Шок' на 2 хода.
 Шок: Урон уменьшен на 15%.""",
@@ -1702,6 +1716,7 @@ Hotkey: 3""",
 
 Утечка повиновения основана на факторе робости и обучении персонажа. Если Повиновение упадет до 0, персонаж попытается сбежать. Разблокируйте новые возможности и используйте соответствующее снаряжение, чтобы уменьшить утечку Повиновения и сделать его более управляемым.""",
 	TOOLTIPVALUE = """Стоимость персонажа означает его рыночную цену. Она зависит от фактора роста, расы, обучения и некоторых характеристик. Персонажи с более высокой стоимостью будут зарабатывать больше денег при оказании услуг и проституции.""",
+	TOOLTIPFAME = """Fame is charactar's renown among people. It can grow with certain actions, but also degrades with time. Character's value, servant's allowance, training and recruitment efficiency are effected by fame.""", # MISSING TRANSLATION
 	
 	SERVICEREST = """[name] будет отдыхать. Переключите [color=aqua]Отдых[/color] чтобы переключить на работу.""",
 	SERVICESEXUALPENETRATIVE = """[name] будет развлекать клиентов, обслуживая и ложась с ними спать, если они сочтут [him] привлекательным/ой.""",
@@ -1724,6 +1739,8 @@ Hotkey: 3""",
 	LOGLEFTTTOOLTIP = """Показывает основные события""",
 	LOGRIGHTLABEL = """Сервис""",
 	LOGRIGHTTOOLTIP = """Показывает доходы от услуг""",
+	LOGCENTERTLABEL = """Slaves""", # MISSING TRANSLATION
+	LOGCENTERTOOLTIP = """Shows character events""", # MISSING TRANSLATION
 	BROTHELLOGSEX = """%s заработал/а %s золота, выполняя %s с %s клиентами.""",
 	BROTHELLOGNO_SEX = """%s заработал/а %s золота, работая как %s.""",
 	
@@ -1736,6 +1753,7 @@ Hotkey: 3""",
 	CAPTURETOOLTIP = """Эти персонажи были найдены вашей группой и могут быть завербованы в ваш поместье или проданы за быстрые деньги, как если бы вы продавали их вручную. Если местоположение было забыто, все персонажи продаются автоматически.""",
 	CAPTURESELLTOOLTIP = """Продать этого персонажа за %d золота. Это равносильно продаже персонажа на рынке, но не позволит вам его выкупить.""",
 	CAPTUREADDTOOLTIP = """Добавить этого персонажа в список. Вы не сможете завершить ход, если общее количество персонажей больше доступного количества комнат.""",
+	CAPTUREENSLAVETOOLTIP = """Add this character to roster as a slave instantly. You won't be able to finish turn if your total number of characters is bigger than available number of rooms. """, # MISSING TRANSLATION
 	CAPTURERECRUITTOOLTIP = """Попытаться завербовать этого персонажа. Вы не сможете завершить ход, если общее количество персонажей больше доступного количества комнат.""",
 	CAPTUREDISMISSTOOLTIP = """Отпустить этого персонажа.""",
 	
@@ -2148,6 +2166,7 @@ Hotkey: 3""",
 	STATWITS_FACTOR = """Фактор мудрости""",
 	STATCHARM_FACTOR = """Фактор обаяния""",
 	STATSEXUALS_FACTOR = """Сексуальный фактор""",
+	STATTAME_FACTOR = """Tame Factor""", # MISSING TRANSLATION
 	STATAUTHORITY_FACTOR = """Фактор авторитета""",
 	STATTIMID_FACTOR = """Фактор робости""",
 	STATSLAVE_CLASS = """Тип""",
@@ -2160,6 +2179,7 @@ Hotkey: 3""",
 	STATTRAINING_LOYALTY = """Лояльность от обучения""",
 	STATTRAINING_SPIRIT = """Дух от обучения""",
 	STATRESISTANCE_RED = "Скорость падения сопротивления",
+	STATTRAINER_LOYALTY_BONUS = """Loyalty for trainee""", # MISSING TRANSLATION
 	TRAITTRAINER = """Тренер""",
 	TRAITTRAINERDESCRIPT = """Может наблюдать за рабами""",
 	STATSPIRIT = """Дух""",
@@ -2248,6 +2268,7 @@ Hotkey: 3""",
 	STATBREAKDOWN_TIME = "Период восстановления",
 	STATBREAKDOWN_TIMEDESCRIPT = "Период неработоспособности после срыва",
 	STATBREAKDOWN_CHANCE_MOD = "Вероятность срыва",
+	STATBREAKDOWN_DISABLED = """Breakdown immunity""", # MISSING TRANSLATION
 	BREAKDOWN_LFRIEND = "[name] переживает срыв из-за потери друга",
 	BREAKDOWN_LLOVER = "[name] переживает срыв из-за потери возлюбленного",
 	BREAKDOWN_LRELATIVE = "[name] переживает срыв из-за потери родственника",
@@ -2256,6 +2277,10 @@ Hotkey: 3""",
 	BREAKDOWN_GRAVEIN = "[name] переживает срыв из-за получения тяжёлой травмы",
 	BREAKDOWN_GRAVEIN_RES = "[name] переживает срыв после воскрешения и получения тяжёлой травмы",
 	BREAKDOWN_DATE = "[name] переживает срыв из-за ужасного свидания",
+	BREAKDOWN_RESET = """[name] had a breakdown due to using Oblivion potion""", # MISSING TRANSLATION
+	BREAKDOWN_SOUL = """[name] had a breakdown due to using Soul Stone""", # MISSING TRANSLATION
+	BREAKDOWN_OBLIVION = """[name] had a breakdown due to using Oblivion potion""", # MISSING TRANSLATION
+	BREAKDOWN_SHRINE = """[name] had a breakdown due to enslaving at Hybris Shrine""", # MISSING TRANSLATION
 	MASTER_POINTS = """Мастерство""",
 	TOOLTIPENERGY = """Энергия восстанавливается во время сна и требуется для выполнения задач. Когда персонаж вынужден работать без энергии, его Истощение увеличивается.""",
 	TOOLTIPFATIGUE = """Усталость возрастает со временем и рассеивается при развлечении. Если за ней не следить, она может привести к снижению производительности.""",
@@ -2920,6 +2945,26 @@ Hotkey: 3""",
 	TRAITSTURDYDESCRIPT = """+10 ЗАЩ""",
 	TRAITFRAILDESCRIPT = """-10 ЗАЩ.""",
 	TRAITSTUN_IMMUNITYDESCRIPT = "Невозможно оглушить.",
+	TRAITETIQUETTE = """Etiquette""", # MISSING TRANSLATION
+	TRAITETIQUETTEDESCRIPT = """Training in courtly etiquette for navigating high society. Characters learn proper decorum for noble gatherings, though some may choose to defy convention.""", # MISSING TRANSLATION
+	TRAITTABLE_MANNERS = """Table Manners""", # MISSING TRANSLATION
+	TRAITTABLE_MANNERSDESCRIPT = """Training in refined dining etiquette, from setting tables to eating with grace. While not always practical, it aligns characters with high-class sensibilities.""", # MISSING TRANSLATION
+	TRAITFOREIGN_DIPLOMACY = """Foreign Diplomacy""", # MISSING TRANSLATION
+	TRAITFOREIGN_DIPLOMACYDESCRIPT = """Training in the customs and traditions of foreign realms, aiding interactions with emissaries or travelers from distant lands.""", # MISSING TRANSLATION
+	TRAITLITERACY = """Literacy""", # MISSING TRANSLATION
+	TRAITLITERACYDESCRIPT = """Training in reading and comprehending texts, a rare and valuable skill that unlocks knowledge from books and scrolls.""", # MISSING TRANSLATION
+	TRAITPENMANSHIP = """Penmanship""", # MISSING TRANSLATION
+	TRAITPENMANSHIPDESCRIPT = """Training in elegant penmanship, from drafting letters to forging documents. A rare skill among commoners, it's essential for noble service.""", # MISSING TRANSLATION
+	TRAITHISTORY = """History""", # MISSING TRANSLATION
+	TRAITHISTORYDESCRIPT = """Training in the histories of noble houses, factions, and rulers, providing valuable insight during courtly intrigues.""", # MISSING TRANSLATION
+	TRAITMENTORSHIP = """Mentorship""", # MISSING TRANSLATION
+	TRAITMENTORSHIPDESCRIPT = """Training in guiding and disciplining subordinates, fostering loyalty and proper conduct. A vital skill for any mentor or overseer.""", # MISSING TRANSLATION
+	TRAITANIMAL_HANDLING = """Animal Handling""", # MISSING TRANSLATION
+	TRAITANIMAL_HANDLINGDESCRIPT = """Training in tending and commanding animals, from mounts to hunting beasts, proving useful in diverse situations.""", # MISSING TRANSLATION
+	TRAITGARDENING = """Gardening""", # MISSING TRANSLATION
+	TRAITGARDENINGDESCRIPT = """Training in cultivating and designing gardens, fostering calmness and meticulous care in both plants and character.""", # MISSING TRANSLATION
+	TRAITCOURTLY_ARMS = """Courtly Arms""", # MISSING TRANSLATION
+	TRAITCOURTLY_ARMSDESCRIPT = """Training in light swordplay and archery, embodying a knight's refined combat style. Though not a soldier's training, it offers an edge in duels and skirmishes.""", # MISSING TRANSLATION
 	TRAITLOYALTY_BASIC_SERVITUDE = """Базовое служение""",
 	TRAITLOYALTY_BASIC_SERVITUDEDESCRIPT = """{color=green|Позволяет назначать профессии}
 
@@ -3087,6 +3132,8 @@ Requires: Базовый рабский труд""",
 Поскольку [name] обладает наблюдаемой девственностью, это делает [him] более желанным для определенных людей. 
 {color=yellow|Цена продажи увеличена на 25%%}""",
 	TRAITEFFECTRIVAL = """Присутствует соперник: +5%% производительности""",
+	TRAITEFFECTFRIENDS = """Friend Present: +10%% Health Regeneration""", # MISSING TRANSLATION
+	TRAITEFFECTLOVERS = """Lover Present: +10%% Mana Regeneration""", # MISSING TRANSLATION
 	TRAITEFFECTFRIEND = """Присутствует друг: +10%% регенерации здоровья""",
 	TRAITEFFECTLOVER = """Присутствует любовник/ца: +10%% регенерации маны""",
 	TRAITEFFECTRARESTURDY = """Особый: Твердый
@@ -3197,6 +3244,7 @@ Requires: Базовый рабский труд""",
 	BUFFDESCRIPTDISTRACT = """Отвлечен: -30 скорости попадания и уклонения""",
 	BUFFDESCRIPTSILENCE = """Немота: Неможет использовать заклинания""",
 	BUFFDESCRIPTDISARM = """Обезоружен: Не может использовать способности Умений""",
+	BUFFDESCRIPTBLOODATTACK = """Blood Magic: MATK increased""", # MISSING TRANSLATION
 	BUFFDESCRIPTBANISH = """Изгнание""",
 	BUFFDESCRIPTVOID = """Пустота""",
 	BUFFDESCRIPTDEFEND = """Защита""",
@@ -3553,6 +3601,9 @@ Requires: Базовый рабский труд""",
 	
 	UPGRADEFARM_SLOTS = """Слоты для фермы""",
 	UPGRADEFARM_SLOTSDESCRIPT = """Предоставляет дополнительные места для производства на ферме""",
+	UPGRADELIST_UNLOCK = """Unlock this for {color=green|%s} %s?""", # MISSING TRANSLATION
+	UPGRADELIST_UNLOCK_MP = """Master Points""", # MISSING TRANSLATION
+	UPGRADELIST_UNLOCK_GOLD = """Gold""", # MISSING TRANSLATION
 	
 	BODYPARTAGETEEN = """подросток""",
 	BODYPARTAGEADULT = """взрослый""",
@@ -3829,6 +3880,7 @@ Requires: Базовый рабский труд""",
 	BODYPARTTAILCOWDESCRIPT = """За [his] спиной вы замечаете длинный хвост, покрытый тонким слоем меха, который заканчивается [color=aqua]пушистой кисточкой[/color].""",
 	BODYPARTTAILDEMONDESCRIPT = """[He] имеет длинный, тонкий, [color=aqua]демонический хвост[/color], заканчивающийся заостренным кончиком.""",
 	BODYPARTTAILDRAGONDESCRIPT = """За [his] спиной тянется [color=aqua]чешуйчатый хвост[/color].""",
+	BODYPARTTAILKOBOLDDESCRIPT = """Trailing somewhat behind [his] back is a [color=aqua]scaled tail[/color].""", # MISSING TRANSLATION
 	BODYPARTTAILAVIANDESCRIPT = """[He] имеет сзади [color=aqua]пернатый птичий хвост[/color].""",
 	BODYPARTTAILFISHDESCRIPT = """[His] задняя часть заканчивается длинным, гладким [color=aqua]рыбьим хвостом[/color].""",
 	BODYPARTTAILSNAKEDESCRIPT = """ """,
@@ -5960,6 +6012,7 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	STATDAMAGE_MOD_DARK = """Урон тьмой""",
 	STATDAMAGE_MOD_MIND = """Урон разуму""",
 	STATDAMAGE_MOD_MELEE = """Урон в ближнем бою""",
+	STATDAMAGE_MOD_RANGED = """Ranged Damage""", # MISSING TRANSLATION
 
 	ENEMYMANEATER_PLANT = """Растение-людоед""",
 	ENEMYCENTIPEDE = """Сороконожка""",
@@ -14877,6 +14930,7 @@ LILITH_DEMON_VOICE = """ Звук глубокого, знакомого гол�
 	ENTER_CITY_T_0 = """Подземная столица грозно нависает над вами, возвышаясь каменными воротами, создающими внушительное присутствие на подземной тропе. Пара стражников стоит на страже у входа, и, заметив ваше приближение, один из них презрительно усмехается, добавляя презрительный плевок на землю. Другой обращается к вам. 
 
 - Немедленно остановись, чужак. Любой шаг в сторону будет воспринят как враждебность, что приведет к ликвидации.""",
+	ENTER_CITY_T_0_VISIT = """— Halt immediately, outsider. Any step closer will be seen as hostile, warranting elimination.""", # MISSING TRANSLATION
 	ENTER_CITY_T_1 = """Первый стражник жестом указывает на арбалетчиков, стоящих на вершине городской стены. Вступать в перестрелку бесполезно: лучники с точностью, подобной удару молнии, могут превратить вас в игольчатую массу за считанные мгновения.
 
 - Назовитесь.""",
@@ -17124,6 +17178,13 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	ANASTASIA_QUEST_STAGE11 = "Разберитесь с защитниками форта.",
 	ANASTASIA_QUEST_STAGE12 = "Разберитесь с Рейаном",
 	ANASTASIA_QUEST_STAGE13 = "Вернуться к Дункану",
+	METEORITE_QUEST_NAME = """Meteorite Quest""", # MISSING TRANSLATION
+	METEORITE_QUEST_SUMMARY = """A star fell not too far from elven forests. Druid Lorien wants you to investigate.""", # MISSING TRANSLATION
+	METEORITE_QUEST_CHECK_OUT = """Check out fallen star""", # MISSING TRANSLATION
+	METEORITE_QUEST_RETURN_METEOR = """Get back to Lorien""", # MISSING TRANSLATION
+	METEORITE_QUEST_FIND_USE = """Find anyone who can figure out a good use for fallen star""", # MISSING TRANSLATION
+	METEORITE_QUEST_GET_INSIDE = """Find a way to get inside dwarf lands""", # MISSING TRANSLATION
+	METEORITE_QUEST_SEARCH_DURIM = """Search for Durim in dwarf capital""", # MISSING TRANSLATION
 	HARA_SCALES_QUEST_NAME = """Хара: починка весов""",
 	HARA_SCALES_QUEST_SUMMARY = """Помогите Харе починить Весы Судьбы для короля""",
 	HARA_SCALES_QUEST_SEE_HARA = """Посетить Хару в мастерской""",
@@ -18617,6 +18678,8 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	QUEST_CULT_HIDEOUT_DESC = " ",
 	QUEST_CULT_PARENTBASE_TEXT = "Основная база культа",
 	QUEST_CULT_PARENTBASE_DESC = " ",
+	QUEST_STAR_CRATER_TEXT = """Fallen star's spot""", # MISSING TRANSLATION
+	QUEST_STAR_CRATER_DESC = """""", # MISSING TRANSLATION
 	#fixed_location_options
 	
 	ALIRON1 = """Осмотреть улицы""",
@@ -18667,6 +18730,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	DWARF_CAPITAL_JEAN = """Искать Жанну""",
 	DWARF_CAPITAL_WHISKEY = """Проверить рынок""",
 	DWARF_CAPITAL_WHISKEY2 = """Посетить магазин""",
+	DWARF_CAPITAL_DURIM = """Search for Durim""", # MISSING TRANSLATION
 	INFINITEDUNGEONUNLOCK = """Темный переулок""",
 	
 	BEASTKIN_CAPITAL1 = """Найти вождя""",
@@ -18750,6 +18814,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	QUEST_OLD_GODS_TEMPLE_LOCATION = """Подойти""",
 	QUEST_WHISKY_CRASH_LOCATION = "Искать вокруг",
 	QUEST_CULT_HIDEOUT_LOCATION = "Искать нужное здание",
+	QUEST_STAR_CRATER_LOCATION = """Search around""", # MISSING TRANSLATION
 	# Missing keys
 	CURRENT_PREFERRED_FOOD_CONSUMPTION = """Текущее предпочтительное потребление продуктов питания""",
 	TOOLTIP_CLOCK1 = """Продвинуть время
@@ -18875,6 +18940,9 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	ARRIVED_AT_LOC_LABEL = """прибыл в место""",
 	RETURNED_TO_MANSION_LABEL = """вернулся в особняк""",
 	TRAVEL_LABEL = """путешествие""",
+	MANSION_LABEL = """Mansion""", # MISSING TRANSLATION
+	CHAR_LABEL = """Character""", # MISSING TRANSLATION
+	QUESTS_LABEL = """Quest""", # MISSING TRANSLATION
 	RETURN_ALL_MANSION_LABEL = """вернуть всех в особняк""",
 	TRAVELERS_LABEL = """Путешественники""",
 	BATTLE_GROUP_LABEL = """Боевая группа""",
@@ -19963,6 +20031,157 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	DIALOGUEEVENTDUNGEONCOFFIN_OPTION2 = "Отдать почести и уйти",
 	DIALOGUEEVENTDUNGEONCOFFIN_2 = """Вы поддеваете крышку клинком и с усилием открываете её, обнаружив внутри сверкающее сокровище...""",
 	DIALOGUEEVENTDUNGEONCOFFIN_3 = """Вы преклоняете колено, шепча слова уважения древним усопшим, и уходите. С пустыми руками но чистой совестью.""",
+	AMELIA_INFINITE_1 = """The air in the dreamlike tower hums with faint magic, its cracked stone walls glowing softly under shifting, dream-woven light. A familiar figure perches on a floating velvet cushion, her catlike eyes sparkling with mischief. 
+
+- Hey, what's up with you, [name]? Looking a bit grim?""", # MISSING TRANSLATION
+	AMELIA_INFINITE_1_OPTION_1 = """Amelia? What's with that look""", # MISSING TRANSLATION
+	AMELIA_INFINITE_1_OPTION_2 = """Didn't expect to see you here.""", # MISSING TRANSLATION
+	AMELIA_INFINITE_1_OPTION_3 = """Where's Alise?""", # MISSING TRANSLATION
+	AMELIA_INFINITE_2_1 = """- Amelia, huh? That's my name, right? I'm not quite the Amelia you know, though.
+
+She tilts her head, her grin sharp and teasing, tail flicking as if daring you to ask more.""", # MISSING TRANSLATION
+	AMELIA_INFINITE_2_2 = """- Ha, me neither! If I'd known you'd show up, I might've worn something a little flashier.
+
+She twirls a lock of hair, her form blurring slightly at the edges, like a figure caught in a dream""", # MISSING TRANSLATION
+	AMELIA_INFINITE_2_3 = """- Oh, come on, we're not playing that game today. I heard Alise is off at the guild, but why chase her when I'm right here?
+
+She leans closer, her voice laced with playful mockery. Despite your best attempts, the conversation doesn't make sense.""", # MISSING TRANSLATION
+	AMELIA_INFINITE_2 = """- Anyway, I've got a question for you, [name]. Do you think dreams are real?""", # MISSING TRANSLATION
+	AMELIA_INFINITE_2_OPTION_1 = """Of course not, they're just our mind's chaotic hallucinations""", # MISSING TRANSLATION
+	AMELIA_INFINITE_2_OPTION_2 = """They must be real, there's a reason we can see them.""", # MISSING TRANSLATION
+	AMELIA_INFINITE_2_OPTION_3 = """No way I can tell.""", # MISSING TRANSLATION
+	AMELIA_INFINITE_3_1 = """- Oh, really? So sure about that? Just because someone said so, you believe it? I didn't take you for the gullible type.
+
+Her laughter spills out, sharp and teasing, as she leans back, her form faintly wavering.""", # MISSING TRANSLATION
+	AMELIA_INFINITE_3_2 = """- What, you actually think that? You sound like a total lunatic!""", # MISSING TRANSLATION
+	AMELIA_INFINITE_3_3 = """- No opinion? Really? How do you even get by without a take on something so basic?
+
+She rolls her eyes, her body briefly flickering like a candle flame before snapping back into focus.""", # MISSING TRANSLATION
+	AMELIA_INFINITE_3 = """Amelia's mocking laughter echoes through the tower, light and taunting, as she glides closer—far too close. Her hands rest on your shoulders, her face inches from yours, her grin wide and unnervingly playful.
+
+- Want to hear something special? This meeting of ours… it's one of a kind, you know.""", # MISSING TRANSLATION
+	AMELIA_INFINITE_3_OPTION_1 = """*Lean for a kiss*""", # MISSING TRANSLATION
+	AMELIA_INFINITE_3_OPTION_2 = """*Push away*""", # MISSING TRANSLATION
+	AMELIA_INFINITE_4_1 = """You lean toward her, heart pounding, but just as your lips nearly meet, she dissolves into a wisp of smoke, leaving only her signature laugh echoing in the air.""", # MISSING TRANSLATION
+	AMELIA_INFINITE_4_2 = """You try to ease out of her grasp, but before you can fully pull away, she vanishes into thin air, her form unraveling like a fading dream, followed by that familiar, mocking laugh.""", # MISSING TRANSLATION
+	AMELIA_INFINITE_4 = """- All of this? Not real, you dummy.
+
+Her taunting words fade into energetic giggles, swallowed by the tower's eerie silence.""", # MISSING TRANSLATION
+	AMELIA_BONUS_OPTION = """Have you ever dyed your hair pink?""", # MISSING TRANSLATION
+	AMELIA_BONUS = """- Pink hair? Now that's a random question! I don't think it'd suit me, but if you think I'd pull it off, I might consider it... for you.
+
+She winks, her tail swishing as she makes an eye-catching move.""", # MISSING TRANSLATION
+	ELF_CAPITAL_DRUIDS_LOUNGE = """Druids' lounge""", # MISSING TRANSLATION
+	METEOR_LOUNGE_START = """Wandering through the serene streets, you stumble upon a secluded druid lounge, its entrance framed by flowering branches. A male elf druid, clad in robes of woven leaves, turns sharply at your entrance, his silver eyes wide with surprise.
+
+— An outsider in our city? I haven't seen you before. I am Lorien, current keeper of this grove's secrets, at least officially so. 
+
+You explain that you've only been exploring surroundings but as you prepare to turn away he stops you.
+
+— Hold on. I have a task for someone like you. Pardon my lack of manners, I'm not familiar with foreign customs.""", # MISSING TRANSLATION
+	METEOR_LOUNGE_REVISIT = """Once again you enter Druid's lounge finding Lorien there.
+
+— You again. Ready to take on the important task I want to entrust to you?""", # MISSING TRANSLATION
+	METEOR_LOUNGE_START_OPT_WHAT = """What is it?""", # MISSING TRANSLATION
+	METEOR_LOUNGE_START_OPT_ANOTHER = """Maybe another time""", # MISSING TRANSLATION
+	METEOR_LOUNGE_BRIEF = """Lorien offers you a cup of warm herbal tea before he starts explaining.
+
+— The druids are not only spiritual guides but also natural observers. One of my tasks is to watch over the night sky and stars. Three moons ago I saw a star falling not too far from our forests. However as I delivered that information to the High Priestess she found that information... insignificant. 
+
+His voice sounds bitter when he addressed the High Priestess but its clear her authority invokes respect into him.
+
+— We are not allowed to leave the capital and I was denied to investigate it as well. However an outsider like you isn't held back by such rules. I want you to see what happened to it, as my intuition dictates it's not something to overlook.""", # MISSING TRANSLATION
+	METEOR_LOUNGE_BRIEF_OPT_CHECK = """That sounds curious, I'll check it out""", # MISSING TRANSLATION
+	METEOR_LOUNGE_BRIEF_OPT_MAYBE = """Maybe, If I have enough time""", # MISSING TRANSLATION
+	METEOR_LOUNGE_RESPONSE = """Content with your response, Lorien has marked the spot on your location. It shouldn't take too much time although you wonder if you're gonna find anything at all after this much time has passed.""", # MISSING TRANSLATION
+	METEOR_OGRES_START = """As you arrive at the clearing Lorien has pointed out, you spot the place the star has fallen into. The crater has overgrown some time ago but around it you spot multiple large foot tracks. Much larger than humans, they must belong to ogres.""", # MISSING TRANSLATION
+	METEOR_OGRES_START_OPT_FOLLOW = """*Follow tracks*""", # MISSING TRANSLATION
+	METEOR_OGRES_CAMP = """You manage to follow the poorly preserved tracks for a while but your effort rewards you. You find a makeshift camp belonging to a small group of ogres. It's a crude setup of tattered hides and splintered logs, reeking of charred meat and damp earth. Three ogres huddle around a smoldering fire, their guttural laughter echoing through the clearing. The largest, a brute with a scarred hide, grips a massive club embedded with a jagged, faintly glowing stone—the fallen star, no doubt. His beady eyes scan the surroundings as he grunts to his companions.
+
+— Oi, dis shiny rock's mine! Found it in da hole, fair 'n square. Dis makes me king! Ain't no one takin' it!
+
+His two companions, smaller but no less menacing, nod eagerly, their clubs resting against a nearby boulder. You crouch in the underbrush, weighing your options.""", # MISSING TRANSLATION
+	METEOR_OGRES_CAMP_OPT_FIGHT = """*Fight the ogres*""", # MISSING TRANSLATION
+	METEOR_OGRES_CAMP_OPT_CURSED = """[Persuasion Challenge] You better give up on this rock, it's cursed and will make you sick.""", # MISSING TRANSLATION
+	METEOR_OGRES_FIGHT = """You leap from the foliage, weapon drawn, catching the ogres off-guard. The leader roars, hefting his club.
+
+— You want dis rock? Come take it, puny thing!
+
+The smaller ogres scramble for their weapons, their snarls mixing with the crackle of the fire. It's three against one, and the leader's club looks like it could crush stone.""", # MISSING TRANSLATION
+	METEOR_OGRES_SECURE = """You secure the large stone piece which feels a lot heavier in your arms. It's time to get back to Lorien.""", # MISSING TRANSLATION
+	METEOR_OGRES_TRICKED = """You step boldly into the camp, standing tall and locking eyes with the leader.
+
+— Huuh? Evil thing? It tricked me into thinkin' I'm strong... Take it and go, I don't want it!
+
+""", # MISSING TRANSLATION
+	METEOR_LOUNGE_RETURN = """Lorien stands near a glowing crystal, his silver eyes brightening as you approach, the stone clutched in your hand. Its dark, faintly pulsing surface catches the light, drawing his gaze.
+
+— You've returned! And with the fallen star, no less.""", # MISSING TRANSLATION
+	METEOR_LOUNGE_RETURN2 = """You recount the ogre encounter, describing the crude camp and the club embedded with the strange stone.
+
+— Ogres, you say? Reckless creatures, but I'm glad you retrieved it. Yet... I confess, I know not what to do with such a thing. I feel some power coming from it though.
+
+He studies the meteorite, hesitant to touch it, then shakes his head.
+
+— Keep it, outsider. You've earned it, and perhaps its purpose will reveal itself to you. And I have one fewer thing to worry about. 
+
+As you take it with you, it makes you wonder if you know anyone who can figure out a good use for it...""", # MISSING TRANSLATION
+	METEOR_SIGMUND_START_OPT_FOUND = """I've found one strange rock which has fallen from the skies...""", # MISSING TRANSLATION
+	METEOR_SIGMUND_START_OPT_PAYMENT = """I've got the payment for the pass (200 gold)""", # MISSING TRANSLATION
+	METEOR_SIGMUND_START_OPT_ACCESS = """I've gained access to dwarf capital""", # MISSING TRANSLATION
+	METEOR_SIGMUND_START = """His eyes, sharp beneath bushy brows, lock onto the meteorite as you present it. The stone's faint glow reflects in his intrigued gaze.
+
+— This ain't no common stone. Fell from da sky, ye say? It's a fine metal, but me 'fraid I'm no help with something like dis. Ya'd need to find someone from dwarf lands. But they don't let strangers inside usually.""", # MISSING TRANSLATION
+	METEOR_SIGMUND_START_OPT_INSIDE = """You know how to get inside?""", # MISSING TRANSLATION
+	METEOR_SIGMUND_START_OPT_USE = """I'd like to use it""", # MISSING TRANSLATION
+	METEOR_SIGMUND_GOLD = """— Well I've a connection which might get ya inside, but it ain't cheap these days. I'll need two hundred gold for da pass.""", # MISSING TRANSLATION
+	METEOR_SIGMUND_GOLD_OPT_PAY = """Pay (200 gold)""", # MISSING TRANSLATION
+	METEOR_SIGMUND_GOLD_OPT_ALREADY = """Actually I can get inside already""", # MISSING TRANSLATION
+	METEOR_SIGMUND_GOLD_OPT_BACK = """I'll be back later""", # MISSING TRANSLATION
+	METEOR_SIGMUND_PAY = """You pass Sigmund the gold he asked for as he takes you away to the backrooms.
+
+— Alright, take dis piece. It'll get ya through guards. Da man you are looking for is called Durim, he works with stuff like this.
+
+""", # MISSING TRANSLATION
+	METEOR_SIGMUND_LEAVE = """Getting all the necessary information you leave preparing to venture to the mountains.""", # MISSING TRANSLATION
+	METEOR_SIGMUND_ACCESS = """— Ya did? Great to hear. Da man you are looking for is called Durim, he works with stuff like this.
+
+""", # MISSING TRANSLATION
+	ENTER_CITY_T_0_METEOR = """— Turn around, outsider. The city is closed until king's new order.""", # MISSING TRANSLATION
+	METEOR_ENTER_CITY_OPT_PASS = """*Present the pass from Sigmund*""", # MISSING TRANSLATION
+	METEOR_ENTER_CITY_OPT_LEAVE = """*Leave*""", # MISSING TRANSLATION
+	METEOR_ENTER_CITY2 = """The guard looks around cautiously before giving a gesture to make a quick pass allowing you to get inside. The gates are quickly closed after that but for now you'll be able to get around this place and back.""", # MISSING TRANSLATION
+	METEOR_DURIM_START = """After questioning a few tight-lipped locals, you learn Durim runs an alchemy shop. A half-hour's trek through smoky alleys leads you to a sturdy stone building, its flask-shaped banner swaying in the sooty breeze.""", # MISSING TRANSLATION
+	METEOR_DURIM_START2 = """The workshop buzzes with chaotic energy, shelves crammed with fizzing potions and shimmering dust. The air stings with sharp, chemical scents. Durim, a scrawny dwarf with scorched hair and wild, darting eyes, hunches over a cluttered bench. When you reveal the meteorite, his head jerks up, and he fixes on the stone with a feverish stare.
+
+— Ooh, you brought it, you did! That stone! Quick, give it to me!
+
+Before you can speak, he tugs at your arm, trying to pry the meteorite free, his breath ragged with desperation.""", # MISSING TRANSLATION
+	METEOR_DURIM_START_OPT_FIGHT = """*Fight back*""", # MISSING TRANSLATION
+	METEOR_DURIM_START_OPT_LET = """*Let him have it*""", # MISSING TRANSLATION
+	METEOR_DURIM_LET = """You relent, passing the meteorite to Durim. His eyes gleam as he snatches it with a feverish cackle.
+
+""", # MISSING TRANSLATION
+	METEOR_DURIM_FOUNDME = """— Yes, yes! It found me, brought itself by your hands!
+
+He sets to work immediately, pouring sizzling acids and grinding tools over the stone. Sparks fly as he extracts a small, shimmering ingot of pure metal, its surface catching the workshop's dim light. He tosses it to you carelessly, already turning back to his experiments.""", # MISSING TRANSLATION
+	METEOR_DURIM_WIN = """After a fierce struggle, Durim collapses, groaning dramatically, playing dead. As you pause, confused, he springs up with surprising speed, snatching the meteorite from your grip.
+
+— Ha! Fooled ye! Ye fool!
+
+Ignoring your confusion, he's completely focused on the stone.
+
+""", # MISSING TRANSLATION
+	METEOR_DURIM_NOPAYMENT = """ Looks like he does not even want any payment.""", # MISSING TRANSLATION
+	METEOR_DURIM_HARA = """As you prepare to leave, the workshop door slams open. A busty goblin girl, dressed in grease-stained tunic with tools dangling from her belt, struts in like she owns the place. She nods curtly at Durim, who barely glances up from his bench.
+
+— Oi, Durim, got that elixir ready? she asks, her voice sharp but playful.
+
+The dwarf grunts, pointing to a shelf. She snatches a glowing bottle of liquid, tucking it into her satchel. As she turns, her yellow eyes lock onto you, sizing you up with a smirk.
+
+— New around here, eh? Word of advice, don't linger in this fume-pit too long. Vapors will turn your brain to mush, like this guy here.
+
+She leaves before you can answer but her uncharacteristic appearance makes you think you'll meet her in future.""", # MISSING TRANSLATION
 	
 }
 

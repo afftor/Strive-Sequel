@@ -153,6 +153,7 @@ var ero_scenes_collection = {
 	"amelia_cali_":['amelia_cali_1','amelia_cali_2','amelia_cali_3'],
 	"cali_riding_":['cali_riding_1','cali_riding_2','cali_riding_3'],
 	"halloween_scene":["halloween_scene"],
+	"christmas_scene":["christmas_scene"],
 	"lira_sex_":["lira_sex_1","lira_sex_2","lira_sex_3"],
 	"cali_zephyra_":["cali_zephyra_1","cali_zephyra_2"],
 	"cali_bowl_":["cali_bowl_1","cali_bowl_2"],
@@ -369,10 +370,17 @@ func unlock_all():
 	for sc in story_scenes:
 		if !input_handler.progress_data.story_scenes.has(sc):
 			input_handler.progress_data.story_scenes.push_back(sc)
-	for sc in ero_scenes:
-		if !input_handler.progress_data.ero_scenes.has(sc):
-			input_handler.progress_data.ero_scenes.push_back(sc)
+	for collection in ero_scenes_collection.values():
+		for sc in collection:
+			if !input_handler.progress_data.ero_scenes.has(sc):
+				input_handler.progress_data.ero_scenes.push_back(sc)
 	for sc in scenes_order:
 		if !input_handler.progress_data.gallery_seq.has(sc):
 			input_handler.progress_data.gallery_seq.push_back(sc)
+	for sc in mono_scenes:
+		if !input_handler.progress_data.monochrome.has(sc):
+			input_handler.progress_data.monochrome.push_back(sc)
+	for sc in char_scenes:
+		if !input_handler.progress_data.characters.has(sc):
+			input_handler.progress_data.characters.push_back(sc)
 	input_handler.store_progress()

@@ -259,14 +259,20 @@ func make_item(temprecipe, character):
 		materials[recipe.resultitem] += recipe.resultamount
 	else:
 		var item = Items.itemlist[recipe.resultitem]
-		globals.text_log_add("crafting", "Item created: " + item.name)
+		globals.text_log_add("work", "Item created: " + item.name)
 		if item.type == 'usable':
 			globals.AddItemToInventory(globals.CreateUsableItem(item.code))
 		elif item.type == 'gear':
+			var true_item
 			if recipe.crafttype == 'modular':
-				globals.AddItemToInventory(globals.CreateGearItemCraft(item.code, temprecipe.partdict, character))
+				true_item = globals.CreateGearItemCraft(item.code, temprecipe.partdict, character)
 			else:
-				globals.AddItemToInventory(globals.CreateGearItem(item.code, {}))
+				true_item = globals.CreateGearItem(item.code, {})
+			if true_item.quality == 'legendary':
+				character.try_rise_fame('craft_legend')
+			elif true_item.quality == 'epic':
+				character.try_rise_fame('craft_epic')
+			globals.AddItemToInventory(true_item)
 
 
 func make_item_sequence(currenttask, craftingitem, character):
@@ -287,7 +293,7 @@ func add_craft_value(currenttask, value, character, _tres = false): #bad rework,
 	while true: #2rewrite with proper condition
 		if craftinglists[currenttask.product].empty():
 			if currenttask.messages.has('notask') == false and !tres:
-				globals.text_log_add('crafting', character.get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
+				globals.text_log_add('work', character.get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
 				currenttask.messages.append('notask')
 			break #empty queue
 		var craftingitem = craftinglists[currenttask.product].front()
@@ -295,7 +301,7 @@ func add_craft_value(currenttask, value, character, _tres = false): #bad rework,
 		if craftingitem.resources_taken == false:
 			if globals.check_recipe_resources(craftingitem) == false:
 				if currenttask.messages.has('noresources') == false:
-					globals.text_log_add('crafting', character.get_short_name() + ": Not Enough Resources for craft. ")
+					globals.text_log_add('work', character.get_short_name() + ": Not Enough Resources for craft. ")
 					currenttask.messages.append("noresources")
 				break #no res
 			else:
@@ -315,7 +321,7 @@ func add_craft_value(currenttask, value, character, _tres = false): #bad rework,
 				item = Items.itemlist[recipe.resultitem]
 			else:
 				item = Items.materiallist[recipe.resultitem]
-			globals.text_log_add("crafting", "Task completed: " + item.name)
+			globals.text_log_add("work", "Task completed: " + item.name)
 			craftinglists[currenttask.product].pop_front()
 		else:
 			value = 0
@@ -351,7 +357,7 @@ func add_craft_value(currenttask, value, character, _tres = false): #bad rework,
 func add_build_value(currenttask, value, character, tres = false):
 	if upgrades_queue.empty():
 		if currenttask.messages.has("noupgrade") == false:
-			globals.text_log_add('upgrades', character.get_short_name() + ": No task or upgrade selected for building. ")
+			globals.text_log_add('work', character.get_short_name() + ": No task or upgrade selected for building. ")
 			currenttask.messages.append("noupgrade")
 		return tres
 	else:
@@ -375,7 +381,7 @@ func add_build_value(currenttask, value, character, tres = false):
 				tax += tdata.levels[int(upgrade_progresses[curupgrade].level)].tax
 			
 			input_handler.emit_signal("UpgradeUnlocked", upgradedata.upgradelist[curupgrade])
-			globals.text_log_add('upgrades',"Upgrade finished: " + tdata.name)
+			globals.text_log_add('work',"Upgrade finished: " + tdata.name)
 			if curupgrade == "tattoo_set":
 				input_handler.ActivateTutorial("TUTORIALLIST8")
 			upgrade_progresses.erase(curupgrade)

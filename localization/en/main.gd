@@ -175,6 +175,10 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	SIBLINGMODULECHILDDREN = "Children",
 	SIBLINGMODULECURRENTCAPACITY = "Current Capacity",
 	SIBLINGMODULEPERSONALITY = "Personality",
+	SIBLINGMODULEMINORTRAIN = "Minor Training",
+	SIBLINGMODULEAVAILABLE = "Available",
+	SIBLINGMODULEAVAILABLETOOLTIP = "Number of available minor tranings depends of Growth Factor.",
+	MINORTRAINMAXREACHED = "Minor training max reached",
 	SYSMESSAGEATLEAST1CHAR = "Select at least 1 character to fight.",
 	OPERANTATLEAST = "At least",
 	OPERANTATMOST = "At most",
@@ -564,6 +568,9 @@ Food type: Fish, Vegetables.""",
 	MATERIALADAMANTINE = "Adamantine",
 	MATERIALADAMANTINEADJ = "Adamantine",
 	MATERIALADAMANTINEDESCRIPT = "A very rare and strong magic alloy. Produced by crafting. ",
+	MATERIALMETEORITE_IRON = "Meteorite Steel",
+	MATERIALMETEORITE_IRONADJ = "Star",
+	MATERIALMETEORITE_IRONDESCRIPT = "A very rare and strong magic alloy. Produced by crafting. ",
 	MATERIALBLUE_MOSS = "Blue Moss",
 	MATERIALBLUE_MOSSDESCRIPT = "A rare plant with magical properties.",
 	MATERIALSALVIA = "Salvia",
@@ -675,6 +682,10 @@ Otherwise: +3 Physics""",
 	ITEMANAL_PLUGDESCRIPT = "A plug shaped piece of wood. Designed for rear usage. ",
 	ITEMSTRAPON = "Strapon",
 	ITEMSTRAPONDESCRIPT = "Allows girls to pass for boys, but only in bed. ",
+	ITEMMASK = "Mask",
+	ITEMMASKDESCRIPT = "Hides wearer's identity. The wearer won't be recognized while it is equipped, preventing their Fame from growing. This does not apply to Master.",
+	ITEMFOXMASK = "Fox Mask",
+	ITEMFOXMASKDESCRIPT = "This ancient mask is rumored to hold some mystic powers in it. The wearer won't be recognized while it is equipped, preventing their Fame from growing. This does not apply to Master.",
 	ITEMOFFHAND_BOOK = "Magic Tome",
 	ITEMOFFHAND_BOOKDESCRIPT = "A rare and valuable magic item. It contains powerful spells and knowledge that can greatly aid any adventurer on their quest.",
 	ITEMAPHRODISIAC = "Aphrodisiac",
@@ -1067,6 +1078,7 @@ Hotkey: 3""",
 	QUESTTASKACQ = "Task aсquired",
 	REQUIREMENTSARENTMET = "Requirements are not met.",
 	NOTENOUGHLOYALTY = "Not enough Loyalty",
+	NOTENOUGHMASTERPOINTS = "Not enough Master Points",
 	QUESTCOMPLETEMESSAGE = "Quest Complete",
 	QUESTDAYSLEFT = "days left",
 	QUESTLOCATION = "Quest Location",
@@ -1322,7 +1334,7 @@ Shredded: DEF is reduced by 50%.""",
 
 Ensnared: Evasion is reduced by 75.""",
 	SKILLDISINTEGRATE = "Disintegrate",
-	SKILLDISINTEGRATEDESCRIPT = "Deals 250% of MATK as {color=yellow|Earth} damage to single target and Stun it for 3 turns. If target can't be stunned, applies Shredded instead.",
+	SKILLDISINTEGRATEDESCRIPT = "Deals 165% of MATK as {color=yellow|Earth} damage to single target and Stun it for 3 turns. Deals 275% to golem and mech enemies instead. If target can't be stunned, applies Shredded instead.",
 	SKILLWIND_BLADE = "Wind Blade",
 	SKILLWIND_BLADEDESCRIPT = "Deals 60% of MATK as {color=yellow|Air} damage to one target and random enemy.",
 	SKILLLIGHTNING = "Lightning",
@@ -1531,7 +1543,7 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	ACTIONSTRONGINFLUENCESCENETEXT = "[name1] greatly influences [name2]'s mind with the ideas of obedience and submission, [his2] mind gets filled with positive thoughts about slavery.",
 	ACTIONMINDCONTROLSCENETEXT = "[name1] uses strong magic to dominate [name2]'s mind, slowly rewriting it into a nice obedient slave.",
 	ACTIONEDGINGSCENETEXT = "[name1] teasingly brings [name2] to orgasm but in the last moment stops [his1] movements, preventing [name2] from cumming. This goes on for a few more times until [name2] gives up begging for release. ",
-	TRAININGFINISHHEADER = "Trainings by the end of training:",
+	TRAININGFINISHHEADER = "Skills by the end of training:",
 	TRAININGSTATUS1 = "Spirit status: Broken",
 	TRAININGSTATUS2 = "Spirit status: Damaged",
 	TRAININGSTATUS3 = "Spirit status: Retained",
@@ -1653,7 +1665,8 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	SEXTOOLTIPSHORT = "Character can be assigned to sexual interaction today",
 	TRAINTOOLTIP = "Character can be trained today",
 	TOOLTIPLOYALTYOBEDIENCE = "Loyalty points are gained every turn based on Tame Factor. You can unlock new actions and passives with it. ",
-	TOOLTIPVALUE = "Character's value means their market price. It's based on their Growth Factor, Race, Training and certain features. Higher value characters will earn more money when providing services and prostitution.",
+	TOOLTIPVALUE = "Character's value means their market price. It's based on their Growth Factor, Race, Training, Fame and certain features. Higher value characters will earn more money when providing services and prostitution.",
+	TOOLTIPFAME = "Fame is a character's renown among people. It can grow through certain actions but also diminishes over time. A character's value, servant's allowance, training, and recruitment efficiency are affected by fame.",
 	SERVICEREST = "[name] will rest. Uncheck [color=aqua]Rest[/color] to switch to work state.",
 	SERVICESEXUALPENETRATIVE = "[name] will entertain clients by serving and sleeping with them if they find [him] appealing.",
 	SERVICEPREGNANT = "[He] can lose virginity and get pregnant from penetration.",
@@ -1671,7 +1684,7 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	LOGLEFTTTOOLTIP = "Shows main events",
 	LOGRIGHTLABEL = "Service",
 	LOGRIGHTTOOLTIP = "Shows service income",
-	LOGCENTERTLABEL = "Slaves",
+	LOGCENTERTLABEL = "Chars",
 	LOGCENTERTOOLTIP = "Shows character events",
 	BROTHELLOGSEX = "%s earned %s gold performing %s with a %s customer.",
 	BROTHELLOGNO_SEX = "%s earned %s gold working as a %s.",
@@ -2064,6 +2077,7 @@ Service is a global modifier for this assignment.""",
 	STATTRAINING_LOYALTY = "Loyalty from Training",
 	STATTRAINING_SPIRIT = "Spirit from Training",
 	STATRESISTANCE_RED = "Resistance drop speed",
+	STATTRAINER_LOYALTY_BONUS = "Loyalty for trainee",
 	TRAITTRAINER = "Trainer",
 	TRAITTRAINERDESCRIPT = "Can oversee slaves",
 	STATSPIRIT = "Spirit",
@@ -2140,8 +2154,8 @@ Damage +15%, Health +20.""",
 	STATCHG_DEXTERITY_MAX = "Dexterity Max. Charges",
 	STATFOOD_CONSUMPTION = "Food Consumption",
 	STATFOOD_CONSUMPTIONDESCRIPT = "Amount of food items a person requires every day. Lack of food leads to starvation, exhaustion and eventual death.",
-	STATBREAKDOWN_TIME = "Breakdown period",
-	STATBREAKDOWN_TIMEDESCRIPT = "Period of unavailability after breakdown",
+	STATBREAKDOWN_TIME = "Breakdown duration",
+	STATBREAKDOWN_TIMEDESCRIPT = "Duration of unavailability after breakdown",
 	STATBREAKDOWN_CHANCE_MOD = "Breakdown chance",
 	STATBREAKDOWN_DISABLED = "Breakdown immunity",
 	BREAKDOWN_LFRIEND = "[name] had a breakdown due to losing a friend",
@@ -2156,6 +2170,37 @@ Damage +15%, Health +20.""",
 	BREAKDOWN_SOUL = "[name] had a breakdown due to using Soul Stone",
 	BREAKDOWN_OBLIVION = "[name] had a breakdown due to using Oblivion potion",
 	BREAKDOWN_SHRINE = "[name] had a breakdown due to enslaving at Hybris Shrine",
+	STATFAME = "Fame",
+	STATFAMEDESCRIPT = "",
+	STATFAME_DEGRADE_TIMER = "Fame degrade timer",
+	STATFAME_DEGRADE_TIMERDESCRIPT = "",
+	STATLAST_ARENA_WIN = "Won on the arena last time",
+	STATLAST_ARENA_WINDESCRIPT = "",
+	FAME0_NAME = "Nobody",
+	FAME0_DESC = "[name] is not known by anyone outside of people who know [him], being essentially invisible to others.",
+	FAME1_NAME = "Acquittance",
+	FAME1_DESC = "[name] is faintly known to a few locals, [his] name barely known beyond those who meet [him].",
+	FAME2_NAME = "Town Regular",
+	FAME2_DESC = "[name] is known by many in [his] small community, a familiar face respected by those who dwell nearby.",
+	FAME3_NAME = "Local Hero",
+	FAME3_DESC = "[name] is celebrated in [his] town, [his] actions earning admiration from those who know [him].",
+	FAME4_NAME = "High Renown",
+	FAME4_DESC = "[name] is known across the kingdom, [his] name carried by bards and travelers who speak of [his] actions.",
+	FAME5_NAME = "World's Exalted",
+	FAME5_DESC = "[name] is known in distant lands, [his] fame reaching foreign courts and the ears of rulers who know of him.",
+	FAME6_NAME = "Living Myth",
+	FAME6_DESC = "[name] is known by all across the world, [his] legendary deeds woven into tales that echo beyond [his] time.",
+	FAME_RISE_MANIFEST = "Fame rises! [He] is %s now.",
+	FAME_DEGRADE_MANIFEST = "Fame degrades! [He] is %s now.",
+	TAGSTABLE_FAME = "Stable Fame: fame do not degrade with time.",
+	FAMEDESC_PRICE_BONUS = "Character's Value",
+	FAMEDESC_UPKEEP = 'Subordinate weekly upkeep',
+	FAMEDESC_LOYALTY_BONUS = 'Loyalty for trainee',
+	FAMEDESC_RECRUIT_BONUS = 'Recruitment efficiency',
+	PRICEDESC_TRAITS_POS = "Positive traits",
+	PRICEDESC_TRAITS_NEG = "Negative traits",
+	PRICEDESC_CUMULATIVE = "Cumulative bonus %s of",
+	PRICEDESC_LESS = "Can't be less then",
 	MASTER_POINTS = "Mastery",
 	TOOLTIPENERGY = "Energy is restored during sleep and is required for tasks. When a character is forced to work with no energy left, their Exhaustion increases. ",
 	TOOLTIPFATIGUE = "Fatigue increases with time and dissipates with entertainment. When unmanaged it may cause a performance penalty.",
@@ -2772,6 +2817,26 @@ Physical and Sexual training actions are 25% more impactful.""",
 	TRAITSTURDYDESCRIPT = "+10 DEF.",
 	TRAITFRAILDESCRIPT = "-10 DEF.",
 	TRAITSTUN_IMMUNITYDESCRIPT = "Makes user immune to Stun.",
+	TRAITETIQUETTE = "Etiquette",
+	TRAITETIQUETTEDESCRIPT = "Training in courtly etiquette for navigating high society. Characters learn proper decorum for noble gatherings, though some may choose to defy convention.",
+	TRAITTABLE_MANNERS = "Table Manners",
+	TRAITTABLE_MANNERSDESCRIPT = "Training in refined dining etiquette, from setting tables to eating with grace. While not always practical, it aligns characters with high-class sensibilities.",
+	TRAITFOREIGN_DIPLOMACY = "Foreign Diplomacy",
+	TRAITFOREIGN_DIPLOMACYDESCRIPT = "Training in the customs and traditions of foreign realms, aiding interactions with emissaries or travelers from distant lands.",
+	TRAITLITERACY = "Literacy",
+	TRAITLITERACYDESCRIPT = "Training in reading and comprehending texts, a rare and valuable skill that unlocks knowledge from books and scrolls.",
+	TRAITPENMANSHIP = "Penmanship",
+	TRAITPENMANSHIPDESCRIPT = "Training in elegant penmanship, from drafting letters to forging documents. A rare skill among commoners, it's essential for noble service.",
+	TRAITHISTORY = "History",
+	TRAITHISTORYDESCRIPT = "Training in the histories of noble houses, factions, and rulers, providing valuable insight during courtly intrigues.",
+	TRAITMENTORSHIP = "Mentorship",
+	TRAITMENTORSHIPDESCRIPT = "Training in guiding and disciplining subordinates, fostering loyalty and proper conduct. A vital skill for any mentor or overseer.",
+	TRAITANIMAL_HANDLING = "Animal Handling",
+	TRAITANIMAL_HANDLINGDESCRIPT = "Training in tending and commanding animals, from mounts to hunting beasts, proving useful in diverse situations.",
+	TRAITGARDENING = "Gardening",
+	TRAITGARDENINGDESCRIPT = "Training in cultivating and designing gardens, fostering calmness and meticulous care in both plants and character.",
+	TRAITCOURTLY_ARMS = "Courtly Arms",
+	TRAITCOURTLY_ARMSDESCRIPT = "Training in light swordplay and archery, embodying a knight's refined combat style. Though not a soldier's training, it offers an edge in duels and skirmishes.",
 	TRAITLOYALTY_BASIC_SERVITUDE = "Basic Servitude",
 	TRAITLOYALTY_BASIC_SERVITUDEDESCRIPT = """{color=green|Allows to assign to occupations}
 
@@ -3364,6 +3429,9 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	UPGRADETOOL_SWAPPERDESCRIPT = "When characters harvest materials at dungeons or doing one time tasks their equipped tool will always apply its bonus regardless of type.",
 	UPGRADEFARM_SLOTS = "Farm slots",
 	UPGRADEFARM_SLOTSDESCRIPT = "Provides additional slots for farm produce.",
+	UPGRADELIST_UNLOCK = "Unlock this for {color=green|%s} %s?",
+	UPGRADELIST_UNLOCK_MP = "Master Points",
+	UPGRADELIST_UNLOCK_GOLD = "Gold",
 	BODYPARTAGETEEN = "teen",
 	BODYPARTAGEADULT = "adult",
 	BODYPARTAGEMATURE = "mature",
@@ -3424,7 +3492,9 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	BODYPARTSKINPURPLE = "purple",
 	BODYPARTSKINTEAL = "teal",
 	BODYPARTSKIN_COVERAGEPLANT = "plant",
-	BODYPARTSKIN_COVERAGESCALE = "scale",
+	BODYPARTSKIN_COVERAGESCALE = "scale 1",
+	BODYPARTSKIN_COVERAGESCALE2 = "scale 2",
+	BODYPARTSKIN_COVERAGESCALE3 = "scale 3",
 	BODYPARTSKIN_COVERAGEFEATHERS = "feathers",
 	BODYPARTSKIN_COVERAGEFUR_WHITE = "white fur",
 	BODYPARTSKIN_COVERAGEFUR_GREY = "grey fur",
@@ -16326,7 +16396,7 @@ You feel like she almost has to force herself from hiding from you.""",
 — [Master], you've been missing Lilia? Let's go to bed already!""",
 	DIALOGUEJEANINITIATEM = "— Yes? Don't just give me that oogling look, if you don't have anything serious I have business to do.",
 	DIALOGUELILITHINIT = "— [Master], you wanna play? I'm always ready to play.",
-	DIALOGUEZEPHYRA_UNDERWEAR = "In your hands you hold a piece of clothing which was surrendered to you by Zephyra. Pondering on what actual benefit it can have, one mind is stuck in your mind... What if you wear it on your head? Surely, this is a terrible idea...",
+	DIALOGUEZEPHYRA_UNDERWEAR = "In your hands you hold a piece of clothing which was surrendered to you by Zephyra. Pondering on what actual benefit it can have, one thought is stuck in your mind... What if you wear it on your head? Surely, this is a terrible idea...",
 	DIALOGUEZEPHYRA_UNDERWEAROPTION = "Do it",
 	DIALOGUEZEPHYRA_UNDERWEAR2 = """Despite your best judgement, you put a girl's underwear onto your head. You feel nothing like you would expect but the sudden revelation is abrupted by the owner entering your room just at this moment. 
 	
@@ -17731,6 +17801,9 @@ Hotkey: 3""",
 	ARRIVED_AT_LOC_LABEL = "arrived at location",
 	RETURNED_TO_MANSION_LABEL = "returned to mansion",
 	TRAVEL_LABEL = "Travel",
+	MANSION_LABEL = "Mansion",
+	CHAR_LABEL = "Character",
+	QUESTS_LABEL = "Quest",
 	RETURN_ALL_MANSION_LABEL = "Recall Everyone",
 	TRAVELERS_LABEL = "Travelers",
 	BATTLE_GROUP_LABEL = "Battle Group",
@@ -18870,7 +18943,7 @@ His voice sounds bitter when he addressed the High Priestess but its clear her a
 	METEOR_LOUNGE_RESPONSE = "Content with your response, Lorien has marked the spot on your location. It shouldn't take too much time although you wonder if you're gonna find anything at all after this much time has passed.",
 	METEOR_OGRES_START = "As you arrive at the clearing Lorien has pointed out, you spot the place the star has fallen into. The crater has overgrown some time ago but around it you spot multiple large foot tracks. Much larger than humans, they must belong to ogres.",
 	METEOR_OGRES_START_OPT_FOLLOW = "*Follow tracks*",
-	METEOR_OGRES_CAMP = """You manage to follow the poorly preserved tracks for a while but your effort rewards you. You find a makeshift camp belonging to a small group of ogres. It's a crude setup of tattered hides and splintered logs, reeking of charred meat and damp earth. Three ogres huddle around a smoldering fire, their guttural laughter echoing through the clearing. The largest, a brute with a scarred hide, grips a massive club embedded with a jagged, faintly glowing stone—the fallen star, no doubt. His beady eyes scan the surroundings as he grunts to his companions.
+	METEOR_OGRES_CAMP = """You manage to follow the poorly preserved tracks for a while but your effort rewards you. You find a makeshift camp belonging to a small group of ogres. It's a crude setup of tattered hides and splintered logs, reeking of charred meat and damp earth. Three ogres huddle around a smoldering fire, their guttural laughter echoing through the clearing. The largest, a brute with a scarred hide, grips a massive club embedded with a jagged, faintly glowing stone, the one you are looking for. His beady eyes scan the surroundings.
 
 — Oi, dis shiny rock's mine! Found it in da hole, fair 'n square. Dis makes me king! Ain't no one takin' it!
 
@@ -18938,7 +19011,7 @@ Before you can speak, he tugs at your arm, trying to pry the meteorite free, his
 """,
 	METEOR_DURIM_FOUNDME = """— Yes, yes! It found me, brought itself by your hands!
 
-He sets to work immediately, pouring sizzling acids and grinding tools over the stone. Sparks fly as he extracts a small, shimmering ingot of pure metal, its surface catching the workshop's dim light. He tosses it to you carelessly, already turning back to his experiments.""",
+He sets to work immediately, pouring sizzling acids and grinding tools over the stone. Sparks fly as he extracts a small, shimmering piece of pure metal, its surface catching the workshop's dim light. He tosses it to you carelessly, already turning back to his experiments.""",
 	METEOR_DURIM_WIN = """After a fierce struggle, Durim collapses, groaning dramatically, playing dead. As you pause, confused, he springs up with surprising speed, snatching the meteorite from your grip.
 
 — Ha! Fooled ye! Ye fool!
@@ -18956,6 +19029,271 @@ The dwarf grunts, pointing to a shelf. She snatches a glowing bottle of liquid, 
 — New around here, eh? Word of advice, don't linger in this fume-pit too long. Vapors will turn your brain to mush, like this guy here.
 
 She leaves before you can answer but her uncharacteristic appearance makes you think you'll meet her in future.""",
+	
+	#2fix
+	ACT_4_CONTINUE = "You've finished current main story content. Please wait for the next update and consider supporting the game's development if you hadn't already.",
+	ACT_4_CAPITAL_SUMMARY = "You've been invited to the Grand Empire's Capital. This feels like the artifact chasing quest is coming to its conclusion.",
+	ACT_4_CAPITAL_NAME = "Each against all",
+	ACT_4_CAPITAL_ENTER = "Go to the Empire's capital",
+	ACT_4_CAPITAL_WAIT1 = "Wait until tomorrow",
+	ACT_4_CAPITAL_CEREMONY = "Attend the Ceremony",
+	ACT_4_CAPITAL_WAIT2 = "Wait until tomorrow",
+	ACT_4_CAPITAL_ARENA = "Go to the Arena",
+	EMPIRE_CAPITAL1 = "Attend ceremony",
+	EMPIRE_CAPITAL2 = "Walk through the lower town",
+	
+	
+	EMP_CITY_INIT = """A new letter arrives today, its envelope adorned with intricate patterns that suggest a far more influential sender than you're accustomed to.
 
+“Dear [Name], Mayor of Aliron,
+I've heard much about you and your recent deeds, and I believe it's time we met in person. I invite you to the Grand Empire's capital, the one and only. I assure you, it will be quite a sight for someone like you — and an opportunity to acquire that artifact you seek.”
+
+Your admirer,
+Rouge""",
+	EMP_CITY_ENTER_0 = """You stand before the towering gates of the Grand Imperial City. A long line of travelers, traders, and all manner of strangers waits to be inspected and admitted inside. After waiting just over an hour, you edge closer, only to be halted by the guards. Their gleaming armor, worth a fortune compared to Aliron's, marks them as elite.""",
+	EMP_CITY_ENTER_0_BAD1 = """— Hold it! You're not a citizen, not even of the Great Empire. The capital is closed to foreigners. Get lost.""",
+	EMP_CITY_ENTER_0_BAD2 = """— Hold it! You're not a citizen, not even of the Great Empire. Your papers say you're the Mayor of Aliron? Nobody cares about that backwater town. The capital is closed to foreigners. Get lost.""",
+	EMP_CITY_ENTER_0_GOOD = """— Hold it! You're not a citizen, not even of the Great Empire. Your papers say you're the Mayor of Aliron? Nobody cares about that backwater town. The capital is closed to foreigners...""",
+	EMP_CITY_ENTER_1 = """Before the guard can finish, a short man in rich but rumpled clothing appears, his looks and coarse manners highly contrast his status.
+
+— Hey, you! Royal order! Let this [man] pass. I've got the papers for [him]!
+
+The guard shoots an annoyed glance at the man but recognizes his uniform instantly. Despite the man's disheveled appearance, the guard straightens and salutes.
+
+— Y-yes, Sir Grotus. [He]'s in your care now.""",
+	EMP_CITY_ENTER_2 = """As Grotus leads you through the city gates, you hear him muttering under his breath.
+
+— Mistress Rouge ordered me to escort you. This is her invitation. No idea why she cares about someone like you. Be grateful. Without this, you'd never get in!
+He hands you an official invitation. Inspecting it, you realize it's from the Emperor's palace itself. Uncertain, you glance back at the man.
+
+— That's right, you're invited to His Majesty's ceremony. What, you some big shot from out of town? Mistress Rouge said she'll be there. And don't you dare show up dressed like the filthy peasant you look like now.""",
+	EMP_CITY_ENTER_2_OPTION_1 = "Thank you for the invitation",
+	EMP_CITY_ENTER_2_OPTION_2 = "Maybe I'll attend",
+	EMP_CITY_ENTER_2_OPTION_3 = "*Take letter silently*",
+	EMP_CITY_ENTER_3 = """— The ceremony is tomorrow. 
+
+Grotus strides off without a goodbye, leaving you time to explore the city before the event.""",
+	EMP_CEREMONY_INIT = "Attend ceremony",
+	EMP_CEREMONY_1 = """You approach the royal palace, a majestic structure towering over the surrounding area, vast enough to encompass a small town. Numerous foreign guests stream inside alongside you. The guards show no interest beyond checking your invitation.""",
+	EMP_CEREMONY_2 = """You spot Rouge and Grotus among the crowd, but as guards reposition you, you can't get closer. Rouge acknowledges your presence with a fleeting glance.
+
+A nearby guest notices your interest and makes an offhand remark that piques your curiosity.
+
+— That woman... A shady figure. One day, she just appeared in the imperial court out of nowhere. Rumors say she's the Emperor's unofficial concubine and advisor.""",
+	EMP_CEREMONY_3 = """The rowdy crowd falls silent as trumpets herald the start of the ceremony. All eyes turn to a raised platform at the back wall. After a moment, Emperor Tibernus himself appears. Despite his age, his presence radiates power and conviction. His voice, amplified by mechanical devices, booms through the hall as he takes his throne.
+
+— This day will be etched in the history of our glorious Empire!...""",
+	EMP_CEREMONY_4 = """The ceremony drags on, a standard celebration marked only by its luxurious surroundings and grandeur. Eventually, high-ranking officials from various regions are summoned for private audiences. To your surprise, you're among them.
+
+As you pass through the doors again, you catch Rouge's predatory smile fixed on you.""",
+	EMP_CEREMONY_5_0 = """Finally, a guard ushers you into the Emperor's office. Unprepared, you see this as a chance to make an impression. The Emperor fixes you with a stern look, though you sense a hint of amusement in his gaze.
+
+— Let's see... [Name], Mayor of Alon? No... Aliron, was it? That sorry little kingdom. One of my aides insisted I meet you. Do you have anything worth my time?""",
+	EMP_CEREMONY_5_1 = """The Emperor dismisses your remark with a wave before you can finish.
+
+— Save the formalities for another time. You've been granted a rare privilege, one that may never come again. What brings you here?""",
+	EMP_CEREMONY_5_2 = """The Emperor's eyes narrow, a sneer curling his lips as he leans forward slightly, his ornate throne creaking under his shifting weight
+
+– Don't make me laugh. Your pitiful land holds no interest for me. We could have crushed you during your laughable civil war, yet your guilds think they can defy us. There's no point in treaties between a lion and a sparrow. Enjoy your so-called freedom while it lasts.""",
+	EMP_CEREMONY_5_3 = """The Emperor's brow furrows, and he slumps back in his throne with a heavy sigh, his hand waving dismissively as if swatting away an annoying insect.
+
+— Enough. You're invited to the grandest ceremony of the mightiest empire on the continent, and you bore me with cheap bard's tales? Your backward kingdoms are truly stuck in the past.""",
+	EMP_CEREMONY_5_4 = """The Emperor's lips twitch into a mocking smirk, his eyes glinting with amusement as he tilts his head, studying you like a curious predator.
+
+— A cult? What, some ancient evil led by demons? You've managed to amuse me after all, but it's pathetic. No cult can threaten us—the gods are on our side.""",
+	EMP_CEREMONY_5_OPTION_1 = "I'm just glad I could meet you in person...",
+	EMP_CEREMONY_5_OPTION_2 = "Aliron wishes for peace and collaboration with you",
+	EMP_CEREMONY_5_OPTION_3 = "In fact, I'm on a mission of recovering ancient artifacts",
+	EMP_CEREMONY_5_OPTION_4 = "There's a dangerous cult which threatens world's peace",
+	EMP_CEREMONY_5_OPTION_5 = "I'm sorry for taking your time, I don't have much else to say.",
+	EMP_CEREMONY_5_OPTION_6 = "You have disappointed me by wasting my time",
+	EMP_CEREMONY_6_1 = """— Hah, humility doesn't suit you, [name]. I'm disappointed. Enjoy your stay in our grand Empire, then.
+
+The Emperor gestures, and you're led outside, left to your own devices...""",
+	EMP_CEREMONY_6_2 = """Unexpectedly, a wide grin spreads across the Emperor's face.
+
+— Oh? That makes two of us, then. Perhaps you're not as pathetic as I first thought. Maybe even bolder than the cowards around here. Too bad we won't find out just yet. This audience is over, see yourself out.
+
+The Emperor gestures, and you're led outside, left to your own devices...""",
+	EMP_CEREMONY_7 = """As you exit the main hall, a fox-like woman—Rouge, the one responsible for your presence here—suddenly approaches, catching you off guard.
+
+— Ah, is that disappointment on your face, or am I imagining things? Isn't our grand Emperor majestic enough to satisfy you? In the old days, you'd have been executed for showing so little enthusiasm. What a time to be alive!""",
+	EMP_CEREMONY_7_1 = """...But I see you've brought some unwanted company.""",
+	EMP_CEREMONY_7_OPTION_1 = "I should thank you for the invitation",
+	EMP_CEREMONY_7_OPTION_2 = "So you've finally shown up",
+	EMP_FOXES_1 = """Zephyra steps out from behind you, realizing she can no longer hide her presence. Kuro, on the other hand, remains nonchalant, though you sense her tensing up.
+
+Zephyra: — Hey, sis... How's it been?
+
+Kuro: — ...
+
+Zephyra: — Fun ceremony, right?""",
+	EMP_FOXES_2 = """Despite Zephyra's attempt at lighthearted conversation, Rouge shifts her focus to Kuro.
+
+Rouge: - Since you're both here, I have the perfect proposal for you.
+
+Kuro: — Can't wait to hear it.
+
+Rouge: - It's simple, really. Get lost and stay away from [name]. You know what I'm capable of, and you don't want to find out firsthand.
+
+Kuro: — ...
+
+The sudden hostility leaves an uneasy silence between you.""",
+	EMP_FOXES_3 = """Zephyra: — Leave [Name] to you? You're out of your mind if you think that weak bravado will make me step aside.
+
+Rouge's eyes widen slightly, clearly surprised to be challenged by someone she barely considers a person.
+
+Zephyra, seizing the moment, takes your hand firmly, reinforcing her stance and provoking Rouge further.
+
+Rouge: — Those might be the words you regret most in your life.""",
+	EMP_FOXES_4 = """Despite her obvious irritation, Rouge remains composed, turning her attention to Kuro.
+
+Rouge: — You must be none the wiser.
+
+Kuro: — I guess you could call this irony.
+
+Rouge: — A charmless bookworm and a scrawny wallflower. I might almost pity you as I crush you both.
+
+Unlike Zephyra, Kuro stays silent, as if bracing for an actual attack. Fortunately, Rouge keeps her aggression verbal.""",
+	EMP_CEREMONY_8_1 = """— No, I should thank you for coming. After hearing about your deeds, I had to meet you sooner or later.""",
+	EMP_CEREMONY_8_2 = """— Fufu, were you dying to see me? Sorry, but men have to earn that privilege.""",
+	EMP_CEREMONY_8 = """— But it's been a long day, and you look tired. Why don't we go somewhere more exciting?""",
+	EMP_CEREMONY_9 = """— I want to show you our majestic capital. Meet me at the grand arena—the best place for it. Keep me entertained with your company, and I'll share something about what you're seeking. Sounds fair?
+
+Rouge's smile is almost warm, but before you can fully take it in, she turns and walks away.
+
+— Tomorrow, I'll be waiting on my balcony. The guards will guide you.""",
+	
+	EMP_ARENA_1 = """You approach the grand, imposing arena, a towering structure hosting all manner of battles. At the main gate, an administrator recognizes you and leads you inside. Instead of the main hall, you're guided through a maze of storerooms.""",
+	EMP_ARENA_2 = """You arrive at a smaller, back arena. Without explanation, smirking guards nudge you onto a compact ring enclosed by iron bars. Your attempts to question them are met with assurances that they're following Rouge's orders.
+
+A few dozen spectators watch with mild excitement. Across the ring, caged beasts stir, and you realize you're expected to fight.""",
+	EMP_ARENA_3 = """From a high balcony, an elderly noble in fine attire surveys the arena. As the rightful owner, Chancellor Melchor seems unsettled today.
+
+Melchor: — What's this? Who's on the third ground? I didn't schedule any fights there today!
+
+His servant frantically rifles through papers, searching for answers.
+
+Servant: — S-sir Melchor, it seems Miss Rouge reserved it…""",
+	EMP_ARENA_4 = """Melchor: — What?! I explicitly forbade reservations for strangers and non-nobles. How did that woman manage this?
+
+The servant continues fumbling through the papers.
+
+Servant: — It was reserved by the second duke's son, but he reassigned it to her.
+
+Melchor: — Ensure this never happens again! That wretched woman will bring us demise.""",
+	EMP_ARENA_5 = """Rouge appears from behind the bars, visibly thrilled by your predicament.
+
+— Forgive my little trick, but a man must prove his worth in combat, no? Given your past deeds, this should be nothing to you.
+Before you can respond, the cages open, releasing the beasts. You brace for battle under Rouge's eager gaze.""",
+	EMP_ARENA_6 = """— As expected of my chosen one. But we're not done yet. Arena tradition demands a grand closing fight, and we've prepared something special.""",
+	EMP_ARENA_7 = """You recognize the man thrown into the ring—Greg, the instigator of Aliron's civil war. He looks as shocked as you.
+
+Greg: — What's the meaning of this, you vixen? You promised me the Emperor's support!
+
+Rouge: — And you'll have it—if you win. Isn't it unfair to always hide behind others, never facing danger yourself?
+
+Greg: — You're forcing me to fight [him]? That's not what we agreed!""",
+	EMP_ARENA_8 = """Rouge's face hardens, like a spoiled child denied her fun.
+
+Rouge: — Stop whining. Are you a man or not? Men fight at a woman's whim. You fled Aliron with your tail between your legs, and now you have a chance to turn it around in a single duel. Stop aiming so high when you're so low.
+
+Greg falls silent, unable to respond. He grips his weapon, his resolve hardens. The cheering crowd and Rouge's bloodthirsty stare make it clear there's no talking him down.""",
+	EMP_ARENA_9 = """You strike down Greg, who, despite his age, fought fiercely. Rouge beams with satisfaction as the crowd roars.
+
+Rouge: — Quite a performance, [name]. Now I can properly welcome you as an honored guest.""",
+	EMP_ARENA_9_OPTION_1 = "I must thank you for letting me finally get to him",
+	EMP_ARENA_9_OPTION_2 = "I don't like being used",
+	EMP_ARENA_9_OPTION_3 = "You've made me kill him",
+	EMP_ARENA_10_1 = """— No, I should thank you for such exquisite entertainment. Not everyone appreciates this sport, but I'm a big admirer.""",
+	EMP_ARENA_10_2 = """— You think I couldn't handle him myself? Please. You weren't used—you simply proved you're worth my time.""",
+	EMP_ARENA_10_3 = """— Oh? I didn't take you for the soft type. Consider it a favor to me. He was a tiresome man, demanding far more than he deserved.""",
+	EMP_ARENA_10_4 = """— What? No, that fool came to the Empire seeking aid. I figured I'd at least get some entertainment out of him. I heard he caused you trouble, but he clearly didn't have what it takes.""",
+	EMP_ARENA_10_5 = """— What's this nonsense? I'm on my own side. You don't understand how things work here, do you? I may share goals with Mhyrana, but I'm far above them. And before you beg to join me, you'll need to do more than defeat weaklings.""",
+	EMP_ARENA_10_OPTION_1 = "So you were behind Greg the whole time?",
+	EMP_ARENA_10_OPTION_2 = "Whose side are you on?",
+	EMP_ARENA_10_OPTION_3 = "I'm actually need to find the artifact here...",
+	EMP_ARENA_11 = """— Likewise, but I have no leads to share yet. Shall we make it a contest? First to find it rules the Empire! Ha, just kidding. I look forward to your next performance, [name].
+
+With that, Rouge strides out of the arena, her gawky servant trailing behind.""",
+	
+	EMP_ERDYNA_INTRO = "",
+	EMP_ERDYNA_INTRO_1 = """As you navigate the shadier districts of the capital, you feel eyes watching you from the shadows. You conceal your awareness, but after another turn, a group of rough-looking figures blocks your path. A glance back reveals more thugs sealing off your retreat.""",
+	EMP_ERDYNA_INTRO_2 = """A woman steps forward from the group, her lizard-like tail, scaled skin, and horned head marking her as their leader. She fixes you with a predatory smile.
+
+Woman: — Well, well, a country [boy] wandering where [he] doesn't belong. Boys, help [him] part with his valuables. Don't be gentle.
+
+Despite her command, she hangs back, watching from a distance.""",
+	EMP_ERDYNA_INTRO_3 = """You dispatch most of the henchmen, the rest scattering into the streets. The woman remains, eyeing you cautiously but unflinchingly.
+
+— Heh, looks like we bit off more than we could chew. You're not what you seem, are you? Let's call it even. Name's Erdyna, by the way—you'd know it if you'd spent time in these slums.""",
+	EMP_ERDYNA_INTRO_3_OPTION_1 = "I'd rather get you to officials",
+	EMP_ERDYNA_INTRO_3_OPTION_2 = "Chickening out now?",
+	EMP_ERDYNA_INTRO_3_OPTION_3 = "Why won't you just follow after your men",
+	EMP_ERDYNA_INTRO_4 = """Erdyna steps closer, her tail swaying like a pendulum, her predatory smile returning as she OBSERVES your reaction.
+
+— Chickening out? You've proven you're a better fighter than the sorry lot who call me boss. But if you want a real fight, I'll give you a duel.""",
+	EMP_ERDYNA_INTRO_DUEL_OPTION = "Lets fight then",
+	EMP_ERDYNA_INTRO_4_OPTION_2 = "No, it's not needed",
+	EMP_ERDYNA_INTRO_DUEL = """Erdyna's eyes narrow with delight, her tail lashing excitedly as she steps into a fighting stance, the slums' shadows dancing across her scaled form.
+
+— Hmph, fine by me. Don't cry when you get hurt.""",
+	EMP_ERDYNA_INTRO_6_1 = """After a grueling fight, both you and Erdyna are exhausted, yet her stamina seems far from spent. Still, she raises her hands in surrender.
+
+— Damn, you fight like a beast. Satisfied now?""",
+	EMP_ERDYNA_INTRO_6_2 = """Erdyna laughs as she brushes dirt from her scales.
+
+— A fighter and a charmer? We might get along after all.""",
+	EMP_ERDYNA_INTRO_6_OPTION_1 = "You aren't bad yourself",
+	EMP_ERDYNA_INTRO_6_OPTION_2 = "Anyway, why are you still here?",
+	EMP_ERDYNA_INTRO_5_1 = """She leans against a crumbling wall, her tail flicking lazily as she smirks.
+
+— Come on, you don't want to waste your time with that.
+
+The distant clatter of fleeing footsteps echoes through the slums, but Erdyna's confidence holds firm, her yellow eyes glinting with amusement.""",
+	EMP_ERDYNA_INTRO_5_2 = """— I'm no coward to flee a fight, even if my kobold blood might suggest otherwise.
+
+You note her lizard-like traits, the subtle pride in her voice hinting at a life spent proving herself in these streets.""",
+	EMP_ERDYNA_INTRO_5_3 = """The tension in the alley eases slightly, though Erdyna's piercing gaze remains locked on you as she relaxes her stance.
+
+— Good. You're not just a skilled fighter but know when to stop.""",
+	EMP_ERDYNA_INTRO_5_OPTION_1 = "I gonna do it anyway",
+	EMP_ERDYNA_INTRO_5_OPTION_0 = "Fine, so why are you still here",
+	EMP_ERDYNA_INTRO_7 = """— Fine, let's teach you a lesson, country [boy].""",
+	EMP_ERDYNA_INTRO_8 = """You seize her wrist, her scales cool and rough under your grip, and lead her toward a nearby guard patrol, their lanterns bobbing in the slum's murky haze. The guards, clad in worn imperial armor, spot Erdyna and exchange weary glances, their faces etched with exasperation.
+
+Guard: — Damn, this mutt causing trouble again? I thought last time was the end of it!
+
+Erdyna: — Not every day a rich-looking fella wanders into the slums, you know...
+
+Guard: — Fuck you, just get lost.""",
+	EMP_ERDYNA_INTRO_9_1 = """You demand to know why she's not being arrested, but the guards wave you off like a beggar scrounging for coin, their boots clattering on the cobblestones as they turn away. Erdyna faces you, her yellow eyes gleaming with a knowing smirk.
+
+Erdyna: — You really are an outsider, clueless about the Grand Empire. They won't stick their necks out for something this small and risk crossing me. Down here, the only rule is watching your own back. Take that to heart.""",
+	EMP_ERDYNA_INTRO_9_2 = """The distant hum of the capital muffled by the alley's high walls. Erdyna leans against a crate, unfazed by the encounter.
+
+— You don't survive these streets without being savvy. Don't mistake me for some small-time thug.""",
+	EMP_ERDYNA_INTRO_9_OPTION_1 = "I can't believe you are so casual about it",
+	EMP_ERDYNA_INTRO_9_OPTION_2 = "So, why are you still here?",
+	EMP_ERDYNA_INTRO_10_1 = """The air grows still, the alley's stench of rot lingering as Erdyna steps closer, her scales catching the faint glow of a dying torch. Her eyes narrow, a mix of curiosity and calculation, as if weighing your worth. 
+
+— Yeah... about that. I figured I could offer my help. You're no ordinary [man] strolling through the capital's slums. Few know these streets better than me. I could help you find what you're after—free of charge, for now, since you've caught my interest.""",
+	EMP_ERDYNA_INTRO_10_2 = """Erdyna crosses her arms, her smirk returns, confident yet playful, as she meets your skeptical gaze without flinching.
+
+— I'm not asking for anything upfront, am I? You look lost wandering a place like this. I'm good at hunting down what people need—and I like a challenge.""",
+	EMP_ERDYNA_INTRO_10_3 = """The faint clink of a distant tavern spills into the alley, underscoring the uneasy quiet. Erdyna clicks her tongue, her horns tilting as she leans forward, her voice low but firm, undeterred by your rejection.
+
+— Tsk, I'm offering my help for free... for now. I'll prove I'm useful, and I swear I'll only ask for payment when it's something worth paying for. Until then, my help's on the house.""",
+	EMP_ERDYNA_INTRO_10_OPTION_1 = "Why would I trust you?",
+	EMP_ERDYNA_INTRO_10_OPTION_2 = "I don't need any help which will make me pay something I'm not ready to",
+	EMP_ERDYNA_INTRO_10_OPTION_3 = "Fine, I could use some help",
+	EMP_ERDYNA_INTRO_11 = """Erdyna's eyes light up, and she plants her hands on her hips, her tail swishing triumphantly.
+
+— That's the spirit. So, what's your business here?""",
+	EMP_ERDYNA_INTRO_11_OPTION_1 = "I'm looking for an ancient artifact...",
+	EMP_ERDYNA_INTRO_11_OPTION_2 = "There's a dangerous cult and some old relics...",
+	EMP_ERDYNA_INTRO_12 = """You pause, the weight of your mission settling over you as the alley's damp chill seeps into your bones. After a moment's thought, you decide a local guide could be useful. You briefly explain your goal of finding ancient artifacts or uncovering details about a dangerous cult. Erdyna's eyes gleam as she nods thoughtfully.
+
+— I see, I see... Old relics, religious stuff? I know just the place to dig up information on that. History and temples aren't exactly popular around here, so you're lucky I know someone who deals in that sort of thing. Let's move.""",
 }
 

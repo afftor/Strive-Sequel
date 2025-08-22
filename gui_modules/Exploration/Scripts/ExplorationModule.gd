@@ -53,8 +53,15 @@ func _ready():
 	var closebutton = gui_controller.add_close_button($AreaShop)
 	input_handler.connect("LocationSlavesUpdate", self, 'build_location_group')
 	input_handler.connect("update_itemlist", self, 'update_sell_list')
+	input_handler.connect("clear_cashed", self, 'clear_cashed')
 	# gui_controller.win_btn_connections_handler(true, $AreaShop, closebutton)
 #	$LocationGui/ce.connect("pressed", input_handler, "interactive_message", ['celena_shrine_find', '', {}])
+
+
+func clear_cashed():
+	active_location = null
+	selected_location = 'aliron'
+
 
 func test():
 	for win in gui_controller.windows_opened:
@@ -985,13 +992,12 @@ func item_puchase_confirm(value):
 		if Items.materiallist.has(purchase_item.code):
 			ResourceScripts.game_res.set_material(purchase_item.code, '+', value)
 		elif Items.itemlist.has(purchase_item.code):
-			while value > 0:
+			for i in range(value):
 				match purchase_item.type:
 					'usable':
 						globals.AddItemToInventory(globals.CreateUsableItem(purchase_item.code))
 					'gear':
 						globals.AddItemToInventory(globals.CreateGearItemShop(purchase_item.code, {}))
-				value -= 1
 		ResourceScripts.game_res.money -= purchase_item.price * value
 		update_sell_list()
 		update_buy_list()

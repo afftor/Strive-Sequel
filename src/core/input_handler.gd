@@ -44,6 +44,7 @@ signal update_ragdoll
 signal update_itemlist
 signal survival_advance
 signal fighter_changed
+signal clear_cashed
 
 #animations queue
 signal animation_finished
@@ -1027,6 +1028,10 @@ func start_event(code, type, args):
 			scene_characters.push_back(characters_pool.get_char_by_id(args.char1))
 			scene_characters.push_back(characters_pool.get_char_by_id(args.char2))
 			active_character = characters_pool.get_char_by_id(args.char2)
+		'char_event':
+			scene_characters.clear()
+			for ch in args.scene_chars:
+				scene_characters.push_back(characters_pool.get_char_by_id(ch))
 		'quest_finish_event':
 			data.text = data.text.replace("[dungeonname]", args.locationname)
 		'childbirth':
@@ -1047,9 +1052,10 @@ func start_event(code, type, args):
 					active_area.events.erase(i)
 					break
 		'location_purchase_event':
+			var loc_data = ResourceScripts.world_gen.get_location_from_code(selected_location)
 			data.text = tr(data.text)
-			data.text = data.text.replace("[areaname]", tr(selected_area.name)).replace('[locationname]', tr(selected_location.name)).replace('[locationdescript]',tr(selected_location.descript)).replace("[locationtypename]", tr(selected_location.classname))
-
+			data.text = data.text.replace("[areaname]", tr(selected_area.name)).replace('[locationname]', tr(loc_data.name)).replace('[locationdescript]',tr(loc_data.descript)).replace("[locationtypename]", tr(loc_data.classname))
+	
 	gui_controller.dialogue.open(data)
 
 
