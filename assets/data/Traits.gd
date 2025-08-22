@@ -417,8 +417,24 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['human_form', 'demon_form', 'magic_atunement', 'combat_atunement_passive', 'combat_atunement_trigger'],
+		effects = ['human_form', 'demon_form'],
 	}, #hardcoded
+	succubus_magic = {
+		code = 'succubus_magic',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['magic_atunement'],
+	}, 
+	succubus_combat = {
+		code = 'succubus_combat',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['combat_atunement_passive', 'combat_atunement_trigger'],
+	}, 
 	true_succubus = {
 		code = 'true_succubus',
 		name = '',

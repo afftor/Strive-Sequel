@@ -306,8 +306,8 @@ var professions = {
 		reqs = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 4},{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 3},{code = 'has_profession', profession = 'harlot', check = true}],
 		combatskills = ['euphoria_apply'],
 		statchanges = {sexuals_bonus = 15, charm_bonus = 5, chg_persuasion_max = 1, trainee_amount = 1, mastery_point_magic = 1},
-		traits = ['succubus', 'trainer'],
-		skills = ['succubus_lust_skill', 'enthrall', 'release_thrall', 'corrupt', 'allure', 'turn_succubus', 'swap_form'],#'seduce',
+		traits = ['succubus', 'succubus_magic', 'succubus_combat'], #'trainer'], 
+		skills = ['succubus_lust_skill', 'enthrall', 'release_thrall', 'corrupt', 'allure', 'turn_succubus', 'swap_form'],
 		conflict_classes = [],
 	},
 	succubus_old = {

@@ -58,7 +58,9 @@ var skills = {
 		type = 'social',
 		ability_type = 'skill',
 		social_skill_stats = [],
-		reqs = [],
+		reqs = [
+			{code = 'stat', stat = 'thralls_amount', operant = 'gte', value = 1}
+		],
 		targetreqs = [
 			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}
 			],
@@ -80,7 +82,9 @@ var skills = {
 		type = 'social',
 		ability_type = 'skill',
 		social_skill_stats = [],
-		reqs = [],
+		reqs = [
+			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 1}
+		],
 		chance = {
 			condition = [{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}],
 			value = 100,
@@ -114,7 +118,9 @@ var skills = {
 		type = 'social',
 		ability_type = 'skill',
 		social_skill_stats = [],
-		reqs = [],
+		reqs = [
+			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 1}
+		],
 		targetreqs = [
 			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}
 			],
@@ -136,7 +142,9 @@ var skills = {
 		type = 'social',
 		ability_type = 'skill',
 		social_skill_stats = [],
-		reqs = [],
+		reqs = [
+			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 3}
+		],
 		targetreqs = [
 			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']},
 			{code = 'stat', stat = 'consent', operant = 'gte', value = 5},
@@ -159,7 +167,9 @@ var skills = {
 		type = 'social',
 		ability_type = 'skill',
 		social_skill_stats = [],
-		reqs = [],
+		reqs = [
+			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 3}
+		],
 		targetreqs = [],
 		effects = ['swap_form'],
 		cost = {},
@@ -285,7 +295,9 @@ var effects = {
 	magic_atunement = {
 		type = 'simple',
 		descript = '',
-		conditions = [],
+		conditions = [
+			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
+		],
 		tags = ['magic_atunement'],
 		statchanges = {matk = 10, mpmax_add = 25},
 		buffs = [ 
@@ -300,7 +312,9 @@ var effects = {
 	combat_atunement_passive = {
 		type = 'simple',
 		descript = '',
-		conditions = [],
+		conditions = [
+			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
+		],
 		tags = ['combat_atunement'],
 		statchanges = {hpmax_add_part = 0.2},
 		buffs = [ 
@@ -314,6 +328,9 @@ var effects = {
 	},
 	combat_atunement_trigger = {
 		type = 'base',
+		conditions = [
+			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
+		],
 		sub_effects = [
 			{
 				type = 'trigger',
