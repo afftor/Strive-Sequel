@@ -509,6 +509,13 @@ func fix_stat_data(stat, data):
 			data.base_value = get_stat('growth_factor') * 25
 		'lustmax':
 			data.base_value = get_stat('sexuals_factor') * 25 + 25
+			if !data.bonuses.has('add'):
+				data.bonuses.add = []
+			data.bonuses.add.push_back({value = parent.get_ref().get_stat('thralls_amount') * (7 + 3 * get_stat('sexuals_factor')), src_type = 'other', src_value = 'thralls', timestamp = 0})
+		'lusttick':
+			if !data.bonuses.has('add'):
+				data.bonuses.add = []
+			data.bonuses.add.push_back({value = parent.get_ref().get_stat('thralls_amount') * (0.9 + 0.1 * get_stat('sexuals_factor')), src_type = 'other', src_value = 'thralls', timestamp = 0})
 		'trainee_amount':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []

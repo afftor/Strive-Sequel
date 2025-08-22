@@ -2148,6 +2148,17 @@ func get_template(id, caster):
 				if line.has('set'):
 					for arg in line.set:
 						tres[arg] = line.set[arg]
+	if tres.tags.has('refine_targetreqs'):
+		for rec in tres.targetreqs:
+			for key in rec:
+				if rec[key] is Array:
+					rec[key] = input_handler.calculate_number_from_string_array(rec[key], caster, null)
+	if tres.tags.has('refine_chance'):
+		if tres.chance is Dictionary:
+			for rec in tres.chance.condition:
+				for key in rec:
+					if rec[key] is Array:
+						rec[key] = input_handler.calculate_number_from_string_array(rec[key], caster, null)
 	#process type_change
 	if !(tres.has('new_syntax') and tres.new_syntax == true): 
 		var ss = ResourceScripts.scriptdict.class_sskill_legacy.new()

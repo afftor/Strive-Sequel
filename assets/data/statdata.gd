@@ -8,6 +8,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
+		tags = ['numeric', 'integer']
 	},
 	mp = {
 		code = 'mp',
@@ -15,6 +16,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
+		tags = ['numeric', 'integer']
 	},
 	price = { 
 		code = 'price',
@@ -37,6 +39,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_exp',
 		type = 'misc',
+		tags = ['numeric']
 	},
 	loyalty = {
 		code = 'loyalty',
@@ -44,6 +47,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_cf',
 		type = 'mental_stat',
+		tags = ['numeric', 'integer']
 	},
 	spirit = {
 		code = 'spirit',
@@ -51,6 +55,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_cf',
 		type = 'mental_stat',
+		tags = ['numeric', 'integer']
 	},
 	resistance = {
 		code = 'resistance',
@@ -58,6 +63,52 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_cf',
 		type = 'mental_stat',
+		tags = ['numeric', 'integer']
+	},
+	thrall_master = {
+		code = 'thrall_master',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		tags = [],
+		default_bonus = 'set'
+	},
+	thralls = {
+		code = 'thralls',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		tags = ['array'],
+		default_bonus = 'append'
+	},
+	thralls_amount = {
+		code = 'thralls_amount',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		tags = ['integer'],
+		default_bonus = 'set' #no setter actually
+	},
+	thrall_points = {
+		code = 'thrall_points',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		tags = ['integer'],
+		default_bonus = 'set' #no setter actually
+	},
+	thralls_amount_max = {
+		code = 'thralls_amount_max',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		tags = ['integer'],
+		default_bonus = 'set' #no setter actually
 	},
 	food_hate = {
 		code = 'food_hate',
@@ -623,7 +674,7 @@ var statdata = {
 		type = 'mental_stat',
 		default_bonus = 'add_part',
 		direct = false,
-		tags = ['numeric']
+		tags = ['numeric', 'custom_bonuses']
 	},
 	lustmax = {
 		code = 'lustmax',

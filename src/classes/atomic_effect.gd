@@ -46,6 +46,10 @@ func calculate_property(prop): #updated version. copy this to displaced
 				prop.pop_front()
 				prop[0] = value
 				pass
+			'not':
+				var value = calculate_property(prop[1])
+				prop.pop_front()
+				prop[0] = !value
 	while prop.size() > 1:
 		match prop[1]:
 			'+':

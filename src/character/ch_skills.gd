@@ -304,8 +304,9 @@ func use_social_skill(s_code, target, item):
 	s_skill.createfromskill(template)
 	s_skill.setup_caster(parent.get_ref())
 	s_skill.setup_target(target)
-	s_skill.process_event(variables.TR_CAST, {skill = s_skill})
+	s_skill.process_event(variables.TR_S_CAST, {skill = s_skill})
 	s_skill.setup_final()
+	s_skill.process_event(variables.TR_S_HIT, {skill = s_skill})
 	s_skill.hit_roll()
 	s_skill.resolve_value(true)
 	s_skill.apply_random()
@@ -317,151 +318,15 @@ func use_social_skill(s_code, target, item):
 	#s_skill.calculate_dmg() not really needed
 	#to implement not fully described social chance-to-success system 
 	var effect_text = '\n'
-	#applying values
-	for i in s_skill.value:
-		if !i.check_conditions(): continue
-		var targ_fin
-		match i.receiver:
-			'caster': targ_fin = targ_cast
-			'target': targ_fin = targ_targ
-			'all': targ_fin = targ_all
-			'area': 
-				targ_fin = targ_all.duplicate()
-				targ_fin.push_back(parent.get_ref())
-				if target != null and target != parent.get_ref():
-					targ_fin.push_back(target)
-		if i.damagestat == 'no_stat':
-			if template.has('process_no_stat'):
-				for h in targ_fin:
-					s_skill.process_event(variables.TR_SOC_SPEC, {skill = s_skill, caster = parent.get_ref(), target = target, receiver = h})
-#					for e in s_skill.effects:
-#						var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-#						eff.process_act(variables.TR_SOC_SPEC, {skill = s_skill, caster = parent.get_ref(), target = target, receiver = h})
-			continue
-#		var detail_tags = []
-		for h in targ_fin:
-			var cached_value = i.value
-			var detail_tags = []
-			if i.template.has('receiver_reqs'):
-				if !h.checkreqs(i.template.receiver_reqs): continue
-			var mod = i.dmgf
-			var stat = i.damagestat
-			var bonusspeech = []
-			var tmp
-			if stat.begins_with('direct_personality'):
-				var cur_personality = h.get_stat('personality')
-				var st = stat.trim_prefix('direct_')
-				var st_res = st
-				if cached_value < 0:
-#					cached_value = -cached_value
-					if st == 'personality_bold':
-						st_res = 'personality_shy'
-					else:
-						st_res = 'personality_serious'
-				h.add_stat(st, cached_value)
-				effect_text += "\n" + h.translate(tr("PERSONALITYSHIFT" + st_res.to_upper()))
-				
-				var next_personality = h.get_stat('personality')
-				if next_personality != cur_personality:
-					effect_text += "\n" + h.get_short_name() + tr("PERSONALITYCHANGE") + tr("PERSONALITYNAME" + next_personality.to_upper())
-				parent.get_ref().update_prt()
-			elif stat.begins_with('personality'):
-				if h.check_work_rule("personality_lock"):
-					continue
-				var cur_personality = h.get_stat('personality')
-				var tres = {personality_bold = 0, personality_shy = 0, personality_kind = 0,personality_serious = 0} #2 per stat
-				if mod == 1:
-					cached_value = -cached_value
-				var update_data = h.change_personality_stats(stat.trim_prefix('personality_'), cached_value, parent.get_ref().has_status('communicative'))
-				var change = update_data[0]
-				var stats_bind = ['personality_bold', 'personality_bold']
-				if stat == 'personality_bold':
-					if change[0] > 0:
-						stats_bind[0] = 'personality_bold'
-					else:
-						stats_bind[0] = 'personality_shy'
-						change[0] = - change[0]
-					if change[1] > 0:
-						stats_bind[1] = 'personality_kind'
-					else:
-						stats_bind[1] = 'personality_serious'
-						change[1] = - change[1]
-				elif stat == 'personality_kind':
-					if change[1] > 0:
-						stats_bind[1] = 'personality_bold'
-					else:
-						stats_bind[1] = 'personality_shy'
-						change[1] = - change[1]
-					if change[0] > 0:
-						stats_bind[0] = 'personality_kind'
-					else:
-						stats_bind[0] = 'personality_serious'
-						change[0] = - change[0]
-				
-				for ii in [0, 1]:
-					tres[stats_bind[ii]] = change[ii]
-				
-				if update_data[1] == true:
-					effect_text += globals.TextEncoder(h.translate(tr("PERSONALITYREBEL")))
-				for st in tres:
-					if tres[st] == 0: 
-						continue
-					
-					effect_text += "\n" + h.translate(tr("PERSONALITYSHIFT"+st.to_upper()))# + h.get_short_name() + ", " + statdata.statdata[st].name + ": +" + str(tres[st])
-				var next_personality = h.get_stat('personality')
-				if next_personality != cur_personality:
-					effect_text += "\n" + h.get_short_name() + tr("PERSONALITYCHANGE") + tr("PERSONALITYNAME" + next_personality.to_upper())
-				parent.get_ref().update_prt()
-			else:
-				match mod:
-					0:
-						tmp = h.stat_update(stat, cached_value)
-						if stat  == 'lust':
-							if h.get_stat('lust') >= h.get_stat('lustmax'):
-								detail_tags.append('lust_cap')
-						if i.is_drain > 0.0: 
-							parent.get_ref().stat_update(stat, -tmp * i.is_drain)
-					1:
-						tmp = h.stat_update(stat, -cached_value)
-						if i.is_drain > 0.0: 
-							parent.get_ref().stat_update(stat, -tmp * i.is_drain)
-					2:
-						tmp = h.stat_update(stat, cached_value, true)
-						if i.is_drain > 0.0: 
-							parent.get_ref().stat_update(stat, -tmp * i.is_drain)
-
-				effect_text += "\n" + h.get_short_name() + ", " + statdata.statdata[stat].name
-			
-				var maxstat = 100
-				if i.damagestat.find("factor")>=0:
-					maxstat = 0
-				elif statdata.statdata.has(stat+'max'):
-					maxstat = h.get_stat(stat + "max")
-				
-				var change = '+'
-				if tmp < 0:
-					change = ''
-				effect_text += ": "
-				if maxstat != 0 && !(stat in ['consent', 'lust', 'base_exp']):
-					effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ("(%d)" % cached_value) +  ")"
-				else:
-					effect_text += change + str(floor(tmp)) 
-				if detail_tags.has("lust_cap") && stat == 'lust':
-					effect_text += " - Maxed"
-			for j in bonusspeech:
-				effect_text += "\n\n{color=aqua|"+ h.get_short_name() + "} - {random_chat=0|"+ j +"}\n"
-	if target != null and target.skills.skills_received_today.has(s_code) == false: target.skills.skills_received_today.append(s_code)
-	
-	if template.has("dialogue_report"):
+	if s_skill.hit_res == variables.RES_MISS:
 		var data = {text = '', tags = ['skill_report_event'], options = []}
-		var text = parent.get_ref().translate(template.dialogue_report)
+		var text = parent.get_ref().translate(template.dialogue_report_failed)
 		if template.has('dialogue_image'):
 			data.image = template.dialogue_image
 		else:
 			data.image = 'noevent'
 		if target != null: text = target.translate(text.replace("[target", "["))
-		data.text = text + effect_text
-		
+		data.text = text
 		if template.dialogue_show_repeat == true:
 			data.options.append({code ='repeat', text = tr('DIALOGUEREPEATACTION'), disabled = true, reqs = []})
 			if parent.get_ref().check_skill_availability(s_code, target).check == true:
@@ -475,13 +340,172 @@ func use_social_skill(s_code, target, item):
 		data.options.append({code = 'close', text = tr("DIALOGUECLOSE"), reqs = []})
 		
 		input_handler.interactive_message_custom(data)
-	#postdamage triggers
-	s_skill.process_event(variables.TR_POSTDAMAGE, {skill = s_skill, caster = parent.get_ref(), target = target})
-	parent.get_ref().process_event(variables.TR_POSTDAMAGE, {skill = s_skill, caster = parent.get_ref(), target = target})
-	if target != null:
-		target.process_event(variables.TR_POSTDAMAGE, {skill = s_skill, caster = parent.get_ref(), target = target})
 	else:
-		for t in targ_all: t.process_event(variables.TR_POSTDAMAGE, {skill = 's_skill', caster = parent.get_ref(), target = target})
+		#applying values
+		for i in s_skill.value:
+			if !i.check_conditions(): continue
+			var targ_fin
+			match i.receiver:
+				'caster': targ_fin = targ_cast
+				'target': targ_fin = targ_targ
+				'all': targ_fin = targ_all
+				'area': 
+					targ_fin = targ_all.duplicate()
+					targ_fin.push_back(parent.get_ref())
+					if target != null and target != parent.get_ref():
+						targ_fin.push_back(target)
+			if i.damagestat == 'no_stat':
+				if template.has('process_no_stat'):
+					for h in targ_fin:
+						s_skill.process_event(variables.TR_SOC_SPEC, {skill = s_skill, caster = parent.get_ref(), target = target, receiver = h})
+	#					for e in s_skill.effects:
+	#						var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+	#						eff.process_act(variables.TR_SOC_SPEC, {skill = s_skill, caster = parent.get_ref(), target = target, receiver = h})
+				continue
+	#		var detail_tags = []
+			for h in targ_fin:
+				var cached_value = i.value
+				var detail_tags = []
+				if i.template.has('receiver_reqs'):
+					if !h.checkreqs(i.template.receiver_reqs): continue
+				var mod = i.dmgf
+				var stat = i.damagestat
+				var bonusspeech = []
+				var tmp
+				if stat.begins_with('direct_personality'):
+					var cur_personality = h.get_stat('personality')
+					var st = stat.trim_prefix('direct_')
+					var st_res = st
+					if cached_value < 0:
+	#					cached_value = -cached_value
+						if st == 'personality_bold':
+							st_res = 'personality_shy'
+						else:
+							st_res = 'personality_serious'
+					h.add_stat(st, cached_value)
+					effect_text += "\n" + h.translate(tr("PERSONALITYSHIFT" + st_res.to_upper()))
+					
+					var next_personality = h.get_stat('personality')
+					if next_personality != cur_personality:
+						effect_text += "\n" + h.get_short_name() + tr("PERSONALITYCHANGE") + tr("PERSONALITYNAME" + next_personality.to_upper())
+					parent.get_ref().update_prt()
+				elif stat.begins_with('personality'):
+					if h.check_work_rule("personality_lock"):
+						continue
+					var cur_personality = h.get_stat('personality')
+					var tres = {personality_bold = 0, personality_shy = 0, personality_kind = 0,personality_serious = 0} #2 per stat
+					if mod == 1:
+						cached_value = -cached_value
+					var update_data = h.change_personality_stats(stat.trim_prefix('personality_'), cached_value, parent.get_ref().has_status('communicative'))
+					var change = update_data[0]
+					var stats_bind = ['personality_bold', 'personality_bold']
+					if stat == 'personality_bold':
+						if change[0] > 0:
+							stats_bind[0] = 'personality_bold'
+						else:
+							stats_bind[0] = 'personality_shy'
+							change[0] = - change[0]
+						if change[1] > 0:
+							stats_bind[1] = 'personality_kind'
+						else:
+							stats_bind[1] = 'personality_serious'
+							change[1] = - change[1]
+					elif stat == 'personality_kind':
+						if change[1] > 0:
+							stats_bind[1] = 'personality_bold'
+						else:
+							stats_bind[1] = 'personality_shy'
+							change[1] = - change[1]
+						if change[0] > 0:
+							stats_bind[0] = 'personality_kind'
+						else:
+							stats_bind[0] = 'personality_serious'
+							change[0] = - change[0]
+					
+					for ii in [0, 1]:
+						tres[stats_bind[ii]] = change[ii]
+					
+					if update_data[1] == true:
+						effect_text += globals.TextEncoder(h.translate(tr("PERSONALITYREBEL")))
+					for st in tres:
+						if tres[st] == 0: 
+							continue
+						
+						effect_text += "\n" + h.translate(tr("PERSONALITYSHIFT"+st.to_upper()))# + h.get_short_name() + ", " + statdata.statdata[st].name + ": +" + str(tres[st])
+					var next_personality = h.get_stat('personality')
+					if next_personality != cur_personality:
+						effect_text += "\n" + h.get_short_name() + tr("PERSONALITYCHANGE") + tr("PERSONALITYNAME" + next_personality.to_upper())
+					parent.get_ref().update_prt()
+				else:
+					match mod:
+						0:
+							tmp = h.stat_update(stat, cached_value)
+							if stat  == 'lust':
+								if h.get_stat('lust') >= h.get_stat('lustmax'):
+									detail_tags.append('lust_cap')
+							if i.is_drain > 0.0: 
+								parent.get_ref().stat_update(stat, -tmp * i.is_drain)
+						1:
+							tmp = h.stat_update(stat, -cached_value)
+							if i.is_drain > 0.0: 
+								parent.get_ref().stat_update(stat, -tmp * i.is_drain)
+						2:
+							tmp = h.stat_update(stat, cached_value, true)
+							if i.is_drain > 0.0: 
+								parent.get_ref().stat_update(stat, -tmp * i.is_drain)
+
+					effect_text += "\n" + h.get_short_name() + ", " + statdata.statdata[stat].name
+				
+					var maxstat = 100
+					if i.damagestat.find("factor")>=0:
+						maxstat = 0
+					elif statdata.statdata.has(stat+'max'):
+						maxstat = h.get_stat(stat + "max")
+					
+					var change = '+'
+					if tmp < 0:
+						change = ''
+					effect_text += ": "
+					if maxstat != 0 && !(stat in ['consent', 'lust', 'base_exp']):
+						effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ("(%d)" % cached_value) +  ")"
+					else:
+						effect_text += change + str(floor(tmp)) 
+					if detail_tags.has("lust_cap") && stat == 'lust':
+						effect_text += " - Maxed"
+				for j in bonusspeech:
+					effect_text += "\n\n{color=aqua|"+ h.get_short_name() + "} - {random_chat=0|"+ j +"}\n"
+		if target != null and target.skills.skills_received_today.has(s_code) == false: target.skills.skills_received_today.append(s_code)
+		
+		if template.has("dialogue_report"):
+			var data = {text = '', tags = ['skill_report_event'], options = []}
+			var text = parent.get_ref().translate(template.dialogue_report)
+			if template.has('dialogue_image'):
+				data.image = template.dialogue_image
+			else:
+				data.image = 'noevent'
+			if target != null: text = target.translate(text.replace("[target", "["))
+			data.text = text + effect_text
+			
+			if template.dialogue_show_repeat == true:
+				data.options.append({code ='repeat', text = tr('DIALOGUEREPEATACTION'), disabled = true, reqs = []})
+				if parent.get_ref().check_skill_availability(s_code, target).check == true:
+					data.options[0].disabled = false
+			
+			input_handler.active_character = parent.get_ref()
+			input_handler.target_character = target
+			input_handler.activated_skill = s_code
+			if input_handler.scene_characters.has(target) == false: input_handler.scene_characters.append(target)
+			
+			data.options.append({code = 'close', text = tr("DIALOGUECLOSE"), reqs = []})
+			
+			input_handler.interactive_message_custom(data)
+		#postdamage triggers
+		s_skill.process_event(variables.TR_POSTDAMAGE, {skill = s_skill, caster = parent.get_ref(), target = target})
+		parent.get_ref().process_event(variables.TR_POSTDAMAGE, {skill = s_skill, caster = parent.get_ref(), target = target})
+		if target != null:
+			target.process_event(variables.TR_POSTDAMAGE, {skill = s_skill, caster = parent.get_ref(), target = target})
+		else:
+			for t in targ_all: t.process_event(variables.TR_POSTDAMAGE, {skill = 's_skill', caster = parent.get_ref(), target = target})
 	
 	input_handler.update_slave_list()
 	#input_handler.update_slave_panel()
