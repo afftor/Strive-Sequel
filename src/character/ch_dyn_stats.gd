@@ -114,7 +114,7 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 			continue
 		var tatdata = Traitdata.tattoodata[tattoos[slot]].effects
 		for rec in tatdata:
-			if rec.has(slot):
+			if rec.has(slot.trim_prefix('tattoo_')):
 				for eff in tatdata[rec]:
 					process_eid_add(eff, 0) #probably not 0
 	get_traits_buffs()
@@ -436,7 +436,6 @@ func get_stat_data(stat, stop = variables.DYN_STATS_FULL): #full value
 	
 	if st_data.tags.has('integer'):
 		res.result = int(res.result)
-	
 	return res
 
 
