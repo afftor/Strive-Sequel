@@ -49,7 +49,7 @@ func sort_locations(locations_array):
 
 func build_accessible_locations(args = null):
 	nav = gui_controller.nav_panel.get_node("NavigationContainer/AreaSelection")
-	input_handler.ClearContainer(nav)
+	input_handler.ClearContainer(nav, ['Button', 'VSeparator'])
 	var location_array = ["aliron"]
 	var travelers = []
 	for i in ResourceScripts.game_party.character_order:
@@ -61,31 +61,39 @@ func build_accessible_locations(args = null):
 			location_array.append(person_location)
 	var sorted_locations = sort_locations(location_array)
 	for i in sorted_locations:
-		var newseparator = $VSeparator.duplicate()
-		var newbutton = input_handler.DuplicateContainerTemplate(nav)
-		nav.add_child(newseparator)
+		var newbutton = input_handler.DuplicateContainerTemplate(nav, 'Button')
+#		var newseparator = input_handler.DuplicateContainerTemplate(nav, 'VSeparator')
+#		nav.add_child(newseparator)
 		if i == "Mansion":
-			newbutton.text = "Mansion"
+#			newbutton.text = "Mansion"
+			newbutton.get_node('icon').texture = images.get_background('mansion')
 			newbutton.connect("pressed", self, "return_to_mansion")
+			globals.connecttexttooltip(newbutton, "Mansion")
 			# newbutton.set_meta("data", i)
-			newseparator.visible = true
+#			newseparator.visible = true
 			newbutton.pressed = gui_controller.current_screen == gui_controller.mansion
 			newbutton.toggle_mode = !gui_controller.current_screen == gui_controller.mansion
 			continue
 		if i == "Infinite":
-			newbutton.text = tr("INFINITEDUNGEONNAME")
+#			newbutton.text = tr("INFINITEDUNGEONNAME")
+			globals.connecttexttooltip(newbutton, tr("INFINITEDUNGEONNAME"))
+			newbutton.get_node('icon').texture = images.get_icon('tower')
 			newbutton.connect("pressed", self, "open_infinite")
 			# newbutton.set_meta("data", i)
-			newseparator.visible = true
+#			newseparator.visible = true
 			if !ResourceScripts.game_progress.decisions.has('unlock_infinite'):
-				newseparator.visible = false
+#				newseparator.visible = false
 				newbutton.visible = false
 			continue
-		if i != sorted_locations[sorted_locations.size() - 1]:
-			newseparator.visible = true
+#		if i == sorted_locations.back():
+#			newseparator.visible = false
+#		newbutton.text = ResourceScripts.world_gen.get_location_from_code(i).name
+		var locdata = ResourceScripts.world_gen.get_location_from_code(i)
+		globals.connecttexttooltip(newbutton, locdata.name)
+		if locdata.type == 'capital':
+			newbutton.get_node('icon').texture = images.get_icon(ResourceScripts.game_world.areas[locdata.area].capital_icon)
 		else:
-			newseparator.visible = false
-		newbutton.text = ResourceScripts.world_gen.get_location_from_code(i).name
+			newbutton.get_node('icon').texture = images.get_background(locdata.background)
 		newbutton.connect("pressed", self, "select_location", [i])
 		newbutton.set_meta("data", i)
 		update_buttons()
