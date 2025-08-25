@@ -820,6 +820,13 @@ var gui = {
 
 
 var icons = {
+	aliron = "res://assets/images/iconslocations/aliron_ic2.png",
+	elf_capital = "res://assets/images/iconslocations/elf_capital_ic.png",
+	beastkin_capital = "res://assets/images/iconslocations/beastkin_capital_ic.png",
+	dwarfs_city = "res://assets/images/iconslocations/dwarf_city_ic.png",
+	empire = "res://assets/images/iconslocations/Empire_ic.png",
+	tower = "res://assets/images/iconslocations/tower_ic.png",
+	
 	food = "res://assets/images/gui/inventory/icon_food1.png",
 	material = "res://assets/images/gui/inventory/icon_res1.png",
 	'tool' : "res://assets/images/gui/inventory/icon_craft1.png",

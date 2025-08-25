@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=2]
+[gd_scene load_steps=143 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=2]
@@ -90,11 +90,14 @@
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/panel_class.png" type="Texture" id=88]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=89]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_big.png" type="Texture" id=90]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/city_icon_feame2.png" type="Texture" id=91]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/city_icon_feame1.png" type="Texture" id=92]
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_upgrades_task.png" type="Texture" id=93]
 [ext_resource path="res://gui_modules/Exploration/Modules/StatsTrading.tscn" type="PackedScene" id=94]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=95]
 [ext_resource path="res://assets/dynamic_backgrounds/dynamic_background.tscn" type="PackedScene" id=96]
 [ext_resource path="res://gui_modules/Universal/Scripts/NavigationModule.gd" type="Script" id=97]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/city_icon_feame3.png" type="Texture" id=98]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=99]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionJournalModule.tscn" type="PackedScene" id=100]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/icon_journalcity.png" type="Texture" id=101]
@@ -106,6 +109,7 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_reputationshop_reputation.png" type="Texture" id=107]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/button_reputationshop_pressed.png" type="Texture" id=108]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/button_reputationshop.png" type="Texture" id=109]
+[ext_resource path="res://assets/images/iconslocations/aliron_ic2.png" type="Texture" id=110]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_30_Label.tres" type="Theme" id=111]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=112]
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_buydungeonlocation.png" type="Texture" id=113]
@@ -120,6 +124,7 @@
 [ext_resource path="res://assets/images/iconsraces/human.png" type="Texture" id=122]
 [ext_resource path="res://assets/images/iconsages/T.png" type="Texture" id=123]
 [ext_resource path="res://assets/images/sexicons/futa.png" type="Texture" id=124]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HScrollBar.tres" type="Theme" id=125]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/button_traits_universal.png" type="Texture" id=126]
 
 [sub_resource type="StyleBoxTexture" id=1]
@@ -231,9 +236,6 @@ margin_right = 1905.0
 margin_bottom = 1065.0
 expand = true
 stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="GuildBG"]
 margin_right = 1890.0
@@ -249,12 +251,9 @@ anchor_bottom = 1.0
 margin_left = 320.0
 margin_top = 15.0
 margin_right = -15.0
-margin_bottom = -1010.0
+margin_bottom = -942.0
 custom_styles/panel = ExtResource( 4 )
 script = ExtResource( 97 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Background" type="Panel" parent="NavigationModule"]
 visible = false
@@ -269,61 +268,51 @@ __meta__ = {
 [node name="Background2" type="TextureRect" parent="NavigationModule"]
 self_modulate = Color( 0, 0, 0, 0.705882 )
 show_behind_parent = true
-margin_right = 1585.0
-margin_bottom = 55.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 88 )
 expand = true
 stretch_mode = 7
 
-[node name="VSeparator" type="TextureRect" parent="NavigationModule"]
-visible = false
-margin_left = 13.0
-margin_top = -1.0
-margin_right = 53.0
-margin_bottom = 54.0
-texture = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="NavigationContainer" type="ScrollContainer" parent="NavigationModule"]
 margin_left = 18.0
-margin_top = -7.0
-margin_right = 1450.0
-margin_bottom = 53.0
+margin_top = -3.0
+margin_right = 1583.0
+margin_bottom = 104.0
+theme = ExtResource( 125 )
 scroll_vertical_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AreaSelection" type="HBoxContainer" parent="NavigationModule/NavigationContainer"]
 custom_constants/separation = 14
 
-[node name="Button" type="Button" parent="NavigationModule/NavigationContainer/AreaSelection"]
+[node name="Button" type="TextureButton" parent="NavigationModule/NavigationContainer/AreaSelection"]
 visible = false
-margin_right = 128.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 0, 55 )
-custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
-custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 120 )
-custom_styles/hover = ExtResource( 3 )
-custom_styles/pressed = ExtResource( 3 )
-custom_styles/focus = ExtResource( 3 )
-custom_styles/disabled = ExtResource( 3 )
-custom_styles/normal = ExtResource( 3 )
+margin_right = 214.0
+margin_bottom = 107.0
+rect_min_size = Vector2( 214, 107 )
 toggle_mode = true
-text = "Mansion"
+texture_normal = ExtResource( 92 )
+texture_pressed = ExtResource( 98 )
+texture_hover = ExtResource( 91 )
+
+[node name="icon" type="TextureRect" parent="NavigationModule/NavigationContainer/AreaSelection/Button"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -92.0
+margin_top = -40.0
+margin_right = 92.0
+margin_bottom = 40.0
+texture = ExtResource( 110 )
+expand = true
 
 [node name="GuildsPanel" type="TextureRect" parent="NavigationModule"]
-margin_top = 55.0
+margin_top = 128.0
 margin_right = 1585.0
-margin_bottom = 109.0
+margin_bottom = 182.0
 texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VSeparator" type="TextureRect" parent="NavigationModule/GuildsPanel"]
 visible = false

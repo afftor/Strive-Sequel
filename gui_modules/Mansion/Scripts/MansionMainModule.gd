@@ -236,8 +236,8 @@ func match_state():
 		"default":
 			reset_vars()
 			SlaveListModule.show()
-			$MansionSlaveListModule.set_size(Vector2(1100, 845))
-			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 700))
+			$MansionSlaveListModule.set_size(Vector2(1100, 780))
+			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 635))
 			# SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
 			$MansionSkillsModule.show()
 			if mansion_state != mansion_prev_state && mansion_prev_state != "skill":
@@ -248,9 +248,9 @@ func match_state():
 				
 		"skill":
 			$MansionSlaveListModule.show()
-			$MansionSlaveListModule.set_size(Vector2(1100, 845))
+			$MansionSlaveListModule.set_size(Vector2(1100, 780))
 			# SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
-			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 700))
+			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 635))
 			$MansionSlaveListModule.rebuild()
 			if mansion_state != mansion_prev_state:
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSkillsModule, 0.3)
@@ -308,9 +308,9 @@ func match_state():
 			menu_buttons.get_node("CraftButton").pressed = true
 		"sex":
 			SlaveListModule.show()
-			$MansionSlaveListModule.set_size(Vector2(1100, 845))
-			SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
-			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 650))
+			$MansionSlaveListModule.set_size(Vector2(1100, 780))
+			SlaveListModule.get_node("Background").set_size(Vector2(1100, 780))
+			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 585))
 			if mansion_state != mansion_prev_state:
 				ResourceScripts.core_animations.UnfadeAnimation(SexSelect, 0.3)
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
