@@ -3058,7 +3058,7 @@ var itemlist = {
 		price = 30,
 		icon = load("res://assets/images/iconsitems/icon_alcohol.png"),
 		tier = 'easy',
-		reqs = [],
+		reqs = [{code = 'trait', trait = 'succubus', check = false},],
 		effects = [],
 		tags = [],
 		uses_per_day = 0,

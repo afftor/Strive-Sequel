@@ -708,6 +708,8 @@ When consumed normally can apply \"Drunk\" status, or shift personality towards 
 	ITEMWINE2DESCRIPT = """A sweet fruit bevarage. 
 
 When consumed normally can apply \"Drunk\" status, or shift personality towards \"Shy\". Improves horniness and sensitivity during sex interactions.""",
+	ITEMCORRUPTIVE_ESSENCE = "Corraptive essence",
+	ITEMCORRUPTIVE_ESSENCEDESCRIPT = """Turns user into succubus.""",
 	ITEMTAMEDRUG = "Tame Drug",
 	ITEMTAMEDRUGDESCRIPT = "Tame Factor +1-2. Authority Factor +1-2. Wits Factor -1.",
 	ITEMRAGEDRUG = "Rage Drug",
