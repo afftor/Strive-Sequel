@@ -111,4 +111,5 @@ var advanced_preset = { #don't remove
 		total_reputation = 1000,
 		completed_quests = ['main_quest_loan','guilds_introduction','fighters_election_quest','mages_election_quest','workers_election_quest','election_global_quest','aliron_church_quest'],
 		seen_dialogues = ['FIGHTERSINTRODUCTION1','SERVANTSINTRODUCTION1','WORKERSINTRODUCTION1','MAGESINTRODUCTION1'],
+		master_points = 2
 	}
