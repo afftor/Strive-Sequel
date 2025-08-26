@@ -2539,11 +2539,37 @@ Loyalty: +10 (half for viewers), Lust: +15, Maxes Obedience.""",
 Executes selected character. Greatly improves obedience of everyone involved. 
 Basic Effects: 
 Loyalty: +25, Maxes Obedience.""",
+	
+	SKILLENTHRALL = "Enthrall",
+	SKILLENTHRALLDESCRIPT = """Enthrall character""",
+	DIALOGUEENTHRALLREPORT = "Character enthralled",
+	DIALOGUEENTHRALLREPORT_FAILED = "Character resisted domination",
+	SKILLRELEASE_THRALL = "Release thrall",
+	SKILLRELEASE_THRALLDESCRIPT = """Release enthralled character""",
+	DIALOGUERELEASE_THRALLREPORT = "Character no longer enthralled",
+	SKILLCORRUPT = "Corrupt",
+	SKILLCORRUPTDESCRIPT = """Attempt to increase character's consent. Always works on thralls.""",
+	DIALOGUECORRUPTREPORT = "Consent increased",
+	DIALOGUECORRUPTREPORT_FAILED = "Succubus failed to rise consent",
 	SKILLALLURE = "Allure",
-	SKILLALLUREDESCRIPT = """Category: {color=green|Gracious}
-Entices the target, increasing their Obedience and reducing Obedience drain. Improved by Charm Factor. 
+	SKILLALLUREDESCRIPT = """Category: {color=green|Succubus}
+Entices the target thrall, increasing their Loyalty and reducing Resistence.
 Basic Effects: 
-Obedience Drain -5 and Loyalty Gain + 1 for 5 days, Maxes Obedience.""",
+Resistance -50 and Loyalty +5 (modified by succubus' charm)""",
+	DIALOGUEALLUREREPORT = "",
+	SKILLTURN_SUCCUBUS = "Turn in succubus",
+	SKILLTURN_SUCCUBUSDESCRIPT = """Turn thrall into succubus""",
+	DIALOGUETURN_SUCCUBUSREPORT = "[targetname] is now succubus and is no longer thrall.",
+	SKILLSWAP_FORM = "Swap form",
+	SKILLSWAP_FORMDESCRIPT = """Change between demon and non-demon form of succubus""",
+	DIALOGUESWAP_FORMREPORT = "Form changed",
+	
+	DEMONFORMDESCRIPT = "Demonic form",
+	HUMANFORMDESCRIPT = "Human form",
+	MAGATTUNEMENTDESCRIPT = "Magic attunement",
+	COMBATATTUNEMENTDESCRIPT = "Combat attunement",
+	THRALLDESCRIPT = "Thrall",
+
 	SKILLSUPREMACY = "Supremacy",
 	SKILLSUPREMACYDESCRIPT = """Category: {color=green|Gracious}
 Overwhelms target with awe and respect for caster. Greatly increases Loyalty. Improved by Charm Factor. 
@@ -2612,7 +2638,7 @@ By the end of it, it seems even your meeker servants have been left satisfied.""
 	DIALOGUEMENTORREPORT = "[name] has began mentoring [targetname] helping [targethim] to learn faster...",
 	DIALOGUESEDUCEREPORT = "[name] has approached [targetname] and after a couple moments left [targethim] wondering. Despite visual calmness, [targetname] has clearly become enamoured by [him].",
 	DIALOGUEGREATSEDUCEREPORT = "[name] has approached [targetname] and after a couple moments left [targethim] wondering. [targetHis] mind has been overtaken by strong desire, making [him] quite docile.",
-	DIALOGUEALLUREREPORT = "[name] has given [targetname] a small private encouragement.",
+#	DIALOGUEALLUREREPORT = "[name] has given [targetname] a small private encouragement.",
 	DIALOGUEABUSEREPORT = """[name] has pushed [targetname] into a corner and took out some of [his] anger on [targethim].
 
 {color=aqua|[targetname]} — {random_chat=0|abuse}""",
