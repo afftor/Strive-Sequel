@@ -133,6 +133,8 @@ func show_info(quest):
 							for j in k.value:
 								tooltiptext += "%s, " % tr("RACE" + j.to_upper())
 							tooltiptext = "%s.\n" % tooltiptext.substr(0, tooltiptext.length() - 2)
+						_:
+							tooltiptext += String(k).trim_prefix("{").trim_suffix("}") + "\n"
 				tooltiptext += "%s/%s slaves delivered." % [i.delivered_slaves, i.value]
 				globals.connecttexttooltip(newbutton, tooltiptext)
 			'slave_work':
@@ -238,7 +240,7 @@ func show_info(quest):
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
 
-	name_node.bbcode_text = globals.TextEncoder('[center]%s[/center]' % quest.name)
+	name_node.bbcode_text = globals.TextEncoder('[center]%s[/center]' % tr(quest.name))
 	descript_node.bbcode_text = globals.TextEncoder(quest_descript)
 	var time_str
 	if quest.state == 'taken':

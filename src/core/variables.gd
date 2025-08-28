@@ -673,3 +673,7 @@ var fame_rise_events = {#and max fame
 	story = 6
 }
 const fame_rise_chance_service = 0.05
+
+var SQ_random_reword = [-0.1, 0.1]
+const SQ_req_num_mod_start = 4
+const SQ_req_num_mod = 0.1

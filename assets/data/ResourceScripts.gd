@@ -52,6 +52,7 @@ var scriptdict = {
 	rnd_main = "res://src/randomportraits/randomportraits.gd",
 	#sex_scenes = "res://assets/data/SexScenes.gd"
 	char_events = "res://src/core/char_events.gd",
+	slave_quests = "res://src/core/slave_quests.gd",
 	}
 
 onready var node_data = {
@@ -113,7 +114,7 @@ onready var node_data = {
 }
 
 
-var singletones = ['descriptions','custom_effects', "core_animations", "world_gen", "custom_text", "gallery", 'rnd_main', "char_events"]
+var singletones = ['descriptions','custom_effects', "core_animations", "world_gen", "custom_text", "gallery", 'rnd_main', "char_events", "slave_quests"]
 #singletones
 var descriptions
 var custom_effects
@@ -123,6 +124,7 @@ var custom_text
 var gallery
 var rnd_main
 var char_events
+var slave_quests
 
 var gamestate = ['game_globals', 'game_party', 'game_progress', 'game_res', 'game_world']
 #gamestate

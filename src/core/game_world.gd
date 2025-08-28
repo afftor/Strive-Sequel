@@ -56,6 +56,11 @@ func fix_serialization():
 			if j.has('progress'):
 				for cat in j.progress:
 					j.progress[cat]  = int(j.progress[cat])
+		#temporal patch. Probably need to check capital_options here for all areas
+		if i.code == 'plains':
+			for option in worlddata.lands.plains.capital_options:
+				if !(option in i.capital_options):
+					i.capital_options.append(option)
 #	for area in areas.values():
 #		for guild in area.factions.values():
 #			if guild.questsetting.total > globals.get_nquest_for_rep(guild.totalreputation):

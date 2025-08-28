@@ -54,6 +54,24 @@ var arena = {
 	next_reward = {}
 }
 
+var slave_quests = {
+	factions = {
+		test_fact1 = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		test_fact2 = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		test_fact3 = {
+			rating = 0,
+			price_factor = 0.0
+		},
+	},
+	quest_pool = {}
+}
+
 func _init():
 	globals.connect("hour_tick", self, 'check_timed_events')
 
@@ -153,6 +171,8 @@ func fix_serialization():
 	for num in clear_quests:
 		print("Removing old quest %s" % active_quests[num].code)
 		active_quests.remove(num)
+	
+	ResourceScripts.slave_quests.fix_serialization()
 
 
 func fix_import():#this is the most questionable fix

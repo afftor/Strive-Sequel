@@ -58,6 +58,10 @@ func open():
 		for quest in i.quests.global.values():
 			if quest.state == 'taken':
 				make_quest_button(quest)
+	var slave_quests = ResourceScripts.slave_quests
+	for quest_id in slave_quests.get_quest_pool():
+		if slave_quests.is_quest_active(quest_id):
+			make_quest_button(slave_quests.get_quest(quest_id))
 	change_type(type)
 	show_quests()
 

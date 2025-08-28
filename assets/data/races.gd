@@ -1315,3 +1315,37 @@ func get_random_race():
 	for i in racelist.values():
 		array.append([i.code, i.global_weight])
 	return input_handler.weightedrandom(array)
+
+#MIND! "starting_race" is not a race_tag, but this func can take it as such
+#for the sake of simplification of external call.
+#Refactor if possible
+func get_random_race_by_tags_noweight(tags):
+	var array = []
+	for tag in tags:
+		var array_to_add
+		if tag == 'starting_race':
+			if !input_handler.globalsettings.furry:
+				array_to_add = []
+				for race in variables.starting_races_array:
+					if !('beast' in racelist[race].race_tags):
+						array_to_add.append(race)
+			else:
+				array_to_add = variables.starting_races_array
+		else:#tag is valid race_tag
+			if tag == 'beast' and !input_handler.globalsettings.furry:
+				continue
+			if !race_groups.has(tag):
+				continue
+			array_to_add = race_groups[tag]
+		for race in array_to_add:
+			if !array.has(race):
+				array.append(race)
+	if array.empty():
+		push_error("no race for tag list: %s" % String(tags))
+		return 'Human'
+	return input_handler.random_from_array(array)
+
+func get_random_starting_race():
+	return get_random_race_by_tags_noweight(['starting_race'])
+
+
