@@ -55,6 +55,7 @@ func showup(node, person):
 			get_node("base_stats/"+ i ).max_value = person.get_stat(i+'max')
 			get_node("base_stats/"+ i ).value = person.get_stat(i)
 			get_node("base_stats/"+ i + '/Label').text = str(floor(person.get_stat(i))) + "/" + str(floor(person.get_stat(i+'max')))
+		get_node("base_stats/lust").visible = person.check_trait('succubus')
 		
 		var slavename = "CHARTYPE" + person.get_stat('slave_class').to_upper()
 		if person.get_stat('sex') != 'male':

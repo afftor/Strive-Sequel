@@ -59,9 +59,14 @@ func fix_serialize():
 			continue
 		traits_stored.erase(tr)
 	for prof in professions.keys():
+		remove_all_temp_effects_tag('class_' + prof)
 		if classesdata.professions.has(prof): 
-			continue
-		professions.erase(prof)
+			var data = classesdata.professions[prof]
+			if data.has('persistent_effects'):
+				for eff in data.persistent_effects:
+					add_stored_effect(eff)
+		else:
+			professions.erase(prof)
 
 
 #dyn_bonuses
@@ -109,7 +114,7 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 			continue
 		var tatdata = Traitdata.tattoodata[tattoos[slot]].effects
 		for rec in tatdata:
-			if rec.has(slot):
+			if rec.has(slot.trim_prefix('tattoo_')):
 				for eff in tatdata[rec]:
 					process_eid_add(eff, 0) #probably not 0
 	get_traits_buffs()
@@ -431,7 +436,6 @@ func get_stat_data(stat, stop = variables.DYN_STATS_FULL): #full value
 	
 	if st_data.tags.has('integer'):
 		res.result = int(res.result)
-	
 	return res
 
 
@@ -504,6 +508,13 @@ func fix_stat_data(stat, data):
 			data.base_value = get_stat('growth_factor') * 25
 		'lustmax':
 			data.base_value = get_stat('sexuals_factor') * 25 + 25
+			if !data.bonuses.has('add'):
+				data.bonuses.add = []
+			data.bonuses.add.push_back({value = parent.get_ref().get_stat('thralls_amount') * (7 + 3 * get_stat('sexuals_factor')), src_type = 'other', src_value = 'thralls', timestamp = 0})
+		'lusttick':
+			if !data.bonuses.has('add'):
+				data.bonuses.add = []
+			data.bonuses.add.push_back({value = parent.get_ref().get_stat('thralls_amount') * (0.9 + 0.1 * get_stat('sexuals_factor')), src_type = 'other', src_value = 'thralls', timestamp = 0})
 		'trainee_amount':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []
@@ -722,7 +733,15 @@ func get_prof_number():
 
 
 func get_professions():
-	return professions.keys()
+	var tmp = []
+	for prof in professions:
+		tmp.push_back([prof, professions[prof]])
+	tmp.sort_custom(input_handler, 'timestamp_sort')
+	var res = []
+	for rec in tmp:
+		res.push_back(rec[0])
+	return res
+#	return professions.keys()
 
 
 func get_class_list(category, person):

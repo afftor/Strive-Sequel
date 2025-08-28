@@ -11,6 +11,7 @@ var travel = ResourceScripts.scriptdict.ch_travel.new()
 #var effects = ResourceScripts.scriptdict.ch_effects.new()
 var food = ResourceScripts.scriptdict.ch_food.new()
 var training = ResourceScripts.scriptdict.ch_training.new()
+var enthrall = ResourceScripts.scriptdict.ch_enthrall.new()
 var displaynode = null
 var ai = null
 
@@ -59,6 +60,7 @@ func rebuild_parents():
 #	effects.parent = weakref(self)
 	food.parent = weakref(self)
 	training.parent = weakref(self)
+	enthrall.parent = weakref(self)
 
 
 #component functions tunneling
@@ -70,6 +72,7 @@ func reset_rebuild():
 #	dyn_stats.generate_data(variables.DYN_STATS_FULL, true)
 	if displaynode != null:
 		displaynode.rebuildbuffs()
+
 
 
 func reset_rebuild_delay():
@@ -109,7 +112,7 @@ func get_stat_value_data(statname):
 
 
 func get_stat(statname, nobonus = false):
-	if statname in ['hp', 'mp', 'shield', 'combatgroup']:
+	if statname in ['hp', 'mp', 'shield', 'combatgroup', 'id']:
 		return get(statname)
 	if statname in ['physics','wits','charm','sexuals']:
 		if nobonus:
@@ -122,6 +125,18 @@ func get_stat(statname, nobonus = false):
 		return xp_module.base_exp
 	if statname == 'counters':
 		return dyn_stats.counters
+	if statname == 'alt_form':
+		return enthrall.alt_form
+	if statname == 'thrall_points':
+		return enthrall.thrall_points
+	if statname == 'thrall_master':
+		return enthrall.get_thrall_master()
+	if statname == 'thralls':
+		return enthrall.get_thralls()
+	if statname == 'thralls_amount':
+		return enthrall.get_thrall_count()
+	if statname == 'thralls_amount_max':
+		return enthrall.get_thrall_max_count()
 	if statname == 'price':
 		return calculate_price()
 	if statname.begins_with('food_') and statname != 'food_consumption':
@@ -183,6 +198,14 @@ func set_stat(stat, value):
 		return
 	if stat == 'base_exp':
 		xp_module.base_exp = value
+		return
+	if stat == 'thrall_master':
+		enthrall.set_thrall_master(value)
+		dyn_stats.reset_rebuild()
+		return
+	if stat == 'alt_form':
+		enthrall.set_alt_form(value)
+		dyn_stats.reset_rebuild()
 		return
 	if stat.begins_with('food_') and stat != 'food_consumption':
 		food.set(stat, value)
@@ -890,13 +913,13 @@ func is_combatant():
 	if get_stat('slave_class') != 'slave':
 		return has_status('combatant')
 	else:
-		return training.get_trainer() != null
+		return training.get_trainer() != null or enthrall.get_thrall_master() != null
 
 func is_worker():
 	if get_stat('slave_class') != 'slave':
 		return has_status('worker')
 	else:
-		return training.get_trainer() != null
+		return training.get_trainer() != null or enthrall.get_thrall_master() != null
 
 func has_work_rule(rule):
 	if !variables.work_rules.has(rule): return false
@@ -1194,6 +1217,25 @@ func get_loyalty_penalty_data():
 func get_loyalty_growth():
 	return training.get_loyalty_growth()
 
+func can_add_thrall():
+	return enthrall.can_add_thrall()
+
+func release_all_thralls():
+	enthrall.release_all_thralls()
+	reset_rebuild()
+
+func release_thrall(chid):
+	enthrall.release_thrall(chid)
+	reset_rebuild()
+
+func add_thrall(chid):
+	enthrall.add_thrall(chid)
+	reset_rebuild()
+
+func clear_enthrall():
+	enthrall.cleanup()
+
+
 func serialize():
 	var res = inst2dict(self)
 	res.statlist = inst2dict(statlist)
@@ -1204,6 +1246,7 @@ func serialize():
 	res.travel = inst2dict(travel)
 	res.food = inst2dict(food)
 	res.training = inst2dict(training)
+	res.enthrall = inst2dict(enthrall)
 	return res
 
 func fix_serialization():
@@ -1220,6 +1263,8 @@ func fix_serialization():
 		food = dict2inst(food)
 	if training is Dictionary:
 		training = dict2inst(training)
+	if enthrall is Dictionary:
+		training = dict2inst(enthrall)
 	var tmp = statlist.duplicate()
 	var tmp2 = dyn_stats.duplicate()
 	for st in ['physics_factor', 'magic_factor', 'tame_factor', 'authority_factor', 'growth_factor', 'charm_factor', 'wits_factor', 'sexuals_factor']:
@@ -1344,6 +1389,7 @@ func death():
 func killed(direct_call = true):
 	if direct_call: 
 		process_event(variables.TR_DEATH)
+	enthrall.cleanup()
 	ResourceScripts.game_party.check_breakdown_on_char_loss(self)
 	equipment.clear_equip()
 	training.clear_training()
@@ -1527,6 +1573,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			if i.has("check"):
 				return (get_work() == i.value) == i.check
 			return get_work() == i.value
+		'can_add_thrall':
+			return enthrall.can_add_thrall() == i.check
 	return check
 
 
@@ -1949,6 +1997,8 @@ func affect_char(template, manifest = false):
 			add_sex_trait(template.trait, true)
 		'unlock_sex_trait':
 			unlock_sex_trait(template.trait)
+		'add_class':
+			unlock_class(template.class)
 		'set_tutelage':
 			xp_module.assign_to_learning(template.value)
 			input_handler.rebuild_slave_list()
@@ -2104,7 +2154,7 @@ func stat_update(stat, value, is_set = false): #for permanent changes
 		set_stat(stat, value)
 	else: 
 		add_stat(stat, value)
-	if tmp != null:
+	if statdata.check_compatibility_operant(stat, 'add'):
 		return get_stat(stat) - tmp
 	else:
 		return get_stat(stat)
@@ -2327,6 +2377,16 @@ func try_breakdown_on_char_loss(lost_char):
 func deferred_brk_check_food():
 	if has_status('food_dislike'):
 		try_breakdown('brk_dislike_food')
+
+func try_breakdown_on_enthrall():
+	if xp_module.is_unavaliable(): return
+	
+	try_breakdown('brk_enthrall')
+
+func try_breakdown_on_release():
+	if xp_module.is_unavaliable(): return
+	
+	try_breakdown('brk_enthrall_release')
 
 #Fame. Maybe should be withdrawn to separate module
 func get_stat_upgrade_price(stat_level):

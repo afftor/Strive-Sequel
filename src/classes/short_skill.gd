@@ -180,6 +180,7 @@ func convert_to_new_template():
 	if template.has('combatcooldown'): res_res.combatcooldown = template.combatcooldown
 	if template.has('receiverdaylimit'): res_res.receiverdaylimit = template.receiverdaylimit
 	if template.has('dialogue_report'): res_res.dialogue_report = template.dialogue_report
+	if template.has('dialogue_report_failed'): res_res.dialogue_report_failed = template.dialogue_report_failed
 	if template.has('dialogue_image'): res_res.dialogue_image = template.dialogue_image
 	if template.has('dialogue_show_repeat'): res_res.dialogue_show_repeat = template.dialogue_show_repeat
 	if template.has('target'): res_res.target = template.target

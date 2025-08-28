@@ -818,6 +818,9 @@ func string_to_math(value = 0, string = ''):
 		'-':value -= modvalue
 		'*':value *= modvalue
 		'/':value /= modvalue
+		'_':value = max(value, modvalue)
+		'^':value = min(value, modvalue)
+		_: value = string
 	return value
 
 
@@ -904,9 +907,14 @@ func ShowSlavePanel(person): #not fully node getter
 
 
 func calculate_number_from_string_array(arr, caster, target):
-	if typeof(arr) != TYPE_ARRAY:
-		return float(arr)
 	var array = arr.duplicate()
+	if array is Dictionary:
+		if target.checkreqs(array.condition):
+			array = array.value
+		else:
+			array = array.altvalue
+	if typeof(array) != TYPE_ARRAY:
+		return float(array)
 	var endvalue = 0
 	var singleop = ''
 	var firstrun = true

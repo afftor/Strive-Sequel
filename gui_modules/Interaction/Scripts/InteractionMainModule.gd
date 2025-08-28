@@ -1874,7 +1874,7 @@ func endencounter():
 #		i.person.sexuals += i.orgasms not relevant
 		var expgain = round(i.orgasms * 8 + i.sens/200)
 		var bonus = 1
-		if i.person.has_profession("succubus") ||i.person.has_profession("true_succubus") :
+		if i.person.check_trait("succubus"):
 			bonus += 0.5
 
 		for t in i.sex_traits:
