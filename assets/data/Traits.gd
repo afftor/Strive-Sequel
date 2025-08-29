@@ -424,7 +424,7 @@ var traits = {
 		name = '',
 		descript = '',
 		visible = false,
-		icon = null,
+		icon = null, #2change
 		effects = ['magic_atunement'],
 	}, 
 	succubus_combat = {
@@ -432,7 +432,7 @@ var traits = {
 		name = '',
 		descript = '',
 		visible = false,
-		icon = null,
+		icon = null, #2change
 		effects = ['combat_atunement_passive', 'combat_atunement_trigger'],
 	}, 
 	true_succubus = {

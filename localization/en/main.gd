@@ -3025,7 +3025,11 @@ Requires consent \"Willing\" or above.""",
 	TRAITMASTER_FORTITUDE = "Fortitude",
 	TRAITMASTER_FORTITUDEDESCRIPT = "Grave Injury from being defeated only last 2 turns.",
 	TRAITMASTER_SORCERY = "Sorcery",
-	TRAITMASTER_SORCERYDESCRIPT = "MATK +35%, faster mana recovery speed.",
+	TRAITMASTER_SORCERYDESCRIPT = "Max HP + 20%, additional 3 lust on being hit.",
+	TRAITSUCCUBUS_MAGIC = "Magic Attunement",
+	TRAITSUCCUBUS_MAGICDESCRIPT = "MATK +10, Max MP + 25",
+	TRAITSUCCUBUS_COMBAT = "Combat attunement",
+	TRAITSUCCUBUS_COMBATDESCRIPT = "MATK +35%, faster mana recovery speed.",
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Virginity}[/center]
 As [name] has a observable virginity, this makes [him] more desirable for certain individuals. 
 {color=yellow|Sell price is increased by 25%%}""",
