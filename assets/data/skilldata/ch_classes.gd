@@ -582,7 +582,7 @@ var skills = {
 		catalysts = {},
 		target = 'enemy',
 		target_number = 'single',
-		target_range = 'weapon',
+		target_range = 'any',
 		damage_type = 'dark',
 		sfx = [{code = 'void_barrage', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},

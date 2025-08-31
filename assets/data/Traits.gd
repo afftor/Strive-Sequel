@@ -1493,7 +1493,7 @@ var traits = {
 #	},
 	
 	#minor_training
-	etiquette = {
+		etiquette = {
 		code = 'etiquette',
 		name = '',
 		descript = '',

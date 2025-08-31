@@ -455,7 +455,7 @@ var pregen_characters = {
 		food_hate = ['meat'],
 		classes = ['ashmedai_champion'],
 		traits = ['mvortex','inept','training_s_combat','training_s_working','training_s_relation','training_s_sexservice','training_s_sexservice_adv'],
-		sex_skills = {petting = 27, pussy = 33, oral = 25, anal = 21},
+		sex_skills = {petting = 27, pussy = 33, oral = 25, anal = 21, tail = 1},
 	},
 	Cali = {
 		code = 'cali',
@@ -766,7 +766,7 @@ var pregen_characters = {
 		food_like = 'fish',
 		food_hate = ['vege'],
 		classes = [],
-		traits = ['bawdy','training_broke_in','training_obedience','training_callmaster','training_sexservice','training_relation','mentorship','etiquette','table_manners','literacy','foreign_diplomacy'],
+		traits = ['bawdy','training_broke_in','training_obedience','training_callmaster','training_sexservice','training_relation','training_sexservice_adv','mentorship','etiquette','table_manners','literacy','foreign_diplomacy','training_service'],
 		sex_skills = {petting = 79, pussy = 45, oral = 72, anal = 39, tail = 61},
 		training_disposition = {
 			humiliation = 'neutral',

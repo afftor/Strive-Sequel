@@ -687,35 +687,48 @@ margin_bottom = 32.0
 texture = ExtResource( 19 )
 
 [node name="BedroomIcon" type="TextureRect" parent="."]
-margin_left = 680.272
-margin_top = 794.056
-margin_right = 732.272
-margin_bottom = 834.056
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 130.272
+margin_top = -50.944
+margin_right = 182.272
+margin_bottom = -10.944
 texture = ExtResource( 31 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="DateIcon" type="TextureRect" parent="."]
-margin_left = 325.272
-margin_top = 794.056
-margin_right = 377.272
-margin_bottom = 834.056
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -224.728
+margin_top = -50.944
+margin_right = -172.728
+margin_bottom = -10.944
 texture = ExtResource( 32 )
 
 [node name="SexIcon" type="TextureRect" parent="."]
-margin_left = 509.133
-margin_top = 793.796
-margin_right = 561.133
-margin_bottom = 833.796
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -40.867
+margin_top = -51.204
+margin_right = 11.133
+margin_bottom = -11.204
 hint_tooltip = "Date limit. Renews once a week."
 texture = ExtResource( 30 )
 
 [node name="BedroomLimit" type="Label" parent="."]
-margin_left = 731.326
-margin_top = 795.316
-margin_right = 831.326
-margin_bottom = 835.316
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 181.326
+margin_top = -49.684
+margin_right = 281.326
+margin_bottom = -9.68402
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 27 )
 text = "1/1"
@@ -726,10 +739,14 @@ __meta__ = {
 }
 
 [node name="DateLimit" type="Label" parent="."]
-margin_left = 377.0
-margin_top = 794.0
-margin_right = 477.0
-margin_bottom = 829.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -173.0
+margin_top = -51.0
+margin_right = -73.0
+margin_bottom = -16.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 27 )
 text = "1/1"
@@ -737,10 +754,14 @@ align = 1
 valign = 1
 
 [node name="SexLimit" type="Label" parent="."]
-margin_left = 556.0
-margin_top = 794.0
-margin_right = 656.0
-margin_bottom = 829.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = -51.0
+margin_right = 106.0
+margin_bottom = -16.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 27 )
 text = "1/1"
