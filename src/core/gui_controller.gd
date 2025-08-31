@@ -10,6 +10,7 @@ var exploration_dungeon
 var explore_slaveinfo
 var slavepanel
 var inventory
+var spells
 var game_menu
 var classinfo
 var sex_panel
