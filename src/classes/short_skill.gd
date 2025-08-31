@@ -195,8 +195,14 @@ func convert_to_new_template():
 	else: res_res.sounddata = {}
 	res_res.repeat = repeat
 	if template.has('custom_duration'): res_res.custom_duration = template.custom_duration.duplicate()
-	if template.has('chance'): res_res.chance = template.chance
-	if template.has('evade'): res_res.evade = template.evade
+	if template.has('chance'): 
+		res_res.chance = template.chance
+	else:
+		res_res.chance = 100
+	if template.has('evade'): 
+		res_res.evade = template.evade
+	else:
+		res_res.evade = 0
 	if template.has('armor_p'): res_res.armor_p = template.armor_p
 	if template.has('critchance'): res_res.critchance = template.critchance
 	if template.has('process_no_stat'): res_res.process_no_stat = template.process_no_stat
