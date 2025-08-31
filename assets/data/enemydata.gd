@@ -2241,7 +2241,7 @@ var enemies = {
 		status_resists = {stun = 85, freeze = 90},
 		race = 'humanoid',
 		loot = 'hard_boss_chest',
-		icon = "res://assets/images/portraits/dragongirl_deafault_prt.png", 
+		icon = "res://assets/images/enemies/dragongirl.png", 
 		skills = ['devastation','backkick','dip_poison'],
 		traits = ['boss_resists'],
 		tags = ['human','boss'], 

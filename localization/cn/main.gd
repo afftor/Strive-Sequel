@@ -75,6 +75,7 @@ var TranslationDict = {
 	
 	OPTOPT = "设置",
 	OPTCLOSE = "关闭",
+	TUTORIALS = """Tutorials""", # MISSING TRANSLATION
 	OPTGAMEPLAYFURRIES = "福瑞",
 	OPTGAMEPLAYFURRMULT = "福瑞有多乳头",
 	OPTGAMEPLAYFUTA = "扶她有睾丸",
@@ -181,6 +182,7 @@ var TranslationDict = {
 	SIBLINGMODULERELATIVES = "Relatives",
 	SIBLINGMODULERELATIONS = """Social""", # MISSING TRANSLATION
 	SIBLINGMODULETRAININGS = "Trainings",
+	SIBLINGMODULESUCCUBUS = """Succubus Training""", # MISSING TRANSLATION
 	SIBLINGMODULETRAININGSSERVANTS = """Servant Training""", # MISSING TRANSLATION
 	SIBLINGMODULETRAININGSMASTER = """Master Training""", # MISSING TRANSLATION
 	SIBLINGMODULEFOODCONSUMPTION = "每日消费量",
@@ -2294,6 +2296,17 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	SKILLPUBLICSEXHUMILIATIONDESCRIPT = "类别: {color=pink|色情}\n为所选目标设置公开的性羞辱，改善目标和观众的行为，并为所有观众提供一点欲望。 \n基本效果: \n忠诚：+10（观众一半），欲望：+15，最大化服从。",
 	SKILLPUBLICEXECUTION = "公开处决",
 	SKILLPUBLICEXECUTIONDESCRIPT = "类别: {color=red|刻薄}\n处决所选角色。极大地提高了所有参与者的服从性。 \n基本效果: \n忠诚：+25，最大服从度。",
+	SKILLENTHRALL = """Enthrall""", # MISSING TRANSLATION
+	SKILLENTHRALLDESCRIPT = """Enthrall character""", # MISSING TRANSLATION
+	DIALOGUEENTHRALLREPORT = """Character enthralled""", # MISSING TRANSLATION
+	DIALOGUEENTHRALLREPORT_FAILED = """Character resisted domination""", # MISSING TRANSLATION
+	SKILLRELEASE_THRALL = """Release thrall""", # MISSING TRANSLATION
+	SKILLRELEASE_THRALLDESCRIPT = """Release enthralled character""", # MISSING TRANSLATION
+	DIALOGUERELEASE_THRALLREPORT = """Character no longer enthralled""", # MISSING TRANSLATION
+	SKILLCORRUPT = """Corrupt""", # MISSING TRANSLATION
+	SKILLCORRUPTDESCRIPT = """Attempt to increase character's consent. Always works on thralls.""", # MISSING TRANSLATION
+	DIALOGUECORRUPTREPORT = """Consent increased""", # MISSING TRANSLATION
+	DIALOGUECORRUPTREPORT_FAILED = """Succubus failed to rise consent""", # MISSING TRANSLATION
 	SKILLALLURE = "诱惑",
 	SKILLALLUREDESCRIPT = "类别: {color=green|亲切}\n吸引目标，增加他们的服从并减少服从损耗。由魅力因素提高效果。 \n基本效果: \n持续5天的服从消耗-5和忠诚增益+1，最大服从。",
 	SKILLSUPREMACY = "至高无上",
@@ -2349,6 +2362,18 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	DIALOGUESEDUCEREPORT = "[name] 已经接近 [targetname] ，过了几分钟 [targethim] 就想知道了。尽管视觉上很平静， [targetname] 显然已经被 [him]迷住了。",
 	DIALOGUEGREATSEDUCEREPORT = "[name] 已经接近 [targetname] ，过了几分钟， [targethim] 感到异常. [targetHis] 思想被强烈的欲望所淹没，让[him]变得相当温顺。",
 	DIALOGUEALLUREREPORT = "[name]给了[targetname]一个小小的私人鼓励。",
+	SKILLTURN_SUCCUBUS = """Turn in succubus""", # MISSING TRANSLATION
+	SKILLTURN_SUCCUBUSDESCRIPT = """Turn thrall into succubus""", # MISSING TRANSLATION
+	DIALOGUETURN_SUCCUBUSREPORT = """[targetname] is now succubus and is no longer thrall.""", # MISSING TRANSLATION
+	DIALOGUECORRUPTIVE_ESSENCEREPORT = """[name] is now succubus.""", # MISSING TRANSLATION
+	SKILLSWAP_FORM = """Swap form""", # MISSING TRANSLATION
+	SKILLSWAP_FORMDESCRIPT = """Change between demon and non-demon form of succubus""", # MISSING TRANSLATION
+	DIALOGUESWAP_FORMREPORT = """Form changed""", # MISSING TRANSLATION
+	DEMONFORMDESCRIPT = """Demonic form""", # MISSING TRANSLATION
+	HUMANFORMDESCRIPT = """Human form""", # MISSING TRANSLATION
+	MAGATTUNEMENTDESCRIPT = """Magic attunement""", # MISSING TRANSLATION
+	COMBATATTUNEMENTDESCRIPT = """Combat attunement""", # MISSING TRANSLATION
+	THRALLDESCRIPT = """Thrall""", # MISSING TRANSLATION
 	DIALOGUEABUSEREPORT = "[name]把[targetname]逼到了角落里，并发泄了[targethim]的一些愤怒。\n\n{color=aqua|[targetname]} — {random_chat=0|abuse}",
 	DIALOGUEREWARDREPORT = "[name]为[targethis]的良好行为提供了少量金币。",
 	DIALOGUEREWARDSEXREPORT = "[name]照顾了[targetname]的需求，作为对[targethis]善举的奖励。",
@@ -3112,6 +3137,8 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	BODYPARTSKINTEAL = "青色",
 	BODYPARTSKIN_COVERAGEPLANT = "植物",
 	BODYPARTSKIN_COVERAGESCALE = "刻度",
+	BODYPARTSKIN_COVERAGESCALE2 = """scale 2""", # MISSING TRANSLATION
+	BODYPARTSKIN_COVERAGESCALE3 = """scale 3""", # MISSING TRANSLATION
 	BODYPARTSKIN_COVERAGEFEATHERS = "羽毛",
 	BODYPARTSKIN_COVERAGEFUR_WHITE = "白色毛皮",
 	BODYPARTSKIN_COVERAGEFUR_GREY = "灰色毛皮",
