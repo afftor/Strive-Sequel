@@ -115,8 +115,8 @@ func build_accessible_locations(args = null):
 		else:
 			newbutton2.get_node('Label').text = "%s - %d/%d" % [locdata.name, free_chars[i], chars[i]]
 		if locdata.type == 'capital':
-			newbutton.get_node('icon').texture = images.get_icon(ResourceScripts.game_world.areas[locdata.area].capital_icon)
-			newbutton2.get_node('icon').texture = images.get_icon(ResourceScripts.game_world.areas[locdata.area].capital_icon)
+			newbutton.get_node('icon').texture = images.get_icon(worlddata.lands[locdata.area].capital_icon)
+			newbutton2.get_node('icon').texture = images.get_icon(worlddata.lands[locdata.area].capital_icon)
 		else:
 			newbutton.get_node('icon').texture = images.get_background(locdata.background)
 			newbutton2.get_node('icon').texture = images.get_background(locdata.background)
