@@ -251,7 +251,7 @@ anchor_bottom = 1.0
 margin_left = 320.0
 margin_top = 15.0
 margin_right = -15.0
-margin_bottom = -942.0
+margin_bottom = -961.0
 custom_styles/panel = ExtResource( 4 )
 script = ExtResource( 97 )
 
@@ -276,9 +276,8 @@ stretch_mode = 7
 
 [node name="NavigationContainer" type="ScrollContainer" parent="NavigationModule"]
 margin_left = 18.0
-margin_top = -3.0
 margin_right = 1583.0
-margin_bottom = 104.0
+margin_bottom = 107.0
 theme = ExtResource( 125 )
 scroll_vertical_enabled = false
 
@@ -309,9 +308,9 @@ texture = ExtResource( 110 )
 expand = true
 
 [node name="GuildsPanel" type="TextureRect" parent="NavigationModule"]
-margin_top = 128.0
+margin_top = 104.0
 margin_right = 1585.0
-margin_bottom = 182.0
+margin_bottom = 158.0
 texture = ExtResource( 6 )
 
 [node name="VSeparator" type="TextureRect" parent="NavigationModule/GuildsPanel"]

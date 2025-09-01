@@ -1006,7 +1006,7 @@ theme = ExtResource( 5 )
 
 [node name="MapPanel" type="TextureRect" parent="."]
 margin_left = 645.0
-margin_top = 163.0
+margin_top = 131.0
 margin_right = 1905.0
 margin_bottom = 1060.0
 texture = ExtResource( 19 )
@@ -1301,7 +1301,7 @@ anchor_bottom = 1.0
 margin_left = 645.0
 margin_top = 15.0
 margin_right = -15.0
-margin_bottom = -936.0
+margin_bottom = -961.0
 custom_styles/panel = ExtResource( 37 )
 script = ExtResource( 36 )
 
