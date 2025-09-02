@@ -68,6 +68,7 @@ var TranslationDict = {
 	OPTOPT = "Options",
 	OPTCLOSE = "Close",
 	TUTORIALS = "Tutorials",
+	LOCATIONLIST = "Location List",
 	OPTGAMEPLAYFURRIES = "Furries",
 	OPTGAMEPLAYFURRMULT = "Multiple Nipples on Furries",
 	OPTGAMEPLAYFUTA = "Futas with balls",
