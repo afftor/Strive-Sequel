@@ -1266,7 +1266,7 @@ func fix_serialization():
 	if training is Dictionary:
 		training = dict2inst(training)
 	if enthrall is Dictionary:
-		training = dict2inst(enthrall)
+		enthrall = dict2inst(enthrall)
 	var tmp = statlist.duplicate()
 	var tmp2 = dyn_stats.duplicate()
 	for st in ['physics_factor', 'magic_factor', 'tame_factor', 'authority_factor', 'growth_factor', 'charm_factor', 'wits_factor', 'sexuals_factor']:
