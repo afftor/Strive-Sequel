@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -24,10 +24,12 @@
 [ext_resource path="res://gui_modules/Universal/Scripts/NavigationModule.gd" type="Script" id=22]
 [ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion.png" type="Texture" id=23]
 [ext_resource path="res://assets/images/backgrounds/mansion_morning.png" type="Texture" id=24]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location.png" type="Texture" id=25]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu.png" type="Texture" id=26]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu_pressed.png" type="Texture" id=27]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu_hover.png" type="Texture" id=28]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=29]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location_hover.png" type="Texture" id=30]
 [ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion_hover.png" type="Texture" id=31]
 [ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion_pressed.png" type="Texture" id=32]
 [ext_resource path="res://gui_modules/Mansion/Modules/TutorialIntro.tscn" type="PackedScene" id=33]
@@ -37,6 +39,12 @@
 [ext_resource path="res://assets/images/backgrounds/mansion_noon.png" type="Texture" id=37]
 [ext_resource path="res://assets/images/backgrounds/mansion_night.png" type="Texture" id=38]
 [ext_resource path="res://assets/images/backgrounds/mansion_evening.png" type="Texture" id=39]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location_pressed.png" type="Texture" id=40]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=41]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/button_reputationshop_pressed.png" type="Texture" id=42]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/button_reputationshop.png" type="Texture" id=43]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/button_reputationshop_hover.png" type="Texture" id=44]
+[ext_resource path="res://assets/Themes_v2/travel_new/SelectorPanel.tres" type="StyleBox" id=45]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -154,9 +162,6 @@ margin_bottom = 69.0
 texture_normal = ExtResource( 26 )
 texture_pressed = ExtResource( 27 )
 texture_hover = ExtResource( 28 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="MenuButton"]
 margin_right = 116.0
@@ -181,6 +186,7 @@ margin_left = 320.0
 margin_top = 15.0
 margin_right = -150.0
 margin_bottom = -961.0
+theme = ExtResource( 41 )
 custom_styles/panel = ExtResource( 29 )
 script = ExtResource( 22 )
 
@@ -227,11 +233,17 @@ margin_bottom = 40.0
 texture = ExtResource( 19 )
 expand = true
 
-[node name="drop_list" type="Button" parent="NavigationModule"]
+[node name="drop_list" type="TextureButton" parent="NavigationModule"]
 margin_left = 24.0
 margin_top = 22.0
-margin_right = 85.0
+margin_right = 84.0
 margin_bottom = 82.0
+hint_tooltip = "LOCATIONLIST"
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 40 )
+texture_hover = ExtResource( 30 )
+expand = true
+stretch_mode = 5
 
 [node name="screen" type="Button" parent="NavigationModule/drop_list"]
 visible = false
@@ -247,6 +259,7 @@ margin_left = 2.0
 margin_top = 77.0
 margin_right = 476.0
 margin_bottom = 787.0
+custom_styles/panel = ExtResource( 45 )
 
 [node name="NavigationContainer" type="ScrollContainer" parent="NavigationModule/drop_list/Panel"]
 margin_left = 21.0
@@ -261,12 +274,16 @@ margin_right = 431.0
 size_flags_horizontal = 3
 custom_constants/separation = -2
 
-[node name="Button" type="Button" parent="NavigationModule/drop_list/Panel/NavigationContainer/AreaSelection"]
+[node name="Button" type="TextureButton" parent="NavigationModule/drop_list/Panel/NavigationContainer/AreaSelection"]
 visible = false
 margin_right = 431.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 214, 60 )
 size_flags_horizontal = 3
+texture_normal = ExtResource( 43 )
+texture_pressed = ExtResource( 42 )
+texture_hover = ExtResource( 44 )
+expand = true
 
 [node name="icon" type="TextureRect" parent="NavigationModule/drop_list/Panel/NavigationContainer/AreaSelection/Button"]
 margin_left = 6.0

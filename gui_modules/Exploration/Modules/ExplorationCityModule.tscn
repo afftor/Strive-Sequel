@@ -1,4 +1,4 @@
-[gd_scene load_steps=143 format=2]
+[gd_scene load_steps=146 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=2]
@@ -126,6 +126,9 @@
 [ext_resource path="res://assets/images/sexicons/futa.png" type="Texture" id=124]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HScrollBar.tres" type="Theme" id=125]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/button_traits_universal.png" type="Texture" id=126]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location.png" type="Texture" id=127]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location_hover.png" type="Texture" id=128]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location_pressed.png" type="Texture" id=129]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 28 )
@@ -282,7 +285,7 @@ theme = ExtResource( 125 )
 scroll_vertical_enabled = false
 
 [node name="AreaSelection" type="HBoxContainer" parent="NavigationModule/NavigationContainer"]
-custom_constants/separation = 14
+custom_constants/separation = -2
 
 [node name="Button" type="TextureButton" parent="NavigationModule/NavigationContainer/AreaSelection"]
 visible = false
@@ -357,11 +360,20 @@ custom_styles/normal = ExtResource( 3 )
 toggle_mode = true
 text = "Guild"
 
-[node name="drop_list" type="Button" parent="NavigationModule"]
+[node name="drop_list" type="TextureButton" parent="NavigationModule"]
 margin_left = 24.0
 margin_top = 22.0
-margin_right = 85.0
+margin_right = 84.0
 margin_bottom = 82.0
+hint_tooltip = "LOCATIONLIST"
+texture_normal = ExtResource( 127 )
+texture_pressed = ExtResource( 129 )
+texture_hover = ExtResource( 128 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="screen" type="Button" parent="NavigationModule/drop_list"]
 visible = false
