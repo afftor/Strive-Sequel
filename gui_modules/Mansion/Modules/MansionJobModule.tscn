@@ -1,9 +1,9 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/city_icon_feame2.png" type="Texture" id=2]
+[ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=2]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=3]
-[ext_resource path="res://gui_modules/Universal/Scripts/NavigationModule.gd" type="Script" id=4]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/divider_navi_player.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/panel_class.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE/panel_job_big.png" type="Texture" id=7]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=8]
@@ -58,9 +58,6 @@
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE/farm/button_hero_disabled_1.png" type="Texture" id=57]
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE/icon_question_small.png" type="Texture" id=58]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/NOTO_SANS_Regular_16px.tres" type="DynamicFont" id=59]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/city_icon_feame1.png" type="Texture" id=60]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/city_icon_feame3.png" type="Texture" id=61]
-[ext_resource path="res://assets/images/iconslocations/aliron_ic2.png" type="Texture" id=62]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -70,6 +67,10 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFontData" id=4]
@@ -354,9 +355,11 @@ anchor_bottom = 1.0
 margin_left = 68.0
 margin_top = 168.0
 margin_right = -602.0
-margin_bottom = -808.0
+margin_bottom = -857.0
 custom_styles/panel = ExtResource( 3 )
-script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Background" type="Panel" parent="NavigationModule"]
 visible = false
@@ -381,105 +384,53 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VSeparator" type="TextureRect" parent="NavigationModule"]
+visible = false
+margin_left = 13.0
+margin_top = -1.0
+margin_right = 53.0
+margin_bottom = 54.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="NavigationContainer" type="ScrollContainer" parent="NavigationModule"]
-margin_left = 109.0
-margin_top = -2.0
+margin_left = 15.0
+margin_top = -4.0
 margin_right = 1247.0
-margin_bottom = 105.0
-theme = ExtResource( 56 )
+margin_bottom = 56.0
 scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AreaSelection" type="HBoxContainer" parent="NavigationModule/NavigationContainer"]
 custom_constants/separation = 14
 
-[node name="Button" type="TextureButton" parent="NavigationModule/NavigationContainer/AreaSelection"]
+[node name="Button" type="Button" parent="NavigationModule/NavigationContainer/AreaSelection"]
 visible = false
-margin_right = 214.0
-margin_bottom = 107.0
-rect_min_size = Vector2( 214, 107 )
-toggle_mode = true
-texture_normal = ExtResource( 60 )
-texture_pressed = ExtResource( 61 )
-texture_hover = ExtResource( 2 )
-
-[node name="icon" type="TextureRect" parent="NavigationModule/NavigationContainer/AreaSelection/Button"]
-show_behind_parent = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -92.0
-margin_top = -40.0
-margin_right = 92.0
-margin_bottom = 40.0
-texture = ExtResource( 62 )
-expand = true
-
-[node name="drop_list" type="Button" parent="NavigationModule"]
-margin_left = 24.0
-margin_top = 22.0
-margin_right = 85.0
-margin_bottom = 82.0
-
-[node name="screen" type="Button" parent="NavigationModule/drop_list"]
-visible = false
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = -355.0
-margin_top = -47.0
-margin_right = 1594.0
-margin_bottom = 1058.0
-
-[node name="Panel" type="Panel" parent="NavigationModule/drop_list"]
-visible = false
-margin_left = 2.0
-margin_top = 77.0
-margin_right = 476.0
-margin_bottom = 787.0
-
-[node name="NavigationContainer" type="ScrollContainer" parent="NavigationModule/drop_list/Panel"]
-margin_left = 21.0
-margin_top = 16.0
-margin_right = 452.0
-margin_bottom = 691.0
-theme = ExtResource( 56 )
-scroll_horizontal_enabled = false
-
-[node name="AreaSelection" type="VBoxContainer" parent="NavigationModule/drop_list/Panel/NavigationContainer"]
-margin_right = 431.0
-size_flags_horizontal = 3
-custom_constants/separation = -2
-
-[node name="Button" type="Button" parent="NavigationModule/drop_list/Panel/NavigationContainer/AreaSelection"]
-visible = false
-margin_right = 431.0
+margin_right = 128.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 214, 60 )
-size_flags_horizontal = 3
-
-[node name="icon" type="TextureRect" parent="NavigationModule/drop_list/Panel/NavigationContainer/AreaSelection/Button"]
-margin_left = 6.0
-margin_top = 7.0
-margin_right = 114.0
-margin_bottom = 54.0
-texture = ExtResource( 62 )
-expand = true
-
-[node name="Label" type="Label" parent="NavigationModule/drop_list/Panel/NavigationContainer/AreaSelection/Button"]
-anchor_right = 1.0
-margin_left = 122.0
-margin_top = 2.0
-margin_right = -6.0
-margin_bottom = 58.0
-custom_fonts/font = ExtResource( 9 )
-text = "Mansion - 8/8"
-valign = 1
+rect_min_size = Vector2( 0, 55 )
+custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/focus = ExtResource( 2 )
+custom_styles/disabled = ExtResource( 2 )
+custom_styles/normal = ExtResource( 2 )
+toggle_mode = true
+text = "Mansion"
 
 [node name="Landscape" type="TextureRect" parent="."]
 visible = false
 margin_left = 68.0
-margin_top = 300.0
+margin_top = 270.0
 margin_right = 868.0
-margin_bottom = 750.0
+margin_bottom = 720.0
 texture = ExtResource( 17 )
 expand = true
 stretch_mode = 7
@@ -490,9 +441,9 @@ __meta__ = {
 [node name="LandscapeFrame" type="TextureRect" parent="."]
 visible = false
 margin_left = 68.0
-margin_top = 300.0
+margin_top = 270.0
 margin_right = 868.0
-margin_bottom = 750.0
+margin_bottom = 720.0
 texture = ExtResource( 22 )
 expand = true
 stretch_mode = 7
@@ -630,6 +581,7 @@ text = "SWITCHLIST"
 align = 1
 
 [node name="DescriptionLabel" type="RichTextLabel" parent="."]
+visible = false
 margin_left = 68.0
 margin_top = 779.665
 margin_right = 1309.0
@@ -641,11 +593,12 @@ __meta__ = {
 }
 
 [node name="gridcontainerpanel" type="TextureRect" parent="."]
+visible = false
 self_modulate = Color( 1, 1, 1, 0.52549 )
 margin_left = 67.0
-margin_top = 657.0
+margin_top = 627.0
 margin_right = 868.0
-margin_bottom = 746.0
+margin_bottom = 716.0
 texture = ExtResource( 39 )
 expand = true
 __meta__ = {
@@ -656,9 +609,9 @@ __meta__ = {
 visible = false
 light_mask = 0
 margin_left = 84.0
-margin_top = 659.0
+margin_top = 629.0
 margin_right = 871.0
-margin_bottom = 744.0
+margin_bottom = 714.0
 size_flags_horizontal = 3
 custom_constants/vseparation = 0
 custom_constants/hseparation = 18

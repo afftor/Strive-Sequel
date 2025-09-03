@@ -1,7 +1,7 @@
 extends Control
 
 # GUI Blocks
-onready var GuildPanelContainer = $NavigationModule/GuildsPanel/GuildsPanelContainer/GuildSelection
+onready var GuildPanelContainer = $GuildsPanel/GuildsPanelContainer/GuildSelection
 onready var AreaActions = $AreaMenu/ScrollContainer/VBoxContainer
 onready var SlaveMarketList = $SlaveMarket/SlaveList/ScrollContainer/VBoxContainer
 onready var nav = $NavigationModule
@@ -152,7 +152,7 @@ func build_guilds_panel(guilds):
 	guilds.sort_custom(self, 'sort_factions')
 	for guild in guilds:
 		counter += 1
-		var newseparator = $NavigationModule/GuildsPanel/VSeparator.duplicate()
+		var newseparator = $GuildsPanel/VSeparator.duplicate()
 		newbutton = input_handler.DuplicateContainerTemplate(GuildPanelContainer)
 		newbutton.text = guild.name
 		newbutton.connect("pressed", self, "enter_guild", [guild])

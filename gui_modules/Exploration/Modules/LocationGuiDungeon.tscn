@@ -1,7 +1,7 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/city_icon_feame2.png" type="Texture" id=2]
+[ext_resource path="res://gui_modules/Universal/Modules/NavigationModule_new.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=5]
@@ -34,15 +34,9 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Icons/icon_sword.png" type="Texture" id=32]
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_portraitsmall.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_char_hover.png" type="Texture" id=34]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/city_icon_feame1.png" type="Texture" id=35]
-[ext_resource path="res://gui_modules/Universal/Scripts/NavigationModule.gd" type="Script" id=36]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=37]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HScrollBar.tres" type="Theme" id=38]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=39]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainExtraSmallBold.tres" type="DynamicFont" id=40]
 [ext_resource path="res://gui_modules/Exploration/Modules/AvailableSlaves.tscn" type="PackedScene" id=41]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/city_icon_feame3.png" type="Texture" id=42]
-[ext_resource path="res://assets/images/iconslocations/aliron_ic2.png" type="Texture" id=43]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type.png" type="Texture" id=62]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type_pressed.png" type="Texture" id=63]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type_hover.png" type="Texture" id=64]
@@ -1295,123 +1289,16 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="NavigationModule" type="Panel" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 645.0
-margin_top = 15.0
-margin_right = -15.0
-margin_bottom = -961.0
-custom_styles/panel = ExtResource( 37 )
-script = ExtResource( 36 )
-
-[node name="Background" type="Panel" parent="NavigationModule"]
-self_modulate = Color( 0, 0, 0, 0.705882 )
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="NavigationContainer" type="ScrollContainer" parent="NavigationModule"]
-margin_left = 102.0
-margin_right = 1260.0
-margin_bottom = 107.0
-theme = ExtResource( 38 )
-scroll_vertical_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AreaSelection" type="HBoxContainer" parent="NavigationModule/NavigationContainer"]
-custom_constants/separation = 14
-
-[node name="Button" type="TextureButton" parent="NavigationModule/NavigationContainer/AreaSelection"]
-visible = false
-margin_right = 214.0
-margin_bottom = 107.0
-rect_min_size = Vector2( 214, 107 )
-toggle_mode = true
-texture_normal = ExtResource( 35 )
-texture_pressed = ExtResource( 42 )
-texture_hover = ExtResource( 2 )
-
-[node name="icon" type="TextureRect" parent="NavigationModule/NavigationContainer/AreaSelection/Button"]
-show_behind_parent = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -92.0
-margin_top = -40.0
-margin_right = 92.0
-margin_bottom = 40.0
-texture = ExtResource( 43 )
-expand = true
-
-[node name="drop_list" type="Button" parent="NavigationModule"]
-margin_left = 24.0
-margin_top = 22.0
-margin_right = 85.0
-margin_bottom = 82.0
-
-[node name="screen" type="Button" parent="NavigationModule/drop_list"]
-visible = false
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = -355.0
-margin_top = -47.0
-margin_right = 1594.0
-margin_bottom = 1058.0
-
-[node name="Panel" type="Panel" parent="NavigationModule/drop_list"]
-visible = false
-margin_left = 2.0
-margin_top = 77.0
-margin_right = 476.0
-margin_bottom = 787.0
-
-[node name="NavigationContainer" type="ScrollContainer" parent="NavigationModule/drop_list/Panel"]
-margin_left = 21.0
-margin_top = 16.0
-margin_right = 452.0
-margin_bottom = 691.0
-theme = ExtResource( 38 )
-scroll_horizontal_enabled = false
-
-[node name="AreaSelection" type="VBoxContainer" parent="NavigationModule/drop_list/Panel/NavigationContainer"]
-margin_right = 431.0
-size_flags_horizontal = 3
-custom_constants/separation = -2
-
-[node name="Button" type="Button" parent="NavigationModule/drop_list/Panel/NavigationContainer/AreaSelection"]
-visible = false
-margin_right = 431.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 214, 60 )
-size_flags_horizontal = 3
-
-[node name="icon" type="TextureRect" parent="NavigationModule/drop_list/Panel/NavigationContainer/AreaSelection/Button"]
-margin_left = 6.0
-margin_top = 7.0
-margin_right = 114.0
-margin_bottom = 54.0
-texture = ExtResource( 43 )
-expand = true
-
-[node name="Label" type="Label" parent="NavigationModule/drop_list/Panel/NavigationContainer/AreaSelection/Button"]
-anchor_right = 1.0
-margin_left = 122.0
-margin_top = 2.0
-margin_right = -6.0
-margin_bottom = 58.0
-custom_fonts/font = ExtResource( 3 )
-text = "Mansion - 8/8"
-valign = 1
+[node name="NavigationModule" parent="." instance=ExtResource( 2 )]
+margin_left = 648.0
+margin_right = -19.0
 
 [node name="AvailableSlaves" parent="." instance=ExtResource( 41 )]
 visible = false
-margin_left = 1501.0
-margin_top = 167.0
-margin_right = 1869.0
-margin_bottom = 841.0
+margin_left = 1497.0
+margin_top = 235.0
+margin_right = 1865.0
+margin_bottom = 909.0
 
 [node name="Resources" type="Panel" parent="."]
 visible = false
