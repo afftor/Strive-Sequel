@@ -7,6 +7,7 @@ onready var screen = $drop_list/screen
 onready var drop_panel = $drop_list/Panel
 
 func _ready():
+	screen.set_global_position(Vector2(0, 0))
 	globals.connect("hour_tick", self, "update_buttons")
 	globals.connect("hour_tick", self, "build_accessible_locations")
 	$drop_list.connect('pressed', self, 'toggle_drop_list', [true])
@@ -83,7 +84,8 @@ func build_accessible_locations(args = null):
 			newbutton2.get_node('icon').texture = images.get_background('mansion')
 			newbutton.connect("pressed", self, "return_to_mansion")
 			newbutton2.connect("pressed", self, "return_to_mansion")
-			globals.connecttexttooltip(newbutton, "Mansion")
+			globals.connecttexttooltip(newbutton, "%s" % ["Mansion"])
+			newbutton.get_node('amount').text = "%d/%d" % [free_chars.aliron, chars.aliron]
 			newbutton2.get_node('Label').text = "%s - %d/%d" % ["Mansion", free_chars.aliron, chars.aliron]
 			# newbutton.set_meta("data", i)
 #			newseparator.visible = true
@@ -109,10 +111,14 @@ func build_accessible_locations(args = null):
 #			newseparator.visible = false
 #		newbutton.text = ResourceScripts.world_gen.get_location_from_code(i).name
 		var locdata = ResourceScripts.world_gen.get_location_from_code(i)
-		globals.connecttexttooltip(newbutton, locdata.name)
+#		globals.connecttexttooltip(newbutton, locdata.name)
 		if i == 'aliron':
+			globals.connecttexttooltip(newbutton, locdata.name)
+			newbutton.get_node('amount').text = ""
 			newbutton2.get_node('Label').text = "%s" % locdata.name
 		else:
+			globals.connecttexttooltip(newbutton, "%s" % [locdata.name])
+			newbutton.get_node('amount').text = "%d/%d" %  [free_chars[i], chars[i]]
 			newbutton2.get_node('Label').text = "%s - %d/%d" % [locdata.name, free_chars[i], chars[i]]
 		if locdata.type == 'capital':
 			newbutton.get_node('icon').texture = images.get_icon(worlddata.lands[locdata.area].capital_icon)
@@ -145,7 +151,7 @@ func open_infinite():
 		yield(get_tree().create_timer(0.5), 'timeout')
 #		gui_controller.open_exploration(location)
 		gui_controller.mansion.hide()
-	build_accessible_locations()
+	gui_controller.nav_panel.build_accessible_locations()
 	gui_controller.close_all_closeable_windows()
 	
 	var presented_characters = []
@@ -186,7 +192,7 @@ func select_location(location):
 		ResourceScripts.core_animations.BlackScreenTransition(0.5)
 		yield(get_tree().create_timer(0.5), 'timeout')
 	
-	build_accessible_locations()
+	gui_controller.nav_panel.build_accessible_locations()
 	gui_controller.close_all_closeable_windows()
 	
 	if location in ResourceScripts.game_world.capitals:
@@ -276,8 +282,8 @@ func return_to_mansion(with_state = "default"):
 	gui_controller.exploration_city.get_node("GuildBG").hide()
 	gui_controller.exploration_city.active_faction = null
 	gui_controller.mansion.mansion_state_set(with_state)
-	build_accessible_locations()
-	update_buttons()
+	gui_controller.nav_panel.build_accessible_locations()
+	gui_controller.nav_panel.update_buttons()
 	gui_controller.exploration.hide()
 	gui_controller.close_all_closeable_windows()
 
