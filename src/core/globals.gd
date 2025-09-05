@@ -1641,7 +1641,6 @@ func remove_location(locationid):
 #	ResourceScripts.game_world.location_links.erase(location.id)
 	ResourceScripts.game_world.remove_location(locationid)
 	
-	
 	input_handler.update_slave_list()
 	gui_controller.nav_panel.build_accessible_locations()
 	if gui_controller.current_screen == gui_controller.mansion:

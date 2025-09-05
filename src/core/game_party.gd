@@ -487,6 +487,7 @@ func add_slave(person, child = false):
 	person.set_stat('metrics_ownership', ResourceScripts.game_globals.get_date()[0])
 	globals.text_log_add("char","New character acquired: " + person.get_short_name() + ". ")
 	globals.emit_signal("slave_added")
+	gui_controller.nav_panel.build_accessible_locations()
 
 
 func remove_slave(tempslave, permanent = false):
@@ -506,6 +507,7 @@ func remove_slave(tempslave, permanent = false):
 #	input_handler.update_slave_list()
 	input_handler.rebuild_slave_list()
 	gui_controller.mansion.set_active_person(ResourceScripts.game_party.get_master())
+	gui_controller.nav_panel.build_accessible_locations()
 
 
 func has_char(id):
