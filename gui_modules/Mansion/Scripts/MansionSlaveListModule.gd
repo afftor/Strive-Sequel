@@ -62,7 +62,8 @@ func OpenSpells(person = null):
 
 
 func rebuild():
-	build_locations_list()
+	update_dislocations()
+#	build_locations_list()
 	LocationsPanel.visible = (get_parent().mansion_state != "sex")
 	$population.visible = LocationsPanel.is_visible()
 	$food_consumption.visible = LocationsPanel.is_visible()

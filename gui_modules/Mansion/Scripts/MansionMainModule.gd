@@ -109,7 +109,7 @@ func _ready():
 		
 		ResourceScripts.game_globals.reset_limits()
 		SlaveListModule.rebuild()
-		SlaveListModule.build_locations_list()
+#		SlaveListModule.build_locations_list()
 		mansion_state_set("default")
 #		remove_child(newgame_node)
 	
@@ -128,7 +128,7 @@ func _ready():
 	input_handler.SetMusicRandom("mansion")
 	$TestButton.connect('pressed',self,'test')
 	SlaveListModule.update_dislocations()
-	SlaveListModule.build_locations_list()
+#	SlaveListModule.build_locations_list()
 	if !ResourceScripts.game_progress.intro_tutorial_seen:
 		$TutorialIntro.show()
 	set_active_person(ResourceScripts.game_party.get_master())
