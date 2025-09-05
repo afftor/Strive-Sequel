@@ -713,6 +713,8 @@ func set_travel_time(value):
 func return_to_mansion():
 	xp_module.remove_from_task()
 	travel.return_to_mansion()
+	input_handler.slave_list_node.update_dislocations()
+	input_handler.slave_list_node.rebuild()
 
 func recruit(enslave = false):
 	is_active = true
