@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.12.0'
+const gameversion = '0.12.0a'
 
 #time
 signal hour_tick
@@ -2748,6 +2748,7 @@ func apply_starting_preset():
 			ResourceScripts.game_res.materials[res] = preset.materials[res]
 		
 		ResourceScripts.game_progress.decisions = preset.decisions.duplicate()
+		ResourceScripts.game_progress.master_points = preset.master_points
 		ResourceScripts.game_progress.active_quests = preset.active_quests.duplicate()
 		ResourceScripts.game_progress.completed_quests = preset.completed_quests.duplicate()
 		if preset.has('seen_dialogues'):

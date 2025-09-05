@@ -83,7 +83,7 @@ var skills = {
 		ability_type = 'skill',
 		social_skill_stats = [],
 		reqs = [
-			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 1}
+#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 1}
 		],
 		chance = {
 			condition = [{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}],
@@ -119,7 +119,7 @@ var skills = {
 		ability_type = 'skill',
 		social_skill_stats = [],
 		reqs = [
-			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 1}
+#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 1}
 		],
 		targetreqs = [
 			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}
@@ -143,7 +143,7 @@ var skills = {
 		ability_type = 'skill',
 		social_skill_stats = [],
 		reqs = [
-			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 3}
+#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 3}
 		],
 		targetreqs = [
 			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']},
@@ -168,7 +168,7 @@ var skills = {
 		ability_type = 'skill',
 		social_skill_stats = [],
 		reqs = [
-			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 3}
+#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 3}
 		],
 		targetreqs = [],
 		effects = ['swap_form'],
@@ -296,7 +296,7 @@ var effects = {
 		type = 'simple',
 		descript = '',
 		conditions = [
-			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
+#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
 		],
 		tags = ['magic_atunement'],
 		statchanges = {matk = 10, mpmax_add = 25},
@@ -313,7 +313,7 @@ var effects = {
 		type = 'simple',
 		descript = '',
 		conditions = [
-			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
+#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
 		],
 		tags = ['combat_atunement'],
 		statchanges = {hpmax_add_part = 0.2},
@@ -329,7 +329,7 @@ var effects = {
 	combat_atunement_trigger = {
 		type = 'base',
 		conditions = [
-			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
+#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
 		],
 		sub_effects = [
 			{

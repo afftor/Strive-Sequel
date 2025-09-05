@@ -506,7 +506,7 @@ func use_social_skill(s_code, target, item):
 			target.process_event(variables.TR_POSTDAMAGE, {skill = s_skill, caster = parent.get_ref(), target = target})
 		else:
 			for t in targ_all: t.process_event(variables.TR_POSTDAMAGE, {skill = 's_skill', caster = parent.get_ref(), target = target})
-	
+	s_skill.remove_effects()
 	input_handler.update_slave_list()
 	#input_handler.update_slave_panel()
 

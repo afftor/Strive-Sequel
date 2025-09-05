@@ -87,6 +87,7 @@ func set_alt_form(value):
 	else:
 		for stat in revert_appearance:
 			parent.get_ref().set_stat(stat, revert_appearance[stat])
+	parent.get_ref().set_stat('portrait_update', true)
 
 #other
 func can_add_thrall():

@@ -239,6 +239,8 @@ func add_stat(statname, value, force_store = false): #only oneshots
 		value *= statlist.get_stat_gain_rate(statname)
 	if statname in ['hp', 'mp', 'shield']:
 		set(statname, get(statname) + value)
+	elif statname == 'thrall_points':
+		enthrall.thrall_points += value
 	elif statname == 'base_exp':
 		if value > 0:
 			xp_module.base_exp += value * get_stat('exp_gain_mod')

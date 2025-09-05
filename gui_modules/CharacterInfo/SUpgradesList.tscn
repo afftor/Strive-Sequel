@@ -1,0 +1,136 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_default.png" type="Texture" id=1]
+[ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_prassed.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_hover.png" type="Texture" id=3]
+[ext_resource path="res://gui_modules/CharacterInfo/SUpgradesList.gd" type="Script" id=6]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/button_job_chars_pressed.png" type="Texture" id=7]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_36.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/button_job_chars_hover.png" type="Texture" id=10]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/button_job_chars.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/JOB_MODULE/button_job_chars_disabled.png" type="Texture" id=12]
+
+[node name="UpgradesList" type="Control"]
+margin_right = 800.0
+margin_bottom = 801.0
+rect_min_size = Vector2( 700, 724 )
+script = ExtResource( 6 )
+
+[node name="info" type="Control" parent="."]
+margin_left = 2.0
+margin_top = 25.0
+margin_right = 296.0
+margin_bottom = 575.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="info"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="record" type="HBoxContainer" parent="info/VBoxContainer"]
+visible = false
+margin_right = 331.0
+margin_bottom = 35.0
+rect_pivot_offset = Vector2( -824, -22 )
+
+[node name="stat" type="Label" parent="info/VBoxContainer/record"]
+margin_right = 218.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "Current Personality"
+
+[node name="value" type="Label" parent="info/VBoxContainer/record"]
+margin_left = 222.0
+margin_right = 331.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "0"
+align = 2
+
+[node name="upgrades" type="Control" parent="."]
+margin_left = 299.0
+margin_top = 24.0
+margin_right = 741.0
+margin_bottom = 571.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="upgrades"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Button" type="TextureButton" parent="upgrades/VBoxContainer"]
+visible = false
+margin_right = 442.0
+margin_bottom = 52.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 10 )
+texture_disabled = ExtResource( 12 )
+
+[node name="icon" type="TextureRect" parent="upgrades/VBoxContainer/Button"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+expand = true
+
+[node name="name" type="Label" parent="upgrades/VBoxContainer/Button"]
+margin_left = 59.0
+margin_top = 6.0
+margin_right = 277.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "Current Personality"
+
+[node name="cost" type="Label" parent="upgrades/VBoxContainer/Button"]
+margin_left = 373.0
+margin_top = 7.0
+margin_right = 421.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = "0 pt"
+align = 2
+
+[node name="thralls" type="Control" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -209.0
+rect_pivot_offset = Vector2( -486, -382 )
+
+[node name="Label2" type="Label" parent="thralls"]
+anchor_right = 1.0
+margin_bottom = 53.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "SIBLINGMODULETHRALLIST"
+align = 1
+clip_text = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="thralls"]
+margin_left = 62.0
+margin_top = 74.0
+margin_right = 743.0
+margin_bottom = 174.0
+custom_constants/separation = 10
+
+[node name="Button" type="TextureButton" parent="thralls/HBoxContainer"]
+visible = false
+margin_right = 100.0
+margin_bottom = 100.0
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 1 )
+
+[node name="icon" type="TextureRect" parent="thralls/HBoxContainer/Button"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true

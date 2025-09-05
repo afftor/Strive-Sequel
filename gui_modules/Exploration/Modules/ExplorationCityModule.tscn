@@ -251,7 +251,7 @@ anchor_bottom = 1.0
 margin_left = 320.0
 margin_top = 15.0
 margin_right = -15.0
-margin_bottom = -942.0
+margin_bottom = -961.0
 custom_styles/panel = ExtResource( 4 )
 script = ExtResource( 97 )
 
@@ -275,10 +275,9 @@ expand = true
 stretch_mode = 7
 
 [node name="NavigationContainer" type="ScrollContainer" parent="NavigationModule"]
-margin_left = 18.0
-margin_top = -3.0
+margin_left = 106.0
 margin_right = 1583.0
-margin_bottom = 104.0
+margin_bottom = 107.0
 theme = ExtResource( 125 )
 scroll_vertical_enabled = false
 
@@ -309,9 +308,9 @@ texture = ExtResource( 110 )
 expand = true
 
 [node name="GuildsPanel" type="TextureRect" parent="NavigationModule"]
-margin_top = 128.0
+margin_top = 104.0
 margin_right = 1585.0
-margin_bottom = 182.0
+margin_bottom = 158.0
 texture = ExtResource( 6 )
 
 [node name="VSeparator" type="TextureRect" parent="NavigationModule/GuildsPanel"]
@@ -357,6 +356,65 @@ custom_styles/disabled = ExtResource( 3 )
 custom_styles/normal = ExtResource( 3 )
 toggle_mode = true
 text = "Guild"
+
+[node name="drop_list" type="Button" parent="NavigationModule"]
+margin_left = 24.0
+margin_top = 22.0
+margin_right = 85.0
+margin_bottom = 82.0
+
+[node name="screen" type="Button" parent="NavigationModule/drop_list"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -355.0
+margin_top = -47.0
+margin_right = 1594.0
+margin_bottom = 1058.0
+
+[node name="Panel" type="Panel" parent="NavigationModule/drop_list"]
+visible = false
+margin_left = 2.0
+margin_top = 77.0
+margin_right = 476.0
+margin_bottom = 787.0
+
+[node name="NavigationContainer" type="ScrollContainer" parent="NavigationModule/drop_list/Panel"]
+margin_left = 21.0
+margin_top = 16.0
+margin_right = 452.0
+margin_bottom = 691.0
+theme = ExtResource( 125 )
+scroll_horizontal_enabled = false
+
+[node name="AreaSelection" type="VBoxContainer" parent="NavigationModule/drop_list/Panel/NavigationContainer"]
+margin_right = 431.0
+size_flags_horizontal = 3
+custom_constants/separation = -2
+
+[node name="Button" type="Button" parent="NavigationModule/drop_list/Panel/NavigationContainer/AreaSelection"]
+visible = false
+margin_right = 431.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 214, 60 )
+size_flags_horizontal = 3
+
+[node name="icon" type="TextureRect" parent="NavigationModule/drop_list/Panel/NavigationContainer/AreaSelection/Button"]
+margin_left = 6.0
+margin_top = 7.0
+margin_right = 114.0
+margin_bottom = 54.0
+texture = ExtResource( 110 )
+expand = true
+
+[node name="Label" type="Label" parent="NavigationModule/drop_list/Panel/NavigationContainer/AreaSelection/Button"]
+anchor_right = 1.0
+margin_left = 122.0
+margin_top = 2.0
+margin_right = -6.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 8 )
+text = "Mansion - 8/8"
+valign = 1
 
 [node name="AreaMenu" type="Control" parent="."]
 margin_left = 38.8524
