@@ -16623,7 +16623,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	COMBAT_WIN_LINE16 = "That's what you get!",
 	COMBAT_WIN_LINE17 = "Shouldn't have challenged me!",
 	COMBAT_WIN_LINE18 = "Done already!?",
-	COMBAT_WIN_LINE19 = "Damn! I wanted to fight some more.",
+	COMBAT_WIN_LINE19 = "Darn! I wanted to fight some more.",
 	COMBAT_WIN_LINE20 = "Pathetic. Why even bother challenging us?",
 	COMBAT_WIN_LINE21 = "I hope they're okay...",
 	COMBAT_WIN_LINE22 = "Is everyone alright?",
@@ -16742,7 +16742,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	MASTER_ABUSE_LINE14 = "P-please don't let anyone see this...",
 	MASTER_ABUSE_LINE15 = "How dare you!? Let me go!",
 	MASTER_ABUSE_LINE16 = "One of these days I'll get you back for this!",
-	MASTER_ABUSE_LINE17 = "Damn! my cheeks stings so much...",
+	MASTER_ABUSE_LINE17 = "Darn! my cheeks stings so much...",
 	MASTER_ABUSE_LINE18 = "You're lucky you're not the one in this position...",
 	MASTER_ABUSE_LINE19 = "Gah! don't think you've bested me..",
 	MASTER_ABUSE_LINE20 = "Careful... This is too much, [Master]...",
@@ -19089,7 +19089,7 @@ She leaves before you can answer but her uncharacteristic appearance makes you t
 	
 	EMP_CITY_INIT = """A new letter arrives today, its envelope adorned with intricate patterns that suggest a far more influential sender than you're accustomed to.
 
-“Dear [Name], Mayor of Aliron,
+“Dear [name], Mayor of Aliron,
 I've heard much about you and your recent deeds, and I believe it's time we met in person. I invite you to the Grand Empire's capital, the one and only. I assure you, it will be quite a sight for someone like you — and an opportunity to acquire that artifact you seek.”
 
 Your admirer,
@@ -19132,7 +19132,7 @@ A nearby guest notices your interest and makes an offhand remark that piques you
 As you pass through the doors again, you catch Rouge's predatory smile fixed on you.""",
 	EMP_CEREMONY_5_0 = """Finally, a guard ushers you into the Emperor's office. Unprepared, you see this as a chance to make an impression. The Emperor fixes you with a stern look, though you sense a hint of amusement in his gaze.
 
-— Let's see... [Name], Mayor of Alon? No... Aliron, was it? That sorry little kingdom. One of my aides insisted I meet you. Do you have anything worth my time?""",
+— Let's see... [name], Mayor of Alon? No... Aliron, was it? That sorry little kingdom. One of my aides insisted I meet you. Do you have anything worth my time?""",
 	EMP_CEREMONY_5_1 = """The Emperor dismisses your remark with a wave before you can finish.
 
 — Save the formalities for another time. You've been granted a rare privilege, one that may never come again. What brings you here?""",
@@ -19183,7 +19183,7 @@ Rouge: - It's simple, really. Get lost and stay away from [name]. You know what 
 Kuro: — ...
 
 The sudden hostility leaves an uneasy silence between you.""",
-	EMP_FOXES_3 = """Zephyra: — Leave [Name] to you? You're out of your mind if you think that weak bravado will make me step aside.
+	EMP_FOXES_3 = """Zephyra: — Leave [name] to you? You're out of your mind if you think that weak bravado will make me step aside.
 
 Rouge's eyes widen slightly, clearly surprised to be challenged by someone she barely considers a person.
 

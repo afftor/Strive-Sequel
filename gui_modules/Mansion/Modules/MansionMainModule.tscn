@@ -43,7 +43,6 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_vertical_guides_": [ 0.575684 ]
 }
-test_mode = true
 
 [node name="BGHolder" type="Control" parent="."]
 anchor_right = 1.0
@@ -177,9 +176,6 @@ theme = ExtResource( 3 )
 texture_normal = ExtResource( 23 )
 texture_pressed = ExtResource( 32 )
 texture_hover = ExtResource( 31 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MansionCraftModule" parent="." instance=ExtResource( 16 )]
 visible = false

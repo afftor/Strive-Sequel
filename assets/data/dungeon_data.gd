@@ -647,6 +647,7 @@ var dungeons = {
 		eventarray = [['dungeon_find_chest_easy', 1],['event_goblin_friendly',0.3],['celena_shrine_find',0.5],['erebus_shrine_find',1],['freya_shrine_find',0.2]],
 		
 		event_data = {
+			
 			dungeon_find_chest_easy = {
 				limit = 0,
 				weight = 10,
