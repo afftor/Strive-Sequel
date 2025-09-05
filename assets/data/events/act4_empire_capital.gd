@@ -321,7 +321,8 @@ var data = {
 						code = "add_timed_event",
 						value = {quest = "act_4_capital", stage = "arena"},
 						args = [{type = "action_to_date", date = [1, 1], hour = 1, action = "quest"}]
-					}
+					},
+					{code = "update_city"},
 				]
 			}
 		],
@@ -462,7 +463,8 @@ var data = {
 				reqs = [],
 				type = "next_dialogue",
 				bonus_effects = [
-					{code = "progress_quest", value = "act_4_capital", stage = "tbc"},
+					{code = "progress_quest", value = "act_4_capital", stage = "act4_continue"},
+					{code = "update_city"},
 				]
 			}
 		],
