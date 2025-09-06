@@ -209,6 +209,7 @@ var TranslationDict = {
 	NEWGAMESETTING = """Настройки""",
 	NEWGAMESKIPPROL = """Пропустить пролог""",
 	NEWGAMESTART = """Начать игру""",
+	SPELLCAST_LABEL = """Cast Spell""", # MISSING TRANSLATION
 	BACKTOPRESETS = """Назад""",
 	PRESETDATADEBUGCUSTOMNAME = "Настроить",
 	PRESETDATADEBUGEASYNAME = """Легко""",
