@@ -603,6 +603,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SexTraitsPanel/ScrollContainer"]
 light_mask = 0
+margin_right = 230.0
 size_flags_horizontal = 3
 custom_constants/separation = 5
 
@@ -875,17 +876,17 @@ scroll_horizontal_enabled = false
 list_type = 1
 
 [node name="SuccubUpgradesCont" type="ScrollContainer" parent="UpgradesPanel"]
-visible = false
-margin_left = 890.0
+margin_left = 879.0
 margin_top = 142.0
 margin_right = 1639.0
-margin_bottom = 826.0
+margin_bottom = 888.0
 theme = ExtResource( 15 )
 scroll_horizontal_enabled = false
 
-[node name="UpgradesList" parent="UpgradesPanel/SuccubUpgradesCont" instance=ExtResource( 70 )]
-margin_right = 700.0
-margin_bottom = 724.0
+[node name="UpgradesList2" parent="UpgradesPanel/SuccubUpgradesCont" instance=ExtResource( 70 )]
+margin_right = 760.0
+margin_bottom = 740.0
+rect_min_size = Vector2( 760, 740 )
 
 [node name="Label" type="Label" parent="UpgradesPanel"]
 margin_left = 1110.0

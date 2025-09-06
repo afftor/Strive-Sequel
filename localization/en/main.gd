@@ -210,6 +210,7 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	NEWGAMESETTING = "Settings",
 	NEWGAMESKIPPROL = "Skip prologue",
 	NEWGAMESTART = "Start Game",
+	SPELLCAST_LABEL = "Cast Spell",
 	BACKTOPRESETS = "Back",
 	PRESETDATADEBUGCUSTOMNAME = "Custom",
 	PRESETDATADEBUGEASYNAME = "Easy",

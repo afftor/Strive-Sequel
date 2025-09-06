@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_default.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_prassed.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_hover.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_magicdamage.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_magicdamage_pressed.png" type="Texture" id=5]
 [ext_resource path="res://gui_modules/CharacterInfo/SUpgradesList.gd" type="Script" id=6]
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE/button_job_chars_pressed.png" type="Texture" id=7]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_36.tres" type="DynamicFont" id=8]
@@ -10,10 +12,11 @@
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE/button_job_chars_hover.png" type="Texture" id=10]
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE/button_job_chars.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/JOB_MODULE/button_job_chars_disabled.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_magicdamage_hover.png" type="Texture" id=13]
 
 [node name="UpgradesList" type="Control"]
 margin_right = 800.0
-margin_bottom = 801.0
+margin_bottom = 749.0
 rect_min_size = Vector2( 700, 724 )
 script = ExtResource( 6 )
 
@@ -26,10 +29,11 @@ margin_bottom = 575.0
 [node name="VBoxContainer" type="VBoxContainer" parent="info"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = -110.0
 
 [node name="record" type="HBoxContainer" parent="info/VBoxContainer"]
 visible = false
-margin_right = 331.0
+margin_right = 294.0
 margin_bottom = 35.0
 rect_pivot_offset = Vector2( -824, -22 )
 
@@ -43,7 +47,7 @@ text = "Current Personality"
 
 [node name="value" type="Label" parent="info/VBoxContainer/record"]
 margin_left = 222.0
-margin_right = 331.0
+margin_right = 294.0
 margin_bottom = 35.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -51,10 +55,27 @@ custom_fonts/font = ExtResource( 9 )
 text = "0"
 align = 2
 
+[node name="spells" type="TextureButton" parent="info"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -105.0
+margin_top = -103.0
+margin_right = -6.0
+margin_bottom = -4.0
+hint_tooltip = "SPELLCAST_LABEL"
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 13 )
+expand = true
+
 [node name="upgrades" type="Control" parent="."]
-margin_left = 299.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -458.0
 margin_top = 24.0
-margin_right = 741.0
+margin_right = -16.0
 margin_bottom = 571.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="upgrades"]
@@ -101,7 +122,7 @@ align = 2
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -209.0
+margin_top = -171.0
 rect_pivot_offset = Vector2( -486, -382 )
 
 [node name="Label2" type="Label" parent="thralls"]
@@ -115,9 +136,9 @@ clip_text = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="thralls"]
 margin_left = 62.0
-margin_top = 74.0
+margin_top = 55.0
 margin_right = 743.0
-margin_bottom = 174.0
+margin_bottom = 155.0
 custom_constants/separation = 10
 
 [node name="Button" type="TextureButton" parent="thralls/HBoxContainer"]

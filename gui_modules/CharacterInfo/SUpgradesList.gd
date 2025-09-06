@@ -9,7 +9,7 @@ var tr_traits_s = []
 var tr_rewards = []
 
 func _ready():
-	pass
+	$info/spells.connect('pressed', self, 'open_spells')
 #	gather_data()
 #	$no_trainer/TextureButton.connect("pressed", self, 'build_trainer_list')
 #	$training/trainer_frame.connect("pressed", self, 'build_trainer_list')
@@ -132,3 +132,12 @@ func add_training_confirm():
 			person.add_trait(u_data.trait)
 	update()
 
+
+func open_spells():
+	gui_controller.spells = input_handler.get_spec_node(input_handler.NODE_SPELLS)
+	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.spells, 0.3)
+	gui_controller.spells.show()
+	gui_controller.previous_screen = gui_controller.current_screen
+	gui_controller.current_screen = gui_controller.spells
+	gui_controller.spells.open(person)
+	gui_controller.emit_signal("screen_changed")
