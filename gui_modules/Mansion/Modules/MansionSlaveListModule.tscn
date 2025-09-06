@@ -528,6 +528,7 @@ margin_left = 890.0
 margin_top = 5.0
 margin_right = 930.0
 margin_bottom = 45.0
+hint_tooltip = "SPELLCAST_LABEL"
 texture_normal = ExtResource( 44 )
 texture_pressed = ExtResource( 45 )
 texture_hover = ExtResource( 46 )

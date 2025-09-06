@@ -1,4 +1,9 @@
 extends Node
+var GUISounds = {
+	#<node group>: <sound name>
+	test = 'ding',
+}
+
 
 #Game Settings
 #timeflow
