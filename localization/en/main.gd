@@ -2573,14 +2573,14 @@ Loyalty: +25, Maxes Obedience.""",
 	SKILLALLUREDESCRIPT = """Category: {color=green|Succubus}
 Entices the target thrall, increasing their Loyalty and reducing Resistence.
 Basic Effects: 
-Resistance -50 and Loyalty +5 (modified by [succubus]' charm)""",
+Resistance -50 and Loyalty +5 (modified by succubus' charm)""",
 	DIALOGUEALLUREREPORT = "",
-	SKILLTURN_SUCCUBUS = "Turn in [succubus]",
+	SKILLTURN_SUCCUBUS = "Turn in succubus",
 	SKILLTURN_SUCCUBUSDESCRIPT = """Turn thrall into succubus""",
 	DIALOGUETURN_SUCCUBUSREPORT = "[targetname] is now succubus and is no longer thrall.",
 	DIALOGUECORRUPTIVE_ESSENCEREPORT = "[name] is now [succubus].",
 	SKILLSWAP_FORM = "Swap form",
-	SKILLSWAP_FORMDESCRIPT = """Change between demon and non-demon form of [succubus]""",
+	SKILLSWAP_FORMDESCRIPT = """Change between demon and non-demon form of succubus""",
 	DIALOGUESWAP_FORMREPORT = "Form changed",
 	
 	DEMONFORMDESCRIPT = "Demonic form",
