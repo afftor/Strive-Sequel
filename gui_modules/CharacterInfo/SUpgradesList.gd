@@ -8,8 +8,12 @@ var tr_traits = []
 var tr_traits_s = []
 var tr_rewards = []
 
+var offset_x = 120
+var offset_y = 150
+
 func _ready():
-	$info/spells.connect('pressed', self, 'open_spells')
+	pass
+#	$info/spells.connect('pressed', self, 'open_spells')
 #	gather_data()
 #	$no_trainer/TextureButton.connect("pressed", self, 'build_trainer_list')
 #	$training/trainer_frame.connect("pressed", self, 'build_trainer_list')
@@ -38,18 +42,22 @@ func update():
 	build_thralls()
 	build_info()
 	build_trainings()
+	build_spells()
 
 
 func build_info(): 
 	var container = $info/VBoxContainer
-	var list = ['lustmax', 'lusttick', 'thralls_amount_max', 'thrall_points']
-	input_handler.ClearContainer(container, ['record'])
+	var list = ['lustmax', 'lusttick', 'thralls_amount_max', null, 'thrall_points']
+	input_handler.ClearContainer(container, ['record', 'separator'])
 	for id in list:
-		var stdata = statdata.statdata[id]
-		var panel = input_handler.DuplicateContainerTemplate(container, 'record')
-		var value = person.get_stat(id)
-		panel.get_node('stat').text = tr(stdata.name) + ":"
-		panel.get_node('value').text = str(value)
+		if id == null:
+			var panel = input_handler.DuplicateContainerTemplate(container, 'separator')
+		else:
+			var stdata = statdata.statdata[id]
+			var panel = input_handler.DuplicateContainerTemplate(container, 'record')
+			var value = person.get_stat(id)
+			panel.get_node('stat').text = tr(stdata.name) + ":"
+			panel.get_node('value').text = str(value)
 	#add more info
 
 
@@ -77,11 +85,12 @@ func change_slave(newchar):
 
 
 func build_trainings():
-	var container = $upgrades/VBoxContainer
+	var container = $upgrades
 	input_handler.ClearContainer(container, ['Button'])
 	for tr_id in Traitdata.succubus_trainings:
 		var u_data = Traitdata.succubus_trainings[tr_id]
 		var panel = input_handler.DuplicateContainerTemplate(container, 'Button')
+		panel.rect_position = Vector2(u_data.position[1] * offset_x, u_data.position[0] * offset_y)
 		var unlocked = false
 		match u_data.mode:
 			'skill':
@@ -105,12 +114,14 @@ func build_trainings():
 		if unlocked:
 			panel.disabled = true
 			panel.get_node('cost').visible = false
-			panel.texture_disabled = load("res://assets/Textures_v2/JOB_MODULE/button_job_chars_hover.png")
+			panel.get_node('bg').modulate = Color(variables.hexcolordict.yellow)
 		else:
 			if person.check_cost(u_data.cost):
 				panel.connect('pressed', self, 'add_training', [tr_id])
+				panel.get_node('bg').modulate = Color(variables.hexcolordict.green)
 			else:
 				panel.disabled = true
+				panel.get_node('bg').modulate = Color(variables.hexcolordict.red)
 		panel.get_node('cost').text = "%d pt" % u_data.cost.thrall_points
 		
 
@@ -131,6 +142,59 @@ func add_training_confirm():
 		'trait':
 			person.add_trait(u_data.trait)
 	update()
+
+
+func build_spells():
+	var container = $spells
+	var list = person.get_social_skills()
+	input_handler.ClearContainer(container, ['Button'])
+	for id in list:
+		var s_data = Skilldata.get_template(id, person)
+		if !s_data.tags.has('succubus'):
+			continue
+		var panel = input_handler.DuplicateContainerTemplate(container, 'Button') 
+		panel.connect('pressed', self, 'select_spell', [id])
+		if s_data.icon is String:
+			panel.get_node('icon').texture = load(s_data.icon)
+		else:
+			panel.get_node('icon').texture = s_data.icon
+		globals.connectskilltooltip(panel, id, person)
+		if s_data.cost.has('mp'):
+			panel.get_node('value').text = str(s_data.cost.mp)
+		else:
+			panel.get_node('value').text = '0'
+		var charges = Skilldata.get_charges(s_data, person)
+		var used_charges = 0
+		if person.skills.social_skills_charges.has(id):
+			used_charges = person.skills.social_skills_charges[id]
+#		panel.get_node('charges').text = str(charges - used_charges) + "/" + str(charges)
+		if !person.check_cost(s_data.cost):
+			panel.disabled = true
+		if (person.checkreqs(s_data.reqs) == false):# or (person.has_status('no_social_skills') and person.skills.active_panel == variables.PANEL_SOC) or person.get_work() == 'disabled':
+			panel.disabled = true
+		if charges - used_charges <= 0:
+			panel.disabled = true
+			if person.skills.social_cooldowns.has(id):
+				panel.get_node('cdicon').visible = true
+				panel.get_node('value').text = str(person.skills.social_cooldowns[id])
+			if person.skills.daily_cooldowns.has(id):
+				panel.get_node('cdicon').visible = true
+				panel.get_node('value').text = str(person.skills.daily_cooldowns[id])
+
+
+func select_spell(sp_id):
+	var s_data = Skilldata.get_template(sp_id, person)
+	if s_data.tags.has('no_target'):
+		person.use_social_skill(sp_id, person)
+		input_handler.emit_signal("SpellUsed")
+	else:
+		gui_controller.spells = input_handler.get_spec_node(input_handler.NODE_SPELLS)
+		ResourceScripts.core_animations.UnfadeAnimation(gui_controller.spells, 0.3)
+		gui_controller.spells.show()
+		gui_controller.previous_screen = gui_controller.current_screen
+		gui_controller.current_screen = gui_controller.spells
+		gui_controller.spells.open(person, sp_id, true)
+		gui_controller.emit_signal("screen_changed")
 
 
 func open_spells():

@@ -2333,53 +2333,59 @@ var tattoodata = {
 #	},
 #}
 var succubus_trainings = {
-	enthrall = {
-		cost = {thrall_points = 0},
-		mode = 'skill',
-		skill = 'enthrall',
-		trait = null,
-	},
-	release_thrall = {
-		cost = {thrall_points = 0},
-		mode = 'skill',
-		skill = 'release_thrall',
-		trait = null,
-	},
+#	enthrall = {
+#		cost = {thrall_points = 0},
+#		mode = 'skill',
+#		skill = 'enthrall',
+#		trait = null,
+#	},
+#	release_thrall = {
+#		cost = {thrall_points = 0},
+#		mode = 'skill',
+#		skill = 'release_thrall',
+#		trait = null,
+#	},
 	corrupt = {
 		cost = {thrall_points = 1},
 		mode = 'skill',
 		skill = 'corrupt',
 		trait = null,
+		position = [0, 0],
 	},
 	allure = {
 		cost = {thrall_points = 1},
 		mode = 'skill',
 		skill = 'allure',
 		trait = null,
+		position = [0, 1],
 	},
 	turn_succubus = {
 		cost = {thrall_points = 3},
 		mode = 'skill',
 		skill = 'turn_succubus',
 		trait = null,
+		position = [0, 2],
 	},
 	swap_form = {
 		cost = {thrall_points = 3},
 		mode = 'skill',
 		skill = 'swap_form',
 		trait = null,
+		position = [1, 0],
 	},
 	succubus_magic = {
 		cost = {thrall_points = 5},
 		mode = 'trait',
 		skill = null,
 		trait = 'succubus_magic',
+		position = [1, 1],
 	},
 	succubus_combat = {
 		cost = {thrall_points = 5},
 		mode = 'trait',
 		skill = null,
 		trait = 'succubus_combat',
+		position = [1, 2],
 	},
 }
 

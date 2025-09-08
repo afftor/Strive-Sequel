@@ -1,26 +1,60 @@
 extends Control
 
+var mode = 0
 var selected_person = null
 var selected_spell = null
 
-onready var caser_container = $CasterContainer/VBoxContainer
-onready var target_container = $TargetContainer/VBoxContainer
-onready var no_targets = $TargetContainer/VBoxContainer/no_targets
-onready var spells_container = $SpellContainer/VBoxContainer
+onready var caser_container = $caster/CasterContainer/VBoxContainer
+onready var target_container = $targets/TargetContainer/VBoxContainer
+onready var no_targets = $targets/TargetContainer/VBoxContainer/no_targets
+onready var spells_container = $spells/SpellContainer/VBoxContainer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	gui_controller.add_close_button(self, "add_offset")
 
 
-func open(t_person = null):
-	selected_person = t_person.id
+func open(t_person = null, t_spell = null, lock_selected = false):
+	mode = 0
+	if t_person != null:
+		selected_person = t_person.id
+		if lock_selected:
+			mode = 1
+		if t_spell != null:
+			selected_spell = t_spell
+			if lock_selected:
+				mode = 2
+		else:
+			selected_spell = null
+	else:
+		selected_person = null
 	update()
+#	match_mode()
 
 
 func update():
 	update_casters()
 	update_spells()
 	update_targets()
+	match_mode()
+
+
+func match_mode():
+	$targets.visible = true
+	match mode:
+		0:
+			$caster.visible = true
+			$spells.visible = true
+		1:
+			$caster.visible = false
+			$spells.visible = true
+			if selected_person == null:
+				hide()
+		2:
+			$caster.visible = false
+			$spells.visible = false
+			if selected_spell == null:
+				input_handler.emit_signal("SpellUsed")
+				hide()
 
 
 func update_casters():
@@ -53,10 +87,10 @@ func select_caster(t_id):
 func update_spells():
 	if selected_person == null:
 		selected_spell = null
-		$SpellContainer.visible = false
+		$spells/SpellContainer.visible = false
 		return
 	else:
-		$SpellContainer.visible = true
+		$spells/SpellContainer.visible = true
 	var caster = characters_pool.get_char_by_id(selected_person)
 	input_handler.ClearContainer(spells_container)
 	for sp_id in caster.get_social_skills():
@@ -105,12 +139,16 @@ func select_spell(s_id):
 
 func update_targets():
 	if selected_person == null or selected_spell == null:
-		$TargetContainer.visible = false
+		$targets/TargetContainer.visible = false
 		return
 	else:
-		$TargetContainer.visible = true
+		$targets/TargetContainer.visible = true
 	var caster = characters_pool.get_char_by_id(selected_person)
 	var spell = Skilldata.get_template(selected_spell, caster)
+	if spell.tags.has('no_target'):
+		caster.use_social_skill(selected_spell, caster)
+		reset_spell()
+		return
 	input_handler.ClearContainer(target_container, ['Button', 'no_targets'])
 	no_targets.visible = true
 	for ch_id in ResourceScripts.game_party.character_order:
@@ -143,4 +181,9 @@ func select_target(ch_id):
 	var target = characters_pool.get_char_by_id(ch_id)
 	var spell = Skilldata.get_template(selected_spell, caster)
 	caster.use_social_skill(selected_spell, target)
+	reset_spell()
+
+
+func reset_spell():
+	selected_spell = null
 	update()

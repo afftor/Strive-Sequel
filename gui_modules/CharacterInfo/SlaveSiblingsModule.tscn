@@ -884,8 +884,6 @@ theme = ExtResource( 15 )
 scroll_horizontal_enabled = false
 
 [node name="UpgradesList" parent="UpgradesPanel/SuccubUpgradesCont" instance=ExtResource( 70 )]
-margin_right = 760.0
-margin_bottom = 740.0
 rect_min_size = Vector2( 760, 740 )
 
 [node name="Label" type="Label" parent="UpgradesPanel"]
