@@ -1,7 +1,7 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/city_icon_feame2.png" type="Texture" id=2]
+[ext_resource path="res://gui_modules/Universal/Modules/NavigationModule_new.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=5]
@@ -34,15 +34,9 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Icons/icon_sword.png" type="Texture" id=32]
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_portraitsmall.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_char_hover.png" type="Texture" id=34]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/city_icon_feame1.png" type="Texture" id=35]
-[ext_resource path="res://gui_modules/Universal/Scripts/NavigationModule.gd" type="Script" id=36]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=37]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HScrollBar.tres" type="Theme" id=38]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=39]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainExtraSmallBold.tres" type="DynamicFont" id=40]
 [ext_resource path="res://gui_modules/Exploration/Modules/AvailableSlaves.tscn" type="PackedScene" id=41]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/city_icon_feame3.png" type="Texture" id=42]
-[ext_resource path="res://assets/images/iconslocations/aliron_ic2.png" type="Texture" id=43]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type.png" type="Texture" id=62]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type_pressed.png" type="Texture" id=63]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type_hover.png" type="Texture" id=64]
@@ -1006,7 +1000,7 @@ theme = ExtResource( 5 )
 
 [node name="MapPanel" type="TextureRect" parent="."]
 margin_left = 645.0
-margin_top = 163.0
+margin_top = 131.0
 margin_right = 1905.0
 margin_bottom = 1060.0
 texture = ExtResource( 19 )
@@ -1295,64 +1289,16 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="NavigationModule" type="Panel" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 645.0
-margin_top = 15.0
-margin_right = -15.0
-margin_bottom = -936.0
-custom_styles/panel = ExtResource( 37 )
-script = ExtResource( 36 )
-
-[node name="Background" type="Panel" parent="NavigationModule"]
-self_modulate = Color( 0, 0, 0, 0.705882 )
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="NavigationContainer" type="ScrollContainer" parent="NavigationModule"]
-margin_left = 18.0
-margin_right = 1260.0
-margin_bottom = 107.0
-theme = ExtResource( 38 )
-scroll_vertical_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AreaSelection" type="HBoxContainer" parent="NavigationModule/NavigationContainer"]
-custom_constants/separation = 14
-
-[node name="Button" type="TextureButton" parent="NavigationModule/NavigationContainer/AreaSelection"]
-visible = false
-margin_right = 214.0
-margin_bottom = 107.0
-rect_min_size = Vector2( 214, 107 )
-toggle_mode = true
-texture_normal = ExtResource( 35 )
-texture_pressed = ExtResource( 42 )
-texture_hover = ExtResource( 2 )
-
-[node name="icon" type="TextureRect" parent="NavigationModule/NavigationContainer/AreaSelection/Button"]
-show_behind_parent = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -92.0
-margin_top = -40.0
-margin_right = 92.0
-margin_bottom = 40.0
-texture = ExtResource( 43 )
-expand = true
+[node name="NavigationModule" parent="." instance=ExtResource( 2 )]
+margin_left = 648.0
+margin_right = -19.0
 
 [node name="AvailableSlaves" parent="." instance=ExtResource( 41 )]
 visible = false
-margin_left = 1501.0
-margin_top = 167.0
-margin_right = 1869.0
-margin_bottom = 841.0
+margin_left = 1497.0
+margin_top = 235.0
+margin_right = 1865.0
+margin_bottom = 909.0
 
 [node name="Resources" type="Panel" parent="."]
 visible = false

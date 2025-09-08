@@ -11,10 +11,13 @@ func open(character, category, triggernode, triggerfunction):
 	var skillarray = []
 	if category == variables.PANEL_SOC:
 		for i in person.get_social_skills():
-			skillarray.append(Skilldata.get_template(i, person))
+			var s_data = Skilldata.get_template(i, person)
+			if s_data.tags.has('succubus'):
+				continue
+			skillarray.append(s_data)
 	else:
 		for i in person.get_combat_skills():
-			skillarray.append(Skilldata.get_template(i, person))
+			skillarray.append(Skilldata.get_template_combat(i, person))
 	
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)

@@ -109,7 +109,7 @@ func _ready():
 		
 		ResourceScripts.game_globals.reset_limits()
 		SlaveListModule.rebuild()
-		SlaveListModule.build_locations_list()
+#		SlaveListModule.build_locations_list()
 		mansion_state_set("default")
 #		remove_child(newgame_node)
 	
@@ -128,7 +128,7 @@ func _ready():
 	input_handler.SetMusicRandom("mansion")
 	$TestButton.connect('pressed',self,'test')
 	SlaveListModule.update_dislocations()
-	SlaveListModule.build_locations_list()
+#	SlaveListModule.build_locations_list()
 	if !ResourceScripts.game_progress.intro_tutorial_seen:
 		$TutorialIntro.show()
 	set_active_person(ResourceScripts.game_party.get_master())
@@ -814,16 +814,16 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("mask", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("foxmask", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("service_suit", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("cali_heirloom_active", {})) #base level
+		globals.AddItemToInventory(globals.CreateGearItem("cali_heirloom_active", {}))
 		var titem = globals.CreateGearItem("cali_heirloom_test", {})
 		titem.set_quality_level('legendary')
 		globals.AddItemToInventory(titem) #legendary version
 		globals.AddItemToInventory(globals.CreateGearItem("worker_outfit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("leather_collar", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("seethrough_underwear", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("amulet_of_recognition", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
-		globals.AddItemToInventory(globals.CreateUsableItem("zephyra_underwear"))
+		globals.AddItemToInventory(globals.CreateUsableItem("corruptive_essence"))
 		globals.AddItemToInventory(globals.CreateUsableItem("map_bandit_fort", 4))
 		globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("soul_stone", 3))
@@ -929,7 +929,7 @@ func test_mode():
 		ResourceScripts.game_progress.decisions.append("bracelet_found")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
-		#input_handler.interactive_message('library_loot', '', {})
+		#input_handler.interactive_message('emp_ceremony_1', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)

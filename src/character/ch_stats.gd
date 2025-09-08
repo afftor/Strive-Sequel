@@ -1480,6 +1480,8 @@ func get_pronoun_value(pronoun):
 		"Sir": return globals.fastif(statlist.sex == 'male', tr('PRONOUNSIR'), tr("PRONOUNSIRF"))
 		"sir": return globals.fastif(statlist.sex == 'male', tr('PRONOUNSIR'), tr("PRONOUNSIRF"))
 		"mister": return globals.fastif(statlist.sex == 'male', tr('PRONOUNMISTER'), tr("PRONOUNMISTERF"))
+		"Succubus": return globals.fastif(statlist.sex == 'male', tr('PRONOUNSUCCUBUS'), tr("PRONOUNSUCCUBUSF")) # PRONOUNHE = "He", 
+		"succubus": return globals.fastif(statlist.sex == 'male', tr('PRONOUNSUCCUBUSL'), tr("PRONOUNSUCCUBUSLF"))
 		"son": return globals.fastif(statlist.sex == 'male', tr('PRONOUNSON'), tr("PRONOUNSONF"))
 		"father": return globals.fastif(statlist.sex == 'male', tr('PRONOUNFATHER'), tr("PRONOUNFATHERF"))
 		"brother": return globals.fastif(statlist.sex == 'male', tr('PRONOUNBROTHER'), tr("PRONOUNBROTHERF"))

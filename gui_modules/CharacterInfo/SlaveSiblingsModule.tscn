@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=80 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.gd" type="Script" id=2]
@@ -69,6 +69,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/metric_hover.png" type="Texture" id=67]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/metric_pressed.png" type="Texture" id=68]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/metric_normal.png" type="Texture" id=69]
+[ext_resource path="res://gui_modules/CharacterInfo/SUpgradesList.tscn" type="PackedScene" id=70]
 
 [sub_resource type="DynamicFont" id=3]
 size = 36
@@ -285,10 +286,10 @@ stretch_mode = 6
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 light_mask = 0
-margin_left = 10.4949
-margin_top = 96.4983
-margin_right = 298.495
-margin_bottom = 313.498
+margin_left = 10.0
+margin_top = 79.0
+margin_right = 298.0
+margin_bottom = 314.0
 theme = ExtResource( 8 )
 scroll_horizontal_enabled = false
 
@@ -852,6 +853,7 @@ align = 1
 clip_text = true
 
 [node name="ScrollContainer2" type="ScrollContainer" parent="UpgradesPanel"]
+visible = false
 margin_left = 890.0
 margin_top = 142.0
 margin_right = 1639.0
@@ -873,6 +875,17 @@ scroll_horizontal_enabled = false
 [node name="UpgradesList3" parent="UpgradesPanel/MinorUpgradesCont" instance=ExtResource( 47 )]
 list_type = 1
 
+[node name="SuccubUpgradesCont" type="ScrollContainer" parent="UpgradesPanel"]
+margin_left = 879.0
+margin_top = 142.0
+margin_right = 1639.0
+margin_bottom = 888.0
+theme = ExtResource( 15 )
+scroll_horizontal_enabled = false
+
+[node name="UpgradesList" parent="UpgradesPanel/SuccubUpgradesCont" instance=ExtResource( 70 )]
+rect_min_size = Vector2( 760, 740 )
+
 [node name="Label" type="Label" parent="UpgradesPanel"]
 margin_left = 1110.0
 margin_top = 848.0
@@ -885,6 +898,7 @@ text = "100"
 align = 2
 
 [node name="UpgradesList" parent="UpgradesPanel" instance=ExtResource( 27 )]
+visible = false
 margin_left = 844.0
 margin_top = 144.0
 margin_right = 1644.0
@@ -1041,8 +1055,8 @@ grow_vertical = 0
 alignment = 1
 
 [node name="mtr_button" type="TextureButton" parent="change_buttons"]
-margin_left = 224.0
-margin_right = 281.0
+margin_left = 193.0
+margin_right = 250.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
 hint_tooltip = "SIBLINGMODULETRAININGS"
@@ -1054,8 +1068,8 @@ expand = true
 stretch_mode = 4
 
 [node name="tr_button" type="TextureButton" parent="change_buttons"]
-margin_left = 285.0
-margin_right = 342.0
+margin_left = 254.0
+margin_right = 311.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
 hint_tooltip = "SIBLINGMODULETRAININGS"
@@ -1067,8 +1081,8 @@ expand = true
 stretch_mode = 4
 
 [node name="minor_tr_button" type="TextureButton" parent="change_buttons"]
-margin_left = 346.0
-margin_right = 403.0
+margin_left = 315.0
+margin_right = 372.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
 hint_tooltip = "SIBLINGMODULEMINORTRAIN"
@@ -1079,12 +1093,25 @@ texture_disabled = ExtResource( 65 )
 expand = true
 stretch_mode = 4
 
-[node name="rel_button" type="TextureButton" parent="change_buttons"]
-margin_left = 407.0
-margin_right = 464.0
+[node name="succub_tr_button" type="TextureButton" parent="change_buttons"]
+margin_left = 376.0
+margin_right = 433.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
-hint_tooltip = "SIBLINGMODULERELATIVES"
+hint_tooltip = "SIBLINGMODULESUCCUBTRAIN"
+texture_normal = ExtResource( 58 )
+texture_pressed = ExtResource( 65 )
+texture_hover = ExtResource( 62 )
+texture_disabled = ExtResource( 65 )
+expand = true
+stretch_mode = 4
+
+[node name="rel_button" type="TextureButton" parent="change_buttons"]
+margin_left = 437.0
+margin_right = 494.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 57, 57 )
+hint_tooltip = "SIBLINGMODULERELATIONS"
 texture_normal = ExtResource( 60 )
 texture_pressed = ExtResource( 53 )
 texture_hover = ExtResource( 52 )
@@ -1093,11 +1120,11 @@ expand = true
 stretch_mode = 4
 
 [node name="kin_button" type="TextureButton" parent="change_buttons"]
-margin_left = 468.0
-margin_right = 525.0
+margin_left = 498.0
+margin_right = 555.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
-hint_tooltip = "SIBLINGMODULERELATIONS"
+hint_tooltip = "SIBLINGMODULERELATIVES"
 texture_normal = ExtResource( 64 )
 texture_pressed = ExtResource( 59 )
 texture_hover = ExtResource( 63 )
@@ -1107,8 +1134,8 @@ stretch_mode = 4
 
 [node name="stats_button" type="TextureButton" parent="change_buttons"]
 light_mask = 0
-margin_left = 529.0
-margin_right = 586.0
+margin_left = 559.0
+margin_right = 616.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
 hint_tooltip = "PERSONAL_STAT"

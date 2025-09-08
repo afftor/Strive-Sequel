@@ -50,8 +50,20 @@ func OpenInventory(person = null):
 	gui_controller.emit_signal("screen_changed")
 
 
+func OpenSpells(person = null):
+	get_parent().remove_hovered_person()
+	gui_controller.spells = input_handler.get_spec_node(input_handler.NODE_SPELLS)
+	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.spells, 0.3)
+	gui_controller.spells.show()
+	gui_controller.previous_screen = gui_controller.current_screen
+	gui_controller.current_screen = gui_controller.spells
+	gui_controller.spells.open(person)
+	gui_controller.emit_signal("screen_changed")
+
+
 func rebuild():
-	build_locations_list()
+	update_dislocations()
+#	build_locations_list()
 	LocationsPanel.visible = (get_parent().mansion_state != "sex")
 	$population.visible = LocationsPanel.is_visible()
 	$food_consumption.visible = LocationsPanel.is_visible()
@@ -77,6 +89,10 @@ func rebuild():
 		newbutton.get_node("chest").set_disabled(false)
 		newbutton.get_node("legs").connect("pressed", self, 'OpenInventory', [person])
 		newbutton.get_node("legs").set_disabled(false)
+		newbutton.get_node("SpellIcon").connect("pressed", self, 'OpenSpells', [person])
+		var list = person.get_social_skills()
+#		newbutton.get_node("SpellIcon").visible = !list.empty()
+		newbutton.get_node("SpellIcon").visible = false
 		
 		if person.is_on_quest():
 			newbutton.disabled = true

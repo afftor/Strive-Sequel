@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.12.0'
+const gameversion = '0.12.0a'
 
 #time
 signal hour_tick
@@ -1641,7 +1641,6 @@ func remove_location(locationid):
 #	ResourceScripts.game_world.location_links.erase(location.id)
 	ResourceScripts.game_world.remove_location(locationid)
 	
-	
 	input_handler.update_slave_list()
 	gui_controller.nav_panel.build_accessible_locations()
 	if gui_controller.current_screen == gui_controller.mansion:
@@ -1684,7 +1683,7 @@ func return_characters_from_location(locationid):
 				person.travel.location = ResourceScripts.game_world.mansion_location
 				person.return_to_task()
 			else:
-				person.return_to_mansion()
+				person.return_to_mansion() 
 
 
 var char_roll_data = {}
@@ -1850,7 +1849,7 @@ func common_effects(effects):
 					newslave.travel.location = input_handler.active_location.id
 				if "send_to_mansion" in i:
 					if i.send_to_mansion:
-						newslave.travel.return_to_mansion()
+						newslave.return_to_mansion()
 				if "slave_category" in i:
 					newslave.set_slave_category(i.slave_category)
 				#newslave.set_slave_category(newslave.slave_class)

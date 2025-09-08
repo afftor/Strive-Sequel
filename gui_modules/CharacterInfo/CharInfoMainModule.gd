@@ -20,6 +20,7 @@ func _ready():
 	$TalkButton.connect("pressed", self, 'talk', [])
 	$RemoveButton.connect('pressed',self,'remove',[])
 	input_handler.connect('PortraitUpdate', self, 'update')
+	input_handler.connect('SpellUsed', self, 'update')
 
 var unique_dict = { #shows available talk characters. Scenes go in order from higher priority and reqs to lower. No scenes isn't supported yet
 	kurdan = {

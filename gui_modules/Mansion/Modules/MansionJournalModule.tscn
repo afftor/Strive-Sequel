@@ -64,7 +64,7 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
 theme = ExtResource( 6 )
 toggle_mode = true
-text = "Text Teateya h hasjh"
+text = "Error"
 
 [node name="QuestPanel" parent="." instance=ExtResource( 3 )]
 margin_left = 362.0

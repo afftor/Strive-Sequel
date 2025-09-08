@@ -43,7 +43,7 @@ var skills = {
 		cost = {mp = 10},
 		charges = 1,
 		cooldown = 3,
-		icon = load("res://assets/images/iconsskills/Mindread.png"),
+		icon = load("res://assets/images/iconsskills/Great_Seduce.png"),
 		tags = ['succubus', 'can_miss'],
 		dialogue_report = '',
 		dialogue_report_failed = '',
@@ -68,7 +68,7 @@ var skills = {
 		cost = {},
 		charges = 1,
 		cooldown = 0,
-		icon = load("res://assets/images/iconsskills/Mindread.png"),
+		icon = load("res://assets/images/iconsskills/Serve2.png"),
 		tags = ['succubus', 'refine_targetreqs'],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
@@ -83,7 +83,7 @@ var skills = {
 		ability_type = 'skill',
 		social_skill_stats = [],
 		reqs = [
-			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 1}
+#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 1}
 		],
 		chance = {
 			condition = [{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}],
@@ -97,7 +97,7 @@ var skills = {
 		cost = {mp = 6},
 		charges = 1,
 		cooldown = 1,
-		icon = load("res://assets/images/iconsskills/Mindread.png"),
+		icon = load("res://assets/images/iconsskills/distract.png"),
 		tags = ['succubus', 'can_miss', 'refine_chance'],
 		dialogue_report = '',
 		dialogue_report_failed = '',
@@ -119,7 +119,7 @@ var skills = {
 		ability_type = 'skill',
 		social_skill_stats = [],
 		reqs = [
-			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 1}
+#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 1}
 		],
 		targetreqs = [
 			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}
@@ -128,7 +128,7 @@ var skills = {
 		cost = {mp = 10},
 		charges = 1,
 		cooldown = 3,
-		icon = load("res://assets/images/iconsskills/Mindread.png"),
+		icon = load("res://assets/images/iconsskills/Charm.png"),
 		tags = ['succubus', 'refine_targetreqs'],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
@@ -143,7 +143,7 @@ var skills = {
 		ability_type = 'skill',
 		social_skill_stats = [],
 		reqs = [
-			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 3}
+#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 3}
 		],
 		targetreqs = [
 			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']},
@@ -168,7 +168,7 @@ var skills = {
 		ability_type = 'skill',
 		social_skill_stats = [],
 		reqs = [
-			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 3}
+#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 3}
 		],
 		targetreqs = [],
 		effects = ['swap_form'],
@@ -296,7 +296,7 @@ var effects = {
 		type = 'simple',
 		descript = '',
 		conditions = [
-			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
+#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
 		],
 		tags = ['magic_atunement'],
 		statchanges = {matk = 10, mpmax_add = 25},
@@ -313,7 +313,7 @@ var effects = {
 		type = 'simple',
 		descript = '',
 		conditions = [
-			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
+#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
 		],
 		tags = ['combat_atunement'],
 		statchanges = {hpmax_add_part = 0.2},
@@ -329,7 +329,7 @@ var effects = {
 	combat_atunement_trigger = {
 		type = 'base',
 		conditions = [
-			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
+#			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
 		],
 		sub_effects = [
 			{

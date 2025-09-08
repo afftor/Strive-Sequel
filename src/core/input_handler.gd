@@ -45,6 +45,7 @@ signal update_itemlist
 signal survival_advance
 signal fighter_changed
 signal clear_cashed
+signal SpellUsed
 
 #animations queue
 signal animation_finished
@@ -121,6 +122,7 @@ enum {
 	NODE_SYSMESSAGE,
 	NODE_SLAVEMODULE,
 	NODE_INVENTORY_NEW,
+	NODE_SPELLS,
 	NODE_MANSION_NEW,
 	NODE_CLOCK,
 	NODE_NAVIGATION,
@@ -365,6 +367,7 @@ func change_locale(locale = globalsettings.ActiveLocalization):
 
 
 func _ready():
+	GUISoundManagerInit()
 	#Storing available translations
 	for i in scanfolder(variables.LocalizationFolder):
 		for ifile in dir_contents(i):
@@ -688,6 +691,15 @@ func GetMusicNode(): #get_spec_node(input_handler.NODE_MUSIC)
 	return musicnode
 
 #Sounds
+func GUISoundManagerInit():
+	get_tree().connect("node_added", self, 'GUISoundManager')
+
+
+func GUISoundManager(nd):
+	for group in variables.GUISounds:
+		if nd.is_in_group(group):
+			nd.connect('pressed', self, 'PlaySound', [variables.GUISounds[group]])
+
 
 func PlaySound(name, delay = 0):
 	yield(get_tree().create_timer(delay), 'timeout')

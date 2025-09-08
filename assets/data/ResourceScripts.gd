@@ -88,6 +88,7 @@ onready var node_data = {
 	input_handler.NODE_SYSMESSAGE : {name = 'SysMessage', mode = 'scene', scene = preload("res://src/scenes/SysMessage.tscn") },
 	input_handler.NODE_SLAVEMODULE : {name = 'slavemodule', mode = 'scene', scene = preload("res://gui_modules/CharacterInfo/CharInfoMainModule.tscn") },
 	input_handler.NODE_INVENTORY_NEW : {name = 'inventory_new', mode = 'scene', scene = preload("res://gui_modules/Inventory/Modules/InventoryMainModule.tscn") },
+	input_handler.NODE_SPELLS : {name = 'spells', mode = 'scene', scene = preload("res://gui_modules/spellcasting/Spellcasting.tscn") },
 	input_handler.NODE_MANSION_NEW : {name = 'mansion', mode = 'scene', scene = preload("res://gui_modules/Mansion/Modules/MansionMainModule.tscn") },
 	input_handler.NODE_CLOCK : {name = 'clock', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/ClockModule.tscn") },
 	input_handler.NODE_EXPLORATION : {name = 'exploration', mode = 'scene', scene = preload("res://gui_modules/Exploration/Modules/ExplorationModule.tscn") },

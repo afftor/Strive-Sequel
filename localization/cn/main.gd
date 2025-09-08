@@ -75,6 +75,7 @@ var TranslationDict = {
 	
 	OPTOPT = "设置",
 	OPTCLOSE = "关闭",
+	TUTORIALS = """Tutorials""", # MISSING TRANSLATION
 	OPTGAMEPLAYFURRIES = "福瑞",
 	OPTGAMEPLAYFURRMULT = "福瑞有多乳头",
 	OPTGAMEPLAYFUTA = "扶她有睾丸",
@@ -181,6 +182,7 @@ var TranslationDict = {
 	SIBLINGMODULERELATIVES = "Relatives",
 	SIBLINGMODULERELATIONS = """Social""", # MISSING TRANSLATION
 	SIBLINGMODULETRAININGS = "Trainings",
+	SIBLINGMODULESUCCUBUS = """Succubus Training""", # MISSING TRANSLATION
 	SIBLINGMODULETRAININGSSERVANTS = """Servant Training""", # MISSING TRANSLATION
 	SIBLINGMODULETRAININGSMASTER = """Master Training""", # MISSING TRANSLATION
 	SIBLINGMODULEFOODCONSUMPTION = "每日消费量",
@@ -225,6 +227,7 @@ var TranslationDict = {
 	NEWGAMESETTING = "设置",
 	NEWGAMESKIPPROL = "Skip prologue",
 	NEWGAMESTART = "开始游戏",
+	SPELLCAST_LABEL = """Cast Spell""", # MISSING TRANSLATION
 	BACKTOPRESETS = """Back""", # MISSING TRANSLATION
 	PRESETDATADEBUGCUSTOMNAME = """custom""", # MISSING TRANSLATION
 	
@@ -2294,6 +2297,17 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	SKILLPUBLICSEXHUMILIATIONDESCRIPT = "类别: {color=pink|色情}\n为所选目标设置公开的性羞辱，改善目标和观众的行为，并为所有观众提供一点欲望。 \n基本效果: \n忠诚：+10（观众一半），欲望：+15，最大化服从。",
 	SKILLPUBLICEXECUTION = "公开处决",
 	SKILLPUBLICEXECUTIONDESCRIPT = "类别: {color=red|刻薄}\n处决所选角色。极大地提高了所有参与者的服从性。 \n基本效果: \n忠诚：+25，最大服从度。",
+	SKILLENTHRALL = """Enthrall""", # MISSING TRANSLATION
+	SKILLENTHRALLDESCRIPT = """Enthrall character""", # MISSING TRANSLATION
+	DIALOGUEENTHRALLREPORT = """Character enthralled""", # MISSING TRANSLATION
+	DIALOGUEENTHRALLREPORT_FAILED = """Character resisted domination""", # MISSING TRANSLATION
+	SKILLRELEASE_THRALL = """Release thrall""", # MISSING TRANSLATION
+	SKILLRELEASE_THRALLDESCRIPT = """Release enthralled character""", # MISSING TRANSLATION
+	DIALOGUERELEASE_THRALLREPORT = """Character no longer enthralled""", # MISSING TRANSLATION
+	SKILLCORRUPT = """Corrupt""", # MISSING TRANSLATION
+	SKILLCORRUPTDESCRIPT = """Attempt to increase character's consent. Always works on thralls.""", # MISSING TRANSLATION
+	DIALOGUECORRUPTREPORT = """Consent increased""", # MISSING TRANSLATION
+	DIALOGUECORRUPTREPORT_FAILED = """Succubus failed to rise consent""", # MISSING TRANSLATION
 	SKILLALLURE = "诱惑",
 	SKILLALLUREDESCRIPT = "类别: {color=green|亲切}\n吸引目标，增加他们的服从并减少服从损耗。由魅力因素提高效果。 \n基本效果: \n持续5天的服从消耗-5和忠诚增益+1，最大服从。",
 	SKILLSUPREMACY = "至高无上",
@@ -2349,6 +2363,18 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	DIALOGUESEDUCEREPORT = "[name] 已经接近 [targetname] ，过了几分钟 [targethim] 就想知道了。尽管视觉上很平静， [targetname] 显然已经被 [him]迷住了。",
 	DIALOGUEGREATSEDUCEREPORT = "[name] 已经接近 [targetname] ，过了几分钟， [targethim] 感到异常. [targetHis] 思想被强烈的欲望所淹没，让[him]变得相当温顺。",
 	DIALOGUEALLUREREPORT = "[name]给了[targetname]一个小小的私人鼓励。",
+	SKILLTURN_SUCCUBUS = """Turn in succubus""", # MISSING TRANSLATION
+	SKILLTURN_SUCCUBUSDESCRIPT = """Turn thrall into succubus""", # MISSING TRANSLATION
+	DIALOGUETURN_SUCCUBUSREPORT = """[targetname] is now succubus and is no longer thrall.""", # MISSING TRANSLATION
+	DIALOGUECORRUPTIVE_ESSENCEREPORT = """[name] is now succubus.""", # MISSING TRANSLATION
+	SKILLSWAP_FORM = """Swap form""", # MISSING TRANSLATION
+	SKILLSWAP_FORMDESCRIPT = """Change between demon and non-demon form of succubus""", # MISSING TRANSLATION
+	DIALOGUESWAP_FORMREPORT = """Form changed""", # MISSING TRANSLATION
+	DEMONFORMDESCRIPT = """Demonic form""", # MISSING TRANSLATION
+	HUMANFORMDESCRIPT = """Human form""", # MISSING TRANSLATION
+	MAGATTUNEMENTDESCRIPT = """Magic attunement""", # MISSING TRANSLATION
+	COMBATATTUNEMENTDESCRIPT = """Combat attunement""", # MISSING TRANSLATION
+	THRALLDESCRIPT = """Thrall""", # MISSING TRANSLATION
 	DIALOGUEABUSEREPORT = "[name]把[targetname]逼到了角落里，并发泄了[targethim]的一些愤怒。\n\n{color=aqua|[targetname]} — {random_chat=0|abuse}",
 	DIALOGUEREWARDREPORT = "[name]为[targethis]的良好行为提供了少量金币。",
 	DIALOGUEREWARDSEXREPORT = "[name]照顾了[targetname]的需求，作为对[targethis]善举的奖励。",
@@ -3112,6 +3138,8 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	BODYPARTSKINTEAL = "青色",
 	BODYPARTSKIN_COVERAGEPLANT = "植物",
 	BODYPARTSKIN_COVERAGESCALE = "刻度",
+	BODYPARTSKIN_COVERAGESCALE2 = """scale 2""", # MISSING TRANSLATION
+	BODYPARTSKIN_COVERAGESCALE3 = """scale 3""", # MISSING TRANSLATION
 	BODYPARTSKIN_COVERAGEFEATHERS = "羽毛",
 	BODYPARTSKIN_COVERAGEFUR_WHITE = "白色毛皮",
 	BODYPARTSKIN_COVERAGEFUR_GREY = "灰色毛皮",
@@ -10922,7 +10950,7 @@ You two stay like this for a few moments, her panting and softly moaning as you 
 女孩四肢着地跪下，在碗的上方徘徊。当她品尝食物时，她的屁股微微抬起。很快，她就屈服于自己的本能，大快朵颐。""",
 	CALI_ACT5_PET_8 = """她的内裤在吃东西的时候明显是湿的。当你坐在喂宠物的旁边时，你的手放在她光滑的内裤，把手指滑到她的背上，她发出呻吟声。卡利停止了她的进食，向后看去，一股深色的红晕爬到了她的脸上。
 
-卡莉: — [Name], 你在做什么?
+卡莉: — [name], 你在做什么?
 
 轻轻地摸一下下巴，这是女孩得到的全部回答，无声地提醒她吃完饭。卡利明显地试图保持冷静，但在抚摸胯部和已经确立的兴奋之间，她无法长时间专注于用餐。
 
@@ -12266,13 +12294,13 @@ CALI_ACT5_PET_9_2 = """— 为什么... 感觉还好...?
 	AMELIA_MAIN_GUILD_1_OPTION_2 = """忙什么呢?""",
 	AMELIA_MAIN_GUILD_1_OPTION_3 = """我被请求来回答一些问题。""",
 	AMELIA_MAIN_GUILD_2_1 = """— 很遗憾，她……嗯……目前不在。我现在负责行会事务。我叫诺兰。如果你需要行会方面的帮助，我会在这里为你提供帮助。但是，如果你的事情与阿米莉亚有关……嗯，恐怕必须暂时推迟。""",
-	AMELIA_MAIN_GUILD_2_2 = """—行会及其成员出现了一些不可预见的事态发展。但是，[Name]市长，您不必担心。我可以向您保证，我们的业务互动不会受到这些事件的影响。尽管如此，在重新步入正轨之前，需要一段短暂的调整期来适当适应这种新情况。""",
+	AMELIA_MAIN_GUILD_2_2 = """—行会及其成员出现了一些不可预见的事态发展。但是，[name]市长，您不必担心。我可以向您保证，我们的业务互动不会受到这些事件的影响。尽管如此，在重新步入正轨之前，需要一段短暂的调整期来适当适应这种新情况。""",
 	AMELIA_MAIN_GUILD_2_3 = """诺兰: — 嗯……很有趣。我明确地与我们的秘书沟通过，我们无意用这些琐碎的事情给你带来不便。""",
 	AMELIA_MAIN_GUILD_2 = """当另一名男子冲进办公室时，办公室的门突然打开。他体格丰满，身材相对矮小。他的着装无疑散发出一种富裕和崇高的社会地位。
 
 行会会员: 诺兰，有关于失踪奴隶的消息吗？我的客户要求解释。我不能让他们蒙在鼓里！哦我看你有客人了。市长，我应该如何为你效劳？
 
-诺兰: 看来我们的秘书发现有必要浪费 [Name] 市长的宝贵时间，对阿米莉亚的行为进行无端的调查。我正在向他澄清，他的证词不会—
+诺兰: 看来我们的秘书发现有必要浪费 [name] 市长的宝贵时间，对阿米莉亚的行为进行无端的调查。我正在向他澄清，他的证词不会—
 """,
 	AMELIA_MAIN_GUILD_3_1 = """行会会员: — 太好了！我们需要所有能得到的信息。那个狡猾的女人太会掩饰自己的行踪了。
 

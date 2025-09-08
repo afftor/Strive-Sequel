@@ -9,17 +9,19 @@ var universal_skills = ['oral','anal','petting']
 onready var loyalty_panel = $UpgradesPanel/UpgradesList
 onready var loyalty_panel_master = $UpgradesPanel/ScrollContainer2/UpgradesList2
 onready var loyalty_panel_minor = $UpgradesPanel/MinorUpgradesCont/UpgradesList3
+onready var succub_panel = $UpgradesPanel/SuccubUpgradesCont/UpgradesList
 #var loyalty_mode = true
 #var relations_mode = true
 #var loyalty_tab = 3
-enum tab_nums {all, food, mastery, training, relations, kin, minor, metrics}
+enum tab_nums {all, food, mastery, training, relations, kin, minor, metrics, thralls}
 onready var tab_btns = {
 	tab_nums.mastery : $change_buttons/mtr_button,
 	tab_nums.training : $change_buttons/tr_button,
 	tab_nums.relations : $change_buttons/rel_button,
 	tab_nums.kin : $change_buttons/kin_button,
 	tab_nums.minor : $change_buttons/minor_tr_button,
-	tab_nums.metrics : $change_buttons/stats_button
+	tab_nums.metrics : $change_buttons/stats_button,
+	tab_nums.thralls : $change_buttons/succub_tr_button,
 }
 var cur_tab
 var last_tab
@@ -52,6 +54,7 @@ func _ready():
 	loyalty_panel.root = get_parent()
 	loyalty_panel_master.root = get_parent()
 	loyalty_panel_minor.root = get_parent()
+	succub_panel.root = get_parent()
 	
 
 func set_work_rule(rule):
@@ -448,6 +451,11 @@ func close_tab(tab):
 		loyalty_panel_minor.get_parent().visible = false
 		$UpgradesPanel/Label.text = ""
 		globals.disconnect_text_tooltip($UpgradesPanel/Label)
+	if tab == tab_nums.thralls or tab == tab_nums.all:
+		$UpgradesPanel.visible = false
+		succub_panel.get_parent().visible = false
+		$UpgradesPanel/Label.text = ""
+		globals.disconnect_text_tooltip($UpgradesPanel/Label)
 	if tab == tab_nums.metrics or tab == tab_nums.all:
 		$StatsPanel.visible = false
 	cur_tab = null
@@ -460,52 +468,61 @@ func open_tab(tab):
 	cur_tab = tab
 	if tab_btns.has(tab):
 		tab_btns[tab].disabled = true
-	if tab == tab_nums.food:
-		$SlaveDietModule.visible = true
-	elif tab == tab_nums.mastery:
-		$UpgradesPanel.visible = true
-		loyalty_panel_master.get_parent().visible = true
-		loyalty_panel_master.update_upgrades_tree()
-		$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGSMASTER')
-		$UpgradesPanel/Label.text = tr("MASTER_POINTS") + ": " + str(ResourceScripts.game_progress.master_points)
-	elif tab == tab_nums.training:
-		$UpgradesPanel.visible = true
-		loyalty_panel.visible = true
-		loyalty_panel.person = person
-		loyalty_panel.match_state()
-		if person.get_stat('slave_class') in ['slave', 'slave_trained']:
-			$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGS')
-		else:
-			$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGSSERVANTS')
-	elif tab == tab_nums.relations:
-		$Relations.visible = true
-	elif tab == tab_nums.kin:
-		$RelativesPanel.visible = true
-	elif tab == tab_nums.minor:
-		$UpgradesPanel.visible = true
-		loyalty_panel_minor.set_person(person)
-		loyalty_panel_minor.get_parent().visible = true
-		loyalty_panel_minor.update_upgrades_tree()
-		$UpgradesPanel/Label2.text = tr('SIBLINGMODULEMINORTRAIN')
-		$UpgradesPanel/Label.text = "%s: %d/%d %s: %d" % [
-			tr("SIBLINGMODULEAVAILABLE"),
-			person.get_minor_training_count(), person.get_minor_training_max(),
-			tr("UPGRADELIST_UNLOCK_GOLD"), ResourceScripts.game_res.money
-		]
-		globals.connecttexttooltip($UpgradesPanel/Label, tr("SIBLINGMODULEAVAILABLETOOLTIP"))
-	elif tab == tab_nums.metrics:
-		make_metrics()
-		$StatsPanel.visible = true
+	match tab:
+		tab_nums.food:
+			$SlaveDietModule.visible = true
+		tab_nums.mastery:
+			$UpgradesPanel.visible = true
+			loyalty_panel_master.get_parent().visible = true
+			loyalty_panel_master.update_upgrades_tree()
+			$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGSMASTER')
+			$UpgradesPanel/Label.text = tr("MASTER_POINTS") + ": " + str(ResourceScripts.game_progress.master_points)
+		tab_nums.training:
+			$UpgradesPanel.visible = true
+			loyalty_panel.visible = true
+			loyalty_panel.person = person
+			loyalty_panel.match_state()
+			if person.get_stat('slave_class') in ['slave', 'slave_trained']:
+				$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGS')
+			else:
+				$UpgradesPanel/Label2.text = tr('SIBLINGMODULETRAININGSSERVANTS')
+		tab_nums.relations:
+			$Relations.visible = true
+		tab_nums.kin:
+			$RelativesPanel.visible = true
+		tab_nums.minor:
+			$UpgradesPanel.visible = true
+			loyalty_panel_minor.set_person(person)
+			loyalty_panel_minor.get_parent().visible = true
+			loyalty_panel_minor.update_upgrades_tree()
+			$UpgradesPanel/Label2.text = tr('SIBLINGMODULEMINORTRAIN')
+			$UpgradesPanel/Label.text = "%s: %d/%d %s: %d" % [
+				tr("SIBLINGMODULEAVAILABLE"),
+				person.get_minor_training_count(), person.get_minor_training_max(),
+				tr("UPGRADELIST_UNLOCK_GOLD"), ResourceScripts.game_res.money
+			]
+			globals.connecttexttooltip($UpgradesPanel/Label, tr("SIBLINGMODULEAVAILABLETOOLTIP"))
+		tab_nums.metrics:
+			make_metrics()
+			$StatsPanel.visible = true
+		tab_nums.thralls:
+			$UpgradesPanel.visible = true
+			succub_panel.set_person(person)
+			succub_panel.get_parent().visible = true
+#			succub_panel.update()
+			$UpgradesPanel/Label2.text = tr('SIBLINGMODULESUCCUBUS')
+			$UpgradesPanel/Label.text = ""
 
 func show_valid_btn():
 	tab_btns[tab_nums.training].visible = !person.is_master()
 	tab_btns[tab_nums.mastery].visible = person.is_master()
 	tab_btns[tab_nums.minor].visible = person.get_stat('slave_class') != 'slave'
 	tab_btns[tab_nums.relations].visible = !person.is_master()
+	tab_btns[tab_nums.thralls].visible = person.check_trait('succubus')
 
 func open_valid_tab():
 	var training_classes = ['slave', 'slave_trained', 'servant', 'servant_notax', 'heir']
-	if cur_tab:
+	if cur_tab != null:
 		var keep_tab = true
 		#tab restrictions
 		if cur_tab == tab_nums.mastery:
@@ -514,6 +531,8 @@ func open_valid_tab():
 			keep_tab = person.get_stat('slave_class') in training_classes
 		elif cur_tab == tab_nums.relations:
 			keep_tab = !person.is_master()
+		elif cur_tab == tab_nums.thralls:
+			keep_tab = person.check_trait('succubus')
 		elif cur_tab == tab_nums.minor:
 			keep_tab = person.get_stat('slave_class') != 'slave'
 		

@@ -104,6 +104,9 @@ func fix_skillpanels(list_soc_add, list_combat_add, list_soc_remove, list_combat
 	for skill in list_soc_add:
 		if social_skill_panel.values().has(skill):
 			continue
+		var s_data = Skilldata.get_template(skill, parent.get_ref())
+		if s_data.tags.has('succubus'):
+			continue
 		while social_skill_panel.has(pos):
 			pos += 1
 		if pos > 11:

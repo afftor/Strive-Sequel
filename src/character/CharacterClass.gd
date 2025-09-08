@@ -239,6 +239,8 @@ func add_stat(statname, value, force_store = false): #only oneshots
 		value *= statlist.get_stat_gain_rate(statname)
 	if statname in ['hp', 'mp', 'shield']:
 		set(statname, get(statname) + value)
+	elif statname == 'thrall_points':
+		enthrall.thrall_points += value
 	elif statname == 'base_exp':
 		if value > 0:
 			xp_module.base_exp += value * get_stat('exp_gain_mod')
@@ -711,6 +713,8 @@ func set_travel_time(value):
 func return_to_mansion():
 	xp_module.remove_from_task()
 	travel.return_to_mansion()
+	input_handler.slave_list_node.update_dislocations()
+	input_handler.slave_list_node.rebuild()
 
 func recruit(enslave = false):
 	is_active = true
@@ -1264,7 +1268,7 @@ func fix_serialization():
 	if training is Dictionary:
 		training = dict2inst(training)
 	if enthrall is Dictionary:
-		training = dict2inst(enthrall)
+		enthrall = dict2inst(enthrall)
 	var tmp = statlist.duplicate()
 	var tmp2 = dyn_stats.duplicate()
 	for st in ['physics_factor', 'magic_factor', 'tame_factor', 'authority_factor', 'growth_factor', 'charm_factor', 'wits_factor', 'sexuals_factor']:
