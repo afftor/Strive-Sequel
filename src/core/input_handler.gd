@@ -45,6 +45,7 @@ signal update_itemlist
 signal survival_advance
 signal fighter_changed
 signal clear_cashed
+signal SpellUsed
 
 #animations queue
 signal animation_finished

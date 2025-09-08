@@ -91,7 +91,8 @@ func rebuild():
 		newbutton.get_node("legs").set_disabled(false)
 		newbutton.get_node("SpellIcon").connect("pressed", self, 'OpenSpells', [person])
 		var list = person.get_social_skills()
-		newbutton.get_node("SpellIcon").visible = !list.empty()
+#		newbutton.get_node("SpellIcon").visible = !list.empty()
+		newbutton.get_node("SpellIcon").visible = false
 		
 		if person.is_on_quest():
 			newbutton.disabled = true
