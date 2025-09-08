@@ -2484,6 +2484,8 @@ func common_effects(effects):
 					chara.try_breakdown(i.value)
 			'check_masters_story_fame':
 				ResourceScripts.game_party.check_masters_story_fame()
+			'set_faction_factor':
+				ResourceScripts.slave_quests.set_faction_factor(i.faction, i.value)
 
 func after_wedding_event(character):
 	if character == null:

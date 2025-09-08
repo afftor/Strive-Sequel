@@ -13,6 +13,7 @@ func _ready():
 	take_btn.hide()
 #	cancel_btn.hide()
 	quest_panel.hide_all()
+	ResourceScripts.slave_quests.connect("quests_regened", self, "build_quest_list")
 
 #func open():
 #	build_quest_list()
@@ -22,8 +23,8 @@ func build_quest_list():
 	var slave_quests = ResourceScripts.slave_quests
 	var quest_pool = slave_quests.get_quest_pool()
 	if quest_pool.empty():
-		
 		slave_quests.regen_quests()
+		return#build_quest_list() will be recalled by signal
 	input_handler.ClearContainer(quest_cont)
 	quest_panel.hide_all()
 	take_btn.hide()
@@ -32,10 +33,7 @@ func build_quest_list():
 			continue
 		var quest = quest_pool[quest_id]
 		var new_node = input_handler.DuplicateContainerTemplate(quest_cont)
-		var faction = slave_quests.get_faction(quest.faction)
-		var faction_node = new_node.get_node('fact')
-		faction_node.texture = faction.icon
-		globals.connecttexttooltip(faction_node, "%s\n%s" % [tr(faction.name), tr(faction.description)])
+		slave_quests.process_faction_icon(new_node.get_node('fact'), quest.faction)
 		var btn = new_node.get_node('btn')
 		btn.text = quest.name
 		btn.connect("pressed", self, "show_quest", [quest_id])
@@ -51,8 +49,11 @@ func show_quest(quest_id):
 #	cancel_btn.visible = slave_quests.is_quest_active(quest_id)
 
 func take_quest():
-	ResourceScripts.slave_quests.activate_quest(cur_quest_id)
-	var quest = ResourceScripts.slave_quests.get_quest(cur_quest_id)
+	var slave_quests = ResourceScripts.slave_quests
+	if !slave_quests.if_can_take_quest():
+		return
+	slave_quests.activate_quest(cur_quest_id)
+	var quest = slave_quests.get_quest(cur_quest_id)
 	var args = {}
 	args["label"] = tr("QUESTTASKACQ")
 	args["info"] = tr(quest.name)

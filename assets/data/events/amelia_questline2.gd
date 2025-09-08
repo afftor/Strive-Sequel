@@ -2238,7 +2238,12 @@ var data = {
 					{
 						code = "decision",
 						value = "amelia_lost"
-					}
+					},
+					{
+						code = "set_faction_factor",
+						faction = "gilded",
+						value = 0.2
+					},
 				]
 			}
 		]
@@ -3430,7 +3435,12 @@ var data = {
 					{
 						code = "decision",
 						value = "amelia_lost"
-					}
+					},
+					{
+						code = "set_faction_factor",
+						faction = "gilded",
+						value = 0.2
+					},
 				]
 			}
 		]
@@ -3790,7 +3800,12 @@ var data = {
 					},
 					{
 						code = "update_guild"
-					}
+					},
+					{
+						code = "set_faction_factor",
+						faction = "gilded",
+						value = 0.2
+					},
 				]
 			}
 		]
@@ -3817,7 +3832,12 @@ var data = {
 			{
 				code = "complete_quest",
 				value = "amelia_main_quest"
-			}
+			},
+			{
+				code = "set_faction_factor",
+				faction = "gilded",
+				value = 0.2
+			},
 		],
 		options = [
 			{

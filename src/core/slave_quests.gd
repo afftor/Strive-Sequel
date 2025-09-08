@@ -7,20 +7,33 @@ var states = {
 	failed = 'failed',
 	complete = 'complete',
 }
+var max_active_quests = [#strictly in order of descend!
+	{ num = 3,
+		reqs = [{type = 'decision', value = 'act3_finish', check = true}]
+	},
+	{ num = 2,
+		reqs = [{type = 'decision', value = 'act1_finish', check = true}]
+	},
+	{ num = 1,
+		reqs = []
+	}
+]
 
-#var quest_pool = {}
-
-var old_quests
+signal quests_regened
 
 func regen_quests():
 	#clear pool
-	old_quests = {}
+	var old_quests = {}
+	var active_quests = {}
 	var quest_pool = get_quest_pool()
 	for fact_id in quest_data.factions.keys():
 		old_quests[fact_id] = []
+		active_quests[fact_id] = []
 	for quest_id in quest_pool.keys():
 		var quest = quest_pool[quest_id]
-		if quest.state == states.active: continue
+		if quest.state == states.active:
+			active_quests[quest.faction].append(quest.code)
+			continue
 		
 		change_faction_rating(quest.faction, -1)
 		#check for quest_pool here is only for savegame compatibility
@@ -31,6 +44,10 @@ func regen_quests():
 	#gen quests per faction
 	for fact_id in quest_data.factions:
 		var faction = quest_data.factions[fact_id]
+		
+		#check if faction available
+		if faction.has('gen_req') and !globals.checkreqs(faction.gen_req):
+			continue
 		
 		#create pool and determine number of quests
 		var quest_num = 0
@@ -43,8 +60,10 @@ func regen_quests():
 				break
 		var gen_pool = faction.quest_pool.duplicate()
 		for quest_code in faction.quest_pool:
-			if quest_code in old_quests[fact_id]:
-				gen_pool.remove(quest_code)
+			if ((quest_code in old_quests[fact_id])
+					or (quest_code in active_quests[fact_id])):
+				gen_pool.erase(quest_code)
+			
 		
 		#gen quests
 		while quest_num > 0:
@@ -66,27 +85,6 @@ func regen_quests():
 				quest_num += 1
 				continue
 			
-			#adjust possible reqs
-			if faction.has('req_override'):
-				for req_type in faction.req_override:
-					var new_req = faction.req_override[req_type]
-					var overridden = false
-					for req_group in [data.slave_req_primary, data.slave_req]:
-						for req in req_group:
-							if req is Array:
-								for true_req in req:
-									var success = try_override_req(true_req, new_req, req_type)
-									if success: overridden = true
-							else:#req is Dict
-								var success = try_override_req(req, new_req, req_type)
-								if success: overridden = true
-					if new_req.has('add_if_none') and !overridden:
-						data.slave_req_primary.append(new_req)
-			if faction.has('add_slave_req_primary'):
-				data.slave_req_primary.append_array(faction.add_slave_req_primary)
-			if faction.has('add_slave_req'):
-				data.slave_req.append_array(faction.add_slave_req)
-			
 			#make quest
 			var new_quest = {
 				code = quest_code,
@@ -100,20 +98,26 @@ func regen_quests():
 						statreqs = []
 				}],
 				state = states.open,
-				difficulty = 'easy',#placeholder
+				difficulty = 'easy',
 				area = 'none',
 				faction = fact_id
 			}
+			if data.has('difficulty'):
+				new_quest.difficulty = data.difficulty
 			
 			#add slave reqs
 			var req_num = 0
-#			var req_conditions = {}
 			var modifier = 0.0
-			for req_group in [data.slave_req_primary, data.slave_req]:
-				if req_num >= data.req_max:
-					break
+			var factions_req
+			if faction.has("req_add"): factions_req = faction.req_add
+			else: factions_req = []
+			var group_numer = 0
+			for req_group in [data.slave_req_primary, data.slave_req, factions_req]:
+				group_numer += 1
+				if req_num >= data.req_max and group_numer < 3:
+					continue
 				for raw_req in req_group:
-					if req_num >= data.req_max:
+					if req_num >= data.req_max and group_numer < 3:
 						break
 					#req (raw_req in context) can be single (Dict) or list (Array)
 					#we put it down to array for standardisation, but there are differences
@@ -125,32 +129,45 @@ func regen_quests():
 					for req in req_array:
 						var available = true
 						
-						#conditions
-#						var added = false
-#						var condition
-#						var check
-#						if req.has('if_true'):
-#							condition = req.if_true
-#							check = true
-#						elif req.has('if_false'):
-#							condition = req.if_false
-#							check = false
-#						if condition:
-#							if !req_conditions.has(condition):
-#								push_error("slave_req order violation! No condition at %s" % req)
-#							else:
-#								available = (req_conditions[condition] == check)
+						#exceptions (used only in factions' addons)
+						if req.has('exceptions') and quest_code in req.exceptions:
+							print("%s is exception!" % quest_code)
+							available = false
+						
+						#has_tag conditions (probably used only in factions' addons)
+						if available and req.has('has_tags'):
+							if !data.has('tags'):
+								available = false
+							else:
+								for tag in req.has_tags:
+									if !(tag in data.tags):
+										available = false
+										break
 						
 						#has_req conditions
-						if req.has('has_req'):
+						if available and req.has('has_req'):
 							available = (has_req(new_quest.requirements[0].statreqs, req.has_req)
-								or has_req(req_to_add, req.has_req)) and available
-						if req.has('has_no_req'):
+								or has_req(req_to_add, req.has_req))
+						if available and req.has('has_no_req'):
 							available = !(has_req(new_quest.requirements[0].statreqs, req.has_no_req)
-								or has_req(req_to_add, req.has_no_req)) and available
+								or has_req(req_to_add, req.has_no_req))
 						
 						#try to add req
 						if available and randf() <= req.chance:
+							
+							#override rule (used only in factions' addons)
+							if req.has('override'):
+								var to_remove
+								if req.override is Dictionary:
+									to_remove = [req.override]
+								else:
+									to_remove = req.override
+								var deleted = 0
+								for rem_req in to_remove:
+									deleted += remove_req(new_quest.requirements[0].statreqs, rem_req)
+									#no need to remove from req_to_add, as factions req_add shouldn't override own reqs
+								req_num -= deleted
+							
 							#make real req list
 							var true_reqs
 							if req.has('generate_func'):
@@ -195,10 +212,11 @@ func regen_quests():
 							for i in idx_to_remove:
 								true_reqs.remove(i)
 							
-							#really add req
+							#add req
 							if !true_reqs.empty():
 								req_to_add.append_array(true_reqs)
-#								added = true
+								
+								#adjust reward
 								if req.has('reward_bonus'):
 									modifier += req.reward_bonus
 								if req.has('reward_func'):
@@ -214,10 +232,9 @@ func regen_quests():
 								
 								#stop check inside this req-list (if list) if applicable
 								if req.has('stop_on_me'):
-									print('stop_on_me for %s in %s' % [quest_code, String(req_array)])
 									break
-#						if req.has('condition'):
-#							req_conditions[req.condition] = added
+					
+					#really add req
 					if !req_to_add.empty():
 						new_quest.requirements[0].statreqs.append_array(req_to_add)
 						req_num += 1
@@ -246,7 +263,8 @@ func regen_quests():
 			var new_quest_id = make_quest_id()
 			new_quest.id = new_quest_id
 			quest_pool[new_quest_id] = new_quest
-			print(new_quest.code, " ", new_quest.requirements[0].statreqs)
+#			print(new_quest.code, " ", new_quest.requirements[0].statreqs)
+			emit_signal("quests_regened")
 
 func make_quest_id():
 	var used_ids = get_quest_pool().keys()
@@ -258,16 +276,12 @@ func make_quest_id():
 		new_id += 1
 	return new_id
 
-func try_override_req(old_req, new_req, req_type) -> bool:
-	if !old_req.has('fixed_type') or old_req.fixed_type != req_type:
-		return false
-	old_req.reqs = new_req.reqs
-	old_req.chance = new_req.chance
-	return true
-
 func change_faction_rating(faction_id, value):
 	var faction = get_faction_dynamic_data(faction_id)
 	faction.rating = max(0, faction.rating + value)
+
+func set_faction_factor(faction_id, value):
+	get_faction_dynamic_data(faction_id).price_factor = float(value)
 
 func get_quest_pool():
 #	return quest_pool
@@ -329,10 +343,14 @@ func getreq_random_starting_class(num = 1):
 		class_list.remove(prof_num)
 	return res
 
-func getreq_race_by_tags(tags):
-	return {code = "race",
-		race = races.get_random_race_by_tags_noweight(tags),
-		check = true}
+func getreq_race_by_tags(tags, num = 1):
+	if num == 1:
+		return {code = "race",
+			race = races.get_random_race_by_tags_noweight(tags),
+			check = true}
+	else:
+		return {code = 'one_of_races',
+			value = races.get_random_race_by_tags_noweight(tags, num)}
 
 func getreq_random_starting_race():
 	return {code = "race",
@@ -446,7 +464,7 @@ func spec_rename_maid(quest_dict):
 		#!!!!!!!!check if this will work!!!!!!!!!
 		for req in quest_dict.requirements[0].statreqs:
 			if req.code == 'has_profession' and req.profession == 'maid':
-				req.description = "is_male"
+				req.altname = true
 
 #--------------------------
 
@@ -477,6 +495,22 @@ func has_req(reqs, to_check_raw):
 		return false
 	return res
 
+func remove_req(reqs, to_remove):
+	var idx_to_remove = []
+	for i in range(reqs.size()):
+		var req = reqs[i]
+		var corresponds = true
+		for key in to_remove:
+			if (!req.has(key)
+					or typeof(req[key]) != typeof(to_remove[key])
+					or req[key] != to_remove[key]):
+				corresponds = false
+		if corresponds:
+			idx_to_remove.append(i)
+	for idx in idx_to_remove:
+		print("remove_req %s" % String(reqs[idx]))
+		reqs.remove(idx)
+	return idx_to_remove.size()
 
 func fix_serialization():
 	var progress = ResourceScripts.game_progress.slave_quests
@@ -500,3 +534,38 @@ func fix_serialization():
 			progress.factions.erase(fact_id)
 	for fact_id in existing_factions:
 		progress.factions[fact_id] = dynamic_data_template.duplicate()
+
+func check_faction_rating(quest):
+	if !quest.has('faction'):
+		return
+	change_faction_rating(quest.faction, 10)
+
+func if_can_take_quest() -> bool:
+	var active_num = 0
+	for quest in get_quest_pool().values():
+		if quest.state == states.active:
+			active_num += 1
+	var max_quests
+	for entry in max_active_quests:
+		if globals.checkreqs(entry.reqs):
+			max_quests = entry.num
+			break
+	
+	if active_num < max_quests:
+		return true
+	elif active_num == max_active_quests[0].num:#possible maximum
+		input_handler.get_spec_node(input_handler.NODE_POPUP, [tr('SQ_MAX_QUESTS') % max_quests])
+		return false
+	else:
+		input_handler.get_spec_node(input_handler.NODE_POPUP, [tr('SQ_CUR_MAX_QUESTS') % max_quests])
+		return false
+
+func process_faction_icon(node, fact_id):
+	var faction = get_faction(fact_id)
+	var faction_dyn = get_faction_dynamic_data(fact_id)
+	node.texture = faction.icon
+	globals.connecttexttooltip(node, "%s\n%s\n%s\n%s" % [
+		tr(faction.name), tr(faction.description),
+		tr('SQ_FACT_RATING') % faction_dyn.rating,
+		tr('SQ_FACT_PRICE') % ("%s%%" % (faction_dyn.price_factor * 100))
+	])

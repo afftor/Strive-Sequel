@@ -192,6 +192,7 @@ func CompleteReqs():
 			"random_material":
 				ResourceScripts.game_res.set_material(i.type, '-', i.value)
 	selectedquest.state = 'complete'
+	ResourceScripts.slave_quests.check_faction_rating(selectedquest)
 	globals.text_log_add("quest", tr("QUESTCOMPLETEMESSAGE")+": " + selectedquest.name)
 	Reward()
 

@@ -1,53 +1,237 @@
 extends Reference
 
 var factions = {
-	test_fact1 = {
-		name = "SQ_FACT1_NAME",
-		description = "SQ_FACT1_DESC",
-		leader = "SQ_FACT1_LEAD",
-		icon = load("res://assets/Textures_v2/CITY/Icons/icon_workers.png"),
-		quest_pool = ['miko', 'sex_generic_t2', 'mage', 'assassin_t2'],
-		gen_chance = {
-			4 : 1.0
-		},
-#		req_override = {
-#			race = {
-#				reqs = {code = "race", race = "Dwarf", check = true},
-#				chance = 1.0,
-#				add_if_none = true
-#			}
-#		},
-#		add_slave_req_primary = [],
-#		add_slave_req = []
-	},
-	test_fact2 = {
-		name = "SQ_FACT2_NAME",
-		description = "SQ_FACT2_DESC",
-		leader = "SQ_FACT2_LEAD",
-		icon = load("res://assets/Textures_v2/CITY/Icons/icon_mages.png"),
+	obsidian = {
+		name = "SQ_OBSIDIAN_NAME",
+		description = "SQ_OBSIDIAN_DESC",
+		leader = "SQ_OBSIDIAN_LEAD",
+		icon = load("res://assets/Textures_v2/slave_quests/obsidian_brotherhood.png"),
 		quest_pool = [
-			'elf', 'ratkin', 'any_beastkin', 'any_monster', 'fairy', 'gardener',
-			'maid', 'miner', 'craftsman', 'alchemist', 'hunter', 'shortstack',
-			'fighter', 'ranger', 'healer', 'thief', 'sex_generic', 'fighter_t2',
-			'healer_t2', 'rare_race', 'elf_archer', 'miko', 'sex_generic_t2',
-			'mage', 'assassin_t2'
+			'gardener', 'maid', 'miner', 'craftsman', 'alchemist', 'hunter',
+			'fighter', 'ranger', 'healer', 'thief', 'fighter_t2', 'healer_t2',
+			'mage', 'assassin_t2'],
+		gen_chance = {
+			1 : 1.0, 2 : 0.8, 3 : 0.5
+		}
+	},
+	dravenmoor = {
+		name = "SQ_DRAVENMOOR_NAME",
+		description = "SQ_DRAVENMOOR_DESC",
+		leader = "SQ_DRAVENMOOR_LEAD",
+		icon = load("res://assets/Textures_v2/slave_quests/house_dravenmoor.png"),
+		quest_pool = [
+			'elf', 'ratkin', 'any_beastkin', 'fairy', 'miner', 'craftsman',
+			'alchemist', 'hunter', 'shortstack', 'fighter', 'ranger',
+			'fighter_t2', 'healer_t2', 'rare_race', 'elf_archer', 'assassin_t2'
 		],
 		gen_chance = {
 			1 : 1.0, 2 : 0.8, 3 : 0.5
 		}
 	},
-	test_fact3 = {
-		name = "SQ_FACT3_NAME",
-		description = "SQ_FACT3_DESC",
-		leader = "SQ_FACT3_LEAD",
-		icon = load("res://assets/Textures_v2/CITY/Icons/icon_warriorsguild.png"),
-		quest_pool = [],
+	verdant = {
+		name = "SQ_VERDANT_NAME",
+		description = "SQ_VERDANT_DESC",
+		leader = "SQ_VERDANT_LEAD",
+		icon = load("res://assets/Textures_v2/slave_quests/verdant_conclave.png"),
+		quest_pool = [
+			'elf', 'any_beastkin', 'fairy', 'gardener', 'maid', 'alchemist',
+			'hunter', 'ranger', 'healer', 'sex_generic', 'rare_race',
+			'elf_archer', 'miko', 'sex_generic_t2', 'mage'
+		],
 		gen_chance = {
-			1 : 0.9, 2 : 0.7, 3 : 0.1
+			1 : 1.0, 2 : 0.8, 3 : 0.5
 		}
+	},
+	ironhold = {
+		name = "SQ_IRONHOLD_NAME",
+		description = "SQ_IRONHOLD_DESC",
+		leader = "SQ_IRONHOLD_LEAD",
+		icon = load("res://assets/Textures_v2/slave_quests/ironhold_syndicate.png"),
+		quest_pool = [
+			'ratkin', 'any_beastkin', 'miner', 'craftsman', 'hunter', 'shortstack',
+			'fighter', 'healer', 'fighter_t2', 'healer_t2', 'rare_race', 'assassin_t2'
+		],
+		gen_chance = {
+			1 : 1.0, 2 : 0.8, 3 : 0.5
+		},
+		req_add = [
+			[
+				{
+					has_no_req = {code = "has_profession", check = true},
+					reqs = {code = "has_profession", profession = "worker", check = true},
+					chance = 1.0,
+					stop_on_me = true
+				},
+				{
+					has_tags = ['t2'],
+					generate_func = 'getreq_roll_stat',
+					generate_args = ['physics', [40,60], 'gte', 5],
+					chance = 1.0,
+					stop_on_me = true
+				},
+				{
+					generate_func = 'getreq_roll_stat',
+					generate_args = ['physics', [20,40], 'gte', 5],
+					chance = 1.0
+				},
+			]
+		]
+	},
+	crimson = {
+		name = "SQ_CRIMSON_NAME",
+		description = "SQ_CRIMSON_DESC",
+		leader = "SQ_CRIMSON_LEAD",
+		icon = load("res://assets/Textures_v2/slave_quests/crimson_veil.png"),
+		quest_pool = [
+			'elf', 'any_beastkin', 'fairy', 'maid', 'craftsman', 'alchemist',
+			'fighter', 'thief', 'sex_generic', 'fighter_t2', 'rare_race',
+			'elf_archer', 'sex_generic_t2', 'mage', 'assassin_t2'
+		],
+		gen_chance = {
+			1 : 1.0, 2 : 0.8, 3 : 0.5
+		},
+	},
+	gilded = {
+		name = "SQ_GILDED_NAME",
+		description = "SQ_GILDED_DESC",
+		leader = "SQ_GILDED_LEAD",
+		icon = load("res://assets/Textures_v2/slave_quests/gilded_consortium.png"),
+		quest_pool = [
+			'any_beastkin', 'fairy', 'gardener', 'maid', 'hunter', 'fighter',
+			'ranger', 'healer', 'thief', 'sex_generic', 'fighter_t2',
+			'healer_t2', 'rare_race', 'miko', 'sex_generic_t2', 'mage'
+		],
+		gen_chance = {
+			1 : 1.0, 2 : 0.8, 3 : 0.5
+		},
+	},
+	azure = {
+		name = "SQ_AZURE_NAME",
+		description = "SQ_AZURE_DESC",
+		leader = "SQ_AZURE_LEAD",
+		icon = load("res://assets/Textures_v2/slave_quests/azure_covenant.png"),
+		quest_pool = [
+			'elf', 'ratkin', 'craftsman', 'alchemist', 'hunter', 'shortstack',
+			'fighter', 'thief', 'sex_generic', 'fighter_t2', 'healer_t2',
+			'rare_race', 'elf_archer', 'miko', 'sex_generic_t2', 'mage',
+			'assassin_t2'
+		],
+		gen_chance = {
+			1 : 1.0, 2 : 0.8, 3 : 0.5
+		},
+	},
+	stonebreaker = {
+		name = "SQ_STONEBREAKER_NAME",
+		description = "SQ_STONEBREAKER_DESC",
+		leader = "SQ_STONEBREAKER_LEAD",
+		icon = load("res://assets/Textures_v2/slave_quests/stonebreaker_clan.png"),
+		quest_pool = [
+			'elf', 'fairy', 'gardener', 'maid', 'hunter', 'shortstack', 'healer',
+			'sex_generic', 'healer_t2', 'miko', 'sex_generic_t2', 'mage'
+		],
+		gen_chance = {
+			1 : 1.0, 2 : 0.8, 3 : 0.5
+		},
+	},
+	chalice = {
+		name = "SQ_CHALICE_NAME",
+		description = "SQ_CHALICE_DESC",
+		leader = "SQ_CHALICE_LEAD",
+		icon = load("res://assets/Textures_v2/slave_quests/silver_chalice.png"),
+		quest_pool = [
+			'gardener', 'miner', 'hunter', 'shortstack', 'fighter', 'healer',
+			'fighter_t2', 'healer_t2', 'miko', 'mage'
+		],
+		gen_chance = {
+			1 : 1.0, 2 : 0.8, 3 : 0.5
+		},
+	},
+	loom = {
+		name = "SQ_LOOM_NAME",
+		description = "SQ_LOOM_DESC",
+		leader = "SQ_LOOM_LEAD",
+		icon = load("res://assets/Textures_v2/slave_quests/golden_loom.png"),
+		quest_pool = [
+			'elf', 'fairy', 'gardener', 'maid', 'shortstack', 'sex_generic',
+			'rare_race', 'sex_generic_t2', 'assassin_t2'
+		],
+		gen_chance = {
+			1 : 1.0, 2 : 0.8, 3 : 0.5
+		},
+	},
+	ashen = {
+		name = "SQ_ASHEN_NAME",
+		description = "SQ_ASHEN_DESC",
+		leader = "SQ_ASHEN_LEAD",
+		icon = load("res://assets/Textures_v2/slave_quests/ashen_consort.png"),
+		quest_pool = [
+			'elf', 'gardener', 'maid', 'craftsman', 'alchemist', 'hunter',
+			'fighter', 'ranger', 'healer', 'thief', 'fighter_t2', 'healer_t2',
+			'elf_archer', 'miko', 'mage', 'assassin_t2'
+		],
+		gen_req = [{type = 'decision', value = 'act2_start', check = true}],
+		gen_chance = {
+			1 : 1.0, 2 : 0.8, 3 : 0.5
+		},
+		req_add = [
+			{
+				override = [
+					{code = "race"},
+					{code = "one_of_races"}
+				],
+				reqs = {code = 'one_of_races', value = ['TribalElf', 'Elf']},
+				chance = 1.0
+			},
+		]
+	},
+	ironvein = {
+		name = "SQ_IRONVEIN_NAME",
+		description = "SQ_IRONVEIN_DESC",
+		leader = "SQ_IRONVEIN_LEAD",
+		icon = load("res://assets/Textures_v2/slave_quests/ironvein.png"),
+		quest_pool = [
+			'ratkin', 'fairy', 'gardener', 'maid', 'miner', 'craftsman',
+			'alchemist', 'hunter', 'shortstack', 'fighter', 'ranger', 'thief',
+			'sex_generic', 'fighter_t2', 'healer_t2', 'sex_generic_t2', 'mage',
+			'assassin_t2'
+		],
+		gen_req = [{type = 'decision', value = 'act3_start', check = true}],
+		gen_chance = {
+			1 : 1.0, 2 : 0.8, 3 : 0.5
+		},
+		req_add = [
+			[
+				{
+					exceptions = ['ratkin', 'fairy'],
+					override = [
+						{code = "race"},
+						{code = "one_of_races"}
+					],
+					generate_func = 'getreq_race_by_tags',
+					generate_args = [['midget'], 2],
+					chance = 0.5,
+					reward_func = "getrwd_race_tag",
+					reward_func_args = ['rare', 0.1],
+					stop_on_me = true
+				},
+				{
+					exceptions = ['ratkin', 'fairy'],
+					override = [
+						{code = "race"},
+						{code = "one_of_races"}
+					],
+					generate_func = 'getreq_race_by_tags',
+					generate_args = [['midget']],
+					chance = 1.0,
+					reward_func = "getrwd_race_tag",
+					reward_func_args = ['rare', 0.1]
+				},
+			]
+		]
 	}
 }
 
+#keep in mind(!) that there is factions with not 0 starting price_factor
 var faction_dynamic_data_template = {
 	rating = 0,
 	price_factor = 0.0
@@ -73,25 +257,21 @@ var quests = {
 		slave_req_primary = [
 			{
 				generate_func = 'getreq_sex_by_ratio',
-				fixed_type = 'sex',
 				chance = 1.0
 			},
 			[
 				{
-					fixed_type = 'race',
 					reqs = {code = "race", race = "DarkElf", check = true},
 					chance = 0.1,
 					reward_bonus = 0.1,
 					stop_on_me = true
 				},
 				{
-					fixed_type = 'race',
 					reqs = {code = "race", race = "TribalElf", check = true},
 					chance = 0.3,
 					stop_on_me = true
 				},
 				{
-					fixed_type = 'race',
 					reqs = {code = "race", race = "Elf", check = true},
 					chance = 1.0,
 				},
@@ -104,7 +284,7 @@ var quests = {
 				chance = 0.25
 			},
 			{
-				reqs = {code = 'hair_length', value = ['shoulder', 'waist', 'hips'], check = true},
+				reqs = {code = 'stat', stat = 'hair_length', operant = 'in', value = ['shoulder', 'waist', 'hips']},
 				chance = 0.5
 			},
 			{
@@ -116,12 +296,10 @@ var quests = {
 					{code = 'stat', stat = 'personality', operant = 'eq', value = 'serious'},
 				], 1],
 				chance = 0.3,
-				fixed_type = 'personality'
 			},
 			{
 				generate_func = "getreq_random_starting_class",
 				chance = 0.5,
-				fixed_type = 'class'
 			},
 		],
 		slave_number = [1, 1]
@@ -135,7 +313,6 @@ var quests = {
 		req_max = 4,
 		slave_req_primary = [
 			{
-				fixed_type = 'race',
 				reqs = {code = "race", race = "Ratkin", check = true},
 				chance = 1.0
 			},
@@ -144,7 +321,6 @@ var quests = {
 			{
 				reqs = {code = 'stat', stat = 'personality', operant = 'eq', value = 'shy'},
 				chance = 0.5,
-				fixed_type = 'personality'
 			},
 			{
 				reqs = {code = "stat", stat = "growth_factor", operant = "gte", value = 4},
@@ -161,7 +337,6 @@ var quests = {
 			{
 				generate_func = "getreq_random_starting_class",
 				chance = 0.7,
-				fixed_type = 'class'
 			},
 		],
 		slave_number = [1, 1]
@@ -175,7 +350,6 @@ var quests = {
 		req_max = 5,
 		slave_req_primary = [
 			{
-				fixed_type = 'race',
 				generate_func = 'getreq_race_by_tags',
 				generate_args = [['beast', 'halfbeast']],
 				chance = 1.0,
@@ -193,7 +367,6 @@ var quests = {
 					{code = 'stat', stat = 'personality', operant = 'eq', value = 'serious'},
 				], 1],
 				chance = 0.3,
-				fixed_type = 'personality'
 			},
 			{
 				generate_func = "getreq_random_sex_skills",
@@ -211,7 +384,6 @@ var quests = {
 			{
 				generate_func = "getreq_random_starting_class",
 				chance = 0.5,
-				fixed_type = 'class'
 			},
 			{
 				generate_func = "getreq_random_from_array",
@@ -233,7 +405,6 @@ var quests = {
 		req_max = 5,
 		slave_req_primary = [
 			{
-				fixed_type = 'race',
 				generate_func = 'getreq_race_by_tags',
 				generate_args = [['monster']],
 				chance = 1.0,
@@ -273,7 +444,6 @@ var quests = {
 		slave_req = [
 			{
 				generate_func = 'getreq_sex_by_ratio',
-				fixed_type = 'sex',
 				chance = 0.5
 			},
 			{
@@ -293,12 +463,10 @@ var quests = {
 		slave_req_primary = [
 			{
 				reqs = {code = "race", race = "Fairy", check = true},
-				fixed_type = 'race',
 				chance = 1.0
 			},
 			{
 				generate_func = 'getreq_sex_by_ratio',
-				fixed_type = 'sex',
 				chance = 1.0
 			},
 		],
@@ -364,7 +532,6 @@ var quests = {
 		slave_req = [
 			{
 				generate_func = 'getreq_random_starting_race',
-				fixed_type = 'race',
 				chance = 0.5,
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]
@@ -409,7 +576,6 @@ var quests = {
 			],
 			{
 				generate_func = 'getreq_sex_by_ratio',
-				fixed_type = 'sex',
 				chance = 1.0
 			},
 		],
@@ -478,7 +644,6 @@ var quests = {
 			},
 			{
 				generate_func = 'getreq_random_starting_race',
-				fixed_type = 'race',
 				chance = 0.5,
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]
@@ -517,7 +682,6 @@ var quests = {
 		slave_req = [
 			{
 				generate_func = 'getreq_random_starting_race',
-				fixed_type = 'race',
 				chance = 0.5,
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]
@@ -565,14 +729,12 @@ var quests = {
 		slave_req = [
 			{
 				generate_func = 'getreq_random_starting_race',
-				fixed_type = 'race',
 				chance = 0.25,
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]
 			},
 			{
 				generate_func = 'getreq_sex_by_ratio',
-				fixed_type = 'sex',
 				chance = 0.5
 			},
 			{
@@ -603,7 +765,6 @@ var quests = {
 		slave_req = [
 			{
 				generate_func = 'getreq_random_starting_race',
-				fixed_type = 'race',
 				chance = 0.33,
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]
@@ -650,7 +811,6 @@ var quests = {
 		],
 		slave_req = [
 			{
-				fixed_type = 'race',
 				generate_func = 'getreq_race_by_tags',
 				generate_args = [['midget']],
 				chance = 0.5,
@@ -690,14 +850,12 @@ var quests = {
 		slave_req = [
 			{
 				generate_func = 'getreq_random_starting_race',
-				fixed_type = 'race',
 				chance = 0.33,
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]
 			},
 			{
 				generate_func = 'getreq_sex_by_ratio',
-				fixed_type = 'sex',
 				chance = 0.5
 			},
 			{
@@ -736,14 +894,12 @@ var quests = {
 		slave_req = [
 			{
 				generate_func = 'getreq_random_starting_race',
-				fixed_type = 'race',
 				chance = 0.5,
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]
 			},
 			{
 				generate_func = 'getreq_sex_by_ratio',
-				fixed_type = 'sex',
 				chance = 0.5
 			},
 			{
@@ -780,7 +936,6 @@ var quests = {
 		slave_req = [
 			{
 				generate_func = 'getreq_random_starting_race',
-				fixed_type = 'race',
 				chance = 0.5,
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]
@@ -817,14 +972,12 @@ var quests = {
 		slave_req = [
 			{
 				generate_func = 'getreq_random_starting_race',
-				fixed_type = 'race',
 				chance = 0.5,
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]
 			},
 			{
 				generate_func = 'getreq_sex_by_ratio',
-				fixed_type = 'sex',
 				chance = 0.5
 			},
 			{
@@ -854,12 +1007,10 @@ var quests = {
 		slave_req_primary = [
 			{
 				generate_func = 'getreq_sex_by_ratio',
-				fixed_type = 'sex',
 				chance = 1.0
 			},
 			{
 				generate_func = 'getreq_random_starting_race',
-				fixed_type = 'race',
 				chance = 0.25,
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]
@@ -881,6 +1032,8 @@ var quests = {
 		namepool = ["SQ_FIGHTER_T2_NAME1"],
 		description = "SQ_FIGHTER_T2_DESC",
 		gen_req = [{type = 'decision', value = 'act1_finish', check = true}],
+		tags = ['t2'],
+		difficulty = 'medium',
 		time_limit = [20, 25],
 		rewardpool = [9000],
 		req_max = 4,
@@ -900,7 +1053,6 @@ var quests = {
 			{
 				generate_func = 'getreq_race_by_tags',
 				generate_args = [['starting_race', 'rare']],
-				fixed_type = 'race',
 				chance = 0.33,
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]
@@ -926,6 +1078,8 @@ var quests = {
 		namepool = ["SQ_HEALER_T2_NAME1"],
 		description = "SQ_HEALER_T2_DESC",
 		gen_req = [{type = 'decision', value = 'act1_finish', check = true}],
+		tags = ['t2'],
+		difficulty = 'medium',
 		time_limit = [20, 25],
 		rewardpool = [9000],
 		req_max = 5,
@@ -951,7 +1105,6 @@ var quests = {
 			{
 				generate_func = 'getreq_race_by_tags',
 				generate_args = [['starting_race', 'rare']],
-				fixed_type = 'race',
 				chance = 0.5,
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]
@@ -972,6 +1125,8 @@ var quests = {
 		namepool = ["SQ_RARE_RACE_NAME1"],
 		description = "SQ_RARE_RACE_DESC",
 		gen_req = [{type = 'decision', value = 'act1_finish', check = true}],
+		tags = ['t2'],
+		difficulty = 'medium',
 		time_limit = [20, 25],
 		rewardpool = [9000],
 		req_max = 4,
@@ -979,7 +1134,6 @@ var quests = {
 			{
 				generate_func = 'getreq_race_by_tags',
 				generate_args = [['rare']],
-				fixed_type = 'race',
 				chance = 1.0,
 				reward_bonus = 0.1
 			},
@@ -1016,7 +1170,6 @@ var quests = {
 		slave_req = [
 			{
 				generate_func = 'getreq_sex_by_ratio',
-				fixed_type = 'sex',
 				chance = 0.75
 			},
 			{
@@ -1031,6 +1184,8 @@ var quests = {
 		namepool = ["SQ_ELF_ARCHER_NAME1"],
 		description = "SQ_ELF_ARCHER_DESC",
 		gen_req = [{type = 'decision', value = 'act1_finish', check = true}],
+		tags = ['t2'],
+		difficulty = 'medium',
 		time_limit = [20, 25],
 		rewardpool = [9000],
 		req_max = 5,
@@ -1039,7 +1194,6 @@ var quests = {
 				generate_func = 'getreq_fill_param_random_from_array',
 				generate_args = [{code = 'one_of_races', value = []}, 'value',
 					['DarkElf', 'TribalElf', 'Elf'], 2],
-				fixed_type = 'race',
 				chance = 1.0,
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]
@@ -1075,6 +1229,8 @@ var quests = {
 			{type = 'decision', value = 'act1_finish', check = true},
 			{type = 'global_settings', param = 'malechance', operant = 'lt', value = 100}
 		],
+		tags = ['t2'],
+		difficulty = 'medium',
 		time_limit = [20, 25],
 		rewardpool = [9000],
 		req_max = 5,
@@ -1125,19 +1281,19 @@ var quests = {
 		namepool = ["SQ_SEX_GENERIC_T2_NAME1"],
 		description = "SQ_SEX_GENERIC_T2_DESC",
 		gen_req = [{type = 'decision', value = 'act1_finish', check = true}],
+		tags = ['t2'],
+		difficulty = 'medium',
 		time_limit = [20, 25],
 		rewardpool = [9000],
 		req_max = 4,
 		slave_req_primary = [
 			{
 				generate_func = 'getreq_sex_by_ratio',
-				fixed_type = 'sex',
 				chance = 1.0
 			},
 			{
 				generate_func = 'getreq_race_by_tags',
 				generate_args = [['starting_race', 'rare']],
-				fixed_type = 'race',
 				chance = 0.5,
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]
@@ -1182,6 +1338,8 @@ var quests = {
 		namepool = ["SQ_MAGE_NAME1"],
 		description = "SQ_MAGE_DESC",
 		gen_req = [{type = 'decision', value = 'act1_finish', check = true}],
+		tags = ['t2'],
+		difficulty = 'medium',
 		time_limit = [20, 25],
 		rewardpool = [9000],
 		req_max = 4,
@@ -1209,7 +1367,6 @@ var quests = {
 			{
 				generate_func = 'getreq_race_by_tags',
 				generate_args = [['starting_race', 'rare']],
-				fixed_type = 'race',
 				chance = 0.5,
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]
@@ -1238,6 +1395,8 @@ var quests = {
 		namepool = ["SQ_ASSASSIN_T2_NAME1"],
 		description = "SQ_ASSASSIN_T2_DESC",
 		gen_req = [{type = 'decision', value = 'act1_finish', check = true}],
+		tags = ['t2'],
+		difficulty = 'medium',
 		time_limit = [20, 25],
 		rewardpool = [9000],
 		req_max = 4,
@@ -1250,13 +1409,11 @@ var quests = {
 		slave_req = [
 			{
 				generate_func = 'getreq_sex_by_ratio',
-				fixed_type = 'sex',
 				chance = 0.75
 			},
 			{
 				generate_func = 'getreq_race_by_tags',
 				generate_args = [['starting_race', 'rare']],
-				fixed_type = 'race',
 				chance = 0.66,
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]

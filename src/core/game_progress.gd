@@ -56,15 +56,51 @@ var arena = {
 
 var slave_quests = {
 	factions = {
-		test_fact1 = {
+		obsidian = {
 			rating = 0,
 			price_factor = 0.0
 		},
-		test_fact2 = {
+		dravenmoor = {
 			rating = 0,
 			price_factor = 0.0
 		},
-		test_fact3 = {
+		verdant = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		ironhold = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		crimson = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		gilded = {
+			rating = 0,
+			price_factor = -0.1
+		},
+		azure = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		stonebreaker = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		chalice = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		loom = {
+			rating = 0,
+			price_factor = 0.2
+		},
+		ashen = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		ironvein = {
 			rating = 0,
 			price_factor = 0.0
 		},
