@@ -40,7 +40,7 @@ var skills = {
 			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = null}
 			],
 		effects = ['turn_thrall'],
-		cost = {mp = 10},
+		cost = {mp = 10, lust = 10},
 		charges = 1,
 		cooldown = 3,
 		icon = load("res://assets/images/iconsskills/Great_Seduce.png"),
@@ -94,7 +94,7 @@ var skills = {
 #			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}
 			],
 		effects = [],
-		cost = {mp = 6},
+		cost = {mp = 6, lust = 15},
 		charges = 1,
 		cooldown = 1,
 		icon = load("res://assets/images/iconsskills/distract.png"),
@@ -125,7 +125,7 @@ var skills = {
 			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}
 			],
 		effects = [],
-		cost = {mp = 10},
+		cost = {mp = 10, lust = 25},
 		charges = 1,
 		cooldown = 3,
 		icon = load("res://assets/images/iconsskills/Charm.png"),
@@ -150,7 +150,7 @@ var skills = {
 			{code = 'stat', stat = 'consent', operant = 'gte', value = 5},
 			],
 		effects = ['release_thrall', 'make_succubus'],
-		cost = {mp = 50},
+		cost = {mp = 50, lust = 50},
 		charges = 1,
 		cooldown = 7,
 		icon = load("res://assets/images/iconsskills/Mindread.png"),
@@ -172,7 +172,7 @@ var skills = {
 		],
 		targetreqs = [],
 		effects = ['swap_form'],
-		cost = {},
+		cost = {lust = 75},
 		charges = 1,
 		cooldown = 1,
 		icon = load("res://assets/images/iconsskills/Mindread.png"),
@@ -299,7 +299,7 @@ var effects = {
 #			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
 		],
 		tags = ['magic_atunement'],
-		statchanges = {matk = 10, mpmax_add = 25},
+		statchanges = {matk = 10, mpmax_add = 25, mp_reg_add_part = 0.5},
 		buffs = [ 
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
@@ -316,7 +316,7 @@ var effects = {
 #			{code = 'stat', stat = 'thrall_points', operant = 'gte', value = 5}
 		],
 		tags = ['combat_atunement'],
-		statchanges = {hpmax_add_part = 0.2},
+		statchanges = {hpmax_add_part = 0.2, hp_reg_add_part = 1.0},
 		buffs = [ 
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
@@ -347,6 +347,111 @@ var effects = {
 				}]
 			},
 		]
+	},
+	succubus_thralls_0 = {
+		type = 'simple',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'thralls_amount', operant = 'eq', value = 0}
+		],
+		statchanges = {lustmax_add = 10, lusttick_add = 1, chg_persuasion_max = 1,},
+		buffs = [ 
+			{
+			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
+			description = "COMBATATTUNEMENTDESCRIPT",
+			tags = ['show_in_traits']
+		}
+		],
+	},
+	succubus_thralls_1 = {
+		type = 'simple',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'thralls_amount', operant = 'eq', value = 1}
+		],
+		statchanges = {lustmax_add = 20, lusttick_add = 3, charm_bonus = 5, chg_persuasion_max = 1,},
+		buffs = [ 
+			{
+			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
+			description = "COMBATATTUNEMENTDESCRIPT",
+			tags = ['show_in_traits']
+		}
+		],
+	},
+	succubus_thralls_2 = {
+		type = 'simple',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'thralls_amount', operant = 'eq', value = 2}
+		],
+		statchanges = {lustmax_add = 30, lusttick_add = 4.5, charm_bonus = 5, chg_persuasion_max = 2,},
+		buffs = [ 
+			{
+			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
+			description = "COMBATATTUNEMENTDESCRIPT",
+			tags = ['show_in_traits']
+		}
+		],
+	},
+	succubus_thralls_3 = {
+		type = 'simple',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'thralls_amount', operant = 'eq', value = 3}
+		],
+		statchanges = {lustmax_add = 45, lusttick_add = 6, charm_bonus = 10, chg_persuasion_max = 2,},
+		buffs = [ 
+			{
+			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
+			description = "COMBATATTUNEMENTDESCRIPT",
+			tags = ['show_in_traits']
+		}
+		],
+	},
+	succubus_thralls_4 = {
+		type = 'simple',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'thralls_amount', operant = 'eq', value = 4}
+		],
+		statchanges = {lustmax_add = 60, lusttick_add = 7.5, charm_bonus = 10, chg_persuasion_max = 2,},
+		buffs = [ 
+			{
+			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
+			description = "COMBATATTUNEMENTDESCRIPT",
+			tags = ['show_in_traits']
+		}
+		],
+	},
+	succubus_thralls_5 = {
+		type = 'simple',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'thralls_amount', operant = 'eq', value = 5}
+		],
+		statchanges = {lustmax_add = 80, lusttick_add = 9, charm_bonus = 15, chg_persuasion_max = 3,},
+		buffs = [ 
+			{
+			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
+			description = "COMBATATTUNEMENTDESCRIPT",
+			tags = ['show_in_traits']
+		}
+		],
+	},
+	succubus_thralls_6 = {
+		type = 'simple',
+		descript = '',
+		conditions = [
+			{code = 'stat', stat = 'thralls_amount', operant = 'eq', value = 6}
+		],
+		statchanges = {lustmax_add = 100, lusttick_add = 12, charm_bonus = 20, chg_persuasion_max = 3,},
+		buffs = [ 
+			{
+			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
+			description = "COMBATATTUNEMENTDESCRIPT",
+			tags = ['show_in_traits']
+		}
+		],
 	},
 }
 var atomic_effects = {}

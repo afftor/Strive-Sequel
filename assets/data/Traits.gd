@@ -417,7 +417,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['human_form', 'demon_form'],
+		effects = ['human_form', 'demon_form', 'succubus_thralls_0', 'succubus_thralls_1', 'succubus_thralls_2', 'succubus_thralls_3', 'succubus_thralls_4', 'succubus_thralls_5', 'succubus_thralls_6', ],
 	}, #hardcoded
 	succubus_magic = {
 		code = 'succubus_magic',
@@ -2347,6 +2347,7 @@ var succubus_trainings = {
 #	},
 	corrupt = {
 		cost = {thrall_points = 1},
+		reqs = [],
 		mode = 'skill',
 		skill = 'corrupt',
 		trait = null,
@@ -2354,6 +2355,7 @@ var succubus_trainings = {
 	},
 	allure = {
 		cost = {thrall_points = 1},
+		reqs = [],
 		mode = 'skill',
 		skill = 'allure',
 		trait = null,
@@ -2361,6 +2363,7 @@ var succubus_trainings = {
 	},
 	turn_succubus = {
 		cost = {thrall_points = 3},
+		reqs = [],
 		mode = 'skill',
 		skill = 'turn_succubus',
 		trait = null,
@@ -2368,6 +2371,7 @@ var succubus_trainings = {
 	},
 	swap_form = {
 		cost = {thrall_points = 3},
+		reqs = [],
 		mode = 'skill',
 		skill = 'swap_form',
 		trait = null,
@@ -2375,6 +2379,7 @@ var succubus_trainings = {
 	},
 	succubus_magic = {
 		cost = {thrall_points = 5},
+		reqs = [{code = 'trait', trait = 'succubus_combat', check = false},],
 		mode = 'trait',
 		skill = null,
 		trait = 'succubus_magic',
@@ -2382,6 +2387,7 @@ var succubus_trainings = {
 	},
 	succubus_combat = {
 		cost = {thrall_points = 5},
+		reqs = [{code = 'trait', trait = 'succubus_magic', check = false},],
 		mode = 'trait',
 		skill = null,
 		trait = 'succubus_combat',

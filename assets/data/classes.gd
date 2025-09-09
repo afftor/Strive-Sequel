@@ -305,7 +305,7 @@ var professions = {
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 4},{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 3},{code = 'has_profession', profession = 'harlot', check = true}],
 		combatskills = ['euphoria_apply'],
-		statchanges = {sexuals_bonus = 15, charm_bonus = 5, chg_persuasion_max = 1, trainee_amount = 1, mastery_point_magic = 1},
+		statchanges = {sexuals_bonus = 15, trainee_amount = 1, mastery_point_magic = 1}, #charm_bonus = 5, chg_persuasion_max = 1,
 		traits = ['succubus'], #'trainer'], 
 		skills = ['succubus_lust_skill', 'enthrall', 'release_thrall'],
 		conflict_classes = [],

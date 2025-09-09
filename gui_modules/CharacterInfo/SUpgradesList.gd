@@ -43,6 +43,7 @@ func update():
 	build_info()
 	build_trainings()
 	build_spells()
+	build_thralls_tooltip()
 
 
 func build_info(): 
@@ -116,7 +117,7 @@ func build_trainings():
 			panel.get_node('cost').visible = false
 			panel.get_node('bg').modulate = Color(variables.hexcolordict.yellow)
 		else:
-			if person.check_cost(u_data.cost):
+			if person.check_cost(u_data.cost) and person.checkreqs(u_data.reqs):
 				panel.connect('pressed', self, 'add_training', [tr_id])
 				panel.get_node('bg').modulate = Color(variables.hexcolordict.green)
 			else:
@@ -163,6 +164,10 @@ func build_spells():
 			panel.get_node('value').text = str(s_data.cost.mp)
 		else:
 			panel.get_node('value').text = '0'
+		if s_data.cost.has('lust'):
+			panel.get_node('value2').text = str(s_data.cost.lust)
+		else:
+			panel.get_node('value2').text = '0'
 		var charges = Skilldata.get_charges(s_data, person)
 		var used_charges = 0
 		if person.skills.social_skills_charges.has(id):
@@ -176,10 +181,16 @@ func build_spells():
 			panel.disabled = true
 			if person.skills.social_cooldowns.has(id):
 				panel.get_node('cdicon').visible = true
-				panel.get_node('value').text = str(person.skills.social_cooldowns[id])
+				panel.get_node('value3').text = str(person.skills.social_cooldowns[id])
+				panel.get_node('value3').visible = true
+				panel.get_node('value2').visible = false
+				panel.get_node('value').visible = false
 			if person.skills.daily_cooldowns.has(id):
 				panel.get_node('cdicon').visible = true
-				panel.get_node('value').text = str(person.skills.daily_cooldowns[id])
+				panel.get_node('value3').text = str(person.skills.daily_cooldowns[id])
+				panel.get_node('value3').visible = true
+				panel.get_node('value2').visible = false
+				panel.get_node('value').visible = false
 
 
 func select_spell(sp_id):
@@ -205,3 +216,14 @@ func open_spells():
 	gui_controller.current_screen = gui_controller.spells
 	gui_controller.spells.open(person)
 	gui_controller.emit_signal("screen_changed")
+
+
+func build_thralls_tooltip():
+	var text = ""
+	for i in range(7):
+		var text2 = globals.build_oneline_desc_for_bonusstats(Effectdata.effect_table['succubus_thralls_%d' % i].statchanges) 
+		if i == person.get_stat('thralls_amount'):
+			text += '{color=green|' + text2 + '}\n'
+		else:
+			text += text2 + '\n'
+	globals.connecttexttooltip($thralls/ThrallsTooltip, text.trim_suffix('\n'))

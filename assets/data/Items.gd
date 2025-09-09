@@ -3063,6 +3063,7 @@ var itemlist = {
 		tags = ['no_random'],
 		uses_per_day = 0,
 		mansion_effect = 'corruptive_essence',
+		reqs_fail_message = 'ALREADYSUCCUBUS',
 	},
 	minorus_potion = {
 		code = 'minorus_potion',
