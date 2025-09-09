@@ -110,13 +110,10 @@ func deserialize_stack(tmp, id):
 func cleanup():
 	for id in effects.keys().duplicate():
 		if !effects[id].is_applied:
-#			print("effect %s is removed as marked for cleanup" % id)
-#			print(effects[id].template)
 			remove_id(id)
 			continue
 		if effects[id].get_applied_obj() == null:
 			print("effect %s is removed as applied to no one" % id)
-#			print(effects[id].template)
 			remove_id(id)
 	for id in stacks.keys().duplicate():
 		if stacks[id].effects.empty():

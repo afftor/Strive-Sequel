@@ -13,7 +13,6 @@ func get_drag_data(position):
 	return arraydata
 
 func can_drop_data(position, data):
-	#print(data)
 	return true
 
 func drop_data(position, data):

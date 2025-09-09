@@ -3056,7 +3056,7 @@ var itemlist = {
 		crafttype = 'basic',
 		slots = [],
 		price = 500,
-		icon = load("res://assets/images/iconsitems/taintedessence.png"),
+		icon = load("res://assets/images/iconsitems/corruption_potion.png"),
 		tier = 'hard',
 		reqs = [{code = 'trait', trait = 'succubus', check = false},],
 		effects = [],

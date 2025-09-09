@@ -22,6 +22,7 @@ var skills = {
 		damage_type = 'weapon',
 		dialogue_report = '',
 		dialogue_show_repeat = false,
+		dialogue_image = 'praise',
 		sfx = [], 
 		sound = [],
 		value = [['0']],

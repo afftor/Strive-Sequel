@@ -309,7 +309,6 @@ func make_settlement(code, area):
 	settlement.travel_time = globals.rng.randi_range(settlement.travel_time[0],settlement.travel_time[1])
 	settlement.teleporter = false
 	var text = ''
-	#print(settlement.code, settlement.name)
 	if worlddata.locationnames.has(settlement.code) && settlement.name == null:
 		text = worlddata.locationnames[settlement.code+"1"][randi() % worlddata.locationnames[settlement.code + "1"].size()] + worlddata.locationnames[settlement.code+"2"][randi() % worlddata.locationnames[settlement.code + "2"].size()]
 	else:
@@ -376,7 +375,6 @@ func make_location(code, area):
 	
 	location.tasks = []
 	if location.tags.has('infinite'):
-#		print(location.id)
 		location.max_level = 0
 		location.dungeon = []
 		location.current_level = 0
@@ -1200,7 +1198,6 @@ func set_level_infinite(location, level):
 	if !pool.empty():
 		var ev = input_handler.random_from_array(pool)
 		var ev_data = worlddata.infinite_dungeon_events[ev] 
-		print(ev_data.event)
 		match ev_data.type:
 			'enter':
 				location.stagedevents.main[1] = {event = ev_data.event}

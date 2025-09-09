@@ -920,8 +920,6 @@ func get_progress_task(temptask, tempsubtask, count_crit = false):
 		value = value * 2
 	if location.has('gather_mod'): #maybe 2fix, idk if non-dungeons still has their gather mods intact
 		value *= location.gather_mod
-#	print(task_mods)
-#	print(value)
 	return value
 
 
@@ -942,8 +940,6 @@ func get_progress_resource(tempresource, count_crit = false):
 		value *= Items.get_loot().get_gather_mod_from_loc(location, tempresource)
 	elif location.has('gather_mod'): #2fix
 		value *= location.gather_mod
-#	print(task_mods)
-#	print(value)
 	return value
 
 
