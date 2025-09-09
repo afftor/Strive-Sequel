@@ -112,6 +112,11 @@ func build_trainings():
 					panel.get_node('icon').texture = load(s_data.icon)
 				else:
 					panel.get_node('icon').texture = s_data.icon
+		if u_data.has('icon') and u_data.icon != null:
+			if u_data.icon is String:
+				panel.get_node('icon').texture = load(u_data.icon)
+			else:
+				panel.get_node('icon').texture = u_data.icon
 		if unlocked:
 			panel.disabled = true
 			panel.get_node('cost').visible = false

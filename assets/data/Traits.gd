@@ -2352,6 +2352,7 @@ var succubus_trainings = {
 		skill = 'corrupt',
 		trait = null,
 		position = [0, 0],
+		icon = null,
 	},
 	allure = {
 		cost = {thrall_points = 1},
@@ -2360,6 +2361,7 @@ var succubus_trainings = {
 		skill = 'allure',
 		trait = null,
 		position = [0, 1],
+		icon = null,
 	},
 	turn_succubus = {
 		cost = {thrall_points = 3},
@@ -2368,6 +2370,7 @@ var succubus_trainings = {
 		skill = 'turn_succubus',
 		trait = null,
 		position = [0, 2],
+		icon = null,
 	},
 	swap_form = {
 		cost = {thrall_points = 3},
@@ -2376,6 +2379,7 @@ var succubus_trainings = {
 		skill = 'swap_form',
 		trait = null,
 		position = [1, 0],
+		icon = null,
 	},
 	succubus_magic = {
 		cost = {thrall_points = 5},
@@ -2384,6 +2388,7 @@ var succubus_trainings = {
 		skill = null,
 		trait = 'succubus_magic',
 		position = [1, 1],
+		icon = null,
 	},
 	succubus_combat = {
 		cost = {thrall_points = 5},
@@ -2392,6 +2397,7 @@ var succubus_trainings = {
 		skill = null,
 		trait = 'succubus_combat',
 		position = [1, 2],
+		icon = null,
 	},
 }
 
