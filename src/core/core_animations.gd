@@ -44,7 +44,6 @@ func TargetEnemyTurn(node):
 	tween.start()
 
 func FloatTextArgs(args):
-	#print('ftchecked')
 	FloatText(args.node, args.text, args.type, args.size, args.color, args.time, args.fadetime, args.offset)
 
 func FloatText(node, text, type = '', size = 80, color = Color(1,1,1), time = 3, fadetime = 0.5, positionoffset = Vector2(0,0)):
@@ -121,12 +120,10 @@ func CloseAnimation(node, speed = 0.2, transition_type = Tween.TRANS_LINEAR, eas
 	if !node.is_inside_tree(): return
 #	var t1 = OS.get_ticks_msec()
 	if BeingAnimated.has(node) == true:
-#		print("a_skipped")
 		return
 	BeingAnimated.append(node)
 	var tweennode = input_handler.GetTweenNode(node)
 	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), speed, transition_type, ease_type)
-#	print("a_start " + str(OS.get_ticks_msec()))
 	tweennode.start()
 #	var t2 = OS.get_ticks_msec()
 	yield(get_tree().create_timer(speed - 0.05), 'timeout')
@@ -134,7 +131,6 @@ func CloseAnimation(node, speed = 0.2, transition_type = Tween.TRANS_LINEAR, eas
 #	var t3 = OS.get_ticks_msec()
 	node.visible = false
 	BeingAnimated.erase(node)
-#	print("%d: %d - %d" % [t1, t2, t3])
 
 func OldOpenAnimation(node):
 	if !node.is_inside_tree(): return
@@ -167,7 +163,6 @@ func FadeAnimation(node, time = 0.3, delay = 0):
 #	if BeingAnimated.has(node) == true:
 #		return
 	#BeingAnimated.append(node)
-#	print(node.get_parent().name)
 	if !node.is_inside_tree(): return
 	var tweennode = input_handler.GetTweenNode(node)
 	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
@@ -187,7 +182,6 @@ func UnfadeAnimation(node, time = 0.3, delay = 0):
 	yield(tweennode, 'tween_completed')
 #	var t3 = OS.get_ticks_msec()
 	BeingAnimated.erase(node)
-#	print("%d: %d - %d" % [t1, t2, t3])
 
 
 func UnshadeAnimation(node, time = 0.3, delay = 0):

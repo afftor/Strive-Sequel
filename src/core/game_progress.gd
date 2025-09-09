@@ -54,6 +54,60 @@ var arena = {
 	next_reward = {}
 }
 
+var slave_quests = {
+	factions = {
+		obsidian = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		dravenmoor = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		verdant = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		ironhold = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		crimson = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		gilded = {
+			rating = 0,
+			price_factor = -0.1
+		},
+		azure = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		stonebreaker = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		chalice = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		loom = {
+			rating = 0,
+			price_factor = 0.2
+		},
+		ashen = {
+			rating = 0,
+			price_factor = 0.0
+		},
+		ironvein = {
+			rating = 0,
+			price_factor = 0.0
+		},
+	},
+	quest_pool = {}
+}
+
 func _init():
 	globals.connect("hour_tick", self, 'check_timed_events')
 
@@ -136,6 +190,25 @@ func fix_serialization():
 			items[num] = dict2inst(items[num])
 			if items[num].type == 'gear':
 				items[num].fix_gear()
+	
+	#old quests
+	var clear_quests = []
+	for num in range(active_quests.size()):
+		var quest = active_quests[num]
+		if !scenedata.quests.has(quest.code):
+			clear_quests.append(num)
+			continue
+		if !scenedata.quests[quest.code].stages.has(quest.stage):
+			if (scenedata.old_quest_stages.has(quest.code)
+					and scenedata.old_quest_stages[quest.code].has(quest.stage)):
+				active_quests[num].stage = scenedata.old_quest_stages[quest.code][quest.stage]
+			else:
+				print(scenedata.error_stage.descript % [quest.code, quest.stage])
+	for num in clear_quests:
+		print("Removing old quest %s" % active_quests[num].code)
+		active_quests.remove(num)
+	
+	ResourceScripts.slave_quests.fix_serialization()
 
 
 func fix_import():#this is the most questionable fix

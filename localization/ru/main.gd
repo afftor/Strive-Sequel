@@ -122,6 +122,10 @@ var TranslationDict = {
 	PRONOUNSIRF = """Мисс""",
 	PRONOUNMISTER = """Мистер""",
 	PRONOUNMISTERF = """Мисс""",
+	PRONOUNSUCCUBUS = """Incubus""", # MISSING TRANSLATION
+	PRONOUNSUCCUBUSF = """Succubus""", # MISSING TRANSLATION
+	PRONOUNSUCCUBUSL = """incubus""", # MISSING TRANSLATION
+	PRONOUNSUCCUBUSLF = """succubus""", # MISSING TRANSLATION
 	PRONOUNSON = """сын""",
 	PRONOUNSONF = """дочь""",
 	PRONOUNFATHER = """отец""",
@@ -156,6 +160,7 @@ var TranslationDict = {
 	EXPLOREUPGRADES = """Улучшения""",
 	EXPLORESERVICE = """Сервис""",
 	EXPLOREGUILDSHOP = """Магазин гильдии""",
+	EXPLORESLAVEQUESTS = """Houses""", # MISSING TRANSLATION
 	SIBLINGMODULESKILLSKILLS = """Секс-навыки""",
 	SIBLINGMODULECONSENT = """Согласие:""",
 	SIBLINGMODULERULES = """Правила и условия""",
@@ -184,6 +189,11 @@ var TranslationDict = {
 	SYSMESSAGEATLEAST1CHAR = """Выберите хотя бы 1 персонажа для боя.""",
 	OPERANTATLEAST = """Минимум""",
 	OPERANTATMOST = """Максимум""",
+	OPERANTMORE = """More than""", # MISSING TRANSLATION
+	OPERANTLESS = """Less than""", # MISSING TRANSLATION
+	OPERANTEQ = """Is""", # MISSING TRANSLATION
+	OPERANTNEQ = """Not""", # MISSING TRANSLATION
+	OPERANTONEOF = """One of""", # MISSING TRANSLATION
 	CHARNAMEDAISY = """Дейзи""",
 	CHARNAMECALI = """Кали""",
 	CHARNAMEZEPHYRA = """Зефира""",
@@ -209,6 +219,7 @@ var TranslationDict = {
 	NEWGAMESETTING = """Настройки""",
 	NEWGAMESKIPPROL = """Пропустить пролог""",
 	NEWGAMESTART = """Начать игру""",
+	SPELLCAST_LABEL = """Cast Spell""", # MISSING TRANSLATION
 	BACKTOPRESETS = """Назад""",
 	PRESETDATADEBUGCUSTOMNAME = "Настроить",
 	PRESETDATADEBUGEASYNAME = """Легко""",
@@ -326,6 +337,7 @@ var TranslationDict = {
 	REQPOPULATION = """Не хватает Места""",
 	REQSEX = """Не разрешено для""",
 	REQVIRGINFALSE = """Не девственник/ца""",
+	REQOR = """or""", # MISSING TRANSLATION
 	SLAVE = """Раб""",
 	MASTER = """Мастер""",
 	PEON = """Подчиненный""",
@@ -4122,6 +4134,101 @@ Requires: Базовый рабский труд""",
 
 	TOOLTIPRIGHTCLICKABILITY = """ПКМ, чтобы назначить другую способность""",
 	TIPLOADFINISHED = """Загрузка завершена, нажмите любую клавишу""",
+	SQ_MAX_QUESTS = """You can't take more then %s of those quests""", # MISSING TRANSLATION
+	SQ_CUR_MAX_QUESTS = """For now you can't take only %s of those quests""", # MISSING TRANSLATION
+	SQ_FACT_RATING = """Rating: %s""", # MISSING TRANSLATION
+	SQ_FACT_PRICE = """Reward bonus: %s""", # MISSING TRANSLATION
+	SQ_OBSIDIAN_NAME = """The Obsidian Brotherhood""", # MISSING TRANSLATION
+	SQ_OBSIDIAN_DESC = """The Obsidian Brotherhood description""", # MISSING TRANSLATION
+	SQ_OBSIDIAN_LEAD = """The Obsidian Leader""", # MISSING TRANSLATION
+	SQ_DRAVENMOOR_NAME = """House Dravenmoor""", # MISSING TRANSLATION
+	SQ_DRAVENMOOR_DESC = """House Dravenmoor description""", # MISSING TRANSLATION
+	SQ_DRAVENMOOR_LEAD = """Dravenmoor Leader""", # MISSING TRANSLATION
+	SQ_VERDANT_NAME = """The Verdant Conclave""", # MISSING TRANSLATION
+	SQ_VERDANT_DESC = """The Verdant Conclave description""", # MISSING TRANSLATION
+	SQ_VERDANT_LEAD = """The Verdant Leader""", # MISSING TRANSLATION
+	SQ_IRONHOLD_NAME = """Ironhold Syndicate""", # MISSING TRANSLATION
+	SQ_IRONHOLD_DESC = """Ironhold Syndicate description""", # MISSING TRANSLATION
+	SQ_IRONHOLD_LEAD = """Ironhold Leader""", # MISSING TRANSLATION
+	SQ_CRIMSON_NAME = """House of the Crimson Veil""", # MISSING TRANSLATION
+	SQ_CRIMSON_DESC = """House of the Crimson Veil description""", # MISSING TRANSLATION
+	SQ_CRIMSON_LEAD = """Crimson Veil Leader""", # MISSING TRANSLATION
+	SQ_GILDED_NAME = """The Gilded Consortium""", # MISSING TRANSLATION
+	SQ_GILDED_DESC = """The Gilded Consortium description""", # MISSING TRANSLATION
+	SQ_GILDED_LEAD = """Gilded Consortium Leader""", # MISSING TRANSLATION
+	SQ_AZURE_NAME = """The Azure Covenant""", # MISSING TRANSLATION
+	SQ_AZURE_DESC = """The Azure Covenant description""", # MISSING TRANSLATION
+	SQ_AZURE_LEAD = """Azure Leader""", # MISSING TRANSLATION
+	SQ_STONEBREAKER_NAME = """The Stonebreaker Clant""", # MISSING TRANSLATION
+	SQ_STONEBREAKER_DESC = """The Stonebreaker Clan description""", # MISSING TRANSLATION
+	SQ_STONEBREAKER_LEAD = """Stonebreaker Leader""", # MISSING TRANSLATION
+	SQ_CHALICE_NAME = """House of the Silver Chalice""", # MISSING TRANSLATION
+	SQ_CHALICE_DESC = """House of the Silver Chalice description""", # MISSING TRANSLATION
+	SQ_CHALICE_LEAD = """Silver Chalice Leader""", # MISSING TRANSLATION
+	SQ_LOOM_NAME = """The Golden Loom""", # MISSING TRANSLATION
+	SQ_LOOM_DESC = """The Golden Loom description""", # MISSING TRANSLATION
+	SQ_LOOM_LEAD = """Golden Loom Leader""", # MISSING TRANSLATION
+	SQ_ASHEN_NAME = """Ashen Consort""", # MISSING TRANSLATION
+	SQ_ASHEN_DESC = """Ashen Consort description""", # MISSING TRANSLATION
+	SQ_ASHEN_LEAD = """Ashen Consort Leader""", # MISSING TRANSLATION
+	SQ_IRONVEIN_NAME = """Ironvein""", # MISSING TRANSLATION
+	SQ_IRONVEIN_DESC = """Ironvein description""", # MISSING TRANSLATION
+	SQ_IRONVEIN_LEAD = """Ironvein Leader""", # MISSING TRANSLATION
+	SQ_QUEST1_NAME1 = """Healer girl""", # MISSING TRANSLATION
+	SQ_QUEST1_NAME2 = """Healer girl2""", # MISSING TRANSLATION
+	SQ_QUEST1_DESC1 = """Healer girl description""", # MISSING TRANSLATION
+	SQ_ELF_NAME1 = """Elven work""", # MISSING TRANSLATION
+	SQ_ELF_DESC = """Work for elves""", # MISSING TRANSLATION
+	SQ_RATKIN_NAME1 = """Ratkin's work""", # MISSING TRANSLATION
+	SQ_RATKIN_DESC = """Work for ratkins""", # MISSING TRANSLATION
+	SQ_BEASTKIN_NAME1 = """Beastkin's work""", # MISSING TRANSLATION
+	SQ_BEASTKIN_DESC = """Work for beastkin""", # MISSING TRANSLATION
+	SQ_MONSTER_NAME1 = """Monster's work""", # MISSING TRANSLATION
+	SQ_MONSTER_DESC = """Work for monsters""", # MISSING TRANSLATION
+	SQ_FAIRY_NAME1 = """Fairy's work""", # MISSING TRANSLATION
+	SQ_FAIRY_DESC = """Work for fairy""", # MISSING TRANSLATION
+	SQ_GARDENER_NAME1 = """Gardener needed""", # MISSING TRANSLATION
+	SQ_GARDENER_DESC = """Work in garden""", # MISSING TRANSLATION
+	SQ_MAID_NAME1 = """Maid needed""", # MISSING TRANSLATION
+	SQ_MAID_DESC = """Work for maid""", # MISSING TRANSLATION
+	SQ_LACKEY_NAME1 = """Lackey needed""", # MISSING TRANSLATION
+	SQ_LACKEY_DESC = """Work for lackey""", # MISSING TRANSLATION
+	SQ_MINER_NAME1 = """Miner needed""", # MISSING TRANSLATION
+	SQ_MINER_DESC = """Work for miner""", # MISSING TRANSLATION
+	SQ_CRAFTSMAN_NAME1 = """Craftsman needed""", # MISSING TRANSLATION
+	SQ_CRAFTSMAN_DESC = """Work for craftsman""", # MISSING TRANSLATION
+	SQ_ALCHEMIST_NAME1 = """Alchemist needed""", # MISSING TRANSLATION
+	SQ_ALCHEMIST_DESC = """Work for alchemist""", # MISSING TRANSLATION
+	SQ_HUNTER_NAME1 = """Hunter needed""", # MISSING TRANSLATION
+	SQ_HUNTER_DESC = """Work for hunter""", # MISSING TRANSLATION
+	SQ_SHORTSTACK_NAME1 = """Shortstack""", # MISSING TRANSLATION
+	SQ_SHORTSTACK_DESC = """Work for shortstack""", # MISSING TRANSLATION
+	SQ_FIGHTER_NAME1 = """Fighter needed""", # MISSING TRANSLATION
+	SQ_FIGHTER_DESC = """Work for fighter""", # MISSING TRANSLATION
+	SQ_RANGER_NAME1 = """Ranger needed""", # MISSING TRANSLATION
+	SQ_RANGER_DESC = """Work for ranger""", # MISSING TRANSLATION
+	SQ_HEALER_NAME1 = """Healer needed""", # MISSING TRANSLATION
+	SQ_HEALER_DESC = """Work for healer""", # MISSING TRANSLATION
+	SQ_THIEF_NAME1 = """Thief needed""", # MISSING TRANSLATION
+	SQ_THIEF_DESC = """Work for thief""", # MISSING TRANSLATION
+	SQ_SEX_GENERIC_NAME1 = """Sex service""", # MISSING TRANSLATION
+	SQ_SEX_GENERIC_DESC = """No comment""", # MISSING TRANSLATION
+	SQ_FIGHTER_T2_NAME1 = """Good fighter needed""", # MISSING TRANSLATION
+	SQ_FIGHTER_T2_DESC = """Work for fighter""", # MISSING TRANSLATION
+	SQ_HEALER_T2_NAME1 = """Good healer needed""", # MISSING TRANSLATION
+	SQ_HEALER_T2_DESC = """Work for healer""", # MISSING TRANSLATION
+	SQ_RARE_RACE_NAME1 = """Rare slave needed""", # MISSING TRANSLATION
+	SQ_RARE_RACE_DESC = """Work for rare slave""", # MISSING TRANSLATION
+	SQ_ELF_ARCHER_NAME1 = """Elf archer needed""", # MISSING TRANSLATION
+	SQ_ELF_ARCHER_DESC = """Work for elf archer""", # MISSING TRANSLATION
+	SQ_MIKO_NAME1 = """Miko needed""", # MISSING TRANSLATION
+	SQ_MIKO_DESC = """Work for miko""", # MISSING TRANSLATION
+	SQ_SEX_GENERIC_T2_NAME1 = """Greater sex service""", # MISSING TRANSLATION
+	SQ_SEX_GENERIC_T2_DESC = """No comment""", # MISSING TRANSLATION
+	SQ_MAGE_NAME1 = """Mage needed""", # MISSING TRANSLATION
+	SQ_MAGE_DESC = """Work for mage""", # MISSING TRANSLATION
+	SQ_ASSASSIN_T2_NAME1 = """Good assassin needed""", # MISSING TRANSLATION
+	SQ_ASSASSIN_T2_DESC = """Work for assassin""", # MISSING TRANSLATION
 
 	DIALOGUECLOSE = """*Закрыть*""",
 	DIALOGUECONFIRM = """*Подтвердить*""",
@@ -13314,7 +13421,7 @@ ZEPHYRA_BRUSH_6_OPTION_3 = """*Не говорить ничего и взять 
 
 Заметив недоумение в ваших глазах, Норлан тяжело вздыхает.
 
-Норлан: - Раз уж вы уже здесь, Мэр [Name], полагаю, я должен вам все объяснить. Видите ли, Амелия пропала. Ей было поручено доставить в Гильдию новых рабов. Однако после вчерашнего отъезда вечером она так и не прибыла. Ни ее, ни рабов найти не удалось. 
+Норлан: - Раз уж вы уже здесь, Мэр [name], полагаю, я должен вам все объяснить. Видите ли, Амелия пропала. Ей было поручено доставить в Гильдию новых рабов. Однако после вчерашнего отъезда вечером она так и не прибыла. Ни ее, ни рабов найти не удалось. 
 
 Член гильдии: - Верно. Эта хитрая кошка нас кинула. Всегда на шаг впереди, эта женщина! 
 """,
@@ -13327,13 +13434,13 @@ ZEPHYRA_BRUSH_6_OPTION_3 = """*Не говорить ничего и взять 
 	AMELIA_MAIN_GUILD_3_OPTION_1 = """Похоже, у вас есть предположения о том, что с ней случилось.""",
 	AMELIA_MAIN_GUILD_3_OPTION_2 = """Так какое отношение это имеет ко мне?""",
 	AMELIA_MAIN_GUILD_3_OPTION_3 = """Вам нужна моя помощь, чтобы разобраться с этим?""",
-	AMELIA_MAIN_GUILD_4_1 = """Норлан: - У нас все под контролем, Мэр [Name], так что вам не стоит беспокоиться по этому поводу - я, кажется, уже говорил об этом. 
+	AMELIA_MAIN_GUILD_4_1 = """Норлан: - У нас все под контролем, Мэр [name], так что вам не стоит беспокоиться по этому поводу - я, кажется, уже говорил об этом. 
 
 Член гильдии: - О чем вы говорите, Норлан? Нам нужна любая помощь, которую мы можем получить. И Мэр был достаточно любезен, чтобы оказать нам помощь. Не могли бы вы помочь нам хотя бы найти наших пропавших рабов?
 
 Норлан снова тяжело вздыхает. На мгновение вы замечаете на его лице признаки усталости, но выражение его лица быстро меняется на мягкую улыбку, когда он смотрит на вас. 
 
-Норлан: - Если у вас найдется время, Мэр [Name], мы будем благодарны вам за помощь.""",
+Норлан: - Если у вас найдется время, Мэр [name], мы будем благодарны вам за помощь.""",
 	AMELIA_MAIN_GUILD_4_2 = """Норлан: - По нашим сведениям, Амелия забрала рабов из каравана у городских ворот.
 
 Член гильдии: - Да, так что они не смогут сбежать из города, даже если захотят. Они не пройдут мимо стражи. Поэтому они должны находиться внутри городских стен. А поскольку они не местные, они не знают города. Вряд ли они уйдут далеко от того места, где их подобрали.
@@ -19602,7 +19709,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	CHARRND_TREASURE_OPT_TAKE = "Забрать себе",  
 	CHARRND_TREASURE_OPT_LET = "Оставить [name]",  
 	CHARRND_TREASURE_OPT_OWNER = "Найти владельца",  
-	CHARRND_TREASURE_REPLY_TAKE = "Вы забираете монеты и безделушку, объявляя их своей добычей. [Name] хмурится, [his] плечи опускаются, но [he] не спорит. Сокровище звенит у вас в кармане, а вслед тянется [his] взгляд, тронутый горечью.",  
+	CHARRND_TREASURE_REPLY_TAKE = "Вы забираете монеты и безделушку, объявляя их своей добычей. [name] хмурится, [his] плечи опускаются, но [he] не спорит. Сокровище звенит у вас в кармане, а вслед тянется [his] взгляд, тронутый горечью.",  
 	CHARRND_TREASURE_REPLY_LET = "Вы пожимаете плечами, разрешая [name] оставить находку. [His] лицо  озаряется, и [he] с благодарной улыбкой сжимает монеты. Спрятав сокровище, [he] заметно оживляется, и этот жест укрепляет [his] доверие к вам.",  
 	CHARRND_TREASURE_REPLY_OWNER = "Вы велите [name] помочь найти владельца, предположив, что вещи могли потерять недавние гости. [He] нехотя соглашается, и вместе вы проверяете записи и опрашиваете обитателей. В конце концов, сокровище возвращается удивленному хозяину.",
 	CHARRND_NIGHTMARE = """Ты слышишь приглушенный вскрик из комнаты [name] поздней ночью и заходишь внутрь, чтобы увидеть как [he] сидит, тяжело дыша с широко раскрытыми глазами. [He] сжимает одеяло, признаваясь, что кошмар разбудил [him] — что-то о тенях или старых страхах. [His] голос слегка дрожит, и [he] смотрит на тебя, уязвимый в мерцающем свете свечей.  
@@ -20267,7 +20374,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	
 	EMP_CITY_INIT = """Сегодня прибыло новое письмо, конверт которого украшен замысловатыми узорами, указывающими на куда более влиятельного отправителя, чем те, к которым ты привык.
 
-“Уважаемый [Name], мэр Алирона,
+“Уважаемый [name], мэр Алирона,
 Я много слышала о вас и ваших недавних деяниях, и считаю, что пришло время встретиться лично. Я приглашаю вас в столицу Великой Империи, единственную и неповторимую. Уверяю вас, это будет впечатляющее зрелище для такого, как вы — и возможность получить тот артефакт, который вы ищете.”
 
 Ваша поклонница,
@@ -20310,7 +20417,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 Проходя через двери, вы ловите хищную улыбку Руж, направленную на вас.""",
 	EMP_CEREMONY_5_0 = """Наконец, стражник провожает вас в кабинет Императора. Неподготовленный, вы видите в этом шанс произвести впечатление. Император смотрит на вас строгим взглядом, хотя вы улавливаете намёк на забаву в его глазах.
 
-— Посмотрим... [Name], мэр Алона? Нет... Алирона, кажется? Этого жалкого королевства. Один из моих помощников настоял на встрече с вами. У вас есть что-то, достойное моего времени?""",
+— Посмотрим... [name], мэр Алона? Нет... Алирона, кажется? Этого жалкого королевства. Один из моих помощников настоял на встрече с вами. У вас есть что-то, достойное моего времени?""",
 	EMP_CEREMONY_5_1 = """Император прерывает вас, прежде чем вы заканчиваете, взмахом руки.
 
 — Приберегите формальности для другого раза. Вам предоставлена редкая привилегия, которая может больше не повториться. Что привело вас сюда?""",
@@ -20361,7 +20468,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 Куро: — ...
 
 Внезапная враждебность повисает в воздухе, создавая неловкое молчание.""",
-	EMP_FOXES_3 = """Зефира: — Оставить [Name] тебе? Ты рехнулась, если думаешь, что эти жалкие угрозы заставят меня отступить.
+	EMP_FOXES_3 = """Зефира: — Оставить [name] тебе? Ты рехнулась, если думаешь, что эти жалкие угрозы заставят меня отступить.
 
 Глаза Роуж слегка расширяются — явно не ожидала, что её осмелится бросить вызов та, кого она едва считает за человека.
 

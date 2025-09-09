@@ -271,7 +271,6 @@ func start_game_confirm():
 func session_setting(arg):
 	input_handler.globalsettings[arg] = !input_handler.globalsettings[arg]
 	start_preset_update()
-	#print(button.name, input_handler.globalsettings[button.name])
 
 
 func gameplay_setting(arg):

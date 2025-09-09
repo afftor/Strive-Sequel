@@ -2692,4 +2692,15 @@ var quests = {
 	}
 }
 
+var old_quest_stages = {
+	visit_dwarfs_quest = {
+		search = 'audience'
+	}
+}
+
+var error_stage = {
+	code = 'error_stage',
+	name = 'Error',
+	descript = 'There is error with quest %s on stage %s. The quest is incompleteable. Please, report this to developers.'
+}
 

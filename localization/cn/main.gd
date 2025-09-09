@@ -137,6 +137,10 @@ var TranslationDict = {
 	PRONOUNSIRF = "小姐",
 	PRONOUNMISTER = "先生",
 	PRONOUNMISTERF = "小姐",
+	PRONOUNSUCCUBUS = """Incubus""", # MISSING TRANSLATION
+	PRONOUNSUCCUBUSF = """Succubus""", # MISSING TRANSLATION
+	PRONOUNSUCCUBUSL = """incubus""", # MISSING TRANSLATION
+	PRONOUNSUCCUBUSLF = """succubus""", # MISSING TRANSLATION
 	PRONOUNSON = "儿子",
 	PRONOUNSONF = "女儿",
 	PRONOUNFATHER = "父亲",
@@ -174,6 +178,7 @@ var TranslationDict = {
 	EXPLOREUPGRADES = "升级",
 	EXPLORESERVICE = "接待",
 	EXPLOREGUILDSHOP = "公会商店",
+	EXPLORESLAVEQUESTS = """Houses""", # MISSING TRANSLATION
 	
 	SIBLINGMODULESKILLSKILLS = "性技能",
 	SIBLINGMODULECONSENT = "Consent: ",
@@ -199,6 +204,11 @@ var TranslationDict = {
 	
 	OPERANTATLEAST = "至少",
 	OPERANTATMOST = "至多",
+	OPERANTMORE = """More than""", # MISSING TRANSLATION
+	OPERANTLESS = """Less than""", # MISSING TRANSLATION
+	OPERANTEQ = """Is""", # MISSING TRANSLATION
+	OPERANTNEQ = """Not""", # MISSING TRANSLATION
+	OPERANTONEOF = """One of""", # MISSING TRANSLATION
 	
 	CHARNAMEDAISY = "黛西",
 	CHARNAMECALI = "卡莉",
@@ -227,6 +237,7 @@ var TranslationDict = {
 	NEWGAMESETTING = "设置",
 	NEWGAMESKIPPROL = "Skip prologue",
 	NEWGAMESTART = "开始游戏",
+	SPELLCAST_LABEL = """Cast Spell""", # MISSING TRANSLATION
 	BACKTOPRESETS = """Back""", # MISSING TRANSLATION
 	PRESETDATADEBUGCUSTOMNAME = """custom""", # MISSING TRANSLATION
 	
@@ -326,6 +337,7 @@ var TranslationDict = {
 	REQPOPULATION = "必须有人口",
 	REQSEX = "不允许",
 	REQVIRGINFALSE = "不是童贞",
+	REQOR = """or""", # MISSING TRANSLATION
 	
 	#SlaveInfoModule
 	SLAVE = "奴隶",
@@ -3521,6 +3533,101 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	
 	TOOLTIPRIGHTCLICKABILITY = "Right Click to assign another ability",
 	TIPLOADFINISHED = "Loading Finished, press any key",
+	SQ_MAX_QUESTS = """You can't take more then %s of those quests""", # MISSING TRANSLATION
+	SQ_CUR_MAX_QUESTS = """For now you can't take only %s of those quests""", # MISSING TRANSLATION
+	SQ_FACT_RATING = """Rating: %s""", # MISSING TRANSLATION
+	SQ_FACT_PRICE = """Reward bonus: %s""", # MISSING TRANSLATION
+	SQ_OBSIDIAN_NAME = """The Obsidian Brotherhood""", # MISSING TRANSLATION
+	SQ_OBSIDIAN_DESC = """The Obsidian Brotherhood description""", # MISSING TRANSLATION
+	SQ_OBSIDIAN_LEAD = """The Obsidian Leader""", # MISSING TRANSLATION
+	SQ_DRAVENMOOR_NAME = """House Dravenmoor""", # MISSING TRANSLATION
+	SQ_DRAVENMOOR_DESC = """House Dravenmoor description""", # MISSING TRANSLATION
+	SQ_DRAVENMOOR_LEAD = """Dravenmoor Leader""", # MISSING TRANSLATION
+	SQ_VERDANT_NAME = """The Verdant Conclave""", # MISSING TRANSLATION
+	SQ_VERDANT_DESC = """The Verdant Conclave description""", # MISSING TRANSLATION
+	SQ_VERDANT_LEAD = """The Verdant Leader""", # MISSING TRANSLATION
+	SQ_IRONHOLD_NAME = """Ironhold Syndicate""", # MISSING TRANSLATION
+	SQ_IRONHOLD_DESC = """Ironhold Syndicate description""", # MISSING TRANSLATION
+	SQ_IRONHOLD_LEAD = """Ironhold Leader""", # MISSING TRANSLATION
+	SQ_CRIMSON_NAME = """House of the Crimson Veil""", # MISSING TRANSLATION
+	SQ_CRIMSON_DESC = """House of the Crimson Veil description""", # MISSING TRANSLATION
+	SQ_CRIMSON_LEAD = """Crimson Veil Leader""", # MISSING TRANSLATION
+	SQ_GILDED_NAME = """The Gilded Consortium""", # MISSING TRANSLATION
+	SQ_GILDED_DESC = """The Gilded Consortium description""", # MISSING TRANSLATION
+	SQ_GILDED_LEAD = """Gilded Consortium Leader""", # MISSING TRANSLATION
+	SQ_AZURE_NAME = """The Azure Covenant""", # MISSING TRANSLATION
+	SQ_AZURE_DESC = """The Azure Covenant description""", # MISSING TRANSLATION
+	SQ_AZURE_LEAD = """Azure Leader""", # MISSING TRANSLATION
+	SQ_STONEBREAKER_NAME = """The Stonebreaker Clant""", # MISSING TRANSLATION
+	SQ_STONEBREAKER_DESC = """The Stonebreaker Clan description""", # MISSING TRANSLATION
+	SQ_STONEBREAKER_LEAD = """Stonebreaker Leader""", # MISSING TRANSLATION
+	SQ_CHALICE_NAME = """House of the Silver Chalice""", # MISSING TRANSLATION
+	SQ_CHALICE_DESC = """House of the Silver Chalice description""", # MISSING TRANSLATION
+	SQ_CHALICE_LEAD = """Silver Chalice Leader""", # MISSING TRANSLATION
+	SQ_LOOM_NAME = """The Golden Loom""", # MISSING TRANSLATION
+	SQ_LOOM_DESC = """The Golden Loom description""", # MISSING TRANSLATION
+	SQ_LOOM_LEAD = """Golden Loom Leader""", # MISSING TRANSLATION
+	SQ_ASHEN_NAME = """Ashen Consort""", # MISSING TRANSLATION
+	SQ_ASHEN_DESC = """Ashen Consort description""", # MISSING TRANSLATION
+	SQ_ASHEN_LEAD = """Ashen Consort Leader""", # MISSING TRANSLATION
+	SQ_IRONVEIN_NAME = """Ironvein""", # MISSING TRANSLATION
+	SQ_IRONVEIN_DESC = """Ironvein description""", # MISSING TRANSLATION
+	SQ_IRONVEIN_LEAD = """Ironvein Leader""", # MISSING TRANSLATION
+	SQ_QUEST1_NAME1 = """Healer girl""", # MISSING TRANSLATION
+	SQ_QUEST1_NAME2 = """Healer girl2""", # MISSING TRANSLATION
+	SQ_QUEST1_DESC1 = """Healer girl description""", # MISSING TRANSLATION
+	SQ_ELF_NAME1 = """Elven work""", # MISSING TRANSLATION
+	SQ_ELF_DESC = """Work for elves""", # MISSING TRANSLATION
+	SQ_RATKIN_NAME1 = """Ratkin's work""", # MISSING TRANSLATION
+	SQ_RATKIN_DESC = """Work for ratkins""", # MISSING TRANSLATION
+	SQ_BEASTKIN_NAME1 = """Beastkin's work""", # MISSING TRANSLATION
+	SQ_BEASTKIN_DESC = """Work for beastkin""", # MISSING TRANSLATION
+	SQ_MONSTER_NAME1 = """Monster's work""", # MISSING TRANSLATION
+	SQ_MONSTER_DESC = """Work for monsters""", # MISSING TRANSLATION
+	SQ_FAIRY_NAME1 = """Fairy's work""", # MISSING TRANSLATION
+	SQ_FAIRY_DESC = """Work for fairy""", # MISSING TRANSLATION
+	SQ_GARDENER_NAME1 = """Gardener needed""", # MISSING TRANSLATION
+	SQ_GARDENER_DESC = """Work in garden""", # MISSING TRANSLATION
+	SQ_MAID_NAME1 = """Maid needed""", # MISSING TRANSLATION
+	SQ_MAID_DESC = """Work for maid""", # MISSING TRANSLATION
+	SQ_LACKEY_NAME1 = """Lackey needed""", # MISSING TRANSLATION
+	SQ_LACKEY_DESC = """Work for lackey""", # MISSING TRANSLATION
+	SQ_MINER_NAME1 = """Miner needed""", # MISSING TRANSLATION
+	SQ_MINER_DESC = """Work for miner""", # MISSING TRANSLATION
+	SQ_CRAFTSMAN_NAME1 = """Craftsman needed""", # MISSING TRANSLATION
+	SQ_CRAFTSMAN_DESC = """Work for craftsman""", # MISSING TRANSLATION
+	SQ_ALCHEMIST_NAME1 = """Alchemist needed""", # MISSING TRANSLATION
+	SQ_ALCHEMIST_DESC = """Work for alchemist""", # MISSING TRANSLATION
+	SQ_HUNTER_NAME1 = """Hunter needed""", # MISSING TRANSLATION
+	SQ_HUNTER_DESC = """Work for hunter""", # MISSING TRANSLATION
+	SQ_SHORTSTACK_NAME1 = """Shortstack""", # MISSING TRANSLATION
+	SQ_SHORTSTACK_DESC = """Work for shortstack""", # MISSING TRANSLATION
+	SQ_FIGHTER_NAME1 = """Fighter needed""", # MISSING TRANSLATION
+	SQ_FIGHTER_DESC = """Work for fighter""", # MISSING TRANSLATION
+	SQ_RANGER_NAME1 = """Ranger needed""", # MISSING TRANSLATION
+	SQ_RANGER_DESC = """Work for ranger""", # MISSING TRANSLATION
+	SQ_HEALER_NAME1 = """Healer needed""", # MISSING TRANSLATION
+	SQ_HEALER_DESC = """Work for healer""", # MISSING TRANSLATION
+	SQ_THIEF_NAME1 = """Thief needed""", # MISSING TRANSLATION
+	SQ_THIEF_DESC = """Work for thief""", # MISSING TRANSLATION
+	SQ_SEX_GENERIC_NAME1 = """Sex service""", # MISSING TRANSLATION
+	SQ_SEX_GENERIC_DESC = """No comment""", # MISSING TRANSLATION
+	SQ_FIGHTER_T2_NAME1 = """Good fighter needed""", # MISSING TRANSLATION
+	SQ_FIGHTER_T2_DESC = """Work for fighter""", # MISSING TRANSLATION
+	SQ_HEALER_T2_NAME1 = """Good healer needed""", # MISSING TRANSLATION
+	SQ_HEALER_T2_DESC = """Work for healer""", # MISSING TRANSLATION
+	SQ_RARE_RACE_NAME1 = """Rare slave needed""", # MISSING TRANSLATION
+	SQ_RARE_RACE_DESC = """Work for rare slave""", # MISSING TRANSLATION
+	SQ_ELF_ARCHER_NAME1 = """Elf archer needed""", # MISSING TRANSLATION
+	SQ_ELF_ARCHER_DESC = """Work for elf archer""", # MISSING TRANSLATION
+	SQ_MIKO_NAME1 = """Miko needed""", # MISSING TRANSLATION
+	SQ_MIKO_DESC = """Work for miko""", # MISSING TRANSLATION
+	SQ_SEX_GENERIC_T2_NAME1 = """Greater sex service""", # MISSING TRANSLATION
+	SQ_SEX_GENERIC_T2_DESC = """No comment""", # MISSING TRANSLATION
+	SQ_MAGE_NAME1 = """Mage needed""", # MISSING TRANSLATION
+	SQ_MAGE_DESC = """Work for mage""", # MISSING TRANSLATION
+	SQ_ASSASSIN_T2_NAME1 = """Good assassin needed""", # MISSING TRANSLATION
+	SQ_ASSASSIN_T2_DESC = """Work for assassin""", # MISSING TRANSLATION
 	
 	DIALOGUECLOSE = "关闭",
 	DIALOGUECONFIRM = "确认",
@@ -10949,7 +11056,7 @@ You two stay like this for a few moments, her panting and softly moaning as you 
 女孩四肢着地跪下，在碗的上方徘徊。当她品尝食物时，她的屁股微微抬起。很快，她就屈服于自己的本能，大快朵颐。""",
 	CALI_ACT5_PET_8 = """她的内裤在吃东西的时候明显是湿的。当你坐在喂宠物的旁边时，你的手放在她光滑的内裤，把手指滑到她的背上，她发出呻吟声。卡利停止了她的进食，向后看去，一股深色的红晕爬到了她的脸上。
 
-卡莉: — [Name], 你在做什么?
+卡莉: — [name], 你在做什么?
 
 轻轻地摸一下下巴，这是女孩得到的全部回答，无声地提醒她吃完饭。卡利明显地试图保持冷静，但在抚摸胯部和已经确立的兴奋之间，她无法长时间专注于用餐。
 
@@ -12293,13 +12400,13 @@ CALI_ACT5_PET_9_2 = """— 为什么... 感觉还好...?
 	AMELIA_MAIN_GUILD_1_OPTION_2 = """忙什么呢?""",
 	AMELIA_MAIN_GUILD_1_OPTION_3 = """我被请求来回答一些问题。""",
 	AMELIA_MAIN_GUILD_2_1 = """— 很遗憾，她……嗯……目前不在。我现在负责行会事务。我叫诺兰。如果你需要行会方面的帮助，我会在这里为你提供帮助。但是，如果你的事情与阿米莉亚有关……嗯，恐怕必须暂时推迟。""",
-	AMELIA_MAIN_GUILD_2_2 = """—行会及其成员出现了一些不可预见的事态发展。但是，[Name]市长，您不必担心。我可以向您保证，我们的业务互动不会受到这些事件的影响。尽管如此，在重新步入正轨之前，需要一段短暂的调整期来适当适应这种新情况。""",
+	AMELIA_MAIN_GUILD_2_2 = """—行会及其成员出现了一些不可预见的事态发展。但是，[name]市长，您不必担心。我可以向您保证，我们的业务互动不会受到这些事件的影响。尽管如此，在重新步入正轨之前，需要一段短暂的调整期来适当适应这种新情况。""",
 	AMELIA_MAIN_GUILD_2_3 = """诺兰: — 嗯……很有趣。我明确地与我们的秘书沟通过，我们无意用这些琐碎的事情给你带来不便。""",
 	AMELIA_MAIN_GUILD_2 = """当另一名男子冲进办公室时，办公室的门突然打开。他体格丰满，身材相对矮小。他的着装无疑散发出一种富裕和崇高的社会地位。
 
 行会会员: 诺兰，有关于失踪奴隶的消息吗？我的客户要求解释。我不能让他们蒙在鼓里！哦我看你有客人了。市长，我应该如何为你效劳？
 
-诺兰: 看来我们的秘书发现有必要浪费 [Name] 市长的宝贵时间，对阿米莉亚的行为进行无端的调查。我正在向他澄清，他的证词不会—
+诺兰: 看来我们的秘书发现有必要浪费 [name] 市长的宝贵时间，对阿米莉亚的行为进行无端的调查。我正在向他澄清，他的证词不会—
 """,
 	AMELIA_MAIN_GUILD_3_1 = """行会会员: — 太好了！我们需要所有能得到的信息。那个狡猾的女人太会掩饰自己的行踪了。
 

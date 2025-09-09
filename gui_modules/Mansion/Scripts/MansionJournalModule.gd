@@ -58,12 +58,19 @@ func open():
 		for quest in i.quests.global.values():
 			if quest.state == 'taken':
 				make_quest_button(quest)
+	var slave_quests = ResourceScripts.slave_quests
+	for quest_id in slave_quests.get_quest_pool():
+		if slave_quests.is_quest_active(quest_id):
+			make_quest_button(slave_quests.get_quest(quest_id))
 	change_type(type)
 	show_quests()
 
 func make_active_quest_button(quest):
 	var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-	newbutton.text = scenedata.quests[quest.code].stages[quest.stage].name
+	if scenedata.quests[quest.code].stages.has(quest.stage):
+		newbutton.text = scenedata.quests[quest.code].stages[quest.stage].name
+	else:
+		newbutton.text = scenedata.error_stage.name
 	newbutton.connect("pressed", self, "show_quest_info", [quest])
 	newbutton.set_meta("quest", quest)
 	newbutton.set_meta("type", "main")
@@ -185,7 +192,8 @@ func CompleteReqs():
 			"random_material":
 				ResourceScripts.game_res.set_material(i.type, '-', i.value)
 	selectedquest.state = 'complete'
-	globals.text_log_add("quest", tr("QUESTCOMPLETEMESSAGE")+": " + selectedquest.name)
+	ResourceScripts.slave_quests.check_faction_rating(selectedquest)
+	globals.text_log_add("quest", tr("QUESTCOMPLETEMESSAGE")+": " + tr(selectedquest.name))
 	Reward()
 
 var char_reqs

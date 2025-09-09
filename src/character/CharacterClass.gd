@@ -1383,11 +1383,6 @@ func death():
 		else:
 			killed(false)
 		#add permadeath check here
-	#clean_effects()
-#	if input_handler.combat_node == null && travel.location == ResourceScripts.game_world.mansion_location:
-#		is_active = false
-#		print('warning! char died outside combat')
-#		characters_pool.call_deferred('cleanup')
 
 
 func killed(direct_call = true):

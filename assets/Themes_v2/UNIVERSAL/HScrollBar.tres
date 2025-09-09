@@ -7,14 +7,20 @@
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 40, 15 )
+margin_left = 1.32867
+margin_right = 1.49475
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 40, 15 )
+margin_left = 1.16258
+margin_right = 1.32867
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 40, 15 )
+margin_left = 1.32867
+margin_right = 1.993
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 3 )

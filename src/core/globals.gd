@@ -2547,6 +2547,8 @@ func common_effects(effects):
 					chara.try_breakdown(i.value)
 			'check_masters_story_fame':
 				ResourceScripts.game_party.check_masters_story_fame()
+			'set_faction_factor':
+				ResourceScripts.slave_quests.set_faction_factor(i.faction, i.value)
 
 func after_wedding_event(character):
 	if character == null:
@@ -2800,6 +2802,8 @@ func valuecheck(dict):
 			return ResourceScripts.game_globals.get(dict.value) == dict.check
 		'capital_closed':
 			return is_capital_closed(dict.name) == dict.check
+		'global_settings':
+			return input_handler.operate(dict.operant, input_handler.globalsettings[dict.param], dict.value)
 
 
 func apply_starting_preset():

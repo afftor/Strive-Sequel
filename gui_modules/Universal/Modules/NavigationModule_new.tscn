@@ -77,10 +77,14 @@ expand = true
 [node name="amount" type="Label" parent="NavigationContainer/AreaSelection/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 95.0
+margin_top = 46.0
+margin_right = -16.0
+margin_bottom = -8.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 18 )
 text = "2/2"
-align = 1
+align = 2
 valign = 1
 
 [node name="drop_list" type="TextureButton" parent="."]

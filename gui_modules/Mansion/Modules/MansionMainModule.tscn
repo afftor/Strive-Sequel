@@ -177,9 +177,6 @@ theme = ExtResource( 3 )
 texture_normal = ExtResource( 23 )
 texture_pressed = ExtResource( 32 )
 texture_hover = ExtResource( 31 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MansionCraftModule" parent="." instance=ExtResource( 16 )]
 visible = false

@@ -111,29 +111,24 @@ func start_animation(node):
 
 #not used 
 func nextanimation():
-	#print("next_animation")
 	emit_signal("pass_next_animation")
 
 func cast_finished():
-	#print("cast_finished")
 	emit_signal("cast_finished")
 
 func predamage_finished():
-	#print("predamage_finished")
 	emit_signal("predamage_finished")
 	var tween = input_handler.GetTweenNode(self)
 	tween.interpolate_callback(self, 1, 'allanimationsfinished')
 	tween.start()
 
 func postdamage_finished():
-	#print("postdamage_finished")
 	emit_signal("postdamage_finished")
 	var tween = input_handler.GetTweenNode(self)
 	tween.interpolate_callback(self, 1, 'allanimationsfinished')
 	tween.start()
 
 func allanimationsfinished():
-	#print("allanims_finished")
 	emit_signal("alleffectsfinished")
 
 # ALL FUNCTIONS BELOW ARE SETUPPING ANIMATIONS AND THOUGH MUST RETURN THEIR ESTIMATING 'LOCK' TIME  

@@ -1251,7 +1251,7 @@ var racelist = {
 		diet_love = {vege = 1, meat = 1, fish = 0.5, grain = 3},
 		diet_hate = {vege = 2, meat = 1, fish = 3, grain = 0.5},
 		tags = [],
-		race_tags = ['uncommon'],
+		race_tags = ['midget', 'uncommon'],
 		bodyparts = {
 			ears = ['rat'],
 			tail = ['rat'],
@@ -1315,3 +1315,49 @@ func get_random_race():
 	for i in racelist.values():
 		array.append([i.code, i.global_weight])
 	return input_handler.weightedrandom(array)
+
+#MIND! "starting_race" is not a race_tag, but this func can take it as such
+#for the sake of simplification of external call.
+#Refactor if possible
+func get_random_race_by_tags_noweight(tags, num = 1):
+	var array = []
+	for tag in tags:
+		var array_to_add
+		if tag == 'starting_race':
+			if !input_handler.globalsettings.furry:
+				array_to_add = []
+				for race in variables.starting_races_array:
+					if !('beast' in racelist[race].race_tags):
+						array_to_add.append(race)
+			else:
+				array_to_add = variables.starting_races_array
+		else:#tag is valid race_tag
+			if tag == 'beast' and !input_handler.globalsettings.furry:
+				continue
+			if !race_groups.has(tag):
+				continue
+			array_to_add = race_groups[tag]
+		for race in array_to_add:
+			if !array.has(race):
+				array.append(race)
+	if array.size() < num:
+		push_error("there is less then %s race for tag list: %s" % [num, String(tags)])
+		if num == 1:
+			return 'Human'
+		else:
+			return ['Human']
+	if num == 1:
+		return input_handler.random_from_array(array)
+	
+	var result = []
+	for i in num:
+		var idx = randi() % array.size()
+		result.append(array[idx])
+		array.remove(idx)
+	return result
+	
+
+func get_random_starting_race():
+	return get_random_race_by_tags_noweight(['starting_race'])
+
+

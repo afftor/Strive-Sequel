@@ -4038,7 +4038,12 @@ var data = {
 					},
 					{
 						code = "open_loot"
-					}
+					},
+					{
+						code = "set_faction_factor",
+						faction = "obsidian",
+						value = 0.15
+					},
 				]
 			}
 		]
@@ -4094,7 +4099,12 @@ var data = {
 					},
 					{
 						code = "open_loot"
-					}
+					},
+					{
+						code = "set_faction_factor",
+						faction = "obsidian",
+						value = 0.15
+					},
 				]
 			}
 		]
@@ -4190,7 +4200,12 @@ var data = {
 								code = "remove_character"
 							}
 						]
-					}
+					},
+					{
+						code = "set_faction_factor",
+						faction = "obsidian",
+						value = 0.15
+					},
 				]
 			}
 		]
@@ -4268,7 +4283,12 @@ var data = {
 								code = "remove_character"
 							}
 						]
-					}
+					},
+					{
+						code = "set_faction_factor",
+						faction = "obsidian",
+						value = 0.15
+					},
 				]
 			}
 		]

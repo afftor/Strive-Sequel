@@ -842,7 +842,6 @@ func load_table(dst,src):
 			dst[e] = src[e]
 
 func runtime_injection(script,data,reload = true):
-	#dprint("!rti: " + script.resource_path.get_file())
 	#setup
 	#works but far from perfect
 	var src = script.source_code.split('\n')

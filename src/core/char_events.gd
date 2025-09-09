@@ -30,8 +30,6 @@ func advance_hour():
 		for i in range(max_trys):
 			if try_start_event():
 				break
-#			if i == max_trys - 1:
-#				print("no suitable events!")
 
 #this is simpler version of game_party._in_same_location()
 #maybe it will be better to move it there
@@ -86,7 +84,6 @@ func try_start_event():
 		if list_by_loc[loc_id].size() >= char_count:
 			useable_locs.append(loc_id)
 	if useable_locs.empty():
-#		print("no suitable char for %s!" % event_id)
 		return_events.append(event_id)
 		return false
 	
@@ -105,7 +102,6 @@ func try_start_event():
 	
 	if !return_events.empty():
 		progress.unplayed_events.append_array(return_events)
-#		print("return %s" % String(return_events))
 		return_events.clear()
 	input_handler.interactive_message(event_id, 'char_event', args)
 	return true
