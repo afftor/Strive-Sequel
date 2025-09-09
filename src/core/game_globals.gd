@@ -140,6 +140,7 @@ func advance_day():
 		reset_limits()
 		
 		ResourceScripts.game_res.subtract_taxes()
+		ResourceScripts.slave_quests.regen_quests()
 	
 	if gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.mansion.rebuild_mansion()

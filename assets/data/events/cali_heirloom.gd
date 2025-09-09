@@ -679,7 +679,11 @@ var data = {
 		character = "cali",
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'unique_character_changes', value = 'cali', args = [{code = 'remove_character'}]}, {code = 'complete_quest', value = 'cali_heirloom_quest'}]
+			bonus_effects = [
+				{code = 'unique_character_changes', value = 'cali', args = [{code = 'remove_character'}]},
+				{code = 'complete_quest', value = 'cali_heirloom_quest'},
+				{code = "set_faction_factor", faction = "dravenmoor", value = 0.2},
+				]
 		} ],
 	},
 	cali_grat_7 = {
@@ -941,25 +945,27 @@ var data = {
 		common_effects = [{code = 'plan_mansion_event', value = 'ZCEvent_1'}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
-			bonus_effects = [{code = 'complete_quest', value = 'cali_heirloom_quest'}, {code = 'set_completed_active_location'}, {code = 'unique_character_changes',
+			bonus_effects = [
+				{code = 'complete_quest', value = 'cali_heirloom_quest'},
+				{code = 'set_completed_active_location'},
+				{code = 'unique_character_changes',
 					value = 'cali',
-					args = [
-						{code = 'create_and_equip', item = "cali_heirloom_active", parts = {}}
-						],
-			},
-					{
-						code = "make_loot",
-						pool = [
-							[
-								"hector_armor_reward",
-								1
-							]
-						]
-					},
-					{
-						code = "open_loot"
-					}
-			
+					args = [{code = 'create_and_equip', item = "cali_heirloom_active", parts = {}}],
+				},
+				{
+					code = "make_loot",
+					pool = [
+						["hector_armor_reward", 1]
+					]
+				},
+				{
+					code = "open_loot"
+				},
+				{
+					code = "set_faction_factor",
+					faction = "dravenmoor",
+					value = 0.2
+				}
 			]
 		} ],
 	},

@@ -805,6 +805,16 @@ func operant_translation(operant):
 			text = tr("OPERANTATLEAST")
 		'lte':
 			text = tr("OPERANTATMOST")
+		'in':
+			text = ""#tr("OPERANTONEOF")
+		'gt':
+			text = tr("OPERANTMORE")
+		'lt':
+			text = tr("OPERANTLESS")
+		'eq':
+			text = tr("OPERANTEQ")
+		'neq':
+			text = tr("OPERANTNEQ")
 	return text
 
 func math(operation, value1, value2):

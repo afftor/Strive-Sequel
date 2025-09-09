@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=2]
+[gd_scene load_steps=137 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=2]
@@ -119,6 +119,7 @@
 [ext_resource path="res://assets/images/iconsages/T.png" type="Texture" id=123]
 [ext_resource path="res://assets/images/sexicons/futa.png" type="Texture" id=124]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/button_traits_universal.png" type="Texture" id=126]
+[ext_resource path="res://gui_modules/Exploration/Modules/SlaveQuestModule.tscn" type="PackedScene" id=127]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 28 )
@@ -2617,3 +2618,14 @@ visible = false
 
 [node name="QuestBoard" parent="." instance=ExtResource( 27 )]
 visible = false
+
+[node name="SlaveQuestModule" parent="." instance=ExtResource( 127 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -430.0
+margin_top = -400.0
+margin_right = 430.0
+margin_bottom = 400.0
