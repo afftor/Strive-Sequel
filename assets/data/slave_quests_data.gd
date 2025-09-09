@@ -1,4 +1,17 @@
 extends Reference
+#full manual at the end of file
+
+var max_active_quests = [#strictly in order of descend!
+	{ num = 3,
+		reqs = [{type = 'decision', value = 'act3_finish', check = true}]
+	},
+	{ num = 2,
+		reqs = [{type = 'decision', value = 'act1_finish', check = true}]
+	},
+	{ num = 1,
+		reqs = []
+	}
+]
 
 var factions = {
 	obsidian = {
@@ -9,7 +22,8 @@ var factions = {
 		quest_pool = [
 			'gardener', 'maid', 'miner', 'craftsman', 'alchemist', 'hunter',
 			'fighter', 'ranger', 'healer', 'thief', 'fighter_t2', 'healer_t2',
-			'mage', 'assassin_t2'],
+			'mage', 'assassin_t2'
+			],
 		gen_chance = {
 			1 : 1.0, 2 : 0.8, 3 : 0.5
 		}
@@ -254,7 +268,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [4500],
 		req_max = 5,
-		slave_req_primary = [
+		slave_req = [
 			{
 				generate_func = 'getreq_sex_by_ratio',
 				chance = 1.0
@@ -275,9 +289,7 @@ var quests = {
 					reqs = {code = "race", race = "Elf", check = true},
 					chance = 1.0,
 				},
-			]
-		],
-		slave_req = [
+			],
 			{
 				has_no_req = {code = "sex", value = 'male'},
 				reqs = {code = 'stat', stat = 'vaginal_virgin', operant = 'eq', value = true},
@@ -311,13 +323,11 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [4500],
 		req_max = 4,
-		slave_req_primary = [
+		slave_req = [
 			{
 				reqs = {code = "race", race = "Ratkin", check = true},
 				chance = 1.0
 			},
-		],
-		slave_req = [
 			{
 				reqs = {code = 'stat', stat = 'personality', operant = 'eq', value = 'shy'},
 				chance = 0.5,
@@ -348,7 +358,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [4500],
 		req_max = 5,
-		slave_req_primary = [
+		slave_req = [
 			{
 				generate_func = 'getreq_race_by_tags',
 				generate_args = [['beast', 'halfbeast']],
@@ -356,8 +366,6 @@ var quests = {
 				reward_func = "getrwd_race_tag",
 				reward_func_args = ['rare', 0.1]
 			},
-		],
-		slave_req = [
 			{
 				generate_func = "getreq_random_from_array",
 				generate_args = [[
@@ -403,7 +411,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [4500],
 		req_max = 5,
-		slave_req_primary = [
+		slave_req = [
 			{
 				generate_func = 'getreq_race_by_tags',
 				generate_args = [['monster']],
@@ -440,8 +448,6 @@ var quests = {
 					chance = 1.0,
 				},
 			],
-		],
-		slave_req = [
 			{
 				generate_func = 'getreq_sex_by_ratio',
 				chance = 0.5
@@ -460,7 +466,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [4500],
 		req_max = 4,
-		slave_req_primary = [
+		slave_req = [
 			{
 				reqs = {code = "race", race = "Fairy", check = true},
 				chance = 1.0
@@ -469,8 +475,6 @@ var quests = {
 				generate_func = 'getreq_sex_by_ratio',
 				chance = 1.0
 			},
-		],
-		slave_req = [
 			{
 				has_no_req = {code = "sex", value = 'male'},
 				reqs = {code = 'stat', stat = 'vaginal_virgin', operant = 'eq', value = true},
@@ -505,7 +509,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [4500],
 		req_max = 4,
-		slave_req_primary = [
+		slave_req = [
 			[
 				{
 					reqs = [
@@ -528,8 +532,6 @@ var quests = {
 				reqs = {code = 'trait', trait = 'gardening', check = true},
 				chance = 1.0,
 			},
-		],
-		slave_req = [
 			{
 				generate_func = 'getreq_random_starting_race',
 				chance = 0.5,
@@ -555,7 +557,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [4500],
 		req_max = 4,
-		slave_req_primary = [
+		slave_req = [
 			[
 				{
 					reqs = {code = 'has_profession', profession = 'maid', check = true},
@@ -578,8 +580,6 @@ var quests = {
 				generate_func = 'getreq_sex_by_ratio',
 				chance = 1.0
 			},
-		],
-		slave_req = [
 			{
 				generate_func = 'getreq_roll_stat',
 				generate_args = ['physics', [25,50], 'gte', 5],
@@ -624,7 +624,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [4500],
 		req_max = 4,
-		slave_req_primary = [
+		slave_req = [
 			[
 				{
 					reqs = {code = 'has_profession', profession = 'worker', check = true},
@@ -635,8 +635,6 @@ var quests = {
 					chance = 0.5,
 				},
 			],
-		],
-		slave_req = [
 			{
 				generate_func = 'getreq_roll_stat',
 				generate_args = ['physics_factor', [2,4], 'gte'],
@@ -667,7 +665,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [4500],
 		req_max = 4,
-		slave_req_primary = [
+		slave_req = [
 			{
 				generate_func = "getreq_random_from_array",
 				generate_args = [[
@@ -678,8 +676,6 @@ var quests = {
 				], 1],
 				chance = 1.0
 			},
-		],
-		slave_req = [
 			{
 				generate_func = 'getreq_random_starting_race',
 				chance = 0.5,
@@ -710,7 +706,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [4500],
 		req_max = 4,
-		slave_req_primary = [
+		slave_req = [
 			{
 				reqs = {code = "has_profession", profession = "alchemist", check = true},
 				chance = 1.0
@@ -725,8 +721,6 @@ var quests = {
 					chance = 0.5,
 				},
 			],
-		],
-		slave_req = [
 			{
 				generate_func = 'getreq_random_starting_race',
 				chance = 0.25,
@@ -756,13 +750,11 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [4500],
 		req_max = 4,
-		slave_req_primary = [
+		slave_req = [
 			{
 				reqs = {code = "has_profession", profession = "hunter", check = true},
 				chance = 1.0
 			},
-		],
-		slave_req = [
 			{
 				generate_func = 'getreq_random_starting_race',
 				chance = 0.33,
@@ -795,7 +787,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [4500],
 		req_max = 4,
-		slave_req_primary = [
+		slave_req = [
 			{
 				generate_func = "getreq_random_from_array",
 				generate_args = [[
@@ -808,8 +800,6 @@ var quests = {
 				reqs = {code = "sex", operant = "eq", value = "female"},
 				chance = 1.0
 			},
-		],
-		slave_req = [
 			{
 				generate_func = 'getreq_race_by_tags',
 				generate_args = [['midget']],
@@ -836,7 +826,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [4500],
 		req_max = 4,
-		slave_req_primary = [
+		slave_req = [
 			{
 				generate_func = "getreq_random_from_array",
 				generate_args = [[
@@ -846,8 +836,6 @@ var quests = {
 				], 1],
 				chance = 1.0
 			},
-		],
-		slave_req = [
 			{
 				generate_func = 'getreq_random_starting_race',
 				chance = 0.33,
@@ -880,7 +868,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [4500],
 		req_max = 4,
-		slave_req_primary = [
+		slave_req = [
 			{
 				generate_func = "getreq_random_from_array",
 				generate_args = [[
@@ -890,8 +878,6 @@ var quests = {
 				], 1],
 				chance = 1.0
 			},
-		],
-		slave_req = [
 			{
 				generate_func = 'getreq_random_starting_race',
 				chance = 0.5,
@@ -921,7 +907,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [4500],
 		req_max = 3,
-		slave_req_primary = [
+		slave_req = [
 			[
 				{
 					reqs = {code = "has_profession", profession = "acolyte", check = true},
@@ -932,8 +918,6 @@ var quests = {
 					chance = 0.5
 				}
 			],
-		],
-		slave_req = [
 			{
 				generate_func = 'getreq_random_starting_race',
 				chance = 0.5,
@@ -959,7 +943,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [4500],
 		req_max = 3,
-		slave_req_primary = [
+		slave_req = [
 			{
 				generate_func = "getreq_random_from_array",
 				generate_args = [[
@@ -968,8 +952,6 @@ var quests = {
 				], 1],
 				chance = 1.0
 			},
-		],
-		slave_req = [
 			{
 				generate_func = 'getreq_random_starting_race',
 				chance = 0.5,
@@ -1004,7 +986,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [4500],
 		req_max = 3,
-		slave_req_primary = [
+		slave_req = [
 			{
 				generate_func = 'getreq_sex_by_ratio',
 				chance = 1.0
@@ -1021,9 +1003,6 @@ var quests = {
 				chance = 1.0
 			},
 		],
-		slave_req = [
-			
-		],
 		slave_number = [1, 1]
 	},
 	
@@ -1037,7 +1016,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [9000],
 		req_max = 4,
-		slave_req_primary = [
+		slave_req = [
 			{
 				generate_func = "getreq_random_from_array",
 				generate_args = [[
@@ -1048,8 +1027,6 @@ var quests = {
 				], 1],
 				chance = 1.0
 			},
-		],
-		slave_req = [
 			{
 				generate_func = 'getreq_race_by_tags',
 				generate_args = [['starting_race', 'rare']],
@@ -1083,7 +1060,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [9000],
 		req_max = 5,
-		slave_req_primary = [
+		slave_req = [
 			{
 				generate_func = "getreq_random_from_array",
 				generate_args = [[
@@ -1100,8 +1077,6 @@ var quests = {
 				], 1],
 				chance = 1.0
 			},
-		],
-		slave_req = [
 			{
 				generate_func = 'getreq_race_by_tags',
 				generate_args = [['starting_race', 'rare']],
@@ -1130,7 +1105,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [9000],
 		req_max = 4,
-		slave_req_primary = [
+		slave_req = [
 			{
 				generate_func = 'getreq_race_by_tags',
 				generate_args = [['rare']],
@@ -1166,8 +1141,6 @@ var quests = {
 					chance = 1.0,
 				},
 			],
-		],
-		slave_req = [
 			{
 				generate_func = 'getreq_sex_by_ratio',
 				chance = 0.75
@@ -1189,7 +1162,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [9000],
 		req_max = 5,
-		slave_req_primary = [
+		slave_req = [
 			{
 				generate_func = 'getreq_fill_param_random_from_array',
 				generate_args = [{code = 'one_of_races', value = []}, 'value',
@@ -1202,9 +1175,7 @@ var quests = {
 				generate_func = 'getreq_roll_stat',
 				generate_args = ['mastery_marksmanship', [4,5], 'gte'],
 				chance = 1.0
-			}
-		],
-		slave_req = [
+			},
 			{
 				generate_func = 'getreq_roll_stat',
 				generate_args = ['growth_factor', [3,4], 'gte'],
@@ -1234,7 +1205,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [9000],
 		req_max = 5,
-		slave_req_primary = [
+		slave_req = [
 			{
 				reqs = {code = "has_profession", profession = "acolyte", check = true},
 				chance = 1.0
@@ -1268,8 +1239,6 @@ var quests = {
 					chance = 1.0,
 				},
 			],
-		],
-		slave_req = [
 			{
 				reqs = {code = 'one_of_races', value = ['BeastkinFox', 'HalfkinFox']},
 				chance = 0.5
@@ -1286,7 +1255,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [9000],
 		req_max = 4,
-		slave_req_primary = [
+		slave_req = [
 			{
 				generate_func = 'getreq_sex_by_ratio',
 				chance = 1.0
@@ -1312,7 +1281,7 @@ var quests = {
 				},
 			],
 			[
-				{#!!!!!!!!!check if orflag works here!!!!!!!!!!!!!!!
+				{
 					has_no_req = {code = "sex", value = 'male'},
 					reqs = [
 						{code = 'gear_equiped', value = 'lacy_underwear', check = true},
@@ -1329,9 +1298,6 @@ var quests = {
 				},
 			]
 		],
-		slave_req = [
-			
-		],
 		slave_number = [1, 1]
 	},
 	mage = {
@@ -1343,7 +1309,7 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [9000],
 		req_max = 4,
-		slave_req_primary = [
+		slave_req = [
 			[
 				{
 					generate_func = "getreq_random_from_array",
@@ -1361,9 +1327,7 @@ var quests = {
 					], 1],
 					chance = 1.0
 				},
-			]
-		],
-		slave_req = [
+			],
 			{
 				generate_func = 'getreq_race_by_tags',
 				generate_args = [['starting_race', 'rare']],
@@ -1400,13 +1364,11 @@ var quests = {
 		time_limit = [20, 25],
 		rewardpool = [9000],
 		req_max = 4,
-		slave_req_primary = [
+		slave_req = [
 			{
 				reqs = {code = "has_profession", profession = "assassin", check = true},
 				chance = 1.0
 			},
-		],
-		slave_req = [
 			{
 				generate_func = 'getreq_sex_by_ratio',
 				chance = 0.75
@@ -1432,4 +1394,97 @@ var quests = {
 		slave_number = [1, 1]
 	},
 }
+
+
+#--------------MANUAL-----------------
+#----------quests-------
+#* gen_req - quest will be generated only if those reqs met
+#* difficulty - cosmetic, for interface in quest journal
+#* special_rule - name of function in slave_quests.gd, which will process quest after generation
+#* req_max - maximum of reqs-to-gen to generate in this quest.
+#* slave_req - list of reqs-to-gen. It is importent to put 100%-chance reqs first in array,
+#	so thay can be generated befor req_max reached. Also importent to understand that "reqs-to-gen"
+#	and actual "reqs" in generated quest - are different things. Req-to-gen is entry, processed during
+#	quest generation. One req-to-gen can generate several actual reqs, but for req_max counts
+#	particularly reqs-to-gen. Req-to-gen can be an array. If no "stop_on_me" used, all entries will
+#	be processed an counted as one req-to-gen.
+#	* reqs - actual reqs (for checkreqs() on character). Added to generated quest if all conditions
+#		of req-to-gen are met.
+#	* generate_func - dynamic way to make actual req. It is name of function from slave_quests.gd.
+#	* generate_args - array of arguments for function in generate_func.
+#	* chance - of generating this req. "1.0" means 100%-chance.
+#	* reward_bonus - if this req-to-gen generated, it will add this bonus to reward modifier
+#	* reward_func - in generate_func's cases, when req is not yet obvious, it is needed to analyse
+#		actual reqs to determine reward_bonus. This is name of function from slave_quests.gd.
+#	* reward_func_args - array of arguments for function in reward_func.
+#	* stop_on_me - flag for array-typed req-to-gen. If entry from such array with this flag passes all
+#		checks, other entries will not be checked.
+#	* has_req - dict (or array of dicts) with key-value pairs to search. Req-to-gen will be generated
+#		only if actual reqs, already generated in this quest, has this key-value pairs. Including
+#		reqs, generated inside this same req-to-gen (array-typed).
+#	* has_no_req - same, but vice versa.
+#
+#-----------factions--------------
+#* gen_req - faction's quests will not be generated if this reqs are not met
+#* quest_pool - list of quests to generate from
+#* gen_chance - dict of chances. Keys - are possible numbers of quests to generate. Values - probability
+#	of each number. First the biggest number is checked. If probability met, this will be the torget
+#	number of quests. If not, next number in order of descend will be checked.
+#* req_add - special addons to reqs of all quests, generated under this faction. Works almost
+#	the same as quest's slave_req. This reqs-to-gen ignores quest's req_max, but counts in req number
+#	for reward calculation.
+#	* has_tags - generates only if quest has this tags
+#	* override - if all conditions met, req-to-gen will search and delete actual reqs, already generated in
+#		this quest, just like has_req would search it. Excluding(!) reqs, generated inside this same req-to-gen.
+#		Mind, that override rule deletes all actual reqs it'll find, but allways subtracts only
+#		1 from req number for reward calculation.
+#		This is because override rule has to analyse only generated actial reqs and not req-to-gen of
+#		the quest. In other words, for example, if quest has 2 req-to-gen, that will add actual reqs,
+#		that suits override rule, it will count +2 to req number. Req-to-gen with
+#		override rule will delete all those reqs, but subtract only 1 from req number. Probability
+#		of this to happen is low, but keep it in mind.
+#	* exceptions - quests in this list will not be affected by this req-to-gen
+#
+#------------generate_func----------
+#* getreq_sex_by_ratio()
+#	generate sex req corresponding futachance and malechance from globalsettings
+#* getreq_random_starting_class(num)
+#	generate class req with random class from master_starting_classes and slave_starting_classes.
+#	'num' - optional arg. Determines number of classes in req
+#* getreq_race_by_tags(tags, num)
+#	generate race req with races with tags from 'tags' arg (is array)
+#	'num' - optional arg. Determines number of races in req
+#* getreq_random_starting_race()
+#	generate race req from starting_races_array
+#* getreq_random_sex_skills(num, val_range, operant, round_to)
+#	generate sex skill req with randomized value corresponding to race and sex reqs already in quest.
+#	So this generate_func must be used AFTER any race or sex reqs
+#	'num' - number of sex skills
+#	'val_range' - array, representing range to randomize the skill value from
+#	'operant' - operant for req ("gte" in most cases)
+#	'round_to' - optional arg. Randomized value of skill will be divisible by this
+#* getreq_random_from_array(array_raw, num)
+#	randomly choose 'num' reqs from 'array_raw'
+#* getreq_roll_stat(stat, val_range, operant, round_to)
+#	generate stat req with randomized value
+#	'stat' - stat of req
+#	'val_range' - array, representing range to randomize the value from
+#	'operant' - operant for req ("gte" in most cases)
+#	'round_to' - optional arg. Randomized value will be divisible by this
+#* getreq_roll_random_stats(stats, num, val_range, operant, round_to)
+#	generate 'num' stat reqs from 'stats' array with randomized value,
+#	like getreq_roll_stat.
+#* getreq_fill_param_random_from_array(dict, param, array, num)
+#	adds 'num' valuse from 'array' to 'param' of the 'dict'
+#	Mind that input 'dict' is modified in process
+#
+#-------------reward_func---------
+#* getrwd_race_tag(tag, bonus)
+#	search race reqs, generated in this req-to-gen, for race with 'tag'. If has one,
+#	adds reward_bonus equal to 'bonus'
+#
+#-----------special_rule-----------
+#* spec_rename_maid()
+#	if quest has sex req for male, rename quest and class req of maid to their male-variants
+
 

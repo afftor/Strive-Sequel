@@ -7,17 +7,6 @@ var states = {
 	failed = 'failed',
 	complete = 'complete',
 }
-var max_active_quests = [#strictly in order of descend!
-	{ num = 3,
-		reqs = [{type = 'decision', value = 'act3_finish', check = true}]
-	},
-	{ num = 2,
-		reqs = [{type = 'decision', value = 'act1_finish', check = true}]
-	},
-	{ num = 1,
-		reqs = []
-	}
-]
 
 signal quests_regened
 
@@ -35,7 +24,8 @@ func regen_quests():
 			active_quests[quest.faction].append(quest.code)
 			continue
 		
-		change_faction_rating(quest.faction, -1)
+		if quest.state == states.open or quest.state == states.failed:
+			change_faction_rating(quest.faction, -1)
 		#check for quest_pool here is only for savegame compatibility
 		if quest_data.factions[quest.faction].quest_pool.has(quest.code):
 			old_quests[quest.faction].append(quest.code)
@@ -112,12 +102,10 @@ func regen_quests():
 			if faction.has("req_add"): factions_req = faction.req_add
 			else: factions_req = []
 			var group_numer = 0
-			for req_group in [data.slave_req_primary, data.slave_req, factions_req]:
+			for req_group in [data.slave_req, factions_req]:
 				group_numer += 1
-				if req_num >= data.req_max and group_numer < 3:
-					continue
 				for raw_req in req_group:
-					if req_num >= data.req_max and group_numer < 3:
+					if req_num >= data.req_max and group_numer == 1:
 						break
 					#req (raw_req in context) can be single (Dict) or list (Array)
 					#we put it down to array for standardisation, but there are differences
@@ -162,11 +150,10 @@ func regen_quests():
 									to_remove = [req.override]
 								else:
 									to_remove = req.override
-								var deleted = 0
 								for rem_req in to_remove:
-									deleted += remove_req(new_quest.requirements[0].statreqs, rem_req)
+									remove_req(new_quest.requirements[0].statreqs, rem_req)
 									#no need to remove from req_to_add, as factions req_add shouldn't override own reqs
-								req_num -= deleted
+								req_num -= 1
 							
 							#make real req list
 							var true_reqs
@@ -214,7 +201,7 @@ func regen_quests():
 							
 							#add req
 							if !true_reqs.empty():
-								req_to_add.append_array(true_reqs)
+								req_to_add.append_array(true_reqs.duplicate(true))
 								
 								#adjust reward
 								if req.has('reward_bonus'):
@@ -461,7 +448,6 @@ func spec_rename_maid(quest_dict):
 	if has_req(quest_dict.requirements[0].statreqs, {code = "sex", value = "male"}):
 		quest_dict.name = "SQ_LACKEY_NAME1"
 		quest_dict.descript = "SQ_LACKEY_DESC"
-		#!!!!!!!!check if this will work!!!!!!!!!
 		for req in quest_dict.requirements[0].statreqs:
 			if req.code == 'has_profession' and req.profession == 'maid':
 				req.altname = true
@@ -505,12 +491,11 @@ func remove_req(reqs, to_remove):
 					or typeof(req[key]) != typeof(to_remove[key])
 					or req[key] != to_remove[key]):
 				corresponds = false
+				break
 		if corresponds:
 			idx_to_remove.append(i)
 	for idx in idx_to_remove:
-		print("remove_req %s" % String(reqs[idx]))
 		reqs.remove(idx)
-	return idx_to_remove.size()
 
 func fix_serialization():
 	var progress = ResourceScripts.game_progress.slave_quests
@@ -538,7 +523,7 @@ func fix_serialization():
 func check_faction_rating(quest):
 	if !quest.has('faction'):
 		return
-	change_faction_rating(quest.faction, 10)
+	change_faction_rating(quest.faction, 100)
 
 func if_can_take_quest() -> bool:
 	var active_num = 0
@@ -546,14 +531,14 @@ func if_can_take_quest() -> bool:
 		if quest.state == states.active:
 			active_num += 1
 	var max_quests
-	for entry in max_active_quests:
+	for entry in quest_data.max_active_quests:
 		if globals.checkreqs(entry.reqs):
 			max_quests = entry.num
 			break
 	
 	if active_num < max_quests:
 		return true
-	elif active_num == max_active_quests[0].num:#possible maximum
+	elif active_num == quest_data.max_active_quests[0].num:#possible maximum
 		input_handler.get_spec_node(input_handler.NODE_POPUP, [tr('SQ_MAX_QUESTS') % max_quests])
 		return false
 	else:

@@ -184,13 +184,11 @@ margin_bottom = 626.0
 rect_min_size = Vector2( 0, 58 )
 
 [node name="Time" type="TextureRect" parent="RightPanel/CenterContainer"]
-margin_left = 167.0
-margin_right = 199.0
-margin_bottom = 58.0
+margin_left = 23.0
+margin_top = 4.0
+margin_right = 55.0
+margin_bottom = 62.0
 texture = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="RightPanel/CenterContainer/Time"]
 margin_left = 45.6711
@@ -203,9 +201,10 @@ text = "Time"
 
 [node name="fact_bg" type="TextureRect" parent="RightPanel/CenterContainer"]
 visible = false
-margin_left = -15.0
-margin_right = 55.0
-margin_bottom = 70.0
+margin_left = 288.0
+margin_top = 3.0
+margin_right = 358.0
+margin_bottom = 73.0
 rect_min_size = Vector2( 47, 47 )
 texture = ExtResource( 13 )
 expand = true

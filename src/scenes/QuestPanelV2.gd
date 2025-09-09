@@ -138,7 +138,7 @@ func show_info(quest):
 									for j in range(k.value.size()):
 										if j == k.value.size()-1: val += ' %s ' % tr('REQOR')
 										elif j != 0: val += ', '
-										val += tr("PERSONALITYNAME" + k.value[i].to_upper())
+										val += tr("PERSONALITYNAME" + k.value[j].to_upper())
 								else:
 									val = tr("PERSONALITYNAME" + k.value.to_upper())
 								if k.operant == 'neq':
@@ -197,7 +197,8 @@ func show_info(quest):
 								tooltiptext += "%s " % tr("OPERANTNEQ")
 							tooltiptext += "%s.\n" % Items.itemlist[k.value].name
 						_:
-							tooltiptext += String(k).trim_prefix("{").trim_suffix("}") + "\n"
+							if k.code != 'slave_type':#crutch (temporal?) for guilds' quests
+								tooltiptext += String(k).trim_prefix("{").trim_suffix("}") + "\n"
 				tooltiptext += "%s/%s slaves delivered." % [i.delivered_slaves, i.value]
 				globals.connecttexttooltip(newbutton, tooltiptext)
 			'slave_work':
@@ -316,6 +317,13 @@ func show_info(quest):
 	var faction_stemp = $RightPanel/CenterContainer/fact_bg
 	if quest.has('faction'):
 		ResourceScripts.slave_quests.process_faction_icon(faction_icon, quest.faction)
+		faction_stemp.show()
+	elif quest.has('source') and worlddata.factiondata.has(quest.source):
+		var factiondata = worlddata.factiondata[quest.source]
+		faction_icon.texture = factiondata.icon
+		globals.connecttexttooltip(faction_icon, "%s\n%s" % [
+			tr(factiondata.name), tr(factiondata.description),
+		])
 		faction_stemp.show()
 	else:
 		faction_stemp.hide()
