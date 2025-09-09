@@ -662,6 +662,70 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 					text += '}\n'
 	return text
 
+
+func build_oneline_desc_for_bonusstats(bonusstats, mul = 1):
+	var text = ""
+	for i in bonusstats:
+		if i  in ['enchant_capacity', 'enchant_capacity_mod']: 
+			continue
+		if i == 'weapon_element':
+			text += tr("WEAPONELEMENTBASE") + bonusstats[i] + ", "
+			continue
+		if i == 'weapon_element_ench':
+			text += tr("WEAPONELEMENENCHANT") + bonusstats[i] + ", "
+			continue
+		if bonusstats[i] is bool or bonusstats[i] is Array or bonusstats[i] != 0:
+			var bonus
+			var data
+			var value = bonusstats[i]
+			if !(value is bool or value is Array):
+				value *= mul
+			var change = ''
+			if statdata.statdata.has(i):
+				data = statdata.statdata[i]
+				if data.tags.has('hidden'): 
+					continue
+				bonus = data.default_bonus
+			else:
+				for suffix in ['add', 'add_part', 'add2', 'add_part2', 'mul', 'mul2', 'set', 'append', 'maxcap', 'mincap']:
+					if i.ends_with('_' + suffix):
+						data = statdata.statdata[i.trim_suffix('_' + suffix)]
+						bonus = suffix
+						break
+			match bonus:
+				"add", "add2":
+					text += data.name + ': '
+					if data.percent:
+						value = value*100
+					if value > 0:
+						change = '+'
+					text +=  change
+					value = str(stepify(value, 0.01))
+					if data.percent:
+						value = value + '%'
+					text += value + ', '
+				"add_part", "add_part2":
+					text += data.name + ': '
+					value = value*100
+					if value > 0:
+						change = '+'
+					text +=  change
+					value = str(stepify(value, 0.01))
+					value = value + '%'
+					text += value + ', '
+				"mul", "mul2":
+					text += data.name + ': '
+					value = value - 1.0
+					value = value*100
+					if value > 0:
+						change = '+'
+					text += change
+					value = str(stepify(value, 0.01))
+					value = value + '%'
+					text += value + ', '
+	return text.trim_suffix(', ')
+
+
 func TextEncoder(text, node = null):
 	var tooltiparray = []
 	var counter = 0
