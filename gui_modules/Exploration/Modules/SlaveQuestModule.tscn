@@ -76,6 +76,7 @@ margin_right = 315.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 0, 40 )
 theme = ExtResource( 6 )
+toggle_mode = true
 text = "Text Teateya h hasjh"
 
 [node name="QuestPanel" parent="." instance=ExtResource( 3 )]
