@@ -312,7 +312,7 @@ var template_dynamic = {
 	
 	#helpers
 #	upgrade_points_total = 0, 
-#	lustmax = 50,
+	lustmax = 0,
 	
 	#breakdown
 	breakdown_time = 2,

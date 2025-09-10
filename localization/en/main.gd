@@ -4552,6 +4552,7 @@ At the bottom left you can select items, unlock new classes and configure additi
 	ITEMEXP_SCROLLDESCRIPT = "Grants 100 points of experience to the user.",
 	ITEMSEXSWAP_POTION = "Sex Swap Potion",
 	ITEMSEXSWAP_POTIONDESCRIPT = "Changes character's sex to the opposite. Won't work on unique characters.",
+	ITEMUSE = "Are you sure?",
 	DIALOGUEEVENTMINORUSSELECT = "Select which body part of [name] should be reduced.",
 	DIALOGUEEVENTMAJORUSSELECT = "Select which body part of [name] should grow.",
 	DIALOGUEPOTIONNOEFFECT = "Unfortunately, this potion was entirely ineffective.",

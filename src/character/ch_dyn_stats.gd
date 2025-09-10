@@ -506,8 +506,8 @@ func fix_stat_data(stat, data):
 				data.bonuses.mul2.push_back({value = 1.2, src_type = 'upgrade', src_value = 'resting', timestamp = 0})
 		'upgrade_points_total':
 			data.base_value = get_stat('growth_factor') * 25
-		'lustmax':
-			data.base_value = get_stat('sexuals_factor') * 25 + 25
+#		'lustmax':
+#			data.base_value = get_stat('sexuals_factor') * 25 + 25
 		'trainee_amount':
 			if !data.bonuses.has('add'):
 				data.bonuses.add = []

@@ -977,7 +977,8 @@ var traits = {
 		icon = "res://assets/images/iconstraits/heart.png",
 		cross = true,
 		effects = [],
-		bonusstats = {lustmax_mul = 0.5},
+		bonusstats = {},
+#		bonusstats = {lustmax_mul = 0.5},
 		weight = 100,
 		conflicts = ['bawdy'],
 		disposition_change = {
