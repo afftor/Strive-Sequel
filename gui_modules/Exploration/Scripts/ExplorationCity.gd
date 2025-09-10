@@ -21,7 +21,6 @@ var selectedquest
 var city_options = {
 	#location_purchase = "EXPLORBUYDUNGEON",
 	quest_board = "EXPLORENOTICEBOARD",
-	slave_quests = "EXPLORESLAVEQUESTS",
 }
 
 var faction_actions = {
@@ -1251,16 +1250,6 @@ func quest_board(pressed, pressed_button):
 		unfade($QuestBoard)
 	else:
 		fade($QuestBoard)
-
-func slave_quests(pressed, pressed_button):
-	var slave_quest_node = $SlaveQuestModule
-	gui_controller.win_btn_connections_handler(pressed, slave_quest_node, pressed_button)
-	self.current_pressed_area_btn = pressed_button
-	slave_quest_node.build_quest_list()
-	if pressed:
-		unfade(slave_quest_node)
-	else:
-		fade(slave_quest_node)
 
 func change_texture(button, state):
 	match state:

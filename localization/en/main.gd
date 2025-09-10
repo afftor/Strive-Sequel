@@ -162,7 +162,6 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	EXPLOREUPGRADES = "Upgrades",
 	EXPLORESERVICE = "Service",
 	EXPLOREGUILDSHOP = "Guild Shop",
-	EXPLORESLAVEQUESTS = "Houses",
 	SIBLINGMODULESKILLSKILLS = "Sex Skills",
 	SIBLINGMODULECONSENT = "Consent: ",
 	SIBLINGMODULERULES = "Rules and Conditions",

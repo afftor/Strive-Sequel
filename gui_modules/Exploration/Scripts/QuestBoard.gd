@@ -9,7 +9,8 @@ func _ready():
 	
 	for i in $guildsortVScroll.get_children():
 		i.connect('pressed',self,'selectcategory', [i])
-		
+	
+	$slave_quests.connect("pressed", self, "open_slave_quests")
 #	quest_board()
 
 
@@ -96,3 +97,10 @@ func accept_quest():
 func _on_Button_pressed():
 	var newbutton = input_handler.DuplicateContainerTemplate(quest_panel.get_req_container())
 	pass # Replace with function body.
+
+
+func open_slave_quests():
+	var slave_quest_node = $SlaveQuest
+	gui_controller.win_btn_connections_handler(true, slave_quest_node)
+	slave_quest_node.show()
+	$SlaveQuest/SlaveQuestModule.build_quest_list()
