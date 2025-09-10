@@ -9,7 +9,7 @@ var universal_skills = ['oral','anal','petting']
 onready var loyalty_panel = $UpgradesPanel/UpgradesList
 onready var loyalty_panel_master = $UpgradesPanel/ScrollContainer2/UpgradesList2
 onready var loyalty_panel_minor = $UpgradesPanel/MinorUpgradesCont/UpgradesList3
-onready var succub_panel = $UpgradesPanel/SuccubUpgradesCont/UpgradesList
+onready var succub_panel = $UpgradesPanel/SuccubUpgradesList
 #var loyalty_mode = true
 #var relations_mode = true
 #var loyalty_tab = 3
@@ -453,7 +453,7 @@ func close_tab(tab):
 		globals.disconnect_text_tooltip($UpgradesPanel/Label)
 	if tab == tab_nums.thralls or tab == tab_nums.all:
 		$UpgradesPanel.visible = false
-		succub_panel.get_parent().visible = false
+		succub_panel.visible = false
 		$UpgradesPanel/Label.text = ""
 		globals.disconnect_text_tooltip($UpgradesPanel/Label)
 	if tab == tab_nums.metrics or tab == tab_nums.all:
@@ -508,7 +508,7 @@ func open_tab(tab):
 		tab_nums.thralls:
 			$UpgradesPanel.visible = true
 			succub_panel.set_person(person)
-			succub_panel.get_parent().visible = true
+			succub_panel.visible = true
 #			succub_panel.update()
 			$UpgradesPanel/Label2.text = tr('SIBLINGMODULESUCCUBUS')
 			$UpgradesPanel/Label.text = ""

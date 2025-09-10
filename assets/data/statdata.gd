@@ -684,7 +684,7 @@ var statdata = {
 		type = 'mental_stat',
 		default_bonus = 'add_part',
 		direct = false,
-		tags = ['numeric', 'custom_bonuses']
+		tags = ['numeric']
 	},
 	#training
 	training_loyalty = {

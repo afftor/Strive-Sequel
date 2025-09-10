@@ -3060,7 +3060,7 @@ var itemlist = {
 		tier = 'hard',
 		reqs = [{code = 'trait', trait = 'succubus', check = false},],
 		effects = [],
-		tags = ['no_random'],
+		tags = ['no_random', 'request_confirm'],
 		uses_per_day = 0,
 		mansion_effect = 'corruptive_essence',
 		reqs_fail_message = 'ALREADYSUCCUBUS',

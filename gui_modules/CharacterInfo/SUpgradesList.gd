@@ -9,7 +9,7 @@ var tr_traits_s = []
 var tr_rewards = []
 
 var offset_x = 120
-var offset_y = 150
+var offset_y = 190
 
 func _ready():
 	pass

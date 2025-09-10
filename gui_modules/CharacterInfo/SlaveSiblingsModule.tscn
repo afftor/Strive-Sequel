@@ -878,15 +878,11 @@ scroll_horizontal_enabled = false
 [node name="UpgradesList3" parent="UpgradesPanel/MinorUpgradesCont" instance=ExtResource( 47 )]
 list_type = 1
 
-[node name="SuccubUpgradesCont" type="ScrollContainer" parent="UpgradesPanel"]
+[node name="SuccubUpgradesList" parent="UpgradesPanel" instance=ExtResource( 70 )]
 margin_left = 879.0
 margin_top = 142.0
 margin_right = 1639.0
-margin_bottom = 888.0
-theme = ExtResource( 15 )
-scroll_horizontal_enabled = false
-
-[node name="UpgradesList" parent="UpgradesPanel/SuccubUpgradesCont" instance=ExtResource( 70 )]
+margin_bottom = 882.0
 rect_min_size = Vector2( 760, 740 )
 
 [node name="Label" type="Label" parent="UpgradesPanel"]

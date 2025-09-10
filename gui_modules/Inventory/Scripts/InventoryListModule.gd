@@ -232,7 +232,7 @@ func get_item_category(item):
 func filter_changed(text):
 	rebuildinventory()
 
-
+var titem
 func useitem(item, type):
 	var selectedhero = input_handler.interacted_character
 	for button in itemcontainer.get_children():
@@ -242,10 +242,20 @@ func useitem(item, type):
 	elif type == 'usable':
 		if Items.itemlist[item.itembase].has("mansion_effect"):
 			input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
-			selectedhero.use_mansion_item(item)
-			get_parent().set_active_hero(selectedhero)
+			if Items.itemlist[item.itembase].tags.has('request_confirm'):
+				titem = item
+				input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'useitem_confirm', tr("ITEMUSE")])
+			else:
+				selectedhero.use_mansion_item(item)
+				get_parent().set_active_hero(selectedhero)
 		else:
 			input_handler.SystemMessage("Can't use this item from here.")
+
+
+func useitem_confirm():
+	var selectedhero = input_handler.interacted_character
+	selectedhero.use_mansion_item(titem)
+	get_parent().set_active_hero(selectedhero)
 
 
 var tempitem
