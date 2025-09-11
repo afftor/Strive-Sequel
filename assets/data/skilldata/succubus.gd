@@ -357,7 +357,7 @@ var effects = {
 		buffs = [ 
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "THRALLSDESCRIPT",
+			description = "THRALLS0DESCRIPT",
 		}
 		],
 	},

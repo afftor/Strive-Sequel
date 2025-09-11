@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=3]
-[ext_resource path="res://gui_modules/Universal/Modules/NavigationModule_new.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gui_modules/Universal/Modules/NavigationModule.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/divider_navi_player.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/guildsnavi_city.png" type="Texture" id=6]
 [ext_resource path="res://gui_modules/Exploration/Scripts/ExplorationCity.gd" type="Script" id=7]
@@ -120,6 +120,7 @@
 [ext_resource path="res://assets/images/sexicons/futa.png" type="Texture" id=124]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/button_traits_universal.png" type="Texture" id=126]
 [ext_resource path="res://gui_modules/Exploration/Modules/SlaveQuestModule.tscn" type="PackedScene" id=127]
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 28 )
