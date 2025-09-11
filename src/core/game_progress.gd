@@ -307,7 +307,9 @@ func check_timed_events():
 										if j.type in ['date']:
 											j.value += 1
 									break
-			if !failed:
+			if failed:
+				gui_controller.clock.continue_timer = true
+			else:
 				input_handler.interactive_message(i.code, 'story_event', {})
 				deleting_events.append(i)
 	for i in deleting_events:

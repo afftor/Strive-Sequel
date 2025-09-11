@@ -62,6 +62,7 @@ func set_sky_pos():
 
 func move_sky(from, to, init_delay):
 	locked = true
+	tw.interpolate_callback(self, variables.SecndsPerTransition, 'check_resume')
 	var v1 = sky.texture.region
 	v1.position.x = atlas_pos[from]
 	var v2 = sky.texture.region
@@ -104,10 +105,10 @@ func move_sky(from, to, init_delay):
 			for b1 in range(0, to):
 				tw.interpolate_property(bghold.get_child(b1 + 1), 'modulate', Color(1.0,1.0,1.0,0.0), Color(1.0,1.0,1.0,1.0), speed, 0, 2, init_delay + (b1 + t1) * speed)
 			
-	
 	tw.start()
 	yield(tw, "tween_all_completed")
 	locked = false
+#	check_resume()
 
 
 func _process(delta): #nearly obsolete
@@ -120,6 +121,8 @@ func _process(delta): #nearly obsolete
 		input_handler.globalsettings.turn_based_time_flow = true
 
 
+var continue_timer = false
+var amount_resume
 func advance_turn(amount = 1):
 	if ResourceScripts.game_party.characters.size() > ResourceScripts.game_res.get_pop_cap() and ResourceScripts.game_party.has_nonunics():
 		if ResourceScripts.game_res.get_pop_cap() < ResourceScripts.game_res.get_pop_cap_limit():
@@ -130,6 +133,7 @@ func advance_turn(amount = 1):
 	if globals.log_node != null && weakref(globals.log_node).get_ref():
 		globals.log_node.clear_log()
 	#lookforward part
+	amount_resume = amount
 	var trem = ResourceScripts.game_progress.get_next_event_time()
 	if trem > 0 and trem < amount:
 		amount = trem
@@ -146,6 +150,7 @@ func advance_turn(amount = 1):
 		init_delay = 0.2
 	input_handler.PlaySound("button_click")
 	#synch setup
+	amount_resume -= amount
 	var cur_time = ResourceScripts.game_globals.hour
 	if cur_time == 4: cur_time = 0
 	var ntime = cur_time + amount
@@ -166,6 +171,15 @@ func advance_turn(amount = 1):
 	update_food_tooltip()
 	update_gold_tooltip()
 #	set_sky_pos()
+
+
+func check_resume():
+	if !continue_timer:
+		return
+	if amount_resume <= 0:
+		return
+	locked = false
+	advance_turn(amount_resume)
 
 
 
