@@ -2591,6 +2591,13 @@ Loyalty: +25, Maxes Obedience.""",
 	MAGATTUNEMENTDESCRIPT = "Magic attunement",
 	COMBATATTUNEMENTDESCRIPT = "Combat attunement",
 	THRALLDESCRIPT = "Thrall",
+	THRALLS6DESCRIPT = "Has 6 thralls",
+	THRALLS5DESCRIPT = "Has 5 thralls",
+	THRALLS4DESCRIPT = "Has 4 thralls",
+	THRALLS3DESCRIPT = "Has 3 thralls",
+	THRALLS2DESCRIPT = "Has 2 thralls",
+	THRALLS1DESCRIPT = "Has a thrall",
+	THRALLS0DESCRIPT = "Has no thralls",
 
 	SKILLSUPREMACY = "Supremacy",
 	SKILLSUPREMACYDESCRIPT = """Category: {color=green|Gracious}
