@@ -305,7 +305,6 @@ var effects = {
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
 			description = "MAGATTUNEMENTDESCRIPT",
-			tags = ['show_in_traits']
 		}
 		],
 		sub_effects = [],
@@ -322,7 +321,6 @@ var effects = {
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
 			description = "COMBATATTUNEMENTDESCRIPT",
-			tags = ['show_in_traits']
 		}
 		],
 		sub_effects = [],
@@ -359,8 +357,7 @@ var effects = {
 		buffs = [ 
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "COMBATATTUNEMENTDESCRIPT",
-			tags = ['show_in_traits']
+			description = "THRALLS0DESCRIPT",
 		}
 		],
 	},
@@ -374,8 +371,7 @@ var effects = {
 		buffs = [ 
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "COMBATATTUNEMENTDESCRIPT",
-			tags = ['show_in_traits']
+			description = "THRALLS1DESCRIPT",
 		}
 		],
 	},
@@ -389,8 +385,7 @@ var effects = {
 		buffs = [ 
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "COMBATATTUNEMENTDESCRIPT",
-			tags = ['show_in_traits']
+			description = "THRALLS2DESCRIPT",
 		}
 		],
 	},
@@ -404,8 +399,7 @@ var effects = {
 		buffs = [ 
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "COMBATATTUNEMENTDESCRIPT",
-			tags = ['show_in_traits']
+			description = "THRALLS3DESCRIPT",
 		}
 		],
 	},
@@ -419,8 +413,7 @@ var effects = {
 		buffs = [ 
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "COMBATATTUNEMENTDESCRIPT",
-			tags = ['show_in_traits']
+			description = "THRALLS4DESCRIPT",
 		}
 		],
 	},
@@ -434,8 +427,7 @@ var effects = {
 		buffs = [ 
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "COMBATATTUNEMENTDESCRIPT",
-			tags = ['show_in_traits']
+			description = "THRALLS5DESCRIPT",
 		}
 		],
 	},
@@ -449,8 +441,7 @@ var effects = {
 		buffs = [ 
 			{
 			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "COMBATATTUNEMENTDESCRIPT",
-			tags = ['show_in_traits']
+			description = "THRALLS6DESCRIPT",
 		}
 		],
 	},

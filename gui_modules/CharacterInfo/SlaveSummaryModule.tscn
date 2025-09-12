@@ -133,6 +133,7 @@ margin_left = -20.0
 margin_top = -2.0
 margin_right = 180.0
 margin_bottom = 22.0
+mouse_filter = 2
 texture = ExtResource( 4 )
 expand = true
 
@@ -166,6 +167,7 @@ margin_left = -20.0
 margin_top = -2.0
 margin_right = 180.0
 margin_bottom = 22.0
+mouse_filter = 2
 texture = ExtResource( 4 )
 expand = true
 
@@ -202,6 +204,7 @@ margin_left = -20.0
 margin_top = -2.0
 margin_right = 180.0
 margin_bottom = 22.0
+mouse_filter = 2
 texture = ExtResource( 4 )
 expand = true
 
