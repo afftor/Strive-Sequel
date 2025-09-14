@@ -3,9 +3,15 @@ extends Panel
 var selectedquest
 var category = "all"
 onready var quest_panel = $QuestDetails/QuestPanel
+onready var slave_quest_win = $SlaveQuest
+onready var slave_quest_module = $SlaveQuest/SlaveQuestModule
 
 func _ready():
 	$QuestDetails/AcceptQuest.connect("pressed", self, "accept_quest")
+	gui_controller.add_close_button(slave_quest_win, 'custom', [
+		rect_size.x - slave_quest_module.rect_position.x - slave_quest_module.rect_size.x,
+		slave_quest_module.rect_position.y
+	])
 	
 	for i in $guildsortVScroll.get_children():
 		i.connect('pressed',self,'selectcategory', [i])
@@ -100,7 +106,6 @@ func _on_Button_pressed():
 
 
 func open_slave_quests():
-	var slave_quest_node = $SlaveQuest
-	gui_controller.win_btn_connections_handler(true, slave_quest_node)
-	slave_quest_node.show()
-	$SlaveQuest/SlaveQuestModule.build_quest_list()
+	gui_controller.win_btn_connections_handler(true, slave_quest_win)
+	slave_quest_win.show()
+	slave_quest_module.build_quest_list()

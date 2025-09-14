@@ -659,8 +659,8 @@ var data = {
 				text = "KURO_FIRST_START1_ZEPHYRA",
 				reqs = [
 					{
-						type = "quest_completed",
-						name = "zephyra_disappearance_quest",
+						type = "decision",
+						value = "SawKuroWithBrush",
 						check = true
 					}
 				]
@@ -669,8 +669,8 @@ var data = {
 				text = "KURO_FIRST_START1_NOZEPHYRA",
 				reqs = [
 					{
-						type = "quest_completed",
-						name = "zephyra_disappearance_quest",
+						type = "decision",
+						value = "SawKuroWithBrush",
 						check = false
 					}
 				]
