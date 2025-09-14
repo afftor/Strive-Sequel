@@ -199,10 +199,10 @@ func show_info(quest):
 						_:
 							if k.code != 'slave_type':#crutch (temporal?) for guilds' quests
 								tooltiptext += String(k).trim_prefix("{").trim_suffix("}") + "\n"
+				tooltiptext += "%s/%s slaves delivered." % [i.delivered_slaves, i.value]
 				if quest.has('faction'):#way to determine slave quest
 					quest_descript += "\n" + tooltiptext
 					tooltiptext = ""
-				tooltiptext += "%s/%s slaves delivered." % [i.delivered_slaves, i.value]
 				globals.connecttexttooltip(newbutton, tooltiptext)
 			'slave_work':
 				var time = ''
@@ -330,5 +330,14 @@ func show_info(quest):
 		faction_stemp.show()
 	else:
 		faction_stemp.hide()
+	
+	if quest.has('faction'):#way to determine slave quest:
+		diff_label.hide()
+		req_label.hide()
+		req_cont.hide()
+	elif !req_label.visible:
+		diff_label.show()
+		req_label.show()
+		req_cont.show()
 
 
