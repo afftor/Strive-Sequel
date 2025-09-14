@@ -838,6 +838,7 @@ var data = {
 	zephyra_brush_4 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'],
 		reqs = [], character = "kuro",
+		common_effects = [{code = 'decision', value = 'SawKuroWithBrush'}],
 		text = [{text = "ZEPHYRA_BRUSH_4_1", reqs = [], previous_dialogue_option = 1},
 		{text = "ZEPHYRA_BRUSH_4_2_GOOD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = 90}]}], previous_dialogue_option = 2},
 		{text = "ZEPHYRA_BRUSH_4_2_BAD", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'lt', value = 90}]}], previous_dialogue_option = 2},
