@@ -174,8 +174,6 @@ func close_scene(scene):
 		if current_screen != null:
 			update_modules()
 		return
-	if scene == slavepanel:
-		scene.SummaryModule.selected_person = null
 	if window_button_connections.has(scene) && window_button_connections[scene] != null:
 		window_button_connections[scene].pressed = false
 		return
@@ -208,6 +206,8 @@ func close_scene(scene):
 			gui_controller.clock.raise()
 			gui_controller.clock.show()
 	update_modules()
+	if scene == slavepanel:
+		scene.SummaryModule.selected_person = null
 
 
 func set_nav_size_postition():

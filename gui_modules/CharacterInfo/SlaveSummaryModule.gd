@@ -71,6 +71,8 @@ func change_slave(param):
 		change_slave(param)
 
 func update():
+	if selected_person == null:
+		return
 	if get_parent().unique_dict.has(get_parent().active_person.get_stat('unique')):
 		get_parent().get_node("TalkButton").visible = selected_person.get_work() != "disabled"
 	$GridContainer.visible = selected_person.get_work() != "disabled"
