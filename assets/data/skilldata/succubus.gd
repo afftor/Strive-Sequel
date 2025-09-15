@@ -50,8 +50,9 @@ var skills = {
 		dialogue_report_failed = '',
 		dialogue_show_repeat = false,
 		dialogue_image = 'mindcontrol',
-		value = [['0']],
-		damagestat = 'no_stat',
+		value = [['100']],
+		damagestat = 'base_exp',
+		receiver = 'caster'
 	},
 	release_thrall = { 
 		code = 'release_thrall',

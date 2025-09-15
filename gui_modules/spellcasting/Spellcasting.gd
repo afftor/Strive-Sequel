@@ -187,3 +187,9 @@ func select_target(ch_id):
 func reset_spell():
 	selected_spell = null
 	update()
+
+
+func hide():
+	if gui_controller.current_screen == gui_controller.spells:
+		gui_controller.current_screen = gui_controller.previous_screen
+	.hide()
