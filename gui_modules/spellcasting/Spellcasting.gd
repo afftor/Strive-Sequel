@@ -14,6 +14,8 @@ func _ready():
 
 
 func open(t_person = null, t_spell = null, lock_selected = false):
+	if !gui_controller.windows_opened.has(self):
+		gui_controller.windows_opened.append(self)
 	mode = 0
 	if t_person != null:
 		selected_person = t_person.id
@@ -192,4 +194,5 @@ func reset_spell():
 func hide():
 	if gui_controller.current_screen == gui_controller.spells:
 		gui_controller.current_screen = gui_controller.previous_screen
+	gui_controller.windows_opened.erase(self)
 	.hide()
