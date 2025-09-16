@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zephyrasister_wed_prt_shy.png-c42bdd606c671dfeb60a2d1912c4d6a0.stex"
+path="res://.import/rouge_body.png-1ce56c88df26ac0a7b36f4b484c46ae1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/zephyrasister_prt/zephyrasister_wed_prt_shy.png"
-dest_files=[ "res://.import/zephyrasister_wed_prt_shy.png-c42bdd606c671dfeb60a2d1912c4d6a0.stex" ]
+source_file="res://assets/images/sprites/rouge_body.png"
+dest_files=[ "res://.import/rouge_body.png-1ce56c88df26ac0a7b36f4b484c46ae1.stex" ]
 
 [params]
 

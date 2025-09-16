@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zephyrasister_wed_body.png-205860ea520951f150ddf20bbd39a71a.stex"
+path="res://.import/allure.png-7f47f9e0bfe0216fcb7e4b6c7683339b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/zephyrasister_wed_body.png"
-dest_files=[ "res://.import/zephyrasister_wed_body.png-205860ea520951f150ddf20bbd39a71a.stex" ]
+source_file="res://assets/images/iconstraits/allure.png"
+dest_files=[ "res://.import/allure.png-7f47f9e0bfe0216fcb7e4b6c7683339b.stex" ]
 
 [params]
 

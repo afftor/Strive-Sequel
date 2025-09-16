@@ -1218,6 +1218,7 @@ var scenedict = {
 		{code = 'close', reqs = [], bonus_effects = [{code ='unlock_upgrade', upgrade = 'forge', level = 1}], text = tr("STARTUPGRADEBONUS1"), type = 'next_dialogue'},
 		{code = 'close', reqs = [], bonus_effects = [{code ='unlock_upgrade', upgrade = 'tailor', level = 1}], text = tr("STARTUPGRADEBONUS2"), type = 'next_dialogue'},
 		{code = 'close', reqs = [], bonus_effects = [{code ='unlock_upgrade', upgrade = 'alchemy', level = 1}], text = tr("STARTUPGRADEBONUS3"), type = 'next_dialogue'},
+		{code = 'close', reqs = [], bonus_effects = [{code = 'make_loot', type = 'tableloot', pool = [['start_corruptive_essence',1]]},{code = 'open_loot'}], text = tr("STARTUPGRADEBONUS4"), type = 'next_dialogue'},
 		],
 	},
 	

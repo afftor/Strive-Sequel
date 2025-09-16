@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zephyrasister.png-f394fb4f75d2ec68506bf280ec6d2ae5.stex"
+path="res://.import/turn_succubus.png-a5763adf33baf2bf727c6d4e60fc0810.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/zephyrasister.png"
-dest_files=[ "res://.import/zephyrasister.png-f394fb4f75d2ec68506bf280ec6d2ae5.stex" ]
+source_file="res://assets/images/iconstraits/turn_succubus.png"
+dest_files=[ "res://.import/turn_succubus.png-a5763adf33baf2bf727c6d4e60fc0810.stex" ]
 
 [params]
 

@@ -248,6 +248,7 @@ var loot_tables = {
 		{selector = [
 			{loot_table = "medium_maps", weight = 2},
 			{loot_table = "hard_maps", weight = 3},
+			{item = 'corruptive_essence', min = 1, max = 1, weight = 0.5},
 			]},
 		]},
 	grove_wood_reward = {selector = [
@@ -696,7 +697,10 @@ var loot_tables = {
 		{material = 'boneancient', amount = 1}]},
 	
 	
-	
+	start_corruptive_essence = {
+		list = [
+		{item = 'corruptive_essence', min = 1, max = 1}]
+	},
 	
 	
 }

@@ -1053,9 +1053,22 @@ margin_bottom = 76.0
 grow_vertical = 0
 alignment = 1
 
-[node name="mtr_button" type="TextureButton" parent="change_buttons"]
+[node name="succub_tr_button" type="TextureButton" parent="change_buttons"]
 margin_left = 193.0
 margin_right = 250.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 57, 57 )
+hint_tooltip = "SIBLINGMODULESUCCUBTRAIN"
+texture_normal = ExtResource( 71 )
+texture_pressed = ExtResource( 72 )
+texture_hover = ExtResource( 73 )
+texture_disabled = ExtResource( 72 )
+expand = true
+stretch_mode = 4
+
+[node name="mtr_button" type="TextureButton" parent="change_buttons"]
+margin_left = 254.0
+margin_right = 311.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
 hint_tooltip = "SIBLINGMODULETRAININGS"
@@ -1067,8 +1080,8 @@ expand = true
 stretch_mode = 4
 
 [node name="tr_button" type="TextureButton" parent="change_buttons"]
-margin_left = 254.0
-margin_right = 311.0
+margin_left = 315.0
+margin_right = 372.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
 hint_tooltip = "SIBLINGMODULETRAININGS"
@@ -1080,8 +1093,8 @@ expand = true
 stretch_mode = 4
 
 [node name="minor_tr_button" type="TextureButton" parent="change_buttons"]
-margin_left = 315.0
-margin_right = 372.0
+margin_left = 376.0
+margin_right = 433.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 57, 57 )
 hint_tooltip = "SIBLINGMODULEMINORTRAIN"
@@ -1089,19 +1102,6 @@ texture_normal = ExtResource( 58 )
 texture_pressed = ExtResource( 65 )
 texture_hover = ExtResource( 62 )
 texture_disabled = ExtResource( 65 )
-expand = true
-stretch_mode = 4
-
-[node name="succub_tr_button" type="TextureButton" parent="change_buttons"]
-margin_left = 376.0
-margin_right = 433.0
-margin_bottom = 57.0
-rect_min_size = Vector2( 57, 57 )
-hint_tooltip = "SIBLINGMODULESUCCUBTRAIN"
-texture_normal = ExtResource( 71 )
-texture_pressed = ExtResource( 72 )
-texture_hover = ExtResource( 73 )
-texture_disabled = ExtResource( 73 )
 expand = true
 stretch_mode = 4
 

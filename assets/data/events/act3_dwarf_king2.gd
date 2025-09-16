@@ -1374,7 +1374,7 @@ var data = {
 
 		],
 		character = "demon_female",
-		character2 = "zephyras_sister",
+		character2 = "rouge",
 		text = [
 			{
 				text = "SACRED_SAP_INTERMISSION_START",
@@ -1403,7 +1403,7 @@ var data = {
 
 		],
 		character = "demon_female",
-		character2 = "zephyras_sister",
+		character2 = "rouge",
 		text = [
 			{
 				text = "SACRED_SAP_INTERMISSION_1",
@@ -1503,7 +1503,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyras_sister",
+		character = "rouge",
 		text = [
 			{
 				text = "CAPACITOR_MOLTEN_START",
@@ -1552,7 +1552,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyras_sister",
+		character = "rouge",
 		character2 = "zephyra",
 		text = [
 			{
@@ -1581,7 +1581,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyras_sister",
+		character = "rouge",
 		character2 = "zephyra",
 		text = [
 			{
@@ -1660,7 +1660,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyras_sister",
+		character = "rouge",
 		character2 = "kuro",
 		text = [
 			{
@@ -1689,7 +1689,7 @@ var data = {
 		reqs = [
 
 		],
-		character = "zephyras_sister",
+		character = "rouge",
 		character2 = "kuro",
 		text = [
 			{

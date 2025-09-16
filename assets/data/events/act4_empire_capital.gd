@@ -155,7 +155,7 @@ var data = {
 	emp_ceremony_2 = {
 		reqs = [],
 		image = null,
-		character = 'grotus', character2 = 'zephyras_sister',
+		character = 'grotus', character2 = 'rouge',
 		tags = ["dialogue_scene"],
 		text = [{text = "EMP_CEREMONY_2",reqs = []}],
 		options = [
@@ -175,7 +175,7 @@ var data = {
 	emp_ceremony_4 = {
 		reqs = [],
 		image = null,
-		character = 'zephyras_sister',
+		character = 'rouge',
 		tags = ["dialogue_scene", 'blackscreen_transition_common'],
 		text = [{text = "EMP_CEREMONY_4",reqs = []}],
 		options = [
@@ -224,7 +224,7 @@ var data = {
 					{type = "location_has_specific_slaves", check = true, value = 1, location = 'empire_capital', reqs = [{code = 'unique', value = 'kuro'}]},
 					],
 				image = null,
-				character = 'zephyras_sister',
+				character = 'rouge',
 				tags = ["dialogue_scene", 'master_translate', 'blackscreen_transition_common'],
 				text = [
 					{text = "EMP_CEREMONY_7", reqs = []},
@@ -237,7 +237,7 @@ var data = {
 			{
 				reqs = [],
 				image = null,
-				character = 'zephyras_sister',
+				character = 'rouge',
 				tags = ["dialogue_scene", 'master_translate', 'blackscreen_transition_common'],
 				text = [
 					{text = "EMP_CEREMONY_7", reqs = []},
@@ -262,7 +262,7 @@ var data = {
 	emp_foxes_2 = {
 		reqs = [],
 		image = null,
-		character = 'zephyras_sister', character2 = 'kuro',
+		character = 'rouge', character2 = 'kuro',
 		tags = ["dialogue_scene", 'master_translate'],
 		text = [{text = "EMP_FOXES_2",reqs = []}],
 		options = [
@@ -272,7 +272,7 @@ var data = {
 	emp_foxes_3 = {
 		reqs = [],
 		image = null,
-		character = 'zephyras_sister', character2 = 'zephyra',
+		character = 'rouge', character2 = 'zephyra',
 		tags = ["dialogue_scene", 'master_translate'],
 		text = [{text = "EMP_FOXES_3",reqs = []}],
 		options = [
@@ -282,7 +282,7 @@ var data = {
 	emp_foxes_4 = {
 		reqs = [],
 		image = null,
-		character = 'zephyras_sister', character2 = 'kuro',
+		character = 'rouge', character2 = 'kuro',
 		tags = ["dialogue_scene", 'master_translate'],
 		text = [{text = "EMP_FOXES_4",reqs = []}],
 		options = [
@@ -292,7 +292,7 @@ var data = {
 	emp_ceremony_8 = {
 		reqs = [],
 		image = null,
-		character = 'zephyras_sister',
+		character = 'rouge',
 		tags = ["dialogue_scene", 'master_translate'],
 		text = [
 			{text = "EMP_CEREMONY_8_1",reqs = [], previous_dialogue_option = 1},
@@ -306,7 +306,7 @@ var data = {
 	emp_ceremony_9 = {
 		reqs = [],
 		image = null,
-		character = "zephyras_sister",
+		character = "rouge",
 		tags = ["dialogue_scene",],
 		text = "EMP_CEREMONY_9",
 		options = [
@@ -369,7 +369,7 @@ var data = {
 	emp_arena_5 = {
 		reqs = [],
 		image = null,
-		character = 'zephyras_sister',
+		character = 'rouge',
 		tags = ["dialogue_scene", 'master_translate', 'blackscreen_transition_common'],
 		text = [{text = "EMP_ARENA_5",reqs = []}],
 		options = [
@@ -386,7 +386,7 @@ var data = {
 	emp_arena_6 = {
 		reqs = [],
 		image = null,
-		character = 'zephyras_sister',
+		character = 'rouge',
 		tags = ["dialogue_scene", 'master_translate'],
 		text = [{text = "EMP_ARENA_6",reqs = []}],
 		options = [
@@ -396,7 +396,7 @@ var data = {
 	emp_arena_7 = {
 		reqs = [],
 		image = null,
-		character = 'zephyras_sister', character2 = 'greg',
+		character = 'rouge', character2 = 'greg',
 		tags = ["dialogue_scene", 'master_translate'],
 		text = [{text = "EMP_ARENA_7",reqs = []}],
 		options = [
@@ -406,7 +406,7 @@ var data = {
 	emp_arena_8 = {
 		reqs = [],
 		image = null,
-		character = 'zephyras_sister', character2 = 'greg',
+		character = 'rouge', character2 = 'greg',
 		tags = ["dialogue_scene", 'master_translate'],
 		text = [{text = "EMP_ARENA_8",reqs = []}],
 		options = [
@@ -423,7 +423,7 @@ var data = {
 	emp_arena_9 = {
 		reqs = [],
 		image = null,
-		character = 'zephyras_sister',
+		character = 'rouge',
 		tags = ["dialogue_scene", 'master_translate'],
 		text = [{text = "EMP_ARENA_9",reqs = []}],
 		options = [
@@ -435,7 +435,7 @@ var data = {
 	emp_arena_10 = {
 		reqs = [],
 		image = null,
-		character = 'zephyras_sister',
+		character = 'rouge',
 		tags = ["dialogue_scene", 'master_tarnslate'],
 		text = [
 			{text = "EMP_ARENA_10_1", reqs = [], previous_dialogue_option = 1},
@@ -453,7 +453,7 @@ var data = {
 	emp_arena_11 = {
 		reqs = [],
 		image = null,
-		character = "zephyras_sister",
+		character = "rouge",
 		tags = ["dialogue_scene",],
 		text = "EMP_ARENA_11",
 		options = [

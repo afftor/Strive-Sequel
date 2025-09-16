@@ -202,6 +202,8 @@ func show_info(quest):
 				tooltiptext += "%s/%s slaves delivered." % [i.delivered_slaves, i.value]
 				if quest.has('faction'):#way to determine slave quest
 					quest_descript += "\n" + tooltiptext
+					
+					quest_descript = quest_descript.replace("[factionname]","{color=green|"+ tr(ResourceScripts.slave_quests.get_faction(quest.faction).name) + "}")
 					tooltiptext = ""
 				globals.connecttexttooltip(newbutton, tooltiptext)
 			'slave_work':
@@ -335,6 +337,7 @@ func show_info(quest):
 		diff_label.hide()
 		req_label.hide()
 		req_cont.hide()
+		
 	elif !req_label.visible:
 		diff_label.show()
 		req_label.show()

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zephyrasister_wed.png-ac4814d35cebae11a4e003abaebcf566.stex"
+path="res://.import/heleviel_wwaitress_prt_serious.png-74758682afe6f3ea9b3ffd8da4e75f5b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/zephyrasister_wed.png"
-dest_files=[ "res://.import/zephyrasister_wed.png-ac4814d35cebae11a4e003abaebcf566.stex" ]
+source_file="res://assets/images/portraits/heleviel_prt/heleviel_wwaitress_prt_serious.png"
+dest_files=[ "res://.import/heleviel_wwaitress_prt_serious.png-74758682afe6f3ea9b3ffd8da4e75f5b.stex" ]
 
 [params]
 

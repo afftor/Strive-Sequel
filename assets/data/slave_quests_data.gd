@@ -25,7 +25,7 @@ var factions = {
 			'mage', 'assassin_t2'
 			],
 		gen_chance = {
-			1 : 1.0, 2 : 0.8, 3 : 0.5
+			1 : 0.7, 2 : 0.2, 3 : 0.1
 		}
 	},
 	dravenmoor = {
@@ -39,7 +39,7 @@ var factions = {
 			'fighter_t2', 'healer_t2', 'rare_race', 'elf_archer', 'assassin_t2'
 		],
 		gen_chance = {
-			1 : 1.0, 2 : 0.8, 3 : 0.5
+			1 : 0.7, 2 : 0.2, 3 : 0.1
 		}
 	},
 	verdant = {
@@ -53,7 +53,7 @@ var factions = {
 			'elf_archer', 'miko', 'sex_generic_t2', 'mage'
 		],
 		gen_chance = {
-			1 : 1.0, 2 : 0.8, 3 : 0.5
+			1 : 0.7, 2 : 0.2, 3 : 0.1
 		}
 	},
 	ironhold = {
@@ -66,7 +66,7 @@ var factions = {
 			'fighter', 'healer', 'fighter_t2', 'healer_t2', 'rare_race', 'assassin_t2'
 		],
 		gen_chance = {
-			1 : 1.0, 2 : 0.8, 3 : 0.5
+			1 : 0.7, 2 : 0.2, 3 : 0.1
 		},
 		req_add = [
 			[
@@ -102,7 +102,7 @@ var factions = {
 			'elf_archer', 'sex_generic_t2', 'mage', 'assassin_t2'
 		],
 		gen_chance = {
-			1 : 1.0, 2 : 0.8, 3 : 0.5
+			1 : 0.7, 2 : 0.2, 3 : 0.1
 		},
 	},
 	gilded = {
@@ -116,7 +116,7 @@ var factions = {
 			'healer_t2', 'rare_race', 'miko', 'sex_generic_t2', 'mage'
 		],
 		gen_chance = {
-			1 : 1.0, 2 : 0.8, 3 : 0.5
+			1 : 0.7, 2 : 0.2, 3 : 0.1
 		},
 	},
 	azure = {
@@ -131,7 +131,7 @@ var factions = {
 			'assassin_t2'
 		],
 		gen_chance = {
-			1 : 1.0, 2 : 0.8, 3 : 0.5
+			1 : 0.7, 2 : 0.2, 3 : 0.1
 		},
 	},
 	stonebreaker = {
@@ -144,7 +144,7 @@ var factions = {
 			'sex_generic', 'healer_t2', 'miko', 'sex_generic_t2', 'mage'
 		],
 		gen_chance = {
-			1 : 1.0, 2 : 0.8, 3 : 0.5
+			1 : 0.7, 2 : 0.2, 3 : 0.1
 		},
 	},
 	chalice = {
@@ -157,7 +157,7 @@ var factions = {
 			'fighter_t2', 'healer_t2', 'miko', 'mage'
 		],
 		gen_chance = {
-			1 : 1.0, 2 : 0.8, 3 : 0.5
+			1 : 0.7, 2 : 0.2, 3 : 0.1
 		},
 	},
 	loom = {
@@ -170,7 +170,7 @@ var factions = {
 			'rare_race', 'sex_generic_t2', 'assassin_t2'
 		],
 		gen_chance = {
-			1 : 1.0, 2 : 0.8, 3 : 0.5
+			1 : 0.7, 2 : 0.2, 3 : 0.1
 		},
 	},
 	ashen = {
@@ -185,7 +185,7 @@ var factions = {
 		],
 		gen_req = [{type = 'decision', value = 'act2_start', check = true}],
 		gen_chance = {
-			1 : 1.0, 2 : 0.8, 3 : 0.5
+			1 : 0.7, 2 : 0.2, 3 : 0.1
 		},
 		req_add = [
 			{
@@ -211,7 +211,7 @@ var factions = {
 		],
 		gen_req = [{type = 'decision', value = 'act3_start', check = true}],
 		gen_chance = {
-			1 : 1.0, 2 : 0.8, 3 : 0.5
+			1 : 0.7, 2 : 0.2, 3 : 0.1
 		},
 		req_add = [
 			[

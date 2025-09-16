@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zephyrasister_nude_prt_serious.png-a7a21c327204e63f602cd9931e4470a0.stex"
+path="res://.import/kuro_tool.png-44994779debe1a995d94d67df5e2c363.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/zephyrasister_prt/zephyrasister_nude_prt_serious.png"
-dest_files=[ "res://.import/zephyrasister_nude_prt_serious.png-a7a21c327204e63f602cd9931e4470a0.stex" ]
+source_file="res://assets/images/iconsitems/kuro_tool.png"
+dest_files=[ "res://.import/kuro_tool.png-44994779debe1a995d94d67df5e2c363.stex" ]
 
 [params]
 

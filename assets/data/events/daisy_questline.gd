@@ -3139,7 +3139,7 @@ var data = {
 			{
 				code = "money_change",
 				operant = "+",
-				value = 2500
+				value = 5000
 			},
 			{
 				code = "unique_character_changes",
