@@ -99,7 +99,7 @@ var skills = {
 		cost = {mp = 6, lust = 15},
 		charges = 1,
 		cooldown = 1,
-		icon = load("res://assets/images/iconstraits/corrupt.png"),
+		icon = load("res://assets/images/iconsskills/distract.png"),
 		tags = ['succubus', 'can_miss', 'refine_chance'],
 		dialogue_report = '',
 		dialogue_report_failed = '',

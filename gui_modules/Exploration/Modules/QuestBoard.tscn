@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=1]
 [ext_resource path="res://src/scenes/QuestPanelV2.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gui_modules/Exploration/Modules/SlaveQuestModule.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/Textures_v2/slave_quests/scales.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/iconstraits/l_collar.png" type="Texture" id=4]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=6]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=9]
@@ -70,12 +70,13 @@ margin_top = 40.0
 margin_right = 178.0
 margin_bottom = 134.0
 rect_min_size = Vector2( 0, 50 )
-hint_tooltip = "Mages"
+hint_tooltip = "Slave Requests"
 texture_normal = ExtResource( 27 )
 texture_pressed = ExtResource( 20 )
 texture_hover = ExtResource( 24 )
 
 [node name="TextureRect" type="TextureRect" parent="slave_quests"]
+modulate = Color( 0.772549, 0.72549, 0.639216, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 9.5

@@ -238,6 +238,8 @@ var loot_tables = {
 		{random = 'static_gear', amount = 1, tiers = ['easy', 'medium']},
 		{random = 'gear', min = 1, max = 2, material_tiers = [['t1', 4], ['t1', 10], ['t1', 1]], tiers = ['easy', 'medium']},
 		{item = 'exp_scroll', min = 1, max = 3},
+		
+		{item = 'corruptive_essence', chance = 0.1},
 		{gold = true, min = 250, max = 400}]},
 	hard_boss_chest = {list = [
 		{random = 'static_gear', min = 1, max = 2, tiers = ['easy', 'medium', 'hard']},
@@ -245,10 +247,10 @@ var loot_tables = {
 		{item = 'exp_scroll', min = 2, max = 4},
 		{item = 'soul_stone', min = 0, max = 1},
 		{gold = true, min = 400, max = 600},
+		{item = 'corruptive_essence', chance = 0.3},
 		{selector = [
 			{loot_table = "medium_maps", weight = 2},
 			{loot_table = "hard_maps", weight = 3},
-			{item = 'corruptive_essence', min = 1, max = 1, weight = 0.5},
 			]},
 		]},
 	grove_wood_reward = {selector = [
@@ -760,168 +762,3 @@ var locks_data = { #makes locks to lockpick for related chests
 }
 
 
-
-#legacy code
-#func make_loottable():
-#	var new_loottable = '{'
-#	for table_name in loot_variants_data:
-#		new_loottable += "\n" + table_name + " = "
-#		var table = loot_variants_data[table_name]
-#		if table.size() == 1:
-#			new_loottable += form_record(table[0]) + ","
-#			continue
-#		new_loottable += "{list = [\n"
-#		for record in table:
-#			new_loottable += form_record(record) + ",\n"
-#		new_loottable += "]},"
-#	new_loottable += '\n}'
-#	var file_handler = File.new()
-#	file_handler.open("user://output.gd", File.WRITE)
-#	file_handler.store_string(new_loottable)
-#	file_handler.close()
-#
-#func print_array(array):
-#	var res = "["
-#	for line in array:
-#		if line is Array:
-#			res += print_array(line) + ", "
-#		elif line is String:
-#			res += "'%s', " % line
-#		else:
-#			res += "%s, " % line
-#	res = res.trim_suffix(", ")
-#	res += "]"
-#	return res
-#
-#func form_record(record):
-#	var new_table = "{"
-#	if record.code == 'material_selected':
-#		new_table += "selector = ["
-#		for opt in record.options:
-#			new_table += "\n{"
-#			if Items.materiallist.has(opt.code):
-#				new_table += "material = '%s'" % opt.code
-#			elif Items.itemlist.has(opt.code):
-#				new_table += "item = '%s'" % opt.code
-#			new_table += ", weight = %s, min = %s, max = %s}," % [opt.weight, opt.amount[0], opt.amount[1]]
-#		new_table += "]"
-#	elif record.code == 'map':
-#		new_table += "selector = ["
-#		for opt in record.maps:
-#			new_table += "\n{item = '%s'}," % opt
-#		new_table += "]"
-#	elif record.code == 'defined':
-#		if Items.materiallist.has(record.name):
-#			new_table += "material = '%s'" % record.name
-#		elif Items.itemlist.has(record.name):
-#			new_table += "item = '%s'" % record.name
-#			var i_template = Items.itemlist[record.name]
-#			if i_template.type == 'gear':
-#				new_table += ", by_quality = true"
-#	elif record.code in ['material', 'usable', 'static_gear', 'gear', 'weapon', 'armor']:
-#		new_table += "random = '%s'" % record.code
-#	elif record.code == 'gold':
-#		new_table += "gold = true"
-#
-#	if record.has('min') and record.has('max'):
-#		if record.min == record.max:
-#			new_table += ", amount = %s" % record.min
-#		else:
-#			new_table += ", min = %s, max = %s" % [record.min, record.max]
-#	if record.has("parts"):
-#		new_table += ", parts = %s" % print_array(record.parts)
-#	if record.has("material_grade"):
-#		new_table += ", material_tiers = %s" % print_array(record.material_grade)
-#	if record.has("grade"):
-#		if record.grade is String:
-#			if record.grade == 'location':
-#				new_table += ", get_tier = 'location'"
-#			else:
-#				new_table += ", tier = '%s'" % record.grade
-#		elif record.grade is Array:
-#			new_table += ", tiers = %s" % print_array(record.grade)
-#	new_table += "}"
-#
-#	return new_table
-
-
-#func make_loottable():
-#	var new_loottable = '{'
-#	for table_name in area_shop_items:
-#		new_loottable += "\n" + table_name + " = "
-#		var table = area_shop_items[table_name]
-#		if table.size() == 1:
-#			new_loottable += form_record(table[0], table.keys()[0]) + ","
-#			continue
-#		new_loottable += "{list = [\n"
-#		for record_name in table:
-#			var record = table[record_name]
-#			new_loottable += form_record(record, record_name) + ",\n"
-#		new_loottable += "]},"
-#	new_loottable += '\n}'
-#	var file_handler = File.new()
-#	file_handler.open("user://output.gd", File.WRITE)
-#	file_handler.store_string(new_loottable)
-#	file_handler.close()
-#
-#func print_array(array):
-#	var res = "["
-#	for line in array:
-#		if line is Array:
-#			res += print_array(line) + ", "
-#		elif line is String:
-#			res += "'%s', " % line
-#		else:
-#			res += "%s, " % line
-#	res = res.trim_suffix(", ")
-#	res += "]"
-#	return res
-#
-#func form_record(record, name):
-#	var new_table = "{"
-#	if !record.has('items'):
-#		if Items.materiallist.has(name):
-#			new_table += "material = '%s'" % name
-#		elif Items.itemlist.has(name):
-#			new_table += "item = '%s'" % name
-#
-#	if record.has('min') and record.has('max'):
-#		if record.min == record.max:
-#			new_table += ", amount = %s" % record.min
-#		else:
-#			new_table += ", min = %s, max = %s" % [record.min, record.max]
-#	if record.has('chance') and record.chance < 1:
-#		new_table += ", chance = %s" % record.chance
-#
-#	if record.has('items'):
-#		new_table += ", selector = ["
-#		for opt in record.items:
-#			new_table += "\n{item = '%s'}," % opt
-#		new_table += "]"
-#
-#	new_table += "}"
-#
-#	return new_table
-
-#func make_loottable():
-#	var new_loottable = '{'
-#	for table_name in temp:
-#		new_loottable += "\n" + table_name + " = "
-#		var table1 = temp[table_name]
-#		if table1[table1.keys()[0]] is Dictionary:
-#			new_loottable += "{selector = [\n"
-#			for record_name in table1:
-#				var record = table1[record_name]
-#				new_loottable += "{material = '%s', weight = %s, min = %s, max = %s},\n" % [record_name, record.weight, record.amount[0], record.amount[1]]
-#		else:
-#			new_loottable += "{list = [\n"
-#			for record_name in table1:
-#				var record = table1[record_name]
-#				new_loottable += "{material = '%s', min = %s, max = %s},\n" % [record_name, record[0], record[1]]
-#
-#		new_loottable += "]},"
-#	new_loottable += '\n}'
-#	var file_handler = File.new()
-#	file_handler.open("user://output.gd", File.WRITE)
-#	file_handler.store_string(new_loottable)
-#	file_handler.close()

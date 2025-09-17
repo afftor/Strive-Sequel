@@ -969,6 +969,7 @@ var TranslationDict = {
 	TOOLTIPSKIPPROLOGUE = """Пропускает квесты пролога и начинает первую сюжетную арку. Задание по займу отключено.""",
 	
 	TOOLTIPSKILLPOINTS = """Очки навыков зарабатываются в боях и используются для приобретения новых боевых навыков.""",
+	TOOLTIPSUCCUBUS = """[Succubus] gains powers from Enthralling others. Each Thrall falls in love with [succubus] and makes [him] grow in strength.""", # MISSING TRANSLATION
 	
 
 	SAVENAME = """Сохранение""",

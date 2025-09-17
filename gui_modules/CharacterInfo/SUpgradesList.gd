@@ -44,11 +44,12 @@ func update():
 	build_trainings()
 	build_spells()
 	build_thralls_tooltip()
+	basic_tooltip()
 
 
 func build_info(): 
 	var container = $info/VBoxContainer
-	var list = ['lustmax', 'lusttick', 'thralls_amount_max', null, 'thrall_points']
+	var list = ['lusttick', 'thralls_amount_max', null, 'thrall_points']
 	input_handler.ClearContainer(container, ['record', 'separator'])
 	for id in list:
 		if id == null:
@@ -98,7 +99,7 @@ func build_trainings():
 				unlocked = person.get_social_skills().has(u_data.skill)
 				var s_data = Skilldata.Skilllist[u_data.skill]
 				panel.get_node('name').text = tr(s_data.name)
-				globals.connecttexttooltip(panel, tr(s_data.descript))
+				globals.connecttexttooltip(panel, "[center]" + tr(s_data.name) + "[/center]\n" + tr(s_data.descript))
 				if s_data.icon is String:
 					panel.get_node('icon').texture = load(s_data.icon)
 				else:
@@ -107,7 +108,7 @@ func build_trainings():
 				unlocked = person.check_trait(u_data.trait)
 				var s_data = Traitdata.traits[u_data.trait]
 				panel.get_node('name').text = tr(s_data.name)
-				globals.connecttexttooltip(panel, tr(s_data.descript))
+				globals.connecttexttooltip(panel, "[center]" + tr(s_data.name) + "[/center]\n" + tr(s_data.descript))
 				if s_data.icon is String:
 					panel.get_node('icon').texture = load(s_data.icon)
 				else:
@@ -224,11 +225,14 @@ func open_spells():
 
 
 func build_thralls_tooltip():
-	var text = ""
+	var text = person.translate("[name] gains more powers based on the number of thralls [he] controls.\n\n")
 	for i in range(7):
 		var text2 = globals.build_oneline_desc_for_bonusstats(Effectdata.effect_table['succubus_thralls_%d' % i].statchanges) 
 		if i == person.get_stat('thralls_amount'):
-			text += '{color=green|' + text2 + '}\n'
+			text += '{color=green|' + str(i) + ": " + text2 + '}\n'
 		else:
-			text += text2 + '\n'
+			text +=  str(i) + ': '+text2 + '\n'
 	globals.connecttexttooltip($thralls/ThrallsTooltip, text.trim_suffix('\n'))
+
+func basic_tooltip():
+	globals.connecttexttooltip($SuccubusTrainingTooltip, person.translate(tr(("TOOLTIPSUCCUBUS"))))
