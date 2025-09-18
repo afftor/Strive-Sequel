@@ -1,30 +1,15 @@
-extends Panel
-
+extends tooltip_main
 
 var person
 
-var parentnode
-var shutoff = false
-var prevnode
+
+func showup(node, t_person):
+	if _setup(node):
+		person = t_person
 
 
-func _process(delta):
-	if parentnode != null && weakref(parentnode).get_ref() != null && ( parentnode.is_visible_in_tree() == false || !parentnode.get_global_rect().has_point(get_global_mouse_position())):
-		set_process(false)
-		hide_tooltip()
-
-
-func _init():
-	set_process(false)
-
-
-
-func showup(node, person):
-#	$Panel.visible = !person.has_profession("master")
-	parentnode = node
+func update():
 	var screen = get_viewport().get_visible_rect()
-	if shutoff == true && prevnode == parentnode:
-		return
 
 	if person != null:
 		$exp.text = str(floor(person.get_stat('base_exp')))
@@ -71,25 +56,7 @@ func showup(node, person):
 			else:
 				text += "Occupation: None"
 			text += "\n"
-			# if state.get_master() != person:
-				# if person.obedience > 0 || person.loyalty >= 100 || person.submission >= 100:
-				# 	text += "{color=green|Obedience: "
-				# else:
-				# 	text += "{color=red|Obedience: "
-				# if person.loyalty < 100 && person.submission < 100:
-				# 	text += str(ceil(person.obedience)) + "}"
-				# else:
-				# 	text += "∞}"
-#		$job.bbcode_text = globals.TextEncoder(text)
 
-		# for i in ['physics','wits','charm','sexuals']:
-		# 	if i != 'sexuals':
-		# 		get_node(i).text = str(floor(person.get_stat(i)))
-		# 		get_node(i+'2').text = str(person.get_stat(i+'_factor') * 20)
-		# 	else:
-		# 		get_node(i).text = str(floor(person.get_stat(i)))
-		# 		get_node(i+'2').text = '100'
-		
 		$growth.text = ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat('growth_factor')))]
 		$growth.set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat('growth_factor'))))])
 		for i in ['physics','wits','charm']:
@@ -111,11 +78,10 @@ func showup(node, person):
 		
 		globals.build_buffs_for_char(person, $buffscontainer, 'mansion')
 		#idk about showing buffs here - where this scene is shown anyway? 
-		prevnode = parentnode
 		input_handler.GetTweenNode(self).stop_all()
 		self.modulate.a = 1
 		show()
-		var pos = node.get_global_rect()
+		var pos = parentnode.get_global_rect()
 		pos = Vector2(pos.end.x + 10, pos.position.y)
 		self.set_global_position(pos)
 		if get_rect().end.x+100 > screen.size.x:
@@ -123,41 +89,29 @@ func showup(node, person):
 		if get_rect().end.y+125 > screen.size.y:
 			rect_global_position.y -= get_rect().end.y+125 - screen.size.y
 		set_process(true)
-	for i in $factors.get_children():
-		if person == ResourceScripts.game_party.get_master() && i.name in ["tame_factor", "authority_factor"]:
-			i.hide()
-		else:
-			i.show()
-		if i.name in ['base_exp']:
-			# i.get_node("Label").text = str(floor(person.get_stat(i.name)))
-			continue
-		if input_handler.globalsettings.factors_as_words:
-			i.get_node("Label").text = ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat(i.name)))]
-			i.get_node("Label").set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat(i.name))))]) 
-		else:
-			i.get_node("Label").text = str(floor(person.get_stat(i.name)))
-			i.get_node("Label").set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat(i.name))))])
+		for i in $factors.get_children():
+			if person == ResourceScripts.game_party.get_master() && i.name in ["tame_factor", "authority_factor"]:
+				i.hide()
+			else:
+				i.show()
+			if i.name in ['base_exp']:
+				# i.get_node("Label").text = str(floor(person.get_stat(i.name)))
+				continue
+			if input_handler.globalsettings.factors_as_words:
+				i.get_node("Label").text = ResourceScripts.descriptions.factor_descripts[int(floor(person.get_stat(i.name)))]
+				i.get_node("Label").set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat(i.name))))]) 
+			else:
+				i.get_node("Label").text = str(floor(person.get_stat(i.name)))
+				i.get_node("Label").set("custom_colors/font_color", variables.hexcolordict['factor'+str(int(floor(person.get_stat(i.name))))])
 	
-	var text = ''
-	for i in ['chg_strength','chg_dexterity','chg_persuasion','chg_wisdom']:
-		if person.get_stat(i + "_max") == 0: continue
-		text += statdata.statdata[i].name + ": " +  str(person.get_stat(i+"_max") - person.get_stat(i)) + "/" + str(person.get_stat(i+"_max")) + '\n'
-	$Panel2.visible = text != ''
-	$Panel2/RichTextLabel.bbcode_text = text
-	
-
-func cooldown():
-	shutoff = true
-	yield(get_tree().create_timer(0.2), 'timeout')
-	shutoff = false
-
-
-
-func hide_tooltip():
-	parentnode = null
-	set_process(false)
-	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
-	hide()
+		text = ''
+		for i in ['chg_strength','chg_dexterity','chg_persuasion','chg_wisdom']:
+			if person.get_stat(i + "_max") == 0: continue
+			text += statdata.statdata[i].name + ": " +  str(person.get_stat(i+"_max") - person.get_stat(i)) + "/" + str(person.get_stat(i+"_max")) + '\n'
+		$Panel2.visible = text != ''
+		$Panel2/RichTextLabel.bbcode_text = text
+	else:
+		hide()
 
 
 func set_color(value):

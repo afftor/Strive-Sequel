@@ -386,8 +386,7 @@ func connectskilltooltip(node, skill, character):
 
 func showskilltooltip(skill, node, character):
 	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP) #input_handler.GetSkillTooltip()
-	skilltooltip.character = character
-	skilltooltip.showup(node, skill)
+	skilltooltip.showup(node, skill, character)
 
 func closeskilltooltip():
 	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP) #input_handler.GetSkillTooltip()

@@ -101,6 +101,7 @@ func update_spells():
 		if sp_id == selected_spell:
 			panel.pressed = true
 		panel.connect('pressed', self, 'select_spell', [sp_id])
+		panel.se_meta('display_only', true)
 		panel.get_node('name').text = tr(s_data.name)
 		if s_data.icon is String:
 			panel.get_node('icon').texture = load(s_data.icon)
