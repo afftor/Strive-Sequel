@@ -93,6 +93,7 @@ var skills = {
 			altvalue = ['caster.sexuals_factor', '*15'],
 			},
 		targetreqs = [
+			{code = 'is_master', check = false},
 #			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = ['caster.id']}
 			],
 		effects = [],
