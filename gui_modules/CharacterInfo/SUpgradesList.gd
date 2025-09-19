@@ -161,6 +161,7 @@ func build_spells():
 			continue
 		var panel = input_handler.DuplicateContainerTemplate(container, 'Button') 
 		panel.connect('pressed', self, 'select_spell', [id])
+		panel.set_meta('display_only', true)
 		if s_data.icon is String:
 			panel.get_node('icon').texture = load(s_data.icon)
 		else:

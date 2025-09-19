@@ -4,6 +4,7 @@ var GUISounds = {
 	test = 'ding',
 }
 
+var tooltip_delay = 0.5
 
 #Game Settings
 #timeflow

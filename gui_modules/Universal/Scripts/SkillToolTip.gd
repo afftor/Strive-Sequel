@@ -1,32 +1,14 @@
-extends Panel
+extends tooltip_main
 
-var parentnode
-var shutoff = false
-var prevnode
+var skill
 
-var character = Reference
-
-func _process(delta):
-#	if parentnode != null && ( parentnode.is_visible_in_tree() == false || !input_handler.get_real_global_rect(parentnode, true).has_point(get_global_mouse_position())):
-	if weakref(parentnode).get_ref() == null:
-		set_process(false)
-		hide()
-	elif parentnode.is_visible_in_tree() == false or !input_handler.get_real_global_rect(parentnode, true).has_point(get_global_mouse_position()):
-		set_process(false)
-		hide()
+func showup(node, skillcode, ch):
+	if _setup(node):
+		skill = Skilldata.get_template(skillcode, ch)
 
 
-func _init():
-	set_process(false)
-
-func showup(node, skillcode):
-	var skill = Skilldata.get_template(skillcode, character)
-	parentnode = node
-	if shutoff == true && prevnode == parentnode:
-		return
-	show()
-	set_process(true)
-	var text = '[center]'+skill.name+'[/center]\n' + skill.descript
+func update():
+	var text = '[center]' + skill.name + '[/center]\n' + skill.descript
 	
 	var charges = skill.charges
 	if charges > 0 and skill.cooldown > 0:
@@ -34,7 +16,7 @@ func showup(node, skillcode):
 	if skill.has('combatcooldown') && skill.combatcooldown > 0:
 		text += "\n\n" + tr("TOOLTIP_COOLDOWN") + ": {color=yellow|" + str(skill.combatcooldown) + "}"
 	
-	if !node.has_meta('display_only'):
+	if !parentnode.has_meta('display_only'):
 		text += "\n\n{color=yellow|"+tr("TOOLTIPRIGHTCLICKABILITY")+"}"
 	
 	$descript.bbcode_text = globals.TextEncoder(text)
@@ -51,8 +33,7 @@ func showup(node, skillcode):
 	
 	$cost.text = text
 	
-	
-	var pos = node.get_global_rect()
+	var pos = parentnode.get_global_rect()
 	pos = Vector2(pos.position.x, pos.end.y + 10)
 	set_global_position(pos)
 	
@@ -64,12 +45,9 @@ func showup(node, skillcode):
 	rect_size.y = max(270, $descript.get_v_scroll().get_max() + 55 + $cost.rect_size.y)
 	$descript.rect_size.y = rect_size.y - 80
 	
-	
-	
 	var screen = get_viewport().get_visible_rect()
 	if get_rect().end.x >= screen.size.x:
 		rect_global_position.x -= get_rect().end.x - screen.size.x
 	if get_rect().end.y >= screen.size.y:
-		rect_global_position.y = node.get_global_rect().position.y - (get_rect().size.y+10)
-	prevnode = parentnode
+		rect_global_position.y = parentnode.get_global_rect().position.y - (get_rect().size.y+10)
 
