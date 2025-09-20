@@ -2598,6 +2598,7 @@ Loyalty: +25, Maxes Obedience.""",
 	THRALLS2DESCRIPT = "Has 2 thralls",
 	THRALLS1DESCRIPT = "Has a thrall",
 	THRALLS0DESCRIPT = "Has no thralls",
+	EFFECTNAME_E_THRALL = "Is a Thrall",
 
 	SKILLSUPREMACY = "Supremacy",
 	SKILLSUPREMACYDESCRIPT = """Category: {color=green|Gracious}

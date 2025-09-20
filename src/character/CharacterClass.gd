@@ -1782,20 +1782,26 @@ func calculate_price(shopflag = false, no_fame = false, desc_ready = false):
 		for rec in bonus_data.add:
 			value += rec.value
 			if desc_ready:
-				price_compo_text += '%s: {color=green|+%s}\n' % [
-					globals.get_tr_src(rec.src_type, rec.src_value)[1], rec.value]
+				if rec.value > 0:
+					price_compo_text += '%s: {color=green|+%s}\n' % [globals.get_tr_src(rec.src_type, rec.src_value)[1], rec.value]
+				else:
+					price_compo_text += '%s: {color=red|%s}\n' % [globals.get_tr_src(rec.src_type, rec.src_value)[1], rec.value]
 	if bonus_data.has('add_part'):
 		for rec in bonus_data.add_part:
 			mod_mul += rec.value
 			if desc_ready:
-				temp_text += '   %s: {color=green|+%s%%}\n' % [
-					globals.get_tr_src(rec.src_type, rec.src_value)[1], rec.value * 100]
+				if rec.value > 0:
+					temp_text += '   %s: {color=green|+%s%%}\n' % [globals.get_tr_src(rec.src_type, rec.src_value)[1], rec.value * 100]
+				else:
+					temp_text += '   %s: {color=red|%s%%}\n' % [globals.get_tr_src(rec.src_type, rec.src_value)[1], rec.value * 100]
 	if bonus_data.has('add_part2'):
 		for rec in bonus_data.add_part2:
 			mod_mul += rec.value
 			if desc_ready:
-				temp_text += '   %s: {color=green|+%s%%}\n' % [
-					globals.get_tr_src(rec.src_type, rec.src_value)[1], rec.value * 100]
+				if rec.value > 0:
+					temp_text += '   %s: {color=green|+%s%%}\n' % [globals.get_tr_src(rec.src_type, rec.src_value)[1], rec.value * 100]
+				else:
+					temp_text += '   %s: {color=red|%s%%}\n' % [globals.get_tr_src(rec.src_type, rec.src_value)[1], rec.value * 100]
 	
 	#traits bonuses
 	tr_mul1 = get_traits_by_tag('positive').size() 
