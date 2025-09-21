@@ -262,8 +262,8 @@ var transforms = {
 			{type = 'texture_set', set = 'default_male'},
 			{type = 'texture_set', set = 'default_female'},
 #			{type = 'texture', node = 'male_pose/HumanF1/Spine/Head/Ears_humanoid_tex', texture = "res://Character_generator/images/03_ears/ears_elven.png" },
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ShoulderR_races_hair', texture = "res://Character_generator/images/20_dryad/dryad_shoulderR.png"},
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ShoulderL_races_hair', texture = "res://Character_generator/images/20_dryad/dryad_shoulderL.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ShoulderR_races_hair', texture = "res://Character_generator/images/20_dryad/dryad_shoulderR_m.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ShoulderL_races_hair', texture = "res://Character_generator/images/20_dryad/dryad_shoulderL_m.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_races_hair', texture = "res://Character_generator/images/20_dryad/dryad_body.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/LegR/LegR_races_hair', texture = "res://Character_generator/images/20_dryad/dryad_legR.png"},
 #			{type = 'texture', node = 'Female_pose/HumanF1/Spine/Head/Ears_humanoid_tex', texture = "res://Character_generator/images/03_ears/ears_elven.png" },
@@ -348,14 +348,14 @@ var transforms = {
 			{type = 'texture_set', set = 'default_female'},
 		],
 		#half support for harpies - mb no tail, no legs, no ears
-		Slime = [ #don't think that shoulder additional parts are positioned correctly
+		Slime = [
 			{type = 'node_group_attr', group = 'human', attr = 'visible', value = true},
 			{type = 'node_group_attr', group = 'nonhuman', attr = 'visible', value = false},
 			{type = 'node_group_attr', group = 'slime', attr = 'visible', value = true},
 			{type = 'texture_set', set = 'default_male'},
 			{type = 'texture_set', set = 'default_female'},
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ShoulderR_races_over', texture = "res://Character_generator/images/22_slime/slime_armR.png"},
-			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ShoulderL_races_over', texture = "res://Character_generator/images/22_slime/slime_armL.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderR/ShoulderR_races_over', texture = "res://Character_generator/images/22_slime/slime_shoulderR_m.png"},
+			{type = 'texture', node = 'male_pose/HumanF1/Spine/ShoulderL/ShoulderL_races_over', texture = "res://Character_generator/images/22_slime/slime_shoulderL_m.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Torso_races', texture = "res://Character_generator/images/22_slime/slime_body.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/Taz_races', texture = "res://Character_generator/images/22_slime/slime_taz.png"},
 			{type = 'texture', node = 'male_pose/HumanF1/Spine/Taz/LegR/LegR_races_over', texture = "res://Character_generator/images/22_slime/slime_legR.png"},
