@@ -5339,6 +5339,7 @@ shader_param/steepness = 2.0
 [node name="ragdoll" type="Node2D"]
 light_mask = 4
 script = ExtResource( 89 )
+clothes = false
 
 [node name="VPC" type="ViewportContainer" parent="."]
 light_mask = 4
@@ -5517,7 +5518,7 @@ texture = ExtResource( 73 )
 visible = false
 light_mask = 4
 material = SubResource( 153 )
-position = Vector2( 327, 100.999 )
+position = Vector2( 311.108, 144.437 )
 rotation = -1.5708
 texture = ExtResource( 42 )
 
@@ -5525,7 +5526,7 @@ texture = ExtResource( 42 )
 visible = false
 light_mask = 4
 material = SubResource( 154 )
-position = Vector2( 327, 100.999 )
+position = Vector2( 311.108, 144.437 )
 rotation = -1.5708
 texture = ExtResource( 42 )
 
@@ -5631,7 +5632,7 @@ texture = ExtResource( 70 )
 visible = false
 light_mask = 4
 material = SubResource( 156 )
-position = Vector2( 318, -105.001 )
+position = Vector2( 308.465, -129.369 )
 rotation = -1.5708
 texture = ExtResource( 28 )
 
@@ -5639,7 +5640,7 @@ texture = ExtResource( 28 )
 visible = false
 light_mask = 4
 material = SubResource( 157 )
-position = Vector2( 318, -105.001 )
+position = Vector2( 308.465, -129.369 )
 rotation = -1.5708
 texture = ExtResource( 28 )
 

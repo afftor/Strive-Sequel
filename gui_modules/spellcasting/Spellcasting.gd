@@ -14,6 +14,8 @@ func _ready():
 
 
 func open(t_person = null, t_spell = null, lock_selected = false):
+	if !gui_controller.windows_opened.has(self):
+		gui_controller.windows_opened.append(self)
 	mode = 0
 	if t_person != null:
 		selected_person = t_person.id
@@ -99,6 +101,7 @@ func update_spells():
 		if sp_id == selected_spell:
 			panel.pressed = true
 		panel.connect('pressed', self, 'select_spell', [sp_id])
+		panel.set_meta('display_only', true)
 		panel.get_node('name').text = tr(s_data.name)
 		if s_data.icon is String:
 			panel.get_node('icon').texture = load(s_data.icon)
@@ -192,4 +195,5 @@ func reset_spell():
 func hide():
 	if gui_controller.current_screen == gui_controller.spells:
 		gui_controller.current_screen = gui_controller.previous_screen
+	gui_controller.windows_opened.erase(self)
 	.hide()

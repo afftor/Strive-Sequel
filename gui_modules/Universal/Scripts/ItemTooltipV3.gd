@@ -1,8 +1,6 @@
-extends VBoxContainer
+extends tooltip_main
 
-var parentnode
-var shutoff = false
-var prevnode
+
 onready var iconnode = $TopPanel/IconFrame/Icon
 onready var textnode1 = $MidPanel/InfoText
 onready var textnode2 = $LowPanel/InfoText
@@ -12,14 +10,6 @@ var currenttype
 var mode = 'default'
 
 var full_height = 0
-
-func _process(delta):
-	if weakref(parentnode).get_ref() == null || weakref(parentnode) == null:
-		_hide()
-		return
-	if parentnode != null && (parentnode.is_visible_in_tree() == false || !parentnode.get_global_rect().has_point(get_global_mouse_position())):
-		set_process(false)
-		_hide()
 
 
 func _input(event):
@@ -32,90 +22,64 @@ func _input(event):
 		update()
 
 
-func _init():
-	set_process(false)
-
-
-func update():
-	showup(parentnode, currentdata, currenttype)
-
-
-func cooldown():
-	shutoff = true
-	yield(get_tree().create_timer(0.2), 'timeout')
-	shutoff = false
-
-
-func _hide():
-	parentnode = null
-	set_process(false)
-	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
-	hide()
-
-
 func showup(node, data, type): #types material materialowned gear geartemplate
 	if node == null:
 		return
-	parentnode = node
-	currentdata = data
-	currenttype = type
+	if _setup(node):
+		currentdata = data
+		currenttype = type
+
+
+func update():
+	visible = false
 	$TopPanel/IconFrame/quality_color.hide()
 	
 	var screen = get_viewport().get_visible_rect()
-	if shutoff == true && prevnode == parentnode:
-		return
-
 	iconnode.material = null
 	$LowPanel/HBoxContainer/HoldShift.visible = false
-	match type:
+	match currenttype:
 		'material':
-			material_tooltip(data)
+			material_tooltip(currentdata)
 		'materialowned':
 			var workers_data = {}
 			$LowPanel/HBoxContainer/HoldShift.visible = true
-			$LowPanel/HBoxContainer/HoldShift.text = tr('OWNED_LABEL') + ': ' + str(data.amount)
-			if node.has_meta("max_workers"):
+			$LowPanel/HBoxContainer/HoldShift.text = tr('OWNED_LABEL') + ': ' + str(currentdata.amount)
+			if parentnode.has_meta("max_workers"):
 				workers_data = {
-					max = node.get_meta("max_workers"),
-					current = node.get_meta("current_workers"),
+					max = parentnode.get_meta("max_workers"),
+					current = parentnode.get_meta("current_workers"),
 				}
-			if node.has_meta("gather_mod"):
+			if parentnode.has_meta("gather_mod"):
 				workers_data = {
-					gather_mod = node.get_meta("gather_mod"),
+					gather_mod = parentnode.get_meta("gather_mod"),
 				}
-			material_tooltip(data, workers_data)
+			material_tooltip(currentdata, workers_data)
 		'gear':
 			if mode == 'default':
-				gear_tooltip(data)
+				gear_tooltip(currentdata)
 				$LowPanel/HBoxContainer/HoldShift.visible = true
 				$LowPanel/HBoxContainer/HoldShift.text = tr("INFOHOLDSHIFT")
 			elif mode == 'advanced':
 				$LowPanel/HBoxContainer/HoldShift.visible = false
-				gear_detailed_tooltip(data)
+				gear_detailed_tooltip(currentdata)
 		'geartemplate':
-			geartemplete_tooltip(data)
-	prevnode = parentnode
+			geartemplete_tooltip(currentdata)
 	
 	input_handler.GetTweenNode(self).stop_all()
 	self.modulate.a = 1
 	
-	show()
 	yield(fix_panels(), 'completed')
-	
-	if !is_instance_valid(node):
-		hide()
-		return
-	
-	var pos = node.get_global_rect()
-	if node.has_meta("exploration"):
+	visible = true
+	var pos = parentnode.get_global_rect()
+	if parentnode.has_meta("exploration"):
 		pos = Vector2(pos.end.x + 10, pos.position.y - 30)
 	else:
 		pos = Vector2(pos.end.x + 10, pos.position.y)
 	self.set_global_position(pos)
 	
 	if get_global_rect().end.x > screen.size.x:
-		if node.has_meta("exploration") || type == "gear":
-			pos = Vector2(pos.x - rect_size.x - node.rect_size.x - 10, pos.y)
+		if parentnode.has_meta("exploration") || currenttype == "gear":
+			pos = Vector2(pos.x - rect_size.x - parentnode.rect_size.x - 10, pos.y)
 			self.set_global_position(pos)
 		else:
 			pos = Vector2(pos.x + screen.size.x - get_global_rect().end.x, pos.y)
@@ -127,8 +91,7 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	if pos.y + full_height > screen.size.y:
 		pos = Vector2(pos.x, screen.size.y - full_height - 15)
 		self.set_global_position(pos)
-		
-	set_process(true)
+
 
 
 

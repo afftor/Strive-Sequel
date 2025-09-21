@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/city_icon_feame_mask.png-4922bd5e5693ade821e259000ba399c7.res"
+
+[deps]
+
+source_file="res://assets/Textures_v2/Universal/Buttons/city_icon_feame_mask.png"
+dest_files=[ "res://.import/city_icon_feame_mask.png-4922bd5e5693ade821e259000ba399c7.res" ]
+
+[params]
+
+create_from=0
+threshold=0.5
