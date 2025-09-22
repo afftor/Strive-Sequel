@@ -12,8 +12,8 @@ func open(character, category, triggernode, triggerfunction):
 	if category == variables.PANEL_SOC:
 		for i in person.get_social_skills():
 			var s_data = Skilldata.get_template(i, person)
-			if s_data.tags.has('succubus'):
-				continue
+#			if s_data.tags.has('succubus'):
+#				continue
 			skillarray.append(s_data)
 	else:
 		for i in person.get_combat_skills():
