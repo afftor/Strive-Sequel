@@ -1280,14 +1280,11 @@ expand = true
 
 [node name="crop" type="Light2D" parent="MapPanel"]
 light_mask = 32
-position = Vector2( 638, 493 )
+position = Vector2( 652, 433 )
 scale = Vector2( 1.78533, 1.064 )
 texture = ExtResource( 68 )
 mode = 3
 range_item_cull_mask = 32
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="NavigationModule" parent="." instance=ExtResource( 2 )]
 margin_left = 648.0
