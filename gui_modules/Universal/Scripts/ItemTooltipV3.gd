@@ -13,6 +13,8 @@ var full_height = 0
 
 
 func _input(event):
+	if state != STATE_OPEN:
+		return
 	if event.is_pressed():
 		if event.is_action("shift"):
 			mode = 'advanced'
