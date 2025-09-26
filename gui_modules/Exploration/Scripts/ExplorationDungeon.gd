@@ -897,7 +897,7 @@ func build_level():
 	build_location_description()
 	var tooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP)
 	globals.disconnect_text_tooltip(tooltip.parentnode)
-	tooltip.turnoff()
+#	tooltip.turnoff()
 	tooltip.hide()
 
 
