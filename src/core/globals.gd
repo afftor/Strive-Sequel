@@ -603,63 +603,68 @@ func build_desc_for_bonusstats(bonusstats, mul = 1):
 						data = statdata.statdata[i.trim_suffix('_' + suffix)]
 						bonus = suffix
 						break
-			match bonus:
-				"add", "add2":
-					text += data.name + ': {color='
-					if data.percent:
-						value = value*100
-					if value > 0:
-						change = '+'
-					if value > 0 and !data.tags.has('is_negative') or value < 0 and data.tags.has('is_negative'):
-						text += 'green|' + change
-					else:
-						text += 'red|' + change
-					value = str(stepify(value, 0.01))
-					if data.percent:
-						value = value + '%'
-					text += value + '}\n'
-				"add_part", "add_part2":
-					text += data.name + ': {color='
-					value = value*100
-					if value > 0:
-						change = '+'
-					if value > 0 and !data.tags.has('is_negative') or value < 0 and data.tags.has('is_negative'):
-						text += 'green|' + change
-					else:
-						text += 'red|' + change
-					value = str(stepify(value, 0.01))
-					value = value + '%'
-					text += value + '}\n'
-				"mul", "mul2":
-					text += data.name + ': {color='
-					value = value - 1.0
-					value = value*100
-					if value > 0:
-						change = '+'
-					if value > 0 and !data.tags.has('is_negative') or value < 0 and data.tags.has('is_negative'):
-						text += 'green|' + change
-					else:
-						text += 'red|' + change
-					value = str(stepify(value, 0.01))
-					value = value + '%'
-					text += value + '}\n'
-				'set':
-					if value:
-						text = '{color=green|' + tr(data.name + '_TRUE') + '}\n'
-					else:
-						text = '{color=red|' + tr(data.name + '_FALSE') + '}\n'
-				'array':
-					text += data.name + ': {color='
-					if data.tags.has('is_negative'):
-						text += 'red|'
-					else:
-						text += 'green|'
-					for st in value:
-						match data.array_type:
-							'mastery':
-								text += "%s, " % tr(Skilldata.masteries[st].name)
-					text = text.trim_suffix(', ')
-					text += '}\n'
+			
+			if bonus != 'set':
+				text += data.name + ': '
+			text += make_bonus_value_string(bonus, data, value) + '\n'
+	return text
+
+func make_bonus_value_string(bonus_type, data, value):
+	var text = ''
+	var change = ''
+	match bonus_type:
+		"add", "add2":
+			text += '{color='
+			if data.percent and (!data.has('base_100') or !data.base_100):
+				value = value*100
+			if value > 0:
+				change = '+'
+			if value > 0 and !data.tags.has('is_negative') or value < 0 and data.tags.has('is_negative'):
+				text += 'green|' + change
+			else:
+				text += 'red|' + change
+			text += str(stepify(value, 0.01))
+			if data.percent:
+				text += '%'
+			text += '}'
+		"add_part", "add_part2":
+			text += '{color='
+			value = value*100
+			if value > 0:
+				change = '+'
+			if value > 0 and !data.tags.has('is_negative') or value < 0 and data.tags.has('is_negative'):
+				text += 'green|' + change
+			else:
+				text += 'red|' + change
+			text += str(stepify(value, 0.01)) + '%}'
+		"mul", "mul2":
+			text += '{color='
+			value = value - 1.0
+			value = value*100
+			if value > 0:
+				change = '+'
+			if value > 0 and !data.tags.has('is_negative') or value < 0 and data.tags.has('is_negative'):
+				text += 'green|' + change
+			else:
+				text += 'red|' + change
+			text += str(stepify(value, 0.01)) + '%}'
+		'set':
+			if value:
+				text = '{color=green|' + tr(data.name + '_TRUE') + '}'
+			else:
+				text = '{color=red|' + tr(data.name + '_FALSE') + '}'
+		'array':
+			text += '{color='
+			if data.tags.has('is_negative'):
+				text += 'red|'
+			else:
+				text += 'green|'
+			for st in value:
+				match data.array_type:
+					'mastery':
+						text += "%s, " % tr(Skilldata.masteries[st].name)
+			text = text.trim_suffix(', ')
+			text += '}'
 	return text
 
 
@@ -3068,11 +3073,22 @@ func get_tr_src(src, src_val):
 			return [tr("CLASS_LABEL"), data.name]
 		'trait':
 			var data = Traitdata.traits[src_val]
-			return [tr("TRAIT"), data.name]
+			return [tr("TRAITS"), data.name]
 		'effect':
 			return [tr("EFFECT"), tr("EFFECTNAME_" + src_val.to_upper())]
 		'mastery':
-			var data = Skilldata.masteries[src_val]
-			return [tr("MASTER_POINTS"), data.name]
+			var data = statdata.statdata['mastery_' + src_val]
+			return ["", data.name]#tr("MASTER_POINTS")
+		'factor':
+			var text_name = "STAT%s_FACTOR" % src_val.to_upper()
+			if src_val == 'growth':#ugly patch, refactor if needed
+				text_name = 'STATGROWTH_FACTOR_FULLNAME'
+			return ["", tr(text_name)]#tr("STATFACTOR")
+		'item':
+			var item = ResourceScripts.game_res.items[src_val]
+			return [tr("ITEM_LABEL"), item.name]
+		'masteries_points':
+			return ["", tr("STATMASTERY_POINT_%s" % src_val.to_upper())]
 		_:
+			print("get_tr_src() can't decipher %s %s" % [src, src_val])
 			return [src, src_val]

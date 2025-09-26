@@ -474,7 +474,8 @@ var statdata = {
 		abb = 'GRO',
 		tags = ['integer', 'factor'],
 		direct = false,
-		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value}
+		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value},
+		show_info = {category = 'non_combat'}
 	},
 	physics_factor = {
 		code = 'physics_factor',
@@ -485,7 +486,8 @@ var statdata = {
 		abb = 'PHY',
 		tags = ['integer', 'factor'],
 		direct = false,
-		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value}
+		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value},
+		show_info = {category = 'non_combat'}
 	},
 	wits_factor = {
 		code = 'wits_factor',
@@ -496,7 +498,8 @@ var statdata = {
 		abb = 'WIT',
 		tags = ['integer', 'factor'],
 		direct = false,
-		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value}
+		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value},
+		show_info = {category = 'non_combat'}
 	},
 	charm_factor = {
 		code = 'charm_factor',
@@ -507,7 +510,8 @@ var statdata = {
 		abb = 'CHA',
 		tags = ['integer', 'factor'],
 		direct = false,
-		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value}
+		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value},
+		show_info = {category = 'non_combat'}
 	},
 	sexuals_factor = {
 		code = 'sexuals_factor',
@@ -518,7 +522,8 @@ var statdata = {
 		abb = 'SEX',
 		tags = ['integer', 'factor'],
 		direct = false,
-		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value}
+		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value},
+		show_info = {category = 'non_combat'}
 	},
 	magic_factor = {
 		code = 'magic_factor',
@@ -529,7 +534,8 @@ var statdata = {
 		abb = 'MAG',
 		tags = ['integer', 'factor'],
 		direct = false,
-		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value}
+		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value},
+		show_info = {category = 'non_combat'}
 	},
 	tame_factor = {
 		code = 'tame_factor',
@@ -540,7 +546,8 @@ var statdata = {
 		abb = 'TAM',
 		tags = ['integer', 'factor'],
 		direct = false,
-		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value}
+		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value},
+		show_info = {category = 'non_combat'}
 	},
 	authority_factor = {
 		code = 'authority_factor',
@@ -551,7 +558,8 @@ var statdata = {
 		abb = 'TIM',
 		tags = ['integer', 'factor'],
 		direct = false,
-		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value}
+		innate_bonuses = {mincap = variables.minimum_factor_value, maxcap = variables.maximum_factor_value},
+		show_info = {category = 'non_combat'}
 	},
 	#basestats caps
 	physics_cap = {
@@ -594,6 +602,7 @@ var statdata = {
 		tags = ['integer', 'cap_up', 'cap_low'],
 		cap_up = 'physics_cap',
 		cap_low = 0,
+		show_info = {category = 'non_combat'}
 	},
 	wits = {
 		code = 'wits',
@@ -604,6 +613,7 @@ var statdata = {
 		tags = ['integer', 'cap_up', 'cap_low'],
 		cap_up = 'wits_cap',
 		cap_low = 0,
+		show_info = {category = 'non_combat'}
 	},
 	charm = {
 		code = 'charm',
@@ -614,6 +624,7 @@ var statdata = {
 		tags = ['integer', 'cap_up', 'cap_low'],
 		cap_up = 'charm_cap',
 		cap_low = 0,
+		show_info = {category = 'non_combat'}
 	},
 	sexuals = {
 		code = 'sexuals',
@@ -695,6 +706,7 @@ var statdata = {
 		type = '',
 		direct = false,
 		tags = ['integer'],
+		show_info = {category = 'non_combat'}
 	},
 	training_spirit = {
 		code = 'training_spirit',
@@ -704,6 +716,7 @@ var statdata = {
 		type = '',
 		direct = false,
 		tags = ['integer'],
+		show_info = {category = 'non_combat'}
 	},
 	trainee_amount = {
 		code = 'trainee_amount',
@@ -713,6 +726,7 @@ var statdata = {
 		type = '',
 		direct = false,
 		tags = ['integer', 'custom_bonuses'],
+		show_info = {category = 'non_combat'}
 	},
 	resistance_red = {
 		code = 'resistance_red',
@@ -722,7 +736,8 @@ var statdata = {
 		type = '',
 		direct = false,
 		tags = ['custom_bonuses'],
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
+		show_info = {category = 'non_combat'}
 	},
 	trainer_loyalty_bonus = {
 		code = 'trainer_loyalty_bonus',
@@ -732,6 +747,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_cf',
 		tags = [],
+		show_info = {category = 'non_combat'}
 	},
 	#personality
 	personality_bold = {
@@ -786,6 +802,7 @@ var statdata = {
 		baseicon = 'stat_cf',
 		type = 'mental_stat',
 		tags = ['numeric'],
+		show_info = {category = 'non_combat'}
 	},
 	manacost_mod = {
 		code = 'manacost_mod',
@@ -827,7 +844,8 @@ var statdata = {
 		type = 'misc',
 		tags = ['integer', 'custom_bonuses'],
 		direct = false,
-		custom_order = ['add2', 'add_part2', 'mul2', 'add', 'add_part', 'mul']
+		custom_order = ['add2', 'add_part2', 'mul2', 'add', 'add_part', 'mul'],
+		show_info = {category = 'combat'}
 	},
 	mpmax = {
 		code = 'mpmax',
@@ -837,7 +855,8 @@ var statdata = {
 		type = 'misc',
 		tags = ['integer', 'custom_bonuses'],
 		direct = false,
-		custom_order = ['add2', 'add_part2', 'mul2', 'add', 'add_part', 'mul']
+		custom_order = ['add2', 'add_part2', 'mul2', 'add', 'add_part', 'mul'],
+		show_info = {category = 'combat'}
 	},
 	hp_reg = {
 		code = 'hp_reg',
@@ -887,6 +906,7 @@ var statdata = {
 		type = 'misc',
 		tags = ['integer', 'custom_bonuses'],
 		direct = false,
+		show_info = {category = 'combat'}
 	},
 	evasion = {
 		code = 'evasion',
@@ -896,6 +916,7 @@ var statdata = {
 		type = 'misc',
 		tags = ['integer', 'custom_bonuses'],
 		direct = false,
+		show_info = {category = 'combat'}
 	},
 	speed = {
 		code = 'speed',
@@ -905,6 +926,7 @@ var statdata = {
 		type = 'misc',
 		tags = ['integer', 'custom_bonuses'],
 		direct = false,
+		show_info = {category = 'combat'}
 	},
 	atk = {
 		code = 'atk',
@@ -913,7 +935,8 @@ var statdata = {
 		baseicon = 'food_love',
 		tags = ['integer', 'custom_bonuses'],
 		direct = false,
-		innate_bonuses = {mincap = 5}
+		innate_bonuses = {mincap = 5},
+		show_info = {category = 'combat'}
 	},
 	matk = {
 		code = 'matk',
@@ -922,7 +945,8 @@ var statdata = {
 		baseicon = 'food_love',
 		tags = ['integer', 'custom_bonuses'],
 		direct = false,
-		innate_bonuses = {mincap = 5}
+		innate_bonuses = {mincap = 5},
+		show_info = {category = 'combat'}
 	},
 	damagetype = {
 		code = 'damagetype',
@@ -949,6 +973,7 @@ var statdata = {
 		baseicon = 'food_love',
 		tags = ['integer', 'custom_bonuses'],
 		direct = false,
+		show_info = {category = 'combat'}
 	},
 	mdef = {
 		code = 'mdef',
@@ -957,6 +982,7 @@ var statdata = {
 		baseicon = 'food_love',
 		tags = ['integer', 'custom_bonuses'],
 		direct = false,
+		show_info = {category = 'combat'}
 	},
 	damage_reduction = {
 		code = 'damage_reduction',
@@ -966,7 +992,8 @@ var statdata = {
 		type = 'misc',
 		tags = ['integer'],
 		direct = false,
-		innate_bonuses = {maxcap = 100}
+		innate_bonuses = {maxcap = 100},
+		show_info = {category = 'combat'}
 	},
 	armorpenetration = {
 		code = 'armorpenetration',
@@ -975,6 +1002,7 @@ var statdata = {
 		baseicon = 'food_love',
 		tags = ['integer'],
 		direct = false,
+		show_info = {category = 'combat'}
 	},
 	critchance = {
 		code = 'critchance',
@@ -983,6 +1011,7 @@ var statdata = {
 		baseicon = 'food_love',
 		tags = ['integer'],
 		direct = false,
+		show_info = {category = 'combat'}
 	},
 	critmod = {
 		code = 'critmod',
@@ -992,6 +1021,7 @@ var statdata = {
 		baseicon = 'food_love',
 		tags = ['numeric'],
 		direct = false,
+		show_info = {category = 'combat'}
 	},
 	#effects
 	burn_mod = {
@@ -1235,10 +1265,12 @@ var statdata = {
 		name = '',
 		descript = '',
 		percent = true,
+		base_100 = true,#refactor if need
 		baseicon = 'food_love',
 		default_bonus = 'add_part',
 		tags = ['numeric', 'custom_bonuses'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	mod_collect = {
 		code = 'mod_collect',
@@ -1249,6 +1281,7 @@ var statdata = {
 		default_bonus = 'add_part',
 		tags = ['numeric'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	mod_build = {
 		code = 'mod_build',
@@ -1259,6 +1292,7 @@ var statdata = {
 		default_bonus = 'add_part',
 		tags = ['numeric'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	mod_hunt = {
 		code = 'mod_hunt',
@@ -1269,6 +1303,7 @@ var statdata = {
 		default_bonus = 'add_part',
 		tags = ['numeric'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	mod_fish = {
 		code = 'mod_fish',
@@ -1279,6 +1314,7 @@ var statdata = {
 		default_bonus = 'add_part',
 		tags = ['numeric'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	mod_cook = {
 		code = 'mod_cook',
@@ -1289,6 +1325,7 @@ var statdata = {
 		default_bonus = 'add_part',
 		tags = ['numeric'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	mod_smith = {
 		code = 'mod_smith',
@@ -1299,6 +1336,7 @@ var statdata = {
 		default_bonus = 'add_part',
 		tags = ['numeric'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	mod_tailor = {
 		code = 'mod_tailor',
@@ -1309,6 +1347,7 @@ var statdata = {
 		default_bonus = 'add_part',
 		tags = ['numeric'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	mod_alchemy = {
 		code = 'mod_alchemy',
@@ -1319,6 +1358,7 @@ var statdata = {
 		default_bonus = 'add_part',
 		tags = ['numeric'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	mod_farm = {
 		code = 'mod_farm',
@@ -1329,6 +1369,7 @@ var statdata = {
 		default_bonus = 'add_part',
 		tags = ['numeric'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	mod_pros = {
 		code = 'mod_pros',
@@ -1339,6 +1380,7 @@ var statdata = {
 		default_bonus = 'add_part',
 		tags = ['numeric'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	mod_service = {
 		code = 'mod_service',
@@ -1349,6 +1391,7 @@ var statdata = {
 		default_bonus = 'add_part',
 		tags = ['numeric'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	mod_waitress = {
 		code = 'mod_waitress',
@@ -1359,6 +1402,7 @@ var statdata = {
 		default_bonus = 'add_part',
 		tags = ['numeric'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	mod_hostess = {
 		code = 'mod_hostess',
@@ -1369,6 +1413,7 @@ var statdata = {
 		default_bonus = 'add_part',
 		tags = ['numeric'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	mod_dancer = {
 		code = 'mod_dancer',
@@ -1379,6 +1424,7 @@ var statdata = {
 		default_bonus = 'add_part',
 		tags = ['numeric'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	mod_strip = {
 		code = 'mod_strip',
@@ -1389,6 +1435,7 @@ var statdata = {
 		default_bonus = 'add_part',
 		tags = ['numeric'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	
 	base_task_crit_chance = { # for char
@@ -1399,6 +1446,7 @@ var statdata = {
 		baseicon = 'food_love',
 		tags = ['numeric'],
 		direct = false,
+		show_info = {category = 'non_combat'}
 	},
 	#challenges
 	chg_strength = {
@@ -1708,6 +1756,7 @@ func _ready():
 				tags = ['show_in_header', 'integer'],
 				direct = false,
 				container = 'masteries',
+				show_info = {category = 'combat'}
 			}
 		statdata['mastery_' + i + '_enable'] = {
 				code = "mastery_" + i + '_enable',
@@ -1765,6 +1814,7 @@ func _ready():
 				tags = ['integer'],
 				direct = false,
 				container = 'resists',
+				show_info = {category = 'combat', hide_if_0 = true},
 			}
 	for st in Statlist_init.damage_mods:
 		statdata[st] = {
@@ -1773,6 +1823,7 @@ func _ready():
 				percent = true,
 				direct = false,
 				container = 'damage_mods',
+				show_info = {category = 'combat'}
 			}
 	for st in Statlist_init.manacost_mods:
 		statdata[st] = {

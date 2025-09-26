@@ -20,6 +20,7 @@ var c_skills_real = []
 var e_skills_real = []
 var stat_bonuses = {}
 var buffs = []
+var masteries_sources = {}
 
 
 func _init().():
@@ -77,6 +78,7 @@ func generate_data(stop_at = variables.DYN_STATS_FULL, forced = false):
 	clear_nonstored_effs()
 	traits_real = traits_stored.duplicate()
 	masteries_real = masteries.duplicate(true)
+	masteries_sources.clear()
 	var process_skills = (stop_at == variables.DYN_STATS_FULL)
 	var skills_old = skills_real.duplicate()
 	var c_skills_old = c_skills_real.duplicate()
@@ -224,6 +226,7 @@ func process_bonus_record(stat, value, src_type, src_value, timestamp):
 			stat = stat.trim_prefix('mastery_')
 			for i in range(value):
 				masteries_real[stat].passive.push_back(timestamp)
+			add_masteries_source(stat, src_type, src_value, value)
 		else:
 			add_stat_bonus(stat, value, statdata.statdata[stat].default_bonus, src_type, src_value, timestamp)
 	else:
@@ -236,6 +239,15 @@ func process_bonus_record(stat, value, src_type, src_value, timestamp):
 		if !f:
 			print("error: bonus stat %s not known" % stat)
 
+func add_masteries_source(stat, src_type, src_value, value):
+	if !masteries_sources.has(stat):
+		masteries_sources[stat] = {}
+	if !masteries_sources[stat].has(src_type):
+		masteries_sources[stat][src_type] = {}
+	if !masteries_sources[stat][src_type].has(src_value):
+		masteries_sources[stat][src_type][src_value] = value
+	else:
+		masteries_sources[stat][src_type][src_value] += value
 
 func add_stat_bonus(stat, value, operant, src_type, src_value, timestamp, check = false):
 	var store = stat_bonuses
@@ -449,12 +461,14 @@ func get_stat_timestamps_data(stat, op = 'add'):
 
 
 func get_stat(stat): #pure value
+	return get_stat_full(stat).result
+
+func get_stat_full(stat): #dict value
 	var st_data = statdata.statdata[stat]
 	if st_data.tags.has('factor'):
-		return get_stat_data(stat, variables.DYN_STATS_FACTORS).result
+		return get_stat_data(stat, variables.DYN_STATS_FACTORS)
 	else:
-		return get_stat_data(stat).result
-
+		return get_stat_data(stat)
 
 func get_stat_timestamps(stat): #positive integer _add bonuses only
 	var tres = get_stat_timestamps_data(stat)
@@ -922,13 +936,35 @@ func remove_mastery_point_passive(school, value):
 		masteries[school].passive.pop_back()
 
 
-func get_mastery_level(school): #external check, for the sake of condition sanity
+func get_mastery_level(school, desc_ready = false): #external check, for the sake of condition sanity
+	if desc_ready:
+		parent.get_ref().reset_stat_compo_dict()
+		parent.get_ref().stat_compo_dict.bonuses.add = []
 	if rebuild < variables.DYN_STATS_PREAREA:
 		generate_data(variables.DYN_STATS_PREAREA)
+	var res = 0
 	if masteries_real[school].enable:
-		return masteries_real[school].universal.size() + masteries_real[school].combat.size() + masteries_real[school].magic.size() + masteries_real[school].passive.size()
-	else:
-		return 0 
+		for real_type in ['universal', 'combat', 'magic', 'passive']:
+			res += masteries_real[school][real_type].size()
+			if desc_ready:
+				if real_type == 'passive':
+					if masteries_sources.has(school):
+						for src_type in masteries_sources[school]:
+							for src_value in masteries_sources[school][src_type]:
+								parent.get_ref().stat_compo_dict.bonuses.add.append({
+									src_type = src_type,
+									src_value = src_value,
+									value = masteries_sources[school][src_type][src_value]
+								})
+				else:
+					parent.get_ref().stat_compo_dict.bonuses.add.append({
+						src_type = 'masteries_points',
+						src_value = real_type,
+						value = masteries_real[school][real_type].size()
+					})
+	if desc_ready:
+		parent.get_ref().stat_compo_dict.result = res
+	return res
 
 
 func get_used_mastery_points(category):

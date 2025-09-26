@@ -33,6 +33,7 @@ var selectedskill = 'attack'
 
 var previous_location
 var price_compo_text
+var stat_compo_dict
 #constant stats
 
 #to delegate!
@@ -111,16 +112,24 @@ func get_stat_value_data(statname):
 		return dyn_stats.get_stat_data(statname)
 
 
-func get_stat(statname, nobonus = false):
+func get_stat(statname, nobonus = false, desc_ready = false):
+	if desc_ready:
+		reset_stat_compo_dict()
 	if statname in ['hp', 'mp', 'shield', 'combatgroup', 'id']:
 		return get(statname)
 	if statname in ['physics','wits','charm','sexuals']:
 		if nobonus:
 			return statlist.get_stat(statname)
 		else:
-			return max(statlist.get_stat(statname) + dyn_stats.get_stat(statname + '_bonus'), 0)
+			var dyn_dict = dyn_stats.get_stat_full(statname + '_bonus')
+			var res = max(statlist.get_stat(statname) + dyn_dict.result, 0)
+			if desc_ready:
+				stat_compo_dict.base_value = statlist.get_stat(statname) + dyn_dict.base_value
+				stat_compo_dict.bonuses = dyn_dict.bonuses
+				stat_compo_dict.result = res
+			return res
 	if statname.begins_with('mastery_') and !statname.begins_with('mastery_point'):
-		return dyn_stats.get_mastery_level(statname.trim_prefix('mastery_'))
+		return dyn_stats.get_mastery_level(statname.trim_prefix('mastery_'), desc_ready)
 	if statname == 'base_exp':
 		return xp_module.base_exp
 	if statname == 'counters':
@@ -189,8 +198,21 @@ func get_stat(statname, nobonus = false):
 	if st_data.direct:
 		return statlist.get_stat(statname)
 	else:
+		if desc_ready:
+			stat_compo_dict = dyn_stats.get_stat_full(statname)
 		return dyn_stats.get_stat(statname)
 
+func reset_stat_compo_dict():
+	stat_compo_dict = {
+		base_value = 0,
+		result = 0,
+		bonuses = {},
+	}
+
+func get_stat_composition_dict():
+	#can return "clean" (just reset) dict, if stat has no bonuses,
+	#or get_stat() currently can't find them
+	return stat_compo_dict
 
 func set_stat(stat, value):
 	if stat in ['hp', 'mp', 'shield', 'taunt']:
