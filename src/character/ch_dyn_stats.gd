@@ -740,6 +740,8 @@ func get_professions():
 func get_class_list(category, person):
 	var array = []
 	for i in classesdata.professions.values():
+		if i.tags.has('cant_spawn'):
+			continue
 		if (category != 'any' && i.categories.has(category) == false) || professions.has(i.code):
 			continue
 		if parent.get_ref().checkreqs(i.reqs, true):
