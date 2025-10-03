@@ -1160,8 +1160,8 @@ var unique_sprites = {
 		wed = {
 			name = "Wed",
 			descript = "",
-#			path = "lira_wed_body", 
-			path = "", 
+			path = "lira_wed_body", 
+#			path = "", 
 			face_path = "lira_wed",
 			unlock_reqs = []
 			},
