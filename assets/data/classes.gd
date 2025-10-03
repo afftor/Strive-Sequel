@@ -310,6 +310,23 @@ var professions = {
 		skills = ['succubus_lust_skill', 'enthrall', 'release_thrall'],
 		conflict_classes = [],
 	},
+	true_succubus = { #backward compat fix
+		code = 'true_succubus',
+		name = '',
+		altname = '',
+		altnamereqs = [{code = 'sex', operant = 'eq', value = 'male'}],
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/Succubus.png"),
+		tags = ['permanent'],
+		categories = ['social', 'sexual'],
+		showupreqs = [{code = 'disabled', check = true}],
+		reqs = [],
+		combatskills = ['euphoria_apply'],
+		statchanges = {sexuals_bonus = 15, trainee_amount = 1, mastery_point_magic = 1}, #charm_bonus = 5, chg_persuasion_max = 1,
+		traits = ['succubus'], #'trainer'], 
+		skills = ['succubus_lust_skill', 'enthrall', 'release_thrall'],
+		conflict_classes = [],
+	},
 	succubus_old = {
 		code = 'succubus_old',
 		name = '',
@@ -327,7 +344,7 @@ var professions = {
 		skills = ['succubus_lust_skill'],#'seduce',
 		conflict_classes = ['true_succubus'],
 	},
-	true_succubus = { #obsolete
+	true_succubus_old = { #obsolete
 		code = 'true_succubus',
 		name = '',
 		altname = '',
