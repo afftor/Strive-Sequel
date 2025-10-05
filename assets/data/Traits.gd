@@ -239,16 +239,34 @@ var traits = {
 		effects = ['e_tr_hunter1'],
 		bonusstats = {}
 	},
-#	berserker = {
-#		code = 'berserker',
-#		name = '',
-#		descript = '',
-#		visible = false,
-#		icon = null,
-#		show_in_parent_stats = true,
-#		effects = ['e_tr_bers1', 'e_tr_bers2'],
-#		bonusstats = {}
-#	},
+	berserker = { #descript only
+		code = 'berserker',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		show_in_parent_stats = true,
+		effects = [],
+		bonusstats = {}
+	},
+	attendant = {#descript only
+		code = 'attendant',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+	},
+	alchemist = {#descript only
+		code = 'alchemist',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		show_in_parent_stats = true,
+		effects = [],
+		bonusstats = {}
+	},
 	druid = {
 		code = 'druid',
 		name = '',
