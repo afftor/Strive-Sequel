@@ -849,3 +849,115 @@ func get_fame_tier_bonus(tier):
 	if dict.has('recruit_bonus'):
 		text += '%s: {color=green|+%d%%}\n' % [tr('FAMEDESC_RECRUIT_BONUS'), int(dict.recruit_bonus * 100)]
 	return text
+
+func make_slave_statreq_text(req):
+	match req.code:
+		'is_master':
+			var text
+			if req.check: text = "STATREQ_IS_SLAVE_TYPE"
+			else: text = "STATREQ_IS_NOT_SLAVE_TYPE"
+			return "%s %s %s %s" % [
+				tr(text),
+				tr('CHARTYPEMASTER'),
+				tr('REQOR'),
+				tr('CHARTYPEMASTERF')]
+		'is_free':
+			if req.check: return tr('STATREQ_IS_FREE')
+			else: return tr('STATREQ_IS_NOT_FREE')
+		'slave_type':
+			var text
+			if req.operant == 'eq': text = "STATREQ_IS_SLAVE_TYPE"
+			else: text = "STATREQ_IS_NOT_SLAVE_TYPE"
+			return "%s %s" % [tr(text), tr("CHARTYPE" + req.value.to_upper())]
+		'has_status':
+			if req.status == 'tr_obed_donate' and req.check:
+				return tr("STATREQ_TRAINING_OBEDIENCE")
+			return String(req).trim_prefix("{").trim_suffix("}")
+		'workrule':
+			if req.value == 'lock' and !req.check:
+				return tr("STATREQ_WORKRULE_LOCK")
+			return String(req).trim_prefix("{").trim_suffix("}")
+		'stat':
+			var stat_name = statdata.statdata[req.stat].name
+			var operant_text = input_handler.operant_translation(req.operant)
+			if req.stat.ends_with('factor') && input_handler.globalsettings.factors_as_words:
+				return "%s: %s %s" % [stat_name, operant_text, tr(ResourceScripts.descriptions.factor_descripts[int(req.value)])]
+			elif req.stat in ['vaginal_virgin']:#operant is eq or neq, and value is bool
+				if (req.operant == 'eq' and req.value) or (req.operant == 'neq' and !req.value):
+					return "%s %s" % [tr("OPERANTEQ"), stat_name]
+				else:
+					return "%s %s" % [tr("OPERANTNEQ"), stat_name]
+			elif req.stat == 'personality':
+				var val
+				if req.value is Array:
+					val = ''
+					for j in range(req.value.size()):
+						if j == req.value.size()-1: val += ' %s ' % tr('REQOR')
+						elif j != 0: val += ', '
+						val += tr("PERSONALITYNAME" + req.value[j].to_upper())
+				else:
+					val = tr("PERSONALITYNAME" + req.value.to_upper())
+				if req.operant == 'neq':
+					return "%s: %s %s." % [stat_name, operant_text, val]
+				else:
+					return "%s: %s." % [stat_name, val]
+			elif bodypartsdata.has(req.stat):# tits_size, height, ass_size
+				var val
+				if req.value is Array:
+					val = ''
+					for j in range(req.value.size()):
+						if j == req.value.size()-1: val += ' %s ' % tr('REQOR')
+						elif j != 0: val += ', '
+						val += bodypartsdata[req.stat][req.value[j]].name
+				else:
+					val = bodypartsdata[req.stat][req.value].name
+				return "%s: %s %s." % [stat_name, operant_text, val]
+			else:
+				return "%s: %s %s." % [stat_name, operant_text, req.value]
+		'sex':
+			var text = "%s: " % tr('STATSEX')
+			if req.has('check') and !req.check:
+				text += "%s " % tr("OPERANTNEQ")
+			text += "%s." % tr('SLAVESEX'+req.value.to_upper())
+			return text
+		'one_of_races':
+			var text = "%s: " % tr('STATRACE')
+			for j in req.value:
+				text += "%s, " % tr("RACE" + j.to_upper())
+			text = "%s." % text.substr(0, text.length() - 2)
+			return text
+		'race':
+			var text = "%s: " % tr('STATRACE')
+			if req.has('check') and !req.check:
+				text += "%s " % tr("OPERANTNEQ")
+			text += "%s." % tr("RACE" + req.race.to_upper())
+			return text
+		'trait':
+			var text = "%s: " % tr('TRAITS')
+			if req.has('check') and !req.check:
+				text += "%s " % tr("OPERANTNEQ")
+			text += "%s." % Traitdata.traits[req.trait].name
+			return text
+		'has_profession':
+			var text = "%s: " % tr('REQHASCLASS')
+			if req.has('check') and !req.check:
+				text += "%s " % tr("OPERANTNEQ")
+			var prof_name
+			if req.has("altname"):
+				prof_name = classesdata.professions[req.profession].altname
+			else:
+				prof_name = classesdata.professions[req.profession].name
+			text += "%s." % prof_name
+			return text
+		'gear_equiped':
+			var text
+			if req.has('orflag') and req.orflag:
+				text = "   %s " % tr('REQOR')
+			else:
+				text = "%s: " % tr('REQMUSTHAVEGEAR')
+			if req.has('check') and !req.check:
+				text += "%s " % tr("OPERANTNEQ")
+			text += "%s." % Items.itemlist[req.value].name
+			return text
+		_:
+			return String(req).trim_prefix("{").trim_suffix("}")
