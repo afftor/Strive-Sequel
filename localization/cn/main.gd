@@ -925,6 +925,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	TOOLTIPSKIPPROLOGUE = "Skips prologue quests and starts first story arc. The loan mission is disabled. ",
 	
 	TOOLTIPSKILLPOINTS = "Skill Points are earned from battles and are used to purchase new combat skills.",
+	TOOLTIPSUCCUBUS = """[Succubus] gains powers from Enthralling others. Each Thrall falls in love with [succubus] and makes [him] grow in strength.""", # MISSING TRANSLATION
 	
 
 	SAVENAME = "存档名称",

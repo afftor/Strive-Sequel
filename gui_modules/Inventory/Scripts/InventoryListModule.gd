@@ -244,7 +244,7 @@ func useitem(item, type):
 			input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 			if Items.itemlist[item.itembase].tags.has('request_confirm'):
 				titem = item
-				input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'useitem_confirm', tr("ITEMUSE")])
+				input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'useitem_confirm', globals.TextEncoder(tr("ITEMUSECONFIRM") % tr(item.name))])
 			else:
 				selectedhero.use_mansion_item(item)
 				get_parent().set_active_hero(selectedhero)

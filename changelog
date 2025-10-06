@@ -1,3 +1,14 @@
+0.13.0
+Added new slave quest types with bigger rewards
+Altered a few quest dialogues
+Updated location gui
+Revamped Succubus class into a separate mechanic featuring thralls and transformation mechanic. Corruptive Essence allowing to become succubus/incubus can be obtained on start or rarely from medium and hard dungeon boss rewards
+Multiple minor quest and typo fixes
+Daisy's quest now offers 5.000 gold
+Fixed turn skipping sometimes stuttering not skipping all turns through
+Fixed act 3 completion not always working properly
+Fixed some minor issues in act 4
+Fixed some sprite inconsistensies
 0.12.0
 Added Act 4 intro
 Added new Fame stat and system:

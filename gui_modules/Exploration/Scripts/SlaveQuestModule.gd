@@ -6,6 +6,7 @@ onready var take_btn = $TakeButton
 #onready var cancel_btn = $CancelButton
 
 var cur_quest_id
+var pressed_btn
 
 func _ready():
 	take_btn.connect("pressed", self, "take_quest")
@@ -36,10 +37,14 @@ func build_quest_list():
 		slave_quests.process_faction_icon(new_node.get_node('fact'), quest.faction)
 		var btn = new_node.get_node('btn')
 		btn.text = quest.name
-		btn.connect("pressed", self, "show_quest", [quest_id])
+		btn.connect("pressed", self, "show_quest", [quest_id, btn])
 
 
-func show_quest(quest_id):
+func show_quest(quest_id, btn):
+	if pressed_btn != null and is_instance_valid(pressed_btn):
+		pressed_btn.pressed = false
+	pressed_btn = btn
+	pressed_btn.pressed = true
 	quest_panel.show()
 	var slave_quests = ResourceScripts.slave_quests
 	cur_quest_id = quest_id

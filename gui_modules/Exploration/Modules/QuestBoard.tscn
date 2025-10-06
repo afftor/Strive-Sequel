@@ -1,7 +1,9 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=1]
 [ext_resource path="res://src/scenes/QuestPanelV2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui_modules/Exploration/Modules/SlaveQuestModule.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/images/iconstraits/l_collar.png" type="Texture" id=4]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=6]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=9]
@@ -62,6 +64,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="slave_quests" type="TextureButton" parent="."]
+margin_left = 84.0
+margin_top = 40.0
+margin_right = 178.0
+margin_bottom = 134.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Slave Requests"
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 20 )
+texture_hover = ExtResource( 24 )
+
+[node name="TextureRect" type="TextureRect" parent="slave_quests"]
+modulate = Color( 0.772549, 0.72549, 0.639216, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.5
+margin_top = 9.5
+margin_right = -9.5
+margin_bottom = -9.5
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="guildsortVScroll" type="HBoxContainer" parent="."]
 margin_left = 260.0
 margin_top = 40.0
@@ -69,9 +96,6 @@ margin_right = 746.0
 margin_bottom = 134.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="fighters" type="TextureButton" parent="guildsortVScroll"]
 margin_right = 94.0
@@ -188,9 +212,6 @@ margin_bottom = 82.0
 custom_colors/font_color = Color( 1, 0.894118, 0.337255, 1 )
 custom_fonts/font = ExtResource( 26 )
 text = "QBALL"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 30.0
@@ -267,7 +288,7 @@ margin_bottom = 304.051
 
 [node name="Button" type="TextureRect" parent="QuestDetails/VBoxContainer"]
 visible = false
-margin_right = 431.0
+margin_right = 430.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 0, 80 )
 texture = ExtResource( 31 )
@@ -336,5 +357,20 @@ margin_top = 867.0
 margin_right = 1548.0
 margin_bottom = 900.0
 text = "test"
+
+[node name="SlaveQuest" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="SlaveQuestModule" parent="SlaveQuest" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -430.0
+margin_top = -400.0
+margin_right = 430.0
+margin_bottom = 400.0
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

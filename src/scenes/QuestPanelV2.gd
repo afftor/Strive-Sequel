@@ -200,6 +200,11 @@ func show_info(quest):
 							if k.code != 'slave_type':#crutch (temporal?) for guilds' quests
 								tooltiptext += String(k).trim_prefix("{").trim_suffix("}") + "\n"
 				tooltiptext += "%s/%s slaves delivered." % [i.delivered_slaves, i.value]
+				if quest.has('faction'):#way to determine slave quest
+					quest_descript += "\n" + tooltiptext
+					
+					quest_descript = quest_descript.replace("[factionname]","{color=green|"+ tr(ResourceScripts.slave_quests.get_faction(quest.faction).name) + "}")
+					tooltiptext = ""
 				globals.connecttexttooltip(newbutton, tooltiptext)
 			'slave_work':
 				var time = ''
@@ -320,12 +325,22 @@ func show_info(quest):
 		faction_stemp.show()
 	elif quest.has('source') and worlddata.factiondata.has(quest.source):
 		var factiondata = worlddata.factiondata[quest.source]
-		faction_icon.texture = factiondata.icon
+		faction_icon.texture = images.get_icon("guilds_" + quest.source)#factiondata.icon
 		globals.connecttexttooltip(faction_icon, "%s\n%s" % [
 			tr(factiondata.name), tr(factiondata.description),
 		])
 		faction_stemp.show()
 	else:
 		faction_stemp.hide()
+	
+	if quest.has('faction'):#way to determine slave quest:
+		diff_label.hide()
+		req_label.hide()
+		req_cont.hide()
+		
+	elif !req_label.visible:
+		diff_label.show()
+		req_label.show()
+		req_cont.show()
 
 

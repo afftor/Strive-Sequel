@@ -549,8 +549,8 @@ func process_faction_icon(node, fact_id):
 	var faction = get_faction(fact_id)
 	var faction_dyn = get_faction_dynamic_data(fact_id)
 	node.texture = faction.icon
-	globals.connecttexttooltip(node, "%s\n%s\n%s\n%s" % [
-		tr(faction.name), tr(faction.description),
-		tr('SQ_FACT_RATING') % faction_dyn.rating,
-		tr('SQ_FACT_PRICE') % ("%s%%" % (faction_dyn.price_factor * 100))
+	globals.connecttexttooltip(node, "%s\n%s" % [ #"%s\n%s\n%s\n%s"
+		'[center]' + tr(faction.name) + '[/center]', tr(faction.description),
+		#tr('SQ_FACT_RATING') % faction_dyn.rating,
+		#tr('SQ_FACT_PRICE') % ("%s%%" % (faction_dyn.price_factor * 100))
 	])

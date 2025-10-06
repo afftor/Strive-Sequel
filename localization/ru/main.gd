@@ -185,6 +185,7 @@ var TranslationDict = {
 	SIBLINGMODULESUCCUBTRAIN = """Succubus Training""", # MISSING TRANSLATION
 	SIBLINGMODULEAVAILABLE = "Доступно",
 	SIBLINGMODULEAVAILABLETOOLTIP = "Количество доступных дополнительных тренировок зависит от Фактора Роста.",
+	SIBLINGMODULETHRALLLIST = """Thralls""", # MISSING TRANSLATION
 	MINORTRAINMAXREACHED = "Достигнут максимум дополнительных тренировок",
 	SYSMESSAGEATLEAST1CHAR = """Выберите хотя бы 1 персонажа для боя.""",
 	OPERANTATLEAST = """Минимум""",
@@ -968,6 +969,7 @@ var TranslationDict = {
 	TOOLTIPSKIPPROLOGUE = """Пропускает квесты пролога и начинает первую сюжетную арку. Задание по займу отключено.""",
 	
 	TOOLTIPSKILLPOINTS = """Очки навыков зарабатываются в боях и используются для приобретения новых боевых навыков.""",
+	TOOLTIPSUCCUBUS = """[Succubus] gains powers from Enthralling others. Each Thrall falls in love with [succubus] and makes [him] grow in strength.""", # MISSING TRANSLATION
 	
 
 	SAVENAME = """Сохранение""",
@@ -4873,6 +4875,8 @@ Requires: Базовый рабский труд""",
 	ITEMEXP_SCROLLDESCRIPT = """Дает использующему 100 очков опыта.""",
 	ITEMSEXSWAP_POTION = """Зелье смены пола""",
 	ITEMSEXSWAP_POTIONDESCRIPT = """Меняет пол персонажа на противоположный. Не действует на уникальных персонажей.""",
+	ITEMUSECONFIRM = """You sure want to use {color=yellow|%s}?""", # MISSING TRANSLATION
+	ITEMUSE = """Are you sure?""", # MISSING TRANSLATION
 
 
 	DIALOGUEEVENTMINORUSSELECT = """Выберите, какая часть тела [name] должна быть уменьшена.""",
@@ -5012,6 +5016,7 @@ Requires: Базовый рабский труд""",
 	STARTUPGRADEBONUS1 = """Кузницу""",
 	STARTUPGRADEBONUS2 = """Комнату портного""",
 	STARTUPGRADEBONUS3 = """Алхимическую комнату""",
+	STARTUPGRADEBONUS4 = """Corrupted Essence""", # MISSING TRANSLATION
 	
 	
 	FIGHTERSINTRODUCTION1 = """Крупный мужчина в тяжелых доспехах окинул вас незаинтересованным взглядом. 

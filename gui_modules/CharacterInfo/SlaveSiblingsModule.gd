@@ -13,15 +13,16 @@ onready var succub_panel = $UpgradesPanel/SuccubUpgradesList
 #var loyalty_mode = true
 #var relations_mode = true
 #var loyalty_tab = 3
-enum tab_nums {all, food, mastery, training, relations, kin, minor, metrics, thralls}
+enum tab_nums {all, food, mastery, training, relations, kin, minor, metrics, thralls, stats}
 onready var tab_btns = {
 	tab_nums.mastery : $change_buttons/mtr_button,
 	tab_nums.training : $change_buttons/tr_button,
 	tab_nums.relations : $change_buttons/rel_button,
 	tab_nums.kin : $change_buttons/kin_button,
 	tab_nums.minor : $change_buttons/minor_tr_button,
-	tab_nums.metrics : $change_buttons/stats_button,
+	tab_nums.metrics : $change_buttons/metrics_button,
 	tab_nums.thralls : $change_buttons/succub_tr_button,
+	tab_nums.stats : $change_buttons/stats_button,
 }
 var cur_tab
 var last_tab
@@ -455,8 +456,9 @@ func close_tab(tab):
 		$UpgradesPanel.visible = false
 		succub_panel.visible = false
 		$UpgradesPanel/Label.text = ""
-		globals.disconnect_text_tooltip($UpgradesPanel/Label)
 	if tab == tab_nums.metrics or tab == tab_nums.all:
+		$MetricsPanel.visible = false
+	if tab == tab_nums.stats or tab == tab_nums.all:
 		$StatsPanel.visible = false
 	cur_tab = null
 
@@ -504,6 +506,9 @@ func open_tab(tab):
 			globals.connecttexttooltip($UpgradesPanel/Label, tr("SIBLINGMODULEAVAILABLETOOLTIP"))
 		tab_nums.metrics:
 			make_metrics()
+			$MetricsPanel.visible = true
+		tab_nums.stats:
+			$StatsPanel.make_stats(person)
 			$StatsPanel.visible = true
 		tab_nums.thralls:
 			$UpgradesPanel.visible = true
@@ -619,6 +624,7 @@ func make_metrics():
 	text += "\n\n" + tr("METRICS_COMBAT") % [person.get_stat("metrics_win"), person.get_stat("metrics_kills"),]
 	text = person.translate(globals.TextEncoder(text))
 	
-	$StatsPanel/RichTextLabel.bbcode_text = text
+	$MetricsPanel/RichTextLabel.bbcode_text = text
+
 
 
