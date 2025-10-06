@@ -1,0 +1,608 @@
+extends Reference
+var data = {
+	kuro3_dialogue_1 = {
+		reqs = [],
+		tags = ["dialogue_scene"],
+		text = [{text = "KURO3_DIALOGUE_1", reqs = []}],
+		options = [
+			{
+				code = "kuro3_dialogue_2",
+				text = "KURO3_DIALOGUE_1_OPTION_1",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = []
+			},
+			{
+				code = "kuro3_dialogue_2",
+				text = "KURO3_DIALOGUE_1_OPTION_2",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = []
+			},
+			{
+				code = "kuro3_dialogue_2",
+				text = "KURO3_DIALOGUE_1_OPTION_3",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = []
+			},
+		]
+	},
+	kuro3_dialogue_2 = {
+		reqs = [],
+		tags = ["dialogue_scene"],
+		text = [
+			{text = "KURO3_DIALOGUE_2_1", reqs = [], previous_dialogue_option = 1},
+			{text = "KURO3_DIALOGUE_2_2", reqs = [], previous_dialogue_option = 2},
+			{text = "KURO3_DIALOGUE_2", reqs = []},
+			],
+		options = [
+			{
+				code = "kuro3_dialogue_3",
+				text = "KURO3_DIALOGUE_2_OPTION_1",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = []
+			},
+			{
+				code = "kuro3_dialogue_6",
+				text = "KURO3_DIALOGUE_2_OPTION_2",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = []
+			},
+		]
+	},
+	kuro3_dialogue_3 = {
+		reqs = [],
+		tags = ["dialogue_scene"],
+		text = [
+			{text = "KURO3_DIALOGUE_3_1", reqs = [], previous_dialogue_option = 1},
+			{text = "KURO3_DIALOGUE_3_2", reqs = [], previous_dialogue_option = 2},
+			{text = "KURO3_DIALOGUE_3_3", reqs = [], previous_dialogue_option = 3},
+			{text = "KURO3_DIALOGUE_3_4", reqs = [], previous_dialogue_option = 4},
+			],
+		options = [
+			{
+				code = "kuro3_dialogue_3",
+				text = "KURO3_DIALOGUE_3_OPTION_1",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = []
+			},
+			{
+				code = "kuro3_dialogue_3",
+				text = "KURO3_DIALOGUE_3_OPTION_2",
+				dialogue_argument = 3,
+				type = "next_dialogue",
+				reqs = [
+					{type = 'dialogue_selected', check = true, value = 'KURO3_DIALOGUE_3_OPTION_1'}
+				]
+			},
+			{
+				code = "kuro3_dialogue_3",
+				text = "KURO3_DIALOGUE_3_OPTION_3",
+				dialogue_argument = 4,
+				type = "next_dialogue",
+				reqs = [
+					{type = 'unique_character_checks', name = 'zephyra', value = [{code = 'is_free', check = true}]}
+					
+				]
+			},
+			{
+				code = "kuro3_dialogue_4",
+				text = "KURO3_DIALOGUE_3_OPTION_4",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [
+					{type = 'dialogue_selected', check = true, value = 'KURO3_DIALOGUE_3_OPTION_2'},
+					{type = 'dialogue_selected', check = true, value = 'KURO3_DIALOGUE_3_OPTION_3'},
+				]
+			},
+			{
+				code = "kuro3_dialogue_2",#?
+				text = "KURO3_DIALOGUE_3_OPTION_5",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = []
+			},
+		]
+	},
+	kuro3_dialogue_4 = {
+		reqs = [],
+		tags = ["dialogue_scene"],
+		text = [
+			{text = "KURO3_DIALOGUE_4_1", reqs = [], previous_dialogue_option = 1},
+			{text = "KURO3_DIALOGUE_4_2", reqs = [], previous_dialogue_option = 2},
+			],
+		options = [
+			{
+				code = "kuro3_dialogue_4",
+				text = "KURO3_DIALOGUE_4_OPTION_1",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = []
+			},
+			{
+				code = "kuro3_dialogue_5",
+				text = "KURO3_DIALOGUE_4_OPTION_2",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [{type = "master_check", value = [{code = "stat", stat = "wits", operant = "gte", value = 150}]
+					}
+				]
+			},
+			{
+				code = "kuro3_dialogue_3", #?
+				text = "KURO3_DIALOGUE_4_OPTION_3",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = []
+			},
+		]
+	},
+	kuro3_dialogue_5 = {
+		tags = ["dialogue_scene"],
+		reqs = [],
+		text = [{text = "KURO3_DIALOGUE_5", reqs = []}],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				dialogue_argument = 1,
+				type = "next_dialogue",
+			}
+		]
+	},
+	kuro3_dialogue_6 = {
+		tags = ["dialogue_scene"],
+		reqs = [],
+		text = [{text = "KURO3_DIALOGUE_6", reqs = []}],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				dialogue_argument = 1,
+				type = "next_dialogue",
+			}
+		]
+	},
+	
+	kuro3_init_1 = {
+		reqs = [],
+		tags = ["dialogue_scene"],
+		text = [
+			{text = "KURO3_INIT_1_1", reqs = [], previous_dialogue_option = 0},
+			{text = "KURO3_INIT_1_2", reqs = [], previous_dialogue_option = 2},
+			{text = "KURO3_INIT_1_3", reqs = [], previous_dialogue_option = 3},
+			],
+		options = [
+			{
+				code = "kuro3_init_1",
+				text = "KURO3_INIT_1_OPTION_1",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = []
+			},
+			{
+				code = "kuro3_init_1",
+				text = "KURO3_INIT_1_OPTION_2",
+				dialogue_argument = 3,
+				type = "next_dialogue",
+				reqs = []
+			},
+			{
+				code = "kuro3_init_2",
+				text = "KURO3_INIT_1_OPTION_3",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = []
+			},
+		]
+	},
+	kuro3_init_2 = {
+		tags = ["dialogue_scene"],
+		reqs = [],
+		text = [{text = "KURO3_INIT_2", reqs = []}],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				#2add crafting unlock
+				#2add quest progress
+			}
+		]
+	},
+	kuro3_init_3 = {
+		tags = ["dialogue_scene"],
+		reqs = [],
+		text = [{text = "KURO3_INIT_3", reqs = []}],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				#2add quest progress
+			}
+		]
+	},
+	
+	kuro3_depths_1 = {
+		reqs = [],
+		tags = ["dialogue_scene", ],
+		character = "kuro",
+		text = [{text = "KURO3_DEPTHS_1",reqs = []}],
+		options = [
+			{code = "kuro3_depths_2", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_depths_2 = {
+		reqs = [],
+		tags = ["dialogue_scene", ],
+		character = "kuro",
+		text = [{text = "KURO3_DEPTHS_2",reqs = []}],
+		options = [
+			{code = "kuro3_depths_3", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_depths_3 = {
+		reqs = [],
+		tags = ["dialogue_scene", ],
+		character = "kuro",
+		text = [{text = "KURO3_DEPTHS_3",reqs = []}],
+		options = [
+			{code = "kuro3_depths_4", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_depths_4 = {
+		reqs = [],
+		character = "kuro",
+		tags = ["dialogue_scene"],
+		text = [{text = "KURO3_DEPTHS_4", reqs = [], previous_dialogue_option = 0},],
+		options = [
+			{
+				code = "kuro3_depths_5",
+				text = "KURO3_DEPTHS_4_OPTION_1",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [] #add cost 1000
+			},
+			{
+				code = "kuro3_depths_6",
+				text = "KURO3_DEPTHS_4_OPTION_2",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = [] #add req mastery 5
+			},
+			{
+				code = "kuro3_depths_7",
+				text = "KURO3_DEPTHS_4_OPTION_3",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = []
+			},
+		]
+	},
+	kuro3_depths_5 = {
+		reqs = [],
+		tags = ["dialogue_scene", ],
+		character = "kuro",
+		text = [{text = "KURO3_DEPTHS_5",reqs = []}],
+		options = [
+			{code = "kuro3_depths_10", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_depths_6 = {
+		reqs = [],
+		tags = ["dialogue_scene", ],
+		character = "kuro",
+		text = [{text = "KURO3_DEPTHS_6",reqs = []}],
+		options = [
+			{code = "kuro3_depths_10", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_depths_7 = {
+		reqs = [],
+		tags = ["dialogue_scene", "blackscreen_transition_common"],
+		character = "kuro",
+		text = [{text = "KURO3_DEPTHS_7",reqs = []}],
+		options = [
+			{code = "kuro3_depths_8", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_depths_8 = {
+		reqs = [],
+		tags = ["dialogue_scene", "blackscreen_transition_common"],
+		character = "kuro",
+		text = [{text = "KURO3_DEPTHS_8",reqs = []}],
+		options = [
+			{code = "kuro3_depths_9", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_depths_9 = {
+		reqs = [],
+		tags = ["dialogue_scene", ],
+		character = "kuro",
+		text = [{text = "KURO3_DEPTHS_9",reqs = []}],
+		options = [
+			{code = "kuro3_depths_10", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_depths_10 = {
+		reqs = [],
+		character = "kuro",
+		tags = ["dialogue_scene"],
+		text = [
+			{text = "KURO3_DEPTHS_10_1", reqs = [], previous_dialogue_option = 1},
+			{text = "KURO3_DEPTHS_10_2", reqs = [], previous_dialogue_option = 2},
+			{text = "KURO3_DEPTHS_10_3", reqs = [], previous_dialogue_option = 3},
+			{text = "KURO3_DEPTHS_10_4", reqs = [], previous_dialogue_option = 4},
+
+			],
+		options = [
+			{
+				code = "kuro3_depths_10",
+				text = "KURO3_DEPTHS_10_OPTION_1",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = []
+			},
+			{
+				code = "kuro3_depths_10",
+				text = "KURO3_DEPTHS_10_OPTION_2",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = []
+			},
+			{
+				code = "kuro3_depths_10",
+				text = "KURO3_DEPTHS_10_OPTION_3",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = [],
+				previous_dialogue_option = [2, 3]
+			},
+			{
+				code = "kuro3_depths_11",
+				text = "KURO3_INIT_1_OPTION_4",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = []
+			},
+		]
+	},
+	kuro3_depths_11 = {
+		tags = ["dialogue_scene"],
+		reqs = [],
+		text = [{text = "KURO3_DEPTHS_11", reqs = []}],
+		options = [
+			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue",} #2add quest progress
+		]
+	},
+	
+	kuro3_dungeon_1 = {
+		reqs = [],
+		tags = ["dialogue_scene", ],
+		character = "kuro",
+		text = [{text = "KURO3_DUNGEON_1",reqs = []}],
+		options = [
+			{code = "kuro3_dungeon_2", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_dungeon_2 = {
+		reqs = [],
+		tags = ["dialogue_scene", ],
+		character = "kuro",
+		text = [{text = "KURO3_DUNGEON_2",reqs = []}],
+		options = [
+			{code = "kuro3_dungeon_3", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_dungeon_3 = {
+		reqs = [],
+		tags = ["dialogue_scene", ],
+		character = "kuro",
+		text = [{text = "KURO3_DUNGEON_3",reqs = []}],
+		options = [
+			{code = "kuro3_dungeon_4", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_dungeon_4 = {
+		reqs = [],
+		tags = ["dialogue_scene", ],
+		character = "kuro",
+		text = [{text = "KURO3_DUNGEON_4",reqs = []}],
+		options = [
+			{code = "kuro3_dungeon_5", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_dungeon_5 = {
+		reqs = [],
+		tags = ["dialogue_scene", ],
+		character = "kuro",
+		text = [{text = "KURO3_DUNGEON_5",reqs = []}],
+		options = [
+			{code = "kuro3_dungeon_6", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_dungeon_6 = {
+		reqs = [],
+		tags = ["dialogue_scene", "blackscreen_transition_common"],
+		character = "kuro",
+		text = [{text = "KURO3_DUNGEON_6",reqs = []}],
+		options = [
+			{code = "kuro3_dungeon_7", text = "KURO3_DUNGEON_6_OPTION_1", dialogue_argument = 1, type = "next_dialogue", reqs = []},
+			{code = "kuro3_dungeon_7", text = "KURO3_DUNGEON_6_OPTION_2", dialogue_argument = 1, type = "next_dialogue", reqs = []},
+			{code = "kuro3_dungeon_7", text = "KURO3_DUNGEON_6_OPTION_3", dialogue_argument = 1, type = "next_dialogue", reqs = []},
+		]
+	},
+	kuro3_dungeon_7 = {
+		reqs = [],
+		tags = ["dialogue_scene", "master_translate"],
+		character = "kuro",
+		text = [{text = "KURO3_DUNGEON_7",reqs = []}],
+		options = [
+			{code = "kuro3_dungeon_8", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_dungeon_8 = {
+		reqs = [],
+		tags = ["dialogue_scene"],
+		character = "kuro",
+		text = [{text = "KURO3_DUNGEON_8",reqs = []}],
+		options = [
+			{code = "kuro3_dungeon_9", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_dungeon_9 = {
+		reqs = [],
+		tags = ["dialogue_scene", "blackscreen_transition_slow"],
+		character = "kuro",
+		text = [
+			{text = "KURO3_DUNGEON_9_1", reqs = [{type = "quest_completed", name = "zephyra_disappearance_quest", check = true},]},
+			{text = "KURO3_DUNGEON_9_2", reqs = [{type = "quest_completed", name = "zephyra_disappearance_quest", check = false},]},
+			{text = "KURO3_DUNGEON_9", reqs = []}
+			],
+		options = [
+			{code = "kuro3_dungeon_10", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_dungeon_10 = {
+		reqs = [],
+		tags = ["dialogue_scene"],
+		character = "kuro",
+		text = [{text = "KURO3_DUNGEON_10",reqs = []}],
+		options = [
+			{code = 'quest_fight', args = 'nixx_group', text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue', },
+		]
+	},
+	
+	kuro3_win = {
+		reqs = [],
+		tags = ["dialogue_scene"],
+		text = [{text = "KURO3_WIN",reqs = []}],
+		options = [
+			{code = "kuro3_good_1", text = "KURO3_WIN_OPTION_1", dialogue_argument = 1, type = "next_dialogue", reqs = []},
+			{code = "kuro3_bad_1", text = "KURO3_WIN_OPTION_2", dialogue_argument = 1, type = "next_dialogue", reqs = []},
+		]
+	},
+	kuro3_good_1 = {
+		reqs = [],
+		tags = ["dialogue_scene", 'master_translate'],
+		text = [{text = "KURO3_GOOD_1",reqs = []}],
+		options = [
+			{code = "kuro3_good_2", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_good_2 = {
+		reqs = [],
+		tags = ["dialogue_scene"],
+		text = [{text = "KURO3_GOOD_2",reqs = []}],
+		options = [
+			{code = "kuro3_good_3", text = "KURO3_GOOD_2_OPTION_1", dialogue_argument = 1, type = "next_dialogue", reqs = []},
+			{code = "kuro3_good_3", text = "KURO3_GOOD_2_OPTION_2", dialogue_argument = 2, type = "next_dialogue", reqs = []},
+			{code = "kuro3_good_3", text = "KURO3_GOOD_2_OPTION_3", dialogue_argument = 3, type = "next_dialogue", reqs = []},
+		]
+	},
+	kuro3_good_3 = {
+		reqs = [],
+		character = "kuro",
+		tags = ["dialogue_scene", 'master_translate'],
+		text = [
+			{text = "KURO3_GOOD_3_1", reqs = [], previous_dialogue_option = 1},
+			{text = "KURO3_GOOD_3_2", reqs = [], previous_dialogue_option = 2},
+			{text = "KURO3_GOOD_3_3", reqs = [], previous_dialogue_option = 3},
+			{text = "KURO3_GOOD_3", reqs = []},
+			],
+		options = [
+			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue",} #2add quest progress
+		]
+	},
+	kuro3_bad_1 = {
+		reqs = [],
+		tags = ["dialogue_scene", 'master_translate'],
+		text = [{text = "KURO3_BAD_1",reqs = []}],
+		options = [
+			{code = "kuro3_bad_2", text = "DIALOGUECONTINUE", dialogue_argument = 1, type = "next_dialogue", reqs = []}
+		]
+	},
+	kuro3_bad_2 = {
+		reqs = [],
+		tags = ["dialogue_scene"],
+		text = [{text = "KURO3_BAD_2",reqs = []}],
+		options = [
+			{code = "kuro3_bad_3", text = "KURO3_BAD_2_OPTION_1", dialogue_argument = 1, type = "next_dialogue", reqs = []},
+			{code = "kuro3_bad_4", text = "KURO3_BAD_2_OPTION_2", dialogue_argument = 2, type = "next_dialogue", reqs = []},
+			{code = "kuro3_bad_5", text = "KURO3_BAD_2_OPTION_3", dialogue_argument = 3, type = "next_dialogue", reqs = []},
+		]
+	},
+	kuro3_bad_3 = {
+		tags = ["dialogue_scene"],
+		reqs = [],
+		text = [{text = "KURO3_BAD_3", reqs = []}],
+		options = [
+			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue",} #2add quest progress
+		]
+	},
+	kuro3_bad_4 = {
+		tags = ["dialogue_scene"],
+		reqs = [],
+		text = [{text = "KURO3_BAD_4", reqs = []}],
+		options = [
+			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue",} #2add quest progress
+		]
+	},
+	kuro3_bad_5 = {
+		tags = ["dialogue_scene"],
+		reqs = [],
+		text = [{text = "KURO3_BAD_5", reqs = []}],
+		options = [
+			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue",} #2add quest progress
+		]
+	},
+	kuro3_dialogue2_1 = {
+		reqs = [],
+		tags = ["dialogue_scene"],
+		text = [{text = "KURO3_DIALOGUE_1", reqs = []}],
+		options = [
+			{
+				code = "kuro3_dialogue2_2",
+				text = "KURO3_DIALOGUE2_1_OPTION_1",
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = []
+			},
+			{
+				code = "kuro3_dialogue2_2",
+				text = "KURO3_DIALOGUE2_1_OPTION_2",
+				dialogue_argument = 2,
+				type = "next_dialogue",
+				reqs = []
+			},
+		]
+	},
+	kuro3_dialogue2_2 = {
+		reqs = [],
+		tags = ["dialogue_scene"],
+		text = [
+			{text = "KURO3_DIALOGUE2_2_1", reqs = [], previous_dialogue_option = 1},
+			{text = "KURO3_DIALOGUE2_2_2", reqs = [], previous_dialogue_option = 2},
+			],
+		options = [
+			{
+				code = "kuro3_dialogue_3", #back
+				text = "KURO3_DIALOGUE_2_OPTION_1", #fix
+				dialogue_argument = 1,
+				type = "next_dialogue",
+				reqs = []
+			},
+		]
+	},
+}

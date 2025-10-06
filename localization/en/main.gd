@@ -19452,5 +19452,250 @@ Erdyna: — You really are an outsider, clueless about the Grand Empire. They wo
 	EMP_ERDYNA_INTRO_12 = """You pause, the weight of your mission settling over you as the alley's damp chill seeps into your bones. After a moment's thought, you decide a local guide could be useful. You briefly explain your goal of finding ancient artifacts or uncovering details about a dangerous cult. Erdyna's eyes gleam as she nods thoughtfully.
 
 — I see, I see... Old relics, religious stuff? I know just the place to dig up information on that. History and temples aren't exactly popular around here, so you're lucky I know someone who deals in that sort of thing. Let's move.""",
+	KURO3_DIALOGUE_INIT = "So, what's up with the artifacts we're dealing with?",
+	KURO3_DIALOGUE_1 = """Kuro takes a long look at your face, trying to figure out if you're joking.
+
+- You really don't know anything, yet you decided to drag yourself into this whole mess? It's hard to believe how careless you are. But I guess that's to be expected from you.
+
+- Say, what do you know about the gods?""",
+	KURO3_DIALOGUE_1_OPTION_1 = "They're like watching over us, rewarding us for good deeds?",
+	KURO3_DIALOGUE_1_OPTION_2 = "They must walk among us, just like you and me.",
+	KURO3_DIALOGUE_1_OPTION_3 = "I haven't thought much about them.",
+	KURO3_DIALOGUE_2_1 = """- *Sigh* That's the last thing that matters in your situation.""",
+	KURO3_DIALOGUE_2_2 = """- Yeah, I can see the pattern. Well, nonetheless.""",
+	KURO3_DIALOGUE_2 = """- The mortal world we see and live in is perishable. Everything grows old, gets sick and damaged, and is eventually destroyed, losing all form. The only things that transcend it are concepts—the idea of how you can be remembered even after death in people's minds. The gods have strong connections to these very concepts, which is why their powers can overcome physical boundaries with relative ease.""",
+	KURO3_DIALOGUE_2_OPTION_1 = "How does this connect to the whole artifact collection ordeal?",
+	KURO3_DIALOGUE_2_OPTION_2 = "I don't really care about all this smart-ass crap.",
+	KURO3_DIALOGUE_3_1 = """- Causal adequacy dictates that everything must have a beginning. While some gods may have acquired their status from preceding god-entities and others have ascended to godhood from mortal beings, there must still have been an origin to the world itself. The artifacts the cult, and you, are after are seemingly tied to the very first god, one whose name has even been lost in our ever-degrading world.""",
+	KURO3_DIALOGUE_3_2 = """- He had many names, but it matters little now. Either way, your real problem is the cult — and even more so, the oldest sister, Rouge.""",
+	KURO3_DIALOGUE_3_3 = """- There's not much to tell; she's exactly what she looks like. A tyrant who only respects power and at times is little more than a wild beast. Her raw strength is unparalleled. I'd need at least five or six copies of myself to stand a real chance against her, so it's best to avoid getting into fight with her if possible.""",
+	KURO3_DIALOGUE_3_4 = """- Obviously, she and I are on your side, but since she's a dunce who only acts on instinct... I hate it, but her ability to be stupid is incredible. No, I guess that comes off wrong. Thing is that her instincts shouldn't be taken lightly and she is more useful than not.""",
+	KURO3_DIALOGUE_3_OPTION_1 = "So, you know what that god was called?",
+	KURO3_DIALOGUE_3_OPTION_2 = "Can you tell me about Rouge?",
+	KURO3_DIALOGUE_3_OPTION_3 = "What about Zephyra?",
+	KURO3_DIALOGUE_3_OPTION_4 = "How exactly are the three of you connected to me",
+	KURO3_DIALOGUE_3_OPTION_5 = "Thanks for the information.",
+	KURO3_DIALOGUE_4_1 = """Kuro flashes a smug smile before answering.
+
+- What makes you think I know that? There must be something special about you, isn't there? Shouldn't you know what makes you special? *Chuckle*""",
+	KURO3_DIALOGUE_4_2 = """- That's not true. I haven't told a single lie here yet..""",
+	KURO3_DIALOGUE_4_OPTION_1 = "You're obviously lying. Why don't you just say it?",
+	KURO3_DIALOGUE_4_OPTION_2 = "Withholding that information is what lets you enjoy having some control over me?",
+	KURO3_DIALOGUE_4_OPTION_3 = "Forget it...",
+	KURO3_DIALOGUE_5 = """Kuro's grin widens, her eyes flashing with particular joy.
+
+- This mental sharpness of yours is exactly what makes it all truly... fun.
+
+Before you can respond, Kuro retreats in her usual style, fading into the shadows.""",
+	KURO3_DIALOGUE_6 = """- Then why don't you just stick to doing what you feel like doing? You won't waste my time or yours. And given that you've been successful so far, I don't think you need me telling you what to do.
+
+Despite your rude response, Kuro takes no offense. She quickly retreats in her usual style, fading into the shadows.""",
+	KURO3_INIT_1_1 = """Today Kuro has approached you.
+
+- It's time we take care of Nixx. I'll need your help with this.
+
+Her tone is far more demanding than pleading.
+
+- Thanks to the book from the elf woman, I've finally found a way to deal with her. But you'll have to help me.""",
+	KURO3_INIT_1_2 = """- Yes. Haven't I just said so? We don't have much of an option here. Unlike me, she won't abandon the cult's alliance and side with you. It was obvious the moment I joined her. Even after fooling her last time, it's way too dangerous to keep her unchecked. Besides, I plan to make use of her powers for us.""",
+	KURO3_INIT_1_3 = """Kuro lets out a demonstrative sigh slightly rolling her eyes. 
+
+- Okay, look. I'm fundamentally incapable of betraying you, just like Zephyra. It's time for you to accept that and move on with this mission.""",
+	KURO3_INIT_1_OPTION_1 = "Are you planning to betray her?",
+	KURO3_INIT_1_OPTION_2 = "Can I really trust you?",
+	KURO3_INIT_1_OPTION_3 = "Let's say you've persuaded me. What do we do?",
+	KURO3_INIT_2 = """- Great, we shouldn't waste time. I've learned the incantation from Myr's book, but before we confront her, you'll need to prepare a magic catalyst. Challenging a goddess, especially an ancient one, will require more than a few spells.
+
+Kuro pulls an ancient-looking scroll from behind her back and hands it to you with a stern look. As you scan it, you spot many notes in Kuro's handwriting, explaining the materials and processes for crafting it.
+
+- I want you to make this. It's the Vesperine Cage, capable of containing her powers. Once it's done, we'll go after her.""",
+	KURO3_INIT_3_OPTION = "*Show Vesperine Cage to Kuro*",
+	KURO3_INIT_3 = """Kuro fiddles with the crafted device in her hands for a moment before tucking it behind her back.
+
+- Pretty good. Consider that high praise. I don't give it often. It's time for our first move. We head to Crystaldepths, it was her last residing location that I knew of.""",
+	KURO3_DEPTHS_OPTION = "Search for Nixx follower",
+	KURO3_DEPTHS_1 = """You follow Kuro as she confidently navigates deeper into the settlement, down one of the pathways, until she reaches a small house.
+
+She barges in leisurely, revealing the living conditions of a missing family, complete with a few children's toys. A quick look around reveals a cellar door.""",
+	KURO3_DEPTHS_2 = """The cellar turns out to be much more spacious than expected, with a small tunnel leading deeper into the caves. Kuro doesn't hesitate, quickly spotting her target.
+
+A short yelp echoes as Kuro drags a clothed figure of a man into the light. By his attire, he seems to be the house owner.
+
+Kuro: - Long time no see, Cerab. Nixx has moved out of here, hasn't she? Looks like you're still her main guy around here.
+
+Cerab: - Y-you... So it is true you've turned on her!""",
+	KURO3_DEPTHS_3 = """Black tendrils controlled by Kuro keep the man tightly restrained, allowing him only to speak.
+
+Kuro: - Tell me where you've taken her.
+
+Cerab defiantly turns his head away, signaling his refusal to speak. Kuro, displeased, glares at him and unleashes her powers.
+
+Cerab: - Ghhh... Argh!.. This test of my devotion is nothing!""",
+	KURO3_DEPTHS_4 = """Kuro: - So you want to do it the hard way? No pity for your family? They might lose their husband and father.
+
+Kuro's voice sounds deadly serious. She clearly has no remorse about torturing the man until she gets what she wants.
+
+Cerab: - Hah, you should know our families are little more than a cover. Do your worst, you apostate!
+
+Kuro: - Stubborn man. I'm no torture expert, but since you've left me no choice...""",
+	KURO3_DEPTHS_4_OPTION_1 = "Don't do it; we'd better find someone else around here to get this information from. (1000 gold)",
+	KURO3_DEPTHS_4_OPTION_2 = "Let me get it straight from his mind instead.",
+	KURO3_DEPTHS_4_OPTION_3 = "*Stay quiet*",
+	KURO3_DEPTHS_5 = """You insist on sparing the man from Kuro's gruesome approach and head back into the settlement. The hefty sum of coins you've prepared as a reward quickly loosens a few tongues, revealing the details of Nixx's true altar transportation, which was assisted by a couple of locals. Connecting the dots, you and Kuro realize it was taken to ancient underground ruins not far from this region.""",
+	KURO3_DEPTHS_6 = """Kuro steps aside as you begin chanting your mind-reading spell. Unsurprisingly, Cerab resists as best he can, but your expertise allows you to breach his mind soon enough, forcing him to reveal the location of Nixx's true altar: ancient underground ruins not far from this region. Kuro seems satisfied with the answer; she nods and leads you away.
+
+Kuro: - I'm slightly ashamed that it didn't occur to me. I'll have to admit that was rather cunning of you.""",
+	KURO3_DEPTHS_7 = """You and Kuro stay quiet as the torture continues. The black tendrils slowly pierce the man's flesh, tearing through skin and peeling it off. His cries of pain, though loud, are conveniently muffled underground. His breathing turns ragged from the pain, but Kuro ensures the damage won't kill him outright.
+
+Cerab: - F...fuck you... just... just kill me...
+
+With a crunchy sound, a nail is torn off, followed by an even louder cry.
+
+Kuro: - Don't feel too bad for him; he's killed and sacrificed more than a few victims to her. I wonder if you'd beg for mercy if I didn't know that.""",
+	KURO3_DEPTHS_8 = """As time passes, you notice a few things. The torture is scarily pragmatic: not only is life-threatening damage kept to a minimum, but Kuro takes irregular breaks, making each resumption more unpredictable and unnerving. Minutes feel like hours, keeping you constantly aware of possible interruptions from outsiders, but none come.
+
+Kuro: - Shall we try the teeth or an eye next?
+
+Kuro's voice is empty, gnawing on the man's spirit no less than the lasting pain.""",
+	KURO3_DEPTHS_9 = """Finally, the cultist breaks down entirely.
+
+Cerab: - N-no... Stop... I will tell you... Just, please... Stop...
+
+Kuro: - Just don't think you can lie to me.
+
+As the man collapses to the ground, released from his torture, he slowly explains how Nixx's true altar was moved to ancient underground ruins not far from here. Kuro seems satisfied; she nods and leads you away, leaving her victim half-dead.""",
+	KURO3_DEPTHS_10_1 = """Kuro: - Looks like she suspected something might happen after last time. Those ruins won't be easy to explore.""",
+	KURO3_DEPTHS_10_2 = """Kuro: - He's no danger to us. Once we deal with Nixx, the other followers will blame him for betraying her and make him suffer even more.""",
+	KURO3_DEPTHS_10_3 = """Kuro: - Maybe. But this had to be done. Nixx is too dangerous to leave as the cult's ally. You already know what I could do with her powers, don't you?""",
+	KURO3_DEPTHS_10_4 = """Kuro: - Nixx was once a deity of the night—that is, until all light died out, and she became what she is now. Darkness holds many secrets, and that's partly why I sided with her, though her powers are formidable too. Everything has a price; someone like Zephyra could never become her champion.""",
+	KURO3_DEPTHS_10_OPTION_1 = "Shouldn't we finish off that man?",
+	KURO3_DEPTHS_10_OPTION_2 = "You've gone way too far with that.",
+	KURO3_DEPTHS_10_OPTION_3 = "Can you tell me more about her?",
+	KURO3_DEPTHS_10_OPTION_4 = "Alright, let's go then.",
+	KURO3_DEPTHS_11 = """Kuro: - Yes. Now the real hard part begins. This could get really dangerous, so let's do our best.""",
+	KURO3_DUNGEON_1 = """As you navigate the dark, moist halls, Kuro suddenly stops you. Giving her a puzzled look, you see her investigating one of the brick walls.
+
+- They tried to hide it well.
+
+She begrudgingly inserts her hand into a crack, and with a clicking sound, part of the wall slides aside.
+
+- Come on. I can feel she's here.""",
+	KURO3_DUNGEON_2 = """Entering the secret room, you closely follow Kuro's steps as she ensures you don't alert anything. Finally, you come across an intricate wall framed with stone pillars and an effigy made of some dark material.
+
+Kuro: - She seems to be in slumber now. Let's not waste time.""",
+	KURO3_DUNGEON_3 = """She quickly pulls out the Vesperine Cage, activates it, and points it at the wall. Its ethereal light illuminates the room, but the dark fog around the effigy remains motionless.
+
+Kuro: - Stay alert. This should seal her powers in moments.""",
+	KURO3_DUNGEON_4 = """In the Cage's light, the floating black mass becomes more solid and visible. Despite both of you trying to stay calm, it lasts only a moment before it begins squirming chaotically. A distant, grave voice echoes in your head.
+
+Nixx: - Finally shown yourself? Think you can stop me with this little thing?
+
+Kuro: - Damn it, you should've stayed down!
+
+Kuro is clearly frustrated by her plan going awry but remains determined.""",
+	KURO3_DUNGEON_5 = """Despite Nixx's energy being mostly contained by the Cage's focused beam, she finds an opening and launches a deadly attack in your direction.
+
+Nixx: - You've made a mistake not coming alone.
+
+Kuro: - Grh... Curses!
+
+Kuro's concentration breaks as she moves to protect you, which is just enough for Nixx to follow up with an overwhelming energy mass that swallows you both.""",
+	KURO3_DUNGEON_6 = """You find yourself in a wall-less space where only dim darkness surrounds you. Next to you, Kuro rubs her forehead in defeat. As you try to get information from her, the awfulness of your situation dawns on you.
+
+Kuro: - It's over, we've lost. She's trapped us in her pocket dimension. There's no way out on our own... In time, it'll sap our energy, and we'll die here.
+
+Kuro: - Damn it, what an idiotic way to lose... In this place, I can't use any of her powers either.""",
+	KURO3_DUNGEON_6_OPTION_1 = "Don't give up just yet.",
+	KURO3_DUNGEON_6_OPTION_2 = "There must be something we can do.",
+	KURO3_DUNGEON_6_OPTION_3 = "It's all your fault.",
+	KURO3_DUNGEON_7 = """Kuro barely reacts to your words. She seems far more susceptible to the energy drain here, acting heavily drunk—her speech sloppy, dampened by the darkness.
+
+Kuro: - I'm sorry, [name]. I should've done better... It's really hard to... concentrate...""",
+	KURO3_DUNGEON_8 = """Kuro: - It's... it's been lonely by myself... for all... this time... Zephyra and Rouge... they don't remember a thing... after all...
+
+Time drifts slowly without any indication as you start feeling dizzy yourself.""",
+	KURO3_DUNGEON_9_1 = """You feel a familiar presence, something otherworldly, yet not alien to this realm. A soft voice speaks to you.
+
+Voice: - You disappoint me to no end... You can't die here, can you? There's not much I can do, but with her on your side... This should be just enough to break free.""",
+	KURO3_DUNGEON_9_2 = """You feel an alien presence appear in the darkness, something otherworldly, yet not of this realm. A soft voice speaks to you.
+
+Voice: - This is not the time or place; you can't die here. There's not much I can do, but with her on your side... This should be just enough to break free.""",
+	KURO3_DUNGEON_9 = """A foreign command enters your mind, guiding your actions. You stand, approaching Kuro, who barely moves. Your hand grabs hers, pulling her up effortlessly. Despite her pallor, her hand is warm, instinctively grasping yours in return.
+
+An unknown ancient language fills your mind, and you begin chanting-more a hymn than a spell. You've never heard it before and can't understand it. A dim light surrounds you both, draining the darkness from the surroundings. Kuro's groans grow louder as she clings to you harder as the light restores her and your strength which has just been sapped.""",
+	KURO3_DUNGEON_10 = """An explosion erupts as you reach the peak; your mind is instantly freed from the external control. You and Kuro find yourselves back in the room, Nixx's altar before you. Kuro regains her senses; Nixx is clearly confused by your escape, her powers wavering from the damage you've inflicted.
+
+Nixx: - How did you...?!
+
+Kuro: - No time for talk, [name], we need to defeat her now!""",
+	KURO3_WIN = """The damage you've inflicted sends Nixx into recuperation, allowing Kuro to once again activate the entrapping device.
+
+Nixx: - You... damned vixen... If you plan on taking my powers... You'll never find rest for this...
+
+Kuro: - That's so? You should know better than me there's no rest for the wicked. 
+
+The Cage shimmers with bright light, fully consuming what's left of Nixx's essence. Kuro falls to her knees, having expended all her remaining energy.""",
+	KURO3_WIN_OPTION_1 = "*Help Kuro*",
+	KURO3_WIN_OPTION_2 = "*Seize the Cage for yourself*",
+	
+	KURO3_GOOD_1 = """You grab Kuro, helping her stand after the exhausting fight. Her skin feels hot, her face covered in sweat, but her emotions are those of triumphant victory and admiration for you.
+
+Kuro: - Th-thank you, [name]. Looks like I'm shaking a bit. We did something that only happens in legends.
+
+She looks down at her hands, firmly holding the now-closed Cage.
+
+Kuro: - I'll absorb her essence now. With this, her powers, and most importantly, her knowledge, will become part of me. Don't worry, I can handle it.""",
+	KURO3_GOOD_2 = """Without further delay, Kuro clutches the device tightly. You feel the powers inside surging, visibly engulfing her body. Her groans, followed by heavy panting, fill the small room as you watch in awe. After a moment, the device shatters as Kuro completes her ordeal.
+
+You steady her for a minute as her eyes remain unfocused and her body processes the change. You sense the transformation in her being. Something about her appearance, energy, and aura has shifted. Slightly, but noticeably to you. A supernatural feel is now etched into her presence.
+
+Kuro: - Ah... This will take some time to get used to... My thoughts are all mixed... but... there's so much new information...""",
+	KURO3_GOOD_2_OPTION_1 = "So, what's that information you've been aiming for?",
+	KURO3_GOOD_2_OPTION_2 = "Got any clues to great treasure troves there?",
+	KURO3_GOOD_2_OPTION_3 = "I'm glad you're safe.",
+	KURO3_GOOD_3_1 = """Kuro: - It's... I can't say for certain yet, but I hope to learn more about everything I can.""",
+	KURO3_GOOD_3_2 = """Kuro: - Heh, very funny. You really think a foul ancient being like her would care about some gold coins?""",
+	KURO3_GOOD_3_3 = """Kuro: - Please, [name], you're making me blush, and it's really not suitable for someone who's just done what I did. Let's save it for later.""",
+	KURO3_GOOD_3 = """Kuro: - One thing's for sure: Nixx is no more, and it will both help us against the cult and stop me from worrying.
+
+Kuro finally steadies herself, releasing your hand, and you leave the place.""",
+	KURO3_BAD_1 = """You snatch the Cage from Kuro's powerless hands with ease, feeling the power within. As you glance at the puzzled Kuro, you focus on the ancient sealed powers, feeling them surge from the device into you. Kuro raises her head, speechless in disbelief, too weak to fight or perhaps too confused to react.
+
+You feel the raw dark powers now yours as they merge with your body, leaving the Cage empty and useless.""",
+	KURO3_BAD_2 = """Kuro: - Hah... hahaha...
+
+Her laugh sounds dry and empty. Minutes pass as she stares at the ground in defeat.
+
+Kuro: - That's really stupid, isn't it? After all that work, you just took it for yourself... No, I'm... No. I'll accept my utter defeat. What do you plan to do with me now that my champion powers are gone?""",
+	KURO3_BAD_2_OPTION_1 = "You'll stay by my side.",
+	KURO3_BAD_2_OPTION_2 = "You'll stay by my side... as a slave.",
+	KURO3_BAD_2_OPTION_3 = "I have no use for you anymore.",
+	KURO3_BAD_3 = """Kuro: - ...Got to admit, that's some scheme you pulled on me. I've stated I'm on your side, and that can't be changed... I'll do what I can to help with whatever ominous plan you have.
+
+Helping Kuro up, you prepare to leave.""",
+	KURO3_BAD_4 = """Kuro: - ...I guess I won't be able to escape any collar now. Is this how you plan to make me atone?
+
+Kuro's face shows vulnerability and a hint of fear. Something that she rarely displays.
+
+Kuro: - I hope you aren't devoid of any mercy for me.""",
+	KURO3_BAD_5 = """For once, Kuro's face shows clear pain, but it quickly returns to normal.
+
+Kuro: - I understand. So that's what it's like to be on the receiving end of evil.
+
+You leave Kuro seemingly stuck in place as you contemplate your newly acquired powers.""",
+	KURO3_DIALOGUE2_INIT = "About that time we were trapped...",
+	KURO3_DIALOGUE2_1 = """You tell Kuro about the time you were trapped by Nixx and the mysterious voice that freed you. To your surprise, she responds almost disinterestedly.
+
+- That's so? We got lucky, I suppose. I really should've known better than putting us in such danger.""",
+	KURO3_DIALOGUE2_1_OPTION_1 = "Do you know whose voice that was?",
+	KURO3_DIALOGUE2_1_OPTION_2 = "Will I lose control over myself again?",
+	KURO3_DIALOGUE2_2_1 = """Kuro pauses, searching for the right words.
+
+- It was probably an ancient, forgotten deity, or rather, what's left of one. Good thing she was on our side, wasn't it?""",
+	KURO3_DIALOGUE2_2_2 = """- What, are you hoping some powerful deity will solve all your problems? I thought you were too old for such naive expectations.
+
+Kuro smirks at you in her usual way.
+
+- No, I doubt she'll help us again after this. We're on our own.""",
 }
 
