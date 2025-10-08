@@ -1517,6 +1517,18 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 	STATMASTERY_LIGHT = """Мастерство: Свет""",
 	STATMASTERY_DARK = """Мастерство: Тьма""",
 	STATMASTERY_MIND = """Мастерство: Разум""",	
+	STATMASTERY_WARFAREDESCRIPT = """Overall points invested in Mastery of Warfare""", # MISSING TRANSLATION
+	STATMASTERY_PROTECTIONDESCRIPT = """Overall points invested in Mastery of Protection""", # MISSING TRANSLATION
+	STATMASTERY_STEALTHDESCRIPT = """Overall points invested in Mastery of Stealth""", # MISSING TRANSLATION
+	STATMASTERY_MARKSMANSHIPDESCRIPT = """Overall points invested in Mastery of Marksmanship""", # MISSING TRANSLATION
+	STATMASTERY_LEADERSHIPDESCRIPT = """Overall points invested in Mastery of Leadership""", # MISSING TRANSLATION
+	STATMASTERY_FIREDESCRIPT = """Overall points invested in Mastery of Fire""", # MISSING TRANSLATION
+	STATMASTERY_WATERDESCRIPT = """Overall points invested in Mastery of Water""", # MISSING TRANSLATION
+	STATMASTERY_AIRDESCRIPT = """Overall points invested in Mastery of Air""", # MISSING TRANSLATION
+	STATMASTERY_EARTHDESCRIPT = """Overall points invested in Mastery of Earth""", # MISSING TRANSLATION
+	STATMASTERY_LIGHTDESCRIPT = """Overall points invested in Mastery of Light""", # MISSING TRANSLATION
+	STATMASTERY_DARKDESCRIPT = """Overall points invested in Mastery of Dark""", # MISSING TRANSLATION
+	STATMASTERY_MINDDESCRIPT = """Overall points invested in Mastery of Mind""", # MISSING TRANSLATION
 	ADD_MASTERY_CONFIRM = """Потратить [color=yellow]специализированное[/color] очко мастерства на апгрейд?""",
 	ADD_MASTERY_CONFIRM_UNIVERSAL = """Потратить [color=yellow]универсальное[/color] очко мастерства на повышение уровня?""",		
 	STATMASTERY_POINT_MAGIC = """Очко магического мастерства""",
@@ -1910,6 +1922,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 	STATDAMAGETYPE = "",
 	STATWEAPON_ELEMENT = "",
 	STATDAMAGE_REDUCTION = "",
+	STATDAMAGE_REDUCTIONDESCRIPT = """Damage Reduction""", # MISSING TRANSLATION
 	STATBURN_MOD = "",
 	STATBLEED_MOD = "",
 	STATPOISON_MOD = "",
@@ -1938,6 +1951,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 	STATPRICE_ADD_PART = "",
 	STATPRICE_ADD = "",
 	STATBASE_TASK_CRIT_CHANCE = "",
+	STATBASE_TASK_CRIT_CHANCEDESCRIPT = """Base chance of critical success at tasks""", # MISSING TRANSLATION
 	STATPENIS_VIRGIN_LOST = "",
 	STATVAGINAL_VIRGIN_LOST = "",
 	STATANAL_VIRGIN_LOST = "",
@@ -2121,6 +2135,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 	STATENERGY = """Энергия""",
 	STATENERGYDESCRIPT = """Энергия восстанавливается во время сна и требуется для выполнения заданий. Когда персонаж вынужден работать без остатка энергии, он накапливает Истощение.""",
 	STATHPMAX = """Макс. Здоровье""",
+	STATHPMAXDESCRIPT = """Maximal Health""", # MISSING TRANSLATION
 	STATHPFACTOR = """Фактор здоровья""",
 	STATHPFACTORDESCRIPT = """Определяет бонусы к здоровью, получаемые большинством способов. Высокий коэффициент здоровья может значительно повысить выживаемость.""",
 	STATHP_REG_MOD = """Фактор исцеления""",
@@ -2133,6 +2148,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 	STATMP = """Мана""",
 	STATMPDESCRIPT = """Мана используется для создания заклинаний и использования некоторых способностей.""",
 	STATMPMAX = """Макс. Мана""",
+	STATMPMAXDESCRIPT = """Maximal Mana""", # MISSING TRANSLATION
 	STATMPMAXMOD = """Макс. Мана""",
 	STATHITRATE = """Точность""",
 	STATHITRATEDESCRIPT = """Шанс поразить противника. Уменьшается уворотом цели.""",
@@ -2162,6 +2178,8 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 	STATMODRANGED = """Урон в дальн. бою.""",
 	STATDAMAGE_MOD_SKILL = """Физический урон""",
 	STATDAMAGE_MOD_HEAL = "Бонус к лечению",
+	STATDAMAGE_MOD_SKILLDESCRIPT = """Modifies Physical Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_HEALDESCRIPT = """Modifies Healing efficiency""", # MISSING TRANSLATION
 
 	STATFATIGUE = """Усталость""",
 	STATEXHAUSTION = """Истощение""",
@@ -2184,6 +2202,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 	STATSEXUALSDESCRIPT = """Сексуальное мастерство представляет собой навыки персонажа в телесных удовольствиях. Оно рассчитывается по сумме трех наивысших сексуальных навыков и влияет на определенные задачи и способности.""",
 
 	STATGROWTH_FACTOR = """Фактор роста""",
+	STATGROWTH_FACTOR_FULLNAME = """Growth Factor""", # MISSING TRANSLATION
 	STATMAGIC_FACTOR = """Магический фактор""",
 	STATPHYSICS_FACTOR = """Физический фактор""",
 	STATWITS_FACTOR = """Фактор мудрости""",
@@ -2191,6 +2210,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 	STATSEXUALS_FACTOR = """Сексуальный фактор""",
 	STATTAME_FACTOR = """Tame Factor""", # MISSING TRANSLATION
 	STATAUTHORITY_FACTOR = """Фактор авторитета""",
+	STATFACTOR = """Factor""", # MISSING TRANSLATION
 	STATTIMID_FACTOR = """Фактор робости""",
 	STATSLAVE_CLASS = """Тип""",
 
@@ -2203,6 +2223,11 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 	STATTRAINING_SPIRIT = """Дух от обучения""",
 	STATRESISTANCE_RED = "Скорость падения сопротивления",
 	STATTRAINER_LOYALTY_BONUS = "Верность обучаемого",
+	STATTRAINING_LOYALTYDESCRIPT = """Loyalty bonus gained by this character from Training""", # MISSING TRANSLATION
+	STATTRAINING_SPIRITDESCRIPT = """Adjustment for Spirit decline during Training""", # MISSING TRANSLATION
+	STATRESISTANCE_REDDESCRIPT = """Speed of slave's Resistance droping with time""", # MISSING TRANSLATION
+	STATTRAINER_LOYALTY_BONUSDESCRIPT = """Loyalty bonus received by this character's trainee""", # MISSING TRANSLATION
+	STATTRAINEE_AMOUNTDESCRIPT = """Maximal number of trainee""", # MISSING TRANSLATION
 	TRAITTRAINER = """Тренер""",
 	TRAITTRAINERDESCRIPT = """Может наблюдать за рабами""",
 	STATSPIRIT = """Дух""",
@@ -2238,6 +2263,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 	STATCONSENTDESCRIPT = """Влияет на согласие на действия во время сексуального взаимодействия. Каждое действие имеет разное согласие в зависимости от черт характера, партнеров и других факторов. Это число отражает только неизменное значение. Базовое согласие увеличивается при положительных результатах, попытках новых действий и партнеров. Также немного увеличивается от навыков дисциплины.""",
 	
 	STATEXP_GAIN_MOD = """Бонус к опыту""",
+	STATEXP_GAIN_MODDESCRIPT = """Modifies Experience gaining""", # MISSING TRANSLATION
 	
 	STATLOYALTY_GAIN_MOD = """Прирост верности""",
 	STATLOYALTY_GAIN = """Прирост верности""",
@@ -2260,6 +2286,22 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 	STATMOD_HOSTESS = """Доход хостесс""",
 	STATMOD_DANCER = """Доход танцовщицы""",
 	STATMOD_STRIP = """Доход от стриптиза""",
+	STATMOD_BUILDDESCRIPT = """Modifies Upgrading effciency""", # MISSING TRANSLATION
+	STATMOD_COLLECTDESCRIPT = """Modifies Collection effciency""", # MISSING TRANSLATION
+	STATMOD_HUNTDESCRIPT = """Modifies Hunt effciency""", # MISSING TRANSLATION
+	STATMOD_FISHDESCRIPT = """Modifies Fish effciency""", # MISSING TRANSLATION
+	STATMOD_COOKDESCRIPT = """Modifies Cook effciency""", # MISSING TRANSLATION
+	STATMOD_SMITHDESCRIPT = """Modifies Smith effciency""", # MISSING TRANSLATION
+	STATMOD_TAILORDESCRIPT = """Modifies Tailor effciency""", # MISSING TRANSLATION
+	STATMOD_ALCHEMYDESCRIPT = """Modifies Alchemy effciency""", # MISSING TRANSLATION
+	STATMOD_FARMDESCRIPT = """Modifies Farming effciency""", # MISSING TRANSLATION
+	STATMOD_SERVICEDESCRIPT = """Modifies Service effciency""", # MISSING TRANSLATION
+	STATMOD_PROSDESCRIPT = """Modifies Sex Service effciency""", # MISSING TRANSLATION
+	STATMOD_TASK_EFFICIECNYDESCRIPT = """Modifies Task Effciency""", # MISSING TRANSLATION
+	STATMOD_WAITRESSDESCRIPT = """Modifies Waitress Income""", # MISSING TRANSLATION
+	STATMOD_HOSTESSDESCRIPT = """Modifies Hostess Income""", # MISSING TRANSLATION
+	STATMOD_DANCERDESCRIPT = """Modifies Dancer Income""", # MISSING TRANSLATION
+	STATMOD_STRIPDESCRIPT = """Modifies Stripper Income""", # MISSING TRANSLATION
 
 	STATRESIST_NORMAL = """Обычное сопр.""",
 	STATRESIST_FIRE = """Сопр. огню""",
@@ -2269,6 +2311,50 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 	STATRESIST_LIGHT = """Сопр. свету""",
 	STATRESIST_DARK = """Сопр. тьме""",
 	STATRESIST_MIND = """Сопр. разуму""",
+	STATRESIST_AOE = """Area Resist""", # MISSING TRANSLATION
+	STATRESIST_BLEED = """Bleed Resist""", # MISSING TRANSLATION
+	STATRESIST_BLIND = """Blind Resist""", # MISSING TRANSLATION
+	STATRESIST_BURN = """Burn Resist""", # MISSING TRANSLATION
+	STATRESIST_CONFUSE = """Confuse Resist""", # MISSING TRANSLATION
+	STATRESIST_CURSED = """Curse Resist""", # MISSING TRANSLATION
+	STATRESIST_DISARM = """Disarm Resist""", # MISSING TRANSLATION
+	STATRESIST_FEAR = """Fear Resist""", # MISSING TRANSLATION
+	STATRESIST_FREEZE = """Freeze Resist""", # MISSING TRANSLATION
+	STATRESIST_HEAL = """Heal Resist""", # MISSING TRANSLATION
+	STATRESIST_MELEE = """Melee Resist""", # MISSING TRANSLATION
+	STATRESIST_POISON = """Poison Resist""", # MISSING TRANSLATION
+	STATRESIST_RANGED = """Ranged Resist""", # MISSING TRANSLATION
+	STATRESIST_SHOCK = """Shock Resist""", # MISSING TRANSLATION
+	STATRESIST_SILENCE = """Silence Resist""", # MISSING TRANSLATION
+	STATRESIST_SLEEP = """Sleep Resist""", # MISSING TRANSLATION
+	STATRESIST_STUN = """Stun Resist""", # MISSING TRANSLATION
+	STATRESIST_WET = """Wet Resist""", # MISSING TRANSLATION
+	STATRESIST_NORMALDESCRIPT = """Resistance to Normal damage""", # MISSING TRANSLATION
+	STATRESIST_FIREDESCRIPT = """Resistance to Fire damage""", # MISSING TRANSLATION
+	STATRESIST_AIRDESCRIPT = """Resistance to Air damage""", # MISSING TRANSLATION
+	STATRESIST_EARTHDESCRIPT = """Resistance to Earth damage""", # MISSING TRANSLATION
+	STATRESIST_WATERDESCRIPT = """Resistance to Water damage""", # MISSING TRANSLATION
+	STATRESIST_LIGHTDESCRIPT = """Resistance to Light damage""", # MISSING TRANSLATION
+	STATRESIST_DARKDESCRIPT = """Resistance to Dark damage""", # MISSING TRANSLATION
+	STATRESIST_MINDDESCRIPT = """Resistance to Mind damage""", # MISSING TRANSLATION
+	STATRESIST_AOEDESCRIPT = """Resistance to Area damage""", # MISSING TRANSLATION
+	STATRESIST_BLEEDDESCRIPT = """Resistance to Bleed effect""", # MISSING TRANSLATION
+	STATRESIST_BLINDDESCRIPT = """Resistance to Blind effect""", # MISSING TRANSLATION
+	STATRESIST_BURNDESCRIPT = """Resistance to Burn effect""", # MISSING TRANSLATION
+	STATRESIST_CONFUSEDESCRIPT = """Resistance to Confuse effect""", # MISSING TRANSLATION
+	STATRESIST_CURSEDDESCRIPT = """Resistance to Curse effect""", # MISSING TRANSLATION
+	STATRESIST_DISARMDESCRIPT = """Resistance to Disarm effect""", # MISSING TRANSLATION
+	STATRESIST_FEARDESCRIPT = """Resistance to Fear effect""", # MISSING TRANSLATION
+	STATRESIST_FREEZEDESCRIPT = """Resistance to Freeze effect""", # MISSING TRANSLATION
+	STATRESIST_HEALDESCRIPT = """Resistance to Heal effect""", # MISSING TRANSLATION
+	STATRESIST_MELEEDESCRIPT = """Resistance to Melee damage""", # MISSING TRANSLATION
+	STATRESIST_POISONDESCRIPT = """Resistance to Poison effect""", # MISSING TRANSLATION
+	STATRESIST_RANGEDDESCRIPT = """Resistance to Ranged damage""", # MISSING TRANSLATION
+	STATRESIST_SHOCKDESCRIPT = """Resistance to Shock effect""", # MISSING TRANSLATION
+	STATRESIST_SILENCEDESCRIPT = """Resistance to Silence effect""", # MISSING TRANSLATION
+	STATRESIST_SLEEPDESCRIPT = """Resistance to Sleep effect""", # MISSING TRANSLATION
+	STATRESIST_STUNDESCRIPT = """Resistance to Stun effect""", # MISSING TRANSLATION
+	STATRESIST_WETDESCRIPT = """Resistance to Wet effect""", # MISSING TRANSLATION
 	
 	STATENCHANT_CAPACITY_MOD = """Вместимость зачарований""",
 	STATENCHANT_CAPACITY = """Вместимость зачарований""",
@@ -6195,6 +6281,27 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	STATDAMAGE_MOD_MIND = """Урон разуму""",
 	STATDAMAGE_MOD_MELEE = """Урон в ближнем бою""",
 	STATDAMAGE_MOD_RANGED = "Урон в дальнем бою",
+	STATDAMAGE_MOD_ALL = """All Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_AOE = """Area Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_NORMAL = """Normal Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_PHYSIC = """Physic Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_SPELL = """Spell Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_TRUE = """True Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_FIREDESCRIPT = """Modifies Fire Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_WATERDESCRIPT = """Modifies Water Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_AIRDESCRIPT = """Modifies Air Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_EARTHDESCRIPT = """Modifies Earth Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_LIGHTDESCRIPT = """Modifies Light Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_DARKDESCRIPT = """Modifies Dark Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_MINDDESCRIPT = """Modifies Mind Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_MELEEDESCRIPT = """Modifies Melee Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_RANGEDDESCRIPT = """Modifies Ranged Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_ALLDESCRIPT = """Modifies All Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_AOEDESCRIPT = """Modifies Area Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_NORMALDESCRIPT = """Modifies Normal Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_PHYSICDESCRIPT = """Modifies Physic Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_SPELLDESCRIPT = """Modifies Spell Damage""", # MISSING TRANSLATION
+	STATDAMAGE_MOD_TRUEDESCRIPT = """Modifies True Damage""", # MISSING TRANSLATION
 
 	ENEMYMANEATER_PLANT = """Растение-людоед""",
 	ENEMYCENTIPEDE = """Сороконожка""",
@@ -18475,6 +18582,9 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	VILLAGE_HUMAN2_9 = """луг""",
 	
 	VILLAGE_HUMAN_QUEST1 = """Миллфорд""",
+	VILLAGE_HUMAN_QUEST2 = """Stonevale""", # MISSING TRANSLATION
+	VILLAGE_FOREST_QUEST1 = """Leafshade Haven""", # MISSING TRANSLATION
+	VILLAGE_MOUNTAIN_QUEST1 = """Crystaldepths""", # MISSING TRANSLATION
 	
 	BANDIT_FORT_NOUNS1 = """Форт""",
 	BANDIT_FORT_NOUNS2 = """Частокол""",
