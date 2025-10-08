@@ -24,10 +24,10 @@ text = "You have no suitable characters"
 align = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 72.8875
-margin_top = 45.4515
-margin_right = 687.887
-margin_bottom = 876.451
+margin_left = 73.0
+margin_top = 45.0
+margin_right = 688.0
+margin_bottom = 829.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 615.0
@@ -60,6 +60,19 @@ theme = ExtResource( 2 )
 text = "Name - Strength - 1/3"
 align = 1
 valign = 1
+
+[node name="hide_btn" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -128.0
+margin_top = -77.0
+margin_right = 128.0
+margin_bottom = -22.0
+grow_horizontal = 2
+theme = ExtResource( 1 )
+text = "REQ_HIDE_PRETENDER"
 
 [node name="req_info" type="Control" parent="."]
 visible = false
