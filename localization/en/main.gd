@@ -19808,5 +19808,10 @@ You leave Kuro seemingly stuck in place as you contemplate your newly acquired p
 Kuro smirks at you in her usual way.
 
 - No, I doubt she'll help us again after this. We're on our own.""",
+	KURO_QUEST_3_SUMMARY = "",
+	KURO_QUEST_3_NAME = "",
+	KURO_QUEST_3_CRAFT = "Craft Vesperine Cage, than speak to Kuro.",
+	KURO_QUEST_3_DEPTHS = "Search in Crystaldepths",
+	KURO_QUEST_3_DUNGEON = "Finish Nixx",
 }
 

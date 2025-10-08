@@ -78,6 +78,7 @@ var encounters = {
 	greg_arena_fight = {unittype = 'randomgroup', unitcode = 'greg_arena_fight', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_arena_9', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 	erdyna_thugs_fight = {unittype = 'randomgroup', unitcode = 'erdyna_thugs', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_erdyna_intro_3', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 	erdyna_duel_fight = {unittype = 'randomgroup', unitcode = 'erdyna_boss', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'emp_erdyna_intro_6', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
+	nixx_group = {unittype = 'randomgroup', unitcode = 'nixx_boss', bg = 'arena', bgm = 'default', win_effects = [{code = 'start_event', data = 'kuro3_win', args = []}], lose_effects = [{code = 'start_event', data = 'generic_lose_scene', args = []}]}, #fix
 }
 
 var enemygroups = {
@@ -192,6 +193,7 @@ var enemygroups = {
 	erdyna_thugs = {reqs = [], units = {bandit_assassin = [2,2], bandit_boss_melee = [1,1], bandit_mage = [2,2], bandit_boss_archer = [1,1]}},
 	greg_arena_fight = {reqs = [], units = {greg_act4 = [1,1]}},
 	erdyna_boss = {reqs = [], units = {erdyna = [1,1]}},
+	nixx_boss = {reqs = [], units = {erdyna = [1,1]}}, #fix
 	
 	aire_boss_fight = {reqs = [], units = {rebel_knight = [3,3], aire = [1,1], rebel_healer = [2,2]}},
 	

@@ -372,6 +372,16 @@ var materiallist = {
 		tier = '',
 		tags = ['no_random'],
 	},
+	vesperine_cage = { #fix
+		code = 'vesperine_cage',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_symbol.png"),
+		price = 1,
+		type = 'quest',
+		tier = '',
+		tags = ['no_random'],
+	},
 	
 #	beer = {
 #		code = 'beer',
@@ -4002,6 +4012,20 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'material',
 		resultitem = 'divine_symbol',
+		workunits = 0.15,
+		worktype = 'smith',
+		unique = true
+	},
+	vesperine_cage = { #fix
+		code = 'vesperine_cage',
+		materials = {steel = 10},
+		items = {},
+		unlockreqs = [{type = 'active_quest_stage', value = 'kuro_quest_3', stage = 'craft'},
+		{type = 'has_material', operant = 'lt', value = 1, material = 'vesperine_cage'}],
+		crafttype = 'basic',
+		resultamount = 1,
+		resultitemtype = 'material',
+		resultitem = 'vesperine_cage',
 		workunits = 0.15,
 		worktype = 'smith',
 		unique = true

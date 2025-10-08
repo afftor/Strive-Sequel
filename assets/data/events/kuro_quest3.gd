@@ -100,7 +100,7 @@ var data = {
 				]
 			},
 			{
-				code = "kuro3_dialogue_2",#?
+				code = "kuro_dialogue_start",
 				text = "KURO3_DIALOGUE_3_OPTION_5",
 				dialogue_argument = 1,
 				type = "next_dialogue",
@@ -133,7 +133,7 @@ var data = {
 				]
 			},
 			{
-				code = "kuro3_dialogue_3", #?
+				code = "kuro_dialogue_start",
 				text = "KURO3_DIALOGUE_4_OPTION_3",
 				dialogue_argument = 1,
 				type = "next_dialogue",
@@ -214,7 +214,9 @@ var data = {
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				#2add crafting unlock
-				#2add quest progress
+				bonus_effects = [
+					{code = "progress_quest", value = "kuro_quest_3", stage = "craft"},
+				]
 			}
 		]
 	},
@@ -229,7 +231,9 @@ var data = {
 				reqs = [],
 				dialogue_argument = 1,
 				type = "next_dialogue",
-				#2add quest progress
+				bonus_effects = [
+					{code = "progress_quest", value = "kuro_quest_3", stage = "depths"},
+				]
 			}
 		]
 	},
@@ -383,7 +387,16 @@ var data = {
 		reqs = [],
 		text = [{text = "KURO3_DEPTHS_11", reqs = []}],
 		options = [
-			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue",} #2add quest progress
+			{
+				code = "close", 
+				text = "DIALOGUECLOSE", 
+				reqs = [], 
+				dialogue_argument = 1, 
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = "progress_quest", value = "kuro_quest_3", stage = "dungeon"},
+					{code = "make_quest_location", value = "quest_dungeon_kuro3"}
+				]} 
 		]
 	},
 	
@@ -476,7 +489,7 @@ var data = {
 	},
 	kuro3_dungeon_10 = {
 		reqs = [],
-		tags = ["dialogue_scene"],
+		tags = ["dialogue_scene", "master_translate"],
 		character = "kuro",
 		text = [{text = "KURO3_DUNGEON_10",reqs = []}],
 		options = [
@@ -522,7 +535,19 @@ var data = {
 			{text = "KURO3_GOOD_3", reqs = []},
 			],
 		options = [
-			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue",} #2add quest progress
+			{
+				code = "close", 
+				text = "DIALOGUECLOSE", 
+				reqs = [], 
+				dialogue_argument = 1, 
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = 'material_change', operant = '-', material = 'vesperine_cage', value = 1},
+					{code = 'affect_unique_character', name = 'kuro', type = 'remove_class', class = 'nixx_champion'},
+					{code = "complete_quest", value = "kuro_quest_3"},
+					{code = "remove_quest_location", value = "quest_dungeon_kuro3 "}
+				]
+			} 
 		]
 	},
 	kuro3_bad_1 = {
@@ -548,7 +573,20 @@ var data = {
 		reqs = [],
 		text = [{text = "KURO3_BAD_3", reqs = []}],
 		options = [
-			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue",} #2add quest progress
+			{
+				code = "close", 
+				text = "DIALOGUECLOSE", 
+				reqs = [], 
+				dialogue_argument = 1, 
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = 'material_change', operant = '-', material = 'vesperine_cage', value = 1},
+					{code = 'affect_master', type = 'add_class', class = 'nixx_champion'},
+					{code = 'affect_unique_character', name = 'kuro', type = 'remove_class', class = 'nixx_champion'},
+					{code = "complete_quest", value = "kuro_quest_3"},
+					{code = "remove_quest_location", value = "quest_dungeon_kuro3 "}
+				]
+			} 
 		]
 	},
 	kuro3_bad_4 = {
@@ -556,7 +594,21 @@ var data = {
 		reqs = [],
 		text = [{text = "KURO3_BAD_4", reqs = []}],
 		options = [
-			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue",} #2add quest progress
+			{
+				code = "close", 
+				text = "DIALOGUECLOSE", 
+				reqs = [], 
+				dialogue_argument = 1, 
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = 'material_change', operant = '-', material = 'vesperine_cage', value = 1},
+					{code = 'affect_master', type = 'add_class', class = 'nixx_champion'},
+					{code = 'affect_unique_character', name = 'kuro', type = 'remove_class', class = 'nixx_champion'},
+					{code = 'affect_unique_character', name = 'kuro', type = 'slavetype', value = 'slave'},
+					{code = "complete_quest", value = "kuro_quest_3"},
+					{code = "remove_quest_location", value = "quest_dungeon_kuro3 "}
+				]
+			} 
 		]
 	},
 	kuro3_bad_5 = {
@@ -564,7 +616,20 @@ var data = {
 		reqs = [],
 		text = [{text = "KURO3_BAD_5", reqs = []}],
 		options = [
-			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue",} #2add quest progress
+			{
+				code = "close", 
+				text = "DIALOGUECLOSE", 
+				reqs = [], 
+				dialogue_argument = 1, 
+				type = "next_dialogue",
+				bonus_effects = [
+					{code = 'material_change', operant = '-', material = 'vesperine_cage', value = 1},
+					{code = 'affect_master', type = 'add_class', class = 'nixx_champion'},
+					{code = 'affect_unique_character', name = 'kuro', type = 'remove'},
+					{code = "complete_quest", value = "kuro_quest_3"},
+					{code = "remove_quest_location", value = "quest_dungeon_kuro3 "}
+				]
+			} 
 		]
 	},
 	kuro3_dialogue2_1 = {
@@ -597,8 +662,8 @@ var data = {
 			],
 		options = [
 			{
-				code = "kuro3_dialogue_3", #back
-				text = "KURO3_DIALOGUE_2_OPTION_1", #fix
+				code = "kuro_dialogue_start", 
+				text = "DIALOGUEBACK", 
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				reqs = []

@@ -1305,6 +1305,14 @@ var fixed_location_options = { #override serialized data
 			args = [{code = 'start_event', data = 'lich_enc_initiate', args = []}]
 		}
 	],
+	settlement_mountains1 = [
+		{
+			text = tr("KURO3_DEPTHS_OPTION"), 
+			reqs = [
+				{type = 'active_quest_stage', value = 'kuro_quest_3', stage = 'depths'}],
+			args = [{code = 'start_event', data = 'kuro3_depths_1', args = []}]
+		},
+	],
 	quest_mages_xari = [
 		{
 			text = tr("QUEST_MAGES_XARI1"), 

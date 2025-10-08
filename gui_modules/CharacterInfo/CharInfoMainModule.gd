@@ -132,6 +132,10 @@ var unique_dict = { #shows available talk characters. Scenes go in order from hi
 	kuro = {
 		code = 'kuro',
 		scenes = [
+			{code = 'kuro3_init_3', reqs = [
+				{type = "active_quest_stage", value = "kuro_quest_3", stage = "craft"},
+				{type = 'has_material', operant = 'eq', value = 1, material = 'vesperine_cage'}
+			]},
 			{code = 'kuro_tome_sex', reqs = [{type = "active_quest_stage", value = "kuro_tome_quest", stage = "talk"}]},
 			{code = 'kuro_after_tome', reqs = [
 				{type = "quest_completed", check = true, name = "kuro_tome_quest"},

@@ -3148,4 +3148,110 @@ var dungeons = {
 		area = 'forests',
 		travel_time = [0,0],
 	},
+	quest_dungeon_kuro3 = {  #fix
+		code = 'quest_dungeon_kuro3',
+		type = 'dungeon',
+		name = tr("QUEST_DUNGEON_ANA_FORT_LOCATION_TEXT"),
+		classname = '',
+		descript = tr("QUEST_DUNGEON_ANA_FORT_LOCATION_DESC"),
+		character_data = {
+			chance_mod = 1.5,
+			races = [['local', 3], ['common',5], ['uncommon',1]]
+		},
+		difficulty = 'medium',
+		background_pool = ['fort3'],
+		custom_background = 'combat_fort',
+		enemyarray =  [['event_rebels_1', 1],['event_rebels_2', 1],['rebels_small', 0.5]],
+		final_enemy = [['rebels_boss',1], ['rebels_sergeant_boss',1], ['rebels_castellan_boss',0.5]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+		event_data = {
+			dungeon_find_chest_medium = {
+				limit = 0,
+				weight = 6,
+				floor_range = [0,0],
+				icon = 'chest',
+				events = ['dungeon_find_chest_medium'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.1],
+					['event_small_crack',1]
+				],
+			},
+			dungeon_find_armory_easy = {
+				limit = 1,
+				weight = 2,
+				floor_range = [2,0],
+				icon = 'chest',
+				events = ['dungeon_find_armory_easy'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.2],
+					['event_small_crack',1],
+				],
+			},
+			event_dungeon_prisoner = {
+				limit = 2,
+				weight = 5,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['event_dungeon_prisoner'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.2],
+					['event_small_crack',1],
+				],
+			},
+			celena_shrine_find = {
+				limit = 1,
+				weight = 2,
+				floor_range = [0,0],
+				icon = 'shrine',
+				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_small_crack',1]
+				],
+			},
+			fountain = {
+				limit = 1,
+				weight = 1,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['fountain'],
+				possible_challenges = [
+					['event_locked_door',1],
+					['event_blocked_path',1],
+					['event_magic_barrier',0.8]
+				],
+			},
+		},
+		
+		event_room_number = [1,1],
+		material_room_number = [1,1],
+		
+		main_route_length = [3,3],
+		bonus_rooms = [0,0],
+		levels = [1,1], 
+		base_room_stamina_cost = [5,5],
+		
+		resources = 'local2',
+		gather_settings = 'base',
+		gatherable_resources = 'biome_bandit_fort_res',
+		
+		gather_mod = [2,2.5],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local',
+		events = [],
+		tags = ['quest'],
+		options = [],
+		area = 'mountains',
+		travel_time = [1,1],
+		scripteventdata = [
+			{trigger = 'dungeon_complete', event = 'custom_event', args = 'kuro3_dungeon_1', reqs = []}
+		]
+	},
 }

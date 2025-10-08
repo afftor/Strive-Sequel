@@ -2690,7 +2690,16 @@ var quests = {
 			arena = {code = 'arena', name = 'ACT_4_CAPITAL_NAME', descript = 'ACT_4_CAPITAL_ARENA'},
 			act4_continue = {code = 'act4_continue', name = 'ACT_4_CAPITAL_NAME', descript = 'ACT_4_CONTINUE'}
 		}
-	}
+	},
+	kuro_quest_3 = {
+		code = 'kuro_quest_3',
+		summary = 'KURO_QUEST_3_SUMMARY',
+		stages = {
+			craft = {code = 'craft', name = 'KURO_QUEST_3_NAME', descript = 'KURO_QUEST_3_CRAFT'},
+			depths = {code = 'depths', name = 'KURO_QUEST_3_NAME', descript = 'KURO_QUEST_3_DEPTHS'},
+			dungeon = {code = 'dungeon', name = 'KURO_QUEST_3_NAME', descript = 'KURO_QUEST_3_DUNGEON'},
+		}
+	},
 }
 
 var old_quest_stages = {

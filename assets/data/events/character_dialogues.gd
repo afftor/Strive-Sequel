@@ -761,6 +761,15 @@ var data = {
 			},
 		],
 		options = [
+			{code = 'kuro3_dialogue_1', text = "KURO3_DIALOGUE_INIT", reqs = [ #possibly add more
+				{type = "event_seen", check = false, value = "kuro3_dialogue_1"}
+				]
+			},
+			{code = 'kuro3_dialogue2_1', text = "KURO3_DIALOGUE2_INIT", reqs = [ 
+				{type = "quest_completed", name = "kuro_quest_3", check = true},
+				{type = "event_seen", check = false, value = "kuro3_dialogue2_1"}
+				]
+			},
 			{code = 'close', text = "DIALOGUELEAVE", reqs = []},
 		],
 	},

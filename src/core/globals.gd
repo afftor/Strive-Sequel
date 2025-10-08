@@ -2028,6 +2028,8 @@ func common_effects(effects):
 				input_handler.active_character = input_handler.scene_characters[i.value]
 			'affect_active_character':
 				input_handler.active_character.affect_char(i, true)
+			'affect_master':
+				ResourceScripts.game_party.get_master().affect_char(i, true)
 			'make_loot':
 				#in most cases "pool" array is redundant, as there is only one position,
 				#but i'm keeping it "as is" so CqEditor couldn't hurt an event
