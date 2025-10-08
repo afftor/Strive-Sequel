@@ -175,6 +175,8 @@ func fix_serialization():
 		globals.common_effects([{code = 'add_timed_event', value = "lilia_finale_1", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
 	if !seen_events.has("zephyra_painting_1") && !timed_event_exists("zephyra_painting_1") && completed_quests.has('zephyra_bath_quest') && completed_quests.has('getting_lira_quest'):
 		globals.common_effects([{code = 'add_timed_event', value = "zephyra_painting_1", args = [{type = 'add_to_date', date = [2,5], hour = 1}]}])
+	if !seen_events.has("kuro3_init_1") && !timed_event_exists("kuro3_init_1") && completed_quests.has('kuro_errand_quest'):
+		globals.common_effects([{code = 'add_timed_event', value = "kuro3_init_1", args = [{type = 'add_to_date', date = [4,4], hour = 1}]}])
 	#2add amelia questline here. idk how cause herbs quest can be failed - so need correct condition
 	
 	#char_events

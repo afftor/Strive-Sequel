@@ -1037,6 +1037,9 @@ var data = {
 					{
 						code = "complete_quest",
 						value = "kuro_errand_quest"
+					},
+					{
+						code = 'add_timed_event', value = "kuro3_init_1", args = [{type = 'add_to_date', date = [4, 4], hour = 1}]
 					}
 				]
 			},
@@ -1232,6 +1235,9 @@ var data = {
 					{
 						code = "complete_quest",
 						value = "kuro_errand_quest"
+					},
+					{
+						code = 'add_timed_event', value = "kuro3_init_1", args = [{type = 'add_to_date', date = [4, 4], hour = 1}]
 					}
 				]
 			}
@@ -1410,6 +1416,9 @@ var data = {
 					{
 						code = "complete_quest",
 						value = "kuro_errand_quest"
+					},
+					{
+						code = 'add_timed_event', value = "kuro3_init_1", args = [{type = 'add_to_date', date = [4, 4], hour = 1}]
 					}
 				]
 			}
