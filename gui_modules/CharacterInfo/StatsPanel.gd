@@ -139,12 +139,11 @@ func select_stat(stat, btn):
 						)
 					]
 	
-	var text = person.translate(st_data.descript)
+	var text = "%s\n\n%s: %s" % [person.translate(st_data.descript),
+		tr("ARMORBASE"), compo_dict.base_value
+	]
 	if !temp_text.empty():
-		text += "\n\n%s: %s%s\n%s: %s" % [
-			tr("ARMORBASE"), compo_dict.base_value, temp_text,
-			tr("SHOWSTAT_FINAL"), value
-		]
+		text += "%s\n%s: %s" % [temp_text, tr("SHOWSTAT_FINAL"), value]
 	info_node.bbcode_text = globals.TextEncoder(text)
 
 
