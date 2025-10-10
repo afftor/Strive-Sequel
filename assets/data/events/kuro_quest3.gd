@@ -544,6 +544,7 @@ var data = {
 				bonus_effects = [
 					{code = 'material_change', operant = '-', material = 'vesperine_cage', value = 1},
 					{code = 'affect_unique_character', name = 'kuro', type = 'remove_class', class = 'nixx_champion'},
+					{code = 'affect_unique_character', name = 'kuro', type = 'add_class', class = 'nixx_champion2'},
 					{code = "complete_quest", value = "kuro_quest_3"},
 					{code = "remove_quest_location", value = "quest_dungeon_kuro3 "}
 				]
@@ -581,7 +582,7 @@ var data = {
 				type = "next_dialogue",
 				bonus_effects = [
 					{code = 'material_change', operant = '-', material = 'vesperine_cage', value = 1},
-					{code = 'affect_master', type = 'add_class', class = 'nixx_champion'},
+					{code = 'affect_master', type = 'add_class', class = 'nixx_champion3'},
 					{code = 'affect_unique_character', name = 'kuro', type = 'remove_class', class = 'nixx_champion'},
 					{code = "complete_quest", value = "kuro_quest_3"},
 					{code = "remove_quest_location", value = "quest_dungeon_kuro3 "}
@@ -602,7 +603,7 @@ var data = {
 				type = "next_dialogue",
 				bonus_effects = [
 					{code = 'material_change', operant = '-', material = 'vesperine_cage', value = 1},
-					{code = 'affect_master', type = 'add_class', class = 'nixx_champion'},
+					{code = 'affect_master', type = 'add_class', class = 'nixx_champion3'},
 					{code = 'affect_unique_character', name = 'kuro', type = 'remove_class', class = 'nixx_champion'},
 					{code = 'affect_unique_character', name = 'kuro', type = 'slavetype', value = 'slave'},
 					{code = "complete_quest", value = "kuro_quest_3"},
@@ -624,7 +625,7 @@ var data = {
 				type = "next_dialogue",
 				bonus_effects = [
 					{code = 'material_change', operant = '-', material = 'vesperine_cage', value = 1},
-					{code = 'affect_master', type = 'add_class', class = 'nixx_champion'},
+					{code = 'affect_master', type = 'add_class', class = 'nixx_champion3'},
 					{code = 'affect_unique_character', name = 'kuro', type = 'remove'},
 					{code = "complete_quest", value = "kuro_quest_3"},
 					{code = "remove_quest_location", value = "quest_dungeon_kuro3 "}

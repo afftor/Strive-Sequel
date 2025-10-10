@@ -393,6 +393,15 @@ var traits = {
 		effects = ['e_tr_nixx'],
 		tags = []
 	},
+	nixx_champion2 = {
+		code = 'nixx_champion2',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_nixx2'],
+		tags = []
+	},
 	witch = {
 		code = 'witch',
 		name = '',
