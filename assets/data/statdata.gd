@@ -1756,7 +1756,7 @@ func _ready():
 				tags = ['show_in_header', 'integer'],
 				direct = false,
 				container = 'masteries',
-				show_info = {category = 'combat'}
+				show_info = {category = 'combat', hide_if_0 = true}
 			}
 		statdata['mastery_' + i + '_enable'] = {
 				code = "mastery_" + i + '_enable',
@@ -1823,7 +1823,7 @@ func _ready():
 				percent = true,
 				direct = false,
 				container = 'damage_mods',
-				show_info = {category = 'combat'}
+				show_info = {category = 'combat', hide_if_1 = true}
 			}
 	for st in Statlist_init.manacost_mods:
 		statdata[st] = {

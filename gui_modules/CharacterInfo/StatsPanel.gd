@@ -37,14 +37,16 @@ func _sort_stats(a, b):
 func filter_changed(text):
 	if text.empty():
 		for btn in container.get_children():
-			btn.visible = (btn.get_meta("stat_name") != null)
+			btn.visible = btn.has_meta("stat_name")
 		return
 	for btn in container.get_children():
-		btn.visible = (btn.get_meta("stat_name") != null
-			and (btn.get_meta("stat_name").findn(text) != -1
-				or btn.get_meta("stat_name") == "_cat"
-				)
-			)
+		if !btn.has_meta("stat_name"):
+			btn.visible = false
+			continue
+		var stat_name = btn.get_meta("stat_name")
+		btn.visible = (stat_name.findn(text) != -1
+			or stat_name == "_cat"
+		)
 
 func make_stats(person_input):
 	info_node.bbcode_text = ""
@@ -59,6 +61,8 @@ func make_stats(person_input):
 			var st_data = statdata.statdata[stat]
 			var value = person.get_stat(stat)
 			if value == 0 and st_data.show_info.has("hide_if_0"):
+				continue
+			if value == 1 and st_data.show_info.has("hide_if_1"):
 				continue
 			
 			var new_button = input_handler.DuplicateContainerTemplate(container, 'Button')
