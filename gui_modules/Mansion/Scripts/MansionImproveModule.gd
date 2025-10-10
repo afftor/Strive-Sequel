@@ -114,12 +114,12 @@ func build_item():
 		var item = ResourceScripts.game_res.items[selected_item]
 		#setup filter
 		if Items.fixed_quality_stats.has(item.itembase):
-			req_itembase = null
+			req_itembase = item.geartype
 			var tmp = item.quality
 			req_quality = Items.next_quality[tmp]
 			req_amount = Items.amount_to_improve_unique[req_quality]
 		else:
-			req_itembase = item.itembase
+			req_itembase = item.geartype
 			req_quality = item.quality
 			req_amount = Items.amount_to_improve[req_quality]
 		
@@ -138,7 +138,7 @@ func build_fuse_list():
 			continue
 		if item.quality != req_quality:
 			continue
-		if req_itembase != null and item.itembase != req_itembase:
+		if req_itembase != null and item.geartype != req_itembase:
 			continue
 		var panel = input_handler.DuplicateContainerTemplate(fuse_list, 'Button')
 		panel.connect('pressed', self, 'select_fuse_item', [id])

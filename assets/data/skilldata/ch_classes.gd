@@ -588,6 +588,32 @@ var skills = {
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.8,
 	},
+	
+	dark_bonus = {
+		code = 'dark_bonus',
+		name = '',
+		descript = '',
+		icon = null,
+		type = 'combat', 
+		ability_type = 'spell',
+		tags = ['damage','dark', 'not_final'],
+		reqs = [],
+		targetreqs = [],
+		effects = [],
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'enemy',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'dark',
+		sfx = [{code = 'blood_explosion', target = 'target', period = 'predamage'}], #fix
+		sounddata = {initiate = null, strike = 'blade', hit = null},
+		value = 1,
+		not_final = true
+	},
 }
 var effects = {
 	#trait-based
@@ -774,6 +800,26 @@ var effects = {
 				atomic = [
 					{type = 'stat_add', stat = 'chance', value = 30},
 					{type = 'add_tag', value = 'nodef'},
+					],
+			}
+		]
+	},
+	e_tr_nixx2 = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		req_skill = true,
+		conditions = [
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['ability_type', 'eq', 'skill']},
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['target_range', 'eq', 'melee']},
+		],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				atomic = [
+					{type = 'stat_set', stat = 'follow_up', value = 'dark_bonus'},
 					],
 			}
 		]
