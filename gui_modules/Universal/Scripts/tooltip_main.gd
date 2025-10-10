@@ -27,10 +27,11 @@ func _process(delta):
 		if open_timer <= 0:
 			state = STATE_OPEN
 			show()
-			update()
-#			yield(update(), 'completed')
+#			update()
+			yield(update(), 'completed')
+#			modulate.a = 1.0
 #			show()
-#			ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
+			ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
 
 
 func _setup(node):
@@ -60,3 +61,8 @@ func hide():
 	state = STATE_HIDE
 #	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 	.hide()
+
+
+func show():
+	visible = true
+	modulate.a = 0.01
