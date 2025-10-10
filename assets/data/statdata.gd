@@ -992,7 +992,7 @@ var statdata = {
 		type = 'misc',
 		tags = ['integer'],
 		direct = false,
-		innate_bonuses = {maxcap = 100},
+		innate_bonuses = {maxcap = 85},
 		show_info = {category = 'combat'}
 	},
 	armorpenetration = {
