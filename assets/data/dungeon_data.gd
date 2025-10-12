@@ -3148,98 +3148,95 @@ var dungeons = {
 		area = 'forests',
 		travel_time = [0,0],
 	},
-	quest_dungeon_kuro3 = {  #fix
+	quest_dungeon_kuro3 = {
 		code = 'quest_dungeon_kuro3',
 		type = 'dungeon',
-		name = tr("QUEST_DUNGEON_ANA_FORT_LOCATION_TEXT"),
+		name = tr("QUEST_DUNGEON_KURO_NIXX"),
 		classname = '',
-		descript = tr("QUEST_DUNGEON_ANA_FORT_LOCATION_DESC"),
+		descript = tr("QUEST_DUNGEON_KURO_NIXX_DESC"),
 		character_data = {
 			chance_mod = 1.5,
 			races = [['local', 3], ['common',5], ['uncommon',1]]
 		},
 		difficulty = 'medium',
-		background_pool = ['fort3'],
-		custom_background = 'combat_fort',
-		enemyarray =  [['event_rebels_1', 1],['event_rebels_2', 1],['rebels_small', 0.5]],
-		final_enemy = [['rebels_boss',1], ['rebels_sergeant_boss',1], ['rebels_castellan_boss',0.5]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+		background_pool = ['cave4'],
+		custom_background = 'combat_volcano',
+		enemyarray = [['firedepths_easy1', 1],['firedepths_easy2', 1],['firedepths_medium1', 1],['firedepths_medium2', 1]],
+		final_enemy = [['firedepths_boss1',1],['firedepths_boss2',1]], final_enemy_type = 'monster',
+		eventarray = [['dungeon_find_chest_medium', 1], ['erebus_shrine_find',0.2]],
+		
+		
 		event_data = {
 			dungeon_find_chest_medium = {
 				limit = 0,
-				weight = 6,
+				weight = 8,
 				floor_range = [0,0],
 				icon = 'chest',
 				events = ['dungeon_find_chest_medium'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
-					['event_magic_barrier',0.1],
-					['event_small_crack',1]
-				],
-			},
-			dungeon_find_armory_easy = {
-				limit = 1,
-				weight = 2,
-				floor_range = [2,0],
-				icon = 'chest',
-				events = ['dungeon_find_armory_easy'],
-				possible_challenges = [
-					['event_locked_door',1],
-					['event_blocked_path',1],
-					['event_magic_barrier',0.2],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
 					['event_small_crack',1],
+					['event_ancient_lock',1]
 				],
 			},
-			event_dungeon_prisoner = {
-				limit = 2,
-				weight = 5,
-				floor_range = [0,0],
-				icon = 'man',
-				events = ['event_dungeon_prisoner'],
-				possible_challenges = [
-					['event_locked_door',1],
-					['event_blocked_path',1],
-					['event_magic_barrier',0.2],
-					['event_small_crack',1],
-				],
-			},
-			celena_shrine_find = {
+			erebus_shrine_find = {
 				limit = 1,
-				weight = 2,
+				weight = 4,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = ['celena_shrine_find','erebus_shrine_find','freya_shrine_find'],
+				events = ['erebus_shrine_find','hybris_shrine_find'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
-					['event_small_crack',1]
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
 				],
 			},
-			fountain = {
+			library = {
 				limit = 1,
-				weight = 1,
+				weight = 3,
 				floor_range = [0,0],
-				icon = 'man',
-				events = ['fountain'],
+				icon = 'chest',
+				events = ['event_dungeon_library_1'],
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],
 					['event_magic_barrier',0.8]
 				],
 			},
+			event_dungeon_coffin_1 = {
+				limit = 1,
+				weight = 3,
+				floor_range = [0,0],
+				icon = 'man',
+				events = ['event_dungeon_coffin_1'],
+				possible_challenges = [
+					['event_blocked_path',1],
+					['event_magic_barrier',1],
+					['event_fallen_bridge',1],
+					['event_small_crack',1],
+					['event_ancient_lock',1]
+				],
+			},
 		},
 		
-		event_room_number = [1,1],
-		material_room_number = [1,1],
 		
-		main_route_length = [3,3],
-		bonus_rooms = [0,0],
-		levels = [1,1], 
-		base_room_stamina_cost = [5,5],
+		event_room_number = [3,4],
+		material_room_number = [4,5],
 		
-		resources = 'local2',
+		main_route_length = [6,8],
+		bonus_rooms = [3,4],
+		levels = [3,4], 
+		base_room_stamina_cost = [7,11], 
+		
+		resources = 'local7',
 		gather_settings = 'base',
-		gatherable_resources = 'biome_bandit_fort_res',
+		gatherable_resources = 'biome_fire_depths_res',
 		
 		gather_mod = [2,2.5],
 		bgm = "dungeon",

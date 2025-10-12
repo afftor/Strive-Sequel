@@ -333,6 +333,7 @@ var loot_tables = {
 	zephyra_bribe_1 = {gold = true, amount = 500},
 	zephyra_bribe_2 = {item = 'zephyra_underwear', amount = 1},
 	ramont_axe_reward = {item = 'ramont_axe', amount = 1},#autoassign_quality = true
+	nixx_reward = {item = 'nixx_headgear', amount = 1},#autoassign_quality = true
 	hector_armor_reward = {item = 'hector_armor', amount = 1, no_enchant = true},#autoassign_quality = true
 	erlen_sword_reward = {list = [
 		{item = 'erlen_sword', amount = 1},#autoassign_quality = true

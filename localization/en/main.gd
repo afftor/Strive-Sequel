@@ -4593,6 +4593,8 @@ The woman disappears as quickly as she appeared before you, leaving you in front
 	ENEMYDWARF_FIGHTER_ELITE = "Elite Dwarf Soldier",
 	ENEMYDWARF_RANGED = "Dwarf Crossbowman",
 	ENEMYKURO = "Kuro",
+	ENEMYERDYNA = "Erdyna",
+	ENEMYNIXX = "Nixx",
 	FOODFILTERHIGH = "High",
 	FOODFILTERMED = "Med",
 	FOODFILTERLOW = "Low",
@@ -16625,8 +16627,8 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	JEAN_FREE_QUEST_NAME = "Free Jean",
 	JEAN_FREE_QUEST_SUMMARY = "Buy out Jean from dwarven King's prison",
 	JEAN_FREE_QUEST_PRICE = "Dwarven King wants a blond elf slave girl instead of Jean, or there is a price of 1000 gold for here.",
-	KURO_TOME_QUEST_NAME = "Book for Kuro",
-	KURO_TOME_QUEST_SUMMARY = "Help Kuro to get access to Aliron's library",
+	KURO_TOME_QUEST_NAME = "Kuro: Thirst for knowledge",
+	KURO_TOME_QUEST_SUMMARY = "Help Kuro to get access to Myr's library",
 	KURO_TOME_QUEST_LIBRARY = "Visit Mages guild",
 	KURO_TOME_QUEST_MONEY = "Bring 500 gold to Myr of Mages guild",
 	KURO_TOME_QUEST_CAPITAL = "Search for Gilded Grasp whiskey in Dwarven Capital",
@@ -16637,12 +16639,19 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	LIRA_LOST_QUEST_NAME = "Lost Lira",
 	LIRA_LOST_QUEST_SUMMARY = "Help Lira out of the grove",
 	LIRA_LOST_QUEST_CAPITAL = "Get to the elven capital",
-	KURO_ERRAND_QUEST_NAME = "Kuro's minor errand",
+	KURO_ERRAND_QUEST_NAME = "Kuro: Disappearance",
 	KURO_ERRAND_QUEST_SUMMARY = "Follow the mysterious trail",
 	KURO_ERRAND_QUEST_CHURCH = "Visit Ginny at her temple",
 	KURO_ERRAND_QUEST_INVITE = "Visit Aliron's outer district, you've been invited to",
 	KURO_ERRAND_QUEST_SEARCH = "Search through the hideout for clues about other such spots",
 	KURO_ERRAND_QUEST_BASE = "Clear out cult's parent base",
+	
+	KURO_QUEST_3_NAME = "Kuro: ",
+	KURO_QUEST_3_SUMMARY = "Kuro has an insidious plan regarding her patron.",
+	KURO_QUEST_3_CRAFT = "Craft Vesperine Cage, then speak to Kuro.",
+	KURO_QUEST_3_DEPTHS = "Search in Crystaldepths",
+	KURO_QUEST_3_DUNGEON = "Deal with Nixx at the Wailing Halls",
+	
 	DIALOGUEANAINITIATELP = """Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.
 
 — H-hello, [Master]... How was your day?""",
@@ -17897,6 +17906,8 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	QUEST_CULT_PARENTBASE_DESC = "",
 	QUEST_STAR_CRATER_TEXT = "Fallen star's spot",
 	QUEST_STAR_CRATER_DESC = "",
+	QUEST_DUNGEON_KURO_NIXX = "Wailing Halls",
+	QUEST_DUNGEON_KURO_NIXX_DESCRIPT = "",
 	ALIRON1 = "Check the streets",
 	ALIRON2 = "Search for Reim",
 	ALIRON3 = "Visit Fred's Dormitory",
@@ -19864,11 +19875,6 @@ You leave Kuro seemingly stuck in place as you contemplate your newly acquired p
 
 Kuro smirks at you in her usual way.
 
-- No, I doubt she'll help us again after this. We're on our own.""",
-	KURO_QUEST_3_SUMMARY = "",
-	KURO_QUEST_3_NAME = "",
-	KURO_QUEST_3_CRAFT = "Craft Vesperine Cage, than speak to Kuro.",
-	KURO_QUEST_3_DEPTHS = "Search in Crystaldepths",
-	KURO_QUEST_3_DUNGEON = "Finish Nixx",
+— No, I doubt she'll help us again after this. We're on our own.""",
 }
 

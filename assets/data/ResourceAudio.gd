@@ -110,4 +110,6 @@ var sounds = {
 	battle_start = load("res://assets/sounds/sounds/battle_start.wav"),
 	battle_victory = load("res://assets/sounds/sounds/victory_new.wav"),
 	speech = load("res://assets/sounds/sounds/speech_screen.wav"),
+	
+	crunch = load("res://assets/sounds/sounds/crunch.wav"),
 }
