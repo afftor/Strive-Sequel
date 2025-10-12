@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Heleviel_job_7.png-7bba89f09e2b9f03e5fee89fd078465a.stex"
+path="res://.import/statistic_pressed.png-452e8691427df59d2091ed749888c352.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/Heleviel_job_7.png"
-dest_files=[ "res://.import/Heleviel_job_7.png-7bba89f09e2b9f03e5fee89fd078465a.stex" ]
+source_file="res://assets/Textures_v2/CHAR_INFO/training/statistic_pressed.png"
+dest_files=[ "res://.import/statistic_pressed.png-452e8691427df59d2091ed749888c352.stex" ]
 
 [params]
 

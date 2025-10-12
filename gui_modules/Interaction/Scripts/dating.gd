@@ -909,7 +909,7 @@ var unique_marry_rules = {
 	},
 	kuro = {
 		kuro_quest_finished = {
-			reqs = [{type = "quest_completed", name = "kuro_tome_quest", check = true}],
+			reqs = [{type = "quest_completed", name = "kuro_quest_3", check = true}],
 			text = "KURO_QUEST_FINISHED_TEXT",
 			description = "KURO_QUEST_FINISHED_DESCRIPTION",
 			agrees = true

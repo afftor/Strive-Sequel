@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Heleviel_job_5.png-9186b88f45a1dbcc9e38c3934573ba2d.stex"
+path="res://.import/kuro cast.png-49e27eb535611ec32e9c2b3d28daa7fd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/Heleviel_job_5.png"
-dest_files=[ "res://.import/Heleviel_job_5.png-9186b88f45a1dbcc9e38c3934573ba2d.stex" ]
+source_file="res://assets/images/scenes/kuro cast.png"
+dest_files=[ "res://.import/kuro cast.png-49e27eb535611ec32e9c2b3d28daa7fd.stex" ]
 
 [params]
 

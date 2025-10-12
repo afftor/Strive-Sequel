@@ -36,31 +36,31 @@ var TranslationDict = {
 	MENUCREDITSNAME = "Credito",
 	MENUCREDITSDESC = """Diseño, escritura y programación del juego: Maverik /
 
-						Programación de combate y habilidades: ykoc
+                        Programación de combate y habilidades: ykoc
 
-						Programación de interfaz gráfica de usuario: Gerakena
-						Programación de ayuda: SphinxKingStone
-						Núcleo/soporte de modding extendido: zeltop
+                        Programación de interfaz gráfica de usuario: Gerakena
+                        Programación de ayuda: SphinxKingStone
+                        Núcleo/soporte de modding extendido: zeltop
 
-						Diseño de personajes: Nightigall
-						Diseño de personajes: @naisk47
-						Ilustración de escena: Allanheil
-						Ilustración de fondo: Laynesis, OMA (Olga Morozova)
-						Ilustración de iconos: Persich
+                        Diseño de personajes: Nightigall
+                        Diseño de personajes: @naisk47
+                        Ilustración de escena: Allanheil
+                        Ilustración de fondo: Laynesis, OMA (Olga Morozova)
+                        Ilustración de iconos: Persich
 
-						Escritura: ralphomayo
-						Escritura: plumpjack
-						Escritura: S[Mutt]
+                        Escritura: ralphomayo
+                        Escritura: plumpjack
+                        Escritura: S[Mutt]
 
-						Corrección: Dorant, ralphomayo, Khuja, Lipach
+                        Corrección: Dorant, ralphomayo, Khuja, Lipach
 
-						Agradecimientos adicionales a: negtize724
+                        Agradecimientos adicionales a: negtize724
 						
 						Español Translation: Kinoshta
-						{color=yellow|Tiempo de traduccion, 5dias}
-						
+                        {color=yellow|Tiempo de traduccion, 5dias}
+                        
 						Ruido ambiental de batalla: espadas y gritos - pfranzen
-						https://freesound.org/people/pfranzen/sounds/192072/""",
+                        https://freesound.org/people/pfranzen/sounds/192072/""",
 	OPTNAME1 = "Visuales",
 	OPTNAME2 = "Jugabilidad",
 	OPTNAME3 = "Audio",
@@ -1376,7 +1376,7 @@ Conmocionado: el daño se reduce en un 15%.""",
 	SKILLTEMPEST = "Tempestad",
 	SKILLTEMPESTDESCRIPT = "Inflige el 120% de MAG ATK como daño de {color=yellow|Aire} a todos los enemigos. Aplica descarga eléctrica durante 2 turnos.",
 	SKILLEYEOFTHESTORM = "Ojo de la tormenta",	
-	SKILLEYEOFTHESTORMDESCRIPT = "El aliado objetivo inflige un 35 % adicional del MAG ATK del lanzador como daño de {color=yellow|Air} con cada golpe durante 6 turnos. Se lanza instantáneamente.",
+    SKILLEYEOFTHESTORMDESCRIPT = "El aliado objetivo inflige un 35 % adicional del MAG ATK del lanzador como daño de {color=yellow|Air} con cada golpe durante 6 turnos. Se lanza instantáneamente.",
 	SKILLHEALING = "Luz curativa",
 	SKILLHEALINGDESCRIPT = "Cura al objetivo en un 130 % de MATK o inflige daño leve a los enemigos no muertos.",
 	SKILLBLESSING = "Bendición",
@@ -2324,7 +2324,7 @@ El coste de maná del hechizo se redujo en un 15 %.
 
 {color=green|La afinidad física maximizada aumenta la regeneración de salud natural.}""",
 	STATMAGIC_FACTORDESCRIPT = """{color=yellow|Afinidad Mágico} representa la afinidad mágica del personaje. Cuanto mayor sea, más maná tendrás y más clases mágicas podrás desbloquear. También afecta la regeneración de maná.
-	
+    
 {color=green|La afinidad mágica maximizada proporciona una bonificación MAG ATK.}""",
 	STATTAME_FACTORDESCRIPT = """{color=yellow|Afinidad domesticacion} representa la facilidad para hacerse amigo del personaje. Reduce el costo de desbloquear rasgos de lealtad para los subordinados.
 {color=green|La afinidad de domesticación maximizado aumenta la ganancia de lealtad.}""",
@@ -2567,7 +2567,7 @@ Ejecuta al personaje seleccionado. Mejora considerablemente la obediencia de tod
 Efectos básicos:
 Lealtad: +25, Obediencia máxima.""",	
 	
-	SKILLENTHRALL = "Cautivar",
+    SKILLENTHRALL = "Cautivar",
 	SKILLENTHRALLDESCRIPT = """Selecciona un personaje para convertirlo en esclavo de un lanzador. Cada esclavo aumenta la Lujuria máxima y su regeneración, y proporciona puntos de desbloqueo.""",
 	DIALOGUEENTHRALLREPORT = "[targetname] ha sido cautivado con éxito por [name]. [targetname] se siente completamente blindado con [him].",
 	DIALOGUEENTHRALLREPORT_FAILED = "[targetname] pudo resistirse al encanto de [name].",
@@ -2602,7 +2602,7 @@ Lealtad: +25, Obediencia máxima.""",
 	THRALLS0DESCRIPT = "No tiene esclavos",
 	EFFECTNAME_E_THRALL = "Es un esclavo",
 	
-	SKILLSUPREMACY = "Supremacía",
+    SKILLSUPREMACY = "Supremacía",
 	SKILLSUPREMACYDESCRIPT = """Categoría: {color=green|Gracioso}
 Infunde admiración y respeto al objetivo por quien la lanza. Aumenta considerablemente la lealtad. Mejorado por el factor de encanto. 
 Efectos básicos: 
@@ -3997,7 +3997,7 @@ Las habilidades sexuales aumentan al realizar acciones relacionadas y su crecimi
 	SQ_ASSASSIN_T2_NAME1 = "Asesino",
 	SQ_ASSASSIN_T2_DESC = "[factionname] Requiere un maestro asesino para misiones encubiertas.",
 	
-	DIALOGUECLOSE = "Cerrar",
+    DIALOGUECLOSE = "Cerrar",
 	DIALOGUECONFIRM = "Confirmar",
 	DIALOGUECONTINUE = "Continuar",
 	DIALOGUERETURN = "Regresar",
@@ -4528,7 +4528,7 @@ Parece que Daisy aún tiene alguna esperanza de conquistarte finalmente.""",
 	TUTORIAL_SLAVEBASICS = "Los personajes son la pieza central del juego, ya que se encargan de todo el trabajo y los combates. Todos necesitan alimento a diario para su sustento y también tienen preferencias alimenticias, a menudo relacionadas con su raza.",
 	TUTORIAL_LUST = "La lujuria es una estadística especial que usa cada personaje y se asemeja más a un recurso como el maná. Aumenta lentamente cada día y puede utilizarse con ciertas habilidades para obtener efectos inusuales. Algunas clases, como el súcubo o el íncubo, se centran en manipular este recurso. Además de aumentar de forma natural, la lujuria puede incrementarse mediante interacciones sexuales, según el número de orgasmos alcanzados.",
 	TUTORIAL_SLAVEPANEL = """Esta es la pantalla detallada del personaje. Aquí puedes ver todas las estadísticas y detalles visibles.
-	
+    
 Cada personaje consta de varias estadísticas, algunas de las cuales se pueden ver a la izquierda. Puedes pasar el cursor sobre ellas en cualquier momento para ver sus detalles.
 
 En la parte inferior izquierda puedes seleccionar elementos, desbloquear nuevas clases y configurar detalles adicionales como la imagen importada.""",
@@ -4545,7 +4545,7 @@ El menú 'Viajes' te permite seleccionar otras ubicaciones y hacer que tus perso
 	JOBTUTORIAL1 = "En Ocupaciones, puedes asignar personajes a diversas tareas, que se ven cerca de la imagen de la ubicación. En la parte superior, puedes seleccionar otras ubicaciones donde tengas personajes.",
 	JOBTUTORIAL2 = "En la parte inferior puedes ver la descripción y los detalles de la ocupación. Pasa el cursor sobre ellos para ver más información.",
 	JOBTUTORIAL3 = "A la derecha puedes ver la lista de personajes disponibles en la ubicación actual. Al hacer clic en ellos, se asignarán a la tarea seleccionada.",
-	TRAINTUTORIAL1 = "Todos los personajes, excepto el Maestro, tendrán algunas funciones bloqueadas. Los personajes pueden ser esclavos o subordinados. Los esclavos deben ser entrenados asignándoles un entrenador.",
+    TRAINTUTORIAL1 = "Todos los personajes, excepto el Maestro, tendrán algunas funciones bloqueadas. Los personajes pueden ser esclavos o subordinados. Los esclavos deben ser entrenados asignándoles un entrenador.",
 	TRAINTUTORIAL2 = "El entrenador asignado permitirá poner a un esclavo a trabajar o en combate, sin embargo, para sacar el máximo provecho del esclavo, se lo debe entrenar para que acepte su rol como su propiedad.",
 	TRAINTUTORIAL3 = "El entrenamiento se realiza mediante acciones de entrenador. Entrenar a un esclavo reduce su {color=aqua|Spirit}. Si se agota demasiado su espíritu durante el entrenamiento, se convertirá en una versión desfigurada de sí mismo.",
 	TRAINTUTORIAL4 = "Cada esclavo tiene su propia predisposición hacia diferentes tipos de acción. Al descubrir qué tipo de acción funciona mejor, será mucho más fácil obtener Puntos de Lealtad sin agotar demasiado su espíritu.",
@@ -5689,7 +5689,7 @@ Esta no es una información muy conocida, pero parece que los rebeldes sabían d
 	TATTOOASS = "Trasero",
 	TATTOOCROTCH = "Entrepierna",
 	TATTOOLEGS = "Pierna",
-	STATDAMAGE_MOD_FIRE = "Daño de fuego",
+    STATDAMAGE_MOD_FIRE = "Daño de fuego",
 	STATDAMAGE_MOD_WATER = "Daño de agua",
 	STATDAMAGE_MOD_AIR = "Daño de viento",
 	STATDAMAGE_MOD_EARTH = "Daño de tierra",
@@ -10258,7 +10258,7 @@ Notas cómo Cali baja ligeramente la voz, sus manos se deslizan detrás de su es
 	CALI_SEX_6 = """Le entregas el dinero a Cali y, después de unos momentos, ella regresa con una bandeja de albóndigas. El olor es exactamente el que mencionó. Se las pasa a los otros sirvientes y pronto se sienta a tu lado después de entregarte una también.
 
 Los dos comen en silencio mientras reflexionan sobre la delicia. Cálida, suave y expertamente cocinada, reflexionas por unos momentos sobre salir y ver si tú y el comerciante pueden llegar a un acuerdo sobre las entregas de estas delicias.""",
-	CALI_SEX_7 = """Cali termina su golosina poco después que tú. Levanta la vista y observa el salón principal. Se da cuenta de que los dos están solos. Toma el envoltorio de sus golosinas y te mira con una mirada agradecida y emocionada.
+    CALI_SEX_7 = """Cali termina su golosina poco después que tú. Levanta la vista y observa el salón principal. Se da cuenta de que los dos están solos. Toma el envoltorio de sus golosinas y te mira con una mirada agradecida y emocionada.
 
 — Gracias, [Master]. Estaba delicioso.
 
@@ -13029,7 +13029,7 @@ Amelia: — Muy bien. Alcalde [name], según lo que me han dicho, usted ha brind
 	AMELIA_TRIAL_14_OPTION_2 = "Por supuesto que fue idea mía. No desapareces por tu cuenta, Amelia.",
 	AMELIA_TRIAL_15_2 = "Amelia: —Lo tendré en cuenta para el futuro, señor alcalde. ¿Recuerda cuál fue la reacción de Norlan ante su sugerencia?",
 AMELIA_TRIAL_15 = """
-	
+    
 Miembro 2: — ¡Yo... quiero añadir algo! Yo estaba en la habitación con ellos cuando se produjo esta conversación, y Norlan se mostró bastante reacio a aceptar la ayuda del alcalde. Yo también pensé que era extraño. Estábamos sumidos en el caos, y allí estaba él, rechazando la ayuda que el alcalde había tenido la amabilidad de ofrecer.
 
 Norlan: — Entiendo que pueda parecer así, pero mi intención no era disuadirte. Simplemente quería ahorrarte los problemas que éramos perfectamente capaces de resolver por nuestra cuenta. El uso del término "caos" parece un poco exagerado.""",
@@ -14224,7 +14224,7 @@ Te preguntas quién podría ser el remitente, pero es probable que sea otra pers
 
 """,
 	ENTER_CITY_T_0_VISIT = "— Alto de inmediato, forastero. Cualquier paso más cerca será considerado hostil y merecerá la eliminación.",
-	ENTER_CITY_T_1 = """El primer guardia hace un gesto hacia los ballesteros situados en lo alto de la muralla de la ciudad. Entablar una escaramuza sería inútil; los arqueros, con una precisión similar a la de un rayo, podrían transformarte en un alfiletero de saetas en cuestión de segundos.
+    ENTER_CITY_T_1 = """El primer guardia hace un gesto hacia los ballesteros situados en lo alto de la muralla de la ciudad. Entablar una escaramuza sería inútil; los arqueros, con una precisión similar a la de un rayo, podrían transformarte en un alfiletero de saetas en cuestión de segundos.
 
 — Di tu identidad.""",
 	ENTER_CITY_OPTION_ALERT = "Tienes un pequeño ejército ahí arriba. ¿Estás alerta?",
@@ -16383,7 +16383,7 @@ DIVINE_SYMBOL_NAME = "Influencia divina",
 	AMELIA_MAIN_STAGE_6 = "Habla con el esclavo encontrado en Aliron",
 	AMELIA_MAIN_STAGE_7 = "Encuentra a Amelia fuera de Aliron",
 	AMELIA_MAIN_STAGE_8 = "Regreso al gremio de sirvientes con Amelia",
-	AMELIA_MAIN_STAGE_9 = "Asiste al juicio de Amelia",
+    AMELIA_MAIN_STAGE_9 = "Asiste al juicio de Amelia",
 	AMELIA_MAIN_STAGE_10 = "Compra Amelia a los sirvientes",
 	AMELIA_MAIN_STAGE_11 = "Habla con Amelia en tu mansión.",
 	LILIA_FINALE_QUEST_NAME = "Lilia: Tentaciones",
@@ -16862,7 +16862,7 @@ Zephyra se congela al ver tu acción. Su rostro presagia tu perdición. El tiemp
 	MASTER_ABUSE_LINE17 = "¡Maldita sea! Me arden muchísimo las mejillas...",
 	MASTER_ABUSE_LINE18 = "Tienes suerte de no ser tú el que está en esta posición...",
 	MASTER_ABUSE_LINE19 = "¡Ah! No creas que me has superado...",
-	MASTER_ABUSE_LINE20 = "¡Cuidado... Esto es demasiado, [Master]...!",
+    MASTER_ABUSE_LINE20 = "¡Cuidado... Esto es demasiado, [Master]...!",
 	MASTER_ABUSE_LINE21 = "Esto simplemente se ha salido de control.",
 	MASTER_ABUSE_LINE22 = "¿Cómo te atreves a hacerme esto?",
 	MASTER_ABUSE_LINE23 = "Ay... Voy a sentir eso durante semanas...",
@@ -17702,7 +17702,7 @@ AREASEAS = "Mares",
 	QUEST_DUNGEON_GROVE_DESC = "",
 	QUEST_DUNGEON_SPIDER_LAIR_TEXT = "Guarida de araña",
 	QUEST_DUNGEON_SPIDER_LAIR_DESC = "",
-	QUEST_AMELIA_BANDITS_LOCATION_TEXT = "Cueva discreta",
+    QUEST_AMELIA_BANDITS_LOCATION_TEXT = "Cueva discreta",
 	QUEST_AMELIA_BANDITS_LOCATION_DESC = "",
 	QUEST_ANCIENT_JUNGLE_LOCATION_TEXT = "Ruinas antiguas",
 	QUEST_ANCIENT_JUNGLE_LOCATION_DESC = "",
@@ -17785,7 +17785,7 @@ AREASEAS = "Mares",
 	DWARF_CAPITAL_WHISKEY = "Consulta el mercado",
 	DWARF_CAPITAL_WHISKEY2 = "Visita el mercado",
 	DWARF_CAPITAL_DURIM = "Búsqueda de Durim",
-	INFINITEDUNGEONUNLOCK = "Callejón oscuro",
+    INFINITEDUNGEONUNLOCK = "Callejón oscuro",
 	BEASTKIN_CAPITAL1 = "Encuentra al jefe",
 	BEASTKIN_CAPITAL2 = "Visita el Lodge del Chamán",
 	BEASTKIN_CAPITAL3 = "Visita Savra",
@@ -17908,7 +17908,7 @@ Tecla de acceso rápido: 3""",
 	DETAILS_LABEL = "Detalles",
 	DESCRIPT2_BUTTON_TEXT = "Agregar descripción personalizada",
 	DESCRIPT_LABEL = "Descripción",
-	CUSTOM_NICK_LABEL = "Agregar un apodo personalizado",
+    CUSTOM_NICK_LABEL = "Agregar un apodo personalizado",
 	CUSTOM_MNOUN_LABEL = "Añadir nombre maestro personalizado",
 	PORT_FOLD_LABEL = "Carpeta de retratos: ",
 	BODY_FOLD_LABEL = "Carpeta de cuerpo: ",
@@ -17916,7 +17916,7 @@ Tecla de acceso rápido: 3""",
 	OPEN_SYS_FOLD_LABEL = "Abrir carpeta del sistema",
 	RELOAD_PORT_LABEL = "Recargar retratos",
 	RELOAD_IMG_LABEL = "Recargar imágenes",
-	RESET_IMG_LABEL = "Restablecer la imagen",
+    RESET_IMG_LABEL = "Restablecer la imagen",
 	REVERS_TO_DEF_LABEL = "Revertir al valor predeterminado",
 	SELECT_FOLDRS_LABEL = "Seleccionar carpetas",
 	ASSIGN_BOTH_LABEL = "Asignar ambos",
@@ -17968,7 +17968,7 @@ Tecla de acceso rápido: 3""",
 	MANSION_LABEL = "Mansion",
 	CHAR_LABEL = "Personaje",
 	QUESTS_LABEL = "Misión",
-	RETURN_ALL_MANSION_LABEL = "Regresar a todos",
+    RETURN_ALL_MANSION_LABEL = "Regresar a todos",
 	TRAVELERS_LABEL = "Viajeros",
 	BATTLE_GROUP_LABEL = "Grupo de batalla",
 	ITEMS_LABEL = "Items",

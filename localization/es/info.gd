@@ -3,8 +3,8 @@
 extends Reference
 
 var data = {
-eng_name = "Italian",
-author = "Scarichino",
-version = "1.0",
-contact = "",
+	eng_name = "Español",
+	author = "Kinoshta",
+	version = "1.0",
+	contact = "",
 }

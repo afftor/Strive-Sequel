@@ -65,8 +65,9 @@ var TranslationDict = {
 	OPTNAME4 = """Читы""",
 	OPTNAME5 = "Сложность",
 	OPTOPT = """Опции""",
-	OPTCLOSE = """ЗАКРЫТЬ""",
-	TUTORIALS = """Tutorials""", # MISSING TRANSLATION
+	OPTCLOSE = """Закрыть""",
+	TUTORIALS = """Туториалы""",
+	LOCATIONLIST = "Локации",
 	OPTGAMEPLAYFURRIES = """Фурри""",
 	OPTGAMEPLAYFURRMULT = """Множественные соски на фурри""",
 	OPTGAMEPLAYFUTA = """Фута с яйцами""",
@@ -122,10 +123,10 @@ var TranslationDict = {
 	PRONOUNSIRF = """Мисс""",
 	PRONOUNMISTER = """Мистер""",
 	PRONOUNMISTERF = """Мисс""",
-	PRONOUNSUCCUBUS = """Incubus""", # MISSING TRANSLATION
-	PRONOUNSUCCUBUSF = """Succubus""", # MISSING TRANSLATION
-	PRONOUNSUCCUBUSL = """incubus""", # MISSING TRANSLATION
-	PRONOUNSUCCUBUSLF = """succubus""", # MISSING TRANSLATION
+	PRONOUNSUCCUBUS = """Инкуб""",
+	PRONOUNSUCCUBUSF = """Суккуб""",
+	PRONOUNSUCCUBUSL = """инкуб""",
+	PRONOUNSUCCUBUSLF = """суккуб""",
 	PRONOUNSON = """сын""",
 	PRONOUNSONF = """дочь""",
 	PRONOUNFATHER = """отец""",
@@ -168,7 +169,7 @@ var TranslationDict = {
 	SIBLINGMODULERELATIVES = """Родственники""",
 	SIBLINGMODULERELATIONS = """Социум""",
 	SIBLINGMODULETRAININGS = """Тренировка рабов""",
-	SIBLINGMODULESUCCUBUS = """Succubus Training""", # MISSING TRANSLATION
+	SIBLINGMODULESUCCUBUS = """Тренировка суккуба""",
 	SIBLINGMODULETRAININGSSERVANTS = """Тренировка слуги""",
 	SIBLINGMODULETRAININGSMASTER = """Тренировка мастера""",
 	SIBLINGMODULEFOODCONSUMPTION = """Суточное потребление""",
@@ -182,19 +183,19 @@ var TranslationDict = {
 	SIBLINGMODULECURRENTCAPACITY = """Текущая емкость""",
 	SIBLINGMODULEPERSONALITY = """Личность""",
 	SIBLINGMODULEMINORTRAIN = "дополнительные тренировки",
-	SIBLINGMODULESUCCUBTRAIN = """Succubus Training""", # MISSING TRANSLATION
+	SIBLINGMODULESUCCUBTRAIN = """Тренировка суккуба""",
 	SIBLINGMODULEAVAILABLE = "Доступно",
 	SIBLINGMODULEAVAILABLETOOLTIP = "Количество доступных дополнительных тренировок зависит от Фактора Роста.",
-	SIBLINGMODULETHRALLLIST = """Thralls""", # MISSING TRANSLATION
+	SIBLINGMODULETHRALLLIST = """Приспешники""",
 	MINORTRAINMAXREACHED = "Достигнут максимум дополнительных тренировок",
 	SYSMESSAGEATLEAST1CHAR = """Выберите хотя бы 1 персонажа для боя.""",
 	OPERANTATLEAST = """Минимум""",
 	OPERANTATMOST = """Максимум""",
-	OPERANTMORE = """More than""", # MISSING TRANSLATION
-	OPERANTLESS = """Less than""", # MISSING TRANSLATION
-	OPERANTEQ = """Is""", # MISSING TRANSLATION
-	OPERANTNEQ = """Not""", # MISSING TRANSLATION
-	OPERANTONEOF = """One of""", # MISSING TRANSLATION
+	OPERANTMORE = """Больше чем""",
+	OPERANTLESS = """Меньше чем""",
+	OPERANTEQ = """Равно""",
+	OPERANTNEQ = """Не равно""",
+	OPERANTONEOF = """Один из""",
 	CHARNAMEDAISY = """Дейзи""",
 	CHARNAMECALI = """Кали""",
 	CHARNAMEZEPHYRA = """Зефира""",
@@ -220,7 +221,7 @@ var TranslationDict = {
 	NEWGAMESETTING = """Настройки""",
 	NEWGAMESKIPPROL = """Пропустить пролог""",
 	NEWGAMESTART = """Начать игру""",
-	SPELLCAST_LABEL = """Cast Spell""", # MISSING TRANSLATION
+	SPELLCAST_LABEL = """Заклинание""",
 	BACKTOPRESETS = """Назад""",
 	PRESETDATADEBUGCUSTOMNAME = "Настроить",
 	PRESETDATADEBUGEASYNAME = """Легко""",
@@ -338,7 +339,7 @@ var TranslationDict = {
 	REQPOPULATION = """Не хватает Места""",
 	REQSEX = """Не разрешено для""",
 	REQVIRGINFALSE = """Не девственник/ца""",
-	REQOR = """or""", # MISSING TRANSLATION
+	REQOR = """или""",
 	SLAVE = """Раб""",
 	MASTER = """Мастер""",
 	PEON = """Подчиненный""",
@@ -737,8 +738,8 @@ var TranslationDict = {
 	ITEMWINE2DESCRIPT = """Сладкий фруктовый напиток. 
 
 При обычном употреблении может наложить статус \"Опьянение\" или сместить личность в сторону 'Застенчивый'. Повышает возбудимость и чувствительность во время секса.""",
-	ITEMCORRUPTIVE_ESSENCE = """Corraptive essence""", # MISSING TRANSLATION
-	ITEMCORRUPTIVE_ESSENCEDESCRIPT = """Turns user into succubus.""", # MISSING TRANSLATION
+	ITEMCORRUPTIVE_ESSENCE = """Развращающая эссенция""",
+	ITEMCORRUPTIVE_ESSENCEDESCRIPT = """Превращает использующего в суккуба/инкуба.""",
 	ITEMTAMEDRUG = """Наркотик приручения""",
 	ITEMTAMEDRUGDESCRIPT = """Фактор приручения +1-2. Фактор робости +1-2. Фактор мудрости -1.""",
 	ITEMRAGEDRUG = """Наркотик ярости""",
@@ -969,7 +970,7 @@ var TranslationDict = {
 	TOOLTIPSKIPPROLOGUE = """Пропускает квесты пролога и начинает первую сюжетную арку. Задание по займу отключено.""",
 	
 	TOOLTIPSKILLPOINTS = """Очки навыков зарабатываются в боях и используются для приобретения новых боевых навыков.""",
-	TOOLTIPSUCCUBUS = """[Succubus] gains powers from Enthralling others. Each Thrall falls in love with [succubus] and makes [him] grow in strength.""", # MISSING TRANSLATION
+	TOOLTIPSUCCUBUS = """[Succubus] получает силы от очарования других. Каждый очарованный влюбляется в [succubus]а и заставляет [him] расти в силе.""",
 	
 
 	SAVENAME = """Сохранение""",
@@ -1157,6 +1158,9 @@ Hotkey: 3""",
 	QUESTREPUTATION = """Репутация""",
 	QUESTTASKACQ = """Задание получено""",
 	REQUIREMENTSARENTMET = """Требования не выполнены""",
+	REQUIREMENTSMET = """Requirements are met.""", # MISSING TRANSLATION
+	REQ_HIDE_PRETENDER = """Hide pretenders""", # MISSING TRANSLATION
+	REQ_SHOW_PRETENDER = """Show pretenders""", # MISSING TRANSLATION
 	NOTENOUGHLOYALTY = """Недостаточно верности""",
 	NOTENOUGHMASTERPOINTS = "Недостаточно очков Мастера",
 	QUESTCOMPLETEMESSAGE = """Квест завершен""",
@@ -1399,10 +1403,10 @@ Hotkey: 3""",
 	SKILLACID_BOMB = """Кислотная бомба""",
 	SKILLACID_BOMBDESCRIPT = """Наносит 250% от MATK как урон {color=yellow|Землей} и применяет 'Разрыв' к цели.
 Разрыв: ЗАЩ уменьшена на 50%.""",
-	SKILLIMPALE = """Impale""", # MISSING TRANSLATION
-	SKILLIMPALEDESCRIPT = """Deals 85% of MATK as {color=yellow|Earth} damage. Reduces incoming healing for 75% for 3 turns and has chance to apply Bleed.
+	SKILLIMPALE = """Пронзание""",
+	SKILLIMPALEDESCRIPT = """Наносит 85% от МАТК как урон {color=yellow|Землей}. Снижает входящее лечение на 75% в течение 3 ходов и имеет шанс наложить Кровотечение.
 	
-Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANSLATION
+Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	SKILLOVERGROWTH = """Зарастание""",
 	SKILLOVERGROWTHDESCRIPT = """Наносит 50% от MATK как урон {color=yellow|Землей} всем врагам и накладывает 'Захват' на 2 хода с вероятностью 50%.
 Захват: Уворот уменьшен на 75.""",
@@ -1411,8 +1415,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 Разрыв: ЗАЩ уменьшена на 50%.""",
 	SKILLWIND_BLADE = """Лезвие ветра""",
 	SKILLWIND_BLADEDESCRIPT = """Наносит цели и другой случайной цели 60% от MATK как урон {color=yellow|Воздухом}.""",
-	SKILLLIGHTNING = """Lightning""", # MISSING TRANSLATION
-	SKILLIGHTNING = """Молния""",
+	SKILLLIGHTNING = """Молния""",
 	SKILLLIGHTNINGDESCRIPT = """Наносит цели 250% от MATK как урон {color=yellow|Воздухом}. Имеет 50% шанс нанести 'Шок' на 2 хода.
 Шок: Урон уменьшен на 15%.""",
 	SKILLHASTE = """Спешка""",
@@ -1908,10 +1911,10 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 	STATPHYSICS_CAP = "",
 	STATWITS_CAP = "",
 	STATCHARM_CAP = "",
-	STATLUSTMAX = "",
-	STATTHRALL_POINTS = """Succubus points""", # MISSING TRANSLATION
-	STATTHRALLS_AMOUNT_MAX = """Maximum thralls""", # MISSING TRANSLATION
-	STATTHRALLS_AMOUNT = """Current thralls""", # MISSING TRANSLATION
+	STATLUSTMAX = "Максимум похоти",
+	STATTHRALL_POINTS = """Очки суккуба""",
+	STATTHRALLS_AMOUNT_MAX = """Максимум приспешников""",
+	STATTHRALLS_AMOUNT = """Количество приспешников""",
 	STATPERSONALITY_BOLD = "",
 	STATPERSONALITY_KIND = "",
 	STATPERSONALITY_SHY = "",
@@ -2208,10 +2211,9 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 	STATWITS_FACTOR = """Фактор мудрости""",
 	STATCHARM_FACTOR = """Фактор обаяния""",
 	STATSEXUALS_FACTOR = """Сексуальный фактор""",
-	STATTAME_FACTOR = """Tame Factor""", # MISSING TRANSLATION
+	STATTAME_FACTOR = """Фактор приручения""",
 	STATAUTHORITY_FACTOR = """Фактор авторитета""",
 	STATFACTOR = """Factor""", # MISSING TRANSLATION
-	STATTIMID_FACTOR = """Фактор робости""",
 	STATSLAVE_CLASS = """Тип""",
 
 	STATPHYSICS_BONUS = """Физ. возмож.""",
@@ -2389,9 +2391,9 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 	BREAKDOWN_RESET = "[name] переживает нервный срыв из-за использования зелья забвения",
 	BREAKDOWN_SOUL = "[name] переживает нервный срыв из-за использования камня душ",
 	BREAKDOWN_OBLIVION = "[name] переживает нервный срыв из-за использования зелья забвения",
-	BREAKDOWN_SHRINE = "[name] переживает срыв после порабощения на алтаре Хубриса",
-	BREAKDOWN_ENTHRALL = """[name] had a breakdown due to enthralling""", # MISSING TRANSLATION
-	BREAKDOWN_ENTHRALLRELEASE = """[name] had a breakdown due to losing link with [his] demonic master.""", # MISSING TRANSLATION
+	BREAKDOWN_SHRINE = "[name] переживает нервный срыв после порабощения на алтаре Хубриса",
+	BREAKDOWN_ENTHRALL = """[name] переживает нервный срыв из-за очарования""",
+	BREAKDOWN_ENTHRALLRELEASE = """[name] переживает нервный срыв из-за потери связи с [his] демоническим повелителем.""",
 	STATFAME = "Слава",
 	STATFAMEDESCRIPT = "",
 	STATFAME_DEGRADE_TIMER = "Таймер уменьшения славы",
@@ -2413,8 +2415,8 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 	FAME6_NAME = "Живая легенда",
 	FAME6_DESC = "[name] известен всем в мире, [his] легендарные подвиги стали частью преданий, которые переживут [him].",
 	FAME_RISE_MANIFEST = "Слава растёт! Теперь [he] - %s.",
-	FAME_DEGRADE_MANIFEST = "Слава уменьшается! Теперь [he] - %s.",
-	TAGSTABLE_FAME = "Устойчивая слава: известность не уменьшается со временем.",
+	FAME_DEGRADE_MANIFEST = "Слава уменьшилась! Теперь [he] - %s.",
+	TAGSTABLE_FAME = "Устойчивая слава: Известность не уменьшается со временем.",
 	FAMEDESC_PRICE_BONUS = "Ценность персонажа",
 	FAMEDESC_UPKEEP = 'Еженедельное содержание подчинённого',
 	FAMEDESC_LOYALTY_BONUS = 'Верность от обучения',
@@ -2786,22 +2788,41 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 Приводит в исполнение приговор выбранного персонажа. Значительно улучшает Повиновение всех участников. 
 Основные эффекты: 
 Верность: +25, максимальное Повиновение.""",
-	SKILLENTHRALL = """Enthrall""", # MISSING TRANSLATION
-	SKILLENTHRALLDESCRIPT = """Enthrall character""", # MISSING TRANSLATION
-	DIALOGUEENTHRALLREPORT = """Character enthralled""", # MISSING TRANSLATION
-	DIALOGUEENTHRALLREPORT_FAILED = """Character resisted domination""", # MISSING TRANSLATION
-	SKILLRELEASE_THRALL = """Release thrall""", # MISSING TRANSLATION
-	SKILLRELEASE_THRALLDESCRIPT = """Release enthralled character""", # MISSING TRANSLATION
-	DIALOGUERELEASE_THRALLREPORT = """Character no longer enthralled""", # MISSING TRANSLATION
-	SKILLCORRUPT = """Corrupt""", # MISSING TRANSLATION
-	SKILLCORRUPTDESCRIPT = """Attempt to increase character's consent. Always works on thralls.""", # MISSING TRANSLATION
-	DIALOGUECORRUPTREPORT = """Consent increased""", # MISSING TRANSLATION
-	DIALOGUECORRUPTREPORT_FAILED = """Succubus failed to rise consent""", # MISSING TRANSLATION
+	SKILLENTHRALL = """Очаровать""",
+	SKILLENTHRALLDESCRIPT = """Очаровать персонажа""",
+	DIALOGUEENTHRALLREPORT = """Персонаж очарован""",
+	DIALOGUEENTHRALLREPORT_FAILED = """Персонаж сопротивился подчинению""",
+	SKILLRELEASE_THRALL = """Освободить приспешника""",
+	SKILLRELEASE_THRALLDESCRIPT = """Освободить очарованного персонажа""",
+	DIALOGUERELEASE_THRALLREPORT = """Персонаж больше не очарован""",
+	SKILLCORRUPT = """Развращать""",
+	SKILLCORRUPTDESCRIPT = """Попытаться повысить согласие персонажа. Всегда срабатывает на приспешниках.""",
+	DIALOGUECORRUPTREPORT = """Согласие увеличено""",
+	DIALOGUECORRUPTREPORT_FAILED = """Суккубу не удалось повысить согласие""",
 	SKILLALLURE = """Очаровать""",
-	SKILLALLUREDESCRIPT = """Категория: {color=green|Милость}
-Очаровывает цель, увеличивая ее Повиновение и уменьшая утечку Повиновения. Улучшается фактором обаяния. 
-Основные эффекты: 
-Утечка Повиновения -5 и увеличение верности + 1 на 5 дней, максимальное Повиновение.""",
+	SKILLALLUREDESCRIPT = """Соблазняет цель, повышая её Лояльность и уменьшая Сопротивление. Действует только на ваших приспешников.""",
+	DIALOGUEALLUREREPORT = "[name] использовал [his] силы, чтобы повлиять на [targetname], обещая невообразимое наслаждение.",
+	SKILLTURN_SUCCUBUS = "Превратить в суккуба",
+	SKILLTURN_SUCCUBUSDESCRIPT = """Превращает вашего приспешника в суккуба (или инкуба) на постоянной основе. Цель должна иметь уровень Согласия не ниже 'Извращённый'.""",
+	DIALOGUETURN_SUCCUBUSREPORT = "Часть сущности похоти [name] проникает в [targetname], превращая [targethim] в [succubus].",
+	DIALOGUECORRUPTIVE_ESSENCEREPORT = "Когда [name] поглощает извращенную сущность, [he] испытывает сильное головокружение и боль. Постепенно [his] физиология перестраивается в новое состояние.",
+	SKILLSWAP_FORM = "Сменить форму",
+	SKILLSWAP_FORMDESCRIPT = """Переключение между демонической и обычной формами. Демоническая форма даёт +15% к урону, +10 к Силе и Хитрости. Обычная форма даёт +20 к Обаянию и +25% к Производительности.""",
+	DIALOGUESWAP_FORMREPORT = "",
+	DEMONFORMDESCRIPT = "Демоническая форма",
+	HUMANFORMDESCRIPT = "Обычная форма",
+	MAGATTUNEMENTDESCRIPT = "Магическое усиление",
+	COMBATATTUNEMENTDESCRIPT = "Боевое усиление",
+	THRALLDESCRIPT = "Приспешник",
+	THRALLS6DESCRIPT = "Имеет 6 приспешников",
+	THRALLS5DESCRIPT = "Имеет 5 приспешников",
+	THRALLS4DESCRIPT = "Имеет 4 приспешника",
+	THRALLS3DESCRIPT = "Имеет 3 приспешника",
+	THRALLS2DESCRIPT = "Имеет 2 приспешника",
+	THRALLS1DESCRIPT = "Имеет 1 приспешника",
+	THRALLS0DESCRIPT = "Не имеет приспешников",
+	EFFECTNAME_E_THRALL = "Приспешник",
+
 	SKILLSUPREMACY = """Превосходство""",
 	SKILLSUPREMACYDESCRIPT = """Категория: {color=green|Милость}
 Цель благоговеет уважением к заклинателю. Значительно повышает верность. Улучшается фактором Обаяния. 
@@ -2875,24 +2896,12 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 
 {color=aqua|[targetname]} - {random_chat=0|master_praise}""",
 	DIALOGUEWARNREPORT = """[name] вынес/ла серьезное предупреждение [targetname], заставив [targethim] лучше понять поведение [targethis].""",
-	DIALOGUESERVEREPORT = """[name] подошел/а к [targetname] и оказало [targethim] [his] искреннюю привязанность.""",
+	DIALOGUESERVEREPORT = """[name] подошел/а к [targetname] и оказал/а [targethim] [his] искреннюю привязанность.""",
 	DIALOGUEMENTORREPORT = """[name] начал наставлять [targetname], помогая [targethim] быстрее усваивать знания...""",
-	DIALOGUESEDUCEREPORT = """[name] подошел/а к [targetname] и через пару мгновений оставил [targethim] в недоумении. Несмотря на визуальное спокойствие, [targetname] явно был очарован [him].""",
-	DIALOGUEGREATSEDUCEREPORT = """[name] подошел/а к [имя цели] и через пару мгновений оставил [targethim] в недоумении. Разум [targetHis] был поглощен сильным желанием, что сделало [him] довольно послушным.""",
-	DIALOGUEALLUREREPORT = """[name] сделал/а [targetname] небольшое частное поощрение.""",
-	SKILLTURN_SUCCUBUS = """Turn in succubus""", # MISSING TRANSLATION
-	SKILLTURN_SUCCUBUSDESCRIPT = """Turn thrall into succubus""", # MISSING TRANSLATION
-	DIALOGUETURN_SUCCUBUSREPORT = """[targetname] is now succubus and is no longer thrall.""", # MISSING TRANSLATION
-	DIALOGUECORRUPTIVE_ESSENCEREPORT = """[name] is now succubus.""", # MISSING TRANSLATION
-	SKILLSWAP_FORM = """Swap form""", # MISSING TRANSLATION
-	SKILLSWAP_FORMDESCRIPT = """Change between demon and non-demon form of succubus""", # MISSING TRANSLATION
-	DIALOGUESWAP_FORMREPORT = """Form changed""", # MISSING TRANSLATION
-	DEMONFORMDESCRIPT = """Demonic form""", # MISSING TRANSLATION
-	HUMANFORMDESCRIPT = """Human form""", # MISSING TRANSLATION
-	MAGATTUNEMENTDESCRIPT = """Magic attunement""", # MISSING TRANSLATION
-	COMBATATTUNEMENTDESCRIPT = """Combat attunement""", # MISSING TRANSLATION
-	THRALLDESCRIPT = """Thrall""", # MISSING TRANSLATION
-	DIALOGUEABUSEREPORT = """[name] загнал/а [targetname] в угол и выместило часть [his] гнева на [targethim].
+	DIALOGUESEDUCEREPORT = """[name] подошел/а к [targetname] и через пару мгновений оставил/а [targethim] в недоумении. Несмотря на визуальное спокойствие, [targetname] явно был очарован [him].""",
+	DIALOGUEGREATSEDUCEREPORT = """[name] подошел/а к [имя цели] и через пару мгновений оставил/а [targethim] в недоумении. Разум [targetHis] был поглощен сильным желанием, что сделало [him] довольно послушным.""",
+#	DIALOGUEALLUREREPORT = """[name] сделал/а [targetname] небольшое частное поощрение.""",
+	DIALOGUEABUSEREPORT = """[name] загнал/а [targetname] в угол и выместил/а часть [his] гнева на [targethim].
 
 {color=aqua|[имя цели]} - {random_chat=0|abuse}""",
 	DIALOGUEREWARDREPORT = """[name] предоставил/а [targetname] небольшое количество золота за хорошее поведение [targethis].""",
@@ -3030,6 +3039,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""", # MISSING TRANS
 	TRAITRANGED_WEAPON_MASTERYDESCRIPT = """Позволяет использовать дальнобойное оружие.""",
 	TRAITMAGIC_TOOLSDESCRIPT = """Позволяет использовать магические инструменты, такие как посохи.""",
 	TRAITNIXX_CHAMPIONDESCRIPT = "Способности тьмы имеют +30 к точности и игнорируют ЗАЩ и MЗАЩ цели.",	
+	TRAITNIXX_CHAMPION2DESCRIPT = """Additional dark damage to melee skills""", # MISSING TRANSLATION
 	TRAITUNDEADDESCRIPT = """[name] больше не является живым существом. Потребление пищи установлено на 0; Обаяние снижено на 100; Светлое сопротивление -50; Темное сопротивление +50; Темный урон +20%; Не может оплодотворить или забеременеть.""",
 
 	TRAITSPOUSE = """Супруг""",
@@ -3287,23 +3297,19 @@ Requires: Базовый рабский труд""",
 	TRAITMASTER_FORTITUDE = """Стойкость""",
 	TRAITMASTER_FORTITUDEDESCRIPT = """Травма от поражения длится только 2 хода""",
 	TRAITMASTER_SORCERY = """Колдовство""",
-	TRAITMASTER_SORCERYDESCRIPT = """MATK +35%, более высокая скорость восстановления маны.""",
-	TRAITSUCCUBUS_MAGIC = """Magic Attunement""", # MISSING TRANSLATION
-	TRAITSUCCUBUS_MAGICDESCRIPT = """MATK +10, Max MP + 25""", # MISSING TRANSLATION
-	TRAITSUCCUBUS_COMBAT = """Combat attunement""", # MISSING TRANSLATION
-	TRAITSUCCUBUS_COMBATDESCRIPT = """MATK +35%, faster mana recovery speed.""", # MISSING TRANSLATION
-
-
-
-
+	TRAITMASTER_SORCERYDESCRIPT = "Максимальное ОЗ +20%, дополнительно 3 похоти при получении урона.",
+	TRAITSUCCUBUS_MAGIC = "Магическое усиление",
+	TRAITSUCCUBUS_MAGICDESCRIPT = """МАТК: +10; Макс. мана: +25; Восстановление МП: +50%
+Можно выбрать только одно усиление.""",
+	TRAITSUCCUBUS_COMBAT = "Боевое усиление",
+	TRAITSUCCUBUS_COMBATDESCRIPT = """Фактор ОЗ: +20%; Восстановление ОЗ: +100%; Получает похоть при получении урона.
+Можно выбрать только одно усиление.""",
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Девственность}[/center]
 Поскольку [name] обладает наблюдаемой девственностью, это делает [him] более желанным для определенных людей. 
 {color=yellow|Цена продажи увеличена на 25%%}""",
 	TRAITEFFECTRIVAL = """Присутствует соперник: +5%% производительности""",
-	TRAITEFFECTFRIENDS = """Friend Present: +10%% Health Regeneration""", # MISSING TRANSLATION
-	TRAITEFFECTLOVERS = """Lover Present: +10%% Mana Regeneration""", # MISSING TRANSLATION
-	TRAITEFFECTFRIEND = """Присутствует друг: +10%% регенерации здоровья""",
-	TRAITEFFECTLOVER = """Присутствует любовник/ца: +10%% регенерации маны""",
+	TRAITEFFECTFRIENDS = """Присутствует друг: +10%% регенерации здоровья""",
+	TRAITEFFECTLOVERS = """Присутствует любовник/ца: +10%% регенерации маны""",
 	TRAITEFFECTRARESTURDY = """Особый: Твердый
 Увеличение здоровья и бронепробиваемости""",
 	TRAITEFFECTRARENIMBLE = """Особый: Ловкий
@@ -3398,6 +3404,59 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTHASTE = """Скорость увеличена""",
 	EFFECTCOFFIBLESS = "Увеличение получаемого опыта на 20%%",
 	EUPHORIABUFF = """Эйфория: Урон увеличен""",
+	EFFECTNAME_E_LOVE = """Lover present""", # MISSING TRANSLATION
+	EFFECTNAME_E_FRIEND = """Friend present""", # MISSING TRANSLATION
+	EFFECTNAME_E_RIVAL = """Rival present""", # MISSING TRANSLATION
+	EFFECTNAME_E_PERSON_BOLD = """Is Bold""", # MISSING TRANSLATION
+	EFFECTNAME_E_PERSON_SHY = """Is Shy""", # MISSING TRANSLATION
+	EFFECTNAME_E_PERSON_KIND = """Is kind""", # MISSING TRANSLATION
+	EFFECTNAME_E_PERSON_SERIOUS = """Is serious""", # MISSING TRANSLATION
+	EFFECTNAME_WORK_RULE_RATION = """Rations applied""", # MISSING TRANSLATION
+	EFFECTNAME_WORK_RULE_SHIFTS = """Work shifts applied""", # MISSING TRANSLATION
+	EFFECTNAME_WORK_RULE_MASTURBATION = """Masturbation enabled""", # MISSING TRANSLATION
+	EFFECTNAME_E_I_PET_SUIT_BONUS = """Pet suit effect""", # MISSING TRANSLATION
+	EFFECTNAME_E_I_ANAL = """Anal beeds effect""", # MISSING TRANSLATION
+	EFFECTNAME_E_TAIL_PLUG_BONUS = """Tail plug effect""", # MISSING TRANSLATION
+	EFFECTNAME_E_PREGNANCY = """Is pregnant""", # MISSING TRANSLATION
+	EFFECTNAME_E_PREGNANCY1 = """Is heavily pregnant""", # MISSING TRANSLATION
+	EFFECTNAME_E_PREGNANCY_BREEDER = """Is pregnant (breeder)""", # MISSING TRANSLATION
+	EFFECTNAME_E_MKUP = """Tattoo""", # MISSING TRANSLATION
+	EFFECTNAME_E_TLUST1 = """Tattoo""", # MISSING TRANSLATION
+	EFFECTNAME_E_TLUST2 = """Tattoo""", # MISSING TRANSLATION
+	EFFECTNAME_E_THPR = """Tattoo""", # MISSING TRANSLATION
+	EFFECTNAME_E_TMPR = """Tattoo""", # MISSING TRANSLATION
+	EFFECTNAME_E_TRIB1 = """Tattoo""", # MISSING TRANSLATION
+	EFFECTNAME_E_TRIB2 = """Tattoo""", # MISSING TRANSLATION
+	EFFECTNAME_E_TR_ALIOS = """Champion of Alios""", # MISSING TRANSLATION
+	EFFECTNAME_VALKYRIE_SPEAR_BONUS = """Valkyrie""", # MISSING TRANSLATION
+	EFFECTNAME_E_WE_DARK_STATIC = """Deathknight""", # MISSING TRANSLATION
+	EFFECTNAME_E_RARE_STURDY = """Sturdy enemy""", # MISSING TRANSLATION
+	EFFECTNAME_E_RARE_NIMBLE = """Nimble enemy""", # MISSING TRANSLATION
+	EFFECTNAME_E_RARE_STRONG = """Strong enemy""", # MISSING TRANSLATION
+	EFFECTNAME_E_RARE_DEADLY = """Deadly enemy""", # MISSING TRANSLATION
+	EFFECTNAME_E_RARE_PRECISE = """Preciese enemy""", # MISSING TRANSLATION
+	EFFECTNAME_E_RARE_TOUGH = """Tough enemy""", # MISSING TRANSLATION
+	EFFECTNAME_E_MINIBOSS = """Miniboss""", # MISSING TRANSLATION
+	EFFECTNAME_E_BOSS = """Boss""", # MISSING TRANSLATION
+	EFFECTNAME_DEMON_FORM = """In Demon form""", # MISSING TRANSLATION
+	EFFECTNAME_HUMAN_FORM = """In Human form""", # MISSING TRANSLATION
+	EFFECTNAME_MAGIC_ATUNEMENT = """Magic attunement""", # MISSING TRANSLATION
+	EFFECTNAME_COMBAT_ATUNEMENT_PASSIVE = """Combat attunement""", # MISSING TRANSLATION
+	EFFECTNAME_SUCCUBUS_THRALLS_0 = """Has 0 thralls""", # MISSING TRANSLATION
+	EFFECTNAME_SUCCUBUS_THRALLS_1 = """Has 1 thrall""", # MISSING TRANSLATION
+	EFFECTNAME_SUCCUBUS_THRALLS_2 = """Has 2 thralls""", # MISSING TRANSLATION
+	EFFECTNAME_SUCCUBUS_THRALLS_3 = """Has 3 thralls""", # MISSING TRANSLATION
+	EFFECTNAME_SUCCUBUS_THRALLS_4 = """Has 4 thralls""", # MISSING TRANSLATION
+	EFFECTNAME_SUCCUBUS_THRALLS_5 = """Has 5 thralls""", # MISSING TRANSLATION
+	EFFECTNAME_SUCCUBUS_THRALLS_6 = """Has 6 thralls""", # MISSING TRANSLATION
+	EFFECTNAME_MAX_STATS = """Stats of max value""", # MISSING TRANSLATION
+	EFFECTNAME_E_S_NOSTUN = """Stun immunity""", # MISSING TRANSLATION
+	EFFECTNAME_WORK_RULE_LUXURY = """Luxury rooms""", # MISSING TRANSLATION
+	EFFECTNAME_CURSE_DECLINE_1 = """Curse of decline lv 1""", # MISSING TRANSLATION
+	EFFECTNAME_CURSE_DECLINE_2 = """Curse of decline lv 2""", # MISSING TRANSLATION
+	EFFECTNAME_CURSE_FRAGILITY_1 = """Curse of fragility lv 1""", # MISSING TRANSLATION
+	EFFECTNAME_CURSE_FRAGILITY_2 = """Curse of fragility lv 2""", # MISSING TRANSLATION
+	EFFECTNAME_COMMANDER = """Commander present""", # MISSING TRANSLATION
 	BUFFDESCRIPTSHACKLES = """Оковы""",
 	BUFFDESCRIPTGREATSHACKLES = """Великие оковы""",
 	BUFFDESCRIPTCHARM = """Зачарован. Осталось %d ходов""",
@@ -3587,7 +3646,11 @@ Requires: Базовый рабский труд""",
 	PROFALIOS_CHAMPION = """Чемпион Алиоса""",
 	PROFALIOS_CHAMPIONDESCRIPT = """Одинокая девушка с загадочными способностями и прошлым. Ясно одно - ее божественная принадлежность реальна.""",
 	PROFNIXX_CHAMPION = """Чемпион Никс""",
+	PROFSATORI = """Satori""", # MISSING TRANSLATION
+	PROFASURA = """Asura""", # MISSING TRANSLATION
 	PROFNIXX_CHAMPIONDESCRIPT = """Эти ужасающие силы исходят из неизвестного источника, который могут познать лишь немногие мудрецы мира.""",
+	PROFSATORIDESCRIPT = """Only the one who has reached lowest point will be able to perceive the reality to its fullest.""", # MISSING TRANSLATION
+	PROFASURADESCRIPT = """Lust for power and control can get you to very strange places, but the cost will never feel fair.""", # MISSING TRANSLATION
 	PROFRENOWN_ROYALTY = """Королевская власть""",
 	PROFRENOWN_ROYALTYDESCRIPT = """Королевская кровь сама по себе является благом, тем более, когда ее признают другие.""",
 	PROFBROKEN_ROYALTY = """Сломанная королевская власть""",
@@ -3833,9 +3896,9 @@ Requires: Базовый рабский труд""",
 	BODYPARTSKINPURPLE = """фиолетовый""",
 	BODYPARTSKINTEAL = """лиловый""",
 	BODYPARTSKIN_COVERAGEPLANT = """растение""",
-	BODYPARTSKIN_COVERAGESCALE = """чешуя""",
-	BODYPARTSKIN_COVERAGESCALE2 = """scale 2""", # MISSING TRANSLATION
-	BODYPARTSKIN_COVERAGESCALE3 = """scale 3""", # MISSING TRANSLATION
+	BODYPARTSKIN_COVERAGESCALE = """чешуя 1""",
+	BODYPARTSKIN_COVERAGESCALE2 = """чешуя 2""",
+	BODYPARTSKIN_COVERAGESCALE3 = """чешуя 3""",
 	BODYPARTSKIN_COVERAGEFEATHERS = """перья""",
 	BODYPARTSKIN_COVERAGEFUR_WHITE = """белый мех""",
 	BODYPARTSKIN_COVERAGEFUR_GREY = """серый мех""",
@@ -4222,101 +4285,118 @@ Requires: Базовый рабский труд""",
 
 	TOOLTIPRIGHTCLICKABILITY = """ПКМ, чтобы назначить другую способность""",
 	TIPLOADFINISHED = """Загрузка завершена, нажмите любую клавишу""",
-	SQ_MAX_QUESTS = """You can't take more then %s of those quests""", # MISSING TRANSLATION
-	SQ_CUR_MAX_QUESTS = """For now you can't take only %s of those quests""", # MISSING TRANSLATION
-	SQ_FACT_RATING = """Rating: %s""", # MISSING TRANSLATION
-	SQ_FACT_PRICE = """Reward bonus: %s""", # MISSING TRANSLATION
-	SQ_OBSIDIAN_NAME = """The Obsidian Brotherhood""", # MISSING TRANSLATION
-	SQ_OBSIDIAN_DESC = """The Obsidian Brotherhood description""", # MISSING TRANSLATION
-	SQ_OBSIDIAN_LEAD = """The Obsidian Leader""", # MISSING TRANSLATION
-	SQ_DRAVENMOOR_NAME = """House Dravenmoor""", # MISSING TRANSLATION
-	SQ_DRAVENMOOR_DESC = """House Dravenmoor description""", # MISSING TRANSLATION
-	SQ_DRAVENMOOR_LEAD = """Dravenmoor Leader""", # MISSING TRANSLATION
-	SQ_VERDANT_NAME = """The Verdant Conclave""", # MISSING TRANSLATION
-	SQ_VERDANT_DESC = """The Verdant Conclave description""", # MISSING TRANSLATION
-	SQ_VERDANT_LEAD = """The Verdant Leader""", # MISSING TRANSLATION
-	SQ_IRONHOLD_NAME = """Ironhold Syndicate""", # MISSING TRANSLATION
-	SQ_IRONHOLD_DESC = """Ironhold Syndicate description""", # MISSING TRANSLATION
-	SQ_IRONHOLD_LEAD = """Ironhold Leader""", # MISSING TRANSLATION
-	SQ_CRIMSON_NAME = """House of the Crimson Veil""", # MISSING TRANSLATION
-	SQ_CRIMSON_DESC = """House of the Crimson Veil description""", # MISSING TRANSLATION
-	SQ_CRIMSON_LEAD = """Crimson Veil Leader""", # MISSING TRANSLATION
-	SQ_GILDED_NAME = """The Gilded Consortium""", # MISSING TRANSLATION
-	SQ_GILDED_DESC = """The Gilded Consortium description""", # MISSING TRANSLATION
-	SQ_GILDED_LEAD = """Gilded Consortium Leader""", # MISSING TRANSLATION
-	SQ_AZURE_NAME = """The Azure Covenant""", # MISSING TRANSLATION
-	SQ_AZURE_DESC = """The Azure Covenant description""", # MISSING TRANSLATION
-	SQ_AZURE_LEAD = """Azure Leader""", # MISSING TRANSLATION
-	SQ_STONEBREAKER_NAME = """The Stonebreaker Clant""", # MISSING TRANSLATION
-	SQ_STONEBREAKER_DESC = """The Stonebreaker Clan description""", # MISSING TRANSLATION
-	SQ_STONEBREAKER_LEAD = """Stonebreaker Leader""", # MISSING TRANSLATION
-	SQ_CHALICE_NAME = """House of the Silver Chalice""", # MISSING TRANSLATION
-	SQ_CHALICE_DESC = """House of the Silver Chalice description""", # MISSING TRANSLATION
-	SQ_CHALICE_LEAD = """Silver Chalice Leader""", # MISSING TRANSLATION
-	SQ_LOOM_NAME = """The Golden Loom""", # MISSING TRANSLATION
-	SQ_LOOM_DESC = """The Golden Loom description""", # MISSING TRANSLATION
-	SQ_LOOM_LEAD = """Golden Loom Leader""", # MISSING TRANSLATION
-	SQ_ASHEN_NAME = """Ashen Consort""", # MISSING TRANSLATION
-	SQ_ASHEN_DESC = """Ashen Consort description""", # MISSING TRANSLATION
-	SQ_ASHEN_LEAD = """Ashen Consort Leader""", # MISSING TRANSLATION
-	SQ_IRONVEIN_NAME = """Ironvein""", # MISSING TRANSLATION
-	SQ_IRONVEIN_DESC = """Ironvein description""", # MISSING TRANSLATION
-	SQ_IRONVEIN_LEAD = """Ironvein Leader""", # MISSING TRANSLATION
-	SQ_QUEST1_NAME1 = """Healer girl""", # MISSING TRANSLATION
-	SQ_QUEST1_NAME2 = """Healer girl2""", # MISSING TRANSLATION
-	SQ_QUEST1_DESC1 = """Healer girl description""", # MISSING TRANSLATION
-	SQ_ELF_NAME1 = """Elven work""", # MISSING TRANSLATION
-	SQ_ELF_DESC = """Work for elves""", # MISSING TRANSLATION
-	SQ_RATKIN_NAME1 = """Ratkin's work""", # MISSING TRANSLATION
-	SQ_RATKIN_DESC = """Work for ratkins""", # MISSING TRANSLATION
-	SQ_BEASTKIN_NAME1 = """Beastkin's work""", # MISSING TRANSLATION
-	SQ_BEASTKIN_DESC = """Work for beastkin""", # MISSING TRANSLATION
-	SQ_MONSTER_NAME1 = """Monster's work""", # MISSING TRANSLATION
-	SQ_MONSTER_DESC = """Work for monsters""", # MISSING TRANSLATION
-	SQ_FAIRY_NAME1 = """Fairy's work""", # MISSING TRANSLATION
-	SQ_FAIRY_DESC = """Work for fairy""", # MISSING TRANSLATION
-	SQ_GARDENER_NAME1 = """Gardener needed""", # MISSING TRANSLATION
-	SQ_GARDENER_DESC = """Work in garden""", # MISSING TRANSLATION
-	SQ_MAID_NAME1 = """Maid needed""", # MISSING TRANSLATION
-	SQ_MAID_DESC = """Work for maid""", # MISSING TRANSLATION
-	SQ_LACKEY_NAME1 = """Lackey needed""", # MISSING TRANSLATION
-	SQ_LACKEY_DESC = """Work for lackey""", # MISSING TRANSLATION
-	SQ_MINER_NAME1 = """Miner needed""", # MISSING TRANSLATION
-	SQ_MINER_DESC = """Work for miner""", # MISSING TRANSLATION
-	SQ_CRAFTSMAN_NAME1 = """Craftsman needed""", # MISSING TRANSLATION
-	SQ_CRAFTSMAN_DESC = """Work for craftsman""", # MISSING TRANSLATION
-	SQ_ALCHEMIST_NAME1 = """Alchemist needed""", # MISSING TRANSLATION
-	SQ_ALCHEMIST_DESC = """Work for alchemist""", # MISSING TRANSLATION
-	SQ_HUNTER_NAME1 = """Hunter needed""", # MISSING TRANSLATION
-	SQ_HUNTER_DESC = """Work for hunter""", # MISSING TRANSLATION
-	SQ_SHORTSTACK_NAME1 = """Shortstack""", # MISSING TRANSLATION
-	SQ_SHORTSTACK_DESC = """Work for shortstack""", # MISSING TRANSLATION
-	SQ_FIGHTER_NAME1 = """Fighter needed""", # MISSING TRANSLATION
-	SQ_FIGHTER_DESC = """Work for fighter""", # MISSING TRANSLATION
-	SQ_RANGER_NAME1 = """Ranger needed""", # MISSING TRANSLATION
-	SQ_RANGER_DESC = """Work for ranger""", # MISSING TRANSLATION
-	SQ_HEALER_NAME1 = """Healer needed""", # MISSING TRANSLATION
-	SQ_HEALER_DESC = """Work for healer""", # MISSING TRANSLATION
-	SQ_THIEF_NAME1 = """Thief needed""", # MISSING TRANSLATION
-	SQ_THIEF_DESC = """Work for thief""", # MISSING TRANSLATION
-	SQ_SEX_GENERIC_NAME1 = """Sex service""", # MISSING TRANSLATION
-	SQ_SEX_GENERIC_DESC = """No comment""", # MISSING TRANSLATION
-	SQ_FIGHTER_T2_NAME1 = """Good fighter needed""", # MISSING TRANSLATION
-	SQ_FIGHTER_T2_DESC = """Work for fighter""", # MISSING TRANSLATION
-	SQ_HEALER_T2_NAME1 = """Good healer needed""", # MISSING TRANSLATION
-	SQ_HEALER_T2_DESC = """Work for healer""", # MISSING TRANSLATION
-	SQ_RARE_RACE_NAME1 = """Rare slave needed""", # MISSING TRANSLATION
-	SQ_RARE_RACE_DESC = """Work for rare slave""", # MISSING TRANSLATION
-	SQ_ELF_ARCHER_NAME1 = """Elf archer needed""", # MISSING TRANSLATION
-	SQ_ELF_ARCHER_DESC = """Work for elf archer""", # MISSING TRANSLATION
-	SQ_MIKO_NAME1 = """Miko needed""", # MISSING TRANSLATION
-	SQ_MIKO_DESC = """Work for miko""", # MISSING TRANSLATION
-	SQ_SEX_GENERIC_T2_NAME1 = """Greater sex service""", # MISSING TRANSLATION
-	SQ_SEX_GENERIC_T2_DESC = """No comment""", # MISSING TRANSLATION
-	SQ_MAGE_NAME1 = """Mage needed""", # MISSING TRANSLATION
-	SQ_MAGE_DESC = """Work for mage""", # MISSING TRANSLATION
-	SQ_ASSASSIN_T2_NAME1 = """Good assassin needed""", # MISSING TRANSLATION
-	SQ_ASSASSIN_T2_DESC = """Work for assassin""", # MISSING TRANSLATION
+	SQ_MAX_QUESTS = "Вы не можете взять больше чем %s заданий на рабов",
+	SQ_CUR_MAX_QUESTS = "Сейчас вы можете взять только %s заданий на рабов",
+	SQ_FACT_RATING = "Рейтинг: %s",
+	SQ_FACT_PRICE = "Бонус к награде: %s",
+	SQ_OBSIDIAN_NAME = "Обсидиановое Братство",
+	SQ_OBSIDIAN_DESC = "Старый дом благородного происхождения, некогда прославившийся своим влиянием на торговые пути и права на земли. Теперь, возглавляемое эксцентричными домовладельцами, Братство цепляется за увядающие традиции, сохраняя власть благодаря хитрым сделкам и наследственному богатству.",
+	SQ_OBSIDIAN_LEAD = "Лорд Рамонт",
+	SQ_DRAVENMOOR_NAME = "Дом Дрейвенмур",
+	SQ_DRAVENMOOR_DESC = "Мрачная группа, известная своей строгой приверженностью долгу и контролем над пограничными землями. Их казна пополняется больше за счёт налогов и сборов за защиту, чем торговли, что вызывает и зависть, и уважение.",
+	SQ_DRAVENMOOR_LEAD = "Леди Марвен Дрейвенмур",
+	SQ_VERDANT_NAME = "Зелёный Конклав",
+	SQ_VERDANT_DESC = "Свободное содружество учёных, травников и землевладельцев, посвятивших себя заботе о плодородных землях. Влияние Конклава основано на обеспечении пищей, снадобьями и использовании родственных рас.",
+	SQ_VERDANT_LEAD = "Калвен Тринн",
+	SQ_IRONHOLD_NAME = "Железный Синдикат",
+	SQ_IRONHOLD_DESC = "Торговый картель, созданный кузнецами, шахтёрами и банкирами, объединившимися под одним знаменем. Синдикат процветает благодаря контрактам и деньгам, контролируя труд и торговлю с холодной, практичной эффективностью.",
+	SQ_IRONHOLD_LEAD = "Мастер Вейнар Хольт",
+	SQ_CRIMSON_NAME = "Дом Багровой Вуали",
+	SQ_CRIMSON_DESC = "О них больше шепчутся, чем говорят открыто; Багровая Вуаль объединена тайнами, долгами и завуалированными церемониями. Они торгуют информацией и тайными услугами, их влияние прячется там, где собираются тени.",
+	SQ_CRIMSON_LEAD = "Госпожа Сельвара Вейн",
+	SQ_GILDED_NAME = "Позолоченный Консорциум",
+	SQ_GILDED_DESC = "Объединение богатых покровителей и финансистов, поднявшихся не по праву рождения, а благодаря золоту. Тесно связаны с Гильдией слуг.",
+	SQ_GILDED_LEAD = "Алвесс Коррано",
+
+	SQ_AZURE_NAME = "Лазурный Ковенант",
+	SQ_AZURE_DESC = "Коалиция мистиков и учёных, устремлённых за горизонты в поисках знаний и удачи. Многие не доверяют их иностранным наклонностям.",
+	SQ_AZURE_LEAD = "Магистр Орвел Таммис",
+
+	SQ_STONEBREAKER_NAME = "Клан Камнеломов",
+	SQ_STONEBREAKER_DESC = "Выносливое родство, объединённое совместным трудом в каменоломнях и строительстве. Камнеломы пользуются уважением как строители и бойцы, их слово весомо в вопросах труда и укрепления. Они всегда заинтересованы в получении самых ценных слуг для своих лучших членов.",
+	SQ_STONEBREAKER_LEAD = "Гаррук Камнелом",
+
+	SQ_CHALICE_NAME = "Дом Серебряного Кубка",
+	SQ_CHALICE_DESC = "Благородный дом, пронизанный церемониями и старыми союзами, славящийся роскошными пиршествами и покровительством искусству. Пусть их пышность часто высмеивают, но гостеприимство этого дома приносит прочные связи как с союзниками, так и с соперниками.",
+	SQ_CHALICE_LEAD = "Лорд Эдрион Фалкрест",
+
+	SQ_LOOM_NAME = "Золотой Ткацкий Дом",
+	SQ_LOOM_DESC = "Когда-то скромные торговцы тканями, Ткацкий Дом поднялся благодаря мастерству в торговых сетях и умению сплетать влияние так же ловко, как шёлк.",
+	SQ_LOOM_LEAD = "Хелвара Линтвун",
+
+	SQ_ASHEN_NAME = "Пепельный Союз",
+	SQ_ASHEN_DESC = "Эльфийская фракция, чья сила кроется в тонкой дипломатии и загадочности древних традиций. Союз обладает тихим авторитетом, но не гнушается применять силу, когда того требует необходимость.",
+	SQ_ASHEN_LEAD = "Консорт Талориэн",
+
+	SQ_IRONVEIN_NAME = "Айронвейн",
+	SQ_IRONVEIN_DESC = "Гордый дом дварфов, основанный на предках. Сталь Айронвейнов ценится по всему миру, а сам дом использует своё мастерство как оружие.",
+	SQ_IRONVEIN_LEAD = "Боргрун Айронвейн",
+
+	SQ_QUEST1_NAME1 = "Целительница",
+	SQ_QUEST1_NAME2 = "Целительница 2",
+	SQ_QUEST1_DESC1 = "Описание целительницы",
+	SQ_ELF_NAME1 = "Изысканный эльф",
+	SQ_ELF_DESC = "[factionname] ищет изящного эльфа для тонких заданий, связанных с древними знаниями.",
+	SQ_RATKIN_NAME1 = "Крысолюд-Лазутчик",
+	SQ_RATKIN_DESC = "[factionname] требуется хитрый крысолюд для сбора хлама и скрытных дел.",
+	SQ_BEASTKIN_NAME1 = "Требуется полузверь",
+	SQ_BEASTKIN_DESC = "[factionname] нужен полузверь для нераскрытых задач.",
+	SQ_MONSTER_NAME1 = "Монстр",
+	SQ_MONSTER_DESC = "[factionname] ищет представителя редкой расы монстров.",
+	SQ_FAIRY_NAME1 = "Маленький помощник",
+	SQ_FAIRY_DESC = "[factionname] желает экзотическую фею-раба.",
+	SQ_GARDENER_NAME1 = "Садовник",
+	SQ_GARDENER_DESC = "[factionname] ищет умелого садовника для ухода за различной флорой.",
+	SQ_MAID_NAME1 = "Горничная",
+	SQ_MAID_DESC = "[factionname] требуется работник для поддержания чистоты в залах и обслуживания гостей.",
+	SQ_LACKEY_NAME1 = "Дворецкий",
+	SQ_LACKEY_DESC = "[factionname] ищет работника для порядка в залах и строгих манер.",
+	SQ_MINER_NAME1 = "Один в шахту",
+	SQ_MINER_DESC = "[factionname] ищет выносливого шахтёра для добычи ценных руд.",
+	SQ_CRAFTSMAN_NAME1 = "Мастер",
+	SQ_CRAFTSMAN_DESC = "[factionname] желает мастера для создания изысканных реликвий.",
+	SQ_ALCHEMIST_NAME1 = "Алхимик",
+	SQ_ALCHEMIST_DESC = "[factionname] требуется алхимик для приготовления мощных зелий и настоев.",
+	SQ_HUNTER_NAME1 = "Помощник охотников",
+	SQ_HUNTER_DESC = "[factionname] ищет помощника для работы с дичью.",
+	SQ_SHORTSTACK_NAME1 = "Мал да удал",
+	SQ_SHORTSTACK_DESC = "[factionname] ищет невысокого раба.",
+	SQ_FIGHTER_NAME1 = "Силач",
+	SQ_FIGHTER_DESC = "[factionname] нужен смелый боец для сражений на передовой.",
+	SQ_RANGER_NAME1 = "Лучник",
+	SQ_RANGER_DESC = "[factionname] ищет бойца дистанционного боя.",
+	SQ_HEALER_NAME1 = "Целитель",
+	SQ_HEALER_DESC = "[factionname] желает заполучить лекаря для поддержки раненых.",
+	SQ_THIEF_NAME1 = "Ловкие руки",
+	SQ_THIEF_DESC = "[factionname] нужен хитрый вор для тайных приобретений.",
+	SQ_SEX_GENERIC_NAME1 = "Скрытое обслуживание",
+	SQ_SEX_GENERIC_DESC = "[factionname] ищет ненавязчивых личных прислужников.",
+	SQ_FIGHTER_T2_NAME1 = "Чемпион",
+	SQ_FIGHTER_T2_DESC = "[factionname] требуется опытный боец для элитных сражений.",
+	SQ_HEALER_T2_NAME1 = "Мастер-целитель",
+	SQ_HEALER_T2_DESC = "[factionname] ищет искусного целителя для критического восстановления.",
+	SQ_RARE_RACE_NAME1 = "Экзотическая особь",
+	SQ_RARE_RACE_DESC = "[factionname] желает получить редкое существо с уникальными талантами.",
+	SQ_ELF_ARCHER_NAME1 = "Длинноухий стрелок",
+	SQ_ELF_ARCHER_DESC = "[factionname] нужен хорошо обученный эльф-лучник.",
+	SQ_MIKO_NAME1 = "Служитель святилища",
+	SQ_MIKO_DESC = "[factionname] ищет ученицу для проведения священных ритуалов и благословений.",
+	SQ_SEX_GENERIC_T2_NAME1 = "Эксперт по утехам",
+	SQ_SEX_GENERIC_T2_DESC = "[factionname] требует выдающихся личных компаньонов.",
+	SQ_MAGE_NAME1 = "Повелитель магии",
+	SQ_MAGE_DESC = "[factionname] ищет мага для управления могущественными чарами.",
+	SQ_ASSASSIN_T2_NAME1 = "Ассассин",
+	SQ_ASSASSIN_T2_DESC = "[factionname] требуется мастер-ассасин для секретных заданий.",
+	SHOWSTAT_CAT_COMBAT = """Combat""", # MISSING TRANSLATION
+	SHOWSTAT_CAT_NON_COMBAT = """Noncombat""", # MISSING TRANSLATION
+	SHOWSTAT_FINAL = """Final""", # MISSING TRANSLATION
+	STATREQ_IS_SLAVE_TYPE = """Must be""", # MISSING TRANSLATION
+	STATREQ_IS_NOT_SLAVE_TYPE = """Must not be""", # MISSING TRANSLATION
+	STATREQ_IS_FREE = """Must be free of quests and at mansion""", # MISSING TRANSLATION
+	STATREQ_IS_NOT_FREE = """Must be on quest or out of mansion""", # MISSING TRANSLATION
+	STATREQ_TRAINING_OBEDIENCE = """Obedience must be trained""", # MISSING TRANSLATION
+	STATREQ_WORKRULE_LOCK = """Must not be engaged in work""", # MISSING TRANSLATION
+
 
 	DIALOGUECLOSE = """*Закрыть*""",
 	DIALOGUECONFIRM = """*Подтвердить*""",
@@ -4961,8 +5041,8 @@ Requires: Базовый рабский труд""",
 	ITEMEXP_SCROLLDESCRIPT = """Дает использующему 100 очков опыта.""",
 	ITEMSEXSWAP_POTION = """Зелье смены пола""",
 	ITEMSEXSWAP_POTIONDESCRIPT = """Меняет пол персонажа на противоположный. Не действует на уникальных персонажей.""",
-	ITEMUSECONFIRM = """You sure want to use {color=yellow|%s}?""", # MISSING TRANSLATION
-	ITEMUSE = """Are you sure?""", # MISSING TRANSLATION
+	ITEMUSECONFIRM = """Вы уверены, что хотите использовать {color=yellow|%s}?""",
+	ITEMUSE = """Вы уверены?""",
 
 
 	DIALOGUEEVENTMINORUSSELECT = """Выберите, какая часть тела [name] должна быть уменьшена.""",
@@ -5102,7 +5182,7 @@ Requires: Базовый рабский труд""",
 	STARTUPGRADEBONUS1 = """Кузницу""",
 	STARTUPGRADEBONUS2 = """Комнату портного""",
 	STARTUPGRADEBONUS3 = """Алхимическую комнату""",
-	STARTUPGRADEBONUS4 = """Corrupted Essence""", # MISSING TRANSLATION
+	STARTUPGRADEBONUS4 = """Извращенную эссенцию""",
 	
 	
 	FIGHTERSINTRODUCTION1 = """Крупный мужчина в тяжелых доспехах окинул вас незаинтересованным взглядом. 
@@ -8879,7 +8959,7 @@ AFTER_ELECTION_PRINCESS_MINDBREAK_7 = """Вы чувствуете, как де�
 
 	DAISY_ADMIRER_MESSAGE = """Утром вы получаете письмо от человека, с которым ранее не встречались. Прочитав его, вы узнаете, что землевладелец по имени Рамонт просит вас продать ему Дейзи. Очевидно, он считает ее ценной породой, над которой хочет провести эксперименты.
 
-Он предлагает щедрую сумму в 2.500 золотых, которая легко покроет ваши расходы на ее обучение и труд. Поскольку Дейзи является вашей собственностью, вы задаетесь вопросом, не благоволите ли вы к ней из-за этого предложения.""",
+Он предлагает щедрую сумму в 5.000 золотых, которая легко покроет ваши расходы на ее обучение и труд. Поскольку Дейзи является вашей собственностью, вы задаетесь вопросом, не благоволите ли вы к ней из-за этого предложения.""",
 	DAISY_ADMIRER_MESSAGE_OPTION_1_1 = """Продать ее.""",
 	DAISY_ADMIRER_MESSAGE_OPTION_1_2 = """Отдать.""",
 	DAISY_ADMIRER_MESSAGE_OPTION_1_3 = """Отказаться.""",
@@ -13520,7 +13600,7 @@ ZEPHYRA_BRUSH_6_OPTION_3 = """*Не говорить ничего и взять 
 	AMELIA_MAIN_GUILD_1_OPTION_1 = """Где Амелия?""",
 	AMELIA_MAIN_GUILD_1_OPTION_2 = """Чем вы так заняты?""",
 	AMELIA_MAIN_GUILD_1_OPTION_3 = """Я получил повестку на несколько вопросов.""",
-	AMELIA_MAIN_GUILD_2_1 = """- К сожалению, она... гм... в настоящее время недоступна. Пока что делами Гильдии занимаюсь я. Меня зовут Норлан. Если вам потребуется помощь по вопросам гильдии, я готов оказать ее. Однако, если ваш вопрос касается Амелии... Что ж, боюсь, пока это придется отложить.""",
+	AMELIA_MAIN_GUILD_2_1 = """- К сожалению, она... гм... в настоящее время недоступна. Пока что делами Гильдии занимаюсь я. Меня зовут Норлан из {color=yellow|Позолоченного Консорциума}. Если вам потребуется помощь по вопросам гильдии, я готов оказать ее. Однако, если ваш вопрос касается Амелии... Что ж, боюсь, пока это придется отложить.""",
 	AMELIA_MAIN_GUILD_2_2 = """- Произошли некоторые непредвиденные события, связанные с гильдией и ее членами. Однако вам не стоит беспокоиться, Мэр [name]. Могу заверить вас, что эти события никак не повлияют на наше деловое взаимодействие. Тем не менее, прежде чем двигаться дальше, необходим короткий период адаптации к новой ситуации.""",
 	AMELIA_MAIN_GUILD_2_3 = """Норлан: - Хм... Весьма интригующе. Я четко передал нашему секретарю, что мы не намерены причинять вам неудобства по таким пустякам.""",
 	AMELIA_MAIN_GUILD_2 = """Дверь кабинета резко распахивается, и в кабинет вбегает еще один человек. Он обладает плотным телосложением и относительно невысоким ростом. Его одежда безошибочно передает атмосферу роскоши и высокого социального положения.
@@ -18582,10 +18662,9 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	VILLAGE_HUMAN2_9 = """луг""",
 	
 	VILLAGE_HUMAN_QUEST1 = """Миллфорд""",
-	VILLAGE_HUMAN_QUEST2 = """Stonevale""", # MISSING TRANSLATION
-	VILLAGE_FOREST_QUEST1 = """Leafshade Haven""", # MISSING TRANSLATION
-	VILLAGE_MOUNTAIN_QUEST1 = """Crystaldepths""", # MISSING TRANSLATION
-	
+	VILLAGE_HUMAN_QUEST2 = "Стоунвейл",
+	VILLAGE_FOREST_QUEST1 = "Тенелистное убежище",
+	VILLAGE_MOUNTAIN_QUEST1 = "Кристальные глубины",	
 	BANDIT_FORT_NOUNS1 = """Форт""",
 	BANDIT_FORT_NOUNS2 = """Частокол""",
 	BANDIT_FORT_NOUNS3 = """Форт""",
@@ -19021,7 +19100,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	DWARF_CAPITAL_JEAN = """Искать Жанну""",
 	DWARF_CAPITAL_WHISKEY = """Проверить рынок""",
 	DWARF_CAPITAL_WHISKEY2 = """Посетить магазин""",
-	DWARF_CAPITAL_DURIM = """Search for Durim""", # MISSING TRANSLATION
+	DWARF_CAPITAL_DURIM = """Искать Дурима""",
 	INFINITEDUNGEONUNLOCK = """Темный переулок""",
 	
 	BEASTKIN_CAPITAL1 = """Найти вождя""",
@@ -19127,6 +19206,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	SOCIAL_SKILLS = """Социальные навыки""",
 	COMBAT_SKILLS = """Боевые навыки""",
 	PERSONAL_STAT = """Личная статистика""",
+	PERSONAL_METRICS = """Metrics""", # MISSING TRANSLATION
 	REMOVE_BUTTON = """Освободить""",
 	TALK_BUTTON = """Поговорить""",
 	BODY_UPGRADE_TOOLTIP = """Здесь вы можете визуально изменить персонажа за определенную цену""",
@@ -20739,6 +20819,255 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	EMP_ERDYNA_INTRO_12 = """Ты замолкаешь, тяжесть твоей миссии нависает над тобой, пока сырой холод переулка проникает в кости. Подумав, ты решаешь, что местный проводник не помешает. Ты кратко объясняешь свою цель — найти древние артефакты или узнать о культе. Глаза Эрдины сверкают, когда она одобрительно кивает.
 
 — Понятно, понятно... Старые реликвии, религиозные штучки? Я знаю идеальное место, чтобы покопаться в такой информации. История и храмы здесь не в почёте, так что тебе повезло, что я знаю нужного человека. Пошли.""",
+	KURO3_DIALOGUE_INIT = """So, what's up with the artifacts we're dealing with?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_1 = """Kuro takes a long look at your face, trying to figure out if you're joking.
+
+- You really don't know anything, yet you decided to drag yourself into this whole mess? It's hard to believe how careless you are. But I guess that's to be expected from you.
+
+- Say, what do you know about the gods?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_1_OPTION_1 = """They're like watching over us, rewarding us for good deeds?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_1_OPTION_2 = """They must walk among us, just like you and me.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_1_OPTION_3 = """I haven't thought much about them.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_2_1 = """- *Sigh* That's the last thing that matters in your situation.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_2_2 = """- Yeah, I can see the pattern. Well, nonetheless.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_2 = """- The mortal world we see and live in is perishable. Everything grows old, gets sick and damaged, and is eventually destroyed, losing all form. The only things that transcend it are concepts—the idea of how you can be remembered even after death in people's minds. The gods have strong connections to these very concepts, which is why their powers can overcome physical boundaries with relative ease.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_2_OPTION_1 = """How does this connect to the whole artifact collection ordeal?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_2_OPTION_2 = """I don't really care about all this smart-ass crap.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_1 = """- Causal adequacy dictates that everything must have a beginning. While some gods may have acquired their status from preceding god-entities and others have ascended to godhood from mortal beings, there must still have been an origin to the world itself. The artifacts the cult, and you, are after are seemingly tied to the very first god, one whose name has even been lost in our ever-degrading world.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_2 = """- He had many names, but it matters little now. Either way, your real problem is the cult — and even more so, the oldest sister, Rouge.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_3 = """- There's not much to tell; she's exactly what she looks like. A tyrant who only respects power and at times is little more than a wild beast. Her raw strength is unparalleled. I'd need at least five or six copies of myself to stand a real chance against her, so it's best to avoid getting into fight with her if possible.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_4 = """- Obviously, she and I are on your side, but since she's a dunce who only acts on instinct... I hate it, but her ability to be stupid is incredible. No, I guess that comes off wrong. Thing is that her instincts shouldn't be taken lightly and she is more useful than not.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_OPTION_1 = """So, you know what that god was called?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_OPTION_2 = """Can you tell me about Rouge?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_OPTION_3 = """What about Zephyra?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_OPTION_4 = """How exactly are the three of you connected to me""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_3_OPTION_5 = """Thanks for the information.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_4_1 = """Kuro flashes a smug smile before answering.
+
+- What makes you think I know that? There must be something special about you, isn't there? Shouldn't you know what makes you special? *Chuckle*""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_4_2 = """- That's not true. I haven't told a single lie here yet..""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_4_OPTION_1 = """You're obviously lying. Why don't you just say it?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_4_OPTION_2 = """Withholding that information is what lets you enjoy having some control over me?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_4_OPTION_3 = """Forget it...""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_5 = """Kuro's grin widens, her eyes flashing with particular joy.
+
+- This mental sharpness of yours is exactly what makes it all truly... fun.
+
+Before you can respond, Kuro retreats in her usual style, fading into the shadows.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE_6 = """- Then why don't you just stick to doing what you feel like doing? You won't waste my time or yours. And given that you've been successful so far, I don't think you need me telling you what to do.
+
+Despite your rude response, Kuro takes no offense. She quickly retreats in her usual style, fading into the shadows.""", # MISSING TRANSLATION
+	KURO3_INIT_1_1 = """Today Kuro has approached you.
+
+- It's time we take care of Nixx. I'll need your help with this.
+
+Her tone is far more demanding than pleading.
+
+- Thanks to the book from the elf woman, I've finally found a way to deal with her. But you'll have to help me.""", # MISSING TRANSLATION
+	KURO3_INIT_1_2 = """- Yes. Haven't I just said so? We don't have much of an option here. Unlike me, she won't abandon the cult's alliance and side with you. It was obvious the moment I joined her. Even after fooling her last time, it's way too dangerous to keep her unchecked. Besides, I plan to make use of her powers for us.""", # MISSING TRANSLATION
+	KURO3_INIT_1_3 = """Kuro lets out a demonstrative sigh slightly rolling her eyes. 
+
+- Okay, look. I'm fundamentally incapable of betraying you, just like Zephyra. It's time for you to accept that and move on with this mission.""", # MISSING TRANSLATION
+	KURO3_INIT_1_OPTION_1 = """Are you planning to betray her?""", # MISSING TRANSLATION
+	KURO3_INIT_1_OPTION_2 = """Can I really trust you?""", # MISSING TRANSLATION
+	KURO3_INIT_1_OPTION_3 = """Let's say you've persuaded me. What do we do?""", # MISSING TRANSLATION
+	KURO3_INIT_2 = """- Great, we shouldn't waste time. I've learned the incantation from Myr's book, but before we confront her, you'll need to prepare a magic catalyst. Challenging a goddess, especially an ancient one, will require more than a few spells.
+
+Kuro pulls an ancient-looking scroll from behind her back and hands it to you with a stern look. As you scan it, you spot many notes in Kuro's handwriting, explaining the materials and processes for crafting it.
+
+- I want you to make this. It's the Vesperine Cage, capable of containing her powers. Once it's done, we'll go after her.""", # MISSING TRANSLATION
+	KURO3_INIT_3_OPTION = """*Show Vesperine Cage to Kuro*""", # MISSING TRANSLATION
+	KURO3_INIT_3 = """Kuro fiddles with the crafted device in her hands for a moment before tucking it behind her back.
+
+- Pretty good. Consider that high praise. I don't give it often. It's time for our first move. We head to Crystaldepths, it was her last residing location that I knew of.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_OPTION = """Search for Nixx follower""", # MISSING TRANSLATION
+	KURO3_DEPTHS_1 = """You follow Kuro as she confidently navigates deeper into the settlement, down one of the pathways, until she reaches a small house.
+
+She barges in leisurely, revealing the living conditions of a missing family, complete with a few children's toys. A quick look around reveals a cellar door.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_2 = """The cellar turns out to be much more spacious than expected, with a small tunnel leading deeper into the caves. Kuro doesn't hesitate, quickly spotting her target.
+
+A short yelp echoes as Kuro drags a clothed figure of a man into the light. By his attire, he seems to be the house owner.
+
+Kuro: - Long time no see, Cerab. Nixx has moved out of here, hasn't she? Looks like you're still her main guy around here.
+
+Cerab: - Y-you... So it is true you've turned on her!""", # MISSING TRANSLATION
+	KURO3_DEPTHS_3 = """Black tendrils controlled by Kuro keep the man tightly restrained, allowing him only to speak.
+
+Kuro: - Tell me where you've taken her.
+
+Cerab defiantly turns his head away, signaling his refusal to speak. Kuro, displeased, glares at him and unleashes her powers.
+
+Cerab: - Ghhh... Argh!.. This test of my devotion is nothing!""", # MISSING TRANSLATION
+	KURO3_DEPTHS_4 = """Kuro: - So you want to do it the hard way? No pity for your family? They might lose their husband and father.
+
+Kuro's voice sounds deadly serious. She clearly has no remorse about torturing the man until she gets what she wants.
+
+Cerab: - Hah, you should know our families are little more than a cover. Do your worst, you apostate!
+
+Kuro: - Stubborn man. I'm no torture expert, but since you've left me no choice...""", # MISSING TRANSLATION
+	KURO3_DEPTHS_4_OPTION_1 = """Don't do it; we'd better find someone else around here to get this information from. (1000 gold)""", # MISSING TRANSLATION
+	KURO3_DEPTHS_4_OPTION_2 = """Let me get it straight from his mind instead.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_4_OPTION_3 = """*Stay quiet*""", # MISSING TRANSLATION
+	KURO3_DEPTHS_5 = """You insist on sparing the man from Kuro's gruesome approach and head back into the settlement. The hefty sum of coins you've prepared as a reward quickly loosens a few tongues, revealing the details of Nixx's true altar transportation, which was assisted by a couple of locals. Connecting the dots, you and Kuro realize it was taken to ancient underground ruins not far from this region.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_6 = """Kuro steps aside as you begin chanting your mind-reading spell. Unsurprisingly, Cerab resists as best he can, but your expertise allows you to breach his mind soon enough, forcing him to reveal the location of Nixx's true altar: ancient underground ruins not far from this region. Kuro seems satisfied with the answer; she nods and leads you away.
+
+Kuro: - I'm slightly ashamed that it didn't occur to me. I'll have to admit that was rather cunning of you.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_7 = """You and Kuro stay quiet as the torture continues. The black tendrils slowly pierce the man's flesh, tearing through skin and peeling it off. His cries of pain, though loud, are conveniently muffled underground. His breathing turns ragged from the pain, but Kuro ensures the damage won't kill him outright.
+
+Cerab: - F...fuck you... just... just kill me...
+
+With a crunchy sound, a nail is torn off, followed by an even louder cry.
+
+Kuro: - Don't feel too bad for him; he's killed and sacrificed more than a few victims to her. I wonder if you'd beg for mercy if I didn't know that.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_8 = """As time passes, you notice a few things. The torture is scarily pragmatic: not only is life-threatening damage kept to a minimum, but Kuro takes irregular breaks, making each resumption more unpredictable and unnerving. Minutes feel like hours, keeping you constantly aware of possible interruptions from outsiders, but none come.
+
+Kuro: - Shall we try the teeth or an eye next?
+
+Kuro's voice is empty, gnawing on the man's spirit no less than the lasting pain.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_9 = """Finally, the cultist breaks down entirely.
+
+Cerab: - N-no... Stop... I will tell you... Just, please... Stop...
+
+Kuro: - Just don't think you can lie to me.
+
+As the man collapses to the ground, released from his torture, he slowly explains how Nixx's true altar was moved to ancient underground ruins not far from here. Kuro seems satisfied; she nods and leads you away, leaving her victim half-dead.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_10_1 = """Kuro: - Looks like she suspected something might happen after last time. Those ruins won't be easy to explore.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_10_2 = """Kuro: - He's no danger to us. Once we deal with Nixx, the other followers will blame him for betraying her and make him suffer even more.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_10_3 = """Kuro: - Maybe. But this had to be done. Nixx is too dangerous to leave as the cult's ally. You already know what I could do with her powers, don't you?""", # MISSING TRANSLATION
+	KURO3_DEPTHS_10_4 = """Kuro: - Nixx was once a deity of the night—that is, until all light died out, and she became what she is now. Darkness holds many secrets, and that's partly why I sided with her, though her powers are formidable too. Everything has a price; someone like Zephyra could never become her champion.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_10_OPTION_1 = """Shouldn't we finish off that man?""", # MISSING TRANSLATION
+	KURO3_DEPTHS_10_OPTION_2 = """You've gone way too far with that.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_10_OPTION_3 = """Can you tell me more about her?""", # MISSING TRANSLATION
+	KURO3_DEPTHS_10_OPTION_4 = """Alright, let's go then.""", # MISSING TRANSLATION
+	KURO3_DEPTHS_11 = """Kuro: - Yes. Now the real hard part begins. This could get really dangerous, so let's do our best.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_1 = """As you navigate the dark, moist halls, Kuro suddenly stops you. Giving her a puzzled look, you see her investigating one of the brick walls.
+
+- They tried to hide it well.
+
+She begrudgingly inserts her hand into a crack, and with a clicking sound, part of the wall slides aside.
+
+- Come on. I can feel she's here.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_2 = """Entering the secret room, you closely follow Kuro's steps as she ensures you don't alert anything. Finally, you come across an intricate wall framed with stone pillars and an effigy made of some dark material.
+
+Kuro: - She seems to be in slumber now. Let's not waste time.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_3 = """She quickly pulls out the Vesperine Cage, activates it, and points it at the wall. Its ethereal light illuminates the room, but the dark fog around the effigy remains motionless.
+
+Kuro: - Stay alert. This should seal her powers in moments.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_4 = """In the Cage's light, the floating black mass becomes more solid and visible. Despite both of you trying to stay calm, it lasts only a moment before it begins squirming chaotically. A distant, grave voice echoes in your head.
+
+Nixx: - Finally shown yourself? Think you can stop me with this little thing?
+
+Kuro: - Damn it, you should've stayed down!
+
+Kuro is clearly frustrated by her plan going awry but remains determined.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_5 = """Despite Nixx's energy being mostly contained by the Cage's focused beam, she finds an opening and launches a deadly attack in your direction.
+
+Nixx: - You've made a mistake not coming alone.
+
+Kuro: - Grh... Curses!
+
+Kuro's concentration breaks as she moves to protect you, which is just enough for Nixx to follow up with an overwhelming energy mass that swallows you both.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_6 = """You find yourself in a wall-less space where only dim darkness surrounds you. Next to you, Kuro rubs her forehead in defeat. As you try to get information from her, the awfulness of your situation dawns on you.
+
+Kuro: - It's over, we've lost. She's trapped us in her pocket dimension. There's no way out on our own... In time, it'll sap our energy, and we'll die here.
+
+Kuro: - Damn it, what an idiotic way to lose... In this place, I can't use any of her powers either.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_6_OPTION_1 = """Don't give up just yet.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_6_OPTION_2 = """There must be something we can do.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_6_OPTION_3 = """It's all your fault.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_7 = """Kuro barely reacts to your words. She seems far more susceptible to the energy drain here, acting heavily drunk—her speech sloppy, dampened by the darkness.
+
+Kuro: - I'm sorry, [name]. I should've done better... It's really hard to... concentrate...""", # MISSING TRANSLATION
+	KURO3_DUNGEON_8 = """Kuro: - It's... it's been lonely by myself... for all... this time... Zephyra and Rouge... they don't remember a thing... after all...
+
+Time drifts slowly without any indication as you start feeling dizzy yourself.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_9_1 = """You feel a familiar presence, something otherworldly, yet not alien to this realm. A soft voice speaks to you.
+
+Voice: - You disappoint me to no end... You can't die here, can you? There's not much I can do, but with her on your side... This should be just enough to break free.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_9_2 = """You feel an alien presence appear in the darkness, something otherworldly, yet not of this realm. A soft voice speaks to you.
+
+Voice: - This is not the time or place; you can't die here. There's not much I can do, but with her on your side... This should be just enough to break free.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_9 = """A foreign command enters your mind, guiding your actions. You stand, approaching Kuro, who barely moves. Your hand grabs hers, pulling her up effortlessly. Despite her pallor, her hand is warm, instinctively grasping yours in return.
+
+An unknown ancient language fills your mind, and you begin chanting-more a hymn than a spell. You've never heard it before and can't understand it. A dim light surrounds you both, draining the darkness from the surroundings. Kuro's groans grow louder as she clings to you harder as the light restores her and your strength which has just been sapped.""", # MISSING TRANSLATION
+	KURO3_DUNGEON_10 = """An explosion erupts as you reach the peak; your mind is instantly freed from the external control. You and Kuro find yourselves back in the room, Nixx's altar before you. Kuro regains her senses; Nixx is clearly confused by your escape, her powers wavering from the damage you've inflicted.
+
+Nixx: - How did you...?!
+
+Kuro: - No time for talk, [name], we need to defeat her now!""", # MISSING TRANSLATION
+	KURO3_WIN = """The damage you've inflicted sends Nixx into recuperation, allowing Kuro to once again activate the entrapping device.
+
+Nixx: - You... damned vixen... If you plan on taking my powers... You'll never find rest for this...
+
+Kuro: - That's so? You should know better than me there's no rest for the wicked. 
+
+The Cage shimmers with bright light, fully consuming what's left of Nixx's essence. Kuro falls to her knees, having expended all her remaining energy.""", # MISSING TRANSLATION
+	KURO3_WIN_OPTION_1 = """*Help Kuro*""", # MISSING TRANSLATION
+	KURO3_WIN_OPTION_2 = """*Seize the Cage for yourself*""", # MISSING TRANSLATION
+	KURO3_GOOD_1 = """You grab Kuro, helping her stand after the exhausting fight. Her skin feels hot, her face covered in sweat, but her emotions are those of triumphant victory and admiration for you.
+
+Kuro: - Th-thank you, [name]. Looks like I'm shaking a bit. We did something that only happens in legends.
+
+She looks down at her hands, firmly holding the now-closed Cage.
+
+Kuro: - I'll absorb her essence now. With this, her powers, and most importantly, her knowledge, will become part of me. Don't worry, I can handle it.""", # MISSING TRANSLATION
+	KURO3_GOOD_2 = """Without further delay, Kuro clutches the device tightly. You feel the powers inside surging, visibly engulfing her body. Her groans, followed by heavy panting, fill the small room as you watch in awe. After a moment, the device shatters as Kuro completes her ordeal.
+
+You steady her for a minute as her eyes remain unfocused and her body processes the change. You sense the transformation in her being. Something about her appearance, energy, and aura has shifted. Slightly, but noticeably to you. A supernatural feel is now etched into her presence.
+
+Kuro: - Ah... This will take some time to get used to... My thoughts are all mixed... but... there's so much new information...""", # MISSING TRANSLATION
+	KURO3_GOOD_2_OPTION_1 = """So, what's that information you've been aiming for?""", # MISSING TRANSLATION
+	KURO3_GOOD_2_OPTION_2 = """Got any clues to great treasure troves there?""", # MISSING TRANSLATION
+	KURO3_GOOD_2_OPTION_3 = """I'm glad you're safe.""", # MISSING TRANSLATION
+	KURO3_GOOD_3_1 = """Kuro: - It's... I can't say for certain yet, but I hope to learn more about everything I can.""", # MISSING TRANSLATION
+	KURO3_GOOD_3_2 = """Kuro: - Heh, very funny. You really think a foul ancient being like her would care about some gold coins?""", # MISSING TRANSLATION
+	KURO3_GOOD_3_3 = """Kuro: - Please, [name], you're making me blush, and it's really not suitable for someone who's just done what I did. Let's save it for later.""", # MISSING TRANSLATION
+	KURO3_GOOD_3 = """Kuro: - One thing's for sure: Nixx is no more, and it will both help us against the cult and stop me from worrying.
+
+Kuro finally steadies herself, releasing your hand, and you leave the place.""", # MISSING TRANSLATION
+	KURO3_BAD_1 = """You snatch the Cage from Kuro's powerless hands with ease, feeling the power within. As you glance at the puzzled Kuro, you focus on the ancient sealed powers, feeling them surge from the device into you. Kuro raises her head, speechless in disbelief, too weak to fight or perhaps too confused to react.
+
+You feel the raw dark powers now yours as they merge with your body, leaving the Cage empty and useless.""", # MISSING TRANSLATION
+	KURO3_BAD_2 = """Kuro: - Hah... hahaha...
+
+Her laugh sounds dry and empty. Minutes pass as she stares at the ground in defeat.
+
+Kuro: - That's really stupid, isn't it? After all that work, you just took it for yourself... No, I'm... No. I'll accept my utter defeat. What do you plan to do with me now that my champion powers are gone?""", # MISSING TRANSLATION
+	KURO3_BAD_2_OPTION_1 = """You'll stay by my side.""", # MISSING TRANSLATION
+	KURO3_BAD_2_OPTION_2 = """You'll stay by my side... as a slave.""", # MISSING TRANSLATION
+	KURO3_BAD_2_OPTION_3 = """I have no use for you anymore.""", # MISSING TRANSLATION
+	KURO3_BAD_3 = """Kuro: - ...Got to admit, that's some scheme you pulled on me. I've stated I'm on your side, and that can't be changed... I'll do what I can to help with whatever ominous plan you have.
+
+Helping Kuro up, you prepare to leave.""", # MISSING TRANSLATION
+	KURO3_BAD_4 = """Kuro: - ...I guess I won't be able to escape any collar now. Is this how you plan to make me atone?
+
+Kuro's face shows vulnerability and a hint of fear. Something that she rarely displays.
+
+Kuro: - I hope you aren't devoid of any mercy for me.""", # MISSING TRANSLATION
+	KURO3_BAD_5 = """For once, Kuro's face shows clear pain, but it quickly returns to normal.
+
+Kuro: - I understand. So that's what it's like to be on the receiving end of evil.
+
+You leave Kuro seemingly stuck in place as you contemplate your newly acquired powers.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE2_INIT = """About that time we were trapped...""", # MISSING TRANSLATION
+	KURO3_DIALOGUE2_1 = """You tell Kuro about the time you were trapped by Nixx and the mysterious voice that freed you. To your surprise, she responds almost disinterestedly.
+
+- That's so? We got lucky, I suppose. I really should've known better than putting us in such danger.""", # MISSING TRANSLATION
+	KURO3_DIALOGUE2_1_OPTION_1 = """Do you know whose voice that was?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE2_1_OPTION_2 = """Will I lose control over myself again?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE2_2_1 = """Kuro pauses, searching for the right words.
+
+- It was probably an ancient, forgotten deity, or rather, what's left of one. Good thing she was on our side, wasn't it?""", # MISSING TRANSLATION
+	KURO3_DIALOGUE2_2_2 = """- What, are you hoping some powerful deity will solve all your problems? I thought you were too old for such naive expectations.
+
+Kuro smirks at you in her usual way.
+
+- No, I doubt she'll help us again after this. We're on our own.""", # MISSING TRANSLATION
+	KURO_QUEST_3_SUMMARY = """""", # MISSING TRANSLATION
+	KURO_QUEST_3_NAME = """""", # MISSING TRANSLATION
+	KURO_QUEST_3_CRAFT = """Craft Vesperine Cage, than speak to Kuro.""", # MISSING TRANSLATION
+	KURO_QUEST_3_DEPTHS = """Search in Crystaldepths""", # MISSING TRANSLATION
+	KURO_QUEST_3_DUNGEON = """Finish Nixx""", # MISSING TRANSLATION
 	
 }
 

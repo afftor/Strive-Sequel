@@ -613,6 +613,8 @@ Food type: Fish, Vegetables.""",
 	MATERIALDRACONIC_SCALESDESCRIPT = "Dragon parts are adorned for both its prettiness and superior quality.",
 	MATERIALHERBS = "",
 	MATERIALHERBSDESCRIPT = "",
+	MATERIALVESPERINE_CAGE = "Vesperine Cage",
+	MATERIALVESPERINE_CAGEDESCRIPT = "An ancient device of unknown purpose.",
 	MATERIALINK_TRIBAL = "Ink: Power",
 	MATERIALINK_BRANDINGDESCRIPT = """A set of tools and ink allowing to apply a certain magical signature on the subject. Initially implemented by graziers and tamers, branding was adopted by slavery societies to establish dominance over the conquered. Tattoos are not nearly as painful to apply but nethertheless just as degrading, featuring the name of the owner.
 
@@ -725,7 +727,7 @@ When consumed normally can apply \"Drunk\" status, or shift personality towards 
 
 When consumed normally can apply \"Drunk\" status, or shift personality towards \"Shy\". Improves horniness and sensitivity during sex interactions.""",
 	ITEMCORRUPTIVE_ESSENCE = "Corruptive Essence",
-	ITEMCORRUPTIVE_ESSENCEDESCRIPT = """Magic essence from unknown source. Digesting it allows a person to obtain unusual powers """,
+	ITEMCORRUPTIVE_ESSENCEDESCRIPT = "Magic essence from unknown source. Digesting it allows a person to obtain unusual powers ",
 	ITEMTAMEDRUG = "Tame Drug",
 	ITEMTAMEDRUGDESCRIPT = "Tame Factor +1-2. Authority Factor +1-2. Wits Factor -1.",
 	ITEMRAGEDRUG = "Rage Drug",
@@ -2309,9 +2311,9 @@ Damage +15%, Health +20.""",
 	FAME_DEGRADE_MANIFEST = "Fame degrades! [He] is %s now.",
 	TAGSTABLE_FAME = "Stable Fame: Fame does not degrade over time.",
 	FAMEDESC_PRICE_BONUS = "Character's Value",
-	FAMEDESC_UPKEEP = 'Subordinate weekly upkeep',
-	FAMEDESC_LOYALTY_BONUS = 'Loyalty for trainee',
-	FAMEDESC_RECRUIT_BONUS = 'Recruitment efficiency',
+	FAMEDESC_UPKEEP = "Subordinate weekly upkeep",
+	FAMEDESC_LOYALTY_BONUS = "Loyalty for trainee",
+	FAMEDESC_RECRUIT_BONUS = "Recruitment efficiency",
 	PRICEDESC_TRAITS_POS = "Positive traits",
 	PRICEDESC_TRAITS_NEG = "Negative traits",
 	PRICEDESC_CUMULATIVE = "Cumulative bonus %s of",
@@ -2654,27 +2656,26 @@ Loyalty: +10 (half for viewers), Lust: +15, Maxes Obedience.""",
 Executes selected character. Greatly improves obedience of everyone involved. 
 Basic Effects: 
 Loyalty: +25, Maxes Obedience.""",
-	
 	SKILLENTHRALL = "Enthrall",
-	SKILLENTHRALLDESCRIPT = """Select a character to make them into a Thrall of a caster. Each Thrall increases maximum Lust, Lust regeneration and provides unlock ponts.""",
+	SKILLENTHRALLDESCRIPT = "Select a character to make them into a Thrall of a caster. Each Thrall increases maximum Lust, Lust regeneration and provides unlock ponts.",
 	DIALOGUEENTHRALLREPORT = "[targetname] has been successfully enthralled by [name]. [targetname] feels completely enarmoured with [him].",
 	DIALOGUEENTHRALLREPORT_FAILED = "[targetname] was able to resist [name]'s charm.",
 	SKILLRELEASE_THRALL = "Release Thrall",
-	SKILLRELEASE_THRALLDESCRIPT = """Remove Thrall's status from the character. This will make them disappointed and possibly have a breakdown.""",
+	SKILLRELEASE_THRALLDESCRIPT = "Remove Thrall's status from the character. This will make them disappointed and possibly have a breakdown.",
 	DIALOGUERELEASE_THRALLREPORT = "As [name] releases [his] charm over [targetname], [targethe] is no longer enthralled...",
 	SKILLCORRUPT = "Corrupt",
-	SKILLCORRUPTDESCRIPT = """Use lust magic to corrupt a mind of an individual, making them more sexually curious, increasing their Consent. Chance is based on Sexuals Factor but is guaranteed to work on Thralls.""",
+	SKILLCORRUPTDESCRIPT = "Use lust magic to corrupt a mind of an individual, making them more sexually curious, increasing their Consent. Chance is based on Sexuals Factor but is guaranteed to work on Thralls.",
 	DIALOGUECORRUPTREPORT = "[name]'s alluring magic has enveloped [targetname]'s mind, increasing [targethis] consent.",
 	DIALOGUECORRUPTREPORT_FAILED = "[name]'s alluring magic has been resisted by [targetname]'s mind...",
 	SKILLALLURE = "Allure",
-	SKILLALLUREDESCRIPT = """Entices the target, increasing their Loyalty and reducing Resistence. Only works on your Thralls.""",
+	SKILLALLUREDESCRIPT = "Entices the target, increasing their Loyalty and reducing Resistence. Only works on your Thralls.",
 	DIALOGUEALLUREREPORT = "[name] have used [his] powers to influence [targetname], promising unimaginable pleasure.",
 	SKILLTURN_SUCCUBUS = "Turn into Succubus",
-	SKILLTURN_SUCCUBUSDESCRIPT = """Turn your Thrall into a full time Succubus (or Incubus). Target must have Consent level of Kinky or higher. """,
+	SKILLTURN_SUCCUBUSDESCRIPT = "Turn your Thrall into a full time Succubus (or Incubus). Target must have Consent level of Kinky or higher. ",
 	DIALOGUETURN_SUCCUBUSREPORT = "A part of [name]'s lust essence seeps into [targetname], turning [targethim] into a [succubus].",
 	DIALOGUECORRUPTIVE_ESSENCEREPORT = "As [name] consumes a corruptive essence [he] becomes overwhelmed with dizziness and pain. Slowly [his] physiologiy rebuilds into a new state.",
 	SKILLSWAP_FORM = "Change form",
-	SKILLSWAP_FORMDESCRIPT = """Swap between Demonic and Normal forms. Demonic form gives +15% damage, +10 Physics and Wits. Normal form gives +20 Charm and +25% Productivity.""",
+	SKILLSWAP_FORMDESCRIPT = "Swap between Demonic and Normal forms. Demonic form gives +15% damage, +10 Physics and Wits. Normal form gives +20 Charm and +25% Productivity.",
 	DIALOGUESWAP_FORMREPORT = "",
 	DEMONFORMDESCRIPT = "Demonic form",
 	HUMANFORMDESCRIPT = "Normal form",
@@ -2689,7 +2690,6 @@ Loyalty: +25, Maxes Obedience.""",
 	THRALLS1DESCRIPT = "Has a thrall",
 	THRALLS0DESCRIPT = "Has no thralls",
 	EFFECTNAME_E_THRALL = "Is a Thrall",
-
 	SKILLSUPREMACY = "Supremacy",
 	SKILLSUPREMACYDESCRIPT = """Category: {color=green|Gracious}
 Overwhelms target with awe and respect for caster. Greatly increases Loyalty. Improved by Charm Factor. 
@@ -2758,7 +2758,6 @@ By the end of it, it seems even your meeker servants have been left satisfied.""
 	DIALOGUEMENTORREPORT = "[name] has began mentoring [targetname] helping [targethim] to learn faster...",
 	DIALOGUESEDUCEREPORT = "[name] has approached [targetname] and after a couple moments left [targethim] wondering. Despite visual calmness, [targetname] has clearly become enamoured by [him].",
 	DIALOGUEGREATSEDUCEREPORT = "[name] has approached [targetname] and after a couple moments left [targethim] wondering. [targetHis] mind has been overtaken by strong desire, making [him] quite docile.",
-#	DIALOGUEALLUREREPORT = "[name] has given [targetname] a small private encouragement.",
 	DIALOGUEABUSEREPORT = """[name] has pushed [targetname] into a corner and took out some of [his] anger on [targethim].
 
 {color=aqua|[targetname]} — {random_chat=0|abuse}""",
@@ -2855,7 +2854,7 @@ Skill attacks possess Dark element.""",
 	TRAITBISHOPDESCRIPT = """Light Magic damage: +25%
 {color=brown|Luminance}: Single target Light abilities make target receive more Light and Dark damage.""",
 	TRAITDRUIDDESCRIPT = "Earth Spell damage: +20%",
-	TRAITBERSERKERDESCRIPT = """{color=brown|Frenzy}: After killing an enemy, gain an extra turn (once per combat).""",
+	TRAITBERSERKERDESCRIPT = "{color=brown|Frenzy}: After killing an enemy, gain an extra turn (once per combat).",
 	TRAITSNIPERDESCRIPT = "Single Target Physical damage: +25%",
 	TRAITPALADINDESCRIPT = "{color=brown|Smite}: Deal 25% more damage and take 15% less damage from Undead and Demon type enemies.",
 	TRAITASSASSINDESCRIPT = "{color=brown|Stealth Mastery}: Hiding can be activated in Medium Armor.",
@@ -3138,9 +3137,11 @@ Requires consent \"Willing\" or above.""",
 	TRAITMASTER_SORCERY = "Sorcery",
 	TRAITMASTER_SORCERYDESCRIPT = "Max HP + 20%, additional 3 lust on being hit.",
 	TRAITSUCCUBUS_MAGIC = "Magic Attunement",
-	TRAITSUCCUBUS_MAGICDESCRIPT = "MATK: +10; Max MP: +25; MP Regen: +50%\nOnly one attunement can be taken",
+	TRAITSUCCUBUS_MAGICDESCRIPT = """MATK: +10; Max MP: +25; MP Regen: +50%
+Only one attunement can be taken""",
 	TRAITSUCCUBUS_COMBAT = "Combat attunement",
-	TRAITSUCCUBUS_COMBATDESCRIPT = "HP Factor: +20%; HP Regen: +100%; Gain lust when taking damage..\nOnly one attunement can be taken",
+	TRAITSUCCUBUS_COMBATDESCRIPT = """HP Factor: +20%; HP Regen: +100%; Gain lust when taking damage.
+Only one attunement can be taken""",
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Virginity}[/center]
 As [name] has a observable virginity, this makes [him] more desirable for certain individuals. 
 {color=yellow|Sell price is increased by 25%%}""",
@@ -3244,7 +3245,6 @@ Social skills effect: +10%.""",
 	EFFECTNAME_E_LOVE = "Lover present",
 	EFFECTNAME_E_FRIEND = "Friend present",
 	EFFECTNAME_E_RIVAL = "Rival present",
-#	EFFECTNAME_E_THRALL = "",
 	EFFECTNAME_E_PERSON_BOLD = "Is Bold",
 	EFFECTNAME_E_PERSON_SHY = "Is Shy",
 	EFFECTNAME_E_PERSON_KIND = "Is kind",
@@ -3258,7 +3258,7 @@ Social skills effect: +10%.""",
 	EFFECTNAME_E_PREGNANCY = "Is pregnant",
 	EFFECTNAME_E_PREGNANCY1 = "Is heavily pregnant",
 	EFFECTNAME_E_PREGNANCY_BREEDER = "Is pregnant (breeder)",
-	EFFECTNAME_E_MKUP = "Tattoo", #mb they should be reworked as traits
+	EFFECTNAME_E_MKUP = "Tattoo",
 	EFFECTNAME_E_TLUST1 = "Tattoo",
 	EFFECTNAME_E_TLUST2 = "Tattoo",
 	EFFECTNAME_E_THPR = "Tattoo",
@@ -3481,9 +3481,11 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	PROFALIOS_CHAMPION = "Champion of Alios",
 	PROFALIOS_CHAMPIONDESCRIPT = "A lone girl with mysterious powers and the past. One thing is clear, her divine affiliation is real. ",
 	PROFNIXX_CHAMPION = "Champion of Nixx",
-	PROFNIXX_CHAMPION2 = "Champion of Nixx", #new kuro
-	PROFNIXX_CHAMPION3 = "Champion of Nixx", #master version
-	PROFNIXX_CHAMPIONDESCRIPT = "These terrifying powers come from unknown source which only very few of world's sages are able to descry. WIP ",
+	PROFSATORI = "Satori",
+	PROFASURA = "Asura",
+	PROFNIXX_CHAMPIONDESCRIPT = "These terrifying powers come from unknown source which only very few of world's sages are able to descry. ",
+	PROFSATORIDESCRIPT = "Only the one who has reached lowest point will be able to perceive the reality to its fullest.",
+	PROFASURADESCRIPT = "Lust for power and control can get you to very strange places, but the cost will never feel fair.",
 	PROFRENOWN_ROYALTY = "Renown Royalty",
 	PROFRENOWN_ROYALTYDESCRIPT = "The royal blood is a boon in itself, even more so when recognized by others. ",
 	PROFBROKEN_ROYALTY = "Broken Royalty",
@@ -3588,11 +3590,11 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	UPGRADEGATHERMITHRILBONUS = "Allows gathering of Mithril",
 	UPGRADEROOMS = "Mansion Rooms",
 	UPGRADEROOMSDESCRIPT = "Increases maximum number of hosted characters.",
-	UPGRADEROOMSBONUS1 = "Increases maximum number of hosted characters to 10.",
-	UPGRADEROOMSBONUS2 = "Increases maximum number of hosted characters to 15.",
-	UPGRADEROOMSBONUS3 = "Increases maximum number of hosted characters to 20.",
-	UPGRADEROOMSBONUS4 = "Increases maximum number of hosted characters to 25.",
-	UPGRADEROOMSBONUS5 = "Increases maximum number of hosted characters to 30.",
+	UPGRADEROOMSBONUS1 = "Increases maximum number of hosted characters to 12.",
+	UPGRADEROOMSBONUS2 = "Increases maximum number of hosted characters to 18.",
+	UPGRADEROOMSBONUS3 = "Increases maximum number of hosted characters to 24.",
+	UPGRADEROOMSBONUS4 = "Increases maximum number of hosted characters to 30.",
+	UPGRADEROOMSBONUS5 = "Increases maximum number of hosted characters to 36.",
 	UPGRADELUXURY_ROOMS = "Luxury Rooms",
 	UPGRADELUXURY_ROOMSDESCRIPT = "Increases maximum number of available Luxury Rooms. Luxury Rooms will increase Productivity, Experience and Loyalty Gain to its residents. ",
 	UPGRADELUXURYROOMSBONUS1 = "Increases maximum number of available Luxury Rooms to 2.",
@@ -4052,7 +4054,7 @@ Sex skills are increased when performing related action and their growth is depe
 	SQ_FACT_PRICE = "Reward bonus: %s",
 	SQ_OBSIDIAN_NAME = "The Obsidian Brotherhood",
 	SQ_OBSIDIAN_DESC = "An old house of noble descent, once renowned for its influence over trade routes and land rights. Now led by eccentric landlords, the Brotherhood clings to fading traditions, maintaining their authority through shrewd bargains and inherited wealth.",
-	SQ_OBSIDIAN_LEAD = "Lord Ramont", 
+	SQ_OBSIDIAN_LEAD = "Lord Ramont",
 	SQ_DRAVENMOOR_NAME = "House Dravenmoor",
 	SQ_DRAVENMOOR_DESC = "A brooding group known for its stern adherence to duty and control of borderlands. Their coffers are filled less by trade than by taxation and defense levies, earning them both resentment and respect.",
 	SQ_DRAVENMOOR_LEAD = "Lady Marwen Dravenmoor",
@@ -4178,7 +4180,7 @@ Sex skills are increased when performing related action and their growth is depe
 	DIALOGUEMEETBAD = "You've failed to persuade [name] and [he] bids you a farewell.",
 	DIALOGUEMEETGOOD = "After a discussion [name] agrees to become your follower. ",
 	DIALOGUEMEETGOODSEDUCE = "Being charmed by a lustful intentions, [name] agrees to become your follower. ",
-	DIALOGUEMEETGOODDEFAULT = "Add to roster as Subordinate", # either as slave or fix slave class in scene
+	DIALOGUEMEETGOODDEFAULT = "Add to roster as Subordinate",
 	DIALOGUEMEETGOODHIRELING = "",
 	DIALOGUERANDOMBOSSDEFEAT = "The defeated [name] lies before you. Recruiting [him] does not seem very realistic, so you will have to enslave [him]...",
 	DIALOGUERECRUITBOSSOPTION = "Take into custody",
@@ -4202,11 +4204,14 @@ Sex skills are increased when performing related action and their growth is depe
 [He] leaves you forever.""",
 	SPECIAL_ACTION_CLASS = "Special Action (requires unknown class)",
 	LOG_LOSE_HP = "loses %d hp.",
-	LOG_COMBAT_LOSE_HP = "\n%s loses %d hp.",
+	LOG_COMBAT_LOSE_HP = """
+%s loses %d hp.""",
 	LOG_HEAL = "healed for %d hp.",
-	LOG_COMBAT_HEAL = "\n%s get %d hp.",
+	LOG_COMBAT_HEAL = """
+%s get %d hp.""",
 	LOG_MANA = "mana %d.",
-	LOG_COMBAT_MANA = "\n%s get %d mp.",
+	LOG_COMBAT_MANA = """
+%s get %d mp.""",
 	LOG_ADD_PART = "add part of %s to %s",
 	LOG_SET = "%s is %s",
 	DIALOGUECHARINSPECT = "Inspect",
@@ -16618,7 +16623,6 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	HARA_SCALES_QUEST_VISIT = "Visit workshop",
 	VISIT_DWARFS_QUEST_NAME = "Visit dwarven kingdom",
 	VISIT_DWARFS_QUEST_SUMMARY = "Next artifact should be in dwarven kingdom's possession.",
-#	VISIT_DWARFS_QUEST_SEARCH = "Search a nearby mountain for an entrance to dwarven kingdom.",
 	VISIT_DWARFS_QUEST_AUDIENCE = "Search a nearby mountain for an entrance to dwarven kingdom and get audience with king.",
 	VISIT_DWARFS_QUEST_TAVERN = "Find a way to attract king's attention. Visit a tavern for a start.",
 	VISIT_DWARFS_QUEST_JEAN = "Help Jean, meet her at Mountain Pass marked on her map, or... You can turn her in. King could be pleased with such revelation.",
@@ -16754,7 +16758,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	METRICS_VIRGINITY_OTHER = "[He] lost [his] vaginal virginity to {color=yellow|%s}. ",
 	METRICS_ANAL_VIRGINITY_YOU = "[His] first experience with anal penetration was with {color=yellow|you}. ",
 	METRICS_ANAL_VIRGINITY_OTHER = "[His] first experience with anal penetration was with {color=yellow|%s}. ",
-	METRICS_EARNED = "[He] earned {color=yellow|%d} gold, gathered {color=yellow|%d} food and {color=yellow|%d} materials while working on you. ",
+	METRICS_EARNED = "[He] earned {color=yellow|%d} gold, gathered {color=yellow|%d} food and {color=yellow|%d} materials while working for you. ",
 	METRICS_COMBAT = "[He] engaged in {color=yellow|%d} battles and defeated {color=yellow|%d} enemies. ",
 	METRICS_SOURCE_BROTHEL_CUSTOMER = "a customer of a brothel",
 	METRICS_SOURCE_GUILD_TRAINER = "a guild trainer, during sex toy training",
@@ -18039,7 +18043,8 @@ Hotkey: 3""",
 	RACE_BONUSES = "Race bonuses",
 	SOCIAL_SKILLS = "Social Skills",
 	COMBAT_SKILLS = "Combat Skills",
-	PERSONAL_STAT = "Personal Statistics",
+	PERSONAL_STAT = "Statistics",
+	PERSONAL_METRICS = "Metrics",
 	REMOVE_BUTTON = "Set Free",
 	TALK_BUTTON = "Talk To",
 	BODY_UPGRADE_TOOLTIP = "You can visually modify your character for a price here",
@@ -19197,24 +19202,23 @@ The pressure builds quickly as her incredibly tight passage works your cock. Her
 Spent and satisfied, you carefully withdraw from her tight passage, admiring how her small body handled such an intense experience. Her white fox tail now lies limp beside her, her chest rising and falling with deep, satisfied breaths as she recovers from the intense pleasure of her first anal experience.
 
 — Ah... I didn't think you'd actually do it... But I'm not complaining, I might like this show of your affection no less than the other.""",
-	
-	DIALOGUEEVENTDUNGEONCOCCOON_1 = """As the team navigate the damp, echoing tunnels, your torchlight catches a glimmer of pale webbing ahead. A human-shaped cocoon dangles from the ceiling, swaying slightly as faint movements ripple beneath its silken surface. The cocoon twitches again, a muffled sound escaping it, indicating the rare victim which is still alive.""",
+	DIALOGUEEVENTDUNGEONCOCCOON_1 = "As the team navigate the damp, echoing tunnels, your torchlight catches a glimmer of pale webbing ahead. A human-shaped cocoon dangles from the ceiling, swaying slightly as faint movements ripple beneath its silken surface. The cocoon twitches again, a muffled sound escaping it, indicating the rare victim which is still alive.",
 	DIALOGUEEVENTDUNGEONCOCCOON_OPTION1 = "Free them (10 stamina)",
 	DIALOGUEEVENTDUNGEONCOCCOON_OPTION2 = " [Strength Challenge] Select character (3 stamina)",
-	DIALOGUEEVENTDUNGEONCOCCOON_2 = """You take your time freeing the spiders' victim. Finally they are cut free for you to decide on their future fate.""",
-	DIALOGUEEVENTDUNGEONCOCCOON_3 = """With a grunt, [name] tears through the silk in moments, freeing a shaken stranger who scrambles onto the floor.""",
-	DIALOGUEEVENTDUNGEONCOCCOON_4 = """You leave the hanging victim on its own and move on.""",
-	DIALOGUEEVENTDUNGEONLIBRARY_1 = """The dungeon's twisting corridors reveal a half-hidden door. It creaks open to reveal a small, abandoned library room, its shelves sagging under dusty tomes and scattered scrolls. The shelves loom, packed with knowledge but fragile with age.""",
+	DIALOGUEEVENTDUNGEONCOCCOON_2 = "You take your time freeing the spiders' victim. Finally they are cut free for you to decide on their future fate.",
+	DIALOGUEEVENTDUNGEONCOCCOON_3 = "With a grunt, [name] tears through the silk in moments, freeing a shaken stranger who scrambles onto the floor.",
+	DIALOGUEEVENTDUNGEONCOCCOON_4 = "You leave the hanging victim on its own and move on.",
+	DIALOGUEEVENTDUNGEONLIBRARY_1 = "The dungeon's twisting corridors reveal a half-hidden door. It creaks open to reveal a small, abandoned library room, its shelves sagging under dusty tomes and scattered scrolls. The shelves loom, packed with knowledge but fragile with age.",
 	DIALOGUEEVENTDUNGEONLIBRARY_OPTION1 = "Search Through Slowly (-10 stamina)",
 	DIALOGUEEVENTDUNGEONLIBRARY_OPTION2 = "[Wisdom Challenge] Select Character (-3 stamina)",
-	DIALOGUEEVENTDUNGEONLIBRARY_2 = """After slow searching through the shelves you manage to find a few useful manuscripts.""",
-	DIALOGUEEVENTDUNGEONLIBRARY_3 = """[name] scans through the room for obvious signs of the most curious and preserved pieces of literature. It only takes a moment for [him] to find something valuable.""",
-	DIALOGUEEVENTDUNGEONLIBRARY_4 = """You decide it's not worth the effort and leave the library room unexamined.""",
-	DIALOGUEEVENTDUNGEONCOFFIN_1 = """The dungeon's shadowed depths reveal an ancient coffin carved from dark stone, its lid etched with a human-shaped relief. The air grows heavy, thick with dust and a strange stillness, as if the coffin itself watches you.""",
+	DIALOGUEEVENTDUNGEONLIBRARY_2 = "After slow searching through the shelves you manage to find a few useful manuscripts.",
+	DIALOGUEEVENTDUNGEONLIBRARY_3 = "[name] scans through the room for obvious signs of the most curious and preserved pieces of literature. It only takes a moment for [him] to find something valuable.",
+	DIALOGUEEVENTDUNGEONLIBRARY_4 = "You decide it's not worth the effort and leave the library room unexamined.",
+	DIALOGUEEVENTDUNGEONCOFFIN_1 = "The dungeon's shadowed depths reveal an ancient coffin carved from dark stone, its lid etched with a human-shaped relief. The air grows heavy, thick with dust and a strange stillness, as if the coffin itself watches you.",
 	DIALOGUEEVENTDUNGEONCOFFIN_OPTION1 = "Open It (-5 stamina)",
 	DIALOGUEEVENTDUNGEONCOFFIN_OPTION2 = "Pay Respects and Leave",
-	DIALOGUEEVENTDUNGEONCOFFIN_2 = """You wedge your blade under the lid and heave it open, revealing a glinting treasure nestled within...""",
-	DIALOGUEEVENTDUNGEONCOFFIN_3 = """You kneel briefly, murmuring respect to the ancient dead, and turn away. You leave empty-handed but unburdened.""",
+	DIALOGUEEVENTDUNGEONCOFFIN_2 = "You wedge your blade under the lid and heave it open, revealing a glinting treasure nestled within...",
+	DIALOGUEEVENTDUNGEONCOFFIN_3 = "You kneel briefly, murmuring respect to the ancient dead, and turn away. You leave empty-handed but unburdened.",
 	AMELIA_INFINITE_1 = """The air in the dreamlike tower hums with faint magic, its cracked stone walls glowing softly under shifting, dream-woven light. A familiar figure perches on a floating velvet cushion, her catlike eyes sparkling with mischief. 
 
 - Hey, what's up with you, [name]? Looking a bit grim?""",
@@ -19230,14 +19234,14 @@ She twirls a lock of hair, her form blurring slightly at the edges, like a figur
 	AMELIA_INFINITE_2_3 = """- Oh, come on, we're not playing that game today. I heard Alise is off at the guild, but why chase her when I'm right here?
 
 She leans closer, her voice laced with playful mockery. Despite your best attempts, the conversation doesn't make sense.""",
-	AMELIA_INFINITE_2 = """- Anyway, I've got a question for you, [name]. Do you think dreams are real?""",
+	AMELIA_INFINITE_2 = "- Anyway, I've got a question for you, [name]. Do you think dreams are real?",
 	AMELIA_INFINITE_2_OPTION_1 = "Of course not, they're just our mind's chaotic hallucinations",
 	AMELIA_INFINITE_2_OPTION_2 = "They must be real, there's a reason we can see them.",
 	AMELIA_INFINITE_2_OPTION_3 = "No way I can tell.",
 	AMELIA_INFINITE_3_1 = """- Oh, really? So sure about that? Just because someone said so, you believe it? I didn't take you for the gullible type.
 
 Her laughter spills out, sharp and teasing, as she leans back, her form faintly wavering.""",
-	AMELIA_INFINITE_3_2 = """- What, you actually think that? You sound like a total lunatic!""",
+	AMELIA_INFINITE_3_2 = "- What, you actually think that? You sound like a total lunatic!",
 	AMELIA_INFINITE_3_3 = """- No opinion? Really? How do you even get by without a take on something so basic?
 
 She rolls her eyes, her body briefly flickering like a candle flame before snapping back into focus.""",
@@ -19246,8 +19250,8 @@ She rolls her eyes, her body briefly flickering like a candle flame before snapp
 - Want to hear something special? This meeting of ours… it's one of a kind, you know.""",
 	AMELIA_INFINITE_3_OPTION_1 = "*Lean for a kiss*",
 	AMELIA_INFINITE_3_OPTION_2 = "*Push away*",
-	AMELIA_INFINITE_4_1 = """You lean toward her, heart pounding, but just as your lips nearly meet, she dissolves into a wisp of smoke, leaving only her signature laugh echoing in the air.""",
-	AMELIA_INFINITE_4_2 = """You try to ease out of her grasp, but before you can fully pull away, she vanishes into thin air, her form unraveling like a fading dream, followed by that familiar, mocking laugh.""",
+	AMELIA_INFINITE_4_1 = "You lean toward her, heart pounding, but just as your lips nearly meet, she dissolves into a wisp of smoke, leaving only her signature laugh echoing in the air.",
+	AMELIA_INFINITE_4_2 = "You try to ease out of her grasp, but before you can fully pull away, she vanishes into thin air, her form unraveling like a fading dream, followed by that familiar, mocking laugh.",
 	AMELIA_INFINITE_4 = """- All of this? Not real, you dummy.
 
 Her taunting words fade into energetic giggles, swallowed by the tower's eerie silence.""",
@@ -19366,8 +19370,6 @@ The dwarf grunts, pointing to a shelf. She snatches a glowing bottle of liquid, 
 — New around here, eh? Word of advice, don't linger in this fume-pit too long. Vapors will turn your brain to mush, like this guy here.
 
 She leaves before you can answer but her uncharacteristic appearance makes you think you'll meet her in future.""",
-	
-	#2fix
 	ACT_4_CONTINUE = "You've finished current main story content. Please wait for the next update and consider supporting the game's development if you hadn't already.",
 	ACT_4_CAPITAL_SUMMARY = "You've been invited to the Grand Empire's Capital. This feels like the artifact chasing quest is coming to its conclusion.",
 	ACT_4_CAPITAL_NAME = "Each against all",
@@ -19378,8 +19380,6 @@ She leaves before you can answer but her uncharacteristic appearance makes you t
 	ACT_4_CAPITAL_ARENA = "Go to the Arena",
 	EMPIRE_CAPITAL1 = "Attend ceremony",
 	EMPIRE_CAPITAL2 = "Walk through the lower town",
-	
-	
 	EMP_CITY_INIT = """A new letter arrives today, its envelope adorned with intricate patterns that suggest a far more influential sender than you're accustomed to.
 
 “Dear [name], Mayor of Aliron,
@@ -19387,10 +19387,10 @@ I've heard much about you and your recent deeds, and I believe it's time we met 
 
 Your admirer,
 Rouge""",
-	EMP_CITY_ENTER_0 = """You stand before the towering gates of the Grand Imperial City. A long line of travelers, traders, and all manner of strangers waits to be inspected and admitted inside. After waiting just over an hour, you edge closer, only to be halted by the guards. Their gleaming armor, worth a fortune compared to Aliron's, marks them as elite.""",
-	EMP_CITY_ENTER_0_BAD1 = """— Hold it! You're not a citizen, not even of the Great Empire. The capital is closed to foreigners. Get lost.""",
-	EMP_CITY_ENTER_0_BAD2 = """— Hold it! You're not a citizen, not even of the Great Empire. Your papers say you're the Mayor of Aliron? Nobody cares about that backwater town. The capital is closed to foreigners. Get lost.""",
-	EMP_CITY_ENTER_0_GOOD = """— Hold it! You're not a citizen, not even of the Great Empire. Your papers say you're the Mayor of Aliron? Nobody cares about that backwater town. The capital is closed to foreigners...""",
+	EMP_CITY_ENTER_0 = "You stand before the towering gates of the Grand Imperial City. A long line of travelers, traders, and all manner of strangers waits to be inspected and admitted inside. After waiting just over an hour, you edge closer, only to be halted by the guards. Their gleaming armor, worth a fortune compared to Aliron's, marks them as elite.",
+	EMP_CITY_ENTER_0_BAD1 = "— Hold it! You're not a citizen, not even of the Great Empire. The capital is closed to foreigners. Get lost.",
+	EMP_CITY_ENTER_0_BAD2 = "— Hold it! You're not a citizen, not even of the Great Empire. Your papers say you're the Mayor of Aliron? Nobody cares about that backwater town. The capital is closed to foreigners. Get lost.",
+	EMP_CITY_ENTER_0_GOOD = "— Hold it! You're not a citizen, not even of the Great Empire. Your papers say you're the Mayor of Aliron? Nobody cares about that backwater town. The capital is closed to foreigners...",
 	EMP_CITY_ENTER_1 = """Before the guard can finish, a short man in rich but rumpled clothing appears, his looks and coarse manners highly contrast his status.
 
 — Hey, you! Royal order! Let this [man] pass. I've got the papers for [him]!
@@ -19411,7 +19411,7 @@ He hands you an official invitation. Inspecting it, you realize it's from the Em
 
 Grotus strides off without a goodbye, leaving you time to explore the city before the event.""",
 	EMP_CEREMONY_INIT = "Attend ceremony",
-	EMP_CEREMONY_1 = """You approach the royal palace, a majestic structure towering over the surrounding area, vast enough to encompass a small town. Numerous foreign guests stream inside alongside you. The guards show no interest beyond checking your invitation.""",
+	EMP_CEREMONY_1 = "You approach the royal palace, a majestic structure towering over the surrounding area, vast enough to encompass a small town. Numerous foreign guests stream inside alongside you. The guards show no interest beyond checking your invitation.",
 	EMP_CEREMONY_2 = """You spot Rouge and Grotus among the crowd, but as guards reposition you, you can't get closer. Rouge acknowledges your presence with a fleeting glance.
 
 A nearby guest notices your interest and makes an offhand remark that piques your curiosity.
@@ -19455,7 +19455,7 @@ The Emperor gestures, and you're led outside, left to your own devices...""",
 	EMP_CEREMONY_7 = """As you exit the main hall, a fox-like woman—Rouge, the one responsible for your presence here—suddenly approaches, catching you off guard.
 
 — Ah, is that disappointment on your face, or am I imagining things? Isn't our grand Emperor majestic enough to satisfy you? In the old days, you'd have been executed for showing so little enthusiasm. What a time to be alive!""",
-	EMP_CEREMONY_7_1 = """...But I see you've brought some unwanted company.""",
+	EMP_CEREMONY_7_1 = "...But I see you've brought some unwanted company.",
 	EMP_CEREMONY_7_OPTION_1 = "I should thank you for the invitation",
 	EMP_CEREMONY_7_OPTION_2 = "So you've finally shown up",
 	EMP_FOXES_1 = """Zephyra steps out from behind you, realizing she can no longer hide her presence. Kuro, on the other hand, remains nonchalant, though you sense her tensing up.
@@ -19467,11 +19467,11 @@ Kuro: — ...
 Zephyra: — Fun ceremony, right?""",
 	EMP_FOXES_2 = """Despite Zephyra's attempt at lighthearted conversation, Rouge shifts her focus to Kuro.
 
-Rouge: - Since you're both here, I have the perfect proposal for you.
+Rouge: — Since you're both here, I have the perfect proposal for you.
 
 Kuro: — Can't wait to hear it.
 
-Rouge: - It's simple, really. Get lost and stay away from [name]. You know what I'm capable of, and you don't want to find out firsthand.
+Rouge: — It's simple, really. Get lost and stay away from [name]. You know what I'm capable of, and you don't want to find out firsthand.
 
 Kuro: — ...
 
@@ -19492,16 +19492,15 @@ Kuro: — I guess you could call this irony.
 Rouge: — A charmless bookworm and a scrawny wallflower. I might almost pity you as I crush you both.
 
 Unlike Zephyra, Kuro stays silent, as if bracing for an actual attack. Fortunately, Rouge keeps her aggression verbal.""",
-	EMP_CEREMONY_8_1 = """— No, I should thank you for coming. After hearing about your deeds, I had to meet you sooner or later.""",
-	EMP_CEREMONY_8_2 = """— Fufu, were you dying to see me? Sorry, but men have to earn that privilege.""",
-	EMP_CEREMONY_8 = """— But it's been a long day, and you look tired. Why don't we go somewhere more exciting?""",
+	EMP_CEREMONY_8_1 = "— No, I should thank you for coming. After hearing about your deeds, I had to meet you sooner or later.",
+	EMP_CEREMONY_8_2 = "— Fufu, were you dying to see me? Sorry, but men have to earn that privilege.",
+	EMP_CEREMONY_8 = "— But it's been a long day, and you look tired. Why don't we go somewhere more exciting?",
 	EMP_CEREMONY_9 = """— I want to show you our majestic capital. Meet me at the grand arena—the best place for it. Keep me entertained with your company, and I'll share something about what you're seeking. Sounds fair?
 
 Rouge's smile is almost warm, but before you can fully take it in, she turns and walks away.
 
 — Tomorrow, I'll be waiting on my balcony. The guards will guide you.""",
-	
-	EMP_ARENA_1 = """You approach the grand, imposing arena, a towering structure hosting all manner of battles. At the main gate, an administrator recognizes you and leads you inside. Instead of the main hall, you're guided through a maze of storerooms.""",
+	EMP_ARENA_1 = "You approach the grand, imposing arena, a towering structure hosting all manner of battles. At the main gate, an administrator recognizes you and leads you inside. Instead of the main hall, you're guided through a maze of storerooms.",
 	EMP_ARENA_2 = """You arrive at a smaller, back arena. Without explanation, smirking guards nudge you onto a compact ring enclosed by iron bars. Your attempts to question them are met with assurances that they're following Rouge's orders.
 
 A few dozen spectators watch with mild excitement. Across the ring, caged beasts stir, and you realize you're expected to fight.""",
@@ -19523,7 +19522,7 @@ Melchor: — Ensure this never happens again! That wretched woman will bring us 
 
 — Forgive my little trick, but a man must prove his worth in combat, no? Given your past deeds, this should be nothing to you.
 Before you can respond, the cages open, releasing the beasts. You brace for battle under Rouge's eager gaze.""",
-	EMP_ARENA_6 = """— As expected of my chosen one. But we're not done yet. Arena tradition demands a grand closing fight, and we've prepared something special.""",
+	EMP_ARENA_6 = "— As expected of my chosen one. But we're not done yet. Arena tradition demands a grand closing fight, and we've prepared something special.",
 	EMP_ARENA_7 = """You recognize the man thrown into the ring—Greg, the instigator of Aliron's civil war. He looks as shocked as you.
 
 Greg: — What's the meaning of this, you vixen? You promised me the Emperor's support!
@@ -19542,20 +19541,19 @@ Rouge: — Quite a performance, [name]. Now I can properly welcome you as an hon
 	EMP_ARENA_9_OPTION_1 = "I must thank you for letting me finally get to him",
 	EMP_ARENA_9_OPTION_2 = "I don't like being used",
 	EMP_ARENA_9_OPTION_3 = "You've made me kill him",
-	EMP_ARENA_10_1 = """— No, I should thank you for such exquisite entertainment. Not everyone appreciates this sport, but I'm a big admirer.""",
-	EMP_ARENA_10_2 = """— You think I couldn't handle him myself? Please. You weren't used—you simply proved you're worth my time.""",
-	EMP_ARENA_10_3 = """— Oh? I didn't take you for the soft type. Consider it a favor to me. He was a tiresome man, demanding far more than he deserved.""",
-	EMP_ARENA_10_4 = """— What? No, that fool came to the Empire seeking aid. I figured I'd at least get some entertainment out of him. I heard he caused you trouble, but he clearly didn't have what it takes.""",
-	EMP_ARENA_10_5 = """— What's this nonsense? I'm on my own side. You don't understand how things work here, do you? I may share goals with Mhyrana, but I'm far above them. And before you beg to join me, you'll need to do more than defeat weaklings.""",
+	EMP_ARENA_10_1 = "— No, I should thank you for such exquisite entertainment. Not everyone appreciates this sport, but I'm a big admirer.",
+	EMP_ARENA_10_2 = "— You think I couldn't handle him myself? Please. You weren't used—you simply proved you're worth my time.",
+	EMP_ARENA_10_3 = "— Oh? I didn't take you for the soft type. Consider it a favor to me. He was a tiresome man, demanding far more than he deserved.",
+	EMP_ARENA_10_4 = "— What? No, that fool came to the Empire seeking aid. I figured I'd at least get some entertainment out of him. I heard he caused you trouble, but he clearly didn't have what it takes.",
+	EMP_ARENA_10_5 = "— What's this nonsense? I'm on my own side. You don't understand how things work here, do you? I may share goals with Mhyrana, but I'm far above them. And before you beg to join me, you'll need to do more than defeat weaklings.",
 	EMP_ARENA_10_OPTION_1 = "So you were behind Greg the whole time?",
 	EMP_ARENA_10_OPTION_2 = "Whose side are you on?",
 	EMP_ARENA_10_OPTION_3 = "I'm actually need to find the artifact here...",
 	EMP_ARENA_11 = """— Likewise, but I have no leads to share yet. Shall we make it a contest? First to find it rules the Empire! Ha, just kidding. I look forward to your next performance, [name].
 
 With that, Rouge strides out of the arena, her gawky servant trailing behind.""",
-	
 	EMP_ERDYNA_INTRO = "",
-	EMP_ERDYNA_INTRO_1 = """As you navigate the shadier districts of the capital, you feel eyes watching you from the shadows. You conceal your awareness, but after another turn, a group of rough-looking figures blocks your path. A glance back reveals more thugs sealing off your retreat.""",
+	EMP_ERDYNA_INTRO_1 = "As you navigate the shadier districts of the capital, you feel eyes watching you from the shadows. You conceal your awareness, but after another turn, a group of rough-looking figures blocks your path. A glance back reveals more thugs sealing off your retreat.",
 	EMP_ERDYNA_INTRO_2 = """A woman steps forward from the group, her lizard-like tail, scaled skin, and horned head marking her as their leader. She fixes you with a predatory smile.
 
 Woman: — Well, well, a country [boy] wandering where [he] doesn't belong. Boys, help [him] part with his valuables. Don't be gentle.
@@ -19596,7 +19594,7 @@ You note her lizard-like traits, the subtle pride in her voice hinting at a life
 — Good. You're not just a skilled fighter but know when to stop.""",
 	EMP_ERDYNA_INTRO_5_OPTION_1 = "I gonna do it anyway",
 	EMP_ERDYNA_INTRO_5_OPTION_0 = "Fine, so why are you still here",
-	EMP_ERDYNA_INTRO_7 = """— Fine, let's teach you a lesson, country [boy].""",
+	EMP_ERDYNA_INTRO_7 = "— Fine, let's teach you a lesson, country [boy].",
 	EMP_ERDYNA_INTRO_8 = """You seize her wrist, her scales cool and rough under your grip, and lead her toward a nearby guard patrol, their lanterns bobbing in the slum's murky haze. The guards, clad in worn imperial armor, spot Erdyna and exchange weary glances, their faces etched with exasperation.
 
 Guard: — Damn, this mutt causing trouble again? I thought last time was the end of it!
@@ -19635,21 +19633,21 @@ Erdyna: — You really are an outsider, clueless about the Grand Empire. They wo
 	KURO3_DIALOGUE_INIT = "So, what's up with the artifacts we're dealing with?",
 	KURO3_DIALOGUE_1 = """Kuro takes a long look at your face, trying to figure out if you're joking.
 
-- You really don't know anything, yet you decided to drag yourself into this whole mess? It's hard to believe how careless you are. But I guess that's to be expected from you.
+— You really don't know anything, yet you decided to drag yourself into this whole mess? It's hard to believe how careless you are. But I guess that's to be expected from you.
 
-- Say, what do you know about the gods?""",
+— Say, what do you know about the gods?""",
 	KURO3_DIALOGUE_1_OPTION_1 = "They're like watching over us, rewarding us for good deeds?",
 	KURO3_DIALOGUE_1_OPTION_2 = "They must walk among us, just like you and me.",
 	KURO3_DIALOGUE_1_OPTION_3 = "I haven't thought much about them.",
-	KURO3_DIALOGUE_2_1 = """- *Sigh* That's the last thing that matters in your situation.""",
-	KURO3_DIALOGUE_2_2 = """- Yeah, I can see the pattern. Well, nonetheless.""",
-	KURO3_DIALOGUE_2 = """- The mortal world we see and live in is perishable. Everything grows old, gets sick and damaged, and is eventually destroyed, losing all form. The only things that transcend it are concepts—the idea of how you can be remembered even after death in people's minds. The gods have strong connections to these very concepts, which is why their powers can overcome physical boundaries with relative ease.""",
+	KURO3_DIALOGUE_2_1 = "— *Sigh* That's the last thing that matters in your situation.",
+	KURO3_DIALOGUE_2_2 = "— Yeah, I can see the pattern. Well, nonetheless.",
+	KURO3_DIALOGUE_2 = "— The mortal world we see and live in is perishable. Everything grows old, gets sick and damaged, and is eventually destroyed, losing all form. The only things that transcend it are concepts—the idea of how you can be remembered even after death in people's minds. The gods have strong connections to these very concepts, which is why their powers can overcome physical boundaries with relative ease.",
 	KURO3_DIALOGUE_2_OPTION_1 = "How does this connect to the whole artifact collection ordeal?",
 	KURO3_DIALOGUE_2_OPTION_2 = "I don't really care about all this smart-ass crap.",
-	KURO3_DIALOGUE_3_1 = """- Causal adequacy dictates that everything must have a beginning. While some gods may have acquired their status from preceding god-entities and others have ascended to godhood from mortal beings, there must still have been an origin to the world itself. The artifacts the cult, and you, are after are seemingly tied to the very first god, one whose name has even been lost in our ever-degrading world.""",
-	KURO3_DIALOGUE_3_2 = """- He had many names, but it matters little now. Either way, your real problem is the cult — and even more so, the oldest sister, Rouge.""",
-	KURO3_DIALOGUE_3_3 = """- There's not much to tell; she's exactly what she looks like. A tyrant who only respects power and at times is little more than a wild beast. Her raw strength is unparalleled. I'd need at least five or six copies of myself to stand a real chance against her, so it's best to avoid getting into fight with her if possible.""",
-	KURO3_DIALOGUE_3_4 = """- Obviously, she and I are on your side, but since she's a dunce who only acts on instinct... I hate it, but her ability to be stupid is incredible. No, I guess that comes off wrong. Thing is that her instincts shouldn't be taken lightly and she is more useful than not.""",
+	KURO3_DIALOGUE_3_1 = "— Causal adequacy dictates that everything must have a beginning. While some gods may have acquired their status from preceding god-entities and others have ascended to godhood from mortal beings, there must still have been an origin to the world itself. The artifacts the cult, and you, are after are seemingly tied to the very first god, one whose name has even been lost in our ever-degrading world.",
+	KURO3_DIALOGUE_3_2 = "— He had many names, but it matters little now. Either way, your real problem is the cult — and even more so, the oldest sister, Rouge.",
+	KURO3_DIALOGUE_3_3 = "— There's not much to tell; she's exactly what she looks like. A tyrant who only respects power and at times is little more than a wild beast. Her raw strength is unparalleled. I'd need at least five or six copies of myself to stand a real chance against her, so it's best to avoid getting into fight with her if possible.",
+	KURO3_DIALOGUE_3_4 = "— Obviously, she and I are on your side, but since she's a dunce who only acts on instinct... I hate it, but her ability to be stupid is incredible. No, I guess that comes off wrong. Thing is that her instincts shouldn't be taken lightly and she is more useful than not.",
 	KURO3_DIALOGUE_3_OPTION_1 = "So, you know what that god was called?",
 	KURO3_DIALOGUE_3_OPTION_2 = "Can you tell me about Rouge?",
 	KURO3_DIALOGUE_3_OPTION_3 = "What about Zephyra?",
@@ -19658,7 +19656,7 @@ Erdyna: — You really are an outsider, clueless about the Grand Empire. They wo
 	KURO3_DIALOGUE_4_1 = """Kuro flashes a smug smile before answering.
 
 - What makes you think I know that? There must be something special about you, isn't there? Shouldn't you know what makes you special? *Chuckle*""",
-	KURO3_DIALOGUE_4_2 = """- That's not true. I haven't told a single lie here yet..""",
+	KURO3_DIALOGUE_4_2 = "- That's not true. I haven't told a single lie here yet..",
 	KURO3_DIALOGUE_4_OPTION_1 = "You're obviously lying. Why don't you just say it?",
 	KURO3_DIALOGUE_4_OPTION_2 = "Withholding that information is what lets you enjoy having some control over me?",
 	KURO3_DIALOGUE_4_OPTION_3 = "Forget it...",
@@ -19672,27 +19670,27 @@ Before you can respond, Kuro retreats in her usual style, fading into the shadow
 Despite your rude response, Kuro takes no offense. She quickly retreats in her usual style, fading into the shadows.""",
 	KURO3_INIT_1_1 = """Today Kuro has approached you.
 
-- It's time we take care of Nixx. I'll need your help with this.
+— It's time we take care of Nixx. I'll need your help with this.
 
 Her tone is far more demanding than pleading.
 
-- Thanks to the book from the elf woman, I've finally found a way to deal with her. But you'll have to help me.""",
-	KURO3_INIT_1_2 = """- Yes. Haven't I just said so? We don't have much of an option here. Unlike me, she won't abandon the cult's alliance and side with you. It was obvious the moment I joined her. Even after fooling her last time, it's way too dangerous to keep her unchecked. Besides, I plan to make use of her powers for us.""",
+— Thanks to the book from the elf woman, I've finally found a way to deal with her. But you'll have to help me.""",
+	KURO3_INIT_1_2 = "— Yes. Haven't I just said so? We don't have much of an option here. Unlike me, she won't abandon the cult's alliance and side with you. It was obvious the moment I joined her. Even after fooling her last time, it's way too dangerous to keep her unchecked. Besides, I plan to make use of her powers for us.",
 	KURO3_INIT_1_3 = """Kuro lets out a demonstrative sigh slightly rolling her eyes. 
 
-- Okay, look. I'm fundamentally incapable of betraying you, just like Zephyra. It's time for you to accept that and move on with this mission.""",
+— Okay, look. I'm fundamentally incapable of betraying you, just like Zephyra. It's time for you to accept that and move on with this mission.""",
 	KURO3_INIT_1_OPTION_1 = "Are you planning to betray her?",
 	KURO3_INIT_1_OPTION_2 = "Can I really trust you?",
 	KURO3_INIT_1_OPTION_3 = "Let's say you've persuaded me. What do we do?",
-	KURO3_INIT_2 = """- Great, we shouldn't waste time. I've learned the incantation from Myr's book, but before we confront her, you'll need to prepare a magic catalyst. Challenging a goddess, especially an ancient one, will require more than a few spells.
+	KURO3_INIT_2 = """— Great, we shouldn't waste time. I've learned the incantation from Myr's book, but before we confront her, you'll need to prepare a magic catalyst. Challenging a goddess, especially an ancient one, will require more than a few spells.
 
 Kuro pulls an ancient-looking scroll from behind her back and hands it to you with a stern look. As you scan it, you spot many notes in Kuro's handwriting, explaining the materials and processes for crafting it.
 
-- I want you to make this. It's the Vesperine Cage, capable of containing her powers. Once it's done, we'll go after her.""",
+— I want you to make this. It's the Vesperine Cage, capable of containing her powers. Once it's done, we'll go after her.""",
 	KURO3_INIT_3_OPTION = "*Show Vesperine Cage to Kuro*",
 	KURO3_INIT_3 = """Kuro fiddles with the crafted device in her hands for a moment before tucking it behind her back.
 
-- Pretty good. Consider that high praise. I don't give it often. It's time for our first move. We head to Crystaldepths, it was her last residing location that I knew of.""",
+— Pretty good. Consider that high praise. I don't give it often. It's time for our first move. We head to Crystaldepths, it was her last residing location that I knew of.""",
 	KURO3_DEPTHS_OPTION = "Search for Nixx follower",
 	KURO3_DEPTHS_1 = """You follow Kuro as she confidently navigates deeper into the settlement, down one of the pathways, until she reaches a small house.
 
@@ -19701,186 +19699,184 @@ She barges in leisurely, revealing the living conditions of a missing family, co
 
 A short yelp echoes as Kuro drags a clothed figure of a man into the light. By his attire, he seems to be the house owner.
 
-Kuro: - Long time no see, Cerab. Nixx has moved out of here, hasn't she? Looks like you're still her main guy around here.
+Kuro: — Long time no see, Cerab. Nixx has moved out of here, hasn't she? Looks like you're still her main guy around here.
 
-Cerab: - Y-you... So it is true you've turned on her!""",
+Cerab: — Y-you... So it is true you've turned on her!""",
 	KURO3_DEPTHS_3 = """Black tendrils controlled by Kuro keep the man tightly restrained, allowing him only to speak.
 
-Kuro: - Tell me where you've taken her.
+Kuro: — Tell me where you've taken her.
 
 Cerab defiantly turns his head away, signaling his refusal to speak. Kuro, displeased, glares at him and unleashes her powers.
 
-Cerab: - Ghhh... Argh!.. This test of my devotion is nothing!""",
-	KURO3_DEPTHS_4 = """Kuro: - So you want to do it the hard way? No pity for your family? They might lose their husband and father.
+Cerab: — Ghhh... Argh!.. This test of my devotion is nothing!""",
+	KURO3_DEPTHS_4 = """Kuro: — So you want to do it the hard way? No pity for your family? They might lose their husband and father.
 
 Kuro's voice sounds deadly serious. She clearly has no remorse about torturing the man until she gets what she wants.
 
-Cerab: - Hah, you should know our families are little more than a cover. Do your worst, you apostate!
+Cerab: — Hah, you should know our families are little more than a cover. Do your worst, you apostate!
 
-Kuro: - Stubborn man. I'm no torture expert, but since you've left me no choice...""",
+Kuro: — Stubborn man. I'm no torture expert, but since you've left me no choice...""",
 	KURO3_DEPTHS_4_OPTION_1 = "Don't do it; we'd better find someone else around here to get this information from. (1000 gold)",
 	KURO3_DEPTHS_4_OPTION_2 = "Let me get it straight from his mind instead.",
 	KURO3_DEPTHS_4_OPTION_3 = "*Stay quiet*",
-	KURO3_DEPTHS_5 = """You insist on sparing the man from Kuro's gruesome approach and head back into the settlement. The hefty sum of coins you've prepared as a reward quickly loosens a few tongues, revealing the details of Nixx's true altar transportation, which was assisted by a couple of locals. Connecting the dots, you and Kuro realize it was taken to ancient underground ruins not far from this region.""",
+	KURO3_DEPTHS_5 = "You insist on sparing the man from Kuro's gruesome approach and head back into the settlement. The hefty sum of coins you've prepared as a reward quickly loosens a few tongues, revealing the details of Nixx's true altar transportation, which was assisted by a couple of locals. Connecting the dots, you and Kuro realize it was taken to ancient underground ruins not far from this region.",
 	KURO3_DEPTHS_6 = """Kuro steps aside as you begin chanting your mind-reading spell. Unsurprisingly, Cerab resists as best he can, but your expertise allows you to breach his mind soon enough, forcing him to reveal the location of Nixx's true altar: ancient underground ruins not far from this region. Kuro seems satisfied with the answer; she nods and leads you away.
 
-Kuro: - I'm slightly ashamed that it didn't occur to me. I'll have to admit that was rather cunning of you.""",
+Kuro: — I'm slightly ashamed that it didn't occur to me. I'll have to admit that was rather cunning of you.""",
 	KURO3_DEPTHS_7 = """You and Kuro stay quiet as the torture continues. The black tendrils slowly pierce the man's flesh, tearing through skin and peeling it off. His cries of pain, though loud, are conveniently muffled underground. His breathing turns ragged from the pain, but Kuro ensures the damage won't kill him outright.
 
-Cerab: - F...fuck you... just... just kill me...
+Cerab: — F...fuck you... just... just kill me...
 
 With a crunchy sound, a nail is torn off, followed by an even louder cry.
 
-Kuro: - Don't feel too bad for him; he's killed and sacrificed more than a few victims to her. I wonder if you'd beg for mercy if I didn't know that.""",
+Kuro: — Don't feel too bad for him; he's killed and sacrificed more than a few victims to her. I wonder if you'd beg for mercy if I didn't know that.""",
 	KURO3_DEPTHS_8 = """As time passes, you notice a few things. The torture is scarily pragmatic: not only is life-threatening damage kept to a minimum, but Kuro takes irregular breaks, making each resumption more unpredictable and unnerving. Minutes feel like hours, keeping you constantly aware of possible interruptions from outsiders, but none come.
 
-Kuro: - Shall we try the teeth or an eye next?
+Kuro: — Shall we try the teeth or an eye next?
 
 Kuro's voice is empty, gnawing on the man's spirit no less than the lasting pain.""",
 	KURO3_DEPTHS_9 = """Finally, the cultist breaks down entirely.
 
-Cerab: - N-no... Stop... I will tell you... Just, please... Stop...
+Cerab: — N-no... Stop... I will tell you... Just, please... Stop...
 
-Kuro: - Just don't think you can lie to me.
+Kuro: — Just don't think you can lie to me.
 
 As the man collapses to the ground, released from his torture, he slowly explains how Nixx's true altar was moved to ancient underground ruins not far from here. Kuro seems satisfied; she nods and leads you away, leaving her victim half-dead.""",
-	KURO3_DEPTHS_10_1 = """Kuro: - Looks like she suspected something might happen after last time. Those ruins won't be easy to explore.""",
-	KURO3_DEPTHS_10_2 = """Kuro: - He's no danger to us. Once we deal with Nixx, the other followers will blame him for betraying her and make him suffer even more.""",
-	KURO3_DEPTHS_10_3 = """Kuro: - Maybe. But this had to be done. Nixx is too dangerous to leave as the cult's ally. You already know what I could do with her powers, don't you?""",
-	KURO3_DEPTHS_10_4 = """Kuro: - Nixx was once a deity of the night—that is, until all light died out, and she became what she is now. Darkness holds many secrets, and that's partly why I sided with her, though her powers are formidable too. Everything has a price; someone like Zephyra could never become her champion.""",
+	KURO3_DEPTHS_10_1 = "Kuro: — Looks like she suspected something might happen after last time. Those ruins won't be easy to explore.",
+	KURO3_DEPTHS_10_2 = "Kuro: — He's no danger to us. Once we deal with Nixx, the other followers will blame him for betraying her and make him suffer even more.",
+	KURO3_DEPTHS_10_3 = "Kuro: — Maybe. But this had to be done. Nixx is too dangerous to leave as the cult's ally. You already know what I could do with her powers, don't you?",
+	KURO3_DEPTHS_10_4 = "Kuro: — Nixx was once a deity of the night—that is, until all light died out, and she became what she is now. Darkness holds many secrets, and that's partly why I sided with her, though her powers are formidable too. Everything has a price; someone like Zephyra could never become her champion.",
 	KURO3_DEPTHS_10_OPTION_1 = "Shouldn't we finish off that man?",
 	KURO3_DEPTHS_10_OPTION_2 = "You've gone way too far with that.",
 	KURO3_DEPTHS_10_OPTION_3 = "Can you tell me more about her?",
 	KURO3_DEPTHS_10_OPTION_4 = "Alright, let's go then.",
-	KURO3_DEPTHS_11 = """Kuro: - Yes. Now the real hard part begins. This could get really dangerous, so let's do our best.""",
+	KURO3_DEPTHS_11 = "Kuro: — Yes. Now the real hard part begins. This could get really dangerous, so let's do our best.",
 	KURO3_DUNGEON_1 = """As you navigate the dark, moist halls, Kuro suddenly stops you. Giving her a puzzled look, you see her investigating one of the brick walls.
 
-- They tried to hide it well.
+— They tried to hide it well.
 
 She begrudgingly inserts her hand into a crack, and with a clicking sound, part of the wall slides aside.
 
-- Come on. I can feel she's here.""",
+— Come on. I can feel she's here.""",
 	KURO3_DUNGEON_2 = """Entering the secret room, you closely follow Kuro's steps as she ensures you don't alert anything. Finally, you come across an intricate wall framed with stone pillars and an effigy made of some dark material.
 
-Kuro: - She seems to be in slumber now. Let's not waste time.""",
+Kuro: — She seems to be in slumber now. Let's not waste time.""",
 	KURO3_DUNGEON_3 = """She quickly pulls out the Vesperine Cage, activates it, and points it at the wall. Its ethereal light illuminates the room, but the dark fog around the effigy remains motionless.
 
-Kuro: - Stay alert. This should seal her powers in moments.""",
+Kuro: — Stay alert. This should seal her powers in moments.""",
 	KURO3_DUNGEON_4 = """In the Cage's light, the floating black mass becomes more solid and visible. Despite both of you trying to stay calm, it lasts only a moment before it begins squirming chaotically. A distant, grave voice echoes in your head.
 
-Nixx: - Finally shown yourself? Think you can stop me with this little thing?
+Nixx: — Finally shown yourself? Think you can stop me with this little thing?
 
-Kuro: - Damn it, you should've stayed down!
+Kuro: — Damn it, you should've stayed down!
 
 Kuro is clearly frustrated by her plan going awry but remains determined.""",
 	KURO3_DUNGEON_5 = """Despite Nixx's energy being mostly contained by the Cage's focused beam, she finds an opening and launches a deadly attack in your direction.
 
-Nixx: - You've made a mistake not coming alone.
+Nixx: — You've made a mistake not coming alone.
 
-Kuro: - Grh... Curses!
+Kuro: — Grh... Curses!
 
 Kuro's concentration breaks as she moves to protect you, which is just enough for Nixx to follow up with an overwhelming energy mass that swallows you both.""",
 	KURO3_DUNGEON_6 = """You find yourself in a wall-less space where only dim darkness surrounds you. Next to you, Kuro rubs her forehead in defeat. As you try to get information from her, the awfulness of your situation dawns on you.
 
-Kuro: - It's over, we've lost. She's trapped us in her pocket dimension. There's no way out on our own... In time, it'll sap our energy, and we'll die here.
+Kuro: — It's over, we've lost. She's trapped us in her pocket dimension. There's no way out on our own... In time, it'll sap our energy, and we'll die here.
 
-Kuro: - Damn it, what an idiotic way to lose... In this place, I can't use any of her powers either.""",
+Kuro: — Damn it, what an idiotic way to lose... In this place, I can't use any of her powers either.""",
 	KURO3_DUNGEON_6_OPTION_1 = "Don't give up just yet.",
 	KURO3_DUNGEON_6_OPTION_2 = "There must be something we can do.",
 	KURO3_DUNGEON_6_OPTION_3 = "It's all your fault.",
 	KURO3_DUNGEON_7 = """Kuro barely reacts to your words. She seems far more susceptible to the energy drain here, acting heavily drunk—her speech sloppy, dampened by the darkness.
 
-Kuro: - I'm sorry, [name]. I should've done better... It's really hard to... concentrate...""",
-	KURO3_DUNGEON_8 = """Kuro: - It's... it's been lonely by myself... for all... this time... Zephyra and Rouge... they don't remember a thing... after all...
+Kuro: — I'm sorry, [name]. I should've done better... It's really hard to... concentrate...""",
+	KURO3_DUNGEON_8 = """Kuro: — It's... it's been lonely by myself... for all... this time... Zephyra and Rouge... they don't remember a thing... after all...
 
 Time drifts slowly without any indication as you start feeling dizzy yourself.""",
 	KURO3_DUNGEON_9_1 = """You feel a familiar presence, something otherworldly, yet not alien to this realm. A soft voice speaks to you.
 
-Voice: - You disappoint me to no end... You can't die here, can you? There's not much I can do, but with her on your side... This should be just enough to break free.""",
+Voice: — You disappoint me to no end... You can't die here, can you? There's not much I can do, but with her on your side... This should be just enough to break free.""",
 	KURO3_DUNGEON_9_2 = """You feel an alien presence appear in the darkness, something otherworldly, yet not of this realm. A soft voice speaks to you.
 
-Voice: - This is not the time or place; you can't die here. There's not much I can do, but with her on your side... This should be just enough to break free.""",
+Voice: — This is not the time or place; you can't die here. There's not much I can do, but with her on your side... This should be just enough to break free.""",
 	KURO3_DUNGEON_9 = """A foreign command enters your mind, guiding your actions. You stand, approaching Kuro, who barely moves. Your hand grabs hers, pulling her up effortlessly. Despite her pallor, her hand is warm, instinctively grasping yours in return.
 
 An unknown ancient language fills your mind, and you begin chanting-more a hymn than a spell. You've never heard it before and can't understand it. A dim light surrounds you both, draining the darkness from the surroundings. Kuro's groans grow louder as she clings to you harder as the light restores her and your strength which has just been sapped.""",
 	KURO3_DUNGEON_10 = """An explosion erupts as you reach the peak; your mind is instantly freed from the external control. You and Kuro find yourselves back in the room, Nixx's altar before you. Kuro regains her senses; Nixx is clearly confused by your escape, her powers wavering from the damage you've inflicted.
 
-Nixx: - How did you...?!
+Nixx: — How did you...?!
 
-Kuro: - No time for talk, [name], we need to defeat her now!""",
+Kuro: — No time for talk, [name], we need to defeat her now!""",
 	KURO3_WIN = """The damage you've inflicted sends Nixx into recuperation, allowing Kuro to once again activate the entrapping device.
 
-Nixx: - You... damned vixen... If you plan on taking my powers... You'll never find rest for this...
+Nixx: — You... damned vixen... If you plan on taking my powers... You'll never find rest for this...
 
-Kuro: - That's so? You should know better than me there's no rest for the wicked. 
+Kuro: — That's so? You should know better than me there's no rest for the wicked. 
 
 The Cage shimmers with bright light, fully consuming what's left of Nixx's essence. Kuro falls to her knees, having expended all her remaining energy.""",
 	KURO3_WIN_OPTION_1 = "*Help Kuro*",
 	KURO3_WIN_OPTION_2 = "*Seize the Cage for yourself*",
-	
 	KURO3_GOOD_1 = """You grab Kuro, helping her stand after the exhausting fight. Her skin feels hot, her face covered in sweat, but her emotions are those of triumphant victory and admiration for you.
 
-Kuro: - Th-thank you, [name]. Looks like I'm shaking a bit. We did something that only happens in legends.
+Kuro: — Th-thank you, [name]. Looks like I'm shaking a bit. We did something that only happens in legends.
 
 She looks down at her hands, firmly holding the now-closed Cage.
 
-Kuro: - I'll absorb her essence now. With this, her powers, and most importantly, her knowledge, will become part of me. Don't worry, I can handle it.""",
+Kuro: — I'll absorb her essence now. With this, her powers, and most importantly, her knowledge, will become part of me. Don't worry, I can handle it.""",
 	KURO3_GOOD_2 = """Without further delay, Kuro clutches the device tightly. You feel the powers inside surging, visibly engulfing her body. Her groans, followed by heavy panting, fill the small room as you watch in awe. After a moment, the device shatters as Kuro completes her ordeal.
 
 You steady her for a minute as her eyes remain unfocused and her body processes the change. You sense the transformation in her being. Something about her appearance, energy, and aura has shifted. Slightly, but noticeably to you. A supernatural feel is now etched into her presence.
 
-Kuro: - Ah... This will take some time to get used to... My thoughts are all mixed... but... there's so much new information...""",
+Kuro: — Ah... This will take some time to get used to... My thoughts are all mixed... but... there's so much new information...""",
 	KURO3_GOOD_2_OPTION_1 = "So, what's that information you've been aiming for?",
 	KURO3_GOOD_2_OPTION_2 = "Got any clues to great treasure troves there?",
 	KURO3_GOOD_2_OPTION_3 = "I'm glad you're safe.",
-	KURO3_GOOD_3_1 = """Kuro: - It's... I can't say for certain yet, but I hope to learn more about everything I can.""",
-	KURO3_GOOD_3_2 = """Kuro: - Heh, very funny. You really think a foul ancient being like her would care about some gold coins?""",
-	KURO3_GOOD_3_3 = """Kuro: - Please, [name], you're making me blush, and it's really not suitable for someone who's just done what I did. Let's save it for later.""",
-	KURO3_GOOD_3 = """Kuro: - One thing's for sure: Nixx is no more, and it will both help us against the cult and stop me from worrying.
+	KURO3_GOOD_3_1 = "Kuro: — It's... I can't say for certain yet, but I hope to learn more about everything I can.",
+	KURO3_GOOD_3_2 = "Kuro: — Heh, very funny. You really think a foul ancient being like her would care about some gold coins?",
+	KURO3_GOOD_3_3 = "Kuro: — Please, [name], you're making me blush, and it's really not suitable for someone who's just done what I did. Let's save it for later.",
+	KURO3_GOOD_3 = """Kuro: — One thing's for sure: Nixx is no more, and it will both help us against the cult and stop me from worrying.
 
 Kuro finally steadies herself, releasing your hand, and you leave the place.""",
 	KURO3_BAD_1 = """You snatch the Cage from Kuro's powerless hands with ease, feeling the power within. As you glance at the puzzled Kuro, you focus on the ancient sealed powers, feeling them surge from the device into you. Kuro raises her head, speechless in disbelief, too weak to fight or perhaps too confused to react.
 
 You feel the raw dark powers now yours as they merge with your body, leaving the Cage empty and useless.""",
-	KURO3_BAD_2 = """Kuro: - Hah... hahaha...
+	KURO3_BAD_2 = """Kuro: — Hah... hahaha...
 
 Her laugh sounds dry and empty. Minutes pass as she stares at the ground in defeat.
 
-Kuro: - That's really stupid, isn't it? After all that work, you just took it for yourself... No, I'm... No. I'll accept my utter defeat. What do you plan to do with me now that my champion powers are gone?""",
+Kuro: — That's really stupid, isn't it? After all that work, you just took it for yourself... No, I'm... No. I'll accept my utter defeat. What do you plan to do with me now that my champion powers are gone?""",
 	KURO3_BAD_2_OPTION_1 = "You'll stay by my side.",
 	KURO3_BAD_2_OPTION_2 = "You'll stay by my side... as a slave.",
 	KURO3_BAD_2_OPTION_3 = "I have no use for you anymore.",
-	KURO3_BAD_3 = """Kuro: - ...Got to admit, that's some scheme you pulled on me. I've stated I'm on your side, and that can't be changed... I'll do what I can to help with whatever ominous plan you have.
+	KURO3_BAD_3 = """Kuro: — ...Got to admit, that's some scheme you pulled on me. I've stated I'm on your side, and that can't be changed... I'll do what I can to help with whatever ominous plan you have.
 
 Helping Kuro up, you prepare to leave.""",
-	KURO3_BAD_4 = """Kuro: - ...I guess I won't be able to escape any collar now. Is this how you plan to make me atone?
+	KURO3_BAD_4 = """Kuro: — ...I guess I won't be able to escape any collar now. Is this how you plan to make me atone?
 
 Kuro's face shows vulnerability and a hint of fear. Something that she rarely displays.
 
-Kuro: - I hope you aren't devoid of any mercy for me.""",
+Kuro: — I hope you aren't devoid of any mercy for me.""",
 	KURO3_BAD_5 = """For once, Kuro's face shows clear pain, but it quickly returns to normal.
 
-Kuro: - I understand. So that's what it's like to be on the receiving end of evil.
+Kuro: — I understand. So that's what it's like to be on the receiving end of evil.
 
 You leave Kuro seemingly stuck in place as you contemplate your newly acquired powers.""",
 	KURO3_DIALOGUE2_INIT = "About that time we were trapped...",
 	KURO3_DIALOGUE2_1 = """You tell Kuro about the time you were trapped by Nixx and the mysterious voice that freed you. To your surprise, she responds almost disinterestedly.
 
-- That's so? We got lucky, I suppose. I really should've known better than putting us in such danger.""",
+— That's so? We got lucky, I suppose. I really should've known better than putting us in such danger.""",
 	KURO3_DIALOGUE2_1_OPTION_1 = "Do you know whose voice that was?",
 	KURO3_DIALOGUE2_1_OPTION_2 = "Will I lose control over myself again?",
 	KURO3_DIALOGUE2_2_1 = """Kuro pauses, searching for the right words.
 
-- It was probably an ancient, forgotten deity, or rather, what's left of one. Good thing she was on our side, wasn't it?""",
+— It was probably an ancient, forgotten deity, or rather, what's left of one. Good thing she was on our side, wasn't it?""",
 	KURO3_DIALOGUE2_2_2 = """- What, are you hoping some powerful deity will solve all your problems? I thought you were too old for such naive expectations.
 
 Kuro smirks at you in her usual way.
 
-- No, I doubt she'll help us again after this. We're on our own.""",
+— No, I doubt she'll help us again after this. We're on our own.""",
 	KURO_QUEST_3_SUMMARY = "",
 	KURO_QUEST_3_NAME = "",
 	KURO_QUEST_3_CRAFT = "Craft Vesperine Cage, than speak to Kuro.",
 	KURO_QUEST_3_DEPTHS = "Search in Crystaldepths",
-	KURO_QUEST_3_DUNGEON = "Finish Nixx",
+	KURO_QUEST_3_DUNGEON = "Finish Nixx"
 }
-

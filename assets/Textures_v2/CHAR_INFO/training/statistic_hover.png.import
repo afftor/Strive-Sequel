@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Heleviel_job_6.png-833e3e4222fd0f0871fb479e72591a0e.stex"
+path="res://.import/statistic_hover.png-c3477deb5eefba5a792dba6275675bb5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenes/Heleviel_job_6.png"
-dest_files=[ "res://.import/Heleviel_job_6.png-833e3e4222fd0f0871fb479e72591a0e.stex" ]
+source_file="res://assets/Textures_v2/CHAR_INFO/training/statistic_hover.png"
+dest_files=[ "res://.import/statistic_hover.png-c3477deb5eefba5a792dba6275675bb5.stex" ]
 
 [params]
 
