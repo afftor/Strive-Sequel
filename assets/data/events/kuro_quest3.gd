@@ -361,21 +361,21 @@ var data = {
 			{
 				code = "kuro3_depths_10",
 				text = "KURO3_DEPTHS_10_OPTION_2",
-				dialogue_argument = 2,
+				dialogue_argument = 3,
 				type = "next_dialogue",
 				reqs = []
 			},
 			{
 				code = "kuro3_depths_10",
 				text = "KURO3_DEPTHS_10_OPTION_3",
-				dialogue_argument = 2,
+				dialogue_argument = 4,
 				type = "next_dialogue",
 				reqs = [],
 				previous_dialogue_option = [2, 3]
 			},
 			{
 				code = "kuro3_depths_11",
-				text = "KURO3_INIT_1_OPTION_4",
+				text = "KURO3_DEPTHS_10_OPTION_4",
 				dialogue_argument = 1,
 				type = "next_dialogue",
 				reqs = []

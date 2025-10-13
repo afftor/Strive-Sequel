@@ -3223,8 +3223,15 @@ var dungeons = {
 					['event_ancient_lock',1]
 				],
 			},
+			event_nixx_hideout = {
+				limit = 1,
+				weight = 5,
+				floor_range = [-1, 0],
+				icon = 'man',
+				events = ['kuro3_dungeon_1'],
+				possible_challenges = [],
+			}
 		},
-		
 		
 		event_room_number = [3,4],
 		material_room_number = [4,5],
@@ -3248,7 +3255,7 @@ var dungeons = {
 		area = 'mountains',
 		travel_time = [1,1],
 		scripteventdata = [
-			{trigger = 'dungeon_complete', event = 'custom_event', args = 'kuro3_dungeon_1', reqs = []}
+#			{trigger = 'dungeon_complete', event = 'custom_event', args = 'kuro3_dungeon_1', reqs = []}
 		]
 	},
 }
