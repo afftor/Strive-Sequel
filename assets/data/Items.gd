@@ -372,11 +372,11 @@ var materiallist = {
 		tier = '',
 		tags = ['no_random'],
 	},
-	vesperine_cage = { #fix
+	vesperine_cage = {
 		code = 'vesperine_cage',
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/item_symbol.png"),
+		icon = load("res://assets/images/iconsitems/vesp_cage.png"),
 		price = 1,
 		type = 'quest',
 		tier = '',
@@ -4036,9 +4036,9 @@ var recipes = {
 		worktype = 'smith',
 		unique = true
 	},
-	vesperine_cage = { #fix
+	vesperine_cage = {
 		code = 'vesperine_cage',
-		materials = {steel = 10},
+		materials = {woodancient = 3, adamantine = 5},
 		items = {},
 		unlockreqs = [{type = 'active_quest_stage', value = 'kuro_quest_3', stage = 'craft'},
 		{type = 'has_material', operant = 'lt', value = 1, material = 'vesperine_cage'}],
@@ -5289,9 +5289,11 @@ func get_materials_by_grade(grade, item_id):
 				if partmaterials[part].has(mat):
 					possible_res[mat] = material_tiers[grade][mat]
 			if possible_res.empty():
-				print('warning: material tiers data - no mat in %s for %s in %s' %[grade, part, item_id])
-#				return({})
-				res[part] = partmaterials[part].keys()[0]
+				push_error('material tiers data - no mat in %s for %s in %s' %[grade, part, item_id])
+				for mat in material_tiers['t1']:
+					if partmaterials[part].has(mat):
+						res[part] = mat
+						break
 			else:
 				res[part] = input_handler.weightedrandom_dict(possible_res)
 	return res

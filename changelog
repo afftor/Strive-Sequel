@@ -1,3 +1,20 @@
+0.13.1
+Base population limits increased by 1 (6 basic and +6 per upgrade)
+Added new Kuro sidequest and a few dialogues
+Kuro can only be married after all of her sidequests completed
+Succubus skills can now be assigned to social menu
+Lust drain has been removed
+True succubus from earlier saves should probably be replaced now
+Thralls now automatically receive obedience training
+Succubus class no longer can spawn normally
+Character selection screen now shows required stats
+Added new character stat window with detailed breadowns
+Added small delay to tooltip appearance
+Nixx champion no longer has value bonus
+Fixed some classes descriptions missing
+Fixed item tooltip mode not working on shift hold
+Meteorite iron no longer generates randomly
+All minor settlements now have fixed names
 0.13.0
 Added new slave quest types with bigger rewards
 Altered a few quest dialogues

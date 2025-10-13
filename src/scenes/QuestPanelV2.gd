@@ -118,87 +118,9 @@ func show_info(quest):
 				newbutton.get_node("amount").text = value
 				var tooltiptext = "%s:\n" % tr("QUESTSLAVEREQUIRED")
 				for k in i.statreqs:
-					if k.code in ['is_master', 'is_free']:
+					if k.code in ['is_master', 'is_free', 'slave_type']:
 						continue
-					match k.code:
-						'stat':
-							var stat_name = statdata.statdata[k.stat].name
-							var operant_text = input_handler.operant_translation(k.operant)
-							if k.stat.ends_with('factor') && input_handler.globalsettings.factors_as_words:
-								tooltiptext += "%s: %s %s \n" % [stat_name, operant_text, tr(ResourceScripts.descriptions.factor_descripts[int(k.value)])]
-							elif k.stat in ['vaginal_virgin']:#operant is eq or neq, and value is bool
-								if (k.operant == 'eq' and k.value) or (k.operant == 'neq' and !k.value):
-									tooltiptext += "%s %s\n" % [tr("OPERANTEQ"), stat_name]
-								else:
-									tooltiptext += "%s %s\n" % [tr("OPERANTNEQ"), stat_name]
-							elif k.stat == 'personality':
-								var val
-								if k.value is Array:
-									val = ''
-									for j in range(k.value.size()):
-										if j == k.value.size()-1: val += ' %s ' % tr('REQOR')
-										elif j != 0: val += ', '
-										val += tr("PERSONALITYNAME" + k.value[j].to_upper())
-								else:
-									val = tr("PERSONALITYNAME" + k.value.to_upper())
-								if k.operant == 'neq':
-									tooltiptext += "%s: %s %s.\n" % [stat_name, operant_text, val]
-								else:
-									tooltiptext += "%s: %s.\n" % [stat_name, val]
-							elif ResourceScripts.descriptions.bodypartsdata.has(k.stat):# tits_size, height, ass_size
-								var val
-								if k.value is Array:
-									val = ''
-									for j in range(k.value.size()):
-										if j == k.value.size()-1: val += ' %s ' % tr('REQOR')
-										elif j != 0: val += ', '
-										val += ResourceScripts.descriptions.bodypartsdata[k.stat][k.value[j]].name
-								else:
-									val = ResourceScripts.descriptions.bodypartsdata[k.stat][k.value].name
-								tooltiptext += "%s: %s %s.\n" % [stat_name, operant_text, val]
-							else:
-								tooltiptext += "%s: %s %s.\n" % [stat_name, operant_text, k.value]
-						'sex':
-							tooltiptext += "%s: " % tr('STATSEX')
-							if k.has('check') and !k.check:
-								tooltiptext += "%s " % tr("OPERANTNEQ")
-							tooltiptext += "%s.\n" % tr('SLAVESEX'+k.value.to_upper())
-						'one_of_races':
-							tooltiptext += "%s: " % tr('STATRACE')
-							for j in k.value:
-								tooltiptext += "%s, " % tr("RACE" + j.to_upper())
-							tooltiptext = "%s.\n" % tooltiptext.substr(0, tooltiptext.length() - 2)
-						'race':
-							tooltiptext += "%s: " % tr('STATRACE')
-							if k.has('check') and !k.check:
-								tooltiptext += "%s " % tr("OPERANTNEQ")
-							tooltiptext += "%s.\n" % tr("RACE" + k.race.to_upper())
-						'trait':
-							tooltiptext += "%s: " % tr('TRAITS')
-							if k.has('check') and !k.check:
-								tooltiptext += "%s " % tr("OPERANTNEQ")
-							tooltiptext += "%s.\n" % Traitdata.traits[k.trait].name
-						'has_profession':
-							tooltiptext += "%s: " % tr('REQHASCLASS')
-							if k.has('check') and !k.check:
-								tooltiptext += "%s " % tr("OPERANTNEQ")
-							var prof_name
-							if k.has("altname"):
-								prof_name = classesdata.professions[k.profession].altname
-							else:
-								prof_name = classesdata.professions[k.profession].name
-							tooltiptext += "%s.\n" % prof_name
-						'gear_equiped':
-							if k.has('orflag') and k.orflag:
-								tooltiptext += "   %s " % tr('REQOR')
-							else:
-								tooltiptext += "%s: " % tr('REQMUSTHAVEGEAR')
-							if k.has('check') and !k.check:
-								tooltiptext += "%s " % tr("OPERANTNEQ")
-							tooltiptext += "%s.\n" % Items.itemlist[k.value].name
-						_:
-							if k.code != 'slave_type':#crutch (temporal?) for guilds' quests
-								tooltiptext += String(k).trim_prefix("{").trim_suffix("}") + "\n"
+					tooltiptext += ResourceScripts.descriptions.make_slave_statreq_text(k) + "\n"
 				tooltiptext += "%s/%s slaves delivered." % [i.delivered_slaves, i.value]
 				if quest.has('faction'):#way to determine slave quest
 					quest_descript += "\n" + tooltiptext
