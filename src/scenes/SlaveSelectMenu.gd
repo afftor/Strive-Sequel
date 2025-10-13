@@ -9,6 +9,8 @@ onready var hide_pretenders_btn = $hide_btn
 var reqs_text
 var hide_pretenders = false
 
+var silently_hide_codes = ['is_at_location', 'in_combat_party']
+
 func _ready():
 	hide_pretenders_btn.connect("pressed", self, "on_hide_pretenders_press")
 
@@ -16,6 +18,7 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 	target_func = targetfunc
 	target_node = targetnode
 	req_info.hide()
+	var show_req_info = (challenge == null)#could be changed with time
 	reqs_text = null
 	show()
 	input_handler.ClearContainer(slave_btn_cont)
@@ -43,7 +46,7 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 	var reqs_list = reqs
 	if !(reqs is Array):
 		reqs_list = [reqs]
-	if !reqs_list.empty() and challenge == null:
+	if !reqs_list.empty() and show_req_info:
 		reqs_text = tr('REQUIREMENTS_TOOLTIP') + ":"
 		for req in reqs_list:
 			reqs_text += '\n' + ResourceScripts.descriptions.make_slave_statreq_text(req)
@@ -83,15 +86,22 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 		if !reqs_list.empty():
 			var reqs_met_text = ''
 			var reqs_met = true
+			var silently_hide = false
 			for req in reqs_list:
+				var is_silent = req.code in silently_hide_codes
 				var color = "green"
 				if !i.checkreqs(req):
 					reqs_met = false
 					color = "red"
-				reqs_met_text += "\n{color=%s|%s}" % [color, ResourceScripts.descriptions.make_slave_statreq_text(req)]
-			newnode.disabled = !reqs_met
-			
-			if challenge == null:
+					if is_silent:
+						silently_hide = true
+						break
+				if show_req_info and !is_silent:
+					reqs_met_text += "\n{color=%s|%s}" % [color, ResourceScripts.descriptions.make_slave_statreq_text(req)]
+			if silently_hide:
+				newnode.hide()
+			elif show_req_info:
+				newnode.disabled = !reqs_met
 				var recap
 				if reqs_met: recap = 'REQUIREMENTSMET'
 				else: recap = 'REQUIREMENTSARENTMET'
@@ -99,6 +109,9 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 				newnode.set_meta("reqs_met_text", reqs_met_text)
 				newnode.connect("mouse_entered", self, "show_req_info", [newnode])
 				newnode.connect("mouse_exited", self, "try_hide_req_info")
+			else:
+				if !reqs_met:
+					newnode.hide()
 		globals.connectslavetooltip(newnode, i)
 	$Label.visible = slave_btn_cont.get_child_count() <= 1
 	if hide_pretenders_btn.visible:
@@ -142,7 +155,7 @@ func check_hide_pretenders():
 	else:
 		hide_pretenders_btn.text = tr("REQ_HIDE_PRETENDER")
 	for btn in slave_btn_cont.get_children():
-		if btn.name == "Button": continue
+		if !btn.has_meta("reqs_met_text"): continue
 		if hide_pretenders:
 			btn.visible = !btn.disabled
 		else:
