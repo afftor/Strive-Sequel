@@ -1066,6 +1066,8 @@ func finalize_subrooms(locdata, subrooms, level):
 					var pool = []
 					for event in locdata.event_data:
 						var e_data = locdata.event_data[event]
+						if e_data.floor_range[0] == -1:
+							e_data.floor_range[0] = locdata.levels - 1
 						if e_data.floor_range[1] == 0:
 							e_data.floor_range[1] = locdata.levels - 1
 						if level < e_data.floor_range[0]:

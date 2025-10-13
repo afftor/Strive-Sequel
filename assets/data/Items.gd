@@ -3068,7 +3068,10 @@ var itemlist = {
 		price = 500,
 		icon = load("res://assets/images/iconsitems/corruption_potion.png"),
 		tier = 'hard',
-		reqs = [{code = 'trait', trait = 'succubus', check = false},],
+		reqs = [
+			{code = 'trait', trait = 'succubus', check = false},
+			{code = 'stat', stat = 'thrall_master', operant = 'eq', value = null}
+			],
 		effects = [],
 		tags = ['no_random', 'request_confirm'],
 		uses_per_day = 0,
