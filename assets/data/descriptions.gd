@@ -959,5 +959,15 @@ func make_slave_statreq_text(req):
 				text += "%s " % tr("OPERANTNEQ")
 			text += "%s." % Items.itemlist[req.value].name
 			return text
+		'is_at_location':
+			#not sure if it's needed. Make main.gd's lines if so
+			print("warning: make_slave_statreq_text() used 'is_at_location' code!")
+			if req.check: return "Must be at specific location"
+			else: return "Must not be at specific location"
+		'in_combat_party':
+			#not sure if it's needed. Make main.gd's lines if so
+			print("warning: make_slave_statreq_text() used 'in_combat_party' code!")
+			if req.value: return "Must be in combat party"
+			else: return "Must not be in combat party"
 		_:
 			return String(req).trim_prefix("{").trim_suffix("}")
