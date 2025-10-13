@@ -19,5 +19,6 @@ func update():
 		rect_global_position.x -= get_rect().end.x + 100 - screen.size.x
 	if get_rect().end.y + 125 > screen.size.y:
 		rect_global_position.y -= get_rect().end.y + 125 - screen.size.y
+	emit_signal("update_completed")
 
 

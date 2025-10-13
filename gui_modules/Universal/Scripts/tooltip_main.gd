@@ -2,11 +2,16 @@ extends Control
 class_name tooltip_main
 
 enum {STATE_HIDE, STATE_OPENING, STATE_OPEN}
+
+signal update_completed
+
 var parentnode
 var open_timer
+var init_timer
 var state = STATE_HIDE
 
 func _init():
+	init_timer = variables.tooltip_delay
 	set_process(false)
 
 
@@ -27,8 +32,8 @@ func _process(delta):
 		if open_timer <= 0:
 			state = STATE_OPEN
 			show()
-#			update()
-			yield(update(), 'completed')
+			update()
+			yield(self, 'update_completed')
 #			modulate.a = 1.0
 #			show()
 			ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
@@ -37,7 +42,7 @@ func _process(delta):
 func _setup(node):
 	if state == STATE_HIDE:
 		parentnode = node
-		open_timer = variables.tooltip_delay
+		open_timer = init_timer
 		state = STATE_OPENING
 		set_process(true)
 		return true
@@ -47,7 +52,7 @@ func _setup(node):
 	else: 
 		hide()
 		parentnode = node
-		open_timer = variables.tooltip_delay
+		open_timer = init_timer
 		state = STATE_OPENING
 		set_process(true)
 		return true
