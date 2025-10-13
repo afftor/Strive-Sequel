@@ -1108,6 +1108,9 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	QUESTREPUTATION = "声誉",
 	QUESTTASKACQ = "所需任务",
 	REQUIREMENTSARENTMET = "未满足要求",
+	REQUIREMENTSMET = """Requirements are met.""", # MISSING TRANSLATION
+	REQ_HIDE_PRETENDER = """Hide pretenders""", # MISSING TRANSLATION
+	REQ_SHOW_PRETENDER = """Show pretenders""", # MISSING TRANSLATION
 	NOTENOUGHLOYALTY = "不够忠诚",
 	NOTENOUGHMASTERPOINTS = """Not enough Master Points""", # MISSING TRANSLATION
 	QUESTCOMPLETEMESSAGE = "任务完成",
@@ -1887,6 +1890,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	STATENERGY = "能量",
 	STATENERGYDESCRIPT = "能量在睡眠中恢复，是执行任务所必需的。当角色被迫在没有能量的情况下工作时，他们会积累疲惫。 ",
 	STATHPMAX = "Max. Health 最大健康",
+	STATHPMAXDESCRIPT = """Maximal Health""", # MISSING TRANSLATION
 	STATHPFACTOR = "健康因素",
 	STATHPFACTORDESCRIPT = "确定以大多数方式获得的健康值加成。高健康值可以大大提高生存能力。 ",
 	STATHP_REG_MOD = """Healing Factor""", # MISSING TRANSLATION
@@ -1897,6 +1901,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	STATMP = "Mana 魔力",
 	STATMPDESCRIPT = "Mana is used for casting spells and using some abilities.\n魔力用于施法和使用某些能力",
 	STATMPMAX = "Max. Mana 最大魔力",
+	STATMPMAXDESCRIPT = """Maximal Mana""", # MISSING TRANSLATION
 	STATMPMAXMOD = "Max. Mana 最大魔力",
 	STATHITRATE = "Hit chance 命中率",
 	STATHITRATEDESCRIPT = "Chance to hit enemy. Reduced by target's evasion.\n命中敌人的几率。因目标的闪避而降低",
@@ -1949,6 +1954,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	STATSEXUALSDESCRIPT = "Sexual Proficiency represents character's skills in body pleasures. It is calculated by sum of 3 highest sexual skills and affects certain tasks and abilities.",
 
 	STATGROWTH_FACTOR = "Growth",
+	STATGROWTH_FACTOR_FULLNAME = """Growth Factor""", # MISSING TRANSLATION
 	STATMAGIC_FACTOR = "魔力亲和力",
 	STATPHYSICS_FACTOR = "物理因素",
 	STATWITS_FACTOR = "智慧因素",
@@ -1983,6 +1989,7 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	STATCONSENTDESCRIPT = "Affects consent for actions during sex interactions. Each action has different consent based on traits, partners and other factors. This number represents only the unaltered value. Basic consent grows when having positive results, trying new actions and partners. Also slightly increased from discipline skills. ",
 	
 	STATEXP_GAIN_MOD = "Experience Bonus",
+	STATEXP_GAIN_MODDESCRIPT = """Modifies Experience gaining""", # MISSING TRANSLATION
 	
 	STATLOYALTY_GAIN_MOD = "Loyalty Gain",
 	STATLOYALTY_GAIN = "Loyalty Gain",
@@ -2005,6 +2012,22 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	STATMOD_HOSTESS = "Hostess Income",
 	STATMOD_DANCER = "Dancer Income",
 	STATMOD_STRIP = "Stripper Income",
+	STATMOD_BUILDDESCRIPT = """Modifies Upgrading effciency""", # MISSING TRANSLATION
+	STATMOD_COLLECTDESCRIPT = """Modifies Collection effciency""", # MISSING TRANSLATION
+	STATMOD_HUNTDESCRIPT = """Modifies Hunt effciency""", # MISSING TRANSLATION
+	STATMOD_FISHDESCRIPT = """Modifies Fish effciency""", # MISSING TRANSLATION
+	STATMOD_COOKDESCRIPT = """Modifies Cook effciency""", # MISSING TRANSLATION
+	STATMOD_SMITHDESCRIPT = """Modifies Smith effciency""", # MISSING TRANSLATION
+	STATMOD_TAILORDESCRIPT = """Modifies Tailor effciency""", # MISSING TRANSLATION
+	STATMOD_ALCHEMYDESCRIPT = """Modifies Alchemy effciency""", # MISSING TRANSLATION
+	STATMOD_FARMDESCRIPT = """Modifies Farming effciency""", # MISSING TRANSLATION
+	STATMOD_SERVICEDESCRIPT = """Modifies Service effciency""", # MISSING TRANSLATION
+	STATMOD_PROSDESCRIPT = """Modifies Sex Service effciency""", # MISSING TRANSLATION
+	STATMOD_TASK_EFFICIECNYDESCRIPT = """Modifies Task Effciency""", # MISSING TRANSLATION
+	STATMOD_WAITRESSDESCRIPT = """Modifies Waitress Income""", # MISSING TRANSLATION
+	STATMOD_HOSTESSDESCRIPT = """Modifies Hostess Income""", # MISSING TRANSLATION
+	STATMOD_DANCERDESCRIPT = """Modifies Dancer Income""", # MISSING TRANSLATION
+	STATMOD_STRIPDESCRIPT = """Modifies Stripper Income""", # MISSING TRANSLATION
 
 	STATRESIST_NORMAL = "Normal Resist",
 	STATRESIST_FIRE = "Fire Resist",
@@ -2014,6 +2037,50 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	STATRESIST_LIGHT = "Light Resist",
 	STATRESIST_DARK = "Dark Resist",
 	STATRESIST_MIND = "Mind Resist",
+	STATRESIST_AOE = """Area Resist""", # MISSING TRANSLATION
+	STATRESIST_BLEED = """Bleed Resist""", # MISSING TRANSLATION
+	STATRESIST_BLIND = """Blind Resist""", # MISSING TRANSLATION
+	STATRESIST_BURN = """Burn Resist""", # MISSING TRANSLATION
+	STATRESIST_CONFUSE = """Confuse Resist""", # MISSING TRANSLATION
+	STATRESIST_CURSED = """Curse Resist""", # MISSING TRANSLATION
+	STATRESIST_DISARM = """Disarm Resist""", # MISSING TRANSLATION
+	STATRESIST_FEAR = """Fear Resist""", # MISSING TRANSLATION
+	STATRESIST_FREEZE = """Freeze Resist""", # MISSING TRANSLATION
+	STATRESIST_HEAL = """Heal Resist""", # MISSING TRANSLATION
+	STATRESIST_MELEE = """Melee Resist""", # MISSING TRANSLATION
+	STATRESIST_POISON = """Poison Resist""", # MISSING TRANSLATION
+	STATRESIST_RANGED = """Ranged Resist""", # MISSING TRANSLATION
+	STATRESIST_SHOCK = """Shock Resist""", # MISSING TRANSLATION
+	STATRESIST_SILENCE = """Silence Resist""", # MISSING TRANSLATION
+	STATRESIST_SLEEP = """Sleep Resist""", # MISSING TRANSLATION
+	STATRESIST_STUN = """Stun Resist""", # MISSING TRANSLATION
+	STATRESIST_WET = """Wet Resist""", # MISSING TRANSLATION
+	STATRESIST_NORMALDESCRIPT = """Resistance to Normal damage""", # MISSING TRANSLATION
+	STATRESIST_FIREDESCRIPT = """Resistance to Fire damage""", # MISSING TRANSLATION
+	STATRESIST_AIRDESCRIPT = """Resistance to Air damage""", # MISSING TRANSLATION
+	STATRESIST_EARTHDESCRIPT = """Resistance to Earth damage""", # MISSING TRANSLATION
+	STATRESIST_WATERDESCRIPT = """Resistance to Water damage""", # MISSING TRANSLATION
+	STATRESIST_LIGHTDESCRIPT = """Resistance to Light damage""", # MISSING TRANSLATION
+	STATRESIST_DARKDESCRIPT = """Resistance to Dark damage""", # MISSING TRANSLATION
+	STATRESIST_MINDDESCRIPT = """Resistance to Mind damage""", # MISSING TRANSLATION
+	STATRESIST_AOEDESCRIPT = """Resistance to Area damage""", # MISSING TRANSLATION
+	STATRESIST_BLEEDDESCRIPT = """Resistance to Bleed effect""", # MISSING TRANSLATION
+	STATRESIST_BLINDDESCRIPT = """Resistance to Blind effect""", # MISSING TRANSLATION
+	STATRESIST_BURNDESCRIPT = """Resistance to Burn effect""", # MISSING TRANSLATION
+	STATRESIST_CONFUSEDESCRIPT = """Resistance to Confuse effect""", # MISSING TRANSLATION
+	STATRESIST_CURSEDDESCRIPT = """Resistance to Curse effect""", # MISSING TRANSLATION
+	STATRESIST_DISARMDESCRIPT = """Resistance to Disarm effect""", # MISSING TRANSLATION
+	STATRESIST_FEARDESCRIPT = """Resistance to Fear effect""", # MISSING TRANSLATION
+	STATRESIST_FREEZEDESCRIPT = """Resistance to Freeze effect""", # MISSING TRANSLATION
+	STATRESIST_HEALDESCRIPT = """Resistance to Heal effect""", # MISSING TRANSLATION
+	STATRESIST_MELEEDESCRIPT = """Resistance to Melee damage""", # MISSING TRANSLATION
+	STATRESIST_POISONDESCRIPT = """Resistance to Poison effect""", # MISSING TRANSLATION
+	STATRESIST_RANGEDDESCRIPT = """Resistance to Ranged damage""", # MISSING TRANSLATION
+	STATRESIST_SHOCKDESCRIPT = """Resistance to Shock effect""", # MISSING TRANSLATION
+	STATRESIST_SILENCEDESCRIPT = """Resistance to Silence effect""", # MISSING TRANSLATION
+	STATRESIST_SLEEPDESCRIPT = """Resistance to Sleep effect""", # MISSING TRANSLATION
+	STATRESIST_STUNDESCRIPT = """Resistance to Stun effect""", # MISSING TRANSLATION
+	STATRESIST_WETDESCRIPT = """Resistance to Wet effect""", # MISSING TRANSLATION
 	STATENCHANT_CAPACITY_MOD = """Enchant Capacity""", # MISSING TRANSLATION
 	STATENCHANT_CAPACITY = """Enchant Capacity""", # MISSING TRANSLATION
 	STATENCHCAP = """Enchant Capacity""", # MISSING TRANSLATION
@@ -14642,6 +14709,9 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	VILLAGE_HUMAN2_9 = "草地",
 	
 	VILLAGE_HUMAN_QUEST1 = "米尔福德",
+	VILLAGE_HUMAN_QUEST2 = """Stonevale""", # MISSING TRANSLATION
+	VILLAGE_FOREST_QUEST1 = """Leafshade Haven""", # MISSING TRANSLATION
+	VILLAGE_MOUNTAIN_QUEST1 = """Crystaldepths""", # MISSING TRANSLATION
 	
 	BANDIT_FORT_NOUNS1 = "堡垒",
 	BANDIT_FORT_NOUNS2 = "寨子",
@@ -15166,6 +15236,7 @@ Hotkey: 3""",
 	SOCIAL_SKILLS = "社交技能",
 	COMBAT_SKILLS = "战斗技能",
 	PERSONAL_STAT = "Personal Statistics",
+	PERSONAL_METRICS = """Metrics""", # MISSING TRANSLATION
 	REMOVE_BUTTON = """Set Free""", # MISSING TRANSLATION
 	TALK_BUTTON = """Talk To""", # MISSING TRANSLATION
 	BODY_UPGRADE_TOOLTIP = """""", # MISSING TRANSLATION

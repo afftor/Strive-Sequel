@@ -530,6 +530,16 @@ var scenes = {
 	ana_widow = "res://assets/images/scenes/widow.png",
 	
 	
+	kuro_cage = "res://assets/images/scenes/kuro cast.png",
+	kuro_torture = "res://assets/images/scenes/kuro caught.png",
+	kuro_scroll = "res://assets/images/scenes/Scroll_kuro.png",
+	flash = "res://assets/images/scenes/flash.png",
+	
+	heleviel_bar = "res://assets/images/scenes/heleviel_bar.png",
+	heleviel_bar_grab = "res://assets/images/scenes/heleviel_bar_grab.png",
+	heleviel_heal = "res://assets/images/scenes/heleviel_heal.png",
+	
+	
 	hire = load("res://assets/images/scenes/hire.png"),
 	
 	dungeon_door = load("res://assets/images/scenes/dungeon_door.png"),

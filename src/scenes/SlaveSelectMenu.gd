@@ -2,14 +2,25 @@ extends "res://src/scenes/ClosingPanel.gd"
 
 var target_func
 var target_node
+onready var req_info = $req_info
+onready var req_info_label = $req_info/reqs_list
+onready var slave_btn_cont = $ScrollContainer/VBoxContainer
+onready var hide_pretenders_btn = $hide_btn
+var reqs_text
+var hide_pretenders = false
+
+func _ready():
+	hide_pretenders_btn.connect("pressed", self, "on_hide_pretenders_press")
 
 func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = null):
 	target_func = targetfunc
 	target_node = targetnode
+	req_info.hide()
+	reqs_text = null
 	show()
-	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
+	input_handler.ClearContainer(slave_btn_cont)
 	if allow_remove == true:
-		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		var newnode = input_handler.DuplicateContainerTemplate(slave_btn_cont)
 		newnode.get_node("text").text = tr("REMOVE")
 		newnode.connect('pressed', targetnode, targetfunc, [null])
 		newnode.connect('pressed',self,'hide')
@@ -23,18 +34,31 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 	else:
 		for id in  ResourceScripts.game_party.character_order:
 			var i = ResourceScripts.game_party.characters[id]
-			if i.checkreqs(reqs) == false:
-				continue
+#			if i.checkreqs(reqs) == false:
+#				continue
 			if i.is_on_quest():
 				continue
 			charlist.append(i)
+	
+	var reqs_list = reqs
+	if !(reqs is Array):
+		reqs_list = [reqs]
+	if !reqs_list.empty() and challenge == null:
+		reqs_text = tr('REQUIREMENTS_TOOLTIP') + ":"
+		for req in reqs_list:
+			reqs_text += '\n' + ResourceScripts.descriptions.make_slave_statreq_text(req)
+		req_info_label.bbcode_text = reqs_text
+		req_info.show()
+		hide_pretenders_btn.show()
+	else:
+		hide_pretenders_btn.hide()
 	
 	for i in charlist:
 #		if i.checkreqs(reqs) == false:
 #			continue
 #		if i.is_on_quest():
 #			continue
-		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		var newnode = input_handler.DuplicateContainerTemplate(slave_btn_cont)
 		var text = i.get_short_name()
 		if challenge != null && challenge != 'captured':
 			if i.get_stat('chg_' + challenge + "_max") < 1:
@@ -55,8 +79,38 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 		newnode.get_node("icon").texture = i.get_icon_small()
 		newnode.get_node('text').text = text
 		newnode.connect('pressed', self, 'select', [i])
+		
+		if !reqs_list.empty():
+			var reqs_met_text = ''
+			var reqs_met = true
+			for req in reqs_list:
+				var color = "green"
+				if !i.checkreqs(req):
+					reqs_met = false
+					color = "red"
+				reqs_met_text += "\n{color=%s|%s}" % [color, ResourceScripts.descriptions.make_slave_statreq_text(req)]
+			newnode.disabled = !reqs_met
+			
+			if challenge == null:
+				var recap
+				if reqs_met: recap = 'REQUIREMENTSMET'
+				else: recap = 'REQUIREMENTSARENTMET'
+				reqs_met_text = "%s%s" % [tr(recap), reqs_met_text]
+				newnode.set_meta("reqs_met_text", reqs_met_text)
+				newnode.connect("mouse_entered", self, "show_req_info", [newnode])
+				newnode.connect("mouse_exited", self, "try_hide_req_info")
 		globals.connectslavetooltip(newnode, i)
-	$Label.visible = $ScrollContainer/VBoxContainer.get_child_count() <= 1
+	$Label.visible = slave_btn_cont.get_child_count() <= 1
+	if hide_pretenders_btn.visible:
+		check_hide_pretenders()
+
+func show_req_info(btn):
+	req_info_label.bbcode_text = globals.TextEncoder(btn.get_meta("reqs_met_text"))
+	req_info.show()
+
+func try_hide_req_info():
+	if !slave_btn_cont.get_global_rect().has_point(get_viewport().get_mouse_position()):
+		req_info_label.bbcode_text = reqs_text
 
 func select(character):
 	target_node.call(target_func, character)
@@ -77,3 +131,19 @@ func add_challenge_point(character, challenge):
 func remove_captured_character(i):
 	i.is_active = false
 	input_handler.active_location.captured_characters.erase(i.id)
+
+func on_hide_pretenders_press():
+	hide_pretenders = !hide_pretenders
+	check_hide_pretenders()
+
+func check_hide_pretenders():
+	if hide_pretenders:
+		hide_pretenders_btn.text = tr("REQ_SHOW_PRETENDER")
+	else:
+		hide_pretenders_btn.text = tr("REQ_HIDE_PRETENDER")
+	for btn in slave_btn_cont.get_children():
+		if btn.name == "Button": continue
+		if hide_pretenders:
+			btn.visible = !btn.disabled
+		else:
+			btn.visible = true
