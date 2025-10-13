@@ -11,6 +11,9 @@ var mode = 'default'
 
 var full_height = 0
 
+func _init():
+	init_timer = 0.01
+
 
 func _input(event):
 	if state != STATE_OPEN:
@@ -93,6 +96,7 @@ func update():
 	if pos.y + full_height > screen.size.y:
 		pos = Vector2(pos.x, screen.size.y - full_height - 15)
 		self.set_global_position(pos)
+	emit_signal("update_completed")
 
 
 

@@ -67,4 +67,5 @@ func update():
 			else:
 				rect_global_position.y = 0
 				rect_global_position.x -= get_rect().end.x - get_rect().size.x - 350
+	emit_signal("update_completed")
 

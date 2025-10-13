@@ -50,4 +50,5 @@ func update():
 		rect_global_position.x -= get_rect().end.x - screen.size.x
 	if get_rect().end.y >= screen.size.y:
 		rect_global_position.y = parentnode.get_global_rect().position.y - (get_rect().size.y+10)
+	emit_signal("update_completed")
 

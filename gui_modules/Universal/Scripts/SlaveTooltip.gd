@@ -2,6 +2,8 @@ extends tooltip_main
 
 var person
 
+func _init():
+	init_timer = 0.01
 
 func showup(node, t_person):
 	if _setup(node):
@@ -80,7 +82,7 @@ func update():
 		#idk about showing buffs here - where this scene is shown anyway? 
 		input_handler.GetTweenNode(self).stop_all()
 		self.modulate.a = 1
-		show()
+#		show()
 		var pos = parentnode.get_global_rect()
 		pos = Vector2(pos.end.x + 10, pos.position.y)
 		self.set_global_position(pos)
@@ -112,6 +114,7 @@ func update():
 		$Panel2/RichTextLabel.bbcode_text = text
 	else:
 		hide()
+	emit_signal("update_completed")
 
 
 func set_color(value):
