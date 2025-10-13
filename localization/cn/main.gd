@@ -628,6 +628,8 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	MATERIALDRACONIC_SCALESDESCRIPT = "龙的零件既美观又优质。",
 	MATERIALHERBS = "",
 	MATERIALHERBSDESCRIPT = "",
+	MATERIALVESPERINE_CAGE = """Vesperine Cage""", # MISSING TRANSLATION
+	MATERIALVESPERINE_CAGEDESCRIPT = """An ancient device of unknown purpose.""", # MISSING TRANSLATION
 	MATERIALINK_TRIBAL = "墨水：力量",
 	MATERIALINK_BRANDINGDESCRIPT = "一套工具和墨水，可以在角色身上制造某种神奇的纹身。最初由掠夺者和驯兽师使用，奴隶制社会采用品牌来建立对被征服者的统治地位。纹身并没有那么痛苦，但同样有辱人格，纹身上有主人的名字。\n\n适用于：｛color=yellow|颈部、臀部、胯部｝\n\n服从消耗-2，忠诚度增益+1。\n只能应用一次。",
 	MATERIALINK_MAKEUPDESCRIPT = "一套工具和墨水，可以在角色身上制造某种神奇的纹身。虽然化妆可能不足以让野兽变成美女，但它对懒惰的人来说是一个有利的选择。\n\n适用于：｛color=yellow|面部｝\n\n魅力：+10。",

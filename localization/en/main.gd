@@ -3126,7 +3126,7 @@ Requires consent \"Willing\" or above.""",
 	TRAITMASTER_PROGENECYDESCRIPT = "Removes race impregnation restrictions.",
 	TRAITMASTER_COMMUNICATIVE = "Communicative",
 	TRAITMASTER_COMMUNICATIVEDESCRIPT = "Social skills gain 1 additional charge.",
-	TRAITMASTER_RESILENCE = "Resilence",
+	TRAITMASTER_RESILENCE = "Resilience",
 	TRAITMASTER_RESILENCEDESCRIPT = " ",
 	TRAITMASTER_FORTUNE = "Fortune",
 	TRAITMASTER_FORTUNEDESCRIPT = "Critical chance is increased by 25%. Slightly increases Magic Find.",
@@ -16659,7 +16659,7 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	KURO_ERRAND_QUEST_SEARCH = "Search through the hideout for clues about other such spots",
 	KURO_ERRAND_QUEST_BASE = "Clear out cult's parent base",
 	
-	KURO_QUEST_3_NAME = "Kuro: ",
+	KURO_QUEST_3_NAME = "Kuro: Apostasy",
 	KURO_QUEST_3_SUMMARY = "Kuro has an insidious plan regarding her patron.",
 	KURO_QUEST_3_CRAFT = "Craft Vesperine Cage, then speak to Kuro.",
 	KURO_QUEST_3_DEPTHS = "Search in Crystaldepths",
@@ -19728,7 +19728,7 @@ Cerab: — Hah, you should know our families are little more than a cover. Do yo
 
 Kuro: — Stubborn man. I'm no torture expert, but since you've left me no choice...""",
 	KURO3_DEPTHS_4_OPTION_1 = "Don't do it; we'd better find someone else around here to get this information from. (1000 gold)",
-	KURO3_DEPTHS_4_OPTION_2 = "Let me get it straight from his mind instead.",
+	KURO3_DEPTHS_4_OPTION_2 = "Let me get it straight from his mind instead. [Mind Mastery]",
 	KURO3_DEPTHS_4_OPTION_3 = "*Stay quiet*",
 	KURO3_DEPTHS_5 = "You insist on sparing the man from Kuro's gruesome approach and head back into the settlement. The hefty sum of coins you've prepared as a reward quickly loosens a few tongues, revealing the details of Nixx's true altar transportation, which was assisted by a couple of locals. Connecting the dots, you and Kuro realize it was taken to ancient underground ruins not far from this region.",
 	KURO3_DEPTHS_6 = """Kuro steps aside as you begin chanting your mind-reading spell. Unsurprisingly, Cerab resists as best he can, but your expertise allows you to breach his mind soon enough, forcing him to reveal the location of Nixx's true altar: ancient underground ruins not far from this region. Kuro seems satisfied with the answer; she nods and leads you away.

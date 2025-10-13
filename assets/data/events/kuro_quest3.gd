@@ -586,6 +586,16 @@ var data = {
 			"dialogue_scene",
 			"blackscreen_transition_common"
 		],
+		common_effects = [
+			{
+				code = "play_sound",
+				value = "crunch"
+			},
+			{
+				code = "play_sound",
+				value = "groan"
+			}
+		],
 		text = "KURO3_DEPTHS_7",
 		options = [
 			{
@@ -607,6 +617,16 @@ var data = {
 		tags = [
 			"dialogue_scene",
 			"blackscreen_transition_common"
+		],
+		common_effects = [
+			{
+				code = "play_sound",
+				value = "crunch"
+			},
+			{
+				code = "play_sound",
+				value = "groan"
+			}
 		],
 		text = "KURO3_DEPTHS_8",
 		options = [

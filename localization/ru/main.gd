@@ -627,6 +627,8 @@ var TranslationDict = {
 	MATERIALDRACONIC_SCALESDESCRIPT = """Драконьи элементы используются как из-за своей красоты, так и из-за превосходного качества.""",
 	MATERIALHERBS = """ """,
 	MATERIALHERBSDESCRIPT = """ """,
+	MATERIALVESPERINE_CAGE = """Vesperine Cage""", # MISSING TRANSLATION
+	MATERIALVESPERINE_CAGEDESCRIPT = """An ancient device of unknown purpose.""", # MISSING TRANSLATION
 	MATERIALINK_TRIBAL = """Чернила: Сила""",
 	MATERIALINK_BRANDINGDESCRIPT = """Набор инструментов и чернил, позволяющий нанести на предмет определенную магическую подпись. Первоначально применялось пастухами и укротителями, затем клеймо было принято рабовладельческими обществами для установления господства над завоеванными людьми. Татуировки не столь болезненны в нанесении, но, тем не менее, столь же унизительны: на них изображено имя владельца..
 
@@ -4908,6 +4910,8 @@ Requires: Базовый рабский труд""",
 	ENEMYDWARF_FIGHTER_ELITE = "Элитный дворф-воин",
 	ENEMYDWARF_RANGED = "Дворф-арбалетчик",
 	ENEMYKURO = "Куро",
+	ENEMYERDYNA = """Erdyna""", # MISSING TRANSLATION
+	ENEMYNIXX = """Nixx""", # MISSING TRANSLATION
 	
 	
 	FOODFILTERHIGH = """Высокий""",
@@ -19050,6 +19054,8 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	QUEST_CULT_PARENTBASE_DESC = " ",
 	QUEST_STAR_CRATER_TEXT = "Место упавшей звезды",
 	QUEST_STAR_CRATER_DESC = "",
+	QUEST_DUNGEON_KURO_NIXX = """Wailing Halls""", # MISSING TRANSLATION
+	QUEST_DUNGEON_KURO_NIXX_DESCRIPT = """""", # MISSING TRANSLATION
 	#fixed_location_options
 	
 	ALIRON1 = """Осмотреть улицы""",

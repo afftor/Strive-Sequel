@@ -112,4 +112,5 @@ var sounds = {
 	speech = load("res://assets/sounds/sounds/speech_screen.wav"),
 	
 	crunch = load("res://assets/sounds/sounds/crunch.wav"),
+	groan = load("res://assets/sounds/sounds/groan.wav"),
 }
