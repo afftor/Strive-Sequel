@@ -173,17 +173,14 @@ func gear_tooltip(data, item = null):
 func gear_detailed_tooltip(data, item = null):
 	gear_tooltip(data, item)
 	item = data.item
-	if item.parts.size() == 0:
-		return
-	$TopPanel/Title.text = data.item.name
-	var new_font = input_handler.font_size_calculator($TopPanel/Title)
-	$TopPanel/Title.set("custom_fonts/font", new_font)
 	var text = ''
-	for i in item.parts:
-		var material = Items.materiallist[item.parts[i]]
-		text += tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}\n"
-		text += globals.build_desc_for_bonusstats(material.parts[i])
-#		text += '\n\n'
+	
+	if item.parts.size() != 0:
+		for i in item.parts:
+			var material = Items.materiallist[item.parts[i]]
+			text += tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}\n"
+			text += globals.build_desc_for_bonusstats(material.parts[i])
+	#		text += '\n\n'
 	for i in item.enchants:
 		text += "{color=yellow|%s}: %s\n" % [tr(Items.enchantments[i].name), tr(Items.enchantments[i].descript)]
 	if item.curse != null:
@@ -192,12 +189,16 @@ func gear_detailed_tooltip(data, item = null):
 		else:
 			text += "{color=red|%s}: %s\n" % [tr(Items.curses[item.curse].name), tr(Items.curses[item.curse].descript)]
 		
-	textnode2.bbcode_text = globals.TextEncoder(text)
-#	$LowPanel/HBoxContainer/HoldShift.visible = true
+	if text != '':
+		$TopPanel/Title.text = data.item.name
+		var new_font = input_handler.font_size_calculator($TopPanel/Title)
+		$TopPanel/Title.set("custom_fonts/font", new_font)
+		textnode2.bbcode_text = globals.TextEncoder(text)
+#		$LowPanel/HBoxContainer/HoldShift.visible = true
 
-	$LowPanel.show()
-	$MidPanel.hide()
-#	fix_panels()
+		$LowPanel.show()
+		$MidPanel.hide()
+#		fix_panels()
 
 
 func geartemplete_tooltip(data):
