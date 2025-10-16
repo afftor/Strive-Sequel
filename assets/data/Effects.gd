@@ -1886,6 +1886,20 @@ func fix_eff_data():
 			eff.tick_event = [eff.tick_event]
 		if eff.has('rem_event') and eff.rem_event is int:
 			eff.rem_event = [eff.rem_event]
+		if eff.has('sub_effects'):
+			for teff in eff.sub_effects:
+				if teff is String:
+					continue
+				if teff.type == 'trigger':
+					if !teff.has('conditions'):
+						teff.conditions = []
+				if teff.has('req_skill'):
+					if teff.req_skill:
+						if !teff.has('args'):
+							teff.args = {}
+						teff.args.skill = {obj = 'skill', func = 'eq'}
+						teff.args.caster = {obj = 'caster', func = 'eq'}
+						teff.args.target = {obj = 'target', func = 'eq'}
 	for st in stacks:
 		if stacks[st].empty():
 			stacks[st] = {
