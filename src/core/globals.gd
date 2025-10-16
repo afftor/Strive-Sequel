@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.13.1 experimental 1'
+const gameversion = '0.13.1'
 
 #time
 signal hour_tick
@@ -2949,8 +2949,6 @@ func update_localization_file(update_loc: String, primary_loc = "en"):
 			
 			# if it's a missing key, insert keys
 			if key in missing_keys.keys():
-				if key == "CALI_HEIRLOOM_4_2": # delete this part after ru/main.gd is fixed
-					continue
 				if cleared_line.length() > 0 and cleared_line[cleared_line.length() - 1] == ',': 
 					for i in missing_keys[key].size():
 						var insert_line = "	%s = \"\"\"%s\"\"\", # MISSING TRANSLATION"
