@@ -3165,7 +3165,6 @@ var dungeons = {
 		final_enemy = [['firedepths_boss1',1],['firedepths_boss2',1]], final_enemy_type = 'monster',
 		eventarray = [['dungeon_find_chest_medium', 1], ['erebus_shrine_find',0.2]],
 		
-		
 		event_data = {
 			dungeon_find_chest_medium = {
 				limit = 0,
@@ -3223,14 +3222,14 @@ var dungeons = {
 					['event_ancient_lock',1]
 				],
 			},
-			event_nixx_hideout = {
-				limit = 1,
-				weight = 5,
-				floor_range = [-1, 0],
-				icon = 'man',
-				events = ['kuro3_dungeon_1'],
-				possible_challenges = [],
-			}
+#			event_nixx_hideout = {
+#				limit = 1,
+#				weight = 200,
+#				floor_range = [-1, 0],
+#				icon = 'exclaim',
+#				events = ['kuro3_dungeon_1'],
+#				possible_challenges = [],
+#			}
 		},
 		
 		event_room_number = [3,4],

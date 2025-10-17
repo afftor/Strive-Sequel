@@ -1241,7 +1241,7 @@ var data = {
 					},
 					{
 						code = "remove_quest_location",
-						value = "quest_dungeon_kuro3 "
+						value = "quest_dungeon_kuro3"
 					}
 				]
 			}
@@ -1349,7 +1349,7 @@ var data = {
 					},
 					{
 						code = "remove_quest_location",
-						value = "quest_dungeon_kuro3 "
+						value = "quest_dungeon_kuro3"
 					}
 				]
 			}
@@ -1403,7 +1403,7 @@ var data = {
 					},
 					{
 						code = "remove_quest_location",
-						value = "quest_dungeon_kuro3 "
+						value = "quest_dungeon_kuro3"
 					}
 				]
 			}
@@ -1450,7 +1450,7 @@ var data = {
 					},
 					{
 						code = "remove_quest_location",
-						value = "quest_dungeon_kuro3 "
+						value = "quest_dungeon_kuro3"
 					}
 				]
 			}
