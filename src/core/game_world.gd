@@ -77,6 +77,19 @@ func fix_serialization():
 	var tmp = ResourceScripts.world_gen.get_location_from_code('quest_cali_bandits_location')
 	if tmp != null and tmp.type != 'dungeon': 
 		tmp.type = 'dungeon'
+	if ResourceScripts.game_progress.get_active_quest("kuro_quest_3") != null && ResourceScripts.game_progress.get_active_quest("kuro_quest_3").stage == 'dungeon':
+		tmp = ResourceScripts.world_gen.get_location_from_code('quest_dungeon_kuro3')
+		if tmp.completed and !dungeon_events_assigned.has('kuro3_dungeon_1'):
+			globals.common_effects([
+				{code = "remove_quest_location", value = "quest_dungeon_kuro3"},
+				{code = "make_quest_location", value = "quest_dungeon_kuro3"},
+			])
+	elif ResourceScripts.game_progress.completed_quests.has('kuro_quest_3'):
+		tmp = ResourceScripts.world_gen.get_location_from_code('quest_dungeon_kuro3')
+		if tmp != null:
+			globals.common_effects([
+				{code = "remove_quest_location", value = "quest_dungeon_kuro3"},
+			])
 
 
 func fix_import(data):
