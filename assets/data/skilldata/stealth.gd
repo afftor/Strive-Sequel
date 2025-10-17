@@ -118,7 +118,7 @@ var skills = {
 		cost = {mp = 10},
 		repeat = 6,
 		keep_target = variables.TARGET_KEEP,
-		next_target = variables.NT_ANY, #need to implement nt_weapon
+		next_target = variables.NT_WEAPON,
 		charges = 0,
 		combatcooldown = 5,
 		cooldown = 0,
