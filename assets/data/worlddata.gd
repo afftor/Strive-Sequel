@@ -710,6 +710,13 @@ var random_dungeon_events = {
 		dungeons = ["dungeon_grove"],
 		chance = 0.75
 	},
+	event_nixx_hideout = {
+		event = 'kuro3_dungeon_1',
+		reqs = [{type = 'event_seen', check = false, value = 'kuro3_dungeon_1'}],#probably not necessary
+		dungeons = ["quest_dungeon_kuro3"],
+		chance = 1,
+		levels = [-1]
+	},
 #	event1 = {
 #		event = 'eventname',#event code to launch
 #		reqs = [],#checks before event could spawn
