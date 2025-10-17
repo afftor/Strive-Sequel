@@ -1259,7 +1259,7 @@ func finish_combat():
 func finish_quest_dungeon(args):
 #	interactive_message('finish_quest_dungeon', 'quest_finish_event', {locationname = active_location.name})
 	autocomplete_quest(args.id)
-	globals.unquest_location(active_location.id)
+#	globals.unquest_location(active_location.id)
 
 
 func finish_quest_location(args):
