@@ -28,7 +28,10 @@ func setup_upgrade(upgrade_id):
 	#setup icon
 	$Image.texture = images.upgrade_icons[upgrade_data.icon]
 	if upgrade_next_state != null:
-		$Image2.texture = images.upgrade_tiers[upgrade_lv+1]
+		if images.upgrade_tiers.has(upgrade_lv+1):
+			$Image2.texture = images.upgrade_tiers[upgrade_lv+1]
+		else:
+			$Image2.texture = images.upgrade_tiers[images.upgrade_tiers.keys().back()]
 		var can_upg = true
 		for res in upgrade_next_state.cost:
 			if res == 'gold':
@@ -42,7 +45,10 @@ func setup_upgrade(upgrade_id):
 		if can_upg:
 			$Image2.modulate = Color(variables.hexcolordict.green)
 	else:
-		$Image2.texture = images.upgrade_tiers[upgrade_lv]
+		if images.upgrade_tiers.has(upgrade_lv):
+			$Image2.texture = images.upgrade_tiers[upgrade_lv]
+		else:
+			$Image2.texture = images.upgrade_tiers[images.upgrade_tiers.keys().back()]
 		$bg.modulate = Color("66b138")
 
 
