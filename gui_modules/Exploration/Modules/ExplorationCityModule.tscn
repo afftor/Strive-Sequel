@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=3]
 [ext_resource path="res://gui_modules/Universal/Modules/NavigationModule.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/divider_navi_player.png" type="Texture" id=5]
-[ext_resource path="res://assets/Textures_v2/CITY/Panels/guildsnavi_city.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/CITY/Panels/guildsnavi_city_2_9patch.png" type="Texture" id=6]
 [ext_resource path="res://gui_modules/Exploration/Scripts/ExplorationCity.gd" type="Script" id=7]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=8]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=9]
@@ -119,7 +119,6 @@
 [ext_resource path="res://assets/images/iconsages/T.png" type="Texture" id=123]
 [ext_resource path="res://assets/images/sexicons/futa.png" type="Texture" id=124]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/button_traits_universal.png" type="Texture" id=126]
-
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 28 )
@@ -239,12 +238,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GuildsPanel" type="TextureRect" parent="."]
+[node name="GuildsPanel" type="NinePatchRect" parent="."]
 margin_left = 320.0
-margin_top = 119.0
+margin_top = 145.0
 margin_right = 1905.0
-margin_bottom = 173.0
+margin_bottom = 199.0
 texture = ExtResource( 6 )
+patch_margin_left = 14
+patch_margin_top = 13
+patch_margin_right = 13
+patch_margin_bottom = 13
 
 [node name="VSeparator" type="TextureRect" parent="GuildsPanel"]
 visible = false
