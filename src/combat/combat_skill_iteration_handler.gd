@@ -16,6 +16,7 @@ var target_number
 var number_rnd_targets = 0
 #var damagesrc
 var animationdict
+var last_iteration = false
 
 var tags setget _callerror, get_tags
 
@@ -214,7 +215,7 @@ func invoke_animations_2():
 			if j.target in ['caster','target']:
 				var sfxtarget = globals.ProcessSfxTarget(j.target, caster, i)
 				if sfxtarget != null:
-					queuenode.add_sfx(sfxtarget, get_true_code(j))
+					queuenode.add_sfx(sfxtarget, get_true_code(j), make_sfx_params(j))
 	
 	combatnode.turns += 1
 	step += 1
@@ -349,3 +350,12 @@ func get_true_code(anim_dict):
 	if anim_dict.has('code_repeat') and anim_dict.code_repeat.has(parent.iterations_played):
 		return anim_dict.code_repeat[parent.iterations_played]
 	return anim_dict.code
+
+func make_sfx_params(anim_dict):
+	var params = {}
+	if anim_dict.has('duration'): params.duration = anim_dict.duration
+	if anim_dict.has('no_delays'): params.no_delays = anim_dict.no_delays
+	if anim_dict.has('no_repeat_delays') and anim_dict.no_repeat_delays and !last_iteration:
+		params.no_delays = true
+	return params
+
