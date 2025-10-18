@@ -381,6 +381,7 @@ func invoke_instancing():
 		#make instance
 		iterations_played += 1
 		active_instance = queuenode.add_iteration()
+		active_instance.last_iteration = (iterations_played == repeat)
 		active_instance.template = template
 		active_instance.parent = self
 		active_instance.createfromskill()

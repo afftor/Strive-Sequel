@@ -233,11 +233,16 @@ func gfx_video(node, args):
 	return nextanimationtime + aftereffectdelay
 
 func gfx_animsprite(node, args):
-	var duration = ResourceScripts.core_animations.get_gfx_sprite_time(args.sprite_name)
+	var duration
+	if args.has('duration'):
+		duration = args.duration
+	else:
+		duration = ResourceScripts.core_animations.get_gfx_sprite_time(args.sprite_name)
 	var nextanimationtime = duration - 0.1
-	hp_update_delays[node] = 0.5
-	log_update_delay = max(log_update_delay, 0.5)
-	buffs_update_delays[node] = 0.5
+	if !args.has("no_delays"):
+		hp_update_delays[node] = 0.5
+		log_update_delay = max(log_update_delay, 0.5)
+		buffs_update_delays[node] = 0.5
 	ResourceScripts.core_animations.gfx_sprite(node, args.sprite_name, 0.5, duration)
 	
 	return nextanimationtime + aftereffectdelay

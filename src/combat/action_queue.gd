@@ -190,8 +190,8 @@ func add_combatlog(text):
 	add_animation(template)
 
 
-func add_sfx(node, code):
-	var template = {node = node, time = combatnode.turns, type = code, slot = 'SFX', params = {}}
+func add_sfx(node, code, params = {}):
+	var template = {node = node, time = combatnode.turns, type = code, slot = 'SFX', params = params}
 	add_animation(template)
 
 
