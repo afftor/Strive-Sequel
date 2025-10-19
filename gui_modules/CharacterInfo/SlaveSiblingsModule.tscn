@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.gd" type="Script" id=2]
@@ -109,6 +109,8 @@ use_filter = true
 font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxTexture" id=7]
+
+[sub_resource type="StyleBoxTexture" id=12]
 
 [sub_resource type="StyleBoxTexture" id=8]
 
@@ -425,8 +427,13 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
+custom_icons/radio_checked_disabled = ExtResource( 17 )
+custom_icons/radio_checked = ExtResource( 17 )
 custom_icons/checked_disabled = ExtResource( 9 )
+custom_icons/radio_unchecked_disabled = ExtResource( 9 )
 custom_icons/checked = ExtResource( 17 )
+custom_icons/radio_unchecked = ExtResource( 9 )
+custom_icons/unchecked_disabled = ExtResource( 9 )
 custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 7 )
 text = "WORKRULELOCK"
@@ -441,10 +448,15 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
+custom_icons/radio_checked_disabled = ExtResource( 17 )
+custom_icons/radio_checked = ExtResource( 17 )
 custom_icons/checked_disabled = ExtResource( 9 )
+custom_icons/radio_unchecked_disabled = ExtResource( 9 )
 custom_icons/checked = ExtResource( 17 )
+custom_icons/radio_unchecked = ExtResource( 9 )
+custom_icons/unchecked_disabled = ExtResource( 9 )
 custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 7 )
+custom_styles/focus = SubResource( 12 )
 text = "WORKRULERATION"
 
 [node name="shifts" type="CheckBox" parent="work_rules"]
@@ -457,8 +469,13 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
+custom_icons/radio_checked_disabled = ExtResource( 17 )
+custom_icons/radio_checked = ExtResource( 17 )
 custom_icons/checked_disabled = ExtResource( 9 )
+custom_icons/radio_unchecked_disabled = ExtResource( 9 )
 custom_icons/checked = ExtResource( 17 )
+custom_icons/radio_unchecked = ExtResource( 9 )
+custom_icons/unchecked_disabled = ExtResource( 9 )
 custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 8 )
 text = "WORKRULESHIFTS"
@@ -474,8 +491,13 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
+custom_icons/radio_checked_disabled = ExtResource( 17 )
+custom_icons/radio_checked = ExtResource( 17 )
 custom_icons/checked_disabled = ExtResource( 9 )
+custom_icons/radio_unchecked_disabled = ExtResource( 9 )
 custom_icons/checked = ExtResource( 17 )
+custom_icons/radio_unchecked = ExtResource( 9 )
+custom_icons/unchecked_disabled = ExtResource( 9 )
 custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 9 )
 text = "UPGRADELUXURY_ROOMS"
@@ -490,8 +512,13 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
+custom_icons/radio_checked_disabled = ExtResource( 17 )
+custom_icons/radio_checked = ExtResource( 17 )
 custom_icons/checked_disabled = ExtResource( 9 )
+custom_icons/radio_unchecked_disabled = ExtResource( 9 )
 custom_icons/checked = ExtResource( 17 )
+custom_icons/radio_unchecked = ExtResource( 9 )
+custom_icons/unchecked_disabled = ExtResource( 9 )
 custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 9 )
 text = "WORKRULECONTRACEPTIVE"
@@ -508,8 +535,13 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
+custom_icons/radio_checked_disabled = ExtResource( 17 )
+custom_icons/radio_checked = ExtResource( 17 )
 custom_icons/checked_disabled = ExtResource( 9 )
+custom_icons/radio_unchecked_disabled = ExtResource( 9 )
 custom_icons/checked = ExtResource( 17 )
+custom_icons/radio_unchecked = ExtResource( 9 )
+custom_icons/unchecked_disabled = ExtResource( 9 )
 custom_icons/unchecked = ExtResource( 9 )
 custom_styles/focus = SubResource( 9 )
 text = "WORKRULEPERSONALITY_LOCK"
