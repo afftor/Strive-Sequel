@@ -111,6 +111,28 @@ var data = {
 				],
 				previous_dialogue_option = 3
 			},
+		],
+		options = [
+			{
+				code = "amelia_main_guild_2_1",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				dialogue_argument = 1
+			}
+		]
+	},
+	amelia_main_guild_2_1 = {
+		image = "amelia_norlan",
+		tags = [
+			"dialogue_scene",
+			"master_translate"
+		],
+		reqs = [
+
+		],
+		text = [
 			{
 				text = "AMELIA_MAIN_GUILD_2",
 				reqs = [
