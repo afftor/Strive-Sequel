@@ -8353,7 +8353,7 @@ Daisy looks away, but you notice how her mood notably darkens.""",
 {color=yellow|— T-thank you, [Master]. I'll clean this up right away...}""",
 	DAISY_LOST_MESSAGE = "This evening you notice that your slave Daisy hasn't returned from her tasks as usual. You're not sure what, but something is definitely wrong. Daisy is gone and you should start searching for her as soon as possible. Perhaps, the Servants Guild might have ideas on how to find her.",
 	DAISY_LOST_AMELIA_OPTION_0 = "I've lost someone...",
-	DAISY_LOST_AMELIA_REPLY_0 = "{color=yellow|— That's a grim situation, we certainly condemn kidnapping, even when it happens to a slave. I remember the girl, you did send her for our training, right? There was a landowner who seemed rather interested in her and asked after her owner. He was from {color=yellow|The Obsidian Brotherhood}, led my Lord Ramont.}",
+	DAISY_LOST_AMELIA_REPLY_0 = "{color=yellow|— That's a grim situation, we certainly condemn kidnapping, even when it happens to a slave. I remember the girl, you did send her for our training, right? There was a landowner who seemed rather interested in her and asked after her owner. He was from} {color=green|The Obsidian Brotherhood}{color=yellow|, led my Lord Ramont.}",
 	DAISY_LOST_AMELIA_OPTION_1_1 = "I might have received a letter from him.",
 	DAISY_LOST_AMELIA_OPTION_1_2 = "How could you give him my information like that?",
 	DAISY_LOST_AMELIA_REPLY_1_1 = "{color=yellow|— He offered to purchase her from you? It seems he'd be our prime suspect then. Their main establishment is a dozen miles away from the city. You better be prepared before going to meet him.}",
@@ -12845,10 +12845,12 @@ Zephyra smiles with unparalleled adoration as her tail wags playfully.
 	AMELIA_MAIN_GUILD_1_OPTION_1 = "Where's Amelia?",
 	AMELIA_MAIN_GUILD_1_OPTION_2 = "What's keeping you so busy?",
 	AMELIA_MAIN_GUILD_1_OPTION_3 = "I received the summons for some questioning.",
-	AMELIA_MAIN_GUILD_2_1 = "{color=yellow|— Regrettably, she is... um... currently unavailable. I'm overseeing the guild's matters for now. My name is Norlan from the {color=yellow|Gilded Consortium}. Should you require assistance regarding the guild, I'm here to facilitate it. However, if your matter pertains to Amelia... Well, I'm afraid it must be postponed for the time being. }",
+	AMELIA_MAIN_GUILD_2_1 = "{color=yellow|— Regrettably, she is... um... currently unavailable. I'm overseeing the guild's matters for now. My name is Norlan from the} {color=green|Gilded Consortium}{color=yellow|. Should you require assistance regarding the guild, I'm here to facilitate it. However, if your matter pertains to Amelia... Well, I'm afraid it must be postponed for the time being. }",
 	AMELIA_MAIN_GUILD_2_2 = "{color=yellow|— There have been some unforeseen developments involving the guild and its members. However, you do not need to worry, Mayor [name]. I can assure you that our business interactions will remain unaffected by these events. Nevertheless, a brief adjustment period is required to properly acclimate to this new situation before moving forward.}",
 	AMELIA_MAIN_GUILD_2_3 = "{color=yellow|Norlan: — Hmm... Quite intriguing. I distinctly communicated to our secretary that we have no intention of inconveniencing you with such trivial matters.}",
-	AMELIA_MAIN_GUILD_2 = """The office door swings open abruptly, as another man rushes into the office. He possesses a plump physique and a relatively short stature. His attire unmistakably exudes an air of opulence and high social standing.
+	AMELIA_MAIN_GUILD_2 = """
+	
+The office door swings open abruptly, as another man rushes into the office. He possesses a plump physique and a relatively short stature. His attire unmistakably exudes an air of opulence and high social standing.
 
 {color=yellow|Guildsman: — Norlan, has there been any news about the missing slaves yet? My clients demand an explanation. I can't keep them in the dark! Oh... I see you have a guest. [mister] Mayor, to what do we owe the pleasure?}
 
@@ -14302,7 +14304,7 @@ Lilia: – Mmhm...
 
 Moans of pleasure escape Lilia's mouth despite her seemingly uncomfortable restricted state. Suddenly a deep voice looms over the cave.
 
-{color=yellow|Voice: — Yes... You are a perfect subject for my power, I can feel your essential lust and perverse dormant in your body. Let us awaken it.}
+{color=yellow|Voice: — Yes... You are a perfect subject for my power, I can feel your essential lust and perversity dormant in your body. Let us awaken it.}
 
 After a few minutes, the energy gathers in each of her holes, a viscous liquid oozing out of Lilia's mouth, pussy, and ass. A small amount of clear fluids escape her pussy too, mixing in with the tentacle goop that pumps itself inside her. She swallows all of it obediently as her eyes glaze over, her body beginning to relax.""",
 	LILIA_TRANSFORM_3_T = """As the ritual progresses, her body begins to undergo changes. Her hair darkens, shadowy marks show up on her body, two horns sprout from her head and a cute little tail extends from her ass. Lilia seems even more intrigued by the changes happening to her body, letting the tentacles explore wherever they want.

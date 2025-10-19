@@ -1,3 +1,10 @@
+0.13.1b
+Fixed some quest scenes breaking the game
+Fixed Aliron guild panel not working properly with navigation panel scroll
+0.13.1a
+Fixed vampirism effect not working
+Fixed Kuro final dungeon not working properly (backward compatible)
+Some minor text fixes
 0.13.1
 Base population limits increased by 1 (6 basic and +6 per upgrade)
 Added new Kuro sidequest and a few dialogues
