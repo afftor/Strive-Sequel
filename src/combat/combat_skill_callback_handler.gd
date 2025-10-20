@@ -235,9 +235,9 @@ func refine_target(skill, caster, ttarget): #s_skill, caster, target
 	#fing new target
 	if skill.next_target == variables.NT_WEAPON:
 		if caster.get_weapon_range() == 'melee':
-			 skill.next_target == variables.NT_MELEE
+			 skill.next_target = variables.NT_MELEE
 		else:
-			 skill.next_target == variables.NT_ANY
+			 skill.next_target = variables.NT_ANY
 	match skill.next_target:
 		variables.NT_ANY:
 			var avtargets = combatnode.get_enemy_targets_all(caster)
