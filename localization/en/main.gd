@@ -18537,6 +18537,10 @@ After a few minutes nothing still happened and [name] decides to move on.""",
 	BODYUPGRADEDESCRIPT_UPGRADE_RESIST = "[name]'s magic resistance will allow to negate enemy spells with 25% chance.",
 	BODYUPGRADENAME_UPGRADE_THICKBLOOD = "Thick Blood",
 	BODYUPGRADEDESCRIPT_UPGRADE_THICKBLOOD = "[name] will gain immunity to bleed and poison.",
+	BODYUPGRADENAME_UPGRADE_BREEDER = "Breeder",
+	BODYUPGRADEDESCRIPT_UPGRADE_BREEDER = """Allows breeding with any race.
+Pregnancy Debuffs are weaker
+Offspring will inherit only this parent's stats.""",
 	QUALITYPOOR = "Poor",
 	QUALITYAVERAGE = "Average",
 	QUALITYGOOD = "Good",
