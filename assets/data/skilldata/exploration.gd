@@ -9,7 +9,7 @@ var skills = {
 		type = 'exploration', 
 		ability_type = 'spell',
 		tags = ['support', 'exploration', 'fire'],
-		reqs = [],
+		reqs = [{code = 'has_status', status = 'flamesphere', check = false},],
 		targetreqs = [],
 		effects =  [Effectdata.rebuild_template({effect = 'e_tr_flamesphere', trigger = variables.TR_EXPLORE_POSTDAMAGE})], 
 		cost = {mp = 5},
@@ -177,6 +177,7 @@ var effects = {
 		target = 'caster',
 		stack = 'flamesphere',
 		rem_event = [variables.TR_TURN_GET, variables.TR_DEATH, variables.TR_TICK],
+		tags = ['flamesphere'],
 		sub_effects = [
 			{
 				type = 'trigger',
