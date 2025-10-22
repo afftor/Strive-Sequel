@@ -159,6 +159,7 @@ func build_guilds_panel(guilds):
 		newbutton.set_meta("guild_name", guild.name)
 		GuildPanelContainer.add_child(newseparator)
 		newseparator.visible = counter != guilds.size()
+	$GuildsPanel.visible = (counter > 0)
 
 
 func sort_factions(first, second):
