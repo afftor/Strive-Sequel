@@ -1082,10 +1082,12 @@ func start_event(code, type, args):
 
 
 func interactive_message_custom(data): #not safe
+	event_is_active = true
 	var scene = get_spec_node(self.NODE_DIALOGUE)
 	scene.open(data.duplicate(true))
 
 func interactive_dialogue_start(code, stage): #not safe
+	event_is_active = true
 	var scene = get_spec_node(self.NODE_DIALOGUE)
 	scene.dialogue_next(code, stage)
 
