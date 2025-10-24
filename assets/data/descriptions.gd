@@ -969,5 +969,10 @@ func make_slave_statreq_text(req):
 			print("warning: make_slave_statreq_text() used 'in_combat_party' code!")
 			if req.value: return "Must be in combat party"
 			else: return "Must not be in combat party"
+		'or_list':
+			var text = make_slave_statreq_text(req.or_list[0])
+			for i in range(1, req.or_list.size()):
+				text += "\n  %s %s" % [tr('REQOR'), make_slave_statreq_text(req.or_list[i])]
+			return text
 		_:
-			return String(req).trim_prefix("{").trim_suffix("}")
+			return String(req).replace("{", "(").replace("}", ")")
