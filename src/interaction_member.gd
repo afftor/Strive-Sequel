@@ -615,6 +615,11 @@ func valuecheck(dict, group, scene):
 					check = true
 					break
 			return check
+		'or_list':#currently not in use but added for consistency
+			var or_check = false
+			for j in dict.or_list:
+				or_check = or_check or valuecheck(j, group, scene)
+			return or_check
 
 func form_action_ref_dict(id_dict):
 	return gui_controller.sex_panel.make_ref_dict(id_dict)

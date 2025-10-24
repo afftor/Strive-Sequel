@@ -1283,10 +1283,10 @@ var quests = {
 			[
 				{
 					has_no_req = {code = "sex", value = 'male'},
-					reqs = [
+					reqs = {code = 'or_list', or_list = [
 						{code = 'gear_equiped', value = 'lacy_underwear', check = true},
-						{code = 'gear_equiped', value = 'seethrough_underwear', check = true, orflag = true},
-					],
+						{code = 'gear_equiped', value = 'seethrough_underwear', check = true},
+					]},
 					chance = 0.5,
 					reward_bonus = 0.05,
 					stop_on_me = true

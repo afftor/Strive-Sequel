@@ -1596,6 +1596,11 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			return get_work() == i.value
 		'can_add_thrall':
 			return enthrall.can_add_thrall() == i.check
+		'or_list':
+			var or_check = false
+			for j in i.or_list:
+				or_check = or_check or valuecheck(j, ignore_npc_stats_gear)
+			return or_check
 	return check
 
 
