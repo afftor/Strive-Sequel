@@ -1157,7 +1157,7 @@ func generate_scene_text(scene):
 		scenetext += "\n\n" + text
 
 	if cur_text_label.bbcode_text != '':
-		cur_text_label.bbcode_text += "\n\n[color=yellow]"+previous_text+"[/color]\n\n" + globals.TextEncoder(scenetext)
+		cur_text_label.bbcode_text += globals.TextEncoder("\n\n{color=gray_text_dialogue|" + previous_text + "}\n\n" + scenetext)
 	else:
 		cur_text_label.bbcode_text = globals.TextEncoder(scenetext)
 
