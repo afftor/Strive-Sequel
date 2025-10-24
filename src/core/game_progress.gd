@@ -308,7 +308,21 @@ func check_timed_events():
 									for j in i.reqs:
 										if j.type in ['date']:
 											j.value += 1
-									break
+											break
+								'repeat_next_turn':
+									var add_day = false
+									for j in i.reqs:
+										if j.type in ['hour']:
+											j.value += 1
+											if j.value > variables.HoursPerDay:
+												j.value = 1
+												add_day = true
+											break
+									if add_day:
+										for j in i.reqs:
+											if j.type in ['date']:
+												j.value += 1
+												break
 			if failed:
 				gui_controller.clock.continue_timer = true
 			else:
