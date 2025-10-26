@@ -187,6 +187,7 @@ var TranslationDict = {
 	SIBLINGMODULEAVAILABLE = "Доступно",
 	SIBLINGMODULEAVAILABLETOOLTIP = "Количество доступных дополнительных тренировок зависит от Фактора Роста.",
 	SIBLINGMODULETHRALLLIST = """Приспешники""",
+	FAILALREADYSUCCUBUS = """Can't use corruptive essence on Thralls or Succubi""", # MISSING TRANSLATION
 	MINORTRAINMAXREACHED = "Достигнут максимум дополнительных тренировок",
 	SYSMESSAGEATLEAST1CHAR = """Выберите хотя бы 1 персонажа для боя.""",
 	OPERANTATLEAST = """Минимум""",
@@ -19707,6 +19708,10 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	BODYUPGRADEDESCRIPT_UPGRADE_RESIST = """Сопротивление магии [name] позволит сводить на нет вражеские заклинания с вероятностью 25%.""",
 	BODYUPGRADENAME_UPGRADE_THICKBLOOD = """Густая кровь""",
 	BODYUPGRADEDESCRIPT_UPGRADE_THICKBLOOD = """[name] получит иммунитет к кровотечению и яду.""",
+	BODYUPGRADENAME_UPGRADE_BREEDER = """Breeder""", # MISSING TRANSLATION
+	BODYUPGRADEDESCRIPT_UPGRADE_BREEDER = """Allows breeding with any race.
+Pregnancy Debuffs are weaker
+Offspring will inherit only this parent's stats.""", # MISSING TRANSLATION
 
 	QUALITYPOOR = """Плохое""",
 	QUALITYAVERAGE = """Среднее""",

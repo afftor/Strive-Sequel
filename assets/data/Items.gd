@@ -3076,7 +3076,7 @@ var itemlist = {
 		tags = ['no_random', 'request_confirm'],
 		uses_per_day = 0,
 		mansion_effect = 'corruptive_essence',
-		reqs_fail_message = 'ALREADYSUCCUBUS',
+		reqs_fail_message = 'FAILALREADYSUCCUBUS',
 	},
 	minorus_potion = {
 		code = 'minorus_potion',
@@ -3829,7 +3829,7 @@ var itemlist = {
 		crafttype = 'basic',
 		slots = ['head'],
 		price = 3000,
-		icon = load("res://assets/images/iconsskills/skill_veil.png"),
+		icon = load("res://assets/images/iconsitems/nixx_coat.png"),
 		tier = 'hard',
 		reqs = [],
 		effects = [],

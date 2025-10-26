@@ -233,9 +233,9 @@ stretch_mode = 7
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BackgroundT1"]
 margin_left = 24.0
-margin_top = 46.0
+margin_top = 32.0
 margin_right = 777.0
-margin_bottom = 407.0
+margin_bottom = 438.0
 theme = ExtResource( 14 )
 custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true

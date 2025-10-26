@@ -186,7 +186,7 @@ var effect_table = {
 		tags = ['tr_obedience', 'tr_obed_donate'],
 		buffs = [ 
 			{
-			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
+			icon = "res://assets/images/iconstraits/broke_in.png",
 			description = "THRALLDESCRIPT",
 			tags = ['show_in_traits', 'mansion_only']
 		}
