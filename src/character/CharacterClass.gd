@@ -2333,8 +2333,10 @@ func update_portrait(ragdoll): # for ragdolls
 
 func check_portrait():
 	var path = get_stat('icon_image')
+	if path == null:
+		return false
 	if !(path.is_abs_path() or path.is_rel_path()): #portrait is not path - so it must exist
-		return true 
+		return true
 	if File.new().file_exists(path): 
 		return true
 	return false
