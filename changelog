@@ -1,3 +1,9 @@
+0.13.1c
+Corrected some scene dialogues
+Fixed Devastation skill and made its animation faster
+Fixed dungeon events asking for captured characters
+Fixed player choice text events shown as character dialogues
+Other minor gui fixes and text improvements
 0.13.1b
 Fixed some quest scenes breaking the game
 Fixed Aliron guild panel not working properly with navigation panel scroll
@@ -1346,4 +1352,4 @@ Fixed a severe issue with saving
 Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
-Release"
+Release

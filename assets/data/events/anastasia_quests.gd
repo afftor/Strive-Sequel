@@ -1,7 +1,6 @@
 extends Reference
 var data = {
 	ana_letter_1 = {
-		image = null,
 		tags = [
 			"dialogue_scene"
 		],
@@ -12,17 +11,28 @@ var data = {
 		text = [
 			{
 				text = "ANA_LETTER_1_1",
-				reqs = [],
-				previous_dialogue_option = 0,
-				bonus_effects = []
+				reqs = [
+
+				]
 			},
 			{
 				text = "ANA_LETTER_1_2",
-				reqs = [],
+				reqs = [
+
+				],
 				previous_dialogue_option = 2
 			}
 		],
 		options = [
+			{
+				code = "ana_letter_2",
+				text = "ANA_LETTER_1_OPTION_1_1",
+				reqs = [
+
+				],
+				dialogue_argument = 1,
+				type = "next_dialogue"
+			},
 			{
 				code = "ana_letter_2",
 				text = "ANA_LETTER_1_OPTION_1",
@@ -47,8 +57,7 @@ var data = {
 				reqs = [
 
 				],
-				dialogue_argument = 2,
-				previous_dialogue_option = 0
+				dialogue_argument = 2
 			},
 			{
 				code = "ana_letter_2",
@@ -87,7 +96,7 @@ var data = {
 
 				],
 				dialogue_argument = 1,
-				type = "next_dialogue",
+				type = "next_dialogue"
 			}
 		]
 	},
@@ -796,7 +805,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "comlete_quest",
-						value = "anastasia_quest",
+						value = "anastasia_quest"
 					},
 					{
 						code = "add_timed_event",
@@ -819,7 +828,8 @@ var data = {
 	anastasia_return_3 = {
 		image = null,
 		tags = [
-			"dialogue_scene", 'master_translate'
+			"dialogue_scene",
+			"master_translate"
 		],
 		reqs = [
 
@@ -894,7 +904,7 @@ var data = {
 
 				],
 				dialogue_argument = 1,
-				 change_dialogue_type = 2,
+				change_dialogue_type = 2,
 				type = "next_dialogue",
 				bonus_effects = [
 					{
@@ -903,7 +913,7 @@ var data = {
 					},
 					{
 						code = "complete_quest",
-						value = "anastasia_quest",
+						value = "anastasia_quest"
 					},
 					{
 						code = "add_timed_event",
@@ -976,8 +986,7 @@ var data = {
 				text = "ANASTASIA_PT2_1_1",
 				reqs = [
 
-				],
-				previous_dialogue_option = 0
+				]
 			},
 			{
 				text = "ANASTASIA_PT2_1_2",
@@ -1358,7 +1367,8 @@ var data = {
 	ana_fort_1 = {
 		image = "ana_mercenary",
 		tags = [
-			"dialogue_scene", 'master_translate'
+			"dialogue_scene",
+			"master_translate"
 		],
 		reqs = [
 
@@ -1601,7 +1611,6 @@ var data = {
 				reqs = [
 
 				],
-#				previous_dialogue_option = 1,
 				bonus_effects = [
 					{
 						code = "progress_quest",
@@ -1886,53 +1895,157 @@ var data = {
 			}
 		]
 	},
-	
-	ana_blow_1 = { 
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+	ana_blow_1 = {
+		tags = [
+			"dialogue_scene",
+			"master_translate"
+		],
 		scene_type = "ero_scene",
 		custom_background = "ana_blow_1",
 		save_scene_to_gallery = true,
 		unlocked_gallery_seq = "ana_blow",
-		reqs = [], 
-		text = [{text = "ANA_BLOW_1", reqs = [], }], 
-		options = [ {code = 'ana_blow_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}, ],
+		reqs = [
+
+		],
+		text = "ANA_BLOW_1",
+		options = [
+			{
+				code = "ana_blow_2",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				dialogue_argument = 1,
+				type = "next_dialogue"
+			}
+		]
 	},
-	ana_blow_2 = { 
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+	ana_blow_2 = {
+		image = null,
+		tags = [
+			"dialogue_scene",
+			"master_translate"
+		],
 		scene_type = "ero_scene",
 		custom_background = "ana_blow_2",
 		save_scene_to_gallery = true,
-		reqs = [], 
-		text = [{text = "ANA_BLOW_2", reqs = [], }], 
-		options = [ {code = 'ana_blow_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}, ],
+		reqs = [
+
+		],
+		text = [
+			{
+				text = "ANA_BLOW_2",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "ana_blow_3",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				dialogue_argument = 1,
+				type = "next_dialogue"
+			}
+		]
 	},
-	ana_blow_3 = { 
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+	ana_blow_3 = {
+		image = null,
+		tags = [
+			"dialogue_scene",
+			"master_translate"
+		],
 		scene_type = "ero_scene",
 		custom_background = "ana_blow_3",
 		save_scene_to_gallery = true,
-		reqs = [], 
-		text = [{text = "ANA_BLOW_3", reqs = [], }], 
-		options = [ {code = 'ana_blow_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}, ],
+		reqs = [
+
+		],
+		text = [
+			{
+				text = "ANA_BLOW_3",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "ana_blow_4",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				dialogue_argument = 1,
+				type = "next_dialogue"
+			}
+		]
 	},
-	ana_blow_4 = { 
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+	ana_blow_4 = {
+		image = null,
+		tags = [
+			"dialogue_scene",
+			"master_translate"
+		],
 		scene_type = "ero_scene",
 		custom_background = "ana_blow_4",
 		save_scene_to_gallery = true,
-		reqs = [], 
-		text = [{text = "ANA_BLOW_4", reqs = [], }], 
-		options = [ {code = 'ana_blow_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}, ],
+		reqs = [
+
+		],
+		text = [
+			{
+				text = "ANA_BLOW_4",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "ana_blow_5",
+				text = "DIALOGUECONTINUE",
+				reqs = [
+
+				],
+				dialogue_argument = 1,
+				type = "next_dialogue"
+			}
+		]
 	},
-	ana_blow_5 = { 
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+	ana_blow_5 = {
+		image = null,
+		tags = [
+			"dialogue_scene",
+			"master_translate"
+		],
 		scene_type = "ero_scene",
 		custom_background = "ana_blow_5",
 		save_scene_to_gallery = true,
-		reqs = [], 
-		text = [{text = "ANA_BLOW_5", reqs = [], }], 
-		options = [ {code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',}, ],
-	},
-	
-	
+		reqs = [
+
+		],
+		text = [
+			{
+				text = "ANA_BLOW_5",
+				reqs = [
+
+				]
+			}
+		],
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				reqs = [
+
+				],
+				dialogue_argument = 1,
+				type = "next_dialogue"
+			}
+		]
+	}
 }

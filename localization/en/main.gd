@@ -2663,7 +2663,9 @@ Loyalty: +25, Maxes Obedience.""",
 	DIALOGUEENTHRALLREPORT_FAILED = "[targetname] was able to resist [name]'s charm.",
 	SKILLRELEASE_THRALL = "Release Thrall",
 	SKILLRELEASE_THRALLDESCRIPT = "Remove Thrall's status from the character. This will make them disappointed and possibly have a breakdown.",
-	DIALOGUERELEASE_THRALLREPORT = "As [name] releases [his] charm over [targetname], [targethe] is no longer enthralled...\n\n{color=yellow|Their relationship worsen greatly.}",
+	DIALOGUERELEASE_THRALLREPORT = """As [name] releases [his] charm over [targetname], [targethe] is no longer enthralled...
+
+{color=yellow|Their relationship worsen greatly.}""",
 	SKILLCORRUPT = "Corrupt",
 	SKILLCORRUPTDESCRIPT = "Use lust magic to corrupt a mind of an individual, making them more sexually curious, increasing their Consent. Chance is based on Sexuals Factor but is guaranteed to work on Thralls.",
 	DIALOGUECORRUPTREPORT = "[name]'s alluring magic has enveloped [targetname]'s mind, increasing [targethis] consent.",
@@ -2682,7 +2684,8 @@ Loyalty: +25, Maxes Obedience.""",
 	HUMANFORMDESCRIPT = "Normal form",
 	MAGATTUNEMENTDESCRIPT = "Magic Attunement",
 	COMBATATTUNEMENTDESCRIPT = "Combat Attunement",
-	THRALLDESCRIPT = "Thrall\nWits: -10; EXP Gain: -10%; Sell price is greatly lowered.",
+	THRALLDESCRIPT = """Thrall
+Wits: -10; EXP Gain: -10%; Sell price is greatly lowered.""",
 	THRALLS6DESCRIPT = "Has 6 thralls",
 	THRALLS5DESCRIPT = "Has 5 thralls",
 	THRALLS4DESCRIPT = "Has 4 thralls",
@@ -16661,13 +16664,11 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	KURO_ERRAND_QUEST_INVITE = "Visit Aliron's outer district, you've been invited to",
 	KURO_ERRAND_QUEST_SEARCH = "Complete Search task at the hideout for clues about other such spots",
 	KURO_ERRAND_QUEST_BASE = "Clear out cult's parent base",
-	
 	KURO_QUEST_3_NAME = "Kuro: Apostasy",
 	KURO_QUEST_3_SUMMARY = "Kuro has an insidious plan regarding her patron.",
 	KURO_QUEST_3_CRAFT = "Craft Vesperine Cage, then speak to Kuro.",
 	KURO_QUEST_3_DEPTHS = "Search in Crystaldepths",
 	KURO_QUEST_3_DUNGEON = "Deal with Nixx at the Wailing Halls",
-	
 	DIALOGUEANAINITIATELP = """Anastasia greets you with a shy face. It seems she's not really accustomed to this new role.
 
 {color=yellow|— H-hello, [Master]... How was your day?}""",
@@ -18840,6 +18841,7 @@ The air smells faintly of dust and polish, the broken vase glinting under the ch
 {color=yellow|— Master, I received this... a letter from a rebel soldier's wife. She's desperate, begging me to find her husband. He's been lost since the fighting ended. Please, I know I'm in no position to ask favors, but will you take it? Help her look for him? I... I can't bear to ignore her plea. She included her name, Liora, and I'm sure she'd speak to you if you sought her out.}""",
 	ANA_LETTER_1_2 = """Anastasia blinks, caught off guard, then steadies herself, her voice trembling but resolute.
 {color=yellow|— I... I'll do anything you ask of me, Master. Anything at all. Just please, help her. She's lost everything already.}""",
+	ANA_LETTER_1_OPTION_1_1 = "I can't reject your plea when asked with such a sad face. I'll take care of it.",
 	ANA_LETTER_1_OPTION_1 = "You're still clinging to your old causes? Fine, hand over the letter, I'll see what I can do.",
 	ANA_LETTER_1_OPTION_2 = "Focus on your duties here, not some sob story. You're my slave now, not a rebel savior, keep that letter to yourself.",
 	ANA_LETTER_1_OPTION_3 = "A missing husband, huh? What's in it for me if I waste my time on this?",

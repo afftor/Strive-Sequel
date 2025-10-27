@@ -31,8 +31,7 @@ func _ready():
 
 	if OS.window_position.y < 0:
 		OS.window_position.y = 50
-
-
+	_load_changelog()
 	for i in $Panel/VBoxContainer.get_children():
 		i.connect("pressed", input_handler, 'open_shell', [i.name])
 	if input_handler.globalsettings.warnseen == true:
@@ -290,3 +289,17 @@ func change_preset_value(arg, val):
 	ResourceScripts.game_globals.set(arg, starting_presets.preset_data.keys()[tmp])
 	
 	start_preset_update()
+
+const CHANGELOG_PATH = "res://changelog"
+
+func _load_changelog():
+	var changelog_file = File.new()
+	if not changelog_file.file_exists(CHANGELOG_PATH):
+		$Changelogpanel/changelogtext.bbcode_text = ""
+		return
+	var open_result = changelog_file.open(CHANGELOG_PATH, File.READ)
+	if open_result != OK:
+		return
+	$Changelogpanel/changelogtext.bbcode_text = changelog_file.get_as_text()
+	changelog_file.close()
+

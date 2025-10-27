@@ -814,7 +814,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("mask", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("foxmask", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("service_suit", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("cali_heirloom_active", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("ayneris_rapier", {}))
 		var titem = globals.CreateGearItem("cali_heirloom_test", {})
 		titem.set_quality_level('legendary')
 		globals.AddItemToInventory(titem) #legendary version
@@ -929,7 +929,7 @@ func test_mode():
 		ResourceScripts.game_progress.decisions.append("bracelet_found")
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 
-		input_handler.interactive_message('amelia_main_guild_1', '', {})
+#		input_handler.interactive_message('amelia_main_guild_1', '', {})
 #		input_handler.interactive_message('halloween_9', '', {})
 #		input_handler.interactive_message('force_cali_6', '', {})
 		#ResourceScripts.gallery.play_scene(0)
