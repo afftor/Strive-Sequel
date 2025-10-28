@@ -67,7 +67,8 @@ var sounds = {
 
 	gameover = load("res://assets/sounds/sounds/GameOver.wav"),
 
-	blade = load("res://assets/sounds/sounds/dodge.wav"),#load("res://assets/sounds/sounds/fx knife hit solo.wav"),
+	blade = load("res://assets/sounds/sounds/hit.wav"),
+	blunt_hit = load("res://assets/sounds/sounds/blunt_hit.wav"),
 	fleshhit = load("res://assets/sounds/sounds/fx knife body hit.wav"),
 	bow = load("res://assets/sounds/sounds/ArrowShot.wav"),
 	skill_scene = load("res://assets/sounds/sounds/healeffect.wav"),
@@ -81,7 +82,6 @@ var sounds = {
 	defeat = load('res://assets/sounds/sounds/defeat.wav'),
 	combatmiss = load('res://assets/sounds/sounds/dodge.wav'),
 	dodge = load("res://assets/sounds/sounds/dodge.wav"),
-	levelup = load("res://assets/sounds/sounds/levelup.wav"),
 	chat_click = load("res://assets/sounds/sounds/click.wav"),
 
 	questcomplete = load("res://assets/sounds/sounds/win.wav"),

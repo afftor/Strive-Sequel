@@ -15111,6 +15111,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	ALIRON21 = "寻找西菲拉",
 	ALIRON22 = "与凯奇会面",
 	ALIRON23 = "检查阿米莉亚的信息",
+	ALIRON24 = """Approach the discreet merchant""", # MISSING TRANSLATION
 	ALIRON_KURO_CHURCH = """Aliron Church""", # MISSING TRANSLATION
 	
 	ELF_CAPITAL1 = "见女祭司",

@@ -1747,6 +1747,7 @@ Service is a global modifier for this assignment.""",
 	BROTHELWAITRESSALT = "Waiter",
 	BROTHELHOSTESS = "Hostess",
 	BROTHELHOSTESSALT = "Host",
+	#BROTHELHOSTESSDESCRIPT = "[name] will entertain customers with chatting and flirt. \nGold formula: (Hostess Income*(1 + Wits/60) * Productivity * Service Productivity +- 20% random value * min(4/1+0.001*value) * booster effect",
 	BROTHELHOSTESSDESCRIPT = "[name] will entertain customers with chatting and flirt. Scales with Wits",
 	BROTHELDANCER = "Dancer",
 	BROTHELDANCERDESCRIPT = "[name] will stage dances and performances in front of auditory. Scales with Physics",
@@ -4848,6 +4849,9 @@ You are one of the people who managed to get there just in time to secure an est
 	STARTUPGRADEBONUS2 = "Tailor Workshop",
 	STARTUPGRADEBONUS3 = "Alchemy Room",
 	STARTUPGRADEBONUS4 = "Corruptive Essence",
+	ALIRON_CORRUPTIVE_ESSENCE_EVENT = "While walking through Aliron's markets you stumble upon a discreet peddler offering a single vial of corruptive essence for a steep price. It's a rare chance to secure the forbidden mixture without relying on luck.",
+	ALIRON_CORRUPTIVE_ESSENCE_PURCHASE = "Buy the corruptive essence (1 000 gold)",
+	ALIRON_CORRUPTIVE_ESSENCE_DISMISS = "Shoo the merchant",
 	FIGHTERSINTRODUCTION1 = """A large man equipped in heavy armor gives you a disinterested look. 
 
 {color=yellow|— What is it? If you are looking for work, you'll have to register as a combatant first. I don't deal with recruits.}""",
@@ -6254,7 +6258,7 @@ You part ways pondering how you are going to explain this to Duncan...""",
 
 {color=aqua|Greg: — You are not in a position to doubt anything. Take your place and get ready for battle. We have enough forces to protect this shady town and if anything I have a couple of trump cards of my own.}
 
-{color=yellow|Aire: -...Yes, sir.}""",
+{color=yellow|Aire: — ...Yes, sir.}""",
 	AFTER_MINES_CONVOY_15 = """A few hundred feet away from town's walls Duncan parlayed with Anastasia as is customary prior to battle.
 
 {color=aqua|Anastasia: — It pains me to see how the people suffer because of our actions, but we won't lay down our arms.}
@@ -17951,6 +17955,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	ALIRON21 = "Search for Zephyra",
 	ALIRON22 = "Meet with Ketch",
 	ALIRON23 = "Check information on Amelia",
+	ALIRON24 = "Check the discreet merchant",
 	ALIRON_KURO_CHURCH = "Aliron Church",
 	ELF_CAPITAL1 = "Meet Priestess",
 	ELF_CAPITAL2 = "Look For Smuggler",

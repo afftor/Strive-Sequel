@@ -15,6 +15,41 @@ var visible_persons = []
 const BUTTON_HEIGHT = 64
 
 
+
+const JOB_COLOR_DEFAULT = "k_gray"
+const JOB_COLOR_REST = "yellow"
+const JOB_COLOR_TRAVEL = "factor5"
+const JOB_COLOR_SERVICE = "green"
+const JOB_COLOR_GATHER = "factor2"
+const JOB_COLOR_CRAFT = "aqua"
+
+const JOB_SERVICE_MODS = ['mod_pros', 'mod_service']
+const JOB_GATHER_MODS = ['mod_collect', 'mod_hunt', 'mod_fish', 'mod_farm']
+const JOB_CRAFT_MODS = ['mod_build', 'mod_cook', 'mod_tailor', 'mod_smith', 'mod_alchemy']
+
+func _apply_task_color(job_label, task_data):
+	if typeof(task_data) != TYPE_DICTIONARY:
+		return
+	if !task_data.has("mod"):
+		return
+	var mod_value = task_data.mod
+	if typeof(mod_value) != TYPE_STRING or mod_value == "":
+		return
+	if JOB_SERVICE_MODS.has(mod_value):
+		_set_job_label_color_from_key(job_label, JOB_COLOR_SERVICE)
+	elif JOB_GATHER_MODS.has(mod_value):
+		_set_job_label_color_from_key(job_label, JOB_COLOR_GATHER)
+	elif JOB_CRAFT_MODS.has(mod_value):
+		_set_job_label_color_from_key(job_label, JOB_COLOR_CRAFT)
+
+
+func _set_job_label_color_from_key(job_label, color_key):
+	if variables.hexcolordict.has(color_key):
+		job_label.set("custom_colors/font_color", Color(variables.hexcolordict[color_key]))
+	elif variables.hexcolordict.has(JOB_COLOR_DEFAULT):
+		job_label.set("custom_colors/font_color", Color(variables.hexcolordict[JOB_COLOR_DEFAULT]))
+
+
 func _ready():
 	input_handler.slave_list_node = self
 	globals.connect("slave_added", self, "rebuild")
@@ -454,6 +489,11 @@ func update_button(newbutton):
 	if person.is_master() or person.is_unique():
 		newbutton.get_node("name").set("custom_colors/font_color", variables.hexcolordict.unique)
 	newbutton.get_node("sex").texture = images.get_icon(person.get_stat('sex'))
+	var job_label = newbutton.get_node("job/Label")
+	_set_job_label_color_from_key(job_label, JOB_COLOR_DEFAULT)
+	var work_code = person.get_work()
+	var gatherable = Items.materiallist.has(work_code)
+	var is_traveling = person.travel.location == "travel" || person.check_location('travel') || work_code == 'travel'
 
 	newbutton.get_node("stats/hp").max_value = person.get_stat('hpmax')
 	newbutton.get_node("stats/hp").value = person.hp
@@ -461,8 +501,10 @@ func update_button(newbutton):
 	newbutton.get_node("stats/mp").value = person.mp
 	newbutton.get_node("stats").hint_tooltip = "HP: " + str(round(person.hp)) + "/" + str(round(person.get_stat('hpmax'))) + "\nMP: " + str(round(person.mp)) + "/" + str(round(person.get_stat('mpmax')))
 	newbutton.get_node("explabel").text = str(floor(person.get_stat('base_exp')))
-	var gatherable = Items.materiallist.has(person.get_work())
-	if person.get_work() == '' or !person.is_avaliable():
+	if is_traveling:
+		job_label.text = tr("TASKTRAVEL")
+		_set_job_label_color_from_key(job_label, JOB_COLOR_TRAVEL)
+	elif work_code == '' or !person.is_avaliable():
 		if person.is_on_quest():
 			var time_left = int(person.get_quest_time_remains())
 			if time_left > 0:
@@ -472,21 +514,27 @@ func update_button(newbutton):
 					time_left_string = str(time_left) + " turns"
 				else:
 					time_left_string = str(time_left) + " d."
-				newbutton.get_node("job/Label").text = "On Quest: " + time_left_string
+				job_label.text = "On Quest: " + time_left_string
 			else:
-				newbutton.get_node("job/Label").text = person.get_unaval_string()
+				job_label.text = person.get_unaval_string()
 		else:
-			newbutton.get_node("job/Label").text = tr("TASKREST")
-	elif person.get_work() == 'learning':
+			job_label.text = tr("TASKREST")
+			_set_job_label_color_from_key(job_label, JOB_COLOR_REST)
+	elif work_code == 'learning':
 		newbutton.get_node('progress').value = variables.tutduration - person.get_quest_time_remains()
-	elif person.get_work() == 'special':
+	elif work_code == 'special':
 		var task = person.find_worktask()
-		newbutton.get_node("job/Label").text = tr("TASKMISSION")
+		job_label.text = tr("TASKMISSION")
 	else:
 		if !gatherable:
-			newbutton.get_node("job/Label").text = tasks.tasklist[person.get_work()].name
+			if tasks.tasklist.has(work_code):
+				job_label.text = tasks.tasklist[work_code].name
+				_apply_task_color(job_label, tasks.tasklist[work_code])
+			else:
+				job_label.text = work_code.capitalize()
 		else:
-			newbutton.get_node("job/Label").text =  Items.materiallist[person.get_work()].name
+			job_label.text = Items.materiallist[work_code].name
+			_set_job_label_color_from_key(job_label, JOB_COLOR_GATHER)
 	
 	if person.get_next_class_exp() <= person.get_stat('base_exp'):
 		newbutton.get_node("explabel").set("custom_colors/font_color", Color(variables.hexcolordict.levelup_text_color))
@@ -530,18 +578,17 @@ func update_button(newbutton):
 			newbutton.get_node('LocIcon').hint_tooltip = tr(ploc.name)
 			#newbutton.get_node('Location').text = tr(ploc.name)
 	#job
-	newbutton.get_node("job").disabled = false
-	newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict.k_gray)
+	var job_button = newbutton.get_node("job")
+	job_button.disabled = false
 	if !person.is_worker(): #for conditions for work and combat are the same
-		newbutton.get_node("job").disabled = true
-		newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict['red'])
+		job_button.disabled = true
+		_set_job_label_color_from_key(job_label, 'red')
 		if person.get_stat('slave_class') == 'slave':
-			globals.connecttexttooltip(newbutton.get_node("job"), person.translate(tr('TRAINNOTRAINER')))
+			globals.connecttexttooltip(job_button, person.translate(tr('TRAINNOTRAINER')))
 		else:
-			globals.connecttexttooltip(newbutton.get_node("job"), person.translate(tr('TRAINNOWORKTRAIT')))
-	if person.travel.location == "travel" || person.is_on_quest():
-		newbutton.get_node("job").disabled = true
-		newbutton.get_node("job/Label").set("custom_colors/font_color", variables.hexcolordict['red'])
+			globals.connecttexttooltip(job_button, person.translate(tr('TRAINNOWORKTRAIT')))
+	elif person.travel.location == "travel" || person.is_on_quest():
+		job_button.disabled = true
 	#class
 	newbutton.get_node("state").texture = person.get_class_icon()
 	#gear

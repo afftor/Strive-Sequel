@@ -2140,8 +2140,13 @@ func deal_damage(value, source = 'normal'):
 		value *= (1.0 - get_stat('resist_' + source)/100.0)
 	value = int(value);
 	if value > 0:
+		var shake_node = null
+		if input_handler.combat_node != null and input_handler.combat_node.is_inside_tree():
+			shake_node = input_handler.combat_node
 		if shield > value:
 			self.shield -= value
+			if shake_node != null:
+				ResourceScripts.core_animations.ShakeAnimation(shake_node, 0.1, 3)
 			return 0
 		else:
 			value -= shield
@@ -2151,6 +2156,8 @@ func deal_damage(value, source = 'normal'):
 		tmp = tmp - hp
 		if displaynode != null:
 			displaynode.setup_overlay(source)
+		if shake_node != null:
+			ResourceScripts.core_animations.ShakeAnimation(shake_node, 0.1, 3)
 		return tmp
 	else:
 		return heal(-value)

@@ -5188,6 +5188,8 @@ Requires: Базовый рабский труд""",
 	STARTUPGRADEBONUS2 = """Комнату портного""",
 	STARTUPGRADEBONUS3 = """Алхимическую комнату""",
 	STARTUPGRADEBONUS4 = """Извращенную эссенцию""",
+	ALIRON_CORRUPTIVE_ESSENCE_EVENT = """While walking through Aliron's markets you stumble upon a discreet peddler offering a single vial of corruptive essence for a steep price. It's a rare chance to secure the forbidden mixture without relying on luck.""", # MISSING TRANSLATION
+	ALIRON_CORRUPTIVE_ESSENCE_PURCHASE = """Buy the corruptive essence (1 000 gold)""", # MISSING TRANSLATION
 	
 	
 	FIGHTERSINTRODUCTION1 = """Крупный мужчина в тяжелых доспехах окинул вас незаинтересованным взглядом. 
@@ -19082,6 +19084,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	ALIRON21 = """Поиск Зефиры""",
 	ALIRON22 = """Встретиться с Кетчем""",
 	ALIRON23 = """Проверить информацию об Амелии""",
+	ALIRON24 = """Approach the discreet merchant""", # MISSING TRANSLATION
 	ALIRON_KURO_CHURCH = "Церковь Алирона",
 	ELF_CAPITAL1 = """Встретиться с Жрицей""",
 	ELF_CAPITAL2 = """Найти контрабандиста""",
