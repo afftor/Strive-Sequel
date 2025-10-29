@@ -1497,7 +1497,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			return dyn_stats.has_skill(i.value) == i.check
 		'race_is_beast':
 			check = races.racelist[get_stat('race')].tags.has('beast') == i.check
-		'is_shortstack':
+		'is_shortstack':#is in use?
 			check = (get_stat('height') in ['tiny','petite']) == i.check
 		'gear_equiped':
 			if i.has('param'): check = equipment.check_gear_equipped(i.value, i.param) == i.check

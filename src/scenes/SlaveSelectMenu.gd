@@ -18,7 +18,7 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 	target_func = targetfunc
 	target_node = targetnode
 	req_info.hide()
-	var show_req_info = (challenge == null)#could be changed with time
+	var show_req_info = true#(challenge == null)#could be changed with time
 	reqs_text = null
 	show()
 	input_handler.ClearContainer(slave_btn_cont)

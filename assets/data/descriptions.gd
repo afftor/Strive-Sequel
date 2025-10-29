@@ -902,16 +902,21 @@ func make_slave_statreq_text(req):
 				else:
 					return "%s: %s." % [stat_name, val]
 			elif bodypartsdata.has(req.stat):# tits_size, height, ass_size
-				var val
+				var val = ""
+				if !operant_text.empty():
+					val = "%s " % operant_text
 				if req.value is Array:
-					val = ''
 					for j in range(req.value.size()):
 						if j == req.value.size()-1: val += ' %s ' % tr('REQOR')
 						elif j != 0: val += ', '
 						val += bodypartsdata[req.stat][req.value[j]].name
 				else:
-					val = bodypartsdata[req.stat][req.value].name
-				return "%s: %s %s." % [stat_name, operant_text, val]
+					if req.operant == 'neq' and (req.value == "" or req.value == null):
+						val = tr("REQANY")
+					else:
+						val += bodypartsdata[req.stat][req.value].name
+				
+				return "%s: %s." % [stat_name, val]
 			else:
 				return "%s: %s %s." % [stat_name, operant_text, req.value]
 		'sex':
