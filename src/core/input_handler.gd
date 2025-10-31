@@ -77,7 +77,7 @@ var active_faction = {}
 var activated_skill
 var target_character
 
-var ghost_items = []
+var ghost_items = []#probably not in use
 
 
 var encounter_win_script = null

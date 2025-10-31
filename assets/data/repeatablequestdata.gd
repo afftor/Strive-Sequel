@@ -19,9 +19,7 @@ var questdata = {
 			}],
 		unlockreqs = [],
 		reputation = [125,150],
-		rewards = [
-		[1, {code = 'gold', range = [145,160]}],
-		],
+		rewards = 'rq_gold_task_easy',
 		time_limit = [8,12],
 	},
 	fighters_task_medium = {
@@ -41,9 +39,7 @@ var questdata = {
 			}],
 		unlockreqs = [],
 		reputation = [220,270],
-		rewards = [
-		[1, {code = 'gold', range = [300,350]}],
-		],
+		rewards = 'rq_gold_task_medium',
 		time_limit = [9,12],
 	},
 	fighters_task_hard = {
@@ -63,9 +59,7 @@ var questdata = {
 			}],
 		unlockreqs = [],
 		reputation = [350, 450],
-		rewards = [
-		[1, {code = 'gold', range = [400,550]}],
-		],
+		rewards = 'rq_gold_task_hard',
 		time_limit = [9,12],
 	},
 	mages_task_easy = {
@@ -85,9 +79,7 @@ var questdata = {
 			}],
 		unlockreqs = [],
 		reputation = [125,150],
-		rewards = [
-		[1, {code = 'gold', range = [145,160]}],
-		],
+		rewards = 'rq_gold_task_easy',
 		time_limit = [8,12],
 	},
 	mages_task_medium = {
@@ -107,9 +99,7 @@ var questdata = {
 			}],
 		unlockreqs = [],
 		reputation = [220,270],
-		rewards = [
-		[1, {code = 'gold', range = [300,350]}],
-		],
+		rewards = 'rq_gold_task_medium',
 		time_limit = [9,12],
 	},
 	mages_task_hard = {
@@ -129,9 +119,7 @@ var questdata = {
 			}],
 		unlockreqs = [],
 		reputation = [350, 450],
-		rewards = [
-		[1, {code = 'gold', range = [400,550]}],
-		],
+		rewards = 'rq_gold_task_hard',
 		time_limit = [9,12],
 	},
 	workers_task_easy = {
@@ -151,9 +139,7 @@ var questdata = {
 			}],
 		unlockreqs = [],
 		reputation = [125,150],
-		rewards = [
-		[1, {code = 'gold', range = [145,160]}],
-		],
+		rewards = 'rq_gold_task_easy',
 		time_limit = [8,12],
 	},
 	workers_task_medium = {
@@ -173,9 +159,7 @@ var questdata = {
 			}],
 		unlockreqs = [],
 		reputation = [220,270],
-		rewards = [
-		[1, {code = 'gold', range = [300,350]}],
-		],
+		rewards = 'rq_gold_task_medium',
 		time_limit = [9,12],
 	},
 	workers_task_hard = {
@@ -195,9 +179,7 @@ var questdata = {
 			}],
 		unlockreqs = [],
 		reputation = [350, 450],
-		rewards = [
-		[1, {code = 'gold', range = [400,550]}],
-		],
+		rewards = 'rq_gold_task_hard',
 		time_limit = [9,12],
 	},
 	
@@ -219,9 +201,7 @@ var questdata = {
 			}],
 		unlockreqs = [],
 		reputation = [125,150],
-		rewards = [
-		[1, {code = 'gold', range = [145,160]}],
-		],
+		rewards = 'rq_gold_task_easy',
 		time_limit = [8,12],
 	},
 #	servants_task_medium = {
@@ -263,9 +243,7 @@ var questdata = {
 			}],
 		unlockreqs = [],
 		reputation = [350, 450],
-		rewards = [
-		[1, {code = 'gold', range = [400,550]}],
-		],
+		rewards = 'rq_gold_task_hard',
 		time_limit = [9,12],
 	},
 	
@@ -280,10 +258,7 @@ var questdata = {
 		randomconditions = [{code = 'random_material', function = 'range', type = ['wood','cloth','bone','leather'], range = [8,15]}],
 		unlockreqs = [],
 		reputation = [100,150],
-		rewards = [
-		[1,{code = 'gold',  item_based = true, range = [1.4,1.5]}], #first value is a weight of reward
-		[0.3,{code = 'gear', material_grade = [['easy', 5], ['medium',1]], name = ['axe','pickaxe','sickle']}],
-		],
+		rewards = 'rq_workers_resources_easy',
 		time_limit = [8,12],
 	},
 	workers_resources_medium = {
@@ -293,10 +268,7 @@ var questdata = {
 		randomconditions = [{code = 'random_material', function = 'range', type = ['woodiron','iron','steel','clothmagic'], range = [8,15]}],
 		unlockreqs = [],
 		reputation = [150,250],
-		rewards = [
-		[1,{code = 'gold', item_based = true, range = [1.5,1.8]}],
-		[0.3,{code = 'gear', material_grade = [['easy', 1], ['medium',4],['hard',1]], name = ['axe','pickaxe','sickle','hammer','fishingtools']}],
-		],
+		rewards = 'rq_workers_resources_medium',
 		time_limit = [8,12],
 	},
 	workers_resources_hard = {
@@ -306,10 +278,7 @@ var questdata = {
 		randomconditions = [{code = 'random_material', function = 'range', type = ['woodmagic','boneancient','leathermythic','mithril','lizard_skin'], range = [8,15]}],
 		unlockreqs = [],
 		reputation = [250,400],
-		rewards = [
-		[1,{code = 'gold', item_based = true, range = [1.7,1.95]}],
-		[0.3,{code = 'gear', material_grade = [['easy', 1], ['medium',3],['hard',3]], name = ['axe','pickaxe','sickle','hammer','fishingtools']}],
-		],
+		rewards = 'rq_workers_resources_hard',
 		time_limit = [8,12],
 	},
 	workers_food_easy = {
@@ -319,11 +288,7 @@ var questdata = {
 		randomconditions = [{code = 'random_material', function = 'range', type =  ['meat','fish','vegetables','bread'], range = [35,55]}],
 		unlockreqs = [],
 		reputation = [100,150],
-		rewards = [
-		[1,{code = 'gold', item_based = true, range = [1.5,1.7]}],
-		[1,{code = 'material', name = ['wood', 'stone','leather','cloth', 'iron'], value = [15,20]}],
-		[0.5,{code = 'gold', item_based = true, range = [0.5,0.6]},{code = 'metarial', type = ['steel', 'woodmagic','woodiron','clothsilk'], range = [5,10]}],
-		],
+		rewards = 'rq_workers_food_easy',
 		time_limit = [8,12],
 	},
 	workers_food_medium = {
@@ -333,11 +298,7 @@ var questdata = {
 		randomconditions = [{code = 'random_material', function = 'range', type =  ['meat','fish','vegetables','bread'], range = [75,120]}],
 		unlockreqs = [],
 		reputation = [150,250],
-		rewards = [
-		[1,{code = 'gold', item_based = true, range = [1.7,1.9]}],
-		#[1,{code = 'material', name = ['wood', 'stone','leather','cloth', 'iron'], value = [15,20]}],
-		[0.5,{code = 'gold', item_based = true, range = [0.6,0.7]},{code = 'metarial', type = ['steel', 'obsidian','woodiron','clothmagic'], range = [10,15]}],
-		],
+		rewards = 'rq_workers_food_medium',
 		time_limit = [8,12],
 	},
 	workers_food_hard = {
@@ -347,11 +308,7 @@ var questdata = {
 		randomconditions = [{code = 'random_material', function = 'range', type =  ['bread','fishcakes','meatsoup'], range = [75,120]}],
 		unlockreqs = [],
 		reputation = [250,450],
-		rewards = [
-		[1,{code = 'gold', item_based = true, range = [1.8,2.1]}],
-		#[1,{code = 'material', name = ['wood', 'stone','leather','cloth', 'iron'], value = [15,20]}],
-		[0.5,{code = 'gold', item_based = true, range = [0.7,0.8]},{code = 'metarial', type = ['mithril', 'obsidian','woodancient','clothmagic'], range = [3,5]}],
-		],
+		rewards = 'rq_workers_food_hard',
 		time_limit = [8,12],
 	},
 	workers_craft_tools_easy = {
@@ -361,9 +318,7 @@ var questdata = {
 		randomconditions = [{code = 'random_item', function = 'range', type = ['axe','pickaxe','sickle'], range = [1,1], parts = {ToolBlade = ['iron','bone']}}],
 		unlockreqs = [],
 		reputation = [150,200],
-		rewards = [
-		[1, {code = 'gold', item_based = true, range = [1.7,2]}],
-		],
+		rewards = 'rq_workers_craft_tools_easy',
 		time_limit = [8,12],
 	},
 	workers_craft_tools_medium = {
@@ -376,9 +331,7 @@ var questdata = {
 			],
 		unlockreqs = [],
 		reputation = [250,400],
-		rewards = [
-		[1, {code = 'gold', item_based = true, range = [2,2.2]}],
-		],
+		rewards = 'rq_workers_craft_tools_medium',
 		time_limit = [8,12],
 	},
 	workers_threat_easy = {
@@ -388,11 +341,7 @@ var questdata = {
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_wolves'], difficulty = 'easy'}],
 		unlockreqs = [],
 		reputation = [150,200],
-		rewards = [
-		[1, {code = 'gold', range = [100,150]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['axe','pickaxe','sickle']}],
-		[0.5, {code = 'gear_static', name = ['worker_outfit'], value = [1,1]}],
-		],
+		rewards = 'rq_workers_threat_easy',
 		time_limit = [8,12],
 	},
 	workers_threat_medium = {
@@ -402,10 +351,7 @@ var questdata = {
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_troll'], difficulty = 'medium'}],
 		unlockreqs = [],
 		reputation = [200,300],
-		rewards = [
-		[1, {code = 'gold', range = [250,400]}],
-		[1, {code = 'gear', material_grade = [['easy', 1], ['medium',3]], name = ['axe','pickaxe','sickle','hunt_knife']}],
-		],
+		rewards = 'rq_workers_threat_medium',
 		time_limit = [8,12],
 	},
 	fighters_threat_easy = {
@@ -415,10 +361,7 @@ var questdata = {
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_goblins','basic_threat_rebels']}],#,
 		unlockreqs = [],
 		reputation = [100,150],
-		rewards = [
-		[1, {code = 'gold', range = [125,175]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',1]], name = ['sword','spear','club','bow']}],
-		],
+		rewards = 'rq_fighters_threat_easy',
 		time_limit = [8,12],
 	},
 	fighters_threat_medium = {
@@ -428,10 +371,7 @@ var questdata = {
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_ogre']}],#,
 		unlockreqs = [],
 		reputation = [150,250],
-		rewards = [
-		[1, {code = 'gold', range = [200,300]}],
-		[1, {code = 'gear', material_grade = [['easy',1], ['medium',4], ['hard',1]], name = ['sword','spear','club','bow','battleaxe','mace','crossbow']}],
-		],
+		rewards = 'rq_fighters_threat_medium',
 		time_limit = [8,12],
 	},
 	fighters_dungeon_easy = {
@@ -441,11 +381,7 @@ var questdata = {
 		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_bandit_den', 'dungeon_goblin_cave']}],
 		unlockreqs = [],
 		reputation = [150,250],
-		rewards = [
-		[1, {code = 'gold', range = [200,300]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',3]], name = ['sword','spear','club','bow','battleaxe','mace','crossbow']}, {code = 'gold', range = [25,50]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['chest_base_metal','legs_base_metal']}],
-		],
+		rewards = 'rq_fighters_dungeon_easy',
 		time_limit = [12,16],
 	},
 	fighters_dungeon_medium = {
@@ -455,11 +391,7 @@ var questdata = {
 		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_bandit_fort','dungeon_undead_crypt','dungeon_ancient_jungles']}],
 		unlockreqs = [],
 		reputation = [200,350],
-		rewards = [
-		[1, {code = 'gold', range = [350,500]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',3]], name = ['sword','spear','club','bow','battleaxe','mace','crossbow']}, {code = 'gold', range = [75,100]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['chest_base_metal','legs_base_metal']}],
-		],
+		rewards = 'rq_fighters_dungeon_medium',
 		time_limit = [16,20],
 	},
 	fighters_dungeon_hard = {
@@ -469,12 +401,7 @@ var questdata = {
 		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_fire_depths','dungeon_ancient_jungles']}],
 		unlockreqs = [],
 		reputation = [300,500],
-		rewards = [
-		[1, {code = 'gold', range = [600,900]}],
-		[1, {code = 'gear', material_grade = [['medium',3],['hard',2]], name = ['sword','spear','club','bow','battleaxe','mace','crossbow']}, {code = 'gold', range = [150,250]}],
-		[1, {code = 'gear', material_grade = [['medium',3],['hard',2]], name = ['chest_base_metal','legs_base_metal']}],
-		[0.3, {code = 'gear', material_grade = [['medium',3],['hard',2]], name = ['chest_adv_metal','legs_adv_metal','swordadv','spearadv','bowadv','maceadv']}],
-		],
+		rewards = 'rq_fighters_dungeon_hard',
 		time_limit = [16,20],
 	},
 	fighters_monster_hunt_easy = {
@@ -484,10 +411,7 @@ var questdata = {
 		randomconditions = [{code = 'kill_monsters', type = ['bandit','goblin'], range = [6,9]}],
 		unlockreqs = [],
 		reputation = [100,150],
-		rewards = [
-		[1, {code = 'gold', range = [125,150]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',1]], name = ['sword','spear','club','bow','battleaxe','mace','crossbow']}, {code = 'gold', range = [10,30]}],
-		],
+		rewards = 'rq_fighters_monster_hunt_easy',
 		time_limit = [8,12],
 	},
 	fighters_monster_hunt_medium = {
@@ -497,10 +421,7 @@ var questdata = {
 		randomconditions = [{code = 'kill_monsters', type = ['bandit','undead'], range = [8,15]}],
 		unlockreqs = [],
 		reputation = [200,250],
-		rewards = [
-		[1, {code = 'gold', range = [200,300]}],
-		[1, {code = 'gear', material_grade = [['easy', 1], ['medium',4], ['hard',1]], name = ['sword','spear','club','bow','battleaxe','mace','crossbow']}, {code = 'gold', range = [50,100]}],
-		],
+		rewards = 'rq_fighters_monster_hunt_medium',
 		time_limit = [8,16],
 	},
 	fighters_monster_hunt_hard = {
@@ -510,10 +431,7 @@ var questdata = {
 		randomconditions = [{code = 'kill_monsters', type = ['bandit','undead'], range = [15,25]}],
 		unlockreqs = [],
 		reputation = [400,500],
-		rewards = [
-		[1, {code = 'gold', range = [350,600]}],
-		[1, {code = 'gear', material_grade = [['easy', 1], ['medium',4], ['hard',3]], name = ['sword','spear','club','bow','battleaxe','mace','crossbow']}, {code = 'gold', range = [150,250]}],
-		],
+		rewards = 'rq_fighters_monster_hunt_hard',
 		time_limit = [8,16],
 	},
 	
@@ -529,9 +447,7 @@ var questdata = {
 			],
 		unlockreqs = [],
 		reputation = [250,450],
-		rewards = [
-		[1, {code = 'gold', item_based = true, range = [2,2.2]}],
-		],
+		rewards = 'rq_fighters_craft_gear_medium',
 		time_limit = [8,12],
 	},
 	fighters_craft_gear_hard = {
@@ -541,17 +457,12 @@ var questdata = {
 		randomconditions = [
 			{code = 'random_item', function = 'range', type = ['dagger','sword','spear','bow','battleaxe','mace','crossbow'], range = [2,3], parts = {WeaponHandle = ['mithril','boneancient','woodiron','obsidian']}},
 			{code = 'random_item', function = 'range', type = ['dagger','sword','spear'], range = [2,3], parts = {Blade = ['mithril','obsidian','boneancient']}},
-			
-			
-			
 			{code = 'random_item', function = 'range', type = ['chest_adv_metal','legs_adv_metal','chest_adv_leather','legs_adv_leather'], range = [1,1], parts = {ArmorTrim = ['mithril','obsidian','boneancient','clothethereal','woodmagic']}},
 			{code = 'random_item', function = 'range', type = ['swordadv','spearadv'], range = [1,1], parts = {Blade = ['mithril','obsidian','boneancient','adamantine']}},
 			],
 		unlockreqs = [],
 		reputation = [400,600],
-		rewards = [
-		[1, {code = 'gold', item_based = true, range = [2.7,3.5]}],
-		],
+		rewards = 'rq_fighters_craft_gear_hard',
 		time_limit = [10,13],
 	},
 	
@@ -563,10 +474,7 @@ var questdata = {
 		randomconditions = [{code = 'random_material', type = ['wood','bone','cloth'], range = [7,12]}],
 		unlockreqs = [],
 		reputation = [100,150],
-		rewards = [
-		[1, {code = 'gold', item_based = true, range = [1.6,1.8]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['staff']},  {code = 'gold', item_based = true, range = [0.5,0.7]}],
-		],
+		rewards = 'rq_mages_materials_easy',
 		time_limit = [8,12],
 	},
 	mages_materials_medium = {
@@ -576,10 +484,7 @@ var questdata = {
 		randomconditions = [{code = 'random_material', type = ['woodmagic','clothmagic','obsidian'], range = [5,15]}],
 		unlockreqs = [],
 		reputation = [200,300],
-		rewards = [
-		[1, {code = 'gold', item_based = true, range = [1.9,2.1]}],
-		[1, {code = 'gear', material_grade = [['easy', 2], ['medium',4], ['hard',0.5]], name = ['staff']}, {code = 'gold', item_based = true, range = [0.5,0.7]}],
-		],
+		rewards = 'rq_mages_materials_medium',
 		time_limit = [8,12],
 	},
 	mages_materials_hard = {
@@ -589,10 +494,7 @@ var questdata = {
 		randomconditions = [{code = 'random_material', type = ['woodancient','clothethereal','boneancient','mithril'], range = [6,12]}],
 		unlockreqs = [],
 		reputation = [300,500],
-		rewards = [
-		[1, {code = 'gold', item_based = true, range = [2,2.3]}],
-		[1, {code = 'gear', material_grade = [['medium',4], ['hard',2]], name = ['staff','staffadv']}, {code = 'gold', item_based = true, range = [0.6,0.8]}],
-		],
+		rewards = 'rq_mages_materials_hard',
 		time_limit = [8,12],
 	},
 	mages_craft_potions_easy = {
@@ -602,9 +504,7 @@ var questdata = {
 		randomconditions = [{code = 'random_item', type = ['aphrodisiac', 'alcohol','energyshard'], range = [2,3]}],
 		unlockreqs = [],
 		reputation = [100,150],
-		rewards = [
-		[1, {code = 'gold', item_based = true, range = [1.9,2.1]}],
-		],
+		rewards = 'rq_mages_craft_potions_easy',
 		time_limit = [8,12],
 	},
 	mages_craft_potions_medium = {
@@ -614,9 +514,7 @@ var questdata = {
 		randomconditions = [{code = 'random_item', type = ['aphrodisiac', 'alcohol','energyshard'], range = [5,8]},{code = 'random_item', type = ['energyshard','energygem'], range = [2,4]}],
 		unlockreqs = [],
 		reputation = [200,300],
-		rewards = [
-		[1, {code = 'gold', item_based = true, range = [2.1,2.4]}],
-		],
+		rewards = 'rq_mages_craft_potions_medium',
 		time_limit = [8,12],
 	},
 	mages_craft_potions_hard = {
@@ -626,9 +524,7 @@ var questdata = {
 		randomconditions = [{code = 'random_item', type = ['circlet'], range = [1,2]},{code = 'random_item', type = ['lifegem','energygem'], range = [2,4]}, {code = 'random_material', type = ['ink_mp'], range = [2,4]}],
 		unlockreqs = [],
 		reputation = [200,300],
-		rewards = [
-		[1, {code = 'gold', item_based = true, range = [2.3,2.5]}],
-		],
+		rewards = 'rq_mages_craft_potions_hard',
 		time_limit = [8,12],
 	},
 	mages_threat_easy = {
@@ -638,11 +534,7 @@ var questdata = {
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_wolves'], difficulty = 'easy'}],
 		unlockreqs = [],
 		reputation = [100,150],
-		rewards = [
-		[1, {code = 'gold', range = [100,150]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['staff','chest_base_cloth','legs_base_cloth']}],
-
-		],
+		rewards = 'rq_mages_threat_easy',
 		time_limit = [8,12],
 	},
 	
@@ -656,9 +548,7 @@ var questdata = {
 			],
 		unlockreqs = [],
 		reputation = [250,450],
-		rewards = [
-		[1, {code = 'gold', item_based = true, range = [2,2.2]}],
-		],
+		rewards = 'rq_mages_craft_gear_medium',
 		time_limit = [8,12],
 	},
 	mages_craft_gear_hard = {
@@ -668,16 +558,11 @@ var questdata = {
 		randomconditions = [
 			{code = 'random_item', function = 'range', type = ['staff'], range = [2,3], parts = {WeaponHandle = ['steel','boneancient','woodiron','mithril']}},
 			{code = 'random_item', function = 'range', type = ['chest_base_cloth','legs_base_cloth'], range = [2,2], parts = {ArmorBaseCloth = ['clothmagic','clothsilk']}},
-			
-			
-			
 			{code = 'random_item', function = 'range', type = ['chest_adv_cloth','legs_adv_cloth'], range = [1,1], parts = {ArmorTrim = ['mithril','obsidian','boneancient','clothethereal','woodmagic']}},
 			],
 		unlockreqs = [],
 		reputation = [400,600],
-		rewards = [
-		[1, {code = 'gold', item_based = true, range = [2.7,3.5]}],
-		],
+		rewards = 'rq_mages_craft_gear_hard',
 		time_limit = [10,13],
 	},
 	
@@ -688,9 +573,7 @@ var questdata = {
 		randomconditions = [{code = 'random_item', type = ['leather_collar','animal_gloves','animal_ears','handcuffs','bell_collar'], range = [1,2]}],
 		unlockreqs = [],
 		reputation = [100,150],
-		rewards = [
-		[1, {code = 'gold', item_based = true, range = [1.5,1.8]}],
-		],
+		rewards = 'rq_servants_craft_items_easy',
 		time_limit = [8,12],
 	},
 	servants_craft_items_medium = {
@@ -700,9 +583,7 @@ var questdata = {
 		randomconditions = [{code = 'random_item', type = ['chastity_belt','tail_plug','steel_collar','sexdrug','anal_beads','ribbon'], range = [1,3]}],
 		unlockreqs = [],
 		reputation = [250,350],
-		rewards = [
-		[1, {code = 'gold', item_based = true, range = [1.8,2]}],
-		],
+		rewards = 'rq_servants_craft_items_medium',
 		time_limit = [8,12],
 	},
 	servants_craft_items_hard = {
@@ -712,16 +593,13 @@ var questdata = {
 		randomconditions = [{code = 'random_item', type = ['pet_suit','elegant_choker','seethrough_underwear','latex_suit'], range = [1,2]}],
 		unlockreqs = [],
 		reputation = [400,550],
-		rewards = [
-		[1, {code = 'gold', item_based = true, range = [2,2.3]}],
-		],
+		rewards = 'rq_servants_craft_items_hard',
 		time_limit = [8,12],
 	},
 	servants_slave_easy = {
 		code = 'servants_slave_easy',
 		name = tr("SERVANTS_SLAVE_NAME"),
 		descript = tr("SERVANTS_SLAVE_DESC"),
-
 		randomconditions = [
 			{code = 'slave_delivery',
 			range = [1,1],
@@ -734,16 +612,13 @@ var questdata = {
 		],
 		unlockreqs = [],
 		reputation = [100,150],
-		rewards = [
-		[1, {code = 'gold', range = [250,400]}],
-		],
+		rewards = 'rq_gold_slave_easy',
 		time_limit = [8,12],
 	},
 	servants_slave_medium = {
 		code = 'servants_slave_medium',
 		name = tr("SERVANTS_SLAVE_NAME"),
 		descript = tr("SERVANTS_SLAVE_DESC"),
-
 		randomconditions = [
 			{code = 'slave_delivery',
 			range = [2,2],
@@ -756,16 +631,13 @@ var questdata = {
 		],
 		unlockreqs = [],
 		reputation = [300,450],
-		rewards = [
-		[1, {code = 'gold', range = [450,600]}],
-		],
+		rewards = 'rq_gold_slave_medium',
 		time_limit = [8,12],
 	},
 	servants_slave_hard = {
 		code = 'servants_slave_hard',
 		name = tr("SERVANTS_SLAVE_NAME"),
 		descript = tr("SERVANTS_SLAVE_DESC"),
-
 		randomconditions = [
 			{code = 'slave_delivery',
 			range = [3,4],
@@ -778,16 +650,13 @@ var questdata = {
 		],
 		unlockreqs = [],
 		reputation = [400,550],
-		rewards = [
-		[1, {code = 'gold', range = [600,750]}],
-		],
+		rewards = 'rq_gold_slave_hard',
 		time_limit = [10,16],
 	},
 	servants_slave_rare_medium = {
 		code = 'servants_slave_rare_hard',
 		name = tr("SERVANTS_SLAVE_NAME"),
 		descript = tr("SERVANTS_SLAVE_DESC"),
-
 		randomconditions = [
 			{code = 'slave_delivery',
 			range = [1,1],
@@ -800,16 +669,13 @@ var questdata = {
 		],
 		unlockreqs = [],
 		reputation = [400,550],
-		rewards = [
-		[1, {code = 'gold', range = [700,900]}],
-		],
+		rewards = 'rq_servants_slave_rare_medium',
 		time_limit = [10,16],
 	},
 	servants_slave_rare_hard = {
 		code = 'servants_slave_rare_hard',
 		name = tr("SERVANTS_SLAVE_NAME"),
 		descript = tr("SERVANTS_SLAVE_DESC"),
-
 		randomconditions = [
 			{code = 'slave_delivery',
 			range = [1,1],
@@ -822,9 +688,7 @@ var questdata = {
 		],
 		unlockreqs = [],
 		reputation = [400,550],
-		rewards = [
-		[1, {code = 'gold', range = [750,1000]}],
-		],
+		rewards = 'rq_servants_slave_rare_hard',
 		time_limit = [10,16],
 	},
 	
@@ -832,7 +696,6 @@ var questdata = {
 		code = 'fighters_slave_easy',
 		name = tr("SERVANTS_SLAVE_NAME"),
 		descript = tr("FIGHTERS_SLAVE_DESC"),
-
 		randomconditions = [
 			{code = 'slave_delivery',
 			range = [1,1],
@@ -845,16 +708,13 @@ var questdata = {
 		],
 		unlockreqs = [],
 		reputation = [100,150],
-		rewards = [
-		[1, {code = 'gold', range = [250,400]}],
-		],
+		rewards = 'rq_gold_slave_easy',
 		time_limit = [8,12],
 	},
 	fighters_slave_medium = {
 		code = 'fighters_slave_medium',
 		name = tr("SERVANTS_SLAVE_NAME"),
 		descript = tr("FIGHTERS_SLAVE_DESC"),
-
 		randomconditions = [
 			{code = 'slave_delivery',
 			range = [2,2],
@@ -867,16 +727,13 @@ var questdata = {
 		],
 		unlockreqs = [],
 		reputation = [300,450],
-		rewards = [
-		[1, {code = 'gold', range = [450,600]}],
-		],
+		rewards = 'rq_gold_slave_medium',
 		time_limit = [8,12],
 	},
 	fighters_slave_hard = {
 		code = 'fighters_slave_hard',
 		name = tr("SERVANTS_SLAVE_NAME"),
 		descript = tr("FIGHTERS_SLAVE_DESC"),
-
 		randomconditions = [
 			{code = 'slave_delivery',
 			range = [2,3],
@@ -889,16 +746,13 @@ var questdata = {
 		],
 		unlockreqs = [],
 		reputation = [400,550],
-		rewards = [
-		[1, {code = 'gold', range = [600,750]}],
-		],
+		rewards = 'rq_gold_slave_hard',
 		time_limit = [10,16],
 	},
 	workers_slave_easy = {
 		code = 'workers_slave_easy',
 		name = tr("SERVANTS_SLAVE_NAME"),
 		descript = tr("WORKERS_SLAVE_DESC"),
-
 		randomconditions = [
 			{code = 'slave_delivery',
 			range = [1,1],
@@ -910,16 +764,13 @@ var questdata = {
 		],
 		unlockreqs = [],
 		reputation = [100,150],
-		rewards = [
-		[1, {code = 'gold', range = [250,400]}],
-		],
+		rewards = 'rq_gold_slave_easy',
 		time_limit = [8,12],
 	},
 	workers_slave_medium = {
 		code = 'workers_slave_medium',
 		name = tr("SERVANTS_SLAVE_NAME"),
 		descript = tr("WORKERS_SLAVE_DESC"),
-
 		randomconditions = [
 			{code = 'slave_delivery',
 			range = [2,2],
@@ -932,16 +783,13 @@ var questdata = {
 		],
 		unlockreqs = [],
 		reputation = [250,350],
-		rewards = [
-		[1, {code = 'gold', range = [450,600]}],
-		],
+		rewards = 'rq_gold_slave_medium',
 		time_limit = [8,12],
 	},
 	workers_slave_hard = {
 		code = 'workers_slave_hard',
 		name = tr("SERVANTS_SLAVE_NAME"),
 		descript = tr("WORKERS_SLAVE_DESC"),
-
 		randomconditions = [
 			{code = 'slave_delivery',
 			range = [2,3],
@@ -953,9 +801,7 @@ var questdata = {
 		],
 		unlockreqs = [],
 		reputation = [400,550],
-		rewards = [
-		[1, {code = 'gold', range = [600,750]}],
-		],
+		rewards = 'rq_gold_slave_hard',
 		time_limit = [10,16],
 	},
 	

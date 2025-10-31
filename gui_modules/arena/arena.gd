@@ -115,7 +115,7 @@ var rewards = {
 
 var group = {}
 var limits = [[1, 1], [2, 2], [3, 2], [4, 2], [5, 1]]
-var cur_reward = {gold = 0, materials = {}, items = []}
+var cur_reward
 #TO FIX: there is "bug" with round_num: it is used as current round_num and next round_num at the same time,
 #which is bad for code readability.
 #round_num_finished added temporaly, to fix actual bug with last round identification,
@@ -128,6 +128,7 @@ var opened = false
 
 
 func _ready():
+	cur_reward = Items.get_loot().get_rewards_template()
 	finish_btn.connect("pressed", self, 'on_leave_btn')
 	$PrefightPanel/reset_btn.connect("pressed", self, 'reset')
 	start_btn.connect("pressed", self, 'on_start_btn')
@@ -200,7 +201,7 @@ func renew():
 	round_num_finished = 0
 	start_btn.disabled = false
 	make_next_reward()
-	cur_reward = {gold = 0, materials = {}, items = []}
+	cur_reward = Items.get_loot().get_rewards_template()
 	clear_reward(cur_reward_cont)
 	clear_group()
 

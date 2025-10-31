@@ -221,29 +221,53 @@ func Reward():
 	var is_recount_reputation = false
 	var reputation_value = 0
 	var guild
-	for i in selectedquest.rewards:
-		match i.code:
-			'gold':
-				if i.value is Array:
-					var val = i.value[0] * selectedquest.turned_value
-					val *= 1 +  variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]
+	if selectedquest.rewards.has('spec_rules'):
+		for spec_rule in selectedquest.rewards.spec_rules:
+			match spec_rule.rule:
+				'item_based_gold':
+					var val = spec_rule.mul * selectedquest.turned_value
+					val *= 1 + variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]
 					ResourceScripts.game_res.money += round(val)
-				else:
-					ResourceScripts.game_res.money += round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-			'reputation':
-				# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].reputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-				# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].totalreputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-				reputation_value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-				guild = selectedquest.source
-				is_recount_reputation = true
-			'gear':
-				globals.AddItemToInventory(globals.CreateGearItemQuest(i.item, i.itemparts, selectedquest))
-			'gear_static':
-				globals.AddItemToInventory(globals.CreateGearItem(i.item, {}))
-			'material':
-				ResourceScripts.game_res.materials[i.item] += i.value
-			'usable':
-				globals.AddItemToInventory(globals.CreateUsableItem(i.item, i.value))
+				'reputation':
+					# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].reputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+					# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].totalreputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+					reputation_value = round(spec_rule.value + spec_rule.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+					guild = selectedquest.source
+					is_recount_reputation = true
+	if selectedquest.rewards.has('gold'):
+		ResourceScripts.game_res.money += round(selectedquest.rewards.gold + selectedquest.rewards.gold
+			* variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+	if selectedquest.rewards.has('materials'):
+		for i in selectedquest.rewards.materials:
+			ResourceScripts.game_res.materials[i] += selectedquest.rewards.materials[i]
+	if selectedquest.rewards.has('items'):
+		for i in selectedquest.rewards.items:
+			globals.AddItemToInventory(i)
+	
+	#old (loot-system less) rewords. Legacy code for bug fix. Delete with time (31 oct 2025)
+#	for i in selectedquest.rewards:
+#		match i.code:
+#			'gold':
+#				if i.value is Array:
+#					var val = i.value[0] * selectedquest.turned_value
+#					val *= 1 +  variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]
+#					ResourceScripts.game_res.money += round(val)
+#				else:
+#					ResourceScripts.game_res.money += round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+#			'reputation':
+#				# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].reputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+#				# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].totalreputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+#				reputation_value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+#				guild = selectedquest.source
+#				is_recount_reputation = true
+#			'gear':
+#				globals.AddItemToInventory(globals.CreateGearItemQuest(i.item, i.itemparts, selectedquest))
+#			'gear_static':
+#				globals.AddItemToInventory(globals.CreateGearItem(i.item, {}))
+#			'material':
+#				ResourceScripts.game_res.materials[i.item] += i.value
+#			'usable':
+#				globals.AddItemToInventory(globals.CreateUsableItem(i.item, i.value))
 
 	#remake into data system
 	if selectedquest.area == 'plains':

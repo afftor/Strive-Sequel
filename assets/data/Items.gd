@@ -5277,6 +5277,14 @@ var material_tiers = {
 	local6 = {woodmagic = 1, woodiron = 1, leatherthick = 1, leathermythic = 1, insect_chitin = 1, iron = 1},
 	local7 = {steel = 1, mithril = 1, obsidian = 1, leatherthick = 1, leather = 1},
 	local8 = {clothmagic = 1, leatherthick = 1, iron = 1, wood = 1, clothsilk = 1},
+	
+	#old repeatable quests' material tiers
+	rq_easy = {stone = 1, wood = 1, leather = 1, bone = 1, cloth = 1, clothsilk = 1, iron = 1},
+	rq_medium = {obsidian = 1, woodmagic = 1, woodiron = 1, leatherthick = 1, boneancient = 1,
+		clothmagic = 1, steel = 1, insect_chitin = 1, ogre_teeth = 1},
+	rq_hard = {woodancient = 1, leathermythic = 1, leatherdragon = 1, bonedragon = 1,
+		clothethereal = 1, mithril = 1, adamantine = 1, meteorite_iron = 1, ice_crystal = 1,
+		fire_ruby = 1, lizard_skin = 1, crystalized_ether = 1, earth_shard = 1}
 }
 
 func get_materials_by_grade(grade, item_id):
