@@ -183,6 +183,7 @@ var metrics = {
 	metrics_birth = 0, 
 	metrics_pregnancy = 0, 
 	metrics_impregnation = 0,
+	metrics_waitress = 0
 }
 var piercing = {
 	piercing_earlobes = null, 

@@ -205,6 +205,21 @@ var backgrounds = {
 	heleviel3 = "res://assets/images/fullscreen scenes/HelevielCG003.png",
 	heleviel4 = "res://assets/images/fullscreen scenes/HelevielCG004.png",
 	
+	heleviel_bar_1 = "res://assets/images/fullscreen scenes/Heleviel_job_1.png",
+	heleviel_bar_2 = "res://assets/images/fullscreen scenes/Heleviel_job_2.png",
+	heleviel_bar_3 = "res://assets/images/fullscreen scenes/Heleviel_job_3.png",
+	heleviel_bar_4 = "res://assets/images/fullscreen scenes/Heleviel_job_4.png",
+	
+	heleviel_forest_1 = "res://assets/images/fullscreen scenes/HelevielCG015.png",
+	heleviel_forest_2 = "res://assets/images/fullscreen scenes/HelevielCG016.png",
+	heleviel_forest_3 = "res://assets/images/fullscreen scenes/HelevielCG017.png",
+	heleviel_forest_4 = "res://assets/images/fullscreen scenes/HelevielCG018.png",
+	
+	heleviel_wed_1 = "res://assets/images/fullscreen scenes/HelevielCG008.png",
+	heleviel_wed_2 = "res://assets/images/fullscreen scenes/HelevielCG009.png",
+	heleviel_wed_3 = "res://assets/images/fullscreen scenes/HelevielCG010.png",
+	heleviel_wed_4 = "res://assets/images/fullscreen scenes/HelevielCG011.png",
+	
 	cali_bj_happy_1 = "res://assets/images/fullscreen scenes/CaliCG007.png",
 	cali_bj_happy_2 = "res://assets/images/fullscreen scenes/CaliCG008.png",
 	cali_bj_happy_3 = "res://assets/images/fullscreen scenes/CaliCG009.png",
@@ -721,6 +736,8 @@ var sprites = {
 	heleviel_nude_body = load("res://assets/images/sprites/heleviel_nude_body.png"),
 	heleviel_wed = load("res://assets/images/sprites/heleviel_wed.png"),
 	heleviel_wed_body = load("res://assets/images/sprites/heleviel_wed_body.png"),
+	heleviel_waitress = load("res://assets/images/sprites/heleviel_waitress.png"),
+	heleviel_waitress_body = load("res://assets/images/sprites/heleviel_waitress_body.png"),
 	lira_nude = load("res://assets/images/sprites/Lira_nude.png"),
 	lira_nude_body = load("res://assets/images/sprites/Lira_nude_body.png"),
 	lira_wed = load("res://assets/images/sprites/Lira_wed.png"),

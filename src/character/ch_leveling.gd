@@ -513,6 +513,9 @@ func select_brothel_activity():
 	var non_sex_rules = []
 	var sex_rules = []
 	
+	if brothel_rules.waitress:
+		parent.get_ref().add_stat('metrics_waitress', 1)
+	
 	var no_consent = false
 	for i in brothel_rules:
 		if !brothel_rules[i] || i in ['males','futa','females']: continue
@@ -520,8 +523,6 @@ func select_brothel_activity():
 			non_sex_rules.append(i)
 		else:
 			sex_rules.append(i)
-	
-	
 	
 	if sex_rules.size() > 0 && (brothel_rules.males || brothel_rules.futa || brothel_rules.females):
 		parent.get_ref().add_stat('metrics_serviceperformed', 1)

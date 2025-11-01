@@ -663,6 +663,9 @@ var pregen_characters = {
 			positive = 'resist',
 			magic = 'neutral',
 		},
+		blocked_training_traits = {
+			training_s_combat = ['HelevielTrainingFinished'],
+		},
 	},
 	
 	Lira = {
@@ -1133,6 +1136,13 @@ var unique_sprites = {
 			path = "heleviel_nude_body", 
 			face_path = "heleviel_nude",
 			unlock_reqs = []
+			},
+		waitress = {
+			name = "Waitress",
+			descript = "",
+			path = "heleviel_waitress_body", 
+			face_path = "heleviel_waitress",
+			unlock_reqs = [{type = 'event_seen', check = true, value = 'heleviel_quest_13'}]
 			},
 		wed = {
 			name = "Wed",

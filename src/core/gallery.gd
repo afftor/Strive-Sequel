@@ -52,6 +52,9 @@ var scenes = {
 	ana_blow = ['ana_blow_1', 'ana_blow_2', 'ana_blow_3', 'ana_blow_4', 'ana_blow_5'],
 	ana_wed = ['anastasia_wedding_1', 'ana_wed_2', 'ana_wed_3', 'ana_wed_4'],
 	zephyra_wed = ['zephyra_wedding_1', 'zephyra_wed_2', 'zephyra_wed_3', 'zephyra_wed_4'],
+	heleviel_bar_sex = ['heleviel_bar_sex_1', 'heleviel_bar_sex_2', 'heleviel_bar_sex_3', 'heleviel_bar_sex_4', 'heleviel_bar_sex_5', 'heleviel_bar_sex_6', 'heleviel_bar_sex_7', 'heleviel_bar_sex_8', ],
+	heleviel_forest_sex = ['heleviel_forest_sex_1', 'heleviel_forest_sex_2', 'heleviel_forest_sex_3', 'heleviel_forest_sex_4'],
+	heleviel_wedding = ['heleviel_wedding_1', 'heleviel_wedding_2', 'heleviel_wedding_3', 'heleviel_wedding_4', 'heleviel_wedding_5', 'heleviel_wedding_6', ]
 }
 #was forced to add a id to scene lists for unlock purpose
 var scenes_order = [
@@ -62,7 +65,8 @@ var scenes_order = [
 	"heleviel_mansion","lira_mansion", "cali_zephyra","cali_act5_pet","cali_act6_naked","pre_ritual_blow",
 	"zephyra_lilia", 'amelia_sex', 'zephyra_disappearance_sex', 'zephyra_disappearance_guards', 'daisy_wedding', 'cali_wedding', 'amelia_wedding', 'lilia_transform_t', 'lilia_transform_mc', 'lilith_blow', 'lilith_ride', 'lilia_wedding', 'lilith_wedding',
 	'kuro_tome', 'kuro_hideout', 'kuro_zeph_tailjob', 'kuro_wedding_pussy',
-	'ana_blow','ana_wed','zephyra_wed'
+	'ana_blow','ana_wed','zephyra_wed',
+	'heleviel_bar_sex', 'heleviel_forest_sex', 'heleviel_wedding'
 	]
 var story_scenes = ['anastasia_event_alive', 'elven_temple_scene', 'act1_art', 'act2_art'] #maybe we should define this as 'scenes' unlocks and ero_scenes as 'backgrounds' unlocks - but for now there are no more and i can't add something like 'daisyevent' or 'aire_death'
 var ero_scenes = [
@@ -119,7 +123,10 @@ var ero_scenes = [
 'kuro_wedding_1',
 'ana_blow_1',
 'ana_wed_1',
-'zephyra_wed_1'
+'zephyra_wed_1',
+'heleviel_bar_1' ,
+'heleviel_forest_1',
+'heleviel_wed_1' ,
 ] 
 #fill next 2 arrays manually, if needed certain list
 var mono_scenes
@@ -179,6 +186,9 @@ var ero_scenes_collection = {
 	'ana_blow_': ['ana_blow_1', 'ana_blow_2', 'ana_blow_3', 'ana_blow_4', 'ana_blow_5'],
 	'ana_wed_': ['ana_wed_1', 'ana_wed_2', 'ana_wed_3', 'ana_wed_4', 'ana_wed_5', 'ana_wed_6', 'ana_wed_7'],
 	'zephyra_wed_': ['zephyra_wed_1', 'zephyra_wed_2', 'zephyra_wed_3', 'zephyra_wed_4', 'zephyra_wed_5', 'zephyra_wed_6', 'zephyra_wed_7'],
+	'heleviel_bar_' : ['heleviel_bar_1', 'heleviel_bar_2', 'heleviel_bar_3','heleviel_bar_4'],
+	'heleviel_forest_' : ['heleviel_forest_1', 'heleviel_forest_2', 'heleviel_forest_3', 'heleviel_forest_4'],
+	'heleviel_wed_': ['heleviel_wed_1', 'heleviel_wed_2', 'heleviel_wed_3', 'heleviel_wed_4',]
 }
 #so these arrays are needed for storing order 
 
@@ -240,6 +250,9 @@ var scene_tooltips = {
 	ana_blow_1 = "ANASTASIA_BLOWJOB_SS",
 	ana_wed_1 = "ANASTASIA_WEDDING_SS",
 	zephyra_wed_1 = "ZEPHYRA_WEDDING_SS",
+	heleviel_bar_1 = "HELEVIEL_BAR_SS",
+	heleviel_forest_1 = "HELEVIEL_FOREST_SS",
+	heleviel_wed_1 = "HELEVIEL_WEDDING_SS",
 }
 
 

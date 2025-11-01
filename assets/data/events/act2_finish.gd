@@ -4221,7 +4221,8 @@ var data = {
 			},
 			{
 				code = "plan_mansion_event",
-				value = "heleviel_mansion_1"
+				value = "heleviel_quest_1"
+#				value = "heleviel_mansion_1"
 			}
 		],
 		options = [
