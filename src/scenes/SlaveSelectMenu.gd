@@ -18,7 +18,7 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 	target_func = targetfunc
 	target_node = targetnode
 	req_info.hide()
-	var show_req_info = (challenge == null)#could be changed with time
+	var show_req_info = true#(challenge == null)#could be changed with time
 	reqs_text = null
 	show()
 	input_handler.ClearContainer(slave_btn_cont)
@@ -47,9 +47,17 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 	if !(reqs is Array):
 		reqs_list = [reqs]
 	if !reqs_list.empty() and show_req_info:
+		var has_visible_reqs = false
+		for req in reqs_list:
+			if !(req.code in silently_hide_codes):
+				has_visible_reqs = true
+				break
+		show_req_info = has_visible_reqs
+	if !reqs_list.empty() and show_req_info:
 		reqs_text = tr('REQUIREMENTS_TOOLTIP') + ":"
 		for req in reqs_list:
-			reqs_text += '\n' + ResourceScripts.descriptions.make_slave_statreq_text(req)
+			if !(req.code in silently_hide_codes):
+				reqs_text += '\n' + ResourceScripts.descriptions.make_slave_statreq_text(req)
 		req_info_label.bbcode_text = reqs_text
 		req_info.show()
 		hide_pretenders_btn.show()

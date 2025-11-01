@@ -20,11 +20,30 @@ var easter_egg_characters_acquired = []
 
 var dungeon_events_assigned = {}
 
+var serial_quest_items#only for serialize
+
 func _ready():
 	input_handler.connect("EnemyKilled", self, "quest_kill_receiver")
 
 func serialize():
-	return inst2dict(self)
+	var res = inst2dict(self)
+	for area_k in areas:
+		var area_v = areas[area_k]
+		for fac_k in area_v.quests.factions:
+			var fac_v = area_v.quests.factions[fac_k]
+			for quest_id in fac_v:
+				var quest_v = fac_v[quest_id]
+				if quest_v.rewards.has("items"):
+					for item in quest_v.rewards.items:
+						if !res.has("serial_quest_items") or res.serial_quest_items == null:
+							res.serial_quest_items = []
+						res.serial_quest_items.append({
+							k_area = area_k,
+							k_faction = fac_k,
+							k_quest = quest_id,
+							item = inst2dict(item)
+						})
+	return res
 
 
 func fix_serialization():
@@ -74,6 +93,15 @@ func fix_serialization():
 #				print("wrong questnumber for %s - counters resetted" % [guild.name])
 #			elif guild.questsetting.total > guild.questsetting.easy + guild.questsetting.medium + guild.questsetting.hard:
 #				print("wrong questnumber for %s - unallocated quests" % [guild.name])
+	fix_old_rep_quests_rewords()
+	if serial_quest_items != null:
+		for item_s in serial_quest_items:
+			var items_list = areas[item_s.k_area].quests.factions[item_s.k_faction][item_s.k_quest].rewards.items
+			if items_list[0] is String:
+				items_list.clear()
+			items_list.append(dict2inst(item_s.item))
+	serial_quest_items = null
+	
 	var tmp = ResourceScripts.world_gen.get_location_from_code('quest_cali_bandits_location')
 	if tmp != null and tmp.type != 'dungeon': 
 		tmp.type = 'dungeon'
@@ -91,6 +119,44 @@ func fix_serialization():
 				{code = "remove_quest_location", value = "quest_dungeon_kuro3"},
 			])
 
+#only for migration to new loot system's rewords in quests
+#delete with time (22 oct 2025)
+func fix_old_rep_quests_rewords():
+	for area in areas.values():
+		for fac in area.quests.factions.values():
+			for quest in fac.values():
+				fix_old_quests_rewords(quest)
+func fix_old_quests_rewords(quest):
+	if !quest.has('rewards') or (quest.rewards is Dictionary):#new loot system
+		return
+	var new_rewards = Items.get_loot().get_rewards_template()
+	if !new_rewards.has('spec_rules'):
+		new_rewards.spec_rules = []
+	for i in quest.rewards:
+		match i.code:
+			'gold':
+				if i.value is Array:
+					new_rewards.spec_rules.append({
+						rule = 'item_based_gold',
+						mul = i.value[0]
+					})
+				else:
+					new_rewards.gold = i.value
+			'reputation':
+				new_rewards.spec_rules.append({
+					rule = 'reputation',
+					value = i.value
+				})
+			'gear':
+				new_rewards.items.append(globals.CreateGearItemQuest(i.item, i.itemparts, quest))
+			'gear_static':
+				new_rewards.items.append(globals.CreateGearItem(i.item, {}))
+			'material':
+				new_rewards.materials[i.item] = i.value
+			'usable':
+				new_rewards.items.append(globals.CreateUsableItem(i.item, i.value))
+	quest.rewards = new_rewards
+#----------------------------
 
 func fix_import(data):
 	if !data.has('factions'): return

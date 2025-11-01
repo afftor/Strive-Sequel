@@ -536,7 +536,7 @@ func select_person_for_next_event(option): #needs a rework
 		reqs = [
 			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
 			{code = 'in_combat_party', value = true},
-			{code = 'is_shortstack', check = true}
+			{code = 'stat', stat = 'height', operant = 'in', value = ['tiny','petite']}#{code = 'is_shortstack', check = true}
 			]
 	elif option.has('challenge') and option.challenge == 'captured':
 		reqs = []

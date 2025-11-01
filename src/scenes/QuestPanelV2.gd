@@ -32,7 +32,7 @@ func show_info(quest):
 	show()
 	input_handler.ClearContainer(req_cont)
 	input_handler.ClearContainer(reward_cont)
-	input_handler.ghost_items.clear()
+#	input_handler.ghost_items.clear()
 	
 	if quest.has('stage'):#main quests?
 		reward_cont.hide()
@@ -181,55 +181,106 @@ func show_info(quest):
 				quest_descript += t_text
 				globals.connecttexttooltip(newbutton, t_text)
 	
-	for i in quest.rewards:
-		var newbutton = input_handler.DuplicateContainerTemplate(reward_cont)
-		match i.code:
-			'gear':
-				var item = globals.CreateGearItem(i.item, i.itemparts)
-				item.set_icon(newbutton.get_node("TextureRect"))
-				input_handler.ghost_items.append(item)
-				globals.connectitemtooltip_v2(newbutton, item)
-			'gear_static':
-				newbutton.get_node("TextureRect").texture = Items.itemlist[i.item].icon
-				newbutton.get_node("amount").text = str(i.value)
-				newbutton.get_node("amount").show()
-				globals.connecttempitemtooltip(newbutton, Items.itemlist[i.item], 'geartemplate')
-			'gold':
-				newbutton.get_node("TextureRect").texture = images.get_icon('quest_gold')
-				if i.value is Array:
+	#rewards
+	if quest.rewards.has('spec_rules'):
+		for spec_rule in quest.rewards.spec_rules:
+			match spec_rule.rule:
+				'item_based_gold':
+					var newbutton = input_handler.DuplicateContainerTemplate(reward_cont)
+					newbutton.get_node("TextureRect").texture = images.get_icon('quest_gold')
 					newbutton.get_node("amount").show()
-					newbutton.get_node("amount").text = "x%s" % stepify(i.value[0],0.1)
+					newbutton.get_node("amount").text = "x%s" % stepify(spec_rule.mul, 0.1)
 					globals.connecttexttooltip(newbutton, tr("QUESTGOLDREWARD"))
-				else:
-					var bonus = i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]
-					var value = round(i.value + bonus)
+				'reputation':
+					var newbutton = input_handler.DuplicateContainerTemplate(reward_cont)
+					var bonus = spec_rule.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]
+					var value = round(spec_rule.value + bonus)
+					newbutton.get_node("TextureRect").texture = images.get_icon("guilds_" + quest.source + "_colored")
 					newbutton.get_node("amount").text = str(value)
 					newbutton.get_node("amount").show()
-					globals.connecttexttooltip(newbutton, "%s: %s + %s (%s)" % [
-						tr("QUESTGOLD"), i.value, round(bonus),
-						tr("QUESTMASTERCHARMBONUS")])
-			'reputation':
-				var bonus = i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]
-				var value = round(i.value + bonus)
-				newbutton.get_node("TextureRect").texture = images.get_icon("guilds_" + quest.source + "_colored")
-				newbutton.get_node("amount").text = str(value)
-				newbutton.get_node("amount").show()
-				globals.connecttexttooltip(newbutton, ("%s (%s): %s + %s (%s)" % [
-					tr("QUESTREPUTATION"), quest.source.capitalize(), i.value, round(bonus),
-					tr("QUESTMASTERCHARMBONUS")]))
-			'material':
-				var material = Items.materiallist[i.item]
-				newbutton.get_node("TextureRect").texture = material.icon
-				newbutton.get_node("amount").text = str(i.value)
-				newbutton.get_node("amount").show()
-				globals.connectmaterialtooltip(newbutton, material)
-			'usable':
-				var item = Items.itemlist[i.item]
-				#input_handler.itemshadeimage(newbutton.get_node("TextureRect"), item)
-				newbutton.get_node("TextureRect").texture = item.icon
-				globals.connecttempitemtooltip_v2(newbutton, item, 'geartemplate')#connecttempitemtooltip
-				newbutton.get_node("amount").text = str(i.value)
-				newbutton.get_node("amount").show()
+					globals.connecttexttooltip(newbutton, ("%s (%s): %s + %s (%s)" % [
+						tr("QUESTREPUTATION"), quest.source.capitalize(), spec_rule.value, round(bonus),
+						tr("QUESTMASTERCHARMBONUS")]))
+	if quest.rewards.has('gold') and quest.rewards.gold > 0:
+		var newbutton = input_handler.DuplicateContainerTemplate(reward_cont)
+		newbutton.get_node("TextureRect").texture = images.get_icon('quest_gold')
+		var bonus = quest.rewards.gold * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]
+		var value = round(quest.rewards.gold + bonus)
+		newbutton.get_node("amount").text = str(value)
+		newbutton.get_node("amount").show()
+		globals.connecttexttooltip(newbutton, "%s: %s + %s (%s)" % [
+			tr("QUESTGOLD"), quest.rewards.gold, round(bonus),
+			tr("QUESTMASTERCHARMBONUS")])
+	if quest.rewards.has('materials'):
+		for mat_id in quest.rewards.materials:
+			var newbutton = input_handler.DuplicateContainerTemplate(reward_cont)
+			var material = Items.materiallist[mat_id]
+			newbutton.get_node("TextureRect").texture = material.icon
+			newbutton.get_node("amount").text = str(quest.rewards.materials[mat_id])
+			newbutton.get_node("amount").show()
+			globals.connectmaterialtooltip(newbutton, material)
+	if quest.rewards.has('items'):
+		for item in quest.rewards.items:
+			var newbutton = input_handler.DuplicateContainerTemplate(reward_cont)
+			newbutton.show()
+#			print(typeof(item))
+			item.set_icon(newbutton.get_node("TextureRect"))
+			globals.connectitemtooltip_v2(newbutton, item)
+			if item.amount == null || item.amount == 0:
+				newbutton.get_node("amount").visible = false
+			else:
+				newbutton.get_node("amount").text = str(item.amount)
+	
+	#old (loot-system less) rewords. Legacy code for bug fix. Delete with time (31 oct 2025)
+#	for i in quest.rewards:
+#		var newbutton = input_handler.DuplicateContainerTemplate(reward_cont)
+#		match i.code:
+#			'gear':
+#				var item = globals.CreateGearItem(i.item, i.itemparts)
+#				item.set_icon(newbutton.get_node("TextureRect"))
+#				input_handler.ghost_items.append(item)
+#				globals.connectitemtooltip_v2(newbutton, item)
+#			'gear_static':
+#				newbutton.get_node("TextureRect").texture = Items.itemlist[i.item].icon
+#				newbutton.get_node("amount").text = str(i.value)
+#				newbutton.get_node("amount").show()
+#				globals.connecttempitemtooltip(newbutton, Items.itemlist[i.item], 'geartemplate')
+#			'gold':
+#				newbutton.get_node("TextureRect").texture = images.get_icon('quest_gold')
+#				if i.value is Array:
+#					newbutton.get_node("amount").show()
+#					newbutton.get_node("amount").text = "x%s" % stepify(i.value[0],0.1)
+#					globals.connecttexttooltip(newbutton, tr("QUESTGOLDREWARD"))
+#				else:
+#					var bonus = i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]
+#					var value = round(i.value + bonus)
+#					newbutton.get_node("amount").text = str(value)
+#					newbutton.get_node("amount").show()
+#					globals.connecttexttooltip(newbutton, "%s: %s + %s (%s)" % [
+#						tr("QUESTGOLD"), i.value, round(bonus),
+#						tr("QUESTMASTERCHARMBONUS")])
+#			'reputation':
+#				var bonus = i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]
+#				var value = round(i.value + bonus)
+#				newbutton.get_node("TextureRect").texture = images.get_icon("guilds_" + quest.source + "_colored")
+#				newbutton.get_node("amount").text = str(value)
+#				newbutton.get_node("amount").show()
+#				globals.connecttexttooltip(newbutton, ("%s (%s): %s + %s (%s)" % [
+#					tr("QUESTREPUTATION"), quest.source.capitalize(), i.value, round(bonus),
+#					tr("QUESTMASTERCHARMBONUS")]))
+#			'material':
+#				var material = Items.materiallist[i.item]
+#				newbutton.get_node("TextureRect").texture = material.icon
+#				newbutton.get_node("amount").text = str(i.value)
+#				newbutton.get_node("amount").show()
+#				globals.connectmaterialtooltip(newbutton, material)
+#			'usable':
+#				var item = Items.itemlist[i.item]
+#				#input_handler.itemshadeimage(newbutton.get_node("TextureRect"), item)
+#				newbutton.get_node("TextureRect").texture = item.icon
+#				globals.connecttempitemtooltip_v2(newbutton, item, 'geartemplate')#connecttempitemtooltip
+#				newbutton.get_node("amount").text = str(i.value)
+#				newbutton.get_node("amount").show()
 
 	name_node.bbcode_text = globals.TextEncoder('[center]%s[/center]' % tr(quest.name))
 	descript_node.bbcode_text = globals.TextEncoder(quest_descript)

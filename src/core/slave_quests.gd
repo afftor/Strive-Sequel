@@ -237,7 +237,7 @@ func regen_quests():
 			modifier += random_mod
 			reward += reward * modifier
 			reward += reward * get_faction_dynamic_data(fact_id).price_factor
-			new_quest.rewards = [{code = 'gold', value = reward}]
+			new_quest.rewards = {gold = reward}
 			
 			#special rules
 			if data.has("special_rule"):
@@ -500,6 +500,7 @@ func remove_req(reqs, to_remove):
 func fix_serialization():
 	var progress = ResourceScripts.game_progress.slave_quests
 	for str_id in progress.quest_pool.keys():
+		ResourceScripts.game_world.fix_old_quests_rewords(progress.quest_pool[str_id])
 		progress.quest_pool[int(str_id)] = progress.quest_pool[str_id]
 		progress.quest_pool.erase(str_id)
 	var existing_factions = quest_data.factions.keys()

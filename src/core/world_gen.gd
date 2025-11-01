@@ -7,7 +7,7 @@ var quest_template = {
 	source = '',
 	location = '',
 	requirements = [],
-	rewards = [],
+	rewards = {},
 	time_limit = 0,
 	taken = false,
 }
@@ -297,11 +297,14 @@ func make_quest_for_guild(guilddatatemplate, difficulty):
 	for i in guilddatatemplate.questpool[difficulty]:
 		if globals.checkreqs(worlddata.questdata[i].unlockreqs) == true:
 			array.append(i)
-	var newquest = make_quest(array[randi()%array.size()])
-	newquest.source = guilddatatemplate.code
-	newquest.area = guilddatatemplate.area
-	newquest.travel_time = min(1, ResourceScripts.game_world.areas[guilddatatemplate.area].travel_time + round(randf()))#*6)
-	newquest.difficulty = difficulty
+	var input_info = {
+		source = guilddatatemplate.code,
+		area = guilddatatemplate.area,
+		travel_time = min(1, ResourceScripts.game_world.areas[guilddatatemplate.area].travel_time + round(randf())),#*6)
+		difficulty = difficulty
+	}
+	var newquest = make_quest(array[randi()%array.size()], input_info)
+	
 	ResourceScripts.game_world.areas[newquest.area].quests.factions[newquest.source][newquest.id] = newquest
 
 func make_settlement(code, area):
@@ -493,9 +496,11 @@ func fill_faction_quests(faction, area):
 			make_quest_for_guild(factiondata, i)
 			difficulty[i] += 1
 
-func make_quest(questcode):
+func make_quest(questcode, input_info):
 	var template = worlddata.questdata[questcode].duplicate(true)#array[randi()%array.size()]
 	var data = quest_template.duplicate(true)
+	for input_param in input_info:
+		data[input_param] = input_info[input_param]
 
 	data.id = "Q" + str(ResourceScripts.game_progress.questcounter)
 	ResourceScripts.game_progress.questcounter += 1
@@ -601,57 +606,88 @@ func make_quest(questcode):
 		else:
 			tempdata.type = tempdata.type[randi()%tempdata.type.size()]
 		requirements_number -= 1
-	var rewardarray = []
-	for i in template.rewards.duplicate():
-		rewardarray.append([i, i[0]])
-	rewardarray = input_handler.weightedrandom(rewardarray)
 	
-	for i in rewardarray:
-		var reward = {}
-		if typeof(i) != TYPE_DICTIONARY: continue #ignoring weight value
-		match i.code:
-			'gold':
-				reward.code = 'gold'
-				if i.has('item_based') == true:
-					var item_price = 0
-					for k in data.requirements:
-						match k.code:
-							'random_item':
-								if Items.itemlist[k.type].has('parts'):
-									reward.value = [rand_range(i.range[0], i.range[1])]
-								else:
-									item_price += Items.itemlist[k.type].price * k.value
-									reward.value = round(item_price * rand_range(i.range[0], i.range[1]))
-							'random_material':
-								item_price = Items.materiallist[k.type].price * k.value
-								reward.value = round(item_price*rand_range(i.range[0], i.range[1]))
-				else:
-					reward.value = round(rand_range(i.range[0], i.range[1]))
-			'gear':
-				var dict = {item = i.name[randi()%i.name.size()], material_grade = i.material_grade}
-				reward = generate_random_gear(dict)
-				reward.item = reward.code
-				reward.code = 'gear'
-			'gear_static':
-				reward.item = i.name[randi()%i.name.size()]
-				reward.code = 'gear_static'
-				reward.value = round(rand_range(i.value[0], i.value[1]))
-			'material':
-				reward.code = 'material'
-				reward.item = i.name[randi()%i.name.size()]
-				if reward.item in Items.material_tiers:
-					reward.item = Items.material_tiers[reward.item]
-					reward.item = input_handler.weightedrandom_dict(reward.item)
-				reward.value = round(rand_range(i.value[0], i.value[1]))
-			'usable':
-				reward.code = 'usable'
-				reward.item = i.name[randi()%i.name.size()]
-				reward.value = round(rand_range(i.value[0], i.value[1]))
-		if reward.empty() == false:
-			data.rewards.append(reward)
+	#rewards
+	var loot_processor = Items.get_loot()
+	data.rewards = loot_processor.get_quest_reward(template.rewards, data)
+	if !data.rewards.has('spec_rules'):
+		data.rewards.spec_rules = []
+	for i in range(data.rewards.spec_rules.size()- 1, -1, -1):
+		var spec_rule = data.rewards.spec_rules[i]
+		if spec_rule.rule == 'item_based_gold':
+			var item_price = 0
+			var remove_rule = true
+			for k in data.requirements:
+				match k.code:
+					'random_item':
+						if Items.itemlist[k.type].has('parts'):
+							remove_rule = false
+						else:
+							item_price += Items.itemlist[k.type].price * k.value
+					'random_material':
+						item_price += Items.materiallist[k.type].price * k.value
+			if item_price > 0:
+				data.rewards.gold += round(item_price * spec_rule.mul)
+			if remove_rule:
+				data.rewards.spec_rules.remove(i)
+			#break#why it's here?
+	if variables.exp_scroll_quest_reward: data.rewards.items.append(globals.CreateUsableItem('exp_scroll', 1))
+	data.rewards.spec_rules.append({
+		rule = 'reputation',
+		value = round(rand_range(template.reputation[0], template.reputation[1]))
+	})
 	
-	if variables.exp_scroll_quest_reward: data.rewards.append({code = 'usable', item = 'exp_scroll', value = 1})
-	data.rewards.append({code = 'reputation', value = round(rand_range(template.reputation[0],template.reputation[1]))})
+	#old (loot-system less) rewords. Legacy code for bug fix. Delete with time (31 oct 2025)
+#	var rewardarray = []
+#	for i in template.rewards.duplicate():
+#		rewardarray.append([i, i[0]])
+#	rewardarray = input_handler.weightedrandom(rewardarray)
+#
+#	for i in rewardarray:
+#		var reward = {}
+#		if typeof(i) != TYPE_DICTIONARY: continue #ignoring weight value
+#		match i.code:
+#			'gold':
+#				reward.code = 'gold'
+#				if i.has('item_based') == true:
+#					var item_price = 0
+#					for k in data.requirements:
+#						match k.code:
+#							'random_item':
+#								if Items.itemlist[k.type].has('parts'):
+#									reward.value = [rand_range(i.range[0], i.range[1])]
+#								else:
+#									item_price += Items.itemlist[k.type].price * k.value
+#									reward.value = round(item_price * rand_range(i.range[0], i.range[1]))
+#							'random_material':
+#								item_price = Items.materiallist[k.type].price * k.value
+#								reward.value = round(item_price*rand_range(i.range[0], i.range[1]))
+#				else:
+#					reward.value = round(rand_range(i.range[0], i.range[1]))
+#			'gear':
+#				var dict = {item = i.name[randi()%i.name.size()], material_grade = i.material_grade}
+#				reward = generate_random_gear(dict)
+#				reward.item = reward.code
+#				reward.code = 'gear'
+#			'gear_static':
+#				reward.item = i.name[randi()%i.name.size()]
+#				reward.code = 'gear_static'
+#				reward.value = round(rand_range(i.value[0], i.value[1]))
+#			'material':
+#				reward.code = 'material'
+#				reward.item = i.name[randi()%i.name.size()]
+#				if reward.item in Items.material_tiers:
+#					reward.item = Items.material_tiers[reward.item]
+#					reward.item = input_handler.weightedrandom_dict(reward.item)
+#				reward.value = round(rand_range(i.value[0], i.value[1]))
+#			'usable':
+#				reward.code = 'usable'
+#				reward.item = i.name[randi()%i.name.size()]
+#				reward.value = round(rand_range(i.value[0], i.value[1]))
+#		if reward.empty() == false:
+#			data.rewards.append(reward)
+#	if variables.exp_scroll_quest_reward: data.rewards.append({code = 'usable', item = 'exp_scroll', value = 1})
+#	data.rewards.append({code = 'reputation', value = round(rand_range(template.reputation[0],template.reputation[1]))})
 	return data
 
 
@@ -720,23 +756,24 @@ func make_chest_loot(chest):
 	
 	return dict
 
-func generate_random_gear(dict):#
-	var itemtemplate = Items.itemlist[dict.item]
-	var itemparts = {}
-	for i_part in itemtemplate.parts:
-		var matgrade = input_handler.weightedrandom(dict.material_grade)
-		var material_array = []
-		if matgrade == 'location':
-			for material in dict.locationmaterials:
-				if Items.materiallist[material].parts.has(i_part):
-					material_array.append(material)
-		else:
-			for i in Items.materiallist.values():
-				if i.has('parts') && i.parts.has(i_part) && i.tier == matgrade:
-					material_array.append(i.code)
-		itemparts[i_part] = material_array[randi()%material_array.size()]
-
-	return {code = itemtemplate.code, itemparts = itemparts}
+#old (loot-system less) rewords. Legacy code for bug fix. Delete with time (31 oct 2025)
+#func generate_random_gear(dict):#
+#	var itemtemplate = Items.itemlist[dict.item]
+#	var itemparts = {}
+#	for i_part in itemtemplate.parts:
+#		var matgrade = input_handler.weightedrandom(dict.material_grade)
+#		var material_array = []
+#		if matgrade == 'location':
+#			for material in dict.locationmaterials:
+#				if Items.materiallist[material].parts.has(i_part):
+#					material_array.append(material)
+#		else:
+#			for i in Items.materiallist.values():
+#				if i.has('parts') && i.parts.has(i_part) && i.tier == matgrade:
+#					material_array.append(i.code)
+#		itemparts[i_part] = material_array[randi()%material_array.size()]
+#
+#	return {code = itemtemplate.code, itemparts = itemparts}
 
 
 #dungeons

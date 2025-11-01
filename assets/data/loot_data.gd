@@ -23,7 +23,9 @@ extends Reference
 #* material - string, gives designated material
 #* item - string, gives designated item. For gear type, if param "quality"
 #	provided, item will be generated with designated quality.
-#	Also "parts" param can be provided (string or dict).
+#	Also "parts" param can be provided: string for grade from material_tiers,
+#	dict for actual predetermined parts, array for weightedrandom(). If no "parts"
+#	provided, they will be determined by get_default_materials().
 #	Bool param "autoassign_quality" used for [probably legacy] generating with
 #	autoassigning "quality" and no "parts" (it was in use for chests)
 #	(seems to be useful only for items in Items.fixed_quality_stats).
@@ -40,6 +42,9 @@ extends Reference
 #		material for generation.
 #	* weapon - same as gear, but only for "weapon" itemtype.
 #	* armor - same as gear, but only for "armor" itemtype.
+#* spec_rule - very specific option. Can be:
+#	* item_based_gold - param for repeatable quests, determines gold quantity from gived in item.
+#		"Range" param is array with min and max multiplayer for items' value.
 
 
 #example = {selector = [
@@ -704,6 +709,268 @@ var loot_tables = {
 		list = [
 		{item = 'corruptive_essence', min = 1, max = 1}]
 	},
+	
+	#repeatable quests
+	rq_gold_task_easy = {gold = true, min = 145, max = 160},
+	rq_gold_task_medium = {gold = true, min = 300, max = 350},
+	rq_gold_task_hard = {gold = true, min = 400, max = 550},
+	rq_gold_slave_easy = {gold = true, min = 250, max = 400},
+	rq_gold_slave_medium = {gold = true, min = 450, max = 600},
+	rq_gold_slave_hard = {gold = true, min = 600, max = 750},
+	rq_servants_slave_rare_medium = {gold = true, min = 700, max = 900},
+	rq_servants_slave_rare_hard = {gold = true, min = 750, max = 1000},
+	rq_workers_resources_easy = {selector = [
+		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.4, 1.5]},
+		{weight = 0.3, selector = [
+			{item = 'axe', parts = [['rq_easy', 5], ['rq_medium', 1]]},
+			{item = 'pickaxe', parts = [['rq_easy', 5], ['rq_medium', 1]]},
+			{item = 'sickle', parts = [['rq_easy', 5], ['rq_medium', 1]]}]}
+		]},
+	rq_workers_resources_medium = {selector = [
+		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.5, 1.8]},
+		{weight = 0.3, selector = [
+			{item = 'axe', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+			{item = 'pickaxe', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+			{item = 'sickle', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+			{item = 'hammer', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+			{item = 'fishingtools', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]}]}
+		]},
+	rq_workers_resources_hard = {selector = [
+		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.7, 1.95]},
+		{weight = 1.0, selector = [
+			{material = 'wood', min = 15, max = 20},
+			{material = 'stone', min = 15, max = 20},
+			{material = 'leather', min = 15, max = 20},
+			{material = 'cloth', min = 15, max = 20},
+			{material = 'iron', min = 15, max = 20}]},
+		{weight = 0.5, list = [
+			{spec_rule = 'item_based_gold', range = [0.5, 0.6]},
+			{selector = [
+				{material = 'steel', min = 5, max = 10},
+				{material = 'woodmagic', min = 5, max = 10},
+				{material = 'woodiron', min = 5, max = 10},
+				{material = 'clothsilk', min = 5, max = 10}]},
+			]}
+		]},
+	rq_workers_food_easy = {selector = [
+		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.5, 1.7]},
+		{weight = 1.0, selector = [
+			{material = 'wood', min = 15, max = 20},
+			{material = 'stone', min = 15, max = 20},
+			{material = 'leather', min = 15, max = 20},
+			{material = 'cloth', min = 15, max = 20},
+			{material = 'iron', min = 15, max = 20}]},
+		{weight = 0.5, list = [
+			{spec_rule = 'item_based_gold', range = [0.5, 0.6]},
+			{selector = [
+				{material = 'steel', min = 5, max = 10},
+				{material = 'woodmagic', min = 5, max = 10},
+				{material = 'woodiron', min = 5, max = 10},
+				{material = 'clothsilk', min = 5, max = 10}]},
+			]}
+		]},
+	rq_workers_food_medium = {selector = [
+		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.7, 1.9]},
+#		{weight = 1.0, selector = [
+#			{material = 'wood', min = 15, max = 20},
+#			{material = 'stone', min = 15, max = 20},
+#			{material = 'leather', min = 15, max = 20},
+#			{material = 'cloth', min = 15, max = 20},
+#			{material = 'iron', min = 15, max = 20}]},
+		{weight = 0.5, list = [
+			{spec_rule = 'item_based_gold', range = [0.6, 0.7]},
+			{selector = [
+				{material = 'steel', min = 10, max = 15},
+				{material = 'obsidian', min = 10, max = 15},
+				{material = 'woodiron', min = 10, max = 15},
+				{material = 'clothmagic', min = 10, max = 15}]},
+			]}
+		]},
+	rq_workers_food_hard = {selector = [
+		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.8, 2.1]},
+#		{weight = 1.0, selector = [
+#			{material = 'wood', min = 15, max = 20},
+#			{material = 'stone', min = 15, max = 20},
+#			{material = 'leather', min = 15, max = 20},
+#			{material = 'cloth', min = 15, max = 20},
+#			{material = 'iron', min = 15, max = 20}]},
+		{weight = 0.5, list = [
+			{spec_rule = 'item_based_gold', range = [0.7, 0.8]},
+			{selector = [
+				{material = 'mithril', min = 3, max = 5},
+				{material = 'obsidian', min = 3, max = 5},
+				{material = 'woodancient', min = 3, max = 5},
+				{material = 'clothmagic', min = 3, max = 5}]},
+			]}
+		]},
+	rq_workers_craft_tools_easy = {spec_rule = 'item_based_gold', range = [1.7, 2.0]},
+	rq_workers_craft_tools_medium = {spec_rule = 'item_based_gold', range = [2.0, 2.2]},
+	rq_mages_craft_potions_easy = {spec_rule = 'item_based_gold', range = [1.9, 2.1]},
+	rq_mages_craft_potions_medium = {spec_rule = 'item_based_gold', range = [2.1, 2.4]},
+	rq_mages_craft_potions_hard = {spec_rule = 'item_based_gold', range = [2.3, 2.5]},
+	rq_fighters_craft_gear_medium = {spec_rule = 'item_based_gold', range = [2.0, 2.2]},
+	rq_fighters_craft_gear_hard = {spec_rule = 'item_based_gold', range = [2.7, 3.5]},
+	rq_mages_craft_gear_medium = {spec_rule = 'item_based_gold', range = [2.0, 2.2]},
+	rq_mages_craft_gear_hard = {spec_rule = 'item_based_gold', range = [2.7, 3.5]},
+	rq_servants_craft_items_easy = {spec_rule = 'item_based_gold', range = [1.5, 1.8]},
+	rq_servants_craft_items_medium = {spec_rule = 'item_based_gold', range = [1.8, 2.0]},
+	rq_servants_craft_items_hard = {spec_rule = 'item_based_gold', range = [2.0, 2.3]},
+	rq_workers_threat_easy = {selector = [
+		{weight = 1.0, gold = true, min = 100, max = 150},
+		{weight = 1.0, selector = [
+			{item = 'axe', parts = [['rq_easy', 5], ['rq_medium', 2]]},
+			{item = 'pickaxe', parts = [['rq_easy', 5], ['rq_medium', 2]]},
+			{item = 'sickle', parts = [['rq_easy', 5], ['rq_medium', 2]]}]},
+		{weight = 0.5, item = 'worker_outfit'}
+		]},
+	rq_workers_threat_medium = {selector = [
+		{weight = 1.0, gold = true, min = 250, max = 400},
+		{weight = 1.0, selector = [
+			{item = 'axe', parts = [['rq_easy', 1], ['rq_medium', 3]]},
+			{item = 'pickaxe', parts = [['rq_easy', 1], ['rq_medium', 3]]},
+			{item = 'sickle', parts = [['rq_easy', 1], ['rq_medium', 3]]},
+			{item = 'hunt_knife', parts = [['rq_easy', 1], ['rq_medium', 3]]}]},
+		]},
+	rq_fighters_threat_easy = {selector = [
+		{weight = 1.0, gold = true, min = 125, max = 175},
+		{weight = 1.0, selector = [
+			{item = 'sword', parts = [['rq_easy', 5], ['rq_medium', 1]]},
+			{item = 'spear', parts = [['rq_easy', 5], ['rq_medium', 1]]},
+			{item = 'club', parts = [['rq_easy', 5], ['rq_medium', 1]]},
+			{item = 'bow', parts = [['rq_easy', 5], ['rq_medium', 1]]}]},
+		]},
+	rq_fighters_threat_medium = {selector = [
+		{weight = 1.0, gold = true, min = 200, max = 300},
+		{weight = 1.0, selector = [
+			{item = 'sword', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+			{item = 'spear', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+			{item = 'club', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+			{item = 'bow', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+			{item = 'battleaxe', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+			{item = 'mace', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+			{item = 'crossbow', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]}]},
+		]},
+	rq_fighters_dungeon_easy = {selector = [
+		{weight = 1.0, gold = true, min = 200, max = 300},
+		{weight = 1.0, list = [
+			{selector = [
+				{item = 'sword', parts = [['rq_easy', 5], ['rq_medium', 3]]},
+				{item = 'spear', parts = [['rq_easy', 5], ['rq_medium', 3]]},
+				{item = 'club', parts = [['rq_easy', 5], ['rq_medium', 3]]},
+				{item = 'bow', parts = [['rq_easy', 5], ['rq_medium', 3]]},
+				{item = 'battleaxe', parts = [['rq_easy', 5], ['rq_medium', 3]]},
+				{item = 'mace', parts = [['rq_easy', 5], ['rq_medium', 3]]},
+				{item = 'crossbow', parts = [['rq_easy', 5], ['rq_medium', 3]]}]},
+			{gold = true, min = 25, max = 50}]},
+		{weight = 1.0, selector = [
+			{item = 'chest_base_metal', parts = [['rq_easy', 5], ['rq_medium', 2]]},
+			{item = 'legs_base_metal', parts = [['rq_easy', 5], ['rq_medium', 2]]}]},
+		]},
+	rq_fighters_dungeon_medium = {selector = [
+		{weight = 1.0, gold = true, min = 350, max = 500},
+		{weight = 1.0, list = [
+			{selector = [
+				{item = 'sword', parts = [['rq_easy', 5], ['rq_medium', 3]]},
+				{item = 'spear', parts = [['rq_easy', 5], ['rq_medium', 3]]},
+				{item = 'club', parts = [['rq_easy', 5], ['rq_medium', 3]]},
+				{item = 'bow', parts = [['rq_easy', 5], ['rq_medium', 3]]},
+				{item = 'battleaxe', parts = [['rq_easy', 5], ['rq_medium', 3]]},
+				{item = 'mace', parts = [['rq_easy', 5], ['rq_medium', 3]]},
+				{item = 'crossbow', parts = [['rq_easy', 5], ['rq_medium', 3]]}]},
+			{gold = true, min = 75, max = 100}]},
+		{weight = 1.0, selector = [
+			{item = 'chest_base_metal', parts = [['rq_easy', 5], ['rq_medium', 2]]},
+			{item = 'legs_base_metal', parts = [['rq_easy', 5], ['rq_medium', 2]]}]},
+		]},
+	rq_fighters_dungeon_hard = {selector = [
+		{weight = 1.0, gold = true, min = 600, max = 900},
+		{weight = 1.0, list = [
+			{selector = [
+				{item = 'sword', parts = [['rq_medium', 3], ['rq_hard', 2]]},
+				{item = 'spear', parts = [['rq_medium', 3], ['rq_hard', 2]]},
+				{item = 'club', parts = [['rq_medium', 3], ['rq_hard', 2]]},
+				{item = 'bow', parts = [['rq_medium', 3], ['rq_hard', 2]]},
+				{item = 'battleaxe', parts = [['rq_medium', 3], ['rq_hard', 2]]},
+				{item = 'mace', parts = [['rq_medium', 3], ['rq_hard', 2]]},
+				{item = 'crossbow', parts = [['rq_medium', 3], ['rq_hard', 2]]}]},
+			{gold = true, min = 150, max = 250}]},
+		{weight = 1.0, selector = [
+			{item = 'chest_base_metal', parts = [['rq_medium', 3], ['rq_hard', 2]]},
+			{item = 'legs_base_metal', parts = [['rq_medium', 3], ['rq_hard', 2]]}]},
+		{weight = 0.3, selector = [
+			{item = 'chest_adv_metal', parts = [['rq_medium', 3], ['rq_hard', 2]]},
+			{item = 'legs_adv_metal', parts = [['rq_medium', 3], ['rq_hard', 2]]},
+			{item = 'swordadv', parts = [['rq_medium', 3], ['rq_hard', 2]]},
+			{item = 'spearadv', parts = [['rq_medium', 3], ['rq_hard', 2]]},
+			{item = 'bowadv', parts = [['rq_medium', 3], ['rq_hard', 2]]},
+			{item = 'maceadv', parts = [['rq_medium', 3], ['rq_hard', 2]]}]},
+		]},
+	rq_fighters_monster_hunt_easy = {selector = [
+		{weight = 1.0, gold = true, min = 125, max = 150},
+		{weight = 1.0, list = [
+			{selector = [
+				{item = 'sword', parts = [['rq_easy', 5], ['rq_medium', 1]]},
+				{item = 'spear', parts = [['rq_easy', 5], ['rq_medium', 1]]},
+				{item = 'club', parts = [['rq_easy', 5], ['rq_medium', 1]]},
+				{item = 'bow', parts = [['rq_easy', 5], ['rq_medium', 1]]},
+				{item = 'battleaxe', parts = [['rq_easy', 5], ['rq_medium', 1]]},
+				{item = 'mace', parts = [['rq_easy', 5], ['rq_medium', 1]]},
+				{item = 'crossbow', parts = [['rq_easy', 5], ['rq_medium', 1]]}]},
+			{gold = true, min = 10, max = 30}]},
+		]},
+	rq_fighters_monster_hunt_medium = {selector = [
+		{weight = 1.0, gold = true, min = 200, max = 300},
+		{weight = 1.0, list = [
+			{selector = [
+				{item = 'sword', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+				{item = 'spear', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+				{item = 'club', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+				{item = 'bow', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+				{item = 'battleaxe', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+				{item = 'mace', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]},
+				{item = 'crossbow', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 1]]}]},
+			{gold = true, min = 50, max = 100}]},
+		]},
+	rq_fighters_monster_hunt_hard = {selector = [
+		{weight = 1.0, gold = true, min = 350, max = 600},
+		{weight = 1.0, list = [
+			{selector = [
+				{item = 'sword', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 3]]},
+				{item = 'spear', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 3]]},
+				{item = 'club', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 3]]},
+				{item = 'bow', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 3]]},
+				{item = 'battleaxe', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 3]]},
+				{item = 'mace', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 3]]},
+				{item = 'crossbow', parts = [['rq_easy', 1], ['rq_medium', 4], ['rq_hard', 3]]}]},
+			{gold = true, min = 150, max = 250}]},
+		]},
+	rq_mages_materials_easy = {selector = [
+		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.6, 1.8]},
+		{weight = 1.0, list = [
+			{item = 'staff', parts = [['rq_easy', 5], ['rq_medium', 2]]},
+			{spec_rule = 'item_based_gold', range = [0.5, 0.7]}]},
+		]},
+	rq_mages_materials_medium = {selector = [
+		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.9, 2.1]},
+		{weight = 1.0, list = [
+			{item = 'staff', parts = [['rq_easy', 2], ['rq_medium', 4], ['rq_hard', 0.5]]},
+			{spec_rule = 'item_based_gold', range = [0.5, 0.7]}]},
+		]},
+	rq_mages_materials_hard = {selector = [
+		{weight = 1.0, spec_rule = 'item_based_gold', range = [2.0, 2.3]},
+		{weight = 1.0, list = [
+			{selector = [
+				{item = 'staff', parts = [['rq_medium', 4], ['rq_hard', 2]]},
+				{item = 'staffadv', parts = [['rq_medium', 4], ['rq_hard', 2]]}]},
+			{spec_rule = 'item_based_gold', range = [0.6, 0.8]}]},
+		]},
+	rq_mages_threat_easy = {selector = [
+		{weight = 1.0, gold = true, min = 100, max = 150},
+		{weight = 1.0, selector = [
+			{item = 'staff', parts = [['rq_easy', 5], ['rq_medium', 2]]},
+			{item = 'chest_base_cloth', parts = [['rq_easy', 5], ['rq_medium', 2]]},
+			{item = 'legs_base_cloth', parts = [['rq_easy', 5], ['rq_medium', 2]]}]},
+		]},
 	
 	
 }
