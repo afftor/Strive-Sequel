@@ -1754,7 +1754,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
-		tags = ['no_random', 'bladed'],
+		tags = ['no_random'],
 		basestats = {atk = 3},
 	},
 	cali_heirloom_test = { #some examples added
@@ -1772,7 +1772,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
-		tags = ['no_random', 'bladed', 'upgradable'], #3 - for using clear bonusstats wihout muliplyer, 4 - for gui filter 
+		tags = ['no_random', 'upgradable'], #3 - for using clear bonusstats wihout muliplyer, 4 - for gui filter 
 		basestats = {atk = 3},
 	},
 	cali_heirloom_active = {
@@ -1790,7 +1790,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [{code = 'unique', value = 'cali'}],
 		effects = [],
-		tags = ['no_random', 'bladed','enchantable', 'upgradable'], #to correctly set stats with fixed levels
+		tags = ['no_random','enchantable', 'upgradable'], #to correctly set stats with fixed levels
 		basestats = {atk = 35, critchance = 20, hitrate = 20, armorpenetration = 15, enchant_capacity = 400},
 	},
 	
@@ -1809,7 +1809,7 @@ var itemlist = {
 		tier = 'hard',
 		reqs = [],
 		effects = [],
-		tags = ['no_random', 'bladed','enchantable', 'upgradable'],
+		tags = ['no_random','enchantable', 'upgradable'],
 		basestats = {atk = 50, hitrate = 50, critmod = 0.33, damage_mod_light = 0.5, enchant_capacity = 500},
 	},
 	holy_spear = {
@@ -1970,7 +1970,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [],
 		effects = [],
-		tags = ['no_random','enchantable','bladed', 'upgradable'],
+		tags = ['no_random','enchantable', 'upgradable'],
 		basestats = {atk = 38, speed = -10, critchance = 3, enchant_capacity = 200},
 	},
 	erlen_sword = {
@@ -1988,7 +1988,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [],
 		effects = [],
-		tags = ['no_random','enchantable','bladed', 'upgradable'],
+		tags = ['no_random','enchantable', 'upgradable'],
 		basestats = {atk = 50, speed = 5, evasion = 15, enchant_capacity = 400},
 	},
 	ayneris_rapier = {
@@ -2006,7 +2006,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [],
 		effects = [],
-		tags = ['no_random','enchantable', 'bladed', 'upgradable'],
+		tags = ['no_random','enchantable', 'upgradable'],
 		basestats = {atk = 37, speed = 15, evasion = 5, enchant_capacity = 350},
 	},
 	hector_armor = {
@@ -2277,7 +2277,7 @@ var itemlist = {
 		parts = {Blade = 3, WeaponHandle = 2},
 		partcolororder = {WeaponHandle = 1, Blade = 2},
 		partmaterialname = "Blade",
-		tags = ['recipe', 'bladed','enchantable'],
+		tags = ['recipe','enchantable'],
 		slots = ['rhand'],
 		hitsound = 'blade',
 		effects = [],
@@ -2325,7 +2325,7 @@ var itemlist = {
 		parts = {Blade = 10, WeaponHandle = 5},
 		partcolororder = {WeaponHandle = 1, Blade = 2},
 		partmaterialname = "Blade",
-		tags = ['recipe', 'bladed','enchantable'],
+		tags = ['recipe','enchantable'],
 		slots = ['rhand'],
 		hitsound = 'blade',
 		effects = [],
@@ -2371,7 +2371,7 @@ var itemlist = {
 		parts = {Blade = 10, WeaponHandle = 5},
 		partcolororder = {WeaponHandle = 1, Blade = 2},
 		partmaterialname = "Blade",
-		tags = ['recipe', 'bladed','enchantable'],
+		tags = ['recipe','enchantable'],
 		slots = ['rhand'],
 		hitsound = 'blade',
 		effects = [],
@@ -2394,7 +2394,7 @@ var itemlist = {
 		parts = {Blade = 10, WeaponHandle = 5, WeaponEnc = 2},
 		partcolororder = {WeaponHandle = 1, Blade = 2, WeaponEnc = 3},
 		partmaterialname = "Blade",
-		tags = ['recipe', 'bladed','enchantable'],
+		tags = ['recipe','enchantable'],
 		slots = ['rhand','lhand'],
 		hitsound = 'blade',
 		effects = [],
@@ -2463,7 +2463,7 @@ var itemlist = {
 		parts = {Blade = 12, WeaponHandle = 6, WeaponEnc = 2},
 		partcolororder = {WeaponHandle = 1, Blade = 2, WeaponEnc = 3},
 		partmaterialname = "Blade",
-		tags = ['recipe', 'bladed','enchantable'],
+		tags = ['recipe','enchantable'],
 		slots = ['rhand','lhand'],
 		hitsound = 'blade',
 		effects = [],
@@ -5315,7 +5315,10 @@ var enchantments = {
 		descript = '',
 		icon = load("res://assets/images/iconsenchants/sharpness_mono_100.png"), 
 		reqs = [
-			{code = 'stat', stat = 'tags',operant = 'has', value = 'bladed', check = true}
+			{code = 'stat', stat = 'geartype', operant = 'eq', value = 'sword', check = true},
+			{code = 'stat', stat = 'geartype', operant = 'eq', value = 'axe', check = true, orflag = true},
+			{code = 'stat', stat = 'geartype', operant = 'eq', value = 'dagger', check = true, orflag = true},
+#			{code = 'stat', stat = 'tags',operant = 'has', value = 'bladed', check = true}
 		],
 		levels = {
 			1:{
