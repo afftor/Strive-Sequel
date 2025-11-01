@@ -1056,6 +1056,24 @@ var fixed_location_options = { #override serialized data
 			],
 			args = [{code = 'start_event', data = 'meteor_lounge_return', args = []}]
 		},
+		{
+			text = tr("HELEVIEL_CITY_OPTION_3"), 
+			reqs = [{type = 'active_quest_stage', value = 'heleviel_slave_quest', stage = 'stage5_2'}], 
+			args = [{code = 'start_event', data = 'heleviel_slave_ritual_erlen', args = []}]
+		},
+		{
+			text = tr("HELEVIEL_CITY_OPTION_4"), 
+			reqs = [
+				{type = 'active_quest_stage', value = 'heleviel_slave_quest', stage = 'stage5_3'},
+				{type = "has_money", value = 2500}
+			], 
+			args = [{code = 'start_event', data = 'heleviel_slave_ritual_pay_after', args = []}]
+		},
+		{
+			text = tr("HELEVIEL_CITY_OPTION_5"), 
+			reqs = [{type = 'active_quest_stage', value = 'heleviel_slave_quest', stage = 'stage6'}], 
+			args = [{code = 'start_event', data = 'heleviel_slave_ritual_ceremony_intro', args = []}]
+		},
 	],
 	dwarf_capital = [
 		{
@@ -1221,6 +1239,11 @@ var fixed_location_options = { #override serialized data
 #			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GOBLIN_QUEST_1'}
 			{type = 'active_quest_stage', value = 'goblin_quest', stage = 'stage0', state = true},], 
 			args = [{code = 'start_event', data = 'goblin_quest_1', args = []}]
+		},
+		{
+			text = tr("HELEVIEL_CITY_OPTION_2"), 
+			reqs = [{type = 'active_quest_stage', value = 'heleviel_slave_quest', stage = 'stage4'}], 
+			args = [{code = 'start_event', data = 'heleviel_slave_beastkin_intro', args = []}]
 		},
 	],
 	

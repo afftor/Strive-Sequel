@@ -1936,7 +1936,7 @@ func common_effects(effects):
 						'add_to_hour':
 							var date = ResourceScripts.game_globals.date
 							var hour = ResourceScripts.game_globals.hour + round(rand_range(k.hour[0], k.hour[1]))
-							if hour > 4: hour = hour-4
+							if hour > 4: hour = hour - 4
 							if ResourceScripts.game_globals.hour == 4:
 								date += 1
 							var newreq = [{type = 'date', operant = 'eq', value = date}, {type = 'hour', operant = 'eq', value = hour}]
