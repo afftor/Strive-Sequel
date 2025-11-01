@@ -18,6 +18,7 @@ var animations_queue = {}
 
 #delays for playing animations in zones
 var hp_update_delays = {}
+var custom_delays = {}#nodes - keys, value: {delay, cur_timer, time}
 var buffs_update_delays = {}
 var crit_display = []
 var log_update_delay = 0
@@ -31,6 +32,7 @@ func force_end():
 	animation_delays.clear()
 	animations_queue.clear()
 	hp_update_delays.clear()
+	custom_delays.clear()
 	buffs_update_delays.clear()
 	crit_display.clear()
 	log_update_delay = 0
@@ -70,6 +72,7 @@ func advance_timer():
 	hp_update_delays.clear()
 	if animations_queue.empty(): return
 	cur_timer = animations_queue.keys().min()
+	try_clear_custom_delays()
 	#print (cur_timer)
 	for node in animations_queue[cur_timer]:
 		start_animation(node)
@@ -233,11 +236,19 @@ func gfx_video(node, args):
 	return nextanimationtime + aftereffectdelay
 
 func gfx_animsprite(node, args):
-	var duration = ResourceScripts.core_animations.get_gfx_sprite_time(args.sprite_name)
+	var duration
+	if args.has('duration'):
+		duration = args.duration
+	else:
+		duration = ResourceScripts.core_animations.get_gfx_sprite_time(args.sprite_name)
 	var nextanimationtime = duration - 0.1
-	hp_update_delays[node] = 0.5
-	log_update_delay = max(log_update_delay, 0.5)
-	buffs_update_delays[node] = 0.5
+	if !args.has("no_delays"):
+		hp_update_delays[node] = 0.5
+		log_update_delay = max(log_update_delay, 0.5)
+		buffs_update_delays[node] = 0.5
+	else:
+		#for now it seems thet 7 turns is repeat loop duration
+		custom_delays[node] = {delay = 0.2, cur_timer = cur_timer, time = 7}
 	ResourceScripts.core_animations.gfx_sprite(node, args.sprite_name, 0.5, duration)
 	
 	return nextanimationtime + aftereffectdelay
@@ -323,7 +334,10 @@ func miss(node, args = null):#conflicting usage of tween node!!
 	tween.interpolate_property(node, 'modulate', Color(1,1,0), Color(1,1,1), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delaytime)
 	tween.start()
 	
-	return playtime * 2 + delaytime
+	var overall_time = playtime * 2 + delaytime
+	if custom_delays.has(node):
+		overall_time = custom_delays[node].delay
+	return overall_time
 	#aftereffecttimer = nextanimationtime + aftereffectdelay
 
 func resist(node, args = null):#conflicting usage of tween node!!
@@ -338,7 +352,10 @@ func resist(node, args = null):#conflicting usage of tween node!!
 	tween.interpolate_property(node, 'modulate', Color(1,1,0), Color(1,1,1), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delaytime)
 	tween.start()
 	
-	return playtime * 2 + delaytime
+	var overall_time = playtime * 2 + delaytime
+	if custom_delays.has(node):
+		overall_time = custom_delays[node].delay
+	return overall_time
 
 func buffs(node, args):
 	var delay = 0
@@ -425,6 +442,8 @@ func defeat(node, args = null):#stub, for this was not correct in FighterNode
 	tween.start()
 	#node.get_node('Icon').material = load("res://assets/sfx/bw_shader.tres")
 	#input_handler.FadeAnimation(node, 0.5, 0.3)
+	if custom_delays.has(node):
+		delaytime = custom_delays[node].delay
 	return delaytime
 
 
@@ -436,3 +455,12 @@ func death_animation(node):
 	
 	ResourceScripts.core_animations.FadeAnimation(node, 1, 0.5)
 	return delaytime
+
+func try_clear_custom_delays():
+	for node in custom_delays.keys():
+		var val = custom_delays[node]
+		if cur_timer > val.cur_timer + val.time:
+			custom_delays.erase(node)
+
+
+

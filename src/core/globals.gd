@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.13.0'
+const gameversion = '0.13.1c'
 
 #time
 signal hour_tick
@@ -2810,6 +2810,11 @@ func valuecheck(dict):
 			return is_capital_closed(dict.name) == dict.check
 		'global_settings':
 			return input_handler.operate(dict.operant, input_handler.globalsettings[dict.param], dict.value)
+		'or_list':#currently not in use but added for consistency
+			var or_check = false
+			for j in dict.or_list:
+				or_check = or_check or valuecheck(j)
+			return or_check
 
 
 func apply_starting_preset():
@@ -2949,8 +2954,6 @@ func update_localization_file(update_loc: String, primary_loc = "en"):
 			
 			# if it's a missing key, insert keys
 			if key in missing_keys.keys():
-				if key == "CALI_HEIRLOOM_4_2": # delete this part after ru/main.gd is fixed
-					continue
 				if cleared_line.length() > 0 and cleared_line[cleared_line.length() - 1] == ',': 
 					for i in missing_keys[key].size():
 						var insert_line = "	%s = \"\"\"%s\"\"\", # MISSING TRANSLATION"

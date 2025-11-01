@@ -1970,7 +1970,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [],
 		effects = [],
-		tags = ['no_random','enchantable', 'upgradable'],
+		tags = ['no_random','enchantable','bladed', 'upgradable'],
 		basestats = {atk = 38, speed = -10, critchance = 3, enchant_capacity = 200},
 	},
 	erlen_sword = {
@@ -1988,7 +1988,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [],
 		effects = [],
-		tags = ['no_random','enchantable', 'upgradable'],
+		tags = ['no_random','enchantable','bladed', 'upgradable'],
 		basestats = {atk = 50, speed = 5, evasion = 15, enchant_capacity = 400},
 	},
 	ayneris_rapier = {
@@ -2006,7 +2006,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [],
 		effects = [],
-		tags = ['no_random','enchantable', 'upgradable'],
+		tags = ['no_random','enchantable', 'bladed', 'upgradable'],
 		basestats = {atk = 37, speed = 15, evasion = 5, enchant_capacity = 350},
 	},
 	hector_armor = {
@@ -3076,7 +3076,7 @@ var itemlist = {
 		tags = ['no_random', 'request_confirm'],
 		uses_per_day = 0,
 		mansion_effect = 'corruptive_essence',
-		reqs_fail_message = 'ALREADYSUCCUBUS',
+		reqs_fail_message = 'FAILALREADYSUCCUBUS',
 	},
 	minorus_potion = {
 		code = 'minorus_potion',
@@ -3829,7 +3829,7 @@ var itemlist = {
 		crafttype = 'basic',
 		slots = ['head'],
 		price = 3000,
-		icon = load("res://assets/images/iconsskills/skill_veil.png"),
+		icon = load("res://assets/images/iconsitems/nixx_coat.png"),
 		tier = 'hard',
 		reqs = [],
 		effects = [],

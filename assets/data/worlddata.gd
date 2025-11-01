@@ -864,6 +864,14 @@ var fixed_location_options = { #override serialized data
 			], 
 			args = [{code = 'start_event', data = 'lilia_search_start', args = []}]
 		},
+		{
+			text = tr("ALIRON24"),
+			reqs = [
+					{type = 'decision', value = 'start_corruptive_essence_reward', check = false},
+					{type = 'decision', value = 'aliron_corruptive_essence_event_seen', check = false}
+			],
+			args = [{code = 'start_event', data = 'aliron_corruptive_essence_event', args = []}]
+		},
 		#Legacy event after act 3
 #		{ 
 #			text = tr("ALIRON20"), 
@@ -1001,6 +1009,7 @@ var fixed_location_options = { #override serialized data
 		{
 			text =  tr("ELF_CAPITAL10"), 
 			reqs = [
+				#TODO: recheck this reqs! orflag here means ((1 and 2) or 3)
 				{code = 'value_check', type = 'dialogue_seen', check = true, value = 'LIRA_ENCOUNTER_1'},
 				{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage2', state = true}, 
 				{type = 'active_quest_stage', value = 'getting_lira_quest', stage = 'stage3', state = true, orflag = true}

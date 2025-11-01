@@ -2268,7 +2268,7 @@ var enemies = {
 		status_resists = {stun = 100, freeze = 90},
 		race = 'demon',
 		loot = 'nixx_reward',
-		icon = "res://assets/images/iconsclasses/nixx_champion.png", 
+		icon = "res://assets/images/enemies/nixx_boss.png", 
 		skills = ['skill_void', 'black_tendrils','abyss_gaze'],
 		traits = ['boss_resists'],
 		tags = ['boss'], 

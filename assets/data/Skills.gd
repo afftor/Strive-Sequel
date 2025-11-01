@@ -1998,7 +1998,7 @@ var masteries = {
 		icon = 'mastery_stealth',
 		background = 'mastery_stealth',
 		maxlevel = 5,
-		passive = {evasion = 5, damage_mod_skill = 0.02,  critchance_add_part = 0.01}, #not sure, but should be so
+		passive = {evasion = 5, damage_mod_skill = 0.02,  critchance = 1},
 		level1 = {combat_skills = ["hide"], explore_skills = [], traits = [], action = []},
 		level2 = {combat_skills = ["dip_poison"], explore_skills = [], traits = [], action = []},
 		level3 = {combat_skills = ["backkick"], explore_skills = [], traits = [], action = []},

@@ -918,9 +918,6 @@ margin_top = 14.0
 margin_right = 392.0
 margin_bottom = 44.0
 text = "Victory"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Combatlog" type="Panel" parent="."]
 margin_left = 613.0

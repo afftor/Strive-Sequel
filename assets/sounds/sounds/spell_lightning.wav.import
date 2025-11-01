@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spell_lightning.wav-49a5acb7b5a3cfb5cb592a0f3a42400d.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sounds/spell_lightning.wav"
+dest_files=[ "res://.import/spell_lightning.wav-49a5acb7b5a3cfb5cb592a0f3a42400d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

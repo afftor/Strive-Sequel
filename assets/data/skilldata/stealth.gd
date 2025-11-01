@@ -132,7 +132,7 @@ var skills = {
 		sfx = [{code = '', code_repeat = {
 				1 : "devastation_1", 2 : "devastation_2", 3 : "devastation_3",
 				4 : "devastation_4", 5 : "devastation_5", 6 : "devastation_6",
-			}, target = 'target', period = 'predamage'}], 
+			}, target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true}],
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.75,
 		random_factor_p = 0.1,

@@ -538,6 +538,8 @@ func select_person_for_next_event(option): #needs a rework
 			{code = 'in_combat_party', value = true},
 			{code = 'is_shortstack', check = true}
 			]
+	elif option.has('challenge') and option.challenge == 'captured':
+		reqs = []
 	else:
 		reqs = [
 			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
@@ -1157,7 +1159,7 @@ func generate_scene_text(scene):
 		scenetext += "\n\n" + text
 
 	if cur_text_label.bbcode_text != '':
-		cur_text_label.bbcode_text += "\n\n[color=yellow]"+previous_text+"[/color]\n\n" + globals.TextEncoder(scenetext)
+		cur_text_label.bbcode_text += "\n\n" +  globals.TextEncoder("{color=gray_text_dialogue|"+previous_text+"}") + "\n\n" +  globals.TextEncoder(scenetext)
 	else:
 		cur_text_label.bbcode_text = globals.TextEncoder(scenetext)
 

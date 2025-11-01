@@ -86,6 +86,11 @@ func valuecheck(req):
 #			if typeof(i.value) == TYPE_ARRAY: 
 #				i.value = calculate_number_from_string_array(i.value)
 			return input_handler.operate(i.operant, get(i.stat)[i.index], i.value) == i.check
+		'or_list':#currently not in use but added for consistency
+			var or_check = false
+			for j in i.or_list:
+				or_check = or_check or valuecheck(j)
+			return or_check
 
 
 func CreateUsable(ItemName = '', number = 1):

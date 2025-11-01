@@ -1596,6 +1596,11 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			return get_work() == i.value
 		'can_add_thrall':
 			return enthrall.can_add_thrall() == i.check
+		'or_list':
+			var or_check = false
+			for j in i.or_list:
+				or_check = or_check or valuecheck(j, ignore_npc_stats_gear)
+			return or_check
 	return check
 
 
@@ -2135,8 +2140,13 @@ func deal_damage(value, source = 'normal'):
 		value *= (1.0 - get_stat('resist_' + source)/100.0)
 	value = int(value);
 	if value > 0:
+		var shake_node = null
+		if input_handler.combat_node != null and input_handler.combat_node.is_inside_tree():
+			shake_node = input_handler.combat_node
 		if shield > value:
 			self.shield -= value
+			if shake_node != null:
+				ResourceScripts.core_animations.ShakeAnimation(shake_node, 0.1, 3)
 			return 0
 		else:
 			value -= shield
@@ -2146,6 +2156,8 @@ func deal_damage(value, source = 'normal'):
 		tmp = tmp - hp
 		if displaynode != null:
 			displaynode.setup_overlay(source)
+		if shake_node != null:
+			ResourceScripts.core_animations.ShakeAnimation(shake_node, 0.1, 3)
 		return tmp
 	else:
 		return heal(-value)
@@ -2328,8 +2340,10 @@ func update_portrait(ragdoll): # for ragdolls
 
 func check_portrait():
 	var path = get_stat('icon_image')
+	if path == null:
+		return false
 	if !(path.is_abs_path() or path.is_rel_path()): #portrait is not path - so it must exist
-		return true 
+		return true
 	if File.new().file_exists(path): 
 		return true
 	return false

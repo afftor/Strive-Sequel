@@ -585,6 +585,7 @@ var farm_tasks = {
 	seed = {
 		code = 'seed',
 		formula = 'farm_seed',
+		#TODO: recheck reqs here, orflag in first req makes it irrelevant
 		reqs = [{code = 'stat', stat = 'balls_size', operant = 'neq', value = '', orflag = true}, {code = 'stat', stat = 'penis_size', operant = 'neq', value = ''}],
 	},
 	eggs = {

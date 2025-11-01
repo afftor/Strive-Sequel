@@ -419,7 +419,7 @@ margin_bottom = 309.0
 columns = 2
 
 [node name="lock" type="CheckBox" parent="work_rules"]
-margin_right = 368.0
+margin_right = 342.0
 margin_bottom = 48.0
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -439,8 +439,8 @@ custom_styles/focus = SubResource( 7 )
 text = "WORKRULELOCK"
 
 [node name="ration" type="CheckBox" parent="work_rules"]
-margin_left = 372.0
-margin_right = 719.0
+margin_left = 346.0
+margin_right = 670.0
 margin_bottom = 48.0
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -461,7 +461,7 @@ text = "WORKRULERATION"
 
 [node name="shifts" type="CheckBox" parent="work_rules"]
 margin_top = 52.0
-margin_right = 368.0
+margin_right = 342.0
 margin_bottom = 100.0
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -481,9 +481,9 @@ custom_styles/focus = SubResource( 8 )
 text = "WORKRULESHIFTS"
 
 [node name="luxury" type="CheckBox" parent="work_rules"]
-margin_left = 372.0
+margin_left = 346.0
 margin_top = 52.0
-margin_right = 719.0
+margin_right = 670.0
 margin_bottom = 100.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -504,7 +504,7 @@ text = "UPGRADELUXURY_ROOMS"
 
 [node name="contraceptive" type="CheckBox" parent="work_rules"]
 margin_top = 104.0
-margin_right = 368.0
+margin_right = 342.0
 margin_bottom = 152.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -547,9 +547,9 @@ custom_styles/focus = SubResource( 9 )
 text = "WORKRULEPERSONALITY_LOCK"
 
 [node name="nudity" type="CheckBox" parent="work_rules"]
-margin_left = 372.0
+margin_left = 346.0
 margin_top = 104.0
-margin_right = 719.0
+margin_right = 670.0
 margin_bottom = 152.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -569,7 +569,7 @@ text = "WORKRULENUDITY"
 
 [node name="relationship" type="CheckBox" parent="work_rules"]
 margin_top = 156.0
-margin_right = 368.0
+margin_right = 342.0
 margin_bottom = 204.0
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )

@@ -187,6 +187,7 @@ var TranslationDict = {
 	SIBLINGMODULEAVAILABLE = "Доступно",
 	SIBLINGMODULEAVAILABLETOOLTIP = "Количество доступных дополнительных тренировок зависит от Фактора Роста.",
 	SIBLINGMODULETHRALLLIST = """Приспешники""",
+	FAILALREADYSUCCUBUS = """Can't use corruptive essence on Thralls or Succubi""", # MISSING TRANSLATION
 	MINORTRAINMAXREACHED = "Достигнут максимум дополнительных тренировок",
 	SYSMESSAGEATLEAST1CHAR = """Выберите хотя бы 1 персонажа для боя.""",
 	OPERANTATLEAST = """Минимум""",
@@ -627,6 +628,8 @@ var TranslationDict = {
 	MATERIALDRACONIC_SCALESDESCRIPT = """Драконьи элементы используются как из-за своей красоты, так и из-за превосходного качества.""",
 	MATERIALHERBS = """ """,
 	MATERIALHERBSDESCRIPT = """ """,
+	MATERIALVESPERINE_CAGE = """Vesperine Cage""", # MISSING TRANSLATION
+	MATERIALVESPERINE_CAGEDESCRIPT = """An ancient device of unknown purpose.""", # MISSING TRANSLATION
 	MATERIALINK_TRIBAL = """Чернила: Сила""",
 	MATERIALINK_BRANDINGDESCRIPT = """Набор инструментов и чернил, позволяющий нанести на предмет определенную магическую подпись. Первоначально применялось пастухами и укротителями, затем клеймо было принято рабовладельческими обществами для установления господства над завоеванными людьми. Татуировки не столь болезненны в нанесении, но, тем не менее, столь же унизительны: на них изображено имя владельца..
 
@@ -4908,6 +4911,8 @@ Requires: Базовый рабский труд""",
 	ENEMYDWARF_FIGHTER_ELITE = "Элитный дворф-воин",
 	ENEMYDWARF_RANGED = "Дворф-арбалетчик",
 	ENEMYKURO = "Куро",
+	ENEMYERDYNA = """Erdyna""", # MISSING TRANSLATION
+	ENEMYNIXX = """Nixx""", # MISSING TRANSLATION
 	
 	
 	FOODFILTERHIGH = """Высокий""",
@@ -5183,6 +5188,8 @@ Requires: Базовый рабский труд""",
 	STARTUPGRADEBONUS2 = """Комнату портного""",
 	STARTUPGRADEBONUS3 = """Алхимическую комнату""",
 	STARTUPGRADEBONUS4 = """Извращенную эссенцию""",
+	ALIRON_CORRUPTIVE_ESSENCE_EVENT = """While walking through Aliron's markets you stumble upon a discreet peddler offering a single vial of corruptive essence for a steep price. It's a rare chance to secure the forbidden mixture without relying on luck.""", # MISSING TRANSLATION
+	ALIRON_CORRUPTIVE_ESSENCE_PURCHASE = """Buy the corruptive essence (1 000 gold)""", # MISSING TRANSLATION
 	
 	
 	FIGHTERSINTRODUCTION1 = """Крупный мужчина в тяжелых доспехах окинул вас незаинтересованным взглядом. 
@@ -19050,6 +19057,8 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	QUEST_CULT_PARENTBASE_DESC = " ",
 	QUEST_STAR_CRATER_TEXT = "Место упавшей звезды",
 	QUEST_STAR_CRATER_DESC = "",
+	QUEST_DUNGEON_KURO_NIXX = """Wailing Halls""", # MISSING TRANSLATION
+	QUEST_DUNGEON_KURO_NIXX_DESCRIPT = """""", # MISSING TRANSLATION
 	#fixed_location_options
 	
 	ALIRON1 = """Осмотреть улицы""",
@@ -19075,6 +19084,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	ALIRON21 = """Поиск Зефиры""",
 	ALIRON22 = """Встретиться с Кетчем""",
 	ALIRON23 = """Проверить информацию об Амелии""",
+	ALIRON24 = """Approach the discreet merchant""", # MISSING TRANSLATION
 	ALIRON_KURO_CHURCH = "Церковь Алирона",
 	ELF_CAPITAL1 = """Встретиться с Жрицей""",
 	ELF_CAPITAL2 = """Найти контрабандиста""",
@@ -19701,6 +19711,10 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	BODYUPGRADEDESCRIPT_UPGRADE_RESIST = """Сопротивление магии [name] позволит сводить на нет вражеские заклинания с вероятностью 25%.""",
 	BODYUPGRADENAME_UPGRADE_THICKBLOOD = """Густая кровь""",
 	BODYUPGRADEDESCRIPT_UPGRADE_THICKBLOOD = """[name] получит иммунитет к кровотечению и яду.""",
+	BODYUPGRADENAME_UPGRADE_BREEDER = """Breeder""", # MISSING TRANSLATION
+	BODYUPGRADEDESCRIPT_UPGRADE_BREEDER = """Allows breeding with any race.
+Pregnancy Debuffs are weaker
+Offspring will inherit only this parent's stats.""", # MISSING TRANSLATION
 
 	QUALITYPOOR = """Плохое""",
 	QUALITYAVERAGE = """Среднее""",
@@ -20005,6 +20019,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 — Мастер, я получила это... письмо от жены солдата-повстанца. Она в отчаянии, умоляет меня найти её мужа. Он пропал без вести после окончания боёв. Пожалуйста, я знаю, что не в положении просить одолжений, но... поможете? Поможете его найти? Я... я не могу просто проигнорировать её мольбу. Она указала своё имя - Лиора, и я уверена, она поговорит с вами, если вы её найдёте.""",
 	ANA_LETTER_1_2 = """Анастасия моргает, застигнутая врасплох, затем собирается с духом, её голос дрожит, но звучит твёрдо.
 — Я... я сделаю всё, что вы попросите, Мастер. Абсолютно всё. Только помогите ей. Она уже потеряла всё.""",
+	ANA_LETTER_1_OPTION_1_1 = """I can't reject your plea when asked with such a sad face. I'll take care of it.""", # MISSING TRANSLATION
 	ANA_LETTER_1_OPTION_1 = "Всё ещё цепляешься за старые дела? Ладно, дай письмо, посмотрим, что можно сделать.",
 	ANA_LETTER_1_OPTION_2 = "Сосредоточься на своих обязанностях здесь, а не на чьих-то жалобах. Ты теперь моя рабыня, а не спасительница повстанцев, оставь это письмо при себе.",
 	ANA_LETTER_1_OPTION_3 = "Пропавший муж, говоришь? А что я получу, если потрачу на это своё время?",

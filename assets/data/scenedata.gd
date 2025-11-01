@@ -22,8 +22,26 @@ var scenedict = {
 
 	aliron_exotic_trader = {text = tr("DIALOGUEALIRONEXOTICTRADER"), image = 'avermik', bonus_effects = [{code = 'add_timed_event', value = "aliron_exotic_trader", args = [{type = 'add_to_date', date = [14,14], hour = 1}]}], tags = [], options = [{code = 'close', reqs = [], bonus_effects = [{code = 'rewrite_save'}], text = tr("DIALOGUECLOSE")}]},
 
-	location_event_search = {text = tr("DIALOGUELOCATIONEVENT"), tags = [], image = '', options = [{code = 'good_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTGOOD")},{code = 'evil_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTEVIL")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]},
-
+	#location_event_search = {text = tr("DIALOGUELOCATIONEVENT"), tags = [], image = '', options = [{code = 'good_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTGOOD")},{code = 'evil_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTEVIL")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]},
+	
+	
+	 aliron_corruptive_essence_event = {
+				text = [
+						{text = "ALIRON_CORRUPTIVE_ESSENCE_EVENT", reqs = []}
+				],
+				image = null,
+				tags = ['dialogue_scene'],
+				reqs = [
+						{type = 'decision', value = 'start_corruptive_essence_reward', check = false},
+						{type = 'decision', value = 'aliron_corruptive_essence_event_seen', check = false}
+				],
+				options = [
+						{code = 'close', reqs = [{type = 'has_money', value = 1000}], bonus_effects = [{code = 'money_change', operant = '-', value = 1000}, {code = 'make_loot', type = 'tableloot', pool = [['start_corruptive_essence',1]]}, {code = 'open_loot'}, {code = 'decision', value = 'aliron_corruptive_essence_event_seen'}, {code = 'update_city'}], text = tr("ALIRON_CORRUPTIVE_ESSENCE_PURCHASE"), type = 'next_dialogue'},
+						{code = 'close', reqs = [], bonus_effects = [{code = 'decision', value = 'aliron_corruptive_essence_event_seen'},{code = 'update_city'}], text = tr("ALIRON_CORRUPTIVE_ESSENCE_DISMISS"), type = 'next_dialogue'},
+						{code = 'close', reqs = [], bonus_effects = [], text = tr("DIALOGUELEAVE"), type = 'next_dialogue'}
+				]
+		},
+	
 	wolves_skirmish_start = {text = tr("DIALOGUEWOLVES_SKIRMISH_START"), set_enemy = 'wolves_skirmish',tags = [], image = 'wolves_skirmish', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]},
 	rebels_skirmish_start = {text = tr("DIALOGUEREBELS_SKIRMISH_START"), set_enemy = 'rebels_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]},
 	goblins_skirmish_start = {text = tr("DIALOGUEGOBLINS_SKIRMISH_START"), set_enemy = 'goblins_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]},
@@ -1218,7 +1236,7 @@ var scenedict = {
 		{code = 'close', reqs = [], bonus_effects = [{code ='unlock_upgrade', upgrade = 'forge', level = 1}], text = tr("STARTUPGRADEBONUS1"), type = 'next_dialogue'},
 		{code = 'close', reqs = [], bonus_effects = [{code ='unlock_upgrade', upgrade = 'tailor', level = 1}], text = tr("STARTUPGRADEBONUS2"), type = 'next_dialogue'},
 		{code = 'close', reqs = [], bonus_effects = [{code ='unlock_upgrade', upgrade = 'alchemy', level = 1}], text = tr("STARTUPGRADEBONUS3"), type = 'next_dialogue'},
-		{code = 'close', reqs = [], bonus_effects = [{code = 'make_loot', type = 'tableloot', pool = [['start_corruptive_essence',1]]},{code = 'open_loot'}], text = tr("STARTUPGRADEBONUS4"), type = 'next_dialogue'},
+		{code = 'close', reqs = [], bonus_effects = [{code = 'make_loot', type = 'tableloot', pool = [['start_corruptive_essence',1]]},{code = 'open_loot'},{code = 'decision', value = 'start_corruptive_essence_reward'}], text = tr("STARTUPGRADEBONUS4"), type = 'next_dialogue'},
 		],
 	},
 	

@@ -628,6 +628,8 @@ Food type: Fish, Vegetables.""", # MISSING TRANSLATION
 	MATERIALDRACONIC_SCALESDESCRIPT = "龙的零件既美观又优质。",
 	MATERIALHERBS = "",
 	MATERIALHERBSDESCRIPT = "",
+	MATERIALVESPERINE_CAGE = """Vesperine Cage""", # MISSING TRANSLATION
+	MATERIALVESPERINE_CAGEDESCRIPT = """An ancient device of unknown purpose.""", # MISSING TRANSLATION
 	MATERIALINK_TRIBAL = "墨水：力量",
 	MATERIALINK_BRANDINGDESCRIPT = "一套工具和墨水，可以在角色身上制造某种神奇的纹身。最初由掠夺者和驯兽师使用，奴隶制社会采用品牌来建立对被征服者的统治地位。纹身并没有那么痛苦，但同样有辱人格，纹身上有主人的名字。\n\n适用于：｛color=yellow|颈部、臀部、胯部｝\n\n服从消耗-2，忠诚度增益+1。\n只能应用一次。",
 	MATERIALINK_MAKEUPDESCRIPT = "一套工具和墨水，可以在角色身上制造某种神奇的纹身。虽然化妆可能不足以让野兽变成美女，但它对懒惰的人来说是一个有利的选择。\n\n适用于：｛color=yellow|面部｝\n\n魅力：+10。",
@@ -15109,6 +15111,7 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	ALIRON21 = "寻找西菲拉",
 	ALIRON22 = "与凯奇会面",
 	ALIRON23 = "检查阿米莉亚的信息",
+	ALIRON24 = """Approach the discreet merchant""", # MISSING TRANSLATION
 	ALIRON_KURO_CHURCH = """Aliron Church""", # MISSING TRANSLATION
 	
 	ELF_CAPITAL1 = "见女祭司",
@@ -15675,6 +15678,10 @@ After a few minutes nothing still happened and [name] decides to move on.""", # 
 	BODYUPGRADEDESCRIPT_UPGRADE_RESIST = "[name]'s magic resistance will allow to negate enemy spells with 25% chance.",
 	BODYUPGRADENAME_UPGRADE_THICKBLOOD = "Thick Blood",
 	BODYUPGRADEDESCRIPT_UPGRADE_THICKBLOOD = "[name] will gain immunity to bleed and poison.",
+	BODYUPGRADENAME_UPGRADE_BREEDER = """Breeder""", # MISSING TRANSLATION
+	BODYUPGRADEDESCRIPT_UPGRADE_BREEDER = """Allows breeding with any race.
+Pregnancy Debuffs are weaker
+Offspring will inherit only this parent's stats.""", # MISSING TRANSLATION
 	QUALITYPOOR = """Poor""", # MISSING TRANSLATION
 	QUALITYAVERAGE = """Average""", # MISSING TRANSLATION
 	QUALITYGOOD = """Good""", # MISSING TRANSLATION
