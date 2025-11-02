@@ -189,7 +189,7 @@ var effects = {
 	e_s_void = {
 		type = 'trigger',
 		conditions = [
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_CRIT]},
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 		],
 		trigger = [variables.TR_POSTDAMAGE],
 		req_skill = true,

@@ -28,6 +28,8 @@ func _ready():
 #	$TimeNode/Time.text = tr(variables.timeword[ResourceScripts.game_globals.hour])
 
 func hotkey_pressed(number):
+	if input_handler.combat_node != null:
+		return
 	match number:
 		1: advance_turn(1)
 		2: advance_turn(2)
