@@ -976,6 +976,20 @@ var unique_marry_rules = {
 			agrees = false
 		},
 	},
+	heleviel = {
+		heleviel_quest_finished = {
+			reqs = [{type = "quest_completed", name = "heleviel_quest3", check = true}],
+			text = "LILITH_QUEST_FINISHED_TEXT",
+			description = "LILITH_QUEST_FINISHED_DESCRIPTION",
+			agrees = true
+		},
+		heleviel_quest_unfinished = {
+			reqs = [{type = "quest_completed", name = "heleviel_quest3", check = false}],
+			text = "LILITH_QUEST_UNFINISHED_TEXT",
+			description = "LILITH_QUEST_UNFINISHED_DESCRIPTION",
+			agrees = false
+		},
+	},
 	amelia = {
 		amelia_agree = {
 			reqs = [],

@@ -1186,15 +1186,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "lira",
-		text = [
-			{
-				text = "SACRED_SAP_LIRA_1",
-				reqs = [
-
-				]
-			}
-		],
+		character = "lira_priestess",
+		text = "SACRED_SAP_LIRA_1",
 		options = [
 			{
 				code = "sacred_sap_lira_2",
@@ -1202,7 +1195,6 @@ var data = {
 				reqs = [
 
 				],
-				dialogue_argument = 0,
 				type = "next_dialogue"
 			}
 		]
@@ -1214,15 +1206,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "lira",
-		text = [
-			{
-				text = "SACRED_SAP_LIRA_2",
-				reqs = [
-
-				]
-			}
-		],
+		character = "lira_priestess",
+		text = "SACRED_SAP_LIRA_2",
 		options = [
 			{
 				code = "close",
@@ -1230,7 +1215,6 @@ var data = {
 				reqs = [
 
 				],
-				dialogue_argument = 0,
 				type = "next_dialogue",
 				bonus_effects = [
 					{
@@ -1271,15 +1255,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "lira",
-		text = [
-			{
-				text = "SACRED_SAP_LIRA_3",
-				reqs = [
-
-				]
-			}
-		],
+		character = "lira_priestess",
+		text = "SACRED_SAP_LIRA_3",
 		options = [
 			{
 				code = "sacred_sap_lira_4",
@@ -1298,7 +1275,6 @@ var data = {
 						material = "steel"
 					}
 				],
-				dialogue_argument = 0,
 				type = "next_dialogue",
 				bonus_effects = [
 					{
@@ -1322,7 +1298,6 @@ var data = {
 				reqs = [
 
 				],
-				dialogue_argument = 0,
 				type = "next_dialogue"
 			}
 		]
@@ -1334,15 +1309,8 @@ var data = {
 		reqs = [
 
 		],
-		character = "lira",
-		text = [
-			{
-				text = "SACRED_SAP_LIRA_4",
-				reqs = [
-
-				]
-			}
-		],
+		character = "lira_priestess",
+		text = "SACRED_SAP_LIRA_4",
 		options = [
 			{
 				code = "close",
@@ -1350,7 +1318,6 @@ var data = {
 				reqs = [
 
 				],
-				dialogue_argument = 0,
 				type = "next_dialogue",
 				bonus_effects = [
 					{
@@ -1521,11 +1488,11 @@ var data = {
 						type = "location_has_specific_slaves",
 						check = true,
 						value = 1,
-						location = 'quest_molten_grounds',
+						location = "quest_molten_grounds",
 						reqs = [
 							{
-								code = 'unique',
-								value = 'zephyra'
+								code = "unique",
+								value = "zephyra"
 							}
 						]
 					}

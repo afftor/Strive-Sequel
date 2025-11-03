@@ -553,6 +553,8 @@ var scenes = {
 	heleviel_bar = "res://assets/images/scenes/heleviel_bar.png",
 	heleviel_bar_grab = "res://assets/images/scenes/heleviel_bar_grab.png",
 	heleviel_heal = "res://assets/images/scenes/heleviel_heal.png",
+	heleviel_halfkin = "res://assets/images/scenes/heleviel_halfkin.png",
+	heleviel_town = "res://assets/images/scenes/heleviel_town.png",
 	
 	
 	hire = load("res://assets/images/scenes/hire.png"),
@@ -659,6 +661,7 @@ var sprites = {
 	daisy_christmas = load("res://assets/images/sprites/daisy_christmas.png"),
 	daisy_christmas_body = load("res://assets/images/sprites/daisy_christmas_body.png"),
 	lira = load("res://assets/images/sprites/Lira.png"),
+	lira_priestess = load("res://assets/images/sprites/lira_priestess.png"),
 	mae = load("res://assets/images/sprites/mae.png"),
 	mae_body = load("res://assets/images/sprites/mae_body.png"),
 	lilia = load("res://assets/images/sprites/lilia.png"),

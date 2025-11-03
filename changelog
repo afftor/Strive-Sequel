@@ -1,7 +1,12 @@
 0.13.2
-Added Heleviel questline
+Added Heleviel questline and wedding scene
 Added a one time option to purchase corruptive essence if it wasn't chosen as starting bonus
 Added color codes to slave list tasks
+Void now cost 16 (up from 10) and has 5 turn cooldown (up from 1)
+Fixed void only proccing its debuffs on crit 
+Quests should now have fixed reward and be faithful to the tooltip
+Fixed sharpness enchant not working on some items
+Fixed some minor errors with character selection scren
 0.13.1c
 Corrected some scene dialogues
 Fixed Devastation skill and made its animation faster

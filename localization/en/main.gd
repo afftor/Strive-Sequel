@@ -1748,7 +1748,6 @@ Service is a global modifier for this assignment.""",
 	BROTHELWAITRESSALT = "Waiter",
 	BROTHELHOSTESS = "Hostess",
 	BROTHELHOSTESSALT = "Host",
-	#BROTHELHOSTESSDESCRIPT = "[name] will entertain customers with chatting and flirt. \nGold formula: (Hostess Income*(1 + Wits/60) * Productivity * Service Productivity +- 20% random value * min(4/1+0.001*value) * booster effect",
 	BROTHELHOSTESSDESCRIPT = "[name] will entertain customers with chatting and flirt. Scales with Wits",
 	BROTHELDANCER = "Dancer",
 	BROTHELDANCERDESCRIPT = "[name] will stage dances and performances in front of auditory. Scales with Physics",
@@ -4766,7 +4765,7 @@ At the bottom left you can select items, unlock new classes and configure additi
 	WORKRULERATIONDESCRIPT = "Increases Food Consumption by 3. Boosts Productivity by 15%.",
 	WORKRULESHIFTS = "Longer Shifts",
 	WORKRULESHIFTSDESCRIPT = """Character overperforms at their finest capability at the cost of future improvements. 
-Boosts Productivity by 25%. Character won't gain Experience or Work Stats (Physical, etc) while working. """,
+Boosts Productivity by 25%. {color=yellow|Character won't gain Experience or Work Stats (Physical, etc) while working.} """,
 	WORKRULECONSTRAIN = "Coerced Labor",
 	WORKRULECONSTRAINDESCRIPT = "Character is forced to work at their best via strict regulations. Boosts productivity by 15%. Obedience Drain is increased by 6.",
 	WORKRULELUXURY = "Private Room",
@@ -16663,6 +16662,24 @@ You squeeze her breasts as you feel the rest of her body, pulsing cum into her a
 	LIRA_LOST_QUEST_NAME = "Lost Lira",
 	LIRA_LOST_QUEST_SUMMARY = "Help Lira out of the grove",
 	LIRA_LOST_QUEST_CAPITAL = "Get to the elven capital",
+	
+	HELEVIEL_SLAVE_QUEST_NAME = "Heleviel: New Perspective",
+	HELEVIEL_SLAVE_QUEST_SUMMARY = "Help the former High Priestess adapt to life in Aliron.",
+	HELEVIEL_SLAVE_STAGE_1 = "Assign Heleviel to work as a waitress in Aliron.",
+	HELEVIEL_SLAVE_STAGE_2 = "Visit the bar after a few days and oversee Heleviel's shift with the officials.",
+	HELEVIEL_SLAVE_STAGE_3 = "Visit Aliron's church on Heleviel's behalf.",
+	HELEVIEL_CITY_OPTION = "*Bring Heleviel to assist Ginny*",
+	HELEVIEL_SLAVE_STAGE_4 = "Travel with Heleviel to the beastkin village and secure a silverleaf antidote.",
+	HELEVIEL_CITY_OPTION_2 = "Speak with Savra",
+	HELEVIEL_SLAVE_STAGE_5 = "Wait for some time.",
+	HELEVIEL_SLAVE_STAGE_5_2 = "Arrange an ritual in the elven capital to restore Heleviel's bond with Freya.",
+	HELEVIEL_SLAVE_STAGE_5_3 = "Pay for ritual",
+	HELEVIEL_SLAVE_STAGE_5_4 = "Wait a day",
+	HELEVIEL_CITY_OPTION_3 = "Speak about ritual",
+	HELEVIEL_CITY_OPTION_4 = "Pay for ritual",
+	HELEVIEL_CITY_OPTION_5 = "Attend the ritual",
+	HELEVIEL_SLAVE_STAGE_6 = "Attend the ritual.",
+	
 	KURO_ERRAND_QUEST_NAME = "Kuro: Disappearance",
 	KURO_ERRAND_QUEST_SUMMARY = "Follow the mysterious trail",
 	KURO_ERRAND_QUEST_CHURCH = "Visit Ginny at her temple",
@@ -16814,6 +16831,10 @@ Zephyra freezes as she sees your deed. Her face spells your doom. The time stops
 	LILITH_QUEST_FINISHED_DESCRIPTION = "Lilith smiles satisfyingly at hearing your words but behind her smile you can feel her a poorly hidden lust.",
 	LILITH_QUEST_UNFINISHED_TEXT = "Marriage? Uh... I don't think we should rush into something like this yet, [Master].",
 	LILITH_QUEST_UNFINISHED_DESCRIPTION = "Lilith gives you a doubtful look, feeling more distant from you.",
+	HELEVIEL_QUEST_FINISHED_TEXT = "Very well, after everything happened, I'm fully at your disposal. I'll follow your local customs if that's your request.",
+	HELEVIEL_QUEST_FINISHED_DESCRIPTION = "Heleviel pauses at your offer and you spot her face blushing as she breathes in for the response.",
+	HELEVIEL_QUEST_UNFINISHED_TEXT = "Marry on your customs? You surely jesting me. ",
+	HELEVIEL_QUEST_UNFINISHED_DESCRIPTION = "Heleviel looks at you with a poorly concealed scorn and disdain.",
 	AMELIA_PROPOSAL_TEXT = "Oh my, I didn't expect you to make me blush after all of that. Of course, this is an ultimate honor.",
 	AMELIA_PROPOSAL_DESCRIPT = "Amelia looks at you with a reserved satisfaction, betrayed by her slight visible shaking.",
 	KURO_QUEST_FINISHED_TEXT = "That's one proposal you might seriously regret. That's why I'm going to make you keep it. ",
@@ -18484,7 +18505,9 @@ The offering lays on the altar with no apparent reaction from it. It seems your 
 After a few minutes nothing still happened and [name] decides to move on.""",
 	HYBRIS_ALTAR_CHAR = """
 
-{color=green|A small purple glow emits from the altar and enshrouds [name]. [His] movements suddenly slow down and [his] eyes lose focus. It seems you might be able to influence [him] in some way...}""",
+{color=green|A small purple glow emits from the altar and enshrouds [name]. [His] movements suddenly slow down and [his] eyes lose focus. It seems you might be able to influence [him] in some way...}
+
+{color=yellow|Warning: Enslaving a character makes them lose Universal Mastery Points from Growth Factor including spent ones.}""",
 	HYBRIS_ALTAR_CHAR_FAIL = """
 
 {color=red|A small purple glow emits from the altar and enshrouds [name], however it does not seem to be strong enough to affect [him]...}""",
@@ -18679,6 +18702,9 @@ Offspring will inherit only this parent's stats.""",
 	ANASTASIA_BLOWJOB_SS = "Accept Anastasia's \"Reward\"*",
 	ANASTASIA_WEDDING_SS = "Marrying an (ex)princess.",
 	ZEPHYRA_WEDDING_SS = "Wedlock with Zephyra",
+	HELEVIEL_BAR_SS = "Take an opportunity over Heleviel during her work hours",
+	HELEVIEL_FOREST_SS = "Commit a public indecency with a reformed elven priestess.",
+	HELEVIEL_WEDDING_SS = "Become a new life for former elven high priestess.",
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """You explain to Alise that one of your slaves needs a change of clothes.
 
 {color=yellow|— Why, yes, proper servants' attire is one of our specialties. You know, the right clothes make a big difference even for less ideal bodies, naturally we have tailors who can adjust for any required body type. But what are you looking for, anyway?}""",
@@ -19905,9 +19931,9 @@ Kuro smirks at you in her usual way.
 {color=yellow|— Curses upon you and your human towns. To think the once noble High Priestess of Freya herself would be forced to become a slave for someone like you. Even if I have to serve you because my survival depends on it, don't ever think of making me into an obedient toy.}""",
 	HELEVIEL_QUEST_1_OPTION_1 = "We could start by getting along first",
 	HELEVIEL_QUEST_1_OPTION_2 = "I have broken in many slaves, you think you stand a chance?",
-	HELEVIEL_QUEST_2_1 = """{color=yellow|— Getting along? With a [race]? You've got to be kidding me. I can never be friends with someone like you, it's completely impossible and degrading to even consider.}""",
-	HELEVIEL_QUEST_2_1a = """{color=yellow|— Hmph. If you want us to get along, you should start by releasing me and then punishing that traitorous bastard Erlen. That's the bare minimum of your apology for me to even consider it.}""",
-	HELEVIEL_QUEST_2_2 = """{color=yellow|— Break me? I was the chosen of Freya for decades, not some peasant fool you can train with a stick. You won't make me beg for mercy with such threats.}""",
+	HELEVIEL_QUEST_2_1 = "{color=yellow|— Getting along? With a [race]? You've got to be kidding me. I can never be friends with someone like you, it's completely impossible and degrading to even consider.}",
+	HELEVIEL_QUEST_2_1a = "{color=yellow|— Hmph. If you want us to get along, you should start by releasing me and then punishing that traitorous bastard Erlen. That's the bare minimum of your apology for me to even consider it.}",
+	HELEVIEL_QUEST_2_2 = "{color=yellow|— Break me? I was the chosen of Freya for decades, not some peasant fool you can train with a stick. You won't make me beg for mercy with such threats.}",
 	HELEVIEL_QUEST_2 = """It seems Heleviel does not actively try to cause problems or break free—at least not yet. However, her behavior is entirely entitled, making her of little use. Even if she's ready to follow your orders, her lack of manners for her new position is in dire need of fixing. Perhaps the best way is to bring her down to earth if you plan to employ her for any real work.
 
 Thinking for a bit, you come up with a suitable idea: having her work as a waitress will quickly put her in a position where she will have to serve people she has always looked down on.""",
@@ -19922,8 +19948,8 @@ Thinking for a bit, you come up with a suitable idea: having her work as a waitr
 	HELEVIEL_QUEST_4_2 = """{color=yellow|Heleviel: — T-that's nonsense. These are completely undignified and unsuitable for someone of my former status. I can't believe you make elves wear this at all.}
 
 Yet your compliment has not gone entirely unnoticed, perhaps partly because the new look has made her feel more vulnerable.""",
-	HELEVIEL_QUEST_5 = """You leave Heleviel in the custody of the bar owner and go back to your own business. It's better to give her some time in the new conditions.""",
-	HELEVIEL_QUEST_6 = """One of the evenings you are invited by a few other officials for a friendly drink. As you get to the suggested bar you realize it's the one where you put Heleviel to work.""",
+	HELEVIEL_QUEST_5 = "You leave Heleviel in the custody of the bar owner and go back to your own business. It's better to give her some time in the new conditions.",
+	HELEVIEL_QUEST_6 = "One of the evenings you are invited by a few other officials for a friendly drink. As you get to the suggested bar you realize it's the one where you put Heleviel to work.",
 	HELEVIEL_QUEST_7 = """Soon you notice Heleviel being assigned as your server. After giving her a knowing smile, she composedly averts her eyes.
 
 {color=yellow|Official 1: — This bar has the best elf girls, you know. That white-haired one is especially cute when angry.}
@@ -19945,7 +19971,7 @@ You leave the table and find Heleviel in the backrooms as she glares at you with
 {color=yellow|Heleviel: — What is it? You want me to keep your friends company now? This is just a humiliation for someone of my status!}""",
 	HELEVIEL_QUEST_9_OPTION_1 = "Fine, just serve us normally",
 	HELEVIEL_QUEST_9_OPTION_2 = "I could give you a few days off...",
-	HELEVIEL_QUEST_10_1 = """{color=yellow|Heleviel: — ...Very well, I can do that. Don't let those men run their hands wherever they want.}""",
+	HELEVIEL_QUEST_10_1 = "{color=yellow|Heleviel: — ...Very well, I can do that. Don't let those men run their hands wherever they want.}",
 	HELEVIEL_QUEST_10_2 = """Heleviel stays silent for a while, considering your offer. She seems not only repulsed by the idea but also aware of the importance of the meeting to you. Your offer outweighs her reluctance.
 
 {color=yellow|Heleviel: — Fine. Goddess, if I ever had to imagine what I would be going through in my life...}
@@ -19983,7 +20009,7 @@ You note with amusement how Heleviel holds herself in this situation. While not 
 After looking at you, Heleviel realizes there's no way she can dodge it, and her shoulders drop in small defeat.
 
 {color=yellow|Heleviel: — *Sigh* How low must I fall now...}""",
-	HELEVIEL_SLAVE_CHURCH_HEALING_TEXT = """After moving to the infirmary, the former priestess is assigned to mend the wounds of the injured. Her disdain is especially notable when she has to take care of male fighters. Yet her spirit does not seem broken; the determination forged by years of strict customs is still there.""",
+	HELEVIEL_SLAVE_CHURCH_HEALING_TEXT = "After moving to the infirmary, the former priestess is assigned to mend the wounds of the injured. Her disdain is especially notable when she has to take care of male fighters. Yet her spirit does not seem broken; the determination forged by years of strict customs is still there.",
 	HELEVIEL_SLAVE_CHURCH_ARGUMENT_TEXT = """The next patient is a male elf soldier with a severe-looking wound.
 
 {color=aqua|Elf: — O-ouch, you could be a bit gentler, you know.}
@@ -20022,11 +20048,11 @@ The former High Priestess is practically shaking in place but well aware she's u
 You feel like Heleviel is being evasive about the issue, but you let her continue.""",
 	HELEVIEL_SLAVE_CHURCH_POISON_OPTION_1 = "Is something bothering you?",
 	HELEVIEL_SLAVE_CHURCH_POISON_OPTION_2 = "Seems like you aren't thrilled about going there",
-	HELEVIEL_SLAVE_CHURCH_POISON_REPLY_1 = """{color=yellow|Heleviel: — Elves were never on good terms with them. They don't follow Freya, they're savage beasts who know little but mating like ones.}""",
-	HELEVIEL_SLAVE_CHURCH_POISON_REPLY_2 = """{color=yellow|Heleviel: — Of course I'm not. Elves were never on good terms with them. They don't follow Freya, they're savage beasts who know little but mating like ones.}""",
+	HELEVIEL_SLAVE_CHURCH_POISON_REPLY_1 = "{color=yellow|Heleviel: — Elves were never on good terms with them. They don't follow Freya, they're savage beasts who know little but mating like ones.}",
+	HELEVIEL_SLAVE_CHURCH_POISON_REPLY_2 = "{color=yellow|Heleviel: — Of course I'm not. Elves were never on good terms with them. They don't follow Freya, they're savage beasts who know little but mating like ones.}",
 	HELEVIEL_SLAVE_CHURCH_POISON_OPTION_3 = "They live in their own ways",
 	HELEVIEL_SLAVE_CHURCH_POISON_OPTION_4 = "You aren't exactly wrong there",
-	HELEVIEL_SLAVE_CHURCH_POISON_REPLY = """{color=yellow|Heleviel: — Even if the goddess allows their existence, I can't accept those who stray that far from her order. Our community has survived for ages and stayed strong because of that. I've put additional regulations regarding them, too. Getting the cure from them will prove challenging. We'd better hurry if we want that man to survive.}""",
+	HELEVIEL_SLAVE_CHURCH_POISON_REPLY = "{color=yellow|Heleviel: — Even if the goddess allows their existence, I can't accept those who stray that far from her order. Our community has survived for ages and stayed strong because of that. I've put additional regulations regarding them, too. Getting the cure from them will prove challenging. We'd better hurry if we want that man to survive.}",
 	HELEVIEL_SLAVE_BEASTKIN_INTRO_TEXT = """After finding Savra, you and Heleviel explain that you are looking for an antidote to silverleaf poison.
 
 {color=yellow|Savra: — Why, yes, I think I have a spare one in my stores.}
@@ -20058,7 +20084,7 @@ Savra cuts in with a rather quick follow-up.
 {color=yellow|Heleviel: — ...A former priestess. How did you end up here, little one?}
 
 {color=aqua|Girl: — After my mom died I was taken here. They said I can't live with the other elves. But there are no temples like my mom's here.}""",
-	HELEVIEL_SLAVE_BEASTKIN_CHILD_TEXT_4 = """You see Heleviel grow uneasy as she's forced to deal with the girl, but Savra interrupts you and asks you to come with her, leaving the elf and the child alone.""",
+	HELEVIEL_SLAVE_BEASTKIN_CHILD_TEXT_4 = "You see Heleviel grow uneasy as she's forced to deal with the girl, but Savra interrupts you and asks you to come with her, leaving the elf and the child alone.",
 	HELEVIEL_SLAVE_BEASTKIN_SAVRA_TEXT = """In her hut, Savra passes you the bottle with the antidote.
 
 {color=yellow|Savra: — Who knew I'd live to see the day Freya's High Priestess herself visited us. You've gotten quite far, haven't you.}""",
@@ -20099,7 +20125,7 @@ The anxiety in her voice makes it clear she is distressed by losing the connecti
 	HELEVIEL_SLAVE_RITUAL_ERLEN_OPTION_2 = "This may be helpful to us, she was a high priestess for a long time after all",
 	HELEVIEL_SLAVE_RITUAL_ERLEN_REPLY_1 = "{color=yellow|— I don't like it. You're too soft. But I'm not going to stop you. You'll find Lira at the temple—she'll probably be glad to help.}",
 	HELEVIEL_SLAVE_RITUAL_ERLEN_REPLY_2 = "{color=yellow|— I see. Pragmatic as ever, it seems. Fine, I'm not going to stop you. You'll find Lira at the temple—she'll probably be glad to help.}",
-	HELEVIEL_SLAVE_RITUAL_LIRA_TEXT = """{color=yellow|— Sir [name], it's a pleasure that you still visit us. I don't get a lot of free time now that I've been assigned this role, but meeting with you is one thing I am obliged to find time for.}""",
+	HELEVIEL_SLAVE_RITUAL_LIRA_TEXT = "{color=yellow|— Sir [name], it's a pleasure that you still visit us. I don't get a lot of free time now that I've been assigned this role, but meeting with you is one thing I am obliged to find time for.}",
 	HELEVIEL_SLAVE_RITUAL_LIRA_TEXT_2 = """
 You explain to Lira Heleviel's issue, and she falls into silence until she finally speaks up.
 
@@ -20117,8 +20143,8 @@ You explain to Lira Heleviel's issue, and she falls into silence until she final
 	HELEVIEL_SLAVE_RITUAL_CEREMONY_INTRO = """You lead Heleviel through the streets of her former home, dressed in a long hooded robe. Positively surprised by your agreement to help her, she looks like nothing she was the last time you met her here.
 
 {color=yellow|— This is all the same, but it feels so... different.}""",
-	HELEVIEL_SLAVE_RITUAL_CEREMONY_MID = """After you deliver Heleviel to the temple's entrance, an acolyte takes her inside, leaving you waiting until it's over.""",
-	HELEVIEL_SLAVE_RITUAL_CEREMONY_FREYA = """As the ritual starts, only Lira and Heleviel are left alone in the room. Heleviel needs no instructions—she knows the importance of this meditation. Lira will be the channel for contact with the Goddess. This kind of connection is only possible due to the elves' preservation of traditions and religion—something she would never be able to achieve in Aliron.""",
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_MID = "After you deliver Heleviel to the temple's entrance, an acolyte takes her inside, leaving you waiting until it's over.",
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_FREYA = "As the ritual starts, only Lira and Heleviel are left alone in the room. Heleviel needs no instructions—she knows the importance of this meditation. Lira will be the channel for contact with the Goddess. This kind of connection is only possible due to the elves' preservation of traditions and religion—something she would never be able to achieve in Aliron.",
 	HELEVIEL_SLAVE_RITUAL_CEREMONY_FREYA_2 = """Lira's eyes open, a dim light forming around them in the darkness.
 
 {color=aqua|Freya: — Speak.}
@@ -20159,7 +20185,7 @@ For the first time Heleviel is truly shocked by this revelation—or rather, thi
 {color=aqua|Freya: — So be it. And one last thing. Consider having offspring with [him], it's a rare chance for someone childless at your age.}
 
 Heleviel's face turns completely red, but she manages not to speak up.""",
-	HELEVIEL_SLAVE_RITUAL_CEREMONY_CONCLUSION = """Finally, the otherworldly glow disappears from Lira's face and she drops down in exhaustion. The ritual is over, and Heleviel is led back to you.""",
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_CONCLUSION = "Finally, the otherworldly glow disappears from Lira's face and she drops down in exhaustion. The ritual is over, and Heleviel is led back to you.",
 	HELEVIEL_SLAVE_RITUAL_INTERLUDE = """Standing under the grand tree Heleviel nods to you being ready to leave. 
 
 {color=yellow|Heleviel: — Thank you for bringing me here, I'm finally ready to leave it for good.}""",
@@ -20172,14 +20198,13 @@ Heleviel's face turns completely red, but she manages not to speak up.""",
 You don't show any care and this mentality transmits to Heleviel as well. 
 
 {color=yellow|Heleviel: — ...Curses, it's on them then…}""",
-	HELEVIEL_SLAVE_RITUAL_SEX_ATTEMPT_2 = """Heleviel ignores your remark and heads out of the capital not waiting for you.""",
+	HELEVIEL_SLAVE_RITUAL_SEX_ATTEMPT_2 = "Heleviel ignores your remark and heads out of the capital not waiting for you.",
 	HELEVIEL_SLAVE_RITUAL_END_TEXT = """As you leave the city, you notice Heleviel's behavior has changed. She seems more content and sure-footed as she follows you. When you ask if she's satisfied, her response sounds a bit more personal than usual.
 
 {color=yellow|Heleviel: — Yes. Thank you for supporting my request. Finally, I can answer what I can give you in return for this favor. I give my word that I shall be loyal to you and your decisions, as long as they don't challenge Freya. My powers are at your disposal.}""",
 	HELEVIEL_SLAVE_RITUAL_END_OPTION_1 = "Let's get along then",
 	HELEVIEL_SLAVE_RITUAL_END_OPTION_2 = "You better not disappoint me",
-	HELEVIEL_SLAVE_RITUAL_END_2 = """Heleviel nods affirmatively and moves closer to you. Her new role has been settled.""",
-	
+	HELEVIEL_SLAVE_RITUAL_END_2 = "Heleviel nods affirmatively and moves closer to you. Her new role has been settled.",
 	HELEVIEL_BAR_SEX_1 = """You feel Heleviel's soft skin on your palm as she seemingly pays no attention. Initially you think she doesn't notice, but brief side glances from her indicate she's well aware of your bold move. Yet she makes no attempt to move away or resist—perhaps because of the alcohol or because she isn't completely opposed to this...
 
 As the night continues and other patrons get more rowdy with the waitresses, Heleviel excuses herself and leaves the table. Her legs wobble slightly as she makes it into the backrooms after giving you a short bow. Finding everyone else too busy with themselves, you decide to check on Heleviel and follow after her.""",
@@ -20189,7 +20214,7 @@ As the night continues and other patrons get more rowdy with the waitresses, Hel
 
 Despite her protests you easily notice how her words lack true indignation. Moreover, her thighs subtly rub together as the distance between you closes.""",
 	HELEVIEL_BAR_SEX_2_OPTOPN_1 = "*Kiss her*",
-	HELEVIEL_BAR_SEX_2_OPTOPN_2= "*Take her roughly*",
+	HELEVIEL_BAR_SEX_2_OPTOPN_2 = "*Take her roughly*",
 	HELEVIEL_BAR_SEX_3 = """Your lips meet hers in the dimly lit backroom of the bar. Heleviel's white hair cascades over her shoulders, a stark contrast to the dim look of the room. The faint scent of ale and her unique elven fragrance fills the air as you deepen the kiss, tasting the sweetness on her tongue. Her green eyes flutter closed, long lashes brushing against her cheeks. Her curvaceous figure strains against the tight waitress uniform, the fabric stretched taut across her ample chest. You break the kiss, your hand on her shoulder, and gently guide her to turn around.
 
 {color=yellow|— C-curses, was this your plan all along? Ah, I don't care anymore, you cunning scoundrel...
@@ -20203,9 +20228,9 @@ Heleviel complies, her movements slightly unsteady from the alcohol. Her palms p
 {color=yellow|— D-don't stop now... If you stop... I can't....
 
 You drive into her harder, faster, your dick hitting that sensitive spot deep inside her that makes her cry out. Heleviel's controlled demeanor shatters completely, her moans growing louder, more desperate, echoing in the small backroom. Her green eyes, usually so serious and composed, are now clouded with a haze of lustful pleasure. You can feel her body beginning to tense beneath you, the muscles in her thighs and back tightening as she pushes back against you, meeting your rhythm with an instinctual need.""",
-	HELEVIEL_BAR_SEX_6 = """The table scrapes across the floor as you give one final, deep thrust. A guttural cry escapes Heleviel's lips as her orgasm crashes through her. Her pussy clenches around your dick in rhythmic pulses, milking you as she trembles uncontrollably. Her vision blurs, a raw, carnal release that strips away every last piece of her dignified persona. The force of her climax triggers your own, and you bury yourself deep inside her, your dick pulsing as you fill her with your warmth.""",
-	HELEVIEL_BAR_SEX_7 = """For a long moment, the only sound in the room is your heavy breathing and whimpering moans still escaping Heleviel's lips. Her body goes limp, collapsing forward onto the table, her long white hair fanned out around her head like a halo. You stay inside her for a moment longer, feeling the aftershocks of her orgasm still shuddering through her. Slowly, you withdraw, a trail of your combined fluids dripping from her still-trembling pussy. Heleviel doesn't move, her face turned to the side, her eyes closed as she tries to process the intensity of what just happened. The once-dignified elf is now a disheveled, satisfied mess, her waitress uniform wrinkled and stained, her body still humming with pleasure.""",
-	HELEVIEL_BAR_SEX_8 = """You helped Heleviel clean herself and the mess you'd made around the room. It only took moments for the elf woman to compose herself, as if nothing had just happened between you. Yet as you went home to the mansion, you noticed a small change in her behavior, as if she were looking at you with more warmth now. """,
+	HELEVIEL_BAR_SEX_6 = "The table scrapes across the floor as you give one final, deep thrust. A guttural cry escapes Heleviel's lips as her orgasm crashes through her. Her pussy clenches around your dick in rhythmic pulses, milking you as she trembles uncontrollably. Her vision blurs, a raw, carnal release that strips away every last piece of her dignified persona. The force of her climax triggers your own, and you bury yourself deep inside her, your dick pulsing as you fill her with your warmth.",
+	HELEVIEL_BAR_SEX_7 = "For a long moment, the only sound in the room is your heavy breathing and whimpering moans still escaping Heleviel's lips. Her body goes limp, collapsing forward onto the table, her long white hair fanned out around her head like a halo. You stay inside her for a moment longer, feeling the aftershocks of her orgasm still shuddering through her. Slowly, you withdraw, a trail of your combined fluids dripping from her still-trembling pussy. Heleviel doesn't move, her face turned to the side, her eyes closed as she tries to process the intensity of what just happened. The once-dignified elf is now a disheveled, satisfied mess, her waitress uniform wrinkled and stained, her body still humming with pleasure.",
+	HELEVIEL_BAR_SEX_8 = "You helped Heleviel clean herself and the mess you'd made around the room. It only took moments for the elf woman to compose herself, as if nothing had just happened between you. Yet as you went home to the mansion, you noticed a small change in her behavior, as if she were looking at you with more warmth now. ",
 	HELEVIEL_FOREST_SEX_1 = """You don't hesitate, pressing her against the immense, rough trunk of the Great Tree. The bark is a stark, abrasive texture against the smooth fabric of her ceremonial robes. Your lips claim hers, a kiss that is both possessive and demanding. Heleviel's initial stiffness melts away under the intensity, her hands tentatively coming up to rest on your shoulders. Her white hair, still radiating a faint residual light from the ritual, cascades down her back, a stark contrast to the deep, ancient wood. You break the kiss, your eyes locking with hers as your hands find the clasps of her clothes, deftly undoing them. The heavy garments part, revealing the pale skin beneath, her large breasts heaving with each ragged breath.
 
 {color=yellow|— Men sure are lustful creatures. To think that I would surrender myself to one so readily...}""",
@@ -20222,7 +20247,6 @@ You increase the pace, your movements becoming more forceful, more possessive. Y
 {color=yellow|— I... I'm gonna... Cum... For you…}
 
 With a final, deep thrust, you drive into her one last time. Heleviel cries out, her body convulsing as her orgasm crashes through her. Her pussy clenches around your dick in rhythmic pulses, milking you as she trembles uncontrollably. The intensity of her pleasure triggers your own release, and you bury yourself deep inside her, your dick pulsing as you fill her with your seed. For a long moment, the only sound in the clearing is your harsh breathing and Heleviel's soft whimpers as she recovers from her orgasm.""",
-	
 	HELEVIEL_WEDDING_1 = """Heleviel stands before you, the intricate silver threads of her white wedding gown shimmering in the dim light. Her long white hair is unbound, cascading over her shoulders like a waterfall of moonlight. For a long moment, she just looks at you, her green eyes unreadable, her serious, dignified mask firmly in place. Then, with a slow, deliberate grace, she turns her back to you.
 
 {color=yellow|— Well, my dear [husband], you must be as eager as I am.}
@@ -20244,24 +20268,7 @@ You lean over her, your chest pressing against her back, your breath hot against
 With a final, deep thrust, you drive into her one last time. Heleviel cries out, her body convulsing as her orgasm crashes through her. Her pussy clenches around your dick in rhythmic pulses, milking you as she trembles uncontrollably. The intensity of her pleasure triggers your own release, and you bury yourself deep inside her, your dick pulsing as you fill her with your semen. For a long moment, the only sound in the room is your harsh breathing and Heleviel's soft whimpers.
 
 {color=yellow|— Aah!!.. So hot... Your seed is filling me!..}""",
-HELEVIEL_WEDDING_6 = """Slowly, you withdraw, collapsing onto the bed beside her. Heleviel lies there, her body still humming with pleasure, her white hair a tangled mess around her head. She turns to face you, her green eyes soft, a mixture of satisfaction and lingering vulnerability in their depths. The dignified High Priestess is gone, replaced by a woman who has completely surrendered to you. She reaches out, her hand finding yours, her fingers lacing through yours in a silent gesture of connection. 
+	HELEVIEL_WEDDING_6 = """Slowly, you withdraw, collapsing onto the bed beside her. Heleviel lies there, her body still humming with pleasure, her white hair a tangled mess around her head. She turns to face you, her green eyes soft, a mixture of satisfaction and lingering vulnerability in their depths. The dignified High Priestess is gone, replaced by a woman who has completely surrendered to you. She reaches out, her hand finding yours, her fingers lacing through yours in a silent gesture of connection. 
 
 {color=yellow|— This is so silly, but... What I feel the most right now, not being a former priestess or an elf. It's that I'm a woman. Your woman.}""",
-	
-	HELEVIEL_SLAVE_QUEST_NAME = "Heleviel's Atonement",
-	HELEVIEL_SLAVE_QUEST_SUMMARY = "Help the former High Priestess adapt to life in Aliron so she can once more serve you and her goddess.",
-	HELEVIEL_SLAVE_STAGE_1 = "Assign Heleviel to work as a waitress in Aliron to humble her attitude.",
-	HELEVIEL_SLAVE_STAGE_2 = "Visit the bar after a few days and oversee Heleviel's shift with the officials.",
-	HELEVIEL_SLAVE_STAGE_3 = "Bring Heleviel to Celena's church so she can assist Ginny with tending the wounded.",
-	HELEVIEL_CITY_OPTION = "*Bring Heleviel to assist Ginny*",
-	HELEVIEL_SLAVE_STAGE_4 = "Travel with Heleviel to the beastkin village and secure a silverleaf antidote.",
-	HELEVIEL_CITY_OPTION_2 = "Speak with Savra",
-	HELEVIEL_SLAVE_STAGE_5 = "Wait for some time.",
-	HELEVIEL_SLAVE_STAGE_5_2 = "Arrange an ritual in the elven capital to restore Heleviel's bond with Freya.",
-	HELEVIEL_SLAVE_STAGE_5_3 = "Pay for ritual",
-	HELEVIEL_SLAVE_STAGE_5_4 = "Wait a day",
-	HELEVIEL_CITY_OPTION_3 = "Speak about ritual",
-	HELEVIEL_CITY_OPTION_4 = "Pay for ritual",
-	HELEVIEL_CITY_OPTION_5 = "Attend the ritual",
-	HELEVIEL_SLAVE_STAGE_6 = "Attend the ritual.",
 }
