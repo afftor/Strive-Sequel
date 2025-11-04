@@ -88,7 +88,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "heleviel_slave_quest",
+						value = "heleviel_quest1",
 						stage = "stage1"
 					},
 					{
@@ -210,7 +210,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "heleviel_slave_quest",
+						value = "heleviel_quest1",
 						stage = "stage2"
 					},
 					{
@@ -444,10 +444,14 @@ var data = {
 				dialogue_argument = 1,
 				bonus_effects = [
 					{
+						code = "complete_quest",
+						value = "heleviel_quest1",
+					},
+					{
 						code = "progress_quest",
-						value = "heleviel_slave_quest",
+						value = "heleviel_quest2",
 						stage = "stage3"
-					}
+					},
 				]
 			}
 		]
@@ -850,7 +854,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "heleviel_slave_quest",
+						value = "heleviel_quest2",
 						stage = "stage4"
 					}
 				]
@@ -1187,9 +1191,8 @@ var data = {
 						trait = "cruel"
 					},
 					{
-						code = "progress_quest",
-						value = "heleviel_slave_quest",
-						stage = "stage5"
+						code = "complete_quest",
+						value = "heleviel_quest2",
 					},
 					{
 						code = "add_timed_event",
@@ -1292,8 +1295,8 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "heleviel_slave_quest",
-						stage = "stage5_2"
+						value = "heleviel_quest3",
+						stage = "stage5"
 					}
 				]
 			}
@@ -1440,13 +1443,13 @@ var data = {
 							}
 						],
 						value = {
-							quest = "heleviel_slave_quest",
+							quest = "heleviel_quest3",
 							stage = "stage6"
 						}
 					},
 					{
 						code = "progress_quest",
-						value = "heleviel_slave_quest",
+						value = "heleviel_quest3",
 						stage = "stage5_4"
 					},
 					{
@@ -1466,7 +1469,7 @@ var data = {
 				bonus_effects = [
 					{
 						code = "progress_quest",
-						value = "heleviel_slave_quest",
+						value = "heleviel_quest3",
 						stage = "stage5_3"
 					},
 					{
@@ -1559,13 +1562,13 @@ var data = {
 							}
 						],
 						value = {
-							quest = "heleviel_slave_quest",
+							quest = "heleviel_quest3",
 							stage = "stage6"
 						}
 					},
 					{
 						code = "progress_quest",
-						value = "heleviel_slave_quest",
+						value = "heleviel_quest3",
 						stage = "stage5_4"
 					},
 					{
@@ -1998,7 +2001,7 @@ var data = {
 					},
 					{
 						code = "complete_quest",
-						value = "heleviel_slave_quest"
+						value = "heleviel_quest3"
 					}
 				]
 			}
@@ -2233,10 +2236,14 @@ var data = {
 				dialogue_argument = 1,
 				bonus_effects = [
 					{
+						code = "complete_quest",
+						value = "heleviel_quest1",
+					},
+					{
 						code = "progress_quest",
-						value = "heleviel_slave_quest",
+						value = "heleviel_quest2",
 						stage = "stage3"
-					}
+					},
 				]
 			}
 		],
