@@ -2718,19 +2718,30 @@ var quests = {
 			dungeon = {code = 'dungeon', name = 'KURO_QUEST_3_NAME', descript = 'KURO_QUEST_3_DUNGEON'},
 		}
 	},
-	heleviel_slave_quest = {
-		code = 'heleviel_slave_quest',
-		summary = "HELEVIEL_SLAVE_QUEST_SUMMARY",
+	heleviel_quest1 = {
+		code = 'heleviel_quest1',
+		summary = "HELEVIEL_QUEST1_SUMMARY",
 		stages = {
-			stage1 = {code = 'stage1', name = 'HELEVIEL_SLAVE_QUEST_NAME', descript = "HELEVIEL_SLAVE_STAGE_1"},
-			stage2 = {code = 'stage2', name = 'HELEVIEL_SLAVE_QUEST_NAME', descript = "HELEVIEL_SLAVE_STAGE_2"},
-			stage3 = {code = 'stage3', name = 'HELEVIEL_SLAVE_QUEST_NAME', descript = "HELEVIEL_SLAVE_STAGE_3"},
-			stage4 = {code = 'stage4', name = 'HELEVIEL_SLAVE_QUEST_NAME', descript = "HELEVIEL_SLAVE_STAGE_4"},
-			stage5 = {code = 'stage5', name = 'HELEVIEL_SLAVE_QUEST_NAME', descript = "HELEVIEL_SLAVE_STAGE_5"},
-			stage5_2 = {code = 'stage5_2', name = 'HELEVIEL_SLAVE_QUEST_NAME', descript = "HELEVIEL_SLAVE_STAGE_5_2"},
-			stage5_3 = {code = 'stage5_3', name = 'HELEVIEL_SLAVE_QUEST_NAME', descript = "HELEVIEL_SLAVE_STAGE_5_3"},
-			stage5_4 = {code = 'stage5_4', name = 'HELEVIEL_SLAVE_QUEST_NAME', descript = "HELEVIEL_SLAVE_STAGE_5_4"},
-			stage6 = {code = 'stage6', name = 'HELEVIEL_SLAVE_QUEST_NAME', descript = "HELEVIEL_SLAVE_STAGE_6"},
+			stage1 = {code = 'stage1', name = 'HELEVIEL_QUEST1_NAME', descript = "HELEVIEL_SLAVE_STAGE_1"},
+			stage2 = {code = 'stage2', name = 'HELEVIEL_QUEST1_NAME', descript = "HELEVIEL_SLAVE_STAGE_2"},
+		},
+	},
+	heleviel_quest2 = {
+		code = 'heleviel_quest2',
+		summary = "HELEVIEL_QUEST2_SUMMARY",
+		stages = {
+			stage3 = {code = 'stage3', name = 'HELEVIEL_QUEST2_NAME', descript = "HELEVIEL_SLAVE_STAGE_3"},
+			stage4 = {code = 'stage4', name = 'HELEVIEL_QUEST2_NAME', descript = "HELEVIEL_SLAVE_STAGE_4"},
+		},
+	},
+	heleviel_quest3 = {
+		code = 'heleviel_quest3',
+		summary = "HELEVIEL_QUEST3_SUMMARY",
+		stages = {
+			stage5 = {code = 'stage5', name = 'HELEVIEL_QUEST3_NAME', descript = "HELEVIEL_SLAVE_STAGE_5"},
+			stage5_3 = {code = 'stage5_3', name = 'HELEVIEL_QUEST3_NAME', descript = "HELEVIEL_SLAVE_STAGE_5_3"},
+			stage5_4 = {code = 'stage5_4', name = 'HELEVIEL_QUEST3_NAME', descript = "HELEVIEL_SLAVE_STAGE_5_4"},
+			stage6 = {code = 'stage6', name = 'HELEVIEL_QUEST3_NAME', descript = "HELEVIEL_SLAVE_STAGE_6"},
 		},
 	},
 }
