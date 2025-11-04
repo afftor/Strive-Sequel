@@ -21,7 +21,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'dark',
 		sfx = [{code = 'darkness', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = 'spell_dark', hit = null},
 		value = 0.75,
 		variations = [
 			{
@@ -55,7 +55,7 @@ var skills = {
 		value = 0.3,
 		random_factor_p = 0.1,
 		sfx = [{code = 'black_tendrils', target = 'target_group', period = 'windup'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = 'spell_break', hit = null},
 	},
 	malediction = {
 		code = 'malediction',
@@ -77,7 +77,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'dark',
 		sfx = [{code = 'malediction', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = 'spell_explosion', hit = null},
 		value = 0.6,
 	},
 	devour_magic = {
@@ -100,7 +100,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'dark',
 		sfx = [{code = 'devour_magic', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = 'spell2', hit = null},
 		value = [['0']],
 		damagestat = ['no_stat'],
 	},
@@ -152,7 +152,7 @@ var skills = {
 		value = 1.5,
 		random_factor_p = 0.1,
 		sfx = [{code = 'skill_void', target = 'target_group', period = 'windup'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = 'spell_void', hit = null},
 	},
 }
 var effects = {

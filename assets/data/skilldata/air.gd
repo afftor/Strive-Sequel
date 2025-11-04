@@ -24,7 +24,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'air',
 		sfx = [{code = 'wind_blade', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = 'spell_break', hit = null},
 		value = 0.6,
 		random_factor_p = 0.1,
 	},
@@ -48,7 +48,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'air',
 		sfx = [{code = 'lightning', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = 'spell_lightning', hit = null},
 		value = 1.25
 	},
 	haste = {
@@ -96,7 +96,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'air',
 		sfx = [{code = 'chain_lightning', target = 'target_group', period = 'windup'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = 'spell_lightning', hit = null},
 		value = 0.8,
 		random_factor_p = 0.1,
 	},
@@ -158,7 +158,7 @@ var skills = {
 		target_range = 'any',
 		damage_type = 'air',
 		sfx = [{code = 'tempest', target = 'target_group', period = 'windup'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = 'spell_lightning', hit = null},
 		value = 1.2
 	},
 	eyeofthestorm = {

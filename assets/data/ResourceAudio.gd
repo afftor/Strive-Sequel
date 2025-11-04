@@ -94,6 +94,14 @@ var sounds = {
 	error = load("res://assets/sounds/sounds/magiceffect.wav"),
 
 	explosion = load("res://assets/sounds/sounds/explosion.wav"),
+	
+	
+	spell_break = load("res://assets/sounds/sounds/spell_break.wav"),
+	spell_explosion = load("res://assets/sounds/sounds/spell_explosion.wav"),
+	spell_dark = load("res://assets/sounds/sounds/spell_explosion.wav"),
+	spell_lightning = load("res://assets/sounds/sounds/spell_explosion.wav"),
+	spell2 = load("res://assets/sounds/sounds/spell2.wav"),
+	spell_void = load("res://assets/sounds/sounds/spell_void.wav"),
 
 	#skills
 	arrowshower = load("res://assets/sounds/sounds/arrowshower.wav"),
