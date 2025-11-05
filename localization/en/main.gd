@@ -19999,11 +19999,25 @@ You note with amusement how Heleviel holds herself in this situation. While not 
 	HELEVIEL_QUEST_13 = """The evening continues uneventfully with your patrons until it gets late enough for everyone to leave. As nobody else is around, you get a small comment from Heleviel before she leaves her shift, still bearing her tipsiness.
 
 {color=yellow|Heleviel: — I suppose it wasn't too bad after all. Your friends are disgusting for being such lechers toward elven women, though.}""",
+	HELEVIEL_SLAVE_CHURCH_INTRO_TEXT = """You bring Heleviel to the church, finding Ginny in her usual workplace.
+
+{color=yellow|Heleviel: — Hmph, so this is Celena’s temple, and you must be her local priest. What a pitiful decoration. No wonder Celena is only a subservient goddess with measly followers compared to Freya.}
+
+{color=aqua|Ginny: — It’s true that Freya is more revered than Celena, but I’m her devoted follower in this town. Celena is a merciful goddess, and she wants to help those in need.}
+
+{color=yellow|Heleviel: — What difference does it make if her establishment is so insignificant? I swear Freya’s followers would never stoop so low.}
+
+{color=aqua|Ginny: — Perhaps, but my goal is to assist others, even those of different religions.}
+
+Both women give you a short glance, as if asking whose side you are on.""",
 	HELEVIEL_SLAVE_CHURCH_OPTION_1 = "Helping others is a noble cause by itself",
 	HELEVIEL_SLAVE_CHURCH_OPTION_2 = "A stronger following does strike respect into others",
 	HELEVIEL_SLAVE_CHURCH_OPTION_3 = "Following gods is a custom of the past",
-	HELEVIEL_SLAVE_CHURCH_REPLY_1 = "{color=aqua|Ginny: — I'm truly glad our mayor is of the same mind.} Heleviel says nothing. She simply pouts, deciding not to continue.",
-	HELEVIEL_SLAVE_CHURCH_REPLY_2 = "{color=yellow|Heleviel: — Hmh, it's true. Maybe you should consider making a shrine to Freya here. Of course she wouldn't approve of such a place by itself, but it would make for a first step...} Ginny's smile grows more strained as she waits for Heleviel to finish.",
+	HELEVIEL_SLAVE_CHURCH_REPLY_1 = """{color=aqua|Ginny: — I'm truly glad our mayor is of the same mind.} 
+	Heleviel says nothing. She simply pouts, deciding not to continue.""",
+	HELEVIEL_SLAVE_CHURCH_REPLY_2 = """{color=yellow|Heleviel: — Hmh, it's true. Maybe you should consider making a shrine to Freya here. Of course she wouldn't approve of such a place by itself, but it would make for a first step...} 
+	
+	Ginny's smile grows more strained as she waits for Heleviel to finish.""",
 	HELEVIEL_SLAVE_CHURCH_REPLY_3 = "As neither Heleviel nor Ginny finds any support from you, they both fall quiet at your remark.",
 	HELEVIEL_SLAVE_CHURCH_ASSIGN_TEXT = """{color=aqua|Ginny: — A-anyway, I take it you've come to help us? Recently the number of injured people from the Fighters Guild has increased, and we lack the necessary healers.}
 
