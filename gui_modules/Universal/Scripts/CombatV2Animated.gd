@@ -1594,6 +1594,9 @@ func FinishCombat(victory = true):
 		hide()
 		input_handler.combat_defeat()
 	
+	if input_handler.event_is_active:
+		yield(input_handler, "EventFinished")
+	
 	input_handler.combat_node = null
 	gui_controller.current_screen = gui_controller.previous_screen
 	gui_controller.combat = null

@@ -475,8 +475,10 @@ func fix_import():
 
 
 func add_slave(person, child = false):
-	if child: characters_pool.move_baby_to_state(person.id)
-	else: characters_pool.move_to_state(person.id)
+	if child: 
+		characters_pool.move_baby_to_state(person.id)
+	else: 
+		characters_pool.move_to_state(person.id)
 	person.is_players_character = true
 	person.is_active = true
 	person.remove_stat_bonus('price', 'add_part2')
