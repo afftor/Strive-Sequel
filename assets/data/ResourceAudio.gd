@@ -67,7 +67,7 @@ var sounds = {
 
 	gameover = load("res://assets/sounds/sounds/GameOver.wav"),
 
-	blade = load("res://assets/sounds/sounds/hit.wav"),
+	blade = load("res://assets/sounds/sounds/fx knife body hit.wav"),
 	blunt_hit = load("res://assets/sounds/sounds/blunt_hit.wav"),
 	fleshhit = load("res://assets/sounds/sounds/fx knife body hit.wav"),
 	bow = load("res://assets/sounds/sounds/ArrowShot.wav"),
@@ -89,7 +89,7 @@ var sounds = {
 	page = load('res://assets/sounds/sounds/page.wav'),
 	book = load('res://assets/sounds/sounds/book.wav'),
 
-	magic = load("res://assets/sounds/sounds/magic.wav"),
+	magic = load("res://assets/sounds/sounds/magic1.wav"),
 
 	error = load("res://assets/sounds/sounds/magiceffect.wav"),
 

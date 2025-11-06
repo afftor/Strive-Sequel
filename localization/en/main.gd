@@ -4824,7 +4824,7 @@ You are one of the people who managed to get there just in time to secure an est
 	STARTINGDILOGUE1_3 = """{color=yellow|— Oh, a [man] of business? I like it.}
 
 """,
-	STARTINGDILOGUE1_4 = "{color=yellow|— I'm here to deliver the plan by which you will be paying your loan. In total, you owe the bank 100.000 gold which you will be required to pay in the next 100 days. As a handicap, your first payment will be consisting of {custom_text_function=GetLoanSum#0|} gold and is due in 2 weeks.}",
+	STARTINGDILOGUE1_4 = "{color=yellow|— I'm here to deliver the plan by which you will be paying your loan. In total, you owe the bank 100.000 gold which you will be required to pay in the next 100 days. As a handicap, your first payment will be consisting of} {custom_text_function=GetLoanSum#0|} {color=yellow|gold and is due in 2 weeks.}",
 	STARTINGDIALOGUE1REPLY1 = "Understood.",
 	STARTINGDIALOGUE1REPLY2 = "Are you seriously expecting me to make this much?",
 	STARTINGDIALOGUE2_1 = "{color=yellow|— Good.}",
@@ -20240,7 +20240,7 @@ Heleviel complies, her movements slightly unsteady from the alcohol. Her palms p
 	HELEVIEL_BAR_SEX_4 = """You position yourself behind her, your hard dick pressing against her entrance. Heleviel gasps as you begin to push in, the penetration slow but steady. Her tight pussy stretches to accommodate you, her body unused to such intrusion. You grip her hips, pulling her back against you as you thrust deeper. Her moans are muffled against the table surface, her fingers digging into the wood. Each thrust sends waves of pleasure through her body, her large breasts swaying with the rhythm. The table creaks beneath her as you pick up the pace, your dick sliding in and out of her slick heat with increasing intensity.
 
 {color=yellow|— M-m-mh... What's this... Humiliation... Why does it feels good...""",
-	HELEVIEL_BAR_SEX_5 = """Heleviel's green eyes are half-lidded with pleasure and surprise as you continue to take her from behind. Her dignified facade crumbles with each powerful thrust, replaced by raw, unbridled desire. You lean over her, your breath hot against her ear as you reach around to cup her heavy breasts through the thin fabric of her uniform. Her nipples harden beneath your touch, her back arching instinctively. The room fills with the sound of skin slapping against skin and her increasingly loud moans. You drive into her harder, faster, your dick hitting that sensitive spot deep inside her that makes her cry out.
+	HELEVIEL_BAR_SEX_5 = """Heleviel's green eyes are half-lidded with pleasure and surprise as you continue to take her from behind. Her dignified facade crumbles with each powerful thrust, replaced by raw, unbridled desire. You lean over her, your breath hot against her ear as you reach around to cup her heavy breasts through the thin fabric of her uniform. Her nipples harden beneath your touch, her back arching instinctively. The room fills with the sound of skin slapping against skin and her increasingly loud moans.
 
 {color=yellow|— D-don't stop now... If you stop... I can't....
 
