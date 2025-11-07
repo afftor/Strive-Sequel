@@ -1213,7 +1213,7 @@ var data = {
 						code = "affect_unique_character",
 						name = "heleviel",
 						type = "remove_trait",
-						trait = "cruel"
+						trait = "crude"
 					},
 					{
 						code = "complete_quest",
