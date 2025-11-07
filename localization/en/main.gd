@@ -19999,6 +19999,7 @@ You note with amusement how Heleviel holds herself in this situation. While not 
 	HELEVIEL_QUEST_13 = """The evening continues uneventfully with your patrons until it gets late enough for everyone to leave. As nobody else is around, you get a small comment from Heleviel before she leaves her shift, still bearing her tipsiness.
 
 {color=yellow|Heleviel: — I suppose it wasn't too bad after all. Your friends are disgusting for being such lechers toward elven women, though.}""",
+	HELEVIEL_SLAVE_CHURCH_INIT = """With time, Heleviel has grown more accustomed to life in slavery under you. Her bickering has mostly disappeared. Yesterday you received a help request from Aliron’s church, which seems like a good next step for Heleviel to work on in order to improve her cultural accommodation.""",
 	HELEVIEL_SLAVE_CHURCH_INTRO_TEXT = """You bring Heleviel to the church, finding Ginny in her usual workplace.
 
 {color=yellow|Heleviel: — Hmph, so this is Celena’s temple, and you must be her local priest. What a pitiful decoration. No wonder Celena is only a subservient goddess with measly followers compared to Freya.}
