@@ -471,16 +471,32 @@ func fix_main_data():
 	races.fill_racegroups()
 
 	#fix skills
+	var key
 	for i in Skilldata.Skilllist.values():
 		if !i.has('name'):
-			i.name = tr("SKILL" + i.code.to_upper())
-		i.descript = "SKILL" + i.code.to_upper()+"DESCRIPT"
+			key = "SKILL" + i.code.to_upper()
+			i.name = tr(key)
+			if !input_handler.if_has_translation(key):
+				print(key)
+		key = "SKILL" + i.code.to_upper()+"DESCRIPT"
+		i.descript = key
+		if !input_handler.if_has_translation(key):
+			print(key)
 		if i.has('dialogue_text'):
-			i.dialogue_text = tr("DIALOGUE" +i.code.to_upper() + "TEXT")
+			key = "DIALOGUE" +i.code.to_upper() + "TEXT"
+			i.dialogue_text = tr(key)
+			if !input_handler.if_has_translation(key):
+				print(key)
 		if i.has('dialogue_report'):
-			i.dialogue_report = tr("DIALOGUE" + i.code.to_upper() + "REPORT")
+			key = "DIALOGUE" + i.code.to_upper() + "REPORT"
+			i.dialogue_report = tr(key)
+			if !input_handler.if_has_translation(key):
+				print(key)
 		if i.has('dialogue_report_failed'):
-			i.dialogue_report_failed = tr("DIALOGUE" + i.code.to_upper() + "REPORT_FAILED")
+			key = "DIALOGUE" + i.code.to_upper() + "REPORT_FAILED"
+			i.dialogue_report_failed = tr(key)
+			if !input_handler.if_has_translation(key):
+				print(key)
 #		if typeof(i.icon) == TYPE_STRING:
 #			i.icon = input_handler.loadimage(i.icon, 'icons')
 #		#type fix
@@ -488,10 +504,19 @@ func fix_main_data():
 	
 	#load proffessions
 	for i in classesdata.professions.values():
-		i.name = tr("PROF" + i.code.to_upper())
-		i.descript = tr("PROF" + i.code.to_upper()+"DESCRIPT")
+		key = "PROF" + i.code.to_upper()
+		i.name = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
+		key = "PROF" + i.code.to_upper()+"DESCRIPT"
+		i.descript = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
 		if i.has('altname'):
-			i.altname = tr("PROF"+i.code.to_upper()+"ALT")
+			key = "PROF"+i.code.to_upper()+"ALT"
+			i.altname = tr(key)
+			if !input_handler.if_has_translation(key):
+				print(key)
 		if typeof(i.icon) == TYPE_STRING:
 			i.icon = input_handler.loadimage(i.icon, 'icons')
 		#statchange fix
@@ -516,7 +541,10 @@ func fix_main_data():
 #		if !i.has('purchase_area'):
 #			i.purchase_area = 'plains'
 	for i in DungeonData.dungeons.values():
-		i.classname = tr("LOCATIONNAME" + i.code.to_upper())
+		key = "LOCATIONNAME" + i.code.to_upper()
+		i.classname = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
 		#purchase fix
 		if !i.has('purchase_area'):
 			i.purchase_area = 'plains'
@@ -531,8 +559,14 @@ func fix_main_data():
 
 	#fix items
 	for i in Items.itemlist.values():
-		i.name = tr("ITEM" + i.code.to_upper())
-		i.descript = tr("ITEM" + i.code.to_upper()+"DESCRIPT")
+		key = "ITEM" + i.code.to_upper()
+		i.name = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
+		key = "ITEM" + i.code.to_upper()+"DESCRIPT"
+		i.descript = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
 		
 	#Stuff to make sure items and parts added by mods get loaded poperly (due to Items _init)
 	for i in Items.partmaterials:
@@ -540,12 +574,24 @@ func fix_main_data():
 			Items.materiallist[k].parts[i] = Items.partmaterials[i][k].duplicate()
 	
 	for i in Items.curses:
-		Items.curses[i].name = tr("CURSE" + i.to_upper())
-		Items.curses[i].descript = tr("CURSE" + i.to_upper()+"DESCRIPT")
+		key = "CURSE" + i.to_upper()
+		Items.curses[i].name = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
+		key = "CURSE" + i.to_upper() + "DESCRIPT"
+		Items.curses[i].descript = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
 	
 	for i in Items.enchantments:
-		Items.enchantments[i].name = tr("ENCH" + i.to_upper())
-		Items.enchantments[i].descript = tr("ENCH" + i.to_upper()+"DESCRIPT")
+		key = "ENCH" + i.to_upper()
+		Items.enchantments[i].name = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
+		key = "ENCH" + i.to_upper() + "DESCRIPT"
+		Items.enchantments[i].descript = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
 	
 	var array = ['bandit_den_nouns','bandit_den_adjs','fire_depths_adjs']
 	for i in array:
@@ -559,27 +605,54 @@ func fix_main_data():
 	
 	#fix races
 	for i in races.racelist.values():
-		i.name = tr("RACE" + i.code.to_upper())
-		i.descript = tr("RACE" + i.code.to_upper() + 'DESCRIPT')
-		i.adjective = tr("RACE" + i.code.to_upper() + "ADJ")
+		key = "RACE" + i.code.to_upper()
+		i.name = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
+		key = "RACE" + i.code.to_upper() + 'DESCRIPT'
+		i.descript = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
+		key = "RACE" + i.code.to_upper() + "ADJ"
+		i.adjective = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
 		if typeof(i.icon) == TYPE_STRING:
 			i.icon = input_handler.loadimage(i.icon, 'icons')
 	
 	
 	#fix tasks
 	for i in tasks.tasklist.values():
-		i.name = tr("TASK" + i.code.to_upper())
-		i.descript = tr("TASK" + i.code.to_upper() + "DESCRIPT")
+		key = "TASK" + i.code.to_upper()
+		i.name = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
+		key = "TASK" + i.code.to_upper() + "DESCRIPT"
+		i.descript = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
 
 	#fix sex_traits
 	for i in Traitdata.sex_traits.values():
-		i.name = tr("SEXTRAIT" + i.code.to_upper())
-		i.descript = tr("SEXTRAIT" + i.code.to_upper() + "DESCRIPT")
+		key = "SEXTRAIT" + i.code.to_upper()
+		i.name = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
+		key = "SEXTRAIT" + i.code.to_upper() + "DESCRIPT"
+		i.descript = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
 
 	#fix traits
 	for i in Traitdata.traits.values():
-		i.name = tr("TRAIT" + i.code.to_upper())
-		i.descript = tr("TRAIT" + i.code.to_upper() + "DESCRIPT")
+		key = "TRAIT" + i.code.to_upper()
+		i.name = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
+		key = "TRAIT" + i.code.to_upper() + "DESCRIPT"
+		i.descript = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
 		if typeof(i.icon) == TYPE_STRING:
 			i.icon = input_handler.loadimage(i.icon, 'icons')
 	
@@ -588,14 +661,26 @@ func fix_main_data():
 		if !i.has('baseicon'): continue
 		if typeof(i.baseicon) == TYPE_STRING:
 			i.baseicon = input_handler.loadimage(i.baseicon, 'icons')
-		if !i.has('name') or i.name == '': i.name = tr("STAT" + i.code.to_upper())
-		else: i.name = tr(i.name)
-		if !i.has('descript') or i.descript == '': i.descript = tr("STAT" + i.code.to_upper() + "DESCRIPT")
+		if !i.has('name') or i.name == '': 
+			key = "STAT" + i.code.to_upper()
+			i.name = tr(key)
+			if !input_handler.if_has_translation(key):
+				print(key)
+		else: 
+			i.name = tr(i.name)
+		if !i.has('descript') or i.descript == '': 
+			key = "STAT" + i.code.to_upper() + "DESCRIPT"
+			i.descript = tr(key)
+			if !input_handler.if_has_translation(key):
+				print(key)
 		else: i.descript = tr(i.descript)
 	
 	#fix enemies
 	for i in Enemydata.enemies.values():
-		i.name = tr("ENEMY" + i.code.to_upper())
+		key = "ENEMY" + i.code.to_upper()
+		i.name = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
 		if typeof(i.icon) == TYPE_STRING:
 			i.icon = input_handler.loadimage(i.icon, 'portraits')
 	
@@ -605,8 +690,14 @@ func fix_main_data():
 			if k.code == null:
 				continue
 			if !k.has('name') or k.name == "":
-				k.name = tr("BODYPART" + i.to_upper() + k.code.to_upper())
-			k.chardescript = tr("BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT")
+				key = "BODYPART" + i.to_upper() + k.code.to_upper()
+				k.name = tr(key)
+				if !input_handler.if_has_translation(key):
+					print(key)
+			key = "BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT"
+			k.chardescript = tr(key)
+			if !input_handler.if_has_translation(key):
+				print(key)
 		
 	#fix locations
 	for i in worlddata.locations.values():
@@ -614,25 +705,53 @@ func fix_main_data():
 	
 	#fix materials
 	for i in Items.materiallist.values():
-		i.name = tr("MATERIAL" + i.code.to_upper())
-		i.descript = tr("MATERIAL" + i.code.to_upper()+"DESCRIPT")
-		i.adjective = tr("MATERIAL" + i.code.to_upper() + "ADJ")
+		key = "MATERIAL" + i.code.to_upper()
+		i.name = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
+		key = "MATERIAL" + i.code.to_upper() + "DESCRIPT"
+		i.descript = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
+		key = "MATERIAL" + i.code.to_upper() + "ADJ"
+		i.adjective = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
 
 	#fix statdata
 	for i in statdata.statdata.values():
-		if !i.has('name') or i.name == '': i.name = tr("STAT" + i.code.to_upper())
-		else: i.name = tr(i.name)
-		if !i.has('descript') or i.descript == '': i.descript = tr("STAT" + i.code.to_upper() + "DESCRIPT")
-		else: i.descript = tr(i.descript)
+		if !i.has('name') or i.name == '': 
+			key = "STAT" + i.code.to_upper()
+			i.name = tr(key)
+			if !input_handler.if_has_translation(key):
+				print(key)
+		else: 
+			i.name = tr(i.name)
+		if !i.has('descript') or i.descript == '': 
+			key = "STAT" + i.code.to_upper() + "DESCRIPT"
+			i.descript = tr(key)
+			if !input_handler.if_has_translation(key):
+				print(key)
+		else: 
+			i.descript = tr(i.descript)
 
 	#fix upgrades
 	for i in upgradedata.upgradelist.values():
-		i.name = tr("UPGRADE" + i.code.to_upper())
-		i.descript = tr("UPGRADE" + i.code.to_upper() + "DESCRIPT")
+		key = "UPGRADE" + i.code.to_upper()
+		i.name = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
+		key = "UPGRADE" + i.code.to_upper() + "DESCRIPT"
+		i.descript = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
 
 	#fix tools
 	for i in statdata.worktoolnames:
-		statdata.worktoolnames[i] = tr("WORKTOOL" + i.to_upper())
+		key = "WORKTOOL" + i.to_upper()
+		statdata.worktoolnames[i] = tr(key)
+		if !input_handler.if_has_translation(key):
+			print(key)
 	emit_signal("after_data_fixed")
 
 
