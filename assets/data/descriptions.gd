@@ -3,13 +3,20 @@ extends Node
 var person
 
 func _init():
+	var key
 	for i in bodypartsdata:
 		for k in bodypartsdata[i].values():
 			if k.code != null:
 				if !k.has('name') or k.name == "":
-					k.name = tr("BODYPART" + i.to_upper() + k.code.to_upper())
+					key = "BODYPART" + i.to_upper() + k.code.to_upper()
+					k.name = tr(key)
+					if !input_handler.if_has_translation(key):
+						print(key)
 #				text += k.name + ' = "' + k.code + '",\n'
-				k.chardescript = tr("BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT")
+				key = "BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT"
+				k.chardescript = tr(key)
+				if !input_handler.if_has_translation(key):
+					print(key)
 #	var file = File.new()
 #	file.open(globals.userfolder + "storednames.ini", File.WRITE)
 #	file.store_line(text)

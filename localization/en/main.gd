@@ -3883,6 +3883,8 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	BODYPARTSKINTEALDESCRIPT = "[His] skin is [color=aqua]teal[/color].",
 	BODYPARTSKIN_COVERAGEPLANTDESCRIPT = "Various leaves and bits of [color=aqua]plant matter[/color] cover parts of [his] body.",
 	BODYPARTSKIN_COVERAGESCALEDESCRIPT = "[His] skin is partly covered with [color=aqua]scales[/color].",
+	BODYPARTSKIN_COVERAGESCALE2DESCRIPT = "[His] skin is partly covered with [color=aqua]scales[/color].",
+	BODYPARTSKIN_COVERAGESCALE3DESCRIPT = "[His] skin is partly covered with [color=aqua]scales[/color].",
 	BODYPARTSKIN_COVERAGEFEATHERSDESCRIPT = "[His] body is covered in [color=aqua]bird-like feathers[/color] in many places.",
 	BODYPARTSKIN_COVERAGEFUR_WHITEDESCRIPT = "[His] body is covered in thick, soft [color=aqua]fur of marble color[/color].",
 	BODYPARTSKIN_COVERAGEFUR_GREYDESCRIPT = "[His] body is covered in thick, soft [color=aqua]fur of gray color[/color].",
@@ -3914,6 +3916,7 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	BODYPARTTAILTENTACLESDESCRIPT = " ",
 	BODYPARTTAILHORSEDESCRIPT = " ",
 	BODYPARTTAILSPIDERDESCRIPT = " ",
+	BODYPARTTAILMOUSEDESCRIPT = " ",
 	BODYPARTHEIGHTTINYDESCRIPT = "[His] stature is [color=aqua]extremely small[/color], barely half the size of a normal person.",
 	BODYPARTHEIGHTPETITEDESCRIPT = "[His] stature is quite [color=aqua]petite[/color].",
 	BODYPARTHEIGHTSHORTDESCRIPT = "[His] height is quite [color=aqua]short[/color].",
@@ -19999,6 +20002,7 @@ You note with amusement how Heleviel holds herself in this situation. While not 
 	HELEVIEL_QUEST_13 = """The evening continues uneventfully with your patrons until it gets late enough for everyone to leave. As nobody else is around, you get a small comment from Heleviel before she leaves her shift, still bearing her tipsiness.
 
 {color=yellow|Heleviel: — I suppose it wasn't too bad after all. Your friends are disgusting for being such lechers toward elven women, though.}""",
+	HELEVIEL_SLAVE_CHURCH_INIT = """With time, Heleviel has grown more accustomed to life in slavery under you. Her bickering has mostly disappeared. Yesterday you received a help request from Aliron’s church, which seems like a good next step for Heleviel to work on in order to improve her cultural accommodation.""",
 	HELEVIEL_SLAVE_CHURCH_INTRO_TEXT = """You bring Heleviel to the church, finding Ginny in her usual workplace.
 
 {color=yellow|Heleviel: — Hmph, so this is Celena’s temple, and you must be her local priest. What a pitiful decoration. No wonder Celena is only a subservient goddess with measly followers compared to Freya.}
