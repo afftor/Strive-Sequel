@@ -42,7 +42,7 @@ var relationship_base = {
 }
 
 var debug_mode = false
-var translation_check = true
+var translation_check = false
 var no_obedience_drain = false
 var use_log_alert = true
 
