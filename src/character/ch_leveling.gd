@@ -457,7 +457,7 @@ func finish_learning():
 				res_text += "\nAcquired %s" % tr(Traitdata.traits[tr].name)
 			else:
 				res_text += "\nNo traits acquired"
-		'slave_training':
+		'slave_training': #obsolete, for compat only
 #			parent.get_ref().add_stat('loyalty', 50) #possibly to remake
 #			res_text += "\n%s + 50" % statdata.statdata.loyalty.name
 			if randf() < 0.5:
@@ -466,12 +466,74 @@ func finish_learning():
 			else:
 				parent.get_ref().add_stat('authority_factor', 1)
 				res_text += "\n%s + 1" % statdata.statdata.authority_factor.name
-			if parent.get_ref().get_stat('slave_class') == 'slave':
+			if parent.get_ref().get_stat('slave_class') in ['slave', 'slave_trained']:
 				parent.get_ref().add_trait('training_broke_in')
 				parent.get_ref().add_trait('training_obedience')
 				parent.get_ref().add_trait('training_relation')
+				parent.get_ref().add_trait('training_callmaster')
+				parent.get_ref().add_trait('training_sexservice')
+				parent.get_ref().add_trait('training_sexservice_adv')
+				if parent.get_ref().get_stat('slave_class') == 'slave':
+					parent.get_ref().set_slave_category('slave_trained')
 			else:
 				parent.get_ref().add_trait('training_s_relation')
+			parent.get_ref().add_stat('base_exp_direct', 150)
+			res_text += "\n%s + 150" % statdata.statdata.base_exp.name
+		'slave_training_workforce': 
+			if randf() < 0.5:
+				parent.get_ref().add_stat('tame_factor', 1)
+				res_text += "\n%s + 1" % statdata.statdata.tame_factor.name
+			else:
+				parent.get_ref().add_stat('authority_factor', 1)
+				res_text += "\n%s + 1" % statdata.statdata.authority_factor.name
+			
+			parent.get_ref().add_trait('training_broke_in')
+			parent.get_ref().add_trait('training_obedience')
+			parent.get_ref().add_trait('training_relation')
+			parent.get_ref().add_trait('training_callmaster')
+			parent.get_ref().add_trait('training_sexservice')
+			parent.get_ref().add_trait('training_sexservice_adv')
+			parent.get_ref().set_slave_category('slave_trained')
+			parent.get_ref().add_trait('training_workforce')
+
+			parent.get_ref().add_stat('base_exp_direct', 150)
+			res_text += "\n%s + 150" % statdata.statdata.base_exp.name
+		'slave_training_warrior': 
+			if randf() < 0.5:
+				parent.get_ref().add_stat('tame_factor', 1)
+				res_text += "\n%s + 1" % statdata.statdata.tame_factor.name
+			else:
+				parent.get_ref().add_stat('authority_factor', 1)
+				res_text += "\n%s + 1" % statdata.statdata.authority_factor.name
+			
+			parent.get_ref().add_trait('training_broke_in')
+			parent.get_ref().add_trait('training_obedience')
+			parent.get_ref().add_trait('training_relation')
+			parent.get_ref().add_trait('training_callmaster')
+			parent.get_ref().add_trait('training_sexservice')
+			parent.get_ref().add_trait('training_sexservice_adv')
+			parent.get_ref().set_slave_category('slave_trained')
+			parent.get_ref().add_trait('training_warrior')
+
+			parent.get_ref().add_stat('base_exp_direct', 150)
+			res_text += "\n%s + 150" % statdata.statdata.base_exp.name
+		'slave_training_service': 
+			if randf() < 0.5:
+				parent.get_ref().add_stat('tame_factor', 1)
+				res_text += "\n%s + 1" % statdata.statdata.tame_factor.name
+			else:
+				parent.get_ref().add_stat('authority_factor', 1)
+				res_text += "\n%s + 1" % statdata.statdata.authority_factor.name
+			
+			parent.get_ref().add_trait('training_broke_in')
+			parent.get_ref().add_trait('training_obedience')
+			parent.get_ref().add_trait('training_relation')
+			parent.get_ref().add_trait('training_callmaster')
+			parent.get_ref().add_trait('training_sexservice')
+			parent.get_ref().add_trait('training_sexservice_adv')
+			parent.get_ref().set_slave_category('slave_trained')
+			parent.get_ref().add_trait('training_service')
+
 			parent.get_ref().add_stat('base_exp_direct', 150)
 			res_text += "\n%s + 150" % statdata.statdata.base_exp.name
 		'academy':
