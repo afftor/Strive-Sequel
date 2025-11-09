@@ -1211,7 +1211,9 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
-		tags = ['integer', 'custom_getter'],
+		tags = ['integer', 'custom_getter', 'cap_up', 'cap_low'],
+		cap_up = 6,
+		cap_low = 0,
 	},
 	lastsexday = {
 		code = 'lastsexday',

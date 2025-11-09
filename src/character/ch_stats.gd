@@ -172,7 +172,7 @@ func update_capped_stats():
 
 func get_consent():
 	var res = statlist.consent
-	if parent.get_ref().has_status('alcohol'):
+	if parent.get_ref().has_status('alcohol') and res < 6:
 		res += 1
 	return res
 
