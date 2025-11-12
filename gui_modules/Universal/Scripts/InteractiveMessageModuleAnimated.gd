@@ -23,6 +23,7 @@ var cur_text_label
 onready var opt_cont_T1 = $BackgroundT1/ScrollContainer/VBoxContainer
 onready var opt_cont_T2 = $BackgroundT2/ScrollContainer/VBoxContainer
 var cur_opt_cont
+var select_blocking_nodes = []
 
 func _ready():
 	$BackgroundT2/BackgroundT2/HideButton.connect("pressed", self, "hide_dialogue")
@@ -634,6 +635,7 @@ func close(args = {}):
 	if args.finish_scene: input_handler.emit_signal("EventFinished")
 	input_handler.event_finished()
 	is_just_started = true
+	select_blocking_nodes.clear()
 
 
 func cancel_skill_usage():
@@ -1245,7 +1247,7 @@ func select_option(number):
 #			hold_selection = true
 #			yield(get_tree().create_timer(0.2), "timeout")
 #			button.emit_signal("pressed")
-	if hold_selection: 
+	if hold_selection or is_select_blocked_by_node():
 		return
 	if cur_opt_cont.get_child_count() <= number: return
 	var button = cur_opt_cont.get_child(number)
@@ -1324,3 +1326,14 @@ func select_option(number):
 			call(code, args)
 		else:
 			call(code)
+
+func add_select_blocking_node(node):
+	select_blocking_nodes.append(weakref(node))
+
+func is_select_blocked_by_node():
+	for i in range(select_blocking_nodes.size()-1, -1, -1):
+		var block_node = select_blocking_nodes[i].get_ref()
+		if block_node != null and block_node.is_visible_in_tree():
+			return true
+		select_blocking_nodes.remove(i)
+	return false
