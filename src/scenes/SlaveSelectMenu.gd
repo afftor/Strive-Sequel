@@ -109,7 +109,8 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 			if silently_hide:
 				newnode.hide()
 			elif show_req_info:
-				newnode.disabled = !reqs_met
+				if !reqs_met:
+					newnode.disabled = true
 				var recap
 				if reqs_met: recap = 'REQUIREMENTSMET'
 				else: recap = 'REQUIREMENTSARENTMET'
