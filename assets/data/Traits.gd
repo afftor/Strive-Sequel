@@ -2157,6 +2157,14 @@ var sex_traits = { #only for interaction tab
 
 }
 func _ready():
+	for id in Skilldata.masteries:
+		var tmp = {
+			icon = Skilldata.masteries[id].icon,
+			visible = true,
+			effects = [],
+			tags = ['simple_icon']
+		}
+		traits['monster_mastery_' + id] = tmp
 	var key
 	for tr in traits:
 		if !traits[tr].has('code'): traits[tr].code = tr
@@ -2171,6 +2179,7 @@ func _ready():
 		body_upgrades[upg].descript = key
 		if !input_handler.if_has_translation(key):
 			print(key)
+	
 #	for prof in slave_profs:
 #		slave_profs[prof].code = prof
 #		slave_profs[prof].name = 'SLAVEPROFNAME_' + prof.trim_prefix('slave_').to_upper()

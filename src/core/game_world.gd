@@ -80,6 +80,7 @@ func fix_serialization():
 			for option in worlddata.lands.plains.capital_options:
 				if !(option in i.capital_options):
 					i.capital_options.append(option)
+			i.capital.aliron.difficulty = 'infinite'
 #	for area in areas.values():
 #		for guild in area.factions.values():
 #			if guild.questsetting.total > globals.get_nquest_for_rep(guild.totalreputation):
