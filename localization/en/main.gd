@@ -4824,7 +4824,7 @@ You are one of the people who managed to get there just in time to secure an est
 	STARTINGDILOGUE1_3 = """{color=yellow|— Oh, a [man] of business? I like it.}
 
 """,
-	STARTINGDILOGUE1_4 = "{color=yellow|— I'm here to deliver the plan by which you will be paying your loan. In total, you owe the bank 100.000 gold which you will be required to pay in the next 100 days. As a handicap, your first payment will be consisting of {custom_text_function=GetLoanSum#0|} gold and is due in 2 weeks.}",
+	STARTINGDILOGUE1_4 = "{color=yellow|— I'm here to deliver the plan by which you will be paying your loan. In total, you owe the bank 100.000 gold which you will be required to pay in the next 100 days. As a handicap, your first payment will be consisting of} {custom_text_function=GetLoanSum#0|} {color=yellow|gold and is due in 2 weeks.}",
 	STARTINGDIALOGUE1REPLY1 = "Understood.",
 	STARTINGDIALOGUE1REPLY2 = "Are you seriously expecting me to make this much?",
 	STARTINGDIALOGUE2_1 = "{color=yellow|— Good.}",
@@ -19999,11 +19999,25 @@ You note with amusement how Heleviel holds herself in this situation. While not 
 	HELEVIEL_QUEST_13 = """The evening continues uneventfully with your patrons until it gets late enough for everyone to leave. As nobody else is around, you get a small comment from Heleviel before she leaves her shift, still bearing her tipsiness.
 
 {color=yellow|Heleviel: — I suppose it wasn't too bad after all. Your friends are disgusting for being such lechers toward elven women, though.}""",
+	HELEVIEL_SLAVE_CHURCH_INTRO_TEXT = """You bring Heleviel to the church, finding Ginny in her usual workplace.
+
+{color=yellow|Heleviel: — Hmph, so this is Celena’s temple, and you must be her local priest. What a pitiful decoration. No wonder Celena is only a subservient goddess with measly followers compared to Freya.}
+
+{color=aqua|Ginny: — It’s true that Freya is more revered than Celena, but I’m her devoted follower in this town. Celena is a merciful goddess, and she wants to help those in need.}
+
+{color=yellow|Heleviel: — What difference does it make if her establishment is so insignificant? I swear Freya’s followers would never stoop so low.}
+
+{color=aqua|Ginny: — Perhaps, but my goal is to assist others, even those of different religions.}
+
+Both women give you a short glance, as if asking whose side you are on.""",
 	HELEVIEL_SLAVE_CHURCH_OPTION_1 = "Helping others is a noble cause by itself",
 	HELEVIEL_SLAVE_CHURCH_OPTION_2 = "A stronger following does strike respect into others",
 	HELEVIEL_SLAVE_CHURCH_OPTION_3 = "Following gods is a custom of the past",
-	HELEVIEL_SLAVE_CHURCH_REPLY_1 = "{color=aqua|Ginny: — I'm truly glad our mayor is of the same mind.} Heleviel says nothing. She simply pouts, deciding not to continue.",
-	HELEVIEL_SLAVE_CHURCH_REPLY_2 = "{color=yellow|Heleviel: — Hmh, it's true. Maybe you should consider making a shrine to Freya here. Of course she wouldn't approve of such a place by itself, but it would make for a first step...} Ginny's smile grows more strained as she waits for Heleviel to finish.",
+	HELEVIEL_SLAVE_CHURCH_REPLY_1 = """{color=aqua|Ginny: — I'm truly glad our mayor is of the same mind.} 
+	Heleviel says nothing. She simply pouts, deciding not to continue.""",
+	HELEVIEL_SLAVE_CHURCH_REPLY_2 = """{color=yellow|Heleviel: — Hmh, it's true. Maybe you should consider making a shrine to Freya here. Of course she wouldn't approve of such a place by itself, but it would make for a first step...} 
+	
+	Ginny's smile grows more strained as she waits for Heleviel to finish.""",
 	HELEVIEL_SLAVE_CHURCH_REPLY_3 = "As neither Heleviel nor Ginny finds any support from you, they both fall quiet at your remark.",
 	HELEVIEL_SLAVE_CHURCH_ASSIGN_TEXT = """{color=aqua|Ginny: — A-anyway, I take it you've come to help us? Recently the number of injured people from the Fighters Guild has increased, and we lack the necessary healers.}
 
@@ -20226,7 +20240,7 @@ Heleviel complies, her movements slightly unsteady from the alcohol. Her palms p
 	HELEVIEL_BAR_SEX_4 = """You position yourself behind her, your hard dick pressing against her entrance. Heleviel gasps as you begin to push in, the penetration slow but steady. Her tight pussy stretches to accommodate you, her body unused to such intrusion. You grip her hips, pulling her back against you as you thrust deeper. Her moans are muffled against the table surface, her fingers digging into the wood. Each thrust sends waves of pleasure through her body, her large breasts swaying with the rhythm. The table creaks beneath her as you pick up the pace, your dick sliding in and out of her slick heat with increasing intensity.
 
 {color=yellow|— M-m-mh... What's this... Humiliation... Why does it feels good...""",
-	HELEVIEL_BAR_SEX_5 = """Heleviel's green eyes are half-lidded with pleasure and surprise as you continue to take her from behind. Her dignified facade crumbles with each powerful thrust, replaced by raw, unbridled desire. You lean over her, your breath hot against her ear as you reach around to cup her heavy breasts through the thin fabric of her uniform. Her nipples harden beneath your touch, her back arching instinctively. The room fills with the sound of skin slapping against skin and her increasingly loud moans. You drive into her harder, faster, your dick hitting that sensitive spot deep inside her that makes her cry out.
+	HELEVIEL_BAR_SEX_5 = """Heleviel's green eyes are half-lidded with pleasure and surprise as you continue to take her from behind. Her dignified facade crumbles with each powerful thrust, replaced by raw, unbridled desire. You lean over her, your breath hot against her ear as you reach around to cup her heavy breasts through the thin fabric of her uniform. Her nipples harden beneath your touch, her back arching instinctively. The room fills with the sound of skin slapping against skin and her increasingly loud moans.
 
 {color=yellow|— D-don't stop now... If you stop... I can't....
 

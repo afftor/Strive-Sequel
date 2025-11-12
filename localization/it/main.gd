@@ -2671,9 +2671,9 @@ Richiede il consenso 'Volontà' o superiore.""",
 	TRAITEFFECTVIRGIN = """[center]{color=yellow|Verginità}[/center]
 [name] ha verginità osservabile, questo lo rende più desiderabile per certi individui. 
 {color=yellow|Il prezzo di vendita è aumentato del 25%%}""",
-	TRAITEFFECTRIVAL = "Rivale presente: +5% produttività",
-	TRAITEFFECTFRIENDS = """Friend Present: +10% Health Regeneration""",
-	TRAITEFFECTLOVERS = """Amante presente: +10% rigenerazione mana""",
+	TRAITEFFECTRIVAL = "Rivale presente: +5%% produttività",
+	TRAITEFFECTFRIENDS = """Friend Present: +10%% Health Regeneration""",
+	TRAITEFFECTLOVERS = """Amante presente: +10%% rigenerazione mana""",
 	TRATTOEFFECTRARESTURDY = """Rare: Sturdy
 Increased Health and Armor Penetration""",
 	TRAITEFFECTRARENIMBLE = """Rare: Nimble
@@ -2695,7 +2695,7 @@ Increased Health, DEF and MDEF""",
 	TRAITEFFECTGRAVEINJ = "Grave infortunio: -25%% di produttività, -50 sessuali. Non può partecipare al combattimento.",
 	TRAITEFFECTDISCIPLINE = "Disciplina: +50%% di efficienza lavorativa e artigianale.",
 	TRAITEFFECTSEDUCE = "Sedurre: -7 Prosciugare l'obbedienza",
-	TRAITEFFECTGREATSEDUCE = "Grande Sedurre: Previene le fughe; -9 Prosciugamento di obbedienza, +50% di crescita di lussuria.",
+	TRAITEFFECTGREATSEDUCE = "Grande Sedurre: Previene le fughe; -9 Prosciugamento di obbedienza, +50%% di crescita di lussuria.",
 	TRAITEFFECTALLURE = "Fascino: -5 Prosciugamento di obbedienza, +1 guadagno di Lealtà.",
 	TRAITEFFECTSEDATED = "Sedati: -10 Drenaggio dell'obbedienza",
 	TRAITEFFECTFEAR = "Paura: -6 Prosciugamento di obbedienza, -1 guadagno di lealtà.",

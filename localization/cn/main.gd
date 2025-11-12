@@ -2711,9 +2711,9 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	
 	
 	TRAITEFFECTVIRGIN = "[center]{color=yellow|Virginity}[/center]\nAs [name] has a observable virginity, this makes [him] more desirable for certain tasks and individuals. \n{color=yellow|Value is increased by 25%%}",
-	TRAITEFFECTRIVAL = """Rival Present: +5% Productivity""", # MISSING TRANSLATION
-	TRAITEFFECTFRIEND = """Friend Present: +10% Health Regeneration""", # MISSING TRANSLATION
-	TRAITEFFECTLOVER = """Lover Present: +10% Mana Regeneration""", # MISSING TRANSLATION
+	TRAITEFFECTRIVAL = """Rival Present: +5%% Productivity""", # MISSING TRANSLATION
+	TRAITEFFECTFRIEND = """Friend Present: +10%% Health Regeneration""", # MISSING TRANSLATION
+	TRAITEFFECTLOVER = """Lover Present: +10%% Mana Regeneration""", # MISSING TRANSLATION
 	TRAITEFFECTRARESTURDY = "Rare: Sturdy\nIncreased Health and Armor Penetration",
 	TRAITEFFECTRARENIMBLE = "Rare: Nimble\nIncreased Evasion and Speed",
 	TRAITEFFECTRARESTRONG = "Rare: Strong\nIncreased Damage and Maximum Health",
