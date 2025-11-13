@@ -825,14 +825,19 @@ func setup_as_heir():
 			set_slave_category('heir')
 		else:
 			set_slave_category('slave')
-			
 	elif mother.is_spouse():
 		if father.is_master():
 			set_slave_category('heir')
 		else:
-			set_slave_category(mother.get_stat('slave_class'))
+			var tmp = mother.get_stat('slave_class')
+			if tmp == 'slave_trained':
+				tmp = 'slave'
+			set_slave_category(tmp)
 	else:
-		set_slave_category(mother.get_stat('slave_class'))
+		var tmp = mother.get_stat('slave_class')
+		if tmp == 'slave_trained':
+			tmp = 'slave'
+		set_slave_category(tmp)
 
 
 func get_weapon_element():

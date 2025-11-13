@@ -217,78 +217,12 @@ func event_person_selected_confirm():
 
 
 func Reward():
-	# input_handler.PlaySound("questcomplete")
-	var is_recount_reputation = false
-	var reputation_value = 0
-	var guild
-	if selectedquest.rewards.has('spec_rules'):
-		for spec_rule in selectedquest.rewards.spec_rules:
-			match spec_rule.rule:
-				'item_based_gold':
-					var val = spec_rule.mul * selectedquest.turned_value
-					val *= 1 + variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]
-					ResourceScripts.game_res.money += round(val)
-				'reputation':
-					# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].reputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-					# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].totalreputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-					reputation_value = round(spec_rule.value + spec_rule.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-					guild = selectedquest.source
-					is_recount_reputation = true
-	if selectedquest.rewards.has('gold'):
-		ResourceScripts.game_res.money += round(selectedquest.rewards.gold + selectedquest.rewards.gold
-			* variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-	if selectedquest.rewards.has('materials'):
-		for i in selectedquest.rewards.materials:
-			ResourceScripts.game_res.materials[i] += selectedquest.rewards.materials[i]
-	if selectedquest.rewards.has('items'):
-		for i in selectedquest.rewards.items:
-			globals.AddItemToInventory(i)
-	
-	#old (loot-system less) rewords. Legacy code for bug fix. Delete with time (31 oct 2025)
-#	for i in selectedquest.rewards:
-#		match i.code:
-#			'gold':
-#				if i.value is Array:
-#					var val = i.value[0] * selectedquest.turned_value
-#					val *= 1 +  variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]
-#					ResourceScripts.game_res.money += round(val)
-#				else:
-#					ResourceScripts.game_res.money += round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-#			'reputation':
-#				# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].reputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-#				# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].totalreputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-#				reputation_value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-#				guild = selectedquest.source
-#				is_recount_reputation = true
-#			'gear':
-#				globals.AddItemToInventory(globals.CreateGearItemQuest(i.item, i.itemparts, selectedquest))
-#			'gear_static':
-#				globals.AddItemToInventory(globals.CreateGearItem(i.item, {}))
-#			'material':
-#				ResourceScripts.game_res.materials[i.item] += i.value
-#			'usable':
-#				globals.AddItemToInventory(globals.CreateUsableItem(i.item, i.value))
-
-	#remake into data system
-	if selectedquest.area == 'plains':
-		for i in ResourceScripts.game_world.areas[selectedquest.area].factions.values():
-			if i.totalreputation >= 300 && ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1':
-				ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage = 'stage1_5'
-				globals.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
-	if ResourceScripts.game_progress.get_active_quest("guilds_introduction") != null && ResourceScripts.game_progress.get_active_quest("guilds_introduction").stage == 'stage1_5':
-		var counter = false
-		for i in ResourceScripts.game_progress.stored_events.timed_events:
-			if i.has('action'):
-				continue
-			if i.code == 'guilds_elections_switch':
-				counter = true
-		if counter == false:
-			globals.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 1}]}])
+	var suspended_rep = globals.Reward(selectedquest, true)
 	open()
 	input_handler.play_animation("repeatable_quest_completed")
 	yield(get_tree().create_timer(3.5), 'timeout')
-	if is_recount_reputation:
-		globals.common_effects([{code = 'reputation', name = guild, value = reputation_value, operant = '+'}])
+	if suspended_rep != null:
+		globals.common_effects([{code = 'reputation', name = suspended_rep.guild, value = suspended_rep.value, operant = '+'}])
 
 func CancelQuest():
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'cancel_quest_confirm', tr("FORFEITQUESTQUESTION")])

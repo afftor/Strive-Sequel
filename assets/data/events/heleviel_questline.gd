@@ -448,6 +448,31 @@ var data = {
 						value = "heleviel_quest1",
 					},
 					{
+						code = "add_timed_event",
+						value = "heleviel_slave_church_init",
+						args = [{type = "add_to_date", date = [3, 3], hour = 3}]
+					}
+				]
+			}
+		]
+	},
+	heleviel_slave_church_init = {
+		image = null,
+		reqs = [],
+		character = "heleviel",
+		tags = ["dialogue_scene", "master_translate"],
+		text = "HELEVIEL_SLAVE_CHURCH_INIT",
+		options = [
+			{
+				code = "close",
+				text = "DIALOGUECLOSE",
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				dialogue_argument = 1,
+				bonus_effects = [
+					{
 						code = "progress_quest",
 						value = "heleviel_quest2",
 						stage = "stage3"
@@ -1188,7 +1213,7 @@ var data = {
 						code = "affect_unique_character",
 						name = "heleviel",
 						type = "remove_trait",
-						trait = "cruel"
+						trait = "crude"
 					},
 					{
 						code = "complete_quest",

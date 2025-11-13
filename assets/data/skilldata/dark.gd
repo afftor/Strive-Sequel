@@ -152,7 +152,7 @@ var skills = {
 		value = 1.5,
 		random_factor_p = 0.1,
 		sfx = [{code = 'skill_void', target = 'target_group', period = 'windup'}], 
-		sounddata = {initiate = null, strike = 'spell_void', hit = null},
+		sounddata = {initiate = 'spell_void', strike = null, hit = null},
 	},
 }
 var effects = {

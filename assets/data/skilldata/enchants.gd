@@ -50,7 +50,7 @@ var effects = {
 				conditions = [
 					{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 					{type = 'skill', value = ['tags', 'has', 'damage'] },
-					{type = 'skill', value = ['damage_type', 'eq', 'normal'] },
+					{type = 'skill', value = ['ability_type', 'eq', 'skill'] },
 				],
 				req_skill = true,
 				sub_effects = [{
@@ -76,7 +76,7 @@ var effects = {
 				conditions = [
 					{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 					{type = 'skill', value = ['tags', 'has', 'damage'] },
-					{type = 'skill', value = ['damage_type', 'eq', 'normal'] },
+					{type = 'skill', value = ['ability_type', 'eq', 'skill'] },
 				],
 				req_skill = true,
 				sub_effects = [{
@@ -102,7 +102,7 @@ var effects = {
 				conditions = [
 					{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 					{type = 'skill', value = ['tags', 'has', 'damage'] },
-					{type = 'skill', value = ['damage_type', 'eq', 'normal'] },
+					{type = 'skill', value = ['ability_type', 'eq', 'skill'] },
 				],
 				req_skill = true,
 				sub_effects = [{
@@ -128,7 +128,7 @@ var effects = {
 				conditions = [
 					{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 					{type = 'skill', value = ['tags', 'has', 'damage'] },
-					{type = 'skill', value = ['damage_type', 'eq', 'normal'] },
+					{type = 'skill', value = ['ability_type', 'eq', 'skill'] },
 				],
 				req_skill = true,
 				sub_effects = [{
@@ -152,7 +152,7 @@ var effects = {
 				type = 'trigger',
 				trigger = [variables.TR_HIT],
 				conditions = [
-					{type = 'skill', value = ['damage_type', 'eq', 'normal'] },
+					{type = 'skill', value = ['ability_type', 'eq', 'skill'] },
 					{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 					{type = 'skill', value = ['tags', 'has', 'damage'] },
 				],
@@ -174,7 +174,7 @@ var effects = {
 				type = 'trigger',
 				trigger = [variables.TR_HIT],
 				conditions = [
-					{type = 'skill', value = ['damage_type', 'eq', 'normal'] },
+					{type = 'skill', value = ['ability_type', 'eq', 'skill'] },
 					{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 					{type = 'skill', value = ['tags', 'has', 'damage'] },
 				],
@@ -196,7 +196,7 @@ var effects = {
 				type = 'trigger',
 				trigger = [variables.TR_HIT],
 				conditions = [
-					{type = 'skill', value = ['damage_type', 'eq', 'normal'] },
+					{type = 'skill', value = ['ability_type', 'eq', 'skill'] },
 					{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 					{type = 'skill', value = ['tags', 'has', 'damage'] },
 				],
@@ -218,7 +218,7 @@ var effects = {
 				type = 'trigger',
 				trigger = [variables.TR_HIT],
 				conditions = [
-					{type = 'skill', value = ['damage_type', 'eq', 'normal'] },
+					{type = 'skill', value = ['ability_type', 'eq', 'skill'] },
 					{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 					{type = 'skill', value = ['tags', 'has', 'damage'] },
 				],
@@ -240,7 +240,7 @@ var effects = {
 				type = 'trigger',
 				trigger = [variables.TR_HIT],
 				conditions = [
-					{type = 'skill', value = ['damage_type', 'eq', 'normal'] },
+					{type = 'skill', value = ['ability_type', 'eq', 'skill'] },
 					{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 					{type = 'skill', value = ['tags', 'has', 'damage'] },
 				],

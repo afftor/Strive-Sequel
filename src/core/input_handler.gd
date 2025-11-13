@@ -1274,6 +1274,7 @@ func autocomplete_quest(q_id):
 	var questdata = ResourceScripts.game_world.get_quest_by_id(q_id)
 	selectedquest = questdata
 	play_animation("repeatable_quest_completed")
+	PlaySound("questcomplete")
 	globals.Reward(questdata)
 	globals.text_log_add("quest", "Quest Complete: " + questdata.name)
 	ResourceScripts.game_world.complete_quest(questdata, 'complete')
@@ -1920,3 +1921,11 @@ func compare_list(list_new, list_old):
 		if !list_new.has(i):
 			res_remove.push_back(i)
 	return {add = res_add, remove = res_remove}
+
+
+func if_has_translation(key):
+	if !variables.translation_check:
+		return true
+	if tr(key) == key:
+		return false
+	return true
