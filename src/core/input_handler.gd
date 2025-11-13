@@ -169,6 +169,7 @@ var globalsettings = {
 	factors_as_words = true,
 	show_full_consent = false,
 	disable_paperdoll = false,
+	no_damage_shake = false,
 
 	textspeed = 60,
 	skipread = false,

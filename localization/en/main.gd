@@ -89,6 +89,7 @@ var TranslationDict = {
 	OPTGRAPHICRANDOMPORTRAIT = "Random Portraits",
 	OPTGRAPHICDISABLEANIMATIONBACKGROUNDS = "Disable Animation backgrounds",
 	OPTDISABLEPAPERDOLL = "Disable generated sprites",
+	OPTDISABLEDAMAGESHAKE = "Disable damage shake",
 	OPTCHEATENTERCODE = "Enter Code",
 	OPTCHEATACTIVATE = "Activate",
 	OPTCHEATGETCODE = "Get Code",
