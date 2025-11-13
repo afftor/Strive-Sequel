@@ -35,6 +35,7 @@ var weekly_sex_left = 2
 var weekly_sex_max = 1
 var weekly_dates_left = 3
 var weekly_dates_max = 1
+var log_btns = ['travel']
 
 #not used
 #var votelinksseen = false

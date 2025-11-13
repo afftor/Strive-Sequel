@@ -11,33 +11,21 @@ func _ready():
 	globals.connecttexttooltip($travel, tr('LOGTRAVELTOOLTIP'))
 	globals.connecttexttooltip($quest, tr('LOGQUESTTOOLTIP'))
 	globals.connecttexttooltip($char, tr('LOGCHARTOOLTIP'))
+	for btn in ResourceScripts.game_globals.log_btns:
+		if has_node(btn):
+			get_node(btn).pressed = true
 	change_filter()
 
-
-func change_filter(): #2fix later with adding new buttons
+func change_filter():
+	var pressed_btns = ResourceScripts.game_globals.log_btns
+	pressed_btns.clear()
 	filter.clear()
-	if $travel.pressed:
-		input_handler.append_not_duplicate(filter, 'travel')
-	else:
-		filter.erase('travel')
-	if $mansion.pressed:
-		input_handler.append_not_duplicate(filter, 'work')
-		input_handler.append_not_duplicate(filter, 'money')
-		input_handler.append_not_duplicate(filter, 'crafting')
-		input_handler.append_not_duplicate(filter, 'mansion')
-	else:
-		filter.erase('work')
-		filter.erase('money')
-		filter.erase('crafting')
-		filter.erase('mansion')
-	if $quest.pressed:
-		input_handler.append_not_duplicate(filter, 'quest')
-	else:
-		filter.erase('quest')
-	if $char.pressed:
-		input_handler.append_not_duplicate(filter, 'char')
-	else:
-		filter.erase('char')
+	for btn in ['travel', 'mansion', 'quest', 'char']:
+		if get_node(btn).pressed:
+			if btn == 'mansion':
+				filter.append_array(['work', 'money', 'crafting'])
+			filter.append(btn)
+			pressed_btns.append(btn)
 	update_log()
 
 
