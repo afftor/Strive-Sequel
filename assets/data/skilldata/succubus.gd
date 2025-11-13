@@ -358,9 +358,10 @@ var effects = {
 		statchanges = {lustmax_add = 10, lusttick_add = 1, chg_persuasion_max = 1,},
 		buffs = [ 
 			{
-			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "THRALLS0DESCRIPT",
-		}
+				icon = "res://assets/images/iconstraits/trait_lovers.png", 
+				description = "THRALLS0DESCRIPT",
+				tags = ['mansion_only']
+			}
 		],
 	},
 	succubus_thralls_1 = {
@@ -372,9 +373,10 @@ var effects = {
 		statchanges = {lustmax_add = 20, lusttick_add = 3, charm_bonus = 5, chg_persuasion_max = 1,},
 		buffs = [ 
 			{
-			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "THRALLS1DESCRIPT",
-		}
+				icon = "res://assets/images/iconstraits/trait_lovers.png", 
+				description = "THRALLS1DESCRIPT",
+				tags = ['mansion_only']
+			}
 		],
 	},
 	succubus_thralls_2 = {
@@ -386,9 +388,10 @@ var effects = {
 		statchanges = {lustmax_add = 30, lusttick_add = 4.5, charm_bonus = 5, chg_persuasion_max = 2,},
 		buffs = [ 
 			{
-			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "THRALLS2DESCRIPT",
-		}
+				icon = "res://assets/images/iconstraits/trait_lovers.png", 
+				description = "THRALLS2DESCRIPT",
+				tags = ['mansion_only']
+			}
 		],
 	},
 	succubus_thralls_3 = {
@@ -400,9 +403,10 @@ var effects = {
 		statchanges = {lustmax_add = 45, lusttick_add = 6, charm_bonus = 10, chg_persuasion_max = 2,},
 		buffs = [ 
 			{
-			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "THRALLS3DESCRIPT",
-		}
+				icon = "res://assets/images/iconstraits/trait_lovers.png", 
+				description = "THRALLS3DESCRIPT",
+				tags = ['mansion_only']
+			}
 		],
 	},
 	succubus_thralls_4 = {
@@ -414,9 +418,10 @@ var effects = {
 		statchanges = {lustmax_add = 60, lusttick_add = 7.5, charm_bonus = 10, chg_persuasion_max = 2,},
 		buffs = [ 
 			{
-			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "THRALLS4DESCRIPT",
-		}
+				icon = "res://assets/images/iconstraits/trait_lovers.png", 
+				description = "THRALLS4DESCRIPT",
+				tags = ['mansion_only']
+			}
 		],
 	},
 	succubus_thralls_5 = {
@@ -428,9 +433,10 @@ var effects = {
 		statchanges = {lustmax_add = 80, lusttick_add = 9, charm_bonus = 15, chg_persuasion_max = 3,},
 		buffs = [ 
 			{
-			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "THRALLS5DESCRIPT",
-		}
+				icon = "res://assets/images/iconstraits/trait_lovers.png", 
+				description = "THRALLS5DESCRIPT",
+				tags = ['mansion_only']
+			}
 		],
 	},
 	succubus_thralls_6 = {
@@ -442,9 +448,10 @@ var effects = {
 		statchanges = {lustmax_add = 100, lusttick_add = 12, charm_bonus = 20, chg_persuasion_max = 3,},
 		buffs = [ 
 			{
-			icon = "res://assets/images/iconstraits/trait_lovers.png", #fix
-			description = "THRALLS6DESCRIPT",
-		}
+				icon = "res://assets/images/iconstraits/trait_lovers.png", 
+				description = "THRALLS6DESCRIPT",
+				tags = ['mansion_only']
+			}
 		],
 	},
 }
