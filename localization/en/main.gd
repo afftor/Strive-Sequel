@@ -2827,6 +2827,10 @@ Training has higher chance of success.""",
 	TRAITCHEFDESCRIPT = "Cooking is 100% faster.",
 	TRAITATTENDANTDESCRIPT = "Once per combat turn [name] can use an item without using a turn.",
 	TRAITALCHEMISTDESCRIPT = "Healing items are 25% more effective in combat.",
+	TRAITMASTER_ALCHEMISTT = "Master alchemist",
+	TRAITMASTER_ALCHEMISTDESCRIPT = "Crafted alchemy items are at least normal quality.",
+	TRAITMASTER_SMITH = "Master smith",
+	TRAITMASTER_SMITHDESCRIPT = "Crafted items are at least normal quality.",
 	TRAITFARMERDESCRIPT = "Farming is 50% more efficient. ",
 	TRAITBREEDERDESCRIPT = """Allows breeding with any race.
 Pregnancy Debuffs are weaker

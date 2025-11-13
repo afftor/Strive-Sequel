@@ -1519,9 +1519,26 @@ var traits = {
 #		icon = null,
 #		effects = [],
 #	},
-	
+	master_smith = {#removes bad craft
+		code = 'master_smith',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		tags = ['master_smith']
+	},
+	master_alchemist = {#removes bad craft
+		code = 'master_alchemist',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		tags = ['master_alchemist']
+	},
 	#minor_training
-		etiquette = {
+	etiquette = {
 		code = 'etiquette',
 		name = '',
 		descript = '',

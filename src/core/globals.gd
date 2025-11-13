@@ -241,9 +241,9 @@ func CreateGearItemCraft(item, parts, person, newname = null):
 	if Items.recipes.has(item):
 		match Items.recipes[item].worktype:
 			'smith', 'tailor':
-				diffdata.prof = person.has_profession('smith')
+				diffdata.prof = person.has_status('master_smith')
 			'alchemy':
-				diffdata.prof = person.has_profession('alchemist')
+				diffdata.prof = person.has_status('master_alchemist')
 		diffdata.boost += person.get_task_diff()
 	var newitem = Item.new()
 	newitem.CreateGear(item, parts, diffdata)
