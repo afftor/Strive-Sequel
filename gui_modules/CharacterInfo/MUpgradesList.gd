@@ -31,11 +31,14 @@ func set_person(new_person):
 	if is_list_minor():
 		minor_training_count = person.get_minor_training_count()
 		minor_training_max = person.get_minor_training_max()
+		globals.connecttexttooltip($Tooltip, person.translate(tr(("TOOLTIPMINORTRAINING"))))
+	else:
+		globals.connecttexttooltip($Tooltip, person.translate(tr(("TOOLTIPMASTERTRAINING"))))
 
 func update_upgrades_tree():
 	if is_list_mastery():
 		set_person(ResourceScripts.game_party.get_master())
-	input_handler.ClearContainer(self, ['Button'])
+	input_handler.ClearContainer(self, ['Button', 'Tooltip'])
 	for code in upgrades_data:
 		var panel
 		panel = input_handler.DuplicateContainerTemplate(self, 'Button')
@@ -44,7 +47,7 @@ func update_upgrades_tree():
 		if upgrades_data[code].tab != curtab:
 			panel.visible = false
 		panel.rect_position = unit_size * Vector2(upgrades_data[code].x, upgrades_data[code].y)
-		
+	
 
 
 func gather_data():

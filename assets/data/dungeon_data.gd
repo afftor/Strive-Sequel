@@ -149,7 +149,7 @@ var dungeons = {
 			chance_mod = 0.7,#increases base chance to get slave after combat by this if its not guaranteed
 			races = [['local', 3], ['common',1]]
 		},
-		difficulty = 'easy',
+		difficulty = 'infinite',
 #		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
 #		enemyarray = [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
 #		final_enemy = [], final_enemy_type = 'monster', final_enemy_class = ['combat'],
