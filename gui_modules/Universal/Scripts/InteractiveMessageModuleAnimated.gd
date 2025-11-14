@@ -195,6 +195,7 @@ func preset_dialogue_type(new_type):
 	new_background.modulate.a = 1
 	new_background.show()
 	$CustomBackground.hide()#if new_type == 2, BG will be switched on in handle_scene_backgrounds()
+	$Shading.hide()
 
 
 func show_buttons():
@@ -822,6 +823,19 @@ func handle_scene_backgrounds(scene):
 		elif node.texture != newtexture:
 			ResourceScripts.core_animations.SmoothTextureChange(node, newtexture, 1)
 	try_hide_scene_backgrounds(scene, type_trans_time)
+	
+	var shading = $Shading
+	if scene.tags.has("shading_background"):
+		if !shading.visible:
+			shading.modulate.a = 0
+			shading.show()
+			ResourceScripts.core_animations.UnfadeAnimation(shading, 1.0)
+	elif shading.visible and !shading.get_meta("fading", false):
+		ResourceScripts.core_animations.FadeAnimation(shading, 1.0)
+		shading.set_meta("fading", true)
+		yield(get_tree().create_timer(1.0), "timeout")
+		shading.set_meta("fading", false)
+		shading.hide()
 
 func try_hide_scene_backgrounds(scene, time):
 	var node = $CustomBackground
