@@ -2392,6 +2392,7 @@ func try_breakdown(event):
 #	var chance = info.chance * get_stat('breakdown_chance_mod')
 #	print("%s try_breakdown on %s with %s" % [get_short_name(), event, chance])
 	if randf() <= info.chance * get_stat('breakdown_chance_mod'):
+		input_handler.ActivateTutorial("TUTORIALLIST10")
 		xp_module.make_unavaliable(get_stat('breakdown_time'))
 		var scene_data = scenedata.scenedict['breakdown_event'].duplicate(true)
 		scene_data.text = info.text
@@ -2415,13 +2416,11 @@ func deferred_brk_check_food():
 		try_breakdown('brk_dislike_food')
 
 func try_breakdown_on_enthrall():
-	if xp_module.is_unavaliable(): return
-	
+#	if xp_module.is_unavaliable(): return#has it in try_breakdown()
 	try_breakdown('brk_enthrall')
 
 func try_breakdown_on_release():
-	if xp_module.is_unavaliable(): return
-	
+#	if xp_module.is_unavaliable(): return#has it in try_breakdown()
 	try_breakdown('brk_enthrall_release')
 
 #Fame. Maybe should be withdrawn to separate module
