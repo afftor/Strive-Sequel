@@ -1,24 +1,19 @@
 extends Reference
 
 #Loot tables consists of records. Each record is a dictionary.
-#common params (any record can have them):
+#There is two classes of records: "stuff" and "recursive rules".
+#-----common params (any record can have them):
 #* reqs - common array suitable for globals.checkreqs(). If reqs not met, record ignored
 #* chance - float chance to process record (1.0 = 100%). If not lucky, record ignored.
 #	No chance param means 100%
-#* amount - precise amount of generated stuff. Quantity of generated material, for example
-#* min and max - generate random amount within those boundaries.
 #* chance_per_unit - (specific rule for old enemies' loot_tables) Like normal chance,
 #	but it rolls separately for each unit in amount. For example, {amount = 4, chance_per_unit = 0.5}
 #	will make 4 rolls. With only 2 successful, true amount becomes 2 instead of 4.
-#specific params:
-#* list - array of records, each will be processed by common rules. The record with list param itself
-#	ignores amount params and all other specific params
-#* loot_table - string with name of another record in loot_tables, which should be processed.
-#	The record with loot_table param itself ignores amount params and all other specific params
-#* selector - array of records. For each unit in amount one random record from array will be processed.
-#	Records in selector respects reqs and chance rules, but also can have "weight" param,
-#	which determines there probability of being selected. No weight param equals to 1.0.
-#	The record with selector param itself ignores all other specific params
+#-----stuff-specific params (only stuff-class records can have them):
+#* amount - precise amount of generated stuff. Quantity of generated material, for example.
+#	Considered to be 1 if omitted.
+#* min and max - generate random amount within those boundaries, if param "amount" is absent.
+#-----stuff class params:
 #* gold - bool flag, gives gold
 #* material - string, gives designated material
 #* item - string, gives designated item. For gear type, if param "quality"
@@ -29,7 +24,7 @@ extends Reference
 #	Bool param "autoassign_quality" used for [probably legacy] generating with
 #	autoassigning "quality" and no "parts" (it was in use for chests)
 #	(seems to be useful only for items in Items.fixed_quality_stats).
-#* no_enchant - bool flag, gear-items with "true" will have no enchantments, IF it could otherwise.
+#	Bool flag "no_enchant": gear-items with "true" will have no enchantments, IF it could otherwise.
 #	"False" will not add enchantments, where it shouldn't be
 #* random - string, determines type of randomly generated loot. Can be:
 #	* material - randomly generated material from tear lists provided by string param "tier" or bool
@@ -45,6 +40,24 @@ extends Reference
 #* spec_rule - very specific option. Can be:
 #	* item_based_gold - param for repeatable quests, determines gold quantity from gived in item.
 #		"Range" param is array with min and max multiplayer for items' value.
+#-----recursive-specific params (only recursive-class records can have them):
+#* repeat - number of times the recursive record should be processed. (In a manner of speaking, it is
+#	same as "amount" param, but instead of stuff-instances it counts recursive rule instances.)
+#	Considered to be 1 if omitted.
+#* repeat_min and repeat_max - generate random repeat value within those boundaries,
+#	if param "repeat" is absent.
+#* propagate - a dict, which can have amount- and repeat-params (amount, min, max, repeat,
+#	repeat_min, repeat_max); if provided, overrides those params for all nested records, but only
+#	if params are omitted. (Mind, that if there is few levels of recursive record nesting, ALL will
+#	be effected by this param!)
+#* override - same as "propagate", but overrides params forcefully, even if thay are not omitted.
+#-----recursive rule class params:
+#* list - array of records, each will be processed by common rules.
+#* loot_table - string with name of another record in loot_tables, which should be processed.
+#* selector - array of records. One random record from array will be processed.
+#	Records in selector respects reqs and chance rules, but also can have "weight" param,
+#	which determines there probability of being selected. Omitted weight param equals to 1.0.
+
 
 
 #example = {selector = [
@@ -374,10 +387,10 @@ var loot_tables = {
 		{material = 'trap', min = 5, max = 10},
 		{material = 'ink_base', min = 2, max = 3},
 		{material = 'bandage', min = 2, max = 6},
-		{min = 1, max = 2, selector = [
+		{repeat_min = 1, repeat_max = 2, selector = [
 			{item = 'dagger'},
 			{item = 'club'}]},
-		{min = 3, max = 6, chance = 0.8, selector = [
+		{repeat_min = 3, repeat_max = 6, chance = 0.8, selector = [
 			{item = 'sword'},
 			{item = 'axe'},
 			{item = 'spear'},
@@ -392,14 +405,14 @@ var loot_tables = {
 			{item = 'staff'},
 			{item = 'hunt_knife'},
 			{item = 'shield'}]},
-		{min = 1, max = 3, chance = 0.8, selector = [
+		{repeat_min = 1, repeat_max = 3, chance = 0.8, selector = [
 			{item = 'chest_base_cloth'},
 			{item = 'chest_base_leather'},
 			{item = 'chest_base_metal'},
 			{item = 'legs_base_cloth'},
 			{item = 'legs_base_leather'},
 			{item = 'legs_base_metal'}]},
-		{min = 3, max = 6, chance = 0.8, selector = [
+		{repeat_min = 3, repeat_max = 6, chance = 0.8, selector = [
 			{item = 'leather_collar'},
 			{item = 'animal_ears'},
 			{item = 'animal_gloves'},
@@ -410,14 +423,14 @@ var loot_tables = {
 			{item = 'strapon'},
 			{item = 'mask'},
 			{item = 'anal_beads'}]},
-		{min = 4, max = 8, chance = 0.8, selector = [
+		{repeat_min = 4, repeat_max = 8, chance = 0.8, selector = [
 			{item = 'beer'},
 			{item = 'wine'},
 			{item = 'wine2'},
 			{item = 'alcohol'},
 			{item = 'aphrodisiac'},
 			{item = 'hairdye'}]},
-		{min = 1, max = 2, selector = [
+		{repeat_min = 1, repeat_max = 2, selector = [
 			{item = 'map_goblin_cave'},
 			{item = 'map_bandit_den'}]},
 		{selector = [
@@ -437,7 +450,7 @@ var loot_tables = {
 		{item = 'lifeshard', min = 4, max = 8},
 		{item = 'energyshard', min = 3, max = 5},
 		{material = 'obsidian', min = 3, max = 5, chance = 0.3},
-		{min = 2, max = 4, chance = 0.8, selector = [
+		{repeat_min = 2, repeat_max = 4, chance = 0.8, selector = [
 			{item = 'sword'},
 			{item = 'bow'},
 			{item = 'battleaxe'},
@@ -446,7 +459,7 @@ var loot_tables = {
 			{item = 'staff'},
 			{item = 'shield'},
 			{item = 'foxmask'}]},
-		{min = 1, max = 2, chance = 0.8, selector = [
+		{repeat_min = 1, repeat_max = 2, chance = 0.8, selector = [
 			{item = 'chest_base_cloth'},
 			{item = 'chest_base_leather'},
 			{item = 'legs_base_cloth'},
@@ -468,7 +481,7 @@ var loot_tables = {
 		{material = 'stone', min = 40, max = 80, chance = 1},
 		{material = 'steel', min = 6, max = 12, chance = 0.9},
 		{material = 'mithril', min = 5, max = 8, chance = 0.8},
-		{min = 2, max = 4, chance = 0.8, selector = [
+		{repeat_min = 2, repeat_max = 4, chance = 0.8, selector = [
 			{item = 'sword'},
 			{item = 'crossbow'},
 			{item = 'mace'},
@@ -477,17 +490,17 @@ var loot_tables = {
 			{item = 'pickaxe'},
 			{item = 'hammer'},
 			{item = 'shield'}]},
-		{min = 1, max = 2, chance = 0.8, selector = [
+		{repeat_min = 1, repeat_max = 2, chance = 0.8, selector = [
 			{item = 'chest_base_metal'},
 			{item = 'chest_base_leather'},
 			{item = 'legs_base_metal'},
 			{item = 'legs_base_leather'}]},
-		{min = 6, max = 12, chance = 0.95, selector = [
+		{repeat_min = 6, repeat_max = 12, chance = 0.95, selector = [
 			{item = 'beer'},
 			{item = 'wine'},
 			{item = 'wine2'},
 			{item = 'alcohol'}]},
-		{amount = 1, selector = [
+		{selector = [
 			{item = 'map_fire_depths'},
 			{item = 'map_goblin_stronghold'}]},
 		]},
@@ -500,7 +513,7 @@ var loot_tables = {
 		{item = 'lifegem', min = 4, max = 8},
 		{material = 'steel', min = 15, max = 30, chance = 0.9},
 		{material = 'mithril', min = 6, max = 12, chance = 0.8},
-		{min = 2, max = 4, chance = 0.8, selector = [
+		{repeat_min = 2, repeat_max = 4, chance = 0.8, selector = [
 			{item = 'sword'},
 			{item = 'swordadv'},
 			{item = 'spear'},
@@ -511,7 +524,7 @@ var loot_tables = {
 			{item = 'maceadv'},
 			{item = 'battleaxe'},
 			{item = 'battleaxeadv'},]},
-		{min = 1, max = 2, chance = 0.8, selector = [
+		{repeat_min = 1, repeat_max = 2, chance = 0.8, selector = [
 			{item = 'chest_base_metal'},
 			{item = 'chest_base_leather'},
 			{item = 'chest_base_cloth'},
@@ -524,11 +537,11 @@ var loot_tables = {
 			{item = 'legs_adv_metal'},
 			{item = 'legs_adv_leather'},
 			{item = 'legs_adv_cloth'}]},
-		{amount = 2, selector = [
+		{repeat = 2, selector = [
 			{loot_table = "medium_maps", weight = 1},
 			{loot_table = "hard_maps", weight = 1},
 			]},
-		{amount = 1, chance = 0.7, selector = [
+		{chance = 0.7, selector = [
 			{material = 'adamantine', min = 3, max = 6},
 			{material = 'bonedragon', min = 4, max = 8},
 			{material = 'letherdragon', min = 4, max = 8},
@@ -543,7 +556,7 @@ var loot_tables = {
 		{material = 'salvia', min = 10, max = 20, chance = 0.7},
 		{material = 'bone', min = 5, max = 20, chance = 0.7},
 		{item = 'lifeshard', min = 4, max = 8},
-		{min = 1, max = 2, chance = 0.8, selector = [
+		{repeat_min = 1, repeat_max = 2, chance = 0.8, selector = [
 			{item = 'chest_base_cloth'},
 			{item = 'chest_base_leather'},
 			{item = 'legs_base_cloth'},
@@ -564,19 +577,19 @@ var loot_tables = {
 		{material = 'salvia', min = 2, max = 6, chance = 0.6},
 		{item = 'lifeshard', min = 2, max = 6, chance = 0.9},
 		{material = 'bandage', min = 4, max = 6, chance = 0.8},
-		{min = 1, max = 2, chance = 0.8, selector = [
+		{repeat_min = 1, repeat_max = 2, chance = 0.8, selector = [
 			{item = 'axe'},
 			{item = 'pickaxe'},
 			{item = 'fishingtools'},
 			{item = 'sickle'},
 			{item = 'club'},
 			{item = 'shield'},]},
-		{amount = 1, chance = 0.3, selector = [
+		{chance = 0.3, selector = [
 			{item = 'worker_outfit'},]},
-		{min = 2, max = 6, chance = 0.8, selector = [
+		{repeat_min = 2, repeat_max = 6, chance = 0.8, selector = [
 			{item = 'beer'},
 			{item = 'alcohol'},]},
-		{amount = 1, selector = [
+		{selector = [
 			{item = 'chest_base_leather'},
 			{item = 'legs_base_leather'},
 			{item = 'chest_base_metal'},
@@ -593,15 +606,14 @@ var loot_tables = {
 		{material = 'salvia', min = 2, max = 6, chance = 0.6},
 		{item = 'lifeshard', min = 3, max = 6, chance = 0.9},
 		{material = 'bandage', min = 3, max = 5, chance = 0.9},
-		{min = 1, max = 2, chance = 0.8, selector = [
+		{repeat_min = 1, repeat_max = 2, chance = 0.8, selector = [
 			{item = 'axe'},
 			{item = 'sickle'},
 			{item = 'club'},
 			{item = 'shield'},
 			{item = 'bow'},]},
-		{amount = 1, chance = 0.3, selector = [
-			{item = 'worker_outfit'},]},
-		{min = 1, max = 2, chance = 0.8, selector = [
+		{chance = 0.3, item = 'worker_outfit'},
+		{repeat_min = 1, repeat_max = 2, chance = 0.8, selector = [
 			{item = 'chest_base_cloth'},
 			{item = 'legs_base_cloth'},]},
 	]},
@@ -737,70 +749,70 @@ var loot_tables = {
 		]},
 	rq_workers_resources_hard = {selector = [
 		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.7, 1.95]},
-		{weight = 1.0, selector = [
-			{material = 'wood', min = 15, max = 20},
-			{material = 'stone', min = 15, max = 20},
-			{material = 'leather', min = 15, max = 20},
-			{material = 'cloth', min = 15, max = 20},
-			{material = 'iron', min = 15, max = 20}]},
+		{weight = 1.0, propagate = {min = 15, max = 20}, selector = [
+			{material = 'wood'},
+			{material = 'stone'},
+			{material = 'leather'},
+			{material = 'cloth'},
+			{material = 'iron'}]},
 		{weight = 0.5, list = [
 			{spec_rule = 'item_based_gold', range = [0.5, 0.6]},
-			{selector = [
-				{material = 'steel', min = 5, max = 10},
-				{material = 'woodmagic', min = 5, max = 10},
-				{material = 'woodiron', min = 5, max = 10},
-				{material = 'clothsilk', min = 5, max = 10}]},
+			{propagate = {min = 5, max = 10}, selector = [
+				{material = 'steel'},
+				{material = 'woodmagic'},
+				{material = 'woodiron'},
+				{material = 'clothsilk'}]},
 			]}
 		]},
 	rq_workers_food_easy = {selector = [
 		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.5, 1.7]},
-		{weight = 1.0, selector = [
-			{material = 'wood', min = 15, max = 20},
-			{material = 'stone', min = 15, max = 20},
-			{material = 'leather', min = 15, max = 20},
-			{material = 'cloth', min = 15, max = 20},
-			{material = 'iron', min = 15, max = 20}]},
+		{weight = 1.0, propagate = {min = 15, max = 20}, selector = [
+			{material = 'wood'},
+			{material = 'stone'},
+			{material = 'leather'},
+			{material = 'cloth'},
+			{material = 'iron'}]},
 		{weight = 0.5, list = [
 			{spec_rule = 'item_based_gold', range = [0.5, 0.6]},
-			{selector = [
-				{material = 'steel', min = 5, max = 10},
-				{material = 'woodmagic', min = 5, max = 10},
-				{material = 'woodiron', min = 5, max = 10},
-				{material = 'clothsilk', min = 5, max = 10}]},
+			{propagate = {min = 5, max = 10}, selector = [
+				{material = 'steel'},
+				{material = 'woodmagic'},
+				{material = 'woodiron'},
+				{material = 'clothsilk'}]},
 			]}
 		]},
 	rq_workers_food_medium = {selector = [
 		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.7, 1.9]},
-#		{weight = 1.0, selector = [
-#			{material = 'wood', min = 15, max = 20},
-#			{material = 'stone', min = 15, max = 20},
-#			{material = 'leather', min = 15, max = 20},
-#			{material = 'cloth', min = 15, max = 20},
-#			{material = 'iron', min = 15, max = 20}]},
+#		{weight = 1.0, propagate = {min = 15, max = 20}, selector = [
+#			{material = 'wood'},
+#			{material = 'stone'},
+#			{material = 'leather'},
+#			{material = 'cloth'},
+#			{material = 'iron'}]},
 		{weight = 0.5, list = [
 			{spec_rule = 'item_based_gold', range = [0.6, 0.7]},
-			{selector = [
-				{material = 'steel', min = 10, max = 15},
-				{material = 'obsidian', min = 10, max = 15},
-				{material = 'woodiron', min = 10, max = 15},
-				{material = 'clothmagic', min = 10, max = 15}]},
+			{propagate = {min = 10, max = 15}, selector = [
+				{material = 'steel'},
+				{material = 'obsidian'},
+				{material = 'woodiron'},
+				{material = 'clothmagic'}]},
 			]}
 		]},
 	rq_workers_food_hard = {selector = [
 		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.8, 2.1]},
-#		{weight = 1.0, selector = [
-#			{material = 'wood', min = 15, max = 20},
-#			{material = 'stone', min = 15, max = 20},
-#			{material = 'leather', min = 15, max = 20},
-#			{material = 'cloth', min = 15, max = 20},
-#			{material = 'iron', min = 15, max = 20}]},
+#		{weight = 1.0, propagate = {min = 15, max = 20}, selector = [
+#			{material = 'wood'},
+#			{material = 'stone'},
+#			{material = 'leather'},
+#			{material = 'cloth'},
+#			{material = 'iron'}]},
 		{weight = 0.5, list = [
 			{spec_rule = 'item_based_gold', range = [0.7, 0.8]},
-			{selector = [
-				{material = 'mithril', min = 3, max = 5},
-				{material = 'obsidian', min = 3, max = 5},
-				{material = 'woodancient', min = 3, max = 5},
-				{material = 'clothmagic', min = 3, max = 5}]},
+			{propagate = {min = 3, max = 5}, selector = [
+				{material = 'mithril'},
+				{material = 'obsidian'},
+				{material = 'woodancient'},
+				{material = 'clothmagic'}]},
 			]}
 		]},
 	rq_workers_craft_tools_easy = {spec_rule = 'item_based_gold', range = [1.7, 2.0]},
