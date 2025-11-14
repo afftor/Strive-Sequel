@@ -644,11 +644,7 @@ var data = {
 				],
 				dialogue_argument = 1,
 				type = "next_dialogue",
-				bonus_effects = [
-					{
-						code = "advance_location"
-					}
-				]
+				bonus_effects = [{code = 'clear_subroom', optional = true}]
 			}
 		]
 	},

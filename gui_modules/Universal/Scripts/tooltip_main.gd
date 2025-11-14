@@ -36,7 +36,8 @@ func _process(delta):
 			yield(self, 'update_completed')
 #			modulate.a = 1.0
 #			show()
-			ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
+			if visible:
+				ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
 
 
 func _setup(node):

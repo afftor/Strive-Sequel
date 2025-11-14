@@ -42,6 +42,10 @@ func update():
 	
 	yield(get_tree(), 'idle_frame')
 	
+	if !weakref(parentnode).get_ref():
+		emit_signal("update_completed")
+		return
+	
 	rect_size.y = max(270, $descript.get_v_scroll().get_max() + 55 + $cost.rect_size.y)
 	$descript.rect_size.y = rect_size.y - 80
 	
