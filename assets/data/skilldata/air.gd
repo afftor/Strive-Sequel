@@ -13,7 +13,7 @@ var skills = {
 		effects = [], 
 		cost = {mp = 3},
 		repeat = 2,
-		keep_target = variables.TARGET_KEEP,
+		keep_target = variables.TARGET_KEEPFIRST,
 		next_target = variables.NT_ANY,
 		charges = 0,
 		combatcooldown = 0,

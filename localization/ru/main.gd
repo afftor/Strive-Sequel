@@ -975,6 +975,8 @@ var TranslationDict = {
 	
 	TOOLTIPSKILLPOINTS = """Очки навыков зарабатываются в боях и используются для приобретения новых боевых навыков.""",
 	TOOLTIPSUCCUBUS = """[Succubus] получает силы от очарования других. Каждый очарованный влюбляется в [succubus]а и заставляет [him] расти в силе.""",
+	TOOLTIPMINORTRAINING = """##FIX!!##[Succubus] gains powers from {color=green|Enthralling} others. Each Thrall falls in love with [succubus] and makes [him] grow in strength. Unlock points are earned by enthralling more characters.""", # MISSING TRANSLATION
+	TOOLTIPMASTERTRAINING = """##FIX!!##[Succubus] gains powers from {color=green|Enthralling} others. Each Thrall falls in love with [succubus] and makes [him] grow in strength. Unlock points are earned by enthralling more characters.""", # MISSING TRANSLATION
 	
 
 	SAVENAME = """Сохранение""",
@@ -2972,6 +2974,10 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	TRAITCHEFDESCRIPT = """Приготовление пищи на 100% быстрее""",
 	TRAITATTENDANTDESCRIPT = """Один раз за боевой ход [name] может использовать предмет без использования хода.""",
 	TRAITALCHEMISTDESCRIPT = """Исцеляющие предметы на 25% эффективнее в бою.""",
+	TRAITMASTER_ALCHEMISTT = """Master alchemist""", # MISSING TRANSLATION
+	TRAITMASTER_ALCHEMISTDESCRIPT = """Crafted alchemy items are at least normal quality.""", # MISSING TRANSLATION
+	TRAITMASTER_SMITH = """Master smith""", # MISSING TRANSLATION
+	TRAITMASTER_SMITHDESCRIPT = """Crafted items are at least normal quality.""", # MISSING TRANSLATION
 	TRAITFARMERDESCRIPT = """Фермерство на 50% эффективнее.""",
 	TRAITBREEDERDESCRIPT = """Позволяет размножаться с любой расой.
 Дебаффы беременности слабее.
@@ -3329,6 +3335,7 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTHARDWORK = """Усердие: +50%% производительности""",
 	TRAITEFFECTPHYSBUF = """Эликсир силы огра: +80 физ. возм.""",
 	TRAITEFFECTWITSBUF = """Эликсир расширения разума: +80 мудрости""",
+	TRAITEFFECTALCOHOL = """Wasted: -1 Loyalty Gain, +1 Spirit Gain, -15%% Productivity""", # MISSING TRANSLATION
 	TRAITEFFECTFAVFOOD = """Любимая еда: -1 утечка повиновения, +0.5 прироста верности""", 
 	TRAITEFFECTHATEDFOOD = """Ненавистная еда: -10%% производительности""",
 	TRAITEFFECTSTARVE = """Голодание: -50%% производительности, -50%% урона.""",
@@ -4091,6 +4098,8 @@ Requires: Базовый рабский труд""",
 
 	BODYPARTSKIN_COVERAGEPLANTDESCRIPT = """Различные листья и кусочки [color=aqua]растительной массы[/color] покрывают части [his] тела.""",
 	BODYPARTSKIN_COVERAGESCALEDESCRIPT = """[His] кожа частично покрыта [color=aqua]чешуей[/color].""",
+	BODYPARTSKIN_COVERAGESCALE2DESCRIPT = """[His] skin is partly covered with [color=aqua]scales[/color].""", # MISSING TRANSLATION
+	BODYPARTSKIN_COVERAGESCALE3DESCRIPT = """[His] skin is partly covered with [color=aqua]scales[/color].""", # MISSING TRANSLATION
 	BODYPARTSKIN_COVERAGEFEATHERSDESCRIPT = """[His] тело во многих местах покрыто [color=aqua]птицеподобными перьями[/color].""",
 	BODYPARTSKIN_COVERAGEFUR_WHITEDESCRIPT = """[His] тело покрыто густым, мягким [color=aqua]мехом мраморного цвета[/color].""",
 	BODYPARTSKIN_COVERAGEFUR_GREYDESCRIPT = """[His] тело покрыто густым, мягким [color=aqua]мехом серого цвета[/color].""",
@@ -4124,6 +4133,7 @@ Requires: Базовый рабский труд""",
 	BODYPARTTAILTENTACLESDESCRIPT = """ """,
 	BODYPARTTAILHORSEDESCRIPT = """ """,
 	BODYPARTTAILSPIDERDESCRIPT = """ """,
+	BODYPARTTAILMOUSEDESCRIPT = """ """, # MISSING TRANSLATION
 	
 	BODYPARTHEIGHTTINYDESCRIPT = """[His] рост [color=aqua]чрезвычайно мал[/color], едва ли в два раза меньше, чем у обычного человека.""",
 	BODYPARTHEIGHTPETITEDESCRIPT = """[His] рост совсем [color=aqua]маленький[/color].""",
@@ -4713,6 +4723,9 @@ Requires: Базовый рабский труд""",
 	
 	DIALOGUETUTNOTHING = """Без обучения (бесплатно)""",
 	DIALOGUETUTSLAVE = """*Обучить как раба* (500 золотых)""",
+	DIALOGUETUTSLAVE1 = """Slave Training: Workforce (500 Gold)""", # MISSING TRANSLATION
+	DIALOGUETUTSLAVE2 = """Slave Training: Warrior (500 Gold)""", # MISSING TRANSLATION
+	DIALOGUETUTSLAVE3 = """Slave Training: Service (500 Gold)""", # MISSING TRANSLATION
 	DIALOGUETUTACADEMY = """*Академическое обучение* (1.500 золотых)""",
 	DIALOGUETUTHEIR = """*Обучение наследника* (5.000 золотых)""",
 	

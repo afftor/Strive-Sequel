@@ -2507,6 +2507,10 @@ Makes selected character recieve more experience for 1 day under your guidance. 
 	TRAITCHEFDESCRIPT = "Cooking is 100% faster.\n烹饪速度快100%",
 	TRAITATTENDANTDESCRIPT = "Once per combat turn [name] can use an item without using a turn.\n每个战斗回合[name]可以使用一个物品而不使用回合。",
 	TRAITALCHEMISTDESCRIPT = "Crafts alchemical products 100% faster.\nHealing items are 25% more effective in combat.\n制作炼金产品的速度提高100%。\n治疗道具在战斗中的效率提高25%。",
+	TRAITMASTER_ALCHEMISTT = """Master alchemist""", # MISSING TRANSLATION
+	TRAITMASTER_ALCHEMISTDESCRIPT = """Crafted alchemy items are at least normal quality.""", # MISSING TRANSLATION
+	TRAITMASTER_SMITH = """Master smith""", # MISSING TRANSLATION
+	TRAITMASTER_SMITHDESCRIPT = """Crafted items are at least normal quality.""", # MISSING TRANSLATION
 	TRAITFARMERDESCRIPT = "Farming is 50% more efficient. \n农业效率提高50%",
 	TRAITBREEDERDESCRIPT = "Allows breeding with any race.\nPregnancy Debuffs are weaker\nOffspring will inherit only this parent's stats.\n允许与任何种族繁殖。\n后代出道较弱\n后代将只继承此亲本的统计数据",
 	TRAITHARLOTDESCRIPT = "Prostitution is 50% more efficient.\n卖淫的效率提高50%",
@@ -3408,6 +3412,8 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 
 	BODYPARTSKIN_COVERAGEPLANTDESCRIPT = "各种各样的叶子和 [color=aqua]植物物质[/color] 覆盖率 [his] 身体.",
 	BODYPARTSKIN_COVERAGESCALEDESCRIPT = "[His] 皮肤部分覆盖着 [color=aqua]鳞片[/color].",
+	BODYPARTSKIN_COVERAGESCALE2DESCRIPT = """[His] skin is partly covered with [color=aqua]scales[/color].""", # MISSING TRANSLATION
+	BODYPARTSKIN_COVERAGESCALE3DESCRIPT = """[His] skin is partly covered with [color=aqua]scales[/color].""", # MISSING TRANSLATION
 	BODYPARTSKIN_COVERAGEFEATHERSDESCRIPT = "[His] 身体在很多地方都覆盖着 [color=aqua]鸟类的羽毛[/color] .",
 	BODYPARTSKIN_COVERAGEFUR_WHITEDESCRIPT = "[His] 身体覆盖着厚厚的、柔软的 [color=aqua]大理石颜色毛皮[/color].",
 	BODYPARTSKIN_COVERAGEFUR_GREYDESCRIPT = "[His] 身体覆盖着厚厚的、柔软的 [color=aqua]灰色毛皮[/color].",
@@ -3441,6 +3447,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	BODYPARTTAILTENTACLESDESCRIPT = " ",
 	BODYPARTTAILHORSEDESCRIPT = " ",
 	BODYPARTTAILSPIDERDESCRIPT = " ",
+	BODYPARTTAILMOUSEDESCRIPT = """ """, # MISSING TRANSLATION
 
 	BODYPARTHEIGHTTINYDESCRIPT = "[His] 身材 [color=aqua]非常小[/color], 只有正常人的一半大.",
 	BODYPARTHEIGHTPETITEDESCRIPT = "[His] 身材很 [color=aqua]娇小[/color].",
@@ -3902,6 +3909,9 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	
 	DIALOGUETUTNOTHING = "无培训 (free)",
 	DIALOGUETUTSLAVE = "奴隶训练 (500 金币)",
+	DIALOGUETUTSLAVE1 = """Slave Training: Workforce (500 Gold)""", # MISSING TRANSLATION
+	DIALOGUETUTSLAVE2 = """Slave Training: Warrior (500 Gold)""", # MISSING TRANSLATION
+	DIALOGUETUTSLAVE3 = """Slave Training: Service (500 Gold)""", # MISSING TRANSLATION
 	DIALOGUETUTACADEMY = "学院 (1500 金币)",
 	DIALOGUETUTHEIR = "继承人教育 (5000 金币)",
 	

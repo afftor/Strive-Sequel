@@ -588,7 +588,7 @@ Food type: Fish, Vegetables.""",
 	MATERIALADAMANTINEDESCRIPT = "A very rare and strong magic alloy. Produced by crafting. ",
 	MATERIALMETEORITE_IRON = "Meteorite Steel",
 	MATERIALMETEORITE_IRONADJ = "Star",
-	MATERIALMETEORITE_IRONDESCRIPT = "A very rare and strong magic alloy. Produced by crafting. ",
+	MATERIALMETEORITE_IRONDESCRIPT = "A very rare and strong magic alloy. ",
 	MATERIALBLUE_MOSS = "Blue Moss",
 	MATERIALBLUE_MOSSDESCRIPT = "A rare plant with magical properties.",
 	MATERIALSALVIA = "Salvia",
@@ -1427,7 +1427,7 @@ Silenced: Can't use Spell type abilities.""",
 	SKILLLAST_STAND = "Last Stand",
 	SKILLLAST_STANDDESCRIPT = "HP can't be reduced below 10% for 1 turn. Does not take a turn to cast.",
 	SKILLINTIMIDATING_PRESENCE = "Intimidating Presence",
-	SKILLINTIMIDATING_PRESENCEDESCRIPT = "Remove generic enemies from target location.",
+	SKILLINTIMIDATING_PRESENCEDESCRIPT = "Remove generic enemy group from target location on dungeon map.",
 	SKILLFLAME_SPHERE = "Flame Sphere",
 	SKILLFLAME_SPHEREDESCRIPT = "Apply buff to self: on next start of combat you launch flaming sphere at the enemies, dealing 25% of their maximum health as Fire damage.",
 	SKILLINFERNO = "Inferno",
@@ -1701,7 +1701,7 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	TASKRONMISSIONCOMPLETE = "When this task is finished receive your reward from Journal.",
 	TASKPRODUCE = "Produce",
 	TASKPRODUCEDESCRIPT = "Assigned to produce materials",
-	TASKSPECIALDESCRIPT = "",
+	TASKSPECIALDESCRIPT = "Mission",
 	BEDROOMTOOLTIP = "Available number of characters for sexual interactions. Increases with Bedroom Upgrade",
 	DATETOOLTIP = "Dates left this week. Increases with Master's Charm Factor and resets at the start of a week.",
 	SEXTOOLTIP = "Sexual Interactions left this week. Increases with Master's Sexual Factor and resets at the start of a week.",
@@ -1737,9 +1737,9 @@ Service is a global modifier for this assignment.""",
 	BROTHELWARNING = "Sex services won't work if you dont select at least 1 allowed customer",
 	CAPTURETOOLTIP = "These characters have been found by your team and can be recruited into your mansion or sold for quick cash as if you were selling them manually. If location has been forgotten, all characters are sold automatically.",
 	CAPTURESELLTOOLTIP = "Quicksell this character for %d gold. This is equal to selling character to market but won't let you buyback them. ",
-	CAPTUREADDTOOLTIP = "Attempt to add this character to roster. You won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
-	CAPTUREENSLAVETOOLTIP = "Add this character to roster as a slave instantly. You won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
-	CAPTURERECRUITTOOLTIP = "Attempt to recruit this character. You won't be able to finish turn if your total number of characters is bigger than available number of rooms.",
+	CAPTUREADDTOOLTIP = "Attempt to add this character to roster.\n\nYou won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
+	CAPTUREENSLAVETOOLTIP = "Add this character to roster as a slave instantly.\n\nYou won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
+	CAPTURERECRUITTOOLTIP = "Attempt to recruit this character.\n\nYou won't be able to finish turn if your total number of characters is bigger than available number of rooms.",
 	CAPTUREDISMISSTOOLTIP = "Dismiss this character.",
 	SERVICEBOOSTTOOLTIP = "You can assign additional item consumption here which will boost service production. These items can be produced at Farm. ",
 	FARMTOOLTIP = "You can assign character to farm to produce additional materials which can be used to boost service production or be sold.",
@@ -2342,18 +2342,18 @@ Consent represents character's general acceptance of various sexual actions, but
 	INFORULES_CONDS = "Conditions and rules can be toggled on character, affecting some of their stats and behavior.",
 	INFOPERSONALITY = """Character's personality will affect their banter and provide access to certain traits and bonuses.
 	Neutral: No bonuses
-	Bold: Incoming negative effects last 1 turn less, +5% Productivity
-	Kind: Outcoming positive buffs last 1 turn more, +10% Service
+	Bold: Incoming negative effects last 1 fewer turn, +5% Productivity
+	Kind: Outcoming positive buffs last 1 additional turn, +10% Service
 	Serious: Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)
 Task Crit Chance +3%
 	Shy: Spell Mana cost reduced by 15%
 +15% Loyalty Gain, -10% Subordinate weekly tax
 	""",
 	INFOPERSONALITYBOLD = """Bold
-Incoming negative effects last 1 turn less
+Incoming negative effects last 1 fewer turn
 +5% Productivity""",
 	INFOPERSONALITYKIND = """Kind
-Outcoming positive buffs last 1 turn more
+Outcoming positive buffs last 1 additional turn
 +10% Service""",
 	INFOPERSONALITYSERIOUS = """Serious
 Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)
@@ -2603,7 +2603,7 @@ Basic Effects:
 	SKILLCONSUME_SOULDESCRIPT = "Kills target and receives their experience.",
 	SKILLSERVE = "Serve",
 	SKILLSERVEDESCRIPT = """Category: {color=green|Gracious}
-Provide a care service for another person. Improves Obedience and increases Loyalty gain. Requires 20 lust. 
+Provide a care service for another person. Improves Obedience and increases Loyalty Gain. Requires 20 lust. 
 Basic Effects: 
 Loyalty Gain: +1 for 5 days, Maxes Obedience, Increases affinity to Bold Personality.""",
 	SKILLDISCIPLINE = "Discipline",
@@ -3174,6 +3174,7 @@ Increased Health, DEF and MDEF""",
 	TRAITEFFECTHARDWORK = "Hard Work: +50%% Productivity",
 	TRAITEFFECTPHYSBUF = "Elixir of Ogre's Strength: +80 Physics",
 	TRAITEFFECTWITSBUF = "Elixir of Expanded Mind: +80 Wits",
+	TRAITEFFECTALCOHOL = "Wasted: -1 Loyalty Gain, +1 Spirit Gain, -15%% Productivity",
 	TRAITEFFECTFAVFOOD = "Favorite Food: +5%% Productivity, +5%% Experience Gain",
 	TRAITEFFECTHATEDFOOD = "Hated Food: -10%% Productivity.",
 	TRAITEFFECTSTARVE = "Starvation: -50%% Productivity, -50%% Damage.",
@@ -3181,13 +3182,13 @@ Increased Health, DEF and MDEF""",
 	TRAITEFFECTDISCIPLINE = "Discipline: +50%% Labor and craft efficiencies.",
 	TRAITEFFECTSEDUCE = "Seduce: -7 Obedience drain",
 	TRAITEFFECTGREATSEDUCE = "Great Seduce: Prevents escapes; -9 Obedience drain, +50%% Lust growth.",
-	TRAITEFFECTALLURE = "Allure: -5 Obedience drain, +1 Loyalty gain.",
+	TRAITEFFECTALLURE = "Allure: -5 Obedience drain, +1 Loyalty Gain.",
 	TRAITEFFECTSEDATED = "Sedated: -10 Obedience drain",
-	TRAITEFFECTFEAR = "Fear: -6 Obedience drain, -1 Loyalty gain.",
+	TRAITEFFECTFEAR = "Fear: -6 Obedience drain, -1 Loyalty Gain.",
 	TRAITEFFECTMINDCONTROLLED = "Mind Controlled",
 	TRAITEFFECTINSPIRED = "Inspired: +20%% damage, DEF and MDEF.",
 	TRAITEFFECTCOMMANDED = "Commanded: +50%% ATK and MATK.",
-	TRAITEFFECTSERVING = "Serving: +1 Loyalty gain.",
+	TRAITEFFECTSERVING = "Serving: +1 Loyalty Gain.",
 	TRAITEFFECTREFINE = "Weapon refined: +30%% ATK.",
 	TRAITEFFECTACID = "Acid: -25 DEF.",
 	TRAITEFFECTATTRACTED = "Attracted: -30%% Damage",
@@ -3244,7 +3245,7 @@ Social skills effect: +10%.""",
 	TRAITEFFECTCELENACURSE = "Celena's Curse: -50%% Max. Health.",
 	TRAITEFFECTHYBRISCURSE = "Hybris' Curse: -50%% DEF",
 	TRAITEFFECTFREYACURSE = "Freya's Curse: -50 Evasion and Hit Rate.",
-	TRAITEFFECTDATEBONUS = "Loyalty gain increased by 0.5.",
+	TRAITEFFECTDATEBONUS = "Loyalty Gain increased by 0.5.",
 	TRAITEFFECTRESISTSTATE = "Resist state: Can't gain obedience from positive abilities. Can't use exploration skills. Positive actions during dates less effective.",
 	TRAITEFFECTISPREGNANT = "Is pregnant: -10 Speed, -20 Physics",
 	TRAITEFFECTISPREGNANT2 = "Is heavily pregnant: -20 Speed, -40 Physics",
@@ -3331,7 +3332,7 @@ Social skills effect: +10%.""",
 	BUFFDESCRIPTBLEEDING = "Bleeding: Take 10%% of Maximum HP as neutral damage per turn",
 	BUFFDESCRIPTCONFUSE = "Confusion",
 	BUFFDESCRIPTFREEUSE = "Allows to use an item without taking a turn",
-	BUFFDESCRIPTSHRED = "Shredded: DEF is reduced by 50%%",
+	BUFFDESCRIPTSHRED = "Shredded: DEF is reduced by 25%%",
 	BUFFDESCRIPTSHATTER = "Shattered: MDEF is reduced by 50%%",
 	BUFFDESCRIPTGROWL = "Speed and evasion decreased",
 	BUFFDESCRIPTCURSEATTACK = "Attack decreased",
@@ -19348,7 +19349,7 @@ His voice sounds bitter when he addressed the High Priestess but its clear her a
 {color=yellow|— We are not allowed to leave the capital and I was denied to investigate it as well. However an outsider like you isn't held back by such rules. I want you to see what happened to it, as my intuition dictates it's not something to overlook.}""",
 	METEOR_LOUNGE_BRIEF_OPT_CHECK = "That sounds curious, I'll check it out",
 	METEOR_LOUNGE_BRIEF_OPT_MAYBE = "Maybe, If I have enough time",
-	METEOR_LOUNGE_RESPONSE = "Content with your response, Lorien has marked the spot on your location. It shouldn't take too much time although you wonder if you're gonna find anything at all after this much time has passed.",
+	METEOR_LOUNGE_RESPONSE = "Content with your response, Lorien has marked the spot on your map. It shouldn't take too much time although you wonder if you're gonna find anything at all after this much time has passed.",
 	METEOR_OGRES_START = "As you arrive at the clearing Lorien has pointed out, you spot the place the star has fallen into. The crater has overgrown some time ago but around it you spot multiple large foot tracks. Much larger than humans, they must belong to ogres.",
 	METEOR_OGRES_START_OPT_FOLLOW = "*Follow tracks*",
 	METEOR_OGRES_CAMP = """You manage to follow the poorly preserved tracks for a while but your effort rewards you. You find a makeshift camp belonging to a small group of ogres. It's a crude setup of tattered hides and splintered logs, reeking of charred meat and damp earth. Three ogres huddle around a smoldering fire, their guttural laughter echoing through the clearing. The largest, a brute with a scarred hide, grips a massive club embedded with a jagged, faintly glowing stone, the one you are looking for. His beady eyes scan the surroundings.

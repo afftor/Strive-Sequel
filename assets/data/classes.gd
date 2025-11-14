@@ -30,7 +30,7 @@ var professions = {
 		statchanges = {hpmax = 20, trainee_amount = 3, mastery_leadership = 3},
 		traits = ['trainer'],
 		skills = [],#'supremacy'],
-		combatskills = ['inspire'],
+		combatskills = [],
 		conflict_classes = ['watchdog','headgirl'],
 	},
 	watchdog = { #obsolete
@@ -566,7 +566,7 @@ var professions = {
 		icon = load("res://assets/images/iconsitems/naturestaff.png"),
 		tags = [],
 		categories = ['magic', 'combat'],
-		showupreqs = [{code = 'one_of_races', value = ['Elf','TribalElf','DarkElf','Dryad','Fairy']}],
+		showupreqs = [{code = 'one_of_races', value = ['Elf','TribalElf','DarkElf','Dryad','Fairy']}, {code = "class_unlocked", class = 'druid', operant = 'eq', check = true}],
 		reqs = [{code = 'has_any_profession', value = ['apprentice', 'scholar']},{code = 'stat', stat = 'wits', operant = 'gte', value = 60}, {code = 'one_of_races', value = ['Elf','TribalElf','DarkElf','Dryad','Fairy']}],
 		statchanges = {wits_bonus = 10, hpmax = 5, resist_earth = 20, chg_wisdom_max = 1, mastery_earth = 1, mastery_point_magic = 1},
 		traits = ['druid'],
