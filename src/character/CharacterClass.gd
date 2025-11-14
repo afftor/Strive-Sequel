@@ -486,12 +486,12 @@ func roll_static_masteries(list, lv):
 		mas_1 = input_handler.random_from_array(list)
 		list.erase(mas_1)
 	if list.empty():
-		mas_2 = 'leadership'
+		mas_2 = null
 	else:
 		mas_2 = input_handler.random_from_array(list)
 		list.erase(mas_2)
 	if list.empty():
-		mas_3 = 'leadership'
+		mas_3 = null
 	else:
 		mas_3 = input_handler.random_from_array(list)
 	
@@ -530,8 +530,10 @@ func roll_static_masteries(list, lv):
 			lv_3 = 45 - lv_1 - lv_2
 	
 	add_mastery_as_bonuses(mas_1, lv_1)
-	add_mastery_as_bonuses(mas_2, lv_2)
-	add_mastery_as_bonuses(mas_3, lv_3)
+	if mas_2 != null:
+		add_mastery_as_bonuses(mas_2, lv_2)
+	if mas_3 != null:
+		add_mastery_as_bonuses(mas_3, lv_3)
 
 
 
