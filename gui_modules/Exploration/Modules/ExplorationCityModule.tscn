@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=2]
+[gd_scene load_steps=137 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=2]
@@ -119,6 +119,7 @@
 [ext_resource path="res://assets/images/iconsages/T.png" type="Texture" id=123]
 [ext_resource path="res://assets/images/sexicons/futa.png" type="Texture" id=124]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/traitpanel/button_traits_universal.png" type="Texture" id=126]
+[ext_resource path="res://assets/images/iconsitems/quality_bg/blue.png" type="Texture" id=127]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 28 )
@@ -1820,6 +1821,17 @@ theme = ExtResource( 68 )
 custom_fonts/font = ExtResource( 8 )
 toggle_mode = true
 
+[node name="quality_color" type="TextureRect" parent="AreaShop/SellBlock/ScrollContainer/VBoxContainer/Button"]
+visible = false
+show_behind_parent = true
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 47.0
+margin_bottom = 45.0
+texture = ExtResource( 127 )
+expand = true
+stretch_mode = 6
+
 [node name="icon" type="TextureRect" parent="AreaShop/SellBlock/ScrollContainer/VBoxContainer/Button"]
 margin_left = 6.0
 margin_top = 6.0
@@ -1931,6 +1943,17 @@ rect_min_size = Vector2( 464, 50 )
 theme = ExtResource( 68 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 toggle_mode = true
+
+[node name="quality_color" type="TextureRect" parent="AreaShop/BuyBlock/ScrollContainer/VBoxContainer/Button"]
+visible = false
+show_behind_parent = true
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 47.0
+margin_bottom = 45.0
+texture = ExtResource( 127 )
+expand = true
+stretch_mode = 6
 
 [node name="icon" type="TextureRect" parent="AreaShop/BuyBlock/ScrollContainer/VBoxContainer/Button"]
 margin_left = 6.0

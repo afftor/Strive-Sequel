@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_36.tres" type="DynamicFont" id=2]
@@ -39,6 +39,7 @@
 [ext_resource path="res://assets/Textures_v2/craft/enchant_item_bg.png" type="Texture" id=37]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Loot/frame_loot_square.png" type="Texture" id=38]
 [ext_resource path="res://assets/images/gui/inventory/icon_armor1.png" type="Texture" id=39]
+[ext_resource path="res://assets/images/iconsitems/quality_bg/blue.png" type="Texture" id=40]
 
 [node name="Panel" type="TextureRect"]
 anchor_right = 1.0
@@ -130,6 +131,19 @@ texture_normal = ExtResource( 12 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 10 )
 texture_disabled = ExtResource( 9 )
+
+[node name="quality_color" type="TextureRect" parent="ItemList/ItemScroll/Items/Button"]
+visible = false
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+texture = ExtResource( 40 )
+expand = true
+stretch_mode = 6
 
 [node name="Icon" type="TextureRect" parent="ItemList/ItemScroll/Items/Button"]
 show_behind_parent = true

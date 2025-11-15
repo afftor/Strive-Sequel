@@ -51,6 +51,11 @@ func build_item_list():
 		panel.connect('pressed', self, 'select_item', [id])
 		globals.connectitemtooltip_v2(panel, item)
 		item.set_icon(panel.get_node('Icon'))
+		if item.quality != "":
+			panel.get_node("quality_color").show()
+			panel.get_node("quality_color").texture = variables.quality_colors[item.quality]
+		else:
+			panel.get_node("quality_color").hide()
 		panel.pressed = selected_item == id
 		if item.owner != null:
 			panel.get_node("WornIcon").show()
