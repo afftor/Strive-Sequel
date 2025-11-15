@@ -177,6 +177,12 @@ func setup_weapon_element():
 	if damage_type == 'weapon':
 		damage_type = get_parent().caster.get_weapon_element()
 
+func get_damage_type_name():
+	return tr("DAMAGETYPE"+damage_type.to_upper())
+
+func get_ability_type():
+	return tr("DAMAGETYPE"+get_parent().ability_type.to_upper())
+
 func execute():
 	var parent = get_parent()
 	var text = ""
@@ -197,7 +203,7 @@ func execute():
 			var rval = parent.target.deal_damage(value, damage_type)
 		else:
 			var rval = parent.target.deal_damage(value, damage_type)
-			text += "%s is hit for %d damage. " %[parent.target.get_short_name(), rval]#, s_skill2.value[i]]
+			text += "%s is hit for %d damage (%s, %s). " %[parent.target.get_short_name(), rval, get_ability_type(), get_damage_type_name()]#, s_skill2.value[i]]
 	elif damagestat == 'damage_hp' and dmgf == 1: #heal, heal no log
 		if parent.get_tags().has('no_log'):
 			var rval = parent.target.heal(value)

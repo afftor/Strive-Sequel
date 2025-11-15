@@ -390,6 +390,17 @@ var TranslationDict = {
 	LIGHTRESIST = """свет""",
 	DARKRESIST = """тьма""",
 	MINDRESIST = """разум""",
+	DAMAGETYPENORMAL = """Normal""", # MISSING TRANSLATION
+	DAMAGETYPEFIRE = """Fire""", # MISSING TRANSLATION
+	DAMAGETYPEEARTH = """Earth""", # MISSING TRANSLATION
+	DAMAGETYPEAIR = """Air""", # MISSING TRANSLATION
+	DAMAGETYPEWATER = """Water""", # MISSING TRANSLATION
+	DAMAGETYPELIGHT = """Light""", # MISSING TRANSLATION
+	DAMAGETYPEDARK = """Dark""", # MISSING TRANSLATION
+	DAMAGETYPEMIND = """Mind""", # MISSING TRANSLATION
+	DAMAGETYPESKILL = """Physical""", # MISSING TRANSLATION
+	DAMAGETYPESPELL = """Magic""", # MISSING TRANSLATION
+	DAMAGETYPEITEM = """Item""", # MISSING TRANSLATION
 	ALLRESIST = """все""",
 	HEALTHP = """Здоровье:""",
 	MANAP = """Мана:""",
@@ -3332,6 +3343,18 @@ Requires: Базовый рабский труд""",
 Увеличение уклонения, точности и MЗАЩ""",
 	TRAITEFFECTRARETOUGH = """Особый: Жесткий
 Увеличение здоровья, ЗАЩ и МЗАЩ""",
+	TRAITMONSTER_MASTERY_WARFARE_DESCRIPT = """Has enemy variation of warfare mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_PROTECTION_DESCRIPT = """Has enemy variation of protection mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_STEALTH_DESCRIPT = """Has enemy variation of stealth mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_MARKSMANSHIP_DESCRIPT = """Has enemy variation of marsmanship mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_LEADERSHIP_DESCRIPT = """Has enemy variation of ledership mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_FIRE_DESCRIPT = """Has enemy variation of fire mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_WATER_DESCRIPT = """Has enemy variation of water mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_AIR_DESCRIPT = """Has enemy variation of air mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_EARTH_DESCRIPT = """Has enemy variation of earth mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_LIGHT_DESCRIPT = """Has enemy variation of light mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_DARK_DESCRIPT = """Has enemy variation of dark mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_MIND_DESCRIPT = """Has enemy variation of mind mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
 	TRAITEFFECTHARDWORK = """Усердие: +50%% производительности""",
 	TRAITEFFECTPHYSBUF = """Эликсир силы огра: +80 физ. возм.""",
 	TRAITEFFECTWITSBUF = """Эликсир расширения разума: +80 мудрости""",
