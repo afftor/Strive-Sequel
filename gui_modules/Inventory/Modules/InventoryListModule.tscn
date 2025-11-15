@@ -207,7 +207,6 @@ valign = 1
 autowrap = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Scroller"]
-visible = false
 light_mask = 0
 margin_left = 51.2322
 margin_top = 251.0
@@ -235,9 +234,9 @@ texture_hover = ExtResource( 34 )
 [node name="quality_color" type="TextureRect" parent="Scroller/ScrollContainer/GridContainer/Button"]
 visible = false
 show_behind_parent = true
-margin_left = 453.0
+margin_left = 5.0
 margin_top = 5.0
-margin_right = 495.0
+margin_right = 47.0
 margin_bottom = 47.0
 texture = ExtResource( 2 )
 expand = true
@@ -246,9 +245,9 @@ stretch_mode = 6
 [node name="Image" type="TextureRect" parent="Scroller/ScrollContainer/GridContainer/Button"]
 show_behind_parent = true
 light_mask = 0
-margin_left = 455.287
+margin_left = 7.28699
 margin_top = 5.96381
-margin_right = 494.287
+margin_right = 46.287
 margin_bottom = 43.9638
 rect_min_size = Vector2( 5, 0 )
 mouse_filter = 2
@@ -274,9 +273,9 @@ __meta__ = {
 
 [node name="Type" type="TextureRect" parent="Scroller/ScrollContainer/GridContainer/Button"]
 light_mask = 0
-margin_left = 1.0
+margin_left = 450.0
 margin_top = 1.0
-margin_right = 48.0
+margin_right = 497.0
 margin_bottom = 49.0
 mouse_filter = 2
 texture = ExtResource( 5 )

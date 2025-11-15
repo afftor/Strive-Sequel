@@ -1531,6 +1531,10 @@ func update_queue(queue, current): #don't call in asynchroned state
 		var icon = person.get_icon()
 		if icon != null:
 			tmp.get_node('icon').texture = icon
+		if person.combatgroup == 'enemy':
+			tmp.self_modulate = Color(1.0,0.5,0.5,1.0)
+		else:
+			tmp.self_modulate = Color(0.5,1.0,0.5,1.0)
 		tmp.get_node('hpbar').max_value = person.get_stat('hpmax')
 		tmp.get_node('hpbar').value = person.hp
 		tmp.connect("mouse_entered", self, 'FighterMouseOver', [person.id, true])
