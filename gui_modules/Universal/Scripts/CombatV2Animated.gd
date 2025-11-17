@@ -260,11 +260,32 @@ func buildenemygroup(enemygroup):
 		tchar.generate_simple_fighter(tempname)
 		tchar.combatgroup = 'enemy'
 		tchar.position = i
+		
+		var mas_lv = 1
+		if globals.char_roll_data.diff == 'medium':
+			mas_lv = globals.rng.randi_range(2, 3)
+		if globals.char_roll_data.diff == 'hard':
+			mas_lv = globals.rng.randi_range(4, 5)
+		if globals.char_roll_data.diff == 'infinite':
+			if globals.char_roll_data.lvl > 30:
+				mas_lv = 8
+			elif globals.char_roll_data.lvl > 20:
+				mas_lv = 7
+			elif globals.char_roll_data.lvl > 10:
+				mas_lv = 6
+#			else:
+#				mas_lv = 1
+		#2add
+		var mas_arr = []
+		if Enemydata.enemies[tempname].has('allowed_mastery'):
+			mas_arr = Enemydata.enemies[tempname].allowed_mastery.duplicate()
 		if rare:
-			tchar.add_rare_trait()
+#			tchar.add_rare_trait()
+			tchar.roll_static_masteries(mas_arr, mas_lv)
 		if mboss:
 			tchar.tags.push_back("miniboss")
 			tchar.add_trait('miniboss')
+#			tchar.roll_static_masteries(mas_arr, mas_lv)
 		tchar.add_trait('core_trait')
 	
 	for i in enemygroup:

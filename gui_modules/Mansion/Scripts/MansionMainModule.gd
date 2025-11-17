@@ -559,8 +559,10 @@ func test_mode():
 	if true:
 		ResourceScripts.game_progress.seen_dialogues.append("PRIESTESS_SWORD_TALK_1_1")
 		ResourceScripts.game_progress.seen_dialogues.append("ALIRONCHURCHFIRSTCOME")
+		ResourceScripts.game_progress.unlocked_classes.append('alchemist')
+		ResourceScripts.game_progress.unlocked_classes.append('smith')
 		var character = ResourceScripts.scriptdict.class_slave.new("test_main_real")
-		character.create('Dryad', 'male', 'random')
+		character.create('Human', 'male', 'random')
 		character.fill_boosters()
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
