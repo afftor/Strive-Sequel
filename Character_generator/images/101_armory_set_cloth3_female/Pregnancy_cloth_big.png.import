@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Arm_armorL_cloth3.png-c3b521165e967fa50bc7143e7074802f.stex"
+path="res://.import/Pregnancy_cloth_big.png-2191c22cef6623681b4f94a0c3fce7cc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/101_armory_set_cloth3_female/Arm_armorL_cloth3.png"
-dest_files=[ "res://.import/Arm_armorL_cloth3.png-c3b521165e967fa50bc7143e7074802f.stex" ]
+source_file="res://Character_generator/images/101_armory_set_cloth3_female/Pregnancy_cloth_big.png"
+dest_files=[ "res://.import/Pregnancy_cloth_big.png-2191c22cef6623681b4f94a0c3fce7cc.stex" ]
 
 [params]
 

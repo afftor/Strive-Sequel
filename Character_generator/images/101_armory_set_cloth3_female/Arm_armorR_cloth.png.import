@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/raincoat_cloth3.png-5f8127cf8df0663b03eedf91ead587b2.stex"
+path="res://.import/Arm_armorR_cloth.png-6fa93313e8ad1b7a594747bab4f4705a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/101_armory_set_cloth3_female/raincoat_cloth3.png"
-dest_files=[ "res://.import/raincoat_cloth3.png-5f8127cf8df0663b03eedf91ead587b2.stex" ]
+source_file="res://Character_generator/images/101_armory_set_cloth3_female/Arm_armorR_cloth.png"
+dest_files=[ "res://.import/Arm_armorR_cloth.png-6fa93313e8ad1b7a594747bab4f4705a.stex" ]
 
 [params]
 

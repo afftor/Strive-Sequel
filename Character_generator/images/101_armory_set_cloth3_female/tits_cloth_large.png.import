@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/torso_armor_leather2 копия.png-e5219bf61bb7d8e1724452f59327b10d.stex"
+path="res://.import/tits_cloth_large.png-9621735913bbdcab783e1d89e84b8b74.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/122_armory_set_leather2_male/torso_armor_leather2 копия.png"
-dest_files=[ "res://.import/torso_armor_leather2 копия.png-e5219bf61bb7d8e1724452f59327b10d.stex" ]
+source_file="res://Character_generator/images/101_armory_set_cloth3_female/tits_cloth_large.png"
+dest_files=[ "res://.import/tits_cloth_large.png-9621735913bbdcab783e1d89e84b8b74.stex" ]
 
 [params]
 

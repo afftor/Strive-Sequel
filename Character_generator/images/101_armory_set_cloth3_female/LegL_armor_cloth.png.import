@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LegR_armor_cloth3.png-6a2e5c3d4108d9e830c1bba2b60d4de5.stex"
+path="res://.import/LegL_armor_cloth.png-992f81188f40db0fc91755db7a3c592f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/101_armory_set_cloth3_female/LegR_armor_cloth3.png"
-dest_files=[ "res://.import/LegR_armor_cloth3.png-6a2e5c3d4108d9e830c1bba2b60d4de5.stex" ]
+source_file="res://Character_generator/images/101_armory_set_cloth3_female/LegL_armor_cloth.png"
+dest_files=[ "res://.import/LegL_armor_cloth.png-992f81188f40db0fc91755db7a3c592f.stex" ]
 
 [params]
 
