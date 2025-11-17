@@ -912,7 +912,7 @@ func can_upgrade_mastery(school, force_universal = false):
 	var data = Skilldata.masteries[school]
 	if !masteries_real[school].enable:
 		return false
-	if masteries_real[school].magic + masteries_real[school].combat + masteries_real[school].universal >= variables.mastery_train_limit:
+	if masteries_real[school].magic.size() + masteries_real[school].combat.size() + masteries_real[school].universal.size() >= variables.mastery_train_limit:
 		return false
 	var cost = upgrade_mastery_cost(school, force_universal)
 	for c in cost:
