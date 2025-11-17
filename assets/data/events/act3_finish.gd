@@ -2132,13 +2132,7 @@ var data = {
 				dialogue_argument = 2,
 				text = "DIALOGUECLOSE",
 				type = "next_dialogue",
-				reqs = [
-					{
-						type = "quest_completed",
-						name = "hara_scales_quest",
-						check = false
-					}
-				],
+				reqs = [{type = "quest_completed", name = "hara_scales_quest", check = false}],
 				bonus_effects = [
 					{
 						code = "decision",
@@ -2151,13 +2145,7 @@ var data = {
 				dialogue_argument = 0,
 				text = "DIALOGUECLOSE",
 				type = "next_dialogue",
-				reqs = [
-					{
-						type = "quest_completed",
-						name = "hara_scales_quest",
-						check = true
-					}
-				],
+				reqs = [{type = "quest_completed", name = "hara_scales_quest", check = true}],
 				bonus_effects = [
 					{
 						code = "remove_decision",
@@ -2231,13 +2219,7 @@ var data = {
 				dialogue_argument = 2,
 				text = "DIALOGUECLOSE",
 				type = "next_dialogue",
-				reqs = [
-					{
-						type = "quest_completed",
-						name = "hara_scales_quest",
-						check = false
-					}
-				],
+				reqs = [{type = "quest_completed", name = "hara_scales_quest", check = false}],
 				bonus_effects = [
 					{
 						code = "decision",
@@ -2250,13 +2232,7 @@ var data = {
 				dialogue_argument = 0,
 				text = "DIALOGUECLOSE",
 				type = "next_dialogue",
-				reqs = [
-					{
-						type = "quest_completed",
-						name = "hara_scales_quest",
-						check = true
-					}
-				],
+				reqs = [{type = "quest_completed", name = "hara_scales_quest", check = true}],
 				bonus_effects = [
 					{
 						code = "remove_decision",

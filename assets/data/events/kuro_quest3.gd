@@ -1010,23 +1010,11 @@ var data = {
 		text = [
 			{
 				text = "KURO3_DUNGEON_9_1",
-				reqs = [
-					{
-						type = "quest_completed",
-						name = "zephyra_disappearance_quest",
-						check = true
-					}
-				]
+				reqs = [{type = "quest_completed", name = "zephyra_disappearance_quest", check = true}]
 			},
 			{
 				text = "KURO3_DUNGEON_9_2",
-				reqs = [
-					{
-						type = "quest_completed",
-						name = "zephyra_disappearance_quest",
-						check = false
-					}
-				]
+				reqs = [{type = "quest_completed", name = "zephyra_disappearance_quest", check = false}]
 			},
 			{
 				text = "KURO3_DUNGEON_9",
