@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/taz_armor_leather3.png-3606d5d5da8a0fe25d060aaf678196e0.stex"
+path="res://.import/Arm_armorL_cloth.png-6d5ba6a082bd339921ca4483d82100d7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/101_armory_set_cloth3_female/taz_armor_leather3.png"
-dest_files=[ "res://.import/taz_armor_leather3.png-3606d5d5da8a0fe25d060aaf678196e0.stex" ]
+source_file="res://Character_generator/images/101_armory_set_cloth3_female/Arm_armorL_cloth.png"
+dest_files=[ "res://.import/Arm_armorL_cloth.png-6d5ba6a082bd339921ca4483d82100d7.stex" ]
 
 [params]
 

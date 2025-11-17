@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/torso_armor_cloth3.png-b35c11c60c056ab69b602e1e085f4f88.stex"
+path="res://.import/Shoulder_armorR_cloth.png-f52c9ca30c4bc7dbb47efd2afcda5d57.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character_generator/images/101_armory_set_cloth3_female/torso_armor_cloth3.png"
-dest_files=[ "res://.import/torso_armor_cloth3.png-b35c11c60c056ab69b602e1e085f4f88.stex" ]
+source_file="res://Character_generator/images/101_armory_set_cloth3_female/Shoulder_armorR_cloth.png"
+dest_files=[ "res://.import/Shoulder_armorR_cloth.png-f52c9ca30c4bc7dbb47efd2afcda5d57.stex" ]
 
 [params]
 
