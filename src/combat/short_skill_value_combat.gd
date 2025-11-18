@@ -186,26 +186,18 @@ func execute():
 	if damagestat == 'no_stat': 
 		return text
 	if damagestat == 'damage_hp' and dmgf == 0: #drain, damage, damage no log, drain no log
-		var rval
 		if is_drain > 0.0 && parent.get_tags().has('no_log'):
-			rval = parent.target.deal_damage(value, damage_type)
+			var rval = parent.target.deal_damage(value, damage_type)
 			var rval2 = parent.caster.heal(rval * is_drain)
 		elif is_drain > 0.0:
-			rval = parent.target.deal_damage(value, damage_type)
+			var rval = parent.target.deal_damage(value, damage_type)
 			var rval2 = parent.caster.heal(rval * is_drain)
 			text += "%s drained %d health from %s and gained %d health." %[parent.caster.get_short_name(), rval, parent.target.get_short_name(), rval2]
 		elif parent.get_tags().has('no_log') && is_drain <= 0.0:
-			rval = parent.target.deal_damage(value, damage_type)
+			var rval = parent.target.deal_damage(value, damage_type)
 		else:
-			rval = parent.target.deal_damage(value, damage_type)
+			var rval = parent.target.deal_damage(value, damage_type)
 			text += "%s is hit for %d damage. " %[parent.target.get_short_name(), rval]#, s_skill2.value[i]]
-		if (rval > 0
-				and !input_handler.globalsettings.no_damage_shake
-				and input_handler.combat_node != null
-				and input_handler.combat_node.is_visible_in_tree()
-			):
-			var params = get_shake_params(rval)
-			ResourceScripts.core_animations.ShakeAnimation(input_handler.combat_node, params.time, params.magnitude)
 	elif damagestat == 'damage_hp' and dmgf == 1: #heal, heal no log
 		if parent.get_tags().has('no_log'):
 			var rval = parent.target.heal(value)
