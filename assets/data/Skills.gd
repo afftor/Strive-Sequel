@@ -112,7 +112,7 @@ var Skilllist = {
 		target = 'enemy',
 		target_number = 'single',
 		target_range = 'any',
-		damage_type = 'dark',
+		damage_type = 'weapon',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = ['caster.atk', '*2.0']
@@ -2223,18 +2223,34 @@ func get_charges(skill, caster):#template, object
 
 
 func _ready():
+	var key
 	for s in training_actions:
 		var tmp = training_actions[s]
 		if tmp.name == '':
-			tmp.name = 'ACTION' + s.to_upper()
+			key = 'ACTION' + s.to_upper()
+			tmp.name = key
+			if !input_handler.if_has_translation(key):
+				print(key)
 		if tmp.descript == '':
-			tmp.descript = 'ACTION' + s.to_upper() + 'DESCRIPT'
+			key = 'ACTION' + s.to_upper() + 'DESCRIPT'
+			tmp.descript = key
+			if !input_handler.if_has_translation(key):
+				print(key)
 		if tmp.has('descript_mastery') and tmp.descript_mastery == '':
-			tmp.descript_mastery = 'ACTION' + s.to_upper() + 'DESCRIPTMASTERY'
+			key = 'ACTION' + s.to_upper() + 'DESCRIPTMASTERY'
+			tmp.descript_mastery = key
+			if !input_handler.if_has_translation(key):
+				print(key)
 		if tmp.scene_text == '':
-			tmp.scene_text = 'ACTION' + s.to_upper() + 'SCENETEXT'
+			key = 'ACTION' + s.to_upper() + 'SCENETEXT'
+			tmp.scene_text = key
+			if !input_handler.if_has_translation(key):
+				print(key)
 	for s in training_categories:
 		var tmp = training_categories[s]
 		if tmp.name == '':
-			tmp.name = 'ACTIONTYPE' + s.to_upper()
+			key = 'ACTIONTYPE' + s.to_upper()
+			tmp.name = key
+			if !input_handler.if_has_translation(key):
+				print(key)
 

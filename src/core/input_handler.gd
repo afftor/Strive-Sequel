@@ -1922,3 +1922,11 @@ func compare_list(list_new, list_old):
 		if !list_new.has(i):
 			res_remove.push_back(i)
 	return {add = res_add, remove = res_remove}
+
+
+func if_has_translation(key):
+	if !variables.translation_check:
+		return true
+	if tr(key) == key:
+		return false
+	return true

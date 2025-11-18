@@ -1519,9 +1519,26 @@ var traits = {
 #		icon = null,
 #		effects = [],
 #	},
-	
+	master_smith = {#removes bad craft
+		code = 'master_smith',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		tags = ['master_smith']
+	},
+	master_alchemist = {#removes bad craft
+		code = 'master_alchemist',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+		tags = ['master_alchemist']
+	},
 	#minor_training
-		etiquette = {
+	etiquette = {
 		code = 'etiquette',
 		name = '',
 		descript = '',
@@ -2157,13 +2174,29 @@ var sex_traits = { #only for interaction tab
 
 }
 func _ready():
+	for id in Skilldata.masteries:
+		var tmp = {
+			icon = Skilldata.masteries[id].icon,
+			visible = true,
+			effects = [],
+			tags = ['simple_icon']
+		}
+		traits['monster_mastery_' + id] = tmp
+	var key
 	for tr in traits:
 		if !traits[tr].has('code'): traits[tr].code = tr
 		if !traits[tr].has('tags'): traits[tr].tags = []
 		if !traits[tr].has('bonusstats'): traits[tr].bonusstats = {}
 	for upg in body_upgrades:
-		body_upgrades[upg].name = 'BODYUPGRADENAME_' + upg.to_upper()
-		body_upgrades[upg].descript = 'BODYUPGRADEDESCRIPT_' + upg.to_upper()
+		key = 'BODYUPGRADENAME_' + upg.to_upper()
+		body_upgrades[upg].name = key
+		if !input_handler.if_has_translation(key):
+			print(key)
+		key = 'BODYUPGRADEDESCRIPT_' + upg.to_upper()
+		body_upgrades[upg].descript = key
+		if !input_handler.if_has_translation(key):
+			print(key)
+	
 #	for prof in slave_profs:
 #		slave_profs[prof].code = prof
 #		slave_profs[prof].name = 'SLAVEPROFNAME_' + prof.trim_prefix('slave_').to_upper()

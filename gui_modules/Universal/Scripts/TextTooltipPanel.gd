@@ -43,6 +43,9 @@ func update():
 		$Panel.rect_size.x = Panel_x
 	yield(get_tree(), 'idle_frame')
 	
+	if !weakref(parentnode).get_ref():
+		emit_signal("update_completed")
+		return
 	rect_size.y = $RichTextLabel.get_v_scroll().get_max() + pos_fix
 	$Panel.rect_size.y = $RichTextLabel.get_v_scroll().get_max() + pos_fix
 	$RichTextLabel.rect_size.y = rect_size.y

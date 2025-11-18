@@ -249,6 +249,7 @@ func add_masteries_source(stat, src_type, src_value, value):
 	else:
 		masteries_sources[stat][src_type][src_value] += value
 
+
 func add_stat_bonus(stat, value, operant, src_type, src_value, timestamp, check = false):
 	var store = stat_bonuses
 	if src_type == 'innate':
@@ -615,6 +616,9 @@ func generate_simple_fighter(data):
 	if data.has('traits'):
 		for tr in data.traits:
 			add_trait(tr)
+	if data.has('preset_masteries'):
+		for mas in data.preset_masteries:
+			_add_mastery_as_bonuses(mas, data.preset_masteries[mas])
 
 
 #traits
@@ -908,6 +912,8 @@ func can_upgrade_mastery(school, force_universal = false):
 	var data = Skilldata.masteries[school]
 	if !masteries_real[school].enable:
 		return false
+	if masteries_real[school].magic.size() + masteries_real[school].combat.size() + masteries_real[school].universal.size() >= variables.mastery_train_limit:
+		return false
 	var cost = upgrade_mastery_cost(school, force_universal)
 	for c in cost:
 		if cost[c] > parent.get_ref().get_stat('mastery_point_' + c):
@@ -974,6 +980,23 @@ func get_used_mastery_points(category):
 	for rec in masteries.values():
 		res += rec[category].size()
 	return res
+
+
+func _add_mastery_as_bonuses(category, lv, mul = 2.5):
+	if lv <= 0:
+		return
+	add_trait('monster_mastery_' + category)
+	var mas_data = Skilldata.masteries[category]
+	for i in range(lv):
+		for stat in mas_data.passive:
+			process_bonus_record(stat, mas_data.passive[stat] * mul, 'innate', category, 0) 
+		if i < mas_data.maxlevel:
+			var lvdata = mas_data['level%d' % (i + 1)]
+			for trait in lvdata.traits:
+				add_trait(trait)
+			for id in lvdata.combat_skills:
+				parent.get_ref().learn_c_skill(id)
+
 
 #bodmodes
 func get_upgrade_points():

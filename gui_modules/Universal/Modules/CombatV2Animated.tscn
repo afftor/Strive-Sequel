@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=86 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/CharStatsPanel.tscn" type="PackedScene" id=2]
@@ -73,6 +73,7 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/Skills_book_icon_block.png" type="Texture" id=71]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/Skills_book_icon_active.png" type="Texture" id=72]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/Skills_book_icon.png" type="Texture" id=73]
+[ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=74]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -122,6 +123,11 @@ font_data = ExtResource( 25 )
 [sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 16 )
 region_rect = Rect2( 0, 0, 694, 182 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 18
+use_filter = true
+font_data = ExtResource( 74 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 24
@@ -925,9 +931,6 @@ margin_top = 658.0
 margin_right = 1307.0
 margin_bottom = 840.0
 custom_styles/panel = SubResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CombatLogBG" type="Panel" parent="Combatlog"]
 self_modulate = Color( 0, 0, 0, 0.823529 )
@@ -940,11 +943,11 @@ __meta__ = {
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Combatlog"]
 margin_left = 13.0
-margin_top = 22.0
+margin_top = 16.0
 margin_right = 676.0
 margin_bottom = 168.0
 theme = ExtResource( 48 )
-custom_fonts/normal_font = ExtResource( 23 )
+custom_fonts/normal_font = SubResource( 11 )
 bbcode_enabled = true
 bbcode_text = "This is a test text"
 text = "This is a test text"

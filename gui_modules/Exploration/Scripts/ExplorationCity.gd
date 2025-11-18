@@ -968,14 +968,14 @@ func update_sell_list():
 	input_handler.ClearContainer($AreaShop/SellBlock/ScrollContainer/VBoxContainer)
 	tempitems.clear()
 	var array = []
-	
+
 	for i in ResourceScripts.game_res.materials:
 		if ResourceScripts.game_res.materials[i] <= 0 || Items.materiallist[i].type == 'quest':
 			continue
 		array.append(i)
-	
+
 	array.sort_custom(self, 'sort_mats')
-	
+
 	for i in array:
 		var item = Items.materiallist[i]
 		var type = get_item_category(item)
@@ -984,6 +984,7 @@ func update_sell_list():
 		)
 		newbutton.get_node("name").text = item.name
 		newbutton.get_node("icon").texture = item.icon
+		newbutton.get_node("quality_color").hide()
 		newbutton.get_node("price").text = str(ceil(item.price * variables.material_sell_multiplier))
 		newbutton.get_node("amount").visible = true
 		newbutton.get_node("amount").text = str(ResourceScripts.game_res.materials[i])
@@ -1004,6 +1005,11 @@ func update_sell_list():
 		)
 		newbutton.get_node("name").text = item.name
 		item.set_icon(newbutton.get_node("icon"))  #.texture = item.get_icon()
+		if item.quality != "":
+			newbutton.get_node("quality_color").show()
+			newbutton.get_node("quality_color").texture = variables.quality_colors[item.quality]
+		else:
+			newbutton.get_node("quality_color").hide()
 		newbutton.get_node("price").text = str(ceil(item.calculateprice() * variables.item_sell_multiplier))
 		newbutton.get_node("amount").visible = true
 		newbutton.get_node("amount").text = str(item.amount)
@@ -1013,7 +1019,6 @@ func update_sell_list():
 		newbutton.connect("pressed", self, "item_sell", [item])
 		newbutton.visible = (newbutton.get_meta("type") == sell_category) || sell_category == "all"
 		globals.connectitemtooltip_v2(newbutton, item)
-
 
 func sort_mats(first,second):
 	var material1 = Items.materiallist[first]
@@ -1026,10 +1031,9 @@ func sort_mats(first,second):
 func update_buy_list():
 	input_handler.ClearContainer($AreaShop/BuyBlock/ScrollContainer/VBoxContainer)
 	tempitems.clear()
-	
+
 	var array = []
-	
-	
+
 	for i in active_shop:
 		if Items.materiallist.has(i):
 			var item = Items.materiallist[i]
@@ -1046,6 +1050,11 @@ func update_buy_list():
 		)
 		newbutton.get_node("name").text = item.name
 		newbutton.get_node("icon").texture = item.icon
+		if item.has("quality") and item.quality != "":
+			newbutton.get_node("quality_color").show()
+			newbutton.get_node("quality_color").texture = variables.quality_colors[item.quality]
+		else:
+			newbutton.get_node("quality_color").hide()
 		newbutton.get_node("price").text = str(item.price)
 		newbutton.set_meta('type', type)
 		newbutton.set_meta('item', item.name)
@@ -1059,11 +1068,11 @@ func update_buy_list():
 		if amount > 0:
 			newbutton.get_node("amount").text = str(amount)
 			newbutton.get_node("amount").show()
-	
+
 	for i in active_shop:
 		if !Items.itemlist.has(i):
 			continue
-		
+
 		var item = Items.itemlist[i]
 		if item.has('parts'):#means active_shop[i] is array of dicts
 			Items.get_loot().try_fix_old_shop_parts(active_shop, i)#14 march 2025. Remove with time!
@@ -1089,6 +1098,11 @@ func update_buy_list():
 					newitem = globals.CreateGearItemShop(i, record)
 					record.quality = newitem.quality
 				newitem.set_icon(newbutton.get_node('icon'))
+				if newitem.quality != "":
+					newbutton.get_node("quality_color").show()
+					newbutton.get_node("quality_color").texture = variables.quality_colors[newitem.quality]
+				else:
+					newbutton.get_node("quality_color").hide()
 				newbutton.get_node("name").text = newitem.name
 				tempitems.append(newitem)
 				globals.connectitemtooltip_v2(newbutton, newitem)
@@ -1106,6 +1120,11 @@ func update_buy_list():
 			)
 			newbutton.get_node("name").text = item.name
 			newbutton.get_node("icon").texture = item.icon
+			if item.has("quality") and item.quality != "":
+				newbutton.get_node("quality_color").show()
+				newbutton.get_node("quality_color").texture = variables.quality_colors[item.quality]
+			else:
+				newbutton.get_node("quality_color").hide()
 			newbutton.get_node("price").text = str(item.price)
 			newbutton.set_meta('type', type)
 			newbutton.set_meta('item', item.name)
@@ -1119,7 +1138,6 @@ func update_buy_list():
 			if amount > 0:#can 'amount' be -1?
 				newbutton.get_node("amount").text = str(amount)
 				newbutton.get_node("amount").show()
-
 
 var purchase_item
 

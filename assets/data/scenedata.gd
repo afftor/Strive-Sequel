@@ -12,10 +12,100 @@ var scenedict = {
 	childbirth_alt = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = 'childbirth', tags = ['active_character_translate'], options = [{code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]}, #change text
 	select_tutelage = {
 		text = tr("DIALOGUETUTELAGETEXT"), image = null, tags = ['active_character_translate'], options = [
-			{code = 'close', text = tr('DIALOGUETUTNOTHING'), reqs = [], not_hide = true, bonus_effects = [{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'nothing'}, {code = 'rewrite_save'}]},
-			{code = 'close', text = tr('DIALOGUETUTSLAVE'), reqs = [{type = 'has_money', value = 500}], not_hide = true, bonus_effects = [{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'slave_training'}, {code = 'money_change', operant = '-', value = 500}, {code = 'rewrite_save'}]},
-			{code = 'close', text = tr('DIALOGUETUTACADEMY'), reqs = [{type = 'has_money', value = 1500}, {type = "has_upgrade", name = 'academy', value = 1}], not_hide = true, bonus_effects = [{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'academy'}, {code = 'money_change', operant = '-', value = 1500}, {code = 'rewrite_save'}]},
-			{code = 'close', text = tr('DIALOGUETUTHEIR'), reqs = [{type = 'has_money', value = 5000}, {type = 'scene_character_checks', value = [{code = 'trait', trait = 'heir', check = true}]}], not_hide = true, bonus_effects = [{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'heir'}, {code = 'money_change', operant = '-', value = 5000}, {code = 'rewrite_save'}]},
+			{
+				code = 'close', 
+				text = tr('DIALOGUETUTNOTHING'), 
+				reqs = [], 
+				not_hide = true, 
+				bonus_effects = [
+					{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'nothing'}, 
+					{code = 'rewrite_save'}
+				]
+			},
+#			{
+#				code = 'close', 
+#				text = tr('DIALOGUETUTSLAVE'), 
+#				reqs = [
+#					{type = 'has_money', value = 500},
+#					{type = 'scene_character_checks', value = [{code = 'has_status', status = 'slave', check = true}]} # i add this to prevent duplicating features for non-slave children
+#				], 
+#				not_hide = true, 
+#				bonus_effects = [
+#					{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'slave_training'}, 
+#					{code = 'money_change', operant = '-', value = 500}, 
+#					{code = 'rewrite_save'}
+#				]
+#			},
+			{
+				code = 'close', 
+				text = tr('DIALOGUETUTSLAVE1'), 
+				reqs = [
+					{type = 'has_money', value = 500},
+					{type = 'scene_character_checks', value = [{code = 'has_status', status = 'slave', check = true}]} # i add this to prevent duplicating features for non-slave children
+				], 
+				not_hide = true, 
+				bonus_effects = [
+					{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'slave_training_workforce'}, 
+					{code = 'money_change', operant = '-', value = 500}, 
+					{code = 'rewrite_save'}
+				]
+			},
+			{
+				code = 'close', 
+				text = tr('DIALOGUETUTSLAVE2'), 
+				reqs = [
+					{type = 'has_money', value = 500},
+					{type = 'scene_character_checks', value = [{code = 'has_status', status = 'slave', check = true}]} # i add this to prevent duplicating features for non-slave children
+				], 
+				not_hide = true, 
+				bonus_effects = [
+					{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'slave_training_warrior'}, 
+					{code = 'money_change', operant = '-', value = 500}, 
+					{code = 'rewrite_save'}
+				]
+			},
+			{
+				code = 'close', 
+				text = tr('DIALOGUETUTSLAVE3'), 
+				reqs = [
+					{type = 'has_money', value = 500},
+					{type = 'scene_character_checks', value = [{code = 'has_status', status = 'slave', check = true}]} # i add this to prevent duplicating features for non-slave children
+				], 
+				not_hide = true, 
+				bonus_effects = [
+					{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'slave_training_service'}, 
+					{code = 'money_change', operant = '-', value = 500}, 
+					{code = 'rewrite_save'}
+				]
+			},
+			{
+				code = 'close', 
+				text = tr('DIALOGUETUTACADEMY'), 
+				reqs = [
+					{type = 'has_money', value = 1500}, 
+					{type = "has_upgrade", name = 'academy', value = 1}
+				], 
+				not_hide = true, 
+				bonus_effects = [
+					{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'academy'}, 
+					{code = 'money_change', operant = '-', value = 1500}, 
+					{code = 'rewrite_save'}
+				]
+			},
+			{
+				code = 'close', 
+				text = tr('DIALOGUETUTHEIR'), 
+				reqs = [
+					{type = 'has_money', value = 5000}, 
+					{type = 'scene_character_checks', value = [{code = 'trait', trait = 'heir', check = true}]}
+				], 
+				not_hide = true, 
+				bonus_effects = [
+					{code = "real_affect_scene_characters", type = 'set_tutelage', value = 'heir'}, 
+					{code = 'money_change', operant = '-', value = 5000}, 
+					{code = 'rewrite_save'}
+				]
+			},
 		]
 	},
 	slave_escape = {text = tr("DIALOGUEESCAPETEXT"), image = 'slaveescape', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUEESCAPECLOSE"), bonus_effects = [{code = "affect_active_character", type = 'escape'}]}]}, #possibly obsolete
@@ -441,7 +531,7 @@ var scenedict = {
 	image = '',
 	common_effects = [],
 	options = [
-	{code = 'capture_from_scene', reqs = [], text = tr("DIALOGUERECRUITCHARACTEROPTION"), bonus_effects = [{code = 'advance_location'}]},
+	{code = 'capture_from_scene', reqs = [], text = tr("DIALOGUERECRUITCHARACTEROPTION"), bonus_effects = [{code = 'clear_subroom', optional = true}]},
 	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 	]
 	},
@@ -454,7 +544,7 @@ var scenedict = {
 			common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_prisoner_reward_resource',1]] }],
 			tags = ['active_character_translate'],
 			options = [
-				{code = 'open_chest', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
+				{code = 'open_chest', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'clear_subroom', optional = true}]},
 				]
 			},
 			{reqs = [],
@@ -464,7 +554,7 @@ var scenedict = {
 			common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_prisoner_reward_item',1]] }],
 			tags = ['active_character_translate'],
 			options = [
-				{code = 'open_chest', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
+				{code = 'open_chest', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'clear_subroom', optional = true}]},
 				],
 
 			}
@@ -507,7 +597,7 @@ var scenedict = {
 			tags = ['scene_character_translate','active_character_translate'],
 			image = 'goblin_encounter',
 			options = [
-				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
+				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'clear_subroom', optional = true}]},
 				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION")}
 				]
 			
@@ -552,7 +642,7 @@ var scenedict = {
 	common_effects = [],
 	tags = ['active_character_translate','scene_character_translate'],
 	options = [
-		{code = 'capture_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
+		{code = 'capture_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'clear_subroom', optional = true}]},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION")}
 		]
 	},
@@ -561,7 +651,7 @@ var scenedict = {
 	image = 'goblin_encounter',
 	tags = ['active_character_translate'],
 	options = [
-		{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
+		{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'clear_subroom', optional = true}]},
 		],
 	},
 	event_goblin_leave = {
@@ -569,7 +659,7 @@ var scenedict = {
 	image = 'goblin_encounter',
 	tags = ['active_character_translate'],
 	options = [
-		{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
+		{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'clear_subroom', optional = true}]},
 		],
 	},
 
@@ -606,7 +696,7 @@ var scenedict = {
 			tags = ['active_character_translate','scene_character_translate'],
 			image = 'fairy_encounter',
 			options = [
-				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [],bonus_effects = [{code = 'advance_location'}]},
+				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [],bonus_effects = [{code = 'clear_subroom', optional = true}]},
 				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"),bonus_effects = []}
 				]
 			
@@ -628,7 +718,7 @@ var scenedict = {
 	tags = ['active_character_translate'],
 	bonus_effects = [{code = 'affect_active_party', type = 'damage_percent', value = -35}],
 	options = [
-		{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [],bonus_effects = [{code = 'advance_location'}]},
+		{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [],bonus_effects = [{code = 'clear_subroom', optional = true}]},
 		],
 	},
 	event_fairy_capture = {
@@ -637,7 +727,7 @@ var scenedict = {
 	common_effects = [],
 	tags = ['active_character_translate','scene_character_translate'],
 	options = [
-		{code = 'capture_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
+		{code = 'capture_from_scene', text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'clear_subroom', optional = true}]},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION"),bonus_effects = []}
 		]
 	},
@@ -646,7 +736,7 @@ var scenedict = {
 	image = 'fairy_encounter',
 	tags = ['active_character_translate'],
 	options = [
-		{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [],bonus_effects = [{code = 'advance_location'}]},
+		{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = [],bonus_effects = [{code = 'clear_subroom', optional = true}]},
 		],
 	},
 
@@ -1572,7 +1662,7 @@ var scenedict = {
 		image = 'spring',
 		bonus_effects = [{code = 'affect_active_party', type = 'damage_percent', value = -33}],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'clear_subroom'}]}
 		],
 	},
 	spring_stamina = {
@@ -1581,7 +1671,7 @@ var scenedict = {
 		image = 'spring',
 		bonus_effects = [{code = 'add_stamina', value = 50}],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'clear_subroom'}]}
 		],
 	},
 	spring_loot = {
@@ -1593,7 +1683,7 @@ var scenedict = {
 			common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_prisoner_reward_resource',1]] }],
 			tags = [''],
 			options = [
-				{code = 'open_chest', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'advance_location'}]},
+				{code = 'open_chest', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'clear_subroom'}]},
 				]
 			},
 			{reqs = [],
@@ -1657,7 +1747,7 @@ var scenedict = {
 		image = 'spring',
 		bonus_effects = [{code = 'add_stamina', value = 50}],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'clear_subroom'}]}
 		],
 	},
 	fountain_mana = {
@@ -1666,7 +1756,7 @@ var scenedict = {
 		image = 'spring',
 		bonus_effects = [{code = 'affect_active_party', type = 'damage_mana_percent', value = -40}],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'advance_location'}]}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'clear_subroom'}]}
 		],
 	},
 	

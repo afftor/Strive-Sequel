@@ -432,7 +432,7 @@ func shrine_item_select(item):
 
 
 func add_loot_options(scene):
-	scene.options.insert(0,{code = 'open_chest', reqs = [], text = "DIALOGUETAKELOOT", bonus_effects = [{code = 'advance_location'}]})
+	scene.options.insert(0,{code = 'open_chest', reqs = [], text = "DIALOGUETAKELOOT", bonus_effects = [{code = 'clear_subroom', optional = true}]})
 
 
 #func add_location_resource_info(): #not used, reworked

@@ -74,6 +74,11 @@ func update():
 	self.modulate.a = 1
 	
 	yield(fix_panels(), 'completed')
+	
+	if !weakref(parentnode).get_ref():
+		emit_signal("update_completed")
+		return
+	
 	visible = true
 	var pos = parentnode.get_global_rect()
 	if parentnode.has_meta("exploration"):

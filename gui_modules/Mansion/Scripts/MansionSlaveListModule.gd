@@ -5,6 +5,7 @@ onready var SlaveModule = get_parent().SlaveModule
 onready var SlaveContainer = $ScrollContainer/VBoxContainer
 onready var LocationsList = $TravelsContainerPanel/TravelsContainer/HBoxContainer
 onready var LocationsPanel = $TravelsContainerPanel
+onready var CharacterContextMenu = $CharacterContextMenu
 
 var populatedlocations = []
 var default_locations = ["show_all", "mansion"]
@@ -175,12 +176,52 @@ func rebuild():
 
 
 func double_clicked(event, button):
-	if event is InputEventMouseButton and event.doubleclick:
-		# if get_parent().active_person == null:
+	if !(event is InputEventMouseButton):
+		return
+	if event.button_index == BUTTON_RIGHT and event.pressed and !event.doubleclick:
+		if button.disabled:
+			return
+		#event.accept_event()
+		_show_character_context_menu(button)
+		return
+	if event.button_index == BUTTON_LEFT and event.doubleclick:
 		if button.disabled:
 			return
 		get_parent().set_active_person(button.get_meta("slave"))
 		get_parent().mansion_state = "char_info"
+
+
+func _show_character_context_menu(button):
+	if CharacterContextMenu == null:
+		return
+	var person = button.get_meta("slave")
+	if person == null:
+		return
+	var actions = [
+		{
+			"label": tr("MSLMCONTEXT_OPEN"),
+			"callback": funcref(self, "_context_open_person"),
+			"args": [person]
+		},
+		{
+			"label": tr("MSLMCONTEXT_INVENTORY"),
+			"callback": funcref(self, "_context_open_with_inventory"),
+			"args": [person]
+		}
+	]
+	CharacterContextMenu.open_with_actions(person, actions, get_viewport().get_mouse_position())
+
+
+func _context_open_person(person):
+	if get_parent() == null or !is_instance_valid(get_parent()):
+		return
+	get_parent().set_active_person(person)
+	get_parent().mansion_state = "char_info"
+
+
+func _context_open_with_inventory(person):
+	get_parent().set_active_person(person)
+	OpenInventory(person)
 
 #obsolete
 func build_for_ocupation(person, newbutton):

@@ -3,13 +3,20 @@ extends Node
 var person
 
 func _init():
+	var key
 	for i in bodypartsdata:
 		for k in bodypartsdata[i].values():
 			if k.code != null:
 				if !k.has('name') or k.name == "":
-					k.name = tr("BODYPART" + i.to_upper() + k.code.to_upper())
+					key = "BODYPART" + i.to_upper() + k.code.to_upper()
+					k.name = tr(key)
+					if !input_handler.if_has_translation(key):
+						print(key)
 #				text += k.name + ' = "' + k.code + '",\n'
-				k.chardescript = tr("BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT")
+				key = "BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT"
+				k.chardescript = tr(key)
+				if !input_handler.if_has_translation(key):
+					print(key)
 #	var file = File.new()
 #	file.open(globals.userfolder + "storednames.ini", File.WRITE)
 #	file.store_line(text)
@@ -652,11 +659,11 @@ func get_class_name(prof, newperson):
 		name = prof.altname
 	return name
 
+
 func get_class_details(newperson, classdata, showreqs = true, showskills = false):
 	person = newperson
 	var text = '[center]'+get_class_name(classdata, person)+'[/center]\n'
-
-
+	
 	if showreqs == true:
 		text += tr('REQUIREMENTS_TOOLTIP') + ': '
 		if classdata.reqs.size() > 0:
@@ -665,13 +672,12 @@ func get_class_details(newperson, classdata, showreqs = true, showskills = false
 			text +=  tr("REQSNONE")
 	if classdata.statchanges.size() > 0:
 		text += '\n\n' + tr("CLASSBONUS") + ":\n"
-		text += get_class_bonuses(person,classdata)
-
-	text += "\n" + get_class_traits(person,classdata)
-
-
+		text += get_class_bonuses(person, classdata)
+	
+	text += "\n" + get_class_traits(person, classdata)
+	
 	#text += "\n" + person.translate(classdata.descript) #"[center]" + name + '[/center]\n' +
-
+	
 	if showskills == true && (classdata.skills + classdata.combatskills).size() > 0:
 		if classdata.skills.size() > 0:
 			text += "\n{color=yellow|"+tr("CLASSDETAILSKILLS")+": "
@@ -683,8 +689,9 @@ func get_class_details(newperson, classdata, showreqs = true, showskills = false
 			for i in classdata.combatskills:
 				text += Skilldata.get_template(i, person).name + ", "
 			text = text.substr(0, text.length() - 2) + "}"
-
+	
 	return globals.TextEncoder(text)
+
 
 func get_class_reqs(newperson, classdata, colorcode = true):
 	var text = ''

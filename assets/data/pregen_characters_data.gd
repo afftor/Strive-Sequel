@@ -856,7 +856,7 @@ var unique_sprites = {
 			descript = "",
 			path = "daisy_maid_body", 
 			face_path = "daisy_maid",
-			unlock_reqs = [{type = 'quest_completed', value = 'daisy_clothes', check = true}]
+			unlock_reqs = [{type = 'quest_completed', name = 'daisy_clothes', check = true}]
 			},
 		maid_lewd = {
 			name = "Lewd Maid",

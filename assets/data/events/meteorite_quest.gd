@@ -625,7 +625,7 @@ var data = {
 				code = 'material_change',
 				operant = '+',
 				material = 'meteorite_iron',
-				value = 15
+				value = 16
 			},
 			{
 				code = "remove_decision",

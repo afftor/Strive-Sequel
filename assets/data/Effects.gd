@@ -1251,7 +1251,10 @@ var stacks = {
 		type = 'stack',
 	}, #transparent buffs
 	coffin_bless = {}, #stack 1
-	injury = {}, #stack 1
+	injury = {
+		type = 'stack_c',
+		stack = 1,
+	},
 	regen = {}, #stack 1
 	fireburst = {}, #stack 1
 	arrowrain = {}, #stack 1

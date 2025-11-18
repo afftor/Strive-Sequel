@@ -360,6 +360,8 @@ using       button.""",
 [color=aqua]Heir's Obedience drain 50% slower and Loyalty is 50% faster. Heir has 20% penalty to Collection, Farming and Fishing.[/color] """,
 	CHARTYPESPOUSEDESCRIPT = "Spouse of mansion's [Master]. While not possessing any outstanding qualities on [his] own, children of [Master] and spouse will obtain Heir status and can be assigned to special training while growing up.",
 	CHARTYPESLAVE_TRAINEDDESCRIPT = "These slaves have finished their training and accepted their new fate to heart. They no longer requier a trainer assigned to them. ",
+	MSLMCONTEXT_OPEN = "Open",
+	MSLMCONTEXT_INVENTORY = "Inventory",
 	SLAVEINFOMODULEOBEDIENCE = "Obedience",
 	SIMRESIST = "Resists",
 	SIMLOYALTYGAIN = "Loyalty Gain",
@@ -382,6 +384,17 @@ using       button.""",
 	LIGHTRESIST = "light",
 	DARKRESIST = "dark",
 	MINDRESIST = "mind",
+	DAMAGETYPENORMAL = "Normal",
+	DAMAGETYPEFIRE = "Fire",
+	DAMAGETYPEEARTH= "Earth",
+	DAMAGETYPEAIR = "Air",
+	DAMAGETYPEWATER = "Water",
+	DAMAGETYPELIGHT = "Light",
+	DAMAGETYPEDARK = "Dark",
+	DAMAGETYPEMIND = "Mind",
+	DAMAGETYPESKILL = "Physical",
+	DAMAGETYPESPELL = "Magic",
+	DAMAGETYPEITEM = "Item",
 	ALLRESIST = "all",
 	HEALTHP = "Health: ",
 	MANAP = "Mana:",
@@ -590,7 +603,7 @@ Food type: Fish, Vegetables.""",
 	MATERIALADAMANTINEDESCRIPT = "A very rare and strong magic alloy. Produced by crafting. ",
 	MATERIALMETEORITE_IRON = "Meteorite Steel",
 	MATERIALMETEORITE_IRONADJ = "Star",
-	MATERIALMETEORITE_IRONDESCRIPT = "A very rare and strong magic alloy. Produced by crafting. ",
+	MATERIALMETEORITE_IRONDESCRIPT = "A very rare and strong magic alloy. ",
 	MATERIALBLUE_MOSS = "Blue Moss",
 	MATERIALBLUE_MOSSDESCRIPT = "A rare plant with magical properties.",
 	MATERIALSALVIA = "Salvia",
@@ -940,6 +953,8 @@ Reduced by enemy's evasion""",
 	TOOLTIPSKIPPROLOGUE = "Skips prologue quests and starts first story arc. The loan mission is disabled. ",
 	TOOLTIPSKILLPOINTS = "Skill Points are earned from battles and are used to purchase new combat skills.",
 	TOOLTIPSUCCUBUS = "[Succubus] gains powers from {color=green|Enthralling} others. Each Thrall falls in love with [succubus] and makes [him] grow in strength. Unlock points are earned by enthralling more characters.",
+	TOOLTIPMINORTRAINING = "##FIX!!##[Succubus] gains powers from {color=green|Enthralling} others. Each Thrall falls in love with [succubus] and makes [him] grow in strength. Unlock points are earned by enthralling more characters.",
+	TOOLTIPMASTERTRAINING = "##FIX!!##[Succubus] gains powers from {color=green|Enthralling} others. Each Thrall falls in love with [succubus] and makes [him] grow in strength. Unlock points are earned by enthralling more characters.",
 	SAVENAME = "Save Name",
 	SAVETEMPLATEDESCRIPT = "You can save existing character template for the repeated use.",
 	TOOLTIPIMPROVESCREEN = "Improve your gear by sacrficing similar gear of same quality. Sacrificed gear will be lost.",
@@ -1427,7 +1442,7 @@ Silenced: Can't use Spell type abilities.""",
 	SKILLLAST_STAND = "Last Stand",
 	SKILLLAST_STANDDESCRIPT = "HP can't be reduced below 10% for 1 turn. Does not take a turn to cast.",
 	SKILLINTIMIDATING_PRESENCE = "Intimidating Presence",
-	SKILLINTIMIDATING_PRESENCEDESCRIPT = "Remove generic enemies from target location.",
+	SKILLINTIMIDATING_PRESENCEDESCRIPT = "Remove generic enemy group from target location on dungeon map.",
 	SKILLFLAME_SPHERE = "Flame Sphere",
 	SKILLFLAME_SPHEREDESCRIPT = "Apply buff to self: on next start of combat you launch flaming sphere at the enemies, dealing 25% of their maximum health as Fire damage.",
 	SKILLINFERNO = "Inferno",
@@ -1701,7 +1716,7 @@ Improves disposition towards {color=yellow|Random} actions. Costs 5 Mana.""",
 	TASKRONMISSIONCOMPLETE = "When this task is finished receive your reward from Journal.",
 	TASKPRODUCE = "Produce",
 	TASKPRODUCEDESCRIPT = "Assigned to produce materials",
-	TASKSPECIALDESCRIPT = "",
+	TASKSPECIALDESCRIPT = "Mission",
 	BEDROOMTOOLTIP = "Available number of characters for sexual interactions. Increases with Bedroom Upgrade",
 	DATETOOLTIP = "Dates left this week. Increases with Master's Charm Factor and resets at the start of a week.",
 	SEXTOOLTIP = "Sexual Interactions left this week. Increases with Master's Sexual Factor and resets at the start of a week.",
@@ -1737,9 +1752,9 @@ Service is a global modifier for this assignment.""",
 	BROTHELWARNING = "Sex services won't work if you dont select at least 1 allowed customer",
 	CAPTURETOOLTIP = "These characters have been found by your team and can be recruited into your mansion or sold for quick cash as if you were selling them manually. If location has been forgotten, all characters are sold automatically.",
 	CAPTURESELLTOOLTIP = "Quicksell this character for %d gold. This is equal to selling character to market but won't let you buyback them. ",
-	CAPTUREADDTOOLTIP = "Attempt to add this character to roster. You won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
-	CAPTUREENSLAVETOOLTIP = "Add this character to roster as a slave instantly. You won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
-	CAPTURERECRUITTOOLTIP = "Attempt to recruit this character. You won't be able to finish turn if your total number of characters is bigger than available number of rooms.",
+	CAPTUREADDTOOLTIP = "Attempt to add this character to roster.\n\nYou won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
+	CAPTUREENSLAVETOOLTIP = "Add this character to roster as a slave instantly.\n\nYou won't be able to finish turn if your total number of characters is bigger than available number of rooms. ",
+	CAPTURERECRUITTOOLTIP = "Attempt to recruit this character.\n\nYou won't be able to finish turn if your total number of characters is bigger than available number of rooms.",
 	CAPTUREDISMISSTOOLTIP = "Dismiss this character.",
 	SERVICEBOOSTTOOLTIP = "You can assign additional item consumption here which will boost service production. These items can be produced at Farm. ",
 	FARMTOOLTIP = "You can assign character to farm to produce additional materials which can be used to boost service production or be sold.",
@@ -2342,18 +2357,18 @@ Consent represents character's general acceptance of various sexual actions, but
 	INFORULES_CONDS = "Conditions and rules can be toggled on character, affecting some of their stats and behavior.",
 	INFOPERSONALITY = """Character's personality will affect their banter and provide access to certain traits and bonuses.
 	Neutral: No bonuses
-	Bold: Incoming negative effects last 1 turn less, +5% Productivity
-	Kind: Outcoming positive buffs last 1 turn more, +10% Service
+	Bold: Incoming negative effects last 1 fewer turn, +5% Productivity
+	Kind: Outcoming positive buffs last 1 additional turn, +10% Service
 	Serious: Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)
 Task Crit Chance +3%
 	Shy: Spell Mana cost reduced by 15%
 +15% Loyalty Gain, -10% Subordinate weekly tax
 	""",
 	INFOPERSONALITYBOLD = """Bold
-Incoming negative effects last 1 turn less
+Incoming negative effects last 1 fewer turn
 +5% Productivity""",
 	INFOPERSONALITYKIND = """Kind
-Outcoming positive buffs last 1 turn more
+Outcoming positive buffs last 1 additional turn
 +10% Service""",
 	INFOPERSONALITYSERIOUS = """Serious
 Combat Ability cooldowns reduced by 1 turn (Can't be lower than 1 turn)
@@ -2603,7 +2618,7 @@ Basic Effects:
 	SKILLCONSUME_SOULDESCRIPT = "Kills target and receives their experience.",
 	SKILLSERVE = "Serve",
 	SKILLSERVEDESCRIPT = """Category: {color=green|Gracious}
-Provide a care service for another person. Improves Obedience and increases Loyalty gain. Requires 20 lust. 
+Provide a care service for another person. Improves Obedience and increases Loyalty Gain. Requires 20 lust. 
 Basic Effects: 
 Loyalty Gain: +1 for 5 days, Maxes Obedience, Increases affinity to Bold Personality.""",
 	SKILLDISCIPLINE = "Discipline",
@@ -2827,6 +2842,10 @@ Training has higher chance of success.""",
 	TRAITCHEFDESCRIPT = "Cooking is 100% faster.",
 	TRAITATTENDANTDESCRIPT = "Once per combat turn [name] can use an item without using a turn.",
 	TRAITALCHEMISTDESCRIPT = "Healing items are 25% more effective in combat.",
+	TRAITMASTER_ALCHEMISTT = "Master alchemist",
+	TRAITMASTER_ALCHEMISTDESCRIPT = "Crafted alchemy items are at least normal quality.",
+	TRAITMASTER_SMITH = "Master smith",
+	TRAITMASTER_SMITHDESCRIPT = "Crafted items are at least normal quality.",
 	TRAITFARMERDESCRIPT = "Farming is 50% more efficient. ",
 	TRAITBREEDERDESCRIPT = """Allows breeding with any race.
 Pregnancy Debuffs are weaker
@@ -3167,9 +3186,22 @@ Increased Damage and Hitrate""",
 Increased Evasion, Hitrate and MDEF""",
 	TRAITEFFECTRARETOUGH = """Rare: Tough
 Increased Health, DEF and MDEF""",
+	TRAITMONSTER_MASTERY_WARFARE_DESCRIPT = """Has enemy variation of warfare mastery with the same skills and greater bonuses.""",
+	TRAITMONSTER_MASTERY_PROTECTION_DESCRIPT = """Has enemy variation of protection mastery with the same skills and greater bonuses.""",
+	TRAITMONSTER_MASTERY_STEALTH_DESCRIPT = """Has enemy variation of stealth mastery with the same skills and greater bonuses.""",
+	TRAITMONSTER_MASTERY_MARKSMANSHIP_DESCRIPT = """Has enemy variation of marsmanship mastery with the same skills and greater bonuses.""",
+	TRAITMONSTER_MASTERY_LEADERSHIP_DESCRIPT = """Has enemy variation of ledership mastery with the same skills and greater bonuses.""",
+	TRAITMONSTER_MASTERY_FIRE_DESCRIPT = """Has enemy variation of fire mastery with the same skills and greater bonuses.""",
+	TRAITMONSTER_MASTERY_WATER_DESCRIPT = """Has enemy variation of water mastery with the same skills and greater bonuses.""",
+	TRAITMONSTER_MASTERY_AIR_DESCRIPT = """Has enemy variation of air mastery with the same skills and greater bonuses.""",
+	TRAITMONSTER_MASTERY_EARTH_DESCRIPT = """Has enemy variation of earth mastery with the same skills and greater bonuses.""",
+	TRAITMONSTER_MASTERY_LIGHT_DESCRIPT = """Has enemy variation of light mastery with the same skills and greater bonuses.""",
+	TRAITMONSTER_MASTERY_DARK_DESCRIPT = """Has enemy variation of dark mastery with the same skills and greater bonuses.""",
+	TRAITMONSTER_MASTERY_MIND_DESCRIPT = """Has enemy variation of mind mastery with the same skills and greater bonuses.""",
 	TRAITEFFECTHARDWORK = "Hard Work: +50%% Productivity",
 	TRAITEFFECTPHYSBUF = "Elixir of Ogre's Strength: +80 Physics",
 	TRAITEFFECTWITSBUF = "Elixir of Expanded Mind: +80 Wits",
+	TRAITEFFECTALCOHOL = "Wasted: -1 Loyalty Gain, +1 Spirit Gain, -15%% Productivity",
 	TRAITEFFECTFAVFOOD = "Favorite Food: +5%% Productivity, +5%% Experience Gain",
 	TRAITEFFECTHATEDFOOD = "Hated Food: -10%% Productivity.",
 	TRAITEFFECTSTARVE = "Starvation: -50%% Productivity, -50%% Damage.",
@@ -3177,13 +3209,13 @@ Increased Health, DEF and MDEF""",
 	TRAITEFFECTDISCIPLINE = "Discipline: +50%% Labor and craft efficiencies.",
 	TRAITEFFECTSEDUCE = "Seduce: -7 Obedience drain",
 	TRAITEFFECTGREATSEDUCE = "Great Seduce: Prevents escapes; -9 Obedience drain, +50%% Lust growth.",
-	TRAITEFFECTALLURE = "Allure: -5 Obedience drain, +1 Loyalty gain.",
+	TRAITEFFECTALLURE = "Allure: -5 Obedience drain, +1 Loyalty Gain.",
 	TRAITEFFECTSEDATED = "Sedated: -10 Obedience drain",
-	TRAITEFFECTFEAR = "Fear: -6 Obedience drain, -1 Loyalty gain.",
+	TRAITEFFECTFEAR = "Fear: -6 Obedience drain, -1 Loyalty Gain.",
 	TRAITEFFECTMINDCONTROLLED = "Mind Controlled",
 	TRAITEFFECTINSPIRED = "Inspired: +20%% damage, DEF and MDEF.",
 	TRAITEFFECTCOMMANDED = "Commanded: +50%% ATK and MATK.",
-	TRAITEFFECTSERVING = "Serving: +1 Loyalty gain.",
+	TRAITEFFECTSERVING = "Serving: +1 Loyalty Gain.",
 	TRAITEFFECTREFINE = "Weapon refined: +30%% ATK.",
 	TRAITEFFECTACID = "Acid: -25 DEF.",
 	TRAITEFFECTATTRACTED = "Attracted: -30%% Damage",
@@ -3240,7 +3272,7 @@ Social skills effect: +10%.""",
 	TRAITEFFECTCELENACURSE = "Celena's Curse: -50%% Max. Health.",
 	TRAITEFFECTHYBRISCURSE = "Hybris' Curse: -50%% DEF",
 	TRAITEFFECTFREYACURSE = "Freya's Curse: -50 Evasion and Hit Rate.",
-	TRAITEFFECTDATEBONUS = "Loyalty gain increased by 0.5.",
+	TRAITEFFECTDATEBONUS = "Loyalty Gain increased by 0.5.",
 	TRAITEFFECTRESISTSTATE = "Resist state: Can't gain obedience from positive abilities. Can't use exploration skills. Positive actions during dates less effective.",
 	TRAITEFFECTISPREGNANT = "Is pregnant: -10 Speed, -20 Physics",
 	TRAITEFFECTISPREGNANT2 = "Is heavily pregnant: -20 Speed, -40 Physics",
@@ -3327,7 +3359,7 @@ Social skills effect: +10%.""",
 	BUFFDESCRIPTBLEEDING = "Bleeding: Take 10%% of Maximum HP as neutral damage per turn",
 	BUFFDESCRIPTCONFUSE = "Confusion",
 	BUFFDESCRIPTFREEUSE = "Allows to use an item without taking a turn",
-	BUFFDESCRIPTSHRED = "Shredded: DEF is reduced by 50%%",
+	BUFFDESCRIPTSHRED = "Shredded: DEF is reduced by 25%%",
 	BUFFDESCRIPTSHATTER = "Shattered: MDEF is reduced by 50%%",
 	BUFFDESCRIPTGROWL = "Speed and evasion decreased",
 	BUFFDESCRIPTCURSEATTACK = "Attack decreased",
@@ -3885,6 +3917,8 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	BODYPARTSKINTEALDESCRIPT = "[His] skin is [color=aqua]teal[/color].",
 	BODYPARTSKIN_COVERAGEPLANTDESCRIPT = "Various leaves and bits of [color=aqua]plant matter[/color] cover parts of [his] body.",
 	BODYPARTSKIN_COVERAGESCALEDESCRIPT = "[His] skin is partly covered with [color=aqua]scales[/color].",
+	BODYPARTSKIN_COVERAGESCALE2DESCRIPT = "[His] skin is partly covered with [color=aqua]scales[/color].",
+	BODYPARTSKIN_COVERAGESCALE3DESCRIPT = "[His] skin is partly covered with [color=aqua]scales[/color].",
 	BODYPARTSKIN_COVERAGEFEATHERSDESCRIPT = "[His] body is covered in [color=aqua]bird-like feathers[/color] in many places.",
 	BODYPARTSKIN_COVERAGEFUR_WHITEDESCRIPT = "[His] body is covered in thick, soft [color=aqua]fur of marble color[/color].",
 	BODYPARTSKIN_COVERAGEFUR_GREYDESCRIPT = "[His] body is covered in thick, soft [color=aqua]fur of gray color[/color].",
@@ -3916,6 +3950,7 @@ Positive, Social, Physical and Humilation actions provide more loyalty.""",
 	BODYPARTTAILTENTACLESDESCRIPT = " ",
 	BODYPARTTAILHORSEDESCRIPT = " ",
 	BODYPARTTAILSPIDERDESCRIPT = " ",
+	BODYPARTTAILMOUSEDESCRIPT = " ",
 	BODYPARTHEIGHTTINYDESCRIPT = "[His] stature is [color=aqua]extremely small[/color], barely half the size of a normal person.",
 	BODYPARTHEIGHTPETITEDESCRIPT = "[His] stature is quite [color=aqua]petite[/color].",
 	BODYPARTHEIGHTSHORTDESCRIPT = "[His] height is quite [color=aqua]short[/color].",
@@ -4431,6 +4466,9 @@ As the [boy] is made your slave, [he] can be a very useful addition to your roos
 {color=aqua|Heir Education} (only for potential Heirs)— {color=yellow|5.000 gold}, provides boost to all stats and factors, large amount of EXP and 1 random positive trait.""",
 	DIALOGUETUTNOTHING = "No Training (free)",
 	DIALOGUETUTSLAVE = "Slave Training (500 Gold)",
+	DIALOGUETUTSLAVE1 = "Slave Training: Workforce (500 Gold)",
+	DIALOGUETUTSLAVE2 = "Slave Training: Warrior (500 Gold)",
+	DIALOGUETUTSLAVE3 = "Slave Training: Service (500 Gold)",
 	DIALOGUETUTACADEMY = "Academy (1.500 Gold)",
 	DIALOGUETUTHEIR = "Heir Education (5.000 Gold)",
 	SPRINGTEXT = "You find a small clearing with a spring. It might be a good time to take a break and rest.",
@@ -4827,7 +4865,7 @@ You are one of the people who managed to get there just in time to secure an est
 	STARTINGDILOGUE1_3 = """{color=yellow|— Oh, a [man] of business? I like it.}
 
 """,
-	STARTINGDILOGUE1_4 = "{color=yellow|— I'm here to deliver the plan by which you will be paying your loan. In total, you owe the bank 100.000 gold which you will be required to pay in the next 100 days. As a handicap, your first payment will be consisting of {custom_text_function=GetLoanSum#0|} gold and is due in 2 weeks.}",
+	STARTINGDILOGUE1_4 = "{color=yellow|— I'm here to deliver the plan by which you will be paying your loan. In total, you owe the bank 100.000 gold which you will be required to pay in the next 100 days. As a handicap, your first payment will be consisting of} {custom_text_function=GetLoanSum#0|} {color=yellow|gold and is due in 2 weeks.}",
 	STARTINGDIALOGUE1REPLY1 = "Understood.",
 	STARTINGDIALOGUE1REPLY2 = "Are you seriously expecting me to make this much?",
 	STARTINGDIALOGUE2_1 = "{color=yellow|— Good.}",
@@ -19339,7 +19377,7 @@ His voice sounds bitter when he addressed the High Priestess but its clear her a
 {color=yellow|— We are not allowed to leave the capital and I was denied to investigate it as well. However an outsider like you isn't held back by such rules. I want you to see what happened to it, as my intuition dictates it's not something to overlook.}""",
 	METEOR_LOUNGE_BRIEF_OPT_CHECK = "That sounds curious, I'll check it out",
 	METEOR_LOUNGE_BRIEF_OPT_MAYBE = "Maybe, If I have enough time",
-	METEOR_LOUNGE_RESPONSE = "Content with your response, Lorien has marked the spot on your location. It shouldn't take too much time although you wonder if you're gonna find anything at all after this much time has passed.",
+	METEOR_LOUNGE_RESPONSE = "Content with your response, Lorien has marked the spot on your map. It shouldn't take too much time although you wonder if you're gonna find anything at all after this much time has passed.",
 	METEOR_OGRES_START = "As you arrive at the clearing Lorien has pointed out, you spot the place the star has fallen into. The crater has overgrown some time ago but around it you spot multiple large foot tracks. Much larger than humans, they must belong to ogres.",
 	METEOR_OGRES_START_OPT_FOLLOW = "*Follow tracks*",
 	METEOR_OGRES_CAMP = """You manage to follow the poorly preserved tracks for a while but your effort rewards you. You find a makeshift camp belonging to a small group of ogres. It's a crude setup of tattered hides and splintered logs, reeking of charred meat and damp earth. Three ogres huddle around a smoldering fire, their guttural laughter echoing through the clearing. The largest, a brute with a scarred hide, grips a massive club embedded with a jagged, faintly glowing stone, the one you are looking for. His beady eyes scan the surroundings.
@@ -20002,6 +20040,7 @@ You note with amusement how Heleviel holds herself in this situation. While not 
 	HELEVIEL_QUEST_13 = """The evening continues uneventfully with your patrons until it gets late enough for everyone to leave. As nobody else is around, you get a small comment from Heleviel before she leaves her shift, still bearing her tipsiness.
 
 {color=yellow|Heleviel: — I suppose it wasn't too bad after all. Your friends are disgusting for being such lechers toward elven women, though.}""",
+	HELEVIEL_SLAVE_CHURCH_INIT = """With time, Heleviel has grown more accustomed to life in slavery under you. Her bickering has mostly disappeared. Yesterday you received a help request from Aliron’s church, which seems like a good next step for Heleviel to work on in order to improve her cultural accommodation.""",
 	HELEVIEL_SLAVE_CHURCH_INTRO_TEXT = """You bring Heleviel to the church, finding Ginny in her usual workplace.
 
 {color=yellow|Heleviel: — Hmph, so this is Celena’s temple, and you must be her local priest. What a pitiful decoration. No wonder Celena is only a subservient goddess with measly followers compared to Freya.}
@@ -20243,7 +20282,7 @@ Heleviel complies, her movements slightly unsteady from the alcohol. Her palms p
 	HELEVIEL_BAR_SEX_4 = """You position yourself behind her, your hard dick pressing against her entrance. Heleviel gasps as you begin to push in, the penetration slow but steady. Her tight pussy stretches to accommodate you, her body unused to such intrusion. You grip her hips, pulling her back against you as you thrust deeper. Her moans are muffled against the table surface, her fingers digging into the wood. Each thrust sends waves of pleasure through her body, her large breasts swaying with the rhythm. The table creaks beneath her as you pick up the pace, your dick sliding in and out of her slick heat with increasing intensity.
 
 {color=yellow|— M-m-mh... What's this... Humiliation... Why does it feels good...""",
-	HELEVIEL_BAR_SEX_5 = """Heleviel's green eyes are half-lidded with pleasure and surprise as you continue to take her from behind. Her dignified facade crumbles with each powerful thrust, replaced by raw, unbridled desire. You lean over her, your breath hot against her ear as you reach around to cup her heavy breasts through the thin fabric of her uniform. Her nipples harden beneath your touch, her back arching instinctively. The room fills with the sound of skin slapping against skin and her increasingly loud moans. You drive into her harder, faster, your dick hitting that sensitive spot deep inside her that makes her cry out.
+	HELEVIEL_BAR_SEX_5 = """Heleviel's green eyes are half-lidded with pleasure and surprise as you continue to take her from behind. Her dignified facade crumbles with each powerful thrust, replaced by raw, unbridled desire. You lean over her, your breath hot against her ear as you reach around to cup her heavy breasts through the thin fabric of her uniform. Her nipples harden beneath your touch, her back arching instinctively. The room fills with the sound of skin slapping against skin and her increasingly loud moans.
 
 {color=yellow|— D-don't stop now... If you stop... I can't....
 

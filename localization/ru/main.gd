@@ -368,6 +368,8 @@ var TranslationDict = {
 [color=aqua]У наследника Повиновение истощается на 50% медленнее, а Верность растет на 50% быстрее. Наследник имеет 20% штраф к заданиям сбора, земледелия и рыбалки.[/color]""",
 	CHARTYPESPOUSEDESCRIPT = """Супруг/а [Master]а особняка. Не обладая никакими выдающимися качествами, дети [Master]а и супруга/и получают статус Наследника и могут быть направлены на специальное обучение, пока растут.""",
 	CHARTYPESLAVE_TRAINEDDESCRIPT = """Этот тип рабов закончил свое обучение и принял свою новую судьбу как должное. Они больше не нуждаются в приставленном к ним тренере. """,	
+	MSLMCONTEXT_OPEN = """Open""", # MISSING TRANSLATION
+	MSLMCONTEXT_INVENTORY = """Inventory""", # MISSING TRANSLATION
 	SLAVEINFOMODULEOBEDIENCE = """Повиновение""",
 	SIMRESIST = """Сопротивление""",
 	SIMLOYALTYGAIN = """Прирост верности""",
@@ -390,6 +392,17 @@ var TranslationDict = {
 	LIGHTRESIST = """свет""",
 	DARKRESIST = """тьма""",
 	MINDRESIST = """разум""",
+	DAMAGETYPENORMAL = """Normal""", # MISSING TRANSLATION
+	DAMAGETYPEFIRE = """Fire""", # MISSING TRANSLATION
+	DAMAGETYPEEARTH = """Earth""", # MISSING TRANSLATION
+	DAMAGETYPEAIR = """Air""", # MISSING TRANSLATION
+	DAMAGETYPEWATER = """Water""", # MISSING TRANSLATION
+	DAMAGETYPELIGHT = """Light""", # MISSING TRANSLATION
+	DAMAGETYPEDARK = """Dark""", # MISSING TRANSLATION
+	DAMAGETYPEMIND = """Mind""", # MISSING TRANSLATION
+	DAMAGETYPESKILL = """Physical""", # MISSING TRANSLATION
+	DAMAGETYPESPELL = """Magic""", # MISSING TRANSLATION
+	DAMAGETYPEITEM = """Item""", # MISSING TRANSLATION
 	ALLRESIST = """все""",
 	HEALTHP = """Здоровье:""",
 	MANAP = """Мана:""",
@@ -975,6 +988,8 @@ var TranslationDict = {
 	
 	TOOLTIPSKILLPOINTS = """Очки навыков зарабатываются в боях и используются для приобретения новых боевых навыков.""",
 	TOOLTIPSUCCUBUS = """[Succubus] получает силы от очарования других. Каждый очарованный влюбляется в [succubus]а и заставляет [him] расти в силе.""",
+	TOOLTIPMINORTRAINING = """##FIX!!##[Succubus] gains powers from {color=green|Enthralling} others. Each Thrall falls in love with [succubus] and makes [him] grow in strength. Unlock points are earned by enthralling more characters.""", # MISSING TRANSLATION
+	TOOLTIPMASTERTRAINING = """##FIX!!##[Succubus] gains powers from {color=green|Enthralling} others. Each Thrall falls in love with [succubus] and makes [him] grow in strength. Unlock points are earned by enthralling more characters.""", # MISSING TRANSLATION
 	
 
 	SAVENAME = """Сохранение""",
@@ -2972,6 +2987,10 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	TRAITCHEFDESCRIPT = """Приготовление пищи на 100% быстрее""",
 	TRAITATTENDANTDESCRIPT = """Один раз за боевой ход [name] может использовать предмет без использования хода.""",
 	TRAITALCHEMISTDESCRIPT = """Исцеляющие предметы на 25% эффективнее в бою.""",
+	TRAITMASTER_ALCHEMISTT = """Master alchemist""", # MISSING TRANSLATION
+	TRAITMASTER_ALCHEMISTDESCRIPT = """Crafted alchemy items are at least normal quality.""", # MISSING TRANSLATION
+	TRAITMASTER_SMITH = """Master smith""", # MISSING TRANSLATION
+	TRAITMASTER_SMITHDESCRIPT = """Crafted items are at least normal quality.""", # MISSING TRANSLATION
 	TRAITFARMERDESCRIPT = """Фермерство на 50% эффективнее.""",
 	TRAITBREEDERDESCRIPT = """Позволяет размножаться с любой расой.
 Дебаффы беременности слабее.
@@ -3326,9 +3345,22 @@ Requires: Базовый рабский труд""",
 Увеличение уклонения, точности и MЗАЩ""",
 	TRAITEFFECTRARETOUGH = """Особый: Жесткий
 Увеличение здоровья, ЗАЩ и МЗАЩ""",
+	TRAITMONSTER_MASTERY_WARFARE_DESCRIPT = """Has enemy variation of warfare mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_PROTECTION_DESCRIPT = """Has enemy variation of protection mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_STEALTH_DESCRIPT = """Has enemy variation of stealth mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_MARKSMANSHIP_DESCRIPT = """Has enemy variation of marsmanship mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_LEADERSHIP_DESCRIPT = """Has enemy variation of ledership mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_FIRE_DESCRIPT = """Has enemy variation of fire mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_WATER_DESCRIPT = """Has enemy variation of water mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_AIR_DESCRIPT = """Has enemy variation of air mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_EARTH_DESCRIPT = """Has enemy variation of earth mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_LIGHT_DESCRIPT = """Has enemy variation of light mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_DARK_DESCRIPT = """Has enemy variation of dark mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
+	TRAITMONSTER_MASTERY_MIND_DESCRIPT = """Has enemy variation of mind mastery with the same skills and greater bonuses.""", # MISSING TRANSLATION
 	TRAITEFFECTHARDWORK = """Усердие: +50%% производительности""",
 	TRAITEFFECTPHYSBUF = """Эликсир силы огра: +80 физ. возм.""",
 	TRAITEFFECTWITSBUF = """Эликсир расширения разума: +80 мудрости""",
+	TRAITEFFECTALCOHOL = """Wasted: -1 Loyalty Gain, +1 Spirit Gain, -15%% Productivity""", # MISSING TRANSLATION
 	TRAITEFFECTFAVFOOD = """Любимая еда: -1 утечка повиновения, +0.5 прироста верности""", 
 	TRAITEFFECTHATEDFOOD = """Ненавистная еда: -10%% производительности""",
 	TRAITEFFECTSTARVE = """Голодание: -50%% производительности, -50%% урона.""",
@@ -4091,6 +4123,8 @@ Requires: Базовый рабский труд""",
 
 	BODYPARTSKIN_COVERAGEPLANTDESCRIPT = """Различные листья и кусочки [color=aqua]растительной массы[/color] покрывают части [his] тела.""",
 	BODYPARTSKIN_COVERAGESCALEDESCRIPT = """[His] кожа частично покрыта [color=aqua]чешуей[/color].""",
+	BODYPARTSKIN_COVERAGESCALE2DESCRIPT = """[His] skin is partly covered with [color=aqua]scales[/color].""", # MISSING TRANSLATION
+	BODYPARTSKIN_COVERAGESCALE3DESCRIPT = """[His] skin is partly covered with [color=aqua]scales[/color].""", # MISSING TRANSLATION
 	BODYPARTSKIN_COVERAGEFEATHERSDESCRIPT = """[His] тело во многих местах покрыто [color=aqua]птицеподобными перьями[/color].""",
 	BODYPARTSKIN_COVERAGEFUR_WHITEDESCRIPT = """[His] тело покрыто густым, мягким [color=aqua]мехом мраморного цвета[/color].""",
 	BODYPARTSKIN_COVERAGEFUR_GREYDESCRIPT = """[His] тело покрыто густым, мягким [color=aqua]мехом серого цвета[/color].""",
@@ -4124,6 +4158,7 @@ Requires: Базовый рабский труд""",
 	BODYPARTTAILTENTACLESDESCRIPT = """ """,
 	BODYPARTTAILHORSEDESCRIPT = """ """,
 	BODYPARTTAILSPIDERDESCRIPT = """ """,
+	BODYPARTTAILMOUSEDESCRIPT = """ """, # MISSING TRANSLATION
 	
 	BODYPARTHEIGHTTINYDESCRIPT = """[His] рост [color=aqua]чрезвычайно мал[/color], едва ли в два раза меньше, чем у обычного человека.""",
 	BODYPARTHEIGHTPETITEDESCRIPT = """[His] рост совсем [color=aqua]маленький[/color].""",
@@ -4713,6 +4748,9 @@ Requires: Базовый рабский труд""",
 	
 	DIALOGUETUTNOTHING = """Без обучения (бесплатно)""",
 	DIALOGUETUTSLAVE = """*Обучить как раба* (500 золотых)""",
+	DIALOGUETUTSLAVE1 = """Slave Training: Workforce (500 Gold)""", # MISSING TRANSLATION
+	DIALOGUETUTSLAVE2 = """Slave Training: Warrior (500 Gold)""", # MISSING TRANSLATION
+	DIALOGUETUTSLAVE3 = """Slave Training: Service (500 Gold)""", # MISSING TRANSLATION
 	DIALOGUETUTACADEMY = """*Академическое обучение* (1.500 золотых)""",
 	DIALOGUETUTHEIR = """*Обучение наследника* (5.000 золотых)""",
 	

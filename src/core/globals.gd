@@ -1,5 +1,5 @@
 extends Node
-const gameversion = '0.13.2'
+const gameversion = '0.13.2a'
 
 #time
 signal hour_tick
@@ -241,9 +241,9 @@ func CreateGearItemCraft(item, parts, person, newname = null):
 	if Items.recipes.has(item):
 		match Items.recipes[item].worktype:
 			'smith', 'tailor':
-				diffdata.prof = person.has_profession('smith')
+				diffdata.prof = person.has_status('master_smith')
 			'alchemy':
-				diffdata.prof = person.has_profession('alchemist')
+				diffdata.prof = person.has_status('master_alchemist')
 		diffdata.boost += person.get_task_diff()
 	var newitem = Item.new()
 	newitem.CreateGear(item, parts, diffdata)
@@ -1202,7 +1202,8 @@ func calculate_travel_time(location1, location2): #2remade to new mechanic
 	#if location2 != ResourceScripts.game_world.mansion_location:
 	time += ldata2.travel_time
 	if adata1.code != adata2.code:
-		time += adata1.travel_time + adata2.travel_time
+		if !(adata1.code in ['forests', 'beastkin_tribe']) or !(adata2.code in ['forests', 'beastkin_tribe']):
+			time += adata1.travel_time + adata2.travel_time
 	
 	time = max(1, time - variables.stable_boost_per_level * ResourceScripts.game_res.upgrades.stables)
 	if ldata1.teleporter:

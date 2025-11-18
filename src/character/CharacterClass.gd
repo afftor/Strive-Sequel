@@ -469,6 +469,74 @@ func generate_simple_fighter(tempname, setup_ai = true):
 		globals.char_roll_data.uniq = true
 
 
+func add_mastery_as_bonuses(category, lv, mul = 2.5):
+	dyn_stats._add_mastery_as_bonuses(category, lv)
+
+
+func roll_static_masteries(list, lv):
+	var mas_1
+	var mas_2
+	var mas_3
+	var lv_1
+	var lv_2
+	var lv_3
+	if list.empty():
+		mas_1 = 'leadership'
+	else:
+		mas_1 = input_handler.random_from_array(list)
+		list.erase(mas_1)
+	if list.empty():
+		mas_2 = null
+	else:
+		mas_2 = input_handler.random_from_array(list)
+		list.erase(mas_2)
+	if list.empty():
+		mas_3 = null
+	else:
+		mas_3 = input_handler.random_from_array(list)
+	
+	match lv:
+		1:
+			lv_1 = globals.rng.randi_range(2, 3)
+			lv_2 = 0
+			lv_3 = 0
+		2:
+			lv_1 = globals.rng.randi_range(4, 5)
+			lv_2 = globals.rng.randi_range(2, 3)
+			lv_3 = 0
+		3:
+			lv_1 = globals.rng.randi_range(5, 6)
+			lv_2 = globals.rng.randi_range(3, 4)
+			lv_3 = 0
+		4:
+			lv_1 = globals.rng.randi_range(5, 6)
+			lv_2 = globals.rng.randi_range(5, 6)
+			lv_3 = 0
+		5:
+			lv_1 = globals.rng.randi_range(7, 9)
+			lv_2 = globals.rng.randi_range(4, 5)
+			lv_3 = 0
+		6:
+			lv_1 = globals.rng.randi_range(10, 15)
+			lv_2 = 20 - lv_1
+			lv_3 = 0
+		7:
+			lv_1 = globals.rng.randi_range(15, 20)
+			lv_2 = 30 - lv_1
+			lv_3 = 0
+		8:
+			lv_1 = globals.rng.randi_range(15, 20)
+			lv_2 = globals.rng.randi_range(13, 18)
+			lv_3 = 45 - lv_1 - lv_2
+	
+	add_mastery_as_bonuses(mas_1, lv_1)
+	if mas_2 != null:
+		add_mastery_as_bonuses(mas_2, lv_2)
+	if mas_3 != null:
+		add_mastery_as_bonuses(mas_3, lv_3)
+
+
+
 func generate_predescribed_character(data):
 	create(data.race, data.sex, data.age)
 	process_chardata(data, true)
@@ -825,14 +893,19 @@ func setup_as_heir():
 			set_slave_category('heir')
 		else:
 			set_slave_category('slave')
-			
 	elif mother.is_spouse():
 		if father.is_master():
 			set_slave_category('heir')
 		else:
-			set_slave_category(mother.get_stat('slave_class'))
+			var tmp = mother.get_stat('slave_class')
+			if tmp == 'slave_trained':
+				tmp = 'slave'
+			set_slave_category(tmp)
 	else:
-		set_slave_category(mother.get_stat('slave_class'))
+		var tmp = mother.get_stat('slave_class')
+		if tmp == 'slave_trained':
+			tmp = 'slave'
+		set_slave_category(tmp)
 
 
 func get_weapon_element():

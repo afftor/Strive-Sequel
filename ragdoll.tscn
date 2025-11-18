@@ -5339,7 +5339,6 @@ shader_param/steepness = 2.0
 [node name="ragdoll" type="Node2D"]
 light_mask = 4
 script = ExtResource( 89 )
-clothes = false
 
 [node name="VPC" type="ViewportContainer" parent="."]
 light_mask = 4
@@ -5443,8 +5442,8 @@ rest = Transform2D( 1, 0, 0, 1, 220, -11.0008 )
 default_length = 100.0
 
 [node name="HandR" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["hand_r"]]
+visible = false
 position = Vector2( 178.784, -35.0601 )
-z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 178.784, -35.0601 )
 default_length = 100.0
 
@@ -5458,14 +5457,13 @@ texture = ExtResource( 75 )
 [node name="HandR_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR" groups=["cloth", "cloth_top"]]
 light_mask = 4
 material = SubResource( 54 )
-position = Vector2( -94.5127, 187.524 )
+position = Vector2( -94.2105, 190.287 )
 rotation = -1.5708
-z_index = 1
+z_index = 2
 texture = ExtResource( 98 )
 
 [node name="HandR2" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["hand_r"]]
 position = Vector2( 178.784, -35.0601 )
-z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 178.784, -35.0601 )
 default_length = 100.0
 
@@ -5477,12 +5475,11 @@ rotation = -1.5708
 texture = ExtResource( 75 )
 
 [node name="HandR_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR/HandR2" groups=["cloth", "cloth_top"]]
-visible = false
 light_mask = 4
 material = SubResource( 54 )
-position = Vector2( -94.5127, 187.524 )
+position = Vector2( -94.2105, 190.287 )
 rotation = -1.5708
-z_index = 1
+z_index = 2
 texture = ExtResource( 98 )
 
 [node name="ArmR_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["fur_nonmask", "skin_main"]]
@@ -5502,7 +5499,7 @@ texture = ExtResource( 79 )
 [node name="ArmR_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["cloth", "cloth_top"]]
 light_mask = 4
 material = SubResource( 53 )
-position = Vector2( 84.8, 153.845 )
+position = Vector2( 86.509, 155.97 )
 rotation = -1.5708
 z_index = 1
 texture = ExtResource( 69 )
@@ -5533,9 +5530,9 @@ texture = ExtResource( 42 )
 [node name="ShoulderR_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderR" groups=["cloth", "cloth_top"]]
 light_mask = 4
 material = SubResource( 52 )
-position = Vector2( 315.302, 141.497 )
+position = Vector2( 311.108, 144.437 )
 rotation = -1.5708
-z_index = 1
+z_index = 3
 texture = ExtResource( 78 )
 
 [node name="ShoulderL" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["hands", "human"]]
@@ -5558,7 +5555,6 @@ default_length = 100.0
 
 [node name="HandL" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["hand_l"]]
 position = Vector2( 188.756, 27.4087 )
-z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 188.756, 27.4087 )
 default_length = 100.0
 
@@ -5572,14 +5568,13 @@ texture = ExtResource( 76 )
 [node name="HandL_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL/HandL" groups=["cloth", "cloth_top"]]
 light_mask = 4
 material = SubResource( 57 )
-position = Vector2( -104.846, -164.526 )
+position = Vector2( -108.852, -164.122 )
 rotation = -1.5708
-z_index = 1
+z_index = 2
 texture = ExtResource( 67 )
 
 [node name="HandL2" type="Bone2D" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["hand_l"]]
 position = Vector2( 188.756, 27.4087 )
-z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 188.756, 27.4087 )
 default_length = 100.0
 
@@ -5594,9 +5589,9 @@ texture = ExtResource( 76 )
 visible = false
 light_mask = 4
 material = SubResource( 57 )
-position = Vector2( -104.846, -164.526 )
+position = Vector2( -108.852, -164.122 )
 rotation = -1.5708
-z_index = 1
+z_index = 2
 texture = ExtResource( 67 )
 
 [node name="ArmL_tex" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["fur_nonmask", "skin_main"]]
@@ -5616,7 +5611,7 @@ texture = ExtResource( 65 )
 [node name="ArmL_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["cloth", "cloth_top"]]
 light_mask = 4
 material = SubResource( 56 )
-position = Vector2( 83.8275, -136.94 )
+position = Vector2( 82.2014, -137.772 )
 rotation = -1.5708
 z_index = 1
 texture = ExtResource( 91 )
@@ -5647,9 +5642,9 @@ texture = ExtResource( 28 )
 [node name="ShoulderL_armor" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine/ShoulderL" groups=["cloth", "cloth_top"]]
 light_mask = 4
 material = SubResource( 55 )
-position = Vector2( 309.686, -124.736 )
+position = Vector2( 308.465, -129.369 )
 rotation = -1.5708
-z_index = 1
+z_index = 3
 texture = ExtResource( 87 )
 
 [node name="Torso_tex2" type="Sprite" parent="VPC/VP/male_pose/HumanF1/Spine" groups=["fur_mask", "skin_main"]]
@@ -5686,7 +5681,7 @@ texture = ExtResource( 72 )
 visible = false
 light_mask = 4
 material = SubResource( 58 )
-position = Vector2( 218.927, -0.34021 )
+position = Vector2( 222, -0.000823975 )
 rotation = -1.5708
 z_index = 1
 texture = ExtResource( 71 )
@@ -6185,7 +6180,6 @@ default_length = 100.0
 
 [node name="HandR" type="Bone2D" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["hand_r"]]
 position = Vector2( 147, -34.0005 )
-z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 147, -34.0005 )
 default_length = 100.0
 
@@ -6207,7 +6201,6 @@ texture = ExtResource( 33 )
 
 [node name="HandR2" type="Bone2D" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["hand_r"]]
 position = Vector2( 147, -34.0005 )
-z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 147, -34.0005 )
 default_length = 100.0
 
@@ -6229,7 +6222,6 @@ texture = ExtResource( 33 )
 
 [node name="HandR3" type="Bone2D" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderR/ArmR" groups=["hand_r"]]
 position = Vector2( 147, -34.0005 )
-z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 147, -34.0005 )
 default_length = 100.0
 
@@ -6324,7 +6316,6 @@ default_length = 100.0
 
 [node name="HandL" type="Bone2D" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["hand_l"]]
 position = Vector2( 136.842, 21.0521 )
-z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 136.842, 21.0521 )
 default_length = 100.0
 
@@ -6346,7 +6337,6 @@ texture = ExtResource( 14 )
 
 [node name="HandL2" type="Bone2D" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["hand_l"]]
 position = Vector2( 136.842, 21.0521 )
-z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 136.842, 21.0521 )
 default_length = 100.0
 
@@ -6368,7 +6358,6 @@ texture = ExtResource( 14 )
 
 [node name="HandL3" type="Bone2D" parent="VPC/VP/Female_pose/HumanF1/Spine/ShoulderL/ArmL" groups=["hand_l"]]
 position = Vector2( 136.842, 21.0521 )
-z_index = -2
 rest = Transform2D( 1, 0, 0, 1, 136.842, 21.0521 )
 default_length = 100.0
 

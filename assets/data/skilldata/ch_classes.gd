@@ -100,6 +100,34 @@ var skills = {
 		value = [['0']],
 		damagestat = 'no_stat'
 	},
+	firearrows_apply = { #fix
+		code = 'firearrows_apply',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/Attract.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['buff', 'instant'],
+		reqs = [
+			{code = 'gear_equiped', param = 'geartype', value = 'bow', check = true}
+#			{code = 'stat', stat = 'mp', operant = 'gte', value = 10},
+#			{code = 'has_status', status = 'euphoria', check = false},
+		],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'firearrows'})], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat'
+	},
 	distract = {
 		code = 'distract',
 		descript = '',
@@ -1004,6 +1032,61 @@ var effects = {
 			}
 		]
 	},
+	firearrows = {
+		type = 'temp_s',
+		stack = 'firearrows',
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		target = 'caster',
+		tags = ['firearrows', 'e_damage_buff'],
+		sub_effects = ['firearrows_passive', 'firearrows_trigger'],
+		statchanges = {damagetype = 'fire'},
+		buffs = [
+			{
+				icon = "res://assets/images/iconsclasses/Fighter.png",
+				description = "EUPHORIABUFF", #fix
+				tags = ['combat_only'],
+			}
+		],
+	},
+	firearrows_passive = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_F],
+		req_skill = false,
+		conditions = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				atomic = [{type = 'stat_add', stat = 'mp', value = -1},],
+			},
+			{
+				type = 'oneshot',
+				target = 'owner',
+				conditions = [{code = 'stat', stat = 'mp', operant = 'lte', value = 0}],
+				atomic = [{type = 'remove_effect', value = 'firearrows'},],
+			}
+		]
+	},
+	firearrows_trigger = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['ability_type', 'eq', 'skill']},
+			{type = 'skill', value = ['target_range', 'eq', 'any']},
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{obj = 'self', func = 'chance', chance = 0.2}
+		],
+		buffs = [],
+		sub_effects = ['burn'],
+		args = {
+			skill = {obj = 'skill', func = 'eq'},
+			caster = {obj = 'caster', func = 'eq'},
+			target = {obj = 'target', func = 'eq'},
+			duration = {obj = 'self', func = 'dur', dur = 2}
+		},
+	},
 	e_t_distract = {
 		type = 'temp_s',
 		target = 'target',
@@ -1422,6 +1505,10 @@ var stacks = {
 		buff = 'b_deathknight'
 	},#st increment lim 5
 	euphoria = {
+		type = 'stack_t',
+		stack = 1
+	},#toggle
+	firearrows = {
 		type = 'stack_t',
 		stack = 1
 	},#toggle

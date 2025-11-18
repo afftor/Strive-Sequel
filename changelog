@@ -1,3 +1,11 @@
+0.13.2b
+Added damage types to combat log
+Added color border to turn order to indicate player/enemy characters
+0.13.2a
+Fixed multiple issues with Heleviel's quest
+Fixed some repeatable quests not properly giving out their reward
+Fixed changelog being empty
+Fixed some missing translations 
 0.13.2
 Added Heleviel questline and wedding scene
 Added a one time option to purchase corruptive essence if it wasn't chosen as starting bonus
@@ -7,7 +15,7 @@ Void now cost 16 (up from 10) and has 5 turn cooldown (up from 1)
 Fixed void only proccing its debuffs on crit 
 Quests should now have fixed reward and be faithful to the tooltip
 Fixed sharpness enchant not working on some items
-Fixed some minor errors with character selection scren
+Fixed some minor errors with character selection screen
 0.13.1c
 Corrected some scene dialogues
 Fixed Devastation skill and made its animation faster

@@ -367,13 +367,14 @@ var enemies = {
 		race = 'humanoid',
 		loot = 'bandit_loot',
 		icon = "res://assets/images/enemies/bandit.png", 
-		skills = ['attack', 'earth_atk'],
+		skills = ['attack', 'draw_blood'],
 		traits = [],
 		tags = ['human','bandit'], 
-		ai = [['basic', 66], ['ads', 33]],
+		ai = [['basic', 75], ['ads', 25]],
 		ai_hard = [['basic', 50], ['ads', 50]],
 		ai_position = ['melee'],
 		xpreward = 10,
+		allowed_mastery = ['warfare','protection','stealth','leadership'],
 	},
 	bandit_archer = {
 		code = 'bandit_archer',
@@ -398,6 +399,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['ranged'],
 		xpreward = 10,
+		allowed_mastery = ['marksmanship','stealth','leadership'],
 	},
 	bandit_assassin = {
 		code = 'bandit_assassin',
@@ -422,6 +424,7 @@ var enemies = {
 		ai =  [['basic', 66], ['ads', 33]],
 		ai_position = ['ranged'],
 		xpreward = 15,
+		allowed_mastery = ['warfare','stealth','marksmanship','fire','earth','dark'],
 	},
 	bandit_boss_melee = {
 		code = 'bandit_boss_melee',
@@ -448,6 +451,7 @@ var enemies = {
 		ai_hard = [['basic', 85], ['aoe', 50]],
 		ai_position = ['melee'],
 		xpreward = 40,
+		allowed_mastery = ['warfare','protection','stealth','leadership','dark','earth'],
 	},
 	bandit_boss_archer = {
 		code = 'bandit_boss_archer',
@@ -474,6 +478,7 @@ var enemies = {
 		ai_hard = [['basic', 85], ['aoe', 50]],
 		ai_position = ['ranged'],
 		xpreward = 40,
+		allowed_mastery = ['warfare','marksmanship','stealth','leadership','air'],
 	},
 	bandit_boss_mage = {
 		code = 'bandit_boss_mage',
@@ -500,6 +505,7 @@ var enemies = {
 		ai_hard = [['basic', 85], ['aoe', 50]],
 		ai_position = ['ranged'],
 		xpreward = 40,
+		allowed_mastery = ['fire','water','air','earth','light','dark','mind'],
 	},
 	rebel_recruit = {
 		code = 'rebel_recruit',
@@ -512,7 +518,7 @@ var enemies = {
 		evasion = 10,
 		armorpenetration = 0,
 		atk = 31,
-		matk = 5,
+		matk = 15,
 		speed = 35,
 		resists = {},
 		status_resists = {},
@@ -526,6 +532,7 @@ var enemies = {
 		ai_hard = [['basic', 50], ['ads', 50]],
 		ai_position = ['melee'],
 		xpreward = 10,
+		allowed_mastery = ['warfare','protection','leadership','water','fire'],
 	},
 	rebel_knight = {
 		code = 'rebel_knight',
@@ -552,6 +559,7 @@ var enemies = {
 		ai_hard = [['basic', 50], ['aoe', 50]],
 		ai_position = ['melee'],
 		xpreward = 10,
+		allowed_mastery = ['warfare','protection','leadership','light','earth'],
 	},
 	rebel_mage = {
 		code = 'rebel_mage',
@@ -576,6 +584,7 @@ var enemies = {
 		ai = [['aoe', 33], ['ads', 66]],
 		ai_position = ['ranged'],
 		xpreward = 15,
+		allowed_mastery = ['leadership','fire','earth','water','air','light','dark','mind'],
 	},
 	rebel_healer = {
 		code = 'rebel_healer',
@@ -600,6 +609,7 @@ var enemies = {
 		ai = [['basic', 25], ['heal', 75]],
 		ai_position = ['ranged'],
 		xpreward = 15,
+		allowed_mastery = ['protection','water','earth','light','mind'],
 	},
 
 	trained_dog = {
@@ -625,6 +635,7 @@ var enemies = {
 		ai = [['basic', 100],['ads', 0]],
 		ai_position = ['melee'],
 		xpreward = 10,
+		allowed_mastery = ['warfare','protection','stealth'],
 	},
 	trained_bear = {
 		code = 'trained_bear',
@@ -649,6 +660,7 @@ var enemies = {
 		ai = [['basic', 100],['ads', 0]],
 		ai_position = ['melee'],
 		xpreward = 15,
+		allowed_mastery = ['warfare','protection','stealth'],
 	},
 	trained_raptor = {
 		code = 'trained_raptor',
@@ -673,6 +685,7 @@ var enemies = {
 		ai = [['basic', 50],['ads', 50]],
 		ai_position = ['melee'],
 		xpreward = 20,
+		allowed_mastery = ['warfare','protection','stealth'],
 	},
 	guardian_golem = {
 		code = 'guardian_golem',
@@ -698,6 +711,7 @@ var enemies = {
 		ai = [['basic', 100],['ads', 0]],
 		ai_position = ['melee'],
 		xpreward = 25,
+		allowed_mastery = ['warfare','protection','stealth'],
 	},
 	ballista = {
 		code = 'ballista',
@@ -723,6 +737,7 @@ var enemies = {
 		ai = [['basic', 50],['ads', 50]],
 		ai_position = ['ranged'],
 		xpreward = 20,
+		allowed_mastery = ['warfare','protection','stealth'],
 	},
 	bandit_mage = {
 		code = 'bandit_mage',
@@ -747,6 +762,7 @@ var enemies = {
 		ai = [['ads', 45], ['aoe', 45], ['support', 10]], #add healing on self when hp < 50 with 75% chance
 		ai_position = ['ranged'],
 		xpreward = 15,
+		allowed_mastery = ['leadership','fire','earth','water','air','dark','mind'],
 	},
 	cave_goblin_melee = {
 		code = 'cave_goblin_melee',
@@ -771,6 +787,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
 		xpreward = 7,
+		allowed_mastery = ['warfare','leadership','stealth'],
 	},
 	cave_goblin_archer = {
 		code = 'cave_goblin_archer',
@@ -795,6 +812,7 @@ var enemies = {
 		ai = [['basic', 100]],
 		ai_position = ['ranged'],
 		xpreward = 10,
+		allowed_mastery = ['warfare','marksmanship','stealth'],
 	},
 	cave_goblin_mage = {
 		code = 'cave_goblin_mage',
@@ -819,6 +837,7 @@ var enemies = {
 		ai = [['ads', 100]],
 		ai_position = ['ranged'],
 		xpreward = 10,
+		allowed_mastery = ['leadership','fire','earth','air','dark','mind'],
 	},
 	cave_goblin_boss = {
 		code = 'cave_goblin_boss',
@@ -843,6 +862,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
 		xpreward = 20,
+		allowed_mastery = ['warfare','leadership','protection'],
 	},
 	cave_goblin_shaman = {
 		code = 'cave_goblin_shaman',
@@ -867,6 +887,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['ranged'],
 		xpreward = 20,
+		allowed_mastery = ['warfare','leadership','water','earth','air','dark','mind'],
 	},
 	
 	quest_goblin_boss = {
@@ -892,6 +913,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
 		xpreward = 20,
+		allowed_mastery = ['warfare','leadership','protection'],
 	},
 	quest_goblin_shaman = {
 		code = 'quest_goblin_shaman',
@@ -916,6 +938,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['ranged'],
 		xpreward = 20,
+		allowed_mastery = ['warfare','leadership','water','earth','air','dark','mind'],
 	},
 	
 	ogre_melee = {
@@ -942,6 +965,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
 		xpreward = 20,
+		allowed_mastery = ['warfare','leadership','protection'],
 	},
 	ogre_mage = {
 		code = 'ogre_mage',
@@ -967,6 +991,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['ranged'],
 		xpreward = 25,
+		allowed_mastery = ['warfare','fire','earth','dark'],
 	},
 	troll = {
 		code = 'troll',
@@ -991,6 +1016,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
 		xpreward = 50,
+		allowed_mastery = ['warfare','leadership','protection'],
 	},
 	skeleton_melee = {
 		code = 'skeleton_melee',
@@ -1016,6 +1042,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
 		xpreward = 10,
+		allowed_mastery = ['warfare','leadership','protection','stealth'],
 	},
 	skeleton_shield_melee = {
 		code = 'skeleton_shield_melee',
@@ -1041,6 +1068,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
 		xpreward = 10,
+		allowed_mastery = ['warfare','leadership','protection','earth'],
 	},
 	skeleton_archer = {
 		code = 'skeleton_archer',
@@ -1066,6 +1094,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['ranged'],
 		xpreward = 10,
+		allowed_mastery = ['warfare','marksmanship','stealth','air'],
 	},
 	skeleton_archer_quest = {
 		code = 'skeleton_archer_quest',
@@ -1091,6 +1120,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['ranged'],
 		xpreward = 10,
+		allowed_mastery = ['warfare','marksmanship','stealth','air'],
 	},
 	zombie = {
 		code = 'zombie',
@@ -1116,6 +1146,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
 		xpreward = 10,
+		allowed_mastery = ['warfare','protection'],
 	},
 	undead_lich = {
 		code = 'undead_lich',
@@ -1142,6 +1173,7 @@ var enemies = {
 		ai_hard = [['basic', 50], ['ads', 50]],
 		ai_position = ['ranged'],
 		xpreward = 35,
+		allowed_mastery = ['leadership','water','earth','air','dark','mind'],
 	},
 	lich_quest = {
 		code = 'lich_quest',
@@ -1168,6 +1200,7 @@ var enemies = {
 		ai_hard = [['basic', 50], ['ads', 50]],
 		ai_position = ['ranged'],
 		xpreward = 35,
+		allowed_mastery = ['leadership','water','earth','air','dark','mind'],
 	},
 	wolf = {
 		code = 'wolf',
@@ -1192,6 +1225,7 @@ var enemies = {
 		ai = [['basic', 100]],
 		ai_position = ['melee'],
 		xpreward = 5,
+		allowed_mastery = ['warfare','protection','leadership'],
 	},
 	spider_weak = {
 		code = 'spider_weak',
@@ -1216,6 +1250,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
 		xpreward = 7,
+		allowed_mastery = ['warfare','stealth','leadership'],
 	},
 	spider = {
 		code = 'spider',
@@ -1240,6 +1275,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
 		xpreward = 7,
+		allowed_mastery = ['warfare','stealth','leadership'],
 	},
 	willowisp = {
 		code = 'willowisp',
@@ -1264,6 +1300,7 @@ var enemies = {
 		ai = [['ads', 100]],
 		ai_position = ['ranged'],
 		xpreward = 7,
+		allowed_mastery = ['warfare','fire','dark','air'],
 	},
 	spider_ranged = {
 		code = 'spider_ranged',
@@ -1288,6 +1325,7 @@ var enemies = {
 		ai = [['basic', 0], ['ads', 100]],
 		ai_position = ['ranged'],
 		xpreward = 7,
+		allowed_mastery = ['warfare','marksmanship','leadership'],
 	},
 	spider_aoe = {
 		code = 'spider_aoe',
@@ -1312,6 +1350,7 @@ var enemies = {
 		ai = [['basic', 33], ['ads', 66]],
 		ai_position = ['ranged'],
 		xpreward = 7,
+		allowed_mastery = ['warfare','marksmanship','leadership'],
 	},
 	spider_alfa_boss = {
 		code = 'spider_alfa_boss',
@@ -1336,6 +1375,7 @@ var enemies = {
 		ai = [['basic', 50], ['ads', 50]],
 		ai_position = ['melee'],
 		xpreward = 20,
+		allowed_mastery = ['warfare','protection','leadership','stealth','air','water','dark'],
 	},
 		spider_queen_boss = {
 		code = 'spider_queen_boss',
@@ -1360,6 +1400,7 @@ var enemies = {
 		ai = [['basic', 33], ['ads', 66]],
 		ai_position = ['ranged'],
 		xpreward = 20,
+		allowed_mastery = ['warfare','protection','leadership','water','dark'],
 	},
 	rat = {
 		code = 'rat',
@@ -1384,6 +1425,7 @@ var enemies = {
 		ai = [['basic', 100]],
 		ai_position = ['melee'],
 		xpreward = 5,
+		allowed_mastery = ['warfare','stealth'],
 	},
 	gryphon = {
 		code = 'gryphon',
@@ -1409,6 +1451,7 @@ var enemies = {
 		ai = [['basic', 50],['ads',50]],
 		ai_position = ['melee'],
 		xpreward = 50,
+		allowed_mastery = ['warfare','protection','leadership','stealth'],
 	},
 	elder_gryphon_boss = {
 		code = 'elder_gryphon_boss',
@@ -1434,6 +1477,7 @@ var enemies = {
 		ai = [['basic', 50],['ads',50]],
 		ai_position = ['melee'],
 		xpreward = 75,
+		allowed_mastery = ['warfare','protection','leadership','stealth'],
 	},
 
 	mimic = {
@@ -1460,6 +1504,7 @@ var enemies = {
 		ai = [['basic', 50], ['ads', 50]],
 		ai_position = ['melee'],
 		xpreward = 50,
+		allowed_mastery = ['warfare','stealth'],
 	},
 
 
@@ -1486,6 +1531,7 @@ var enemies = {
 		ai = [['basic', 50],['aoe', 50]],
 		ai_position = ['melee'],
 		xpreward = 15,
+		allowed_mastery = ['warfare','protection','leadership','stealth'],
 	},
 	rock_thrower = {
 		code = 'rock_thrower',
@@ -1511,6 +1557,7 @@ var enemies = {
 		ai = [['basic', 100]],
 		ai_position = ['ranged'],
 		xpreward = 15,
+		allowed_mastery = ['warfare','marksmanship','leadership','stealth'],
 	},
 	maneater_plant = {
 		code = 'maneater_plant',
@@ -1535,6 +1582,7 @@ var enemies = {
 		ai = [['basic', 20],['ads',40],['aoe',40]],
 		ai_position = ['any'],
 		xpreward = 15,
+		allowed_mastery = ['warfare','leadership'],
 	},
 
 	giant_ant = {
@@ -1560,6 +1608,7 @@ var enemies = {
 		ai = [['basic', 100]],
 		ai_position = ['any'],
 		xpreward = 10,
+		allowed_mastery = ['warfare','protection','leadership','stealth'],
 	},
 	wild_raptor =  {
 		code = 'wild_raptor',
@@ -1584,6 +1633,7 @@ var enemies = {
 		ai = [['basic', 100]],
 		ai_position = ['any'],
 		xpreward = 15,
+		allowed_mastery = ['warfare','protection','leadership','stealth'],
 	},
 	centipede = {
 		code = 'centipede',
@@ -1608,6 +1658,7 @@ var enemies = {
 		ai = [['basic', 25],['ads',75]],
 		ai_position = ['any'],
 		xpreward = 20,
+		allowed_mastery = ['warfare','protection','leadership','stealth'],
 	},
 	ogre_alpha = {
 		code = 'ogre_alpha',
@@ -1633,6 +1684,7 @@ var enemies = {
 		ai = [['basic', 30],['ads',70]],
 		ai_position = ['ranged'],
 		xpreward = 100,
+		allowed_mastery = ['warfare','protection','leadership','stealth','earth','fire','light'],
 	},
 	great_viper = {
 		code = 'great_viper',
@@ -1658,6 +1710,7 @@ var enemies = {
 		ai = [['basic', 100]],
 		ai_position = ['any'],
 		xpreward = 100,
+		allowed_mastery = ['warfare','protection','leadership','stealth'],
 	},
 	anthropoid = {
 		code = 'anthropoid',
@@ -1683,6 +1736,7 @@ var enemies = {
 		ai = [['basic', 100]],
 		ai_position = ['any'],
 		xpreward = 15,
+		allowed_mastery = ['warfare','protection','leadership','stealth'],
 	},
 	ifrit = {
 		code = 'ifrit',
@@ -1708,6 +1762,7 @@ var enemies = {
 		ai = [['basic', 30],['ads',70]],
 		ai_position = ['any'],
 		xpreward = 15,
+		allowed_mastery = ['warfare','protection','leadership','stealth','fire','air','dark','light'],
 	},
 	magma_beast = {
 		code = 'magma_beast',
@@ -1733,6 +1788,7 @@ var enemies = {
 		ai = [['aoe', 100]],
 		ai_position = ['ranged'],
 		xpreward = 100,
+		allowed_mastery = ['warfare','protection','leadership','stealth'],
 	},
 	erebus_stone = {
 		code = 'erebus_stone',
@@ -1758,6 +1814,7 @@ var enemies = {
 		ai = [['basic', 25],['ads', 75]],
 		ai_position = ['ranged'],
 		xpreward = 50,
+		allowed_mastery = ['protection','leadership','earth','fire','air','dark','mind'],
 	},
 	
 	dwarf_fighter = {
@@ -1785,6 +1842,7 @@ var enemies = {
 		ai_hard = [['basic', 50], ['ads', 50]],
 		ai_position = ['melee'],
 		xpreward = 15,
+		allowed_mastery = ['warfare','protection','leadership','stealth'],
 	},
 	dwarf_fighter_elite = {
 		code = 'dwarf_fighter_elite',
@@ -1797,7 +1855,7 @@ var enemies = {
 		evasion = 25,
 		armorpenetration = 15,
 		atk = 56,
-		matk = 5,
+		matk = 32,
 		speed = 40,
 		resists = {},
 		status_resists = {},
@@ -1811,6 +1869,7 @@ var enemies = {
 		ai_hard = [['basic', 50], ['ads', 50]],
 		ai_position = ['melee'],
 		xpreward = 25,
+		allowed_mastery = ['warfare','protection','leadership','earth'],
 	},
 	dwarf_ranged = {
 		code = 'dwarf_ranged',
@@ -1835,6 +1894,7 @@ var enemies = {
 		ai = [['basic', 100]],
 		ai_position = ['ranged'],
 		xpreward = 10,
+		allowed_mastery = ['warfare','marksmanship','stealth'],
 	},
 	pack_leader_boss = {
 		code = 'pack_leader_boss',
@@ -1859,6 +1919,7 @@ var enemies = {
 		ai = [['basic', 50],['aoe', 30],['debuff', 50]],
 		ai_position = ['melee'],
 		xpreward = 15,
+		allowed_mastery = ['warfare','protection','leadership'],
 	},
 	sergeant_boss = {
 		code = 'sergeant_boss',
@@ -1883,6 +1944,7 @@ var enemies = {
 		ai = [['basic', 50],['aoe', 30],['debuff', 20]],
 		ai_position = ['ranged'],
 		xpreward = 20,
+		allowed_mastery = ['warfare','protection','leadership','stealth'],
 	},
 	castellan_boss = {
 		code = 'castellan_boss',
@@ -1907,6 +1969,7 @@ var enemies = {
 		ai = [['basic', 20],['aoe', 30],['ads', 50]],
 		ai_position = ['melee'],
 		xpreward = 20,
+		allowed_mastery = ['warfare','protection','leadership','stealth','fire','light'],
 	},
 	jarl_boss = {
 		code = 'jarl_boss',
@@ -1931,6 +1994,7 @@ var enemies = {
 		ai = [['basic', 50],['aoe', 30],['ads', 20]],
 		ai_position = ['melee'],
 		xpreward = 35,
+		allowed_mastery = ['warfare','protection','leadership','stealth','earth','dark'],
 	},
 	bounty_hunter_boss = {
 		code = 'bounty_hunter_boss',
@@ -1955,6 +2019,7 @@ var enemies = {
 		ai = [['basic', 33],['debuff', 66]],
 		ai_position = ['ranged'],
 		xpreward = 35,
+		allowed_mastery = ['warfare','leadership','stealth','marksmanship','dark','air'],
 	},
 	warlock_boss = {
 		code = 'warlock_boss',
@@ -1979,6 +2044,7 @@ var enemies = {
 		ai = [['aoe', 66],['debuff', 33]],
 		ai_position = ['ranged'],
 		xpreward = 30,
+		allowed_mastery = ['fire','air','earth','water','dark','mind'],
 	},
 	hobgoblin_thug = {
 		code = 'hobgoblin_thug',
@@ -2003,6 +2069,7 @@ var enemies = {
 		ai = [['basic', 100]],
 		ai_position = ['melee'],
 		xpreward = 15,
+		allowed_mastery = ['warfare','protection','leadership','stealth'],
 	},
 	hobgoblin_crossbowman = {
 		code = 'hobgoblin_crossbowman',
@@ -2027,6 +2094,7 @@ var enemies = {
 		ai = [['basic', 50], ['ads', 50]],
 		ai_position = ['ranged'],
 		xpreward = 15,
+		allowed_mastery = ['warfare','marksmanship','leadership','stealth'],
 	},
 	hobgoblin_tormentor = {
 		code = 'hobgoblin_tormentor',
@@ -2051,6 +2119,7 @@ var enemies = {
 		ai = [['basic', 66], ['aoe', 33]],
 		ai_position = ['ranged'],
 		xpreward = 15,
+		allowed_mastery = ['warfare','protection','leadership','stealth','fire'],
 	},
 		warg = {
 		code = 'warg',
@@ -2075,6 +2144,7 @@ var enemies = {
 		ai = [['basic', 60], ['ads', 40]],
 		ai_position = ['melee'],
 		xpreward = 15,
+		allowed_mastery = ['warfare','protection','leadership','stealth'],
 	},
 	vulture = {
 		code = 'vulture',
@@ -2099,6 +2169,7 @@ var enemies = {
 		ai = [['basic', 60], ['ads', 40]],
 		ai_position = ['ranged'],
 		xpreward = 15,
+		allowed_mastery = ['warfare','leadership','stealth'],
 	},
 	warlord = {
 		code = 'warlord',
@@ -2123,6 +2194,7 @@ var enemies = {
 		ai = [['basic', 40], ['ads', 20], ['aoe', 20], ['debuff', 20]],
 		ai_position = ['melee'],
 		xpreward = 30,
+		allowed_mastery = ['warfare','protection','leadership','fire','earth','water'],
 	},
 	alchemist = {
 		code = 'alchemist',
@@ -2147,6 +2219,7 @@ var enemies = {
 		ai = [['aoe', 40], ['aoe', 40], ['debuff', 20]],
 		ai_position = ['ranged'],
 		xpreward = 30,
+		allowed_mastery = ['fire','water','earth','air','light'],
 	},
 	battle_troll = {
 		code = 'battle_troll',
@@ -2171,6 +2244,7 @@ var enemies = {
 		ai = [['basic', 30], ['ads', 40], ['aoe', 30]],
 		ai_position = ['melee'],
 		xpreward = 30,
+		allowed_mastery = ['warfare','protection','leadership'],
 	},
 
 	#quest enemies
@@ -2200,6 +2274,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
 		xpreward = 100,
+		preset_masteries = {warfare = 4, leadership = 3, protection = 2},
 	},
 	greg_act4 = {
 		code = 'greg_act4',
@@ -2219,12 +2294,13 @@ var enemies = {
 		race = 'humanoid',
 		loot = 'ayneris_rapier_reward',
 		icon = "res://assets/images/enemies/greg_enemy.png", 
-		skills = ['devastation','cleave','strike_through'],
+		skills = [],
 		traits = ['boss_resists'],
 		tags = ['human','boss'], 
 		ai = [['ads', 66],['aoe',33]],
 		ai_position = ['melee'],
 		xpreward = 100,
+		preset_masteries = {warfare = 8, leadership = 2, protection = 7},
 	},
 	erdyna = {
 		code = 'erdyna',
@@ -2244,12 +2320,13 @@ var enemies = {
 		race = 'humanoid',
 		loot = 'hard_boss_chest',
 		icon = "res://assets/images/enemies/dragongirl.png", 
-		skills = ['devastation','backkick','dip_poison'],
+		skills = [],
 		traits = ['boss_resists'],
 		tags = ['human','boss'], 
 		ai = [['ads', 66],['aoe',33]],
 		ai_position = ['melee'],
 		xpreward = 100,
+		preset_masteries = {warfare = 6, stealth = 9},
 	},
 	nixx = {
 		code = 'nixx',
@@ -2275,6 +2352,7 @@ var enemies = {
 		ai = [['ads', 50],['aoe',50]],
 		ai_position = ['melee'],
 		xpreward = 100,
+		preset_masteries = {dark = 10, mind = 6, air = 5},
 	},
 	aire = {
 		code = 'aire',
@@ -2294,12 +2372,13 @@ var enemies = {
 		race = 'humanoid',
 		loot = 'bandit_loot',
 		icon = "res://assets/images/enemies/aire_enemy.png", 
-		skills = ['explosivearr','arrowrain'],
+		skills = [],
 		traits = ['boss_resists'],
 		tags = ['human','boss'], 
 		ai = [['ads', 33],['aoe',33], ['ads', 33]],
 		ai_position = ['ranged'],
 		xpreward = 100,
+		preset_masteries = {warfare = 3, marksmanship = 4},
 	},
 	demoness = {
 		code = 'demoness',
@@ -2326,6 +2405,7 @@ var enemies = {
 		ai = [['ads', 33],['aoe',33], ['basic', 33]],
 		ai_position = ['ranged'],
 		xpreward = 50,
+		preset_masteries = {dark = 5, water = 4, air = 4},
 	},
 	
 	lilith_boss = {
@@ -2352,6 +2432,7 @@ var enemies = {
 		ai = [['ads', 33],['aoe',33], ['basic', 33]],
 		ai_position = ['ranged'],
 		xpreward = 50,
+		preset_masteries = {dark = 4, mind = 3, fire = 5},
 	},
 	lilith_boss_2 = {
 		code = 'lilith_boss_2',
@@ -2377,6 +2458,7 @@ var enemies = {
 		ai = [['ads', 33],['aoe',33], ['basic', 33]],
 		ai_position = ['ranged'],
 		xpreward = 50,
+		preset_masteries = {dark = 6, mind = 4, fire = 6},
 	},
 	kurdan = {
 		code = 'kurdan',
@@ -2402,6 +2484,7 @@ var enemies = {
 		ai = [['ads', 66],['basic', 33]],
 		ai_position = ['ranged'],
 		xpreward = 25,
+		preset_masteries = {fire = 2, earth = 3},
 	},
 	
 	leon = {
@@ -2428,6 +2511,7 @@ var enemies = {
 		ai = [['ads', 66],['basic', 33]],
 		ai_position = ['melee'],
 		xpreward = 100,
+		preset_masteries = {warfare = 8, leadership = 5, stealth = 5},
 	},
 	
 	kuro = {
@@ -2448,12 +2532,13 @@ var enemies = {
 		race = 'humanoid',
 		loot = 'bandit_loot',
 		icon = "res://assets/images/enemies/kuro.png", 
-		skills = ['shadowstrike','void','void_barrage'],
+		skills = ['void_barrage'],
 		traits = ['boss_resists'],
 		tags = ['human','boss'], 
 		ai = [['ads', 33],['aoe',33], ['basic', 33]],
 		ai_position = ['ranged'],
 		xpreward = 50,
+		preset_masteries = {dark = 7, mind = 3, stealth = 4},
 	},
 	
 	white_stag = {
@@ -2480,6 +2565,7 @@ var enemies = {
 		ai = [['ads', 66],['basic', 33]],
 		ai_position = ['melee'],
 		xpreward = 100,
+		preset_masteries = {warfare = 5, stealth = 3, water = 5, earth = 5, light = 4},
 	},
 	white_stag_human = {
 		code = 'white_stag_human',
@@ -2505,6 +2591,7 @@ var enemies = {
 		ai = [['ads', 66],['basic', 33]],
 		ai_position = ['melee'],
 		xpreward = 100,
+		preset_masteries = {water = 6, earth = 6, light = 5},
 	},
 	elf_specter = {
 		code = 'elf_specter',
@@ -2531,6 +2618,7 @@ var enemies = {
 		ai_hard = [['basic', 50], ['aoe', 50]],
 		ai_position = ['melee'],
 		xpreward = 20,
+		preset_masteries = {warfare = 5, protection = 3, light = 4},
 	},
 	elf_soldier = {
 		code = 'elf_soldier',
@@ -2557,6 +2645,7 @@ var enemies = {
 		ai_hard = [['basic', 50], ['aoe', 50]],
 		ai_position = ['melee'],
 		xpreward = 20,
+		preset_masteries = {warfare = 5, protection = 3, air = 3},
 	},
 	ramont_boss = {#daisy quest option
 		code = 'ramont_boss',
@@ -2582,6 +2671,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['melee'],
 		xpreward = 100,
+		preset_masteries = {warfare = 5, protection = 2, leadership = 3},
 	},
 	hector_boss = {#cali quest option
 		code = 'hector_boss',
@@ -2601,12 +2691,13 @@ var enemies = {
 		race = 'humanoid',
 		loot = 'bandit_loot',
 		icon = "res://assets/images/enemies/bandit_boss.png", 
-		skills = ['sunder','cleave'],
+		skills = [],
 		traits = ['boss_resists'],
 		tags = ['human','boss'], 
 		ai = [['basic', 20], ['ads', 40],['aoe', 40]],
 		ai_position = ['melee'],
 		xpreward = 100,
+		preset_masteries = {warfare = 6, protection = 2, leadership = 2},
 	},
 	reyan_boss = {#anastasia boss
 		code = 'reyan_boss',
@@ -2632,6 +2723,7 @@ var enemies = {
 		ai = [['basic', 33], ['ads', 66]],
 		ai_position = ['melee'],
 		xpreward = 100,
+		preset_masteries = {stealth = 6, warfare = 4, leadership = 3},
 	},
 	
 	
