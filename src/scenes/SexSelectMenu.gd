@@ -8,6 +8,7 @@ onready var _category_buttons = {
 	"female": $Categories/female,
 	"futa": $Categories/futa,
 }
+onready var _participant_label = $ParticipantLabel
 
 func _ready():
 	gui_controller.add_close_button(self)
@@ -43,9 +44,21 @@ func rebuild_list():
 		newbutton.get_node("Icon").texture = person.get_icon_small()
 		newbutton.get_node("Consent").text = str(tr(variables.consent_dict[int(person.get_stat('consent'))]))
 		if is_selected:
+			newbutton.disabled = false
+			newbutton.hint_tooltip = ""
 			newbutton.connect('pressed', self, 'deselect', [person, newbutton])
 		else:
-			newbutton.connect('pressed', self, 'select_for_sex', [person, newbutton])
+			var lock_reason = _get_participant_lock_reason(person)
+			if lock_reason == "":
+				newbutton.disabled = false
+				newbutton.hint_tooltip = ""
+				newbutton.connect('pressed', self, 'select_for_sex', [person, newbutton])
+			else:
+				newbutton.disabled = true
+				newbutton.hint_tooltip = lock_reason
+
+	_update_participant_label()
+	update_sex_date_buttons()
 
 func _on_category_pressed(category):
 	if _active_category == category:
@@ -89,6 +102,7 @@ func start_scene():
 
 
 func update_sex_date_buttons():
+	$ConfirmButton.hint_tooltip = ""
 	if ResourceScripts.game_globals.weekly_sex_left > 0:
 		$ConfirmButton.disabled = selected_characters.size() < 2 || selected_characters.size() > calculate_sex_limits()
 	else:
@@ -98,6 +112,7 @@ func update_sex_date_buttons():
 		if i.has_status("no_sex"):
 			$ConfirmButton.disabled = true
 			$ConfirmButton.hint_tooltip = "One of unique characters has not proceeded their questline yet"
+	_update_participant_label()
 
 
 func calculate_sex_limits():
@@ -105,3 +120,23 @@ func calculate_sex_limits():
 	if ResourceScripts.game_res.upgrades.has('master_bedroom'):
 		slavelimit += ResourceScripts.game_res.upgrades.master_bedroom
 	return slavelimit
+
+
+func _update_participant_label():
+	if _participant_label == null:
+		return
+	var current_count = selected_characters.size()
+	var max_count = calculate_sex_limits()
+	_participant_label.text = tr("Participants: %s/%s") % [str(current_count), str(max_count)]
+	if current_count > max_count:
+		_participant_label.add_color_override("font_color", Color(1, 0.4, 0.4))
+	else:
+		_participant_label.add_color_override("font_color", Color(1, 1, 1))
+
+
+func _get_participant_lock_reason(person):
+	if person.has_status("no_sex"):
+		return tr("This character's questline prevents them from joining for now.")
+	if person.has_status("no_sex_traits"):
+		return tr("This character refuses to take part in sex scenes due to their traits.")
+	return ""
