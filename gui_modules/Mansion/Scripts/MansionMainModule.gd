@@ -13,7 +13,7 @@ onready var MenuModule = $MansionBottomLeftModule
 onready var CraftModule = $MansionCraftModule
 onready var CraftSmallModule = $MansionCraftSmallModule
 onready var JobModule = $MansionJobModule2
-onready var SexSelect = $MansionSexSelectionModule
+onready var SexSelect = $SexSelectMenu
 onready var Journal = $MansionJournalModule
 onready var submodules = []
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveListModule.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSkillsModule.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gui_modules/Universal/Modules/NavigationModule.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/scenes/SexSelectMenu.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionLeftMenuModule.tscn" type="PackedScene" id=9]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionLogModule.tscn" type="PackedScene" id=10]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveModule.tscn" type="PackedScene" id=11]
@@ -210,6 +211,9 @@ margin_bottom = 668.069
 text = "map"
 
 [node name="map" parent="." instance=ExtResource( 34 )]
+visible = false
+
+[node name="SexSelectMenu" parent="." instance=ExtResource( 8 )]
 visible = false
 
 [connection signal="pressed" from="TestButton" to="." method="_on_TestButton_pressed"]

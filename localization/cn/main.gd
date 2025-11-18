@@ -99,6 +99,7 @@ var TranslationDict = {
 	OPTGRAPHICRANDOMPORTRAIT = "随机肖像",
 	OPTGRAPHICDISABLEANIMATIONBACKGROUNDS = "禁用动画背景",
 	OPTDISABLEPAPERDOLL = "禁用人物肖像",
+	OPTDISABLEDAMAGESHAKE = """Disable damage shake""", # MISSING TRANSLATION
 	
 	OPTCHEATENTERCODE = "输入代码",
 	OPTCHEATACTIVATE = "激活",
@@ -4163,6 +4164,7 @@ All damage received is increased by 15%%, additional shock has a chance to stun.
 	TUTORIAL_LOCATIONS_RESOURCES = "Other locations allow to gather resources presented on them. Settlement type locations allow to gather resources infinitely, but have a limit on how many characters can gather it at once. Combat locations allow to gather a limited amount of resources after they've been cleared. ",
 	TUTORIAL_TATTOO_1 = "Once you've unlocked Beauty Parlor, you can apply tattoos to your characters. Tattoos provide permanent bonuses and require ink crafted at Alchemy tab. To access Tattoo menu use the corresponding button at inventory screen.",
 	TUTORIAL_TATTOO_2 = "Each tattoo type has certain bonuses, require special ink and apply to only selected bodyparts. Some might also have additional requirements. Tattoos can be removed or replaced but the ink is not refunded.",
+	TUTORIAL_BREAKDOWN_1 = """Breakdown tutorial placeholder""", # MISSING TRANSLATION
 	TRAVELINGTUTORIAL1 = "To travel to different locations select the location on the central list. You can limit the area of the locations at the dropdown menu. Different locations have different options for them.",
 	TRAVELINGTUTORIAL2 = "On the right side you can see location details: villages allow trade and gather resources while dungeons can be explored for fights. After the dungeon is complete it also usually has resources to gather.",
 	TRAVELINGTUTORIAL3 = "On the left side you can select the location which has your characters and serves as a starting point. Hit 'Confirm' after selecting the characters you've sent. ",

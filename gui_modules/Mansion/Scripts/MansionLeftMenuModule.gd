@@ -7,7 +7,8 @@ func _ready():
 	$VBoxContainer/UpgradesButton.connect("pressed", self, "_button_clicked", ["upgrades", $VBoxContainer/UpgradesButton])
 	$VBoxContainer/CraftButton.connect("pressed", self, "_button_clicked", ["craft", $VBoxContainer/CraftButton])
 	$VBoxContainer/InventoryButton.connect("pressed", self, "open_inventory")
-	$VBoxContainer/SexButton.connect("pressed", self, "_button_clicked", ["sex", $VBoxContainer/SexButton])
+	$VBoxContainer/SexButton.connect("pressed", self, "open_sex")
+	#$VBoxContainer/SexButton.connect("pressed", self, "_button_clicked", ["sex", $VBoxContainer/SexButton])
 	$VBoxContainer/Journal.connect("toggled", self, "open_journal")
 
 func _button_clicked(state, button):
@@ -29,6 +30,9 @@ func open_inventory():
 	get_parent().mansion_state_set("default")
 	gui_controller.emit_signal("screen_changed")
 	yield(get_tree().create_timer(0.3), "timeout")
+
+func open_sex():
+	get_parent().SexSelect.open()
 
 func open_interaction():
 	get_parent().InteractSelection.show()

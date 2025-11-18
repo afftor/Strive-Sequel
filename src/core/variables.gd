@@ -691,7 +691,7 @@ const SQ_req_num_mod_start = 4
 const SQ_req_num_mod = 0.1
 
 var damage_shake = [#order matters! Low max_damage first. No max_damage means infinity
-	{max_damage = 5, time = 0.1, magnitude = 1},
-	{max_damage = 30, time = 0.1, magnitude = 3},
-	{time = 0.2, magnitude = 5},
+	{max_damage = 15, time = 0.1, magnitude = 1},
+	{max_damage = 120, time = 0.1, magnitude = 3},
+	{time = 0.15, magnitude = 5},
 ]
