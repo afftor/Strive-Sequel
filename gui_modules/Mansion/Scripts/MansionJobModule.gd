@@ -622,10 +622,11 @@ func show_faces():
 	$gridcontainerpanel.visible = any_workers || max_workers_count > 0
 	for i in max_workers_count:
 			input_handler.DuplicateContainerTemplate($GridContainer2)
-	
+
 func focus_on_person_task(person):
 	if person == null:
 		return
+	self.person = person
 	var target_location = person.get_location()
 	if target_location == "mansion":
 		target_location = "aliron"
@@ -640,6 +641,12 @@ func focus_on_person_task(person):
 		if restbutton != null:
 			select_resource({code = "rest"}, "rest", restbutton)
 		return
+	if work_code == 'brothel':
+		if restbutton != null:
+			select_resource({code = "rest"}, "rest", restbutton)
+			show_brothel_options()
+			restbutton.get_node("TextureRect").texture = load("res://assets/images/gui/gui icons/icon_rest_brothel.png")
+			return
 	var work_product = person.xp_module.workproduct
 	var job_data = null
 	var resource = work_product
@@ -655,9 +662,21 @@ func focus_on_person_task(person):
 		if resource == null:
 			resource = job_data.code
 	if job_data == null:
-			return
-	select_resource(job_data, resource, null)
-	
+		return
+	var resource_button = _find_resource_button_for_job(job_data)
+	select_resource(job_data, resource, resource_button)
+
+
+func _find_resource_button_for_job(job):
+	if job == null:
+		return null
+	for button in $Resourses/GridContainer.get_children():
+		if !button.has_meta("work"):
+			continue
+		if button.get_meta("work") == job:
+			return button
+	return null
+
 var stat_icons = {
 	physics = load("res://assets/images/gui/gui icons/icon_physics64.png"),
 	wits = load("res://assets/images/gui/gui icons/icon_wits64.png"),

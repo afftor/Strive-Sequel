@@ -156,7 +156,7 @@ func rebuild():
 		newbutton.connect('mouse_entered', get_parent(), 'set_hovered_person', [newbutton, person])
 		newbutton.connect('mouse_exited_custom', get_parent(), 'remove_hovered_person')
 		
-		newbutton.get_node("job").connect("pressed", self, 'OpenJobModule', [person])
+		newbutton.get_node("job").connect("pressed", self, '_context_open_person_occupation', [person])
 #		newbutton.get_node("job").set_disabled(false)
 #		newbutton.get_node("job").disabled = person.travel.location == "travel" || person.is_on_quest()
 		
@@ -249,6 +249,7 @@ func _context_open_charinfo_tab(person, state):
 
 
 func _context_open_person_occupation(person):
+	input_handler.ActivateTutorial('TUTORIALLIST4')
 	if get_parent() == null or !is_instance_valid(get_parent()):
 		return
 	get_parent().set_active_person(person)
