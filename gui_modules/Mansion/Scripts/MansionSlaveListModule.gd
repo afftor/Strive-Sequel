@@ -181,7 +181,7 @@ func double_clicked(event, button):
 	if event.button_index == BUTTON_RIGHT and event.pressed and !event.doubleclick:
 		if button.disabled:
 			return
-		event.accept()
+		#event.accept_event()
 		_show_character_context_menu(button)
 		return
 	if event.button_index == BUTTON_LEFT and event.doubleclick:
@@ -209,17 +209,18 @@ func _show_character_context_menu(button):
 			"args": [person]
 		}
 	]
-	CharacterContextMenu.open_with_actions(actions, get_viewport().get_mouse_position())
+	CharacterContextMenu.open_with_actions(person, actions, get_viewport().get_mouse_position())
 
 
 func _context_open_person(person):
 	if get_parent() == null or !is_instance_valid(get_parent()):
 		return
 	get_parent().set_active_person(person)
+	get_parent().mansion_state = "char_info"
 
 
 func _context_open_with_inventory(person):
-	_context_open_person(person)
+	get_parent().set_active_person(person)
 	OpenInventory(person)
 
 #obsolete
