@@ -21,12 +21,13 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 	var show_req_info = true#(challenge == null)#could be changed with time
 	reqs_text = null
 	show()
+	if gui_controller.dialogue != null and gui_controller.dialogue.is_visible():
+		gui_controller.dialogue.add_select_blocking_node(self)
 	input_handler.ClearContainer(slave_btn_cont)
 	if allow_remove == true:
 		var newnode = input_handler.DuplicateContainerTemplate(slave_btn_cont)
 		newnode.get_node("text").text = tr("REMOVE")
-		newnode.connect('pressed', targetnode, targetfunc, [null])
-		newnode.connect('pressed',self,'hide')
+		newnode.connect('pressed', self, 'select', [null])
 	
 	var charlist = []
 	
@@ -109,7 +110,8 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false, challenge = n
 			if silently_hide:
 				newnode.hide()
 			elif show_req_info:
-				newnode.disabled = !reqs_met
+				if !reqs_met:
+					newnode.disabled = true
 				var recap
 				if reqs_met: recap = 'REQUIREMENTSMET'
 				else: recap = 'REQUIREMENTSARENTMET'

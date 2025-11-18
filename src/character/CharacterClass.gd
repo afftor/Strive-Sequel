@@ -2213,13 +2213,8 @@ func deal_damage(value, source = 'normal'):
 		value *= (1.0 - get_stat('resist_' + source)/100.0)
 	value = int(value);
 	if value > 0:
-		var shake_node = null
-		if input_handler.combat_node != null and input_handler.combat_node.is_inside_tree():
-			shake_node = input_handler.combat_node
 		if shield > value:
 			self.shield -= value
-			if shake_node != null:
-				ResourceScripts.core_animations.ShakeAnimation(shake_node, 0.1, 3)
 			return 0
 		else:
 			value -= shield
@@ -2229,8 +2224,6 @@ func deal_damage(value, source = 'normal'):
 		tmp = tmp - hp
 		if displaynode != null:
 			displaynode.setup_overlay(source)
-		if shake_node != null:
-			ResourceScripts.core_animations.ShakeAnimation(shake_node, 0.1, 3)
 		return tmp
 	else:
 		return heal(-value)
@@ -2472,6 +2465,7 @@ func try_breakdown(event):
 #	var chance = info.chance * get_stat('breakdown_chance_mod')
 #	print("%s try_breakdown on %s with %s" % [get_short_name(), event, chance])
 	if randf() <= info.chance * get_stat('breakdown_chance_mod'):
+		input_handler.ActivateTutorial("TUTORIALLIST10")
 		xp_module.make_unavaliable(get_stat('breakdown_time'))
 		var scene_data = scenedata.scenedict['breakdown_event'].duplicate(true)
 		scene_data.text = info.text
@@ -2495,13 +2489,11 @@ func deferred_brk_check_food():
 		try_breakdown('brk_dislike_food')
 
 func try_breakdown_on_enthrall():
-	if xp_module.is_unavaliable(): return
-	
+#	if xp_module.is_unavaliable(): return#has it in try_breakdown()
 	try_breakdown('brk_enthrall')
 
 func try_breakdown_on_release():
-	if xp_module.is_unavaliable(): return
-	
+#	if xp_module.is_unavaliable(): return#has it in try_breakdown()
 	try_breakdown('brk_enthrall_release')
 
 #Fame. Maybe should be withdrawn to separate module

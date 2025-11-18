@@ -120,7 +120,6 @@ margin_right = -8.0
 margin_bottom = 51.0
 rect_scale = Vector2( -1, 1 )
 toggle_mode = true
-pressed = true
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 11 )

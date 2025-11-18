@@ -195,6 +195,12 @@ func gear_detailed_tooltip(data, item = null):
 			text += "{color=red|%s}: %s\n" % [tr(Items.curses[item.curse].name), tr(Items.curses[item.curse].descript)]
 		
 	if text != '':
+		var template = Items.itemlist[item.itembase]
+		text = "%s:\n%s%s\n%s: %s" % [tr('ARMORBASE'),
+			globals.build_desc_for_bonusstats(template.basestats),
+			text,
+			tr('STATQUALITY'), "{color=green|" + item.get_quality_multiplier_str()] + "}"
+		
 		$TopPanel/Title.text = data.item.name
 		var new_font = input_handler.font_size_calculator($TopPanel/Title)
 		$TopPanel/Title.set("custom_fonts/font", new_font)

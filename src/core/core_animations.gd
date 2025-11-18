@@ -6,13 +6,14 @@ var ShakingNodes = []
 var gfx_sprite_timing = {}
 
 func _process(delta):
-	for i in ShakingNodes:
+	for i_num in range(ShakingNodes.size()-1, -1, -1):
+		var i = ShakingNodes[i_num]
 		if i.time > 0:
 			i.time -= delta
 			i.node.rect_position = i.originpos + Vector2(rand_range(-1.0,1.0)*i.magnitude, rand_range(-1.0,1.0)*i.magnitude)
 		else:
 			i.node.rect_position = i.originpos
-			ShakingNodes.erase(i)
+			ShakingNodes.remove(i_num)
 
 #some of those are not used now
 func SelectionGlow(node):
@@ -201,10 +202,11 @@ func ShadeAnimation(node, time = 0.3, delay = 0):
 func ShakeAnimation(node, time = 0.5, magnitude = 5):
 	if !node.is_inside_tree(): return
 	var newdict = {node = node, time = time, magnitude = magnitude, originpos = node.rect_position}
-	for i in ShakingNodes:
-		if i.node == node:
-			newdict.originpos = i.originpos
-			ShakingNodes.erase(i)
+	for i in range(ShakingNodes.size()-1, -1, -1):
+		var shaker = ShakingNodes[i]
+		if shaker.node == node:
+			newdict.originpos = shaker.originpos
+			ShakingNodes.remove(i)
 	ShakingNodes.append(newdict)
 
 func SmoothValueAnimation(node, time, value1, value2):

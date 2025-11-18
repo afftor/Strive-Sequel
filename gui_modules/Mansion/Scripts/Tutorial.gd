@@ -11,6 +11,7 @@ var tutorials = [
 	"TUTORIALLIST7",
 	"TUTORIALLIST8",
 	"TUTORIALLIST9",
+	"TUTORIALLIST10",
 ]
 
 var introduction_images = {
@@ -130,6 +131,15 @@ var tattoo_text = {
 }
 
 
+var breakdown_images = {
+	0: load("res://assets/Textures_v2/MANSION/Tutorial/icon_tutorial_introduction.png"),
+}
+
+var breakdown_text = {
+	0: tr("TUTORIAL_BREAKDOWN_1"),
+}
+
+
 onready var TutList = $TutList/VBoxContainer
 
 
@@ -205,6 +215,10 @@ func show_tutorial_list(tut):
 			img =  training_images
 			size =  training_images.size() - 1
 			text_dict = training_text
+		"TUTORIALLIST10":
+			img =  breakdown_images
+			size =  breakdown_images.size() - 1
+			text_dict = breakdown_text
 	img_index = 0
 	if !ResourceScripts.game_progress.seen_tutorials.has(tut):
 		ResourceScripts.game_progress.seen_tutorials.append(tut)

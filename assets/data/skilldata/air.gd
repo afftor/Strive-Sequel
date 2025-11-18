@@ -23,7 +23,7 @@ var skills = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [{code = 'wind_blade', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'wind_blade', target = 'target', period = 'predamage', duration = 0.2, no_repeat_delays = true}],
 		sounddata = {initiate = null, strike = 'spell_break', hit = null},
 		value = 0.6,
 		random_factor_p = 0.1,

@@ -33,7 +33,7 @@ func cooldown_tick():
 		cooldown.mindread -= 1
 
 func tick():
-	if (is_slave() and can_be_trained()) or is_servant():
+	if (is_slave() and is_in_training()) or is_servant():
 		set_resistance(resistance - parent.get_ref().get_stat('resistance_red'))
 	if is_servant():
 		loyalty += get_loyalty_growth()
@@ -135,8 +135,12 @@ func add_trainee(id): #unsafe - no limit check
 		tchar.training.trainer = parent.get_ref().id
 
 
+func is_in_training():
+	return enable and trainer != null
+
 func can_be_trained():
-	return enable and trainer != null#cooldown.main < 1
+#	return enable and trainer != null and cooldown.main < 1
+	return is_in_training() and !has_resistance_block()
 
 func has_resistance_block():
 	if !is_slave(): return false

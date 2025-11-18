@@ -53,15 +53,15 @@ custom_fonts/font = ExtResource( 4 )
 [node name="Visuals" type="Tabs" parent="TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 45.0
+margin_top = 43.0
 
 [node name="SwitchLanguage" type="MenuButton" parent="TabContainer/Visuals"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 147.48
-margin_top = 275.915
+margin_top = 307.915
 margin_right = -156.52
-margin_bottom = -194.085
+margin_bottom = -162.085
 focus_mode = 2
 theme = ExtResource( 21 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -136,6 +136,19 @@ custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "OPTDISABLEPAPERDOLL"
 
+[node name="no_damage_shake" type="CheckBox" parent="TabContainer/Visuals"]
+margin_left = 26.0
+margin_top = 224.0
+margin_right = 518.0
+margin_bottom = 264.0
+rect_pivot_offset = Vector2( -462.269, -82 )
+theme = ExtResource( 3 )
+custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "OPTDISABLEDAMAGESHAKE"
+
 [node name="Gameplay" type="Tabs" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
@@ -153,7 +166,7 @@ scroll_horizontal_enabled = false
 
 [node name="Box" type="VBoxContainer" parent="TabContainer/Gameplay/Scroll"]
 margin_right = 420.0
-margin_bottom = 522.0
+margin_bottom = 514.0
 
 [node name="furry" type="CheckBox" parent="TabContainer/Gameplay/Scroll/Box"]
 margin_right = 420.0
@@ -239,7 +252,7 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Gameplay/Scroll/Box"]
 margin_top = 220.0
 margin_right = 420.0
-margin_bottom = 369.0
+margin_bottom = 365.0
 custom_constants/separation = 5
 __meta__ = {
 "_edit_use_anchors_": false
@@ -247,38 +260,38 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer"]
 margin_right = 420.0
-margin_bottom = 35.0
+margin_bottom = 33.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "OPTGAMEPLAYMALERATE"
 align = 1
 
 [node name="malerate" type="HSlider" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer"]
-margin_top = 40.0
+margin_top = 38.0
 margin_right = 420.0
-margin_bottom = 72.0
+margin_bottom = 70.0
 value = 30.0
 ticks_on_borders = true
 
 [node name="Label2" type="Label" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer"]
-margin_top = 77.0
+margin_top = 75.0
 margin_right = 420.0
-margin_bottom = 112.0
+margin_bottom = 108.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "OPTGAMEPLAYFUTARATE"
 align = 1
 
 [node name="futarate" type="HSlider" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer"]
-margin_top = 117.0
+margin_top = 113.0
 margin_right = 420.0
-margin_bottom = 149.0
+margin_bottom = 145.0
 ticks_on_borders = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/Gameplay/Scroll/Box"]
-margin_top = 373.0
+margin_top = 369.0
 margin_right = 420.0
-margin_bottom = 522.0
+margin_bottom = 514.0
 custom_constants/separation = 5
 __meta__ = {
 "_edit_use_anchors_": false
@@ -286,32 +299,32 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer2"]
 margin_right = 420.0
-margin_bottom = 35.0
+margin_bottom = 33.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "OPTFAMEPLAYAUTOSAVEAMOUNT"
 align = 1
 
 [node name="autosave_amount" type="HSlider" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer2"]
-margin_top = 40.0
+margin_top = 38.0
 margin_right = 420.0
-margin_bottom = 72.0
+margin_bottom = 70.0
 value = 30.0
 ticks_on_borders = true
 
 [node name="Label2" type="Label" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer2"]
-margin_top = 77.0
+margin_top = 75.0
 margin_right = 420.0
-margin_bottom = 112.0
+margin_bottom = 108.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "OPTGAMEPLAYAUTOSAVETIME"
 align = 1
 
 [node name="autosave_frequency" type="HSlider" parent="TabContainer/Gameplay/Scroll/Box/VBoxContainer2"]
-margin_top = 117.0
+margin_top = 113.0
 margin_right = 420.0
-margin_bottom = 149.0
+margin_bottom = 145.0
 ticks_on_borders = true
 
 [node name="Gameplay2" type="Tabs" parent="TabContainer"]
@@ -330,11 +343,11 @@ theme = ExtResource( 24 )
 scroll_horizontal_enabled = false
 
 [node name="Box" type="VBoxContainer" parent="TabContainer/Gameplay2/Scroll"]
-margin_right = 465.0
-margin_bottom = 216.0
+margin_right = 429.0
+margin_bottom = 260.0
 
 [node name="diff_gf_only_upg" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
-margin_right = 465.0
+margin_right = 429.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( -462.269, -82 )
 theme = ExtResource( 3 )
@@ -349,7 +362,7 @@ __meta__ = {
 
 [node name="diff_permadeath" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
 margin_top = 44.0
-margin_right = 465.0
+margin_right = 429.0
 margin_bottom = 84.0
 rect_pivot_offset = Vector2( -462.269, -82 )
 theme = ExtResource( 3 )
@@ -364,7 +377,7 @@ __meta__ = {
 
 [node name="diff_bonus_taskmod" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
 margin_top = 88.0
-margin_right = 465.0
+margin_right = 429.0
 margin_bottom = 128.0
 rect_pivot_offset = Vector2( -462.269, -82 )
 theme = ExtResource( 3 )
@@ -379,7 +392,7 @@ __meta__ = {
 
 [node name="diff_bonus_loot" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
 margin_top = 132.0
-margin_right = 465.0
+margin_right = 429.0
 margin_bottom = 172.0
 rect_pivot_offset = Vector2( -462.269, -82 )
 theme = ExtResource( 3 )
@@ -394,7 +407,7 @@ __meta__ = {
 
 [node name="diff_stop_loan" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
 margin_top = 176.0
-margin_right = 465.0
+margin_right = 429.0
 margin_bottom = 216.0
 rect_pivot_offset = Vector2( -462.269, -82 )
 theme = ExtResource( 3 )
@@ -408,9 +421,9 @@ __meta__ = {
 }
 
 [node name="diff_free_gather" type="CheckBox" parent="TabContainer/Gameplay2/Scroll/Box"]
-margin_top = 176.0
-margin_right = 465.0
-margin_bottom = 216.0
+margin_top = 220.0
+margin_right = 429.0
+margin_bottom = 260.0
 rect_pivot_offset = Vector2( -462.269, -82 )
 theme = ExtResource( 3 )
 custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )

@@ -811,3 +811,7 @@ func autoassign_quality():
 			continue
 		set_quality_level(lv)
 		break
+
+func get_quality_multiplier_str():
+	return "+%s%%" % String((variables.itemquality_multiplier[quality] - 1.0) * 100)
+	
