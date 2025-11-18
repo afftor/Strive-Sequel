@@ -1202,7 +1202,8 @@ func calculate_travel_time(location1, location2): #2remade to new mechanic
 	#if location2 != ResourceScripts.game_world.mansion_location:
 	time += ldata2.travel_time
 	if adata1.code != adata2.code:
-		time += adata1.travel_time + adata2.travel_time
+		if !(adata1.code in ['forests', 'beastkin_tribe']) or !(adata2.code in ['forests', 'beastkin_tribe']):
+			time += adata1.travel_time + adata2.travel_time
 	
 	time = max(1, time - variables.stable_boost_per_level * ResourceScripts.game_res.upgrades.stables)
 	if ldata1.teleporter:

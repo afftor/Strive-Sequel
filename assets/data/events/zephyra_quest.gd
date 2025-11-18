@@ -276,11 +276,7 @@ var data = {
 					"dialogue_scene"
 				],
 				reqs = [
-					{
-						type = "quest_completed",
-						name = "daisy_training",
-						check = true
-					},
+					{type = "quest_completed", name = "daisy_training", check = true},
 					{
 						type = "unique_character_checks",
 						name = "daisy",
@@ -1215,13 +1211,7 @@ var data = {
 			},
 			{
 				text = "",
-				reqs = [
-					{
-						type = "quest_completed",
-						name = "getting_lira_quest",
-						check = true
-					}
-				],
+				reqs = [{type = "quest_completed", name = "getting_lira_quest", check = true}],
 				bonus_effects = [
 					{
 						code = "add_timed_event",

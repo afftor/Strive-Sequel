@@ -2428,6 +2428,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		scene_type = "ero_scene",
 		custom_background = "heleviel_wed_1",
 		text = "HELEVIEL_WEDDING_2",
 		options = [
@@ -2451,6 +2452,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		scene_type = "ero_scene",
 		custom_background = "heleviel_wed_2",
 		text = "HELEVIEL_WEDDING_3",
 		options = [
@@ -2474,6 +2476,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		scene_type = "ero_scene",
 		custom_background = "heleviel_wed_3",
 		text = "HELEVIEL_WEDDING_4",
 		options = [
@@ -2497,6 +2500,7 @@ var data = {
 			"dialogue_scene",
 			"master_translate"
 		],
+		scene_type = "ero_scene",
 		custom_background = "heleviel_wed_4",
 		text = "HELEVIEL_WEDDING_5",
 		options = [
@@ -2521,6 +2525,7 @@ var data = {
 			"master_translate",
 			"blackscreen_transition_common"
 		],
+		scene_type = "ero_scene",
 		custom_background = "heleviel_wed_4",
 		text = "HELEVIEL_WEDDING_6",
 		options = [
