@@ -1,8 +1,8 @@
 extends Panel
 
 var selected_characters = []
-var _active_category := "all"
-onready var _category_buttons := {
+var _active_category = "all"
+onready var _category_buttons = {
 	"all": $Categories/all,
 	"male": $Categories/male,
 	"female": $Categories/female,
@@ -11,6 +11,7 @@ onready var _category_buttons := {
 
 func _ready():
 	gui_controller.add_close_button(self)
+	$ConfirmButton.connect("pressed",self, 'start_scene')
 	for category in _category_buttons.keys():
 		var button = _category_buttons[category]
 		button.connect("pressed", self, "_on_category_pressed", [category])

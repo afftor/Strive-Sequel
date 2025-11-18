@@ -204,6 +204,26 @@ func _show_character_context_menu(button):
 			"args": [person]
 		},
 		{
+			"label": tr("MSLMCONTEXT_OPEN_CLASS_TAB"),
+			"callback": funcref(self, "_context_open_charinfo_tab"),
+			"args": [person, "skills"]
+		},
+		{
+			"label": tr("MSLMCONTEXT_OPEN_SIBLINGS_TAB"),
+			"callback": funcref(self, "_context_open_charinfo_tab"),
+			"args": [person, "siblings"]
+		},
+		{
+			"label": tr("MSLMCONTEXT_OPEN_CUSTOMIZATION_TAB"),
+			"callback": funcref(self, "_context_open_charinfo_tab"),
+			"args": [person, "details"]
+		},
+		{
+			"label": tr("MSLMCONTEXT_OPEN_OCCUPATION"),
+			"callback": funcref(self, "_context_open_person_occupation"),
+			"args": [person]
+		},
+		{
 			"label": tr("MSLMCONTEXT_INVENTORY"),
 			"callback": funcref(self, "_context_open_with_inventory"),
 			"args": [person]
@@ -218,6 +238,27 @@ func _context_open_person(person):
 	get_parent().set_active_person(person)
 	get_parent().mansion_state = "char_info"
 
+
+func _context_open_charinfo_tab(person, state):
+	if state == null:
+		return
+	get_parent().set_active_person(person)
+	get_parent().mansion_state = "char_info"
+	if gui_controller.slavepanel != null and is_instance_valid(gui_controller.slavepanel):
+		gui_controller.slavepanel.set_state(state)
+
+
+func _context_open_person_occupation(person):
+	if get_parent() == null or !is_instance_valid(get_parent()):
+		return
+	get_parent().set_active_person(person)
+	var job_module = get_parent().get_node("MansionJobModule2")
+	if job_module == null or !is_instance_valid(job_module):
+		return
+	job_module.selected_location = person.get_location()
+	get_parent().remove_hovered_person()
+	get_parent().mansion_state_set("occupation")
+	job_module.call_deferred("focus_on_person_task", person)
 
 func _context_open_with_inventory(person):
 	get_parent().set_active_person(person)

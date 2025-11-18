@@ -623,7 +623,41 @@ func show_faces():
 	for i in max_workers_count:
 			input_handler.DuplicateContainerTemplate($GridContainer2)
 	
-
+func focus_on_person_task(person):
+	if person == null:
+		return
+	var target_location = person.get_location()
+	if target_location == "mansion":
+		target_location = "aliron"
+	if selected_location != target_location:
+		select_location(target_location)
+	else:
+		rebuild()
+	var work_code = person.get_work()
+	if work_code == null:
+		return
+	if work_code == '':
+		if restbutton != null:
+			select_resource({code = "rest"}, "rest", restbutton)
+		return
+	var work_product = person.xp_module.workproduct
+	var job_data = null
+	var resource = work_product
+	if tasks.tasklist.has(work_code):
+		job_data = tasks.tasklist[work_code]
+		if resource == null:
+			if job_data.has('production_item'):
+				resource = job_data.production_item
+			else:
+				resource = job_data.code
+	elif Items.materiallist.has(work_code):
+		job_data = Items.materiallist[work_code]
+		if resource == null:
+			resource = job_data.code
+	if job_data == null:
+			return
+	select_resource(job_data, resource, null)
+	
 var stat_icons = {
 	physics = load("res://assets/images/gui/gui icons/icon_physics64.png"),
 	wits = load("res://assets/images/gui/gui icons/icon_wits64.png"),
