@@ -106,6 +106,15 @@ margin_right = 702.591
 margin_bottom = 828.0
 text = "Confirm"
 
+[node name="ParticipantLabel" type="Label" parent="."]
+margin_left = 435.591
+margin_top = 740.0
+margin_right = 702.591
+margin_bottom = 770.0
+text = "Participants: 0/0"
+align = 1
+valign = 1
+
 [node name="Categories" type="HBoxContainer" parent="."]
 margin_left = 121.527
 margin_top = 56.0711
