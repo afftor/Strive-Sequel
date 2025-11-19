@@ -46,11 +46,7 @@ extends Reference
 #	Considered to be 1 if omitted.
 #* repeat_min and repeat_max - generate random repeat value within those boundaries,
 #	if param "repeat" is absent.
-#* propagate - a dict, which can have amount- and repeat-params (amount, min, max, repeat,
-#	repeat_min, repeat_max); if provided, overrides those params for all nested records, but only
-#	if params are omitted. (Mind, that if there is few levels of recursive record nesting, ALL will
-#	be effected by this param!)
-#* override - same as "propagate", but overrides params forcefully, even if thay are not omitted.
+#* mul - multiplies amounts of all nested records of stuff class
 #-----recursive rule class params:
 #* list - array of records, each will be processed by common rules.
 #* loot_table - string with name of another record in loot_tables, which should be processed.
@@ -749,70 +745,70 @@ var loot_tables = {
 		]},
 	rq_workers_resources_hard = {selector = [
 		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.7, 1.95]},
-		{weight = 1.0, propagate = {min = 15, max = 20}, selector = [
-			{material = 'wood'},
-			{material = 'stone'},
-			{material = 'leather'},
-			{material = 'cloth'},
-			{material = 'iron'}]},
+		{weight = 1.0, selector = [
+			{material = 'wood', min = 15, max = 20},
+			{material = 'stone', min = 15, max = 20},
+			{material = 'leather', min = 15, max = 20},
+			{material = 'cloth', min = 15, max = 20},
+			{material = 'iron', min = 15, max = 20}]},
 		{weight = 0.5, list = [
 			{spec_rule = 'item_based_gold', range = [0.5, 0.6]},
-			{propagate = {min = 5, max = 10}, selector = [
-				{material = 'steel'},
-				{material = 'woodmagic'},
-				{material = 'woodiron'},
-				{material = 'clothsilk'}]},
+			{selector = [
+				{material = 'steel', min = 5, max = 10},
+				{material = 'woodmagic', min = 5, max = 10},
+				{material = 'woodiron', min = 5, max = 10},
+				{material = 'clothsilk', min = 5, max = 10}]},
 			]}
 		]},
 	rq_workers_food_easy = {selector = [
 		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.5, 1.7]},
-		{weight = 1.0, propagate = {min = 15, max = 20}, selector = [
-			{material = 'wood'},
-			{material = 'stone'},
-			{material = 'leather'},
-			{material = 'cloth'},
-			{material = 'iron'}]},
+		{weight = 1.0, selector = [
+			{material = 'wood', min = 15, max = 20},
+			{material = 'stone', min = 15, max = 20},
+			{material = 'leather', min = 15, max = 20},
+			{material = 'cloth', min = 15, max = 20},
+			{material = 'iron', min = 15, max = 20}]},
 		{weight = 0.5, list = [
 			{spec_rule = 'item_based_gold', range = [0.5, 0.6]},
-			{propagate = {min = 5, max = 10}, selector = [
-				{material = 'steel'},
-				{material = 'woodmagic'},
-				{material = 'woodiron'},
-				{material = 'clothsilk'}]},
+			{selector = [
+				{material = 'steel', min = 5, max = 10},
+				{material = 'woodmagic', min = 5, max = 10},
+				{material = 'woodiron', min = 5, max = 10},
+				{material = 'clothsilk', min = 5, max = 10}]},
 			]}
 		]},
 	rq_workers_food_medium = {selector = [
 		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.7, 1.9]},
-#		{weight = 1.0, propagate = {min = 15, max = 20}, selector = [
-#			{material = 'wood'},
-#			{material = 'stone'},
-#			{material = 'leather'},
-#			{material = 'cloth'},
-#			{material = 'iron'}]},
+#		{weight = 1.0, selector = [
+#			{material = 'wood', min = 15, max = 20},
+#			{material = 'stone', min = 15, max = 20},
+#			{material = 'leather', min = 15, max = 20},
+#			{material = 'cloth', min = 15, max = 20},
+#			{material = 'iron', min = 15, max = 20}]},
 		{weight = 0.5, list = [
 			{spec_rule = 'item_based_gold', range = [0.6, 0.7]},
-			{propagate = {min = 10, max = 15}, selector = [
-				{material = 'steel'},
-				{material = 'obsidian'},
-				{material = 'woodiron'},
-				{material = 'clothmagic'}]},
+			{selector = [
+				{material = 'steel', min = 10, max = 15},
+				{material = 'obsidian', min = 10, max = 15},
+				{material = 'woodiron', min = 10, max = 15},
+				{material = 'clothmagic', min = 10, max = 15}]},
 			]}
 		]},
 	rq_workers_food_hard = {selector = [
 		{weight = 1.0, spec_rule = 'item_based_gold', range = [1.8, 2.1]},
-#		{weight = 1.0, propagate = {min = 15, max = 20}, selector = [
-#			{material = 'wood'},
-#			{material = 'stone'},
-#			{material = 'leather'},
-#			{material = 'cloth'},
-#			{material = 'iron'}]},
+#		{weight = 1.0, selector = [
+#			{material = 'wood', min = 15, max = 20},
+#			{material = 'stone', min = 15, max = 20},
+#			{material = 'leather', min = 15, max = 20},
+#			{material = 'cloth', min = 15, max = 20},
+#			{material = 'iron', min = 15, max = 20}]},
 		{weight = 0.5, list = [
 			{spec_rule = 'item_based_gold', range = [0.7, 0.8]},
-			{propagate = {min = 3, max = 5}, selector = [
-				{material = 'mithril'},
-				{material = 'obsidian'},
-				{material = 'woodancient'},
-				{material = 'clothmagic'}]},
+			{selector = [
+				{material = 'mithril', min = 3, max = 5},
+				{material = 'obsidian', min = 3, max = 5},
+				{material = 'woodancient', min = 3, max = 5},
+				{material = 'clothmagic', min = 3, max = 5}]},
 			]}
 		]},
 	rq_workers_craft_tools_easy = {spec_rule = 'item_based_gold', range = [1.7, 2.0]},
