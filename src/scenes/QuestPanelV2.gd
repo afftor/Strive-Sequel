@@ -230,6 +230,7 @@ func show_info(quest):
 				newbutton.get_node("amount").visible = false
 			else:
 				newbutton.get_node("amount").text = str(item.amount)
+				newbutton.get_node("amount").show()
 	
 	#old (loot-system less) rewords. Legacy code for bug fix. Delete with time (31 oct 2025)
 #	for i in quest.rewards:
