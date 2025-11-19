@@ -110,46 +110,17 @@ func process_loottable_record(record, output_type, features = {}) -> Dictionary:
 			
 			#define repeat
 			repeat = 1
-			var repeat_min
-			var repeat_max
-			var repeat_omitted = true
 			if record.has('repeat'):
 				repeat = record.repeat
-				repeat_omitted = false
 			elif record.has('repeat_min') and record.has('repeat_max'):
-				repeat_min = record.repeat_min
-				repeat_max = record.repeat_max
-				repeat_omitted = false
-			var override
-			if features.has("override"):
-				override = features.override
-			elif repeat_omitted and features.has("propagate"):
-				override = features.propagate
-			if override != null:
-				repeat_min = null
-				repeat_max = null
-				if override.has('repeat'):
-					repeat = override.repeat
-				elif override.has('repeat_min') and override.has('repeat_max'):
-					repeat_min = override.repeat_min
-					repeat_max = override.repeat_max
-			if repeat_min != null:
-				repeat = globals.rng.randi_range(repeat_min, repeat_max)
+				repeat = globals.rng.randi_range(record.repeat_min, record.repeat_max)
 			
-			#register override
-			var override_name
-			if record.has('override'):
-				override_name = 'override'
-			elif record.has('propagate'):
-				override_name = 'propagate'
-			if override_name != null:
+			#simple multiplier
+			if record.has('mul'):
 				new_features = features.duplicate()
-				if new_features.has(override_name):
-					new_features[override_name] = features[override_name].duplicate()
-				else:
-					new_features[override_name] = {}
-				for key in record[override_name]:
-					new_features[override_name][key] = record[override_name][key]
+				if !new_features.has('mul'):
+					new_features.mul = 1
+				new_features.mul *= record.mul
 			
 			break
 	
@@ -193,31 +164,10 @@ func process_loottable_record(record, output_type, features = {}) -> Dictionary:
 	
 	#define amount
 	var amount = 1
-	var amount_min
-	var amount_max
-	var amount_omitted = true
 	if record.has('amount'):
 		amount = record.amount
-		amount_omitted = false
 	elif record.has('min') and record.has('max'):
-		amount_min = record.min
-		amount_max = record.max
-		amount_omitted = false
-	var override
-	if features.has("override"):
-		override = features.override
-	elif amount_omitted and features.has("propagate"):
-		override = features.propagate
-	if override != null:
-		amount_min = null
-		amount_max = null
-		if override.has('amount'):
-			amount = override.amount
-		elif override.has('min') and override.has('max'):
-			amount_min = override.min
-			amount_max = override.max
-	if amount_min != null:
-		amount = globals.rng.randi_range(amount_min, amount_max)
+		amount = globals.rng.randi_range(record.min, record.max)
 	
 	if record.has('chance_per_unit'):
 		var nominal = amount
