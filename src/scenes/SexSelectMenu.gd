@@ -98,6 +98,7 @@ func start_scene():
 	gui_controller.sex_panel.raise()
 	gui_controller.sex_panel.startsequence(selected_characters)
 	gui_controller.sex_panel.show()
+	hide()
 
 
 
@@ -137,6 +138,4 @@ func _update_participant_label():
 func _get_participant_lock_reason(person):
 	if person.has_status("no_sex"):
 		return tr("This character's questline prevents them from joining for now.")
-	if person.has_status("no_sex_traits"):
-		return tr("This character refuses to take part in sex scenes due to their traits.")
 	return ""
