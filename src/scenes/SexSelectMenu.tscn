@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://assets/Textures_v2/D_hover.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/D_normal.png" type="Texture" id=20]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=21]
+[ext_resource path="res://assets/images/sexicons/female.png" type="Texture" id=22]
 
 [node name="SexSelectMenu" type="Panel"]
 anchor_right = 1.0
@@ -41,10 +42,10 @@ margin_right = 1200.0
 margin_bottom = 882.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 52.4021
-margin_top = 132.586
-margin_right = 492.402
-margin_bottom = 703.586
+margin_left = 52.0
+margin_top = 164.0
+margin_right = 492.0
+margin_bottom = 704.0
 theme = ExtResource( 21 )
 scroll_horizontal_enabled = false
 
@@ -62,17 +63,17 @@ texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 11 )
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 55.4505
-margin_top = 9.63888
-margin_right = 211.45
-margin_bottom = 42.6389
+margin_left = 55.0
+margin_top = 8.0
+margin_right = 295.0
+margin_bottom = 41.0
 text = "Cali"
 
 [node name="Consent" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 331.757
-margin_top = 9.2955
-margin_right = 429.757
-margin_bottom = 42.2955
+margin_left = 297.065
+margin_top = 8.62808
+margin_right = 395.065
+margin_bottom = 41.6281
 text = "Consent"
 
 [node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
@@ -84,11 +85,20 @@ texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
 
+[node name="SexIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 393.915
+margin_top = 4.76761
+margin_right = 433.915
+margin_bottom = 44.7676
+texture = ExtResource( 22 )
+expand = true
+stretch_mode = 6
+
 [node name="SelectedContainer" type="ScrollContainer" parent="."]
-margin_left = 677.574
-margin_top = 132.0
-margin_right = 1117.57
-margin_bottom = 713.225
+margin_left = 652.0
+margin_top = 164.0
+margin_right = 1092.0
+margin_bottom = 704.0
 theme = ExtResource( 21 )
 scroll_horizontal_enabled = false
 
@@ -106,17 +116,17 @@ texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 11 )
 
 [node name="Label" type="Label" parent="SelectedContainer/VBoxContainer/Button"]
-margin_left = 55.4505
-margin_top = 9.63888
-margin_right = 211.45
-margin_bottom = 42.6389
+margin_left = 55.0
+margin_top = 8.0
+margin_right = 295.0
+margin_bottom = 41.0
 text = "Cali"
 
 [node name="Consent" type="Label" parent="SelectedContainer/VBoxContainer/Button"]
-margin_left = 331.757
-margin_top = 9.2955
-margin_right = 429.757
-margin_bottom = 42.2955
+margin_left = 297.065
+margin_top = 8.62808
+margin_right = 395.065
+margin_bottom = 41.6281
 text = "Consent"
 
 [node name="Icon" type="TextureRect" parent="SelectedContainer/VBoxContainer/Button"]
@@ -128,21 +138,21 @@ texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
 
+[node name="SexIcon" type="TextureRect" parent="SelectedContainer/VBoxContainer/Button"]
+margin_left = 393.915
+margin_top = 4.76761
+margin_right = 433.915
+margin_bottom = 44.7676
+texture = ExtResource( 22 )
+expand = true
+stretch_mode = 6
+
 [node name="ConfirmButton" type="Button" parent="."]
 margin_left = 434.402
-margin_top = 751.225
+margin_top = 807.225
 margin_right = 701.402
-margin_bottom = 801.225
+margin_bottom = 857.225
 text = "Confirm"
-
-[node name="ParticipantLabel" type="Label" parent="."]
-margin_left = 434.402
-margin_top = 713.225
-margin_right = 701.402
-margin_bottom = 746.225
-text = "Participants: 0/0"
-align = 1
-valign = 1
 
 [node name="Categories" type="HBoxContainer" parent="."]
 margin_left = 121.527
@@ -197,8 +207,34 @@ margin_bottom = 105.012
 texture = ExtResource( 2 )
 
 [node name="InteractionLimitLabel" type="Label" parent="."]
-margin_left = 89.5564
-margin_top = 41.0121
-margin_right = 334.556
-margin_bottom = 74.0121
+margin_left = 325.0
+margin_top = 765.0
+margin_right = 810.0
+margin_bottom = 798.0
 text = "Interactions: 0/0"
+align = 1
+
+[node name="Characters" type="Label" parent="."]
+margin_left = 150.0
+margin_top = 121.0
+margin_right = 411.0
+margin_bottom = 154.0
+text = "Characters"
+align = 1
+
+[node name="Characters2" type="Label" parent="."]
+margin_left = 754.031
+margin_top = 121.0
+margin_right = 1015.03
+margin_bottom = 154.0
+text = "Selected"
+align = 1
+
+[node name="ParticipantLabel" type="Label" parent="."]
+margin_left = 758.036
+margin_top = 69.5155
+margin_right = 1025.04
+margin_bottom = 102.516
+text = "Participants: 0/0"
+align = 1
+valign = 1
