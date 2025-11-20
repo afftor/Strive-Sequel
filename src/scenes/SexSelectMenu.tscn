@@ -195,3 +195,10 @@ margin_top = 41.0121
 margin_right = 79.5564
 margin_bottom = 105.012
 texture = ExtResource( 2 )
+
+[node name="InteractionLimitLabel" type="Label" parent="."]
+margin_left = 89.5564
+margin_top = 41.0121
+margin_right = 334.556
+margin_bottom = 74.0121
+text = "Interactions: 0/0"
