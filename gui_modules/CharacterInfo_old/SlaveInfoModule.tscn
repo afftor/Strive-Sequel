@@ -229,8 +229,8 @@ columns = 4
 
 [node name="label_atk" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_right = 129.0
-margin_bottom = 33.0
+margin_right = 141.0
+margin_bottom = 35.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -240,9 +240,9 @@ align = 2
 
 [node name="atk" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 143.0
-margin_right = 167.0
-margin_bottom = 33.0
+margin_left = 155.0
+margin_right = 181.0
+margin_bottom = 35.0
 mouse_filter = 1
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
@@ -250,9 +250,9 @@ text = "25"
 
 [node name="label_matk" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 181.0
-margin_right = 359.0
-margin_bottom = 33.0
+margin_left = 195.0
+margin_right = 389.0
+margin_bottom = 35.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -262,9 +262,9 @@ align = 2
 
 [node name="matk" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 373.0
-margin_right = 397.0
-margin_bottom = 33.0
+margin_left = 403.0
+margin_right = 429.0
+margin_bottom = 35.0
 mouse_filter = 1
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
@@ -272,9 +272,9 @@ text = "20"
 
 [node name="label_armor" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_top = 34.0
-margin_right = 129.0
-margin_bottom = 67.0
+margin_top = 36.0
+margin_right = 141.0
+margin_bottom = 71.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -284,10 +284,10 @@ align = 2
 
 [node name="armor" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 143.0
-margin_top = 34.0
-margin_right = 167.0
-margin_bottom = 67.0
+margin_left = 155.0
+margin_top = 36.0
+margin_right = 181.0
+margin_bottom = 71.0
 mouse_filter = 1
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
@@ -295,10 +295,10 @@ text = "15"
 
 [node name="label_mdef" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 181.0
-margin_top = 34.0
-margin_right = 359.0
-margin_bottom = 67.0
+margin_left = 195.0
+margin_top = 36.0
+margin_right = 389.0
+margin_bottom = 71.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -308,10 +308,10 @@ align = 2
 
 [node name="mdef" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 373.0
-margin_top = 34.0
-margin_right = 397.0
-margin_bottom = 67.0
+margin_left = 403.0
+margin_top = 36.0
+margin_right = 429.0
+margin_bottom = 71.0
 mouse_filter = 1
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
@@ -319,9 +319,9 @@ text = "20"
 
 [node name="label_hitrate" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_top = 68.0
-margin_right = 129.0
-margin_bottom = 101.0
+margin_top = 72.0
+margin_right = 141.0
+margin_bottom = 107.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -331,10 +331,10 @@ align = 2
 
 [node name="hitrate" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 143.0
-margin_top = 68.0
-margin_right = 167.0
-margin_bottom = 101.0
+margin_left = 155.0
+margin_top = 72.0
+margin_right = 181.0
+margin_bottom = 107.0
 mouse_filter = 1
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
@@ -342,10 +342,10 @@ text = "15"
 
 [node name="label_evasion" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 181.0
-margin_top = 68.0
-margin_right = 359.0
-margin_bottom = 101.0
+margin_left = 195.0
+margin_top = 72.0
+margin_right = 389.0
+margin_bottom = 107.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -355,10 +355,10 @@ align = 2
 
 [node name="evasion" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 373.0
-margin_top = 68.0
-margin_right = 397.0
-margin_bottom = 101.0
+margin_left = 403.0
+margin_top = 72.0
+margin_right = 429.0
+margin_bottom = 107.0
 mouse_filter = 1
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
@@ -366,9 +366,9 @@ text = "20"
 
 [node name="label_speed" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_top = 102.0
-margin_right = 129.0
-margin_bottom = 135.0
+margin_top = 108.0
+margin_right = 141.0
+margin_bottom = 143.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -378,10 +378,10 @@ align = 2
 
 [node name="speed" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 143.0
-margin_top = 102.0
-margin_right = 167.0
-margin_bottom = 135.0
+margin_left = 155.0
+margin_top = 108.0
+margin_right = 181.0
+margin_bottom = 143.0
 mouse_filter = 1
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
@@ -389,10 +389,10 @@ text = "15"
 
 [node name="label_armorpenetration" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 181.0
-margin_top = 102.0
-margin_right = 359.0
-margin_bottom = 135.0
+margin_left = 195.0
+margin_top = 108.0
+margin_right = 389.0
+margin_bottom = 143.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -402,10 +402,10 @@ align = 2
 
 [node name="armorpenetration" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 373.0
-margin_top = 102.0
-margin_right = 397.0
-margin_bottom = 135.0
+margin_left = 403.0
+margin_top = 108.0
+margin_right = 429.0
+margin_bottom = 143.0
 mouse_filter = 1
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
@@ -413,9 +413,9 @@ text = "20"
 
 [node name="label_critchance" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_top = 136.0
-margin_right = 129.0
-margin_bottom = 169.0
+margin_top = 144.0
+margin_right = 141.0
+margin_bottom = 179.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -425,10 +425,10 @@ align = 2
 
 [node name="critchance" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 143.0
-margin_top = 136.0
-margin_right = 167.0
-margin_bottom = 169.0
+margin_left = 155.0
+margin_top = 144.0
+margin_right = 181.0
+margin_bottom = 179.0
 mouse_filter = 1
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
@@ -436,10 +436,10 @@ text = "15"
 
 [node name="label_critmod" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 181.0
-margin_top = 136.0
-margin_right = 359.0
-margin_bottom = 169.0
+margin_left = 195.0
+margin_top = 144.0
+margin_right = 389.0
+margin_bottom = 179.0
 mouse_filter = 1
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -449,10 +449,10 @@ align = 2
 
 [node name="critmod" type="Label" parent="BaseStatsPanel/base_stats"]
 light_mask = 0
-margin_left = 373.0
-margin_top = 136.0
-margin_right = 397.0
-margin_bottom = 169.0
+margin_left = 403.0
+margin_top = 144.0
+margin_right = 429.0
+margin_bottom = 179.0
 mouse_filter = 1
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 20 )
@@ -517,6 +517,9 @@ theme = ExtResource( 3 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_fonts/normal_font = ExtResource( 20 )
 bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 anchor_top = 1.0

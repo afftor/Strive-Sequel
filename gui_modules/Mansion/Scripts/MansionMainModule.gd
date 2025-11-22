@@ -816,7 +816,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("mask", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("foxmask", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("service_suit", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("ayneris_rapier", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("hector_armor", {}))
 		var titem = globals.CreateGearItem("cali_heirloom_test", {})
 		titem.set_quality_level('legendary')
 		globals.AddItemToInventory(titem) #legendary version
@@ -872,6 +872,7 @@ func test_mode():
 		globals.AddItemToInventory(
 			globals.CreateGearItemShop("chest_adv_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood', ArmorEnc = 'stone'})
 		)
+		
 		globals.AddItemToInventory(
 			globals.CreateGearItemShop(
 				"chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}

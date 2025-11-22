@@ -77,8 +77,8 @@ func update(person = null):
 	else:
 		$ScrollContainer/professions.columns = 6
 		$ScrollContainer/professions.set("custom_constants/hseparation", 14)
-		$ScrollContainer/professions/Button.rect_min_size = Vector2(75, 75)
-		$ScrollContainer/professions/Button/TextureRect.rect_size = Vector2(70, 70)
+		$ScrollContainer/professions/Button.rect_min_size = Vector2(100, 100)
+		$ScrollContainer/professions/Button/TextureRect.rect_size = Vector2(84, 84)
 	for i in person.get_professions():
 		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/professions)
 		var prof = classesdata.professions[i]

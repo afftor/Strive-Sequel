@@ -39,19 +39,7 @@ func _ready():
 		var st = 'mastery_point_' + i
 		var stdata = statdata.statdata[st]
 		globals.connecttexttooltip(get_node('MasteryPanel/Categories3/' + i), tr(stdata.name))
-	
-	
-	for i in variables.resists_list:
-		if i == 'all': continue
-		var newlabel = $BaseStatsPanel/resists/Label.duplicate()
-		var newvalue = $BaseStatsPanel/resists/Value.duplicate()
-		$BaseStatsPanel/resists.add_child(newlabel)
-		$BaseStatsPanel/resists.add_child(newvalue)
-		newlabel.text = tr(i.to_upper() + "RESIST") + ":"
-		newvalue.name = i
-		newlabel.show()
-		newvalue.show()
-	
+
 
 func SkillBookButtonPress():
 	$SkillBook.activecharacter = person
@@ -141,30 +129,7 @@ func update():
 		newbutton.connect('mouse_entered', self, 'show_tooltip', [newbutton, ResourceScripts.descriptions.get_class_details(person, i, true, true)])
 		newbutton.connect('mouse_exited', self, 'close_tooltip')
 		# globals.connecttexttooltip(newbutton, ResourceScripts.descriptions.get_class_details(person, i, true, true))
-	
-	
-	for i in $BaseStatsPanel/resists.get_children():
-		if !statdata.statdata.has('resist_' + i.name):
-			continue
-		var tmp = person.get_stat('resist_' + i.name)
-		i.text = str(tmp)
-		if tmp > 0:
-			i.set("custom_colors/font_color", variables.hexcolordict.yellow)
-		elif tmp < 0:
-			i.set("custom_colors/font_color", variables.hexcolordict.green)
-		else:
-			i.set("custom_colors/font_color", variables.hexcolordict.white)
-	
-	for i in variables.fighter_stats_list:
-		if !i in ['hpmax', 'mpmax','critmod']:
-			$"BaseStatsPanel/base_stats".get_node(i).text = str(floor(person.get_stat(i)))
-		elif i == 'critmod':
-			$"BaseStatsPanel/base_stats".get_node(i).text = str(floor(person.get_stat(i)*100))
 
-
-	for i in $"BaseStatsPanel/base_stats".get_children():
-		if statdata.statdata.has(i.name.replace("label_","")):
-				globals.connecttexttooltip(i, statdata.statdata[i.name.replace("label_", "")].descript)
 
 func checkbox_locked():
 	person = input_handler.interacted_character

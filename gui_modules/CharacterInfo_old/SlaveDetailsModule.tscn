@@ -17,19 +17,15 @@
 [ext_resource path="res://gui_modules/CharacterInfo/ImageSelect.gd" type="Script" id=18]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveDetailsModule.gd" type="Script" id=19]
 
-[sub_resource type="StyleBoxTexture" id=17]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 14 )
 region_rect = Rect2( 0, 0, 970, 920 )
-margin_left = 71.5509
-margin_right = 71.5509
-margin_top = 66.2509
-margin_bottom = 33.5794
 
-[sub_resource type="StyleBoxTexture" id=18]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
-[sub_resource type="DynamicFont" id=19]
+[sub_resource type="DynamicFont" id=3]
 size = 24
 font_data = ExtResource( 1 )
 
@@ -40,7 +36,7 @@ margin_top = 137.0
 margin_right = 1124.95
 margin_bottom = 1057.0
 theme = ExtResource( 11 )
-custom_styles/panel = SubResource( 17 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -51,7 +47,7 @@ show_behind_parent = true
 light_mask = 0
 margin_right = 970.0
 margin_bottom = 920.0
-custom_styles/panel = SubResource( 18 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -64,6 +60,9 @@ margin_right = 379.0
 margin_bottom = 854.0
 rect_min_size = Vector2( 315, 0 )
 custom_constants/separation = 9
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="descript" type="Button" parent="VBoxContainer"]
 light_mask = 0
@@ -72,7 +71,7 @@ margin_bottom = 42.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 3 )
 toggle_mode = true
 text = "DESCRIPT_BUTTON_TEXT"
 
@@ -84,7 +83,7 @@ margin_bottom = 93.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 3 )
 toggle_mode = true
 text = "NICKNAME_BUTTON_TEXT"
 
@@ -96,7 +95,7 @@ margin_bottom = 144.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 3 )
 toggle_mode = true
 text = "MNOUN_BUTTON_TEXT"
 
@@ -108,7 +107,7 @@ margin_bottom = 195.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 3 )
 toggle_mode = true
 text = "ICON_BUTTON_TEXT"
 
@@ -120,7 +119,7 @@ margin_bottom = 246.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 3 )
 text = "ICON2_BUTTON_TEXT"
 
 [node name="body" type="Button" parent="VBoxContainer"]
@@ -131,7 +130,7 @@ margin_bottom = 297.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 3 )
 toggle_mode = true
 text = "BODY_BUTTON_TEXT"
 
@@ -143,7 +142,7 @@ margin_bottom = 348.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 3 )
 toggle_mode = true
 text = "USPRITE_BUTTON_TEXT"
 

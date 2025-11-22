@@ -78,15 +78,15 @@
 texture = ExtResource( 19 )
 region_rect = Rect2( 0, 0, 970, 920 )
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 14 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
-[sub_resource type="StyleBoxTexture" id=9]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 14 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
-[sub_resource type="StyleBoxTexture" id=10]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 71 )
 region_rect = Rect2( 0, 0, 659, 4 )
 
@@ -104,7 +104,7 @@ light_mask = 0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 970, 920 )
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -119,7 +119,7 @@ theme = ExtResource( 16 )
 
 [node name="all" type="Button" parent="categories"]
 light_mask = 0
-margin_right = 140.0
+margin_right = 154.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -131,7 +131,7 @@ text = "CAT_ALL"
 [node name="social" type="Button" parent="categories"]
 light_mask = 0
 margin_top = 44.0
-margin_right = 140.0
+margin_right = 154.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 0, 40 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -143,7 +143,7 @@ text = "CAT_SOCIAL"
 [node name="labor" type="Button" parent="categories"]
 light_mask = 0
 margin_top = 88.0
-margin_right = 140.0
+margin_right = 154.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 0, 40 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -155,7 +155,7 @@ text = "CAT_LABOR"
 [node name="sexual" type="Button" parent="categories"]
 light_mask = 0
 margin_top = 132.0
-margin_right = 140.0
+margin_right = 154.0
 margin_bottom = 172.0
 rect_min_size = Vector2( 0, 40 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -167,7 +167,7 @@ text = "CAT_SEXUAL"
 [node name="combat" type="Button" parent="categories"]
 light_mask = 0
 margin_top = 176.0
-margin_right = 140.0
+margin_right = 154.0
 margin_bottom = 216.0
 rect_min_size = Vector2( 0, 40 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -179,9 +179,10 @@ text = "CAT_COMBAT"
 [node name="magic" type="Button" parent="categories"]
 light_mask = 0
 margin_top = 220.0
-margin_right = 140.0
+margin_right = 154.0
 margin_bottom = 260.0
 rect_min_size = Vector2( 0, 40 )
+hint_tooltip = "Magic"
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 7 )
@@ -200,11 +201,10 @@ scroll_horizontal_enabled = false
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 light_mask = 0
-margin_right = 150.0
-margin_bottom = 150.0
 columns = 5
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/GridContainer"]
+visible = false
 self_modulate = Color( 1, 1, 1, 0.635294 )
 light_mask = 0
 margin_right = 150.0
@@ -235,9 +235,11 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 custom_fonts/font = ExtResource( 8 )
-text = "Text"
 align = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="."]
 light_mask = 0
@@ -285,7 +287,7 @@ light_mask = 0
 margin_left = -2.0
 margin_right = 698.0
 margin_bottom = 1050.0
-custom_styles/panel = SubResource( 9 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -515,7 +517,7 @@ margin_left = 970.0
 margin_top = -133.0
 margin_right = 1670.0
 margin_bottom = 920.0
-custom_styles/panel = SubResource( 9 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="mastery" type="TextureRect" parent="MasteryPanel"]
 self_modulate = Color( 1, 1, 1, 0.505882 )
@@ -616,7 +618,7 @@ stretch_mode = 6
 visible = false
 margin_right = 672.0
 margin_bottom = 4.0
-custom_styles/separator = SubResource( 10 )
+custom_styles/separator = SubResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="MasteryPanel"]
 margin_right = 40.0
@@ -1032,7 +1034,7 @@ margin_top = -3.19998
 margin_right = 700.0
 margin_bottom = 346.8
 rect_min_size = Vector2( 700, 350 )
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

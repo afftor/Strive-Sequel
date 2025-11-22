@@ -204,15 +204,15 @@ var loot_tables = {
 	medium_maps = {list = [
 		{selector = [
 			{item = 'map_undead_crypt'},
-			{item = 'map_ancient_jungle'},
 			{item = 'map_bandit_fort'},
+			{item = 'map_rebel_redoubt'},
 			]}
 		]},
 	hard_maps = {list = [
 		{selector = [
 			{item = 'map_fire_depths'},
+			{item = 'map_ancient_jungle'},
 			{item = 'map_goblin_stronghold'},
-			{item = 'map_rebel_redoubt'},
 			]}
 		]},
 	medium_chest_usable = {list = [

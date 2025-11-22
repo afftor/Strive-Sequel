@@ -197,7 +197,7 @@ func update():
 				newnode.texture = images.get_icon(i)
 				newnode.hint_tooltip =  tr("FOODTYPE" +i.to_upper())
 		$SlaveDietModule/food_hate/Container.visible = person.food.food_hate != null
-		#sex_traits_open()
+		sex_traits_open()
 		
 		build_personality()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/icon_charinfo_details.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/portraits/cali_collar_prt.png" type="Texture" id=2]
@@ -43,32 +43,9 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/button_charinfo_sqr_hover.png" type="Texture" id=41]
 [ext_resource path="res://assets/images/iconsraces/human.png" type="Texture" id=42]
 [ext_resource path="res://assets/images/iconsages/T.png" type="Texture" id=43]
-[ext_resource path="res://MainFont.tres" type="DynamicFont" id=44]
-[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_pressed.png" type="Texture" id=45]
-[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png" type="Texture" id=46]
-[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png" type="Texture" id=47]
-[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_disabled.png" type="Texture" id=48]
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 47 )
-region_rect = Rect2( 0, 0, 272, 58 )
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 45 )
-region_rect = Rect2( 0, 0, 272, 58 )
-
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 48 )
-region_rect = Rect2( 0, 0, 272, 58 )
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 46 )
-region_rect = Rect2( 0, 0, 272, 58 )
 
 [node name="SlaveSummaryModule" type="Panel"]
 light_mask = 0
-margin_right = 220.0
-margin_bottom = 1050.0
 rect_min_size = Vector2( 220, 1050 )
 custom_styles/panel = ExtResource( 33 )
 script = ExtResource( 32 )
@@ -82,6 +59,9 @@ margin_bottom = 206.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="race" type="TextureRect" parent="."]
 margin_left = 14.4541
@@ -646,113 +626,11 @@ clip_text = true
 light_mask = 0
 margin_left = 220.0
 margin_right = 1190.0
-margin_bottom = 89.0
+margin_bottom = 130.0
 custom_styles/panel = ExtResource( 34 )
-
-[node name="Actions" type="Panel" parent="."]
-light_mask = 0
-margin_top = 842.0
-margin_right = 1188.0
-margin_bottom = 1051.0
-custom_styles/panel = ExtResource( 34 )
-
-[node name="Panel" type="Panel" parent="Actions"]
-show_behind_parent = true
-margin_right = 1188.0
-margin_bottom = 207.0
-
-[node name="GridContainer" type="GridContainer" parent="Actions"]
-margin_left = 26.0
-margin_top = 33.0
-margin_right = 1169.0
-margin_bottom = 184.0
-custom_constants/vseparation = 20
-custom_constants/hseparation = 48
-columns = 4
-
-[node name="SkillsButton" type="TextureButton" parent="Actions/GridContainer"]
-visible = false
-margin_right = 82.0
-margin_bottom = 82.0
-toggle_mode = true
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 40 )
-texture_hover = ExtResource( 41 )
-
-[node name="TextureRect" type="TextureRect" parent="Actions/GridContainer/SkillsButton"]
-anchor_top = 0.0108643
-anchor_right = 0.512195
-anchor_bottom = 0.523059
-margin_top = -1.52081
-margin_right = 40.0
-margin_bottom = 38.4792
-texture = ExtResource( 11 )
-
-[node name="SiblingsButton" type="TextureButton" parent="Actions/GridContainer"]
-visible = false
-margin_right = 82.0
-margin_bottom = 82.0
-toggle_mode = true
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 40 )
-texture_hover = ExtResource( 41 )
-
-[node name="TextureRect" type="TextureRect" parent="Actions/GridContainer/SiblingsButton"]
-margin_left = -1.0
-margin_top = -0.629944
-margin_right = 81.0
-margin_bottom = 81.3701
-texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="GearButton" type="TextureButton" parent="Actions/GridContainer"]
-visible = false
-margin_right = 82.0
-margin_bottom = 82.0
-toggle_mode = true
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 40 )
-texture_hover = ExtResource( 41 )
-
-[node name="TextureRect" type="TextureRect" parent="Actions/GridContainer/GearButton"]
-margin_left = 1.0
-margin_right = 83.0
-margin_bottom = 82.0
-texture = ExtResource( 39 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DetailsButton" type="TextureButton" parent="Actions/GridContainer"]
-visible = false
-margin_right = 82.0
-margin_bottom = 82.0
-toggle_mode = true
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 40 )
-texture_hover = ExtResource( 41 )
-
-[node name="TextureRect" type="TextureRect" parent="Actions/GridContainer/DetailsButton"]
-anchor_top = -0.005
-margin_left = 1.0
-margin_top = -0.0104712
-margin_right = 83.0
-margin_bottom = 81.5795
-texture = ExtResource( 1 )
-
-[node name="Button" type="Button" parent="Actions/GridContainer"]
-visible = false
-margin_right = 250.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 250, 60 )
-custom_fonts/font = ExtResource( 44 )
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/disabled = SubResource( 4 )
-custom_styles/normal = SubResource( 3 )
-text = "Chat"
 
 [node name="professions" type="GridContainer" parent="."]
 visible = false
@@ -811,12 +689,102 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 18.0
+margin_top = 856.216
+margin_right = 202.0
+margin_bottom = 1044.22
+custom_constants/vseparation = 20
+custom_constants/hseparation = 20
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkillsButton" type="TextureButton" parent="GridContainer"]
+margin_right = 82.0
+margin_bottom = 82.0
+toggle_mode = true
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 40 )
+texture_hover = ExtResource( 41 )
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/SkillsButton"]
+anchor_top = 0.0108643
+anchor_right = 0.512195
+anchor_bottom = 0.523059
+margin_top = -1.52081
+margin_right = 40.0
+margin_bottom = 38.4792
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SiblingsButton" type="TextureButton" parent="GridContainer"]
+margin_left = 102.0
+margin_right = 184.0
+margin_bottom = 82.0
+toggle_mode = true
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 40 )
+texture_hover = ExtResource( 41 )
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/SiblingsButton"]
+margin_left = -1.0
+margin_top = -0.629944
+margin_right = 81.0
+margin_bottom = 81.3701
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GearButton" type="TextureButton" parent="GridContainer"]
+margin_top = 102.0
+margin_right = 82.0
+margin_bottom = 184.0
+toggle_mode = true
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 40 )
+texture_hover = ExtResource( 41 )
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/GearButton"]
+margin_left = 1.0
+margin_right = 83.0
+margin_bottom = 82.0
+texture = ExtResource( 39 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DetailsButton" type="TextureButton" parent="GridContainer"]
+margin_left = 102.0
+margin_top = 102.0
+margin_right = 184.0
+margin_bottom = 184.0
+toggle_mode = true
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 40 )
+texture_hover = ExtResource( 41 )
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/DetailsButton"]
+anchor_top = -0.005
+margin_left = 1.0
+margin_top = -0.0104712
+margin_right = 83.0
+margin_bottom = 81.5795
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Name" type="HBoxContainer" parent="."]
 light_mask = 0
-margin_left = 557.0
+margin_left = 556.82
 margin_top = 6.0
-margin_right = 844.0
-margin_bottom = 77.0
+margin_right = 843.82
+margin_bottom = 131.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_constants/separation = 15
@@ -828,9 +796,9 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="Name"]
 visible = false
 light_mask = 0
-margin_left = 44.0
-margin_right = 108.0
-margin_bottom = 116.0
+margin_left = 7.0
+margin_right = 71.0
+margin_bottom = 125.0
 texture = ExtResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -839,9 +807,9 @@ __meta__ = {
 [node name="name" type="Label" parent="Name"]
 light_mask = 0
 margin_left = 84.0
-margin_top = 4.0
+margin_top = 31.0
 margin_right = 203.0
-margin_bottom = 66.0
+margin_bottom = 93.0
 grow_horizontal = 0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 31 )
@@ -854,9 +822,9 @@ __meta__ = {
 [node name="TextureRect2" type="TextureRect" parent="Name"]
 visible = false
 light_mask = 0
-margin_left = 178.0
-margin_right = 242.0
-margin_bottom = 116.0
+margin_left = 191.0
+margin_right = 255.0
+margin_bottom = 125.0
 texture = ExtResource( 29 )
 flip_h = true
 __meta__ = {
@@ -873,27 +841,23 @@ __meta__ = {
 }
 
 [node name="Left" type="TextureButton" parent="ChangeSlaveButtons"]
-margin_left = -624.0
-margin_top = -1.0
-margin_right = -570.0
-margin_bottom = 78.0
+margin_left = -623.7
+margin_top = 15.0
+margin_right = -553.7
+margin_bottom = 107.0
 texture_normal = ExtResource( 36 )
 texture_pressed = ExtResource( 38 )
 texture_hover = ExtResource( 37 )
-expand = true
-stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Right" type="TextureButton" parent="ChangeSlaveButtons"]
-margin_left = 332.0
-margin_top = -1.0
-margin_right = 386.0
-margin_bottom = 78.0
+margin_left = 330.68
+margin_top = 15.0
+margin_right = 400.68
+margin_bottom = 107.0
 rect_scale = Vector2( -1, 1 )
 texture_normal = ExtResource( 36 )
 texture_pressed = ExtResource( 38 )
 texture_hover = ExtResource( 37 )
-expand = true
-stretch_mode = 5
-__meta__ = {
-"_editor_description_": ""
-}

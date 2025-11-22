@@ -120,6 +120,9 @@ margin_top = -116.0
 margin_right = 686.48
 margin_bottom = -16.0
 theme = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="professions" type="GridContainer" parent="ScrollContainer"]
 custom_constants/hseparation = 14

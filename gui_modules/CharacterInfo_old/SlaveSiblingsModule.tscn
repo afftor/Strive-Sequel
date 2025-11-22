@@ -78,43 +78,43 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/statistic_pressed.png" type="Texture" id=76]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/statistic_hover.png" type="Texture" id=77]
 
-[sub_resource type="DynamicFont" id=20]
+[sub_resource type="DynamicFont" id=3]
 size = 36
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=21]
+[sub_resource type="DynamicFont" id=10]
 size = 24
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=22]
+[sub_resource type="DynamicFont" id=11]
 size = 24
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=23]
+[sub_resource type="DynamicFont" id=4]
 size = 22
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=24]
+[sub_resource type="DynamicFont" id=5]
 size = 15
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=25]
+[sub_resource type="DynamicFont" id=6]
 size = 36
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=26]
+[sub_resource type="StyleBoxTexture" id=7]
 
-[sub_resource type="StyleBoxTexture" id=27]
+[sub_resource type="StyleBoxTexture" id=12]
 
-[sub_resource type="StyleBoxTexture" id=28]
+[sub_resource type="StyleBoxTexture" id=8]
 
-[sub_resource type="StyleBoxTexture" id=29]
+[sub_resource type="StyleBoxTexture" id=9]
 
 [node name="SlaveSiblingsModule" type="TextureRect"]
 light_mask = 0
@@ -185,7 +185,7 @@ __meta__ = {
 margin_right = 504.0
 margin_bottom = 78.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 3 )
 text = "SIBLINGMODULEFOODFILTER"
 align = 1
 valign = 1
@@ -208,7 +208,7 @@ texture_hover = ExtResource( 40 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 3 )
 text = "Close"
 align = 1
 valign = 1
@@ -220,7 +220,7 @@ margin_top = 454.0
 margin_right = 296.0
 margin_bottom = 489.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 10 )
 text = "SIBLINGMODULEFOODCONSUMPTION"
 clip_text = true
 
@@ -229,7 +229,7 @@ margin_left = 231.0
 margin_right = 271.0
 margin_bottom = 35.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 11 )
 text = "25"
 align = 1
 __meta__ = {
@@ -320,7 +320,7 @@ margin_bottom = 40.8863
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 23 )
+custom_fonts/font = SubResource( 4 )
 text = "Penetration"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -347,7 +347,7 @@ custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 24 )
+custom_fonts/font = SubResource( 5 )
 text = "1/100"
 align = 1
 __meta__ = {
@@ -390,7 +390,7 @@ margin_top = 16.8252
 margin_right = 255.301
 margin_bottom = 72.8252
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 3 )
 text = "SIBLINGMODULESKILLSKILLS"
 align = 1
 valign = 1
@@ -405,7 +405,7 @@ margin_top = 20.0
 margin_right = 740.0
 margin_bottom = 76.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 25 )
+custom_fonts/font = SubResource( 6 )
 text = "SIBLINGMODULERULES"
 align = 1
 valign = 1
@@ -435,7 +435,7 @@ custom_icons/checked = ExtResource( 17 )
 custom_icons/radio_unchecked = ExtResource( 9 )
 custom_icons/unchecked_disabled = ExtResource( 9 )
 custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 26 )
+custom_styles/focus = SubResource( 7 )
 text = "WORKRULELOCK"
 
 [node name="ration" type="CheckBox" parent="work_rules"]
@@ -456,7 +456,7 @@ custom_icons/checked = ExtResource( 17 )
 custom_icons/radio_unchecked = ExtResource( 9 )
 custom_icons/unchecked_disabled = ExtResource( 9 )
 custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 27 )
+custom_styles/focus = SubResource( 12 )
 text = "WORKRULERATION"
 
 [node name="shifts" type="CheckBox" parent="work_rules"]
@@ -477,7 +477,7 @@ custom_icons/checked = ExtResource( 17 )
 custom_icons/radio_unchecked = ExtResource( 9 )
 custom_icons/unchecked_disabled = ExtResource( 9 )
 custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 28 )
+custom_styles/focus = SubResource( 8 )
 text = "WORKRULESHIFTS"
 
 [node name="luxury" type="CheckBox" parent="work_rules"]
@@ -499,7 +499,7 @@ custom_icons/checked = ExtResource( 17 )
 custom_icons/radio_unchecked = ExtResource( 9 )
 custom_icons/unchecked_disabled = ExtResource( 9 )
 custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 29 )
+custom_styles/focus = SubResource( 9 )
 text = "UPGRADELUXURY_ROOMS"
 
 [node name="contraceptive" type="CheckBox" parent="work_rules"]
@@ -520,7 +520,7 @@ custom_icons/checked = ExtResource( 17 )
 custom_icons/radio_unchecked = ExtResource( 9 )
 custom_icons/unchecked_disabled = ExtResource( 9 )
 custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 29 )
+custom_styles/focus = SubResource( 9 )
 text = "WORKRULECONTRACEPTIVE"
 
 [node name="personality_lock" type="CheckBox" parent="work_rules"]
@@ -543,7 +543,7 @@ custom_icons/checked = ExtResource( 17 )
 custom_icons/radio_unchecked = ExtResource( 9 )
 custom_icons/unchecked_disabled = ExtResource( 9 )
 custom_icons/unchecked = ExtResource( 9 )
-custom_styles/focus = SubResource( 29 )
+custom_styles/focus = SubResource( 9 )
 text = "WORKRULEPERSONALITY_LOCK"
 
 [node name="nudity" type="CheckBox" parent="work_rules"]
@@ -623,7 +623,7 @@ margin_left = 18.126
 margin_right = 210.126
 margin_bottom = 42.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 3 )
 text = "SIBLINGMODULESEXTRAITS"
 align = 1
 valign = 1
@@ -962,7 +962,7 @@ margin_top = -87.0
 margin_right = 414.0
 margin_bottom = -34.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 3 )
 text = "SIBLINGMODULEPERSONALITY"
 align = 1
 valign = 1
@@ -1262,7 +1262,7 @@ texture_hover = ExtResource( 38 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 3 )
 text = "Food Filter"
 align = 1
 valign = 1
