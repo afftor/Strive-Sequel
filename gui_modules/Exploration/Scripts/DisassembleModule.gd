@@ -3,6 +3,12 @@ var itemcontainer
 var materials_container
 onready var rng = RandomNumberGenerator.new()
 
+func _set_quality_color(quality_node, quality):
+	quality_node.hide()
+	if quality != "":
+		quality_node.texture = variables.quality_colors[quality]
+		quality_node.show()
+
 
 func _ready():
 	itemcontainer = $Background/ItemList/VBoxContainer
@@ -88,6 +94,8 @@ func build_list():
 		var newbutton = input_handler.DuplicateContainerTemplate(itemcontainer)
 		newbutton.get_node("Title").text = i.name
 		i.set_icon(newbutton.get_node("Icon"))
+		var quality_color = newbutton.get_node("quality_color")
+		_set_quality_color(quality_color, i.quality)
 		var amount = ResourceScripts.custom_text.transform_number(i.amount)
 		newbutton.get_node("Amount").text = amount
 		newbutton.get_node("Cost").text = str(i.calculateprice())
@@ -119,6 +127,8 @@ func show_item_info(item, amount):
 	selected_part = null
 	input_handler.ClearContainer(materials_container)
 	item.set_icon($ItemInfo/IconFrame/Icon)
+	var icon_quality_color = $ItemInfo/IconFrame/quality_color
+	_set_quality_color(icon_quality_color, item.quality)
 	globals.connectitemtooltip_v2($ItemInfo/IconFrame/Icon, item)
 	$ItemInfo/Title.text = item.name
 	item_to_disassamble = item
