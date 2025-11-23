@@ -39,8 +39,8 @@
 [ext_resource path="res://assets/Textures_v2/craft/enchant_item_bg.png" type="Texture" id=37]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Loot/frame_loot_square.png" type="Texture" id=38]
 [ext_resource path="res://assets/images/gui/inventory/icon_armor1.png" type="Texture" id=39]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/search.tres" type="StyleBox" id=41]
 [ext_resource path="res://assets/images/iconsitems/quality_bg/blue.png" type="Texture" id=40]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/search.tres" type="StyleBox" id=41]
 
 [node name="Panel" type="TextureRect"]
 anchor_right = 1.0
@@ -106,19 +106,20 @@ __meta__ = {
 
 [node name="SearchFilter" type="LineEdit" parent="."]
 margin_left = 35.0
-margin_top = 96.0
+margin_top = 37.0
 margin_right = 669.0
-margin_bottom = 148.0
+margin_bottom = 89.0
 custom_fonts/font = ExtResource( 17 )
 custom_styles/normal = ExtResource( 41 )
 placeholder_text = "INVENTORYFILTER"
 
 [node name="ItemList" type="TextureRect" parent="."]
 margin_left = 35.0
-margin_top = 35.0
+margin_top = 114.0
 margin_right = 669.0
 margin_bottom = 963.0
 texture = ExtResource( 13 )
+expand = true
 
 [node name="ItemScroll" type="ScrollContainer" parent="ItemList"]
 anchor_right = 1.0

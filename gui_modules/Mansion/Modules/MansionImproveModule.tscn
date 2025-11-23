@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_36.tres" type="DynamicFont" id=2]
@@ -100,19 +100,20 @@ __meta__ = {
 
 [node name="SearchFilter" type="LineEdit" parent="."]
 margin_left = 35.0
-margin_top = 96.0
+margin_top = 35.0
 margin_right = 669.0
-margin_bottom = 148.0
+margin_bottom = 87.0
 custom_fonts/font = ExtResource( 17 )
 custom_styles/normal = ExtResource( 40 )
 placeholder_text = "INVENTORYFILTER"
 
 [node name="ItemList" type="TextureRect" parent="."]
 margin_left = 35.0
-margin_top = 35.0
+margin_top = 102.0
 margin_right = 669.0
 margin_bottom = 963.0
 texture = ExtResource( 13 )
+expand = true
 
 [node name="ItemScroll" type="ScrollContainer" parent="ItemList"]
 anchor_right = 1.0

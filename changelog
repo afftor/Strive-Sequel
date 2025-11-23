@@ -3,6 +3,7 @@ Redesigned character info and some parts of character list
 Added damage types to combat log
 Added color border to turn order to indicate player/enemy characters
 Added dropdown menu on rightclick to characters and improved occupation menu behavior on opening
+Added search bar to enchant and gear improvement modules
 Renamed Nobody fame level to Stranger
 Weapons now have minimum mastery requirements necessary to equip them
 Fixed Wind Blade attacking same target every time
