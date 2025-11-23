@@ -1221,19 +1221,6 @@ anchor_bottom = 1.0
 mouse_filter = 2
 expand = true
 
-[node name="ResourceLabel" type="Label" parent="MapPanel/CanvasLayer/room/subroom1"]
-light_mask = 32
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 49.0
-margin_right = -4.0
-margin_bottom = -4.0
-mouse_filter = 2
-text = ""
-align = 2
-valign = 2
-
 [node name="subroom2" type="TextureButton" parent="MapPanel/CanvasLayer/room"]
 light_mask = 32
 margin_left = 185.0
@@ -1252,19 +1239,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 expand = true
-
-[node name="ResourceLabel" type="Label" parent="MapPanel/CanvasLayer/room/subroom2"]
-light_mask = 32
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 49.0
-margin_right = -4.0
-margin_bottom = -4.0
-mouse_filter = 2
-text = ""
-align = 2
-valign = 2
 
 [node name="subroom3" type="TextureButton" parent="MapPanel/CanvasLayer/room"]
 light_mask = 32
@@ -1285,19 +1259,6 @@ anchor_bottom = 1.0
 mouse_filter = 2
 expand = true
 
-[node name="ResourceLabel" type="Label" parent="MapPanel/CanvasLayer/room/subroom3"]
-light_mask = 32
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 49.0
-margin_right = -4.0
-margin_bottom = -4.0
-mouse_filter = 2
-text = ""
-align = 2
-valign = 2
-
 [node name="subroom4" type="TextureButton" parent="MapPanel/CanvasLayer/room"]
 light_mask = 32
 margin_left = 185.0
@@ -1316,19 +1277,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 expand = true
-
-[node name="ResourceLabel" type="Label" parent="MapPanel/CanvasLayer/room/subroom4"]
-light_mask = 32
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 49.0
-margin_right = -4.0
-margin_bottom = -4.0
-mouse_filter = 2
-text = ""
-align = 2
-valign = 2
 
 [node name="crop" type="Light2D" parent="MapPanel"]
 light_mask = 32
