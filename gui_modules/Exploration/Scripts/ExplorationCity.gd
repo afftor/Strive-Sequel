@@ -39,6 +39,7 @@ func _ready():
 	gui_controller.add_close_button($BuyLocation)
 	gui_controller.add_close_button($GuildShop)
 	gui_controller.add_close_button($QuestBoard)
+	gui_controller.add_close_button($SlaveMarket)
 	
 	selected_location = 'aliron'
 	selected_area = ResourceScripts.game_world.areas.plains

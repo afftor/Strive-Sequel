@@ -83,9 +83,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -918.0
+margin_left = -925.0
 margin_top = -100.0
-margin_right = -538.0
+margin_right = -545.0
 margin_bottom = -20.0
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 7 )
@@ -99,6 +99,9 @@ custom_fonts/font = ExtResource( 2 )
 text = "Improve gear"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ItemList" type="TextureRect" parent="."]
 margin_left = 35.0

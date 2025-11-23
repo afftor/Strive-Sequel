@@ -623,7 +623,7 @@ func test_mode():
 		globals.AddItemToInventory(bow)
 		bow = globals.CreateGearItemQuality("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}, 'legendary', false)
 		globals.AddItemToInventory(bow)
-		character.equip(bow)
+		#character.equip(bow)
 		character.set_slave_category('master')
 		character.statlist.negative_sex_traits = {dislike_missionary = true}
 		character.statlist.unlocked_sex_traits = [

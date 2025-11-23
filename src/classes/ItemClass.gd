@@ -424,7 +424,7 @@ func tooltiptext():
 		text += description
 	if !reqs.empty():
 		var tempslave = ResourceScripts.scriptdict.class_slave.new("temp_tooltip_item")
-		text += "\n" + tempslave.decipher_reqs(reqs)
+		text += "\n{color=yellow|" + tempslave.decipher_reqs(reqs) + "}"
 	if itemtype in ['armor','weapon','tool']:
 		text += "\n"
 		var t_bonusstats = get_bonusstats()
@@ -460,7 +460,7 @@ func tooltiptext_1():
 		text = text.substr(0, text.length()-2)
 	if !reqs.empty():
 		var tempslave = ResourceScripts.scriptdict.class_slave.new("temp_tooltip_item_1")
-		text += tempslave.decipher_reqs(reqs)
+		text +=  "\n{color=yellow|" + tempslave.decipher_reqs(reqs) + "}"
 	
 	if get_e_capacity_max() > 0:
 		text +=  "\n" + tr("STATENCHCAP")+": " + str(get_e_capacity()) + "/" + str(get_e_capacity_max())

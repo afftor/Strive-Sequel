@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_36.tres" type="DynamicFont" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/Textures_v2/craft/enchant/button_item_prassed.png" type="Texture" id=20]
 [ext_resource path="res://assets/Textures_v2/craft/enchant/panel_item.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/craft/panel_enchant_big.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/iconsitems/quality_bg/blue.png" type="Texture" id=23]
 [ext_resource path="res://assets/Textures_v2/craft/background_panel_enchant.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=28]
 [ext_resource path="res://assets/Textures_v2/craft/buttons/button_apply.png" type="Texture" id=29]
@@ -76,9 +77,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -832.0
+margin_left = -925.0
 margin_top = -100.0
-margin_right = -452.0
+margin_right = -545.0
 margin_bottom = -20.0
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 7 )
@@ -92,6 +93,9 @@ custom_fonts/font = ExtResource( 2 )
 text = "Enchant gear"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ItemList" type="TextureRect" parent="."]
 margin_left = 35.0
@@ -124,6 +128,19 @@ texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 20 )
 texture_hover = ExtResource( 18 )
 texture_disabled = ExtResource( 9 )
+
+[node name="quality_color" type="TextureRect" parent="ItemList/ItemScroll/Items/Button"]
+visible = false
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
 
 [node name="Icon" type="TextureRect" parent="ItemList/ItemScroll/Items/Button"]
 show_behind_parent = true

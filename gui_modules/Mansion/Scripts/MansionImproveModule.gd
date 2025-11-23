@@ -53,6 +53,11 @@ func build_item_list():
 		var panel = input_handler.DuplicateContainerTemplate(item_list, 'Button')
 		panel.connect('pressed', self, 'select_item', [id])
 		item.set_icon(panel.get_node('Icon'))
+		if item.quality != "":
+			panel.get_node("quality_color").show()
+			panel.get_node("quality_color").texture = variables.quality_colors[item.quality]
+		else:
+			panel.get_node("quality_color").hide()
 		panel.pressed = selected_item == id
 		if item.owner != null:
 			panel.get_node("WornIcon").show()
@@ -68,6 +73,11 @@ func build_item_list():
 		var panel = input_handler.DuplicateContainerTemplate(item_list, 'Button')
 		panel.connect('pressed', self, 'select_item', [id])
 		item.set_icon(panel.get_node('Icon'))
+		if item.quality != "":
+			panel.get_node("quality_color").show()
+			panel.get_node("quality_color").texture = variables.quality_colors[item.quality]
+		else:
+			panel.get_node("quality_color").hide()
 		panel.pressed = selected_item == id
 		if item.owner != null:
 			panel.get_node("WornIcon").show()
