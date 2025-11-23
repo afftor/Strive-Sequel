@@ -1246,11 +1246,7 @@ func handle_scene_options():
 		if i.has('disabled') && i.disabled == true:
 			newbutton.status = 'disabled'
 			disable = true
-		if i.has('challenge') and i.has('select_person'):
-			var req_data = select_person_for_next_event(i)
-			if !has_available_characters_for_selection(req_data.reqs, req_data.challenge):
-				newbutton.status = 'disabled'
-				disable = true
+			
 		if disable:
 			newbutton.disabled = true
 			newbutton.status = 'disabled'
