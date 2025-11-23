@@ -1272,9 +1272,6 @@ func handle_scene_options():
 				i.text = input_handler.scene_characters[num].translate(i.text, num+1)
 		newbutton.get_node("Label").bbcode_text = i.text
 		newbutton.hotkey = option_number
-		yield(get_tree(), 'idle_frame')
-		newbutton.get_node("Label").rect_size.y += 8
-		newbutton.rect_min_size.y = newbutton.get_node("Label").rect_size.y
 		newbutton.connect("pressed",self,'select_option', [option_number - 1])
 		
 		
@@ -1288,10 +1285,23 @@ func handle_scene_options():
 		if i.has('disabled') && i.disabled == true:
 			newbutton.status = 'disabled'
 			disable = true
-			
+		if i.has('challenge') and i.has('select_person'):
+			var req_data = get_option_reqs_and_challenge(i)
+			if !has_available_characters_for_selection(req_data.reqs, req_data.challenge):
+				newbutton.status = 'disabled'
+				newbutton.get_node('Label').bbcode_text = newbutton.get_node("Label").bbcode_text + " - No characters available"
+				disable = true
+		
+		
+		
 		if disable:
 			newbutton.disabled = true
 			newbutton.status = 'disabled'
+		
+		yield(get_tree(), 'idle_frame')
+		newbutton.get_node("Label").rect_size.y += 8
+		newbutton.rect_min_size.y = newbutton.get_node("Label").rect_size.y
+		
 		option_number += 1
 
 
