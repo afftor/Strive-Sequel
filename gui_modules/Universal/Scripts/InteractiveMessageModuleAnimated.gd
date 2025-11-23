@@ -491,7 +491,7 @@ func lockpick_attempt(person):
 				input_handler.interactive_message_follow("lockpick_chest_gas_failure", "story_event", {})
 		input_handler.add_random_chat_message(person, 'lockpick_failure')
 
-func select_person_for_next_event(option): #needs a rework
+func get_option_reqs_and_challenge(option):
 	var reqs
 	var code = option.code
 	if option.has('person_reqs'):
@@ -504,7 +504,7 @@ func select_person_for_next_event(option): #needs a rework
 		reqs = [
 			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
 			{code = 'in_combat_party', value = true}
-			]
+		]
 	elif code.find('savra_talk_5') != -1:
 		reqs = [
 			{code = 'stat', stat = 'magic_factor', operant = 'gte', value = 5}
@@ -514,48 +514,90 @@ func select_person_for_next_event(option): #needs a rework
 			{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5}
 		]
 	elif code.find('lira_encounter_5_1_1') != -1:
-		reqs = [ 
+		reqs = [
 			{code = 'stat', stat = 'race', operant = 'eq', value = "TribalElf"},
 #			{code = 'is_master', check = false}
 		]
 	elif code.find('cali_william_9') != -1:
-		reqs = [ 
+		reqs = [
 			{code = 'stat', stat = 'unique', operant = 'neq', value = "cali"},
 			{code = 'is_master', check = false}
 		]
 	elif code in ['pass_lock_discount','pass_blocked_path','pass_magic_barrier','pass_ancient_lock','pass_enemy_strength_scare','pass_enemy_dexterity_sneak','pass_enemy_charm_damage','pass_enemy_charm_avoid']:
 		reqs = [
 			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
-			{code = 'in_combat_party', value = true},
-			]
+			{code = 'in_combat_party', value = true}
+		]
 	elif code == 'pass_fallen_bridge':
 		reqs = [
 			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
 			{code = 'in_combat_party', value = true},
 			{code = 'stat', stat = 'wings', operant = 'neq', value = ''}
-			]
+		]
 	elif code == 'pass_small_crack':
 		reqs = [
 			{code = 'is_at_location', value = gui_controller.exploration_dungeon.active_location.id, check = true},
 			{code = 'in_combat_party', value = true},
 			{code = 'stat', stat = 'height', operant = 'in', value = ['tiny','petite']}#{code = 'is_shortstack', check = true}
-			]
+		]
 	elif option.has('challenge') and option.challenge == 'captured':
 		reqs = []
 	else:
 		reqs = [
 			{code = 'is_at_location', value = input_handler.active_location.id, check = true},
-#			{code = 'in_combat_party', value = true}
-			]
+#			{code = 'in_combat_party', value = true},
+		]
+	var challenge = null
+	if option.has('challenge'):
+		challenge = option.challenge
+	return {reqs = reqs, challenge = challenge}
+
+
+func has_available_characters_for_selection(reqs, challenge):
+	var reqs_list = reqs
+	if !(reqs_list is Array):
+		reqs_list = [reqs_list]
+
+	var candidates = []
+	if challenge == 'captured':
+		for i in input_handler.active_location.captured_characters:
+			candidates.append(characters_pool.get_char_by_id(i))
+	else:
+		for id in ResourceScripts.game_party.character_order:
+			var ch = ResourceScripts.game_party.characters[id]
+			if ch.is_on_quest():
+				continue
+			candidates.append(ch)
+
+	for character in candidates:
+		if challenge != null and challenge != 'captured':
+			var max_attempts = character.get_stat('chg_' + challenge + '_max')
+			if max_attempts < 1:
+				continue
+			elif max_attempts - character.get_stat('chg_' + challenge) <= 0:
+				continue
+
+		var meets_reqs = true
+		for req in reqs_list:
+			if !character.checkreqs(req):
+				meets_reqs = false
+				break
+
+		if meets_reqs:
+			return true
+	return false
+
+func select_person_for_next_event(option): #needs a rework
+	var req_data = get_option_reqs_and_challenge(option)
+	var reqs = req_data.reqs
+	var code = option.code
 	stored_scene = code
 	stored_argument = 0
 	if option.has('dialogue_argument'):
 		stored_argument = option.dialogue_argument
-	var challenge = null
-	if option.has('challenge'):
-		challenge = option.challenge
-	
-	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', reqs, false, challenge)
+
+	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', reqs, false, req_data.challenge)
+
 
 func remove_person(code):
 	var reqs = [{code = 'is_at_location', value = input_handler.active_location.id, check = true}]
@@ -1246,6 +1288,11 @@ func handle_scene_options():
 		if i.has('disabled') && i.disabled == true:
 			newbutton.status = 'disabled'
 			disable = true
+		if i.has('challenge') and i.has('select_person'):
+			var req_data = get_option_reqs_and_challenge(i)
+			if !has_available_characters_for_selection(req_data.reqs, req_data.challenge):
+				newbutton.status = 'disabled'
+				disable = true
 		if disable:
 			newbutton.disabled = true
 			newbutton.status = 'disabled'
