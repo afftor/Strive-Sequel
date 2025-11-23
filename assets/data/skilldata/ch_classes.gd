@@ -103,14 +103,12 @@ var skills = {
 	firearrows_apply = { #fix
 		code = 'firearrows_apply',
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Attract.png"),
+		icon = load("res://assets/images/iconsskills/fire_arrows.png"),
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['buff', 'instant'],
 		reqs = [
 			{code = 'gear_equiped', param = 'geartype', value = 'bow', check = true}
-#			{code = 'stat', stat = 'mp', operant = 'gte', value = 10},
-#			{code = 'has_status', status = 'euphoria', check = false},
 		],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'firearrows'})], 

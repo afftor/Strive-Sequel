@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=2]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/Themes_v2/SimpleBgPanel.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=5]
 [ext_resource path="res://src/scenes/SlaveSelectMenu.gd" type="Script" id=6]
 
 [node name="SlaveSelectMenu" type="Panel"]
@@ -28,6 +29,7 @@ margin_left = 73.0
 margin_top = 45.0
 margin_right = 688.0
 margin_bottom = 829.0
+theme = ExtResource( 5 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 615.0
@@ -37,7 +39,7 @@ size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 614.0
+margin_right = 615.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 0, 70 )
 theme = ExtResource( 1 )

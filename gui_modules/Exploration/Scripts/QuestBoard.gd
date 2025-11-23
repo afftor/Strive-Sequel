@@ -30,11 +30,11 @@ func selectcategory(button):
 
 func selectquest(button):
 	category = button.name
-	for i in $ScrollContainer/VBoxContainer2.get_children():
-		if i == button:
-			i.get_node("Label").add_font_override("font",load("res://assets/Fonts_v2/FontThemes/NOTO_SANS_Bold_24px.tres"))
-		else:
-			i.get_node("Label").add_font_override("font", load("res://assets/Fonts_v2/FontThemes/MainMiddle.tres"))
+#	for i in $ScrollContainer/VBoxContainer2.get_children():
+#		if i == button:
+#			i.get_node("Label").add_font_override("font",load("res://assets/Fonts_v2/FontThemes/NOTO_SANS_Bold_24px.tres"))
+#		else:
+#			i.get_node("Label").add_font_override("font", load("res://assets/Fonts_v2/FontThemes/MainMiddle.tres"))
 
 func _show():
 	quest_board()

@@ -2013,7 +2013,7 @@ var masteries = {
 		maxlevel = 5,
 		passive = {armorpenetration = 2, hitrate = 5, speed = 2, damage_mod_ranged = 0.035},
 		level1 = {combat_skills = ["strafe"], explore_skills = [], traits = [], action = []},
-		level2 = {combat_skills = ["trap"], explore_skills = [], traits = [], action = []},
+		level2 = {combat_skills = ["trap",'firearrows_apply'], explore_skills = [], traits = [], action = []},
 		level3 = {combat_skills = ["ensnare"], explore_skills = [], traits = [], action = []},
 		level4 = {combat_skills = ["bolt_trap"], explore_skills = [], traits = [], action = []},
 		level5 = {combat_skills = ["arrow_hail"], explore_skills = [], traits = [], action = []},

@@ -610,7 +610,7 @@ func make_quest(questcode, input_info):
 	
 	_apply_requirement_items_to_name(data, quest_name)
 
-        #rewards
+		#rewards
 	var loot_processor = Items.get_loot()
 	data.rewards = loot_processor.get_quest_reward(template.rewards, data)
 	if !data.rewards.has('spec_rules'):
@@ -691,7 +691,7 @@ func make_quest(questcode, input_info):
 #			data.rewards.append(reward)
 #	if variables.exp_scroll_quest_reward: data.rewards.append({code = 'usable', item = 'exp_scroll', value = 1})
 #	data.rewards.append({code = 'reputation', value = round(rand_range(template.reputation[0],template.reputation[1]))})
-        return data
+	return data
 
 
 func _apply_requirement_items_to_name(quest_data, base_name):
@@ -707,7 +707,7 @@ func _apply_requirement_items_to_name(quest_data, base_name):
 	if requirement_names.empty():
 		return
 
-	var name_str = ", ").join(requirement_names)
+	var name_str = (", ").join(requirement_names)
 	quest_data.name = "%s: %s" % [base_name, name_str]
 
 

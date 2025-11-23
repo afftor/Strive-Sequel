@@ -1123,8 +1123,6 @@ When consumed normally can apply "Drunk" status, or shift personality towards "S
 	QUESTTASKACQ = "所需任务",
 	REQUIREMENTSARENTMET = "未满足要求",
 	REQUIREMENTSMET = """Requirements are met.""", # MISSING TRANSLATION
-	REQ_HIDE_PRETENDER = """Hide pretenders""", # MISSING TRANSLATION
-	REQ_SHOW_PRETENDER = """Show pretenders""", # MISSING TRANSLATION
 	NOTENOUGHLOYALTY = "不够忠诚",
 	NOTENOUGHMASTERPOINTS = """Not enough Master Points""", # MISSING TRANSLATION
 	QUESTCOMPLETEMESSAGE = "任务完成",

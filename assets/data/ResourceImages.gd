@@ -508,6 +508,7 @@ var scenes = {
 	zephyra_kiss = "res://assets/images/scenes/zephyra_kiss.png",
 	zephyra_painting = "res://assets/images/scenes/Zephyra_painting.png",
 	slave_drink = "res://assets/images/scenes/slave_drink.png",
+	slave_drink2 = "res://assets/images/scenes/slave_drink2.png",
 	
 	lilia_gem = "res://assets/images/scenes/lilia_gem.png",
 	lilia_farewell= "res://assets/images/scenes/lilia_farewell.png",
