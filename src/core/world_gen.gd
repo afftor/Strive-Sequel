@@ -505,7 +505,8 @@ func make_quest(questcode, input_info):
 	data.id = "Q" + str(ResourceScripts.game_progress.questcounter)
 	ResourceScripts.game_progress.questcounter += 1
 	data.code = template.code
-	data.name = tr(template.name)
+	var quest_name = tr(template.name)
+	data.name = quest_name
 	data.descript = tr(template.descript)
 	data.time_limit = round(rand_range(template.time_limit[0], template.time_limit[1]))
 	data.state = 'free'
@@ -607,7 +608,9 @@ func make_quest(questcode, input_info):
 			tempdata.type = tempdata.type[randi()%tempdata.type.size()]
 		requirements_number -= 1
 	
-	#rewards
+	_apply_requirement_items_to_name(data, quest_name)
+
+        #rewards
 	var loot_processor = Items.get_loot()
 	data.rewards = loot_processor.get_quest_reward(template.rewards, data)
 	if !data.rewards.has('spec_rules'):
@@ -688,7 +691,24 @@ func make_quest(questcode, input_info):
 #			data.rewards.append(reward)
 #	if variables.exp_scroll_quest_reward: data.rewards.append({code = 'usable', item = 'exp_scroll', value = 1})
 #	data.rewards.append({code = 'reputation', value = round(rand_range(template.reputation[0],template.reputation[1]))})
-	return data
+        return data
+
+
+func _apply_requirement_items_to_name(quest_data, base_name):
+	var requirement_names = []
+	for req in quest_data.requirements:
+		if req.code == 'random_item':
+			var item_data = Items.itemlist[req.type]
+			var item_name = item_data.name
+			if item_name == "":
+				item_name = req.type.capitalize()
+			requirement_names.append(tr(item_name))
+
+	if requirement_names.empty():
+		return
+
+	var name_str = ", ").join(requirement_names)
+	quest_data.name = "%s: %s" % [base_name, name_str]
 
 
 func make_quest_location(code):
