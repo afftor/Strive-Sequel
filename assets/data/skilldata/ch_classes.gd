@@ -1074,7 +1074,6 @@ var effects = {
 			{type = 'skill', value = ['ability_type', 'eq', 'skill']},
 			{type = 'skill', value = ['target_range', 'eq', 'any']},
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{obj = 'self', func = 'chance', chance = 0.2}
 		],
 		buffs = [],
 		sub_effects = ['burn'],
@@ -1082,7 +1081,8 @@ var effects = {
 			skill = {obj = 'skill', func = 'eq'},
 			caster = {obj = 'caster', func = 'eq'},
 			target = {obj = 'target', func = 'eq'},
-			duration = {obj = 'self', func = 'dur', dur = 2}
+			duration = {obj = 'self', func = 'dur', dur = 2},
+			chance = {obj = 'self', func = 'chance', chance = 0.2}
 		},
 	},
 	e_t_distract = {
