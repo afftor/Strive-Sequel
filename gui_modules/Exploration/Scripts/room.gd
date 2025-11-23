@@ -42,27 +42,38 @@ func update():
 		if data.subrooms[i] == null:
 			continue
 		else:
-			get_node("subroom%d"%(i + 1)).disabled = false
+			var subroom_button = get_node("subroom%d"%(i + 1))
+			subroom_button.disabled = false
+			var subroom_icon = subroom_button.get_node("icon")
+			var resource_label = subroom_button.get_node("ResourceLabel")
+			resource_label.visible = false
+			resource_label.text = ""
 			var sb_text = ""
 			match data.subrooms[i].type:
 				'empty':
-					get_node("subroom%d/icon"%(i + 1)).texture = null
-					get_node("subroom%d"%(i + 1)).disabled = true
+					subroom_icon.texture = null
+					subroom_button.disabled = true
 					sb_text += "Subroom - empty"
 				'event', 'unique_event', 'onetime_event':
-					get_node("subroom%d"%(i + 1)).disabled = false
+					subroom_button.disabled = false
 					var icon = data.subrooms[i].icon
-					get_node("subroom%d/icon"%(i + 1)).texture = images.get_icon(icon)
+					subroom_icon.texture = images.get_icon(icon)
 					sb_text += "Subroom - event\nCost- %d" % data.subrooms[i].stamina_cost
 				'resource', 'resource_survival':
-					get_node("subroom%d"%(i + 1)).disabled = false
-					get_node("subroom%d/icon"%(i + 1)).texture = load("res://assets/Textures_v2/Universal/Icons/icon_resources_pressed.png")
+					subroom_button.disabled = false
+					var can_access_resource = data.status == 'cleared' and data.subrooms[i].challenge == null
+					if can_access_resource and Items.materiallist.has(data.subrooms[i].resource):
+						subroom_icon.texture = Items.materiallist[data.subrooms[i].resource].icon
+						resource_label.visible = true
+						resource_label.text = str(data.subrooms[i].amount)
+					else:
+						subroom_icon.texture = load("res://assets/Textures_v2/Universal/Icons/icon_resources_pressed.png")
 					sb_text += "Subroom - resource\nCost - %d" % data.subrooms[i].stamina_cost
-			globals.connecttexttooltip(get_node("subroom%d"%(i + 1)), sb_text)
-			if data.subrooms[i].challenge != null:
-				get_node("subroom%d/icon"%(i + 1)).modulate = Color(variables.hexcolordict.red)
-			else:
-				get_node("subroom%d/icon"%(i + 1)).modulate = Color(variables.hexcolordict.green)
+		globals.connecttexttooltip(get_node("subroom%d"%(i + 1)), sb_text)
+		if data.subrooms[i].challenge != null:
+			subroom_icon.modulate = Color(variables.hexcolordict.red)
+		else:
+			subroom_icon.modulate = Color(variables.hexcolordict.green)
 	var text = ""
 	match data.status:
 		'cleared':
