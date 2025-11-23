@@ -93,6 +93,16 @@ texture_normal = ExtResource( 25 )
 texture_pressed = ExtResource( 24 )
 texture_hover = ExtResource( 18 )
 
+[node name="quality_color" type="TextureRect" parent="Background/ItemList/VBoxContainer/Button"]
+visible = false
+show_behind_parent = true
+margin_left = 7.0
+margin_top = 6.0
+margin_right = 46.0
+margin_bottom = 45.0
+expand = true
+stretch_mode = 6
+
 [node name="Icon" type="TextureRect" parent="Background/ItemList/VBoxContainer/Button"]
 margin_left = 7.0
 margin_top = 6.0
@@ -221,6 +231,16 @@ texture = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="quality_color" type="TextureRect" parent="ItemInfo/IconFrame"]
+visible = false
+show_behind_parent = true
+margin_left = 8.0
+margin_top = 7.0
+margin_right = 193.0
+margin_bottom = 193.0
+expand = true
+stretch_mode = 6
 
 [node name="Icon" type="TextureRect" parent="ItemInfo/IconFrame"]
 margin_left = 8.0

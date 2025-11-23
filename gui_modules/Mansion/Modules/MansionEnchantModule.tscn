@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_36.tres" type="DynamicFont" id=2]
@@ -40,6 +40,7 @@
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Loot/frame_loot_square.png" type="Texture" id=38]
 [ext_resource path="res://assets/images/gui/inventory/icon_armor1.png" type="Texture" id=39]
 [ext_resource path="res://assets/images/iconsitems/quality_bg/blue.png" type="Texture" id=40]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/search.tres" type="StyleBox" id=41]
 
 [node name="Panel" type="TextureRect"]
 anchor_right = 1.0
@@ -83,9 +84,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -918.0
+margin_left = -925.0
 margin_top = -100.0
-margin_right = -538.0
+margin_right = -545.0
 margin_bottom = -20.0
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 7 )
@@ -99,13 +100,26 @@ custom_fonts/font = ExtResource( 2 )
 text = "Improve gear"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SearchFilter" type="LineEdit" parent="."]
+margin_left = 35.0
+margin_top = 37.0
+margin_right = 669.0
+margin_bottom = 89.0
+custom_fonts/font = ExtResource( 17 )
+custom_styles/normal = ExtResource( 41 )
+placeholder_text = "INVENTORYFILTER"
 
 [node name="ItemList" type="TextureRect" parent="."]
 margin_left = 35.0
-margin_top = 35.0
+margin_top = 114.0
 margin_right = 669.0
 margin_bottom = 963.0
 texture = ExtResource( 13 )
+expand = true
 
 [node name="ItemScroll" type="ScrollContainer" parent="ItemList"]
 anchor_right = 1.0
