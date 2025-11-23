@@ -9,13 +9,15 @@ var req_itembase = null
 
 onready var fuse_list = $EnchantPanel/SelectScroll/Items
 onready var item_list = $ItemList/ItemScroll/Items
+onready var search_filter = $SearchFilter
 
 func _ready():
 	$Back.connect("pressed", self, 'close')
 	$EnchantPanel/Apply.connect('pressed', self, 'apply_selection')
 	$EnchantPanel/reset.connect('pressed', self, 'select_item')
 	$Mode.connect("pressed", self, 'change_mode')
-	
+
+	search_filter.connect("text_changed", self, '_on_search_changed')
 	globals.connecttexttooltip($Tooltip, tr("TOOLTIPIMPROVESCREEN"))
 
 
@@ -40,6 +42,7 @@ func close():
 
 func build_item_list():
 	input_handler.ClearContainer(item_list, ['Button'])
+	var filter_text = search_filter.text
 	for id in ResourceScripts.game_res.items:
 		var item = ResourceScripts.game_res.items[id]
 		if item.type != 'gear':
@@ -49,6 +52,8 @@ func build_item_list():
 		if !Items.fixed_quality_stats.has(item.itembase):
 			continue
 		if item.quality == 'legendary':
+			continue
+		if !_item_matches_filter(item, filter_text):
 			continue
 		var panel = input_handler.DuplicateContainerTemplate(item_list, 'Button')
 		panel.connect('pressed', self, 'select_item', [id])
@@ -64,6 +69,8 @@ func build_item_list():
 		if !item.tags.has('recipe'):
 			continue
 		if item.quality == 'legendary':
+			continue
+		if !_item_matches_filter(item, filter_text):
 			continue
 		var panel = input_handler.DuplicateContainerTemplate(item_list, 'Button')
 		panel.connect('pressed', self, 'select_item', [id])
@@ -130,6 +137,7 @@ func build_item():
 
 func build_fuse_list():
 	input_handler.ClearContainer(fuse_list, ['Button'])
+	var filter_text = search_filter.text
 	for id in ResourceScripts.game_res.items:
 		var item = ResourceScripts.game_res.items[id]
 		if item.type != 'gear':
@@ -139,6 +147,8 @@ func build_fuse_list():
 		if item.quality != req_quality:
 			continue
 		if req_itembase != null and item.geartype != req_itembase:
+			continue
+		if !_item_matches_filter(item, filter_text):
 			continue
 		var panel = input_handler.DuplicateContainerTemplate(fuse_list, 'Button')
 		panel.connect('pressed', self, 'select_fuse_item', [id])
@@ -261,3 +271,22 @@ func change_mode():
 	hide()
 	get_parent().update()
 	get_parent().select_category('enchant')
+
+
+func _on_search_changed(_new_text):
+	build_item_list()
+	build_fuse_list()
+
+
+func _item_matches_filter(item, filter_text):
+	filter_text = filter_text.strip_edges()
+	if filter_text == "":
+		return true
+	filter_text = filter_text.to_lower()
+	if item.name.to_lower().find(filter_text) >= 0:
+		return true
+	if typeof(item.description) == TYPE_STRING and item.description.to_lower().find(filter_text) >= 0:
+		return true
+	if typeof(item.itembase) == TYPE_STRING and item.itembase.to_lower().find(filter_text) >= 0:
+		return true
+	return false
