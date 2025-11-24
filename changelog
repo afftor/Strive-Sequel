@@ -6,8 +6,11 @@ Added dropdown menu on rightclick to characters and improved occupation menu beh
 Added search bar to enchant and gear improvement modules
 Renamed Nobody fame level to Stranger
 Weapons now have minimum mastery requirements necessary to equip them
+Master trait Communicative now gives +3 persuasion check and +2 leadership mastery instead of +1 social skill charges.
+Master trait Progenecy now gives for all offspring 50% chance for each Factor to be increased by 1
 Fixed Wind Blade attacking same target every time
 Fixed multiple places missing item color quality background
+Fixed beverages not being sacrificable at the altars
 0.13.2a
 Fixed multiple issues with Heleviel's quest
 Fixed some repeatable quests not properly giving out their reward

@@ -188,7 +188,7 @@ var TranslationDict = {
 	SIBLINGMODULEAVAILABLE = "Доступно",
 	SIBLINGMODULEAVAILABLETOOLTIP = "Количество доступных дополнительных тренировок зависит от Фактора Роста.",
 	SIBLINGMODULETHRALLLIST = """Приспешники""",
-	FAILALREADYSUCCUBUS = """Can't use corruptive essence on Thralls or Succubi""", # MISSING TRANSLATION
+	FAILALREADYSUCCUBUS = "Нельзя использовать разврвщающую эссенцию на приспешниках или суккубах",
 	MINORTRAINMAXREACHED = "Достигнут максимум дополнительных тренировок",
 	SYSMESSAGEATLEAST1CHAR = """Выберите хотя бы 1 персонажа для боя.""",
 	OPERANTATLEAST = """Минимум""",
@@ -328,6 +328,7 @@ var TranslationDict = {
 	FACTORDESCRIPTS5 = """Отлично""",
 	FACTORDESCRIPTS6 = """Шикарно""",
 	REQORHIGHER = """или выше""",
+	REQANY = "есть",
 	REQORLOWER = """или ниже""",
 	REQHASCLASS = """Нужен класс""",
 	REQCONFLICTCLASS = """Конфликтующий класс""",
@@ -343,7 +344,6 @@ var TranslationDict = {
 	REQSEX = """Не разрешено для""",
 	REQVIRGINFALSE = """Не девственник/ца""",
 	REQOR = """или""",
-	REQANY = """has any""", # MISSING TRANSLATION
 	SLAVE = """Раб""",
 	MASTER = """Мастер""",
 	PEON = """Подчиненный""",
@@ -370,7 +370,11 @@ var TranslationDict = {
 [color=aqua]У наследника Повиновение истощается на 50% медленнее, а Верность растет на 50% быстрее. Наследник имеет 20% штраф к заданиям сбора, земледелия и рыбалки.[/color]""",
 	CHARTYPESPOUSEDESCRIPT = """Супруг/а [Master]а особняка. Не обладая никакими выдающимися качествами, дети [Master]а и супруга/и получают статус Наследника и могут быть направлены на специальное обучение, пока растут.""",
 	CHARTYPESLAVE_TRAINEDDESCRIPT = """Этот тип рабов закончил свое обучение и принял свою новую судьбу как должное. Они больше не нуждаются в приставленном к ним тренере. """,	
-	MSLMCONTEXT_OPEN = """Open""", # MISSING TRANSLATION
+	MSLMCONTEXT_OPEN = """Open Info""", # MISSING TRANSLATION
+	MSLMCONTEXT_OPEN_CLASS_TAB = """  Classes""", # MISSING TRANSLATION
+	MSLMCONTEXT_OPEN_SIBLINGS_TAB = """  Trainings""", # MISSING TRANSLATION
+	MSLMCONTEXT_OPEN_CUSTOMIZATION_TAB = """  Customization""", # MISSING TRANSLATION
+	MSLMCONTEXT_OPEN_OCCUPATION = """Occupation""", # MISSING TRANSLATION
 	MSLMCONTEXT_INVENTORY = """Inventory""", # MISSING TRANSLATION
 	SLAVEINFOMODULEOBEDIENCE = """Повиновение""",
 	SIMRESIST = """Сопротивление""",
@@ -644,8 +648,8 @@ var TranslationDict = {
 	MATERIALDRACONIC_SCALESDESCRIPT = """Драконьи элементы используются как из-за своей красоты, так и из-за превосходного качества.""",
 	MATERIALHERBS = """ """,
 	MATERIALHERBSDESCRIPT = """ """,
-	MATERIALVESPERINE_CAGE = """Vesperine Cage""", # MISSING TRANSLATION
-	MATERIALVESPERINE_CAGEDESCRIPT = """An ancient device of unknown purpose.""", # MISSING TRANSLATION
+	MATERIALVESPERINE_CAGE = "Клетка Весперин",
+	MATERIALVESPERINE_CAGEDESCRIPT = "Древнее устройство неизвестного назначения.",
 	MATERIALINK_TRIBAL = """Чернила: Сила""",
 	MATERIALINK_BRANDINGDESCRIPT = """Набор инструментов и чернил, позволяющий нанести на предмет определенную магическую подпись. Первоначально применялось пастухами и укротителями, затем клеймо было принято рабовладельческими обществами для установления господства над завоеванными людьми. Татуировки не столь болезненны в нанесении, но, тем не менее, столь же унизительны: на них изображено имя владельца..
 
@@ -758,7 +762,7 @@ var TranslationDict = {
 
 При обычном употреблении может наложить статус \"Опьянение\" или сместить личность в сторону 'Застенчивый'. Повышает возбудимость и чувствительность во время секса.""",
 	ITEMCORRUPTIVE_ESSENCE = """Развращающая эссенция""",
-	ITEMCORRUPTIVE_ESSENCEDESCRIPT = """Превращает использующего в суккуба/инкуба.""",
+	ITEMCORRUPTIVE_ESSENCEDESCRIPT = """Магическая эссенция из неизвестного источника. Поглощение позволяет получить необычные способности.""",
 	ITEMTAMEDRUG = """Наркотик приручения""",
 	ITEMTAMEDRUGDESCRIPT = """Фактор приручения +1-2. Фактор робости +1-2. Фактор мудрости -1.""",
 	ITEMRAGEDRUG = """Наркотик ярости""",
@@ -1179,9 +1183,9 @@ Hotkey: 3""",
 	QUESTREPUTATION = """Репутация""",
 	QUESTTASKACQ = """Задание получено""",
 	REQUIREMENTSARENTMET = """Требования не выполнены""",
-	REQUIREMENTSMET = """Requirements are met.""", # MISSING TRANSLATION
-	REQ_HIDE_PRETENDER = """Hide pretenders""", # MISSING TRANSLATION
-	REQ_SHOW_PRETENDER = """Show pretenders""", # MISSING TRANSLATION
+	REQUIREMENTSMET = "Требования выполнены.",
+	REQ_HIDE_PRETENDER = "Скрыть претендентов",
+	REQ_SHOW_PRETENDER = "Показать претендентов",
 	NOTENOUGHLOYALTY = """Недостаточно верности""",
 	NOTENOUGHMASTERPOINTS = "Недостаточно очков Мастера",
 	QUESTCOMPLETEMESSAGE = """Квест завершен""",
@@ -1540,19 +1544,19 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATMASTERY_EARTH = """Мастерство: Земля""",
 	STATMASTERY_LIGHT = """Мастерство: Свет""",
 	STATMASTERY_DARK = """Мастерство: Тьма""",
-	STATMASTERY_MIND = """Мастерство: Разум""",	
-	STATMASTERY_WARFAREDESCRIPT = """Overall points invested in Mastery of Warfare""", # MISSING TRANSLATION
-	STATMASTERY_PROTECTIONDESCRIPT = """Overall points invested in Mastery of Protection""", # MISSING TRANSLATION
-	STATMASTERY_STEALTHDESCRIPT = """Overall points invested in Mastery of Stealth""", # MISSING TRANSLATION
-	STATMASTERY_MARKSMANSHIPDESCRIPT = """Overall points invested in Mastery of Marksmanship""", # MISSING TRANSLATION
-	STATMASTERY_LEADERSHIPDESCRIPT = """Overall points invested in Mastery of Leadership""", # MISSING TRANSLATION
-	STATMASTERY_FIREDESCRIPT = """Overall points invested in Mastery of Fire""", # MISSING TRANSLATION
-	STATMASTERY_WATERDESCRIPT = """Overall points invested in Mastery of Water""", # MISSING TRANSLATION
-	STATMASTERY_AIRDESCRIPT = """Overall points invested in Mastery of Air""", # MISSING TRANSLATION
-	STATMASTERY_EARTHDESCRIPT = """Overall points invested in Mastery of Earth""", # MISSING TRANSLATION
-	STATMASTERY_LIGHTDESCRIPT = """Overall points invested in Mastery of Light""", # MISSING TRANSLATION
-	STATMASTERY_DARKDESCRIPT = """Overall points invested in Mastery of Dark""", # MISSING TRANSLATION
-	STATMASTERY_MINDDESCRIPT = """Overall points invested in Mastery of Mind""", # MISSING TRANSLATION
+	STATMASTERY_MIND = """Мастерство: Разум""",
+	STATMASTERY_WARFAREDESCRIPT = "Всего очков вложено в Мастерство войны",
+	STATMASTERY_PROTECTIONDESCRIPT = "Всего очков вложено в Мастерство защиты",
+	STATMASTERY_STEALTHDESCRIPT = "Всего очков вложено в Мастерство скрытности",
+	STATMASTERY_MARKSMANSHIPDESCRIPT = "Всего очков вложено в Мастерство стрельбы",
+	STATMASTERY_LEADERSHIPDESCRIPT = "Всего очков вложено в Мастерство лидерства",
+	STATMASTERY_FIREDESCRIPT = "Всего очков вложено в Мастерство огня",
+	STATMASTERY_WATERDESCRIPT = "Всего очков вложено в Мастерство воды",
+	STATMASTERY_AIRDESCRIPT = "Всего очков вложено в Мастерство воздуха",
+	STATMASTERY_EARTHDESCRIPT = "Всего очков вложено в Мастерство земли",
+	STATMASTERY_LIGHTDESCRIPT = "Всего очков вложено в Мастерство света",
+	STATMASTERY_DARKDESCRIPT = "Всего очков вложено в Мастерство тьмы",
+	STATMASTERY_MINDDESCRIPT = "Всего очков вложено в Мастерство разума",
 	ADD_MASTERY_CONFIRM = """Потратить [color=yellow]специализированное[/color] очко мастерства на апгрейд?""",
 	ADD_MASTERY_CONFIRM_UNIVERSAL = """Потратить [color=yellow]универсальное[/color] очко мастерства на повышение уровня?""",		
 	STATMASTERY_POINT_MAGIC = """Очко магического мастерства""",
@@ -1763,7 +1767,8 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	TASKPRODUCEDESCRIPT = """Назначен производить материалы""",
 
 	TASKSPECIALDESCRIPT = """ """,
-	SEXSELECT_INTERACTIONS = """Sex interactions: %s/%s""", # MISSING TRANSLATION
+	SEXSELECT_INTERACTIONS = """Interactions left this week: %s/%s""", # MISSING TRANSLATION
+	SEXSELECT_MISSING_TRAITS = """[name] has not given [his] full consent for sex yet, this interaction will be more stressful for [him]. """, # MISSING TRANSLATION
 
 	
 	BEDROOMTOOLTIP = """Доступное количество персонажей для сексуальных взаимодействий. Увеличивается при улучшении спальни""",
@@ -1946,8 +1951,8 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATTAUNT = "",
 	STATDAMAGETYPE = "",
 	STATWEAPON_ELEMENT = "",
-	STATDAMAGE_REDUCTION = "",
-	STATDAMAGE_REDUCTIONDESCRIPT = """Damage Reduction""", # MISSING TRANSLATION
+	STATDAMAGE_REDUCTION = "Снижение урона",
+	STATDAMAGE_REDUCTIONDESCRIPT = "Снижение урона",
 	STATBURN_MOD = "",
 	STATBLEED_MOD = "",
 	STATPOISON_MOD = "",
@@ -1975,8 +1980,8 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATLOOTTABLE = "",
 	STATPRICE_ADD_PART = "",
 	STATPRICE_ADD = "",
-	STATBASE_TASK_CRIT_CHANCE = "",
-	STATBASE_TASK_CRIT_CHANCEDESCRIPT = """Base chance of critical success at tasks""", # MISSING TRANSLATION
+	STATBASE_TASK_CRIT_CHANCE = "Шанс крит. успеха",
+	STATBASE_TASK_CRIT_CHANCEDESCRIPT = "Базовый шанс крит. успеха при выполнении поручений",
 	STATPENIS_VIRGIN_LOST = "",
 	STATVAGINAL_VIRGIN_LOST = "",
 	STATANAL_VIRGIN_LOST = "",
@@ -2160,7 +2165,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATENERGY = """Энергия""",
 	STATENERGYDESCRIPT = """Энергия восстанавливается во время сна и требуется для выполнения заданий. Когда персонаж вынужден работать без остатка энергии, он накапливает Истощение.""",
 	STATHPMAX = """Макс. Здоровье""",
-	STATHPMAXDESCRIPT = """Maximal Health""", # MISSING TRANSLATION
+	STATHPMAXDESCRIPT = "Максимальное Здоровье",
 	STATHPFACTOR = """Фактор здоровья""",
 	STATHPFACTORDESCRIPT = """Определяет бонусы к здоровью, получаемые большинством способов. Высокий коэффициент здоровья может значительно повысить выживаемость.""",
 	STATHP_REG_MOD = """Фактор исцеления""",
@@ -2173,7 +2178,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATMP = """Мана""",
 	STATMPDESCRIPT = """Мана используется для создания заклинаний и использования некоторых способностей.""",
 	STATMPMAX = """Макс. Мана""",
-	STATMPMAXDESCRIPT = """Maximal Mana""", # MISSING TRANSLATION
+	STATMPMAXDESCRIPT = "Максимальная мана",
 	STATMPMAXMOD = """Макс. Мана""",
 	STATHITRATE = """Точность""",
 	STATHITRATEDESCRIPT = """Шанс поразить противника. Уменьшается уворотом цели.""",
@@ -2203,9 +2208,8 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATMODRANGED = """Урон в дальн. бою.""",
 	STATDAMAGE_MOD_SKILL = """Физический урон""",
 	STATDAMAGE_MOD_HEAL = "Бонус к лечению",
-	STATDAMAGE_MOD_SKILLDESCRIPT = """Modifies Physical Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_HEALDESCRIPT = """Modifies Healing efficiency""", # MISSING TRANSLATION
-
+	STATDAMAGE_MOD_SKILLDESCRIPT = "Изменяет физический урон",
+	STATDAMAGE_MOD_HEALDESCRIPT = "Изменяет эффективность лечения",
 	STATFATIGUE = """Усталость""",
 	STATEXHAUSTION = """Истощение""",
 	STATFATIGUEDESCRIPT = """Психическая усталость персонажа. Усталость снижает производительность. Восстанавливается при сосредоточении на Развлечениях.""",
@@ -2226,8 +2230,8 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATCHARMDESCRIPT = """Обаяние представляет собой привлекательность и внешний вид персонажа. Высокое Обаяние делает социально ориентированные работы и навыки гораздо более эффективными. Растет от использования социальных способностей.""",
 	STATSEXUALSDESCRIPT = """Сексуальное мастерство представляет собой навыки персонажа в телесных удовольствиях. Оно рассчитывается по сумме трех наивысших сексуальных навыков и влияет на определенные задачи и способности.""",
 
-	STATGROWTH_FACTOR = """Фактор роста""",
-	STATGROWTH_FACTOR_FULLNAME = """Growth Factor""", # MISSING TRANSLATION
+	STATGROWTH_FACTOR = """Рост""",
+	STATGROWTH_FACTOR_FULLNAME = "Фактор роста",
 	STATMAGIC_FACTOR = """Магический фактор""",
 	STATPHYSICS_FACTOR = """Физический фактор""",
 	STATWITS_FACTOR = """Фактор мудрости""",
@@ -2235,7 +2239,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATSEXUALS_FACTOR = """Сексуальный фактор""",
 	STATTAME_FACTOR = """Фактор приручения""",
 	STATAUTHORITY_FACTOR = """Фактор авторитета""",
-	STATFACTOR = """Factor""", # MISSING TRANSLATION
+	STATFACTOR = "Фактор",
 	STATSLAVE_CLASS = """Тип""",
 
 	STATPHYSICS_BONUS = """Физ. возмож.""",
@@ -2247,11 +2251,11 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATTRAINING_SPIRIT = """Дух от обучения""",
 	STATRESISTANCE_RED = "Скорость падения сопротивления",
 	STATTRAINER_LOYALTY_BONUS = "Верность обучаемого",
-	STATTRAINING_LOYALTYDESCRIPT = """Loyalty bonus gained by this character from Training""", # MISSING TRANSLATION
-	STATTRAINING_SPIRITDESCRIPT = """Adjustment for Spirit decline during Training""", # MISSING TRANSLATION
-	STATRESISTANCE_REDDESCRIPT = """Speed of slave's Resistance droping with time""", # MISSING TRANSLATION
-	STATTRAINER_LOYALTY_BONUSDESCRIPT = """Loyalty bonus received by this character's trainee""", # MISSING TRANSLATION
-	STATTRAINEE_AMOUNTDESCRIPT = """Maximal number of trainee""", # MISSING TRANSLATION
+	STATTRAINING_LOYALTYDESCRIPT = "Бонус верности, получаемый этим персонажем от тренировок",
+	STATTRAINING_SPIRITDESCRIPT = "Корректировка снижения духа во время тренировок",
+	STATRESISTANCE_REDDESCRIPT = "Скорость снижения сопротивления раба со временем",
+	STATTRAINER_LOYALTY_BONUSDESCRIPT = "Бонус верности, получаемый учеником этого персонажа",
+	STATTRAINEE_AMOUNTDESCRIPT = "Maximal number of trainee",
 	TRAITTRAINER = """Тренер""",
 	TRAITTRAINERDESCRIPT = """Может наблюдать за рабами""",
 	STATSPIRIT = """Дух""",
@@ -2287,8 +2291,7 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATCONSENTDESCRIPT = """Влияет на согласие на действия во время сексуального взаимодействия. Каждое действие имеет разное согласие в зависимости от черт характера, партнеров и других факторов. Это число отражает только неизменное значение. Базовое согласие увеличивается при положительных результатах, попытках новых действий и партнеров. Также немного увеличивается от навыков дисциплины.""",
 	
 	STATEXP_GAIN_MOD = """Бонус к опыту""",
-	STATEXP_GAIN_MODDESCRIPT = """Modifies Experience gaining""", # MISSING TRANSLATION
-	
+	STATEXP_GAIN_MODDESCRIPT = "Изменяет получение опыта",	
 	STATLOYALTY_GAIN_MOD = """Прирост верности""",
 	STATLOYALTY_GAIN = """Прирост верности""",
 	STATLUSTTICK = """Прирост похоти""",
@@ -2310,23 +2313,22 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATMOD_HOSTESS = """Доход хостесс""",
 	STATMOD_DANCER = """Доход танцовщицы""",
 	STATMOD_STRIP = """Доход от стриптиза""",
-	STATMOD_BUILDDESCRIPT = """Modifies Upgrading effciency""", # MISSING TRANSLATION
-	STATMOD_COLLECTDESCRIPT = """Modifies Collection effciency""", # MISSING TRANSLATION
-	STATMOD_HUNTDESCRIPT = """Modifies Hunt effciency""", # MISSING TRANSLATION
-	STATMOD_FISHDESCRIPT = """Modifies Fish effciency""", # MISSING TRANSLATION
-	STATMOD_COOKDESCRIPT = """Modifies Cook effciency""", # MISSING TRANSLATION
-	STATMOD_SMITHDESCRIPT = """Modifies Smith effciency""", # MISSING TRANSLATION
-	STATMOD_TAILORDESCRIPT = """Modifies Tailor effciency""", # MISSING TRANSLATION
-	STATMOD_ALCHEMYDESCRIPT = """Modifies Alchemy effciency""", # MISSING TRANSLATION
-	STATMOD_FARMDESCRIPT = """Modifies Farming effciency""", # MISSING TRANSLATION
-	STATMOD_SERVICEDESCRIPT = """Modifies Service effciency""", # MISSING TRANSLATION
-	STATMOD_PROSDESCRIPT = """Modifies Sex Service effciency""", # MISSING TRANSLATION
-	STATMOD_TASK_EFFICIECNYDESCRIPT = """Modifies Task Effciency""", # MISSING TRANSLATION
-	STATMOD_WAITRESSDESCRIPT = """Modifies Waitress Income""", # MISSING TRANSLATION
-	STATMOD_HOSTESSDESCRIPT = """Modifies Hostess Income""", # MISSING TRANSLATION
-	STATMOD_DANCERDESCRIPT = """Modifies Dancer Income""", # MISSING TRANSLATION
-	STATMOD_STRIPDESCRIPT = """Modifies Stripper Income""", # MISSING TRANSLATION
-
+	STATMOD_BUILDDESCRIPT = "Изменяет эффективность строительства",
+	STATMOD_COLLECTDESCRIPT = "Изменяет эффективность собирательства",
+	STATMOD_HUNTDESCRIPT = "Изменяет эффективность охоты",
+	STATMOD_FISHDESCRIPT = "Изменяет эффективность рыбалки",
+	STATMOD_COOKDESCRIPT = "Изменяет эффективность готовки",
+	STATMOD_SMITHDESCRIPT = "Изменяет эффективность кузнечного дела",
+	STATMOD_TAILORDESCRIPT = "Изменяет эффективность портняжного дела",
+	STATMOD_ALCHEMYDESCRIPT = "Изменяет эффективность алхимии",
+	STATMOD_FARMDESCRIPT = "Изменяет эффективность фермерства",
+	STATMOD_SERVICEDESCRIPT = "Изменяет эффективность обслуживания",
+	STATMOD_PROSDESCRIPT = "Изменяет эффективность секс-услуг",
+	STATMOD_TASK_EFFICIECNYDESCRIPT = "Изменяет эффективность поручений",
+	STATMOD_WAITRESSDESCRIPT = "Изменяет доход  от работы официанткой",
+	STATMOD_HOSTESSDESCRIPT = "Изменяет доход  от работы хостес",
+	STATMOD_DANCERDESCRIPT = "Изменяет доход  от работы танцовщицей",
+	STATMOD_STRIPDESCRIPT = "Изменяет доход от работы стриптизёршей",
 	STATRESIST_NORMAL = """Обычное сопр.""",
 	STATRESIST_FIRE = """Сопр. огню""",
 	STATRESIST_AIR = """Сопр. воздуху""",
@@ -2335,50 +2337,51 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	STATRESIST_LIGHT = """Сопр. свету""",
 	STATRESIST_DARK = """Сопр. тьме""",
 	STATRESIST_MIND = """Сопр. разуму""",
-	STATRESIST_AOE = """Area Resist""", # MISSING TRANSLATION
-	STATRESIST_BLEED = """Bleed Resist""", # MISSING TRANSLATION
-	STATRESIST_BLIND = """Blind Resist""", # MISSING TRANSLATION
-	STATRESIST_BURN = """Burn Resist""", # MISSING TRANSLATION
-	STATRESIST_CONFUSE = """Confuse Resist""", # MISSING TRANSLATION
-	STATRESIST_CURSED = """Curse Resist""", # MISSING TRANSLATION
-	STATRESIST_DISARM = """Disarm Resist""", # MISSING TRANSLATION
-	STATRESIST_FEAR = """Fear Resist""", # MISSING TRANSLATION
-	STATRESIST_FREEZE = """Freeze Resist""", # MISSING TRANSLATION
-	STATRESIST_HEAL = """Heal Resist""", # MISSING TRANSLATION
-	STATRESIST_MELEE = """Melee Resist""", # MISSING TRANSLATION
-	STATRESIST_POISON = """Poison Resist""", # MISSING TRANSLATION
-	STATRESIST_RANGED = """Ranged Resist""", # MISSING TRANSLATION
-	STATRESIST_SHOCK = """Shock Resist""", # MISSING TRANSLATION
-	STATRESIST_SILENCE = """Silence Resist""", # MISSING TRANSLATION
-	STATRESIST_SLEEP = """Sleep Resist""", # MISSING TRANSLATION
-	STATRESIST_STUN = """Stun Resist""", # MISSING TRANSLATION
-	STATRESIST_WET = """Wet Resist""", # MISSING TRANSLATION
-	STATRESIST_NORMALDESCRIPT = """Resistance to Normal damage""", # MISSING TRANSLATION
-	STATRESIST_FIREDESCRIPT = """Resistance to Fire damage""", # MISSING TRANSLATION
-	STATRESIST_AIRDESCRIPT = """Resistance to Air damage""", # MISSING TRANSLATION
-	STATRESIST_EARTHDESCRIPT = """Resistance to Earth damage""", # MISSING TRANSLATION
-	STATRESIST_WATERDESCRIPT = """Resistance to Water damage""", # MISSING TRANSLATION
-	STATRESIST_LIGHTDESCRIPT = """Resistance to Light damage""", # MISSING TRANSLATION
-	STATRESIST_DARKDESCRIPT = """Resistance to Dark damage""", # MISSING TRANSLATION
-	STATRESIST_MINDDESCRIPT = """Resistance to Mind damage""", # MISSING TRANSLATION
-	STATRESIST_AOEDESCRIPT = """Resistance to Area damage""", # MISSING TRANSLATION
-	STATRESIST_BLEEDDESCRIPT = """Resistance to Bleed effect""", # MISSING TRANSLATION
-	STATRESIST_BLINDDESCRIPT = """Resistance to Blind effect""", # MISSING TRANSLATION
-	STATRESIST_BURNDESCRIPT = """Resistance to Burn effect""", # MISSING TRANSLATION
-	STATRESIST_CONFUSEDESCRIPT = """Resistance to Confuse effect""", # MISSING TRANSLATION
+	STATRESIST_AOE = "Сопротивление урону по области",
+	STATRESIST_BLEED = "Сопротивление кровотечению",
+	STATRESIST_BLIND = "Сопротивление ослеплению",
+	STATRESIST_BURN = "Сопротивление горению",
+	STATRESIST_CONFUSE = "Сопротивление замешательству",
+	STATRESIST_CURSED = "Сопротивление проклятию",
+	STATRESIST_DISARM = "Сопротивление обезоруживанию",
+	STATRESIST_FEAR = "Сопротивление страху",
+	STATRESIST_FREEZE = "Сопротивление заморозке",
+	STATRESIST_HEAL = "Сопротивление лечению",
+	STATRESIST_MELEE = "Сопротивление ближнему бою",
+	STATRESIST_POISON = "Сопротивление яду",
+	STATRESIST_RANGED = "Сопротивление дальнему бою",
+	STATRESIST_SHOCK = "Сопротивление шоку",
+	STATRESIST_SILENCE = "Сопротивление немоте",
+	STATRESIST_SLEEP = "Сопротивление сну",
+	STATRESIST_STUN = "Сопротивление оглушению",
+	STATRESIST_WET = "Сопротивление намоканию",
+	STATRESIST_NORMALDESCRIPT = "Сопротивление обычному урону",
+	STATRESIST_FIREDESCRIPT = "Сопротивление огненному урону",
+	STATRESIST_AIRDESCRIPT = "Сопротивление воздушному урону",
+	STATRESIST_EARTHDESCRIPT = "Сопротивление земляному урону",
+	STATRESIST_WATERDESCRIPT = "Сопротивление водному урону",
+	STATRESIST_LIGHTDESCRIPT = "Сопротивление световому урону",
+	STATRESIST_DARKDESCRIPT = "Сопротивление тёмному урону",
+	STATRESIST_MINDDESCRIPT = "Сопротивление урону по разуму",
+	STATRESIST_AOEDESCRIPT = "Сопротивление урону по области",
+	STATRESIST_BLEEDDESCRIPT = "Сопротивление эффекту кровотечения",
+	STATRESIST_BLINDDESCRIPT = "Сопротивление эффекту ослепления",
+	STATRESIST_BURNDESCRIPT = "Сопротивление эффекту горения",
+	STATRESIST_CONFUSEDESCRIPT = "Сопротивление эффекту замешательства",
 	STATRESIST_CURSEDDESCRIPT = """Resistance to Curse effect""", # MISSING TRANSLATION
-	STATRESIST_DISARMDESCRIPT = """Resistance to Disarm effect""", # MISSING TRANSLATION
-	STATRESIST_FEARDESCRIPT = """Resistance to Fear effect""", # MISSING TRANSLATION
-	STATRESIST_FREEZEDESCRIPT = """Resistance to Freeze effect""", # MISSING TRANSLATION
-	STATRESIST_HEALDESCRIPT = """Resistance to Heal effect""", # MISSING TRANSLATION
-	STATRESIST_MELEEDESCRIPT = """Resistance to Melee damage""", # MISSING TRANSLATION
-	STATRESIST_POISONDESCRIPT = """Resistance to Poison effect""", # MISSING TRANSLATION
-	STATRESIST_RANGEDDESCRIPT = """Resistance to Ranged damage""", # MISSING TRANSLATION
-	STATRESIST_SHOCKDESCRIPT = """Resistance to Shock effect""", # MISSING TRANSLATION
-	STATRESIST_SILENCEDESCRIPT = """Resistance to Silence effect""", # MISSING TRANSLATION
-	STATRESIST_SLEEPDESCRIPT = """Resistance to Sleep effect""", # MISSING TRANSLATION
-	STATRESIST_STUNDESCRIPT = """Resistance to Stun effect""", # MISSING TRANSLATION
-	STATRESIST_WETDESCRIPT = """Resistance to Wet effect""", # MISSING TRANSLATION
+	STATRESIST_CURSEDESCRIPT = "Сопротивление эффекту проклятия",
+	STATRESIST_DISARMDESCRIPT = "Сопротивление эффекту обезоруживания",
+	STATRESIST_FEARDESCRIPT = "Сопротивление эффекту страха",
+	STATRESIST_FREEZEDESCRIPT = "Сопротивление эффекту заморозки",
+	STATRESIST_HEALDESCRIPT = "Сопротивление эффекту лечения",
+	STATRESIST_MELEEDESCRIPT = "Сопротивление урону в ближнем бою",
+	STATRESIST_POISONDESCRIPT = "Сопротивление эффекту отравления",
+	STATRESIST_RANGEDDESCRIPT = "Сопротивление урону в дальнем бою",
+	STATRESIST_SHOCKDESCRIPT = "Сопротивление эффекту шока",
+	STATRESIST_SILENCEDESCRIPT = "Сопротивление эффекту немоты",
+	STATRESIST_SLEEPDESCRIPT = "Сопротивление эффекту сна",
+	STATRESIST_STUNDESCRIPT = "Сопротивление эффекту оглушения",
+	STATRESIST_WETDESCRIPT = "Сопротивление эффекту намокания",
 	
 	STATENCHANT_CAPACITY_MOD = """Вместимость зачарований""",
 	STATENCHANT_CAPACITY = """Вместимость зачарований""",
@@ -2440,9 +2443,9 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	FAME_DEGRADE_MANIFEST = "Слава уменьшилась! Теперь [he] - %s.",
 	TAGSTABLE_FAME = "Устойчивая слава: Известность не уменьшается со временем.",
 	FAMEDESC_PRICE_BONUS = "Ценность персонажа",
-	FAMEDESC_UPKEEP = 'Еженедельное содержание подчинённого',
-	FAMEDESC_LOYALTY_BONUS = 'Верность от обучения',
-	FAMEDESC_RECRUIT_BONUS = 'Эффективность найма',
+	FAMEDESC_UPKEEP = "Еженедельное содержание подчинённого",
+	FAMEDESC_LOYALTY_BONUS = "Верность от обучения",
+	FAMEDESC_RECRUIT_BONUS = "Эффективность найма",
 	PRICEDESC_TRAITS_POS = "Положительные черты",
 	PRICEDESC_TRAITS_NEG = "Отрицательные черты",
 	PRICEDESC_CUMULATIVE = "Совокупный бонус от %s",
@@ -2810,32 +2813,36 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 Приводит в исполнение приговор выбранного персонажа. Значительно улучшает Повиновение всех участников. 
 Основные эффекты: 
 Верность: +25, максимальное Повиновение.""",
-	SKILLENTHRALL = """Очаровать""",
-	SKILLENTHRALLDESCRIPT = """Очаровать персонажа""",
-	DIALOGUEENTHRALLREPORT = """Персонаж очарован""",
-	DIALOGUEENTHRALLREPORT_FAILED = """Персонаж сопротивился подчинению""",
-	SKILLRELEASE_THRALL = """Освободить приспешника""",
-	SKILLRELEASE_THRALLDESCRIPT = """Освободить очарованного персонажа""",
-	DIALOGUERELEASE_THRALLREPORT = """Персонаж больше не очарован""",
-	SKILLCORRUPT = """Развращать""",
-	SKILLCORRUPTDESCRIPT = """Попытаться повысить согласие персонажа. Всегда срабатывает на приспешниках.""",
-	DIALOGUECORRUPTREPORT = """Согласие увеличено""",
-	DIALOGUECORRUPTREPORT_FAILED = """Суккубу не удалось повысить согласие""",
-	SKILLALLURE = """Очаровать""",
-	SKILLALLUREDESCRIPT = """Соблазняет цель, повышая её Лояльность и уменьшая Сопротивление. Действует только на ваших приспешников.""",
-	DIALOGUEALLUREREPORT = "[name] использовал [his] силы, чтобы повлиять на [targetname], обещая невообразимое наслаждение.",
-	SKILLTURN_SUCCUBUS = "Превратить в суккуба",
-	SKILLTURN_SUCCUBUSDESCRIPT = """Превращает вашего приспешника в суккуба (или инкуба) на постоянной основе. Цель должна иметь уровень Согласия не ниже 'Извращённый'.""",
+	SKILLENTHRALL = "Порабощение",
+	SKILLENTHRALLDESCRIPT = "Выберите персонажа, чтобы превратить его в Приспешника заклинателя. Каждый Приспешник увеличивает максимальную Похоть, регенерацию Похоти и даёт очки разблокировки.",
+	DIALOGUEENTHRALLREPORT = "[targetname] был успешно порабощён [name]. [targetname] чувствует себя полностью очарованным.",
+	DIALOGUEENTHRALLREPORT_FAILED = "[targetname] удалось противостоять чарам [name].",
+	SKILLRELEASE_THRALL = "Освободить Приспешника",
+	SKILLRELEASE_THRALLDESCRIPT = "Снять статус Приспешника с персонажа. Это разочарует его и может вызвать срыв.",
+	DIALOGUERELEASE_THRALLREPORT = """С ослаблением влияния [name] над [targetname], [targethe] больше не является порабощённым...
+
+{color=yellow|Их отношения сильно испортились}""",
+	SKILLCORRUPT = "Развращение",
+	SKILLCORRUPTDESCRIPT = "Используйте магию похоти, чтобы развратить разум индивидуума, делая его более любопытным в сексуальном плане и увеличивая его Согласие. Шанс зависит от Сексуального Фактора, но гарантированно работает на Приспешниках.",
+	DIALOGUECORRUPTREPORT = "Соблазняющая магия [name] окутала разум [targetname], увеличивая [targethis] согласие.",
+	DIALOGUECORRUPTREPORT_FAILED = "Соблазняющей магии [name] противостоял разум [targetname]...",
+	SKILLALLURE = "Очарование",
+	SKILLALLUREDESCRIPT = "Соблазняет цель, увеличивая её Лояльность и снижая Сопротивление. Работает только на ваших Приспешниках.",
+	DIALOGUEALLUREREPORT = "[name] использовал [his] силы, чтобы повлиять на [targetname], обещая невообразимое удовольствие.",
+	SKILLTURN_SUCCUBUS = "Превращение в суккуба",
+	SKILLTURN_SUCCUBUSDESCRIPT = "Превратите своего Приспешника в полноценного суккуба (или инкуба). Цель должна иметь уровень Согласия 'Распутный' или выше.",
 	DIALOGUETURN_SUCCUBUSREPORT = "Часть сущности похоти [name] проникает в [targetname], превращая [targethim] в [succubus].",
-	DIALOGUECORRUPTIVE_ESSENCEREPORT = "Когда [name] поглощает извращенную сущность, [he] испытывает сильное головокружение и боль. Постепенно [his] физиология перестраивается в новое состояние.",
-	SKILLSWAP_FORM = "Сменить форму",
-	SKILLSWAP_FORMDESCRIPT = """Переключение между демонической и обычной формами. Демоническая форма даёт +15% к урону, +10 к Силе и Хитрости. Обычная форма даёт +20 к Обаянию и +25% к Производительности.""",
+	DIALOGUECORRUPTIVE_ESSENCEREPORT = "Когда [name] поглощает развращающую эссенцию, [he] переполняется головокружением и болью. Медленно [his] физиология перестраивается в новое состояние.",
+	SKILLSWAP_FORM = "Смена формы",
+	SKILLSWAP_FORMDESCRIPT = "Переключение между Демонической и Обычной формами. Демоническая форма даёт +15% урона, +10 к Физ.возможностям и Мудрости. Обычная форма даёт +20 к Обаянию и +25% к Продуктивности.",
 	DIALOGUESWAP_FORMREPORT = "",
 	DEMONFORMDESCRIPT = "Демоническая форма",
 	HUMANFORMDESCRIPT = "Обычная форма",
 	MAGATTUNEMENTDESCRIPT = "Магическое усиление",
 	COMBATATTUNEMENTDESCRIPT = "Боевое усиление",
-	THRALLDESCRIPT = "Приспешник",
+	THRALLDESCRIPT = """Приспешник
+
+Мудрость: -10; Получение опыта: -10%; Цена продажи сильно снижена.""",
 	THRALLS6DESCRIPT = "Имеет 6 приспешников",
 	THRALLS5DESCRIPT = "Имеет 5 приспешников",
 	THRALLS4DESCRIPT = "Имеет 4 приспешника",
@@ -2922,7 +2929,6 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	DIALOGUEMENTORREPORT = """[name] начал наставлять [targetname], помогая [targethim] быстрее усваивать знания...""",
 	DIALOGUESEDUCEREPORT = """[name] подошел/а к [targetname] и через пару мгновений оставил/а [targethim] в недоумении. Несмотря на визуальное спокойствие, [targetname] явно был очарован [him].""",
 	DIALOGUEGREATSEDUCEREPORT = """[name] подошел/а к [имя цели] и через пару мгновений оставил/а [targethim] в недоумении. Разум [targetHis] был поглощен сильным желанием, что сделало [him] довольно послушным.""",
-#	DIALOGUEALLUREREPORT = """[name] сделал/а [targetname] небольшое частное поощрение.""",
 	DIALOGUEABUSEREPORT = """[name] загнал/а [targetname] в угол и выместил/а часть [his] гнева на [targethim].
 
 {color=aqua|[имя цели]} - {random_chat=0|abuse}""",
@@ -3064,8 +3070,8 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	TRAITWEAPON_MASTERYDESCRIPT = """Позволяет использовать оружие ближнего боя""",
 	TRAITRANGED_WEAPON_MASTERYDESCRIPT = """Позволяет использовать дальнобойное оружие.""",
 	TRAITMAGIC_TOOLSDESCRIPT = """Позволяет использовать магические инструменты, такие как посохи.""",
-	TRAITNIXX_CHAMPIONDESCRIPT = "Способности тьмы имеют +30 к точности и игнорируют ЗАЩ и MЗАЩ цели.",	
-	TRAITNIXX_CHAMPION2DESCRIPT = """Additional dark damage to melee skills""", # MISSING TRANSLATION
+	TRAITNIXX_CHAMPIONDESCRIPT = "Способности тьмы имеют +30 к точности и игнорируют ЗАЩ и MЗАЩ цели.",
+	TRAITNIXX_CHAMPION2DESCRIPT = "Дополнительный тёмный урон к навыкам ближнего боя",
 	TRAITUNDEADDESCRIPT = """[name] больше не является живым существом. Потребление пищи установлено на 0; Обаяние снижено на 100; Светлое сопротивление -50; Темное сопротивление +50; Темный урон +20%; Не может оплодотворить или забеременеть.""",
 
 	TRAITSPOUSE = """Супруг""",
@@ -3443,59 +3449,59 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTHASTE = """Скорость увеличена""",
 	EFFECTCOFFIBLESS = "Увеличение получаемого опыта на 20%%",
 	EUPHORIABUFF = """Эйфория: Урон увеличен""",
-	EFFECTNAME_E_LOVE = """Lover present""", # MISSING TRANSLATION
-	EFFECTNAME_E_FRIEND = """Friend present""", # MISSING TRANSLATION
-	EFFECTNAME_E_RIVAL = """Rival present""", # MISSING TRANSLATION
-	EFFECTNAME_E_PERSON_BOLD = """Is Bold""", # MISSING TRANSLATION
-	EFFECTNAME_E_PERSON_SHY = """Is Shy""", # MISSING TRANSLATION
-	EFFECTNAME_E_PERSON_KIND = """Is kind""", # MISSING TRANSLATION
-	EFFECTNAME_E_PERSON_SERIOUS = """Is serious""", # MISSING TRANSLATION
-	EFFECTNAME_WORK_RULE_RATION = """Rations applied""", # MISSING TRANSLATION
-	EFFECTNAME_WORK_RULE_SHIFTS = """Work shifts applied""", # MISSING TRANSLATION
-	EFFECTNAME_WORK_RULE_MASTURBATION = """Masturbation enabled""", # MISSING TRANSLATION
-	EFFECTNAME_E_I_PET_SUIT_BONUS = """Pet suit effect""", # MISSING TRANSLATION
-	EFFECTNAME_E_I_ANAL = """Anal beeds effect""", # MISSING TRANSLATION
-	EFFECTNAME_E_TAIL_PLUG_BONUS = """Tail plug effect""", # MISSING TRANSLATION
-	EFFECTNAME_E_PREGNANCY = """Is pregnant""", # MISSING TRANSLATION
-	EFFECTNAME_E_PREGNANCY1 = """Is heavily pregnant""", # MISSING TRANSLATION
-	EFFECTNAME_E_PREGNANCY_BREEDER = """Is pregnant (breeder)""", # MISSING TRANSLATION
-	EFFECTNAME_E_MKUP = """Tattoo""", # MISSING TRANSLATION
-	EFFECTNAME_E_TLUST1 = """Tattoo""", # MISSING TRANSLATION
-	EFFECTNAME_E_TLUST2 = """Tattoo""", # MISSING TRANSLATION
-	EFFECTNAME_E_THPR = """Tattoo""", # MISSING TRANSLATION
-	EFFECTNAME_E_TMPR = """Tattoo""", # MISSING TRANSLATION
-	EFFECTNAME_E_TRIB1 = """Tattoo""", # MISSING TRANSLATION
-	EFFECTNAME_E_TRIB2 = """Tattoo""", # MISSING TRANSLATION
-	EFFECTNAME_E_TR_ALIOS = """Champion of Alios""", # MISSING TRANSLATION
-	EFFECTNAME_VALKYRIE_SPEAR_BONUS = """Valkyrie""", # MISSING TRANSLATION
-	EFFECTNAME_E_WE_DARK_STATIC = """Deathknight""", # MISSING TRANSLATION
-	EFFECTNAME_E_RARE_STURDY = """Sturdy enemy""", # MISSING TRANSLATION
-	EFFECTNAME_E_RARE_NIMBLE = """Nimble enemy""", # MISSING TRANSLATION
-	EFFECTNAME_E_RARE_STRONG = """Strong enemy""", # MISSING TRANSLATION
-	EFFECTNAME_E_RARE_DEADLY = """Deadly enemy""", # MISSING TRANSLATION
-	EFFECTNAME_E_RARE_PRECISE = """Preciese enemy""", # MISSING TRANSLATION
-	EFFECTNAME_E_RARE_TOUGH = """Tough enemy""", # MISSING TRANSLATION
-	EFFECTNAME_E_MINIBOSS = """Miniboss""", # MISSING TRANSLATION
-	EFFECTNAME_E_BOSS = """Boss""", # MISSING TRANSLATION
-	EFFECTNAME_DEMON_FORM = """In Demon form""", # MISSING TRANSLATION
-	EFFECTNAME_HUMAN_FORM = """In Human form""", # MISSING TRANSLATION
-	EFFECTNAME_MAGIC_ATUNEMENT = """Magic attunement""", # MISSING TRANSLATION
-	EFFECTNAME_COMBAT_ATUNEMENT_PASSIVE = """Combat attunement""", # MISSING TRANSLATION
-	EFFECTNAME_SUCCUBUS_THRALLS_0 = """Has 0 thralls""", # MISSING TRANSLATION
-	EFFECTNAME_SUCCUBUS_THRALLS_1 = """Has 1 thrall""", # MISSING TRANSLATION
-	EFFECTNAME_SUCCUBUS_THRALLS_2 = """Has 2 thralls""", # MISSING TRANSLATION
-	EFFECTNAME_SUCCUBUS_THRALLS_3 = """Has 3 thralls""", # MISSING TRANSLATION
-	EFFECTNAME_SUCCUBUS_THRALLS_4 = """Has 4 thralls""", # MISSING TRANSLATION
-	EFFECTNAME_SUCCUBUS_THRALLS_5 = """Has 5 thralls""", # MISSING TRANSLATION
-	EFFECTNAME_SUCCUBUS_THRALLS_6 = """Has 6 thralls""", # MISSING TRANSLATION
-	EFFECTNAME_MAX_STATS = """Stats of max value""", # MISSING TRANSLATION
-	EFFECTNAME_E_S_NOSTUN = """Stun immunity""", # MISSING TRANSLATION
-	EFFECTNAME_WORK_RULE_LUXURY = """Luxury rooms""", # MISSING TRANSLATION
-	EFFECTNAME_CURSE_DECLINE_1 = """Curse of decline lv 1""", # MISSING TRANSLATION
-	EFFECTNAME_CURSE_DECLINE_2 = """Curse of decline lv 2""", # MISSING TRANSLATION
-	EFFECTNAME_CURSE_FRAGILITY_1 = """Curse of fragility lv 1""", # MISSING TRANSLATION
-	EFFECTNAME_CURSE_FRAGILITY_2 = """Curse of fragility lv 2""", # MISSING TRANSLATION
-	EFFECTNAME_COMMANDER = """Commander present""", # MISSING TRANSLATION
+	EFFECTNAME_E_LOVE = "Присутствие возлюбленного",
+	EFFECTNAME_E_FRIEND = "Присутствие друга",
+	EFFECTNAME_E_RIVAL = "Присутствие соперника",
+	EFFECTNAME_E_PERSON_BOLD = "Смелый",
+	EFFECTNAME_E_PERSON_SHY = "Застенчивый",
+	EFFECTNAME_E_PERSON_KIND = "Добрый",
+	EFFECTNAME_E_PERSON_SERIOUS = "Серьёзный",
+	EFFECTNAME_WORK_RULE_RATION = "Применены пайки",
+	EFFECTNAME_WORK_RULE_SHIFTS = "Применены рабочие смены",
+	EFFECTNAME_WORK_RULE_MASTURBATION = "Мастурбация включена",
+	EFFECTNAME_E_I_PET_SUIT_BONUS = "Эффект костюма питомца",
+	EFFECTNAME_E_I_ANAL = "Эффект анальных бус",
+	EFFECTNAME_E_TAIL_PLUG_BONUS = "Эффект затычки",
+	EFFECTNAME_E_PREGNANCY = "Беременна",
+	EFFECTNAME_E_PREGNANCY1 = "Тяжело беременна",
+	EFFECTNAME_E_PREGNANCY_BREEDER = "Беременна (плодовитая)",
+	EFFECTNAME_E_MKUP = "Татуировка",
+	EFFECTNAME_E_TLUST1 = "Татуировка",
+	EFFECTNAME_E_TLUST2 = "Татуировка",
+	EFFECTNAME_E_THPR = "Татуировка",
+	EFFECTNAME_E_TMPR = "Татуировка",
+	EFFECTNAME_E_TRIB1 = "Татуировка",
+	EFFECTNAME_E_TRIB2 = "Татуировка",
+	EFFECTNAME_E_TR_ALIOS = "Чемпион Алиоса",
+	EFFECTNAME_VALKYRIE_SPEAR_BONUS = "Валькирия",
+	EFFECTNAME_E_WE_DARK_STATIC = "Рыцарь Смерти",
+	EFFECTNAME_E_RARE_STURDY = "Крепкий противник",
+	EFFECTNAME_E_RARE_NIMBLE = "Проворный противник",
+	EFFECTNAME_E_RARE_STRONG = "Сильный противник",
+	EFFECTNAME_E_RARE_DEADLY = "Смертоносный противник",
+	EFFECTNAME_E_RARE_PRECISE = "Меткий противник",
+	EFFECTNAME_E_RARE_TOUGH = "Живучий противник",
+	EFFECTNAME_E_MINIBOSS = "Мини-босс",
+	EFFECTNAME_E_BOSS = "Босс",
+	EFFECTNAME_DEMON_FORM = "В демонической форме",
+	EFFECTNAME_HUMAN_FORM = "В человеческой форме",
+	EFFECTNAME_MAGIC_ATUNEMENT = "Магическая настроенность",
+	EFFECTNAME_COMBAT_ATUNEMENT_PASSIVE = "Боевая настроенность",
+	EFFECTNAME_SUCCUBUS_THRALLS_0 = "Имеет 0 приспешников",
+	EFFECTNAME_SUCCUBUS_THRALLS_1 = "Имеет 1 приспешников",
+	EFFECTNAME_SUCCUBUS_THRALLS_2 = "Имеет 2 приспешников",
+	EFFECTNAME_SUCCUBUS_THRALLS_3 = "Имеет 3 приспешников",
+	EFFECTNAME_SUCCUBUS_THRALLS_4 = "Имеет 4 приспешников",
+	EFFECTNAME_SUCCUBUS_THRALLS_5 = "Имеет 5 приспешников",
+	EFFECTNAME_SUCCUBUS_THRALLS_6 = "Имеет 6 приспешников",
+	EFFECTNAME_MAX_STATS = "Максимальные характеристики",
+	EFFECTNAME_E_S_NOSTUN = "Иммунитет к оглушению",
+	EFFECTNAME_WORK_RULE_LUXURY = "Роскошные комнаты",
+	EFFECTNAME_CURSE_DECLINE_1 = "Проклятие упадка ур. 1",
+	EFFECTNAME_CURSE_DECLINE_2 = "Проклятие упадка ур. 2",
+	EFFECTNAME_CURSE_FRAGILITY_1 = "Проклятие хрупкости ур. 1",
+	EFFECTNAME_CURSE_FRAGILITY_2 = "Проклятие хрупкости ур. 2",
+	EFFECTNAME_COMMANDER = "Commander present",
 	BUFFDESCRIPTSHACKLES = """Оковы""",
 	BUFFDESCRIPTGREATSHACKLES = """Великие оковы""",
 	BUFFDESCRIPTCHARM = """Зачарован. Осталось %d ходов""",
@@ -3811,11 +3817,11 @@ Requires: Базовый рабский труд""",
 	UPGRADEGATHERMITHRILBONUS = """Позволяет собирать митрил""",
 	UPGRADEROOMS = """Комнаты особняка""",
 	UPGRADEROOMSDESCRIPT = """Увеличивает максимальное количество размещаемых персонажей""",
-	UPGRADEROOMSBONUS1 = """Увеличивает максимальное количество размещаемых персонажей до 10""",
-	UPGRADEROOMSBONUS2 = """Увеличивает максимальное количество размещаемых персонажей до 15.""",
-	UPGRADEROOMSBONUS3 = """Увеличивает максимальное количество размещаемых персонажей до 20""",
-	UPGRADEROOMSBONUS4 = """Увеличивает максимальное количество размещаемых персонажей до 25""",
-	UPGRADEROOMSBONUS5 = """Увеличивает максимальное количество размещаемых персонажей до 30""",
+	UPGRADEROOMSBONUS1 = """Увеличивает максимальное количество размещаемых персонажей до 12""",
+	UPGRADEROOMSBONUS2 = """Увеличивает максимальное количество размещаемых персонажей до 18.""",
+	UPGRADEROOMSBONUS3 = """Увеличивает максимальное количество размещаемых персонажей до 24""",
+	UPGRADEROOMSBONUS4 = """Увеличивает максимальное количество размещаемых персонажей до 30""",
+	UPGRADEROOMSBONUS5 = """Увеличивает максимальное количество размещаемых персонажей до 36""",
 	UPGRADELUXURY_ROOMS = """VIP комнаты""",
 	UPGRADELUXURY_ROOMSDESCRIPT = """Увеличивает максимальное количество доступных роскошных комнат. Роскошные комнаты уменьшают отток послушания и повышают верность их обитателей.""",
 	UPGRADELUXURYROOMSBONUS1 = """Увеличивает максимальное количество доступных роскошных комнат до 2.""",
@@ -4126,8 +4132,8 @@ Requires: Базовый рабский труд""",
 
 	BODYPARTSKIN_COVERAGEPLANTDESCRIPT = """Различные листья и кусочки [color=aqua]растительной массы[/color] покрывают части [his] тела.""",
 	BODYPARTSKIN_COVERAGESCALEDESCRIPT = """[His] кожа частично покрыта [color=aqua]чешуей[/color].""",
-	BODYPARTSKIN_COVERAGESCALE2DESCRIPT = """[His] skin is partly covered with [color=aqua]scales[/color].""", # MISSING TRANSLATION
-	BODYPARTSKIN_COVERAGESCALE3DESCRIPT = """[His] skin is partly covered with [color=aqua]scales[/color].""", # MISSING TRANSLATION
+	BODYPARTSKIN_COVERAGESCALE2DESCRIPT = "[His] кожа частично покрыта [color=aqua]чешуей[/color].",
+	BODYPARTSKIN_COVERAGESCALE3DESCRIPT = "[His] кожа частично покрыта [color=aqua]чешуей[/color].",
 	BODYPARTSKIN_COVERAGEFEATHERSDESCRIPT = """[His] тело во многих местах покрыто [color=aqua]птицеподобными перьями[/color].""",
 	BODYPARTSKIN_COVERAGEFUR_WHITEDESCRIPT = """[His] тело покрыто густым, мягким [color=aqua]мехом мраморного цвета[/color].""",
 	BODYPARTSKIN_COVERAGEFUR_GREYDESCRIPT = """[His] тело покрыто густым, мягким [color=aqua]мехом серого цвета[/color].""",
@@ -4161,7 +4167,7 @@ Requires: Базовый рабский труд""",
 	BODYPARTTAILTENTACLESDESCRIPT = """ """,
 	BODYPARTTAILHORSEDESCRIPT = """ """,
 	BODYPARTTAILSPIDERDESCRIPT = """ """,
-	BODYPARTTAILMOUSEDESCRIPT = """ """, # MISSING TRANSLATION
+	BODYPARTTAILMOUSEDESCRIPT = " ",
 	
 	BODYPARTHEIGHTTINYDESCRIPT = """[His] рост [color=aqua]чрезвычайно мал[/color], едва ли в два раза меньше, чем у обычного человека.""",
 	BODYPARTHEIGHTPETITEDESCRIPT = """[His] рост совсем [color=aqua]маленький[/color].""",
@@ -4744,7 +4750,7 @@ Requires: Базовый рабский труд""",
 	
 	DIALOGUETUTELAGETEXT = """Вы решили оставить новорожденного ребенка, однако вам предстоит решить вопрос о его дальнейшем воспитании, которое может улучшить или исправить его потенциал. В любом случае, взросление займет 2 недели. 
 
-{color=aqua|Нет обучения}- {color=yellow|Нет затрат}, но есть шанс получить новую отрицательную черту;
+{color=aqua|Без обучения}- {color=yellow|Нет затрат}, но есть шанс получить новую отрицательную черту;
 {color=aqua|Обучение раба}- {color=yellow|500 золотых}, дает большой прирост к верности с шансом улучшить факторы 'Приручения' или 'Робкости'; 
 {color=aqua|Academy}- {color=yellow|1.500 золотых}, дает прибавку к физическому фактору и мудрости и хорошее количество EXP;
 {color=aqua|Обучение наследника} (только для потенциальных наследников) - {color=yellow|5.000 золотых}, дает прибавку ко всем статам и факторам, большое количество EXP и 1 случайную положительную черту.""",
@@ -4953,9 +4959,8 @@ Requires: Базовый рабский труд""",
 	ENEMYDWARF_FIGHTER_ELITE = "Элитный дворф-воин",
 	ENEMYDWARF_RANGED = "Дворф-арбалетчик",
 	ENEMYKURO = "Куро",
-	ENEMYERDYNA = """Erdyna""", # MISSING TRANSLATION
-	ENEMYNIXX = """Nixx""", # MISSING TRANSLATION
-	
+	ENEMYERDYNA = "Эрдина",
+	ENEMYNIXX = "Никс",	
 	
 	FOODFILTERHIGH = """Высокий""",
 	FOODFILTERMED = """Средний""",
@@ -5135,7 +5140,7 @@ Requires: Базовый рабский труд""",
 	WORKRULERATIONDESCRIPT = """Увеличивает потребление пищи на 3. Повышает производительность на 15%.""",
 	WORKRULESHIFTS = """Упорная работа""",
 	WORKRULESHIFTSDESCRIPT = """Персонаж работает на пределе своих возможностей ценой будущих улучшений. 
-Повышает производительность на 25%. Персонаж не получает опыт или рабочие характеристики(физические и т.д.) во время работы.""",
+Повышает производительность на 25%. {color=yellow|Персонаж не получает опыт или рабочие характеристики(физические и т.д.) во время работы.}""",
 	WORKRULECONSTRAIN = """Принуд. труд""",
 	WORKRULECONSTRAINDESCRIPT = """Персонаж вынужден работать на пределе своих возможностей с помощью строгих правил. Повышает производительность на 15%. Утечка Повиновения увеличивается на 6""",
 	WORKRULELUXURY = """Личная комната""",
@@ -5206,7 +5211,7 @@ Requires: Базовый рабский труд""",
 	STARTINGDILOGUE1_3 = """- О, деловой человек? Мне это нравится.
 
 """,
-	STARTINGDILOGUE1_4 = """- Я здесь, чтобы передать план, по которому вы будете выплачивать свой кредит. В общей сложности, вы должны банку 100.000 золотых, которые вы должны будете выплатить в течение следующих 100 дней. В качестве препятствия, ваш первый платеж будет состоять из {custom_text_function=GetLoanSum#0|} золота и должен быть внесен через 2 недели.""",
+	STARTINGDILOGUE1_4 = """{color=yellow|— Я здесь, чтобы передать план, по которому вы будете выплачивать свой кредит. В общей сложности, вы должны банку 100.000 золотых, которые вы должны будете выплатить в течение следующих 100 дней. В качестве препятствия, ваш первый платеж будет состоять из} {custom_text_function=GetLoanSum#0|} {color=yellow|золота и должен быть внесен через 2 недели.}""",
 	STARTINGDIALOGUE1REPLY1 = """Понятно.""",
 	STARTINGDIALOGUE1REPLY2 = """Вы серьезно ожидаете, что я заработаю столько?""",
 	STARTINGDIALOGUE2_1 = """— Хорошо.""",
@@ -5231,8 +5236,9 @@ Requires: Базовый рабский труд""",
 	STARTUPGRADEBONUS2 = """Комнату портного""",
 	STARTUPGRADEBONUS3 = """Алхимическую комнату""",
 	STARTUPGRADEBONUS4 = """Извращенную эссенцию""",
-	ALIRON_CORRUPTIVE_ESSENCE_EVENT = """While walking through Aliron's markets you stumble upon a discreet peddler offering a single vial of corruptive essence for a steep price. It's a rare chance to secure the forbidden mixture without relying on luck.""", # MISSING TRANSLATION
-	ALIRON_CORRUPTIVE_ESSENCE_PURCHASE = """Buy the corruptive essence (1 000 gold)""", # MISSING TRANSLATION
+	ALIRON_CORRUPTIVE_ESSENCE_EVENT = "Бродя по рынкам Алирона, вы натыкаетесь на скромного торговца, предлагающего единственный флакон развращающей эссенции за высокую цену. Это редкий шанс заполучить запретную смесь, не полагаясь на удачу.",
+	ALIRON_CORRUPTIVE_ESSENCE_PURCHASE = "Купить развращающую эссенцию (1 000 золота)",
+	ALIRON_CORRUPTIVE_ESSENCE_DISMISS = "Прогнать торговца",
 	
 	
 	FIGHTERSINTRODUCTION1 = """Крупный мужчина в тяжелых доспехах окинул вас незаинтересованным взглядом. 
@@ -5463,7 +5469,7 @@ Requires: Базовый рабский труд""",
  Когда девушка слышит это, ее лицо бледнеет. Прежде чем она успевает сказать что-то связное, ее рот затыкает один из зомби""",
 	LICHENCILLKILLYOU = """Я передумал, я убиваю тебя! *Атака*""",
 	LICHENCFINE = """Я принимаю это""",
-	LICHENCTALK5REPLY3 = """Нет, ты освободишь ее{проверка физического фактора}.""",
+	LICHENCTALK5REPLY3 = """[Физ фактор]Нет, ты освободишь ее.""",
 	LICHENCTALK6 = """{color=green|Успех}
 
 - Проклятие... Ладно. Ты можешь забрать ее. Я больше не желаю здесь оставаться.
@@ -5497,7 +5503,7 @@ Requires: Базовый рабский труд""",
 	LICHAIRETALK3 = """- Но у меня ничего нет с собой!... Если только вы не имеете в виду... Но это было бы неприлично.
 
  Эйра сильно покраснела и опустила глаза.""",
-	LICHAIRETALK3REPLY1 = """Твоя компания доставит мне огромное удовольствие {проверка секс-фактора}.""",
+	LICHAIRETALK3REPLY1 = """[Cекс-фактор]Твоя компания доставит мне огромное удовольствие.""",
 	LICHAIRETALK3REPLY2 = """Неважно, можешь идти.""",
 	LICHAIRETALK4 = """{color=green|Успех}
 
@@ -6411,28 +6417,27 @@ SIGMUND_ANSWER2 = """- Да, это не было бы проблемой, но 
 	STATDAMAGE_MOD_MIND = """Урон разуму""",
 	STATDAMAGE_MOD_MELEE = """Урон в ближнем бою""",
 	STATDAMAGE_MOD_RANGED = "Урон в дальнем бою",
-	STATDAMAGE_MOD_ALL = """All Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_AOE = """Area Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_NORMAL = """Normal Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_PHYSIC = """Physic Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_SPELL = """Spell Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_TRUE = """True Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_FIREDESCRIPT = """Modifies Fire Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_WATERDESCRIPT = """Modifies Water Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_AIRDESCRIPT = """Modifies Air Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_EARTHDESCRIPT = """Modifies Earth Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_LIGHTDESCRIPT = """Modifies Light Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_DARKDESCRIPT = """Modifies Dark Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_MINDDESCRIPT = """Modifies Mind Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_MELEEDESCRIPT = """Modifies Melee Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_RANGEDDESCRIPT = """Modifies Ranged Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_ALLDESCRIPT = """Modifies All Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_AOEDESCRIPT = """Modifies Area Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_NORMALDESCRIPT = """Modifies Normal Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_PHYSICDESCRIPT = """Modifies Physic Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_SPELLDESCRIPT = """Modifies Spell Damage""", # MISSING TRANSLATION
-	STATDAMAGE_MOD_TRUEDESCRIPT = """Modifies True Damage""", # MISSING TRANSLATION
-
+	STATDAMAGE_MOD_ALL = "Весь урон",
+	STATDAMAGE_MOD_AOE = "Урон по области",
+	STATDAMAGE_MOD_NORMAL = "Обычный урон",
+	STATDAMAGE_MOD_PHYSIC = "Физический урон",
+	STATDAMAGE_MOD_SPELL = "Магический урон",
+	STATDAMAGE_MOD_TRUE = "Истинный урон",
+	STATDAMAGE_MOD_FIREDESCRIPT = "Изменяет огненный урон",
+	STATDAMAGE_MOD_WATERDESCRIPT = "Изменяет водный урон",
+	STATDAMAGE_MOD_AIRDESCRIPT = "Изменяет воздушный урон",
+	STATDAMAGE_MOD_EARTHDESCRIPT = "Изменяет земляной урон",
+	STATDAMAGE_MOD_LIGHTDESCRIPT = "Изменяет световой урон",
+	STATDAMAGE_MOD_DARKDESCRIPT = "Изменяет тёмный урон",
+	STATDAMAGE_MOD_MINDDESCRIPT = "Изменяет ментальный урон",
+	STATDAMAGE_MOD_MELEEDESCRIPT = "Изменяет урон в ближнем бою",
+	STATDAMAGE_MOD_RANGEDDESCRIPT = "Изменяет урон в дальнем бою",
+	STATDAMAGE_MOD_ALLDESCRIPT = "Изменяет весь урон",
+	STATDAMAGE_MOD_AOEDESCRIPT = "Изменяет урон по области",
+	STATDAMAGE_MOD_NORMALDESCRIPT = "Изменяет обычный урон",
+	STATDAMAGE_MOD_PHYSICDESCRIPT = "Изменяет физический урон",
+	STATDAMAGE_MOD_SPELLDESCRIPT = "Изменяет магический урон",
+	STATDAMAGE_MOD_TRUEDESCRIPT = "Изменяет истинный урон",
 	ENEMYMANEATER_PLANT = """Растение-людоед""",
 	ENEMYCENTIPEDE = """Сороконожка""",
 	ENEMYOGRE_ALPHA = """Огр Альфа""",
@@ -6744,7 +6749,7 @@ PRE_FINAL_BOSS_7 = """Вы поворачиваетесь к оставшимс�
 	AFTER_MINES_WORKERS_OPTION_1 = """Я решил вопрос с шахтами.""",
 	AFTER_MINES_SIGMUND_START = """Это отличная новость. Я уже сделал приготовления, так что мы возобновим работу как можно скорее. Ты заслужил свою награду.
 
-Сигмунд передает вам мешочек с золотом.
+Зигмунд передает вам мешочек с золотом.
 
 {color=green|Получено 300 золотых}""",
 	AFTER_MINES_SIGMUND_OPTION_1 = """Спасибо, если больше ничего нет, я пойду.""",
@@ -6965,7 +6970,7 @@ AFTER_MINES_CONVOY_15 = """В нескольких сотнях футов от 
 
 Когда они проходят мимо, вы продолжаете двигаться дальше.""",
 	DIVINE_SYMBOL_11 = """Медленно пробираясь в центр города, вы замечаете, что к вашей позиции приближается еще один патруль. Вы скоро будете отрезаны и не сможете отступить незамеченным.""",
-	DIVINE_SYMBOL_OPTION_10 = """*Пробежать* {проверка физического фактора}""",
+	DIVINE_SYMBOL_OPTION_10 = """[Физ. фактор]*Пробежать*""",
 	DIVINE_SYMBOL_12 = """{color=green|Успех}
 
 Благодаря вашей быстрой реакции, вам удалось ловко избежать патруля.""",
@@ -6978,7 +6983,7 @@ AFTER_MINES_CONVOY_15 = """В нескольких сотнях футов от 
 Вы пытались, но, слишком резко свернув за угол, врезались в груду ящиков. Патруль заметил поднятый вами шум, и теперь у вас нет другого выхода, кроме как драться.""",
 	DIVINE_SYMBOL_14 = """Вам удалось победить патруль относительно тихо. Надеясь, что вас больше не обнаружат, вы покидаете это место.""",
 	DIVINE_SYMBOL_15 = """Вы прибываете на небольшую площадь, где должна находиться ваша цель. Однако там есть несколько зданий, любое из которых может быть ею.""",
-	DIVINE_SYMBOL_OPTION_11 = """*Поиск* {проверка фактора мудрости}""",
+	DIVINE_SYMBOL_OPTION_11 = """[Фактор мудрости]*Поиск*""",
 	DIVINE_SYMBOL_16 = """{color=red|Провал}
 
 Вы вошли не в то здание. Несколько повстанцев узнали в вас нарушителя и вооружились.""",
@@ -6999,7 +7004,7 @@ AFTER_MINES_CONVOY_15 = """В нескольких сотнях футов от 
 {color=aqua|Второй охранник: - Заткни...}
 
 Охранники останавливаются на полпути, заметив ваше приближение. Они бросают на вас воинственный взгляд, ожидая ваших дальнейших действий.""",
-	DIVINE_SYMBOL_OPTION_12 = """Грег вызывает вас {проверка фактора обаяния}.""",
+	DIVINE_SYMBOL_OPTION_12 = """[Фактор обаяния] Грег вызывает вас.""",
 	DIVINE_SYMBOL_OPTION_13 = """*Атаковать их*""",
 	DIVINE_SYMBOL_20_1 = """{color=green|Успех}
 
@@ -7611,7 +7616,7 @@ AFTER_MINES_CONVOY_15 = """В нескольких сотнях футов от 
 
 {color=aqua|Анастасия: - Они убьют меня, как убили моего отца. А ты предала меня. Я думала, что могу доверять тебе!}""",
 	LOOKING_FOR_PRINCESS_OPTION_29 = """*Сохранять молчание*""",
-	LOOKING_FOR_PRINCESS_OPTION_30 = """*Ударить принцессу и заткнуть ей рот* {проверка физического фактора}.""",
+	LOOKING_FOR_PRINCESS_OPTION_30 = """[Физ. фактор]*Ударить принцессу и заткнуть ей рот*.""",
 	LOOKING_FOR_PRINCESS_OPTION_31 = """Давайте не будем делать поспешных выводов, конечно, мы можем это обсудить.""",
 	LOOKING_FOR_PRINCESS_31 = """{color=green|Успех}
 
@@ -8223,8 +8228,8 @@ AFTER_MINES_CONVOY_15 = """В нескольких сотнях футов от 
 
 	ANASTASIA_PERSUASION_2_MARRY1 = """- Но скажи мне, я хочу знать, почему ты выбрал меня?""",
 
-	ANASTASIA_PERSUASION_2_MARRY1_OPTION1 = """Я влюбился с первого взгляда {проверка фактора очарования}.""",
-	ANASTASIA_PERSUASION_2_MARRY1_OPTION2 = """Я не могу перестать представлять тебя обнаженной {проверка секс-фактора}.""",
+	ANASTASIA_PERSUASION_2_MARRY1_OPTION1 = """[Фактор очарования] Я влюбился с первого взгляда.""",
+	ANASTASIA_PERSUASION_2_MARRY1_OPTION2 = """[Cекс-фактор] Я не могу перестать представлять тебя обнаженной.""",
 	ANASTASIA_PERSUASION_2_MARRY1_OPTION3 = """Как кто-то может пройти мимо такой девушки, как ты?""",
 	ANASTASIA_PERSUASION_2_MARRY1_OPTION4 = """Ну, технически ты все еще принцесса.""",
 
@@ -8233,8 +8238,8 @@ AFTER_MINES_CONVOY_15 = """В нескольких сотнях футов от 
 Анастасия сильно покраснела и отвернулась от вашего замечания, но, кажется, не сомневается в нем.""",
 	ANASTASIA_PERSUASION_2_MARRY2 = """- Я не знаю, могу ли я ответить на ваши чувства здесь, это слишком большое давление для меня.""",
 
-	ANASTASIA_PERSUASION_2_MARRY2_OPTION1 = """Вы можете привыкать в своем собственном темпе {проверка фактора очарования}.""",
-	ANASTASIA_PERSUASION_2_MARRY2_OPTION2 = """Мы можем поработать над этим, когда все будет готово {проверка секс-фактора}.""",
+	ANASTASIA_PERSUASION_2_MARRY2_OPTION1 = """[Фактор очарования] Вы можете привыкать в своем собственном темпе.""",
+	ANASTASIA_PERSUASION_2_MARRY2_OPTION2 = """[Cекс-фактор] Мы можем поработать над этим, когда все будет готово.""",
 	ANASTASIA_PERSUASION_2_MARRY2_OPTION3 = """Меня мало интересуют твои чувства, пока я могу обладать твоим телом.""",
 	ANASTASIA_PERSUASION_2_MARRY2_OPTION4 = """Я понимаю, это было бы очень тяжело для любого, но ты можешь это сделать.""",
 
@@ -8244,11 +8249,11 @@ AFTER_MINES_CONVOY_15 = """В нескольких сотнях футов от 
 	ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION3 = """Ты должна будешь обучиться физической работе или, возможно, драться.""",
 	ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION4 = """Постельная грелка кажется идеальным местом для тебя.""",
 
-	ANASTASIA_PERSUASION_2_ENSLAVE2_1 = """- Это так... Значит, вы планируете также использовать меня в... интимных целях?""",
+	ANASTASIA_PERSUASION_2_ENSLAVE2_1 = """- Так... Значит, вы планируете также использовать меня в... интимных целях?""",
 	ANASTASIA_PERSUASION_2_ENSLAVE2 = """- Значит, я должна буду стать вашей собственностью. Я полагаю, это также означает... интимный исход?""",
 
-	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION1 = """Естественно, но я могу обещать, что ты не пожалеешь об этом. {проверка секс-фактора}.""",
-	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION2 = """Если честно, я бы не смог пройти мимо такой красавицы, как ты. {проверка фактора обаяния}.""",
+	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION1 = """[Секс-фактор]Естественно, но я могу обещать, что ты не пожалеешь об этом.""",
+	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION2 = """[Фактор обаяния] Если честно, я бы не смог пройти мимо такой красавицы, как ты.""",
 	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION3 = """Ну, рано или поздно это случилось бы.""",
 	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION4 = """У меня нет к вам такого интереса.""",
 
@@ -8732,7 +8737,7 @@ AFTER_ELECTION_PRINCESS_MINDBREAK_7 = """Вы чувствуете, как де�
 {color=green|Дейзи:Фактор роста +1
 Дейзи:черта 'Трусость' удалена}""",
 	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_1 = """Я рад, что тебе это нравится.""",
-	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2 = """Я думаю, тебе следует выразить свою благодарность так, чтобы это соответствовало твоему положению {проверка фактора сексуальности}.""",
+	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_2 = """[Секс-фактор] Я думаю, тебе следует выразить свою благодарность так, чтобы это соответствовало твоему положению.""",
 	DAISY_DRESS_ACQUIRED_NORMAL_OPTION_1_3 = """Это не для тебя, я не могу позволить тебе ходить по моему особняку в лохмотьях.""",
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_1 = """Дейзи улыбается вам и с вашего одобрения возвращается к своим обязанностям. Кажется, ее дух немного поднялся""",
 	DAISY_DRESS_ACQUIRED_NORMAL_REPLY_1_3 = """- Конечно, я понимаю. Но все равно, спасибо.
@@ -9052,7 +9057,7 @@ AFTER_ELECTION_PRINCESS_MINDBREAK_7 = """Вы чувствуете, как де�
 
 DAISY_LOST_MESSAGE = """Сегодня вечером вы заметили, что ваша рабыня Дейзи не вернулась с поручения, как обычно. Вы не знаете точно, что именно, но что-то определенно не так. Дейзи пропала, и вам следует как можно скорее начать ее поиски. Возможно, у Гильдии слуг есть идеи, как ее найти.""",
 	DAISY_LOST_AMELIA_OPTION_0 = """Я потерял кое-кого...""",
-	DAISY_LOST_AMELIA_REPLY_0 = """- Мрачная ситуация, мы, конечно, осуждаем похищение, даже если это происходит с рабом. Я помню девушку, вы ведь отправили ее на обучение? Был один землевладелец, который, кажется, заинтересовался ею и спросил о ее хозяине. Его звали Рамонт... не совсем из наших.""",
+	DAISY_LOST_AMELIA_REPLY_0 = """{color=yellow|— Мрачная ситуация, мы, конечно, осуждаем похищение, даже если это происходит с рабом. Я помню девушку, вы ведь отправили ее на обучение? Был один землевладелец, который, кажется, заинтересовался ею и спросил о ее хозяине. Он из } {color=green|Обсидианового Братства}{color=yellow| под началом лорда Рамонта.}""",
 	DAISY_LOST_AMELIA_OPTION_1_1 = """Я мог получить от него письмо.""",
 	DAISY_LOST_AMELIA_OPTION_1_2 = """Как вы могли так передать ему мою информацию?""",
 	DAISY_LOST_AMELIA_REPLY_1_1 = """- Он предложил купить ее у вас? Похоже, тогда он будет нашим главным подозреваемым. Он живет далеко от города. Вам лучше подготовиться к встрече с ним.""",
@@ -9274,7 +9279,7 @@ DAISY_LOST_MESSAGE = """Сегодня вечером вы заметили, ч�
 	AMELIA_HERBS_ELF_OPTION_1_3 = """Ты что, с ума сошла, давать заднюю сейчас?""",
 	AMELIA_HERBS_ELF_REPLY_1 = """- Я не могу больше этого делать, я была в отчаянии в то время, но если меня поймают, для меня все будет кончено. А я уже под подозрением. Так как я не рождена здесь, я буду жестоко наказана за это... Так что вы должны понять, я больше не буду этого делать. Пока я не могу вернуть оплату, но скоро я что-нибудь придумаю.""",
 	AMELIA_HERBS_ELF_OPTION_2_1 = """Думаю, тогда ничего не поделаешь...""",
-	AMELIA_HERBS_ELF_OPTION_2_2 = """Послушайте, мне действительно нужно доставить этот товар (Проверка обаяния).""",
+	AMELIA_HERBS_ELF_OPTION_2_2 = """[Фактор обаяния] Послушайте, мне действительно нужно доставить этот товар.""",
 	AMELIA_HERBS_ELF_OPTION_2_3 = """Я мог бы заплатить вам еще немного, но мне это действительно нужно (300 золотых).""",
 	AMELIA_HERBS_ELF_OPTION_2_4 = """В таком случае я скажу стражникам, что вы действительно были контрабандисткой.""",
 	AMELIA_HERBS_ELF_REPLY_2_1 = """- Спасибо за понимание и до свидания.
@@ -10015,7 +10020,7 @@ GRYPHON_ANA_SEX_9 = """После нескольких толчков вы вы�
 
 Патруль продолжил свой путь, оставив вас в раздумьях, что же делать.""",
 	PRE_RITUAL_3_OPTION_1 = """Попытаться разобраться с ними.""",
-	PRE_RITUAL_3_OPTION_2 = """Подкрасться {проверка физ.фактора}.""",
+	PRE_RITUAL_3_OPTION_2 = """[Физ. фактор] Подкрасться.""",
 	PRE_RITUAL_3_OPTION_3 = """*Атаковать*""",
 	PRE_RITUAL_4_1_1_100 = """Вы подходите к патрулирующим работорговцам. Поначалу встревоженные, вы сообщаете им, что вас интересует один из их свежепойманных рабов. Похоже, они весьма довольны возможностью получить быстрые деньги без необходимости делать больше работы, чем нужно. После некоторых переговоров работорговцы называют свою последнюю цену: 100 золотых.
 
@@ -10044,7 +10049,7 @@ GRYPHON_ANA_SEX_9 = """После нескольких толчков вы вы�
 - Интересно, это действительно какая-то судьба, что мы...""",
 	PRE_RITUAL_6_OPTION_1 = """Я рад, что ты в безопасности.""",
 	PRE_RITUAL_6_OPTION_2 = """Тебе следует быть осторожнее.""",
-	PRE_RITUAL_6_OPTION_3 = """Я думаю, ты могла бы поблагодарить меня за это {проверка сексуального фактора}.""",
+	PRE_RITUAL_6_OPTION_3 = """[Секс-фактор] Я думаю, ты могла бы поблагодарить меня за это.""",
 	PRE_RITUAL_6_OPTION_4 = """Не упоминай об этом.""",
 	PRE_RITUAL_7_1AND2AND4 = """- Д-да. Я очень благодарна. Теперь мне нужно снова собрать нужные нам травы перед возвращением, если вы не возражаете.""",
 	PRE_RITUAL_7_1AND2AND4_BAD = """{color=red|Провал}
@@ -10423,7 +10428,7 @@ AFTER_RITUAL_GOOD_2_1_2 = """{color=aqua|Савра: - Нет, все в пор�
 
 Эйра: - Это неправильно, нельзя позволять кому попало бесчинствовать в таких священных местах.""",
 	TEMPLE_2_OPTION_1 = """По рукам.""",
-	TEMPLE_2_OPTION_2 = """Такое сокровище должно стоить больше, чем это {проверка фактора обаяния}.""",
+	TEMPLE_2_OPTION_2 = """[Фактор обаяния] Такое сокровище должно стоить больше, чем это.""",
 	TEMPLE_2_OPTION_3 = """Отказываюсь.""",
 	TEMPLE_3_1_1 = """{color=green|Успех}
 Маленький бандит: - Вы шутите, да?
@@ -10545,7 +10550,7 @@ AFTER_RITUAL_GOOD_2_1_2 = """{color=aqua|Савра: - Нет, все в пор�
 	LIRA_ENCOUNTER_2 = """Лира сделала долгую паузу, обдумывая возможные варианты, затем предложила свой.
 
  - Я смогу уйти, если найдется кто-то, кто займет мое место во время проверки. Если ты сможешь найти кого-то похожего на меня, еще одного племенного эльфа, мы сможем обмануть храмовую стражу""",
-	LIRA_ENCOUNTER_2_OPTION_1 = """Может быть, мы могли бы придумать какой-нибудь другой способ... (Проверка фактора мудрости).""",
+	LIRA_ENCOUNTER_2_OPTION_1 = """[Фактор мудрости] Может быть, мы могли бы придумать какой-нибудь другой способ...""",
 	LIRA_ENCOUNTER_2_OPTION_2 = """Я вернусь, когда у меня будет кто-то подходящий.""",
 	LIRA_ENCOUNTER_3_1_GOOD = """{color=red|Провал}
 
@@ -10828,7 +10833,7 @@ CALI_INTRO_2 = """Вы видите лежащую на полу молодую 
 {color=aqua|Кали: - Ублюдки, прекратите обсуждать меня, как будто я согласилась на это!}
 
 {color=yellow|Работорговец: - Учитывая ее здоровое телосложение и внешний вид, я считаю, что она стоит по меньшей мере 1000 золотых}""",
-	CALI_INTRO_3_OPTION_1 = """Она не кажется мне такой уж красивой (проверка обаяния).""",
+	CALI_INTRO_3_OPTION_1 = """[Фактор обаяния] Она не кажется мне такой уж красивой.""",
 	CALI_INTRO_3_OPTION_2 = """Я подумаю об этом.""",
 	CALI_INTRO_3_OPTION_3 = """Договорились.""",
 	CALI_INTRO_3_OPTION_4 = """Не пойдет, я заберу ее силой.""",
@@ -11777,7 +11782,7 @@ CALI_GRAT_SEX_3 = """Волчица наполовину умоляет об э�
 	LILIA_SEDUCTION_1 = """Лилия смотрит на вас задумчиво, но, похоже, она уловила ваши намерения, хотя и не сразу отвергла предложение.
 
 - Ты странный. Не знаю, у меня нет опыта в таких вещах...""",
-	LILIA_SEDUCTION_1_OPTION_1 = """Я вижу, что ты практически дрожишь рядом со мной {проверка секс-фактора}.""",
+	LILIA_SEDUCTION_1_OPTION_1 = """[Секс-фактор] Я вижу, что ты практически дрожишь рядом со мной.""",
 	LILIA_SEDUCTION_1_OPTION_2 = """У меня достаточно опыта.""",
 	LILIA_SEDUCTION_1_OPTION_3 = """Я могу дать тебе что-нибудь приятное.""",
 	LILIA_SEDUCTION_1_OPTION_4 = """Но тебе должно быть интересно, каково это.""",
@@ -11823,7 +11828,7 @@ CALI_GRAT_SEX_3 = """Волчица наполовину умоляет об э�
 - ...Потрясающе! Давай сделаем это снова в другой раз, хорошо?""",
 	LILIA_RECRUIT_1_1 = """- А? Не знаю, мне кажется, я недостаточно хорошо тебя знаю, [name].""",
 	LILIA_RECRUIT_1_2 = """- Идти с тобой...? Я не уверена, я никогда не покидала леса. Я слышала, что люди довольно страшные.""",
-	LILIA_RECRUIT_1_OPTION_1 = """Я буду рад видеть тебя у себя {проверка фактора обаяния}.""",
+	LILIA_RECRUIT_1_OPTION_1 = """[Фактор обаяния] Я буду рад видеть тебя у себя.""",
 	LILIA_RECRUIT_1_OPTION_2 = """Со временем ты привыкнешь к этому.""",
 	LILIA_RECRUIT_1_OPTION_3 = """Люди могут быть довольно плохими, но ты будешь под моей защитой.""",
 	LILIA_RECRUIT_1_OPTION_4 = """Но ты же меня не боялась.""",
@@ -12744,7 +12749,7 @@ ZCEVENT_4 = """{color=aqua|Зефира: - Похоже, ты гордишься
 
 Зефира не знает, что делать, и, похоже, просит вашего совета.""",
 	ZEPHYRA_QUEST_7_OPTION_1 = """Зефира права, мы не можем просто так отдать деньги церкви кому попало.""",
-	ZEPHYRA_QUEST_7_OPTION_2 = """Мы должны помогать нуждающимся (проверка обаяния).""",
+	ZEPHYRA_QUEST_7_OPTION_2 = """[Фактор обаяния]Мы должны помогать нуждающимся.""",
 	ZEPHYRA_QUEST_7_OPTION_3 = """Не нужно лезть в церковную казну, я могу помочь вам сам (300 золотых).""",
 	ZEPHYRA_QUEST_8_1 = """Вы поддерживаете Зефиру и говорите, что вся эта ситуация кажется немного подозрительной. Женщина уходит с опущенным взглядом, а Зефира облегченно вздыхает.""",
 	ZEPHYRA_QUEST_8_2_GOOD = """{color=green|Успех}
@@ -13513,7 +13518,7 @@ ZEPHYRA_VISITOR_3_2 = """Посетитель: - Нееееет! Это дейс
 - Кажется, я читала о ней несколько раз. Это напоминает мне Кисть Лисьего Хвоста. Иллюзорный артефакт древнего происхождения. Некоторые говорят, что существует множество его копий, но их очень трудно получить и сохранить, отчасти потому, что они имеют тенденцию менять свою форму в зависимости от владельца или с течением времени. Причины таких изменений неясны.
 
 - Если вы можете вспомнить её внешний вид, мы можем попытаться провести для вас поисковое заклинание. Сделайте его рисунок как можно точнее. Это будет стоить 1.000 золотых, магический пергамент не дешев, вы же знаете.""",
-	ZEPHYRA_BRUSH_1_OPTION_1 = """Согласен (проверка мудрости) (Заплатить 1.000 золотых).""",
+	ZEPHYRA_BRUSH_1_OPTION_1 = """[Фактор мудрости] Согласен (Заплатить 1.000 золотых).""",
 	ZEPHYRA_BRUSH_1_OPTION_2 = """Я приду позже.""",
 	ZEPHYRA_BRUSH_2_1 = """{color=green|Success}
 
@@ -13523,7 +13528,7 @@ ZEPHYRA_VISITOR_3_2 = """Посетитель: - Нееееет! Это дейс
 Несмотря на все ваши усилия, ваш рисунок слишком дилетантский, а детали кисти слишком нечеткие. Заклинание мерцает и не срабатывает, заставляя вас пожалеть о том, что вы за него заплатили. """,
 	ZEPHYRA_BRUSH_3 = """Пробираясь по тускло освещенному залу, в конце его вы наконец замечаете небольшой импровизированный постамент, на котором покоится кисть. Несомненно, это та самая кисть, которую вы ищете. Однако, подойдя ближе, вы замечаете еще один силуэт, окруженный темной аурой, который также движется в направлении постамента с другой стороны.""",
 	ZEPHYRA_BRUSH_3_OPTION_1 = """*Позвать*""",
-ZEPHYRA_BRUSH_3_OPTION_2 = """Броситься схватить кисть {проверка физ. фактора}.""",
+ZEPHYRA_BRUSH_3_OPTION_2 = """Cхватить кисть [Физ. фактор].""",
 	ZEPHYRA_BRUSH_4_1 = """Когда вы окликнули ее, вы разобрали ее детали: это девушка с большим черным лисиным хвостом, одетая в темную одежду, соответствующую обстановке. Она не обращает внимания на ваши слова, пока небрежно не берет кисть и не поворачивается к вам. Она неторопливо вертит кисть в руках, глядя на вас с непонимающим выражением лица.
 
 
@@ -13650,7 +13655,7 @@ ZEPHYRA_BRUSH_6_OPTION_3 = """*Не говорить ничего и взять 
 	AMELIA_MAIN_GUILD_1_OPTION_1 = """Где Амелия?""",
 	AMELIA_MAIN_GUILD_1_OPTION_2 = """Чем вы так заняты?""",
 	AMELIA_MAIN_GUILD_1_OPTION_3 = """Я получил повестку на несколько вопросов.""",
-	AMELIA_MAIN_GUILD_2_1 = """- К сожалению, она... гм... в настоящее время недоступна. Пока что делами Гильдии занимаюсь я. Меня зовут Норлан из {color=yellow|Позолоченного Консорциума}. Если вам потребуется помощь по вопросам гильдии, я готов оказать ее. Однако, если ваш вопрос касается Амелии... Что ж, боюсь, пока это придется отложить.""",
+	AMELIA_MAIN_GUILD_2_1 = """{color=yellow|— К сожалению, она... гм... в настоящее время недоступна. Пока что делами Гильдии занимаюсь я. Меня зовут Норлан из} {color=yellow|Позолоченного Консорциума}. {color=yellow|Если вам потребуется помощь по вопросам гильдии, я готов оказать ее. Однако, если ваш вопрос касается Амелии... Что ж, боюсь, пока это придется отложить.}""",
 	AMELIA_MAIN_GUILD_2_2 = """- Произошли некоторые непредвиденные события, связанные с гильдией и ее членами. Однако вам не стоит беспокоиться, Мэр [name]. Могу заверить вас, что эти события никак не повлияют на наше деловое взаимодействие. Тем не менее, прежде чем двигаться дальше, необходим короткий период адаптации к новой ситуации.""",
 	AMELIA_MAIN_GUILD_2_3 = """Норлан: - Хм... Весьма интригующе. Я четко передал нашему секретарю, что мы не намерены причинять вам неудобства по таким пустякам.""",
 	AMELIA_MAIN_GUILD_2 = """Дверь кабинета резко распахивается, и в кабинет вбегает еще один человек. Он обладает плотным телосложением и относительно невысоким ростом. Его одежда безошибочно передает атмосферу роскоши и высокого социального положения.
@@ -14194,7 +14199,7 @@ AMELIA_TRIAL_NORMAL_1 = """Амелия: - О... Теперь понятно. С
 	AMELIA_INTERLUDE3_1_3 = """{color=red|Провал}
 
 - Мы благодарны вам за помощь, правда. Но гильдия должна выживать. А выживаем мы за счет торговли и прибыли. Мы не можем просто так отдать таких рабов, как Амелия, за пару монет. Я уверен, что вы понимаете, Мэр [name].""",
-	AMELIA_INTERLUDE3_1_OPTION_1 = """Немного требовательно к человеку, который помог гильдии так много, как я, не так ли? (Проверка обаяния).""",
+	AMELIA_INTERLUDE3_1_OPTION_1 = """[Фактор обаяния] Немного требовательно к человеку, который помог гильдии так много, как я, не так ли?.""",
 	AMELIA_INTERLUDE3_1_OPTION_2 = """Звучит справедливо.""",
 	AMELIA_INTERLUDE3_1_OPTION_3 = """У меня сейчас нет денег.""",
 	AMELIA_INTERLUDE3_1_OPTION_4 = """Вообще-то, я бы предпочел, чтобы Амелия вернулась к роли лидера.""",
@@ -14929,7 +14934,7 @@ LILIA_GOOD_ROUTE_3_BANDIT = """В следующее мгновение боль
 
 Лилия: - Погодите, [Master], вы действительно собираетесь забрать их к себе?""",
 
-	LILIA_GOOD_ROUTE_3_CHOICE_2_OPTION_1 = """[Проверка обаяния] Так будет лучше, к тому же, они были жестоки с тобой""",
+	LILIA_GOOD_ROUTE_3_CHOICE_2_OPTION_1 = """[Фактор обаяния] Так будет лучше, к тому же, они были жестоки с тобой""",
 	LILIA_GOOD_ROUTE_3_CHOICE_2_OPTION_2 = """Да, они сами виноваты, что попались""",
 	LILIA_GOOD_ROUTE_3_CHOICE_2_OPTION_3 = """Нет, я не всерьез""",
 
@@ -16798,10 +16803,10 @@ KURO_RECRUIT_OPT_CRYPTIC = """Ты можешь быть менее загадо
 Глаза Куро фокусируются на вас, мерцая красным, а рот кривится в опасной улыбке. 
 
 - Назови мне хоть одну причину, по которой я не должна просто убить тебя на месте?""",
-	KURO_RECRUIT_A_WEIGHT = """[Вызов силы] Эта угроза не имеет никакого веса.""",
-	KURO_RECRUIT_A_STOP = """[Вызов на ловкость] Я все еще могу остановить тебя до того, как ты это сделаешь, и даже сохранить тебе жизнь""",
-	KURO_RECRUIT_A_PURPOSE = """[Вызов мудрости] Потому что это будет противоречить твоей цели.""",
-	KURO_RECRUIT_A_WANT = """[Вызов убеждения] Потому что ты всегда хотела быть на моей стороне больше, чем убить меня.""",
+	KURO_RECRUIT_A_WEIGHT = """[Проверка силы] Эта угроза не имеет никакого веса.""",
+	KURO_RECRUIT_A_STOP = """[Проверка ловкости] Я все еще могу остановить тебя до того, как ты это сделаешь, и даже сохранить тебе жизнь""",
+	KURO_RECRUIT_A_PURPOSE = """[Проверка мудрости] Потому что это будет противоречить твоей цели.""",
+	KURO_RECRUIT_A_WANT = """[Проверка убеждения] Потому что ты всегда хотела быть на моей стороне больше, чем убить меня.""",
 	KURO_RECRUIT_A_DARE = """Ты не посмеешь...""",
 	KURO_RECRUIT_REPLY_A_DARE = """Куро разочарованно смотрит на вас, пока ее магия просачивается обратно.
 
@@ -17636,8 +17641,8 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	JEAN_FREE_QUEST_NAME = """Освободите Жанну""",
 	JEAN_FREE_QUEST_SUMMARY = """Выкупить Жанну из тюрьмы гномьего короля""",
 	JEAN_FREE_QUEST_PRICE = """Дварфийский король хочет получить вместо Жанны белокурую эльфийку-рабыню, иначе за нее придется заплатить 1000 золотых""",
-	KURO_TOME_QUEST_NAME = """Книга для Куро""",
-	KURO_TOME_QUEST_SUMMARY = """Помогите Куро получить доступ к библиотеке Алирона""",
+	KURO_TOME_QUEST_NAME = """Куро: Жажда знаний""",
+	KURO_TOME_QUEST_SUMMARY = """Помогите Куро получить доступ к библиотеке Майры""",
 	KURO_TOME_QUEST_LIBRARY = """Посетите гильдию магов""",
 	KURO_TOME_QUEST_MONEY = """Принесите 500 золотых Майре в гильдию магов""",
 	KURO_TOME_QUEST_CAPITAL = """Найдите виски сорта 'Позолоченная хватка' в гномьей столице""",
@@ -17648,34 +17653,39 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	LIRA_LOST_QUEST_NAME = """Потерявшаяся Лира""",
 	LIRA_LOST_QUEST_SUMMARY = """Помогите Лире выбраться из трясины""",
 	LIRA_LOST_QUEST_CAPITAL = """Доберитесь до эльфийской столицы""",
-	HELEVIEL_QUEST1_NAME = """Heleviel: New Perspective""", # MISSING TRANSLATION
-	HELEVIEL_QUEST1_SUMMARY = """Help the former High Priestess adapt to life in Aliron by working at the bar.""", # MISSING TRANSLATION
-	HELEVIEL_QUEST2_NAME = """Heleviel: Helping the weak""", # MISSING TRANSLATION
-	HELEVIEL_QUEST2_SUMMARY = """Due to her status, surely Heleviel should be capable of healer work.""", # MISSING TRANSLATION
-	HELEVIEL_QUEST3_NAME = """Heleviel: Redemption""", # MISSING TRANSLATION
-	HELEVIEL_QUEST3_SUMMARY = """Arrange an ritual in the elven capital to restore Heleviel's bond with Freya.""", # MISSING TRANSLATION
-	HELEVIEL_SLAVE_QUEST_NAME = """Heleviel: New Perspective""", # MISSING TRANSLATION
-	HELEVIEL_SLAVE_QUEST_SUMMARY = """Help the former High Priestess adapt to life in Aliron.""", # MISSING TRANSLATION
-	HELEVIEL_SLAVE_STAGE_1 = """Assign Heleviel to work as a waitress in Aliron.""", # MISSING TRANSLATION
-	HELEVIEL_SLAVE_STAGE_2 = """Visit the bar after a few days and oversee Heleviel's shift with the officials.""", # MISSING TRANSLATION
-	HELEVIEL_SLAVE_STAGE_3 = """Visit Aliron's church on Heleviel's behalf.""", # MISSING TRANSLATION
-	HELEVIEL_CITY_OPTION = """*Bring Heleviel to assist Ginny*""", # MISSING TRANSLATION
-	HELEVIEL_SLAVE_STAGE_4 = """Travel with Heleviel to the beastkin village and secure a silverleaf antidote.""", # MISSING TRANSLATION
-	HELEVIEL_CITY_OPTION_2 = """Speak with Savra""", # MISSING TRANSLATION
-	HELEVIEL_SLAVE_STAGE_5 = """Wait for some time.""", # MISSING TRANSLATION
-	HELEVIEL_SLAVE_STAGE_5_2 = """Arrange an ritual in the elven capital to restore Heleviel's bond with Freya.""", # MISSING TRANSLATION
-	HELEVIEL_SLAVE_STAGE_5_3 = """Pay for ritual""", # MISSING TRANSLATION
-	HELEVIEL_SLAVE_STAGE_5_4 = """Wait a day""", # MISSING TRANSLATION
-	HELEVIEL_CITY_OPTION_3 = """Speak about ritual""", # MISSING TRANSLATION
-	HELEVIEL_CITY_OPTION_4 = """Pay for ritual""", # MISSING TRANSLATION
-	HELEVIEL_CITY_OPTION_5 = """Attend the ritual""", # MISSING TRANSLATION
-	HELEVIEL_SLAVE_STAGE_6 = """Attend the ritual.""", # MISSING TRANSLATION
-	KURO_ERRAND_QUEST_NAME = "Мелкое поручение Куро",
+
+	HELEVIEL_QUEST1_NAME = "Хелевиэль: Новый взгляд",
+	HELEVIEL_QUEST1_SUMMARY = "Помогите бывшей Верховной Жрице адаптироваться к жизни в Алироне, устроив её работать в бар.",
+	HELEVIEL_QUEST2_NAME = "Хелевиэль: Помощь слабым",
+	HELEVIEL_QUEST2_SUMMARY = "Учитывая её статус, несомненно, Хелевиэль должна справляться с работой целительницы.",
+	HELEVIEL_QUEST3_NAME = "Хелевиэль: Искупление",
+	HELEVIEL_QUEST3_SUMMARY = "Организуйте ритуал в эльфийской столице, чтобы восстановить связь Хелевиэль с Фрейей.",
+	HELEVIEL_SLAVE_STAGE_1 = "Назначьте Хелевиэль работать официанткой в Алироне.",
+	HELEVIEL_SLAVE_STAGE_2 = "Позвольте Хелевиэль поработать официанткой некоторое время.",
+	HELEVIEL_SLAVE_STAGE_3 = "Посетите церковь Алирона от имени Хелевиэль.",
+	HELEVIEL_CITY_OPTION = "*Привести Хелевиэль помочь Джинни*",
+	HELEVIEL_SLAVE_STAGE_4 = "Отправьтесь с Хелевиэль в деревню зверолюдей и раздобудьте противоядие из серебряного листа.",
+	HELEVIEL_CITY_OPTION_2 = "Поговорить с Саврой",
+	HELEVIEL_SLAVE_STAGE_5 = "Посетить эльфийскую столицу.",
+	HELEVIEL_SLAVE_STAGE_5_3 = "Оплатить ритуал",
+	HELEVIEL_SLAVE_STAGE_5_4 = "Подождать день",
+	HELEVIEL_CITY_OPTION_3 = "Поговорить о ритуале",
+	HELEVIEL_CITY_OPTION_4 = "Оплатить ритуал",
+	HELEVIEL_CITY_OPTION_5 = "Присутствовать на ритуале",
+	HELEVIEL_SLAVE_STAGE_6 = "Присутствовать на ритуале",
+	
+	KURO_ERRAND_QUEST_NAME = "Куро: Исчезновение",
 	KURO_ERRAND_QUEST_SUMMARY = "Идти по таинственному следу",
 	KURO_ERRAND_QUEST_CHURCH = "Посетить Джинни в храме",
 	KURO_ERRAND_QUEST_INVITE = "Посетить внешний район Алирона, вы получили приглашение",
-	KURO_ERRAND_QUEST_SEARCH = "Поищите в тайнике подсказки о других подобных местах",
+	KURO_ERRAND_QUEST_SEARCH = "Завершите Поиск в тайнике подсказок о других подобных местах",
 	KURO_ERRAND_QUEST_BASE = "Зачистить основную базу культа",
+	
+	KURO_QUEST_3_NAME = "Куро: Отступничество",
+	KURO_QUEST_3_SUMMARY = "У Куро есть коварный план, касающийся её покровителя.",
+	KURO_QUEST_3_CRAFT = "Создайте Клетку Весперин, затем поговорите с Куро.",
+	KURO_QUEST_3_DEPTHS = "Исследуйте Хрустальные Глубины",
+	KURO_QUEST_3_DUNGEON = "Разобраться с Никс в Залах Плача",
 
 	DIALOGUEANAINITIATELP = """Анастасия приветствует вас с застенчивым лицом. Похоже, она еще не совсем привыкла к этой новой роли.
 
@@ -17831,10 +17841,10 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	LILITH_QUEST_FINISHED_DESCRIPTION = """Лилит удовлетворенно улыбается, услышав ваши слова, но за ее улыбкой вы чувствуете плохо скрываемое вожделение""",
 	LILITH_QUEST_UNFINISHED_TEXT = """Замужество? Не думаю, что нам пока стоит торопиться, [Master]""",
 	LILITH_QUEST_UNFINISHED_DESCRIPTION = """Лилит смотрит на вас с сомнением, чувствуя себя еще более отдаленной от вас""",
-	HELEVIEL_QUEST_FINISHED_TEXT = """Very well, after everything happened, I'm fully at your disposal. I'll follow your local customs if that's your request.""", # MISSING TRANSLATION
-	HELEVIEL_QUEST_FINISHED_DESCRIPTION = """Heleviel pauses at your offer and you spot her face blushing as she breathes in for the response.""", # MISSING TRANSLATION
-	HELEVIEL_QUEST_UNFINISHED_TEXT = """Marry on your customs? You surely jesting me. """, # MISSING TRANSLATION
-	HELEVIEL_QUEST_UNFINISHED_DESCRIPTION = """Heleviel looks at you with a poorly concealed scorn and disdain.""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_FINISHED_TEXT = "Что ж, после всего случившегося я полностью в вашем распоряжении. Я последую вашим местным обычаям, если это ваша просьба.",
+	HELEVIEL_QUEST_FINISHED_DESCRIPTION = "Хелевиэль замирает при вашем предложении, и вы замечаете, как её лицо краснеет, прежде чем она делает вдох для ответа.",
+	HELEVIEL_QUEST_UNFINISHED_TEXT = "Следовать вашим обычаям? Вы, несомненно, шутите надо мной.",
+	HELEVIEL_QUEST_UNFINISHED_DESCRIPTION = "Хелевиэль смотрит на вас с плохо скрываемым презрением и пренебрежением.",
 	AMELIA_PROPOSAL_TEXT = """О боже, я не ожидала, что ты заставишь меня покраснеть после всего этого. Конечно, это большая честь для меня.""",
 	AMELIA_PROPOSAL_DESCRIPT = """Амелия смотрит на вас со сдержанным удовлетворением, которое выдается ее легким видимым дрожанием""",
 	KURO_QUEST_FINISHED_TEXT = """Это предложение, о котором ты можете серьезно пожалеть. Поэтому я заставлю тебя сдержать его. """,
@@ -19126,8 +19136,8 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	QUEST_CULT_PARENTBASE_DESC = " ",
 	QUEST_STAR_CRATER_TEXT = "Место упавшей звезды",
 	QUEST_STAR_CRATER_DESC = "",
-	QUEST_DUNGEON_KURO_NIXX = """Wailing Halls""", # MISSING TRANSLATION
-	QUEST_DUNGEON_KURO_NIXX_DESCRIPT = """""", # MISSING TRANSLATION
+	QUEST_DUNGEON_KURO_NIXX = "Залы Плача",
+	QUEST_DUNGEON_KURO_NIXX_DESCRIPT = "",
 	#fixed_location_options
 	
 	ALIRON1 = """Осмотреть улицы""",
@@ -19153,7 +19163,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	ALIRON21 = """Поиск Зефиры""",
 	ALIRON22 = """Встретиться с Кетчем""",
 	ALIRON23 = """Проверить информацию об Амелии""",
-	ALIRON24 = """Approach the discreet merchant""", # MISSING TRANSLATION
+	ALIRON24 = "Проверить скромного торговца",
 	ALIRON_KURO_CHURCH = "Церковь Алирона",
 	ELF_CAPITAL1 = """Встретиться с Жрицей""",
 	ELF_CAPITAL2 = """Найти контрабандиста""",
@@ -19488,7 +19498,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	DATING_HUG_NEGATIVE_1 = """{^[name2]:[race2] [boy2]} ничего не делает, неловко ожидая, пока вы закончите""",
 	DATING_KISS_START_1 = """Вы медленно{^наклоняетесь:поворачиваетесь} к лицу {^[name2]:[race2] [boy2]}""",
 	DATING_KISS_POSITIVE_1 = """{^[name2]:[race2] [boy2]} {^нежно:мягко} целует вас в ответ""",
-	DATING_KISS_POSITIVE_2 = """{^[name2]:[race2] [boy2]} возвращает ваш поцелуй{^ закрывая глаза:}""",
+	DATING_KISS_POSITIVE_2 = """{^[name2]:[race2] [boy2]} возвращает ваш поцелуй{^ закрывая глаза:}.""",
 	DATING_KISS_EROTIC_1 = """{^[name2]:[race2] [boy2]} {^нетерпеливо:страстно:развратно} просовывает свой язык в ваш рот. Вы проводите некоторое время обнимая друг друга. Наконец [name2] отстраняется с {^счастливой:удовлетворенной} улыбкой""",
 	DATING_KISS_EROTIC_PUBLIC_1 = """{^[name2]:[race2] [boy2]} {^нетерпеливо:страстно:развратно} просовывает свой язык в ваш рот. Вы проводите некоторое время обнимая друг с друга, не обращая внимания на глазеющих людей. Наконец [name2] отстраняется с {^счастливой:довольной} улыбкой""",
 	DATING_KISS_NEGATIVE_1 = """[he2] неловко {^отворачивается:смотрит} в сторону, принимая ваш {^поцелуй:чмоканье} в щеку.""",
@@ -19711,7 +19721,9 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 После нескольких минут ничего не произошло, и [name] решает идти дальше.""",
 	HYBRIS_ALTAR_CHAR = """
 
-{color=green|Из алтаря исходит небольшое фиолетовое сияние и окутывает [name]. [Его движения внезапно замедляются, а глаза теряют фокус. Кажется, вы можете как-то повлиять на [him]...}""",
+{color=green|Из алтаря исходит небольшое фиолетовое сияние и окутывает [name]. [Его движения внезапно замедляются, а глаза теряют фокус. Кажется, вы можете как-то повлиять на [him]...}
+
+{color=yellow|Внимание: Порабощение персонажа заставит его потерять Универсальные Очки Мастерства от Фактора Роста, включая уже потраченные.}""",
 	HYBRIS_ALTAR_CHAR_FAIL = """
 
 {color=red|Из алтаря исходит небольшое фиолетовое сияние и окутывает [name], однако оно не кажется достаточно сильным, чтобы повлиять на [him]...}""",
@@ -19780,11 +19792,10 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	BODYUPGRADEDESCRIPT_UPGRADE_RESIST = """Сопротивление магии [name] позволит сводить на нет вражеские заклинания с вероятностью 25%.""",
 	BODYUPGRADENAME_UPGRADE_THICKBLOOD = """Густая кровь""",
 	BODYUPGRADEDESCRIPT_UPGRADE_THICKBLOOD = """[name] получит иммунитет к кровотечению и яду.""",
-	BODYUPGRADENAME_UPGRADE_BREEDER = """Breeder""", # MISSING TRANSLATION
-	BODYUPGRADEDESCRIPT_UPGRADE_BREEDER = """Allows breeding with any race.
-Pregnancy Debuffs are weaker
-Offspring will inherit only this parent's stats.""", # MISSING TRANSLATION
-
+	BODYUPGRADENAME_UPGRADE_BREEDER = "Breeder",
+	BODYUPGRADEDESCRIPT_UPGRADE_BREEDER = """Позволяет спариваться с любой расой.
+Дебаффы беременности слабее.
+Потомство унаследует характеристики только этого родителя.""",
 	QUALITYPOOR = """Плохое""",
 	QUALITYAVERAGE = """Среднее""",
 	QUALITYGOOD = """Хорошее""",
@@ -19915,12 +19926,12 @@ Offspring will inherit only this parent's stats.""", # MISSING TRANSLATION
 	ZEPHYRA_BATH_1_O_0 = """*Встать и уйти*""",
 	HELEVIEL_MANSION_1_O_0 = """*Просто оставить её в качестве рабыни.*""",
 	HELEVIEL_MANSION_1_O_1 = """*Преподать ей урок послушания.*""",
-	ANASTASIA_BLOWJOB_SS = "Принять от Анастасии \"Награду\"*",
+	ANASTASIA_BLOWJOB_SS = "Принять от Анастасии \"Награду\"",
 	ANASTASIA_WEDDING_SS = "Жениться на (бывшей) принцессе.",
 	ZEPHYRA_WEDDING_SS = "Обручиться с Зефирой",
-	HELEVIEL_BAR_SS = """Take an opportunity over Heleviel during her work hours""", # MISSING TRANSLATION
-	HELEVIEL_FOREST_SS = """Commit a public indecency with a reformed elven priestess.""", # MISSING TRANSLATION
-	HELEVIEL_WEDDING_SS = """Become a new life for former elven high priestess.""", # MISSING TRANSLATION
+	HELEVIEL_BAR_SS = "Воспользоваться ситуацией с Хелевиэль во время её рабочих часов",
+	HELEVIEL_FOREST_SS = "Совершить непристойный поступок на публике с исправившейся эльфийской жрицей.",
+	HELEVIEL_WEDDING_SS = "Обрести новую жизнь для бывшей эльфийской верховной жрицы.",
 	DAISY_CLOTHES_AMELIA_NEW_LEADER_REPLY_1 = """Вы объясняете Алиcе, что одному из ваших рабов нужна смена одежды.
 
 — Да, правильная одежда для слуг - одна из наших специализаций. Правильно подобранная одежда может многое изменить даже для не самых идеальных тел. Естественно, у нас есть портные, которые могут подогнать одежду под любой тип фигуры. Но что вы ищете?""",
@@ -19984,14 +19995,14 @@ Offspring will inherit only this parent's stats.""", # MISSING TRANSLATION
 	CHARRND_ATTENTION_REPLY_ENDORSE_A = "Ты ловишь взгляд [name] и едва киваешь, давая понять — можно играть по их правилам. [Он] колеблется, но расслабляется, отвечая незнакомцу с проблеском интереса. Позже [он] уходит с ним и возвращается с лёгкой усмешкой, оставляя историю при себе.",  
 	CHARRND_ATTENTION_REPLY_ENDORSE_B = "Ты наклоняешься и шепчешь [name], чтобы [he] развлёк незнакомца. [He] напрягается, на лице мелькает недовольство, но [he] кивает. [He] терпит внимание, оставаясь скованным, и возвращается в стрессе.",  
 	CHARRND_ATTENTION_REPLY_PROTECT = "Ты резко шагаешь вперёд, вставая между [name] и незнакомцем с предупреждением. Тот отступает, бормоча, а [name] выдыхает с дрожью. [His] плечи расслабляются, и [he] тихо благодарит, глядя с тёплотой и облегчением. Ты становишься [his] щитом, и [he] держится ближе к тебе.",  
-	CHARRND_TREASURE = """Вы находите [name] в одной из пыльных кладовых особняка — [he] склонился над небольшой горсткой монет и потускневшей серебряной безделушкой. [He] вздрагивает, заметив вас, и объясняет, что нашел это за ящиками, возможно, реликвию прошлых лет. [His] пальцы на мгновение сжимают добычу, в глазах мечутся восторг и неуверенность, пока [he] ждет вашего решения.  
+	CHARRND_TREASURE = """Вы находите [name] в одной из пыльных кладовых особняка — [he] склонился над небольшой горсткой монет и потускневшей серебряной безделушкой. [He] вздрагивает, заметив вас, и объясняет, что находка была за ящиками, возможно, это реликвия прошлых лет. [His] пальцы на мгновение сжимают добычу, в глазах мечутся восторг и неуверенность, пока [he] ждет вашего решения.  
 
 Сокровище небогатое, но достаточно ценное, чтобы привлечь внимание. [name] переминается с ноги на ногу, бросая взгляды то на вас, то на находку, не зная, вправе ли [he] оставить ее себе.""",  
 	CHARRND_TREASURE_OPT_TAKE = "Забрать себе",  
-	CHARRND_TREASURE_OPT_LET = "Оставить [name]",  
+	CHARRND_TREASURE_OPT_LET = "Позволить оставить",  
 	CHARRND_TREASURE_OPT_OWNER = "Найти владельца",  
 	CHARRND_TREASURE_REPLY_TAKE = "Вы забираете монеты и безделушку, объявляя их своей добычей. [name] хмурится, [his] плечи опускаются, но [he] не спорит. Сокровище звенит у вас в кармане, а вслед тянется [his] взгляд, тронутый горечью.",  
-	CHARRND_TREASURE_REPLY_LET = "Вы пожимаете плечами, разрешая [name] оставить находку. [His] лицо  озаряется, и [he] с благодарной улыбкой сжимает монеты. Спрятав сокровище, [he] заметно оживляется, и этот жест укрепляет [his] доверие к вам.",  
+	CHARRND_TREASURE_REPLY_LET = "Вы пожимаете плечами, разрешая [name] оставить добычу. [His] лицо озаряется, и [he] с благодарной улыбкой сжимает монеты. Спрятав сокровища, [he] заметно оживляется, и этот жест укрепляет [his] доверие к вам.",  
 	CHARRND_TREASURE_REPLY_OWNER = "Вы велите [name] помочь найти владельца, предположив, что вещи могли потерять недавние гости. [He] нехотя соглашается, и вместе вы проверяете записи и опрашиваете обитателей. В конце концов, сокровище возвращается удивленному хозяину.",
 	CHARRND_NIGHTMARE = """Ты слышишь приглушенный вскрик из комнаты [name] поздней ночью и заходишь внутрь, чтобы увидеть как [he] сидит, тяжело дыша с широко раскрытыми глазами. [He] сжимает одеяло, признаваясь, что кошмар разбудил [him] — что-то о тенях или старых страхах. [His] голос слегка дрожит, и [he] смотрит на тебя, уязвимый в мерцающем свете свечей.  
 
@@ -20091,7 +20102,7 @@ Offspring will inherit only this parent's stats.""", # MISSING TRANSLATION
 — Мастер, я получила это... письмо от жены солдата-повстанца. Она в отчаянии, умоляет меня найти её мужа. Он пропал без вести после окончания боёв. Пожалуйста, я знаю, что не в положении просить одолжений, но... поможете? Поможете его найти? Я... я не могу просто проигнорировать её мольбу. Она указала своё имя - Лиора, и я уверена, она поговорит с вами, если вы её найдёте.""",
 	ANA_LETTER_1_2 = """Анастасия моргает, застигнутая врасплох, затем собирается с духом, её голос дрожит, но звучит твёрдо.
 — Я... я сделаю всё, что вы попросите, Мастер. Абсолютно всё. Только помогите ей. Она уже потеряла всё.""",
-	ANA_LETTER_1_OPTION_1_1 = """I can't reject your plea when asked with such a sad face. I'll take care of it.""", # MISSING TRANSLATION
+	ANA_LETTER_1_OPTION_1_1 = "Я не могу отказать твоей просьбе, когда ты просишь с таким печальным лицом. Я позабочусь об этом.",
 	ANA_LETTER_1_OPTION_1 = "Всё ещё цепляешься за старые дела? Ладно, дай письмо, посмотрим, что можно сделать.",
 	ANA_LETTER_1_OPTION_2 = "Сосредоточься на своих обязанностях здесь, а не на чьих-то жалобах. Ты теперь моя рабыня, а не спасительница повстанцев, оставь это письмо при себе.",
 	ANA_LETTER_1_OPTION_3 = "Пропавший муж, говоришь? А что я получу, если потрачу на это своё время?",
@@ -20606,7 +20617,7 @@ Offspring will inherit only this parent's stats.""", # MISSING TRANSLATION
 
 """,
 	ENTER_CITY_T_0_METEOR = "— Разворачивайся, чужак. Город закрыт по указу короля.",
-	METEOR_ENTER_CITY_OPT_PASS = "*Показать пропуск от Сигмунда*",
+	METEOR_ENTER_CITY_OPT_PASS = "*Показать пропуск от Зигмунда*",
 	METEOR_ENTER_CITY_OPT_LEAVE = "*Уйти*",
 	METEOR_ENTER_CITY2 = "Стражник озирается по сторонам, затем жестом разрешает тебе пройти. Ворота тут же захлопываются за твоей спиной, но теперь ты можешь свободно перемещаться по городу.",
 	METEOR_DURIM_START = "Расспросив немногословных местных, ты узнаёшь, что Дурим держит лавку алхимика. Полчаса блужданий по задымлённым переулкам — и ты у массивного каменного здания с хлипкой вывеской в виде колбы.",
@@ -20620,7 +20631,7 @@ Offspring will inherit only this parent's stats.""", # MISSING TRANSLATION
 	METEOR_DURIM_LET = """Ты сдаёшься, протягивая метеорит. Дурим с хихиканьем выхватывает его с горящими глазами.
 
 """,
-	METEOR_DURIM_FOUNDME = """— Да, да! Он сам меня нашёл, пришёл через тебя!
+	METEOR_DURIM_FOUNDME = """— Да, да! Он сам меня нашёл, принёс себя твоими руками!
 
 Он сразу начинает работать, поливая камень шипящими кислотами и обрабатывая инструментами. Искры разлетаются, когда он извлекает маленький сверкающий кусочек чистого металла, его поверхность ловит тусклый свет мастерской. Он небрежно бросает его тебе, уже поворачиваясь обратно к своим экспериментам.""",
 	METEOR_DURIM_WIN = """После яростной борьбы Дурим падает, стонет, притворяясь мёртвым. Пока ты стоишь в замешательстве, он внезапно подскакивает с удивительной скоростью, выхватывая метеорит из твоих рук.
@@ -20906,256 +20917,628 @@ Offspring will inherit only this parent's stats.""", # MISSING TRANSLATION
 	EMP_ERDYNA_INTRO_12 = """Ты замолкаешь, тяжесть твоей миссии нависает над тобой, пока сырой холод переулка проникает в кости. Подумав, ты решаешь, что местный проводник не помешает. Ты кратко объясняешь свою цель — найти древние артефакты или узнать о культе. Глаза Эрдины сверкают, когда она одобрительно кивает.
 
 — Понятно, понятно... Старые реликвии, религиозные штучки? Я знаю идеальное место, чтобы покопаться в такой информации. История и храмы здесь не в почёте, так что тебе повезло, что я знаю нужного человека. Пошли.""",
-	KURO3_DIALOGUE_INIT = """So, what's up with the artifacts we're dealing with?""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_1 = """Kuro takes a long look at your face, trying to figure out if you're joking.
+	KURO3_DIALOGUE_INIT = "Итак, что за артефакты, с которыми мы имеем дело?",
+	KURO3_DIALOGUE_1 = """Куро долго смотрит тебе в лицо, пытаясь понять, шутишь ты или нет.
 
-- You really don't know anything, yet you decided to drag yourself into this whole mess? It's hard to believe how careless you are. But I guess that's to be expected from you.
+— Ты правда ничего не знаешь, но всё же ввязался во всю эту кашу? Трудно поверить, насколько ты беспечен. Хотя, чего ещё ожидать от тебя.
 
-- Say, what do you know about the gods?""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_1_OPTION_1 = """They're like watching over us, rewarding us for good deeds?""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_1_OPTION_2 = """They must walk among us, just like you and me.""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_1_OPTION_3 = """I haven't thought much about them.""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_2_1 = """- *Sigh* That's the last thing that matters in your situation.""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_2_2 = """- Yeah, I can see the pattern. Well, nonetheless.""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_2 = """- The mortal world we see and live in is perishable. Everything grows old, gets sick and damaged, and is eventually destroyed, losing all form. The only things that transcend it are concepts—the idea of how you can be remembered even after death in people's minds. The gods have strong connections to these very concepts, which is why their powers can overcome physical boundaries with relative ease.""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_2_OPTION_1 = """How does this connect to the whole artifact collection ordeal?""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_2_OPTION_2 = """I don't really care about all this smart-ass crap.""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_3_1 = """- Causal adequacy dictates that everything must have a beginning. While some gods may have acquired their status from preceding god-entities and others have ascended to godhood from mortal beings, there must still have been an origin to the world itself. The artifacts the cult, and you, are after are seemingly tied to the very first god, one whose name has even been lost in our ever-degrading world.""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_3_2 = """- He had many names, but it matters little now. Either way, your real problem is the cult — and even more so, the oldest sister, Rouge.""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_3_3 = """- There's not much to tell; she's exactly what she looks like. A tyrant who only respects power and at times is little more than a wild beast. Her raw strength is unparalleled. I'd need at least five or six copies of myself to stand a real chance against her, so it's best to avoid getting into fight with her if possible.""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_3_4 = """- Obviously, she and I are on your side, but since she's a dunce who only acts on instinct... I hate it, but her ability to be stupid is incredible. No, I guess that comes off wrong. Thing is that her instincts shouldn't be taken lightly and she is more useful than not.""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_3_OPTION_1 = """So, you know what that god was called?""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_3_OPTION_2 = """Can you tell me about Rouge?""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_3_OPTION_3 = """What about Zephyra?""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_3_OPTION_4 = """How exactly are the three of you connected to me""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_3_OPTION_5 = """Thanks for the information.""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_4_1 = """Kuro flashes a smug smile before answering.
+— Скажи, что ты знаешь о богах?""",
+	KURO3_DIALOGUE_1_OPTION_1 = "Они словно присматривают за нами, награждая за добрые дела?",
+	KURO3_DIALOGUE_1_OPTION_2 = "Должно быть, они ходят среди нас, прямо как ты и я.",
+	KURO3_DIALOGUE_1_OPTION_3 = "Я не особо задумывался о них.",
+	KURO3_DIALOGUE_2_1 = "— *Вздох* Это меньшее, что должно волновать в твоей ситуации.",
+	KURO3_DIALOGUE_2_2 = "— Да, я вижу закономерность. Что ж, тем не менее.",
+	KURO3_DIALOGUE_2 = "— Смертный мир, который мы видим и в котором живём, тленен. Всё стареет, болеет, повреждается и в конечном счёте разрушается, теряя форму. Единственное, что превосходит его — это концепции, идеи о том, как тебя могут помнить даже после смерти в умах людей. Боги имеют прочные связи с этими самыми концепциями, поэтому их силы могут с относительной лёгкостью преодолевать физические границы.",
+	KURO3_DIALOGUE_2_OPTION_1 = "Как это связано со всей этой историей со сбором артефактов?",
+	KURO3_DIALOGUE_2_OPTION_2 = "Меня не волнует вся эта умная чепуха.",
+	KURO3_DIALOGUE_3_1 = "— Причинная адекватность диктует, что у всего должно быть начало. Хотя некоторые боги, возможно, получили свой статус от предшествующих божественных сущностей, а другие вознеслись до божественности из смертных существ, у самого мира всё равно должен был быть исток. Артефакты, за которыми охотится культ (и ты), по-видимому, связаны с самым первым богом, чьё имя было утрачено в нашем вечно деградирующем мире.",
+	KURO3_DIALOGUE_3_2 = "— У него было много имён, но сейчас это не имеет значения. В любом случае, твоя реальная проблема — это культ, и, что ещё важнее, старшая сестра Руж.",
+	KURO3_DIALOGUE_3_3 = "— Рассказывать особенно нечего; она именно та, кем кажется. Тиран, уважающий только силу, временами не более чем дикий зверь. Её грубая мощь не имеет себе равных. Мне понадобилось бы как минимум пять или шесть своих копий, чтобы иметь реальный шанс против неё, так что лучше по возможности избегать с ней драки.",
+	KURO3_DIALOGUE_3_4 = "— Очевидно, что и она, и я — на твоей стороне, но поскольку она болван, действующий лишь по инстинкту... ненавижу это признавать, но её способность быть глупой невероятна. Нет, пожалуй, это звучит не так. Дело в том, что её инстинктами нельзя пренебрегать, и она скорее полезна, чем нет.",
+	KURO3_DIALOGUE_3_OPTION_1 = "Итак, ты знаешь, как звали того бога?",
+	KURO3_DIALOGUE_3_OPTION_2 = "Можешь рассказать о Роуж?",
+	KURO3_DIALOGUE_3_OPTION_3 = "А что насчёт Зефиры?",
+	KURO3_DIALOGUE_3_OPTION_4 = "Как именно вы трое связаны со мной?",
+	KURO3_DIALOGUE_3_OPTION_5 = "Спасибо за информацию.",
+	KURO3_DIALOGUE_4_1 = """Куро вспыхивает самодовольной улыбкой, прежде чем ответить.
 
-- What makes you think I know that? There must be something special about you, isn't there? Shouldn't you know what makes you special? *Chuckle*""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_4_2 = """- That's not true. I haven't told a single lie here yet..""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_4_OPTION_1 = """You're obviously lying. Why don't you just say it?""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_4_OPTION_2 = """Withholding that information is what lets you enjoy having some control over me?""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_4_OPTION_3 = """Forget it...""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_5 = """Kuro's grin widens, her eyes flashing with particular joy.
+— А с чего ты взял, что я это знаю? Должно же быть в тебе что-то особенное, разве нет? Разве не тебе следует знать, что делает тебя особенным? *Усмехается*""",
+	KURO3_DIALOGUE_4_2 = "— Это неправда. Я ещё не сказала здесь ни единой лжи.",
+	KURO3_DIALOGUE_4_OPTION_1 = "Ты явно лжёшь. Почему бы просто не сказать?",
+	KURO3_DIALOGUE_4_OPTION_2 = "Утаивание этой информации позволяет тебе наслаждаться контролем надо мной?",
+	KURO3_DIALOGUE_4_OPTION_3 = "Забудь...",
+	KURO3_DIALOGUE_5 = """Ухмылка Куро расширяется, её глаза вспыхивают особой радостью.
 
-- This mental sharpness of yours is exactly what makes it all truly... fun.
+— Эта твоя умственная острота именно то, что делает всё по-настоящему... забавным.
 
-Before you can respond, Kuro retreats in her usual style, fading into the shadows.""", # MISSING TRANSLATION
-	KURO3_DIALOGUE_6 = """- Then why don't you just stick to doing what you feel like doing? You won't waste my time or yours. And given that you've been successful so far, I don't think you need me telling you what to do.
+Прежде чем ты успеваешь ответить, Куро отступает в своём обычном стиле, растворяясь в тенях.""",
+	KURO3_DIALOGUE_6 = """— Тогда почему бы тебе просто не делать то, что тебе хочется? Ты не будешь тратить ни моё, ни своё время. И, учитывая твои успехи до сих пор, не думаю, что тебе нужно, чтобы я указывала, что делать.
 
-Despite your rude response, Kuro takes no offense. She quickly retreats in her usual style, fading into the shadows.""", # MISSING TRANSLATION
-	KURO3_INIT_1_1 = """Today Kuro has approached you.
+Несмотря на твой грубый ответ, Куро не обижается. Она быстро отступает в своём обычном стиле, растворяясь в тенях.""",
+	KURO3_INIT_1_1 = """Сегодня Куро сама подошла к тебе.
 
-- It's time we take care of Nixx. I'll need your help with this.
+— Пора разобраться с Никс. Мне понадобится твоя помощь в этом.
 
-Her tone is far more demanding than pleading.
+Её тон скорее требовательный, чем умоляющий.
 
-- Thanks to the book from the elf woman, I've finally found a way to deal with her. But you'll have to help me.""", # MISSING TRANSLATION
-	KURO3_INIT_1_2 = """- Yes. Haven't I just said so? We don't have much of an option here. Unlike me, she won't abandon the cult's alliance and side with you. It was obvious the moment I joined her. Even after fooling her last time, it's way too dangerous to keep her unchecked. Besides, I plan to make use of her powers for us.""", # MISSING TRANSLATION
-	KURO3_INIT_1_3 = """Kuro lets out a demonstrative sigh slightly rolling her eyes. 
+— Благодаря книге от эльфийки я наконец нашла способ справиться с ней. Но тебе придётся помочь мне.""",
+	KURO3_INIT_1_2 = "— Да. Разве я не сказала? У нас не так уж много вариантов. В отличие от меня, она не покинет союз с культом и не перейдёт на твою сторону. Это было очевидно с момента моего присоединения к ней. Даже после того, как мы обманули её в прошлый раз, оставлять её без контроля слишком опасно. Кроме того, я планирую использовать её силы для нас.",
+	KURO3_INIT_1_3 = """Куро демонстративно вздыхает, слегка закатывая глаза.
 
-- Okay, look. I'm fundamentally incapable of betraying you, just like Zephyra. It's time for you to accept that and move on with this mission.""", # MISSING TRANSLATION
-	KURO3_INIT_1_OPTION_1 = """Are you planning to betray her?""", # MISSING TRANSLATION
-	KURO3_INIT_1_OPTION_2 = """Can I really trust you?""", # MISSING TRANSLATION
-	KURO3_INIT_1_OPTION_3 = """Let's say you've persuaded me. What do we do?""", # MISSING TRANSLATION
-	KURO3_INIT_2 = """- Great, we shouldn't waste time. I've learned the incantation from Myr's book, but before we confront her, you'll need to prepare a magic catalyst. Challenging a goddess, especially an ancient one, will require more than a few spells.
+— Ладно, слушай. Я в принципе неспособна предать тебя, как и Зефира. Тебе пора принять это и двигаться дальше с этой миссией.""",
+	KURO3_INIT_1_OPTION_1 = "Ты планируешь предать её?",
+	KURO3_INIT_1_OPTION_2 = "Могу ли я тебе действительно доверять?",
+	KURO3_INIT_1_OPTION_3 = "Допустим, ты меня убедила. Что нам делать?",
+	KURO3_INIT_2 = """— Отлично, нам не стоит терять время. Я выучила заклинание из книги Мир, но прежде чем мы столкнёмся с ней, тебе нужно подготовить магический катализатор. Бросать вызов богине, особенно древней, потребует большего, чем несколько заклинаний.
 
-Kuro pulls an ancient-looking scroll from behind her back and hands it to you with a stern look. As you scan it, you spot many notes in Kuro's handwriting, explaining the materials and processes for crafting it.
+Куро достаёт из-за спины древний на вид свиток и вручает его тебе с суровым взглядом. Просматривая его, ты замечаешь множество пометок почерком Куро, объясняющих материалы и процессы создания.
 
-- I want you to make this. It's the Vesperine Cage, capable of containing her powers. Once it's done, we'll go after her.""", # MISSING TRANSLATION
-	KURO3_INIT_3_OPTION = """*Show Vesperine Cage to Kuro*""", # MISSING TRANSLATION
-	KURO3_INIT_3 = """Kuro fiddles with the crafted device in her hands for a moment before tucking it behind her back.
+— Я хочу, чтобы ты сделал это. Это Клетка Весперин, способная сдержать её силы. Как только она будет готова, мы пойдём за ней.""",
+	KURO3_INIT_3_OPTION = "*Показать Куро Клетку Весперин*",
+	KURO3_INIT_3 = """Куро немного повертит в руках созданное устройство, прежде чем убрать его за спину.
 
-- Pretty good. Consider that high praise. I don't give it often. It's time for our first move. We head to Crystaldepths, it was her last residing location that I knew of.""", # MISSING TRANSLATION
-	KURO3_DEPTHS_OPTION = """Search for Nixx follower""", # MISSING TRANSLATION
-	KURO3_DEPTHS_1 = """You follow Kuro as she confidently navigates deeper into the settlement, down one of the pathways, until she reaches a small house.
+— Довольно хорошо. Считай это высокой похвалой. Я редко её раздаю. Пора делать первый ход. Мы направляемся в Хрустальные Глубины — это последнее известное мне место её пребывания.""",
+	KURO3_DEPTHS_OPTION = "Искать последователя Никс",
+	KURO3_DEPTHS_1 = """Ты следуешь за Куро, пока она уверенно углубляется в поселение, спускаясь по одной из тропинок, пока не достигает небольшого дома.
 
-She barges in leisurely, revealing the living conditions of a missing family, complete with a few children's toys. A quick look around reveals a cellar door.""", # MISSING TRANSLATION
-	KURO3_DEPTHS_2 = """The cellar turns out to be much more spacious than expected, with a small tunnel leading deeper into the caves. Kuro doesn't hesitate, quickly spotting her target.
+Она небрежно вваливается внутрь, обнажая жилище пропавшей семьи, с несколькими детскими игрушками. Быстрый осмотр обнаруживает дверь в подвал.""",
+	KURO3_DEPTHS_2 = """Подвал оказывается гораздо более просторным, чем ожидалось, с небольшим туннелем, ведущим глубже в пещеры. Куро не колеблется, быстро находя свою цель.
 
-A short yelp echoes as Kuro drags a clothed figure of a man into the light. By his attire, he seems to be the house owner.
+Короткий вскрик эхом разносится, когда Куро вытаскивает одетую фигуру мужчины на свет. По его одежде он, кажется, хозяин дома.
 
-Kuro: - Long time no see, Cerab. Nixx has moved out of here, hasn't she? Looks like you're still her main guy around here.
+Куро: — Давно не виделись, Сераб. Никс съехала отсюда, не так ли? Похоже, ты всё ещё её главный парень здесь.
 
-Cerab: - Y-you... So it is true you've turned on her!""", # MISSING TRANSLATION
-	KURO3_DEPTHS_3 = """Black tendrils controlled by Kuro keep the man tightly restrained, allowing him only to speak.
+Сераб: — Т-ты... Так это правда, что ты предала её!""",
+	KURO3_DEPTHS_3 = """Чёрные щупальца под контролем Куро плотно удерживают мужчину, позволяя ему только говорить.
 
-Kuro: - Tell me where you've taken her.
+Куро: — Скажи мне, куда вы её переправили.
 
-Cerab defiantly turns his head away, signaling his refusal to speak. Kuro, displeased, glares at him and unleashes her powers.
+Сераб вызывающе отворачивается, давая понять, что отказывается говорить. Куро, недовольная, сверлит его взглядом и высвобождает свои силы.
 
-Cerab: - Ghhh... Argh!.. This test of my devotion is nothing!""", # MISSING TRANSLATION
-	KURO3_DEPTHS_4 = """Kuro: - So you want to do it the hard way? No pity for your family? They might lose their husband and father.
+Сераб: — Гххх... Аргх!.. Это испытание моей преданности — ничто!""",
+	KURO3_DEPTHS_4 = """Куро: — Значит, хочешь по-плохому? Не жаль свою семью? Они могут потерять мужа и отца.
 
-Kuro's voice sounds deadly serious. She clearly has no remorse about torturing the man until she gets what she wants.
+Голос Куро звучит смертельно серьёзно. Она явно не испытывает угрызений совести по поводу пыток, пока не получит желаемое.
 
-Cerab: - Hah, you should know our families are little more than a cover. Do your worst, you apostate!
+Сераб: — Хах, тебе следует знать, что наши семьи — не более чем прикрытие. Делай своё худшее, отступница!
 
-Kuro: - Stubborn man. I'm no torture expert, but since you've left me no choice...""", # MISSING TRANSLATION
-	KURO3_DEPTHS_4_OPTION_1 = """Don't do it; we'd better find someone else around here to get this information from. (1000 gold)""", # MISSING TRANSLATION
-	KURO3_DEPTHS_4_OPTION_2 = """Let me get it straight from his mind instead.""", # MISSING TRANSLATION
-	KURO3_DEPTHS_4_OPTION_3 = """*Stay quiet*""", # MISSING TRANSLATION
-	KURO3_DEPTHS_5 = """You insist on sparing the man from Kuro's gruesome approach and head back into the settlement. The hefty sum of coins you've prepared as a reward quickly loosens a few tongues, revealing the details of Nixx's true altar transportation, which was assisted by a couple of locals. Connecting the dots, you and Kuro realize it was taken to ancient underground ruins not far from this region.""", # MISSING TRANSLATION
-	KURO3_DEPTHS_6 = """Kuro steps aside as you begin chanting your mind-reading spell. Unsurprisingly, Cerab resists as best he can, but your expertise allows you to breach his mind soon enough, forcing him to reveal the location of Nixx's true altar: ancient underground ruins not far from this region. Kuro seems satisfied with the answer; she nods and leads you away.
+Куро: — Упрямец. Я не специалист по пыткам, но раз ты не оставил мне выбора...""",
+	KURO3_DEPTHS_4_OPTION_1 = "Не делай этого; лучше найдём кого-то ещё здесь, чтобы добыть информацию. (1000 золота)",
+	KURO3_DEPTHS_4_OPTION_2 = "Позволь мне извлечь это прямо из его разума. [Мастерство разума]",
+	KURO3_DEPTHS_4_OPTION_3 = "*Остаться в стороне*",
+	KURO3_DEPTHS_5 = "Ты настаиваешь на том, чтобы избавить мужчину от жуткого подхода Куро, и возвращаешься в поселение. Приличная сумма монет, приготовленная тобой в качестве награды, быстро развязывает несколько языков, раскрывая детали перевозки истинного алтаря Никс, в которой помогали несколько местных. Сложив всё воедино, вы с Куро понимаете, что его перевезли в древние подземные руины неподалёку от этого региона.",
+	KURO3_DEPTHS_6 = """Куро отступает в сторону, когда ты начинаешь читать заклинание чтения мыслей. Неудивительно, что Сераб сопротивляется как может, но твоё мастерство позволяет тебе вскоре прорваться в его разум, вынудив его раскрыть местонахождение истинного алтаря Никс: древние подземные руины неподалёку от этого региона. Куро, кажется, удовлетворена ответом; она кивает и уводит тебя.
 
-Kuro: - I'm slightly ashamed that it didn't occur to me. I'll have to admit that was rather cunning of you.""", # MISSING TRANSLATION
-	KURO3_DEPTHS_7 = """You and Kuro stay quiet as the torture continues. The black tendrils slowly pierce the man's flesh, tearing through skin and peeling it off. His cries of pain, though loud, are conveniently muffled underground. His breathing turns ragged from the pain, but Kuro ensures the damage won't kill him outright.
+Куро: — Мне немного стыдно, что мне это не пришло в голову. Придётся признать, что это было довольно хитро с твоей стороны.""",
+	KURO3_DEPTHS_7 = """Вы с Куро молчите, пока пытка продолжается. Чёрные щупальца медленно пронзают плоть мужчины, разрывая кожу и сдирая её. Его крики боли, хотя и громкие, удобно заглушаются под землёй. Его дыхание становится прерывистым от боли, но Куро следит, чтобы повреждения не убили его сразу.
 
-Cerab: - F...fuck you... just... just kill me...
+Сераб: — Да...пошла ты... просто... просто убей меня...
 
-With a crunchy sound, a nail is torn off, followed by an even louder cry.
+С хрустящим звуком отрывается ноготь, за которым следует ещё более громкий крик.
 
-Kuro: - Don't feel too bad for him; he's killed and sacrificed more than a few victims to her. I wonder if you'd beg for mercy if I didn't know that.""", # MISSING TRANSLATION
-	KURO3_DEPTHS_8 = """As time passes, you notice a few things. The torture is scarily pragmatic: not only is life-threatening damage kept to a minimum, but Kuro takes irregular breaks, making each resumption more unpredictable and unnerving. Minutes feel like hours, keeping you constantly aware of possible interruptions from outsiders, but none come.
+Куро: — Не слишком сочувствуй ему; он убил и принёс в жертву ей не одну жертву. Интересно, стал бы ты умолять о пощаде, если бы я этого не знала.""",
+	KURO3_DEPTHS_8 = """С течением времени ты замечаешь кое-что. Пытка пугающе прагматична: не только угрожающие жизни повреждения сводятся к минимуму, но Куро делает нерегулярные перерывы, делая каждое возобновление более непредсказуемым и тревожным. Минуты кажутся часами, постоянно держа тебя в осознании возможных помех извне, но никто не приходит.
 
-Kuro: - Shall we try the teeth or an eye next?
+Куро: — Может, попробуем зубы или глаз следующим?
 
-Kuro's voice is empty, gnawing on the man's spirit no less than the lasting pain.""", # MISSING TRANSLATION
-	KURO3_DEPTHS_9 = """Finally, the cultist breaks down entirely.
+Голос Куро пуст, подтачивая дух мужчины не меньше, чем длящаяся боль.""",
+	KURO3_DEPTHS_9 = """Наконец, культист полностью ломается.
 
-Cerab: - N-no... Stop... I will tell you... Just, please... Stop...
+Сераб: — Н-нет... Хватит... Я скажу вам... Только, пожалуйста... Остановитесь...
 
-Kuro: - Just don't think you can lie to me.
+Куро: — Только не думай, что сможешь солгать мне.
 
-As the man collapses to the ground, released from his torture, he slowly explains how Nixx's true altar was moved to ancient underground ruins not far from here. Kuro seems satisfied; she nods and leads you away, leaving her victim half-dead.""", # MISSING TRANSLATION
-	KURO3_DEPTHS_10_1 = """Kuro: - Looks like she suspected something might happen after last time. Those ruins won't be easy to explore.""", # MISSING TRANSLATION
-	KURO3_DEPTHS_10_2 = """Kuro: - He's no danger to us. Once we deal with Nixx, the other followers will blame him for betraying her and make him suffer even more.""", # MISSING TRANSLATION
-	KURO3_DEPTHS_10_3 = """Kuro: - Maybe. But this had to be done. Nixx is too dangerous to leave as the cult's ally. You already know what I could do with her powers, don't you?""", # MISSING TRANSLATION
-	KURO3_DEPTHS_10_4 = """Kuro: - Nixx was once a deity of the night—that is, until all light died out, and she became what she is now. Darkness holds many secrets, and that's partly why I sided with her, though her powers are formidable too. Everything has a price; someone like Zephyra could never become her champion.""", # MISSING TRANSLATION
-	KURO3_DEPTHS_10_OPTION_1 = """Shouldn't we finish off that man?""", # MISSING TRANSLATION
-	KURO3_DEPTHS_10_OPTION_2 = """You've gone way too far with that.""", # MISSING TRANSLATION
-	KURO3_DEPTHS_10_OPTION_3 = """Can you tell me more about her?""", # MISSING TRANSLATION
-	KURO3_DEPTHS_10_OPTION_4 = """Alright, let's go then.""", # MISSING TRANSLATION
-	KURO3_DEPTHS_11 = """Kuro: - Yes. Now the real hard part begins. This could get really dangerous, so let's do our best.""", # MISSING TRANSLATION
-	KURO3_DUNGEON_1 = """As you navigate the dark, moist halls, Kuro suddenly stops you. Giving her a puzzled look, you see her investigating one of the brick walls.
+Когда мужчина падает на землю, освобождённый от пыток, он медленно объясняет, как истинный алтарь Никс был перемещён в древние подземные руины неподалёку отсюда. Куро, кажется, удовлетворена; она кивает и уводит тебя, оставляя свою жертву полумёртвой.""",
+	KURO3_DEPTHS_10_1 = "Куро: — Похоже, она заподозрила, что что-то может случиться после прошлого раза. Исследовать те руины будет непросто.",
+	KURO3_DEPTHS_10_2 = "Куро: — Он не представляет для нас опасности. Как только мы разберёмся с Никс, остальные последователи обвинят его в предательстве и заставят страдать ещё больше.",
+	KURO3_DEPTHS_10_3 = "Куро: — Возможно. Но это было необходимо. Никс слишком опасна, чтобы оставлять её союзницей культа. Ты уже знаешь, что я могла бы сделать с её силами, не так ли?",
+	KURO3_DEPTHS_10_4 = "Куро: — Никс когда-то была божеством ночи — до тех пор, пока весь свет не угас, и она не стала той, кем является теперь. Тьма хранит множество секретов, и отчасти поэтому я встала на её сторону, хотя её силы тоже внушительны. Всё имеет свою цену; кто-то вроде Зефиры никогда не смог бы стать её чемпионом.",
+	KURO3_DEPTHS_10_OPTION_1 = "Разве нам не стоит прикончить того мужчину?",
+	KURO3_DEPTHS_10_OPTION_2 = "Ты зашла слишком далеко с этим.",
+	KURO3_DEPTHS_10_OPTION_3 = "Можешь рассказать о ней подробнее?",
+	KURO3_DEPTHS_10_OPTION_4 = "Ладно, тогда пошли.",
+	KURO3_DEPTHS_11 = """Куро: — Да. Теперь начинается самая сложная часть. Это может стать очень опасным, так что давай сделаем всё возможное.""",
 
-- They tried to hide it well.
 
-She begrudgingly inserts her hand into a crack, and with a clicking sound, part of the wall slides aside.
+	KURO3_DUNGEON_1 = """Пока вы пробираетесь по тёмным, сырым залам, Куро внезапно останавливает тебя. Ты смотришь на неё с недоумением и видишь, как она изучает одну из кирпичных стен.
 
-- Come on. I can feel she's here.""", # MISSING TRANSLATION
-	KURO3_DUNGEON_2 = """Entering the secret room, you closely follow Kuro's steps as she ensures you don't alert anything. Finally, you come across an intricate wall framed with stone pillars and an effigy made of some dark material.
+— Они хорошо попытались это скрыть.
 
-Kuro: - She seems to be in slumber now. Let's not waste time.""", # MISSING TRANSLATION
-	KURO3_DUNGEON_3 = """She quickly pulls out the Vesperine Cage, activates it, and points it at the wall. Its ethereal light illuminates the room, but the dark fog around the effigy remains motionless.
+Она с неохотой просовывает руку в трещину, и со щелчком часть стены отъезжает в сторону.
 
-Kuro: - Stay alert. This should seal her powers in moments.""", # MISSING TRANSLATION
-	KURO3_DUNGEON_4 = """In the Cage's light, the floating black mass becomes more solid and visible. Despite both of you trying to stay calm, it lasts only a moment before it begins squirming chaotically. A distant, grave voice echoes in your head.
+— Пошли. Я чувствую, что она здесь.""",
 
-Nixx: - Finally shown yourself? Think you can stop me with this little thing?
+	KURO3_DUNGEON_2 = """Войдя в потайную комнату, ты внимательно следуешь за шагами Куро, пока она следит, чтобы ты ничего не спровоцировал. Наконец, вы натыкаетесь на замысловатую стену, обрамлённую каменными колоннами, и изваяние из какого-то тёмного материала.
 
-Kuro: - Damn it, you should've stayed down!
+Куро: — Кажется, она сейчас в спячке. Не будем терять время.""",
 
-Kuro is clearly frustrated by her plan going awry but remains determined.""", # MISSING TRANSLATION
-	KURO3_DUNGEON_5 = """Despite Nixx's energy being mostly contained by the Cage's focused beam, she finds an opening and launches a deadly attack in your direction.
+	KURO3_DUNGEON_3 = """Она быстро достаёт Клетку Весперии, активирует её и направляет на стену. Её эфирный свет озаряет комнату, но тёмный туман вокруг изваяния остаётся неподвижным.
 
-Nixx: - You've made a mistake not coming alone.
+Куро: — Будь настороже. Это должно запечатать её силы в считанные мгновения.""",
 
-Kuro: - Grh... Curses!
+	KURO3_DUNGEON_4 = """В свете Клетки парящая чёрная масса становится более плотной и видимой. Несмотря на то, что вы оба пытаетесь сохранять спокойствие, это длится лишь мгновение, прежде чем она начинает хаотично извиваться. В ваших головах эхом отдаётся далёкий, могильный голос.
 
-Kuro's concentration breaks as she moves to protect you, which is just enough for Nixx to follow up with an overwhelming energy mass that swallows you both.""", # MISSING TRANSLATION
-	KURO3_DUNGEON_6 = """You find yourself in a wall-less space where only dim darkness surrounds you. Next to you, Kuro rubs her forehead in defeat. As you try to get information from her, the awfulness of your situation dawns on you.
+Никс: — Наконец-то показалась? Думаешь, сможешь остановить меня этой безделушкой?
 
-Kuro: - It's over, we've lost. She's trapped us in her pocket dimension. There's no way out on our own... In time, it'll sap our energy, and we'll die here.
+Куро: — Чёрт, тебе следовало оставаться внизу!
 
-Kuro: - Damn it, what an idiotic way to lose... In this place, I can't use any of her powers either.""", # MISSING TRANSLATION
-	KURO3_DUNGEON_6_OPTION_1 = """Don't give up just yet.""", # MISSING TRANSLATION
-	KURO3_DUNGEON_6_OPTION_2 = """There must be something we can do.""", # MISSING TRANSLATION
-	KURO3_DUNGEON_6_OPTION_3 = """It's all your fault.""", # MISSING TRANSLATION
-	KURO3_DUNGEON_7 = """Kuro barely reacts to your words. She seems far more susceptible to the energy drain here, acting heavily drunk—her speech sloppy, dampened by the darkness.
+Куро явно расстроена тем, что её план пошёл наперекосяк, но остаётся решительной.""",
 
-Kuro: - I'm sorry, [name]. I should've done better... It's really hard to... concentrate...""", # MISSING TRANSLATION
-	KURO3_DUNGEON_8 = """Kuro: - It's... it's been lonely by myself... for all... this time... Zephyra and Rouge... they don't remember a thing... after all...
+	KURO3_DUNGEON_5 = """Несмотря на то, что энергия Никс в основном сдерживается сфокусированным лучом Клетки, она находит лазейку и запускает смертоносную атаку в твоём направлении.
 
-Time drifts slowly without any indication as you start feeling dizzy yourself.""", # MISSING TRANSLATION
-	KURO3_DUNGEON_9_1 = """You feel a familiar presence, something otherworldly, yet not alien to this realm. A soft voice speaks to you.
+Никс: — Ты совершила ошибку, придя не одна.
 
-Voice: - You disappoint me to no end... You can't die here, can you? There's not much I can do, but with her on your side... This should be just enough to break free.""", # MISSING TRANSLATION
-	KURO3_DUNGEON_9_2 = """You feel an alien presence appear in the darkness, something otherworldly, yet not of this realm. A soft voice speaks to you.
+Куро: — Грх... Проклятье!
 
-Voice: - This is not the time or place; you can't die here. There's not much I can do, but with her on your side... This should be just enough to break free.""", # MISSING TRANSLATION
-	KURO3_DUNGEON_9 = """A foreign command enters your mind, guiding your actions. You stand, approaching Kuro, who barely moves. Your hand grabs hers, pulling her up effortlessly. Despite her pallor, her hand is warm, instinctively grasping yours in return.
+Концентрация Куро нарушается, когда она бросается защищать тебя, чего оказывается достаточно, чтобы Никс последовала подавляющей массой энергии, что поглощает вас обоих.""",
 
-An unknown ancient language fills your mind, and you begin chanting-more a hymn than a spell. You've never heard it before and can't understand it. A dim light surrounds you both, draining the darkness from the surroundings. Kuro's groans grow louder as she clings to you harder as the light restores her and your strength which has just been sapped.""", # MISSING TRANSLATION
-	KURO3_DUNGEON_10 = """An explosion erupts as you reach the peak; your mind is instantly freed from the external control. You and Kuro find yourselves back in the room, Nixx's altar before you. Kuro regains her senses; Nixx is clearly confused by your escape, her powers wavering from the damage you've inflicted.
+	KURO3_DUNGEON_6 = """Ты оказываешься в пространстве без стен, где только тусклый мрак окружает тебя. Рядом Куро в отчаянии трёт лоб. Пока ты пытаешься выведать у неё информацию, на тебя накатывает весь ужас вашего положения.
 
-Nixx: - How did you...?!
+Куро: — Всё кончено, мы проиграли. Она заперла нас в своём карманном измерении. Самим нам отсюда не выбраться... Со временем оно высосет нашу энергию, и мы умрём здесь.
 
-Kuro: - No time for talk, [name], we need to defeat her now!""", # MISSING TRANSLATION
-	KURO3_WIN = """The damage you've inflicted sends Nixx into recuperation, allowing Kuro to once again activate the entrapping device.
+Куро: — Чёрт, какой идиотский способ проиграть... В этом месте я тоже не могу использовать ни одну из её сил.""",
 
-Nixx: - You... damned vixen... If you plan on taking my powers... You'll never find rest for this...
+	KURO3_DUNGEON_6_OPTION_1 = "Не сдавайся пока.",
+	KURO3_DUNGEON_6_OPTION_2 = "Должно быть что-то, что мы можем сделать.",
+	KURO3_DUNGEON_6_OPTION_3 = "Это всё твоя вина.",
+	KURO3_DUNGEON_7 = """Куро почти не реагирует на твои слова. Кажется, истощение энергии действует на неё куда сильнее — она ведёт себя как сильно пьяная, её речь невнятна, приглушена тьмой.
 
-Kuro: - That's so? You should know better than me there's no rest for the wicked. 
+Куро: — Прости, [name]. Я должна была справиться лучше... Очень трудно... сосредоточиться...""",
+	KURO3_DUNGEON_8 = """Куро: — Мне... мне было одиноко самой... всё это время... Зефира и Роуж... они ничего не помнят... в конце концов...
 
-The Cage shimmers with bright light, fully consuming what's left of Nixx's essence. Kuro falls to her knees, having expended all her remaining energy.""", # MISSING TRANSLATION
-	KURO3_WIN_OPTION_1 = """*Help Kuro*""", # MISSING TRANSLATION
-	KURO3_WIN_OPTION_2 = """*Seize the Cage for yourself*""", # MISSING TRANSLATION
-	KURO3_GOOD_1 = """You grab Kuro, helping her stand after the exhausting fight. Her skin feels hot, her face covered in sweat, but her emotions are those of triumphant victory and admiration for you.
+Время медленно тянется без каких-либо ориентиров, и ты сам начинаешь чувствовать головокружение.""",
+	KURO3_DUNGEON_9_1 = """Ты чувствуешь знакомое присутствие, нечто потустороннее, но не чуждое этому миру. Нежный голос обращается к тебе.
 
-Kuro: - Th-thank you, [name]. Looks like I'm shaking a bit. We did something that only happens in legends.
+Голос: — Ты разочаровываешь меня до бесконечности... Ты не можешь умереть здесь, ведь так? Я могу сделать немногое, но с ней на твоей стороне... Этого должно быть как раз достаточно, чтобы вырваться.""",
+	KURO3_DUNGEON_9_2 = """Ты чувствуешь, как в темноте появляется чужеродное присутствие, нечто потустороннее, но не из этого мира. Нежный голос обращается к тебе.
 
-She looks down at her hands, firmly holding the now-closed Cage.
+Голос: — Сейчас не время и не место; ты не можешь умереть здесь. Я могу сделать немногое, но с ней на твоей стороне... Этого должно быть как раз достаточно, чтобы вырваться.""",
+	KURO3_DUNGEON_9 = """В твой разум проникает чужая команда, направляя твои действия. Ты встаёшь, подходя к Куро, которая едва шевелится. Твоя рука хватает её, поднимая без усилий. Несмотря на её бледность, её рука тёплая, инстинктивно сжимая твою в ответ.
 
-Kuro: - I'll absorb her essence now. With this, her powers, and most importantly, her knowledge, will become part of me. Don't worry, I can handle it.""", # MISSING TRANSLATION
-	KURO3_GOOD_2 = """Without further delay, Kuro clutches the device tightly. You feel the powers inside surging, visibly engulfing her body. Her groans, followed by heavy panting, fill the small room as you watch in awe. After a moment, the device shatters as Kuro completes her ordeal.
+Неизвестный древний язык наполняет твой разум, и ты начинаешь напевать — скорее гимн, чем заклинание. Ты никогда не слышал его раньше и не понимаешь его. Тусклый свет окружает вас обоих, вытягивая тьму из окружения. Стоны Куро становятся громче, она цепляется за тебя сильнее, пока свет восстанавливает её и твои силы, что только что были истощены.""",
+	KURO3_DUNGEON_10 = """Взрыв раздаётся, когда вы достигаете пика; твой разум мгновенно освобождается от внешнего контроля. Вы с Куро оказываетесь снова в комнате, перед вами алтарь Никс. Куро приходит в себя; Никс явно ошеломлена вашим побегом, её силы колеблются от нанесённого вами урона.
 
-You steady her for a minute as her eyes remain unfocused and her body processes the change. You sense the transformation in her being. Something about her appearance, energy, and aura has shifted. Slightly, but noticeably to you. A supernatural feel is now etched into her presence.
+Никс: — Как вы...?!
 
-Kuro: - Ah... This will take some time to get used to... My thoughts are all mixed... but... there's so much new information...""", # MISSING TRANSLATION
-	KURO3_GOOD_2_OPTION_1 = """So, what's that information you've been aiming for?""", # MISSING TRANSLATION
-	KURO3_GOOD_2_OPTION_2 = """Got any clues to great treasure troves there?""", # MISSING TRANSLATION
-	KURO3_GOOD_2_OPTION_3 = """I'm glad you're safe.""", # MISSING TRANSLATION
-	KURO3_GOOD_3_1 = """Kuro: - It's... I can't say for certain yet, but I hope to learn more about everything I can.""", # MISSING TRANSLATION
-	KURO3_GOOD_3_2 = """Kuro: - Heh, very funny. You really think a foul ancient being like her would care about some gold coins?""", # MISSING TRANSLATION
-	KURO3_GOOD_3_3 = """Kuro: - Please, [name], you're making me blush, and it's really not suitable for someone who's just done what I did. Let's save it for later.""", # MISSING TRANSLATION
-	KURO3_GOOD_3 = """Kuro: - One thing's for sure: Nixx is no more, and it will both help us against the cult and stop me from worrying.
+Куро: — Не время для разговоров, [name], нам нужно победить её сейчас!""",
+	KURO3_WIN = """Нанесённый вами урон отправляет Никс на восстановление, позволяя Куро снова активировать устройство-ловушку.
 
-Kuro finally steadies herself, releasing your hand, and you leave the place.""", # MISSING TRANSLATION
-	KURO3_BAD_1 = """You snatch the Cage from Kuro's powerless hands with ease, feeling the power within. As you glance at the puzzled Kuro, you focus on the ancient sealed powers, feeling them surge from the device into you. Kuro raises her head, speechless in disbelief, too weak to fight or perhaps too confused to react.
+Никс: — Ты... проклятая лисица... Если ты планируешь забрать мои силы... Ты не найдёшь покоя за это...
 
-You feel the raw dark powers now yours as they merge with your body, leaving the Cage empty and useless.""", # MISSING TRANSLATION
-	KURO3_BAD_2 = """Kuro: - Hah... hahaha...
+Куро: — Так ли это? Тебе следует знать лучше меня, что для нечестивых нет покоя.
 
-Her laugh sounds dry and empty. Minutes pass as she stares at the ground in defeat.
+Клетка мерцает ярким светом, полностью поглощая то, что осталось от сущности Никс. Куро падает на колени, потратив всю оставшуюся энергию.""",
+	KURO3_WIN_OPTION_1 = "*Помочь Куро*",
+	KURO3_WIN_OPTION_2 = "*Захватить Клетку для себя*",
+	KURO3_GOOD_1 = """Ты хватаешь Куро, помогая ей встать после изнурительной битвы. Её кожа горяча, лицо покрыто потом, но её эмоции — это триумфальная победа и восхищение тобой.
 
-Kuro: - That's really stupid, isn't it? After all that work, you just took it for yourself... No, I'm... No. I'll accept my utter defeat. What do you plan to do with me now that my champion powers are gone?""", # MISSING TRANSLATION
-	KURO3_BAD_2_OPTION_1 = """You'll stay by my side.""", # MISSING TRANSLATION
-	KURO3_BAD_2_OPTION_2 = """You'll stay by my side... as a slave.""", # MISSING TRANSLATION
-	KURO3_BAD_2_OPTION_3 = """I have no use for you anymore.""", # MISSING TRANSLATION
-	KURO3_BAD_3 = """Kuro: - ...Got to admit, that's some scheme you pulled on me. I've stated I'm on your side, and that can't be changed... I'll do what I can to help with whatever ominous plan you have.
+Куро: — С-спасибо, [name]. Похоже, я немного дрожу. Мы совершили нечто, что случается только в легендах.
 
-Helping Kuro up, you prepare to leave.""", # MISSING TRANSLATION
-	KURO3_BAD_4 = """Kuro: - ...I guess I won't be able to escape any collar now. Is this how you plan to make me atone?
+Она смотрит на свои руки, крепко сжимающие теперь закрытую Клетку.
 
-Kuro's face shows vulnerability and a hint of fear. Something that she rarely displays.
+Куро: — Я поглощу её сущность сейчас. С этим её силы и, что важнее, её знания станут частью меня. Не волнуйся, я справлюсь.""",
+	KURO3_GOOD_2 = """Без дальнейших промедлений Куро сжимает устройство. Ты чувствуешь, как силы внутри бушуют, видимо поглощая её тело. Её стоны, за которыми следуют тяжёлые вздохи, наполняют маленькую комнату, пока ты смотришь в изумлении. Спустя мгновение устройство разлетается на осколки, когда Куро завершает своё испытание.
 
-Kuro: - I hope you aren't devoid of any mercy for me.""", # MISSING TRANSLATION
-	KURO3_BAD_5 = """For once, Kuro's face shows clear pain, but it quickly returns to normal.
+Ты поддерживаешь её минуту, пока её глаза остаются не сфокусированными, а тело перерабатывает изменения. Ты ощущаешь преображение в её существе. Что-то в её внешности, энергии и ауре изменилось. Слегка, но заметно для тебя. Сверхъестественное чувство теперь вписано в её присутствие.
 
-Kuro: - I understand. So that's what it's like to be on the receiving end of evil.
+Куро: — Ах... К этому нужно привыкнуть... Мои мысли все перемешаны... но... так много новой информации...""",
+	KURO3_GOOD_2_OPTION_1 = "Итак, что это за информация, которую ты так хотела?",
+	KURO3_GOOD_2_OPTION_2 = "Нашла там намёки на великие сокровищницы?",
+	KURO3_GOOD_2_OPTION_3 = "Я рад, что ты в безопасности.",
+	KURO3_GOOD_3_1 = "Куро: — Это... я пока не могу сказать точно, но я надеюсь узнать больше обо всём, что смогу.",
+	KURO3_GOOD_3_2 = "Куро: — Хех, очень смешно. Ты правда думаешь, что такая гнусная древняя сущность, как она, заботилась бы о каких-то золотых монетах?",
+	KURO3_GOOD_3_3 = "Куро: — Довольно, [name], ты заставляешь меня краснеть, и это действительно не подходит для того, кто только что сделал то, что сделала я. Давай прибережём это на потом.",
+	KURO3_GOOD_3 = """Куро: — Одно можно сказать наверняка: Никс больше нет, и это поможет нам против культа и избавит меня от беспокойства.
 
-You leave Kuro seemingly stuck in place as you contemplate your newly acquired powers.""", # MISSING TRANSLATION
-	KURO3_DIALOGUE2_INIT = """About that time we were trapped...""", # MISSING TRANSLATION
-	KURO3_DIALOGUE2_1 = """You tell Kuro about the time you were trapped by Nixx and the mysterious voice that freed you. To your surprise, she responds almost disinterestedly.
+Куро наконец приходит в себя, отпускает твою руку, и вы покидаете это место.""",
 
-- That's so? We got lucky, I suppose. I really should've known better than putting us in such danger.""", # MISSING TRANSLATION
-	KURO3_DIALOGUE2_1_OPTION_1 = """Do you know whose voice that was?""", # MISSING TRANSLATION
-	KURO3_DIALOGUE2_1_OPTION_2 = """Will I lose control over myself again?""", # MISSING TRANSLATION
-	KURO3_DIALOGUE2_2_1 = """Kuro pauses, searching for the right words.
+	KURO3_BAD_1 = """Ты с лёгкостью выхватываешь Клетку из бессильных рук Куро, чувствуя силу внутри. Бросив взгляд на ошеломлённую Куро, ты сосредотачиваешься на древних запечатанных силах, чувствуя, как они перетекают из устройства в тебя. Куро поднимает голову, безмолвная в неверии, слишком слабая, чтобы бороться, или, возможно, слишком сбитая с толку, чтобы реагировать.
 
-- It was probably an ancient, forgotten deity, or rather, what's left of one. Good thing she was on our side, wasn't it?""", # MISSING TRANSLATION
-	KURO3_DIALOGUE2_2_2 = """- What, are you hoping some powerful deity will solve all your problems? I thought you were too old for such naive expectations.
+Ты чувствуешь, что грубые тёмные силы теперь твои, сливаясь с твоим телом, оставляя Клетку пустой и бесполезной.""",
 
-Kuro smirks at you in her usual way.
+	KURO3_BAD_2 = """Куро: — Хах... ха-ха-ха...
 
-- No, I doubt she'll help us again after this. We're on our own.""", # MISSING TRANSLATION
-	KURO_QUEST_3_SUMMARY = """""", # MISSING TRANSLATION
-	KURO_QUEST_3_NAME = """""", # MISSING TRANSLATION
-	KURO_QUEST_3_CRAFT = """Craft Vesperine Cage, than speak to Kuro.""", # MISSING TRANSLATION
-	KURO_QUEST_3_DEPTHS = """Search in Crystaldepths""", # MISSING TRANSLATION
-	KURO_QUEST_3_DUNGEON = """Finish Nixx""", # MISSING TRANSLATION
-	
+Её смех звучит сухо и пусто. Минуты проходят, пока она смотрит на землю в поражении.
+
+Куро: — Это действительно глупо, не так ли? После всей этой работы ты просто забрал их себе... Нет, я... Нет. Я приму своё полное поражение. Что ты планируешь делать со мной теперь, когда мои силы чемпиона ушли?""",
+
+	KURO3_BAD_2_OPTION_1 = "Ты останешься на моей стороне.",
+	KURO3_BAD_2_OPTION_2 = "Ты останешься на моей стороне... в качестве рабыни.",
+	KURO3_BAD_2_OPTION_3 = "Ты больше мне не нужна.",
+
+	KURO3_BAD_3 = """Куро: — ...Должна признать, это ловкий трюк, который ты провернул со мной. Я заявляла, что на твоей стороне, и это нельзя изменить... Я сделаю всё возможное, чтобы помочь с любым твоим зловещим планом.
+
+Помогая Куро подняться, ты готовишься уйти.""",
+
+	KURO3_BAD_4 = """Куро: — ...Полагаю, теперь я не смогу сбежать от любого ошейника. Так ты планируешь заставить меня искупить вину?
+
+Лицо Куро показывает уязвимость и намёк на страх. Нечто, что она редко проявляет.
+
+Куро: — Надеюсь, ты не лишён милосердия ко мне.""",
+
+	KURO3_BAD_5 = """Впервые лицо Куро ясно выражает боль, но оно быстро возвращается к обычному состоянию.
+
+Куро: — Я понимаю. Так вот каково это — быть на принимающей стороне зла.
+
+Ты оставляешь Куро, словно застывшую на месте, пока размышляешь о своих новоприобретённых силах.""",
+
+	KURO3_DIALOGUE2_INIT = "Насчёт того раза, когда мы были в ловушке...",
+
+	KURO3_DIALOGUE2_1 = """Ты рассказываешь Куро о том времени, когда вы были в ловушке у Никс, и о таинственном голосе, что освободил вас. К твоему удивлению, она отвечает почти безразлично.
+
+— В самом деле? Нам повезло, полагаю. Мне действительно следовало бы знать лучше, чем подвергать нас такой опасности.""",
+
+	KURO3_DIALOGUE2_1_OPTION_1 = "Ты знаешь, чей это был голос?",
+	KURO3_DIALOGUE2_1_OPTION_2 = "Я снова потеряю контроль над собой?",
+
+	KURO3_DIALOGUE2_2_1 = """Куро делает паузу, подбирая нужные слова.
+
+— Это, вероятно, было древнее, забытое божество, или, скорее, то, что от него осталось. Хорошо, что оно было на нашей стороне, не так ли?""",
+
+	KURO3_DIALOGUE2_2_2 = """— Что, надеешься, что какое-то могущественное божество решит все твои проблемы? Я думала, ты уже слишком взрослый для таких наивных ожиданий.
+
+Куро усмехается тебе своим обычным образом.
+
+— Нет, сомневаюсь, что она поможет нам снова после этого. Мы сами по себе.""",
+
+	HELEVIEL_QUEST_1 = """То, что вы привезли Хелевиэль в Алирон, неудивительно, было воспринято ею в штыки. После того как вы объявили её своей рабыней, вам с трудом удалось удержать её поведение в рамках приличия, однако она пока далека от того, чтобы быть хоть сколько-нибудь полезной в этих землях, где она раньше почти не бывала.
+
+{color=yellow|— роклятье на тебя и твои человеческие городишки. Подумать только, сама бывшая Верховная Жрица Фрейи вынуждена стать рабыней для такого, как ты. Даже если мне придётся служить тебе, потому что от этого зависит моё выживание, не смей думать, что превратишь меня в послушную игрушку.}""",
+	HELEVIEL_QUEST_1_OPTION_1 = "Мы могли бы для начала попытаться поладить",
+	HELEVIEL_QUEST_1_OPTION_2 = "Я сломил множество рабов, думаешь, у тебя есть шанс?",
+	HELEVIEL_QUEST_2_1 = "{color=yellow|— Поладить? С подобным тебе, [race]? Ты, должно быть, шутишь. Я никогда не смогу быть другом кому-то вроде тебя, это совершенно невозможно и унизительно даже допускать.}",
+	HELEVIEL_QUEST_2_1a = "{color=yellow|— Хмпф. Если ты хочешь, чтобы мы поладили, тебе следует начать с того, чтобы отпустить меня, а затем наказать того предательского ублюдка Эрлена. Это тот минимум извинений, который мне нужен, чтобы я это хотя бы рассмотрела.}",
+	HELEVIEL_QUEST_2_2 = "{color=yellow|— Сломить меня? Я была избранницей Фрейи десятилетиями, а не какой-то крестьянской дурочкой, которую можно дрессировать палкой. Ты не заставишь меня молить о пощаде такими угрозами.}",
+	HELEVIEL_QUEST_2 = """Кажется, Хелевиэль не пытается активно создавать проблемы или сбежать — по крайней мере, пока нет. Однако её поведение полностью высокомерно, что делает её малополезной. Даже если она готова выполнять ваши приказы, её манерам на новой должности остро требуется коррекция. Возможно, лучший способ — спустить её с небес на землю, если вы планируете использовать её для какой-либо реальной работы.
+
+Немного подумав, вы приходите к подходящей идее: работа официанткой быстро поставит её в положение, где ей придётся обслуживать людей, на которых она всегда смотрела свысока.""",
+	HELEVIEL_QUEST_3 = """Вы приводите Хелевиэль на её рабочее место, заставляя её переодеться в новую униформу. Она кажется идеальной, чтобы сломить её аристократические замашки, заставив слиться с толпой, словно она всего лишь очередная эльфийская девушка.
+
+{color=yellow|Heleviel: — Не могу в это поверить. Мать Фрейя, что же я сделала, чтобы заслужить это...}""",
+	HELEVIEL_QUEST_3_OPTION_1 = "Теперь тебе лучше быть почтительной с клиентами",
+	HELEVIEL_QUEST_3_OPTION_2 = "Эта одежда и правда делает тебя милой",
+	HELEVIEL_QUEST_4_1 = """Понимая, что выхода нет, Хелевиэль не остаётся ничего другого, кроме как стиснуть зубы и покориться.
+
+{color=yellow|Heleviel: — Хорошо, раз уж другого выхода нет.}""",
+	HELEVIEL_QUEST_4_2 = """{color=yellow|Heleviel: — Э-это чепуха. Это совершенно недостойно и неподобающе для кого-то моего прежнего статуса. Не могу поверить, что вы вообще заставляете эльфов носить такое.}
+
+И всё же ваш комплимент не остался полностью незамеченным, возможно, отчасти потому, что новый облик заставил её почувствовать себя более уязвимой.""",
+	HELEVIEL_QUEST_5 = "Вы оставляете Хелевиэль на попечение владельца бара и возвращаетесь к своим делам. Лучше дать ей немного времени в новых условиях.",
+	HELEVIEL_QUEST_6 = "В один из вечеров вас приглашают несколько других чиновников выпить в дружеской обстановке. Прибыв в указанный бар, вы понимаете, что это то самое заведение, куда вы устроили Хелевиэль.",
+	HELEVIEL_QUEST_7 = """Вскоре вы замечаете, что Хелевиэль назначена вашей официанткой. Обменявшись с ней понимающей улыбкой, вы видите, как она сдержанно отводит взгляд.
+
+{color=yellow|Чиновник 1: — В этом баре лучшие эльфийки, знаешь ли. Та, беловолосая, особенно мила, когда злится.}
+
+Он слегка щипает Хелевиэль за ягодицу, когда та отворачивается от стола, на что следует возмущённый вскрик.""",
+	HELEVIEL_QUEST_8 = """{color=yellow|Хелевиэль: — Что ты делаешь, мерзавец!..}
+
+Однако, заметив вас, она быстро сдерживается.
+
+{color=aquaЧиновник 2: — Прости, прости. Эй, почему бы тебе не присесть и не выпить с нами немного? Клиентов тут не так много. И позови другую официантку тоже!}
+
+{color=yellow|Хелевиэль: — Я... я не понимаю, о чём вы...}""",
+	HELEVIEL_QUEST_9 = """Хелевиэль бросается в подсобное помещение, избегая смотреть на вас.
+
+{color=aqua|Чиновник 1: — Эй, Мэр, кажется, она тебя знает. Можешь сказать ей, что я извиняюсь? Не хотел бы оказаться на её плохом счету, ха-ха.}
+
+Вы покидаете стол и находите Хелевиэль в подсобке, где она с раздражением смотрит на вас. Вы замечаете, что она гораздо менее зла, чем можно было ожидать.
+
+{color=yellow|Heleviel: — И что? Теперь ты хочешь, чтобы я развлекала твоих друзей? Это унизительно для кого-то моего статуса!}""",
+	HELEVIEL_QUEST_9_OPTION_1 = "Ладно, просто обслуживай нас как обычно",
+	HELEVIEL_QUEST_9_OPTION_2 = "Я мог бы дать тебе несколько выходных...",
+	HELEVIEL_QUEST_10_1 = "{color=yellow|Heleviel: — ...Так и быть. Не позволяй этим мужчинам распускать руки где попало.}",
+	HELEVIEL_QUEST_10_2 = """Хелевиэль ненадолго замолкает, обдумывая ваше предложение. Кажется, она не только испытывает отвращение к этой идее, но и осознаёт важность встречи для вас. Ваше предложение перевешивает её нежелание.
+
+{color=yellow|Хелевиэль: — Хорошо. Богиня, если бы мне когда-либо пришлось представить, через что я пройду в своей жизни...}
+
+Вы возвращаетесь к столу. Вскоре Хелевиэль и другая эльфийка-официантка присоединяются, чтобы развлекать вашу компанию. Хелевиэль подыгрывает просьбе, но решает сесть прямо рядом с вами. Спустя несколько мгновений подаётся ещё выпивка, и в разгорячённой атмосфере ваши спутники уговаривают эльфиек выпить с ними.""",
+	HELEVIEL_QUEST_11 = """{color=aqua|Чиновник 1: — Да ладно, не стесняйся, мы угощаем.}
+
+Поначалу отказываясь, Хелевиэль медленно поддаётся давлению и отпивает напиток, изредка отвечая на лёгкие беседы других мужчин.
+
+{color=aqua|Чиновник 2: — Ха-ха, похоже, она действительно в тебя влюблена, Мэр — постоянно краснеет и смотрит в твою сторону. Ты метишь в большую рыбу, дева.}
+
+{color=yellow|Хелевиэль: — Я... я нет! Это... просто [he]... напоминает мне кого-то, кого я знаю.}""",
+	HELEVIEL_QUEST_12 = """Её ложь проходит со смехом, пока она медленно хмелеет и становится более раскрепощённой, почти забывая о своём истинном положении здесь.
+
+{color=aqua|Чиновник 2: — Ты довольно красноречива для простой барной девчонки. Как тебя зовут, ещё раз?}
+
+{color=yellow|Хелевиэль: — Я... Х-Хэлит. Мои родители всегда говорили, что я умнее большинства, полагаю.}
+
+Вы с восхищением отмечаете, как Хелевиэль держится в этой ситуации. Хотя она не слишком воодушевлена этим, очевидно, что она немного снизила свою бдительность.""",
+	HELEVIEL_QUEST_12_OPTION_1 = "*Положить руку на её бедро*",
+	HELEVIEL_QUEST_12_OPTION_2 = "*Ничего не делать*",
+	HELEVIEL_QUEST_13 = """Вечер продолжается без происшествий с вашими собутыльниками, пока не становится достаточно поздно и все расходятся. Поскольку вокруг никого нет, вы слышите короткий комментарий от Хелевиэль перед тем, как она закончит смену, всё ещё находясь в подпитии.
+
+{color=yellow|Хелевиэль: — Полагаю, в конце концов, это было не так уж и плохо. Хотя твои друзья отвратительны, будучи такими развратниками по отношению к эльфийкам.}""",
+	HELEVIEL_SLAVE_CHURCH_INIT = """Со временем Хелевиэль привыкла к жизни в рабстве у вас. Её пререкания в основном исчезли. Вчера вы получили запрос о помощи от церкви Алирона, что кажется хорошим следующим шагом для Хелевиэль в её культурной адаптации.""",
+	HELEVIEL_SLAVE_CHURCH_INTRO_TEXT = """Вы приводите Хелевиэль в церковь, находя Джинни на её обычном рабочем месте.
+
+{color=yellow|Хелевиэль: — Хмпф, так это храм Селены, и ты, должно быть, её местная жрица. Какое жалкое убранство. Неудивительно, что Селена — всего лишь подчинённая богиня с жалкими последователями по сравнению с Фрейей.}
+
+{color=aqua|Джинни: — Это правда, что Фрейя почитается больше, чем Селена, но я её преданная последовательница в этом городе. Селена — милосердная богиня, и она хочет помогать нуждающимся.}
+
+{color=yellow|Хелевиэль: — Какая разница, если её обитель так незначительна? Клянусь, последователи Фрейи никогда не опустятся так низко.}
+
+{color=aqua|Джинни: — Возможно, но моя цель — помогать другим, даже тем, кто исповедует другие религии.}
+
+Обе женщины бросают на вас короткий взгляд, словно спрашивая, на чьей вы стороне.""",
+	HELEVIEL_SLAVE_CHURCH_OPTION_1 = "Помощь другим — это само по себе благородное дело",
+	HELEVIEL_SLAVE_CHURCH_OPTION_2 = "Сильная паства действительно внушает уважение",
+	HELEVIEL_SLAVE_CHURCH_OPTION_3 = "Следование богам — обычай прошлого",
+	HELEVIEL_SLAVE_CHURCH_REPLY_1 = """{color=aqua|Джинни: — Я очень рада, что наш мэр того же мнения.} 
+	Хелевиэль ничего не говорит. Она просто надувается, решая не продолжать.""",
+	HELEVIEL_SLAVE_CHURCH_REPLY_2 = """{color=yellow|Хелевиэль: — Хм, это правда. Может, тебе стоит подумать о создании святилища Фрейи здесь. Конечно, она сама не одобрила бы такое место, но это могло бы стать первым шагом...}
+
+Улыбка Джинни становится более напряжённой, пока она ждёт, пока Хелевиэль закончит.""",
+	HELEVIEL_SLAVE_CHURCH_REPLY_3 = "Поскольку ни Хелевиэль, ни Джинни не находят в ваших словах поддержки, обе замолкают после вашего замечания.",
+	HELEVIEL_SLAVE_CHURCH_ASSIGN_TEXT = """{color=aqua|Джинни: — В-в любом случае, я полагаю, вы пришли помочь нам? В последнее время количество пострадавших из Гильдии Бойцов увеличилось, и нам не хватает целителей.}
+
+{color=yellow|Хелевиэль: — А? Ты ожидаешь, что я использую свои — и Фрейи — силы для простой работы сиделки? Невероятно.}\n\nВзглянув на вас, Хелевиэль понимает, что ей не отвертеться, и её плечи слегка поникают в маленьком поражении.
+
+{color=yellow|Хелевиэль: — *Вздох* Как низко я должна пасть теперь...}""",
+	HELEVIEL_SLAVE_CHURCH_HEALING_TEXT = "Перебравшись в лазарет, бывшая жрица получает задание залечивать раны пострадавших. Её презрение особенно заметно, когда ей приходится ухаживать за бойцами-мужчинами. И всё же её дух не сломлен; решительность, выкованная годами строгих обычаев, всё ещё здесь.",
+	HELEVIEL_SLAVE_CHURCH_ARGUMENT_TEXT = """Следующий пациент — эльф-солдат с серьёзной на вид раной.
+
+{color=aqua|Эльф: — А-ай, ты могла бы быть немного помягче, знаешь ли.}
+
+{color=yellow|Хелевиэль: — Не хнычь из-за небольшой боли. И без того плохо, что мне приходится обслуживать таких мужчин. Мне не нужно слушать твоё нытьё.}
+
+{color=aqua|Эльф: — Погоди, ты выглядишь знакомо. Клянусь, ты похожа на Верховную Жрицу Фрейи. Не может быть, чтобы кто-то вроде тебя лечил здесь раненых солдат.}
+
+Хелевиэль выглядит слегка встревоженной от того, что её узнали, но она всё ещё не проявляет признаков принятия более низкой роли в этом взаимодействии.""",
+	HELEVIEL_SLAVE_CHURCH_ARGUMENT_TEXT2 = """{color=yellow|Хелевиэль: — Хмпф, пути Фрейи могут приводить нас в самые трудные места.}
+
+{color=aqua|Эльф: — Хах, ты теперь просто рабыня, вынужденная служить людям.}
+
+{color=yellow|Хелевиэль: — Э-это лишь временное искупление, прежде чем Фрейя вернёт меня к ещё большей роли! Но неотёсанный болван вроде тебя, вероятно, не поймёт этого.}
+
+{color=aqua|Эльф: — Заткнись. Это из-за тебя я покинул леса и вынужден служить людям. Твоя ненависть к мужчинам и твои правила привели нас к тому, что мы стали бесправным, низкосортным отребьем.}""",
+	HELEVIEL_SLAVE_CHURCH_ARGUMENT_TEXT3 = """{color=yellow|Хелевиэль: — Как ты смеешь! Я лишь следовала видению Фрейи и служила её порядку! Даже если наши правила были строги, они были полностью оправданы.}
+
+{color=aqua|Эльф: — Оправданы, говоришь? Мне нравится. Тогда твоё понижение до рабыни тоже оправдано. Теперь ты служишь не только своим хозяевам, но и одной крови с тобой — тому, на кого ты всегда смотрела свысока.}
+
+Хелевиэль не отвечает; однако её лицо заливается гневом.""",
+	HELEVIEL_SLAVE_CHURCH_FOOT_TEXT = """{color=aqua|Эльф: — Мои раны уже лучше, но теперь, когда я подумал, почему бы тебе не вымыть ещё и мои ноги? Они очень устали от всех этих маршей.}
+
+{color=yellow|Хелевиэль: — К-как ты смеешь!!}
+
+Бывшая Верховная Жрица буквально трясётся на месте, но хорошо осознаёт, что не может ничего поделать в этой ситуации.""",
+	HELEVIEL_SLAVE_CHURCH_FOOT_OPTION_1 = "Хорошая идея, в конце концов, ей нужно учиться и принимать своё новое положение",
+	HELEVIEL_SLAVE_CHURCH_FOOT_OPTION_2 = "Она не будет этого делать, есть другие люди, которым всё ещё нужен уход",
+	HELEVIEL_SLAVE_CHURCH_FOOT_REPLY_1 = "Уши Хелевиэль краснеют от гнева и смущения, но, зная, что от этого не сбежать, она заставляет себя выполнить задание, чувствуя, как её достоинство падает под жестокой усмешкой эльфа-мужчины.",
+	HELEVIEL_SLAVE_CHURCH_FOOT_REPLY_2 = "Плечи Хелевиэль поникают от облегчения при ваших словах, избавившись от унизительной задачи. Эльф-солдат цокает от раздражения, но не протестует. Нарочито поблагодарив вас вместо Хелевиэль, он уходит, уступая место следующему пациенту.",
+	HELEVIEL_SLAVE_CHURCH_AFTER_FOOT = "После достаточного унижения от задания эльф-солдат уходит с усмешкой. Вы даёте Хелевиэль немного времени отдохнуть перед следующим пациентом.",
+	HELEVIEL_SLAVE_CHURCH_POISON_TEXT = """Спустя некоторое время Хелевиэль выходит из лазарета и подходит к вам.
+
+{color=yellow|Хелевиэль: — Последний пациент отравлен серебряным листом. Боюсь, я ничего не могу сделать своей магией, но... я полагаю, в лесах может быть способ.}
+
+Вам кажется, что Хелевиэль уклоняется от сути проблемы, но вы позволяете ей продолжить.""",
+	HELEVIEL_SLAVE_CHURCH_POISON_OPTION_1 = "Что-то беспокоит тебя?",
+	HELEVIEL_SLAVE_CHURCH_POISON_OPTION_2 = "Кажется, тебе не совсем охота идти туда",
+	HELEVIEL_SLAVE_CHURCH_POISON_REPLY_1 = "{color=yellow|Хелевиэль: — Эльфы никогда не ладили с ними. Они не следуют Фрейе, они дикие звери, которые мало что знают, кроме как спариваться, подобно им.}",
+	HELEVIEL_SLAVE_CHURCH_POISON_REPLY_2 = "{color=yellow|Хелевиэль: — Конечно, нет. Эльфы никогда не ладили с ними. Они не следуют Фрейе, они дикие звери, которые мало что знают, кроме как спариваться, подобно им.}",
+	HELEVIEL_SLAVE_CHURCH_POISON_OPTION_3 = "Они живут по-своему",
+	HELEVIEL_SLAVE_CHURCH_POISON_OPTION_4 = "Ты не совсем неправа",
+	HELEVIEL_SLAVE_CHURCH_POISON_REPLY = "{color=yellow|Хелевиэль: — Даже если богиня допускает их существование, я не могу принять тех, кто так далеко отклонился от её порядка. Наша община выживала веками и оставалась сильной благодаря этому. Я ввела дополнительные правила в отношении них тоже. Добыть у них лекарство будет непросто. Нам лучше поторопиться, если мы хотим, чтобы тот мужчина выжил.}",
+	HELEVIEL_SLAVE_BEASTKIN_INTRO_TEXT = """Найдя Савру, вы и Хелевиэль объясняете, что ищете противоядие от яда серебряного листа.
+
+{color=yellow|Савра: — Ах, да, думаю, у меня есть запасное в хранилище.}
+
+Хотя она понимает, что просит сама бывшая Верховная Жрица Фрейи, шаманка ведёт себя очень непринуждённо.
+
+{color=yellow|Савра: — Однако я не могу просто отдать его вам даром, верно? Есть одна услуга, которую я хочу попросить у вас, леди Хелевиэль.""",
+	HELEVIEL_SLAVE_BEASTKIN_OPTION_1 = "Она сделает всё, что ты попросишь",
+	HELEVIEL_SLAVE_BEASTKIN_OPTION_2 = "Ну, если это что-то адекватное",
+	HELEVIEL_SLAVE_BEASTKIN_REPLY = """Эльфийка слегка напрягается, но продолжает, понимая, что мало что может здесь поделать.
+
+{color=yellow|Хелевиэль: — Это ради спасения жизни, так что...}
+
+{color=aqua|Савра: — Ничего сложного. Видишь ли, недавно мы нашли полукровку-беспризорницу. Девочка, кажется, имеет эльфийского родителя и немного упряма в следовании учениям Фрейи, несмотря ни на что. Не благословите ли вы её именем Фрейи?}""",
+	HELEVIEL_SLAVE_BEASTKIN_CHILD_TEXT = """Хелевиэль хмурится, услышав это, пытаясь ответить осторожно.
+
+{color=yellow|Хелевиэль: — Это... не совсем возможно, боюсь...}
+
+Савра быстро парирует.
+
+{color=aqua|Савра: — Тогда вы можете сделать это под своим именем. Уверена, это не слишком затратно для вашего достоинства, если вы хотите то зелье?}""",
+	HELEVIEL_SLAVE_BEASTKIN_CHILD_TEXT_2 = """{color=yellow|Хелевиэль: — ...Хорошо, я сделаю это. Но вы должны знать, что это ничем не похоже на настоящий обряд Фрейи.}
+
+{color=aqua|Савра: — Конечно, я знаю. А теперь идите и выполните свою часть сделки, пока я поищу то зелье.}""",
+	HELEVIEL_SLAVE_BEASTKIN_CHILD_TEXT_3 = """Вам недолго приходится искать одну из играющих полукровок — девочку, которую описала Савра. Когда вы приближаетесь, она быстро переводит внимание на Хелевиэль.
+
+{color=aqua|Девочка: — Вау, не может быть! Вы Верховная Жрица Фрейи!}
+
+{color=yellow|Хелевиэль: — ...Бывшая жрица. Как ты оказалась здесь, дитя?}
+
+{color=aqua|Девочка: — После того как моя мама умерла, меня приютили здесь. Они сказали, я не могу жить с другими эльфами. Но здесь нет храмов, как у моей мамы.}""",
+	HELEVIEL_SLAVE_BEASTKIN_CHILD_TEXT_4 = "Вы видите, как Хелевиэль становится не по себе, когда ей приходится иметь дело с девочкой, но Савра прерывает вас и просит пройти с ней, оставив эльфийку и ребёнка наедине.",
+	HELEVIEL_SLAVE_BEASTKIN_SAVRA_TEXT = """В своей хижине Савра передаёт вам флакон с противоядием.
+
+{color=yellow|Савра: — Кто бы мог подумать, что я доживу до дня, когда сама Верховная Жрица Фрейи посетит нас. Вы далеко зашли, не так ли.}""",
+	HELEVIEL_SLAVE_BEASTKIN_SAVRA_OPTION_1 = "Вы не против помочь ей?",
+	HELEVIEL_SLAVE_BEASTKIN_SAVRA_OPTION_2 = "Думаю, она меняет свои пути мышления",
+	HELEVIEL_SLAVE_BEASTKIN_SAVRA_OPTION_3 = "Спасибо, нам лучше отправляться в путь",
+	HELEVIEL_SLAVE_BEASTKIN_SAVRA_REPLY_1 = "{color=yellow|Савра: — Что есть, то есть. В конце концов, она не в положении, чтобы вредить нам, да и я не чувствую от неё враждебности. Ещё остаётся её заталённое неприятие не-эльфов, но она достаточно зрела и опытна, чтобы хорошо это скрывать.}",
+	HELEVIEL_SLAVE_BEASTKIN_SAVRA_REPLY_2 = "{color=yellow|Савра: — Если это так, то это говорит больше о вашем характере, чем о её. В конце концов, старики упрямы — а эльфы в особенности.}",
+	HELEVIEL_SLAVE_BEASTKIN_SAVRA_REPLY_3 = "{color=yellow|Савра: — Да. И спасибо, что также пошли мне навстречу. Я не могу не находить довольно забавным видеть саму эльфийскую Верховную Жрицу, низведённую до такого статуса.}",
+	HELEVIEL_SLAVE_BEASTKIN_RETURN_TEXT = """Вы находите Хелевиэль, заканчивающую разговор с девочкой, и она поднимается. Её лицо выражает смесь эмоций, которую трудно прочитать, наиболее очевидная — неуверенность. Убедившись, что вы получили то, за чем пришли, она опускает глаза, готовясь уйти.
+
+{color=yellow|Хелевиэль: — Нам лучше поторопиться ради пациента.""",
+	HELEVIEL_SLAVE_BEASTKIN_RETURN_TEXT_2 = """Вы успели вовремя, чтобы Хелевиэль ввела лекарство и обеспечила выживание пациента. На этом её целительская задача завершена — до следующего раза.
+
+{color=aqua|Ваши тренировки улучшили навыки Хелевиэль, и она больше не имеет черты 'Грубость'.}""",
+	HELEVIEL_SLAVE_RITUAL_REQUEST_TEXT = """В конце рабочего дня Хелевиэль неожиданно подходит к вам, её лицо более озабоченное и напряжённое, чем обычно.
+
+{color=yellow|Хелевиэль: — [Master]...}
+
+Слово срывается почти естественно. За последние недели она стала гораздо более покорной.
+
+{color=yellow|Хелевиэль: — Мне нужна ваша помощь в кое-чём...}
+
+{color=yellow|Хелевиэль: — Я должна признаться вам: я больше не чувствую присутствия Фрейи. Оно ослабевало с того дня, как вы привезли меня сюда, а последние несколько дней я не чувствую ничего вообще.}
+
+Тревога в её голосе ясно даёт понять, что она удручена потерей связи, которая была с ней большую часть жизни — настолько удручена, что признаётся в этом вам.
+
+{color=yellow|Хелевиэль: — Я знаю, что это трудная просьба, но я умоляю вас позволить мне вернуться в храм Фрейи. Мне нужна аудиенция у новой Верховной Жрицы.}""",
+	HELEVIEL_SLAVE_RITUAL_OPTION_1 = "Это непростая задача, учитывая твоё изгнание. Что я получу от этого?",
+	HELEVIEL_SLAVE_RITUAL_OPTION_2 = "Я подумаю об этом",
+	HELEVIEL_SLAVE_RITUAL_OPTION_3 = "От этого будет много хлопот, но я займусь этим",
+	HELEVIEL_SLAVE_RITUAL_REPLY_1 = "{color=yellow|Хелевиэль: — Вы уже контролируете мою жизнь до такой степени, что я выполняю ваши приказы — что ещё я могу предложить? Мой статус предоставлял мне любое имущество, которое у меня было, так что я потеряла и его тоже.}",
+	HELEVIEL_SLAVE_RITUAL_REPLY_2 = "{color=yellow|Хелевиэль: — Благодарю вас. Тогда я буду ждать ваших успехов.}",
+	HELEVIEL_SLAVE_RITUAL_ERLEN_TEXT = """Вы находите Эрлена недалеко от главного храма. Пока вы объясняете свою ситуацию, его лицо переполняет плохо скрываемое неодобрение.
+
+{color=yellow|Эрлен: — Вы говорите, она хочет аудиенции у Лиры? В обычной ситуации я бы никогда этого не позволил, но если уж вы, из всех людей, просите об этом... Скажите, чего вы на самом деле хотите достичь?}""",
+	HELEVIEL_SLAVE_RITUAL_ERLEN_OPTION_1 = "Я искренне хочу поднять её настроение",
+	HELEVIEL_SLAVE_RITUAL_ERLEN_OPTION_2 = "Это может быть полезно для нас, она всё же была верховной жрицей долгое время",
+	HELEVIEL_SLAVE_RITUAL_ERLEN_REPLY_1 = "{color=yellow|Эрлен: — Мне это не нравится. Вы слишком мягки. Но я не стану вас останавливать. Вы найдёте Лиру в храме — она, вероятно, будет рада помочь.}",
+	HELEVIEL_SLAVE_RITUAL_ERLEN_REPLY_2 = "{color=yellow|Эрлен: — Понимаю. Как всегда, прагматично, кажется. Хорошо, я не стану вас останавливать. Вы найдёте Лиру в храме — она, вероятно, будет рада помочь.}",
+	HELEVIEL_SLAVE_RITUAL_LIRA_TEXT = "{color=yellow|Лира: — Сэр [name], приятно, что вы всё ещё навещаете нас. У меня не так много свободного времени теперь, когда мне назначили эту роль, но встреча с вами — это то, на что я обязана найти время.}",
+	HELEVIEL_SLAVE_RITUAL_LIRA_TEXT_2 = """
+Вы объясняете Лире проблему Хелевиэль, и она погружается в молчание, пока наконец не говорит.
+
+{color=yellow|Лира: — Что ж, если сэр Эрлен это разрешил, я буду рада помочь. Хотя она и была отвергнута общиной, она была правительницей долгое время. Однако для проведения такого обряда нам потребуется много ресурсов. Боюсь, я должна запросить с вас 2,500 золотых.}""",
+	HELEVIEL_SLAVE_RITUAL_PAY_OPTION = "*Заплатить* (-2,500 золота)",
+	HELEVIEL_SLAVE_RITUAL_LATER_OPTION = "Я вернусь позже",
+	HELEVIEL_SLAVE_RITUAL_PAY = """Вы передаёте Лире запрошенную сумму.
+
+{color=yellow|Лира: — Это прекрасно. Теперь я должна подготовиться к ритуалу. Приведите Хелевиэль к нам завтра... О, и лучше скрыть её лицо, пока идёте по улицам.}""",
+	HELEVIEL_SLAVE_RITUAL_POSTPONE = "Лира кивает и оставляет вас.",
+	HELEVIEL_SLAVE_RITUAL_PAY_TEXT = """Вы передаёте Лире запрошенную сумму.
+
+{color=yellow|Лира: — Это прекрасно. Теперь я должна подготовиться к ритуалу. Приведите Хелевиэль к нам завтра... О, и лучше скрыть её лицо, пока идёте по улицам.}
+""",
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_INTRO = """Вы проводите Хелевиэль по улицам её бывшего дома, одетую в длинную robe с капюшоном. Приятно удивлённая вашим согласием помочь ей, она выглядит совсем не так, как в последний раз, когда вы встречались здесь.
+
+{color=yellow|Хелевиэль: — Всё то же самое, но ощущается так... по-другому.}""",
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_MID = "После того как вы доставили Хелевиэль ко входу в храм, послушница забирает её внутрь, оставляя вас ждать до конца.",
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_FREYA = "Когда ритуал начинается, в комнате остаются только Лира и Хелевиэль. Хелевиэль не нуждается в инструкциях — она знает важность этой медитации. Лира будет каналом для связи с Богиней. Подобное соединение возможно лишь благодаря сохранению эльфами традиций и религии — чего она никогда не смогла бы достичь в Алироне.",
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_FREYA_2 = """Глаза Лиры открываются, в темноте вокруг них формируется тусклый свет.
+
+{color=aqua|Фрейя: — Говори.}
+
+{color=yellow|Хелевиэль: — Почему ты покинула меня?! Почему ты отдала моё положение другой? Разве я не была твоей самой верной служительницей?}""",
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_FREYA_3 = """Фрейя лишь усмехается через Лиру при виде явного гнева эльфийки. Это заставляет Хелевиэль слегка понизить голос.
+
+{color=yellow|Хелевиэль: — Неужели я действительно была неправа в своем служении?..}
+
+{color=aqua|Фрейя: — Да. Ты зашла слишком далеко в своём страхе потерять власть, не так ли? Но ты всё ещё моё дитя, Хелевиэль.}
+
+{color=yellow|Хелевиэль: — Я не понимаю...}""",
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_FREYA_4 = """{color=aqua|Фрейя: — Хотя тебе не нравились условия, через которые тебя провели — ты ненавидела их — ты всё же приняла их как часть моей воли. Вот почему ты так долго была на своём посту.}
+
+{color=yellow|Хелевиэль: — Но почему тогда ты заменила меня? Почему я потеряла ощущение твоего руководства?}
+
+{color=aqua|Фрейя: — Тебе нужен был перерыв в твоих обязанностях. Что касается последнего, это была твоя вина — ты начала сомневаться в себе.}
+
+Хелевиэль заметно вздрагивает от этого заявления, но быстро успокаивается.""",
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_ORDER = """{color=yellow|Хелевиэль: — Умоляю о твоём прощении...}
+
+{color=aqua|Фрейя: — Конечно. Тебе придётся искупить вину. Что ты уже и делаешь. Кстати, что ты думаешь о своём хозяине?}
+
+Хелевиэль надолго замолкает, с осторожностью подбирая слова.
+
+{color=yellow|Хелевиэль: — Я... нахожу [him] сносным. Я бы предпочла кого-то, кто также был бы последователем, но ты выбрала [him] для меня, так что мне нечего возразить.}""",
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_ORDER_2 = """Фрейя снова усмехается. Кажется, она собирается завершить это взаимодействие.
+
+{color=aqua|Фрейя: — Я знала, что могу на тебя рассчитывать. И пришло время для моих последних слов к тебе, так что слушай внимательно. Это трудные времена, и я поручаю тебе заботиться об этом человеке. [He] не тот, кем может показаться на первый взгляд, но ты, кажется, уже это знаешь.}
+
+{color=yellow|Хелевиэль: — Э-этого... не может быть. Ты говоришь, что теперь я должна следовать за [him]?!}
+
+Впервые Хелевиэль по-настоящему шокирована этим откровением — или, скорее, этим приказом от своей покровительницы.""",
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_ORDER_3 = """Фрейя остаётся безмолвной, указывая, что не нуждается в объяснениях.
+
+{color=yellow|Хелевиэль: — Понимаю. Это та миссия, которую ты всё это время приберегала для меня — не просто искупление, как я думала. Я могу это сделать. [He], несомненно, влиятельная личность.}
+
+{color=aqua|Фрейя: — Так и быть. И последнее. Подумай о том, чтобы произвести потомство с [him], это редкий шанс для кого-то бездетного в твоём возрасте.}
+
+Лицо Хелевиэль полностью заливается краской, но ей удаётся не высказаться.""",
+	HELEVIEL_SLAVE_RITUAL_CEREMONY_CONCLUSION = "Наконец, потустороннее сияние исчезает с лица Лиры, и она измождённо опускается. Ритуал окончен, и Хелевиэль приводят обратно к вам.",
+	HELEVIEL_SLAVE_RITUAL_INTERLUDE = """Стоя под великим древом, Хелевиэль кивает вам, готовая уйти.
+
+{color=yellow|Хелевиэль: — Спасибо, что привезли меня сюда, я наконец готова покинуть это место навсегда.}""",
+	HELEVIEL_SLAVE_RITUAL_INTERLUDE_OPTION_1 = "Тогда пойдём",
+	HELEVIEL_SLAVE_RITUAL_INTERLUDE_OPTION_2 = "[Секс-фактор] Есть способ поблагодарить меня лучше, чем простые слова",
+	HELEVIEL_SLAVE_RITUAL_SEX_ATTEMPT_1 = """Хелевиэль смотрит на вас с недоумением, но что-то в её разуме не позволяет ей протестовать. Вы прижимаете её к дереву, пока её лицо краснеет.
+
+{color=yellow|Хелевиэль: — Погоди... Ты же знаешь, что разведчики Эрлена, должно быть, наблюдают за нами?}
+
+Вы не проявляете никакой заботы, и это настроение передаётся Хелевиэль.
+
+{color=yellow|Хелевиэль: — ...Проклятье, тогда это на их совести…}""",
+	HELEVIEL_SLAVE_RITUAL_SEX_ATTEMPT_2 = "Хелевиэль игнорирует ваше замечание и направляется из столицы, не дожидаясь вас.",
+	HELEVIEL_SLAVE_RITUAL_END_TEXT = """Покидая город, вы замечаете, что поведение Хелевиэль изменилось. Она кажется более удовлетворённой и уверенной, следуя за вами. Когда вы спрашиваете, довольна ли она, её ответ звучит немного более личным, чем обычно.
+
+{color=yellow|Хелевиэль: — Да. Благодарю вас за поддержку моей просьбы. Наконец-то я могу ответить, что могу дать вам взамен за эту услугу. Я даю слово, что буду верна вам и вашим решениям, пока они не бросают вызов Фрейе. Мои силы в вашем распоряжении.}""",
+	HELEVIEL_SLAVE_RITUAL_END_OPTION_1 = "Тогда давай ладить",
+	HELEVIEL_SLAVE_RITUAL_END_OPTION_2 = "Тебе лучше не разочаровывать меня",
+	HELEVIEL_SLAVE_RITUAL_END_2 = "Хелевиэль утвердительно кивает и придвигается ближе к вам. Её новая роль определена.",
+	HELEVIEL_BAR_SEX_1 = """Ты чувствуешь мягкую кожу Хелевиэль на своей ладони, в то время как она, кажется, не обращает никакого внимания. Изначально ты думаешь, что она не замечает, но краткие боковые взгляды от нее указывают на то, что она хорошо осведомлена о твоем смелом шаге. Все же она не предпринимает попыток отодвинуться или сопротивляться — возможно, из-за алкоголя или потому, что она не полностью против этого...
+
+Когда ночь продолжается и другие посетители становятся более разнузданными с официантками, Хелевиэль извиняется и покидает стол. Ее ноги слегка подкашиваются, когда она проходит в задние комнаты, после того как сделала тебе короткий поклон. Обнаружив, что все остальные слишком заняты собой, ты решаешь проверить Хелевиэль и последовать за ней.""",
+	HELEVIEL_BAR_SEX_2 = """Ты входишь в одну из задних комнат; кажется, там никого нет, кроме нее, переводящей дыхание, ее лицо слегка покрасневшим, пока она смотрит на тебя.
+
+{color=yellow|Хелевиэль: — Так вот как люди проводят здесь свое свободное время? Это так нелепо и похотливо. Учения Фрейи никогда не позволили бы нечто подобное...}
+
+Несмотря на ее протесты, ты легко замечаешь, как в ее словах отсутствует подлинное негодование. Более того, ее бедра тонко трутся друг о друга, пока расстояние между вами сокращается.""",
+	HELEVIEL_BAR_SEX_2_OPTOPN_1 = "*Поцеловать ее*",
+	HELEVIEL_BAR_SEX_2_OPTOPN_2 = "*Взять ее грубо*",
+	HELEVIEL_BAR_SEX_3 = """Твои губы встречаются с ее в тускло освещенной задней комнате бара. Белые волосы Хелевиэль ниспадают на ее плечи, резко контрастируя с тусклым видом комнаты. Легкий запах эля и ее уникальный эльфийский аромат наполняют воздух, пока ты углубляешь поцелуй, ощущая сладость на ее языке. Ее зеленые глаза закрываются, длинные ресницы касаются ее щек. Ее фигура с пышными формами напрягается против тугого униформы официантки, ткань натянута туго поперек ее обширной груди. Ты прерываешь поцелуй, твоя рука на ее плече, и нежно направляешь ее развернуться.
+
+{color=yellow|— П-проклятье, это был твой план с самого начала? Ах, мне уже все равно, ты хитрый негодяй...
+
+Хелевиэль подчиняется, ее движения слегка неустойчивы от алкоголя. Ее ладони прижимаются к шероховатой поверхности стола, пока она наклоняется вперед, позиция незнакомая и неловкая для бывшей Верховной Жрицы. Юбка ее униформы задирается, обнажая гладкую бледную кожу ее бедер. Ты делаешь шаг позади нее, одна рука очерчивает изгиб ее позвоночника, прежде чем остановиться на ее бедре. Другой рукой ты поднимаешь юбку выше, собирая ее у ее талии. Она слегка напрягается, когда ты стаскиваешь ее трусики вниз, обнажая ее влажную киску.""",
+	HELEVIEL_BAR_SEX_4 = """Ты располагаешься позади нее, твой твердый член прижимается к ее входу. Хелевиэль ахает, когда ты начинаешь входить, проникновение медленное, но устойчивое. Ее тугая киска растягивается, чтобы вместить тебя, ее тело не привыкло к такому вторжению. Ты хватаешь ее за бедра, притягивая ее назад к себе, пока ты входишь глубже. Ее стоны приглушены о поверхность стола, ее пальцы впиваются в дерево. Каждый толчок посылает волны удовольствия по ее телу, ее большие груди покачиваются в ритм. Стол скрипит под ней, пока ты набираешь темп, твой член скользит внутрь и наружу ее скользкой теплоты с нарастающей интенсивностью.
+
+{color=yellow|Хелевиэль: — М-м-мх... Что это... Унижение... Почему это чувствуется так хорошо...""",
+	HELEVIEL_BAR_SEX_5 = """Зеленые глаза Хелевиель полуприкрыты от удовольствия и удивления, пока ты продолжаешь овладевать ею сзади. Ее фасад достоинства рушится с каждым мощным толчком, сменяясь диким, необузданным желанием. Ты наклоняешься над ней, твое дыхание горячо у ее уха, пока ты протягиваешь руку, чтобы сжать ее тяжелую грудь сквозь тонкую ткань ее униформы. Ее соски твердеют под твоим прикосновением, ее спина инстинктивно выгибается. Комната наполняется звуком шлепка кожи о кожу и ее все более громкими стонами.
+
+{color=yellow|Хелевиэль: — Н-не останавливайся... Если ты остановишься... Я не смогу...
+
+Ты входишь в нее сильнее, быстрее, твой член достигает той чувствительной точки глубоко внутри нее, от которой она вскрикивает. Контролируемое поведение Хелевиель полностью разбивается, ее стоны становятся громче, отчаяннее, разносясь в маленькой задней комнате. Ее зеленые глаза, обычно такие серьезные и собранные, теперь затуманены дымкой сладострастного удовольствия. Ты чувствуешь, как ее тело начинает напрягаться под тобой, мышцы на ее бедрах и спине сжимаются, пока она отталкивается обратно на тебя, встречая твой ритм инстинктивной потребностью.""",
+	HELEVIEL_BAR_SEX_6 = "Стол скребет по полу, когда ты делаешь один финальный, глубокий толчок. Гортанный крик вырывается из губ Хелевиель, когда ее оргазм пронзает ее. Ее киска сжимается вокруг твоего члена ритмичными пульсациями, доя тебя, пока она безудержно дрожит. Ее зрение затуманивается, raw, плотское освобождение, которое сдирает прочь каждый последний кусок ее достойной персоны. Сила ее кульминации запускает твою собственную, и ты погружаешься глубоко внутрь нее, твой член пульсирует, пока ты наполняешь ее своим теплом.",
+	HELEVIEL_BAR_SEX_7 = "В течение долгого момента единственный звук в комнате — твое тяжелое дыхание и хныкающие стоны, все еще вырывающиеся из губ Хелевиель. Ее тело обмякает, падая вперед на стол, ее длинные белые волосы раскинулись вокруг ее головы словно нимб. Ты остаешься внутри нее еще мгновение, чувствуя отголоски ее оргазма, все еще содрогающиеся в ней. Медленно ты выходишь, след ваших combined жидкостей капает из ее все еще дрожащей киски. Хелевиель не двигается, ее лицо повернуто в сторону, глаза закрыты, пока она пытается осмыслить интенсивность только что произошедшего. Когда-то достойная эльфийка теперь растрепанная, удовлетворенная девчонка, ее униформа официантки помята и испачкана, ее тело все еще гудит от удовольствия.",
+	HELEVIEL_BAR_SEX_8 = "Ты помог Хелевиель привести себя в порядок и убрать беспорядок, который вы устроили в комнате. Эльфийке потребовались лишь мгновения, чтобы собраться, как будто между вами ничего только что не произошло. Однако, когда ты отправился домой в особняк, ты заметил небольшую перемену в ее поведении, словно она теперь смотрела на тебя с большей теплотой.",
+	HELEVIEL_FOREST_SEX_1 = """Ты не медлишь, прижимая ее к огромному, грубому стволу Великого Дерева. Кора представляет собой резкую, абразивную текстуру против гладкой ткани ее церемониальных тканей. Твои губы захватывают ее поцелуем, который является одновременно притягательным и требовательным. Первоначальная скованность Хелевиель тает под интенсивностью, ее руки осторожно поднимаются, чтобы лечь на твои плечи. Ее белые волосы, все еще излучающие слабый остаточный свет от ритуала, ниспадают по ее спине, резко контрастируя с глубокой, древней древесиной. Ты прерываешь поцелуй, твои глаза встречаются с ее, пока твои руки находят застежки ее одежды, ловко расстегивая их. Тяжелое облачение расходится, обнажая бледную кожу под низом, ее большая грудь вздымается с каждым неровным вздохом.
+
+{color=yellow|Хелевиэль: — Мужчины и впрямь похотливые существа. Подумать только, что я с такой готовностью отдалась бы одному из них...}""",
+	HELEVIEL_FOREST_SEX_2 = """Хелевиель колеблется на мгновение, ее достоинство борется с ее желанием. Затем, с мягким вздохом, она поднимает одну ногу, обвивая ее вокруг твоей талии. Движение открывает ее для тебя, ткань ее белья — единственная оставшаяся преграда. Ты зацепляешь палец за бок тонкого материала, отодвигая его в сторону, чтобы обнажить ее уже влажную киску. Твоя другая рука придерживает ее бедро, пока ты направляешь свой твердый член к ее входу. Она ахает, когда ты входишь, проникновение медленное, но уверенное. Поза незнакомая, заставляя ее чувствовать себя открытой и уязвимой, и все же трепет удовольствия пробегает по ней, когда ты начинаешь двигаться.
+
+{color=yellow|Хелевиэль: — Т-ты ужасен... за то, что заставляешь меня... чувствовать себя так...}""",
+	HELEVIEL_FOREST_SEX_3 = """Ты начинаешь двигаться, медленный, глубокий ритм, который вбивает твои бедра в ее. Зеленые глаза Хелевиель широко раскрыты, безмолвный вздох вырывается из ее губ, пока она приспосабливается к ощущению, что ее берут у священного дерева. Каждый толчок вдавливает ее глубже в ствол. Ее большая грудь прижимается к твоей груди, твердые точки ее сосков ощущаются на твоей коже даже сквозь слои одежды между вами.
+
+{color=yellow|Хелевиэль: — Нхх... Сильнее... Разрушь меня как жрицу...}
+
+Ты увеличиваешь темп, твои движения становятся более сильными, более повелитильными. Твой член теперь с легкостью скользит внутрь и наружу ее скользкой киски, ее тело приспособилось к твоему размеру. Голова Хелевиель откидывается на дерево, ее белые волосы каскадом ниспадают на древнюю древесину. Нога, обвитая вокруг твоей талии, сжимается, притягивая тебя ближе. Ее достоинство забыто, замененное чистой похотью, пока она подстраивается под твой ритм, ее бедра двигаются навстречу твоим.""",
+	HELEVIEL_FOREST_SEX_4 = """Ты толкаешь сильнее, глубже, попадая в ту чувствительную точку внутри нее, от которой она вскрикивает, ее тело выгибается против твоего. Тело Хелевиель напрягается, ее ногти впиваются в твои плечи, пока ее оргазм начинает нарастать. Ее зеленые глаза полуприкрыты, затуманены удовольствием, ее губы разомкнуты в тихой мольбе об оргазме.
+
+{color=yellow|Хелевиэль: — Я... Я сейчас... Кончу... Для тебя…}
+
+С одним финальным, глубоким толчком ты входишь в нее в последний раз. Хелевиель вскрикивает, ее тело дрожит, когда ее оргазм пронзает ее. Ее киска сжимается вокруг твоего члена ритмичными пульсациями, доя тебя, пока она безудержно трясется. Интенсивность ее удовольствия запускает твой собственное оргазм, и ты погружаешься глубоко внутрь нее, твой член пульсирует, пока ты наполняешь ее своим семенем. В течение долгого момента единственный звук на поляне — твое тяжелое дыхание и мягкие вздохи Хелевиель, пока она приходит в себя после своего оргазма.""",
+	HELEVIEL_WEDDING_1 = """Хелевиль стоит перед тобой, замысловатые серебряные нити ее белого свадебного платья переливаются в тусклом свете. Ее длинные белые волосы распущены, ниспадая на плечи подобно водопаду лунного света. Долгое время она просто смотрит на тебя, ее зеленые глаза нечитаемы, ее серьезная, маска достоинства держится непоколебимо. Затем, с медленной, обдуманной грацией, она поворачивается к тебе спиной.
+
+{color=yellow|Хелевиэль: — Что ж, мой дорогой [husband], ты, должно быть, так же нетерпелив, как и я.}
+
+Она подходит к кровати, ее шаги бесшумны на толстом ковре. Она замирает, затем медленно опускается на колени перед тобой, опуская верхнюю часть тела, пока ее грудь не прижимается к полу. Она поднимает свою заднюю часть, подставляясь тебе. Она смотрит на тебя через плечо, ее белые волосы рассыпаются по спине, зеленые глаза потемнели от смеси опасения и приглашения.""",
+	HELEVIEL_WEDDING_2 = """{color=yellow|Хелевиэль: — Посмотри, как сильно я тебе покоряюсь, пожалуйста, не заставляй меня ждать.}
+
+Ты приближаешься к ней, твои движения неторопливы. Ты проводишь рукой по гладкой кривой ее задницы, твои пальцы очерчивают линию ее трусиков, прежде чем зацепиться за деликатную ткань и оттянуть ее в сторону. Ее киска уже блестит от ее соков, губы набухли и разомкнуты в готовности. Ты становишься на колени позади нее, твой твердый член прижимается к ее входу. Хелевиль слегка напрягается, тихий вздох вырывается из ее губ, когда ты начинаешь входить. Ее тугая киска растягивается, чтобы вместить тебя, ее тело все еще приспосабливается к твоему размеру. Ты хватаешь ее за бедра, притягивая ее назад к себе, когда ты входишь глубже.""",
+	HELEVIEL_WEDDING_3 = """{color=yellow|Хелевиэль: — Нгх... Ты так безжалостен ко мне...}
+
+Ее задница отталкивается тебе навстречу, встречая твои толчки инстинктивным ритмом, который выдает ее сохраняющуюся неловкость. Комната наполняется тихими звуками ваших соединяющихся тел, скользким движением твоего члена внутрь и наружу ее влажной киски, и тихими, прерывистыми вздохами Хелевиэль. Свет свечи ловит блеск пота на ее коже, подчеркивая изгиб ее позвоночника и выпуклость ее бедер. Ее большие груди раскачиваются с каждым толчком.""",
+	HELEVIEL_WEDDING_4 = """{color=yellow|Хелевиэль: — Ах, оплодотвори меня... Как... Как низкое животное... Аах...}
+
+Неуверенный, относится ли она к тебе или к себе, ты увеличиваешь темп, твои движения становятся более сильными, более собственническими. Твои руки сжимают ее бедра крепче, вгоняя твой член глубже в нее. Голова Хелевиль падает вперед, ее белые волосы занавесью скрывают ее лицо, но ты слышишь, как ее стоны становятся громче, отчаяннее. Нога, не несущая ее вес, дрожит, ее тело начинает терять самообладание под натиском удовольствия.
+
+Ты наклоняешься над ней, твоя грудь прижимается к ее спине, твое дыхание горячо у ее уха. Хелевиэль подчиняется, поворачивая голову, чтобы встретить твой взгляд. Ее зеленые глаза потемнели от наслаждения, ее губы разомкнуты, лицо раскраснелось. Вид ее, такой сладострастной, такой покинутой, посылает через тебя новую волну желания. Ты трахаешь сильнее, глубже, попадая в то чувствительное место внутри нее, от которого она вскрикивает, ее тело выгибается против твоего. Контроль, который она всегда пыталась сохранить, ушел, замененный низшей потребностью.""",
+	HELEVIEL_WEDDING_5 = """Вид ее, такой сладострастной, такой покинутой, посылает через тебя новую волну желания. Ты трахаешь сильнее, глубже, попадая в то чувствительное место внутри нее, от которого она вскрикивает, ее тело выгибается против твоего. Она подстраивается под твой ритм, ее бедра движутся навстречу твоим с все более отчаянной срочностью. Ты чувствуешь, как ее тело начинает дрожать, ее киска сжимается вокруг твоего члена в ритме, сигнализирующем о ее приближающемся оргазме. Ее стоны наполняют комнату.
+
+С последним, глубоким толчком, ты входишь в нее в последний раз. Хелевиэль вскрикивает, ее тело конвульсирует, когда ее оргазм прокатывается через нее. Ее киска сжимается вокруг твоего члена ритмичными пульсациями, доя тебя, пока она неконтролируемо дрожит. Интенсивность ее удовольствия запускает твой собственный оргазм, и ты погружаешься глубоко внутрь нее, твой член пульсирует, пока ты наполняешь ее своей спермой. Долгий момент единственный звук в комнате — твое тяжелое дыхание и тихие всхлипывания Хелевиэль.
+
+{color=yellow|Хелевиэль: — Аах!!.. Так горячо... Твое семя наполняет меня!..}""",
+	HELEVIEL_WEDDING_6 = """Медленно ты выходишь из нее, падая на кровать рядом с ней. Хелевиль лежит там, ее тело все еще дрожит от удовольствия, ее белые волосы — растрепанный беспорядок вокруг ее головы. Она поворачивается к тебе лицом, ее зеленые глаза мягки, смесь удовлетворения и сохраняющейся уязвимости в их глубине. Достойная Верховная Жрица ушла, замененная женщиной, которая полностью тебе покорилась. Она протягивает руку, ее рука находит твою, ее пальцы переплетаются с твоими в безмолвном жесте связи.
+
+{color=yellow|Хелевиэль: — Это так глупо, но... Что я чувствую больше всего прямо сейчас, так это то, что я не бывшая жрица или эльфийка. А то, что я женщина. Твоя женщина.}""",
 }
 
 

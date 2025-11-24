@@ -1078,11 +1078,14 @@ var traits = {
 		visible = false,
 		icon = "res://assets/images/iconstraits/l_communicative.png",
 		effects = [],
-		bonusstats = {},
+		bonusstats = {
+			chg_persuasion = 3,
+			mastery_leadership = 2
+			},
 		reqs = [],
 		l_cost = 1,
 		tree_position = {tab = 3, x = 1, y = 3},
-		tags = ['loyalty_master', 'communicative'],
+		tags = ['loyalty_master'],
 	},
 	master_resilence = {
 		name = '',

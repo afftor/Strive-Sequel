@@ -788,6 +788,7 @@ func BBCodeTooltip(meta, node):
 	var text = node.get_meta('tooltips')[int(meta)]
 	#showtooltip(text, node)
 
+var shrine_offering_items = ['alcohol','wine','wine2','beer']
 
 func ItemSelect(targetscript, type, function, requirements = null):
 	var node
@@ -828,18 +829,27 @@ func ItemSelect(targetscript, type, function, requirements = null):
 	elif type == 'material':
 		for i in ResourceScripts.game_res.materials:
 			if ResourceScripts.game_res.materials[i] > 0:
-				array.append({kind = 'material', code = i, amount = ResourceScripts.game_res.materials[i]})
-		if requirements != null and requirements.has("allow_alcohol_items") and requirements.allow_alcohol_items:
-			for item in ResourceScripts.game_res.items.values():
-				if item.owner != null:
-					continue
-				if item.amount <= 0:
-					continue
-				var template = Items.itemlist[item.itembase]
-				if !template.has("interaction_effect"):
-					continue
-				if template.interaction_effect in ['alcohol', 'beer']:
-					array.append({kind = 'item', code = item.itembase, amount = item.amount, item = item})
+				array.append(i)
+	elif type == 'shrine_offering':
+		
+		for i in ResourceScripts.game_res.materials:
+			if ResourceScripts.game_res.materials[i] > 0:
+				array.append({type = 'material', code = i, amount = ResourceScripts.game_res.materials[i]})
+		for item in ResourceScripts.game_res.items.values():
+			var template = Items.itemlist[item.itembase]
+			if template.code in shrine_offering_items:
+				array.append({type = 'item', code = item.itembase, amount = item.amount, item = item})
+#		if requirements != null and requirements.has("allow_alcohol_items") and requirements.allow_alcohol_items:
+#			for item in ResourceScripts.game_res.items.values():
+#				if item.owner != null:
+#					continue
+#				if item.amount <= 0:
+#					continue
+#				var template = Items.itemlist[item.itembase]
+#				if !template.has("interaction_effect"):
+#					continue
+#				if template.interaction_effect in ['alcohol', 'beer']:
+#					array.append({kind = 'item', code = item.itembase, amount = item.amount, item = item})
 
 	for i in array:
 		var newnode = input_handler.DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))
@@ -856,26 +866,26 @@ func ItemSelect(targetscript, type, function, requirements = null):
 				newnode.get_node("Percent").text = str(i.amount)
 				connectitemtooltip_v2(newnode, i)
 			'material':
-				if typeof(i) == TYPE_DICTIONARY and i.has('kind'):
-					match i.kind:
-						'material':
-							newnode.get_node("icon").texture = Items.materiallist[i.code].icon
-							newnode.get_node("Percent").show()
-							newnode.get_node('name').text = Items.materiallist[i.code].name
-							newnode.get_node("Percent").text = str(i.amount)
-							connectmaterialtooltip(newnode, Items.materiallist[i.code])
-						'item':
-							i.item.set_icon(newnode.get_node("icon"))
-							newnode.get_node("Percent").show()
-							newnode.get_node('name').text = i.item.name
-							newnode.get_node("Percent").text = str(i.amount)
-							connectitemtooltip_v2(newnode, i.item)
-				else:
-					newnode.get_node("icon").texture = Items.materiallist[i].icon
-					newnode.get_node("Percent").show()
-					newnode.get_node('name').text = Items.materiallist[i].name
-					newnode.get_node("Percent").text = str(ResourceScripts.game_res.materials[i])
-					connectmaterialtooltip(newnode, Items.materiallist[i])
+				newnode.get_node("icon").texture = Items.materiallist[i].icon
+				newnode.get_node("Percent").show()
+				newnode.get_node('name').text = Items.materiallist[i].name
+				newnode.get_node("Percent").text = str(ResourceScripts.game_res.materials[i])
+				connectmaterialtooltip(newnode, Items.materiallist[i])
+			'shrine_offering':
+				match i.type:
+					'material':
+						newnode.get_node("icon").texture = Items.materiallist[i.code].icon
+						newnode.get_node("Percent").show()
+						newnode.get_node('name').text = Items.materiallist[i.code].name
+						newnode.get_node("Percent").text = str(i.amount)
+						connectmaterialtooltip(newnode, Items.materiallist[i.code])
+					'item':
+						i.item.set_icon(newnode.get_node("icon"))
+						newnode.get_node("Percent").show()
+						newnode.get_node('name').text = i.item.name
+						newnode.get_node("Percent").text = str(i.amount)
+						connectitemtooltip_v2(newnode, i.item)
+		
 		newnode.connect('pressed', targetscript, function, [i])
 		newnode.connect('pressed',input_handler,'CloseSelection', [node])
 
