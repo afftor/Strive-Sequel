@@ -689,3 +689,7 @@ const fame_rise_chance_service = 0.05
 var SQ_random_reword = [-0.1, 0.1]
 const SQ_req_num_mod_start = 4
 const SQ_req_num_mod = 0.1
+
+
+var category_order = ['high','med','low','disable']
+var categorycolors = {high = "green", med = 'yellow', low = 'red', disable = 'gray'}

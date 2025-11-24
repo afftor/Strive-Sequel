@@ -143,10 +143,7 @@ func update():
 #		$UpgradesPanel/Label.text = ""
 	#globals.connecttexttooltip($UpgradesPanel/Label, "")
 	#work_rules part
-	var luxury_rooms_taken = 0
-	for p in ResourceScripts.game_party.characters.values():
-		if p.check_work_rule("luxury"):
-			luxury_rooms_taken += 1
+	var luxury_rooms_taken = globals.calculate_lux_rooms()
 	$work_rules/luxury.text = tr("UPGRADELUXURY_ROOMS") + ": " + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms + 1)
 	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.check_work_rule("luxury")
 

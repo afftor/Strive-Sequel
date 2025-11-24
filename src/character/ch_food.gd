@@ -116,3 +116,27 @@ func predict_food():
 	var res = {}
 	res[food] = food_consumption
 	return res
+
+
+func change_food_category(foodcode):
+	var current_category
+	for i in ['high','med','low','disable']:
+		if food_filter[i].has(foodcode):
+			current_category = i
+			break
+	food_filter[current_category].erase(foodcode)
+	var newcategory
+	var tmp = variables.category_order.find(current_category)
+	if variables.category_order.size() > tmp + 1:
+		newcategory = variables.category_order[tmp + 1]
+	else:
+		newcategory = variables.category_order[0]
+	food_filter[newcategory].append(foodcode)
+
+
+func get_filter_for_food(code):
+	for k in ['high','med','low','disable']:
+		if food_filter[k].has(code):
+			return k
+	print("no filter for food %s" % code)
+	return null

@@ -3097,3 +3097,11 @@ func get_tr_src(src, src_val):
 		_:
 			print("get_tr_src() can't decipher %s %s" % [src, src_val])
 			return [src, src_val]
+
+
+func calculate_lux_rooms():
+	var res = 0
+	for p in ResourceScripts.game_party.characters.values():
+		if p.check_work_rule("luxury"):
+			res += 1
+	return res
