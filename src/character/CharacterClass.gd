@@ -1806,6 +1806,11 @@ func escape_actions():
 func predict_food():
 	return food.predict_food()
 
+func change_food_category(foodcode):
+	food.change_food_category(foodcode)
+
+func get_filter_for_food(code):
+	return food.get_filter_for_food(code)
 
 func pretick():
 	process_event(variables.TR_TICK)

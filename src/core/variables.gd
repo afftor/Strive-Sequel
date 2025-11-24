@@ -695,3 +695,6 @@ var damage_shake = [#order matters! Low max_damage first. No max_damage means in
 	{max_damage = 120, time = 0.1, magnitude = 3},
 	{time = 0.15, magnitude = 5},
 ]
+
+var category_order = ['high','med','low','disable']
+var categorycolors = {high = "green", med = 'yellow', low = 'red', disable = 'gray'}
