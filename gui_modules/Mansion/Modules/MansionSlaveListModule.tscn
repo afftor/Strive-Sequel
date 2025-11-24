@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/images/sexicons/male.png" type="Texture" id=8]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_SlaveList.tres" type="Theme" id=9]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_SlaveList_Button.tres" type="Theme" id=10]
-[ext_resource path="res://assets/Themes_v2/MANSION/M_SlaveList_Categories.tres" type="Theme" id=11]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=11]
 [ext_resource path="res://dragarraytemplate.gd" type="Script" id=12]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionSlaveListModule.gd" type="Script" id=13]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_foodperday.png" type="Texture" id=14]
@@ -46,8 +46,7 @@
 [ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_magicdamage.png" type="Texture" id=44]
 [ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_magicdamage_pressed.png" type="Texture" id=45]
 [ext_resource path="res://assets/Textures_v2/CLASS_INFO/Skills Icons/icon_magicdamage_hover.png" type="Texture" id=46]
-[ext_resource path="res://gui_modules/Universal/Scripts/ContextDropdown.gd" type="Script" id=47]
-[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=48]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=47]
 
 [sub_resource type="DynamicFont" id=6]
 size = 30
@@ -70,19 +69,12 @@ theme = ExtResource( 9 )
 custom_styles/panel = ExtResource( 25 )
 script = ExtResource( 13 )
 
-[node name="CharacterContextMenu" type="PopupMenu" parent="."]
-margin_right = 255.0
-margin_bottom = 53.0
-theme = ExtResource( 48 )
-items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false ]
-script = ExtResource( 47 )
-
 [node name="Label" type="Label" parent="."]
 visible = false
 margin_left = 446.923
 margin_top = 7.7562
 margin_right = 623.923
-margin_bottom = 47.7562
+margin_bottom = 49.7562
 custom_colors/font_color = Color( 0.866667, 0.905882, 0.478431, 1 )
 custom_fonts/font = ExtResource( 26 )
 text = "MSLMNAME"
@@ -100,195 +92,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Categories" type="VBoxContainer" parent="."]
-margin_left = 14.0
-margin_top = 20.0
-margin_right = 1068.0
-margin_bottom = 70.0
-size_flags_horizontal = 3
-theme = ExtResource( 11 )
-
-[node name="Button" type="TextureButton" parent="Categories"]
-margin_right = 1054.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
-expand = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Categories/Button"]
-margin_left = -5.0
-margin_top = 3.0
-margin_right = 986.0
-margin_bottom = 54.0
-
-[node name="icon" type="TextureRect" parent="Categories/Button/HBoxContainer"]
-margin_right = 50.0
-margin_bottom = 51.0
-rect_min_size = Vector2( 50, 0 )
-mouse_filter = 2
-expand = true
-stretch_mode = 6
-
-[node name="sex" type="Label" parent="Categories/Button/HBoxContainer"]
-margin_left = 54.0
-margin_top = 4.0
-margin_right = 179.0
-margin_bottom = 46.0
-rect_min_size = Vector2( 50, 0 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 26 )
-text = "MSLMSex"
-
-[node name="name" type="Label" parent="Categories/Button/HBoxContainer"]
-margin_left = 183.0
-margin_top = 4.0
-margin_right = 357.0
-margin_bottom = 46.0
-rect_min_size = Vector2( 125, 0 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 26 )
-text = "MSLMNNAME"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="stats" type="Label" parent="Categories/Button/HBoxContainer"]
-margin_left = 361.0
-margin_top = 4.0
-margin_right = 507.0
-margin_bottom = 46.0
-rect_min_size = Vector2( 100, 0 )
-mouse_filter = 0
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 26 )
-text = "MSLMSTAT"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="job" type="Label" parent="Categories/Button/HBoxContainer"]
-margin_left = 511.0
-margin_top = 4.0
-margin_right = 671.0
-margin_bottom = 46.0
-rect_min_size = Vector2( 160, 0 )
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 26 )
-text = "MSLMOCCU"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="inventory" type="Label" parent="Categories/Button/HBoxContainer"]
-margin_left = 675.0
-margin_top = 4.0
-margin_right = 825.0
-margin_bottom = 46.0
-rect_min_size = Vector2( 150, 0 )
-mouse_filter = 0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 26 )
-text = "MSLMINV"
-align = 1
-
-[node name="explabel" type="Label" parent="Categories/Button/HBoxContainer"]
-margin_left = 829.0
-margin_top = 4.0
-margin_right = 957.0
-margin_bottom = 46.0
-rect_min_size = Vector2( 70, 0 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 26 )
-text = "MSLMEXP"
-
-[node name="icon2" type="TextureRect" parent="Categories/Button/HBoxContainer"]
-margin_left = 961.0
-margin_right = 1011.0
-margin_bottom = 51.0
-rect_min_size = Vector2( 50, 0 )
-hint_tooltip = "DATETOOLTIPSHORT"
-theme = ExtResource( 43 )
-texture = ExtResource( 41 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="icon3" type="TextureRect" parent="Categories/Button/HBoxContainer"]
-margin_left = 1015.0
-margin_right = 1065.0
-margin_bottom = 51.0
-rect_min_size = Vector2( 50, 0 )
-hint_tooltip = "SEXTOOLTIPSHORT"
-theme = ExtResource( 43 )
-texture = ExtResource( 40 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="icon4" type="TextureRect" parent="Categories/Button/HBoxContainer"]
-margin_left = 1069.0
-margin_right = 1119.0
-margin_bottom = 51.0
-rect_min_size = Vector2( 50, 0 )
-hint_tooltip = "TRAINTOOLTIP"
-theme = ExtResource( 43 )
-texture = ExtResource( 23 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="location" type="Label" parent="Categories/Button/HBoxContainer"]
-margin_left = 1123.0
-margin_top = 4.0
-margin_right = 1223.0
-margin_bottom = 46.0
-rect_min_size = Vector2( 100, 0 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 26 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="state2" type="Label" parent="Categories/Button/HBoxContainer"]
-margin_left = 1227.0
-margin_top = 4.0
-margin_right = 1371.0
-margin_bottom = 46.0
-rect_min_size = Vector2( 50, 0 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 26 )
-text = "MSLMTYPE"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 11.0
-margin_top = 80.0
+margin_top = 120.0
 margin_right = 1089.0
-margin_bottom = 718.0
+margin_bottom = 685.0
 rect_min_size = Vector2( 996, 10 )
 theme = ExtResource( 2 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 1078.0
-margin_bottom = 45.0
+margin_bottom = 52.0
 rect_min_size = Vector2( 996, 45 )
 size_flags_horizontal = 3
 custom_constants/separation = 1
 
-[node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
-visible = false
+[node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer" groups=["default"]]
 margin_right = 1078.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 1004, 52 )
@@ -304,7 +124,7 @@ texture_disabled = ExtResource( 36 )
 stretch_mode = 6
 script = ExtResource( 12 )
 
-[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel", "default", "food", "rules", "training"]]
 margin_left = 7.0
 margin_top = 5.0
 margin_right = 47.0
@@ -314,7 +134,7 @@ mouse_filter = 2
 expand = true
 stretch_mode = 6
 
-[node name="sex" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="sex" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel", "default", "food", "rules", "training"]]
 margin_left = 54.0
 margin_top = 5.0
 margin_right = 93.0
@@ -325,7 +145,7 @@ texture = ExtResource( 8 )
 expand = true
 stretch_mode = 6
 
-[node name="name" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="name" type="Label" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel", "default", "food", "rules", "training"]]
 margin_left = 107.0
 margin_top = 5.0
 margin_right = 232.0
@@ -337,7 +157,8 @@ text = "Name "
 valign = 1
 clip_text = true
 
-[node name="stats" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="stats" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button" groups=["default", "training"]]
+visible = false
 margin_left = 250.0
 margin_top = 6.0
 margin_right = 290.0
@@ -367,7 +188,8 @@ value = 100.0
 texture_progress = ExtResource( 24 )
 fill_mode = 3
 
-[node name="job" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="job" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["default"]]
+visible = false
 margin_left = 311.0
 margin_top = 6.0
 margin_right = 480.0
@@ -392,7 +214,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="rhand" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="rhand" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["default"]]
+visible = false
 margin_left = 490.0
 margin_top = 6.0
 margin_right = 530.0
@@ -418,7 +241,8 @@ anchor_bottom = 1.0
 texture = ExtResource( 42 )
 expand = true
 
-[node name="tool" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="tool" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["default"]]
+visible = false
 margin_left = 530.0
 margin_top = 6.0
 margin_right = 570.0
@@ -443,7 +267,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 expand = true
 
-[node name="chest" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="chest" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["default"]]
+visible = false
 margin_left = 570.0
 margin_top = 6.0
 margin_right = 610.0
@@ -468,7 +293,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 expand = true
 
-[node name="legs" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="legs" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["default"]]
+visible = false
 margin_left = 610.0
 margin_top = 6.0
 margin_right = 650.0
@@ -493,7 +319,8 @@ margin_right = -2.0
 margin_bottom = -2.0
 expand = true
 
-[node name="explabel" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="explabel" type="Label" parent="ScrollContainer/VBoxContainer/Button" groups=["default"]]
+visible = false
 margin_left = 664.0
 margin_top = 5.0
 margin_right = 727.0
@@ -508,7 +335,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DateIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="DateIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button" groups=["default"]]
+visible = false
 margin_left = 740.0
 margin_top = 5.0
 margin_right = 780.0
@@ -516,7 +344,8 @@ margin_bottom = 45.0
 texture = ExtResource( 35 )
 stretch_mode = 4
 
-[node name="SexIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="SexIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button" groups=["default"]]
+visible = false
 margin_left = 790.0
 margin_top = 5.0
 margin_right = 830.0
@@ -524,7 +353,8 @@ margin_bottom = 45.0
 texture = ExtResource( 21 )
 stretch_mode = 4
 
-[node name="TrainIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="TrainIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button" groups=["default"]]
+visible = false
 margin_left = 836.0
 margin_top = 5.0
 margin_right = 876.0
@@ -533,6 +363,7 @@ texture = ExtResource( 21 )
 stretch_mode = 4
 
 [node name="SpellIcon" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
+visible = false
 margin_left = 890.0
 margin_top = 5.0
 margin_right = 930.0
@@ -544,7 +375,8 @@ texture_hover = ExtResource( 46 )
 expand = true
 stretch_mode = 4
 
-[node name="LocIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="LocIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button" groups=["default"]]
+visible = false
 margin_left = 940.0
 margin_top = 6.0
 margin_right = 980.0
@@ -552,19 +384,8 @@ margin_bottom = 46.0
 texture = ExtResource( 21 )
 stretch_mode = 4
 
-[node name="loctext" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 838.0
-margin_top = 5.0
-margin_right = 1049.0
-margin_bottom = 43.0
-rect_min_size = Vector2( 125, 0 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 27 )
-text = "Name "
-valign = 1
-clip_text = true
-
-[node name="state" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="state" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button" groups=["default"]]
+visible = false
 margin_left = 987.0
 margin_top = 5.0
 margin_right = 1047.0
@@ -575,13 +396,422 @@ texture = ExtResource( 23 )
 expand = true
 stretch_mode = 6
 
-[node name="progress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/Button"]
+[node name="progress" type="TextureProgress" parent="ScrollContainer/VBoxContainer/Button" groups=["training"]]
+visible = false
 margin_left = 423.0
 margin_top = 8.0
 margin_right = 846.0
 margin_bottom = 42.0
 texture_under = ExtResource( 33 )
 texture_progress = ExtResource( 34 )
+
+[node name="rule_lock" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+visible = false
+margin_left = 250.0
+margin_top = 1.0
+margin_right = 298.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_ration" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+visible = false
+margin_left = 320.0
+margin_top = 1.0
+margin_right = 368.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_shifts" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+visible = false
+margin_left = 390.0
+margin_top = 1.0
+margin_right = 438.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_constrain" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+visible = false
+margin_left = 460.0
+margin_top = 1.0
+margin_right = 508.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_luxury" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["lux_rooms", "rules"]]
+visible = false
+margin_left = 530.0
+margin_top = 1.0
+margin_right = 578.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_contraceptive" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+visible = false
+margin_left = 600.0
+margin_top = 1.0
+margin_right = 648.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_bindings" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+visible = false
+margin_left = 670.0
+margin_top = 1.0
+margin_right = 718.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_nudity" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+visible = false
+margin_left = 740.0
+margin_top = 1.0
+margin_right = 788.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_personality_lock" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+visible = false
+margin_left = 810.0
+margin_top = 1.0
+margin_right = 858.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_relationship" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+visible = false
+margin_left = 880.0
+margin_top = 1.0
+margin_right = 928.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_masturbation" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
+visible = false
+margin_left = 950.0
+margin_top = 1.0
+margin_right = 998.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_waitress" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel"]]
+visible = false
+margin_left = 240.0
+margin_top = 1.0
+margin_right = 288.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_hostess" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel"]]
+visible = false
+margin_left = 300.0
+margin_top = 1.0
+margin_right = 348.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_dancer" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel"]]
+visible = false
+margin_left = 360.0
+margin_top = 1.0
+margin_right = 408.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_stripper" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel"]]
+visible = false
+margin_left = 420.0
+margin_top = 1.0
+margin_right = 468.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_petting" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel"]]
+visible = false
+margin_left = 500.0
+margin_top = 1.0
+margin_right = 548.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_oral" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel"]]
+visible = false
+margin_left = 560.0
+margin_top = 1.0
+margin_right = 608.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_anal" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel"]]
+visible = false
+margin_left = 620.0
+margin_top = 1.0
+margin_right = 668.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_pussy" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel"]]
+visible = false
+margin_left = 680.0
+margin_top = 1.0
+margin_right = 728.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_group" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel"]]
+visible = false
+margin_left = 740.0
+margin_top = 1.0
+margin_right = 788.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_sextoy" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel"]]
+visible = false
+margin_left = 800.0
+margin_top = 1.0
+margin_right = 848.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_males" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel"]]
+visible = false
+margin_left = 880.0
+margin_top = 1.0
+margin_right = 928.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_females" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel"]]
+visible = false
+margin_left = 940.0
+margin_top = 1.0
+margin_right = 988.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="rule_futa" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["brothel"]]
+visible = false
+margin_left = 1000.0
+margin_top = 1.0
+margin_right = 1048.0
+margin_bottom = 49.0
+theme = ExtResource( 11 )
+
+[node name="ff_meat" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+margin_left = 231.0
+margin_top = 6.0
+margin_right = 314.0
+margin_bottom = 46.0
+size_flags_horizontal = 0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 29 )
+expand = true
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_meat"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "disable"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ff_fish" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+margin_left = 318.0
+margin_top = 6.0
+margin_right = 401.0
+margin_bottom = 46.0
+size_flags_horizontal = 0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 29 )
+expand = true
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_fish"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "disable"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ff_grain" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+margin_left = 406.0
+margin_top = 6.0
+margin_right = 489.0
+margin_bottom = 46.0
+size_flags_horizontal = 0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 29 )
+expand = true
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_grain"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "disable"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ff_vegetables" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+margin_left = 495.0
+margin_top = 6.0
+margin_right = 578.0
+margin_bottom = 46.0
+size_flags_horizontal = 0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 29 )
+expand = true
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_vegetables"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "disable"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ff_bread" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+margin_left = 582.0
+margin_top = 6.0
+margin_right = 665.0
+margin_bottom = 46.0
+size_flags_horizontal = 0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 29 )
+expand = true
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_bread"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "disable"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ff_meatsoup" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+margin_left = 670.0
+margin_top = 6.0
+margin_right = 753.0
+margin_bottom = 46.0
+size_flags_horizontal = 0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 29 )
+expand = true
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_meatsoup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "disable"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ff_curry" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+margin_left = 759.0
+margin_top = 6.0
+margin_right = 842.0
+margin_bottom = 46.0
+size_flags_horizontal = 0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 29 )
+expand = true
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_curry"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "disable"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ff_friedfish" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+margin_left = 846.0
+margin_top = 6.0
+margin_right = 929.0
+margin_bottom = 46.0
+size_flags_horizontal = 0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 29 )
+expand = true
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_friedfish"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "disable"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ff_fishcakes" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+margin_left = 934.0
+margin_top = 6.0
+margin_right = 1017.0
+margin_bottom = 46.0
+size_flags_horizontal = 0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 29 )
+expand = true
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/ff_fishcakes"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "disable"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
 visible = false
@@ -777,6 +1007,771 @@ custom_fonts/font = ExtResource( 27 )
 text = "1/1"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="Control" parent="."]
+margin_left = 9.0
+margin_top = 23.0
+margin_right = 1066.0
+margin_bottom = 112.0
+
+[node name="icon" type="TextureRect" parent="HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="sex" type="Label" parent="HBoxContainer" groups=["brothel", "default", "food", "rules", "training"]]
+margin_left = 21.0
+margin_top = 44.0
+margin_right = 146.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 50, 0 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 26 )
+text = "MSLMSex"
+align = 1
+
+[node name="name" type="Label" parent="HBoxContainer" groups=["brothel", "default", "food", "rules", "training"]]
+margin_left = 67.0
+margin_top = 44.0
+margin_right = 241.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 125, 0 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 26 )
+text = "MSLMNNAME"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stats" type="Label" parent="HBoxContainer" groups=["default", "training"]]
+visible = false
+margin_left = 196.0
+margin_top = 46.0
+margin_right = 342.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 100, 0 )
+mouse_filter = 0
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 26 )
+text = "MSLMSTAT"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="job" type="Label" parent="HBoxContainer" groups=["default"]]
+visible = false
+margin_left = 320.0
+margin_top = 46.0
+margin_right = 480.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 160, 0 )
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 26 )
+text = "MSLMOCCU"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rule_lock" type="Label" parent="HBoxContainer" groups=["rules"]]
+visible = false
+margin_left = 228.0
+margin_top = 40.0
+margin_right = 361.0
+margin_bottom = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "WORKRULELOCK"
+align = 1
+
+[node name="rule_ration" type="Label" parent="HBoxContainer" groups=["rules"]]
+visible = false
+margin_left = 273.0
+margin_top = 66.0
+margin_right = 425.0
+margin_bottom = 90.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "WORKRULERATION"
+align = 1
+
+[node name="rule_shifts" type="Label" parent="HBoxContainer" groups=["rules"]]
+visible = false
+margin_left = 337.0
+margin_top = 40.0
+margin_right = 484.0
+margin_bottom = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "WORKRULESHIFTS"
+align = 1
+
+[node name="rule_constrain" type="Label" parent="HBoxContainer" groups=["rules"]]
+visible = false
+margin_left = 393.0
+margin_top = 66.0
+margin_right = 577.0
+margin_bottom = 90.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "WORKRULECONSTRAIN"
+align = 1
+
+[node name="rule_luxury" type="Label" parent="HBoxContainer" groups=["rules"]]
+visible = false
+margin_left = 475.0
+margin_top = 40.0
+margin_right = 631.0
+margin_bottom = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "WORKRULELUXURY"
+align = 1
+
+[node name="rule_contraceptive" type="Label" parent="HBoxContainer" groups=["rules"]]
+visible = false
+margin_left = 524.0
+margin_top = 66.0
+margin_right = 746.0
+margin_bottom = 90.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "WORKRULECONTRACEPTIVE"
+align = 1
+
+[node name="rule_bindings" type="Label" parent="HBoxContainer" groups=["rules"]]
+visible = false
+margin_left = 610.0
+margin_top = 40.0
+margin_right = 779.0
+margin_bottom = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "WORKRULEBINDINGS"
+align = 1
+
+[node name="rule_nuduty" type="Label" parent="HBoxContainer" groups=["rules"]]
+visible = false
+margin_left = 694.0
+margin_top = 66.0
+margin_right = 846.0
+margin_bottom = 90.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "WORKRULENUDITY"
+align = 1
+
+[node name="rule_personality_lock" type="Label" parent="HBoxContainer" groups=["rules"]]
+visible = false
+margin_left = 717.0
+margin_top = 40.0
+margin_right = 967.0
+margin_bottom = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "WORKRULEPERSONALITY_LOCK"
+align = 1
+
+[node name="rule_relationship" type="Label" parent="HBoxContainer" groups=["rules"]]
+visible = false
+margin_left = 799.0
+margin_top = 66.0
+margin_right = 1007.0
+margin_bottom = 90.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "WORKRULERELATIONSHIP"
+align = 1
+
+[node name="rule_masturbation" type="Label" parent="HBoxContainer" groups=["rules"]]
+visible = false
+margin_left = 867.0
+margin_top = 40.0
+margin_right = 1087.0
+margin_bottom = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "WORKRULEMASTURBATION"
+align = 1
+
+[node name="brothel_waitress" type="Label" parent="HBoxContainer" groups=["brothel"]]
+visible = false
+margin_left = 217.0
+margin_top = 40.0
+margin_right = 308.0
+margin_bottom = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "BROTHELWAITRESS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="brothel_hostess" type="Label" parent="HBoxContainer" groups=["brothel"]]
+visible = false
+margin_left = 252.0
+margin_top = 67.0
+margin_right = 401.0
+margin_bottom = 91.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "BROTHELHOSTESS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="brothel_dancer" type="Label" parent="HBoxContainer" groups=["brothel"]]
+visible = false
+margin_left = 314.0
+margin_top = 40.0
+margin_right = 455.0
+margin_bottom = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "BROTHELDANCER"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="brothel_stripper" type="Label" parent="HBoxContainer" groups=["brothel"]]
+visible = false
+margin_left = 364.0
+margin_top = 67.0
+margin_right = 516.0
+margin_bottom = 91.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "BROTHELSTRIPPER"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="brothel_petting" type="Label" parent="HBoxContainer" groups=["brothel"]]
+visible = false
+margin_left = 456.0
+margin_top = 40.0
+margin_right = 599.0
+margin_bottom = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "BROTHELPETTING"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="brothel_oral" type="Label" parent="HBoxContainer" groups=["brothel"]]
+visible = false
+margin_left = 523.0
+margin_top = 67.0
+margin_right = 641.0
+margin_bottom = 91.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "BROTHELORAL"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="brothel_pussy" type="Label" parent="HBoxContainer" groups=["brothel"]]
+visible = false
+margin_left = 585.0
+margin_top = 40.0
+margin_right = 712.0
+margin_bottom = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "BROTHELPUSSY"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="brothel_anal" type="Label" parent="HBoxContainer" groups=["brothel"]]
+visible = false
+margin_left = 641.0
+margin_top = 67.0
+margin_right = 759.0
+margin_bottom = 91.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "BROTHELANAL"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="brothel_group" type="Label" parent="HBoxContainer" groups=["brothel"]]
+visible = false
+margin_left = 699.0
+margin_top = 40.0
+margin_right = 830.0
+margin_bottom = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "BROTHELGROUP"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="brothel_sextoy" type="Label" parent="HBoxContainer" groups=["brothel"]]
+visible = false
+margin_left = 751.0
+margin_top = 67.0
+margin_right = 889.0
+margin_bottom = 91.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "BROTHELSEXTOY"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="brothel_males" type="Label" parent="HBoxContainer" groups=["brothel"]]
+visible = false
+margin_left = 840.0
+margin_top = 40.0
+margin_right = 969.0
+margin_bottom = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "BROTHELMALES"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="brothel_females" type="Label" parent="HBoxContainer" groups=["brothel"]]
+visible = false
+margin_left = 886.0
+margin_top = 66.0
+margin_right = 1034.0
+margin_bottom = 90.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "BROTHELFEMALES"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="brothel_futa" type="Label" parent="HBoxContainer" groups=["brothel"]]
+visible = false
+margin_left = 973.0
+margin_top = 40.0
+margin_right = 1090.0
+margin_bottom = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "BROTHELFUTA"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food_meat" type="Label" parent="HBoxContainer" groups=["food"]]
+margin_left = 232.0
+margin_top = 67.0
+margin_right = 323.0
+margin_bottom = 91.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "MATERIALMEAT"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food_fish" type="Label" parent="HBoxContainer" groups=["food"]]
+margin_left = 305.0
+margin_top = 67.0
+margin_right = 422.0
+margin_bottom = 91.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "MATERIALFISH"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food_grain" type="Label" parent="HBoxContainer" groups=["food"]]
+margin_left = 386.0
+margin_top = 67.0
+margin_right = 517.0
+margin_bottom = 91.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "MATERIALGRAIN"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food_vegetables" type="Label" parent="HBoxContainer" groups=["food"]]
+margin_left = 453.0
+margin_top = 67.0
+margin_right = 636.0
+margin_bottom = 91.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "MATERIALVEGETABLES"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food_bread" type="Label" parent="HBoxContainer" groups=["food"]]
+margin_left = 562.0
+margin_top = 67.0
+margin_right = 698.0
+margin_bottom = 91.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "MATERIALBREAD"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food_meatsoup" type="Label" parent="HBoxContainer" groups=["food"]]
+margin_left = 628.0
+margin_top = 67.0
+margin_right = 798.0
+margin_bottom = 91.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "MATERIALMEATSOUP"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food_curry" type="Label" parent="HBoxContainer" groups=["food"]]
+margin_left = 737.0
+margin_top = 67.0
+margin_right = 872.0
+margin_bottom = 91.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "MATERIALCURRY"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food_friedfish" type="Label" parent="HBoxContainer" groups=["food"]]
+margin_left = 807.0
+margin_top = 67.0
+margin_right = 971.0
+margin_bottom = 91.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "MATERIALFRIEDFISH"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food_fishcakes" type="Label" parent="HBoxContainer" groups=["food"]]
+margin_left = 890.0
+margin_top = 67.0
+margin_right = 1059.0
+margin_bottom = 91.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 47 )
+text = "MATERIALFISHCAKES"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="inventory" type="Label" parent="HBoxContainer" groups=["default"]]
+visible = false
+margin_left = 494.0
+margin_top = 46.0
+margin_right = 644.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 150, 0 )
+mouse_filter = 0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 26 )
+text = "MSLMINV"
+align = 1
+
+[node name="explabel" type="Label" parent="HBoxContainer" groups=["default"]]
+visible = false
+margin_left = 630.0
+margin_top = 46.0
+margin_right = 758.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 70, 0 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 26 )
+text = "MSLMEXP"
+align = 1
+
+[node name="icon2" type="TextureRect" parent="HBoxContainer" groups=["default"]]
+visible = false
+margin_left = 737.0
+margin_top = 44.0
+margin_right = 787.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 50, 0 )
+hint_tooltip = "DATETOOLTIPSHORT"
+theme = ExtResource( 43 )
+texture = ExtResource( 41 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="icon3" type="TextureRect" parent="HBoxContainer" groups=["default"]]
+visible = false
+margin_left = 788.0
+margin_top = 43.0
+margin_right = 838.0
+margin_bottom = 94.0
+rect_min_size = Vector2( 50, 0 )
+hint_tooltip = "SEXTOOLTIPSHORT"
+theme = ExtResource( 43 )
+texture = ExtResource( 40 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="icon4" type="TextureRect" parent="HBoxContainer" groups=["default"]]
+visible = false
+margin_left = 838.0
+margin_top = 42.0
+margin_right = 888.0
+margin_bottom = 93.0
+rect_min_size = Vector2( 50, 0 )
+hint_tooltip = "TRAINTOOLTIP"
+theme = ExtResource( 43 )
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="location" type="Label" parent="HBoxContainer" groups=["default"]]
+visible = false
+margin_left = 1123.0
+margin_top = 4.0
+margin_right = 1223.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 100, 0 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="state2" type="Label" parent="HBoxContainer" groups=["default"]]
+visible = false
+margin_left = 937.0
+margin_top = 46.0
+margin_right = 1081.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 50, 0 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 26 )
+text = "MSLMTYPE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="modes" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="default" type="TextureButton" parent="modes"]
+margin_left = 260.0
+margin_top = 22.0
+margin_right = 343.0
+margin_bottom = 62.0
+size_flags_horizontal = 0
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 29 )
+expand = true
+
+[node name="Label" type="Label" parent="modes/default"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "default"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rules" type="TextureButton" parent="modes"]
+margin_left = 358.0
+margin_top = 22.0
+margin_right = 441.0
+margin_bottom = 62.0
+size_flags_horizontal = 0
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 29 )
+expand = true
+
+[node name="Label" type="Label" parent="modes/rules"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "rules"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="brothel" type="TextureButton" parent="modes"]
+margin_left = 458.0
+margin_top = 22.0
+margin_right = 541.0
+margin_bottom = 62.0
+size_flags_horizontal = 0
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 29 )
+expand = true
+
+[node name="Label" type="Label" parent="modes/brothel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "service"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food" type="TextureButton" parent="modes"]
+margin_left = 559.0
+margin_top = 22.0
+margin_right = 642.0
+margin_bottom = 62.0
+size_flags_horizontal = 0
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 29 )
+expand = true
+
+[node name="Label" type="Label" parent="modes/food"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = ExtResource( 27 )
+text = "food"
+align = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
