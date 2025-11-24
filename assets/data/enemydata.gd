@@ -2927,12 +2927,22 @@ var shrine_item_dict = {
 	}
 }
 
-func celena_item(code):
+func celena_item(selection):
 	var dict = {text = tr('ALTAR_ITEM_1'), image = '', options = [], tags = ['active_character_translate']}
-	var item = Items.materiallist[code]
-	
+	var selected_code = selection
+	var source = 'material'
+	if typeof(selection) == TYPE_DICTIONARY:
+		selected_code = selection.code
+		if selection.has('kind'):
+			source = selection.kind
+	var item
+	if source == 'item':
+		item = Items.itemlist[selected_code]
+	else:
+		item = Items.materiallist[selected_code]
+
 	if item.type == 'food':
-		globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
+		globals.common_effects([{code = 'material_change', operant = '-', material = selected_code, value = 1}])
 		if item.tags.has("cooked"):
 			dict.text += tr('ALTAR_ITEM_GOOD')
 			dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward2',1]]}]
@@ -2941,19 +2951,19 @@ func celena_item(code):
 			dict.text += tr('ALTAR_ITEM_GOOD')
 			dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward',2]]}]
 			dict.tags.append("free_loot")
-	elif item.code == 'divine_symbol':
+	elif selected_code == 'divine_symbol':
 		dict.text += tr('ALTAR_ITEM_GOOD')
-		globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
+		globals.common_effects([{code = 'material_change', operant = '-', material = selected_code, value = 1}])
 		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward3',2]]}]
 		dict.tags.append("free_loot")
-	elif item.code == 'alcohol':#this part is not working because you can't select alcohol in material selection yet
+	elif (source == 'item' and item.has("interaction_effect") and item.interaction_effect in ['alcohol', 'beer']) or selected_code == 'alcohol':
 		dict.text += tr('ALTAR_ITEM_GOOD')
-		globals.common_effects([{code = 'remove_item', operant = '-', name = 'alcohol', number = 1}])
+		globals.common_effects([{code = 'remove_item', operant = '-', name = selected_code, number = 1}])
 		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward4',2]]}]
 		dict.tags.append("free_loot")
-	elif item.code == 'woodancient':
+	elif selected_code == 'woodancient':
 		dict.text += tr('ALTAR_ITEM_GOOD')
-		globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
+		globals.common_effects([{code = 'material_change', operant = '-', material = selected_code, value = 1}])
 		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward5',2]]}]
 		dict.tags.append("free_loot")
 	else:
