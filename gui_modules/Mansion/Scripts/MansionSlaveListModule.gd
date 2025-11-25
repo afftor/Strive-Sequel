@@ -130,7 +130,7 @@ func rebuild():
 		newbutton.get_node("legs").set_disabled(false)
 		newbutton.get_node("SpellIcon").connect("pressed", self, 'OpenSpells', [person])
 		
-		for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'bindings', 'nudity', 'personality_lock', 'relationship', 'masturbation']:
+		for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'personality_lock', 'relationship', 'masturbation']:
 			newbutton.get_node('rule_' + rl).connect('pressed', self, 'toggle_rules', [newbutton, rl])
 		for rl in  ['waitress', 'hostess', 'dancer', 'stripper', 'males', 'females', 'futa', 'petting', 'oral', 'anal', 'pussy', 'group', 'sextoy']:
 			newbutton.get_node('rule_' + rl).connect('pressed', self, 'toggle_service', [newbutton, rl])
@@ -582,7 +582,7 @@ func update_button(newbutton, t_mode = mode):
 		newbutton.get_node("TrainIcon").texture = load("res://assets/Textures_v2/MANSION/yes.png")
 	
 	#rules
-	for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'bindings', 'nudity', 'personality_lock', 'relationship', 'masturbation']:
+	for rl in ['lock', 'ration', 'shifts', 'constrain', 'luxury', 'contraceptive', 'nudity', 'personality_lock', 'relationship', 'masturbation']:
 		newbutton.get_node('rule_' + rl).pressed = person.check_work_rule(rl)
 #	newbutton.get_node('rule_luxury').visible = !person.is_master()
 	newbutton.get_node('rule_luxury').disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) and !person.check_work_rule("luxury") or person.is_master()
@@ -611,6 +611,12 @@ func update_button(newbutton, t_mode = mode):
 	#postprocess
 	if person.is_master():
 		newbutton.get_node('DateIcon').visible = false
+		newbutton.get_node('rule_luxury').visible = false
+		newbutton.get_node('rule_relationship').visible = false
+		newbutton.get_node('rule_constrain').visible = false
+	if person.check_trait('undead'):
+		newbutton.get_node('rule_contraceptive').visible = false
+		newbutton.get_node('rule_ration').visible = false
 
 
 func set_mode(newmode):

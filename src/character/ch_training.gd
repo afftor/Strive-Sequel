@@ -36,7 +36,7 @@ func tick():
 	if (is_slave() and is_in_training()) or is_servant():
 		set_resistance(resistance - parent.get_ref().get_stat('resistance_red'))
 	if is_servant():
-		loyalty += get_loyalty_growth()
+		add_stat('loyalty', get_loyalty_growth())
 
 func set_resistance(value):
 	resistance = clamp(value, 0, 100)#mind, that clamp() returns float
@@ -62,6 +62,9 @@ func add_stat(statname, value):
 		return
 	if statname == 'resistance':
 		set_resistance(resistance + value)
+	elif statname == 'loyalty':
+		if !parent.get_ref().has_status('no_loyalty_growth'):
+			loyalty += value
 	else:
 		set(statname, get(statname) + value)
 	if spirit < 0:

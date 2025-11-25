@@ -78,7 +78,6 @@ theme = ExtResource( 49 )
 items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false ]
 script = ExtResource( 48 )
 
-
 [node name="Label" type="Label" parent="."]
 visible = false
 margin_left = 446.923
@@ -113,12 +112,13 @@ scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 1078.0
-margin_bottom = 52.0
+margin_bottom = 45.0
 rect_min_size = Vector2( 996, 45 )
 size_flags_horizontal = 3
 custom_constants/separation = 1
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer" groups=["default"]]
+visible = false
 margin_right = 1078.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 1004, 52 )
@@ -167,8 +167,7 @@ text = "Name "
 valign = 1
 clip_text = true
 
-[node name="stats" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button" groups=["default", "training"]]
-visible = false
+[node name="stats" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button" groups=["default", "rules", "training"]]
 margin_left = 250.0
 margin_top = 6.0
 margin_right = 290.0
@@ -416,55 +415,41 @@ texture_under = ExtResource( 33 )
 texture_progress = ExtResource( 34 )
 
 [node name="rule_lock" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
-visible = false
-margin_left = 250.0
-margin_top = 1.0
-margin_right = 298.0
-margin_bottom = 49.0
-theme = ExtResource( 11 )
-
-[node name="rule_ration" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
-visible = false
 margin_left = 320.0
 margin_top = 1.0
 margin_right = 368.0
 margin_bottom = 49.0
 theme = ExtResource( 11 )
 
-[node name="rule_shifts" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
-visible = false
+[node name="rule_ration" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
 margin_left = 390.0
 margin_top = 1.0
 margin_right = 438.0
 margin_bottom = 49.0
 theme = ExtResource( 11 )
 
-[node name="rule_constrain" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
-visible = false
+[node name="rule_shifts" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
 margin_left = 460.0
 margin_top = 1.0
 margin_right = 508.0
 margin_bottom = 49.0
 theme = ExtResource( 11 )
 
-[node name="rule_luxury" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["lux_rooms", "rules"]]
-visible = false
+[node name="rule_constrain" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
 margin_left = 530.0
 margin_top = 1.0
 margin_right = 578.0
 margin_bottom = 49.0
 theme = ExtResource( 11 )
 
-[node name="rule_contraceptive" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
-visible = false
+[node name="rule_luxury" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["lux_rooms", "rules"]]
 margin_left = 600.0
 margin_top = 1.0
 margin_right = 648.0
 margin_bottom = 49.0
 theme = ExtResource( 11 )
 
-[node name="rule_bindings" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
-visible = false
+[node name="rule_contraceptive" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
 margin_left = 670.0
 margin_top = 1.0
 margin_right = 718.0
@@ -472,7 +457,6 @@ margin_bottom = 49.0
 theme = ExtResource( 11 )
 
 [node name="rule_nudity" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
-visible = false
 margin_left = 740.0
 margin_top = 1.0
 margin_right = 788.0
@@ -480,7 +464,6 @@ margin_bottom = 49.0
 theme = ExtResource( 11 )
 
 [node name="rule_personality_lock" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
-visible = false
 margin_left = 810.0
 margin_top = 1.0
 margin_right = 858.0
@@ -488,7 +471,6 @@ margin_bottom = 49.0
 theme = ExtResource( 11 )
 
 [node name="rule_relationship" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
-visible = false
 margin_left = 880.0
 margin_top = 1.0
 margin_right = 928.0
@@ -496,7 +478,6 @@ margin_bottom = 49.0
 theme = ExtResource( 11 )
 
 [node name="rule_masturbation" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button" groups=["rules"]]
-visible = false
 margin_left = 950.0
 margin_top = 1.0
 margin_right = 998.0
@@ -608,6 +589,7 @@ margin_bottom = 49.0
 theme = ExtResource( 11 )
 
 [node name="ff_meat" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+visible = false
 margin_left = 231.0
 margin_top = 6.0
 margin_right = 314.0
@@ -632,6 +614,7 @@ __meta__ = {
 }
 
 [node name="ff_fish" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+visible = false
 margin_left = 318.0
 margin_top = 6.0
 margin_right = 401.0
@@ -656,6 +639,7 @@ __meta__ = {
 }
 
 [node name="ff_grain" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+visible = false
 margin_left = 406.0
 margin_top = 6.0
 margin_right = 489.0
@@ -680,6 +664,7 @@ __meta__ = {
 }
 
 [node name="ff_vegetables" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+visible = false
 margin_left = 495.0
 margin_top = 6.0
 margin_right = 578.0
@@ -704,6 +689,7 @@ __meta__ = {
 }
 
 [node name="ff_bread" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+visible = false
 margin_left = 582.0
 margin_top = 6.0
 margin_right = 665.0
@@ -728,6 +714,7 @@ __meta__ = {
 }
 
 [node name="ff_meatsoup" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+visible = false
 margin_left = 670.0
 margin_top = 6.0
 margin_right = 753.0
@@ -752,6 +739,7 @@ __meta__ = {
 }
 
 [node name="ff_curry" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+visible = false
 margin_left = 759.0
 margin_top = 6.0
 margin_right = 842.0
@@ -776,6 +764,7 @@ __meta__ = {
 }
 
 [node name="ff_friedfish" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+visible = false
 margin_left = 846.0
 margin_top = 6.0
 margin_right = 929.0
@@ -800,6 +789,7 @@ __meta__ = {
 }
 
 [node name="ff_fishcakes" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button" groups=["food"]]
+visible = false
 margin_left = 934.0
 margin_top = 6.0
 margin_right = 1017.0
@@ -1094,10 +1084,9 @@ __meta__ = {
 }
 
 [node name="rule_lock" type="Label" parent="HBoxContainer" groups=["rules"]]
-visible = false
-margin_left = 228.0
+margin_left = 293.0
 margin_top = 40.0
-margin_right = 361.0
+margin_right = 426.0
 margin_bottom = 64.0
 grow_horizontal = 2
 size_flags_horizontal = 0
@@ -1107,10 +1096,9 @@ text = "WORKRULELOCK"
 align = 1
 
 [node name="rule_ration" type="Label" parent="HBoxContainer" groups=["rules"]]
-visible = false
-margin_left = 273.0
+margin_left = 338.0
 margin_top = 66.0
-margin_right = 425.0
+margin_right = 490.0
 margin_bottom = 90.0
 grow_horizontal = 2
 size_flags_horizontal = 0
@@ -1120,10 +1108,9 @@ text = "WORKRULERATION"
 align = 1
 
 [node name="rule_shifts" type="Label" parent="HBoxContainer" groups=["rules"]]
-visible = false
-margin_left = 337.0
+margin_left = 402.0
 margin_top = 40.0
-margin_right = 484.0
+margin_right = 549.0
 margin_bottom = 64.0
 grow_horizontal = 2
 size_flags_horizontal = 0
@@ -1133,10 +1120,9 @@ text = "WORKRULESHIFTS"
 align = 1
 
 [node name="rule_constrain" type="Label" parent="HBoxContainer" groups=["rules"]]
-visible = false
-margin_left = 393.0
+margin_left = 458.0
 margin_top = 66.0
-margin_right = 577.0
+margin_right = 642.0
 margin_bottom = 90.0
 grow_horizontal = 2
 size_flags_horizontal = 0
@@ -1146,10 +1132,9 @@ text = "WORKRULECONSTRAIN"
 align = 1
 
 [node name="rule_luxury" type="Label" parent="HBoxContainer" groups=["rules"]]
-visible = false
-margin_left = 475.0
+margin_left = 540.0
 margin_top = 40.0
-margin_right = 631.0
+margin_right = 696.0
 margin_bottom = 64.0
 grow_horizontal = 2
 size_flags_horizontal = 0
@@ -1159,10 +1144,9 @@ text = "WORKRULELUXURY"
 align = 1
 
 [node name="rule_contraceptive" type="Label" parent="HBoxContainer" groups=["rules"]]
-visible = false
-margin_left = 524.0
+margin_left = 589.0
 margin_top = 66.0
-margin_right = 746.0
+margin_right = 811.0
 margin_bottom = 90.0
 grow_horizontal = 2
 size_flags_horizontal = 0
@@ -1171,25 +1155,11 @@ custom_fonts/font = ExtResource( 47 )
 text = "WORKRULECONTRACEPTIVE"
 align = 1
 
-[node name="rule_bindings" type="Label" parent="HBoxContainer" groups=["rules"]]
-visible = false
-margin_left = 610.0
-margin_top = 40.0
-margin_right = 779.0
-margin_bottom = 64.0
-grow_horizontal = 2
-size_flags_horizontal = 0
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_fonts/font = ExtResource( 47 )
-text = "WORKRULEBINDINGS"
-align = 1
-
 [node name="rule_nuduty" type="Label" parent="HBoxContainer" groups=["rules"]]
-visible = false
 margin_left = 694.0
-margin_top = 66.0
+margin_top = 41.0
 margin_right = 846.0
-margin_bottom = 90.0
+margin_bottom = 65.0
 grow_horizontal = 2
 size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -1198,11 +1168,10 @@ text = "WORKRULENUDITY"
 align = 1
 
 [node name="rule_personality_lock" type="Label" parent="HBoxContainer" groups=["rules"]]
-visible = false
 margin_left = 717.0
-margin_top = 40.0
+margin_top = 67.0
 margin_right = 967.0
-margin_bottom = 64.0
+margin_bottom = 91.0
 grow_horizontal = 2
 size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -1211,11 +1180,10 @@ text = "WORKRULEPERSONALITY_LOCK"
 align = 1
 
 [node name="rule_relationship" type="Label" parent="HBoxContainer" groups=["rules"]]
-visible = false
 margin_left = 799.0
-margin_top = 66.0
+margin_top = 41.0
 margin_right = 1007.0
-margin_bottom = 90.0
+margin_bottom = 65.0
 grow_horizontal = 2
 size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -1224,11 +1192,10 @@ text = "WORKRULERELATIONSHIP"
 align = 1
 
 [node name="rule_masturbation" type="Label" parent="HBoxContainer" groups=["rules"]]
-visible = false
 margin_left = 867.0
-margin_top = 40.0
+margin_top = 67.0
 margin_right = 1087.0
-margin_bottom = 64.0
+margin_bottom = 91.0
 grow_horizontal = 2
 size_flags_horizontal = 0
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -1445,6 +1412,7 @@ __meta__ = {
 }
 
 [node name="food_meat" type="Label" parent="HBoxContainer" groups=["food"]]
+visible = false
 margin_left = 232.0
 margin_top = 67.0
 margin_right = 323.0
@@ -1460,6 +1428,7 @@ __meta__ = {
 }
 
 [node name="food_fish" type="Label" parent="HBoxContainer" groups=["food"]]
+visible = false
 margin_left = 305.0
 margin_top = 67.0
 margin_right = 422.0
@@ -1475,6 +1444,7 @@ __meta__ = {
 }
 
 [node name="food_grain" type="Label" parent="HBoxContainer" groups=["food"]]
+visible = false
 margin_left = 386.0
 margin_top = 67.0
 margin_right = 517.0
@@ -1490,6 +1460,7 @@ __meta__ = {
 }
 
 [node name="food_vegetables" type="Label" parent="HBoxContainer" groups=["food"]]
+visible = false
 margin_left = 453.0
 margin_top = 67.0
 margin_right = 636.0
@@ -1505,6 +1476,7 @@ __meta__ = {
 }
 
 [node name="food_bread" type="Label" parent="HBoxContainer" groups=["food"]]
+visible = false
 margin_left = 562.0
 margin_top = 67.0
 margin_right = 698.0
@@ -1520,6 +1492,7 @@ __meta__ = {
 }
 
 [node name="food_meatsoup" type="Label" parent="HBoxContainer" groups=["food"]]
+visible = false
 margin_left = 628.0
 margin_top = 67.0
 margin_right = 798.0
@@ -1535,6 +1508,7 @@ __meta__ = {
 }
 
 [node name="food_curry" type="Label" parent="HBoxContainer" groups=["food"]]
+visible = false
 margin_left = 737.0
 margin_top = 67.0
 margin_right = 872.0
@@ -1550,6 +1524,7 @@ __meta__ = {
 }
 
 [node name="food_friedfish" type="Label" parent="HBoxContainer" groups=["food"]]
+visible = false
 margin_left = 807.0
 margin_top = 67.0
 margin_right = 971.0
@@ -1565,6 +1540,7 @@ __meta__ = {
 }
 
 [node name="food_fishcakes" type="Label" parent="HBoxContainer" groups=["food"]]
+visible = false
 margin_left = 890.0
 margin_top = 67.0
 margin_right = 1059.0
