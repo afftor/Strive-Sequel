@@ -1093,6 +1093,18 @@ func same_location_with(ch):
 func get_current_location_desc():
 	return travel.make_location_description()
 
+func set_travel_to(from_loc, to_loc):
+	travel.set_travel_to(from_loc, to_loc)
+
+func instant_travel(to_loc):
+	travel.instant_travel(to_loc)
+
+func get_loc_group():
+	return travel.loc_group
+
+func set_loc_group(group_name):
+	travel.loc_group = group_name
+
 func get_next_class_exp():
 	return xp_module.get_next_class_exp()
 
