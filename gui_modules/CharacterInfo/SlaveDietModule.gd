@@ -23,33 +23,19 @@ func open_diet_window():
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.get_node("Label").text = i.name
 		globals.connectmaterialtooltip(newbutton, i)
-		for k in ['high','med','low','disable']:
-			if person.food.food_filter[k].has(i.code):
-				newbutton.get_node("filter").text = tr("FOODFILTER" + k.to_upper())
-				newbutton.get_node("filter").set("custom_colors/font_color", Color(variables.hexcolordict[categorycolors[k]]))
-				break
+		var k = person.get_filter_for_food(i.code)
+		newbutton.get_node("filter").text = tr("FOODFILTER" + k.to_upper())
+		newbutton.get_node("filter").set("custom_colors/font_color", Color(variables.hexcolordict[variables.categorycolors[k]]))
 		newbutton.connect("pressed", self, "change_food_category", [i.code])
 		newbutton.set_meta('exploration', true)
 
 func change_food_category(foodcode):
-	var current_category
-	for i in ['high','med','low','disable']:
-		if person.food.food_filter[i].has(foodcode):
-			current_category = i
-			break
-	person.food.food_filter[current_category].erase(foodcode)
-	var newcategory
-	if category_order.size() > category_order.find(current_category)+1:
-		newcategory = category_order[category_order.find(current_category)+1]
-	else:
-		newcategory = category_order[0]
-	person.food.food_filter[newcategory].append(foodcode)
+	person.change_food_category(foodcode)
+	
 	#input_handler.GetItemTooltip().hide()
 	# input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 	open_diet_window()
 
-var category_order = ['high','med','low','disable']
-var categorycolors = {high = "green", med = 'yellow', low = 'red', disable = 'gray'}
 
 func sort_food(first, second):
 #	return first.name >= second.name
