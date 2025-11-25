@@ -256,6 +256,12 @@ var backgrounds = {
 	cali_wedding_anal2 = "res://assets/images/fullscreen scenes/CaliCG033.png",
 	cali_wedding_anal3 = "res://assets/images/fullscreen scenes/CaliCG034.png",
 	
+	cali_william_evening_1 = "res://assets/images/fullscreen scenes/CaliCG035.png",
+	cali_william_evening_2 = "res://assets/images/fullscreen scenes/CaliCG036.png",
+	cali_william_evening_3 = "res://assets/images/fullscreen scenes/CaliCG037.png",
+	cali_william_evening_4 = "res://assets/images/fullscreen scenes/CaliCG039.png",
+	cali_william_evening_5 = "res://assets/images/fullscreen scenes/CaliCG040.png",
+
 	amelia_cali_1 = "res://assets/images/fullscreen scenes/AmeliaCaliCG001.png",
 	amelia_cali_2 = "res://assets/images/fullscreen scenes/AmeliaCaliCG002.png",
 	amelia_cali_3 = "res://assets/images/fullscreen scenes/AmeliaCaliCG003.png",

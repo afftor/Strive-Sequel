@@ -11475,6 +11475,31 @@ Cali:Обаяние +10}""",
 
 В конце концов, она смирилась с тем, что ей придется иметь дело с последствиями собственных действий.""",
 	CALI_WILLIAM_13 = """Подписав бумаги, Кали с некоторой неохотой уезжает с Уильямом на оговоренный срок.""", 
+	CALI_WILLIAM_EVENING_1 = """The first evening at William's place unfolds. Cali lies on the massive king-sized bed, a stark, small figure against the silk sheets. The black and white maid uniform feels foreign and stiff on her body; the skirt is too short and the apron barely hides the small expanse of her chest. Soft but surprisingly strong bracers circle her wrists and ankles, pulling her limbs taut toward the headboard. Her gray hair is disheveled and her knees are bent and spread, the skirt hem the only thing obscuring her underwear.
+
+{color=aqua|William: — You don't feel too uncomfortable, do you? But given the luxury of your dinner, a bit of discomfort shouldn't be a big deal.}
+
+{color=yellow|Cali: — Hmph, it's no big deal once I get my sword back. Just get on with it.}""", # MISSING TRANSLATION
+	CALI_WILLIAM_EVENING_2 = """A slow, predatory smile spreads across William’s lips at her defiant words. He moves to the side of the bed, his shadow falling over her smaller frame while his fingers run down the front of her starched blouse. He peels it open, letting the cool air of the room hit her skin. Cali's small, perky breasts are now completely bare, the nipples hardening from the chill and her anxiety.
+
+{color=aqua|William: — Heh, I knew you are one pretty thing despite your temper.}
+
+His gaze lingers before he flips the hem of her skirt up over her belly, letting it pool there. Cali squeezes her eyes shut for a second, a flush of shame creeping up her neck.""", # MISSING TRANSLATION
+	CALI_WILLIAM_EVENING_3 = """William's fingers hook under the waistband of her simple white panties. He peels the thin fabric down slowly, over the curve of her hips and down her thighs until her pussy is completely exposed, bare and open to his sight. Cali clenches her jaw, focusing on the feeling of the restraints on her ankles to distract from the raw humiliation.
+
+{color=aqua|William: — Don't worry, I have a bit of side help to let you relax.}
+
+He picks up a small, ornate bottle from the nightstand and pours a golden aphrodisiac oil into his palm. When his slick fingers touch her clit, a warm, tingling heat spreads and a soft gasp escapes her lips despite herself. He rubs the oil into her folds with slow, deliberate circles until a dull, needy ache builds in her core and a soft, unwilling whimper slips out.""", # MISSING TRANSLATION
+	CALI_WILLIAM_EVENING_4 = """Her pussy is soaking wet now, lips puffy and glistening with the aphrodisiac oil and her own slick juices. William moves over her, positioning himself between her spread legs as his hard cock springs free and slaps against her inner thigh, thick and heavy with precum. He lines the head up with her slick pussy and pushes in with relentless pressure. Her breath catches as she stretches around him and a choked-off moan escapes when he sinks in to the hilt.
+
+He pulls out almost all the way before plunging back in with long, powerful strokes. The wet, slapping sounds of their bodies fill the room alongside Cali's increasingly loud cries. Bound hands clench as she pushes her hips back to meet him, her body taking over even as her tail twitches beneath her. The pressure in her core becomes an inferno until it explodes into a blinding orgasm that makes her whole body shake.""", # MISSING TRANSLATION
+	CALI_WILLIAM_EVENING_5 = """{color=yellow|Cali: — I-I'm... No more... Cumming!...}
+
+Her walls clamp down on him as the orgasm tears through her, her entire body going rigid. The intense, rhythmic spasms of her pussy milk his cock until he groans and buries himself deep, painting her insides with hot, thick cum. When he pulls out, a rush of warmth leaks from her abused pussy to stain the silk sheets. Cali lies limp against the bed, trembling from the aftershocks, defiance shattered and replaced by aching satisfaction.
+
+{color=aqua|William: — You did well for the first time. Perhaps at the weekend I'll invite friends over, ha-ha.}
+
+Cali's blue eyes are glazed over, staring at the ornate ceiling. Perhaps this week will last drastically longer than she thought.""", # MISSING TRANSLATION
 	CALI_GRAT_BAD = """В назначенный срок Кали возвращается в ваш особняк. Несмотря на то, что она вернула свою реликвию, она категорически отказывается говорить о том, что произошло во время ее пребывания там. """,
 	CALI_GRAT_1 = """Когда вы возвращаетесь в особняк, Кали смотрит на вас с благоговением.
 
@@ -19916,6 +19941,7 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 	ZEPHYRA_DISAPPEARANCE_GUARDS_1_SS = """Подсмотреть фальшивую историю Зефиры во время ее второго побочного задания""",
 	DAISY_WEDDING_SS = """Возьмите Дейзи в жены (рабыни)""",
 	CALI_WEDDING_SS = """Сделать Кали своим пожизненным партнером""",
+	CALI_WILLIAM_SS = """Lend Cali to the other party in exchange for her sword""", # MISSING TRANSLATION
 	AMELIA_WEDDING_SS = """Продвинуть Амелию на пост вице-президента вашего особняка""",
 	ANASTASIA_EVENT_ALIVE_SS = """Сохранить жизнь Анастасии в конце первого акта""",
 	ELVEN_TEMPLE_SCENE_SS = """Событие из эльфийского храма""",

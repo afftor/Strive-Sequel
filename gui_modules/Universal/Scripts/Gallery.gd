@@ -88,9 +88,9 @@ func build_gallery(page):
 			node.disabled = true
 			node.get_node("Image").texture = load("res://assets/Textures_v2/Travel/placer_travel_question.png")
 			if state == 'ero':
-				node.get_node("QuestionMark").visible = true#state == "ero"
-				globals.connectgallerytooltip(node.get_node("QuestionMark"), Gallery.scene_tooltips[src[i]])
-#			node.get_node("SceneName").text = "Scene Name"
+				if Gallery.scene_tooltips.has(src[i]):
+					node.get_node("QuestionMark").visible = true
+					globals.connectgallerytooltip(node.get_node("QuestionMark"), Gallery.scene_tooltips[src[i]])
 		else:
 			node.get_node("Image").texture = get_texture_by_name(src[i])
 			if state == "scenes":

@@ -531,6 +531,7 @@ var data = {
 		text = [ {text = "CALI_WILLIAM_10", reqs = []} ], 
 		common_effects = [ #add quest progress
 			{code = 'affect_unique_character', name = 'cali', type = 'set_availability', value = false},
+			{code = 'add_timed_event', value = "cali_william_evening_1", args = [{type = 'add_to_date', date = [1,1], hour = 3}]},
 			{code = 'add_timed_event', value = "cali_returns", args = [{type = 'add_to_date', date = [7,7], hour = 2}]},
 			{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage7'},{code = 'update_city'}
 		],
@@ -544,6 +545,7 @@ var data = {
 		text = [ {text = "CALI_WILLIAM_13", reqs = []} ], 
 		common_effects = [ #add quest progress
 			{code = 'affect_unique_character', name = 'cali', type = 'set_availability', value = false},
+			{code = 'add_timed_event', value = "cali_william_evening_1", args = [{type = 'add_to_date', date = [1,1], hour = 3}]},
 			{code = 'add_timed_event', value = "cali_returns", args = [{type = 'add_to_date', date = [7,7], hour = 2}]},
 			{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage7'},
 			{code = 'money_change', operant = '+', value = 3000},{code = 'update_city'}
@@ -558,6 +560,7 @@ var data = {
 		text = [ {text = "CALI_WILLIAM_13", reqs = []} ], 
 		common_effects = [ #add quest progress
 			{code = 'affect_unique_character', name = 'cali', type = 'set_availability', value = false},
+			{code = 'add_timed_event', value = "cali_william_evening_1", args = [{type = 'add_to_date', date = [1,1], hour = 3}]},
 			{code = 'add_timed_event', value = "cali_returns", args = [{type = 'add_to_date', date = [3,3], hour = 2}]},
 			{code = 'progress_quest', value = 'cali_heirloom_quest', stage = 'stage7'}
 		],
@@ -565,6 +568,57 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'update_city'}]
 		} ],
 	},
+	
+	cali_william_evening_1 = {
+		image = null,
+		dialogue_type = 2,
+		scene_type = "unlocked_gallery_seq",
+		unlocked_gallery_seq = "cali_william_evening",
+		save_scene_to_gallery = true,
+		tags = ['dialogue_scene', 'master_translate', 'blackscreen_transition_common'],
+		custom_background = "cali_william_evening_1",
+		text = [ {text = "CALI_WILLIAM_EVENING_1", reqs = []} ],
+		options = [ {
+			code = 'cali_william_evening_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		} ],
+	},
+	cali_william_evening_2 = {
+		image = null,
+		tags = ['dialogue_scene', 'master_translate'],
+		custom_background = "cali_william_evening_2",
+		text = [ {text = "CALI_WILLIAM_EVENING_2", reqs = []} ],
+		options = [ {
+		code = 'cali_william_evening_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		} ],
+	},
+	cali_william_evening_3 = {
+		image = null,
+		tags = ['dialogue_scene', 'master_translate'],
+		custom_background = "cali_william_evening_3",
+		text = [ {text = "CALI_WILLIAM_EVENING_3", reqs = []} ],
+		options = [ {
+		code = 'cali_william_evening_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		} ],
+	},
+	cali_william_evening_4 = {
+		image = null,
+		tags = ['dialogue_scene', 'master_translate'],
+		custom_background = "cali_william_evening_4",
+		text = [ {text = "CALI_WILLIAM_EVENING_4", reqs = []} ],
+		options = [ {
+		code = 'cali_william_evening_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		} ],
+	},
+	cali_william_evening_5 = {
+		image = null,
+		tags = ['dialogue_scene', 'master_translate'],
+		custom_background = "cali_william_evening_5",
+		text = [ {text = "CALI_WILLIAM_EVENING_5", reqs = []} ],
+		options = [ {
+		code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue',
+		} ],
+	},
+	
 #
 #	cali_returns = { #proxy for effects
 #		image = null, tags = ['dialogue_scene'], 
