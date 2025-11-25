@@ -1040,8 +1040,8 @@ var effects = {
 		statchanges = {damagetype = 'fire'},
 		buffs = [
 			{
-				icon = "res://assets/images/iconsclasses/Fighter.png",
-				description = "EUPHORIABUFF", #fix
+				icon = "res://assets/images/iconsskills/fire_arrows.png",
+				description = "FIREARROWBUFF", 
 				tags = ['combat_only'],
 			}
 		],

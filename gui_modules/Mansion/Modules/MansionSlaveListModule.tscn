@@ -78,7 +78,6 @@ theme = ExtResource( 49 )
 items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false ]
 script = ExtResource( 48 )
 
-
 [node name="Label" type="Label" parent="."]
 visible = false
 margin_left = 446.923
@@ -113,12 +112,13 @@ scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 1078.0
-margin_bottom = 52.0
+margin_bottom = 45.0
 rect_min_size = Vector2( 996, 45 )
 size_flags_horizontal = 3
 custom_constants/separation = 1
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer" groups=["default"]]
+visible = false
 margin_right = 1078.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 1004, 52 )

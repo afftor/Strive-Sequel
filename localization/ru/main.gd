@@ -1517,6 +1517,12 @@ Bleeding: Take 10% of Maximum HP as neutral damage per turn.""",
 	SKILLABYSS_GAZEDESCRIPT = """Наносит 125% от MATK в виде  урона {color=yellow|Разуму} урона всем врагам. Оглушает на 2 хода""",
 	SKILLDARK_FLAME = """Темное пламя""",
 	SKILLDARK_FLAMEDESCRIPT = """Преобразует все эффекты горения на врагах в эффекты темного пламени. Они наносят истинный урон, не могут быть погашены уроном от воды и действуют в течение 4 ходов.""",
+	SKILLFIREARROWS_APPLY = """Fire Arrows""", # MISSING TRANSLATION
+	SKILLFIREARROWS_APPLYDESCRIPT = """Set weapon damage to Fire. Weapon attacks and skills have 20% chance to apply Burn. Drain 1 mana per attack.
+
+Does not take turn to activate.""", # MISSING TRANSLATION
+	SKILLFIREARROW_APPLY = """Fire Arrows""", # MISSING TRANSLATION
+	SKILLFIREARROW_APPLYDESCRIPT = """Set weapon damage to Fire. """, # MISSING TRANSLATION
 	
 	TRAITVIGORDESCRIPT = """Увеличивает регенерацию здоровья на 30%.""",
 	TRAITMEDITATIONDESCRIPT = """Увеличивает регенерацию маны на 30%.""",
@@ -3449,6 +3455,7 @@ Requires: Базовый рабский труд""",
 	TRAITEFFECTHASTE = """Скорость увеличена""",
 	EFFECTCOFFIBLESS = "Увеличение получаемого опыта на 20%%",
 	EUPHORIABUFF = """Эйфория: Урон увеличен""",
+	FIREARROWBUFF = """Fire Arrows: Weapon element set to Fire. Weapon attacks and skills have 20% chance to apply Burn. Drain 1 mana per attack.""", # MISSING TRANSLATION
 	EFFECTNAME_E_LOVE = "Присутствие возлюбленного",
 	EFFECTNAME_E_FRIEND = "Присутствие друга",
 	EFFECTNAME_E_RIVAL = "Присутствие соперника",
