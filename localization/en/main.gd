@@ -20034,11 +20034,17 @@ Yet your compliment has not gone entirely unnoticed, perhaps partly because the 
 {color=yellow|Official 1: — This bar has the best elf girls, you know. That white-haired one is especially cute when angry.}
 
 He gives a small pinch to Heleviel's butt once she turns away from the table, followed by an angry yelp.""",
-	HELEVIEL_QUEST_8 = """{color=yellow|Heleviel: — What are you doing, you foul man!..}
+	HELEVIEL_QUEST_8 = """{color=yellow|Heleviel: — What are you doing, you foul man!..}",
 
-However, as she notices you, she quickly stops herself.
+However, as she notices you, she quickly stops herself.""",
+	HELEVIEL_QUEST_8_OPTION_1 = "*Scold the official*",
+	HELEVIEL_QUEST_8_OPTION_2 = "*Stay silent*",
+	HELEVIEL_QUEST_8_1 = """You scold the man over his inappropriate behavior. Heleviel watches it with a troubled face not daring to voice any further objection.
 
-{color=aqua|Official 2: — Sorry, sorry. Hey, why don't you sit and drink with us for a bit? There aren't too many customers here. And get the other waitress too!}
+{color=aqua|Official 2: — Sorry, I just get too excited over elven girls. Hey, Miss, why don't you sit and drink with us for a bit? There aren't too many customers here. And get the other waitress too!},
+
+{color=yellow|Heleviel: — I... I don't know what you are talking about...}""",
+	HELEVIEL_QUEST_8_2 = """{color=aqua|Official 2: — Sorry, sorry. Hey, Miss, why don't you sit and drink with us for a bit? There aren't too many customers here. And get the other waitress too!}
 
 {color=yellow|Heleviel: — I... I don't know what you are talking about...}""",
 	HELEVIEL_QUEST_9 = """Heleviel rushes into the backrooms, avoiding eye contact with you.

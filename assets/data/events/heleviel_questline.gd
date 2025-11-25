@@ -290,6 +290,59 @@ var data = {
 		text = "HELEVIEL_QUEST_8",
 		options = [
 			{
+				code = "heleviel_quest_8_1",
+				text = "HELEVIEL_QUEST_8_OPTION_1",
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				dialogue_argument = 1
+			},
+			{
+				code = "heleviel_quest_8_2",
+				text = "HELEVIEL_QUEST_8_OPTION_2",
+				type = "next_dialogue",
+				reqs = [
+
+				],
+				dialogue_argument = 2
+			}
+		]
+	},
+	heleviel_quest_8_1 = {
+		image = "heleviel_bar_grab",
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"master_translate"
+		],
+		text = "HELEVIEL_QUEST_8_1",
+		options = [
+			{
+			code = "heleviel_quest_9",
+			text = "DIALOGUECONTINUE",
+			type = "next_dialogue",
+			reqs = [
+
+			],
+			dialogue_argument = 1
+			}
+		]
+	},
+	heleviel_quest_8_2 = {
+		image = "heleviel_bar_grab",
+		reqs = [
+
+		],
+		tags = [
+			"dialogue_scene",
+			"master_translate"
+		],
+		text = "HELEVIEL_QUEST_8_2",
+		options = [
+			{
 				code = "heleviel_quest_9",
 				text = "DIALOGUECONTINUE",
 				type = "next_dialogue",

@@ -21250,6 +21250,14 @@ KURO_CHURCH_NOTE2 = """Джинни с тревогой смотрит на ва
 {color=aquaЧиновник 2: — Прости, прости. Эй, почему бы тебе не присесть и не выпить с нами немного? Клиентов тут не так много. И позови другую официантку тоже!}
 
 {color=yellow|Хелевиэль: — Я... я не понимаю, о чём вы...}""",
+	HELEVIEL_QUEST_8_OPTION_1 = """*Scold the official*""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_8_OPTION_2 = """*Stay silent*""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_8_1 = """You scold the man over his inappropriate behavior. Heleviel watches it with a troubled face not daring to voice any further objection.",
+
+{color=aqua|Official 2: — Sorry, I just get too excited over elven girls. Hey, Miss, why don't you sit and drink with us for a bit? There aren't too many customers here. And get the other waitress too!}",
+
+{color=yellow|Heleviel: — I... I don't know what you are talking about...}""", # MISSING TRANSLATION
+	HELEVIEL_QUEST_8_2 = """{color=aqua|Official 2: — Sorry, sorry. Hey, Miss, why don't you sit and drink with us for a bit? There aren't too many customers here. And get the other waitress too!}""", # MISSING TRANSLATION
 	HELEVIEL_QUEST_9 = """Хелевиэль бросается в подсобное помещение, избегая смотреть на вас.
 
 {color=aqua|Чиновник 1: — Эй, Мэр, кажется, она тебя знает. Можешь сказать ей, что я извиняюсь? Не хотел бы оказаться на её плохом счету, ха-ха.}
