@@ -150,4 +150,6 @@ func reset_limits():
 	weekly_sex_max = 2 + ceil(ResourceScripts.game_party.get_master().get_stat('sexuals_factor') * 0.5) + ResourceScripts.game_res.upgrades.sex_times
 	weekly_sex_left = weekly_sex_max
 	weekly_dates_max = 3 + floor(ResourceScripts.game_party.get_master().get_stat('charm_factor') * 0.34)
+	if ResourceScripts.game_party.get_master().check_trait('master_communicative'):
+		weekly_dates_max += 2
 	weekly_dates_left = weekly_dates_max

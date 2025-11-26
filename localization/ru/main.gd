@@ -218,6 +218,8 @@ var TranslationDict = {
 	INVENTORYCHARACTERLIST = """Список персонажей""",
 	INVENTORYSTASH = """Склад""",
 	INVENTORYFILTER = """Фильтр""",
+	INVENTORYTOCHARACTER = """To Character""", # MISSING TRANSLATION
+	INVENTORYTOMANSION = """To Mansion""", # MISSING TRANSLATION
 	#newgame
 	NEWGAMENAME = """Новая игра""",
 	NEWGAMESETTING = """Настройки""",

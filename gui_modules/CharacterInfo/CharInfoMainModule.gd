@@ -297,7 +297,7 @@ func open_gear():
 	gui_controller.inventory = input_handler.get_spec_node(input_handler.NODE_INVENTORY_NEW)
 	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.inventory, 0.3)
 	gui_controller.inventory.show()
-	gui_controller.inventory.get_node("GridContainer/GearButton").set_pressed(true)
+	#gui_controller.inventory.get_node("GridContainer/GearButton").set_pressed(true)
 	gui_controller.previous_screen = gui_controller.current_screen
 	gui_controller.current_screen = gui_controller.inventory
 	gui_controller.inventory.set_active_hero(active_person)

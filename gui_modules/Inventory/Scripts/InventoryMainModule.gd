@@ -34,16 +34,11 @@ func _ready():
 	$GridContainer/CharInfoButton.connect("pressed", self, "open_char_info")
 	$GridContainer/MansionButton.connect("pressed", self, "return_to_mansion")
 
-func reset_grid_buttons():
-	for b in $GridContainer.get_children():
-		b.set_pressed(false)
 
 func open_char_info():
-	reset_grid_buttons()
 	close_inventory_to_char_info()
 
 func return_to_mansion():
-	reset_grid_buttons()
 	close_inventory_to_mansion()
 
 func change_list_mode():
@@ -69,15 +64,16 @@ func close_inventory_to_char_info():
 	gui_controller.slavepanel.set_state("default")
 	self.hide()
 	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.slavepanel, 0.3)
-	input_handler.get_spec_node(input_handler.NODE_SLAVEMODULE).SummaryModule.get_node("GridContainer/GearButton").set_pressed(false)
+	#input_handler.get_spec_node(input_handler.NODE_SLAVEMODULE).SummaryModule.get_node("GridContainer/GearButton").set_pressed(false)
 
 func close_inventory_to_mansion():
-	input_handler.emit_signal('update_ragdoll')
 	gui_controller.emit_signal("screen_changed")
 	gui_controller.current_screen = gui_controller.mansion
 	gui_controller.previous_screen = gui_controller.slavepanel
 	gui_controller.mansion.show()
 	gui_controller.mansion.mansion_state_set("default")
+	gui_controller.clock.raise()
+	gui_controller.clock.show()
 	self.hide()
 	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.mansion, 0.3)
 
