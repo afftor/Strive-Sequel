@@ -1269,5 +1269,13 @@ var fixed_relations = {
 			condition = []
 			}
 		]
+	},
+	amelia = {
+		cali = [
+			{
+			status = 'friends',
+			condition = []
+			}
+		]
 	}
 }

@@ -1,7 +1,6 @@
 extends Panel
 
-var sell_category := "all"
-var buy_category := "all"
+var item_category := "all"
 var active_shop := {}
 var tempitems := []
 var purchase_item
@@ -10,10 +9,10 @@ onready var search_filter: LineEdit = $SearchFilter
 
 
 func _ready():
-	for button in $SellFilter.get_children():
-		button.connect("pressed", self, "selectcategory", [button, "sell"])
-	for button in $BuyFilter.get_children():
-		button.connect("pressed", self, "selectcategory", [button, "buy"])
+	for button in $ItemFilter.get_children():
+		button.connect("pressed", self, "selectcategory", [button])
+#	for button in $BuyFilter.get_children():
+#		button.connect("pressed", self, "selectcategory", [button, "buy"])
 	search_filter.connect("text_changed", self, "filter_changed")
 	gui_controller.add_close_button(self)
 	globals.connect("update_clock", self, "update_gold")
@@ -31,10 +30,8 @@ func open_shop(pressed: bool, pressed_button: Node, shop_data: Dictionary = {}):
 		active_shop = {}
 	else:
 		active_shop = shop_data
-	sell_category = "all"
-	buy_category = "all"
-	$SellFilter.get_child(0).pressed = true
-	$BuyFilter.get_child(0).pressed = true
+	item_category = "all"
+	$ItemFilter.get_child(0).pressed = true
 	search_filter.text = ""
 	update_sell_list()
 	update_buy_list()
@@ -44,18 +41,13 @@ func open_shop(pressed: bool, pressed_button: Node, shop_data: Dictionary = {}):
 		fade(self)
 
 
-func selectcategory(button: Button, list: String):
+func selectcategory(button):
 	var type = button.name
-	if list == "sell":
-		for i in $SellFilter.get_children():
-			i.pressed = i == button
-		sell_category = type
-		update_sell_list()
-	else:
-		for i in $BuyFilter.get_children():
-			i.pressed = i == button
-		buy_category = type
-		update_buy_list()
+	for i in $ItemFilter.get_children():
+		i.pressed = i == button
+	item_category = type
+	update_sell_list()
+	update_buy_list()
 
 
 func unfade(window: Control, time := 0.5):
@@ -137,7 +129,7 @@ func update_sell_list():
 		newbutton.set_meta("item", item.name)
 		newbutton.connect("pressed", self, "item_sell", [newbutton, item])
 		globals.connectmaterialtooltip(newbutton, item, "", "material")
-		newbutton.visible = (((newbutton.get_meta("type") == sell_category) || sell_category == "all")
+		newbutton.visible = (((newbutton.get_meta("type") == item_category) || item_category == "all")
 			&& matches_filter(item, filter_text))
 	for item in ResourceScripts.game_res.items.values():
 		if item.amount <= 0 || item.tags.has('unsellable'):
@@ -162,43 +154,10 @@ func update_sell_list():
 		newbutton.set_meta('item', item.name)
 		newbutton.set_meta('exploration', true) #while not reqired as it is now
 		newbutton.connect("pressed", self, "item_sell", [newbutton, item])
-		newbutton.visible = ((newbutton.get_meta("type") == sell_category || sell_category == "all")
+		newbutton.visible = ((newbutton.get_meta("type") == item_category || item_category == "all")
 			&& matches_filter(item, filter_text))
 		globals.connectitemtooltip_v2(newbutton, item)
-#	for i in Items.itemlist:
-#		if !Items.itemlist[i].has("type"):
-#			continue
-#		var item = Items.itemlist[i]
-#		var type = get_item_category(item)
-#		if type == "usable":
-#			continue
-#		if item.has("unique"):
-#			continue
-#		var amount = 0
-#		var ownitems = globals.CalculateItems(item.code)
-#		if ownitems.size() == 0:
-#			continue
-#		var prices = []
-#		for k in ownitems:
-#			amount += k.amount
-#			prices.append(ceil(k.calculateprice() * variables.item_sell_multiplier))
-#			tempitems.append(k)
-#		var newbutton = input_handler.DuplicateContainerTemplate($SellBlock/ScrollContainer/VBoxContainer)
-#		newbutton.get_node("name").text = item.name
-#		newbutton.get_node("icon").texture = item.icon
-#		newbutton.get_node("price").text = str(prices)
-#		newbutton.get_node("amount").visible = true
-#		newbutton.get_node("amount").text = str(amount)
-#		globals.connectitemtooltip_v2(newbutton, tempitems[-1])
-#		newbutton.set_meta("type", type)
-#		newbutton.set_meta("item", item.name)
-#		newbutton.connect("pressed", self, "item_sell", [tempitems[-1]])
-#		if item.has("quality") and item.quality != "":
-#			newbutton.get_node("quality_color").show()
-#			newbutton.get_node("quality_color").texture = variables.quality_colors[item.quality]
-#		else:
-#			newbutton.get_node("quality_color").hide()
-#		newbutton.visible = ((newbutton.get_meta("type") == sell_category) || sell_category == "all")
+
 
 
 func update_buy_list():
@@ -232,7 +191,7 @@ func update_buy_list():
 		newbutton.set_meta("item", item.name)
 		newbutton.set_meta("exploration", true)
 		newbutton.connect("pressed", self, "item_purchase", [newbutton, item, amount])
-		newbutton.visible = (((newbutton.get_meta("type") == buy_category) || buy_category == "all")
+		newbutton.visible = (((newbutton.get_meta("type") == item_category) || item_category == "all")
 			&& matches_filter(item, filter_text))
 		globals.connectmaterialtooltip(newbutton, item, "", "material")
 		if amount > 0:
@@ -271,7 +230,7 @@ func update_buy_list():
 				globals.connectitemtooltip_v2(newbutton, newitem)
 				newbutton.get_node("price").text = str(newitem.calculateprice())
 				newbutton.connect("pressed", self, "item_purchase", [newbutton, newitem, 1])
-				newbutton.visible = (((newbutton.get_meta("type") == buy_category) || buy_category == "all")
+				newbutton.visible = (((newbutton.get_meta("type") == item_category) || item_category == "all")
 					&& matches_filter(newitem, filter_text))
 				newbutton.get_node("amount").text = "1"
 				newbutton.get_node("amount").show()
@@ -292,7 +251,7 @@ func update_buy_list():
 			newbutton.set_meta("type", type)
 			newbutton.set_meta("item", item.name)
 			newbutton.set_meta("exploration", true)
-			newbutton.visible = (((newbutton.get_meta("type") == buy_category) || buy_category == "all")
+			newbutton.visible = (((newbutton.get_meta("type") == item_category) || item_category == "all")
 				&& matches_filter(item, filter_text))
 			globals.connecttempitemtooltip(newbutton, item, "geartemplate")
 			newbutton.connect("pressed", self, "item_purchase", [newbutton, item, amount])
@@ -334,7 +293,7 @@ func item_purchase(button: Button, item, amount):
 	if price == null:
 		price = 0
 	var maxvalue = amount
-	$NumberSelection.open(self, "item_purchase_confirm", str(item.name), price, 1, maxvalue, true, icon, item)
+	$NumberSelection.open(self, "item_purchase_confirm",  tr("BUY") + " " + str(item.name), price, 1, maxvalue, true, icon, item)
 
 
 func item_purchase_confirm(value):

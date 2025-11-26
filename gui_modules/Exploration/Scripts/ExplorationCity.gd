@@ -866,21 +866,21 @@ func show_slave_info(person):
 
 
 func open_shop(pressed, pressed_button, shop):
-		var shop_data = {}
-		match shop:
-				'area':
-						if input_handler.active_area and input_handler.active_area.has('shop'):
-								shop_data = input_handler.active_area.shop
-				'location':
-						if pressed and active_location and active_location.has('shop'):
-								shop_data = active_location.shop
-				_:
-						shop_data = shop
-		$AreaShop.open_shop(pressed, pressed_button, shop_data)
+	var shop_data = {}
+	match shop:
+		'area':
+			if input_handler.active_area and input_handler.active_area.has('shop'):
+				shop_data = input_handler.active_area.shop
+		'location':
+			if pressed and active_location and active_location.has('shop'):
+				shop_data = active_location.shop
+		_:
+			shop_data = shop
+	$AreaShop.open_shop(pressed, pressed_button, shop_data)
 
 
 func update_gold():
-		$AreaShop.update_gold()
+	$AreaShop.update_gold()
 
 
 func quest_board(pressed, pressed_button):
