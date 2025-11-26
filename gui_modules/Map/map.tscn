@@ -438,18 +438,55 @@ text = "Location category"
 align = 1
 valign = 1
 
-[node name="offset" type="HBoxContainer" parent="FromLocList/LocScroll/LocCatList/LocCat"]
+[node name="offset" type="MarginContainer" parent="FromLocList/LocScroll/LocCatList/LocCat"]
 margin_top = 54.0
 margin_right = 360.0
 margin_bottom = 54.0
-alignment = 2
+custom_constants/margin_left = 15
 
-[node name="LocList" type="VBoxContainer" parent="FromLocList/LocScroll/LocCatList/LocCat/offset"]
-margin_left = 360.0
+[node name="LocGroupList" type="VBoxContainer" parent="FromLocList/LocScroll/LocCatList/LocCat/offset"]
+margin_left = 15.0
 margin_right = 360.0
+
+[node name="LocGroup" type="VBoxContainer" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList"]
+visible = false
+margin_right = 345.0
+margin_bottom = 54.0
 grow_horizontal = 0
 
-[node name="Button" type="TextureButton" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocList"]
+[node name="Button" type="TextureButton" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup"]
+margin_right = 345.0
+margin_bottom = 50.0
+grow_horizontal = 0
+rect_min_size = Vector2( 0, 50 )
+toggle_mode = true
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 21 )
+expand = true
+
+[node name="Label" type="Label" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/Button"]
+margin_left = 51.0
+margin_top = 7.0
+margin_right = 279.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "Location name"
+valign = 1
+
+[node name="offset" type="MarginContainer" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup"]
+margin_top = 54.0
+margin_right = 345.0
+margin_bottom = 54.0
+custom_constants/margin_left = 20
+
+[node name="LocList" type="VBoxContainer" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/offset"]
+margin_left = 20.0
+margin_right = 345.0
+grow_horizontal = 0
+
+[node name="Button" type="TextureButton" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/offset/LocList"]
 visible = false
 margin_right = 325.0
 margin_bottom = 50.0
@@ -459,7 +496,7 @@ texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 2 )
 texture_hover = ExtResource( 21 )
 
-[node name="icon" type="TextureRect" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocList/Button"]
+[node name="icon" type="TextureRect" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/offset/LocList/Button"]
 margin_left = 7.0
 margin_top = 5.0
 margin_right = 47.0
@@ -467,7 +504,7 @@ margin_bottom = 46.0
 rect_min_size = Vector2( 40, 0 )
 expand = true
 
-[node name="Label" type="Label" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocList/Button"]
+[node name="Label" type="Label" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/offset/LocList/Button"]
 margin_left = 51.0
 margin_top = 7.0
 margin_right = 279.0
@@ -651,6 +688,78 @@ anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 6 )
 text = "Adv. mode"
+align = 1
+valign = 1
+
+[node name="gr_rename" type="TextureButton" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 466.0
+margin_top = 875.0
+margin_right = 686.0
+margin_bottom = 933.0
+texture_normal = ExtResource( 39 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
+texture_disabled = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="gr_rename"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "Rename group"
+align = 1
+valign = 1
+
+[node name="gr_add" type="TextureButton" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 466.0
+margin_top = 803.0
+margin_right = 686.0
+margin_bottom = 861.0
+texture_normal = ExtResource( 39 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
+texture_disabled = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="gr_add"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "Add to group"
+align = 1
+valign = 1
+
+[node name="gr_new" type="TextureButton" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 466.0
+margin_top = 731.0
+margin_right = 686.0
+margin_bottom = 789.0
+texture_normal = ExtResource( 39 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
+texture_disabled = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="gr_new"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "New group"
 align = 1
 valign = 1
 
