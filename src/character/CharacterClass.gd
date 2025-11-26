@@ -827,7 +827,7 @@ func recruit(enslave = false):
 	travel.area = input_handler.active_area.code
 	if enslave == true:
 		set_slave_category('slave')
-		set_work_rule('bindings', true)
+#		set_work_rule('bindings', true)
 #	else:
 #		set_slave_category('servant')
 	ResourceScripts.game_party.add_slave(self)

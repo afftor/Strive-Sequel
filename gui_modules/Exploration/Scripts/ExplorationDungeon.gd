@@ -209,7 +209,7 @@ func open_location(data): #2fix
 	res_panel.get_node("SelectWorkers").visible = !active_location.gather_limit_resources.empty()
 	input_handler.emit_signal("LocationSlavesUpdate")
 #	current_level = 0
-	build_level()
+	yield(build_level(), 'completed')
 	update_stamina()
 	var dungeon
 	if !data.tags.has('infinite'):
@@ -991,7 +991,7 @@ func scout_room(room_id, s_range, stay = false):
 		'ladder_down':
 			move_to_room(room_id)
 			active_location.current_level += 1
-			build_level()
+			yield(build_level(), 'completed')
 			var dungeon = active_location.dungeon[active_location.current_level]
 			var tdata = ResourceScripts.game_world.dungeons[dungeon]
 			scout_room(tdata.first_room, get_scouting_range(), true)
@@ -1012,7 +1012,7 @@ func advance_survival(lv = null):
 		lv = active_location.current_level + 1
 	ResourceScripts.world_gen.set_level_infinite(active_location, lv)
 	input_handler.emit_signal("survival_advance")
-	build_level()
+	yield(build_level(), 'completed')
 	$LocationGui/MapPanel/BgImage.texture = images.get_background(active_location.background)
 	var dungeon = active_location.dungeon[0]
 	var tdata = ResourceScripts.game_world.dungeons[dungeon]

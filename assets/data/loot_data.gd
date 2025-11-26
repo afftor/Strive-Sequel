@@ -346,14 +346,14 @@ var loot_tables = {
 	sacred_scales_reward = {item = 'sacred_scales', amount = 1},#autoassign_quality = true
 	zephyra_bribe_1 = {gold = true, amount = 500},
 	zephyra_bribe_2 = {item = 'zephyra_underwear', amount = 1},
-	ramont_axe_reward = {item = 'ramont_axe', amount = 1},#autoassign_quality = true
+	ramont_axe_reward = {item = 'ramont_axe', amount = 1, autoassign_quality = true},
 	nixx_reward = {item = 'nixx_headgear', amount = 1},#autoassign_quality = true
-	hector_armor_reward = {item = 'hector_armor', amount = 1, no_enchant = true},#autoassign_quality = true
+	hector_armor_reward = {item = 'hector_armor', amount = 1, no_enchant = true, autoassign_quality = true},#autoassign_quality = true
 	erlen_sword_reward = {list = [
-		{item = 'erlen_sword', amount = 1},#autoassign_quality = true
+		{item = 'erlen_sword', amount = 1, autoassign_quality = true},
 		{item = 'sacred_bowl', amount = 1}]},#autoassign_quality = true
-	ayneris_rapier_reward = {item = 'ayneris_rapier', amount = 1},#autoassign_quality = true
-	garb_of_forest_reward = {item = 'garb_of_forest', amount = 1, no_enchant = true},#autoassign_quality = true
+	ayneris_rapier_reward = {item = 'ayneris_rapier', amount = 1, autoassign_quality = true},
+	garb_of_forest_reward = {item = 'garb_of_forest', amount = 1, no_enchant = true, autoassign_quality = true},
 	chloe_goggles_reward = {item = 'chloe_goggles', amount = 1},#autoassign_quality = true
 	priestess_tiara_reward = {list = [
 		{item = 'priestess_tiara', amount = 1},#autoassign_quality = true
