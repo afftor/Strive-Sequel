@@ -21,8 +21,8 @@ var positiondict = {
 func _ready():
 	# ResourceScripts.game_world.make_world()
 	for i in positiondict:
-			get_node(positiondict[i]).metadata = i
-			get_node(positiondict[i]).target_node = self
+		get_node(positiondict[i]).metadata = i
+		get_node(positiondict[i]).target_node = self
 	get_node(positiondict[i]).target_function = 'slave_position_selected'
 
 	$LocationGui.target_node = self
