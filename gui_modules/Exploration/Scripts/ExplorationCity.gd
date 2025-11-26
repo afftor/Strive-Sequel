@@ -56,7 +56,7 @@ func _ready():
 	$JournalButton.connect("pressed", self, "open_journal")
 	gui_controller.win_btn_connections_handler(true, $MansionJournalModule, $JournalButton)
 	gui_controller.windows_opened.clear()
-	input_handler.connect("update_itemlist", $AreaShop, 'update_sell_list')
+	#input_handler.connect("update_itemlist", $AreaShop, 'update_sell_list')
 	input_handler.connect("clear_cashed", self, 'clear_cashed')
 
 
@@ -362,6 +362,21 @@ func enter_guild(guild):
 	if gui_controller.is_dialogue_just_started():
 		unfade($GuildBG)
 
+
+func unfade(window, time = 0.5):
+	window.set("modulate", Color(1, 1, 1, 0))
+	window.show()
+	ResourceScripts.core_animations.UnfadeAnimation(window, time)
+	yield(get_tree().create_timer(time), "timeout")
+	window.set("modulate", Color(1, 1, 1, 1))
+
+
+func fade(window, time = 0.5):
+	# window.set("modulate", Color(1, 1, 1, 1))
+	ResourceScripts.core_animations.FadeAnimation(window, time)
+	yield(get_tree().create_timer(0.5), "timeout")
+	window.hide()
+	# window.set("modulate", Color(1, 1, 1, 0))
 
 var infotext = "Upgrades effects and quest settings update after some time passed. "
 
@@ -851,26 +866,26 @@ func show_slave_info(person):
 
 
 func open_shop(pressed, pressed_button, shop):
-        var shop_data = {}
-        match shop:
-                'area':
-                        if input_handler.active_area and input_handler.active_area.has('shop'):
-                                shop_data = input_handler.active_area.shop
-                'location':
-                        if pressed and active_location and active_location.has('shop'):
-                                shop_data = active_location.shop
-                _:
-                        shop_data = shop
-        $AreaShop.open_shop(pressed, pressed_button, shop_data)
+		var shop_data = {}
+		match shop:
+				'area':
+						if input_handler.active_area and input_handler.active_area.has('shop'):
+								shop_data = input_handler.active_area.shop
+				'location':
+						if pressed and active_location and active_location.has('shop'):
+								shop_data = active_location.shop
+				_:
+						shop_data = shop
+		$AreaShop.open_shop(pressed, pressed_button, shop_data)
 
 
 func update_gold():
-        $AreaShop.update_gold()
+		$AreaShop.update_gold()
 
 
 func quest_board(pressed, pressed_button):
-        gui_controller.win_btn_connections_handler(pressed, $QuestBoard, pressed_button)
-        self.current_pressed_area_btn = pressed_button
+	gui_controller.win_btn_connections_handler(pressed, $QuestBoard, pressed_button)
+	self.current_pressed_area_btn = pressed_button
 	$QuestBoard.selectcategory($QuestBoard/guildsortVScroll/all)
 	if pressed:
 		unfade($QuestBoard)

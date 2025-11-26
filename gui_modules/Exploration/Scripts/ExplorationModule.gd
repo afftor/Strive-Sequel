@@ -23,7 +23,7 @@ func _ready():
 	for i in positiondict:
 		get_node(positiondict[i]).metadata = i
 		get_node(positiondict[i]).target_node = self
-	get_node(positiondict[i]).target_function = 'slave_position_selected'
+		get_node(positiondict[i]).target_function = 'slave_position_selected'
 
 	$LocationGui.target_node = self
 	$LocationGui.target_function = 'slave_position_deselect'
@@ -46,7 +46,7 @@ func _ready():
 	input_handler.connect("EventFinished", self, 'open_location_actions')
 	input_handler.connect("LootGathered", self, 'build_location_group')
 	input_handler.connect("LocationSlavesUpdate", self, 'build_location_group')
-	input_handler.connect("update_itemlist", $AreaShop, 'update_sell_list')
+	#input_handler.connect("update_itemlist", $AreaShop, 'update_sell_list')
 	input_handler.connect("clear_cashed", self, 'clear_cashed')
 	# gui_controller.win_btn_connections_handler(true, $AreaShop, closebutton)
 #	$LocationGui/ce.connect("pressed", input_handler, "interactive_message", ['celena_shrine_find', '', {}])
@@ -723,9 +723,33 @@ func open_shop(pressed, pressed_button, shop):
 
 
 func local_shop(pressed, button):
-        if active_location and active_location.has('shop'):
-                        $AreaShop.open_shop(pressed, button, active_location.shop)
-
+	if active_location and active_location.has('shop'):
+		$AreaShop.open_shop(pressed, button, active_location.shop)
 
 func update_gold():
 	$AreaShop.update_gold()
+
+var current_pressed_area_btn setget set_area_btn_pressed
+
+
+func set_area_btn_pressed(value):
+	if !is_instance_valid(current_pressed_area_btn):
+		current_pressed_area_btn = value
+		return
+	if value != current_pressed_area_btn:
+		current_pressed_area_btn.pressed = false
+		current_pressed_area_btn = value
+
+
+func select_workers():
+	var MANSION = gui_controller.mansion
+	MANSION.SlaveListModule.selected_location = selected_location
+	MANSION.SlaveListModule.show_location_characters()
+	nav.return_to_mansion()
+	yield(get_tree().create_timer(0.6), 'timeout')
+	MANSION.get_node("MansionJobModule2").selected_location = selected_location
+	MANSION.SlaveListModule.OpenJobModule()
+
+func reset_active_location(arg = null):
+	if input_handler.active_location.id != selected_location:
+		input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(selected_location)

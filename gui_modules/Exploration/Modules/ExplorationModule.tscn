@@ -7,8 +7,8 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/icon_journalcity.png" type="Texture" id=101]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/icon_journalcity_pressed.png" type="Texture" id=102]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/icon_journalcity_hover.png" type="Texture" id=103]
-
 [ext_resource path="res://gui_modules/Exploration/Modules/AreaShop.tscn" type="PackedScene" id=128]
+
 [node name="ExplorationModule" type="Control"]
 self_modulate = Color( 1, 1, 1, 0.74902 )
 margin_right = 1920.0

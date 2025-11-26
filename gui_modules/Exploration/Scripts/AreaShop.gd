@@ -110,41 +110,65 @@ func update_sell_list():
 		newbutton.connect("pressed", self, "item_sell", [item])
 		globals.connectmaterialtooltip(newbutton, item, "", "material")
 		newbutton.visible = ((newbutton.get_meta("type") == sell_category) || sell_category == "all")
-
-	for i in Items.itemlist:
-		if !Items.itemlist[i].has("type"):
+	for item in ResourceScripts.game_res.items.values():
+		if item.amount <= 0 || item.tags.has('unsellable'):
 			continue
-		var item = Items.itemlist[i]
 		var type = get_item_category(item)
-		if type == "usable":
+		if item.owner != null:
 			continue
-		if item.has("unique"):
-			continue
-		var amount = 0
-		var ownitems = globals.CalculateItems(item.code)
-		if ownitems.size() == 0:
-			continue
-		var prices = []
-		for k in ownitems:
-			amount += k.amount
-			prices.append(ceil(k.calculateprice() * variables.item_sell_multiplier))
-			tempitems.append(k)
-		var newbutton = input_handler.DuplicateContainerTemplate($SellBlock/ScrollContainer/VBoxContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate(
+			$SellBlock/ScrollContainer/VBoxContainer
+		)
 		newbutton.get_node("name").text = item.name
-		newbutton.get_node("icon").texture = item.icon
-		newbutton.get_node("price").text = str(mean(prices))
-		newbutton.get_node("amount").visible = true
-		newbutton.get_node("amount").text = str(amount)
-		globals.connectitemtooltip_v2(newbutton, tempitems[-1])
-		newbutton.set_meta("type", type)
-		newbutton.set_meta("item", item.name)
-		newbutton.connect("pressed", self, "item_sell", [tempitems[-1]])
-		if item.has("quality") and item.quality != "":
+		item.set_icon(newbutton.get_node("icon"))  #.texture = item.get_icon()
+		if item.quality != "":
 			newbutton.get_node("quality_color").show()
 			newbutton.get_node("quality_color").texture = variables.quality_colors[item.quality]
 		else:
 			newbutton.get_node("quality_color").hide()
-		newbutton.visible = ((newbutton.get_meta("type") == sell_category) || sell_category == "all")
+		newbutton.get_node("price").text = str(ceil(item.calculateprice() * variables.item_sell_multiplier))
+		newbutton.get_node("amount").visible = true
+		newbutton.get_node("amount").text = str(item.amount)
+		newbutton.set_meta('type', type)
+		newbutton.set_meta('item', item.name)
+		newbutton.set_meta('exploration', true) #while not reqired as it is now
+		newbutton.connect("pressed", self, "item_sell", [item])
+		newbutton.visible = (newbutton.get_meta("type") == sell_category) || sell_category == "all"
+		globals.connectitemtooltip_v2(newbutton, item)
+#	for i in Items.itemlist:
+#		if !Items.itemlist[i].has("type"):
+#			continue
+#		var item = Items.itemlist[i]
+#		var type = get_item_category(item)
+#		if type == "usable":
+#			continue
+#		if item.has("unique"):
+#			continue
+#		var amount = 0
+#		var ownitems = globals.CalculateItems(item.code)
+#		if ownitems.size() == 0:
+#			continue
+#		var prices = []
+#		for k in ownitems:
+#			amount += k.amount
+#			prices.append(ceil(k.calculateprice() * variables.item_sell_multiplier))
+#			tempitems.append(k)
+#		var newbutton = input_handler.DuplicateContainerTemplate($SellBlock/ScrollContainer/VBoxContainer)
+#		newbutton.get_node("name").text = item.name
+#		newbutton.get_node("icon").texture = item.icon
+#		newbutton.get_node("price").text = str(prices)
+#		newbutton.get_node("amount").visible = true
+#		newbutton.get_node("amount").text = str(amount)
+#		globals.connectitemtooltip_v2(newbutton, tempitems[-1])
+#		newbutton.set_meta("type", type)
+#		newbutton.set_meta("item", item.name)
+#		newbutton.connect("pressed", self, "item_sell", [tempitems[-1]])
+#		if item.has("quality") and item.quality != "":
+#			newbutton.get_node("quality_color").show()
+#			newbutton.get_node("quality_color").texture = variables.quality_colors[item.quality]
+#		else:
+#			newbutton.get_node("quality_color").hide()
+#		newbutton.visible = ((newbutton.get_meta("type") == sell_category) || sell_category == "all")
 
 
 func update_buy_list():
@@ -265,7 +289,7 @@ func item_purchase(item, amount):
 	if typeof(item) == TYPE_OBJECT:
 		price = item.calculateprice()
 	else:
-		if item.itemtype == "material":
+		if item.type == "material":
 			price = ceil(item.price * variables.material_sell_multiplier)
 		else:
 			price = item.price
