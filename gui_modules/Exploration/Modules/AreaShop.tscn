@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=3]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=8]
@@ -39,6 +39,7 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=119]
 [ext_resource path="res://assets/images/iconsitems/quality_bg/blue.png" type="Texture" id=127]
 [ext_resource path="res://gui_modules/Exploration/Scripts/AreaShop.gd" type="Script" id=129]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/search.tres" type="StyleBox" id=130]
 
 [sub_resource type="StyleBoxTexture" id=14]
 texture = ExtResource( 28 )
@@ -693,6 +694,25 @@ custom_fonts/font = ExtResource( 119 )
 text = "TRADER_LABEL"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SearchFilter" type="LineEdit" parent="."]
+margin_left = 62.0
+margin_top = 106.0
+margin_right = 1068.0
+margin_bottom = 150.0
+custom_colors/selection_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/cursor_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/clear_button_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_selected = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/clear_button_color = Color( 0, 0, 0, 1 )
+custom_constants/minimum_spaces = 3
+custom_fonts/font = ExtResource( 8 )
+custom_styles/normal = ExtResource( 130 )
+placeholder_text = "INVENTORYFILTER"
 __meta__ = {
 "_edit_use_anchors_": false
 }
