@@ -20,15 +20,10 @@ var positiondict = {
 
 func _ready():
 	# ResourceScripts.game_world.make_world()
-	for i in $AreaShop/SellFilter.get_children():
-		i.connect('pressed', self, 'selectcategory', [i, "sell"])
-	for i in $AreaShop/BuyFilter.get_children():
-		i.connect('pressed', self, 'selectcategory', [i, "buy"])
-
 	for i in positiondict:
 		get_node(positiondict[i]).metadata = i
 		get_node(positiondict[i]).target_node = self
-		get_node(positiondict[i]).target_function = 'slave_position_selected'
+	get_node(positiondict[i]).target_function = 'slave_position_selected'
 
 	$LocationGui.target_node = self
 	$LocationGui.target_function = 'slave_position_deselect'
@@ -50,9 +45,8 @@ func _ready():
 	input_handler.connect("EventFinished", self, 'build_location_group')
 	input_handler.connect("EventFinished", self, 'open_location_actions')
 	input_handler.connect("LootGathered", self, 'build_location_group')
-	var closebutton = gui_controller.add_close_button($AreaShop)
 	input_handler.connect("LocationSlavesUpdate", self, 'build_location_group')
-	input_handler.connect("update_itemlist", self, 'update_sell_list')
+	input_handler.connect("update_itemlist", $AreaShop, 'update_sell_list')
 	input_handler.connect("clear_cashed", self, 'clear_cashed')
 	# gui_controller.win_btn_connections_handler(true, $AreaShop, closebutton)
 #	$LocationGui/ce.connect("pressed", input_handler, "interactive_message", ['celena_shrine_find', '', {}])
@@ -714,371 +708,24 @@ func check_events(action):
 	return globals.check_events(action)
 
 
-var sell_category = 'all'
-var buy_category = 'all'
-var active_shop
-
-
-func unfade(window, time = 0.5):
-	window.set("modulate", Color(1, 1, 1, 0))
-	window.show()
-	ResourceScripts.core_animations.UnfadeAnimation(window, time)
-	yield(get_tree().create_timer(time), "timeout")
-	window.set("modulate", Color(1, 1, 1, 1))
-
-func fade(window, time = 0.5):
-	# window.set("modulate", Color(1, 1, 1, 1))
-	ResourceScripts.core_animations.FadeAnimation(window, time)
-	yield(get_tree().create_timer(time), "timeout")
-	window.hide()
-	# window.set("modulate", Color(1, 1, 1, 0))
-
-
 func open_shop(pressed, pressed_button, shop):
-	update_gold()
-	$AreaShop/NumberSelection.hide()
-	gui_controller.win_btn_connections_handler(pressed, $AreaShop, pressed_button)
-	self.current_pressed_area_btn = pressed_button
-	# $AreaShop.visible = pressed
+	var shop_data = {}
 	match shop:
 		'area':
-			active_shop = input_handler.active_area.shop
+			if input_handler.active_area and input_handler.active_area.has('shop'):
+				shop_data = input_handler.active_area.shop
 		'location':
-			if pressed:
-				active_shop = active_location.shop
-	if !(active_shop is Dictionary):
-		print("warning: active_shop is not a Dictionary!")
-	sell_category = 'all'
-	buy_category = 'all'
-	$AreaShop/SellFilter.get_child(0).pressed = true
-	$AreaShop/BuyFilter.get_child(0).pressed = true
-	update_sell_list()
-	update_buy_list()
-	if pressed:
-		unfade($AreaShop)
-	else:
-		fade($AreaShop)
+			if pressed and active_location and active_location.has('shop'):
+				shop_data = active_location.shop
+		_:
+			shop_data = shop
+	$AreaShop.open_shop(pressed, pressed_button, shop_data)
 
 
 func local_shop(pressed, button):
-	open_shop(pressed, button, 'location')
-
-
-func selectcategory(button, list):
-	var type = button.name
-	if list == "sell":
-		for i in $AreaShop/SellFilter.get_children():
-			i.pressed = i == button
-		sell_category = type
-		update_sell_list()
-	else:
-		for i in $AreaShop/BuyFilter.get_children():
-			i.pressed = i == button
-		buy_category = type
-		update_buy_list()
-
-
-var tempitems = []
-
-
-func get_item_category(item):
-	var type
-	if Items.materiallist.has(item.code):
-		if item.type == 'food':
-			type = 'food'
-		else:
-			type = 'material'
-	else:
-		if item.itemtype == 'tool':
-			type = 'tool'
-		elif item.itemtype == 'weapon':
-			type = 'weapon'
-		elif item.itemtype == 'armor':
-			if item.geartype == 'costume':
-				type = 'costume'
-			else:
-				type = 'armor'
-		else:
-			type = 'usable'
-	return type
-
-
-func update_sell_list():
-	input_handler.ClearContainer($AreaShop/SellBlock/ScrollContainer/VBoxContainer)
-	tempitems.clear()
-	for i in ResourceScripts.game_res.materials:
-		if ResourceScripts.game_res.materials[i] <= 0 || Items.materiallist[i].type == 'quest':
-			continue
-		var item = Items.materiallist[i]
-		var type = get_item_category(item)
-		var newbutton = input_handler.DuplicateContainerTemplate(
-			$AreaShop/SellBlock/ScrollContainer/VBoxContainer
-		)
-		newbutton.get_node("name").text = item.name
-		newbutton.get_node("icon").texture = item.icon
-		newbutton.get_node("price").text = str(ceil(item.price * variables.material_sell_multiplier))
-		newbutton.get_node("amount").visible = true
-		newbutton.get_node("amount").text = str(ResourceScripts.game_res.materials[i])
-		newbutton.set_meta('type', type)
-		newbutton.set_meta('item', item.name)
-		newbutton.set_meta('exploration', true)
-		newbutton.connect("pressed", self, "item_sell", [item])
-		newbutton.visible = (newbutton.get_meta("type") == sell_category) || sell_category == "all"
-		globals.connectmaterialtooltip(newbutton, item)
-	for item in ResourceScripts.game_res.items.values():
-		if item.amount <= 0 || item.tags.has('unsellable'):
-			continue
-		var type = get_item_category(item)
-		if item.owner != null:
-			continue
-		var newbutton = input_handler.DuplicateContainerTemplate(
-			$AreaShop/SellBlock/ScrollContainer/VBoxContainer
-		)
-		newbutton.get_node("name").text = item.name
-		item.set_icon(newbutton.get_node("icon"))  #.texture = item.get_icon()
-		newbutton.get_node("price").text = str(ceil(item.calculateprice() * variables.item_sell_multiplier))
-		newbutton.get_node("amount").visible = true
-		newbutton.get_node("amount").text = str(item.amount)
-		newbutton.set_meta('type', type)
-		newbutton.set_meta('item', item.name)
-		newbutton.set_meta('exploration', true) #while not reqired as it is now
-		newbutton.connect("pressed", self, "item_sell", [item])
-		newbutton.visible = (newbutton.get_meta("type") == sell_category) || sell_category == "all"
-		globals.connectitemtooltip_v2(newbutton, item)
-
-
-func update_buy_list():
-	input_handler.ClearContainer($AreaShop/BuyBlock/ScrollContainer/VBoxContainer)
-	tempitems.clear()
-	for i in active_shop:
-		if Items.materiallist.has(i):
-			var item = Items.materiallist[i]
-			var amount = active_shop[i]
-			if amount == 0:
-				continue
-			var type = get_item_category(item)
-			var newbutton = input_handler.DuplicateContainerTemplate(
-				$AreaShop/BuyBlock/ScrollContainer/VBoxContainer
-			)
-			newbutton.get_node("name").text = item.name
-			newbutton.get_node("icon").texture = item.icon
-			newbutton.get_node("price").text = str(item.price)
-			newbutton.set_meta('type', type)
-			newbutton.set_meta('item', item.name)
-			newbutton.set_meta('exploration', true)
-			newbutton.connect("pressed", self, "item_purchase", [item, amount])
-			newbutton.visible = (
-				(newbutton.get_meta("type") == buy_category)
-				|| buy_category == "all"
-			)
-			globals.connectmaterialtooltip(newbutton, item, "", 'material')
-			if amount > 0:
-				newbutton.get_node("amount").text = str(amount)
-				newbutton.get_node("amount").show()
-		elif Items.itemlist.has(i):
-			var item = Items.itemlist[i]
-			if item.has('parts'):#means active_shop[i] is array of dicts
-				Items.get_loot().try_fix_old_shop_parts(active_shop, i)#14 march 2025. Remove with time!
-				for record in active_shop[i]:
-					var type = get_item_category(item)
-					var newbutton = input_handler.DuplicateContainerTemplate(
-						$AreaShop/BuyBlock/ScrollContainer/VBoxContainer
-					)
-					newbutton.get_node("icon").texture = item.icon
-					newbutton.set_meta('type', type)
-					newbutton.set_meta('item', item.name)
-					newbutton.set_meta('exploration', true) #while not reqired as it is now
-					newbutton.visible = (
-						(newbutton.get_meta("type") == buy_category)
-						|| buy_category == "all"
-					)
-					var newitem
-					if record.has('quality'):#for now can't come from shop generator
-						var parts = record.duplicate()
-						parts.erase('quality')
-						newitem = globals.CreateGearItemQuality(i, parts, record.quality)
-					else:
-						newitem = globals.CreateGearItemShop(i, record)
-						record.quality = newitem.quality
-					newitem.set_icon(newbutton.get_node('icon'))
-					newbutton.get_node("name").text = newitem.name
-					tempitems.append(newitem)
-					globals.connectitemtooltip_v2(newbutton, newitem)
-					newbutton.get_node("price").text = str(newitem.calculateprice())
-					newbutton.connect('pressed', self, "item_purchase", [newitem, 1])
-					newbutton.get_node("amount").text = "1"
-					newbutton.get_node("amount").show()
-			else:
-				var amount = active_shop[i]
-				if amount == 0:
-					continue
-				var type = get_item_category(item)
-				var newbutton = input_handler.DuplicateContainerTemplate(
-					$AreaShop/BuyBlock/ScrollContainer/VBoxContainer
-				)
-				newbutton.get_node("name").text = item.name
-				newbutton.get_node("icon").texture = item.icon
-				newbutton.get_node("price").text = str(item.price)
-				newbutton.set_meta('type', type)
-				newbutton.set_meta('item', item.name)
-				newbutton.set_meta('exploration', true) #while not reqired as it is now
-				newbutton.visible = (
-					(newbutton.get_meta("type") == buy_category)
-					|| buy_category == "all"
-				)
-				globals.connecttempitemtooltip(newbutton, item, 'geartemplate')
-				newbutton.connect('pressed', self, "item_purchase", [item, amount])
-				if amount > 0:
-					newbutton.get_node("amount").text = str(amount)
-					newbutton.get_node("amount").show()
-
-
-var purchase_item
-
-
-func item_purchase(item, amount):
-	for btn in $AreaShop/SellBlock/ScrollContainer/VBoxContainer.get_children():
-		btn.pressed = false
-	for btn in $AreaShop/BuyBlock/ScrollContainer/VBoxContainer.get_children():
-		if !btn.has_meta("item"):
-			continue
-		btn.pressed = btn.get_meta("item") == item.name
-	purchase_item = item
-	if amount < 0:
-		amount = 100
-	var price = 0
-	var icon = null
-	if typeof(item) == TYPE_OBJECT:
-		price = item.calculateprice()
-	else:
-		price = item.price
-	$AreaShop/NumberSelection.open(
-		self,
-		'item_puchase_confirm',
-		tr("BUY") + " " + str(item.name),
-		price,
-		1,
-		amount,
-		true,
-		item.icon,
-		item
-	)
-
-
-func item_puchase_confirm(value):
-	input_handler.PlaySound("money_spend")
-	if typeof(purchase_item) == TYPE_OBJECT:
-		globals.AddItemToInventory(purchase_item)
-		ResourceScripts.game_res.money -= purchase_item.calculateprice()
-		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
-		for i in active_shop:
-			if !(active_shop[i] is Array):#for only parts-type items are checked here
-				continue
-			var to_erase
-			for j in range(active_shop[i].size()):
-				if globals.check_shop_record(purchase_item, i, active_shop[i][j]):
-					to_erase = j
-					break
-			if to_erase == null:
-				continue
-			active_shop[i].remove(to_erase)
-			if active_shop[i].empty():
-				active_shop.erase(i)
-			break
-		update_sell_list()
-		update_buy_list()
-	else:
-		active_shop[purchase_item.code] -= value
-		if Items.materiallist.has(purchase_item.code):
-			ResourceScripts.game_res.set_material(purchase_item.code, '+', value)
-		elif Items.itemlist.has(purchase_item.code):
-			for i in range(value):
-				match purchase_item.type:
-					'usable':
-						globals.AddItemToInventory(globals.CreateUsableItem(purchase_item.code))
-					'gear':
-						globals.AddItemToInventory(globals.CreateGearItemShop(purchase_item.code, {}))
-		ResourceScripts.game_res.money -= purchase_item.price * value
-		update_sell_list()
-		update_buy_list()
-
-
-
-func item_sell(item):
-	for btn in $AreaShop/BuyBlock/ScrollContainer/VBoxContainer.get_children():
-		btn.pressed = false
-	for btn in $AreaShop/SellBlock/ScrollContainer/VBoxContainer.get_children():
-		if !btn.has_meta("item"):
-			continue
-		btn.pressed = btn.get_meta("item") == item.name
-	purchase_item = item
-	var price
-	if item.price:
-		price = ceil(item.price * variables.material_sell_multiplier)
-	else:
-		price = ceil(item.calculateprice() * variables.item_sell_multiplier)
-	var sellingamount
-	if ! Items.materiallist.has(item.code):
-		price = ceil(item.calculateprice() * variables.item_sell_multiplier)
-		sellingamount = item.amount
-	else:
-		sellingamount = ResourceScripts.game_res.materials[item.code]
-	$AreaShop/NumberSelection.open(
-		self,
-		'item_sell_confirm',
-		tr("SELL") + " " + str(item.name),
-		price,
-		1,
-		sellingamount,
-		false,
-		item.icon,
-		item
-	)
-
-
-func item_sell_confirm(value):
-	input_handler.PlaySound("money_spend")
-	var price
-	if purchase_item.price:
-		price = ceil(purchase_item.price * variables.material_sell_multiplier) 
-	else:
-		price = ceil(purchase_item.calculateprice() * variables.item_sell_multiplier)
-	
-	if Items.materiallist.has(purchase_item.code):
-		ResourceScripts.game_res.set_material(purchase_item.code, '-', value)
-	else:
-		price = ceil(purchase_item.calculateprice() * variables.item_sell_multiplier)
-		purchase_item.amount -= value
-	ResourceScripts.game_res.money += price * value
-	update_sell_list()
-	update_buy_list()
-
-
-var current_pressed_area_btn setget set_area_btn_pressed
-
-
-func set_area_btn_pressed(value):
-	if !is_instance_valid(current_pressed_area_btn):
-		current_pressed_area_btn = value
-		return
-	if value != current_pressed_area_btn:
-		current_pressed_area_btn.pressed = false
-		current_pressed_area_btn = value
-
-
-func select_workers():
-	var MANSION = gui_controller.mansion
-	MANSION.SlaveListModule.selected_location = selected_location
-	MANSION.SlaveListModule.show_location_characters()
-	nav.return_to_mansion()
-	yield(get_tree().create_timer(0.6), 'timeout')
-	MANSION.get_node("MansionJobModule2").selected_location = selected_location
-	MANSION.SlaveListModule.OpenJobModule()
-
-func reset_active_location(arg = null):
-	if input_handler.active_location.id != selected_location:
-		input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(selected_location)
+        if active_location and active_location.has('shop'):
+                        $AreaShop.open_shop(pressed, button, active_location.shop)
 
 
 func update_gold():
-	$AreaShop/Label2.text = str(int(ResourceScripts.game_res.money))
+	$AreaShop.update_gold()
