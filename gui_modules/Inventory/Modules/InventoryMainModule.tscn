@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/button_charinfo_sqr.png" type="Texture" id=5]
 [ext_resource path="res://gui_modules/Inventory/Scripts/InventorySlaveListModule.gd" type="Script" id=6]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/icon_charinfo_gear.png" type="Texture" id=7]
 [ext_resource path="res://gui_modules/Inventory/Scripts/InventoryStatsModule.gd" type="Script" id=8]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/button_charinfo_sqr_pressed.png" type="Texture" id=9]
 [ext_resource path="res://gui_modules/Inventory/Scripts/InventoryMainModule.gd" type="Script" id=10]
@@ -66,87 +65,48 @@ margin_right = 219.0
 margin_bottom = 1056.0
 custom_constants/vseparation = 20
 custom_constants/hseparation = 20
-columns = 2
+columns = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SkillsButton" type="TextureButton" parent="GridContainer"]
+[node name="CharInfoButton" type="TextureButton" parent="GridContainer"]
 margin_right = 82.0
 margin_bottom = 82.0
-hint_tooltip = "Class and Skills"
+hint_tooltip = "Open Character Info"
 size_flags_horizontal = 10
 toggle_mode = true
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 16 )
 
-[node name="TextureRect" type="TextureRect" parent="GridContainer/SkillsButton"]
+[node name="TextureRect" type="TextureRect" parent="GridContainer/CharInfoButton"]
 anchor_top = 0.0108643
 anchor_right = 0.512195
 anchor_bottom = 0.523059
 margin_top = -0.890869
 margin_right = 40.0
 margin_bottom = 39.1091
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SiblingsButton" type="TextureButton" parent="GridContainer"]
-margin_left = 102.0
-margin_right = 184.0
-margin_bottom = 82.0
-hint_tooltip = "Food and Details"
-toggle_mode = true
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 9 )
-texture_hover = ExtResource( 16 )
-
-[node name="TextureRect" type="TextureRect" parent="GridContainer/SiblingsButton"]
-margin_left = -1.0
-margin_right = 81.0
-margin_bottom = 82.0
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GearButton" type="TextureButton" parent="GridContainer"]
+[node name="MansionButton" type="TextureButton" parent="GridContainer"]
 margin_top = 102.0
 margin_right = 82.0
 margin_bottom = 184.0
-hint_tooltip = "Gear"
+hint_tooltip = "Return to Mansion"
 toggle_mode = true
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 16 )
 
-[node name="TextureRect" type="TextureRect" parent="GridContainer/GearButton"]
+[node name="TextureRect" type="TextureRect" parent="GridContainer/MansionButton"]
 margin_left = 1.0
 margin_right = 83.0
 margin_bottom = 82.0
-texture = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DetailsButton" type="TextureButton" parent="GridContainer"]
-margin_left = 102.0
-margin_top = 102.0
-margin_right = 184.0
-margin_bottom = 184.0
-hint_tooltip = "Customization"
-toggle_mode = true
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 9 )
-texture_hover = ExtResource( 16 )
-
-[node name="TextureRect" type="TextureRect" parent="GridContainer/DetailsButton"]
-margin_left = 1.0
-margin_right = 83.0
-margin_bottom = 82.0
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
