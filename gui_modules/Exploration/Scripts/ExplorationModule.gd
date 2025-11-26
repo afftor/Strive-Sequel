@@ -20,10 +20,10 @@ var positiondict = {
 
 func _ready():
 	# ResourceScripts.game_world.make_world()
-        for i in positiondict:
-                get_node(positiondict[i]).metadata = i
-                get_node(positiondict[i]).target_node = self
-		get_node(positiondict[i]).target_function = 'slave_position_selected'
+	for i in positiondict:
+			get_node(positiondict[i]).metadata = i
+			get_node(positiondict[i]).target_node = self
+	get_node(positiondict[i]).target_function = 'slave_position_selected'
 
 	$LocationGui.target_node = self
 	$LocationGui.target_function = 'slave_position_deselect'
@@ -709,17 +709,17 @@ func check_events(action):
 
 
 func open_shop(pressed, pressed_button, shop):
-        var shop_data = {}
-        match shop:
-                'area':
-                        if input_handler.active_area and input_handler.active_area.has('shop'):
-                                shop_data = input_handler.active_area.shop
-                'location':
-                        if pressed and active_location and active_location.has('shop'):
-                                shop_data = active_location.shop
-                _:
-                        shop_data = shop
-        $AreaShop.open_shop(pressed, pressed_button, shop_data)
+	var shop_data = {}
+	match shop:
+		'area':
+			if input_handler.active_area and input_handler.active_area.has('shop'):
+				shop_data = input_handler.active_area.shop
+		'location':
+			if pressed and active_location and active_location.has('shop'):
+				shop_data = active_location.shop
+		_:
+			shop_data = shop
+	$AreaShop.open_shop(pressed, pressed_button, shop_data)
 
 
 func local_shop(pressed, button):
@@ -728,4 +728,4 @@ func local_shop(pressed, button):
 
 
 func update_gold():
-        $AreaShop.update_gold()
+	$AreaShop.update_gold()
