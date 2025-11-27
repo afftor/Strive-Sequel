@@ -6,12 +6,14 @@ Added dropdown menu on rightclick to characters and improved occupation menu beh
 Added search bar to enchant and gear improvement modules
 Added new scene for Cali for when player leaves her to William
 Renamed Nobody fame level to Stranger
+Revamped shop menu
 Weapons now have minimum mastery requirements necessary to equip them
 Invested mastery points are now capped at 10 per mastery
 Trap skills moved from Marksmanship Mastery to Stealth Mastery
 Fire Arrows and Poison Arrows added to Marksmanship Mastery instead
 Master trait Communicative now gives +3 persuasion check, +2 leadership mastery and +2 weekly dates instead of +1 social skill charges.
 Master trait Progenecy now gives for all offspring 50% chance for each Factor to be increased by 1
+Easy training option moved to advanced settings
 Fixed Wind Blade attacking same target every time
 Fixed multiple places missing item color quality background
 Fixed beverages not being sacrificable at the altars

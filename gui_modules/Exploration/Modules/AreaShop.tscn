@@ -58,6 +58,7 @@ texture = ExtResource( 28 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [node name="AreaShop" type="Panel" groups=["pauseprocess"]]
+visible = false
 margin_left = 302.0
 margin_top = 60.0
 margin_right = 1681.0
@@ -232,10 +233,10 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SellBlock/ScrollContainer"]
 margin_right = 480.0
-margin_bottom = 50.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="SellBlock/ScrollContainer/VBoxContainer"]
+visible = false
 margin_right = 480.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 464, 50 )
@@ -349,10 +350,10 @@ theme = ExtResource( 19 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BuyBlock/ScrollContainer"]
 margin_right = 480.0
-margin_bottom = 50.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="BuyBlock/ScrollContainer/VBoxContainer"]
+visible = false
 margin_right = 480.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 464, 50 )

@@ -21,7 +21,7 @@ var diff_free_gather = false
 var diff_money = 'easy'
 var diff_materials = 'easy'
 var diff_free_chars = 0
-
+var easytrain = false
 
 var seed_salt = randi()
 
