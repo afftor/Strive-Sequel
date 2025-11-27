@@ -1,8 +1,7 @@
 extends Node
-var effects = {
-}
 
-var effect_nolog = ['commander', 'e_s_atkpass', 'e_t_atkpass_remove', 'e_t_hide']
+
+var effect_nolog = ['commander', 'atkpass', 'atkpass_remove', 'hide', 'default'] #2add more
 #to fix EFFECT TAGS TO TEMPLATE
 #'positive'/'negative' - the widest classification (to most global cleaning like bard2 skill effect)
 #'buff'/'debuff' - additional markings for common effect removal effects (like purge) (and maybe add two more for a state effects)
@@ -1879,6 +1878,8 @@ func fix_eff_data():
 		if eff.type == 'trigger':
 			if !eff.has('conditions'):
 				eff.conditions = []
+#		if eff.type == 'temp_global':
+#			print('EFFECTNAME_%s = "",' % eff.name.to_upper())
 		if eff.has('duration'):
 			if eff.duration is String:
 				if !eff.has('args'):
@@ -1910,8 +1911,44 @@ func fix_eff_data():
 						teff.args.caster = {obj = 'caster', func = 'eq'}
 						teff.args.target = {obj = 'target', func = 'eq'}
 	for st in stacks:
+#		print ('EFFECTNAME_%s = "",' % st.to_upper())
 		if stacks[st].empty():
 			stacks[st] = {
 				type = 'stack_l',
 				stack = 1
 			}
+
+
+func get_resist_message(person, eff):
+	var tres = tr('LOGEFFECTRESIST')
+	var eff_id = get_effect_for_status(eff)
+	var eff_val = effect_table[eff_id]
+	var e_name = ""
+	if eff_val.has('name'):
+		e_name = eff_val.name
+	else:
+		e_name = eff_val.stack
+	
+	return tres % [person.get_short_name(), tr('EFFECTNAME_' + e_name.to_upper())]
+	
+
+
+func get_immune_message(person, eff):
+	var tres = tr('LOGEFFECTIMMUNE')
+	var eff_id = get_effect_for_status(eff)
+	var eff_val = effect_table[eff_id]
+	var e_name = ""
+	if eff_val.has('name'):
+		e_name = eff_val.name
+	else:
+		e_name = eff_val.stack
+	
+	return tres % [person.get_short_name(), tr('EFFECTNAME_' + e_name.to_upper())]
+
+
+func get_apply_message(person, eff): #for temp_global
+	var tres = tr('LOGEFFECTAPPLY')
+	var eff_val = effect_table[eff]
+	var e_name = eff_val.name
+	
+	return tres % [person.get_short_name(), tr('EFFECTNAME_' + e_name.to_upper())]

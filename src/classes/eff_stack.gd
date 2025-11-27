@@ -93,6 +93,8 @@ func process_reset(ev):
 
 func add_effect(eff, timestamp):
 	effects[eff] = timestamp
+	if input_handler.combat_node != null and !Effectdata.effect_nolog.has(code):
+		input_handler.combat_node.combatlogadd(get_apply_message())
 
 
 func remove_effect(eff):
@@ -151,3 +153,13 @@ func clear_nonstored_effs():
 
 func get_duration():
 	return null
+
+
+func get_apply_message():
+	var tres = tr('LOGEFFECTAPPLY')
+	return tres % [get_applied_object().get_short_name(), tr('EFFECTNAME_' + code.to_upper())]
+
+
+func get_update_message(): #for inhereted classes
+	var tres = tr('LOGEFFECTRENEW')
+	return tres % [tr('EFFECTNAME_' + code.to_upper()), get_applied_object().get_short_name()]

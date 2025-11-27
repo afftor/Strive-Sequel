@@ -3,6 +3,8 @@ class_name eff_stack_toggle
 #stack class for toggled effects
 #works only with stack 1 and only with directly applied effects
 
+#some update on replacing one effect with different instead of toggling off
+
 func serialize():
 	var tmp = .serialize()
 	tmp.type = 'stack_t'
@@ -30,10 +32,21 @@ func process_tick(ev):
 func add_effect(eff, timestamp):
 	if effects.empty():
 		effects[eff] = timestamp
+		if input_handler.combat_node != null and !Effectdata.effect_nolog.has(code):
+			input_handler.combat_node.combatlogadd(get_apply_message())
 	else:
 		var tmp = effects_pool.get_effect_by_id(effects.keys()[0])
-		tmp.remove()
-		effects_pool.get_effect_by_id(eff).is_applied = false
+		var tmp1 = effects_pool.get_effect_by_id(eff)
+		if tmp.template_id == tmp1.template_id:
+			tmp.remove()
+			tmp1.is_applied = false
+			if input_handler.combat_node != null and !Effectdata.effect_nolog.has(code):
+				input_handler.combat_node.combatlogadd(get_turnoff_message())
+		else:
+			tmp.remove()
+			effects[eff] = timestamp
+			if input_handler.combat_node != null and !Effectdata.effect_nolog.has(code):
+				input_handler.combat_node.combatlogadd(get_update_message())
 
 
 func get_active_effects():
@@ -48,3 +61,18 @@ func get_active_effects():
 		res[cash[i][0]] = cash[i][1]
 	return res
 	
+
+
+func get_update_message(): 
+	var tres = tr('LOGEFFECTTOGGLEOFFON')
+	return tres % [tr('EFFECTNAME_' + code.to_upper()), get_applied_object().get_short_name()]
+
+
+func get_turnoff_message(): 
+	var tres = tr('LOGEFFECTTOGGLEOFF')
+	return tres % [tr('EFFECTNAME_' + code.to_upper()), get_applied_object().get_short_name()]
+
+
+func get_apply_message(): 
+	var tres = tr('LOGEFFECTTOGGLEON')
+	return tres % [tr('EFFECTNAME_' + code.to_upper()), get_applied_object().get_short_name()]

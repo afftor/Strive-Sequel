@@ -8,6 +8,15 @@ func serialize():
 	return tmp
 
 
+func add_effect(eff, timestamp):
+	effects[eff] = timestamp
+	if input_handler.combat_node != null and !Effectdata.effect_nolog.has(code):
+		if effects.size() <= template.stack:
+			input_handler.combat_node.combatlogadd(get_apply_message())
+		else:
+			input_handler.combat_node.combatlogadd(get_update_message())
+
+
 func get_active_effects():
 	if effects.size() <= template.stack:
 		return effects.duplicate()
