@@ -93,6 +93,8 @@ func add_stored_effect(code, dict = {}):
 			eff = effects_pool.e_createfromtemplate(code, parent.get_ref().id)
 			id = effects_pool.add_effect(eff)
 			effects_temp_globals.push_back({id = id, timestamp = get_timestamp()})
+			if input_handler.combat_node != null and !Effectdata.effect_nolog.has(code):
+				input_handler.combat_node.combatlogadd(Effectdata.get_apply_message(parent.get_ref(), code))
 	
 	if data.type != 'simple':
 		eff.owner = parent.get_ref().id
@@ -383,21 +385,21 @@ func apply_status(data):
 	
 	if check_status_immunity(eff_id):
 		if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_id):
-			input_handler.combat_node.combatlogadd("\n%s is immune to %s." % [parent.get_ref().get_short_name(), eff_id])
+			input_handler.combat_node.combatlogadd(Effectdata.get_immune_message(parent.get_ref(), eff_id))
 			parent.get_ref().play_sfx('resist')
 		return
 	if data.chance > 1.0:
 		add_stored_effect(Effectdata.get_effect_for_status(eff_id), data)
-		if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_id):
-			input_handler.combat_node.combatlogadd("\n%s is affected by %s." % [parent.get_ref().get_short_name(), eff_id])
+#		if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_id):
+#			input_handler.combat_node.combatlogadd("\n%s is affected by %s." % [parent.get_ref().get_short_name(), eff_id])
 	elif globals.rng.randf() <= data.chance:
 		if check_status_resist(eff_id):
 			if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_id):
-				input_handler.combat_node.combatlogadd("\n%s resists %s." % [parent.get_ref().get_short_name(), eff_id])
+				input_handler.combat_node.combatlogadd(Effectdata.get_resist_message(parent.get_ref(), eff_id))
 				parent.get_ref().play_sfx('resist')
 			return
 		else:
 			add_stored_effect(Effectdata.get_effect_for_status(eff_id), data)
-			if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_id):
-				input_handler.combat_node.combatlogadd("\n%s is affected by %s." % [parent.get_ref().get_short_name(), eff_id])
+#			if input_handler.combat_node != null and !Effectdata.effect_nolog.has(eff_id):
+#				input_handler.combat_node.combatlogadd("\n%s is affected by %s." % [parent.get_ref().get_short_name(), eff_id])
 

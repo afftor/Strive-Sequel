@@ -333,7 +333,7 @@ func selectmaterial(material, part, cost):
 				text += '\n' + statdata.statdata[i].name + ': ' + str(endvalue)
 		else:
 			for k in material.parts[part][i]:
-				text += '\n' + Effectdata.effects[k].descript
+				text += '\n' + Effectdata.effect_table[k].descript
 	get_node('NumberSelect/MaterialSetupPanel/' + chosenpartbutton.name + 'Descript').bbcode_text = text
 
 var enditem

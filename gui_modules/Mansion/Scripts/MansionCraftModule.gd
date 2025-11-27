@@ -474,7 +474,7 @@ func get_mat_bonuses(material, part):
 		var endvalue = material.parts[part][k]
 		if endvalue is Array:
 			for j in endvalue:
-				text += '\n' + Effectdata.effects[j].descript
+				text += '\n' + Effectdata.effect_table[j].descript
 		elif endvalue is String:
 			text += '\n' + statdata.statdata[k].name + ': ' + endvalue
 		else:

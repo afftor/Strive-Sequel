@@ -12,6 +12,8 @@ func serialize():
 func add_effect(eff, timestamp):
 	if effects.size() < template.stack:
 		effects[eff] = timestamp
+		if input_handler.combat_node != null and !Effectdata.effect_nolog.has(code):
+			input_handler.combat_node.combatlogadd(get_apply_message())
 	else:
 		var cash = []
 		for eff in effects:
@@ -20,6 +22,8 @@ func add_effect(eff, timestamp):
 		var eff_r = effects_pool.get_effect_by_id(cash[0][0])
 		eff_r.remove()
 		effects[eff] = timestamp
+		if input_handler.combat_node != null and !Effectdata.effect_nolog.has(code):
+			input_handler.combat_node.combatlogadd(get_update_message())
 
 
 func process_tick(ev):

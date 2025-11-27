@@ -122,7 +122,7 @@ func amount_set(value):
 func UseItem(user = null, target = null):
 	var finaltarget
 	for i in effects:
-		var effect = Effectdata.effects[i]
+		var effect = Effectdata.effect_table[i]
 		if i.taker == 'caster':
 			if user == null:
 				return
