@@ -16,10 +16,15 @@ func open_with_actions(person, actions, global_position):
 	for action in actions:
 		if typeof(action) != TYPE_DICTIONARY:
 			continue
-		if !action.has("label") or !action.has("callback"):
-			continue
-		add_item(action.label)
-		_actions.append(action)
+		var is_valid_action = false
+		if action.has("separator"):
+			add_separator(action.separator)
+			is_valid_action = true
+		if action.has("label") and action.has("callback"):
+			add_item(action.label)
+			is_valid_action = true
+		if is_valid_action:
+			_actions.append(action)
 	if _actions.empty():
 		hide()
 		return
@@ -29,6 +34,7 @@ func open_with_actions(person, actions, global_position):
 	rect_global_position = global_position
 	popup()
 	grab_focus()
+	set_as_minsize()
 
 
 func _on_id_pressed(id):
