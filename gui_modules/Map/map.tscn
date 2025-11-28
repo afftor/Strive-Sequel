@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO old/Panels/body_mask.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/map/location/button_place_hover.png" type="Texture" id=2]
@@ -27,6 +27,13 @@
 [ext_resource path="res://assets/images/map/location/button_plains_pressed.png" type="Texture" id=25]
 [ext_resource path="res://assets/images/map/location/button_plains_default.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/map/location/button_plains_hover.png" type="Texture" id=27]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/button_charinfo_sqr.png" type="Texture" id=28]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/icon_charinfo_details.png" type="Texture" id=29]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/button_charinfo_sqr_hover.png" type="Texture" id=30]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/button_charinfo_sqr_pressed.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/training/family a.png" type="Texture" id=32]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=33]
+[ext_resource path="res://gui_modules/Universal/Scripts/ContextDropdown.gd" type="Script" id=34]
 [ext_resource path="res://assets/images/map/button_back_default.png" type="Texture" id=39]
 [ext_resource path="res://gui_modules/Map/LocationHighlight.gd" type="Script" id=40]
 [ext_resource path="res://assets/Textures_v2/craft/scrollbar_horizontal_detail.png" type="Texture" id=41]
@@ -460,9 +467,9 @@ margin_bottom = 50.0
 grow_horizontal = 0
 rect_min_size = Vector2( 0, 50 )
 toggle_mode = true
-texture_normal = ExtResource( 20 )
-texture_pressed = ExtResource( 2 )
-texture_hover = ExtResource( 21 )
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 25 )
+texture_hover = ExtResource( 2 )
 expand = true
 
 [node name="Label" type="Label" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/Button"]
@@ -474,6 +481,30 @@ size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
 text = "Location name"
 valign = 1
+
+[node name="rename" type="TextureButton" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/Button"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -37.0
+margin_top = -15.5
+margin_right = -8.0
+margin_bottom = 15.5
+hint_tooltip = "Rename"
+texture_normal = ExtResource( 28 )
+texture_pressed = ExtResource( 31 )
+texture_hover = ExtResource( 30 )
+texture_disabled = ExtResource( 31 )
+expand = true
+stretch_mode = 4
+
+[node name="icon" type="TextureRect" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/Button/rename"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 29 )
+expand = true
+stretch_mode = 5
 
 [node name="offset" type="MarginContainer" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup"]
 margin_top = 54.0
@@ -495,6 +526,34 @@ toggle_mode = true
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 2 )
 texture_hover = ExtResource( 21 )
+
+[node name="group" type="TextureButton" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/offset/LocList/Button"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -37.0
+margin_top = -15.5
+margin_right = -8.0
+margin_bottom = 15.5
+hint_tooltip = "Rename"
+texture_normal = ExtResource( 28 )
+texture_pressed = ExtResource( 31 )
+texture_hover = ExtResource( 30 )
+texture_disabled = ExtResource( 31 )
+expand = true
+stretch_mode = 4
+
+[node name="icon" type="TextureRect" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/offset/LocList/Button/group"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 5
 
 [node name="icon" type="TextureRect" parent="FromLocList/LocScroll/LocCatList/LocCat/offset/LocGroupList/LocGroup/offset/LocList/Button"]
 margin_left = 7.0
@@ -538,6 +597,13 @@ custom_fonts/font = ExtResource( 6 )
 text = "Send"
 align = 1
 valign = 1
+
+[node name="ContextMenu" type="PopupMenu" parent="FromLocList"]
+margin_right = 255.0
+margin_bottom = 53.0
+theme = ExtResource( 33 )
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false ]
+script = ExtResource( 34 )
 
 [node name="ToLocList" type="TextureRect" parent="."]
 visible = false
@@ -688,78 +754,6 @@ anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 6 )
 text = "Adv. mode"
-align = 1
-valign = 1
-
-[node name="gr_rename" type="TextureButton" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 466.0
-margin_top = 875.0
-margin_right = 686.0
-margin_bottom = 933.0
-texture_normal = ExtResource( 39 )
-texture_pressed = ExtResource( 15 )
-texture_hover = ExtResource( 16 )
-texture_disabled = ExtResource( 15 )
-
-[node name="Label" type="Label" parent="gr_rename"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 6 )
-text = "Rename group"
-align = 1
-valign = 1
-
-[node name="gr_add" type="TextureButton" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 466.0
-margin_top = 803.0
-margin_right = 686.0
-margin_bottom = 861.0
-texture_normal = ExtResource( 39 )
-texture_pressed = ExtResource( 15 )
-texture_hover = ExtResource( 16 )
-texture_disabled = ExtResource( 15 )
-
-[node name="Label" type="Label" parent="gr_add"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 6 )
-text = "Add to group"
-align = 1
-valign = 1
-
-[node name="gr_new" type="TextureButton" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 466.0
-margin_top = 731.0
-margin_right = 686.0
-margin_bottom = 789.0
-texture_normal = ExtResource( 39 )
-texture_pressed = ExtResource( 15 )
-texture_hover = ExtResource( 16 )
-texture_disabled = ExtResource( 15 )
-
-[node name="Label" type="Label" parent="gr_new"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/font = ExtResource( 6 )
-text = "New group"
 align = 1
 valign = 1
 
