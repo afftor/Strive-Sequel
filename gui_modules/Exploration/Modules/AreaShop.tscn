@@ -1,0 +1,607 @@
+[gd_scene load_steps=44 format=2]
+
+[ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=3]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=19]
+[ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=28]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=42]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_potion.png" type="Texture" id=43]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_weapon_hover.png" type="Texture" id=44]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_armor_pressed.png" type="Texture" id=45]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_armor.png" type="Texture" id=46]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_potion_pressed.png" type="Texture" id=47]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_craft_pressed.png" type="Texture" id=48]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_weapon.png" type="Texture" id=49]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_cosm_pressed.png" type="Texture" id=50]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_food_hover.png" type="Texture" id=51]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_all_hover.png" type="Texture" id=52]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_cosm_hover.png" type="Texture" id=53]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_food_pressed.png" type="Texture" id=54]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_potion_hover.png" type="Texture" id=55]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_armor_hover.png" type="Texture" id=56]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_craft_hover.png" type="Texture" id=57]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_resources_pressed.png" type="Texture" id=58]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_weapon_pressed.png" type="Texture" id=59]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_craft.png" type="Texture" id=60]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_resources.png" type="Texture" id=61]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_food.png" type="Texture" id=62]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_cosm.png" type="Texture" id=63]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_resources_hover.png" type="Texture" id=64]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_all_pressed.png" type="Texture" id=65]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_all.png" type="Texture" id=66]
+[ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_marketplace.png" type="Texture" id=67]
+[ext_resource path="res://assets/Themes_v2/EXPLORATION/MarketButtons.tres" type="Theme" id=68]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_horizontal_detail.png" type="Texture" id=69]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_square.png" type="Texture" id=70]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HSliderBG.tres" type="StyleBox" id=72]
+[ext_resource path="res://src/scenes/NumberSelection.gd" type="Script" id=73]
+[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=112]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=119]
+[ext_resource path="res://assets/images/iconsitems/quality_bg/blue.png" type="Texture" id=127]
+[ext_resource path="res://gui_modules/Exploration/Scripts/AreaShop.gd" type="Script" id=129]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/search.tres" type="StyleBox" id=130]
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 28 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[sub_resource type="StyleBoxTexture" id=15]
+texture = ExtResource( 70 )
+region_rect = Rect2( 0, 0, 128, 55 )
+margin_left = 12.0
+margin_right = 12.0
+margin_top = 12.0
+margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 28 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[node name="AreaShop" type="Panel" groups=["pauseprocess"]]
+visible = false
+margin_left = 302.0
+margin_top = 60.0
+margin_right = 1681.0
+margin_bottom = 1046.0
+custom_styles/panel = ExtResource( 3 )
+script = ExtResource( 129 )
+
+[node name="Background" type="Panel" parent="."]
+self_modulate = Color( 0, 0, 0, 1 )
+show_behind_parent = true
+margin_right = 1379.0
+margin_bottom = 83.0
+custom_styles/panel = SubResource( 14 )
+
+[node name="Background2" type="Panel" parent="."]
+self_modulate = Color( 0, 0, 0, 0.705882 )
+show_behind_parent = true
+margin_top = 83.0
+margin_right = 1379.0
+margin_bottom = 986.0
+custom_styles/panel = SubResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1379.0
+margin_bottom = 986.0
+texture = ExtResource( 67 )
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 1045.97
+margin_right = 1131.97
+margin_bottom = 86.0
+texture = ExtResource( 112 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 40.0
+margin_top = 1.0
+margin_right = 1163.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 119 )
+text = "MARKETPLACE_LABEL"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 1137.97
+margin_top = 1.0
+margin_right = 1324.97
+margin_bottom = 84.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 119 )
+text = "10000000"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemFilter" type="VBoxContainer" parent="."]
+margin_left = 665.0
+margin_top = 254.765
+margin_right = 719.0
+margin_bottom = 741.765
+custom_constants/separation = 4
+
+[node name="all" type="TextureButton" parent="ItemFilter"]
+margin_right = 54.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYALL"
+toggle_mode = true
+texture_normal = ExtResource( 66 )
+texture_pressed = ExtResource( 65 )
+texture_hover = ExtResource( 52 )
+
+[node name="food" type="TextureButton" parent="ItemFilter"]
+margin_top = 58.0
+margin_right = 54.0
+margin_bottom = 112.0
+hint_tooltip = "INVENTORYMATERIAL"
+toggle_mode = true
+texture_normal = ExtResource( 62 )
+texture_pressed = ExtResource( 54 )
+texture_hover = ExtResource( 51 )
+
+[node name="usable" type="TextureButton" parent="ItemFilter"]
+margin_top = 116.0
+margin_right = 54.0
+margin_bottom = 170.0
+hint_tooltip = "INVENTORYUSE"
+toggle_mode = true
+texture_normal = ExtResource( 43 )
+texture_pressed = ExtResource( 47 )
+texture_hover = ExtResource( 55 )
+
+[node name="material" type="TextureButton" parent="ItemFilter"]
+margin_top = 174.0
+margin_right = 54.0
+margin_bottom = 228.0
+hint_tooltip = "INVENTORYMATERIAL"
+toggle_mode = true
+texture_normal = ExtResource( 61 )
+texture_pressed = ExtResource( 58 )
+texture_hover = ExtResource( 64 )
+
+[node name="tool" type="TextureButton" parent="ItemFilter"]
+margin_top = 232.0
+margin_right = 54.0
+margin_bottom = 286.0
+hint_tooltip = "INVENTORYTOOL"
+toggle_mode = true
+texture_normal = ExtResource( 60 )
+texture_pressed = ExtResource( 48 )
+texture_hover = ExtResource( 57 )
+
+[node name="weapon" type="TextureButton" parent="ItemFilter"]
+margin_top = 290.0
+margin_right = 54.0
+margin_bottom = 344.0
+hint_tooltip = "INVENTORYWEAPON"
+toggle_mode = true
+texture_normal = ExtResource( 49 )
+texture_pressed = ExtResource( 59 )
+texture_hover = ExtResource( 44 )
+
+[node name="armor" type="TextureButton" parent="ItemFilter"]
+margin_top = 348.0
+margin_right = 54.0
+margin_bottom = 402.0
+hint_tooltip = "INVENTORYARMOR"
+toggle_mode = true
+texture_normal = ExtResource( 46 )
+texture_pressed = ExtResource( 45 )
+texture_hover = ExtResource( 56 )
+
+[node name="costume" type="TextureButton" parent="ItemFilter"]
+margin_top = 406.0
+margin_right = 54.0
+margin_bottom = 460.0
+hint_tooltip = "INVENTORYCOSTUME"
+toggle_mode = true
+texture_normal = ExtResource( 63 )
+texture_pressed = ExtResource( 50 )
+texture_hover = ExtResource( 53 )
+
+[node name="SellBlock" type="Control" parent="."]
+margin_top = 104.765
+margin_right = 40.0
+margin_bottom = 144.765
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SellBlock"]
+margin_left = 68.0
+margin_top = 150.0
+margin_right = 548.0
+margin_bottom = 833.0
+rect_min_size = Vector2( 480, 0 )
+theme = ExtResource( 19 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SellBlock/ScrollContainer"]
+margin_right = 480.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="SellBlock/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 480.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 464, 50 )
+theme = ExtResource( 68 )
+custom_fonts/font = ExtResource( 8 )
+toggle_mode = true
+
+[node name="quality_color" type="TextureRect" parent="SellBlock/ScrollContainer/VBoxContainer/Button"]
+visible = false
+show_behind_parent = true
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 47.0
+margin_bottom = 45.0
+texture = ExtResource( 127 )
+expand = true
+stretch_mode = 6
+
+[node name="icon" type="TextureRect" parent="SellBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 47.0
+margin_bottom = 45.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="SellBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 69.0
+margin_top = 6.0
+margin_right = 279.0
+margin_bottom = 41.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Test"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="Label" parent="SellBlock/ScrollContainer/VBoxContainer/Button"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -68.0
+margin_top = -18.7131
+margin_right = -11.0
+margin_bottom = 16.2869
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "10"
+align = 2
+
+[node name="amount" type="Label" parent="SellBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 340.97
+margin_top = 6.0
+margin_right = 388.97
+margin_bottom = 41.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "1"
+align = 2
+
+[node name="Label" type="Label" parent="SellBlock"]
+margin_left = 498.337
+margin_top = 108.88
+margin_right = 551.337
+margin_bottom = 140.88
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "COST_LABEL"
+
+[node name="Label2" type="Label" parent="SellBlock"]
+margin_left = 387.443
+margin_top = 108.88
+margin_right = 480.443
+margin_bottom = 140.88
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "NUMBER_LABEL"
+
+[node name="Label3" type="Label" parent="SellBlock"]
+margin_left = 113.97
+margin_top = 108.88
+margin_right = 206.97
+margin_bottom = 140.88
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "ITEM_LABEL"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyBlock" type="Control" parent="."]
+margin_left = 521.97
+margin_top = 104.765
+margin_right = 561.97
+margin_bottom = 144.765
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BuyBlock"]
+margin_left = 303.0
+margin_top = 150.0
+margin_right = 783.0
+margin_bottom = 833.0
+theme = ExtResource( 19 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BuyBlock/ScrollContainer"]
+margin_right = 480.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="BuyBlock/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 480.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 464, 50 )
+theme = ExtResource( 68 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
+
+[node name="quality_color" type="TextureRect" parent="BuyBlock/ScrollContainer/VBoxContainer/Button"]
+visible = false
+show_behind_parent = true
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 47.0
+margin_bottom = 45.0
+texture = ExtResource( 127 )
+expand = true
+stretch_mode = 6
+
+[node name="icon" type="TextureRect" parent="BuyBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 47.0
+margin_bottom = 45.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="BuyBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 69.0
+margin_top = 5.0
+margin_right = 279.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Test"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="Label" parent="BuyBlock/ScrollContainer/VBoxContainer/Button"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -68.0
+margin_top = -19.7131
+margin_right = -11.0
+margin_bottom = 15.2869
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "10"
+align = 2
+
+[node name="amount" type="Label" parent="BuyBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 340.97
+margin_top = 5.0
+margin_right = 388.97
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "1"
+align = 2
+
+[node name="Label" type="Label" parent="BuyBlock"]
+margin_left = 717.337
+margin_top = 108.88
+margin_right = 849.337
+margin_bottom = 141.88
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "COST_LABEL"
+
+[node name="Label2" type="Label" parent="BuyBlock"]
+margin_left = 606.443
+margin_top = 108.88
+margin_right = 773.443
+margin_bottom = 141.88
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "NUMBER_LABEL"
+
+[node name="Label3" type="Label" parent="BuyBlock"]
+margin_left = 328.97
+margin_top = 108.88
+margin_right = 454.97
+margin_bottom = 141.88
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "ITEM_LABEL"
+align = 1
+
+[node name="NumberSelection" type="Panel" parent="."]
+margin_left = 556.0
+margin_top = 764.0
+margin_right = 815.0
+margin_bottom = 970.0
+custom_styles/panel = SubResource( 15 )
+script = ExtResource( 73 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="NumberSelection"]
+self_modulate = Color( 0, 0, 0, 0.686275 )
+show_behind_parent = true
+margin_right = 259.0
+margin_bottom = 212.0
+custom_styles/panel = SubResource( 16 )
+
+[node name="HSlider" type="HSlider" parent="NumberSelection"]
+margin_left = 6.4447
+margin_top = 172.376
+margin_right = 498.445
+margin_bottom = 198.376
+rect_scale = Vector2( 0.5, 0.8 )
+custom_icons/grabber_disabled = ExtResource( 69 )
+custom_icons/grabber_highlight = ExtResource( 69 )
+custom_icons/grabber = ExtResource( 69 )
+custom_styles/slider = ExtResource( 72 )
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="NumberSelection"]
+margin_left = 109.0
+margin_top = 112.898
+margin_right = 246.0
+margin_bottom = 165.898
+theme = ExtResource( 42 )
+custom_fonts/font = ExtResource( 8 )
+text = "Confirm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MAX" type="Button" parent="NumberSelection"]
+margin_left = 15.4877
+margin_top = 112.898
+margin_right = 80.4874
+margin_bottom = 167.898
+theme = ExtResource( 42 )
+custom_fonts/font = ExtResource( 8 )
+text = "Max"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemName" type="Label" parent="NumberSelection"]
+margin_top = 10.0
+margin_right = 252.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 8 )
+text = "Item Name"
+align = 1
+valign = 1
+
+[node name="ItemAmount" type="Label" parent="NumberSelection"]
+margin_left = 58.8701
+margin_top = 69.9514
+margin_right = 100.87
+margin_bottom = 104.951
+custom_fonts/font = ExtResource( 8 )
+text = "x 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemPrice" type="Label" parent="NumberSelection"]
+margin_left = 148.832
+margin_top = 70.4104
+margin_right = 228.832
+margin_bottom = 105.41
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "x Price"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemIcon" type="TextureRect" parent="NumberSelection"]
+margin_left = 16.8701
+margin_top = 66.9514
+margin_right = 56.8701
+margin_bottom = 106.951
+texture = ExtResource( 112 )
+expand = true
+stretch_mode = 6
+
+[node name="Gold" type="TextureRect" parent="NumberSelection"]
+margin_left = 135.87
+margin_top = 66.9514
+margin_right = 175.87
+margin_bottom = 106.951
+texture = ExtResource( 112 )
+expand = true
+stretch_mode = 6
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 62.0
+margin_top = 99.765
+margin_right = 520.0
+margin_bottom = 158.765
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 119 )
+text = "LMMINVENTORY"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="."]
+margin_left = 794.043
+margin_top = 99.765
+margin_right = 1252.04
+margin_bottom = 158.765
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 119 )
+text = "TRADER_LABEL"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SearchFilter" type="LineEdit" parent="."]
+margin_left = 166.033
+margin_top = 159.894
+margin_right = 1172.03
+margin_bottom = 203.894
+custom_colors/selection_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/cursor_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/clear_button_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_selected = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/clear_button_color = Color( 0, 0, 0, 1 )
+custom_constants/minimum_spaces = 3
+custom_fonts/font = ExtResource( 8 )
+custom_styles/normal = ExtResource( 130 )
+placeholder_text = "INVENTORYFILTER"
+__meta__ = {
+"_edit_use_anchors_": false
+}

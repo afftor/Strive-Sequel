@@ -677,7 +677,7 @@ var dungeons = {
 				weight = 3,
 				floor_range = [0,0],
 				icon = 'shrine',
-				events = [['celena_shrine_find',0.4],['erebus_shrine_find',1],['hybris_shrine_find',0.8],['freya_shrine_find',0.2]],
+				events = [['celena_shrine_find',0.4],['erebus_shrine_find',1],['hybris_shrine_find',0.8],['freya_shrine_find',0.2]],#0.4
 				possible_challenges = [
 					['event_locked_door',1],
 					['event_blocked_path',1],

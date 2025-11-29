@@ -6,6 +6,7 @@ var location = ResourceScripts.game_world.mansion_location
 var travel_target = {area = '', location = ''}
 var travel_time = 0
 var initial_travel_time = 0 setget set_travel_time
+var loc_group = 'default'
 
 
 func remove_from_travel():
@@ -149,3 +150,20 @@ func return_recruit():
 	else:
 		location = ResourceScripts.game_world.mansion_location
 		globals.emit_signal("slave_arrived")
+
+#moved here from map.gd for module consistency
+func set_travel_to(from_loc, to_loc):
+	var locdata = ResourceScripts.game_world.location_links[to_loc]
+	var person = parent.get_ref()
+	person.previous_location = location
+	person.set_work('travel')
+	location = 'travel'
+	travel_target = {area = locdata.area, location = to_loc}
+	var travel_cost = globals.calculate_travel_time(from_loc, to_loc)
+	set_travel_time(travel_cost.time)
+
+func instant_travel(to_loc):
+	var locdata = ResourceScripts.game_world.location_links[to_loc]
+	location = to_loc
+	area  = locdata.area
+#--------------

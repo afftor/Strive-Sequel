@@ -22,6 +22,17 @@ var area_zoom_data = {
 	empire = {position = Vector2(1000, 100), zoom = 1.2},
 }
 
+var char_groups = {
+#	loc_name = {group_name = []}
+}
+var selected_groups = {#in fact, while groups from different location can't be selected at the same
+	#time, there is no need in dict with loc_name, but I'll leave it as is for consistency
+#	loc_name = []
+}
+var group_to_rename = {old_name = null, loc_id = null}
+var group_move_chars = []
+
+
 func _unhandled_input(event):
 #func _input(event):
 	if event.is_action_pressed('MouseUp'):
@@ -187,6 +198,7 @@ func _input(event):
 		elif selected_loc != null:
 			selected_loc = null
 			selected_chars.clear()
+			selected_groups.clear()
 			unselect_location()
 			build_info()
 			update_location_chars()
@@ -228,11 +240,13 @@ func clear_dungeon_confirm():
 	input_handler.SystemMessage(tr("LOC_BEEN_REMOVED_LABEL"))
 	selected_loc = null
 	selected_chars.clear()
+	selected_groups.clear()
 	build_locations_list()
 	reset_from()
 	reset_to()
 	unselect_location()
 	build_from_locations()
+	update_location_chars()
 	build_to_locations()
 	match_state()
 	build_info()
@@ -269,6 +283,7 @@ func open():
 #	get_parent().SlaveListModule.hide()
 	
 	selected_chars.clear()
+	selected_groups.clear()
 	from_loc = null
 	to_loc = null
 	selected_loc = null
@@ -568,14 +583,17 @@ func make_panel_for_character(panel, ch_id):
 	panel.get_node("icon").texture = tchar.get_icon_small()
 #	if !tchar.is_controllable(): 
 #		panel.disabled = true
-	if tchar.get_location() == 'travel':
-		panel.disabled = true
+#	if tchar.get_location() == 'travel':
+#		panel.disabled = true
+
+func make_panel_for_group(panel, group_name):
+	set_loc_text(panel, group_name)
 
 
 func build_from_locations():
 	#filter locations
 	var areas = {}
-	var travel_data = null
+	var travel_data
 	for loc_data in sorted_locations:
 		if loc_data.heroes.empty():
 			continue
@@ -590,39 +608,49 @@ func build_from_locations():
 			areas[loc_data.area] = [loc_data]
 	#update list
 	input_handler.ClearContainer($FromLocList/LocScroll/LocCatList, ['LocCat'])
-	for area in areas:
+	var sorted_keys = areas.keys()
+	if travel_data != null:
+		areas.travel_data = [travel_data]
+		sorted_keys.append('travel_data')
+	for area in sorted_keys:
 		#no need to clear container
 		for loc_data in areas[area]:
 			var category = input_handler.DuplicateContainerTemplate($FromLocList/LocScroll/LocCatList, 'LocCat')
 			category.set_meta('location', loc_data.id)
 			category.get_node('Button').connect('pressed', self, 'toggle_from_location', [loc_data.id])
-			category.get_node('Button').connect('mouse_entered', $map.get_node(area), 'Light')
-			category.get_node('Button').connect('mouse_exited', $map.get_node(area), 'UnLight')
+			if loc_data.id != 'travel':
+				category.get_node('Button').connect('mouse_entered', $map.get_node(area), 'Light')
+				category.get_node('Button').connect('mouse_exited', $map.get_node(area), 'UnLight')
 #			category.get_node('Button').connect('mouse_entered', self, 'build_info', [loc_data.id])
 #			category.get_node('Button').connect('mouse_exited', self, 'build_info')
 			make_panel_for_location(category.get_node('Button'), loc_data)
+			char_groups[loc_data.id] = {}
+			var groups = char_groups[loc_data.id]
 			for ch_id in loc_data.heroes:
-				var loc_button = input_handler.DuplicateContainerTemplate(category.get_node('offset/LocList'), 'Button')
-				loc_button.set_meta('location', loc_data.id)
-				loc_button.set_meta('character', ch_id)
-				loc_button.connect('pressed', self, 'char_loc_press', [ch_id, loc_data.id])
-#				loc_button.connect('pressed', self, 'location_press', [loc_data.id, 'from'])
-#				loc_button.connect('mouse_entered', self, 'build_info', [loc_data.id])
-#				loc_button.connect('mouse_exited', self, 'build_info')
-				loc_button.visible = true
-				make_panel_for_character(loc_button, ch_id)
-	if travel_data != null:
-		var category = input_handler.DuplicateContainerTemplate($FromLocList/LocScroll/LocCatList, 'LocCat')
-		category.set_meta('location', travel_data.id)
-		category.get_node('Button').connect('pressed', self, 'toggle_from_location', [travel_data.id])
-		make_panel_for_location(category.get_node('Button'), travel_data)
-		for ch_id in travel_data.heroes:
-			var loc_button = input_handler.DuplicateContainerTemplate(category.get_node('offset/LocList'), 'Button')
-			loc_button.set_meta('location', travel_data.id)
-			loc_button.set_meta('character', ch_id)
-			loc_button.connect('pressed', self, 'char_loc_press', [ch_id, travel_data.id])
-			loc_button.visible = true
-			make_panel_for_character(loc_button, ch_id)
+				var person = characters_pool.get_char_by_id(ch_id)
+				var group_name = person.get_loc_group()
+				if !groups.has(group_name):
+					groups[group_name] = []
+				groups[group_name].append(ch_id)
+			for group_name in groups:
+				var group_cont = input_handler.DuplicateContainerTemplate(category.get_node('offset/LocGroupList'), 'LocGroup')
+				group_cont.set_meta('location', loc_data.id)
+				group_cont.set_meta('group', group_name)
+				group_cont.get_node('Button').connect('pressed', self, 'group_press', [group_name, loc_data.id])
+				group_cont.get_node('Button/rename').connect("pressed", self, "rename_group", [group_name, loc_data.id])
+				group_cont.visible = true
+				make_panel_for_group(group_cont.get_node('Button'), group_name)
+				for ch_id in groups[group_name]:
+					var loc_button = input_handler.DuplicateContainerTemplate(group_cont.get_node('offset/LocList'), 'Button')
+					loc_button.set_meta('location', loc_data.id)
+					loc_button.set_meta('character', ch_id)
+					loc_button.connect('pressed', self, 'char_loc_press', [ch_id, loc_data.id])
+					loc_button.get_node('group').connect('pressed', self, 'open_char_menu', [ch_id, loc_data.id])
+	#				loc_button.connect('pressed', self, 'location_press', [loc_data.id, 'from'])
+	#				loc_button.connect('mouse_entered', self, 'build_info', [loc_data.id])
+	#				loc_button.connect('mouse_exited', self, 'build_info')
+					loc_button.visible = true
+					make_panel_for_character(loc_button, ch_id)
 
 
 
@@ -696,8 +724,7 @@ func update_selected_to_location():
 
 
 func update_confirm():
-	var amount = selected_chars.size()
-	if amount == 0:
+	if selected_groups.empty() and selected_chars.empty():
 		$InfoPanel/Sendbutton.visible = false
 #	else:
 #		$InfoPanel/Sendbutton.visible = true
@@ -756,19 +783,52 @@ func unselect_area():
 
 func char_loc_press(ch_id, loc_id):
 	if !selected_chars.has(ch_id):
-		if selected_chars.empty():
-			selected_loc = loc_id
-			match_state()
+		try_switch_selected_loc(loc_id)
 		selected_chars.push_back(ch_id)
 	else:
 		selected_chars.erase(ch_id)
-		if selected_chars.empty():
-			selected_loc = null
-			match_state()
+		var person = characters_pool.get_char_by_id(ch_id)
+		try_erase_selected_group(person.get_loc_group(), loc_id)
+		try_switch_selected_loc(null)
 #	build_info()
 	update_confirm()
 	update_location_chars()
 
+func group_press(group_name, loc_id):
+	try_switch_selected_loc(loc_id)
+	var appended = try_append_selected_group(group_name, loc_id)
+	if appended:
+		for ch_id in char_groups[loc_id][group_name]:
+			if !selected_chars.has(ch_id):
+				selected_chars.append(ch_id)
+	else:
+		try_erase_selected_group(group_name, loc_id)
+		for ch_id in char_groups[loc_id][group_name]:
+			selected_chars.erase(ch_id)
+	try_switch_selected_loc(null)
+	update_confirm()
+	update_location_chars()
+
+func try_switch_selected_loc(loc_id):
+	if selected_chars.empty() and selected_groups.empty():
+		selected_loc = loc_id
+		match_state()
+
+func try_append_selected_group(group_name, loc_id):
+	if !selected_groups.has(loc_id):
+		selected_groups[loc_id] = []
+	if !selected_groups[loc_id].has(group_name):
+		selected_groups[loc_id].append(group_name)
+		return true
+	return false
+
+func try_erase_selected_group(group_name, loc_id):
+	if !selected_groups.has(loc_id) or !selected_groups[loc_id].has(group_name):
+		return false
+	selected_groups[loc_id].erase(group_name)
+	if selected_groups[loc_id].empty():
+		selected_groups.erase(loc_id)
+	return true
 
 func update_location_chars():
 	for loc in $FromLocList/LocScroll/LocCatList.get_children():
@@ -782,18 +842,32 @@ func update_location_chars():
 		else:
 			loc.get_node('Button').pressed = false
 			show_chars = false
-		for ch in loc.get_node('offset/LocList').get_children():
-			if !ch.has_meta('character'):
+		for group in loc.get_node('offset/LocGroupList').get_children():
+			if !group.has_meta('group'):
 				continue
-			var person_id = ch.get_meta('character')
-			var person = characters_pool.get_char_by_id(person_id)
-			ch.visible = show_chars
-			ch.pressed = (selected_chars.has(person_id))
-			ch.disabled = (selected_loc != null and ch.get_meta('location') != selected_loc)
-#			if !person.is_controllable(): 
-#				ch.disabled = true
-			if person.get_location() == 'travel':
-				ch.disabled = true
+			group.visible = show_chars
+			var loc_id = group.get_meta('location')
+			group.get_node('Button').pressed = (
+					selected_groups.has(loc_id)
+					and selected_groups[loc_id].has(group.get_meta('group')))
+			if group.get_meta('location') == 'travel':
+				group.get_node('Button').disabled = true
+			else:
+				group.get_node('Button').disabled = (selected_loc != null and loc_id != selected_loc)
+			for ch in group.get_node('offset/LocList').get_children():
+				if !ch.has_meta('character'):
+					continue
+				var person_id = ch.get_meta('character')
+				var person = characters_pool.get_char_by_id(person_id)
+				ch.pressed = selected_chars.has(person_id)
+				ch.disabled = false
+				if person.get_location() == 'travel':
+					ch.disabled = true
+				elif selected_loc != null and ch.get_meta('location') != selected_loc:
+					ch.disabled = true
+#				ch.get_node('group').disabled = ch.disabled
+#				if !person.is_controllable(): 
+#					ch.disabled = true
 
 
 func location_press(location, mode):
@@ -865,7 +939,7 @@ func from_loc_set():
 	match_state()
 
 
-func to_loc_set():
+func to_loc_set():#is in use?
 	if selected_loc == null: 
 		return
 	to_loc = selected_loc
@@ -890,6 +964,7 @@ func reset_from():
 	to_loc = null
 	selected_loc = null
 	selected_chars.clear()
+	selected_groups.clear()
 	unselect_area()
 	unselect_location()
 	build_from_locations()
@@ -901,33 +976,27 @@ func reset_from():
 func confirm_travel():
 	if from_loc == to_loc:
 		return
-	var locdata = ResourceScripts.game_world.location_links[to_loc]
-	var travel_cost = globals.calculate_travel_time(from_loc, to_loc)
 	var flocdata = ResourceScripts.world_gen.get_location_from_code(from_loc)
 	for chid in selected_chars:
 		var person = characters_pool.get_char_by_id(chid)
 		person.remove_from_task()
 		person.process_event(variables.TR_MOVE)
 		if ResourceScripts.game_globals.instant_travel == false and !flocdata.teleporter :
-			person.previous_location = person.travel.location
-			person.set_work('travel')
-			person.travel.location = 'travel'
-			person.travel.travel_target = {area = locdata.area, location = to_loc}
-			person.travel.travel_time = travel_cost.time
-			person.travel.initial_travel_time = travel_cost.time
+			person.set_travel_to(from_loc, to_loc)
 		else:
 #			person.set_work('') #not needed after remove from task
-			person.travel.location = to_loc
-			person.travel.area  = locdata.area
+			person.instant_travel(to_loc)
 	flocdata.teleporter = false
 	input_handler.PlaySound("ding")
 	globals.emit_signal("slave_departed")
 	selected_chars.clear()
+	selected_groups.clear()
 	reset_from()
 	reset_to()
 	selected_loc = null
 	build_locations_list()
 	build_from_locations()
+	update_location_chars()
 	match_state()
 	build_info(selected_loc)
 
@@ -936,3 +1005,115 @@ func set_loc_text (btn, text):
 	btn.get_node("Label").text = text
 	var font = input_handler.font_size_calculator(btn.get_node("Label"))
 	btn.get_node("Label").set("custom_fonts/font", font)
+
+#groups
+func add_one_char_to_group(ch_id, group_name):
+	group_move_chars = [ch_id]
+	change_group_for_chars(group_name)
+
+func add_sel_char_to_group(group_name):
+	if selected_chars.empty():
+		push_error("add_selected_char_to_group: at least 1 char should be selected!")
+		return
+	group_move_chars = selected_chars
+	change_group_for_chars(group_name)
+
+func rename_group(group_name, loc_id):
+	group_to_rename.old_name = group_name
+	group_to_rename.loc_id = loc_id
+	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT)
+	node.open(self, 'set_new_group_name', group_name, '', 'check_group_new_name')
+
+func check_group_new_name(new_name):
+	if !has_group(new_name.strip_edges()):
+		return true
+#	input_handler.SystemMessage(tr('TRAVEL_HAS_GROUP'))
+	input_handler.get_spec_node(input_handler.NODE_POPUP, [tr('TRAVEL_HAS_GROUP')])
+	return false
+
+func set_new_group_name(new_name):
+	new_name = new_name.strip_edges()
+	if group_to_rename.old_name == null:
+		push_error("set_new_group_name: no group_to_rename was set!")
+		return
+	for ch_id in char_groups[group_to_rename.loc_id][group_to_rename.old_name]:
+		var person = characters_pool.get_char_by_id(ch_id)
+		person.set_loc_group(new_name)
+	group_to_rename.old_name = null
+	group_to_rename.loc_id = null
+	reset_from()
+
+func make_new_group_one(ch_id):
+	group_move_chars = [ch_id]
+	ask_group_name()
+
+func make_new_group_sel():
+	if selected_chars.empty():
+		push_error("make_new_group_selected: at least 1 char should be selected!")
+		return
+	group_move_chars = selected_chars
+	ask_group_name()
+
+func ask_group_name():
+	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT)
+	node.open(self, 'change_group_for_chars', make_new_group_name(), '', 'check_group_new_name')
+
+func change_group_for_chars(new_group):
+	new_group = new_group.strip_edges()#needed only for ask_group_name()
+	for ch_id in group_move_chars:
+		var person = characters_pool.get_char_by_id(ch_id)
+		person.set_loc_group(new_group)
+	group_move_chars = []
+	reset_from()
+
+func has_group(group_name):
+	for loc_id in char_groups:
+		if char_groups[loc_id].has(group_name):
+			return true
+	return false
+
+func make_new_group_name():
+	var i = 1
+	while i < 10000:
+		var new_name = "Group %d" % i
+		if !has_group(new_name):
+			return new_name
+		i += 1
+	return "Error name"
+
+func open_char_menu(ch_id, loc_id):
+	var actions = [
+		{
+			"label": tr("TRAVEL_ADD_GROUP"),
+			"callback": funcref(self, "make_new_group_one"),
+			"args": [ch_id]
+		}
+	]
+	var person = characters_pool.get_char_by_id(ch_id)
+	var cur_group = person.get_loc_group()
+	for group_name in char_groups[loc_id]:
+		if group_name == cur_group:
+			continue
+		actions.append({
+			"label": tr("TRAVEL_MOVE_TO") % group_name,
+			"callback": funcref(self, "add_one_char_to_group"),
+			"args": [ch_id, group_name]
+		})
+	if !selected_chars.empty():
+		actions.append_array([
+			{
+				"separator": tr("TRAVEL_ALL_SELECTED")
+			},
+			{
+				"label": tr("TRAVEL_ADD_GROUP"),
+				"callback": funcref(self, "make_new_group_sel")
+			}
+		])
+		for group_name in char_groups[selected_loc]:
+			actions.append({
+				"label": tr("TRAVEL_MOVE_TO") % group_name,
+				"callback": funcref(self, "add_sel_char_to_group"),
+				"args": [group_name]
+			})
+	$FromLocList/ContextMenu.open_with_actions(person, actions, get_viewport().get_mouse_position())
+

@@ -406,7 +406,7 @@ func add_shrine_options(scene):
 func shrine_option(option):
 	match option:
 		'select_material':
-			globals.ItemSelect(self, 'material', 'shrine_mat_select', {allow_alcohol_items = current_scene.shrine == 'celena'})
+			globals.ItemSelect(self, 'shrine_offering', 'shrine_mat_select')
 		'select_item':
 			globals.ItemSelect(self, 'gear', 'shrine_item_select')
 		"character":
@@ -415,11 +415,11 @@ func shrine_option(option):
 			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['character'].output, input_handler.active_character)
 		'destroy':
 			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['destroy'].output, input_handler.active_character)
-		'material_selected':
+		'shrine_offering_selected':
 			var shrine_data = Enemydata.shrines[current_scene.shrine]
 			var selection = selected_item
-			if typeof(selection) == TYPE_DICTIONARY and selection.has('code') and shrine_data.options['material'].output != 'celena_item':
-				selection = selection.code
+#			if typeof(selection) == TYPE_DICTIONARY and selection.has('code') and shrine_data.options['material'].output != 'celena_item':
+#				selection = selection.code
 			Enemydata.call(shrine_data.options['material'].output, selection)
 		'item_selected':
 			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['item'].output, selected_item)
@@ -428,7 +428,7 @@ var selected_item
 
 func shrine_mat_select(item):
 	selected_item = item
-	shrine_option('material_selected')
+	shrine_option('shrine_offering_selected')
 
 func shrine_item_select(item):
 	selected_item = item

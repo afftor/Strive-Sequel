@@ -218,6 +218,8 @@ but still will keep all your characters, items and inventory. Use this mode to l
 	INVENTORYCHARACTERLIST = "Character List",
 	INVENTORYSTASH = "Stash",
 	INVENTORYFILTER = "Filter",
+	INVENTORYTOCHARACTER = "To Character",
+	INVENTORYTOMANSION = "To Mansion",
 	NEWGAMENAME = "New game",
 	NEWGAMESETTING = "Settings",
 	NEWGAMESKIPPROL = "Skip prologue",
@@ -1471,6 +1473,8 @@ Silenced: Can't use Spell type abilities.""",
 	SKILLABYSS_GAZEDESCRIPT = "Deals 125% of MATK as {color=yellow|Mind} damage to all enemies. Stuns for 2 turns.",
 	SKILLDARK_FLAME = "Dark Flames",
 	SKILLDARK_FLAMEDESCRIPT = "Converts all Burn effects on enemies into Dark Flame effects. They deal true damage, can't be extinguished by Water damage and last for 4 turns.",
+	SKILLFIREARROWS_APPLY = "Fire Arrows",
+	SKILLFIREARROWS_APPLYDESCRIPT = "Set weapon damage element to Fire. Weapon attacks and skills have 20% chance to apply Burn. Drain 1 mana per attack.\nMust have Bow weapon type equipped.\n\nDoes not take turn to activate.",
 	TRAITVIGORDESCRIPT = "Increases Health Regeneration by 30%.",
 	TRAITMEDITATIONDESCRIPT = "Increases Mana Regeneration by 30%.",
 	MASTERYBLOCKSRC = "Blocked by %s: %s",
@@ -3155,19 +3159,19 @@ Requires consent \"Willing\" or above.""",
 	TRAITMASTER_HARLOTRY = "Harlotry",
 	TRAITMASTER_HARLOTRYDESCRIPT = "While in service you still receive Rest benefits.",
 	TRAITMASTER_PROGENECY = "Progenecy",
-	TRAITMASTER_PROGENECYDESCRIPT = "Removes race impregnation restrictions.",
+	TRAITMASTER_PROGENECYDESCRIPT = "Your offspring will have 50% chance for each Factor to be increased by 1.",
 	TRAITMASTER_COMMUNICATIVE = "Communicative",
-	TRAITMASTER_COMMUNICATIVEDESCRIPT = "Social skills gain 1 additional charge.",
+	TRAITMASTER_COMMUNICATIVEDESCRIPT = "+2 Dates per week.",
 	TRAITMASTER_RESILENCE = "Resilience",
 	TRAITMASTER_RESILENCEDESCRIPT = " ",
 	TRAITMASTER_FORTUNE = "Fortune",
 	TRAITMASTER_FORTUNEDESCRIPT = "Critical chance is increased by 25%. Slightly increases Magic Find.",
 	TRAITMASTER_INT = "Intelligence",
-	TRAITMASTER_INTDESCRIPT = "\b",
+	TRAITMASTER_INTDESCRIPT = " ",
 	TRAITMASTER_FORTITUDE = "Fortitude",
 	TRAITMASTER_FORTITUDEDESCRIPT = "Grave Injury from being defeated only last 2 turns.",
 	TRAITMASTER_SORCERY = "Sorcery",
-	TRAITMASTER_SORCERYDESCRIPT = "Max HP + 20%, additional 3 lust on being hit.",
+	TRAITMASTER_SORCERYDESCRIPT = " ",
 	TRAITSUCCUBUS_MAGIC = "Magic Attunement",
 	TRAITSUCCUBUS_MAGICDESCRIPT = """MATK: +10; Max MP: +25; MP Regen: +50%
 Only one attunement can be taken""",
@@ -3287,6 +3291,7 @@ Social skills effect: +10%.""",
 	TRAITEFFECTHASTE = "Speed is Increased",
 	EFFECTCOFFIBLESS = "Increased Experience gain by 20%%",
 	EUPHORIABUFF = "Euphoria: Damage Increased",
+	FIREARROWBUFF = "Fire Arrows: your attacks burn your enemies.",
 	EFFECTNAME_E_LOVE = "Lover present",
 	EFFECTNAME_E_FRIEND = "Friend present",
 	EFFECTNAME_E_RIVAL = "Rival present",
@@ -4367,7 +4372,7 @@ Sex skills are increased when performing related action and their growth is depe
 	DIALOGUESHRINECHOOSEPERSON = "Select another character",
 	DIALOGUESHRINEITEM = "Make an offering",
 	DIALOGUESHRINEEQUIP = "Offer a piece of equipment",
-	DIALOGUESHRINECHARACTER = "Send [name] to altar",
+	DIALOGUESHRINECHARACTER = "Let [name] pray at the altar",
 	DIALOGUESHRINEDESTROY = "Demolish Shrine",
 	DIALOGUECHESTLOCKPICK = "Attempt to Lockpick",
 	DIALOGUECHESTLOCKPICKFAILURE = "[name] has failed to pick the lock of the chest and the mechanism has jammed. There's no other option, but to leave it now...",
@@ -4906,7 +4911,7 @@ At the bottom left you can select items, unlock new classes and configure additi
 	WORKRULESHIFTSDESCRIPT = """Character overperforms at their finest capability at the cost of future improvements. 
 Boosts Productivity by 25%. {color=yellow|Character won't gain Experience or Work Stats (Physical, etc) while working.} """,
 	WORKRULECONSTRAIN = "Coerced Labor",
-	WORKRULECONSTRAINDESCRIPT = "Character is forced to work at their best via strict regulations. Boosts productivity by 15%. Obedience Drain is increased by 6.",
+	WORKRULECONSTRAINDESCRIPT = "Character is forced to work at their best via strict regulations. Boosts productivity by 15%. Passive Loyalty gain disabled.",
 	WORKRULELUXURY = "Private Room",
 	WORKRULELUXURYDESCRIPT = "Character will have a personal room to live at. Productivity and Experience Gain +5%, Loyalty Gain +0.5 per day.",
 	WORKRULECONTRACEPTIVE = "Contraceptive",
@@ -6070,6 +6075,10 @@ The princess notices Aire tensing up in response to the question.
 	ARENA_TIMER = "Next rival in",
 	ARENA_FEE = "You must have 1000 gold to enter arena.",
 	ARENA_TOOLTIP = "This is arena.",
+	TRAVEL_HAS_GROUP = "Group with such name already exists!",
+	TRAVEL_ADD_GROUP = "New group",
+	TRAVEL_ALL_SELECTED = "all selected",
+	TRAVEL_MOVE_TO = "Move to %s",
 	SKILLPOISON_BITE = "Poison Bite",
 	SKILLPOISON_BITE_S = "Poison Bite",
 	SKILLENTANGLE_SA = "Entangle",
@@ -10858,6 +10867,31 @@ You take Cali aside and explain to her that this is her duty for now.
 
 In the end she accepted that she had to deal with the consequences of her own actions.""",
 	CALI_WILLIAM_13 = "As you sign the papers, Cali somewhat reluctantly leaves with William for the agreed term.",
+	 CALI_WILLIAM_EVENING_1 = """The first evening at William's place unfolds. Cali lies on the massive king-sized bed, a stark, small figure against the silk sheets. The black and white maid uniform feels foreign and stiff on her body; the skirt is too short and the apron barely hides the small expanse of her chest. Soft but surprisingly strong bracers circle her wrists and ankles, pulling her limbs taut toward the headboard. Her gray hair is disheveled and her knees are bent and spread, the skirt hem the only thing obscuring her underwear.
+
+{color=aqua|William: — You don't feel too uncomfortable, do you? But given the luxury of your dinner, a bit of discomfort shouldn't be a big deal.}
+
+{color=yellow|Cali: — Hmph, it's no big deal once I get my sword back. Just get on with it.}""",
+	CALI_WILLIAM_EVENING_2 = """A slow, predatory smile spreads across William’s lips at her defiant words. He moves to the side of the bed, his shadow falling over her smaller frame while his fingers run down the front of her starched blouse. He peels it open, letting the cool air of the room hit her skin. Cali's small, perky breasts are now completely bare, the nipples hardening from the chill and her anxiety.
+
+{color=aqua|William: — Heh, I knew you are one pretty thing despite your temper.}
+
+His gaze lingers before he flips the hem of her skirt up over her belly, letting it pool there. Cali squeezes her eyes shut for a second, a flush of shame creeping up her neck.""",
+	CALI_WILLIAM_EVENING_3 = """William's fingers hook under the waistband of her simple white panties. He peels the thin fabric down slowly, over the curve of her hips and down her thighs until her pussy is completely exposed, bare and open to his sight. Cali clenches her jaw, focusing on the feeling of the restraints on her ankles to distract from the raw humiliation.
+
+{color=aqua|William: — Don't worry, I have a bit of side help to let you relax.}
+
+He picks up a small, ornate bottle from the nightstand and pours a golden aphrodisiac oil into his palm. When his slick fingers touch her clit, a warm, tingling heat spreads and a soft gasp escapes her lips despite herself. He rubs the oil into her folds with slow, deliberate circles until a dull, needy ache builds in her core and a soft, unwilling whimper slips out.""",
+	CALI_WILLIAM_EVENING_4 = """Her pussy is soaking wet now, lips puffy and glistening with the aphrodisiac oil and her own slick juices. William moves over her, positioning himself between her spread legs as his hard cock springs free and slaps against her inner thigh, thick and heavy with precum. He lines the head up with her slick pussy and pushes in with relentless pressure. Her breath catches as she stretches around him and a choked-off moan escapes when he sinks in to the hilt.
+
+He pulls out almost all the way before plunging back in with long, powerful strokes. The wet, slapping sounds of their bodies fill the room alongside Cali's increasingly loud cries. Bound hands clench as she pushes her hips back to meet him, her body taking over even as her tail twitches beneath her. The pressure in her core becomes an inferno until it explodes into a blinding orgasm that makes her whole body shake.""",
+	CALI_WILLIAM_EVENING_5 = """{color=yellow|Cali: — I-I'm... No more... Cumming!...}
+
+Her walls clamp down on him as the orgasm tears through her, her entire body going rigid. The intense, rhythmic spasms of her pussy milk his cock until he groans and buries himself deep, painting her insides with hot, thick cum. When he pulls out, a rush of warmth leaks from her abused pussy to stain the silk sheets. Cali lies limp against the bed, trembling from the aftershocks, defiance shattered and replaced by aching satisfaction.
+
+{color=aqua|William: — You did well for the first time. Perhaps at the weekend I'll invite friends over, ha-ha.}
+
+Cali's blue eyes are glazed over, staring at the ornate ceiling. Perhaps this week will last drastically longer than she thought.""",
 	CALI_GRAT_BAD = "At the arranged date, Cali returns back to your mansion. Even though she has brought her heirloom back, she profusely refuses to talk about anything that happened during her stay. ",
 	CALI_GRAT_1 = """As you return to the Mansion, Cali looks at you with reverence.
 
@@ -18824,6 +18858,7 @@ Offspring will inherit only this parent's stats.""",
 	ZEPHYRA_DISAPPEARANCE_GUARDS_1_SS = "Peek on Zephyra's fake story during her second sidequest",
 	DAISY_WEDDING_SS = "Take Daisy as your (slave) wife",
 	CALI_WEDDING_SS = "Make Cali your lifelong partner",
+	CALI_WILLIAM_SS = "Lend Cali to the other party in exchange for her sword",
 	AMELIA_WEDDING_SS = "Promote Amelia to the vice presidency of your Mansion",
 	ANASTASIA_EVENT_ALIVE_SS = "Keep Anastasia alive in the end of act 1",
 	ELVEN_TEMPLE_SCENE_SS = "Event from elven temple",
@@ -20097,11 +20132,17 @@ Yet your compliment has not gone entirely unnoticed, perhaps partly because the 
 {color=yellow|Official 1: — This bar has the best elf girls, you know. That white-haired one is especially cute when angry.}
 
 He gives a small pinch to Heleviel's butt once she turns away from the table, followed by an angry yelp.""",
-	HELEVIEL_QUEST_8 = """{color=yellow|Heleviel: — What are you doing, you foul man!..}
+	HELEVIEL_QUEST_8 = """{color=yellow|Heleviel: — What are you doing, you foul man!..}",
 
-However, as she notices you, she quickly stops herself.
+However, as she notices you, she quickly stops herself.""",
+	HELEVIEL_QUEST_8_OPTION_1 = "*Scold the official*",
+	HELEVIEL_QUEST_8_OPTION_2 = "*Stay silent*",
+	HELEVIEL_QUEST_8_1 = """You scold the man over his inappropriate behavior. Heleviel watches it with a troubled face not daring to voice any further objection.
 
-{color=aqua|Official 2: — Sorry, sorry. Hey, why don't you sit and drink with us for a bit? There aren't too many customers here. And get the other waitress too!}
+{color=aqua|Official 2: — Sorry, I just get too excited over elven girls. Hey, Miss, why don't you sit and drink with us for a bit? There aren't too many customers here. And get the other waitress too!},
+
+{color=yellow|Heleviel: — I... I don't know what you are talking about...}""",
+	HELEVIEL_QUEST_8_2 = """{color=aqua|Official 2: — Sorry, sorry. Hey, Miss, why don't you sit and drink with us for a bit? There aren't too many customers here. And get the other waitress too!}
 
 {color=yellow|Heleviel: — I... I don't know what you are talking about...}""",
 	HELEVIEL_QUEST_9 = """Heleviel rushes into the backrooms, avoiding eye contact with you.

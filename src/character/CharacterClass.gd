@@ -613,6 +613,7 @@ func setup_baby(mother, father):
 		furryfix = true
 	create(temp_race, 'random', 'teen')
 	
+	
 	for i in variables.inheritedstats:
 		if furryfix and i == 'skin_coverage':
 			continue
@@ -620,6 +621,20 @@ func setup_baby(mother, father):
 			set_stat(i, mother.get_stat(i))
 		else:
 			set_stat(i, father.get_stat(i))
+	
+	if mother.check_trait('master_progenecy') or father.check_trait('master_progenecy'):
+		for factor in [
+			'physics_factor',
+			'magic_factor',
+			'tame_factor',
+			'authority_factor',
+			'growth_factor',
+			'charm_factor',
+			'wits_factor',
+			'sexuals_factor',
+		]:
+			if randf() <= 0.5:
+				add_stat(factor, 1)
 	
 	for tr in mother.get_traits_by_tag('positive') + father.get_traits_by_tag('positive'):
 		if randf() <= 0.8 or mother.has_profession("breeder") or father.has_profession("breeder"):
@@ -1092,6 +1107,18 @@ func same_location_with(ch):
 
 func get_current_location_desc():
 	return travel.make_location_description()
+
+func set_travel_to(from_loc, to_loc):
+	travel.set_travel_to(from_loc, to_loc)
+
+func instant_travel(to_loc):
+	travel.instant_travel(to_loc)
+
+func get_loc_group():
+	return travel.loc_group
+
+func set_loc_group(group_name):
+	travel.loc_group = group_name
 
 func get_next_class_exp():
 	return xp_module.get_next_class_exp()

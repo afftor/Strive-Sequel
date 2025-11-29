@@ -2447,7 +2447,7 @@ var itemlist = {
 		crafttype = 'modular',
 		type = 'gear',
 		itemtype = 'weapon',
-		geartype = 'club',
+		geartype = 'mace',
 		weaponrange = 'melee',
 		reqs = [
 			{code = 'stat', stat = 'mastery_warfare', value = 3, operant = 'gte'},],
@@ -2495,7 +2495,7 @@ var itemlist = {
 		crafttype = 'modular',
 		type = 'gear',
 		itemtype = 'weapon',
-		geartype = 'club',
+		geartype = 'mace',
 		weaponrange = 'melee',
 		reqs = [],
 		parts = {WeaponMace = 6},

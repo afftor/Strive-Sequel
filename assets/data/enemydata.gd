@@ -2927,22 +2927,32 @@ var shrine_item_dict = {
 	}
 }
 
-func celena_item(selection):
-	var dict = {text = tr('ALTAR_ITEM_1'), image = '', options = [], tags = ['active_character_translate']}
-	var selected_code = selection
-	var source = 'material'
-	if typeof(selection) == TYPE_DICTIONARY:
-		selected_code = selection.code
-		if selection.has('kind'):
-			source = selection.kind
-	var item
-	if source == 'item':
-		item = Items.itemlist[selected_code]
+func get_and_consume_item(itemcode):
+	var return_item
+	if !Items.materiallist.has(itemcode):
+		return_item = Items.itemlist[itemcode]
+		globals.common_effects([{code = 'remove_item', operant = '-', name = return_item.code, number = 1}])
 	else:
-		item = Items.materiallist[selected_code]
+		return_item = Items.materiallist[itemcode]
+		globals.common_effects([{code = 'material_change', operant = '-', material = return_item.code, value = 1}])
+	return return_item
+
+func celena_item(code):
+	var dict = {text = tr('ALTAR_ITEM_1'), image = '', options = [], tags = ['active_character_translate']}
+	var item = get_and_consume_item(code)
+#	var selected_code = selection
+#	var source = 'material'
+#	if typeof(selection) == TYPE_DICTIONARY:
+#		selected_code = selection.code
+#		if selection.has('type'):
+#			source = selection.type
+#	var item
+#	if source == 'item':
+#		item = Items.itemlist[selected_code]
+#	else:
+#		item = Items.materiallist[selected_code]
 
 	if item.type == 'food':
-		globals.common_effects([{code = 'material_change', operant = '-', material = selected_code, value = 1}])
 		if item.tags.has("cooked"):
 			dict.text += tr('ALTAR_ITEM_GOOD')
 			dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward2',1]]}]
@@ -2951,19 +2961,16 @@ func celena_item(selection):
 			dict.text += tr('ALTAR_ITEM_GOOD')
 			dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward',2]]}]
 			dict.tags.append("free_loot")
-	elif selected_code == 'divine_symbol':
+	elif item.code == 'divine_symbol':
 		dict.text += tr('ALTAR_ITEM_GOOD')
-		globals.common_effects([{code = 'material_change', operant = '-', material = selected_code, value = 1}])
 		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward3',2]]}]
 		dict.tags.append("free_loot")
-	elif (source == 'item' and item.has("interaction_effect") and item.interaction_effect in ['alcohol', 'beer']) or selected_code == 'alcohol':
+	elif item.code in ['alcohol', 'beer', 'wine','wine2']:
 		dict.text += tr('ALTAR_ITEM_GOOD')
-		globals.common_effects([{code = 'remove_item', operant = '-', name = selected_code, number = 1}])
 		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward4',2]]}]
 		dict.tags.append("free_loot")
-	elif selected_code == 'woodancient':
+	elif item.code == 'woodancient':
 		dict.text += tr('ALTAR_ITEM_GOOD')
-		globals.common_effects([{code = 'material_change', operant = '-', material = selected_code, value = 1}])
 		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward5',2]]}]
 		dict.tags.append("free_loot")
 	else:
@@ -3002,15 +3009,13 @@ func celena_destroy(person):
 
 func freya_item(code):
 	var dict = {text = tr('ALTAR_ITEM_1'), image = '', options = [], tags = ['active_character_translate']}
-	var item = Items.materiallist[code]
+	var item = get_and_consume_item(code)
 	
 	if item.type in ['wood']:
-		globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
 		
 		dict.text += tr('FREYA_ITEM_WOOD')
 		dict.common_effects = [{code = 'affect_active_character', type = 'effect', value = 'freya_curse'}]
 	else:
-		globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
 		match item.code:
 			'cloth':
 				dict.text += tr('FREYA_ITEM_CLOTH')
@@ -3094,9 +3099,8 @@ func hybris_destroy(person):
 
 func erebus_item(code):
 	var dict = {text = tr('ALTAR_ITEM_1'), image = '', options = [], tags = ['active_character_translate']}
-	var item = Items.materiallist[code]
+	var item = get_and_consume_item(code)
 	if shrine_item_dict.erebus.has(item.code):
-		globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
 		dict.text += tr('ALTAR_ITEM_GOOD')
 		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [[shrine_item_dict.erebus[item.code],3]]}]
 		dict.tags.append("free_loot")
@@ -3149,9 +3153,10 @@ func hybris_character_convert():
 
 func hybris_item(code):
 	var dict = {text = tr('ALTAR_ITEM_1'), image = '', options = [], tags = ['active_character_translate']}
-	var item = Items.materiallist[code]
+	
+	var item = get_and_consume_item(code.code)
+	#var item = Items.materiallist[code]
 	if shrine_item_dict.hybris.has(item.code):
-		globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
 		dict.text += tr('ALTAR_ITEM_GOOD')
 		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [[shrine_item_dict.hybris[item.code],3]]}]
 		dict.tags.append("free_loot")

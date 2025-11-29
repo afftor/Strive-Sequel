@@ -31,27 +31,15 @@ func _ready():
 	GearModule.get_node("InventoryButton").connect("pressed", self, "change_list_mode")
 	GearModule.get_node("TattooButton").visible = true
 	$InventoryListModule.buildinventory()
-	$GridContainer/DetailsButton.connect("pressed", self, "open_details")
-	$GridContainer/SkillsButton.connect("pressed", self, "open_skills")
-	$GridContainer/SiblingsButton.connect("pressed", self, "open_siblings")
-	$GridContainer/GearButton.connect("pressed", self, "close_gear")
+	$GridContainer/CharInfoButton.connect("pressed", self, "open_char_info")
+	$GridContainer/MansionButton.connect("pressed", self, "return_to_mansion")
 
-func open_details():
-	for b in $GridContainer.get_children():
-		b.set_pressed(false)
-	close_inventory("details")
-func open_skills():
-	for b in $GridContainer.get_children():
-		b.set_pressed(false)
-	close_inventory("skills")
-func open_siblings():
-	for b in $GridContainer.get_children():
-		b.set_pressed(false)
-	close_inventory("siblings")
-func close_gear():
-	for b in $GridContainer.get_children():
-		b.set_pressed(false)
-	close_inventory("gear")
+
+func open_char_info():
+	close_inventory_to_char_info()
+
+func return_to_mansion():
+	close_inventory_to_mansion()
 
 func change_list_mode():
 	list_mode = "inventory" if list_mode == "tattoo" else "tattoo"
@@ -65,7 +53,7 @@ func set_list_mode_inventory():
 	$InventoryListModule.buildinventory()
 
 
-func close_inventory(state):
+func close_inventory_to_char_info():
 	input_handler.emit_signal('update_ragdoll')
 	gui_controller.emit_signal("screen_changed")
 	if gui_controller.slavepanel == null:
@@ -73,11 +61,21 @@ func close_inventory(state):
 	gui_controller.current_screen = gui_controller.slavepanel
 	gui_controller.previous_screen = gui_controller.mansion
 	gui_controller.slavepanel.show()
-	gui_controller.slavepanel.set_state(state)
+	gui_controller.slavepanel.set_state("default")
 	self.hide()
 	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.slavepanel, 0.3)
-	input_handler.get_spec_node(input_handler.NODE_SLAVEMODULE).SummaryModule.get_node("GridContainer/GearButton").set_pressed(false)
+	#input_handler.get_spec_node(input_handler.NODE_SLAVEMODULE).SummaryModule.get_node("GridContainer/GearButton").set_pressed(false)
 
+func close_inventory_to_mansion():
+	gui_controller.emit_signal("screen_changed")
+	gui_controller.current_screen = gui_controller.mansion
+	gui_controller.previous_screen = gui_controller.slavepanel
+	gui_controller.mansion.show()
+	gui_controller.mansion.mansion_state_set("default")
+	gui_controller.clock.raise()
+	gui_controller.clock.show()
+	self.hide()
+	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.mansion, 0.3)
 
 func update():
 	if selectedhero == null:

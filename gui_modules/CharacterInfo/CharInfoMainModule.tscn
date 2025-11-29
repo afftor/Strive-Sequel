@@ -148,6 +148,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/panel_trainings.png" type="Texture" id=176]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/bd_rhombus.png" type="Texture" id=181]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesBig.tres" type="DynamicFont" id=188]
+[ext_resource path="res://assets/Fonts_v2/Noto_Serif/NotoSerif-Italic.ttf" type="DynamicFontData" id=189]
 
 [sub_resource type="StyleBoxTexture" id=13]
 texture = ExtResource( 111 )
@@ -222,6 +223,10 @@ region_rect = Rect2( 0, 0, 1920, 1080 )
 [sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 69 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[sub_resource type="DynamicFont" id=30]
+size = 22
+font_data = ExtResource( 189 )
 
 [sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 79 )
@@ -1039,7 +1044,6 @@ expand = true
 stretch_mode = 6
 
 [node name="SlaveClassesModule" type="Panel" parent="."]
-visible = false
 light_mask = 0
 margin_left = 229.0
 margin_top = 104.0
@@ -1238,7 +1242,7 @@ margin_top = 696.0
 margin_right = 672.0
 margin_bottom = 880.0
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_fonts/normal_font = ExtResource( 10 )
+custom_fonts/normal_font = SubResource( 30 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1859,10 +1863,10 @@ text = "9 Points"
 [node name="SkillBookButton" type="TextureButton" parent="SlaveClassesModule/MasteryPanel"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 7.22217
-margin_top = -101.126
-margin_right = 87.2222
-margin_bottom = -21.1261
+margin_left = -93.6854
+margin_top = -311.35
+margin_right = -13.6854
+margin_bottom = -231.35
 hint_tooltip = "Set Abilitites for combat"
 texture_normal = ExtResource( 105 )
 texture_pressed = ExtResource( 96 )

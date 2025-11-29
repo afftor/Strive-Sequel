@@ -16,7 +16,7 @@
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 700, 820 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=30]
 size = 22
 font_data = ExtResource( 10 )
 
@@ -69,7 +69,7 @@ margin_top = 587.0
 margin_right = 670.0
 margin_bottom = 777.0
 custom_colors/default_color = Color( 1, 0.721569, 0.196078, 1 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 30 )
 bbcode_enabled = true
 bbcode_text = "Apprenticeship is the first step of any mage aspirant. Capable of both combat, healing and social magic, but their strength is not the highest. Casting some spells also heavily relies no mana. "
 text = "Apprenticeship is the first step of any mage aspirant. Capable of both combat, healing and social magic, but their strength is not the highest. Casting some spells also heavily relies no mana. "

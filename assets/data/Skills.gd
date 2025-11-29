@@ -2217,8 +2217,6 @@ func get_charges(skill, caster):#template, object
 			res = skill.charges
 		else:
 			print('error in skill template %s' % [skill.code])
-		if caster.has_status('communicative'):
-			res += 1
 	return res
 
 
