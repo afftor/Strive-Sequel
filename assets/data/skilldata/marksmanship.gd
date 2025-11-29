@@ -129,6 +129,73 @@ var skills = {
 		sfx = [{code = 'arrowhail', target = 'target_group', period = 'windup'}], 
 		sounddata = {initiate = null, strike = 'bow', hit = null},
 	},
+	firearrows_apply = { #fix
+		code = 'firearrows_apply',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/fire_arrows.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['buff', 'instant'],
+		reqs = [
+			{code = 'gear_equiped', param = 'geartype', value = 'bow', check = true}
+		],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'firearrows'})], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'firearrows', check = true}],
+				set = {
+					name = tr('SKILLFIREARROWS_REMOVE'),
+					icon = load("res://assets/images/iconsskills/fire_arrows_off.png")
+				}, 
+			}
+		]
+	},
+	poisonarrows_apply = { #fix
+		code = 'poisonarrows_apply',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/skill_dip_poison.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['buff', 'instant'],
+		reqs = [
+			{code = 'gear_equiped', param = 'geartype', value = 'bow', check = true}
+		],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'poisonarrows'})], 
+		cost = {},
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'self',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		sfx = [{code = 'buff', target = 'target', period = 'predamage'}], 
+		sound = [],
+		value = [['0']],
+		damagestat = 'no_stat',
+		variations = [
+			{
+				reqs = [{code = 'has_status', status = 'poisonarrows', check = true}],
+				set = {name = tr('SKILLPOISONARROWS_REMOVE')}, #2add proper icon change
+			}
+		]
+	},
 }
 var effects = {
 	e_t_trap = {
@@ -192,6 +259,139 @@ var effects = {
 				},
 			atomic = [{type = 'sfx', value = 'bolt_trap'}, 'a_damage_simple']
 		}],
+	},
+	firearrows = {
+		type = 'temp_s',
+		stack = 'firearrows',
+		rem_event = [variables.TR_WEAPON, variables.TR_DEATH],
+		target = 'caster',
+		tags = ['firearrows', 'e_damage_buff'],
+		sub_effects = ['firearrows_passive', 'firearrows_trigger', 'aura_cost'],
+		statchanges = {damagetype = 'fire'},
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/fire_arrows.png",
+				description = "FIREARROWBUFF", 
+				tags = ['combat_only'],
+			}
+		],
+	},
+	firearrows_passive = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_F, variables.TR_COMBAT_F],
+		req_skill = false,
+		conditions = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				conditions = [{code = 'stat', stat = 'mp', operant = 'lte', value = 0}],
+				atomic = [{type = 'remove_effect', value = 'firearrows'},],
+			}
+		]
+	},
+	firearrows_trigger = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['ability_type', 'eq', 'skill']},
+			{type = 'skill', value = ['target_range', 'eq', 'any']},
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+		],
+		buffs = [],
+		sub_effects = ['burn'],
+		args = {
+			skill = {obj = 'skill', func = 'eq'},
+			caster = {obj = 'caster', func = 'eq'},
+			target = {obj = 'target', func = 'eq'},
+			duration = {obj = 'self', func = 'dur', dur = 2},
+			chance = {obj = 'self', func = 'chance', chance = 0.2}
+		},
+	},
+	poisonarrows = {
+		type = 'temp_s',
+		stack = 'firearrows',
+		rem_event = [variables.TR_WEAPON, variables.TR_DEATH],
+		target = 'caster',
+		tags = ['poisonarrows'],
+		sub_effects = ['poisonarrows_passive', 'poisonarrows_trigger', 'poisonarrows_trigger_2', 'aura_cost'],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/skill_dip_poison.png",
+				description = "POISONARROWBUFF", 
+				tags = ['combat_only'],
+			}
+		],
+	},
+	poisonarrows_passive = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_F, variables.TR_COMBAT_F],
+		req_skill = false,
+		conditions = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				conditions = [{code = 'stat', stat = 'mp', operant = 'lte', value = 0}],
+				atomic = [{type = 'remove_effect', value = 'poisonarrows'},],
+			}
+		]
+	},
+	poisonarrows_trigger = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['ability_type', 'eq', 'skill']},
+			{type = 'skill', value = ['target_range', 'eq', 'any']},
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+		],
+		buffs = [],
+		sub_effects = ['poison'],
+		args = {
+			skill = {obj = 'skill', func = 'eq'},
+			caster = {obj = 'caster', func = 'eq'},
+			target = {obj = 'target', func = 'eq'},
+			duration = {obj = 'self', func = 'dur', dur = 3},
+			chance = {obj = 'self', func = 'chance', chance = 0.5}
+		},
+	},
+	poisonarrows_trigger_2 = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [
+			{type = 'caster', value = [{code = 'stat', stat = 'mastery_marksmanship', value = 4, operant = 'gte'}]}, 
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['ability_type', 'eq', 'skill']},
+			{type = 'skill', value = ['target_range', 'eq', 'any']},
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+		],
+		buffs = [],
+		sub_effects = ['e_s_shred'],
+		args = {
+			skill = {obj = 'skill', func = 'eq'},
+			caster = {obj = 'caster', func = 'eq'},
+			target = {obj = 'target', func = 'eq'},
+			duration = {obj = 'self', func = 'dur', dur = 2},
+			chance = {obj = 'self', func = 'chance', chance = 0.2}
+		},
+	},
+	aura_cost = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_S, variables.TR_COMBAT_F],
+		req_skill = false,
+		conditions = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				atomic = [{type = 'stat_add', stat = 'mp', value = -1},],
+			},
+		]
 	},
 }
 var atomic_effects = {}
