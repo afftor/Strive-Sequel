@@ -7,13 +7,18 @@ func build_relatives():
 	person = get_parent().person
 	if person == null: return
 	
+	$Relatives.visible = true
+	$Label.visible = true
 	if !ResourceScripts.game_party.relativesdata.has(person.id): 
 		ResourceScripts.game_party.createrelativesdata(person)
 	var reldata = ResourceScripts.game_party.relativesdata[person.id]
+	var count = 0
 	#parents
 	input_handler.ClearContainer($Relatives/Parents, ['Head', 'panel'])
 	for rel_id in ['mother', 'father']:
-		if reldata[rel_id] == null: continue
+		if reldata[rel_id] == null: 
+			continue
+		count += 1
 		var tnewdata = ResourceScripts.game_party.relativesdata[reldata[rel_id]] #this is not granted, but it can't fail without manual data editing - so i won't check for it
 		var tchar = characters_pool.get_char_by_id(reldata[rel_id]) # no check for baby here - for the same reason
 		var panel = input_handler.DuplicateContainerTemplate($Relatives/Parents, 'panel')
@@ -26,6 +31,7 @@ func build_relatives():
 		if ResourceScripts.game_party.babies.has(rel_id): 
 			#unborn baby
 			continue
+		count += 1
 		var panel = input_handler.DuplicateContainerTemplate($Relatives/ScrollContainer/Siblings, 'panel')
 		build_panel(panel, tnewdata, tchar)
 	#children
@@ -36,8 +42,12 @@ func build_relatives():
 		if ResourceScripts.game_party.babies.has(rel_id): 
 			#unborn baby
 			continue
+		count += 1
 		var panel = input_handler.DuplicateContainerTemplate($Relatives/ScrollContainer2/Children, 'panel')
 		build_panel(panel, tnewdata, tchar)
+	if count == 0:
+		$Relatives.visible = false
+		$Label.visible = false
 
 
 func change_slave(newchar):

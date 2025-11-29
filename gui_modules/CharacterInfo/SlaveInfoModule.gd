@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 
 var person
@@ -6,6 +6,10 @@ var person
 var universal_skills = ['oral','anal','petting']
 
 onready var traitlist = $TraitContainer/HBoxContainer
+onready var upgrades = $UpgradesPanel
+onready var sextraits = $SexTraitsPanel
+var curr_tab = 0
+
 
 func _ready():
 	$Description/RichTextLabel.connect("meta_clicked", self, 'text_url_click')
@@ -13,12 +17,21 @@ func _ready():
 	$Description/RichTextLabel.connect("meta_hover_ended", self, "text_url_hover_hide")
 	$HairChange/screen.connect("pressed", self, "close_hairstyle")
 	$DescriptionButton.connect("pressed", self, 'toggle_description')
+	for i in range(1, 4):
+		get_node('panel%d' % i).connect('pressed', self, 'open_upgrade_tab', [i])
+	get_node('panel4').connect('toggled', self, 'toggle_sex_traits')
 	
+	upgrades.get_node("ScrollContainer2/UpgradesList2").root = get_parent()
+	upgrades.get_node("MinorUpgradesCont/UpgradesList3").root = get_parent()
+	upgrades.get_node("UpgradesList").root = get_parent()
+	upgrades.get_node("SuccubUpgradesList").root = get_parent()
 	
 	update()
 
+
 func toggle_description():
 	$Description.visible = !$Description.visible
+
 
 func set_color(value):
 	var color = Color(0.98,0.88,0.51,1)
@@ -26,10 +39,16 @@ func set_color(value):
 		color = Color(0.31,0.99,0.51,1)  
 	elif value < 0:
 		color = Color(0.99,0.31,0.36,1)
-	return color	
+	return color
+
 
 func update():
-	person = input_handler.interacted_character
+	if person != input_handler.interacted_character:
+		person = input_handler.interacted_character
+		curr_tab = 0
+	sextraits.hide()
+	$panel4.pressed = false
+	build_sex_traits()
 	if person != null:
 		#$Panel/character_class.visible = !person.has_profession("master")
 		$Panel/maininfo/price.visible = !person.has_profession("master")
@@ -43,12 +62,6 @@ func update():
 			globals.connecttexttooltip($ConsentLabel, tr("INFOCONSENT"))
 		$ConsentLabel.text = text
 		
-		
-		
-		#$Panel/character_class.text = tr(slavename)
-		
-		
-		
 		$Panel/maininfo/Race/icon.texture = races.racelist[person.get_stat('race')].icon
 		$Panel/maininfo/Race/label.text = races.racelist[person.get_stat('race')].name
 		globals.connecttexttooltip($Panel/maininfo/Race, "[center]{color=green|"+ races.racelist[person.get_stat('race')].name +"}[/center]\n\n"+ person.show_race_description())
@@ -61,8 +74,6 @@ func update():
 		$Panel/maininfo/type/icon.texture = person.get_class_icon()
 		$Panel/maininfo/type/label.text = tr(slavename)
 		
-		
-		
 		$Panel/maininfo/price/label.text = str(person.calculate_price(false, false, true))
 		globals.connecttexttooltip($Panel/maininfo/price,
 			tr("TOOLTIPVALUE") + '\n\n' + person.get_price_composition())
@@ -72,48 +83,12 @@ func update():
 			tr("TOOLTIPFAME") +"\n\n"+"{color=yellow|"+tr(person.get_fame_bonus('desc'))+"}")
 			+ "\n" + person.get_fame_bonus_desc()
 			)
-#		globals.connecttexttooltip($Panel/loyaltylabel, statdata.statdata.loyalty.descript)
-		#globals.connecttexttooltip($Panel/loyaltylabel, "%.1f" % person.get_stat('loyalty'))
-#
-#		for i in $BaseStatsPanel/resists.get_children():
-#			if !statdata.statdata.has('resist_' + i.name):
-#				continue
-#			var tmp = person.get_stat('resist_' + i.name)
-#			i.text = str(tmp)
-#			if tmp > 0:
-#				i.set("custom_colors/font_color", variables.hexcolordict.yellow)
-#			elif tmp < 0:
-#				i.set("custom_colors/font_color", variables.hexcolordict.green)
-#			else:
-#				i.set("custom_colors/font_color", variables.hexcolordict.white)
-#
-#		for i in variables.fighter_stats_list:
-#			if !i in ['hpmax', 'mpmax','critmod']:
-#				$"BaseStatsPanel/base_stats".get_node(i).text = str(floor(person.get_stat(i)))
-#			elif i == 'critmod':
-#				$"BaseStatsPanel/base_stats".get_node(i).text = str(floor(person.get_stat(i)*100))
-#
-#
-#		for i in $"BaseStatsPanel/base_stats".get_children():
-#			if statdata.statdata.has(i.name.replace("label_","")):
-#				globals.connecttexttooltip(i, statdata.statdata[i.name.replace("label_", "")].descript)
-	
+		
 		$Description/RichTextLabel.bbcode_text = person.make_description()
 		
-		# if person.travel.location != 'mansion':
-		# 	$RichTextLabel.bbcode_text += "\n\n" + person.translate(make_location_description())
-		
-		
-		
-		
-		
-#		if !person.is_master():
-#			$Panel/character_class.text = tr(statdata.slave_class_names[person.get_stat('slave_class')].to_upper())
-#			globals.connecttexttooltip($Panel/character_class, tr(person.get_stat('slave_class').to_upper()+"CLASSDESCRIPT"))
-#		else:
-#			$Panel/character_class.text = ""
-	
-	update_traitlist()
+		update_traitlist()
+		$panel3.visible = (person.is_master() and person.check_trait('succubus'))
+		open_upgrade_tab(1)
 
 
 func update_traitlist():
@@ -158,8 +133,174 @@ func text_url_hover(meta):
 			texttooltip.rect_global_position = get_global_mouse_position()
 	#globals.connecttexttooltip($RichTextLabel, person.show_race_description())
 
+
 func text_url_hover_hide(meta = null):
 	match meta:
 		'race':
 			var texttooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP) #input_handler.GetTextTooltip()
 			texttooltip.hide()
+
+
+func open_upgrade_tab(id):
+	if person == null:
+		return
+	if curr_tab == id:
+		return
+	curr_tab = id
+	for i in range(1, 4):
+		get_node('panel%d' % i).pressed = (i == curr_tab)
+	for nd in upgrades.get_children():
+		nd.visible = false
+	match curr_tab:
+		1:
+			if person.is_master():
+				open_master_upg()
+			elif person.check_trait('succubus'):
+				open_succubus()
+			else:
+				open_trainings()
+		2:
+			if person.is_master() and person.check_trait('succubus'):
+				open_succubus()
+			else:
+				open_minor_upg()
+		3:
+			open_minor_upg()
+
+
+func open_master_upg():
+	upgrades.get_node("Label").visible = true
+	upgrades.get_node("Label").text = tr("MASTER_POINTS") + ": " + str(ResourceScripts.game_progress.master_points)
+	upgrades.get_node("ScrollContainer2").visible = true
+	upgrades.get_node("ScrollContainer2/UpgradesList2").update_upgrades_tree()
+	get_node("Label2").text = tr('SIBLINGMODULETRAININGSMASTER')
+
+
+func open_minor_upg():
+	upgrades.get_node("Label").visible = true
+	upgrades.get_node("MinorUpgradesCont/UpgradesList3").set_person(person)
+	upgrades.get_node("MinorUpgradesCont").visible = true
+	upgrades.get_node("MinorUpgradesCont/UpgradesList3").update_upgrades_tree()
+	get_node("Label2").text = tr('SIBLINGMODULEMINORTRAIN')
+	upgrades.get_node("Label").text = "%s: %d/%d %s: %d" % [
+		tr("SIBLINGMODULEAVAILABLE"),
+		person.get_minor_training_count(), person.get_minor_training_max(),
+		tr("UPGRADELIST_UNLOCK_GOLD"), ResourceScripts.game_res.money
+	]
+	globals.connecttexttooltip(upgrades.get_node("Label"), tr("SIBLINGMODULEAVAILABLETOOLTIP"))
+
+
+func open_trainings():
+	upgrades.get_node("UpgradesList").visible = true
+	upgrades.get_node("UpgradesList").person = person
+	upgrades.get_node("UpgradesList").match_state()
+	if person.get_stat('slave_class') in ['slave', 'slave_trained']:
+		get_node("Label2").text = tr('SIBLINGMODULETRAININGS')
+	else:
+		get_node("Label2").text = tr('SIBLINGMODULETRAININGSSERVANTS')
+
+
+func open_succubus():
+	upgrades.get_node("SuccubUpgradesList").set_person(person)
+	upgrades.get_node("SuccubUpgradesList").visible = true
+	get_node("Label2").text = tr('SIBLINGMODULESUCCUBUS')
+
+
+func toggle_sex_traits(val):
+	if val:
+		rebuild_traits()
+	sextraits.visible = val
+
+
+func build_sex_traits():
+	input_handler.ClearContainer(sextraits.get_node('ScrollContainer/VBoxContainer'))
+	#$SexTraitsPanel/TraitsNotLearned.bbcode_text = person.translate(tr("NOTALLTRAITSLEARNED"))
+	var array = []
+	array = person.get_all_sex_traits()#.keys()
+	
+	var all_traits_known = true
+	for i in array:
+		if !array[i]:
+			all_traits_known = false
+			break
+	if all_traits_known:
+		array = person.get_unlocked_sex_traits()#.keys()
+#		array.sort_custom(self, 'sort_traits')
+		
+		for i in array:
+			var newbutton = input_handler.DuplicateContainerTemplate(sextraits.get_node('ScrollContainer/VBoxContainer'))
+			newbutton.pressed = person.check_trait(i)
+			newbutton.text = Traitdata.sex_traits[i].name
+			globals.connecttexttooltip(newbutton, person.translate(Traitdata.sex_traits[i].descript))
+			newbutton.connect("toggled", self, 'toggle_trait', [i])
+	#$SexTraitsPanel/TraitsNotLearned.visible = !all_traits_known
+	
+	update_trait_capacity()
+	rebuild_traits()
+
+
+func rebuild_traits():
+	var traits = person.get_all_sex_traits()
+	var h1 = person.get_unlocked_sex_traits()
+	var all_traits_known = true
+	for i in traits:
+		if !traits[i]:
+			all_traits_known = false
+			break
+	if all_traits_known:
+		for i in h1:
+			if traits.keys().has(i):
+				if traits[i]:
+					traits.erase(i)
+	for i in traits:
+		var trait = Traitdata.sex_traits[i]
+		var newnode = input_handler.DuplicateContainerTemplate(sextraits.get_node('ScrollContainer/VBoxContainer'))
+		newnode.set_meta("always_disabled", true)
+		sextraits.get_node('ScrollContainer/VBoxContainer').move_child(newnode, 0)
+		if traits[i] == true:#trait is known
+			newnode.text = trait.name
+			var traittext = person.translate(trait.descript)
+			for j in trait.reqs:
+				if j.has('code') && j.code == 'action_type':
+					traittext += "\n\n" + tr("DISLIKED_ACTIONS_LABEL") + ":[color=aqua] "
+					for k in j.value:
+						globals.sex_actions_dict[k].givers = []
+						globals.sex_actions_dict[k].takers = []
+						traittext += globals.sex_actions_dict[k].getname() + ", "
+					traittext = traittext.substr(0, traittext.length() - 2) + ".[/color]"
+			globals.connecttexttooltip(newnode, traittext)
+			if !all_traits_known and !("Dislike" in trait.name):
+				newnode.disabled = false
+			else:
+				newnode.disabled = true
+			var font = input_handler.font_size_calculator(newnode)
+			newnode.set("custom_fonts/font", font)
+		else:
+			newnode.text = tr("TRAITUNKNOWN")
+			globals.connecttexttooltip(newnode, person.translate(tr("TRAITUNKNOWNTOOLTIP")))
+			newnode.disabled = true
+			var font = input_handler.font_size_calculator(newnode)
+			newnode.set("custom_fonts/font", font)
+
+
+func update_trait_capacity():
+	person = input_handler.interacted_character
+	var text = tr("SIBLINGMODULECURRENTCAPACITY")+': ' + str(person.get_sex_traits().size()) + "/" + str(person.get_stat('sexuals_factor') + 1)
+	$SexTraitsPanel/TraitCapacity.text = text
+	sextraits.get_node('TraitCapacity').text = text
+	for i in sextraits.get_node('ScrollContainer/VBoxContainer').get_children():
+		if i.has_meta("always_disabled") && i.get_meta("always_disabled") == true:
+			continue
+		i.disabled = person.get_stat('sexuals_factor') + 1 - person.get_sex_traits().size() <= 0 && i.pressed == false
+
+
+func toggle_trait(trait_status, trait):
+	match trait_status:
+		true:
+			if !person.check_trait(trait):
+				person.add_sex_trait(trait, true)
+		false:
+			if person.check_trait(trait):
+				person.remove_sex_trait(trait, false)
+	update_trait_capacity()
+	#get_parent().SlaveInfo.rebuild_traits()

@@ -121,7 +121,6 @@ func match_state():
 			$SlaveBodyModule.body_show(false)
 			$SlaveBodyModule/buffscontainer.hide()
 			#SummaryModule.get_node("GridContainer/SkillsButton").set_pressed(true)
-			$SlaveBodyModule/buffscontainer.hide()
 			#BodyModule.hide()
 		"details":
 			gui_controller.windows_opened.clear()
@@ -146,17 +145,16 @@ func match_state():
 			gui_controller.windows_opened.clear()
 			gui_controller.windows_opened.append(SlaveSiblingsModule)
 			#$TalkButton.hide()
-			$SlaveBodyModule/buffscontainer.hide()
+			$SlaveBodyModule/buffscontainer.show()
 #			$SlaveBodyModule/Body.hide()
-			$SlaveBodyModule.body_show(false)
-			$SlaveBodyModule/buffscontainer.hide()
+			$SlaveBodyModule.body_show(true)
 			$SlaveBodyModule.get_stylebox("panel", "").modulate_color.a = 0
 			SlaveInfo.hide()
 			DetailsModule.hide()
 			ClassesModule.hide()
 			#SummaryModule.get_node("GridContainer/SiblingsButton").set_pressed(true)
 			SlaveSiblingsModule.show()
-			SlaveSiblingsModule.DietModule.open_diet_window()
+#			SlaveSiblingsModule.DietModule.open_diet_window()
 			SlaveSiblingsModule.update()
 			#BodyModule.hide()
 	
