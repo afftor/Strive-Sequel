@@ -207,6 +207,7 @@ valign = 1
 autowrap = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Scroller"]
+visible = false
 light_mask = 0
 margin_left = 51.2322
 margin_top = 251.0

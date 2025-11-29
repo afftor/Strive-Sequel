@@ -113,6 +113,10 @@ func unequip(item, hard = true):
 	for i in gear:
 		if gear[i] == item.id:
 			gear[i] = null
+			if i == 'rhand':
+				parent.get_ref().process_event(variables.TR_WEAPON)
+			if i == 'chest':
+				parent.get_ref().process_event(variables.TR_ARMOR)
 	#removing bonuses
 	if item.curse!= null and hard:
 		item.destroy()

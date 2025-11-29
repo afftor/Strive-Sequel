@@ -26,7 +26,7 @@ func switch_container():
 	else:
 		itemcontainer = itemcontainergrid
 		itemcontainervbox.get_parent().hide()
-		input_handler.globalsettings.grid_inventory = false
+		input_handler.globalsettings.grid_inventory = true
 	buildinventory()
 	itemcontainer.get_parent().show()
 	
