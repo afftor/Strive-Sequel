@@ -1,30 +1,16 @@
 extends Control
 
-onready var DietModule = $SlaveDietModule
-
 var person
 
 var universal_skills = ['oral','anal','petting']
 
-onready var loyalty_panel = $UpgradesPanel/UpgradesList
-onready var loyalty_panel_master = $UpgradesPanel/ScrollContainer2/UpgradesList2
-onready var loyalty_panel_minor = $UpgradesPanel/MinorUpgradesCont/UpgradesList3
-onready var succub_panel = $UpgradesPanel/SuccubUpgradesList
+
 onready var stats = $StatsPanel
 #var loyalty_mode = true
 #var relations_mode = true
 #var loyalty_tab = 3
 enum tab_nums {all, food, mastery, training, relations, kin, minor, metrics, thralls, stats}
-onready var tab_btns = {
-	tab_nums.mastery : $change_buttons/mtr_button,
-	tab_nums.training : $change_buttons/tr_button,
-	tab_nums.relations : $change_buttons/rel_button,
-	tab_nums.kin : $change_buttons/kin_button,
-	tab_nums.minor : $change_buttons/minor_tr_button,
-	tab_nums.metrics : $change_buttons/metrics_button,
-	tab_nums.thralls : $change_buttons/succub_tr_button,
-	tab_nums.stats : $change_buttons/stats_button,
-}
+
 var cur_tab
 var last_tab
 
