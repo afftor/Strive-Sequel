@@ -1057,7 +1057,7 @@ var traits = {
 		bonusstats = {mod_pros = 1.2},
 		reqs = [],
 		l_cost = 1,
-		tree_position = {tab = 3, x = 4, y = 0.5},
+		tree_position = {tab = 3, x = 3.5, y = 0.5},
 		tags = ['loyalty_master', 'harlotry'],
 	},
 	master_progenecy = {
@@ -1069,7 +1069,7 @@ var traits = {
 		bonusstats = {},
 		reqs = [],
 		l_cost = 1,
-		tree_position = {tab = 3, x = 7, y = 0.5},
+		tree_position = {tab = 3, x = 6, y = 0.5},
 		tags = ['loyalty_master', 'breeder'],
 	},
 	master_communicative = {
@@ -1084,7 +1084,7 @@ var traits = {
 			},
 		reqs = [],
 		l_cost = 1,
-		tree_position = {tab = 3, x = 1, y = 3},
+		tree_position = {tab = 3, x = 1, y = 2.5},
 		tags = ['loyalty_master'],
 	},
 	master_resilence = {
@@ -1102,7 +1102,7 @@ var traits = {
 			resist_mind = 20},
 		reqs = [],
 		l_cost = 1,
-		tree_position = {tab = 3, x = 4, y = 3},
+		tree_position = {tab = 3, x = 3.5, y = 2.5},
 		tags = ['loyalty_master'],
 	},
 	master_fortune = {
@@ -1114,7 +1114,7 @@ var traits = {
 		bonusstats = {critchance = 25, magic_find = 1},
 		reqs = [],
 		l_cost = 1,
-		tree_position = {tab = 3, x = 7, y = 3},
+		tree_position = {tab = 3, x = 6, y = 2.5},
 		tags = ['loyalty_master'],
 	},
 	master_int = {
@@ -1126,7 +1126,7 @@ var traits = {
 		bonusstats = {exp_gain_mod = 0.15, mastery_point_universal = 3},
 		reqs = [],
 		l_cost = 1,
-		tree_position = {tab = 3, x = 1, y = 6},
+		tree_position = {tab = 3, x = 1, y = 4.5},
 		tags = ['loyalty_master', 'intelligence'],
 	},
 	master_fortitude = {
@@ -1138,7 +1138,7 @@ var traits = {
 		bonusstats = {hp_reg_add_part = 3},
 		reqs = [],
 		l_cost = 1,
-		tree_position = {tab = 3, x = 4, y = 6},
+		tree_position = {tab = 3, x = 3.5, y = 4.5},
 		tags = ['loyalty_master', 'fastheal'],
 	},
 	master_sorcery = {
@@ -1150,7 +1150,7 @@ var traits = {
 		bonusstats = {mp_reg_add = 1.5, matk_add_part = 0.35},
 		reqs = [],
 		l_cost = 1,
-		tree_position = {tab = 3, x = 7, y = 6},
+		tree_position = {tab = 3, x = 6, y = 4.5},
 		tags = ['loyalty_master'],
 	},
 	#trainings etc
@@ -1552,7 +1552,7 @@ var traits = {
 		tags = ['minor_training'],
 		bonusstats = {wits_bonus = 5},
 		l_cost = 500,
-		tree_position = {tab = 3, x = 0.5, y = 0},
+		tree_position = {tab = 3, x = 1, y = 0.5},
 	},
 	table_manners = {
 		code = 'table_manners',
@@ -1565,7 +1565,7 @@ var traits = {
 		tags = ['minor_training'],
 		bonusstats = {physics_bonus = 5},
 		l_cost = 500,
-		tree_position = {tab = 3, x = 2.8, y = 0},
+		tree_position = {tab = 3, x = 3.5, y = 0.5},
 	},
 	foreign_diplomacy = {
 		code = 'foreign_diplomacy',
@@ -1578,7 +1578,7 @@ var traits = {
 		tags = ['minor_training'],
 		bonusstats = {wits_bonus = 5},
 		l_cost = 500,
-		tree_position = {tab = 3, x = 5.1, y = 0},
+		tree_position = {tab = 3, x = 6, y = 0.5},
 	},
 	literacy = {
 		code = 'literacy',
@@ -1590,7 +1590,7 @@ var traits = {
 		reqs = [],
 		tags = ['minor_training'],
 		l_cost = 500,
-		tree_position = {tab = 3, x = 1, y = 2.5},
+		tree_position = {tab = 3, x = 1, y = 3},
 	},
 	penmanship = {
 		code = 'penmanship',
@@ -1603,7 +1603,7 @@ var traits = {
 		tags = ['minor_training'],
 		bonusstats = {physics_bonus = 5},
 		l_cost = 500,
-		tree_position = {tab = 3, x = 4, y = 2.5},
+		tree_position = {tab = 3, x = 3.5, y = 3},
 	},
 	history = {
 		code = 'history',
@@ -1616,7 +1616,7 @@ var traits = {
 		tags = ['minor_training'],
 		bonusstats = {wits_bonus = 5},
 		l_cost = 500,
-		tree_position = {tab = 3, x = 7, y = 2.5},
+		tree_position = {tab = 3, x = 6, y = 3},
 	},
 	mentorship = {
 		code = 'mentorship',
@@ -1629,7 +1629,7 @@ var traits = {
 		tags = ['minor_training'],
 		bonusstats = {trainer_loyalty_bonus = 0.25},
 		l_cost = 500,
-		tree_position = {tab = 3, x = 1, y = 5},
+		tree_position = {tab = 3, x = 1, y = 5.5},
 	},
 	animal_handling = {
 		code = 'animal_handling',
@@ -1642,7 +1642,7 @@ var traits = {
 		tags = ['minor_training'],
 		bonusstats = {mod_hunt = 0.1},
 		l_cost = 500,
-		tree_position = {tab = 3, x = 4, y = 5},
+		tree_position = {tab = 3, x = 3.5, y = 5.5},
 	},
 	gardening = {
 		code = 'gardening',
@@ -1655,7 +1655,7 @@ var traits = {
 		tags = ['minor_training'],
 		bonusstats = {mod_farm = 0.1},
 		l_cost = 500,
-		tree_position = {tab = 3, x = 7, y = 5},
+		tree_position = {tab = 3, x = 6, y = 5.5},
 	},
 	courtly_arms = {
 		code = 'courtly_arms',
@@ -1668,7 +1668,7 @@ var traits = {
 		tags = ['minor_training'],
 		bonusstats = {hitrate = 10},
 		l_cost = 500,
-		tree_position = {tab = 3, x = 7.5, y = 0},
+		tree_position = {tab = 3, x = 1, y = 8},
 	},
 	
 	#examples

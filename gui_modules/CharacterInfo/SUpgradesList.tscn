@@ -22,9 +22,8 @@
 [ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo_disabled.png" type="Texture" id=20]
 
 [node name="UpgradesList" type="Control"]
-margin_right = 760.0
-margin_bottom = 740.0
-rect_min_size = Vector2( 700, 724 )
+margin_right = 675.0
+margin_bottom = 676.0
 script = ExtResource( 6 )
 
 [node name="info" type="Control" parent="."]

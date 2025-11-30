@@ -99,9 +99,6 @@ func writ_of_exemption_use(): #possibly rework
 	var character = person
 	var acceptance_req = 100
 	var acceptance_chance = 100
-	var had_worker = character.is_worker()
-	var had_combatant = character.is_combatant()
-	var had_relation_training = character.get_traits_by_tag('relation').size() > 0
 	ResourceScripts.game_res.remove_item("writ_of_exemption", 1)
 	input_handler.scene_characters = [person]
 	if gui_controller.inventory.visible:
@@ -116,11 +113,11 @@ func writ_of_exemption_use(): #possibly rework
 	if acceptance_chance >= randf()*acceptance_req:
 		input_handler.interactive_message_follow("writ_of_exemption_success",'char_translate',{ch = character})
 		character.set_slave_category('servant')
-		if had_worker and !character.check_trait('training_s_working'):
+		if character.is_worker():
 			character.add_trait('training_s_working')
-		if had_combatant and !character.check_trait('training_s_combat'):
+		if character.is_combatant():
 			character.add_trait('training_s_combat')
-		if had_relation_training and !character.check_trait('training_s_relation'):
+		if character.has_status('relation'):
 			character.add_trait('training_s_relation')
 #		character.add_stat('loyalty', 25)
 	else:

@@ -107,9 +107,8 @@ margin_top = 11.7839
 margin_bottom = 9.9723
 
 [node name="UpgradesList" type="Control"]
-margin_right = 800.0
-margin_bottom = 801.0
-rect_min_size = Vector2( 700, 724 )
+margin_right = 630.0
+margin_bottom = 640.0
 script = ExtResource( 6 )
 
 [node name="trainees" type="Control" parent="."]
@@ -811,7 +810,7 @@ margin_bottom = -190.0
 theme = ExtResource( 5 )
 
 [node name="rewards" type="VBoxContainer" parent="finish/ScrollContainer"]
-margin_right = 600.0
+margin_right = 430.0
 size_flags_horizontal = 3
 custom_constants/separation = 5
 

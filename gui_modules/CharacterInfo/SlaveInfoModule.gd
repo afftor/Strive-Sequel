@@ -18,7 +18,7 @@ func _ready():
 	$HairChange/screen.connect("pressed", self, "close_hairstyle")
 	$DescriptionButton.connect("pressed", self, 'toggle_description')
 	for i in range(1, 4):
-		get_node('panel%d' % i).connect('pressed', self, 'open_upgrade_tab', [i])
+		get_node('VBoxContainer/panel%d' % i).connect('pressed', self, 'open_upgrade_tab', [i])
 	get_node('panel4').connect('toggled', self, 'toggle_sex_traits')
 	
 	upgrades.get_node("ScrollContainer2/UpgradesList2").root = get_parent()
@@ -87,7 +87,7 @@ func update():
 		$Description/RichTextLabel.bbcode_text = person.make_description()
 		
 		update_traitlist()
-		$panel3.visible = (person.is_master() and person.check_trait('succubus'))
+		$VBoxContainer/panel3.visible = (person.is_master() and person.check_trait('succubus'))
 		open_upgrade_tab(1)
 
 
@@ -148,7 +148,7 @@ func open_upgrade_tab(id):
 		return
 	curr_tab = id
 	for i in range(1, 4):
-		get_node('panel%d' % i).pressed = (i == curr_tab)
+		get_node('VBoxContainer/panel%d' % i).pressed = (i == curr_tab)
 	for nd in upgrades.get_children():
 		nd.visible = false
 	match curr_tab:

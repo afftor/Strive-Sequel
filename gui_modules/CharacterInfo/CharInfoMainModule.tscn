@@ -1,4 +1,4 @@
-[gd_scene load_steps=173 format=2]
+[gd_scene load_steps=208 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=11]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=12]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=13]
-[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png" type="Texture" id=14]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_18.tres" type="DynamicFont" id=14]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=15]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info.tres" type="Theme" id=16]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveInfoModule.gd" type="Script" id=17]
@@ -123,27 +123,56 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_30.tres" type="DynamicFont" id=121]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_36.tres" type="DynamicFont" id=122]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_30.tres" type="DynamicFont" id=123]
-[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_pressed.png" type="Texture" id=124]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_disabled.png" type="Texture" id=124]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSiblingsModule.gd" type="Script" id=125]
 [ext_resource path="res://gui_modules/CharacterInfo/RelativesPanel.gd" type="Script" id=126]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=127]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/ButtonTextOnly.tres" type="Theme" id=128]
-[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png" type="Texture" id=129]
-[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_disabled.png" type="Texture" id=130]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=129]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_mp.png" type="Texture" id=130]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_hover.png" type="Texture" id=131]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/frame_skill_active.png" type="Texture" id=132]
+[ext_resource path="res://gui_modules/CharacterInfo/TrUpgradesList.gd" type="Script" id=133]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/back_panel_hero_info.png" type="Texture" id=134]
 [ext_resource path="res://assets/Textures_v2/icon_question_small.png" type="Texture" id=135]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/rhombus.png" type="Texture" id=136]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assign trainer/button_Assign_trainer_default.png" type="Texture" id=137]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/skill_frame_learned.png" type="Texture" id=138]
 [ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=139]
 [ext_resource path="res://assets/images/portraits/aire_prt.png" type="Texture" id=140]
 [ext_resource path="res://gui_modules/CharacterInfo/MUpgradesList.tscn" type="PackedScene" id=141]
 [ext_resource path="res://gui_modules/CharacterInfo/SUpgradesList.tscn" type="PackedScene" id=142]
-[ext_resource path="res://gui_modules/CharacterInfo/TrUpgradesList.tscn" type="PackedScene" id=143]
+[ext_resource path="res://assets/images/portraits/cali_prt.png" type="Texture" id=143]
 [ext_resource path="res://gui_modules/CharacterInfo/StatsPanel.tscn" type="PackedScene" id=144]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_tratis_pressed.png" type="Texture" id=145]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_question_small.png" type="Texture" id=146]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/frame_trainer.png" type="Texture" id=147]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assign trainer/button_Assign_trainer_hover.png" type="Texture" id=148]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assign trainer/button_Assign_trainer_pressed.png" type="Texture" id=149]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/icons_40x40/magic effect.png" type="Texture" id=150]
+[ext_resource path="res://assets/images/gui/explore/Captured Characters/icons/icon_enslave.png" type="Texture" id=151]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_bold.png" type="Texture" id=152]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_default.png" type="Texture" id=153]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset training_pressed.png" type="Texture" id=154]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/icons_40x40/group.png" type="Texture" id=155]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button traits/button_traits_hover.png" type="Texture" id=156]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/bg.png" type="Texture" id=157]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu.png" type="Texture" id=158]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_pressed.png" type="Texture" id=159]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_pressed.png" type="Texture" id=160]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/cirlcle.png" type="Texture" id=161]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button d/button_d_default.png" type="Texture" id=162]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_hover.png" type="Texture" id=163]
+[ext_resource path="res://assets/images/gui/spirit.png" type="Texture" id=164]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/button category/button_category_default.png" type="Texture" id=165]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu_pressed.png" type="Texture" id=166]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu_hover.png" type="Texture" id=167]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/panel_class.png" type="Texture" id=168]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_serious.png" type="Texture" id=169]
+[ext_resource path="res://assets/images/iconstraits/l_maidu.png" type="Texture" id=170]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Training status/button_Reset_training_hover.png" type="Texture" id=171]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_kind.png" type="Texture" id=172]
+[ext_resource path="res://assets/Textures_v2/MANSION/crown.png" type="Texture" id=173]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/icon_shy_chary.png" type="Texture" id=174]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/loyalty/Assigned trainer/panel_trainings.png" type="Texture" id=176]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/character/bd_rhombus.png" type="Texture" id=181]
@@ -197,12 +226,77 @@ margin_right = 8.75967
 margin_top = 9.23195
 margin_bottom = 8.64576
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 156 )
+region_rect = Rect2( 0, 0, 100, 100 )
+margin_left = 31.0
+margin_right = 27.0
+margin_top = 29.0
+margin_bottom = 30.0
+
+[sub_resource type="StyleBoxTexture" id=31]
+texture = ExtResource( 145 )
+region_rect = Rect2( 0, 0, 100, 100 )
+margin_left = 31.0
+margin_right = 27.0
+margin_top = 29.0
+margin_bottom = 30.0
+
+[sub_resource type="StyleBoxTexture" id=32]
+texture = ExtResource( 153 )
+region_rect = Rect2( 0, 0, 101, 100 )
+margin_left = 31.0
+margin_right = 27.0
+margin_top = 29.0
+margin_bottom = 30.0
+
+[sub_resource type="StyleBoxTexture" id=33]
+texture = ExtResource( 168 )
+region_rect = Rect2( 0, 0, 600, 200 )
+margin_left = 22.0993
+margin_right = 15.9606
+margin_top = 24.1174
+margin_bottom = 17.1883
+
+[sub_resource type="StyleBoxTexture" id=34]
+texture = ExtResource( 167 )
+region_rect = Rect2( 0, 0, 116, 54 )
+margin_left = 13.2964
+margin_right = 13.2964
+margin_top = 11.7839
+margin_bottom = 9.9723
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 166 )
+region_rect = Rect2( 0, 0, 116, 54 )
+margin_left = 13.2964
+margin_right = 13.2964
+margin_top = 11.7839
+margin_bottom = 9.9723
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 124 )
+region_rect = Rect2( 0, 0, 230, 40 )
+margin_left = 2.0
+margin_right = 2.0
+margin_top = 2.0
+margin_bottom = 2.2453
+modulate_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 158 )
+region_rect = Rect2( 0, 0, 116, 54 )
+margin_left = 13.2964
+margin_right = 13.2964
+margin_top = 11.7839
+margin_bottom = 9.9723
+
+[sub_resource type="DynamicFont" id=35]
 size = 22
 use_filter = true
 font_data = ExtResource( 38 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=36]
 size = 15
 use_filter = true
 font_data = ExtResource( 39 )
@@ -212,11 +306,11 @@ size = 36
 use_filter = true
 font_data = ExtResource( 38 )
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=37]
 texture = ExtResource( 72 )
 region_rect = Rect2( 0, 0, 970, 920 )
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=38]
 texture = ExtResource( 69 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
@@ -263,22 +357,6 @@ region_rect = Rect2( 0, 0, 1920, 1080 )
 [sub_resource type="DynamicFont" id=19]
 size = 24
 font_data = ExtResource( 7 )
-
-[sub_resource type="StyleBoxTexture" id=21]
-texture = ExtResource( 129 )
-region_rect = Rect2( 0, 0, 272, 58 )
-
-[sub_resource type="StyleBoxTexture" id=22]
-texture = ExtResource( 124 )
-region_rect = Rect2( 0, 0, 272, 58 )
-
-[sub_resource type="StyleBoxTexture" id=23]
-texture = ExtResource( 130 )
-region_rect = Rect2( 0, 0, 272, 58 )
-
-[sub_resource type="StyleBoxTexture" id=24]
-texture = ExtResource( 14 )
-region_rect = Rect2( 0, 0, 272, 58 )
 
 [node name="CharInfoMainModule" type="Panel" groups=["pauseprocess"]]
 light_mask = 0
@@ -450,7 +528,6 @@ expand = true
 stretch_mode = 6
 
 [node name="SlaveInfoModule" type="Control" parent="."]
-visible = false
 light_mask = 0
 margin_left = 235.0
 margin_top = 145.0
@@ -758,43 +835,19 @@ patch_margin_top = 31
 patch_margin_right = 29
 patch_margin_bottom = 29
 
-[node name="panel1" type="Button" parent="SlaveInfoModule"]
-margin_left = 296.0
-margin_top = -24.0
-margin_right = 327.0
-margin_bottom = 14.0
-toggle_mode = true
-text = "1"
-
-[node name="panel2" type="Button" parent="SlaveInfoModule"]
-margin_left = 340.0
-margin_top = -23.0
-margin_right = 368.0
-margin_bottom = 15.0
-toggle_mode = true
-text = "2"
-
-[node name="panel3" type="Button" parent="SlaveInfoModule"]
-margin_left = 382.0
-margin_top = -23.0
-margin_right = 410.0
-margin_bottom = 15.0
-toggle_mode = true
-text = "3"
-
 [node name="panel4" type="Button" parent="SlaveInfoModule"]
-margin_left = 911.0
-margin_top = -23.0
-margin_right = 949.0
-margin_bottom = 15.0
+margin_left = 11.0
+margin_top = 667.0
+margin_right = 274.0
+margin_bottom = 705.0
 toggle_mode = true
-text = "ST"
+text = "Sex Traits"
 
 [node name="Label2" type="Label" parent="SlaveInfoModule"]
-margin_left = 405.0
-margin_top = -32.0
-margin_right = 908.002
-margin_bottom = 22.0
+margin_left = 305.0
+margin_top = -31.0
+margin_right = 618.0
+margin_bottom = 23.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = ExtResource( 122 )
 text = "SIBLINGMODULETRAININGS"
@@ -809,46 +862,899 @@ margin_bottom = 40.0
 visible = false
 margin_left = 298.0
 margin_top = 24.0
-margin_right = 1047.0
-margin_bottom = 708.0
+margin_right = 961.0
+margin_bottom = 562.0
 theme = ExtResource( 15 )
 scroll_horizontal_enabled = false
 
 [node name="UpgradesList2" parent="SlaveInfoModule/UpgradesPanel/ScrollContainer2" instance=ExtResource( 141 )]
 
 [node name="MinorUpgradesCont" type="ScrollContainer" parent="SlaveInfoModule/UpgradesPanel"]
-visible = false
 margin_left = 293.0
 margin_top = 26.0
-margin_right = 1042.0
-margin_bottom = 710.0
+margin_right = 956.0
+margin_bottom = 558.0
 theme = ExtResource( 15 )
 scroll_horizontal_enabled = false
 
 [node name="UpgradesList3" parent="SlaveInfoModule/UpgradesPanel/MinorUpgradesCont" instance=ExtResource( 141 )]
+margin_bottom = 800.0
+rect_min_size = Vector2( 500, 800 )
 list_type = 1
 
 [node name="SuccubUpgradesList" parent="SlaveInfoModule/UpgradesPanel" instance=ExtResource( 142 )]
 visible = false
 margin_left = 289.0
 margin_top = 23.0
-margin_right = 1049.0
-margin_bottom = 763.0
-rect_min_size = Vector2( 760, 740 )
+margin_right = 957.0
+margin_bottom = 557.0
 
-[node name="UpgradesList" parent="SlaveInfoModule/UpgradesPanel" instance=ExtResource( 143 )]
-visible = false
+[node name="UpgradesList" type="Control" parent="SlaveInfoModule/UpgradesPanel"]
 margin_left = 294.0
 margin_top = 25.0
-margin_right = 1094.0
-margin_bottom = 778.0
+margin_right = 958.0
+margin_bottom = 564.0
+script = ExtResource( 133 )
+
+[node name="trainees" type="Control" parent="SlaveInfoModule/UpgradesPanel/UpgradesList"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label2" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/trainees"]
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 516.002
+margin_bottom = 62.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 122 )
+text = "Trainees:"
+clip_text = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/trainees"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 13.0
+margin_top = 66.0
+margin_right = -13.0
+margin_bottom = -13.0
+size_flags_vertical = 3
+theme = ExtResource( 15 )
+
+[node name="Container" type="VBoxContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/trainees/ScrollContainer"]
+margin_right = 500.0
+margin_bottom = 120.0
+
+[node name="Button" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/trainees/ScrollContainer/Container"]
+margin_right = 500.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 500, 120 )
+rect_pivot_offset = Vector2( -294, -94 )
+texture = ExtResource( 147 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/trainees/ScrollContainer/Container/Button"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -379.0
+
+[node name="name" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/trainees/ScrollContainer/Container/Button"]
+light_mask = 0
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -367.0
+margin_top = -17.0
+margin_bottom = 18.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Name"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="no_trainer" type="Control" parent="SlaveInfoModule/UpgradesPanel/UpgradesList"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 29.0
+margin_right = -29.0
+
+[node name="TextureButton" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/no_trainer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -224.0
+margin_top = 190.0
+margin_right = 256.0
+margin_bottom = 270.0
+texture_normal = ExtResource( 137 )
+texture_pressed = ExtResource( 149 )
+texture_hover = ExtResource( 148 )
+
+[node name="Label2" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/no_trainer/TextureButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 122 )
+text = "Assign trainer"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="training" type="Control" parent="SlaveInfoModule/UpgradesPanel/UpgradesList"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 154.0
+margin_right = -20.0
+margin_bottom = -218.0
+size_flags_vertical = 3
+theme = ExtResource( 15 )
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="GridContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training/ScrollContainer"]
+margin_right = 200.0
+margin_bottom = 40.0
+columns = 3
+
+[node name="Button" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training/ScrollContainer/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 40 )
+texture_normal = ExtResource( 165 )
+texture_pressed = ExtResource( 160 )
+texture_hover = ExtResource( 163 )
+texture_disabled = ExtResource( 160 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training/ScrollContainer/VBoxContainer/Button"]
+margin_left = 6.0
+margin_top = 8.0
+margin_right = 35.0
+margin_bottom = 35.0
+mouse_filter = 2
+texture = ExtResource( 155 )
+expand = true
+
+[node name="name" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training/ScrollContainer/VBoxContainer/Button"]
+light_mask = 0
+margin_left = 44.0
+margin_top = 4.0
+margin_right = 193.0
+margin_bottom = 39.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Reset training"
+valign = 1
+clip_text = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -194.0
+margin_right = 690.0
+margin_bottom = -94.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_constants/separation = 20
+
+[node name="Button" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training/HBoxContainer2"]
+visible = false
+margin_right = 101.0
+margin_bottom = 100.0
+toggle_mode = true
+texture_normal = ExtResource( 153 )
+texture_pressed = ExtResource( 156 )
+texture_hover = ExtResource( 156 )
+texture_disabled = ExtResource( 153 )
+
+[node name="icon" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training/HBoxContainer2/Button"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 150 )
+expand = true
+
+[node name="Label" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training/HBoxContainer2/Button"]
+margin_left = 41.2509
+margin_top = 71.7559
+margin_right = 96.2509
+margin_bottom = 95.7559
+custom_colors/font_color = Color( 1, 0.721569, 0.196078, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "500"
+align = 1
+valign = 1
+
+[node name="trainer_frame" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
+margin_left = 5.0
+margin_top = 13.0
+margin_right = 125.0
+margin_bottom = 133.0
+texture_normal = ExtResource( 147 )
+texture_pressed = ExtResource( 132 )
+texture_hover = ExtResource( 131 )
+expand = true
+stretch_mode = 5
+
+[node name="icon" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training/trainer_frame"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -4.0
+margin_bottom = -3.0
+expand = true
+stretch_mode = 6
+
+[node name="d_button" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -143.0
+margin_top = 18.0
+margin_right = -97.0
+margin_bottom = 64.0
+texture = ExtResource( 162 )
+
+[node name="status" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training/d_button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = -6.0
+margin_right = 1.0
+margin_bottom = -73.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 122 )
+text = "D"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="name" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
+light_mask = 0
+margin_left = 175.414
+margin_top = 5.2111
+margin_right = 573.414
+margin_bottom = 40.2111
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Reset training"
+valign = 1
+clip_text = true
+
+[node name="spirit" type="TextureProgress" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
+light_mask = 0
+margin_left = 217.0
+margin_top = 99.0
+margin_right = 477.0
+margin_bottom = 127.0
+rect_scale = Vector2( 1.25, 1.25 )
+value = 100.0
+texture_under = ExtResource( 129 )
+texture_over = ExtResource( 129 )
+texture_progress = ExtResource( 130 )
+texture_progress_offset = Vector2( 29, 3 )
+
+[node name="cd" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
+light_mask = 0
+margin_left = 180.0
+margin_top = 48.0
+margin_right = 474.0
+margin_bottom = 83.0
+custom_fonts/font = ExtResource( 10 )
+text = "character loyalty: 100"
+valign = 1
+
+[node name="cost" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
+visible = false
+light_mask = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 17.0
+margin_top = -120.0
+margin_right = 300.0
+margin_bottom = -85.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Reset training"
+valign = 1
+clip_text = true
+
+[node name="complete_button" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -130.0
+margin_top = -66.0
+margin_right = 120.0
+margin_bottom = -8.0
+texture_normal = ExtResource( 154 )
+texture_pressed = ExtResource( 159 )
+texture_hover = ExtResource( 171 )
+texture_disabled = ExtResource( 68 )
+
+[node name="reset" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training/complete_button"]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Finish training"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="Tooltip" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -32.409
+margin_top = -72.2341
+margin_right = 17.591
+margin_bottom = -25.2341
+texture = ExtResource( 135 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
+margin_left = 152.827
+margin_top = 82.939
+margin_right = 193.827
+margin_bottom = 135.939
+texture = ExtResource( 164 )
+
+[node name="TextureRect" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -108.0
+margin_right = 65.0
+margin_bottom = -66.0
+texture = ExtResource( 173 )
+expand = true
+stretch_mode = 6
+
+[node name="loyalty" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
+light_mask = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 87.0
+margin_top = -107.0
+margin_right = 142.0
+margin_bottom = -72.0
+custom_fonts/font = ExtResource( 10 )
+text = "100"
+valign = 1
+clip_text = true
+
+[node name="resistance" type="Control" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 166.0
+margin_top = -116.0
+margin_right = 319.0
+margin_bottom = -63.0
+mouse_filter = 1
+
+[node name="resistance" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training/resistance"]
+margin_left = -0.172974
+margin_top = -0.060997
+margin_right = 40.827
+margin_bottom = 52.939
+texture = ExtResource( 151 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training/resistance"]
+light_mask = 0
+margin_left = 58.0
+margin_top = 8.0
+margin_right = 150.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "100 - 10"
+valign = 1
+clip_text = true
+
+[node name="training_servant" type="Control" parent="SlaveInfoModule/UpgradesPanel/UpgradesList"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training_servant"]
+margin_left = 10.0
+margin_top = 110.0
+margin_right = 690.0
+margin_bottom = 210.0
+custom_constants/separation = 20
+
+[node name="Button" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training_servant/HBoxContainer2"]
+visible = false
+margin_right = 101.0
+margin_bottom = 100.0
+toggle_mode = true
+texture_normal = ExtResource( 153 )
+texture_pressed = ExtResource( 156 )
+texture_hover = ExtResource( 156 )
+texture_disabled = ExtResource( 153 )
+
+[node name="icon" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training_servant/HBoxContainer2/Button"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 150 )
+expand = true
+
+[node name="cost" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training_servant"]
+light_mask = 0
+margin_left = 13.0
+margin_top = 264.0
+margin_right = 296.0
+margin_bottom = 299.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Reset training"
+valign = 1
+clip_text = true
+
+[node name="Tooltip" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training_servant"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -32.409
+margin_top = -73.2341
+margin_right = 17.591
+margin_bottom = -26.2341
+texture = ExtResource( 135 )
+expand = true
+stretch_mode = 6
+
+[node name="loyalty" type="Control" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training_servant"]
+margin_left = 16.0
+margin_top = 320.0
+margin_right = 201.0
+margin_bottom = 364.0
+mouse_filter = 1
+
+[node name="loyalty" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training_servant/loyalty"]
+margin_right = 49.0
+margin_bottom = 42.0
+texture = ExtResource( 173 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training_servant/loyalty"]
+light_mask = 0
+margin_left = 69.0
+margin_top = 1.0
+margin_right = 183.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 10 )
+text = "100 + 0.25"
+valign = 1
+clip_text = true
+
+[node name="resistance" type="Control" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training_servant"]
+margin_left = 209.0
+margin_top = 313.0
+margin_right = 355.0
+margin_bottom = 366.0
+mouse_filter = 1
+
+[node name="resistance" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training_servant/resistance"]
+margin_left = -0.172974
+margin_top = -0.060997
+margin_right = 40.827
+margin_bottom = 52.939
+texture = ExtResource( 151 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/training_servant/resistance"]
+light_mask = 0
+margin_left = 47.0
+margin_top = 8.0
+margin_right = 145.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "100 - 10"
+valign = 1
+clip_text = true
+
+[node name="trainer_list" type="Control" parent="SlaveInfoModule/UpgradesPanel/UpgradesList"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="tooltip" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/trainer_list"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -72.0
+margin_top = 8.0
+margin_right = -27.0
+margin_bottom = 54.0
+texture = ExtResource( 146 )
+
+[node name="Label2" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/trainer_list"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -390.0
+margin_top = 2.0
+margin_right = 411.0
+margin_bottom = 59.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 122 )
+text = "TRAINERSAVAILABLE"
+align = 1
+clip_text = true
+
+[node name="Container2" type="ScrollContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/trainer_list"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 13.0
+margin_top = 66.0
+margin_right = -34.0
+margin_bottom = -86.0
+scroll_horizontal_enabled = false
+
+[node name="Container" type="VBoxContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/trainer_list/Container2"]
+
+[node name="Button" type="Button" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/trainer_list/Container2/Container"]
+visible = false
+margin_right = 650.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 650, 100 )
+rect_pivot_offset = Vector2( -294, -94 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 31 )
+custom_styles/disabled = SubResource( 31 )
+custom_styles/normal = SubResource( 32 )
+
+[node name="icon" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/trainer_list/Container2/Container/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -551.0
+texture = ExtResource( 143 )
+expand = true
+
+[node name="icon2" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/trainer_list/Container2/Container/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -599.0
+texture = ExtResource( 153 )
+
+[node name="name" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/trainer_list/Container2/Container/Button"]
+light_mask = 0
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -547.0
+margin_top = -48.0
+margin_right = -5.0
+margin_bottom = -13.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Name"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="desc" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/trainer_list/Container2/Container/Button"]
+light_mask = 0
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -547.0
+margin_top = -12.0
+margin_right = -12.0
+margin_bottom = 45.0
+custom_fonts/font = ExtResource( 14 )
+
+[node name="finished" type="Control" parent="SlaveInfoModule/UpgradesPanel/UpgradesList"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="reset_button" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -125.0
+margin_top = -78.0
+margin_right = 125.0
+margin_bottom = -20.0
+texture_normal = ExtResource( 154 )
+texture_pressed = ExtResource( 159 )
+texture_hover = ExtResource( 171 )
+
+[node name="reset" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished/reset_button"]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Reset training"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 51.0
+margin_top = 51.0
+margin_right = -149.0
+margin_bottom = -228.0
+
+[node name="result_frame" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished/VBoxContainer"]
+margin_right = 600.0
+margin_bottom = 106.0
+texture = ExtResource( 138 )
+
+[node name="icon" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished/VBoxContainer/result_frame"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 103.0
+margin_bottom = 103.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="header_text" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished/VBoxContainer/result_frame"]
+margin_left = 119.0
+margin_top = 1.0
+margin_right = 635.0
+margin_bottom = 109.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 122 )
+text = "Training status"
+clip_text = true
+
+[node name="select_text" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished/VBoxContainer"]
+margin_top = 110.0
+margin_right = 600.0
+margin_bottom = 163.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 122 )
+text = "Select specialization:"
+clip_text = true
+
+[node name="list" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished/VBoxContainer"]
+margin_top = 167.0
+margin_right = 600.0
+margin_bottom = 220.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 122 )
+text = "Trainees:"
+clip_text = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished/VBoxContainer"]
+margin_top = 224.0
+margin_right = 600.0
+margin_bottom = 224.0
+custom_constants/separation = 20
+
+[node name="Button" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished/VBoxContainer/HBoxContainer2"]
+visible = false
+margin_right = 101.0
+margin_bottom = 100.0
+texture = ExtResource( 156 )
+
+[node name="icon" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished/VBoxContainer/HBoxContainer2/Button"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 150 )
+expand = true
+
+[node name="status" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finished"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 51.0
+margin_top = -228.0
+margin_right = 651.0
+margin_bottom = -175.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 122 )
+text = "Trainees:"
+clip_text = true
+
+[node name="finish" type="Panel" parent="SlaveInfoModule/UpgradesPanel/UpgradesList"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -21.0
+margin_top = -59.0
+margin_right = 22.0
+margin_bottom = 17.0
+custom_styles/panel = SubResource( 33 )
+
+[node name="header" type="RichTextLabel" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish"]
+light_mask = 0
+margin_left = 35.0
+margin_top = 13.0
+margin_right = 813.0
+margin_bottom = 91.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "TRAINFINISHTEXT"
+text = "TRAINFINISHTEXT"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 127.0
+margin_top = 112.0
+margin_right = -116.0
+margin_bottom = -190.0
+theme = ExtResource( 15 )
+
+[node name="rewards" type="VBoxContainer" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer"]
+margin_right = 464.0
+size_flags_horizontal = 3
+custom_constants/separation = 5
+
+[node name="button" type="Button" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer/rewards"]
+visible = false
+margin_right = 600.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 150 )
+custom_styles/hover = SubResource( 34 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+toggle_mode = true
+
+[node name="icon" type="TextureRect" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer/rewards/button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 14.4387
+margin_top = 19.1581
+margin_right = -469.561
+margin_bottom = -16.8419
+mouse_filter = 2
+texture = ExtResource( 170 )
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer/rewards/button"]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 163.0
+margin_top = 10.0
+margin_right = -43.0
+margin_bottom = -105.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Confirm"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="reqs" type="RichTextLabel" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer/rewards/button"]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 155.0
+margin_top = 49.0
+margin_right = -18.0
+margin_bottom = -9.0
+mouse_filter = 2
+bbcode_enabled = true
+bbcode_text = "Confirm
+Confirm
+Confirm
+Confirm
+Confirm
+Confirm"
+text = "Confirm
+Confirm
+Confirm
+Confirm
+Confirm
+Confirm"
+
+[node name="button2" type="Button" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer/rewards"]
+visible = false
+margin_right = 600.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 150 )
+custom_styles/hover = SubResource( 34 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+toggle_mode = true
+
+[node name="name" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer/rewards/button2"]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 88.3921
+margin_top = 16.3496
+margin_right = -117.608
+margin_bottom = -98.6504
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Confirm"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/ScrollContainer/rewards/button2"]
+margin_left = 20.0
+margin_top = 56.0
+margin_right = 573.0
+margin_bottom = 123.0
+mouse_filter = 2
+
+[node name="confirm" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 123.408
+margin_top = -116.663
+margin_right = 373.408
+margin_bottom = -58.663
+texture_normal = ExtResource( 154 )
+texture_pressed = ExtResource( 159 )
+texture_hover = ExtResource( 171 )
+texture_disabled = ExtResource( 68 )
+
+[node name="text" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/confirm"]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -5.01807
+margin_top = 3.10907
+margin_right = -19.0181
+margin_bottom = -6.89093
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Confirm"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="cancel" type="TextureButton" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -367.592
+margin_top = -116.663
+margin_right = -117.592
+margin_bottom = -58.663
+texture_normal = ExtResource( 154 )
+texture_pressed = ExtResource( 159 )
+texture_hover = ExtResource( 171 )
+texture_disabled = ExtResource( 68 )
+
+[node name="text" type="Label" parent="SlaveInfoModule/UpgradesPanel/UpgradesList/finish/cancel"]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Cancel"
+align = 1
+valign = 1
+clip_text = true
 
 [node name="Label" type="Label" parent="SlaveInfoModule/UpgradesPanel"]
-visible = false
-margin_left = 457.0
-margin_top = 511.0
-margin_right = 948.0
-margin_bottom = 551.0
+margin_left = 649.92
+margin_top = -17.1936
+margin_right = 944.92
+margin_bottom = 22.8064
 mouse_filter = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 121 )
@@ -857,10 +1763,10 @@ align = 2
 
 [node name="SexSkillsContainer" type="ScrollContainer" parent="SlaveInfoModule"]
 light_mask = 0
-margin_left = 9.18921
-margin_top = 341.055
-margin_right = 275.189
-margin_bottom = 684.055
+margin_left = 9.0
+margin_top = 341.0
+margin_right = 275.0
+margin_bottom = 652.0
 theme = ExtResource( 40 )
 scroll_horizontal_enabled = false
 
@@ -883,7 +1789,7 @@ margin_bottom = 40.8863
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 35 )
 text = "Penetration"
 
 [node name="ProgressBar" type="TextureProgress" parent="SlaveInfoModule/SexSkillsContainer/VBoxContainer/Button"]
@@ -904,7 +1810,7 @@ custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 36 )
 text = "1/100"
 align = 1
 
@@ -965,16 +1871,16 @@ align = 1
 [node name="SexTraitsPanel" type="Panel" parent="SlaveInfoModule"]
 visible = false
 light_mask = 0
-margin_left = 698.0
-margin_top = 28.0
-margin_right = 948.0
-margin_bottom = 483.0
+margin_left = 10.0
+margin_top = 196.0
+margin_right = 276.0
+margin_bottom = 651.0
 
 [node name="Label" type="Label" parent="SlaveInfoModule/SexTraitsPanel"]
 light_mask = 0
-margin_left = 18.126
-margin_right = 210.126
-margin_bottom = 42.0
+margin_left = 9.0
+margin_right = 252.0
+margin_bottom = 53.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_fonts/font = SubResource( 20 )
 text = "SIBLINGMODULESEXTRAITS"
@@ -1043,14 +1949,41 @@ texture = ExtResource( 135 )
 expand = true
 stretch_mode = 6
 
+[node name="VBoxContainer" type="VBoxContainer" parent="SlaveInfoModule"]
+margin_left = 296.0
+margin_top = 40.0
+margin_right = 336.0
+margin_bottom = 162.0
+
+[node name="panel1" type="Button" parent="SlaveInfoModule/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 38.0
+toggle_mode = true
+text = "1"
+
+[node name="panel2" type="Button" parent="SlaveInfoModule/VBoxContainer"]
+margin_top = 42.0
+margin_right = 40.0
+margin_bottom = 80.0
+toggle_mode = true
+text = "2"
+
+[node name="panel3" type="Button" parent="SlaveInfoModule/VBoxContainer"]
+margin_top = 84.0
+margin_right = 40.0
+margin_bottom = 122.0
+toggle_mode = true
+text = "3"
+
 [node name="SlaveClassesModule" type="Panel" parent="."]
+visible = false
 light_mask = 0
 margin_left = 229.0
 margin_top = 104.0
 margin_right = 1205.0
 margin_bottom = 863.0
 theme = ExtResource( 61 )
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 37 )
 script = ExtResource( 62 )
 
 [node name="Background" type="Panel" parent="SlaveClassesModule"]
@@ -1059,7 +1992,7 @@ light_mask = 0
 margin_left = 4.0
 margin_right = 970.0
 margin_bottom = 754.0
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 38 )
 
 [node name="categories" type="HBoxContainer" parent="SlaveClassesModule"]
 light_mask = 0
@@ -2292,7 +3225,7 @@ margin_top = -3.19998
 margin_right = 700.0
 margin_bottom = 346.8
 rect_min_size = Vector2( 700, 350 )
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 38 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -3029,6 +3962,7 @@ align = 1
 valign = 1
 
 [node name="SlaveSiblingsModule" type="TextureRect" parent="."]
+visible = false
 light_mask = 0
 margin_left = 239.0
 margin_top = 105.0
@@ -3306,13 +4240,10 @@ margin_right = 255.0
 margin_bottom = 736.0
 rect_min_size = Vector2( 250, 60 )
 custom_fonts/font = ExtResource( 1 )
-custom_styles/hover = SubResource( 21 )
-custom_styles/pressed = SubResource( 22 )
-custom_styles/disabled = SubResource( 23 )
-custom_styles/normal = SubResource( 24 )
 text = "Stats"
 
 [node name="StatsPanel" parent="SlaveSiblingsModule" instance=ExtResource( 144 )]
+visible = false
 margin_left = 3.0
 margin_top = 7.0
 margin_right = 1377.0
