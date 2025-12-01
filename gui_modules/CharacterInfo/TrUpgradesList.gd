@@ -334,18 +334,19 @@ func build_training_list():
 			if !trainer.checkreqs(trdata.reqs_trainer):
 				panel.disabled = true
 				text = "{color=red|"+tr('ACTIONTRAINERREQSNOTMET') +"}\n\n"+ text
+				globals.connecttexttooltip(panel, text)
 				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.red))
 			#avail check
 			elif ((tr == 'mindread' and person.training.cooldown.mindread > 0)
 					or (category == 'positive' and person.training.cooldown.positive > 0)):
 				panel.disabled = true
 				text = "{color=red|"+tr('ACTIONALREADYDONETODAY') +"}\n\n"+ text
-				globals.connecttexttooltip(panel, tr('ACTIONALREADYDONETODAY'))
+				globals.connecttexttooltip(panel, text)
 				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.gray))
 			elif category != 'positive' and person.has_resistance_block():
 				panel.disabled = true
 				text = "{color=red|"+tr('TRAINRESISTANT') +"}\n\n"+ text
-				globals.connecttexttooltip(panel, tr('TRAINRESISTANT'))
+				globals.connecttexttooltip(panel, text)
 				panel.get_node('name').set("custom_colors/font_color", Color(variables.hexcolordict.gray))
 			#cost check
 			else:
